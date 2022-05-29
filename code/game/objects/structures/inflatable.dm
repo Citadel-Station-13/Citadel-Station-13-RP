@@ -19,22 +19,24 @@
 	if(istype(A, /turf))
 		inflate(user,A)
 
+/obj/item/inflatable/CtrlClick(mob/user)
+	inflate(user,src.loc)
+
 /obj/structure/inflatable
 	name = "inflatable wall"
 	desc = "An inflated membrane. Do not puncture."
 	density = 1
 	anchored = 1
 	opacity = 0
-	can_atmos_pass = ATMOS_PASS_DENSITY
+	CanAtmosPass = ATMOS_PASS_DENSITY
 
 	icon = 'icons/obj/inflatable.dmi'
 	icon_state = "wall"
 
 	var/health = 50.0
 
-
-/obj/structure/inflatable/New(location)
-	..()
+/obj/structure/inflatable/Initialize(mapload)
+	. = ..()
 	update_nearby_tiles(need_rebuild=1)
 
 /obj/structure/inflatable/Destroy()
@@ -102,7 +104,7 @@
 
 /obj/structure/inflatable/proc/deflate()
 	playsound(loc, 'sound/machines/hiss.ogg', 75, 1)
-	//user << "<span class='notice'>You slowly deflate the inflatable wall.</span>"
+	//to_chat(user, "<span class='notice'>You slowly deflate the inflatable wall.</span>")
 	visible_message("[src] slowly deflates.")
 	spawn(50)
 		var/obj/item/inflatable/R = new /obj/item/inflatable(loc)
@@ -174,6 +176,7 @@
 	return TryToSwitchState(user)
 
 /obj/structure/inflatable/door/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
 	if(istype(mover, /obj/effect/beam))
 		return !opacity
 	return !density
@@ -203,8 +206,8 @@
 	isSwitchingStates = 1
 	flick("door_opening",src)
 	sleep(10)
-	density = 0
-	opacity = 0
+	set_density(FALSE)
+	set_opacity(FALSE)
 	state = 1
 	update_icon()
 	isSwitchingStates = 0
@@ -213,8 +216,8 @@
 	isSwitchingStates = 1
 	flick("door_closing",src)
 	sleep(10)
-	density = 1
-	opacity = 0
+	set_density(TRUE)
+	set_opacity(FALSE)
 	state = 0
 	update_icon()
 	isSwitchingStates = 0

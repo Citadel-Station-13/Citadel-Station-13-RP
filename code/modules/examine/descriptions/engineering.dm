@@ -1,5 +1,5 @@
 /obj/machinery/power/supermatter
-	description_info = "When energized by a laser (or something hitting it), it emits radiation and heat.  If the heat reaches above 7000 kelvin, it will send an alert and start taking damage. \
+	description_info = "When energized by a laser (or something hitting it), it emits radiation and heat.  If the heat reaches above 5000 kelvin, it will send an alert and start taking damage. \
 	After integrity falls to zero percent, it will delaminate, causing a massive explosion, station-wide radiation spikes, and hallucinations. \
 	Supermatter reacts badly to oxygen in the atmosphere.  It'll also heat up really quick if it is in vacuum.<br>\
 	<br>\
@@ -37,7 +37,7 @@
 
 /obj/machinery/door/get_description_interaction()
 	var/list/results = list()
-	if(!repairing && (health < maxhealth) && !(stat & BROKEN))
+	if(!repairing && (health < maxhealth) && !(machine_stat & BROKEN))
 		results += "[desc_panel_image("metal sheet")]to start repairing damage (May require different material type)."
 	if(repairing && density)
 		results += "[desc_panel_image("welder")]to finish repairs."

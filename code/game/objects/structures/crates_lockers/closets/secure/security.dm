@@ -11,18 +11,20 @@
 	starts_with = list(
 		/obj/item/storage/backpack/dufflebag/captain,
 		/obj/item/clothing/head/helmet,
-		/obj/item/clothing/suit/storage/vest,
+		/obj/item/clothing/suit/storage/vest/capcarapace,
 		/obj/item/cartridge/captain,
 		/obj/item/storage/lockbox/medal,
 		/obj/item/radio/headset/heads/captain,
 		/obj/item/radio/headset/heads/captain/alt,
 		/obj/item/gun/energy/gun,
+		/obj/item/clothing/accessory/holster/waist,
+		/obj/item/clothing/accessory/holster/leg,
 		/obj/item/melee/telebaton,
 		/obj/item/flash,
 		/obj/item/gps/command,
 		/obj/item/storage/belt/sheath,
+		/obj/item/melee/baton/loaded/mini,
 		/obj/item/storage/box/ids)
-
 
 /obj/structure/closet/secure_closet/hop
 	name = "head of personnel's locker"
@@ -41,12 +43,11 @@
 		/obj/item/radio/headset/heads/hop,
 		/obj/item/radio/headset/heads/hop/alt,
 		/obj/item/storage/box/ids = 2,
-		/obj/item/gun/energy/gun,
 		/obj/item/gps/command,
-		/obj/item/gun/energy/gun/martin, //VOREStation Add,
-		/obj/item/storage/box/commandkeys, //VOREStation Add,
-		/obj/item/storage/box/servicekeys, //VOREStation Add,
-		///obj/item/gun/projectile/sec/flash, //VOREStation Removal,
+		/obj/item/gun/energy/gun,
+		/obj/item/storage/box/commandkeys,
+		/obj/item/storage/box/servicekeys,
+		/obj/item/melee/baton/loaded/mini,
 		/obj/item/flash)
 
 /obj/structure/closet/secure_closet/hop2
@@ -61,6 +62,7 @@
 
 	starts_with = list(
 		/obj/item/clothing/under/rank/head_of_personnel,
+		/obj/item/clothing/under/rank/head_of_personnel/skirt_pleated,
 		/obj/item/clothing/under/dress/dress_hop,
 		/obj/item/clothing/under/dress/dress_hr,
 		/obj/item/clothing/under/lawyer/female,
@@ -71,15 +73,17 @@
 		/obj/item/clothing/under/lawyer/oldman,
 		/obj/item/clothing/shoes/brown,
 		/obj/item/clothing/shoes/black,
-		/obj/item/clothing/shoes/leather,
+		/obj/item/clothing/shoes/laceup,
+		/obj/item/clothing/shoes/laceup/brown,
 		/obj/item/clothing/shoes/white,
 		/obj/item/clothing/under/rank/head_of_personnel_whimsy,
 		/obj/item/clothing/head/caphat/hop,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/captain/hop,
 		/obj/item/clothing/under/gimmick/rank/head_of_personnel/suit,
 		/obj/item/clothing/under/gimmick/rank/head_of_personnel/suit/skirt,
 		/obj/item/clothing/glasses/sunglasses)
 
-
+/*
 /obj/structure/closet/secure_closet/hos
 	name = "head of security's locker"
 	req_access = list(access_hos)
@@ -123,13 +127,13 @@
 		/obj/item/clothing/accessory/holster/waist,
 		/obj/item/melee/telebaton,
 		/obj/item/clothing/head/beret/sec/corporate/hos,
-		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/security/hos,
 		/obj/item/clothing/shoes/boots/winter/security,
 		/obj/item/gps/security/hos,
 		/obj/item/flashlight/maglight,
 		/obj/item/clothing/mask/gas/half)
 
-/obj/structure/closet/secure_closet/hos/Initialize()
+/obj/structure/closet/secure_closet/hos/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/security
 	else
@@ -137,7 +141,73 @@
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/dufflebag/sec
 	return ..()
+*/
 
+//_vr file contents:
+/obj/structure/closet/secure_closet/hos
+	name = "head of security's attire"
+	icon_state = "hossecure1"
+	icon_closed = "hossecure"
+	icon_locked = "hossecure1"
+	icon_opened = "hossecureopen"
+	icon_broken = "hossecurebroken"
+	icon_off = "hossecureoff"
+	req_access = list(access_hos)
+	storage_capacity = 2.5 * MOB_MEDIUM
+
+	starts_with = list(
+		/obj/item/clothing/head/helmet/HoS,
+		/obj/item/clothing/head/helmet/HoS/hat,
+		/obj/item/clothing/head/beret/sec/corporate/hos,
+		/obj/item/clothing/suit/storage/vest/hos,
+		/obj/item/clothing/under/rank/head_of_security/jensen,
+		/obj/item/clothing/under/rank/head_of_security/corp,
+		/obj/item/clothing/under/rank/head_of_security/skirt_pleated,
+		/obj/item/clothing/under/rank/head_of_security/skirt_pleated/alt,
+		/obj/item/clothing/under/rank/head_of_security/turtleneck,
+		/obj/item/clothing/under/oricon/mildress/marine/command/fake,
+		/obj/item/clothing/suit/storage/vest/hoscoat/jensen,
+		/obj/item/clothing/suit/storage/vest/hoscoat,
+		/obj/item/clothing/suit/storage/vest/hos_overcoat,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
+		/obj/item/clothing/shoes/boots/winter/security,
+		/obj/item/clothing/suit/dress/marine/command/hos,
+		/obj/item/clothing/head/helmet/dermal,
+		/obj/item/radio/headset/heads/hos,
+		/obj/item/radio/headset/heads/hos/alt,
+		/obj/item/clothing/glasses/sunglasses/sechud,
+		/obj/item/storage/belt/security,
+		/obj/item/clothing/accessory/holster/waist,
+		/obj/item/clothing/mask/gas/half,
+		/obj/item/clothing/under/bodysuit/bodysuitseccom)
+
+/obj/structure/closet/secure_closet/hos2
+	name = "head of security's gear"
+	icon_state = "hossecure1"
+	icon_closed = "hossecure"
+	icon_locked = "hossecure1"
+	icon_opened = "hossecureopen"
+	icon_broken = "hossecurebroken"
+	icon_off = "hossecureoff"
+	req_access = list(access_hos)
+	storage_capacity = 2.5 * MOB_MEDIUM
+
+	// citadel edit NSFW > Multiphase
+	starts_with = list(
+		/obj/item/cartridge/hos,
+		/obj/item/barrier_tape_roll/police,
+		/obj/item/shield/riot/tele,
+		/obj/item/storage/box/holobadge/hos,
+		/obj/item/clothing/accessory/badge/holo/hos,
+		/obj/item/reagent_containers/spray/pepper,
+		/obj/item/tool/crowbar/red,
+		/obj/item/storage/box/flashbangs,
+		/obj/item/flash,
+		/obj/item/melee/baton/loaded,
+		/obj/item/gun/energy/gun/multiphase,
+		/obj/item/melee/telebaton,
+		/obj/item/gps/security/hos,
+		/obj/item/flashlight/maglight)
 
 /obj/structure/closet/secure_closet/warden
 	name = "warden's locker"
@@ -153,6 +223,7 @@
 		/obj/item/clothing/suit/storage/vest/warden,
 		/obj/item/clothing/under/rank/warden,
 		/obj/item/clothing/under/rank/warden/corp,
+		/obj/item/clothing/under/rank/warden/skirt_pleated,
 		/obj/item/clothing/suit/storage/vest/wardencoat,
 		/obj/item/clothing/suit/storage/vest/wardencoat/alt,
 		/obj/item/clothing/head/helmet/dermal,
@@ -178,9 +249,10 @@
 		/obj/item/gps/security,
 		/obj/item/flashlight/maglight,
 		/obj/item/megaphone,
-		/obj/item/clothing/mask/gas/half)
+		/obj/item/clothing/mask/gas/half,
+		/obj/item/gun/projectile/shotgun/pump/combat/warden)
 
-/obj/structure/closet/secure_closet/warden/Initialize()
+/obj/structure/closet/secure_closet/warden/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/security
 	else
@@ -213,11 +285,10 @@
 		/obj/item/clothing/glasses/sunglasses/sechud,
 		/obj/item/barrier_tape_roll/police,
 		/obj/item/hailer,
-		/obj/item/flashlight/flare,
+		/obj/item/flashlight/glowstick,
 		/obj/item/clothing/accessory/storage/black_vest,
 		/obj/item/clothing/head/soft/sec/corp,
 		/obj/item/clothing/under/rank/security/corp,
-		///obj/item/ammo_magazine/m45/rubber, //VOREStation Removal,
 		/obj/item/gun/energy/taser,
 		/obj/item/cell/device/weapon,
 		/obj/item/gps/security,
@@ -226,7 +297,7 @@
 		/obj/item/clothing/shoes/boots/winter/security,
 		/obj/item/flashlight/maglight)
 
-/obj/structure/closet/secure_closet/security/Initialize()
+/obj/structure/closet/secure_closet/security/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/security
 	else
@@ -237,22 +308,22 @@
 		starts_with += /obj/item/contraband/poster/nanotrasen
 	return ..()
 
-/obj/structure/closet/secure_closet/security/cargo/Initialize()
+/obj/structure/closet/secure_closet/security/cargo/Initialize(mapload)
 	starts_with += /obj/item/clothing/accessory/armband/cargo
 	starts_with += /obj/item/encryptionkey/headset_cargo
 	return ..()
 
-/obj/structure/closet/secure_closet/security/engine/Initialize()
+/obj/structure/closet/secure_closet/security/engine/Initialize(mapload)
 	starts_with += /obj/item/clothing/accessory/armband/engine
 	starts_with += /obj/item/encryptionkey/headset_eng
 	return ..()
 
-/obj/structure/closet/secure_closet/security/science/Initialize()
+/obj/structure/closet/secure_closet/security/science/Initialize(mapload)
 	starts_with += /obj/item/clothing/accessory/armband/science
 	starts_with += /obj/item/encryptionkey/headset_sci
 	return ..()
 
-/obj/structure/closet/secure_closet/security/med/Initialize()
+/obj/structure/closet/secure_closet/security/med/Initialize(mapload)
 	starts_with += /obj/item/clothing/accessory/armband/medblue
 	starts_with += /obj/item/encryptionkey/headset_med
 	return ..()
@@ -270,15 +341,20 @@
 
 	starts_with = list(
 		/obj/item/clothing/accessory/badge/holo/detective,
-		/obj/item/clothing/gloves/black,
-		///obj/item/gunbox, //VOREStation Removal,
+		/obj/item/clothing/gloves/forensic,
+		/obj/item/gun/projectile/revolver/detective45,
+		/obj/item/ammo_magazine/s45/rubber,
+		/obj/item/ammo_magazine/s45/rubber,
+		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/storage/belt/detective,
 		/obj/item/storage/box/evidence,
 		/obj/item/radio/headset/headset_sec,
 		/obj/item/radio/headset/headset_sec/alt,
+		/obj/item/clothing/suit/storage/vest/,
 		/obj/item/clothing/suit/storage/vest/detective,
 		/obj/item/barrier_tape_roll/police,
 		/obj/item/clothing/accessory/holster/armpit,
+		/obj/item/clothing/accessory/holster/waist,
 		/obj/item/flashlight/maglight,
 		/obj/item/reagent_containers/food/drinks/flask/detflask,
 		/obj/item/storage/briefcase/crimekit,
@@ -368,3 +444,152 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 				icon_state = icon_closed
 		else
 			icon_state = icon_opened
+
+//Custom NT Security Lockers, Only found at central command
+/obj/structure/closet/secure_closet/nanotrasen_security
+	name = "NanoTrasen security officer's locker"
+	icon = 'icons/obj/closet.dmi'
+	icon_state = "secC1"
+	icon_closed = "secC"
+	icon_locked = "secC1"
+	icon_opened = "secCopen"
+	icon_broken = "secCbroken"
+	icon_off = "seCcoff"
+	req_access = list(access_brig)
+	storage_capacity = 3.5 * MOB_MEDIUM
+
+	starts_with = list(
+		/obj/item/clothing/under/bodysuit/bodysuitsecweewoo,
+		/obj/item/clothing/suit/storage/vest/nanotrasen,
+		/obj/item/clothing/head/helmet,
+		/obj/item/cartridge/security,
+		/obj/item/radio/headset/headset_sec,
+		/obj/item/radio/headset/headset_sec/alt,
+		/obj/item/storage/belt/security,
+		/obj/item/flash,
+		/obj/item/reagent_containers/spray/pepper,
+		/obj/item/grenade/flashbang,
+		/obj/item/melee/baton/loaded,
+		/obj/item/clothing/glasses/sunglasses/sechud,
+		/obj/item/barrier_tape_roll/police,
+		/obj/item/hailer,
+		/obj/item/flashlight/flare,
+		/obj/item/clothing/accessory/storage/black_vest,
+		/obj/item/gun/energy/taser,
+		/obj/item/cell/device/weapon,
+		/obj/item/flashlight/maglight,
+		/obj/item/clothing/head/soft/nanotrasen,
+		/obj/item/clothing/head/beret/nanotrasen,
+		/obj/item/clothing/under/nanotrasen/security,
+		/obj/item/clothing/gloves/black,
+		/obj/item/clothing/shoes/boots/jackboots,
+		/obj/item/clothing/shoes/boots/jackboots/toeless)
+
+/obj/structure/closet/secure_closet/nanotrasen_security/Initialize(mapload)
+	if(prob(25))
+		starts_with += /obj/item/storage/backpack/security
+	else
+		starts_with += /obj/item/storage/backpack/satchel/sec
+	if(prob(75))
+		starts_with += /obj/item/storage/backpack/dufflebag/sec
+	return ..()
+
+/obj/structure/closet/secure_closet/nanotrasen_commander
+	name = "NanoTrasen commander's locker"
+	icon = 'icons/obj/closet.dmi'
+	icon_state = "secC1"
+	icon_closed = "secC"
+	icon_locked = "secC1"
+	icon_opened = "secCopen"
+	icon_broken = "secCbroken"
+	icon_off = "seCcoff"
+	req_access = list(access_brig)
+	storage_capacity = 3.5 * MOB_MEDIUM
+
+	starts_with = list(
+		/obj/item/clothing/head/helmet/HoS,
+		/obj/item/clothing/suit/storage/vest/hos,
+		/obj/item/clothing/under/rank/head_of_security/jensen,
+		/obj/item/clothing/suit/storage/vest/hoscoat/jensen,
+		/obj/item/clothing/suit/storage/vest/hoscoat,
+		/obj/item/clothing/head/helmet/dermal,
+		/obj/item/cartridge/hos,
+		/obj/item/radio/headset/heads/hos,
+		/obj/item/radio/headset/heads/hos/alt,
+		/obj/item/clothing/glasses/sunglasses/sechud,
+		/obj/item/barrier_tape_roll/police,
+		/obj/item/shield/riot,
+		/obj/item/shield/riot/tele,
+		/obj/item/storage/box/holobadge/hos,
+		/obj/item/clothing/accessory/badge/holo/hos,
+		/obj/item/reagent_containers/spray/pepper,
+		/obj/item/tool/crowbar/red,
+		/obj/item/storage/box/flashbangs,
+		/obj/item/storage/belt/security,
+		/obj/item/flash,
+		/obj/item/melee/baton/loaded,
+		/obj/item/gun/energy/gun,
+		/obj/item/cell/device/weapon,
+		/obj/item/clothing/accessory/holster/waist,
+		/obj/item/melee/telebaton,
+		/obj/item/clothing/head/beret/sec/corporate/hos,
+		/obj/item/flashlight/maglight,
+		/obj/item/clothing/gloves/black,
+		/obj/item/clothing/shoes/boots/jackboots,
+		/obj/item/clothing/shoes/boots/jackboots/toeless,
+		/obj/item/clothing/under/nanotrasen/security/commander)
+
+/obj/structure/closet/secure_closet/nanotrasen_commander/Initialize(mapload)
+	if(prob(25))
+		starts_with += /obj/item/storage/backpack/security
+	else
+		starts_with += /obj/item/storage/backpack/satchel/sec
+	if(prob(75))
+		starts_with += /obj/item/storage/backpack/dufflebag/sec
+	return ..()
+
+/obj/structure/closet/secure_closet/nanotrasen_warden
+	name = "NanoTrasen warden's locker"
+	icon = 'icons/obj/closet.dmi'
+	icon_state = "secC1"
+	icon_closed = "secC"
+	icon_locked = "secC1"
+	icon_opened = "secCopen"
+	icon_broken = "secCbroken"
+	icon_off = "seCcoff"
+	req_access = list(access_brig)
+	storage_capacity = 3.5 * MOB_MEDIUM
+
+	starts_with = list(
+		/obj/item/clothing/suit/storage/vest/warden,
+		/obj/item/clothing/under/nanotrasen/security/warden,
+		/obj/item/clothing/suit/storage/vest/wardencoat/alt,
+		/obj/item/clothing/head/helmet/warden,
+		/obj/item/cartridge/security,
+		/obj/item/radio/headset/headset_sec,
+		/obj/item/radio/headset/headset_sec/alt,
+		/obj/item/clothing/glasses/sunglasses/sechud,
+		/obj/item/barrier_tape_roll/police,
+		/obj/item/clothing/accessory/badge/holo/warden,
+		/obj/item/storage/box/flashbangs,
+		/obj/item/storage/belt/security,
+		/obj/item/reagent_containers/spray/pepper,
+		/obj/item/melee/baton/loaded,
+		/obj/item/gun/energy/gun,
+		/obj/item/cell/device/weapon,
+		/obj/item/storage/box/holobadge,
+		/obj/item/clothing/head/beret/sec/corporate/warden,
+		/obj/item/flashlight/maglight,
+		/obj/item/megaphone,
+		/obj/item/clothing/gloves/black,
+		/obj/item/clothing/shoes/boots/jackboots,
+		/obj/item/clothing/shoes/boots/jackboots/toeless)
+
+/obj/structure/closet/secure_closet/nanotrasen_warden/Initialize(mapload)
+	if(prob(25))
+		new /obj/item/storage/backpack/security(src)
+	else
+		new /obj/item/storage/backpack/satchel/sec(src)
+	if(prob(75))
+		new /obj/item/storage/backpack/dufflebag/sec(src)
+	return ..()

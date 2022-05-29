@@ -112,13 +112,11 @@
 	 icon_state = "comfychair_teal";
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 2;
 	on = 1
 	},
-/obj/effect/landmark/start{
-	name = "Captain"
-	},
+/atom/movable/landmark/spawnpoint/job/captain,
 /turf/simulated/floor{
 	 icon_state = "gcircuitoff";
 	dir = 2
@@ -328,7 +326,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	layer = 2.4;
 	level = 2;
@@ -410,7 +408,7 @@
 	},
 /area/ship/scrap/command/captain)
 "aI" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	level = 1;
 	on = 1
@@ -600,7 +598,7 @@
 	 icon_state = "tube1";
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	layer = 2.4;
 	level = 2;
@@ -782,9 +780,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/effect/landmark{
-	name = "JoinLate"
-	},
+/atom/movable/landmark/spawnpoint/latejoin/station,
 /turf/simulated/floor{
 	 icon_state = "neutralfull";
 	dir = 4
@@ -920,7 +916,7 @@
 	},
 /area/ship/scrap/dock)
 "bG" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	level = 2;
 	on = 1
@@ -956,7 +952,7 @@
 /turf/simulated/floor,
 /area/ship/scrap/dock)
 "bI" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	layer = 2.4;
 	level = 2;
@@ -1291,9 +1287,7 @@
 	icon_state = "twindow"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/start{
-	name = "Cargo Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor{
 	 icon_state = "hydrofloor";
 	dir = 6
@@ -1492,7 +1486,7 @@
 	},
 /area/ship/scrap/crew/toilets)
 "cA" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	layer = 2.4;
 	level = 2;
@@ -1600,9 +1594,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/landmark{
-	name = "Observer-Start"
-	},
+/atom/movable/landmark/observer_spawn,
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 8;
@@ -1621,7 +1613,7 @@
 /area/ship/scrap/crew/saloon)
 "cH" = (
 /obj/structure/stool,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	level = 2;
 	on = 1
@@ -1702,7 +1694,7 @@
 /area/ship/scrap/crew/dorms)
 "cM" = (
 /obj/structure/stool/bed,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	level = 2;
 	on = 1
@@ -1747,9 +1739,7 @@
 	icon_state = "twindow"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/start{
-	name = "Assistant"
-	},
+/atom/movable/landmark/spawnpoint/job/assistant,
 /turf/simulated/floor{
 	 icon_state = "hydrofloor";
 	dir = 6
@@ -2079,9 +2069,7 @@
 /area/ship/scrap/cargo)
 "ds" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/start{
-	name = "Cargo Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor{
 	 icon_state = "bot";
 	dir = 2
@@ -2142,9 +2130,7 @@
 	},
 /area/ship/scrap/crew/kitchen)
 "dA" = (
-/obj/effect/landmark/start{
-	name = "Chef"
-	},
+/atom/movable/landmark/spawnpoint/job/chef,
 /obj/structure/stool,
 /turf/simulated/floor{
 	 icon_state = "bar";
@@ -2310,7 +2296,7 @@
 	},
 /area/ship/scrap/crew/kitchen)
 "dP" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	layer = 2.4;
 	level = 2;
@@ -2417,9 +2403,7 @@
 	dir = 2;
 	level = 2
 	},
-/obj/effect/landmark/start{
-	name = "Quartermaster"
-	},
+/atom/movable/landmark/spawnpoint/job/quartermaster,
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 8;
@@ -2507,15 +2491,13 @@
 	},
 /area/ship/scrap/crew/medbay)
 "eb" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	level = 2;
 	on = 1
 	},
 /obj/structure/stool,
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
+/atom/movable/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -2728,7 +2710,7 @@
 /turf/simulated/floor/plating/airless,
 /area/ship/scrap/maintenance/engine)
 "ex" = (
-/obj/item/screwdriver,
+/obj/item/tool/screwdriver,
 /turf/simulated/floor/plating,
 /area)
 "ey" = (
@@ -3018,7 +3000,7 @@
 	},
 /area/ship/scrap/crew/wash)
 "fc" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1;
 	on = 1;
 	pressure_checks = 0
@@ -3261,7 +3243,7 @@
 /turf/simulated/floor,
 /area/ship/scrap/maintenance/storage)
 "fw" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	level = 2;
 	on = 1
@@ -3372,9 +3354,7 @@
 	},
 /area/ship/scrap/maintenance/storage)
 "fF" = (
-/obj/effect/landmark/start{
-	name = "Station Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/station_engineer,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/window/westleft{
 	base_state = "right";
@@ -3383,7 +3363,7 @@
 	name = "Interior Door";
 	req_access_txt = "0"
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	on = 1;
 	pressure_checks = 0
@@ -3419,9 +3399,7 @@
 	},
 /area/ship/scrap/maintenance/storage)
 "fH" = (
-/obj/effect/landmark/start{
-	name = "Station Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/station_engineer,
 /obj/machinery/door/window/westleft,
 /turf/simulated/floor{
 	 icon_state = "floorgrime";
@@ -3623,7 +3601,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	layer = 2.4;
 	on = 1
@@ -3974,9 +3952,7 @@
 /area/ship/scrap/maintenance)
 "gI" = (
 /obj/structure/stool/bed/chair/comfy/brown,
-/obj/effect/landmark/start{
-	name = "Chief Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/chief_engineer,
 /turf/simulated/floor{
 	 icon_state = "floorgrime";
 	dir = 6
@@ -4065,13 +4041,11 @@
 	icon_state = "manifold";
 	level = 2
 	},
-/obj/effect/landmark/start{
-	name = "Atmospheric Technician"
-	},
+/atom/movable/landmark/spawnpoint/job/atmospheric_technician,
 /turf/simulated/floor/plating,
 /area/ship/scrap/maintenance/atmos)
 "gQ" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 8
 	},
 /obj/structure/cable{
@@ -4250,9 +4224,7 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/effect/landmark/start{
-	name = "Station Engineer"
-	},
+/atom/movable/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/plating,
 /area/ship/scrap/maintenance/power)
 "hb" = (
@@ -4343,7 +4315,7 @@
 /area/ship/scrap/maintenance)
 "hj" = (
 /obj/machinery/light/small,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1;
 	icon_state = "off";
 	layer = 2.4;
@@ -4519,7 +4491,7 @@
 /turf/simulated/floor/plating,
 /area/ship/scrap/maintenance/engine)
 "hE" = (
-/obj/machinery/atmospherics/unary/heat_reservoir/heater{
+/obj/machinery/atmospherics/component/unary/heat_reservoir/heater{
 	 icon_state = "freezer_0";
 	dir = 4
 	},
@@ -4595,7 +4567,7 @@
 	},
 /area/ship/scrap/maintenance/engine)
 "hN" = (
-/obj/machinery/atmospherics/unary/engine{
+/obj/machinery/atmospherics/component/unary/engine{
 	 icon_state = "nozzle";
 	dir = 1
 	},

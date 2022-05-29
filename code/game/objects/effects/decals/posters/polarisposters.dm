@@ -187,7 +187,7 @@
 
 /datum/poster/nanotrasen/nt_5
 	icon_state = "ntposter05"
-	name = "Promethean"
+	name = SPECIES_PROMETHEAN
 	desc = "This poster displays a friendly-looking green Promethean in a labcoat. The fine-print around the edges talks about the benefits Prometheans give in laboratories."
 
 /datum/poster/nanotrasen/nt_6
@@ -195,12 +195,14 @@
 	name = "NanoTrasen"
 	desc = "This poster showcases an NT emblem. There is writing in the ring around the inner points, probably some sort of slogan no one bothers to memorize."
 
+/* Replace this eventually?
 /datum/poster/nanotrasen/nt_7
 	icon_state = "ntposter07"
 	name = "SolGov"
 	desc = "This poster showcases an SCG emblem. The outer ring reads,\
 	\"<font face='times new roman ms'>NIL MORTALIBUS ARDUI EST</font>\".\
 	Solar Confederate Government."
+*/
 
 /datum/poster/nanotrasen/nt_8
 	icon_state = "ntposter08"

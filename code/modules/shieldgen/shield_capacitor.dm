@@ -51,7 +51,7 @@
 	else if(W.is_wrench())
 		src.anchored = !src.anchored
 		playsound(src, W.usesound, 75, 1)
-		src.visible_message("<font color='blue'>\icon[src] [src] has been [anchored ? "bolted to the floor" : "unbolted from the floor"] by [user].</font>")
+		src.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [src] has been [anchored ? "bolted to the floor" : "unbolted from the floor"] by [user].</font>")
 
 		if(anchored)
 			spawn(0)
@@ -61,19 +61,19 @@
 						owned_gen.capacitors |= src
 						owned_gen.updateDialog()
 		else
-			if(owned_gen && src in owned_gen.capacitors)
+			if(owned_gen && (src in owned_gen.capacitors))
 				owned_gen.capacitors -= src
 			owned_gen = null
 	else
 		..()
 
 /obj/machinery/shield_capacitor/attack_hand(mob/user)
-	if(stat & (BROKEN))
+	if(machine_stat & (BROKEN))
 		return
 	interact(user)
 
 /obj/machinery/shield_capacitor/interact(mob/user)
-	if ( (get_dist(src, user) > 1 ) || (stat & (BROKEN)) )
+	if ( (get_dist(src, user) > 1 ) || (machine_stat & (BROKEN)) )
 		if (!istype(user, /mob/living/silicon))
 			user.unset_machine()
 			user << browse(null, "window=shield_capacitor")
@@ -101,7 +101,7 @@
 	user << browse(t, "window=shield_capacitor;size=500x400")
 	user.set_machine(src)
 
-/obj/machinery/shield_capacitor/process()
+/obj/machinery/shield_capacitor/process(delta_time)
 	if (!anchored)
 		active = 0
 
@@ -113,8 +113,8 @@
 		PN = C.powernet
 
 	if (PN)
-		var/power_draw = between(0, max_charge - stored_charge, charge_rate) //what we are trying to draw
-		power_draw = PN.draw_power(power_draw) //what we actually get
+		var/power_draw = clamp(max_charge - stored_charge, 0, charge_rate) //what we are trying to draw
+		power_draw = PN.draw_power(power_draw * 0.001) * 1000 //what we actually get
 		stored_charge += power_draw
 
 	time_since_fail++
@@ -139,7 +139,7 @@
 	updateDialog()
 
 /obj/machinery/shield_capacitor/power_change()
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		icon_state = "broke"
 	else
 		..()

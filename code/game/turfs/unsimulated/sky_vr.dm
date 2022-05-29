@@ -11,7 +11,7 @@
 	var/does_skyfall = TRUE
 	var/list/skyfall_levels
 
-/turf/unsimulated/floor/sky/Initialize()
+/turf/unsimulated/floor/sky/Initialize(mapload)
 	. = ..()
 	if(does_skyfall && !LAZYLEN(skyfall_levels))
 		log_world("[x],[y],[z], [get_area(src)] doesn't have skyfall_levels defined! Can't skyfall!")
@@ -36,7 +36,7 @@
 	var/mob/living/L
 	if(isliving(AM))
 		L = AM
-		if(L.is_floating)
+		if(L.is_floating || L.flying)
 			return //Flyers/nograv can ignore it
 
 	do_fall(AM)
@@ -70,3 +70,27 @@
 		var/mob/living/L = AM
 		message_admins("\The [AM] fell out of the sky.")
 		L.fall_impact(T, 42, 90, FALSE, TRUE)	//You will not be defibbed from this.
+
+/turf/unsimulated/floor/sky/virgo2_sky
+	name = "virgo 2 atmosphere"
+	desc = "Be careful where you step!"
+	color = "#eacd7c"
+	VIRGO2_SET_ATMOS
+
+/turf/unsimulated/floor/sky/virgo2_sky/Initialize(mapload)
+	skyfall_levels = list(z+1)
+	. = ..()
+
+/turf/unsimulated/floor/sky/depths
+	name = "darkness"
+	desc = "A straight drop down into the depths below."
+	skyfall_levels = "Western Caverns"
+	color ="#303030"
+
+/turf/unsimulated/floor/sky/depths/Initialize(mapload)
+	. = ..()
+	set_light(0, 0, "#FFFFFF")
+
+/turf/unsimulated/floor/sky/depths/Initialize(mapload)
+	skyfall_levels = list(z + 1)
+	. = ..()

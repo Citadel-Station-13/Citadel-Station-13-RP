@@ -25,8 +25,8 @@
 *   Initialising
 ********************/
 
-/obj/machinery/microwave/New()
-	..()
+/obj/machinery/microwave/Initialize(mapload)
+	. = ..()
 	reagents = new/datum/reagents(100)
 	reagents.my_atom = src
 	if (!available_recipes)
@@ -80,7 +80,7 @@
 				src.icon_state = "mw"
 				src.broken = 0 // Fix it!
 				src.dirty = 0 // just to be sure
-				src.flags = OPENCONTAINER
+				src.flags |= OPENCONTAINER
 		else
 			to_chat(user, "<span class='warning'>It's broken!</span>")
 			return 1
@@ -98,7 +98,7 @@
 				src.dirty = 0 // It's clean!
 				src.broken = 0 // just to be sure
 				src.icon_state = "mw"
-				src.flags = OPENCONTAINER
+				src.flags |= OPENCONTAINER
 		else //Otherwise bad luck!!
 			to_chat(user, "<span class='warning'>It's dirty!</span>")
 			return 1
@@ -238,7 +238,7 @@
 /obj/machinery/microwave/proc/cook()
 	if(src.operating)
 		return // no food duplication!
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	start()
 	if (reagents.total_volume==0 && !(locate(/obj) in contents)) //dry run
@@ -330,7 +330,7 @@
 
 /obj/machinery/microwave/proc/wzhzhzh(var/seconds as num) // Whoever named this proc is fucking literally Satan. ~ Z
 	for (var/i=1 to seconds)
-		if (stat & (NOPOWER|BROKEN))
+		if (machine_stat & (NOPOWER|BROKEN))
 			return 0
 		use_power(active_power_usage)
 		sleep(10)
@@ -380,7 +380,7 @@
 	playsound(src.loc, 'sound/machines/ding.ogg', 50, 1)
 	src.visible_message("<span class='warning'>The microwave gets covered in muck!</span>")
 	src.dirty = 100 // Make it dirty so it can't be used util cleaned
-	src.flags = null //So you can't add condiments
+	src.flags &= ~OPENCONTAINER //So you can't add condiments
 	src.icon_state = "mwbloody" // Make it look dirty too
 	src.operating = 0 // Turn it off again aferwards
 	src.updateUsrDialog()
@@ -392,7 +392,7 @@
 	src.icon_state = "mwb" // Make it look all busted up and shit
 	src.visible_message("<span class='warning'>The microwave breaks!</span>") //Let them know they're stupid
 	src.broken = 2 // Make it broken so it can't be used util fixed
-	src.flags = null //So you can't add condiments
+	src.flags &= ~OPENCONTAINER //So you can't add condiments
 	src.operating = 0 // Turn it off again aferwards
 	src.updateUsrDialog()
 

@@ -8,7 +8,7 @@
 	var/spleen_tick = 20 // The number of ticks between Spleen cycles.
 	var/spleen_efficiency = 1 // A multiplier for how efficient this spleen is.
 
-/obj/item/organ/internal/spleen/process()
+/obj/item/organ/internal/spleen/process(delta_time)
 	..()
 	if(!owner) return
 
@@ -72,8 +72,8 @@
 	parent_organ = BP_HEAD
 	spleen_efficiency = 0.5
 
-/obj/item/organ/internal/spleen/skrell/Initialize()
-	..()
+/obj/item/organ/internal/spleen/skrell/Initialize(mapload)
+	. = ..()
 	adjust_scale(0.8,0.7)
 
 /obj/item/organ/internal/spleen/minor
@@ -82,6 +82,6 @@
 	spleen_efficiency = 0.3
 	spleen_tick = 15
 
-/obj/item/organ/internal/spleen/minor/Initialize()
-	..()
+/obj/item/organ/internal/spleen/minor/Initialize(mapload)
+	. = ..()
 	adjust_scale(0.7)

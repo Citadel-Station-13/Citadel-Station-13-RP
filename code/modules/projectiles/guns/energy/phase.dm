@@ -10,6 +10,7 @@
 	charge_cost = 240
 	projectile_type = /obj/item/projectile/energy/phase
 	one_handed_penalty = 15
+	no_pin_required = 1
 
 /obj/item/gun/energy/phasegun/pistol
 	name = "phase pistol"
@@ -41,7 +42,6 @@ obj/item/gun/energy/phasegun/rifle
 	slot_flags = SLOT_BACK
 	charge_cost = 150
 	projectile_type = /obj/item/projectile/energy/phase/heavy
-	accuracy = 15
 	one_handed_penalty = 30
 
 /obj/item/gun/energy/phasegun/cannon
@@ -52,7 +52,8 @@ obj/item/gun/energy/phasegun/rifle
 	wielded_item_state = "phasecannon-wielded"	//TODO: New Sprites
 	w_class = ITEMSIZE_HUGE		// This thing is big.
 	slot_flags = SLOT_BACK
+	heavy = TRUE
 	charge_cost = 100
 	projectile_type = /obj/item/projectile/energy/phase/heavy/cannon
-	accuracy = 15
+	accuracy = 70
 	one_handed_penalty = 65

@@ -1,6 +1,6 @@
 /datum/species/shadekin
 	name = SPECIES_SHADEKIN
-	name_plural = "Shadekin"
+	name_plural = SPECIES_SHADEKIN
 	icobase = 'icons/mob/human_races/r_shadekin_vr.dmi'
 	deform = 'icons/mob/human_races/r_shadekin_vr.dmi'
 	tail = "tail"
@@ -10,19 +10,24 @@
 	but next to no verifiable evidence to their existence. However, they have recently been more verifiably \
 	documented in the Virgo system, following a mining bombardment of Virgo 3. The crew of NSB Adephagia have \
 	taken to calling these creatures 'Shadekin', and the name has generally stuck and spread. "		//TODO: Something that's not wiki copypaste
-	wikilink = "https://wiki.vore-station.net/Shadekin"
+	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Shadekin"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/shadekin)
-	inherent_verbs = list(
-		/mob/living/proc/eat_trash,
-		/mob/living/carbon/human/proc/lick_wounds
-		)
 
 	language = LANGUAGE_SHADEKIN
-	assisted_langs = list()
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws/shadekin, /datum/unarmed_attack/bite/sharp/shadekin)
+	name_language = LANGUAGE_SHADEKIN
+	species_language = LANGUAGE_SHADEKIN
+	secondary_langs = list(LANGUAGE_SHADEKIN)
+	num_alternate_languages = 3
+	unarmed_types = list(
+		/datum/unarmed_attack/stomp,
+		/datum/unarmed_attack/kick,
+		/datum/unarmed_attack/claws/shadekin,
+		/datum/unarmed_attack/bite/sharp/shadekin
+		)
+
 	rarity_value = 15	//INTERDIMENSIONAL FLUFFERS
 
-	siemens_coefficient = 0
+	siemens_coefficient = 1
 	darksight = 10
 
 	slowdown = -0.5
@@ -45,8 +50,10 @@
 	heat_level_2 = 1000
 	heat_level_3 = 1150
 
-	flags =  NO_SCAN | NO_MINOR_CUT | NO_INFECT
+	flags =  NO_SCAN | NO_MINOR_CUT | NO_INFECT | CONTAMINATION_IMMUNE
 	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
+
+	reagent_tag = IS_SHADEKIN // for shadekin-unique chem interactions
 
 	flesh_color = "#FFC896"
 	blood_color = "#A10808"
@@ -62,16 +69,15 @@
 
 	speech_bubble_appearance = "ghost"
 
-	genders = list(PLURAL, NEUTER)		//no sexual dymorphism
-	ambiguous_genders = TRUE	//but just in case
+	genders = list(MALE, FEMALE, PLURAL, NEUTER, HERM)	//fuck it. shadekins with titties
 
-	virus_immune = 1
+	virus_immune = TRUE
 
 	breath_type = null
 	poison_type = null
 
 	vision_flags = SEE_SELF|SEE_MOBS
-	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_UNDERWEAR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_UNDERWEAR
 
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/paw
 
@@ -108,6 +114,11 @@
 
 /datum/species/shadekin/New()
 	..()
+	inherent_verbs += list(
+		/mob/living/proc/shred_limb,
+		/mob/living/proc/eat_trash,
+		/mob/living/carbon/human/proc/lick_wounds
+		)
 	for(var/power in shadekin_abilities)
 		var/datum/power/shadekin/SKP = new power(src)
 		shadekin_ability_datums.Add(SKP)
@@ -129,9 +140,9 @@
 	add_shadekin_abilities(H)
 
 /datum/species/shadekin/proc/add_shadekin_abilities(var/mob/living/carbon/human/H)
-	if(!H.ability_master || !istype(H.ability_master, /obj/screen/movable/ability_master/shadekin))
+	if(!H.ability_master || !istype(H.ability_master, /atom/movable/screen/movable/ability_master/shadekin))
 		H.ability_master = null
-		H.ability_master = new /obj/screen/movable/ability_master/shadekin(H)
+		H.ability_master = new /atom/movable/screen/movable/ability_master/shadekin(H)
 	for(var/datum/power/shadekin/P in shadekin_ability_datums)
 		if(!(P.verbpath in H.verbs))
 			H.verbs += P.verbpath

@@ -6,11 +6,11 @@
 	icon_state = "mflash1"
 	var/id = null
 	var/range = 2 //this is roughly the size of brig cell
-	var/disable = 0
+	var/disable = FALSE
 	var/last_flash = 0 //Don't want it getting spammed like regular flashes
 	var/strength = 10 //How weakened targets are when flashed.
 	var/base_state = "mflash"
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	flags = PROXMOVE
@@ -20,13 +20,13 @@
 	desc = "A portable flashing device. Wrench to activate and deactivate. Cannot detect slow movements."
 	icon_state = "pflash1"
 	strength = 8
-	anchored = 0
+	anchored = FALSE
+	density = TRUE
 	base_state = "pflash"
-	density = 1
 
 /obj/machinery/flasher/power_change()
 	..()
-	if(!(stat & NOPOWER))
+	if(!(machine_stat & NOPOWER))
 		icon_state = "[base_state]1"
 //		sd_SetLuminosity(2)
 	else
@@ -34,14 +34,20 @@
 //		sd_SetLuminosity(0)
 
 //Don't want to render prison breaks impossible
-/obj/machinery/flasher/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/flasher/attackby(obj/item/W, mob/user)
 	if(W.is_wirecutter())
-		add_fingerprint(user)
+		add_fingerprint(user, 0, W)
 		disable = !disable
 		if(disable)
-			user.visible_message("<span class='warning'>[user] has disconnected the [src]'s flashbulb!</span>", "<span class='warning'>You disconnect the [src]'s flashbulb!</span>")
+			user.visible_message( \
+				SPAN_WARNING("[user] has disconnected the [src]'s flashbulb!"), \
+				SPAN_WARNING("You disconnect the [src]'s flashbulb!"))
 		if(!disable)
-			user.visible_message("<span class='warning'>[user] has connected the [src]'s flashbulb!</span>", "<span class='warning'>You connect the [src]'s flashbulb!</span>")
+			user.visible_message( \
+				SPAN_WARNING("[user] has connected the [src]'s flashbulb!"), \
+				SPAN_WARNING("You connect the [src]'s flashbulb!"))
+	else
+		..()
 
 //Let the AI trigger them directly.
 /obj/machinery/flasher/attack_ai()
@@ -57,7 +63,7 @@
 	if((disable) || (last_flash && world.time < last_flash + 150))
 		return
 
-	playsound(src.loc, 'sound/weapons/flash.ogg', 100, 1)
+	playsound(src.loc, 'sound/weapons/flash.ogg', 100, TRUE)
 	flick("[base_state]_flash", src)
 	last_flash = world.time
 	use_power(1500)
@@ -85,7 +91,7 @@
 		O.Weaken(flash_time)
 
 /obj/machinery/flasher/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		..(severity)
 		return
 	if(prob(75/severity))
@@ -101,34 +107,33 @@
 		if((M.m_intent != "walk") && (anchored))
 			flash()
 
-/obj/machinery/flasher/portable/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/flasher/portable/attackby(obj/item/W, mob/user)
 	if(W.is_wrench())
 		add_fingerprint(user)
 		anchored = !anchored
 
 		if(!anchored)
-			user.show_message(text("<span class='warning'>[src] can now be moved.</span>"))
-			overlays.Cut()
+			user.show_message(SPAN_WARNING("[src] can now be moved."))
+			cut_overlays()
 
 		else if(anchored)
-			user.show_message(text("<span class='warning'>[src] is now secured.</span>"))
-			overlays += "[base_state]-s"
+			user.show_message(SPAN_WARNING("[src] is now secured."))
+			add_overlay("[base_state]-s")
 
 /obj/machinery/button/flasher
 	name = "flasher button"
 	desc = "A remote control switch for a mounted flasher."
 
-/obj/machinery/button/flasher/attack_hand(mob/user as mob)
-
+/obj/machinery/button/flasher/attack_hand(mob/user)
 	if(..())
 		return
 
 	use_power(5)
 
-	active = 1
+	active = TRUE
 	icon_state = "launcheract"
 
-	for(var/obj/machinery/flasher/M in machines)
+	for(var/obj/machinery/flasher/M in GLOB.machines)
 		if(M.id == id)
 			spawn()
 				M.flash()
@@ -136,6 +141,6 @@
 	sleep(50)
 
 	icon_state = "launcherbtt"
-	active = 0
+	active = FALSE
 
 	return

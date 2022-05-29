@@ -37,7 +37,7 @@
 
 	var/mob/living/carbon/human/H = holder.wearer
 
-	to_chat(H, "<font color='blue'><b>You are now nearly invisible to normal detection.</b></font>")
+	to_chat(H, "<font color=#4F49AF><b>You are now nearly invisible to normal detection.</b></font>")
 	H.alpha = 5
 
 	anim(get_turf(H), H, 'icons/effects/effects.dmi', "electricity",null,20,null)
@@ -182,8 +182,8 @@
 	interface_name = "dead man's switch"
 	interface_desc = "An integrated self-destruct module. When the wearer dies, they vanish in smoke. Do not press this button."
 
-/obj/item/rig_module/self_destruct/New()
-	..()
+/obj/item/rig_module/self_destruct/Initialize(mapload)
+	. = ..()
 	src.smoke = new /datum/effect_system/smoke_spread/bad()
 	src.smoke.attach(src)
 
@@ -198,7 +198,7 @@
 /obj/item/rig_module/self_destruct/deactivate()
 	return
 
-/obj/item/rig_module/self_destruct/process()
+/obj/item/rig_module/self_destruct/process(delta_time)
 
 	// Not being worn, leave it alone.
 	if(!holder || !holder.wearer || !holder.wearer.wear_suit == holder)

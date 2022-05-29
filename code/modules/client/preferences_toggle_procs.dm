@@ -239,18 +239,20 @@
 
 	feedback_add_details("admin_verb","TAirPumpNoise")
 
-/client/verb/toggle_safe_firing()
-	set name = "Toggle Gun Firing Intent Requirement"
+/client/verb/toggle_pickup_sounds()
+	set name = "Toggle Picked Up Item Sounds"
 	set category = "Preferences"
-	set desc = "Toggles between safe and dangerous firing. Safe requires a non-help intent to fire, dangerous can be fired on help intent."
+	set desc = "Toggles sounds when items are picked up or thrown."
 
-	var/pref_path = /datum/client_preference/safefiring
+	var/pref_path = /datum/client_preference/pickup_sounds
+
 	toggle_preference(pref_path)
+
+	to_chat(src, "You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] hear sounds when items are picked up or thrown.")
+
 	SScharacter_setup.queue_preferences_save(prefs)
 
-	to_chat(src,"You will now use [(is_preference_enabled(/datum/client_preference/safefiring)) ? "safe" : "dangerous"] firearms firing.")
-
-	feedback_add_details("admin_verb","TFiringMode") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	feedback_add_details("admin_verb", "TPickupSounds")
 
 /client/verb/toggle_mob_tooltips()
 	set name = "Toggle Mob Tooltips"
@@ -274,10 +276,22 @@
 	toggle_preference(pref_path)
 	SScharacter_setup.queue_preferences_save(prefs)
 
-	to_chat(src, "You will now [(is_preference_enabled(/datum/client_preference/instrument_toggle)) ? "hear" : "not hear"] instruments being played.")
+	to_chat(src, "You will [(is_preference_enabled(/datum/client_preference/instrument_toggle)) ? "now hear" : "no longer hear"] instruments being played.")
 
 	feedback_add_details("admin_verb","THInstm") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+/client/verb/toggle_status_indicators()
+	set name = "Toggle Status Indicators"
+	set category = "Preferences"
+	set desc = "Enable/Disable seeing status indicators over peoples' heads."
+
+	var/pref_path = /datum/client_preference/status_indicators
+	toggle_preference(pref_path)
+	SScharacter_setup.queue_preferences_save(prefs)
+
+	to_chat(src, "You will now [(is_preference_enabled(/datum/client_preference/status_indicators)) ? "see" : "not see"] status indicators.")
+
+	feedback_add_details("admin_verb","TStatusIndicators")
 //Toggles for Staff
 //Developers
 
@@ -309,3 +323,77 @@
 		SScharacter_setup.queue_preferences_save(prefs)
 
 	feedback_add_details("admin_verb","TBeSpecial") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+
+/client/proc/toggle_age_verification()
+	set name = "Toggle age verification status"
+	set category = "Debug"
+	set desc = "Toggles your age verified status."
+
+	var/pref_path = /datum/client_preference/debug/age_verified
+
+	toggle_preference(pref_path)
+
+	to_chat(src,"You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] be prompted to verify age.")
+
+	SScharacter_setup.queue_preferences_save(prefs)
+
+	feedback_add_details("admin_verb","TAgeVerify") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/mob/living/carbon/human/verb/toggle_pain_msg()
+	set name = "Toggle Pain Messages"
+	set category = "Preferences"
+	set desc = "Toggles pain messages."
+
+	if(painmsg)
+		src.painmsg = 0
+	else
+		src.painmsg = 1
+	to_chat(src,"You will [ (painmsg) ? "now" : "no longer"] see your own pain messages.")
+	feedback_add_details("admin_verb","painmsg") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+
+/mob/living/carbon/human/verb/acting()
+	set name = "Feign Impairment"
+	set category = "IC"
+	set desc = "Allows user to manually enable drunkenness, stutter, jitter, etc."
+
+	var/list/choices = list("Drunkenness", "Stuttering", "Jittering")
+	if(src.slurring >= 10 || src.stuttering >= 10 || src.jitteriness >= 100)
+		var/disable = alert(src, "Stop performing impairment? (Do NOT abuse this)", "Impairments", "Yes", "No")
+		if(disable == "Yes")
+			acting_expiry()
+			return
+
+	var/impairment = input(src, "Select an impairment to perform:", "Impairments") as null|anything in choices
+	if(!impairment)
+		return
+	var/duration = input(src,"Choose a duration to perform [impairment]. (1 - 60 seconds)","Duration in seconds",25) as num|null
+	if(!isnum(duration))
+		return
+	if(duration > 60 && !check_rights(R_EVENT, 0)) // admins can do as they please
+		to_chat(src, "Please choose a duration in seconds between 1 to 60.")
+		return
+	if(duration >= 1000) // unreachable code for anyone but admins who have set the number very high, logging for my sanity
+		message_admins("[src] has set their [impairment] to [duration] via Feign Impairment.")
+	if(duration >= 2000)
+		to_chat(src, "Please choose a duration less than 2000.")
+		return
+	if(impairment == "Drunkenness")
+		slurring = duration
+	if(impairment == "Stuttering")
+		stuttering = duration
+	if(impairment == "Jittering")
+		make_jittery(duration + 100)
+
+	if(duration)
+		addtimer(CALLBACK(src, .proc/acting_expiry), duration SECONDS)
+		var/aduration = duration SECONDS / 10
+		to_chat(src,"You will now performatively act as if you were experiencing [impairment] for [aduration] seconds. (Do NOT abuse this)")
+	feedback_add_details("admin_verb","actimpaired") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/mob/living/carbon/human/proc/acting_expiry()
+	to_chat(src,"You are no longer acting impaired.") // tick down from 1 to allow the effects to end 'naturally'
+	slurring = 1
+	stuttering = 1
+	jitteriness = 1

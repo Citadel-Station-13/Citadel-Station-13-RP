@@ -6,7 +6,7 @@
 
 /obj/machinery/mineral/processing_unit_console
 	name = "production machine console"
-	icon = 'icons/obj/machines/mining_machines_vr.dmi' // VOREStation Edit
+	icon = 'icons/obj/machines/mining_machines_vr.dmi'
 	icon_state = "console"
 	density = TRUE
 	anchored = TRUE
@@ -16,7 +16,7 @@
 	var/obj/machinery/mineral/processing_unit/machine = null
 	var/show_all_ores = FALSE
 
-/obj/machinery/mineral/processing_unit_console/Initialize()
+/obj/machinery/mineral/processing_unit_console/Initialize(mapload)
 	. = ..()
 	src.machine = locate(/obj/machinery/mineral/processing_unit) in range(5, src)
 	if (machine)
@@ -64,14 +64,14 @@
 		dat += "<A href='?src=\ref[src];choice=claim'>Claim points.</A><br>"
 	else
 		dat += "No ID inserted.  <A href='?src=\ref[src];choice=insert'>Insert ID.</A><br>"
-
+	dat += "High-speed processing is <A href='?src=\ref[src];toggle_speed=1'>[(machine.speed_process ? "<font color='green'>active</font>" : "<font color='red'>inactive</font>")]."
 	dat += "<hr><table>"
 
 	for(var/ore in machine.ores_processing)
 
 		if(!machine.ores_stored[ore] && !show_all_ores)
 			continue
-		var/datum/ore/O = ore_data[ore]
+		var/datum/ore/O = GLOB.ore_data[ore]
 		if(!O)
 			continue
 		dat += "<tr><td width = 40><b>[capitalize(O.display_name)]</b></td><td width = 30>[machine.ores_stored[ore]]</td><td width = 100>"
@@ -82,7 +82,7 @@
 				if(PROCESS_SMELT)
 					dat += "<font color='orange'>smelting</font>"
 				if(PROCESS_COMPRESS)
-					dat += "<font color='blue'>compressing</font>"
+					dat += "<font color=#4F49AF>compressing</font>"
 				if(PROCESS_ALLOY)
 					dat += "<font color='gray'>alloying</font>"
 		else
@@ -123,17 +123,18 @@
 
 		show_all_ores = !show_all_ores
 
+	if(href_list["toggle_speed"])
+
+		machine.toggle_speed()
+
 	if(href_list["choice"])
 		if(istype(inserted_id))
 			if(href_list["choice"] == "eject")
 				usr.put_in_hands(inserted_id)
 				inserted_id = null
 			if(href_list["choice"] == "claim")
-				if(access_mining_station in inserted_id.access)
-					inserted_id.mining_points += machine.points
-					machine.points = 0
-				else
-					to_chat(usr, "<span class='warning'>Required access not found.</span>")
+				inserted_id.mining_points += machine.points
+				machine.points = 0
 		else if(href_list["choice"] == "insert")
 			var/obj/item/card/id/I = usr.get_active_hand()
 			if(istype(I))
@@ -151,7 +152,7 @@
 
 /obj/machinery/mineral/processing_unit
 	name = "material processor" //This isn't actually a goddamn furnace, we're in space and it's processing platinum and flammable phoron...
-	icon = 'icons/obj/machines/mining_machines_vr.dmi' // VOREStation Edit
+	icon = 'icons/obj/machines/mining_machines_vr.dmi'
 	icon_state = "furnace"
 	density = TRUE
 	anchored = TRUE
@@ -162,56 +163,63 @@
 	var/obj/machinery/mineral/output = null
 	var/obj/machinery/mineral/console = null
 	var/sheets_per_tick = 10
-	var/list/ores_processing[0]
-	var/list/ores_stored[0]
+	var/list/ores_processing = list()
+	var/list/ores_stored = list()
 	var/static/list/alloy_data
 	var/active = FALSE
 
 	var/points = 0
 	var/static/list/ore_values = list(
 		"sand" = 1,
-		"hematite" = 1,
-		"carbon" = 1,
-		"phoron" = 15,
-		"silver" = 16,
-		"gold" = 18,
-		"marble" = 20,
-		"uranium" = 30,
-		"diamond" = 50,
-		"platinum" = 40,
-		"lead" = 40,
-		"mhydrogen" = 40,
-		"verdantium" = 60)
+		MAT_HEMATITE = 1,
+		MAT_CARBON = 1,
+		MAT_PHORON = 15,
+		MAT_COPPER = 15,
+		MAT_SILVER = 16,
+		MAT_GOLD = 18,
+		MAT_MARBLE = 20,
+		MAT_URANIUM = 30,
+		MAT_DIAMOND = 50,
+		MAT_PLATINUM = 40,
+		MAT_LEAD = 40,
+		MAT_METALHYDROGEN = 40,
+		MAT_VAUDIUM = 50,
+		MAT_VERDANTIUM = 60)
 
-/obj/machinery/mineral/processing_unit/New()
-	..()
+/obj/machinery/mineral/processing_unit/Initialize(mapload)
+	. = ..()
 	// initialize static alloy_data list
 	if(!alloy_data)
 		alloy_data = list()
 		for(var/alloytype in typesof(/datum/alloy)-/datum/alloy)
 			alloy_data += new alloytype()
+	for(var/orename in GLOB.ore_data)
+		var/datum/ore/O = GLOB.ore_data[orename]
+		ores_processing[O.name] = 0
+		ores_stored[O.name] = 0
 
-	// TODO - Initializing this here is insane. Put it in global lists init or something. ~Leshana
-	if(!ore_data || !ore_data.len)
-		for(var/oretype in typesof(/datum/ore)-/datum/ore)
-			var/datum/ore/OD = new oretype()
-			ore_data[OD.name] = OD
-			ores_processing[OD.name] = 0
-			ores_stored[OD.name] = 0
-
-/obj/machinery/mineral/processing_unit/Initialize()
+/obj/machinery/mineral/processing_unit/Initialize(mapload)
 	. = ..()
 	// TODO - Eschew input/output machinery and just use dirs ~Leshana
 	//Locate our output and input machinery.
-	for (var/dir in cardinal)
+	for (var/dir in GLOB.cardinal)
 		src.input = locate(/obj/machinery/mineral/input, get_step(src, dir))
 		if(src.input) break
-	for (var/dir in cardinal)
+	for (var/dir in GLOB.cardinal)
 		src.output = locate(/obj/machinery/mineral/output, get_step(src, dir))
 		if(src.output) break
 	return
 
-/obj/machinery/mineral/processing_unit/process()
+/obj/machinery/mineral/processing_unit/proc/toggle_speed()
+	speed_process = !speed_process // switching gears
+	if(speed_process) // high gear
+		STOP_MACHINE_PROCESSING(src)
+		START_PROCESSING(SSfastprocess, src)
+	else // low gear
+		STOP_PROCESSING(SSfastprocess, src)
+		START_MACHINE_PROCESSING(src)
+
+/obj/machinery/mineral/processing_unit/process(delta_time)
 
 	if (!src.output || !src.input)
 		return
@@ -242,7 +250,7 @@
 
 		if(ores_stored[metal] > 0 && ores_processing[metal] != 0)
 
-			var/datum/ore/O = ore_data[metal]
+			var/datum/ore/O = GLOB.ore_data[metal]
 
 			if(!O) continue
 

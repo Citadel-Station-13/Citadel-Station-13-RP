@@ -1,8 +1,10 @@
 //Config stuff
-#define SYNDICATE_ELITE_MOVETIME 600	//Time to station is milliseconds. 60 seconds, enough time for everyone to be on the shuttle before it leaves.
-#define SYNDICATE_ELITE_STATION_AREATYPE "/area/shuttle/syndicate_elite/station" //Type of the spec ops shuttle area for station
-#define SYNDICATE_ELITE_DOCK_AREATYPE "/area/shuttle/syndicate_elite/mothership"	//Type of the spec ops shuttle area for dock
-
+///Time to station is milliseconds. 60 seconds, enough time for everyone to be on the shuttle before it leaves.
+#define SYNDICATE_ELITE_MOVETIME 600
+///Type of the spec ops shuttle area for station
+#define SYNDICATE_ELITE_STATION_AREATYPE "/area/shuttle/syndicate_elite/station"
+///Type of the spec ops shuttle area for dock
+#define SYNDICATE_ELITE_DOCK_AREATYPE "/area/shuttle/syndicate_elite/mothership"
 var/syndicate_elite_shuttle_moving_to_station = 0
 var/syndicate_elite_shuttle_moving_to_mothership = 0
 var/syndicate_elite_shuttle_at_station = 0
@@ -85,10 +87,10 @@ var/syndicate_elite_shuttle_timeleft = 0
 		sleep(10)
 
 		var/spawn_marauder[] = new()
-		for(var/obj/effect/landmark/L in landmarks_list)
+		for(var/atom/movable/landmark/L in GLOB.landmarks_list)
 			if(L.name == "Marauder Entry")
 				spawn_marauder.Add(L)
-		for(var/obj/effect/landmark/L in landmarks_list)
+		for(var/atom/movable/landmark/L in GLOB.landmarks_list)
 			if(L.name == "Marauder Exit")
 				var/obj/effect/portal/P = new(L.loc)
 				P.invisibility = 101//So it is not seen by anyone.
@@ -130,7 +132,7 @@ var/syndicate_elite_shuttle_timeleft = 0
 					spawn(0)
 						M.close()
 						*/
-		elite_squad.readyreset()//Reset firealarm after the team launched.
+	elite_squad.readyreset()//Reset firealarm after the team launched.
 	//End Marauder launchpad.
 /*
 	var/obj/explosionmarker = locate("Syndicate Breach Area")
@@ -195,7 +197,7 @@ var/syndicate_elite_shuttle_timeleft = 0
 		return
 
 //	if (sent_syndicate_strike_team == 0)
-//		usr << "<span class='warning'>The strike team has not yet deployed.</span>"
+//		to_chat(usr, "<span class='warning'>The strike team has not yet deployed.</span>")
 //		return
 
 	if(..())

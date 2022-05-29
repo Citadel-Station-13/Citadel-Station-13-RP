@@ -3,7 +3,6 @@
 
 // Here is where the base definition lives.
 // Specific subtypes are in their own folder.
-
 /obj/item/electronic_assembly
 	name = "electronic assembly"
 	desc = "It's a case, for building small electronics with."
@@ -14,13 +13,16 @@
 	var/max_components = IC_COMPONENTS_BASE
 	var/max_complexity = IC_COMPLEXITY_BASE
 	var/opened = FALSE
-	var/can_anchor = FALSE // If true, wrenching it will anchor it.
-	var/obj/item/cell/device/battery = null // Internal cell which most circuits need to work.
-	var/net_power = 0 // Set every tick, to display how much power is being drawn in total.
+	/// If true, wrenching it will anchor it.
+	var/can_anchor = FALSE
+	/// Internal cell which most circuits need to work.
+	var/obj/item/cell/device/battery = null
+	/// Set every tick, to display how much power is being drawn in total.
+	var/net_power = 0
 	var/detail_color = COLOR_ASSEMBLY_BLACK
 
 
-/obj/item/electronic_assembly/Initialize()
+/obj/item/electronic_assembly/Initialize(mapload)
 	battery = new(src)
 	START_PROCESSING(SSobj, src)
 	return ..()
@@ -30,7 +32,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/electronic_assembly/process()
+/obj/item/electronic_assembly/process(delta_time)
 	handle_idle_power()
 
 /obj/item/electronic_assembly/proc/handle_idle_power()
@@ -46,88 +48,125 @@
 			if(!draw_power(IC.power_draw_idle))
 				IC.power_fail()
 
-
-
-
-/obj/item/electronic_assembly/proc/resolve_nano_host()
-	return src
-
 /obj/item/electronic_assembly/proc/check_interactivity(mob/user)
-	if(!CanInteract(user, physical_state))
-		return 0
-	return 1
+	return ui_status(user, GLOB.physical_state) == UI_INTERACTIVE
 
 /obj/item/electronic_assembly/get_cell()
 	return battery
 
-/obj/item/electronic_assembly/interact(mob/user)
-	if(!check_interactivity(user))
-		return
+// TGUI
+/obj/item/electronic_assembly/ui_state(mob/user)
+	return GLOB.physical_state
+
+/obj/item/electronic_assembly/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "ICAssembly", name, parent_ui)
+		ui.open()
+
+/obj/item/electronic_assembly/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	var/list/data = ..()
 
 	var/total_parts = 0
 	var/total_complexity = 0
 	for(var/obj/item/integrated_circuit/part in contents)
 		total_parts += part.size
 		total_complexity = total_complexity + part.complexity
-	var/HTML = list()
 
-	HTML += "<html><head><title>[src.name]</title></head><body>"
-	HTML += "<br><a href='?src=\ref[src]'>\[Refresh\]</a>  |  "
-	HTML += "<a href='?src=\ref[src];rename=1'>\[Rename\]</a><br>"
-	HTML += "[total_parts]/[max_components] ([round((total_parts / max_components) * 100, 0.1)]%) space taken up in the assembly.<br>"
-	HTML += "[total_complexity]/[max_complexity] ([round((total_complexity / max_complexity) * 100, 0.1)]%) maximum complexity.<br>"
-	if(battery)
-		HTML += "[round(battery.charge, 0.1)]/[battery.maxcharge] ([round(battery.percent(), 0.1)]%) cell charge. <a href='?src=\ref[src];remove_cell=1'>\[Remove\]</a><br>"
-		HTML += "Net energy: [format_SI(net_power / CELLRATE, "W")]."
-	else
-		HTML += "<span class='danger'>No powercell detected!</span>"
-	HTML += "<br><br>"
-	HTML += "Components:<hr>"
-	HTML += "Built in:<br>"
+	data["total_parts"] = total_parts
+	data["max_components"] = max_components
+	data["total_complexity"] = total_complexity
+	data["max_complexity"] = max_complexity
 
+	data["battery_charge"] = round(battery?.charge, 0.1)
+	data["battery_max"] = round(battery?.maxcharge, 0.1)
+	data["net_power"] = DYNAMIC_CELL_UNITS_TO_W(net_power, 1)
 
-//Put removable circuits in separate categories from non-removable
+	// This works because lists are always passed by reference in BYOND, so modifying unremovable_circuits
+	// after setting data["unremovable_circuits"] = unremovable_circuits also modifies data["unremovable_circuits"]
+	// Same for the removable one
+	var/list/unremovable_circuits = list()
+	data["unremovable_circuits"] = unremovable_circuits
+	var/list/removable_circuits = list()
+	data["removable_circuits"] = removable_circuits
 	for(var/obj/item/integrated_circuit/circuit in contents)
-		if(!circuit.removable)
-			HTML += "<a href=?src=\ref[circuit];examine=1;from_assembly=1>[circuit.displayed_name]</a> | "
-			HTML += "<a href=?src=\ref[circuit];rename=1;from_assembly=1>\[Rename\]</a> | "
-			HTML += "<a href=?src=\ref[circuit];scan=1;from_assembly=1>\[Scan with Debugger\]</a> | "
-			HTML += "<a href=?src=\ref[circuit];bottom=\ref[circuit];from_assembly=1>\[Move to Bottom\]</a>"
-			HTML += "<br>"
+		var/list/target = circuit.removable ? removable_circuits : unremovable_circuits
+		target.Add(list(list(
+			"name" = circuit.displayed_name,
+			"ref" = REF(circuit),
+		)))
 
-	HTML += "<hr>"
-	HTML += "Removable:<br>"
+	return data
 
-	for(var/obj/item/integrated_circuit/circuit in contents)
-		if(circuit.removable)
-			HTML += "<a href=?src=\ref[circuit];examine=1;from_assembly=1>[circuit.displayed_name]</a> | "
-			HTML += "<a href=?src=\ref[circuit];rename=1;from_assembly=1>\[Rename\]</a> | "
-			HTML += "<a href=?src=\ref[circuit];scan=1;from_assembly=1>\[Scan with Debugger\]</a> | "
-			HTML += "<a href=?src=\ref[circuit];remove=1;from_assembly=1>\[Remove\]</a> | "
-			HTML += "<a href=?src=\ref[circuit];bottom=\ref[circuit];from_assembly=1>\[Move to Bottom\]</a>"
-			HTML += "<br>"
-
-	HTML += "</body></html>"
-	user << browse(jointext(HTML,null), "window=assembly-\ref[src];size=600x350;border=1;can_resize=1;can_close=1;can_minimize=1")
-
-/obj/item/electronic_assembly/Topic(href, href_list[])
+/obj/item/electronic_assembly/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
-		return 1
+		return TRUE
 
-	if(href_list["rename"])
-		rename(usr)
+	var/obj/held_item = usr.get_active_hand()
 
-	if(href_list["remove_cell"])
-		if(!battery)
-			to_chat(usr, "<span class='warning'>There's no power cell to remove from \the [src].</span>")
-		else
+	switch(action)
+		//Actual assembly actions
+		if("rename")
+			rename(usr)
+			return TRUE
+
+		if("remove_cell")
+			if(!battery)
+				to_chat(usr, SPAN_WARNING("There's no power cell to remove from \the [src]."))
+				return FALSE
 			var/turf/T = get_turf(src)
 			battery.forceMove(T)
-			playsound(T, 'sound/items/Crowbar.ogg', 50, 1)
-			to_chat(usr, "<span class='notice'>You pull \the [battery] out of \the [src]'s power supplier.</span>")
+			playsound(T, 'sound/items/Crowbar.ogg', 50, TRUE)
+			to_chat(usr, SPAN_NOTICE("You pull \the [battery] out of \the [src]'s power supplier."))
 			battery = null
+			return TRUE
 
-	interact(usr) // To refresh the UI.
+		// Circuit actions
+		if("open_circuit")
+			var/obj/item/integrated_circuit/C = locate(params["ref"]) in contents
+			if(!istype(C))
+				return
+			C.ui_interact(usr, null, ui)
+			return TRUE
+
+		if("rename_circuit")
+			var/obj/item/integrated_circuit/C = locate(params["ref"]) in contents
+			if(!istype(C))
+				return
+			C.rename_component(usr)
+			return TRUE
+
+		if("scan_circuit")
+			var/obj/item/integrated_circuit/C = locate(params["ref"]) in contents
+			if(!istype(C))
+				return
+			if(istype(held_item, /obj/item/integrated_electronics/debugger))
+				var/obj/item/integrated_electronics/debugger/D = held_item
+				if(D.accepting_refs)
+					D.afterattack(C, usr, TRUE)
+				else
+					to_chat(usr, SPAN_WARNING("The Debugger's 'ref scanner' needs to be on."))
+			else
+				to_chat(usr, SPAN_WARNING("You need a multitool/debugger set to 'ref' mode to do that."))
+			return TRUE
+
+		if("remove_circuit")
+			var/obj/item/integrated_circuit/C = locate(params["ref"]) in contents
+			if(!istype(C))
+				return
+			C.remove(usr)
+			return TRUE
+
+		if("bottom_circuit")
+			var/obj/item/integrated_circuit/C = locate(params["ref"]) in contents
+			if(!istype(C))
+				return
+			// Puts it at the bottom of our contents
+			// Note, this intentionally does *not* use forceMove, because forceMove will stop if it detects the same loc
+			C.loc = null
+			C.loc = src
+	return FALSE
+// End TGUI
 
 /obj/item/electronic_assembly/verb/rename()
 	set name = "Rename Circuit"
@@ -138,9 +177,9 @@
 	if(!check_interactivity(M))
 		return
 
-	var/input = sanitizeSafe(input("What do you want to name this?", "Rename", src.name) as null|text, MAX_NAME_LEN)
+	var/input = sanitizeSafe(input(usr, "What do you want to name this?", "Rename", src.name) as null|text, MAX_NAME_LEN)
 	if(src && input)
-		to_chat(M, "<span class='notice'>The machine now has a label reading '[input]'.</span>")
+		to_chat(M, SPAN_NOTICE("The machine now has a label reading '[input]'."))
 		name = input
 
 /obj/item/electronic_assembly/proc/can_move()
@@ -172,15 +211,12 @@
 			return id_card
 
 /obj/item/electronic_assembly/examine(mob/user)
-	. = ..(user, 1)
-	if(.)
+	. = ..()
+	if(Adjacent(user))
 		for(var/obj/item/integrated_circuit/IC in contents)
-			IC.external_examine(user)
-	//	for(var/obj/item/integrated_circuit/output/screen/S in contents)
-	//		if(S.stuff_to_display)
-	//			to_chat(user, "There's a little screen labeled '[S.name]', which displays '[S.stuff_to_display]'.")
+			. += IC.external_examine(user)
 		if(opened)
-			interact(user)
+			ui_interact(user)
 
 /obj/item/electronic_assembly/proc/get_part_complexity()
 	. = 0
@@ -195,21 +231,21 @@
 // Returns true if the circuit made it inside.
 /obj/item/electronic_assembly/proc/add_circuit(var/obj/item/integrated_circuit/IC, var/mob/user)
 	if(!opened)
-		to_chat(user, "<span class='warning'>\The [src] isn't opened, so you can't put anything inside.  Try using a crowbar.</span>")
+		to_chat(user, SPAN_WARNING("\The [src] isn't opened, so you can't put anything inside.  Try using a crowbar."))
 		return FALSE
 
 	if(IC.w_class > src.w_class)
-		to_chat(user, "<span class='warning'>\The [IC] is way too big to fit into \the [src].</span>")
+		to_chat(user, SPAN_WARNING("\The [IC] is way too big to fit into \the [src]."))
 		return FALSE
 
 	var/total_part_size = get_part_size()
 	var/total_complexity = get_part_complexity()
 
 	if((total_part_size + IC.size) > max_components)
-		to_chat(user, "<span class='warning'>You can't seem to add the '[IC.name]', as there's insufficient space.</span>")
+		to_chat(user, SPAN_WARNING("You can't seem to add the '[IC.name]', as there's insufficient space."))
 		return FALSE
 	if((total_complexity + IC.complexity) > max_complexity)
-		to_chat(user, "<span class='warning'>You can't seem to add the '[IC.name]', since this setup's too complicated for the case.</span>")
+		to_chat(user, SPAN_WARNING("You can't seem to add the '[IC.name]', since this setup's too complicated for the case."))
 		return FALSE
 
 	if(!IC.forceMove(src))
@@ -233,12 +269,12 @@
 			if(S.scan(target))
 				scanned = TRUE
 		if(scanned)
-			visible_message("<span class='notice'>\The [user] waves \the [src] around [target].</span>")
+			visible_message(SPAN_NOTICE("\The [user] waves \the [src] around [target]."))
 
 /obj/item/electronic_assembly/attackby(var/obj/item/I, var/mob/user)
 	if(can_anchor && I.is_wrench())
 		anchored = !anchored
-		to_chat(user, span("notice", "You've [anchored ? "" : "un"]secured \the [src] to \the [get_turf(src)]."))
+		to_chat(user, SPAN_NOTICE("You've [anchored ? "" : "un"]secured \the [src] to \the [get_turf(src)]."))
 		if(anchored)
 			on_anchored()
 		else
@@ -250,24 +286,35 @@
 		if(!user.unEquip(I) && !istype(user, /mob/living/silicon/robot)) //Robots cannot de-equip items in grippers.
 			return FALSE
 		if(add_circuit(I, user))
-			to_chat(user, "<span class='notice'>You slide \the [I] inside \the [src].</span>")
+			to_chat(user, SPAN_NOTICE("You slide \the [I] inside \the [src]."))
 			playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
-			interact(user)
+			ui_interact(user)
 			return TRUE
 
 	else if(I.is_crowbar())
+		if(!opened)
+			return FALSE
+		if(!battery)
+			to_chat(usr, SPAN_WARNING("There's no power cell to remove from \the [src]."))
+			return FALSE
+		battery.forceMove(get_turf(src))
 		playsound(get_turf(src), 'sound/items/Crowbar.ogg', 50, 1)
+		to_chat(user, SPAN_NOTICE("You pull \the [battery] out of \the [src]'s power supplier."))
+		battery = null
+		return TRUE
+
+	else if(I.is_screwdriver())
+		playsound(get_turf(src), 'sound/items/Screwdriver.ogg', 50, 1)
 		opened = !opened
-		to_chat(user, "<span class='notice'>You [opened ? "opened" : "closed"] \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You [opened ? "opened" : "closed"] \the [src]."))
 		update_icon()
 		return TRUE
 
 	else if(istype(I, /obj/item/integrated_electronics/wirer) || istype(I, /obj/item/integrated_electronics/debugger) || I.is_screwdriver())
 		if(opened)
-			interact(user)
+			ui_interact(user)
 		else
-			to_chat(user, "<span class='warning'>\The [src] isn't opened, so you can't fiddle with the internal components.  \
-			Try using a crowbar.</span>")
+			to_chat(user, SPAN_WARNING("\The [src] isn't opened, so you can't fiddle with the internal components.  Try using a crowbar."))
 
 	else if(istype(I, /obj/item/integrated_electronics/detailer))
 		var/obj/item/integrated_electronics/detailer/D = I
@@ -276,20 +323,19 @@
 
 	else if(istype(I, /obj/item/cell/device))
 		if(!opened)
-			to_chat(user, "<span class='warning'>\The [src] isn't opened, so you can't put anything inside.  Try using a crowbar.</span>")
+			to_chat(user, SPAN_WARNING("\The [src] isn't opened, so you can't put anything inside.  Try using a crowbar."))
 			return FALSE
 		if(battery)
-			to_chat(user, "<span class='warning'>\The [src] already has \a [battery] inside.  Remove it first if you want to replace it.</span>")
+			to_chat(user, SPAN_WARNING("\The [src] already has \a [battery] inside.  Remove it first if you want to replace it."))
 			return FALSE
 		var/obj/item/cell/device/cell = I
 		user.drop_item(cell)
 		cell.forceMove(src)
 		battery = cell
 		playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
-		to_chat(user, "<span class='notice'>You slot \the [cell] inside \the [src]'s power supplier.</span>")
-		interact(user)
+		to_chat(user, SPAN_NOTICE("You slot \the [cell] inside \the [src]'s power supplier."))
+		ui_interact(user)
 		return TRUE
-
 	else
 		return ..()
 
@@ -297,7 +343,7 @@
 	if(!check_interactivity(user))
 		return
 	if(opened)
-		interact(user)
+		ui_interact(user)
 
 	var/list/input_selection = list()
 	var/list/available_inputs = list()
@@ -315,7 +361,7 @@
 
 	var/obj/item/integrated_circuit/input/choice
 	if(available_inputs)
-		var/selection = input(user, "What do you want to interact with?", "Interaction") as null|anything in input_selection
+		var/selection = tgui_input_list(user, "What do you want to interact with?", "Interaction", input_selection)
 		if(selection)
 			var/index = input_selection.Find(selection)
 			choice = available_inputs[index]
@@ -337,7 +383,7 @@
 // Returns true if power was successfully drawn.
 /obj/item/electronic_assembly/proc/draw_power(amount)
 	if(battery)
-		var/lost = battery.use(amount * CELLRATE)
+		var/lost = battery.use(DYNAMIC_W_TO_CELL_UNITS(amount, 1))
 		net_power -= lost
 		return lost > 0
 	return FALSE
@@ -345,16 +391,34 @@
 // Ditto for giving.
 /obj/item/electronic_assembly/proc/give_power(amount)
 	if(battery)
-		var/gained = battery.give(amount * CELLRATE)
+		var/gained = battery.give(DYNAMIC_W_TO_CELL_UNITS(amount, 1))
+		net_power += gained
+		return TRUE
+	return FALSE
+
+// Returns true if power was successfully drawn.
+/obj/item/electronic_assembly/proc/draw_power_kw(amount)
+	if(battery)
+		var/lost = battery.use(DYNAMIC_KW_TO_CELL_UNITS(amount, 1))
+		net_power -= lost
+		return lost > 0
+	return FALSE
+
+// Ditto for giving.
+/obj/item/electronic_assembly/proc/give_power_kw(amount)
+	if(battery)
+		var/gained = battery.give(DYNAMIC_KW_TO_CELL_UNITS(amount, 1))
 		net_power += gained
 		return TRUE
 	return FALSE
 
 /obj/item/electronic_assembly/on_loc_moved(oldloc)
+	. = ..()
 	for(var/obj/O in contents)
 		O.on_loc_moved(oldloc)
 
 /obj/item/electronic_assembly/Moved(var/oldloc)
+	. = ..()
 	for(var/obj/O in contents)
 		O.on_loc_moved(oldloc)
 

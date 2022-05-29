@@ -1,27 +1,32 @@
 #define DAM_SCALE_FACTOR 0.01
 #define METAL_PER_TICK 100
+
 /datum/species/protean
-	name =             SPECIES_PROTEAN
-	name_plural =      "Proteans"
-	blurb =            "Sometimes very advanced civilizations will produce the ability to swap into manufactured, robotic bodies. And sometimes \
-						<i>VERY</i> advanced civilizations have the option of 'nanoswarm' bodies. Effectively a single robot body comprised \
-						of millions of tiny nanites working in concert to maintain cohesion."
-	show_ssd =         "totally quiescent"
-	death_message =    "rapidly loses cohesion, dissolving into a cloud of gray dust..."
+	name = SPECIES_PROTEAN
+	name_plural = "Proteans"
+	blurb = "Sometimes very advanced civilizations will produce the ability to swap into manufactured, robotic bodies. And sometimes \
+			<i>VERY</i> advanced civilizations have the option of 'nanoswarm' bodies. Effectively a single robot body comprised \
+			of millions of tiny nanites working in concert to maintain cohesion."
+	show_ssd = "totally quiescent"
+	death_message = "rapidly loses cohesion, dissolving into a cloud of gray dust..."
 	knockout_message = "collapses inwards, forming a disordered puddle of gray goo."
 	remains_type = /obj/effect/decal/cleanable/ash
+
+	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite) // Regular human attack verbs are enough.
 
 	blood_color = "#505050" //This is the same as the 80,80,80 below, but in hex
 	flesh_color = "#505050"
 	base_color = "#FFFFFF" //Color mult, start out with this
 
-	flags =            NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN
-	appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_UNDERWEAR | HAS_LIPS
+	flags =            NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN | CONTAMINATION_IMMUNE
+	species_appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_UNDERWEAR | HAS_LIPS
 	spawn_flags		 = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 	health_hud_intensity = 2
-	num_alternate_languages = 3
+	num_alternate_languages = 5  // Let's not make them know every language, past me.
 	assisted_langs = list(LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 	color_mult = TRUE
+
+	darksight = 3 // Major darksight is a bit much, regular one will do for the moment.
 
 	breath_type = null
 	poison_type = null
@@ -31,21 +36,31 @@
 	min_age =		18
 	max_age =		200
 
-	brute_mod =		0.30 // 70% brute reduction
-	burn_mod =		1.4 //60% burn weakness
+	total_health =	200
+	/// damage to blob
+	var/damage_to_blob = 100
+
+	brute_mod =		1
+	burn_mod =		1
 	oxy_mod =		0
+	radiation_mod = 0 // Their blobforms have rad immunity, so it only makes sense that their humanoid forms do too
+	toxins_mod =	0 // This is necessary to make them not instantly die to ions/low yield EMPs, also it makes sense as the refactory would reset or repurpose corrupted nanites
+
+	hunger_factor = 0.04 // Better power storage, perhaps? This is not additive. Whoops
  /*
 These values assume all limbs are hit by the damage. To get individual limb damages divide by 11.
-A worst-case sev 4 emp will do 88 damage pre-mitigation, and 140.8 post-mitigation (as resist is negative) spread out over all the limbs.
-A best case sev 4 emp will do 55 pre-mitigation damage. This is 88 damage.
-A worst case sev 3 emp will do 66 pre-mitigation damage. This is 105.6 damage.
-A best case sev 3 emp will do 44 pre-mitigation damage. This is 70.4 damage.
-A worst case sev 2 emp will do 55 pre-mitigation damage. This is 88 damage.
-A best case sev 2 emp will do 22 pre-mitigation damage. This is 35.2 damage.
-A worst case sev 1 emp will do 33 pre-mitigation damage.This is 52.8 damage.
-A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
+A worst-case sev 4 emp will do 88 damage pre-mitigation, and 114.4 post-mitigation (as resist is negative) spread out over all the limbs.
+A best case sev 4 emp will do 55 pre-mitigation damage. This is 71.5 damage.
+A worst case sev 3 emp will do 66 pre-mitigation damage. This is 85.8 damage.
+A best case sev 3 emp will do 44 pre-mitigation damage. This is 57.2 damage.
+A worst case sev 2 emp will do 55 pre-mitigation damage. This is 71.5 damage.
+A best case sev 2 emp will do 22 pre-mitigation damage. This is 28.6 damage.
+A worst case sev 1 emp will do 33 pre-mitigation damage.This is 42.9 damage.
+A best case sev 1 emp will do 11 pre-mitigation damage. This is 14.3 damage.
+
+I redid the calculations, as the burn weakness has been changed. This should be good. Hopefully
 */
-	cold_level_1 = 280 //Default 260 - Lower is better
+/*	cold_level_1 = 280 //Default 260 - Lower is better
 	cold_level_2 = 220 //Default 200
 	cold_level_3 = 130 //Default 120
 
@@ -53,6 +68,8 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 	heat_level_2 = 370 //Default 400
 	heat_level_3 = 600 //Default 1000
 
+	As the heat/cold levels are listed below, these aren't really necessary
+*/
 	//Space doesn't bother them
 	hazard_low_pressure = -1
 	hazard_high_pressure = INFINITY //Totally pressure immune - in human form (blobform is also completely pressure/heat immune, bringing them both in line with each other.)
@@ -68,7 +85,7 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 
 	body_temperature =      290
 
-	siemens_coefficient =   1.4
+	siemens_coefficient =   1.1 // Changed in accordance to the 'what to do now' section of the rework document
 
 	rarity_value =          5
 
@@ -123,7 +140,9 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/proc/glow_toggle,
 		/mob/living/proc/glow_color,
-		/mob/living/carbon/human/proc/lick_wounds) //prots get all the special verbs since they can't select traits.
+		/mob/living/carbon/human/proc/lick_wounds,
+		/mob/living/carbon/human/proc/rig_transform,
+		/mob/living/proc/usehardsuit) //prots get all the special verbs since they can't select traits.
 	var/global/list/abilities = list()
 
 	var/monochromatic = FALSE //IGNORE ME
@@ -149,23 +168,23 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 		return H.impersonate_bodytype || ..()
 	return ..()
 
-/datum/species/protean/handle_post_spawn(var/mob/living/carbon/human/H)
-	..()
+/datum/species/protean/create_organs(mob/living/carbon/human/H)
 	H.synth_color = TRUE
+	. = ..()
 
 /datum/species/protean/equip_survival_gear(var/mob/living/carbon/human/H)
-	var/obj/item/stack/material/steel/metal_stack = new()
-	metal_stack.amount = 3
-
-	var/obj/item/clothing/accessory/permit/nanotech/permit = new()
+	var/obj/item/storage/box/box = new /obj/item/storage/box/survival/synth(H)
+	var/obj/item/stack/material/steel/metal_stack = new(box)
+	metal_stack.amount = 3 // Less starting steel due to regen changes
+	new /obj/item/fbp_backup_cell(box)
+	var/obj/item/clothing/accessory/permit/nanotech/permit = new(box)
 	permit.set_name(H.real_name)
 
 	if(H.backbag == 1) //Somewhat misleading, 1 == no bag (not boolean)
-		H.equip_to_slot_or_del(permit, slot_l_hand)
-		H.equip_to_slot_or_del(metal_stack, slot_r_hand)
+		H.equip_to_slot_or_del(box, slot_l_hand)
 	else
-		H.equip_to_slot_or_del(permit, slot_in_backpack)
-		H.equip_to_slot_or_del(metal_stack, slot_in_backpack)
+		H.equip_to_slot_or_del(box, slot_in_backpack)
+
 
 	spawn(0) //Let their real nif load if they have one
 		if(!H.nif)
@@ -173,6 +192,9 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 			new_nif.quick_implant(H)
 		else
 			H.nif.durability = rand(21,25)
+
+	var/obj/item/rig/protean/prig = new /obj/item/rig/protean(H)
+	prig.myprotean = H
 
 /datum/species/protean/hug(var/mob/living/carbon/human/H, var/mob/living/target)
 	return ..() //Wut
@@ -183,19 +205,30 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 /datum/species/protean/get_flesh_colour(var/mob/living/carbon/human/H)
 	return rgb(80,80,80,230)
 
-/datum/species/protean/handle_death(var/mob/living/carbon/human/H)
-	to_chat(H,"<span class='warning'>You died as a Protean. Please sit out of the round for at least 30 minutes before respawning, to represent the time it would take to ship a new-you to the station.</span>")
-	spawn(1) //This spawn is here so that if the protean_blob calls qdel, it doesn't try to gib the humanform.
-		if(H)
-			H.gib()
+/datum/species/protean/handle_death(var/mob/living/carbon/human/H, gibbed)		// citadel edit - FUCK YOU ACTUALLY GIB THE MOB AFTER REMOVING IT FROM THE BLOB HOW HARD CAN THIS BE!!
+	var/deathmsg = "<span class='userdanger'>You have died as a Protean. You may be revived by nanite chambers (once available), but otherwise, you may roleplay as your disembodied posibrain or respawn on another character.</span>"
+	if(istype(H.temporary_form, /mob/living/simple_mob/protean_blob))
+		var/mob/living/simple_mob/protean_blob/B = H.temporary_form
+		to_chat(B, deathmsg)
+	else if(!gibbed)
+		to_chat(H)
+		H.gib()
+
+/datum/species/protean/proc/getActualDamage(mob/living/carbon/human/H)
+	var/obj/item/organ/external/E = H.get_organ(BP_TORSO)
+	return E.brute_dam + E.burn_dam
 
 /datum/species/protean/handle_environment_special(var/mob/living/carbon/human/H)
-	if((H.getActualBruteLoss() + H.getActualFireLoss()) > H.maxHealth*0.35 && isturf(H.loc)) //So, only if we're not a blob (we're in nullspace) or in someone (or a locker, really, but whatever). The decimal point (0.35 as of now) is the autoblob %hp threshold.
+	if((getActualDamage(H) > damage_to_blob) && isturf(H.loc)) //So, only if we're not a blob (we're in nullspace) or in someone (or a locker, really, but whatever).
 		H.nano_intoblob()
 		return ..() //Any instakill shot runtimes since there are no organs after this. No point to not skip these checks, going to nullspace anyway.
 
 	var/obj/item/organ/internal/nano/refactory/refactory = locate() in H.internal_organs
 	if(refactory && !(refactory.status & ORGAN_DEAD) && refactory.processingbuffs)
+
+		//Steel adds regen
+		if(protean_requires_healing(H) && refactory.get_stored_material(MAT_STEEL) >= METAL_PER_TICK)  //  Regen without blobform, though relatively slow compared to blob regen
+			H.add_modifier(/datum/modifier/protean/steel, origin = refactory)
 
 		//MHydrogen adds speeeeeed
 		if(refactory.get_stored_material(MAT_METALHYDROGEN) >= METAL_PER_TICK)
@@ -220,7 +253,7 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 
 /datum/species/protean/Stat(var/mob/living/carbon/human/H)
 	..()
-	if(statpanel("Protean"))
+	if(statpanel(SPECIES_PROTEAN))
 		var/obj/item/organ/internal/nano/refactory/refactory = H.nano_get_refactory()
 		if(refactory && !(refactory.status & ORGAN_DEAD))
 			stat(null, "- -- --- Refactory Metal Storage --- -- -")
@@ -240,17 +273,17 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 /datum/modifier/protean
 	stacks = MODIFIER_STACK_FORBID
 	var/material_use = METAL_PER_TICK
-	var/material_name = DEFAULT_WALL_MATERIAL
+	var/material_name = MAT_STEEL
 
 /datum/modifier/protean/on_applied()
 	. = ..()
 	if(holder.temporary_form)
-		to_chat(holder.temporary_form,on_created_text)
+		to_chat(holder.temporary_form, on_created_text)
 
 /datum/modifier/protean/on_expire()
 	. = ..()
 	if(holder.temporary_form)
-		to_chat(holder.temporary_form,on_expired_text)
+		to_chat(holder.temporary_form, on_expired_text)
 
 /datum/modifier/protean/check_if_valid()
 	//No origin set
@@ -319,23 +352,34 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 	on_expired_text = "<span class='notice'>Your steel supply has either run out, or is no longer needed, and your healing stops.</span>"
 
 	material_name = MAT_STEEL
+	material_use = METAL_PER_TICK / 5		// 5 times weaker
+
+/datum/modifier/protean/steel/check_if_valid()
+	if(!protean_requires_healing(holder) || istype(holder.temporary_form, /mob/living/simple_mob/protean_blob))
+		expire()
+		return
+	return ..()
 
 /datum/modifier/protean/steel/tick()
-
 	..()
-	holder.adjustBruteLoss(-9 ,include_robo = TRUE) //Looks high, but these are modified by species resistances to equal out at 3hp/sec.
-	holder.adjustFireLoss(-2.14,include_robo = TRUE) //Looks high, but these are modified by species resistances to equal out at 3hp/sec.
-
-
+	var/dt = 2	// put it on param sometime but for now assume 2
 	var/mob/living/carbon/human/H = holder
-	for(var/organ in H.internal_organs)
-		var/obj/item/organ/O = organ
-		// Fix internal damage
-		if(O.damage > 0)
-			O.damage = max(0,O.damage-0.1)
-		// If not damaged, but dead, fix it
-		else if(O.status & ORGAN_DEAD)
-			O.status &= ~ORGAN_DEAD //Unset dead if we repaired it entirely
+	var/obj/item/organ/external/E = H.get_organ(BP_TORSO)
+	var/heal = 1 * dt
+	var/brute_heal_left = max(0, heal - E.brute_dam)
+	var/burn_heal_left = max(0, heal - E.burn_dam)
+
+	E.heal_damage(min(heal, E.brute_dam), min(heal, E.burn_dam), TRUE, TRUE)
+
+	holder.adjustBruteLoss(-brute_heal_left, include_robo = TRUE)
+	holder.adjustFireLoss(-burn_heal_left, include_robo = TRUE)
+	holder.adjustToxLoss(-3.6) // With them now having tox immunity, this is redundant, along with the rad regen, but I'm keeping it in, in case they do somehow get some system instability
+	holder.radiation = max(holder.radiation - 30, 0) // I'm keeping this in and increasing it, just in the off chance the protean gets some rads, so that there's way to get rid of them
+
+/proc/protean_requires_healing(mob/living/carbon/human/H)
+	if(!istype(H))
+		return FALSE
+	return H.getActualBruteLoss() || H.getActualFireLoss() || H.getToxLoss()
 
 // PAN Card
 /obj/item/clothing/accessory/permit/nanotech
@@ -348,6 +392,27 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 	if(new_name)
 		src.name += " ([new_name])"
 		desc += "\nVALID THROUGH END OF: [time2text(world.timeofday, "Month") +" "+ num2text(text2num(time2text(world.timeofday, "YYYY"))+544)]\nREGISTRANT: [new_name]"
+
+/mob/living/carbon/human/proc/rig_transform()
+	set name = "Modify Form - Hardsuit"
+	set desc = "Allows a protean to solidify its form into one extremely similar to a hardsuit."
+	set category = "Abilities"
+
+	if(istype(loc, /obj/item/rig/protean))
+		var/obj/item/rig/protean/prig = loc
+		src.forceMove(get_turf(prig))
+		prig.forceMove(src)
+		return
+
+	if(isturf(loc))
+		var/obj/item/rig/protean/prig
+		for(var/obj/item/rig/protean/O in contents)
+			prig = O
+			break
+		if(prig)
+			prig.forceMove(get_turf(src))
+			src.forceMove(prig)
+			return
 
 #undef DAM_SCALE_FACTOR
 #undef METAL_PER_TICK

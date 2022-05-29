@@ -16,5 +16,9 @@ Format:
 endmap
 
 map tether
-	default
+	disabled
 endmap
+
+#map triumph
+#	default
+#endmap

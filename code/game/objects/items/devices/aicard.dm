@@ -23,9 +23,9 @@
 
 /obj/item/aicard/attack_self(mob/user)
 
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/item/aicard/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = inventory_state)
+/obj/item/aicard/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = inventory_state)
 	var/data[0]
 	data["has_ai"] = carded_ai != null
 	if(carded_ai)
@@ -60,7 +60,7 @@
 	var/user = usr
 	if (href_list["wipe"])
 		var/confirm = alert("Are you sure you want to disable this core's power? This cannot be undone once started.", "Confirm Shutdown", "No", "Yes")
-		if(confirm == "Yes" && (CanUseTopic(user, state) == STATUS_INTERACTIVE))
+		if(confirm == "Yes" && (CanUseTopic(user, state) == UI_INTERACTIVE))
 			add_attack_logs(user,carded_ai,"Purged from AI Card")
 			flush = 1
 			carded_ai.suiciding = 1
@@ -112,7 +112,7 @@
 			return 0
 
 	user.visible_message("\The [user] starts transferring \the [ai] into \the [src]...", "You start transferring \the [ai] into \the [src]...")
-	show_message(span("critical", "\The [user] is transferring you into \the [src]!"))
+	show_message(SPAN_CRITICAL("\The [user] is transferring you into \the [src]!"))
 
 	if(do_after(user, 100))
 		if(istype(ai.loc, /turf/))
@@ -122,7 +122,7 @@
 		add_attack_logs(user,ai,"Extracted into AI Card")
 		src.name = "[initial(name)] - [ai.name]"
 
-		ai.loc = src
+		ai.forceMove(src)
 		ai.destroy_eyeobj(src)
 		ai.cancel_camera()
 		ai.control_disabled = 1
@@ -165,3 +165,38 @@
 	var/obj/item/rig/rig = src.get_rig()
 	if(istype(rig))
 		rig.forced_move(direction, user)
+
+//Subtypes
+/obj/item/aicard/aitater
+	name = "intelliTater"
+	desc = "A stylish upgrade (?) to the intelliCard."
+	icon_state = "aitater"
+
+/obj/item/aicard/aitater/update_icon()
+	overlays.Cut()
+	if(carded_ai)
+		if (!carded_ai.control_disabled)
+			overlays += image('icons/obj/pda.dmi', "aitater-on")
+		if(carded_ai.stat)
+			icon_state = "aitater-404"
+		else
+			icon_state = "aitater-full"
+	else
+		icon_state = "aitater"
+
+/obj/item/aicard/aispook
+	name = "intelliLantern"
+	desc = "A spoOoOoky upgrade to the intelliCard."
+	icon_state = "aispook"
+
+/obj/item/aicard/aispook/update_icon()
+	overlays.Cut()
+	if(carded_ai)
+		if (!carded_ai.control_disabled)
+			overlays += image('icons/obj/pda.dmi', "aispook-on")
+		if(carded_ai.stat)
+			icon_state = "aispook-404"
+		else
+			icon_state = "aispook-full"
+	else
+		icon_state = "aispook"

@@ -5,7 +5,7 @@
 	icon_state = "cleaner"
 	item_state = "cleaner"
 	flags = OPENCONTAINER|NOBLUDGEON
-	slot_flags = SLOT_BELT
+	slot_flags = SLOT_BELT | SLOT_HOLSTER
 	throwforce = 3
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 2
@@ -17,7 +17,7 @@
 	var/list/spray_sizes = list(1,3)
 	volume = 250
 
-/obj/item/reagent_containers/spray/Initialize()
+/obj/item/reagent_containers/spray/Initialize(mapload)
 	. = ..()
 	src.verbs -= /obj/item/reagent_containers/verb/set_APTFT
 
@@ -58,7 +58,7 @@
 		reagents.splash(A, amount_per_transfer_from_this)
 	else
 		spawn(0)
-			var/obj/effect/effect/water/chempuff/D = new/obj/effect/effect/water/chempuff(get_turf(src))
+			var/obj/effect/water/chempuff/D = new/obj/effect/water/chempuff(get_turf(src))
 			var/turf/my_target = get_turf(A)
 			D.create_reagents(amount_per_transfer_from_this)
 			if(!src)
@@ -76,17 +76,17 @@
 	to_chat(user, "<span class='notice'>You adjusted the pressure nozzle. You'll now use [amount_per_transfer_from_this] units per spray.</span>")
 
 /obj/item/reagent_containers/spray/examine(mob/user)
-	if(..(user, 0) && loc == user)
-		to_chat(user, "[round(reagents.total_volume)] units left.")
-	return
+	. = ..()
+	if(loc == user)
+		. += "[round(reagents.total_volume)] units left."
 
 /obj/item/reagent_containers/spray/verb/empty()
 
-	set name = "Empty Spray Bottle"
+	set name = "Empty Tank"
 	set category = "Object"
 	set src in usr
 
-	if (alert(usr, "Are you sure you want to empty that?", "Empty Bottle:", "Yes", "No") != "Yes")
+	if (alert(usr, "Are you sure you want to empty that?", "Empty Tank:", "Yes", "No") != "Yes")
 		return
 	if(isturf(usr.loc))
 		to_chat(usr, "<span class='notice'>You empty \the [src] onto the floor.</span>")
@@ -102,7 +102,7 @@
 	desc = "BLAM!-brand non-foaming space cleaner!"
 	volume = 50
 
-/obj/item/reagent_containers/spray/cleaner/Initialize()
+/obj/item/reagent_containers/spray/cleaner/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("cleaner", volume)
 
@@ -110,7 +110,7 @@
 	name = "sterilizine"
 	desc = "Great for hiding incriminating bloodstains and sterilizing scalpels."
 
-/obj/item/reagent_containers/spray/sterilizine/Initialize()
+/obj/item/reagent_containers/spray/sterilizine/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("sterilizine", volume)
 
@@ -124,13 +124,13 @@
 	volume = 40
 	var/safety = TRUE
 
-/obj/item/reagent_containers/spray/pepper/Initialize()
+/obj/item/reagent_containers/spray/pepper/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("condensedcapsaicin", 40)
 
 /obj/item/reagent_containers/spray/pepper/examine(mob/user)
-	if(..(user, 1))
-		to_chat(user, "The safety is [safety ? "on" : "off"].")
+	. = ..()
+	. += "The safety is [safety ? "on" : "off"]."
 
 /obj/item/reagent_containers/spray/pepper/attack_self(var/mob/user)
 	safety = !safety
@@ -151,15 +151,17 @@
 	amount_per_transfer_from_this = 1
 	possible_transfer_amounts = null
 	volume = 10
+	drop_sound = 'sound/items/drop/herb.ogg'
+	pickup_sound = 'sound/items/pickup/herb.ogg'
 
-/obj/item/reagent_containers/spray/waterflower/Initialize()
+/obj/item/reagent_containers/spray/waterflower/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("water", 10)
 
 /obj/item/reagent_containers/spray/chemsprayer
 	name = "chem sprayer"
 	desc = "A utility used to spray large amounts of reagent in a given area."
-	icon = 'icons/obj/gun.dmi'
+	icon = 'icons/obj/gun/launcher.dmi'
 	icon_state = "chemsprayer"
 	item_state = "chemsprayer"
 	throwforce = 3
@@ -178,7 +180,7 @@
 	for(var/a = 1 to 3)
 		spawn(0)
 			if(reagents.total_volume < 1) break
-			var/obj/effect/effect/water/chempuff/D = new/obj/effect/effect/water/chempuff(get_turf(src))
+			var/obj/effect/water/chempuff/D = new/obj/effect/water/chempuff(get_turf(src))
 			var/turf/my_target = the_targets[a]
 			D.create_reagents(amount_per_transfer_from_this)
 			if(!src)
@@ -196,6 +198,55 @@
 	item_state = "plantbgone"
 	volume = 100
 
-/obj/item/reagent_containers/spray/plantbgone/Initialize()
+/obj/item/reagent_containers/spray/plantbgone/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("plantbgone", 100)
+
+/obj/item/reagent_containers/spray/pestbgone
+	name = "Pest-B-Gone"
+	desc = "Rated for pests up to 1:3 scale!"
+	icon = 'icons/obj/hydroponics_machines.dmi'
+	icon_state = "pestbgone"
+	item_state = "pestbgone"
+	volume = 100
+
+/obj/item/reagent_containers/spray/pestbgone/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("pestbgone", 100)
+
+/obj/item/reagent_containers/spray/squirt
+	name = "HydroBlaster 4000"
+	desc = "A popular toy produced by Donk Co, the HydroBlaster 4000 is the latest in a long line of recreational pressurized water delivery systems."
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "squirtgun"
+	item_state = "squirtgun"
+	w_class = ITEMSIZE_NORMAL
+	volume = 100
+	var/pumped = TRUE
+
+/obj/item/reagent_containers/spray/squirt/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("water", 100)
+
+/obj/item/reagent_containers/spray/squirt/examine(mob/user)
+	. = ..()
+	. += "The tank is [pumped ? "depressurized" : "pressurized"]."
+
+/obj/item/reagent_containers/spray/squirt/attack_self(var/mob/user)
+	pumped = !pumped
+	to_chat(usr, "<span class = 'notice'>You pump the handle [pumped ? "to depressurize" : "to pressurize"] the tank.</span>")
+
+/obj/item/reagent_containers/spray/squirt/Spray_at(atom/A as mob|obj)
+	if(pumped)
+		to_chat(usr, "<span class = 'warning'>The tank has no pressure!</span>")
+		return
+	. = ..()
+
+/obj/item/reagent_containers/spray/squirt/nt
+	name = "HydroBlaster 4001"
+	desc = "A popular toy produced by Donk Co, the HydroBlaster 4001 is modeled in NanoTrasen corporate colors. This is largely considered a sarcastic gesture."
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "squirtgun_nt"
+	item_state = "squirtgun_nt"
+	w_class = ITEMSIZE_NORMAL
+	volume = 101

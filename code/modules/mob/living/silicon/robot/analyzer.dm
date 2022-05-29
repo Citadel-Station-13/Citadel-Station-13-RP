@@ -13,7 +13,7 @@
 	throw_speed = 5
 	throw_range = 10
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 1, TECH_ENGINEERING = 2)
-	matter = list(DEFAULT_WALL_MATERIAL = 500, "glass" = 200)
+	matter = list(MAT_STEEL = 500, MAT_GLASS = 200)
 	var/mode = 1;
 
 /obj/item/robotanalyzer/attack(mob/living/M as mob, mob/living/user as mob)
@@ -21,13 +21,13 @@
 
 /obj/item/robotanalyzer/proc/do_scan(mob/living/M as mob, mob/living/user as mob)
 	if((CLUMSY in user.mutations) && prob(50))
-		user << text("<font color='red'>You try to analyze the floor's vitals!</font>")
+		to_chat(user, "<font color='red'>You try to analyze the floor's vitals!</font>")
 		for(var/mob/O in viewers(M, null))
 			O.show_message(text("<font color='red'>[user] has analyzed the floor's vitals!</font>"), 1)
-		user.show_message(text("<font color='blue'>Analyzing Results for The floor:\n\t Overall Status: Healthy</font>"), 1)
-		user.show_message(text("<font color='blue'>\t Damage Specifics: [0]-[0]-[0]-[0]</font>"), 1)
-		user.show_message("<font color='blue'>Key: Suffocation/Toxin/Burns/Brute</font>", 1)
-		user.show_message("<font color='blue'>Body Temperature: ???</font>", 1)
+		user.show_message(text("<font color=#4F49AF>Analyzing Results for The floor:\n\t Overall Status: Healthy</font>"), 1)
+		user.show_message(text("<font color=#4F49AF>\t Damage Specifics: [0]-[0]-[0]-[0]</font>"), 1)
+		user.show_message("<font color=#4F49AF>Key: Suffocation/Toxin/Burns/Brute</font>", 1)
+		user.show_message("<font color=#4F49AF>Body Temperature: ???</font>", 1)
 		return
 
 	var/scan_type
@@ -44,17 +44,17 @@
 		if("robot")
 			var/BU = M.getFireLoss() > 50 	? 	"<b>[M.getFireLoss()]</b>" 		: M.getFireLoss()
 			var/BR = M.getBruteLoss() > 50 	? 	"<b>[M.getBruteLoss()]</b>" 	: M.getBruteLoss()
-			user.show_message("<font color='blue'>Analyzing Results for [M]:\n\t Overall Status: [M.stat > 1 ? "fully disabled" : "[M.health - M.halloss]% functional"]</font>")
+			user.show_message("<font color=#4F49AF>Analyzing Results for [M]:\n\t Overall Status: [M.stat > 1 ? "fully disabled" : "[M.health - M.halloss]% functional"]</font>")
 			user.show_message("\t Key: <font color='#FFA500'>Electronics</font>/<font color='red'>Brute</font>", 1)
 			user.show_message("\t Damage Specifics: <font color='#FFA500'>[BU]</font> - <font color='red'>[BR]</font>")
 			if(M.tod && M.stat == DEAD)
-				user.show_message("<font color='blue'>Time of Disable: [M.tod]</font>")
+				user.show_message("<font color=#4F49AF>Time of Disable: [M.tod]</font>")
 			var/mob/living/silicon/robot/H = M
 			var/list/damaged = H.get_damaged_components(1,1,1)
-			user.show_message("<font color='blue'>Localized Damage:</font>",1)
+			user.show_message("<font color=#4F49AF>Localized Damage:</font>",1)
 			if(length(damaged)>0)
 				for(var/datum/robot_component/org in damaged)
-					user.show_message(text("<font color='blue'>\t []: [][] - [] - [] - []</font>",	\
+					user.show_message(text("<font color=#4F49AF>\t []: [][] - [] - [] - []</font>",	\
 					capitalize(org.name),					\
 					(org.installed == -1)	?	"<font color='red'><b>DESTROYED</b></font> "							:"",\
 					(org.electronics_damage > 0)	?	"<font color='#FFA500'>[org.electronics_damage]</font>"	:0,	\
@@ -62,10 +62,10 @@
 					(org.toggled)	?	"Toggled ON"	:	"<font color='red'>Toggled OFF</font>",\
 					(org.powered)	?	"Power ON"		:	"<font color='red'>Power OFF</font>"),1)
 			else
-				user.show_message("<font color='blue'>\t Components are OK.</font>",1)
+				user.show_message("<font color=#4F49AF>\t Components are OK.</font>",1)
 			if(H.emagged && prob(5))
 				user.show_message("<font color='red'>\t ERROR: INTERNAL SYSTEMS COMPROMISED</font>",1)
-			user.show_message("<font color='blue'>Operating Temperature: [M.bodytemperature-T0C]&deg;C ([M.bodytemperature*1.8-459.67]&deg;F)</font>", 1)
+			user.show_message("<font color=#4F49AF>Operating Temperature: [M.bodytemperature-T0C]&deg;C ([M.bodytemperature*1.8-459.67]&deg;F)</font>", 1)
 
 		if("prosthetics")
 

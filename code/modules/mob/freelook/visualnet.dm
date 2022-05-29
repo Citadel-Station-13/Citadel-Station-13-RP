@@ -7,13 +7,15 @@
 	var/list/chunks = list()
 	var/ready = 0
 	var/chunk_type = /datum/chunk
+	/// are we generated at all?
+	var/any_generated = FALSE
 
 /datum/visualnet/New()
 	..()
-	visual_nets += src
+	GLOB.visual_nets += src
 
 /datum/visualnet/Destroy()
-	visual_nets -= src
+	GLOB.visual_nets -= src
 	return ..()
 
 // Checks if a chunk has been Generated in x, y, z.
@@ -30,6 +32,7 @@
 	y &= ~0xf
 	var/key = "[x],[y],[z]"
 	if(!chunks[key])
+		any_generated = TRUE
 		chunks[key] = new chunk_type(null, x, y, z)
 
 	return chunks[key]
@@ -64,7 +67,7 @@
 
 /datum/visualnet/proc/updateVisibility(atom/A, var/opacity_check = 1)
 
-	if(!SSticker || (opacity_check && !A.opacity))
+	if(!any_generated || (opacity_check && !A.opacity))
 		return
 	majorChunkChange(A, 2)
 
@@ -93,7 +96,7 @@
 		var/x2 = min(world.maxx, T.x + 8) & ~0xf
 		var/y2 = min(world.maxy, T.y + 8) & ~0xf
 
-		//world << "X1: [x1] - Y1: [y1] - X2: [x2] - Y2: [y2]"
+		//to_chat(world, "X1: [x1] - Y1: [y1] - X2: [x2] - Y2: [y2]")
 
 		for(var/x = x1; x <= x2; x += 16)
 			for(var/y = y1; y <= y2; y += 16)
@@ -125,7 +128,7 @@
 /turf/verb/view_chunk()
 	set src in world
 
-	if(cameranet.chunkGenerated(x, y, z))
-		var/datum/chunk/chunk = cameranet.getCameraChunk(x, y, z)
+	if(GLOB.cameranet.chunkGenerated(x, y, z))
+		var/datum/chunk/chunk = GLOB.cameranet.getCameraChunk(x, y, z)
 		usr.client.debug_variables(chunk)
 */

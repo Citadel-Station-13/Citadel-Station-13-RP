@@ -1,0 +1,64 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/lattice,
+/turf/space,
+/area/space/debrisfield/misc_debris)
+"b" = (
+/turf/space,
+/area/space/debrisfield/misc_debris)
+"c" = (
+/turf/simulated/floor/airless,
+/area/space/debrisfield/misc_debris)
+"d" = (
+/obj/structure/girder,
+/turf/simulated/floor/airless,
+/area/space/debrisfield/misc_debris)
+"m" = (
+/obj/random/maintenance/research,
+/turf/simulated/floor/airless,
+/area/space/debrisfield/misc_debris)
+"w" = (
+/obj/mob_spawner/carp,
+/turf/simulated/floor/airless,
+/area/space/debrisfield/misc_debris)
+"L" = (
+/obj/mob_spawner/carp/hard,
+/turf/space,
+/area/space/debrisfield/misc_debris)
+"M" = (
+/obj/random/maintenance/engineering,
+/turf/simulated/floor/airless,
+/area/space/debrisfield/misc_debris)
+
+(1,1,1) = {"
+a
+a
+c
+b
+d
+c
+"}
+(2,1,1) = {"
+a
+a
+w
+M
+c
+b
+"}
+(3,1,1) = {"
+a
+a
+m
+c
+L
+b
+"}
+(4,1,1) = {"
+b
+a
+d
+d
+c
+b
+"}

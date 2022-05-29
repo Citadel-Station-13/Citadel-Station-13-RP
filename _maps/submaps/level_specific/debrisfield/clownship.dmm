@@ -1,0 +1,1608 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aj" = (
+/obj/machinery/computer/shuttle_control/explore/excursion,
+/turf/simulated/shuttle/floor/red/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cockpit)
+"al" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
+/obj/machinery/light,
+/obj/structure/table/bananium_reinforced,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"am" = (
+/obj/structure/table/rack/steel,
+/obj/item/nullrod/clown,
+/obj/item/nullrod/clown,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"an" = (
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/bunk)
+"aP" = (
+/obj/item/toy/figure/clown,
+/obj/structure/table/bananium_reinforced,
+/obj/machinery/power/apc/alarms_hidden{
+	pixel_y = 28
+	},
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
+"aT" = (
+/obj/structure/window/reinforced,
+/turf/simulated/floor/bananium,
+/area/submap/debrisfiled_vr/clownshuttle/bunk)
+"bw" = (
+/turf/simulated/shuttle/wall,
+/area/submap/debrisfiled_vr/clownshuttle/cargo)
+"bJ" = (
+/turf/simulated/shuttle/wall,
+/area/submap/debrisfiled_vr/clownshuttle/cockpit)
+"ce" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cargo)
+"cK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/hatch,
+/obj/item/bananapeel,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cargo)
+"db" = (
+/obj/structure/table/rack/steel,
+/obj/item/stamp/clown,
+/obj/item/stamp/clown,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"dd" = (
+/mob/living/simple_mob/humanoid/clown/commando/ranged/space,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cargo)
+"dK" = (
+/obj/effect/floor_decal/industrial/outline,
+/obj/structure/closet/crate/secure/loot,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cargo)
+"dO" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/external,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"eF" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/item/reagent_containers/food/snacks/clownburger,
+/obj/item/reagent_containers/food/snacks/clownburger,
+/obj/machinery/light,
+/obj/structure/table/bananium_reinforced,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"fp" = (
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"fw" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"ge" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
+"gn" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"hc" = (
+/obj/machinery/computer/ship/helm,
+/turf/simulated/shuttle/floor/red/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cockpit)
+"hF" = (
+/obj/structure/table/bananium_reinforced,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/engine)
+"ip" = (
+/obj/structure/closet/syndicate/clownops/personal,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/bunk)
+"it" = (
+/obj/effect/floor_decal/industrial/outline,
+/obj/structure/closet/crate/freezer/rations,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cargo)
+"iz" = (
+/obj/effect/floor_decal/industrial/outline,
+/obj/structure/closet/crate/secure,
+/obj/item/ore/vaudium,
+/obj/item/ore/vaudium,
+/obj/item/ore/vaudium,
+/obj/item/ore/vaudium,
+/obj/item/ore/vaudium,
+/obj/item/ore/vaudium,
+/obj/item/ore/vaudium,
+/obj/item/ore/vaudium,
+/obj/item/ore/vaudium,
+/obj/item/ore/vaudium,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cargo)
+"jv" = (
+/obj/structure/bed,
+/obj/item/bedsheet/clown,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/bunk)
+"jF" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 10
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
+"km" = (
+/obj/structure/shuttle/engine/heater,
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
+	dir = 1
+	},
+/turf/simulated/shuttle/wall,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
+"kw" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/external,
+/obj/item/bananapeel,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"kH" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/turf/simulated/shuttle/floor/red/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cockpit)
+"kX" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/mob/living/simple_mob/humanoid/clown/commando/melee/space/alt,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/engine)
+"kY" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
+	},
+/obj/item/storage/toolbox/electrical,
+/obj/structure/table/bananium_reinforced,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
+"lD" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/mob/living/simple_mob/humanoid/clown/commando/melee/space,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"lM" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock/hatch,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cockpit)
+"lQ" = (
+/turf/simulated/shuttle/wall/hard_corner,
+/area/submap/debrisfiled_vr/clownshuttle)
+"mi" = (
+/turf/simulated/shuttle/wall,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
+"mA" = (
+/turf/simulated/shuttle/wall,
+/area/submap/debrisfiled_vr/clownshuttle)
+"mN" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/structure/closet/syndicate/clownops/personal,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/bunk)
+"nA" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/hatch,
+/obj/item/bananapeel,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/engine)
+"nG" = (
+/obj/machinery/vending/assist,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
+"nI" = (
+/turf/simulated/shuttle/wall,
+/area/submap/debrisfiled_vr/clownshuttle/engine)
+"nK" = (
+/mob/living/simple_mob/humanoid/clown/commando/ranged/space,
+/obj/machinery/power/apc/alarms_hidden{
+	pixel_x = -28
+	},
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/simulated/shuttle/floor/red/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cockpit)
+"nW" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"oo" = (
+/obj/structure/bed/chair/bay/shuttle{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"ow" = (
+/turf/simulated/shuttle/wall/hard_corner,
+/area/submap/debrisfiled_vr/clownshuttle/cargo)
+"oA" = (
+/turf/simulated/shuttle/wall,
+/area/submap/debrisfiled_vr/clownshuttle/bunk)
+"oC" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/engine)
+"oX" = (
+/obj/effect/floor_decal/industrial/outline,
+/obj/structure/closet/crate/plastic,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cargo)
+"pt" = (
+/obj/effect/floor_decal/industrial/outline,
+/obj/structure/closet/crate/medical/blood,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cargo)
+"pJ" = (
+/obj/structure/closet/emcloset/legacy,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/tank/emergency/oxygen/engi,
+/obj/item/tank/emergency/oxygen/engi,
+/obj/item/tank/emergency/oxygen/engi,
+/obj/item/tank/emergency/oxygen/engi,
+/obj/item/clothing/suit/space/emergency,
+/obj/item/clothing/suit/space/emergency,
+/obj/item/clothing/suit/space/emergency,
+/obj/item/clothing/suit/space/emergency,
+/obj/item/clothing/head/helmet/space/emergency,
+/obj/item/clothing/head/helmet/space/emergency,
+/obj/item/clothing/head/helmet/space/emergency,
+/obj/item/clothing/head/helmet/space/emergency,
+/obj/item/storage/backpack/parachute,
+/obj/item/storage/backpack/parachute,
+/obj/item/storage/backpack/parachute,
+/obj/item/storage/backpack/parachute,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"pP" = (
+/mob/living/simple_mob/humanoid/clown/commando/ranged/space/alt,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/bunk)
+"qb" = (
+/obj/structure/table/rack/steel,
+/obj/item/bikehorn,
+/obj/item/bikehorn,
+/obj/item/bikehorn,
+/obj/item/bikehorn,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"qr" = (
+/turf/simulated/shuttle/wall/hard_corner,
+/area/submap/debrisfiled_vr/clownshuttle/bunk)
+"qD" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
+/obj/item/reagent_containers/food/snacks/pie,
+/obj/item/reagent_containers/food/snacks/pie,
+/obj/item/reagent_containers/food/snacks/pie,
+/obj/item/reagent_containers/food/snacks/pie,
+/obj/item/reagent_containers/food/snacks/pie,
+/obj/item/reagent_containers/food/snacks/pie,
+/obj/item/reagent_containers/food/snacks/pie,
+/obj/item/reagent_containers/food/snacks/pie,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/table/bananium_reinforced,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"ri" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
+/obj/item/storage/toolbox/emergency,
+/obj/structure/table/bananium_reinforced,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
+"rO" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/engine)
+"sB" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced/full,
+/turf/simulated/shuttle/plating/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cockpit)
+"sQ" = (
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/engine)
+"tN" = (
+/obj/effect/floor_decal/industrial/outline,
+/obj/structure/closet/crate/large,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cargo)
+"tQ" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/simulated/shuttle/plating/airless,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
+"uc" = (
+/obj/structure/shuttle/engine/heater,
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 6
+	},
+/turf/simulated/shuttle/wall,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
+"un" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"uA" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/hatch,
+/obj/item/assembly/mousetrap/armed,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cockpit)
+"vc" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
+/obj/structure/table/bananium_reinforced,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cargo)
+"ve" = (
+/obj/machinery/power/apc/alarms_hidden{
+	pixel_y = 28
+	},
+/obj/structure/cable/green{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/bunk)
+"vr" = (
+/obj/machinery/door/airlock/external,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"wi" = (
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
+"wn" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 6
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/engine)
+"ww" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
+"wB" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"wP" = (
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/engine)
+"wV" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/item/clothing/mask/gas/clown_hat,
+/obj/item/clothing/mask/gas/clown_hat,
+/obj/item/clothing/mask/gas/clown_hat,
+/obj/item/clothing/mask/gas/clown_hat,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/table/bananium_reinforced,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"xi" = (
+/obj/structure/table/bananium_reinforced,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/bunk)
+"xC" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/portable_atmospherics/canister/empty,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
+"xV" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
+"yI" = (
+/obj/machinery/shipsensors{
+	dir = 1
+	},
+/turf/simulated/shuttle/plating/airless,
+/area/space/debrisfield/explored)
+"yV" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"zj" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/engine)
+"zx" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/bunk)
+"zR" = (
+/turf/simulated/shuttle/wall/hard_corner,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
+"Aq" = (
+/turf/space,
+/area/space/debrisfield/explored)
+"Ax" = (
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"Ay" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/mob/living/simple_mob/humanoid/clown/commando/melee/space/alt,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cargo)
+"AL" = (
+/obj/structure/table/rack/steel,
+/obj/item/storage/backpack/clown,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"Bo" = (
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
+"BG" = (
+/obj/machinery/alarm/alarms_hidden{
+	dir = 8;
+	pixel_x = 28
+	},
+/turf/simulated/shuttle/floor/red/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cockpit)
+"Cm" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/effect/floor_decal/industrial/outline,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
+"Cz" = (
+/obj/machinery/computer/ship/sensors,
+/turf/simulated/shuttle/floor/red/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cockpit)
+"DC" = (
+/obj/machinery/mech_recharger,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/bluegrid,
+/area/submap/debrisfiled_vr/clownshuttle/engine)
+"Ej" = (
+/obj/structure/bed,
+/obj/item/bedsheet/clown,
+/obj/item/bananapeel,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/bunk)
+"Eo" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"EG" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/item/toy/prize/honk,
+/obj/machinery/light,
+/obj/structure/table/bananium_reinforced,
+/turf/simulated/shuttle/floor/red/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cockpit)
+"Fe" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/bunk)
+"Fs" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"FY" = (
+/obj/structure/bed/chair/bay/shuttle{
+	dir = 8
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"Gl" = (
+/obj/structure/statue/bananium/clown{
+	name = "Shrine to the Honkmother"
+	},
+/turf/simulated/floor/bananium,
+/area/submap/debrisfiled_vr/clownshuttle/bunk)
+"Gm" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"GW" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"Hj" = (
+/obj/structure/shuttle/engine/heater,
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 10
+	},
+/turf/simulated/shuttle/wall,
+/area/submap/debrisfiled_vr/clownshuttle/engine)
+"Hu" = (
+/obj/machinery/computer/ship/engines,
+/turf/simulated/shuttle/floor/red/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cockpit)
+"Hx" = (
+/turf/simulated/shuttle/wall/hard_corner,
+/area/submap/debrisfiled_vr/clownshuttle/engine)
+"HK" = (
+/obj/machinery/mech_recharger,
+/obj/effect/decal/mecha_wreckage/honker/cluwne,
+/turf/simulated/floor/bluegrid,
+/area/submap/debrisfiled_vr/clownshuttle/engine)
+"HT" = (
+/obj/machinery/alarm/alarms_hidden{
+	dir = 4;
+	pixel_x = -28
+	},
+/obj/structure/closet/syndicate/clownops/personal,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/bunk)
+"Is" = (
+/obj/structure/fuel_port{
+	dir = 4;
+	pixel_x = -29
+	},
+/obj/machinery/alarm/alarms_hidden{
+	dir = 1;
+	pixel_y = -28
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/engine)
+"ID" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
+"IE" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
+/obj/machinery/light,
+/obj/structure/table/bananium_reinforced,
+/turf/simulated/shuttle/floor/red/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cockpit)
+"IJ" = (
+/obj/structure/shuttle/engine/heater,
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
+	dir = 4
+	},
+/turf/simulated/shuttle/wall,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
+"JT" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/engine)
+"JU" = (
+/obj/machinery/power/smes/buildable/point_of_interest,
+/obj/structure/cable/cyan,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/engine)
+"Kf" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"KZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/hatch,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/bunk)
+"LJ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
+"LK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"MI" = (
+/obj/structure/table/bananium_reinforced,
+/obj/item/flame/candle/everburn,
+/turf/simulated/floor/bananium,
+/area/submap/debrisfiled_vr/clownshuttle/bunk)
+"Nd" = (
+/obj/machinery/atmospherics/portables_connector/fuel{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/machinery/portable_atmospherics/canister/phoron{
+	start_pressure = 0
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/engine)
+"Ng" = (
+/obj/structure/shuttle/engine/heater,
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
+	dir = 1
+	},
+/turf/simulated/shuttle/wall,
+/area/submap/debrisfiled_vr/clownshuttle/engine)
+"Oy" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/effect/floor_decal/industrial/outline,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
+"OO" = (
+/obj/structure/bed/chair/bay/shuttle{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/shuttle/floor/red/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cockpit)
+"OS" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/bed,
+/obj/item/bedsheet/clown,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/bunk)
+"Pw" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 4
+	},
+/obj/structure/table/bananium_reinforced,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/engine)
+"PD" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/bunk)
+"PL" = (
+/obj/machinery/alarm/alarms_hidden{
+	dir = 8;
+	pixel_x = 28
+	},
+/obj/structure/table/bananium_reinforced,
+/obj/machinery/power/apc/alarms_hidden{
+	pixel_y = 28
+	},
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cargo)
+"QF" = (
+/obj/structure/closet/emcloset/legacy,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"QI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock/external,
+/obj/item/bananapeel,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"QP" = (
+/obj/structure/bed/chair/bay/shuttle{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/shuttle/floor/red/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cockpit)
+"QR" = (
+/obj/machinery/door/window/southleft,
+/turf/simulated/floor/bananium,
+/area/submap/debrisfiled_vr/clownshuttle/bunk)
+"RH" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/hatch,
+/obj/item/assembly/mousetrap/armed,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
+"RR" = (
+/obj/machinery/alarm/alarms_hidden{
+	dir = 8;
+	pixel_x = 28
+	},
+/obj/structure/bed/chair/bay/shuttle{
+	dir = 8
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"RX" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cargo)
+"Sn" = (
+/mob/living/simple_mob/humanoid/clown/commando/ranged/space/alt,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"Sr" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"SE" = (
+/obj/structure/cable/cyan{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/machinery/power/apc/alarms_hidden{
+	pixel_y = 28
+	},
+/obj/structure/table/bananium_reinforced,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/engine)
+"Tc" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"Tq" = (
+/obj/structure/shuttle/engine/heater,
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
+	dir = 8
+	},
+/turf/simulated/shuttle/wall,
+/area/submap/debrisfiled_vr/clownshuttle/engine)
+"Tz" = (
+/obj/machinery/vending/tool,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
+"Um" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/bunk)
+"Vl" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 4
+	},
+/obj/structure/closet/syndicate/clownops/personal,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/bunk)
+"Wc" = (
+/obj/structure/fuel_port{
+	dir = 4;
+	pixel_x = 29
+	},
+/obj/machinery/alarm/alarms_hidden{
+	dir = 1;
+	pixel_y = -28
+	},
+/mob/living/simple_mob/humanoid/clown/commando/melee/space,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
+"Wf" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"Wo" = (
+/obj/effect/floor_decal/industrial/outline,
+/obj/structure/closet/crate/internals,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cargo)
+"XK" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
+	},
+/obj/structure/table/bananium_reinforced,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cargo)
+"Yj" = (
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cargo)
+"Yn" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/structure/table/bananium_reinforced,
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/engine)
+"Yp" = (
+/obj/machinery/atmospherics/portables_connector/fuel{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/machinery/portable_atmospherics/canister/phoron{
+	start_pressure = 0
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
+"YA" = (
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cargo)
+"YO" = (
+/obj/structure/window/reinforced,
+/obj/structure/table/bananium_reinforced,
+/obj/item/flame/candle/everburn,
+/turf/simulated/floor/bananium,
+/area/submap/debrisfiled_vr/clownshuttle/bunk)
+"Zb" = (
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle)
+"Zp" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/universal{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
+"Zr" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/shuttle/floor/red/airless,
+/area/submap/debrisfiled_vr/clownshuttle/cockpit)
+"ZC" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/simulated/shuttle/plating/airless,
+/area/submap/debrisfiled_vr/clownshuttle/engine)
+
+(1,1,1) = {"
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+"}
+(2,1,1) = {"
+Aq
+bw
+bw
+bw
+bw
+bw
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+mi
+mi
+mi
+mi
+Aq
+Aq
+"}
+(3,1,1) = {"
+Aq
+bw
+it
+Yj
+pt
+ow
+bw
+bw
+bw
+bw
+Aq
+Aq
+mi
+mi
+mi
+mi
+zR
+Yp
+Yp
+uc
+tQ
+Aq
+"}
+(4,1,1) = {"
+Aq
+bw
+it
+Yj
+Yj
+iz
+dK
+dK
+tN
+bw
+mA
+mA
+mi
+aP
+xC
+Cm
+Oy
+jF
+ID
+km
+tQ
+Aq
+"}
+(5,1,1) = {"
+Aq
+bw
+ow
+Wo
+Yj
+dd
+Yj
+Yj
+Yj
+bw
+gn
+Sn
+mi
+ww
+Zp
+Zp
+Zp
+Bo
+jF
+IJ
+tQ
+Aq
+"}
+(6,1,1) = {"
+Aq
+Aq
+bw
+ow
+oX
+YA
+Ay
+RX
+ce
+cK
+LK
+fw
+RH
+xV
+ge
+wi
+LJ
+Wc
+zR
+mi
+Aq
+Aq
+"}
+(7,1,1) = {"
+Aq
+Aq
+Aq
+bw
+ow
+PL
+XK
+vc
+Yj
+bw
+Ax
+Gm
+mi
+nG
+ri
+kY
+Tz
+zR
+mi
+Aq
+Aq
+Aq
+"}
+(8,1,1) = {"
+Aq
+bJ
+bJ
+bJ
+bJ
+bJ
+mA
+mA
+mA
+lQ
+Ax
+Gm
+lQ
+mA
+mA
+mA
+mA
+lQ
+Aq
+Aq
+Aq
+Aq
+"}
+(9,1,1) = {"
+Aq
+bJ
+aj
+nK
+EG
+bJ
+wV
+qb
+am
+pJ
+Ax
+Gm
+oo
+oo
+oo
+oo
+eF
+lQ
+mA
+mA
+mA
+Aq
+"}
+(10,1,1) = {"
+Aq
+sB
+hc
+OO
+kH
+lM
+Wf
+Tc
+Tc
+Tc
+Tc
+fp
+Tc
+Tc
+Tc
+Tc
+Wf
+QI
+un
+wB
+vr
+Aq
+"}
+(11,1,1) = {"
+Aq
+sB
+Hu
+QP
+Zr
+uA
+Sr
+Fs
+Fs
+Fs
+Fs
+Zb
+Fs
+Fs
+Fs
+lD
+yV
+kw
+Eo
+nW
+dO
+Aq
+"}
+(12,1,1) = {"
+Aq
+bJ
+Cz
+BG
+IE
+bJ
+qD
+db
+AL
+QF
+Ax
+Gm
+FY
+FY
+FY
+RR
+al
+lQ
+mA
+mA
+mA
+Aq
+"}
+(13,1,1) = {"
+Aq
+bJ
+bJ
+bJ
+bJ
+bJ
+mA
+mA
+mA
+lQ
+Ax
+Gm
+lQ
+mA
+mA
+mA
+mA
+lQ
+Aq
+Aq
+Aq
+Aq
+"}
+(14,1,1) = {"
+Aq
+Aq
+yI
+oA
+qr
+HT
+mN
+Vl
+ip
+oA
+Ax
+Gm
+nI
+hF
+Pw
+Yn
+hF
+Hx
+nI
+Aq
+Aq
+Aq
+"}
+(15,1,1) = {"
+Aq
+Aq
+oA
+qr
+ve
+PD
+Um
+zx
+Fe
+KZ
+LK
+GW
+nA
+zj
+JT
+rO
+wP
+Is
+Hx
+nI
+Aq
+Aq
+"}
+(16,1,1) = {"
+Aq
+oA
+qr
+YO
+an
+an
+an
+an
+an
+oA
+Kf
+Ax
+nI
+kX
+sQ
+wP
+wP
+wP
+wn
+Tq
+ZC
+Aq
+"}
+(17,1,1) = {"
+Aq
+oA
+Gl
+QR
+pP
+OS
+jv
+Ej
+jv
+oA
+mA
+mA
+nI
+SE
+JU
+HK
+DC
+wn
+oC
+Ng
+ZC
+Aq
+"}
+(18,1,1) = {"
+Aq
+oA
+MI
+aT
+xi
+qr
+oA
+oA
+oA
+oA
+Aq
+Aq
+nI
+nI
+nI
+nI
+Hx
+Nd
+Nd
+Hj
+ZC
+Aq
+"}
+(19,1,1) = {"
+Aq
+oA
+oA
+oA
+oA
+oA
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+nI
+nI
+nI
+nI
+Aq
+Aq
+"}
+(20,1,1) = {"
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+"}

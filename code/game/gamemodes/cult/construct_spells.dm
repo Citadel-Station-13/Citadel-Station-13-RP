@@ -434,6 +434,7 @@ proc/findNullRod(var/atom/target)
 	force = 0
 	show_examine = FALSE
 	owner = null
+	del_for_null_core = FALSE
 	core = null
 	cast_methods = null			// Controls how the spell is casted.
 	aspect = ASPECT_UNHOLY		// Used for combining spells. Pretty much any cult spell is unholy.
@@ -442,13 +443,13 @@ proc/findNullRod(var/atom/target)
 	cast_sound = null			// Sound file played when this is used.
 	var/last_castcheck = null	// The last time this spell was cast.
 
-/obj/item/spell/construct/New()
-	//..() //This kills the spell, because super on this calls the default spell's New, which checks for a core. Can't have that.
+/obj/item/spell/construct/Initialize(mapload)
 	if(isliving(loc))
 		owner = loc
 	if(!owner)
 		qdel(src)
 	update_icon()
+	return ..()
 
 /obj/item/spell/construct/adjust_instability(var/amount) //The only drawback to the boons of the geometer is the use of a mortal's blood as fuel. Constructs have already paid that price long ago.
 	return
@@ -528,7 +529,7 @@ proc/findNullRod(var/atom/target)
 		if(pay_energy(energy_cost_per_shot))
 			if(pre_shot_delay)
 				var/image/target_image = image(icon = 'icons/obj/spells.dmi', loc = get_turf(hit_atom), icon_state = "target")
-				user << target_image
+				SEND_IMAGE(user, target_image)
 				user.Stun(pre_shot_delay / 10)
 				sleep(pre_shot_delay)
 				qdel(target_image)
@@ -576,6 +577,8 @@ proc/findNullRod(var/atom/target)
 	light_range = 2
 	light_power = -2
 	light_color = "#FFFFFF"
+	antimagic_check = TRUE
+	antimagic_damage_factor = 0.66
 
 	muzzle_type = /obj/effect/projectile/muzzle/inversion
 	tracer_type = /obj/effect/projectile/tracer/inversion

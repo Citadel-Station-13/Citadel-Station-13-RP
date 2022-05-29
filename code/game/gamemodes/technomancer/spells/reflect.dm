@@ -7,7 +7,7 @@
 	category = DEFENSIVE_SPELLS
 
 /obj/item/spell/reflect
-	name = "\proper reflect shield"
+	name = "reflection shield"
 	icon_state = "reflect"
 	desc = "A very protective combat shield that'll reflect the next attack at the unfortunate person who tried to shoot you."
 	aspect = ASPECT_FORCE
@@ -16,18 +16,17 @@
 	var/damage_to_energy_multiplier = 60.0 //Determines how much energy to charge for blocking, e.g. 20 damage attack = 1200 energy cost
 	var/datum/effect_system/spark_spread/spark_system = null
 
-/obj/item/spell/reflect/New()
-	..()
+/obj/item/spell/reflect/Initialize(mapload)
+	. = ..()
 	set_light(3, 2, l_color = "#006AFF")
 	spark_system = new /datum/effect_system/spark_spread()
 	spark_system.set_up(5, 0, src)
 	to_chat(owner, "<span class='notice'>Your shield will expire in 3 seconds!</span>")
-	spawn(5 SECONDS)
-		if(src)
-			to_chat(owner, "<span class='danger'>Your shield expires!</span>")
-			qdel(src)
+	QDEL_IN(src, 5 SECONDS)
 
 /obj/item/spell/reflect/Destroy()
+	if(ismob(loc))
+		to_chat(loc, "<span class='danger'>Your shield expires!</span>")
 	spark_system = null
 	return ..()
 
@@ -43,7 +42,7 @@
 		return 0
 
 	//block as long as they are not directly behind us
-	var/bad_arc = reverse_direction(user.dir) //arc of directions from which we cannot block
+	var/bad_arc = REVERSE_DIR(user.dir) //arc of directions from which we cannot block
 	if(check_shield_arc(user, bad_arc, damage_source, attacker))
 
 		if(istype(damage_source, /obj/item/projectile))
@@ -77,8 +76,8 @@
 			var/obj/item/W = damage_source
 			if(attacker)
 				W.attack(attacker)
-				attacker << "<span class='danger'>Your [damage_source.name] goes through \the [src] in one location, comes out \
-				on the same side, and hits you!</span>"
+				to_chat(attacker, "<span class='danger'>Your [damage_source.name] goes through \the [src] in one location, comes out \
+				on the same side, and hits you!</span>")
 
 				spark_system.start()
 				playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)

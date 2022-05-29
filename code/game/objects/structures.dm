@@ -7,7 +7,11 @@
 	var/breakable
 	var/parts
 	var/list/climbers = list()
-	var/block_turf_edges = FALSE // If true, turf edge icons will not be made on the turf this occupies.
+
+	var/list/connections
+	var/list/other_connections
+	var/list/blend_objects = newlist() // Objects which to blend with
+	var/list/noblend_objects = newlist() //Objects to avoid blending with (such as children of listed blend objects.
 
 /obj/structure/Destroy()
 	if(parts)
@@ -46,8 +50,8 @@
 		if(3.0)
 			return
 
-/obj/structure/New()
-	..()
+/obj/structure/Initialize(mapload)
+	. = ..()
 	if(climbable)
 		verbs += /obj/structure/proc/climb_on
 
@@ -185,3 +189,68 @@
 	user.do_attack_animation(src)
 	spawn(1) qdel(src)
 	return 1
+
+/obj/structure/proc/can_visually_connect()
+	return anchored
+
+/obj/structure/proc/can_visually_connect_to(var/obj/structure/S)
+	return istype(S, src)
+
+/obj/structure/proc/update_connections(propagate = 0)
+	var/list/dirs = list()
+	var/list/other_dirs = list()
+
+	for(var/obj/structure/S in orange(src, 1))
+		if(can_visually_connect_to(S))
+			if(S.can_visually_connect())
+				if(propagate)
+					S.update_connections()
+					S.update_icon()
+				dirs += get_dir(src, S)
+
+	if(!can_visually_connect())
+		connections = list("0", "0", "0", "0")
+		other_connections = list("0", "0", "0", "0")
+		return FALSE
+
+	for(var/direction in GLOB.cardinal)
+		var/turf/T = get_step(src, direction)
+		var/success = 0
+		for(var/b_type in blend_objects)
+			if(istype(T, b_type))
+				success = 1
+				if(propagate)
+					var/turf/simulated/wall/W = T
+					if(istype(W))
+						QUEUE_SMOOTH(W)
+				if(success)
+					break // breaks inner loop
+		if(!success)
+			blend_obj_loop:
+				for(var/obj/O in T)
+					for(var/b_type in blend_objects)
+						if(istype(O, b_type))
+							success = 1
+							for(var/obj/structure/S in T)
+								if(istype(S, src))
+									success = 0
+							for(var/nb_type in noblend_objects)
+								if(istype(O, nb_type))
+									success = 0
+
+						if(success)
+							break blend_obj_loop // breaks outer loop
+
+		if(success)
+			dirs += get_dir(src, T)
+			other_dirs += get_dir(src, T)
+
+	refresh_neighbors()
+
+	connections = dirs_to_corner_states(dirs)
+	other_connections = dirs_to_corner_states(other_dirs)
+	return TRUE
+
+/obj/structure/proc/refresh_neighbors()
+	for(var/turf/T as anything in RANGE_TURFS(1, src))
+		T.update_icon()

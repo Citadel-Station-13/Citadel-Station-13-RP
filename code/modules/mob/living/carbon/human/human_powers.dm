@@ -1,5 +1,4 @@
-// These should all be procs, you can add them to humans/subspecies by
-// species.dm's inherent_verbs ~ Z
+// These should all be procs, you can add them to humans/subspecies by species.dm's inherent_verbs
 
 /mob/living/carbon/human/proc/tie_hair()
 	set name = "Tie Hair"
@@ -7,31 +6,31 @@
 	set category = "IC"
 
 	if(incapacitated())
-		to_chat(src, "<span class='warning'>You can't mess with your hair right now!</span>")
+		to_chat(src, SPAN_WARNING("You can't mess with your hair right now!"))
 		return
 
 	if(h_style)
 		var/datum/sprite_accessory/hair/hair_style = hair_styles_list[h_style]
 		var/selected_string
 		if(!(hair_style.flags & HAIR_TIEABLE))
-			to_chat(src, "<span class ='warning'>Your hair isn't long enough to tie.</span>")
+			to_chat(src, SPAN_WARNING("Your hair isn't long enough to tie."))
 			return
 		else
 			var/list/datum/sprite_accessory/hair/valid_hairstyles = list()
 			for(var/hair_string in hair_styles_list)
-				var/list/datum/sprite_accessory/hair/test = hair_styles_list[hair_string]
+				var/datum/sprite_accessory/hair/test = hair_styles_list[hair_string]
 				if(test.flags & HAIR_TIEABLE)
 					valid_hairstyles.Add(hair_string)
 			selected_string = input("Select a new hairstyle", "Your hairstyle", hair_style) as null|anything in valid_hairstyles
 		if(incapacitated())
-			to_chat(src, "<span class='warning'>You can't mess with your hair right now!</span>")
+			to_chat(src, SPAN_WARNING("You can't mess with your hair right now!"))
 			return
 		else if(selected_string && h_style != selected_string)
 			h_style = selected_string
 			regenerate_icons()
-			visible_message("<span class='notice'>[src] pauses a moment to style their hair.</span>")
+			visible_message(SPAN_NOTICE("[src] pauses a moment to style their hair."))
 		else
-			to_chat(src, "<span class ='notice'>You're already using that style.</span>")
+			to_chat(src, SPAN_NOTICE("You're already using that style."))
 
 /mob/living/carbon/human/proc/tackle()
 	set category = "Abilities"
@@ -88,33 +87,57 @@
 	var/list/targets = list()
 	var/target = null
 	var/text = null
+	var/default_distance_mod = 0 SECONDS
 
-	targets += getmobs() //Fill list, prompt user with list
+	if(nutrition < 50)
+		to_chat(src, SPAN_NOTICE("You don't have enough energy! Try eating. "))
+		return
+
+
+
+	for(var/datum/mind/possible_target in SSticker.minds)
+		if (istype(possible_target.current, /mob/living) && possible_target != src.mind)
+			LAZYADD(targets,possible_target.current)
+
 	target = input("Select a creature!", "Speak to creature", null, null) as null|anything in targets
-
-	if(!target) return
+	if(!target)
+		return
 
 	text = input("What would you like to say?", "Speak to creature", null, null)
-
 	text = sanitize(text)
 
-	if(!text) return
+	if(!text)
+		return
 
-	var/mob/M = targets[target]
-
-	if(istype(M, /mob/observer/dead) || M.stat == DEAD)
+	var/mob/living/M = target
+	if(M.stat == DEAD)
 		to_chat(src, "Not even a [src.species.name] can speak to the dead.")
 		return
 
-	log_say("(COMMUNE to [key_name(M)]) [text]",src)
+	//The further the target is, the longer it takes.
+	var/distance = get_dist(M.loc,loc)
+	var/distance_modifier
+	var/turf/target_location = get_turf(M.loc)
+	if(target_location)
+		if(target_location.z in GLOB.using_map.station_levels)
+			distance_modifier = 0	//No additional values if they're on-station
+	else
+		distance_modifier = default_distance_mod	//No quick snapchatting with someone off-station
 
-	to_chat(M, "<font color='blue'>Like lead slabs crashing into the ocean, alien thoughts drop into your mind: [text]</font>")
-	if(istype(M,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = M
-		if(H.species.name == src.species.name)
-			return
-		to_chat(H, "<font color='red'>Your nose begins to bleed...</font>")
-		H.drip(1)
+	var/delay = clamp((distance / 2), 1, 8) SECONDS + distance_modifier	//Half of distance worth of seconds, up to 8, plus 30 if they're off-station. Max: 38, min: 1.
+	src.visible_message(SPAN_WARNING("[src] seems to focus for a few seconds."),"You begin to seek [target] out. This may take a while.")
+
+	if(do_after(src, delay))
+		log_and_message_admins("COMMUNED to [key_name(M)]) [text]", src)
+
+		to_chat(M, SPAN_INTERFACE("Like lead slabs crashing into the ocean, alien thoughts drop into your mind: <b>[text]</b>"))
+		nutrition -= 50
+		if(istype(M,/mob/living/carbon/human))
+			var/mob/living/carbon/human/H = M
+			if(H.species.name == src.species.name)
+				return
+			to_chat(H, SPAN_DANGER("Your nose begins to bleed..."))
+			H.drip(1)
 
 /mob/living/carbon/human/proc/regurgitate()
 	set name = "Regurgitate"
@@ -126,7 +149,7 @@
 			if(M in stomach_contents)
 				stomach_contents.Remove(M)
 				M.loc = loc
-		src.visible_message("<font color='red'><B>[src] hurls out the contents of their stomach!</B></font>")
+		src.visible_message(SPAN_BOLDDANGER("[src] hurls out the contents of their stomach!"))
 	return
 
 /mob/living/carbon/human/proc/psychic_whisper(mob/M as mob in oview())
@@ -137,8 +160,8 @@
 	var/msg = sanitize(input("Message:", "Psychic Whisper") as text|null)
 	if(msg)
 		log_say("(PWHISPER to [key_name(M)]) [msg]", src)
-		to_chat(M, "<font color='green'>You hear a strange, alien voice in your head... <i>[msg]</i></font>")
-		to_chat(src, "<font color='green'>You said: \"[msg]\" to [M]</font>")
+		to_chat(M, SPAN_GREEN("You hear a strange, alien voice in your head... <i>[msg]</i>"))
+		to_chat(src, SPAN_GREEN("You said: \"[msg]\" to [M]"))
 	return
 
 /mob/living/carbon/human/proc/diona_split_nymph()
@@ -181,8 +204,8 @@
 	var/obj/item/organ/external/Chest = organs_by_name[BP_TORSO]
 
 	if(Chest.robotic >= 2)
-		visible_message("<span class='warning'>\The [src] shudders slightly, then ejects a cluster of nymphs with a wet slithering noise.</span>")
-		species = GLOB.all_species[SPECIES_HUMAN] // This is hard-set to default the body to a normal FBP, without changing anything.
+		visible_message(SPAN_WARNING("\The [src] shudders slightly, then ejects a cluster of nymphs with a wet slithering noise."))
+		set_species(/datum/species/human, skip = TRUE, force = TRUE) // This is hard-set to default the body to a normal FBP, without changing anything.
 
 		// Bust it
 		src.death()
@@ -198,7 +221,7 @@
 			E.droplimb(TRUE)
 
 	else
-		visible_message("<span class='warning'>\The [src] quivers slightly, then splits apart with a wet slithering noise.</span>")
+		visible_message(SPAN_WARNING("\The [src] quivers slightly, then splits apart with a wet slithering noise."))
 		qdel(src)
 
 /mob/living/carbon/human/proc/self_diagnostics()
@@ -208,81 +231,99 @@
 
 	if(stat == DEAD) return
 
-	to_chat(src, "<span class='notice'>Performing self-diagnostic, please wait...</span>")
-	sleep(50)
-	var/output = "<span class='notice'>Self-Diagnostic Results:\n</span>"
+	to_chat(src, SPAN_NOTICE("Performing self-diagnostic, please wait..."))
 
-	output += "Internal Temperature: [convert_k2c(bodytemperature)] Degrees Celsius\n"
+	spawn(50)
+		var/output = SPAN_NOTICE("Self-Diagnostic Results:\n")
 
-	output += "Current Battery Charge: [nutrition]\n"
+		output += "Internal Temperature: [convert_k2c(bodytemperature)] Degrees Celsius\n"
 
-	var/toxDam = getToxLoss()
-	if(toxDam)
-		output += "System Instability: <span class='warning'>[toxDam > 25 ? "Severe" : "Moderate"]</span>. Seek charging station for cleanup.\n"
-	else
-		output += "System Instability: <span style='color:green;'>OK</span>\n"
+		if(isSynthetic())
+			output += "Current Battery Charge: [nutrition]\n"
 
-	for(var/obj/item/organ/external/EO in organs)
-		if(EO.brute_dam || EO.burn_dam)
-			output += "[EO.name] - <span class='warning'>[EO.burn_dam + EO.brute_dam > EO.min_broken_damage ? "Heavy Damage" : "Light Damage"]</span>\n" //VOREStation Edit - Makes robotic limb damage scalable
-		else
-			output += "[EO.name] - <span style='color:green;'>OK</span>\n"
+		if(isSynthetic())
+			var/toxDam = getToxLoss()
+			if(toxDam)
+				output += "System Instability: [SPAN_WARNING("[toxDam > 25 ? "Severe" : "Moderate"]")]. Seek charging station for cleanup.\n"
+			else
+				output += "System Instability: [SPAN_GREEN("OK\n")]"
 
-	for(var/obj/item/organ/IO in internal_organs)
-		if(IO.damage)
-			output += "[IO.name] - <span class='warning'>[IO.damage > 10 ? "Heavy Damage" : "Light Damage"]</span>\n"
-		else
-			output += "[IO.name] - <span style='color:green;'>OK</span>\n"
+		for(var/obj/item/organ/external/EO in organs)
+			if(EO.robotic >= ORGAN_ASSISTED)
+				if(EO.brute_dam || EO.burn_dam)
+					output += "[EO.name] - [SPAN_WARNING("[EO.burn_dam + EO.brute_dam > EO.min_broken_damage ? "Heavy Damage" : "Light Damage"]")]\n"
+				else
+					output += "[EO.name] - [SPAN_GREEN("OK\n")]"
 
-	src << output
+		for(var/obj/item/organ/IO in internal_organs)
+			if(IO.robotic >= ORGAN_ASSISTED)
+				if(IO.damage)
+					output += "[IO.name] - [SPAN_WARNING("[IO.damage > 10 ? "Heavy Damage" : "Light Damage"]")]\n"
+				else
+					output += "[IO.name] - [SPAN_GREEN("OK\n")]"
+
+
+		to_chat(src,output)
+
+/mob/living/carbon/human/proc/setmonitor_state()
+	set name = "Set monitor display"
+	set desc = "Set your monitor display"
+	set category = "IC"
+
+	if(stat == DEAD) return
+
+	var/obj/item/organ/external/head/E = organs_by_name[BP_HEAD]
+	if(!E)
+		to_chat(src, SPAN_WARNING("You don't seem to have a head!"))
+		return
+
+	var/datum/robolimb/robohead = GLOB.all_robolimbs[E.model]
+	if(!robohead.monitor_styles || !robohead.monitor_icon)
+		to_chat(src, SPAN_WARNING("Your head doesn't have a monitor, or it doesn't support being changed!"))
+		return
+
+	var/list/states
+	if(!states)
+		states = params2list(robohead.monitor_styles)
+	var/choice = input("Select a screen icon.") as null|anything in states
+	if(choice)
+		E.eye_icon_location = robohead.monitor_icon
+		E.eye_icon = states[choice]
+		to_chat(src, SPAN_WARNING("You set your monitor to display [choice]!"))
+		update_icons_body()
 
 /mob/living/carbon/human
-	var/next_sonar_ping = 0
 
 /mob/living/carbon/human/proc/sonar_ping()
-	set name = "Listen In"
+	set name = "Sonar Pulse"
 	set desc = "Allows you to listen in to movement and noises around you."
 	set category = "Abilities"
 
 	if(incapacitated())
-		to_chat(src, "<span class='warning'>You need to recover before you can use this ability.</span>")
+		to_chat(src, SPAN_WARNING("You need to recover before you can use this ability."))
 		return
-	if(world.time < next_sonar_ping)
-		to_chat(src, "<span class='warning'>You need another moment to focus.</span>")
+	if(is_deaf())
+		to_chat(src, SPAN_WARNING("You are for all intents and purposes currently deaf!"))
 		return
-	if(is_deaf() || is_below_sound_pressure(get_turf(src)))
-		to_chat(src, "<span class='warning'>You are for all intents and purposes currently deaf!</span>")
+	if(!get_turf(src))
+		to_chat(src, SPAN_WARNING("Not from here you can't."))
 		return
-	next_sonar_ping += 10 SECONDS
-	var/heard_something = FALSE
-	to_chat(src, "<span class='notice'>You take a moment to listen in to your environment...</span>")
-	for(var/mob/living/L in range(client.view, src))
-		var/turf/T = get_turf(L)
-		if(!T || L == src || L.stat == DEAD || is_below_sound_pressure(T))
-			continue
-		heard_something = TRUE
-		var/feedback = list()
-		feedback += "<span class='notice'>There are noises of movement "
-		var/direction = get_dir(src, L)
-		if(direction)
-			feedback += "towards the [dir2text(direction)], "
-			switch(get_dist(src, L) / client.view)
-				if(0 to 0.2)
-					feedback += "very close by."
-				if(0.2 to 0.4)
-					feedback += "close by."
-				if(0.4 to 0.6)
-					feedback += "some distance away."
-				if(0.6 to 0.8)
-					feedback += "further away."
-				else
-					feedback += "far away."
-		else // No need to check distance if they're standing right on-top of us
-			feedback += "right on top of you."
-		feedback += "</span>"
-		src << jointext(feedback,null)
-	if(!heard_something)
-		to_chat(src, "<span class='notice'>You hear no movement but your own.</span>")
+	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_SONAR_PULSE))
+		to_chat(src, SPAN_WARNING("You need to wait some more to do that!"))
+		return
+	TIMER_COOLDOWN_START(src, COOLDOWN_SONAR_PULSE, 2 SECONDS)
+
+	visible_message(
+		SPAN_WARNING("[src] emits a quiet click."),
+		SPAN_WARNING("You emit a quiet click."),
+		SPAN_WARNING("You hear a quiet, high-pitched click.")
+	)
+	plane_holder.set_vis(VIS_SONAR, TRUE)
+	var/datum/automata/wave/sonar/single_mob/sonar_automata = new
+	sonar_automata.receiver = src
+	sonar_automata.setup_auto(get_turf(src), 14)
+	sonar_automata.start()
+	addtimer(CALLBACK(plane_holder, /datum/plane_holder/proc/set_vis, VIS_SONAR, FALSE), 5 SECONDS, flags = TIMER_OVERRIDE|TIMER_UNIQUE)
 
 /mob/living/carbon/human/proc/regenerate()
 	set name = "Regenerate"
@@ -290,11 +331,11 @@
 	set category = "Abilities"
 
 	if(nutrition < 250)
-		to_chat(src, "<span class='warning'>You lack the biomass to begin regeneration!</span>")
+		to_chat(src, SPAN_WARNING("You lack the biomass to begin regeneration!"))
 		return
 
 	if(active_regen)
-		to_chat(src, "<span class='warning'>You are already regenerating tissue!</span>")
+		to_chat(src, SPAN_WARNING("You are already regenerating tissue!"))
 		return
 	else
 		active_regen = TRUE
@@ -310,7 +351,7 @@
 			if(I.damage > 0)
 				I.damage = max(I.damage - 30, 0) //Repair functionally half of a dead internal organ.
 				I.status = 0	// Wipe status, as it's being regenerated from possibly dead.
-				to_chat(src, "<span class='notice'>You feel a soothing sensation within your [I.name]...</span>")
+				to_chat(src, SPAN_NOTICE("You feel a soothing sensation within your [I.name]..."))
 
 		// Replace completely missing limbs.
 		for(var/limb_type in src.species.has_limbs)
@@ -327,7 +368,7 @@
 				var/limb_path = organ_data["path"]
 				var/obj/item/organ/O = new limb_path(src)
 				organ_data["descriptor"] = O.name
-				to_chat(src, "<span class='notice'>You feel a slithering sensation as your [O.name] reform.</span>")
+				to_chat(src, SPAN_NOTICE("You feel a slithering sensation as your [O.name] reform."))
 
 				var/agony_to_apply = round(0.66 * O.max_damage) // 66% of the limb's health is converted into pain.
 				src.apply_damage(agony_to_apply, HALLOSS)
@@ -344,6 +385,34 @@
 		update_icons_body()
 		active_regen = FALSE
 	else
-		to_chat(src, "<span class='critical'>Your regeneration is interrupted!</span>")
+		to_chat(src, SPAN_NOTICE("Your regeneration is interrupted!"))
 		nutrition -= 75
 		active_regen = FALSE
+
+/mob/living/carbon/human/proc/get_charge(var/mob/living/carbon/human/H)
+	return H.nutrition
+
+/mob/living/carbon/human/proc/spend_charge(var/spent, var/mob/living/carbon/human/H)
+	H.nutrition = H.nutrition - spent
+
+/mob/living/carbon/human/verb/toggle_eyes_layer()
+	set name = "Switch Eyes/Monitor Layer"
+	set desc = "Toggle rendering of eyes/monitor above markings."
+	set category = "IC"
+
+	if(stat)
+		to_chat(src, SPAN_WARNING("You must be awake and standing to perform this action!"))
+		return
+	var/obj/item/organ/external/head/vr/H = organs_by_name[BP_HEAD]
+	if(!H)
+		to_chat(src, SPAN_WARNING("You don't seem to have a head!"))
+		return
+
+	H.eyes_over_markings = !H.eyes_over_markings
+	update_icons_body()
+
+	var/datum/robolimb/robohead = GLOB.all_robolimbs[H.model]
+	if(robohead.monitor_styles && robohead.monitor_icon)
+		to_chat(src, SPAN_NOTICE("You reconfigure the rendering order of your facial display."))
+
+	return TRUE

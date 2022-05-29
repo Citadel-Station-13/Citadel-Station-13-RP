@@ -70,19 +70,16 @@ LOG_ATTACK
 LOG_PDA
 
 ## log world.log messages
-# LOG_WORLD_OUTPUT
+#LOG_WORLD_OUTPUT
 
 ## log all Topic() calls (for use by coders in tracking down Topic issues)
-# LOG_HREFS
+#LOG_HREFS
 
 ## log world.log and runtime errors to a file
-# LOG_RUNTIME
+#LOG_RUNTIME
 
 ## log admin warning messages
 ##LOG_ADMINWARN  ## Also duplicates a bunch of other messages.
-
-## Enable/disable SQL connection (comment out to disable)
-SQL_ENABLED
 
 ## disconnect players who did nothing during the set amount of minutes
 # KICK_INACTIVE 10
@@ -387,7 +384,7 @@ EVENT_CUSTOM_START_MAJOR 80;100
 #DISABLE_RESPAWN
 
 ## Strength of ambient star light. Set to 0 or less to turn off. A value of 1 is unlikely to have a noticeable effect in most lightning systems.
-STARLIGHT 0
+STARLIGHT 1
 
 ## Defines which races are allowed to join as ERT, in singular form. If unset, defaults to only human. Casing matters, separate using ;
 ## Example races include: Human, Tajara, Skrell, Unathi
@@ -398,7 +395,7 @@ STARLIGHT 0
 
 ## Enables specific procedural map generation, generally for mining, however it is specific to the loaded map.  Uncomment to enable it, however it can
 ## worth it to keep it disabled if you are not hosting an actual server, to speed up start-up time for testing code.
-# GENERATE_MAP
+GENERATE_MAP
 
 ## Uncomment to enable organ decay outside of a body or storage item.
 #ORGANS_CAN_DECAY

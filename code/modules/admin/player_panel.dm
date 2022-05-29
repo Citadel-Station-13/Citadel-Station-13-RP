@@ -1,5 +1,5 @@
 
-/datum/admins/proc/player_panel_new()//The new one
+/datum/admins/proc/player_panel()//The new one
 	if (!usr.client.holder)
 		return
 	var/dat = "<html><head><title>Admin Player Panel</title></head>"
@@ -232,7 +232,7 @@
 					else if(isslime(M))
 						M_job = "slime"
 					else if(issmall(M))
-						M_job = "Monkey"
+						M_job = "Monkey" //???
 					else if(isalien(M))
 						M_job = "Alien"
 					else
@@ -405,8 +405,8 @@
 
 		dat += "<a href='?src=\ref[src];delay_round_end=1'>[SSticker.delay_end ? "End Round Normally" : "Delay Round End"]</a><br>"
 		dat += "<hr>"
-		for(var/antag_type in all_antag_types)
-			var/datum/antagonist/A = all_antag_types[antag_type]
+		for(var/antag_type in GLOB.all_antag_types)
+			var/datum/antagonist/A = GLOB.all_antag_types[antag_type]
 			dat += A.get_check_antag_output(src)
 		dat += "</body></html>"
 		usr << browse(dat, "window=roundstatus;size=400x500")

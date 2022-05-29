@@ -10,6 +10,8 @@
 	action_button_name = "Toggle Head-light"
 	w_class = ITEMSIZE_NORMAL
 	ear_protection = 1
+	drop_sound = 'sound/items/drop/helm.ogg'
+	pickup_sound = 'sound/items/pickup/helm.ogg'
 
 /obj/item/clothing/head/hardhat/orange
 	icon_state = "hardhat0_orange"
@@ -46,7 +48,7 @@
 	light_overlay = "helmet_light"
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 
-/obj/item/clothing/head/hardhat/ranger/Initialize()
+/obj/item/clothing/head/hardhat/ranger/Initialize(mapload)
 	. = ..()
 	if(icon_state == "ranger_helmet")
 		name = "[hatcolor] ranger helmet"

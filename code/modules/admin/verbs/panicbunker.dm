@@ -7,7 +7,7 @@ GLOBAL_LIST_EMPTY(bunker_passthrough)
 	if(!check_rights(R_ADMIN))
 		return
 
-	if (!config_legacy.sql_enabled)
+	if(!CONFIG_GET(flag/sql_enabled))
 		to_chat(usr, "<span class='adminnotice'>The Database is not enabled!</span>")
 		return
 
@@ -22,7 +22,7 @@ GLOBAL_LIST_EMPTY(bunker_passthrough)
 	set category = "Server"
 	set name = "Add PB Bypass"
 	set desc = "Allows a given ckey to connect despite the panic bunker for a given round."
-	if(!config_legacy.sql_enabled)
+	if(!CONFIG_GET(flag/sql_enabled))
 		to_chat(usr, "<span class='adminnotice'>The Database is not enabled!</span>")
 		return
 
@@ -37,7 +37,7 @@ GLOBAL_LIST_EMPTY(bunker_passthrough)
 	set category = "Server"
 	set name = "Revoke PB Bypass"
 	set desc = "Revoke's a ckey's permission to bypass the panic bunker for a given round."
-	if(!config_legacy.sql_enabled)
+	if(!CONFIG_GET(flag/sql_enabled))
 		to_chat(usr, "<span class='adminnotice'>The Database is not enabled!</span>")
 		return
 
@@ -60,3 +60,17 @@ GLOBAL_LIST_EMPTY(bunker_passthrough)
 	if (config_legacy.paranoia_logging && (!dbcon || !dbcon.IsConnected()))
 		message_admins("The Database is not connected! Paranoia logging will not be able to give 'player age' (time since first connection) warnings, only Byond account warnings.")
 	feedback_add_details("admin_verb","PARLOG") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/client/proc/ip_reputation()
+	set category = "Server"
+	set name = "Toggle IP Rep Checks"
+
+	if(!check_rights(R_ADMIN))
+		return
+
+	config_legacy.ip_reputation = (!config_legacy.ip_reputation)
+
+	log_and_message_admins("[key_name(usr)] has toggled IP reputation checks, it is now [(config_legacy.ip_reputation?"on":"off")].")
+	if (config_legacy.ip_reputation && (!dbcon || !dbcon.IsConnected()))
+		message_admins("The database is not connected! IP reputation logging will not be able to allow existing players to bypass the reputation checks (if that is enabled).")
+	feedback_add_details("admin_verb","IPREP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

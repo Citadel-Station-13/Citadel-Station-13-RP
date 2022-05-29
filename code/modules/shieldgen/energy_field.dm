@@ -14,17 +14,18 @@
 	icon = 'icons/obj/machines/shielding.dmi'
 	icon_state = "shield"
 	alpha = 100
-	anchored = 1
+	anchored = TRUE
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
-	density = 0
-	can_atmos_pass = ATMOS_PASS_DENSITY
+	density = FALSE
+	CanAtmosPass = ATMOS_PASS_NOT_BLOCKED
 	var/obj/machinery/shield_gen/my_gen = null
 	var/strength = 0 // in Renwicks
 	var/ticks_recovering = 10
 	var/max_strength = 10
 
 /obj/effect/energy_field/Initialize(mapload, new_gen)
+	. = ..()
 	my_gen = new_gen
 	update_nearby_tiles()
 
@@ -34,7 +35,7 @@
 	my_gen = null
 	var/turf/current_loc = get_turf(src)
 	. = ..()
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		var/turf/T = get_step(current_loc, direction)
 		if(T)
 			for(var/obj/effect/energy_field/F in T)
@@ -109,7 +110,7 @@
 /obj/effect/energy_field/update_icon(var/update_neightbors = 0)
 	overlays.Cut()
 	var/list/adjacent_shields_dir = list()
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		var/turf/T = get_step(src, direction)
 		if(T) // Incase we somehow stepped off the map.
 			for(var/obj/effect/energy_field/F in T)
@@ -139,10 +140,9 @@
 	i--
 	if(i)
 		spawn(2)
-			for(var/direction in cardinal)
+			for(var/direction in GLOB.cardinal)
 				var/turf/T = get_step(src, direction)
 				if(T) // Incase we somehow stepped off the map.
 					for(var/obj/effect/energy_field/F in T)
 						if(!(F in affected_shields))
 							F.impact_effect(i, affected_shields) // Spread the effect to them.
-

@@ -7,7 +7,8 @@
 	var/special_delivery = FALSE
 	w_class = ITEMSIZE_SMALL
 
-/obj/item/pizzavoucher/New()
+/obj/item/pizzavoucher/Initialize(mapload)
+	. = ..()
 	var/list/descstrings = list("24/7 PIZZA PIE HEAVEN",
 	"WE ALWAYS DELIVER!",
 	"24-HOUR PIZZA PIE POWER!",
@@ -51,13 +52,13 @@
 	name = "PIZZA PIE POWER!"
 	crushing = FALSE
 
-/obj/effect/falling_effect/pizza_delivery/New()
+/obj/effect/falling_effect/pizza_delivery/Initialize(mapload)
+	. = ..()
 	falling_type = pick(prob(20);/obj/item/pizzabox/meat,
 				prob(20);/obj/item/pizzabox/margherita,
 				prob(20);/obj/item/pizzabox/vegetable,
 				prob(20);/obj/item/pizzabox/mushroom,
 				prob(20);/obj/item/pizzabox/pineapple)
-	..()
 
 /obj/effect/falling_effect/pizza_delivery/special
 	crushing = TRUE

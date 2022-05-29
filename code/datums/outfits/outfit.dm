@@ -1,26 +1,17 @@
-var/list/outfits_decls_
-var/list/outfits_decls_root_
-var/list/outfits_decls_by_type_
+/proc/get_all_outfits()
+	. = list()
+	for(var/path in subtypesof(/datum/outfit))
+		var/datum/outfit/O = path
+		if(initial(O.abstract_type) == path)
+			continue
+		. += new path
+	sortTim(., /proc/cmp_name_asc)
 
-/proc/outfit_by_type(var/outfit_type)
-	if(!outfits_decls_root_)
-		init_outfit_decls()
-	return outfits_decls_by_type_[outfit_type]
-
-/proc/outfits()
-	if(!outfits_decls_root_)
-		init_outfit_decls()
-	return outfits_decls_
-
-/proc/init_outfit_decls()
-	if(outfits_decls_root_)
-		return
-	outfits_decls_ = list()
-	outfits_decls_by_type_ = list()
-	outfits_decls_root_ = new/decl/hierarchy/outfit()
-
-/decl/hierarchy/outfit
-	name = "Naked"
+/datum/outfit
+	/// the outfit's name
+	var/name = "Naked"
+	/// abstract type - set to self type for abstract outfits.
+	var/abstract_type = /datum/outfit
 
 	var/uniform = null
 	var/suit = null
@@ -39,7 +30,9 @@ var/list/outfits_decls_by_type_
 	var/suit_store = null
 	var/r_hand = null
 	var/l_hand = null
-	var/list/backpack_contents = list() // In the list(path=count,otherpath=count) format
+	// In the list(path=count,otherpath=count) format
+	var/list/uniform_accessories = list() // webbing, armbands etc - fits in slot_tie
+	var/list/backpack_contents = list()
 
 	var/id_type
 	var/id_desc
@@ -54,29 +47,25 @@ var/list/outfits_decls_by_type_
 	var/satchel_one  = /obj/item/storage/backpack/satchel/norm
 	var/satchel_two  = /obj/item/storage/backpack/satchel
 	var/messenger_bag = /obj/item/storage/backpack/messenger
+	var/rig = /obj/item/storage/backpack/rig
+	var/dufflebag = /obj/item/storage/backpack/dufflebag
 
 	var/flags // Specific flags
 
 	var/undress = 1	//Does the outfit undress the mob upon equp?
 
-/decl/hierarchy/outfit/New()
-	..()
-
-	if(is_hidden_category())
-		return
-	outfits_decls_by_type_[type] = src
-	dd_insertObjectList(outfits_decls_, src)
-
-/decl/hierarchy/outfit/proc/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/proc/pre_equip(mob/living/carbon/human/H)
 	if(flags & OUTFIT_HAS_BACKPACK)
 		switch(H.backbag)
 			if(2) back = backpack
 			if(3) back = satchel_one
 			if(4) back = satchel_two
 			if(5) back = messenger_bag
-			else back = null
+			if(6) back = rig
+			if(7) back = dufflebag
+			else  back = null
 
-/decl/hierarchy/outfit/proc/post_equip(mob/living/carbon/human/H)
+/datum/outfit/proc/post_equip(mob/living/carbon/human/H)
 	if(flags & OUTFIT_HAS_JETPACK)
 		var/obj/item/tank/jetpack/J = locate(/obj/item/tank/jetpack) in H
 		if(!J)
@@ -84,10 +73,10 @@ var/list/outfits_decls_by_type_
 		J.toggle()
 		J.toggle_valve()
 
-/decl/hierarchy/outfit/proc/equip(mob/living/carbon/human/H, var/rank, var/assignment)
+/datum/outfit/proc/equip(mob/living/carbon/human/H, rank, assignment)
 	equip_base(H)
 
-	rank = id_pda_assignment || rank
+	rank = rank || id_pda_assignment
 	assignment = id_pda_assignment || assignment || rank
 	var/obj/item/card/id/W = equip_id(H, rank, assignment)
 	if(W)
@@ -101,11 +90,12 @@ var/list/outfits_decls_by_type_
 			H.equip_to_slot_or_del(new path(H), slot_in_backpack)
 
 	post_equip(H)
+
 	if(W) // We set ID info last to ensure the ID photo is as correct as possible.
 		H.set_id_info(W)
 	return 1
 
-/decl/hierarchy/outfit/proc/equip_base(mob/living/carbon/human/H)
+/datum/outfit/proc/equip_base(mob/living/carbon/human/H)
 	pre_equip(H)
 
 	//Start with uniform,suit,backpack for additional slots
@@ -144,10 +134,16 @@ var/list/outfits_decls_by_type_
 		H.put_in_l_hand(new l_hand(H))
 	if(r_hand)
 		H.put_in_r_hand(new r_hand(H))
+
+	for(var/path in uniform_accessories)
+		var/number = uniform_accessories[path]
+		for(var/i=0,i<number,i++)
+			H.equip_to_slot_or_del(new path(H), slot_tie)
+
 	if(H.species)
 		H.species.equip_survival_gear(H, flags&OUTFIT_EXTENDED_SURVIVAL, flags&OUTFIT_COMPREHENSIVE_SURVIVAL)
 
-/decl/hierarchy/outfit/proc/equip_id(mob/living/carbon/human/H, rank, assignment)
+/datum/outfit/proc/equip_id(mob/living/carbon/human/H, rank, assignment)
 	if(!id_slot || !id_type)
 		return
 	var/obj/item/card/id/W = new id_type(H)
@@ -160,7 +156,7 @@ var/list/outfits_decls_by_type_
 	if(H.equip_to_slot_or_del(W, id_slot))
 		return W
 
-/decl/hierarchy/outfit/proc/equip_pda(mob/living/carbon/human/H, rank, assignment)
+/datum/outfit/proc/equip_pda(mob/living/carbon/human/H, rank, assignment)
 	if(!pda_slot || !pda_type)
 		return
 	var/obj/item/pda/pda = new pda_type(H)
@@ -171,7 +167,108 @@ var/list/outfits_decls_by_type_
 		pda.name = "PDA-[H.real_name] ([assignment])"
 		if(H.client.prefs.ringtone) // if null we use the job default
 			pda.ringtone = H.client.prefs.ringtone
+		sortTim(GLOB.PDAs, /proc/cmp_name_asc)
 		return pda
 
-/decl/hierarchy/outfit/dd_SortValue()
+/datum/outfit/dd_SortValue()
 	return name
+
+
+//! ## VR FILE MERGE ## !//
+
+/datum/outfit/JSDF/Marine
+	name = "JSDF marine"
+	uniform = /obj/item/clothing/under/oricon/utility/marine/green
+	shoes = /obj/item/clothing/shoes/boots/jackboots
+	gloves = /obj/item/clothing/gloves/combat
+	l_ear = /obj/item/radio/headset
+	r_pocket = /obj/item/ammo_magazine/m95
+	l_pocket = /obj/item/ammo_magazine/m95
+	l_hand = /obj/item/ammo_magazine/m95
+	r_hand = /obj/item/ammo_magazine/m95
+	back = /obj/item/gun/projectile/automatic/battlerifle
+	backpack_contents = list(/obj/item/storage/box = 1)
+	abstract_type = /datum/outfit/wizard
+	head = /obj/item/clothing/head/helmet/combat/JSDF
+	suit = /obj/item/clothing/suit/armor/combat/JSDF
+	belt = /obj/item/storage/belt/security/tactical
+
+/datum/outfit/JSDF/Marine/equip_id(mob/living/carbon/human/H)
+	var/obj/item/card/id/C = ..()
+	C.name = "[H.real_name]'s military ID Card"
+	C.icon_state = "lifetime"
+	C.assignment = "JSDF"
+	C.registered_name = H.real_name
+	return C
+
+/datum/outfit/JSDF/Officer
+	name = "JSDF officer"
+	head = /obj/item/clothing/head/dress/marine/command/admiral
+	shoes = /obj/item/clothing/shoes/boots/jackboots
+	uniform = /obj/item/clothing/under/oricon/mildress/marine/command
+	back = /obj/item/storage/backpack/satchel
+	belt = /obj/item/gun/projectile/revolver/consul
+	l_pocket = /obj/item/ammo_magazine/s44
+	r_pocket = /obj/item/ammo_magazine/s44
+	r_hand = /obj/item/clothing/accessory/holster/hip
+	l_hand = /obj/item/clothing/accessory/tie/black
+
+/datum/outfit/JSDF/Officer/equip_id(mob/living/carbon/human/H)
+	var/obj/item/card/id/C = ..()
+	C.name = "[H.real_name]'s military ID Card"
+	C.icon_state = "lifetime"
+	C.assignment = "JSDF"
+	C.registered_name = H.real_name
+	return C
+
+/datum/outfit/oricon/representative
+	name = "Confederation Representative"
+	shoes = /obj/item/clothing/shoes/laceup
+	l_ear = /obj/item/radio/headset/centcom
+	uniform = /obj/item/clothing/under/suit_jacket/navy
+	back = /obj/item/storage/backpack/satchel
+	l_pocket = /obj/item/pen/blue
+	r_pocket = /obj/item/pen/red
+	r_hand = /obj/item/pda/centcom
+	l_hand = /obj/item/clipboard
+
+/datum/outfit/oricon/representative/equip_id(mob/living/carbon/human/H)
+	var/obj/item/card/id/C = ..()
+	C.name = "[H.real_name]'s OriCon ID Card"
+	C.icon_state = "lifetime"
+	C.assignment = "OriCon Representative"
+	C.registered_name = H.real_name
+	return C
+
+/datum/outfit/imperial/soldier
+	name = "Imperial soldier"
+	head = /obj/item/clothing/head/helmet/combat/imperial
+	shoes =/obj/item/clothing/shoes/leg_guard/combat/imperial
+	gloves = /obj/item/clothing/gloves/arm_guard/combat/imperial
+	l_ear = /obj/item/radio/headset/syndicate
+	uniform = /obj/item/clothing/under/imperial
+	mask = /obj/item/clothing/mask/gas/imperial
+	suit = /obj/item/clothing/suit/armor/combat/imperial
+	back = /obj/item/storage/backpack/satchel
+	belt = /obj/item/storage/belt/security/tactical/bandolier
+	l_pocket = /obj/item/cell/device/weapon
+	r_pocket = /obj/item/cell/device/weapon
+	r_hand = /obj/item/melee/energy/sword/imperial
+	l_hand = /obj/item/shield/energy/imperial
+	suit_store = /obj/item/gun/energy/imperial
+
+/datum/outfit/imperial/officer
+	name = "Imperial officer"
+	head = /obj/item/clothing/head/helmet/combat/imperial/centurion
+	shoes = /obj/item/clothing/shoes/leg_guard/combat/imperial
+	gloves = /obj/item/clothing/gloves/arm_guard/combat/imperial
+	l_ear = /obj/item/radio/headset/syndicate
+	uniform = /obj/item/clothing/under/imperial
+	mask = /obj/item/clothing/mask/gas/imperial
+	suit = /obj/item/clothing/suit/armor/combat/imperial/centurion
+	belt = /obj/item/storage/belt/security/tactical/bandolier
+	l_pocket = /obj/item/cell/device/weapon
+	r_pocket = /obj/item/cell/device/weapon
+	r_hand = /obj/item/melee/energy/sword/imperial
+	l_hand = /obj/item/shield/energy/imperial
+	suit_store = /obj/item/gun/energy/imperial

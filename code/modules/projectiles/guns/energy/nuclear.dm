@@ -29,19 +29,19 @@
 	force = 8
 	w_class = ITEMSIZE_LARGE	//Probably gonna make it a rifle sooner or later
 	fire_delay = 6
-
+	heavy = TRUE
 	projectile_type = /obj/item/projectile/beam/stun/weak
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2, TECH_ILLEGAL = 3)
 	modifystate = "fm-2tstun"
 
 //	requires_two_hands = 1
-//	one_handed_penalty = 30
+	one_handed_penalty = 30
 
 	firemodes = list(
 		list(mode_name="stun", burst=1, projectile_type=/obj/item/projectile/beam/stun/weak, modifystate="fm-2tstun", charge_cost = 100),
-		list(mode_name="stun burst", burst=3, fire_delay=null, move_delay=4, burst_accuracy=list(0,0,0), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/item/projectile/beam/stun/weak, modifystate="fm-2tstun"),
+		list(mode_name="stun burst", burst=3, fire_delay=null, move_delay=4, burst_accuracy=list(65,65,65), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/item/projectile/beam/stun/weak, modifystate="fm-2tstun"),
 		list(mode_name="lethal", burst=1, projectile_type=/obj/item/projectile/beam/burstlaser, modifystate="fm-2tkill", charge_cost = 200),
-		list(mode_name="lethal burst", burst=3, fire_delay=null, move_delay=4, burst_accuracy=list(0,0,0), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/item/projectile/beam/burstlaser, modifystate="fm-2tkill"),
+		list(mode_name="lethal burst", burst=3, fire_delay=null, move_delay=4, burst_accuracy=list(65,65,65), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/item/projectile/beam/burstlaser, modifystate="fm-2tkill"),
 		)
 
 /obj/item/gun/energy/gun/nuclear
@@ -53,15 +53,40 @@
 	slot_flags = SLOT_BELT
 	force = 8 //looks heavier than a pistol
 	w_class = ITEMSIZE_LARGE	//Looks bigger than a pistol, too.
+	heavy = TRUE
 	fire_delay = 6	//This one's not a handgun, it should have the same fire delay as everything else
 	cell_type = /obj/item/cell/device/weapon/recharge
 	battery_lock = 1
 	modifystate = null
 
 //	requires_two_hands = 1
-//	one_handed_penalty = 15 // It's rather bulky, so holding it in one hand is a little harder than with two, however it's not 'required'.
+	one_handed_penalty = 30 // It's rather bulky at the fore, so holding it in one hand is harder than with two.
 
 	firemodes = list(
 		list(mode_name="stun", projectile_type=/obj/item/projectile/beam/stun, modifystate="nucgunstun", charge_cost = 240),
 		list(mode_name="lethal", projectile_type=/obj/item/projectile/beam, modifystate="nucgunkill", charge_cost = 480),
+		)
+
+/obj/item/gun/energy/gun/multiphase
+	name = "\improper X-01 MultiPhase Energy Gun"
+	desc = "This is an expensive, modern recreation of an antique laser gun. This gun has several unique firemodes, but lacks the ability to recharge over time."
+	icon = 'icons/obj/multiphase.dmi'
+	item_icons = list(
+		slot_l_hand_str = 'icons/mob/inhands/guns_left.dmi',
+		slot_r_hand_str = 'icons/mob/inhands/guns_right.dmi',
+		)
+	icon_state = "multiphasedis100"
+	projectile_type = /obj/item/projectile/beam/stun/disabler
+	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_POWER = 3)
+	slot_flags = SLOT_BELT|SLOT_HOLSTER
+	force = 10 //for the HOS to lay down a good beating in desperate situations. Holdover from TG.
+	w_class = ITEMSIZE_NORMAL
+	fire_delay = 6	//standard rate
+	battery_lock = 0
+	modifystate = null
+
+	firemodes = list(
+		list(mode_name="disable", burst=3, fire_delay=null, move_delay=4, burst_accuracy=list(0,0,0), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/item/projectile/beam/stun/disabler, modifystate="multiphasedis", charge_cost = 100),
+		list(mode_name="stun", burst=1, projectile_type=/obj/item/projectile/energy/electrode/goldenbolt, modifystate="multiphasestun", charge_cost = 480),
+		list(mode_name="lethal", burst=1, projectile_type=/obj/item/projectile/beam, modifystate="multiphasekill", charge_cost = 240),
 		)

@@ -7,7 +7,7 @@
 	opacity = 0
 	anchored = 1
 	unacidable = 1
-	can_atmos_pass = ATMOS_PASS_NO
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	var/const/max_health = 200
 	var/health = max_health //The shield can only take so much beating (prevents perma-prisons)
 	var/shield_generate_power = 7500	//how much power we use when regenerating
@@ -18,7 +18,7 @@
 	desc = "A weak forcefield which seems to be projected by the station's emergency atmosphere containment field"
 	health = max_health/2 // Half health, it's not suposed to resist much.
 
-/obj/machinery/shield/malfai/process()
+/obj/machinery/shield/malfai/process(delta_time)
 	health -= 0.5 // Slowly lose integrity over time
 	check_failure()
 
@@ -139,7 +139,7 @@
 	var/global/list/blockedturfs =  list(
 		/turf/space,
 		/turf/simulated/floor/outdoors,
-	)
+	)		//For Future additions to exterior tiles, add them on this list.
 
 /obj/machinery/shieldgen/Destroy()
 	collapse_shields()
@@ -183,14 +183,14 @@
 /obj/machinery/shieldgen/power_change()
 	..()
 	if(!active) return
-	if (stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		collapse_shields()
 	else
 		create_shields()
 	update_icon()
 
-/obj/machinery/shieldgen/process()
-	if (!active || (stat & NOPOWER))
+/obj/machinery/shieldgen/process(delta_time)
+	if(!active || (machine_stat & NOPOWER))
 		return
 
 	if(malfunction)
@@ -258,14 +258,14 @@
 		return
 
 	if (src.active)
-		user.visible_message("<font color='blue'>\icon[src] [user] deactivated the shield generator.</font>", \
-			"<font color='blue'>\icon[src] You deactivate the shield generator.</font>", \
+		user.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [user] deactivated the shield generator.</font>", \
+			"<font color=#4F49AF>[icon2html(thing = src, target = user)] You deactivate the shield generator.</font>", \
 			"You hear heavy droning fade out.")
 		src.shields_down()
 	else
 		if(anchored)
-			user.visible_message("<font color='blue'>\icon[src] [user] activated the shield generator.</font>", \
-				"<font color='blue'>\icon[src] You activate the shield generator.</font>", \
+			user.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [user] activated the shield generator.</font>", \
+				"<font color=#4F49AF>[icon2html(thing = src, target = user)] You activate the shield generator.</font>", \
 				"You hear heavy droning.")
 			src.shields_up()
 		else
@@ -282,10 +282,10 @@
 	if(W.is_screwdriver())
 		playsound(src, W.usesound, 100, 1)
 		if(is_open)
-			to_chat(user, "<font color='blue'>You close the panel.</font>")
+			to_chat(user, "<font color=#4F49AF>You close the panel.</font>")
 			is_open = 0
 		else
-			to_chat(user, "<font color='blue'>You open the panel and expose the wiring.</font>")
+			to_chat(user, "<font color=#4F49AF>You open the panel and expose the wiring.</font>")
 			is_open = 1
 
 	else if(istype(W, /obj/item/stack/cable_coil) && malfunction && is_open)
@@ -305,15 +305,15 @@
 			return
 		if(anchored)
 			playsound(src, W.usesound, 100, 1)
-			to_chat(user, "<font color='blue'>You unsecure the [src] from the floor!</font>")
+			to_chat(user, "<font color=#4F49AF>You unsecure the [src] from the floor!</font>")
 			if(active)
-				to_chat(user, "<font color='blue'>The [src] shuts off!</font>")
+				to_chat(user, "<font color=#4F49AF>The [src] shuts off!</font>")
 				src.shields_down()
 			anchored = 0
 		else
 			if(istype(get_turf(src), /turf/space)) return //No wrenching these in space!
 			playsound(src, W.usesound, 100, 1)
-			to_chat(user, "<font color='blue'>You secure the [src] to the floor!</font>")
+			to_chat(user, "<font color=#4F49AF>You secure the [src] to the floor!</font>")
 			anchored = 1
 
 
@@ -329,7 +329,7 @@
 
 
 /obj/machinery/shieldgen/update_icon()
-	if(active && !(stat & NOPOWER))
+	if(active && !(machine_stat & NOPOWER))
 		src.icon_state = malfunction ? "shieldonbr":"shieldon"
 	else
 		src.icon_state = malfunction ? "shieldoffbr":"shieldoff"

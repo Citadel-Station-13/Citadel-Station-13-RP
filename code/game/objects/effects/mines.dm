@@ -12,7 +12,8 @@
 	var/datum/wires/mines/wires = null
 	register_as_dangerous_object = TRUE
 
-/obj/effect/mine/New()
+/obj/effect/mine/Initialize(mapload)
+	. = ..()
 	icon_state = "uglyminearmed"
 	wires = new(src)
 
@@ -35,7 +36,10 @@
 		explode()
 	..()
 
-/obj/effect/mine/Crossed(AM as mob|obj)
+/obj/effect/mine/Crossed(atom/movable/AM as mob|obj)
+	. = ..()
+	if(AM.is_incorporeal())
+		return
 	Bumped(AM)
 
 /obj/effect/mine/Bumped(mob/M as mob|obj)

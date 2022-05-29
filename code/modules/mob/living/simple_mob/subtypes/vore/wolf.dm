@@ -9,11 +9,14 @@
 	name = "grey wolf"
 	desc = "My, what big jaws it has!"
 	tt_desc = "Canis lupus"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/wolf)
 
 	icon_dead = "wolf-dead"
 	icon_living = "wolf"
 	icon_state = "wolf"
 	icon = 'icons/mob/vore.dmi'
+
+	randomized = TRUE
 
 	movement_cooldown = 5
 

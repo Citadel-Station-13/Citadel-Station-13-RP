@@ -1,0 +1,1448 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aG" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"bR" = (
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	name = "Jammed Crash Shutter";
+	opacity = 0
+	},
+/obj/item/stack/rods,
+/obj/item/material/shard,
+/turf/simulated/floor/plating/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"cc" = (
+/obj/machinery/power/apc/alarms_hidden{
+	cell_type = /obj/item/cell/high/empty;
+	pixel_x = 28
+	},
+/obj/structure/cable/cyan{
+	dir = 4
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"cI" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/floor_decal/rust,
+/obj/item/stack/material/steel,
+/obj/item/stack/material/steel,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"dH" = (
+/obj/machinery/computer/ship/helm{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"ef" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/backpack/parachute,
+/obj/item/storage/backpack/parachute,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"ei" = (
+/obj/structure/closet/crate,
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"eO" = (
+/obj/effect/alien/weeds/node,
+/mob/living/simple_mob/animal/space/alien/drone,
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
+"fa" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	name = "Jammed Blast Door";
+	opacity = 0
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Cargo Bay Hatch"
+	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"fJ" = (
+/obj/effect/alien/weeds,
+/obj/structure/bed/nest,
+/obj/item/digestion_remains/skull/teshari,
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
+"fK" = (
+/obj/effect/alien/weeds,
+/obj/item/clothing/mask/facehugger,
+/obj/structure/simple_door/resin{
+	dir = 4
+	},
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
+"ge" = (
+/obj/structure/cable/cyan{
+	dir = 8
+	},
+/obj/machinery/power/smes/buildable/point_of_interest,
+/turf/simulated/floor/plating/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"gv" = (
+/obj/structure/simple_door/resin,
+/obj/effect/alien/weeds,
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
+"gR" = (
+/obj/effect/alien/weeds,
+/obj/structure/bed/nest,
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
+"gX" = (
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"hH" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 1
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Maintenance Hatch"
+	},
+/turf/simulated/floor/plating/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"ie" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/table/rack/shelf/steel,
+/obj/item/stack/material/resin,
+/obj/item/stack/material/resin,
+/obj/item/stack/material/resin,
+/obj/item/stack/material/resin,
+/obj/item/stack/material/resin,
+/obj/item/stack/material/resin,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"in" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
+/turf/simulated/floor/plating/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"iC" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/porta_turret/alien/destroyed{
+	desc = "A high-tech turret frame, presumably used to non-lethally disable dangerous fauna.";
+	dir = 4;
+	name = "destroyed specimen suppression turret"
+	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"iN" = (
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"jf" = (
+/obj/effect/alien/weeds,
+/obj/item/clothing/mask/facehugger,
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
+"jq" = (
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
+"kv" = (
+/obj/structure/simple_door/resin{
+	dir = 4
+	},
+/obj/effect/alien/weeds,
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
+"mP" = (
+/obj/effect/alien/weeds/node,
+/obj/effect/alien/egg,
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
+"np" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 10
+	},
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"nI" = (
+/turf/simulated/floor/plating/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"ok" = (
+/obj/structure/bed/chair/bay/shuttle{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"oB" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Maintenance Hatch"
+	},
+/turf/simulated/floor/plating/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"sT" = (
+/obj/effect/alien/weeds,
+/mob/living/simple_mob/animal/space/alien/sentinel/praetorian,
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
+"tf" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"uX" = (
+/obj/structure/bed,
+/obj/effect/decal/cleanable/blood,
+/obj/item/bedsheet/brown,
+/obj/item/digestion_remains/ribcage,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"vp" = (
+/obj/machinery/door/window/northleft,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"vw" = (
+/obj/machinery/porta_turret/alien/destroyed{
+	desc = "A high-tech turret frame, presumably used to non-lethally disable dangerous fauna.";
+	dir = 8;
+	name = "destroyed specimen suppression turret"
+	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"we" = (
+/obj/machinery/door/airlock/hatch{
+	name = "Cargo Bay Hatch"
+	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"wz" = (
+/obj/effect/alien/weeds,
+/obj/structure/simple_door/resin{
+	dir = 4
+	},
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
+"wQ" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"xc" = (
+/obj/effect/alien/weeds,
+/obj/structure/bed/nest,
+/obj/item/clothing/shoes/bhop,
+/obj/item/material/knife/tacknife/dataknife,
+/obj/item/clothing/under/utility,
+/obj/item/digestion_remains/skull,
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
+"xk" = (
+/obj/machinery/computer/shuttle_control/explore/excursion{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"xC" = (
+/obj/effect/decal/remains/xeno,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"xR" = (
+/obj/effect/alien/weeds/node,
+/mob/living/simple_mob/animal/space/alien/queen/empress,
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
+"ym" = (
+/obj/machinery/door/blast/regular{
+	name = "Crash Shutter"
+	},
+/turf/simulated/floor/plating/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"yA" = (
+/obj/machinery/computer/ship/sensors{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"zl" = (
+/turf/simulated/mineral/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
+"zr" = (
+/obj/effect/alien/weeds,
+/obj/structure/bed/nest,
+/obj/random/humanoidremains,
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
+"zB" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"zQ" = (
+/obj/structure/bed/chair/bay/shuttle{
+	dir = 4
+	},
+/obj/item/gun/projectile/revolver/mateba,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"BR" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 10
+	},
+/obj/structure/fuel_port{
+	dir = 4;
+	pixel_x = 29
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"Ck" = (
+/obj/structure/window/reinforced,
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"Cr" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel,
+/obj/machinery/light/small,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"CE" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8
+	},
+/turf/simulated/floor/plating/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"CH" = (
+/obj/machinery/door/airlock/hatch{
+	name = "Bridge Hatch"
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	name = "Jammed Blast Door";
+	opacity = 0
+	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"CK" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel,
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"Dj" = (
+/turf/template_noop,
+/area/template_noop)
+"EY" = (
+/turf/simulated/wall/resin,
+/area/submap/virgo2/CrashedSmuggler)
+"Fg" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/table/rack/shelf/steel,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"Fu" = (
+/obj/machinery/light,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"FF" = (
+/obj/item/ammo_casing/spent{
+	dir = 4;
+	pixel_x = -9
+	},
+/obj/item/ammo_casing/spent{
+	dir = 10;
+	pixel_x = 6;
+	pixel_y = -8
+	},
+/obj/item/ammo_casing/spent{
+	dir = 9;
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/item/ammo_casing/spent{
+	dir = 4;
+	pixel_x = -4;
+	pixel_y = -6
+	},
+/obj/item/ammo_casing/spent{
+	dir = 5;
+	pixel_x = 8;
+	pixel_y = 2
+	},
+/obj/item/ammo_casing/spent{
+	dir = 8;
+	pixel_x = 3;
+	pixel_y = 8
+	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"FV" = (
+/obj/machinery/atmospherics/portables_connector/fuel,
+/obj/machinery/portable_atmospherics/canister/phoron{
+	start_pressure = 0
+	},
+/turf/simulated/floor/plating/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"Gf" = (
+/obj/effect/alien/weeds/node,
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
+"Gh" = (
+/obj/effect/alien/weeds,
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
+"GY" = (
+/obj/machinery/door/window/southright,
+/obj/effect/floor_decal/industrial/warning/dust/corner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"Hx" = (
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	name = "Jammed Crash Shutter";
+	opacity = 0
+	},
+/obj/item/stack/rods,
+/turf/simulated/floor/plating/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"HE" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
+	dir = 1
+	},
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"HR" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"IB" = (
+/obj/effect/alien/weeds/node,
+/mob/living/simple_mob/animal/space/alien/sentinel,
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
+"IO" = (
+/obj/machinery/door/window/northright,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"Kl" = (
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	name = "Jammed Blast Door";
+	opacity = 0
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Commons Hatch"
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"KS" = (
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	name = "Jammed Crash Shutter";
+	opacity = 0
+	},
+/obj/item/material/shard,
+/turf/simulated/floor/plating/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"Lc" = (
+/obj/effect/alien/weeds,
+/obj/effect/alien/egg,
+/obj/item/clothing/mask/facehugger,
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
+"MM" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"MW" = (
+/obj/structure/bed/chair/bay/chair{
+	dir = 4
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"No" = (
+/obj/effect/alien/weeds,
+/mob/living/simple_mob/animal/space/alien/sentinel,
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
+"OE" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"OR" = (
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"Ps" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 9
+	},
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"Px" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/item/material/shard,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"PP" = (
+/obj/machinery/door/airlock/hatch{
+	name = "Commons Hatch"
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	name = "Jammed Blast Door";
+	opacity = 0
+	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"PY" = (
+/obj/machinery/computer/ship/engines{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"Qa" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/obj/machinery/power/terminal,
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/plating/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"Qz" = (
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	name = "Jammed Blast Door";
+	opacity = 0
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Cargo Bay Hatch"
+	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"QU" = (
+/obj/structure/window/reinforced,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"QV" = (
+/obj/item/material/shard,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"RJ" = (
+/obj/effect/alien/weeds,
+/obj/effect/alien/egg,
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
+"Sr" = (
+/obj/effect/alien/weeds,
+/obj/structure/bed/nest,
+/obj/item/storage/belt/security/tactical,
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
+"SH" = (
+/obj/machinery/door/window/southleft,
+/obj/effect/floor_decal/industrial/warning/dust/corner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"UW" = (
+/obj/structure/stasis_cage{
+	desc = "A high-tech animal cage. Something large tore this open from the inside.";
+	name = "shattered stasis cage"
+	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"VT" = (
+/obj/effect/alien/weeds/node,
+/obj/item/clothing/mask/facehugger,
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
+"Xq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 9
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plating/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"Yj" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"Zr" = (
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	name = "Jammed Blast Door";
+	opacity = 0
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/machinery/door/airlock/hatch{
+	name = "Bridge Hatch"
+	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"ZN" = (
+/obj/effect/alien/weeds,
+/mob/living/simple_mob/animal/space/alien/drone,
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
+
+(1,1,1) = {"
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+"}
+(2,1,1) = {"
+Dj
+jq
+jq
+jq
+jq
+jq
+jq
+jq
+jq
+jq
+jq
+jq
+jq
+jq
+jq
+jq
+jq
+jq
+zl
+zl
+zl
+zl
+jq
+Dj
+"}
+(3,1,1) = {"
+Dj
+jq
+jq
+jq
+jq
+jq
+jq
+gX
+CE
+CE
+OR
+jq
+jq
+OR
+CE
+CE
+gX
+zl
+zl
+zl
+zl
+zl
+zl
+Dj
+"}
+(4,1,1) = {"
+Dj
+jq
+jq
+jq
+jq
+jq
+jq
+gX
+np
+CK
+gX
+Qz
+fa
+gX
+HE
+Ps
+gX
+zl
+eO
+RJ
+zl
+zl
+zl
+Dj
+"}
+(5,1,1) = {"
+Dj
+jq
+jq
+jq
+jq
+zl
+zl
+gX
+FV
+Cr
+gX
+nI
+wQ
+gX
+Qa
+ge
+gX
+zl
+Gh
+Sr
+zl
+zl
+jq
+Dj
+"}
+(6,1,1) = {"
+Dj
+jq
+jq
+zl
+zl
+zl
+zl
+gX
+OR
+BR
+hH
+aG
+HR
+oB
+Xq
+cc
+gX
+zl
+wz
+EY
+zl
+zl
+zl
+Dj
+"}
+(7,1,1) = {"
+Dj
+jq
+zl
+zl
+zl
+zl
+zl
+gX
+gX
+gX
+gX
+we
+we
+gX
+gX
+OR
+gX
+zl
+Gh
+No
+VT
+zl
+zl
+Dj
+"}
+(8,1,1) = {"
+Dj
+jq
+zl
+zl
+RJ
+RJ
+zl
+zl
+gX
+iC
+QU
+iN
+iN
+Fg
+cI
+gX
+zl
+zl
+EY
+wz
+EY
+zl
+zl
+Dj
+"}
+(9,1,1) = {"
+Dj
+jq
+zl
+zl
+Gh
+Gh
+xR
+zl
+gX
+in
+GY
+iN
+nI
+IO
+iN
+gX
+zl
+zl
+Gh
+Gh
+Gh
+zl
+zl
+Dj
+"}
+(10,1,1) = {"
+Dj
+jq
+zl
+zl
+RJ
+Gh
+RJ
+zl
+gX
+UW
+Ck
+iN
+iN
+QV
+nI
+gX
+zl
+EY
+Gh
+EY
+wz
+zl
+zl
+Dj
+"}
+(11,1,1) = {"
+Dj
+jq
+zl
+zl
+RJ
+Gh
+RJ
+zl
+gX
+OE
+SH
+nI
+Yj
+vp
+iN
+gX
+zl
+Gf
+Gh
+EY
+VT
+zl
+zl
+Dj
+"}
+(12,1,1) = {"
+Dj
+jq
+zl
+zl
+zl
+wz
+EY
+zl
+gX
+vw
+Px
+iN
+iN
+ie
+ef
+gX
+zl
+ZN
+Gh
+zl
+zl
+zl
+zl
+Dj
+"}
+(13,1,1) = {"
+Dj
+jq
+jq
+zl
+zl
+sT
+Gf
+zl
+gX
+gX
+gX
+Kl
+PP
+gX
+gX
+gX
+zl
+Gh
+Gh
+zl
+zl
+zl
+jq
+Dj
+"}
+(14,1,1) = {"
+Dj
+jq
+zl
+zl
+gR
+Gh
+Gh
+zl
+gX
+MW
+iN
+tf
+iN
+iN
+ei
+gX
+zl
+fK
+zl
+zl
+zl
+jq
+jq
+Dj
+"}
+(15,1,1) = {"
+Dj
+jq
+jq
+zl
+xc
+Gh
+Gh
+zl
+gX
+zB
+iN
+iN
+nI
+iN
+uX
+gX
+zl
+Gh
+zl
+zl
+zl
+jq
+jq
+Dj
+"}
+(16,1,1) = {"
+Dj
+jq
+jq
+zl
+gR
+Gf
+Gh
+zl
+gX
+OR
+Zr
+gX
+gX
+CH
+OR
+gX
+zl
+Gh
+zl
+zl
+zl
+zl
+jq
+Dj
+"}
+(17,1,1) = {"
+Dj
+jq
+jq
+zl
+fJ
+Gh
+Gh
+zl
+zl
+gX
+xC
+yA
+PY
+nI
+gX
+zl
+zl
+Gh
+No
+zl
+zl
+zl
+jq
+Dj
+"}
+(18,1,1) = {"
+Dj
+jq
+zl
+zl
+zr
+Gh
+Gh
+zl
+zl
+gX
+FF
+zQ
+ok
+iN
+gX
+zl
+zl
+Gh
+Gh
+Gf
+zl
+zl
+jq
+Dj
+"}
+(19,1,1) = {"
+Dj
+jq
+jq
+zl
+zl
+EY
+fK
+zl
+zl
+gX
+MM
+dH
+xk
+Fu
+gX
+zl
+zl
+Gh
+EY
+Gh
+zl
+zl
+jq
+Dj
+"}
+(20,1,1) = {"
+Dj
+jq
+zl
+zl
+zl
+Gf
+Gh
+Gh
+zl
+OR
+ym
+Hx
+bR
+KS
+OR
+Gh
+Gh
+ZN
+Gh
+Gh
+zl
+zl
+jq
+Dj
+"}
+(21,1,1) = {"
+Dj
+jq
+zl
+zl
+Gh
+sT
+EY
+Gh
+Gh
+Gh
+EY
+Gh
+eO
+EY
+EY
+Gh
+EY
+Gh
+EY
+Gh
+zl
+zl
+zl
+Dj
+"}
+(22,1,1) = {"
+Dj
+jq
+zl
+zl
+Gh
+EY
+EY
+EY
+EY
+Gh
+EY
+kv
+EY
+EY
+No
+Gh
+Gf
+Gh
+Gh
+Gh
+RJ
+zl
+zl
+Dj
+"}
+(23,1,1) = {"
+Dj
+jq
+zl
+IB
+Gh
+gv
+jf
+mP
+EY
+ZN
+Gh
+Gh
+Gf
+EY
+EY
+Gh
+EY
+Gh
+EY
+Gf
+zl
+zl
+zl
+Dj
+"}
+(24,1,1) = {"
+Dj
+jq
+zl
+zl
+Gh
+zl
+zl
+zl
+EY
+Gh
+Gh
+EY
+Gh
+gv
+Gh
+Gh
+ZN
+Gh
+Gh
+zl
+zl
+zl
+jq
+Dj
+"}
+(25,1,1) = {"
+Dj
+jq
+zl
+zl
+zl
+zl
+zl
+zl
+zl
+zl
+wz
+EY
+Gh
+EY
+Gh
+EY
+Gh
+EY
+zl
+zl
+zl
+jq
+jq
+Dj
+"}
+(26,1,1) = {"
+Dj
+jq
+jq
+zl
+zl
+zl
+jq
+zl
+zl
+zl
+VT
+zl
+zl
+zl
+Gf
+Gh
+Gh
+Lc
+zl
+zl
+jq
+jq
+jq
+Dj
+"}
+(27,1,1) = {"
+Dj
+jq
+jq
+zl
+zl
+jq
+jq
+jq
+jq
+zl
+zl
+zl
+zl
+zl
+zl
+zl
+zl
+zl
+zl
+jq
+jq
+jq
+jq
+Dj
+"}
+(28,1,1) = {"
+Dj
+jq
+jq
+jq
+jq
+jq
+zl
+zl
+jq
+jq
+zl
+zl
+jq
+jq
+zl
+zl
+zl
+zl
+jq
+jq
+jq
+jq
+jq
+Dj
+"}
+(29,1,1) = {"
+Dj
+jq
+jq
+jq
+jq
+jq
+zl
+zl
+zl
+jq
+jq
+jq
+jq
+jq
+jq
+jq
+jq
+jq
+jq
+jq
+jq
+jq
+jq
+Dj
+"}
+(30,1,1) = {"
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+Dj
+"}

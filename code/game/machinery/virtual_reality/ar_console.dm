@@ -16,13 +16,13 @@
 	var/randomize_species = FALSE
 	var/list/possible_species	// Do we make the newly produced body a random species?
 
-/obj/machinery/vr_sleeper/alien/Initialize()
+/obj/machinery/vr_sleeper/alien/Initialize(mapload)
 	. = ..()
 	if(possible_species && possible_species.len)
 		produce_species = pick(possible_species)
 
-/obj/machinery/vr_sleeper/alien/process()
-	if(stat & (BROKEN))
+/obj/machinery/vr_sleeper/alien/process(delta_time)
+	if(machine_stat & (BROKEN))
 		if(occupant)
 			go_out()
 			visible_message("<span class='notice'>\The [src] emits a low droning sound, before the pod door clicks open.</span>")
@@ -47,7 +47,7 @@
 
 	var/forced = FALSE
 
-	if(stat & (BROKEN) || (eject_dead && occupant && occupant.stat == DEAD))
+	if(machine_stat & (BROKEN) || (eject_dead && occupant && occupant.stat == DEAD))
 		forced = TRUE
 
 	go_out(forced)
@@ -62,10 +62,8 @@
 
 	avatar.exit_vr()
 
-	if(occupant && occupant.client)
-		occupant.client.eye = occupant.client.mob
-		occupant.client.perspective = MOB_PERSPECTIVE
-	occupant.loc = src.loc
+	occupant.forceMove(loc)
+	occupant.reset_perspective()
 	occupant = null
 	for(var/atom/movable/A in src) // In case an object was dropped inside or something
 		if(A == circuit)
@@ -97,7 +95,7 @@
 	if(!avatar)
 		var/turf/T = get_turf(src)
 		avatar = new(src, produce_species)
-		if(occupant.species.name != "Promethean" && occupant.species.name != "Human" && mirror_first_occupant)
+		if(occupant.species.name != SPECIES_PROMETHEAN && occupant.species.name != SPECIES_HUMAN && mirror_first_occupant)
 			avatar.shapeshifter_change_shape(occupant.species.name)
 		avatar.Sleeping(6)
 
@@ -108,7 +106,7 @@
 			avatar.real_name = newname
 
 		avatar.forceMove(T)
-		visible_message("<span class='alium'>\The [src] [pick("gurgles", "churns", "sloshes")] before spitting out \the [avatar]!</span>")
+		visible_message("<span class='green'>\The [src] [pick("gurgles", "churns", "sloshes")] before spitting out \the [avatar]!</span>")
 
 	else
 

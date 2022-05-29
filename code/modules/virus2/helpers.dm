@@ -88,7 +88,7 @@ proc/airborne_can_reach(turf/source, turf/target)
 			D.resistance += rand(1,9)
 //			log_debug("Adding virus")
 			M.virus2["[D.uniqueID]"] = D
-			ENABLE_BITFIELD(M.hud_updateflag, STATUS_HUD)
+			M.update_hud_med_status()
 		else
 			return //Virus prevented by antibiotics
 
@@ -108,13 +108,12 @@ proc/airborne_can_reach(turf/source, turf/target)
 		D.minormutate()
 //		log_debug("Adding virus")
 		M.virus2["[D.uniqueID]"] = D
-		ENABLE_BITFIELD(M.hud_updateflag, STATUS_HUD)
-
+		M.update_hud_med_status()
 
 //Infects mob M with disease D
 /proc/infect_mob(var/mob/living/carbon/M, var/datum/disease2/disease/D)
 	infect_virus2(M,D,1)
-	M.hud_updateflag |= 1 << STATUS_HUD
+	M.update_hud_med_status()
 
 //Infects mob M with random lesser disease, if he doesn't have one
 /proc/infect_mob_random_lesser(var/mob/living/carbon/M)

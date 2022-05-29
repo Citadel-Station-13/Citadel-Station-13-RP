@@ -62,8 +62,8 @@ var/list/all_technomancer_assistance = typesof(/datum/technomancer/assistance) -
 // Proc: New()
 // Parameters: 0
 // Description: Sets up the catalog, as shown below.
-/obj/item/technomancer_catalog/New()
-	..()
+/obj/item/technomancer_catalog/Initialize(mapload)
+	. = ..()
 	set_up()
 
 // Proc: set_up()
@@ -135,7 +135,7 @@ var/list/all_technomancer_assistance = typesof(/datum/technomancer/assistance) -
 				if(spell.spell_power_desc)
 					dat += "<font color='purple'>Spell Power: [spell.spell_power_desc]</font><br>"
 				if(spell.enhancement_desc)
-					dat += "<font color='blue'>Scepter Effect: [spell.enhancement_desc]</font><br>"
+					dat += "<font color=#4F49AF>Scepter Effect: [spell.enhancement_desc]</font><br>"
 				if(spell.cost <= budget)
 					dat += "<a href='byond://?src=\ref[src];spell_choice=[spell.name]'>Purchase</a> ([spell.cost])<br><br>"
 				else
@@ -253,7 +253,7 @@ var/list/all_technomancer_assistance = typesof(/datum/technomancer/assistance) -
 			a target of your choice.<br>"
 			dat += "Some functions can have their abilities enhanced by a special rod called the Scepter of Enhancement.  \
 			If a function is able to be boosted with it, it will be shown underneath the description of the function as \
-			<font color='blue'><i>'Scepter Effect:'</i></font>.  Note that you must hold the scepter for it to work, so try to avoid losing it.<br>"
+			<font color=#4F49AF><i>'Scepter Effect:'</i></font>.  Note that you must hold the scepter for it to work, so try to avoid losing it.<br>"
 			dat += "Functions can also be boosted with the core itself.  A function that is able to benefit \
 			from this will have <font color='purple'><i>'Spell Power:'</i></font> underneath.  Different Cores have different \
 			amounts of spell power.<br>"

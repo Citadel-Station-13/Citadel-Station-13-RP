@@ -3,9 +3,19 @@
 // When attacking, spores will hit harder if near other friendly spores.
 // Some blobs can infest dead non-robotic mobs, making them into Not Zombies.
 
+/datum/category_item/catalogue/fauna/blob/spore
+	name = "Blob - Spore"
+	desc = "Formed as a dual-purpose offensive/defensive solution, the Blob Spore \
+	works to deter aggression. When destroyed, spores release clouds of gas - sometimes \
+	toxic, based on the chemical makeup of their orignator's gelatin structure. On top \
+	of this, Spores are able to infest the corpses of nearby organic life and pilot it \
+	for their own purposes, turning into fragile, yet tenacious 'blob zombies'."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/blob/spore
 	name = "blob spore"
 	desc = "A floating, fragile spore."
+	catalogue_data = list(/datum/category_item/catalogue/fauna/blob/spore)
 
 	icon_state = "blobpod"
 	icon_living = "blobpod"
@@ -58,7 +68,7 @@
 	factory = null
 	if(infested)
 		infested.forceMove(get_turf(src))
-		visible_message(span("warning", "\The [infested] falls to the ground as the blob spore bursts."))
+		visible_message(SPAN_WARNING( "\The [infested] falls to the ground as the blob spore bursts."))
 		infested = null
 	return ..()
 
@@ -126,7 +136,7 @@
 	say_list = new /datum/say_list/infested()
 
 	update_icons()
-	visible_message(span("warning", "The corpse of [H.name] suddenly rises!"))
+	visible_message(SPAN_WARNING( "The corpse of [H.name] suddenly rises!"))
 
 /mob/living/simple_mob/blob/spore/GetIdCard()
 	if(infested) // If we've infested someone, use their ID.
@@ -144,5 +154,5 @@
 		helpers++
 
 	if(helpers)
-		to_chat(src, span("notice", "Your attack is assisted by [helpers] other spore\s."))
+		to_chat(src, SPAN_NOTICE("Your attack is assisted by [helpers] other spore\s."))
 	return damage_to_do

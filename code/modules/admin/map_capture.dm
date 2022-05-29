@@ -8,7 +8,7 @@
 
 	if(isnull(tx) || isnull(ty) || isnull(tz) || isnull(range))
 		to_chat(usr, "Capture Map Part, captures part of a map using camara like rendering.")
-		usr << "Usage: Capture-Map-Part target_x_cord target_y_cord target_z_cord range"
+		to_chat(usr, "Usage: Capture-Map-Part target_x_cord target_y_cord target_z_cord range")
 		to_chat(usr, "Target coordinates specify bottom left corner of the capture, range defines render distance to opposite corner.")
 		return
 

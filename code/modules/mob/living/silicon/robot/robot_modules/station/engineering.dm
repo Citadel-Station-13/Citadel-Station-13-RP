@@ -18,7 +18,14 @@
 					"Landmate - Treaded" = "engiborg+tread",
 					"Drone" = "drone-engineer",
 					"Treadwell" = "treadwell",
-					"Handy" = "handy-engineer"
+					"Handy" = "handy-engineer",
+					"Misato" = "tall2engineer",
+					"L3P1-D0T" = "Glitterfly-Engineering",
+					"Miss M" = "miss-engineer",
+					"Coffstruction" = "coffin-Construction",
+					"Coffgineer" = "coffin-Engineering",
+					"X-88" = "xeightyeight-engineering"
+
 					)
 
 /obj/item/robot_module/robot/engineering/construction
@@ -27,8 +34,8 @@
 
 /* Merged back into engineering (Hell, it's about time.)
 
-/obj/item/robot_module/robot/engineering/construction/New()
-	..()
+/obj/item/robot_module/robot/engineering/construction/Initialize(mapload)
+	. = ..()
 	src.modules += new /obj/item/borg/sight/meson(src)
 	src.modules += new /obj/item/rcd/borg(src)
 	src.modules += new /obj/item/tool/screwdriver/cyborg(src)
@@ -68,8 +75,8 @@
 	src.modules += RG
 */
 
-/obj/item/robot_module/robot/engineering/general/New()
-	..()
+/obj/item/robot_module/robot/engineering/general/Initialize(mapload)
+	. = ..()
 	src.modules += new /obj/item/borg/sight/meson(src)
 	src.modules += new /obj/item/weldingtool/electric/mounted/cyborg(src)
 	src.modules += new /obj/item/tool/screwdriver/cyborg(src)
@@ -168,7 +175,9 @@
 	subsystems = list(/mob/living/silicon/proc/subsystem_power_monitor)
 	can_be_pushed = 0
 
-/obj/item/robot_module/robot/engiedog/New(var/mob/living/silicon/robot/R)
+/obj/item/robot_module/robot/engiedog/Initialize(mapload)
+	. = ..()
+	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/borg/sight/meson(src)
 	src.modules += new /obj/item/weldingtool/electric/mounted/cyborg(src)
 	src.modules += new /obj/item/tool/screwdriver/cyborg(src)
@@ -176,10 +185,11 @@
 	src.modules += new /obj/item/tool/wirecutters/cyborg(src)
 	src.modules += new /obj/item/multitool(src)
 	src.modules += new /obj/item/t_scanner(src)
+	src.modules += new /obj/item/rcd/electric/mounted/borg(src)
 	src.modules += new /obj/item/analyzer(src)
 	src.modules += new /obj/item/barrier_tape_roll/engineering(src)
 	src.modules += new /obj/item/inflatable_dispenser/robot(src)
-	src.modules += new /obj/item/pickaxe(src)
+	src.modules += new /obj/item/pickaxe/plasmacutter(src)
 	src.modules += new /obj/item/dogborg/jaws/small(src)
 	src.modules += new /obj/item/dogborg/boop_module(src)
 	src.modules += new /obj/item/geiger(src)
@@ -286,8 +296,9 @@
 	R.verbs |= /mob/living/proc/shred_limb
 	R.verbs |= /mob/living/silicon/robot/proc/rest_style
 
-	if(R.client && R.client.ckey in list("nezuli"))
+	if(R.client && (R.client.ckey in list("nezuli")))
 		sprites += "Alina"
 		sprites["Alina"] = "alina-eng"
 
-	..()
+
+

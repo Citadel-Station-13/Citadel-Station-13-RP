@@ -4,6 +4,9 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "taperoll"
 	w_class = ITEMSIZE_TINY
+	drop_sound = 'sound/items/drop/cardboardbox.ogg'
+	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
+	var/amount = 20
 
 	toolspeed = 2 //It is now used in surgery as a not awful, but probably dangerous option, due to speed.
 
@@ -124,6 +127,20 @@
 				return ..()
 			return 1
 
+/obj/item/duct_tape_roll/attack_self(mob/user)
+	to_chat(user, "You remove a piece of tape from the roll.")
+	var/obj/item/duct_tape_piece/tape = new(get_turf(src))
+	user.put_in_hands(tape)
+	use(1)
+
+/obj/item/duct_tape_roll/proc/use(var/used)
+	amount -= used
+	if (amount <= 0)
+		if(usr)
+			usr.remove_from_mob(src, null)
+		qdel(src) //should be safe to qdel immediately since if someone is still using this stack it will persist for a little while longer
+	return 1
+
 /obj/item/duct_tape_roll/proc/stick(var/obj/item/W, mob/user)
 	if(!istype(W, /obj/item/paper))
 		return
@@ -144,12 +161,15 @@
 
 	var/obj/item/stuck = null
 
-/obj/item/duct_tape_piece/New()
-	..()
+/obj/item/duct_tape_piece/Initialize(mapload)
+	. = ..()
 	flags |= NOBLUDGEON
 
 /obj/item/duct_tape_piece/examine(mob/user)
-	return stuck.examine(user)
+	if(stuck)
+		return stuck.examine(user)
+	else
+		return ..()
 
 /obj/item/duct_tape_piece/proc/attach(var/obj/item/W)
 	stuck = W
@@ -195,7 +215,7 @@
 	var/dir_offset = 0
 	if(target_turf != source_turf)
 		dir_offset = get_dir(source_turf, target_turf)
-		if(!(dir_offset in cardinal))
+		if(!(dir_offset in GLOB.cardinal))
 			to_chat(user, "You cannot reach that from here.")		// can only place stuck papers in cardinal directions, to
 			return											// reduce papers around corners issue.
 

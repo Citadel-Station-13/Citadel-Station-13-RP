@@ -1,6 +1,6 @@
 #define SHIP_MOVE_RESOLUTION 0.00001
 #define MOVING(speed) abs(speed) >= min_speed
-#define SANITIZE_SPEED(speed) SIGN(speed) * CLAMP(abs(speed), 0, max_speed)
+#define SANITIZE_SPEED(speed) SIGN(speed) * clamp(abs(speed), 0, max_speed)
 #define CHANGE_SPEED_BY(speed_var, v_diff) \
 	v_diff = SANITIZE_SPEED(v_diff);\
 	if(!MOVING(speed_var + v_diff)) \
@@ -18,26 +18,41 @@
 	appearance_flags = TILE_BOUND|KEEP_TOGETHER|LONG_GLIDE
 	var/moving_state = "ship_moving"
 
-	var/vessel_mass = 10000				// Tonnes, arbitrary number, affects acceleration provided by engines
-	var/vessel_size = SHIP_SIZE_LARGE	// Arbitrary number, affects how likely are we to evade meteors
-	var/max_speed = 1/(1 SECOND)		// "Speed of light" for the ship, in turfs/decisecond.
-	var/min_speed = 1/(2 MINUTES)		// Below this, we round speed to 0 to avoid math errors.
+	/// Tonnes, arbitrary number, affects acceleration provided by engines.
+	var/vessel_mass = 10000
+	/// Arbitrary number, affects how likely are we to evade meteors.
+	var/vessel_size = SHIP_SIZE_LARGE
+	/// "Speed of light" for the ship, in turfs/decisecond.
+	var/max_speed = 1/(1 SECOND)
+	/// Below this, we round speed to 0 to avoid math errors.
+	var/min_speed = 1/(2 MINUTES)
 
-	var/position_x						// Pixel coordinates in the world
-	var/position_y						// Pixel coordinates in the world.
-	var/list/speed = list(0,0)			// Speed in x,y direction
-	var/last_burn = 0					// Worldtime when ship last acceleated
-	var/burn_delay = 1 SECOND			// How often ship can do burns
-	var/fore_dir = NORTH				// What dir ship flies towards for purpose of moving stars effect procs
+	/// Pixel coordinates in the world.
+	var/position_x
+	/// Pixel coordinates in the world.
+	var/position_y
+	/// Speed in x,y direction.
+	var/list/speed = list(0,0)
+	/// Worldtime when ship last acceleated.
+	var/last_burn = 0
+	/// How often ship can do burns.
+	var/burn_delay = 1 SECOND
+	/// What dir ship flies towards for purpose of moving stars effect procs.
+	var/fore_dir = NORTH
 
+	/// The list of all the engines we have.
 	var/list/engines = list()
-	var/engines_state = 0				// Global on/off toggle for all engines
-	var/thrust_limit = 1				// Global thrust limit for all engines, 0..1
-	var/halted = 0						// Admin halt or other stop.
-	var/skill_needed = SKILL_ADEPT		// Piloting skill needed to steer it without going in random dir
+	/// Global on/off toggle for all engines.
+	var/engines_state = 0
+	/// Global thrust limit for all engines, 0..1
+	var/thrust_limit = 1
+	/// Admin halt or other stop.
+	var/halted = 0
+	/// Skill needed to steer it without going in random dir.
+	var/skill_needed = SKILL_NONE //We don't like skills.
 	var/operator_skill
 
-/obj/effect/overmap/visitable/ship/Initialize()
+/obj/effect/overmap/visitable/ship/Initialize(mapload)
 	. = ..()
 	min_speed = round(min_speed, SHIP_MOVE_RESOLUTION)
 	max_speed = round(max_speed, SHIP_MOVE_RESOLUTION)
@@ -106,7 +121,7 @@
 
 // Get heading in degrees (like a compass heading)
 /obj/effect/overmap/visitable/ship/proc/get_heading_degrees()
-	return (ATAN2(speed[2], speed[1]) + 360) % 360	// Yes ATAN2(y, x) is correct to get clockwise degrees
+	return (arctan(speed[2], speed[1]) + 360) % 360	// Yes ATAN2(y, x) is correct to get clockwise degrees
 
 /obj/effect/overmap/visitable/ship/proc/adjust_speed(n_x, n_y)
 	var/old_still = is_still()
@@ -119,12 +134,15 @@
 	else if(still)
 		STOP_PROCESSING(SSprocessing, src)
 		for(var/zz in map_z)
-			toggle_move_stars(zz)
+			SSparallax.update_z_motion(zz)
+			// fuck you we're extra brutal today, decelration kills you too!
+			SSmapping.throw_movables_on_z_turfs_of_type(zz, /turf/space, fore_dir)
 	else
 		START_PROCESSING(SSprocessing, src)
 		glide_size = WORLD_ICON_SIZE/max(DS2TICKS(SSprocessing.wait), 1)	// Down to whatever decimal
 		for(var/zz in map_z)
-			toggle_move_stars(zz, fore_dir)
+			SSparallax.update_z_motion(zz)
+			SSmapping.throw_movables_on_z_turfs_of_type(zz, /turf/space, REVERSE_DIR(fore_dir))
 
 /obj/effect/overmap/visitable/ship/proc/get_brake_path()
 	if(!get_acceleration())
@@ -160,9 +178,9 @@
 		if(direction & SOUTH)
 			adjust_speed(0, -acceleration)
 
-/obj/effect/overmap/visitable/ship/process(wait)
-	var/new_position_x = position_x + (speed[1] * WORLD_ICON_SIZE * wait)
-	var/new_position_y = position_y + (speed[2] * WORLD_ICON_SIZE * wait)
+/obj/effect/overmap/visitable/ship/process(delta_time)
+	var/new_position_x = position_x + (speed[1] * WORLD_ICON_SIZE * delta_time * 10)
+	var/new_position_y = position_y + (speed[2] * WORLD_ICON_SIZE * delta_time * 10)
 
 	// For simplicity we assume that you can't travel more than one turf per tick.  That would be hella-fast.
 	var/new_turf_x = CEILING(new_position_x / WORLD_ICON_SIZE, 1)
@@ -178,12 +196,12 @@
 
 	if(new_loc != loc)
 		var/turf/old_loc = loc
-		Move(new_loc, NORTH, wait)
+		Move(new_loc, NORTH, delta_time * 10)
 		if(get_dist(old_loc, loc) > 1)
 			pixel_x = new_pixel_x
 			pixel_y = new_pixel_y
 			return
-	animate(src, pixel_x = new_pixel_x, pixel_y = new_pixel_y, time = wait, flags = ANIMATION_END_NOW)
+	animate(src, pixel_x = new_pixel_x, pixel_y = new_pixel_y, time = delta_time * 10, flags = ANIMATION_END_NOW)
 
 // If we get moved, update our internal tracking to account for it
 /obj/effect/overmap/visitable/ship/Moved(atom/old_loc, direction, forced = FALSE)
@@ -252,7 +270,7 @@
 
 /obj/effect/overmap/visitable/ship/populate_sector_objects()
 	..()
-	for(var/obj/machinery/computer/ship/S in global.machines)
+	for(var/obj/machinery/computer/ship/S in GLOB.machines)
 		S.attempt_hook_up(src)
 	for(var/datum/ship_engine/E in ship_engines)
 		if(check_ownership(E.holder))
@@ -260,6 +278,12 @@
 
 /obj/effect/overmap/visitable/ship/proc/get_landed_info()
 	return "This ship cannot land."
+
+/obj/effect/overmap/visitable/ship/get_distress_info()
+	var/turf/T = get_turf(src) // Usually we're on the turf, but sometimes we might be landed or something.
+	var/x_to_use = T?.x || "UNK"
+	var/y_to_use = T?.y || "UNK"
+	return "\[X:[x_to_use], Y:[y_to_use], VEL:[get_speed() * 1000], HDG:[get_heading_degrees()]\]"
 
 #undef MOVING
 #undef SANITIZE_SPEED

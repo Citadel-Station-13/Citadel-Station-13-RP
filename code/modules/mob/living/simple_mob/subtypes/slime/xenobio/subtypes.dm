@@ -46,8 +46,8 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		L.inflict_heat_damage(is_adult ? 10 : 5)
-		to_chat(src, span("span", "You burn \the [L]."))
-		to_chat(L, span("danger", "You've been burned by \the [src]!"))
+		to_chat(src, SPAN_NOTICE("You burn \the [L]."))
+		to_chat(L, SPAN_DANGER("You've been burned by \the [src]!"))
 		L.adjust_fire_stacks(1)
 		if(prob(12))
 			L.IgniteMob()
@@ -154,8 +154,8 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		L.inflict_shock_damage(is_adult ? 10 : 5)
-		to_chat(src, span("span", "You shock \the [L]."))
-		to_chat(L, span("danger", "You've been shocked by \the [src]!"))
+		to_chat(src, SPAN_NOTICE("You shock \the [L]."))
+		to_chat(L, SPAN_DANGER("You've been shocked by \the [src]!"))
 
 /mob/living/simple_mob/slime/xenobio/yellow/handle_special()
 	if(stat == CONSCIOUS)
@@ -188,12 +188,18 @@
 		)
 
 /mob/living/simple_mob/slime/xenobio/dark_purple/proc/ignite()
-	visible_message(span("critical", "\The [src] erupts in an inferno!"))
-	for(var/turf/simulated/target_turf in view(2, src))
+	visible_message(SPAN_CRITICAL("\The [src] erupts in an inferno!"))
+	for(var/turf/simulated/target_turf in get_ignition_turfs(25, 2))
 		target_turf.assume_gas(/datum/gas/phoron, 30, 1500+T0C)
 		spawn(0)
 			target_turf.hotspot_expose(1500+T0C, 400)
 	qdel(src)
+
+/mob/living/simple_mob/slime/xenobio/dark_purple/proc/get_ignition_turfs(amt = 25, maxrad = 2)
+	var/turf/T = get_turf(src)
+	if(!T)
+		return list()
+	return T.AtmosAdjacencyFloodfillHeuristic(amt, maxrad)
 
 /mob/living/simple_mob/slime/xenobio/dark_purple/ex_act(severity)
 	log_and_message_admins("[src] ignited due to a chain reaction with an explosion.")
@@ -208,16 +214,14 @@
 		log_and_message_admins("[src] ignited due to bring hit by a burning projectile[P.firer ? " by [key_name(P.firer)]" : ""].")
 		ignite()
 	else
-		..()
+		return ..()
 
 /mob/living/simple_mob/slime/xenobio/dark_purple/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W) && W.force && W.damtype == BURN)
 		log_and_message_admins("[src] ignited due to being hit with a burning weapon ([W]) by [key_name(user)].")
 		ignite()
 	else
-		..()
-
-
+		return ..()
 
 /mob/living/simple_mob/slime/xenobio/dark_blue
 	desc = "This slime makes other entities near it feel much colder, and is more resilient to the cold.  It tends to kill other slimes rather quickly."
@@ -264,8 +268,8 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		chill(L)
-		to_chat(src, span("span", "You chill \the [L]."))
-		to_chat(L, span("danger", "You've been chilled by \the [src]!"))
+		to_chat(src, SPAN_NOTICE("You chill \the [L]."))
+		to_chat(L, SPAN_DANGER("You've been chilled by \the [src]!"))
 
 
 /mob/living/simple_mob/slime/xenobio/dark_blue/proc/chill(mob/living/L)
@@ -293,7 +297,7 @@
 
 /mob/living/simple_mob/slime/xenobio/silver/bullet_act(var/obj/item/projectile/P, var/def_zone)
 	if(istype(P,/obj/item/projectile/beam) || istype(P, /obj/item/projectile/energy))
-		visible_message(span("danger", "\The [src] reflects \the [P]!"))
+		visible_message(SPAN_DANGER("\The [src] reflects \the [P]!"))
 
 		// Find a turf near or on the original location to bounce to
 		var/new_x = P.starting.x + pick(0, 0, 0, -1, 1, -2, 2)
@@ -305,8 +309,7 @@
 		P.reflected = TRUE
 		return PROJECTILE_CONTINUE // complete projectile permutation
 	else
-		..()
-
+		return ..()
 
 // Tier 3
 
@@ -334,7 +337,7 @@
 /mob/living/simple_mob/slime/xenobio/bluespace/do_special_attack(atom/A)
 	// Teleport attack.
 	if(!A)
-		to_chat(src, span("warning", "There's nothing to teleport to."))
+		to_chat(src, SPAN_WARNING( "There's nothing to teleport to."))
 		return FALSE
 
 	var/list/nearby_things = range(1, A)
@@ -355,7 +358,7 @@
 	var/turf/target_turf = pick(valid_turfs)
 
 	if(!target_turf)
-		to_chat(src, span("warning", "There wasn't an unoccupied spot to teleport to."))
+		to_chat(src, SPAN_WARNING( "There wasn't an unoccupied spot to teleport to."))
 		return FALSE
 
 	var/datum/effect_system/spark_spread/s1 = new /datum/effect_system/spark_spread
@@ -364,14 +367,14 @@
 	s2.set_up(5, 1, target_turf)
 
 
-	T.visible_message(span("notice", "\The [src] vanishes!"))
+	T.visible_message(SPAN_NOTICE("\The [src] vanishes!"))
 	s1.start()
 
 	forceMove(target_turf)
 	playsound(target_turf, 'sound/effects/phasein.ogg', 50, 1)
-	to_chat(src, span("notice", "You teleport to \the [target_turf]."))
+	to_chat(src, SPAN_NOTICE("You teleport to \the [target_turf]."))
 
-	target_turf.visible_message(span("warning", "\The [src] appears!"))
+	target_turf.visible_message(SPAN_WARNING( "\The [src] appears!"))
 	s2.start()
 
 	if(Adjacent(A))
@@ -400,7 +403,7 @@
 		/mob/living/simple_mob/slime/xenobio/ruby
 	)
 
-/mob/living/simple_mob/slime/xenobio/ruby/Initialize()
+/mob/living/simple_mob/slime/xenobio/ruby/Initialize(mapload)
 	add_modifier(/datum/modifier/slime_strength, null, src) // Slime is always swole.
 	return ..()
 
@@ -410,13 +413,13 @@
 	if(isliving(A) && a_intent == INTENT_HARM)
 		var/mob/living/L = A
 		if(L.mob_size <= MOB_MEDIUM)
-			visible_message(span("danger", "\The [src] sends \the [L] flying with the impact!"))
+			visible_message(SPAN_DANGER("\The [src] sends \the [L] flying with the impact!"))
 			playsound(src, "punch", 50, 1)
 			L.Weaken(1)
 			var/throwdir = get_dir(src, L)
 			L.throw_at(get_edge_target_turf(L, throwdir), 3, 1, src)
 		else
-			to_chat(L, span("warning", "\The [src] hits you with incredible force, but you remain in place."))
+			to_chat(L, SPAN_WARNING( "\The [src] hits you with incredible force, but you remain in place."))
 
 
 /mob/living/simple_mob/slime/xenobio/amber
@@ -446,7 +449,7 @@
 
 /mob/living/simple_mob/slime/xenobio/amber/proc/feed_aura()
 	for(var/mob/living/L in view(2, src))
-		if(L == src) // Don't feed themselves, or it is impossible to stop infinite slimes without killing all of the ambers.
+		if(istype(L, type))
 			continue
 		if(istype(L, /mob/living/simple_mob/slime/xenobio))
 			var/mob/living/simple_mob/slime/xenobio/X = L
@@ -668,7 +671,7 @@
 		log_and_message_admins("[src] exploded due to bring hit by a burning projectile[P.firer ? " by [key_name(P.firer)]" : ""].")
 		explode()
 	else
-		..()
+		return ..()
 
 /mob/living/simple_mob/slime/xenobio/oil/attackby(obj/item/W, mob/living/user)
 	if(istype(W) && W.force && W.damtype == BURN)
@@ -766,7 +769,7 @@
 		/mob/living/simple_mob/slime/xenobio/rainbow
 	)
 
-/mob/living/simple_mob/slime/xenobio/rainbow/Initialize()
+/mob/living/simple_mob/slime/xenobio/rainbow/Initialize(mapload)
 	unify()
 	return ..()
 
@@ -779,6 +782,6 @@
 	// Instead lets just give them an ai_holder that does that for us.
 	ai_holder_type = /datum/ai_holder/simple_mob/xenobio_slime/passive
 
-/mob/living/simple_mob/slime/xenobio/rainbow/kendrick/Initialize()
+/mob/living/simple_mob/slime/xenobio/rainbow/kendrick/Initialize(mapload)
 	pacify() // So the physical mob also gets made harmless.
 	return ..()

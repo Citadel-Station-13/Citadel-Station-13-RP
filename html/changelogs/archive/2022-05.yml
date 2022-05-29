@@ -1,0 +1,95 @@
+2022-05-02:
+  CrystalClearCC:
+  - rscadd: Introduces the all-new Vampire/Vetalan trait. This is a merger of bloodsucker,
+      major darksight, numbing bites, antiseptic saliva, major burn weakness, and
+      photosensitivity.
+  - bugfix: Patches bloodpacks to not allow literally anyone with hands to apply it
+      to their face to gain nutrients. Ex3-378 does not have a mouth and runs on electricity.
+      Ex3-378 would've been able to bite the bloodpack and drain its blood to gain
+      electricity.
+  silicons:
+  - bugfix: stun beams no longer play laser sfx
+  - rscadd: ghostroles backend
+2022-05-03:
+  silicons:
+  - rscadd: added mechanical blind, deaf, mute traits. you cannot be both deaf and
+      blind for policy reasons. this may be subject to change.
+2022-05-05:
+  silicons:
+  - code_imp: Icon folder structure enforcement
+  yeayea130:
+  - bugfix: added borg xeno-tazer to the borg overlay system
+2022-05-06:
+  Captain277:
+  - bugfix: Fixes Off Duty datum.
+2022-05-07:
+  Captain277:
+  - rscadd: Adds three inmon tattoos.
+  - rscadd: Restores Autosave smite.
+  silicons:
+  - refactor: spawnpoints, landmarks
+  - refactor: a bit of economy
+2022-05-08:
+  Bhijn & Myr:
+  - rscadd: The server's hub tagline now has the option to pull random strings from
+      config/strings/server_taglines.txt!
+  silicons:
+  - bugfix: admin buildmode walls not having baseturfs
+  - bugfix: observers spawning in space
+2022-05-09:
+  Zandario:
+  - bugfix: Defib works?
+2022-05-23:
+  Bhijn & Myr:
+  - rscadd: The TGS bot is now capable of pinging the reboot role, and the round-end
+      message is now configurable to target a specific tag!
+  Captain277:
+  - rscdel: Removes Protean ventcrawl.
+  FreeStylaLT:
+  - rscadd: 'handheld tazer tweak: swapped out hop holdout to proper energy gun (again)'
+  Ghostcoffeee:
+  - rscadd: Added RIG toolsets and a way to craft them
+  WrongEnd:
+  - imageadd: added moth clothing icons
+  - imageadd: Added sprites for moth-exclusive shoes.
+  Zandario:
+  - rscadd: Stock Market
+  - rscadd: PCUs (Personal Computer Units) instead of superglued laptops.
+  - rscadd: Smoothed sprited for computers.
+  - code_imp: Cleaned some code as well.
+  - bugfix: stools can be seen
+  - rscadd: "The Changelog you're reading this from.\U0001F44B"
+  - bugfix: Fixes Changelog Generation
+  - bugfix: Teleporters work again
+  lingonberry1234:
+  - bugfix: Memory circuits and cell removal
+  silicons:
+  - rscadd: window spawners for mappers
+  - rscadd: power cable helpers for mappers
+  - refactor: species are now instanced, rather than only globally cached
+  - bugfix: ping works again
+  - bugfix: stacks no longer delete themselves for no reason
+  - spellcheck: name sweater_fem --> sweater
+  - bugfix: gun safety doesn't display the inverse
+  - bugfix: admin spawn-character doesn't embed people into spawnpoints rather than
+      their locations
+2022-05-24:
+  Zandario:
+  - imageadd: Tons of new Teshari Sprites
+  - imageadd: Some TG Clothing Sprites
+  - imageadd: Citadel Logo SVG for TGUI use.
+2022-05-27:
+  Cursor:
+  - rscadd: Added four new songs to the Jukebox; Off the Meds by EKSE, Masters of
+      War by Bob Dylan, Dice of a Generation by DEMONDICE and Misery Business by Paramore.
+  Ghostcoffeee:
+  - rscadd: Added colored carpet cargo orders
+  - bugfix: fixed colored carpet icons
+  WrongEnd:
+  - rscadd: Added moth clothes to the loadout. Not currently species restricted, but
+      will look incredibly stupid on anything that doesn't use moth limbs.
+  Zandario:
+  - bugfix: Fixes the remote AirAlarm Console.
+2022-05-29:
+  Ghostcoffeee:
+  - bugfix: fixes stray pixels in the carpet icons

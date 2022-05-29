@@ -9,10 +9,6 @@
 	req_open = 1
 
 /datum/surgery_step/repairflesh/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-/*    VOREStation Removal for Mlem Reasons(TM)
-    if (target.stat == DEAD) // Sorry defibs, your subjects need to have pumping fluids for these to work.
-        return 0
-*/
 	if (isslime(target))
 		return 0
 	if (target_zone == O_EYES || target_zone == O_MOUTH)
@@ -35,8 +31,7 @@
 
 /datum/surgery_step/repairflesh/scan_injury
 	allowed_tools = list(
-	/obj/item/autopsy_scanner = 100,
-	/obj/item/healthanalyzer = 80,
+	/obj/item/healthanalyzer = 100,
 	/obj/item/analyzer = 10
 	)
 
@@ -90,6 +85,7 @@
 	/obj/item/surgical/FixOVein = 100,
 	/obj/item/surgical/hemostat = 60,
 	/obj/item/stack/medical/ointment = 50,
+	/obj/item/surgical/hemostat_primitive = 40,
 	/obj/item/duct_tape_roll = 30,
 	/obj/item/barrier_tape_roll = 10
 	)
@@ -130,10 +126,6 @@
 	"<span class='notice'>You finish taping up [target]'s [affected] with \the [tool].</span>")
 		affected.createwound(BRUISE, 10)
 	affected.heal_damage(0, 25, 0, 0)
-	if(target.getFireLoss() <= 20) //Dehusk if no longer crispy
-		target.mutations.Remove(HUSK)
-		target.status_flags &= ~DISFIGURED
-		target.update_icons_body()
 	if(!(affected.burn_dam))
 		affected.burn_stage = 0
 	if(istype(tool, /obj/item/stack))
@@ -160,8 +152,10 @@
 	allowed_tools = list(
 	/obj/item/stack/medical/advanced/bruise_pack = 100,
 	/obj/item/surgical/cautery = 100,
+	/obj/item/surgical/cautery_primitive = 70,
 	/obj/item/surgical/bonesetter = 60,
 	/obj/item/stack/medical/bruise_pack = 50,
+	/obj/item/surgical/bonesetter_primitive = 50,
 	/obj/item/duct_tape_roll = 40,
 	/obj/item/barrier_tape_roll = 10
 	)
@@ -187,7 +181,7 @@
 		user.visible_message("<span class='warning'>[user] begins taping up [target]'s [affected] with \the [tool].</span>", \
 	"<span class='notice'>You begin taping up [target]'s [affected] with \the [tool].</span>")
 		affected.jostle_bone(10)
-	else if(istype(tool, /obj/item/surgical/FixOVein) || istype(tool, /obj/item/surgical/bonesetter))
+	else if(istype(tool, /obj/item/surgical/FixOVein) || istype(tool, /obj/item/surgical/bonesetter) || istype(tool, /obj/item/surgical/bonesetter_primitive))
 		user.visible_message("<span class='notice'>[user] begins mending the torn tissue in [target]'s [affected] with \the [tool].</span>", \
 	"<span class='notice'>You begin mending the torn tissue in [target]'s [affected] with \the [tool].</span>")
 	else

@@ -20,7 +20,7 @@
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "reinforce"
 	flags = 0
-	var/obj/screen/grab/hud = null
+	var/atom/movable/screen/grab/hud = null
 	var/mob/living/affecting = null
 	var/mob/living/carbon/human/assailant = null
 	var/state = GRAB_PASSIVE
@@ -36,8 +36,9 @@
 	w_class = ITEMSIZE_HUGE
 
 
-/obj/item/grab/New(mob/user, mob/victim)
-	..()
+/obj/item/grab/Initialize(mapload, mob/victim)
+	. = ..()
+	var/mob/user = loc
 	loc = user
 	assailant = user
 	affecting = victim
@@ -50,7 +51,7 @@
 	affecting.reveal("<span class='warning'>You are revealed as [assailant] grabs you.</span>")
 	assailant.reveal("<span class='warning'>You reveal yourself as you grab [affecting].</span>")
 
-	hud = new /obj/screen/grab(src)
+	hud = new /atom/movable/screen/grab(src)
 	hud.icon_state = "reinforce"
 	icon_state = "grabbed"
 	hud.name = "reinforce grab"
@@ -93,7 +94,7 @@
 		else
 			hud.screen_loc = ui_lhand
 
-/obj/item/grab/process()
+/obj/item/grab/process(delta_time)
 	if(QDELETED(src)) // GC is trying to delete us, we'll kill our processing so we can cleanly GC
 		return PROCESS_KILL
 
@@ -147,9 +148,6 @@
 
 	if(state >= GRAB_NECK)
 		affecting.Stun(3)
-		if(isliving(affecting))
-			var/mob/living/L = affecting
-			L.adjustOxyLoss(1)
 
 	if(state >= GRAB_KILL)
 		//affecting.apply_effect(STUTTER, 5) //would do this, but affecting isn't declared as mob/living for some stupid reason.
@@ -195,7 +193,7 @@
 		return
 	var/shift = 0
 	var/adir = get_dir(assailant, affecting)
-	affecting.layer = MOB_LAYER
+	affecting.set_base_layer(MOB_LAYER)
 	switch(state)
 		if(GRAB_PASSIVE)
 			shift = 8
@@ -218,7 +216,7 @@
 	switch(adir)
 		if(NORTH)
 			animate(affecting, pixel_x = initial(affecting.pixel_x), pixel_y =-shift, 5, 1, LINEAR_EASING)
-			affecting.layer = BELOW_MOB_LAYER
+			affecting.set_base_layer(BELOW_MOB_LAYER)
 		if(SOUTH)
 			animate(affecting, pixel_x = initial(affecting.pixel_x), pixel_y = shift, 5, 1, LINEAR_EASING)
 		if(WEST)
@@ -226,7 +224,7 @@
 		if(EAST)
 			animate(affecting, pixel_x =-shift, pixel_y = initial(affecting.pixel_y), 5, 1, LINEAR_EASING)
 
-/obj/item/grab/proc/s_click(obj/screen/S)
+/obj/item/grab/proc/s_click(atom/movable/screen/S)
 	if(QDELETED(src))
 		return
 	if(!affecting)
@@ -342,9 +340,8 @@
 		devour(affecting, assailant)
 
 /obj/item/grab/dropped()
-	loc = null
-	if(!QDELETED(src))
-		qdel(src)
+	. = ..()
+	qdel(src)
 
 /obj/item/grab/proc/reset_kill_state()
 	if(state == GRAB_KILL)

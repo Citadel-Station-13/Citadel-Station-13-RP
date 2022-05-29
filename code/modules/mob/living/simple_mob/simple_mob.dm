@@ -14,116 +14,194 @@
 	mob_swap_flags = ~HEAVY
 	mob_push_flags = ~HEAVY
 
-	var/tt_desc = null //Tooltip description
+	///Tooltip description
+	var/tt_desc = null
 
-	//Settings for played mobs
-	var/show_stat_health = 1		// Does the percentage health show in the stat panel for the mob
-	var/has_hands = 0				// Set to 1 to enable the use of hands and the hands hud
-	var/humanoid_hands = 0			// Can a player in this mob use things like guns or AI cards?
-	var/hand_form = "hands"			// Used in IsHumanoidToolUser. 'Your X are not fit-'.
-	var/list/hud_gears				// Slots to show on the hud (typically none)
-	var/ui_icons					// Icon file path to use for the HUD, otherwise generic icons are used
-	var/r_hand_sprite				// If they have hands,
-	var/l_hand_sprite				// they could use some icons.
-	var/player_msg					// Message to print to players about 'how' to play this mob on login.
+	//* Settings for played mobs *//
+	/// Does the percentage health show in the stat panel for the mob
+	var/show_stat_health = TRUE
+	/// Set to TRUE to enable the use of hands and the hands hud
+	var/has_hands = FALSE
+	/// Can a player in this mob use things like guns or AI cards?
+	var/humanoid_hands = FALSE
+	/// Used in IsHumanoidToolUser. 'Your X are not fit-'.
+	var/hand_form = "hands"
+	/// Slots to show on the hud (typically none)
+	var/list/hud_gears
+	/// Icon file path to use for the HUD, otherwise generic icons are used
+	var/ui_icons
+	/// If they have hands, they could use some icons.
+	var/r_hand_sprite
+	/// If they have hands, they could use some icons.
+	var/l_hand_sprite
+	/// Message to print to players about 'how' to play this mob on login.
+	var/player_msg
 
-	//Mob icon/appearance settings
-	var/icon_living = ""			// The iconstate if we're alive, required
-	var/icon_dead = ""				// The iconstate if we're dead, required
-	var/icon_gib = "generic_gib"	// The iconstate for being gibbed, optional. Defaults to a generic gib animation.
-	var/icon_rest = null			// The iconstate for resting, optional
-	var/image/modifier_overlay = null // Holds overlays from modifiers.
-	var/image/eye_layer = null		// Holds the eye overlay.
-	var/has_eye_glow = FALSE		// If true, adds an overlay over the lighting plane for [icon_state]-eyes.
-	attack_icon = 'icons/effects/effects.dmi' //Just the default, played like the weapon attack anim
-	attack_icon_state = "slash" //Just the default
+	//* Mob icon/appearance settings *//
+	/// The iconstate if we're alive. //!REQUIRED
+	var/icon_living = ""
+	/// The iconstate if we're dead. //!REQUIRED
+	var/icon_dead = ""
+	/// The iconstate for being gibbed, optional. Defaults to a generic gib animation.
+	var/icon_gib = "generic_gib"
+	/// The iconstate for resting, optional
+	var/icon_rest = null
+	/// Holds overlays from modifiers.
+	var/image/modifier_overlay = null
+	/// Holds the eye overlay.
+	var/image/eye_layer = null
+	/// If true, adds an overlay over the lighting plane for [icon_state]-eyes.
+	var/has_eye_glow = FALSE
+	///Just the default, played like the weapon attack anim
+	attack_icon = 'icons/effects/effects.dmi'
+	///Just the default
+	attack_icon_state = "slash"
 
-	//Mob talking settings
-	universal_speak = 0				// Can all mobs in the entire universe understand this one?
-	var/has_langs = list(LANGUAGE_GALCOM)// Text name of their language if they speak something other than galcom. They speak the first one.
+	//* Mob talking settings *//
+	/// Can all mobs in the entire universe understand this one?
+	universal_speak = 0
+	/// Text name of their language if they speak something other than galcom. They speak the first one.
+	var/has_langs = list(LANGUAGE_GALCOM)
 
-	//Movement things.
-	var/movement_cooldown = 5			// Lower is faster.
-	var/movement_sound = null			// If set, will play this sound when it moves on its own will.
-	var/turn_sound = null				// If set, plays the sound when the mob's dir changes in most cases.
-	var/movement_shake_radius = 0		// If set, moving will shake the camera of all living mobs within this radius slightly.
-	var/aquatic_movement = 0			// If set, the mob will move through fluids with no hinderance.
+	//* Movement things. *//
+	/// Lower is faster.
+	var/movement_cooldown = 5
+	/// If set, will play this sound when it moves on its own will.
+	var/movement_sound = null
+	/// If set, plays the sound when the mob's dir changes in most cases.
+	var/turn_sound = null
+	/// If set, moving will shake the camera of all living mobs within this radius slightly.
+	var/movement_shake_radius = 0
+	/// If set, the mob will move through fluids with no hinderance.
+	var/aquatic_movement = 0
 
-	//Mob interaction
-	var/response_help   = "tries to help"	// If clicked on help intent
-	var/response_disarm = "tries to disarm" // If clicked on disarm intent
-	var/response_harm   = "tries to hurt"	// If clicked on harm intent
-	var/list/friends = list()		// Mobs on this list wont get attacked regardless of faction status.
-	var/harm_intent_damage = 3		// How much an unarmed harm click does to this mob.
-	var/meat_amount = 0				// How much meat to drop from this mob when butchered
-	var/obj/meat_type				// The meat object to drop
-	var/list/loot_list = list()		// The list of lootable objects to drop, with "/path = prob%" structure
-	var/obj/item/card/id/myid// An ID card if they have one to give them access to stuff.
+	//* Mob interaction *//
+	/// If clicked on help intent.
+	var/response_help   = "tries to help"
+	/// If clicked on disarm intent.
+	var/response_disarm = "tries to disarm"
+	/// If clicked on harm intent.
+	var/response_harm   = "tries to hurt"
+	/// Mobs on this list wont get attacked regardless of faction status.
+	var/list/friends = list()
+	/// How much an unarmed harm click does to this mob.
+	var/harm_intent_damage = 3
+	/// The list of lootable objects to drop, with "/path = prob%" structure
+	var/list/loot_list = list()
+	/// An ID card if they have one to give them access to stuff.
+	var/obj/item/card/id/access_card
 
-	//Mob environment settings
-	var/minbodytemp = 250			// Minimum "okay" temperature in kelvin
-	var/maxbodytemp = 350			// Maximum of above
-	var/heat_damage_per_tick = 3	// Amount of damage applied if animal's body temperature is higher than maxbodytemp
-	var/cold_damage_per_tick = 2	// Same as heat_damage_per_tick, only if the bodytemperature it's lower than minbodytemp
-	var/fire_alert = 0				// 0 = fine, 1 = hot, 2 = cold
+	//* Mob environment settings *//
+	/// Minimum "okay" temperature in kelvin
+	var/minbodytemp = 250
+	/// Maximum of above
+	var/maxbodytemp = 350
+	/// Amount of damage applied if animal's body temperature is higher than maxbodytemp.
+	var/heat_damage_per_tick = 3
+	/// Same as heat_damage_per_tick, only if the bodytemperature it's lower than minbodytemp.
+	var/cold_damage_per_tick = 2
+	/// The mob's fire state: 0 = fine, 1 = hot, 2 = cold
+	var/fire_alert = 0
+	/// Oxygen in moles, minimum, 0 is 'no minimum'
+	var/min_oxy = 5
+	/// Oxygen in moles, maximum, 0 is 'no maximum'
+	var/max_oxy = 0
+	/// Phoron min
+	var/min_tox = 0
+	/// Phoron max
+	var/max_tox = 1
+	/// CO2 min
+	var/min_co2 = 0
+	/// CO2 max
+	var/max_co2 = 5
+	/// N2 min
+	var/min_n2 = 0
+	/// N2 max
+	var/max_n2 = 0
+	/// This damage is taken when atmos doesn't fit all the requirements set.
+	var/unsuitable_atoms_damage = 2
 
-	var/min_oxy = 5					// Oxygen in moles, minimum, 0 is 'no minimum'
-	var/max_oxy = 0					// Oxygen in moles, maximum, 0 is 'no maximum'
-	var/min_tox = 0					// Phoron min
-	var/max_tox = 1					// Phoron max
-	var/min_co2 = 0					// CO2 min
-	var/max_co2 = 5					// CO2 max
-	var/min_n2 = 0					// N2 min
-	var/max_n2 = 0					// N2 max
-	var/unsuitable_atoms_damage = 2	// This damage is taken when atmos doesn't fit all the requirements above
+	//* Hostility settings *//
+	/// Is the mob weak to tasers?
+	var/taser_kill = 1
 
-	//Hostility settings
-	var/taser_kill = 1				// Is the mob weak to tasers
+	//* Attack ranged settings *//
+	/// The projectiles I shoot.
+	var/projectiletype
+	/// The sound I make when I do it
+	var/projectilesound
+	/// Accuracy modifier to add onto the bullet when its fired.
+	var/projectile_accuracy = 0
+	/// How many degrees to vary when I do it.
+	var/projectile_dispersion = 0
+	/// What to make the hugely laggy casings pile out of.
+	var/casingtype
 
-	//Attack ranged settings
-	var/projectiletype				// The projectiles I shoot
-	var/projectilesound				// The sound I make when I do it
-	var/projectile_accuracy = 0		// Accuracy modifier to add onto the bullet when its fired.
-	var/projectile_dispersion = 0	// How many degrees to vary when I do it.
-	var/casingtype					// What to make the hugely laggy casings pile out of
+	//* Reloading settings, part of ranged code *//
+	/// If TRUE, mob needs to reload occasionally.
+	var/needs_reload = FALSE
+	/// How many shots the mob gets before it has to reload, will not be used if needs_reload is FALSE
+	var/reload_max = 1
+	/// A counter to keep track of how many shots the mob has fired so far. Reloads when it hits reload_max.
+	var/reload_count = 0
+	/// How long it takes for a mob to reload. This is to buy a player a bit of time to run or fight.
+	var/reload_time = 1 SECONDS
+	/// What sound gets played when the mob successfully reloads. Defaults to the same sound as reloading guns. Can be null.
+	var/reload_sound = 'sound/weapons/flipblade.ogg'
 
-	// Reloading settings, part of ranged code
-	var/needs_reload = FALSE							// If TRUE, mob needs to reload occasionally
-	var/reload_max = 1									// How many shots the mob gets before it has to reload, will not be used if needs_reload is FALSE
-	var/reload_count = 0								// A counter to keep track of how many shots the mob has fired so far. Reloads when it hits reload_max.
-	var/reload_time = 1 SECONDS							// How long it takes for a mob to reload. This is to buy a player a bit of time to run or fight.
-	var/reload_sound = 'sound/weapons/flipblade.ogg'	// What sound gets played when the mob successfully reloads. Defaults to the same sound as reloading guns. Can be null.
+	//* Mob melee settings *//
+	/// Lower bound of randomized melee damage.
+	var/melee_damage_lower = 2
+	/// Upper bound of randomized melee damage.
+	var/melee_damage_upper = 6
+	/// "You are [attacktext] by the mob!"
+	var/list/attacktext = list("attacked")
+	/// "The mob [friendly] the person."
+	var/list/friendly = list("nuzzles")
+	/// Sound to play when I attack.
+	var/attack_sound = null
+	/// Percent chance to miss a melee attack.
+	var/melee_miss_chance = 0
+	/// What armor does this check?
+	var/attack_armor_type = "melee"
+	/// How much armor pen this attack has.
+	var/attack_armor_pen = 0
+	/// Is the attack sharp?
+	var/attack_sharp = FALSE
+	/// Does the attack have an edge?
+	var/attack_edge = FALSE
 
-	//Mob melee settings
-	var/melee_damage_lower = 2		// Lower bound of randomized melee damage
-	var/melee_damage_upper = 6		// Upper bound of randomized melee damage
-	var/list/attacktext = list("attacked") // "You are [attacktext] by the mob!"
-	var/list/friendly = list("nuzzles") // "The mob [friendly] the person."
-	var/attack_sound = null				// Sound to play when I attack
-	var/melee_miss_chance = 0			// percent chance to miss a melee attack.
-	var/attack_armor_type = "melee"		// What armor does this check?
-	var/attack_armor_pen = 0			// How much armor pen this attack has.
-	var/attack_sharp = FALSE			// Is the attack sharp?
-	var/attack_edge = FALSE				// Does the attack have an edge?
-
-	var/melee_attack_delay = null			// If set, the mob will do a windup animation and can miss if the target moves out of the way.
+	/// If set, the mob will do a windup animation and can miss if the target moves out of the way.
+	var/melee_attack_delay = null
+	/// If set, the mob will do a windup animation and can miss if the target moves out of the way.
 	var/ranged_attack_delay = null
+	/// If set, the mob will do a windup animation and can miss if the target moves out of the way.
 	var/special_attack_delay = null
 
-	//Special attacks
-//	var/special_attack_prob = 0				// The chance to ATTEMPT a special_attack_target(). If it fails, it will do a regular attack instead.
-											// This is commented out to ease the AI attack logic by being (a bit more) determanistic.
-											// You should instead limit special attacks using the below vars instead.
-	var/special_attack_min_range = null		// The minimum distance required for an attempt to be made.
-	var/special_attack_max_range = null		// The maximum for an attempt.
-	var/special_attack_charges = null		// If set, special attacks will work off of a charge system, and won't be usable if all charges are expended. Good for grenades.
-	var/special_attack_cooldown = null		// If set, special attacks will have a cooldown between uses.
-	var/last_special_attack = null			// world.time when a special attack occured last, for cooldown calculations.
+	//* Special attacks *//
+	/// The chance to ATTEMPT a special_attack_target(). If it fails, it will do a regular attack instead.
+	//? This is commented out to ease the AI attack logic by being (a bit more) determanistic.
+	//? You should instead limit special attacks using the below vars instead.
+//	var/special_attack_prob = 0
 
-	//Damage resistances
-	var/grab_resist = 0				// Chance for a grab attempt to fail. Note that this is not a true resist and is just a prob() of failure.
-	var/resistance = 0				// Damage reduction for all types
-	var/list/armor = list(			// Values for normal getarmor() checks
+	/// The minimum distance required for an attempt to be made.
+	var/special_attack_min_range = null
+	/// The maximum for an attempt.
+	var/special_attack_max_range = null
+	/// If set, special attacks will work off of a charge system, and won't be usable if all charges are expended. Good for grenades.
+	var/special_attack_charges = null
+	/// If set, special attacks will have a cooldown between uses.
+	var/special_attack_cooldown = null
+	/// world.time when a special attack occured last, for cooldown calculations.
+	var/last_special_attack = null
+
+	//* Damage resistances *//
+	/// Chance for a grab attempt to fail. Note that this is not a true resist and is just a prob() of failure.
+	var/grab_resist = 0
+	/// Damage reduction for all types
+	var/resistance = 0
+	/// Values for normal getarmor() checks
+	var/list/armor = list(
 				"melee" = 0,
 				"bullet" = 0,
 				"laser" = 0,
@@ -132,7 +210,8 @@
 				"bio" = 100,
 				"rad" = 100
 				)
-	var/list/armor_soak = list(		// Values for getsoak() checks.
+	/// Values for getsoak() checks.
+	var/list/armor_soak = list(
 				"melee" = 0,
 				"bullet" = 0,
 				"laser" = 0,
@@ -148,16 +227,46 @@
 	var/shock_resist = 0.0
 	var/water_resist = 1.0
 	var/poison_resist = 0.0
-	var/thick_armor = FALSE // Stops injections and "injections".
-	var/purge = 0					// Cult stuff.
-	var/supernatural = FALSE		// Ditto.
 
-	// contained in a cage
+	/// Stops injections and "injections".
+	var/thick_armor = FALSE
+
+	//* Cult stuff. *//
+	var/purge = 0
+	var/supernatural = FALSE
+
+
+	/// Is it contained in a cage?
 	var/in_stasis = 0
 
-/mob/living/simple_mob/Initialize()
+	//Randomization code base
+	var/mod_min = 70
+	var/mod_max = 130
+	/// Are we randomized?
+	var/randomized = FALSE
+
+	/// Used for if the mob can drop limbs. Overrides species dmi.
+	var/limb_icon
+	/// Used for if the mob can drop limbs. Overrides the icon cache key, so it doesn't keep remaking the icon needlessly.
+	var/limb_icon_key
+
+//* randomization code. *//
+/mob/living/simple_mob/proc/randomize()
+	if(randomized == TRUE)
+		var/mod = rand(mod_min,mod_max)/100
+		size_multiplier = mod
+		maxHealth = round(maxHealth*mod)
+		health = round(health*mod)
+		melee_damage_lower = round(melee_damage_lower*mod)
+		melee_damage_upper = round(melee_damage_upper*mod)
+		movement_cooldown = round(movement_cooldown*mod)
+		meat_amount = round(meat_amount*mod)
+		update_icons()
+
+/mob/living/simple_mob/Initialize(mapload)
 	verbs -= /mob/verb/observe
 	health = maxHealth
+	randomize()
 
 	for(var/L in has_langs)
 		languages |= GLOB.all_languages[L]
@@ -166,14 +275,13 @@
 
 	if(has_eye_glow)
 		add_eyes()
-	return ..()
 
+	return ..()
 
 /mob/living/simple_mob/Destroy()
 	default_language = null
-	if(myid)
-		qdel(myid)
-		myid = null
+	if(access_card)
+		QDEL_NULL(access_card)
 
 	friends.Cut()
 	languages.Cut()
@@ -263,37 +371,73 @@
 	update_icon()
 
 
-/mob/living/simple_mob/say(var/message,var/datum/language/language)
-	var/verb = "says"
+/mob/living/simple_mob/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+	verb = "says"
 	if(speak_emote.len)
 		verb = pick(speak_emote)
 
 	message = sanitize(message)
 
-	..(message, null, verb)
+	return ..()
 
 /mob/living/simple_mob/get_speech_ending(verb, var/ending)
 	return verb
 
 
+//TODO: This needs to be phased out for a newer butchering system. Though I am too scared to undo all our custom stuff. -Zandario
 // Harvest an animal's delicious byproducts
-/mob/living/simple_mob/proc/harvest(var/mob/user)
-	var/actual_meat_amount = max(1,(meat_amount/2))
-	if(meat_type && actual_meat_amount>0 && (stat == DEAD))
-		for(var/i=0;i<actual_meat_amount;i++)
-			var/obj/item/meat = new meat_type(get_turf(src))
-			meat.name = "[src.name] [meat.name]"
-		if(issmall(src))
-			user.visible_message("<span class='danger'>[user] chops up \the [src]!</span>")
-			new/obj/effect/decal/cleanable/blood/splatter(get_turf(src))
-			qdel(src)
-		else
-			user.visible_message("<span class='danger'>[user] butchers \the [src] messily!</span>")
-			gib()
+/mob/living/simple_mob/harvest(mob/user)
+	var/actual_meat_amount = pick(0, meat_amount)
+	var/actual_bone_amount = pick(0, bone_amount)
+	var/actual_hide_amount = pick(0, hide_amount)
+	var/actual_exotic_amount = pick(0, exotic_amount)
+	if(stat != DEAD)
+		return
+	if(meat_type)
+		for(var/i in 1 to actual_meat_amount)
+			var/obj/item/meat = new meat_type(drop_location())
+			meat.name = "[name] [meat.name]"
+	if(bone_type)
+		for(var/i in 1 to actual_bone_amount)
+			var/obj/item/bone = new bone_type(drop_location())
+			bone.name = "[bone.name]"
+	if(hide_type)
+		for(var/i in 1 to actual_hide_amount)
+			new hide_type(drop_location())
+	if(exotic_type)
+		for(var/i in 1 to actual_exotic_amount)
+			new exotic_type(drop_location())
+	if(issmall(src))
+		user?.visible_message("<span class='danger'>[user] chops up \the [src]!</span>")
+		new /obj/effect/decal/cleanable/blood/splatter(get_turf(src))
+		qdel(src)
+	else
+		user.visible_message("<span class='danger'>[user] butchers \the [src] messily!</span>")
+		gib()
 
+/* Replace the above ^^^^ with this if enabling the butchering component.
+/mob/living/simple_mob/gib()
+	if(butcher_results || guaranteed_butcher_results)
+		var/list/butcher = list()
+		if(butcher_results)
+			butcher += butcher_results
+		if(guaranteed_butcher_results)
+			butcher += guaranteed_butcher_results
+		var/atom/Tsec = drop_location()
+		for(var/path in butcher)
+			for(var/i in 1 to butcher[path])
+				new path(Tsec)
+	..()
+*/
 
 /mob/living/simple_mob/is_sentient()
 	return mob_class & MOB_CLASS_HUMANOID|MOB_CLASS_ANIMAL|MOB_CLASS_SLIME // Update this if needed.
 
 /mob/living/simple_mob/get_nametag_desc(mob/user)
 	return "<i>[tt_desc]</i>"
+
+/// Override for special butchering checks.
+/mob/living/simple_mob/can_butcher(var/mob/user, var/obj/item/I)
+	. = ..()
+	if(. && (!is_sharp(I) || !has_edge(I)))
+		return FALSE

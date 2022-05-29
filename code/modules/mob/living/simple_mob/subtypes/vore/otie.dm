@@ -18,6 +18,7 @@
 	faction = "otie"
 	maxHealth = 150
 	health = 150
+	randomized = TRUE
 	minbodytemp = 200
 	melee_damage_lower = 2
 	melee_damage_upper = 7 //Don't break my bones bro
@@ -45,6 +46,10 @@
 	var/mob/living/carbon/human/friend
 	var/tamed = 0
 	var/tame_chance = 50 //It's a fiddy-fiddy default you may get a buddy pal or you may get mauled and ate. Win-win!
+
+	meat_amount = 6
+	bone_amount = 2
+	hide_amount = 2
 
 // Activate Noms!
 
@@ -181,6 +186,12 @@
 	icon_dead = "sechotie-dead"
 	maxbodytemp = 1000
 
+/mob/living/simple_mob/otie/security/phoron/red/Frankie
+	name = "Frankie"
+	desc = "Madame Foster's personal guard dog, Frankie!  It seems he's gotten some new toys, a metal band on his head lets him manipulate objects with the power of his mind!  What do giant dogs even think about all day?"
+	mod_min = 150
+	mod_max = 150
+
 /mob/living/simple_mob/otie/attackby(var/obj/item/O, var/mob/user) // Trade donuts for bellybrig victims.
 	if(istype(O, /obj/item/reagent_containers/food))
 		qdel(O)
@@ -200,7 +211,7 @@
 	if(ishuman(prey))
 		vore_selected.digest_mode = DM_HOLD
 		if(check_threat(prey) >= 4)
-			global_announcer.autosay("[src] has detained suspect <b>[target_name(prey)]</b> in <b>[get_area(src)]</b>.", "SmartCollar oversight", "Security")
+			GLOB.global_announcer.autosay("[src] has detained suspect <b>[target_name(prey)]</b> in <b>[get_area(src)]</b>.", "SmartCollar oversight", "Security")
 	if(istype(prey,/mob/living/simple_mob/animal/passive/mouse))
 		vore_selected.digest_mode = DM_DIGEST
 	. = ..()

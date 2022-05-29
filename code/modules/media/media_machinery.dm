@@ -65,7 +65,7 @@
 	if(anchored)
 		update_music()
 
-/obj/machinery/media/Initialize()
+/obj/machinery/media/Initialize(mapload)
 	. = ..()
 	update_media_source()
 

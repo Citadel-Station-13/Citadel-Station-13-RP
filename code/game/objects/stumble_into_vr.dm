@@ -23,12 +23,10 @@
 /obj/machinery/disposal/stumble_into(mob/living/M)
 	playsound(get_turf(src), 'sound/effects/clang.ogg', 25, 1, -1)
 	visible_message("<span class='warning'>[M] [pick("tripped", "stumbled")] into \the [src]!</span>")
-	if(M.client)
-		M.client.perspective = EYE_PERSPECTIVE
-		M.client.eye = src
 	M.apply_damage(5, BRUTE)
 	M.Weaken(2)
 	M.forceMove(src)
+	M.update_perspective()
 	M.stop_flying()
 	update()
 
@@ -96,8 +94,8 @@
 	M.emote("scream")
 	M.stop_flying()
 
-/obj/machinery/atmospherics/unary/cryo_cell/stumble_into(mob/living/M)
-	if((stat & (NOPOWER|BROKEN)) || !istype(M, /mob/living/carbon) || occupant || M.abiotic() || !node)
+/obj/machinery/atmospherics/component/unary/cryo_cell/stumble_into(mob/living/M)
+	if((machine_stat & (NOPOWER|BROKEN)) || !istype(M, /mob/living/carbon) || occupant || M.abiotic() || !node)
 		return ..()
 	playsound(get_turf(src), 'sound/effects/Glasshit.ogg', 25, 1, -1)
 	visible_message("<span class='warning'>[M] [pick("tripped", "stumbled")] into \the [src]!</span>")
@@ -121,15 +119,13 @@
 		M.emote("scream")
 
 /obj/machinery/suit_storage_unit/stumble_into(mob/living/M)
-	if(!ishuman(M) || !isopen || !ispowered || isbroken || OCCUPANT || HELMET || SUIT)
+	if(!ishuman(M) || !isopen || !ispowered || isbroken || occupant || helmet_stored || suit_stored)
 		return ..()
-	playsound(get_turf(src), 'sound/effects/clang.ogg', 25, 1, -1)
+	playsound(src, 'sound/effects/clang.ogg', 25, 1, -1)
 	visible_message("<span class='warning'>[M] [pick("tripped", "stumbled")] into \the [src]!</span>")
-	if(M.client)
-		M.client.perspective = EYE_PERSPECTIVE
-		M.client.eye = src
 	M.forceMove(src)
-	OCCUPANT = M
+	M.update_perspective()
+	occupant = M
 	isopen = 0
 	update_icon()
 	add_fingerprint(M)

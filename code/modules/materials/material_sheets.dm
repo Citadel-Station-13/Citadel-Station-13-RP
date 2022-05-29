@@ -12,14 +12,17 @@
 		slot_r_hand_str = 'icons/mob/items/righthand_material.dmi',
 		)
 
-	var/default_type = DEFAULT_WALL_MATERIAL
+	var/default_type = MAT_STEEL
 	var/datum/material/material
 	var/perunit = SHEET_MATERIAL_AMOUNT
 	var/apply_colour //temp pending icon rewrite
+	var/allow_window_autobuild = TRUE
+	drop_sound = 'sound/items/drop/axe.ogg'
+	pickup_sound = 'sound/items/pickup/axe.ogg'
 
 /obj/item/stack/material/Initialize(mapload, new_amount, merge = TRUE)
 	if(!default_type)
-		default_type = DEFAULT_WALL_MATERIAL
+		default_type = MAT_STEEL
 	material = get_material_by_name("[default_type]")
 	if(!material)
 		return INITIALIZE_HINT_QDEL
@@ -75,7 +78,7 @@
 	return transfer
 
 /obj/item/stack/material/attack_self(var/mob/user)
-	if(!material.build_windows(user, src))
+	if(!allow_window_autobuild || !material.build_windows(user, src))
 		..()
 
 /obj/item/stack/material/attackby(var/obj/item/W, var/mob/user)
@@ -106,17 +109,23 @@
 	icon_state = "sheet-sandstone"
 	default_type = "sandstone"
 	no_variants = FALSE
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/pickup/boots.ogg'
 
 /obj/item/stack/material/marble
 	name = "marble brick"
 	icon_state = "sheet-marble"
 	default_type = "marble"
 	no_variants = FALSE
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/pickup/boots.ogg'
 
 /obj/item/stack/material/diamond
 	name = "diamond"
 	icon_state = "sheet-diamond"
 	default_type = "diamond"
+	drop_sound = 'sound/items/drop/glass.ogg'
+	pickup_sound = 'sound/items/pickup/glass.ogg'
 
 /obj/item/stack/material/uranium
 	name = "uranium"
@@ -187,9 +196,9 @@
 	no_variants = FALSE
 
 /obj/item/stack/material/steel
-	name = DEFAULT_WALL_MATERIAL
+	name = MAT_STEEL
 	icon_state = "sheet-metal"
-	default_type = DEFAULT_WALL_MATERIAL
+	default_type = MAT_STEEL
 	no_variants = FALSE
 
 /obj/item/stack/material/steel/hull
@@ -262,6 +271,7 @@
 	icon_state = "sheet-super"
 	item_state = "diamond"
 	default_type = MAT_SUPERMATTER
+	no_variants = FALSE
 	apply_colour = TRUE
 
 /obj/item/stack/material/supermatter/proc/update_mass()	// Due to how dangerous they can be, the item will get heavier and larger the more are in the stack.
@@ -317,11 +327,19 @@
 	icon_state = "sheet-wood"
 	default_type = MAT_WOOD
 	strict_color_stacking = TRUE
+	drop_sound = 'sound/items/drop/wooden.ogg'
+	pickup_sound = 'sound/items/pickup/wooden.ogg'
 
 /obj/item/stack/material/wood/sif
 	name = "alien wooden plank"
 	color = "#0099cc"
 	default_type = MAT_SIFWOOD
+
+/obj/item/stack/material/wood/hard
+	name = "hardwood plank"
+	color = "#42291a"
+	default_type = MAT_HARDWOOD
+	description_info = "Rich, lustrous hardwood, imported from offworld at moderate expense. Mostly used for luxurious furniture, and not very good for weapons or other structures."
 
 /obj/item/stack/material/log
 	name = "log"
@@ -333,12 +351,20 @@
 	w_class = ITEMSIZE_HUGE
 	description_info = "Use inhand to craft things, or use a sharp and edged object on this to convert it into two wooden planks."
 	var/plank_type = /obj/item/stack/material/wood
+	drop_sound = 'sound/items/drop/wooden.ogg'
+	pickup_sound = 'sound/items/pickup/wooden.ogg'
 
 /obj/item/stack/material/log/sif
 	name = "alien log"
 	default_type = MAT_SIFLOG
 	color = "#0099cc"
 	plank_type = /obj/item/stack/material/wood/sif
+
+/obj/item/stack/material/log/hard
+	name = "hardwood log"
+	default_type = MAT_HARDLOG
+	color = "#6f432a"
+	plank_type = /obj/item/stack/material/wood/hard
 
 /obj/item/stack/material/log/attackby(var/obj/item/W, var/mob/user)
 	if(!istype(W) || W.force <= 0)
@@ -370,6 +396,8 @@
 	no_variants = FALSE
 	pass_color = TRUE
 	strict_color_stacking = TRUE
+	drop_sound = 'sound/items/drop/cloth.ogg'
+	pickup_sound = 'sound/items/pickup/cloth.ogg'
 
 /obj/item/stack/material/resin
 	name = "resin"
@@ -387,6 +415,8 @@
 	no_variants = FALSE
 	pass_color = TRUE
 	strict_color_stacking = TRUE
+	drop_sound = 'sound/items/drop/cardboardbox.ogg'
+	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 
 /obj/item/stack/material/snow
 	name = "snow"
@@ -404,16 +434,31 @@
 	name = "leather"
 	desc = "The by-product of mob grinding."
 	icon_state = "sheet-leather"
-	default_type = "leather"
+	default_type = MAT_LEATHER
 	no_variants = FALSE
 	pass_color = TRUE
 	strict_color_stacking = TRUE
+	drop_sound = 'sound/items/drop/leather.ogg'
+	pickup_sound = 'sound/items/pickup/leather.ogg'
+
+/obj/item/stack/material/chitin
+	name = "chitin"
+	desc = "The by-product of mob grinding."
+	icon_state = "chitin"
+	default_type = MAT_CHITIN
+	no_variants = FALSE
+	pass_color = TRUE
+	strict_color_stacking = TRUE
+	drop_sound = 'sound/items/drop/leather.ogg'
+	pickup_sound = 'sound/items/pickup/leather.ogg'
 
 /obj/item/stack/material/glass
 	name = "glass"
 	icon_state = "sheet-glass"
 	default_type = "glass"
 	no_variants = FALSE
+	drop_sound = 'sound/items/drop/glass.ogg'
+	pickup_sound = 'sound/items/pickup/glass.ogg'
 
 /obj/item/stack/material/glass/reinforced
 	name = "reinforced glass"
@@ -437,43 +482,58 @@
 	default_type = "reinforced borosilicate glass"
 	no_variants = FALSE
 
-//CitMain Sandbag port.
-/obj/item/stack/material/emptysandbag
-	name = "empty sandbag"
-	desc = "A bag to be filled with sand."
-	icon_state = "sandbag"
-	max_amount = 50
-	description_info = "Fill with sand to convert this into a sandbag."
+/obj/item/stack/material/bananium
+	name = "bananium"
+	desc = "When smelted, Vaudium takes on a bright yellow hue and remains pliable, growing rigid when met with a forceful impact."
+	icon_state = "sheet-clown"
+	default_type = "bananium"
 	no_variants = FALSE
-	var/fill_type = /obj/item/stack/material/sandbags
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/pickup/boots.ogg'
 
-	default_type = "emptysandbag"
-	perunit = 1
-
-/obj/item/stack/material/emptysandbag/attackby(var/obj/item/W, var/mob/user)
-	if(!istype(W, /obj/item/ore/glass))
-		var/time = (3 SECONDS)
-		user.setClickCooldown(time)
-		if(do_after(user, time, src) && use(1))
-			to_chat(user, "<span class='notice'>You fill the sandbag.</span>")
-	else
-		return ..()
-
-/obj/item/stack/material/emptysandbag/attackby(var/obj/item/W, var/mob/user)
-	if(istype(W, /obj/item/ore/glass) && !interact(user, src))
-		if(do_after(user, 3 SECONDS, src) && use(1) && qdel(W))
-			var/turf/T = get_turf(user)
-			to_chat(user, "<span class='notice'>You fill the sandbag.</span>")
-			new /obj/item/stack/material/sandbags && !get(T)
-	else
-		return ..()
-
-/obj/item/stack/material/sandbags
-	name = "sandbags"
-	desc = "This is a synthetic bag tightly packed with sand. It is designed to provide structural support and serve as a portable barrier."
-	singular_name = "sandbag"
-	icon_state = "sandbags"
+/obj/item/stack/material/silencium
+	name = "silencium"
+	desc = "When compressed, Vaudium loses its color, gaining distinctive black bands and becoming intensely rigid."
+	icon_state = "sheet-mime"
+	default_type = "silencium"
 	no_variants = FALSE
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/drop/boots.ogg'
 
-	default_type = "sandbags"
-	perunit = 1
+/obj/item/stack/material/brass
+	name = "brass"
+	desc = "This stable alloy is often used in complex mechanisms due to its versatility, softness, and solid head conduction."
+	icon_state = "sheet-brass"
+	default_type = "brass"
+	no_variants = FALSE
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/drop/boots.ogg'
+
+/obj/item/stack/material/bone
+	name = "bone"
+	desc = "These dense calcium structures are a common support system for organic life."
+	icon_state = "sheet-bone"
+	default_type = "bone"
+	no_variants = FALSE
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/drop/boots.ogg'
+
+/obj/item/stack/material/copper
+	name = "copper"
+	desc = "This common metal remains a popular choice as an electrical and thermal conductor due to how easily it can be worked."
+	icon_state = "sheet-copper"
+	default_type = "copper"
+	no_variants = FALSE
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/drop/boots.ogg'
+
+//Moved out of beehive.dm in conjunction with the primary material.
+/obj/item/stack/material/wax
+	name = "wax"
+	singular_name = "wax piece"
+	desc = "Soft substance produced by bees. Used to make candles."
+	icon_state = "sheet-rtransparent"
+	apply_colour = 1
+	default_type = "wax"
+	no_variants = FALSE
+	pass_color = TRUE

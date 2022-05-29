@@ -54,15 +54,15 @@
 
 	var/omniteleport = FALSE // Will this teleport anchored things too?
 
-/obj/item/telecube/Initialize()
+/obj/item/telecube/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 	last_teleport = world.time
 
 	glow = image(icon = icon, icon_state = "[icon_state]-ready")
-	glow.plane = PLANE_LIGHTING_ABOVE
+	glow.plane = ABOVE_LIGHTING_PLANE
 	charge = image(icon = icon, icon_state = "[icon_state]-charging")
-	charge.plane = PLANE_LIGHTING_ABOVE
+	charge.plane = ABOVE_LIGHTING_PLANE
 	shell = image(icon = icon, icon_state = "[icon_state]")
 
 	if(teleport_range)
@@ -89,7 +89,7 @@
 
 	return
 
-/obj/item/telecube/process()
+/obj/item/telecube/process(delta_time)
 	..()
 	update_icon()
 

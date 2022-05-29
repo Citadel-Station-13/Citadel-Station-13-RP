@@ -41,14 +41,14 @@
 	network = "tcommsat"
 	autolinkers = list("hub", "relay", "c_relay", "s_relay", "m_relay", "r_relay", "science", "medical",
 	"supply", "service", "common", "command", "engineering", "security", "unused", "hb_relay",
-	"receiverA", "broadcasterA") //VOREStation Edit - Added "hb_relay"
+	"receiverA", "broadcasterA")
 
 /obj/machinery/telecomms/hub/preset_cent
 	id = "CentCom Hub"
 	network = "tcommsat"
 	produces_heat = 0
 	autolinkers = list("hub_cent", "c_relay", "s_relay", "m_relay", "r_relay", "hb_relay",
-	 "centcom", "receiverCent", "broadcasterCent") //VOREStation Edit - Added "hb_relay"
+	 "centcom", "receiverCent", "broadcasterCent")
 
 //Receivers
 
@@ -69,7 +69,7 @@
 	network = "tcommsat"
 	produces_heat = 0
 	autolinkers = list("receiverCent")
-	freq_listening = list(ERT_FREQ, DTH_FREQ)
+	freq_listening = list(ERT_FREQ, DTH_FREQ, SYND_FREQ)
 
 
 //Buses
@@ -86,12 +86,12 @@
 	freq_listening = list(SUP_FREQ, SRV_FREQ)
 	autolinkers = list("processor2", "supply", "service", "unused")
 
-/obj/machinery/telecomms/bus/preset_two/New()
+/obj/machinery/telecomms/bus/preset_two/Initialize(mapload)
 	for(var/i = PUBLIC_LOW_FREQ, i < PUBLIC_HIGH_FREQ, i += 2)
 		if(i == PUB_FREQ)
 			continue
 		freq_listening |= i
-	..()
+	return ..()
 
 /obj/machinery/telecomms/bus/preset_three
 	id = "Bus 3"
@@ -108,7 +108,7 @@
 /obj/machinery/telecomms/bus/preset_cent
 	id = "CentCom Bus"
 	network = "tcommsat"
-	freq_listening = list(ERT_FREQ, DTH_FREQ)
+	freq_listening = list(ERT_FREQ, DTH_FREQ, SYND_FREQ)
 	produces_heat = 0
 	autolinkers = list("processorCent", "centcom")
 
@@ -177,12 +177,12 @@
 	freq_listening = list()
 	autolinkers = list("unused")
 
-/obj/machinery/telecomms/server/presets/unused/New()
+/obj/machinery/telecomms/server/presets/unused/Initialize(mapload)
 	for(var/i = PUBLIC_LOW_FREQ, i < PUBLIC_HIGH_FREQ, i += 2)
 		if(i == AI_FREQ || i == PUB_FREQ)
 			continue
 		freq_listening |= i
-	..()
+	return ..()
 
 /obj/machinery/telecomms/server/presets/command
 	id = "Command Server"
@@ -201,7 +201,7 @@
 
 /obj/machinery/telecomms/server/presets/centcomm
 	id = "CentCom Server"
-	freq_listening = list(ERT_FREQ, DTH_FREQ)
+	freq_listening = list(ERT_FREQ, DTH_FREQ, SYND_FREQ)
 	produces_heat = 0
 	autolinkers = list("centcom")
 

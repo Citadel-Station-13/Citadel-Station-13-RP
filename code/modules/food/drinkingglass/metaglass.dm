@@ -6,7 +6,7 @@
 	volume = 30
 	unacidable = 1 //glass
 	center_of_mass = list("x"=16, "y"=10)
-	matter = list("glass" = 500)
+	matter = list(MAT_GLASS = 500)
 	icon = 'icons/obj/drinks.dmi'
 
 /obj/item/reagent_containers/food/drinks/metaglass/on_reagent_change()
@@ -221,6 +221,240 @@ Drinks Data
 	glass_icon_state = "aleglass"
 	glass_center_of_mass = list("x"=16, "y"=8)
 
+/datum/reagent/drink/arnold_palmer
+	glass_icon_state = "arnoldpalmer"
+	glass_center_of_mass = list("x"=16, "y"=4)
+
+/datum/reagent/drink/soda/appleade
+	glass_icon_state = "appleade"
+	glass_center_of_mass = list("x"=16, "y"=4)
+
+/datum/reagent/drink/soda/melonade
+	glass_icon_state = "melonade"
+	glass_center_of_mass = list("x"=16, "y"=4)
+
+/datum/reagent/drink/soda/pineappleade
+	glass_icon_state = "pineappleade"
+	glass_center_of_mass = list("x"=16, "y"=4)
+
+/datum/reagent/ethanol/balloon
+	glass_icon_state = "balloon"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/drink/berrycordial
+	glass_icon_state = "berrycordial"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/binmanbliss
+	glass_icon_state = "binmanbliss"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/cloverclub
+	glass_icon_state = "cloverclub"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/drink/collins_mix
+	glass_icon_state = "collinsmix"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/drink/dreamcream
+	glass_icon_state = "dreamcream"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/drink/driverspunch
+	glass_icon_state = "driverspunch"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/ginzamary
+	glass_icon_state = "ginzamary"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/coffee/elysiumfacepunch
+	glass_icon_state = "elysiumfacepunch"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/erebusmoonrise
+	glass_icon_state = "erebusmoonrise2"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/drink/soda/mintapplesparkle
+	glass_icon_state = "mintapplesparkle"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/deathbell
+	glass_icon_state = "deathbell"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/drink/milkshake/chocoshake
+	glass_icon_state = "chmilkshake"
+	glass_center_of_mass = list("x"=16, "y"=7)
+
+/datum/reagent/drink/milkshake/peanutshake
+	glass_icon_state = "pbmilkshake"
+	glass_center_of_mass = list("x"=16, "y"=7)
+
+/datum/reagent/drink/lovepotion
+	glass_icon_state = "lovepotionglass"
+	glass_center_of_mass = list("x"=16, "y"=7)
+
+/datum/reagent/ethanol/debugger
+	glass_icon_state = "debugger"
+	glass_center_of_mass = list("x"=16, "y"=7)
+
+/datum/reagent/ethanol/spacersbrew
+	glass_icon_state = "spacersbrewglass"
+	glass_center_of_mass = list("x"=16, "y"=7)
+
+/datum/reagent/drink/tropicalfizz
+	glass_icon_state = "spacersbrewglass"
+	glass_center_of_mass = list("x"=16, "y"=7)
+
+/datum/reagent/ethanol/galacticpanic
+	glass_icon_state = "galacticpanicglass"
+	glass_center_of_mass = list("x"=16, "y"=7)
+
+/datum/reagent/drink/shirley_temple
+	glass_icon_state = "shirleytemple"
+	glass_center_of_mass = list("x"=16, "y"=7)
+
+/datum/reagent/ethanol/sakebomb
+	glass_icon_state = "sakebomb"
+	glass_center_of_mass = list("x"=16, "y"=7)
+
+/datum/reagent/ethanol/saketini
+	glass_icon_state = "saketini"
+	glass_center_of_mass = list("x"=16, "y"=7)
+
+/datum/reagent/drink/slimeslammer
+	glass_icon_state = "slickslimeslammer"
+	glass_center_of_mass = list("x"=16, "y"=7)
+
+/datum/reagent/ethanol/soemmerfire
+	glass_icon_state = "soemmerfire"
+	glass_center_of_mass = list("x"=16, "y"=7)
+
+/datum/reagent/ethanol/tamagozake
+	glass_icon_state = "tamagozake"
+	glass_center_of_mass = list("x"=16, "y"=7)
+
+/datum/reagent/ethanol/tokyorose
+	glass_icon_state = "tokyorose3"
+	glass_center_of_mass = list("x"=16, "y"=7)
+
+/datum/reagent/ethanol/vesper
+	glass_icon_state = "vesper"
+	glass_center_of_mass = list("x"=16, "y"=7)
+
+/datum/reagent/ethanol/winebrandy
+	glass_icon_state = "winebrandy2"
+	glass_center_of_mass = list("x"=16, "y"=7)
+
+/datum/reagent/ethanol/whiskeysour
+	glass_icon_state = "whiskeysour"
+	glass_center_of_mass = list("x"=16, "y"=7)
+
+/datum/reagent/ethanol/natunabrandy
+	glass_icon_state = "natunabrandy"
+	glass_center_of_mass = list("x"=16, "y"=7)
+
+/datum/reagent/ethanol/negroni
+	glass_icon_state = "negroni"
+	glass_center_of_mass = list("x"=16, "y"=7)
+
+/datum/reagent/drink/roy_rogers
+	glass_icon_state = "royrogers"
+	glass_center_of_mass = list("x"=16, "y"=7)
+
+/datum/reagent/drink/soda/vilelemon
+	glass_icon_state = "vilelemon"
+	glass_center_of_mass = list("x"=16, "y"=7)
+
+/datum/reagent/ethanol/virginsip
+	glass_icon_state = "virginsip"
+	glass_center_of_mass = list("x"=16, "y"=7)
+
+/datum/reagent/drink/tropicalfizz
+	glass_icon_state = "tropicalfizz"
+
+/datum/reagent/ethanol/robustin
+	glass_icon_state = "robustin"
+	glass_center_of_mass = list("x"=16, "y"=2)
+
+/datum/reagent/ethanol/rotgut
+	glass_icon_state = "rotgut"
+	glass_center_of_mass = list("x"=16, "y"=2)
+
+/datum/reagent/ethanol/melonspritzer
+	glass_icon_state = "melonspritzer"
+	glass_center_of_mass = list("x"=16, "y"=7)
+
+/datum/reagent/ethanol/morningafter
+	glass_icon_state = "morningafter"
+	glass_center_of_mass = list("x"=16, "y"=7)
+
+/datum/reagent/ethanol/sugarrush
+	glass_icon_state = "sugarrushglass"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/lotus
+	glass_icon_state = "lotusglass"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/sbagliato
+	glass_icon_state = "sbagliatoglass"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/fusionnaire
+	glass_icon_state = "fusionnair3"
+
+/datum/reagent/ethanol/xanaducannon
+	glass_icon_state = "xanaducannon"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/bulldog
+	glass_icon_state = "bulldogglass"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/italiancrisis
+	glass_icon_state = "italiancrisisglass"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/shroomjuice
+	glass_icon_state = "shroomjuiceglass"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/honeyshot
+	glass_icon_state = "honeyshotglass"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/scsatw
+	glass_icon_state = "slowcomfortablescrewagainstthewallglass"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/unsweettea
+	glass_icon_state = "unsweetteaglass"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/drink/sweettea
+	glass_icon_state = "sweetteaglass"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/originalsin
+	glass_icon_state = "originalsinglass"
+	glass_center_of_mass = list("x"=16, "y"=9)
+
+/datum/reagent/ethanol/lovemaker
+	glass_icon_state = "lovemaker2"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/drink/soda/orangeale
+	glass_icon_state = "orangeale"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/slimeshot
+	glass_icon_state = "namedbullet"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
 /datum/reagent/ethanol/beer
 	glass_icon_state = "beerglass"
 	glass_center_of_mass = list("x"=16, "y"=8)
@@ -281,7 +515,11 @@ Drinks Data
 	glass_center_of_mass = list("x"=16, "y"=12)
 
 /datum/reagent/ethanol/wine
-	glass_icon_state = "wineglass"
+	glass_icon_state = "redwineglass"
+	glass_center_of_mass = list("x"=15, "y"=7)
+
+/datum/reagent/ethanol/whitewine
+	glass_icon_state = "whitewineglass"
 	glass_center_of_mass = list("x"=15, "y"=7)
 
 /datum/reagent/ethanol/acid_spit
@@ -390,7 +628,7 @@ Drinks Data
 	glass_icon_state = "gintonicglass"
 
 /datum/reagent/ethanol/goldschlager
-	glass_icon_state = "ginvodkaglass"
+	glass_icon_state = "goldschlagerglass"
 	glass_center_of_mass = list("x"=16, "y"=12)
 
 /datum/reagent/ethanol/hippies_delight
@@ -568,6 +806,7 @@ Drinks Data
 
 /datum/reagent/ethanol/planterspunch
 	glass_icon_state = "planterspunch"
+	glass_center_of_mass = list("x"=16, "y"=8)
 
 /datum/reagent/ethanol/olympusmons
 	glass_icon_state = "olympusmons"
@@ -653,3 +892,82 @@ Drinks Data
 
 /datum/reagent/ethanol/thebestboy
 	glass_icon_state = "thebestboy"
+
+/datum/reagent/drink/soda/astral_wind
+	glass_icon_state = "astral_wind"
+
+/datum/reagent/drink/soda/solar_wind
+	glass_icon_state = "solar_wind"
+
+/datum/reagent/drink/soda/vortex_chill
+	glass_icon_state = "vortex_chill"
+
+/datum/reagent/ethanol/nebula_riptide
+	glass_icon_state = "nebula_riptide"
+
+/datum/reagent/ethanol/sexonthebeach
+	glass_icon_state = "sexonthebeachglass"
+
+/datum/reagent/drink/virginsexonthebeach
+	glass_icon_state = "virginsexonthebeachglass"
+
+/datum/reagent/ethanol/phobos
+	glass_icon_state = "phobos"
+
+/datum/reagent/ethanol/greenstuff
+	glass_icon_state = "greenstuff"
+
+/datum/reagent/ethanol/russianbastard
+	glass_icon_state = "ginvodkaglass"
+	glass_center_of_mass = list("x"=16, "y"=12)
+
+/datum/reagent/ethanol/willtolive
+	glass_icon_state = "willtolive"
+
+/datum/reagent/ethanol/desiretodie
+	glass_icon_state = "desiretodie"
+
+/datum/reagent/drink/raspberrybeesknees
+	glass_icon_state = "raspberrybeesknees"
+
+/datum/reagent/drink/sidecar
+	glass_icon_state = "sidecar"
+
+/datum/reagent/drink/french75
+	glass_icon_state = "french75"
+
+/datum/reagent/drink/french76
+	glass_icon_state = "french75"
+
+/datum/reagent/drink/lastword
+	glass_icon_state = "lastword"
+
+/datum/reagent/drink/watermelonsmoothie
+	glass_icon_state = "watermelonsmoothie"
+
+/datum/reagent/drink/orangesmoothie
+	glass_icon_state = "orangesmoothie"
+
+/datum/reagent/drink/limesmoothie
+	glass_icon_state = "limesmoothie"
+
+/datum/reagent/drink/lemonsmoothie
+	glass_icon_state = "lemonsmoothie"
+
+/datum/reagent/drink/berrysmoothie
+	glass_icon_state = "berrysmoothie"
+
+/datum/reagent/drink/applesmoothie
+	glass_icon_state = "applesmoothie"
+
+/datum/reagent/drink/grapesmoothie
+	glass_icon_state = "grapesmoothie"
+
+/datum/reagent/ethanol/goliathspit
+	glass_icon_state = "goliathspit"
+
+/datum/reagent/ethanol/maryonacross
+	glass_icon_state = "maryonacross"
+
+/datum/reagent/ethanol/royaljelly
+	glass_icon_state = "royaljelly"

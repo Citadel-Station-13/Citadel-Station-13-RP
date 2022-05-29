@@ -27,6 +27,7 @@
 
 	maxHealth = 50
 	health = 50
+	randomized = TRUE
 	has_hands = TRUE
 	humanoid_hands = TRUE
 
@@ -63,6 +64,9 @@
 
 	say_list_type = /datum/say_list/sakimm
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative/sakimm
+
+	bone_amount = 2
+	hide_amount = 2
 
 	var/obj/item/clothing/head/hat = null // The hat the Sakimm may be wearing.
 	var/list/friend_loot_list = list(/obj/item/coin)	// What will make this animal non-hostile if held?
@@ -144,12 +148,12 @@
 	..()
 	if(hat)
 		var/hat_state = hat.item_state ? hat.item_state : hat.icon_state
-		var/image/I = image('icons/mob/head.dmi', src, hat_state)
+		var/image/I = image(INV_HEAD_DEF_ICON, src, hat_state)
 		I.pixel_y = -15 // Sakimm are tiny!
 		I.appearance_flags = RESET_COLOR
 		add_overlay(I)
 
-/mob/living/simple_mob/animal/sif/sakimm/Initialize()
+/mob/living/simple_mob/animal/sif/sakimm/Initialize(mapload)
 	. = ..()
 
 	verbs += /mob/living/proc/ventcrawl
@@ -213,7 +217,7 @@
 		I.attack_hand(holder)
 		lose_target()
 	if(istype(A,/mob/living) && holder.Adjacent(A))	// Not the dumbest tool in the shed. If we're fighting, we're gonna dance around them.
-		holder.IMove(get_step(holder, pick(alldirs)))
+		holder.IMove(get_step(holder, pick(GLOB.alldirs)))
 		holder.face_atom(A)
 		request_help()	// And we're going to call friends, too.
 

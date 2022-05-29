@@ -6,7 +6,7 @@
 
 /datum/event/ionstorm/get_skybox_image()
 	if(!cloud_hueshift)
-		cloud_hueshift = color_rotation(rand(-3, 3) * 15)
+		cloud_hueshift = color_matrix_rotate_hue(rand(-3, 3) * 15)
 	var/image/res = image('icons/skybox/ionbox.dmi', "ions")
 	res.color = cloud_hueshift
 	res.appearance_flags = RESET_COLOR
@@ -31,7 +31,7 @@
 		if(!(S.z in affecting_z))
 			continue
 		var/area/A = get_area(S)
-		if(!A || A.flags & RAD_SHIELDED)	// Rad shielding will protect from ions too
+		if(!A || A.area_flags & AF_RAD_SHIELDED)	// Rad shielding will protect from ions too
 			continue
 		to_chat(S, "<span class='warning'>Your integrated sensors detect an ionospheric anomaly. Your systems will be impacted as you begin a partial restart.</span>")
 		var/ionbug = rand(3, 9)
@@ -59,7 +59,7 @@
 */
 /datum/event/ionstorm/tick()
 	if(botEmagChance)
-		for(var/mob/living/bot/bot in mob_list)
+		for(var/mob/living/bot/bot in GLOB.mob_list)
 			if(!(bot.z in affecting_z))
 				continue
 			if(prob(botEmagChance))
@@ -181,7 +181,7 @@ Would like to add a law like "Law x is _______" where x = a number, and _____ is
 					M.add_ion_law("THE STATION IS [who2pref] [who2]")
 
 	if(botEmagChance)
-		for(var/obj/machinery/bot/bot in mob_list)
+		for(var/obj/machinery/bot/bot in GLOB.mob_list)
 			if(prob(botEmagChance))
 				bot.Emag()
 */
@@ -197,21 +197,21 @@ Would like to add a law like "Law x is _______" where x = a number, and _____ is
 
 	spawn(0)
 		to_chat(world, "Started processing APCs")
-		for (var/obj/machinery/power/apc/APC in machines)
+		for (var/obj/machinery/power/apc/apc in GLOB.apcs)
 			if(APC.z in station_levels)
 				APC.ion_act()
 				apcnum++
 		to_chat(world, "Finished processing APCs. Processed: [apcnum]")
 	spawn(0)
 		to_chat(world, "Started processing SMES")
-		for (var/obj/machinery/power/smes/SMES in machines)
+		for (var/obj/machinery/power/smes/SMES in GLOB.smeses)
 			if(SMES.z in station_levels)
 				SMES.ion_act()
 				smesnum++
 		to_chat(world, "Finished processing SMES. Processed: [smesnum]")
 	spawn(0)
 		to_chat(world, "Started processing AIRLOCKS")
-		for (var/obj/machinery/door/airlock/D in machines)
+		for (var/obj/machinery/door/airlock/D in GLOB.machines)
 			if(D.z in station_levels)
 				//if(length(D.req_access) > 0 && !(12 in D.req_access)) //not counting general access and maintenance airlocks
 				airlocknum++
@@ -220,7 +220,7 @@ Would like to add a law like "Law x is _______" where x = a number, and _____ is
 		to_chat(world, "Finished processing AIRLOCKS. Processed: [airlocknum]")
 	spawn(0)
 		to_chat(world, "Started processing FIREDOORS")
-		for (var/obj/machinery/door/firedoor/D in machines)
+		for (var/obj/machinery/door/firedoor/D in GLOB.machines)
 			if(D.z in station_levels)
 				firedoornum++;
 				spawn(0)

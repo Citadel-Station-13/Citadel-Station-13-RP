@@ -14,8 +14,8 @@
 	aspect = ASPECT_TELE
 	var/datum/effect_system/spark_spread/sparks
 
-/obj/item/spell/warp_strike/New()
-	..()
+/obj/item/spell/warp_strike/Initialize(mapload)
+	. = ..()
 	sparks = new /datum/effect_system/spark_spread()
 	sparks.set_up(5, 0, src)
 	sparks.attach(loc)

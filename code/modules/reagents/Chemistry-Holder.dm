@@ -1,12 +1,13 @@
-#define PROCESS_REACTION_ITER 5 //when processing a reaction, iterate this many times
-
+///when processing a reaction, iterate this many times
+#define PROCESS_REACTION_ITER 5
 /datum/reagents
 	var/list/datum/reagent/reagent_list = list()
 	var/total_volume = 0
 	var/maximum_volume = 100
 	var/atom/my_atom = null
+	var/reagents_holder_flags
 
-/datum/reagents/New(var/max = 100, atom/A = null)
+/datum/reagents/New(var/max = 100, atom/A = null, new_flags = NONE)
 	..()
 	maximum_volume = max
 	my_atom = A
@@ -21,6 +22,8 @@
 			if(!D.name)
 				continue
 			SSchemistry.chemical_reagents[D.id] = D
+
+	reagents_holder_flags = new_flags
 
 /datum/reagents/Destroy()
 	STOP_PROCESSING(SSchemistry, src)
@@ -77,6 +80,7 @@
 	return
 
 /datum/reagents/proc/handle_reactions()
+	set waitfor = FALSE		// shitcode. reagents shouldn't ever sleep but hey :^)
 	if(QDELETED(my_atom))
 		return FALSE
 	if(my_atom.flags & NOREACT)
@@ -114,6 +118,10 @@
 
 	for(var/datum/reagent/current in reagent_list)
 		if(current.id == id)
+			if(current.id == "blood")
+				if(data && !isnull(data["species"]) && !isnull(current.data["species"]) && data["species"] != current.data["species"])	// Species bloodtypes are already incompatible, this just stops it from mixing into the one already in a container.
+					continue
+
 			current.volume += amount
 			if(!isnull(data)) // For all we know, it could be zero or empty string and meaningful
 				current.mix_data(data, amount)
@@ -139,6 +147,13 @@
 	else
 		stack_trace("[my_atom] attempted to add a reagent called '[id]' which doesn't exist. ([usr])")
 	return 0
+
+/datum/reagents/proc/isolate_reagent(reagent)
+	for(var/A in reagent_list)
+		var/datum/reagent/R = A
+		if(R.id != reagent)
+			del_reagent(R.id)
+			update_total()
 
 /datum/reagents/proc/remove_reagent(var/id, var/amount, var/safety = 0)
 	if(!isnum(amount))
@@ -399,8 +414,9 @@
 
 /* Atom reagent creation - use it all the time */
 
-/atom/proc/create_reagents(var/max_vol)
-	reagents = new/datum/reagents(max_vol, src)
+/atom/proc/create_reagents(max_vol)
+	reagents = new /datum/reagents(max_vol, src)
+	return reagents
 
 //Spreads the contents of this reagent holder all over the vicinity of the target turf.
 /datum/reagents/proc/splash_area(var/turf/epicentre, var/range = 3, var/portion = 1.0, var/multiplier = 1, var/copy = 0)
@@ -450,3 +466,15 @@
 	trans_to(T, total_volume, multiplier, copy)
 	if (total_volume <= 0)
 		qdel(src)
+
+/datum/reagents/proc/conditional_update_move(atom/A, Running = 0)
+	var/list/cached_reagents = reagent_list
+	for(var/datum/reagent/R in cached_reagents)
+		R.on_move (A, Running)
+	update_total()
+
+/datum/reagents/proc/conditional_update(atom/A)
+	var/list/cached_reagents = reagent_list
+	for(var/datum/reagent/R in cached_reagents)
+		R.on_update (A)
+	update_total()

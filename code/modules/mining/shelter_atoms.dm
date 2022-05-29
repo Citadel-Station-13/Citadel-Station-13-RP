@@ -32,8 +32,8 @@
 /obj/item/survivalcapsule/examine(mob/user)
 	. = ..()
 	get_template()
-	to_chat(user, "This capsule has the [template.name] stored.")
-	to_chat(user, template.description)
+	. += "This capsule has the [template.name] stored."
+	. += template.description
 
 /obj/item/survivalcapsule/attack_self()
 	//Can't grab when capsule is New() because templates aren't loaded then
@@ -165,13 +165,13 @@
 /obj/structure/table/survival_pod/update_icon()
 	icon_state = "table"
 
-/obj/structure/table/survival_pod/New()
-	material = get_material_by_name(DEFAULT_WALL_MATERIAL)
+/obj/structure/table/survival_pod/Initialize(mapload)
+	material = get_material_by_name(MAT_STEEL)
 	verbs -= /obj/structure/table/verb/do_flip
 	verbs -= /obj/structure/table/proc/do_put
-	..()
+	return ..()
 
-/obj/structure/table/survival_pod/dismantle(obj/item/wrench/W, mob/user)
+/obj/structure/table/survival_pod/dismantle(obj/item/tool/wrench/W, mob/user)
 	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")
 	return
 
@@ -218,8 +218,8 @@
 	icon = 'icons/obj/survival_pod.dmi'
 	icon_state = "bed"
 
-/obj/structure/bed/pod/New(var/newloc)
-	..(newloc,DEFAULT_WALL_MATERIAL,"cotton")
+/obj/structure/bed/pod/Initialize(mapload)
+	return ..(mapload, MAT_STEEL, "cotton")
 
 //Survival Storage Unit
 /obj/machinery/smartfridge/survival_pod
@@ -235,7 +235,7 @@
 	pixel_y = -4
 	max_n_of_items = 100
 
-/obj/machinery/smartfridge/survival_pod/Initialize()
+/obj/machinery/smartfridge/survival_pod/Initialize(mapload)
 	. = ..()
 	for(var/obj/item/O in loc)
 		if(accept_check(O))
@@ -256,7 +256,7 @@
 	desc = "A large machine releasing a constant gust of air."
 	anchored = TRUE
 	density = TRUE
-	can_atmos_pass = ATMOS_PASS_NO
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	var/buildstacktype = /obj/item/stack/material/steel
 	var/buildstackamount = 5
 

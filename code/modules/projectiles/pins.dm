@@ -12,14 +12,15 @@
 	var/obj/item/gun/gun
 	var/emagged = 0
 
-/obj/item/firing_pin/Initialize(newloc)
+/obj/item/firing_pin/Initialize(mapload)
 	. = ..()
-	if(istype(newloc, /obj/item/gun))
-		gun = newloc
+	if(istype(loc, /obj/item/gun))
+		gun = loc
 
 /obj/item/firing_pin/Destroy()
 	if(gun)
 		gun.pin = null
+		gun = null
 	return ..()
 
 /obj/item/firing_pin/afterattack(atom/target, mob/user, proximity_flag)
@@ -185,9 +186,16 @@
 	var/turf/T = get_turf(src)
 	if(!locked)
 		return TRUE
-	if(T.z in GLOB.using_map.map_levels)
+	return !onstation_weapon_locked(T.z)
+
+/// Checks for facility weapon safety interlocks. Returns TRUE if weapons should lock.
+/proc/onstation_weapon_locked(z)
+	if(!z)
 		return FALSE
-	return TRUE
+	var/lock_override = SSmapping.level_trait(z, ZTRAIT_FACILITY_SAFETY)
+	if(isnull(lock_override))
+		return SSmapping.level_trait(z, ZTRAIT_STATION)
+	return lock_override
 
 //Allows swiping an armoury access ID on an explorer locked gun to unlock it
 /obj/item/gun/attackby(obj/item/I, mob/user)

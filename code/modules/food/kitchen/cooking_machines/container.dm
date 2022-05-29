@@ -3,7 +3,7 @@
 //which can be checked against recipe requirements in order to cook recipes that require several things
 
 /obj/item/reagent_containers/cooking_container
-	icon = 'modular_citadel/icons/obj/cooking_machines.dmi'
+	icon = 'icons/obj/cooking_machines.dmi'
 	var/shortname
 	var/max_space = 20//Maximum sum of w-classes of foods in this container at once
 	var/max_reagents = 80//Maximum units of reagents
@@ -11,37 +11,38 @@
 	var/list/insertable = list(
 		/obj/item/reagent_containers/food/snacks,
 		/obj/item/holder,
-		/obj/item/paper
+		/obj/item/paper,
+		/obj/item/organ/internal/brain
 	)
 
-/obj/item/reagent_containers/cooking_container/Initialize()
+/obj/item/reagent_containers/cooking_container/Initialize(mapload)
 	. = ..()
 	create_reagents(max_reagents)
 	flags |= OPENCONTAINER | NOREACT
 
 
 /obj/item/reagent_containers/cooking_container/examine(var/mob/user)
-	..()
+	. = ..()
 	if (contents.len)
 		var/string = "It contains....</br>"
 		for (var/atom/movable/A in contents)
 			string += "[A.name] </br>"
-		user << span("notice", string)
+		. += string
 	if (reagents.total_volume)
-		user << span("notice", "It contains [reagents.total_volume]u of reagents.")
+		. += "<span class = 'notice'>It contains [reagents.total_volume]u of reagents.</span>"
 
 
 /obj/item/reagent_containers/cooking_container/attackby(var/obj/item/I as obj, var/mob/user as mob)
 	for (var/possible_type in insertable)
 		if (istype(I, possible_type))
 			if (!can_fit(I))
-				user << span("warning","There's no more space in the [src] for that!")
+				to_chat(user, SPAN_WARNING("There's no more space in the [src] for that!"))
 				return 0
 
 			if(!user.unEquip(I))
 				return
 			I.forceMove(src)
-			user << span("notice", "You put the [I] into the [src]")
+			to_chat(user, SPAN_NOTICE("You put the [I] into the [src]"))
 			return
 
 /obj/item/reagent_containers/cooking_container/verb/empty()
@@ -66,13 +67,13 @@
 		return
 
 	if (!contents.len)
-		user << span("warning", "There's nothing in the [src] you can remove!")
+		user << SPAN_WARNING( "There's nothing in the [src] you can remove!")
 		return
 
 	for (var/atom/movable/A in contents)
 		A.forceMove(get_turf(src))
 
-	user << span("notice", "You remove all the solid items from the [src].")
+	user << SPAN_NOTICE("You remove all the solid items from the [src].")
 
 /obj/item/reagent_containers/cooking_container/proc/check_contents()
 	if (contents.len == 0)
@@ -155,3 +156,9 @@
 	shortname = "basket"
 	desc = "Put ingredients in this; designed for use with a deep fryer. Warranty void if used."
 	icon_state = "basket"
+
+/obj/item/reagent_containers/cooking_container/grill
+	name = "grill rack"
+	shortname = "rack"
+	desc = "Put ingredients 'in'/on this; designed for use with a grill. Warranty void if used incorrectly. Alt click to remove contents."
+	icon_state = "grillrack"

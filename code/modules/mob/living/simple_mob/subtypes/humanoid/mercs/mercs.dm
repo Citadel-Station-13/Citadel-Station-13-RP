@@ -2,18 +2,60 @@
 //		Merc Mobs Go Here
 ///////////////////////////////
 
+/datum/category_item/catalogue/fauna/mercenary
+	name = "Mercenaries"
+	desc = "Life on the Frontier is hard, and unregulated. Unlike life in \
+	more 'civlized' areas of the Galaxy, violence and piracy remain common \
+	this far out. The Megacorporations keep a tight grip on their holdings, \
+	but there are always small bands or aspiring companies looking to make a \
+	thaler. From simple pirates to legitimate PMCs, Frontier mercs come in \
+	all shapes and sizes."
+	value = CATALOGUER_REWARD_TRIVIAL
+	unlocked_by_any = list(/datum/category_item/catalogue/fauna/mercenary)
+
+// Obtained by scanning all X.
+/datum/category_item/catalogue/fauna/all_mercenaries
+	name = "Collection - Mercenaries"
+	desc = "You have scanned a large array of different types of mercenary, \
+	and therefore you have been granted a large sum of points, through this \
+	entry."
+	value = CATALOGUER_REWARD_HARD
+	unlocked_by_all = list(
+		/datum/category_item/catalogue/fauna/mercenary/human,
+		/datum/category_item/catalogue/fauna/mercenary/human/peacekeeper,
+		/datum/category_item/catalogue/fauna/mercenary/human/grenadier,
+		/datum/category_item/catalogue/fauna/mercenary/human/space,
+		/datum/category_item/catalogue/fauna/mercenary/human/space/suppressor,
+		/datum/category_item/catalogue/fauna/mercenary/vox,
+		/datum/category_item/catalogue/fauna/mercenary/vox/boarder,
+		/datum/category_item/catalogue/fauna/mercenary/vox/technician,
+		/datum/category_item/catalogue/fauna/mercenary/vox/suppressor,
+		/datum/category_item/catalogue/fauna/mercenary/vox/captain
+		)
+
+/datum/category_item/catalogue/fauna/mercenary/human
+	name = "Mercenaries - Human"
+	desc = "Human Mercenary bands are extremely common on the Frontier. Many \
+	of the modern outfits operating on the fringe today are veterans of the \
+	Phoron Wars. After the dissolution of the Syndicate, these operatives were \
+	left without a place to call home. Those who have survived have leveraged \
+	their experience into a viable trade."
+	value = CATALOGUER_REWARD_EASY
+
 // Probably shouldn't use this directly, there are a bunch of sub-classes that are more complete.
 /mob/living/simple_mob/humanoid/merc
 	name = "mercenary"
-	desc = "A tough looking heavily-armed individual."
+	desc = "A tough looking individual armed with only a knife."
 	tt_desc = "E Homo sapiens"
+	icon = 'icons/mob/merc.dmi'
 	icon_state = "syndicate"
 	icon_living = "syndicate"
 	icon_dead = "syndicate_dead"
 	icon_gib = "syndicate_gib"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human)
 
 	faction = "syndicate"
-	movement_cooldown = 4
+	movement_cooldown = 2
 
 	status_flags = 0
 
@@ -29,7 +71,7 @@
 	attacktext = list("slashed", "stabbed")
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 100, rad = 100)	// Same armor values as the vest they drop, plus simple mob immunities
 
-	corpse = /obj/effect/landmark/mobcorpse/syndicatesoldier
+	corpse = /atom/movable/spawner/corpse/syndicatesoldier
 	loot_list = list(/obj/item/material/knife/tacknife = 100)	// Might as well give it the knife
 
 	ai_holder_type = /datum/ai_holder/simple_mob/merc
@@ -91,6 +133,8 @@
 	firing_lanes = TRUE		// But not your buddies!
 	conserve_ammo = TRUE	// And don't go wasting bullets!
 
+/datum/ai_holder/simple_mob/merc/ranged/surpressor
+	conserve_ammo = FALSE //For Surpressive Fire Mercs like the Heavy and Tommy-Las
 
 ////////////////////////////////
 //			Melee
@@ -143,6 +187,8 @@
 
 // Base Ranged Merc, so we don't have to redefine a million vars for every subtype. Uses a pistol.
 /mob/living/simple_mob/humanoid/merc/ranged
+	name = "mercenary"
+	desc = "A tough looking individual armed with an pistol."
 	icon_state = "syndicateranged"
 	icon_living = "syndicateranged"
 	projectiletype = /obj/item/projectile/bullet/pistol/medium
@@ -156,19 +202,33 @@
 
 // C20r SMG
 /mob/living/simple_mob/humanoid/merc/ranged/smg
+	name = "mercenary soldier"
+	desc = "A tough looking individual armed with an submachine gun."
 	icon_state = "syndicateranged_smg"
 	icon_living = "syndicateranged_smg"
 
 	loot_list = list(/obj/item/gun/projectile/automatic/c20r = 100)
 
+	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/surpressor
+
 	base_attack_cooldown = 5 // Two attacks a second or so.
 	reload_max = 20
+
+/datum/category_item/catalogue/fauna/mercenary/human/peacekeeper
+	name = "Mercenaries - Solar Peacekeeper"
+	desc = "Activist groups in Civlized Space often raise moral concerns about \
+	conditions on the Frontier. The more organized groups will sometimes gather \
+	bands of mercenaries from the core worlds together under the belief that they \
+	can come out to the Frontier to enforce their way of life. Due to the Frontier \
+	Act, these 'humanitarian operations' are quickly demolished."
+	value = CATALOGUER_REWARD_EASY
 
 /mob/living/simple_mob/humanoid/merc/ranged/smg/sol
 	icon_state = "bluforranged_smg"
 	icon_living = "blueforranged_smg"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human/peacekeeper)
 
-	corpse = /obj/effect/landmark/mobcorpse/solarpeacekeeper
+	corpse = /atom/movable/spawner/corpse/solarpeacekeeper
 	loot_list = list(/obj/item/gun/projectile/automatic/c20r = 100)
 
 	base_attack_cooldown = 5 // Two attacks a second or so.
@@ -176,6 +236,8 @@
 
 // Laser Rifle
 /mob/living/simple_mob/humanoid/merc/ranged/laser
+	name = "mercenary marksman"
+	desc = "A tough looking individual armed with an laser rifle."
 	icon_state = "syndicateranged_laser"
 	icon_living = "syndicateranged_laser"
 	projectiletype = /obj/item/projectile/beam/midlaser
@@ -187,6 +249,8 @@
 
 // Ion Rifle
 /mob/living/simple_mob/humanoid/merc/ranged/ionrifle
+	name = "mercenary anti-technical"
+	desc = "A tough looking individual armed with an ion rifle."
 	icon_state = "syndicateranged_ionrifle"
 	icon_living = "syndicateranged_ionrifle"
 	projectiletype = /obj/item/projectile/ion
@@ -196,12 +260,51 @@
 
 	reload_max = 10
 
-// Grenadier, Basically a miniboss
+//Garand
+/mob/living/simple_mob/humanoid/merc/ranged/garand
+	name = "mercenary rifleman"
+	desc = "A tough looking individual armed with a semiautomatic rifle."
+	icon_state = "syndicateranged_veteran"
+	icon_living = "syndicateranged_veteran"
+	projectiletype = /obj/item/projectile/bullet/rifle/a762
+	projectilesound = 'sound/weapons/Gunshot_heavy.ogg'
+
+	loot_list = list(/obj/item/gun/projectile/garand = 100)
+
+	reload_max = 8
+	reload_time = 2 // It takes a bit to jam a stripper clip into the rifle.
+
+//Hand Cannon
+/mob/living/simple_mob/humanoid/merc/ranged/deagle
+	name = "mercenary officer"
+	desc = "A tough looking individual armed with an handcannon."
+	icon_state = "syndicate_handcannon"
+	icon_living = "syndicate_handcannon"
+	projectiletype = /obj/item/projectile/bullet/pistol/strong
+	projectilesound = 'sound/weapons/Gunshot_deagle.ogg'
+	loot_list = list(/obj/item/gun/projectile/deagle = 100)
+
+	needs_reload = TRUE
+	reload_max = 7		// Deagle Reload
+
+/datum/category_item/catalogue/fauna/mercenary/human/grenadier
+	name = "Mercenaries - Grenadier"
+	desc = "After the Phoron Wars, many deniable operatives on both sides of \
+	the conflict found that there was no place for them within their home companies \
+	any more. Left without options, these highly motivated and trained specialists \
+	often seek revenge, or attempt to carve out their own fiefdoms. Well equipped \
+	and well trained, these outcasts are not to be taken lightly."
+	value = CATALOGUER_REWARD_EASY
+
+// Grenadier, Basically a miniboss,
 /mob/living/simple_mob/humanoid/merc/ranged/grenadier
+	name = "mercenary grenadier"
+	desc = "A tough looking individual armed with a shotgun and a belt of grenades."
 	icon_state = "syndicateranged_shotgun"
 	icon_living = "syndicateranged_shotgun"
 	projectiletype = /obj/item/projectile/bullet/pellet/shotgun		// Buckshot
 	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human/grenadier)
 
 	loot_list = list(/obj/item/gun/projectile/shotgun/pump = 100)
 
@@ -210,16 +313,26 @@
 
 	special_attack_charges = 5
 
-
 ////////////////////////////////
 //		Space Mercs
 ////////////////////////////////
 
+/datum/category_item/catalogue/fauna/mercenary/human/space
+	name = "Mercenaries - Commando"
+	desc = "Commandos, much like their less equipped brethren, are experts in \
+	wet work. Honing their skills over years of training, the Commando's iconic \
+	equipment summons memories of the bad old days in any survivor who sees them. \
+	These mercs make a statement with their equipment - 'I was there. Come get me.' \
+	It is usually not an idle boast."
+	value = CATALOGUER_REWARD_EASY
+
 // Sword Space Merc
 /mob/living/simple_mob/humanoid/merc/melee/sword/space
 	name = "mercenary commando"
-	icon_state = "syndicatemeleespace"
-	icon_living = "syndicatemeleespace"
+	desc = "A tough looking individual, armred with an energy sword and shield."
+	icon_state = "syndicatespace-melee"
+	icon_living = "syndicatespace-melee"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human/space)
 
 	movement_cooldown = 0
 
@@ -235,18 +348,21 @@
 	max_n2 = 0
 	minbodytemp = 0
 
-	corpse = /obj/effect/landmark/mobcorpse/syndicatecommando
+	corpse = /atom/movable/spawner/corpse/syndicatecommando
 
 /mob/living/simple_mob/humanoid/merc/melee/sword/space/Process_Spacemove(var/check_drift = 0)
 	return
 
 // Ranged Space Merc
 /mob/living/simple_mob/humanoid/merc/ranged/space
-	name = "mercenary commando"
-	icon_state = "syndicaterangedspace"
-	icon_living = "syndicaterangedspace"
+	name = "armored mercenary"
+	desc = "A tough looking individual, armed with a submachine gun."
+	icon_state = "syndicatespace-ranged"
+	icon_living = "syndicatespceace-ranged"
 
 	movement_cooldown = 0
+
+	armor = list(melee = 60, bullet = 50, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 100)	// Same armor as their voidsuit. This should already have been here when polaris patched these guys in.
 
 	min_oxy = 0
 	max_oxy = 0
@@ -258,16 +374,105 @@
 	max_n2 = 0
 	minbodytemp = 0
 
-	corpse = /obj/effect/landmark/mobcorpse/syndicatecommando
+	corpse = /atom/movable/spawner/corpse/syndicatecommando
 
-	loot_list = list(/obj/item/gun/projectile/automatic/c20r = 100)
 	base_attack_cooldown = 5 // Two attacks a second or so.
 	reload_max = 20
+
+	loot_list = list(/obj/item/gun/projectile/automatic/c20r = 100)
 
 /mob/living/simple_mob/humanoid/merc/ranged/space/Process_Spacemove(var/check_drift = 0)
 	return
 
+//Combat Shotgun Merc
+/mob/living/simple_mob/humanoid/merc/ranged/space/shotgun
+	name = "mercenary tactical"
+	desc = "A tough looking individual armed with a combat shotgun."
+	icon_state = "syndicatespace-shotgun"
+	icon_living = "syndicatespace-shotgun"
+
+	base_attack_cooldown = 10
+	reload_max = 7
+	reload_time = 2 SECONDS //Takes a While to load all those shells.
+
+	projectiletype = /obj/item/projectile/bullet/pellet/shotgun		// Buckshot
+	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
+
+	loot_list = list(/obj/item/gun/projectile/shotgun/pump/combat = 100)
+
+//Auto-Shotgun Space Merc
+/mob/living/simple_mob/humanoid/merc/ranged/space/shotgun/auto
+	name = "mercenary sweeper"
+	desc = "A tough looking individual armed with an automatic shotgun."
+	icon_state = "syndicatespace-ashotgun"
+	icon_living = "syndicatespace-ashotgun"
+
+	base_attack_cooldown = 5 // Two attacks a second or so.
+	reload_max = 24
+
+	projectiletype = /obj/item/projectile/bullet/pellet/shotgun		// Buckshot
+	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
+
+	loot_list = list(/obj/item/gun/projectile/automatic/as24 = 100)
+
+	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/surpressor
+
+//Machine Gun Merc
+/mob/living/simple_mob/humanoid/merc/ranged/space/heavy
+	name = "mercenary heavy gunner"
+	desc = "A tough looking individual armed with an light machinegun."
+	icon_state = "syndicatespace-heavy"
+	icon_living = "syndicatespace-heavy"
+
+	base_attack_cooldown = 2.5 // Four Attacks a Second. MOAR DAKKA
+	reload_max = 50
+
+	projectiletype = /obj/item/projectile/bullet/rifle/a545
+	projectilesound = 'sound/weapons/Gunshot_light.ogg'
+
+	loot_list = list(/obj/item/gun/projectile/automatic/l6_saw = 100)
+
+	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/surpressor
+
+//Tommy-Las Merc
+/mob/living/simple_mob/humanoid/merc/ranged/space/tommylas
+	name = "mercenary light burster"
+	desc = "A tough looking individual armed with an automatic laser."
+	icon_state = "syndicatespace-tommylas"
+	icon_living = "syndicatespace-tommylas"
+
+	base_attack_cooldown = 2.5 // Four Attacks a Second. MOAR DAKKA
+	reload_max = 3
+	reload_time = 0.5  // Meant to Simulate controlled Supressive Bursts
+
+	projectiletype = /obj/item/projectile/beam/weaklaser
+	projectilesound = 'sound/weapons/Laser.ogg'
+
+	loot_list = list(/obj/item/gun/energy/tommylaser = 100)
+
+	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/surpressor
+
+/mob/living/simple_mob/humanoid/merc/ranged/space/fal
+	name = "mercenary commando"
+	desc = "A tough looking individual armed with a assault rifle."
+	icon_state = "syndicatespace-commando"
+	icon_living = "syndicatespace-commando"
+	projectiletype = /obj/item/projectile/bullet/rifle/a762
+	projectilesound = 'sound/weapons/Gunshot_heavy.ogg'
+
+	loot_list = list(/obj/item/gun/projectile/automatic/fal = 100)
+
+	reload_max = 20
+
 // suppressors are just assholes and are intended to be a piss poor experience for everyone on both sides
+
+/datum/category_item/catalogue/fauna/mercenary/human/space/suppressor
+	name = "Mercenaries - Suppressor"
+	desc = "Just because the Phoron Wars are over, it doesn't mean that covert \
+	actions and corporate espionage ended too. When you encounter mercs with \
+	the latest gear and the best training, you can bet your bottom Thaler that \
+	they've got a Corporate sponsor backing them up."
+	value = CATALOGUER_REWARD_MEDIUM
 
 /datum/ai_holder/simple_mob/merc/ranged/suppressor
 	respect_alpha = FALSE // he really just shoots you
@@ -288,6 +493,7 @@
 	special_attack_charges = 5
 	loot_list = list() // oh, you killed him?
 	corpse = null // well, sorry, buddy, he doesn't drop shit
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human/space/suppressor)
 // 	var/deathnade_path = /obj/item/grenade/flashbang/stingbang
 
 /* far too fun for the codebase at the moment
@@ -366,9 +572,20 @@
 ////////////////////////////////
 //Classifying these as Mercs, due to the general power level I want them at.
 
-/mob/living/simple_mob/humanoid/merc/voxpirate
-	name = "vox pirate"
-	desc = "A desperate looking Vox. Get your gun."
+/datum/category_item/catalogue/fauna/mercenary/vox
+	name = "Mercenaries - Vox"
+	desc = "For centuries the Vox have inflicted their way of life upon the \
+	Galaxy. Regarded with distrust due to their tendency to engage in piracy \
+	and violence, the Vox are equally feared for their robust physiology and \
+	curiously advanced xenotech. Due to ancient compacts, Vox pirates try to \
+	avoid bloodshed, but will react to violence in kind."
+	value = CATALOGUER_REWARD_MEDIUM
+	unlocked_by_any = list(/datum/category_item/catalogue/fauna/mercenary/vox)
+
+/mob/living/simple_mob/humanoid/merc/voxpirate	//Don't use this one.
+	name = "vox mannequin"
+	desc = "You shouldn't be seeing this one."
+	icon = 'icons/mob/animal.dmi'
 	icon_state = "voxpirate"
 	icon_living = "voxpirate"
 	icon_dead = "voxpirate_dead"
@@ -390,11 +607,6 @@
 	attacktext = list("slashed", "stabbed")
 	armor = list(melee = 60, bullet = 50, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 100)	// Matching Merc voidsuit stats to represent toughness.
 
-	projectiletype = /obj/item/projectile/bullet/rifle/a762
-	projectilesound = 'sound/weapons/riflebolt.ogg'
-	needs_reload = TRUE
-	reload_max = 20
-
 	min_oxy = 0 //Vox are spaceproof.
 	max_oxy = 0
 	min_tox = 0
@@ -405,7 +617,7 @@
 	max_n2 = 0
 	minbodytemp = 0
 
-	corpse = /obj/effect/landmark/mobcorpse/vox/pirate
+	corpse = /atom/movable/spawner/corpse/vox/pirate
 	loot_list = list(/obj/item/gun/projectile/shotgun/pump/rifle/vox_hunting = 100,
 					/obj/item/ammo_magazine/clip/c762 = 30,
 					/obj/item/ammo_magazine/clip/c762 = 30
@@ -414,19 +626,41 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/merc
 	say_list_type = /datum/say_list/merc/voxpirate
 
+/mob/living/simple_mob/humanoid/merc/voxpirate/pirate
+	name = "vox pirate"
+	desc = "A desperate looking Vox. Get your gun."
+	projectiletype = /obj/item/projectile/bullet/rifle/a762
+	projectilesound = 'sound/weapons/riflebolt.ogg'
+	needs_reload = TRUE
+	reload_max = 20
+
+////////////////////////////////
+//			Vox Melee
+////////////////////////////////
+
+/datum/category_item/catalogue/fauna/mercenary/vox/boarder
+	name = "Mercenaries - Vox Boarder"
+	desc = "Vox are squat creatures, with powerful muscles and tough, scaly \
+	hides. Their dense bones and sharp talons make them a formidable threat in \
+	close quarters combat. Low level Vox weaponry generally emphasizes closing \
+	the distance to exploit these facts."
+	value = CATALOGUER_REWARD_MEDIUM
+
 /mob/living/simple_mob/humanoid/merc/voxpirate/boarder
 	name = "vox melee boarder"
 	desc = "A howling Vox with a sword. Run."
 	icon_state = "voxboarder_m"
 	icon_living = "voxboarder_m"
 	icon_dead = "voxboarder_m_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/vox/boarder)
 
 	melee_damage_lower = 30		//Energy sword damage
 	melee_damage_upper = 30
 	attack_sharp = 1
 	attack_edge = 1
 
-	corpse = /obj/effect/landmark/mobcorpse/vox/boarder_m
+	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+	corpse = /atom/movable/spawner/corpse/vox/boarder_m
 	loot_list = list(/obj/item/melee/energy/sword = 100)
 
 // They're good with the swords? I dunno. I like the idea they can deflect.
@@ -457,17 +691,19 @@
 //			Vox Ranged
 ////////////////////////////////
 
-/mob/living/simple_mob/humanoid/merc/voxpirate/ranged/boarder
+/mob/living/simple_mob/humanoid/merc/voxpirate/shotgun
 	name = "vox ranged boarder"
 	desc = "A howling Vox with a shotgun. Get to cover!"
 	icon_state = "voxboarder_r"
 	icon_living = "voxboarder_r"
 	icon_dead = "voxboarder_r_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/vox/boarder)
 
 	projectiletype = /obj/item/projectile/bullet/pellet/shotgun
 	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
 
-	corpse = /obj/effect/landmark/mobcorpse/vox/boarder_r
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive
+	corpse = /atom/movable/spawner/corpse/vox/boarder_r
 	loot_list = list(/obj/item/gun/projectile/shotgun/pump/combat = 100,
 					/obj/item/ammo_magazine/m12gdrum = 30,
 					/obj/item/ammo_magazine/m12gdrum = 30
@@ -476,39 +712,94 @@
 	needs_reload = TRUE
 	reload_max = 10
 
-/mob/living/simple_mob/humanoid/merc/voxpirate/ranged/suppressor
+/datum/category_item/catalogue/fauna/mercenary/vox/technician
+	name = "Mercenaries - Vox Technician"
+	desc = "The belief that Vox are unintelligent comes largely from a kind \
+	of anthrochauvanism. Due to their difficulty speaking GalCom and their tendency \
+	to resort to underhanded methods, the Galaxy sees Vox as brutal, unintelligent \
+	aliens. In reality, Vox are just as intelligent as everyone else, as the state \
+	of their technology shows. Vox Technicians maintain ancient vessels and tools \
+	with scraps and odd bits, often recieving no external recognition for their work."
+	value = CATALOGUER_REWARD_MEDIUM
+
+/mob/living/simple_mob/humanoid/merc/voxpirate/technician
+	name = "vox salvage technician"
+	desc = "A screeching Vox with an ion rifle. Usually sent on scrapping operations."
+	icon_state = "voxboarder_t"
+	icon_living = "voxboarder_t"
+	icon_dead = "voxboarder_t_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/vox/technician)
+
+	projectiletype = /obj/item/projectile/ion
+	projectilesound = 'sound/weapons/Laser.ogg'
+
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
+	corpse = /atom/movable/spawner/corpse/vox/boarder_t
+	loot_list = list(/obj/item/gun/energy/ionrifle)
+
+	needs_reload = TRUE
+	reload_max = 25 //Suppressive tech weapon.
+
+/datum/category_item/catalogue/fauna/mercenary/vox/suppressor
+	name = "Mercenaries - Vox Suppressor"
+	desc = "Among Vox bands, Suppressors are an even more motley crew. \
+	Staying true to the name, Suppressors are veteran Vox pirates who have \
+	faced hundreds of engagements. Tough and well suited for violence, these \
+	Vox wear bright, mismatching colors into battle to draw attention. Serving \
+	as a beacon to draw eyes away from their companions, Suppressors wield the \
+	fearsome Sonic Cannon - a booming directed frequency device capable of \
+	wreaking havoc all its own. It doesn't sound half bad either, when it isn't \
+	pointed at you."
+	value = CATALOGUER_REWARD_MEDIUM
+
+/mob/living/simple_mob/humanoid/merc/voxpirate/suppressor
 	name = "vox suppressor"
 	desc = "Come on, feel the noise!"
 	icon_state = "voxsuppressor"
 	icon_living = "voxsuppressor"
 	icon_dead = "voxsuppresor_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/vox/suppressor)
 
 	armor = list(melee = 30, bullet = 50, laser = 60, energy = 30, bomb = 35, bio = 100, rad = 100)	// Boosted armor to represent Tank role.
 
 	projectiletype = /obj/item/projectile/sonic/weak
 	projectilesound = 'sound/effects/basscannon.ogg'
 
-	corpse = /obj/effect/landmark/mobcorpse/vox/suppressor
+	ai_holder_type = /datum/ai_holder/simple_mob/destructive
+	corpse = /atom/movable/spawner/corpse/vox/suppressor
 	loot_list = list(/obj/item/gun/energy/sonic = 100)
 
 	base_attack_cooldown = 5 // Two attacks a second or so.
 	needs_reload = TRUE
-	reload_max = 25 //Gotta lay down that fire, son.
+	reload_max = 30 //Gotta lay down that fire, son.
 
-/mob/living/simple_mob/humanoid/merc/voxpirate/ranged/captain
+/datum/category_item/catalogue/fauna/mercenary/vox/captain
+	name = "Mercenaries - Vox Captain"
+	desc = "Accomplished Vox who bring in scrap reliably eventually become the \
+	'Quills' of their own expeditions. This Vox term is considered analagous to \
+	the word 'Captain'. As such, any Vox who has attained this rank has certainly \
+	earned the powerful equipment they carry into combat: Dark Matter cannons, \
+	advanced armor, proper Hunting Rifles - the list goes on. The Vox Captain \
+	is a formidable opponent, honed by years of hard living and harder fighting. \
+	If you are unable to negotiate, expect to face their entire crew head on."
+	value = CATALOGUER_REWARD_MEDIUM
+
+/mob/living/simple_mob/humanoid/merc/voxpirate/captain
 	name = "vox pirate captain"
 	desc = "Walkings the plank, dustlung! Yayaya."
 	icon_state = "voxcaptain"
 	icon_living = "voxcaptain"
 	icon_dead = "voxcaptain_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/vox/captain)
 
 	armor = list(melee = 60, bullet = 50, laser = 40, energy = 15, bomb = 30, bio = 100, rad = 100)	// Vox RIG armor values.
 
-	projectiletype = /obj/item/projectile/energy/darkmatter
+	projectiletype = /obj/item/projectile/beam/darkmatter
 	projectilesound = 'sound/weapons/eLuger.ogg'
 
-	corpse = /obj/effect/landmark/mobcorpse/vox/captain
+	ai_holder_type = /datum/ai_holder/simple_mob/destructive
+	corpse = /atom/movable/spawner/corpse/vox/captain
 	loot_list = list(/obj/item/gun/energy/darkmatter = 100)
 
 	needs_reload = TRUE
-	reload_max = 10 //Other Vox should be carrying ammo.
+	reload_max = 15 //Other Vox should be carrying ammo.

@@ -41,6 +41,7 @@
 	playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
 	update_icon()
 	set_light(lrange, lpower, lcolor)
+	to_chat(user, "<span class='notice'>Alt-click to recolor it.</span>")
 
 /obj/item/melee/energy/proc/deactivate(mob/living/user)
 	if(!active)
@@ -67,14 +68,12 @@
 	return null
 
 /obj/item/melee/energy/examine(mob/user)
-	if(!..(user, 1))
-		return
-
+	. = ..()
 	if(use_cell)
 		if(bcell)
-			to_chat(user, "<span class='notice'>The blade is [round(bcell.percent())]% charged.</span>")
+			. += "<span class='notice'>The blade is [round(bcell.percent())]% charged.</span>"
 		if(!bcell)
-			to_chat(user, "<span class='warning'>The blade does not have a power source installed.</span>")
+			. += "<span class='warning'>The blade does not have a power source installed.</span>"
 
 /obj/item/melee/energy/attack_self(mob/living/user as mob)
 	if(use_cell)
@@ -148,11 +147,12 @@
 /obj/item/melee/energy/update_icon()
 	. = ..()
 	var/mutable_appearance/blade_overlay = mutable_appearance(icon, "[icon_state]_blade")
-	if(colorable)
-		blade_overlay.color = lcolor
-	if(rainbow || !colorable)
+	blade_overlay.color = lcolor
+	color = lcolor
+	if(rainbow)
 		blade_overlay = mutable_appearance(icon, "[icon_state]_blade_rainbow")
 		blade_overlay.color = "FFFFFF"
+		color = "FFFFFF"
 	cut_overlays()		//So that it doesn't keep stacking overlays non-stop on top of each other
 	if(active)
 		add_overlay(blade_overlay)
@@ -160,9 +160,6 @@
 		var/mob/living/carbon/human/H = usr
 		H.update_inv_l_hand()
 		H.update_inv_r_hand()
-
-
-
 
 /obj/item/melee/energy/AltClick(mob/living/user)
 	if(!colorable) //checks if is not colorable
@@ -176,12 +173,12 @@
 	if(alert("Are you sure you want to recolor your blade?", "Confirm Recolor", "Yes", "No") == "Yes")
 		var/energy_color_input = input(usr,"","Choose Energy Color",lcolor) as color|null
 		if(energy_color_input)
-			lcolor = sanitize_hexcolor(energy_color_input)
+			lcolor = "#[sanitize_hexcolor(energy_color_input)]"
+			color = lcolor
+			deactivate()
 		update_icon()
+	. = ..()
 
-/obj/item/melee/energy/examine(mob/user)
-	..()
-	to_chat(user, "<span class='notice'>Alt-click to recolor it.</span>")
 
 /*
  * Energy Axe
@@ -232,8 +229,8 @@
 	use_cell = TRUE
 	hitcost = 120
 
-/obj/item/melee/energy/axe/charge/loaded/New()
-	..()
+/obj/item/melee/energy/axe/charge/loaded/Initialize(mapload)
+	. = ..()
 	bcell = new/obj/item/cell/device/weapon(src)
 
 /*
@@ -258,6 +255,8 @@
 	sharp = 1
 	edge = 1
 	colorable = TRUE
+	drop_sound = 'sound/items/drop/sword.ogg'
+	pickup_sound = 'sound/items/pickup/sword.ogg'
 
 
 	projectile_parry_chance = 65
@@ -306,11 +305,27 @@
 	if(user.incapacitated() || !istype(damage_source, /obj/item/projectile/))
 		return 0
 
-	var/bad_arc = reverse_direction(user.dir)
+	var/bad_arc = REVERSE_DIR(user.dir)
 	if(!check_shield_arc(user, bad_arc, damage_source, attacker))
 		return 0
 
 	return 1
+
+/obj/item/melee/energy/sword/attackby(obj/item/W, mob/living/user, params)
+	if(istype(W, /obj/item/melee/energy/sword))
+		if(HAS_TRAIT(W, TRAIT_NODROP) || HAS_TRAIT(src, TRAIT_NODROP))
+			to_chat(user, "<span class='warning'>\the [HAS_TRAIT(src, TRAIT_NODROP) ? src : W] is stuck to your hand, you can't attach it to \the [HAS_TRAIT(src, TRAIT_NODROP) ? W : src]!</span>")
+			return
+		if(istype(W, /obj/item/melee/energy/sword/charge))
+			to_chat(user,"<span class='warning'>These blades are incompatible, you can't attach them to each other!</span>")
+			return
+		else
+			to_chat(user, "<span class='notice'>You combine the two energy swords, making a single supermassive blade! You're cool.</span>")
+			new /obj/item/melee/energy/sword/dualsaber(user.drop_location())
+			qdel(W)
+			qdel(src)
+	else
+		return ..()
 
 /obj/item/melee/energy/sword/pirate
 	name = "energy cutlass"
@@ -319,6 +334,32 @@
 	item_state = "cutlass"
 	colorable = TRUE
 
+//Return of the King
+/obj/item/melee/energy/sword/dualsaber
+	name = "double-bladed energy sword"
+	desc = "Handle with care."
+	icon_state = "dualsaber"
+	item_state = "dualsaber"
+	force = 3
+	active_force = 60
+	throwforce = 5
+	throw_speed = 3
+	armor_penetration = 35
+	colorable = TRUE
+	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 70)
+	projectile_parry_chance = 85
+
+/obj/item/melee/energy/sword/dualsaber/pre_attack(mob/target, mob/living/carbon/human/user)
+	if(prob(50))
+		INVOKE_ASYNC(src, .proc/jedi_spin, user)
+
+/obj/item/melee/energy/sword/dualsaber/proc/jedi_spin(mob/living/user)
+	for(var/i in list(NORTH,SOUTH,EAST,WEST))
+		user.setDir(i)
+		if(i == WEST)
+			user.emote("flip")
+		sleep(1)
 
 /*
  *Ionic Rapier
@@ -390,9 +431,50 @@
 	use_cell = TRUE
 	hitcost = 75
 
-/obj/item/melee/energy/sword/charge/loaded/New()
-	..()
+/obj/item/melee/energy/sword/charge/loaded/Initialize(mapload)
+	. = ..()
 	bcell = new/obj/item/cell/device/weapon(src)
+
+/obj/item/melee/energy/sword/charge/attackby(obj/item/W, mob/living/user, params)
+	if(istype(W, /obj/item/melee/energy/sword/charge))
+		if(HAS_TRAIT(W, TRAIT_NODROP) || HAS_TRAIT(src, TRAIT_NODROP))
+			to_chat(user, "<span class='warning'>\the [HAS_TRAIT(src, TRAIT_NODROP) ? src : W] is stuck to your hand, you can't attach it to \the [HAS_TRAIT(src, TRAIT_NODROP) ? W : src]!</span>")
+			return
+		else
+			to_chat(user, "<span class='notice'>You combine the two charge swords, making a single supermassive blade! You're cool.</span>")
+			new /obj/item/melee/energy/sword/charge/dualsaber(user.drop_location())
+			qdel(W)
+			qdel(src)
+	else
+		return ..()
+
+//Charge Type Double Esword
+/obj/item/melee/energy/sword/charge/dualsaber
+	name = "double-bladed charge sword"
+	desc = "Make sure you bought batteries."
+	icon_state = "dualsaber"
+	item_state = "dualsaber"
+	force = 3
+	active_force = 50
+	throwforce = 5
+	throw_speed = 3
+	armor_penetration = 30
+	colorable = TRUE
+	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 70)
+	projectile_parry_chance = 65
+	hitcost = 150
+
+/obj/item/melee/energy/sword/charge/dualsaber/pre_attack(mob/target, mob/living/carbon/human/user)
+	if(prob(50))
+		INVOKE_ASYNC(src, .proc/jedi_spin, user)
+
+/obj/item/melee/energy/sword/charge/dualsaber/proc/jedi_spin(mob/living/user)
+	for(var/i in list(NORTH,SOUTH,EAST,WEST))
+		user.setDir(i)
+		if(i == WEST)
+			user.emote("flip")
+		sleep(1)
 
 //Energy Blade (ninja uses this)
 
@@ -418,8 +500,8 @@
 	projectile_parry_chance = 60
 	lcolor = "#00FF00"
 
-/obj/item/melee/energy/blade/New()
-
+/obj/item/melee/energy/blade/Initialize(mapload)
+	. = ..()
 	spark_system = new /datum/effect_system/spark_spread()
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
@@ -429,16 +511,17 @@
 
 /obj/item/melee/energy/blade/Destroy()
 	STOP_PROCESSING(SSobj, src)
-	..()
+	return ..()
 
 /obj/item/melee/energy/blade/attack_self(mob/user as mob)
 	user.drop_from_inventory(src)
-	spawn(1) if(src) qdel(src)
+	qdel(src)
 
 /obj/item/melee/energy/blade/dropped()
-	spawn(1) if(src) qdel(src)
+	. = ..()
+	qdel(src)
 
-/obj/item/melee/energy/blade/process()
+/obj/item/melee/energy/blade/process(delta_time)
 	if(!creator || loc != creator || !creator.item_is_in_hands(src))
 		// Tidy up a bit.
 		if(istype(loc,/mob/living))
@@ -478,7 +561,7 @@
 	if(user.incapacitated() || !istype(damage_source, /obj/item/projectile/))
 		return 0
 
-	var/bad_arc = reverse_direction(user.dir)
+	var/bad_arc = REVERSE_DIR(user.dir)
 	if(!check_shield_arc(user, bad_arc, damage_source, attacker))
 		return 0
 
@@ -529,3 +612,137 @@
 		playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
 		return 1
 	return 0
+
+/obj/item/melee/energy/hfmachete // ported from /vg/station - vgstation-coders/vgstation13#13913, fucked up by hatterhat
+	name = "high-frequency machete"
+	desc = "A high-frequency broad blade used either as an implement or in combat like a short sword."
+	icon_state = "hfmachete0"
+	sharp = TRUE
+	edge = TRUE
+	force = 20 // You can be crueler than that, Jack.
+	throwforce = 40
+	throw_speed = 8
+	throw_range = 8
+	w_class = WEIGHT_CLASS_NORMAL
+	siemens_coefficient = 1
+	origin_tech = list(TECH_COMBAT = 3, TECH_ILLEGAL = 3)
+	attack_verb = list("attacked", "diced", "cleaved", "torn", "cut", "slashed")
+	armor_penetration = 50
+	var/base_state = "hfmachete"
+	hitsound = "machete_hit_sound" // dont mind the meaty hit sounds if you hit something that isnt meaty
+	can_cleave = TRUE
+	embed_chance = 0 // let's not
+
+/obj/item/melee/energy/hfmachete/update_icon()
+	icon_state = "[base_state][active]"
+
+/obj/item/melee/energy/hfmachete/attack_self(mob/living/user)
+	toggleActive(user)
+	add_fingerprint(user)
+
+/obj/item/melee/energy/hfmachete/proc/toggleActive(mob/user, var/togglestate = "")
+	switch(togglestate)
+		if("on")
+			active = 1
+		if("off")
+			active = 0
+		else
+			active = !active
+	if(active)
+		force = 40
+		throwforce = 20
+		throw_speed = 3
+		// sharpness = 1.7
+		// sharpness_flags += HOT_EDGE | CUT_WALL | CUT_AIRLOCK - if only there  a good sharpness system
+		armor_penetration = 100
+		to_chat(user, "<span class='warning'> [src] starts vibrating.</span>")
+		playsound(user, 'sound/weapons/hf_machete/hfmachete1.ogg', 40, 0)
+		w_class = WEIGHT_CLASS_BULKY
+		// user.lazy_register_event(/lazy_event/on_moved, src, .proc/mob_moved)
+	else
+		force = initial(force)
+		throwforce = initial(throwforce)
+		throw_speed = initial(throw_speed)
+		// sharpness = initial(sharpness)
+		// sharpness_flags = initial(sharpness_flags) - if only there was a good sharpness system
+		armor_penetration = initial(armor_penetration)
+		to_chat(user, "<span class='notice'> [src] stops vibrating.</span>")
+		playsound(user, 'sound/weapons/hf_machete/hfmachete0.ogg', 40, 0)
+		w_class = WEIGHT_CLASS_NORMAL
+		// user.lazy_unregister_event(/lazy_event/on_moved, src, .proc/mob_moved)
+	update_icon()
+
+/obj/item/melee/energy/hfmachete/afterattack(atom/target, mob/user, proximity)
+	if(!proximity)
+		return
+	..()
+	if(target)
+		if(istype(target,/obj/effect/plant))
+			var/obj/effect/plant/P = target
+			P.die_off()
+
+/*
+/obj/item/melee/energy/hfmachete/dropped(mob/user)
+	user.lazy_unregister_event(/lazy_event/on_moved, src, .proc/mob_moved)
+
+/obj/item/melee/energy/hfmachete/throw_at(atom/target, range, speed, thrower) // todo: get silicons to interpret this because >sleeps
+	if(!usr)
+		return ..()
+	spawn()
+		playsound(src, get_sfx("machete_throw"),30, 0)
+		animate(src, transform = turn(matrix(), -30), time = 1, loop = -1)
+		animate(transform = turn(matrix(), -60), time = 1)
+		animate(transform = turn(matrix(), -90), time = 1)
+		animate(transform = turn(matrix(), -120), time = 1)
+		animate(transform = turn(matrix(), -150), time = 1)
+		animate(transform = null, time = 1)
+		while(throwing)
+			sleep(5)
+		animate(src)
+	..(target, range, speed = 3, thrower)
+*/
+
+// none of these are working properly in testing which is something you absolutely hate to see
+/*
+/obj/item/melee/energy/hfmachete/throw_at(atom/target, range, speed, thrower)
+	playsound(src, get_sfx("machete_throw"), 30, 0)
+	. = ..()
+
+/obj/item/melee/energy/hfmachete/throw_impact(atom/hit_atom, speed)
+	if(isturf(hit_atom))
+		for(var/mob/M in hit_atom)
+			playsound(M, get_sfx("machete_throw_hit"), 60, 0)
+	..()
+
+/obj/item/melee/energy/hfmachete/attack(mob/M, mob/living/user)
+	playsound(M, get_sfx("machete_hit"), 50, 0)
+	..()
+*/
+/*
+/obj/item/melee/energy/hfmachete/proc/mob_moved(atom/movable/mover)
+	if(iscarbon(mover) && active)
+		for(var/obj/effect/plantsegment/P in range(mover,0))
+			qdel(P)
+
+/obj/item/melee/energy/hfmachete/attackby(obj/item/W, mob/living/user)
+	..()
+	if(istype(W, /obj/item/melee/energy/hfmachete))
+		to_chat(user, "<span class='notice'>You combine the two [W] together, making a single scissor-bladed weapon! You feel fucking invincible!</span>")
+		qdel(W)
+		W = null
+		qdel(src)
+		var/B = new /obj/item/bloodlust(user.loc)
+		user.put_in_hands(B)
+		// blust one day lads.
+*/
+
+/obj/item/melee/energy/sword/imperial
+	name = "energy gladius"
+	desc = "A broad, short energy blade.  You'll be glad to have this in a fight."
+	icon_state = "sword0"
+	icon = 'icons/obj/weapons_vr.dmi'
+	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_melee_vr.dmi', slot_r_hand_str = 'icons/mob/items/righthand_melee_vr.dmi')
+
+/obj/item/melee/energy/sword/imperial/activate(mob/living/user)
+	..()
+	icon_state = "sword1"

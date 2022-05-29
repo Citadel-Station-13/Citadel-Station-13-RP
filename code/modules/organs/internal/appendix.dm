@@ -1,4 +1,3 @@
-#define PROCESS_ACCURACY 10
 
 /obj/item/organ/internal/appendix
 	name = "appendix"
@@ -17,7 +16,7 @@
 		return 1
 	return 0
 
-/obj/item/organ/internal/appendix/process()
+/obj/item/organ/internal/appendix/process(delta_time)
 	..()
 
 	if(!inflamed || !owner)

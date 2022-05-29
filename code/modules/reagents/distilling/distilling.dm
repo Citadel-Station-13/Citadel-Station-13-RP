@@ -73,8 +73,8 @@
 	Master = null
 	..()
 
-/obj/machinery/portable_atmospherics/powered/reagent_distillery/Initialize()
-	..()
+/obj/machinery/portable_atmospherics/powered/reagent_distillery/Initialize(mapload)
+	. = ..()
 
 	Reservoir = new (src)
 	Reservoir.Master = src
@@ -212,21 +212,18 @@
 /obj/machinery/portable_atmospherics/powered/reagent_distillery/use_power(var/amount, var/chan = -1)
 	last_power_draw = amount
 	if(use_cell && cell && cell.charge)
-		var/cellcharge = cell.charge
-		cell.use(amount)
-
-		var/celldifference = max(0, cellcharge - cell.charge)
-
-		amount = celldifference
+		var/needed = DYNAMIC_W_TO_CELL_UNITS(amount, 1)
+		needed -= cell.use(needed)
+		amount = DYNAMIC_CELL_UNITS_TO_W(needed, 1)
 
 	var/area/A = get_area(src)
 	if(!A || !isarea(A))
 		return
 	if(chan == -1)
 		chan = power_channel
-	A.use_power(amount, chan)
+	A.use_power_oneoff(amount, chan)
 
-/obj/machinery/portable_atmospherics/powered/reagent_distillery/process()
+/obj/machinery/portable_atmospherics/powered/reagent_distillery/process(delta_time)
 	..()
 
 	var/run_pump = FALSE
@@ -264,7 +261,7 @@
 				else if(current_temp > target_temp)
 					shift_mod = -1
 				current_temp = clamp(round((current_temp + 1 * shift_mod) + (rand(-5, 5) / 10)), min_temp, max_temp)
-				use_power(power_rating * CELLRATE)
+				use_power(power_rating)
 		else if(connected_port && avg_pressure > 1000)
 			current_temp = round((current_temp + avg_temp) / 2)
 		else if(!run_pump)
@@ -275,7 +272,7 @@
 			InputBeaker.reagents.trans_to_holder(Reservoir.reagents, amount = rand(10,20))
 
 		if(OutputBeaker && OutputBeaker.reagents.total_volume < OutputBeaker.reagents.maximum_volume)
-			use_power(power_rating * CELLRATE * 0.5)
+			use_power(power_rating)
 			Reservoir.reagents.trans_to_holder(OutputBeaker.reagents, amount = rand(1, 5))
 
 	update_icon()

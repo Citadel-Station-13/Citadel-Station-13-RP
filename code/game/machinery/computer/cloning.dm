@@ -16,7 +16,7 @@
 	var/loading = 0 // Nice loading text
 
 
-/obj/machinery/computer/cloning/Initialize()
+/obj/machinery/computer/cloning/Initialize(mapload)
 	. = ..()
 	updatemodules()
 
@@ -98,14 +98,14 @@
 	user.set_machine(src)
 	add_fingerprint(user)
 
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 
 	updatemodules()
 
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/computer/cloning/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/cloning/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_machine(src)
 
 	var/data[0]
@@ -260,13 +260,14 @@
 					temp = "Error: Unable to initiate cloning cycle."
 				else if(pod.growclone(C))
 					temp = "Initiating cloning cycle..."
+					playsound(src, 'sound/machines/medbayscanner1.ogg', 100, 1)
 					records.Remove(C)
 					qdel(C)
 					menu = 1
 				else
 
 					var/mob/selected = find_dead_player("[C.ckey]")
-					selected << 'sound/machines/chime.ogg'	//probably not the best sound but I think it's reasonable
+					SEND_SOUND(selected, sound('sound/machines/chime.ogg'))	//probably not the best sound but I think it's reasonable
 					var/answer = alert(selected,"Do you want to return to life?","Cloning","Yes","No")
 					if(answer != "No" && pod.growclone(C))
 						temp = "Initiating cloning cycle..."

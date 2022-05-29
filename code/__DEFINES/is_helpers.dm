@@ -4,6 +4,8 @@
 
 #define isatom(A) (isloc(A))
 
+#define isdatum(D) (istype(D, /datum))
+
 #define isweakref(D) (istype(D, /datum/weakref))
 
 //Datums
@@ -12,11 +14,15 @@
 
 //Turfs
 
-#define isopenspace(A) istype(A, /turf/simulated/open)
+#define isopenturf(A) istype(A, /turf/simulated/open)
+
+#define isspaceturf(A) istype(A, /turf/space)
+
+#define ismineralturf(A) istype(A, /turf/simulated/mineral)
 
 //Objs
-#define isobj(A) istype(A, /obj) //override the byond proc because it returns true on children of /atom/movable that aren't objs
-
+///override the byond proc because it returns true on children of /atom/movable that aren't objs
+#define isobj(A) istype(A, /obj)
 #define isitem(A) (istype(A, /obj/item))
 
 #define isclothing(A) (istype(A, /obj/item/clothing))
@@ -57,7 +63,7 @@
 
 #define isliving(A) istype(A, /mob/living)
 
-#define ismouse(A) istype(A, /mob/living/simple_animal/mouse)
+#define ismouse(A) istype(A, /mob/living/simple_mob/animal/passive/mouse/)
 
 #define isnewplayer(A) istype(A, /mob/new_player)
 
@@ -76,3 +82,13 @@
 #define isbot(A) istype(A, /mob/living/bot)
 
 #define isxeno(A) istype(A, /mob/living/simple_mob/xeno)
+
+#define issimple(A) istype(A, /mob/living/simple_mob)
+
+/proc/is_species_type(atom/A, path)
+	if(!istype(A, /mob/living/carbon/human))
+		return FALSE
+	var/mob/living/carbon/human/H = A
+	return istype(H.species, path)
+
+#define fast_is_species_type(H, path)	istype(H.species, path)

@@ -17,10 +17,10 @@
 #define BANTYPE_TEMP        2
 #define BANTYPE_JOB_PERMA   3
 #define BANTYPE_JOB_TEMP    4
-#define BANTYPE_ANY_FULLBAN 5 // Used to locate stuff to unban.
-
-#define ROUNDSTART_LOGOUT_REPORT_TIME 6000 // Amount of time (in deciseconds) after the rounds starts, that the player disconnect report is issued.
-
+/// Used to locate stuff to unban.
+#define BANTYPE_ANY_FULLBAN 5
+/// Amount of time (in deciseconds) after the rounds starts, that the player disconnect report is issued.
+#define ROUNDSTART_LOGOUT_REPORT_TIME 6000
 // Admin permissions.
 #define R_BUILDMODE     0x1
 #define R_ADMIN         0x2
@@ -37,14 +37,20 @@
 #define R_SPAWN         0x1000
 #define R_MOD           0x2000
 #define R_EVENT	        0x4000
-#define R_HOST          0x8000 //higher than this will overflow
-
-#define R_MAXPERMISSION 0x8000 // This holds the maximum value for a permission. It is used in iteration, so keep it updated.
-
+///higher than this will overflow
+#define R_HOST          0x8000
+/// This holds the maximum value for a permission. It is used in iteration, so keep it updated.
+#define R_MAXPERMISSION 0x8000
 #define SMITE_BREAKLEGS				"Break Legs"
 #define SMITE_BLUESPACEARTILLERY	"Bluespace Artillery"
 #define SMITE_SPONTANEOUSCOMBUSTION	"Spontaneous Combustion"
 #define SMITE_LIGHTNINGBOLT			"Lightning Bolt"
+#define SMITE_DISLOCATEALL			"Dislocate All Limbs"
+#define SMITE_SHADEKIN_ATTACK		"Shadekin (Attack)"
+#define SMITE_SHADEKIN_NOMF			"Shadekin (Devour)"
+#define SMITE_REDSPACE_ABDUCT		"Redspace Abduction"
+#define SMITE_AUTOSAVE				"10 Second Autosave"
+#define SMITE_AUTOSAVE_WIDE			"10 Second Autosave (AoE)"
 
 #define ADMIN_QUE(user) "(<a href='?_src_=holder;adminmoreinfo=\ref[user]'>?</a>)"
 #define ADMIN_FLW(user) "(<a href='?_src_=holder;adminplayerobservefollow=\ref[user]'>FLW</a>)"
@@ -71,3 +77,7 @@
 #define AHELP_ACTIVE 1
 #define AHELP_CLOSED 2
 #define AHELP_RESOLVED 3
+
+// LOG BROWSE TYPES
+#define BROWSE_ROOT_ALL_LOGS 1
+#define BROWSE_ROOT_CURRENT_LOGS 2

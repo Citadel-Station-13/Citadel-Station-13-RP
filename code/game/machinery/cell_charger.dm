@@ -3,66 +3,64 @@
 	desc = "A much more powerful version of the standard recharger that is specially designed for charging power cells."
 	icon = 'icons/obj/power.dmi'
 	icon_state = "ccharger0"
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
-	idle_power_usage = 5
-	active_power_usage = 60000	//60 kW. (this the power drawn when charging)
-	var/efficiency = 60000 //will provide the modified power rate when upgraded
 	power_channel = EQUIP
-	var/obj/item/cell/charging = null
+	idle_power_usage = 5
+	active_power_usage = 30000 //60 kW. (this the power drawn when charging)
+	/// Will provide the modified power rate when upgraded.
+	var/efficiency = 30000
+	/// base power draw
+	var/base_power_draw = 50000
 	var/chargelevel = -1
+	var/obj/item/cell/charging = null
 	circuit = /obj/item/circuitboard/cell_charger
 
-/obj/machinery/cell_charger/New()
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/capacitor(src)
-	component_parts += new /obj/item/stack/cable_coil(src, 5)
-	RefreshParts()
-	..()
-	return
+/obj/machinery/cell_charger/Initialize(mapload, newdir)
+	. = ..()
+	default_apply_parts()
 
 /obj/machinery/cell_charger/update_icon()
 	icon_state = "ccharger[charging ? 1 : 0]"
 
-	if(charging && !(stat & (BROKEN|NOPOWER)))
+	if(charging && !(machine_stat & (BROKEN|NOPOWER)))
 
 		var/newlevel = 	round(charging.percent() * 4.0 / 99)
-		//world << "nl: [newlevel]"
+		//to_chat(world, "nl: [newlevel]")
 
 		if(chargelevel != newlevel)
 
-			overlays.Cut()
-			overlays += "ccharger-o[newlevel]"
+			cut_overlays()
+			add_overlay("ccharger-o[newlevel]")
 
 			chargelevel = newlevel
 	else
-		overlays.Cut()
+		cut_overlays()
 
 /obj/machinery/cell_charger/examine(mob/user)
-	if(!..(user, 5))
-		return
-
-	to_chat(user, "[charging ? "[charging]" : "Nothing"] is in [src].")
+	. = ..()
+	. += SPAN_NOTICE("[charging ? "[charging]" : "Nothing"] is in [src].")
 	if(charging)
-		to_chat(user, "Current charge: [charging.charge] / [charging.maxcharge]")
+		. += SPAN_NOTICE("Current charge: [charging.charge] / [charging.maxcharge]")
 
 /obj/machinery/cell_charger/attackby(obj/item/W, mob/user)
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		return
 
 	if(istype(W, /obj/item/cell) && anchored)
 		if(istype(W, /obj/item/cell/device))
-			to_chat(user, "<span class='warning'>\The [src] isn't fitted for that type of cell.</span>")
+			to_chat(user, SPAN_WARNING("\The [src] isn't fitted for that type of cell."))
 			return
+
 		if(charging)
-			to_chat(user, "<span class='warning'>There is already [charging] in [src].</span>")
+			to_chat(user, SPAN_WARNING("There is already [charging] in [src]."))
 			return
 		else
 			var/area/a = loc.loc // Gets our locations location, like a dream within a dream
 			if(!isarea(a))
 				return
 			if(a.power_equip == 0) // There's no APC in this area, don't try to cheat power!
-				to_chat(user, "<span class='warning'>\The [src] blinks red as you try to insert [W]!</span>")
+				to_chat(user, SPAN_WARNING("\The [src] blinks red as you try to insert [W]!"))
 				return
 
 			user.drop_item()
@@ -73,12 +71,13 @@
 		update_icon()
 	else if(W.is_wrench())
 		if(charging)
-			to_chat(user, "<span class='warning'>Remove [charging] first!</span>")
+			to_chat(user, SPAN_WARNING("Remove [charging] first!"))
 			return
 
 		anchored = !anchored
 		to_chat(user, "You [anchored ? "attach" : "detach"] [src] [anchored ? "to" : "from"] the ground.")
-		playsound(src, W.usesound, 75, 1)
+		playsound(src, W.usesound, 75, TRUE)
+
 	else if(default_deconstruction_screwdriver(user, W))
 		return
 	else if(default_deconstruction_crowbar(user, W))
@@ -102,28 +101,26 @@
 	if(istype(user, /mob/living/silicon/robot) && Adjacent(user)) // Borgs can remove the cell if they are near enough
 		if(charging)
 			user.visible_message("[user] removes [charging] from [src].", "You remove [charging] from [src].")
-			charging.loc = src.loc
+			charging.forceMove(loc)
 			charging.update_icon()
 			charging = null
 			update_icon()
 
-
 /obj/machinery/cell_charger/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	if(charging)
 		charging.emp_act(severity)
 	..(severity)
 
 
-/obj/machinery/cell_charger/process()
-	//world << "ccpt [charging] [stat]"
-	if((stat & (BROKEN|NOPOWER)) || !anchored)
+/obj/machinery/cell_charger/process(delta_time)
+	if((machine_stat & (BROKEN|NOPOWER)) || !anchored)
 		update_use_power(USE_POWER_OFF)
 		return
 
 	if(charging && !charging.fully_charged())
-		charging.give(efficiency*CELLRATE)
+		charging.give(DYNAMIC_W_TO_CELL_UNITS(efficiency, 1))
 		update_use_power(USE_POWER_ACTIVE)
 
 		update_icon()
@@ -135,7 +132,8 @@
 	var/E = 0
 	for(var/obj/item/stock_parts/capacitor/C in component_parts)
 		E += C.rating
-	efficiency = active_power_usage * (1+(E-1)*0.5) * 10
+	update_active_power_usage(base_power_draw * E)
+	efficiency = active_power_usage * RECHARGER_CHEAT_FACTOR
 
 //cit change starts
 /obj/item/cell_charger_kit
@@ -149,11 +147,11 @@
 		)
 	item_state = "syringe_kit"
 	w_class = ITEMSIZE_NORMAL
-	matter = list(DEFAULT_WALL_MATERIAL = 4000,"glass" = 1000)
+	matter = list(MAT_STEEL = 4000, MAT_GLASS = 1000)
 
 /obj/item/cell_charger_kit/attack_self(mob/user)
-		to_chat(user, "<span class='notice'>You assemble and deploy the cell charger in place.</span>")
-		playsound(user, 'sound/machines/click.ogg', 50, 1)
+		to_chat(user, SPAN_NOTICE("You assemble and deploy the cell charger in place."))
+		playsound(user, 'sound/machines/click.ogg', 50, TRUE)
 		var/obj/machinery/cell_charger/C = new(user.loc)
 		C.add_fingerprint(user)
 		qdel(src)

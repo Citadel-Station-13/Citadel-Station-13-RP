@@ -129,7 +129,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	on = 1
 	},
 /turf/simulated/floor/plating,
@@ -174,7 +174,7 @@
 /turf/simulated/floor,
 /area/tcommsat/computer)
 "aD" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1;
 	external_pressure_bound = 140;
 	on = 1;
@@ -378,7 +378,7 @@
 /turf/simulated/floor,
 /area/tcommsat/computer)
 "bb" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	on = 1
 	},
@@ -404,7 +404,7 @@
 /turf/simulated/floor/engine,
 /area/tcommsat/computer)
 "bf" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	layer = 2.4;
 	on = 1
@@ -686,7 +686,7 @@
 /turf/simulated/floor,
 /area/tcommsat/computer)
 "bJ" = (
-/obj/machinery/atmospherics/unary/cold_sink/freezer{
+/obj/machinery/atmospherics/component/unary/cold_sink/freezer{
 	current_temperature = 80;
 	dir = 1;
 	on = 1
@@ -1008,7 +1008,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	layer = 2.4;
 	on = 1
@@ -1176,7 +1176,7 @@
 /turf/simulated/floor,
 /area/tcomsat)
 "cB" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1;
 	external_pressure_bound = 101.325;
 	on = 1;
@@ -1269,7 +1269,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	on = 1
 	},
@@ -1690,7 +1690,7 @@
 /turf/simulated/floor/plating,
 /area/tcomsat)
 "dC" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1;
 	external_pressure_bound = 140;
 	on = 1;
@@ -1719,7 +1719,7 @@
 	},
 /area/tcommsat/chamber)
 "dE" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1;
 	external_pressure_bound = 120;
 	icon_state = "in";
@@ -1971,7 +1971,7 @@
 /turf/simulated/floor,
 /area/tcomfoyer)
 "ea" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1;
 	external_pressure_bound = 101.325;
 	on = 1;
@@ -2195,7 +2195,7 @@
 	pixel_y = 29;
 	req_access = list(61)
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	on = 1
 	},
@@ -2431,7 +2431,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	layer = 2.4;
 	on = 1
@@ -2509,7 +2509,7 @@
 	c_tag = "External Airlock";
 	network = list("Tcomsat")
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1381;
 	id_tag = "telecoms_pump"
@@ -2628,11 +2628,11 @@
 /turf/simulated/floor/plating,
 /area/tcommsat/entrance)
 "fo" = (
-/obj/machinery/teleport/station,
+/obj/machinery/tele_projector,
 /turf/simulated/floor/plating,
 /area/tcommsat/entrance)
 "fp" = (
-/obj/machinery/teleport/hub,
+/obj/machinery/tele_pad,
 /turf/simulated/floor/plating,
 /area/tcommsat/entrance)
 "fq" = (

@@ -51,7 +51,7 @@ the artifact triggers the rage.
 	stacks = MODIFIER_STACK_EXTEND
 
 	// The good stuff.
-	slowdown = -1							// Move a bit faster.
+	slowdown = -0.75							// Move a bit faster.
 	attack_speed_percent = 0.66				// Attack at 2/3 the normal delay.
 	outgoing_melee_damage_percent = 1.5		// 50% more damage from melee.
 	max_health_percent = 1.5				// More health as a buffer, however the holder might fall into crit after this expires if they're mortally wounded.
@@ -130,7 +130,7 @@ the artifact triggers the rage.
 
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
-		if(H.species.name == "Diona")
+		if(H.species.name == SPECIES_DIONA)
 			to_chat(L, "<span class='warning'>You feel strange for a moment, but it passes.</span>")
 			return FALSE // Happy trees aren't affected by blood rages.
 
@@ -341,5 +341,17 @@ the artifact triggers the rage.
 	stacks = MODIFIER_STACK_EXTEND
 
 /datum/modifier/homeothermic/tick()
+	..()
+	holder.bodytemperature = round((holder.bodytemperature + T20C) / 2)
+
+/datum/modifier/synthcooling // a version of the above for synths to maintain temperature
+	name = "synthetic cooling"
+	desc = "You expend energy to cool your systems."
+
+	on_created_text = "<span class='notice' face='fixedsys'>Cooling systems online.</span>"
+	on_expired_text = "<span class='notice' face='fixedsys'>Cooling systems recharging. . .</span>"
+	stacks = MODIFIER_STACK_EXTEND
+
+/datum/modifier/synthcooling/tick()
 	..()
 	holder.bodytemperature = round((holder.bodytemperature + T20C) / 2)

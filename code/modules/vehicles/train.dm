@@ -22,7 +22,7 @@
 //-------------------------------------------
 // Standard procs
 //-------------------------------------------
-/obj/vehicle/train/Initialize()
+/obj/vehicle/train/Initialize(mapload)
 	. = ..()
 	for(var/obj/vehicle/train/T in orange(1, src))
 		latch(T)
@@ -100,7 +100,7 @@
 
 	unload(user, direction)
 
-	to_chat(user, "<font color='blue'>You climb down from [src].</font>")
+	to_chat(user, "<font color=#4F49AF>You climb down from [src].</font>")
 
 	return 1
 
@@ -174,7 +174,7 @@
 	setDir(lead.dir)
 
 	if(user)
-		to_chat(user, "<font color='blue'>You hitch [src] to [T].</font>")
+		to_chat(user, "<font color=#4F49AF>You hitch [src] to [T].</font>")
 
 	update_stats()
 
@@ -188,7 +188,7 @@
 	lead.tow = null
 	lead.update_stats()
 
-	to_chat(user, "<font color='blue'>You unhitch [src] from [lead].</font>")
+	to_chat(user, "<font color=#4F49AF>You unhitch [src] from [lead].</font>")
 	lead = null
 
 	update_stats()
@@ -201,7 +201,7 @@
 
 	if(dir == T_dir) 	//if car is ahead
 		src.attach_to(T, user)
-	else if(reverse_direction(dir) == T_dir)	//else if car is behind
+	else if(REVERSE_DIR(dir) == T_dir)	//else if car is behind
 		T.attach_to(src, user)
 
 //returns 1 if this is the lead car of the train

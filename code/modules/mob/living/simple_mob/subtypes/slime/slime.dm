@@ -1,5 +1,13 @@
 // The top-level slime defines. Xenobio slimes and feral slimes will inherit from this.
 
+/datum/category_item/catalogue/fauna/slime
+	name = "Slime"
+	desc = "Often referred to as Slimes, this mysterious alien \
+	species represents a larger biological curiosity to NanoTrasen. \
+	Highly mutable, these carnivorous blobs of gelatinous tissue may \
+	be trained and farmed, but their temperament makes them a constant danger."
+	value = CATALOGUER_REWARD_EASY
+
 /mob/living/simple_mob/slime
 	name = "slime"
 	desc = "It's a slime."
@@ -14,6 +22,7 @@
 	glow_range = 3
 	glow_intensity = 2
 	gender = NEUTER
+	catalogue_data = list(/datum/category_item/catalogue/fauna/slime)
 
 	faction = "slime" // Note that slimes are hostile to other slimes of different color regardless of faction (unless Unified).
 	maxHealth = 150
@@ -69,7 +78,7 @@
 	emote_see = list("bounces", "jiggles", "sways")
 	emote_hear = list("squishes")
 
-/mob/living/simple_mob/slime/Initialize()
+/mob/living/simple_mob/slime/Initialize(mapload)
 	verbs += /mob/living/proc/ventcrawl
 	update_mood()
 	glow_color = color
@@ -117,7 +126,7 @@
 	// Hat simulator.
 	if(hat)
 		var/hat_state = hat.item_state ? hat.item_state : hat.icon_state
-		var/image/I = image('icons/mob/head.dmi', src, hat_state)
+		var/image/I = image(INV_HEAD_DEF_ICON, src, hat_state)
 		I.pixel_y = -7 // Slimes are small.
 		I.appearance_flags = RESET_COLOR
 		add_overlay(I)
@@ -164,17 +173,15 @@
 		give_hat(I, user)
 		return
 
-	//VOREStation Edit Start
 	var/can_miss = TRUE
 	for(var/item_type in allowed_attack_types)
 		if(istype(I, item_type))
 			can_miss = FALSE
 			break
-	//VOREStation Edit End
 
 	// Otherwise they're probably fighting the slime.
-	if(prob(25) && can_miss)	//VOREStation Edit
-		visible_message(span("warning", "\The [user]'s [I] passes right through \the [src]!"))
+	if(prob(25) && can_miss)
+		visible_message(SPAN_WARNING( "\The [user]'s [I] passes right through \the [src]!"))
 		user.setClickCooldown(user.get_attack_speed(I))
 		return
 	..()
@@ -187,16 +194,16 @@
 // Hat simulator
 /mob/living/simple_mob/slime/proc/give_hat(var/obj/item/clothing/head/new_hat, var/mob/living/user)
 	if(!istype(new_hat))
-		to_chat(user, span("warning", "\The [new_hat] isn't a hat."))
+		to_chat(user, SPAN_WARNING( "\The [new_hat] isn't a hat."))
 		return
 	if(hat)
-		to_chat(user, span("warning", "\The [src] is already wearing \a [hat]."))
+		to_chat(user, SPAN_WARNING( "\The [src] is already wearing \a [hat]."))
 		return
 	else
 		user.drop_item(new_hat)
 		hat = new_hat
 		new_hat.forceMove(src)
-		to_chat(user, span("notice", "You place \a [new_hat] on \the [src].  How adorable!"))
+		to_chat(user, SPAN_NOTICE("You place \a [new_hat] on \the [src].  How adorable!"))
 		update_icon()
 		return
 

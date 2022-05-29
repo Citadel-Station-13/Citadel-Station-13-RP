@@ -1,41 +1,97 @@
-//Update this whenever the db schema changes
-//make sure you add an update to the schema_version stable in the db changelog
+
+//! Defines for subsystems and overlays
+//!
+//! Lots of important stuff in here, make sure you have your brain switched on
+//! when editing this file
+
+//! ## DB defines
+/**
+ * DB major schema version
+ *
+ * Update this whenever the db schema changes
+ *
+ * make sure you add an update to the schema_version stable in the db changelog
+ */
 //#define DB_MAJOR_VERSION 5
+
+/**
+ * DB minor schema version
+ *
+ * Update this whenever the db schema changes
+ *
+ * make sure you add an update to the schema_version stable in the db changelog
+ */
 //#define DB_MINOR_VERSION 0
 
-//Timing subsystem
-//Don't run if there is an identical unique timer active
-//if the arguments to addtimer are the same as an existing timer, it doesn't create a new timer, and returns the id of the existing timer
+//! ## Timing subsystem
+/**
+ * Don't run if there is an identical unique timer active
+ *
+ * if the arguments to addtimer are the same as an existing timer, it doesn't create a new timer,
+ * and returns the id of the existing timer
+ */
 #define TIMER_UNIQUE			(1<<0)
-//For unique timers: Replace the old timer rather then not start this one
+
+///For unique timers: Replace the old timer rather then not start this one
 #define TIMER_OVERRIDE			(1<<1)
-//Timing should be based on how timing progresses on clients, not the sever.
-//	tracking this is more expensive,
-//	should only be used in conjuction with things that have to progress client side, such as animate() or sound()
+
+/**
+ * Timing should be based on how timing progresses on clients, not the server.
+ *
+ * Tracking this is more expensive,
+ * should only be used in conjuction with things that have to progress client side, such as
+ * animate() or sound()
+ */
 #define TIMER_CLIENT_TIME		(1<<2)
-//Timer can be stopped using deltimer()
+
+///Timer can be stopped using deltimer()
 #define TIMER_STOPPABLE			(1<<3)
-//To be used with TIMER_UNIQUE
-//prevents distinguishing identical timers with the wait variable
+
+///prevents distinguishing identical timers with the wait variable
+///
+///To be used with TIMER_UNIQUE
 #define TIMER_NO_HASH_WAIT		(1<<4)
-//Loops the timer repeatedly until qdeleted
-//In most cases you want a subsystem instead
+
+///Loops the timer repeatedly until qdeleted
+///
+///In most cases you want a subsystem instead, so don't use this unless you have a good reason
 #define TIMER_LOOP				(1<<5)
 
+///Delete the timer on parent datum Destroy() and when deltimer'd
+#define TIMER_DELETE_ME			(1<<6)
+
+///Empty ID define
 #define TIMER_ID_NULL -1
 
-#define INITIALIZATION_INSSATOMS 0	//New should not call Initialize
-#define INITIALIZATION_INNEW_MAPLOAD 1	//New should call Initialize(TRUE)
-#define INITIALIZATION_INNEW_REGULAR 2	//New should call Initialize(FALSE)
+//! ## Initialization subsystem
 
-#define INITIALIZE_HINT_NORMAL   0  //Nothing happens
-#define INITIALIZE_HINT_LATELOAD 1  //Call LateInitialize
-#define INITIALIZE_HINT_QDEL     2  //Call qdel on the atom
+///New should not call Initialize
+#define INITIALIZATION_INSSATOMS 0
+///New should call Initialize(TRUE)
+#define INITIALIZATION_INNEW_MAPLOAD 2
+///New should call Initialize(FALSE)
+#define INITIALIZATION_INNEW_REGULAR 1
 
-//type and all subtypes should always call Initialize in New()
+//! ### Initialization hints
+
+///Nothing happens
+#define INITIALIZE_HINT_NORMAL 0
+/**
+ * call LateInitialize at the end of all atom Initalization
+ *
+ * The item will be added to the late_loaders list, this is iterated over after
+ * initalization of subsystems is complete and calls LateInitalize on the atom
+ * see [this file for the LateIntialize proc](atom.html#proc/LateInitialize)
+ */
+#define INITIALIZE_HINT_LATELOAD 1
+
+///Call qdel on the atom after intialization
+#define INITIALIZE_HINT_QDEL 2
+
+///type and all subtypes should always immediately call Initialize in New()
 #define INITIALIZE_IMMEDIATE(X) ##X/New(loc, ...){\
 	..();\
-	if(!initialized) {\
+	if(!(flags & INITIALIZED)) {\
 		args[1] = TRUE;\
 		SSatoms.InitAtom(src, args);\
 	}\
@@ -43,17 +99,22 @@
 
 // SS runlevels
 
-#define RUNLEVEL_INIT 0			// "Initialize Only" - Used for subsystems that should never be fired (Should also have SS_NO_FIRE set)
-#define RUNLEVEL_LOBBY 1		// Initial runlevel before setup.  Returns to here if setup fails.
-#define RUNLEVEL_SETUP 2		// While the gamemode setup is running.  I.E gameticker.setup()
-#define RUNLEVEL_GAME 4			// After successful game ticker setup, while the round is running.
-#define RUNLEVEL_POSTGAME 8		// When round completes but before reboot
+/// "Initialize Only" - Used for subsystems that should never be fired (Should also have SS_NO_FIRE set)
+#define RUNLEVEL_INIT 0
+/// Initial runlevel before setup.  Returns to here if setup fails.
+#define RUNLEVEL_LOBBY 1
+/// While the gamemode setup is running.  I.E gameticker.setup()
+#define RUNLEVEL_SETUP 2
+/// After successful game ticker setup, while the round is running.
+#define RUNLEVEL_GAME 4
+/// When round completes but before reboot
+#define RUNLEVEL_POSTGAME 8
 
 #define RUNLEVELS_DEFAULT (RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME)
 
 var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_GAME, RUNLEVEL_POSTGAME)
-#define RUNLEVEL_FLAG_TO_INDEX(flag) (log(2, flag) + 1)	// Convert from the runlevel bitfield constants to index in runlevel_flags list
-
+/// Convert from the runlevel bitfield constants to index in runlevel_flags list
+#define RUNLEVEL_FLAG_TO_INDEX(flag) (log(2, flag) + 1)
 // Subsystem init_order, from highest priority to lowest priority
 // Subsystems shutdown in the reverse of the order they initialize in
 // The numbers just define the ordering, they are meaningless otherwise.
@@ -62,6 +123,7 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_INPUT			100
 #define INIT_ORDER_SOUNDS			95
 #define INIT_ORDER_JOBS				85
+#define INIT_ORDER_VIS				80
 #define INIT_ORDER_GARBAGE			70
 #define INIT_ORDER_SERVER_MAINT		65
 #define INIT_ORDER_TIMER			60
@@ -71,6 +133,7 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_SKYBOX			30
 #define INIT_ORDER_MAPPING			25
 #define INIT_ORDER_DECALS			20
+#define INIT_ORDER_PLANTS			19
 #define INIT_ORDER_ALARMS			18
 #define INIT_ORDER_ATOMS			15
 #define INIT_ORDER_MACHINES			10
@@ -81,27 +144,37 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_PLANETS			-2
 #define INIT_ORDER_ASSETS			-4
 #define INIT_ORDER_HOLOMAPS			-5
-#define INIT_ORDER_OVERLAY			-6
+#define INIT_ORDER_NIGHTSHIFT		-6
+#define INIT_ORDER_OVERLAY			-7
+#define INIT_ORDER_EVENTS			-8
+#define INIT_ORDER_OVERMAPS			-9
 #define INIT_ORDER_TICKER			-10
 #define INIT_ORDER_XENOARCH			-20
 #define INIT_ORDER_CIRCUIT			-21
 #define INIT_ORDER_AI				-22
 #define INIT_ORDER_OPENSPACE		-50
 #define INIT_ORDER_PERSISTENCE		-95
-
-
+#define INIT_ORDER_ICON_SMOOTHING	-99
+///Should be last to ensure chat remains smooth during init.
+#define INIT_ORDER_CHAT				-100
 // Subsystem fire priority, from lowest to highest priority
 // If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)
+
+#define FIRE_PRIORITY_PING			5
 #define FIRE_PRIORITY_SHUTTLES		5
+#define FIRE_PRIORITY_NIGHTSHIFT	6
+#define FIRE_PRIORITY_PLANTS		5
 #define FIRE_PRIORITY_ORBIT			8
 #define FIRE_PRIORITY_VOTE			9
 #define FIRE_PRIORITY_AI			10
-#define FIRE_PRIORITY_PING			10
+#define FIRE_PRIORITY_VIS			10
 #define FIRE_PRIORITY_SERVER_MAINT	10
 #define FIRE_PRIORITY_GARBAGE		15
-#define FIRE_PRIORITY_CHARSETUP     25
+#define FIRE_PRIORITY_ALARMS		20
+#define FIRE_PRIORITY_CHARSETUP		25
 #define FIRE_PRIORITY_SPACEDRIFT	25
 #define FIRE_PRIORITY_AIRFLOW		30
+#define FIRE_PRIORITY_PARALLAX		30
 #define FIRE_PRIORITY_AIR			35
 #define FIRE_PRIORITY_OBJ			40
 #define FIRE_PRIORITY_PROCESS		45
@@ -109,13 +182,18 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define FIRE_PRIORITY_PLANETS		75
 #define FIRE_PRIORITY_INSTRUMENTS	90
 #define FIRE_PRIORITY_MACHINES		100
+#define FIRE_PRIORITY_TGUI			110
 #define FIRE_PRIORITY_PROJECTILES	150
+#define FIRE_PRIORITY_CHAT			400
 #define FIRE_PRIORITY_OVERLAYS		500
-#define FIRE_PRIORITY_INPUT			1000		//never drop input
-
-// Macro defining the actual code applying our overlays lists to the BYOND overlays list. (I guess a macro for speed)
+#define FIRE_PRIORITY_SMOOTHING		500
+#define FIRE_PRIORITY_TIMER			700
+///never drop input
+#define FIRE_PRIORITY_INPUT			1000
+///Compile all the overlays for an atom from the cache lists
+// |= on overlays is not actually guaranteed to not add same appearances but we're optimistically using it anyway.
 #define COMPILE_OVERLAYS(A)\
-	if (TRUE) {\
+	do {\
 		var/list/oo = A.our_overlays;\
 		var/list/po = A.priority_overlays;\
 		if(LAZYLEN(po)){\
@@ -133,4 +211,13 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 			A.overlays.Cut();\
 		}\
 		A.flags &= ~OVERLAY_QUEUED;\
-	}
+	} while(FALSE)
+
+/**
+	Create a new timer and add it to the queue.
+	* Arguments:
+	* * callback the callback to call on timer finish
+	* * wait deciseconds to run the timer for
+	* * flags flags for this timer, see: code\__DEFINES\subsystems.dm
+*/
+#define addtimer(args...) _addtimer(args, file = __FILE__, line = __LINE__)

@@ -22,7 +22,7 @@
 	desc = "Based off the clothing of a hero so famous, even the Vox had to emulate his style."
 	icon_state = "simonpants"
 	item_state = "simonpants"
-	
+
 //Vox Accessories
 /obj/item/clothing/accessory/storage/vox
 	name = "alien mesh"
@@ -33,8 +33,8 @@
 
 	slots = 3
 
-/obj/item/clothing/accessory/storage/vox/New()
-	..()
+/obj/item/clothing/accessory/storage/vox/Initialize(mapload)
+	. = ..()
 	hold.max_storage_space = slots * ITEMSIZE_COST_NORMAL
 	hold.max_w_class = ITEMSIZE_NORMAL
 
@@ -44,7 +44,7 @@
 	name = "vox pressure suit"
 	desc = "A lightly-plated jumpsuit, fitted to an alien frame. Now in classic grey!"
 	icon = 'icons/obj/clothing/uniforms.dmi'
-	icon_override = 'icons/mob/species/vox/uniform.dmi'
+	icon_override = 'icons/mob/clothing/species/vox/uniform.dmi'
 	flags_inv = HIDEGLOVES|HIDESHOES
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	flags = PHORONGUARD
@@ -54,13 +54,13 @@
 	desc = "A lightly-plated jumpsuit, fitted to an alien frame. Now in classic grey!"
 	icon_state = "vox-civ-assistant"
 	item_state = "vox-civ-assistant"
-	
+
 /obj/item/clothing/under/pressuresuit/voxcivbartender
 	name = "bartender pressure suit"
 	desc = "A lightly-plated jumpsuit, fitted to an alien frame. Sylish black, complete with a little bowtie."
 	icon_state = "vox-civ-bartender"
 	item_state = "vox-civ-bartender"
-	
+
 /obj/item/clothing/under/pressuresuit/voxcivchef
 	name = "chef pressure suit"
 	desc = "A lightly-plated jumpsuit, fitted to an alien frame. Comes with an integrated apron!"
@@ -84,34 +84,33 @@
 	desc = "A lightly-plated jumpsuit, fitted to an alien frame."
 	icon_state = "vox-civ-security"
 	item_state = "vox-civ-security"
-	
+
 /obj/item/clothing/under/pressuresuit/voxcivmedical
 	name = "medical pressure suit"
 	desc = "A lightly-plated jumpsuit, fitted to an alien frame."
 	icon_state = "vox-civ-medical"
 	item_state = "vox-civ-medical"
-	
+
 /obj/item/clothing/under/pressuresuit/voxcivengineer
 	name = "engineer pressure suit"
 	desc = "A lightly-plated jumpsuit, fitted to an alien frame."
 	icon_state = "vox-civ-engineer"
 	item_state = "vox-civ-engineer"
-	
+
 /obj/item/clothing/under/pressuresuit/voxcivscience
 	name = "scientist pressure suit"
 	desc = "A lightly-plated jumpsuit, fitted to an alien frame."
 	icon_state = "vox-civ-science"
 	item_state = "vox-civ-science"
-	
+
 /obj/item/clothing/under/pressuresuit/voxcivrd
 	name = "research director pressure suit"
 	desc = "A lightly-plated jumpsuit, fitted to an alien frame."
 	icon_state = "vox-civ-rd"
 	item_state = "vox-civ-rd"
-	
+
 /obj/item/clothing/under/pressuresuit/voxcivce
 	name = "chief engineer pressure suit"
 	desc = "A lightly-plated jumpsuit, fitted to an alien frame."
 	icon_state = "vox-civ-ce"
 	item_state = "vox-civ-ce"
-	

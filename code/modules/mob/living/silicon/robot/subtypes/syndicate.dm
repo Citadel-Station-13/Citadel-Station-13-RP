@@ -1,3 +1,14 @@
+/datum/category_item/catalogue/fauna/silicon/robot/syndicate
+	name = "Robot - Syndicate"
+	desc = "The Syndicated Corporations were able to field their own cyborgs \
+	through the Phoron Wars, albeit to a greatly limited degree. Issues with \
+	properly shackling prisoners installed in the frames lead to many accidents. \
+	Eventually opting to use drone chips as the technology became available, Syndicate \
+	cyborgs were often ruthless hunter/killers and were rightfully feared. Since \
+	the end of the war, most surviving units have been decomissioned. However, it \
+	is not unheard of for parties to discover active models in the field. Such \
+	encounters often end poorly."
+	value = CATALOGUER_REWARD_MEDIUM
 /mob/living/silicon/robot/syndicate
 	lawupdate = 0
 	scrambledcodes = 1
@@ -7,6 +18,7 @@
 	braintype = "Drone"
 	idcard_type = /obj/item/card/id/syndicate
 	icon_selected = FALSE
+	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/robot/syndicate)
 
 /mob/living/silicon/robot/syndicate/init()
 	aiCamera = new/obj/item/camera/siliconcam/robot_camera(src)

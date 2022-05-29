@@ -25,48 +25,74 @@
 	var/movement_type = GROUND
 	/// The orbiter component of the thing we're orbiting.
 	var/datum/component/orbiter/orbiting
+	///Used for the calculate_adjacencies proc for icon smoothing.
+	var/can_be_unanchored = FALSE
 	/// Our default glide_size.
 	var/default_glide_size = 0
 
-	var/anchored = 0
+	/// our default perspective - if none, a temporary one will be generated when a mob requires it
+	var/datum/perspective/self_perspective
+
+	var/anchored = FALSE
 	var/move_speed = 10
 	var/l_move_time = 1
 	var/m_flag = 1
-	var/throwing = 0
+	var/throwing = FALSE
 	var/thrower
 	var/turf/throw_source = null
 	var/throw_speed = 2
 	var/throw_range = 7
-	var/moved_recently = 0
+	var/moved_recently = FALSE
 	var/mob/pulledby = null
-	var/item_state = null // Used to specify the item state for the on-mob overlays.
-	var/icon_scale_x = 1 // Used to scale icons up or down horizonally in update_transform().
-	var/icon_scale_y = 1 // Used to scale icons up or down vertically in update_transform().
-	var/icon_rotation = 0 // Used to rotate icons in update_transform()
+
+	/// Used to specify the item state for the on-mob overlays.
+	var/item_state = null
+	/// Used to scale icons up or down horizonally in update_transform().
+	var/icon_scale_x = 1
+	/// Used to scale icons up or down vertically in update_transform().
+	var/icon_scale_y = 1
+	/// Used to rotate icons in update_transform()
+	var/icon_rotation = 0
+	var/icon_expected_height = 32
+	var/icon_expected_width = 32
 	var/old_x = 0
 	var/old_y = 0
-	var/datum/riding/riding_datum //VOREStation Add - Moved from /obj/vehicle
-	var/does_spin = TRUE // Does the atom spin when thrown (of course it does :P)
 
-/atom/movable/Destroy()
+	/// Used for vehicles and other things.
+	var/datum/riding/riding_datum
+	/// Does the atom spin when thrown.
+	var/does_spin = TRUE
+
+	///If we're cloaked or not.
+	var/cloaked = FALSE
+	/// The image we use for our client to let them see where we are.
+	var/image/cloaked_selfimage
+
+	/// Reference to atom being orbited.
+	var/atom/orbit_target
+
+/atom/movable/Destroy(force)
 	. = ..()
 	if(reagents)
-		qdel(reagents)
-		reagents = null
+		QDEL_NULL(reagents)
+	unbuckle_all_mobs(force = TRUE)
 	for(var/atom/movable/AM in contents)
 		qdel(AM)
 	var/turf/un_opaque
 	if(opacity && isturf(loc))
 		un_opaque = loc
-
+	// kick perspectives before moving
+	if(self_perspective)
+		QDEL_NULL(self_perspective)
 	moveToNullspace()
 	if(un_opaque)
 		un_opaque.recalc_atom_opacity()
-	if (pulledby)
-		if (pulledby.pulling == src)
-			pulledby.pulling = null
-		pulledby = null
-	QDEL_NULL(riding_datum) //VOREStation Add
+	if(pulledby)
+		pulledby.stop_pulling()
+	if(pulling)
+		stop_pulling()
+	if(riding_datum)
+		QDEL_NULL(riding_datum)
 
 /atom/movable/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
@@ -207,11 +233,6 @@
 	var/atom/master = null
 	anchored = 1
 
-/atom/movable/overlay/New()
-	for(var/x in src.verbs)
-		src.verbs -= x
-	..()
-
 /atom/movable/overlay/attackby(a, b)
 	if (src.master)
 		return src.master.attackby(a, b)
@@ -269,6 +290,14 @@
 		return null
 	return text2num(pickweight(candidates))
 
+// Returns the current scaling of the sprite.
+// Note this DOES NOT measure the height or width of the icon, but returns what number is being multiplied with to scale the icons, if any.
+/atom/movable/proc/get_icon_scale_x()
+	return icon_scale_x
+
+/atom/movable/proc/get_icon_scale_y()
+	return icon_scale_y
+
 /atom/movable/proc/update_transform()
 	var/matrix/M = matrix()
 	M.Scale(icon_scale_x, icon_scale_y)
@@ -295,10 +324,180 @@
 
 //Called when touching an acid pool.
 /atom/movable/proc/acid_act()
-	acid_act(null, 5000, 500)
+
+//Called when touching a blood pool.
+/atom/movable/proc/blood_act()
+	blood_act(null, 500, 50)
 
 /**
   * Sets our movement type.
   */
 /atom/movable/proc/set_movement_type(new_movetype)
 	movement_type = new_movetype
+
+/atom/movable/proc/Bump_vr(var/atom/A, yes)
+	return
+
+/atom/movable/setDir(newdir)
+	. = ..(newdir)
+	if(riding_datum)
+		riding_datum.handle_vehicle_offsets()
+
+/atom/movable/relaymove(mob/user, direction)
+	. = ..()
+	if(riding_datum)
+		riding_datum.handle_ride(user, direction)
+
+// Procs to cloak/uncloak
+/atom/movable/proc/cloak()
+	if(cloaked)
+		return FALSE
+	cloaked = TRUE
+	. = TRUE // We did work
+
+	var/static/animation_time = 1 SECOND
+	cloaked_selfimage = get_cloaked_selfimage()
+
+	//Wheeee
+	cloak_animation(animation_time)
+
+	//Needs to be last so people can actually see the effect before we become invisible
+	if(cloaked) // Ensure we are still cloaked after the animation delay
+		plane = CLOAKED_PLANE
+
+/atom/movable/proc/uncloak()
+	if(!cloaked)
+		return FALSE
+	cloaked = FALSE
+	. = TRUE // We did work
+
+	var/static/animation_time = 1 SECOND
+	QDEL_NULL(cloaked_selfimage)
+
+	//Needs to be first so people can actually see the effect, so become uninvisible first
+	plane = initial(plane)
+
+	//Oooooo
+	uncloak_animation(animation_time)
+
+
+// Animations for cloaking/uncloaking
+/atom/movable/proc/cloak_animation(var/length = 1 SECOND)
+	//Save these
+	var/initial_alpha = alpha
+
+	//Animate alpha fade
+	animate(src, alpha = 0, time = length)
+
+	//Animate a cloaking effect
+	var/our_filter = filters.len+1 //Filters don't appear to have a type that can be stored in a var and accessed. This is how the DM reference does it.
+	filters += filter(type="wave", x = 0, y = 16, size = 0, offset = 0, flags = WAVE_SIDEWAYS)
+	animate(filters[our_filter], offset = 1, size = 8, time = length, flags = ANIMATION_PARALLEL)
+
+	//Wait for animations to finish
+	sleep(length+5)
+
+	//Remove those
+	filters -= filter(type="wave", x = 0, y = 16, size = 8, offset = 1, flags = WAVE_SIDEWAYS)
+
+	//Back to original alpha
+	alpha = initial_alpha
+
+/atom/movable/proc/uncloak_animation(var/length = 1 SECOND)
+	//Save these
+	var/initial_alpha = alpha
+
+	//Put us back to normal, but no alpha
+	alpha = 0
+
+	//Animate alpha fade up
+	animate(src, alpha = initial_alpha, time = length)
+
+	//Animate a cloaking effect
+	var/our_filter = filters.len+1 //Filters don't appear to have a type that can be stored in a var and accessed. This is how the DM reference does it.
+	filters += filter(type="wave", x=0, y = 16, size = 8, offset = 1, flags = WAVE_SIDEWAYS)
+	animate(filters[our_filter], offset = 0, size = 0, time = length, flags = ANIMATION_PARALLEL)
+
+	//Wait for animations to finish
+	sleep(length+5)
+
+	//Remove those
+	filters -= filter(type="wave", x=0, y = 16, size = 0, offset = 0, flags = WAVE_SIDEWAYS)
+
+
+// So cloaked things can see themselves, if necessary
+/atom/movable/proc/get_cloaked_selfimage()
+	var/icon/selficon = icon(icon, icon_state)
+	selficon.MapColors(0,0,0, 0,0,0, 0,0,0, 1,1,1) //White
+	var/image/selfimage = image(selficon)
+	selfimage.color = "#0000FF"
+	selfimage.alpha = 100
+	selfimage.layer = initial(layer)
+	selfimage.plane = initial(plane)
+	selfimage.loc = src
+
+	return selfimage
+
+/atom/movable/proc/ghost_tag(text)
+	var/atom/movable/ghost_tag_container/G = locate() in vis_contents
+	if(!length(text) || !istext(text))
+		if(G)
+			qdel(G)
+		return
+	if(!G)
+		G = new(src)
+	G.master = src
+	// for the love of god macro this when we get runechat
+	G.maptext = "<center><span style=\"font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.1;\">[text]</span></center>"
+	G.maptext_height = 256
+	G.maptext_width = 256
+	G.maptext_x = -128 + (world.icon_size * 0.5)
+	G.maptext_y = 32
+	G.plane = PLANE_GHOSTS
+	G.loc = null		// lol
+	vis_contents += G
+	return G
+
+/atom/movable/ghost_tag_container
+	// no mouse opacity
+	name = ""
+	var/atom/movable/master
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/atom/movable/ghost_tag_container/Destroy()
+	if(istype(master))
+		master.vis_contents -= src
+		master = null
+	return ..()
+
+/atom/movable/proc/get_bullet_impact_effect_type()
+	return BULLET_IMPACT_NONE
+
+/**
+ * get perspective to use when shifting eye to us,
+ */
+/atom/movable/proc/get_perspective()
+	return self_perspective || temporary_perspective()
+
+/**
+ * gets a tempoerary perspective for ourselves
+ */
+/atom/movable/proc/temporary_perspective()
+	var/datum/perspective/self/temporary/P = new
+	P.eye = src
+	return P
+
+/**
+ * make a permanent self perspective
+ */
+/atom/movable/proc/make_perspective()
+	ASSERT(!self_perspective)
+	. = self_perspective = new /datum/perspective/self
+	self_perspective.eye = src
+
+/**
+ * ensure we have a self perspective
+ */
+/atom/movable/proc/ensure_self_perspective()
+	if(!self_perspective)
+		make_perspective()

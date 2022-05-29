@@ -26,35 +26,52 @@
 //////////////////////////////
 
 // common helper procs for all power machines
-/obj/machinery/power/drain_power(var/drain_check, var/surge, var/amount = 0)
-	if(drain_check)
-		return 1
+/obj/machinery/power/drain_energy(datum/actor, amount, flags)
+	if(!powernet)
+		return 0
+	return powernet.drain_energy_handler(actor, amount, flags)
 
-	if(powernet && powernet.avail)
-		powernet.trigger_warning()
-		return powernet.draw_power(amount)
+/obj/machinery/power/can_drain_energy(datum/actor, amount)
+	return TRUE
 
-/obj/machinery/power/proc/add_avail(var/amount)
+/**
+ * amount is in KW, NOT W
+ */
+/obj/machinery/power/proc/add_avail(amount)
 	if(powernet)
 		powernet.newavail += amount
 
-/obj/machinery/power/proc/draw_power(var/amount)
+/**
+ * amount is in KW, NOT W
+ */
+/obj/machinery/power/proc/draw_power(amount)
 	if(powernet)
 		return powernet.draw_power(amount)
 	return 0
 
-/obj/machinery/power/proc/surplus()
-	if(powernet)
-		return powernet.avail-powernet.load
-	else
+/**
+ * amount is in KW, NOT W
+ *
+ * include amount to turn this into a boolean check.
+ */
+/obj/machinery/power/proc/surplus(amount)
+	if(!powernet)
 		return 0
+	. = powernet.avail - powernet.load
+	if(!isnull(amount))
+		. = . >= amount
 
-/obj/machinery/power/proc/avail()
-	if(powernet)
-		return powernet.avail
-	else
-		return 0
+/**
+ * amount is in KW, NOT W
+ *
+ * include amount to turn this into a boolean check.
+ */
+/obj/machinery/power/proc/avail(amount)
+	return isnull(amount)? (powernet?.avail || 0) : (powernet?.avail >= amount)
 
+/**
+ * amount is in KW, NOT W
+ */
 /obj/machinery/power/proc/viewload()
 	if(powernet)
 		return powernet.viewload
@@ -62,44 +79,6 @@
 		return 0
 
 /obj/machinery/power/proc/disconnect_terminal() // machines without a terminal will just return, no harm no fowl.
-	return
-
-// returns true if the area has power on given channel (or doesn't require power).
-// defaults to power_channel
-/obj/machinery/proc/powered(var/chan = -1) // defaults to power_channel
-
-	if(!src.loc)
-		return 0
-
-	//Don't do this. It allows machines that set use_power to 0 when off (many machines) to
-	//be turned on again and used after a power failure because they never gain the NOPOWER flag.
-	//if(!use_power)
-	//	return 1
-
-	var/area/A = src.loc.loc		// make sure it's in an area
-	if(!A || !isarea(A))
-		return 0					// if not, then not powered
-	if(chan == -1)
-		chan = power_channel
-	return A.powered(chan)			// return power status of the area
-
-// increment the power usage stats for an area
-/obj/machinery/proc/use_power(var/amount, var/chan = -1) // defaults to power_channel
-	var/area/A = get_area(src)		// make sure it's in an area
-	if(!A || !isarea(A))
-		return
-	if(chan == -1)
-		chan = power_channel
-	A.use_power(amount, chan)
-
-/obj/machinery/proc/power_change()		// called whenever the power settings of the containing area change
-										// by default, check equipment channel & set flag
-										// can override if needed
-	if(powered(power_channel))
-		stat &= ~NOPOWER
-	else
-
-		stat |= NOPOWER
 	return
 
 // connect the machine to a powernet if a node cable is present on the turf
@@ -176,7 +155,7 @@
 	var/cdir
 	var/turf/T
 
-	for(var/card in cardinal)
+	for(var/card in GLOB.cardinal)
 		T = get_step(loc,card)
 		cdir = get_dir(T,loc)
 
@@ -195,7 +174,7 @@
 	var/cdir
 	var/turf/T
 
-	for(var/card in cardinal)
+	for(var/card in GLOB.cardinal)
 		T = get_step(loc,card)
 		cdir = get_dir(T,loc)
 
@@ -224,7 +203,7 @@
 /proc/power_list(var/turf/T, var/source, var/d, var/unmarked=0, var/cable_only = 0)
 	. = list()
 
-	var/reverse = d ? reverse_dir[d] : 0
+	var/reverse = d ? GLOB.reverse_dir[d] : 0
 	for(var/AM in T)
 		if(AM == source)	continue			//we don't want to return source
 
@@ -246,7 +225,7 @@
 
 //remove the old powernet and replace it with a new one throughout the network.
 /proc/propagate_network(var/obj/O, var/datum/powernet/PN)
-	//world.log << "propagating new network"
+	//to_chat(world.log, "propagating new network")
 	var/list/worklist = list()
 	var/list/found_machines = list()
 	var/index = 1
@@ -369,13 +348,12 @@
 		power_source = cell
 		shock_damage = cell_damage
 	var/drained_hp = M.electrocute_act(shock_damage, source, siemens_coeff) //zzzzzzap!
-	var/drained_energy = drained_hp*20
-
+	// 10kw per hp
+	var/drained_energy = drained_hp * 10000
 	if (source_area)
-		source_area.use_power(drained_energy/CELLRATE)
+		source_area.use_power_oneoff(drained_energy)
 	else if (istype(power_source,/datum/powernet))
-		var/drained_power = drained_energy/CELLRATE
-		drained_power = PN.draw_power(drained_power)
+		drained_energy = PN.draw_power(drained_energy * 0.001) * 1000
 	else if (istype(power_source, /obj/item/cell))
-		cell.use(drained_energy)
+		cell.use(DYNAMIC_W_TO_CELL_UNITS(drained_energy, 1))
 	return drained_energy

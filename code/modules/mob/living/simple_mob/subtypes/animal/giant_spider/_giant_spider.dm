@@ -72,10 +72,12 @@
 	faction = "spiders"
 	maxHealth = 200
 	health = 200
+	randomized = TRUE
 	pass_flags = PASSTABLE
 	movement_cooldown = 10
 	movement_sound = 'sound/effects/spider_loop.ogg'
 	poison_resist = 0.5
+	taser_kill = 0 //These seem like they won't be bothered by a taser
 
 	see_in_dark = 10
 
@@ -103,6 +105,10 @@
 	var/poison_type = "spidertoxin"	// The reagent that gets injected when it attacks.
 	var/poison_chance = 10			// Chance for injection to occur.
 	var/poison_per_bite = 5			// Amount added per injection.
+
+	butchery_loot = list(\
+		/obj/item/stack/material/chitin = 1\
+		)
 
 /mob/living/simple_mob/animal/giant_spider/apply_melee_effects(var/atom/A)
 	if(isliving(A))

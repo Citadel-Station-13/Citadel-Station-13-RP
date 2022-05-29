@@ -37,7 +37,7 @@ GLOBAL_LIST_EMPTY(GPS_list)
 ///Called on COMSIG_ITEM_ATTACK_SELF
 /datum/component/gps/item/proc/interact(datum/source, mob/user)
 	if(user)
-		ui_interact(user)
+		nano_ui_interact(user)
 
 ///Called on COMSIG_PARENT_EXAMINE
 /datum/component/gps/item/proc/on_examine(datum/source, mob/user, list/examine_list)
@@ -80,7 +80,7 @@ GLOBAL_LIST_EMPTY(GPS_list)
 		to_chat(user, "[parent] is now tracking, and visible to other GPS devices.")
 		tracking = TRUE
 
-/datum/component/gps/item/ui_interact(mob/user, ui_key = "gps", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state) // Remember to use the appropriate state.
+/datum/component/gps/item/nano_ui_interact(mob/user, ui_key = "gps", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state) // Remember to use the appropriate state.
 	if(emped)
 		to_chat(user, "[parent] fizzles weakly.")
 		return
@@ -138,7 +138,7 @@ GLOBAL_LIST_EMPTY(GPS_list)
 		if("rename")
 			var/atom/parentasatom = parent
 			var/a = input("Please enter desired tag.", parentasatom.name, gpstag) as text|null
-			
+
 			if (!a)
 				return
 

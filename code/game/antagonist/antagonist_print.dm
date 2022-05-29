@@ -36,7 +36,7 @@
 			num++
 
 	// Display the results.
-	world << text
+	to_chat(world, text)
 
 /datum/antagonist/proc/print_objective(var/datum/objective/O, var/num, var/append_success)
 	var/text = "<br><b>Objective [num]:</b> [O.explanation_text] "
@@ -91,7 +91,7 @@
 				has_printed = 1
 				to_chat(world, "<b>Ownerless Uplinks</b>")
 			to_chat(world, "[H.loc] (used [H.used_TC] TC)")
-			world << get_uplink_purchases(H)
+			to_chat(world, get_uplink_purchases(H))
 
 /proc/get_uplink_purchases(var/obj/item/uplink/H)
 	var/list/refined_log = new()

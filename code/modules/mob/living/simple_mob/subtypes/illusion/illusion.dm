@@ -43,7 +43,7 @@
 	if(copying)
 		copying.examine(user)
 		return
-	..()
+
 
 /mob/living/simple_mob/illusion/bullet_act(obj/item/projectile/P)
 	if(!P)
@@ -57,21 +57,21 @@
 /mob/living/simple_mob/illusion/attack_hand(mob/living/carbon/human/M)
 	if(!realistic)
 		playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-		visible_message(span("warning", "\The [M]'s hand goes through \the [src]!"))
+		visible_message(SPAN_WARNING( "\The [M]'s hand goes through \the [src]!"))
 		return
 	else
 		switch(M.a_intent)
 			if(INTENT_HELP)
 				var/datum/gender/T = gender_datums[src.get_visible_gender()]
 				M.visible_message(
-					span("notice", "\The [M] hugs [src] to make [T.him] feel better!"), \
-					span("notice", "You hug [src] to make [T.him] feel better!")
+					SPAN_NOTICE("\The [M] hugs [src] to make [T.him] feel better!"), \
+					SPAN_NOTICE("You hug [src] to make [T.him] feel better!")
 					) // slightly redundant as at the moment most mobs still use the normal gender var, but it works and future-proofs it
 				playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 
 			if(INTENT_DISARM)
 				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-				visible_message(span("danger", "\The [M] attempted to disarm [src]!"))
+				visible_message(SPAN_DANGER("\The [M] attempted to disarm [src]!"))
 				M.do_attack_animation(src)
 
 			if(INTENT_GRAB)
@@ -79,7 +79,7 @@
 
 			if(INTENT_HARM)
 				adjustBruteLoss(harm_intent_damage)
-				M.visible_message(span("danger", "\The [M] [response_harm] \the [src]"))
+				M.visible_message(SPAN_DANGER("\The [M] [response_harm] \the [src]"))
 				M.do_attack_animation(src)
 
 /mob/living/simple_mob/illusion/hit_with_weapon(obj/item/I, mob/living/user, effective_force, hit_zone)
@@ -87,7 +87,7 @@
 		return ..()
 
 	playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-	visible_message(span("warning", "\The [user]'s [I] goes through \the [src]!"))
+	visible_message(SPAN_WARNING( "\The [user]'s [I] goes through \the [src]!"))
 	return FALSE
 
 /mob/living/simple_mob/illusion/ex_act()

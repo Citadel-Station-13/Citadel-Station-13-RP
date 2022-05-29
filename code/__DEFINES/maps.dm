@@ -1,16 +1,24 @@
 // Z-level flags bitfield - Set these flags to determine the z level's purpose
-#define MAP_LEVEL_STATION		0x001 // Z-levels the station exists on
-#define MAP_LEVEL_ADMIN			0x002 // Z-levels for admin functionality (Centcom, shuttle transit, etc)
-#define MAP_LEVEL_CONTACT		0x004 // Z-levels that can be contacted from the station, for eg announcements
-#define MAP_LEVEL_PLAYER		0x008 // Z-levels a character can typically reach
-#define MAP_LEVEL_SEALED		0x010 // Z-levels that don't allow random transit at edge
-#define MAP_LEVEL_EMPTY			0x020 // Empty Z-levels that may be used for various things (currently used by bluespace jump)
-#define MAP_LEVEL_CONSOLES		0x040 // Z-levels available to various consoles, such as the crew monitor (when that gets coded in). Defaults to station_levels if unset.
-#define MAP_LEVEL_XENOARCH_EXEMPT 0x080	// Z-levels exempt from xenoarch digsite generation.
-
+/// Z-levels the station exists on
+#define MAP_LEVEL_STATION		0x001
+/// Z-levels for admin functionality (Centcom, shuttle transit, etc)
+#define MAP_LEVEL_ADMIN			0x002
+/// Z-levels that can be contacted from the station, for eg announcements
+#define MAP_LEVEL_CONTACT		0x004
+/// Z-levels a character can typically reach
+#define MAP_LEVEL_PLAYER		0x008
+/// Z-levels that don't allow random transit at edge
+#define MAP_LEVEL_SEALED		0x010
+/// Empty Z-levels that may be used for various things (currently used by bluespace jump)
+#define MAP_LEVEL_EMPTY			0x020
+/// Z-levels available to various consoles, such as the crew monitor (when that gets coded in). Defaults to station_levels if unset.
+#define MAP_LEVEL_CONSOLES		0x040
+/// Z-levels exempt from xenoarch digsite generation.
+#define MAP_LEVEL_XENOARCH_EXEMPT 0x080
 // Misc map defines.
-#define SUBMAP_MAP_EDGE_PAD 8 // Automatically created submaps are forbidden from being this close to the main map's edge.	//VOREStation Edit
 
+/// Automatically created submaps are forbidden from being this close to the main map's edge.
+#define SUBMAP_MAP_EDGE_PAD 8
 // TG MAP LOADING SYSTEM PENDING
 /*
 The /tg/ codebase allows mixing of hardcoded and dynamically-loaded z-levels.
@@ -48,6 +56,7 @@ require only minor tweaks.
 #define ZTRAIT_CENTCOM "CentCom"
 #define ZTRAIT_STATION "Station"
 #define ZTRAIT_MINING "Mining"
+#define ZTRAIT_FACILITY_SAFETY "FacilityWeaponLock"
 /*
 #define ZTRAIT_REEBE "Reebe"
 */
@@ -59,7 +68,8 @@ require only minor tweaks.
 #define ZTRAIT_LAVA_RUINS "Lava Ruins"
 #define ZTRAIT_ICE_RUINS "Ice Ruins"
 #define ZTRAIT_ICE_RUINS_UNDERGROUND "Ice Ruins Underground"
-#define ZTRAIT_ISOLATED_RUINS "Isolated Ruins" //Placing ruins on z levels with this trait will use turf reservation instead of usual placement.
+///Placing ruins on z levels with this trait will use turf reservation instead of usual placement.
+#define ZTRAIT_ISOLATED_RUINS "Isolated Ruins"
 #define ZTRAIT_VIRTUAL_REALITY "Virtual Reality"
 
 //boolean - weather types that occur on the level
@@ -129,19 +139,25 @@ require only minor tweaks.
 */
 
 //Reserved/Transit turf type
-#define RESERVED_TURF_TYPE /turf/open/space/basic			//What the turf is when not being used
+#define RESERVED_TURF_TYPE /turf/space
+// #define RESERVED_TURF_TYPE /turf/space/basic			//What the turf is when not being used
 
 /*
 //Ruin Generation
 
-#define PLACEMENT_TRIES 100 //How many times we try to fit the ruin somewhere until giving up (really should just swap to some packing algo)
-
+///How many times we try to fit the ruin somewhere until giving up (really should just swap to some packing algo)
+#define PLACEMENT_TRIES 100
 #define PLACE_DEFAULT "random"
-#define PLACE_SAME_Z "same" //On same z level as original ruin
-#define PLACE_SPACE_RUIN "space" //On space ruin z level(s)
-#define PLACE_LAVA_RUIN "lavaland" //On lavaland ruin z levels(s)
-#define PLACE_BELOW "below" //On z levl below - centered on same tile
-#define PLACE_ISOLATED "isolated" //On isolated ruin z level
+///On same z level as original ruin
+#define PLACE_SAME_Z "same"
+///On space ruin z level(s)
+#define PLACE_SPACE_RUIN "space"
+///On lavaland ruin z levels(s)
+#define PLACE_LAVA_RUIN "lavaland"
+///On z levl below - centered on same tile
+#define PLACE_BELOW "below"
+///On isolated ruin z level
+#define PLACE_ISOLATED "isolated"
 //Map type stuff.
 #define MAP_TYPE_STATION "station"
 
@@ -149,3 +165,6 @@ require only minor tweaks.
 #define AWAY_MISSION_NAME "Away Mission"
 #define VIRT_REALITY_NAME "Virtual Reality"
 */
+
+/// Distance from edge to move to another z-level.
+#define TRANSITIONEDGE				1

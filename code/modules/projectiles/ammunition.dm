@@ -7,15 +7,18 @@
 	throwforce = 1
 	w_class = ITEMSIZE_TINY
 	preserve_item = 1
+	drop_sound = 'sound/items/drop/ring.ogg'
+	pickup_sound = 'sound/items/pickup/ring.ogg'
 
 	var/leaves_residue = 1
 	var/caliber = ""					//Which kind of guns it can be loaded into
 	var/projectile_type					//The bullet type to create when New() is called
 	var/obj/item/projectile/BB = null	//The loaded bullet - make it so that the projectiles are created only when needed?
 	var/caseless = null					//Caseless ammo deletes its self once the projectile is fired.
+	var/fall_sounds = list('sound/weapons/guns/casingfall1.ogg','sound/weapons/guns/casingfall2.ogg','sound/weapons/guns/casingfall3.ogg')
 
-/obj/item/ammo_casing/New()
-	..()
+/obj/item/ammo_casing/Initialize(mapload)
+	. = ..()
 	if(ispath(projectile_type))
 		BB = new projectile_type(src)
 	pixel_x = rand(-10, 10)
@@ -25,13 +28,13 @@
 /obj/item/ammo_casing/proc/expend()
 	. = BB
 	BB = null
-	setDir(pick(cardinal)) //spin spent casings
+	setDir(pick(GLOB.cardinal)) //spin spent casings
 	update_icon()
 
 /obj/item/ammo_casing/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_screwdriver())
 		if(!BB)
-			to_chat(user, "<font color='blue'>There is no bullet in the casing to inscribe anything into.</font>")
+			to_chat(user, "<font color=#4F49AF>There is no bullet in the casing to inscribe anything into.</font>")
 			return
 
 		var/tmp_label = ""
@@ -39,10 +42,10 @@
 		if(length(label_text) > 20)
 			to_chat(user, "<font color='red'>The inscription can be at most 20 characters long.</font>")
 		else if(!label_text)
-			to_chat(user, "<font color='blue'>You scratch the inscription off of [initial(BB)].</font>")
+			to_chat(user, "<font color=#4F49AF>You scratch the inscription off of [initial(BB)].</font>")
 			BB.name = initial(BB.name)
 		else
-			to_chat(user, "<font color='blue'>You inscribe \"[label_text]\" into \the [initial(BB.name)].</font>")
+			to_chat(user, "<font color=#4F49AF>You inscribe \"[label_text]\" into \the [initial(BB.name)].</font>")
 			BB.name = "[initial(BB.name)] (\"[label_text]\")"
 
 /obj/item/ammo_casing/update_icon()
@@ -50,14 +53,9 @@
 		icon_state = "[initial(icon_state)]-spent"
 
 /obj/item/ammo_casing/examine(mob/user)
-	..()
+	. = ..()
 	if (!BB)
-		to_chat(user, "This one is spent.")
-
-//Gun loading types
-#define SINGLE_CASING 	1	//The gun only accepts ammo_casings. ammo_magazines should never have this as their mag_type.
-#define SPEEDLOADER 	2	//Transfers casings from the mag to the gun when used.
-#define MAGAZINE 		4	//The magazine item itself goes inside the gun
+		. += "This one is spent."
 
 //An item that holds casings and can be used to put them inside guns
 /obj/item/ammo_magazine
@@ -67,7 +65,7 @@
 	icon = 'icons/obj/ammo.dmi'
 	slot_flags = SLOT_BELT
 	item_state = "syringe_kit"
-	matter = list(DEFAULT_WALL_MATERIAL = 500)
+	matter = list(MAT_STEEL = 500)
 	throwforce = 5
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 4
@@ -88,9 +86,10 @@
 	//because BYOND doesn't support numbers as keys in associative lists
 	var/list/icon_keys = list()		//keys
 	var/list/ammo_states = list()	//values
+	var/ammo_mark = null			//Used for overlays simulated paint or tape bands on magazines. Cuts down on bloat.
 
-/obj/item/ammo_magazine/New()
-	..()
+/obj/item/ammo_magazine/Initialize(mapload)
+	. = ..()
 	pixel_x = rand(-5, 5)
 	pixel_y = rand(-5, 5)
 	if(multiple_sprites)
@@ -150,7 +149,7 @@
 			playsound(user.loc, "casing_sound", 50, 1)
 		for(var/obj/item/ammo_casing/C in stored_ammo)
 			C.loc = user.loc
-			C.setDir(pick(cardinal))
+			C.setDir(pick(GLOB.cardinal))
 		stored_ammo.Cut()
 		update_icon()
 	else
@@ -180,10 +179,12 @@
 				new_state = ammo_states[idx]
 				break
 		icon_state = (new_state)? new_state : initial(icon_state)
+	if(ammo_mark)
+		overlays += "[initial(icon_state)]_[ammo_mark]"
 
 /obj/item/ammo_magazine/examine(mob/user)
-	..()
-	to_chat(user, "There [(stored_ammo.len == 1)? "is" : "are"] [stored_ammo.len] round\s left!")
+	. = ..()
+	. += "There [(stored_ammo.len == 1)? "is" : "are"] [stored_ammo.len] round\s left!"
 
 //magazine icon state caching
 /var/global/list/magazine_icondata_keys = list()
@@ -210,3 +211,6 @@
 	magazine_icondata_keys["[M.type]"] = icon_keys
 	magazine_icondata_states["[M.type]"] = ammo_states
 
+/obj/item/ammo_casing/proc/newshot() //For energy weapons, syringe gun, shotgun shells and wands (!).
+	if(!BB)
+		BB = new projectile_type(src, src)

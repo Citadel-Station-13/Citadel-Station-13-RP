@@ -15,6 +15,11 @@
 /mob/proc/zMove(direction)
 	if(eyeobj)
 		return eyeobj.zMove(direction)
+
+	if(istype(loc,/obj/mecha))
+		var/obj/mecha/mech = loc
+		return mech.relaymove(src,direction)
+
 	if(!can_ztravel())
 		to_chat(src, "<span class='warning'>You lack means of travel in that direction.</span>")
 		return
@@ -29,6 +34,10 @@
 		to_chat(src, "<span class='notice'>There is nothing of interest in this direction.</span>")
 		return 0
 
+	if(is_incorporeal())
+		forceMove(destination)
+		return 1
+
 	if(!start.CanZPass(src, direction))
 		to_chat(src, "<span class='warning'>\The [start] is in the way.</span>")
 		return 0
@@ -37,8 +46,7 @@
 		to_chat(src, "<span class='warning'>\The [destination] blocks your way.</span>")
 		return 0
 
-	var/area/area = get_area(src)
-	if(direction == UP && area.has_gravity() && !can_overcome_gravity())
+	if(direction == UP && has_gravity() && !can_overcome_gravity())
 		var/obj/structure/lattice/lattice = locate() in destination.contents
 		if(lattice)
 			var/pull_up_time = max(5 SECONDS + (movement_delay() * 10), 1)
@@ -49,8 +57,8 @@
 			else
 				to_chat(src, "<span class='warning'>You gave up on pulling yourself up.</span>")
 				return 0
-		else if(ismob(src)) //VOREStation Edit Start. Are they a mob, and are they currently flying??
-			var/mob/H = src
+		else if(ismob(src)) // Are they a mob, and are they currently flying??
+			var/mob/living/H = src
 			if(H.flying)
 				if(H.incapacitated(INCAPACITATION_ALL))
 					to_chat(src, "<span class='notice'>You can't fly in your current state.</span>")
@@ -67,7 +75,7 @@
 					return 0
 			else
 				to_chat(src, "<span class='warning'>Gravity stops you from moving upward.</span>")
-				return 0 //VOREStation Edit End.
+				return 0
 		else
 			to_chat(src, "<span class='warning'>Gravity stops you from moving upward.</span>")
 			return 0
@@ -124,18 +132,17 @@
 /mob/living/can_ztravel()
 	if(incapacitated())
 		return FALSE
-	return hovering
+	return (hovering || is_incorporeal())
 
 /mob/living/carbon/human/can_ztravel()
 	if(incapacitated())
 		return FALSE
 
-	if(hovering)
+	if(hovering || is_incorporeal())
 		return TRUE
 
-	if(flying) //VOREStation Edit. Allows movement up/down with wings.
-		return 1 //VOREStation Edit
-
+	if(flying) // Allows movement up/down with wings.
+		return 1
 	if(Process_Spacemove())
 		return TRUE
 
@@ -191,14 +198,14 @@
 		return
 
 	// No gravity in space, apparently.
-	var/area/area = get_area(src)
-	if(!area.has_gravity())
+	if(!has_gravity())
 		return
 
 	if(throwing)
 		return
+
 	if(ismob(src))
-		var/mob/H = src //VOREStation Edit Start. Flight on mobs.
+		var/mob/H = src // Flight on mobs.
 		if(H.flying) //Some other checks are done in the wings_toggle proc
 			if(H.nutrition > 2)
 				H.nutrition -= 0.5 //You use up 0.5 nutrition per TILE and tick of flying above open spaces. If people wanna flap their wings in the hallways, shouldn't penalize them for it. Lowered to make winged people less sad.
@@ -273,6 +280,8 @@
 		return FALSE
 
 /mob/living/can_fall()
+	if(is_incorporeal())
+		return FALSE
 	if(hovering)
 		return FALSE
 	return ..()
@@ -287,20 +296,14 @@
 
 // Things that prevent objects standing on them from falling into turf below
 /obj/structure/catwalk/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
-	if(target.x == x && target.y == y && target.z == z - 1)
-		return FALSE
-	return TRUE
+	return FALSE
 
 // So you'll slam when falling onto a catwalk
 /obj/structure/catwalk/CheckFall(var/atom/movable/falling_atom)
 	return falling_atom.fall_impact(src)
 
 /obj/structure/lattice/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
-	if(mover.checkpass(PASSGRILLE))
-		return TRUE
-	if(target.x == x && target.y == y && target.z == z - 1)
-		return FALSE
-	return TRUE
+	return mover.checkpass(PASSGRILLE)
 
 // So you'll slam when falling onto a grille
 /obj/structure/lattice/CheckFall(var/atom/movable/falling_atom)
@@ -346,7 +349,7 @@
 	return FALSE
 
 /atom/movable/proc/find_fall_target(var/turf/oldloc, var/turf/landing)
-	if(isopenspace(oldloc))
+	if(isopenturf(oldloc))
 		oldloc.visible_message("\The [src] falls down through \the [oldloc]!", "You hear something falling through the air.")
 
 	// If the turf has density, we give it first dibs
@@ -470,8 +473,10 @@
 			adjustBruteLoss(rand(damage_min, damage_max))
 		Weaken(4)
 		updatehealth()
-		return
-	return
+
+/mob/living/carbon/human/fall_impact(atom/hit_atom, damage_min, damage_max, silent, planetary)
+	if(!species?.handle_falling(src, hit_atom, damage_min, damage_max, silent, planetary))
+		..()
 
 //Using /atom/movable instead of /obj/item because I'm not sure what all humans can pick up or wear
 /atom/movable

@@ -17,13 +17,13 @@
 	aspect = ASPECT_FROST
 	glow_color = "#00B3FF"
 
-/obj/item/spell/aura/frost/process()
+/obj/item/spell/aura/frost/process(delta_time)
 	if(!pay_energy(100))
 		qdel(src)
 	var/list/nearby_mobs = range(round(calculate_spell_power(4)),owner)
 
 	var/temp_change = calculate_spell_power(40)
-	var/datum/species/baseline = GLOB.all_species["Human"]
+	var/datum/species/baseline = get_static_species_meta(/datum/species/human)
 	var/temp_cap = baseline.cold_level_2 - 5
 
 	if(check_for_scepter())

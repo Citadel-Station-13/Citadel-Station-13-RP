@@ -33,35 +33,29 @@ field_generator power level display
 	var/clean_up = 0
 
 	//If keeping field generators powered is hard then increase the emitter active power usage.
-	var/gen_power_draw = 5500	//power needed per generator
-	var/field_power_draw = 2000	//power needed per field object
+	var/gen_power_draw = 4500	//power needed per generator
+	var/field_power_draw = 1750	//power needed per field object
 
-
-/obj/machinery/field_generator/update_icon()
-	overlays.Cut()
-	if(!active)
-		if(warming_up)
-			overlays += "+a[warming_up]"
+/obj/machinery/field_generator/update_overlays()
+	. = ..()
+	if(warming_up)
+		. += "+a[warming_up]"
 	if(fields.len)
-		overlays += "+on"
+		. += "+on"
 	// Power level indicator
 	// Scale % power to % num_power_levels and truncate value
 	var/level = round(num_power_levels * power / field_generator_max_power)
 	// Clamp between 0 and num_power_levels for out of range power values
-	level = between(0, level, num_power_levels)
+	level = clamp( level, 0,  num_power_levels)
 	if(level)
-		overlays += "+p[level]"
+		. += "+p[level]"
 
-	return
-
-
-/obj/machinery/field_generator/New()
-	..()
+/obj/machinery/field_generator/Initialize(mapload)
+	. = ..()
 	fields = list()
 	connected_gens = list()
-	return
 
-/obj/machinery/field_generator/process()
+/obj/machinery/field_generator/process(delta_time)
 	if(Varedit_start == 1)
 		if(active == 0)
 			active = 1
@@ -175,6 +169,7 @@ field_generator power level display
 
 /obj/machinery/field_generator/proc/turn_off()
 	active = 0
+	warming_up = 0
 	spawn(1)
 		src.cleanup()
 	update_icon()
@@ -201,13 +196,8 @@ field_generator power level display
 		src.power = field_generator_max_power
 
 	var/power_draw = gen_power_draw
-	for(var/obj/machinery/field_generator/FG in connected_gens)
-		if (!isnull(FG))
-			power_draw += gen_power_draw
 	for (var/obj/machinery/containment_field/F in fields)
-		if (!isnull(F))
-			power_draw += field_power_draw
-	power_draw /= 2	//because this will be mirrored for both generators
+		power_draw += field_power_draw / 2		// mirrored for the other generator
 	if(draw_power(round(power_draw)) >= power_draw)
 		return 1
 	else
@@ -334,11 +324,11 @@ field_generator power level display
 	//I want to avoid using global variables.
 	spawn(1)
 		var/temp = 1 //stops spam
-		for(var/obj/singularity/O in machines)
+		for(var/obj/singularity/O in GLOB.machines)
 			if(O.last_warning && temp)
 				if((world.time - O.last_warning) > 50) //to stop message-spam
 					temp = 0
-					admin_chat_message(message = "SINGUL/TESLOOSE!", color = "#FF2222") //VOREStation Add
+					admin_chat_message(message = "SINGUL/TESLOOSE!", color = "#FF2222")
 					message_admins("A singulo exists and a containment field has failed.",1)
 					investigate_log("has <font color='red'>failed</font> whilst a singulo exists.","singulo")
 					log_game("FIELDGEN([x],[y],[z]) Containment failed while singulo/tesla exists.")

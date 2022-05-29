@@ -1,0 +1,435 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/POIs/ranch)
+"b" = (
+/obj/structure/flora/ausbushes/fullgrass,
+/turf/simulated/floor/outdoors/grass,
+/area/class_h/POIs/ranch)
+"d" = (
+/obj/structure/flora/ausbushes/fernybush,
+/turf/simulated/floor/water,
+/area/class_h/POIs/ranch)
+"f" = (
+/obj/structure/bed/double,
+/obj/item/bedsheet/browndouble,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/ranch)
+"g" = (
+/obj/structure/table/woodentable,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/ranch)
+"i" = (
+/mob/living/simple_mob/animal/passive/chicken,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/grass,
+/area/class_h/POIs/ranch)
+"k" = (
+/obj/structure/flora/ausbushes/grassybush,
+/mob/living/simple_mob/animal/passive/cow,
+/turf/simulated/floor/outdoors/grass,
+/area/class_h/POIs/ranch)
+"m" = (
+/obj/structure/simple_door/wood,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/ranch)
+"n" = (
+/obj/structure/closet/crate/freezer,
+/obj/item/storage/fancy/egg_box,
+/obj/item/storage/fancy/egg_box,
+/obj/item/storage/fancy/egg_box,
+/obj/item/storage/fancy/egg_box,
+/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/area/class_h/POIs/ranch)
+"o" = (
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/ranch)
+"p" = (
+/obj/structure/flora/ausbushes/grassybush,
+/turf/simulated/floor/outdoors/grass,
+/area/class_h/POIs/ranch)
+"v" = (
+/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/area/class_h/POIs/ranch)
+"w" = (
+/mob/living/simple_mob/animal/passive/chicken,
+/turf/simulated/floor/outdoors/grass,
+/area/class_h/POIs/ranch)
+"z" = (
+/turf/simulated/floor/outdoors/grass,
+/area/class_h/POIs/ranch)
+"A" = (
+/turf/simulated/floor/holofloor/beach/water,
+/area/class_h/POIs/ranch)
+"B" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/POIs/ranch)
+"E" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/POIs/ranch)
+"F" = (
+/obj/structure/closet/crate/freezer,
+/obj/item/reagent_containers/food/drinks/milk,
+/obj/item/reagent_containers/food/drinks/milk,
+/obj/item/reagent_containers/food/drinks/milk,
+/obj/item/reagent_containers/food/drinks/milk,
+/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/area/class_h/POIs/ranch)
+"I" = (
+/mob/living/simple_mob/animal/passive/cow,
+/turf/simulated/floor/outdoors/grass,
+/area/class_h/POIs/ranch)
+"J" = (
+/obj/structure/flora/ausbushes/fullgrass,
+/mob/living/simple_mob/animal/passive/chicken,
+/turf/simulated/floor/outdoors/grass,
+/area/class_h/POIs/ranch)
+"K" = (
+/obj/structure/railing,
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/POIs/ranch)
+"M" = (
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/ranch)
+"N" = (
+/obj/structure/table/rack/shelf,
+/obj/item/reagent_containers/glass/bucket/wood,
+/obj/item/reagent_containers/glass/bucket/wood,
+/obj/item/reagent_containers/glass/bucket/wood,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/ranch)
+"P" = (
+/obj/structure/flora/ausbushes/fernybush,
+/turf/simulated/floor/holofloor/beach/water,
+/area/class_h/POIs/ranch)
+"Q" = (
+/obj/structure/closet/cabinet,
+/obj/item/gun/projectile/shotgun/pump/rifle/lever/vintage,
+/obj/item/ammo_casing/a44,
+/obj/item/ammo_casing/a44,
+/obj/item/ammo_casing/a44,
+/obj/item/ammo_casing/a44,
+/obj/item/ammo_casing/a44,
+/obj/item/ammo_casing/a44,
+/obj/item/ammo_casing/a44,
+/obj/item/ammo_casing/a44,
+/obj/item/ammo_casing/a44,
+/obj/item/ammo_casing/a44,
+/obj/item/clothing/under/frontier,
+/obj/item/clothing/under/frontier,
+/obj/item/clothing/under/frontier,
+/obj/item/clothing/shoes/boots/cowboy,
+/obj/item/clothing/shoes/boots/cowboy,
+/obj/item/clothing/shoes/boots/cowboy,
+/obj/item/clothing/head/cowboy_hat/wide,
+/obj/item/clothing/head/cowboy_hat/wide,
+/obj/item/clothing/head/cowboy_hat/wide,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/ranch)
+"R" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/ranch)
+"S" = (
+/obj/structure/railing,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/POIs/ranch)
+"T" = (
+/turf/simulated/wall/sandstone/classh,
+/area/class_h/POIs/ranch)
+"U" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/POIs/ranch)
+"W" = (
+/turf/simulated/floor/water,
+/area/class_h/POIs/ranch)
+"X" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/POIs/ranch)
+"Y" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/POIs/ranch)
+
+(1,1,1) = {"
+a
+a
+a
+a
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+a
+"}
+(2,1,1) = {"
+a
+T
+T
+T
+B
+U
+a
+a
+a
+U
+a
+z
+a
+a
+E
+"}
+(3,1,1) = {"
+a
+T
+n
+v
+a
+z
+z
+z
+z
+z
+z
+z
+z
+a
+E
+"}
+(4,1,1) = {"
+U
+T
+F
+v
+z
+z
+z
+J
+z
+z
+b
+z
+b
+z
+E
+"}
+(5,1,1) = {"
+a
+T
+T
+T
+i
+b
+z
+z
+z
+I
+p
+z
+z
+z
+E
+"}
+(6,1,1) = {"
+S
+z
+z
+z
+z
+z
+z
+z
+b
+z
+z
+z
+b
+a
+E
+"}
+(7,1,1) = {"
+S
+z
+z
+A
+A
+A
+P
+z
+z
+b
+z
+z
+z
+U
+E
+"}
+(8,1,1) = {"
+S
+b
+k
+A
+d
+W
+A
+b
+z
+z
+b
+z
+a
+a
+E
+"}
+(9,1,1) = {"
+S
+z
+P
+A
+W
+W
+A
+z
+I
+z
+T
+m
+T
+T
+U
+"}
+(10,1,1) = {"
+K
+z
+A
+W
+W
+A
+A
+z
+z
+z
+T
+R
+N
+T
+a
+"}
+(11,1,1) = {"
+S
+z
+P
+A
+A
+P
+z
+z
+T
+T
+T
+M
+M
+T
+a
+"}
+(12,1,1) = {"
+S
+z
+b
+p
+z
+z
+b
+w
+T
+f
+M
+M
+M
+m
+a
+"}
+(13,1,1) = {"
+S
+a
+z
+z
+b
+z
+z
+b
+T
+Q
+o
+g
+o
+T
+a
+"}
+(14,1,1) = {"
+S
+U
+a
+a
+a
+U
+a
+a
+T
+T
+T
+T
+T
+T
+a
+"}
+(15,1,1) = {"
+a
+X
+X
+X
+X
+X
+X
+X
+a
+U
+a
+a
+a
+a
+a
+"}

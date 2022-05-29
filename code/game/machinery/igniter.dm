@@ -4,39 +4,37 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "igniter1"
 	var/id = null
-	var/on = 1.0
-	anchored = 1.0
+	var/on = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 4
 
-/obj/machinery/igniter/attack_ai(mob/user as mob)
+/obj/machinery/igniter/attack_ai(mob/user)
 	return attack_hand(user)
 
-/obj/machinery/igniter/attack_hand(mob/user as mob)
+/obj/machinery/igniter/attack_hand(mob/user)
 	if(..())
 		return
-	add_fingerprint(user)
 
 	use_power(50)
 	on = !(on)
 	icon_state = text("igniter[]", on)
-	return
 
-/obj/machinery/igniter/process()	//ugh why is this even in process()?
-	if(on && !(stat & NOPOWER))
+/obj/machinery/igniter/process(delta_time)	//ugh why is this even in process()?
+	if(on && !(machine_stat & NOPOWER))
 		var/turf/location = src.loc
 		if(isturf(location))
 			location.hotspot_expose(1000,500,1)
-	return 1
+	return TRUE
 
-/obj/machinery/igniter/New()
-	..()
+/obj/machinery/igniter/Initialize(mapload)
+	. = ..()
 	icon_state = "igniter[on]"
 
 /obj/machinery/igniter/power_change()
 	..()
-	if(!(stat & NOPOWER))
+	if(!(machine_stat & NOPOWER))
 		icon_state = "igniter[on]"
 	else
 		icon_state = "igniter0"
@@ -49,20 +47,17 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "migniter"
 	var/id = null
-	var/disable = 0
+	var/disable = FALSE
 	var/last_spark = 0
 	var/base_state = "migniter"
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 4
 
-/obj/machinery/sparker/New()
-	..()
-
 /obj/machinery/sparker/power_change()
 	..()
-	if(!(stat & NOPOWER) && disable == 0)
+	if(!(machine_stat & NOPOWER) && disable == 0)
 
 		icon_state = "[base_state]"
 //		sd_SetLuminosity(2)
@@ -76,14 +71,20 @@
 		disable = !disable
 		playsound(src, W.usesound, 50, 1)
 		if(disable)
-			user.visible_message("<span class='warning'>[user] has disabled the [src]!</span>", "<span class='warning'>You disable the connection to the [src].</span>")
+			user.visible_message( \
+				SPAN_WARNING("[user] has disabled \the [src]!"), \
+				SPAN_WARNING("You disable the connection to \the [src]."))
 			icon_state = "[base_state]-d"
 		if(!disable)
-			user.visible_message("<span class='warning'>[user] has reconnected the [src]!</span>", "<span class='warning'>You fix the connection to the [src].</span>")
+			user.visible_message( \
+				SPAN_WARNING("[user] has reconnected \the [src]!"), \
+				SPAN_WARNING("You fix the connection to \the [src]."))
 			if(powered())
 				icon_state = "[base_state]"
 			else
 				icon_state = "[base_state]-p"
+	else
+		..()
 
 /obj/machinery/sparker/attack_ai()
 	if(anchored)
@@ -107,10 +108,10 @@
 	var/turf/location = src.loc
 	if(isturf(location))
 		location.hotspot_expose(1000,500,1)
-	return 1
+	return TRUE
 
 /obj/machinery/sparker/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		..(severity)
 		return
 	ignite()
@@ -120,22 +121,22 @@
 	name = "ignition switch"
 	desc = "A remote control switch for a mounted igniter."
 
-/obj/machinery/button/ignition/attack_hand(mob/user as mob)
+/obj/machinery/button/ignition/attack_hand(mob/user)
 
 	if(..())
 		return
 
 	use_power(5)
 
-	active = 1
+	active = TRUE
 	icon_state = "launcheract"
 
-	for(var/obj/machinery/sparker/M in machines)
+	for(var/obj/machinery/sparker/M in GLOB.machines)
 		if(M.id == id)
 			spawn(0)
 				M.ignite()
 
-	for(var/obj/machinery/igniter/M in machines)
+	for(var/obj/machinery/igniter/M in GLOB.machines)
 		if(M.id == id)
 			use_power(50)
 			M.on = !(M.on)
@@ -144,6 +145,6 @@
 	sleep(50)
 
 	icon_state = "launcherbtt"
-	active = 0
+	active = FALSE
 
 	return

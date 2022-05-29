@@ -226,9 +226,9 @@
 							new /obj/item/scrying(get_turf(H))
 							if (!(XRAY in H.mutations))
 								H.mutations.Add(XRAY)
-								H.sight |= (SEE_MOBS|SEE_OBJS|SEE_TURFS)
-								H.see_in_dark = 8
-								H.see_invisible = SEE_INVISIBLE_LEVEL_TWO
+								H.AddSightSelf(SEE_MOBS|SEE_OBJS|SEE_TURFS)
+								H.SetSeeInDarkSelf(8)
+								H.SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
 								to_chat(H, "<span class='notice'>The walls suddenly disappear.</span>")
 							temp = "You have purchased a scrying orb, and gained x-ray vision."
 							max_uses--
@@ -250,8 +250,8 @@
 	max_uses = 1
 	desc = "This template spellbook was never meant for the eyes of man..."
 
-/obj/item/spellbook/oneuse/New()
-	..()
+/obj/item/spellbook/oneuse/Initialize(mapload)
+	. = ..()
 	name += spellname
 
 /obj/item/spellbook/oneuse/attack_self(mob/user as mob)
@@ -278,7 +278,7 @@
 
 /obj/item/spellbook/oneuse/proc/onlearned(mob/user as mob)
 	used = 1
-	user.visible_message("<span class='caution'>[src] glows dark for a second!</span>")
+	user.visible_message(SPAN_CAUTION("[src] glows dark for a second!"))
 
 /obj/item/spellbook/oneuse/attackby()
 	return
@@ -291,7 +291,7 @@
 
 /obj/item/spellbook/oneuse/fireball/recoil(mob/user as mob)
 	..()
-	explosion(user.loc, -1, 0, 2, 3, 0, flame_range = 2)
+	explosion(user.loc, -1, 0, 2, 3, 0)// flame_range = 2)
 	qdel(src)
 
 /obj/item/spellbook/oneuse/smoke
@@ -302,7 +302,7 @@
 
 /obj/item/spellbook/oneuse/smoke/recoil(mob/user as mob)
 	..()
-	to_chat(user, "<span class='caution'>Your stomach rumbles...</span>")
+	to_chat(user, SPAN_CAUTION("Your stomach rumbles..."))
 	if(user.nutrition)
 		user.nutrition -= 200
 		if(user.nutrition <= 0)

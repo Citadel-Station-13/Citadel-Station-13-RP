@@ -2,12 +2,12 @@
 
 /obj/item/clothing/suit/space/plasman
 	name = "Phoronoid containment suit"
-	icon = 'modular_citadel/icons/obj/plasmeme/suits.dmi'
+	icon = 'icons/obj/plasmeme/suits.dmi'
 	icon_state = "plasmaman_suit"
-	icon_override = 'modular_citadel/icons/mob/plasmeme/suit.dmi'
+	icon_override = 'icons/mob/plasmeme/suit.dmi'
 	desc = "A suit designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. Seems like it doesn't protect from much else."
 	slowdown = 1
-	item_flags = AIRTIGHT
+	clothing_flags = ALLOWINTERNALS
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 20)
 	allowed = list(/obj/item/tank)
 	can_breach = 0 // w h y ?
@@ -28,11 +28,11 @@
 
 /obj/item/clothing/head/helmet/space/plasman
 	name = "Phoronoid containment helmet"
-	icon = 'modular_citadel/icons/obj/plasmeme/hats.dmi'
+	icon = 'icons/obj/plasmeme/hats.dmi'
 	icon_state = "plasmaman_helmet"
-	icon_override = 'modular_citadel/icons/mob/plasmeme/helmet.dmi'
+	icon_override = 'icons/mob/plasmeme/helmet.dmi'
 	desc = "A helmet designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. Comes with a little light built in!"
-	item_flags = AIRTIGHT | FLEXIBLEMATERIAL
+	clothing_flags = ALLOWINTERNALS | FLEXIBLEMATERIAL
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 20)
 	light_overlay = "plasmaman_overlay"
 
@@ -43,6 +43,10 @@
 	icon_state = "plasmaman_suitsecurity"
 	desc = "A suit designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is armored for security use."
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 100, rad = 0)
+
+/obj/item/clothing/suit/space/plasman/sec/detective
+	icon_state = "plasmaman_suitdetective"
+	desc = "A suit designed by NT to keep sleuthy phoronoids from coming into contact with incompatible atmosphere. This one is comes with noir jacket decor."
 
 /obj/item/clothing/suit/space/plasman/sec/warden
 	icon_state = "plasmaman_suitwarden"
@@ -64,6 +68,10 @@
 	icon_state = "plasmaman_helmetsecurity"
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 100, rad = 0)
 	desc = "A helmet designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is armored for security use."
+
+/obj/item/clothing/head/helmet/space/plasman/sec/detective
+	icon_state = "plasmaman_helmetdetective"
+	desc = "A helmet designed by NT to keep sleuthy phoronoids from coming into contact with incompatible atmosphere. This one is adorned with an ill-fashioned fedora decal."
 
 /obj/item/clothing/head/helmet/space/plasman/sec/hos
 	icon_state = "plasmaman_helmethos"
@@ -251,6 +259,11 @@
 /obj/item/clothing/head/helmet/space/plasman/janitor
 	icon_state = "plasmaman_helmetjanitor"
 
+/obj/item/clothing/suit/space/plasman/assistant
+	icon_state = "plasmaman_suitassistant"
+
+/obj/item/clothing/head/helmet/space/plasman/assistant
+	icon_state = "plasmaman_helmetassistant"
 //
 // CLOWN AND MIME (im separating these because i made these a while after the rest 4head)
 //

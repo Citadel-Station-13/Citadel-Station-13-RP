@@ -14,7 +14,7 @@ var/datum/antagonist/loyalists/loyalists
 	loss_text = "The heads of staff did not stop the revolution!"
 	victory_feedback_tag = "win - rev heads killed"
 	loss_feedback_tag = "loss - heads killed"
-	antaghud_indicator = "hudloyalist"
+	antaghud_indicator = "loyalist"
 	flags = 0
 
 	hard_cap = 2
@@ -39,8 +39,8 @@ var/datum/antagonist/loyalists/loyalists
 	if(!..())
 		return
 	global_objectives = list()
-	for(var/mob/living/carbon/human/player in mob_list)
-		if(!player.mind || player.stat==2 || !(player.mind.assigned_role in command_positions))
+	for(var/mob/living/carbon/human/player in GLOB.mob_list)
+		if(!player.mind || player.stat==2 || !(player.mind.assigned_role in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND)))
 			continue
 		var/datum/objective/protect/loyal_obj = new
 		loyal_obj.target = player.mind

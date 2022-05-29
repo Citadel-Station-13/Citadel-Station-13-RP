@@ -51,7 +51,7 @@ var/datum/uplink/uplink = new()
 	if(!can_buy(U))
 		return
 
-	if(U.CanUseTopic(user, inventory_state) != STATUS_INTERACTIVE)
+	if(U.CanUseTopic(user, inventory_state) != UI_INTERACTIVE)
 		return
 
 	var/cost = cost(U.uses, U)
@@ -85,7 +85,7 @@ var/datum/uplink/uplink = new()
 		return 0
 
 	for(var/antag_role in antag_roles)
-		var/datum/antagonist/antag = all_antag_types[antag_role]
+		var/datum/antagonist/antag = GLOB.all_antag_types[antag_role]
 		if(!isnull(antag))
 			if(antag.is_antagonist(U.uplink_owner))
 				return 1

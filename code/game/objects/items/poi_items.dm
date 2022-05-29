@@ -8,11 +8,11 @@
 	name = "misshapen manhole cover"
 	desc = "The top of this twisted chunk of metal is faintly stamped with a five pointed star. 'Property of US Army, Pascal B - 1957'."
 
-/obj/item/poi/pascalb/New()
+/obj/item/poi/pascalb/Initialize(mapload)
+	. = ..()
 	START_PROCESSING(SSobj, src)
-	return ..()
 
-/obj/item/poi/pascalb/process()
+/obj/item/poi/pascalb/process(delta_time)
 	SSradiation.radiate(src, 5)
 
 /obj/item/poi/pascalb/Destroy()
@@ -36,11 +36,11 @@
 	name = "ruptured fission reactor rack"
 	desc = "This broken hunk of machinery looks extremely dangerous."
 
-/obj/item/poi/brokenoldreactor/New()
+/obj/item/poi/brokenoldreactor/Initialize(mapload)
+	. = ..()
 	START_PROCESSING(SSobj, src)
-	return ..()
 
-/obj/item/poi/brokenoldreactor/process()
+/obj/item/poi/brokenoldreactor/process(delta_time)
 	SSradiation.radiate(src, 25)
 
 /obj/item/poi/brokenoldreactor/Destroy()

@@ -31,7 +31,9 @@
 		input = copytext(input,1,max_length)
 
 	if(extra)
-		input = replace_characters(input, list("\n"=" ","\t"=" "))
+		var/temp_input = replace_characters(input, list("\n"="  ","\t"=" "))//one character is replaced by two
+		if(length_char(input) < (length_char(temp_input) - 12)) //12 is the number of linebreaks allowed per message
+			input = replace_characters(temp_input,list("  "=" "))//replace again, this time the double spaces with single ones
 
 	if(encode)
 		// The below \ escapes have a space inserted to attempt to enable Travis auto-checking of span class usage. Please do not remove the space.
@@ -71,7 +73,7 @@
 	return sanitize(replace_characters(input, list(">"=" ","<"=" ", "\""="'")), max_length, encode, trim, extra)
 
 //Filters out undesirable characters from names
-/proc/sanitizeName(var/input, var/max_length = MAX_NAME_LEN, var/allow_numbers = 0)
+/proc/sanitizeName(var/input, var/max_length = MAX_NAME_LEN)
 	if(!input || length(input) > max_length)
 		return //Rejects the input if it is null or if it is longer then the max length allowed
 
@@ -98,7 +100,6 @@
 			// 0  .. 9
 			if(48 to 57)			//Numbers
 				if(!last_char_group)		continue	//suppress at start of string
-				if(!allow_numbers)			continue	// If allow_numbers is 0, then don't do this.
 				output += ascii2text(ascii_char)
 				number_of_alphanumeric++
 				last_char_group = 3
@@ -112,7 +113,6 @@
 			// ~   |   @  :  #  $  %  &  *  +
 			if(126,124,64,58,35,36,37,38,42,43)			//Other symbols that we'll allow (mainly for AI)
 				if(!last_char_group)		continue	//suppress at start of string
-				if(!allow_numbers)			continue
 				output += ascii2text(ascii_char)
 				last_char_group = 2
 
@@ -264,6 +264,38 @@
 /proc/capitalize(var/t as text)
 	return uppertext(copytext(t, 1, 2)) + copytext(t, 2)
 
+/proc/autocorrect(var/input as text) // syntax is "stringtoreplace"="stringtoreplacewith"
+	return input = replace_characters(input, list(
+											" i "=" I ",
+											"i'm"="I'm",
+											"s's"="s'",
+											"isnt"="isn't",
+											"dont"="don't",
+											"shouldnt"="shouldn't",
+											" ive "=" I've ",
+											"whove"="who've",
+											"whod"="who’d",
+											"whats"="what’s",
+											"whatd"="what’d",
+											"thats"="that’s",
+											"thatll"="that’ll",
+											"thatd"="that’d",
+											" nows "=" now’s ",
+											"isnt"="isn’t",
+											" arent "=" aren’t ",
+											"wasnt"="wasn’t",
+											"werent"="weren’t",
+											"havent"="haven’t",
+											"hasnt"="hasn’t",
+											"hadnt"="hadn’t",
+											"doesnt"="doesn’t",
+											"didnt"="didn’t",
+											"couldnt"="couldn’t",
+											"wouldnt"="wouldn’t",
+											"mustnt"="mustn’t",
+											"shouldnt"="shouldn’t"
+											))
+
 //This proc strips html properly, remove < > and all text between
 //for complete text sanitizing should be used sanitize()
 /proc/strip_html_properly(var/input)
@@ -346,11 +378,12 @@ proc/TextPreview(var/string,var/len=40)
 //For generating neat chat tag-images
 //The icon var could be local in the proc, but it's a waste of resources
 //	to always create it and then throw it out.
-/var/icon/text_tag_icons = new('./icons/chattags.dmi')
-/proc/create_text_tag(var/tagname, var/tagdesc = tagname, var/client/C = null)
+GLOBAL_VAR_INIT(text_tag_icons, new /icon('./icons/chattags.dmi'))
+
+/proc/create_text_tag(tagname, tagdesc = tagname, client/C)
 	if(!(C && C.is_preference_enabled(/datum/client_preference/chat_tags)))
 		return tagdesc
-	return "<IMG src='\ref[text_tag_icons.icon]' class='text_tag' iconstate='[tagname]'" + (tagdesc ? " alt='[tagdesc]'" : "") + ">"
+	return icon2html(GLOB.text_tag_icons, C, tagname)
 
 /proc/contains_az09(var/input)
 	for(var/i=1, i<=length(input), i++)
@@ -503,3 +536,32 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 /proc/random_color()
 	return random_string(6, GLOB.hex_characters)
 
+//! ## VR FILE MERGE ## !//
+//Readds quotes and apostrophes to HTML-encoded strings
+/proc/readd_quotes(var/t)
+	var/list/repl_chars = list("&#34;" = "\"","&#39;" = "'")
+	for(var/char in repl_chars)
+		var/index = findtext(t, char)
+		while(index)
+			t = copytext(t, 1, index) + repl_chars[char] + copytext(t, index+5)
+			index = findtext(t, char)
+	return t
+
+//Adds 'char' ahead of 'text' until there are 'count' characters total
+/proc/add_leading(text, count, char = " ")
+	text = "[text]"
+	var/charcount = count - length_char(text)
+	var/list/chars_to_add[max(charcount + 1, 0)]
+	return jointext(chars_to_add, char) + text
+
+//Adds 'char' behind 'text' until there are 'count' characters total
+/proc/add_trailing(text, count, char = " ")
+	text = "[text]"
+	var/charcount = count - length_char(text)
+	var/list/chars_to_add[max(charcount + 1, 0)]
+	return text + jointext(chars_to_add, char)
+
+/// Removes all non-alphanumerics from the text, keep in mind this can lead to id conflicts
+/proc/sanitize_css_class_name(name)
+	var/static/regex/regex = new(@"[^a-zA-Z0-9]","g")
+	return replacetext(name, regex, "")

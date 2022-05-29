@@ -2,6 +2,19 @@
 // IMO they're a relic of several ages we're long past, their code and their design showing this plainly, but removing them would
 // make certain people Unhappy so here we are. They need a complete redesign but thats beyond the scope of the rewrite.
 
+/datum/category_item/catalogue/fauna/borer
+	name = "Cortical Borer"
+	desc = "Cortical Borers are one of the many parasitic life forms \
+	encountered on the Frontier. Often treated - justifiably - with disgust \
+	and fear, evidence of a cortical borer can send a community spiralling \
+	into panic and paranoia. Borers hijack the cortex of their hosts, fully \
+	taking control of their victim's motor functions and speech, effectively \
+	locking the host inside their own body. Borers reproduce inside their host \
+	bodies, making it vital to their life cycle that they remain undetected. \
+	Cortical borers are notably vulnerable to sugar, a fact often exploited when \
+	screening for infested hosts."
+	value = CATALOGUER_REWARD_HARD
+
 /mob/living/simple_mob/animal/borer
 	name = "cortical borer"
 	desc = "A small, quivering sluglike creature."
@@ -9,6 +22,7 @@
 	item_state = "brainslug"
 	icon_living = "brainslug"
 	icon_dead = "brainslug_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/borer)
 
 	response_help  = "pokes"
 	response_disarm = "prods"
@@ -46,7 +60,7 @@
 	if(mind)
 		borers.add_antagonist(mind)
 
-/mob/living/simple_mob/animal/borer/Initialize()
+/mob/living/simple_mob/animal/borer/Initialize(mapload)
 	add_language("Cortical Link")
 
 	verbs += /mob/living/proc/ventcrawl
@@ -55,7 +69,7 @@
 	true_name = "[pick("Primary","Secondary","Tertiary","Quaternary")] [rand(1000,9999)]"
 
 	if(!roundstart)
-		request_player()
+		INVOKE_ASYNC(src, .proc/request_player)
 
 	return ..()
 
@@ -65,13 +79,13 @@
 		if(host.reagents.has_reagent("sugar") && !docile)
 			var/message = "You feel the soporific flow of sugar in your host's blood, lulling you into docility."
 			var/target = controlling ? host : src
-			to_chat(target, span("warning", message))
+			to_chat(target, SPAN_WARNING( message))
 			docile = TRUE
 
 		else if(docile)
 			var/message = "You shake off your lethargy as the sugar leaves your host's blood."
 			var/target = controlling ? host : src
-			to_chat(target, span("notice", message))
+			to_chat(target, SPAN_NOTICE(message))
 			docile = FALSE
 
 		// Chem regen.
@@ -81,7 +95,7 @@
 		// Control stuff.
 		if(controlling)
 			if(docile)
-				to_chat(host, span("warning", "You are feeling far too docile to continue controlling your host..."))
+				to_chat(host, SPAN_WARNING( "You are feeling far too docile to continue controlling your host..."))
 				host.release_control()
 				return
 
@@ -162,9 +176,9 @@
 	if(host.mind)
 		borers.remove_antagonist(host.mind)
 
-	forceMove(get_turf(host))
+	forceMove(host.loc)
+	update_perspective()
 
-	reset_view(null)
 	machine = null
 
 	if(istype(host, /mob/living/carbon/human))
@@ -173,7 +187,6 @@
 		if(head)
 			head.implants -= src
 
-	host.reset_view(null)
 	host.machine = null
 	host = null
 
@@ -196,7 +209,7 @@
 		mind.assigned_role = "Cortical Borer"
 		mind.special_role = "Cortical Borer"
 
-	to_chat(src, span("notice", "You are a cortical borer! You are a brain slug that worms its way \
+	to_chat(src, SPAN_NOTICE("You are a cortical borer! You are a brain slug that worms its way \
 	into the head of its victim. Use stealth, persuasion and your powers of mind control to keep you, \
 	your host and your eventual spawn safe and warm."))
 	to_chat(src, "You can speak to your victim with <b>say</b>, to other borers with <b>say :x</b>, and use your Abilities tab to access powers.")
@@ -205,7 +218,7 @@
 	return
 
 // This is awful but its literally say code.
-/mob/living/simple_mob/animal/borer/say(message)
+/mob/living/simple_mob/animal/borer/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	message = sanitize(message)
 	message = capitalize(message)
 
@@ -218,7 +231,7 @@
 		return
 
 	if(client && client.prefs.muted & MUTE_IC)
-		to_chat(src, span("danger", "You cannot speak in IC (muted)."))
+		to_chat(src, SPAN_DANGER("You cannot speak in IC (muted)."))
 		return
 
 	if(copytext(message, 1, 2) == "*")
@@ -231,7 +244,7 @@
 
 	if(!host)
 		if(chemicals >= 30)
-			to_chat(src, span("alien", "..You emit a psionic pulse with an encoded message.."))
+			to_chat(src, SPAN_ALIEN("..You emit a psionic pulse with an encoded message.."))
 			var/list/nearby_mobs = list()
 			for(var/mob/living/LM in view(src, 1 + round(6 * (chemicals / max_chemicals))))
 				if(LM == src)
@@ -246,9 +259,9 @@
 				message_admins("[src.ckey]/([src]) tried to force [speaker] to say: [message]")
 				speaker.say("[message]")
 				return
-			to_chat(src, span("alien", "..But nothing heard it.."))
+			to_chat(src, SPAN_ALIEN("..But nothing heard it.."))
 		else
-			to_chat(src, span("warning", "You have no host to speak to."))
+			to_chat(src, SPAN_WARNING( "You have no host to speak to."))
 		return //No host, no audible speech.
 
 	to_chat(src, "You drop words into [host]'s mind: \"[message]\"")

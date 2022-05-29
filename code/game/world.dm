@@ -15,18 +15,23 @@ GLOBAL_VAR_INIT(tgs_initialized, FALSE)
 GLOBAL_VAR(topic_status_lastcache)
 GLOBAL_LIST(topic_status_cache)
 
+//This happens after the Master subsystem new(s) (it's a global datum)
+//So subsystems globals exist, but are not initialised
 /world/New()
-	var/extools = world.GetConfig("env", "EXTOOLS_DLL") || (world.system_type == MS_WINDOWS ? "./byond-extools.dll" : "./libbyond-extools.so")
-	if (fexists(extools))
-		call(extools, "maptick_initialize")()
-	enable_debugger()
-
-	make_datum_reference_lists()
+	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
+	if (debug_server)
+		call(debug_server, "auxtools_init")()
+		enable_debugging()
 
 	log_world("World loaded at [TIME_STAMP("hh:mm:ss", FALSE)]!")
 
 	var/tempfile = "data/logs/config_error.[GUID()].log"	//temporary file used to record errors with loading config, moved to log directory once logging is set
-	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_runtime_log = GLOB.world_map_error_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
+	// citadel edit: world runtime log removed due to world.log shunt doing that for us
+	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_map_error_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
+
+	world.Profile(PROFILE_START)
+	make_datum_reference_lists()	//initialises global lists for referencing frequently used datums (so that we only ever do it once)
+	setupgenetics()
 
 	GLOB.revdata = new
 
@@ -36,12 +41,15 @@ GLOBAL_LIST(topic_status_cache)
 
 	SetupLogs()
 
-#ifndef USE_CUSTOM_ERROR_HANDLER
-	world.log = file("[GLOB.log_directory]/dd.log")
-#else
-	if (TgsAvailable())
-		world.log = file("[GLOB.log_directory]/dd.log") //not all runtimes trigger world/Error, so this is the only way to ensure we can see all of them.
-#endif
+// #ifndef USE_CUSTOM_ERROR_HANDLER
+// 	world.log = file("[GLOB.log_directory]/dd.log")
+// #else
+// 	if (TgsAvailable())
+// 		world.log = file("[GLOB.log_directory]/dd.log") //not all runtimes trigger world/Error, so this is the only way to ensure we can see all of them.
+// #endif
+
+	// shunt redirected world log from Master's init back into world log proper, now that logging has been set up.
+	shunt_redirected_log()
 
 	config_legacy.post_load()
 
@@ -53,7 +61,7 @@ GLOBAL_LIST(topic_status_cache)
 	// if(config && config_legacy.log_runtime)
 	// 	log = file("data/logs/runtime/[time2text(world.realtime,"YYYY-MM-DD-(hh-mm-ss)")]-runtime.log")
 
-	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
+	GLOB.timezoneOffset = get_timezone_offset()
 
 	callHook("startup")
 	//Emergency Fix
@@ -64,23 +72,12 @@ GLOBAL_LIST(topic_status_cache)
 
 	. = ..()
 
-#if UNIT_TEST
-	log_unit_test("Unit Tests Enabled.  This will destroy the world when testing is complete.")
-	log_unit_test("If you did not intend to enable this please check code/__defines/unit_testing.dm")
-#endif
-
-	// Set up roundstart seed list.
-	plant_controller = new()
+	// *sighs*
+	job_master = new
+	job_master.SetupOccupations()
 
 	// This is kinda important. Set up details of what the hell things are made of.
 	populate_material_list()
-
-	// Loads all the pre-made submap templates.
-	load_map_templates()
-
-	if(config_legacy.generate_map)
-		if(GLOB.using_map.perform_map_generation())
-			GLOB.using_map.refresh_mining_turfs()
 
 	// Create frame types.
 	populate_frame_types()
@@ -96,23 +93,73 @@ GLOBAL_LIST(topic_status_cache)
 
 	Master.Initialize(10, FALSE)
 
-#if UNIT_TEST
-	spawn(1)
-		initialize_unit_tests()
-#endif
+	#ifdef UNIT_TESTS
+	HandleTestRun()
+	#endif
 
-	spawn(3000)		//so we aren't adding to the round-start lag
-		if(config_legacy.ToRban)
-			ToRban_autoupdate()
-
-#undef RECOMMENDED_VERSION
-
-	return
+	if(config_legacy.ToRban)
+		addtimer(CALLBACK(GLOBAL_PROC, .proc/ToRban_autoupdate), 5 MINUTES)
 
 /world/proc/InitTgs()
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
 	GLOB.revdata.load_tgs_info()
 	GLOB.tgs_initialized = TRUE
+
+GLOBAL_REAL_VAR(world_log_redirected) = FALSE
+
+/**
+ * so it turns out that if GLOB init or something before world.log redirect runtimes we have no way of catching it in CI
+ * which is really bad?? because we kind of need it??
+ * therefore
+ */
+/world/proc/ensure_logging_active()
+// if we're unit testing do not ever redirect world.log or the test won't show output.
+#ifndef UNIT_TESTS
+	// we already know, we don't care
+	if(params[OVERRIDE_LOG_DIRECTORY_PARAMETER])
+		world.log = file("data/logs/[params[OVERRIDE_LOG_DIRECTORY_PARAMETER]]/dd.log")
+		return
+	if(global.world_log_redirected)
+		return
+	global.world_log_redirected = TRUE
+	if(fexists("data/logs/world_init_temporary.log"))
+		fdel("data/logs/world_init_temporary.log")
+	world.log = file("data/logs/world_init_temporary.log")
+#endif
+
+/**
+ * world/New is running, shunt all of the output back.
+ */
+/world/proc/shunt_redirected_log()
+// if we're unit testing do not ever redirect world.log or the test won't show output.
+#ifndef UNIT_TESTS
+	if(params[OVERRIDE_LOG_DIRECTORY_PARAMETER])
+		return		// already done above
+	world.log = file("[GLOB.log_directory]/dd.log")
+	if(!fexists("data/logs/world_init_temporary.log"))
+		log_world("No preinit logs detected, shunt skipped.")
+		return
+	log_world("Shunting preinit logs as follows:")
+	for(var/line in world.file2list("data/logs/world_init_temporary.log"))
+		line = trim(line)
+		if(!length(line))
+			continue
+		log_world(line)
+	fdel("data/logs/world_init/temporary.log")
+#endif
+
+/world/proc/HandleTestRun()
+	//trigger things to run the whole process
+	Master.sleep_offline_after_initializations = FALSE
+	SSticker.start_immediately = TRUE
+	CONFIG_SET(number/round_end_countdown, 0)
+	var/datum/callback/cb
+#ifdef UNIT_TESTS
+	cb = CALLBACK(GLOBAL_PROC, /proc/RunUnitTests)
+#else
+	cb = VARSET_CALLBACK(SSticker, force_ending, TRUE)
+#endif
+	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, /proc/_addtimer, cb, 10 SECONDS))
 
 /world/proc/SetupLogs()
 	var/override_dir = params[OVERRIDE_LOG_DIRECTORY_PARAMETER]
@@ -143,17 +190,24 @@ GLOBAL_LIST(topic_status_cache)
 	GLOB.world_qdel_log = "[GLOB.log_directory]/qdel.log"
 	GLOB.world_map_error_log = "[GLOB.log_directory]/map_errors.log"
 	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
+	GLOB.tgui_log = "[GLOB.log_directory]/tgui.log"
 	GLOB.subsystem_log = "[GLOB.log_directory]/subsystem.log"
 
+#ifdef UNIT_TESTS
+	GLOB.test_log = file("[GLOB.log_directory]/tests.log")
+	start_log(GLOB.test_log)
+#endif
 	start_log(GLOB.world_game_log)
 	start_log(GLOB.world_attack_log)
 	start_log(GLOB.world_href_log)
 	start_log(GLOB.world_qdel_log)
 	start_log(GLOB.world_map_error_log)
 	start_log(GLOB.world_runtime_log)
+	start_log(GLOB.tgui_log)
 	start_log(GLOB.subsystem_log)
 
-	GLOB.changelog_hash = md5('html/changelog.html') //for telling if the changelog has changed recently
+	var/latest_changelog = file("[global.config.directory]/../html/changelogs/archive/" + time2text(world.timeofday, "YYYY-MM") + ".yml")
+	GLOB.changelog_hash = fexists(latest_changelog) ? md5(latest_changelog) : 0 //for telling if the changelog has changed recently
 	if(fexists(GLOB.config_error_log))
 		fcopy(GLOB.config_error_log, "[GLOB.log_directory]/config_error.log")
 		fdel(GLOB.config_error_log)
@@ -187,13 +241,34 @@ GLOBAL_LIST(topic_status_cache)
 			break
 
 	if(!handler || initial(handler.log))
-		log_topic("\"[T]\", from:[addr], aster:[master], key:[key]")
+		log_topic("\"[T]\", from:[addr], master:[master], key:[key]")
 
 	if(!handler)
 		return
 
 	handler = new handler()
 	return handler.TryRun(input)
+
+/world/proc/FinishTestRun()
+	set waitfor = FALSE
+	var/list/fail_reasons
+	if(GLOB)
+		if(global.total_runtimes != 0)
+			fail_reasons = list("Total runtimes: [global.total_runtimes] - if you don't see any runtimes above, launch locally with `dreamseeker -trusted -verbose citadel.dmb` after compile and check Options and Messages. Inform a maintainer too, if this happens..")
+#ifdef UNIT_TESTS
+		if(GLOB.failed_any_test)
+			LAZYADD(fail_reasons, "Unit Tests failed!")
+#endif
+		if(!GLOB.log_directory)
+			LAZYADD(fail_reasons, "Missing GLOB.log_directory!")
+	else
+		fail_reasons = list("Missing GLOB!")
+	if(!fail_reasons)
+		text2file("Success!", "[GLOB.log_directory]/clean_run.lk")
+	else
+		log_world("Test run failed!\n[fail_reasons.Join("\n")]")
+	sleep(0)	//yes, 0, this'll let Reboot finish and prevent byond memes
+	qdel(src)	//shut it down
 
 /world/Reboot(reason = 0, fast_track = FALSE)
 	if (reason || fast_track) //special reboot, do none of the normal stuff
@@ -203,19 +278,16 @@ GLOBAL_LIST(topic_status_cache)
 		to_chat(world, "<span class='boldannounce'>Rebooting World immediately due to host request</span>")
 	else
 		to_chat(world, "<span class='boldannounce'>Rebooting world...</span>")
-		//POLARIS START
 		if(blackbox)
 			blackbox.save_all_data_to_sql()
-		//END
-		Master.Shutdown()	//run SS shutdowns
+		Master.Shutdown() //run SS shutdowns
 
 	TgsReboot()
 
-/*
-	if(TEST_RUN_PARAMETER in params)
-		FinishTestRun()
-		return
-*/
+	#ifdef UNIT_TESTS
+	FinishTestRun()
+	return
+	#endif
 
 /*
 	if(TgsAvailable())
@@ -244,6 +316,12 @@ GLOBAL_LIST(topic_status_cache)
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
 	..()
 
+/world/Del()
+	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
+	if (debug_server)
+		call(debug_server, "auxtools_shutdown")()
+	..()
+
 /hook/startup/proc/loadMode()
 	world.load_mode()
 	return 1
@@ -253,7 +331,7 @@ GLOBAL_LIST(topic_status_cache)
 		return
 
 
-	var/list/Lines = file2list("data/mode.txt")
+	var/list/Lines = world.file2list("data/mode.txt")
 	if(Lines.len)
 		if(Lines[1])
 			master_mode = Lines[1]
@@ -273,7 +351,7 @@ GLOBAL_LIST(topic_status_cache)
 	if(config_legacy.admin_legacy_system)
 		var/text = file2text("config/moderators.txt")
 		if (!text)
-			log_world("Failed to load config/mods.txt")
+			log_world("Failed to load config/moderators.txt")
 		else
 			var/list/lines = splittext(text, "\n")
 			for(var/line in lines)
@@ -311,68 +389,48 @@ GLOBAL_LIST(topic_status_cache)
 				D.associate(GLOB.directory[ckey])
 
 /world/proc/update_status()
-	var/s = ""
+	. = ""
+	if(!config)
+		status = "<b>SERVER LOADING OR BROKEN.</b> (18+)"
+		return
 
-	if (config_legacy?.server_name)
-		s += "<b>[config_legacy.server_name]</b> &#8212; "
+	// ---Hub title---
+	var/servername = config_legacy?.server_name
+	var/stationname = station_name()
+	var/defaultstation = GLOB.using_map ? GLOB.using_map.station_name : stationname
+	if(servername || stationname != defaultstation)
+		. += (servername ? "<b>[servername]" : "<b>")
+		. += (stationname != defaultstation ? "[servername ? " - " : ""][stationname]</b>\] " : "</b>\] ")
 
-	s += "<b>[station_name()]</b>";
-	s += " ("
-	s += "<a href=\"http://\">" //Change this to wherever you want the hub to link to.
-//	s += "[game_version]"
-	s += "Citadel"  //Replace this with something else. Or ever better, delete it and uncomment the game version.	CITADEL CHANGE - modifies hub entry to match main
-	s += "</a>"
-	s += ")\]" //CITADEL CHANGE - encloses the server title in brackets to make the hub entry fancier
-	s += "<br><small><a href='https://discord.gg/citadelstation'>Roleplay focused 18+ server with extensive species choices.</a></small></br>" //CITADEL CHANGE - adds an educational fact to the hub entry!
+	var/communityname = CONFIG_GET(string/community_shortname)
+	var/communitylink = CONFIG_GET(string/community_link)
+	if(communityname)
+		. += (communitylink ? "(<a href=\"[communitylink]\">[communityname]</a>) " : "([communityname]) ")
 
-	s += ")"
+	. += "(18+)<br>" //This is obligatory for obvious reasons.
 
-	var/list/features = list()
+	// ---Hub body---
+	var/tagline = (CONFIG_GET(flag/usetaglinestrings) ? pick(GLOB.server_taglines) : CONFIG_GET(string/tagline))
+	if(tagline)
+		. += "[tagline]<br>"
 
-	if(SSticker)
-		if(master_mode)
-			features += master_mode
-	else
-		features += "<b>STARTING</b>"
+	// ---Hub footer---
+	. += "\["
+	if(GLOB.using_map)
+		. += "[GLOB.using_map.station_short], "
 
-	/*if (!config_legacy.enter_allowed)	CITADEL CHANGE - removes useless info from hub entry
-		features += "closed"
+	. += "[get_security_level()] alert, "
 
-	features += config_legacy.abandon_allowed ? "respawn" : "no respawn"
+	. += "[GLOB.clients.len] players"
 
-	if (config && config_legacy.allow_vote_mode)
-		features += "vote"
-
-	if (config && config_legacy.allow_ai)
-		features += "AI allowed"*/
-
-	var/n = 0
-	for (var/mob/M in player_list)
-		if (M.client)
-			n++
-
-	if (n > 1)
-		features += "~[n] players"
-	else if (n > 0)
-		features += "~[n] player"
-
-
-	if (config && config_legacy.hostedby)
-		features += "hosted by <b>[config_legacy.hostedby]</b>"
-
-	if (features)
-		s += "\[[jointext(features, ", ")]"	//CITADEL CHANGE - replaces colon with left bracket to make the hub entry a little fancier
-
-	/* does this help? I do not know */
-	if (src.status != s)
-		src.status = s
+	status = .
 
 #define FAILED_DB_CONNECTION_CUTOFF 5
 var/failed_db_connections = 0
 var/failed_old_db_connections = 0
 
 /hook/startup/proc/connectDB()
-	if(!config_legacy.sql_enabled)
+	if(!CONFIG_GET(flag/sql_enabled))
 		log_world("SQL connection disabled in config_legacy.")
 	else if(!setup_database_connection())
 		log_world("Your server failed to establish a connection with the feedback database.")
@@ -416,7 +474,7 @@ proc/establish_db_connection()
 
 
 /hook/startup/proc/connectOldDB()
-	if(!config_legacy.sql_enabled)
+	if(!CONFIG_GET(flag/sql_enabled))
 		log_world("SQL connection disabled in config_legacy.")
 	else if(!setup_old_database_connection())
 		log_world("Your server failed to establish a connection with the SQL database.")

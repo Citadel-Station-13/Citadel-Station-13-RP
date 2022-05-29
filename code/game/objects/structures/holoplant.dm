@@ -17,7 +17,7 @@
 		"plant-13"
 	)
 
-/obj/machinery/holoplant/Initialize()
+/obj/machinery/holoplant/Initialize(mapload)
 	. = ..()
 	activate()
 
@@ -42,7 +42,7 @@
 	. = ..()
 
 /obj/machinery/holoplant/proc/activate()
-	if(!anchored || stat & (NOPOWER|BROKEN))
+	if(!anchored || machine_stat & (NOPOWER|BROKEN))
 		return
 
 	plant = prepare_icon(emagged ? "emagged" : null)
@@ -58,7 +58,7 @@
 
 /obj/machinery/holoplant/power_change()
 	..()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		deactivate()
 	else
 		activate()
@@ -95,11 +95,9 @@
 	activate()
 
 /obj/machinery/holoplant/Crossed(var/mob/living/L)
+	. = ..()
 	if(!interference && plant && istype(L))
 		flicker()
 
-
 /obj/machinery/holoplant/shipped
 	anchored = FALSE
-/obj/machinery/holoplant/shipped/Initialize()
-	. = ..()

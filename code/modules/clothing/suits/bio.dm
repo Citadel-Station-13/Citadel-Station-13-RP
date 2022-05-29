@@ -9,7 +9,7 @@
 	body_parts_covered = HEAD|FACE|EYES
 	siemens_coefficient = 0.9
 	flags = PHORONGUARD
-	item_flags = THICKMATERIAL | ALLOW_SURVIVALFOOD
+	clothing_flags = THICKMATERIAL | ALLOW_SURVIVALFOOD
 
 /obj/item/clothing/suit/bio_suit
 	name = "bio suit"
@@ -25,7 +25,7 @@
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	siemens_coefficient = 0.9
 	flags = PHORONGUARD
-	item_flags = THICKMATERIAL
+	clothing_flags = THICKMATERIAL
 
 //Standard biosuit, orange stripe
 /obj/item/clothing/head/bio_hood/general
@@ -91,3 +91,32 @@
 	icon_state = "plaguedoctor"
 	item_state_slots = list(slot_r_hand_str = "bio", slot_l_hand_str = "bio")
 	flags_inv = HIDEGLOVES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
+
+//Beekeeping Suit seems like it would belong here.
+/obj/item/clothing/head/beekeeper
+	name = "beekeeping hood"
+	icon_state = "beekeeper"
+	desc = "A wide brimmed hat with a mesh screen that protects the face from stinging insects."
+	permeability_coefficient = 0.01
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 0)
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|BLOCKHAIR
+	body_parts_covered = HEAD|FACE|EYES
+	siemens_coefficient = 0.9
+	flags = PHORONGUARD
+	clothing_flags = THICKMATERIAL | ALLOW_SURVIVALFOOD
+
+/obj/item/clothing/suit/beekeeper
+	name = "beekeeping suit"
+	desc = "A thick suit that protects against stinging insects."
+	icon_state = "beekeeper"
+	w_class = ITEMSIZE_LARGE//bulky item
+	gas_transfer_coefficient = 0.01
+	permeability_coefficient = 0.01
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
+	slowdown = 1.0
+	allowed = list(/obj/item/tank/emergency/oxygen,/obj/item/pen,/obj/item/flashlight/pen)
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 20)
+	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
+	siemens_coefficient = 0.9
+	flags = PHORONGUARD
+	clothing_flags = THICKMATERIAL

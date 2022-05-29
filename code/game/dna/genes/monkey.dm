@@ -1,13 +1,13 @@
-/datum/dna/gene/monkey
+/datum/gene/monkey
 	name="Monkey"
 
-/datum/dna/gene/monkey/New()
+/datum/gene/monkey/New()
 	block=MONKEYBLOCK
 
-/datum/dna/gene/monkey/can_activate(var/mob/M,var/flags)
+/datum/gene/monkey/can_activate(var/mob/M,var/flags)
 	return istype(M, /mob/living/carbon/human) || istype(M,/mob/living/carbon/monkey)
 
-/datum/dna/gene/monkey/activate(var/mob/living/M, var/connected, var/flags)
+/datum/gene/monkey/activate(var/mob/living/M, var/connected, var/flags)
 	if(!istype(M,/mob/living/carbon/human))
 		//testing("Cannot monkey-ify [M], type is [M.type].")
 		return
@@ -69,7 +69,7 @@
 	O.take_overall_damage(M.getBruteLoss() + 40, M.getFireLoss())
 	O.adjustToxLoss(M.getToxLoss() + 20)
 	O.adjustOxyLoss(M.getOxyLoss())
-	O.stat = M.stat
+	O.set_stat(M.stat)
 	O.a_intent = INTENT_HARM
 	for (var/obj/item/implant/I in implants)
 		I.loc = O
@@ -78,7 +78,7 @@
 	qdel(M)
 	return
 
-/datum/dna/gene/monkey/deactivate(var/mob/living/M, var/connected, var/flags)
+/datum/gene/monkey/deactivate(var/mob/living/M, var/connected, var/flags)
 	if(!istype(M,/mob/living/carbon/monkey))
 		//testing("Cannot humanize [M], type is [M.type].")
 		return
@@ -154,7 +154,7 @@
 	O.take_overall_damage(M.getBruteLoss(), M.getFireLoss())
 	O.adjustToxLoss(M.getToxLoss())
 	O.adjustOxyLoss(M.getOxyLoss())
-	O.stat = M.stat
+	O.set_stat(M.stat)
 	for (var/obj/item/implant/I in implants)
 		I.loc = O
 		I.implanted = O

@@ -10,8 +10,8 @@
 	var/smoke_color
 	var/smoke_strength = 8
 
-/obj/item/grenade/smokebomb/New()
-	..()
+/obj/item/grenade/smokebomb/Initialize(mapload)
+	. = ..()
 	src.smoke = new /datum/effect_system/smoke_spread/bad()
 	src.smoke.attach(src)
 

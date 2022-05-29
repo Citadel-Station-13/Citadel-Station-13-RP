@@ -12,15 +12,14 @@
 	var/intialOxy = 0
 	var/timer = 240 //eventually the person will be freed
 
-/obj/structure/closet/statue/New(loc, var/mob/living/L)
+/obj/structure/closet/statue/Initialize(mapload, mob/living/L)
+	. = ..(mapload)
 	if(L && (ishuman(L) || L.isMonkey() || iscorgi(L)))
 		if(L.buckled)
 			L.buckled = 0
 			L.anchored = 0
-		if(L.client)
-			L.client.perspective = EYE_PERSPECTIVE
-			L.client.eye = src
-		L.loc = src
+		L.forceMove(src)
+		L.update_perspective()
 		L.sdisabilities |= MUTE
 		health = L.health + 100 //stoning damaged mobs will result in easier to shatter statues
 		intialTox = L.getToxLoss()
@@ -46,7 +45,7 @@
 	START_PROCESSING(SSobj, src)
 	..()
 
-/obj/structure/closet/statue/process()
+/obj/structure/closet/statue/process(delta_time)
 	timer--
 	for(var/mob/living/M in src) //Go-go gadget stasis field
 		M.setToxLoss(intialTox)
@@ -59,17 +58,14 @@
 		qdel(src)
 
 /obj/structure/closet/statue/dump_contents()
-
 	for(var/obj/O in src)
-		O.loc = src.loc
+		O.forceMove(loc)
 
 	for(var/mob/living/M in src)
-		M.loc = src.loc
+		M.forceMove(loc)
+		M.update_perspective()
 		M.sdisabilities &= ~MUTE
 		M.take_overall_damage((M.health - health - 100),0) //any new damage the statue incurred is transfered to the mob
-		if(M.client)
-			M.client.eye = M.client.mob
-			M.client.perspective = MOB_PERSPECTIVE
 
 /obj/structure/closet/statue/open()
 	return

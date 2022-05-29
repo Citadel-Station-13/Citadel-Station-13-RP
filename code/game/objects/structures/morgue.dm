@@ -19,7 +19,8 @@
 	density = 1
 	var/obj/structure/m_tray/connected = null
 	var/list/occupants = list()
-	anchored = 1.0
+	anchored = 1
+	can_be_unanchored = 1
 
 /obj/structure/morgue/Destroy()
 	if(connected)
@@ -48,7 +49,7 @@
 				else
 					src.icon_state = "morgue3"
 					if(broadcast)
-						global_announcer.autosay("[src] was able to establish a mental interface with occupant.", "[src]", "Medical")
+						GLOB.global_announcer.autosay("[src] was able to establish a mental interface with occupant.", "[src]", "Medical")
 		else
 			src.icon_state = "morgue1"
 	return
@@ -118,10 +119,10 @@
 		src.connected = null
 
 
-/obj/structure/morgue/attackby(P as obj, mob/user as mob)
-	if (istype(P, /obj/item/pen))
+/obj/structure/morgue/attackby(obj/item/W as obj, mob/user as mob)
+	if (istype(W, /obj/item/pen))
 		var/t = input(user, "What would you like the label to be?", text("[]", src.name), null)  as text
-		if (user.get_active_hand() != P)
+		if (user.get_active_hand() != W)
 			return
 		if ((!in_range(src, usr) && src.loc != user))
 			return
@@ -130,6 +131,15 @@
 			src.name = text("Morgue- '[]'", t)
 		else
 			src.name = "Morgue"
+	if(istype(W, /obj/item/tool/wrench))
+		if(anchored)
+			user.show_message(text("<span class='notice'>[src] can now be moved.</span>"))
+			playsound(src, W.usesound, 50, 1)
+			anchored = FALSE
+		else if(!anchored)
+			user.show_message(text("<span class='notice'>[src] is now secured.</span>"))
+			playsound(src, W.usesound, 50, 1)
+			anchored = TRUE
 	src.add_fingerprint(user)
 	return
 
@@ -231,9 +241,9 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 	else if (src.locked == 0)
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 		src.connected = new /obj/structure/m_tray/c_tray( src.loc )
-		step(src.connected, dir) //Vorestation Edit
+		step(src.connected, dir)
 		src.connected.layer = OBJ_LAYER
-		var/turf/T = get_step(src, dir) //Vorestation Edit
+		var/turf/T = get_step(src, dir)
 		if (T.contents.Find(src.connected))
 			src.connected.connected = src
 			src.icon_state = "crema0"
@@ -350,3 +360,65 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 					C.cremate(user)
 	else
 		to_chat(user,"<span class='warning'>Access denied.</span>")
+
+
+//! ## VR FILE MERGE ## !//
+/obj/structure/morgue/crematorium/vr
+	var/list/allowed_items = list(/obj/item/organ,
+			/obj/item/implant,
+			/obj/item/material/shard/shrapnel,
+			/mob/living)
+
+
+/obj/structure/morgue/crematorium/vr/cremate(atom/A, mob/user as mob)
+	if(cremating)
+		return //don't let you cremate something twice or w/e
+
+	if(contents.len <= 0)
+		for (var/mob/M in viewers(src))
+			M.show_message("<span class='warning'>You hear a hollow crackle.</span>", 1)
+			return
+	else
+		if(!!length(src.search_contents_for(/obj/item/disk/nuclear)))
+			to_chat(usr, "You get the feeling that you shouldn't cremate one of the items in the cremator.")
+			return
+
+		for(var/I in contents)
+			if(!(I in allowed_items))
+				to_chat(user, "<span class='notice'>\The [src] cannot cremate while there are items inside!</span>")
+				return
+			if(istype(I, /mob/living))
+				var/mob/living/cremated = I
+				for(var/Z in cremated.contents)
+					if(!(Z in allowed_items))
+						to_chat(user, "<span class='notice'>\The [src] cannot cremate while there are items inside!</span>")
+						return
+
+		for (var/mob/M in viewers(src))
+			M.show_message("<span class='warning'>You hear a roar as the crematorium activates.</span>", 1)
+
+		cremating = 1
+		locked = 1
+
+		for(var/mob/living/M in contents)
+			if (M.stat!=2)
+				if (!iscarbon(M))
+					M.emote("scream")
+				else
+					var/mob/living/carbon/C = M
+					if (C.can_feel_pain())
+						C.emote("scream")
+
+			M.death(1)
+			M.ghostize()
+			qdel(M)
+
+		for(var/obj/O in contents) //obj instead of obj/item so that bodybags and ashes get destroyed. We dont want tons and tons of ash piling up
+			qdel(O)
+
+		new /obj/effect/decal/cleanable/ash(src)
+		sleep(30)
+		cremating = 0
+		locked = 0
+		playsound(src.loc, 'sound/machines/ding.ogg', 50, 1)
+	return

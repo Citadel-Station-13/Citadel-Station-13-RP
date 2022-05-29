@@ -13,43 +13,42 @@
 	var/mob/living/carbon/human/corpse = null
 	var/mob/living/carbon/human/watchowner = null
 
-
-/obj/item/deadringer/New()
-	..()
+/obj/item/deadringer/Initialize(mapload)
+	. = ..()
 	START_PROCESSING(SSobj, src)
 
 /obj/item/deadringer/Destroy() //just in case some smartass tries to stay invisible by destroying the watch
-	uncloak()
+	reveal()
 	STOP_PROCESSING(SSobj, src)
-	..()
+	return ..()
 
 /obj/item/deadringer/dropped()
+	. = ..()
 	if(timer > 20)
-		uncloak()
+		reveal()
 		watchowner = null
-	return
 
 /obj/item/deadringer/attack_self(var/mob/living/user as mob)
 	var/mob/living/H = src.loc
 	if (!istype(H, /mob/living/carbon/human))
-		to_chat(H,"<font color='blue'>You have no clue what to do with this thing.</font>")
+		to_chat(H,"<font color=#4F49AF>You have no clue what to do with this thing.</font>")
 		return
 	if(!activated)
 		if(timer == 0)
-			to_chat(H, "<font color='blue'>You press a small button on [src]'s side. It starts to hum quietly.</font>")
+			to_chat(H, "<font color=#4F49AF>You press a small button on [src]'s side. It starts to hum quietly.</font>")
 			bruteloss_prev = H.getBruteLoss()
 			fireloss_prev = H.getFireLoss()
 			activated = 1
 			return
 		else
-			to_chat(H,"<font color='blue'>You press a small button on [src]'s side. It buzzes a little.</font>")
+			to_chat(H,"<font color=#4F49AF>You press a small button on [src]'s side. It buzzes a little.</font>")
 			return
 	if(activated)
-		to_chat(H,"<font color='blue'>You press a small button on [src]'s side. It stops humming.</font>")
+		to_chat(H,"<font color=#4F49AF>You press a small button on [src]'s side. It stops humming.</font>")
 		activated = 0
 		return
 
-/obj/item/deadringer/process()
+/obj/item/deadringer/process(delta_time)
 	if(activated)
 		if (ismob(src.loc))
 			var/mob/living/carbon/human/H = src.loc
@@ -58,18 +57,18 @@
 				deathprevent()
 				activated = 0
 				if(watchowner.isSynthetic())
-					to_chat(watchowner, "<font color='blue'>You fade into nothingness! [src]'s screen blinks, being unable to copy your synthetic body!</font>")
+					to_chat(watchowner, "<font color=#4F49AF>You fade into nothingness! [src]'s screen blinks, being unable to copy your synthetic body!</font>")
 				else
-					to_chat(watchowner, "<font color='blue'>You fade into nothingness, leaving behind a fake body!</font>")
+					to_chat(watchowner, "<font color=#4F49AF>You fade into nothingness, leaving behind a fake body!</font>")
 				icon_state = "deadringer_cd"
 				timer = 50
 				return
 	if(timer > 0)
 		timer--
 	if(timer == 20)
-		uncloak()
+		reveal()
 		if(corpse)
-			new /obj/effect/effect/smoke/chem(corpse.loc)
+			new /obj/effect/smoke/chem(corpse.loc)
 			qdel(corpse)
 	if(timer == 0)
 		icon_state = "deadringer"
@@ -86,7 +85,7 @@
 	makeacorpse(watchowner)
 	return
 
-/obj/item/deadringer/proc/uncloak()
+/obj/item/deadringer/proc/reveal()
 	if(watchowner)
 		watchowner.alpha = 255
 		playsound(get_turf(src), 'sound/effects/uncloak.ogg', 35, 1, -1)
@@ -162,7 +161,7 @@
 	corpse.flavor_texts = H.flavor_texts.Copy()
 	corpse.real_name = H.real_name
 	corpse.name = H.name
-	corpse.set_species(corpse.dna.species)
+	corpse.set_species(species_type_by_name(corpse.dna.species))
 	corpse.change_hair(H.h_style)
 	corpse.change_facial_hair(H.f_style)
 	corpse.change_hair_color(H.r_hair, H.g_hair, H.b_hair)

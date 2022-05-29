@@ -6,8 +6,6 @@ var/global/image/appearance_bro = new() // Temporarily super-global because of B
 
 // Items that ask to be called every cycle.
 var/global/datum/datacore/data_core = null
-var/global/list/all_areas                = list()
-var/global/list/machines                 = list()	// ALL Machines, wether processing or not.
 var/global/list/processing_machines      = list()	// TODO - Move into SSmachines
 var/global/list/processing_power_items   = list()	// TODO - Move into SSmachines
 var/global/list/active_diseases          = list()
@@ -53,13 +51,6 @@ var/list/monkeystart     = list()
 var/list/wizardstart     = list()
 var/list/newplayer_start = list()
 
-//Spawnpoints.
-var/list/latejoin          = list()
-var/list/latejoin_gateway  = list()
-var/list/latejoin_elevator = list()
-var/list/latejoin_cryo     = list()
-var/list/latejoin_cyborg   = list()
-
 var/list/prisonwarp         = list() // Prisoners go to these
 var/list/holdingfacility    = list() // Captured people go here
 var/list/xeno_spawn         = list() // Aliens spawn at at these.
@@ -72,17 +63,6 @@ var/list/prisonwarped       = list() // List of players already warped.
 var/list/blobstart          = list()
 var/list/ninjastart         = list()
 
-var/list/cardinal    = list(NORTH, SOUTH, EAST, WEST)
-var/list/cardinalz   = list(NORTH, SOUTH, EAST, WEST, UP, DOWN)
-var/list/cornerdirs  = list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
-var/list/cornerdirsz = list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST, NORTH|UP, EAST|UP, WEST|UP, SOUTH|UP, NORTH|DOWN, EAST|DOWN, WEST|DOWN, SOUTH|DOWN)
-var/list/alldirs     = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
-var/list/reverse_dir = list( // reverse_dir[dir] = reverse of dir
-	 2,  1,  3,  8, 10,  9, 11,  4,  6,  5,  7, 12, 14, 13, 15, 32, 34, 33, 35, 40, 42,
-	41, 43, 36, 38, 37, 39, 44, 46, 45, 47, 16, 18, 17, 19, 24, 26, 25, 27, 20, 22, 21,
-	23, 28, 30, 29, 31, 48, 50, 49, 51, 56, 58, 57, 59, 52, 54, 53, 55, 60, 62, 61, 63
-)
-
 var/datum/configuration_legacy/config_legacy      = null
 
 var/list/combatlog = list()
@@ -92,7 +72,6 @@ var/list/adminlog  = list()
 
 var/list/powernets = list()	// TODO - Move into SSmachines
 
-var/Debug2 = 0
 var/datum/debug/debugobj
 
 var/datum/moduletypes/mods = new()
@@ -125,18 +104,15 @@ var/custom_event_msg = null
 var/DBConnection/dbcon     = new() // Feedback    database (New database)
 var/DBConnection/dbcon_old = new() // /tg/station database (Old database) -- see the files in the SQL folder for information on what goes where.
 
-// Reference list for disposal sort junctions. Filled up by sorting junction's New()
-/var/list/tagger_locations = list()
-
 // Added for Xenoarchaeology, might be useful for other stuff.
 var/global/list/alphabet_uppercase = list("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z")
 
 
 // Used by robots and robot preferences.
 var/list/robot_module_types = list(
-	"Standard", "Engineering", "Surgeon",  "Crisis",
-	"Miner",    "Janitor",     "Service",      "Clerical", "Security",
-	"Research"
+	"Standard", "Engineering", "Medical",
+	"Miner",    "Janitor",     "Service",
+	"Clerical", "Security",    "Research"
 )
 
 // Some scary sounds.
@@ -163,15 +139,67 @@ var/static/list/scarySounds = list(
 // Bomb cap!
 var/max_explosion_range = 14
 
-// Announcer intercom, because too much stuff creates an intercom for one message then hard del()s it.
-var/global/obj/item/radio/intercom/omni/global_announcer = new /obj/item/radio/intercom/omni(null)
-
-var/list/station_departments = list("Command", "Medical", "Engineering", "Science", "Security", "Cargo", "Exploration", "Civilian") //VOREStation Edit
-
-//Icons for in-game HUD glasses. Why don't we just share these a little bit?
-var/static/icon/ingame_hud = icon('icons/mob/hud.dmi')
-var/static/icon/ingame_hud_med = icon('icons/mob/hud_med.dmi')
-
 //Keyed list for caching icons so you don't need to make them for records, IDs, etc all separately.
 //Could be useful for AI impersonation or something at some point?
 var/static/list/cached_character_icons = list()
+
+//! ## VR FILE MERGE ## !//
+
+/hook/startup/proc/modules_vr()
+	robot_module_types += "Medihound"
+	robot_module_types += "K9"
+	robot_module_types += "Janihound"
+	robot_module_types += "Sci-Hound"
+	robot_module_types += "Pupdozer"
+	return 1
+
+var/list/shell_module_types = list(
+	"Standard", "Service", "Clerical"
+)
+
+var/list/eventdestinations = list() // List of scatter landmarks for event portals
+
+var/global/list/acceptable_fruit_types = list(
+	"ambrosia",
+	"apple",
+	"banana",
+	"berries",
+	"cabbage",
+	"carrot",
+	"celery",
+	"cherry",
+	"chili",
+	"cocoa",
+	"corn",
+	"durian",
+	"eggplant",
+	"grapes",
+	"greengrapes",
+	"harebells",
+	"lavender",
+	"lemon",
+	"lettuce",
+	"lime",
+	"onion",
+	"orange",
+	"peanut",
+	"poppies",
+	"potato",
+	"pumpkin",
+	"rice",
+	"rose",
+	"rhubarb",
+	"soybean",
+	"spineapple",
+	"sugarcane",
+	"sunflowers",
+	"tomato",
+	"vanilla",
+	"watermelon",
+	"wheat",
+	"whitebeet",
+	)
+
+var/global/list/acceptable_nectar_types= list(
+	"waxcomb (honey)",
+	)

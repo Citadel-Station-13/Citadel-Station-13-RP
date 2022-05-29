@@ -1,20 +1,30 @@
+/datum/category_item/catalogue/fauna/mouse
+	name = "Mouse"
+	desc = "An ancient Old Earth rodent, mice have served as both pest and pet \
+	to Humanity for millenia. Originally brought into space for scientific testing \
+	due to genetic similarities with Humans, mice have since bred their way back \
+	to pest status, and spread freely across the Frontier."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/passive/mouse
 	name = "mouse"
 	real_name = "mouse"
-	desc = "It's a small rodent."
+	desc = "A small rodent, often seen hiding in maintenance areas and making a nuisance of itself. And stealing cheese, or annoying the chef. SQUEAK! <3"
 	tt_desc = "E Mus musculus"
 	icon_state = "mouse_gray"
 	item_state = "mouse_gray"
 	icon_living = "mouse_gray"
 	icon_dead = "mouse_gray_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mouse)
 
 	maxHealth = 5
 	health = 5
+	randomized = TRUE
 
 	mob_size = MOB_MINISCULE
 	pass_flags = PASSTABLE
-//	can_pull_size = ITEMSIZE_TINY
-//	can_pull_mobs = MOB_PULL_NONE
+	can_pull_size = ITEMSIZE_TINY
+	can_pull_mobs = MOB_PULL_NONE
 	layer = MOB_LAYER
 	density = 0
 
@@ -29,14 +39,22 @@
 	has_langs = list("Mouse")
 
 	holder_type = /obj/item/holder/mouse
-	meat_type = /obj/item/reagent_containers/food/snacks/meat
+
+	meat_amount = 1
+	bone_amount = 1
+	hide_amount = 1
 
 	say_list_type = /datum/say_list/mouse
 
 	var/body_color //brown, gray and white, leave blank for random
 
-/mob/living/simple_mob/animal/passive/mouse/New()
-	..()
+	nutrition = 20	//To prevent draining maint mice for infinite food. Low nutrition has no mechanical effect on simplemobs, so wont hurt mice themselves.
+
+	no_vore = 1 //Mice can't eat others due to the amount of bugs caused by it.
+	vore_taste = "cheese"
+
+/mob/living/simple_mob/animal/passive/mouse/Initialize(mapload)
+	. = ..()
 
 	verbs += /mob/living/proc/ventcrawl
 	verbs += /mob/living/proc/hide
@@ -54,17 +72,13 @@
 	icon_rest = "mouse_[body_color]_sleep"
 	desc = "A small [body_color] rodent, often seen hiding in maintenance areas and making a nuisance of itself."
 
-/mob/living/simple_mob/animal/passive/mouse/Crossed(AM as mob|obj)
-	//VOREStation Edit begin: SHADEKIN
-	var/mob/SK = AM
-	if(istype(SK))
-		if(SK.shadekin_phasing_check())
-			return
-	//VOREStation Edit end: SHADEKIN
+/mob/living/simple_mob/animal/passive/mouse/Crossed(atom/movable/AM as mob|obj)
+	if(AM.is_incorporeal())
+		return
 	if( ishuman(AM) )
 		if(!stat)
 			var/mob/M = AM
-			M.visible_message("<font color='blue'>\icon[src] Squeek!</font>")
+			M.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] Squeek!</font>")
 			playsound(src, 'sound/effects/mouse_squeak.ogg', 35, 1)
 	..()
 
@@ -80,7 +94,7 @@
 
 /mob/living/simple_mob/animal/passive/mouse/proc/splat()
 	src.health = 0
-	src.stat = DEAD
+	src.set_stat(DEAD)
 	src.icon_dead = "mouse_[body_color]_splat"
 	src.icon_state = "mouse_[body_color]_splat"
 	layer = MOB_LAYER
@@ -108,19 +122,19 @@
 	maxHealth = 20
 	health = 20
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+	mod_min = 90
+	mod_max = 120
 
-/mob/living/simple_mob/animal/passive/mouse/rat/Initialize()
-	..()
-	adjust_scale(1.2)
+	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
 
 //TOM IS ALIVE! SQUEEEEEEEE~K :)
 /mob/living/simple_mob/animal/passive/mouse/brown/Tom
 	name = "Tom"
 	desc = "Jerry the cat is not amused."
+	randomized = FALSE
 
-/mob/living/simple_mob/animal/passive/mouse/brown/Tom/New()
-	..()
+/mob/living/simple_mob/animal/passive/mouse/brown/Tom/Initialize(mapload)
+	. = ..()
 	// Change my name back, don't want to be named Tom (666)
 	name = initial(name)
 
@@ -130,3 +144,15 @@
 	speak = list("Squeek!","SQUEEK!","Squeek?")
 	emote_hear = list("squeeks","squeaks","squiks")
 	emote_see = list("runs in a circle", "shakes", "scritches at something")
+
+/mob/living/simple_mob/animal/passive/mouse/attack_hand(mob/living/hander)
+	if(hander.a_intent == INTENT_HELP) //if lime intent
+		get_scooped(hander) //get scooped
+	else
+		..()
+
+/obj/item/holder/mouse/attack_self(var/mob/U)
+	for(var/mob/living/simple_mob/M in src.contents)
+		if((INTENT_HELP) && U.canClick()) //a little snowflakey, but makes it use the same cooldown as interacting with non-inventory objects
+			U.setClickCooldown(U.get_attack_speed()) //if there's a cleaner way in baycode, I'll change this
+			U.visible_message("<span class='notice'>[U] [M.response_help] \the [M].</span>")

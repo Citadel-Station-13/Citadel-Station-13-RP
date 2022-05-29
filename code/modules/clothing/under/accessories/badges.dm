@@ -14,6 +14,9 @@
 	var/stored_name
 	var/badge_string = "Corporate Security"
 
+	drop_sound = 'sound/items/drop/ring.ogg'
+	pickup_sound = 'sound/items/pickup/ring.ogg'
+
 /obj/item/clothing/accessory/badge/old
 	name = "faded badge"
 	desc = "A faded badge, backed with leather. It bears the emblem of the Forensic division."
@@ -213,3 +216,10 @@
 	desc = "A sleek metallic plate that might denote the wearer as a member of Bishop."
 	icon_state = "tag_bishop"
 	badge_string = "Bishop"
+
+/obj/item/clothing/accessory/badge/corporate_tag/press
+	name = "Press Badge"
+	desc = "A plain plastic card that bears a poorly shot photo of the wearer, as well as the word 'PRESS', followed by an datastring."
+	icon_state = "pressbadge"
+	item_state = "pressbadge"
+	badge_string = "PRESS"

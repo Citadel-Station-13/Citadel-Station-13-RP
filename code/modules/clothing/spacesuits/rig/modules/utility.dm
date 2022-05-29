@@ -17,6 +17,7 @@
  * /obj/item/rig_module/device/stamp
  * /obj/item/rig_module/mounted/mop
  * /obj/item/rig_module/cleaner_launcher
+ * /obj/item/rig_module/device/hand_defib
  */
 
 /obj/item/rig_module/device
@@ -102,8 +103,8 @@
 
 	device_type = /obj/item/rcd/electric/mounted/rig
 
-/obj/item/rig_module/device/New()
-	..()
+/obj/item/rig_module/device/Initialize(mapload)
+	. = ..()
 	if(device_type) device = new device_type(src)
 
 /obj/item/rig_module/device/engage(atom/target)
@@ -198,7 +199,7 @@
 				break
 
 	if(total_transferred)
-		to_chat(user, "<font color='blue'>You transfer [total_transferred] units into the suit reservoir.</font>")
+		to_chat(user, "<font color=#4F49AF>You transfer [total_transferred] units into the suit reservoir.</font>")
 	else
 		to_chat(user, "<span class='danger'>None of the reagents seem suitable.</span>")
 	return 1
@@ -304,8 +305,8 @@
 
 	var/obj/item/voice_changer/voice_holder
 
-/obj/item/rig_module/voice/New()
-	..()
+/obj/item/rig_module/voice/Initialize(mapload)
+	. = ..()
 	voice_holder = new(src)
 	voice_holder.active = 0
 
@@ -327,17 +328,17 @@
 		if("Enable")
 			active = 1
 			voice_holder.active = 1
-			to_chat(usr, "<font color='blue'>You enable the speech synthesiser.</font>")
+			to_chat(usr, "<font color=#4F49AF>You enable the speech synthesiser.</font>")
 		if("Disable")
 			active = 0
 			voice_holder.active = 0
-			to_chat(usr, "<font color='blue'>You disable the speech synthesiser.</font>")
+			to_chat(usr, "<font color=#4F49AF>You disable the speech synthesiser.</font>")
 		if("Set Name")
 			var/raw_choice = sanitize(input(usr, "Please enter a new name.")  as text|null, MAX_NAME_LEN)
 			if(!raw_choice)
 				return 0
 			voice_holder.voice = raw_choice
-			to_chat(usr, "<font color='blue'>You are now mimicking <B>[voice_holder.voice]</B>.</font>")
+			to_chat(usr, "<font color=#4F49AF>You are now mimicking <B>[voice_holder.voice]</B>.</font>")
 	return 1
 
 /obj/item/rig_module/maneuvering_jets
@@ -393,8 +394,8 @@
 		jets.toggle()
 	return 1
 
-/obj/item/rig_module/maneuvering_jets/New()
-	..()
+/obj/item/rig_module/maneuvering_jets/Initialize(mapload)
+	. = ..()
 	jets = new(src)
 
 /obj/item/rig_module/maneuvering_jets/installed()
@@ -448,7 +449,7 @@
 	gun.Fire(target,holder.wearer)
 	return 1
 
-/obj/item/rig_module/mounted/mop/process()
+/obj/item/rig_module/mounted/mop/process(delta_time)
 
 	if(holder && holder.wearer)
 		if(!(locate(/obj/item/mop_deploy) in holder.wearer))
@@ -493,8 +494,7 @@
 	name = "mounted space cleaner launcher"
 	desc = "A shoulder-mounted micro-cleaner dispenser."
 	selectable = 1
-	icon_state = "grenade_launcher"
-
+	icon_state = "grenadelauncher"
 	interface_name = "integrated cleaner launcher"
 	interface_desc = "Discharges loaded cleaner grenades against the wearer's location."
 
@@ -524,7 +524,7 @@
 		to_chat(user, "<span class='danger'>Another grenade of that type will not fit into the module.</span>")
 		return 0
 
-	to_chat(user, "<font color='blue'><b>You slot \the [input_device] into the suit module.</b></font>")
+	to_chat(user, "<font color=#4F49AF><b>You slot \the [input_device] into the suit module.</b></font>")
 	user.drop_from_inventory(input_device)
 	qdel(input_device)
 	accepted_item.charges++
@@ -600,8 +600,8 @@
 	var/iastamp
 	var/deniedstamp
 
-/obj/item/rig_module/device/stamp/New()
-	..()
+/obj/item/rig_module/device/stamp/Initialize(mapload)
+	. = ..()
 	iastamp = new /obj/item/stamp/internalaffairs(src)
 	deniedstamp = new /obj/item/stamp/denied(src)
 	device = iastamp
@@ -648,7 +648,7 @@
 
 	var/mob/living/carbon/human/H = holder.wearer
 
-	to_chat(H, "<font color='blue'><b>You activate the suit's sprint mode.</b></font>")
+	to_chat(H, "<font color=#4F49AF><b>You activate the suit's sprint mode.</b></font>")
 
 	holder.slowdown -= sprint_speed
 
@@ -662,3 +662,67 @@
 	to_chat(H, "<span class='danger'>Your hardsuit returns to normal speed.</span>")
 
 	holder.slowdown += sprint_speed
+
+/obj/item/rig_module/device/hand_defib
+	name = "\improper Hand-mounted Defibrillator"
+	desc = "Following complaints regarding the danger of switching equipment in the field, Vey-Med developed internalised defibrillator paddles mounted in the gauntlets of the rescue suit powered by the suit's cell."
+
+	use_power_cost = 50
+
+	interface_name = "Hand-mounted Defbrillators"
+	interface_desc = "Following complaints regarding the danger of switching equipment in the field, Vey-Med developed internalised defibrillator paddles mounted in the gauntlets of the rescue suit powered by the suit's cell."
+
+	device_type = /obj/item/shockpaddles/standalone/rig
+
+/obj/item/rig_module/device/toolset
+	name = "integrated toolset"
+	desc = "A set of actuators and toolheads for use in RIG-based toolsets."
+	icon_state = "stamp"
+	interface_name = "integrated toolset"
+	interface_desc = "The power of engineering, in the palm of your hand."
+	engage_string = "Switch tool type"
+	usable = 1
+	module_cooldown = 0
+	var/intcrowbar
+	var/intwrench
+	var/intcutter
+	var/intdriver
+
+/obj/item/rig_module/device/toolset/Initialize(mapload)
+	. = ..()
+	intcrowbar = new /obj/item/tool/crowbar/RIGset(src)
+	intwrench = new /obj/item/tool/wrench/RIGset(src)
+	intcutter = new /obj/item/tool/wirecutters/RIGset(src)
+	intdriver = new /obj/item/tool/screwdriver/RIGset(src)
+	//intwelder = new /obj/item/weldingtool/electric/mounted/RIGset(src)
+	device = intcrowbar
+
+/obj/item/rig_module/device/toolset/engage(atom/target)
+	if(!..() || !device)
+		return 0
+
+	if(!target)
+		if(device == intcrowbar)
+			device = intwrench
+			to_chat(holder.wearer, "<span class='notice'>Hydraulic wrench engaged.</span>")
+		else if(device == intwrench)
+			device = intcutter
+			to_chat(holder.wearer, "<span class='notice'>Hydraulic cutters engaged.</span>")
+		else if(device == intcutter)
+			device = intdriver
+			to_chat(holder.wearer, "<span class='notice'>Hydraulic driver engaged.</span>")
+		else if(device == intdriver) // I'm tired and can't think of anything better
+			device = intcrowbar // Feel free to improve this mess
+			to_chat(holder.wearer, "<span class='notice'>Hydraulic crowbar engaged.</span>")
+	interface_name = "[initial(interface_name)] - [device]"
+	return 1
+
+/obj/item/rig_module/device/rigwelder
+	name = "integrated arc-welder"
+	desc = "A set of tubes and canisters to be attached to a RIG."
+	module_cooldown = 0
+	usable = 1
+	interface_name = "Integrated arc-welder"
+	interface_desc = "A RIG-mounted electrical welder. Smells of ozone."
+	engage_string = "Engage/Disengage"
+	device_type = /obj/item/weldingtool/electric/mounted/RIGset

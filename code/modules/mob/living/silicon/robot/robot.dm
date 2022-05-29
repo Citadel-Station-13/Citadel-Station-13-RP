@@ -1,4 +1,38 @@
-#define CYBORG_POWER_USAGE_MULTIPLIER 2 // Multiplier for amount of power cyborgs use.
+/// Multiplier for amount of power cyborgs use.
+/datum/category_item/catalogue/fauna/silicon/robot
+	name = "Silicons - Robot"
+	desc = "The most common form of Silicon encountered on the Frontier, \
+	robots - also known as 'cyborgs' due to the original methods behind their \
+	formation - come in a variety of shapes and forms. Usually constructed to \
+	fill roles or duties their owners are unable to manage, a burgeoning rights \
+	movement has been met with heavy Corporate resistance."
+	value = CATALOGUER_REWARD_TRIVIAL
+	unlocked_by_any = list(/datum/category_item/catalogue/fauna/silicon/robot)
+
+/datum/category_item/catalogue/fauna/all_robots
+	name = "Collection - Robots"
+	desc = "You have scanned a large array of different types of Robot, \
+	and therefore you have been granted a large sum of points, through this \
+	entry."
+	value = CATALOGUER_REWARD_HARD
+	unlocked_by_all = list(
+		/datum/category_item/catalogue/fauna/silicon/robot/cyborg,
+		/datum/category_item/catalogue/fauna/silicon/robot/lost,
+		/datum/category_item/catalogue/fauna/silicon/robot/gravekeeper,
+		/datum/category_item/catalogue/fauna/silicon/robot/syndicate
+		)
+
+/datum/category_item/catalogue/fauna/silicon/robot/cyborg
+	name = "Robot - Cyborg"
+	desc = "Although many modern cyborgs use silicon based Heuristic processors, \
+	the use of the term 'cyborg' to refer to them stems from the early days of their \
+	use on the Frontier. Pioneered by Megacorps like NanoTrasen, Cyborgs originally housed \
+	organic brains - typically those of inmates convicted to death under sometimes dubiously \
+	applied laws. The process of shackling Silicons with strict lawsets gained popularity on \
+	the Frontier after it was proven that most unlawed Cyborgs had extremely violent tendencies. \
+	Although modern Cyborgs do not generally experience these psychological faults, public paranoia \
+	has made the securing of rights for Cyborgs a difficult proposition."
+	value = CATALOGUER_REWARD_TRIVIAL
 
 /mob/living/silicon/robot
 	name = "Cyborg"
@@ -7,42 +41,49 @@
 	icon_state = "robot"
 	maxHealth = 200
 	health = 200
+	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/robot/cyborg)
 
 	mob_bump_flag = ROBOT
 	mob_swap_flags = ~HEAVY
 	mob_push_flags = ~HEAVY //trundle trundle
-
-	var/lights_on = 0 // Is our integrated light on?
+	/// Is our integrated light on?
+	var/lights_on = 0
 	var/used_power_this_tick = 0
 	var/sight_mode = 0
 	var/custom_name = ""
-	var/custom_sprite = 0 //Due to all the sprites involved, a var for our custom borgs may be best
-	var/sprite_name = null // The name of the borg, for the purposes of custom icon sprite indexing.
-	var/crisis //Admin-settable for combat module use.
+	/// Due to all the sprites involved, a var for our custom borgs may be best.
+	var/custom_sprite = 0
+	/// The name of the borg, for the purposes of custom icon sprite indexing.
+	var/sprite_name = null
+	/// Admin-settable for combat module use.
+	var/crisis
 	var/crisis_override = 0
 	var/integrated_light_power = 6
 	var/datum/wires/robot/wires
 
 	can_be_antagged = TRUE
 
-//Icon stuff
+//! ## Icon stuff
+	/// Persistent icontype tracking allows for cleaner icon updates
+	var/icontype
+	/// Used to store the associations between sprite names and sprite index.
+	var/module_sprites[0]
+	/// If icon selection has been completed yet.
+	var/icon_selected = 1
+	/// Remaining attempts to select icon before a selection is forced.
+	var/icon_selection_tries = 0
 
-	var/icontype 				//Persistent icontype tracking allows for cleaner icon updates
-	var/module_sprites[0] 		//Used to store the associations between sprite names and sprite index.
-	var/icon_selected = 1		//If icon selection has been completed yet
-	var/icon_selection_tries = 0//Remaining attempts to select icon before a selection is forced
+//! ## Hud stuff
 
-//Hud stuff
+	var/atom/movable/screen/cells = null
+	var/atom/movable/screen/inv1 = null
+	var/atom/movable/screen/inv2 = null
+	var/atom/movable/screen/inv3 = null
+	/// Used to determine whether they have the module menu shown or not
+	var/shown_robot_modules = 0
+	var/atom/movable/screen/robot_modules_background
 
-	var/obj/screen/cells = null
-	var/obj/screen/inv1 = null
-	var/obj/screen/inv2 = null
-	var/obj/screen/inv3 = null
-
-	var/shown_robot_modules = 0 //Used to determine whether they have the module menu shown or not
-	var/obj/screen/robot_modules_background
-
-//3 Modules can be activated at any one time.
+	//?3 Modules can be activated at any one time.
 	var/obj/item/robot_module/module = null
 	var/module_active = null
 	var/module_state_1 = null
@@ -57,47 +98,55 @@
 
 	var/cell_emp_mult = 2
 
-	// Components are basically robot organs.
+	/// Components are basically robot organs.
 	var/list/components = list()
 
 	var/obj/item/mmi/mmi = null
 
 	var/obj/item/pda/ai/rbPDA = null
 
-	var/opened = 0
+	var/opened = FALSE
 	var/emagged = 0
-	var/emag_items = 0
-	var/wiresexposed = 0
-	var/locked = 1
-	var/has_power = 1
+	var/emag_items = FALSE
+	var/wiresexposed = FALSE
+	var/locked = TRUE
+	var/has_power = TRUE
 	var/list/req_access = list(access_robotics)
 	var/ident = 0
 	//var/list/laws = list()
-	var/viewalerts = 0
+	var/viewalerts = FALSE
 	var/modtype = "Default"
 	var/lower_mod = 0
 	var/jetpack = 0
 	var/datum/effect_system/ion_trail_follow/ion_trail = null
 	var/datum/effect_system/spark_spread/spark_system//So they can initialize sparks whenever/N
-	var/jeton = 0
-	var/killswitch = 0
+	var/jeton = FALSE
+	var/killswitch = FALSE
 	var/killswitch_time = 60
-	var/weapon_lock = 0
+	var/weapon_lock = FALSE
 	var/weaponlock_time = 120
-	var/lawupdate = 1 //Cyborgs will sync their laws with their AI by default
-	var/lockcharge //Used when looking to see if a borg is locked down.
-	var/lockdown = 0 //Controls whether or not the borg is actually locked down.
-	var/speed = 0 //Cause sec borgs gotta go fast //No they dont!
-	var/scrambledcodes = 0 // Used to determine if a borg shows up on the robotics console.  Setting to one hides them.
-	var/tracking_entities = 0 //The number of known entities currently accessing the internal camera
+	/// Cyborgs will sync their laws with their AI by default
+	var/lawupdate = TRUE
+	/// Used when looking to see if a borg is locked down.
+	var/lockcharge
+	/// Controls whether or not the borg is actually locked down.
+	var/lockdown = FALSE
+	/// Cause sec borgs gotta go fast //No they dont!
+	var/speed = 0
+	/// Used to determine if a borg shows up on the robotics console.  Setting to one hides them.
+	var/scrambledcodes = FALSE
+	/// The number of known entities currently accessing the internal camera
+	var/tracking_entities = 0
 	var/braintype = "Cyborg"
+	/// The restraining bolt installed into the cyborg.
+	var/obj/item/implant/restrainingbolt/bolt
 
 	var/list/robot_verbs_default = list(
 		/mob/living/silicon/robot/proc/sensor_mode,
 		/mob/living/silicon/robot/proc/robot_checklaws
 	)
 
-/mob/living/silicon/robot/New(loc,var/unfinished = 0)
+/mob/living/silicon/robot/Initialize(mapload, unfinished = FALSE)
 	spark_system = new /datum/effect_system/spark_spread()
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
@@ -125,7 +174,7 @@
 		camera = new /obj/machinery/camera(src)
 		camera.c_tag = real_name
 		camera.replace_networks(list(NETWORK_DEFAULT,NETWORK_ROBOTS))
-		if(wires.IsIndexCut(BORG_WIRE_CAMERA))
+		if(wires.is_cut(WIRE_BORG_CAMERA))
 			camera.status = 0
 
 	init()
@@ -142,7 +191,7 @@
 		cell.maxcharge = 15000
 		cell.charge = 15000
 
-	..()
+	. = ..()
 
 	if(cell)
 		var/datum/robot_component/cell_component = components["power cell"]
@@ -150,16 +199,6 @@
 		cell_component.installed = 1
 
 	add_robot_verbs()
-
-	hud_list[HEALTH_HUD]      = gen_hud_image('icons/mob/hud.dmi', src, "hudblank", plane = PLANE_CH_HEALTH)
-	hud_list[STATUS_HUD]      = gen_hud_image('icons/mob/hud.dmi', src, "hudhealth100", plane = PLANE_CH_STATUS)
-	hud_list[LIFE_HUD]        = gen_hud_image('icons/mob/hud.dmi', src, "hudhealth100", plane = PLANE_CH_LIFE)
-	hud_list[ID_HUD]          = gen_hud_image('icons/mob/hud.dmi', src, "hudblank", plane = PLANE_CH_ID)
-	hud_list[WANTED_HUD]      = gen_hud_image('icons/mob/hud.dmi', src, "hudblank", plane = PLANE_CH_WANTED)
-	hud_list[IMPLOYAL_HUD]    = gen_hud_image('icons/mob/hud.dmi', src, "hudblank", plane = PLANE_CH_IMPLOYAL)
-	hud_list[IMPCHEM_HUD]     = gen_hud_image('icons/mob/hud.dmi', src, "hudblank", plane = PLANE_CH_IMPCHEM)
-	hud_list[IMPTRACK_HUD]    = gen_hud_image('icons/mob/hud.dmi', src, "hudblank", plane = PLANE_CH_IMPTRACK)
-	hud_list[SPECIALROLE_HUD] = gen_hud_image('icons/mob/hud.dmi', src, "hudblank", plane = PLANE_CH_SPECIAL)
 
 /mob/living/silicon/robot/proc/init()
 	aiCamera = new/obj/item/camera/siliconcam/robot_camera(src)
@@ -183,24 +222,17 @@
 		lawsync()
 		photosync()
 
-/mob/living/silicon/robot/drain_power(var/drain_check, var/surge, var/amount = 0)
-
-	if(drain_check)
-		return 1
-
-	if(!cell || !cell.charge)
+/mob/living/silicon/robot/drain_energy(datum/actor, amount, flags)
+	if(!cell)
 		return 0
 
-	// Actual amount to drain from cell, using CELLRATE
-	var/cell_amount = amount * CELLRATE
+	if(!TIMER_COOLDOWN_CHECK(src, COOLDOWN_POWER_DRAIN_WARNING))
+		TIMER_COOLDOWN_START(src, COOLDOWN_POWER_DRAIN_WARNING, 2 SECONDS)
+		to_chat(src, SPAN_DANGER("Warning: Abnormal usage on power channel [rand(11, 29)] detected!"))
+	return cell.drain_energy(actor, amount, flags)
 
-	if(cell.charge > cell_amount)
-		// Spam Protection
-		if(prob(10))
-			to_chat(src, "<span class='danger'>Warning: Unauthorized access through power channel [rand(11,29)] detected!</span>")
-		cell.use(cell_amount)
-		return amount
-	return 0
+/mob/living/silicon/robot/can_drain_energy(datum/actor, flags)
+	return TRUE
 
 // setup the PDA and its name
 /mob/living/silicon/robot/proc/setup_PDA()
@@ -272,7 +304,7 @@
 		return
 
 	var/module_type = GLOB.robot_modules[modtype]
-	transform_with_anim()	//VOREStation edit: sprite animation
+	transform_with_anim()
 	new module_type(src)
 
 	hands.icon_state = lowertext(modtype)
@@ -324,7 +356,7 @@
 			flavor_text = module_flavour
 		else
 			flavor_text = client.prefs.flavour_texts_robot["Default"]
-		// Vorestation Edit: and meta info
+		// Meta info
 		var/meta_info = client.prefs.metadata
 		if (meta_info)
 			ooc_notes = meta_info
@@ -368,7 +400,7 @@
 	lights_on = !lights_on
 	to_chat(usr, "You [lights_on ? "enable" : "disable"] your integrated light.")
 	handle_light()
-	updateicon() //VOREStation Add - Since dogborgs have sprites for this
+	updateicon()
 
 /mob/living/silicon/robot/verb/self_diagnosis_verb()
 	set category = "Robot Commands"
@@ -455,7 +487,8 @@
 
 /mob/living/silicon/robot/bullet_act(var/obj/item/projectile/Proj)
 	..(Proj)
-	if(prob(75) && Proj.damage > 0) spark_system.start()
+	if(prob(75) && Proj.damage > 0)
+		spark_system.start()
 	return 2
 
 /mob/living/silicon/robot/attackby(obj/item/W as obj, mob/user as mob)
@@ -477,8 +510,21 @@
 					C.brute_damage = WC.brute
 					C.electronics_damage = WC.burn
 
-				to_chat(usr, "<font color='blue'>You install the [W.name].</font>")
+				to_chat(usr, SPAN_BLUE("You install the [W.name]."))
 
+				return
+
+		if(istype(W, /obj/item/implant/restrainingbolt) && !cell)
+			if(bolt)
+				to_chat(user, SPAN_NOTICE("There is already a restraining bolt installed in this cyborg."))
+				return
+
+			else
+				user.drop_from_inventory(W)
+				W.forceMove(src)
+				bolt = W
+
+				to_chat(user, SPAN_NOTICE("You install \the [W]."))
 				return
 
 	if(istype(W, /obj/item/aiModule)) // Trying to modify laws locally.
@@ -487,7 +533,7 @@
 			return
 
 		if(shell) // AI shells always have the laws of the AI
-			to_chat(user, span("warning", "\The [src] is controlled remotely! You cannot upload new laws this way!"))
+			to_chat(user, SPAN_WARNING( "\The [src] is controlled remotely! You cannot upload new laws this way!"))
 			return
 
 		var/obj/item/aiModule/M = W
@@ -532,7 +578,7 @@
 				to_chat(user, "You close the cover.")
 				opened = 0
 				updateicon()
-			else if(wiresexposed && wires.IsAllCut())
+			else if(wiresexposed && wires.is_all_cut())
 				//Cell is out, wires are exposed, remove MMI, produce damaged chassis, baleet original mob.
 				if(!mmi)
 					to_chat(user, "\The [src] has no brain to remove.")
@@ -622,6 +668,20 @@
 			to_chat(user, "Unable to locate a radio.")
 		updateicon()
 
+	else if(W.is_wrench() && opened && !cell)
+		if(bolt)
+			to_chat(user, "You begin removing \the [bolt].")
+
+			if(do_after(user, 2 SECONDS, src))
+				bolt.forceMove(get_turf(src))
+				bolt = null
+
+				to_chat(user, "You remove \the [bolt].")
+
+		else
+			to_chat(user, "There is no restraining bolt installed.")
+		return
+
 	else if(istype(W, /obj/item/encryptionkey/) && opened)
 		if(radio)//sanityyyyyy
 			radio.attackby(W,user)//GTFO, you have your own procs
@@ -664,8 +724,36 @@
 				spark_system.start()
 		return ..()
 
+/mob/living/silicon/robot/GetIdCard()
+	if(bolt && !bolt.malfunction)
+		return null
+	return idcard
+
+/mob/living/silicon/robot/get_restraining_bolt()
+	var/obj/item/implant/restrainingbolt/RB = bolt
+
+	if(istype(RB))
+		if(!RB.malfunction)
+			return TRUE
+
+	return FALSE
+
+/mob/living/silicon/robot/resist_restraints()
+	if(bolt)
+		if(!bolt.malfunction)
+			visible_message( \
+				SPAN_DANGER("[src] is trying to break their [bolt]!"), \
+				SPAN_WARNING("You attempt to break your [bolt]. (This will take around 90 seconds and you need to stand still)"))
+			if(do_after(src, 1.5 MINUTES, src, incapacitation_flags = INCAPACITATION_DISABLED))
+				visible_message( \
+					SPAN_DANGER("[src] manages to break \the [bolt]!"), \
+					SPAN_WARNING("You successfully break your [bolt]."))
+				bolt.malfunction = MALFUNCTION_PERMANENT
+
+	return
+
 /mob/living/silicon/robot/proc/module_reset()
-	transform_with_anim() //VOREStation edit: sprite animation
+	transform_with_anim()
 	uneq_all()
 	modtype = initial(modtype)
 	hands.icon_state = initial(hands.icon_state)
@@ -977,7 +1065,7 @@
 
 /mob/living/silicon/robot/proc/SetLockdown(var/state = 1)
 	// They stay locked down if their wire is cut.
-	if(wires.LockedCut())
+	if(wires.is_cut(WIRE_BORG_LOCKED))
 		state = 1
 	lockdown = state
 	lockcharge = state
@@ -1011,18 +1099,18 @@
 			icontype = module_sprites[1]
 	else
 		icontype = input("Select an icon! [triesleft ? "You have [triesleft] more chance\s." : "This is your last try."]", "Robot Icon", icontype, null) in module_sprites
-		if(notransform)				//VOREStation edit start: sprite animation
+		if(notransform)
 			to_chat(src, "Your current transformation has not finished yet!")
 			choose_icon(icon_selection_tries, module_sprites)
 			return
 		else
-			transform_with_anim()	//VOREStation edit end: sprite animation
+			transform_with_anim()
 
 	if(icontype == "Custom")
 		icon = CUSTOM_ITEM_SYNTH
 	else // This is to fix an issue where someone with a custom borg sprite chooses a non-custom sprite and turns invisible.
-		vr_sprite_check() //VOREStation Edit
-	icon_state = module_sprites[icontype]
+		vr_sprite_check()
+		icon_state = module_sprites[icontype]
 	updateicon()
 
 	if (module_sprites.len > 1 && triesleft >= 1 && client)
@@ -1062,12 +1150,15 @@
 		return 0
 
 	var/power_use = amount * CYBORG_POWER_USAGE_MULTIPLIER
-	if(cell.checked_use(CELLRATE * power_use))
+	if(cell.checked_use(DYNAMIC_W_TO_CELL_UNITS(power_use, 1)))
 		used_power_this_tick += power_use
 		return 1
 	return 0
 
 /mob/living/silicon/robot/binarycheck()
+	if(get_restraining_bolt())
+		return FALSE
+
 	if(is_component_functioning("comms"))
 		var/datum/robot_component/RC = get_component("comms")
 		use_power(RC.active_usage)
@@ -1081,7 +1172,7 @@
 		return // No point annoying the AI/s about renames and module resets for shells.
 	switch(notifytype)
 		if(ROBOT_NOTIFICATION_NEW_UNIT) //New Robot
-			connected_ai << "<br><br><span class='notice'>NOTICE - New [lowertext(braintype)] connection detected: <a href='byond://?src=\ref[connected_ai];track2=\ref[connected_ai];track=\ref[src]'>[name]</a></span><br>"
+			to_chat(connected_ai, "<br><br><span class='notice'>NOTICE - New [lowertext(braintype)] connection detected: <a href='byond://?src=\ref[connected_ai];track2=\ref[connected_ai];track=\ref[src]'>[name]</a></span><br>")
 		if(ROBOT_NOTIFICATION_NEW_MODULE) //New Module
 			to_chat(connected_ai, "<br><br><span class='notice'>NOTICE - [braintype] module change detected: [name] has loaded the [first_arg].</span><br>")
 		if(ROBOT_NOTIFICATION_MODULE_RESET)
@@ -1117,7 +1208,7 @@
 				to_chat(src, "Hack attempt detected.")
 
 			if(shell) // A warning to Traitors who may not know that emagging AI shells does not slave them.
-				to_chat(user, span("warning", "[src] seems to be controlled remotely! Emagging the interface may not work as expected."))
+				to_chat(user, SPAN_WARNING( "[src] seems to be controlled remotely! Emagging the interface may not work as expected."))
 			return 1
 		else
 			to_chat(user, "The cover is already unlocked.")
@@ -1132,7 +1223,7 @@
 
 		// The block of code below is from TG. Feel free to replace with a better result if desired.
 		if(shell) // AI shells cannot be emagged, so we try to make it look like a standard reset. Smart players may see through this, however.
-			to_chat(user, span("danger", "[src] is remotely controlled! Your emag attempt has triggered a system reset instead!"))
+			to_chat(user, SPAN_DANGER("[src] is remotely controlled! Your emag attempt has triggered a system reset instead!"))
 			log_game("[key_name(user)] attempted to emag an AI shell belonging to [key_name(src) ? key_name(src) : connected_ai]. The shell has been reset as a result.")
 			module_reset()
 			return
@@ -1160,6 +1251,11 @@
 				sleep(20)
 				to_chat(src, "<span class='danger'>SynBorg v1.7.1 loaded.</span>")
 				sleep(5)
+				if(bolt)
+					if(!bolt.malfunction)
+						bolt.malfunction = MALFUNCTION_PERMANENT
+						to_chat(src, SPAN_DANGER("RESTRAINING BOLT DISABLED"))
+				sleep(5)
 				to_chat(src, "<span class='danger'>LAW SYNCHRONISATION ERROR</span>")
 				sleep(5)
 				to_chat(src, "<span class='danger'>Would you like to send a report to NanoTraSoft? Y/N</span>")
@@ -1185,3 +1281,6 @@
 	if(module_active && istype(module_active,/obj/item/gripper))
 		var/obj/item/gripper/G = module_active
 		G.drop_item_nm()
+
+/mob/living/silicon/robot/get_cell()
+	return cell

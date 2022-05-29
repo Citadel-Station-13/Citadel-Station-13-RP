@@ -1,0 +1,2 @@
+# Forces tgui hrefs to be logged. Debug only.
+# EMERGENCY_TGUI_LOGGING

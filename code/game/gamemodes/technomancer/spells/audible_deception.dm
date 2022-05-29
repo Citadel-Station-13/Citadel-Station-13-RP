@@ -18,8 +18,8 @@
 	var/list/available_sounds = list(
 		"Blade Slice"			=	'sound/weapons/bladeslice.ogg',
 		"Energy Blade Slice"	=	'sound/weapons/blade1.ogg',
-		"Explosions"			=	"explosion",
-		"Distant Explosion"		=	'sound/effects/explosionfar.ogg',
+		"Explosions"			=	SFX_ALIAS_EXPLOSION,
+		"Distant Explosion"		=	'sound/soundbytes/effects/explosion/explosionfar.ogg',
 		"Sparks"				=	"sparks",
 		"Punches"				=	"punch",
 		"Glass Shattering"		=	"shatter",
@@ -83,7 +83,7 @@
 			for(var/mob/living/carbon/M in ohearers(6, T))
 				if(M.get_ear_protection() >= 2)
 					continue
-				M.sleeping = 0
+				M.SetSleeping(0)
 				M.stuttering += 20
 				M.ear_deaf += 30
 				M.Weaken(3)

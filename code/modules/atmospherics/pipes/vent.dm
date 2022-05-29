@@ -27,7 +27,7 @@
 	name = "Larger vent"
 	volume = 1000
 
-/obj/machinery/atmospherics/pipe/vent/process()
+/obj/machinery/atmospherics/pipe/vent/process(delta_time)
 	if(!parent)
 		if(build_killswitch <= 0)
 			. = PROCESS_KILL

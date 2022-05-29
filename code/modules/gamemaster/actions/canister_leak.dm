@@ -4,17 +4,17 @@
 
 /datum/gm_action/canister_leak
 	name = "Canister Leak"
-	departments = list(ROLE_ENGINEERING)
+	departments = list(DEPARTMENT_ENGINEERING)
 	chaotic = 20
 
 /datum/gm_action/canister_leak/get_weight()
-	return metric.count_people_in_department(ROLE_ENGINEERING) * 30
+	return metric.count_people_in_department(DEPARTMENT_ENGINEERING) * 30
 
 /datum/gm_action/canister_leak/start()
 	..()
 	// List of all non-destroyed canisters on station levels
 	var/list/all_canisters = list()
-	for(var/obj/machinery/portable_atmospherics/canister/C in machines)
+	for(var/obj/machinery/portable_atmospherics/canister/C in GLOB.machines)
 		if(!C.destroyed && (C.z in GLOB.using_map.station_levels) && C.air_contents.total_moles >= MOLES_CELLSTANDARD)
 			all_canisters += C
 	var/obj/machinery/portable_atmospherics/canister/C = pick(all_canisters)

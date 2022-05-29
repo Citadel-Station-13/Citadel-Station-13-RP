@@ -16,8 +16,8 @@
 	var/power = 250
 	toggled = 1
 
-/obj/item/spell/radiance/New()
-	..()
+/obj/item/spell/radiance/Initialize(mapload)
+	. = ..()
 	set_light(7, 4, l_color = "#D9D900")
 	START_PROCESSING(SSobj, src)
 	log_and_message_admins("has casted [src].")
@@ -27,7 +27,7 @@
 	log_and_message_admins("has stopped maintaining [src].")
 	return ..()
 
-/obj/item/spell/radiance/process()
+/obj/item/spell/radiance/process(delta_time)
 	var/turf/T = get_turf(src)
 	var/datum/gas_mixture/removed = null
 	var/datum/gas_mixture/env = null
@@ -35,12 +35,12 @@
 
 	if(!istype(T, /turf/space))
 		env = T.return_air()
-		removed = env.remove(0.25 * env.total_moles)	//Remove gas from surrounding area
+		removed = env.remove(0.25 * env.total_moles) // Remove gas from surrounding area
 
 		var/thermal_power = 300 * adjusted_power
 
 		removed.add_thermal_energy(thermal_power)
-		removed.temperature = between(0, removed.temperature, 10000)
+		removed.temperature = clamp( removed.temperature, 0,  10000)
 
 		env.merge(removed)
 

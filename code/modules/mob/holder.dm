@@ -7,8 +7,8 @@
 	show_messages = 1
 
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/head.dmi',
-		SPECIES_VOX = 'icons/mob/species/vox/head.dmi'
+		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/head.dmi',
+		SPECIES_VOX = 'icons/mob/clothing/species/vox/head.dmi'
 		)
 
 	origin_tech = null
@@ -28,7 +28,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/holder/process()
+/obj/item/holder/process(delta_time)
 	update_state()
 	drop_items()
 
@@ -86,6 +86,23 @@
 		else if(H.r_hand == src)
 			H.update_inv_r_hand()
 
+/obj/item/holder/container_resist(mob/living/held)
+	var/mob/M = loc
+	if(istype(M))
+		M.drop_from_inventory(src)
+		to_chat(M, SPAN_WARNING("\The [held] wriggles out of your grip!"))
+		to_chat(held, SPAN_WARNING("You wiggle out of [M]'s grip!"))
+	else if(istype(loc, /obj/item/clothing/accessory/holster))
+		var/obj/item/clothing/accessory/holster/holster = loc
+		if(holster.holstered == src)
+			holster.clear_holster()
+		to_chat(held, SPAN_WARNING("You extricate yourself from [holster]."))
+		held.forceMove(get_turf(held))
+	else if(isitem(loc))
+		to_chat(held, SPAN_WARNING("You struggle free of [loc]."))
+		held.forceMove(get_turf(held))
+
+
 //Mob specific holders.
 /obj/item/holder/diona
 	origin_tech = list(TECH_MAGNET = 3, TECH_BIO = 5)
@@ -129,6 +146,20 @@
 		if(prob(10))
 			L.Stun(2)
 
+//Roach Types
+/obj/item/holder/roach
+	w_class = ITEMSIZE_TINY
+/obj/item/holder/roachling
+	w_class = ITEMSIZE_TINY
+/obj/item/holder/panzer
+	w_class = ITEMSIZE_TINY
+/obj/item/holder/jager
+	w_class = ITEMSIZE_TINY
+/obj/item/holder/seuche
+	w_class = ITEMSIZE_TINY
+/obj/item/holder/fuhrer
+	w_class = ITEMSIZE_TINY
+
 /obj/item/holder/attackby(obj/item/W as obj, mob/user as mob)
 	for(var/mob/M in src.contents)
 		M.attackby(W,user)
@@ -138,7 +169,7 @@
 
 /mob/living/MouseDrop(var/atom/over_object)
 	var/mob/living/carbon/human/H = over_object
-	if(holder_type && issmall(src) && istype(H) && !H.lying && Adjacent(H) && (src.a_intent == INTENT_HELP && H.a_intent == INTENT_HELP)) //VOREStation Edit
+	if((usr == over_object || usr == src) && holder_type && issmall(src) && istype(H) && !H.lying && Adjacent(H) && (src.a_intent == INTENT_HELP && H.a_intent == INTENT_HELP))
 		if(!issmall(H) || !istype(src, /mob/living/carbon/human))
 			get_scooped(H, (usr == src))
 		return
@@ -172,7 +203,7 @@
 
 /obj/item/holder/human
 	icon = 'icons/mob/holder_complex.dmi'
-	var/list/generate_for_slots = list(slot_l_hand_str, slot_r_hand_str, slot_back_str)
+	var/list/generate_for_slots = list(slot_l_hand_str, slot_r_hand_str, /datum/inventory_slot_meta/inventory/back)
 	slot_flags = SLOT_BACK
 
 /obj/item/holder/human/sync(var/mob/living/M)

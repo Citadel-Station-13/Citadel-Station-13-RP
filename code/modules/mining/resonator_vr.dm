@@ -86,8 +86,7 @@
 		qdel(src)
 		return
 	// Otherwise we damage mobs!  Boost damage if low tempreature
-	var/datum/gas_mixture/environment = T.return_air()
-	if(environment.temperature < 250)
+	if(T.return_temperature() < 250)
 		name = "strong resonance field"
 		resonance_damage = 50
 
@@ -105,7 +104,7 @@
 	layer = ABOVE_MOB_LAYER
 	duration = 4
 
-/obj/effect/temp_visual/resonance_crush/Initialize()
+/obj/effect/temp_visual/resonance_crush/Initialize(mapload)
 	. = ..()
 	transform = matrix()*1.5
 	animate(src, transform = matrix()*0.1, alpha = 50, time = 4)

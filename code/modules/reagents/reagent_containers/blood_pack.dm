@@ -3,7 +3,7 @@
 	desc = "This box contains blood packs."
 	icon_state = "sterile"
 
-/obj/item/storage/box/bloodpacks/Initialize()
+/obj/item/storage/box/bloodpacks/Initialize(mapload)
 		. = ..()
 		new /obj/item/reagent_containers/blood/empty(src)
 		new /obj/item/reagent_containers/blood/empty(src)
@@ -21,12 +21,15 @@
 	icon = 'icons/obj/bloodpack.dmi'
 	icon_state = "empty"
 	item_state = "bloodpack_empty"
+	drop_sound = 'sound/items/drop/food.ogg'
+	pickup_sound = 'sound/items/pickup/food.ogg'
 	volume = 200
 	var/label_text = ""
 
 	var/blood_type = null
+	var/bitten_state = FALSE
 
-/obj/item/reagent_containers/blood/Initialize()
+/obj/item/reagent_containers/blood/Initialize(mapload)
 	. = ..()
 	base_name = name
 	base_desc = desc
@@ -86,7 +89,7 @@
 
 /obj/item/reagent_containers/blood/BMinus
 	blood_type = "B-"
-	
+
 /obj/item/reagent_containers/blood/ABPlus
 	blood_type = "AB+"
 

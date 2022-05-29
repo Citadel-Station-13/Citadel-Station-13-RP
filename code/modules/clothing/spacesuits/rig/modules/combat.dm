@@ -55,7 +55,7 @@
 		to_chat(user, "<span class='danger'>Another grenade of that type will not fit into the module.</span>")
 		return 0
 
-	to_chat(user, "<font color='blue'><b>You slot \the [input_device] into the suit module.</b></font>")
+	to_chat(user, "<font color=#4F49AF><b>You slot \the [input_device] into the suit module.</b></font>")
 	user.drop_from_inventory(input_device)
 	qdel(input_device)
 	accepted_item.charges++
@@ -133,8 +133,8 @@
 	var/gun_type = /obj/item/gun/energy/lasercannon/mounted
 	var/obj/item/gun/gun
 
-/obj/item/rig_module/mounted/New()
-	..()
+/obj/item/rig_module/mounted/Initialize(mapload)
+	. = ..()
 	gun = new gun_type(src)
 
 /obj/item/rig_module/mounted/engage(atom/target)
@@ -197,7 +197,7 @@
 
 	gun_type = /obj/item/gun/energy/crossbow/ninja
 
-/obj/item/rig_module/mounted/energy_blade/process()
+/obj/item/rig_module/mounted/energy_blade/process(delta_time)
 
 	if(holder && holder.wearer)
 		if(!(locate(/obj/item/melee/energy/blade) in holder.wearer))
@@ -270,7 +270,7 @@
 		else
 			var/obj/item/new_weapon = new fabrication_type()
 			new_weapon.forceMove(H)
-			to_chat(H, "<font color='blue'><b>You quickly fabricate \a [new_weapon].</b></font>")
+			to_chat(H, "<font color=#4F49AF><b>You quickly fabricate \a [new_weapon].</b></font>")
 			H.put_in_hands(new_weapon)
 
 	return 1
@@ -289,12 +289,12 @@
 	deactivate_string = "Retract Blade"
 	var/obj/item/material/knife/machete/armblade/rig/held_blade
 
-/obj/item/rig_module/armblade/Initialize()
+/obj/item/rig_module/armblade/Initialize(mapload)
 	. = ..()
 	held_blade = new /obj/item/material/knife/machete/armblade/rig
 	held_blade.storing_module = src
 
-/obj/item/rig_module/armblade/process()
+/obj/item/rig_module/armblade/process(delta_time)
 
 	if(holder && holder.wearer)
 		if(!(locate(/obj/item/material/knife/machete/armblade) in holder.wearer))
@@ -326,7 +326,7 @@
 			"<span class='notice'>You extend \the [held_blade] from \the [holder] with a click!</span>",
 			"<span class='notice'>You hear a hiss and a click.</span>")
 
-	playsound(src, 'modular_citadel/sound/items/helmetdeploy.ogg', 40, 1)
+	playsound(src, 'sound/items/helmetdeploy.ogg', 40, 1)
 	M.put_in_hands(held_blade)
 
 /obj/item/rig_module/armblade/deactivate()

@@ -1,5 +1,5 @@
 // Legacy version. Need to investigate what the hell lootdrop in loot.dm does later. -Ace
-/obj/effect/landmark/loot_spawn
+/atom/movable/landmark/loot_spawn
 	name = "loot spawner"
 	icon_state = "grabbed1"
 	var/live_cargo = 1 // So you can turn off aliens.
@@ -7,12 +7,12 @@
 	var/spawned_faction = "hostile" // Spawned mobs can have their faction changed.
 
 
-/obj/effect/landmark/loot_spawn/low
+/atom/movable/landmark/loot_spawn/low
 	name = "low prob loot spawner"
 	icon_state = "grabbed"
 	low_probability = 1
 
-/obj/effect/landmark/loot_spawn/New()
+/atom/movable/landmark/loot_spawn/New()
 
 	switch(pick( \
 	low_probability * 1000;"nothing", \
@@ -24,12 +24,9 @@
 	100 - low_probability * 50;"spacesuit", \
 	"health", \
 	25 + low_probability * 75;"snacks", \
-	/*25;"alien", \ */ //VORESTATION AI TEMPORARY REMOVAL
 	"lights", \
 	25 - low_probability * 25;"engineering", \
 	25 - low_probability * 25;"coffin", \
-	/*25;"mimic", \ //VORESTATION AI TEMPORARY REMOVAL
-	25;"viscerator", \ */ //VORESTATION AI TEMPORARY REMOVAL
 	))
 		if("treasure")
 			var/obj/structure/closet/crate/C = new(src.loc)
@@ -52,7 +49,7 @@
 				var/amount = rand(2,6)
 				var/quantity = rand(10,50)
 				var/list/possible_spawns = list()
-				for(var/bar_type in typesof(/obj/item/stack/material) - /obj/item/stack/material - /obj/item/stack/material/animalhide - typesof(/obj/item/stack/material/cyborg))
+				for(var/bar_type in typesof(/obj/item/stack/material) - /obj/item/stack/material - /obj/item/stack/animalhide - typesof(/obj/item/stack/material/cyborg))
 					possible_spawns += bar_type
 
 				var/bar_type = pick(possible_spawns)
@@ -156,7 +153,7 @@
 					prob(7);/obj/item/gun/projectile/automatic/sts35,\
 					prob(7);/obj/item/gun/projectile/automatic/z8,\
 					prob(7);/obj/item/gun/energy/gun/burst,\
-					prob(7);/obj/item/gun/projectile/shotgun/pump/USDF,\
+					prob(7);/obj/item/gun/projectile/shotgun/pump/JSDF,\
 					prob(7);/obj/item/gun/projectile/deagle,\
 					prob(7);/obj/item/gun/launcher/grenade,\
 				/*	prob(6);/obj/item/gun/projectile/SVD,\*/
@@ -168,7 +165,7 @@
 					prob(3);/obj/item/gun/projectile/deagle/camo,\
 					prob(3);/obj/item/gun/energy/gun/nuclear,\
 					prob(2);/obj/item/gun/projectile/deagle/gold,\
-					prob(1);/obj/item/gun/launcher/rocket,\
+					prob(1);/obj/item/gun/projectile/rocket,\
 					prob(1);/obj/item/gun/launcher/grenade,\
 					prob(1);/obj/item/gun/projectile/gyropistol,\
 					prob(1);/obj/item/gun/projectile/heavysniper,\
@@ -199,7 +196,7 @@
 					prob(4);/obj/item/ammo_magazine/m9mmt,\
 					prob(4);/obj/item/ammo_magazine/m9mmt/rubber,\
 					prob(4);/obj/item/ammo_magazine/m10mm,\
-					prob(4);/obj/item/ammo_magazine/m9mmp90,\
+					prob(4);/obj/item/ammo_magazine/m57x28mmp90,\
 				/*	prob(4);/obj/item/ammo_magazine/m14,\
 					prob(4);/obj/item/ammo_magazine/m14/large,\*/
 					prob(4);/obj/item/ammo_magazine/m545/ext,
@@ -289,7 +286,7 @@
 			else if(prob(50))
 				if(live_cargo) // Something else very much alive and angry.
 					var/spawn_type = pick(/mob/living/simple_mob/animal/space/alien, /mob/living/simple_mob/animal/space/alien/drone, /mob/living/simple_mob/animal/space/alien/sentinel)
-					new spawn_type(C) 
+					new spawn_type(C)
 				else // Just a costume.
 					new /obj/item/clothing/head/xenos(C)
 					new /obj/item/clothing/suit/xenos(C)
@@ -334,19 +331,14 @@
 				new /obj/effect/decal/remains/human(src)
 			else if(prob(50))
 				new /obj/effect/decal/remains/xeno(src)
+
 		if("mimic")
-			//a guardian of the tomb!
-			// var/mob/living/simple_mob/hostile/mimic/crate/mimic = new(src.loc)
-			// mimic.faction = spawned_faction
-			var/obj/structure/closet/crate/secure/gear/C = new(src.loc) //VORESTATION AI TEMPORARY EDIT
-			new /obj/item/storage/toolbox/electrical(C) //Placeholder to prevent errors. //VORESTATION AI TEMPORARY EDIT
+			var/obj/structure/closet/crate/secure/gear/C = new(src.loc)
+			new /obj/item/storage/toolbox/electrical(C)
+
 		if("viscerator")
-			//more tomb guardians!
-			//var/num = rand(1,3) //VORESTATION AI TEMPORARY REMOVAL
-			var/obj/structure/closet/crate/secure/gear/C = new(src.loc) //VORESTATION AI TEMPORARY EDIT
-			new /obj/item/storage/toolbox/electrical(C) //Placeholder to prevent errors. //VORESTATION AI TEMPORARY EDIT
-			//for(var/i=0,i<num,i++) //VORESTATION AI TEMPORARY REMOVAL
-				//new /mob/living/simple_mob/hostile/viscerator(C)  //VORESTATION AI TEMPORARY REMOVAL
+			var/obj/structure/closet/crate/secure/gear/C = new(src.loc)
+			new /obj/item/storage/toolbox/electrical(C)
 
 	qdel(src)
 
@@ -394,3 +386,8 @@
 /obj/structure/symbol/sa
 	desc = "It looks like a right triangle with a dot to the side. It reminds you of a wooden strut between a wall and ceiling."
 	icon_state = "sa"
+
+/obj/structure/symbol/maint
+	name = "maintenance panel"
+	desc = "This sign suggests that the wall it's attached to can be opened somehow."
+	icon_state = "maintenance_panel"

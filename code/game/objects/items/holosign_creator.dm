@@ -9,7 +9,7 @@
 	throwforce = 0
 	throw_speed = 3
 	throw_range = 7
-	item_flags = NOBLUDGEON
+	clothing_flags = NOBLUDGEON
 	var/list/signs = list()
 	var/max_signs = 10
 	var/creation_time = 0 //time to create a holosign in deciseconds.
@@ -89,15 +89,15 @@
 	holosign_type = /obj/structure/holosign/barrier/firelock
 	creation_time = 0
 	max_signs = 3
-
+*/
 /obj/item/holosign_creator/combifan
 	name = "ATMOS holo-combifan projector"
 	desc = "A holographic projector that creates holographic combi-fans that prevent changes in atmosphere and temperature conditions. Somehow."
-	icon_state = "signmaker_atmos"
+	icon_state = "signmaker_engi"
 	holosign_type = /obj/structure/holosign/barrier/combifan
 	creation_time = 0
 	max_signs = 3
-
+/*
 /obj/item/holosign_creator/medical
 	name = "\improper PENLITE barrier projector"
 	desc = "A holographic projector that creates PENLITE holobarriers. Useful during quarantines since they halt those with malicious diseases."

@@ -7,9 +7,9 @@
 	name = "Inactive AI Eye"
 	icon_state = "AI-eye"
 
-/mob/observer/eye/aiEye/New()
-	..()
-	visualnet = cameranet
+/mob/observer/eye/aiEye/Initialize(mapload)
+	. = ..()
+	visualnet = GLOB.cameranet
 
 /mob/observer/eye/aiEye/setLoc(var/T, var/cancel_tracking = 1)
 	if(..())
@@ -31,7 +31,8 @@
 	var/obj/machinery/hologram/holopad/holo = null
 
 /mob/living/silicon/ai/proc/destroy_eyeobj(var/atom/new_eye)
-	if(!eyeobj) return
+	if(!eyeobj)
+		return
 	if(!new_eye)
 		new_eye = src
 	eyeobj.owner = null
@@ -41,21 +42,26 @@
 		client.eye = new_eye
 
 /mob/living/silicon/ai/proc/create_eyeobj(var/newloc)
-	if(eyeobj) destroy_eyeobj()
-	if(!newloc) newloc = src.loc
+	if(eyeobj)
+		destroy_eyeobj()
+	if(!newloc)
+		newloc = loc
 	eyeobj = new /mob/observer/eye/aiEye(newloc)
 	eyeobj.owner = src
 	eyeobj.name = "[src.name] (AI Eye)" // Give it a name
-	if(client) client.eye = eyeobj
+	reset_perspective(eyeobj)
 	SetName(src.name)
 
 // Intiliaze the eye by assigning it's "ai" variable to us. Then set it's loc to us.
-/mob/living/silicon/ai/New()
-	..()
+/mob/living/silicon/ai/Initialize(mapload)
+	. = ..()
 	create_eyeobj()
-	spawn(5)
-		if(eyeobj)
-			eyeobj.loc = src.loc
+	return INITIALIZE_HINT_LATELOAD
+
+/mob/living/silicon/ai/LateInitialize()
+	. = ..()
+	if(eyeobj && loc)
+		eyeobj.forceMove(loc)
 
 /mob/living/silicon/ai/Destroy()
 	destroy_eyeobj()
@@ -76,11 +82,10 @@
 	if(!src.eyeobj)
 		return
 
-	if(client && client.eye)
-		client.eye = src
 	for(var/datum/chunk/c in eyeobj.visibleChunks)
 		c.remove(eyeobj)
-	src.eyeobj.setLoc(src)
+
+	eyeobj.setLoc(src)
 
 /mob/living/silicon/ai/proc/toggle_acceleration()
 	set category = "AI Settings"
@@ -90,4 +95,4 @@
 		return
 
 	eyeobj.acceleration = !eyeobj.acceleration
-	usr << "Camera acceleration has been toggled [eyeobj.acceleration ? "on" : "off"]."
+	to_chat(usr, "Camera acceleration has been toggled [eyeobj.acceleration ? "on" : "off"].")

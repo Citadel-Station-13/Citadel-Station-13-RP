@@ -14,7 +14,7 @@
 	defer_powernet_rebuild = 2//Might help with the lag
 	..()
 
-/datum/game_mode/meteor/process()
+/datum/game_mode/meteor/process(delta_time)
 	if(world.time >= next_wave)
 		next_wave = world.time + meteor_wave_delay
 		spawn() spawn_meteors(6, meteors_normal)

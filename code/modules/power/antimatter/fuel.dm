@@ -69,14 +69,14 @@
 
 /obj/item/fuel/examine(mob/user)
 	if(get_dist(src, user) <= 1)
-		to_chat(user, "A magnetic storage ring, it contains [fuel]kg of [content ? content : "nothing"].")
+		. += "A magnetic storage ring, it contains [fuel]kg of [content ? content : "nothing"]."
 
 /obj/item/fuel/proc/injest(mob/M as mob)
 	switch(content)
 		if("Anti-Hydrogen")
 			M.gib() //Yikes!
 		if("Hydrogen")
-			to_chat(M, "<font color='blue'>You feel very light, as if you might just float away...</font>")
+			to_chat(M, "<font color=#4F49AF>You feel very light, as if you might just float away...</font>")
 	qdel(src)
 	return
 

@@ -10,6 +10,9 @@
 
 /obj/random/Initialize(mapload)
 	. = ..()
+	if(type == /obj/random)
+		stack_trace("Attempted to spawn base /obj/random.")
+		return INITIALIZE_HINT_QDEL
 	if(!prob(spawn_nothing_percentage))
 		spawn_item()
 	return INITIALIZE_HINT_QDEL
@@ -101,7 +104,7 @@ var/list/multi_point_spawns
 	var/id     // Group id
 	var/weight // Probability weight for this spawn point
 
-/obj/random_multi/Initialize()
+/obj/random_multi/Initialize(mapload)
 	. = ..()
 	weight = max(1, round(weight))
 
@@ -137,3 +140,4 @@ var/list/multi_point_spawns
 		for(var/entry in spawn_points)
 			qdel(entry)
 	return 1
+

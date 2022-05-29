@@ -23,18 +23,18 @@
 	// Decide what items are requried!
 	// We base this on what departmets are most active, excluding departments we don't have
 	var/list/notHaveDeptList = metric.departments.Copy()
-	notHaveDeptList.Remove(list(ROLE_MEDICAL, ROLE_RESEARCH, ROLE_CARGO, ROLE_CIVILIAN))
+	notHaveDeptList.Remove(list(DEPARTMENT_MEDICAL, DEPARTMENT_RESEARCH, DEPARTMENT_CARGO, DEPARTMENT_CIVILIAN))
 	var/deptActivity = metric.assess_all_departments(severity * 2, notHaveDeptList)
 	for(var/dept in deptActivity)
 		switch(dept)
-			if(ROLE_MEDICAL)
+			if(DEPARTMENT_MEDICAL)
 				choose_chemistry_items(roll(severity, 2))
-			if(ROLE_RESEARCH) // Would be nice to differentiate between research diciplines
+			if(DEPARTMENT_RESEARCH) // Would be nice to differentiate between research diciplines
 				choose_research_items(roll(severity, 2))
 				choose_robotics_items(roll(1, severity))
-			if(ROLE_CARGO)
+			if(DEPARTMENT_CARGO)
 				choose_alloy_items(rand(1, severity))
-			if(ROLE_CIVILIAN) // Would be nice to separate out chef/gardener/bartender
+			if(DEPARTMENT_CIVILIAN) // Would be nice to separate out chef/gardener/bartender
 				choose_food_items(roll(severity, 2))
 				choose_bar_items(roll(severity, 2))
 	if(required_items.len == 0)
@@ -84,7 +84,7 @@
 		var/message = "The delivery deadline was reached with the following needs outstanding:<hr>"
 		for (var/datum/supply_demand_order/req in required_items)
 			message += req.describe() + "<br>"
-		for (var/obj/machinery/computer/communications/C in machines)
+		for (var/obj/machinery/computer/communications/C in GLOB.machines)
 			if(C.operable())
 				var/obj/item/paper/P = new /obj/item/paper( C.loc )
 				P.name = "'[my_department] Mission Summary'"

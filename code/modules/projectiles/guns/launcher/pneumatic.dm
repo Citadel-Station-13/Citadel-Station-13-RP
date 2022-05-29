@@ -5,9 +5,11 @@
 	item_state = "pneumatic"
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_HUGE
+	heavy = TRUE
 	fire_sound_text = "a loud whoosh of moving air"
 	fire_delay = 50
 	fire_sound = 'sound/weapons/grenade_launcher.ogg' // Formerly tablehit1.ogg but I like this better -Ace
+	one_handed_penalty = 10
 
 	var/fire_pressure                                   // Used in fire checks/pressure checks.
 	var/max_w_class = ITEMSIZE_NORMAL                   // Hopper intake size.
@@ -20,8 +22,8 @@
 	var/force_divisor = 400                             // Force equates to speed. Speed/5 equates to a damage multiplier for whoever you hit.
 	                                                    // For reference, a fully pressurized oxy tank at 50% gas release firing a health
 	                                                    // analyzer with a force_divisor of 10 hit with a damage multiplier of 3000+.
-/obj/item/gun/launcher/pneumatic/New()
-	..()
+/obj/item/gun/launcher/pneumatic/Initialize(mapload)
+	. = ..()
 	item_storage = new(src)
 	item_storage.name = "hopper"
 	item_storage.max_w_class = max_w_class
@@ -35,7 +37,7 @@
 	var/N = input("Percentage of tank used per shot:","[src]") as null|anything in possible_pressure_amounts
 	if (N)
 		pressure_setting = N
-		usr << "You dial the pressure valve to [pressure_setting]%."
+		to_chat(usr, "You dial the pressure valve to [pressure_setting]%.")
 
 /obj/item/gun/launcher/pneumatic/proc/eject_tank(mob/user) //Remove the tank.
 	if(!tank)
@@ -99,13 +101,12 @@
 	return launched
 
 /obj/item/gun/launcher/pneumatic/examine(mob/user)
-	if(!..(user, 2))
-		return
-	user << "The valve is dialed to [pressure_setting]%."
+	. = ..()
+	. += "The valve is dialed to [pressure_setting]%."
 	if(tank)
-		to_chat(user, "The tank dial reads [tank.air_contents.return_pressure()] kPa.")
+		. += "The tank dial reads [tank.air_contents.return_pressure()] kPa."
 	else
-		to_chat(user, "Nothing is attached to the tank valve!")
+		. += "Nothing is attached to the tank valve!"
 
 /obj/item/gun/launcher/pneumatic/update_release_force(obj/item/projectile)
 	if(tank)
@@ -124,17 +125,20 @@
 	..()
 
 /obj/item/gun/launcher/pneumatic/update_icon()
+	. = ..()
+	if (ismob(src.loc))
+		var/mob/M = src.loc
+		M.update_inv_r_hand()
+		M.update_inv_l_hand()
+
+/obj/item/gun/launcher/pneumatic/update_icon_state()
+	. = ..()
 	if(tank)
 		icon_state = "pneumatic-tank"
 		item_state = "pneumatic-tank"
 	else
 		icon_state = "pneumatic"
 		item_state = "pneumatic"
-
-	if (ismob(src.loc))
-		var/mob/M = src.loc
-		M.update_inv_r_hand()
-		M.update_inv_l_hand()
 
 //Constructable pneumatic cannon.
 
@@ -150,13 +154,18 @@
 	icon_state = "pneumatic[buildstate]"
 
 /obj/item/cannonframe/examine(mob/user)
-	..(user)
+	. = ..()
 	switch(buildstate)
-		if(1) user << "It has a pipe segment installed."
-		if(2) user << "It has a pipe segment welded in place."
-		if(3) user << "It has an outer chassis installed."
-		if(4) user << "It has an outer chassis welded in place."
-		if(5) user << "It has a transfer valve installed."
+		if(1)
+			. += "It has a pipe segment installed."
+		if(2)
+			. += "It has a pipe segment welded in place."
+		if(3)
+			. += "It has an outer chassis installed."
+		if(4)
+			. += "It has an outer chassis welded in place."
+		if(5)
+			. += "It has a transfer valve installed."
 
 /obj/item/cannonframe/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/pipe))
@@ -167,7 +176,7 @@
 			buildstate++
 			update_icon()
 			return
-	else if(istype(W,/obj/item/stack/material) && W.get_material_name() == DEFAULT_WALL_MATERIAL)
+	else if(istype(W,/obj/item/stack/material) && W.get_material_name() == MAT_STEEL)
 		if(buildstate == 2)
 			var/obj/item/stack/material/M = W
 			if(M.use(5))

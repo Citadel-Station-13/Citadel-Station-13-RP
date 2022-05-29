@@ -2,21 +2,31 @@
 /** Originally written by errorage, updated by: Carn, needs more work though. I just added some security fixes */
 
 //Request Console Department Types
-#define RC_ASSIST 1		//Request Assistance
-#define RC_SUPPLY 2		//Request Supplies
-#define RC_INFO   4		//Relay Info
-
+///Request Assistance
+#define RC_ASSIST 1
+///Request Supplies
+#define RC_SUPPLY 2
+///Relay Info
+#define RC_INFO   4
 //Request Console Screens
-#define RCS_MAINMENU 0	// Main menu
-#define RCS_RQASSIST 1	// Request supplies
-#define RCS_RQSUPPLY 2	// Request assistance
-#define RCS_SENDINFO 3	// Relay information
-#define RCS_SENTPASS 4	// Message sent successfully
-#define RCS_SENTFAIL 5	// Message sent unsuccessfully
-#define RCS_VIEWMSGS 6	// View messages
-#define RCS_MESSAUTH 7	// Authentication before sending
-#define RCS_ANNOUNCE 8	// Send announcement
-
+/// Main menu
+#define RCS_MAINMENU 0
+/// Request supplies
+#define RCS_RQASSIST 1
+/// Request assistance
+#define RCS_RQSUPPLY 2
+/// Relay information
+#define RCS_SENDINFO 3
+/// Message sent successfully
+#define RCS_SENTPASS 4
+/// Message sent unsuccessfully
+#define RCS_SENTFAIL 5
+/// View messages
+#define RCS_VIEWMSGS 6
+/// Authentication before sending
+#define RCS_MESSAUTH 7
+/// Send announcement
+#define RCS_ANNOUNCE 8
 var/req_console_assistance = list()
 var/req_console_supplies = list()
 var/req_console_information = list()
@@ -25,51 +35,59 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 /obj/machinery/requests_console
 	name = "requests console"
 	desc = "A console intended to send requests to different departments on the station."
-	anchored = 1
+	anchored = TRUE
 	icon = 'icons/obj/terminals.dmi'
 	icon_state = "req_comp0"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	circuit = /obj/item/circuitboard/request
-	var/department = "Unknown" //The list of all departments on the station (Determined from this variable on each unit) Set this to the same thing if you want several consoles in one department
-	var/list/message_log = list() //List of all messages
-	var/departmentType = 0 		//Bitflag. Zero is reply-only. Map currently uses raw numbers instead of defines.
+
+	/// The list of all departments on the station. (Determined from this variable on each unit)
+	/// Set this to the same thing if you want several consoles in one department.
+	var/department = "Unknown"
+	/// List of all messages.
+	var/list/message_log = list()
+	/// Bitflag. Zero is reply-only. Map currently uses raw numbers instead of defines.
+	var/departmentType = 0
+	/// New Message Priority: 0 for no new messages, 1 for normal priority, 2 for high priority.
 	var/newmessagepriority = 0
-		// 0 = no new message
-		// 1 = normal priority
-		// 2 = high priority
+
 	var/screen = RCS_MAINMENU
-	var/silent = 0 // set to 1 for it not to beep all the time
-//	var/hackState = 0
-		// 0 = not hacked
-		// 1 = hacked
-	var/announcementConsole = 0
-		// 0 = This console cannot be used to send department announcements
-		// 1 = This console can send department announcementsf
-	var/open = 0 // 1 if open
-	var/announceAuth = 0 //Will be set to 1 when you authenticate yourself for announcements
-	var/msgVerified = "" //Will contain the name of the person who varified it
-	var/msgStamped = "" //If a message is stamped, this will contain the stamp name
+	/// set to TRUE for it not to beep all the time.
+	var/silent = FALSE
+	/// Whether if's hacked or not.
+//	var/hackState = FALSE
+	/// Can this console be used to send department annoucements?
+	var/announcementConsole = FALSE
+	var/open = FALSE
+	/// Will be set to 1 when you authenticate yourself for announcements.
+	var/announceAuth = 0
+	/// Will contain the name of the person who varified it.
+	var/msgVerified = ""
+	/// If a message is stamped, this will contain the stamp name.
+	var/msgStamped = ""
 	var/message = "";
-	var/recipient = ""; //the department which will be receiving the message
-	var/priority = -1 ; //Priority of the message being sent
+	/// The department which will be receiving the message.
+	var/recipient = "";
+	/// Priority of the message being sent.
+	var/priority = -1 ;
 	light_range = 0
-	var/datum/announcement/announcement = new
+	var/datum/legacy_announcement/announcement = new
 
 /obj/machinery/requests_console/power_change()
 	..()
 	update_icon()
 
 /obj/machinery/requests_console/update_icon()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		if(icon_state != "req_comp_off")
 			icon_state = "req_comp_off"
 	else
 		if(icon_state == "req_comp_off")
 			icon_state = "req_comp[newmessagepriority]"
 
-/obj/machinery/requests_console/New()
-	..()
+/obj/machinery/requests_console/Initialize(mapload, newdir)
+	. = ..()
 
 	announcement.title = "[department] announcement"
 	announcement.newscast = 1
@@ -104,9 +122,9 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 /obj/machinery/requests_console/attack_hand(user as mob)
 	if(..(user))
 		return
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/requests_console/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/requests_console/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 
 	data["department"] = department
@@ -134,9 +152,9 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 		ui.open()
 
 /obj/machinery/requests_console/Topic(href, href_list)
-	if(..())	return
+	if(..())
+		return
 	usr.set_machine(src)
-	add_fingerprint(usr)
 
 	if(reject_bad_text(href_list["write"]))
 		recipient = href_list["write"] //write contains the string of the receiving department's name
@@ -168,7 +186,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 		var/log_msg = message
 		var/pass = 0
 		screen = RCS_SENTFAIL
-		for (var/obj/machinery/message_server/MS in machines)
+		for (var/obj/machinery/message_server/MS in GLOB.machines)
 			if(!MS.active) continue
 			MS.send_rc_message(ckey(href_list["department"]),department,log_msg,msgStamped,msgVerified,priority)
 			pass = 1
@@ -176,7 +194,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 			screen = RCS_SENTPASS
 			message_log += "<B>Message sent to [recipient]</B><BR>[message]"
 		else
-			audible_message(text("\icon[src] *The Requests Console beeps: 'NOTICE: No server detected!'"),,4)
+			audible_message(text("[icon2html(thing = src, target = world)] *The Requests Console beeps: 'NOTICE: No server detected!'"),,4)
 
 	//Handle printing
 	if (href_list["print"])
@@ -252,7 +270,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 		if(inoperable(MAINT)) return
 		if(screen == RCS_MESSAUTH)
 			var/obj/item/stamp/T = O
-			msgStamped = text("<font color='blue'><b>Stamped with the [T.name]</b></font>")
+			msgStamped = text("<font color=#4F49AF><b>Stamped with the [T.name]</b></font>")
 			updateUsrDialog()
 	return
 
@@ -266,3 +284,102 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 	announcement.announcer = ""
 	if(mainmenu)
 		screen = RCS_MAINMENU
+
+
+//! ## VR FILE MERGE ## !//
+
+// Request Console Presets!  Make mapping 400% easier!
+// By using these presets we can rename the departments easily.
+
+//!Request Console Department Types
+///Request Assistance
+// #define RC_ASSIST 1
+///Request Supplies
+// #define RC_SUPPLY 2
+///Relay Info
+// #define RC_INFO   4
+
+/obj/machinery/requests_console/preset
+	name = ""
+	department = ""
+	departmentType = ""
+	announcementConsole = 0
+
+// Departments
+/obj/machinery/requests_console/preset/cargo
+	name = "Cargo RC"
+	department = "Cargo Bay"
+	departmentType = RC_SUPPLY
+
+/obj/machinery/requests_console/preset/security
+	name = "Security RC"
+	department = "Security"
+	departmentType = RC_ASSIST
+
+/obj/machinery/requests_console/preset/engineering
+	name = "Engineering RC"
+	department = "Engineering"
+	departmentType = RC_ASSIST|RC_SUPPLY
+
+/obj/machinery/requests_console/preset/atmos
+	name = "Atmospherics RC"
+	department = "Atmospherics"
+	departmentType = RC_ASSIST|RC_SUPPLY
+
+/obj/machinery/requests_console/preset/medical
+	name = "Medical RC"
+	department = "Medical Department"
+	departmentType = RC_ASSIST|RC_SUPPLY
+
+/obj/machinery/requests_console/preset/research
+	name = "Research RC"
+	department = "Research Department"
+	departmentType = RC_ASSIST|RC_SUPPLY
+
+/obj/machinery/requests_console/preset/janitor
+	name = "Janitor RC"
+	department = "Janitorial"
+	departmentType = RC_ASSIST
+
+/obj/machinery/requests_console/preset/bridge
+	name = "Bridge RC"
+	department = "Bridge"
+	departmentType = RC_ASSIST|RC_INFO
+	announcementConsole = 1
+
+// Heads
+
+/obj/machinery/requests_console/preset/ce
+	name = "Chief Engineer RC"
+	department = "Chief Engineer's Desk"
+	departmentType = RC_ASSIST|RC_INFO
+	announcementConsole = 1
+
+/obj/machinery/requests_console/preset/cmo
+	name = "Chief Medical Officer RC"
+	department = "Chief Medical Officer's Desk"
+	departmentType = RC_ASSIST|RC_INFO
+	announcementConsole = 1
+
+/obj/machinery/requests_console/preset/hos
+	name = "Head of Security RC"
+	department = "Head of Security's Desk"
+	departmentType = RC_ASSIST|RC_INFO
+	announcementConsole = 1
+
+/obj/machinery/requests_console/preset/rd
+	name = "Research Director RC"
+	department = "Research Director's Desk"
+	departmentType = RC_ASSIST|RC_INFO
+	announcementConsole = 1
+
+/obj/machinery/requests_console/preset/captain
+	name = "Captain RC"
+	department = "Captain's Desk"
+	departmentType = RC_ASSIST|RC_INFO
+	announcementConsole = 1
+
+/obj/machinery/requests_console/preset/ai
+	name = "AI RC"
+	department = "AI"
+	departmentType = RC_ASSIST|RC_INFO

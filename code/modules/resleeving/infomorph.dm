@@ -83,7 +83,7 @@ var/list/infomorph_emotions = list(
 	var/datum/data/record/securityActive1		// Could probably just combine all these into one
 	var/datum/data/record/securityActive2
 
-/mob/living/silicon/infomorph/New(var/obj/item/sleevecard/SC, var/name = "Unknown")
+/mob/living/silicon/infomorph/Initialize(mapload, obj/item/sleevecard/SC, name = "Unknown")
 	ASSERT(SC)
 	name = "[initial(name)] ([name])"
 	src.forceMove(SC)
@@ -114,10 +114,7 @@ var/list/infomorph_emotions = list(
 		pda.name = pda.owner + " (" + pda.ownjob + ")"
 		pda.toff = 1
 
-	..()
-
-/mob/living/silicon/infomorph/Login()
-	..()
+	return ..()
 
 /////////// STAT PANEL
 /mob/living/silicon/infomorph/Stat()
@@ -417,15 +414,15 @@ var/list/infomorph_emotions = list(
 	desc = "Modify the settings on your integrated radio."
 
 	if(radio)
-		radio.ui_interact(src,"main",null,1,conscious_state)
+		radio.nano_ui_interact(src,"main",null,1,conscious_state)
 	else
 		to_chat(src,"<span class='warning'>You don't have a radio!</span>")
 
-/mob/living/silicon/infomorph/say(var/msg)
+/mob/living/silicon/infomorph/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	if(silence_time)
 		to_chat(src, "<font color=green>Communication circuits remain uninitialized.</font>")
 	else
-		..(msg)
+		return ..()
 
 /mob/living/silicon/infomorph/handle_message_mode(message_mode, message, verb, speaking, used_radios, alt_name)
 	switch(message_mode)
@@ -460,19 +457,19 @@ var/global/list/default_infomorph_software = list()
 	set category = "Card Commands"
 	set name = "Software Interface"
 
-	ui_interact(src)
+	nano_ui_interact(src)
 
-/mob/living/silicon/infomorph/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, key_state = self_state)
+/mob/living/silicon/infomorph/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, key_state = self_state)
 	if(user != src)
-		if(ui) ui.set_status(STATUS_CLOSE, 0)
+		if(ui) ui.set_status(UI_CLOSE, 0)
 		return
 
 	if(ui_key != "main")
 		var/datum/infomorph_software/S = software[ui_key]
 		if(S && !S.toggle)
-			S.on_ui_interact(src, ui, force_open)
+			S.on_nano_ui_interact(src, ui, force_open)
 		else
-			if(ui) ui.set_status(STATUS_CLOSE, 0)
+			if(ui) ui.set_status(UI_CLOSE, 0)
 		return
 
 	var/data[0]
@@ -526,7 +523,7 @@ var/global/list/default_infomorph_software = list()
 		if(S.toggle)
 			S.toggle(src)
 		else
-			ui_interact(src, ui_key = soft)
+			nano_ui_interact(src, ui_key = soft)
 		return 1
 
 	else if(href_list["stopic"])
@@ -550,24 +547,24 @@ var/global/list/default_infomorph_software = list()
 		return 1
 
 /mob/living/silicon/infomorph/examine(mob/user)
-	..(user, infix = ", personal AI")
-
-	var/msg = ""
+	. = ..()
 	switch(src.stat)
 		if(CONSCIOUS)
-			if(!src.client)	msg += "\nIt appears to be in stand-by mode." //afk
-		if(UNCONSCIOUS)		msg += "\n<span class='warning'>It doesn't seem to be responding.</span>"
-		if(DEAD)			msg += "\n<span class='deadsay'>It looks completely unsalvageable.</span>"
-	msg += "\n*---------*"
+			if(!src.client)
+				. += "\nIt appears to be in stand-by mode." //afk
+		if(UNCONSCIOUS)
+			. += "\n<span class='warning'>It doesn't seem to be responding.</span>"
+		if(DEAD)
+			. += "\n<span class='deadsay'>It looks completely unsalvageable.</span>"
+	. += "\n*---------*"
 
-	if(print_flavor_text()) msg += "\n[print_flavor_text()]\n"
+	if(print_flavor_text())
+		. += "\n[print_flavor_text()]\n"
 
 	if (pose)
-		if( findtext(pose,".",length(pose)) == 0 && findtext(pose,"!",length(pose)) == 0 && findtext(pose,"?",length(pose)) == 0 )
-			pose = addtext(pose,".") //Makes sure all emotes end with a period.
-		msg += "\nIt is [pose]"
+		. += "\nIt is [pose]"
 
-	user << msg
+
 
 /mob/living/silicon/infomorph/Life()
 	//We're dead or EMP'd or something.
@@ -608,6 +605,6 @@ var/global/list/default_infomorph_software = list()
 /mob/living/silicon/infomorph/updatehealth()
 	if(status_flags & GODMODE)
 		health = 100
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 	else
 		health = 100 - getBruteLoss() - getFireLoss()

@@ -142,7 +142,7 @@
 	name = "glucose container"
 	desc = "A container of glucose. Used to treat bloodloss through a hardsuit in unconscious patients."
 
-/obj/item/reagent_containers/food/drinks/drinkingglass/fitnessflask/glucose/Initialize()
+/obj/item/reagent_containers/food/drinks/drinkingglass/fitnessflask/glucose/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("glucose", 100)
 	on_reagent_change()

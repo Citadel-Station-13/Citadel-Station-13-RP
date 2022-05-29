@@ -25,7 +25,7 @@
 
 /proc/spawn_meteor(var/list/meteortypes, var/startSide, var/startLevel)
 	if(isnull(startSide))
-		startSide = pick(cardinal)
+		startSide = pick(GLOB.cardinal)
 	if(isnull(startLevel))
 		startLevel = pick(GLOB.using_map.station_levels - GLOB.using_map.sealed_levels)
 
@@ -107,10 +107,10 @@
 	// Multiply this and the hits var to get a rough idea of how penetrating a meteor is.
 	var/wall_power = 100
 
-/obj/effect/meteor/New()
-	..()
+/obj/effect/meteor/Initialize(mapload)
+	. = ..()
 	z_original = z
-
+	GLOB.meteor_list += src
 
 /obj/effect/meteor/Move()
 	if(z != z_original || loc == dest)
@@ -130,14 +130,15 @@
 
 /obj/effect/meteor/Destroy()
 	walk(src,0) //this cancels the walk_towards() proc
+	GLOB.meteor_list -= src
 	return ..()
 
-/obj/effect/meteor/New()
-	..()
+/obj/effect/meteor/Initialize(mapload)
+	. = ..()
 	SpinAnimation()
 
 /obj/effect/meteor/Bump(atom/A)
-	if(attempt_vr(src,"Bump_vr",list(A))) return //VOREStation Edit - allows meteors to be deflected by baseball bats
+	if(attempt_vr(src,"Bump_vr",list(A))) return // Allows meteors to be deflected by baseball bats
 	if(A)
 		if(A.handle_meteor_impact(src)) // Used for special behaviour when getting hit specifically by a meteor, like a shield.
 			ram_turf(get_turf(A))
@@ -163,6 +164,8 @@
 			var/turf/simulated/wall/W = T
 			W.take_damage(wall_power) // Stronger walls can halt asteroids.
 
+/obj/effect/meteor/proc/get_shield_damage()
+	return max(((max(hits, 2)) * (heavy + 1) * rand(6, 12)) / hitpwr , 0)
 
 //process getting 'hit' by colliding with a dense object
 //or randomly when ramming turfs
@@ -285,6 +288,9 @@
 	// Best case scenario: Comparable to a low-yield EMP grenade.
 	// Worst case scenario: Comparable to a standard yield EMP grenade.
 	empulse(src, rand(1, 3), rand(2, 4), rand(3, 7), rand(5, 10))
+
+/obj/effect/meteor/emp/get_shield_damage()
+	return ..() * rand(2,4)
 
 //Station buster Tunguska
 /obj/effect/meteor/tunguska

@@ -24,7 +24,7 @@
 		list("impedrezene" = 15)						= 2,
 		list("zombiepowder" = 10)						= 1)
 
-/obj/item/reagent_containers/glass/beaker/vial/random/Initialize()
+/obj/item/reagent_containers/glass/beaker/vial/random/Initialize(mapload)
 	. = ..()
 	if(is_open_container())
 		flags ^= OPENCONTAINER
@@ -64,7 +64,7 @@
 				to_chat(usr, "The box contained nothing!")
 				return
 		*/
-		var/loot = pick(/obj/effect/landmark/costume,
+		var/loot = pick(/atom/movable/landmark/costume,
 						/obj/item/clothing/glasses/thermal,
 						/obj/item/clothing/gloves/combat,
 						/obj/item/clothing/gloves/combat/advanced,
@@ -89,11 +89,11 @@
 						/obj/item/mecha_parts/part/phazon_right_arm,
 						/obj/item/mecha_parts/part/phazon_right_leg,
 						/obj/item/mecha_parts/part/phazon_torso,
-						/obj/item/bodysnatcher,
+						// /obj/item/bodysnatcher,
 						/obj/item/bluespace_harpoon,
 						/obj/item/clothing/accessory/permit/gun,
 						/obj/item/perfect_tele,
-						/obj/item/sleevemate,
+						// /obj/item/sleevemate,
 						/obj/item/disk/nifsoft/compliance,
 						/obj/item/seeds/ambrosiadeusseed,
 						/obj/item/seeds/ambrosiavulgarisseed,
@@ -123,14 +123,17 @@
 						/obj/item/rig/combat,
 						/obj/item/shield/energy,
 						/obj/item/stamp/centcomm,
-						/obj/item/stamp/solgov,
+						/obj/item/stamp/oricon,
 						/obj/item/storage/fancy/cigar/havana,
 						/obj/item/storage/fancy/cigar/cohiba,
+						/obj/item/storage/fancy/cigar/taj,
+						/obj/item/storage/fancy/cigar/taj/premium,
 						/obj/item/xenos_claw,
 						/obj/random/contraband,
 						/obj/random/contraband,
 						/obj/random/contraband,
 						/obj/random/contraband,
+						/obj/item/storage/belt/spike_bandolier,
 						/obj/random/weapon/guarenteed)
 		new loot(user.drop_location())
 		to_chat(user, "You unwrap the package.")
@@ -148,6 +151,21 @@
 	can_hold = list(/obj/item/clothing/mask/smokable/cigarette/cigar/cohiba)
 	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/cigar/cohiba = 7)
 
+/obj/item/storage/fancy/cigar/taj
+	name = "\improper S'rendarr's Hand case"
+	desc = "A luxury medicinal cigar exported from Adhomai. The trifecta flag on the case showing a symbol of unity amongst producers of S'rendarr's from all Tajaran nations."
+	icon_state = "cigarcase-taj"
+	can_hold = list(/obj/item/clothing/mask/smokable/cigarette/cigar/taj)
+	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/cigar/taj = 7)
+
+/obj/item/storage/fancy/cigar/taj/premium
+	name = "\improper S'rendarr's Own case"
+	desc = "Truly luxurious medicinal cigars bearing the proof marks of the Confederate Commonwealth, the \"united\" galactic lobbying body of all three Tajaran states, marking these cigars as the best Adhomai has to offer."
+	icon_state = "cigarcase-tajalt"
+	can_hold = list(/obj/item/clothing/mask/smokable/cigarette/cigar/taj/premium)
+	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/cigar/taj/premium = 7)
+
+
 /obj/item/stolenpackageplus
 	name = "curated stolen package"
 	desc = "What's in this slightly more robust box?"
@@ -160,7 +178,7 @@
 		var/loot = pick(/obj/item/clothing/glasses/thermal,
 						/obj/item/clothing/gloves/combat/advanced,
 						/obj/item/clothing/gloves/combat/advanced,
-						/obj/item/clothing/accessory/holster/machete/occupied,
+						/obj/item/clothing/accessory/holster/machete/occupied/deluxe,
 						/obj/item/clothing/accessory/holster/machete/occupied/deluxe,
 						/obj/item/clothing/accessory/holster/machete/occupied/durasteel,
 						/obj/item/clothing/suit/armor/heavy,
@@ -174,11 +192,11 @@
 						/obj/item/mecha_parts/part/phazon_right_arm,
 						/obj/item/mecha_parts/part/phazon_right_leg,
 						/obj/item/mecha_parts/part/phazon_torso,
-						/obj/item/bodysnatcher,
+						// /obj/item/bodysnatcher,
 						/obj/item/bluespace_harpoon,
 						/obj/item/clothing/accessory/permit/gun,
 						/obj/item/perfect_tele,
-						/obj/item/disk/nifsoft/compliance,
+						/obj/item/storage/belt/spike_bandolier,
 						/obj/item/seeds/ambrosiadeusseed,
 						/obj/item/seeds/ambrosiavulgarisseed,
 						/obj/item/seeds/libertymycelium,
@@ -200,11 +218,22 @@
 						/obj/item/rig/combat,
 						/obj/item/shield/energy,
 						/obj/item/stamp/centcomm,
-						/obj/item/stamp/solgov,
+						/obj/item/stamp/oricon,
 						/obj/item/storage/fancy/cigar/havana,
 						/obj/item/storage/fancy/cigar/cohiba,
-						/obj/random/contraband,
+						/obj/item/storage/fancy/cigar/taj,
+						/obj/item/storage/fancy/cigar/taj/premium,
+						/obj/item/storage/belt/spike_bandolier,
 						/obj/random/weapon/guarenteed)
 		new loot(usr.drop_location())
 		to_chat(user, "You unwrap the package.")
 		qdel(src)
+
+//Ported from Main.
+
+/obj/item/skub
+	name = "skub"
+	desc = "A standard jar of skub."
+	icon = 'icons/obj/items.dmi'
+	icon_state = "skub"
+	attack_verb = list("skubbed")

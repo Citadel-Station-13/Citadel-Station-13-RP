@@ -173,8 +173,6 @@
 		if((0 < beard) && (beard <= facial_hair_styles_list.len))
 			H.f_style = facial_hair_styles_list[beard]
 
-		// VORE StationEdit Start
-
 		// Ears
 		var/ears = dna.GetUIValueRange(DNA_UI_EAR_STYLE, ear_styles_list.len + 1) - 1
 		if(ears <= 1)
@@ -189,6 +187,9 @@
 		H.r_ears2 = dna.GetUIValueRange(DNA_UI_EARS2_R,   255)
 		H.g_ears2 = dna.GetUIValueRange(DNA_UI_EARS2_G,   255)
 		H.b_ears2 = dna.GetUIValueRange(DNA_UI_EARS2_B,	  255)
+		H.r_ears3 = dna.GetUIValueRange(DNA_UI_EARS3_R,   255)
+		H.g_ears3 = dna.GetUIValueRange(DNA_UI_EARS3_G,   255)
+		H.b_ears3 = dna.GetUIValueRange(DNA_UI_EARS3_B,	  255)
 
 		//Tail
 		var/tail = dna.GetUIValueRange(DNA_UI_TAIL_STYLE, tail_styles_list.len + 1) - 1
@@ -208,6 +209,12 @@
 		H.r_wing   = dna.GetUIValueRange(DNA_UI_WING_R,    255)
 		H.g_wing   = dna.GetUIValueRange(DNA_UI_WING_G,    255)
 		H.b_wing   = dna.GetUIValueRange(DNA_UI_WING_B,    255)
+		H.r_wing2  = dna.GetUIValueRange(DNA_UI_WING2_R,    255)
+		H.g_wing2  = dna.GetUIValueRange(DNA_UI_WING2_G,    255)
+		H.b_wing2  = dna.GetUIValueRange(DNA_UI_WING2_B,    255)
+		H.r_wing3  = dna.GetUIValueRange(DNA_UI_WING3_R,    255)
+		H.g_wing3  = dna.GetUIValueRange(DNA_UI_WING3_G,    255)
+		H.b_wing3  = dna.GetUIValueRange(DNA_UI_WING3_B,    255)
 
 		// Playerscale
 		var/size = dna.GetUIValueRange(DNA_UI_PLAYERSCALE, player_sizes_list.len)
@@ -221,42 +228,46 @@
 		H.r_tail2  = dna.GetUIValueRange(DNA_UI_TAIL2_R,   255)
 		H.g_tail2  = dna.GetUIValueRange(DNA_UI_TAIL2_G,   255)
 		H.b_tail2  = dna.GetUIValueRange(DNA_UI_TAIL2_B,   255)
+		H.r_tail3  = dna.GetUIValueRange(DNA_UI_TAIL3_R,   255)
+		H.g_tail3  = dna.GetUIValueRange(DNA_UI_TAIL3_G,   255)
+		H.b_tail3  = dna.GetUIValueRange(DNA_UI_TAIL3_B,   255)
 
 		// Technically custom_species is not part of the UI, but this place avoids merge problems.
 		H.custom_species = dna.custom_species
+		H.custom_say = dna.custom_say
+		H.custom_ask = dna.custom_ask
+		H.custom_whisper = dna.custom_whisper
+		H.custom_exclaim = dna.custom_exclaim
 		if(istype(H.species,/datum/species/custom))
 			var/datum/species/custom/CS = H.species
-			var/datum/species/custom/new_CS = CS.produceCopy(dna.base_species,dna.species_traits,src)
-			new_CS.blood_color = dna.blood_color
+			CS.copy_from(dna.base_species, dna.species_traits, src)
+			CS.blood_color = dna.blood_color
 
-		if(istype(H.species,/datum/species/xenochimera))
-			var/datum/species/xenochimera/CS = H.species
-			var/datum/species/xenochimera/new_CS = CS.produceCopy(dna.base_species,dna.species_traits,src)
-			new_CS.blood_color = dna.blood_color
+		if(istype(H.species,/datum/species/shapeshifter/xenochimera))
+			var/datum/species/shapeshifter/xenochimera/CS = H.species
+			CS.copy_from(dna.base_species,dna.species_traits,src)
+			CS.blood_color = dna.blood_color
+			H.regenerate_icons()
 
 		if(istype(H.species,/datum/species/alraune))
 			var/datum/species/alraune/CS = H.species
-			var/datum/species/alraune/new_CS = CS.produceCopy(dna.base_species,dna.species_traits,src)
-			new_CS.blood_color = dna.blood_color
-		// VOREStation Edit End
-
-		H.force_update_organs() //VOREStation Add - Gotta do this too
+			CS.copy_from(dna.base_species,dna.species_traits,src)
+			CS.blood_color = dna.blood_color
+		H.force_update_organs()
 		H.force_update_limbs()
-		//H.update_body(0) //VOREStation Edit - Done in force_update_limbs already
+		//H.update_body(0) // Done in force_update_limbs already
 		H.update_eyes()
 		H.update_hair()
 
-		return 1
+		return TRUE
 	else
-		return 0
+		return FALSE
 
-//VOREStation Add
 /mob/living/carbon/human/proc/force_update_organs()
 	for(var/organ in organs + internal_organs)
 		var/obj/item/organ/O = organ
 		O.species = species
-//VOREStation Add End
 
-// Used below, simple injection modifier.
+/// Used below, simple injection modifier.
 /proc/probinj(var/pr, var/inj)
 	return prob(pr+inj*pr)

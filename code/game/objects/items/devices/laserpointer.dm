@@ -6,7 +6,7 @@
 	item_state = "pen"
 	var/pointer_icon_state
 	slot_flags = SLOT_BELT
-	matter = list("glass" = 500,"metal" = 500)
+	matter = list(MAT_GLASS = 500,"metal" = 500)
 	w_class = 2 //Increased to 2, because diodes are w_class 2. Conservation of matter.
 	origin_tech = list(TECH_MAGNET = 2, TECH_COMBAT = 1)
 	var/turf/pointer_loc
@@ -17,27 +17,29 @@
 	var/last_used_time = 0
 	var/recharging = 0
 	var/recharge_locked = 0
-	var/obj/item/stock_parts/micro_laser/diode //used for upgrading!
-
+	var/obj/item/stock_parts/micro_laser/diode = /obj/item/stock_parts/micro_laser //used for upgrading!
 
 /obj/item/laser_pointer/red
 	pointer_icon_state = "red_laser"
+
 /obj/item/laser_pointer/green
 	pointer_icon_state = "green_laser"
+
 /obj/item/laser_pointer/blue
 	pointer_icon_state = "blue_laser"
+
 /obj/item/laser_pointer/purple
 	pointer_icon_state = "purple_laser"
 
-/obj/item/laser_pointer/New()
-	..()
-	diode = new(src)
+/obj/item/laser_pointer/Initialize(mapload)
+	. = ..()
+	if(ispath(diode))
+		diode = new diode(src)
 	if(!pointer_icon_state)
 		pointer_icon_state = pick("red_laser","green_laser","blue_laser","purple_laser")
 
-/obj/item/laser_pointer/upgraded/New()
-	..()
-	diode = new /obj/item/stock_parts/micro_laser/ultra
+/obj/item/laser_pointer/upgraded
+	diode = /obj/item/stock_parts/micro_laser/ultra
 
 
 
@@ -188,7 +190,7 @@
 		if(M.client)
 			showto.Add(M.client)
 	var/image/I = image('icons/obj/projectiles.dmi',targloc,pointer_icon_state,cooldown)
-	I.plane = PLANE_LIGHTING_ABOVE
+	I.plane = ABOVE_LIGHTING_PLANE
 	I.pixel_x = target.pixel_x + rand(-5,5)
 	I.pixel_y = target.pixel_y + rand(-5,5)
 
@@ -211,7 +213,7 @@
 	spawn(cooldown)
 		icon_state = "pointer"
 
-/obj/item/laser_pointer/process()
+/obj/item/laser_pointer/process(delta_time)
 	if(prob(20 - recharge_locked*5))
 		energy += 1
 		if(energy >= max_energy)

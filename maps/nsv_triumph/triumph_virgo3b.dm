@@ -106,25 +106,25 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 /datum/weather_holder/virgo3b
 	temperature = T0C
 	allowed_weather_types = list(
-		WEATHER_CLEAR		= new /datum/weather/virgo3b/clear(),
-		WEATHER_OVERCAST	= new /datum/weather/virgo3b/overcast(),
-		WEATHER_LIGHT_SNOW	= new /datum/weather/virgo3b/light_snow(),
-		WEATHER_SNOW		= new /datum/weather/virgo3b/snow(),
 		WEATHER_BLIZZARD	= new /datum/weather/virgo3b/blizzard(),
-		WEATHER_RAIN		= new /datum/weather/virgo3b/rain(),
-		WEATHER_STORM		= new /datum/weather/virgo3b/storm(),
+		WEATHER_BLOOD_MOON	= new /datum/weather/virgo3b/blood_moon(),
+		WEATHER_CLEAR		= new /datum/weather/virgo3b/clear(),
 		WEATHER_HAIL		= new /datum/weather/virgo3b/hail(),
-		WEATHER_BLOOD_MOON	= new /datum/weather/virgo3b/blood_moon()
+		WEATHER_LIGHT_SNOW	= new /datum/weather/virgo3b/light_snow(),
+		WEATHER_OVERCAST	= new /datum/weather/virgo3b/overcast(),
+		WEATHER_RAIN		= new /datum/weather/virgo3b/rain(),
+		WEATHER_SNOW		= new /datum/weather/virgo3b/snow(),
+		WEATHER_STORM		= new /datum/weather/virgo3b/storm()
 		)
 	roundstart_weather_chances = list(
-		WEATHER_CLEAR		= 30,
-		WEATHER_OVERCAST	= 30,
-		WEATHER_LIGHT_SNOW	= 20,
-		WEATHER_SNOW		= 5,
 		WEATHER_BLIZZARD	= 5,
+		WEATHER_CLEAR		= 30,
+		WEATHER_HAIL		= 2.5,
+		WEATHER_LIGHT_SNOW	= 20,
+		WEATHER_OVERCAST	= 30,
 		WEATHER_RAIN		= 5,
-		WEATHER_STORM		= 2.5,
-		WEATHER_HAIL		= 2.5
+		WEATHER_SNOW		= 5,
+		WEATHER_STORM		= 2.5
 		)
 
 /datum/weather/virgo3b
@@ -151,11 +151,11 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 	light_modifier = 0.8
 	transition_chances = list(
 		WEATHER_CLEAR = 25,
-		WEATHER_OVERCAST = 50,
+		WEATHER_HAIL = 5,
 		WEATHER_LIGHT_SNOW = 10,
-		WEATHER_SNOW = 5,
+		WEATHER_OVERCAST = 50,
 		WEATHER_RAIN = 5,
-		WEATHER_HAIL = 5
+		WEATHER_SNOW = 5
 		)
 	observed_message = "It is overcast, all you can see are clouds."
 	transition_messages = list(
@@ -171,10 +171,10 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 	temp_low = 	225
 	light_modifier = 0.7
 	transition_chances = list(
-		WEATHER_OVERCAST = 20,
+		WEATHER_HAIL = 5,
 		WEATHER_LIGHT_SNOW = 50,
-		WEATHER_SNOW = 25,
-		WEATHER_HAIL = 5
+		WEATHER_OVERCAST = 20,
+		WEATHER_SNOW = 25
 		)
 	observed_message = "It is snowing lightly."
 	effect_message = list(
@@ -207,11 +207,11 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 	light_modifier = 0.5
 	flight_failure_modifier = 5
 	transition_chances = list(
-		WEATHER_LIGHT_SNOW = 20,
-		WEATHER_SNOW = 50,
 		WEATHER_BLIZZARD = 20,
 		WEATHER_HAIL = 5,
-		WEATHER_OVERCAST = 5
+		WEATHER_LIGHT_SNOW = 20,
+		WEATHER_OVERCAST = 5,
+		WEATHER_SNOW = 50
 		)
 	observed_message = "It is snowing."
 	effect_message = list(
@@ -238,7 +238,7 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 
 	for(var/turf/simulated/floor/outdoors/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
 		if(S.z in holder.our_planet.expected_z_levels)
-			for(var/dir_checked in cardinal)
+			for(var/dir_checked in GLOB.cardinal)
 				var/turf/simulated/floor/T = get_step(S, dir_checked)
 				if(istype(T))
 					if(istype(T, /turf/simulated/floor/outdoors) && prob(33))
@@ -252,10 +252,10 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 	light_modifier = 0.3
 	flight_failure_modifier = 10
 	transition_chances = list(
-		WEATHER_SNOW = 45,
 		WEATHER_BLIZZARD = 40,
 		WEATHER_HAIL = 10,
-		WEATHER_OVERCAST = 5
+		WEATHER_OVERCAST = 5,
+		WEATHER_SNOW = 45
 		)
 	observed_message = "A blizzard blows snow everywhere."
 	effect_message = list(
@@ -281,7 +281,7 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 
 	for(var/turf/simulated/floor/outdoors/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
 		if(S.z in holder.our_planet.expected_z_levels)
-			for(var/dir_checked in cardinal)
+			for(var/dir_checked in GLOB.cardinal)
 				var/turf/simulated/floor/T = get_step(S, dir_checked)
 				if(istype(T))
 					if(istype(T, /turf/simulated/floor/outdoors) && prob(50))
@@ -298,11 +298,11 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 	)
 
 	transition_chances = list(
-		WEATHER_OVERCAST = 25,
+		WEATHER_HAIL = 5,
 		WEATHER_LIGHT_SNOW = 10,
+		WEATHER_OVERCAST = 25,
 		WEATHER_RAIN = 50,
-		WEATHER_STORM = 10,
-		WEATHER_HAIL = 5
+		WEATHER_STORM = 10
 		)
 	observed_message = "It is raining."
 	transition_messages = list(
@@ -359,10 +359,10 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 
 
 	transition_chances = list(
-		WEATHER_RAIN = 45,
-		WEATHER_STORM = 40,
 		WEATHER_HAIL = 10,
-		WEATHER_OVERCAST = 5
+		WEATHER_OVERCAST = 5,
+		WEATHER_RAIN = 45,
+		WEATHER_STORM = 40
 		)
 
 /datum/weather/virgo3b/storm/process_effects()
@@ -388,7 +388,7 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 						playsound(L, 'sound/effects/rustle1.ogg', 100, 1)
 						L.drop_from_inventory(U)
 						U.toggle_umbrella()
-						U.throw_at(get_edge_target_turf(U, pick(alldirs)), 8, 1, L)
+						U.throw_at(get_edge_target_turf(U, pick(GLOB.alldirs)), 8, 1, L)
 
 			// If they have an open umbrella, it'll guard from rain
 			if(istype(L.get_active_hand(), /obj/item/melee/umbrella))
@@ -434,10 +434,10 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 	)
 
 	transition_chances = list(
-		WEATHER_RAIN = 45,
-		WEATHER_STORM = 40,
 		WEATHER_HAIL = 10,
-		WEATHER_OVERCAST = 5
+		WEATHER_OVERCAST = 5,
+		WEATHER_RAIN = 45,
+		WEATHER_STORM = 40
 		)
 	observed_message = "Ice is falling from the sky."
 	transition_messages = list(

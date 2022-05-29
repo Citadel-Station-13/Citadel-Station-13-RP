@@ -38,7 +38,7 @@ Buildable meters
  * @param loc Location
  * @pipe_type
  */
-/obj/item/pipe/Initialize(var/mapload, var/_pipe_type, var/_dir, var/obj/machinery/atmospherics/make_from)
+/obj/item/pipe/Initialize(mapload, _pipe_type, _dir, obj/machinery/atmospherics/make_from)
 	if(make_from)
 		make_from_existing(make_from)
 	else
@@ -60,7 +60,7 @@ Buildable meters
 	color = make_from.pipe_color
 	pipe_type = make_from.type
 
-/obj/item/pipe/trinary/flippable/make_from_existing(obj/machinery/atmospherics/trinary/make_from)
+/obj/item/pipe/trinary/flippable/make_from_existing(obj/machinery/atmospherics/component/trinary/make_from)
 	..()
 	if(make_from.mirrored)
 		do_a_flip()
@@ -75,7 +75,6 @@ Buildable meters
 	if(initial(fakeA.pipe_flags) & (PIPING_ALL_LAYER|PIPING_DEFAULT_LAYER_ONLY))
 		new_layer = PIPING_LAYER_DEFAULT
 	piping_layer = new_layer
-	// Do it the Polaris way
 	switch(piping_layer)
 		if(PIPING_LAYER_SCRUBBER)
 			color = PIPE_COLOR_RED
@@ -157,7 +156,7 @@ Buildable meters
 		setDir(EAST)
 
 /obj/item/pipe/trinary/flippable/fixdir()
-	if(dir in cornerdirs)
+	if(dir in GLOB.cornerdirs)
 		setDir(turn(dir, 45))
 
 /obj/item/pipe/attack_self(mob/user)
@@ -177,7 +176,7 @@ Buildable meters
 		return wrench_act(user, W)
 	return ..()
 
-/obj/item/pipe/proc/wrench_act(var/mob/living/user, var/obj/item/tool/wrench/W)
+/obj/item/pipe/wrench_act(var/mob/living/user, var/obj/item/tool/wrench/W)
 	if(!isturf(loc))
 		return TRUE
 
@@ -225,7 +224,7 @@ Buildable meters
 		A.req_one_access = req_one_access
 	A.on_construction(color, piping_layer)
 
-/obj/item/pipe/trinary/flippable/build_pipe(obj/machinery/atmospherics/trinary/T)
+/obj/item/pipe/trinary/flippable/build_pipe(obj/machinery/atmospherics/component/trinary/T)
 	T.mirrored = mirrored
 	. = ..()
 
@@ -266,7 +265,7 @@ Buildable meters
 		return wrench_act(user, W)
 	return ..()
 
-/obj/item/pipe_meter/proc/wrench_act(var/mob/living/user, var/obj/item/tool/wrench/W)
+/obj/item/pipe_meter/wrench_act(var/mob/living/user, var/obj/item/tool/wrench/W)
 	var/obj/machinery/atmospherics/pipe/pipe
 	for(var/obj/machinery/atmospherics/pipe/P in loc)
 		if(P.piping_layer == piping_layer)

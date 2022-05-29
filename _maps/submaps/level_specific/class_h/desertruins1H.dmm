@@ -1,0 +1,207 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"c" = (
+/turf/simulated/wall/sandstone/classh,
+/area/class_h/explored)
+"l" = (
+/obj/structure/loot_pile/surface/bones,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/explored)
+"n" = (
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/area/class_h/explored)
+"s" = (
+/obj/item/bone,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/explored)
+"G" = (
+/obj/structure/loot_pile/surface/bones,
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/area/class_h/explored)
+"W" = (
+/obj/item/bone,
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/area/class_h/explored)
+"X" = (
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/explored)
+
+(1,1,1) = {"
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+"}
+(2,1,1) = {"
+X
+X
+n
+X
+X
+X
+X
+X
+X
+X
+"}
+(3,1,1) = {"
+X
+n
+c
+n
+X
+n
+n
+c
+X
+X
+"}
+(4,1,1) = {"
+X
+X
+X
+n
+n
+G
+X
+X
+X
+X
+"}
+(5,1,1) = {"
+X
+X
+X
+X
+n
+n
+X
+X
+X
+X
+"}
+(6,1,1) = {"
+X
+X
+X
+X
+n
+n
+X
+n
+X
+X
+"}
+(7,1,1) = {"
+X
+X
+c
+n
+n
+n
+X
+c
+X
+X
+"}
+(8,1,1) = {"
+X
+X
+X
+X
+n
+n
+n
+X
+X
+X
+"}
+(9,1,1) = {"
+X
+X
+X
+l
+n
+n
+X
+X
+X
+X
+"}
+(10,1,1) = {"
+X
+X
+X
+n
+n
+n
+n
+X
+X
+X
+"}
+(11,1,1) = {"
+X
+X
+c
+n
+n
+n
+n
+c
+X
+X
+"}
+(12,1,1) = {"
+X
+X
+X
+X
+n
+n
+W
+X
+X
+X
+"}
+(13,1,1) = {"
+X
+X
+s
+n
+G
+n
+n
+X
+X
+X
+"}
+(14,1,1) = {"
+X
+X
+X
+c
+c
+c
+c
+X
+X
+X
+"}
+(15,1,1) = {"
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+"}

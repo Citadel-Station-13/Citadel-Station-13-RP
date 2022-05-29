@@ -64,8 +64,8 @@
 		qdel(src)
 
 /obj/item/modkit/examine(mob/user)
-	..(user)
-	to_chat(user, "It looks as though it modifies hardsuits to fit [target_species] users.")
+	. = ..()
+	. += "<span class = 'notice'>It looks as though it modifies hardsuits to fit [target_species] users.</span>"
 
 /obj/item/modkit/tajaran
 	name = "tajaran hardsuit modification kit"

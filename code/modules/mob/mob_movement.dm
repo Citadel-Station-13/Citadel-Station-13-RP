@@ -34,7 +34,7 @@
 
 /client/verb/drop_item()
 	set hidden = 1
-	if(!isrobot(mob) && mob.stat == CONSCIOUS && (isturf(mob.loc) || isbelly(mob.loc)))	// VOREStation Edit: dropping in bellies
+	if(!isrobot(mob) && mob.stat == CONSCIOUS && (isturf(mob.loc) || isbelly(mob.loc)))	// Dropping in bellies
 		return mob.drop_item()
 	return
 
@@ -50,7 +50,7 @@
 			mob.control_object.forceMove(get_step(mob.control_object,direct))
 	return
 
-/// until movespeed modifiersare done - kevinz000
+/// until movespeed modifiers are done - silicons
 /mob/proc/movement_delay()
 	return 0
 
@@ -95,8 +95,9 @@
   */
 
 /client/Move(n, direct)
-	if(!mob?.loc)
-		return FALSE
+	//if(!mob) // Clients cannot have a null mob, as enforced by byond
+	//	return // Moved here to avoid nullrefs below
+
 	if(!mob.check_move_cooldown()) //do not move anything ahead of this check please
 		return FALSE
 	else
@@ -164,6 +165,12 @@
 		return FALSE
 */
 
+	//Relaymove could handle it
+	if(mob.machine)
+		var/result = mob.machine.relaymove(mob, direct)
+		if(result)
+			return result
+
 	if(isobj(mob.loc) || ismob(mob.loc))	//Inside an object, tell it we moved
 		var/atom/O = mob.loc
 		return O.relaymove(mob, direct)
@@ -171,55 +178,22 @@
 	if(!mob.Process_Spacemove(direct))
 		return FALSE
 
-// shitcode, rip out when possible
-/*
-	if((istype(mob.loc, /turf/space)) || (mob.lastarea.has_gravity == 0))
-		if(!mob.Process_Spacemove(0))	return 0
-*/
-
 	if(!mob.lastarea)
 		mob.lastarea = get_area(mob.loc)
-// end
 
-/*
-	//We are now going to move
-	var/add_delay = mob.cached_multiplicative_slowdown
-	if(old_move_delay + (add_delay*MOVEMENT_DELAY_BUFFER_DELTA) + MOVEMENT_DELAY_BUFFER > world.time)
-		move_delay = old_move_delay
-	else
-		move_delay = world.time
-
-	if(L.confused)
-		var/newdir = 0
-		if(L.confused > 40)
-			newdir = pick(GLOB.alldirs)
-		else if(prob(L.confused * 1.5))
-			newdir = angle2dir(dir2angle(direct) + pick(90, -90))
-		else if(prob(L.confused * 3))
-			newdir = angle2dir(dir2angle(direct) + pick(45, -45))
-		if(newdir)
-			direct = newdir
-			n = get_step(L, direct)
-
-	. = ..()
-*/
-
-// no instead we're using polariscode
-	// added code
 	var/move_delay_add_grab = 0
 	var/add_delay = mob.movement_delay(n, direct)
 	if(old_move_delay + (add_delay*MOVEMENT_DELAY_BUFFER_DELTA) + MOVEMENT_DELAY_BUFFER > world.time)
 		mob.move_delay = old_move_delay
 	else
 		mob.move_delay = world.time
-	//
 
 	if(mob.restrained() && mob.pulledby)//Why being pulled while cuffed prevents you from moving
 		to_chat(src, "<span class='warning'>You're restrained! You can't move!</span>")
 		return FALSE
 
 	if(length(mob.pinned))
-		to_chat(src, "<font color='blue'>You're pinned to a wall by [mob.pinned[1]]!</font>")
+		to_chat(src, "<font color=#4F49AF>You're pinned to a wall by [mob.pinned[1]]!</font>")
 		return FALSE
 
 	if(mob.pulledby || mob.buckled) // Wheelchair driving!		//this is shitcode
@@ -292,7 +266,7 @@
 		. = mob.SelfMove(n, direct)
 	for (var/obj/item/grab/G in mob)
 		if (G.state == GRAB_NECK)
-			mob.setDir(reverse_dir[direct])
+			mob.setDir(GLOB.reverse_dir[direct])
 		G.adjust_position()
 	for (var/obj/item/grab/G in mob.grabbed_by)
 		G.adjust_position()
@@ -301,7 +275,7 @@
 	add_delay = max(add_delay, move_delay_add_grab)
 
 	if((direct & (direct - 1)) && mob.loc == n) //moved diagonally successfully
-		add_delay *= 2
+		add_delay *= SQRT_2
 	mob.move_delay += add_delay
 /*
 	if(.) // If mob is null here, we deserve the runtime
@@ -464,6 +438,7 @@
 // Would've been an /atom/movable proc but it caused issues.
 /mob/Moved(atom/oldloc)
 	. = ..()
+	client?.parallax_holder?.Update()
 	for(var/obj/O in contents)
 		O.on_loc_moved(oldloc)
 
@@ -487,7 +462,7 @@
   * * we are not restrained
   */
 /mob/proc/canface()
-	if(world.time < last_turn)
+	if(world.time <= last_turn)
 		return FALSE
 	if(stat == DEAD || stat == UNCONSCIOUS)
 		return FALSE
@@ -503,7 +478,7 @@
 	if(!canface())
 		return FALSE
 	setDir(EAST)
-	last_turn = world.time + MOB_FACE_DIRECTION_DELAY
+	last_turn = world.time
 	return TRUE
 
 ///Hidden verb to turn west
@@ -512,7 +487,7 @@
 	if(!canface())
 		return FALSE
 	setDir(WEST)
-	last_turn = world.time + MOB_FACE_DIRECTION_DELAY
+	last_turn = world.time
 	return TRUE
 
 ///Hidden verb to turn north
@@ -521,7 +496,7 @@
 	if(!canface())
 		return FALSE
 	setDir(NORTH)
-	last_turn = world.time + MOB_FACE_DIRECTION_DELAY
+	last_turn = world.time
 	return TRUE
 
 ///Hidden verb to turn south
@@ -530,5 +505,5 @@
 	if(!canface())
 		return FALSE
 	setDir(SOUTH)
-	last_turn = world.time + MOB_FACE_DIRECTION_DELAY
+	last_turn = world.time
 	return TRUE

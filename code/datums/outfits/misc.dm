@@ -1,4 +1,4 @@
-/decl/hierarchy/outfit/standard_space_gear
+/datum/outfit/standard_space_gear
 	name = "Standard space gear"
 	shoes = /obj/item/clothing/shoes/black
 	head = /obj/item/clothing/head/helmet/space
@@ -8,7 +8,7 @@
 	mask = /obj/item/clothing/mask/breath
 	flags = OUTFIT_HAS_JETPACK
 
-/decl/hierarchy/outfit/emergency_space_gear
+/datum/outfit/emergency_space_gear
 	name = "Emergency space gear"
 	shoes = /obj/item/clothing/shoes/black
 	head = /obj/item/clothing/head/helmet/space/emergency
@@ -17,7 +17,7 @@
 	back = /obj/item/tank/oxygen
 	mask = /obj/item/clothing/mask/breath
 
-/decl/hierarchy/outfit/soviet_soldier
+/datum/outfit/soviet_soldier
 	name = "Soviet soldier"
 	uniform = /obj/item/clothing/under/soviet
 	shoes = /obj/item/clothing/shoes/boots/combat
@@ -26,7 +26,7 @@
 	back = /obj/item/storage/backpack/satchel
 	belt = /obj/item/gun/projectile/revolver/mateba
 
-/decl/hierarchy/outfit/soviet_soldier/admiral
+/datum/outfit/soviet_soldier/admiral
 	name = "Soviet admiral"
 	head = /obj/item/clothing/head/hgpiratecap
 	l_ear = /obj/item/radio/headset/heads/captain
@@ -37,24 +37,29 @@
 	id_type = /obj/item/card/id/centcom	//station
 	id_pda_assignment = "Admiral"
 
-/decl/hierarchy/outfit/merchant
-	name = "Merchant"
+/datum/outfit/merchant
+	name = "Nebula Gas Merchant"
 	shoes = /obj/item/clothing/shoes/black
-	l_ear = /obj/item/radio/headset
-	uniform = /obj/item/clothing/under/color/grey
+	gloves = /obj/item/clothing/gloves/brown
+	back = /obj/item/storage/backpack/satchel
+	l_ear = /obj/item/radio/headset/trader
+	glasses = /obj/item/clothing/glasses/sunglasses
+	uniform = /obj/item/clothing/under/trader_coveralls
 	id_slot = slot_wear_id
-	id_type = /obj/item/card/id/civilian	//merchant
+	id_type = /obj/item/card/id/external/merchant	//created a new ID so merchant can open their doors
 	pda_slot = slot_r_store
 	pda_type = /obj/item/pda/chef //cause I like the look
 	id_pda_assignment = "Merchant"
 
-/decl/hierarchy/outfit/merchant/vox
-	name = "Merchant - Vox"
+/datum/outfit/merchant/vox //This needs to be updated.
+	name = "Nebula Gas Merchant - Vox"
 	shoes = /obj/item/clothing/shoes/boots/jackboots/toeless
+	back = /obj/item/tank/vox
 	uniform = /obj/item/clothing/under/vox/vox_robes
 	suit = /obj/item/clothing/suit/armor/vox_scrap
+	mask = /obj/item/clothing/mask/breath
 
-/decl/hierarchy/outfit/zaddat
+/datum/outfit/zaddat
 	name = "Zaddat Suit"
 	suit = /obj/item/clothing/suit/space/void/zaddat/
 	mask = /obj/item/clothing/mask/gas/zaddat

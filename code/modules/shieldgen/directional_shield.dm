@@ -16,8 +16,7 @@
 	var/x_offset = 0 // Offset from the 'center' of where the projector is, so that if it moves, the shield can recalc its position.
 	var/y_offset = 0 // Ditto.
 
-/obj/effect/directional_shield/Initialize(mapload, new_projector)
-	. = ..()
+/obj/effect/directional_shield/New(var/newloc, var/new_projector)
 	if(new_projector)
 		projector = new_projector
 		var/turf/us = get_turf(src)
@@ -27,6 +26,7 @@
 			y_offset = us.y - them.y
 	else
 		update_color()
+	..(newloc)
 
 /obj/effect/directional_shield/proc/relocate()
 	if(!projector)
@@ -53,13 +53,14 @@
 		projector = null
 	return ..()
 
-/obj/effect/directional_shield/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/effect/directional_shield/CanPass(atom/movable/mover, turf/target)
+	. = ..()
 	if(istype(mover, /obj/item/projectile))
 		var/obj/item/projectile/P = mover
 		if(istype(P, /obj/item/projectile/test)) // Turrets need to try to kill the shield and so their test bullet needs to penetrate.
 			return TRUE
 
-		var/bad_arc = reverse_direction(dir) // Arc of directions from which we cannot block.
+		var/bad_arc = REVERSE_DIR(dir) // Arc of directions from which we cannot block.
 		if(check_shield_arc(src, bad_arc, P)) // This is actually for mobs but it will work for our purposes as well.
 			return FALSE
 	return TRUE
@@ -67,7 +68,7 @@
 /obj/effect/directional_shield/bullet_act(var/obj/item/projectile/P)
 	adjust_health(-P.get_structure_damage())
 	P.on_hit()
-	playsound(get_turf(src), 'sound/effects/EMPulse.ogg', 75, 1)
+	playsound(src, 'sound/effects/EMPulse.ogg', 75, 1)
 
 // All the shields tied to their projector are one 'unit', and don't have individualized health values like most other shields.
 /obj/effect/directional_shield/proc/adjust_health(amount)
@@ -97,16 +98,46 @@
 	var/high_color = "#0099FF"			// Color the shield will be when at max health.  A light blue.
 	var/low_color = "#FF0000"			// Color the shield will drift towards as health is lowered.  Deep red.
 
+/mob/living/simple_mob/Moved()
+	for(var/obj/item/shield_projector/C in src.contents)
+		C.moved_event()
+	return ..()
+
+/mob/living/simple_mob/death()
+	for(var/obj/item/shield_projector/C in src.contents)
+		QDEL_NULL(C)
+	return ..()
+
 /obj/item/shield_projector/Initialize(mapload)
-	. = ..()
 	START_PROCESSING(SSobj, src)
 	if(always_on)
 		create_shields()
+	RegisterSignal(src, COMSIG_MOVABLE_MOVED, .proc/moved_event)
+	return ..()
 
 /obj/item/shield_projector/Destroy()
 	destroy_shields()
 	STOP_PROCESSING(SSobj, src)
+	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
 	return ..()
+
+/obj/item/shield_projector/pickup(mob/user)
+	. = ..()
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/moved_event)
+
+/obj/item/shield_projector/dropped(mob/user)
+	. = ..()
+	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
+
+/obj/item/shield_projector/Moved(atom/oldloc)
+	. = ..()
+	if(!ismob(loc) && !isturf(loc))
+		destroy_shields()
+
+// WIP: recursive for non mob movement detection sometime?
+
+/obj/item/shield_projector/proc/moved_event()
+	update_shield_positions()
 
 /obj/item/shield_projector/proc/create_shield(var/newloc, var/new_dir)
 	var/obj/effect/directional_shield/S = new(newloc, src)
@@ -125,6 +156,7 @@
 	for(var/obj/effect/directional_shield/S in active_shields)
 		active_shields -= S
 		qdel(S)
+	set_light(0)
 	active = FALSE
 
 /obj/item/shield_projector/proc/update_shield_positions()
@@ -138,12 +170,12 @@
 			destroy_shields()
 			var/turf/T = get_turf(src)
 			T.visible_message("<span class='danger'>\The [src] overloads and the shield vanishes!</span>")
-			playsound(get_turf(src), 'sound/machines/defib_failed.ogg', 75, 0)
+			playsound(src, 'sound/machines/defib_failed.ogg', 75, 0)
 		else
 			if(shield_health < max_shield_health / 4) // Play a more urgent sounding beep if it's at 25% health.
-				playsound(get_turf(src), 'sound/machines/defib_success.ogg', 75, 0)
+				playsound(src, 'sound/machines/defib_success.ogg', 75, 0)
 			else
-				playsound(get_turf(src), 'sound/machines/defib_SafetyOn.ogg', 75, 0)
+				playsound(src, 'sound/machines/defib_SafetyOn.ogg', 75, 0)
 		last_damaged_time = world.time
 	update_shield_colors()
 
@@ -179,12 +211,17 @@
 		if(always_on)
 			to_chat(user, "<span class='warning'>You can't seem to deactivate \the [src].</span>")
 			return
-
-		destroy_shields()
+		set_on(FALSE)
 	else
 		setDir(user.dir) // Needed for linear shields.
-		create_shields()
+		set_on(TRUE)
 	visible_message("<span class='notice'>\The [user] [!active ? "de":""]activates \the [src].</span>")
+
+/obj/item/shield_projector/proc/set_on(var/on)
+	if(isnull(on))
+		return
+
+	on ? create_shields() : destroy_shields() // Harmless if called when in the wrong state.
 
 /obj/item/shield_projector/process()
 	if(shield_health < max_shield_health && ( (last_damaged_time + shield_regen_delay) < world.time) )
@@ -192,25 +229,17 @@
 		if(always_on && !active) // Make shields as soon as possible if this is set.
 			create_shields()
 		if(shield_health == max_shield_health)
-			playsound(get_turf(src), 'sound/machines/defib_ready.ogg', 75, 0)
+			playsound(src, 'sound/machines/defib_ready.ogg', 75, 0)
 		else
-			playsound(get_turf(src), 'sound/machines/defib_safetyOff.ogg', 75, 0)
+			playsound(src, 'sound/machines/defib_safetyOff.ogg', 75, 0)
 
 /obj/item/shield_projector/examine(var/mob/user)
-	..()
-	if(get_dist(src, user) <= 1)
-		to_chat(user, "\The [src]'s shield matrix is at [round( (shield_health / max_shield_health) * 100, 0.01)]% strength.")
+	. = ..()
+	if(Adjacent(user))
+		. += "Its shield matrix is at [round( (shield_health / max_shield_health) * 100, 0.01)]% strength."
 
 /obj/item/shield_projector/emp_act(var/severity)
 	adjust_health(-max_shield_health / severity) // A strong EMP will kill the shield instantly, but weaker ones won't on the first hit.
-
-/obj/item/shield_projector/Move(var/newloc, var/direct)
-	..(newloc, direct)
-	update_shield_positions()
-
-/obj/item/shield_projector/on_loc_moved(atom/oldloc)
-	update_shield_positions()
-
 
 // Subtypes
 

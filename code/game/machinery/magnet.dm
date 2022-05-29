@@ -10,25 +10,30 @@
 	name = "Electromagnetic Generator"
 	desc = "A device that uses station power to create points of magnetic energy."
 	plane = PLATING_PLANE
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 50
 
-	var/freq = 1449		// radio frequency
-	var/electricity_level = 1 // intensity of the magnetic pull
-	var/magnetic_field = 1 // the range of magnetic attraction
-	var/code = 0 // frequency code, they should be different unless you have a group of magnets working together or something
-	var/turf/center // the center of magnetic attraction
-	var/on = 0
-	var/pull_active = 0
+	/// Radio frequency.
+	var/freq = 1449
+	/// Intensity of the magnetic pull.
+	var/electricity_level = 1
+	/// The range of magnetic attraction.
+	var/magnetic_field = 1
+	/// Frequency code, they should be different unless you have a group of magnets working together or something.
+	var/code = 0
+	/// The center of magnetic attraction.
+	var/turf/center
+	var/on = FALSE
+	var/pull_active = FALSE
 
 	// x, y modifiers to the center turf; (0, 0) is centered on the magnet, whereas (1, -1) is one tile right, one tile down
 	var/center_x = 0
 	var/center_y = 0
 	var/max_dist = 20 // absolute value of center_x,y cannot exceed this integer
 
-/obj/machinery/magnetic_module/New()
-	..()
+/obj/machinery/magnetic_module/Initialize(mapload, newdir)
+	. = ..()
 	var/turf/T = loc
 	hide(!T.is_plating())
 	center = T
@@ -41,7 +46,7 @@
 		magnetic_process()
 
 // update the invisibility and icon
-/obj/machinery/magnetic_module/hide(var/intact)
+/obj/machinery/magnetic_module/hide(intact)
 	invisibility = intact ? 101 : 0
 	updateicon()
 
@@ -66,7 +71,7 @@
 
 		Cmd(command, modifier)
 
-/obj/machinery/magnetic_module/proc/Cmd(var/command, var/modifier)
+/obj/machinery/magnetic_module/proc/Cmd(command, modifier)
 	if(command)
 		switch(command)
 			if("set-electriclevel")
@@ -120,9 +125,9 @@
 					spawn()
 						magnetic_process()
 
-/obj/machinery/magnetic_module/process()
-	if(stat & NOPOWER)
-		on = 0
+/obj/machinery/magnetic_module/process(delta_time)
+	if(machine_stat & NOPOWER)
+		on = FALSE
 
 	// Sanity checks:
 	if(electricity_level <= 0)
@@ -160,10 +165,11 @@
 	updateicon()
 
 /obj/machinery/magnetic_module/proc/magnetic_process() // proc that actually does the pull_active
-	if(pull_active) return
+	if(pull_active)
+		return
 	while(on)
 
-		pull_active = 1
+		pull_active = TRUE
 		center = locate(x+center_x, y+center_y, z)
 		if(center)
 			for(var/obj/M in orange(magnetic_field, center))
@@ -171,13 +177,14 @@
 					step_towards(M, center)
 
 			for(var/mob/living/silicon/S in orange(magnetic_field, center))
-				if(istype(S, /mob/living/silicon/ai)) continue
+				if(istype(S, /mob/living/silicon/ai))
+					continue
 				step_towards(S, center)
 
 		use_power(electricity_level * 5)
 		sleep(13 - electricity_level)
 
-	pull_active = 0
+	pull_active = FALSE
 
 /obj/machinery/magnetic_module/Destroy()
 	if(radio_controller)
@@ -188,32 +195,39 @@
 	name = "Magnetic Control Console"
 	icon = 'icons/obj/airlock_machines.dmi' // uses an airlock machine icon, THINK GREEN HELP THE ENVIRONMENT - RECYCLING!
 	icon_state = "airlock_control_standby"
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 45
 	var/frequency = 1449
 	var/code = 0
 	var/list/magnets = list()
 	var/title = "Magnetic Control Console"
-	var/autolink = 0 // if set to 1, can't probe for other magnets!
 
-	var/pathpos = 1 // position in the path
-	var/path = "NULL" // text path of the magnet
-	var/speed = 1 // lowest = 1, highest = 10
-	var/list/rpath = list() // real path of the magnet, used in iterator
+	/// If set to 1, can't probe for other magnets!
+	var/autolink = FALSE
+	/// Position in the path.
+	var/pathpos = 1
+	/// Text path of the magnet.
+	var/path = "NULL"
+	/// Lowest = 1, Highest = 10
+	var/speed = 1
+	/// Real path of the magnet, used in iterator.
+	var/list/rpath = list()
 
-	var/moving = 0 // 1 if scheduled to loop
-	var/looping = 0 // 1 if looping
+	/// TRUE if scheduled to loop.
+	var/moving = FALSE
+	/// TRUE if looping.
+	var/looping = FALSE
 
 	var/datum/radio_frequency/radio_connection
 
 
-/obj/machinery/magnetic_controller/New()
-	..()
+/obj/machinery/magnetic_controller/Initialize(mapload, newdir)
+	. = ..()
 
 	if(autolink)
-		for(var/obj/machinery/magnetic_module/M in machines)
+		for(var/obj/machinery/magnetic_module/M in GLOB.machines)
 			if(M.freq == frequency && M.code == code)
 				magnets.Add(M)
 
@@ -227,18 +241,18 @@
 		filter_path() // renders rpath
 
 
-/obj/machinery/magnetic_controller/process()
+/obj/machinery/magnetic_controller/process(delta_time)
 	if(magnets.len == 0 && autolink)
-		for(var/obj/machinery/magnetic_module/M in machines)
+		for(var/obj/machinery/magnetic_module/M in GLOB.machines)
 			if(M.freq == frequency && M.code == code)
 				magnets.Add(M)
 
 
-/obj/machinery/magnetic_controller/attack_ai(mob/user as mob)
+/obj/machinery/magnetic_controller/attack_ai(mob/user)
 	return attack_hand(user)
 
-/obj/machinery/magnetic_controller/attack_hand(mob/user as mob)
-	if(stat & (BROKEN|NOPOWER))
+/obj/machinery/magnetic_controller/attack_hand(mob/user)
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	user.set_machine(src)
 	var/dat = "<B>Magnetic Control Console</B><BR><BR>"
@@ -266,10 +280,11 @@
 	onclose(user, "magnet")
 
 /obj/machinery/magnetic_controller/Topic(href, href_list)
-	if(stat & (BROKEN|NOPOWER))
+	if(..())
+		return TRUE
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	usr.set_machine(src)
-	add_fingerprint(usr)
 
 	if(href_list["radio-op"])
 
@@ -316,7 +331,7 @@
 			if("setpath")
 				var/newpath = sanitize(input(usr, "Please define a new path!",,path) as text|null)
 				if(newpath && newpath != "")
-					moving = 0 // stop moving
+					moving = FALSE // stop moving
 					path = newpath
 					pathpos = 1 // reset position
 					filter_path() // renders rpath
@@ -334,10 +349,10 @@
 
 	while(moving && rpath.len >= 1)
 
-		if(stat & (BROKEN|NOPOWER))
+		if(machine_stat & (BROKEN|NOPOWER))
 			break
 
-		looping = 1
+		looping = TRUE
 
 		// Prepare the radio signal
 		var/datum/signal/signal = new
@@ -372,7 +387,7 @@
 		else
 			sleep(12-speed)
 
-	looping = 0
+	looping = FALSE
 
 
 /obj/machinery/magnetic_controller/proc/filter_path()

@@ -7,6 +7,7 @@
 	item_state_slots = list(slot_r_hand_str = "l6closed-empty", slot_l_hand_str = "l6closed-empty") // placeholder
 	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
 	force = 10
+	heavy = TRUE
 	slot_flags = SLOT_BACK
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 2, TECH_ILLEGAL = 8)
 	caliber = "14.5mm"
@@ -16,9 +17,10 @@
 	max_shells = 1
 	ammo_type = /obj/item/ammo_casing/a145
 	projectile_type = /obj/item/projectile/bullet/rifle/a145
-	accuracy = -75
-	scoped_accuracy = 75
-//	one_handed_penalty = 90
+	load_sound = 'sound/weapons/guns/interaction/rifle_load.ogg'
+	accuracy = -45
+	scoped_accuracy = 95
+	one_handed_penalty = 90
 	var/bolt_open = 0
 
 /obj/item/gun/projectile/heavysniper/update_icon()
@@ -38,8 +40,10 @@
 			chambered = null
 		else
 			to_chat(user, "<span class='notice'>You work the bolt open.</span>")
+		playsound(src.loc, 'sound/weapons/guns/interaction/rifle_boltback.ogg', 50, 1)
 	else
 		to_chat(user, "<span class='notice'>You work the bolt closed.</span>")
+		playsound(src.loc, 'sound/weapons/guns/interaction/rifle_boltforward.ogg', 50, 1)
 		bolt_open = 0
 	add_fingerprint(user)
 	update_icon()
@@ -81,15 +85,16 @@
 	caliber = "7.62mm"
 	load_method = MAGAZINE
 	accuracy = -45 //shooting at the hip
-	scoped_accuracy = 0
+	scoped_accuracy = 95
+	heavy = TRUE
 //	requires_two_hands = 1
-//	one_handed_penalty = 60 // The weapon itself is heavy, and the long barrel makes it hard to hold steady with just one hand.
+	one_handed_penalty = 60 // The weapon itself is heavy, and the long barrel makes it hard to hold steady with just one hand.
 	fire_sound = 'sound/weapons/Gunshot_SVD.ogg' // Has a very unique sound.
 	magazine_type = /obj/item/ammo_magazine/m762svd
 	allowed_magazines = list(/obj/item/ammo_magazine/m762svd)
 
-/obj/item/gun/projectile/SVD/update_icon()
-	..()
+/obj/item/gun/projectile/SVD/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = "SVD"
 	else
@@ -101,3 +106,18 @@
 	set popup_menu = 1
 
 	toggle_scope(2.0)
+
+/obj/item/gun/projectile/SVD/taj
+	name = "Adhomai sniper rifle"
+	desc = "The Hotaki Marksman rifle, in stark contrast to the usual products of Hotak's arms, is an elegant and precise rifle that has taken the lives of many high value targets in the name of defending the Democratic People's Republic of Adhomai."
+	icon_state = "svd-taj"
+	item_state = "svd-taj"
+	wielded_item_state = "svd-taj-wielded"
+
+
+/obj/item/gun/projectile/SVD/taj/update_icon_state()
+	. = ..()
+	if(ammo_magazine)
+		icon_state = "SVD-taj"
+	else
+		icon_state = "SVD-taj-empty"

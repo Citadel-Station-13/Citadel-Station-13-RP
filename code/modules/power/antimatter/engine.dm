@@ -28,14 +28,14 @@
 
 //injector
 
-/obj/machinery/power/am_engine/injector/New()
-	..()
-	spawn( 13 )
-		var/loc = get_step(src, NORTH)
-		src.connected = locate(/obj/machinery/power/am_engine/engine, get_step(loc, NORTH))
-		return
-	return
+/obj/machinery/power/am_engine/injector/Initialize(mapload, newdir)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
 
+/obj/machinery/power/am_engine/injector/LateInitialize()
+	. = ..()
+	var/loc = get_step(src, NORTH)
+	connected = locate(/obj/machinery/power/am_engine/engine, get_step(loc, NORTH))
 
 /obj/machinery/power/am_engine/injector/attackby(obj/item/fuel/F, mob/user)
 	if( (stat & BROKEN) || !connected) return
@@ -71,15 +71,14 @@
 
 //engine
 
+/obj/machinery/power/am_engine/engine/Initialize(mapload, newdir)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
 
-/obj/machinery/power/am_engine/engine/New()
-	..()
-	spawn( 7 )
-		var/loc = get_step(src, SOUTH)
-		src.connected = locate(/obj/machinery/power/am_engine/injector, get_step(loc, SOUTH))
-		return
-	return
-
+/obj/machinery/power/am_engine/engine/LateInitialize()
+	. = ..()
+	var/loc = get_step(src, SOUTH)
+	src.connected = locate(/obj/machinery/power/am_engine/injector, get_step(loc, SOUTH))
 
 /obj/machinery/power/am_engine/engine/proc/engine_go()
 

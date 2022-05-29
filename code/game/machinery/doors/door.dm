@@ -1,6 +1,5 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
-#define DOOR_REPAIR_AMOUNT 50	//amount of health regained per stack amount used
-
+///amount of health regained per stack amount used
+#define DOOR_REPAIR_AMOUNT 50
 /obj/machinery/door
 	name = "Door"
 	desc = "It opens and closes."
@@ -9,15 +8,15 @@
 	anchored = 1
 	opacity = 1
 	density = 1
-	can_atmos_pass = ATMOS_PASS_DENSITY
+	CanAtmosPass = ATMOS_PASS_PROC
 	layer = DOOR_OPEN_LAYER
 	var/open_layer = DOOR_OPEN_LAYER
 	var/closed_layer = DOOR_CLOSED_LAYER
 
 	var/visible = 1
-	var/p_open = 0
-	var/operating = 0
-	var/autoclose = 0
+	var/p_open = 0//[bool]is the door open?
+	var/operating = 0//[bool]Is the door opening or closing?
+	var/autoclose = 0//[bool]should the door close automaticly
 	var/glass = 0
 	var/normalspeed = 1
 	var/heat_proof = 0 // For glass airlocks/opacity firedoors
@@ -49,7 +48,7 @@
 			visible_message("<span class='notice'>\The [user] bonks \the [src] harmlessly.</span>")
 	user.do_attack_animation(src)
 
-/obj/machinery/door/New()
+/obj/machinery/door/Initialize(mapload, newdir)
 	. = ..()
 	if(density)
 		layer = closed_layer
@@ -72,14 +71,13 @@
 	update_icon()
 
 	update_nearby_tiles(need_rebuild=1)
-	return
 
 /obj/machinery/door/Destroy()
-	density = 0
+	density = FALSE
 	update_nearby_tiles()
 	. = ..()
 
-/obj/machinery/door/process()
+/obj/machinery/door/process(delta_time)
 	if(close_door_at && world.time >= close_door_at)
 		if(autoclose)
 			close_door_at = next_close_time()
@@ -109,8 +107,8 @@
 		M.last_bumped = world.time
 		if(M.restrained() && !check_access(null))
 			return
-		else if(istype(M, /mob/living/simple_mob/animal/passive/mouse) && !(M.ckey))	//VOREStation Edit: Make wild mice
-			return																		//VOREStation Edit: unable to open doors
+		else if(istype(M, /mob/living/simple_mob/animal/passive/mouse) && !(M.ckey))
+			return
 		else
 			bumpopen(M)
 
@@ -143,10 +141,12 @@
 		return !opacity
 	return !density
 
-/obj/machinery/door/CanZASPass(turf/T, is_zone)
-	if(is_zone)
-		return block_air_zones ? ATMOS_PASS_NO : ATMOS_PASS_YES
-	return ..()
+/obj/machinery/door/CanAtmosPass(turf/T, d)
+	if(density)
+		return ATMOS_PASS_AIR_BLOCKED
+	if(block_air_zones)
+		return ATMOS_PASS_ZONE_BLOCKED
+	return ATMOS_PASS_NOT_BLOCKED
 
 /obj/machinery/door/proc/bumpopen(mob/user as mob)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/retrigger_delay, airflow_delay)
@@ -156,7 +156,9 @@
 		return
 	src.add_fingerprint(user)
 	if(density)
-		if(allowed(user))
+		if(istype(user, /mob/living/simple_mob) && !(user.ckey))
+			do_animate("smdeny")
+		else if(allowed(user))
 			open()
 		else
 			do_animate("deny")
@@ -210,13 +212,13 @@
 	..()
 
 /obj/machinery/door/attackby(obj/item/I as obj, mob/user as mob)
-	src.add_fingerprint(user)
+	src.add_fingerprint(user, 0, I)
 
 	if(istype(I))
-		if(attackby_vr(I, user))	//VOREStation begin: Fireproofing
-			return					//VOREStation begin: Fireproofing
+		if(attackby_vr(I, user))
+			return
 		if(istype(I, /obj/item/stack/material) && I.get_material_name() == src.get_material_name())
-			if(stat & BROKEN)
+			if(machine_stat & BROKEN)
 				to_chat(user, "<span class='notice'>It looks like \the [src] is pretty busted. It's going to need more than just patching up now.</span>")
 				return
 			if(health >= maxhealth)
@@ -265,7 +267,8 @@
 			return
 
 		if(repairing && I.is_crowbar())
-			var/obj/item/stack/material/repairing_sheet = get_material().place_sheet(loc)
+			var/datum/material/M = get_material()
+			var/obj/item/stack/material/repairing_sheet = M.place_sheet(loc)
 			repairing_sheet.amount += repairing-1
 			repairing = 0
 			to_chat(user, "<span class='notice'>You remove \the [repairing_sheet].</span>")
@@ -329,17 +332,17 @@
 /obj/machinery/door/examine(mob/user)
 	. = ..()
 	if(src.health <= 0)
-		to_chat(user, "\The [src] is broken!")
+		. += "<span class = 'notice'>The [src] is broken!</span>"
 	if(src.health < src.maxhealth / 4)
-		to_chat(user, "\The [src] looks like it's about to break!")
+		. += "<span class = 'notice'>The [src] looks like it's about to break!</span>"
 	else if(src.health < src.maxhealth / 2)
-		to_chat(user, "\The [src] looks seriously damaged!")
+		. += "<span class = 'notice'>The [src] looks seriously damaged!</span>"
 	else if(src.health < src.maxhealth * 3/4)
-		to_chat(user, "\The [src] shows signs of damage!")
+		. += "<span class = 'notice'>The [src] shows signs of damage!</span>"
 
 
 /obj/machinery/door/proc/set_broken()
-	stat |= BROKEN
+	machine_stat |= BROKEN
 	for (var/mob/O in viewers(src, null))
 		if ((O.client && !( O.blinded )))
 			O.show_message("[src.name] breaks!" )
@@ -374,7 +377,7 @@
 
 /obj/machinery/door/blob_act()
 	if(density) // If it's closed.
-		if(stat & BROKEN)
+		if(machine_stat & BROKEN)
 			spawn(0)
 				open(1)
 		else
@@ -405,9 +408,12 @@
 			if(density)
 				flick("door_spark", src)
 		if("deny")
-			if(density && !(stat & (NOPOWER|BROKEN)))
+			if(density && !(machine_stat & (NOPOWER|BROKEN)))
 				flick("door_deny", src)
 				playsound(src.loc, 'sound/machines/buzz-two.ogg', 50, 0)
+		if("smdeny")
+			if(density && !(machine_stat & (NOPOWER|BROKEN)))
+				flick("door_deny", src)
 	return
 
 
@@ -456,11 +462,17 @@
 	operating = 0
 
 	//I shall not add a check every x ticks if a door has closed over some fire.
-	var/obj/fire/fire = locate() in loc
+	var/atom/movable/fire/fire = locate() in loc
 	if(fire)
 		qdel(fire)
 
 	return 1
+
+/obj/machinery/door/proc/toggle_open(var/forced)
+	if(density)
+		open(forced)
+	else
+		close(forced)
 
 /obj/machinery/door/proc/requiresID()
 	return 1

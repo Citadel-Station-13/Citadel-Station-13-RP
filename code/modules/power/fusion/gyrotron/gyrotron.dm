@@ -20,7 +20,7 @@ var/list/gyrotrons = list()
 	anchored = 1
 	state = 2
 
-/obj/machinery/power/emitter/gyrotron/Initialize()
+/obj/machinery/power/emitter/gyrotron/Initialize(mapload)
 	gyrotrons += src
 	active_power_usage = mega_energy * 50000
 	default_apply_parts()
@@ -30,7 +30,7 @@ var/list/gyrotrons = list()
 	gyrotrons -= src
 	return ..()
 
-/obj/machinery/power/emitter/gyrotron/process()
+/obj/machinery/power/emitter/gyrotron/process(delta_time)
 	active_power_usage = mega_energy * 50000
 	. = ..()
 
@@ -46,7 +46,7 @@ var/list/gyrotrons = list()
 	return E
 
 /obj/machinery/power/emitter/gyrotron/update_icon()
-	if (active && powernet && avail(active_power_usage))
+	if (active && powernet && avail(active_power_usage * 0.001))
 		icon_state = "emitter-on"
 	else
 		icon_state = "emitter-off"

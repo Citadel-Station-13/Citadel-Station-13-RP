@@ -38,9 +38,6 @@
 				if(istype(other_batt,chambered.type) && other_batt.shots_left)
 					switch_to(other_batt)
 					return new chambered.projectile_type()
-					break
-
-	return null
 
 /obj/item/gun/projectile/cell_loaded/proc/update_charge()
 	charge_left = 0
@@ -109,10 +106,11 @@
 	chambered = null
 	return ..()
 
-/obj/item/gun/projectile/cell_loaded/update_icon()
+/obj/item/gun/projectile/cell_loaded/update_overlays()
+	. = ..()
+
 	update_charge()
 
-	cut_overlays()
 	if(!chambered)
 		return
 
@@ -122,13 +120,13 @@
 	//Mode bar
 	var/image/mode_bar = image(icon, icon_state = "[initial(icon_state)]_type")
 	mode_bar.color = batt_color
-	add_overlay(mode_bar)
+	. += mode_bar
 
 	//Barrel color
 	var/image/barrel_color = image(icon, icon_state = "[initial(icon_state)]_barrel")
 	barrel_color.alpha = 150
 	barrel_color.color = batt_color
-	add_overlay(barrel_color)
+	. += barrel_color
 
 	//Charge bar
 	var/ratio = CEILING(((charge_left / max_charge) * charge_sections), 1)
@@ -136,8 +134,7 @@
 		var/image/charge_bar = image(icon, icon_state = "[initial(icon_state)]_charge")
 		charge_bar.pixel_x = i
 		charge_bar.color = batt_color
-		add_overlay(charge_bar)
-
+		. += charge_bar
 
 // The Magazine //
 /obj/item/ammo_magazine/cell_mag
@@ -221,7 +218,7 @@
 	var/type_name = null
 	projectile_type = /obj/item/projectile/beam
 
-/obj/item/ammo_casing/microbattery/Initialize()
+/obj/item/ammo_casing/microbattery/Initialize(mapload)
 	. = ..()
 	pixel_x = rand(-10, 10)
 	pixel_y = rand(-10, 10)
@@ -245,8 +242,7 @@
 	w_class = ITEMSIZE_NORMAL
 	max_w_class = ITEMSIZE_NORMAL
 
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid/New()
-	..()
+/obj/item/storage/secure/briefcase/nsfw_pack_hybrid/PopulateContents()
 	new /obj/item/gun/projectile/cell_loaded(src)
 	new /obj/item/ammo_magazine/cell_mag/advanced(src)
 	new /obj/item/ammo_casing/microbattery/combat/stun(src)
@@ -266,8 +262,7 @@
 	w_class = ITEMSIZE_NORMAL
 	max_w_class = ITEMSIZE_NORMAL
 
-/obj/item/storage/secure/briefcase/nsfw_pack_hybrid_combat/New()
-	..()
+/obj/item/storage/secure/briefcase/nsfw_pack_hybrid_combat/PopulateContents()
 	new /obj/item/gun/projectile/cell_loaded(src)
 	new /obj/item/ammo_magazine/cell_mag/advanced(src)
 	new /obj/item/ammo_casing/microbattery/combat/shotstun(src)

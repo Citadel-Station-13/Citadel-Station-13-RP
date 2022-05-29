@@ -1,4 +1,3 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
 /*
 Space dust
@@ -24,7 +23,7 @@ The "dust" will damage the hull of the station causin minor hull breaches.
 			numbers = rand(15,25)
 			dust_type = /obj/effect/space_dust/super
 
-	var/startside = pick(cardinal)
+	var/startside = pick(GLOB.cardinal)
 	for(var/i = 0 to numbers)
 		var/startx = 0
 		var/starty = 0
@@ -89,29 +88,30 @@ The "dust" will damage the hull of the station causin minor hull breaches.
 	qdel(src)
 
 /obj/effect/space_dust/Bump(atom/A)
-	spawn(0)
-		if(prob(50))
-			for(var/mob/M in range(10, src))
-				if(!M.stat && !istype(M, /mob/living/silicon/ai))
-					shake_camera(M, 3, 1)
-		if (A)
-			playsound(src.loc, 'sound/effects/meteorimpact.ogg', 40, 1)
+	. = ..()
+	hit(A)
 
-			if(ismob(A))
-				A.ex_act(strength)	// This should work for now I guess
-			else if(!istype(A,/obj/machinery/power/emitter) && !istype(A,/obj/machinery/field_generator))	// Protect the singularity from getting released every round!
-				A.ex_act(strength)	// Changing emitter/field gen ex_act would make it immune to bombs and C4
+/obj/effect/space_dust/proc/hit(atom/A)
+	if(prob(50))
+		for(var/mob/M in range(10, src))
+			if(!M.stat && !istype(M, /mob/living/silicon/ai))
+				shake_camera(M, 3, 1)
+	if (A)
+		playsound(src.loc, 'sound/effects/meteorimpact.ogg', 40, 1)
 
-			life--
-			if(life <= 0)
-				walk(src,0)
-				qdel(src)
-				return 0
-	return
+		if(ismob(A))
+			A.ex_act(strength)	// This should work for now I guess
+		else if(!istype(A,/obj/machinery/power/emitter) && !istype(A,/obj/machinery/field_generator))	// Protect the singularity from getting released every round!
+			A.ex_act(strength)	// Changing emitter/field gen ex_act would make it immune to bombs and C4
 
+		life--
+		if(life <= 0)
+			walk(src,0)
+			qdel(src)
+			return
 
 /obj/effect/space_dust/Bumped(atom/A)
-	Bump(A)
+	hit(A)
 	return
 
 /obj/effect/space_dust/ex_act(severity)

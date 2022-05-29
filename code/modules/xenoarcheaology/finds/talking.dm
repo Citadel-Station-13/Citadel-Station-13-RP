@@ -15,7 +15,7 @@
 	if(holder_atom)
 		START_PROCESSING(SSobj, src)
 
-/datum/talking_atom/process()
+/datum/talking_atom/process(delta_time)
 	if(!holder_atom)
 		STOP_PROCESSING(SSobj, src)
 
@@ -48,13 +48,13 @@
 		var/list/w = heard_words["[lowertext(seperate[Xa])]"]
 		if(w)
 			w.Add("[lowertext(seperate[next])]")
-		//world << "Adding [lowertext(seperate[next])] to [lowertext(seperate[Xa])]"
+		//to_chat(world, "Adding [lowertext(seperate[next])] to [lowertext(seperate[Xa])]")
 
 	if(prob(30))
 		var/list/options = list("[holder_atom] seems to be listening intently to [source]...",\
 			"[holder_atom] seems to be focusing on [source]...",\
 			"[holder_atom] seems to turn it's attention to [source]...")
-		holder_atom.loc.visible_message("<font color='blue'>\icon[holder_atom] [pick(options)]</font>")
+		holder_atom.loc.visible_message("<font color=#4F49AF>[icon2html(thing = holder_atom, target = world)]] [pick(options)]</font>")
 
 	if(prob(20))
 		spawn(2)
@@ -66,7 +66,7 @@
 		to_chat(world, "[uppertext(v)]")
 		var/list/d = heard_words["[v]"]
 		for(var/X in d)
-			world << "[X]"*/
+			to_chat(world, "[X]")*/
 
 /datum/talking_atom/proc/SaySomething(var/word = null)
 	if(!holder_atom)
@@ -109,7 +109,7 @@
 			msg+="!"
 
 	var/list/listening = viewers(holder_atom)
-	for(var/mob/M in mob_list)
+	for(var/mob/M in GLOB.mob_list)
 		if (!M.client)
 			continue //skip monkeys and leavers
 		if (istype(M, /mob/new_player))
@@ -118,5 +118,5 @@
 			listening|=M
 
 	for(var/mob/M in listening)
-		to_chat(M, "\icon[holder_atom] <b>[holder_atom]</b> reverberates, \"<font color='blue'>[msg]</font>\"")
+		to_chat(M, "[icon2html(thing = holder_atom, target = M)] <b>[holder_atom]</b> reverberates, \"<font color=#4F49AF>[msg]</font>\"")
 	last_talk_time = world.time

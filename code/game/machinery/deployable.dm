@@ -10,14 +10,14 @@ Barricades
 	desc = "This space is blocked off by a barricade."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "barricade"
-	anchored = 1.0
-	density = 1.0
+	anchored = TRUE
+	density = TRUE
 	var/health = 100
 	var/maxhealth = 100
 	var/datum/material/material
 
-/obj/structure/barricade/New(var/newloc, var/material_name)
-	..(newloc)
+/obj/structure/barricade/Initialize(mapload, material_name)
+	. = ..()
 	if(!material_name)
 		material_name = "wood"
 	material = get_material_by_name("[material_name]")
@@ -41,13 +41,13 @@ Barricades
 			return //hitting things with the wrong type of stack usually doesn't produce messages, and probably doesn't need to.
 		if(health < maxhealth)
 			if(D.get_amount() < 1)
-				to_chat(user, "<span class='warning'>You need one sheet of [material.display_name] to repair \the [src].</span>")
+				to_chat(user, SPAN_WARNING("You need one sheet of [material.display_name] to repair \the [src]."))
 				return
-			visible_message("<span class='notice'>[user] begins to repair \the [src].</span>")
+			visible_message(SPAN_NOTICE("[user] begins to repair \the [src]."))
 			if(do_after(user,20) && health < maxhealth)
 				if(D.use(1))
 					health = maxhealth
-					visible_message("<span class='notice'>[user] repairs \the [src].</span>")
+					visible_message(SPAN_NOTICE("[user] repairs \the [src]."))
 				return
 		return
 	else
@@ -56,10 +56,10 @@ Barricades
 				health -= W.force * 1
 			if("brute")
 				health -= W.force * 0.75
-		if(material == (get_material_by_name(MAT_WOOD) || get_material_by_name(MAT_SIFWOOD)))
-			playsound(loc, 'sound/effects/woodcutting.ogg', 100, 1)
+		if(material == (get_material_by_name(MAT_WOOD) || get_material_by_name(MAT_SIFWOOD) || get_material_by_name(MAT_HARDWOOD)))
+			playsound(loc, 'sound/effects/woodcutting.ogg', 100, TRUE)
 		else
-			playsound(src, 'sound/weapons/smash.ogg', 50, 1)
+			playsound(src, 'sound/weapons/smash.ogg', 50, TRUE)
 		CheckHealth()
 		..()
 
@@ -68,19 +68,20 @@ Barricades
 		dismantle()
 	return
 
-/obj/structure/barricade/take_damage(var/damage)
+/obj/structure/barricade/take_damage(damage)
 	health -= damage
 	CheckHealth()
 	return
 
-/obj/structure/barricade/attack_generic(var/mob/user, var/damage, var/attack_verb)
-	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
+/obj/structure/barricade/attack_generic(mob/user, damage, attack_verb)
+	visible_message(SPAN_DANGER("[user] [attack_verb] \the [src]!"))
+
 	if(material == get_material_by_name("resin"))
-		playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
-	else if(material == (get_material_by_name(MAT_WOOD) || get_material_by_name(MAT_SIFWOOD)))
-		playsound(loc, 'sound/effects/woodcutting.ogg', 100, 1)
+		playsound(loc, 'sound/effects/attackblob.ogg', 100, TRUE)
+	else if(material == (get_material_by_name(MAT_WOOD) || get_material_by_name(MAT_SIFWOOD) || get_material_by_name(MAT_HARDWOOD)))
+		playsound(loc, 'sound/effects/woodcutting.ogg', 100, TRUE)
 	else
-		playsound(src, 'sound/weapons/smash.ogg', 50, 1)
+		playsound(src, 'sound/weapons/smash.ogg', 50, TRUE)
 	user.do_attack_animation(src)
 	health -= damage
 	CheckHealth()
@@ -117,38 +118,41 @@ Barricades
 	name = "deployable barrier"
 	desc = "A deployable barrier. Swipe your ID card to lock/unlock it."
 	icon = 'icons/obj/objects.dmi'
-	anchored = 0.0
-	density = 1.0
+	anchored = FALSE
+	density = TRUE
 	icon_state = "barrier0"
-	var/health = 100.0
-	var/maxhealth = 100.0
-	var/locked = 0.0
+	var/health = 100
+	var/maxhealth = 100
+	var/locked = FALSE
 //	req_access = list(access_maint_tunnels)
 
-/obj/machinery/deployable/barrier/New()
-	..()
+/obj/machinery/deployable/barrier/Initialize(mapload, newdir)
+	. = ..()
+	update_icon()
 
+/obj/machinery/deployable/barrier/update_icon_state()
+	. = ..()
 	icon_state = "barrier[locked]"
 
 /obj/machinery/deployable/barrier/attackby(obj/item/W as obj, mob/user as mob)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if(istype(W, /obj/item/card/id/))
 		if(allowed(user))
-			if	(emagged < 2.0)
+			if	(emagged < 2)
 				locked = !locked
 				anchored = !anchored
 				icon_state = "barrier[locked]"
-				if((locked == 1.0) && (emagged < 2.0))
+				if((locked == 1) && (emagged < 2))
 					to_chat(user, "Barrier lock toggled on.")
 					return
-				else if((locked == 0.0) && (emagged < 2.0))
+				else if((locked == 0) && (emagged < 2))
 					to_chat(user, "Barrier lock toggled off.")
 					return
 			else
 				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 				s.set_up(2, 1, src)
 				s.start()
-				visible_message("<span class='warning'>BZZzZZzZZzZT</span>")
+				visible_message(SPAN_WARNING("BZZzZZzZZzZT"))
 				return
 		return
 	else if(W.is_wrench())
@@ -156,12 +160,12 @@ Barricades
 			health = maxhealth
 			emagged = 0
 			req_access = list(access_security)
-			visible_message("<span class='warning'>[user] repairs \the [src]!</span>")
+			visible_message(SPAN_WARNING("[user] repairs \the [src]!"))
 			return
 		else if(emagged > 0)
 			emagged = 0
 			req_access = list(access_security)
-			visible_message("<span class='warning'>[user] repairs \the [src]!</span>")
+			visible_message(SPAN_WARNING("[user] repairs \the [src]!"))
 			return
 		return
 	else
@@ -170,7 +174,7 @@ Barricades
 				health -= W.force * 0.75
 			if("brute")
 				health -= W.force * 0.5
-		playsound(src, 'sound/weapons/smash.ogg', 50, 1)
+		playsound(src, 'sound/weapons/smash.ogg', 50, TRUE)
 		CheckHealth()
 		..()
 
@@ -179,15 +183,15 @@ Barricades
 		explode()
 	return
 
-/obj/machinery/deployable/barrier/attack_generic(var/mob/user, var/damage, var/attack_verb)
-	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
-	playsound(src, 'sound/weapons/smash.ogg', 50, 1)
+/obj/machinery/deployable/barrier/attack_generic(mob/user, damage, attack_verb)
+	visible_message(SPAN_DANGER("[user] [attack_verb] \the [src]!"))
+	playsound(src, 'sound/weapons/smash.ogg', 50, TRUE)
 	user.do_attack_animation(src)
 	health -= damage
 	CheckHealth()
 	return
 
-/obj/machinery/deployable/barrier/take_damage(var/damage)
+/obj/machinery/deployable/barrier/take_damage(damage)
 	health -= damage
 	CheckHealth()
 	return
@@ -203,7 +207,7 @@ Barricades
 			return
 
 /obj/machinery/deployable/barrier/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	if(prob(50/severity))
 		locked = !locked
@@ -211,13 +215,14 @@ Barricades
 		icon_state = "barrier[locked]"
 
 /obj/machinery/deployable/barrier/CanAllowThrough(atom/movable/mover, turf/target)//So bullets will fly over and stuff.
-	if(istype(mover) && mover.checkpass(PASSTABLE))
+	. = ..()
+	if(mover.checkpass(PASSTABLE))
 		return TRUE
 	return FALSE
 
 /obj/machinery/deployable/barrier/proc/explode()
 
-	visible_message("<span class='danger'>[src] blows apart!</span>")
+	visible_message(SPAN_DANGER("[src] blows apart!"))
 	var/turf/Tsec = get_turf(src)
 
 /*	var/obj/item/stack/rods/ =*/
@@ -231,7 +236,7 @@ Barricades
 	if(src)
 		qdel(src)
 
-/obj/machinery/deployable/barrier/emag_act(var/remaining_charges, var/mob/user)
+/obj/machinery/deployable/barrier/emag_act(remaining_charges, mob/user)
 	if(emagged == 0)
 		emagged = 1
 		req_access.Cut()
@@ -240,7 +245,7 @@ Barricades
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(2, 1, src)
 		s.start()
-		visible_message("<span class='warning'>BZZzZZzZZzZT</span>")
+		visible_message(SPAN_WARNING("BZZzZZzZZzZT"))
 		return 1
 	else if(emagged == 1)
 		emagged = 2
@@ -248,5 +253,5 @@ Barricades
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(2, 1, src)
 		s.start()
-		visible_message("<span class='warning'>BZZzZZzZZzZT</span>")
+		visible_message(SPAN_WARNING("BZZzZZzZZzZT"))
 		return 1

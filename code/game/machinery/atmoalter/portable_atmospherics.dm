@@ -11,22 +11,20 @@
 	var/destroyed = 0
 
 	var/start_pressure = ONE_ATMOSPHERE
+	///Maximum pressure allowed on initialize inside the canister, multiplied by the filled var
 	var/maximum_pressure = 90 * ONE_ATMOSPHERE
 
-/obj/machinery/portable_atmospherics/New()
-	..()
-
+/obj/machinery/portable_atmospherics/Initialize(mapload)
+	. = ..()
 	air_contents.volume = volume
 	air_contents.temperature = T20C
-
-	return 1
 
 /obj/machinery/portable_atmospherics/Destroy()
 	QDEL_NULL(air_contents)
 	QDEL_NULL(holding)
 	. = ..()
 
-/obj/machinery/portable_atmospherics/Initialize()
+/obj/machinery/portable_atmospherics/Initialize(mapload)
 	. = ..()
 	spawn()
 		var/obj/machinery/atmospherics/portables_connector/port = locate() in loc
@@ -34,7 +32,7 @@
 			connect(port)
 			update_icon()
 
-/obj/machinery/portable_atmospherics/process()
+/obj/machinery/portable_atmospherics/process(delta_time)
 	if(!connected_port) //only react when pipe_network will ont it do it for you
 		//Allow for reactions
 		air_contents.react()
@@ -51,9 +49,6 @@
 
 /obj/machinery/portable_atmospherics/proc/MolesForPressure(var/target_pressure = start_pressure)
 	return (target_pressure * air_contents.volume) / (R_IDEAL_GAS_EQUATION * air_contents.temperature)
-
-/obj/machinery/portable_atmospherics/update_icon()
-	return null
 
 /obj/machinery/portable_atmospherics/proc/connect(obj/machinery/atmospherics/portables_connector/new_port)
 	//Make sure not already connected to something else
@@ -142,7 +137,33 @@
 
 	return
 
+/obj/machinery/portable_atmospherics/MouseDrop_T(mob/living/carbon/O, mob/user as mob)
+	if(!istype(O))
+		return 0 //not a mob
+	if(user.incapacitated())
+		return 0 //user shouldn't be doing things
+	if(O.anchored)
+		return 0 //mob is anchored???
+	if(get_dist(user, src) > 1 || get_dist(user, O) > 1)
+		return 0 //doesn't use adjacent() to allow for non-GLOB.cardinal (fuck my life)
+	if(!ishuman(user) && !isrobot(user))
+		return 0 //not a borg or human
 
+	if(O.has_buckled_mobs())
+		to_chat(user, SPAN_WARNING( "\The [O] has other entities attached to it. Remove them first."))
+		return
+
+	if(O == user)
+		usr.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
+	else
+		visible_message("[user] puts [O] onto \the [src].")
+
+
+	if(do_after(O, 3 SECOND, src))
+		O.forceMove(src.loc)
+
+	if (get_turf(user) == get_turf(src))
+		usr.visible_message("<span class='warning'>[user] climbs onto \the [src]!</span>")
 
 /obj/machinery/portable_atmospherics/powered
 	var/power_rating

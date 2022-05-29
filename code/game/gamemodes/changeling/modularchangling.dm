@@ -316,7 +316,7 @@ var/list/datum/power/changeling/powerinstances = list()
 
 
 	for (var/datum/power/changeling/P in powerinstances)
-		//world << "[P] - [Pname] = [P.name == Pname ? "True" : "False"]"
+		//to_chat(world, "[P] - [Pname] = [P.name == Pname ? "True" : "False"]")
 		if(P.name == Pname)
 			Thepower = P
 			break
@@ -344,7 +344,7 @@ var/list/datum/power/changeling/powerinstances = list()
 
 	if(Thepower.make_hud_button && Thepower.isVerb)
 		if(!M.current.ability_master)
-			M.current.ability_master = new /obj/screen/movable/ability_master(M.current)
+			M.current.ability_master = new /atom/movable/screen/movable/ability_master(M.current)
 		M.current.ability_master.add_ling_ability(
 			object_given = M.current,
 			verb_given = Thepower.verbpath,

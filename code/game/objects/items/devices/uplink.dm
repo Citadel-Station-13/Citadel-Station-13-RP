@@ -19,8 +19,8 @@
 /obj/item/uplink/nano_host()
 	return loc
 
-/obj/item/uplink/New(var/location, var/datum/mind/owner = null, var/telecrystals = DEFAULT_TELECRYSTAL_AMOUNT)
-	..()
+/obj/item/uplink/Initialize(mapload, datum/mind/owner, telecrystals = DEFAULT_TELECRYSTAL_AMOUNT)
+	. = ..()
 	src.uplink_owner = owner
 	purchase_log = list()
 	world_uplinks += src
@@ -58,15 +58,14 @@
 	var/exploit_id								// Id of the current exploit record we are viewing
 
 // The hidden uplink MUST be inside an obj/item's contents.
-/obj/item/uplink/hidden/New()
-	spawn(2)
-		if(!istype(src.loc, /obj/item))
-			qdel(src)
-	..()
+/obj/item/uplink/hidden/Initialize(mapload)
+	. = ..()
+	if(!isitem(loc))
+		return INITIALIZE_HINT_QDEL
 	nanoui_data = list()
 	update_nano_data()
 
-/obj/item/uplink/hidden/process()
+/obj/item/uplink/hidden/process(delta_time)
 	if(world.time > next_offer_time)
 		discount_item = default_uplink_selection.get_random_item(INFINITY)
 		discount_amount = pick(90;0.9, 80;0.8, 70;0.7, 60;0.6, 50;0.5, 40;0.4, 30;0.3, 20;0.2, 10;0.1)
@@ -96,7 +95,7 @@
 /*
 	NANO UI FOR UPLINK WOOP WOOP
 */
-/obj/item/uplink/hidden/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/item/uplink/hidden/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/title = "Remote Uplink"
 	var/data[0]
 	uses = user.mind.tcrystals
@@ -120,11 +119,11 @@
 
 // Interaction code. Gathers a list of items purchasable from the paren't uplink and displays it. It also adds a lock button.
 /obj/item/uplink/hidden/interact(mob/user)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/item/uplink/hidden/CanUseTopic()
 	if(!active)
-		return STATUS_CLOSE
+		return UI_CLOSE
 	return ..()
 
 // The purchasing code.
@@ -229,7 +228,8 @@
 	if(hidden_uplink)
 		hidden_uplink.trigger(user)
 
-/obj/item/multitool/uplink/New()
+/obj/item/multitool/uplink/Initialize(mapload)
+	. = ..()
 	hidden_uplink = new(src)
 
 /obj/item/multitool/uplink/attack_self(mob/user as mob)
@@ -239,7 +239,7 @@
 /obj/item/radio/headset/uplink
 	traitor_frequency = 1445
 
-/obj/item/radio/headset/uplink/New()
-	..()
+/obj/item/radio/headset/uplink/Initialize(mapload)
+	. = ..()
 	hidden_uplink = new(src)
 	hidden_uplink.uses = DEFAULT_TELECRYSTAL_AMOUNT

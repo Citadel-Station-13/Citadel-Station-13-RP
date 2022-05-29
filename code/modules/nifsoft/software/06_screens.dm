@@ -5,23 +5,27 @@
 	access = access_medical
 	cost = 625
 	p_drain = 0.025
-	var/datum/nano_module/crew_monitor/arscreen
+	var/datum/tgui_module/crew_monitor/nif/arscreen
 
-	New()
-		..()
-		arscreen = new(nif)
+/datum/nifsoft/crewmonitor/New()
+	..()
+	arscreen = new(nif)
 
-	Destroy()
+/datum/nifsoft/crewmonitor/Destroy()
 		QDEL_NULL(arscreen)
 		return ..()
 
-	activate()
-		if((. = ..()))
-			arscreen.ui_interact(nif.human,"main",null,1,nif_state)
-			return TRUE
+/datum/nifsoft/crewmonitor/activate()
+	if((. = ..()))
+		arscreen.ui_interact(nif.human)
+		return TRUE
 
-	stat_text()
-		return "Show Monitor"
+/datum/nifsoft/crewmonitor/deactivate(var/force = FALSE)
+	if((. = ..()))
+		return TRUE
+
+/datum/nifsoft/crewmonitor/stat_text()
+	return "Show Monitor"
 
 /datum/nifsoft/alarmmonitor
 	name = "Alarm Monitor"
@@ -32,18 +36,22 @@
 	p_drain = 0.025
 	var/datum/nano_module/alarm_monitor/engineering/arscreen
 
-	New()
-		..()
-		arscreen = new(nif)
+/datum/nifsoft/alarmmonitor/New()
+	..()
+	arscreen = new(nif)
 
-	Destroy()
+/datum/nifsoft/alarmmonitor/Destroy()
 		QDEL_NULL(arscreen)
 		return ..()
 
-	activate()
-		if((. = ..()))
-			arscreen.ui_interact(nif.human,"main",null,1,nif_state)
-			return TRUE
+/datum/nifsoft/alarmmonitor/activate()
+	if((. = ..()))
+		arscreen.ui_interact(nif.human)
+		return TRUE
 
-	stat_text()
-		return "Show Monitor"
+/datum/nifsoft/alarmmonitor/deactivate(var/force = FALSE)
+	if((. = ..()))
+		return TRUE
+
+/datum/nifsoft/alarmmonitor/stat_text()
+	return "Show Monitor"

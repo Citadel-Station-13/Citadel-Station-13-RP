@@ -9,12 +9,13 @@
 	use_power = USE_POWER_OFF
 
 	var/active = 0
-	var/power_gen = 5000
+	/// in kw
+	var/power_gen = 5
 	var/recent_fault = 0
 	var/power_output = 1
 
 /obj/machinery/power/port_gen/proc/IsBroken()
-	return (stat & (BROKEN|EMPED))
+	return (machine_stat & (BROKEN|EMPED))
 
 /obj/machinery/power/port_gen/proc/HasFuel() //Placeholder for fuel check.
 	return 1
@@ -28,9 +29,9 @@
 /obj/machinery/power/port_gen/proc/handleInactive()
 	return
 
-/obj/machinery/power/port_gen/process()
+/obj/machinery/power/port_gen/process(delta_time)
 	if(active && HasFuel() && !IsBroken() && anchored && powernet)
-		add_avail(power_gen * power_output)
+		add_avail(power_gen * power_output * 0.001)
 		UseFuel()
 		src.updateDialog()
 	else
@@ -48,37 +49,49 @@
 		return
 
 /obj/machinery/power/port_gen/examine(mob/user)
-	if(!..(user,1 ))
-		return
+	. = ..()
 	if(active)
-		to_chat(user, "<span class='notice'>The generator is on.</span>")
+		. += "<span class='notice'>The generator is on.</span>"
 	else
-		to_chat(user, "<span class='notice'>The generator is off.</span>")
+		. += "<span class='notice'>The generator is off.</span>"
 
 /obj/machinery/power/port_gen/emp_act(severity)
+	if(!active)
+		return
 	var/duration = 6000 //ten minutes
 	switch(severity)
 		if(1)
-			stat &= BROKEN
-			if(prob(75)) explode()
+			machine_stat &= BROKEN
+			if(prob(75))
+				explode()
 		if(2)
-			if(prob(50)) stat &= BROKEN
-			if(prob(10)) explode()
+			if(prob(50))
+				machine_stat &= BROKEN
+			if(prob(10))
+				explode()
 		if(3)
-			if(prob(25)) stat &= BROKEN
+			if(prob(25))
+				machine_stat &= BROKEN
 			duration = 300
 		if(4)
-			if(prob(10)) stat &= BROKEN
+			if(prob(10))
+				machine_stat &= BROKEN
 			duration = 300
 
-	stat |= EMPED
+	machine_stat |= EMPED
 	if(duration)
 		spawn(duration)
-			stat &= ~EMPED
+			machine_stat &= ~EMPED
 
 /obj/machinery/power/port_gen/proc/explode()
 	explosion(src.loc, -1, 3, 5, -1)
 	qdel(src)
+
+/obj/machinery/power/port_gen/proc/TogglePower()
+	if(active)
+		active = FALSE
+	else if(HasFuel())
+		active = TRUE
 
 #define TEMPERATURE_DIVISOR 40
 #define TEMPERATURE_CHANGE_MAX 20
@@ -110,19 +123,16 @@
 	var/temperature = 0		//The current temperature
 	var/overheating = 0		//if this gets high enough the generator explodes
 
-/obj/machinery/power/port_gen/pacman/Initialize()
+/obj/machinery/power/port_gen/pacman/Initialize(mapload)
 	. = ..()
-	if(anchored)
-		connect_to_network()
-
-/obj/machinery/power/port_gen/pacman/New()
-	..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/matter_bin(src)
 	component_parts += new /obj/item/stock_parts/micro_laser(src)
 	component_parts += new /obj/item/stack/cable_coil(src, 2)
 	component_parts += new /obj/item/stock_parts/capacitor(src)
 	RefreshParts()
+	if(anchored)
+		connect_to_network()
 
 /obj/machinery/power/port_gen/pacman/Destroy()
 	DropFuel()
@@ -144,13 +154,13 @@
 	power_gen = round(initial(power_gen) * (max(2, temp_rating) / 2))
 
 /obj/machinery/power/port_gen/pacman/examine(mob/user)
-	..(user)
-	to_chat(user, "\The [src] appears to be producing [power_gen*power_output] W.")
-	to_chat(user, "There [sheets == 1 ? "is" : "are"] [sheets] sheet\s left in the hopper.")
+	. = ..()
+	. += "\The [src] appears to be producing [power_gen*power_output] W."
+	. += "There [sheets == 1 ? "is" : "are"] [sheets] sheet\s left in the hopper."
 	if(IsBroken())
-		to_chat(user, "<span class='warning'>\The [src] seems to have broken down.</span>")
+		. += "<span class='warning'>\The [src] seems to have broken down.</span>"
 	if(overheating)
-		to_chat(user, "<span class='danger'>\The [src] is overheating!</span>")
+		. += "<span class='danger'>\The [src] is overheating!</span>"
 
 /obj/machinery/power/port_gen/pacman/HasFuel()
 	var/needed_sheets = power_output / time_per_sheet
@@ -295,12 +305,74 @@
 	..()
 	if (!anchored)
 		return
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/power/port_gen/pacman/attack_ai(mob/user as mob)
 	ui_interact(user)
 
-/obj/machinery/power/port_gen/pacman/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/power/port_gen/pacman/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "PortableGenerator", name)
+		ui.open()
+
+/obj/machinery/power/port_gen/pacman/ui_data(mob/user)
+	var/list/data = list()
+
+	data["active"] = active
+
+	if(istype(user, /mob/living/silicon/ai))
+		data["is_ai"] = TRUE
+	else if(istype(user, /mob/living/silicon/robot) && !Adjacent(user))
+		data["is_ai"] = TRUE
+	else
+		data["is_ai"] = FALSE
+
+	data["sheet_name"] = capitalize(sheet_name)
+	data["fuel_stored"] = round((sheets * 1000) + (sheet_left * 1000))
+	data["fuel_capacity"] = round(max_sheets * 1000, 0.1)
+	data["fuel_usage"] = active ? round((power_output / time_per_sheet) * 1000) : 0
+
+	data["anchored"] = anchored
+	data["connected"] = (powernet == null ? 0 : 1)
+	data["ready_to_boot"] = anchored && HasFuel()
+	data["power_generated"] = render_power(power_gen, ENUM_POWER_SCALE_NONE, ENUM_POWER_UNIT_WATT, 0.01, FALSE)
+	data["power_output"] = render_power(power_gen * power_output, ENUM_POWER_SCALE_NONE, ENUM_POWER_UNIT_WATT, 0.01, FALSE)
+	data["unsafe_output"] = power_output > max_safe_output
+	data["power_available"] = (powernet == null ? 0 : render_power(avail(), ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, 0.01, FALSE))
+	data["temperature_current"] = temperature
+	data["temperature_max"] = max_temperature
+	data["temperature_overheat"] = overheating
+	// 1 sheet = 1000cm3?
+
+	return data
+
+/obj/machinery/power/port_gen/pacman/ui_act(action, params)
+	if(..())
+		return
+
+	add_fingerprint(usr)
+	switch(action)
+		if("toggle_power")
+			TogglePower()
+			. = TRUE
+
+		if("eject")
+			if(!active)
+				DropFuel()
+				. = TRUE
+
+		if("lower_power")
+			if(power_output > 1)
+				power_output--
+				. = TRUE
+
+		if("higher_power")
+			if(power_output < max_power_output || (emagged && power_output < round(max_power_output * 2.5)))
+				power_output++
+				. = TRUE
+/*
+/obj/machinery/power/port_gen/pacman/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	if(IsBroken())
 		return
 
@@ -334,7 +406,7 @@
 		ui.open()
 		ui.set_auto_update(1)
 
-
+*/
 /*
 /obj/machinery/power/port_gen/pacman/interact(mob/user)
 	if (get_dist(src, user) > 1 )
@@ -431,3 +503,190 @@
 	//no special effects, but the explosion is pretty big (same as a supermatter shard).
 	explosion(src.loc, 3, 6, 12, 16, 1)
 	qdel(src)
+
+// Radioisotope Thermoelectric Generator (RTG)
+// Simple power generator that would replace "magic SMES" on various derelicts.
+/obj/machinery/power/rtg
+	name = "radioisotope thermoelectric generator"
+	desc = "A simple nuclear power generator, used in small outposts to reliably provide power for decades."
+	icon = 'icons/obj/power_vr.dmi'
+	icon_state = "rtg"
+	density = TRUE
+	use_power = USE_POWER_OFF
+	circuit = /obj/item/circuitboard/machine/rtg
+
+	// You can buckle someone to RTG, then open its panel. Fun stuff.
+	can_buckle = TRUE
+	buckle_lying = FALSE
+
+	var/power_gen = 1 // Enough to power a single APC. 4000 output with T4 capacitor.
+	var/irradiate = TRUE // RTGs irradiate surroundings, but only when panel is open.
+
+/obj/machinery/power/rtg/Initialize(mapload)
+	. = ..()
+	if(ispath(circuit))
+		circuit = new circuit(src)
+	default_apply_parts()
+	connect_to_network()
+
+/obj/machinery/power/rtg/process()
+	..()
+	add_avail(power_gen)
+	if(panel_open && irradiate)
+		SSradiation.radiate(src, 60)
+
+/obj/machinery/power/rtg/examine(mob/user)
+	. = ..()
+	if(Adjacent(user, src) || isobserver(user))
+		. += "<span class='notice'>The status display reads: Power generation now at <b>[power_gen]</b>kW.</span>"
+
+/obj/machinery/power/rtg/attackby(obj/item/I, mob/user, params)
+	if(default_deconstruction_screwdriver(user, I))
+		return
+	else if(default_deconstruction_crowbar(user, I))
+		return
+	return ..()
+
+/obj/machinery/power/rtg/update_icon()
+	if(panel_open)
+		icon_state = "[initial(icon_state)]-open"
+	else
+		icon_state = initial(icon_state)
+
+/obj/machinery/power/rtg/advanced
+	desc = "An advanced RTG capable of moderating isotope decay, increasing power output but reducing lifetime. It uses plasma-fueled radiation collectors to increase output even further."
+	power_gen = 1.25 // 2500 on T1, 10000 on T4.
+	circuit = /obj/item/circuitboard/machine/rtg/advanced
+
+/obj/machinery/power/rtg/fake_gen
+	name = "area power generator"
+	desc = "Some power generation equipment that might be powering the current area."
+	icon_state = "rtg_gen"
+	power_gen = 6
+	circuit = /obj/item/circuitboard/machine/rtg
+	can_buckle = FALSE
+
+/obj/machinery/power/rtg/fake_gen/RefreshParts()
+	return
+/obj/machinery/power/rtg/fake_gen/attackby(obj/item/I, mob/user, params)
+	return
+/obj/machinery/power/rtg/fake_gen/update_icon()
+	return
+
+
+// Void Core, power source for Abductor ships and bases.
+// Provides a lot of power, but tends to explode when mistreated.
+/obj/machinery/power/rtg/abductor
+	name = "Void Core"
+	icon_state = "core-nocell"
+	desc = "An alien power source that produces energy seemingly out of nowhere."
+	circuit = /obj/item/circuitboard/machine/abductor/core
+	power_gen = 10
+	irradiate = FALSE // Green energy!
+	can_buckle = FALSE
+	pixel_y = 7
+	var/going_kaboom = FALSE // Is it about to explode?
+	var/obj/item/cell/device/weapon/recharge/alien
+
+	var/icon_base = "core"
+	var/state_change = TRUE
+
+/obj/machinery/power/rtg/abductor/RefreshParts()
+	..()
+	if(!alien)
+		power_gen = 0
+
+/obj/machinery/power/rtg/abductor/proc/asplod()
+	if(going_kaboom)
+		return
+	going_kaboom = TRUE
+	visible_message("<span class='danger'>\The [src] lets out an shower of sparks as it starts to lose stability!</span>",\
+		"<span class='italics'>You hear a loud electrical crack!</span>")
+	playsound(src, 'sound/effects/lightningshock.ogg', 100, 1, extrarange = 5)
+	tesla_zap(src, 5, power_gen * 50)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/explosion, get_turf(src), 2, 3, 4, 8), 100) // Not a normal explosion.
+
+/obj/machinery/power/rtg/abductor/bullet_act(obj/item/projectile/Proj)
+	. = ..()
+	if(!going_kaboom && istype(Proj) && !Proj.nodamage && ((Proj.damage_type == BURN) || (Proj.damage_type == BRUTE)))
+		log_and_message_admins("[ADMIN_LOOKUPFLW(Proj.firer)] triggered an Abductor Core explosion at [x],[y],[z] via projectile.")
+		asplod()
+
+/obj/machinery/power/rtg/abductor/attack_hand(var/mob/living/user)
+	if(!istype(user) || (. = ..()))
+		return
+
+	if(alien)
+		alien.forceMove(get_turf(src))
+		user.put_in_active_hand(alien)
+		alien = null
+		state_change = TRUE
+		RefreshParts()
+		update_icon()
+		playsound(src, 'sound/effects/metal_close.ogg', 50, 1)
+		return TRUE
+
+/obj/machinery/power/rtg/abductor/attackby(obj/item/I, mob/user, params)
+	state_change = TRUE //Can't tell if parent did something
+	if(istype(I, /obj/item/cell/device/weapon/recharge/alien) && !alien)
+		user.remove_from_mob(I)
+		I.forceMove(src)
+		alien = I
+		RefreshParts()
+		update_icon()
+		playsound(src, 'sound/effects/metal_close.ogg', 50, 1)
+		return
+	return ..()
+
+/obj/machinery/power/rtg/abductor/update_icon()
+	if(!state_change)
+		return //Stupid cells constantly update our icon so trying to be efficient
+
+	if(alien)
+		if(panel_open)
+			icon_state = "[icon_base]-open"
+		else
+			icon_state = "[icon_base]"
+	else
+		icon_state = "[icon_base]-nocell"
+
+	state_change = FALSE
+
+/obj/machinery/power/rtg/abductor/blob_act(obj/structure/blob/B)
+	asplod()
+
+/obj/machinery/power/rtg/abductor/ex_act()
+	if(going_kaboom)
+		qdel(src)
+	else
+		asplod()
+
+/obj/machinery/power/rtg/abductor/fire_act(exposed_temperature, exposed_volume)
+	asplod()
+
+/obj/machinery/power/rtg/abductor/tesla_act()
+	..() //extend the zap
+	asplod()
+
+// Comes with an installed cell
+/obj/machinery/power/rtg/abductor/built
+	icon_state = "core"
+
+/obj/machinery/power/rtg/abductor/built/Initialize(mapload)
+	. = ..()
+	alien = new(src)
+	RefreshParts()
+
+// Bloo version
+/obj/machinery/power/rtg/abductor/hybrid
+	icon_state = "coreb-nocell"
+	icon_base = "coreb"
+	circuit = /obj/item/circuitboard/machine/abductor/core/hybrid
+
+/obj/machinery/power/rtg/abductor/hybrid/built
+	icon_state = "coreb"
+
+/obj/machinery/power/rtg/abductor/hybrid/built/Initialize(mapload)
+	. = ..()
+	alien = new /obj/item/cell/device/weapon/recharge/alien(src)
+	RefreshParts()

@@ -10,7 +10,7 @@
 	throw_range = 7
 	maxcharge = 480
 	charge_amount = 5
-	matter = list("metal" = 350, "glass" = 50)
+	matter = list("metal" = 350, MAT_GLASS = 50)
 	preserve_item = 1
 
 /obj/item/cell/device/empty
@@ -26,6 +26,9 @@
 /obj/item/cell/device/weapon/empty
 	charge = 0
 
+/obj/item/cell/device/weapon/empproof
+	emp_proof = TRUE
+
 /obj/item/cell/device/weapon/recharge
 	name = "self-charging weapon power cell"
 	desc = "A small power cell designed to power handheld weaponry. This one recharges itself."
@@ -38,6 +41,9 @@
 	charge_amount = 160	//Recharges a lot more quickly...
 	charge_delay = 100	//... but it takes a while to get started
 
+/obj/item/cell/device/weapon/recharge/sniper
+	charge_amount = 600
+	charge_delay = 100
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_void_cell
 	name = "Precursor Alpha Object - Void Cell"

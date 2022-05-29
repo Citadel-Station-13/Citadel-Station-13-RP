@@ -54,7 +54,7 @@
 
 /obj/item/integrated_circuit/input/numberpad/ask_for_input(mob/user)
 	var/new_input = input(user, "Enter a number, please.","Number pad", get_pin_data(IC_OUTPUT, 1)) as null|num
-	if(isnum(new_input) && CanInteract(user, physical_state))
+	if(isnum(new_input) && CanInteract(user, GLOB.physical_state))
 		set_pin_data(IC_OUTPUT, 1, new_input)
 		push_data()
 		activate_pin(1)
@@ -73,7 +73,7 @@
 
 /obj/item/integrated_circuit/input/textpad/ask_for_input(mob/user)
 	var/new_input = input(user, "Enter some words, please.","Number pad", get_pin_data(IC_OUTPUT, 1)) as null|text
-	if(istext(new_input) && CanInteract(user, physical_state))
+	if(istext(new_input) && CanInteract(user, GLOB.physical_state))
 		set_pin_data(IC_OUTPUT, 1, new_input)
 		push_data()
 		activate_pin(1)
@@ -92,7 +92,7 @@
 
 /obj/item/integrated_circuit/input/colorpad/ask_for_input(mob/user)
 	var/new_color = input(user, "Enter a color, please.", "Color pad", get_pin_data(IC_OUTPUT, 1)) as color|null
-	if(new_color && CanInteract(user, physical_state))
+	if(new_color && CanInteract(user, GLOB.physical_state))
 		set_pin_data(IC_OUTPUT, 1, new_color)
 		push_data()
 		activate_pin(1)
@@ -156,7 +156,7 @@
 	if(!istype(H)) //Invalid input
 		return
 
-	if(H in view(get_turf(H))) // Like medbot's analyzer it can be used in range..
+	if(H in view(get_turf(H))) // Like medibot's analyzer it can be used in range..
 
 		var/total_health = round(H.health/H.getMaxHealth(), 0.01)*100
 		var/missing_health = H.getMaxHealth() - H.health
@@ -354,13 +354,11 @@
 	var/code = 30
 	var/datum/radio_frequency/radio_connection
 
-/obj/item/integrated_circuit/input/signaler/Initialize()
+/obj/item/integrated_circuit/input/signaler/Initialize(mapload)
 	. = ..()
-	set_frequency(frequency)
-	// Set the pins so when someone sees them, they won't show as null
 	set_pin_data(IC_INPUT, 1, frequency)
 	set_pin_data(IC_INPUT, 2, code)
-	push_data()
+	addtimer(CALLBACK(src, .proc/set_frequency, frequency), 40)
 
 /obj/item/integrated_circuit/input/signaler/Destroy()
 	if(radio_controller)
@@ -416,7 +414,7 @@
 
 	if(loc)
 		for(var/mob/O in hearers(1, get_turf(src)))
-			O.show_message(text("\icon[] *beep* *beep*", src), 3, "*beep* *beep*", 2)
+			to_chat(O, "[icon2html(thing = src, target = O)] *beep beep*")
 
 /obj/item/integrated_circuit/input/EPv2
 	name = "\improper EPv2 circuit"
@@ -442,8 +440,8 @@
 	power_draw_per_use = 50
 	var/datum/exonet_protocol/exonet = null
 
-/obj/item/integrated_circuit/input/EPv2/New()
-	..()
+/obj/item/integrated_circuit/input/EPv2/Initialize(mapload)
+	. = ..()
 	exonet = new(src)
 	exonet.make_address("EPv2_circuit-\ref[src]")
 	desc += "<br>This circuit's EPv2 address is: [exonet.address]"
@@ -516,9 +514,10 @@
 	activators = list("on message received" = IC_PINTYPE_PULSE_OUT, "on translation" = IC_PINTYPE_PULSE_OUT)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	power_draw_per_use = 15
+	flags = HEAR
 
-/obj/item/integrated_circuit/input/microphone/New()
-	..()
+/obj/item/integrated_circuit/input/microphone/Initialize(mapload)
+	. = ..()
 	listening_objects |= src
 
 /obj/item/integrated_circuit/input/microphone/Destroy()
@@ -531,7 +530,7 @@
 		if(speaking)
 			if(!speaking.machine_understands)
 				msg = speaking.scramble(msg)
-			if(!istype(speaking, /datum/language/common))
+			if(!istype(speaking, /datum/language/common) && !istype(speaking, /datum/language/noise))
 				translated = TRUE
 		set_pin_data(IC_OUTPUT, 1, M.GetVoice())
 		set_pin_data(IC_OUTPUT, 2, msg)
@@ -568,25 +567,27 @@
 		LANGUAGE_TERMINUS
 		)
 
-/obj/item/integrated_circuit/input/microphone/sign/Initialize()
-	..()
+/obj/item/integrated_circuit/input/microphone/sign/Initialize(mapload)
+	. = ..()
 	for(var/lang in readable_langs)
 		var/datum/language/newlang = GLOB.all_languages[lang]
 		my_langs |= newlang
 
 /obj/item/integrated_circuit/input/microphone/sign/hear_talk(mob/living/M, msg, var/verb="says", datum/language/speaking=null)
-	var/translated = FALSE
+	var/signlang = FALSE
 	if(M && msg)
 		if(speaking)
 			if(!((speaking.flags & NONVERBAL) || (speaking.flags & SIGNLANG)))
-				translated = TRUE
+				signlang = FALSE
 				msg = speaking.scramble(msg, my_langs)
+			else
+				signlang = TRUE
 		set_pin_data(IC_OUTPUT, 1, M.GetVoice())
 		set_pin_data(IC_OUTPUT, 2, msg)
 
 	push_data()
 	activate_pin(1)
-	if(translated)
+	if(signlang)
 		activate_pin(2)
 
 /obj/item/integrated_circuit/input/microphone/sign/hear_signlang(text, verb, datum/language/speaking, mob/M as mob)

@@ -19,7 +19,7 @@ var/list/weighted_mundaneevent_locations = list()
 //distance is measured in Arbitrary and corelates to travel time, like, I guess
 /datum/trade_destination/luna
 	name = "Luna"
-	description = "The capital world of SolGov, host to NanoTrasen's corporate offices."
+	description = "The capital world of the Orion Confederatoin, the primary Human government."
 	distance = 1.2
 	willing_to_buy = list()
 	willing_to_sell = list()
@@ -82,7 +82,7 @@ var/list/weighted_mundaneevent_locations = list()
 
 /datum/trade_destination/abelsrest
 	name = "Abel's Rest"
-	description = "A garden world on the Hegemony border. Coinhabitated rather uncomfortably by Unathi and Solar settlers."
+	description = "A garden world on the Hegemony border. Coinhabitated rather uncomfortably by Unathi and Orion settlers."
 	distance = 7.5
 	willing_to_buy = list()
 	willing_to_sell = list()

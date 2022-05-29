@@ -43,34 +43,46 @@
 	A.attack_ghost(src)
 
 // Oh by the way this didn't work with old click code which is why clicking shit didn't spam you
-/atom/proc/attack_ghost(mob/observer/dead/user as mob)
+/atom/proc/attack_ghost(mob/observer/dead/user)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_GHOST, user)
+	// TODO: main ai interact bay code fucking disgusts me wtf
+	if(IsAdminGhost(user))		// admin AI interact
+		AdminAIInteract(user)
+		return
 	if(user.client && user.client.inquisitive_ghost)
 		user.examinate(src)
-	return
+
+// defaults to just attack_ai
+/atom/proc/AdminAIInteract(mob/user)
+	return attack_ai(user)
 
 // ---------------------------------------
 // And here are some good things for free:
 // Now you can click through portals, wormholes, gateways, and teleporters while observing. -Sayu
-
-/obj/machinery/teleport/hub/attack_ghost(mob/user as mob)
+/*
+/obj/machinery/tele_pad/attack_ghost(mob/user as mob)
 	var/atom/l = loc
 	var/obj/machinery/computer/teleporter/com = locate(/obj/machinery/computer/teleporter, locate(l.x - 2, l.y, l.z))
-	if(com.locked)
+	 if(com.locked)
 		user.loc = get_turf(com.locked)
-
-/obj/effect/portal/attack_ghost(mob/user as mob)
+*/
+/obj/effect/portal/attack_ghost(mob/user)
+	. = ..()
 	if(target)
-		user.loc = get_turf(target)
+		user.forceMove(get_turf(target))
 
-/obj/machinery/gateway/centerstation/attack_ghost(mob/user as mob)
+/obj/machinery/gateway/centerstation/attack_ghost(mob/user)
+	. = ..()
 	if(awaygate)
-		user.loc = awaygate.loc
+		user.forceMove(awaygate.loc)
 	else
 		to_chat(user, "[src] has no destination.")
 
-/obj/machinery/gateway/centeraway/attack_ghost(mob/user as mob)
+/obj/machinery/gateway/centeraway/attack_ghost(mob/user)
+	. = ..()
 	if(stationgate)
-		user.loc = stationgate.loc
+		user.forceMove(stationgate.loc)
 	else
 		to_chat(user, "[src] has no destination.")
 
@@ -86,3 +98,27 @@
 	attack_hand(user)
 
 */
+
+//! ## VR FILE MERGE ## !//
+/obj/item/paicard/attack_ghost(mob/user)
+	. = ..()
+	if(src.pai != null) //Have a person in them already?
+		user.examinate(src)
+		return
+	var/choice = input(user, "You sure you want to inhabit this PAI?") in list("Yes", "No")
+	var/pai_name = input(user, "Choose your character's name", "Character Name") as text
+	var/actual_pai_name = sanitize_name(pai_name)
+	var/pai_key
+	if (isnull(pai_name))
+		return
+	if(choice == "Yes")
+		pai_key = user.key
+	else
+		return
+	var/turf/location = get_turf(src)
+	var/obj/item/paicard/card = new(location)
+	var/mob/living/silicon/pai/pai = new(card)
+	qdel(src)
+	pai.key = pai_key
+	card.setPersonality(pai)
+	pai.SetName(actual_pai_name)

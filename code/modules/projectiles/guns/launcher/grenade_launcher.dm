@@ -4,7 +4,9 @@
 	icon_state = "riotgun"
 	item_state = "riotgun"
 	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
 	force = 10
+	one_handed_penalty = 5
 
 	fire_sound = 'sound/weapons/grenade_launcher.ogg'
 	fire_sound_text = "a metallic thunk"
@@ -12,10 +14,9 @@
 	throw_distance = 7
 	release_force = 5
 
-	var/obj/item/grenade/chambered
 	var/list/grenades = new/list()
 	var/max_grenades = 5 //holds this + one in the chamber
-	matter = list(DEFAULT_WALL_MATERIAL = 2000)
+	matter = list(MAT_STEEL = 2000)
 
 //revolves the magazine, allowing players to choose between multiple grenade types
 /obj/item/gun/launcher/grenade/proc/pump(mob/M as mob)
@@ -36,11 +37,11 @@
 	update_icon()
 
 /obj/item/gun/launcher/grenade/examine(mob/user)
-	if(..(user, 2))
-		var/grenade_count = grenades.len + (chambered? 1 : 0)
-		to_chat(user, "Has [grenade_count] grenade\s remaining.")
-		if(chambered)
-			to_chat(user, "\A [chambered] is chambered.")
+	. = ..()
+	var/grenade_count = grenades.len + (chambered? 1 : 0)
+	. += "Has [grenade_count] grenade\s remaining."
+	if(chambered)
+		. += "\A [chambered] is chambered."
 
 /obj/item/gun/launcher/grenade/proc/load(obj/item/grenade/G, mob/user)
 	if(G.loadable)
@@ -79,11 +80,13 @@
 	else
 		..()
 
+/*//This broke for no reason. Look into it.
 /obj/item/gun/launcher/grenade/consume_next_projectile()
 	if(chambered)
 		chambered.det_time = 10
 		chambered.activate(null)
 	return chambered
+*/
 
 /obj/item/gun/launcher/grenade/handle_post_fire(mob/user)
 	message_admins("[key_name_admin(user)] fired a grenade ([chambered.name]) from a grenade launcher ([src.name]).")
@@ -121,4 +124,4 @@
 		playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
 		chambered = null
 	else
-		user << "<span class='warning'>[src] is empty.</span>"
+		to_chat(user, "<span class='warning'>[src] is empty.</span>")

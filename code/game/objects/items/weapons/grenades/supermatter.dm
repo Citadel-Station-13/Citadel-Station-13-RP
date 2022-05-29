@@ -23,7 +23,7 @@
 	if(implode_at)
 		overlays += image(icon = 'icons/rust.dmi', icon_state = "emfield_s1")
 
-/obj/item/grenade/supermatter/process()
+/obj/item/grenade/supermatter/process(delta_time)
 	if(!isturf(loc))
 		if(ismob(loc))
 			var/mob/M = loc

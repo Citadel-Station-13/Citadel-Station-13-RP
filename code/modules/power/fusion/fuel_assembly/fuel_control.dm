@@ -16,7 +16,7 @@
 
 /obj/machinery/computer/fusion_fuel_control/interact(var/mob/user)
 
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		user.unset_machine()
 		user << browse(null, "window=fuel_control")
 		return
@@ -46,7 +46,7 @@
 
 		dat += "<tr>"
 
-		if(I.stat & (BROKEN|NOPOWER))
+		if(I.machine_stat & (BROKEN|NOPOWER))
 			dat += "<td><span class='danger'>ERROR</span></td>"
 			dat += "<td><span class='danger'>ERROR</span></td>"
 			dat += "<td><span class='danger'>ERROR</span></td>"
@@ -103,17 +103,17 @@
 		return
 
 /obj/machinery/computer/fusion_fuel_control/update_icon()
-	if(stat & (BROKEN))
+	if(machine_stat & (BROKEN))
 		icon = 'icons/obj/computer.dmi'
 		icon_state = "broken"
 		set_light(0)
 
-	if(stat & (NOPOWER))
+	if(machine_stat & (NOPOWER))
 		icon = 'icons/obj/computer.dmi'
 		icon_state = "computer"
 		set_light(0)
 
-	if(!stat & (BROKEN|NOPOWER))
+	if(!(machine_stat & (BROKEN|NOPOWER)))
 		icon = initial(icon)
 		icon_state = initial(icon_state)
 		set_light(light_range_on, light_power_on)

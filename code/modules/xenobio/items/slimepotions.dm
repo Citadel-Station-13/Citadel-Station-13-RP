@@ -33,7 +33,7 @@
 		return ..()
 
 	to_chat(user, "<span class='notice'>You feed the slime the stabilizer. It is now less likely to mutate.</span>")
-	M.mutation_chance = between(0, M.mutation_chance - 15, 100)
+	M.mutation_chance = clamp( M.mutation_chance - 15, 0,  100)
 	playsound(src, 'sound/effects/bubbles.ogg', 50, 1)
 	qdel(src)
 
@@ -57,7 +57,7 @@
 		return ..()
 
 	to_chat(user, "<span class='notice'>You feed the slime the mutator. It is now more likely to mutate.</span>")
-	M.mutation_chance = between(0, M.mutation_chance + 12, 100)
+	M.mutation_chance = clamp( M.mutation_chance + 12, 0,  100)
 	playsound(src, 'sound/effects/bubbles.ogg', 50, 1)
 	qdel(src)
 
@@ -77,7 +77,7 @@
 		to_chat(user, "<span class='warning'>\The [M] is dead!</span>")
 		return ..()
 	if(!M.has_AI())
-		to_chat(user, span("warning", "\The [M] is too strongly willed for this to affect them.")) // Most likely player controlled.
+		to_chat(user, SPAN_WARNING( "\The [M] is too strongly willed for this to affect them.")) // Most likely player controlled.
 		return
 
 	var/datum/ai_holder/AI = M.ai_holder
@@ -194,7 +194,7 @@
 		to_chat(user, "<span class='warning'>\The [M] is already loyal to your species!</span>")
 		return ..()
 	if(!M.has_AI())
-		to_chat(user, span("warning", "\The [M] is too strong-willed for this to affect them."))
+		to_chat(user, SPAN_WARNING( "\The [M] is too strong-willed for this to affect them."))
 		return ..()
 
 	var/datum/ai_holder/AI = M.ai_holder
@@ -229,7 +229,7 @@
 		to_chat(user, "<span class='warning'>\The [M] is already loyal to you!</span>")
 		return ..()
 	if(!M.has_AI())
-		to_chat(user, span("warning", "\The [M] is too strong-willed for this to affect them."))
+		to_chat(user, SPAN_WARNING( "\The [M] is too strong-willed for this to affect them."))
 		return ..()
 
 	var/datum/ai_holder/AI = M.ai_holder

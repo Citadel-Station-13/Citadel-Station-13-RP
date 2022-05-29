@@ -8,14 +8,14 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 4
-	anchored = 1
-	var/lit = 0
+	anchored = TRUE
+	var/lit = FALSE
 	var/id = null
 	var/on_icon = "sign_on"
 	var/off_icon = "sign_off"
 
 /obj/machinery/holosign/proc/toggle()
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	lit = !lit
 	update_use_power(lit ? USE_POWER_ACTIVE : USE_POWER_IDLE)
@@ -28,7 +28,7 @@
 		icon_state = on_icon
 
 /obj/machinery/holosign/power_change()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		lit = 0
 		update_use_power(USE_POWER_OFF)
 	update_icon()
@@ -59,17 +59,16 @@
 	icon = 'icons/obj/power.dmi'
 	icon_state = "crema_switch"
 
-/obj/machinery/button/holosign/attack_hand(mob/user as mob)
+/obj/machinery/button/holosign/attack_hand(mob/user)
 	if(..())
 		return
-	add_fingerprint(user)
 
 	use_power(5)
 
 	active = !active
 	icon_state = "light[active]"
 
-	for(var/obj/machinery/holosign/M in machines)
+	for(var/obj/machinery/holosign/M in GLOB.machines)
 		if(M.id == id)
 			spawn(0)
 				M.toggle()

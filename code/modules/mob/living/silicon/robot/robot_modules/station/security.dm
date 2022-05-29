@@ -21,15 +21,19 @@
 					"Basic" = "secborg",
 					"Black Knight" = "securityrobot",
 					"Drone" = "drone-sec",
-					"Insekt" = "insekt-Sec"
+					"Insekt" = "insekt-Sec",
+					"Misato" = "tall2security",
+					"L3P1-D0T" = "Glitterfly-Security",
+					"Miss M" = "miss-security",
+					"Coffcurity" = "coffin-Combat"
+
 					)
 
-/obj/item/robot_module/robot/security/general/New()
-	..()
+/obj/item/robot_module/robot/security/general/Initialize(mapload)
+	. = ..()
 	src.modules += new /obj/item/handcuffs/cyborg(src)
 	src.modules += new /obj/item/melee/baton/robot(src)
 	src.modules += new /obj/item/gun/energy/taser/mounted/cyborg(src)
-	// src.modules += new /obj/item/gun/energy/taser/xeno/sec/robot(src) // VOREStation Edit - We don't need these
 	src.modules += new /obj/item/barrier_tape_roll/police(src)
 	src.modules += new /obj/item/reagent_containers/spray/pepper(src)
 	src.modules += new /obj/item/gripper/security(src)
@@ -60,10 +64,10 @@
 					"Insekt" = "insekt-Combat"
 					)
 
-/obj/item/robot_module/robot/security/combat/New()
-	..()
+/obj/item/robot_module/robot/security/combat/Initialize(mapload)
+	. = ..()
 	src.modules += new /obj/item/flash(src)
-	//src.modules += new /obj/item/borg/sight/thermal(src) // VOREStation Edit
+	//src.modules += new /obj/item/borg/sight/thermal(src)
 	src.modules += new /obj/item/gun/energy/laser/mounted(src)
 	src.modules += new /obj/item/pickaxe/plasmacutter(src)
 	src.modules += new /obj/item/borg/combat/shield(src)
@@ -83,7 +87,9 @@
 	networks = list(NETWORK_SECURITY)
 	can_be_pushed = 0
 
-/obj/item/robot_module/robot/knine/New(var/mob/living/silicon/robot/R)
+/obj/item/robot_module/robot/knine/Initialize(mapload)
+	. = ..()
+	var/mob/living/silicon/robot/R = loc
 
 	supported_upgrades = list(/obj/item/borg/upgrade/tasercooler)
 
@@ -123,11 +129,9 @@
 	R.verbs |= /mob/living/proc/shred_limb
 	R.verbs |= /mob/living/silicon/robot/proc/rest_style
 
-	if(R.client && R.client.ckey in list("nezuli"))
+	if(R.client && (R.client.ckey in list("nezuli")))
 		sprites += "Alina"
 		sprites["Alina"] = "alina-sec"
-
-	..()
 
 /obj/item/robot_module/robot/knine/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
 	var/obj/item/flash/F = locate() in src.modules
@@ -157,7 +161,9 @@
 					"Borgi" = "borgi"
 					)
 
-/obj/item/robot_module/robot/ert/New(var/mob/living/silicon/robot/R)
+/obj/item/robot_module/robot/ert/Initialize(mapload)
+	. = ..()
+	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/handcuffs/cyborg(src)
 	src.modules += new /obj/item/dogborg/jaws/big(src)
 	src.modules += new /obj/item/melee/baton/robot(src)
@@ -192,4 +198,3 @@
 	R.verbs |= /mob/living/silicon/robot/proc/robot_mount
 	R.verbs |= /mob/living/proc/shred_limb
 	R.verbs |= /mob/living/silicon/robot/proc/rest_style
-	..()

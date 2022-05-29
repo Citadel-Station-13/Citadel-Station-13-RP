@@ -15,7 +15,7 @@
 	name = "Water"
 	icon_state = "water"
 
-/turf/unsimulated/beach/water/Initialize()
+/turf/unsimulated/beach/water/Initialize(mapload)
 	. = ..()
 	add_overlay(/obj/effect/turf_overlay/beach_water, TRUE)
 
@@ -24,42 +24,66 @@
 	icon_state = "water2"
 	layer = ABOVE_MOB_LAYER
 
-/turf/simulated/floor/beach
-	name = "Beach"
+/turf/simulated/floor/outdoors/beach
+	name = "beach"
 	icon = 'icons/misc/beach.dmi'
-	footstep_sounds = list("human" = list(
-		'sound/effects/footstep/carpet1.ogg',
-		'sound/effects/footstep/carpet2.ogg',
-		'sound/effects/footstep/carpet3.ogg',
-		'sound/effects/footstep/carpet4.ogg',
-		'sound/effects/footstep/carpet5.ogg'))
+	initial_flooring = /decl/flooring/outdoors/beach
 
-/turf/simulated/floor/beach/sand
-	name = "Sand"
+/turf/simulated/floor/outdoors/beach/sand
+	name = "sand"
 	icon_state = "sand"
 
-/turf/simulated/floor/beach/sand/desert
+/turf/simulated/floor/outdoors/beach/sand/desert
+	name = "Dunes"
+	desc = "It seems to go on and on.."
 	icon = 'icons/turf/desert.dmi'
 	icon_state = "desert"
+	initial_flooring = /decl/flooring/outdoors/beach/sand/desert
 
-/turf/simulated/floor/beach/sand/desert/Initialize()
+/turf/simulated/floor/outdoors/beach/sand/desert/Initialize(mapload)
 	. = ..()
 	if(prob(5))
 		icon_state = "desert[rand(0,4)]"
 
-/turf/simulated/floor/beach/coastline
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors
+	outdoors = FALSE
+
+/turf/simulated/floor/outdoors/beach/sand/lowdesert
+	name = "\improper low desert"
+	icon = 'icons/turf/desert.dmi'
+	icon_state = "lowdesert"
+
+/turf/simulated/floor/outdoors/beach/outdoors/sand/lowdesert/Initialize(mapload)
+	. = ..()
+	if(prob(5))
+		icon_state = "lowdesert[rand(0,4)]"
+
+/turf/simulated/floor/beach/sand/dirt
+	name = "worn out path"
+	desc = "A compacted bit of sand with footprints all over it..."
+	icon_state = "dirt-dark"
+	icon = 'icons/turf/outdoors.dmi'
+
+/turf/simulated/floor/outdoors/beach/sand/dirtlight
+	name = "sun bleached path"
+	desc = "A cracked path of compacted sand, worn by heavy traffic and bleached by constant sunlight."
+	icon_state = "dirt-light"
+	icon = 'icons/turf/outdoors.dmi'
+
+/turf/simulated/floor/outdoors/beach/coastline
 	name = "Coastline"
 	icon = 'icons/misc/beach2.dmi'
 	icon_state = "sandwater"
 
-/turf/simulated/floor/beach/water
+/turf/simulated/floor/outdoors/beach/water
 	name = "Water"
 	icon_state = "water"
+	initial_flooring = /decl/flooring/water
 
-/turf/simulated/floor/beach/water/ocean
+/turf/simulated/floor/outdoors/beach/water/ocean
 	icon_state = "seadeep"
 
-/turf/simulated/floor/beach/water/Initialize()
+/turf/simulated/floor/outdoors/beach/water/Initialize(mapload)
 	. = ..()
 	add_overlay(/obj/effect/turf_overlay/beach_ocean, TRUE)
 

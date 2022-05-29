@@ -21,7 +21,9 @@
 		/obj/item/camera_assembly,
 		/obj/item/tank,
 		/obj/item/circuitboard,
-		/obj/item/smes_coil
+		/obj/item/smes_coil,
+		/obj/item/fuelrod/,
+		/obj/item/fuel_assembly/
 		)
 
 	var/obj/item/wrapped = null // Item currently being held.
@@ -29,9 +31,9 @@
 	var/force_holder = null //
 
 /obj/item/gripper/examine(mob/user)
-	..()
+	. = ..()
 	if(wrapped)
-		to_chat(user, "<span class='notice'>\The [src] is holding \the [wrapped].</span>")
+		. += "<span class='notice'>\The [src] is holding \the [wrapped].</span>"
 		wrapped.examine(user)
 
 /obj/item/gripper/CtrlClick(mob/user)
@@ -94,7 +96,9 @@
 		/obj/item/storage/pill_bottle,
 		/obj/item/reagent_containers/pill,
 		/obj/item/reagent_containers/blood,
-		/obj/item/stack/material/phoron
+		/obj/item/stack/material/phoron,
+		/obj/item/implant,
+		/obj/item/nif
 		)
 
 /obj/item/gripper/research //A general usage gripper, used for toxins/robotics/xenobio/etc
@@ -119,7 +123,8 @@
 		/obj/item/disposable_teleporter/slime,
 		/obj/item/slimepotion,
 		/obj/item/slime_extract,
-		/obj/item/reagent_containers/food/snacks/monkeycube
+		/obj/item/reagent_containers/food/snacks/monkeycube,
+		/obj/item/nif
 
 		)
 
@@ -155,7 +160,10 @@
 		/obj/item/seeds,
 		/obj/item/grown,
 		/obj/item/tray,
-		/obj/item/plantspray
+		/obj/item/plantspray,
+		/obj/item/reagent_containers/glass,
+		/obj/item/reagent_containers/food/drinks,
+		/obj/item/storage/box/wings
 		)
 
 /obj/item/gripper/gravekeeper	//Used for handling grave things, flowers, etc.
@@ -213,7 +221,7 @@
 
 	can_hold = list(
 		/obj/item/mecha_parts/part,
-		/obj/item/mecha_parts/micro/part,		//VOREStation Edit: Allow construction of micromechs,
+		/obj/item/mecha_parts/micro/part,
 		/obj/item/mecha_parts/mecha_equipment,
 		/obj/item/mecha_parts/mecha_tracking
 		)

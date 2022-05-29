@@ -19,7 +19,7 @@ var/datum/antagonist/ert/ert
 	id_type = /obj/item/card/id/centcom/ERT
 
 	flags = ANTAG_OVERRIDE_JOB | ANTAG_SET_APPEARANCE | ANTAG_HAS_LEADER | ANTAG_CHOOSE_NAME
-	antaghud_indicator = "hudloyalist"
+	antaghud_indicator = "loyalist"
 
 	hard_cap = 5
 	hard_cap_round = 7
@@ -40,7 +40,7 @@ var/datum/antagonist/ert/ert
 /datum/antagonist/ert/greet(var/datum/mind/player)
 	if(!..())
 		return
-	player.current << "The Emergency Response Team works for Asset Protection; your job is to protect [GLOB.using_map.company_name]'s ass-ets. There is a code red alert on [station_name()], you are tasked to go and fix the problem."
+	to_chat(player.current, "The Emergency Response Team works for Asset Protection; your job is to protect [GLOB.using_map.company_name]'s ass-ets. There is a code red alert on [station_name()], you are tasked to go and fix the problem.")
 	to_chat(player.current, "You should first gear up and discuss a plan with your team. More members may be joining, don't move out before you're ready.")
 
 /datum/antagonist/ert/equip(var/mob/living/carbon/human/player)

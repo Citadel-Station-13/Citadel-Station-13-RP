@@ -6,23 +6,35 @@
 	var/id = "reagent"
 	var/description = "A non-descript chemical."
 	var/taste_description = "bitterness"
-	var/taste_mult = 1 //how this taste compares to others. Higher values means it is more noticable
+	/// How this taste compares to others. Higher values means it is more noticable
+	var/taste_mult = 1
 	var/datum/reagents/holder = null
-	var/reagent_state = SOLID
+	var/reagent_state = REAGENT_SOLID
 	var/list/data = null
 	var/volume = 0
 	var/metabolism = REM // This would be 0.2 normally
-	var/list/filtered_organs = list()	// Organs that will slow the processing of this chemical.
-	var/mrate_static = FALSE	//If the reagent should always process at the same speed, regardless of species, make this TRUE
+	/// Used for vampric-Digestion
+	var/blood_content = 0
+	/// Organs that will slow the processing of this chemical.
+	var/list/filtered_organs = list()
+	///If the reagent should always process at the same speed, regardless of species, make this TRUE
+	var/mrate_static = FALSE
 	var/ingest_met = 0
 	var/touch_met = 0
 	var/dose = 0
 	var/max_dose = 0
-	var/overdose = 0		//Amount at which overdose starts
-	var/overdose_mod = 2	//Modifier to overdose damage
-	var/can_overdose_touch = FALSE	// Can the chemical OD when processing on touch?
-	var/scannable = 0 // Shows up on health analyzers.
+	///Amount at which overdose starts
+	var/overdose = 0
+	///Modifier to overdose damage
+	var/overdose_mod = 2
+	/// Can the chemical OD when processing on touch?
+	var/can_overdose_touch = FALSE
+	/// Shows up on health analyzers.
+	var/scannable = 0
+	/// Does this chem process inside a corpse?
 	var/affects_dead = 0
+	/// Does this chem process inside a Synth?
+	var/affects_robots = 0
 	var/cup_icon_state = null
 	var/cup_name = null
 	var/cup_desc = null
@@ -40,20 +52,25 @@
 	if(holder)
 		holder.remove_reagent(id, amount)
 
-// This doesn't apply to skin contact - this is for, e.g. extinguishers and sprays. The difference is that reagent is not directly on the mob's skin - it might just be on their clothing.
+/// This doesn't apply to skin contact - this is for, e.g. extinguishers and sprays. The difference is that reagent is not directly on the mob's skin - it might just be on their clothing.
 /datum/reagent/proc/touch_mob(var/mob/M, var/amount)
 	return
 
-/datum/reagent/proc/touch_obj(var/obj/O, var/amount) // Acid melting, cleaner cleaning, etc
+/// Acid melting, cleaner cleaning, etc
+/datum/reagent/proc/touch_obj(var/obj/O, var/amount)
 	return
 
-/datum/reagent/proc/touch_turf(var/turf/T, var/amount) // Cleaner cleaning, lube lubbing, etc, all go here
+/// Cleaner cleaning, lube lubbing, etc, all go here
+/datum/reagent/proc/touch_turf(var/turf/T, var/amount)
 	return
 
-/datum/reagent/proc/on_mob_life(var/mob/living/carbon/M, var/alien, var/datum/reagents/metabolism/location) // Currently, on_mob_life is called on carbons. Any interaction with non-carbon mobs (lube) will need to be done in touch_mob.
+/// Currently, on_mob_life is called on carbons. Any interaction with non-carbon mobs (lube) will need to be done in touch_mob.
+/datum/reagent/proc/on_mob_life(var/mob/living/carbon/M, var/alien, var/datum/reagents/metabolism/location)
 	if(!istype(M))
 		return
 	if(!affects_dead && M.stat == DEAD)
+		return
+	if(!affects_robots && M.isSynthetic())
 		return
 	if(!istype(location))
 		return
@@ -79,28 +96,55 @@
 
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
-			if(H.species.has_organ[O_HEART] && (active_metab.metabolism_class == CHEM_BLOOD))
-				var/obj/item/organ/internal/heart/Pump = H.internal_organs_by_name[O_HEART]
-				if(!Pump)
-					removed *= 0.1
-				else if(Pump.standard_pulse_level == PULSE_NONE)	// No pulse normally means chemicals process a little bit slower than normal.
-					removed *= 0.8
-				else	// Otherwise, chemicals process as per percentage of your current pulse, or, if you have no pulse but are alive, by a miniscule amount.
-					removed *= max(0.1, H.pulse / Pump.standard_pulse_level)
+			if(!H.isSynthetic())
+				if(H.species.has_organ[O_HEART] && (active_metab.metabolism_class == CHEM_BLOOD))
+					var/obj/item/organ/internal/heart/Pump = H.internal_organs_by_name[O_HEART]
+					if(!Pump)
+						removed *= 0.1
+					else if(Pump.standard_pulse_level == PULSE_NONE) // No pulse normally means chemicals process a little bit slower than normal.
+						removed *= 0.8
+					else // Otherwise, chemicals process as per percentage of your current pulse, or, if you have no pulse but are alive, by a miniscule amount.
+						removed *= max(0.1, H.pulse / Pump.standard_pulse_level)
 
-			if(H.species.has_organ[O_STOMACH] && (active_metab.metabolism_class == CHEM_INGEST))
-				var/obj/item/organ/internal/stomach/Chamber = H.internal_organs_by_name[O_STOMACH]
-				if(Chamber)
-					ingest_rem_mult *= max(0.1, 1 - (Chamber.damage / Chamber.max_damage))
-				else
-					ingest_rem_mult = 0.1
+				if(H.species.has_organ[O_STOMACH] && (active_metab.metabolism_class == CHEM_INGEST))
+					var/obj/item/organ/internal/stomach/Chamber = H.internal_organs_by_name[O_STOMACH]
+					if(Chamber)
+						ingest_rem_mult *= max(0.1, 1 - (Chamber.damage / Chamber.max_damage))
+					else
+						ingest_rem_mult = 0.1
 
-			if(H.species.has_organ[O_INTESTINE] && (active_metab.metabolism_class == CHEM_INGEST))
-				var/obj/item/organ/internal/intestine/Tube = H.internal_organs_by_name[O_INTESTINE]
-				if(Tube)
-					ingest_abs_mult *= max(0.1, 1 - (Tube.damage / Tube.max_damage))
-				else
-					ingest_abs_mult = 0.1
+				if(H.species.has_organ[O_INTESTINE] && (active_metab.metabolism_class == CHEM_INGEST))
+					var/obj/item/organ/internal/intestine/Tube = H.internal_organs_by_name[O_INTESTINE]
+					if(Tube)
+						ingest_abs_mult *= max(0.1, 1 - (Tube.damage / Tube.max_damage))
+					else
+						ingest_abs_mult = 0.1
+
+			else
+				var/obj/item/organ/internal/heart/machine/Pump = H.internal_organs_by_name[O_PUMP]
+				var/obj/item/organ/internal/stomach/machine/Cycler = H.internal_organs_by_name[O_CYCLER]
+
+				if(active_metab.metabolism_class == CHEM_BLOOD)
+					if(Pump)
+						removed *= 1.1 - Pump.damage / Pump.max_damage
+					else
+						removed *= 0.1
+
+				else if(active_metab.metabolism_class == CHEM_INGEST) // If the pump is damaged, we waste chems from the tank.
+					if(Pump)
+						ingest_abs_mult *= max(0.25, 1 - Pump.damage / Pump.max_damage)
+
+					else
+						ingest_abs_mult *= 0.2
+
+					if(Cycler) // If we're damaged, we empty our tank slower.
+						ingest_rem_mult = max(0.1, 1 - (Cycler.damage / Cycler.max_damage))
+
+					else
+						ingest_rem_mult = 0.1
+
+				else if(active_metab.metabolism_class == CHEM_TOUCH) // Machines don't exactly absorb chemicals.
+					removed *= 0.5
 
 			if(filtered_organs && filtered_organs.len)
 				for(var/organ_tag in filtered_organs)
@@ -136,6 +180,17 @@
 /datum/reagent/proc/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	M.bloodstr.add_reagent(id, removed)
 	return
+
+/datum/reagent/proc/handle_vampire(var/mob/living/carbon/M, var/alien, var/removed, var/is_vampire)
+	if(blood_content > 0 && is_vampire)
+		#define blud_warn_timer 3000
+		if(blood_content < 4) //Are we drinking real blood or something else?
+			if(M.nutrition <= 0.333 * M.species.max_nutrition || M.nutrition > 0.778 * M.species.max_nutrition) //Vampires who are starving or peckish get nothing from fake blood.
+				if(M.last_blood_warn + blud_warn_timer < world.time)
+					to_chat(M, "<span class='warning'>This isn't enough. You need something stronger.</span>")
+					M.last_blood_warn = world.time //If we're drinking fake blood, make sure we're warned appropriately.
+				return
+		M.nutrition += removed * blood_content //We should always be able to process real blood.
 
 /datum/reagent/proc/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
 	return
@@ -177,3 +232,9 @@
 
 /datum/reagent/proc/reaction_mob(var/mob/target)
 	touch_mob(target)
+
+/datum/reagent/proc/on_move(mob/M)
+	return
+
+/datum/reagent/proc/on_update(atom/A)
+	return

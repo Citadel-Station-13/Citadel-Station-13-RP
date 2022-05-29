@@ -93,6 +93,7 @@
 		init_from_mob(copyfrom, add_to_db, ckeylock)
 
 /datum/transhuman/body_record/Destroy()
+	. = ..()
 	mydna = null
 	client_ref = null
 	mind_ref = null
@@ -108,7 +109,7 @@
 	locked = ckeylock
 
 	//Prevent people from printing restricted and whitelisted species
-	var/datum/species/S = GLOB.all_species["[M.dna.species]"]
+	var/datum/species/S = name_static_species_meta(M.dna.species)
 	if(S)
 		toocomplex = (S.spawn_flags & SPECIES_IS_WHITELISTED) || (S.spawn_flags & SPECIES_IS_RESTRICTED)
 

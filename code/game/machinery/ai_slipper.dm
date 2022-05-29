@@ -2,20 +2,20 @@
 	name = "\improper AI Liquid Dispenser"
 	icon = 'icons/obj/device.dmi'
 	icon_state = "motion0"
-	anchored = 1.0
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	var/uses = 20
-	var/disabled = 1
-	var/lethal = 0
-	var/locked = 1
+	var/disabled = TRUE
+	var/lethal = FALSE
+	var/locked = TRUE
 	var/cooldown_time = 0
 	var/cooldown_timeleft = 0
-	var/cooldown_on = 0
+	var/cooldown_on = FALSE
 	req_access = list(access_ai_upload)
 
-/obj/machinery/ai_slipper/New()
-	..()
+/obj/machinery/ai_slipper/Initialize(mapload, newdir)
+	. = ..()
 	update_icon()
 
 /obj/machinery/ai_slipper/power_change()
@@ -23,7 +23,7 @@
 	update_icon()
 
 /obj/machinery/ai_slipper/update_icon()
-	if(stat & NOPOWER || stat & BROKEN)
+	if(machine_stat & (NOPOWER|BROKEN))
 		icon_state = "motion0"
 	else
 		icon_state = disabled ? "motion0" : "motion3"
@@ -34,7 +34,7 @@
 	power_change()
 
 /obj/machinery/ai_slipper/attackby(obj/item/W, mob/user)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	if(istype(user, /mob/living/silicon))
 		return attack_hand(user)
@@ -58,11 +58,11 @@
 	return attack_hand(user)
 
 /obj/machinery/ai_slipper/attack_hand(mob/user as mob)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	if((get_dist(src, user) > 1))
 		if(!istype(user, /mob/living/silicon))
-			user << text("Too far away.")
+			to_chat(user, "Too far away.")
 			user.unset_machine()
 			user << browse(null, "window=ai_slipper")
 			return
@@ -72,7 +72,7 @@
 	if(istype(loc, /turf))
 		loc = loc:loc
 	if(!istype(loc, /area))
-		user << text("Turret badly positioned - loc.loc is [].", loc)
+		to_chat(user, "Turret badly positioned - loc.loc is [loc].")
 		return
 	var/area/area = loc
 	var/t = "<TT><B>AI Liquid Dispenser</B> ([area.name])<HR>"
@@ -100,7 +100,7 @@
 		if(cooldown_on || disabled)
 			return
 		else
-			new /obj/effect/effect/foam(src.loc)
+			new /obj/effect/foam(src.loc)
 			uses--
 			cooldown_on = 1
 			cooldown_time = world.timeofday + 100

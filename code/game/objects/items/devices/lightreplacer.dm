@@ -60,13 +60,13 @@
 	var/shards_required = 4
 
 
-/obj/item/lightreplacer/New()
+/obj/item/lightreplacer/Initialize(mapload)
+	. = ..()
 	failmsg = "The [name]'s refill light blinks red."
-	..()
 
 /obj/item/lightreplacer/examine(mob/user)
-	if(..(user, 2))
-		to_chat(user, "It has [uses] lights remaining.")
+	. = ..()
+	. += "It has [uses] lights remaining."
 
 /obj/item/lightreplacer/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/stack/material) && W.get_material_name() == "glass")

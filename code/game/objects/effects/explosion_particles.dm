@@ -6,15 +6,9 @@
 	anchored = 1
 	mouse_opacity = 0
 
-/obj/effect/expl_particles/New()
-	..()
-	spawn (15)
-		qdel(src)
-	return
-
-/obj/effect/expl_particles/Move()
-	..()
-	return
+/obj/effect/expl_particles/Initialize(mapload)
+	. = ..()
+	QDEL_IN(src, 15)
 
 /datum/effect/system/expl_particles
 	var/number = 10
@@ -31,7 +25,7 @@
 	for(i=0, i<src.number, i++)
 		spawn(0)
 			var/obj/effect/expl_particles/expl = new /obj/effect/expl_particles(src.location)
-			var/direct = pick(alldirs)
+			var/direct = pick(GLOB.alldirs)
 			for(i=0, i<pick(1;25,2;50,3,4;200), i++)
 				sleep(1)
 				step(expl,direct)
@@ -46,11 +40,9 @@
 	pixel_x = -32
 	pixel_y = -32
 
-/obj/effect/explosion/New()
-	..()
-	spawn (10)
-		qdel(src)
-	return
+/obj/effect/explosion/Initialize(mapload)
+	. = ..()
+	QDEL_IN(src, 1 SECONDS)
 
 /datum/effect/system/explosion
 	var/turf/location

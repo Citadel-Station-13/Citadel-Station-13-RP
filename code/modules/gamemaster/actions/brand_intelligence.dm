@@ -1,7 +1,7 @@
 /datum/gm_action/brand_intelligence
 	name = "rampant vending machines"
 	length = 30 MINUTES
-	departments = list(ROLE_ENGINEERING, ROLE_EVERYONE)
+	departments = list(DEPARTMENT_ENGINEERING, DEPARTMENT_EVERYONE)
 
 	var/list/obj/machinery/vending/vendingMachines = list()
 	var/list/obj/machinery/vending/infectedVendingMachines = list()
@@ -19,7 +19,7 @@
 	vendingMachines.Cut()
 	infectedVendingMachines.Cut()
 
-	for(var/obj/machinery/vending/V in machines)
+	for(var/obj/machinery/vending/V in GLOB.machines)
 		if(isNotStationLevel(V.z))	continue
 		vendingMachines.Add(V)
 
@@ -66,4 +66,4 @@
 		infectedMachine.shoot_inventory = 0
 
 /datum/gm_action/brand_intelligence/get_weight()
-	return 60 + (metric.count_people_in_department(ROLE_ENGINEERING) * 20)
+	return 60 + (metric.count_people_in_department(DEPARTMENT_ENGINEERING) * 20)

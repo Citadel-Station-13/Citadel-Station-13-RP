@@ -1,0 +1,374 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"b" = (
+/obj/structure/girder,
+/turf/simulated/floor/lavaland,
+/area/lavaland/idleruins)
+"c" = (
+/obj/machinery/seed_storage/xenobotany,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/idleruins)
+"f" = (
+/obj/effect/decal/remains,
+/obj/item/clothing/under/rank/hydroponics,
+/obj/item/clothing/suit/storage/toggle/labcoat/green,
+/obj/item/clothing/head/greenbandana,
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/idleruins)
+"k" = (
+/obj/structure/table/woodentable,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/idleruins)
+"m" = (
+/obj/machinery/portable_atmospherics/hydroponics/soil,
+/turf/simulated/floor/outdoors/dirt/lavaland/interior,
+/area/lavaland/idleruins)
+"n" = (
+/obj/machinery/vending/hydronutrients,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/idleruins)
+"q" = (
+/obj/structure/bed/roller,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/idleruins)
+"r" = (
+/obj/machinery/seed_extractor,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/idleruins)
+"u" = (
+/mob/living/simple_mob/mechanical/cyber_horror/ling_cyber_horror/surt,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/idleruins)
+"v" = (
+/obj/structure/barricade,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/idleruins)
+"B" = (
+/obj/machinery/botany/editor,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/idleruins)
+"F" = (
+/obj/structure/reagent_dispensers/watertank/high,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/idleruins)
+"H" = (
+/obj/item/reagent_containers/spray/chemsprayer,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/idleruins)
+"I" = (
+/turf/template_noop,
+/area/lavaland/idleruins)
+"M" = (
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/area/lavaland/idleruins)
+"N" = (
+/turf/simulated/wall/wood,
+/area/lavaland/idleruins)
+"P" = (
+/obj/item/reagent_containers/spray/plantbgone,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/idleruins)
+"Q" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/idleruins)
+"R" = (
+/obj/item/reagent_containers/spray/plantbgone,
+/obj/structure/table/woodentable,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/idleruins)
+"S" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/material/knife/machete/hatchet,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/idleruins)
+"T" = (
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/idleruins)
+"U" = (
+/obj/item/seeds/killertomatoseed,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/idleruins)
+"W" = (
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/idleruins)
+"X" = (
+/obj/structure/table/rack,
+/obj/item/shovel/spade,
+/obj/item/shovel/spade,
+/obj/item/material/minihoe,
+/obj/item/material/minihoe,
+/obj/item/material/knife/machete/hatchet,
+/obj/item/material/knife/machete/hatchet,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/analyzer/plant_analyzer,
+/obj/item/analyzer/plant_analyzer,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/idleruins)
+"Y" = (
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/area/template_noop)
+"Z" = (
+/obj/machinery/botany/extractor,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/idleruins)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+M
+M
+I
+I
+I
+I
+T
+T
+T
+T
+I
+I
+a
+"}
+(3,1,1) = {"
+a
+a
+M
+N
+N
+N
+N
+N
+N
+N
+N
+T
+T
+T
+a
+"}
+(4,1,1) = {"
+a
+a
+M
+N
+m
+m
+m
+m
+m
+m
+N
+T
+T
+T
+a
+"}
+(5,1,1) = {"
+a
+a
+I
+N
+F
+U
+W
+W
+W
+W
+N
+T
+T
+T
+a
+"}
+(6,1,1) = {"
+a
+a
+I
+N
+B
+W
+W
+W
+W
+X
+N
+N
+T
+T
+a
+"}
+(7,1,1) = {"
+a
+a
+I
+N
+n
+W
+W
+W
+k
+W
+N
+W
+T
+T
+a
+"}
+(8,1,1) = {"
+a
+a
+I
+N
+r
+W
+W
+q
+k
+W
+v
+W
+T
+T
+a
+"}
+(9,1,1) = {"
+a
+a
+I
+N
+c
+W
+W
+Q
+k
+v
+N
+W
+T
+T
+a
+"}
+(10,1,1) = {"
+a
+a
+I
+N
+Z
+P
+S
+W
+W
+W
+N
+N
+T
+T
+a
+"}
+(11,1,1) = {"
+a
+a
+M
+b
+R
+H
+f
+u
+W
+U
+N
+M
+M
+M
+a
+"}
+(12,1,1) = {"
+a
+a
+M
+N
+m
+m
+m
+m
+m
+m
+N
+M
+M
+M
+a
+"}
+(13,1,1) = {"
+a
+a
+M
+N
+N
+N
+N
+N
+N
+N
+N
+M
+M
+M
+a
+"}
+(14,1,1) = {"
+a
+a
+M
+M
+M
+I
+I
+I
+M
+M
+M
+M
+I
+I
+a
+"}
+(15,1,1) = {"
+a
+a
+Y
+Y
+a
+a
+a
+a
+Y
+Y
+a
+a
+a
+a
+a
+"}

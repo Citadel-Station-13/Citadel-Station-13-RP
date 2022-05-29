@@ -1,0 +1,165 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/explored)
+"d" = (
+/turf/simulated/mineral/classh,
+/area/class_h/explored)
+"i" = (
+/obj/random/outcrop,
+/turf/simulated/floor/water/classh,
+/area/class_h/explored)
+"o" = (
+/obj/random/outcrop,
+/turf/simulated/floor/water/shoreline/classh{
+	dir = 1
+	},
+/area/class_h/explored)
+"v" = (
+/turf/simulated/floor/water/shoreline/corner/classh{
+	dir = 4
+	},
+/area/class_h/explored)
+"B" = (
+/turf/simulated/floor/water/classh,
+/area/class_h/explored)
+"C" = (
+/turf/simulated/mineral/floor/classh,
+/area/class_h/explored)
+"S" = (
+/obj/random/outcrop,
+/turf/simulated/floor/water/shoreline/classh{
+	dir = 9
+	},
+/area/class_h/explored)
+"V" = (
+/turf/simulated/floor/water/shoreline/classh{
+	dir = 9
+	},
+/area/class_h/explored)
+"Y" = (
+/turf/simulated/floor/water/shoreline/classh{
+	dir = 1
+	},
+/area/class_h/explored)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+a
+d
+d
+d
+d
+d
+a
+a
+"}
+(3,1,1) = {"
+a
+a
+d
+d
+d
+d
+d
+d
+d
+a
+"}
+(4,1,1) = {"
+a
+d
+d
+d
+i
+B
+o
+d
+d
+a
+"}
+(5,1,1) = {"
+a
+d
+d
+i
+B
+B
+Y
+d
+d
+a
+"}
+(6,1,1) = {"
+a
+d
+d
+B
+B
+V
+v
+d
+d
+a
+"}
+(7,1,1) = {"
+a
+d
+d
+d
+S
+v
+C
+d
+d
+a
+"}
+(8,1,1) = {"
+a
+d
+d
+d
+d
+C
+C
+C
+a
+a
+"}
+(9,1,1) = {"
+a
+a
+d
+d
+d
+d
+C
+a
+a
+a
+"}
+(10,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}

@@ -14,6 +14,8 @@
 	throw_speed = 3
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
+	/// Are we EMP immune?
+	var/emp_proof = FALSE
 	var/charge
 	var/maxcharge = 1000
 	var/rigged = 0		// true if rigged to explode
@@ -22,7 +24,7 @@
 	var/charge_amount = 25 // How much power to give, if self_recharge is true.  The number is in absolute cell charge, as it gets divided by CELLRATE later.
 	var/last_use = 0 // A tracker for use in self-charging
 	var/charge_delay = 0 // How long it takes for the cell to start recharging after last use
-	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 50)
+	matter = list(MAT_STEEL = 700, MAT_GLASS = 50)
 
 	// Overlay stuff.
 	var/overlay_half_state = "cell-o1" // Overlay used when not fully charged but not empty.
@@ -45,24 +47,20 @@
 /obj/item/cell/get_cell()
 	return src
 
-/obj/item/cell/process()
+/obj/item/cell/process(delta_time)
 	if(self_recharge)
 		if(world.time >= last_use + charge_delay)
 			give(charge_amount)
 	else
 		return PROCESS_KILL
 
-/obj/item/cell/drain_power(var/drain_check, var/surge, var/power = 0)
-
-	if(drain_check)
-		return 1
-
+/obj/item/cell/drain_energy(datum/actor, amount, flags)
 	if(charge <= 0)
 		return 0
+	return use(DYNAMIC_KJ_TO_CELL_UNITS(amount)) * GLOB.cellrate
 
-	var/cell_amt = power * CELLRATE
-
-	return use(cell_amt) / CELLRATE
+/obj/item/cell/can_drain_energy(datum/actor, flags)
+	return TRUE
 
 #define OVERLAY_FULL	2
 #define OVERLAY_PARTIAL	1
@@ -130,6 +128,20 @@
 	use(amount)
 	return 1
 
+/**
+ * use x cell units, affected by GLOB.cellefficiency
+ */
+/obj/item/cell/proc/use_scaled(amount)
+	return use(amount / GLOB.cellefficiency) * GLOB.cellefficiency
+
+/**
+ * uses x cell units but only if we have enough, affected by GLOB.cellefficiency
+ *
+ * returns TRUE/FALSE
+ */
+/obj/item/cell/proc/checked_use_scaled(amount)
+	return checked_use(amount / GLOB.cellefficiency)
+
 // recharge the cell
 /obj/item/cell/proc/give(var/amount)
 	if(rigged && amount > 0)
@@ -144,18 +156,14 @@
 
 
 /obj/item/cell/examine(mob/user)
-	var/msg = desc
-
+	. = ..()
 	if(get_dist(src, user) <= 1)
-		msg += " It has a power rating of [maxcharge].\nThe charge meter reads [round(src.percent() )]%."
+		. += " It has a power rating of [maxcharge].\nThe charge meter reads [round(src.percent() )]%."
+	if(maxcharge < 30000)
+		. += "[desc]\nThe manufacturer's label states this cell has a power rating of [maxcharge], and that you should not swallow it.\nThe charge meter reads [round(src.percent() )]%."
+	else
+		. += "This power cell has an exciting chrome finish, as it is an uber-capacity cell type! It has a power rating of [maxcharge]!\nThe charge meter reads [round(src.percent() )]%."
 
-	to_chat(user, msg)
-/*
-		if(maxcharge <= 2500)
-			to_chat(user, "[desc]\nThe manufacturer's label states this cell has a power rating of [maxcharge], and that you should not swallow it.\nThe charge meter reads [round(src.percent() )]%.")
-		else
-			to_chat(user, "This power cell has an exciting chrome finish, as it is an uber-capacity cell type! It has a power rating of [maxcharge]!\nThe charge meter reads [round(src.percent() )]%.")
-*/
 /obj/item/cell/attackby(obj/item/W, mob/user)
 	..()
 	if(istype(W, /obj/item/reagent_containers/syringe))
@@ -206,6 +214,9 @@
 		rigged = 1 //broken batteries are dangerous
 
 /obj/item/cell/emp_act(severity)
+	. = ..()
+	if(emp_proof)
+		return
 	//remove this once emp changes on dev are merged in
 	if(isrobot(loc))
 		var/mob/living/silicon/robot/R = loc
@@ -216,7 +227,6 @@
 		charge = 0
 
 	update_icon()
-	..()
 
 /obj/item/cell/ex_act(severity)
 
@@ -269,5 +279,5 @@
 
 /obj/item/cell/suicide_act(mob/user)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
-	viewers(user) << "<span class='danger'>\The [user] is licking the electrodes of \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>"
+	user.visible_message("<span class='danger'>\The [user] is licking the electrodes of \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
 	return (FIRELOSS)

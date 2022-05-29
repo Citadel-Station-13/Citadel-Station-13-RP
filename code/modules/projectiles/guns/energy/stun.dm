@@ -1,10 +1,18 @@
 /obj/item/gun/energy/taser
 	name = "taser gun"
-	desc = "The NT Mk30 NL is a small gun used for non-lethal takedowns. Produced by NT, it's actually a licensed version of a W-T design."
+	desc = "The NT Mk31 NL is a small gun used for non-lethal takedowns. An NT exclusive iteration of the Mk30 WT design, the Mk31 features a variable output mechanism which draws from a singular power source, allowing for versatile firing solutions without increased weight."
 	icon_state = "taser"
 	item_state = null	//so the human update icon uses the icon_state instead.
-	projectile_type = /obj/item/projectile/beam/stun
-	charge_cost = 480
+
+	fire_delay = 4
+
+	projectile_type = /obj/item/projectile/energy/electrode
+	modifystate = "taser"
+
+	firemodes = list(
+		list(mode_name="stun", projectile_type=/obj/item/projectile/energy/electrode, modifystate="taser", charge_cost = 240),
+		list(mode_name="disable", projectile_type=/obj/item/projectile/beam/disabler/weak, modifystate="taserblue", charge_cost = 160),
+		)
 
 /obj/item/gun/energy/taser/mounted
 	name = "mounted taser gun"
@@ -36,7 +44,7 @@
 	item_state = "stunrevolver"
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_POWER = 2)
 	projectile_type = /obj/item/projectile/energy/electrode/strong
-	charge_cost = 300
+	charge_cost = 400
 
 /obj/item/gun/energy/crossbow
 	name = "mini energy-crossbow"
@@ -45,7 +53,7 @@
 	w_class = ITEMSIZE_SMALL
 	item_state = "crossbow"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MAGNET = 2, TECH_ILLEGAL = 5)
-	matter = list(DEFAULT_WALL_MATERIAL = 2000)
+	matter = list(MAT_STEEL = 2000)
 	slot_flags = SLOT_BELT | SLOT_HOLSTER
 	silenced = 1
 	projectile_type = /obj/item/projectile/energy/bolt
@@ -63,7 +71,7 @@
 	desc = "A weapon favored by mercenary infiltration teams."
 	w_class = ITEMSIZE_LARGE
 	force = 10
-	matter = list(DEFAULT_WALL_MATERIAL = 200000)
+	matter = list(MAT_STEEL = 200000)
 	slot_flags = SLOT_BELT
 	projectile_type = /obj/item/projectile/energy/bolt/large
 
@@ -76,13 +84,15 @@
 	fire_delay = 20
 	charge_cost = 600
 	projectile_type = /obj/item/projectile/energy/plasmastun
+	one_handed_penalty = 5
 
-/obj/item/gun/energy/taser/civ
+/obj/item/gun/energy/civtas
 	name = "Palm Taser"
 	desc = "A LAEP5 'Little Thunder' tiny concealable taser pistol designed for the civilian self defense market. Attaches to the palm of the hand with a stylish leather strap to delivers a powerful single stun blast onto an unsuspecting target"
 	icon_state = "civtas"
 	item_state = "concealed"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 3, TECH_POWER = 3)
 	projectile_type = /obj/item/projectile/energy/electrode/stunshot
+	fire_delay = 4
 	charge_cost = 1500
 	cell_type = /obj/item/cell/device/weapon

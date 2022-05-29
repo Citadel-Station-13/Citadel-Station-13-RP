@@ -40,13 +40,13 @@
 	var/swarmling_faction = "spiders"
 	var/swarmling_prob = 10 // Odds that a spiderling will be a swarmling instead.
 
-/mob/living/simple_mob/animal/giant_spider/carrier/Initialize()
+/mob/living/simple_mob/animal/giant_spider/carrier/Initialize(mapload)
 	spiderling_count = rand(5, 10)
 	adjust_scale(1.2)
 	return ..()
 
 /mob/living/simple_mob/animal/giant_spider/carrier/death()
-	visible_message(span("warning", "\The [src]'s abdomen splits as it rolls over, spiderlings crawling from the wound.") )
+	visible_message(SPAN_WARNING( "\The [src]'s abdomen splits as it rolls over, spiderlings crawling from the wound.") )
 	spawn(1)
 		var/list/new_spiders = list()
 		for(var/i = 1 to spiderling_count)

@@ -19,7 +19,7 @@
 		/obj/item/gps/science,
 		/obj/item/clothing/shoes/boots/winter/science)
 
-/obj/structure/closet/secure_closet/scientist/Initialize()
+/obj/structure/closet/secure_closet/scientist/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/dufflebag/sci
 	else
@@ -42,11 +42,14 @@
 		/obj/item/clothing/head/bio_hood/scientist,
 		/obj/item/clothing/under/rank/research_director,
 		/obj/item/clothing/under/rank/research_director/rdalt,
+		/obj/item/clothing/under/rank/research_director/skirt_pleated,
+		/obj/item/clothing/under/rank/research_director/skirt_pleated/turtleneck,
+		/obj/item/clothing/under/rank/research_director/skirt_pleated/whimsical,
 		/obj/item/clothing/under/rank/research_director/dress_rd,
 		/obj/item/clothing/suit/storage/toggle/labcoat,
 		/obj/item/cartridge/rd,
 		/obj/item/clothing/shoes/white,
-		/obj/item/clothing/shoes/leather,
+		/obj/item/clothing/shoes/laceup/brown,
 		/obj/item/clothing/gloves/sterile/latex,
 		/obj/item/radio/headset/heads/rd,
 		/obj/item/radio/headset/heads/rd/alt,
@@ -56,5 +59,6 @@
 		/obj/item/clothing/suit/storage/hooded/wintercoat/science,
 		/obj/item/clothing/shoes/boots/winter/science,
 		/obj/item/gps/science/rd,
-		/obj/item/bluespace_harpoon, //VOREStation Add
-		/obj/item/clothing/suit/storage/toggle/labcoat/rd) // epic coat
+		/obj/item/bluespace_harpoon,
+		/obj/item/clothing/suit/storage/toggle/labcoat/rd,
+		/obj/item/clothing/under/rank/research_director/turtleneck)

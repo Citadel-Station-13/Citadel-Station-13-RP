@@ -41,3 +41,7 @@
 /datum/category_item/autolathe/medical/implanter
 	name = "implanter"
 	path =/obj/item/implanter
+
+/datum/category_item/autolathe/medical/autoinjector
+	name = "empty autoinjector"
+	path =/obj/item/reagent_containers/hypospray/autoinjector/empty

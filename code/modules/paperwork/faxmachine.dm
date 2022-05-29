@@ -1,5 +1,5 @@
 var/list/obj/machinery/photocopier/faxmachine/allfaxes = list()
-var/list/admin_departments = list("[GLOB.using_map.boss_name]", "Virgo-Prime Governmental Authority", "Supply") // Vorestation Edit
+var/list/admin_departments = list("[GLOB.using_map.boss_name]", "Virgo-Prime Governmental Authority", "Supply")
 var/list/alldepartments = list()
 
 var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
@@ -23,24 +23,25 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	var/department = "Unknown" // our department
 	var/destination = null // the department we're sending to
 
-/obj/machinery/photocopier/faxmachine/New()
+/obj/machinery/photocopier/faxmachine/Initialize(mapload)
+	. = ..()
 	allfaxes += src
-	if(!destination) destination = "[GLOB.using_map.boss_name]"
-	if( !(("[department]" in alldepartments) || ("[department]" in admin_departments)) )
+	if(!destination)
+		destination = "[GLOB.using_map.boss_name]"
+	if(!(("[department]" in alldepartments) || ("[department]" in admin_departments)) )
 		alldepartments |= department
-	..()
 
 /obj/machinery/photocopier/faxmachine/attack_hand(mob/user as mob)
 	user.set_machine(src)
 
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /**
  *  Display the NanoUI window for the fax machine.
  *
  *  See NanoUI documentation for details.
  */
-/obj/machinery/photocopier/faxmachine/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/photocopier/faxmachine/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_machine(src)
 
 	var/list/data = list()
@@ -119,8 +120,8 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 
 	SSnanoui.update_uis(src)
 
-/obj/machinery/photocopier/faxmachine/proc/sendfax(var/destination)
-	if(stat & (BROKEN|NOPOWER))
+/obj/machinery/photocopier/faxmachine/proc/sendfax(destination)
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 
 	use_power(200)
@@ -136,15 +137,15 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	else
 		visible_message("[src] beeps, \"Error transmitting message.\"")
 
-/obj/machinery/photocopier/faxmachine/proc/receivefax(var/obj/item/incoming)
-	if(stat & (BROKEN|NOPOWER))
+/obj/machinery/photocopier/faxmachine/proc/receivefax(obj/item/incoming)
+	if(machine_stat & (BROKEN|NOPOWER))
 		return 0
 
 	if(department == "Unknown")
 		return 0	//You can't send faxes to "Unknown"
 
 	flick("faxreceive", src)
-	playsound(loc, "sound/effects/printer.ogg", 50, 1)
+	playsound(src, "sound/machines/printer.ogg", 50, 1)
 
 
 	// give the sprite some time to flick
@@ -162,8 +163,8 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	use_power(active_power_usage)
 	return 1
 
-/obj/machinery/photocopier/faxmachine/proc/send_admin_fax(var/mob/sender, var/destination)
-	if(stat & (BROKEN|NOPOWER))
+/obj/machinery/photocopier/faxmachine/proc/send_admin_fax(mob/sender, destination)
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 
 	use_power(200)
@@ -186,7 +187,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	//message badmins that a fax has arrived
 	if (destination == GLOB.using_map.boss_name)
 		message_admins(sender, "[uppertext(GLOB.using_map.boss_short)] FAX", rcvdcopy, "CentComFaxReply", "#006100")
-	else if (destination == "Virgo-Prime Governmental Authority") // Vorestation Edit
+	else if (destination == "Virgo-Prime Governmental Authority")
 		message_admins(sender, "VIRGO GOVERNMENT FAX", rcvdcopy, "CentComFaxReply", "#1F66A0")
 	else if (destination == "Supply")
 		message_admins(sender, "[uppertext(GLOB.using_map.boss_short)] SUPPLY FAX", rcvdcopy, "CentComFaxReply", "#5F4519")
@@ -206,10 +207,8 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 
 	for(var/client/C in admins)
 		if(check_rights((R_ADMIN|R_MOD),0,C))
-			C << msg
-			C << 'sound/effects/printer.ogg'
+			to_chat(C, msg)
+			SEND_SOUND(C, sound('sound/machines/printer.ogg'))
 
-	// VoreStation Edit Start
 	var/faxid = export_fax(sent)
 	message_chat_admins(sender, faxname, sent, faxid, font_colour)
-	// VoreStation Edit End

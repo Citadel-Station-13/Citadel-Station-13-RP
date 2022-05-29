@@ -4,13 +4,13 @@
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "ano00"
 	var/icon_num = 0
-	density = 1
+	density = TRUE
 	var/datum/artifact_effect/my_effect
 	var/datum/artifact_effect/secondary_effect
 	var/being_used = 0
 
-/obj/machinery/artifact/New()
-	..()
+/obj/machinery/artifact/Initialize(mapload, newdir)
+	. = ..()
 
 	var/effecttype = pick(typesof(/datum/artifact_effect) - /datum/artifact_effect)
 	my_effect = new effecttype(src)
@@ -21,7 +21,7 @@
 		if(prob(75))
 			secondary_effect.ToggleActivate(0)
 
-	icon_num = rand(0, 14)
+	icon_num = rand(0, 13)
 
 	icon_state = "ano[icon_num]0"
 	if(icon_num == 7 || icon_num == 8)
@@ -47,7 +47,7 @@
 		desc = "A strange alien device."
 		if(prob(25))
 			my_effect.trigger = pick(TRIGGER_WATER, TRIGGER_ACID, TRIGGER_VOLATILE, TRIGGER_TOXIN)
-	else if(icon_num == 12 || icon_num == 14)
+	else if(icon_num == 12 || icon_num == 13)
 		name = "intricately carved statue"
 		desc = "A strange statue."
 		if(prob(60))
@@ -64,7 +64,7 @@
 			secondary_effect = null
 
 
-/obj/machinery/artifact/process()
+/obj/machinery/artifact/process(delta_time)
 	var/turf/L = loc
 	if(!istype(L)) 	// We're inside a container or on null turf, either way stop processing effects
 		return
@@ -86,20 +86,20 @@
 	var/trigger_nitro = 0
 	if( (my_effect.trigger >= TRIGGER_HEAT && my_effect.trigger <= TRIGGER_NITRO) || (my_effect.trigger >= TRIGGER_HEAT && my_effect.trigger <= TRIGGER_NITRO) )
 		var/turf/T = get_turf(src)
-		var/datum/gas_mixture/env = T.return_air()
+		var/datum/gas_mixture/env = T.copy_cell_volume()
 		if(env)
 			if(env.temperature < 225)
 				trigger_cold = 1
 			else if(env.temperature > 375)
 				trigger_hot = 1
 
-			if(env.gas[/datum/gas/phoron] >= 10)
+			if(env.gas[/datum/gas/phoron] >= 2)
 				trigger_phoron = 1
-			if(env.gas[/datum/gas/oxygen] >= 10)
+			if(env.gas[/datum/gas/oxygen] >= 2)
 				trigger_oxy = 1
-			if(env.gas[/datum/gas/carbon_dioxide] >= 10)
+			if(env.gas[/datum/gas/carbon_dioxide] >= 2)
 				trigger_co2 = 1
-			if(env.gas[/datum/gas/nitrogen] >= 10)
+			if(env.gas[/datum/gas/nitrogen] >= 2)
 				trigger_nitro = 1
 
 	//COLD ACTIVATION

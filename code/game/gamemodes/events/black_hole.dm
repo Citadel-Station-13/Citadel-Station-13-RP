@@ -7,56 +7,53 @@
 	unacidable = 1
 	density = 0
 	anchored = 1
+	var/process_step = 0
 
-/obj/effect/bhole/New()
-	spawn(4)
-		controller()
+/obj/effect/bhole/Initialize(mapload)
+	. = ..()
+	START_PROCESSING(SSfastprocess, src)
 
-/obj/effect/bhole/proc/controller()
-	while(src)
+/obj/effect/bhole/process()
+	if(!isturf(loc))
+		qdel(src)
+		return
 
-		if(!isturf(loc))
-			qdel(src)
-			return
+	//DESTROYING STUFF AT THE EPICENTER
+	for(var/mob/living/M in orange(1,src))
+		qdel(M)
+	for(var/obj/O in orange(1,src))
+		qdel(O)
 
-		//DESTROYING STUFF AT THE EPICENTER
-		for(var/mob/living/M in orange(1,src))
-			qdel(M)
-		for(var/obj/O in orange(1,src))
-			qdel(O)
-		var/base_turf = get_base_turf_by_area(src)
-		for(var/turf/simulated/ST in orange(1,src))
-			if(ST.type == base_turf)
-				continue
-			ST.ChangeTurf(base_turf)
+	for(var/turf/simulated/ST in orange(1, src))
+		ST.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 
-		sleep(6)
-		grav(10, 4, 10, 0 )
-		sleep(6)
-		grav( 8, 4, 10, 0 )
-		sleep(6)
-		grav( 9, 4, 10, 0 )
-		sleep(6)
-		grav( 7, 3, 40, 1 )
-		sleep(6)
-		grav( 5, 3, 40, 1 )
-		sleep(6)
-		grav( 6, 3, 40, 1 )
-		sleep(6)
-		grav( 4, 2, 50, 6 )
-		sleep(6)
-		grav( 3, 2, 50, 6 )
-		sleep(6)
-		grav( 2, 2, 75,25 )
-		sleep(6)
+	switch(++process_step)
+		if(1)
+			grav(10, 4, 10, 0 )
+		if(2)
+			grav( 8, 4, 10, 0 )
+		if(3)
+			grav( 9, 4, 10, 0 )
+		if(4)
+			grav( 7, 3, 40, 1 )
+		if(5)
+			grav( 5, 3, 40, 1 )
+		if(6)
+			grav( 6, 3, 40, 1 )
+		if(7)
+			grav( 4, 2, 50, 6 )
+		if(8)
+			grav( 3, 2, 50, 6 )
+		if(9)
+			grav( 2, 2, 75,25 )
+		else
+			process_step = 0
 
-
-
-		//MOVEMENT
-		if( prob(50) )
-			src.anchored = 0
-			step(src,pick(alldirs))
-			src.anchored = 1
+	//MOVEMENT
+	if( prob(50) && !(process_step % 8))
+		src.anchored = 0
+		step(src,pick(GLOB.alldirs))
+		src.anchored = 1
 
 /obj/effect/bhole/proc/grav(var/r, var/ex_act_force, var/pull_chance, var/turf_removal_chance)
 	if(!isturf(loc))	//blackhole cannot be contained inside anything. Weird stuff might happen
@@ -87,6 +84,4 @@
 	//Destroying the turf
 	if( T && istype(T,/turf/simulated) && prob(turf_removal_chance) )
 		var/turf/simulated/ST = T
-		var/base_turf = get_base_turf_by_area(src)
-		if(ST.type != base_turf)
-			ST.ChangeTurf(base_turf)
+		ST.ScrapeAway()

@@ -6,8 +6,7 @@
 	can_hold = list(/obj/item/forensics/swab)
 	storage_slots = 14
 
-/obj/item/storage/box/swabs/New()
-	..()
+/obj/item/storage/box/swabs/PopulateContents()
 	for(var/i = 1 to storage_slots) // Fill 'er up.
 		new /obj/item/forensics/swab(src)
 
@@ -17,8 +16,7 @@
 	storage_slots = 7
 	can_hold = list(/obj/item/evidencebag)
 
-/obj/item/storage/box/evidence/New()
-	..()
+/obj/item/storage/box/evidence/PopulateContents()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/evidencebag(src)
 
@@ -30,7 +28,6 @@
 	can_hold = list(/obj/item/sample/print)
 	storage_slots = 14
 
-/obj/item/storage/box/fingerprints/New()
-	..()
+/obj/item/storage/box/fingerprints/PopulateContents()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/sample/print(src)

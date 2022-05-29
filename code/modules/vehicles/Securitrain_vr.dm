@@ -4,7 +4,7 @@
 /obj/vehicle/train/security/engine
 	name = "Security Cart"
 	desc = "A ridable electric car designed for pulling trolleys as well as personal transport."
-	icon = 'icons/obj/vehicles_vr.dmi'
+	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "paddywagon"
 	on = 0
 	powered = 1
@@ -29,14 +29,14 @@
 /obj/item/key/security
 	name = "The Security Cart key"
 	desc = "The Security Cart Key used to start it."
-	icon = 'icons/obj/vehicles_vr.dmi'
+	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "securikey"
 	w_class = ITEMSIZE_TINY
 
 /obj/vehicle/train/security/trolley
 	name = "Train trolley"
 	desc = "A trolly designed to transport security personnel or prisoners."
-	icon = 'icons/obj/vehicles_vr.dmi'
+	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "paddy_trailer"
 	anchored = 0
 	passenger_allowed = 1
@@ -50,7 +50,7 @@
 /obj/vehicle/train/security/trolley/cargo
 	name = "Train trolley"
 	desc = "A trolley designed to transport security equipment to a scene."
-	icon = 'icons/obj/vehicles_vr.dmi'
+	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "secitemcarrierbot"
 	passenger_allowed = 0 //Stick a man inside the box. :v
 	load_item_visible = 0 //The load is supposed to be invisible.
@@ -166,28 +166,28 @@
 	else
 		verbs += /obj/vehicle/train/security/engine/verb/stop_engine
 
-/obj/vehicle/train/security/RunOver(var/mob/living/carbon/human/H)
+/obj/vehicle/train/security/RunOver(var/mob/living/M)
 	var/list/parts = list(BP_HEAD, BP_TORSO, BP_L_LEG, BP_R_LEG, BP_L_ARM, BP_R_ARM)
 
-	H.apply_effects(5, 5)
+	M.apply_effects(5, 5)
 	for(var/i = 0, i < rand(1,3), i++)
-		H.apply_damage(rand(1,5), BRUTE, pick(parts))
+		M.apply_damage(rand(1,5), BRUTE, pick(parts))
 
-/obj/vehicle/train/security/trolley/RunOver(var/mob/living/carbon/human/H)
+/obj/vehicle/train/security/trolley/RunOver(var/mob/living/M)
 	..()
-	attack_log += text("\[[time_stamp()]\] <font color='red'>ran over [H.name] ([H.ckey])</font>")
+	attack_log += text("\[[time_stamp()]\] <font color='red'>ran over [M.name] ([M.ckey])</font>")
 
-/obj/vehicle/train/security/engine/RunOver(var/mob/living/carbon/human/H)
+/obj/vehicle/train/security/engine/RunOver(var/mob/living/M)
 	..()
 
 	if(is_train_head() && istype(load, /mob/living/carbon/human))
 		var/mob/living/carbon/human/D = load
-		to_chat(D, "<span class='danger'>You ran over \the [H]!</span>")
-		visible_message("<span class='danger'>\The [src] ran over \the [H]!</span>")
-		add_attack_logs(D,H,"Ran over with [src.name]")
-		attack_log += text("\[[time_stamp()]\] <font color='red'>ran over [H.name] ([H.ckey]), driven by [D.name] ([D.ckey])</font>")
+		to_chat(D, "<span class='danger'>You ran over \the [M]!</span>")
+		visible_message("<span class='danger'>\The [src] ran over \the [M]!</span>")
+		add_attack_logs(D,M,"Ran over with [src.name]")
+		attack_log += text("\[[time_stamp()]\] <font color='red'>ran over [M.name] ([M.ckey]), driven by [D.name] ([D.ckey])</font>")
 	else
-		attack_log += text("\[[time_stamp()]\] <font color='red'>ran over [H.name] ([H.ckey])</font>")
+		attack_log += text("\[[time_stamp()]\] <font color='red'>ran over [M.name] ([M.ckey])</font>")
 
 
 //-------------------------------------------
@@ -198,7 +198,7 @@
 		return 0
 
 	if(is_train_head())
-		if(direction == reverse_direction(dir) && tow)
+		if(direction == REVERSE_DIR(dir) && tow)
 			return 0
 		if(Move(get_step(src, direction)))
 			return 1
@@ -207,14 +207,9 @@
 		return ..()
 
 /obj/vehicle/train/security/engine/examine(mob/user)
-	if(!..(user, 1))
-		return
-
-	if(!istype(usr, /mob/living/carbon/human))
-		return
-
-	to_chat(user, "The power light is [on ? "on" : "off"].\nThere are[key ? "" : " no"] keys in the ignition.")
-	user << "The charge meter reads [cell? round(cell.percent(), 0.01) : 0]%"
+	. = ..()
+	. += "The power light is [on ? "on" : "off"].\nThere are[key ? "" : " no"] keys in the ignition."
+	. += "The charge meter reads [cell? round(cell.percent(), 0.01) : 0]%"
 
 /obj/vehicle/train/security/engine/verb/start_engine()
 	set name = "Start engine"
@@ -355,7 +350,7 @@
 
 		if(dir == T_dir) 	//if car is ahead
 			src.attach_to(T, user)
-		else if(reverse_direction(dir) == T_dir)	//else if car is behind
+		else if(REVERSE_DIR(dir) == T_dir)	//else if car is behind
 			T.attach_to(src, user)
 
 //-------------------------------------------------------

@@ -1,4 +1,3 @@
-#define PROCESS_ACCURACY 10
 
 /obj/item/organ/internal/kidneys
 	name = "kidneys"
@@ -7,10 +6,11 @@
 	organ_tag = O_KIDNEYS
 	parent_organ = BP_GROIN
 
-/obj/item/organ/internal/kidneys/process()
+/obj/item/organ/internal/kidneys/process(delta_time)
 	..()
 
-	if(!owner) return
+	if(!owner)
+		return
 
 	// Coffee is really bad for you with busted kidneys.
 	// This should probably be expanded in some way, but fucked if I know
@@ -18,9 +18,9 @@
 	var/datum/reagent/coffee = locate(/datum/reagent/drink/coffee) in owner.reagents.reagent_list
 	if(coffee)
 		if(is_bruised())
-			owner.adjustToxLoss(0.1 * PROCESS_ACCURACY)
+			owner.adjustToxLoss(0.1 * (delta_time * 5))
 		else if(is_broken())
-			owner.adjustToxLoss(0.3 * PROCESS_ACCURACY)
+			owner.adjustToxLoss(0.3 * (delta_time * 5))
 
 /obj/item/organ/internal/kidneys/handle_organ_proc_special()
 	. = ..()
@@ -46,10 +46,12 @@
 /obj/item/organ/internal/kidneys/grey
 	icon_state = "kidneys_grey"
 
-/obj/item/organ/internal/kidneys/grey/colormatch/New()
-	..()
-	var/mob/living/carbon/human/H = null
-	spawn(15)
-		if(ishuman(owner))
-			H = owner
-			color = H.species.blood_color
+/obj/item/organ/internal/kidneys/grey/colormatch/Initialize(mapload)
+	. = ..()
+	addtimer(CALLBACK(src, .proc/sync_color), 15)
+
+/obj/item/organ/internal/kidneys/grey/colormatch/proc/sync_color()
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		if(H.species.blood_color)
+			add_atom_colour(H.species.blood_color, FIXED_COLOUR_PRIORITY)

@@ -4,9 +4,11 @@
 	appearance_flags = 0
 	var/obj/machinery/filler_object/filler1
 	var/obj/machinery/filler_object/filler2
+	open_sound_powered = 'sound/machines/door/WideOpen.ogg'
+	close_sound_powered = 'sound/machines/door/WideClose.ogg'
 
-/obj/machinery/door/airlock/multi_tile/New()
-	..()
+/obj/machinery/door/airlock/multi_tile/Initialize(mapload)
+	. = ..()
 	SetBounds()
 	if(opacity)
 		create_fillers()

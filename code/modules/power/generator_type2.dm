@@ -6,26 +6,28 @@
 	density = 1
 	use_power = USE_POWER_OFF
 
-	var/obj/machinery/atmospherics/unary/generator_input/input1
-	var/obj/machinery/atmospherics/unary/generator_input/input2
+	var/obj/machinery/atmospherics/component/unary/generator_input/input1
+	var/obj/machinery/atmospherics/component/unary/generator_input/input2
 
 	var/lastgen = 0
 	var/lastgenlev = -1
 
 
-/obj/machinery/power/generator_type2/New()
-	..()
-	spawn(5)
-		input1 = locate(/obj/machinery/atmospherics/unary/generator_input) in get_step(src,turn(dir, 90))
-		input2 = locate(/obj/machinery/atmospherics/unary/generator_input) in get_step(src,turn(dir, -90))
-		if(!input1 || !input2)
-			stat |= BROKEN
-		updateicon()
+/obj/machinery/power/generator_type2/Initialize(mapload, newdir)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
 
+/obj/machinery/power/generator_type2/LateInitialize()
+	. = ..()
+	input1 = locate(/obj/machinery/atmospherics/component/unary/generator_input) in get_step(src,turn(dir, 90))
+	input2 = locate(/obj/machinery/atmospherics/component/unary/generator_input) in get_step(src,turn(dir, -90))
+	if(!input1 || !input2)
+		machine_stat |= BROKEN
+	updateicon()
 
 /obj/machinery/power/generator_type2/proc/updateicon()
 
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		overlays.Cut()
 	else
 		overlays.Cut()
@@ -33,10 +35,9 @@
 		if(lastgenlev != 0)
 			overlays += image('icons/obj/power.dmi', "teg-op[lastgenlev]")
 
-#define GENRATE 800		// generator output coefficient from Q
-
-
-/obj/machinery/power/generator_type2/process()
+/// generator output coefficient from Q
+#define GENRATE 800
+/obj/machinery/power/generator_type2/process(delta_time)
 	if(!input1 || !input2)
 		return
 
@@ -69,7 +70,7 @@
 			hot_air.temperature = hot_air.temperature - energy_transfer/hot_air_heat_capacity
 			cold_air.temperature = cold_air.temperature + heat/cold_air_heat_capacity
 
-			//world << "POWER: [lastgen] W generated at [efficiency*100]% efficiency and sinks sizes [cold_air_heat_capacity], [hot_air_heat_capacity]"
+			//to_chat(world, "POWER: [lastgen] W generated at [efficiency*100]% efficiency and sinks sizes [cold_air_heat_capacity], [hot_air_heat_capacity]")
 
 			if(input1.network)
 				input1.network.update = 1
@@ -77,7 +78,7 @@
 			if(input2.network)
 				input2.network.update = 1
 
-			add_avail(lastgen)
+			add_avail(lastgen * 0.001)
 	// update icon overlays only if displayed level has changed
 
 	var/genlev = max(0, min( round(11*lastgen / 100000), 11))
@@ -89,13 +90,15 @@
 
 
 /obj/machinery/power/generator_type2/attack_ai(mob/user)
-	if(stat & (BROKEN|NOPOWER)) return
+	if(machine_stat & (BROKEN|NOPOWER))
+		return
 	interact(user)
 
 
 /obj/machinery/power/generator_type2/attack_hand(mob/user)
 	add_fingerprint(user)
-	if(stat & (BROKEN|NOPOWER)) return
+	if(machine_stat & (BROKEN|NOPOWER))
+		return
 	interact(user)
 
 

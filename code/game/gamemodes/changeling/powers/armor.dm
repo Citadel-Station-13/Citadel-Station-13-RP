@@ -41,14 +41,15 @@
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0) //No armor at all.
 	canremove = 0
 
-/obj/item/clothing/suit/space/changeling/New()
-	..()
+/obj/item/clothing/suit/space/changeling/Initialize(mapload)
+	. = ..()
 	if(ismob(loc))
 		loc.visible_message("<span class='warning'>[loc.name]\'s flesh rapidly inflates, forming a bloated mass around their body!</span>",
 		"<span class='warning'>We inflate our flesh, creating a spaceproof suit!</span>",
 		"<span class='italics'>You hear organic matter ripping and tearing!</span>")
 
 /obj/item/clothing/suit/space/changeling/dropped()
+	. = ..()
 	qdel(src)
 
 /obj/item/clothing/head/helmet/space/changeling
@@ -61,6 +62,7 @@
 	canremove = 0
 
 /obj/item/clothing/head/helmet/space/changeling/dropped()
+	. = ..()
 	qdel(src)
 
 /obj/item/clothing/shoes/magboots/changeling
@@ -77,13 +79,13 @@
 
 /obj/item/clothing/shoes/magboots/changeling/attack_self(mob/user)
 	if(magpulse)
-		item_flags &= ~NOSLIP
+		clothing_flags &= ~NOSLIP
 		magpulse = 0
 		set_slowdown()
 		force = 3
 		to_chat(user, "We release our grip on the floor.")
 	else
-		item_flags |= NOSLIP
+		clothing_flags |= NOSLIP
 		magpulse = 1
 		set_slowdown()
 		force = 5
@@ -105,8 +107,8 @@
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	slowdown = 3
 
-/obj/item/clothing/suit/space/changeling/armored/New()
-	..()
+/obj/item/clothing/suit/space/changeling/armored/Initialize(mapload)
+	. = ..()
 	if(ismob(loc))
 		loc.visible_message("<span class='warning'>[loc.name]\'s flesh turns black, quickly transforming into a hard, chitinous mass!</span>",
 		"<span class='warning'>We harden our flesh, creating a suit of armor!</span>",

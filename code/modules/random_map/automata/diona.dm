@@ -6,7 +6,7 @@
 		if(can_open == WALL_OPENING)
 			return
 		can_open = WALL_CAN_OPEN
-		user.visible_message("<span class='alium'>\The [user] strokes its feelers against \the [src] and the biomass [density ? "moves aside" : "closes up"].</span>")
+		user.visible_message("<span class='green'>\The [user] strokes its feelers against \the [src] and the biomass [density ? "moves aside" : "closes up"].</span>")
 		toggle_open(user)
 		sleep(15)
 		if(can_open == WALL_CAN_OPEN) can_open = 0
@@ -51,8 +51,8 @@
 	desc = "A glowing bulb of some sort."
 	icon_state = "glowbulb"
 
-/obj/structure/diona/bulb/New(var/newloc)
-	..()
+/obj/structure/diona/bulb/Initialize(mapload)
+	. = ..()
 	set_light(3,3,"#557733")
 
 /datum/random_map/automata/diona
@@ -155,7 +155,7 @@
 		for(var/thing in T)
 			if(istype(thing, /atom))
 				var/atom/A = thing
-				if(A.simulated)
+				if(!(A.flags & AF_ABSTRACT))
 					continue
 			qdel(thing)
 

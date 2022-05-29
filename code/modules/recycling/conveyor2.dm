@@ -24,7 +24,6 @@
 	var/backwards		// hopefully self-explanatory
 	var/movedir			// the actual direction to move stuff in
 
-	var/list/affecting	// the list of all items that will be moved this ptick
 	var/id = ""			// the control ID	- must match controller ID
 
 /obj/machinery/conveyor/centcom_auto
@@ -74,7 +73,7 @@
 		AM.reset_glide_size()
 
 /obj/machinery/conveyor/proc/update_dir()
-	if(!(dir in cardinal)) // Diagonal. Forwards is *away* from dir, curving to the right.
+	if(!(dir in GLOB.cardinal)) // Diagonal. Forwards is *away* from dir, curving to the right.
 		forwards = turn(dir, 135)
 		backwards = turn(dir, 45)
 	else
@@ -82,13 +81,13 @@
 		backwards = turn(dir, 180)
 
 /obj/machinery/conveyor/proc/update()
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		icon_state = "conveyor-broken"
 		operating = OFF
 		return
 	if(!operable)
 		operating = OFF
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		operating = OFF
 	if(operating)
 		for(var/atom/movable/AM in loc)
@@ -97,22 +96,34 @@
 
 	// machine process
 	// move items to the target location
-/obj/machinery/conveyor/process()
-	if(stat & (BROKEN | NOPOWER))
+/obj/machinery/conveyor/process(delta_time)
+	if(machine_stat & (BROKEN | NOPOWER))
 		return
 	if(!operating)
 		return
 	use_power(10)
+	var/list/affecting = loc.contents - src		// moved items will be all in loc
+	addtimer(CALLBACK(src, .proc/convey, affecting), 1)
 
-	affecting = loc.contents - src		// moved items will be all in loc
+/obj/machinery/conveyor/proc/convey(list/affecting)
+	var/turf/T = get_step(src, movedir)
+	if(!T)
+		return
+	affecting.len = max(min(affecting.len, 10, 150 - T.contents.len), 0)
+	if(!affecting.len)
+		return
 	var/items_moved = 0
 	for(var/atom/movable/A in affecting)
 		if(!A.anchored)
 			if(A.loc == src.loc) // prevents the object from being affected if it's not currently here.
 				step(A,movedir)
-				items_moved++
-		if(items_moved >= 10)
+				++items_moved
+		if(items_moved >= 50)
 			break
+/*
+		if((A.loc == loc) && A.has_gravity())
+			A.ConveyorMove(movedir)
+*/
 
 // attack with item, place item on conveyor
 /obj/machinery/conveyor/attackby(var/obj/item/I, mob/user)
@@ -131,7 +142,7 @@
 				to_chat(user, "No input found. Please hang up and try your call again.")
 				return
 			id = input
-			for(var/obj/machinery/conveyor_switch/C in machines)
+			for(var/obj/machinery/conveyor_switch/C in GLOB.machines)
 				if(C.id == id)
 					C.conveyors |= src
 			return
@@ -161,7 +172,7 @@
 // make the conveyor broken
 // also propagate inoperability to any connected conveyor with the same ID
 /obj/machinery/conveyor/proc/broken()
-	stat |= BROKEN
+	machine_stat |= BROKEN
 	update()
 
 	var/obj/machinery/conveyor/C = locate() in get_step(src, dir)
@@ -211,14 +222,14 @@
 
 
 
-/obj/machinery/conveyor_switch/Initialize()
-	..()
+/obj/machinery/conveyor_switch/Initialize(mapload)
+	. = ..()
 	update()
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/conveyor_switch/LateInitialize()
 	conveyors = list()
-	for(var/obj/machinery/conveyor/C in machines)
+	for(var/obj/machinery/conveyor/C in GLOB.machines)
 		if(C.id == id)
 			conveyors += C
 
@@ -236,7 +247,7 @@
 // timed process
 // if the switch changed, update the linked conveyors
 
-/obj/machinery/conveyor_switch/process()
+/obj/machinery/conveyor_switch/process(delta_time)
 	if(!operated)
 		return
 	operated = 0
@@ -266,7 +277,7 @@
 	update()
 
 	// find any switches with same id as this one, and set their positions to match us
-	for(var/obj/machinery/conveyor_switch/S in machines)
+	for(var/obj/machinery/conveyor_switch/S in GLOB.machines)
 		if(S.id == src.id)
 			S.position = position
 			S.update()
@@ -297,7 +308,7 @@
 				return
 			id = input
 			conveyors = list() // Clear list so they aren't double added.
-			for(var/obj/machinery/conveyor/C in machines)
+			for(var/obj/machinery/conveyor/C in GLOB.machines)
 				if(C.id == id)
 					conveyors += C
 			return
@@ -317,7 +328,7 @@
 	update()
 
 	// find any switches with same id as this one, and set their positions to match us
-	for(var/obj/machinery/conveyor_switch/S in machines)
+	for(var/obj/machinery/conveyor_switch/S in GLOB.machines)
 		if(S.id == src.id)
 			S.position = position
 			S.update()

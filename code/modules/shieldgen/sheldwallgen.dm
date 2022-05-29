@@ -1,29 +1,29 @@
 ////FIELD GEN START //shameless copypasta from fieldgen, powersink, and grille
 /obj/machinery/shieldwallgen
-		name = "Shield Generator"
-		desc = "A shield generator."
-		icon = 'icons/obj/stationobjs.dmi'
-		icon_state = "Shield_Gen"
-		anchored = 0
-		density = 1
-		req_access = list(access_engine_equip)
-		var/active = 0
-		var/power = 0
-		var/state = 0
-		var/steps = 0
-		var/last_check = 0
-		var/check_delay = 10
-		var/recalc = 0
-		var/locked = 1
-		var/destroyed = 0
-		var/directwired = 1
+	name = "Shield Generator"
+	desc = "A shield generator."
+	icon = 'icons/obj/stationobjs.dmi'
+	icon_state = "Shield_Gen"
+	anchored = 0
+	density = 1
+	req_access = list(access_engine_equip)
+	var/active = 0
+	var/power = 0
+	var/state = 0
+	var/steps = 0
+	var/last_check = 0
+	var/check_delay = 10
+	var/recalc = 0
+	var/locked = 1
+	var/destroyed = 0
+	var/directwired = 1
 //		var/maxshieldload = 200
-		var/obj/structure/cable/attached		// the attached cable
-		var/storedpower = 0
-		//There have to be at least two posts, so these are effectively doubled
-		var/power_draw = 30000 //30 kW. How much power is drawn from powernet. Increase this to allow the generator to sustain longer shields, at the cost of more power draw.
-		var/max_stored_power = 50000 //50 kW
-		use_power = USE_POWER_OFF	//Draws directly from power net. Does not use APC power.
+	var/obj/structure/cable/attached		// the attached cable
+	var/storedpower = 0
+	//There have to be at least two posts, so these are effectively doubled
+	var/power_draw = 30000 //30 kW. How much power is drawn from powernet. Increase this to allow the generator to sustain longer shields, at the cost of more power draw.
+	var/max_stored_power = 50000 //50 kW
+	use_power = USE_POWER_OFF	//Draws directly from power net. Does not use APC power.
 
 /obj/machinery/shieldwallgen/attack_hand(mob/user as mob)
 	if(state != 1)
@@ -67,7 +67,7 @@
 		return 0
 
 	var/shieldload = between(500, max_stored_power - storedpower, power_draw)	//what we try to draw
-	shieldload = PN.draw_power(shieldload) //what we actually get
+	shieldload = PN.draw_power(shieldload * 0.001) * 1000 //what we actually get
 	storedpower += shieldload
 
 	//If we're still in the red, then there must not be enough available power to cover our load.
@@ -78,7 +78,7 @@
 	power = 1	// IVE GOT THE POWER!
 	return 1
 
-/obj/machinery/shieldwallgen/process()
+/obj/machinery/shieldwallgen/process(delta_time)
 	power()
 	if(power)
 		storedpower -= 2500 //the generator post itself uses some power
@@ -151,7 +151,7 @@
 		var/field_dir = get_dir(T2,get_step(T2, NSEW))
 		T = get_step(T2, NSEW)
 		T2 = T
-		var/obj/machinery/shieldwall/CF = new/obj/machinery/shieldwall/(src, G) //(ref to this gen, ref to connected gen)
+		var/obj/machinery/shieldwall/CF = new/obj/machinery/shieldwall/(T, src, G) //(ref to this gen, ref to connected gen)
 		CF.loc = T
 		CF.setDir(field_dir)
 
@@ -239,8 +239,8 @@
 		var/power_usage = 2500	//how much power it takes to sustain the shield
 		var/generate_power_usage = 7500	//how much power it takes to start up the shield
 
-/obj/machinery/shieldwall/New(var/obj/machinery/shieldwallgen/A, var/obj/machinery/shieldwallgen/B)
-	..()
+/obj/machinery/shieldwall/Initialize(mapload, obj/machinery/shieldwallgen/A, obj/machinery/shieldwallgen/B)
+	. = ..()
 	update_nearby_tiles()
 	src.gen_primary = A
 	src.gen_secondary = B
@@ -261,7 +261,7 @@
 	return
 
 
-/obj/machinery/shieldwall/process()
+/obj/machinery/shieldwall/process(delta_time)
 	if(needs_power)
 		if(isnull(gen_primary)||isnull(gen_secondary))
 			qdel(src)

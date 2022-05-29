@@ -159,10 +159,10 @@
 		"wet_loop"
 		)
 
-/obj/belly/New(var/newloc)
-	..(newloc)
+/obj/belly/Initialize(mapload)
+	. = ..()
 	//If not, we're probably just in a prefs list or something.
-	if(isliving(newloc))
+	if(isliving(loc))
 		owner = loc
 		owner.vore_organs |= src
 		SSbellies.belly_list += src
@@ -407,6 +407,12 @@
 					M.remove_from_mob(brain,owner)
 					brain.forceMove(src)
 					items_preserved += brain
+			if(istype(W,/obj/item/organ/external/chest))
+				var/obj/item/organ/external/chest/C = W
+				for (var/obj/item/I in C.implants)
+					if(istype(I,/obj/item/implant/mirror))
+						I.forceMove(src)
+						items_preserved += I // these are undigestable anyway so just add them regardless
 			for(var/slot in slots)
 				var/obj/item/I = M.get_equipped_item(slot = slot)
 				if(I)
@@ -492,8 +498,8 @@
 		return owner.drop_location()
 	//Sketchy fallback for safety, put them somewhere safe.
 	else
-		log_debug("[src] (\ref[src]) doesn't have an owner, and dropped someone at a latespawn point!")
-		var/fallback = pick(latejoin)
+		stack_trace("[src] (\ref[src]) doesn't have an owner, and dropped someone at a latespawn point!")
+		var/fallback = SSjob.GetLatejoinSpawnpoint(faction = JOB_FACTION_STATION)
 		return get_turf(fallback)
 
 //Yes, it's ""safe"" to drop items here
@@ -525,7 +531,6 @@
 				to_chat(R,"<span class='warning'>Your attempt to escape [lowertext(name)] has failed!</span>")
 				to_chat(owner,"<span class='notice'>The attempt to escape from your [lowertext(name)] has failed!</span>")
 				return
-			return
 	var/struggle_outer_message = pick(struggle_messages_outside)
 	var/struggle_user_message = pick(struggle_messages_inside)
 

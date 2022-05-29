@@ -1,6 +1,6 @@
 /datum/gm_action/gravity
 	name = "gravity failure"
-	departments = list(ROLE_EVERYONE)
+	departments = list(DEPARTMENT_EVERYONE)
 	length = 600
 	var/list/zLevels
 
@@ -18,7 +18,7 @@
 /datum/gm_action/gravity/start()
 	..()
 	gravity_is_on = 0
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.sortedAreas)
 		if(A.z in zLevels)
 			A.gravitychange(gravity_is_on, A)
 
@@ -26,11 +26,11 @@
 	if(!gravity_is_on)
 		gravity_is_on = 1
 
-		for(var/area/A in all_areas)
+		for(var/area/A in GLOB.sortedAreas)
 			if(A.z in zLevels)
 				A.gravitychange(gravity_is_on, A)
 
 		command_announcement.Announce("Gravity generators are again functioning within normal parameters. Sorry for any inconvenience.", "Gravity Restored")
 
 /datum/gm_action/gravity/get_weight()
-	return 30 + (metric.count_people_in_department(ROLE_EVERYONE) * 20)
+	return 30 + (metric.count_people_in_department(DEPARTMENT_EVERYONE) * 20)

@@ -1,6 +1,6 @@
 /datum/gm_action/radiation_storm
 	name = "radiation storm"
-	departments = list(ROLE_EVERYONE)
+	departments = list(DEPARTMENT_EVERYONE)
 	reusable = TRUE
 
 	var/enterBelt			= 30
@@ -47,7 +47,7 @@
 		var/area/A = get_area(C)
 		if(!A)
 			continue
-		if(A.flags & RAD_SHIELDED)
+		if(A.area_flags & AF_RAD_SHIELDED)
 			continue
 		if(istype(C,/mob/living/carbon/human))
 			var/mob/living/carbon/human/H = C
@@ -64,4 +64,4 @@
 		revoke_maint_all_access()
 
 /datum/gm_action/radiation_storm/get_weight()
-	return 20 + (metric.count_people_in_department(ROLE_MEDICAL) * 10) + (metric.count_all_space_mobs() * 40) + (metric.count_people_in_department(ROLE_EVERYONE) * 20)
+	return 20 + (metric.count_people_in_department(DEPARTMENT_MEDICAL) * 10) + (metric.count_all_space_mobs() * 40) + (metric.count_people_in_department(DEPARTMENT_EVERYONE) * 20)

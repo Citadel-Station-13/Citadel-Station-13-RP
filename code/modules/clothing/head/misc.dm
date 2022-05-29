@@ -7,7 +7,7 @@
 
 /obj/item/clothing/head/centhat/customs
 	name = "Customs Hat"
-	desc = "A formal hat for SolGov Customs Officers."
+	desc = "A formal hat for OriCon Customs Officers."
 	icon_state = "customshat"
 
 /obj/item/clothing/head/pin
@@ -17,6 +17,8 @@
 	desc = "A nice hair pin."
 	slot_flags = SLOT_HEAD | SLOT_EARS
 	body_parts_covered = 0
+	drop_sound = 'sound/items/drop/ring.ogg'
+	pickup_sound = 'sound/items/pickup/ring.ogg'
 
 /obj/item/clothing/head/pin/pink
 	icon_state = "pinkpin"
@@ -40,7 +42,7 @@
 	name = "magnetic 'pin'"
 	addblends = null
 	desc = "Finally, a hair pin even a Morpheus chassis can use."
-	matter = list(DEFAULT_WALL_MATERIAL = 10)
+	matter = list(MAT_STEEL = 10)
 
 /obj/item/clothing/head/pin/flower
 	name = "red flower pin"
@@ -83,6 +85,7 @@
 /obj/item/clothing/head/pin/bow/big
 	icon_state = "whiteribbon"
 	name = "ribbon"
+	addblends = null
 
 /obj/item/clothing/head/pin/bow/big/red
 	icon_state = "redribbon"
@@ -168,6 +171,8 @@
 	icon_state = "cardborg_h"
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
 	body_parts_covered = HEAD|FACE|EYES
+	drop_sound = 'sound/items/drop/cardboardbox.ogg'
+	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 
 /obj/item/clothing/head/justice
 	name = "justice hat"
@@ -270,6 +275,11 @@
 	item_state_slots = list(slot_r_hand_str = "detective", slot_l_hand_str = "detective")
 	desc = "A grey fedora - either the cornerstone of a reporter's style or a poor attempt at looking cool, depending on the person wearing it."
 
+/obj/item/clothing/head/fedora/floppy
+	name = "wide brimmed hat"
+	desc = "A dark fedora with an incredibly wide brim. It's very avant garde."
+	icon_state = "floppy"
+	item_state_slots = list(slot_r_hand_str = "witch", slot_l_hand_str = "witch")
 
 /obj/item/clothing/head/feathertrilby
 	name = "feather trilby"
@@ -302,6 +312,11 @@
 	name = "small cowboy hat"
 	desc = "For the tiniest of cowboys."
 	icon_state = "cowboy_small"
+
+/obj/item/clothing/head/cowboy_hat/pink
+	name = "pink cowboy hat"
+	desc = "Did you know pink used to be a masculine color?"
+	icon_state = "cowboyhat_pink"
 
 /obj/item/clothing/head/witchwig
 	name = "witch costume wig"
@@ -386,8 +401,8 @@
 	name = "beanie"
 	desc = "A head-hugging brimless winter cap. This one is tight."
 	icon_state = "beanie"
-	addblends = "beanie_a"
 	body_parts_covered = 0
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/head/beanie_loose
 	name = "loose beanie"
@@ -395,6 +410,7 @@
 	icon_state = "beanie_hang"
 	addblends = "beanie_hang_a"
 	body_parts_covered = 0
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/head/beretg
 	name = "beret"
@@ -474,3 +490,181 @@
 	name = "Operations Security Staff Cap"
 	desc = "A red cap distributed to Security staff aboard NT vessels."
 	icon_state = "operations_cap_sec"
+
+/obj/item/clothing/head/rice
+	name = "rice hat"
+	desc = "A conical hat originating from old Earth Asia. Useful for keeping the sun and moisture out of your face when working in a humid environment."
+	icon_state = "rice_hat"
+	item_state_slots = list(slot_r_hand_str = "beret_white", slot_l_hand_str = "beret_white")
+	body_parts_covered = 0
+	flags_inv = BLOCKHAIR
+
+/obj/item/clothing/head/lobster
+	name = "lobster costume head"
+	desc = "Remember: Lobsters don't scream."
+	icon_state = "lobster_hat"
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
+	siemens_coefficient = 0.7
+	body_parts_covered = HEAD|FACE|EYES
+
+/obj/item/clothing/head/nemes
+	name = "nemes headdress"
+	desc = "A flowing cloth cap worn by the ruling class of Egypt, an old Earth country in Africa. Usually found on dessicated corpses or fetish cosplayers."
+	icon_state = "nemes_headdress"
+	item_state_slots = list(slot_r_hand_str = "beret_blue", slot_l_hand_str = "beret_blue")
+	body_parts_covered = 0
+	flags_inv = BLOCKHAIR
+
+/obj/item/clothing/head/pharaoh
+	name = "pharaoh cap"
+	desc = "An alternate headdress worn by ancient Egyptian Pharaohs. Studies have concluded that wearing this does not, in fact, make you an Egyptian."
+	icon_state = "pharaoh_hat"
+	item_state_slots = list(slot_r_hand_str = "beret_blue", slot_l_hand_str = "beret_blue")
+	body_parts_covered = 0
+	flags_inv = BLOCKHAIR
+
+/obj/item/clothing/head/skull
+	name = "totemic skull hat"
+	desc = "This bleached skull has been fitted with a band allowing it to be worn. Whether the foe was yours, or anothers, you do feel a little more intimidating with this on."
+	icon_state = "skull"
+	item_state_slots = list(slot_r_hand_str = "beret_white", slot_l_hand_str = "beret_white")
+	body_parts_covered = 0
+	flags_inv = 0
+
+/obj/item/clothing/head/bunny
+	name = "bunny costume head"
+	desc = "Popular with both mascots and heartbroken Japanese highschool girls."
+	icon_state = "bunnyhead"
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
+	siemens_coefficient = 0.7
+	body_parts_covered = HEAD|FACE|EYES
+
+/obj/item/clothing/head/pith
+	name = "pith hat"
+	desc = "A peaked helmet once popular among Old Earth militaries and expeditionary forces."
+	icon_state = "pith"
+	item_state_slots = list(slot_r_hand_str = "beret_white", slot_l_hand_str = "beret_white")
+
+/obj/item/clothing/head/reindeer
+	name = "reindeer antlers"
+	desc = "A set of costume antlers with a glowing red nose, an Old Earth favorite."
+	icon_state = "reindeer0"
+	action_button_name = "Toggle Nose"
+
+/obj/item/clothing/head/reindeer/attack_self(mob/user as mob)
+	if(src.icon_state == initial(icon_state))
+		src.icon_state = "[icon_state]_on"
+		to_chat(user, "You turn the glowing nose on.")
+	else
+		src.icon_state = initial(icon_state)
+		to_chat(user, "You turn the glowing nose off.")
+	update_clothing_icon()	//so our mob-overlays update
+
+/obj/item/clothing/head/crown
+	name = "banded crown"
+	desc = "A simple crown, fashioned out of gold."
+	icon_state = "crown"
+	body_parts_covered = HEAD
+
+/obj/item/clothing/head/crown/fancy
+	name = "coronation crown"
+	desc = "An opulent crown, crafted for ceremonial purposes."
+	icon_state = "fancycrown"
+
+/obj/item/clothing/head/scarecrow
+	name = "field hat"
+	desc = "A ragged burlap hat, bleached and worn by years of exposure to blistering sunlight."
+	icon_state = "scarecrow_hat"
+	body_parts_covered = HEAD
+
+/obj/item/clothing/head/holiday
+	name = "red holiday hat"
+	desc = "A floppy, fur lined cap. Made famous by an Old Earth mythical figure."
+	icon_state = "christmashat"
+	body_parts_covered = HEAD
+
+/obj/item/clothing/head/holiday/green
+	name = "green holiday hat"
+	desc = "A floppy, fur lined cap. Made famous by a cabal of toy crafting elves."
+	icon_state = "christmashatg"
+	body_parts_covered = HEAD
+
+/obj/item/clothing/head/telegram
+	name = "telegram cap"
+	desc = "A red box hat, affixed with an elastic strap."
+	icon_state = "telegram"
+
+/obj/item/clothing/head/widehat_red
+	name = "broad red hat"
+	desc = "A wide brimmed velvet hat with a feather affixed to the band."
+	icon_state = "widehat_red"
+
+/obj/item/clothing/head/snowman
+	name = "snowman head"
+	desc = "A chilly pile of reinforced ice, fashioned to look like a snowman's head."
+	icon_state = "snowman"
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
+	siemens_coefficient = 0.7
+	body_parts_covered = HEAD|FACE|EYES
+
+/obj/item/clothing/head/traveller
+	name = "traveller's hat"
+	desc = "A wide brimmed hat made of sturdy material. Its floppy, pointed top is similar to those worn by Old Earth bards or sorcerors."
+	icon_state = "traveller"
+	//addblends = "traveller_a"
+
+/obj/item/clothing/head/samurai_replica
+	name = "replica kabuto"
+	desc = "An authentic antique, this helmet from old Earth belongs to an ancient martial tradition. The advent of firearms made this style of protection obsolete. Unfortunately, this remains the case. This version appears less sturdy."
+	icon_state = "kabuto_colorable"
+
+/obj/item/clothing/head/ankh
+	name = "aegyptian circlet"
+	desc = "Perfect for when you want to deliver a stern look from on high."
+	icon_state = "ankh"
+	body_parts_covered = 0
+
+/obj/item/clothing/head/roman_replica
+	name = "Roman Galea"
+	desc = "A reproduction helmet fashioned to look like an ancient Roman Galea. The material is too flimsy to provide protection."
+	icon_state = "roman"
+
+/obj/item/clothing/head/romancent_replica
+	name = "Roman Crested Galea"
+	desc = "A reproduction helmet fashioned to look like an ancient Roman Galea. The material is too flimsy to provide protection."
+	icon_state = "roman_c"
+
+/obj/item/clothing/head/imperial_replica
+	name = "imperial soldier helmet"
+	desc = "Reproduction headgear fashioned after the standard helmet of the ill fated Neo Macedonian Empire. The material is too flimsy to provide protection."
+	icon_state = "ge_helm"
+	icon = 'icons/obj/clothing/hats_vr.dmi'
+
+/obj/item/clothing/head/imperial_officer_replica
+	name = "imperial officer helmet"
+	desc = "Reproduction headgear fashioned after the officer's helmet of the ill fated Neo Macedonian Empire. The material is too flimsy to provide protection."
+	icon_state = "ge_helmcent"
+	icon = 'icons/obj/clothing/hats_vr.dmi'
+
+/obj/item/clothing/head/papersack
+	name = "paper sack hat"
+	desc = "A paper sack with crude holes cut out for eyes. Useful for hiding one's identity or ugliness."
+	icon_state = "paperbag_None"
+	flags_inv = BLOCKHAIR|HIDEFACE
+
+/obj/item/clothing/head/papersack/smiley
+	name = "paper sack hat"
+	desc = "A paper sack with crude holes cut out for eyes and a sketchy smile drawn on the front. Not creepy at all."
+	icon_state = "paperbag_SmileyFace"
+	flags_inv = BLOCKHAIR|HIDEFACE
+
+/obj/item/clothing/head/ghost_sheet
+	name = "ghost sheet"
+	desc = "The hands float by themselves, so it's extra spooky."
+	icon_state = "ghost_sheet"
+	item_state = "ghost_sheet"
+	throwforce = 0
+	throw_speed = 1
+	throw_range = 2
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|HANDS|HEAD|FACE
+	flags_inv = HIDEEARS|BLOCKHEADHAIR|HIDEGLOVES|HIDETIE|HIDEHOLSTER

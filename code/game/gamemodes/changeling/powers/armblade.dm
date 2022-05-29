@@ -65,8 +65,8 @@
 	defend_chance = 40	// The base chance for the weapon to parry.
 	projectile_parry_chance = 15	// The base chance for a projectile to be deflected.
 
-/obj/item/melee/changeling/New(location)
-	..()
+/obj/item/melee/changeling/Initialize(mapload)
+	. = ..()
 	START_PROCESSING(SSobj, src)
 	if(ismob(loc))
 		visible_message("<span class='warning'>A grotesque weapon forms around [loc.name]\'s arm!</span>",
@@ -75,25 +75,24 @@
 		src.creator = loc
 
 /obj/item/melee/changeling/dropped(mob/user)
+	. = ..()
 	visible_message("<span class='warning'>With a sickening crunch, [creator] reforms their arm!</span>",
 	"<span class='notice'>We assimilate the weapon back into our body.</span>",
 	"<span class='italics'>You hear organic matter ripping and tearing!</span>")
 	playsound(src, 'sound/effects/blobattack.ogg', 30, 1)
-	spawn(1)
-		if(src)
-			qdel(src)
+	qdel(src)
 
 /obj/item/melee/changeling/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	creator = null
-	..()
+	return ..()
 
 /obj/item/melee/changeling/suicide_act(mob/user)
 	var/datum/gender/T = gender_datums[user.get_visible_gender()]
-	viewers(user) << "<span class='danger'>[user] is impaling [T.himself] with the [src.name]! It looks like [T.he] [T.is] trying to commit suicide.</span>"
+	user.visible_message("<span class='danger'>[user] is impaling [T.himself] with the [src.name]! It looks like [T.he] [T.is] trying to commit suicide.</span>")
 	return(BRUTELOSS)
 
-/obj/item/melee/changeling/process()  //Stolen from ninja swords.
+/obj/item/melee/changeling/process(delta_time)  //Stolen from ninja swords.
 	if(!creator || loc != creator || !creator.item_is_in_hands(src))
 		// Tidy up a bit.
 		if(istype(loc,/mob/living))
@@ -126,7 +125,7 @@
 	if(user.incapacitated() || !istype(damage_source, /obj/item/projectile))
 		return 0
 
-	var/bad_arc = reverse_direction(user.dir)
+	var/bad_arc = REVERSE_DIR(user.dir)
 	if(!check_shield_arc(user, bad_arc, damage_source, attacker))
 		return 0
 

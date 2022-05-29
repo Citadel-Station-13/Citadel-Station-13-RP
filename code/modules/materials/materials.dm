@@ -94,6 +94,8 @@ var/list/name_to_material
 	var/icon_base = "metal"                              // Wall and table base icon tag. See header.
 	var/door_icon_base = "metal"                         // Door base icon tag. See header.
 	var/icon_reinf = "reinf_metal"                       // Overlay used
+	/// do we have directional reinforced states on walls?
+	var/icon_reinf_directionals = FALSE
 	var/list/stack_origin_tech = list(TECH_MATERIAL = 1) // Research level for stacks.
 	var/pass_stack_colors = FALSE                        // Will stacks made from this material pass their colors onto objects?
 
@@ -187,7 +189,7 @@ var/list/name_to_material
 	if(islist(composite_material))
 		for(var/material_string in composite_material)
 			temp_matter[material_string] = composite_material[material_string]
-	else if(SHEET_MATERIAL_AMOUNT)
+	else
 		temp_matter[name] = SHEET_MATERIAL_AMOUNT
 	return temp_matter
 
@@ -221,13 +223,13 @@ var/list/name_to_material
 
 // General wall debris product placement.
 // Not particularly necessary aside from snowflakey cult girders.
-/datum/material/proc/place_dismantled_product(var/turf/target)
-	place_sheet(target)
+/datum/material/proc/place_dismantled_product(turf/target, amount)
+	place_sheet(target, amount)
 
 // Debris product. Used ALL THE TIME.
-/datum/material/proc/place_sheet(var/turf/target)
+/datum/material/proc/place_sheet(turf/target, amount)
 	if(stack_type)
-		return new stack_type(target)
+		return new stack_type(target, ispath(stack_type, /obj/item/stack)? amount : null)
 
 // As above.
 /datum/material/proc/place_shard(var/turf/target)
@@ -251,6 +253,7 @@ var/list/name_to_material
 	radioactivity = 12
 	icon_base = "stone"
 	icon_reinf = "reinf_stone"
+	icon_reinf_directionals = TRUE
 	icon_colour = "#007A00"
 	weight = 22
 	stack_origin_tech = list(TECH_MATERIAL = 5)
@@ -350,6 +353,7 @@ var/list/name_to_material
 	stack_type = /obj/item/stack/material/sandstone
 	icon_base = "stone"
 	icon_reinf = "reinf_stone"
+	icon_reinf_directionals = TRUE
 	icon_colour = "#D9C179"
 	shard_type = SHARD_STONE_PIECE
 	weight = 22
@@ -365,13 +369,13 @@ var/list/name_to_material
 	name = "marble"
 	icon_colour = "#AAAAAA"
 	weight = 26
-	hardness = 30 //VOREStation Edit - Please.
+	hardness = 30
 	integrity = 201 //hack to stop kitchen benches being flippable, todo: refactor into weight system
 	stack_type = /obj/item/stack/material/marble
 
 
 /datum/material/steel
-	name = DEFAULT_WALL_MATERIAL
+	name = MAT_STEEL
 	stack_type = /obj/item/stack/material/steel
 	integrity = 150
 	conductivity = 11 // Assuming this is carbon steel, it would actually be slightly less conductive than iron, but lets ignore that.
@@ -407,8 +411,8 @@ var/list/name_to_material
 	spawn_diona_nymph(target)
 
 /datum/material/steel/holographic
-	name = "holo" + DEFAULT_WALL_MATERIAL
-	display_name = DEFAULT_WALL_MATERIAL
+	name = "holo" + MAT_STEEL
+	display_name = MAT_STEEL
 	stack_type = null
 	shard_type = SHARD_NONE
 
@@ -426,7 +430,7 @@ var/list/name_to_material
 	protectiveness = 20 // 50%
 	conductivity = 13 // For the purposes of balance.
 	stack_origin_tech = list(TECH_MATERIAL = 2)
-	composite_material = list(DEFAULT_WALL_MATERIAL = SHEET_MATERIAL_AMOUNT, "platinum" = SHEET_MATERIAL_AMOUNT) //todo
+	composite_material = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT, MAT_PLATINUM = SHEET_MATERIAL_AMOUNT) //todo
 	radiation_resistance = 14
 
 /datum/material/plasteel/hull
@@ -456,7 +460,7 @@ var/list/name_to_material
 	protectiveness = 60 // 75%
 	reflectivity = 0.7 // Not a perfect mirror, but close.
 	stack_origin_tech = list(TECH_MATERIAL = 8)
-	composite_material = list("plasteel" = SHEET_MATERIAL_AMOUNT, "diamond" = SHEET_MATERIAL_AMOUNT) //shrug
+	composite_material = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT, MAT_DIAMOND = SHEET_MATERIAL_AMOUNT) //shrug
 
 /datum/material/durasteel/hull //The 'Hardball' of starship hulls.
 	name = MAT_DURASTEELHULL
@@ -500,7 +504,7 @@ var/list/name_to_material
 	conductivity = 1 // Glass shards don't conduct.
 	door_icon_base = "stone"
 	destruction_desc = "shatters"
-	window_options = list("One Direction" = 1, "Full Window" = 4, "Windoor" = 2)
+	window_options = list("One Direction" = 1, "Full Window" = 2, "Windoor" = 2)
 	created_window = /obj/structure/window/basic
 	created_fulltile_window = /obj/structure/window/basic/full
 	rod_product = /obj/item/stack/material/glass/reinforced
@@ -522,11 +526,11 @@ var/list/name_to_material
 	var/title = "Sheet-[used_stack.name] ([used_stack.get_amount()] sheet\s left)"
 	var/choice = input(title, "What would you like to construct?") as null|anything in window_options
 
-	if(!choice || !used_stack || !user || used_stack.loc != user || user.stat || user.loc != T)
+	if(!choice || !used_stack || !user || used_stack.loc != user || user.stat)
 		return 1
 
 	// Get data for building windows here.
-	var/list/possible_directions = cardinal.Copy()
+	var/list/possible_directions = GLOB.cardinal.Copy()
 	var/window_count = 0
 	for (var/obj/structure/window/check_window in user.loc)
 		window_count++
@@ -592,8 +596,8 @@ var/list/name_to_material
 	hardness = 40
 	weight = 30
 	stack_origin_tech = list(TECH_MATERIAL = 2)
-	composite_material = list(DEFAULT_WALL_MATERIAL = SHEET_MATERIAL_AMOUNT / 2, "glass" = SHEET_MATERIAL_AMOUNT)
-	window_options = list("One Direction" = 1, "Full Window" = 4, "Windoor" = 2)
+	composite_material = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT / 2, MAT_GLASS = SHEET_MATERIAL_AMOUNT)
+	window_options = list("One Direction" = 1, "Full Window" = 2, "Windoor" = 2)
 	created_window = /obj/structure/window/reinforced
 	created_fulltile_window = /obj/structure/window/reinforced/full
 	wire_product = null
@@ -607,7 +611,7 @@ var/list/name_to_material
 	integrity = 100
 	icon_colour = "#FC2BC5"
 	stack_origin_tech = list(TECH_MATERIAL = 4)
-	window_options = list("One Direction" = 1, "Full Window" = 4)
+	window_options = list("One Direction" = 1, "Full Window" = 2)
 	created_window = /obj/structure/window/phoronbasic
 	created_fulltile_window = /obj/structure/window/phoronbasic/full
 	wire_product = null
@@ -619,7 +623,7 @@ var/list/name_to_material
 	stack_type = /obj/item/stack/material/glass/phoronrglass
 	stack_origin_tech = list(TECH_MATERIAL = 5)
 	composite_material = list() //todo
-	window_options = list("One Direction" = 1, "Full Window" = 4)
+	window_options = list("One Direction" = 1, "Full Window" = 2)
 	created_window = /obj/structure/window/phoronreinforced
 	created_fulltile_window = /obj/structure/window/phoronreinforced/full
 	hardness = 40
@@ -826,7 +830,7 @@ var/list/name_to_material
 
 /datum/material/resin
 	name = "resin"
-	icon_colour = "#35343a"
+	icon_colour = "#261438"
 	icon_base = "resin"
 	dooropen_noise = 'sound/effects/attackblob.ogg'
 	door_icon_base = "resin"
@@ -894,6 +898,11 @@ var/list/name_to_material
 	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2)
 	stack_type = /obj/item/stack/material/log/sif
 
+/datum/material/wood/log/hard
+	name = MAT_HARDLOG
+	icon_colour = "#6f432a"
+	stack_type = /obj/item/stack/material/log/hard
+
 /datum/material/wood/holographic
 	name = "holowood"
 	display_name = "wood"
@@ -902,9 +911,20 @@ var/list/name_to_material
 
 /datum/material/wood/sif
 	name = MAT_SIFWOOD
-//	stack_type = /obj/item/stack/material/wood/sif
+	stack_type = /obj/item/stack/material/wood/sif
 	icon_colour = "#0099cc" // Cyan-ish
 	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2) // Alien wood would presumably be more interesting to the analyzer.
+
+/datum/material/wood/hardwood
+	name = MAT_HARDWOOD
+	stack_type = /obj/item/stack/material/wood/hard
+	icon_colour = "#42291a"
+	icon_base = "stone"
+	icon_reinf = "reinf_stone"
+	icon_reinf_directionals = TRUE
+	integrity = 65	//a bit stronger than regular wood
+	hardness = 20
+	weight = 20	//likewise, heavier
 
 /datum/material/cardboard
 	name = "cardboard"
@@ -950,6 +970,7 @@ var/list/name_to_material
 	stack_type = /obj/item/stack/material/snowbrick
 	icon_base = "stone"
 	icon_reinf = "reinf_stone"
+	icon_reinf_directionals = TRUE
 	icon_colour = "#D8FDFF"
 	integrity = 50
 	weight = 2
@@ -972,28 +993,6 @@ var/list/name_to_material
 	flags = MATERIAL_PADDING
 	conductive = 0
 	pass_stack_colors = TRUE
-
-/datum/material/emptysandbag
-	name = "empty sandbag"
-	stack_type = /obj/item/stack/material/emptysandbag
-	icon_colour = "#D9C179"
-	weight = 1
-	hardness = 1
-	protectiveness = 0 // 0%
-	conductive = 0
-	sheet_singular_name = "empty sandbag"
-	sheet_plural_name = "empty sandbags"
-
-/datum/material/sandbags
-	name = "sandbag"
-	stack_type = /obj/item/stack/material/sandbags
-	icon_colour = "#D9C179"
-	weight = 5
-	hardness = 50
-	protectiveness = 5 // 20%
-	conductive = 0
-	sheet_singular_name = "sandbag"
-	sheet_plural_name = "sandbags"
 
 /datum/material/cult
 	name = "cult"
@@ -1053,12 +1052,12 @@ var/list/name_to_material
 
 /datum/material/bone
 	name = "bone"
-	icon_colour = "#35343a"
+	icon_colour = "#e6dfc8"
 	icon_base = "bone"
 	icon_reinf = "reinf_mesh"
 	melting_point = T0C+300
-	sheet_singular_name = "bone"
-	sheet_plural_name = "boness"
+	sheet_singular_name = "fragment"
+	sheet_plural_name = "fragments"
 	conductive = 0
 	explosion_resistance = 60
 	radiation_resistance = 10
@@ -1200,43 +1199,44 @@ var/list/name_to_material
 	protectiveness = 0 // 0%
 	conductive = 0
 
-//CitMain Sandbag port.
-/obj/item/stack/material/emptysandbag
-	name = "empty sandbag"
-	desc = "A bag to be filled with sand."
-	icon_state = "sandbag"
-	max_amount = 50
-	description_info = "Fill with sand to convert this into a sandbag."
-	no_variants = FALSE
-	fill_type = /obj/item/stack/material/sandbags
+//Vaudium products
+/datum/material/bananium
+	name = "bananium"
+	stack_type = /obj/item/stack/material/bananium
+	integrity = 150
+	conductivity = 0 // Weird rubber metal.
+	protectiveness = 10 // 33%
+	icon_colour = "#d6c100"
 
-	default_type = "emptysandbag"
-	perunit = 1
+/datum/material/stone/silencium
+	name = "silencium"
+	icon_colour = "#AAAAAA"
+	weight = 26
+	hardness = 30
+	integrity = 201 //hack to stop kitchen benches being flippable, todo: refactor into weight system
+	stack_type = /obj/item/stack/material/silencium
 
-/obj/item/stack/material/emptysandbag/attackby(var/obj/item/W, var/mob/user)
-	if(!istype(W, /obj/item/ore/glass))
-		var/time = (3 SECONDS)
-		user.setClickCooldown(time)
-		if(do_after(user, time, src) && use(1))
-			to_chat(user, "<span class='notice'>You fill the sandbag.</span>")
-	else
-		return ..()
+/datum/material/brass
+	name = "brass"
+	icon_colour = "#CAC955"
+	integrity = 150
+	stack_type = /obj/item/stack/material/brass
 
-/obj/item/stack/material/emptysandbag/attackby(var/obj/item/W, var/mob/user)
-	if(istype(W, /obj/item/ore/glass) && !interact(user, src))
-		if(do_after(user, 3 SECONDS, src) && use(1) && qdel(W))
-			var/turf/T = get_turf(user)
-			to_chat(user, "<span class='notice'>You fill the sandbag.</span>")
-			new /obj/item/stack/material/sandbags && !get(T)
-	else
-		return ..()
+/datum/material/copper
+	name = "copper"
+	icon_colour = "#b45c13"
+	weight = 15
+	hardness = 30
+	conductivity = 35
+	stack_type = /obj/item/stack/material/copper
 
-/obj/item/stack/material/sandbags
-	name = "sandbags"
-	desc = "This is a synthetic bag tightly packed with sand. It is designed to provide structural support and serve as a portable barrier."
-	singular_name = "sandbag"
-	icon_state = "sandbags"
-	no_variants = FALSE
-
-	default_type = "sandbags"
-	perunit = 1
+//Moving this here. It was in beehive.dm for some reason.
+/datum/material/wax
+	name = "wax"
+	stack_type = /obj/item/stack/material/wax
+	icon_colour = "#ebe6ac"
+	melting_point = T0C+300
+	weight = 1
+	hardness = 20
+	integrity = 100
+	pass_stack_colors = TRUE

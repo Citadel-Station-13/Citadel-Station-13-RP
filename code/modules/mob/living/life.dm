@@ -3,7 +3,7 @@
 
 	if (transforming)
 		return
-	handle_modifiers() //VOREStation Edit - Needs to be done even if in nullspace.
+	handle_modifiers() // Needs to be done even if in nullspace.
 	if(!loc)
 		return
 
@@ -12,8 +12,7 @@
 
 	var/datum/gas_mixture/environment = loc.return_air()
 
-	//handle_modifiers() // Do this early since it might affect other things later. //VOREStation Edit
-
+	//handle_modifiers() // Do this early since it might affect other things later.
 	handle_light()
 
 	if(stat != DEAD)
@@ -43,17 +42,14 @@
 	//Check if we're on fire
 	handle_fire()
 
-	//stuff in the stomach
-	//handle_stomach() //VOREStation Code
-
 	update_gravity(mob_has_gravity())
 
 	update_pulling()
 
 	for(var/obj/item/grab/G in src)
-		G.process()
+		G.process(2)
 
-	if(handle_regular_status_updates()) // Status & health update, are we dead or alive etc.
+	if(handle_regular_UI_updates()) // Status & health update, are we dead or alive etc.
 		handle_disabilities() // eye, ear, brain damages
 		handle_statuses() //all special effects, stunned, weakened, jitteryness, hallucination, sleeping, etc
 
@@ -92,15 +88,15 @@
 			stop_pulling()
 
 //This updates the health and status of the mob (conscious, unconscious, dead)
-/mob/living/proc/handle_regular_status_updates()
+/mob/living/proc/handle_regular_UI_updates()
 	updatehealth()
 	if(stat != DEAD)
 		if(paralysis)
-			stat = UNCONSCIOUS
+			set_stat(UNCONSCIOUS)
 		else if (status_flags & FAKEDEATH)
-			stat = UNCONSCIOUS
+			set_stat(UNCONSCIOUS)
 		else
-			stat = CONSCIOUS
+			set_stat(CONSCIOUS)
 		return 1
 
 /mob/living/proc/handle_statuses()
@@ -120,7 +116,7 @@
 
 /mob/living/proc/handle_weakened()
 	if(weakened)
-		weakened = max(weakened-1,0)
+		AdjustWeakened(-1)
 	return weakened
 
 /mob/living/proc/handle_stuttering()
@@ -155,7 +151,7 @@
 
 /mob/living/proc/handle_disabilities()
 	//Eyes
-	if(sdisabilities & BLIND || stat)	//blindness from disability or unconsciousness doesn't get better on its own
+	if(sdisabilities & BLIND || stat || HAS_TRAIT(src, TRAIT_BLIND))	//blindness from disability or unconsciousness doesn't get better on its own
 		SetBlinded(1)
 	else if(eye_blind)			//blindness, heals slowly over time
 		AdjustBlinded(-1)
@@ -170,17 +166,28 @@
 		if(ear_damage < 100)
 			adjustEarDamage(-0.05,-1)
 
-//this handles hud updates. Calls update_vision() and handle_hud_icons()
+	// WARNING WARNING SHITCODE AHEAD
+	// THIS IS A SHIT WAY TO DO THIS BUT WE HAVE NO CHOICE SO HERE WE GO
+	// REFACTOR LATER
+	// deaf trait shim for now
+	if(HAS_TRAIT(src, TRAIT_DEAF))
+		ear_deaf = max(ear_deaf, 1)
+	// mute trait shim for now
+	if(HAS_TRAIT(src, TRAIT_MUTE))
+		silent = max(silent, 1)
+	// blind trait shim for now
+	if(HAS_TRAIT(src, TRAIT_BLIND))
+		eye_blind = max(eye_blind, 1)
+
 /mob/living/handle_regular_hud_updates()
 	if(!client)
-		return 0
+		return FALSE
 	..()
 
-	handle_vision()
 	handle_darksight()
 	handle_hud_icons()
 
-	return 1
+	return TRUE
 
 /mob/living/proc/update_sight()
 	if(!seedarkness)
@@ -240,5 +247,5 @@
 	var/distance = abs(current-adjust_to)		//Used for how long to animate for
 	if(distance < 0.01) return					//We're already all set
 
-	//world << "[src] in B:[round(brightness,0.1)] C:[round(current,0.1)] A2:[round(adjust_to,0.1)] D:[round(distance,0.01)] T:[round(distance*10 SECONDS,0.1)]"
+	//to_chat(world, "[src] in B:[round(brightness,0.1)] C:[round(current,0.1)] A2:[round(adjust_to,0.1)] D:[round(distance,0.01)] T:[round(distance*10 SECONDS,0.1)]")
 	animate(dsoverlay, alpha = (adjust_to*255), time = (distance*10 SECONDS))

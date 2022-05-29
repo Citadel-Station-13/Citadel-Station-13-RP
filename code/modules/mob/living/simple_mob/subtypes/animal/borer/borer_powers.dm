@@ -11,7 +11,7 @@
 		to_chat(src, "You cannot leave your host in your current state.")
 
 	if(docile)
-		to_chat(src, "<font color='blue'>You are feeling far too docile to do that.</font>")
+		to_chat(src, "<font color=#4F49AF>You are feeling far too docile to do that.</font>")
 		return
 
 	if(!host || !src) return
@@ -143,7 +143,7 @@
 		to_chat(src, "You cannot do that in your current state.")
 
 	if(docile)
-		to_chat(src, "<font color='blue'>You are feeling far too docile to do that.</font>")
+		to_chat(src, "<font color=#4F49AF>You are feeling far too docile to do that.</font>")
 		return
 
 
@@ -211,7 +211,7 @@
 		to_chat(src, "You cannot secrete chemicals in your current state.")
 
 	if(docile)
-		to_chat(src, "<font color='blue'>You are feeling far too docile to do that.</font>")
+		to_chat(src, "<font color=#4F49AF>You are feeling far too docile to do that.</font>")
 		return
 
 	if(chemicals < 50)
@@ -280,7 +280,7 @@
 		return
 
 	if(docile)
-		to_chat(src, "<font color='blue'>You are feeling far too docile to do that.</font>")
+		to_chat(src, "<font color=#4F49AF>You are feeling far too docile to do that.</font>")
 		return
 
 	to_chat(src, "You begin delicately adjusting your connection to the host brain...")

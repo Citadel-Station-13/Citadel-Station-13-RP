@@ -5,18 +5,25 @@
 
 // If our holder is able to do anything.
 /datum/ai_holder/proc/can_act()
-	if(!holder) // Holder missing.
-		SSai.processing -= src
+	if(holder.key)
 		return FALSE
+
+	if(!holder) // Holder missing.
+		SSai.processing += src
+		return TRUE
+
 	if(holder.stat) // Dead or unconscious.
 		ai_log("can_act() : Stat was non-zero ([holder.stat]).", AI_LOG_TRACE)
 		return FALSE
+
 	if(holder.incapacitated(INCAPACITATION_DISABLED)) // Stunned in some form.
 		ai_log("can_act() : Incapacited.", AI_LOG_TRACE)
 		return FALSE
+
 	if(holder.instasis()) // In a stasis field.
 		ai_log("can_act() : In a stasis field.", AI_LOG_TRACE)
 		return FALSE
+
 	return TRUE
 
 // Test if we should switch to STANCE_DISABLE.
@@ -48,7 +55,7 @@
 			var/unsafe = FALSE
 
 			tile_test:
-				for(var/dir_tested in cardinal)
+				for(var/dir_tested in GLOB.cardinal)
 					var/turf/turf_tested = get_step(holder, dir_tested)
 					// Look for unsafe tiles.
 					if(!turf_tested.is_safe_to_enter(holder))
@@ -67,7 +74,7 @@
 				return // Just stay still.
 
 		var/moving_to = 0
-		moving_to = pick(cardinal)
+		moving_to = pick(GLOB.cardinal)
 		var/turf/T = get_step(holder, moving_to)
 
 		var/mob/living/L = locate() in T
@@ -93,7 +100,7 @@
 				return
 
 			var/moving_to = 0 // Apparently this is required or it always picks 4, according to the previous developer for simplemob AI.
-			moving_to = pick(cardinal)
+			moving_to = pick(GLOB.cardinal)
 			holder.setDir(moving_to)
 			holder.IMove(get_step(holder,moving_to))
 			wander_delay = base_wander_delay

@@ -73,9 +73,9 @@
 				return
 
 		log_and_message_admins("[key_name(src)] commited suicide")
-		
+
 		var/datum/gender/T = gender_datums[get_visible_gender()]
-		
+
 		var/suicidemsg
 		suicidemsg = pick("<span class='danger'>[src] is attempting to bite [T.his] tongue off! It looks like [T.he] [T.is] trying to commit suicide.</span>", \
 		                     "<span class='danger'>[src] is jamming [T.his] thumbs into [T.his] eye sockets! It looks like [T.he] [T.is] trying to commit suicide.</span>", \
@@ -107,7 +107,7 @@
 
 	if(confirm == "Yes")
 		suiciding = 1
-		viewers(loc) << "<span class='danger'>[src]'s brain is growing dull and lifeless. It looks like it's lost the will to live.</span>"
+		visible_message("<span class='danger'>[src]'s brain is growing dull and lifeless. It looks like it's lost the will to live.</span>")
 		spawn(50)
 			death(0)
 			suiciding = 0
@@ -127,7 +127,7 @@
 
 	if(confirm == "Yes")
 		suiciding = 1
-		viewers(src) << "<span class='danger'>[src] is powering down. It looks like they're trying to commit suicide.</span>"
+		visible_message("<span class='danger'>[src] is powering down. It looks like they're trying to commit suicide.</span>")
 		//put em at -175
 		adjustOxyLoss(max(getMaxHealth() * 2 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 		updatehealth()
@@ -147,7 +147,7 @@
 
 	if(confirm == "Yes")
 		suiciding = 1
-		viewers(src) << "<span class='danger'>[src] is powering down. It looks like they're trying to commit suicide.</span>"
+		visible_message("<span class='danger'>[src] is powering down. It looks like they're trying to commit suicide.</span>")
 		//put em at -175
 		adjustOxyLoss(max(getMaxHealth() * 2 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 		updatehealth()

@@ -10,8 +10,10 @@
 	throw_speed = 2
 	throw_range = 10
 	force = 10
-	matter = list(DEFAULT_WALL_MATERIAL = 90)
+	matter = list(MAT_STEEL = 90)
 	attack_verb = list("slammed", "whacked", "bashed", "thunked", "battered", "bludgeoned", "thrashed")
+	drop_sound = 'sound/items/drop/gascan.ogg'
+	pickup_sound = 'sound/items/pickup/gascan.ogg'
 
 	var/spray_particles = 3
 	var/spray_amount = 10	//units of liquid per particle
@@ -38,14 +40,14 @@
 	desc = "A mini fire extinguisher for use by burning phoronoids. Let's just hope it works."
 	max_water = 300
 
-/obj/item/extinguisher/Initialize()
+/obj/item/extinguisher/Initialize(mapload)
 	. = ..()
 	create_reagents(max_water)
 	reagents.add_reagent("water", max_water)
 
 /obj/item/extinguisher/examine(mob/user)
-	if(..(user, 0))
-		to_chat(user, text("\icon[] [] contains [] units of water left!", src, src.name, src.reagents.total_volume))
+	. = ..()
+	. += "[icon2html(thing = src, target = user)] [src.name] contains [src.reagents.total_volume] units of water left!"
 
 /obj/item/extinguisher/attack_self(mob/user as mob)
 	safety = !safety
@@ -109,7 +111,7 @@
 			spawn(0)
 				if(!src || !reagents.total_volume) return
 
-				var/obj/effect/effect/water/W = new /obj/effect/effect/water(get_turf(src))
+				var/obj/effect/water/W = new /obj/effect/water(get_turf(src))
 				var/turf/my_target
 				if(a <= the_targets.len)
 					my_target = the_targets[a]

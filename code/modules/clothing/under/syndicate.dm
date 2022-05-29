@@ -8,6 +8,10 @@
 	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 0.9
 
+/obj/item/clothing/under/syndicate/skirt_pleated
+	name = "tactical pleated skirt"
+	icon_state = "syndicate_skirt"
+
 /obj/item/clothing/under/syndicate/combat //ERT tactleneck
 	name = "combat turtleneck"
 	desc = "It's some non-descript, slightly suspicious looking, civilian clothing."
@@ -24,3 +28,12 @@
 	item_state_slots = list(slot_r_hand_str = "black", slot_l_hand_str = "black")
 	siemens_coefficient = 1
 	rolled_sleeves = 0
+
+/obj/item/clothing/under/syndicate/tacticool/skirt_pleated
+	name = "tacticool pleated skirt"
+	icon_state = "tactifool_skirt"
+
+/obj/item/clothing/under/syndicate/combat
+	name = "syndicate combat suit"
+	desc = "This streamlined tactical suit is a cut above the tactical turtleneck. It has four more pockets."
+	icon_state = "syndicate_combat"

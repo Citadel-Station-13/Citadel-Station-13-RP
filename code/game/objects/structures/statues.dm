@@ -6,7 +6,6 @@
 	icon_state = ""
 	density = 1
 	anchored = 0
-	can_atmos_pass = ATMOS_PASS_DENSITY
 	var/hardness = 1
 	var/oreAmount = 7
 	var/materialType = "steel"
@@ -106,6 +105,9 @@
 				new ore(get_turf(src))
 		else
 			var/ore = text2path("/obj/item/stack/material/[materialType]")
+			if(!ispath(ore))
+				qdel(src)
+				CRASH("Invalid ore [ore].")
 			for(var/i = 1, i <= oreAmount, i++)
 				new ore(get_turf(src))
 	else
@@ -114,7 +116,10 @@
 			for(var/i = 3, i <= oreAmount, i++)
 				new ore(get_turf(src))
 		else
-			var/ore = text2path("/obj/item/stack/sheet/material/[materialType]")
+			var/ore = text2path("/obj/item/stack/material/[materialType]")
+			if(!ispath(ore))
+				qdel(src)
+				CRASH("Invalid ore [ore].")
 			for(var/i = 3, i <= oreAmount, i++)
 				new ore(get_turf(src))
 	qdel(src)
@@ -301,3 +306,44 @@
 	name = "corgi statue"
 	desc = "This marble statue is shockingly lifelike."
 	icon_state = "corgi"
+
+/obj/structure/statue/marble/venus
+	name = "venusian statue"
+	desc = "This statue pays homage to an ancient Terran sculpture. Or it's a depiction of someone from Venus. Records are unclear."
+	icon = 'icons/obj/statuelarge.dmi'
+	icon_state = "venus"
+
+/////////////////////wood/////////////////////////////////////////
+
+/obj/structure/statue/wood
+	name = "wood statue"
+	desc = "A simple wooden mannequin, generally used to display clothes or equipment. Water frequently."
+	icon_state = "fashion_m"
+
+/obj/structure/statue/bone
+	name = "bone statue"
+	desc = "A towering menhir of bone, perhaps the colossal rib of some fallen beast."
+	icon = 'icons/obj/statuelarge.dmi'
+	icon_state = "rib"
+
+/obj/structure/statue/bone/skull
+	name = "skull statue"
+	desc = "A towering bone pillar depicting the skull of some forgotten beast."
+	icon_state = "skull"
+
+/obj/structure/statue/bone/skull/half
+	name = "eroded skull statue"
+	desc = "An eroded pillar depicting the skull of some forgotten beast."
+	icon_state = "skull-half"
+
+//////////////////Memorial/////////////////
+/obj/structure/memorial
+	name = "Memorial Wall"
+	desc = "An obsidian memorial wall listing the names of NanoTrasen employees who have fallen in the pursuit of the Company's goals - both scientific and political."
+	icon = 'icons/obj/structures_64x.dmi'
+	icon_state = "memorial"
+
+	density = 1
+	anchored = 1
+	throwpass = 0
+	climbable = 1

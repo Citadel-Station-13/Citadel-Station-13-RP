@@ -12,8 +12,8 @@
 
 	var/obj/item/loaded_item	//What is currently inside the analyzer.
 
-/obj/item/portable_destructive_analyzer/New()
-	..()
+/obj/item/portable_destructive_analyzer/Initialize(mapload)
+	. = ..()
 	files = new /datum/research/techonly(src) //Setup the research data holder.
 
 /obj/item/portable_destructive_analyzer/attack_self(user as mob)
@@ -54,7 +54,7 @@
 			to_chat(user, "The [src] is empty.  Put something inside it first.")
 	if(response == "Sync")
 		var/success = 0
-		for(var/obj/machinery/r_n_d/server/S in machines)
+		for(var/obj/machinery/r_n_d/server/S in GLOB.machines)
 			for(var/datum/tech/T in files.known_tech) //Uploading
 				S.files.AddTech2Known(T)
 			for(var/datum/tech/T in S.files.known_tech) //Downloading
@@ -130,8 +130,8 @@
 	var/dummy_card = null
 	var/dummy_card_type = /obj/item/card/id/science/roboticist/dummy_cyborg
 
-/obj/item/card/robot/Initialize()
-	..()
+/obj/item/card/robot/Initialize(mapload)
+	. = ..()
 	dummy_card = new dummy_card_type(src)
 
 /obj/item/card/robot/Destroy()
@@ -148,8 +148,8 @@
 /obj/item/card/id/science/roboticist/dummy_cyborg
 	access = list(access_robotics)
 
-/obj/item/card/id/syndicate/dummy_cyborg/Initialize()
-	..()
+/obj/item/card/id/syndicate/dummy_cyborg/Initialize(mapload)
+	. = ..()
 	access |= access_robotics
 
 //A harvest item for serviceborgs.
@@ -214,7 +214,7 @@
 				overlays += image("icon" = I.icon, "icon_state" = I.icon_state, "layer" = 30 + I.layer)
 				addedSomething = 1
 		if ( addedSomething )
-			user.visible_message("<font color='blue'>[user] load some items onto their service tray.</font>")
+			user.visible_message("<font color=#4F49AF>[user] loads some items onto their service tray.</font>")
 
 		return
 
@@ -254,9 +254,9 @@
 							sleep(rand(2,4))
 		if ( droppedSomething )
 			if ( foundtable )
-				user.visible_message("<font color='blue'>[user] unloads their service tray.</font>")
+				user.visible_message("<font color=#4F49AF>[user] unloads their service tray.</font>")
 			else
-				user.visible_message("<font color='blue'>[user] drops all the items on their tray.</font>")
+				user.visible_message("<font color=#4F49AF>[user] drops all the items on their tray.</font>")
 
 	return ..()
 
@@ -336,7 +336,7 @@
 	deploy_paper(get_turf(src))
 
 /obj/item/form_printer/proc/deploy_paper(var/turf/T)
-	T.visible_message("<font color='blue'>\The [src.loc] dispenses a sheet of crisp white paper.</font>")
+	T.visible_message("<font color=#4F49AF>\The [src.loc] dispenses a sheet of crisp white paper.</font>")
 	new /obj/item/paper(T)
 
 
@@ -354,18 +354,18 @@
 	var/overload_time = 0			//Stores the time of overload
 	var/last_flash = 0				//Stores the time of last flash
 
-/obj/item/borg/combat/shield/New()
+/obj/item/borg/combat/shield/Initialize(mapload)
+	. = ..()
 	START_PROCESSING(SSobj, src)
-	..()
 
 /obj/item/borg/combat/shield/Destroy()
 	STOP_PROCESSING(SSobj, src)
-	..()
+	return ..()
 
 /obj/item/borg/combat/shield/attack_self(var/mob/living/user)
 	set_shield_level()
 
-/obj/item/borg/combat/shield/process()
+/obj/item/borg/combat/shield/process(delta_time)
 	if(active)
 		if(flash_count && (last_flash + shield_refresh < world.time))
 			flash_count = 0
@@ -399,7 +399,7 @@
 	set category = "Object"
 	set src in range(0)
 
-	var/N = input("How much damage should the shield absorb?") in list("5","10","25","50","75","100")
+	var/N = input("How much damage should the shield absorb?") in list("10","20","30","40","50","60")
 	if (N)
 		shield_level = text2num(N)/100
 
@@ -429,11 +429,10 @@
 	max_walls = 10
 	max_doors = 5
 
-/obj/item/inflatable_dispenser/examine(var/mob/user)
-	if(!..(user))
-		return
-	to_chat(user, "It has [stored_walls] wall segment\s and [stored_doors] door segment\s stored.")
-	to_chat(user, "It is set to deploy [mode ? "doors" : "walls"]")
+/obj/item/inflatable_dispenser/examine(mob/user)
+	. = ..()
+	. += "It has [stored_walls] wall segment\s and [stored_doors] door segment\s stored."
+	. += "It is set to deploy [mode ? "doors" : "walls"]"
 
 /obj/item/inflatable_dispenser/attack_self()
 	mode = !mode

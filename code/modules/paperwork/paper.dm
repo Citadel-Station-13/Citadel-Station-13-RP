@@ -19,6 +19,8 @@
 	slot_flags = SLOT_HEAD
 	body_parts_covered = HEAD
 	attack_verb = list("bapped")
+	drop_sound = 'sound/items/drop/paper.ogg'
+	pickup_sound = 'sound/items/pickup/paper.ogg'
 
 	var/info		//What's actually written on the paper.
 	var/info_links	//A different version of the paper which includes html links at fields and EOF
@@ -26,99 +28,44 @@
 	var/fields		//Amount of user created fields
 	var/free_space = MAX_PAPER_MESSAGE_LEN
 	var/list/stamped
-	var/list/ico[0]      //Icons and
-	var/list/offset_x[0] //offsets stored for later
-	var/list/offset_y[0] //usage by the photocopier
+	var/list/ico[0]			//Icons and
+	var/list/offset_x[0]	//offsets stored for later
+	var/list/offset_y[0]	//usage by the photocopier
 	var/rigged = 0
 	var/spam_flag = 0
 
 	var/const/deffont = "Verdana"
 	var/const/signfont = "Times New Roman"
 	var/const/crayonfont = "Comic Sans MS"
+	var/auto_desc = TRUE
 
-/obj/item/paper/card
-	name = "blank card"
-	desc = "A gift card with space to write on the cover."
-	icon_state = "greetingcard"
-	slot_flags = null //no fun allowed!!!!
-
-/obj/item/paper/card/AltClick() //No fun allowed
-	return
-
-/obj/item/paper/card/update_icon()
-	return
-
-/obj/item/paper/card/smile
-	name = "happy card"
-	desc = "A gift card with a smiley face on the cover."
-	icon_state = "greetingcard_smile"
-
-/obj/item/paper/card/cat
-	name = "cat card"
-	desc = "A gift card with a cat on the cover."
-	icon_state = "greetingcard_cat"
-
-/obj/item/paper/card/flower
-	name = "flower card"
-	desc = "A gift card with a flower on the cover."
-	icon_state = "greetingcard_flower"
-
-/obj/item/paper/card/heart
-	name = "heart card"
-	desc = "A gift card with a heart on the cover."
-	icon_state = "greetingcard_heart"
-
-/obj/item/paper/card/New()
-	..()
-	pixel_y = rand(-8, 8)
-	pixel_x = rand(-9, 9)
-	stamps = null
-
-	if(info != initial(info))
-		info = html_encode(info)
-		info = replacetext(info, "\n", "<BR>")
-		info = parsepencode(info)
-		return
-
-/obj/item/paper/alien
-	name = "alien tablet"
-	desc = "It looks highly advanced"
-	icon = 'icons/obj/abductor.dmi'
-	icon_state = "alienpaper"
-
-/obj/item/paper/alien/update_icon()
-	if(info)
-		icon_state = "alienpaper_words"
-	else
-		icon_state = "alienpaper"
-
-/obj/item/paper/alien/burnpaper()
-	return
-
-/obj/item/paper/alien/AltClick() // No airplanes for me.
-	return
+	var/list/stamp_sounds = list(
+		'sound/items/stamp1.ogg',
+		'sound/items/stamp2.ogg',
+		'sound/items/stamp3.ogg'
+		)
 
 //lipstick wiping is in code/game/objects/items/weapons/cosmetics.dm!
 
-/obj/item/paper/New()
-	..()
+/obj/item/paper/Initialize(mapload)
+	. = ..()
 	pixel_y = rand(-8, 8)
 	pixel_x = rand(-9, 9)
 	stamps = ""
 
-	if(name != "paper")
+	if((name != "paper") && auto_desc)
 		desc = "This is a paper titled '" + name + "'."
 
 	if(info != initial(info))
 		info = html_encode(info)
 		info = replacetext(info, "\n", "<BR>")
-		info = parsepencode(info)
-
-	spawn(2)
-		update_icon()
-		update_space(info)
-		updateinfolinks()
-		return
+		INVOKE_ASYNC(src, .proc/init_parsepencode, info)
+	else
+		// TODO: REFACTOR PAPER
+		spawn(0)
+			update_icon()
+			update_space(info)
+			updateinfolinks()
 
 /obj/item/paper/update_icon()
 	if(icon_state == "paper_talisman")
@@ -135,11 +82,11 @@
 	free_space -= length(strip_html_properly(new_text))
 
 /obj/item/paper/examine(mob/user)
-	..()
+	. = ..()
 	if(in_range(user, src) || istype(user, /mob/observer/dead))
 		show_content(usr)
 	else
-		to_chat(user, "<span class='notice'>You have to go closer if you want to read it.</span>")
+		. += "<span class='notice'>You have to go closer if you want to read it.</span>"
 	return
 
 /obj/item/paper/proc/show_content(var/mob/user, var/forceshow=0)
@@ -282,6 +229,12 @@
 	if(P && istype(P, /obj/item/pen))
 		return P.get_signature(user)
 	return (user && user.real_name) ? user.real_name : "Anonymous"
+
+/obj/item/paper/proc/init_parsepencode(t, P, user, iscrayon)
+	info = parsepencode(t, P, user, iscrayon)
+	update_icon()
+	update_space(info)
+	updateinfolinks()
 
 /obj/item/paper/proc/parsepencode(var/t, var/obj/item/pen/P, mob/user as mob, var/iscrayon = 0)
 //	t = copytext(sanitize(t),1,MAX_MESSAGE_LEN)
@@ -429,7 +382,7 @@
 		// check for exploits
 		for(var/bad in paper_blacklist)
 			if(findtext(t,bad))
-				to_chat(usr, "<font color='blue'>You think to yourself, \"Hm.. this is only paper...\</font>"")
+				to_chat(usr, "<font color=#4F49AF>You think to yourself, \"Hm.. this is only paper...\</font>"")
 				log_admin("PAPER: [usr] ([usr.ckey]) tried to use forbidden word in [src]: [bad].")
 				message_admins("PAPER: [usr] ([usr.ckey]) tried to use forbidden word in [src]: [bad].")
 				return
@@ -459,10 +412,13 @@
 
 		update_icon()
 
-/obj/item/paper/get_worn_icon_state(var/slot_name)
-	if(slot_name == slot_head_str)
+/obj/item/paper/get_worn_icon_state(var/slot_id)
+	if(slot_id == /datum/inventory_slot_meta/inventory/head)
 		return "paper" //Gross, but required for now.
 	return ..()
+
+/obj/item/paper/attackby(obj/item/P as obj, mob/user as mob)
+	. = ..()
 
 /obj/item/paper/attackby(obj/item/P as obj, mob/user as mob)
 	..()
@@ -538,6 +494,7 @@
 	else if(istype(P, /obj/item/stamp) || istype(P, /obj/item/clothing/gloves/ring/seal))
 		if((!in_range(src, usr) && loc != user && !( istype(loc, /obj/item/clipboard) ) && loc.loc != user && user.get_active_hand() != P))
 			return
+		playsound(P, pick(stamp_sounds), 30, 1, -1)
 
 		stamps += (stamps=="" ? "<HR>" : "<BR>") + "<i>This paper has been stamped with the [P.name].</i>"
 
@@ -620,6 +577,10 @@
 	name = "paper- 'Standard Operating Procedure'"
 	info = "Alert Levels:<BR>\nBlue- Emergency<BR>\n\t1. Caused by fire<BR>\n\t2. Caused by manual interaction<BR>\n\tAction:<BR>\n\t\tClose all fire doors. These can only be opened by reseting the alarm<BR>\nRed- Ejection/Self Destruct<BR>\n\t1. Caused by module operating computer.<BR>\n\tAction:<BR>\n\t\tAfter the specified time the module will eject completely.<BR>\n<BR>\nEngine Maintenance Instructions:<BR>\n\tShut off ignition systems:<BR>\n\tActivate internal power<BR>\n\tActivate orbital balance matrix<BR>\n\tRemove volatile liquids from area<BR>\n\tWear a fire suit<BR>\n<BR>\n\tAfter<BR>\n\t\tDecontaminate<BR>\n\t\tVisit medical examiner<BR>\n<BR>\nToxin Laboratory Procedure:<BR>\n\tWear a gas mask regardless<BR>\n\tGet an oxygen tank.<BR>\n\tActivate internal atmosphere<BR>\n<BR>\n\tAfter<BR>\n\t\tDecontaminate<BR>\n\t\tVisit medical examiner<BR>\n<BR>\nDisaster Procedure:<BR>\n\tFire:<BR>\n\t\tActivate sector fire alarm.<BR>\n\t\tMove to a safe area.<BR>\n\t\tGet a fire suit<BR>\n\t\tAfter:<BR>\n\t\t\tAssess Damage<BR>\n\t\t\tRepair damages<BR>\n\t\t\tIf needed, Evacuate<BR>\n\tMeteor Shower:<BR>\n\t\tActivate fire alarm<BR>\n\t\tMove to the back of ship<BR>\n\t\tAfter<BR>\n\t\t\tRepair damage<BR>\n\t\t\tIf needed, Evacuate<BR>\n\tAccidental Reentry:<BR>\n\t\tActivate fire alarms in front of ship.<BR>\n\t\tMove volatile matter to a fire proof area!<BR>\n\t\tGet a fire suit.<BR>\n\t\tStay secure until an emergency ship arrives.<BR>\n<BR>\n\t\tIf ship does not arrive-<BR>\n\t\t\tEvacuate to a nearby safe area!"
 
+/obj/item/paper/natural/Initialize(mapload)
+	. = ..()
+	color = "#FFF5ED"
+
 /obj/item/paper/crumpled
 	name = "paper scrap"
 	icon_state = "scrap"
@@ -637,3 +598,120 @@
 /obj/item/paper/manifest
 	name = "supply manifest"
 	var/is_copy = 1
+
+/obj/item/paper/particle_info
+	name = "Particle Control Panel - A Troubleshooter's Guide"
+	info = "If the Particle Control panel is not responding to inputs, simply toggle power to equipment and/or flip the breaker on your local Area Power Controller (APC). Turn the power off, and then back on again. This will resolve the issue."
+
+//Lava Land Colony Notes
+/obj/item/paper/lavaland
+	name = "Informal Incident Report"
+	icon_state = "paper_words"
+	info = "<I>\[The script on the page is precise and legible, although damage to the corner suggests it was ripped from a larger document.]</I><BR><I>...olonists don't know what got out yet. Following protocol, I have disabled all outbound communications systems. \nParapet didn't get down the Firebreak in time. Presumed dead.<BR>\nRations may last the quarantine period, but it'll be tight.<BR>\nI'm starting to lose track of the days. I can barely sleep. The rations might last another week. They should have at least sent an Agent by now. I'm destroying the hard copy documentation of our research, and I've set the laptop drive to format if I stop inputting updates.</I>"
+
+/obj/item/paper/lavaland/alice
+	name = "from Alice"
+	icon_state = "scrap_bloodied"
+	info = "<I>\[This crumpled note is smeared with dry blood. The text has been written around the stains, implying it was damaged prior to the note being written.]</I><BR><I>It's clear no one is coming. I sent Ruth and Milo to the pump substation. Neither of them asked how they were getting back. \nI was glad. \nI hadn't thought up a good lie for the occasion. \nSoon, the failsafes will be vaporized and the caldera will fill with lava, cleansing the abomination for good. If you're somehow reading this, whoever you are, don't let them forget what happened here. \n- Alice Rostlin</I>"
+
+/obj/item/paper/lavaland/goodbye
+	name = "goodbye"
+	info = "<I>\[The edges of this sheet of paper are singed and torn. The script is legible and neatly written, but grows more unsteady near the end.]</I><BR><I>This is it. \nMilo's already made his way down the staircase. He understood when I asked for a moment alone. \nAlice explained that when the charges go off, the pumps won't be able to keep the lava out, so the entire caldera will fill up. It's a small comfort, to know that even if my body survives the explosion, the lava will spare me the fate of the other colonists. \nGod. I'm not ready for this. I'll see you soon Cara.</I>"
+
+/obj/item/paper/lavaland/kitchen
+	name = "Watch Out!"
+	info = "<I>If you're reading this, stay away from the Town Hall! They broke through the barricades this morning! Me and Tyson are gonna try and hole up in the kitchen. Should be plenty of food in there.</I>"
+
+/obj/item/paper/lavaland/medical
+	name = "Medical Report - Unknown Patient"
+	info = "<I>\[This is an excerpt from a larger document. Parts of the paper have been neatly cut out after the fact.]</I><BR><I>...ame screaming into the Infirmary, claiming to be one of the Researchers from the...to the North. Patient claimed that they were sick and then collapsed. \nWe are not equipped to handle a viral outbreak. \nI have attempted to radio Command, but have since been advised by Alice that the comms network is temporarily down. \nStudy of the patient's injuries has yiel...</I>"
+
+/obj/item/paper/lavaland/miner
+	name = "hastily scrawled note"
+	icon_state = "scrap_bloodied"
+	info = "<I>\[This crumpled paper is splattered with blood. What text is visible appears to have been written down quickly with an unsteady hand.]</I><BR><I>...m sorry im not coming home we had to fall back to the refinery they know were here no one is coming why is no one comin...</I>"
+
+/obj/item/paper/lavaland/noise
+	name = "Page from a Journal"
+	info = "<I>\[This is the last page from a missing journal. There is only one entry.]</I><BR><I>The Doc has been acting so weird since that guy came screaming into town. Now him and all those colonists who've been listening to his speeches are out building themselves a chapel on the edge of the colony. \nI don't care what people believe, but they should keep it down! \nI'm going to the Mayor with this if they don't stop making such a racket.</I>"
+
+/obj/item/paper/lavaland/rockin
+	name = "Keep On Rockin'"
+	info = "<I>\[This paper is coated in grease smugdges and snack dust.]</I><BR><I>Vending machine ran out of snacks a week ago. Alice said rescue would be here last month, before she took her group over the ridge. \nThe thing that used to be Kayla still talks to me through the door sometimes. I don't wanna hear it any more. \nI'm cracking open the stash, not like anyone's testing us anyways. Maybe I'll stop hearing them walk around then. \nSomeone else's problem now. \nGonna ride the wave one last time, baby.</I>"
+
+/obj/item/paper/lavaland/sermon
+	name = "Sermon"
+	info = "<I>\[This sheet of paper is splattered with blood and what seems to be oil. The text is still legible, although it was written by an unsteady hand.]</I><BR><I>We go now to commune with the Great Designer, who hath sent his messenger - The Changed One. \nThe heretics seek to batter down our doors, but we have already drunk from the Cup of the Sacrament, and now we hasten our escape from the bondage of meat. \nGlory! Glory! Glory to the Great Designer!</I>"
+
+/obj/item/paper/lavaland/townhall
+	name = "Page Torn from a Journal"
+	icon_state = "scrap"
+	info = "<I>\[This page appears to have been ripped from a missing journal mid-entry.]</I><BR><I>...he Mayor says we just need to bunker down here and wait for rescue. Alice says the comms net has been down for a week and no one even knows we're in trouble. \nShe left for the other side of the ridge with a few of the miners last night. Mayor says that's the last we'll see of them. \nSELENIUM thinks keeping the curtains closed will be good enou-</I>"
+
+/*
+//These are being phased out of their respective POI maps due to clashes with the updated story, and their habit of appearing multiple times on a Z level due to POI Gen.
+
+/obj/item/paper/lavaland/bunker
+	name = "journal scrap"
+	info = "<I>The rumbling keeps getting louder. Alice left to get supplies, even though the drones are still out of control. If she takes too much longer I'll have to seal the doors. It feels like the roof is going to come down.</I>"
+
+//I really like this one, but POI gen...
+/obj/item/paper/lavaland/botany
+	name = "oil streaked note"
+	info = "<I>Them bastards went and finally cracked 'er up, jus like I've been sayin' they would. Well t' hell with all of 'em. That girl Alice stopped by earlier, tellin' me the survivors are tryin' to band together at th' landing pads. Well those fools are gonna need food if they want to last more'n a day. So what does that leave me to do but stay here? Damn fools, the lot of 'em. I've got sturdy walls and plenty of soil. They can starve, like they deserve.</I>"
+
+/obj/item/paper/lavaland/oldtownhall
+	name = "weathered note"
+	info = "<I>Jason stayed behind at the shelter, so I know he'll be okay. We've been bunkered down for days now. The seismic activity is getting worse, but the barricades are holding. They're adapting, we think. Someone says they saw a cat, probably from the colony. Sick bastards. We're talking about trying to move out for the shuttles at first light. Jason, if you're reading this, meet me there. I love you. -A</I>"
+*/
+
+/obj/item/paper/card
+	name = "blank card"
+	desc = "A gift card with space to write on the cover."
+	icon_state = "greetingcard"
+	slot_flags = null //no fun allowed!!!!
+
+/obj/item/paper/card/AltClick() //No fun allowed
+	return
+
+/obj/item/paper/card/update_icon()
+	return
+
+/obj/item/paper/card/smile
+	name = "happy card"
+	desc = "A gift card with a smiley face on the cover."
+	icon_state = "greetingcard_smile"
+
+/obj/item/paper/card/cat
+	name = "cat card"
+	desc = "A gift card with a cat on the cover."
+	icon_state = "greetingcard_cat"
+
+/obj/item/paper/card/flower
+	name = "flower card"
+	desc = "A gift card with a flower on the cover."
+	icon_state = "greetingcard_flower"
+
+/obj/item/paper/card/heart
+	name = "heart card"
+	desc = "A gift card with a heart on the cover."
+	icon_state = "greetingcard_heart"
+	auto_desc = FALSE
+
+/obj/item/paper/alien
+	name = "alien tablet"
+	desc = "It looks highly advanced"
+	icon = 'icons/obj/abductor.dmi'
+	icon_state = "alienpaper"
+
+/obj/item/paper/alien/update_icon()
+	if(info)
+		icon_state = "alienpaper_words"
+	else
+		icon_state = "alienpaper"
+
+/obj/item/paper/alien/burnpaper()
+	return
+
+/obj/item/paper/alien/AltClick() // No airplanes for me.
+	return

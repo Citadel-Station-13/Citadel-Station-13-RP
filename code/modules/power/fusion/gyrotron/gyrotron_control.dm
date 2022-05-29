@@ -17,7 +17,7 @@
 
 /obj/machinery/computer/gyrotron_control/interact(var/mob/user)
 
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		user.unset_machine()
 		user << browse(null, "window=gyrotron_controller_[id_tag]")
 		return
@@ -39,7 +39,7 @@
 			continue
 
 		dat += "<tr>"
-		if(G.state != 2 || (G.stat & (NOPOWER | BROKEN))) //Error data not found.
+		if(G.state != 2 || (G.machine_stat & (NOPOWER | BROKEN))) //Error data not found.
 			dat += "<td><span style='color: red'>ERROR</span></td>"
 			dat += "<td><span style='color: red'>ERROR</span></td>"
 			dat += "<td><span style='color: red'>ERROR</span></td>"
@@ -56,12 +56,12 @@
 	add_fingerprint(user)
 	user.set_machine(src)
 
-/obj/machinery/computer/gyrotron_control/Topic(var/href, var/list/href_list)
+/obj/machinery/computer/gyrotron_control/Topic(href, list/href_list)
 	. = ..()
 	if(.)
 		return
 
-	if(stat & (NOPOWER | BROKEN))
+	if(machine_stat & (NOPOWER | BROKEN))
 		return
 
 	var/obj/machinery/power/emitter/gyrotron/G = locate(href_list["machine"])
@@ -103,17 +103,17 @@
 		return
 
 /obj/machinery/computer/gyrotron_control/update_icon()
-	if(stat & (BROKEN))
+	if(machine_stat & (BROKEN))
 		icon = 'icons/obj/computer.dmi'
 		icon_state = "broken"
 		set_light(0)
 
-	if(stat & (NOPOWER))
+	if(machine_stat & (NOPOWER))
 		icon = 'icons/obj/computer.dmi'
 		icon_state = "computer"
 		set_light(0)
 
-	if(!stat & (BROKEN|NOPOWER))
+	if(!(machine_stat & (BROKEN|NOPOWER)))
 		icon = initial(icon)
 		icon_state = initial(icon_state)
 		set_light(light_range_on, light_power_on)

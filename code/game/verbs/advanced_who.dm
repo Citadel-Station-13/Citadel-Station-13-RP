@@ -62,9 +62,9 @@
 				if(isobserver(C.mob))
 					entry += " - <font color='gray'>Observing</font>"
 				else if(istype(C.mob, /mob/new_player))
-					entry += " - <font color='blue'>In Lobby</font>"
+					entry += " - <font color=#4F49AF>In Lobby</font>"
 				else
-					entry += " - <font color='green'>Playing</font>"
+					entry += " - <font color='#5fe312'>Playing</font>"
 			Lines += entry
 
 	for(var/line in sortList(Lines))

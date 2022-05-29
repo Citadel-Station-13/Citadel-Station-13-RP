@@ -9,8 +9,8 @@
 	sharp = 1
 	edge =  1
 
-/obj/item/material/star/New()
-	..()
+/obj/item/material/star/Initialize(mapload, material_key)
+	. = ..()
 	src.pixel_x = rand(-12, 12)
 	src.pixel_y = rand(-12, 12)
 
@@ -22,3 +22,9 @@
 
 /obj/item/material/star/ninja
 	default_material = "uranium"
+
+/obj/item/material/star/plasteel
+	default_material = "plasteel"
+
+/obj/item/material/star/durasteel
+	default_material = "durasteel"

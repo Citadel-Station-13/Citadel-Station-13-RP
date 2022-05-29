@@ -31,7 +31,7 @@ proc/empulse(turf/epicenter, first_range, second_range, third_range, fourth_rang
 		fourth_range = third_range
 
 	for(var/mob/M in range(first_range, epicenter))
-		M << 'sound/effects/EMPulse.ogg'
+		SEND_SOUND(M, sound('sound/effects/EMPulse.ogg'))
 
 	for(var/atom/T in range(fourth_range, epicenter))
 		#ifdef EMPDEBUG

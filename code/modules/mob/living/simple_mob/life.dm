@@ -13,6 +13,7 @@
 	handle_atmos()
 
 	handle_special()
+	handle_guts()
 
 	return TRUE
 
@@ -88,7 +89,7 @@
 
 		if(Environment)
 
-			if( abs(Environment.temperature - bodytemperature) > temperature_range )	//VOREStation Edit: heating adjustments
+			if( abs(Environment.temperature - bodytemperature) > temperature_range )
 				bodytemperature += ((Environment.temperature - bodytemperature) / 5)
 
 			if(min_oxy)
@@ -141,6 +142,12 @@
 			oxygen.icon_state = "oxy0"
 		adjustOxyLoss(-unsuitable_atoms_damage)
 
+/mob/living/simple_mob/proc/handle_guts()
+	for(var/obj/item/organ/OR in internal_organs)
+		OR.process()
+
+	for(var/obj/item/organ/OR in organs)
+		OR.process()
 
 /mob/living/simple_mob/proc/handle_supernatural()
 	if(purge)

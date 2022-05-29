@@ -1,3 +1,11 @@
+/datum/category_item/catalogue/fauna/malf_drone
+	name = "Malfunctioning Combat Drone"
+	desc = "Many drones like this are fielded by Corporate naval fleets. \
+	Armed with heavy lasers, powerful combat shielding, armored frames, and \
+	self destruct cores, stumbling across one of these in the field is an almost \
+	guaranteed death sentence. When a combat drone malfunctions, it becomes twice \
+	as deadly, as it will attack anything it sees - even former allies."
+	value = CATALOGUER_REWARD_MEDIUM
 
 //malfunctioning combat drones
 /mob/living/simple_mob/hostile/malf_drone
@@ -51,8 +59,8 @@
 	var/exploding = 0
 	var/has_loot = 1
 
-/mob/living/simple_mob/hostile/malf_drone/New()
-	..()
+/mob/living/simple_mob/hostile/malf_drone/Initialize(mapload)
+	. = ..()
 	if(prob(5))
 		projectiletype = /obj/item/projectile/beam/pulse/drone
 		projectilesound = 'sound/weapons/pulse2.ogg'
@@ -71,20 +79,20 @@
 
 	//emps and lots of damage can temporarily shut us down
 	if(disabled > 0)
-		stat = UNCONSCIOUS
+		set_stat(UNCONSCIOUS)
 		icon_state = "drone_dead"
 		disabled--
 		wander = 0
 		speak_chance = 0
 		if(disabled <= 0)
-			stat = CONSCIOUS
+			set_stat(CONSCIOUS)
 			icon_state = "drone0"
 			wander = 1
 			speak_chance = 5
 
 	//repair a bit of damage
 	if(prob(1))
-		src.visible_message("<font color='red'>\icon[src] [src] shudders and shakes as some of it's damaged systems come back online.</font>")
+		src.visible_message("<font color='red'>[icon2html(thing = src, target = world)] [src] shudders and shakes as some of it's damaged systems come back online.</font>")
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, src)
 		s.start()
@@ -99,10 +107,10 @@
 	//sometimes our targetting sensors malfunction, and we attack anyone nearby
 	if(prob(disabled ? 0 : 1))
 		if(hostile)
-			src.visible_message("<font color='blue'>\icon[src] [src] retracts several targetting vanes, and dulls it's running lights.</font>")
+			src.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [src] retracts several targetting vanes, and dulls it's running lights.</font>")
 			hostile = 0
 		else
-			src.visible_message("<font color='red'>\icon[src] [src] suddenly lights up, and additional targetting vanes slide into place.</font>")
+			src.visible_message("<font color='red'>[icon2html(thing = src, target = world)] [src] suddenly lights up, and additional targetting vanes slide into place.</font>")
 			hostile = 1
 
 	if(health / getMaxHealth() > 0.9)
@@ -123,24 +131,24 @@
 		exploding = 0
 		if(!disabled)
 			if(prob(50))
-				src.visible_message("<font color='blue'>\icon[src] [src] suddenly shuts down!</font>")
+				src.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [src] suddenly shuts down!</font>")
 			else
-				src.visible_message("<font color='blue'>\icon[src] [src] suddenly lies still and quiet.</font>")
+				src.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [src] suddenly lies still and quiet.</font>")
 			disabled = rand(150, 600)
 			walk(src,0)
 
 	if(exploding && prob(20))
 		if(prob(50))
-			src.visible_message("<font color='red'>\icon[src] [src] begins to spark and shake violenty!</font>")
+			src.visible_message("<font color='red'>[icon2html(thing = src, target = world)] [src] begins to spark and shake violenty!</font>")
 		else
-			src.visible_message("<font color='red'>\icon[src] [src] sparks and shakes like it's about to explode!</font>")
+			src.visible_message("<font color='red'>[icon2html(thing = src, target = world)] [src] sparks and shakes like it's about to explode!</font>")
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, src)
 		s.start()
 
 	if(!exploding && !disabled && prob(explode_chance))
 		exploding = 1
-		stat = UNCONSCIOUS
+		set_stat(UNCONSCIOUS)
 		wander = 1
 		walk(src,0)
 		spawn(rand(50,150))

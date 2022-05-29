@@ -1,3 +1,9 @@
+/datum/category_item/catalogue/fauna/horror/Eddy
+	name = "&@THE*&CHILDR#!!INE"
+	desc = "%WARNING% PROCESSING FAILURE! RETURN SCANNER TO A CENTRAL \
+	ADMINISTRATOR FOR IMMEDIATE MAINTENANCE! %ERROR%"
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/horror/Eddy
 	name = "???"
 	desc = "A dark green, sluglike creature, covered in glowing green ooze, and carrying what look to be eggs on its back."
@@ -9,6 +15,7 @@
 	faction = "horror"
 	icon = 'icons/mob/horror_show/GHPS.dmi'
 	icon_gib = "generic_gib"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/horror/Eddy)
 
 	attack_sound = 'sound/h_sounds/negative.ogg'
 
@@ -28,6 +35,10 @@
 
 	say_list_type = /datum/say_list/Eddy
 	ai_holder_type = /datum/ai_holder/simple_mob/horror
+
+	bone_amount = 1
+	hide_amount = 1
+	exotic_amount = 5
 
 /mob/living/simple_mob/horror/Eddy/death()
 	playsound(src, 'sound/h_sounds/headcrab.ogg', 50, 1)

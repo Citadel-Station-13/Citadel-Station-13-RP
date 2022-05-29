@@ -11,6 +11,7 @@
 
 	starts_with = list(
 		/obj/item/clothing/under/rank/security = 3,
+		/obj/item/clothing/under/rank/security/skirt_pleated = 2,
 		/obj/item/clothing/under/rank/security2 = 3,
 		/obj/item/clothing/under/rank/security/turtleneck = 3,
 		/obj/item/clothing/under/rank/security/skirt = 2,
@@ -23,7 +24,7 @@
 		/obj/item/clothing/accessory/armband = 3,
 		/obj/item/clothing/accessory/holster/waist = 3)
 
-/obj/structure/closet/wardrobe/red/Initialize()
+/obj/structure/closet/wardrobe/red/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/security
 	else
@@ -53,6 +54,7 @@
 		/obj/item/clothing/under/det = 2,
 		/obj/item/clothing/under/det/waistcoat = 2,
 		/obj/item/clothing/under/det/grey = 2,
+		/obj/item/clothing/under/det/grey/skirt_pleated = 2,
 		/obj/item/clothing/under/det/grey/waistcoat = 2,
 		/obj/item/clothing/under/det/black = 2,
 		/obj/item/clothing/under/det/skirt,
@@ -69,6 +71,7 @@
 
 	starts_with = list(
 		/obj/item/clothing/under/color/pink = 3,
+		/obj/item/clothing/under/color/pink_skirt = 3,
 		/obj/item/clothing/shoes/brown = 3)
 
 /obj/structure/closet/wardrobe/black
@@ -78,6 +81,7 @@
 
 	starts_with = list(
 		/obj/item/clothing/under/color/black = 3,
+		/obj/item/clothing/under/color/black_skirt = 3,
 		/obj/item/clothing/shoes/black = 3,
 		/obj/item/clothing/head/that = 3,
 		/obj/item/clothing/head/soft/black = 3,
@@ -93,6 +97,7 @@
 
 	starts_with = list(
 		/obj/item/clothing/under/rank/chaplain,
+		/obj/item/clothing/under/rank/chaplain/skirt_pleated,
 		/obj/item/clothing/suit/storage/hooded/techpriest,
 		/obj/item/clothing/shoes/black,
 		/obj/item/clothing/suit/nun,
@@ -106,6 +111,7 @@
 		/obj/item/storage/fancy/whitecandle_box,
 		/obj/item/storage/fancy/blackcandle_box,
 		/obj/item/clothing/accessory/permit/chaplain,
+		/obj/item/clothing/accessory/holster/holy,
 		/obj/item/storage/fancy/chalk,
 		/obj/item/godfig = 2,
 		/obj/item/deck/tarot)
@@ -118,6 +124,8 @@
 
 	starts_with = list(
 		/obj/item/clothing/under/color/green = 3,
+		/obj/item/clothing/under/color/lgreen_skirt = 3,
+		/obj/item/clothing/under/color/green_skirt = 3,
 		/obj/item/clothing/shoes/green = 3,
 		/obj/item/clothing/head/soft/green = 3,
 		/obj/item/clothing/mask/bandana/green = 3)
@@ -144,6 +152,7 @@
 
 	starts_with = list(
 		/obj/item/clothing/under/color/prison = 3,
+		/obj/item/clothing/under/color/prison/skirt = 3,
 		/obj/item/clothing/shoes/orange = 3)
 
 
@@ -153,7 +162,9 @@
 	icon_closed = "yellow"
 
 	starts_with = list(
+		/obj/item/clothing/under/color/orange_skirt =3,
 		/obj/item/clothing/under/color/yellow = 3,
+		/obj/item/clothing/under/color/yellow_skirt = 3,
 		/obj/item/clothing/shoes/yellow = 3,
 		/obj/item/clothing/head/soft/yellow = 3,
 		/obj/item/clothing/mask/bandana/gold = 3)
@@ -167,6 +178,7 @@
 	starts_with = list(
 		/obj/item/clothing/under/rank/atmospheric_technician = 3,
 		/obj/item/clothing/under/rank/atmospheric_technician/skirt = 3,
+		/obj/item/clothing/under/rank/atmospheric_technician/skirt_pleated = 3,
 		/obj/item/clothing/shoes/black = 3,
 		/obj/item/clothing/head/hardhat/red = 3,
 		/obj/item/clothing/head/beret/engineering = 3,
@@ -182,6 +194,7 @@
 	starts_with = list(
 		/obj/item/clothing/under/rank/engineer = 3,
 		/obj/item/clothing/under/rank/engineer/skirt = 3,
+		/obj/item/clothing/under/rank/engineer/skirt_pleated = 3,
 		/obj/item/clothing/under/rank/engineer/turtleneck = 3,
 		/obj/item/clothing/shoes/orange = 3,
 		/obj/item/clothing/head/hardhat = 3,
@@ -199,6 +212,7 @@
 
 	starts_with = list(
 		/obj/item/clothing/under/color/white = 3,
+		/obj/item/clothing/under/color/white_skirt = 3,
 		/obj/item/clothing/shoes/white = 3,
 		/obj/item/clothing/head/soft/mime = 3)
 
@@ -223,6 +237,7 @@
 	starts_with = list(
 		/obj/item/clothing/under/rank/scientist = 3,
 		/obj/item/clothing/under/rank/scientist/skirt = 2,
+		/obj/item/clothing/under/rank/scientist/skirt_pleated = 2,
 		/obj/item/clothing/under/rank/scientist/turtleneck = 3,
 		/obj/item/clothing/suit/storage/toggle/labcoat = 3,
 		/obj/item/clothing/shoes/white = 3,
@@ -232,7 +247,7 @@
 		/obj/item/storage/backpack/toxins,
 		/obj/item/storage/backpack/satchel/tox)
 
-/obj/structure/closet/wardrobe/science_white/Initialize()
+/obj/structure/closet/wardrobe/science_white/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/dufflebag/sci
 	else
@@ -252,13 +267,15 @@
 
 	starts_with = list(
 		/obj/item/clothing/under/rank/roboticist = 2,
-		/obj/item/clothing/suit/storage/toggle/labcoat = 2,
+		/obj/item/clothing/under/rank/roboticist/skirt_pleated = 2,
+		/obj/item/clothing/suit/storage/toggle/labcoat/robotics = 2,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/science/robotics = 2,
 		/obj/item/clothing/shoes/black = 2,
 		/obj/item/clothing/gloves/black = 2,
 		/obj/item/storage/backpack/toxins,
 		/obj/item/storage/backpack/satchel/tox)
 
-/obj/structure/closet/wardrobe/robotics_black/Initialize()
+/obj/structure/closet/wardrobe/robotics_black/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/dufflebag/sci
 	else
@@ -275,8 +292,10 @@
 	starts_with = list(
 		/obj/item/clothing/under/rank/chemist = 2,
 		/obj/item/clothing/under/rank/chemist/skirt = 2,
+		/obj/item/clothing/under/rank/chemist/skirt_pleated = 2,
 		/obj/item/clothing/shoes/white = 2,
 		/obj/item/clothing/suit/storage/toggle/labcoat/chemist = 2,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/janitor = 2,
 		/obj/item/storage/backpack/chemistry = 2,
 		/obj/item/storage/backpack/satchel/chem = 2,
 		/obj/item/storage/bag/chemistry = 2,)
@@ -290,7 +309,9 @@
 	starts_with = list(
 		/obj/item/clothing/under/rank/geneticist = 2,
 		/obj/item/clothing/under/rank/geneticist/skirt = 2,
+		/obj/item/clothing/under/rank/geneticist/skirt_pleated = 2,
 		/obj/item/clothing/shoes/white = 2,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/medical/genetics = 2,
 		/obj/item/clothing/suit/storage/toggle/labcoat/genetics = 2,
 		/obj/item/storage/backpack/genetics = 2,
 		/obj/item/storage/backpack/satchel/gen = 2)
@@ -304,7 +325,9 @@
 	starts_with = list(
 		/obj/item/clothing/under/rank/virologist = 2,
 		/obj/item/clothing/under/rank/virologist/skirt = 2,
+		/obj/item/clothing/under/rank/virologist/skirt_pleated = 2,
 		/obj/item/clothing/shoes/white = 2,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/medical/viro = 2,
 		/obj/item/clothing/suit/storage/toggle/labcoat/virologist = 2,
 		/obj/item/clothing/mask/surgical = 2,
 		/obj/item/storage/backpack/virology = 2,
@@ -319,6 +342,7 @@
 	starts_with = list(
 		/obj/item/clothing/under/rank/medical = 2,
 		/obj/item/clothing/under/rank/medical/skirt = 2,
+		/obj/item/clothing/under/rank/medical/skirt_pleated = 2,
 		/obj/item/clothing/under/rank/medical/turtleneck = 2,
 		/obj/item/clothing/under/rank/medical/scrubs,
 		/obj/item/clothing/under/rank/medical/scrubs/green,
@@ -353,6 +377,7 @@
 
 	starts_with = list(
 		/obj/item/clothing/under/color/grey = 3,
+		/obj/item/clothing/under/color/grey_skirt = 3,
 		/obj/item/clothing/shoes/black = 3,
 		/obj/item/clothing/head/soft/grey = 3)
 
@@ -370,12 +395,21 @@
 		/obj/item/clothing/under/skirt/outfit/plaid_blue,
 		/obj/item/clothing/under/skirt/outfit/plaid_red,
 		/obj/item/clothing/under/skirt/outfit/plaid_purple,
+		/obj/item/clothing/under/skirt/outfit/plaid_green,
+		/obj/item/clothing/under/color/lbrown_skirt,
+		/obj/item/clothing/under/color/brown_skirt,
+		/obj/item/clothing/under/color/red_skirt,
+		/obj/item/clothing/under/color/teal_skirt,
+		/obj/item/clothing/under/color/lblue_skirt,
+		/obj/item/clothing/under/color/blue_skirt,
+		/obj/item/clothing/under/color/lpurple_skirt,
+		/obj/item/clothing/under/color/maroon_skirt,
 		/obj/item/clothing/shoes/blue,
 		/obj/item/clothing/shoes/yellow,
 		/obj/item/clothing/shoes/green,
 		/obj/item/clothing/shoes/purple,
 		/obj/item/clothing/shoes/red,
-		/obj/item/clothing/shoes/leather,
+		/obj/item/clothing/shoes/laceup/brown,
 		/obj/item/clothing/under/pants/classicjeans,
 		/obj/item/clothing/under/pants/mustangjeans,
 		/obj/item/clothing/under/pants/blackjeans,
@@ -411,7 +445,7 @@
 		/obj/item/clothing/gloves/black,
 		/obj/item/clothing/under/pants/camo)
 
-/obj/structure/closet/wardrobe/tactical/Initialize()
+/obj/structure/closet/wardrobe/tactical/Initialize(mapload)
 	if(prob(25))
 		starts_with += /obj/item/storage/belt/security/tactical/bandolier
 	else
@@ -476,22 +510,26 @@
 	icon_opened = "cabinet_open"
 
 	starts_with = list(
-		/obj/item/storage/backpack/captain,
+		/obj/item/clothing/glasses/sunglasses,
+		/obj/item/clothing/glasses/sunglasses/prescription,
+		/obj/item/clothing/head/caphat,
+		/obj/item/clothing/head/caphat/cap,
+		/obj/item/clothing/head/caphat/formal,
+		/obj/item/clothing/head/beret/centcom/captain,
 		/obj/item/clothing/suit/captunic,
 		/obj/item/clothing/suit/captunic/capjacket,
-		/obj/item/clothing/head/caphat/cap,
-		/obj/item/clothing/under/rank/captain,
-		/obj/item/clothing/shoes/brown,
-		/obj/item/clothing/gloves/captain,
-		/obj/item/clothing/under/dress/dress_cap,
-		/obj/item/storage/backpack/satchel/cap,
-		/obj/item/clothing/head/caphat/formal,
-		/obj/item/clothing/under/captainformal,
+		/obj/item/clothing/suit/storage/parade_coat,
+		/obj/item/clothing/suit/storage/parade_coat/fem,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/captain,
-		/obj/item/clothing/shoes/boots/winter/command,
-		/obj/item/clothing/head/beret/centcom/captain,
+		/obj/item/clothing/under/rank/captain,
+		/obj/item/clothing/under/rank/captain/skirt_pleated,
+		/obj/item/clothing/under/dress/dress_cap,
+		/obj/item/clothing/under/captainformal,
 		/obj/item/clothing/under/gimmick/rank/captain/suit,
 		/obj/item/clothing/under/gimmick/rank/captain/suit/skirt,
-		/obj/item/clothing/glasses/sunglasses,
-		/obj/item/clothing/head/caphat,
-		/obj/item/clothing/under/bodysuit/bodysuitcommand)
+		/obj/item/clothing/under/bodysuit/bodysuitcommand,
+		/obj/item/clothing/gloves/captain,
+		/obj/item/clothing/shoes/brown,
+		/obj/item/clothing/shoes/boots/winter/command,
+		/obj/item/storage/backpack/satchel/cap,
+		/obj/item/storage/backpack/captain)

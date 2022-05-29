@@ -3,18 +3,17 @@
 	name = "protean blob"
 	desc = "Some sort of big viscous pool of jelly."
 	tt_desc = "Animated nanogoop"
-	icon = 'icons/mob/species/protean/protean.dmi'
+	icon = 'icons/mob/clothing/species/protean/protean.dmi'
 	icon_state = "to_puddle"
 	icon_living = "puddle2"
 	icon_rest = "rest"
 	icon_dead = "puddle"
 
 	faction = "neutral"
-	maxHealth = 200
-	health = 200
+	maxHealth = 250
+	health = 250
 	say_list_type = /datum/say_list/protean_blob
 
-	// ai_inactive = TRUE //Always off //VORESTATION AI TEMPORARY REMOVAL
 	show_stat_health = FALSE //We will do it ourselves
 	has_langs = list(LANGUAGE_GALCOM, LANGUAGE_EAL)
 	response_help = "pats the"
@@ -24,7 +23,7 @@
 	harm_intent_damage = 2
 	melee_damage_lower = 10
 	melee_damage_upper = 10
-	attacktext = list("slashed")
+	attacktext = list("smashed", "rammed") // Why would an amorphous blob be slicing stuff?
 
 	aquatic_movement = 1
 	min_oxy = 0
@@ -36,8 +35,14 @@
 	min_n2 = 0
 	max_n2 = 0
 	minbodytemp = 0
-	maxbodytemp = 900
-	movement_cooldown = 0
+	maxbodytemp = INFINITY
+	heat_resist = 1
+	cold_resist = 1
+	shock_resist = 0.9
+	poison_resist = 1
+
+	movement_cooldown = 0.5
+	base_attack_cooldown = 10
 
 	var/mob/living/carbon/human/humanform
 	var/obj/item/organ/internal/nano/refactory/refactory
@@ -46,7 +51,7 @@
 	var/obj/prev_left_hand
 	var/obj/prev_right_hand
 
-	player_msg = "In this form, you can move a little faster, your health will regenerate as long as you have metal in you, and you can ventcrawl!"
+	player_msg = "In this form, you can move a little faster and your health will regenerate as long as you have metal in you!"
 	holder_type = /obj/item/holder/protoblob
 	can_buckle = TRUE //Blobsurfing
 
@@ -56,19 +61,19 @@
 	emote_see = list("shifts wetly","undulates placidly")
 
 //Constructor allows passing the human to sync damages
-/mob/living/simple_mob/protean_blob/New(var/newloc, var/mob/living/carbon/human/H)
-	..()
+/mob/living/simple_mob/protean_blob/Initialize(mapload, mob/living/carbon/human/H)
+	. = ..()
 	mob_radio = new(src)
-	myid = new(src)
+	access_card = new(src)
 	if(H)
 		humanform = H
 		updatehealth()
 		refactory = locate() in humanform.internal_organs
-		verbs |= /mob/living/proc/ventcrawl
 		verbs |= /mob/living/proc/hide
 		verbs |= /mob/living/simple_mob/protean_blob/proc/useradio
 		verbs |= /mob/living/simple_mob/protean_blob/proc/appearanceswitch
-
+		verbs |= /mob/living/simple_mob/protean_blob/proc/rig_transform
+		verbs |= /mob/living/proc/usehardsuit
 	else
 		update_icon()
 
@@ -93,9 +98,12 @@
 /mob/living/simple_mob/protean_blob/updatehealth()
 	if(humanform)
 		//Set the max
-		maxHealth = humanform.getMaxHealth()*2 //HUMANS, and their 'double health', bleh.
+		maxHealth = humanform.getMaxHealth() + 100 // +100 for crit threshold so you don't die from trying to blob to heal, ironically
+		var/obj/item/organ/external/E = humanform.get_organ(BP_TORSO)
 		//Set us to their health, but, human health ignores robolimbs so we do it 'the hard way'
-		health = maxHealth - humanform.getOxyLoss() - humanform.getToxLoss() - humanform.getCloneLoss() - humanform.getActualFireLoss() - humanform.getActualBruteLoss()
+		health = maxHealth - E.brute_dam - E.burn_dam
+		movement_cooldown = 0.5 + max(0, (maxHealth - health) - 100) / 35
+		base_attack_cooldown = 10 + max(0, (maxHealth - health) - 100) / 15
 
 		//Alive, becoming dead
 		if((stat < DEAD) && (health <= 0))
@@ -129,59 +137,63 @@
 	else
 		..()
 
-/mob/living/simple_mob/protean_blob/stun_effect_act()
+/mob/living/simple_mob/protean_blob/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone, var/used_weapon=null)
 	return FALSE //ok so tasers hurt protean blobs what the fuck
 
-/mob/living/simple_mob/protean_blob/adjustBruteLoss(var/amount)
+/mob/living/simple_mob/protean_blob/adjustBruteLoss(var/amount,var/include_robo)
 	if(humanform)
-		humanform.adjustBruteLoss(amount)
+		humanform.adjustBruteLossByPart(amount, BP_TORSO)
 	else
 		..()
 
-/mob/living/simple_mob/protean_blob/ventcrawl_carry()
-	return TRUE //proteans can have literally any small inside them and should still be able to ventcrawl regardless.
-
-/mob/living/simple_mob/protean_blob/adjustFireLoss(var/amount)
+/mob/living/simple_mob/protean_blob/adjustFireLoss(var/amount,var/include_robo)
 	if(humanform)
-		humanform.adjustFireLoss(amount)
+		humanform.adjustFireLossByPart(amount, BP_TORSO)
 	else
 		..()
 
+// citadel hack - FUCK YOU DIE CORRECTLY THIS ENTIRE FETISH RACE IS A SORRY MISTAKE
 /mob/living/simple_mob/protean_blob/death(gibbed, deathmessage = "dissolves away, leaving only a few spare parts!")
 	if(humanform)
+		// ckey transfer you dumb fuck
+		humanform.ckey = ckey
+		humanform.forceMove(drop_location())
 		humanform.death(gibbed = gibbed)
 		for(var/organ in humanform.internal_organs)
 			var/obj/item/organ/internal/O = organ
 			O.removed()
-			O.forceMove(drop_location())
+			if(!QDELETED(O))		// MMI_HOLDERS ARE ABSTRACT and qdel themselves :)
+				O.forceMove(drop_location())
 		var/list/items = humanform.get_equipped_items()
-		if(prev_left_hand) items += prev_left_hand
-		if(prev_right_hand) items += prev_right_hand
+		if(prev_left_hand)
+			items += prev_left_hand
+		if(prev_right_hand)
+			items += prev_right_hand
 		for(var/obj/object in items)
 			object.forceMove(drop_location())
 		QDEL_NULL(humanform) //Don't leave it just sitting in nullspace
 
-	animate(src,alpha = 0,time = 2 SECONDS)
-	sleep(2 SECONDS)
-	qdel(src)
+	animate(src, alpha = 0, time = 2 SECONDS)
+	QDEL_IN(src, 2 SECONDS)
 
-	..()
+	return ..()
 
 /mob/living/simple_mob/protean_blob/Life()
 	. = ..()
 	if(. && istype(refactory) && humanform)
-		if(!healing && health < maxHealth && refactory.get_stored_material(DEFAULT_WALL_MATERIAL) >= 100)
-			healing = humanform.add_modifier(/datum/modifier/protean/steel, origin = refactory)
-		else if(healing && health == maxHealth)
-			healing.expire()
-			healing = null
+		if(!humanform.has_modifier_of_type(/datum/modifier/protean/steelBlob) && health < maxHealth && refactory.get_stored_material(MAT_STEEL) >= 100 && refactory.processingbuffs)
+			healing = humanform.add_modifier(/datum/modifier/protean/steelBlob, origin = refactory)
+		else if(humanform.has_modifier_of_type(/datum/modifier/protean/steelBlob) && health >= maxHealth)
+			humanform.remove_a_modifier_of_type(/datum/modifier/protean/steelBlob)
 
 /mob/living/simple_mob/protean_blob/lay_down()
 	..()
 	if(resting)
+		to_chat(src, "<span class='warning'>You blend into the floor beneath you. <b>You will not be able to heal while doing so.</b></span>")
 		animate(src,alpha = 40,time = 1 SECOND)
 		mouse_opacity = 0
 	else
+		to_chat(src, "<span class='warning'>You get up from the floor.</span>")
 		mouse_opacity = 1
 		icon_state = "wake"
 		animate(src,alpha = 255,time = 1 SECOND)
@@ -192,7 +204,10 @@
 			var/list/potentials = living_mobs(0)
 			if(potentials.len)
 				var/mob/living/target = pick(potentials)
-				if(istype(target) && vore_selected)
+				var/allowed = TRUE
+				if(target.client && target.can_be_drop_prey)//you can still vore ai mobs with the pref off
+					allowed = FALSE
+				if(istype(target) && vore_selected && allowed) //no more ooc-noncon vore, thanks
 					if(target.buckled)
 						target.buckled.unbuckle_mob(target, force = TRUE)
 					target.forceMove(vore_selected)
@@ -202,14 +217,31 @@
 	if(refactory && istype(A,/obj/item/stack/material))
 		var/obj/item/stack/material/S = A
 		var/substance = S.material.name
-		var/list/edible_materials = list("steel", "plasteel", "diamond", "mhydrogen") //Can't eat all materials, just useful ones.
-		var allowed = FALSE
+		var/list/edible_materials = list(MAT_STEEL, MAT_SILVER, MAT_GOLD, MAT_URANIUM, MAT_METALHYDROGEN) //Can't eat all materials, just useful ones.
+		var/allowed = FALSE
 		for(var/material in edible_materials)
-			if(material == substance) allowed = TRUE
+			if(material == substance)
+				allowed = TRUE
 		if(!allowed)
 			return
 		if(refactory.add_stored_material(S.material.name,1*S.perunit) && S.use(1))
 			visible_message("<b>[name]</b> gloms over some of \the [S], absorbing it.")
+	else if(isitem(A) && a_intent == "grab")
+		var/obj/item/I = A
+		if(!vore_selected)
+			to_chat(src,"<span class='warning'>You either don't have a belly selected, or don't have a belly!</span>")
+			return FALSE
+		if(is_type_in_list(I,GLOB.item_vore_blacklist) || I.anchored)
+			to_chat(src, "<span class='warning'>You can't eat this.</span>")
+			return
+
+		if(is_type_in_list(I,edible_trash) | adminbus_trash)
+			if(I.hidden_uplink)
+				to_chat(src, "<span class='warning'>You really should not be eating this.</span>")
+				message_admins("[key_name(src)] has attempted to ingest an uplink item. ([src ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>" : "null"])")
+				return
+		visible_message("<b>[name]</b> stretches itself over the [I], engulfing it whole!")
+		I.forceMove(vore_selected)
 	else
 		return ..()
 
@@ -218,9 +250,10 @@
 		var/obj/item/stack/material/S = O
 		var/substance = S.material.name
 		var/list/edible_materials = list("steel", "plasteel", "diamond", "mhydrogen") //Can't eat all materials, just useful ones.
-		var allowed = FALSE
+		var/allowed = FALSE
 		for(var/material in edible_materials)
-			if(material == substance) allowed = TRUE
+			if(material == substance)
+				allowed = TRUE
 		if(!allowed)
 			return
 		if(refactory.add_stored_material(S.material.name,1*S.perunit) && S.use(1))
@@ -229,10 +262,24 @@
 		return ..()
 
 /mob/living/simple_mob/protean_blob/attack_hand(mob/living/L)
-	if(src.get_effective_size() <= 0.5)
-		src.get_scooped(L) //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	if(L.get_effective_size() >= (src.get_effective_size() + 0.5) )
+		src.get_scooped(L)
 	else
 		..()
+
+/mob/living/simple_mob/protean_blob/MouseDrop(var/atom/over_object)
+	if(ishuman(over_object) && usr == src && src.Adjacent(over_object))
+		var/mob/living/carbon/human/H = over_object
+		get_scooped(H, TRUE)
+	else
+		return ..()
+
+/mob/living/simple_mob/protean_blob/emp_act(severity)
+	to_chat(src, "<font align='center' face='fixedsys' size='10' color='red'><B>*BZZZT*</B></font>")
+	to_chat(src, "<font face='fixedsys'><span class='danger'>Warning: Electromagnetic pulse detected.</span></font>")
+	to_chat(src, "<font face='fixedsys'><span class='danger'>Warning: Navigation systems offline. Restarting...</span></font>")
+	return humanform.emp_act(severity)
+
 /mob/living/simple_mob/protean_blob/MouseEntered(location,control,params)
 	if(resting)
 		return
@@ -240,6 +287,8 @@
 
 // Helpers - Unsafe, WILL perform change.
 /mob/living/carbon/human/proc/nano_intoblob()
+	if(loc == /obj/item/rig/protean)
+		return
 	handle_grasp() //It's possible to blob out before some key parts of the life loop. This results in things getting dropped at null. TODO: Fix the code so this can be done better.
 	remove_micros(src, src) //Living things don't fare well in roblobs.
 	if(buckled)
@@ -250,6 +299,8 @@
 	if(pulledby)
 		pulledby.stop_pulling()
 	stop_pulling()
+
+	var/panel_selected = client?.statpanel == SPECIES_PROTEAN
 
 	//Record where they should go
 	var/atom/creation_spot = drop_location()
@@ -268,6 +319,8 @@
 	things_to_drop -= things_to_not_drop //Crunch the lists
 	things_to_drop -= organs //Mah armbs
 	things_to_drop -= internal_organs //Mah sqeedily spooch
+	for(var/obj/item/rig/protean/O in things_to_drop)
+		things_to_drop -= O
 
 	for(var/obj/item/I in things_to_drop) //rip hoarders
 		drop_from_inventory(I)
@@ -291,10 +344,10 @@
 	for(var/obj/item/pda/P in things_to_not_drop)
 		if(P.id)
 			var/obj/item/card/id/PID = P.id
-			blob.myid.access += PID.access
+			blob.access_card.access += PID.access
 
 	for(var/obj/item/card/id/I in things_to_not_drop)
-		blob.myid.access += I.access
+		blob.access_card.access += I.access
 
 	if(w_uniform && istype(w_uniform,/obj/item/clothing)) //No webbings tho. We do this after in case a suit was in the way
 		var/obj/item/clothing/uniform = w_uniform
@@ -319,6 +372,9 @@
 	//Mail them to nullspace
 	moveToNullspace()
 
+	if(blob.client && panel_selected)
+		blob.client.statpanel = SPECIES_PROTEAN
+
 	//Message
 	blob.visible_message("<b>[src.name]</b> collapses into a gooey blob!")
 
@@ -333,6 +389,19 @@
 		var/obj/belly/B = belly
 		B.forceMove(blob)
 		B.owner = blob
+
+	var/datum/vore_preferences/P = blob.client?.prefs_vr
+
+	if(P)
+		blob.digestable = P.digestable
+		blob.devourable = P.devourable
+		blob.feeding = P.feeding
+		blob.digest_leave_remains = P.digest_leave_remains
+		blob.allowmobvore = P.allowmobvore
+		blob.vore_taste = P.vore_taste
+		blob.permit_healbelly = P.permit_healbelly
+		blob.can_be_drop_prey = P.can_be_drop_prey
+		blob.can_be_drop_pred = P.can_be_drop_pred
 
 	//Return our blob in case someone wants it
 	return blob
@@ -350,10 +419,45 @@
 	set category = "Abilities"
 
 	if(mob_radio)
-		mob_radio.ui_interact(src, state = interactive_state)
+		mob_radio.nano_ui_interact(src, state = interactive_state)
+
+/mob/living/simple_mob/protean_blob/proc/rig_transform()
+	set name = "Modify Form - Hardsuit"
+	set desc = "Allows a protean blob to solidify its form into one extremely similar to a hardsuit."
+	set category = "Abilities"
+
+	if(istype(loc, /obj/item/rig/protean))
+		var/obj/item/rig/protean/prig = loc
+		src.forceMove(get_turf(prig))
+		prig.forceMove(humanform)
+		return
+
+	if(isturf(loc))
+		var/obj/item/rig/protean/prig
+		for(var/obj/item/rig/protean/O in humanform.contents)
+			prig = O
+			break
+		if(prig)
+			prig.forceMove(get_turf(src))
+			src.forceMove(prig)
+			return
+
+/mob/living/proc/usehardsuit()
+	set name = "Utilize Hardsuit Interface"
+	set desc = "Allows a protean blob to open hardsuit interface."
+	set category = "Abilities"
+
+	if(istype(loc, /obj/item/rig/protean))
+		var/obj/item/rig/protean/prig = loc
+		to_chat(src, "You attempt to interface with the [prig].")
+		prig.nano_ui_interact(src, nano_state = interactive_state)
+	else
+		to_chat(src, "You are not in RIG form.")
 
 /mob/living/carbon/human/proc/nano_outofblob(var/mob/living/simple_mob/protean_blob/blob)
 	if(!istype(blob))
+		return
+	if(blob.loc == /obj/item/rig/protean)
 		return
 	if(buckled)
 		buckled.unbuckle_mob()
@@ -363,6 +467,8 @@
 	if(pulledby)
 		pulledby.stop_pulling()
 	stop_pulling()
+
+	var/panel_selected = blob.client?.statpanel == SPECIES_PROTEAN
 
 	//Stop healing if we are
 	if(blob.healing)
@@ -390,6 +496,9 @@
 	ckey = blob.ckey
 	temporary_form = null
 
+	if(client && panel_selected)
+		client.statpanel = SPECIES_PROTEAN
+
 	//Transfer vore organs
 	vore_selected = blob.vore_selected
 	for(var/belly in blob.vore_organs)
@@ -408,6 +517,9 @@
 	//Return ourselves in case someone wants it
 	return src
 
+/mob/living/simple_mob/protean_blob/say_understands()
+	return humanform?.say_understands(arglist(args)) || ..()
+
 /mob/living/simple_mob/protean_blob/proc/appearanceswitch()
 	set name = "Switch Appearance"
 	set desc = "Allows a protean blob to switch its outwards appearance."
@@ -424,3 +536,43 @@
 		if("Plain")
 			icon_living = "puddle0"
 			update_icon()
+
+/mob/living/simple_mob/protean_blob/Login()
+	..()
+	plane_holder.set_vis(VIS_AUGMENTED, TRUE)
+
+/datum/modifier/protean/steelBlob // Blob regen is stronger than non-blob to have some incentive other than erp
+	name = "Protean Blob Effect - Steel"
+	desc = "You're affected by the presence of steel."
+
+	on_created_text = "<span class='notice'>You feel new nanites being produced from your stockpile of steel, healing you.</span>"
+	on_expired_text = "<span class='notice'>Your steel supply has either run out, or is no longer needed, and your healing stops.</span>"
+
+	material_name = MAT_STEEL
+
+/datum/modifier/protean/steelBlob/tick()
+	..()
+	if(holder.temporary_form?.resting)
+		return
+	var/dt = 2	// put it on param sometime but for now assume 2
+	var/mob/living/carbon/human/H = holder
+	var/obj/item/organ/external/E = H.get_organ(BP_TORSO)
+	var/heal = 5 * dt
+	var/brute_heal_left = max(0, heal - E.brute_dam)
+	var/burn_heal_left = max(0, heal - E.burn_dam)
+
+	E.heal_damage(min(heal, E.brute_dam), min(heal, E.burn_dam), TRUE, TRUE)
+
+	holder.adjustBruteLoss(-brute_heal_left, include_robo = TRUE)
+	holder.adjustFireLoss(-burn_heal_left, include_robo = TRUE)
+	holder.adjustToxLoss(-10)
+	holder.radiation = max(holder.radiation - 50, 0)
+
+	for(var/organ in H.internal_organs)
+		var/obj/item/organ/O = organ
+		// Fix internal damage
+		if(O.damage > 0)
+			O.damage = max(0,O.damage-3) // The major part of blob regen. The quick organ repair, compared to non-blob regen
+		// If not damaged, but dead, fix it
+		else if(O.status & ORGAN_DEAD)
+			O.status &= ~ORGAN_DEAD //Unset dead if we repaired it entirely

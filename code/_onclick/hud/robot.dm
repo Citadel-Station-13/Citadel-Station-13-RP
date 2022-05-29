@@ -1,4 +1,4 @@
-var/obj/screen/robot_inventory
+var/atom/movable/screen/robot_inventory
 /*
 /mob/living/silicon/robot/instantiate_hud(var/datum/hud/HUD, var/ui_style, var/ui_color, var/ui_alpha)
 	HUD.robot_hud(ui_style, ui_color, ui_alpha, src)*/
@@ -19,10 +19,10 @@ var/obj/screen/robot_inventory
 	src.adding = list()
 	src.other = list()
 
-	var/obj/screen/using
+	var/atom/movable/screen/using
 
 //Radio
-	using = new /obj/screen()
+	using = new /atom/movable/screen()
 	using.name = "radio"
 	using.setDir(SOUTHWEST)
 	using.icon = ui_style
@@ -35,7 +35,7 @@ var/obj/screen/robot_inventory
 
 //Module select
 
-	using = new /obj/screen()
+	using = new /atom/movable/screen()
 	using.name = "module1"
 	using.setDir(SOUTHWEST)
 	using.icon = ui_style
@@ -47,7 +47,7 @@ var/obj/screen/robot_inventory
 	src.adding += using
 	mymob:inv1 = using
 
-	using = new /obj/screen()
+	using = new /atom/movable/screen()
 	using.name = "module2"
 	using.setDir(SOUTHWEST)
 	using.icon = ui_style
@@ -59,7 +59,7 @@ var/obj/screen/robot_inventory
 	src.adding += using
 	mymob:inv2 = using
 
-	using = new /obj/screen()
+	using = new /atom/movable/screen()
 	using.name = "module3"
 	using.setDir(SOUTHWEST)
 	using.icon = ui_style
@@ -74,7 +74,7 @@ var/obj/screen/robot_inventory
 //End of module select
 
 //Intent
-	using = new /obj/screen()
+	using = new /atom/movable/screen()
 	using.name = "act_intent"
 	using.setDir(SOUTHWEST)
 	using.icon = ui_style
@@ -86,16 +86,17 @@ var/obj/screen/robot_inventory
 	action_intent = using
 
 //Cell
-	mymob:cells = new /obj/screen()
-	mymob:cells.icon = ui_style
-	mymob:cells.icon_state = "charge-empty"
-	mymob:cells.alpha = ui_alpha
-	mymob:cells.name = "cell"
-	mymob:cells.screen_loc = ui_toxin
-	src.other += mymob:cells
+	using = new /atom/movable/screen()
+	using.icon = ui_style
+	using.icon_state = "charge-empty"
+	using.alpha = ui_alpha
+	using.name = "cell"
+	using.screen_loc = ui_toxin
+	src.other += using
+	target.cells = using
 
 //Health
-	mymob.healths = new /obj/screen()
+	mymob.healths = new /atom/movable/screen()
 	mymob.healths.icon = ui_style
 	mymob.healths.icon_state = "health0"
 	mymob.healths.alpha = ui_alpha
@@ -104,7 +105,7 @@ var/obj/screen/robot_inventory
 	src.other += mymob.healths
 
 //Installed Module
-	mymob.hands = new /obj/screen()
+	mymob.hands = new /atom/movable/screen()
 	mymob.hands.icon = ui_style
 	mymob.hands.icon_state = "nomod"
 	mymob.hands.alpha = ui_alpha
@@ -113,7 +114,7 @@ var/obj/screen/robot_inventory
 	src.other += mymob.hands
 
 //Module Panel
-	using = new /obj/screen()
+	using = new /atom/movable/screen()
 	using.name = "panel"
 	using.icon = ui_style
 	using.icon_state = "panel"
@@ -123,7 +124,7 @@ var/obj/screen/robot_inventory
 	src.adding += using
 
 //Store
-	mymob.throw_icon = new /obj/screen()
+	mymob.throw_icon = new /atom/movable/screen()
 	mymob.throw_icon.icon = ui_style
 	mymob.throw_icon.icon_state = "store"
 	mymob.throw_icon.alpha = ui_alpha
@@ -133,7 +134,7 @@ var/obj/screen/robot_inventory
 	src.other += mymob.throw_icon
 
 //Inventory
-	robot_inventory = new /obj/screen()
+	robot_inventory = new /atom/movable/screen()
 	robot_inventory.name = "inventory"
 	robot_inventory.icon = ui_style
 	robot_inventory.icon_state = "inventory"
@@ -143,12 +144,12 @@ var/obj/screen/robot_inventory
 	src.other += robot_inventory
 
 //Temp
-	mymob.bodytemp = new /obj/screen()
+	mymob.bodytemp = new /atom/movable/screen()
 	mymob.bodytemp.icon_state = "temp0"
 	mymob.bodytemp.name = "body temperature"
 	mymob.bodytemp.screen_loc = ui_temp
 
-	mymob.oxygen = new /obj/screen()
+	mymob.oxygen = new /atom/movable/screen()
 	mymob.oxygen.icon = ui_style
 	mymob.oxygen.icon_state = "oxy0"
 	mymob.oxygen.alpha = ui_alpha
@@ -156,7 +157,7 @@ var/obj/screen/robot_inventory
 	mymob.oxygen.screen_loc = ui_oxygen
 	src.other += mymob.oxygen
 
-	mymob.fire = new /obj/screen()
+	mymob.fire = new /atom/movable/screen()
 	mymob.fire.icon = ui_style
 	mymob.fire.icon_state = "fire0"
 	mymob.fire.alpha = ui_alpha
@@ -164,7 +165,7 @@ var/obj/screen/robot_inventory
 	mymob.fire.screen_loc = ui_fire
 	src.other += mymob.fire
 
-	mymob.pullin = new /obj/screen()
+	mymob.pullin = new /atom/movable/screen()
 	mymob.pullin.icon = ui_style
 	mymob.pullin.icon_state = "pull0"
 	mymob.pullin.alpha = ui_alpha
@@ -173,34 +174,32 @@ var/obj/screen/robot_inventory
 	mymob.pullin.screen_loc = ui_borg_pull
 	src.other += mymob.pullin
 
-	mymob.zone_sel = new /obj/screen/zone_sel()
+	mymob.zone_sel = new /atom/movable/screen/zone_sel()
 	mymob.zone_sel.icon = ui_style
 	mymob.zone_sel.alpha = ui_alpha
 	mymob.zone_sel.overlays.Cut()
 	mymob.zone_sel.overlays += image('icons/mob/zone_sel.dmi', "[mymob.zone_sel.selecting]")
 
 	//Handle the gun settings buttons
-	mymob.gun_setting_icon = new /obj/screen/gun/mode(null)
+	mymob.gun_setting_icon = new /atom/movable/screen/gun/mode(null)
 	mymob.gun_setting_icon.icon = ui_style
 	mymob.gun_setting_icon.alpha = ui_alpha
-	mymob.item_use_icon = new /obj/screen/gun/item(null)
+	mymob.item_use_icon = new /atom/movable/screen/gun/item(null)
 	mymob.item_use_icon.icon = ui_style
 	mymob.item_use_icon.alpha = ui_alpha
-	mymob.gun_move_icon = new /obj/screen/gun/move(null)
+	mymob.gun_move_icon = new /atom/movable/screen/gun/move(null)
 	mymob.gun_move_icon.icon = ui_style
 	mymob.gun_move_icon.alpha = ui_alpha
-	mymob.radio_use_icon = new /obj/screen/gun/radio(null)
+	mymob.radio_use_icon = new /atom/movable/screen/gun/radio(null)
 	mymob.radio_use_icon.icon = ui_style
 	mymob.radio_use_icon.alpha = ui_alpha
 
 	mymob.client.screen = list()
 
-	mymob.client.screen += list( mymob.throw_icon, mymob.zone_sel, mymob.oxygen, mymob.fire, mymob.hands, mymob.healths, mymob:cells, mymob.pullin, robot_inventory, mymob.gun_setting_icon)
+	mymob.client.screen += list( mymob.throw_icon, mymob.zone_sel, mymob.oxygen, mymob.fire, mymob.hands, mymob.healths, using, mymob.pullin, robot_inventory, mymob.gun_setting_icon)
 	mymob.client.screen += src.adding + src.other
-	mymob.client.screen += mymob.client.void
 
-	return
-
+	mymob.reload_rendering()
 
 /datum/hud/proc/toggle_show_robot_modules()
 	if(!isrobot(mymob))
@@ -276,6 +275,14 @@ var/obj/screen/robot_inventory
 		r.client.screen -= r.robot_modules_background
 
 /mob/living/silicon/robot/update_hud()
+	if(modtype)
+		hands.icon_state = lowertext(modtype)
+	..()
+
+//! ## VR FILE MERGE ## !//
+/mob/living/silicon/robot/update_hud()
+	if(ui_style_vr)
+		hands.icon = 'icons/mob/screen1_robot_vr.dmi'
 	if(modtype)
 		hands.icon_state = lowertext(modtype)
 	..()

@@ -14,20 +14,22 @@
 	siemens_coefficient = 0.7
 	w_class = ITEMSIZE_NORMAL
 	ear_protection = 1
+	drop_sound = 'sound/items/drop/helm.ogg'
+	pickup_sound = 'sound/items/pickup/helm.ogg'
 
-/obj/item/clothing/head/helmet/solgov
-	name = "\improper Solar Confederate Government helmet"
+/obj/item/clothing/head/helmet/oricon
+	name = "\improper Orion Confederation Government helmet"
 	desc = "A helmet painted in Peacekeeper blue. Stands out like a sore thumb."
 	icon_state = "helmet_sol"
 	armor = list(melee = 50, bullet = 50, laser = 50,energy = 25, bomb = 30, bio = 0, rad = 0)
 	valid_accessory_slots = null
 
-/obj/item/clothing/head/helmet/solgov/command
+/obj/item/clothing/head/helmet/oricon/command
 	name = "command helmet"
-	desc = "A helmet with 'Solar Confederate Government' printed on the back in gold lettering."
+	desc = "A helmet with 'Orion Confederation Government' printed on the back in gold lettering."
 	icon_state = "helmet_command"
 
-/obj/item/clothing/head/helmet/solgov/security
+/obj/item/clothing/head/helmet/oricon/security
 	name = "security helmet"
 	desc = "A helmet with 'MASTER AT ARMS' printed on the back in silver lettering."
 	icon_state = "helmet_security"
@@ -161,8 +163,8 @@
 	icon_state = "swathelm"
 	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
 	sprite_sheets = list(
-		SPECIES_TAJ = 'icons/mob/species/tajaran/helmet.dmi',
-		SPECIES_UNATHI = 'icons/mob/species/unathi/helmet.dmi',
+		SPECIES_TAJ = 'icons/mob/clothing/species/tajaran/helmet.dmi',
+		SPECIES_UNATHI = 'icons/mob/clothing/species/unathi/helmet.dmi',
 		)
 
 	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
@@ -191,6 +193,22 @@
 	flags_inv = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
 	siemens_coefficient = 0.7
 	valid_accessory_slots = null
+
+/obj/item/clothing/head/helmet/roman
+	name = "Roman Galea"
+	desc = "A reproduction helmet fashioned to look like an ancient Roman Galea. It affords the same protections as standard helmets."
+	icon_state = "roman"
+
+/obj/item/clothing/head/helmet/romancent
+	name = "Roman Crested Galea"
+	desc = "A reproduction helmet fashioned to look like an ancient Roman Galea. It affords the same protections as standard helmets."
+	icon_state = "roman_c"
+
+/obj/item/clothing/head/helmet/samurai
+	name = "kabuto"
+	desc = "An authentic antique, this helmet from old Earth belongs to an ancient martial tradition. The advent of firearms made this style of protection obsolete. Unfortunately, this remains the case."
+	icon_state = "kabuto"
+	armor = list(melee = 100, bullet = 00, laser = 5, energy = 0, bomb = 0, bio = 0, rad = 0)
 
 //Non-hardsuit ERT helmets.
 /obj/item/clothing/head/helmet/ert
@@ -224,30 +242,119 @@
 	desc = "A set of armor worn by medical members of the NanoTrasen Emergency Response Team. Has red and white highlights."
 	icon_state = "erthelmet_med"
 
-/obj/item/clothing/head/helmet/ert/para
+
+//PARA Armor
+/obj/item/clothing/head/helmet/para
 	name = "Oculus Malum visor"
 	desc = "This specialty visor, nicknamed the 'MAW' by PMD agents, grants trained Agents the ability to view Paracausal events without suffering memetic hazards."
 	icon_state = "para_ert_helmet"
+	item_state_slots = list(slot_r_hand_str = "syndicate-helm-green", slot_l_hand_str = "syndicate-helm-green")
+	armor = list(melee = 60, bullet = 60, laser = 60,energy = 60, bomb = 20, bio = 0, rad = 0)
+	valid_accessory_slots = null
 	action_button_name = "Cycle MAW"
 
 	flash_protection = FLASH_PROTECTION_MAJOR
 
 	var/blessed = TRUE
 
-/obj/item/clothing/head/helmet/ert/para/attack_self(mob/user as mob)
+/obj/item/clothing/head/helmet/para/attack_self(mob/user as mob)
 	if(src.icon_state == initial(icon_state) && user.mind.isholy && blessed)
 		blessed = FALSE
 		flash_protection = FLASH_PROTECTION_NONE
 		src.icon_state = "[icon_state]_up"
-		to_chat(user, "<font color='blue'>The helmet's protective sigil fades as you raise the OM visor.</font>")
+		to_chat(user, "<font color=#4F49AF>The helmet's protective sigil fades as you raise the OM visor.</font>")
 	else
 		blessed = TRUE
 		flash_protection = FLASH_PROTECTION_MAJOR
 		src.icon_state = initial(icon_state)
-		to_chat(user, "<font color='blue'>The helmet's protective sigil glows as you lower the OM visor.</font>")
+		to_chat(user, "<font color=#4F49AF>The helmet's protective sigil glows as you lower the OM visor.</font>")
 	update_clothing_icon()	//so our mob-overlays update
 
 	if(!user.mind.isholy)
 		flash_protection = FLASH_PROTECTION_NONE
 		blessed = FALSE
-		to_chat(user, "<font color='blue'>The OM visor doesn't respond to you.</font>")
+		to_chat(user, "<font color=#4F49AF>The OM visor doesn't respond to you.</font>")
+
+/obj/item/clothing/head/helmet/para/inquisitor
+	name = "PMD Inquistor's Hat"
+	desc = "This wide brimmed hat projects authority and a vaguely mystical presence. It also grants its bearer the ability to view Paracausal events without suffering memetic hazards."
+	icon_state = "witchhunterhat"
+	item_state_slots = list(slot_r_hand_str = "beret_black", slot_l_hand_str = "beret_black")
+	armor = list(melee = 40, bullet = 30, laser = 30,energy = 10, bomb = 10, bio = 0, rad = 0)
+	action_button_name = "Enable Wards"
+
+/obj/item/clothing/head/helmet/para/inquisitor/attack_self(mob/user as mob)
+	if(user.mind.isholy && blessed)
+		blessed = FALSE
+		flash_protection = FLASH_PROTECTION_NONE
+		to_chat(user, "<font color=#4F49AF>The hat's protective sigils fade as you dispel them.</font>")
+	else
+		blessed = TRUE
+		flash_protection = FLASH_PROTECTION_MAJOR
+		to_chat(user, "<font color=#4F49AF>The hat's protective sigil glows as you visualize the activation word.</font>")
+
+	if(!user.mind.isholy)
+		flash_protection = FLASH_PROTECTION_NONE
+		blessed = FALSE
+		to_chat(user, "<font color=#4F49AF>The hat does not respond to you.</font>")
+
+/obj/item/clothing/head/helmet/bike_helmet
+	name = "riding helmet"
+	desc = "Safety gear designed to protect the head from impacts. It's a bit dorky."
+	icon_state = "sport"
+	armor = list(melee = 10, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+
+	color = "#ffffff"
+
+/obj/item/clothing/head/helmet/bike_helmet/random/Initialize(mapload)
+	. = ..()
+	color = rgb(rand(1,255),rand(1,255),rand(1,255))
+
+/obj/item/clothing/head/helmet/oricon
+	name = "\improper Orion Confederation Government helmet"
+	desc = "A helmet painted in Peacekeeper blue. Stands out like a sore thumb."
+
+/obj/item/clothing/head/helmet/oricon/command
+	name = "\improper Orion Central commander helmet"
+	desc = "A helmet with 'Orion Confederation Government' printed on the back in gold lettering."
+
+/obj/item/clothing/head/helmet/combat/JSDF
+	name = "marine helmet"
+	desc = "If you wanna to keep your brain inside yo' head, you'd best put this on!"
+	icon_state = "unsc_helm"
+	item_state = "unsc_helm"
+	icon = 'icons/obj/clothing/hats_vr.dmi'
+
+/obj/item/clothing/head/helmet/combat/imperial
+	name = "imperial soldier helmet"
+	desc = "Veni, vidi, vici; I came, I saw, I conquered."
+	icon_state = "ge_helm"
+	icon = 'icons/obj/clothing/hats_vr.dmi'
+
+/obj/item/clothing/head/helmet/combat/imperial/centurion
+	name = "imperial centurion helmet"
+	desc = "Vendi, vidi, visa; I came, I saw, I realised this hat was too expensive."
+	icon_state = "ge_helmcent"
+	icon = 'icons/obj/clothing/hats_vr.dmi'
+
+//Pirate
+/obj/item/clothing/head/helmet/pirate
+	name = "defaced helmet"
+	desc = "A helmet whose prior lettering has been defaced and painted over."
+	icon_state = "helmet_pirate"
+
+//Cyberpunk
+/obj/item/clothing/head/helmet/cyberpunk
+	name = "cyberpunk goggles"
+	desc = "These armored goggles help to augment the sight of the wearer. Initially designed to allow the user to enter a fully immersive digital environment, they have since been phased out in favor of NIFs and personal VR suites."
+	icon = 'icons/obj/clothing/hats_vr.dmi'
+	icon_state = "cyberpunkgoggle"
+
+//Strange Plate Armor
+/obj/item/clothing/head/helmet/kettle
+	name = "KTL plate helmet"
+	desc = "These rare helmets are believed to originate from an isolationist human society on the Eastern Rim. The meaning of the designation is unknown, leading to the popular moniker 'Kettle'."
+	icon_state = "kettle"
+
+/obj/item/clothing/head/helmet/kettle/eyes
+	icon_state = "kettle_eyes"

@@ -22,8 +22,8 @@
 			return TRUE
 	return ..()
 
-/obj/structure/cult/pylon/swarm/Initialize()
-	..()
+/obj/structure/cult/pylon/swarm/Initialize(mapload)
+	. = ..()
 	active_beams = list()
 
 /obj/structure/cult/pylon/swarm/Destroy()

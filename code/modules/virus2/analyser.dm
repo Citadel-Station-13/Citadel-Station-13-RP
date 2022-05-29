@@ -26,8 +26,8 @@
 
 	user.visible_message("[user] adds \a [O] to \the [src]!", "You add \a [O] to \the [src]!")
 
-/obj/machinery/disease2/diseaseanalyser/process()
-	if(stat & (NOPOWER|BROKEN))
+/obj/machinery/disease2/diseaseanalyser/process(delta_time)
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 
 	if(scanning)

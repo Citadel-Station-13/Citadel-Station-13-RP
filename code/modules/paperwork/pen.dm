@@ -20,10 +20,18 @@
 	w_class = ITEMSIZE_TINY
 	throw_speed = 7
 	throw_range = 15
-	matter = list(DEFAULT_WALL_MATERIAL = 10)
+	matter = list(MAT_STEEL = 10)
 	var/colour = "black"	//what colour the ink is!
 	pressure_resistance = 2
+	drop_sound = 'sound/items/drop/accessory.ogg'
+	pickup_sound = 'sound/items/pickup/accessory.ogg'
 
+/obj/item/pen/attack_self(var/mob/user)
+	if(user.next_move > world.time)
+		return
+	user.setClickCooldown(1 SECOND)
+	to_chat(user, "<span class='notice'>Click.</span>")
+	playsound(src, 'sound/items/penclick.ogg', 50, 1)
 
 /obj/item/pen/blue
 	desc = "It's a normal blue ink pen."
@@ -44,6 +52,11 @@
 	var/selectedColor = 1
 	var/colors = list("black","blue","red")
 
+/obj/item/pen/AltClick(mob/user)
+	to_chat(user, "<span class='notice'>Click.</span>")
+	playsound(src, 'sound/items/penclick.ogg', 50, 1)
+	return
+
 /obj/item/pen/multi/attack_self(mob/user)
 	if(++selectedColor > 3)
 		selectedColor = 1
@@ -57,13 +70,8 @@
 
 	to_chat(user, "<span class='notice'>Changed color to '[colour].'</span>")
 
-/obj/item/pen/invisible
-	desc = "It's an invisble pen marker."
-	icon_state = "pen"
-	colour = "white"
-
 /obj/item/pen/click
-	desc = "It's a black ink pen. It urges you to click it."
+	name = "clicker pen"
 
 /obj/item/pen/click/attack_self(mob/user as mob)
 	if(user.a_intent == INTENT_HELP)
@@ -78,6 +86,11 @@
 		user.visible_message("<span class='notice'><b>\The [user]</b> clicks [src] rhythmically.</span>","<span class='notice'>You click [src] rhythmically.</span>")
 		playsound(user, 'sound/weapons/flipblade.ogg', 20, 1)
 
+/obj/item/pen/invisible
+	desc = "It's an invisble pen marker."
+	icon_state = "pen"
+	colour = "white"
+
 /*
  * Reagent pens
  */
@@ -86,8 +99,8 @@
 	flags = OPENCONTAINER
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ILLEGAL = 5)
 
-/obj/item/pen/reagent/New()
-	..()
+/obj/item/pen/reagent/Initialize(mapload)
+	. = ..()
 	create_reagents(30)
 
 /obj/item/pen/reagent/attack(mob/living/M as mob, mob/user as mob)
@@ -105,15 +118,108 @@
 				add_attack_logs(user,M,"Injected with [src.name] containing [contained], trasferred [trans] units")
 
 /*
+ * Blade pens.
+ */
+
+/obj/item/pen/blade
+	desc = "It's a normal black ink pen."
+	description_antag = "This pen can be transformed into a dangerous melee and thrown assassination weapon with an Alt-Click.\
+	When active, it cannot be caught safely."
+	name = "pen"
+	icon = 'icons/obj/bureaucracy.dmi'
+	icon_state = "pen"
+	item_state = "pen"
+	slot_flags = SLOT_BELT | SLOT_EARS
+	throwforce = 3
+	w_class = ITEMSIZE_TINY
+	throw_speed = 7
+	throw_range = 15
+	armor_penetration = 20
+
+	var/active = 0
+	var/active_embed_chance = 0
+	var/active_force = 15
+	var/active_throwforce = 30
+	var/active_w_class = ITEMSIZE_NORMAL
+	var/active_icon_state
+	var/default_icon_state
+
+/obj/item/pen/blade/Initialize(mapload)
+	. = ..()
+	active_icon_state = "[icon_state]-x"
+	default_icon_state = icon_state
+
+/obj/item/pen/blade/AltClick(mob/user)
+	..()
+	if(active)
+		deactivate(user)
+	else
+		activate(user)
+
+	to_chat(user, "<span class='notice'>You [active ? "de" : ""]activate \the [src]'s blade.</span>")
+
+/obj/item/pen/blade/proc/activate(mob/living/user)
+	if(active)
+		return
+	active = 1
+	icon_state = active_icon_state
+	embed_chance = active_embed_chance
+	force = active_force
+	throwforce = active_throwforce
+	sharp = 1
+	edge = 1
+	w_class = active_w_class
+	playsound(src, 'sound/weapons/saberon.ogg', 15, 1)
+	damtype = SEARING
+	catchable = FALSE
+
+	attack_verb |= list(\
+		"slashed",\
+		"cut",\
+		"shredded",\
+		"stabbed"\
+		)
+
+/obj/item/pen/blade/proc/deactivate(mob/living/user)
+	if(!active)
+		return
+	playsound(src, 'sound/weapons/saberoff.ogg', 15, 1)
+	active = 0
+	icon_state = default_icon_state
+	embed_chance = initial(embed_chance)
+	force = initial(force)
+	throwforce = initial(throwforce)
+	sharp = initial(sharp)
+	edge = initial(edge)
+	w_class = initial(w_class)
+	damtype = BRUTE
+	catchable = TRUE
+
+/obj/item/pen/blade/blue
+	desc = "It's a normal blue ink pen."
+	icon_state = "pen_blue"
+	colour = "blue"
+
+/obj/item/pen/blade/red
+	desc = "It's a normal red ink pen."
+	icon_state = "pen_red"
+	colour = "red"
+
+/obj/item/pen/blade/fountain
+	desc = "A well made fountain pen."
+	icon_state = "pen_fountain"
+
+/*
  * Sleepy Pens
  */
 /obj/item/pen/reagent/sleepy
 	desc = "It's a black ink pen with a sharp point and a carefully engraved \"Waffle Co.\""
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ILLEGAL = 5)
 
-/obj/item/pen/reagent/sleepy/New()
-	..()
-	reagents.add_reagent("chloralhydrate", 22)	//Used to be 100 sleep toxin//30 Chloral seems to be fatal, reducing it to 22./N
+/obj/item/pen/reagent/sleepy/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("chloralhydrate", 1)
+	reagents.add_reagent("stoxin", 14)
 
 
 /*
@@ -122,8 +228,8 @@
 /obj/item/pen/reagent/paralysis
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ILLEGAL = 5)
 
-/obj/item/pen/reagent/paralysis/New()
-	..()
+/obj/item/pen/reagent/paralysis/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("zombiepowder", 5)
 	reagents.add_reagent("cryptobiolin", 10)
 
@@ -199,13 +305,16 @@
 	var/uses = 30 //0 for unlimited uses
 	var/instant = 0
 	var/colourName = "red" //for updateIcon purposes
+	drop_sound = 'sound/items/drop/gloves.ogg'
+	pickup_sound = 'sound/items/pickup/gloves.ogg'
 
 /obj/item/pen/crayon/suicide_act(mob/user)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
-	viewers(user) << "<font color='red'><b>[user] is jamming the [src.name] up [TU.his] nose and into [TU.his] brain. It looks like [TU.he] [TU.is] trying to commit suicide.</b></font>"
+	to_chat(viewers(user),"<font color='red'><b>[user] is jamming the [src.name] up [TU.his] nose and into [TU.his] brain. It looks like [TU.he] [TU.is] trying to commit suicide.</b></font>")
 	return (BRUTELOSS|OXYLOSS)
 
-/obj/item/pen/crayon/New()
+/obj/item/pen/crayon/Initialize(mapload)
+	. = ..()
 	name = "[colourName] crayon"
 
 /obj/item/pen/crayon/marker
@@ -213,27 +322,18 @@
 	desc = "A chisel-tip permanent marker. Hopefully non-toxic."
 	icon_state = "markerred"
 
-/obj/item/pen/crayon/marker/New()
+/obj/item/pen/crayon/marker/Initialize(mapload)
+	. = ..()
 	name = "[colourName] marker"
 
-//Ritual Chalk
 /obj/item/pen/crayon/chalk
-	name = "chalk"
-	desc = "A dusty stick of chalk. We accept no liability for any accidental summonings."
-	icon = 'icons/obj/crayons.dmi'
+	name = "ritual chalk"
+	desc = "A stick of blessed chalk, used in rituals."
 	icon_state = "chalkwhite"
-	w_class = ITEMSIZE_TINY
-	attack_verb = list("attacked", "coloured")
-	colour = "#FFFFFF" //RGB
-	shadeColour = "#000000" //RGB
-	uses = 66 //0 for unlimited uses
-	instant = 0
-	colourName = "white" //for updateIcon purposes
 
-/obj/item/pen/crayon/chalk/suicide_act(mob/user)
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
-	viewers(user) << "<font color='red'><b>[user] is jamming the [src.name] up [TU.his] nose and into [TU.his] brain. It looks like [TU.he] [TU.is] trying to perform human transmutation!</b></font>"
-	return (BRUTELOSS|OXYLOSS)
-
-/obj/item/pen/crayon/chalk/New()
+/obj/item/pen/crayon/chalk/Initialize(mapload)
+	. = ..()
 	name = "[colourName] chalk"
+
+/obj/item/pen/crayon/chalk/attack_self()
+	return

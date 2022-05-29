@@ -13,11 +13,17 @@
 					"Basic" = "Miner_old",
 					"Advanced Droid" = "droid-miner",
 					"Treadhead" = "Miner",
-					"Drone" = "drone-miner"
+					"Drone" = "drone-miner",
+					"Misato" = "tall2miner",
+					"L3P1-D0T" = "Glitterfly-Miner",
+					"Miss M" = "miss-miner",
+					"Carffin" = "coffin-Service",
+					"Coffing" = "coffin-Mining"
+
 				)
 
-/obj/item/robot_module/robot/miner/New()
-	..()
+/obj/item/robot_module/robot/miner/Initialize(mapload)
+	. = ..()
 	src.modules += new /obj/item/borg/sight/material(src)
 	src.modules += new /obj/item/tool/wrench/cyborg(src)
 	src.modules += new /obj/item/tool/screwdriver/cyborg(src)
@@ -28,3 +34,4 @@
 	src.modules += new /obj/item/mining_scanner(src)
 	src.emag = new /obj/item/pickaxe/plasmacutter(src)
 	src.emag = new /obj/item/pickaxe/diamonddrill(src)
+	src.emag = new /obj/item/melee/disruptor/borg(src)

@@ -1,26 +1,32 @@
 /obj/machinery/optable
-	name = "Operating Table"
+	name = "the operating table"
 	desc = "Used for advanced medical procedures."
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "table2-idle"
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
+	circuit = /obj/item/circuitboard/operating_table
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 1
 	active_power_usage = 5
 	surgery_odds = 100
-	throwpass = 1
+	throwpass = TRUE
 	var/mob/living/carbon/human/victim = null
-	var/strapped = 0.0
+	var/strapped = FALSE
 	var/obj/machinery/computer/operating/computer = null
 
-/obj/machinery/optable/New()
-	..()
+/obj/machinery/optable/Initialize(mapload)
+	. = ..()
+	default_apply_parts()
+
+/obj/machinery/optable/Initialize(mapload)
+	. = ..()
 	for(var/direction in list(NORTH,EAST,SOUTH,WEST))
 		computer = locate(/obj/machinery/computer/operating, get_step(src, direction))
 		if(computer)
 			computer.table = src
 			break
+
 //	spawn(100) //Wont the MC just call this process() before and at the 10 second mark anyway?
 //		process()
 
@@ -41,10 +47,10 @@
 		else
 	return
 
-/obj/machinery/optable/attack_hand(mob/user as mob)
+/obj/machinery/optable/attack_hand(mob/user)
 	if(HULK in usr.mutations)
-		visible_message("<span class='danger'>\The [usr] destroys \the [src]!</span>")
-		density = 0
+		visible_message(SPAN_DANGER("\The [usr] destroys \the [src]!"))
+		density = FALSE
 		qdel(src)
 	return
 
@@ -53,8 +59,8 @@
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return TRUE
 
-/obj/machinery/optable/MouseDrop_T(obj/O as obj, mob/user as mob)
-
+/obj/machinery/optable/MouseDrop_T(obj/O, mob/user)
+	. = ..()
 	if((!(istype(O, /obj/item)) || user.get_active_hand() != O))
 		return
 	user.drop_item()
@@ -68,26 +74,25 @@
 		if(M.lying)
 			victim = M
 			icon_state = M.pulse ? "table2-active" : "table2-idle"
-			return 1
+			return TRUE
 	victim = null
 	icon_state = "table2-idle"
-	return 0
+	return FALSE
 
-/obj/machinery/optable/process()
+/obj/machinery/optable/process(delta_time)
 	check_victim()
 
-/obj/machinery/optable/proc/take_victim(mob/living/carbon/C, mob/living/carbon/user as mob)
+/obj/machinery/optable/proc/take_victim(mob/living/carbon/C, mob/living/carbon/user)
 	if(C == user)
 		user.visible_message("[user] climbs on \the [src].","You climb on \the [src].")
 	else
-		visible_message("<span class='notice'>\The [C] has been laid on \the [src] by [user].</span>")
-	if(C.client)
-		C.client.perspective = EYE_PERSPECTIVE
-		C.client.eye = src
+		visible_message(SPAN_NOTICE("\The [C] has been laid on \the [src] by [user]."))
 	C.resting = 1
-	C.loc = src.loc
-	for(var/obj/O in src)
+	C.forceMove(loc)
+	// now that we hold parts, this must be commented out to prevent dumping our parts onto our loc. not sure what this was intended to do when it was written.
+	/*for(var/obj/O in src)
 		O.loc = src.loc
+	*/
 	add_fingerprint(user)
 	if(ishuman(C))
 		var/mob/living/carbon/human/H = C
@@ -116,7 +121,7 @@
 
 	take_victim(usr,usr)
 
-/obj/machinery/optable/attackby(obj/item/W as obj, mob/living/carbon/user as mob)
+/obj/machinery/optable/attackby(obj/item/W, obj/item/I, mob/living/carbon/user)
 	if(istype(W, /obj/item/grab))
 		var/obj/item/grab/G = W
 		if(iscarbon(G.affecting) && check_table(G.affecting))
@@ -124,12 +129,27 @@
 			qdel(W)
 			return
 
-/obj/machinery/optable/proc/check_table(mob/living/carbon/patient as mob)
+/obj/machinery/optable/proc/check_table(mob/living/carbon/patient)
 	check_victim()
 	if(victim && get_turf(victim) == get_turf(src) && victim.lying)
-		to_chat(usr, "<span class='warning'>\The [src] is already occupied!</span>")
-		return 0
+		to_chat(usr, SPAN_WARNING("\The [src] is already occupied!"))
+		return FALSE
 	if(patient.buckled)
-		to_chat(usr, "<span class='notice'>Unbuckle \the [patient] first!</span>")
-		return 0
-	return 1
+		to_chat(usr, SPAN_NOTICE("Unbuckle \the [patient] first!"))
+		return FALSE
+	return TRUE
+
+/obj/machinery/sleeper/RefreshParts()
+	var/cap_rating = 0
+
+	idle_power_usage = initial(idle_power_usage)
+	active_power_usage = initial(active_power_usage)
+
+	for(var/obj/item/stock_parts/P in component_parts)
+		if(istype(P, /obj/item/stock_parts/capacitor))
+			cap_rating += P.rating
+
+	cap_rating = max(1, round(cap_rating / 2))
+
+	idle_power_usage /= cap_rating
+	active_power_usage /= cap_rating

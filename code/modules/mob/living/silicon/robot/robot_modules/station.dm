@@ -4,8 +4,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	"Clerical" 		= /obj/item/robot_module/robot/clerical/general,
 	"Research" 		= /obj/item/robot_module/robot/research,
 	"Miner" 		= /obj/item/robot_module/robot/miner,
-	"Crisis" 		= /obj/item/robot_module/robot/medical/crisis,
-	"Surgeon" 		= /obj/item/robot_module/robot/medical/surgeon,
+	"Medical" 		= /obj/item/robot_module/robot/medical/surgeon,
 	"Security" 		= /obj/item/robot_module/robot/security/general,
 	"Combat" 		= /obj/item/robot_module/robot/security/combat,
 	"Engineering"	= /obj/item/robot_module/robot/engineering/general,
@@ -45,8 +44,9 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	var/list/original_languages = list()
 	var/list/added_networks = list()
 
-/obj/item/robot_module/New(var/mob/living/silicon/robot/R)
-	..()
+/obj/item/robot_module/Initialize(mapload)
+	. = ..()
+	var/mob/living/silicon/robot/R = loc
 	R.module = src
 
 	add_camera_networks(R)
@@ -59,10 +59,11 @@ GLOBAL_LIST_INIT(robot_modules, list(
 			channels = R.mainframe.aiRadio.channels
 		R.radio.recalculateChannels()
 
-	vr_add_sprites() //Vorestation Edit: For vorestation only sprites
+	vr_add_sprites() //TODO: Add into the normal lists.
 
 	R.set_module_sprites(sprites)
-	R.choose_icon(R.module_sprites.len + 1, R.module_sprites)
+	// TODO: REFACTOR CYBORGS THEY ARE ALL SHITCODE
+	INVOKE_ASYNC(R, /mob/living/silicon/robot/proc/choose_icon, R.module_sprites.len + 1, R.module_sprites)
 
 	for(var/obj/item/I in modules)
 		I.canremove = 0
@@ -161,10 +162,10 @@ GLOBAL_LIST_INIT(robot_modules, list(
 		R.status_flags |= CANPUSH
 
 // Cyborgs (non-drones), default loadout. This will be given to every module.
-/obj/item/robot_module/robot/New()
-	..()
+/obj/item/robot_module/robot/Initialize(mapload)
+	. = ..()
 	src.modules += new /obj/item/flash/robot(src)
 	src.modules += new /obj/item/tool/crowbar/cyborg(src)
 	src.modules += new /obj/item/extinguisher(src)
 	src.modules += new /obj/item/gps/robot(src)
-	vr_new() // Vorestation Edit: For modules in robot_modules_vr.dm
+	vr_new() // For modules in robot_modules_vr.dm //TODO: Integrate

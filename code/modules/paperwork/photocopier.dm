@@ -18,11 +18,11 @@
 	var/maxcopies = 10	//how many copies can be copied at once- idea shamelessly stolen from bs12's copier!
 	var/copying = FALSE // Is the printer busy with something? Sanity check variable.
 
-/obj/machinery/photocopier/Initialize()
+/obj/machinery/photocopier/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 
-/obj/machinery/photocopier/examine(mob/user as mob)
+/obj/machinery/photocopier/examine(mob/user)
 	. = ..()
 	if(Adjacent(user))
 		. += "The screen shows there's [toner ? "[toner]" : "no"] toner left in the printer."
@@ -33,14 +33,14 @@
 /obj/machinery/photocopier/attack_hand(mob/user as mob)
 	user.set_machine(src)
 
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /**
  *  Display the NanoUI window for the photocopier.
  *
  *  See NanoUI documentation for details.
  */
-/obj/machinery/photocopier/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/photocopier/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_machine(src)
 
 	var/list/data = list()
@@ -88,7 +88,7 @@
 			sleep(11*B.pages.len)
 			audible_message("<span class='notice'>You can hear [src] whirring as it finishes printing.</span>")
 			playsound(loc, "sound/machines/buzzbeep.ogg", 30)
-		else if (has_buckled_mobs()) // VOREStation EDIT: For ass-copying.
+		else if (has_buckled_mobs()) // For ass-copying.
 			playsound(loc, "sound/machines/copier.ogg", 100, 1)
 			audible_message("<span class='notice'>You can hear [src] whirring as it attempts to scan.</span>")
 			sleep(rand(20,45)) // Sit with your bare ass on the copier for a random time, feel like a fool, get stared at.
@@ -106,7 +106,7 @@
 
 /obj/machinery/photocopier/Topic(href, href_list)
 	if(href_list["copy"])
-		if(stat & (BROKEN|NOPOWER))
+		if(machine_stat & (BROKEN|NOPOWER))
 			return
 		addtimer(CALLBACK(src, .proc/copy_operation, usr), 0)
 
@@ -126,8 +126,10 @@
 		if(copies < maxcopies)
 			copies++
 	else if(href_list["aipic"])
-		if(!istype(usr,/mob/living/silicon)) return
-		if(stat & (BROKEN|NOPOWER)) return
+		if(!istype(usr,/mob/living/silicon))
+			return
+		if(machine_stat & (BROKEN|NOPOWER))
+			return
 
 		if(toner >= 5)
 			var/mob/living/silicon/tempAI = usr
@@ -260,8 +262,6 @@
 
 	return p
 
-// VOREStation Edit Start
-
 /obj/machinery/photocopier/proc/copyass(mob/user)
 	var/icon/temp_img
 	if(!has_buckled_mobs()) // Are there no mobs buckled to the photocopier?
@@ -269,7 +269,7 @@
 	var/mob/sitter = buckled_mobs[1] // You have to be sitting on the copier/buckled to it and either be a xeno or a human without clothes on that cover your ass.
 	if(ishuman(sitter)) // Suit checks are in can_buckle_mobs at the bottom of the file.
 		var/mob/living/carbon/human/H = sitter // All human subtypes.
-		var/species_to_check = H.get_species()
+		var/species_to_check = H.get_species_name()
 		if(species_to_check == SPECIES_CUSTOM || species_to_check == SPECIES_XENOCHIMERA) // Are we a custom species, or Xenochimera? If so, what is the base icon sprite for our species?
 			species_to_check = H.species.base_species // Grab the base species and use that as the 'species' for the purpose of printing off your asscheeks.
 		switch(species_to_check)
@@ -317,6 +317,8 @@
 			if(SPECIES_SERGAL)
 				temp_img = icon('icons/obj/butts.dmi', "sergal")
 			*/
+			if(SPECIES_APIDAEN)
+				temp_img = icon('icons/obj/butts.dmi', "human") // placeholder until I make bug butts.
 			else // Sanity/Safety check - does their species not show up or not work, or did something fail, but they're DEFINITELY a /human/ subtype? Print the 'default' ass.
 				temp_img = icon('icons/obj/butts.dmi', "human")
 	else if(istype(sitter,/mob/living/silicon/robot/drone)) // Are we a drone?
@@ -341,8 +343,6 @@
 		playsound(loc, "sound/machines/buzz-sigh.ogg", 100)
 		visible_message("<span class='notice'>A red light on \the [src] flashes, indicating that it is out of toner.</span>")
 	return p
-
-// VOREStation Edit Stop
 
 //If need_toner is 0, the copies will still be lightened when low on toner, however it will not be prevented from printing. TODO: Implement print queues for fax machines and get rid of need_toner
 /obj/machinery/photocopier/proc/bundlecopy(var/obj/item/paper_bundle/bundle, var/need_toner=1)
@@ -369,8 +369,6 @@
 	p.pixel_x = rand(-9, 9)
 	return p
 
-// VOREStation Edit Start - Rykka
-
 /obj/machinery/photocopier/can_buckle_check(mob/living/M, forced = FALSE)
 	if(!..())
 		return FALSE
@@ -381,8 +379,6 @@
 			to_chat(usr, "<span class='warning'>One needs to not be wearing pants to photocopy one's ass...</span>")
 			return FALSE
 	return TRUE
-
-// VOREStation Edit Stop - Rykka
 
 /obj/item/toner
 	name = "toner cartridge"

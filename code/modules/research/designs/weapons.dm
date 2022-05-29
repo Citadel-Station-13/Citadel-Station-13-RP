@@ -22,21 +22,21 @@
 /datum/design/item/weapon/energy/stunrevolver
 	id = "stunrevolver"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_POWER = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 4000)
+	materials = list(MAT_STEEL = 4000)
 	build_path = /obj/item/gun/energy/stunrevolver
 	sort_string = "MAAAA"
 
 /datum/design/item/weapon/energy/nuclear_gun
 	id = "nuclear_gun"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 5, TECH_POWER = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 5000, MAT_GLASS = 1000, MAT_URANIUM = 500)
+	materials = list(MAT_STEEL = 5000, MAT_GLASS = 1000, MAT_URANIUM = 500)
 	build_path = /obj/item/gun/energy/gun/nuclear
 	sort_string = "MAAAB"
 
 /datum/design/item/weapon/energy/phoronpistol
 	id = "ppistol"
 	req_tech = list(TECH_COMBAT = 5, TECH_PHORON = 4)
-	materials = list(DEFAULT_WALL_MATERIAL = 5000, MAT_GLASS = 1000, MAT_PHORON = 3000)
+	materials = list(MAT_STEEL = 5000, MAT_GLASS = 1000, MAT_PHORON = 3000)
 	build_path = /obj/item/gun/energy/toxgun
 	sort_string = "MAAAC"
 
@@ -44,7 +44,7 @@
 	desc = "The lasing medium of this prototype is enclosed in a tube lined with uranium-235 and subjected to high neutron flux in a nuclear reactor core."
 	id = "lasercannon"
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3, TECH_POWER = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 10000, MAT_GLASS = 1000, MAT_DIAMOND = 2000)
+	materials = list(MAT_STEEL = 10000, MAT_GLASS = 1000, MAT_DIAMOND = 2000)
 	build_path = /obj/item/gun/energy/lasercannon
 	sort_string = "MAAAD"
 
@@ -59,14 +59,14 @@
 	desc = "A gun that shoots high-powered glass-encased energy temperature bullets."
 	id = "temp_gun"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 4, TECH_POWER = 3, TECH_MAGNET = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 5000, MAT_GLASS = 500, MAT_SILVER = 3000)
+	materials = list(MAT_STEEL = 5000, MAT_GLASS = 500, MAT_SILVER = 3000)
 	build_path = /obj/item/gun/energy/temperature
 	sort_string = "MAAAF"
 
 /datum/design/item/weapon/energy/flora_gun
 	id = "flora_gun"
 	req_tech = list(TECH_MATERIAL = 2, TECH_BIO = 3, TECH_POWER = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 2000, MAT_GLASS = 500, MAT_URANIUM = 500)
+	materials = list(MAT_STEEL = 2000, MAT_GLASS = 500, MAT_URANIUM = 500)
 	build_path = /obj/item/gun/energy/floragun
 	sort_string = "MAAAG"
 
@@ -80,18 +80,18 @@
 	id = "smg"
 	desc = "An advanced 9mm SMG with a reflective laser optic."
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 8000, MAT_SILVER = 2000, MAT_DIAMOND = 1000)
+	materials = list(MAT_STEEL = 8000, MAT_SILVER = 2000, MAT_DIAMOND = 1000)
 	build_path = /obj/item/gun/projectile/automatic/advanced_smg
 	sort_string = "MABAA"
-	
+
 /datum/design/item/weapon/ballistic/p90
 	id = "p90"
 	desc = "The H90K is a compact, large capacity submachine gun produced by Hephaestus Industries. Despite its fierce reputation, it still manages to feel like a toy. Uses 9mm rounds."
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
-	materials = list(DEFAULT_WALL_MATERIAL = 5000, MAT_PLASTIC = 5000, MAT_URANIUM = 1000)
+	materials = list(MAT_STEEL = 5000, MAT_PLASTIC = 5000, MAT_URANIUM = 1000)
 	build_path = /obj/item/gun/projectile/automatic/p90
 	sort_string = "MABAB"
-	
+
 // Ballistic ammo
 
 /datum/design/item/weapon/ballistic/ammo/AssembleDesignName()
@@ -103,81 +103,69 @@
 	id = "ammo_9mm"
 	desc = "A 21 round magazine for an advanced 9mm SMG."
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 3750, MAT_SILVER = 100) // Requires silver for proprietary magazines! Or something.
+	materials = list(MAT_STEEL = 3750, MAT_SILVER = 100) // Requires silver for proprietary magazines! Or something.
 	build_path = /obj/item/ammo_magazine/m9mmAdvanced
 	sort_string = "MABBA"
+
+/datum/design/item/weapon/ballistic/ammo/techshell
+	name = "unloaded tech shell"
+	desc = "A high-tech shotgun shell which can be loaded with materials to produce unique effects."
+	id = "techshell"
+	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3)
+	materials = list(MAT_STEEL = 500, MAT_PHORON = 200)
+	build_path = /obj/item/ammo_casing/a12g/techshell
+	sort_string = "MABBB"
 
 /datum/design/item/weapon/ballistic/ammo/stunshell
 	name = "stun shell"
 	desc = "A stunning shell for a shotgun."
 	id = "stunshell"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 360, MAT_GLASS = 720)
+	materials = list(MAT_STEEL = 360, MAT_GLASS = 720)
 	build_path = /obj/item/ammo_casing/a12g/stunshell
-	sort_string = "MABBB"
-
-/datum/design/item/weapon/ballistic/ammo/m9mmp90
-	name = "H90K magazine"
-	desc = "A large capacity top mounted magazine (9mm armor-piercing)."
-	id = "m9mmp90"
-	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
-	materials = list(DEFAULT_WALL_MATERIAL = 2250, MAT_PLASTIC = 1500, MAT_URANIUM = 50)
-	build_path = /obj/item/ammo_magazine/m9mmp90
 	sort_string = "MABBC"
 
-datum/design/item/weapon/ballistic/ammo/m10x24/medium
-	name = "M41A Medium Magazine"
-	id = "ammo_10x24med"
-	desc = "A 64 round magazine for the M41A pulse rifle."
-	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 5500, MAT_SILVER = 250)
-	build_path = /obj/item/ammo_magazine/m10x24mm/med
+/datum/design/item/weapon/ballistic/ammo/m57x28mmp90
+	name = "H90K magazine"
+	desc = "A large capacity top mounted magazine (5.7x28mm armor-piercing)."
+	id = "m57x28mmp90"
+	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
+	materials = list(MAT_STEEL = 2250, MAT_PLASTIC = 1500, MAT_COPPER = 1000)
+	build_path = /obj/item/ammo_magazine/m57x28mmp90
 	sort_string = "MABBD"
 
-datum/design/item/weapon/ballistic/ammo/m10x24/medium/hp
-	name = "M41A Medium HP Magazine"
-	id = "ammo_10x24medhp"
-	desc = "A 64 hollow point round magazine for the M41A pulse rifle."
-	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 5500, MAT_SILVER = 250)
-	build_path = /obj/item/ammo_magazine/m10x24mm/med/hp
-	sort_string = "MABBE"
+/datum/design/item/weapon/ballistic/ammo/m57x28mm
+	name = "5.7 magazine"
+	desc = "A standard capacity sidearm magazine (5.7x28mm)."
+	id = "m57x28mm"
+	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
+	materials = list(MAT_STEEL = 1750, MAT_COPPER = 750)
+	build_path = /obj/item/ammo_magazine/m57x28mm
+	sort_string = "MABCA"
 
-datum/design/item/weapon/ballistic/ammo/m10x24/medium/ap
-	name = "M41A Medium AP Magazine"
-	id = "ammo_10x24medap"
-	desc = "A 64 armor piercing round magazine for the M41A pulse rifle."
-	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 5500, MAT_SILVER = 250)
-	build_path = /obj/item/ammo_magazine/m10x24mm/med/ap
-	sort_string = "MABBF"
+/datum/design/item/weapon/ballistic/ammo/m57x28mm/ap
+	name = "5.7 magazine (AP)"
+	desc = "A standard capacity sidearm magazine (5.7x28mm armor-piercing)."
+	id = "m57x28mmap"
+	materials = list(MAT_STEEL = 2500, MAT_COPPER = 750)
+	build_path = /obj/item/ammo_magazine/m57x28mm/ap
+	sort_string = "MABCB"
 
-datum/design/item/weapon/ballistic/ammo/m10x24/large
-	name = "M41A Large Magazine"
-	id = "ammo_10x24large"
-	desc = "A 96 round magazine for the M41A pulse rifle."
-	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 8500, MAT_SILVER = 250)
-	build_path = /obj/item/ammo_magazine/m10x24mm/large
-	sort_string = "MABBG"
+/datum/design/item/weapon/ballistic/ammo/m57x28mm/hp
+	name = "5.7 magazine (HP)"
+	desc = "A standard capacity sidearm magazine (5.7x28mm hollow point)."
+	id = "m57x28mmhp"
+	materials = list(MAT_STEEL = 2100, MAT_COPPER = 750)
+	build_path = /obj/item/ammo_magazine/m57x28mm/hp
+	sort_string = "MABCC"
 
-datum/design/item/weapon/ballistic/ammo/m10x24/large/hp
-	name = "M41A Large HP Magazine"
-	id = "ammo_10x24largehp"
-	desc = "A 96 hollow point round magazine for the M41A pulse rifle."
-	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 8500, MAT_SILVER = 250)
-	build_path = /obj/item/ammo_magazine/m10x24mm/large/hp
-	sort_string = "MABBH"
-
-datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
-	name = "M41A Large Magazine"
-	id = "ammo_10x24largeap"
-	desc = "A 96 armor piercing round magazine for the M41A pulse rifle."
-	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 8500, MAT_SILVER = 500)
-	build_path = /obj/item/ammo_magazine/m10x24mm/large/ap
-	sort_string = "MABBI"
+/datum/design/item/weapon/ballistic/ammo/m57x28mm/hunter
+	name = "5.7 magazine (Hunter)"
+	desc = "A standard capacity sidearm magazine (5.7x28mm hunter)."
+	id = "m57x28mmhunter"
+	materials = list(MAT_STEEL = 1750, MAT_COPPER = 1250)
+	build_path = /obj/item/ammo_magazine/m57x28mm/hunter
+	sort_string = "MABCD"
 
 // Phase weapons
 
@@ -188,28 +176,28 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 /datum/design/item/weapon/phase/phase_pistol
 	id = "phasepistol"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2, TECH_POWER = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 4000)
+	materials = list(MAT_STEEL = 4000)
 	build_path = /obj/item/gun/energy/phasegun/pistol
 	sort_string = "MACAA"
 
 /datum/design/item/weapon/phase/phase_carbine
 	id = "phasecarbine"
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_POWER = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 6000, MAT_GLASS = 1500)
+	materials = list(MAT_STEEL = 6000, MAT_GLASS = 1500)
 	build_path = /obj/item/gun/energy/phasegun
 	sort_string = "MACAB"
 
 /datum/design/item/weapon/phase/phase_rifle
 	id = "phaserifle"
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3, TECH_POWER = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 7000, MAT_GLASS = 2000, MAT_SILVER = 500)
+	materials = list(MAT_STEEL = 7000, MAT_GLASS = 2000, MAT_SILVER = 500)
 	build_path = /obj/item/gun/energy/phasegun/rifle
 	sort_string = "MACAC"
 
 /datum/design/item/weapon/phase/phase_cannon
 	id = "phasecannon"
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 4, TECH_POWER = 4)
-	materials = list(DEFAULT_WALL_MATERIAL = 10000, MAT_GLASS = 2000, MAT_SILVER = 1000, MAT_DIAMOND = 750)
+	materials = list(MAT_STEEL = 10000, MAT_GLASS = 2000, MAT_SILVER = 1000, MAT_DIAMOND = 750)
 	build_path = /obj/item/gun/energy/phasegun/cannon
 	sort_string = "MACAD"
 
@@ -218,7 +206,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 /datum/design/item/weapon/rapidsyringe
 	id = "rapidsyringe"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_ENGINEERING = 3, TECH_BIO = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 5000, MAT_GLASS = 1000)
+	materials = list(MAT_STEEL = 5000, MAT_GLASS = 1000)
 	build_path = /obj/item/gun/launcher/syringe/rapid
 	sort_string = "MADAA"
 
@@ -226,7 +214,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	desc = "A gun that fires small hollow chemical-payload darts."
 	id = "dartgun_r"
 	req_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 4, TECH_BIO = 4, TECH_MAGNET = 3, TECH_ILLEGAL = 1)
-	materials = list(DEFAULT_WALL_MATERIAL = 5000, MAT_GOLD = 5000, MAT_SILVER = 2500, MAT_GLASS = 750)
+	materials = list(MAT_STEEL = 5000, MAT_GOLD = 5000, MAT_SILVER = 2500, MAT_GLASS = 750)
 	build_path = /obj/item/gun/projectile/dartgun/research
 	sort_string = "MADAB"
 
@@ -234,14 +222,14 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	desc = "An advanced chem spraying device."
 	id = "chemsprayer"
 	req_tech = list(TECH_MATERIAL = 3, TECH_ENGINEERING = 3, TECH_BIO = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 5000, MAT_GLASS = 1000)
+	materials = list(MAT_STEEL = 5000, MAT_GLASS = 1000)
 	build_path = /obj/item/reagent_containers/spray/chemsprayer
 	sort_string = "MADAC"
 
 /datum/design/item/weapon/fuelrod
 	id = "fuelrod_gun"
 	req_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 4, TECH_PHORON = 4, TECH_ILLEGAL = 5, TECH_MAGNET = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 10000, MAT_GLASS = 2000, MAT_GOLD = 500, MAT_SILVER = 500, MAT_URANIUM = 1000, MAT_PHORON = 3000, MAT_DIAMOND = 1000)
+	materials = list(MAT_STEEL = 10000, MAT_GLASS = 2000, MAT_GOLD = 500, MAT_SILVER = 500, MAT_URANIUM = 1000, MAT_PHORON = 3000, MAT_DIAMOND = 1000)
 	build_path = /obj/item/gun/magnetic/fuelrod
 	sort_string = "MADAD"
 
@@ -250,28 +238,28 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 /datum/design/item/weapon/ammo/dartgunmag_small
 	id = "dartgun_mag_s"
 	req_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 2, TECH_BIO = 2, TECH_MAGNET = 1, TECH_ILLEGAL = 1)
-	materials = list(DEFAULT_WALL_MATERIAL = 300, MAT_GOLD = 100, MAT_SILVER = 100, MAT_GLASS = 300)
+	materials = list(MAT_STEEL = 300, MAT_GOLD = 100, MAT_SILVER = 100, MAT_GLASS = 300)
 	build_path = /obj/item/ammo_magazine/chemdart/small
 	sort_string = "MADBA"
 
 /datum/design/item/weapon/ammo/dartgun_ammo_small
 	id = "dartgun_ammo_s"
 	req_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 2, TECH_BIO = 2, TECH_MAGNET = 1, TECH_ILLEGAL = 1)
-	materials = list(DEFAULT_WALL_MATERIAL = 50, MAT_GOLD = 30, MAT_SILVER = 30, MAT_GLASS = 50)
+	materials = list(MAT_STEEL = 50, MAT_GOLD = 30, MAT_SILVER = 30, MAT_GLASS = 50)
 	build_path = /obj/item/ammo_casing/chemdart/small
 	sort_string = "MADBB"
 
 /datum/design/item/weapon/ammo/dartgunmag_med
 	id = "dartgun_mag_m"
 	req_tech = list(TECH_COMBAT = 7, TECH_MATERIAL = 2, TECH_BIO = 2, TECH_MAGNET = 1, TECH_ILLEGAL = 1)
-	materials = list(DEFAULT_WALL_MATERIAL = 500, MAT_GOLD = 150, MAT_SILVER = 150, MAT_DIAMOND = 200, MAT_GLASS = 400)
+	materials = list(MAT_STEEL = 500, MAT_GOLD = 150, MAT_SILVER = 150, MAT_DIAMOND = 200, MAT_GLASS = 400)
 	build_path = /obj/item/ammo_magazine/chemdart
 	sort_string = "MADBC"
 
 /datum/design/item/weapon/ammo/dartgun_ammo_med
 	id = "dartgun_ammo_m"
 	req_tech = list(TECH_COMBAT = 7, TECH_MATERIAL = 2, TECH_BIO = 2, TECH_MAGNET = 1, TECH_ILLEGAL = 1)
-	materials = list(DEFAULT_WALL_MATERIAL = 80, MAT_GOLD = 40, MAT_SILVER = 40, MAT_GLASS = 60)
+	materials = list(MAT_STEEL = 80, MAT_GOLD = 40, MAT_SILVER = 40, MAT_GLASS = 60)
 	build_path = /obj/item/ammo_casing/chemdart
 	sort_string = "MADBD"
 
@@ -305,7 +293,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 /datum/design/item/weapon/grenade/large_grenade
 	id = "large_Grenade"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 3000)
+	materials = list(MAT_STEEL = 3000)
 	build_path = /obj/item/grenade/chem_grenade/large
 	sort_string = "MCAAA"
 
@@ -322,20 +310,23 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 
 // Energy Weapons
 
+//Commenting this weapon out pending further review.
+/*
 /datum/design/item/weapon/energy/protector
 	name = "\'Myrmidon\' code-locked e-gun"
 	desc = "The 'Myrmidon' is a common energy gun that cannot fired lethally on Code Green, requiring Code Blue or higher to unlock its deadly capabilities."
 	id = "protector"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_MAGNET = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 4000, MAT_GLASS = 2000, MAT_SILVER = 1000)
+	materials = list(MAT_STEEL = 4000, MAT_GLASS = 2000, MAT_SILVER = 1000)
 	build_path = /obj/item/gun/energy/protector
 	sort_string = "MAAAH"
+*/
 
 /datum/design/item/weapon/energy/netgun
 	name = "\'Retiarius\' capture gun"
 	id = "netgun"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 5, TECH_MAGNET = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 6000, MAT_GLASS = 3000)
+	materials = list(MAT_STEEL = 6000, MAT_GLASS = 3000)
 	build_path = /obj/item/gun/energy/netgun
 	sort_string = "MAAAI"
 
@@ -343,7 +334,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	desc = "The 'Discombobulator' is a 4-shot energy revolver that causes nausea and confusion."
 	id = "sickshot"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_MAGNET = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 3000, MAT_GLASS = 2000)
+	materials = list(MAT_STEEL = 3000, MAT_GLASS = 2000)
 	build_path = /obj/item/gun/energy/sickshot
 	sort_string = "MAAAJ"
 
@@ -353,7 +344,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	desc = "With the 'Pummeler', punt anyone you don't like out of the room!"
 	id = "pummeler"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_MAGNET = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 3000, MAT_GLASS = 3000, MAT_URANIUM = 1000)
+	materials = list(MAT_STEEL = 3000, MAT_GLASS = 3000, MAT_URANIUM = 1000)
 	build_path = /obj/item/gun/energy/pummeler
 	sort_string = "MAAAK"
 
@@ -367,7 +358,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "Advanced anti-particle rifle"
 	id = "advparticle"
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 5, TECH_POWER = 3, TECH_MAGNET = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 5000, MAT_GLASS = 1000, MAT_GOLD = 1000, MAT_URANIUM = 750)
+	materials = list(MAT_STEEL = 5000, MAT_GLASS = 1000, MAT_GOLD = 1000, MAT_URANIUM = 750)
 	build_path = /obj/item/gun/energy/particle/advanced
 	sort_string = "MAAUA"
 
@@ -375,7 +366,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "Anti-particle cannon"
 	id = "particlecannon"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 5, TECH_POWER = 4, TECH_MAGNET = 4)
-	materials = list(DEFAULT_WALL_MATERIAL = 10000, MAT_GLASS = 1500, MAT_GOLD = 2000, MAT_URANIUM = 1000, MAT_DIAMOND = 2000)
+	materials = list(MAT_STEEL = 10000, MAT_GLASS = 1500, MAT_GOLD = 2000, MAT_URANIUM = 1000, MAT_DIAMOND = 2000)
 	build_path = /obj/item/gun/energy/particle/cannon
 	sort_string = "MAAUB"
 
@@ -383,7 +374,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "APP pressure interlock"
 	id = "pressureinterlock"
 	req_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 250)
+	materials = list(MAT_STEEL = 1000, MAT_GLASS = 250)
 	build_path = /obj/item/pressurelock
 	sort_string = "MAAUC"
 
@@ -396,7 +387,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "cell-loaded revolver"
 	id = "nsfw_prototype"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 4, TECH_POWER = 4, TECH_COMBAT = 7)
-	materials = list(DEFAULT_WALL_MATERIAL = 10000, MAT_GLASS = 6000, MAT_PHORON = 8000, MAT_URANIUM = 4000)
+	materials = list(MAT_STEEL = 10000, MAT_GLASS = 6000, MAT_PHORON = 8000, MAT_URANIUM = 4000)
 	build_path = /obj/item/gun/projectile/cell_loaded/combat/prototype
 	sort_string = "MAVAA"
 
@@ -404,7 +395,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "combat cell magazine"
 	id = "nsfw_mag_prototype"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 4, TECH_POWER = 4, TECH_COMBAT = 7)
-	materials = list(DEFAULT_WALL_MATERIAL = 8000, MAT_GLASS = 4000, MAT_PHORON = 4000)
+	materials = list(MAT_STEEL = 8000, MAT_GLASS = 4000, MAT_PHORON = 4000)
 	build_path = /obj/item/ammo_magazine/cell_mag/combat/prototype
 	sort_string = "MAVBA"
 
@@ -416,7 +407,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "STUN"
 	id = "nsfw_cell_stun"
 	req_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 2, TECH_POWER = 3, TECH_COMBAT = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 5000, MAT_GLASS = 5000)
+	materials = list(MAT_STEEL = 5000, MAT_GLASS = 5000)
 	build_path = /obj/item/ammo_casing/microbattery/combat/stun
 	sort_string = "MAVCA"
 
@@ -424,7 +415,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "LETHAL"
 	id = "nsfw_cell_lethal"
 	req_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 3, TECH_POWER = 3, TECH_COMBAT = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 5000, MAT_GLASS = 5000, MAT_PHORON = 3000)
+	materials = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_PHORON = 3000)
 	build_path = /obj/item/ammo_casing/microbattery/combat/lethal
 	sort_string = "MAVCB"
 
@@ -432,7 +423,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "NET"
 	id = "nsfw_cell_net"
 	req_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 3, TECH_POWER = 3, TECH_COMBAT = 4)
-	materials = list(DEFAULT_WALL_MATERIAL = 5000, MAT_GLASS = 5000, MAT_URANIUM = 3000)
+	materials = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_URANIUM = 3000)
 	build_path = /obj/item/ammo_casing/microbattery/combat/net
 	sort_string = "MAVCC"
 
@@ -440,7 +431,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "ION"
 	id = "nsfw_cell_ion"
 	req_tech = list(TECH_MATERIAL = 5, TECH_MAGNET = 3, TECH_POWER = 5, TECH_COMBAT = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 5000, MAT_GLASS = 5000, MAT_SILVER = 3000)
+	materials = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_SILVER = 3000)
 	build_path = /obj/item/ammo_casing/microbattery/combat/ion
 	sort_string = "MAVCD"
 
@@ -448,7 +439,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "SCATTERSTUN"
 	id = "nsfw_cell_shotstun"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 3, TECH_POWER = 6, TECH_COMBAT = 6)
-	materials = list(DEFAULT_WALL_MATERIAL = 5000, MAT_GLASS = 5000, MAT_SILVER = 2000, MAT_GOLD = 2000)
+	materials = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_SILVER = 2000, MAT_GOLD = 2000)
 	build_path = /obj/item/ammo_casing/microbattery/combat/shotstun
 	sort_string = "MAVCE"
 
@@ -456,7 +447,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "XRAY"
 	id = "nsfw_cell_xray"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 4, TECH_POWER = 5, TECH_COMBAT = 7)
-	materials = list(DEFAULT_WALL_MATERIAL = 5000, MAT_GLASS = 5000, MAT_SILVER = 1000, MAT_GOLD = 1000, MAT_URANIUM = 1000, MAT_PHORON = 1000)
+	materials = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_SILVER = 1000, MAT_GOLD = 1000, MAT_URANIUM = 1000, MAT_PHORON = 1000)
 	build_path = /obj/item/ammo_casing/microbattery/combat/xray
 	sort_string = "MAVCF"
 
@@ -464,7 +455,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "STRIPPER"
 	id = "nsfw_cell_stripper"
 	req_tech = list(TECH_MATERIAL = 7, TECH_BIO = 4, TECH_POWER = 4, TECH_COMBAT = 4, TECH_ILLEGAL = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 5000, MAT_GLASS = 5000, MAT_URANIUM = 2000, MAT_PHORON = 2000, MAT_DIAMOND = 500)
+	materials = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_URANIUM = 2000, MAT_PHORON = 2000, MAT_DIAMOND = 500)
 	build_path = /obj/item/ammo_casing/microbattery/combat/stripper
 	sort_string = "MAVCG"
 
@@ -477,7 +468,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "modular energy pistol"
 	id = "modpistol"
 	req_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 3, TECH_POWER = 3, TECH_COMBAT = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 5000, MAT_GLASS = 5000, MAT_SILVER = 3000)
+	materials = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_SILVER = 3000)
 	build_path = /obj/item/gun/energy/modular/basic
 	sort_string = "MAVDA"
 
@@ -485,7 +476,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "advanced modular energy pistol"
 	id = "advmodpistol"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 5, TECH_POWER = 5, TECH_COMBAT = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 6000, MAT_GLASS = 6000, MAT_SILVER = 3000, MAT_GOLD = 2000, MAT_URANIUM = 3000)
+	materials = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 3000, MAT_GOLD = 2000, MAT_URANIUM = 3000)
 	build_path = /obj/item/gun/energy/modular/advanced
 	sort_string = "MAVDB"
 
@@ -493,7 +484,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "modular energy carbine"
 	id = "modcarbine"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 5, TECH_POWER = 5, TECH_COMBAT = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 8000, MAT_GLASS = 8000, MAT_URANIUM = 2000, MAT_GOLD = 4000, MAT_DIAMOND = 500)
+	materials = list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_URANIUM = 2000, MAT_GOLD = 4000, MAT_DIAMOND = 500)
 	build_path = /obj/item/gun/energy/modular/carbine
 	sort_string = "MAVDC"
 
@@ -501,7 +492,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "modular energy rifle"
 	id = "modrifle"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 5, TECH_POWER = 5, TECH_COMBAT = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 12000, MAT_GLASS = 12000, MAT_SILVER = 6000, MAT_GOLD = 6000, MAT_URANIUM = 4000, MAT_DIAMOND = 500)
+	materials = list(MAT_STEEL = 12000, MAT_GLASS = 12000, MAT_SILVER = 6000, MAT_GOLD = 6000, MAT_URANIUM = 4000, MAT_DIAMOND = 500)
 	build_path = /obj/item/gun/energy/modular/rifle
 	sort_string = "MAVDD"
 
@@ -509,7 +500,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "tri-core modular energy rifle"
 	id = "threemodrifle"
 	req_tech = list(TECH_MATERIAL = 7, TECH_MAGNET = 5, TECH_POWER = 5, TECH_COMBAT = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 12000, MAT_GLASS = 12000, MAT_SILVER = 6000, MAT_GOLD = 6000, MAT_URANIUM = 4000, MAT_DIAMOND = 1500)
+	materials = list(MAT_STEEL = 12000, MAT_GLASS = 12000, MAT_SILVER = 6000, MAT_GOLD = 6000, MAT_URANIUM = 4000, MAT_DIAMOND = 1500)
 	build_path = /obj/item/gun/energy/modular/rifle/tribeam
 	sort_string = "MAVDE"
 
@@ -517,7 +508,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "compact modular energy pistol"
 	id = "modcompact"
 	req_tech = list(TECH_MATERIAL = 7, TECH_MAGNET = 6, TECH_POWER = 6, TECH_COMBAT = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 5000, MAT_GLASS = 5000, MAT_DIAMOND = 3000)
+	materials = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_DIAMOND = 3000)
 	build_path = /obj/item/gun/energy/modular/compact
 	sort_string = "MAVDF"
 
@@ -525,7 +516,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "modular energy scattergun"
 	id = "modscatter"
 	req_tech = list(TECH_MATERIAL = 7, TECH_MAGNET = 6, TECH_POWER = 6, TECH_COMBAT = 5, TECH_ILLEGAL = 4)
-	materials = list(DEFAULT_WALL_MATERIAL = 12000, MAT_GLASS = 12000, MAT_SILVER = 6000, MAT_GOLD = 6000, MAT_URANIUM = 4000, MAT_DIAMOND = 2000)
+	materials = list(MAT_STEEL = 12000, MAT_GLASS = 12000, MAT_SILVER = 6000, MAT_GOLD = 6000, MAT_URANIUM = 4000, MAT_DIAMOND = 2000)
 	build_path = /obj/item/gun/energy/modular/rifle/scatter
 	sort_string = "MAVDG"
 
@@ -533,7 +524,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "modular energy cannon"
 	id = "modcannon"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 6, TECH_POWER = 6, TECH_COMBAT = 6, TECH_ENGINEERING = 6)
-	materials = list(DEFAULT_WALL_MATERIAL = 12000, MAT_GLASS = 12000, MAT_SILVER = 6000, MAT_GOLD = 6000, MAT_URANIUM = 4000, MAT_DIAMOND = 4000)
+	materials = list(MAT_STEEL = 12000, MAT_GLASS = 12000, MAT_SILVER = 6000, MAT_GOLD = 6000, MAT_URANIUM = 4000, MAT_DIAMOND = 4000)
 	build_path = /obj/item/gun/energy/modular/cannon
 	sort_string = "MAVDH"
 
@@ -541,7 +532,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "modular AEG"
 	id = "modAEG"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 6, TECH_POWER = 6, TECH_COMBAT = 6, TECH_ENGINEERING = 6, TECH_BLUESPACE = 4)
-	materials = list(DEFAULT_WALL_MATERIAL = 12000, MAT_GLASS = 12000, MAT_SILVER = 6000, MAT_LEAD = 20000, MAT_URANIUM = 20000, MAT_DIAMOND = 4000)
+	materials = list(MAT_STEEL = 12000, MAT_GLASS = 12000, MAT_SILVER = 6000, MAT_LEAD = 20000, MAT_URANIUM = 20000, MAT_DIAMOND = 4000)
 	build_path = /obj/item/gun/energy/modular/nuke
 	sort_string = "MAVDG"
 
@@ -553,7 +544,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "stun medium"
 	id = "stunmedium"
 	req_tech = list(TECH_MAGNET = 3, TECH_POWER = 3, TECH_COMBAT = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 8000, MAT_GLASS = 8000, MAT_GOLD = 4000)
+	materials = list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_GOLD = 4000)
 	build_path = /obj/item/modularlaser/lasermedium/stun
 	sort_string = "MAVEA"
 
@@ -561,7 +552,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "weak stun medium"
 	id = "stunweak"
 	req_tech = list(TECH_MAGNET = 1, TECH_POWER = 2, TECH_COMBAT = 1)
-	materials =	list(DEFAULT_WALL_MATERIAL = 8000, MAT_GLASS = 8000)
+	materials =	list(MAT_STEEL = 8000, MAT_GLASS = 8000)
 	build_path = /obj/item/modularlaser/lasermedium/stun/weak
 	sort_string = "MAVEB"
 
@@ -569,7 +560,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "net projector medium"
 	id = "netmedium"
 	req_tech =  list(TECH_MAGNET = 5, TECH_POWER = 5, TECH_COMBAT = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 8000, MAT_GLASS = 8000, MAT_GOLD = 4000, MAT_URANIUM = 2000)
+	materials = list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_GOLD = 4000, MAT_URANIUM = 2000)
 	build_path = /obj/item/modularlaser/lasermedium/net
 	sort_string = "MAVEC"
 
@@ -577,7 +568,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "electrode projector tube"
 	id =	"electrodetube"
 	req_tech =  list(TECH_MAGNET = 2, TECH_POWER = 3, TECH_COMBAT = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 8000, MAT_GLASS = 8000)
+	materials = list(MAT_STEEL = 8000, MAT_GLASS = 8000)
 	build_path = /obj/item/modularlaser/lasermedium/electrode
 	sort_string = "MAVED"
 
@@ -585,7 +576,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "laser medium"
 	id = "lasermedium"
 	req_tech =  list(TECH_MAGNET = 5, TECH_POWER = 5, TECH_COMBAT = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 8000, MAT_GLASS = 8000, MAT_URANIUM = 2000, MAT_SILVER = 4000)
+	materials = list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_URANIUM = 2000, MAT_SILVER = 4000)
 	build_path = /obj/item/modularlaser/lasermedium/laser
 	sort_string = "MAVEE"
 
@@ -593,7 +584,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "low-power laser medium"
 	id = "weaklaser"
 	req_tech =  list(TECH_MAGNET = 3, TECH_POWER = 3, TECH_COMBAT = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 8000, MAT_GLASS = 8000)
+	materials = list(MAT_STEEL = 8000, MAT_GLASS = 8000)
 	build_path = /obj/item/modularlaser/lasermedium/laser/weak
 	sort_string = "MAVEF"
 
@@ -601,7 +592,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "laser sniper medium"
 	id = "sniperlaser"
 	req_tech =  list(TECH_MAGNET = 5, TECH_POWER = 6, TECH_COMBAT = 4)
-	materials =	list(DEFAULT_WALL_MATERIAL = 8000, MAT_GLASS = 8000, MAT_URANIUM = 2000, MAT_DIAMOND = 10)
+	materials =	list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_URANIUM = 2000, MAT_DIAMOND = 10)
 	build_path = /obj/item/modularlaser/lasermedium/laser/sniper
 	sort_string = "MAVEG"
 
@@ -609,7 +600,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "heavy laser medium"
 	id = "heavylasermedium"
 	req_tech =  list(TECH_MAGNET = 6, TECH_POWER = 6, TECH_COMBAT = 5, TECH_ILLEGAL = 2)
-	materials =	list(DEFAULT_WALL_MATERIAL = 8000, MAT_GLASS = 8000, MAT_URANIUM = 2000, MAT_GOLD = 4000, MAT_DIAMOND = 500)
+	materials =	list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_URANIUM = 2000, MAT_GOLD = 4000, MAT_DIAMOND = 500)
 	build_path = /obj/item/modularlaser/lasermedium/laser/heavy
 	sort_string = "MAVEH"
 
@@ -617,7 +608,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "cannon beam medium"
 	id = "cannonmedium"
 	req_tech = list(TECH_MAGNET = 5, TECH_POWER = 5, TECH_COMBAT = 5, TECH_ILLEGAL = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 8000, MAT_GLASS = 8000, MAT_URANIUM = 2000, MAT_GOLD = 4000, MAT_DIAMOND = 500)
+	materials = list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_URANIUM = 2000, MAT_GOLD = 4000, MAT_DIAMOND = 500)
 	build_path = /obj/item/modularlaser/lasermedium/laser/cannon
 	sort_string = "MAVEI"
 
@@ -625,7 +616,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "xraser medium"
 	id = "xraser"
 	req_tech = list(TECH_MAGNET = 5, TECH_POWER = 5, TECH_COMBAT = 5, TECH_ILLEGAL = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 8000, MAT_GLASS = 8000, MAT_URANIUM = 4000, MAT_GOLD = 4000, MAT_DIAMOND = 500)
+	materials = list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_URANIUM = 4000, MAT_GOLD = 4000, MAT_DIAMOND = 500)
 	build_path = /obj/item/modularlaser/lasermedium/laser/xray
 	sort_string = "MAVEJ"
 
@@ -633,7 +624,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "excavation beam medium"
 	id = "digbeam"
 	req_tech = list(TECH_MAGNET = 3, TECH_POWER = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 8000, MAT_GLASS = 8000, MAT_PLASTEEL = 500)
+	materials = list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_PLASTEEL = 500)
 	build_path = /obj/item/modularlaser/lasermedium/dig
 	sort_string = "MAVEK"
 
@@ -641,7 +632,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "lightning arc tube"
 	id = "lightning"
 	req_tech = list(TECH_MAGNET = 6, TECH_POWER = 7)
-	materials = list(DEFAULT_WALL_MATERIAL = 8000, MAT_GLASS = 8000, MAT_SILVER = 4000, MAT_GOLD = 4000)
+	materials = list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_SILVER = 4000, MAT_GOLD = 4000)
 	build_path = /obj/item/modularlaser/lasermedium/lightning
 	sort_string = "MAVEL"
 
@@ -649,7 +640,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "graviton grapple tube"
 	id = "hook"
 	req_tech = list(TECH_ARCANE = 4, TECH_POWER = 2)
-	materials =list(DEFAULT_WALL_MATERIAL = 8000, MAT_GLASS = 8000, MAT_MORPHIUM = 4000, MAT_VERDANTIUM = 4000)
+	materials =list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_MORPHIUM = 4000, MAT_VERDANTIUM = 4000)
 	build_path = /obj/item/modularlaser/lasermedium/hook
 	sort_string = "MAVEM"
 
@@ -657,7 +648,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "phase projector tube"
 	id = "phasemedium"
 	req_tech = list(TECH_MAGNET = 3, TECH_POWER = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 8000, MAT_GLASS = 8000)
+	materials = list(MAT_STEEL = 8000, MAT_GLASS = 8000)
 	build_path = /obj/item/modularlaser/lasermedium/phase
 	sort_string = "MAVEN"
 
@@ -705,7 +696,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "basic capacitor"
 	id = "basiccap"
 	req_tech = list(TECH_POWER = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000)
+	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
 	build_path = /obj/item/modularlaser/capacitor/basic
 	sort_string = "MAVEV"
 
@@ -713,7 +704,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "efficient capacitor"
 	id = "ecocap"
 	req_tech = list(TECH_POWER = 4)
-	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500)
+	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500)
 	build_path = /obj/item/modularlaser/capacitor/eco
 	sort_string = "MAVEW"
 
@@ -721,7 +712,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "economical capacitor"
 	id = "superecocap"
 	req_tech = list(TECH_POWER = 6)
-	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
+	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
 	build_path = /obj/item/modularlaser/capacitor/eco/super
 	sort_string = "MAVEX"
 
@@ -729,7 +720,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "high throughput capactior"
 	id = "quickcap"
 	req_tech = list(TECH_POWER = 8)
-	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
+	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
 	build_path = /obj/item/modularlaser/capacitor/speed
 	sort_string = "MAVEY"
 
@@ -737,7 +728,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "very high throughput capactior"
 	id = "advqcap"
 	req_tech = list(TECH_POWER = 8)
-	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500, MAT_VERDANTIUM = 300)
+	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500, MAT_VERDANTIUM = 300)
 	build_path = /obj/item/modularlaser/capacitor/speed/advanced
 	sort_string = "MAVEZ"
 
@@ -745,7 +736,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "cooling system"
 	id = "basicac"
 	req_tech = list(TECH_ENGINEERING = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000)
+	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
 	build_path = /obj/item/modularlaser/cooling/basic
 	sort_string = "MAVFA"
 
@@ -753,7 +744,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "regenerative cooling system"
 	id = "recoverac"
 	req_tech = list(TECH_ENGINEERING = 4)
-	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
+	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
 	build_path = /obj/item/modularlaser/cooling/efficient
 	sort_string = "MAVFB"
 
@@ -761,7 +752,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "high-power regenerative cooling system"
 	id = "fastac"
 	req_tech = list(TECH_ENGINEERING = 7)
-	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500, MAT_VERDANTIUM = 300)
+	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500, MAT_VERDANTIUM = 300)
 	build_path = /obj/item/modularlaser/cooling/efficient/super
 	sort_string = "MAVFC"
 
@@ -769,7 +760,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "supercharged cooling system"
 	id = "superac"
 	req_tech = list(TECH_ENGINEERING = 4)
-	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
+	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
 	build_path = /obj/item/modularlaser/cooling/speed
 	sort_string = "MAVFD"
 
@@ -777,7 +768,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "hypercharged cooling system"
 	id = "hyperac"
 	req_tech = list(TECH_ENGINEERING = 7)
-	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500, MAT_VERDANTIUM = 300)
+	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500, MAT_VERDANTIUM = 300)
 	build_path = /obj/item/modularlaser/cooling/speed/adv
 	sort_string = "MAVFE"
 
@@ -785,7 +776,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "controller"
 	id = "modcontrol"
 	req_tech = list(TECH_DATA = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000)
+	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
 	build_path = /obj/item/modularlaser/controller/basic
 	sort_string = "MAVFF"
 
@@ -793,7 +784,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "AN-94 patterned fire controller"
 	id = "an94"
 	req_tech = list(TECH_DATA = 5, TECH_COMBAT = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000)
+	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
 	build_path = /obj/item/modularlaser/controller/twoburst
 	sort_string = "MAVFG"
 
@@ -801,7 +792,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "burst FCU"
 	id = "threecontrol"
 	req_tech = list(TECH_DATA = 5, TECH_COMBAT = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
+	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
 	build_path = /obj/item/modularlaser/controller/threeburst
 	sort_string = "MAVFH"
 
@@ -809,7 +800,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "quintburst FCU"
 	id = "fivecontrol"
 	req_tech = list(TECH_DATA = 5, TECH_COMBAT = 4)
-	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
+	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
 	build_path = /obj/item/modularlaser/controller/fiveburst
 	sort_string = "MAVFI"
 
@@ -822,7 +813,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "Testing range"
 	id = "test_range_pin"
 	req_tech = list(TECH_MATERIAL = 3, TECH_POWER = 2, TECH_COMBAT = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 1000)
+	materials = list(MAT_STEEL = 1000)
 	build_path = /obj/item/firing_pin/test_range
 	sort_string = "MAVGA"
 
@@ -830,7 +821,6 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "Exploration"
 	id = "explorer_pin"
 	req_tech = list(TECH_MATERIAL = 3, TECH_POWER = 2, TECH_COMBAT = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 500)
+	materials = list(MAT_STEEL = 1000, MAT_GLASS = 500)
 	build_path = /obj/item/firing_pin/explorer
 	sort_string = "MAVGC"
-

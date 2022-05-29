@@ -8,7 +8,7 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_BELT
 	origin_tech = list(TECH_MATERIAL = 2, TECH_BLUESPACE = 2, TECH_MAGNET = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 500)
+	matter = list(MAT_STEEL = 500)
 	var/gps_tag = "GEN0"
 	var/emped = FALSE
 	var/tracking = FALSE		// Will not show other signals or emit its own signal if false.
@@ -81,7 +81,8 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	dat["curr_y"] = curr.y
 	dat["curr_z"] = curr.z
 	dat["curr_z_name"] = GLOB.using_map.get_zlevel_name(curr.z)
-	dat["gps_list"] = list()
+	var/list/gps_list = list()
+	dat["gps_list"] = gps_list
 	dat["z_level_detection"] = GLOB.using_map.get_map_levels(curr.z, long_range)
 
 	for(var/obj/item/gps/G in GLOB.GPS_list - src)
@@ -94,7 +95,7 @@ GLOBAL_LIST_EMPTY(GPS_list)
 		if(!(T.z in dat["z_level_detection"]))
 			continue
 
-		var/gps_data[0]
+		var/list/gps_data[0]
 		gps_data["ref"] = G
 		gps_data["gps_tag"] = G.gps_tag
 
@@ -112,8 +113,7 @@ GLOBAL_LIST_EMPTY(GPS_list)
 		gps_data["local"] = (curr.z == T.z)
 		gps_data["x"] = T.x
 		gps_data["y"] = T.y
-
-		dat["gps_list"][++dat["gps_list"].len] = gps_data
+		gps_list[++gps_list.len] = gps_data
 
 	return dat
 
@@ -133,7 +133,8 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	<a href='?src=\ref[src];range=1'>\[Toggle Scan Range\]</a> \
 	[can_hide_signal ? "<a href='?src=\ref[src];hide=1'>\[Toggle Signal Visibility\]</a>":""]"
 
-	if(gps_data["gps_list"].len)
+	var/list/gps_list = gps_data["gps_list"]
+	if(gps_list.len)
 		dat += "Detected signals;"
 		for(var/gps in gps_data["gps_list"])
 			if(istype(gps_data["ref"], /obj/item/gps/internal/poi))
@@ -256,6 +257,15 @@ GLOBAL_LIST_EMPTY(GPS_list)
 /obj/item/gps/explorer/on
 	tracking = TRUE
 
+/obj/item/gps/survival
+	icon_state = "gps-exp"
+	gps_tag = "SOS0"
+	long_range = FALSE
+	local_mode = TRUE
+
+/obj/item/gps/survival/on
+	tracking = TRUE
+
 /obj/item/gps/robot
 	icon_state = "gps-borg"
 	gps_tag = "SYNTH0"
@@ -298,13 +308,14 @@ GLOBAL_LIST_EMPTY(GPS_list)
 
 	var/list/dat = list()
 	var/list/gps_data = display_list()
+	var/list/gps_list = gps_data["gps_list"]
 
 	dat += "Current location: [gps_data["my_area_name"]] <b>([gps_data["curr_x"]], [gps_data["curr_y"]], [gps_data["curr_z_name"]])</b>"
 	dat += "[hide_signal ? "Tagged" : "Broadcasting"] as '[gps_tag]'. <a href='?src=\ref[src];tag=1'>\[Change Tag\]</a> \
 	<a href='?src=\ref[src];range=1'>\[Toggle Scan Range\]</a> \
 	[can_hide_signal ? "<a href='?src=\ref[src];hide=1'>\[Toggle Signal Visibility\]</a>":""]"
 
-	if(gps_data["gps_list"].len)
+	if(gps_list.len)
 		dat += "Detected signals;"
 		for(var/gps in gps_data["gps_list"])
 			dat += "     [gps["gps_tag"]]: [gps["area_name"]] ([gps["x"]], [gps["y"]], [gps["z_name"]]) [gps["local"] ? "Dist: [gps["distance"]]m Dir: [gps["degrees"]]° ([gps["direction"]])" :""]"

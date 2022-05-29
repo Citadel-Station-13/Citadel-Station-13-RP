@@ -15,21 +15,17 @@
 		target = null
 	return ..()
 
-/obj/structure/portal_subtle/Bumped(mob/M as mob|obj)
-	if(istype(M,/mob) && !(istype(M,/mob/living)))
+/obj/structure/portal_subtle/Bumped(atom/movable/AM)
+	. = ..()
+	if(istype(AM, /mob) && !istype(AM, /mob/living))
 		return	//do not send ghosts, zshadows, ai eyes, etc
-	spawn(0)
-		src.teleport(M)
-		return
-	return
+	teleport(AM)
 
-/obj/structure/portal_subtle/Crossed(AM as mob|obj)
+/obj/structure/portal_subtle/Crossed(atom/movable/AM)
+	. = ..()
 	if(istype(AM,/mob) && !(istype(AM,/mob/living)))
 		return	//do not send ghosts, zshadows, ai eyes, etc
-	spawn(0)
-		src.teleport(AM)
-		return
-	return
+	teleport(AM)
 
 /obj/structure/portal_subtle/attack_hand(mob/user as mob)
 	if(istype(user) && !(istype(user,/mob/living)))
@@ -71,9 +67,9 @@
 /obj/structure/portal_gateway/Bumped(mob/M as mob|obj)
 	if(istype(M,/mob) && !(istype(M,/mob/living)))
 		return	//do not send ghosts, zshadows, ai eyes, etc
-	var/obj/effect/landmark/dest = pick(eventdestinations)
+	var/atom/movable/landmark/dest = pick(eventdestinations)
 	if(dest)
-		M << 'sound/effects/phasein.ogg'
+		SEND_SOUND(M, sound('sound/effects/phasein.ogg'))
 		playsound(src, 'sound/effects/phasein.ogg', 100, 1)
 		M.forceMove(dest.loc)
 	return

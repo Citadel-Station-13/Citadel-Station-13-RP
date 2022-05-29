@@ -58,7 +58,7 @@
 	var/x_offset = 26
 	var/y_offset = 26
 
-/obj/structure/construction/Initialize(var/mapload, var/ndir, var/building = FALSE)
+/obj/structure/construction/Initialize(mapload, ndir, building = FALSE)
 	. = ..()
 	if(ndir)
 		setDir(ndir)
@@ -68,15 +68,14 @@
 		pixel_y = (dir & 3) ? (dir == NORTH ? -y_offset : y_offset) : 0
 
 /obj/structure/construction/examine(mob/user)
-	if(!..(user, 2))
-		return
+	. = ..()
 	switch(stage)
 		if(FRAME_UNFASTENED)
-			to_chat(user, "It's an empty frame.")
+			. += "It's an empty frame."
 		if(FRAME_FASTENED)
-			to_chat(user, "It's fixed to the wall.")
+			. += "It's fixed to the wall."
 		if(FRAME_WIRED)
-			to_chat(user, "It's wired.")
+			. += "It's wired."
 
 /obj/structure/construction/update_icon()
 	icon_state = "[base_icon][stage]"
@@ -110,7 +109,7 @@
 		if (stage == FRAME_WIRED)
 			stage = FRAME_FASTENED
 			user.update_examine_panel(src)
-			new /obj/item/stack/cable_coil(get_turf(src), 1, "red")
+			new /obj/item/stack/cable_coil(get_turf(src), 1, null, "red")
 			user.visible_message("\The [user] removes the wiring from \the [src].", \
 				"You remove the wiring from \the [src].", "You hear a snip.")
 			playsound(src.loc, W.usesound, 50, 1)

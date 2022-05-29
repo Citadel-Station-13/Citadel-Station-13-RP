@@ -28,10 +28,10 @@ AI MODULES
 
 	if (istype(AM, /obj/machinery/computer/aiupload))
 		var/obj/machinery/computer/aiupload/comp = AM
-		if(comp.stat & NOPOWER)
+		if(comp.machine_stat & NOPOWER)
 			to_chat(usr, "The upload computer has no power!")
 			return
-		if(comp.stat & BROKEN)
+		if(comp.machine_stat & BROKEN)
 			to_chat(usr, "The upload computer is broken!")
 			return
 		if (!comp.current)
@@ -46,7 +46,7 @@ AI MODULES
 			src.transmitInstructions(comp.current, usr)
 			to_chat(comp.current,  "These are your laws now:")
 			comp.current.show_laws()
-			for(var/mob/living/silicon/robot/R in mob_list)
+			for(var/mob/living/silicon/robot/R in GLOB.mob_list)
 				if(R.lawupdate && (R.connected_ai == comp.current))
 					to_chat(R, "These are your laws now:")
 					R.show_laws()
@@ -55,10 +55,10 @@ AI MODULES
 
 	else if (istype(AM, /obj/machinery/computer/borgupload))
 		var/obj/machinery/computer/borgupload/comp = AM
-		if(comp.stat & NOPOWER)
+		if(comp.machine_stat & NOPOWER)
 			to_chat(usr, "The upload computer has no power!")
 			return
-		if(comp.stat & BROKEN)
+		if(comp.machine_stat & BROKEN)
 			to_chat(usr, "The upload computer is broken!")
 			return
 		if (!comp.current)

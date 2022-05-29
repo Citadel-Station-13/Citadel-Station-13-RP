@@ -4,7 +4,7 @@
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "measuring"
 	origin_tech = list(TECH_MATERIAL = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 100)
+	matter = list(MAT_STEEL = 100)
 	w_class = ITEMSIZE_SMALL
 
 /obj/item/storage/bag/fossils
@@ -37,7 +37,7 @@
 	icon_state = "flashgun"
 	item_state = "lampgreen"
 	origin_tech = list(TECH_BLUESPACE = 3, TECH_MAGNET = 3, TECH_ARCANE = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 10000,"glass" = 5000)
+	matter = list(MAT_STEEL = 10000, MAT_GLASS = 5000)
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
 
@@ -60,7 +60,7 @@
 		if(SSxenoarch) //Sanity check due to runtimes ~Z
 			for(var/A in SSxenoarch.artifact_spawning_turfs)
 				var/turf/simulated/mineral/T = A
-				if(T.density && T.artifact_find)
+				if(istype(T, /turf/simulated/mineral) && T.density && T.artifact_find)
 					if(T.z == cur_turf.z)
 						var/cur_dist = get_dist(cur_turf, T) * 2
 						if(nearestTargetDist < 0 || cur_dist < nearestTargetDist)
@@ -71,7 +71,7 @@
 
 			for(var/A in SSxenoarch.digsite_spawning_turfs)
 				var/turf/simulated/mineral/T = A
-				if(T.density && T.finds && T.finds.len)
+				if(istype(T, /turf/simulated/mineral) && T.density && T.finds && T.finds.len)
 					if(T.z == cur_turf.z)
 						var/cur_dist = get_dist(cur_turf, T) * 2
 						if(nearestSimpleTargetDist < 0 || cur_dist < nearestSimpleTargetDist)
@@ -95,7 +95,7 @@
 	icon_state = "depth_scanner"
 	item_state = "analyzer"
 	origin_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2, TECH_BLUESPACE = 2)
-	matter = list(DEFAULT_WALL_MATERIAL = 1000,"glass" = 1000)
+	matter = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
 	var/list/positive_locations = list()
@@ -133,7 +133,7 @@
 
 			positive_locations.Add(D)
 
-			to_chat(user, "<span class='notice'>\icon[src] [src] pings.</span>")
+			to_chat(user, "<span class='notice'>[icon2html(thing = src, target = world)] [src] pings.</span>")
 
 	else if(istype(A, /obj/structure/boulder))
 		var/obj/structure/boulder/B = A
@@ -151,69 +151,73 @@
 
 			positive_locations.Add(D)
 
-			to_chat(user, "<span class='notice'>\icon[src] [src] pings [pick("madly","wildly","excitedly","crazily")]!</span>")
+			to_chat(user, "<span class='notice'>[icon2html(thing = src, target = world)] [src] pings [pick("madly","wildly","excitedly","crazily")]!</span>")
 
 /obj/item/depth_scanner/attack_self(var/mob/living/user)
-	interact(user)
+	ui_interact(user)
 
-/obj/item/depth_scanner/interact(var/mob/user as mob)
-	var/dat = "<b>Coordinates with positive matches</b><br>"
+/obj/item/depth_scanner/ui_state(mob/user)
+	return GLOB.deep_inventory_state
 
-	dat += "<A href='?src=\ref[src];clear=0'>== Clear all ==</a><br>"
+/obj/item/depth_scanner/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "XenoarchDepthScanner", name)
+		ui.open()
+
+/obj/item/depth_scanner/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	var/list/data = ..()
+
+	data["current"] = list()
 
 	if(current)
-		dat += "Time: [current.time]<br>"
-		dat += "Coords: [current.coords]<br>"
-		dat += "Anomaly depth: [current.depth] cm<br>"
-		dat += "Anomaly size: [current.clearance] cm<br>"
-		dat += "Dissonance spread: [current.dissonance_spread]<br>"
+		data["current"] = list(
+			"time" = current.time,
+			"coords" = current.coords,
+			"depth" = current.depth,
+			"clearance" = current.clearance,
+			"dissonance_spread" = current.dissonance_spread,
+			"index" = current.record_index,
+		)
+		data["current"]["material"] = "Unknown"
 		var/index = responsive_carriers.Find(current.material)
-		if(index > 0 && index <= finds_as_strings.len)
-			dat += "Anomaly material: [finds_as_strings[index]]<br>"
-		else
-			dat += "Anomaly material: Unknown<br>"
-		dat += "<A href='?src=\ref[src];clear=[current.record_index]'>clear entry</a><br>"
-	else
-		dat += "Select an entry from the list<br>"
-		dat += "<br><br><br><br>"
-	dat += "<hr>"
-	if(positive_locations.len)
-		for(var/index = 1 to positive_locations.len)
-			var/datum/depth_scan/D = positive_locations[index]
-			dat += "<A href='?src=\ref[src];select=[index]'>[D.time], coords: [D.coords]</a><br>"
-	else
-		dat += "No entries recorded."
+		if(index > 0 && index <= LAZYLEN(finds_as_strings))
+			data["current"]["material"] = finds_as_strings[index]
 
-	dat += "<hr>"
-	dat += "<A href='?src=\ref[src];refresh=1'>Refresh</a><br>"
-	dat += "<A href='?src=\ref[src];close=1'>Close</a><br>"
-	user << browse(dat,"window=depth_scanner;size=300x500")
-	onclose(user, "depth_scanner")
+	var/list/plocs = list()
+	data["positive_locations"] = plocs
+	for(var/i in 1 to LAZYLEN(positive_locations))
+		var/datum/depth_scan/D = positive_locations[i]
+		plocs.Add(list(list(
+			"index" = i,
+			"time" = D.time,
+			"coords" = D.coords,
+		)))
 
-/obj/item/depth_scanner/Topic(href, href_list)
-	..()
-	usr.set_machine(src)
+	return data
 
-	if(href_list["select"])
-		var/index = text2num(href_list["select"])
-		if(index && index <= positive_locations.len)
-			current = positive_locations[index]
-	else if(href_list["clear"])
-		var/index = text2num(href_list["clear"])
-		if(index)
-			if(index <= positive_locations.len)
-				var/datum/depth_scan/D = positive_locations[index]
-				positive_locations.Remove(D)
-				qdel(D)
-		else
-			//GC will hopefully pick them up before too long
-			positive_locations = list()
-			qdel(current)
-	else if(href_list["close"])
-		usr.unset_machine()
-		usr << browse(null, "window=depth_scanner")
+/obj/item/depth_scanner/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	if(..())
+		return TRUE
 
-	updateSelfDialog()
+	switch(action)
+		if("select")
+			var/index = text2num(params["select"])
+			if(index && index <= LAZYLEN(positive_locations))
+				current = positive_locations[index]
+			return TRUE
+		if("clear")
+			var/index = text2num(params["clear"])
+			if(index)
+				if(index <= LAZYLEN(positive_locations))
+					var/datum/depth_scan/D = positive_locations[index]
+					positive_locations.Remove(D)
+					qdel(D)
+					current = null
+			else
+				QDEL_LIST_NULL(positive_locations)
+				QDEL_NULL(current)
+			return TRUE
 
 /obj/item/beacon_locator
 	name = "locater device"
@@ -222,7 +226,7 @@
 	icon_state = "pinoff"	//pinonfar, pinonmedium, pinonclose, pinondirect, pinonnull
 	item_state = "electronic"
 	origin_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 2, TECH_BLUESPACE = 3)
-	matter = list(DEFAULT_WALL_MATERIAL = 1000,"glass" = 500)
+	matter = list(MAT_STEEL = 1000, MAT_GLASS = 500)
 	var/frequency = PUB_FREQ
 	var/scan_ticks = 0
 	var/obj/item/radio/target_radio
@@ -232,10 +236,10 @@
 	START_PROCESSING(SSobj, src)
 
 /obj/item/beacon_locator/Destroy()
-	return ..()
 	STOP_PROCESSING(SSobj, src)
+	return ..()
 
-/obj/item/beacon_locator/process()
+/obj/item/beacon_locator/process(delta_time)
 	if(target_radio)
 		setDir(get_dir(src,target_radio))
 		switch(get_dist(src,target_radio))
@@ -267,49 +271,52 @@
 						scan_ticks = 0
 						var/turf/T = get_turf(src)
 						if(target_radio)
-							T.visible_message("\icon[src] [src] [pick("chirps","chirrups","cheeps")] happily.")
+							T.visible_message("[icon2html(thing = src, target = world)] [src] [pick("chirps","chirrups","cheeps")] happily.")
 						else
-							T.visible_message("\icon[src] [src] [pick("chirps","chirrups","cheeps")] sadly.")
+							T.visible_message("[icon2html(thing = src, target = world)] [src] [pick("chirps","chirrups","cheeps")] sadly.")
 		else
 			icon_state = "pinoff"
 
-/obj/item/beacon_locator/attack_self(var/mob/user as mob)
-	return interact(user)
+/obj/item/beacon_locator/attack_self(mob/user)
+	return ui_interact(user)
 
-/obj/item/beacon_locator/interact(var/mob/user as mob)
-	var/dat = "<b>Radio frequency tracker</b><br>"
-	dat += {"
-				<A href='byond://?src=\ref[src];reset_tracking=1'>Reset tracker</A><BR>
-				Frequency:
-				<A href='byond://?src=\ref[src];freq=-10'>-</A>
-				<A href='byond://?src=\ref[src];freq=-2'>-</A>
-				[format_frequency(frequency)]
-				<A href='byond://?src=\ref[src];freq=2'>+</A>
-				<A href='byond://?src=\ref[src];freq=10'>+</A><BR>
-				"}
+/obj/item/beacon_locator/ui_state(mob/user)
+	return GLOB.inventory_state
 
-	dat += "<A href='?src=\ref[src];close=1'>Close</a><br>"
-	user << browse(dat,"window=locater;size=300x150")
-	onclose(user, "locater")
+/obj/item/beacon_locator/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "BeaconLocator", name)
+		ui.open()
 
-/obj/item/beacon_locator/Topic(href, href_list)
-	..()
-	usr.set_machine(src)
+/obj/item/beacon_locator/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	var/list/data = ..()
 
-	if(href_list["reset_tracking"])
-		scan_ticks = 1
-		target_radio = null
-	else if(href_list["freq"])
-		var/new_frequency = (frequency + text2num(href_list["freq"]))
-		if (frequency < 1200 || frequency > 1600)
-			new_frequency = sanitize_frequency(new_frequency, 1499)
-		frequency = new_frequency
+	data["scan_ticks"] = scan_ticks
+	data["degrees"] = null
+	if(target_radio)
+		data["degrees"] = round(Get_Angle(get_turf(src), get_turf(target_radio)))
 
-	else if(href_list["close"])
-		usr.unset_machine()
-		usr << browse(null, "window=locater")
+	data["rawfreq"] = frequency
+	data["minFrequency"] = RADIO_LOW_FREQ
+	data["maxFrequency"] = RADIO_HIGH_FREQ
 
-	updateSelfDialog()
+	return data
+
+/obj/item/beacon_locator/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	if(..())
+		return TRUE
+
+	switch(action)
+		if("reset_tracking")
+			scan_ticks = 1
+			target_radio = null
+			return TRUE
+		if("setFrequency")
+			var/new_frequency = (text2num(params["freq"]))
+			new_frequency = sanitize_frequency(new_frequency, RADIO_LOW_FREQ, RADIO_HIGH_FREQ)
+			frequency = new_frequency
+			return TRUE
 
 /obj/item/xenoarch_multi_tool
 	name = "xenoarcheology multitool"
@@ -318,7 +325,7 @@
 	item_state = "lampgreen"
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	origin_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 3, TECH_BLUESPACE = 2, TECH_ARCANE = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 10000,"glass" = 5000)
+	matter = list(MAT_STEEL = 10000, MAT_GLASS = 5000)
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
 	var/mode = 1 //Start off scanning. 1 = scanning, 0 = measuring
@@ -331,19 +338,22 @@
 	depth_scanner = new/obj/item/depth_scanner(src)
 
 /obj/item/xenoarch_multi_tool/attack_self(var/mob/living/user)
-	depth_scanner.interact(user)
+	depth_scanner.interact(usr)
 
-/obj/item/xenoarch_multi_tool/verb/swap_settings(var/mob/living/user)
+/obj/item/xenoarch_multi_tool/verb/swap_settings()
 	set name = "Swap Functionality"
 	set desc = "Swap between the scanning and measuring functionality.."
+	if(!(src in usr))
+		return
 	mode = !mode
 	if(mode)
-		to_chat(user, "The device will now scan for artifacts.")
+		to_chat(usr, "The device will now scan for artifacts.")
 	else
-		to_chat(user, "The device will now measure depth dug.")
+		to_chat(usr, "The device will now measure depth dug.")
 
-/obj/item/xenoarch_multi_tool/verb/scan_for_anomalies(var/mob/living/user)
+/obj/item/xenoarch_multi_tool/verb/scan_for_anomalies()
 	set name = "Scan for Anomalies"
 	set desc = "Scan for artifacts and anomalies within your vicinity."
-	anomaly_scanner.interact(user)
-
+	if(!(src in usr))
+		return
+	anomaly_scanner.ui_interact(usr)

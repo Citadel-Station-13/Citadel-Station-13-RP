@@ -4,13 +4,15 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "jar"
 	w_class = ITEMSIZE_SMALL
-	matter = list("glass" = 200)
+	matter = list(MAT_GLASS = 200)
 	flags = NOBLUDGEON
 	var/list/accept_mobs = list(/mob/living/simple_mob/animal/passive/lizard, /mob/living/simple_mob/animal/passive/mouse, /mob/living/simple_mob/animal/sif/leech, /mob/living/simple_mob/animal/sif/frostfly, /mob/living/simple_mob/animal/sif/glitterfly)
 	var/contains = 0 // 0 = nothing, 1 = money, 2 = animal, 3 = spiderling
+	drop_sound = 'sound/items/drop/glass.ogg'
+	pickup_sound = 'sound/items/pickup/glass.ogg'
 
-/obj/item/glass_jar/New()
-	..()
+/obj/item/glass_jar/Initialize(mapload)
+	. = ..()
 	update_icon()
 
 /obj/item/glass_jar/afterattack(var/atom/A, var/mob/user, var/proximity)
@@ -97,7 +99,7 @@
 				var/image/victim = image(M.icon, M.icon_state)
 				victim.pixel_y = 6
 				victim.color = M.color
-				if(M.plane == PLANE_LIGHTING_ABOVE)	// This will only show up on the ground sprite, due to the HuD being over it, so we need both images.
+				if(M.plane == ABOVE_LIGHTING_PLANE)	// This will only show up on the ground sprite, due to the HuD being over it, so we need both images.
 					var/image/victim_glow = image(M.icon, M.icon_state)
 					victim_glow.pixel_y = 6
 					victim_glow.color = M.color

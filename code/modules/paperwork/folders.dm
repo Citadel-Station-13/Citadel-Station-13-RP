@@ -5,6 +5,8 @@
 	icon_state = "folder"
 	w_class = ITEMSIZE_SMALL
 	pressure_resistance = 2
+	drop_sound = 'sound/items/drop/paper.ogg'
+	pickup_sound = 'sound/items/pickup/paper.ogg'
 
 /obj/item/folder/blue
 	desc = "A blue folder."
@@ -38,12 +40,12 @@
 	desc = "A white folder with RD markings."
 	icon_state = "folder_rd"
 
-/obj/item/folder/white_rd/New()
+/obj/item/folder/white_rd/Initialize(mapload)
+	. = ..()
 	//add some memos
-	var/obj/item/paper/P = new()
+	var/obj/item/paper/P = new(src)
 	P.name = "Memo RE: proper analysis procedure"
 	P.info = "<br>We keep test dummies in pens here for a reason"
-	src.contents += P
 	update_icon()
 
 /obj/item/folder/yellow_ce

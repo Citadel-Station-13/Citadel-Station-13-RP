@@ -14,7 +14,7 @@
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 1, TECH_PHORON = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 500)
+	matter = list(MAT_STEEL = 500)
 	var/status = 0
 	var/throw_amount = 100
 	var/lit = 0	//on or off
@@ -31,7 +31,7 @@
 	QDEL_NULL(ptank)
 	. = ..()
 
-/obj/item/flamethrower/process()
+/obj/item/flamethrower/process(delta_time)
 	if(!lit)
 		STOP_PROCESSING(SSobj, src)
 		return null
@@ -197,12 +197,11 @@
 	//location.hotspot_expose(1000,500,1)
 	return
 
-/obj/item/flamethrower/full/New(var/loc)
-	..()
+/obj/item/flamethrower/full/Initialize(mapload)
+	. = ..()
 	weldtool = new /obj/item/weldingtool(src)
 	weldtool.status = 0
 	igniter = new /obj/item/assembly/igniter(src)
 	igniter.secured = 0
 	status = 1
 	update_icon()
-	return

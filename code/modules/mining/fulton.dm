@@ -25,9 +25,9 @@ var/global/list/total_extraction_beacons = list()
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "phoroncrate"
 
-/obj/item/extraction_pack/examine()
+/obj/item/extraction_pack/examine(mob/user)
 	. = ..()
-	usr.show_message("It has [uses_left] use\s remaining.", 1)
+	. +="It has [uses_left] use\s remaining."
 
 /obj/item/extraction_pack/attack_self(mob/user)
 	var/list/possible_beacons = list()
@@ -127,9 +127,14 @@ var/global/list/total_extraction_beacons = list()
 				update_icon(A)
 			sleep(30)
 			var/list/flooring_near_beacon = list()
-			for(var/turf/simulated/floor/floor in orange(1, beacon))
-				flooring_near_beacon += floor
-			holder_obj.forceMove(pick(flooring_near_beacon))
+			for(var/turf/T in range(1, beacon))
+				if(T.density)
+					continue
+				flooring_near_beacon += T
+			if(!length(flooring_near_beacon))
+				holder_obj.forceMove(get_turf(beacon))
+			else
+				holder_obj.forceMove(pick(flooring_near_beacon))
 			animate(holder_obj, pixel_z = 10, time = 50)
 			sleep(50)
 			animate(holder_obj, pixel_z = 15, time = 10)
@@ -173,7 +178,7 @@ var/global/list/total_extraction_beacons = list()
 	density = FALSE
 	var/beacon_network = "station"
 
-/obj/structure/extraction_point/Initialize()
+/obj/structure/extraction_point/Initialize(mapload)
 	. = ..()
 	name += " ([rand(100,999)]) ([get_area_name(src, TRUE)])"
 	global.total_extraction_beacons += src

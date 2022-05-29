@@ -13,13 +13,15 @@
 /obj/item/organ/internal/xenos/eggsac/grey
 	icon_state = "sac_grey"
 
-/obj/item/organ/internal/xenos/eggsac/grey/colormatch/New()
-	..()
-	var/mob/living/carbon/human/H = null
-	spawn(15)
-		if(ishuman(owner))
-			H = owner
-			color = H.species.blood_color
+/obj/item/organ/internal/xenos/eggsac/grey/colormatch/Initialize(mapload)
+	. = ..()
+	addtimer(CALLBACK(src, .proc/sync_color), 15)
+
+/obj/item/organ/internal/xenos/eggsac/grey/colormatch/proc/sync_color()
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		if(H.species.blood_color)
+			add_atom_colour(H.species.blood_color, FIXED_COLOUR_PRIORITY)
 
 /obj/item/organ/internal/xenos/plasmavessel
 	name = "plasma vessel"
@@ -54,13 +56,15 @@
 	icon_state = "plasma_grey"
 	stored_plasma = 200
 
-/obj/item/organ/internal/xenos/plasmavessel/grey/colormatch/New()
-	..()
-	var/mob/living/carbon/human/H = null
-	spawn(15)
-		if(ishuman(owner))
-			H = owner
-			color = H.species.blood_color
+/obj/item/organ/internal/xenos/plasmavessel/grey/colormatch/Initialize(mapload)
+	. = ..()
+	addtimer(CALLBACK(src, .proc/sync_color), 15)
+
+/obj/item/organ/internal/xenos/plasmavessel/grey/colormatch/proc/sync_color()
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		if(H.species.blood_color)
+			add_atom_colour(H.species.blood_color, FIXED_COLOUR_PRIORITY)
 
 /obj/item/organ/internal/xenos/plasmavessel/queen
 	name = "bloated plasma vessel"
@@ -91,13 +95,15 @@
 /obj/item/organ/internal/xenos/acidgland/grey
 	icon_state = "acidgland_grey"
 
-/obj/item/organ/internal/xenos/acidgland/grey/colormatch/New()
-	..()
-	var/mob/living/carbon/human/H = null
-	spawn(15)
-		if(ishuman(owner))
-			H = owner
-			color = H.species.blood_color
+/obj/item/organ/internal/xenos/acidgland/grey/colormatch/Initialize(mapload)
+	. = ..()
+	addtimer(CALLBACK(src, .proc/sync_color), 15)
+
+/obj/item/organ/internal/xenos/acidgland/grey/colormatch/proc/sync_color()
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		if(H.species.blood_color)
+			add_atom_colour(H.species.blood_color, FIXED_COLOUR_PRIORITY)
 
 /obj/item/organ/internal/xenos/hivenode
 	name = "hive node"
@@ -108,13 +114,15 @@
 /obj/item/organ/internal/xenos/hivenode/grey
 	icon_state = "xenode_grey"
 
-/obj/item/organ/internal/xenos/hivenode/grey/colormatch/New()
-	..()
-	var/mob/living/carbon/human/H = null
-	spawn(15)
-		if(ishuman(owner))
-			H = owner
-			color = H.species.blood_color
+/obj/item/organ/internal/xenos/hivenode/grey/colormatch/Initialize(mapload)
+	. = ..()
+	addtimer(CALLBACK(src, .proc/sync_color), 15)
+
+/obj/item/organ/internal/xenos/hivenode/grey/colormatch/proc/sync_color()
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		if(H.species.blood_color)
+			add_atom_colour(H.species.blood_color, FIXED_COLOUR_PRIORITY)
 
 /obj/item/organ/internal/xenos/resinspinner
 	name = "resin spinner"
@@ -122,22 +130,24 @@
 	icon_state = "xenode"
 	organ_tag = O_RESIN
 
-	organ_verbs = list(
+	/*organ_verbs = list(
 		/mob/living/carbon/human/proc/resin,
 		/mob/living/carbon/human/proc/plant
 		)
+	edit because the xenos that use it have the verbs anyways and hybrids dont want the plant verb*/
 
 /obj/item/organ/internal/xenos/resinspinner/grey
 	icon_state = "xenode_grey"
 
-/obj/item/organ/internal/xenos/resinspinner/grey/colormatch/New()
-	..()
-	var/mob/living/carbon/human/H = null
-	spawn(15)
-		if(ishuman(owner))
-			H = owner
-			color = H.species.blood_color
+/obj/item/organ/internal/xenos/resinspinner/grey/colormatch/Initialize(mapload)
+	. = ..()
+	addtimer(CALLBACK(src, .proc/sync_color), 15)
 
+/obj/item/organ/internal/xenos/resinspinner/grey/colormatch/proc/sync_color()
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		if(H.species.blood_color)
+			add_atom_colour(H.species.blood_color, FIXED_COLOUR_PRIORITY)
 
 // XENOMORPH EXTERNAL ORGANS
 

@@ -2,7 +2,7 @@
 
 /obj/machinery/mineral/unloading_machine
 	name = "unloading machine"
-	icon = 'icons/obj/machines/mining_machines_vr.dmi' // VOREStation Edit
+	icon = 'icons/obj/machines/mining_machines_vr.dmi'
 	icon_state = "unloader"
 	density = 1
 	anchored = 1.0
@@ -16,32 +16,27 @@
 
 // wip - why isn't this dirs instead?!
 /obj/machinery/mineral/unloading_machine/LateInitialize()
-	for(var/dir in cardinal)
+	for(var/dir in GLOB.cardinal)
 		input = locate(/obj/machinery/mineral/input, get_step(src, dir))
 		if(input)
 			break
-	for(var/dir in cardinal)
+	for(var/dir in GLOB.cardinal)
 		output = locate(/obj/machinery/mineral/output, get_step(src, dir))
 		if(output)
 			break
 
-/obj/machinery/mineral/unloading_machine/process()
+/obj/machinery/mineral/unloading_machine/process(delta_time)
 	if(output && input)
-		if(locate(/obj/structure/ore_box, input.loc))
-			var/obj/structure/ore_box/BOX = locate(/obj/structure/ore_box, input.loc)
-			var/i = 0
-			for (var/obj/item/ore/O in BOX.contents)
-				BOX.contents -= O
-				O.loc = output.loc
-				i++
-				if (i>=10)
-					return
-		if(locate(/obj/item, input.loc))
-			var/obj/item/O
-			var/i
-			for (i = 0; i<10; i++)
-				O = locate(/obj/item, input.loc)
-				if(O)
-					O.forceMove(output.loc)
-				else
-					return
+		if(length(output.loc.contents) > 100)		// let's not!
+			return
+		var/obj/structure/ore_box/O = locate() in input.loc
+		if(O)
+			for(var/i in 1 to 10)
+				if(!O.deposit(output.loc))
+					break
+		var/obj/item/I
+		for(var/i in 1 to 10)
+			I = locate() in input.loc
+			if(!I)
+				break
+			I.forceMove(output.loc)

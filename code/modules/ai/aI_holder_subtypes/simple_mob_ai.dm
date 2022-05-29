@@ -17,7 +17,7 @@
 	retaliate = FALSE
 	can_flee = TRUE
 	violent_breakthrough = FALSE
-	base_wander_delay = 8 //vorestation edit, to make pets slow.
+	base_wander_delay = 8 // Pets slow.
 
 // Won't wander away as quickly, ideal for event-spawned mobs like carp or drones.
 /datum/ai_holder/simple_mob/event
@@ -122,7 +122,7 @@
 
 /datum/ai_holder/simple_mob/melee/evasive/post_melee_attack(atom/A)
 	if(holder.Adjacent(A))
-		holder.IMove(get_step(holder, pick(alldirs)))
+		holder.IMove(get_step(holder, pick(GLOB.alldirs)))
 		holder.face_atom(A)
 
 

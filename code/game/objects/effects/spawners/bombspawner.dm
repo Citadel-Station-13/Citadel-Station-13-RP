@@ -23,8 +23,8 @@
 /obj/effect/spawner/bomb/suicide
 	btype = 3
 
-/obj/effect/spawner/bomb/New()
-	..()
+/obj/effect/spawner/bomb/Initialize(mapload)
+	. = ..()
 
 	switch (src.btype)
 		// radio
@@ -151,15 +151,17 @@
 	name = "TTV bomb - proximity"
 	assembly_type = /obj/item/assembly/prox_sensor
 
-/obj/effect/spawner/newbomb/radio/custom/New(var/newloc, ph, ox, co)
-	if(ph != null) phoron_amt = ph
-	if(ox != null) oxygen_amt = ox
-	if(co != null) carbon_amt = co
-	..()
+/obj/effect/spawner/newbomb/radio/custom/Initialize(mapload, ph, ox, co)
+	if(ph != null)
+		phoron_amt = ph
+	if(ox != null)
+		oxygen_amt = ox
+	if(co != null)
+		carbon_amt = co
+	return ..()
 
-/obj/effect/spawner/newbomb/Initialize(newloc)
-	..(newloc)
-
+/obj/effect/spawner/newbomb/Initialize(mapload)
+	. = ..()
 	var/obj/item/transfer_valve/V = new(src.loc)
 	var/obj/item/tank/phoron/PT = new(V)
 	var/obj/item/tank/oxygen/OT = new(V)
@@ -194,9 +196,7 @@
 
 	V.update_icon()
 
-	qdel(src)
-
-
+	return INITIALIZE_HINT_QDEL
 
 ///////////////////////
 //One Tank Bombs, WOOOOOOO! -Luke
@@ -213,13 +213,11 @@
 	var/phoron_amt = 0
 	var/oxygen_amt = 0
 
-/obj/effect/spawner/onetankbomb/New(newloc) //just needs an assembly.
-	..(newloc)
-
+/obj/effect/spawner/onetankbomb/Initialize(mapload)
+	. = ..()
 	var/type = pick(/obj/item/tank/phoron/onetankbomb, /obj/item/tank/oxygen/onetankbomb)
 	new type(src.loc)
-
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/spawner/onetankbomb/full
 	name = "Single-tank bomb"
@@ -229,28 +227,8 @@
 //	var/assembly_type = /obj/item/assembly/signaler
 
 	//Note that the maximum amount of gas you can put in a 70L air tank at 1013.25 kPa and 519K is 16.44 mol.
-/obj/effect/spawner/onetankbomb/full/New(newloc) //just needs an assembly.
-	..(newloc)
-
+/obj/effect/spawner/onetankbomb/full/Initialize(mapload)
+	. = ..()
 	var/type = pick(/obj/item/tank/phoron/onetankbomb/full, /obj/item/tank/oxygen/onetankbomb/full)
 	new type(src.loc)
-
-	qdel(src)
-
-/obj/effect/spawner/onetankbomb/frag
-	name = "Single-tank bomb"
-	icon = 'icons/mob/screen1.dmi'
-	icon_state = "x"
-
-//	var/assembly_type = /obj/item/assembly/signaler
-
-	//Note that the maximum amount of gas you can put in a 70L air tank at 1013.25 kPa and 519K is 16.44 mol.
-/obj/effect/spawner/onetankbomb/full/New(newloc) //just needs an assembly.
-	..(newloc)
-
-	var/type = pick(/obj/item/tank/phoron/onetankbomb/full, /obj/item/tank/oxygen/onetankbomb/full)
-	new type(src.loc)
-
-	qdel(src)
-
-
+	return INITIALIZE_HINT_QDEL

@@ -17,7 +17,7 @@
 	aspect = ASPECT_UNSTABLE
 	glow_color = "#CC00CC"
 
-/obj/item/spell/aura/unstable/process()
+/obj/item/spell/aura/unstable/process(delta_time)
 	if(!pay_energy(200))
 		qdel(src)
 	var/list/nearby_mobs = range(calculate_spell_power(14),owner)

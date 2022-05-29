@@ -1,9 +1,3 @@
-#define TOPIC_NOACTION 0
-#define TOPIC_HANDLED 1
-#define TOPIC_REFRESH 2
-#define TOPIC_UPDATE_PREVIEW 4
-#define TOPIC_REFRESH_UPDATE_PREVIEW (TOPIC_REFRESH|TOPIC_UPDATE_PREVIEW)
-
 #define PREF_FBP_CYBORG "cyborg"
 #define PREF_FBP_POSI "posi"
 #define PREF_FBP_SOFTWARE "software"
@@ -12,11 +6,6 @@
 	name = "General"
 	sort_order = 1
 	category_item_type = /datum/category_item/player_setup_item/general
-
-/datum/category_group/player_setup_category/skill_preferences
-	name = "Skills"
-	sort_order = 2
-	category_item_type = /datum/category_item/player_setup_item/skills
 
 /datum/category_group/player_setup_category/appearance_preferences
 	name = "Antagonism"
@@ -27,12 +16,7 @@
 	name = "Loadout"
 	sort_order = 5
 	category_item_type = /datum/category_item/player_setup_item/loadout
-/* //VOREStation Removal
-/datum/category_group/player_setup_category/trait_preferences
-	name = "Traits"
-	sort_order = 6
-	category_item_type = /datum/category_item/player_setup_item/traits
-*/ //VOREStation Removal End
+
 /datum/category_group/player_setup_category/global_preferences
 	name = "Global"
 	sort_order = 6
@@ -115,8 +99,11 @@
 /datum/category_group/player_setup_category
 	var/sort_order = 0
 
-/datum/category_group/player_setup_category/dd_SortValue()
-	return sort_order
+/datum/category_group/player_setup_category/compare_to(datum/D)
+	if(istype(D, /datum/category_group/player_setup_category))
+		var/datum/category_group/player_setup_category/G = D
+		return cmp_numeric_asc(sort_order, G.sort_order)
+	return ..()
 
 /datum/category_group/player_setup_category/proc/sanitize_setup()
 	for(var/datum/category_item/player_setup_item/PI in items)
@@ -178,8 +165,11 @@
 	pref = null
 	return ..()
 
-/datum/category_item/player_setup_item/dd_SortValue()
-	return sort_order
+/datum/category_item/player_setup_item/compare_to(datum/D)
+	if(istype(D, /datum/category_item/player_setup_item))
+		var/datum/category_item/player_setup_item/I = D
+		return cmp_numeric_asc(sort_order, I.sort_order)
+	return ..()
 
 /*
 * Called when the item is asked to load per character settings
@@ -230,7 +220,7 @@
 	. = OnTopic(href, href_list, usr)
 
 	if(. & TOPIC_UPDATE_PREVIEW)
-		pref_mob.client.prefs.preview_icon = null
+		pref_mob.client.prefs.update_preview_icon()
 	if(. & TOPIC_REFRESH)
 		pref_mob.client.prefs.ShowChoices(usr)
 
@@ -271,14 +261,15 @@
 	return 0 //Something went wrong!
 
 /datum/category_item/player_setup_item/proc/get_min_age() //Minimum limit is 18
-	var/min_age = 18
-	var/datum/species/S = GLOB.all_species[pref.species ? pref.species : "Human"]
-	if(!is_FBP() && S.min_age > 18)
-		min_age = S.min_age
-	return min_age
+	var/datum/species/S = pref.character_static_species_meta()
+	if(S.min_age > 18)
+		return S.min_age
+	else if(!is_FBP())
+		S.min_age = 18
+	return S.min_age
 
 /datum/category_item/player_setup_item/proc/get_max_age()
-	var/datum/species/S = GLOB.all_species[pref.species ? pref.species : "Human"]
+	var/datum/species/S = pref.character_static_species_meta()
 	if(!is_FBP())
 		return S.max_age // If they're not a robot, we can just use the species var.
 	var/FBP_type = get_FBP_type()
@@ -290,3 +281,7 @@
 		if(PREF_FBP_SOFTWARE)
 			return 150
 	return S.max_age // welp
+
+/datum/category_item/player_setup_item/proc/color_square(red, green, blue, hex)
+	var/color = hex ? hex : "#[num2hex(red, 2)][num2hex(green, 2)][num2hex(blue, 2)]"
+	return "<span style='font-face: fixedsys; font-size: 14px; background-color: [color]; color: [color]'>___</span>"

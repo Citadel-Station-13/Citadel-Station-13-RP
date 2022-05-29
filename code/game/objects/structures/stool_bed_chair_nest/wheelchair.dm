@@ -41,31 +41,30 @@
 			user.pulledby = null
 			to_chat(user, "<span class='warning'>You lost your grip!</span>")
 		return
-	if(has_buckled_mobs() && pulling_along && user in buckled_mobs)
+	if(has_buckled_mobs() && pulling_along && (user in buckled_mobs))
 		if(pulling_along.stat || pulling_along.stunned || pulling_along.weakened || pulling_along.paralysis || pulling_along.lying || pulling_along.restrained())
 			pulling_along.pulledby = null
 			pulling_along = null
-	if(user.pulling && (user == pulling_along))
+	if((user.pulling != src) && (user == pulling_along))
 		pulling_along = null
 		user.pulledby = null
 		return
 	if(propelled)
 		return
-	if(pulling_along && (get_dist(src, pulling_along) > 1))
-		pulling_along = null
-		user.pulledby = null
-		if(user==pulling_along)
+	if(pulling_along)
+		if(get_dist(src, pulling_along) > 1)
+			pulling_along = null
+			user.pulledby = null
+			if(user == pulling_along)
+				return
+		if(get_dir(src.loc, pulling_along.loc) == direction)
+			to_chat(user, "<span class='warning'>You cannot go there.</span>")
 			return
-	if(pulling_along && (get_dir(src.loc, pulling_along.loc) == direction))
-		to_chat(user, "<span class='warning'>You cannot go there.</span>")
-		return
-	if(pulling_along && has_buckled_mobs() && (user in buckled_mobs))
-		to_chat(user, "<span class='warning'>You cannot drive while being pushed.</span>")
-		return
-
+		if(has_buckled_mobs() && (user in buckled_mobs))
+			to_chat(user, "<span class='warning'>You cannot drive while being pushed.</span>")
+			return
 
  	last_active_move = world.time
-
 
 	// Let's roll
 	driving = 1
@@ -140,7 +139,7 @@
 /obj/structure/bed/chair/wheelchair/CtrlClick(var/mob/user)
 	if(in_range(src, user))
 		if(!ishuman(user))	return
-		if(has_buckled_mobs() && user in buckled_mobs)
+		if(has_buckled_mobs() && (user in buckled_mobs))
 			to_chat(user, "<span class='warning'>You realize you are unable to push the wheelchair you sit in.</span>")
 			return
 		if(!pulling_along)
@@ -207,11 +206,13 @@
 		B.setDir(newdir)
 	bloodiness--
 
-/obj/structure/bed/chair/wheelchair/buckle_mob(mob/M as mob, mob/user as mob)
+/obj/structure/bed/chair/wheelchair/buckle_mob(mob/living/M, forced = FALSE, check_loc = TRUE)
+	if(issilicon(M))	// No abusing wheelchairs.
+		return
 	if(M == pulling_along)
 		pulling_along = null
 		usr.pulledby = null
-	..()
+	return ..()
 
 /obj/item/wheelchair
 	name = "wheelchair"
@@ -220,6 +221,8 @@
 	icon_state = "wheelchair_folded"
 	item_state = "wheelchair"
 	w_class = ITEMSIZE_HUGE // Can't be put in backpacks. Oh well.
+	/// What we unfold to
+	var/unfolded_type = /obj/structure/bed/chair/wheelchair
 
 /obj/item/wheelchair/attack_self(mob/user)
 		var/obj/structure/bed/chair/wheelchair/R = new /obj/structure/bed/chair/wheelchair(user.loc)

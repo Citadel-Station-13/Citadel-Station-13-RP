@@ -25,8 +25,9 @@
 	var/list/sprite_stack
 
 	var/list/files = list(  )
+	pickup_sound = 'sound/items/pickup/card.ogg'
 
-/obj/item/card/New()
+/obj/item/card/Initialize(mapload)
 	. = ..()
 	reset_icon()
 
@@ -59,6 +60,8 @@
 	var/data = "null"
 	var/special = null
 	item_state = "card-id"
+	drop_sound = 'sound/items/drop/disk.ogg'
+	pickup_sound = 'sound/items/pickup/disk.ogg'
 
 /obj/item/card/data/verb/label(t as text)
 	set name = "Label Disk"
@@ -100,20 +103,19 @@
 	origin_tech = list(TECH_MAGNET = 2, TECH_ILLEGAL = 2)
 	var/uses = 10
 
-/obj/item/card/emag/resolve_attackby(atom/A, mob/user)
-	var/used_uses = A.emag_act(uses, user, src)
+/obj/item/card/emag/resolve_attackby(obj/item/W, mob/user, params, attack_modifier)
+	var/used_uses = W.emag_act(uses, user, src)
 	if(used_uses < 0)
-		return ..(A, user)
+		return ..(W, user)
 
 	uses -= used_uses
-	A.add_fingerprint(user)
-	//Vorestation Edit: Because some things (read lift doors) don't get emagged
+	W.add_fingerprint(user)
+	// Because some things (read lift doors) don't get emagged
 	if(used_uses)
-		log_and_message_admins("emagged \an [A].")
+		log_and_message_admins("emagged \an [W].")
 	else
-		log_and_message_admins("attempted to emag \an [A].")
-	// Vorestation Edit: End of Edit
-	log_and_message_admins("emagged \an [A].")
+		log_and_message_admins("attempted to emag \an [W].")
+	log_and_message_admins("emagged \an [W].")
 
 	if(uses<1)
 		user.visible_message("<span class='warning'>\The [src] fizzles and sparks - it seems it's been used once too often, and is now spent.</span>")

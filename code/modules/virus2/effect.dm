@@ -142,7 +142,7 @@
 /datum/disease2/effect/suicide/activate(var/mob/living/carbon/mob,var/multiplier)
 	var/datum/gender/TM = gender_datums[mob.get_visible_gender()]
 	if(prob(25))
-		viewers(mob) << "<font color='red'><b>[mob.name] is holding [TM.his] breath. It looks like [TM.his] ability to breath [TM.is] constricted!</b></font>"
+		mob.visible_message("<font color='red'><b>[mob.name] is holding [TM.his] breath. It looks like [TM.his] ability to breath [TM.is] constricted!</b></font>")
 		mob.apply_damage(15, OXY)
 
 // Nerfing from 15 to 10
@@ -489,7 +489,7 @@
 	stage = 2
 
 /datum/disease2/effect/blind/activate(var/mob/living/carbon/mob,var/multiplier)
-	mob.eye_blind = max(mob.eye_blind, 4)
+	mob.SetBlinded(4)
 
 /datum/disease2/effect/cough
 	name = "Severe Cough"
@@ -552,7 +552,7 @@
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
 		to_chat(H, "<span class='notice'>You hear an awful ringing in your ears.</span>")
-		H << 'sound/weapons/flash.ogg'
+		SEND_SOUND(H, sound('sound/weapons/flash.ogg'))
 
 /datum/disease2/effect/vomiting
 	name = "Vomiting"
@@ -670,4 +670,4 @@
 	stage = 1
 
 /datum/disease2/effect/headache/activate(var/mob/living/carbon/mob,var/multiplier)
-		mob << "<span class='warning'>Your head hurts a bit.</span>"
+		to_chat(mob, "<span class='warning'>Your head hurts a bit.</span>")

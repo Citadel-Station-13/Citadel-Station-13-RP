@@ -14,7 +14,7 @@
 /*
 /datum/design/item/rig
 	req_tech = list(TECH_MATERIAL = 5, TECH_POWER = 5, TECH_MAGNET = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 6000, "glass" = 6000, "silver" = 6000, "uranium" = 4000)
+	materials = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 6000, MAT_URANIUM = 4000)
 
 /datum/design/item/rig/AssembleDesignName()
 	..()
@@ -47,7 +47,7 @@
 
 /datum/design/item/rig_module
 	req_tech = list(TECH_MATERIAL = 5, TECH_POWER = 5, TECH_MAGNET = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 6000, "glass" = 6000, "silver" = 4000, "uranium" = 2000)
+	materials = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 4000, MAT_URANIUM = 2000)
 
 /datum/design/item/rig_module/AssembleDesignName()
 	..()
@@ -105,14 +105,14 @@
 	name = "laser cannon"
 	id = "rigmod_lasercannon"
 	build_path = /obj/item/rig_module/mounted
-	materials = list(DEFAULT_WALL_MATERIAL = 6000, "glass" = 6000, "silver" = 4000, "uranium" = 2000, "diamond" = 2000)
+	materials = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 4000, MAT_URANIUM = 2000, MAT_DIAMOND = 2000)
 	sort_string = "OBADA"
 
 /datum/design/item/rig_module/egun
 	name = "energy gun"
 	id = "rigmod_egun"
 	build_path = /obj/item/rig_module/mounted/egun
-	materials = list(DEFAULT_WALL_MATERIAL = 6000, "glass" = 6000, "silver" = 4000, "uranium" = 2000, "diamond" = 1000)
+	materials = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 4000, MAT_URANIUM = 2000, MAT_DIAMOND = 1000)
 	sort_string = "OBADB"
 
 /datum/design/item/rig_module/taser
@@ -126,11 +126,25 @@
 	id = "rigmod_armblade"
 	build_path = /obj/item/rig_module/armblade
 	sort_string = "OBADD"
-	materials = list(DEFAULT_WALL_MATERIAL = 8000, "glass" = 2000, "silver" = 2000, "gold" = 2000)
+	materials = list(MAT_STEEL = 8000, MAT_GLASS = 2000, MAT_SILVER = 2000, MAT_GOLD = 2000)
 
 /datum/design/item/rig_module/rcd
 	name = "rcd"
 	id = "rigmod_rcd"
 	build_path = /obj/item/rig_module/device/rcd
-	materials = list(DEFAULT_WALL_MATERIAL = 6000, "glass" = 6000, "silver" = 4000, "uranium" = 2000, "diamond" = 2000)
+	materials = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 4000, MAT_URANIUM = 2000, MAT_DIAMOND = 2000)
 	sort_string = "OBAEA"
+
+/datum/design/item/rig_module/rigwelder
+	name = "RIG arc-welder"
+	id = "rigmod_welder"
+	build_path = /obj/item/rig_module/device/rigwelder
+	materials = list(MAT_STEEL = 6000, MAT_GLASS = 4000, MAT_SILVER = 2000, MAT_GOLD = 4000)
+	sort_string = "OBAEB"
+
+/datum/design/item/rig_module/toolset
+	name = "RIG toolset"
+	id = "rigmod_tools"
+	build_path = /obj/item/rig_module/device/toolset
+	materials = list(MAT_STEEL = 8000, MAT_GLASS = 2000, MAT_SILVER = 2000, MAT_PLASTEEL = 1000)
+	sort_string = "OBAEC"

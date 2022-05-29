@@ -10,13 +10,13 @@
 	var/list/ui_users = list()
 	var/glass = 1
 
-/obj/structure/mirror/New(var/loc, var/dir, var/building = 0, mob/user as mob)
+/obj/structure/mirror/Initialize(mapload, dir, building = FALSE, mob/user)
+	. = ..()
 	if(building)
 		glass = 0
 		icon_state = "mirror_frame"
 		pixel_x = (dir & 3)? 0 : (dir == 4 ? -28 : 28)
 		pixel_y = (dir & 3)? (dir == 1 ? -30 : 30) : 0
-	return
 
 /obj/structure/mirror/attack_hand(mob/user as mob)
 	if(!glass) return
@@ -28,13 +28,13 @@
 			AC = new(src, user)
 			AC.name = "SalonPro Nano-Mirror&trade;"
 			ui_users[user] = AC
-		AC.ui_interact(user)
+		AC.nano_ui_interact(user)
 
 /obj/structure/mirror/proc/shatter()
 	if(!glass) return
 	if(shattered)	return
 	shattered = 1
-	icon_state = "mirror_broke"
+	icon_state = "[icon_state]_broke"
 	playsound(src, "shatter", 70, 1)
 	desc = "Oh no, seven years of bad luck!"
 
@@ -141,3 +141,56 @@
 					raiders.update_access(vox)
 				qdel(user)
 	..()
+
+
+//Long mirrors.
+/obj/structure/mirror/long
+	name = "mirror"
+	desc = "A SalonPro Nano-Mirror(TM) brand mirror! The leading technology in hair salon products, utilizing nano-machinery to style your hair just right."
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "long_mir_m"
+	density = 0
+	anchored = 1
+
+/obj/structure/mirror/long/left
+	name = "mirror"
+	desc = "A SalonPro Nano-Mirror(TM) brand mirror! The leading technology in hair salon products, utilizing nano-machinery to style your hair just right."
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "long_mir_l"
+	density = 0
+	anchored = 1
+
+/obj/structure/mirror/long/right
+	name = "mirror"
+	desc = "A SalonPro Nano-Mirror(TM) brand mirror! The leading technology in hair salon products, utilizing nano-machinery to style your hair just right."
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "long_mir_r"
+	density = 0
+	anchored = 1
+
+//Shattered versions.
+/obj/structure/mirror/long/broke
+	name = "mirror"
+	desc = "A SalonPro Nano-Mirror(TM) brand mirror! The leading technology in hair salon products, utilizing nano-machinery to style your hair just right."
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "long_mir_m_broke"
+	density = 0
+	anchored = 1
+	shattered = 1
+
+/obj/structure/mirror/long/left_broke
+	name = "mirror"
+	desc = "A SalonPro Nano-Mirror(TM) brand mirror! The leading technology in hair salon products, utilizing nano-machinery to style your hair just right."
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "long_mir_l_broke"
+	density = 0
+	anchored = 1
+	shattered = 1
+
+/obj/structure/mirror/long/right_broke
+	name = "mirror"
+	desc = "A SalonPro Nano-Mirror(TM) brand mirror! The leading technology in hair salon products, utilizing nano-machinery to style your hair just right."
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "long_mir_r_broke"
+	density = 0
+	anchored = 1

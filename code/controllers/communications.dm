@@ -109,6 +109,7 @@ var/const/AI_FREQ	= 1343
 var/const/DTH_FREQ	= 1341
 var/const/SYND_FREQ = 1213
 var/const/RAID_FREQ	= 1277
+var/const/TRADE_FREQ = 1279
 var/const/ENT_FREQ	= 1461 //entertainment frequency. This is not a diona exclusive frequency.
 
 // department channels
@@ -120,6 +121,7 @@ var/const/SCI_FREQ = 1351
 var/const/SRV_FREQ = 1349
 var/const/SUP_FREQ = 1347
 var/const/EXP_FREQ = 1361
+var/const/TALON_FREQ = 1363	// No need to remove at the moment, Talon equipment can still be used and such - Bloop
 
 // internal department channels
 var/const/MED_I_FREQ = 1485
@@ -136,6 +138,7 @@ var/list/radiochannels = list(
 	"Special Ops" 	= DTH_FREQ,
 	"Mercenary" 	= SYND_FREQ,
 	"Raider"		= RAID_FREQ,
+	"Trader"		= TRADE_FREQ,
 	"Supply" 		= SUP_FREQ,
 	"Service" 		= SRV_FREQ,
 	"Explorer"		= EXP_FREQ,
@@ -152,10 +155,7 @@ var/list/CENT_FREQS = list(ERT_FREQ, DTH_FREQ)
 var/list/ANTAG_FREQS = list(SYND_FREQ, RAID_FREQ)
 
 //Department channels, arranged lexically
-var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, ENT_FREQ, MED_FREQ, SEC_FREQ, SCI_FREQ, SRV_FREQ, SUP_FREQ)
-
-#define TRANSMISSION_WIRE	0
-#define TRANSMISSION_RADIO	1
+var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, ENT_FREQ, MED_FREQ, SEC_FREQ, SCI_FREQ, SRV_FREQ, SUP_FREQ, TRADE_FREQ)
 
 /proc/frequency_span_class(var/frequency)
 	// Antags!
@@ -169,7 +169,7 @@ var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, ENT_FREQ, MED_FREQ, SEC
 		return "comradio"
 	// AI private channel
 	if(frequency == AI_FREQ)
-		return "airadio"
+		return "aiprivradio"
 	// department radio formatting (poorly optimized, ugh)
 	if(frequency == SEC_FREQ)
 		return "secradio"
@@ -180,13 +180,15 @@ var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, ENT_FREQ, MED_FREQ, SEC
 	if(frequency == MED_FREQ)
 		return "medradio"
 	if(frequency == SUP_FREQ) // cargo
-		return "supradio"
+		return "suppradio"
 	if(frequency == SRV_FREQ) // service
-		return "srvradio"
+		return "servradio"
 	if(frequency == EXP_FREQ) // explorer
 		return "expradio"
 	if(frequency == ENT_FREQ) // entertainment
 		return "entradio"
+	if(frequency == TRADE_FREQ)
+		return "syndradio"
 	if(frequency in DEPT_FREQS)
 		return "deptradio"
 

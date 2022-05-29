@@ -16,7 +16,7 @@
 			category = new category(src)
 			categories += category
 			categories_by_name[category.name] = category
-	categories = dd_sortedObjectList(categories)
+	categories = sortTim(categories, /proc/cmp_auto_compare)
 
 /datum/category_collection/Destroy()
 	for(var/category in categories)
@@ -49,7 +49,7 @@
 
 	// For whatever reason dd_insertObjectList(items, item) doesn't insert in the correct order
 	// If you change this, confirm that character setup doesn't become completely unordered.
-	items = dd_sortedObjectList(items)
+	sortTim(items, /proc/cmp_auto_compare)
 
 /datum/category_group/Destroy()
 	for(var/item in items)
@@ -58,16 +58,18 @@
 	collection = null
 	return ..()
 
-datum/category_group/dd_SortValue()
-	return name
-
+/datum/category_group/compare_to(datum/D)
+	if(istype(D, /datum/category_group))
+		var/datum/category_group/I = D
+		return cmp_text_asc(name, I.name)
+	return ..()
 
 /*****************
 * Category Items *
 *****************/
 /datum/category_item
 	var/name = ""
-	var/list/datum/category_group/category		// The group this item belongs to
+	var/datum/category_group/category		// The group this item belongs to
 
 /datum/category_item/New(var/datum/category_group/cg)
 	..()
@@ -77,5 +79,8 @@ datum/category_group/dd_SortValue()
 	category = null
 	return ..()
 
-datum/category_item/dd_SortValue()
-	return name
+/datum/category_item/compare_to(datum/D)
+	if(istype(D, /datum/category_item))
+		var/datum/category_item/I = D
+		return cmp_text_asc(name, I.name)
+	return ..()

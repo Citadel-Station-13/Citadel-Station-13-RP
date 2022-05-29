@@ -2,8 +2,8 @@
 	name = "Washing Machine"
 	icon = 'icons/obj/machines/washing_machine.dmi'
 	icon_state = "wm_10"
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
 	circuit = /obj/item/circuitboard/washing
 	var/state = 1
 	//1 = empty, open door
@@ -25,13 +25,9 @@
 		/obj/item/clothing/head/helmet/space
 		)
 
-/obj/machinery/washing_machine/New()
-	..()
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/motor(src)
-	component_parts += new /obj/item/stock_parts/gear(src)
-	component_parts += new /obj/item/stock_parts/gear(src)
-	RefreshParts()
+/obj/machinery/washing_machine/Initialize(mapload, newdir)
+	. = ..()
+	default_apply_parts()
 
 /obj/machinery/washing_machine/verb/start()
 	set name = "Start Washing"
@@ -57,12 +53,6 @@
 
 	for(var/obj/item/I in washing)
 		I.decontaminate()
-
-	//Tanning!
-	for(var/obj/item/stack/material/hairlesshide/HH in washing)
-		var/obj/item/stack/material/wetleather/WL = new(src)
-		WL.amount = HH.amount
-		qdel(HH)
 
 	if(locate(/mob,washing))
 		state = 7
@@ -93,7 +83,7 @@
 			return
 	/*if(W.is_screwdriver())
 		panel = !panel
-		user << "<span class='notice'>You [panel ? "open" : "close"] the [src]'s maintenance panel</span>"*/
+		to_chat(user, "<span class='notice'>You [panel ? "open" : "close"] the [src]'s maintenance panel</span>")*/
 	if(istype(W,/obj/item/pen/crayon) || istype(W,/obj/item/stamp))
 		if(state in list(	1, 3, 6))
 			if(!crayon)
@@ -167,4 +157,32 @@
 			state = 1
 			washing.Cut()
 
+	update_icon()
+
+/obj/machinery/washing_machine/AltClick(mob/user)
+	if(!istype(usr, /mob/living)) //ew ew ew usr, but it's the only way to check.
+		return
+
+	if(state != 4)
+		to_chat(usr, "The washing machine cannot run in this state.")
+		return
+
+	if(locate(/mob,washing))
+		state = 8
+	else
+		state = 5
+	update_icon()
+	playsound(src, 'sound/items/washingmachine.ogg', 50, 1, 1)
+	sleep(200)
+	for(var/atom/A in washing)
+		A.clean_blood()
+
+	for(var/obj/item/I in washing)
+		I.decontaminate()
+
+	if(locate(/mob,washing))
+		state = 7
+		gibs_ready = 1
+	else
+		state = 4
 	update_icon()

@@ -4,7 +4,7 @@ var/global/list/stool_cache = list() //haha stool
 /obj/item/stool
 	name = "stool"
 	desc = "Apply butt."
-	icon = 'icons/obj/furniture_vr.dmi' //VOREStation Edit - new Icons
+	icon = 'icons/obj/furniture_vr.dmi'
 	icon_state = "stool_preview" //set for the map
 	force = 10
 	throwforce = 10
@@ -16,10 +16,10 @@ var/global/list/stool_cache = list() //haha stool
 /obj/item/stool/padded
 	icon_state = "stool_padded_preview" //set for the map
 
-/obj/item/stool/New(var/newloc, var/new_material, var/new_padding_material)
-	..(newloc)
+/obj/item/stool/Initialize(mapload, new_material, new_padding_material)
+	. = ..(mapload)
 	if(!new_material)
-		new_material = DEFAULT_WALL_MATERIAL
+		new_material = MAT_STEEL
 	material = get_material_by_name(new_material)
 	if(new_padding_material)
 		padding_material = get_material_by_name(new_padding_material)
@@ -29,8 +29,8 @@ var/global/list/stool_cache = list() //haha stool
 	force = round(material.get_blunt_damage()*0.4)
 	update_icon()
 
-/obj/item/stool/padded/New(var/newloc, var/new_material)
-	..(newloc, "steel", "carpet")
+/obj/item/stool/padded/Initialize(mapload, new_material)
+	. = ..(mapload, "steel", "carpet")
 
 /obj/item/stool/update_icon()
 	// Prep icon.

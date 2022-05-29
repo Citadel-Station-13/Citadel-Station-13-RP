@@ -154,6 +154,7 @@
 	A.power_environ = 0
 	A.always_unpowered = 0
 	move_turfs_to_area(turfs, A)
+	A.addSorted()
 
 	A.always_unpowered = 0
 
@@ -224,9 +225,9 @@
 		M.name = replacetext(M.name,oldtitle,title)
 	for(var/obj/machinery/power/apc/M in A)
 		M.name = replacetext(M.name,oldtitle,title)
-	for(var/obj/machinery/atmospherics/unary/vent_scrubber/M in A)
+	for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/M in A)
 		M.name = replacetext(M.name,oldtitle,title)
-	for(var/obj/machinery/atmospherics/unary/vent_pump/M in A)
+	for(var/obj/machinery/atmospherics/component/unary/vent_pump/M in A)
 		M.name = replacetext(M.name,oldtitle,title)
 	for(var/obj/machinery/door/M in A)
 		M.name = replacetext(M.name,oldtitle,title)
@@ -252,14 +253,14 @@
 			return ROOM_ERR_TOOLARGE
 		var/turf/T = pending[1] //why byond havent list::pop()?
 		pending -= T
-		for (var/dir in cardinal)
+		for (var/dir in GLOB.cardinal)
 			var/turf/NT = get_step(T,dir)
 			if (!isturf(NT) || (NT in found) || (NT in pending))
 				continue
 			// We ask ZAS to determine if its airtight.  Thats what matters anyway right?
-			if(air_master.air_blocked(T, NT))
+			if(T.CheckAirBlock(NT) == ATMOS_PASS_AIR_BLOCKED)
 				// Okay thats the edge of the room
-				if(get_area_type(NT.loc) == AREA_SPACE && air_master.air_blocked(NT, NT))
+				if(get_area_type(NT.loc) == AREA_SPACE && (NT.CheckAirBlock(NT) == ATMOS_PASS_AIR_BLOCKED))
 					found += NT // So we include walls/doors not already in any area
 				continue
 			if (istype(NT, /turf/space))
@@ -294,7 +295,7 @@
 		var/icon/areaColor = new('icons/misc/debug_rebuild.dmi', "[++i]")
 		to_chat(usr, "- [A] as [i]")
 		for(var/turf/T in A.contents)
-			usr << image(areaColor, T, "blueprints", TURF_LAYER)
+			SEND_IMAGE(usr, image(areaColor, T, "blueprints", TURF_LAYER))
 			areaColor_turfs += T
 
 /obj/item/blueprints/verb/seeRoomColors()
@@ -320,7 +321,7 @@
 	seeAreaColors_remove()
 	var/icon/green = new('icons/misc/debug_group.dmi', "green")
 	for(var/turf/T in res)
-		usr << image(green, T, "blueprints", TURF_LAYER)
+		SEND_IMAGE(usr, image(green, T, "blueprints", TURF_LAYER))
 		areaColor_turfs += T
 	to_chat(usr, "<span class='notice'>The space covered by the new area is highlighted in green.</span>")
 

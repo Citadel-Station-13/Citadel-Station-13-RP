@@ -9,8 +9,8 @@ var/list/blob_nodes = list()
 	health_regen = 3
 	point_return = 50
 
-/obj/structure/blob/node/New(var/newloc)
-	..()
+/obj/structure/blob/node/Initialize(mapload)
+	. = ..()
 	blob_nodes += src
 	START_PROCESSING(SSobj, src)
 	update_icon()
@@ -30,7 +30,7 @@ var/list/blob_nodes = list()
 	overlays += blob_overlay
 	overlays += mutable_appearance('icons/mob/blob.dmi', "blob_node_overlay")
 
-/obj/structure/blob/node/process()
+/obj/structure/blob/node/process(delta_time)
 	set waitfor = FALSE
 	if(overmind) // This check is so that if the core is killed, the nodes stop.
 		pulse_area(overmind, 10, BLOB_NODE_PULSE_RANGE, BLOB_NODE_EXPAND_RANGE)

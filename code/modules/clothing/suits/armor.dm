@@ -1,7 +1,11 @@
 /obj/item/clothing/suit/armor
 	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/gun/energy,/obj/item/reagent_containers/spray/pepper,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
-	item_flags = THICKMATERIAL
+	clothing_flags = THICKMATERIAL
+	valid_accessory_slots = (\
+		ACCESSORY_SLOT_OVER\
+		|ACCESSORY_SLOT_MEDAL\
+		|ACCESSORY_SLOT_INSIGNIA)
 
 	cold_protection = UPPER_TORSO|LOWER_TORSO
 	min_cold_protection_temperature = ARMOR_MIN_COLD_PROTECTION_TEMPERATURE
@@ -119,6 +123,13 @@
 	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
 
+/obj/item/clothing/suit/armor/tactical/pirate
+	name = "defaced tactical armor"
+	desc = "This tactical armor has been painted over and repaired multiple times. Accumulated battle damage has degraded its protective capabilities significantly."
+	icon_state = "swatarmor_pirate"
+	armor = list(melee = 20, bullet = 20, laser = 20, energy = 10, bomb = 10, bio = 0, rad = 0)
+	siemens_coefficient = 0.7
+
 /obj/item/clothing/suit/armor/swat
 	name = "swat suit"
 	desc = "A heavily armored suit that protects against moderate damage. Used in special operations."
@@ -126,7 +137,7 @@
 	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
-	item_flags = THICKMATERIAL
+	clothing_flags = THICKMATERIAL
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
 	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/helmet)
 	slowdown = 1
@@ -138,7 +149,7 @@
 	min_pressure_protection = 0 * ONE_ATMOSPHERE
 	max_pressure_protection = 20* ONE_ATMOSPHERE
 	siemens_coefficient = 0.6
-
+	valid_accessory_slots = null
 
 /obj/item/clothing/suit/armor/swat/officer
 	name = "officer jacket"
@@ -159,6 +170,12 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 0, rad = 0)
 
+/obj/item/clothing/suit/armor/caution
+	name = "improvised armor (caution sign)"
+	desc = "They used to beat you for pointing at the sign. Now, vengeance has come. WARNING: This is just a sign with straps attached to anchor it. Vengeance not guaranteed."
+	icon_state = "caution"
+	blood_overlay_type = "armor"
+	armor = list(melee = 5, bullet = 1, laser = 5, energy = 5, bomb = 1, bio = 50, rad = 0)
 
 //Reactive armor
 //When the wearer gets hit, this armor will teleport the user a short distance away (to safety or to more danger, no one knows. That's the fun of it!)
@@ -198,10 +215,10 @@
 /obj/item/clothing/suit/armor/reactive/attack_self(mob/user as mob)
 	active = !( active )
 	if (active)
-		to_chat(user, "<font color='blue'>The reactive armor is now active.</font>")
+		to_chat(user, "<font color=#4F49AF>The reactive armor is now active.</font>")
 		icon_state = "reactive"
 	else
-		to_chat(user, "<font color='blue'>The reactive armor is now inactive.</font>")
+		to_chat(user, "<font color=#4F49AF>The reactive armor is now inactive.</font>")
 		icon_state = "reactiveoff"
 		add_fingerprint(user)
 	return
@@ -223,6 +240,7 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	armor = list(melee = 50, bullet = 50, laser = 50, energy = 50, bomb = 50, bio = 0, rad = 40)
 	siemens_coefficient = 0.4
+	valid_accessory_slots = null
 	var/block_chance = 20
 
 /obj/item/clothing/suit/armor/alien/tank
@@ -249,6 +267,7 @@
 	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 20, bio = 0, rad = 0)
+	valid_accessory_slots = null
 
 //Commander
 /obj/item/clothing/suit/armor/vest/ert/command
@@ -276,14 +295,14 @@
 //New Vests
 /obj/item/clothing/suit/storage/vest
 	name = "armor vest"
-	desc = "A simple kevlar plate carrier."
-	icon_state = "kvest"
+	desc = "A standard kevlar vest with webbing attached."
+	icon_state = "webvest"
 	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 0, rad = 0)
 	allowed = list(/obj/item/gun,/obj/item/reagent_containers/spray/pepper,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
 
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
-	item_flags = THICKMATERIAL
+	clothing_flags = THICKMATERIAL
 
 	cold_protection = UPPER_TORSO|LOWER_TORSO
 	min_cold_protection_temperature = ARMOR_MIN_COLD_PROTECTION_TEMPERATURE
@@ -293,19 +312,19 @@
 
 /obj/item/clothing/suit/storage/vest/officer
 	name = "officer armor vest"
-	desc = "A simple kevlar plate carrier. This one has a security holobadge clipped to the chest."
-	icon_state = "officervest_nobadge"
+	desc = "A standard kevlar vest with webbing attached. This one has a security holobadge clipped to the chest."
+	icon_state = "officerwebvest_nobadge"
 	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
-	icon_badge = "officervest_badge"
-	icon_nobadge = "officervest_nobadge"
+	icon_badge = "officerwebvest_badge"
+	icon_nobadge = "officerwebvest_nobadge"
 
 /obj/item/clothing/suit/storage/vest/warden
 	name = "warden armor vest"
-	desc = "A simple kevlar plate carrier. This one has a silver badge clipped to the chest."
-	icon_state = "wardenvest_nobadge"
+	desc = "A standard kevlar vest with webbing attached. This one has a silver badge clipped to the chest."
+	icon_state = "wardenwebvest_nobadge"
 	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
-	icon_badge = "wardenvest_badge"
-	icon_nobadge = "wardenvest_nobadge"
+	icon_badge = "wardenwebvest_badge"
+	icon_nobadge = "wardenwebvest_nobadge"
 
 /obj/item/clothing/suit/storage/vest/wardencoat
 	name = "Warden's jacket"
@@ -322,11 +341,11 @@
 
 /obj/item/clothing/suit/storage/vest/hos
 	name = "head of security armor vest"
-	desc = "A simple kevlar plate carrier. This one has a gold badge clipped to the chest."
-	icon_state = "hosvest_nobadge"
+	desc = "A standard kevlar vest with webbing attached. This one has a gold badge clipped to the chest."
+	icon_state = "hoswebvest_nobadge"
 	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
-	icon_badge = "hosvest_badge"
-	icon_nobadge = "hosvest_nobadge"
+	icon_badge = "hoswebvest_badge"
+	icon_nobadge = "hoswebvest_nobadge"
 
 /obj/item/clothing/suit/storage/vest/hoscoat
 	name = "armored coat"
@@ -334,6 +353,14 @@
 	icon_state = "hos"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	flags_inv = HIDETIE|HIDEHOLSTER
+
+/obj/item/clothing/suit/storage/vest/hos_overcoat
+	name = "security overcoat"
+	desc = "A fashionable leather overcoat lined with a lightweight, yet tough armor."
+	icon_state = "leathercoat-sec"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	flags_inv = HIDETIE|HIDEHOLSTER
+	item_state_slots = list(slot_r_hand_str = "wcoat", slot_l_hand_str = "wcoat")
 
 //Jensen cosplay gear
 /obj/item/clothing/suit/storage/vest/hoscoat/jensen
@@ -344,31 +371,31 @@
 
 /obj/item/clothing/suit/storage/vest/pcrc
 	name = "PCRC armor vest"
-	desc = "A simple kevlar plate carrier belonging to Proxima Centauri Risk Control. This one has a PCRC crest clipped to the chest."
+	desc = "A simple kevlar vest belonging to Proxima Centauri Risk Control. This one has a PCRC crest clipped to the chest."
 	icon_state = "pcrcvest_nobadge"
 	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
 	icon_badge = "pcrcvest_badge"
 	icon_nobadge = "pcrcvest_nobadge"
 
-/obj/item/clothing/suit/storage/vest/solgov
-	name = "\improper Solar Confederate Government armored vest"
-	desc = "A synthetic armor vest. This one is marked with the crest of the Solar Confederate Government."
+/obj/item/clothing/suit/storage/vest/oricon
+	name = "\improper Orion Confederation armored vest"
+	desc = "A synthetic armor vest. This one is marked with the crest of the Orion Confederation."
 	icon_state = "solvest"
 	armor = list(melee = 40, bullet = 40, laser = 40, energy = 25, bomb = 30, bio = 0, rad = 0)
 
-/obj/item/clothing/suit/storage/vest/solgov/heavy
-	name = "\improper Solar Confederate Government heavy armored vest"
+/obj/item/clothing/suit/storage/vest/oricon/heavy
+	name = "\improper Orion Confederation heavy armored vest"
 	desc = "A synthetic armor vest with PEACEKEEPER printed in distinctive blue lettering on the chest. This one has added webbing and ballistic plates."
 	icon_state = "solwebvest"
 
-/obj/item/clothing/suit/storage/vest/solgov/security
+/obj/item/clothing/suit/storage/vest/oricon/security
 	name = "master at arms heavy armored vest"
 	desc = "A synthetic armor vest with MASTER AT ARMS printed in silver lettering on the chest. This one has added webbing and ballistic plates."
 	icon_state = "secwebvest"
 
-/obj/item/clothing/suit/storage/vest/solgov/command
+/obj/item/clothing/suit/storage/vest/oricon/command
 	name = "command heavy armored vest"
-	desc = "A synthetic armor vest with Solar Confederate Government printed in detailed gold lettering on the chest. This one has added webbing and ballistic plates."
+	desc = "A synthetic armor vest with Orion Confederation printed in detailed gold lettering on the chest. This one has added webbing and ballistic plates."
 	icon_state = "comwebvest"
 
 /obj/item/clothing/suit/storage/vest/tactical //crack at a more balanced mid-range armor, minor improvements over standard vests, with the idea "modern" combat armor would focus on energy weapon protection.
@@ -390,7 +417,7 @@
 
 /obj/item/clothing/suit/storage/vest/detective
 	name = "detective armor vest"
-	desc = "A simple kevlar plate carrier in a vintage brown, it has a badge clipped to the chest that reads, 'Private investigator'."
+	desc = "A standard kevlar vest in a vintage brown, it has a badge clipped to the chest that reads, 'Private investigator'."
 	icon_state = "detectivevest_nobadge"
 	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
 	icon_badge = "detectivevest_badge"
@@ -399,13 +426,13 @@
 /obj/item/clothing/suit/storage/vest/press
 	name = "press vest"
 	icon_state = "pvest"
-	desc = "A simple kevlar plate carrier. This one has the word 'Press' embroidered on patches on the back and front."
+	desc = "A simple kevlar vest. This one has the word 'Press' embroidered on patches on the back and front."
 	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
 	allowed = list(/obj/item/flashlight,/obj/item/tape_recorder,/obj/item/pen,/obj/item/camera_film,/obj/item/camera,/obj/item/clothing/head/helmet)
 
 /obj/item/clothing/suit/storage/vest/heavy
 	name = "heavy armor vest"
-	desc = "A heavy kevlar plate carrier with webbing attached."
+	desc = "A heavy kevlar vest with webbing attached."
 	icon_state = "webvest"
 	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
 	armor = list(melee = 50, bullet = 40, laser = 40, energy = 25, bomb = 25, bio = 0, rad = 0)
@@ -413,7 +440,7 @@
 
 /obj/item/clothing/suit/storage/vest/heavy/officer
 	name = "officer heavy armor vest"
-	desc = "A heavy kevlar plate carrier with webbing attached. This one has a security holobadge clipped to the chest."
+	desc = "A heavy kevlar vest with webbing attached. This one has a security holobadge clipped to the chest."
 	icon_state = "officerwebvest_nobadge"
 	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
 	icon_badge = "officerwebvest_badge"
@@ -421,7 +448,7 @@
 
 /obj/item/clothing/suit/storage/vest/heavy/warden
 	name = "warden heavy armor vest"
-	desc = "A heavy kevlar plate carrier with webbing attached. This one has a silver badge clipped to the chest."
+	desc = "A heavy kevlar vest with webbing attached. This one has a silver badge clipped to the chest."
 	icon_state = "wardenwebvest_nobadge"
 	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
 	icon_badge = "wardenwebvest_badge"
@@ -429,7 +456,7 @@
 
 /obj/item/clothing/suit/storage/vest/heavy/hos
 	name = "head of security heavy armor vest"
-	desc = "A heavy kevlar plate carrier with webbing attached. This one has a gold badge clipped to the chest."
+	desc = "A heavy kevlar vest with webbing attached. This one has a gold badge clipped to the chest."
 	icon_state = "hoswebvest_nobadge"
 	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
 	icon_badge = "hoswebvest_badge"
@@ -437,7 +464,7 @@
 
 /obj/item/clothing/suit/storage/vest/heavy/pcrc
 	name = "PCRC heavy armor vest"
-	desc = "A heavy kevlar plate carrier belonging to Proxima Centauri Risk Control with webbing attached. This one has a PCRC crest clipped to the chest."
+	desc = "A heavy kevlar vest belonging to Proxima Centauri Risk Control with webbing attached. This one has a PCRC crest clipped to the chest."
 	icon_state = "pcrcwebvest_nobadge"
 	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
 	icon_badge = "pcrcwebvest_badge"
@@ -446,11 +473,17 @@
 //Provides the protection of a merc voidsuit, but only covers the chest/groin, and also takes up a suit slot. In exchange it has no slowdown and provides storage.
 /obj/item/clothing/suit/storage/vest/heavy/merc
 	name = "heavy armor vest"
-	desc = "A high-quality heavy kevlar plate carrier in a fetching tan. The vest is surprisingly flexible, and possibly made of an advanced material."
+	desc = "A high-quality heavy kevlar vest in a fetching tan. The vest is surprisingly flexible, and possibly made of an advanced material."
 	icon_state = "mercwebvest"
 	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
 	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
 	slowdown = 0
+
+/obj/item/clothing/suit/storage/vest/capcarapace
+	name = "captain's carapace"
+	desc = "A fireproof, armored chestpiece reinforced with ceramic plates and plasteel pauldrons to provide additional protection whilst still offering maximum mobility and flexibility. Issued only to the station's finest, although it does chafe your nipples."
+	icon_state = "capcarapace"
+	armor = list(melee = 50, bullet = 40, laser = 50, energy = 10, bomb = 25, bio = 0, rad = 0)
 
 //All of the armor below is mostly unused
 
@@ -497,12 +530,31 @@
 	icon_state = "tdgreen"
 	siemens_coefficient = 1
 
+/obj/item/clothing/suit/armor/samurai
+	name = "karuta-gane"
+	desc = "An utterly ancient suit of Earth armor, reverently maintained and restored over the years. Designed for foot combat in an era where melee combat was the predominant focus, this suit offers no protection against ballistics or energy attacks, although its lacquered exterior may occasionally deflect laser bolts."
+	icon_state = "samurai"
+	item_state_slots = list(slot_r_hand_str = "leather_coat", slot_l_hand_str = "leather_coat")
+	armor = list(melee = 100, bullet = 00, laser = 5, energy = 0, bomb = 0, bio = 0, rad = 0)
+	w_class = ITEMSIZE_LARGE
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	flags_inv = HIDETIE|HIDEHOLSTER
+	siemens_coefficient = 0.6
+	valid_accessory_slots = null
+
+/obj/item/clothing/suit/armor/combat/syndicate
+	name = "syndicate combat vest"
+	desc = "A heavily armored vest worn over a thick coat. The gold embroidery suggests whoever wears this possesses a high rank."
+	icon_state = "syndievest"
+	blood_overlay_type = "armor"
+	valid_accessory_slots = null
+
 //Modular plate carriers
 /obj/item/clothing/suit/armor/pcarrier
 	name = "plate carrier"
 	desc = "A lightweight black plate carrier vest. It can be equipped with armor plates, but provides no protection of its own."
 	icon = 'icons/obj/clothing/modular_armor.dmi'
-	item_icons = list(slot_wear_suit_str = 'icons/mob/modular_armor.dmi')
+	item_icons = list(/datum/inventory_slot_meta/inventory/suit = 'icons/mob/clothing/modular_armor.dmi')
 	icon_state = "pcarrier"
 	valid_accessory_slots = (\
 		ACCESSORY_SLOT_INSIGNIA\
@@ -597,26 +649,185 @@
 /obj/item/clothing/suit/armor/pcarrier/merc
 	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/merc, /obj/item/clothing/accessory/armor/armguards/merc, /obj/item/clothing/accessory/armor/legguards/merc, /obj/item/clothing/accessory/storage/pouches/large)
 
-/obj/item/clothing/suit/armor/vest/ert/para
+//Brig Spec Variants
+/obj/item/clothing/suit/armor/pcarrier/bulletproof
+	name = "ballistic plate carrier"
+	desc = "A lightweight ballistic vest. Equipped with a ballistic armor plate by default, this armor consists of a kevlar weave augmented by a non-Newtonian gel layer."
+	icon_state = "ballistic"
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/bulletproof, /obj/item/clothing/accessory/armor/tag/sec)
+
+/obj/item/clothing/suit/armor/pcarrier/laserproof
+	name = "ablative plate carrier"
+	desc = "A lightweight deflector vest. Equipped with an ablative armor plate by default, this armor consists of a polished Cartesian Glance Plating and an inset network of heat sink channels."
+	icon_state = "ablative"
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/laserproof, /obj/item/clothing/accessory/armor/tag/sec)
+
+/obj/item/clothing/suit/armor/pcarrier/riot
+	name = "riot suppression plate carrier"
+	desc = "A lightweight padded vest. Equipped with a padded armor plate by default, this armor consists of a stab resistant kevlar weave and hardened fleximat padding."
+	icon_state = "riot"
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/riot, /obj/item/clothing/accessory/armor/tag/sec)
+
+//Clown Op Carrier
+/obj/item/clothing/suit/armor/pcarrier/clownop
+	name = "clown commando plate carrier"
+	desc = "A lightweight red and white plate carrier vest. It can be equipped with armor plates, but provides no protection of its own. Honk."
+	icon_state = "clowncarrier"
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/medium)
+
+
+//PARA Armor
+/obj/item/clothing/suit/armor/vest/para
 	name = "PARA light armor"
 	desc = "Light armor emblazoned with the device of an Eye. When equipped by trained PMD agents, runes set into the interior begin to glow."
 	icon_state = "para_ert_armor"
 	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	armor = list(melee = 60, bullet = 60, laser = 60, energy = 60, bomb = 20, bio = 0, rad = 0)
 	action_button_name = "Enable Armor Sigils"
 
 	var/anti_magic = FALSE
 	var/blessed = FALSE
 
-/obj/item/clothing/suit/armor/vest/ert/para/attack_self(mob/user as mob)
+/obj/item/clothing/suit/armor/vest/para/attack_self(mob/user as mob)
 	if(user.mind.isholy && !anti_magic && !blessed)
 		anti_magic = TRUE
 		blessed = TRUE
-		to_chat(user, "<font color='blue'>You enable the armor's protective sigils.</font>")
+		to_chat(user, "<font color=#4F49AF>You enable the armor's protective sigils.</font>")
 	else
 		anti_magic = FALSE
 		blessed = FALSE
-		to_chat(user, "<font color='blue'>You disable the armor's protective sigils.</font>")
+		to_chat(user, "<font color=#4F49AF>You disable the armor's protective sigils.</font>")
 
 	if(!user.mind.isholy)
 		to_chat(user, "<font color='red'>You can't figure out what these symbols do.</font>")
+
+/obj/item/clothing/suit/armor/para/inquisitor
+	name = "inquisitor's coat"
+	desc = "A flowing, armored coat adorned with occult iconography."
+	icon_state = "witchhunter"
+	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
+	blood_overlay_type = "armor"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 0, rad = 0)
+	action_button_name = "Enable Coat Sigils"
+	valid_accessory_slots = null
+
+/obj/item/clothing/suit/armor/heavy
+	name = "heavy armor"
+	desc = "An old military-grade suit of armor. Incredibly robust against brute force damage! However, it offers little protection from energy-based weapons, which, combined with its bulk, makes it woefully obsolete."
+	icon_state = "heavy"
+	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
+	armor = list(melee = 90, bullet = 80, laser = 10, energy = 10, bomb = 80, bio = 0, rad = 0)
+	w_class = ITEMSIZE_HUGE // massively bulky item
+	gas_transfer_coefficient = 0.90
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	slowdown = 5 // If you're a tank you're gonna move like a tank.
+	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
+	siemens_coefficient = 0
+
+
+/obj/item/clothing/suit/armor/vest/wolftaur
+	name = "wolf-taur armor vest"
+	desc = "An armored vest that protects against some damage. It appears to be created for a wolf-taur."
+	species_restricted = null //Species restricted since all it cares about is a taur half
+	icon = 'icons/mob/clothing/taursuits_wolf.dmi'
+	icon_state = "heavy_wolf_armor"
+	item_state = "heavy_wolf_armor"
+	valid_accessory_slots = null
+	mob_can_equip(var/mob/living/carbon/human/H, slot, disable_warning = 0)
+		if(..())
+			if(istype(H) && istype(H.tail_style, /datum/sprite_accessory/tail/taur/wolf))
+				return ..()
+			else
+				to_chat(H,"<span class='warning'>You need to have a wolf-taur half to wear this.</span>")
+				return 0
+
+// HoS armor improved to be slightly better than normal security stuff.
+/obj/item/clothing/suit/storage/vest/hoscoat
+	armor = list(melee = 50, bullet = 40, laser = 40, energy = 25, bomb = 25, bio = 0, rad = 0)
+
+/obj/item/clothing/suit/storage/vest/hos
+	armor = list(melee = 50, bullet = 40, laser = 40, energy = 25, bomb = 25, bio = 0, rad = 0)
+
+/obj/item/clothing/suit/storage/vest/hoscoat/jensen
+	name = "armored trenchcoat"
+	desc = "A trenchcoat augmented with a special alloy for some protection and style."
+	icon_state = "hostrench"
+	flags_inv = HIDEHOLSTER
+
+/obj/item/clothing/suit/storage/vest/oricon
+	name = "\improper Orion Confederation Government armored vest"
+	desc = "A synthetic armor vest. This one is marked with the crest of the Orion Confederation Group."
+
+/obj/item/clothing/suit/storage/vest/oricon/heavy
+	name = "\improper Orion Confederation Government heavy armored vest"
+	desc = "A synthetic armor vest with SECURITY printed in distinctive blue lettering on the chest. This one has added webbing and ballistic plates." // JSDF does peacekeeping, not these guys.
+
+/obj/item/clothing/suit/storage/vest/oricon/security
+	name = "master at arms heavy armored vest"
+	desc = "A synthetic armor vest with MASTER AT ARMS printed in silver lettering on the chest. This one has added webbing and ballistic plates."
+
+/obj/item/clothing/suit/storage/vest/oricon/command
+	name = "command heavy armored vest"
+	desc = "A synthetic armor vest with Orion Confederation Government printed in detailed gold lettering on the chest. This one has added webbing and ballistic plates."
+
+/obj/item/clothing/suit/armor/combat/JSDF
+	name = "marine body armor"
+	desc = "When I joined the Corps, we didn't have any fancy-schmanzy armor. We had sticks! Two sticks, and a rock for the whole platoon - and we had to <i>share</i> the rock!"
+	icon_state = "unsc_armor"
+	icon = 'icons/obj/clothing/suits_vr.dmi'
+	icon_override = 'icons/mob/clothing/suit.dmi'
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO // ToDo: Break up the armor into smaller bits.
+
+/obj/item/clothing/suit/armor/combat/imperial
+	name = "imperial soldier armor"
+	desc = "Made out of an especially light metal, it lets you conquer in style."
+	icon_state = "ge_armor"
+	icon = 'icons/obj/clothing/suits_vr.dmi'
+	icon_override = 'icons/mob/clothing/suit.dmi'
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+
+/obj/item/clothing/suit/armor/combat/imperial/centurion
+	name = "imperial centurion armor"
+	desc = "Not all heroes wear capes, but it'd be cooler if they did."
+	icon_state = "ge_armorcent"
+
+/obj/item/clothing/suit/armor/bone
+	name = "bone armor"
+	desc = "A tribal armor plate, crafted from animal bone."
+	icon_state = "bonearmor"
+	armor = list("melee" = 35, "bullet" = 25, "laser" = 25, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50, "wound" = 10)
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+
+//Strange Plate Armor
+/obj/item/clothing/suit/armor/bulletproof/kettle
+	name = "bulky imperial plate"
+	desc = "Often sold in tandem with KTL helmets, this sturdy plate armor offers impressive protection against bullets. These suits are believed to originate from an isolationist human society on the Eastern Rim."
+	icon_state = "ironplate"
+	armor = list(melee = 10, bullet = 80, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
+
+/obj/item/clothing/suit/armor/bulletproof/kettle/adamant
+	name = "adamant imperial plate"
+	desc = "Much more rare than standard Imperial plate, adamant armor protects against lasers and radiation as well as bullets. These suits are believed to originate from an isolationist human society on the Eastern Rim."
+	icon_state = "aplate"
+	armor = list(melee = 10, bullet = 60, laser = 40, energy = 40, bomb = 0, bio = 0, rad = 60)
+
+//Plate Harness Armor. Has no intrinsic protective value, but serves as a lightweight anchor for limb plating.
+/obj/item/clothing/suit/armor/plate_harness
+	name = "lightweight harness"
+	desc = "A lightweight harness designed to attach to the torso. It serves as an anchor point for lightweight armor plating, but provides no protection of its own."
+	icon = 'icons/obj/clothing/ties.dmi'
+	item_icons = list(/datum/inventory_slot_meta/inventory/suit = 'icons/mob/clothing/ties.dmi')
+	icon_state = "pilot_webbing1"
+	valid_accessory_slots = (\
+		ACCESSORY_SLOT_ARMOR_C\
+		|ACCESSORY_SLOT_ARMOR_A\
+		|ACCESSORY_SLOT_ARMOR_L\
+		|ACCESSORY_SLOT_ARMOR_M)
+	restricted_accessory_slots = (\
+		ACCESSORY_SLOT_ARMOR_C\
+		|ACCESSORY_SLOT_ARMOR_A\
+		|ACCESSORY_SLOT_ARMOR_L\
+		|ACCESSORY_SLOT_ARMOR_M)
+	blood_overlay_type = "armor"

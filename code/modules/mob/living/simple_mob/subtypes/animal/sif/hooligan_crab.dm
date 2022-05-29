@@ -32,8 +32,9 @@
 	icon_state = "sif_crab"
 	icon_living = "sif_crab"
 	icon_dead = "sif_crab_dead"
-	icon_scale_x = 1.5
-	icon_scale_y = 1.5
+	randomized = TRUE
+	mod_min = 100
+	mod_max = 150
 
 	faction = "crabs"
 
@@ -72,6 +73,7 @@
 	attack_edge = TRUE
 	melee_attack_delay = 1 SECOND
 
+	meat_amount = 3
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/crab
 
 	response_help  = "pets"
@@ -97,9 +99,9 @@
 		if(was_stunned) // Try to prevent chain-stuns by having them thrown.
 			var/throwdir = get_dir(src, L)
 			L.throw_at(get_edge_target_turf(L, throwdir), 5, 1, src)
-			visible_message(span("danger", "\The [src] hurls \the [L] away!"))
+			visible_message(SPAN_DANGER("\The [src] hurls \the [L] away!"))
 		else
-			visible_message(span("danger", "\The [src] crushes \the [L]!"))
+			visible_message(SPAN_DANGER("\The [src] crushes \the [L]!"))
 
 // The AI for hooligan crabs. Follows people for awhile.
 /datum/ai_holder/simple_mob/melee/hooligan

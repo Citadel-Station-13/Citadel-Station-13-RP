@@ -24,11 +24,11 @@
 	var/force_divisor = 0.3
 	var/thrown_force_divisor = 0.3
 	var/dulled_divisor = 0.1	//Just drops the damage to a tenth
-	var/default_material = DEFAULT_WALL_MATERIAL
+	var/default_material = MAT_STEEL
 	var/datum/material/material
 	var/drops_debris = 1
 
-/obj/item/material/Initialize(var/newloc, var/material_key)
+/obj/item/material/Initialize(mapload, material_key)
 	. = ..()
 	if(!material_key)
 		material_key = default_material
@@ -65,7 +65,7 @@
 		throwforce = 150
 
 	//spawn(1)
-	//	world << "[src] has force [force] and throwforce [throwforce] when made from default material [material.name]"
+	//	to_chat(world, "[src] has force [force] and throwforce [throwforce] when made from default material [material.name]")
 
 /obj/item/material/proc/set_material(var/new_material)
 	material = get_material_by_name(new_material)
@@ -160,7 +160,7 @@
 
 /*
 Commenting this out pending rebalancing of radiation based on small objects.
-/obj/item/material/process()
+/obj/item/material/process(delta_time)
 	if(!material.radioactivity)
 		return
 	for(var/mob/living/L in range(1,src))

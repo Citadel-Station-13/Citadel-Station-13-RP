@@ -7,14 +7,15 @@
 	desc = "Nutritious! Probably."
 	flags = NOCONDUCT
 	slot_flags = SLOT_HOLSTER
+	drop_sound = 'sound/items/drop/herb.ogg'
+	pickup_sound = 'sound/items/pickup/herb.ogg'
 
 	var/plantname
 	var/datum/seed/seed
 	var/potency = -1
 
-/obj/item/reagent_containers/food/snacks/grown/Initialize(newloc,planttype)
-
-	..()
+/obj/item/reagent_containers/food/snacks/grown/Initialize(mapload, planttype)
+	. = ..()
 	if(!dried_type)
 		dried_type = type
 	src.pixel_x = rand(-5.0, 5)
@@ -24,64 +25,49 @@
 	if(planttype)
 		plantname = planttype
 
-/obj/item/reagent_containers/food/snacks/grown/Initialize()
-	..()
-	spawn()
-		if(!plantname)
-			return
+	if(!plantname)
+		return
 
-		if(!plant_controller)
-			sleep(250) // ugly hack, should mean roundstart plants are fine.
-		if(!plant_controller)
-			to_chat(world, "<span class='danger'>Plant controller does not exist and [src] requires it. Aborting.</span>")
-			qdel(src)
-			return
-
-		seed = plant_controller.seeds[plantname]
-
-		if(!seed)
-			return
-
-		name = "[seed.seed_name]"
-		trash = seed.get_trash_type()
-
-		update_icon()
-
-		if(!seed.chems)
-			return
-
-		potency = seed.get_trait(TRAIT_POTENCY)
-
-		for(var/rid in seed.chems)
-			var/list/reagent_data = seed.chems[rid]
-			if(reagent_data && reagent_data.len)
-				var/rtotal = reagent_data[1]
-				var/list/data = list()
-				if(reagent_data.len > 1 && potency > 0)
-					rtotal += round(potency/reagent_data[2])
-				if(rid == "nutriment")
-					data[seed.seed_name] = max(1,rtotal)
-
-				reagents.add_reagent(rid,max(1,rtotal),data)
-		update_desc()
-		if(reagents.total_volume > 0)
-			bitesize = 1+round(reagents.total_volume / 2, 1)
-		if(seed.get_trait(TRAIT_STINGS))
-			force = 1
-
-/obj/item/reagent_containers/food/snacks/grown/proc/update_desc()
+	seed = SSplants.seeds[plantname]
 
 	if(!seed)
 		return
-	if(!plant_controller)
-		sleep(250) // ugly hack, should mean roundstart plants are fine.
-	if(!plant_controller)
-		to_chat(world, "<span class='danger'>Plant controller does not exist and [src] requires it. Aborting.</span>")
-		qdel(src)
+
+	name = "[seed.seed_name]"
+	trash = seed.get_trash_type()
+
+	update_icon()
+
+	if(!seed.chems)
 		return
 
-	if(plant_controller.product_descs["[seed.uid]"])
-		desc = plant_controller.product_descs["[seed.uid]"]
+	potency = seed.get_trait(TRAIT_POTENCY)
+
+	for(var/rid in seed.chems)
+		var/list/reagent_data = seed.chems[rid]
+		if(reagent_data && reagent_data.len)
+			var/rtotal = reagent_data[1]
+			var/list/data = list()
+			if(reagent_data.len > 1 && potency > 0)
+				rtotal += round(potency/reagent_data[2])
+			if(rid == "nutriment")
+				data[seed.seed_name] = max(1,rtotal)
+
+			reagents.add_reagent(rid,max(1,rtotal),data)
+	update_desc()
+	if(reagents.total_volume > 0)
+		bitesize = 1+round(reagents.total_volume / 2, 1)
+	if(seed.get_trait(TRAIT_STINGS))
+		force = 1
+	catalogue_data = seed.catalog_data_grown
+
+/obj/item/reagent_containers/food/snacks/grown/update_desc()
+	. = ..()
+	if(!seed)
+		return
+
+	if(SSplants.product_descs["[seed.uid]"])
+		desc = SSplants.product_descs["[seed.uid]"]
 	else
 		var/list/descriptors = list()
 		if(reagents.has_reagent("sugar") || reagents.has_reagent("cherryjelly") || reagents.has_reagent("honey") || reagents.has_reagent("berryjuice"))
@@ -133,17 +119,17 @@
 			desc += " mushroom"
 		else
 			desc += " fruit"
-		plant_controller.product_descs["[seed.uid]"] = desc
+		SSplants.product_descs["[seed.uid]"] = desc
 	desc += ". Delicious! Probably."
 
 /obj/item/reagent_containers/food/snacks/grown/update_icon()
-	if(!seed || !plant_controller || !plant_controller.plant_icon_cache)
+	if(!seed || !SSplants || !SSplants.plant_icon_cache)
 		return
 	overlays.Cut()
 	var/image/plant_icon
 	var/icon_key = "fruit-[seed.get_trait(TRAIT_PRODUCT_ICON)]-[seed.get_trait(TRAIT_PRODUCT_COLOUR)]-[seed.get_trait(TRAIT_PLANT_COLOUR)]"
-	if(plant_controller.plant_icon_cache[icon_key])
-		plant_icon = plant_controller.plant_icon_cache[icon_key]
+	if(SSplants.plant_icon_cache[icon_key])
+		plant_icon = SSplants.plant_icon_cache[icon_key]
 	else
 		plant_icon = image('icons/obj/hydroponics_products.dmi',"blank")
 		var/image/fruit_base = image('icons/obj/hydroponics_products.dmi',"[seed.get_trait(TRAIT_PRODUCT_ICON)]-product")
@@ -153,10 +139,13 @@
 			var/image/fruit_leaves = image('icons/obj/hydroponics_products.dmi',"[seed.get_trait(TRAIT_PRODUCT_ICON)]-leaf")
 			fruit_leaves.color = "[seed.get_trait(TRAIT_PLANT_COLOUR)]"
 			plant_icon.overlays |= fruit_leaves
-		plant_controller.plant_icon_cache[icon_key] = plant_icon
+		SSplants.plant_icon_cache[icon_key] = plant_icon
 	overlays |= plant_icon
 
 /obj/item/reagent_containers/food/snacks/grown/Crossed(var/mob/living/M)
+	. = ..()
+	if(M.is_incorporeal())
+		return
 	if(seed && seed.get_trait(TRAIT_JUICY) == 2)
 		if(istype(M))
 
@@ -165,9 +154,10 @@
 
 			if(istype(M,/mob/living/carbon/human))
 				var/mob/living/carbon/human/H = M
-				if(H.shoes && H.shoes.item_flags & NOSLIP)
+				if(H.shoes && H.shoes.clothing_flags & NOSLIP)
 					return
-
+				if(H.flags & NO_SLIP)//Species that dont slip naturally
+					return
 			M.stop_pulling()
 			to_chat(M, "<span class='notice'>You slipped on the [name]!</span>")
 			playsound(src.loc, 'sound/misc/slip.ogg', 50, 1, -3)
@@ -175,7 +165,8 @@
 			M.Weaken(5)
 			seed.thrown_at(src,M)
 			sleep(-1)
-			if(src) qdel(src)
+			if(src)
+				qdel(src)
 			return
 
 /obj/item/reagent_containers/food/snacks/grown/throw_impact(atom/hit_atom)
@@ -238,7 +229,7 @@
 					return
 				else if(!isnull(seed.chems["pineapplejuice"]))
 					to_chat(user, "You slice \the [src] into slices.")
-					for(var/i=i;i<=4;i++)
+					for(var/i in 1 to 4)
 						new /obj/item/reagent_containers/food/snacks/pineapple_ring(get_turf(src))
 					qdel(src)
 					return
@@ -246,7 +237,7 @@
 					to_chat(user, "You slice up \the [src].")
 					var/slices = rand(3,5)
 					var/reagents_to_transfer = round(reagents.total_volume/slices)
-					for(var/i=i;i<=slices;i++)
+					for(var/i in 1 to slices)
 						var/obj/item/reagent_containers/food/snacks/fruit_slice/F = new(get_turf(src),seed)
 						if(reagents_to_transfer) reagents.trans_to_obj(F,reagents_to_transfer)
 					qdel(src)
@@ -350,8 +341,8 @@
 
 var/list/fruit_icon_cache = list()
 
-/obj/item/reagent_containers/food/snacks/fruit_slice/New(var/newloc, var/datum/seed/S)
-	..(newloc)
+/obj/item/reagent_containers/food/snacks/fruit_slice/Initialize(mapload, datum/seed/S)
+	. = ..()
 	// Need to go through and make a general image caching controller. Todo.
 	if(!istype(S))
 		qdel(src)

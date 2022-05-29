@@ -17,20 +17,20 @@
 	//Power used to maintain temperature once it's heated.
 	//Going with 25% of the active power. This is a somewhat arbitrary value
 
-	resistance = 20000	// Approx. 8-9 minutes to heat up.
+	resistance = 10000	// Approx. 4-5 minutes to heat up.
 
 	max_contents = 2
 	container_type = /obj/item/reagent_containers/cooking_container/fryer
 
-	stat = POWEROFF//Starts turned off
+	machine_stat = POWEROFF//Starts turned off
 
 	var/datum/reagents/oil
 	var/optimal_oil = 9000//90 litres of cooking oil
 
 
 /obj/machinery/appliance/cooker/fryer/examine(var/mob/user)
-	if (..())//no need to duplicate adjacency check
-		to_chat(user, "Oil Level: [oil.total_volume]/[optimal_oil]")
+	. = ..()
+	. += "Oil Level: [oil.total_volume]/[optimal_oil]"
 
 /obj/machinery/appliance/cooker/fryer/Initialize(mapload)
 	. = ..()
@@ -40,8 +40,9 @@
 
 	if (prob(20))
 		//Sometimes the fryer will start with much less than full oil, significantly impacting efficiency until filled
+		//hm yes 20% of the time we will make fryers start with less this is very fun and interactive
 		variance = rand()*0.5
-	oil.add_reagent("cornoil", optimal_oil*(1 - variance))
+	oil.add_reagent("tallow", optimal_oil*(1 - variance))
 
 /obj/machinery/appliance/cooker/fryer/heat_up()
 	if (..())
@@ -198,7 +199,7 @@
 
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has [cook_type] \the [victim] ([victim.ckey]) in \a [src]</font>")
 		victim.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been [cook_type] in \a [src] by [user.name] ([user.ckey])</font>")
-		msg_admin_attack("[key_name_admin(user)] [cook_type] \the [victim] ([victim.ckey]) in \a [src]. (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)",ckey=key_name(user),ckey_target=key_name(victim))
+		msg_admin_attack("[key_name_admin(user)] [cook_type] \the [victim] ([victim.ckey]) in \a [src]. (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
 
 	//Coat the victim in some oil
 	oil.trans_to(victim, 40)
@@ -208,7 +209,7 @@
 		if (I.reagents.total_volume <= 0 && oil)
 			//Its empty, handle scooping some hot oil out of the fryer
 			oil.trans_to(I, I.reagents.maximum_volume)
-			user.visible_message("[user] scoops some oil out of \the [src].", span("notice","You scoop some oil out of \the [src]."))
+			user.visible_message("[user] scoops some oil out of \the [src].", SPAN_NOTICE("You scoop some oil out of \the [src]."))
 			return 1
 		else
 	//It contains stuff, handle pouring any oil into the fryer
@@ -224,7 +225,7 @@
 					I.reagents.remove_reagent(R.id, delta)
 					amount += delta
 			if (amount > 0)
-				user.visible_message("[user] pours some oil into \the [src].", span("notice","You pour [amount]u of oil into \the [src]."), "<span class='notice'>You hear something viscous being poured into a metal container.</span>")
+				user.visible_message("[user] pours some oil into \the [src].", SPAN_NOTICE("You pour [amount]u of oil into \the [src]."), "<span class='notice'>You hear something viscous being poured into a metal container.</span>")
 				return 1
 	//If neither of the above returned, then call parent as normal
 	..()

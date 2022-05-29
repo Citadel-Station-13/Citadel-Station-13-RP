@@ -3,14 +3,14 @@
 	desc = "A handy little spring-loaded trap for catching pesty rodents."
 	icon_state = "mousetrap"
 	origin_tech = list(TECH_COMBAT = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 100, "waste" = 10)
+	matter = list(MAT_STEEL = 100)
 	var/armed = 0
 
 
-/obj/item/assembly/mousetrap/examine(mob/user)
-	..(user)
+/obj/item/assembly/mousetrap/examine(var/mob/user)
+	. = ..()
 	if(armed)
-		to_chat(user, "It looks like it's armed.")
+		. += "It looks like it's armed."
 
 /obj/item/assembly/mousetrap/update_icon()
 	if(armed)
@@ -20,7 +20,7 @@
 	if(holder)
 		holder.update_icon()
 
-/obj/item/assembly/mousetrap/proc/triggered(mob/target as mob, var/type = "feet")
+/obj/item/assembly/mousetrap/proc/triggered(var/mob/target, var/type = "feet")
 	if(!armed)
 		return
 	var/obj/item/organ/external/affecting = null
@@ -49,8 +49,7 @@
 	update_icon()
 	pulse(0)
 
-
-/obj/item/assembly/mousetrap/attack_self(mob/living/user as mob)
+/obj/item/assembly/mousetrap/attack_self(var/mob/living/user)
 	if(!armed)
 		to_chat(user, "<span class='notice'>You arm [src].</span>")
 	else
@@ -69,7 +68,7 @@
 	playsound(user.loc, 'sound/weapons/handcuffs.ogg', 30, 1, -3)
 
 
-/obj/item/assembly/mousetrap/attack_hand(mob/living/user as mob)
+/obj/item/assembly/mousetrap/attack_hand(var/mob/living/user)
 	if(armed)
 		if((CLUMSY in user.mutations) && prob(50))
 			var/which_hand = "l_hand"
@@ -82,7 +81,9 @@
 	..()
 
 
-/obj/item/assembly/mousetrap/Crossed(AM as mob|obj)
+/obj/item/assembly/mousetrap/Crossed(var/atom/movable/AM)
+	if(AM.is_incorporeal())
+		return
 	if(armed)
 		if(ishuman(AM))
 			var/mob/living/carbon/H = AM
@@ -95,7 +96,7 @@
 	..()
 
 
-/obj/item/assembly/mousetrap/on_found(mob/living/finder as mob)
+/obj/item/assembly/mousetrap/on_found(var/mob/living/finder)
 	if(armed)
 		finder.visible_message("<span class='warning'>[finder] accidentally sets off [src], breaking their fingers.</span>", \
 							   "<span class='warning'>You accidentally trigger [src]!</span>")
@@ -104,17 +105,15 @@
 	return 0
 
 
-/obj/item/assembly/mousetrap/hitby(A as mob|obj)
+/obj/item/assembly/mousetrap/hitby(var/atom/movable/A)
 	if(!armed)
 		return ..()
 	visible_message("<span class='warning'>[src] is triggered by [A].</span>")
 	triggered(null)
 
-
 /obj/item/assembly/mousetrap/armed
 	icon_state = "mousetraparmed"
 	armed = 1
-
 
 /obj/item/assembly/mousetrap/verb/hide_under()
 	set src in oview(1)
@@ -124,5 +123,5 @@
 	if(usr.stat)
 		return
 
-	layer = TURF_LAYER+0.2
+	layer = HIDING_LAYER
 	to_chat(usr, "<span class='notice'>You hide [src].</span>")

@@ -14,7 +14,7 @@ var/datum/antagonist/revolutionary/revs
 	victory_feedback_tag = "win - heads killed"
 	loss_feedback_tag = "loss - rev heads killed"
 	flags = ANTAG_SUSPICIOUS | ANTAG_VOTABLE
-	antaghud_indicator = "hudrevolutionary"
+	antaghud_indicator = "revolutionary"
 
 	hard_cap = 2
 	hard_cap_round = 4
@@ -41,8 +41,8 @@ var/datum/antagonist/revolutionary/revs
 	if(!..())
 		return
 	global_objectives = list()
-	for(var/mob/living/carbon/human/player in mob_list)
-		if(!player.mind || player.stat==2 || !(player.mind.assigned_role in command_positions))
+	for(var/mob/living/carbon/human/player in GLOB.mob_list)
+		if(!player.mind || player.stat==2 || !(player.mind.assigned_role in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND)))
 			continue
 		var/datum/objective/rev/rev_obj = new
 		rev_obj.target = player.mind

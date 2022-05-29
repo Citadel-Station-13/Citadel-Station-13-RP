@@ -44,7 +44,7 @@
 	sparks.start()
 
 	new /obj/effect/decal/cleanable/ash(src.loc) //always use src.loc so that ash doesn't end up inside windows
-	new /obj/effect/effect/smoke/illumination(T, 5, brightness, brightness, light_colour)
+	new /obj/effect/smoke/illumination(T, 5, brightness, brightness, light_colour)
 
 //No longer blinds, and flash strength has been greatly lowered but now set's on fire.
 /obj/item/projectile/energy/flash/flare
@@ -62,7 +62,7 @@
 	..() //initial flash
 
 	//residual illumination
-	new /obj/effect/effect/smoke/illumination(src.loc, rand(190,240) SECONDS, range=8, power=3, color=light_colour) //same lighting power as flare
+	new /obj/effect/smoke/illumination(src.loc, rand(190,240) SECONDS, 8, 3, light_colour) //same lighting power as flare
 
 /obj/item/projectile/energy/electrode
 	name = "electrode"
@@ -81,6 +81,10 @@
 /obj/item/projectile/energy/electrode/stunshot
 	name = "stunshot"
 	damage = 5
+	agony = 80
+
+/obj/item/projectile/energy/electrode/goldenbolt	// MIGHTY GOLDEN BOLT
+	name = "taser bolt"
 	agony = 80
 
 /obj/item/projectile/energy/declone
@@ -222,7 +226,7 @@
 	range = 25
 	damage = 5
 	SA_bonus_damage = 45	// 50 total on animals
-	SA_vulnerability = SA_ANIMAL
+	SA_vulnerability = MOB_CLASS_ANIMAL
 
 /obj/item/projectile/energy/phase/light
 	range = 15

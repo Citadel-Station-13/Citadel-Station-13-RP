@@ -4,7 +4,7 @@
 
 /obj/item/deck/cah
 	name = "\improper CAG deck (white)"
-	desc = "The ever-popular Cards Against The Galaxy word game. Warning: may include traces of broken fourth wall. This is the white deck."
+	desc = "The ever-popular Cards Against The Galaxy word game. Warning: may include traces of broken fourth wall. Now with the NSV Triumph Expansion This is the white deck."
 	icon_state = "cag_white"
 	var/blanks = 5
 
@@ -14,8 +14,8 @@
 	icon_state = "cag_black"
 	blanks = 0
 
-/obj/item/deck/cah/New()
-	..()
+/obj/item/deck/cah/Initialize(mapload)
+	. = ..()
 	var/datum/playingcard/P
 	for(var/cardtext in card_text_list)
 		P = new()

@@ -20,17 +20,16 @@
 	holder_type = /obj/item/holder/diona
 	var/obj/item/hat
 
-/mob/living/carbon/alien/diona/New()
-
-	..()
-	species = GLOB.all_species[SPECIES_DIONA]
+/mob/living/carbon/alien/diona/Initialize(mapload)
+	. = ..()
+	species = get_static_species_meta(/datum/species/diona)
 	add_language(LANGUAGE_ROOTGLOBAL)
 	add_language(LANGUAGE_GALCOM)
 	verbs += /mob/living/carbon/alien/diona/proc/merge
 
-/mob/living/carbon/alien/diona/put_in_hands(var/obj/item/W) // No hands.
-	W.loc = get_turf(src)
-	return 1
+/mob/living/carbon/alien/diona/put_in_hands(obj/item/I, del_on_fail = FALSE, merge_stacks = TRUE, forced = FALSE)
+	I.forceMove(drop_location())
+	return TRUE
 
 /mob/living/carbon/alien/diona/proc/wear_hat(var/obj/item/new_hat)
 	if(hat)
@@ -43,6 +42,6 @@
 	if(D.stat != CONSCIOUS)
 		return
 	if(prob(33) && D.canmove && isturf(D.loc) && !D.pulledby) //won't move if being pulled
-		step(D, pick(cardinal))
+		step(D, pick(GLOB.cardinal))
 	if(prob(1))
 		D.emote(pick("scratch","jump","chirp","roll"))

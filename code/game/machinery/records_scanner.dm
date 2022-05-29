@@ -4,11 +4,12 @@ obj/machinery/scanner
 	var/outputdir = 0
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "scanner_idle"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	var/lastuser = null
 
-obj/machinery/scanner/New()
+/obj/machinery/scanner/Initialize(mapload)
+	. = ..()
 	if(!outputdir)
 		switch(dir)
 			if(1)
@@ -22,7 +23,7 @@ obj/machinery/scanner/New()
 		if(!outputdir)
 			outputdir = 8
 
-/obj/machinery/scanner/process()
+/obj/machinery/scanner/process(delta_time)
 	if(stat & NOPOWER)
 		return
 	use_power(50)

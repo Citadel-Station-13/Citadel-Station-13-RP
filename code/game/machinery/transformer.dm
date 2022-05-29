@@ -4,17 +4,16 @@
 	icon = 'icons/obj/recycling.dmi'
 	icon_state = "separator-AO1"
 	layer = MOB_LAYER+1 // Overhead
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	var/transform_dead = 0
 	var/transform_standing = 0
 
-/obj/machinery/transformer/New()
-	// On us
-	..()
+/obj/machinery/transformer/Initialize(mapload)
+	. = ..()
 	new /obj/machinery/conveyor(loc, WEST, 1)
 
-/obj/machinery/transformer/Bumped(var/atom/movable/AM)
+/obj/machinery/transformer/Bumped(atom/movable/AM)
 	// HasEntered didn't like people lying down.
 	if(ishuman(AM))
 		// Only humans can enter from the west side, while lying down.
@@ -24,8 +23,8 @@
 			AM.loc = src.loc
 			transform(AM)
 
-/obj/machinery/transformer/proc/transform(var/mob/living/carbon/human/H)
-	if(stat & (BROKEN|NOPOWER))
+/obj/machinery/transformer/proc/transform(mob/living/carbon/human/H)
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	if(!transform_dead && H.stat == DEAD)
 		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 0)
@@ -39,8 +38,8 @@
 		if(robot)
 			robot.SetLockDown(0)
 
-/obj/machinery/transformer/conveyor/New()
-	..()
+/obj/machinery/transformer/conveyor/Initialize(mapload)
+	. = ..()
 	var/turf/T = loc
 	if(T)
 		// Spawn Conveyour Belts

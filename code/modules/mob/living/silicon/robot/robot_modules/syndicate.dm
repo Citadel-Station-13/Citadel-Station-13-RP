@@ -31,9 +31,9 @@
 	var/id
 
 // All syndie modules get these, and the base borg items (flash, crowbar, etc).
-/obj/item/robot_module/robot/syndicate/New(var/mob/living/silicon/robot/R)
-	..()
-	loc = R
+/obj/item/robot_module/robot/syndicate/Initialize(mapload)
+	. = ..()
+	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/pinpointer/shuttle/merc(src)
 	src.modules += new /obj/item/melee/energy/sword(src)
 
@@ -59,8 +59,8 @@
 		"XI-ALP" = "syndi-heavy"
 		)
 
-/obj/item/robot_module/robot/syndicate/protector/New(var/mob/living/silicon/robot/R)
-	..()
+/obj/item/robot_module/robot/syndicate/protector/Initialize(mapload)
+	. = ..()
 	src.modules += new /obj/item/shield_projector/rectangle/weak(src)
 	src.modules += new /obj/item/gun/energy/dakkalaser(src)
 	src.modules += new /obj/item/handcuffs/cyborg(src)
@@ -74,8 +74,8 @@
 		"WTOperator" = "sleekhos"
 		)
 
-/obj/item/robot_module/robot/syndicate/mechanist/New(var/mob/living/silicon/robot/R)
-	..()
+/obj/item/robot_module/robot/syndicate/mechanist/Initialize(mapload)
+	. = ..()
 	// General engineering/hacking.
 	src.modules += new /obj/item/borg/sight/meson(src)
 	src.modules += new /obj/item/weldingtool/electric/mounted/cyborg(src)
@@ -142,8 +142,8 @@
 		"Telemachus" = "toiletbotantag"
 		)
 
-/obj/item/robot_module/robot/syndicate/combat_medic/New(var/mob/living/silicon/robot/R)
-	..()
+/obj/item/robot_module/robot/syndicate/combat_medic/Initialize(mapload)
+	. = ..()
 	src.modules += new /obj/item/borg/sight/hud/med(src)
 	src.modules += new /obj/item/healthanalyzer/advanced(src)
 	src.modules += new /obj/item/reagent_containers/borghypo/merc(src)

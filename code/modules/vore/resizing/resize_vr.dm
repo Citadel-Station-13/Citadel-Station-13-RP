@@ -3,6 +3,8 @@
 var/const/RESIZE_HUGE = 2
 var/const/RESIZE_BIG = 1.5
 var/const/RESIZE_NORMAL = 1
+/// god forgive me for i have sinned by using a const
+var/const/RESIZE_PREF_LIMIT = 0.75
 var/const/RESIZE_SMALL = 0.5
 var/const/RESIZE_TINY = 0.25
 
@@ -41,7 +43,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 	. = ..()
 	ASSERT(!ishuman(src))
 	var/matrix/M = matrix()
-	M.Scale(size_multiplier)
+	M.Scale(size_multiplier * icon_scale_x, size_multiplier * icon_scale_y)
 	M.Translate(0, 16*(size_multiplier-1))
 	src.transform = M
 
@@ -61,7 +63,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
  * Resizes the mob immediately to the desired mod, animating it growing/shrinking.
  * It can be used by anything that calls it.
  */
-/mob/living/proc/resize(var/new_size, var/animate = TRUE)
+/mob/living/proc/resize(var/new_size, var/animate = FALSE)
 	if(size_multiplier == new_size)
 		return 1
 
@@ -70,7 +72,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 		var/change = new_size - size_multiplier
 		var/duration = (abs(change)+0.25) SECONDS
 		var/matrix/resize = matrix() // Defines the matrix to change the player's size
-		resize.Scale(new_size) //Change the size of the matrix
+		resize.Scale(new_size * icon_scale_x, size_multiplier * icon_scale_y) //Change the size of the matrix
 		resize.Translate(0, 16 * (new_size - 1)) //Move the player up in the tile so their feet align with the bottom
 		animate(src, transform = resize, time = duration) //Animate the player resizing
 
@@ -86,12 +88,11 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 /mob/living/carbon/human/resize(var/new_size, var/animate = TRUE)
 	. = ..()
-	if(LAZYLEN(hud_list) && has_huds)
+	if(LAZYLEN(hud_list))
 		var/new_y_offset = 32 * (size_multiplier - 1)
-		for(var/index = 1 to hud_list.len)
-			var/image/HI = grab_hud(index)
+		for(var/key in hud_list)
+			var/image/HI = hud_list[key]
 			HI.pixel_y = new_y_offset
-			apply_hud(index, HI)
 
 // Optimize mannequins - never a point to animating or doing HUDs on these.
 /mob/living/carbon/human/dummy/mannequin/resize(var/new_size, var/animate = TRUE)
@@ -110,7 +111,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 	var/nagmessage = "Adjust your mass to be a size between 25 to 200% (DO NOT ABUSE)"
 	var/new_size = input(nagmessage, "Pick a Size") as num|null
 	if(new_size && ISINRANGE(new_size,25,200))
-		src.resize(new_size/100)
+		src.resize(new_size/100, TRUE)
 		message_admins("[key_name(src)] used the resize command in-game to be [new_size]% size. \
 			([src ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>" : "null"])")
 
@@ -139,6 +140,9 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 		to_chat(usr,"<span class='notice'>You have to unbuckle \the [M] before you pick them up.</span>")
 		return 0
 	if(size_diff >= 0.50)
+		if(M.get_effective_size() >= RESIZE_PREF_LIMIT && !M.permit_size_pickup)
+			to_chat(src, "<span class='warning'>[M] is far too skittish to casually scoop up.</span>")
+			return TRUE
 		holder_type = /obj/item/holder/micro
 		var/obj/item/holder/m_holder = get_scooped(M)
 		holder_type = holder_default
@@ -228,6 +232,12 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 	else
 		//If they're not human, steppy shouldn't happen
 		return FALSE
+
+	if(tmob.get_effective_size() >= RESIZE_PREF_LIMIT && !tmob.permit_size_trample)
+		if((get_effective_size() - tmob.get_effective_size()) >= 0.75)
+			to_chat(src, "<span class='warning'>[tmob] skitters past your legs.</span>")
+			to_chat(tmob, "<span class='warning'>You narrowly dodge [src]'s step.</span>")
+		return
 
 	//Depending on intent...
 	switch(a_intent)

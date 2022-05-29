@@ -9,47 +9,11 @@
 	allowed = list(/obj/item/analyzer,/obj/item/stack/medical,/obj/item/dnainjector,/obj/item/reagent_containers/dropper,/obj/item/reagent_containers/syringe,/obj/item/reagent_containers/hypospray,/obj/item/healthanalyzer,/obj/item/flashlight/pen,/obj/item/reagent_containers/glass/bottle,/obj/item/reagent_containers/glass/beaker,/obj/item/reagent_containers/pill,/obj/item/storage/pill_bottle,/obj/item/paper)
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 50, rad = 0)
 
-/obj/item/clothing/suit/storage/toggle/labcoat/red
-	name = "red labcoat"
-	desc = "A suit that protects against minor chemical spills. This one is red."
-	icon_state = "red_labcoat"
-	item_state_slots = list(slot_r_hand_str = "red_labcoat", slot_l_hand_str = "red_labcoat")
-
-/obj/item/clothing/suit/storage/toggle/labcoat/blue
-	name = "blue labcoat"
-	desc = "A suit that protects against minor chemical spills. This one is blue."
-	icon_state = "blue_labcoat"
-	item_state_slots = list(slot_r_hand_str = "blue_labcoat", slot_l_hand_str = "blue_labcoat")
-
-/obj/item/clothing/suit/storage/toggle/labcoat/purple
-	name = "purple labcoat"
-	desc = "A suit that protects against minor chemical spills. This one is purple."
-	icon_state = "purple_labcoat"
-	item_state_slots = list(slot_r_hand_str = "purple_labcoat", slot_l_hand_str = "purple_labcoat")
-
-/obj/item/clothing/suit/storage/toggle/labcoat/orange
-	name = "orange labcoat"
-	desc = "A suit that protects against minor chemical spills. This one is orange."
-	icon_state = "orange_labcoat"
-	item_state_slots = list(slot_r_hand_str = "orange_labcoat", slot_l_hand_str = "orange_labcoat")
-
 /obj/item/clothing/suit/storage/toggle/labcoat/green
 	name = "green labcoat"
 	desc = "A suit that protects against minor chemical spills. This one is green."
 	icon_state = "green_labcoat"
 	item_state_slots = list(slot_r_hand_str = "green_labcoat", slot_l_hand_str = "green_labcoat")
-
-/obj/item/clothing/suit/storage/toggle/labcoat/yellow
-	name = "yellow labcoat"
-	desc = "A suit that protects against minor chemical spills. This one is yellow."
-	icon_state = "yellow_labcoat"
-	item_state_slots = list(slot_r_hand_str = "yellow_labcoat", slot_l_hand_str = "yellow_labcoat")
-
-/obj/item/clothing/suit/storage/toggle/labcoat/pink
-	name = "pink labcoat"
-	desc = "A suit that protects against minor chemical spills. This one is pink."
-	icon_state = "pink_labcoat"
-	item_state_slots = list(slot_r_hand_str = "pink_labcoat", slot_l_hand_str = "pink_labcoat")
 
 /obj/item/clothing/suit/storage/toggle/labcoat/cmo
 	name = "chief medical officer's labcoat"
@@ -91,7 +55,7 @@
 /obj/item/clothing/suit/storage/toggle/labcoat/science
 	name = "Scientist labcoat"
 	desc = "A suit that protects against minor chemical spills. Has a purple stripe on the shoulder."
-	icon_state = "labcoat_tox"
+	icon_state = "labcoat_sci"
 	item_state_slots = list(slot_r_hand_str = "science_labcoat", slot_l_hand_str = "science_labcoat")
 
 /obj/item/clothing/suit/storage/toggle/labcoat/emt
@@ -100,17 +64,17 @@
 	icon_state = "labcoat_emt"
 	item_state_slots = list(slot_r_hand_str = "emt_labcoat", slot_l_hand_str = "emt_labcoat")
 
-/obj/item/clothing/suit/storage/toggle/labcoat/blue_edge
-	name = "blue-edged labcoat"
-	desc = "A suit that protects against minor chemical spills. This one has blue trim."
-	icon_state = "blue_edge_labcoat"
-
 /obj/item/clothing/suit/storage/toggle/labcoat/rd
 	name = "Research Director's labcoat"
 	desc = "A flashy labcoat with purple markings. It belongs to the Research Director."
 	icon = 'icons/obj/clothing/suits_vr.dmi'
-	icon_override = 'icons/mob/suit_vr.dmi'
+	icon_override = 'icons/mob/clothing/suit.dmi'
 	icon_state = "labcoat_rd"
 	item_state_slots = list(slot_r_hand_str = "science_labcoat", slot_l_hand_str = "science_labcoat")
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/suit.dmi')
+		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/suit.dmi')
+
+/obj/item/clothing/suit/storage/toggle/labcoat/robotics
+	name = "Roboticist labcoat"
+	desc = "A suit that protects against oil, acid, and burn hazards. Has a red stripe on the shoulder."
+	icon_state = "labcoat_robo"

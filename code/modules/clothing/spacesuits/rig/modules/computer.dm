@@ -23,7 +23,7 @@
 		to_chat(usr, "Your module is not installed in a hardsuit.")
 		return
 
-	module.holder.ui_interact(usr, nano_state = contained_state)
+	module.holder.nano_ui_interact(usr, nano_state = contained_state)
 
 /obj/item/rig_module/ai_container
 
@@ -46,7 +46,7 @@
 	var/obj/item/ai_card  // Reference to the MMI, posibrain, intellicard or pAI card previously holding the AI.
 	var/obj/item/ai_verbs/verb_holder
 
-/obj/item/rig_module/ai_container/process()
+/obj/item/rig_module/ai_container/process(delta_time)
 	if(integrated_ai)
 		var/obj/item/rig/rig = get_rig()
 		if(rig && rig.ai_override_enabled)
@@ -142,7 +142,7 @@
 	if(!target)
 		if(ai_card)
 			if(istype(ai_card,/obj/item/aicard))
-				ai_card.ui_interact(H, state = deep_inventory_state)
+				ai_card.nano_ui_interact(H, state = deep_inventory_state)
 			else
 				eject_ai(H)
 		update_verb_holder()
@@ -208,8 +208,8 @@
 				user.drop_from_inventory(ai)
 				ai.forceMove(src)
 				ai_card = ai
-				to_chat(ai_mob, "<font color='blue'>You have been transferred to \the [holder]'s [src].</font>")
-				to_chat(user, "<font color='blue'>You load [ai_mob] into \the [holder]'s [src].</font>")
+				to_chat(ai_mob, "<font color=#4F49AF>You have been transferred to \the [holder]'s [src].</font>")
+				to_chat(user, "<font color=#4F49AF>You load [ai_mob] into \the [holder]'s [src].</font>")
 
 			integrated_ai = ai_mob
 
@@ -239,8 +239,8 @@
 	interface_desc = "An induction-powered high-throughput datalink suitable for hacking encrypted networks."
 	var/list/stored_research
 
-/obj/item/rig_module/datajack/New()
-	..()
+/obj/item/rig_module/datajack/Initialize(mapload)
+	. = ..()
 	stored_research = list()
 
 /obj/item/rig_module/datajack/engage(atom/target)
@@ -261,7 +261,7 @@
 		var/obj/item/disk/tech_disk/disk = input_device
 		if(disk.stored)
 			if(load_data(disk.stored))
-				user << "<font color='blue'>Download successful; disk erased.</font>"
+				to_chat(user, "<font color=#4F49AF>Download successful; disk erased.</font>")
 				disk.stored = null
 			else
 				to_chat(user, "<span class='warning'>The disk is corrupt. It is useless to you.</span>")
@@ -287,7 +287,7 @@
 		else
 			// Maybe consider a way to drop all your data into a target repo in the future.
 			if(load_data(incoming_files.known_tech))
-				user << "<font color='blue'>Download successful; local and remote repositories synchronized.</font>"
+				to_chat(user, "<font color=#4F49AF>Download successful; local and remote repositories synchronized.</font>")
 			else
 				to_chat(user, "<span class='warning'>Scan complete. There is nothing useful stored on this terminal.</span>")
 		return 1
@@ -361,6 +361,7 @@
 	interface_desc = "Colloquially known as a power siphon, this module drains power through the suit hands into the suit battery."
 
 	var/atom/interfaced_with // Currently draining power from this device.
+	// in kJ
 	var/total_power_drained = 0
 	var/drain_loc
 
@@ -397,8 +398,8 @@
 		return 0
 
 	// Is it a valid power source?
-	if(target.drain_power(1) <= 0)
-		return 0
+	if(!target.can_drain_energy(src))
+		return FALSE
 
 	to_chat(H, "<span class = 'danger'>You begin draining power from [target]!</span>")
 	interfaced_with = target
@@ -410,13 +411,13 @@
 	return 1
 
 /obj/item/rig_module/power_sink/accepts_item(var/obj/item/input_device, var/mob/living/user)
-	var/can_drain = input_device.drain_power(1)
+	var/can_drain = input_device.can_drain_energy(src, NONE)
 	if(can_drain > 0)
 		engage(input_device)
 		return 1
 	return 0
 
-/obj/item/rig_module/power_sink/process()
+/obj/item/rig_module/power_sink/process(delta_time)
 
 	if(!interfaced_with)
 		return ..()
@@ -429,12 +430,12 @@
 		return 0
 
 	holder.spark_system.start()
-	playsound(H.loc, 'sound/effects/sparks2.ogg', 50, 1)
+	playsound(H, 'sound/effects/sparks2.ogg', 50, 1)
 
 	H.break_cloak()
 
 	if(!holder.cell)
-		H << "<span class = 'danger'>Your power sink flashes an error; there is no cell in your rig.</span>"
+		to_chat(H, "<span class = 'danger'>Your power sink flashes an error; there is no cell in your rig.</span>")
 		drain_complete(H)
 		return
 
@@ -444,31 +445,30 @@
 		return
 
 	if(holder.cell.fully_charged())
-		H << "<span class = 'warning'>Your power sink flashes an amber light; your rig cell is full.</span>"
+		to_chat(H, "<span class = 'warning'>Your power sink flashes an amber light; your rig cell is full.</span>")
 		drain_complete(H)
 		return
 
 	// Attempts to drain up to 12.5*cell-capacity kW, determines this value from remaining cell capacity to ensure we don't drain too much.
 	// 1Ws/(12.5*CELLRATE) = 40s to charge
-	var/to_drain = min(12.5*holder.cell.maxcharge, ((holder.cell.maxcharge - holder.cell.charge) / CELLRATE))
-	var/target_drained = interfaced_with.drain_power(0,0,to_drain)
+	var/to_drain = min(12.5 * holder.cell.maxcharge, holder.cell.maxcharge - holder.cell.charge)
+	var/target_drained = interfaced_with.drain_energy(src, DYNAMIC_CELL_UNITS_TO_KJ(to_drain))
 	if(target_drained <= 0)
-		H << "<span class = 'danger'>Your power sink flashes a red light; there is no power left in [interfaced_with].</span>"
+		to_chat(H, "<span class = 'danger'>Your power sink flashes a red light; there is no power left in [interfaced_with].</span>")
 		drain_complete(H)
 		return
 
-	holder.cell.give(target_drained * CELLRATE)
+	holder.cell.give(DYNAMIC_KJ_TO_CELL_UNITS(target_drained))
 	total_power_drained += target_drained
 
-	return
-
 /obj/item/rig_module/power_sink/proc/drain_complete(var/mob/living/M)
-
 	if(!interfaced_with)
-		if(M) M << "<font color='blue'><b>Total power drained:</b> [round(total_power_drained*CELLRATE)] cell units.</font>"
+		if(M)
+			to_chat(M, "<font color=#4F49AF><b>Total power drained:</b> [round(DYNAMIC_KJ_TO_CELL_UNITS(total_power_drained))] cell units.</font>")
 	else
-		if(M) M << "<font color='blue'><b>Total power drained from [interfaced_with]:</b> [round(total_power_drained*CELLRATE)] cell units.</font>"
-		interfaced_with.drain_power(0,1,0) // Damage the victim.
+		if(M)
+			to_chat(M, "<font color=#4F49AF><b>Total power drained from [interfaced_with]:</b> [round(DYNAMIC_KJ_TO_CELL_UNITS(total_power_drained))] cell units.</font>")
+		interfaced_with.drain_energy(src, 0, ENERGY_DRAIN_SURGE)
 
 	drain_loc = null
 	interfaced_with = null

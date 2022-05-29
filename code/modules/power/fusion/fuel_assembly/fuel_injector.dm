@@ -18,7 +18,7 @@ var/list/fuel_injectors = list()
 	var/injecting = 0
 	var/obj/item/fuel_assembly/cur_assembly
 
-/obj/machinery/fusion_fuel_injector/Initialize()
+/obj/machinery/fusion_fuel_injector/Initialize(mapload)
 	. = ..()
 	fuel_injectors += src
 	default_apply_parts()
@@ -33,9 +33,9 @@ var/list/fuel_injectors = list()
 /obj/machinery/fusion_fuel_injector/mapped
 	anchored = 1
 
-/obj/machinery/fusion_fuel_injector/process()
+/obj/machinery/fusion_fuel_injector/process(delta_time)
 	if(injecting)
-		if(stat & (BROKEN|NOPOWER))
+		if(machine_stat & (BROKEN|NOPOWER))
 			StopInjecting()
 		else
 			Inject()

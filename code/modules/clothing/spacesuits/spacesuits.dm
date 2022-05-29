@@ -7,7 +7,7 @@
 	icon_state = "space"
 	desc = "A special helmet designed for work in a hazardous, low-pressure environment."
 	flags = PHORONGUARD
-	item_flags = THICKMATERIAL | AIRTIGHT | ALLOW_SURVIVALFOOD
+	clothing_flags = THICKMATERIAL | ALLOWINTERNALS | ALLOW_SURVIVALFOOD
 	permeability_coefficient = 0.01
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 50)
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
@@ -46,20 +46,20 @@
 
 		if(camera.status == TRUE)
 			camera.set_status(FALSE)
-			to_chat(usr, "<font color='blue'>Camera deactivated.</font>")
+			to_chat(usr, "<font color=#4F49AF>Camera deactivated.</font>")
 		else
 			camera.set_status(TRUE)
 			camera.c_tag = usr.name
-			to_chat(usr, "<font color='blue'>User scanned as [camera.c_tag]. Camera activated.</font>")
+			to_chat(usr, "<font color=#4F49AF>User scanned as [camera.c_tag]. Camera activated.</font>")
 
 	else
 		to_chat(usr, "This helmet does not have a built-in camera.")
 		return
 
-/obj/item/clothing/head/helmet/space/examine()
-	..()
-	if(camera_networks && get_dist(usr,src) <= 1)
-		to_chat(usr, "This helmet has a built-in camera. It's [camera ? "" : "in"]active.")
+/obj/item/clothing/head/helmet/space/examine(mob/user)
+	. = ..()
+	if(camera_networks && get_dist(user,src) <= 1)
+		. += "This helmet has a built-in camera. It's [camera ? "" : "in"]active."
 
 /obj/item/clothing/suit/space
 	name = "Space suit"
@@ -71,10 +71,10 @@
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.02
 	flags = PHORONGUARD
-	item_flags = THICKMATERIAL
+	clothing_flags = THICKMATERIAL
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/flashlight,/obj/item/tank/emergency/oxygen,/obj/item/suit_cooling_unit)
-	slowdown = 3
+	slowdown = 1
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 50)
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS

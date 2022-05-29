@@ -1,0 +1,96 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/explored)
+"p" = (
+/turf/simulated/mineral/classh,
+/area/class_h/explored)
+"r" = (
+/obj/random/mob/spider,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/explored)
+"T" = (
+/obj/random/mob/spider/mutant,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/explored)
+
+(1,1,1) = {"
+a
+p
+p
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+p
+r
+a
+p
+p
+p
+a
+"}
+(3,1,1) = {"
+a
+a
+a
+a
+p
+p
+p
+a
+"}
+(4,1,1) = {"
+p
+T
+a
+a
+T
+p
+p
+a
+"}
+(5,1,1) = {"
+p
+p
+a
+a
+a
+p
+p
+a
+"}
+(6,1,1) = {"
+p
+p
+a
+p
+a
+a
+r
+a
+"}
+(7,1,1) = {"
+p
+p
+T
+a
+a
+a
+a
+p
+"}
+(8,1,1) = {"
+p
+p
+p
+a
+a
+r
+p
+p
+"}

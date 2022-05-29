@@ -1,0 +1,562 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/wall,
+/area/class_h/POIs/landing_pad)
+"b" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/landing_pad)
+"c" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/external,
+/area/class_h/POIs/landing_pad)
+"d" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/door/airlock/glass_external/public,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/landing_pad)
+"g" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/class_h/POIs/landing_pad)
+"h" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/standard{
+	name = "plastic table frame"
+	},
+/obj/machinery/microwave{
+	pixel_y = 6
+	},
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/landing_pad)
+"i" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/loot_pile/surface/medicine_cabinet/fresh{
+	pixel_y = -35
+	},
+/obj/structure/sink{
+	pixel_y = 25
+	},
+/turf/simulated/floor/tiled/kafel_full,
+/area/class_h/POIs/landing_pad)
+"j" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/external,
+/area/class_h/POIs/landing_pad)
+"k" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/closet/toolcloset,
+/turf/simulated/floor/plating,
+/area/class_h/POIs/landing_pad)
+"l" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/external,
+/area/class_h/POIs/landing_pad)
+"m" = (
+/obj/effect/wingrille_spawn/reinforced,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/landing_pad)
+"n" = (
+/turf/template_noop,
+/area/template_noop)
+"o" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/comfy/black,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/landing_pad)
+"q" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/external,
+/area/class_h/POIs/landing_pad)
+"r" = (
+/turf/simulated/floor/tiled/external,
+/area/class_h/POIs/landing_pad)
+"s" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/airlock/multi_tile,
+/turf/simulated/floor/wood,
+/area/class_h/POIs/landing_pad)
+"t" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/rack,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/tank/oxygen,
+/obj/item/tank/oxygen,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/landing_pad)
+"u" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/cabinet,
+/obj/item/clothing/under/color/grey,
+/obj/item/clothing/under/color/grey,
+/obj/item/clothing/under/color/grey,
+/obj/item/clothing/shoes/black,
+/obj/item/clothing/shoes/black,
+/obj/item/clothing/shoes/black,
+/obj/item/gun/projectile/shotgun/pump/rifle,
+/obj/item/ammo_magazine/clip/c762,
+/obj/item/ammo_magazine/clip/c762,
+/obj/item/ammo_magazine/clip/c762,
+/turf/simulated/floor/wood,
+/area/class_h/POIs/landing_pad)
+"v" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/airlock/multi_tile,
+/turf/simulated/floor/tiled/kafel_full,
+/area/class_h/POIs/landing_pad)
+"w" = (
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/POIs/landing_pad)
+"x" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/turf/simulated/floor/plating,
+/area/class_h/POIs/landing_pad)
+"z" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wood,
+/area/class_h/POIs/landing_pad)
+"A" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/landing_pad)
+"B" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 8;
+	frequency = 1379;
+	id_tag = "rnd_s_airlock_pump"
+	},
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/landing_pad)
+"C" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/plating,
+/area/class_h/POIs/landing_pad)
+"D" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/landing_pad)
+"E" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/external,
+/area/class_h/POIs/landing_pad)
+"F" = (
+/obj/effect/wingrille_spawn/reinforced,
+/turf/simulated/wall,
+/area/class_h/POIs/landing_pad)
+"H" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/freezer/rations,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
+/obj/item/reagent_containers/food/snacks/liquidvitamin,
+/obj/item/reagent_containers/food/snacks/liquidvitamin,
+/obj/item/reagent_containers/food/snacks/liquidvitamin,
+/obj/item/reagent_containers/food/snacks/liquidprotein,
+/obj/item/reagent_containers/food/snacks/liquidprotein,
+/obj/item/reagent_containers/food/snacks/liquidprotein,
+/obj/item/reagent_containers/food/snacks/liquidfood,
+/obj/item/reagent_containers/food/snacks/liquidfood,
+/obj/item/reagent_containers/food/snacks/liquidfood,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/landing_pad)
+"I" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/suit_cycler/vintage,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/landing_pad)
+"J" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/comfy/black{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/landing_pad)
+"K" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/curtain/open/shower,
+/obj/machinery/shower{
+	dir = 1
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/kafel_full,
+/area/class_h/POIs/landing_pad)
+"L" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/landing_pad)
+"M" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/external,
+/area/class_h/POIs/landing_pad)
+"N" = (
+/obj/machinery/door/airlock/glass_external/public,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/landing_pad)
+"P" = (
+/obj/machinery/floodlight,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/POIs/landing_pad)
+"Q" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/landing_pad)
+"R" = (
+/obj/effect/floor_decal/techfloor/orange,
+/turf/simulated/floor/tiled/external,
+/area/class_h/POIs/landing_pad)
+"S" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/floor/plating,
+/area/class_h/POIs/landing_pad)
+"T" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/landing_pad)
+"U" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/external,
+/area/class_h/POIs/landing_pad)
+"V" = (
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/POIs/landing_pad)
+"W" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/air/airlock,
+/turf/simulated/floor/plating,
+/area/class_h/POIs/landing_pad)
+"X" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/standard{
+	name = "plastic table frame"
+	},
+/obj/item/paper{
+	info = "\[center]\[b] Greetings Brave Frontiersman \[/center]\[/b]\[br] Congratulations on your purchase of the \[i]Hephaestus Industries: Expedient Frontier Homestead\[/i]. Whether you are a private citizen buying just one or a government buying millions, we here at \[i]Hephaestus Industries\[/i] are happy to serve you in your missions to tame even the most remote regions of space. The model you are currently standing in is the \[i]Lone Frontiersmen\[/i] perfect for both those seeking a solitary exsistance among the stars and for groups looking to break ground on untamed worlds. \[br] This model's freatures include: \[br] \[list]\[*] Radioscoptic Power Capable of keeping the lights on for Centuries. \[*]A Small Landing Pad to that your personnel spacecraft has a easy place to land. \[*]A small kitchen containing rations that will last you months; plenty of time to secure food sources on an alien world. \[*]A bedroom with complimentary jumpsuits and spacious double bed. \[*]A full bathroom, with shower and sink. All liquids used are recycled so you will never run out. \[*] A simple robust rifle capable of firing in space with 20 rounds of ammunition. Perfect for keeping those carp at bay.\[*] 2 space suits and a hardsuit cycler are included with your purchase. \[/list]\[br] We once again congratulate you on your purchase and wish you luck on your quest to conquer the stars. Until we meet again this is \[i]Hephaestus Industries\[/i].";
+	name = "Dusty Flier"
+	},
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/landing_pad)
+"Y" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/rack,
+/obj/item/clothing/suit/space,
+/obj/item/clothing/head/helmet/space,
+/obj/item/clothing/head/helmet/space,
+/obj/item/clothing/suit/space,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/landing_pad)
+"Z" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/double,
+/obj/item/bedsheet/bluedouble,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/class_h/POIs/landing_pad)
+
+(1,1,1) = {"
+n
+n
+n
+n
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+n
+a
+a
+a
+a
+Y
+I
+t
+a
+k
+x
+W
+a
+K
+a
+"}
+(3,1,1) = {"
+n
+a
+b
+A
+d
+L
+L
+L
+S
+C
+g
+W
+a
+i
+a
+"}
+(4,1,1) = {"
+n
+a
+Q
+B
+N
+T
+Q
+Q
+a
+a
+a
+a
+a
+v
+a
+"}
+(5,1,1) = {"
+n
+a
+N
+N
+a
+a
+Q
+Q
+Q
+D
+Q
+s
+z
+z
+a
+"}
+(6,1,1) = {"
+n
+w
+r
+r
+w
+F
+h
+H
+o
+X
+J
+a
+u
+Z
+a
+"}
+(7,1,1) = {"
+n
+w
+r
+r
+w
+a
+m
+m
+m
+m
+a
+a
+a
+a
+a
+"}
+(8,1,1) = {"
+n
+P
+r
+r
+w
+V
+w
+w
+w
+w
+V
+w
+w
+w
+n
+"}
+(9,1,1) = {"
+n
+l
+q
+q
+q
+q
+q
+q
+q
+q
+q
+q
+q
+M
+n
+"}
+(10,1,1) = {"
+n
+U
+r
+r
+r
+r
+r
+r
+r
+r
+r
+r
+r
+R
+n
+"}
+(11,1,1) = {"
+n
+U
+r
+r
+r
+r
+r
+r
+r
+r
+r
+r
+r
+R
+n
+"}
+(12,1,1) = {"
+n
+U
+r
+r
+r
+r
+r
+r
+r
+r
+r
+r
+r
+R
+n
+"}
+(13,1,1) = {"
+n
+U
+r
+r
+r
+r
+r
+r
+r
+r
+r
+r
+r
+R
+n
+"}
+(14,1,1) = {"
+n
+U
+r
+r
+r
+r
+r
+r
+r
+r
+r
+r
+r
+R
+n
+"}
+(15,1,1) = {"
+n
+c
+E
+E
+E
+E
+E
+E
+E
+E
+E
+E
+E
+j
+n
+"}

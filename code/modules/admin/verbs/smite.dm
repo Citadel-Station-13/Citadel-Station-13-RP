@@ -4,16 +4,16 @@
 	set category = "Fun"
 	if(!check_rights(R_FUN))
 		return
-	
+
 	if(!victim)
 		victim = input("Select a player", "Who?") as null|mob in player_list
-	
+
 	if(!ishuman(victim))
 		return
 
 	var/mob/living/carbon/human/target = victim
 
-	var/list/smite_types = list(SMITE_BREAKLEGS,SMITE_BLUESPACEARTILLERY,SMITE_SPONTANEOUSCOMBUSTION,SMITE_LIGHTNINGBOLT)
+	var/list/smite_types = list(SMITE_BREAKLEGS,SMITE_BLUESPACEARTILLERY,SMITE_SPONTANEOUSCOMBUSTION,SMITE_LIGHTNINGBOLT,SMITE_DISLOCATEALL)
 
 	var/smite_choice = input("Select the type of SMITE for [target]","SMITE Type Choice") as null|anything in smite_types
 	if(!smite_choice)
@@ -30,21 +30,33 @@
 				broken_legs++
 			if(!broken_legs)
 				to_chat(src,"[target] didn't have any breakable legs, sorry.")
-		
+
+		if(SMITE_DISLOCATEALL)
+			var/obj/item/organ/external/left_leg = target.get_organ(BP_L_LEG)
+			left_leg.dislocate()
+			var/obj/item/organ/external/right_leg = target.get_organ(BP_R_LEG)
+			right_leg.dislocate()
+			var/obj/item/organ/external/left_arm = target.get_organ(BP_L_ARM)
+			left_arm.dislocate()
+			var/obj/item/organ/external/right_arm = target.get_organ(BP_R_ARM)
+			right_arm.dislocate()
+			var/obj/item/organ/external/head = target.get_organ(BP_HEAD)
+			head.dislocate()
+
 		if(SMITE_BLUESPACEARTILLERY)
 			bluespace_artillery(target,src)
-		
+
 		if(SMITE_SPONTANEOUSCOMBUSTION)
 			target.adjust_fire_stacks(10)
 			target.IgniteMob()
 			target.visible_message("<span class='danger'>[target] bursts into flames!</span>")
-		
+
 		if(SMITE_LIGHTNINGBOLT)
 			var/turf/T = get_step(get_step(target, NORTH), NORTH)
 			T.Beam(target, icon_state="lightning[rand(1,12)]", time = 5)
 			target.electrocute_act(75,def_zone = BP_HEAD)
 			target.visible_message("<span class='danger'>[target] is struck by lightning!</span>")
-		
+
 		else
 			return //Injection? Don't print any messages.
 

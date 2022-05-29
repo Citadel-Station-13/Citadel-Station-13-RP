@@ -1,0 +1,5280 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ab" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"ag" = (
+/obj/structure/bookcase/manuals/xenoarchaeology,
+/obj/structure/bookcase/manuals/research_and_development,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"al" = (
+/obj/effect/floor_decal/carpet{
+	dir = 1;
+	pixel_x = 16
+	},
+/turf/simulated/floor/carpet/oracarpet,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"an" = (
+/obj/structure/girder/displaced,
+/turf/simulated/floor/outdoors/dirt,
+/area/class_h/explored)
+"ax" = (
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 4
+	},
+/turf/simulated/floor/grass,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"az" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"aA" = (
+/obj/machinery/door/airlock/glass_security,
+/turf/simulated/floor/tiled/steel,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"aB" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"aC" = (
+/obj/structure/bed/double,
+/obj/item/bedsheet/orangedouble,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"aG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/mob/living/simple_mob/mechanical/cyber_horror/plasma_cyber_horror,
+/turf/simulated/floor/reinforced,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"aI" = (
+/turf/simulated/wall/wood,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"bi" = (
+/obj/machinery/door/blast/regular/open{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"bt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"bF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"bL" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"bR" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"bX" = (
+/obj/structure/simple_door/wood,
+/obj/structure/simple_door/silver,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"bY" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"cl" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 10
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/fixed,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"cm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/lino,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"cs" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/simulated/floor/tiled/techmaint,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"cx" = (
+/obj/structure/table/rack,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/grenade/concussion/frag,
+/obj/item/grenade/concussion/frag,
+/obj/item/grenade/concussion/frag,
+/turf/simulated/floor/tiled/steel,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"cA" = (
+/obj/structure/table/woodentable,
+/obj/machinery/chemical_dispenser/bar_coffee/full,
+/turf/simulated/floor/lino,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"cE" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/lino,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"cF" = (
+/obj/structure/bookcase,
+/turf/simulated/floor/carpet/purcarpet,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"cO" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"db" = (
+/mob/living/simple_mob/humanoid/merc/ranged/grenadier,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"dd" = (
+/obj/effect/floor_decal/transit/orange{
+	dir = 8
+	},
+/obj/effect/floor_decal/transit/orange{
+	dir = 1
+	},
+/turf/simulated/floor/grass,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"du" = (
+/obj/structure/undies_wardrobe,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"dF" = (
+/obj/machinery/artifact_scanpad,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/corner/purple/border,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"dH" = (
+/obj/random/trash_pile,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"dW" = (
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 1
+	},
+/turf/simulated/floor/grass,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"eb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/scale,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"ec" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/lino,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"ed" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/mechanical/viscerator/mercenary,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"ek" = (
+/obj/structure/table/bench/standard,
+/turf/simulated/floor/wood,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"ex" = (
+/obj/effect/floor_decal/techfloor/orange/corner,
+/turf/simulated/floor/grass,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"eD" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"fd" = (
+/obj/structure/table/bench/wooden,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/dirt,
+/area/class_h/explored)
+"fe" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"fk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"fm" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/anomaly_container,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"fn" = (
+/obj/effect/decal/cleanable/blood/tracks/footprints,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"fo" = (
+/obj/structure/table/standard,
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"fw" = (
+/obj/structure/flora/pottedplant/large,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"fD" = (
+/obj/structure/table/bench/wooden,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/turf/simulated/floor/lino,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"fE" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/steel,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"fI" = (
+/obj/machinery/light/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"fT" = (
+/obj/item/reagent_containers/glass/beaker,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"gp" = (
+/obj/structure/simple_door/wood,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"gu" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/plating,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"gU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/wingrille_spawn/reinforced,
+/turf/simulated/floor/plating,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"gV" = (
+/obj/machinery/light/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"gX" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/reinforced,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"hn" = (
+/obj/effect/floor_decal/carpet{
+	dir = 6
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 4;
+	pixel_y = 16
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/carpet/oracarpet,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"ho" = (
+/turf/simulated/floor/plating,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"hr" = (
+/obj/random/trash,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"hw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/corner/red/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"hL" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"hO" = (
+/obj/effect/floor_decal/carpet{
+	pixel_x = 16
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
+/turf/simulated/floor/carpet/oracarpet,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"hR" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/machinery/light/flamp/noshade,
+/turf/simulated/floor/outdoors/dirt,
+/area/class_h/explored)
+"hT" = (
+/obj/structure/barricade,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"hZ" = (
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	pixel_x = -8;
+	pixel_y = 5
+	},
+/turf/simulated/wall/durasteel,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"iB" = (
+/obj/machinery/light/small/emergency{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"iC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"iH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stolenpackage,
+/turf/simulated/floor/reinforced,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"ja" = (
+/mob/living/simple_mob/humanoid/merc/melee/sword,
+/turf/simulated/floor/wood,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"jg" = (
+/obj/effect/floor_decal/carpet{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/carpet/oracarpet,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"jk" = (
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"jw" = (
+/obj/structure/flora/pottedplant/large,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"jC" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/mechanical/cyber_horror,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"jD" = (
+/obj/machinery/light,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"jM" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/mechanical/cyber_horror/corgi,
+/turf/simulated/floor/reinforced,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"jN" = (
+/obj/structure/table/woodentable,
+/obj/machinery/chemical_dispenser/bar_alc/full,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/lino,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"ke" = (
+/obj/structure/window/reinforced/full,
+/obj/structure/window/reinforced/holowindow{
+	dir = 8
+	},
+/obj/structure/window/reinforced/holowindow{
+	dir = 4
+	},
+/obj/effect/wingrille_spawn/reinforced,
+/turf/simulated/floor/plating,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"kn" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 6;
+	pixel_x = 10;
+	pixel_y = 22
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"kq" = (
+/obj/structure/table/standard,
+/obj/structure/bedsheetbin,
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"ks" = (
+/obj/effect/decal/cleanable/blood,
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"ky" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"kF" = (
+/obj/machinery/light/small/flicker,
+/turf/simulated/floor/reinforced,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"kM" = (
+/obj/machinery/blackbox_recorder,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"kU" = (
+/obj/machinery/autolathe,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"kW" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light/small/emergency{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"la" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/machinery/light/flamp/noshade,
+/turf/simulated/floor/outdoors/dirt,
+/area/class_h/explored)
+"ld" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/material/phoron,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"lk" = (
+/obj/machinery/dna_scannernew,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"lp" = (
+/obj/effect/decal/cleanable/blood/gibs/robot/up,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"lr" = (
+/obj/structure/table/bench,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 9
+	},
+/turf/simulated/floor/lino,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"lz" = (
+/obj/effect/floor_decal/carpet{
+	dir = 4;
+	pixel_y = 16
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/carpet/oracarpet,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"lH" = (
+/obj/effect/floor_decal/rust,
+/obj/item/stack/material/phoron,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"lT" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/simulated/floor/outdoors/dirt,
+/area/class_h/explored)
+"lZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"mk" = (
+/obj/structure/table/standard,
+/obj/random/energy,
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"mx" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/holowindow{
+	dir = 1
+	},
+/obj/machinery/door/blast/regular/open{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"mA" = (
+/obj/structure/table/woodentable,
+/obj/item/storage/box/cups,
+/turf/simulated/floor/lino,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"nj" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"nw" = (
+/obj/structure/closet/firecloset/full/double,
+/turf/simulated/floor/tiled/techmaint,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"nC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"nF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"nX" = (
+/obj/structure/closet/hydrant,
+/turf/simulated/wall/r_wall,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"od" = (
+/obj/item/stolenpackage,
+/turf/simulated/floor/reinforced,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"of" = (
+/obj/structure/bookcase/manuals/xenoarchaeology,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"og" = (
+/obj/structure/flora/tree/jungle_small,
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 8
+	},
+/turf/simulated/floor/grass,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"oh" = (
+/obj/machinery/light/small/emergency{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"op" = (
+/obj/structure/table/steel,
+/turf/simulated/floor/outdoors/dirt,
+/area/class_h/explored)
+"or" = (
+/obj/structure/closet/l3closet/scientist/double,
+/turf/simulated/floor/tiled/techmaint,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"ot" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"ov" = (
+/obj/structure/table/woodentable,
+/obj/item/flashlight/lamp/green,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"oA" = (
+/obj/effect/floor_decal/transit/orange{
+	dir = 8
+	},
+/obj/effect/floor_decal/transit/orange,
+/turf/simulated/floor/grass,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"oE" = (
+/obj/structure/cryofeed{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"oF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/rust,
+/obj/machinery/power/port_gen/pacman,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"oR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/remains/human,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"oV" = (
+/obj/structure/bed/double,
+/obj/item/bedsheet/orangedouble,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"pv" = (
+/obj/structure/table/bench/padded,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wood,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"pw" = (
+/mob/living/simple_mob/humanoid/merc/ranged/garand,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"pz" = (
+/obj/effect/floor_decal/carpet{
+	dir = 10
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 8;
+	pixel_y = 16
+	},
+/obj/effect/floor_decal/carpet{
+	pixel_x = 16
+	},
+/turf/simulated/floor/carpet/oracarpet,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"pJ" = (
+/obj/random/trash,
+/turf/simulated/floor/reinforced,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"pQ" = (
+/obj/effect/decal/cleanable/blood/gibs/robot/down,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"pR" = (
+/obj/structure/flora/pottedplant/large,
+/turf/simulated/floor/wood,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"qb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"qf" = (
+/obj/effect/floor_decal/carpet{
+	dir = 4;
+	pixel_y = 16
+	},
+/turf/simulated/floor/carpet/oracarpet,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"qA" = (
+/obj/structure/simple_door/wood,
+/turf/simulated/floor/wood,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"qD" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/techmaint,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"qR" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/reinforced,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"qW" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/wall/r_wall,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"rg" = (
+/obj/structure/barricade,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"rl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/gun/energy/taser/xeno,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"rm" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"rn" = (
+/obj/effect/floor_decal/transit/orange{
+	dir = 4
+	},
+/turf/simulated/floor/grass,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"rx" = (
+/obj/effect/floor_decal/carpet{
+	dir = 8;
+	pixel_y = 16
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 10
+	},
+/obj/effect/floor_decal/carpet{
+	pixel_x = 16
+	},
+/turf/simulated/floor/carpet/oracarpet,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"rG" = (
+/obj/structure/table/bench/padded,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wood,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"rH" = (
+/obj/structure/table/standard,
+/obj/item/inducer/sci,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"rW" = (
+/obj/machinery/optable,
+/obj/effect/floor_decal/industrial/danger/full,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"sg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wood,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"sh" = (
+/turf/simulated/floor/lino,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"si" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/reinforced,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"sk" = (
+/obj/machinery/light/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"sq" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/humanoid/merc/ranged/garand,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"th" = (
+/obj/structure/table/bench/wooden,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/turf/simulated/floor/lino,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"tr" = (
+/obj/random/trash_pile,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"tv" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"tC" = (
+/obj/structure/table/rack,
+/obj/item/gun/energy/sniperrifle,
+/turf/simulated/floor/tiled/steel,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"tE" = (
+/obj/effect/floor_decal/carpet{
+	dir = 9
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 1;
+	pixel_x = 16
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/carpet/oracarpet,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"tU" = (
+/obj/structure/table/bench/wooden,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 6
+	},
+/turf/simulated/floor/lino,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"up" = (
+/obj/structure/flora/pottedplant/large,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"uI" = (
+/obj/structure/table/rack,
+/obj/item/gun/projectile/shotgun/doublebarrel,
+/turf/simulated/floor/tiled/steel,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"uP" = (
+/mob/living/simple_mob/mechanical/viscerator/mercenary,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"uW" = (
+/obj/structure/window/reinforced/holowindow{
+	dir = 1
+	},
+/obj/machinery/door/blast/regular/open{
+	dir = 4
+	},
+/obj/structure/grille/broken,
+/obj/effect/floor_decal/industrial/warning,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"uY" = (
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/outdoors/dirt,
+/area/class_h/explored)
+"vd" = (
+/turf/simulated/floor/tiled/steel,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"vt" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"vu" = (
+/obj/structure/table/bench/wooden,
+/obj/structure/table/bench/wooden,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/turf/simulated/floor/lino,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"vI" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/reinforced,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"vS" = (
+/obj/effect/floor_decal/transit/orange,
+/obj/effect/floor_decal/transit/orange{
+	dir = 4
+	},
+/turf/simulated/floor/grass,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"vV" = (
+/obj/structure/closet/secure_closet/security,
+/obj/effect/floor_decal/corner/red/border{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"vY" = (
+/obj/structure/window/reinforced/holowindow{
+	dir = 1
+	},
+/obj/machinery/door/blast/regular/open{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"wc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/frame/apc,
+/turf/simulated/floor/plating,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"wg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"wo" = (
+/obj/structure/table/rack,
+/obj/item/grenade/spawnergrenade/manhacks/mercenary,
+/obj/item/grenade/spawnergrenade/manhacks/mercenary,
+/obj/item/grenade/spawnergrenade/manhacks/mercenary,
+/obj/item/grenade/spawnergrenade/manhacks/mercenary,
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"wr" = (
+/mob/living/simple_mob/mechanical/cyber_horror,
+/turf/simulated/floor/reinforced,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"ww" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/lino,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"wz" = (
+/obj/machinery/light/small/emergency{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"wA" = (
+/obj/machinery/mech_recharger,
+/turf/simulated/floor/tiled/steel,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"wE" = (
+/obj/effect/floor_decal/transit/orange{
+	dir = 8
+	},
+/turf/simulated/floor/grass,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"wR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"wS" = (
+/obj/structure/table/bench,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wood,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"xc" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 5
+	},
+/turf/simulated/floor/lino,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"xl" = (
+/obj/random/trash,
+/turf/simulated/floor/carpet/oracarpet,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"xy" = (
+/obj/random/trash,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"xA" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/mechanical/cyber_horror/vox,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"xT" = (
+/obj/machinery/door/airlock/security/armory,
+/turf/simulated/floor/tiled/steel,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"xX" = (
+/obj/structure/table/bench,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 10
+	},
+/turf/simulated/floor/lino,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"yb" = (
+/obj/structure/table/marble,
+/turf/simulated/floor/lino,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"yo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"yv" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing,
+/obj/machinery/light/flamp/noshade,
+/turf/simulated/floor/outdoors/dirt,
+/area/class_h/explored)
+"yG" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"yO" = (
+/obj/structure/table/glass,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"zc" = (
+/obj/random/trash,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"zf" = (
+/obj/effect/decal/remains/human,
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"zj" = (
+/obj/machinery/door/airlock/maintenance/rnd,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"zp" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"zs" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"zF" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"zK" = (
+/obj/machinery/light/flicker,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"zM" = (
+/obj/effect/floor_decal/corner/red/border,
+/mob/living/simple_mob/mechanical/viscerator/mercenary,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"zY" = (
+/obj/structure/table/marble,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/lino,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Aa" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/turf/simulated/floor/lino,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Ag" = (
+/obj/machinery/light/small/emergency{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Al" = (
+/obj/machinery/door/blast/regular{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Am" = (
+/obj/machinery/shower{
+	dir = 1
+	},
+/obj/structure/curtain/open/shower,
+/obj/item/soap,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/freezer,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Ax" = (
+/turf/simulated/wall/r_wall,
+/area/class_h/explored)
+"AF" = (
+/obj/machinery/light/small/emergency{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"AK" = (
+/obj/random/trash_pile,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"AT" = (
+/obj/effect/floor_decal/carpet{
+	dir = 6
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 4;
+	pixel_y = 16
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
+/turf/simulated/floor/carpet/oracarpet,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"AW" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Bf" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/carpet/oracarpet,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Bk" = (
+/turf/simulated/mineral/cave,
+/area/class_h/explored)
+"Bl" = (
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Bx" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/humanoid/merc,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"BA" = (
+/obj/effect/floor_decal/carpet{
+	dir = 9
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 1;
+	pixel_x = 16
+	},
+/turf/simulated/floor/carpet/oracarpet,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"BF" = (
+/obj/effect/floor_decal/techfloor/corner,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"BR" = (
+/obj/effect/decal/cleanable/blood/tracks/footprints,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"BU" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/humanoid/merc/melee/sword,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Ca" = (
+/obj/machinery/mecha_part_fabricator,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Cn" = (
+/obj/effect/floor_decal/carpet{
+	pixel_x = 16
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/carpet/oracarpet,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Cp" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Cz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/material/durasteel,
+/obj/item/stack/material/durasteel,
+/obj/item/stack/material/durasteel,
+/turf/simulated/floor/reinforced,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"CC" = (
+/obj/effect/decal/remains/human,
+/turf/simulated/floor/outdoors/dirt,
+/area/class_h/explored)
+"CI" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/obj/machinery/light/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"CL" = (
+/obj/machinery/cryopod,
+/turf/simulated/floor/wood,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"CS" = (
+/obj/structure/table/standard,
+/obj/machinery/recharger,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"CV" = (
+/obj/effect/floor_decal/carpet{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/carpet/oracarpet,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"CX" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Dl" = (
+/obj/effect/floor_decal/corner/red/border,
+/mob/living/simple_mob/humanoid/merc/ranged/smg,
+/obj/machinery/light,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Dp" = (
+/obj/structure/table/woodentable,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wood,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Dz" = (
+/obj/effect/decal/remains/human,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"DA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"DC" = (
+/obj/structure/flora/pottedplant/large,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"DH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"DM" = (
+/obj/random/trash,
+/obj/random/trash_pile,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"DT" = (
+/mob/living/simple_mob/humanoid/merc/ranged/deagle,
+/turf/simulated/floor/outdoors/dirt,
+/area/class_h/explored)
+"Ef" = (
+/obj/structure/table/marble,
+/obj/machinery/recharger,
+/turf/simulated/floor/lino,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Ei" = (
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Ej" = (
+/obj/effect/floor_decal/corner/red/border,
+/mob/living/simple_mob/mechanical/viscerator/mercenary,
+/obj/machinery/light,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Er" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"ED" = (
+/obj/effect/floor_decal/carpet{
+	dir = 6
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 4;
+	pixel_y = 16
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/carpet/oracarpet,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"EE" = (
+/obj/machinery/photocopier,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"EJ" = (
+/mob/living/simple_mob/humanoid/merc/melee/sword,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Fg" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/techmaint,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Fl" = (
+/obj/effect/floor_decal/carpet{
+	dir = 6
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 4;
+	pixel_y = 16
+	},
+/turf/simulated/floor/carpet/oracarpet,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Fo" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Fs" = (
+/obj/structure/flora/pottedplant/large,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"FH" = (
+/obj/machinery/dnaforensics,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Gb" = (
+/obj/structure/table/bench,
+/turf/simulated/floor/wood,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Gp" = (
+/obj/structure/barricade,
+/turf/simulated/floor/outdoors/dirt,
+/area/class_h/explored)
+"Gr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Gt" = (
+/obj/effect/wingrille_spawn/reinforced,
+/turf/simulated/floor/plating,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"GB" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/carpet/purcarpet,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Hb" = (
+/obj/item/stack/material/silver,
+/obj/item/stack/material/silver,
+/turf/simulated/floor/reinforced,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Hk" = (
+/obj/effect/decal/remains/human,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Hm" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/water/deep/indoors,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Ht" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/wall/wood,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Hv" = (
+/obj/structure/reagent_dispensers/acid,
+/turf/simulated/wall/durasteel,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"HA" = (
+/obj/effect/floor_decal/carpet{
+	dir = 5
+	},
+/turf/simulated/floor/carpet/oracarpet,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"HJ" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 6
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/fixed,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"HL" = (
+/obj/machinery/artifact_analyser,
+/obj/effect/floor_decal/corner/purple/border,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Ii" = (
+/obj/effect/floor_decal/carpet{
+	dir = 8;
+	pixel_y = 16
+	},
+/turf/simulated/floor/carpet/oracarpet,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Ij" = (
+/obj/structure/table/bench/wooden,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/dirt,
+/area/class_h/explored)
+"In" = (
+/obj/structure/filingcabinet,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"IB" = (
+/obj/effect/floor_decal/carpet{
+	dir = 8;
+	pixel_y = 16
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 10
+	},
+/obj/effect/floor_decal/carpet{
+	pixel_x = 16
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/carpet/oracarpet,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"IO" = (
+/obj/structure/table/rack,
+/obj/item/gun/energy/ionrifle/pistol,
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"IP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/rust,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/turf/simulated/floor/plating,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"IY" = (
+/obj/structure/undies_wardrobe,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Jq" = (
+/obj/structure/closet/secure_closet/security,
+/obj/effect/floor_decal/corner/red/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Jv" = (
+/obj/structure/bookcase/manuals/medical,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Jy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"JJ" = (
+/obj/machinery/door/airlock/glass,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"JK" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light/small/flicker,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/reinforced,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"JR" = (
+/obj/structure/table/bench,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/turf/simulated/floor/lino,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"JT" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Ke" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
+/turf/simulated/floor/tiled/steel,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Kq" = (
+/obj/structure/railing,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/techfloor,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"KD" = (
+/obj/effect/decal/remains/human,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"KG" = (
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/xray,
+/turf/simulated/floor/tiled/steel,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"KM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
+/turf/simulated/floor/reinforced,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"KS" = (
+/obj/effect/floor_decal/rust,
+/mob/living/simple_mob/mechanical/cyber_horror/cat_cyber_horror,
+/turf/simulated/floor/reinforced,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"KT" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Ld" = (
+/obj/structure/coatrack,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Lm" = (
+/obj/machinery/door/airlock/glass_research,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Lr" = (
+/obj/structure/closet/hydrant,
+/turf/simulated/wall/iron,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Lx" = (
+/obj/machinery/light,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Ly" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"LC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"LK" = (
+/obj/machinery/light/small/flicker,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"LU" = (
+/obj/structure/railing,
+/obj/effect/floor_decal/techfloor,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"LV" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wood,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Ma" = (
+/obj/machinery/door/blast/regular/open{
+	dir = 4
+	},
+/obj/structure/grille/broken,
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/floor_decal/industrial/warning,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Mb" = (
+/obj/effect/floor_decal/rust,
+/obj/item/stack/material/phoron,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Mg" = (
+/obj/item/mecha_parts/mecha_equipment/repair_droid,
+/obj/effect/floor_decal/corner/red/border,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Mh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wood,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Mq" = (
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/reinforced,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"MC" = (
+/obj/effect/floor_decal/industrial/danger,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"MN" = (
+/turf/simulated/floor/carpet/purcarpet,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"MP" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"MX" = (
+/obj/random/trash,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Na" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Nb" = (
+/obj/effect/decal/remains/human,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"NC" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"NF" = (
+/obj/random/trash_pile,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/turf/simulated/floor/lino,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"NU" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/holowindow,
+/obj/machinery/door/blast/regular/open{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"NX" = (
+/obj/effect/floor_decal/carpet{
+	dir = 8;
+	pixel_y = 16
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 10
+	},
+/obj/effect/floor_decal/carpet{
+	pixel_x = 16
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/carpet/oracarpet,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Oe" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/simulated/floor/tiled/techmaint,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"On" = (
+/turf/template_noop,
+/area/template_noop)
+"Oo" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Ow" = (
+/obj/structure/grille,
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/blast/regular/open{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"OG" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/humanoid/merc/ranged/smg,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Pb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Pg" = (
+/obj/structure/table/standard,
+/obj/structure/bedsheetbin,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Pr" = (
+/obj/random/trash_pile,
+/turf/simulated/floor/outdoors/dirt,
+/area/class_h/explored)
+"Pu" = (
+/obj/structure/undies_wardrobe,
+/turf/simulated/floor/tiled/freezer,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"PF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"PJ" = (
+/obj/effect/decal/remains/robot,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"PK" = (
+/obj/structure/simple_door/silver,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"PQ" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 5
+	},
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/fixed,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Qy" = (
+/obj/structure/closet/hydrant,
+/turf/simulated/wall/durasteel,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"QT" = (
+/obj/structure/table/rack,
+/obj/item/storage/box/shotgunammo/large,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"QY" = (
+/obj/structure/table/bench/wooden,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/turf/simulated/floor/lino,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Rb" = (
+/obj/machinery/door/airlock/research,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/barricade,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Rf" = (
+/obj/machinery/light/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Rk" = (
+/obj/structure/anomaly_container,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Rl" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Rm" = (
+/obj/effect/floor_decal/carpet{
+	dir = 1;
+	pixel_x = 16
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/carpet/oracarpet,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Rq" = (
+/obj/random/trash,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Rx" = (
+/obj/structure/table/woodentable,
+/obj/item/reagent_containers/food/drinks/glass2/pitcher,
+/turf/simulated/floor/lino,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"RQ" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Sg" = (
+/turf/simulated/floor/water/deep/indoors,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Sj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Sl" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/light/flamp/noshade,
+/turf/simulated/floor/outdoors/dirt,
+/area/class_h/explored)
+"Ss" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/techmaint,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Sv" = (
+/turf/simulated/floor/reinforced,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"SU" = (
+/obj/item/storage/box/shotgunammo,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Te" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Tl" = (
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Tm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/corner/purple/border,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Ts" = (
+/obj/effect/floor_decal/corner/red/border,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Tu" = (
+/turf/simulated/wall/solidrock,
+/area/class_h/explored)
+"TG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/freezer,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"TI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"TK" = (
+/turf/simulated/wall/iron,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"TM" = (
+/mob/living/simple_mob/humanoid/merc/ranged/space,
+/turf/simulated/floor/outdoors/dirt,
+/area/class_h/explored)
+"TZ" = (
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/blast/regular/open{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Un" = (
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Uu" = (
+/obj/structure/anomaly_container,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"UI" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Vp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/techfloor/corner,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Vr" = (
+/obj/structure/window/reinforced/holowindow{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wood,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Vt" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/reinforced,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"VC" = (
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"VE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"VH" = (
+/obj/random/trash,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"VK" = (
+/mob/living/simple_mob/humanoid/merc/ranged/poi,
+/turf/simulated/floor/wood,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"VL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/cell/apc,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"VM" = (
+/obj/structure/bookcase,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"VO" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"VS" = (
+/turf/simulated/wall/durasteel,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Wj" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/wall/iron,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Wk" = (
+/obj/structure/table/woodentable,
+/obj/item/flashlight/lamp/green,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Wl" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/gibs/robot/up,
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Wv" = (
+/obj/effect/floor_decal/rust,
+/obj/random/trash,
+/turf/simulated/floor/reinforced,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Xa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/rust,
+/obj/item/stack/material/phoron,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Xt" = (
+/obj/machinery/artifact_harvester,
+/obj/effect/floor_decal/corner/purple/border,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Xw" = (
+/obj/structure/table/woodentable,
+/obj/machinery/chemical_dispenser/bar_soft/full,
+/turf/simulated/floor/lino,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"XD" = (
+/obj/structure/table/glass,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wood,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"XG" = (
+/turf/simulated/floor/outdoors/dirt,
+/area/class_h/explored)
+"XK" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"XP" = (
+/obj/random/trash,
+/obj/effect/floor_decal/corner/red/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"XQ" = (
+/obj/structure/flora/tree/jungle_small,
+/turf/simulated/floor/grass,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"XR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"XT" = (
+/obj/structure/reagent_dispensers/peppertank,
+/turf/simulated/wall/r_wall,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"XU" = (
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"XY" = (
+/turf/simulated/floor/grass,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Yg" = (
+/obj/effect/floor_decal/carpet{
+	dir = 10
+	},
+/obj/effect/floor_decal/carpet{
+	pixel_x = 16
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 8;
+	pixel_y = 16
+	},
+/turf/simulated/floor/carpet/oracarpet,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Yi" = (
+/obj/effect/floor_decal/transit/orange,
+/obj/effect/floor_decal/transit/orange{
+	dir = 8
+	},
+/turf/simulated/floor/grass,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Yl" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 9
+	},
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/fixed,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Ym" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/reinforced,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Yo" = (
+/obj/machinery/light/small/flicker,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Yv" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/techmaint,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Yx" = (
+/obj/effect/floor_decal/carpet{
+	dir = 4;
+	pixel_y = 16
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/carpet/oracarpet,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"YA" = (
+/obj/random/trash_pile,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"YC" = (
+/obj/effect/floor_decal/industrial/danger,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"YH" = (
+/obj/effect/floor_decal/transit/orange{
+	dir = 4
+	},
+/obj/effect/floor_decal/transit/orange{
+	dir = 1
+	},
+/turf/simulated/floor/grass,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"YM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"YP" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 4
+	},
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"YS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"YY" = (
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Zc" = (
+/obj/structure/table/bench/padded,
+/turf/simulated/floor/wood,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Ze" = (
+/turf/simulated/wall,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Zl" = (
+/turf/simulated/wall/r_wall,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"Zw" = (
+/obj/structure/table/glass,
+/turf/simulated/floor/wood,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"ZC" = (
+/turf/simulated/floor/wood,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"ZD" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"ZG" = (
+/obj/machinery/light/small/flicker{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"ZH" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"ZP" = (
+/obj/structure/bookcase,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+"ZZ" = (
+/obj/machinery/light/small/flicker,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/AuxiliaryResearchFacility)
+
+(1,1,1) = {"
+On
+On
+On
+On
+On
+XG
+XG
+XG
+XG
+XG
+XG
+Pr
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+"}
+(2,1,1) = {"
+On
+On
+On
+On
+XG
+XG
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+XG
+XG
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+"}
+(3,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Bk
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Bk
+Bk
+XG
+XG
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+"}
+(4,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Tu
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+qW
+qW
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+nX
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Tu
+Bk
+Bk
+XG
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+"}
+(5,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+Zl
+XD
+rG
+ZC
+Zc
+Zw
+TK
+fw
+Pb
+DC
+Zl
+Zl
+QY
+fD
+fD
+tU
+Un
+VO
+vt
+Hk
+VO
+Un
+xc
+vu
+Aa
+QY
+Zl
+Zl
+Tu
+Bk
+XG
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+"}
+(6,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+Zl
+yO
+LV
+VK
+Zc
+Zw
+TK
+VC
+Te
+Te
+Zl
+Zl
+Un
+VO
+VO
+VO
+VO
+Na
+Na
+VO
+Un
+VO
+Un
+Un
+Un
+VO
+Fs
+Zl
+Tu
+Bk
+XG
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+"}
+(7,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+Zl
+Zw
+ZC
+ZC
+Gb
+ZC
+TK
+VC
+Te
+Te
+Zl
+Fs
+Un
+VO
+VO
+VO
+Un
+Un
+VO
+Na
+ab
+Na
+Un
+Un
+lp
+Un
+Un
+Zl
+Tu
+Bk
+XG
+XG
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+"}
+(8,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+Zl
+ZC
+pv
+LV
+Zc
+Zw
+TK
+Rf
+Te
+VC
+Zl
+Un
+Un
+Un
+pQ
+pw
+Un
+Un
+VO
+Na
+LC
+ky
+eD
+pQ
+Un
+Un
+Un
+Zl
+Tu
+Bk
+XG
+uY
+XG
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+"}
+(9,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+Zl
+pR
+ZC
+ZC
+ZC
+pR
+Wj
+tr
+YM
+YM
+Zl
+sk
+Un
+Na
+Na
+BF
+ZD
+ZD
+ZD
+ZD
+ZD
+zp
+fe
+VO
+Un
+VO
+jD
+Zl
+Tu
+Bk
+TM
+XG
+XG
+XG
+On
+On
+On
+On
+On
+On
+On
+On
+On
+"}
+(10,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+nX
+ZC
+ZC
+LV
+LV
+ZC
+Lr
+VC
+YM
+xy
+JJ
+Un
+VO
+Na
+Vp
+Yl
+Sg
+Sg
+Sg
+Sg
+Sg
+Sg
+cl
+zf
+Un
+VO
+Un
+Zl
+Tu
+Bk
+XG
+op
+op
+XG
+XG
+la
+Ij
+Ij
+Ij
+Ij
+Sl
+XG
+On
+"}
+(11,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+Zl
+ZC
+ZC
+ja
+LV
+ZC
+TK
+zc
+ZH
+ZH
+TK
+Ei
+BR
+fn
+Kq
+Sg
+Sg
+dd
+wE
+wE
+Yi
+Sg
+Sg
+bL
+Un
+VO
+Un
+Zl
+Ax
+Gp
+XG
+XG
+op
+lT
+XG
+XG
+XG
+CC
+XG
+XG
+XG
+XG
+XG
+"}
+(12,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+Zl
+ZC
+LV
+LV
+LV
+ZC
+qA
+VC
+ZH
+ZH
+TK
+VO
+VO
+VO
+LU
+Sg
+dd
+dW
+XY
+XY
+og
+oA
+Sg
+bL
+Un
+wR
+Un
+PK
+an
+Gp
+XG
+DT
+op
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+"}
+(13,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+Zl
+ZC
+ZC
+ZC
+LV
+sg
+qA
+JT
+Te
+ZH
+TK
+VO
+iC
+LC
+Kq
+Hm
+YH
+ax
+XQ
+XY
+ex
+vS
+Sg
+bL
+Un
+VO
+Un
+PK
+an
+Gp
+XG
+XG
+op
+uY
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+"}
+(14,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+Zl
+AW
+ZC
+ZC
+sg
+LV
+TK
+VC
+Te
+Te
+TK
+VO
+VO
+LC
+Kq
+Hm
+Sg
+YH
+rn
+rn
+vS
+Sg
+Sg
+zs
+MX
+Un
+Un
+Zl
+Ax
+Gp
+XG
+XG
+op
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+"}
+(15,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+Zl
+Zc
+Gb
+ek
+wS
+LV
+TK
+VC
+YM
+Te
+JJ
+VO
+Na
+LC
+XR
+PQ
+Sg
+Sg
+Sg
+Sg
+Sg
+Sg
+HJ
+Er
+VO
+lp
+Un
+Zl
+Tu
+Bk
+XG
+op
+op
+XG
+XG
+hR
+fd
+fd
+fd
+fd
+yv
+XG
+On
+"}
+(16,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+Zl
+Ef
+yb
+zY
+zY
+cm
+TK
+Te
+VC
+VC
+Zl
+tv
+Na
+Na
+Un
+jk
+ot
+Wl
+KT
+ot
+ot
+ot
+MP
+Un
+Un
+Un
+zK
+Zl
+Tu
+Bk
+TM
+XG
+XG
+XG
+On
+On
+On
+On
+On
+On
+On
+On
+On
+"}
+(17,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+Zl
+cE
+cE
+cm
+cE
+sh
+Wj
+VC
+ho
+VC
+Zl
+Un
+Un
+zF
+Un
+Un
+VO
+VO
+VO
+Rq
+Un
+Un
+VO
+VO
+Un
+Un
+Un
+Zl
+Tu
+Bk
+XG
+XG
+XG
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+"}
+(18,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+Zl
+ec
+ww
+ww
+cm
+sh
+TK
+fw
+Te
+VC
+Zl
+Fs
+Un
+zF
+VO
+VO
+VO
+Na
+sq
+VO
+Un
+Un
+Un
+Un
+Un
+VO
+Un
+Zl
+Tu
+Bk
+XG
+XG
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+"}
+(19,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+Zl
+sh
+cm
+ww
+ec
+sh
+TK
+Rf
+xy
+Te
+Zl
+Zl
+Un
+Un
+Un
+Un
+Dz
+Un
+Un
+VO
+Un
+Un
+VO
+VO
+VO
+VO
+Fs
+Zl
+Tu
+Bk
+XG
+XG
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+"}
+(20,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+Zl
+Xw
+cA
+jN
+mA
+Rx
+TK
+VC
+Te
+VC
+Zl
+Zl
+th
+th
+NF
+xX
+Un
+SU
+gV
+Un
+AK
+Un
+lr
+JR
+th
+th
+Zl
+Zl
+Bk
+Pr
+XG
+XG
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+"}
+(21,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+VC
+YM
+YM
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Ze
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Tu
+Bk
+XG
+XG
+XG
+XG
+XG
+On
+On
+On
+On
+On
+On
+On
+On
+On
+"}
+(22,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+Zl
+YP
+ZP
+Oo
+YY
+jw
+Zl
+Te
+ho
+Te
+Zl
+jw
+YY
+ZP
+YP
+Zl
+tC
+uI
+QT
+cx
+Zl
+Tu
+Tu
+Tu
+Tu
+Bk
+Bk
+Bk
+Bk
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+On
+On
+On
+On
+"}
+(23,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+Zl
+YY
+BA
+Ii
+Yg
+IY
+Zl
+Te
+gu
+JT
+Zl
+IY
+BA
+rx
+Oo
+Zl
+vd
+vd
+Ke
+vd
+Zl
+Tu
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+XG
+XG
+XG
+XG
+CC
+XG
+XG
+XG
+XG
+XG
+XG
+On
+On
+On
+"}
+(24,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+Zl
+fk
+al
+Bf
+hO
+YY
+Zl
+Te
+zc
+Te
+Zl
+YY
+jg
+AT
+bt
+Zl
+fE
+vd
+fE
+vd
+Zl
+Tu
+Bk
+Bk
+Bk
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+On
+On
+On
+"}
+(25,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+Zl
+YY
+HA
+lz
+Yx
+YY
+Zl
+Te
+YM
+YM
+Zl
+hr
+Oo
+YY
+hr
+Zl
+wA
+vd
+vd
+KG
+Zl
+Tu
+Bk
+Bk
+Bk
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+On
+On
+On
+"}
+(26,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+Zl
+oV
+Wk
+YY
+YY
+YY
+gp
+Te
+BU
+YM
+gp
+YY
+YY
+Wk
+oV
+Zl
+Zl
+Zl
+xT
+Zl
+Zl
+Tu
+Bk
+Bk
+XG
+XG
+XG
+aI
+aI
+aI
+aI
+qA
+qA
+aI
+aI
+aI
+aI
+Pr
+XG
+XG
+On
+On
+On
+"}
+(27,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Te
+Te
+YM
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+IO
+Un
+Un
+Mg
+Zl
+Tu
+Bk
+Bk
+XG
+XG
+aI
+aI
+YY
+YY
+Ld
+YY
+YY
+YY
+YY
+YY
+aI
+aI
+XG
+XG
+On
+On
+On
+"}
+(28,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+Zl
+YP
+ZP
+YY
+YY
+jw
+Zl
+VC
+YM
+DM
+Zl
+up
+Oo
+VM
+RQ
+Zl
+wo
+Un
+Un
+Dl
+Zl
+Tu
+Bk
+Bk
+XG
+XG
+aI
+Oo
+YS
+Oo
+YY
+YY
+Jy
+Oo
+Oo
+YY
+YY
+aI
+XG
+XG
+On
+On
+On
+"}
+(29,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+Zl
+bF
+BA
+Ii
+pz
+IY
+Zl
+Rf
+Te
+VC
+Zl
+du
+tE
+IB
+Oo
+Zl
+fo
+VO
+VE
+zM
+Zl
+Tu
+Bk
+Bk
+XG
+XG
+aI
+YY
+Oo
+YY
+aI
+aI
+aI
+aI
+dH
+YY
+YY
+aI
+XG
+XG
+On
+On
+On
+"}
+(30,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+Zl
+fI
+Rm
+xl
+Cn
+Oo
+Zl
+VC
+VC
+VC
+Zl
+YS
+CV
+hn
+qb
+Zl
+mk
+VO
+ed
+zM
+Zl
+Tu
+Bk
+Pr
+XG
+XG
+aI
+UI
+YY
+Ht
+aI
+ZP
+ZP
+aI
+aI
+YY
+bt
+aI
+XG
+XG
+On
+On
+On
+"}
+(31,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+Zl
+YY
+HA
+qf
+ED
+Oo
+Zl
+VC
+VC
+VC
+Zl
+YS
+VH
+Oo
+VH
+Zl
+fo
+VO
+VO
+Ts
+nX
+Tu
+Bk
+XG
+XG
+TM
+aI
+YY
+YY
+Oo
+YY
+YY
+YY
+YY
+YY
+hr
+YY
+aI
+XG
+XG
+On
+On
+On
+"}
+(32,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Zl
+Zl
+oV
+Wk
+YY
+YY
+YY
+gp
+VC
+VC
+VC
+gp
+YS
+Oo
+ov
+aC
+Zl
+kq
+VO
+ed
+Ts
+XT
+Tu
+Bk
+Bk
+XG
+XG
+aI
+YY
+YY
+Oo
+ZP
+BA
+rx
+ZP
+YY
+YY
+YY
+aI
+XG
+XG
+On
+On
+On
+"}
+(33,1,1) = {"
+On
+On
+On
+On
+XG
+Bk
+Tu
+Tu
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+bX
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+kn
+Un
+uP
+Ts
+Zl
+Tu
+Bk
+Bk
+XG
+XG
+aI
+YY
+hr
+YY
+ZP
+HA
+Fl
+ZP
+Oo
+Oo
+YY
+aI
+XG
+XG
+On
+On
+On
+"}
+(34,1,1) = {"
+On
+On
+On
+XG
+XG
+Bk
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Zl
+VS
+cs
+Oe
+db
+Fg
+Yv
+VS
+vV
+Jq
+Jq
+hw
+Un
+VO
+Na
+Ej
+Zl
+Tu
+Bk
+Bk
+XG
+XG
+aI
+YY
+YY
+YY
+ZP
+YY
+YY
+ZP
+Oo
+YS
+YY
+aI
+XG
+XG
+On
+On
+On
+"}
+(35,1,1) = {"
+On
+On
+XG
+XG
+Bk
+Bk
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Zl
+VS
+Ag
+qD
+Ly
+Nb
+Te
+aA
+bR
+Un
+iC
+VO
+EJ
+Un
+VO
+Ts
+Zl
+Tu
+Bk
+Bk
+XG
+XG
+aI
+YY
+YY
+YY
+YY
+hr
+YY
+YY
+YY
+Oo
+YY
+aI
+XG
+XG
+On
+On
+On
+"}
+(36,1,1) = {"
+On
+XG
+XG
+Bk
+Bk
+Tu
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+VS
+or
+nw
+hT
+Ss
+NC
+VS
+aB
+az
+CI
+az
+bY
+bY
+bY
+XP
+Zl
+Tu
+Bk
+Bk
+XG
+XG
+aI
+YY
+YY
+YY
+VM
+tE
+NX
+ZP
+Oo
+YY
+YY
+aI
+XG
+XG
+On
+On
+On
+"}
+(37,1,1) = {"
+XG
+XG
+Bk
+Bk
+Tu
+Zl
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+Rb
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+Zl
+Tu
+Bk
+Bk
+XG
+XG
+aI
+YA
+YY
+YY
+VM
+jg
+ED
+ZP
+YY
+YY
+Lx
+aI
+XG
+XG
+On
+On
+On
+"}
+(38,1,1) = {"
+XG
+Bk
+Bk
+Tu
+Zl
+VS
+VS
+Hb
+Ym
+Ym
+VS
+nj
+Te
+MC
+rm
+oh
+VC
+VC
+VC
+VS
+Pg
+CS
+rH
+EE
+lk
+FH
+kU
+VS
+Zl
+Tu
+Bk
+Bk
+XG
+XG
+aI
+YY
+YY
+YY
+YY
+YY
+YY
+YY
+YY
+dH
+YY
+aI
+XG
+XG
+On
+On
+On
+"}
+(39,1,1) = {"
+XG
+Bk
+Bk
+Tu
+Zl
+VS
+Sv
+ho
+KS
+gX
+Al
+cO
+VC
+MC
+rm
+PF
+VC
+Rl
+PJ
+Gt
+ZG
+Te
+DA
+PF
+VC
+Te
+Tm
+Hv
+Zl
+Tu
+Bk
+Bk
+XG
+XG
+aI
+aI
+aI
+aI
+aI
+qA
+qA
+aI
+aI
+aI
+aI
+aI
+XG
+XG
+On
+On
+On
+"}
+(40,1,1) = {"
+XG
+Bk
+Bk
+Tu
+Zl
+VS
+pJ
+ZH
+qR
+vI
+vY
+cO
+ks
+YC
+rg
+nj
+PJ
+Cp
+VC
+Lm
+CX
+fT
+Te
+Te
+VC
+jC
+Xt
+VS
+Zl
+Tu
+Bk
+Bk
+XG
+XG
+aI
+of
+YY
+yo
+Oo
+Oo
+Oo
+YY
+yG
+YY
+of
+aI
+XG
+XG
+On
+On
+On
+"}
+(41,1,1) = {"
+XG
+Bk
+Bk
+Tu
+Zl
+VS
+Vt
+Ym
+KM
+Mq
+uW
+cO
+VC
+MC
+Tl
+Nb
+zc
+VC
+Yo
+VS
+kM
+VC
+Te
+rW
+VC
+zc
+HL
+VS
+Zl
+Tu
+Bk
+Bk
+XG
+XG
+aI
+of
+YY
+Bx
+Oo
+Oo
+OG
+YY
+YY
+YY
+of
+aI
+XG
+XG
+On
+On
+On
+"}
+(42,1,1) = {"
+XG
+Bk
+Bk
+Tu
+Zl
+VS
+ho
+Sv
+Sv
+Mq
+NU
+KD
+nj
+MC
+rm
+VC
+nj
+VC
+VC
+VS
+Ca
+VC
+rl
+xA
+Te
+nC
+dF
+VS
+Zl
+Tu
+Bk
+Bk
+XG
+XG
+aI
+of
+YY
+Oo
+YS
+YS
+YS
+YY
+Oo
+YY
+of
+aI
+XG
+XG
+On
+On
+On
+"}
+(43,1,1) = {"
+XG
+Bk
+Bk
+Tu
+Zl
+VS
+Sv
+Vt
+kW
+kF
+VS
+Te
+Te
+MC
+rm
+Uu
+fm
+In
+In
+Qy
+Sj
+iB
+Bl
+Rk
+eb
+lZ
+LK
+VS
+Zl
+Tu
+Bk
+Bk
+XG
+XG
+aI
+YY
+YY
+Oo
+Oo
+bF
+Oo
+YY
+Bx
+YY
+hr
+aI
+XG
+XG
+On
+On
+On
+"}
+(44,1,1) = {"
+XG
+Bk
+Bk
+Tu
+Zl
+VS
+VS
+VS
+VS
+VS
+VS
+Te
+ZZ
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+bi
+hZ
+ke
+VS
+VS
+VS
+zj
+VS
+Zl
+Tu
+Bk
+Bk
+XG
+XG
+aI
+Jv
+YY
+YY
+YY
+YY
+YY
+YY
+Oo
+Oo
+Jv
+aI
+XG
+XG
+On
+On
+On
+"}
+(45,1,1) = {"
+XG
+Bk
+Bk
+Tu
+Zl
+VS
+Ym
+qR
+qR
+od
+VS
+VC
+VC
+VS
+ho
+iH
+Vt
+Wv
+VS
+Dp
+ZC
+MN
+cF
+VS
+wc
+hL
+VL
+VS
+Zl
+Tu
+Bk
+Bk
+XG
+XG
+aI
+aI
+Jv
+Fo
+ag
+ag
+ag
+YY
+Fo
+Jv
+aI
+aI
+XG
+XG
+On
+On
+On
+"}
+(46,1,1) = {"
+XG
+Bk
+Bk
+Tu
+Zl
+VS
+Sv
+Vt
+jM
+vI
+mx
+cO
+XU
+Al
+XK
+Ym
+Vt
+wr
+VS
+LV
+LV
+GB
+GB
+Gt
+hL
+Xa
+IP
+VS
+Zl
+Tu
+Bk
+Bk
+XG
+XG
+XG
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+XG
+XG
+XG
+On
+On
+On
+"}
+(47,1,1) = {"
+XG
+Bk
+Bk
+Tu
+Zl
+VS
+Sv
+KM
+Sv
+Mq
+Ow
+oR
+Gr
+Al
+aG
+Ym
+Sv
+Ym
+VS
+ZC
+ZC
+Mh
+sg
+Gt
+wg
+oF
+ld
+VS
+Zl
+Tu
+Bk
+Bk
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+On
+On
+On
+"}
+(48,1,1) = {"
+XG
+Bk
+Bk
+Tu
+Zl
+VS
+qR
+Ym
+Sv
+Mq
+TZ
+DH
+XU
+Al
+XK
+pJ
+Vt
+Cz
+VS
+CL
+LV
+LV
+ZC
+gU
+ZH
+Mb
+TI
+VS
+Zl
+Tu
+Bk
+Bk
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+On
+On
+On
+On
+"}
+(49,1,1) = {"
+XG
+Bk
+Bk
+Tu
+Zl
+VS
+Sv
+Sv
+Vt
+si
+Ma
+cO
+XU
+Al
+nF
+qR
+ho
+Sv
+VS
+oE
+Vr
+sg
+Vr
+VS
+ZH
+Xa
+hL
+VS
+Zl
+Tu
+Bk
+Bk
+XG
+XG
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+"}
+(50,1,1) = {"
+XG
+Bk
+Bk
+Tu
+Zl
+VS
+VS
+Sv
+wz
+JK
+VS
+VC
+Te
+VS
+Sv
+wz
+kF
+VS
+VS
+VS
+Pu
+TG
+Am
+VS
+lH
+AF
+ZH
+VS
+Zl
+Tu
+Bk
+Bk
+XG
+XG
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+"}
+(51,1,1) = {"
+XG
+XG
+Bk
+Tu
+Zl
+Zl
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+Zl
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+Zl
+Tu
+Bk
+Bk
+XG
+XG
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+"}
+(52,1,1) = {"
+On
+XG
+Bk
+Bk
+Tu
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Zl
+Tu
+Bk
+XG
+XG
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+"}
+(53,1,1) = {"
+On
+XG
+XG
+Bk
+Bk
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Bk
+Bk
+XG
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+"}
+(54,1,1) = {"
+On
+On
+XG
+XG
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+XG
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+"}
+(55,1,1) = {"
+On
+On
+On
+XG
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+XG
+XG
+XG
+Bk
+Bk
+Bk
+Bk
+Bk
+XG
+Pr
+Bk
+Bk
+Bk
+XG
+XG
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+"}
+(56,1,1) = {"
+On
+On
+On
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+Pr
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+On
+"}

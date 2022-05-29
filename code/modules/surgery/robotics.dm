@@ -18,7 +18,7 @@
 		return 0
 	if (affected.status & ORGAN_DESTROYED)
 		return 0
-	if (!(affected.robotic == ORGAN_ROBOT || affected.robotic == ORGAN_LIFELIKE)) //VOREStation Edit - No good on ORGAN_NANOFORM
+	if (!(affected.robotic == ORGAN_ROBOT || affected.robotic == ORGAN_LIFELIKE))
 		return 0
 	return 1
 
@@ -68,6 +68,7 @@
 /datum/surgery_step/robotics/open_hatch
 	allowed_tools = list(
 		/obj/item/surgical/retractor = 100,
+		/obj/item/surgical/retractor_primitive = 75,
 		/obj/item/material/kitchen/utensil = 50
 	)
 
@@ -105,6 +106,7 @@
 /datum/surgery_step/robotics/close_hatch
 	allowed_tools = list(
 		/obj/item/surgical/retractor = 100,
+		/obj/item/surgical/retractor_primitive = 75,
 		/obj/item/material/kitchen/utensil = 50
 	)
 
@@ -424,12 +426,6 @@
 	if(!istype(M))
 		return 0
 
-	/* VOREStation Edit - Don't worry about it. We can put these in regardless, because resleeving might make it useful after.
-	if(!M.brainmob || !M.brainmob.client || !M.brainmob.ckey || M.brainmob.stat >= DEAD)
-		to_chat(user, "<span class='danger'>That brain is not usable.</span>")
-		return SURGERY_FAILURE
-	*/
-
 	if(!(affected.robotic >= ORGAN_ROBOT))
 		to_chat(user, "<span class='danger'>You cannot install a computer brain into a meat skull.</span>")
 		return SURGERY_FAILURE
@@ -472,7 +468,7 @@
 		while(!new_name && target.client)
 			if(!target) return
 			var/try_name = input(target,"Pick a name for your new form!", "New Name", target.name)
-			var/clean_name = sanitizeName(try_name, allow_numbers = TRUE)
+			var/clean_name = sanitizeName(try_name)
 			if(clean_name)
 				var/okay = alert(target,"New name will be '[clean_name]', ok?", "Confirmation","Cancel","Ok")
 				if(okay == "Ok")
@@ -555,7 +551,7 @@
 
 	qdel(D)
 
-	target.species = GLOB.all_species[SPECIES_DIONA]
+	target.set_species(/datum/species/diona)
 
 	target.verbs |= /mob/living/carbon/human/proc/diona_split_nymph
 	target.verbs |= /mob/living/carbon/human/proc/regenerate
@@ -565,7 +561,7 @@
 		while(!new_name)
 			if(!target) return
 			var/try_name = input(target,"Pick a name for your new form!", "New Name", target.name)
-			var/clean_name = sanitizeName(try_name, allow_numbers = TRUE)
+			var/clean_name = sanitizeName(try_name)
 			if(clean_name)
 				var/okay = alert(target,"New name will be '[clean_name]', ok?", "Confirmation","Cancel","Ok")
 				if(okay == "Ok")

@@ -75,14 +75,14 @@
 */
 
 /obj/item/instrument/interact(mob/user)
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/item/instrument/ui_interact(mob/living/user)
+/obj/item/instrument/nano_ui_interact(mob/living/user)
 	if(!isliving(user) || user.stat || user.restrained())
 		return
 
 	user.set_machine(src)
-	song.ui_interact(user)
+	song.nano_ui_interact(user)
 
 /obj/item/instrument/violin
 	name = "space violin"
@@ -107,7 +107,7 @@
 	item_state = "synth"
 	allowed_instrument_ids = "piano"
 
-/obj/item/instrument/piano_synth/Initialize()
+/obj/item/instrument/piano_synth/Initialize(mapload)
 	. = ..()
 	song.allowed_instrument_ids = get_allowed_instrument_ids()
 
@@ -160,13 +160,13 @@
 	attack_verb = list("played","jazzed","trumpeted","mourned","dooted","spooked")
 
 /*
-/obj/item/instrument/trumpet/spectral/Initialize()
+/obj/item/instrument/trumpet/spectral/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/spooky)
 */
 
 /obj/item/instrument/trumpet/spectral/attack(mob/living/carbon/C, mob/user)
-	playsound (loc, 'sound/instruments/trombone/En4.mid', 100,1,-1)
+	playsound (loc, 'sound/runtime/instruments/trombone/En4.mid', 100,1,-1)
 	..()
 
 /obj/item/instrument/saxophone
@@ -185,13 +185,13 @@
 	attack_verb = list("played","jazzed","saxxed","mourned","dooted","spooked")
 
 /*
-/obj/item/instrument/saxophone/spectral/Initialize()
+/obj/item/instrument/saxophone/spectral/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/spooky)
 */
 
 /obj/item/instrument/saxophone/spectral/attack(mob/living/carbon/C, mob/user)
-	playsound(loc, 'sound/instruments/saxophone/En4.mid', 100,1,-1)
+	playsound(loc, 'sound/runtime/instruments/saxophone/En4.mid', 100,1,-1)
 	..()
 
 /obj/item/instrument/trombone
@@ -210,13 +210,13 @@
 	attack_verb = list("played","jazzed","tromboned","mourned","dooted","spooked")
 
 /*
-/obj/item/instrument/trombone/spectral/Initialize()
+/obj/item/instrument/trombone/spectral/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/spooky)
 */
 
 /obj/item/instrument/trombone/spectral/attack(mob/living/carbon/C, mob/user)
-	playsound(loc, 'sound/instruments/trombone/Cn4.mid', 100,1,-1)
+	playsound(loc, 'sound/runtime/instruments/trombone/Cn4.mid', 100,1,-1)
 	..()
 
 /obj/item/instrument/recorder
@@ -263,7 +263,7 @@
 		slot_r_hand_str = 'icons/mob/inhands/equipment/horns_righthand.dmi'
 		)
 	attack_verb = list("beautifully honks")
-	allowed_instrument_ids = "bikehorn"
+	allowed_instrument_ids = list("honk", "bikehorn")
 	w_class = WEIGHT_CLASS_TINY
 	force = 0
 	throw_speed = 3
@@ -319,3 +319,13 @@
 			instruments[initial(A.name)] = A
 	return instruments
 */
+
+//Event Reward item.
+/obj/item/instrument/gameboy
+	name = "gameboy"
+	desc = "A bright teal Gameboy Color. This one has a copy of LSDJ slotted into the back. /There's also initals scratched crudely into the lower left hand corner spelling TAS./"
+	icon_state = "gameboy"
+	item_state = "gameboy"
+	attack_verb = ("bitcrushed")
+	hitsound = "sound/weapons/gboy.ogg"
+	allowed_instrument_ids = "square"

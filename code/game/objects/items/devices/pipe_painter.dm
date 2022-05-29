@@ -5,8 +5,8 @@
 	var/list/modes
 	var/mode
 
-/obj/item/pipe_painter/New()
-	..()
+/obj/item/pipe_painter/Initialize(mapload)
+	. = ..()
 	modes = new()
 	for(var/C in pipe_colors)
 		modes += "[C]"
@@ -26,5 +26,5 @@
 	mode = input("Which colour do you want to use?", "Pipe painter", mode) in modes
 
 /obj/item/pipe_painter/examine(mob/user)
-	..(user)
-	to_chat(user, "It is in [mode] mode.")
+	. = ..()
+	. += "<span class = 'notice'>It is in [mode] mode.</span>"

@@ -41,8 +41,8 @@
 /datum/random_map/droppod/generate_map()
 
 	// No point calculating these 200 times.
-	var/x_midpoint = n_ceil(limit_x / 2)
-	var/y_midpoint = n_ceil(limit_y / 2)
+	var/x_midpoint = CEILING(limit_x / 2, 1)
+	var/y_midpoint = CEILING(limit_y / 2, 1)
 
 	// Draw walls/floors/doors.
 	for(var/x = 1, x <= limit_x, x++)
@@ -80,7 +80,7 @@
 
 /datum/random_map/droppod/apply_to_map()
 	if(placement_explosion_dev || placement_explosion_heavy || placement_explosion_light || placement_explosion_flash)
-		var/turf/T = locate((origin_x + n_ceil(limit_x / 2)-1), (origin_y + n_ceil(limit_y / 2)-1), origin_z)
+		var/turf/T = locate((origin_x + CEILING(limit_x / 2, 1)-1), (origin_y + CEILING(limit_y / 2, 1)-1), origin_z)
 		if(istype(T))
 			explosion(T, placement_explosion_dev, placement_explosion_heavy, placement_explosion_light, placement_explosion_flash)
 			sleep(15) // Let the explosion finish proccing before we ChangeTurf(), otherwise it might destroy our spawned objects.
@@ -97,8 +97,8 @@
 
 // Pods are circular. Get the direction this object is facing from the center of the pod.
 /datum/random_map/droppod/get_spawn_dir(var/x, var/y)
-	var/x_midpoint = n_ceil(limit_x / 2)
-	var/y_midpoint = n_ceil(limit_y / 2)
+	var/x_midpoint = CEILING(limit_x / 2, 1)
+	var/y_midpoint = CEILING(limit_y / 2, 1)
 	if(x == x_midpoint && y == y_midpoint)
 		return null
 	var/turf/target = locate(origin_x+x-1, origin_y+y-1, origin_z)
@@ -112,7 +112,7 @@
 	// Splatter anything under us that survived the explosion.
 	if(value != SD_EMPTY_TILE && T.contents.len)
 		for(var/atom/movable/AM in T)
-			if(AM.simulated && !istype(AM, /mob/observer))
+			if(!(AM.flags & AF_ABSTRACT) && !istype(AM, /mob/observer))
 				qdel(AM)
 
 	// Also spawn doors and loot.
@@ -191,9 +191,9 @@
 
 		// Equip them, if they are human and it is desirable.
 		if(istype(spawned_mob, /mob/living/carbon/human))
-			var/antag_type = input("Select an equipment template to use or cancel for nude.", null) as null|anything in all_antag_types
+			var/antag_type = input("Select an equipment template to use or cancel for nude.", null) as null|anything in GLOB.all_antag_types
 			if(antag_type)
-				var/datum/antagonist/A = all_antag_types[antag_type]
+				var/datum/antagonist/A = GLOB.all_antag_types[antag_type]
 				A.equip(spawned_mob)
 
 	if(alert("Are you SURE you wish to deploy this drop pod? It will cause a sizable explosion and gib anyone underneath it.",,"No","Yes") == "No")

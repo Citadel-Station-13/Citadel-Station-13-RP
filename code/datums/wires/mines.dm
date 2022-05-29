@@ -1,81 +1,64 @@
 /datum/wires/mines
+	randomize = TRUE
 	wire_count = 6
-	random = 1
 	holder_type = /obj/effect/mine
+	proper_name = "Explosive Wires"
 
-#define WIRE_DETONATE 	1
-#define WIRE_TIMED_DET 	2
-#define WIRE_DISARM	4
-#define WIRE_DUMMY_1	8
-#define WIRE_DUMMY_2	16
-#define WIRE_BADDISARM	32
+/datum/wires/mines/New(atom/_holder)
+	wires = list(WIRE_EXPLODE, WIRE_EXPLODE_DELAY, WIRE_DISARM, WIRE_BADDISARM)
+	return ..()
 
-/datum/wires/mines/GetInteractWindow()
+/datum/wires/mines/get_status()
 	. = ..()
-	. += "<br>\n["Warning: detonation may occur even with proper equipment."]"
-	return .
+	. += "\[Warning: detonation may occur even with proper equipment.]"
 
 /datum/wires/mines/proc/explode()
 	return
 
-/datum/wires/mines/UpdateCut(var/index, var/mended)
+/datum/wires/mines/on_cut(wire, mend)
 	var/obj/effect/mine/C = holder
 
-	switch(index)
-		if(WIRE_DETONATE)
-			C.visible_message("\icon[C] *BEEE-*", "\icon[C] *BEEE-*")
+	switch(wire)
+		if(WIRE_EXPLODE)
+			C.visible_message("[icon2html(thing = C, target = world)] *BEEE-*", "[icon2html(thing = C, target = world)] *BEEE-*")
 			C.explode()
 
-		if(WIRE_TIMED_DET)
-			C.visible_message("\icon[C] *BEEE-*", "\icon[C] *BEEE-*")
+		if(WIRE_EXPLODE_DELAY)
+			C.visible_message("[icon2html(thing = C, target = world)] *BEEE-*", "[icon2html(thing = C, target = world)] *BEEE-*")
 			C.explode()
 
 		if(WIRE_DISARM)
-			C.visible_message("\icon[C] *click!*", "\icon[C] *click!*")
+			C.visible_message("[icon2html(thing = C, target = world)] *click!*", "[icon2html(thing = C, target = world)] *click!*")
 			new C.mineitemtype(get_turf(C))
 			spawn(0)
 				qdel(C)
-				return
-
-		if(WIRE_DUMMY_1)
-			return
-
-
-		if(WIRE_DUMMY_2)
-			return
 
 		if(WIRE_BADDISARM)
-			C.visible_message("\icon[C] *BEEPBEEPBEEP*", "\icon[C] *BEEPBEEPBEEP*")
+			C.visible_message("[icon2html(thing = C, target = world)] *BEEPBEEPBEEP*", "[icon2html(thing = C, target = world)] *BEEPBEEPBEEP*")
 			spawn(20)
 				C.explode()
-	return
+	..()
 
-/datum/wires/mines/UpdatePulsed(var/index)
+/datum/wires/mines/on_pulse(wire)
 	var/obj/effect/mine/C = holder
-	if(IsIndexCut(index))
+	if(is_cut(wire))
 		return
-	switch(index)
-		if(WIRE_DETONATE)
-			C.visible_message("\icon[C] *beep*", "\icon[C] *beep*")
+	switch(wire)
+		if(WIRE_EXPLODE)
+			C.visible_message("[icon2html(thing = C, target = world)] *beep*", "[icon2html(thing = C, target = world)] *beep*")
 
-		if(WIRE_TIMED_DET)
-			C.visible_message("\icon[C] *BEEPBEEPBEEP*", "\icon[C] *BEEPBEEPBEEP*")
+		if(WIRE_EXPLODE_DELAY)
+			C.visible_message("[icon2html(thing = C, target = world)] *BEEPBEEPBEEP*", "[icon2html(thing = C, target = world)] *BEEPBEEPBEEP*")
 			spawn(20)
 				C.explode()
 
 		if(WIRE_DISARM)
-			C.visible_message("\icon[C] *ping*", "\icon[C] *ping*")
-
-		if(WIRE_DUMMY_1)
-			C.visible_message("\icon[C] *ping*", "\icon[C] *ping*")
-
-		if(WIRE_DUMMY_2)
-			C.visible_message("\icon[C] *beep*", "\icon[C] *beep*")
+			C.visible_message("[icon2html(thing = C, target = world)] *ping*", "[icon2html(thing = C, target = world)] *ping*")
 
 		if(WIRE_BADDISARM)
-			C.visible_message("\icon[C] *ping*", "\icon[C] *ping*")
-	return
+			C.visible_message("[icon2html(thing = C, target = world)] *ping*", "[icon2html(thing = C, target = world)] *ping*")
+	..()
 
-/datum/wires/mines/CanUse(var/mob/living/L)
+/datum/wires/mines/interactable(mob/user)
 	var/obj/effect/mine/M = holder
 	return M.panel_open

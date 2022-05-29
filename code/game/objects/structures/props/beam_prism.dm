@@ -26,7 +26,8 @@
 
 	interaction_message = "<span class='notice'>The prismatic turret seems to be able to rotate.</span>"
 
-/obj/structure/prop/prism/Initialize()
+/obj/structure/prop/prism/Initialize(mapload)
+	. = ..()
 	if(degrees_from_north)
 		animate(src, transform = turn(NORTH, degrees_from_north), time = 3)
 
@@ -196,14 +197,14 @@
 	for(var/obj/structure/prop/prism/P in my_turrets)
 		P.rotate_auto(new_bearing)
 
-/obj/structure/prop/prismcontrol/Initialize()
-	..()
+/obj/structure/prop/prismcontrol/Initialize(mapload)
+	. = ..()
 	if(my_turrets.len) //Preset controls.
 		for(var/obj/structure/prop/prism/P in my_turrets)
 			P.remote_dial = src
 		return
 	spawn()
-		for(var/obj/structure/prop/prism/P in orange(src, world.view)) //Don't search a huge area.
+		for(var/obj/structure/prop/prism/P in orange(src, 30)) //Don't search a huge area. //Second note. I widened this area because the dial search area was ridiculously small.
 			if(P.dialID == dialID && !P.remote_dial && P.external_control_lock)
 				my_turrets |= P
 				P.remote_dial = src

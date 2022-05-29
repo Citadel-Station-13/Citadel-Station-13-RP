@@ -1,6 +1,7 @@
-#define MOVES_HITSCAN -1		//Not actually hitscan but close as we get without actual hitscan.
-#define MUZZLE_EFFECT_PIXEL_INCREMENT 17	//How many pixels to move the muzzle flash up so your character doesn't look like they're shitting out lasers.
-
+///Not actually hitscan but close as we get without actual hitscan.
+#define MOVES_HITSCAN -1
+///How many pixels to move the muzzle flash up so your character doesn't look like they're shitting out lasers.
+#define MUZZLE_EFFECT_PIXEL_INCREMENT 17
 /obj/item/projectile
 	name = "projectile"
 	icon = 'icons/obj/projectiles.dmi'
@@ -46,6 +47,10 @@
 	var/impact_type
 	var/datum/beam_components_cache/beam_components
 
+	var/miss_sounds
+	var/ricochet_sounds
+	var/list/impact_sounds	//for different categories, IMPACT_MEAT etc
+
 	//Fancy hitscan lighting effects!
 	var/hitscan_light_intensity = 1.5
 	var/hitscan_light_range = 0.75
@@ -75,8 +80,6 @@
 	var/p_x = 16
 	var/p_y = 16			// the pixel location of the tile that the player clicked. Default is the center
 
-	//Misc/Polaris variables
-
 	var/def_zone = ""	//Aiming at
 	var/mob/firer = null//Who shot it
 	var/silenced = 0	//Attack message
@@ -91,6 +94,8 @@
 	var/list/submunitions = list() // Assoc list of the paths of any submunitions, and how many they are. [projectilepath] = [projectilecount].
 	var/submunition_spread_max = 30 // Divided by 10 to get the percentile dispersion.
 	var/submunition_spread_min = 5 // Above.
+	/// randomize spread? if so, evenly space between 0 and max on each side.
+	var/submunition_constant_spread = FALSE
 	var/force_max_submunition_spread = FALSE // Do we just force the maximum?
 	var/spread_submunition_damage = FALSE // Do we assign damage to our sub projectiles based on our main projectile damage?
 
@@ -119,7 +124,16 @@
 	var/modifier_type_to_apply = null // If set, will apply a modifier to mobs that are hit by this projectile.
 	var/modifier_duration = null // How long the above modifier should last for. Leave null to be permanent.
 	var/excavation_amount = 0 // How much, if anything, it drills from a mineral turf.
+	/// If this projectile is holy. Silver bullets, etc. Currently no effects.
 	var/holy = FALSE
+
+	// Antimagic
+	/// Should we check for antimagic effects?
+	var/antimagic_check = FALSE
+	/// Antimagic charges to use, if any
+	var/antimagic_charges_used = 0
+	/// Multiplier for damage if antimagic is on the target
+	var/antimagic_damage_factor = 0
 
 	embed_chance = 0	//Base chance for a projectile to embed
 
@@ -220,12 +234,8 @@
 	Range()
 
 /obj/item/projectile/Crossed(atom/movable/AM) //A mob moving on a tile with a projectile is hit by it.
-	//VOREStation Edit begin: SHADEKIN
-	var/mob/SK = AM
-	if(istype(SK))
-		if(SK.shadekin_phasing_check())
-			return
-	//VOREStation Edit end: SHADEKIN
+	if(AM.is_incorporeal())
+		return
 	..()
 	if(isliving(AM) && !(pass_flags & PASSMOB))
 		var/mob/living/L = AM
@@ -253,7 +263,7 @@
 	if(prob(50))
 		homing_offset_y = -homing_offset_y
 
-/obj/item/projectile/process()
+/obj/item/projectile/process(delta_time)
 	last_process = world.time
 	if(!loc || !fired || !trajectory)
 		fired = FALSE
@@ -304,6 +314,9 @@
 		after_z_change(old, target)
 
 /obj/item/projectile/proc/fire(angle, atom/direct_target)
+	if(only_submunitions)	// refactor projectiles whwen holy shit this is awful lmao
+		qdel(src)
+		return
 	//If no angle needs to resolve it from xo/yo!
 	if(direct_target)
 		direct_target.bullet_act(src, def_zone)
@@ -450,7 +463,7 @@
 
 /obj/item/projectile/proc/vol_by_damage()
 	if(damage)
-		return clamp((damage) * 0.67, 30, 100)// Multiply projectile damage by 0.67, then CLAMP the value between 30 and 100
+		return clamp((damage) * 0.67, 30, 100)// Multiply projectile damage by 0.67, then clamp the value between 30 and 100
 	else
 		return 50 //if the projectile doesn't do damage, play its hitsound at 50% volume.
 
@@ -582,8 +595,10 @@
 
 //TODO: make it so this is called more reliably, instead of sometimes by bullet_act() and sometimes not
 /obj/item/projectile/proc/on_hit(atom/target, blocked = 0, def_zone)
-	if(blocked >= 100)		return 0//Full block
-	if(!isliving(target))	return 0
+	if(blocked >= 100)
+		return 0//Full block
+	if(!isliving(target))
+		return 0
 //	if(isanimal(target))	return 0
 	var/mob/living/L = target
 	L.apply_effects(stun, weaken, paralyze, irradiate, stutter, eyeblur, drowsy, agony, blocked, incendiary, flammability) // add in AGONY!
@@ -618,6 +633,7 @@
 	check_trajectory(target, user, pass_flags, flags)
 
 /obj/item/projectile/CanAllowThrough()
+	. = ..()
 	return TRUE
 
 //Called when the projectile intercepts a mob. Returns 1 if the projectile hit the mob, 0 if it missed and should keep flying.
@@ -637,6 +653,7 @@
 	if(result == PROJECTILE_FORCE_MISS)
 		if(!silenced)
 			visible_message("<span class='notice'>\The [src] misses [target_mob] narrowly!</span>")
+			playsound(target_mob.loc, pick(miss_sounds), 60, 1)
 		return FALSE
 
 	//hit messages
@@ -656,14 +673,21 @@
 
 	return TRUE
 
-
-/obj/item/projectile/proc/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
+/**
+ * i hate everything
+ *
+ * todo: refactor guns
+ * projectiles
+ * and everything else
+ *
+ * i am losing my fucking mind
+ * this shouldn't have to fucking exist because the ammo casing and/or gun should be doing it
+ * and submunitions SHOULDNT BE HANDLED HERE!!
+ */
+/obj/item/projectile/proc/launch_projectile_common(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
 	original = target
 	def_zone = check_zone(target_zone)
 	firer = user
-	var/direct_target
-	if(get_turf(target) == get_turf(src))
-		direct_target = target
 
 	if(use_submunitions && submunitions.len)
 		var/temp_min_spread = 0
@@ -687,16 +711,28 @@
 			damage_override = round(damage_override / max(1, projectile_count))
 
 		for(var/path in submunitions)
-			for(var/count = 1 to submunitions[path])
+			var/amt = submunitions[path]
+			for(var/count in 1 to amt)
 				var/obj/item/projectile/SM = new path(get_turf(loc))
 				SM.shot_from = shot_from
 				SM.silenced = silenced
-				SM.dispersion = rand(temp_min_spread, submunition_spread_max) / 10
 				if(!isnull(damage_override))
 					SM.damage = damage_override
-				SM.launch_projectile(target, target_zone, user, params, angle_override)
+				if(submunition_constant_spread)
+					SM.dispersion = 0
+					var/calculated = Angle + round((count / amt - 0.5) * submunition_spread_max, 1)
+					SM.launch_projectile(target, target_zone, user, params, calculated)
+				else
+					SM.dispersion = rand(temp_min_spread, submunition_spread_max) / 10
+					SM.launch_projectile(target, target_zone, user, params, angle_override)
+
+/obj/item/projectile/proc/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
+	var/direct_target
+	if(get_turf(target) == get_turf(src))
+		direct_target = target
 
 	preparePixelProjectile(target, user? user : get_turf(src), params, forced_spread)
+	launch_projectile_common(target, target_zone, user, params, angle_override, forced_spread)
 	return fire(angle_override, direct_target)
 
 //called to launch a projectile from a gun
@@ -708,43 +744,38 @@
 	return launch_projectile(target, target_zone, user, params, angle_override, forced_spread)
 
 /obj/item/projectile/proc/launch_projectile_from_turf(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
-	original = target
-	def_zone = check_zone(target_zone)
-	firer = user
 	var/direct_target
 	if(get_turf(target) == get_turf(src))
 		direct_target = target
 
-	if(use_submunitions && submunitions.len)
-		var/temp_min_spread = 0
-		if(force_max_submunition_spread)
-			temp_min_spread = submunition_spread_max
-		else
-			temp_min_spread = submunition_spread_min
-
-		var/damage_override = null
-
-		if(spread_submunition_damage)
-			damage_override = damage
-			if(nodamage)
-				damage_override = 0
-
-			var/projectile_count = 0
-
-			for(var/proj in submunitions)
-				projectile_count += submunitions[proj]
-
-			damage_override = round(damage_override / max(1, projectile_count))
-
-		for(var/path in submunitions)
-			for(var/count = 1 to submunitions[path])
-				var/obj/item/projectile/SM = new path(get_turf(loc))
-				SM.shot_from = shot_from
-				SM.silenced = silenced
-				SM.dispersion = rand(temp_min_spread, submunition_spread_max) / 10
-				if(!isnull(damage_override))
-					SM.damage = damage_override
-				SM.launch_projectile_from_turf(target, target_zone, user, params, angle_override)
-
-	preparePixelProjectile(target, get_turf(src), params, forced_spread)
+	preparePixelProjectile(target, user? user : get_turf(src), params, forced_spread)
+	launch_projectile_common(target, target_zone, user, params, angle_override, forced_spread)
 	return fire(angle_override, direct_target)
+
+/**
+ * Standard proc to determine damage when impacting something. This does not affect the special damage variables/effect variables, only damage and damtype.
+ * May or may not be called before/after armor calculations.
+ *
+ * @params
+ * - target The atom hit
+ *
+ * @return Damage to apply to target.
+ */
+/obj/item/projectile/proc/run_damage_vulnerability(atom/target)
+	var/final_damage = damage
+	if(isliving(target))
+		var/mob/living/L = target
+		if(issimple(target))
+			var/mob/living/simple_mob/SM = L
+			if(SM.mob_class & SA_vulnerability)
+				final_damage += SA_bonus_damage
+		if(L.anti_magic_check(TRUE, TRUE, antimagic_charges_used, FALSE))
+			final_damage *= antimagic_damage_factor
+	return final_damage
+
+/**
+ * Probably isn't needed but saves me the time and I can regex this later:
+ * Gets the final `damage` that should be used on something
+ */
+/obj/item/projectile/proc/get_final_damage(atom/target)
+	return run_damage_vulnerability(target)

@@ -34,7 +34,7 @@
 	pixel_x = -32
 	pixel_y = -32
 
-/obj/effect/temporary_effect/cleave_attack/Initialize() // Makes the slash fade smoothly. When completely transparent it should qdel itself.
+/obj/effect/temporary_effect/cleave_attack/Initialize(mapload) // Makes the slash fade smoothly. When completely transparent it should qdel itself.
 	. = ..()
 	animate(src, alpha = 0, time = time_to_die - 1)
 
@@ -44,7 +44,7 @@
 	icon_state = "shuttle_warning_still"
 	time_to_die = 4.9 SECONDS
 
-/obj/effect/temporary_effect/shuttle_landing/Initialize()
+/obj/effect/temporary_effect/shuttle_landing/Initialize(mapload)
 	flick("shuttle_warning", src) // flick() forces the animation to always begin at the start.
 	. = ..()
 
@@ -56,11 +56,42 @@
 	The humor in this description is just so <i>electrifying</i>."
 	icon = 'icons/effects/96x256.dmi'
 	icon_state = "lightning_strike"
-	plane = PLANE_LIGHTING_ABOVE
+	plane = ABOVE_LIGHTING_PLANE
 	time_to_die = 1 SECOND
 	pixel_x = -32
 
-/obj/effect/temporary_effect/lightning_strike/Initialize()
+/obj/effect/temporary_effect/lightning_strike/Initialize(mapload)
 	icon_state += "[rand(1,2)]" // To have two variants of lightning sprites.
 	animate(src, alpha = 0, time = time_to_die - 1)
 	. = ..()
+
+
+//Makes a tile fully lit no matter what
+/obj/effect/fullbright
+	icon = 'icons/effects/alphacolors.dmi'
+	icon_state = "white"
+	plane = LIGHTING_PLANE
+	layer = LIGHTING_LAYER
+	blend_mode = BLEND_ADD
+
+/obj/effect/dummy/lighting_obj
+	name = "lighting fx obj"
+	desc = "Tell a coder if you're seeing this."
+	icon_state = "nothing"
+	light_color = "#FFFFFF"
+	light_range = MINIMUM_USEFUL_LIGHT_RANGE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/effect/dummy/lighting_obj/Initialize(mapload, _color, _range, _power, _duration)
+	. = ..()
+	set_light(_range ? _range : light_range, _power ? _power : light_power, _color ? _color : light_color)
+	if(_duration)
+		QDEL_IN(src, _duration)
+
+/obj/effect/dummy/lighting_obj/moblight
+	name = "mob lighting fx"
+
+/obj/effect/dummy/lighting_obj/moblight/Initialize(mapload, _color, _range, _power, _duration)
+	. = ..()
+	if(!ismob(loc))
+		return INITIALIZE_HINT_QDEL

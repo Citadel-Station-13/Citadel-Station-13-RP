@@ -1,7 +1,16 @@
+/datum/category_item/catalogue/fauna/redpanda
+	name = "Red Panda"
+	desc = "Red Pandas are sometimes imported to the Frontier from \
+	exotic pet brokers in Orion space. Popular among collectors due \
+	to their coloration, patterning, and generally adorable appearance, \
+	the Red Panda is a popular pet and status symbol rolled into one."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/vore/redpanda
 	name = "red panda"
 	desc = "It's a wah! Beware of doom pounce!"
 	tt_desc = "Ailurus fulgens"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/redpanda)
 
 	icon_state = "wah"
 	icon_living = "wah"
@@ -12,6 +21,7 @@
 	faction = "redpanda" //stop naming stuff vaguely
 	maxHealth = 30
 	health = 30
+	randomized = TRUE
 
 	response_help = "pats the"
 	response_disarm = "gently pushes aside the"

@@ -3,8 +3,8 @@
 	desc = "Used to feed people on the field. Contains 30 units of Nutriment."
 	icon_state = "pill10"
 
-/obj/item/reagent_containers/pill/nutriment/Initialize()
-	..()
+/obj/item/reagent_containers/pill/nutriment/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("nutriment", 30)
 
 /obj/item/reagent_containers/pill/protein
@@ -12,8 +12,8 @@
 	desc = "Used to feed carnivores on the field. Contains 30 units of Protein."
 	icon_state = "pill24"
 
-/obj/item/reagent_containers/pill/protein/Initialize()
-	..()
+/obj/item/reagent_containers/pill/protein/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("protein", 30)
 
 /obj/item/reagent_containers/pill/rezadone
@@ -21,8 +21,8 @@
 	desc = "A powder with almost magical properties, this substance can effectively treat genetic damage in humanoids, though excessive consumption has side effects."
 	icon_state = "pill2"
 
-/obj/item/reagent_containers/pill/rezadone/Initialize()
-	..()
+/obj/item/reagent_containers/pill/rezadone/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("rezadone", 5)
 	color = reagents.get_color()
 
@@ -31,8 +31,8 @@
 	desc = "Used to encourage recovery of internal organs and nervous systems. Medicate cautiously."
 	icon_state = "pill10"
 
-/obj/item/reagent_containers/pill/peridaxon/Initialize()
-	..()
+/obj/item/reagent_containers/pill/peridaxon/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("peridaxon", 10)
 
 /obj/item/reagent_containers/pill/carthatoline
@@ -40,8 +40,8 @@
 	desc = "Carthatoline is strong evacuant used to treat severe poisoning."
 	icon_state = "pill4"
 
-/obj/item/reagent_containers/pill/carthatoline/Initialize()
-	..()
+/obj/item/reagent_containers/pill/carthatoline/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("carthatoline", 10)
 	color = reagents.get_color()
 
@@ -50,8 +50,8 @@
 	desc = "Alkysine is a drug used to lessen the damage to neurological tissue after a catastrophic injury. Can heal brain tissue."
 	icon_state = "pill3"
 
-/obj/item/reagent_containers/pill/alkysine/Initialize()
-	..()
+/obj/item/reagent_containers/pill/alkysine/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("alkysine", 10)
 	color = reagents.get_color()
 
@@ -60,8 +60,8 @@
 	desc = "Heals eye damage."
 	icon_state = "pill3"
 
-/obj/item/reagent_containers/pill/imidazoline/Initialize()
-	..()
+/obj/item/reagent_containers/pill/imidazoline/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("imidazoline", 15)
 	color = reagents.get_color()
 
@@ -70,8 +70,8 @@
 	desc = "An experimental drug used to heal bone fractures."
 	icon_state = "pill2"
 
-/obj/item/reagent_containers/pill/osteodaxon/Initialize()
-	..()
+/obj/item/reagent_containers/pill/osteodaxon/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("osteodaxon", 10)
 	color = reagents.get_color()
 
@@ -80,8 +80,8 @@
 	desc = "Used to rapidly clot internal hemorrhages by increasing the effectiveness of platelets."
 	icon_state = "pill1"
 
-/obj/item/reagent_containers/pill/myelamine/Initialize()
-	..()
+/obj/item/reagent_containers/pill/myelamine/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("myelamine", 10)
 	color = reagents.get_color()
 
@@ -90,8 +90,8 @@
 	desc = "Hyronalin is a medicinal drug used to counter the effect of radiation poisoning."
 	icon_state = "pill4"
 
-/obj/item/reagent_containers/pill/hyronalin/Initialize()
-	..()
+/obj/item/reagent_containers/pill/hyronalin/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("hyronalin", 15)
 	color = reagents.get_color()
 
@@ -100,8 +100,8 @@
 	desc = "Arithrazine is an unstable medication used for the most extreme cases of radiation poisoning."
 	icon_state = "pill2"
 
-/obj/item/reagent_containers/pill/arithrazine/Initialize()
-	..()
+/obj/item/reagent_containers/pill/arithrazine/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("arithrazine", 5)
 	color = reagents.get_color()
 
@@ -110,8 +110,8 @@
 	desc = "A wide-spectrum antibiotic drug. Powerful and uncomfortable in equal doses."
 	icon_state = "pill2"
 
-/obj/item/reagent_containers/pill/corophizine/Initialize()
-	..()
+/obj/item/reagent_containers/pill/corophizine/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("corophizine", 5)
 	color = reagents.get_color()
 
@@ -120,7 +120,17 @@
 	desc = "Miniature medical robots that swiftly restore bodily damage."
 	icon_state = "pill1"
 
-/obj/item/reagent_containers/pill/healing_nanites/Initialize()
-	..()
+/obj/item/reagent_containers/pill/healing_nanites/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("healing_nanites", 30)
 	color = reagents.get_color()
+
+/obj/item/reagent_containers/pill/airlock
+	name = "\'Airlock\' Pill"
+	desc = "Neutralizes toxins and provides a mild analgesic effect."
+	icon_state = "pill2"
+
+/obj/item/reagent_containers/pill/airlock/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("anti_toxin", 15)
+	reagents.add_reagent("paracetamol", 5)

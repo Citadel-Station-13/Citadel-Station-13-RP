@@ -27,7 +27,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	force = 0
 	var/points_stored = 0 // Amount of 'exploration points' this device holds.
 	var/scan_range = 3 // How many tiles away it can scan. Changing this also changes the box size.
-	var/credit_sharing_range = 14 // If another person is within this radius, they will also be credited with a successful scan.
+	var/credit_sharing_range = INFINITY // If another person is within this radius, they will also be credited with a successful scan.
 	var/datum/category_item/catalogue/displayed_data = null // Used for viewing a piece of data in the UI.
 	var/busy = FALSE // Set to true when scanning, to stop multiple scans.
 	var/debug = FALSE // If true, can view all catalogue data defined, regardless of unlock status.
@@ -54,7 +54,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	debug = TRUE
 
 
-/obj/item/cataloguer/Initialize()
+/obj/item/cataloguer/Initialize(mapload)
 	GLOB.all_cataloguers += src
 	return ..()
 
@@ -72,7 +72,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 /obj/item/cataloguer/afterattack(atom/target, mob/user, proximity_flag)
 	// Things that invalidate the scan immediately.
 	if(busy)
-		to_chat(user, span("warning", "\The [src] is already scanning something."))
+		to_chat(user, SPAN_WARNING( "\The [src] is already scanning something."))
 		return
 
 	if(isturf(target) && (!target.can_catalogue()))
@@ -87,7 +87,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 		return
 
 	if(get_dist(target, user) > scan_range)
-		to_chat(user, span("warning", "You are too far away from \the [target] to catalogue it. Get closer."))
+		to_chat(user, SPAN_WARNING( "You are too far away from \the [target] to catalogue it. Get closer."))
 		return
 
 	// Get how long the delay will be.
@@ -95,9 +95,9 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	if(partial_scanned)
 		if(partial_scanned.resolve() == target)
 			scan_delay -= partial_scan_time
-			to_chat(user, span("notice", "Resuming previous scan."))
+			to_chat(user, SPAN_NOTICE("Resuming previous scan."))
 		else
-			to_chat(user, span("warning", "Scanning new target. Previous scan buffer cleared."))
+			to_chat(user, SPAN_WARNING( "Scanning new target. Previous scan buffer cleared."))
 
 	// Start the special effects.
 	busy = TRUE
@@ -116,18 +116,18 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	var/scan_start_time = world.time
 	if(do_after(user, scan_delay, target, ignore_movement = TRUE, max_distance = scan_range))
 		if(target.can_catalogue(user))
-			to_chat(user, span("notice", "You successfully scan \the [target] with \the [src]."))
+			to_chat(user, SPAN_NOTICE("You successfully scan \the [target] with \the [src]."))
 			playsound(src.loc, 'sound/machines/ping.ogg', 50)
 			catalogue_object(target, user)
 		else
 			// In case someone else scans it first, or it died, etc.
-			to_chat(user, span("warning", "\The [target] is no longer valid to scan with \the [src]."))
+			to_chat(user, SPAN_WARNING( "\The [target] is no longer valid to scan with \the [src]."))
 			playsound(src.loc, 'sound/machines/buzz-two.ogg', 50)
 
 		partial_scanned = null
 		partial_scan_time = 0
 	else
-		to_chat(user, span("warning", "You failed to finish scanning \the [target] with \the [src]."))
+		to_chat(user, SPAN_WARNING( "You failed to finish scanning \the [target] with \the [src]."))
 		playsound(src.loc, 'sound/machines/buzz-two.ogg', 50)
 		color_box(box_segments, "#FF0000", 3)
 		partial_scanned = WEAKREF(target)
@@ -148,11 +148,16 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	// Figure out who may have helped out.
 	var/list/contributers = list()
 	var/list/contributer_names = list()
+	var/turf/T = get_turf(user) || get_turf(target)
+	var/list/contributing_z = GetConnectedZlevels(T.z)
 	for(var/thing in player_list)
 		var/mob/living/L = thing
 		if(L == user)
 			continue
 		if(!istype(L))
+			continue
+		var/turf/other = get_turf(L)
+		if(!(other.z in contributing_z))
 			continue
 		if(get_dist(L, user) <= credit_sharing_range)
 			contributers += L
@@ -175,18 +180,18 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	// Give out points.
 	if(points_gained)
 		// First, to us.
-		to_chat(user, span("notice", "Gained [points_gained] points from this scan."))
+		to_chat(user, SPAN_NOTICE("Gained [points_gained] points from this scan."))
 		adjust_points(points_gained)
 
 		// Now to our friends, if any.
 		if(contributers.len)
 			for(var/mob/M in contributers)
-				var/list/things = M.GetAllContents(3) // Depth of two should reach into bags but just in case lets make it three.
+				var/list/things = M.GetAllContents() // Depth of two should reach into bags but just in case lets make it three.
 				var/obj/item/cataloguer/other_cataloguer = locate() in things // If someone has two or more scanners this only adds points to one.
 				if(other_cataloguer)
-					to_chat(M, span("notice", "Gained [points_gained] points from \the [user]'s scan of \the [target]."))
+					to_chat(M, SPAN_NOTICE("Gained [points_gained] points from \the [user]'s scan of \the [target]."))
 					other_cataloguer.adjust_points(points_gained)
-			to_chat(user, span("notice", "Shared discovery with [contributers.len] other contributer\s."))
+			to_chat(user, SPAN_NOTICE("Shared discovery with [contributers.len] other contributer\s."))
 
 
 
@@ -198,7 +203,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 // Helps to avoid having to click a hundred things in a room for things that have an entry.
 /obj/item/cataloguer/proc/pulse_scan(mob/user)
 	if(busy)
-		to_chat(user, span("warning", "\The [src] is busy doing something else."))
+		to_chat(user, SPAN_WARNING( "\The [src] is busy doing something else."))
 		return
 
 	busy = TRUE
@@ -217,7 +222,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	for(var/a in scannable_atoms)
 		var/atom/A = a
 		A.filters += filter
-	to_chat(user, span("notice", "\The [src] is highlighting scannable objects in green, if any exist."))
+	to_chat(user, SPAN_NOTICE("\The [src] is highlighting scannable objects in green, if any exist."))
 
 	sleep(2 SECONDS)
 
@@ -234,7 +239,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 		playsound(src.loc, 'sound/machines/ping.ogg', 50)
 	else
 		playsound(src.loc, 'sound/machines/buzz-two.ogg', 50)
-	to_chat(user, span("notice", "\The [src] found [scannable_atoms.len] object\s that can be scanned."))
+	to_chat(user, SPAN_NOTICE("\The [src] found [scannable_atoms.len] object\s that can be scanned."))
 
 
 // Negative points are bad.

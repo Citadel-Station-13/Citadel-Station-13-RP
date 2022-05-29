@@ -22,8 +22,8 @@
 			damage *= B.overmind.blob_type.burn_multiplier
 		B.adjust_integrity(-damage)
 
-	new/obj/effect/effect/sparks(src.loc)
-	new/obj/effect/effect/smoke/illumination(src.loc, 5, range=30, power=30, color="#FFFFFF")
+	new/obj/effect/sparks(src.loc)
+	new/obj/effect/smoke/illumination(src.loc, 5, 30, 30, "#FFFFFF")
 
 	qdel(src)
 
@@ -154,8 +154,8 @@
 	can_repeat = FALSE
 	banglet = TRUE
 
-/obj/item/grenade/flashbang/clusterbang/segment/New()//Segments should never exist except part of the clusterbang, since these immediately 'do their thing' and asplode
-	..()
+/obj/item/grenade/flashbang/clusterbang/segment/Initialize(mapload)
+	. = ..()
 
 	icon_state = "clusterbang_segment_active"
 
@@ -170,8 +170,8 @@
 /obj/item/grenade/flashbang/cluster
 	banglet = TRUE
 
-/obj/item/grenade/flashbang/cluster/New()//Same concept as the segments, so that all of the parts don't become reliant on the clusterbang
-	..()
+/obj/item/grenade/flashbang/cluster/Initialize(mapload)
+	. = ..()
 
 	icon_state = "flashbang_active"
 

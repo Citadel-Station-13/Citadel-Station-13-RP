@@ -1,5 +1,5 @@
-#define ALARM_RESET_DELAY 100 // How long will the alarm/trigger remain active once origin/source has been found to be gone?
-
+/// How long will the alarm/trigger remain active once origin/source has been found to be gone?
+#define ALARM_RESET_DELAY 100
 /datum/alarm_source
 	var/source		= null	// The source trigger
 	var/source_name = ""	// The name of the source should it be lost (for example a destroyed camera)
@@ -18,7 +18,6 @@
 	var/list/sources = new()		//List of sources triggering the alarm. Used to determine when the alarm should be cleared.
 	var/list/sources_assoc = new()	//Associative list of source triggers. Used to efficiently acquire the alarm source.
 	var/list/cameras				//List of cameras that can be switched to, if the player has that capability.
-	var/cache_id					//ID for camera cache, changed by invalidateCameraCache().
 	var/area/last_area				//The last acquired area, used should origin be lost (for example a destroyed borg containing an alarming camera).
 	var/area/last_name				//The last acquired name, used should origin be lost
 	var/area/last_camera_area		//The last area in which cameras where fetched, used to see if the camera list should be updated.
@@ -31,7 +30,7 @@
 	cameras()	// Sets up both cameras and last alarm area.
 	set_source_data(source, duration, severity, hidden)
 
-/datum/alarm/process()
+/datum/alarm/process(delta_time)
 	// Has origin gone missing?
 	if(!origin && !end_time)
 		end_time = world.time + ALARM_RESET_DELAY
@@ -78,15 +77,10 @@
 	return last_name
 
 /datum/alarm/proc/cameras()
-	// reset camera cache
-	if(camera_repository.camera_cache_id != cache_id)
-		cameras = null
-		cache_id = camera_repository.camera_cache_id
 	// If the alarm origin has changed area, for example a borg containing an alarming camera, reset the list of cameras
-	else if(cameras && (last_camera_area != alarm_area()))
+	if(cameras && (last_camera_area != alarm_area()))
 		cameras = null
 
-	// The list of cameras is also reset by /proc/invalidateCameraCache()
 	if(!cameras)
 		cameras = origin ? origin.get_alarm_cameras() : last_area.get_alarm_cameras()
 
@@ -141,5 +135,3 @@
 
 /mob/living/silicon/robot/syndicate/get_alarm_cameras()
 	return list()
-
-#undef ALARM_LOSS_DELAY

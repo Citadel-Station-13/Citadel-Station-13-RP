@@ -17,7 +17,7 @@
 	var/regen_tick = 0
 	var/heal_allies_only = 1
 
-/obj/item/spell/aura/biomed/process()
+/obj/item/spell/aura/biomed/process(delta_time)
 	if(!pay_energy(75))
 		qdel(src)
 	regen_tick++

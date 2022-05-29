@@ -7,9 +7,9 @@
 
 	muzzle_type = null
 
-/obj/item/projectile/bullet/chemdart/New()
-	reagents = new/datum/reagents(reagent_amount)
-	reagents.my_atom = src
+/obj/item/projectile/bullet/chemdart/Initialize(mapload)
+	. = ..()
+	create_reagents(reagent_amount)
 
 /obj/item/projectile/bullet/chemdart/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null)
 	if(blocked < 2 && isliving(target))
@@ -69,8 +69,8 @@
 	var/container_type = /obj/item/reagent_containers/glass/beaker
 	var/list/starting_chems = null
 
-/obj/item/gun/projectile/dartgun/New()
-	..()
+/obj/item/gun/projectile/dartgun/Initialize(mapload)
+	. = ..()
 	if(starting_chems)
 		for(var/chem in starting_chems)
 			var/obj/B = new container_type(src)
@@ -78,7 +78,8 @@
 			beakers += B
 	update_icon()
 
-/obj/item/gun/projectile/dartgun/update_icon()
+/obj/item/gun/projectile/dartgun/update_icon_state()
+	. = ..()
 	if(!ammo_magazine)
 		icon_state = "[base_state]-empty"
 		return 1
@@ -103,27 +104,27 @@
 	//update_icon()
 	//if (!..(user, 2))
 	//	return
-	..()
+	. = ..()
 	if (beakers.len)
-		to_chat(user, "<font color='blue'>[src] contains:</font>")
+		to_chat(user, "<font color=#4F49AF>[src] contains:</font>")
 		for(var/obj/item/reagent_containers/glass/beaker/B in beakers)
 			if(B.reagents && B.reagents.reagent_list.len)
 				for(var/datum/reagent/R in B.reagents.reagent_list)
-					to_chat(user, "<font color='blue'>[R.volume] units of [R.name]</font>")
+					. += "<font color=#4F49AF>[R.volume] units of [R.name]</font>"
 
 /obj/item/gun/projectile/dartgun/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/reagent_containers/glass))
 		if(!istype(I, container_type))
-			to_chat(user, "<font color='blue'>[I] doesn't seem to fit into [src].</font>")
+			to_chat(user, "<font color=#4F49AF>[I] doesn't seem to fit into [src].</font>")
 			return
 		if(beakers.len >= max_beakers)
-			to_chat(user, "<font color='blue'>[src] already has [max_beakers] beakers in it - another one isn't going to fit!</font>")
+			to_chat(user, "<font color=#4F49AF>[src] already has [max_beakers] beakers in it - another one isn't going to fit!</font>")
 			return
 		var/obj/item/reagent_containers/glass/beaker/B = I
 		user.drop_item()
 		B.loc = src
 		beakers += B
-		to_chat(user, "<font color='blue'>You slot [B] into [src].</font>")
+		to_chat(user, "<font color=#4F49AF>You slot [B] into [src].</font>")
 		src.updateUsrDialog()
 		return 1
 	..()

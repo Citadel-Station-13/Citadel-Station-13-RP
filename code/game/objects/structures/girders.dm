@@ -10,14 +10,14 @@
 	var/displaced_health = 50
 	var/current_damage = 0
 	var/cover = 50 //how much cover the girder provides against projectiles.
-	var/default_material = DEFAULT_WALL_MATERIAL
+	var/default_material = MAT_STEEL
 	var/datum/material/girder_material
 	var/datum/material/reinf_material
 	var/reinforcing = 0
 	var/applies_material_colour = 1
 
-/obj/structure/girder/New(var/newloc, var/material_key)
-	..(newloc)
+/obj/structure/girder/Initialize(mapload, material_key)
+	. = ..()
 	if(!material_key)
 		material_key = default_material
 	set_material(material_key)
@@ -28,7 +28,7 @@
 		STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/structure/girder/process()
+/obj/structure/girder/process(delta_time)
 	if(!radiate())
 		STOP_PROCESSING(SSobj, src)
 		return
@@ -72,8 +72,8 @@
 	health = 50
 	cover = 25
 
-/obj/structure/girder/displaced/New(var/newloc, var/material_key)
-	..(newloc, material_key)
+/obj/structure/girder/displaced/Initialize(mapload, material_key)
+	. = ..()
 	displace()
 
 /obj/structure/girder/proc/displace()
@@ -189,7 +189,7 @@
 		if(do_after(user,40 * W.toolspeed))
 			if(!src) return
 			to_chat(user, "<span class='notice'>You removed the support struts!</span>")
-			reinf_material.place_dismantled_product(get_turf(src))
+			reinf_material.place_dismantled_product(get_turf(src), 2)
 			reinf_material = null
 			reset_girder()
 
@@ -249,7 +249,7 @@
 		wall_fake = 1
 
 	var/turf/Tsrc = get_turf(src)
-	Tsrc.ChangeTurf(/turf/simulated/wall)
+	Tsrc.PlaceOnTop(/turf/simulated/wall)
 	var/turf/simulated/wall/T = get_turf(src)
 	T.set_material(M, reinf_material, girder_material)
 	if(wall_fake)
@@ -289,7 +289,7 @@
 	reinforcing = 0
 
 /obj/structure/girder/proc/dismantle()
-	girder_material.place_dismantled_product(get_turf(src))
+	girder_material.place_dismantled_product(get_turf(src), 2)
 	qdel(src)
 
 /obj/structure/girder/attack_hand(mob/user as mob)
@@ -395,9 +395,9 @@
 
 	switch(passed_mode)
 		if(RCD_FLOORWALL)
-			to_chat(user, span("notice", "You finish a wall."))
+			to_chat(user, SPAN_NOTICE("You finish a wall."))
 			// This is mostly the same as using on a floor. The girder's material is preserved, however.
-			T.ChangeTurf(/turf/simulated/wall)
+			T.PlaceOnTop(/turf/simulated/wall)
 			var/turf/simulated/wall/new_T = get_turf(src) // Ref to the wall we just built.
 			// Apparently set_material(...) for walls requires refs to the material singletons and not strings.
 			// This is different from how other material objects with their own set_material(...) do it, but whatever.
@@ -408,7 +408,6 @@
 			return TRUE
 
 		if(RCD_DECONSTRUCT)
-			to_chat(user, span("notice", "You deconstruct \the [src]."))
+			to_chat(user, SPAN_NOTICE("You deconstruct \the [src]."))
 			qdel(src)
 			return TRUE
-

@@ -1,6 +1,8 @@
 /obj/machinery/r_n_d/protolathe
 	name = "Protolathe"
+	icon = 'icons/obj/machines/fabricators/protolathe.dmi'
 	icon_state = "protolathe"
+	base_icon_state = "protolathe"
 	flags = OPENCONTAINER
 	circuit = /obj/item/circuitboard/protolathe
 	use_power = USE_POWER_IDLE
@@ -15,29 +17,22 @@
 	var/mat_efficiency = 1
 	var/speed = 1
 
-	materials = list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0, MAT_PLASTEEL = 0, "plastic" = 0, "gold" = 0, "silver" = 0, "osmium" = 0, MAT_LEAD = 0, "phoron" = 0, "uranium" = 0, "diamond" = 0, MAT_DURASTEEL = 0, MAT_VERDANTIUM = 0, MAT_MORPHIUM = 0, MAT_METALHYDROGEN = 0, MAT_SUPERMATTER = 0)
+	materials = list(MAT_STEEL = 0, MAT_GLASS = 0, MAT_PLASTEEL = 0, MAT_PLASTIC = 0, MAT_GOLD = 0, MAT_SILVER = 0, MAT_COPPER = 0, MAT_OSMIUM = 0, MAT_LEAD = 0, MAT_PHORON = 0, MAT_URANIUM = 0, MAT_DIAMOND = 0, MAT_DURASTEEL = 0, MAT_VERDANTIUM = 0, MAT_MORPHIUM = 0, MAT_METALHYDROGEN = 0, MAT_SUPERMATTER = 0)
 
 	hidden_materials = list(MAT_PLASTEEL, MAT_DURASTEEL, MAT_VERDANTIUM, MAT_MORPHIUM, MAT_METALHYDROGEN, MAT_SUPERMATTER)
 
-/obj/machinery/r_n_d/protolathe/Initialize()
+/obj/machinery/r_n_d/protolathe/Initialize(mapload)
 	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/reagent_containers/glass/beaker(src)
-	component_parts += new /obj/item/reagent_containers/glass/beaker(src)
-	RefreshParts()
+	default_apply_parts()
 
-/obj/machinery/r_n_d/protolathe/process()
+/obj/machinery/r_n_d/protolathe/process(delta_time)
 	..()
-	if(stat)
-		update_icon()
+	if(machine_stat)
+		update_appearance()
 		return
 	if(queue.len == 0)
 		busy = 0
-		update_icon()
+		update_appearance()
 		return
 	var/datum/design/D = queue[1]
 	if(canBuild(D))
@@ -49,12 +44,12 @@
 			removeFromQueue(1)
 			if(linked_console)
 				linked_console.updateUsrDialog()
-		update_icon()
+		update_appearance()
 	else
 		if(busy)
-			visible_message("<span class='notice'>\icon [src] flashes: insufficient materials: [getLackingMaterials(D)].</span>")
+			visible_message(SPAN_NOTICE("\icon [src] flashes: insufficient materials: [getLackingMaterials(D)]."))
 			busy = 0
-			update_icon()
+			update_appearance()
 
 /obj/machinery/r_n_d/protolathe/proc/TotalMaterials() //returns the total of all the stored materials. Makes code neater.
 	var/t = 0
@@ -81,19 +76,24 @@
 		eject_materials(f, -1)
 	..()
 
-/obj/machinery/r_n_d/protolathe/update_icon()
+/obj/machinery/r_n_d/protolathe/update_overlays()
+	. = ..()
+	cut_overlays()
 	if(panel_open)
-		icon_state = "protolathe_t"
+		add_overlay("[base_icon_state]-panel")
+
+/obj/machinery/r_n_d/protolathe/update_icon_state()
+	. = ..()
+	if(machine_stat & NOPOWER)
+		icon_state = "[base_icon_state]-off"
 	else if(busy)
-		icon_state = "protolathe_n"
+		icon_state = "[base_icon_state]-active"
 	else
-		if(icon_state == "protolathe_n")
-			flick("protolathe_u", src) // If lid WAS closed, show opening animation
-		icon_state = "protolathe"
+		icon_state = base_icon_state
 
 /obj/machinery/r_n_d/protolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(busy)
-		to_chat(user, "<span class='notice'>\The [src] is busy. Please wait for completion of previous operation.</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] is busy. Please wait for completion of previous operation."))
 		return 1
 	if(default_deconstruction_screwdriver(user, O))
 		if(linked_console)
@@ -117,7 +117,7 @@
 	if(!istype(O, /obj/item/stack/material))
 		to_chat(user, "<span class='notice'>You cannot insert this item into \the [src]!</span>")
 		return 1
-	if(stat)
+	if(machine_stat)
 		return 1
 
 	var/obj/item/stack/material/S = O
@@ -199,8 +199,7 @@
 		reagents.remove_reagent(C, D.chemicals[C] * mat_efficiency)
 
 	if(D.build_path)
-		var/obj/new_item = D.Fabricate(src, src)
-		new_item.loc = loc
+		var/obj/new_item = D.Fabricate(drop_location(), src)
 		if(mat_efficiency != 1) // No matter out of nowhere
 			if(new_item.matter && new_item.matter.len > 0)
 				for(var/i in new_item.matter)

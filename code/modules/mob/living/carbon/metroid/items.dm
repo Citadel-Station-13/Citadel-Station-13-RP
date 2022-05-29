@@ -26,8 +26,8 @@
 		enhanced = 1
 		qdel(O)
 */
-/obj/item/slime_extract/New()
-	..()
+/obj/item/slime_extract/Initialize(mapload)
+	. = ..()
 	create_reagents(5)
 //	reagents.add_reagent("slimejelly", 30)
 
@@ -134,7 +134,7 @@
 		to_chat(user, "<span class='warning'> The potion only works on slimes!</span>")
 		return ..()
 //	if(M.is_adult) //Can't tame adults
-//		user << "<span class='warning'> Only baby slimes can be tamed!</span>"
+//		to_chat(user, "<span class='warning'> Only baby slimes can be tamed!</span>")
 //		return..()
 	if(M.stat)
 		to_chat(user, "<span class='warning'> The slime is dead!</span>")
@@ -291,7 +291,7 @@
 			to_chat(user, "The rune fizzles uselessly. There is no spirit nearby.")
 			return
 		var/mob/living/carbon/human/G = new(src.loc)
-		G.set_species("Golem")
+		G.set_species(SPECIES_GOLEM)
 		G.key = ghost.key
 		to_chat(G, "You are an adamantine golem. You move slowly, but are highly resistant to heat and cold as well as blunt trauma. You are unable to wear clothes, but can still use most tools. Serve [user], and assist them in completing their goals at any cost.")
 		qdel(src)
@@ -306,88 +306,3 @@
 
 /mob/living/carbon/slime/has_eyes()
 	return 0
-
-//////////////////////////////Old shit from metroids/RoRos, and the old cores, would not take much work to re-add them////////////////////////
-
-/*
-// Basically this slime Core catalyzes reactions that normally wouldn't happen anywhere
-/obj/item/slime_core
-	name = "slime extract"
-	desc = "Goo extracted from a slime. Legends claim these to have \"magical powers\"."
-	icon = 'icons/mob/slimes.dmi'
-	icon_state = "slime extract"
-	force = 1.0
-	w_class = ITEMSIZE_TINY
-	throwforce = 1.0
-	throw_speed = 2
-	throw_range = 6
-	origin_tech = list(TECH_BIO = 4)
-	var/POWERFLAG = 0 // sshhhhhhh
-	var/Flush = 30
-	var/Uses = 5 // uses before it goes inert
-
-/obj/item/slime_core/New()
-		..()
-		create_reagents(100)
-		POWERFLAG = rand(1,10)
-		Uses = rand(7, 25)
-		//flags |= NOREACT
-/*
-		spawn()
-			Life()
-
-	proc/Life()
-		while(src)
-			sleep(25)
-			Flush--
-			if(Flush <= 0)
-				reagents.clear_reagents()
-				Flush = 30
-*/
-
-
-
-/obj/item/reagent_containers/food/snacks/egg/slime
-	name = "slime egg"
-	desc = "A small, gelatinous egg."
-	icon = 'icons/mob/mob.dmi'
-	icon_state = "slime egg-growing"
-	bitesize = 12
-	origin_tech = list(TECH_BIO = 4)
-	var/grown = 0
-
-/obj/item/reagent_containers/food/snacks/egg/slime/Initialize()
-	. = ..()
-	reagents.add_reagent("nutriment", 4)
-	reagents.add_reagent("slimejelly", 1)
-	spawn(rand(1200,1500))//the egg takes a while to "ripen"
-		Grow()
-
-/obj/item/reagent_containers/food/snacks/egg/slime/proc/Grow()
-	grown = 1
-	icon_state = "slime egg-grown"
-	START_PROCESSING(SSobj, src)
-	return
-
-/obj/item/reagent_containers/food/snacks/egg/slime/proc/Hatch()
-	STOP_PROCESSING(SSobj, src)
-	var/turf/T = get_turf(src)
-	src.visible_message("<span class='warning'> The [name] pulsates and quivers!</span>")
-	spawn(rand(50,100))
-		src.visible_message("<span class='warning'> The [name] bursts open!</span>")
-		new/mob/living/carbon/slime(T)
-		qdel(src)
-
-
-/obj/item/reagent_containers/food/snacks/egg/slime/process()
-	var/turf/location = get_turf(src)
-	var/datum/gas_mixture/environment = location.return_air()
-	if (environment.phoron > MOLES_PHORON_VISIBLE)//phoron exposure causes the egg to hatch
-		src.Hatch()
-
-/obj/item/reagent_containers/food/snacks/egg/slime/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype( W, /obj/item/pen/crayon ))
-		return
-	else
-		..()
-*/

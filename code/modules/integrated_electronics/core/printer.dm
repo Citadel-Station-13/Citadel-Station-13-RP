@@ -7,14 +7,18 @@
 	w_class = ITEMSIZE_LARGE
 	var/metal = 0
 	var/max_metal = 100
-	var/metal_per_sheet = 10 // One sheet equals this much metal.
-	var/debug = FALSE // If true, metal is infinite.
-
-	var/upgraded = FALSE		// When hit with an upgrade disk, will turn true, allowing it to print the higher tier circuits.
-	var/can_clone = FALSE		// Same for above, but will allow the printer to duplicate a specific assembly. (Not implemented)
+	/// One sheet equals this much metal.
+	var/metal_per_sheet = 10
+	/// If true, metal is infinite.
+	var/debug = FALSE
+	/// When hit with an upgrade disk, will turn true, allowing it to print the higher tier circuits.
+	var/upgraded = FALSE
+	/// Same for above, but will allow the printer to duplicate a specific assembly. (Not implemented)
+	var/can_clone = FALSE
 //	var/static/list/recipe_list = list()
-	var/current_category = null
+	/// Not implemented :(
 	var/obj/item/electronic_assembly/assembly_to_clone = null
+	var/dirty_items = FALSE
 
 /obj/item/integrated_circuit_printer/upgraded
 	upgraded = TRUE
@@ -29,141 +33,172 @@
 
 /obj/item/integrated_circuit_printer/attack_robot(mob/user as mob)
 	if(Adjacent(user))
-		return interact(user)
+		return ui_interact(user)
 	else
 		return ..()
 
 /obj/item/integrated_circuit_printer/attackby(var/obj/item/O, var/mob/user)
 	if(istype(O,/obj/item/stack/material))
 		var/obj/item/stack/material/stack = O
-		if(stack.material.name == DEFAULT_WALL_MATERIAL)
+		if(stack.material.name == MAT_STEEL)
 			if(debug)
-				to_chat(user, span("warning", "\The [src] does not need any material."))
+				to_chat(user, SPAN_WARNING("\The [src] does not need any material."))
 				return
 			var/num = min((max_metal - metal) / metal_per_sheet, stack.amount)
 			if(num < 1)
-				to_chat(user, span("warning", "\The [src] is too full to add more metal."))
+				to_chat(user, SPAN_WARNING("\The [src] is too full to add more metal."))
 				return
 			if(stack.use(max(1, round(num)))) // We don't want to create stacks that aren't whole numbers
-				to_chat(user, span("notice", "You add [num] sheet\s to \the [src]."))
+				to_chat(user, SPAN_NOTICE("You add [num] sheet\s to \the [src]."))
 				metal += num * metal_per_sheet
-				interact(user)
+				attack_self(user)
 				return TRUE
 
 	if(istype(O,/obj/item/integrated_circuit))
-		to_chat(user, span("notice", "You insert the circuit into \the [src]."))
+		to_chat(user, SPAN_NOTICE("You insert the circuit into \the [src]."))
 		user.unEquip(O)
 		metal = min(metal + O.w_class, max_metal)
 		qdel(O)
-		interact(user)
+		attack_self(user)
 		return TRUE
 
 	if(istype(O,/obj/item/disk/integrated_circuit/upgrade/advanced))
 		if(upgraded)
-			to_chat(user, span("warning", "\The [src] already has this upgrade."))
+			to_chat(user, SPAN_WARNING("\The [src] already has this upgrade."))
 			return TRUE
-		to_chat(user, span("notice", "You install \the [O] into  \the [src]."))
+		to_chat(user, SPAN_NOTICE("You install \the [O] into  \the [src]."))
 		upgraded = TRUE
-		interact(user)
+		dirty_items = TRUE
+		attack_self(user)
 		return TRUE
 
 	if(istype(O,/obj/item/disk/integrated_circuit/upgrade/clone))
 		if(can_clone)
-			to_chat(user, span("warning", "\The [src] already has this upgrade."))
+			to_chat(user, SPAN_WARNING("\The [src] already has this upgrade."))
 			return TRUE
-		to_chat(user, span("notice", "You install \the [O] into  \the [src]."))
+		to_chat(user, SPAN_NOTICE("You install \the [O] into  \the [src]."))
 		can_clone = TRUE
-		interact(user)
+		attack_self(user)
 		return TRUE
 
 	return ..()
 
+/obj/item/integrated_circuit_printer/vv_edit_var(var_name, var_value)
+	// Gotta update the static data in case an admin VV's the upgraded var for some reason..! //I would :) -Zan
+	if(var_name == "upgraded")
+		dirty_items = TRUE
+	return ..()
+
 /obj/item/integrated_circuit_printer/attack_self(var/mob/user)
-	interact(user)
+	ui_interact(user)
 
-/obj/item/integrated_circuit_printer/interact(mob/user)
-	var/window_height = 600
-	var/window_width = 500
+/obj/item/integrated_circuit_printer/ui_state(mob/user)
+	return GLOB.physical_state
 
-	if(isnull(current_category))
-		current_category = SScircuit.circuit_fabricator_recipe_list[1]
+/obj/item/integrated_circuit_printer/ui_interact(mob/user, datum/tgui/ui)
+	if(dirty_items)
+		update_static_data(user, ui)
+		dirty_items = FALSE
 
-	var/HTML = "<center><h2>Integrated Circuit Printer</h2></center><br>"
-	if(!debug)
-		HTML += "Metal: [metal/metal_per_sheet]/[max_metal/metal_per_sheet] sheets.<br>"
-	else
-		HTML += "Metal: INFINITY.<br>"
-	HTML += "Circuits available: [upgraded ? "Advanced":"Regular"].<br>"
-	HTML += "Assembly Cloning: [can_clone ? "Available": "Unavailable"].<br>"
-	if(assembly_to_clone)
-		HTML += "Assembly '[assembly_to_clone.name]' loaded.<br>"
-	HTML += "Crossed out circuits mean that the printer is not sufficentally upgraded to create that circuit.<br>"
-	HTML += "<hr>"
-	HTML += "Categories:"
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "ICPrinter", name) // 500, 600
+		ui.open()
+
+/obj/item/integrated_circuit_printer/ui_static_data(mob/user)
+	var/list/data = ..()
+
+	var/list/categories = list()
 	for(var/category in SScircuit.circuit_fabricator_recipe_list)
-		if(category != current_category)
-			HTML += " <a href='?src=\ref[src];category=[category]'>\[[category]\]</a> "
-		else // Bold the button if it's already selected.
-			HTML += " <b>\[[category]\]</b> "
-	HTML += "<hr>"
-	HTML += "<center><h4>[current_category]</h4></center>"
+		var/list/cat_obj = list(
+			"name" = category,
+			"items" = null
+		)
+		var/list/circuit_list = SScircuit.circuit_fabricator_recipe_list[category]
+		var/list/items = list()
+		for(var/path in circuit_list)
+			var/obj/O = path
+			var/can_build = TRUE
 
-	var/list/current_list = SScircuit.circuit_fabricator_recipe_list[current_category]
-	for(var/path in current_list)
-		var/obj/O = path
-		var/can_build = TRUE
-		if(ispath(path, /obj/item/integrated_circuit))
-			var/obj/item/integrated_circuit/IC = path
-			if((initial(IC.spawn_flags) & IC_SPAWN_RESEARCH) && (!(initial(IC.spawn_flags) & IC_SPAWN_DEFAULT)) && !upgraded)
-				can_build = FALSE
-		if(can_build)
-			HTML += "<A href='?src=\ref[src];build=[path]'>\[[initial(O.name)]\]</A>: [initial(O.desc)]<br>"
-		else
-			HTML += "<s>\[[initial(O.name)]\]</s>: [initial(O.desc)]<br>"
+			if(ispath(path, /obj/item/integrated_circuit))
+				var/obj/item/integrated_circuit/IC = path
+				if((initial(IC.spawn_flags) & IC_SPAWN_RESEARCH) && (!(initial(IC.spawn_flags) & IC_SPAWN_DEFAULT)) && !upgraded)
+					can_build = FALSE
 
-	user << browse(jointext(HTML, null), "window=integrated_printer;size=[window_width]x[window_height];border=1;can_resize=1;can_close=1;can_minimize=1")
+			var/cost = 1
+			if(ispath(path, /obj/item/electronic_assembly))
+				var/obj/item/electronic_assembly/E = path
+				cost = round((initial(E.max_complexity) + initial(E.max_components)) / 4)
+			else
+				var/obj/item/I = path
+				cost = initial(I.w_class)
 
+			items.Add(list(list(
+				"name" = initial(O.name),
+				"desc" = initial(O.desc),
+				"can_build" = can_build,
+				"cost" = cost,
+				"path" = path,
+			)))
 
-/obj/item/integrated_circuit_printer/Topic(href, href_list)
+		cat_obj["items"] = items
+		categories.Add(list(cat_obj))
+	data["categories"] = categories
+
+	return data
+
+/obj/item/integrated_circuit_printer/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	var/list/data = ..()
+
+	data["metal"] = metal
+	data["max_metal"] = max_metal
+	data["metal_per_sheet"] = metal_per_sheet
+	data["debug"] = debug
+	data["upgraded"] = upgraded
+	data["can_clone"] = can_clone
+	data["assembly_to_clone"] = assembly_to_clone
+
+	return data
+
+/obj/item/integrated_circuit_printer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
-		return 1
+		return TRUE
 
-	add_fingerprint(usr)
+	switch(action)
+		if("build")
+			var/build_type = text2path(params["build"])
+			if(!build_type || !ispath(build_type))
+				return TRUE
 
-	if(href_list["category"])
-		current_category = href_list["category"]
+			var/cost = 1
 
-	if(href_list["build"])
-		var/build_type = text2path(href_list["build"])
-		if(!build_type || !ispath(build_type))
-			return 1
+			if(ispath(build_type, /obj/item/electronic_assembly))
+				var/obj/item/electronic_assembly/E = build_type
+				cost = round( (initial(E.max_complexity) + initial(E.max_components) ) / 4)
+			else
+				var/obj/item/I = build_type
+				cost = initial(I.w_class)
 
-		var/cost = 1
+			var/in_some_category = FALSE
+			for(var/category in SScircuit.circuit_fabricator_recipe_list)
+				if(build_type in SScircuit.circuit_fabricator_recipe_list[category])
+					in_some_category = TRUE
+					break
+			if(!in_some_category)
+				return
 
-		if(isnull(current_category))
-			current_category = SScircuit.circuit_fabricator_recipe_list[1]
-		if(ispath(build_type, /obj/item/electronic_assembly))
-			var/obj/item/electronic_assembly/E = build_type
-			cost = round( (initial(E.max_complexity) + initial(E.max_components) ) / 4)
-		else
-			var/obj/item/I = build_type
-			cost = initial(I.w_class)
-		if(!(build_type in SScircuit.circuit_fabricator_recipe_list[current_category]))
-			return
-
-		if(!debug)
-			if(!Adjacent(usr))
-				to_chat(usr, "<span class='notice'>You are too far away from \the [src].</span>")
-			if(metal - cost < 0)
-				to_chat(usr, "<span class='warning'>You need [cost] metal to build that!.</span>")
-				return 1
-			metal -= cost
-		var/obj/item/built = new build_type(get_turf(loc))
-		usr.put_in_hands(built)
-		to_chat(usr, "<span class='notice'>[capitalize(built.name)] printed.</span>")
-		playsound(src, 'sound/items/jaws_pry.ogg', 50, TRUE)
-
-	interact(usr)
+			if(!debug)
+				if(!Adjacent(usr))
+					to_chat(usr, SPAN_NOTICE("You are too far away from \the [src]."))
+				if(metal - cost < 0)
+					to_chat(usr, SPAN_WARNING("You need [cost] metal to build that!."))
+					return TRUE
+				metal -= cost
+			var/obj/item/built = new build_type(get_turf(loc))
+			usr.put_in_hands(built)
+			to_chat(usr, SPAN_NOTICE("[capitalize(built.name)] printed."))
+			playsound(src, 'sound/items/jaws_pry.ogg', 50, TRUE)
+			return TRUE
 
 
 // FUKKEN UPGRADE DISKS

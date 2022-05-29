@@ -1,0 +1,174 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"b" = (
+/turf/template_noop,
+/area/template_noop)
+"d" = (
+/turf/simulated/wall/titanium,
+/area/class_h/explored)
+"e" = (
+/obj/structure/droppod_door{
+	dir = 1
+	},
+/turf/simulated/wall/titanium,
+/area/class_h/explored)
+"f" = (
+/turf/simulated/floor/reinforced,
+/area/class_h/explored)
+"g" = (
+/obj/structure/droppod_door{
+	dir = 8
+	},
+/turf/simulated/wall/titanium,
+/area/class_h/explored)
+"h" = (
+/obj/structure/closet/crate,
+/obj/item/gun/energy/stunrevolver,
+/obj/item/gun/energy/stunrevolver,
+/obj/item/storage/box/flare,
+/obj/item/stack/marker_beacon/ten,
+/obj/item/cell/device/weapon,
+/obj/item/cell/device/weapon,
+/obj/item/trash/tastybread,
+/obj/item/trash/tastybread,
+/obj/item/trash/sosjerky,
+/obj/item/trash/sosjerky,
+/obj/item/trash/liquidfood,
+/obj/item/trash/liquidfood,
+/obj/item/flame/lighter/random,
+/obj/item/gps,
+/turf/simulated/floor/reinforced,
+/area/class_h/explored)
+"i" = (
+/obj/structure/droppod_door{
+	dir = 4
+	},
+/turf/simulated/wall/titanium,
+/area/class_h/explored)
+"j" = (
+/obj/structure/droppod_door,
+/turf/simulated/wall/titanium,
+/area/class_h/explored)
+"I" = (
+/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/area/class_h/explored)
+
+(1,1,1) = {"
+I
+I
+I
+I
+I
+I
+b
+b
+b
+b
+"}
+(2,1,1) = {"
+I
+I
+I
+I
+I
+I
+I
+b
+b
+b
+"}
+(3,1,1) = {"
+b
+I
+I
+I
+I
+I
+I
+I
+I
+I
+"}
+(4,1,1) = {"
+b
+I
+I
+I
+d
+g
+d
+I
+I
+I
+"}
+(5,1,1) = {"
+b
+I
+I
+d
+d
+f
+d
+d
+I
+I
+"}
+(6,1,1) = {"
+I
+I
+I
+e
+f
+h
+f
+j
+I
+I
+"}
+(7,1,1) = {"
+I
+I
+I
+d
+d
+f
+d
+d
+I
+I
+"}
+(8,1,1) = {"
+I
+I
+I
+I
+d
+i
+d
+I
+I
+I
+"}
+(9,1,1) = {"
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+"}
+(10,1,1) = {"
+b
+b
+b
+b
+I
+I
+I
+I
+I
+I
+"}

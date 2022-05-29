@@ -2,6 +2,16 @@
 //		Harvester
 ////////////////////////////
 
+/datum/category_item/catalogue/fauna/construct/harvester
+	name = "Constructs - Harvester"
+	desc = "Harvesters are incredibly rare Construct forms, observed \
+	only during the Blood Cult raid on the NDV Marksman. Fragile, but \
+	quick, Harvesters were named so due to their tendency to pull injured \
+	combatants back behind their own lines. Many victims who were carried \
+	off in this way were never recovered: their ultimate fate is a mystery, \
+	though they are presumed dead."
+	value = CATALOGUER_REWARD_EASY
+
 /mob/living/simple_mob/construct/harvester
 	name = "Harvester"
 	real_name = "Harvester"
@@ -18,6 +28,7 @@
 	attacktext = list("violently stabbed")
 	friendly = list("caresses")
 	movement_cooldown = 0
+	catalogue_data = list(/datum/category_item/catalogue/fauna/construct/harvester)
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
 

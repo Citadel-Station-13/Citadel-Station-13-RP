@@ -20,7 +20,7 @@
 /obj/item/projectile/arc/Bump()
 	return
 
-/obj/item/projectile/arc/Initialize()
+/obj/item/projectile/arc/Initialize(mapload)
 	shadow = new(get_turf(src))
 	return ..()
 
@@ -78,7 +78,7 @@
 
 	else
 		// Handle visual projectile turning in flight.
-		var/arc_progress = between(0, pixels_flown / distance_to_fly, 1)
+		var/arc_progress = clamp( pixels_flown / distance_to_fly, 0,  1)
 		var/new_visual_degree = LERP(45, 135, arc_progress)
 
 		if(fired_dir & EAST)

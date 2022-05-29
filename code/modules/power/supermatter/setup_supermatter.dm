@@ -1,14 +1,17 @@
-#define SETUP_OK 1			// All good
-#define SETUP_WARNING 2		// Something that shouldn't happen happened, but it's not critical so we will continue
-#define SETUP_ERROR 3		// Something bad happened, and it's important so we won't continue setup.
-#define SETUP_DELAYED 4		// Wait for other things first.
-
-
-#define ENERGY_NITROGEN 115			// Roughly 8 emitter shots.
-#define ENERGY_CARBONDIOXIDE 150	// Roughly 10 emitter shots.
-#define ENERGY_PHORON 300			// Roughly 20 emitter shots. Phoron can take more but this is enough to max out both SMESs anyway.
-
-
+/// All good
+#define SETUP_OK 1
+/// Something that shouldn't happen happened, but it's not critical so we will continue
+#define SETUP_WARNING 2
+/// Something bad happened, and it's important so we won't continue setup.
+#define SETUP_ERROR 3
+/// Wait for other things first.
+#define SETUP_DELAYED 4
+/// Roughly 8 emitter shots.
+#define ENERGY_NITROGEN 115
+/// Roughly 10 emitter shots.
+#define ENERGY_CARBONDIOXIDE 150
+/// Roughly 20 emitter shots. Phoron can take more but this is enough to max out both SMESs anyway.
+#define ENERGY_PHORON 300
 /datum/admins/proc/setup_supermatter()
 	set category = "Debug"
 	set name = "Setup Supermatter"
@@ -121,7 +124,7 @@ GLOBAL_LIST_BOILERPLATE(all_engine_setup_markers, /obj/effect/engine_setup)
 
 /obj/effect/engine_setup/pump_max/activate()
 	..()
-	var/obj/machinery/atmospherics/binary/pump/P = locate() in get_turf(src)
+	var/obj/machinery/atmospherics/component/binary/pump/P = locate() in get_turf(src)
 	if(!P)
 		log_and_message_admins("## WARNING: Unable to locate pump at [x] [y] [z]!")
 		return SETUP_WARNING
@@ -235,7 +238,7 @@ GLOBAL_LIST_BOILERPLATE(all_engine_setup_markers, /obj/effect/engine_setup)
 
 /obj/effect/engine_setup/atmo_filter/activate()
 	..()
-	var/obj/machinery/atmospherics/omni/atmos_filter/F = locate() in get_turf(src)
+	var/obj/machinery/atmospherics/component/quaternary/atmos_filter/F = locate() in get_turf(src)
 	if(!F)
 		log_and_message_admins("## WARNING: Unable to locate omni filter at [x] [y] [z]!")
 		return SETUP_WARNING

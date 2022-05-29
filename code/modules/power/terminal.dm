@@ -14,11 +14,11 @@
 	layer = WIRES_LAYER+0.01
 
 
-/obj/machinery/power/terminal/New()
-	..()
+/obj/machinery/power/terminal/Initialize(mapload, newdir)
+	. = ..()
 	var/turf/T = src.loc
-	if(level==1) hide(!T.is_plating())
-	return
+	if(level==1)
+		hide(!T.is_plating())
 
 /obj/machinery/power/terminal/Destroy()
 	if(master)
@@ -35,7 +35,7 @@
 
 // Needed so terminals are not removed from machines list.
 // Powernet rebuilds need this to work properly.
-/obj/machinery/power/terminal/process()
+/obj/machinery/power/terminal/process(delta_time)
 	return 1
 
 /obj/machinery/power/terminal/overload(var/obj/machinery/power/source)

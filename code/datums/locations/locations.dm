@@ -36,8 +36,8 @@ var/global/datum/locations/milky_way/all_locations = new()
 			choice = input(user, "Please choose a location.","Locations") as null|anything in choice.contents
 		else
 			break
-	user << choice.name
-	user << choice.desc
+	to_chat(user, choice.name)
+	to_chat(user, choice.desc)
 	return choice
 
 //	var/datum/locations/choice = input(user, "Please choose a location.","Locations") as null|anything in all_locations
@@ -46,9 +46,9 @@ var/global/datum/locations/milky_way/all_locations = new()
 
 /*
 /datum/locations/proc/show_contents()
-//	world << "[src]\n[desc]"
+//	to_chat(world, "[src]\n[desc]")
 	for(var/datum/locations/a in contents)
-		world << "[a]\n[a.parent ? "Located in [a.parent]\n" : ""][a.desc]"
+		to_chat(world, "[a]\n[a.parent ? "Located in [a.parent]\n" : ""][a.desc]")
 		a.show_contents()
 	to_chat(world, "\n")
 

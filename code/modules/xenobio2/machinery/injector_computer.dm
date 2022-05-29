@@ -16,7 +16,7 @@
 	active_power_usage = 500
 	circuit = /obj/item/circuitboard/xenobio2computer
 	var/obj/machinery/xenobio2/manualinjector/injector
-	var/transfer_amount = 5 //VOREStation Edit - This is never set anywhere, and 1 is too slow (1 is the default in the transfer proc).
+	var/transfer_amount = 5
 	var/active
 
 /obj/machinery/computer/xenobio2/Destroy()
@@ -26,7 +26,7 @@
 /obj/machinery/computer/xenobio2/attack_hand(mob/user)
 	if(..())
 		return 1
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/computer/xenobio2/attackby(var/obj/item/W, var/mob/user)
 
@@ -46,7 +46,7 @@
 
 	..()
 
-/obj/machinery/computer/xenobio2/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/xenobio2/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	if(!user)
 		return
 	if(!injector)

@@ -20,10 +20,10 @@
 	return
 
 /obj/structure/table/rack/update_icon()
-	if(material) //VOREStation Add for rack colors based on materials
+	if(material)
 		color = material.icon_colour
 	return
 
-/obj/structure/table/rack/holorack/dismantle(obj/item/wrench/W, mob/user)
+/obj/structure/table/rack/holorack/dismantle(obj/item/tool/wrench/W, mob/user)
 	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")
 	return

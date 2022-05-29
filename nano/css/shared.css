@@ -45,19 +45,6 @@ hr {
     white-space: nowrap;
 }
 
-.link32 {
-    float: left;
-    min-width: 15px;
-	max-width: 31px;
-    height: 31px;
-    text-align: center;
-	text-decoration: none;
-	background: #40628a;
-    border: 1px solid #161616;
-	margin: 0 2px 2px 0;
-    cursor: default;
-}
-
 .hasIcon {
     padding: 0px 4px 4px 0px;
 }
@@ -161,6 +148,10 @@ h4 {
     font-size: 12px;
 }
 
+abbr {
+    border-bottom: .1em dotted;
+}
+
 .white {
     color: white;
     font-weight: bold;
@@ -169,6 +160,11 @@ h4 {
 .good {
     color: #4f7529;
     font-weight: bold;
+}
+
+.mild {
+	color: #cda500;
+	font-weight: bold;
 }
 
 .average {
@@ -188,10 +184,6 @@ h4 {
 
 .redButton {
     background: #ea0000;
-}
-
-.greenButton {
-	background: #00aa00;
 }
 
 .yellowButton {
@@ -214,10 +206,6 @@ h4 {
 
 .footer {
 	font-size: 10px;
-}
-
-.multiLine {
-    white-space: pre-wrap;
 }
 
 .noticePlaceholder {
@@ -256,6 +244,10 @@ div.notice {
     clear: both;
 }
 
+.notice.info {
+    background: url(uiInfoBackground.jpg) 50% 50%;
+}
+
 .itemGroup {
     border: 1px solid #e9c183;
     background: #2c2c2c;
@@ -270,7 +262,7 @@ div.notice {
 	overflow: auto;
 }
 
-.itemContentNarrow, .itemContent, .itemContentWide, .itemContentSmall, .itemContentMedium {
+.itemContentNarrow, .itemContent {
     float: left;
 }
 
@@ -308,14 +300,17 @@ div.notice {
 }
 
 .itemContentWide {
+    float: left;
     width: 79%;
 }
 
 .itemContentSmall {
+    float: left;
     width: 33%;
 }
 
 .itemContentMedium {
+    float: left;
     width: 55%;
 }
 
@@ -584,7 +579,7 @@ div.notice {
     text-align: center;
 }
 
-table.fixed { 
+table.fixed {
 	table-layout:fixed;
 }
 
@@ -604,65 +599,84 @@ table.pmon td, table.pmon th {
 
 /* Table Stuffs for manifest*/
 
-th.Command {
+th.command {
     background: #3333FF;
     font-weight: bold;
     color: #ffffff;
 }
 
-th.Security {
+th.spt {
+    background: #4f4ff2;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+th.sec {
     background: #8e0000;
     font-weight: bold;
     color: #ffffff;
 }
 
-th.Medical {
+th.med {
     background: #006600;
     font-weight: bold;
     color: #ffffff;
 }
 
-th.Engineering {
+th.eng {
     background: #b27300;
     font-weight: bold;
     color: #ffffff;
 }
 
-th.Science {
+th.sci {
     background: #a65ba6;
     font-weight: bold;
     color: #ffffff;
 }
 
-th.Cargo {
+th.car {
     background: #bb9040;
     font-weight: bold;
     color: #ffffff;
 }
 
-th.Planetside{
-	background: #555555;
-	font-weight: bold;
-	color: #ffffff;
+th.sup {
+    background: #bb9040;
+    font-weight: bold;
+    color: #ffffff;
 }
 
-th.Civilian {
+th.civ {
     background: #a32800;
     font-weight: bold;
     color: #ffffff;
 }
 
-th.Miscellaneous {
+th.srv {
+    background: #88b764;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+th.exp {
+    background: #68099e;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+th.misc {
     background: #666666;
     font-weight: bold;
     color: #ffffff;
 }
 
-th.Silicon {
-	background: #222222;
-	font-weight: bold;
-	color: #ffffff;
+th.bot {
+    background: #414249;
+    font-weight: bold;
+    color: #ffffff;
 }
+
 /* Damage colors for crew monitoring computer */
 
 .burn {
@@ -674,7 +688,7 @@ th.Silicon {
 }
 
 .toxin {
-    color: lime;
+    color: green;
 }
 
 .oxyloss {
@@ -685,111 +699,19 @@ th.Silicon {
 .width75btn {
     width: 75px;
 }
-
-/*Communicator Homescreen*/
-div.homeContainer {
-	width: 100%;
-	text-align: center;
-	margin: auto;
-	padding-top: 5px;
+.wideTable tr:nth-child(odd) {
+    background-color: #272727;
 }
 
-div.homeScreen {
-	padding: 0 20px 0 20px;
+/* Candystriped rows for tables */
+.candystripe {
+	background-color: rgba(148, 148, 148, 0.25);
+}
+.candystripe:nth-child(odd) {
+	background-color: rgba(0, 0, 0, 0.16);
 }
 
-.link64 {
-    float: left;
-    min-width: 15px;
-	max-width: 68px;
-    height: 64px;
-    text-align: center;
-    color: #ffffff;
-    text-decoration: none;
-    background: rgba(64, 98, 138, 0.6);
-    border: 1px solid #161616;
-    padding: 0 0 4px 0;
-	margin: 0 0 30px 5.5%;
-    cursor: default;
-	border-radius: 10px;
-}
-
-.link64:hover {
-	font-size: 13px;
-}
-
-/*Communicator Dialing*/
-.dialPad {
-    clear: both;
-	text-align: center;
-	margin: auto;
-}
-
-.dialPadKeys {
-    float: left;
-	width: 47px;
-	height: 47px;
-	font-size: 32px;
-	text-align: center;
-    color: #ffffff;
-    text-decoration: none;
-    background: rgba(64, 98, 138, 0.15);
-    border: 1px inset rgba(100, 100, 100, 0.25);
-    cursor: default;
-	line-height: 47px;
-}
-
-.dialPadKeys:hover {
-	background: rgba(80, 122, 172, 0.5);
-}
-
-.dialPadButtons {
-    float: left;
-	width: 63.2px;
-    height: 63.2px;
-    text-align: center;
-    color: #ffffff;
-    text-decoration: none;
-    background: rgba(64, 98, 138, 0.15);
-    border: 1px inset rgba(100, 100, 100, 0.25);
-    padding: 0 0 4px 0;
-    cursor: default;
-	margin-bottom: 25px;
-}
-
-.dialPadButtons:hover {
-	background: rgba(80, 122, 172, 0.5);
-	font-size: 13px;
-	
-}
-
-.dialPadAddress {
-    float: left;
-	width: 192px;
-	height: 18px;
-    background: rgba(64, 98, 138, 0.15);
-	color: #ffffff;
-	border-left: 1px inset #40628a;
-	border-top: 1px inset #40628a;
-	border-bottom: 1px inset #40628a;
-
-}
-
-.dialPadAddress:hover{
-	background: rgba(80, 122, 172, 0.5);
-}
-
-.dialPadClear {
-    float: left;
-	width: 19%;
-	height: 18px;
-    background: rgba(64, 98, 138, 0.15);
-	color: #ffffff;
-	border-right: 1px inset #40628a;
-	border-top: 1px inset #40628a;
-	border-bottom: 1px inset #40628a;
-}
-
-.dialPadClear:hover{
-	background: rgba(80, 122, 172, 0.5);
+.redacted {
+	background-color: black;
+	color: black;
 }

@@ -1,0 +1,1653 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ae" = (
+/obj/structure/table/wooden_reinforced,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"al" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/standard,
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	id = "desert_bunker"
+	},
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"ar" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/anomaly_container,
+/obj/machinery/artifact,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"aM" = (
+/obj/machinery/door/blast/regular{
+	id = "desert_bunker"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"bf" = (
+/obj/machinery/vending/boozeomat{
+	req_access = list()
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"bx" = (
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "desert_bunker"
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/class_h/POIs/vault)
+"bC" = (
+/obj/structure/closet/radiation,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"cA" = (
+/obj/structure/table/marble,
+/obj/machinery/chemical_dispenser/bar_alc/full,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"cP" = (
+/obj/machinery/door/airlock/freezer{
+	req_one_access = list()
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/freezer,
+/area/class_h/POIs/vault)
+"di" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/vending/sovietsoda,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"dx" = (
+/obj/machinery/door/airlock,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/vault)
+"dA" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/vault)
+"dP" = (
+/obj/structure/table/woodentable,
+/obj/random/drinkbottle,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"eP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/structure/table/bench/steel,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"eQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed,
+/obj/item/bedsheet/purple,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"fL" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/animal/passive/mouse/rat,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/vault)
+"fP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/random/trash,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"gk" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/mechanical/mecha/mouse_tank,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"gX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/rack/shelf/steel,
+/obj/random/junk,
+/obj/random/junk,
+/obj/random/junk,
+/obj/random/junk,
+/obj/random/junk,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"gY" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/vault)
+"iM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/wardrobe/black,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"jm" = (
+/obj/structure/closet/secure_closet/freezer/meat{
+	req_access = list()
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/freezer,
+/area/class_h/POIs/vault)
+"ko" = (
+/obj/structure/mirror/long{
+	pixel_y = 32
+	},
+/obj/structure/sink{
+	pixel_y = 22
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/vault)
+"kZ" = (
+/obj/machinery/door/airlock{
+	name = "Unisex Restrooms"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/vault)
+"mt" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light/small/emergency,
+/turf/simulated/floor/plating,
+/area/class_h/POIs/vault)
+"oW" = (
+/obj/structure/table/wooden_reinforced,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"pf" = (
+/obj/structure/table/wooden_reinforced,
+/obj/random/drinkbottle,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"qa" = (
+/obj/machinery/door/airlock/maintenance/int,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/class_h/POIs/vault)
+"ql" = (
+/obj/machinery/light/small/emergency/flicker,
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/animal/passive/mouse/rat,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/vault)
+"sk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/remains,
+/obj/random/trash,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"sB" = (
+/obj/machinery/door/airlock,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"sY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/vending/tool,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"uZ" = (
+/turf/simulated/wall/dungeon,
+/area/class_h/POIs/vault)
+"vu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/flicker{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"vw" = (
+/obj/structure/table/standard,
+/obj/random/soap,
+/obj/random/soap,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/vault)
+"vQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/standard,
+/obj/random/toolbox,
+/obj/random/toolbox,
+/obj/random/toolbox,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"ws" = (
+/obj/structure/curtain/open/shower,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/class_h/POIs/vault)
+"wE" = (
+/obj/structure/janitorialcart,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/class_h/POIs/vault)
+"wK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/salvageable/implant_container,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"wX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/rack/shelf/steel,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"xe" = (
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/explored)
+"xt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/gun/energy/taser,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"ye" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/flicker{
+	dir = 4
+	},
+/obj/structure/bed,
+/obj/item/bedsheet/brown,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"yK" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/simulated/mineral/floor/cave,
+/area/class_h/explored)
+"zn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/bin,
+/obj/random/junk,
+/obj/random/junk,
+/obj/random/junk,
+/obj/random/junk,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"zp" = (
+/obj/effect/decal/cleanable/greenglow,
+/turf/simulated/mineral/floor/cave,
+/area/class_h/explored)
+"zx" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"zH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/random/multiple/large_corp_crate,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"Ae" = (
+/obj/structure/mirror/long/left{
+	pixel_y = 32
+	},
+/obj/structure/sink{
+	pixel_y = 22
+	},
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/animal/passive/mouse/rat,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/vault)
+"AW" = (
+/obj/structure/table/wooden_reinforced,
+/obj/random/mre,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"AX" = (
+/obj/structure/table/marble,
+/obj/machinery/microwave,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"Bj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/class_h/POIs/vault)
+"BW" = (
+/obj/structure/curtain/open/shower,
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/animal/passive/mouse/rat,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/class_h/POIs/vault)
+"CH" = (
+/obj/item/stool/padded,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"CY" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"Dc" = (
+/obj/structure/table/standard,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/vault)
+"Dt" = (
+/obj/structure/table/woodentable,
+/obj/random/mre,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"DJ" = (
+/obj/effect/decal/cleanable/greenglow,
+/obj/structure/loot_pile/maint/trash,
+/turf/simulated/mineral/floor/cave,
+/area/class_h/explored)
+"Ex" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/wardrobe/grey,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"EP" = (
+/turf/simulated/mineral/ignore_mapgen/classh,
+/area/class_h/explored)
+"FA" = (
+/obj/structure/toilet{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/vault)
+"FR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed,
+/obj/item/bedsheet/red,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"FZ" = (
+/obj/structure/table/marble,
+/obj/item/storage/box/donkpockets{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/box/donkpockets,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"Gv" = (
+/obj/structure/closet/crate/freezer/rations,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/freezer,
+/area/class_h/POIs/vault)
+"GK" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 8
+	},
+/turf/simulated/mineral/floor/cave,
+/area/class_h/explored)
+"Hq" = (
+/turf/simulated/wall/solidrock,
+/area/class_h/explored)
+"HC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/emergency/flicker,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"HO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/remains,
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"If" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/airlock/glass_security{
+	req_one_access = list()
+	},
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"IW" = (
+/obj/effect/decal/cleanable/greenglow,
+/obj/structure/loot_pile/maint/trash,
+/obj/effect/map_effect/radiation_emitter,
+/turf/simulated/mineral/floor/cave,
+/area/class_h/explored)
+"JH" = (
+/obj/structure/mirror/long/right{
+	pixel_y = 32
+	},
+/obj/structure/sink{
+	pixel_y = 22
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/vault)
+"Kk" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/animal/passive/mouse/rat,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"KH" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/obj/structure/closet/jcloset,
+/obj/random/soap,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/class_h/POIs/vault)
+"Lp" = (
+/obj/effect/decal/cleanable/greenglow,
+/obj/item/reagent_containers/chem_disp_cartridge/radium,
+/obj/effect/map_effect/radiation_emitter/strong,
+/turf/simulated/mineral/floor/cave,
+/area/class_h/explored)
+"Lq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/flicker{
+	dir = 4
+	},
+/obj/structure/salvageable/computer,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"Lw" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/vore/aggressive/rat,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"LR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"Ma" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/wardrobe/pjs,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"Mo" = (
+/obj/effect/decal/cleanable/greenglow,
+/obj/structure/closet/crate/trashcart,
+/turf/simulated/mineral/floor/cave,
+/area/class_h/explored)
+"MO" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/class_h/POIs/vault)
+"MP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/vending/snack,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"NE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed,
+/obj/item/bedsheet/orange,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"NM" = (
+/obj/machinery/door/airlock/vault/bolted{
+	name = "High Security Door"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/blast/regular/open{
+	id = "desert_bunker";
+	name = "Blast Door"
+	},
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"OZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/wardrobe/suit,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"Pl" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/animal/passive/mouse/rat,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"Py" = (
+/obj/structure/closet/secure_closet/freezer/fridge{
+	req_access = list()
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/freezer,
+/area/class_h/POIs/vault)
+"Qb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/remains,
+/obj/effect/decal/cleanable/blood,
+/obj/structure/table/bench/steel,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"QZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
+/obj/structure/table/bench/steel,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"Ra" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"Re" = (
+/turf/template_noop,
+/area/template_noop)
+"Rh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/flicker,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"RG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/airlock/engineering,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"Sr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/undies_wardrobe,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"SM" = (
+/obj/machinery/shower{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/class_h/POIs/vault)
+"SZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/standard,
+/obj/random/tool/power,
+/obj/random/tool/power,
+/obj/random/tool/power,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"Tk" = (
+/obj/structure/fence/door/locked,
+/turf/simulated/mineral/floor/cave,
+/area/class_h/explored)
+"Tl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"Ty" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed,
+/obj/item/bedsheet,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"TK" = (
+/obj/structure/sign/signnew/radiation,
+/turf/simulated/wall/dungeon,
+/area/class_h/explored)
+"Ur" = (
+/obj/structure/sign/warning/lethal_turrets,
+/turf/simulated/wall/dungeon,
+/area/class_h/POIs/vault)
+"Uu" = (
+/turf/simulated/mineral/floor/cave,
+/area/class_h/explored)
+"Vw" = (
+/obj/structure/table/marble,
+/obj/machinery/chemical_dispenser/bar_soft/full,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"VI" = (
+/obj/machinery/porta_turret/stationary,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/class_h/POIs/vault)
+"Wd" = (
+/obj/effect/decal/cleanable/greenglow,
+/obj/fiftyspawner/uranium,
+/obj/effect/map_effect/radiation_emitter/strong,
+/turf/simulated/mineral/floor/cave,
+/area/class_h/explored)
+"Wg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	pixel_x = -32
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"Wu" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/freezer,
+/area/class_h/POIs/vault)
+"XH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/standard,
+/obj/item/paper_bin,
+/obj/item/pen,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"Yl" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/vore/aggressive/rat,
+/turf/simulated/floor/tiled/white,
+/area/class_h/POIs/vault)
+"Yu" = (
+/obj/structure/bed/chair/comfy/black,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"YR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"Zb" = (
+/obj/structure/table/marble,
+/obj/item/reagent_containers/food/drinks/shaker,
+/obj/item/reagent_containers/glass/rag,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/vault)
+"Zh" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light/small/emergency{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/class_h/POIs/vault)
+
+(1,1,1) = {"
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+"}
+(2,1,1) = {"
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+xe
+xe
+xe
+xe
+xe
+xe
+xe
+xe
+xe
+xe
+xe
+Re
+"}
+(3,1,1) = {"
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+xe
+xe
+xe
+xe
+xe
+xe
+xe
+xe
+xe
+xe
+xe
+xe
+EP
+EP
+EP
+EP
+xe
+EP
+EP
+EP
+EP
+xe
+Re
+"}
+(4,1,1) = {"
+Re
+Re
+xe
+xe
+xe
+xe
+xe
+xe
+xe
+EP
+EP
+EP
+EP
+xe
+xe
+xe
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+xe
+xe
+"}
+(5,1,1) = {"
+Re
+Re
+xe
+EP
+EP
+xe
+xe
+xe
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+Hq
+Hq
+Hq
+Hq
+Hq
+Hq
+Hq
+Hq
+Hq
+Hq
+Hq
+EP
+xe
+"}
+(6,1,1) = {"
+Re
+xe
+xe
+EP
+EP
+EP
+EP
+EP
+EP
+Hq
+Hq
+Hq
+Hq
+Hq
+Hq
+Hq
+Hq
+Hq
+uZ
+uZ
+uZ
+uZ
+uZ
+uZ
+uZ
+uZ
+uZ
+Hq
+EP
+xe
+"}
+(7,1,1) = {"
+Re
+xe
+EP
+EP
+Hq
+Hq
+Hq
+Hq
+Hq
+Hq
+uZ
+uZ
+uZ
+uZ
+uZ
+uZ
+uZ
+uZ
+uZ
+QZ
+eP
+Qb
+uZ
+gX
+xt
+wX
+uZ
+Hq
+EP
+xe
+"}
+(8,1,1) = {"
+Re
+xe
+EP
+EP
+Hq
+uZ
+uZ
+uZ
+uZ
+uZ
+uZ
+bf
+Kk
+ae
+Yu
+Dt
+CY
+uZ
+zx
+zx
+HO
+sk
+If
+zx
+YR
+HC
+uZ
+Hq
+EP
+xe
+"}
+(9,1,1) = {"
+Re
+xe
+EP
+EP
+Hq
+uZ
+Bj
+Wu
+Wu
+Wu
+cP
+Kk
+zx
+ae
+Lw
+zx
+Kk
+Tl
+zx
+fP
+HO
+HO
+uZ
+XH
+al
+zn
+uZ
+Hq
+EP
+xe
+"}
+(10,1,1) = {"
+Re
+xe
+xe
+EP
+Hq
+uZ
+Py
+Py
+jm
+Gv
+uZ
+cA
+zx
+AW
+CH
+Kk
+zx
+uZ
+uZ
+uZ
+Ur
+aM
+uZ
+uZ
+uZ
+uZ
+uZ
+Hq
+EP
+xe
+"}
+(11,1,1) = {"
+Re
+xe
+xe
+EP
+Hq
+uZ
+uZ
+uZ
+uZ
+uZ
+uZ
+Vw
+Kk
+ae
+CH
+zx
+zx
+uZ
+VI
+bx
+LR
+zx
+Wg
+bx
+VI
+uZ
+Hq
+Hq
+EP
+xe
+"}
+(12,1,1) = {"
+xe
+xe
+EP
+EP
+Hq
+uZ
+Dc
+gY
+BW
+SM
+uZ
+Zb
+zx
+oW
+CH
+Lw
+Ra
+uZ
+Zh
+bx
+zx
+zx
+zx
+bx
+mt
+uZ
+Hq
+EP
+EP
+xe
+"}
+(13,1,1) = {"
+xe
+EP
+EP
+Hq
+Hq
+uZ
+vw
+fL
+ws
+SM
+uZ
+FZ
+zx
+pf
+CH
+Kk
+dP
+uZ
+MO
+bx
+zx
+LR
+zx
+bx
+MO
+uZ
+Hq
+EP
+xe
+xe
+"}
+(14,1,1) = {"
+xe
+EP
+EP
+Hq
+Hq
+uZ
+Yl
+dA
+uZ
+uZ
+uZ
+AX
+Kk
+zx
+Kk
+zx
+Pl
+uZ
+uZ
+uZ
+bC
+zx
+bC
+uZ
+uZ
+uZ
+Hq
+EP
+xe
+xe
+"}
+(15,1,1) = {"
+xe
+EP
+EP
+Hq
+Hq
+uZ
+Ae
+dA
+dx
+FA
+uZ
+uZ
+uZ
+uZ
+uZ
+Tl
+uZ
+uZ
+uZ
+uZ
+uZ
+NM
+uZ
+uZ
+uZ
+Hq
+Hq
+EP
+EP
+xe
+"}
+(16,1,1) = {"
+xe
+EP
+EP
+Hq
+Hq
+uZ
+ko
+ql
+uZ
+uZ
+uZ
+wE
+MO
+qa
+Kk
+zx
+uZ
+Hq
+EP
+EP
+Uu
+Uu
+GK
+Uu
+EP
+Hq
+EP
+EP
+EP
+xe
+"}
+(17,1,1) = {"
+xe
+xe
+EP
+EP
+Hq
+uZ
+JH
+fL
+dx
+FA
+uZ
+KH
+MO
+uZ
+Lw
+Kk
+uZ
+Hq
+EP
+Lp
+Uu
+zp
+Uu
+IW
+EP
+Hq
+EP
+EP
+EP
+xe
+"}
+(18,1,1) = {"
+Re
+xe
+xe
+EP
+Hq
+uZ
+uZ
+kZ
+uZ
+uZ
+uZ
+uZ
+uZ
+uZ
+zx
+Rh
+uZ
+Hq
+EP
+Uu
+Uu
+Uu
+Uu
+Uu
+EP
+Hq
+EP
+EP
+xe
+xe
+"}
+(19,1,1) = {"
+Re
+xe
+xe
+EP
+Hq
+uZ
+NE
+zx
+vu
+uZ
+MP
+di
+Kk
+zx
+Kk
+Lw
+uZ
+Hq
+EP
+Uu
+Uu
+Mo
+EP
+EP
+EP
+Hq
+EP
+EP
+xe
+xe
+"}
+(20,1,1) = {"
+Re
+xe
+EP
+EP
+Hq
+uZ
+Ex
+zx
+Kk
+sB
+zx
+Kk
+Lw
+zx
+zx
+Kk
+uZ
+Hq
+EP
+zp
+Uu
+EP
+Hq
+Hq
+Hq
+Hq
+EP
+EP
+xe
+xe
+"}
+(21,1,1) = {"
+Re
+xe
+EP
+EP
+Hq
+uZ
+Ty
+zx
+FR
+uZ
+uZ
+uZ
+uZ
+uZ
+RG
+uZ
+uZ
+Hq
+EP
+Uu
+Uu
+DJ
+EP
+EP
+EP
+EP
+TK
+xe
+xe
+xe
+"}
+(22,1,1) = {"
+Re
+xe
+EP
+EP
+Hq
+uZ
+Sr
+zx
+iM
+uZ
+SZ
+zx
+zx
+zx
+zx
+wK
+uZ
+Hq
+EP
+Wd
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+yK
+xe
+xe
+xe
+"}
+(23,1,1) = {"
+Re
+xe
+EP
+EP
+Hq
+uZ
+zx
+Kk
+eQ
+uZ
+vQ
+zx
+zx
+zx
+gk
+zH
+uZ
+Hq
+EP
+EP
+Uu
+Uu
+Uu
+Uu
+zp
+Uu
+Tk
+xe
+xe
+xe
+"}
+(24,1,1) = {"
+Re
+xe
+xe
+EP
+Hq
+uZ
+Kk
+zx
+Ma
+uZ
+sY
+zx
+zH
+Lq
+zx
+ar
+uZ
+Hq
+EP
+EP
+Uu
+Uu
+IW
+Uu
+Uu
+Uu
+yK
+xe
+xe
+xe
+"}
+(25,1,1) = {"
+Re
+Re
+xe
+EP
+Hq
+uZ
+ye
+OZ
+uZ
+uZ
+uZ
+uZ
+uZ
+uZ
+uZ
+uZ
+uZ
+Hq
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+TK
+xe
+xe
+xe
+"}
+(26,1,1) = {"
+Re
+Re
+xe
+EP
+Hq
+uZ
+uZ
+uZ
+uZ
+Hq
+Hq
+Hq
+Hq
+Hq
+Hq
+Hq
+Hq
+Hq
+Hq
+Hq
+Hq
+Hq
+Hq
+Hq
+Hq
+Hq
+EP
+Hq
+xe
+xe
+"}
+(27,1,1) = {"
+Re
+Re
+xe
+EP
+Hq
+Hq
+Hq
+Hq
+Hq
+Hq
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+Hq
+Hq
+Hq
+xe
+"}
+(28,1,1) = {"
+Re
+Re
+xe
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+EP
+xe
+xe
+xe
+xe
+EP
+EP
+EP
+xe
+EP
+EP
+EP
+xe
+xe
+xe
+xe
+Hq
+Hq
+Hq
+xe
+"}
+(29,1,1) = {"
+Re
+Re
+xe
+xe
+xe
+EP
+EP
+EP
+xe
+xe
+xe
+xe
+Re
+Re
+xe
+xe
+xe
+xe
+xe
+xe
+xe
+xe
+xe
+Re
+Re
+xe
+xe
+xe
+xe
+xe
+"}
+(30,1,1) = {"
+Re
+Re
+Re
+Re
+xe
+xe
+xe
+xe
+xe
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+Re
+"}

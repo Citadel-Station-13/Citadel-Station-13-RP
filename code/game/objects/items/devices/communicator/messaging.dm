@@ -34,7 +34,7 @@
 			if(src in comm.voice_invites)
 				comm.open_connection(src)
 				return
-			to_chat(src, "<span class='notice'>\icon[origin_atom] Receiving communicator request from [origin_atom].  To answer, use the <b>Call Communicator</b> \
+			to_chat(src, "<span class='notice'>[icon2html(origin_atom, src)] Receiving communicator request from [origin_atom].  To answer, use the <b>Call Communicator</b> \
 			verb, and select that name to answer the call.</span>")
 			src << 'sound/machines/defib_SafetyOn.ogg'
 			comm.voice_invites |= src
@@ -44,7 +44,7 @@
 			random = random / 10
 			exonet.send_message(origin_address, "64 bytes received from [exonet.address] ecmp_seq=1 ttl=51 time=[random] ms")
 	if(message == "text")
-		to_chat(src, "<span class='notice'>\icon[origin_atom] Received text message from [origin_atom]: <b>\"[text]\"</b></span>")
+		to_chat(src, "<span class='notice'>[icon2html(origin_atom, src)] Received text message from [origin_atom]: <b>\"[text]\"</b></span>")
 		src << 'sound/machines/defib_safetyOff.ogg'
 		exonet_messages.Add("<b>From [origin_atom]:</b><br>[text]")
 		return
@@ -64,6 +64,10 @@
 		who = comm.owner
 		comm.im_contacts |= src
 		im_list += list(list("address" = origin_address, "to_address" = exonet.address, "im" = text))
+	else if(istype(candidate, /obj/item/integrated_circuit))
+		var/obj/item/integrated_circuit/CIRC = candidate
+		who = CIRC
+		im_list += list(list("address" = origin_address, "to_address" = exonet.address, "im" = text))
 	else return
 
 	im_contacts |= candidate
@@ -72,9 +76,9 @@
 		return
 
 	if(ringer)
-		playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
+		playsound(src, 'sound/machines/twobeep.ogg', 50, 1)
 		for (var/mob/O in hearers(2, loc))
-			O.show_message(text("\icon[src] *beep*"))
+			O.show_message(text("[icon2html(src, world)] *beep*"))
 
 	alert_called = 1
 	update_icon()
@@ -85,7 +89,7 @@
 		L = loc
 
 	if(L)
-		to_chat(L, "<span class='notice'>\icon[src] Message from [who].</span>")
+		to_chat(L, "<span class='notice'>[icon2html(src, world)] Message from [who].</span>")
 
 // Verb: text_communicator()
 // Parameters: None
@@ -105,7 +109,7 @@
 	if (usr != src)
 		return //something is terribly wrong
 
-	for(var/mob/living/L in mob_list) //Simple check so you don't have dead people calling.
+	for(var/mob/living/L in GLOB.mob_list) //Simple check so you don't have dead people calling.
 		if(src.client.prefs.real_name == L.real_name)
 			to_chat(src, "<span class='danger'>Your identity is already present in the game world.  Please load in a different character first.</span>")
 			return
@@ -130,7 +134,7 @@
 	if(choice)
 		var/obj/item/communicator/chosen_communicator = choice
 		var/mob/observer/dead/O = src
-		var/text_message = sanitize(input(src, "What do you want the message to say?")) as message
+		var/text_message = sanitize(input(src, "What do you want the message to say?") as message|null)
 		if(text_message && O.exonet)
 			O.exonet.send_message(chosen_communicator.exonet.address, "text", text_message)
 
@@ -144,8 +148,6 @@
 					if(M == src)
 						continue
 					M.show_message("Comm IM - [src] -> [chosen_communicator]: [text_message]")
-
-
 
 // Verb: show_text_messages()
 // Parameters: None

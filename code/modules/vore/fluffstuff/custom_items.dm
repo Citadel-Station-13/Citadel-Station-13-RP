@@ -318,7 +318,7 @@
 		to_chat(user, "<span class='warning'>This isn't even an ID card you idiot.</span>")
 		return
 
-//arokha:Aronai Kadigan - Centcom ID (Medical dept)
+//arokha:Aronai Sieyes - Centcom ID (Medical dept)
 /obj/item/card/id/centcom/station/fluff/aronai
 	registered_name = "CONFIGURE ME"
 	assignment = "CC Medical"
@@ -358,7 +358,7 @@
 	name = "KSS-8 security armor"
 	desc = "A set of armor made from pieces of many other armors. There are two orange holobadges on it, one on the chestplate, one on the steel flank plates. The holobadges appear to be russian in origin. 'Kosmicheskaya Stantsiya-8' is printed in faded white letters on one side, along the spine. It smells strongly of dog."
 	species_restricted = null //Species restricted since all it cares about is a taur half
-	icon = 'icons/mob/taursuits_wolf_vr.dmi'
+	icon = 'icons/mob/clothing/taursuits_wolf.dmi'
 	icon_state = "serdy_armor"
 	item_state = "serdy_armor"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS //It's a full body suit, minus hands and feet. Arms and legs should be protected, not just the torso. Retains normal security armor values still.
@@ -427,8 +427,8 @@
 	var/client/owner_c = null //They'll be dead when we message them probably.
 	var/state = 0 //0 - New, 1 - Paired, 2 - Breaking, 3 - Broken (same as iconstates)
 
-/obj/item/clothing/accessory/collar/vmcrystal/New()
-	..()
+/obj/item/clothing/accessory/collar/vmcrystal/Initialize(mapload)
+	. = ..()
 	update_state(0)
 
 /obj/item/clothing/accessory/collar/vmcrystal/Destroy() //Waitwaitwait
@@ -436,7 +436,7 @@
 		process() //Nownownow
 	return ..() //Okfine
 
-/obj/item/clothing/accessory/collar/vmcrystal/process()
+/obj/item/clothing/accessory/collar/vmcrystal/process(delta_time)
 	check_owner()
 	if((state > 1) || !owner)
 		STOP_PROCESSING(SSobj, src)
@@ -520,8 +520,8 @@
 	max_storage_space = ITEMSIZE_COST_SMALL * 2
 	w_class = ITEMSIZE_SMALL
 
-/obj/item/storage/box/vmcrystal/New()
-	..()
+/obj/item/storage/box/vmcrystal/Initialize(mapload)
+	. = ..()
 //	new /obj/item/paper/vmcrystal_manual(src)
 	new /obj/item/clothing/accessory/collar/vmcrystal(src)
 
@@ -535,7 +535,7 @@
 	force = 5.0
 	throwforce = 7.0
 	w_class = ITEMSIZE_SMALL
-	matter = list(DEFAULT_WALL_MATERIAL = 50)
+	matter = list(MAT_STEEL = 50)
 	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
 
 /obj/item/cane/fluff/tasald
@@ -554,7 +554,7 @@
     force = 1.0
     throwforce = 2.0
     w_class = ITEMSIZE_SMALL
-    matter = list(DEFAULT_WALL_MATERIAL = 50)
+    matter = list(MAT_STEEL = 50)
     attack_verb = list("sparkled", "whacked", "twinkled", "radiated", "dazzled", "zapped")
     hitsound = 'sound/weapons/sparkle.ogg'
     var/last_use = 0
@@ -621,7 +621,7 @@
 	var/ambulance_state = FALSE
 	var/ambulance_last_switch = 0
 
-/obj/item/storage/backpack/saddlebag/tempest/Initialize()
+/obj/item/storage/backpack/saddlebag/tempest/Initialize(mapload)
 	soundloop = new(list(src), FALSE)
 	return ..()
 
@@ -650,7 +650,7 @@
 		set_light(0)
 		soundloop.stop()
 
-/obj/item/storage/backpack/saddlebag/tempest/process()
+/obj/item/storage/backpack/saddlebag/tempest/process(delta_time)
 	if(!ambulance)
 		STOP_PROCESSING(SSobj, src)
 		return
@@ -977,8 +977,8 @@
 	filling_color = "#FDFFD1"
 	volume = 12
 
-/obj/item/reagent_containers/food/snacks/egg/teshari/New()
-	..()
+/obj/item/reagent_containers/food/snacks/egg/teshari/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("egg", 10)
 	bitesize = 2
 
@@ -1080,8 +1080,8 @@
 	filling_color = "#FDFFD1"
 	volume = 12
 
-/obj/item/reagent_containers/food/snacks/egg/roiz/New()
-	..()
+/obj/item/reagent_containers/food/snacks/egg/roiz/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("egg", 9)
 	bitesize = 2
 
@@ -1110,8 +1110,8 @@
 	icon_state = "friedegg"
 	volume = 12
 
-/obj/item/reagent_containers/food/snacks/friedegg/roiz/New()
-	..()
+/obj/item/reagent_containers/food/snacks/friedegg/roiz/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("protein", 9)
 	bitesize = 2
 
@@ -1122,8 +1122,8 @@
 	icon_state = "egg_roiz"
 	volume = 12
 
-/obj/item/reagent_containers/food/snacks/boiledegg/roiz/New()
-	..()
+/obj/item/reagent_containers/food/snacks/boiledegg/roiz/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("protein", 6)
 	bitesize = 2
 
@@ -1137,8 +1137,8 @@
 	nutriment_desc = list("chocolate" = 5)
 	volume = 18
 
-/obj/item/reagent_containers/food/snacks/chocolateegg/roiz/New()
-	..()
+/obj/item/reagent_containers/food/snacks/chocolateegg/roiz/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("sugar", 6)
 	reagents.add_reagent("coco", 6)
 	reagents.add_reagent("milk", 2)
@@ -1213,7 +1213,7 @@
 	desc = "The goggles really do nothing this time!"
 	icon_state = "purple"
 	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
-	item_flags = AIRTIGHT
+	clothing_flags = ALLOWINTERNALS
 
 //General use, Verk felt like sharing.
 /obj/item/clothing/glasses/fluff/spiffygogs
@@ -1272,8 +1272,8 @@
 	var/list/warned_users = list()
 	var/list/logged_events = list()
 
-/obj/item/perfect_tele/New()
-	..()
+/obj/item/perfect_tele/Initialize(mapload)
+	. = ..()
 	flags |= NOBLUDGEON
 	if(cell_type)
 		power_source = new cell_type(src)
@@ -1442,16 +1442,24 @@
 	if(!teleport_checks(target,user))
 		return //The checks proc can send them a message if it wants.
 
-	//Bzzt.
-	ready = 0
-	power_source.use(charge_cost)
+	ready = FALSE
+	update_icon()
 
 	//Failure chance
-	if(prob(failure_chance) && beacons.len >= 2)
+	if(prob(failure_chance) && (beacons.len >= 2))
 		var/list/wrong_choices = beacons - destination.tele_name
 		var/wrong_name = pick(wrong_choices)
 		destination = beacons[wrong_name]
-		to_chat(user,"<span class='warning'>\The [src] malfunctions and sends you to the wrong beacon!</span>")
+		if(!teleport_checks(target, user))	// no using this to bypass range checks
+			to_chat(user, "<span class='warning'>[src] malfunctions and fizzles out uselessly!</span>")
+			// penalty: 10 second recharge, but no using charge.
+			addtimer(CALLBACK(src, .proc/recharge), 10 SECONDS)
+			return
+		else
+			to_chat(user,"<span class='warning'>\The [src] malfunctions and sends you to the wrong beacon!</span>")
+
+	//Bzzt.
+	power_source.use(charge_cost)
 
 	//Destination beacon vore checking
 	var/turf/dT = get_turf(destination)
@@ -1502,12 +1510,13 @@
 			//Phase-in effect for grabbed person
 			phase_in(G.affecting,get_turf(G.affecting))
 
-	update_icon()
-	spawn(30 SECONDS)
-		ready = 1
-		update_icon()
+	addtimer(CALLBACK(src, .proc/recharge), 30 SECONDS)
 
 	logged_events["[world.time]"] = "[user] teleported [target] to [real_dest] [televored ? "(Belly: [lowertext(real_dest.name)])" : null]"
+
+/obj/item/perfect_tele/proc/recharge()
+	ready = TRUE
+	update_icon()
 
 /obj/item/perfect_tele/proc/phase_out(var/mob/M,var/turf/T)
 
@@ -1543,8 +1552,8 @@
 	var/creator
 	var/warned_users = list()
 
-/obj/item/perfect_tele_beacon/New()
-	..()
+/obj/item/perfect_tele_beacon/Initialize(mapload)
+	. = ..()
 	flags |= NOBLUDGEON
 
 /obj/item/perfect_tele_beacon/Destroy()
@@ -1720,8 +1729,8 @@
 				slot_r_hand_str = 'icons/vore/custom_items_right_hand_vr.dmi',
 				)
 
-/obj/item/material/twohanded/fluff/New(var/newloc)
-	..(newloc," ") //See materials_vr_dmi for more information as to why this is a blank space.
+/obj/item/material/twohanded/fluff/Initialize(mapload, material_key)
+	..(mapload," ") //See materials_vr_dmi for more information as to why this is a blank space.
 
 //General use.
 /obj/item/material/twohanded/fluff/riding_crop
@@ -1835,8 +1844,8 @@
 	var/wielded = 0
 	var/base_name = "stunstaff"
 
-/obj/item/melee/baton/fluff/stunstaff/New()
-	..()
+/obj/item/melee/baton/fluff/stunstaff/Initialize(mapload)
+	. = ..()
 	bcell = new/obj/item/cell/device/weapon(src)
 	update_icon()
 	return
@@ -1897,7 +1906,7 @@
 	icon_state = "holster_stunstaff"
 	desc = "A sturdy synthetic leather sheath with matching belt and rubberized interior."
 	slot_flags = SLOT_BACK
-	item_icons = list(slot_back_str = 'icons/vore/custom_onmob_vr.dmi', slot_l_hand_str = 'icons/vore/custom_items_left_hand_vr.dmi', slot_r_hand_str = 'icons/vore/custom_items_right_hand_vr.dmi')
+	item_icons = list(/datum/inventory_slot_meta/inventory/back = 'icons/vore/custom_onmob_vr.dmi', slot_l_hand_str = 'icons/vore/custom_items_left_hand_vr.dmi', slot_r_hand_str = 'icons/vore/custom_items_right_hand_vr.dmi')
 
 	can_hold = list(/obj/item/melee/baton/fluff/stunstaff)
 
@@ -1905,8 +1914,8 @@
 	max_w_class = ITEMSIZE_HUGE
 	max_storage_space = 16
 
-/obj/item/storage/backpack/fluff/stunstaff/New()
-	..()
+/obj/item/storage/backpack/fluff/stunstaff/Initialize(mapload)
+	. = ..()
 	new /obj/item/melee/baton/fluff/stunstaff(src)
 
 
@@ -1986,7 +1995,7 @@
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 1)
-	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_melee_vr.dmi', slot_r_hand_str = 'icons/mob/items/righthand_melee_vr.dmi', slot_back_str = 'icons/vore/custom_items_vr.dmi', slot_wear_suit_str = 'icons/vore/custom_items_vr.dmi')
+	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_melee_vr.dmi', slot_r_hand_str = 'icons/mob/items/righthand_melee_vr.dmi', /datum/inventory_slot_meta/inventory/back = 'icons/vore/custom_items_vr.dmi', /datum/inventory_slot_meta/inventory/suit = 'icons/vore/custom_items_vr.dmi')
 	var/active_state = "wolfgirlsword"
 	allowed = list(/obj/item/shield/fluff/wolfgirlshield)
 	damtype = HALLOSS
@@ -2074,8 +2083,8 @@
 	name = "flask of expensive alcohol"
 	desc = "A standard vacuum-flask filled with good and expensive drink."
 
-/obj/item/reagent_containers/food/drinks/flask/vacuumflask/fluff/viktor/Initialize()
-	..()
+/obj/item/reagent_containers/food/drinks/flask/vacuumflask/fluff/viktor/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("pwine", 60)
 
 //RadiantAurora: Tiemli Kroto
@@ -2096,3 +2105,28 @@
          return 0
       else
          return 1
+
+//FauxMagician
+/obj/item/faketvcamera
+    name = "non-functioning press camera drone"
+    desc = "A long since retired EyeBuddy media streaming hovercam with it's hover functionality being the only thing left alone on this unit."
+    icon = 'icons/vore/custom_items_vr.dmi'
+    icon_state = "jazzcamcorder"
+    item_state = "jazzcamcorder"
+    w_class = ITEMSIZE_LARGE
+    slot_flags = SLOT_BELT
+    var/obj/machinery/camera/network/thunder/camera
+
+/obj/item/faketvcamera/update_icon()
+	..()
+	if(camera.status)
+		icon_state = "jazzcamcorder_on"
+		item_state = "jazzcamcorder_on"
+	else
+		icon_state = "jazzcamcorder"
+		item_state = "jazzcamcorder"
+	var/mob/living/carbon/human/H = loc
+	if(istype(H))
+		H.update_inv_r_hand()
+		H.update_inv_l_hand()
+		H.update_inv_belt()

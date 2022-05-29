@@ -11,7 +11,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	item_state = "electronic"
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_ID | SLOT_BELT
-	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/teshari/id.dmi')
+	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/id.dmi')
 
 	//Main variables
 	var/pdachoice = 1
@@ -65,8 +65,8 @@ GLOBAL_LIST_EMPTY(PDAs)
 	var/obj/item/paicard/pai = null	// A slot for a personal AI device
 
 /obj/item/pda/examine(mob/user)
-	if(..(user, 1))
-		to_chat(user, "The time [stationtime2text()] is displayed in the corner of the screen.")
+	. = ..()
+	. += "The time [stationtime2text()] is displayed in the corner of the screen."
 
 /obj/item/pda/CtrlClick()
 	if (issilicon(usr))
@@ -188,8 +188,6 @@ GLOBAL_LIST_EMPTY(PDAs)
 /obj/item/pda/syndicate
 	default_cartridge = /obj/item/cartridge/syndicate
 	icon_state = "pda-syn"
-//	name = "Military PDA" // Vorestation Edit
-//	owner = "John Doe"
 	hidden = 1
 
 /obj/item/pda/chaplain
@@ -381,44 +379,44 @@ GLOBAL_LIST_EMPTY(PDAs)
 	else
 		return
 
-/obj/item/pda/multicaster/command/New()
-	..()
+/obj/item/pda/multicaster/command/Initialize(mapload)
+	. = ..()
 	owner = "Command Department"
 	name = "Command Department (Relay)"
 	cartridges_to_send_to = command_cartridges
 
-/obj/item/pda/multicaster/security/New()
-	..()
+/obj/item/pda/multicaster/security/Initialize(mapload)
+	. = ..()
 	owner = "Security Department"
 	name = "Security Department (Relay)"
 	cartridges_to_send_to = security_cartridges
 
-/obj/item/pda/multicaster/engineering/New()
-	..()
+/obj/item/pda/multicaster/engineering/Initialize(mapload)
+	. = ..()
 	owner = "Engineering Department"
 	name = "Engineering Department (Relay)"
 	cartridges_to_send_to = engineering_cartridges
 
-/obj/item/pda/multicaster/medical/New()
-	..()
+/obj/item/pda/multicaster/medical/Initialize(mapload)
+	. = ..()
 	owner = "Medical Department"
 	name = "Medical Department (Relay)"
 	cartridges_to_send_to = medical_cartridges
 
-/obj/item/pda/multicaster/research/New()
-	..()
+/obj/item/pda/multicaster/research/Initialize(mapload)
+	. = ..()
 	owner = "Research Department"
 	name = "Research Department (Relay)"
 	cartridges_to_send_to = research_cartridges
 
-/obj/item/pda/multicaster/cargo/New()
-	..()
+/obj/item/pda/multicaster/cargo/Initialize(mapload)
+	. = ..()
 	owner = "Cargo Department"
 	name = "Cargo Department (Relay)"
 	cartridges_to_send_to = cargo_cartridges
 
-/obj/item/pda/multicaster/civilian/New()
-	..()
+/obj/item/pda/multicaster/civilian/Initialize(mapload)
+	. = ..()
 	owner = "Civilian Services Department"
 	name = "Civilian Services Department (Relay)"
 	cartridges_to_send_to = civilian_cartridges
@@ -448,15 +446,15 @@ GLOBAL_LIST_EMPTY(PDAs)
 				icon = 'icons/obj/pda_wrist.dmi'
 				item_state = icon_state
 				item_icons = list(
-					slot_belt_str = 'icons/mob/pda_wrist.dmi',
-					slot_wear_id_str = 'icons/mob/pda_wrist.dmi',
-					slot_gloves_str = 'icons/mob/pda_wrist.dmi'
+					/datum/inventory_slot_meta/inventory/belt = 'icons/mob/clothing/pda_wrist.dmi',
+					/datum/inventory_slot_meta/inventory/id = 'icons/mob/clothing/pda_wrist.dmi',
+					/datum/inventory_slot_meta/inventory/gloves = 'icons/mob/clothing/pda_wrist.dmi'
 				)
 				desc = "A portable microcomputer by Thinktronic Systems, LTD. This model is a wrist-bound version."
 				slot_flags = SLOT_ID | SLOT_BELT | SLOT_GLOVES
 				sprite_sheets = list(
-				SPECIES_TESHARI = 'icons/mob/species/teshari/pda_wrist.dmi',
-				SPECIES_VR_TESHARI = 'icons/mob/species/teshari/pda_wrist.dmi',
+				SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/pda_wrist.dmi',
+				SPECIES_VR_TESHARI = 'icons/mob/clothing/species/teshari/pda_wrist.dmi',
 				)
 			else
 				icon = 'icons/obj/pda_old.dmi'
@@ -487,18 +485,18 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 /obj/item/pda/MouseDrop(obj/over_object as obj, src_location, over_location)
 	var/mob/M = usr
-	if((!istype(over_object, /obj/screen)) && can_use())
+	if((!istype(over_object, /atom/movable/screen)) && can_use())
 		return attack_self(M)
 	return
 
 
-/obj/item/pda/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/item/pda/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	ui_tick++
 	var/datum/nanoui/old_ui = SSnanoui.get_open_ui(user, src, "main")
 	var/auto_update = 1
 	if(mode in no_auto_update)
 		auto_update = 0
-	if(old_ui && (mode == lastmode && ui_tick % 5 && mode in update_every_five))
+	if(old_ui && (mode == lastmode && (ui_tick % 5) && (mode in update_every_five)))
 		return
 
 	lastmode = mode
@@ -645,7 +643,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 		data["feed"] = feed
 
-	data["manifest"] = PDA_Manifest
+	data["manifest"] = GLOB.PDA_Manifest
 
 	nanoUI = data
 	// update the ui if it exists, returns null if no ui is passed/found
@@ -674,7 +672,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if(active_uplink_check(user))
 		return
 
-	ui_interact(user) //NanoUI requires this proc
+	nano_ui_interact(user) //NanoUI requires this proc
 	return
 
 /obj/item/pda/Topic(href, href_list)
@@ -700,7 +698,6 @@ GLOBAL_LIST_EMPTY(PDAs)
 			ui.close()
 		return 0
 
-	add_fingerprint(U)
 	U.set_machine(src)
 
 	switch(href_list["choice"])
@@ -894,7 +891,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 		if("Toggle Door")
 			if(cartridge && cartridge.access_remote_door)
-				for(var/obj/machinery/door/blast/M in machines)
+				for(var/obj/machinery/door/blast/M in GLOB.machines)
 					if(M.id == cartridge.remote_door_id)
 						if(M.density)
 							M.open()
@@ -1131,14 +1128,14 @@ GLOBAL_LIST_EMPTY(PDAs)
 		if(!P.conversations.Find("\ref[src]"))
 			P.conversations.Add("\ref[src]")
 
-		to_chat(U, "\icon[src] <b>Sent message to [P.owner] ([P.ownjob]), </b>\"[t]\"")
+		to_chat(U, "[icon2html(thing = src, target = U)] <b>Sent message to [P.owner] ([P.ownjob]), </b>\"[t]\"")
 
 
 		if (prob(15)) //Give the AI a chance of intercepting the message
 			var/who = src.owner
 			if(prob(50))
 				who = P.owner
-			for(var/mob/living/silicon/ai/ai in mob_list)
+			for(var/mob/living/silicon/ai/ai in GLOB.mob_list)
 				// Allows other AIs to intercept the message but the AI won't intercept their own message.
 				if(ai.aiPDA != P && ai.aiPDA != src)
 					ai.show_message("<i>Intercepted message from <b>[who]</b>: [t]</i>")
@@ -1152,7 +1149,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if (!beep_silent)
 		playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
 		for (var/mob/O in hearers(2, loc))
-			O.show_message(text("\icon[src] *[message_tone]*"))
+			O.show_message(text("[icon2html(thing = src, target = world)] *[message_tone]*"))
 	//Search for holder of the PDA.
 	var/mob/living/L = null
 	if(loc && isliving(loc))
@@ -1163,11 +1160,11 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 	if(L)
 		if(reception_message)
-			L << reception_message
+			to_chat(L, reception_message)
 		SSnanoui.update_user_uis(L, src) // Update the receiving user's PDA UI so that they can see the new message
 
 /obj/item/pda/proc/new_news(var/message)
-	new_info(news_silent, newstone, news_silent ? "" : "\icon[src] <b>[message]</b>")
+	new_info(news_silent, newstone, news_silent ? "" : "[icon2html(thing = src, target = world)] <b>[message]</b>")
 
 	if(!news_silent)
 		new_news = 1
@@ -1182,7 +1179,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	new_message(sending_device, sending_device.owner, sending_device.ownjob, message)
 
 /obj/item/pda/proc/new_message(var/sending_unit, var/sender, var/sender_job, var/message, var/reply = 1)
-	var/reception_message = "\icon[src] <b>Message from [sender] ([sender_job]), </b>\"[message]\" ([reply ? "<a href='byond://?src=\ref[src];choice=Message;notap=[istype(loc, /mob/living/silicon)];skiprefresh=1;target=\ref[sending_unit]'>Reply</a>" : "Unable to Reply"])"
+	var/reception_message = "[icon2html(thing = src, target = world)] <b>Message from [sender] ([sender_job]), </b>\"[message]\" ([reply ? "<a href='byond://?src=\ref[src];choice=Message;notap=[istype(loc, /mob/living/silicon)];skiprefresh=1;target=\ref[sending_unit]'>Reply</a>" : "Unable to Reply"])"
 	new_info(message_silent, ringtone, reception_message)
 
 	log_pda("(PDA: [sending_unit]) sent \"[message]\" to [name]", usr)
@@ -1194,7 +1191,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if(ismob(sending_unit.loc) && isAI(loc))
 		track = "(<a href='byond://?src=\ref[loc];track=\ref[sending_unit.loc];trackname=[html_encode(sender)]'>Follow</a>)"
 
-	var/reception_message = "\icon[src] <b>Message from [sender] ([sender_job]), </b>\"[message]\" (<a href='byond://?src=\ref[src];choice=Message;notap=1;skiprefresh=1;target=\ref[sending_unit]'>Reply</a>) [track]"
+	var/reception_message = "[icon2html(thing = src, target = world)] <b>Message from [sender] ([sender_job]), </b>\"[message]\" (<a href='byond://?src=\ref[src];choice=Message;notap=1;skiprefresh=1;target=\ref[sending_unit]'>Reply</a>) [track]"
 	new_info(message_silent, newstone, reception_message)
 
 	log_pda("(PDA: [sending_unit]) sent \"[message]\" to [name]",usr)
@@ -1372,10 +1369,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 						user.show_message("<span class='notice'>    Limbs are OK.</span>",1)
 
 			if(2)
-				if (!istype(C:dna, /datum/dna))
+				if (!istype(C.dna, /datum/dna))
 					to_chat(user, "<span class='notice'>No fingerprints found on [C]</span>")
 				else
-					to_chat(user, text("<span class='notice'>\The [C]'s Fingerprints: [md5(C:dna.uni_identity)]</span>"))
+					to_chat(user, text("<span class='notice'>\The [C]'s Fingerprints: [md5(C.dna.uni_identity)]</span>"))
 				if ( !(C:blood_DNA) )
 					to_chat(user, "<span class='notice'>No blood found on [C]</span>")
 					if(C:blood_DNA)
@@ -1475,7 +1472,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 /obj/item/pda/Destroy()
 	GLOB.PDAs -= src
-	if (src.id && prob(100)) //IDs are kept in 90% of the cases //VOREStation Edit - 100% of the cases
+	if (src.id && prob(100)) //IDs are kept in 100% of the cases //TODO: WHY?
 		src.id.forceMove(get_turf(src.loc))
 	else
 		QDEL_NULL(src.id)
@@ -1483,7 +1480,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 	QDEL_NULL(src.pai)
 	return ..()
 
-/obj/item/pda/clown/Crossed(AM as mob|obj) //Clown PDA is slippery.
+/obj/item/pda/clown/Crossed(atom/movable/AM as mob|obj) //Clown PDA is slippery.
+	. = ..()
+	if(AM.is_incorporeal())
+		return
 	if (istype(AM, /mob/living))
 		var/mob/living/M = AM
 
@@ -1580,3 +1580,22 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if(isnull(results))
 		results = list(list("entry" = "pressure", "units" = "kPa", "val" = "0", "bad_high" = 120, "poor_high" = 110, "poor_low" = 95, "bad_low" = 80))
 	return results
+
+//! ## VR FILE MERGE ## !//
+/obj/item/pda/centcom
+	default_cartridge = /obj/item/cartridge/captain
+	icon_state = "pda-h"
+	detonate = 0
+//	hidden = 1
+
+/obj/item/pda/pathfinder
+	default_cartridge = /obj/item/cartridge/signal/science
+	icon_state = "pda-lawyer-old"
+
+/obj/item/pda/explorer
+	default_cartridge = /obj/item/cartridge/signal/science
+	icon_state = "pda-det"
+
+/obj/item/pda/sar
+	default_cartridge = /obj/item/cartridge/medical
+	icon_state = "pda-h"

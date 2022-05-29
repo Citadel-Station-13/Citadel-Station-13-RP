@@ -11,18 +11,19 @@
 
 	var/input
 	if(!message)
-		input = sanitize_or_reflect(input(src,"Choose an emote to display.") as text|null, src) //VOREStation Edit - Reflect too long messages, within reason
+		input = sanitize_or_reflect(input(src,"Choose an emote to display.") as text|null, src) // Reflect too long messages, within reason.
 	else
 		input = message
 	if(input)
 		log_emote(message,src) //Log before we add junk
-		message = "<B>[src]</B> [input]"
+		message = "<span class='emote'><B>[src]</B> [input]</span>"
 	else
 		return
 
 
 	if (message)
 		message = say_emphasis(message)
+		SEND_SIGNAL(src, COMSIG_MOB_CUSTOM_EMOTE, src, message)
 
  // Hearing gasp and such every five seconds is not good emotes were not global for a reason.
  // Maybe some people are okay with that.
@@ -37,14 +38,12 @@
 			var/mob/M = mob
 			spawn(0) // It's possible that it could be deleted in the meantime, or that it runtimes.
 				if(M)
-					//VOREStation edit
 					if(istype(M, /mob/observer/dead/))
 						var/mob/observer/dead/D = M
 						if(ckey || (src in view(D)))
 							M.show_message(message, m_type)
 					else
 						M.show_message(message, m_type)
-					//End VOREStation edit
 
 		for(var/obj in o_viewers)
 			var/obj/O = obj
@@ -77,11 +76,11 @@
 
 	var/input
 	if(!message)
-		input = sanitize_or_reflect(input(src, "Choose an emote to display.") as text|null, src) //VOREStation Edit - Reflect too long messages, within reason
+		input = sanitize_or_reflect(input(src, "Choose an emote to display.") as text|null, src) // Reflect too long messages, within reason
 	else
 		input = message
 
-	input = say_emphasis(input)
+	input = emoji_parse(say_emphasis(input))
 
 	if(input)
 		log_ghostemote(input, src)

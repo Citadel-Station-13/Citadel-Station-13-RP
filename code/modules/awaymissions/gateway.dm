@@ -1,6 +1,6 @@
 /obj/machinery/gateway
 	name = "gateway"
-	desc = "A mysterious gateway built by unknown hands.  It allows for faster than light travel to far-flung locations and even alternate realities."  //VOREStation Edit
+	desc = "A mysterious gateway built by unknown hands.  It allows for faster than light travel to far-flung locations and even alternate realities."
 	icon = 'icons/obj/machines/gateway.dmi'
 	icon_state = "off"
 	density = 1
@@ -8,7 +8,7 @@
 	var/active = 0
 
 
-/obj/machinery/gateway/Initialize()
+/obj/machinery/gateway/Initialize(mapload)
 	update_icon()
 	if(dir == SOUTH)
 		density = 0
@@ -34,25 +34,21 @@
 	var/wait = 0				//this just grabs world.time at world start
 	var/obj/machinery/gateway/centeraway/awaygate = null
 
-/obj/machinery/gateway/centerstation/Initialize()
+/obj/machinery/gateway/centerstation/Initialize(mapload)
 	update_icon()
 	wait = world.time + config_legacy.gateway_delay	//+ thirty minutes default
 	awaygate = locate(/obj/machinery/gateway/centeraway)
 	. = ..()
-	density = 1 //VOREStation Add
+	density = TRUE
 
 /obj/machinery/gateway/centerstation/update_icon()
 	if(active)
 		icon_state = "oncenter"
 		return
 	icon_state = "offcenter"
-/* VOREStation Removal - Doesn't do anything
-/obj/machinery/gateway/centerstation/New()
-	density = 1
-*/ //VOREStation Removal End
 
-obj/machinery/gateway/centerstation/process()
-	if(stat & (NOPOWER))
+/obj/machinery/gateway/centerstation/process(delta_time)
+	if(machine_stat & (NOPOWER))
 		if(active) toggleoff()
 		return
 
@@ -64,7 +60,7 @@ obj/machinery/gateway/centerstation/process()
 	linked = list()	//clear the list
 	var/turf/T = loc
 
-	for(var/i in alldirs)
+	for(var/i in GLOB.alldirs)
 		T = get_step(loc, i)
 		var/obj/machinery/gateway/G = locate(/obj/machinery/gateway) in T
 		if(G)
@@ -90,8 +86,8 @@ obj/machinery/gateway/centerstation/process()
 	if(world.time < wait)
 		to_chat(user, "<span class='notice'>Error: Warpspace triangulation in progress. Estimated time to completion: [round(((wait - world.time) / 10) / 60)] minutes.</span>")
 		return
-	if(!awaygate.calibrated && !LAZYLEN(awaydestinations)) //VOREStation Edit
-		to_chat(user, "<span class='notice'>Error: Destination gate uncalibrated. Gateway unsafe to use without far-end calibration update.</span>")
+	if(!awaygate.calibrated && !LAZYLEN(awaydestinations))
+		to_chat(user, SPAN_NOTICE("Error: Destination gate uncalibrated. Gateway unsafe to use without far-end calibration update."))
 		return
 
 	for(var/obj/machinery/gateway/G in linked)
@@ -126,14 +122,14 @@ obj/machinery/gateway/centerstation/process()
 	if(!awaygate)	return
 
 	use_power(5000)
-	M << 'sound/effects/phasein.ogg'
+	SEND_SOUND(M, sound('sound/effects/phasein.ogg'))
 	playsound(src, 'sound/effects/phasein.ogg', 100, 1)
 	if(awaygate.calibrated)
 		M.forceMove(get_step(awaygate.loc, SOUTH))
 		M.setDir(SOUTH)
 		return
 	else
-		var/obj/effect/landmark/dest = pick(awaydestinations)
+		var/atom/movable/landmark/dest = pick(awaydestinations)
 		if(dest)
 			M.forceMove(dest.loc)
 			M.setDir(SOUTH)
@@ -164,11 +160,11 @@ obj/machinery/gateway/centerstation/process()
 	var/obj/machinery/gateway/centeraway/stationgate = null
 
 
-/obj/machinery/gateway/centeraway/Initialize()
+/obj/machinery/gateway/centeraway/Initialize(mapload)
 	update_icon()
 	stationgate = locate(/obj/machinery/gateway/centerstation)
 	. = ..()
-	density = 1 //VOREStation Add
+	density = 1
 
 
 /obj/machinery/gateway/centeraway/update_icon()
@@ -177,15 +173,11 @@ obj/machinery/gateway/centerstation/process()
 		return
 	icon_state = "offcenter"
 
-/obj/machinery/gateway/centeraway/New()
-	density = 1
-
-
 /obj/machinery/gateway/centeraway/proc/detect()
 	linked = list()	//clear the list
 	var/turf/T = loc
 
-	for(var/i in alldirs)
+	for(var/i in GLOB.alldirs)
 		T = get_step(loc, i)
 		var/obj/machinery/gateway/G = locate(/obj/machinery/gateway) in T
 		if(G)
@@ -204,8 +196,8 @@ obj/machinery/gateway/centerstation/process()
 /obj/machinery/gateway/centeraway/proc/toggleon(mob/user as mob)
 	if(!ready)			return
 	if(linked.len != 8)	return
-	if(!stationgate || !calibrated) // Vorestation edit. Not like Polaris ever touches this anyway.
-		to_chat(user, "<span class='notice'>Error: No destination found. Please calibrate gateway.</span>")
+	if(!stationgate || !calibrated)
+		to_chat(user, SPAN_NOTICE("Error: No destination found. Please calibrate gateway."))
 		return
 
 	for(var/obj/machinery/gateway/G in linked)
@@ -243,7 +235,7 @@ obj/machinery/gateway/centerstation/process()
 				return
 	M.forceMove(get_step(stationgate.loc, SOUTH))
 	M.setDir(SOUTH)
-	M << 'sound/effects/phasein.ogg'
+	SEND_SOUND(M, sound('sound/effects/phasein.ogg'))
 	playsound(src, 'sound/effects/phasein.ogg', 100, 1)
 
 
@@ -253,13 +245,11 @@ obj/machinery/gateway/centerstation/process()
 			to_chat(user, "<font color='black'>The gate is already calibrated, there is no work for you to do here.</font>")
 			return
 		else
-			// VOREStation Add
 			stationgate = locate(/obj/machinery/gateway/centerstation)
 			if(!stationgate)
 				to_chat(user, "<span class='notice'>Error: Recalibration failed. No destination found... That can't be good.</span>")
 				return
-			// VOREStation Add End
 			else
-				to_chat(user, "<font color='blue'><b>Recalibration successful!</b>:</font><font color='black'> This gate's systems have been fine tuned. Travel to this gate will now be on target.</font>")
+				to_chat(user, "<font color=#4F49AF><b>Recalibration successful!</b>:</font><font color='black'> This gate's systems have been fine tuned. Travel to this gate will now be on target.</font>")
 				calibrated = 1
 				return

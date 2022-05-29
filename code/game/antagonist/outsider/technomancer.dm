@@ -13,7 +13,7 @@ var/datum/antagonist/technomancer/technomancers
 	In your pockets you will find a one-time use teleport device. Use it to leave the base and go to the colony, when you are ready."
 	antag_sound = 'sound/effects/antag_notice/technomancer_alert.ogg'
 	flags = ANTAG_OVERRIDE_JOB | ANTAG_CLEAR_EQUIPMENT | ANTAG_CHOOSE_NAME | ANTAG_SET_APPEARANCE | ANTAG_VOTABLE
-	antaghud_indicator = "hudwizard"
+	antaghud_indicator = "wizard"
 
 	hard_cap = 1
 	hard_cap_round = 3
@@ -78,8 +78,7 @@ var/datum/antagonist/technomancer/technomancers
 		break
 	if(!survivor)
 		feedback_set_details("round_end_result","loss - technomancer killed")
-		world << "<span class='danger'><font size = 3>The [(current_antagonists.len>1)?"[role_text_plural] have":"[role_text] has"] been \
-		killed!</font></span>"
+		to_chat(world, "<span class='danger'><font size = 3>The [(current_antagonists.len>1)?"[role_text_plural] have":"[role_text] has"] been killed!</font></span>")
 
 /datum/antagonist/technomancer/print_player_summary()
 	..()

@@ -43,13 +43,13 @@
 	metadata["[gt]"] = new_metadata
 
 /obj/structure/undies_wardrobe/proc/human_who_can_use_underwear(var/mob/living/carbon/human/H)
-	if(!istype(H) || !H.species || !(H.species.appearance_flags & HAS_UNDERWEAR))
+	if(!istype(H) || !H.species || !(H.species.species_appearance_flags & HAS_UNDERWEAR))
 		return FALSE
 	return TRUE
 
 /obj/structure/undies_wardrobe/CanUseTopic(var/user)
 	if(!human_who_can_use_underwear(user))
-		return STATUS_CLOSE
+		return UI_CLOSE
 
 	return ..()
 

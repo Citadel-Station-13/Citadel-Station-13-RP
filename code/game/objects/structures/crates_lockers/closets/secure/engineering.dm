@@ -9,10 +9,12 @@
 	req_access = list(access_ce)
 
 	starts_with = list(
+		/obj/item/clothing/shoes/magboots/advanced,
 		/obj/item/clothing/accessory/storage/brown_vest,
 		/obj/item/blueprints,
 		/obj/item/clothing/under/rank/chief_engineer,
 		/obj/item/clothing/under/rank/chief_engineer/skirt,
+		/obj/item/clothing/under/rank/chief_engineer/skirt_pleated,
 		/obj/item/clothing/head/hardhat/white,
 		/obj/item/clothing/head/welding,
 		/obj/item/clothing/gloves/yellow,
@@ -28,16 +30,17 @@
 		/obj/item/flash,
 		/obj/item/t_scanner/upgraded,
 		/obj/item/barrier_tape_roll/engineering,
-		/obj/item/clothing/suit/storage/hooded/wintercoat/engineering,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/engineering/ce,
 		/obj/item/clothing/shoes/boots/winter/engineering,
 		/obj/item/tank/emergency/oxygen/engi,
 		/obj/item/gps/engineering/ce,
-		/obj/item/reagent_containers/spray/windowsealant,//VOREStation Add
-		/obj/item/pipe_dispenser, //Citadel Addition
+		/obj/item/reagent_containers/spray/windowsealant,
+		/obj/item/pipe_dispenser,
 		/obj/item/shield_diffuser,
-		/obj/item/switchtool/holo/CE) //Citadel Addition
+		/obj/item/switchtool/holo/CE,
+		)
 
-/obj/structure/closet/secure_closet/engineering_chief/Initialize()
+/obj/structure/closet/secure_closet/engineering_chief/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/industrial
 	else
@@ -107,10 +110,11 @@
 		/obj/item/clothing/shoes/boots/winter/engineering,
 		/obj/item/tank/emergency/oxygen/engi,
 		/obj/item/gps/engineering,
-		/obj/item/reagent_containers/spray/windowsealant, //VOREStation Add
-		/obj/item/shield_diffuser) //Citadel Addition
+		/obj/item/reagent_containers/spray/windowsealant,
+		/obj/item/shield_diffuser,
+		)
 
-/obj/structure/closet/secure_closet/engineering_personal/Initialize()
+/obj/structure/closet/secure_closet/engineering_personal/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/industrial
 	else
@@ -136,7 +140,6 @@
 		/obj/item/clothing/head/hardhat/red,
 		/obj/item/flashlight,
 		/obj/item/extinguisher,
-		///obj/item/clamp,	//VOREStation Removal: without leaks those are pointless,
 		/obj/item/radio/headset/headset_eng,
 		/obj/item/radio/headset/headset_eng/alt,
 		/obj/item/clothing/suit/storage/hazardvest,
@@ -148,9 +151,10 @@
 		/obj/item/tank/emergency/oxygen/engi,
 		/obj/item/gps/engineering/atmos,
 		/obj/item/pipe_dispenser,
-		/obj/item/shield_diffuser) //Citadel Addition
+		/obj/item/shield_diffuser,
+		)
 
-/obj/structure/closet/secure_closet/atmos_personal/Initialize()
+/obj/structure/closet/secure_closet/atmos_personal/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/industrial
 	else

@@ -1,7 +1,7 @@
 /obj/machinery/portable_atmospherics/hydroponics/soil
 	name = "soil"
 	icon_state = "soil"
-	density = 0
+	density = FALSE
 	use_power = USE_POWER_OFF
 	mechanical = 0
 	tray_light = 0
@@ -11,16 +11,13 @@
 	if(istype(O,/obj/item/tank))
 		return
 	else
-		..()
+		return ..()
 
-/obj/machinery/portable_atmospherics/hydroponics/soil/New()
-	..()
+/obj/machinery/portable_atmospherics/hydroponics/soil/Initialize(mapload)
+	. = ..()
 	verbs -= /obj/machinery/portable_atmospherics/hydroponics/verb/close_lid_verb
 	verbs -= /obj/machinery/portable_atmospherics/hydroponics/verb/remove_label
 	verbs -= /obj/machinery/portable_atmospherics/hydroponics/verb/setlight
-
-/obj/machinery/portable_atmospherics/hydroponics/soil/CanAllowThrough()
-	return 1
 
 // Holder for vine plants.
 // Icons for plants are generated as overlays, so setting it to invisible wouldn't work.
@@ -30,8 +27,8 @@
 	icon = 'icons/obj/seeds.dmi'
 	icon_state = "blank"
 
-/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/New(var/newloc,var/datum/seed/newseed)
-	..()
+/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/Initialize(mapload, datum/seed/newseed)
+	. = ..()
 	seed = newseed
 	dead = 0
 	age = 1
@@ -52,7 +49,7 @@
 /obj/machinery/portable_atmospherics/hydroponics/soil/invisible/die()
 	qdel(src)
 
-/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/process()
+/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/process(delta_time)
 	if(!seed)
 		qdel(src)
 		return

@@ -1,13 +1,12 @@
 // -------------- Protector -------------
 /obj/item/gun/energy/protector
-	name = "small energy gun"
-	desc = "The HeI-98a 'Protector' is a special firearm custom-designed for Nanotrasen by Hephaestus. It features a powerful stun mode, and \
-	an alert-level-locked lethal mode, only usable on code blue and higher. It also features an integrated flashlight!"
-	catalogue_data = list()///datum/category_item/catalogue/information/organization/hephaestus)
+	name = "Hephaestus \'Myrmidon\'"
+	desc = "The Hephaestus Industries Myrmidon is a common energy sidearm for private security firms in the known galaxy. The Myrmidon can both stun and kill, its lethal mode locked to the alert level of its owner's choice. In the case of Nanotrasen facilities, this is most often locked to Code Blue."
+	description_info = "The \'Myrmidon\' can't be set to lethal unless the station is on Code Blue or higher. Security officers may carry it on Code Green, since its stun abilities are all that can be used until the code is raised, which then unlocks and allows its lethal capabilities."
+	description_fluff = "A common sight among Proxima Centauri Risk Control employees, the Myrmidon encourages responsible adherence to protocol, its lethal mode locked until the employee properly alerts their team and raises the alarm, freeing both the employee and their employer from responsibility for any ensuring casualties."
+	description_antag = "The \'Myrmidon\' can be tampered with to remove its restrictions, freeing up its lethal capabilities on Code Green."
 
-	description_info = "This gun can only be fired in lethal mode while on higher security alert levels. It is legal for sec to carry for this reason, since it cannot be used for lethal force until SOP allows it, in essence."
-	description_fluff = "A special Hephaestus firearm commissioned directly by NanoTrasen, this gun has a wireless connection to the computer's datacore to ensure it can't be used without authorization from heads of staff who have raised the alert level. Until then, *click*!"
-	description_antag = "The gun can be emagged to remove the lethal security level restriction, allowing it to be fired on lethal mode at all times."
+	catalogue_data = list()///datum/category_item/catalogue/information/organization/hephaestus)
 
 	icon = 'icons/vore/custom_guns_vr.dmi'
 	icon_state = "prot"
@@ -97,6 +96,11 @@
 		itemState += "[ratio]"
 		item_state = itemState
 	*/
+
+	// todo: burn this entire proc to the ground, because the writer deserves to have their eyelids replaced with lemons
+	// "this goodd system but i'm going to snowflake it for one gun"
+
+	return ..()
 
 
 // Protector beams

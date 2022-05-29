@@ -11,11 +11,8 @@
 	set name = "Transform (5)"
 
 	var/datum/changeling/changeling = changeling_power(5,1,0)
-	if(!changeling)	return
-
-	if(!isturf(loc))
-		to_chat(src, "<span class='warning'>Transforming here would be a bad idea.</span>")
-		return 0
+	if(!changeling)
+		return
 
 	var/list/names = list()
 	for(var/datum/absorbed_dna/DNA in changeling.absorbed_dna)
@@ -35,7 +32,7 @@
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 		var/newSpecies = chosen_dna.speciesName
-		H.set_species(newSpecies,1)
+		H.set_species(name_static_species_meta(newSpecies).type)
 
 	src.dna = chosen_dna.dna.Clone()
 	src.dna.b_type = "AB+" //This is needed to avoid blood rejection bugs.  The fact that the blood type might not match up w/ records could be a *FEATURE* too.

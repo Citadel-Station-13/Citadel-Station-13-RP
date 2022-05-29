@@ -16,10 +16,12 @@
 	log_and_message_admins("[key_name(src)] has caused [fake_lightning ? "cosmetic":"harmful"] lightning to strike at their position ([src.mob.x], [src.mob.y], [src.mob.z]). \
 	(<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[src.mob.x];Y=[src.mob.y];Z=[src.mob.z]'>JMP</a>)")
 
-#define LIGHTNING_REDIRECT_RANGE 28 // How far in tiles certain things draw lightning from.
-#define LIGHTNING_ZAP_RANGE 3 // How far the tesla effect zaps, as well as the bad effects from a direct strike.
-#define LIGHTNING_POWER 20000 // How much 'zap' is in a strike, used for tesla_zap().
-
+/// How far in tiles certain things draw lightning from.
+#define LIGHTNING_REDIRECT_RANGE 28
+/// How far the tesla effect zaps, as well as the bad effects from a direct strike.
+#define LIGHTNING_ZAP_RANGE 3
+/// How much 'zap' is in a strike, used for tesla_zap().
+#define LIGHTNING_POWER 20000
 // The real lightning proc.
 // This is global until I can figure out a better place for it.
 // T is the turf that is being struck. If cosmetic is true, the lightning won't actually hurt anything.
@@ -64,7 +66,7 @@
 	// Otherwise only those on the current z-level will hear it.
 	var/sound = get_sfx("thunder")
 	for(var/mob/M in player_list)
-		if((P && M.z in P.expected_z_levels) || M.z == T.z)
+		if((P && (M.z in P.expected_z_levels)) || M.z == T.z)
 			if(M.is_preference_enabled(/datum/client_preference/weather_sounds))
 				M.playsound_local(get_turf(M), soundin = sound, vol = 70, vary = FALSE, is_global = TRUE)
 
@@ -93,8 +95,8 @@
 			if(iscarbon(L))
 				var/mob/living/carbon/C = L
 				C.ear_deaf += 10
-			to_chat(L, span("danger", "Lightning struck nearby, and the thunderclap is deafening!"))
+			to_chat(L, SPAN_DANGER("Lightning struck nearby, and the thunderclap is deafening!"))
 
-#undef GROUNDING_ROD_RANGE
+#undef LIGHTNING_REDIRECT_RANGE
 #undef LIGHTNING_ZAP_RANGE
 #undef LIGHTNING_POWER

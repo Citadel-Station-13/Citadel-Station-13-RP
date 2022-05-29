@@ -1,21 +1,31 @@
 //Look Sir, free crabs!
+/datum/category_item/catalogue/fauna/crab
+	name = "Crab"
+	desc = "A popular curstacean originating from Old Earth's oceans, the \
+	crab is enjoyed for its rich meat. The price of importing live crabs has ensured \
+	their scarcity, resulting in them being considered a Galactic delicacy."
+	value = CATALOGUER_REWARD_EASY
+
 /mob/living/simple_mob/animal/passive/crab
 	name = "crab"
 	desc = "A hard-shelled crustacean. Seems quite content to lounge around all the time."
 	tt_desc = "E Cancer bellianus"
 	faction = "crabs"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/crab)
 
 	icon_state = "crab"
 	icon_living = "crab"
 	icon_dead = "crab_dead"
 
 	mob_size = MOB_SMALL
+	randomized = TRUE
 
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "stomps"
 	friendly = "pinches"
 
+	meat_amount = 1
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/crab
 
 	say_list_type = /datum/say_list/crab
@@ -25,6 +35,7 @@
 	name = "Coffee"
 	real_name = "Coffee"
 	desc = "It's Coffee, the other pet!"
+	randomized = FALSE
 
 // Sif!
 
@@ -43,11 +54,11 @@
 	icon = 'icons/mob/fish.dmi'
 	tt_desc = "S Ocypode glacian"
 
-	catalogue_data = list(/datum/category_item/catalogue/fauna/sif_crab)
+	//Translating to new system.
+	mod_min = 50
+	mod_max = 150
 
-/mob/living/simple_mob/animal/passive/crab/sif/Initialize()
-	..()
-	adjust_scale(rand(5,15) / 10)
+	catalogue_data = list(/datum/category_item/catalogue/fauna/sif_crab)
 
 // Meat!
 

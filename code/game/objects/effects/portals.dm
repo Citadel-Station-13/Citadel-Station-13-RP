@@ -15,16 +15,11 @@ GLOBAL_LIST_BOILERPLATE(all_portals, /obj/effect/portal)
 /obj/effect/portal/Bumped(mob/M as mob|obj)
 	if(istype(M,/mob) && !(istype(M,/mob/living)))
 		return	//do not send ghosts, zshadows, ai eyes, etc
-	spawn(0)
-		src.teleport(M)
-		return
-	return
+	teleport(M)
 
 /obj/effect/portal/Crossed(AM as mob|obj)
-	spawn(0)
-		src.teleport(AM)
-		return
-	return
+	. = ..()
+	teleport(AM)
 
 /obj/effect/portal/attack_hand(mob/user as mob)
 	if(istype(user) && !(istype(user,/mob/living)))
@@ -34,12 +29,9 @@ GLOBAL_LIST_BOILERPLATE(all_portals, /obj/effect/portal)
 		return
 	return
 
-/obj/effect/portal/New()
-	..() // Necessary for the list boilerplate to work
-	spawn(300)
-		qdel(src)
-		return
-	return
+/obj/effect/portal/Initialize(mapload, ...)
+	. = ..()
+	QDEL_IN(src, 30 SECONDS)
 
 /obj/effect/portal/proc/teleport(atom/movable/M as mob|obj)
 	if(istype(M, /obj/effect)) //sparks don't teleport
@@ -52,9 +44,9 @@ GLOBAL_LIST_BOILERPLATE(all_portals, /obj/effect/portal)
 		qdel(src)
 		return
 	if (istype(M, /atom/movable))
-		if(prob(failchance)) //oh dear a problem, put em in deep space
+		if(prob(failchance))
 			src.icon_state = "portal1"
-			do_teleport(M, locate(rand(5, world.maxx - 5), rand(5, world.maxy -5), 3), 0)
+			do_teleport(M, locate(rand(5, world.maxx - 5), rand(5, world.maxy -5), pick(GLOB.using_map.get_map_levels(z))), 0)
 		else
 			do_teleport(M, target, 1) ///You will appear adjacent to the beacon
 

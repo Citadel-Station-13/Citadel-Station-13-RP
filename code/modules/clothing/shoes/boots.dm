@@ -15,13 +15,11 @@
 	name = "classic cowboy boots"
 	desc = "A classic looking pair of durable cowboy boots."
 	icon_state = "cowboy_classic"
-	item_state_slots = list(slot_r_hand_str = "leather", slot_l_hand_str = "leather")
 
 /obj/item/clothing/shoes/boots/cowboy/snakeskin
 	name = "snakeskin cowboy boots"
 	desc = "A pair of cowboy boots made from python skin."
 	icon_state = "cowboy_snakeskin"
-	item_state_slots = list(slot_r_hand_str = "white", slot_l_hand_str = "white")
 
 /obj/item/clothing/shoes/boots/jackboots
 	name = "jackboots"
@@ -29,11 +27,40 @@
 	icon_state = "jackboots"
 	armor = list(melee = 30, bullet = 10, laser = 10, energy = 15, bomb = 20, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/pickup/boots.ogg'
+
 
 /obj/item/clothing/shoes/boots/jackboots/toeless
 	name = "toe-less jackboots"
 	desc = "Modified pair of jackboots, particularly friendly to those species whose toes hold claws."
 	icon_state = "digiboots"
+	item_state_slots = list(slot_r_hand_str = "jackboots", slot_l_hand_str = "jackboots")
+	species_restricted = null
+
+/obj/item/clothing/shoes/boots/jackboots/knee
+	name = "knee-length jackboots"
+	desc = "Taller synthleather boots with an artificial shine."
+	icon_state = "kneeboots"
+	item_state_slots = list(slot_r_hand_str = "jackboots", slot_l_hand_str = "jackboots")
+
+/obj/item/clothing/shoes/boots/jackboots/toeless/knee
+	name = "toe-less knee-length jackboots"
+	desc = "Modified pair of taller boots, particularly friendly to those species whose toes hold claws."
+	icon_state = "digikneeboots"
+	item_state_slots = list(slot_r_hand_str = "jackboots", slot_l_hand_str = "jackboots")
+	species_restricted = null
+
+/obj/item/clothing/shoes/boots/jackboots/thigh
+	name = "thigh-length jackboots"
+	desc = "Even taller synthleather boots with an artificial shine."
+	icon_state = "thighboots"
+	item_state_slots = list(slot_r_hand_str = "jackboots", slot_l_hand_str = "jackboots")
+
+/obj/item/clothing/shoes/boots/jackboots/toeless/thigh
+	name = "toe-less thigh-length jackboots"
+	desc = "Modified pair of even taller boots, particularly friendly to those species whose toes hold claws."
+	icon_state = "digithighboots"
 	item_state_slots = list(slot_r_hand_str = "jackboots", slot_l_hand_str = "jackboots")
 	species_restricted = null
 
@@ -147,7 +174,7 @@
 	desc = "When you want to turn up the heat."
 	icon_state = "swat"
 	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 50, bio = 10, rad = 0)
-	item_flags = NOSLIP
+	clothing_flags = NOSLIP
 	siemens_coefficient = 0.6
 
 /obj/item/clothing/shoes/boots/combat //Basically SWAT shoes combined with galoshes.
@@ -156,7 +183,7 @@
 	icon_state = "swat"
 	force = 5
 	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 50, bio = 10, rad = 0)
-	item_flags = NOSLIP
+	clothing_flags = NOSLIP
 	siemens_coefficient = 0.6
 
 	cold_protection = FEET
@@ -188,12 +215,17 @@
 /obj/item/clothing/shoes/boots/swat/para/attack_self(mob/user as mob)
 	if(user.mind.isholy && !blessed)
 		blessed = TRUE
-		item_flags |= NOSLIP
-		to_chat(user, "<font color='blue'>You repeat the incantations etched into the boots.</font>")
+		clothing_flags |= NOSLIP
+		to_chat(user, "<font color=#4F49AF>You repeat the incantations etched into the boots.</font>")
 	else
 		blessed = FALSE
-		item_flags &= ~NOSLIP
-		to_chat(user, "<font color='blue'>You dispel the incantations etched into the boots for now.</font>")
+		clothing_flags &= ~NOSLIP
+		to_chat(user, "<font color=#4F49AF>You dispel the incantations etched into the boots for now.</font>")
 
 	if(!user.mind.isholy)
 		to_chat(user, "<font color='red'>You're not sure what language this is.</font>")
+
+/obj/item/clothing/shoes/boots/laconic
+	name = "laconic field boots"
+	desc = "These flexible boots cover the wearer's calves. An additional protective kneepad is integrated, perhaps to assist in collecting specimens in the field."
+	icon_state = "laconic"

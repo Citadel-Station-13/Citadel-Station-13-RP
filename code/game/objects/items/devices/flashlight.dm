@@ -5,12 +5,15 @@
 	icon_state = "flashlight"
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
-	matter = list(DEFAULT_WALL_MATERIAL = 50,"glass" = 20)
+	matter = list(MAT_STEEL = 50, MAT_GLASS = 20)
 	action_button_name = "Toggle Flashlight"
-	var/on = 0
-	var/brightness_on = 4 //luminosity when on
-	var/flashlight_power = 0.8	//lighting power when on
-	var/flashlight_colour = LIGHT_COLOR_INCANDESCENT_FLASHLIGHT	//lighting colour when on
+	var/on = FALSE
+	///Luminosity when on
+	var/brightness_on = 4
+	///Lighting power when on
+	var/flashlight_power = 0.8
+	///Lighting colour when on
+	var/flashlight_colour = LIGHT_COLOR_INCANDESCENT_FLASHLIGHT
 	var/obj/item/cell/cell
 	var/cell_type = /obj/item/cell/device
 	var/list/brightness_levels
@@ -18,7 +21,7 @@
 	var/power_usage
 	var/power_use = 1
 
-/obj/item/flashlight/Initialize()
+/obj/item/flashlight/Initialize(mapload)
 	. = ..()
 
 	if(power_use && cell_type)
@@ -49,19 +52,19 @@
 	if(choice)
 		brightness_level = choice
 		power_usage = brightness_levels[choice]
-		to_chat(user, "<span class='notice'>You set the brightness level on \the [src] to [brightness_level].</span>")
+		to_chat(user, SPAN_NOTICE("You set the brightness level on \the [src] to [brightness_level]."))
 		update_icon()
 
-/obj/item/flashlight/process()
+/obj/item/flashlight/process(delta_time)
 	if(!on || !cell)
 		return PROCESS_KILL
 
 	if(brightness_level && power_usage)
-		if(cell.use(power_usage) != power_usage) // we weren't able to use our full power_usage amount!
-			visible_message("<span class='warning'>\The [src] flickers before going dull.</span>")
-			set_light(0)
+		if(cell.use(power_usage) != power_usage) //We weren't able to use our full power_usage amount!
+			visible_message(SPAN_WARNING("\The [src] flickers before going dull."))
+			set_light(FALSE)
 			playsound(src.loc, 'sound/effects/sparks3.ogg', 10, 1, -3) //Small cue that your light went dull in your pocket.
-			on = 0
+			on = FALSE
 			update_icon()
 			return PROCESS_KILL
 
@@ -81,32 +84,31 @@
 		set_light(0)
 
 /obj/item/flashlight/examine(mob/user)
-	..()
+	. = ..()
 	if(power_use && brightness_level)
-		var/tempdesc
-		tempdesc += "\The [src] is set to [brightness_level]. "
+		. += "\The [src] is set to [brightness_level]. "
 		if(cell)
-			tempdesc += "\The [src] has a \the [cell] attached. "
-
+			. += "\The [src] has a \the [cell] attached. "
 			if(cell.charge <= cell.maxcharge*0.25)
-				tempdesc += "It appears to have a low amount of power remaining."
+				. += "It appears to have a low amount of power remaining."
 			else if(cell.charge > cell.maxcharge*0.25 && cell.charge <= cell.maxcharge*0.5)
-				tempdesc += "It appears to have an average amount of power remaining."
+				. += "It appears to have an average amount of power remaining."
 			else if(cell.charge > cell.maxcharge*0.5 && cell.charge <= cell.maxcharge*0.75)
-				tempdesc += "It appears to have an above average amount of power remaining."
+				. += "It appears to have an above average amount of power remaining."
 			else if(cell.charge > cell.maxcharge*0.75 && cell.charge <= cell.maxcharge)
-				tempdesc += "It appears to have a high amount of power remaining."
+				. += "It appears to have a high amount of power remaining."
 
-		to_chat(user, "[tempdesc]")
+/obj/item/flashlight/AltClick(mob/user)
+	attack_self(user)
 
 /obj/item/flashlight/attack_self(mob/user)
 	if(power_use)
 		if(!isturf(user.loc))
 			to_chat(user, "You cannot turn the light on while in this [user.loc].") //To prevent some lighting anomalities.
-			return 0
+			return FALSE
 		if(!cell || cell.charge == 0)
 			to_chat(user, "You flick the switch on [src], but nothing happens.")
-			return 0
+			return FALSE
 	on = !on
 	if(on && power_use)
 		START_PROCESSING(SSobj, src)
@@ -115,7 +117,7 @@
 	playsound(src.loc, 'sound/weapons/empty.ogg', 15, 1, -3)
 	update_icon()
 	user.update_action_buttons()
-	return 1
+	return TRUE
 
 /obj/item/flashlight/emp_act(severity)
 	for(var/obj/O in contents)
@@ -133,38 +135,38 @@
 		if(istype(H))
 			for(var/obj/item/clothing/C in list(H.head,H.wear_mask,H.glasses))
 				if(istype(C) && (C.body_parts_covered & EYES))
-					to_chat(user, "<span class='warning'>You're going to need to remove [C.name] first.</span>")
+					to_chat(user, SPAN_WARNING("You're going to need to remove [C.name] first."))
 					return
 
 			var/obj/item/organ/vision
 			if(H.species.vision_organ)
 				vision = H.internal_organs_by_name[H.species.vision_organ]
 			if(!vision)
-				to_chat(user, "<span class='warning'>You can't find any [H.species.vision_organ ? H.species.vision_organ : "eyes"] on [H]!</span>")
+				to_chat(user, SPAN_WARNING("You can't find any [H.species.vision_organ ? H.species.vision_organ : "eyes"] on [H]!"))
 
-			user.visible_message("<span class='notice'>\The [user] directs [src] to [M]'s eyes.</span>", \
-							 	 "<span class='notice'>You direct [src] to [M]'s eyes.</span>")
+			user.visible_message(SPAN_NOTICE("\The [user] directs [src] to [M]'s eyes."), \
+							 	 SPAN_NOTICE("You direct [src] to [M]'s eyes."))
 			if(H != user)	//can't look into your own eyes buster
 				if(M.stat == DEAD || M.blinded)	//mob is dead or fully blind
-					to_chat(user, "<span class='warning'>\The [M]'s pupils do not react to the light!</span>")
+					to_chat(user, SPAN_WARNING("\The [M]'s pupils do not react to the light!"))
 					return
 				if(XRAY in M.mutations)
-					to_chat(user, "<span class='notice'>\The [M] pupils give an eerie glow!</span>")
+					to_chat(user, SPAN_NOTICE("\The [M] pupils give an eerie glow!"))
 				if(vision.is_bruised())
-					to_chat(user, "<span class='warning'>There's visible damage to [M]'s [vision.name]!</span>")
+					to_chat(user, SPAN_WARNING("There's visible damage to [M]'s [vision.name]!"))
 				else if(M.eye_blurry)
-					to_chat(user, "<span class='notice'>\The [M]'s pupils react slower than normally.</span>")
+					to_chat(user, SPAN_NOTICE("\The [M]'s pupils react slower than normally."))
 				if(M.getBrainLoss() > 15)
-					to_chat(user, "<span class='notice'>There's visible lag between left and right pupils' reactions.</span>")
+					to_chat(user, SPAN_NOTICE("There's visible lag between left and right pupils' reactions."))
 
 				var/list/pinpoint = list("oxycodone"=1,"tramadol"=5)
 				var/list/dilating = list("space_drugs"=5,"mindbreaker"=1)
 				if(M.reagents.has_any_reagent(pinpoint) || H.ingested.has_any_reagent(pinpoint))
-					to_chat(user, "<span class='notice'>\The [M]'s pupils are already pinpoint and cannot narrow any more.</span>")
+					to_chat(user, SPAN_NOTICE("\The [M]'s pupils are already pinpoint and cannot narrow any more."))
 				else if(M.reagents.has_any_reagent(dilating) || H.ingested.has_any_reagent(dilating))
-					to_chat(user, "<span class='notice'>\The [M]'s pupils narrow slightly, but are still very dilated.</span>")
+					to_chat(user, SPAN_NOTICE("\The [M]'s pupils narrow slightly, but are still very dilated."))
 				else
-					to_chat(user, "<span class='notice'>\The [M]'s pupils narrow.</span>")
+					to_chat(user, SPAN_NOTICE("\The [M]'s pupils narrow."))
 
 			user.setClickCooldown(user.get_attack_speed(src)) //can be used offensively
 			M.flash_eyes()
@@ -177,9 +179,9 @@
 			cell.update_icon()
 			user.put_in_hands(cell)
 			cell = null
-			to_chat(user, "<span class='notice'>You remove the cell from the [src].</span>")
-			playsound(src, 'sound/machines/button.ogg', 30, 1, 0)
-			on = 0
+			to_chat(user, SPAN_NOTICE("You remove the cell from the [src]."))
+			playsound(src, 'sound/machines/button.ogg', 30, TRUE, 0)
+			on = FALSE
 			update_icon()
 			return
 		..()
@@ -195,7 +197,7 @@
 		if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech. why?
 			return
 
-		if (!( istype(over_object, /obj/screen) ))
+		if (!( istype(over_object, /atom/movable/screen) ))
 			return ..()
 
 		//makes sure that the thing is equipped, so that we can't drag it into our hand from miles away.
@@ -206,7 +208,7 @@
 		if (( usr.restrained() ) || ( usr.stat ))
 			return
 
-		if ((src.loc == usr) && !(istype(over_object, /obj/screen)) && !usr.unEquip(src))
+		if ((src.loc == usr) && !(istype(over_object, /atom/movable/screen)) && !usr.unEquip(src))
 			return
 
 		switch(over_object.name)
@@ -226,13 +228,13 @@
 					user.drop_item()
 					W.loc = src
 					cell = W
-					to_chat(user, "<span class='notice'>You install a cell in \the [src].</span>")
+					to_chat(user, SPAN_NOTICE("You install a cell in \the [src]."))
 					playsound(src, 'sound/machines/button.ogg', 30, 1, 0)
 					update_icon()
 				else
-					to_chat(user, "<span class='notice'>\The [src] already has a cell.</span>")
+					to_chat(user, SPAN_NOTICE("\The [src] already has a cell."))
 			else
-				to_chat(user, "<span class='notice'>\The [src] cannot use that type of cell.</span>")
+				to_chat(user, SPAN_NOTICE("\The [src] cannot use that type of cell."))
 
 	else
 		..()
@@ -242,6 +244,8 @@
 	desc = "A pen-sized light, used by medical staff."
 	icon_state = "penlight"
 	item_state = "pen"
+	drop_sound = 'sound/items/drop/accessory.ogg'
+	pickup_sound = 'sound/items/pickup/accessory.ogg'
 	slot_flags = SLOT_EARS
 	brightness_on = 2
 	w_class = ITEMSIZE_TINY
@@ -276,7 +280,7 @@
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_SMALL
 	attack_verb = list ("smacked", "thwacked", "thunked")
-	matter = list(DEFAULT_WALL_MATERIAL = 200,"glass" = 50)
+	matter = list(MAT_STEEL = 200, MAT_GLASS = 50)
 	hitsound = "swing_hit"
 
 /obj/item/flashlight/drone
@@ -331,12 +335,14 @@
 	var/on_damage = 7
 	var/produce_heat = 1500
 	power_use = 0
+	drop_sound = 'sound/items/drop/gloves.ogg'
+	pickup_sound = 'sound/items/pickup/gloves.ogg'
 
-/obj/item/flashlight/flare/New()
+/obj/item/flashlight/flare/Initialize(mapload)
+	. = ..()
 	fuel = rand(800, 1000) // Sorry for changing this so much but I keep under-estimating how long X number of ticks last in seconds.
-	..()
 
-/obj/item/flashlight/flare/process()
+/obj/item/flashlight/flare/process(delta_time)
 	var/turf/pos = get_turf(src)
 	if(pos)
 		pos.hotspot_expose(produce_heat, 5)
@@ -348,7 +354,7 @@
 		STOP_PROCESSING(SSobj, src)
 
 /obj/item/flashlight/flare/proc/turn_off()
-	on = 0
+	on = FALSE
 	src.force = initial(src.force)
 	src.damtype = initial(src.damtype)
 	update_icon()
@@ -357,7 +363,7 @@
 
 	// Usual checks
 	if(!fuel)
-		to_chat(user, "<span class='notice'>It's out of fuel.</span>")
+		to_chat(user, SPAN_NOTICE("It's out of fuel."))
 		return
 	if(on)
 		return
@@ -365,7 +371,7 @@
 	. = ..()
 	// All good, turn it on.
 	if(.)
-		user.visible_message("<span class='notice'>[user] activates the flare.</span>", "<span class='notice'>You pull the cord on the flare, activating it!</span>")
+		user.visible_message(SPAN_NOTICE("[user] activates the flare."), SPAN_NOTICE("You pull the cord on the flare, activating it!"))
 		src.force = on_damage
 		src.damtype = "fire"
 		START_PROCESSING(SSobj, src)
@@ -376,7 +382,7 @@
 	force = on_damage
 	damtype = "fire"
 	START_PROCESSING(SSobj, src)
-	return 1
+	return TRUE
 
 //Glowsticks
 
@@ -392,11 +398,11 @@
 	var/fuel = 0
 	power_use = 0
 
-/obj/item/flashlight/glowstick/New()
+/obj/item/flashlight/glowstick/Initialize(mapload)
+	. = ..()
 	fuel = rand(1600, 2000)
-	..()
 
-/obj/item/flashlight/glowstick/process()
+/obj/item/flashlight/glowstick/process(delta_time)
 	fuel = max(fuel - 1, 0)
 	if(!fuel || !on)
 		turn_off()
@@ -405,20 +411,20 @@
 		STOP_PROCESSING(SSobj, src)
 
 /obj/item/flashlight/glowstick/proc/turn_off()
-	on = 0
+	on = FALSE
 	update_icon()
 
 /obj/item/flashlight/glowstick/attack_self(mob/user)
 
 	if(!fuel)
-		to_chat(user, "<span class='notice'>The glowstick has already been turned on.</span>")
+		to_chat(user, SPAN_NOTICE("The glowstick has already been turned on."))
 		return
 	if(on)
 		return
 
 	. = ..()
 	if(.)
-		user.visible_message("<span class='notice'>[user] cracks and shakes the glowstick.</span>", "<span class='notice'>You crack and shake the glowstick, turning it on!</span>")
+		user.visible_message(SPAN_NOTICE("[user] cracks and shakes the glowstick."), SPAN_NOTICE("You crack and shake the glowstick, turning it on!"))
 		START_PROCESSING(SSobj, src)
 
 /obj/item/flashlight/glowstick/red
@@ -459,11 +465,11 @@
 	flashlight_colour = "#FFF423"
 	w_class = ITEMSIZE_TINY
 	brightness_on = 6
-	on = 1 //Bio-luminesence has one setting, on.
+	on = TRUE //Bio-luminesence has one setting, on.
 	power_use = 0
 
-/obj/item/flashlight/slime/New()
-	..()
+/obj/item/flashlight/slime/Initialize(mapload)
+	. = ..()
 	set_light(brightness_on, flashlight_power, flashlight_colour)
 
 /obj/item/flashlight/slime/update_icon()

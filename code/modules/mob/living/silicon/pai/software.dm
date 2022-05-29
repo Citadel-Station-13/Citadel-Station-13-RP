@@ -33,27 +33,27 @@ var/global/list/default_pai_software = list()
 			default_pai_software[P.id] = P
 	return r
 
-/mob/living/silicon/pai/New()
-	..()
+/mob/living/silicon/pai/Initialize(mapload)
+	. = ..()
 	software = default_pai_software.Copy()
 
 /mob/living/silicon/pai/verb/paiInterface()
 	set category = "pAI Commands"
 	set name = "Software Interface"
 
-	ui_interact(src)
+	nano_ui_interact(src)
 
-/mob/living/silicon/pai/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
+/mob/living/silicon/pai/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	if(user != src)
-		if(ui) ui.set_status(STATUS_CLOSE, 0)
+		if(ui) ui.set_status(UI_CLOSE, 0)
 		return
 
 	if(ui_key != "main")
 		var/datum/pai_software/S = software[ui_key]
 		if(S && !S.toggle)
-			S.on_ui_interact(src, ui, force_open)
+			S.on_nano_ui_interact(src, ui, force_open)
 		else
-			if(ui) ui.set_status(STATUS_CLOSE, 0)
+			if(ui) ui.set_status(UI_CLOSE, 0)
 		return
 
 	var/data[0]
@@ -107,7 +107,7 @@ var/global/list/default_pai_software = list()
 		if(S.toggle)
 			S.toggle(src)
 		else
-			ui_interact(src, ui_key = soft)
+			nano_ui_interact(src, ui_key = soft)
 		return 1
 
 	else if(href_list["stopic"])

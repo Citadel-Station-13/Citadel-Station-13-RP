@@ -1,4 +1,3 @@
-#define PROCESS_ACCURACY 10
 
 /obj/item/organ/internal/liver
 	name = "liver"
@@ -6,26 +5,27 @@
 	organ_tag = "liver"
 	parent_organ = BP_GROIN
 
-/obj/item/organ/internal/liver/process()
+/obj/item/organ/internal/liver/process(delta_time)
 	..()
-	if(!owner) return
+	if(!iscarbon(owner))
+		return
 
-	if(owner.life_tick % PROCESS_ACCURACY == 0)
+	if((owner.life_tick % 10) == 0)
 
 		//High toxins levels are dangerous
 		if(owner.getToxLoss() >= 50 && !owner.reagents.has_reagent("anti_toxin"))
 			//Healthy liver suffers on its own
 			if (src.damage < min_broken_damage)
-				src.damage += 0.2 * PROCESS_ACCURACY
+				src.damage += 0.2 * (delta_time * 5)
 			//Damaged one shares the fun
 			else
 				var/obj/item/organ/internal/O = pick(owner.internal_organs)
 				if(O)
-					O.damage += 0.2  * PROCESS_ACCURACY
+					O.damage += 0.2  * (delta_time * 5)
 
 		//Detox can heal small amounts of damage
 		if (src.damage && src.damage < src.min_bruised_damage && owner.reagents.has_reagent("anti_toxin"))
-			src.damage -= 0.2 * PROCESS_ACCURACY
+			src.damage -= 0.2 * (delta_time * 5)
 
 		if(src.damage < 0)
 			src.damage = 0
@@ -39,11 +39,11 @@
 
 		// Do some reagent processing.
 		if(owner.chem_effects[CE_ALCOHOL_TOXIC])
-			take_damage(owner.chem_effects[CE_ALCOHOL_TOXIC] * 0.1 * PROCESS_ACCURACY, prob(1)) // Chance to warn them
+			take_damage(owner.chem_effects[CE_ALCOHOL_TOXIC] * 0.1 * (delta_time * 5), prob(1)) // Chance to warn them
 			if(filter_effect < 2)	//Liver is badly damaged, you're drinking yourself to death
-				owner.adjustToxLoss(owner.chem_effects[CE_ALCOHOL_TOXIC] * 0.2 * PROCESS_ACCURACY)
+				owner.adjustToxLoss(owner.chem_effects[CE_ALCOHOL_TOXIC] * 0.2 * (delta_time * 5))
 			if(filter_effect < 3)
-				owner.adjustToxLoss(owner.chem_effects[CE_ALCOHOL_TOXIC] * 0.1 * PROCESS_ACCURACY)
+				owner.adjustToxLoss(owner.chem_effects[CE_ALCOHOL_TOXIC] * 0.1 * (delta_time * 5))
 
 /obj/item/organ/internal/liver/handle_germ_effects()
 	. = ..() //Up should return an infection level as an integer
@@ -55,16 +55,17 @@
 			owner.custom_pain("There's a sharp pain in your upper-right abdomen!",1)
 	if (. >= 2)
 		if(prob(1) && owner.getToxLoss() < owner.getMaxHealth()*0.3)
-			//owner << "" //Toxins provide their own messages for pain
+			//to_chat(owner, "") //Toxins provide their own messages for pain
 			owner.adjustToxLoss(5) //Not realistic to PA but there are basically no 'real' liver infections
 
 /obj/item/organ/internal/liver/grey
 	icon_state = "liver_grey"
 
-/obj/item/organ/internal/liver/grey/colormatch/New()
-	..()
-	var/mob/living/carbon/human/H = null
-	spawn(15)
-		if(ishuman(owner))
-			H = owner
-			color = H.species.blood_color
+/obj/item/organ/internal/liver/grey/colormatch/Initialize(mapload)
+	. = ..()
+	addtimer(CALLBACK(src, .proc/sync_color), 15)
+
+/obj/item/organ/internal/liver/grey/colormatch/proc/sync_color()
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		color = H.species.blood_color

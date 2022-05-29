@@ -1,56 +1,52 @@
-/obj/effect/effect/water
+/obj/effect/water
 	name = "water"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "extinguish"
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	pass_flags = PASSTABLE | PASSGRILLE | PASSBLOB
+	var/list/touched
 
-/obj/effect/effect/water/New(loc)
-	..()
-	spawn(150) // In case whatever made it forgets to delete it
-		if(src)
-			qdel(src)
+/obj/effect/water/Initialize(mapload)
+	. = ..()
+	QDEL_IN(src, 15 SECONDS)
 
-/obj/effect/effect/water/proc/set_color() // Call it after you move reagents to it
+/obj/effect/water/proc/set_color() // Call it after you move reagents to it
 	icon += reagents.get_color()
 
-/obj/effect/effect/water/proc/set_up(var/turf/target, var/step_count = 5, var/delay = 5)
+/obj/effect/water/proc/set_up(var/turf/target, var/step_count = 5, var/delay = 5)
 	if(!target)
 		return
+	touched = list()
+	QDEL_IN(src, 10)
 	for(var/i = 1 to step_count)
 		if(!loc)
 			return
 		step_towards(src, target)
 		var/turf/T = get_turf(src)
 		if(T && reagents)
-			reagents.touch_turf(T)
-			var/mob/M
-			for(var/atom/A in T)
-				if(!ismob(A) && A.simulated) // Mobs are handled differently
-					reagents.touch(A, reagents.total_volume)
-				else if(ismob(A) && !M)
-					M = A
-			if(M)
-				reagents.splash(M, reagents.total_volume)
-				break
-			if(T == get_turf(target))
-				break
+			if(!(T in touched))
+				touched |= T
+				reagents.touch_turf(T)
+			for(var/atom/movable/AM in T)
+				if(!isobj(AM) && !ismob(AM))
+					continue
+				if(AM in touched)
+					continue
+				touched |= AM
+				reagents.touch(AM, reagents.total_volume)
 		sleep(delay)
-	sleep(10)
-	qdel(src)
 
-/obj/effect/effect/water/Move(turf/newloc)
-	if(newloc.density)
-		return 0
+/obj/effect/water/Crossed(atom/movable/AM, oldloc)
 	. = ..()
-
-/obj/effect/effect/water/Bump(atom/A)
-	if(reagents)
-		reagents.touch(A)
-	return ..()
+	if(!isobj(AM) && !ismob(AM))
+		return
+	if(AM in touched)
+		return
+	touched |= AM
+	reagents?.touch(AM, reagents.total_volume)
 
 //Used by spraybottles.
-/obj/effect/effect/water/chempuff
+/obj/effect/water/chempuff
 	name = "chemicals"
 	icon = 'icons/obj/chempuff.dmi'
 	icon_state = ""

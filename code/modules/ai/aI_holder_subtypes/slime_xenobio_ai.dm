@@ -92,7 +92,7 @@
 					holder.say(pick("Why...?", "I don't understand...?", "Cruel...", "Stop...", "Nooo..."))
 			resentment++ // Done after check so first time will never enrage.
 
-	discipline = between(0, discipline + amount, 10)
+	discipline = clamp( discipline + amount, 0,  10)
 	my_slime.update_mood()
 
 // This slime always enrages if disciplined.
@@ -133,7 +133,7 @@
 		return
 	rabid = TRUE
 	my_slime.update_mood()
-	my_slime.visible_message(span("danger", "\The [src] enrages!"))
+	my_slime.visible_message(SPAN_DANGER("\The [src] enrages!"))
 
 // Called when using a pacification agent (or it's Kendrick being initalized).
 /datum/ai_holder/simple_mob/xenobio_slime/proc/pacify()

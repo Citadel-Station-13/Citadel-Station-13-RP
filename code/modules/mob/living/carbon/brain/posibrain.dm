@@ -16,7 +16,7 @@
 /obj/item/mmi/digital/posibrain/attack_self(mob/user as mob)
 	if(brainmob && !brainmob.key && searching == 0)
 		//Start the process of searching for a new user.
-		to_chat(user, "<font color='blue'>You carefully locate the manual activation switch and start the positronic brain's boot process.</font>")
+		to_chat(user, "<font color=#4F49AF>You carefully locate the manual activation switch and start the positronic brain's boot process.</font>")
 		icon_state = "posibrain-searching"
 		src.searching = 1
 		src.request_player()
@@ -68,7 +68,7 @@
 
 	var/turf/T = get_turf_or_move(src.loc)
 	for (var/mob/M in viewers(T))
-		M.show_message("<font color='blue'>The positronic brain beeps as it loads a personality.</font>")
+		M.show_message("<font color=#4F49AF>The positronic brain beeps as it loads a personality.</font>")
 	playsound(src, 'sound/misc/boobeebeep.ogg', 50, 1)
 	icon_state = "posibrain-occupied"
 
@@ -82,14 +82,13 @@
 
 	var/turf/T = get_turf_or_move(src.loc)
 	for (var/mob/M in viewers(T))
-		M.show_message("<font color='blue'>The positronic brain buzzes and beeps, and the golden lights fade away. Perhaps you could try again?</font>")
+		M.show_message("<font color=#4F49AF>The positronic brain buzzes and beeps, and the golden lights fade away. Perhaps you could try again?</font>")
 	playsound(src, 'sound/misc/buzzbeep.ogg', 50, 1)
 
 /obj/item/mmi/digital/posibrain/examine(mob/user)
-	if(!..(user))
-		return
+	. = ..()
 
-	var/msg = "<span class='info'>*---------*</span>\nThis is \icon[src] \a <EM>[src]</EM>!\n[desc]\n"
+	var/msg = "<span class='info'>*---------*</span>\nThis is [icon2html(thing = src, target = user)] \a <EM>[src]</EM>!\n[desc]\n"
 	msg += "<span class='warning'>"
 
 	if(src.brainmob && src.brainmob.key)
@@ -101,7 +100,7 @@
 	else
 		msg += "<span class='deadsay'>It appears to be completely inactive.</span>\n"
 	msg += "</span><span class='info'>*---------*</span>"
-	user << msg
+	. += msg
 	return
 
 /obj/item/mmi/digital/posibrain/emp_act(severity)
@@ -119,7 +118,7 @@
 				src.brainmob.emp_damage += rand(0,5)
 	..()
 
-/obj/item/mmi/digital/posibrain/New()
-	..()
+/obj/item/mmi/digital/posibrain/Initialize(mapload)
+	. = ..()
 	src.brainmob.name = "[pick(list("PBU","HIU","SINA","ARMA","OSI"))]-[rand(100, 999)]"
 	src.brainmob.real_name = src.brainmob.name

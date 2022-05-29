@@ -1,67 +1,91 @@
 //////////////////
 // AR HUD Overlays
-/datum/nifsoft/ar_civ
+/datum/nifsoft/hud
+	var/list/data_huds = list()
+
+/datum/nifsoft/hud/activate(force)
+	. = ..()
+	if(.)
+		// i'd refactor nifsofts but i have a personal goddamn vendetta against nifs
+		for(var/i in data_huds)
+			var/datum/atom_hud/H = GLOB.huds[i]
+			H.add_hud_to(nif.human)
+
+/datum/nifsoft/hud/deactivate(force)
+	. = ..()
+	if(.)
+		for(var/i in data_huds)
+			var/datum/atom_hud/H = GLOB.huds[i]
+			H.remove_hud_from(nif.human)
+
+/datum/nifsoft/hud/ar_civ
 	name = "AR Overlay (Civ)"
 	desc = "Provides a general identification and health status overlay on your vision with no frills."
 	list_pos = NIF_CIVILIAN_AR
 	cost = 250
 	a_drain = 0.01
-	planes_enabled = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_AUGMENTED)
+	planes_enabled = list(VIS_AUGMENTED)
 	vision_flags = (NIF_V_AR_CIVILIAN)
+	data_huds = list(DATA_HUD_ID_JOB)
 	incompatible_with = list(NIF_MEDICAL_AR,NIF_SECURITY_AR,NIF_ENGINE_AR,NIF_SCIENCE_AR,NIF_OMNI_AR)
 
-/datum/nifsoft/ar_med
+/datum/nifsoft/hud/ar_med
 	name = "AR Overlay (Med)"
 	desc = "Like the civilian model, but provides medical records access and virus database lookup."
 	list_pos = NIF_MEDICAL_AR
 	cost = 375
 	access = access_medical
 	a_drain = 0.01
-	planes_enabled = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_CH_STATUS_R,VIS_CH_BACKUP,VIS_AUGMENTED)
+	planes_enabled = list(VIS_AUGMENTED)
+	data_huds = list(DATA_HUD_MEDICAL)
 	vision_flags = (NIF_V_AR_MEDICAL)
 	incompatible_with = list(NIF_CIVILIAN_AR,NIF_SECURITY_AR,NIF_ENGINE_AR,NIF_SCIENCE_AR,NIF_OMNI_AR)
 
-/datum/nifsoft/ar_sec
+/datum/nifsoft/hud/ar_sec
 	name = "AR Overlay (Sec)"
 	desc = "Like the civilian model, but provides access to arrest status and security records."
 	list_pos = NIF_SECURITY_AR
 	cost = 375
 	access = access_security
 	a_drain = 0.01
-	planes_enabled = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_CH_WANTED,VIS_AUGMENTED)
+	data_huds = list(DATA_HUD_SECURITY_ADVANCED)
+	planes_enabled = list(VIS_AUGMENTED)
 	vision_flags = (NIF_V_AR_SECURITY)
 	incompatible_with = list(NIF_CIVILIAN_AR,NIF_MEDICAL_AR,NIF_ENGINE_AR,NIF_SCIENCE_AR,NIF_OMNI_AR)
 
-/datum/nifsoft/ar_eng
+/datum/nifsoft/hud/ar_eng
 	name = "AR Overlay (Eng)"
 	desc = "Like the civilian model, but provides station alert notices."
 	list_pos = NIF_ENGINE_AR
 	cost = 375
 	access = access_engine
 	a_drain = 0.01
-	planes_enabled = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_AUGMENTED)
+	data_huds = list(DATA_HUD_ID_JOB)
+	planes_enabled = list(VIS_AUGMENTED)
 	vision_flags = (NIF_V_AR_ENGINE)
 	incompatible_with = list(NIF_CIVILIAN_AR,NIF_MEDICAL_AR,NIF_SECURITY_AR,NIF_SCIENCE_AR,NIF_OMNI_AR)
 
-/datum/nifsoft/ar_science
+/datum/nifsoft/hud/ar_science
 	name = "AR Overlay (Sci)"
 	desc = "Like the civilian model, but provides ... well, nothing. For now."
 	list_pos = NIF_SCIENCE_AR
 	cost = 375
 	access = access_research
 	a_drain = 0.01
-	planes_enabled = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_AUGMENTED)
+	data_huds = list(DATA_HUD_ID_JOB)
+	planes_enabled = list(VIS_AUGMENTED)
 	vision_flags = (NIF_V_AR_SCIENCE)
 	incompatible_with = list(NIF_CIVILIAN_AR,NIF_MEDICAL_AR,NIF_SECURITY_AR,NIF_ENGINE_AR,NIF_OMNI_AR)
 
-/datum/nifsoft/ar_omni
+/datum/nifsoft/hud/ar_omni
 	name = "AR Overlay (Omni)"
 	desc = "Like the civilian model, but provides most of the features of the medical and security overlays as well."
 	list_pos = NIF_OMNI_AR
 	cost = 375
 	access = access_captain
 	a_drain = 0.01
-	planes_enabled = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_CH_STATUS_R,VIS_CH_BACKUP,VIS_CH_WANTED,VIS_AUGMENTED)
+	data_huds = list(DATA_HUD_SECURITY_ADVANCED, DATA_HUD_MEDICAL)
+	planes_enabled = list(VIS_AUGMENTED)
 	vision_flags = (NIF_V_AR_OMNI)
 	incompatible_with = list(NIF_CIVILIAN_AR,NIF_MEDICAL_AR,NIF_SECURITY_AR,NIF_ENGINE_AR,NIF_SCIENCE_AR)
 
@@ -104,14 +128,9 @@
 	tick_flags = NIF_ACTIVETICK
 	planes_enabled = list(VIS_FULLBRIGHT, VIS_MESONS)
 	vision_flags = (NIF_V_MESONS)
+	vision_flags_mob = SEE_TURFS
 	incompatible_with = list(NIF_MATERIAL,NIF_THERMALS,NIF_NIGHTVIS)
-
-	life()
-		if((. = ..()))
-			var/mob/living/carbon/human/H = nif.human
-			H.sight |= SEE_TURFS
-			if(H.client)
-				H.client.screen |= GLOB.global_hud.meson
+	vision_exclusive = TRUE
 
 /datum/nifsoft/material
 	name = "Material Scanner"
@@ -123,14 +142,9 @@
 	tick_flags = NIF_ACTIVETICK
 	planes_enabled = list(VIS_FULLBRIGHT)
 	vision_flags = (NIF_V_MATERIAL)
+	vision_flags_mob = SEE_OBJS
 	incompatible_with = list(NIF_MESONS,NIF_THERMALS,NIF_NIGHTVIS)
-
-	life()
-		if((. = ..()))
-			var/mob/living/carbon/human/H = nif.human
-			H.sight |= SEE_OBJS
-			if(H.client)
-				H.client.screen |= GLOB.global_hud.material
+	vision_exclusive = TRUE
 
 /datum/nifsoft/thermals
 	name = "Thermal Scanner"
@@ -141,16 +155,11 @@
 	illegal = TRUE
 	access = 999
 	tick_flags = NIF_ACTIVETICK
-	planes_enabled = list(VIS_FULLBRIGHT)
+	planes_enabled = list(VIS_FULLBRIGHT, VIS_CLOAKED)
 	vision_flags = (NIF_V_THERMALS)
+	vision_flags_mob = SEE_MOBS
 	incompatible_with = list(NIF_MESONS,NIF_MATERIAL,NIF_NIGHTVIS)
-
-	life()
-		if((. = ..()))
-			var/mob/living/carbon/human/H = nif.human
-			H.sight |= SEE_MOBS
-			if(H.client)
-				H.client.screen |= GLOB.global_hud.thermal
+	vision_exclusive = TRUE
 
 /datum/nifsoft/nightvis
 	name = "Low-Light Amp"
@@ -162,11 +171,6 @@
 	tick_flags = NIF_ACTIVETICK
 	planes_enabled = list(VIS_FULLBRIGHT)
 	vision_flags = (NIF_V_NIGHTVIS)
+	darkness_view = 7
 	incompatible_with = list(NIF_MESONS,NIF_MATERIAL,NIF_THERMALS)
-
-	life()
-		if((. = ..()))
-			var/mob/living/carbon/human/H = nif.human
-			H.see_in_dark += 7
-			if(H.client)
-				H.client.screen |= GLOB.global_hud.nvg
+	vision_exclusive = TRUE

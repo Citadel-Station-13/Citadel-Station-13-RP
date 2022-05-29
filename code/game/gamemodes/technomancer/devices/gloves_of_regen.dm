@@ -36,16 +36,16 @@
 			wearer.custom_pain("Your hands hurt like hell!",1)
 		wearer = null
 
-/obj/item/clothing/gloves/regen/New()
+/obj/item/clothing/gloves/regen/Initialize(mapload)
+	. = ..()
 	START_PROCESSING(SSobj, src)
-	..()
 
 /obj/item/clothing/gloves/regen/Destroy()
 	wearer = null
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/clothing/gloves/regen/process()
+/obj/item/clothing/gloves/regen/process(delta_time)
 	if(!wearer || wearer.isSynthetic() || wearer.stat == DEAD || wearer.nutrition <= 10)
 		return // Robots and dead people don't have a metabolism.
 

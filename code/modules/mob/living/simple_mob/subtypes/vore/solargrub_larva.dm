@@ -1,7 +1,7 @@
 var/global/list/grub_machine_overlays = list()
 
 /mob/living/simple_mob/animal/solargrub_larva
-	name = "solargrub larva"
+	name = "Solargrub larva"
 	desc = "A tiny wormy thing that can grow to massive sizes under the right conditions."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/solargrub)
 	icon = 'icons/mob/vore.dmi'
@@ -35,7 +35,7 @@ var/global/list/grub_machine_overlays = list()
 	//stop_when_pulled = 0
 
 	var/static/list/ignored_machine_types = list(
-		/obj/machinery/atmospherics/unary/vent_scrubber,
+		/obj/machinery/atmospherics/component/unary/vent_scrubber,
 		/obj/machinery/door/firedoor,
 		/obj/machinery/button/windowtint
 		)
@@ -56,8 +56,8 @@ var/global/list/grub_machine_overlays = list()
 	GLOB.solargrubs -= src
 	return ..()
 
-/mob/living/simple_mob/animal/solargrub_larva/New()
-	..()
+/mob/living/simple_mob/animal/solargrub_larva/Initialize(mapload)
+	. = ..()
 	powermachine = new(src)
 	sparks = new(src)
 	sparks.set_up()
@@ -94,13 +94,13 @@ var/global/list/grub_machine_overlays = list()
 	if(istype(loc, /obj/machinery))
 		if(machine_effect && air_master.current_cycle%30)
 			for(var/mob/M in player_list)
-				M << machine_effect
+				SEND_IMAGE(M, machine_effect)
 		if(prob(10))
 			sparks.start()
 		return
 
 /mob/living/simple_mob/animal/solargrub_larva/attack_target(atom/A)
-	if(istype(A, /obj/machinery) && !istype(A, /obj/machinery/atmospherics/unary/vent_pump))
+	if(istype(A, /obj/machinery) && !istype(A, /obj/machinery/atmospherics/component/unary/vent_pump))
 		var/obj/machinery/M = A
 		if(is_type_in_list(M, ignored_machine_types))
 			return
@@ -111,8 +111,8 @@ var/global/list/grub_machine_overlays = list()
 		enter_machine(M)
 		return TRUE
 
-	if(istype(A, /obj/machinery/atmospherics/unary/vent_pump))
-		var/obj/machinery/atmospherics/unary/vent_pump/V = A
+	if(istype(A, /obj/machinery/atmospherics/component/unary/vent_pump))
+		var/obj/machinery/atmospherics/component/unary/vent_pump/V = A
 		if(V.welded)
 			return
 		do_ventcrawl(V)
@@ -131,7 +131,7 @@ var/global/list/grub_machine_overlays = list()
 		generate_machine_effect(M)
 	machine_effect = image(grub_machine_overlays[M.type], M) //Can't do this the reasonable way with an overlay,
 	for(var/mob/L in player_list)				//because nearly every machine updates its icon by removing all overlays first
-		L << machine_effect
+		SEND_IMAGE(L, machine_effect)
 
 /mob/living/simple_mob/animal/solargrub_larva/proc/generate_machine_effect(var/obj/machinery/M)
 	var/icon/I = new /icon(M.icon, M.icon_state)
@@ -156,10 +156,10 @@ var/global/list/grub_machine_overlays = list()
 	spawn(30)
 		set_AI_busy(FALSE)
 
-/mob/living/simple_mob/animal/solargrub_larva/proc/do_ventcrawl(var/obj/machinery/atmospherics/unary/vent_pump/vent)
+/mob/living/simple_mob/animal/solargrub_larva/proc/do_ventcrawl(var/obj/machinery/atmospherics/component/unary/vent_pump/vent)
 	if(!vent)
 		return
-	var/obj/machinery/atmospherics/unary/vent_pump/end_vent = get_safe_ventcrawl_target(vent)
+	var/obj/machinery/atmospherics/component/unary/vent_pump/end_vent = get_safe_ventcrawl_target(vent)
 	if(!end_vent)
 		return
 	forceMove(vent)
@@ -206,7 +206,7 @@ var/global/list/grub_machine_overlays = list()
 /datum/ai_holder/simple_mob/solargrub_larva
 	//var/fleeing
 	var/static/list/ignored_machine_types = list(
-		/obj/machinery/atmospherics/unary/vent_scrubber,
+		/obj/machinery/atmospherics/component/unary/vent_scrubber,
 		/obj/machinery/door/firedoor,
 		/obj/machinery/button/windowtint
 		)
@@ -218,8 +218,8 @@ var/global/list/grub_machine_overlays = list()
 
 	for(var/AT in typecache_filter_list(range(vision_range, holder), potential_targets))
 		var/obj/machinery/M = AT
-		if(istype(M, /obj/machinery/atmospherics/unary/vent_pump))
-			var/obj/machinery/atmospherics/unary/vent_pump/V = M
+		if(istype(M, /obj/machinery/atmospherics/component/unary/vent_pump))
+			var/obj/machinery/atmospherics/component/unary/vent_pump/V = M
 			if(!V.welded && prob(50))
 				actual_targets += M
 			continue
@@ -250,25 +250,25 @@ var/global/list/grub_machine_overlays = list()
 	return
 
 /datum/ai_holder/simple_mob/solargrub_larva/post_melee_attack(atom/A)
-	if(istype(A, /obj/machinery) && !istype(A, /obj/machinery/atmospherics/unary/vent_pump))
+	if(istype(A, /obj/machinery) && !istype(A, /obj/machinery/atmospherics/component/unary/vent_pump))
 		if(ignored_targets.len > 3)
 			ignored_targets.Cut(1,1)
 		ignored_targets += A
 
 
-/obj/machinery/abstract_grub_machine/New()
-	..()
+/obj/machinery/abstract_grub_machine/Initialize(mapload, newdir)
+	. = ..()
 	shuffle_power_usages()
 	grub = loc
 	if(!istype(grub))
 		grub = null
-		qdel(src)
+		return INITIALIZE_HINT_QDEL
 
 /obj/machinery/abstract_grub_machine/Destroy()
 	grub = null
 	return ..()
 
-/obj/machinery/abstract_grub_machine/process()
+/obj/machinery/abstract_grub_machine/process(delta_time)
 	if(!draining)
 		return
 	var/area/A = get_area(src)

@@ -16,7 +16,7 @@
 	aspect = ASPECT_SHOCK
 	glow_color = "#0000FF" //TODO
 
-/obj/item/spell/aura/shock/process()
+/obj/item/spell/aura/shock/process(delta_time)
 	if(!pay_energy(500))
 		qdel(src)
 	var/list/nearby_mobs = range(calculate_spell_power(4),owner)

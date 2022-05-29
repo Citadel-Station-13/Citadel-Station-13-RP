@@ -1,26 +1,21 @@
 /mob/living/silicon/ai
 	var/mob/living/silicon/robot/deployed_shell = null //For shell control
 
-/mob/living/silicon/ai/Initialize()
-	if(config_legacy.allow_ai_shells)
-		verbs += /mob/living/silicon/ai/proc/deploy_to_shell_act
-	return ..()
-
 /mob/living/silicon/ai/proc/deploy_to_shell(var/mob/living/silicon/robot/target)
 	if(!config_legacy.allow_ai_shells)
-		to_chat(src, span("warning", "AI Shells are not allowed on this server. You shouldn't have this verb because of it, so consider making a bug report."))
+		to_chat(src, SPAN_WARNING( "AI Shells are not allowed on this server. You shouldn't have this verb because of it, so consider making a bug report."))
 		return
 
 	if(incapacitated())
-		to_chat(src, span("warning", "You are incapacitated!"))
+		to_chat(src, SPAN_WARNING( "You are incapacitated!"))
 		return
 
 	if(lacks_power())
-		to_chat(src, span("warning", "Your core lacks power, wireless is disabled."))
+		to_chat(src, SPAN_WARNING( "Your core lacks power, wireless is disabled."))
 		return
 
 	if(control_disabled)
-		to_chat(src, span("warning", "Wireless networking module is offline."))
+		to_chat(src, SPAN_WARNING( "Wireless networking module is offline."))
 		return
 
 	var/list/possible = list()
@@ -28,20 +23,20 @@
 	for(var/borgie in GLOB.available_ai_shells)
 		var/mob/living/silicon/robot/R = borgie
 		var/turf/T = get_turf(R)
-		if(R.shell && !R.deployed && (R.stat != DEAD) && (!R.connected_ai || (R.connected_ai == src) )  && !(GLOB.using_map.ai_shell_restricted && !(T.z in GLOB.using_map.ai_shell_allowed_levels)) )	//VOREStation Edit: shell restrictions
+		if(R.shell && !R.deployed && (R.stat != DEAD) && (!R.connected_ai || (R.connected_ai == src) )  && !(GLOB.using_map.ai_shell_restricted && !(T.z in GLOB.using_map.ai_shell_allowed_levels)) )
 			possible += R
 
 	if(!LAZYLEN(possible))
-		to_chat(src, span("warning", "No usable AI shell beacons detected."))
+		to_chat(src, SPAN_WARNING( "No usable AI shell beacons detected."))
 
 	if(!target || !(target in possible)) //If the AI is looking for a new shell, or its pre-selected shell is no longer valid
 		target = input(src, "Which body to control?") as null|anything in possible
 
 	if(!target || target.stat == DEAD || target.deployed || !(!target.connected_ai || (target.connected_ai == src) ) )
 		if(target)
-			to_chat(src, span("warning", "It is no longer possible to deploy to \the [target]."))
+			to_chat(src, SPAN_WARNING( "It is no longer possible to deploy to \the [target]."))
 		else
-			to_chat(src, span("notice", "Deployment aborted."))
+			to_chat(src, SPAN_NOTICE("Deployment aborted."))
 		return
 
 	else if(mind)
@@ -59,5 +54,5 @@
 
 /mob/living/silicon/ai/proc/disconnect_shell(message = "Your remote connection has been reset!")
 	if(deployed_shell) // Forcibly call back AI in event of things such as damage, EMP or power loss.
-		message = span("danger", message)
+		message = SPAN_DANGER(message)
 		deployed_shell.undeploy(message)

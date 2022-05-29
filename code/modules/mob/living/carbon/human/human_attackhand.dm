@@ -1,5 +1,5 @@
 /mob/living/carbon/human/proc/get_unarmed_attack(var/mob/living/carbon/human/target, var/hit_zone)
-	// VOREStation Edit - Begin
+
 	if(nif && nif.flag_check(NIF_C_HARDCLAWS,NIF_FLAGS_COMBAT)){return unarmed_hardclaws}
 	if(src.default_attack && src.default_attack.is_usable(src, target, hit_zone))
 		if(pulling_punches)
@@ -7,7 +7,7 @@
 			if(soft_type)
 				return soft_type
 		return src.default_attack
-	// VOREStation Edit - End
+
 	if(src.gloves)
 		var/obj/item/clothing/gloves/G = src.gloves
 		if(istype(G) && G.special_attack && G.special_attack.is_usable(src, target, hit_zone))
@@ -62,10 +62,10 @@
 	switch(M.a_intent)
 		if(INTENT_HELP)
 
-			// VOREStation Edit - Begin
+
 			if (istype(H) && attempt_to_scoop(H))
 				return 0;
-			// VOREStation Edit - End
+
 			if(istype(H) && health < config_legacy.health_threshold_crit)
 				if(!H.check_has_mouth())
 					to_chat(H, "<span class='danger'>You don't have a mouth, you cannot perform CPR!</span>")
@@ -126,9 +126,7 @@
 
 			H.do_attack_animation(src)
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
-			//VORESTATION EDIT
 			visible_message("<span class='warning'>[M] has grabbed [src] [(M.zone_sel.selecting == BP_L_HAND || M.zone_sel.selecting == BP_R_HAND)? "by [(gender==FEMALE)? "her" : ((gender==MALE)? "his": "their")] hands": "passively"]!</span>")
-			//VORESTATION END END
 
 			return TRUE
 
@@ -216,7 +214,7 @@
 						attack_message = "[H] attempted to strike [src], but missed!"
 					else
 						attack_message = "[H] attempted to strike [src], but [TT.he] rolled out of the way!"
-						src.setDir(pick(cardinal))
+						src.setDir(pick(GLOB.cardinal))
 					miss_type = 1
 
 			if(!miss_type && block)

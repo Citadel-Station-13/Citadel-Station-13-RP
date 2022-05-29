@@ -37,7 +37,7 @@
 /obj/structure/bookcase/manuals/xenoarchaeology
 	name = "Xenoarchaeology Manuals bookcase"
 
-/obj/structure/bookcase/manuals/xenoarchaeology/Initialize()
+/obj/structure/bookcase/manuals/xenoarchaeology/Initialize(mapload)
 	. = ..()
 	new /obj/item/book/manual/excavation(src)
 	new /obj/item/book/manual/mass_spectrometry(src)
@@ -61,7 +61,7 @@
 		/obj/item/clothing/under/rank/scientist,
 		/obj/item/clothing/suit/storage/toggle/labcoat,
 		/obj/item/clothing/shoes/white,
-		/obj/item/melee/umbrella, // vorestation addition,
+		/obj/item/melee/umbrella,
 		/obj/item/clothing/glasses/science,
 		/obj/item/radio/headset/headset_sci,
 		/obj/item/storage/belt/archaeology,

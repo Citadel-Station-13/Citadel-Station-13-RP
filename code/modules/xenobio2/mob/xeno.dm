@@ -74,15 +74,12 @@ Also includes Life and New
 
 		return 1	//Everything worked okay.
 
-/mob/living/simple_mob/xeno/New()
-
+/mob/living/simple_mob/xeno/Initialize(mapload)
 	traitdat = new()
-
 	ProcessTraits()
-
-	..()
+	. =..()
 	if(colored)
-		color = traitdat.get_trait(TRAIT_XENO_COLOR)
+		add_atom_colour(traitdat.get_trait(TRAIT_XENO_COLOR), FIXED_COLOUR_PRIORITY)
 	create_reagents(internal_vol)
 	temp_chem_holder = new()
 	temp_chem_holder.create_reagents(20)
@@ -93,7 +90,7 @@ Also includes Life and New
 	traitdat.source = name
 
 	if(!health)
-		stat = DEAD
+		set_stat(DEAD)
 
 /mob/living/simple_mob/xeno/bullet_act(var/obj/item/projectile/Proj)
 	if(istype(Proj, /obj/item/projectile/beam/stun/xeno))

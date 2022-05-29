@@ -1,15 +1,22 @@
+/proc/generate_speech_bubble(var/bubble_loc, var/speech_state, var/set_layer = FLOAT_LAYER)
+	var/image/I = image('icons/mob/talk_vr.dmi', bubble_loc, speech_state, set_layer)
+	I.appearance_flags |= (RESET_COLOR|PIXEL_SCALE)
+	return I
+
+/mob/proc/init_typing_indicator(var/set_state = "typing")
+	typing_indicator = new
+	typing_indicator.appearance = generate_speech_bubble(null, set_state)
+	typing_indicator.appearance_flags |= (RESET_COLOR|PIXEL_SCALE)
+
 /mob/proc/set_typing_indicator(var/state) //Leaving this here for mobs.
 
 	if(!is_preference_enabled(/datum/client_preference/show_typing_indicator))
-		cut_overlay(typing_indicator, TRUE)
+		if(typing_indicator)
+			cut_overlay(typing_indicator, TRUE)
 		return
 
 	if(!typing_indicator)
-		typing_indicator = new
-		//typing_indicator.icon = 'icons/mob/talk_vr.dmi' //VOREStation Edit - Looks better on the right with job icons.
-		//typing_indicator.icon_state = "typing"
-		typing_indicator.icon = 'icons/mob/talk_vr.dmi' //VOREStation Edit - talk_vr.dmi instead of talk.dmi for right-side icons
-		typing_indicator.icon_state = "[speech_bubble_appearance()]_typing"
+		init_typing_indicator("[speech_bubble_appearance()]_typing")
 
 	if(state && !typing)
 		add_overlay(typing_indicator, TRUE)

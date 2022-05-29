@@ -1,5 +1,5 @@
-#define VORE_VERSION	2	//This is a Define so you don't have to worry about magic numbers.
-
+///This is a Define so you don't have to worry about magic numbers.
+#define VORE_VERSION	2
 //
 // Overrides/additions to stock defines go here, as well as hooks. Sort them by
 // the object they are overriding. So all /mob/living together, etc.
@@ -29,9 +29,14 @@
 	var/allowmobvore = FALSE
 	var/list/belly_prefs = list()
 	var/vore_taste = "nothing in particular"
+	var/vore_smell = "nothing in particular"
 	var/permit_healbelly = FALSE
 	var/can_be_drop_prey = FALSE
 	var/can_be_drop_pred = FALSE
+	var/permit_sizegun = FALSE
+	var/permit_size_trample = TRUE
+	var/permit_size_pickup = TRUE
+	var/permit_stripped = FALSE
 
 	//Mechanically required
 	var/path
@@ -98,10 +103,15 @@
 	digest_leave_remains = json_from_file["digest_leave_remains"]
 	allowmobvore = json_from_file["allowmobvore"]
 	vore_taste = json_from_file["vore_taste"]
+	vore_smell = json_from_file["vore_smell"]
 	permit_healbelly = json_from_file["permit_healbelly"]
 	can_be_drop_prey = json_from_file["can_be_drop_prey"]
 	can_be_drop_pred = json_from_file["can_be_drop_pred"]
 	belly_prefs = json_from_file["belly_prefs"]
+	permit_sizegun = json_from_file["permit_sizegun"]
+	permit_size_trample = json_from_file["permit_size_trample"]
+	permit_size_pickup = json_from_file["permit_size_pickup"]
+	permit_stripped = json_from_file["permit_stripped"]
 
 	//Quick sanitize
 	if(isnull(digestable))
@@ -120,6 +130,14 @@
 		can_be_drop_prey = FALSE
 	if(isnull(can_be_drop_pred))
 		can_be_drop_pred = FALSE
+	if(isnull(permit_sizegun))
+		permit_sizegun = FALSE
+	if(isnull(permit_size_trample))
+		permit_size_trample = TRUE
+	if(isnull(permit_size_pickup))
+		permit_size_pickup = TRUE
+	if(isnull(permit_stripped))
+		permit_stripped = FALSE
 	if(isnull(belly_prefs))
 		belly_prefs = list()
 
@@ -137,10 +155,15 @@
 			"digest_leave_remains"	= digest_leave_remains,
 			"allowmobvore"			= allowmobvore,
 			"vore_taste"			= vore_taste,
+			"vore_smell"			= vore_smell,
 			"permit_healbelly"		= permit_healbelly,
 			"can_be_drop_prey"		= can_be_drop_prey,
 			"can_be_drop_pred"		= can_be_drop_pred,
 			"belly_prefs"			= belly_prefs,
+			"permit_size_trample"	= permit_size_trample,
+			"permit_size_pickup"	= permit_size_pickup,
+			"permit_sizegun"		= permit_sizegun,
+			"permit_stripped"		= permit_stripped
 		)
 
 	//List to JSON

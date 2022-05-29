@@ -12,11 +12,17 @@
 					"Basic" = "JanBot2",
 					"Mopbot"  = "janitorrobot",
 					"Mop Gear Rex" = "mopgearrex",
-					"Drone" = "drone-janitor"
+					"Drone" = "drone-janitor",
+					"Misato" = "tall2janitor",
+					"L3P1-D0T" = "Glitterfly-Janitor",
+					"Miss M" = "miss-janitor",
+					"Cleriffin" = "coffin-Clerical",
+					"Coffstodial" = "coffin-Custodial"
+
 					)
 
-/obj/item/robot_module/robot/janitor/New()
-	..()
+/obj/item/robot_module/robot/janitor/Initialize(mapload)
+	. = ..()
 	src.modules += new /obj/item/soap/nanotrasen(src)
 	src.modules += new /obj/item/storage/bag/trash(src)
 	src.modules += new /obj/item/mop(src)
@@ -69,11 +75,14 @@
 					"Bro" = "Brobot",
 					"Rich" = "maximillion",
 					"Drone - Service" = "drone-service",
-					"Drone - Hydro" = "drone-hydro"
+					"Drone - Hydro" = "drone-hydro",
+					"Misato" = "tall2service",
+					"L3P1-D0T" = "Glitterfly-Service",
+					"Miss M" = "miss-service"
 				  	)
 
-/obj/item/robot_module/robot/clerical/butler/New()
-	..()
+/obj/item/robot_module/robot/clerical/butler/Initialize(mapload)
+	. = ..()
 	src.modules += new /obj/item/gripper/service(src)
 	src.modules += new /obj/item/reagent_containers/glass/bucket(src)
 	src.modules += new /obj/item/material/minihoe(src)
@@ -121,11 +130,14 @@
 					"Bro" = "Brobot",
 					"Rich" = "maximillion",
 					"Default" = "Service2",
-					"Drone" = "drone-blu"
+					"Drone" = "drone-blu",
+					"Misato" = "tall2service",
+					"L3P1-D0T" = "Glitterfly-Clerical",
+					"Miss M" = "miss-service"
 					)
 
-/obj/item/robot_module/robot/clerical/general/New()
-	..()
+/obj/item/robot_module/robot/clerical/general/Initialize(mapload)
+	. = ..()
 	src.modules += new /obj/item/pen/robopen(src)
 	src.modules += new /obj/item/form_printer(src)
 	src.modules += new /obj/item/gripper/paperwork(src)
@@ -147,12 +159,15 @@
 	sprites = list(
 					"Custodial Hound" = "scrubpup",
 					"Borgi" = "borgi-jani",
-					"Otieborg" = "otiej"
+					"Otieborg" = "otiej",
+					"Janihound, J9" = "J9"
 					)
 	channels = list("Service" = 1)
 	can_be_pushed = 0
 
-/obj/item/robot_module/robot/scrubpup/New(var/mob/living/silicon/robot/R)
+/obj/item/robot_module/robot/scrubpup/Initialize(mapload)
+	. = ..()
+	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/dogborg/jaws/small(src)
 	src.modules += new /obj/item/dogborg/boop_module(src)
 	src.modules += new /obj/item/pupscrubber(src)
@@ -204,7 +219,7 @@
 	var/obj/item/stack/material/cyborg/glass/G = new (src)
 	G.name = "glass recycler"
 	G.desc = "A device that refines recycled glass into sheets."
-	G.material = get_material_by_name("placeholder") //Hacky shit but we want sheets, not windows.
+	G.allow_window_autobuild = FALSE
 	G.synths = list(glass)
 	G.recipes = list()
 	G.recipes += new/datum/stack_recipe("glass sheet", /obj/item/stack/material/glass, 1, 1, 20)
@@ -237,7 +252,9 @@
 	can_be_pushed = 0
 
 // In a nutshell, basicly service/butler robot but in dog form.
-/obj/item/robot_module/robot/clerical/brodog/New(var/mob/living/silicon/robot/R)
+/obj/item/robot_module/robot/clerical/brodog/Initialize(mapload)
+	. = ..()
+	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/gripper/service(src)
 	src.modules += new /obj/item/reagent_containers/glass/bucket(src)
 	src.modules += new /obj/item/material/minihoe(src)
@@ -295,7 +312,7 @@
 	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
 	R.verbs |= /mob/living/silicon/robot/proc/robot_mount
 	R.verbs |= /mob/living/silicon/robot/proc/rest_style
-	..()
+
 
 /obj/item/robot_module/Reset(var/mob/living/silicon/robot/R)
 	R.pixel_x = initial(pixel_x)
@@ -310,4 +327,3 @@
 	R.verbs -= /mob/living/silicon/robot/proc/robot_mount
 	R.verbs -= /mob/living/proc/shred_limb
 	R.verbs -= /mob/living/silicon/robot/proc/rest_style
-	..()

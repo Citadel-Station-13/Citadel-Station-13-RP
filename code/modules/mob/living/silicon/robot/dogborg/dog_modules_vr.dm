@@ -22,7 +22,7 @@
 	var/emagged = 0
 
 /obj/item/dogborg/jaws/small/attack_self(mob/user)
-	var/mob/living/silicon/robot.R = user
+	var/mob/living/silicon/robot/R = user
 	if(R.emagged || R.emag_items)
 		emagged = !emagged
 		if(emagged)
@@ -47,7 +47,7 @@
 			w_class = ITEMSIZE_NORMAL
 		update_icon()
 
-//Boop //New and improved, now a simple reagent sniffer.
+//Boop //Newer and better, can sniff reagents, tanks, and boop people!
 /obj/item/dogborg/boop_module
 	name = "boop module"
 	icon = 'icons/mob/dogborg_vr.dmi'
@@ -58,8 +58,8 @@
 	attack_verb = list("nuzzled", "nosed", "booped")
 	w_class = ITEMSIZE_TINY
 
-/obj/item/dogborg/boop_module/New()
-	..()
+/obj/item/dogborg/boop_module/Initialize(mapload)
+	. = ..()
 	flags |= NOBLUDGEON //No more attack messages
 
 /obj/item/dogborg/boop_module/attack_self(mob/user)
@@ -84,30 +84,36 @@
 			to_chat(user, "<span class='notice'>[GLOB.meta_gas_names[g]]: [round((environment.gas[g] / total_moles) * 100)]%</span>")
 		to_chat(user, "<span class='notice'>Temperature: [round(environment.temperature-T0C,0.1)]&deg;C ([round(environment.temperature,0.1)]K)</span>")
 
-/obj/item/dogborg/boop_module/afterattack(obj/O, mob/user as mob, proximity)
+/obj/item/dogborg/boop_module/afterattack(atom/target, mob/user, proximity)
 	if(!proximity)
 		return
 	if (user.stat)
 		return
-	if(!istype(O))
+	if(!istype(target) && !ismob(target))
 		return
 
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-	user.visible_message("<span class='notice'>[user] sniffs at \the [O.name].</span>", "<span class='notice'>You sniff \the [O.name]...</span>")
 
-	if(!isnull(O.reagents))
-		var/dat = ""
-		if(O.reagents.reagent_list.len > 0)
-			for (var/datum/reagent/R in O.reagents.reagent_list)
-				dat += "\n \t <span class='notice'>[R]</span>"
 
-		if(dat)
-			to_chat(user, "<span class='notice'>Your BOOP module indicates: [dat]</span>")
-		else
-			to_chat(user, "<span class='notice'>No active chemical agents smelled in [O].</span>")
+	if(ismob(target))
+		user.visible_message("<span class='notice'>\the [user] boops \the [target.name]!</span>", "<span class='notice'>You boop \the [target.name]!</span>")
+		playsound(src, 'sound/weapons/thudswoosh.ogg', 25, 1, -1)
 	else
-		to_chat(user, "<span class='notice'>No significant chemical agents smelled in [O].</span>")
-
+		user.visible_message("<span class='notice'>[user] sniffs at \the [target.name].</span>", "<span class='notice'>You sniff \the [target.name]...</span>")
+		if(!isnull(target.reagents))
+			var/dat = ""
+			if(target.reagents.reagent_list.len > 0)
+				for (var/datum/reagent/R in target.reagents.reagent_list)
+					dat += "\n \t <span class='notice'>[R]</span>"
+			if(dat)
+				to_chat(user, "<span class='notice'>Your BOOP module indicates: [dat]</span>")
+			else
+				to_chat(user, "<span class='notice'>No active chemical agents smelled in [target].</span>")
+		else
+			if(istype(target, /obj/item/tank)) // don't double post what atmosanalyzer_scan returns
+				analyze_gases(target, user)
+			else
+				to_chat(user, "<span class='notice'>No significant chemical agents smelled in [target].</span>")
 	return
 
 
@@ -146,8 +152,9 @@
 	desc = "An advanced chemical synthesizer and injection system utilizing carrier's reserves, designed for heavy-duty medical equipment."
 	charge_cost = 10
 	var/datum/matter_synth/water = null
+	reagent_ids = list("bicaridine", "kelotane", "alkysine", "imidazoline", "tricordrazine", "inaprovaline", "dexalin", "anti_toxin", "tramadol", "spaceacillin", "paracetamol")
 
-/obj/item/reagent_containers/borghypo/hound/process() //Recharges in smaller steps and uses the water reserves as well.
+/obj/item/reagent_containers/borghypo/hound/process(delta_time) //Recharges in smaller steps and uses the water reserves as well.
 	if(isrobot(loc))
 		var/mob/living/silicon/robot/R = loc
 		if(R && R.cell)
@@ -161,7 +168,7 @@
 /obj/item/reagent_containers/borghypo/hound/lost
 	name = "Hound hypospray"
 	desc = "An advanced chemical synthesizer and injection system utilizing carrier's reserves."
-	reagent_ids = list("tricordrazine", "inaprovaline", "bicaridine", "dexalin", "anti_toxin", "tramadol", "spaceacillin")
+	reagent_ids = list("bicaridine", "kelotane", "alkysine", "imidazoline", "tricordrazine", "inaprovaline", "dexalin", "anti_toxin", "tramadol", "spaceacillin", "paracetamol")
 
 
 //Tongue stuff
@@ -174,20 +181,19 @@
 	var/emagged = 0
 	var/datum/matter_synth/water = null
 
-/obj/item/dogborg/tongue/New()
-	..()
+/obj/item/dogborg/tongue/Initialize(mapload)
+	. = ..()
 	flags |= NOBLUDGEON //No more attack messages
 
 /obj/item/dogborg/tongue/examine(user)
-	if(!..(user, 1))
-		return
+	. = ..()
 	if(water.energy)
-		to_chat(user, "<span class='notice'>[src] is wet. Just like it should be.</span>")
+		. += "<span class='notice'>[src] is wet.</span>"
 	if(water.energy < 5)
-		to_chat(user, "<span class='notice'>[src] is dry.</span>")
+		. += "<span class='notice'>[src] is dry.</span>"
 
 /obj/item/dogborg/tongue/attack_self(mob/user)
-	var/mob/living/silicon/robot.R = user
+	var/mob/living/silicon/robot/R = user
 	if(R.emagged || R.emag_items)
 		emagged = !emagged
 		if(emagged)
@@ -222,7 +228,7 @@
 			to_chat(user, "<span class='notice'>You finish licking off \the [target.name].</span>")
 			water.use_charge(5)
 			qdel(target)
-			var/mob/living/silicon/robot.R = user
+			var/mob/living/silicon/robot/R = user
 			R.cell.charge += 50
 	else if(istype(target,/obj/item))
 		if(istype(target,/obj/item/trash))
@@ -231,7 +237,7 @@
 				user.visible_message("[user] finishes eating \the [target.name].", "<span class='notice'>You finish eating \the [target.name].</span>")
 				to_chat(user, "<span class='notice'>You finish off \the [target.name].</span>")
 				qdel(target)
-				var/mob/living/silicon/robot.R = user
+				var/mob/living/silicon/robot/R = user
 				R.cell.charge += 250
 				water.use_charge(5)
 			return
@@ -240,8 +246,8 @@
 			if(do_after (user, 50))
 				user.visible_message("[user] finishes gulping down \the [target.name].", "<span class='notice'>You finish swallowing \the [target.name].</span>")
 				to_chat(user, "<span class='notice'>You finish off \the [target.name], and gain some charge!</span>")
-				var/mob/living/silicon/robot.R = user
-				var/obj/item/cell.C = target
+				var/mob/living/silicon/robot/R = user
+				var/obj/item/cell/C = target
 				R.cell.charge += C.maxcharge / 3
 				water.use_charge(5)
 				qdel(target)
@@ -255,7 +261,7 @@
 			target.clean_blood()
 	else if(ishuman(target))
 		if(src.emagged)
-			var/mob/living/silicon/robot.R = user
+			var/mob/living/silicon/robot/R = user
 			var/mob/living/L = target
 			if(R.cell.charge <= 666)
 				return
@@ -293,12 +299,12 @@
 	icon_state = "scrub0"
 	var/enabled = FALSE
 
-/obj/item/pupscrubber/New()
-	..()
+/obj/item/pupscrubber/Initialize(mapload)
+	. = ..()
 	flags |= NOBLUDGEON
 
 /obj/item/pupscrubber/attack_self(mob/user)
-	var/mob/living/silicon/robot.R = user
+	var/mob/living/silicon/robot/R = user
 	if(!enabled)
 		R.scrubbing = TRUE
 		enabled = TRUE
@@ -437,3 +443,47 @@
 	T.apply_damage(20, HALLOSS,, armor_block, armor_soak)
 	if(prob(33))
 		T.apply_effect(3, WEAKEN, armor_block)
+
+/obj/item/dogborg/mirrortool
+	name = "Mirror Installation Tool"
+	desc = "A tool for the installation and removal of Mirrors"
+	icon = 'icons/obj/device_alt.dmi'
+	icon_state = "sleevemate"
+	item_state = "healthanalyzer"
+	w_class = ITEMSIZE_SMALL
+	var/obj/item/implant/mirror/imp = null
+
+/obj/item/dogborg/mirrortool/attack(mob/living/carbon/human/M as mob, mob/user as mob, target_zone)
+	if(target_zone == BP_TORSO && imp == null)
+		for(var/obj/item/organ/I in M.organs)
+			for(var/obj/item/implant/mirror/MI in I.contents)
+				if(imp == null)
+					M.visible_message("<span class='warning'>[user] is attempting remove [M]'s mirror!</span>")
+					user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+					user.do_attack_animation(M)
+					var/turf/T1 = get_turf(M)
+					if (T1 && ((M == user) || do_after(user, 20)))
+						if(user && M && (get_turf(M) == T1) && src)
+							M.visible_message("<span class='warning'>[user] has removed [M]'s mirror.</span>")
+							add_attack_logs(user,M,"Mirror removed by [user]")
+							src.imp = MI
+							qdel(MI)
+	else if (target_zone == BP_TORSO && imp != null)
+		if (imp)
+			M.visible_message("<span class='warning'>[user] is attempting to implant [M] with a mirror.</span>")
+			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+			user.do_attack_animation(M)
+			var/turf/T1 = get_turf(M)
+			if (T1 && ((M == user) || do_after(user, 20)))
+				if(user && M && (get_turf(M) == T1) && src && src.imp)
+					M.visible_message("<span class='warning'>[M] has been implanted by [user].</span>")
+					add_attack_logs(user,M,"Implanted with [imp.name] using [name]")
+					if(imp.handle_implant(M))
+						imp.post_implant(M)
+					src.imp = null
+	else
+		to_chat(usr, "You must target the torso.")
+
+/obj/item/dogborg/mirrortool/afterattack(var/obj/machinery/computer/transhuman/resleeving/target, mob/user)
+	target.active_mr = imp.stored_mind
+	. = ..()

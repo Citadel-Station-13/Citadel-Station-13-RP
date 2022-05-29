@@ -114,6 +114,9 @@
 /datum/reagent/ethanol/rum
 	price_tag = 5
 
+/datum/reagent/ethanol/whiterum
+	price_tag = 5
+
 /datum/reagent/ethanol/tequilla
 	price_tag = 5
 
@@ -989,9 +992,8 @@
 /obj/item/reagent_containers/food/snacks/dionaroast
 	price_tag = 25
 
-/obj/item/pizzabox
-	get_item_cost()
-		return get_item_cost(pizza)
+/obj/item/pizzabox/get_item_cost()
+	return get_item_cost(pizza)
 
 
 //***************//

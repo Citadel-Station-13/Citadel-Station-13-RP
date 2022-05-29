@@ -1,3 +1,15 @@
+/*
+/datum/category_item/catalogue/fauna/slime
+	name = "Slime"
+	desc = "Often referred to as Slimes, this mysterious \
+	species represents a larger biological curiosity for NanoTrasen. \
+	Highly mutable, these carnivorous blobs of gelatinous tissue may \
+	be trained and farmed, but their temperament makes them a constant danger.\
+	Speculation among Xenobiologists that Slimes share a common ancestor \
+	with Prometheans have not been fully confirmed."
+	value = CATALOGUER_REWARD_EASY
+*/
+
 /mob/living/carbon/slime
 	name = "baby slime"
 	icon = 'icons/mob/slimes.dmi'
@@ -61,8 +73,7 @@
 
 	var/core_removal_stage = 0 //For removing cores.
 
-/mob/living/carbon/slime/New(var/location, var/colour="grey")
-
+/mob/living/carbon/slime/Initialize(mapload, colour = "grey")
 	verbs += /mob/living/proc/ventcrawl
 
 	src.colour = colour
@@ -74,7 +85,7 @@
 	var/sanitizedcolour = replacetext(colour, " ", "")
 	coretype = text2path("/obj/item/slime_extract/[sanitizedcolour]")
 	regenerate_icons()
-	..(location)
+	return ..(mapload)
 
 /mob/living/carbon/slime/movement_delay()
 	. = ..()
@@ -161,7 +172,7 @@
 
 		stat(null,"Power Level: [powerlevel]")
 
-/mob/living/carbon/slime/adjustFireLoss(amount)
+/mob/living/carbon/slime/adjustFireLoss(var/amount,var/include_robo)
 	..(-abs(amount)) // Heals them
 	return
 

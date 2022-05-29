@@ -12,15 +12,22 @@
 	var/to_be_destroyed = 0 //Used for fire, if a melting temperature was reached, it will be destroyed
 	var/max_fire_temperature_sustained = 0 //The max temperature of the fire which it was subjected to
 	var/can_dirty = TRUE	// If false, tile never gets dirty
-	var/can_start_dirty = TRUE	// If false, cannot start dirty roundstart
+	var/can_start_dirty = FALSE	// If false, cannot start dirty roundstart
 	var/dirty_prob = 2	// Chance of being dirty roundstart
 	var/dirt = 0
+	var/special_temperature //Used for Lava HE-Pipe interaction
+
+	// If greater than 0, this turf will apply edge overlays on top of other turfs cardinally adjacent to it, if those adjacent turfs are of a different icon_state,
+	// and if those adjacent turfs have a lower edge_blending_priority.
+	// this is on /simulated even though only floors give borders because floors can render onto other simulated tiles like openspace.
+	var/edge_blending_priority = 0
+	/// edge icon state, overrides icon_state if set
+	var/edge_icon_state
 
 /turf/simulated/Initialize(mapload)
 	. = ..()
-	levelupdate()
-	// HOOK FOR MOB/FREELOOK SYSTEM
-	updateVisibility(src)
+	if(mapload)
+		levelupdate()
 
 // This is not great.
 /turf/simulated/proc/wet_floor(var/wet_val = 1)
@@ -108,35 +115,37 @@
 
 			if (bloodDNA)
 				src.AddTracks(H.species.get_move_trail(H),bloodDNA,H.dir,0,bloodcolor) // Coming
-				var/turf/simulated/from = get_step(H,reverse_direction(H.dir))
+				var/turf/simulated/from = get_step(H,REVERSE_DIR(H.dir))
 				if(istype(from) && from)
 					from.AddTracks(H.species.get_move_trail(H),bloodDNA,0,H.dir,bloodcolor) // Going
 
 				bloodDNA = null
 
 		if(src.wet)
+			process_slip(M)
 
-			if(M.buckled || (src.wet == 1 && M.m_intent == "walk"))
-				return
+/turf/simulated/proc/process_slip(mob/living/M)
+	if(M.buckled || (src.wet == 1 && M.m_intent == "walk"))
+		return
 
-			var/slip_dist = 1
-			var/slip_stun = 6
-			var/floor_type = "wet"
+	var/slip_dist = 1
+	var/slip_stun = 6
+	var/floor_type = "wet"
 
-			switch(src.wet)
-				if(2) // Lube
-					floor_type = "slippery"
-					slip_dist = 4
-					slip_stun = 10
-				if(3) // Ice
-					floor_type = "icy"
-					slip_stun = 4
-					slip_dist = 2
+	switch(src.wet)
+		if(2) // Lube
+			floor_type = "slippery"
+			slip_dist = 4
+			slip_stun = 10
+		if(3) // Ice
+			floor_type = "icy"
+			slip_stun = 4
+			slip_dist = 2
 
-			if(M.slip("the [floor_type] floor", slip_stun))
-				for(var/i = 1 to slip_dist)
-					step(M, M.dir)
-					sleep(1)
+	if(M.slip("the [floor_type] floor", slip_stun))
+		for(var/i = 1 to slip_dist)
+			step(M, M.dir)
+			sleep(1)
 
 //returns 1 if made bloody, returns 0 otherwise
 /turf/simulated/add_blood(mob/living/carbon/human/M as mob)
@@ -164,3 +173,6 @@
 		new /obj/effect/decal/cleanable/blood/oil(src)
 	else if(ishuman(M))
 		add_blood(M)
+
+/turf/simulated/floor/plating
+	can_start_dirty = TRUE	// But let maints and decrepit areas have some randomness

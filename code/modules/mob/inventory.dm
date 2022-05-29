@@ -133,6 +133,10 @@ var/list/slot_equipment_priority = list( \
 /mob/proc/is_holding_item_of_type(typepath)
 	return FALSE
 
+// Override for your specific mob's hands or lack thereof.
+/mob/proc/get_all_held_items()
+	return list()
+
 //Puts the item into your l_hand if possible and calls all necessary triggers/updates. returns 1 on success.
 /mob/proc/put_in_l_hand(var/obj/item/W)
 	if(lying || !istype(W))
@@ -268,11 +272,11 @@ var/list/slot_equipment_priority = list( \
 
 
 //This differs from remove_from_mob() in that it checks if the item can be unequipped first.
-/mob/proc/unEquip(obj/item/I, force = 0) //Force overrides NODROP for things like wizarditis and admin undress.
+/mob/proc/unEquip(obj/item/I, force = 0, target) //Force overrides NODROP for things like wizarditis and admin undress.
 	if(!(force || canUnEquip(I)))
-		return
-	drop_from_inventory(I)
-	return 1
+		return FALSE
+	drop_from_inventory(I, target)
+	return TRUE
 
 
 //Attemps to remove an object on a mob.
@@ -316,8 +320,8 @@ var/list/slot_equipment_priority = list( \
 //	if(hasvar(src,"w_radio")) if(src:w_radio) items += src:w_radio  commenting this out since headsets go on your ears now PLEASE DON'T BE MAD KEELIN
 	if(hasvar(src,"w_uniform")) if(src:w_uniform) items += src:w_uniform
 
-	//if(hasvar(src,"l_hand")) if(src:l_hand) items += src:l_hand
-	//if(hasvar(src,"r_hand")) if(src:r_hand) items += src:r_hand
+	if(hasvar(src,"l_hand")) if(src:l_hand) items += src:l_hand
+	if(hasvar(src,"r_hand")) if(src:r_hand) items += src:r_hand
 
 	return items
 
@@ -325,3 +329,6 @@ var/list/slot_equipment_priority = list( \
 	for(var/entry in get_equipped_items())
 		drop_from_inventory(entry)
 		qdel(entry)
+
+/mob/proc/transferItemToLoc(obj/item/I, newloc = null, force = FALSE, silent = TRUE)
+	return src.unEquip(I, force, newloc, FALSE, silent)

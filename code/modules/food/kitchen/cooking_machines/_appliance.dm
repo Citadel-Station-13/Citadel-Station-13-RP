@@ -8,15 +8,15 @@
 /obj/machinery/appliance
 	name = "cooker"
 	desc = "You shouldn't be seeing this!"
-	icon = 'modular_citadel/icons/obj/cooking_machines.dmi'
+	icon = 'icons/obj/cooking_machines.dmi'
 	var/appliancetype = 0
 	density = 1
 	anchored = 1
 
 	use_power = 0
 	idle_power_usage = 5			// Power used when turned on, but not processing anything
-	active_power_usage = 1000		// Power used when turned on and actively cooking something
-	var/initial_active_power_usage = 1000
+	active_power_usage = 5000		// Power used when turned on and actively cooking something
+	var/initial_active_power_usage = 5000
 
 	var/cooking_power  = 1
 	var/initial_cooking_power = 1
@@ -42,7 +42,7 @@
 
 	var/combine_first = 0//If 1, this appliance will do combinaiton cooking before checking recipes
 
-/obj/machinery/appliance/New()
+/obj/machinery/appliance/Initialize(mapload, newdir)
 	. = ..()
 	component_parts = list()
 	component_parts += /obj/item/circuitboard/cooking
@@ -73,21 +73,20 @@
 		qdel(CI)
 	return ..()
 
-/obj/machinery/appliance/examine(var/mob/user)
-	..()
-	if(Adjacent(usr))
+/obj/machinery/appliance/examine(mob/user)
+	. = ..()
+	if(Adjacent(user))
 		list_contents(user)
-		return 1
 
 /obj/machinery/appliance/proc/list_contents(var/mob/user)
-	if (cooking_objs.len)
+	if(cooking_objs.len)
 		var/string = "Contains..."
 		for (var/a in cooking_objs)
 			var/datum/cooking_item/CI = a
 			string += "-\a [CI.container.label(null, CI.combine_target)], [report_progress(CI)]</br>"
-		usr << string
+		to_chat(user, string)
 	else
-		usr << span("notice","It is empty.")
+		to_chat(user, "<span class='notice'>It is empty.</span>")
 
 /obj/machinery/appliance/proc/report_progress(var/datum/cooking_item/CI)
 	if (!CI || !CI.max_cookwork)
@@ -100,22 +99,21 @@
 	if (progress < 0.25)
 		return "It's barely started cooking."
 	if (progress < 0.75)
-		return span("notice","It's cooking away nicely.")
+		return SPAN_NOTICE("It's cooking away nicely.")
 	if (progress < 1)
-		return span("notice", "<b>It's almost ready!</b>")
+		return SPAN_NOTICE("<b>It's almost ready!</b>")
 
 	var/half_overcook = (CI.overcook_mult - 1)*0.5
 	if (progress < 1+half_overcook)
-		return span("soghun","<b>It is done !</b>")
+		return SPAN_SOGHUN("<b>It is done !</b>")
 	if (progress < CI.overcook_mult)
-		return span("warning","It looks overcooked, get it out!")
+		return SPAN_WARNING("It looks overcooked, get it out!")
 	else
-		return span("danger","It is burning!!")
+		return SPAN_DANGER("It is burning!!")
 
 /obj/machinery/appliance/update_icon()
-	if (!stat && cooking_objs.len)
+	if (!machine_stat && cooking_objs.len)
 		icon_state = on_icon
-
 	else
 		icon_state = off_icon
 
@@ -141,13 +139,13 @@
 		to_chat(user, "You can't reach [src] from here.")
 		return
 
-	if (stat & POWEROFF)//Its turned off
-		stat &= ~POWEROFF
+	if (machine_stat & POWEROFF)//Its turned off
+		machine_stat &= ~POWEROFF
 		use_power = 1
 		user.visible_message("[user] turns [src] on.", "You turn on [src].")
 
 	else //Its on, turn it off
-		stat |= POWEROFF
+		machine_stat |= POWEROFF
 		use_power = 0
 		user.visible_message("[user] turns [src] off.", "You turn off [src].")
 
@@ -242,8 +240,8 @@
 
 	else return 1
 
-/obj/machinery/appliance/attackby(var/obj/item/I, var/mob/user)
-	if(!cook_type || (stat & (BROKEN)))
+/obj/machinery/appliance/attackby(obj/item/I, mob/user)
+	if(!cook_type || (machine_stat & (BROKEN)))
 		to_chat(user, "<span class='warning'>\The [src] is not working.</span>")
 		return
 
@@ -377,7 +375,7 @@
 
 	return 1
 
-/obj/machinery/appliance/process()
+/obj/machinery/appliance/process(delta_time)
 	if (cooking_power > 0 && cooking)
 		for (var/i in cooking_objs)
 			do_cooking_tick(i)

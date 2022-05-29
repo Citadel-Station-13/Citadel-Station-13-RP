@@ -49,11 +49,7 @@
 	starts_with = list(
 		/obj/item/clothing/glasses/eyepatch,
 		/obj/item/clothing/glasses/sunglasses,
-		/obj/item/clothing/gloves/swat = 2,
-		/obj/item/clothing/head/helmet/swat = 2,
 		/obj/item/clothing/mask/gas = 2,
-		/obj/item/clothing/shoes/boots/swat = 2,
-		/obj/item/clothing/suit/armor/swat = 2,
 		/obj/item/clothing/under/syndicate/tacticool = 2)
 
 
@@ -98,3 +94,15 @@
 	icon_closed = "alien_locker"
 	icon_opened = "alien_locker_open"
 	anchored = TRUE
+/obj/structure/closet/largecardboard
+	name = "Large Cardboard Box"
+	desc = "It was my destiny to be here."
+	icon_state = "box"
+	icon_closed = "box"
+	icon_opened = "boxopen"
+	seal_tool = /obj/item/duct_tape_roll
+	health = 10
+	breakout_time = 0.5
+	breakout_sound = 'sound/misc/boxtear.ogg'
+	open_sound = 'sound/misc/boxopen.ogg'
+	close_sound = 'sound/misc/boxclose.ogg'

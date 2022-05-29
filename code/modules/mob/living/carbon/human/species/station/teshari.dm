@@ -5,14 +5,14 @@
 	the polar tundral regions outside of Skrell territory. Extremely fragile, they developed \
 	hunting skills that emphasized taking out their prey without themselves getting hit."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/teshari)
+	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Teshari"
 
 	num_alternate_languages = 3
 	secondary_langs = list(LANGUAGE_SCHECHI, LANGUAGE_SKRELLIAN)
 	name_language = LANGUAGE_SCHECHI
 	species_language = LANGUAGE_SCHECHI
 
-	min_age = 12
-	max_age = 45
+	max_age = 75
 
 	economic_modifier = 6
 
@@ -31,6 +31,7 @@
 	tail = "teshtail"
 //	tail_hair = "feathers"
 	reagent_tag = IS_TESHARI
+	meat_type = /obj/item/reagent_containers/food/snacks/meat/chicken/teshari
 
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/paw
 
@@ -39,18 +40,18 @@
 	damage_mask	= 'icons/mob/human_races/masks/dam_mask_teshari.dmi'
 	blood_mask	= 'icons/mob/human_races/masks/blood_teshari.dmi'
 	damage_overlays	  = 'icons/mob/human_races/masks/dam_teshari.dmi'
-	suit_storage_icon = 'icons/mob/species/teshari/belt_mirror.dmi'
+	suit_storage_icon = 'icons/mob/clothing/species/teshari/belt_mirror.dmi'
 	icobase_tail = 1
 	color_mult	 = 1
 
 	fire_icon_state = "generic" // Humanoid is too big for them and spriting a new one is really annoying.
 
-	slowdown	= -1
-	snow_movement = -2		// Ignores light snow
-	item_slowdown_mod = 2	// Tiny birds don't like heavy things
-	total_health = 50
-	brute_mod	 = 1.35
-	burn_mod	 = 1.35
+	slowdown	= -0.5
+	snow_movement = -1		// Ignores light snow
+	item_slowdown_mod = 1.25	// Tiny birds don't like heavy things
+	total_health = 75
+	brute_mod	 = 1.1
+	burn_mod	 = 1.1
 	mob_size	 = MOB_SMALL
 	pass_flags	 = PASSTABLE
 	holder_type	 = /obj/item/holder/human
@@ -62,7 +63,7 @@
 	ambiguous_genders = TRUE
 
 	spawn_flags	= SPECIES_CAN_JOIN
-	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 	bump_flag	= MONKEY
 	swap_flags	= MONKEY|SLIME|SIMPLE_ANIMAL
 	push_flags	= MONKEY|SLIME|SIMPLE_ANIMAL|ALIEN
@@ -145,6 +146,67 @@
 		/datum/mob_descriptor/build = -3
 		)
 
+	var/static/list/flight_bodyparts = list(
+		BP_L_ARM,
+		BP_R_ARM,
+		BP_L_HAND,
+		BP_R_HAND
+	)
+	var/static/list/flight_suit_blacklisted_types = list(
+		/obj/item/clothing/suit/space,
+		/obj/item/clothing/suit/straight_jacket
+	)
+
 /datum/species/teshari/equip_survival_gear(var/mob/living/carbon/human/H)
 	..()
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(H),slot_shoes)
+
+/datum/species/teshari/handle_falling(mob/living/carbon/human/H, atom/hit_atom, damage_min, damage_max, silent, planetary)
+
+	// Tesh can glide to save themselves from some falls. Basejumping bird
+	// without parachute, or falling bird without free wings goes splat.
+
+	// Are we landing from orbit, or handcuffed/unconscious/tied to something?
+	if(planetary || !istype(H) || H.incapacitated())
+		return ..()
+
+	// Are we landing on a turf? Not sure how this could not be the case, but let's be safe.
+	var/turf/landing = get_turf(hit_atom)
+	if(!istype(landing))
+		return ..()
+
+	if(H.buckled)
+		if(!silent)
+			to_chat(H, SPAN_WARNING("You try to spread your wings to slow your fall, but \the [H.buckled] weighs you down!"))
+		return ..()
+
+	// Is there enough air to flap against?
+	var/pressure = landing.return_pressure()
+	if(pressure < (ONE_ATMOSPHERE * 0.75))
+		if(!silent)
+			to_chat(H, SPAN_WARNING("You spread your wings to slow your fall, but the air is too thin!"))
+		return ..()
+
+	// Are we wearing a space suit?
+	if(H.wear_suit)
+		for(var/blacklisted_type in flight_suit_blacklisted_types)
+			if(istype(H.wear_suit, blacklisted_type))
+				if(!silent)
+					to_chat(H, SPAN_WARNING("You try to spread your wings to slow your fall, but \the [H.wear_suit] is in the way!"))
+				return ..()
+
+	// Do we have working wings?
+	for(var/bp in flight_bodyparts)
+		var/obj/item/organ/external/E = H.organs_by_name[bp]
+		if(!istype(E) || !E.is_usable() || E.is_broken() || E.is_stump())
+			if(!silent)
+				to_chat(H, SPAN_WARNING("You try to spread your wings to slow your fall, but they won't hold your weight!"))
+			return ..()
+
+	// Handled!
+	if(!silent)
+		to_chat(H, SPAN_NOTICE("You catch the air in your wings and greatly slow your fall."))
+		H.visible_message(SPAN_NOTICE("\The [H] glides down from above, landing safely."))
+		H.Stun(2)
+		playsound(H, "rustle", 25, 1)
+	return TRUE

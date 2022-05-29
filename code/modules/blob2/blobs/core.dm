@@ -6,7 +6,7 @@ var/list/blob_cores = list()
 	icon = 'icons/mob/blob.dmi'
 	icon_state = "blank_blob"
 	desc = "A huge, pulsating yellow mass."
-	density = TRUE //bandaid fix for PolarisSS13/6173
+	density = TRUE
 	max_integrity = 150
 	point_return = -1
 	health_regen = 0 //we regen in Life() instead of when pulsed
@@ -81,13 +81,13 @@ var/list/blob_cores = list()
 /obj/structure/blob/core/classic
 	desired_blob_type = /datum/blob_type/classic
 
-/obj/structure/blob/core/New(var/newloc, var/client/new_overmind = null, new_rate = 2, placed = 0)
-	..(newloc)
+/obj/structure/blob/core/Initialize(mapload, client/new_overmind, new_rate = 2, placed = FALSE)
+	. = ..()
 	blob_cores += src
 	START_PROCESSING(SSobj, src)
 	update_icon() //so it atleast appears
 	if(!placed && !overmind)
-		create_overmind(new_overmind)
+		INVOKE_ASYNC(src, .proc/create_overmind, new_overmind)
 	if(overmind)
 		update_icon()
 	point_rate = new_rate
@@ -111,7 +111,7 @@ var/list/blob_cores = list()
 	overlays += blob_overlay
 	overlays += mutable_appearance('icons/mob/blob.dmi', "blob_core_overlay")
 
-/obj/structure/blob/core/process()
+/obj/structure/blob/core/process(delta_time)
 	set waitfor = FALSE
 	if(QDELETED(src))
 		return

@@ -1,4 +1,3 @@
-#define ADIABATIC_EXPONENT 0.667 //Actually adiabatic exponent - 1.
 
 /obj/machinery/atmospherics/pipeturbine
 	name = "turbine"
@@ -20,8 +19,8 @@
 	var/datum/pipe_network/network1
 	var/datum/pipe_network/network2
 
-/obj/machinery/atmospherics/pipeturbine/New()
-	..()
+/obj/machinery/atmospherics/pipeturbine/Initialize(mapload)
+	. = ..()
 	air_in.volume = 200
 	air_out.volume = 800
 	volume_ratio = air_in.volume / (air_in.volume + air_out.volume)
@@ -48,9 +47,9 @@
 	node1 = null
 	node2 = null
 
-/obj/machinery/atmospherics/pipeturbine/process()
+/obj/machinery/atmospherics/pipeturbine/process(delta_time)
 	..()
-	if(anchored && !(stat&BROKEN))
+	if(anchored && !(machine_stat & BROKEN))
 		kin_energy *= 1 - kin_loss
 		dP = max(air_in.return_pressure() - air_out.return_pressure(), 0)
 		if(dP > 10)
@@ -237,26 +236,29 @@
 	var/kin_to_el_ratio = 0.1	//How much kinetic energy will be taken from turbine and converted into electricity
 	var/obj/machinery/atmospherics/pipeturbine/turbine
 
-/obj/machinery/power/turbinemotor/New()
-	..()
-	spawn(1)
-		updateConnection()
+/obj/machinery/power/turbinemotor/Initialize(mapload)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/power/turbinemotor/LateInitialize()
+	. = ..()
+	updateConnection()
 
 /obj/machinery/power/turbinemotor/proc/updateConnection()
 	turbine = null
 	if(src.loc && anchored)
 		turbine = locate(/obj/machinery/atmospherics/pipeturbine) in get_step(src,dir)
-		if (turbine.stat & (BROKEN) || !turbine.anchored || turn(turbine.dir,180) != dir)
+		if (turbine.machine_stat & (BROKEN) || !turbine.anchored || turn(turbine.dir,180) != dir)
 			turbine = null
 
-/obj/machinery/power/turbinemotor/process()
+/obj/machinery/power/turbinemotor/process(delta_time)
 	updateConnection()
-	if(!turbine || !anchored || stat & (BROKEN))
+	if(!turbine || !anchored || machine_stat & (BROKEN))
 		return
 
 	var/power_generated = kin_to_el_ratio * turbine.kin_energy
 	turbine.kin_energy -= power_generated
-	add_avail(power_generated)
+	add_avail(power_generated * 0.001)
 
 /obj/machinery/power/turbinemotor/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())

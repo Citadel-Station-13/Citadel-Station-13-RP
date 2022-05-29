@@ -32,6 +32,7 @@
 
 	maxHealth = 65
 	health = 65
+	randomized = TRUE
 
 	pass_flags = PASSTABLE
 
@@ -80,8 +81,8 @@
 /mob/living/simple_mob/animal/sif/frostfly/get_cold_protection()
 	return 1	// It literally produces a cryogenic mist inside itself. Cold doesn't bother it.
 
-/mob/living/simple_mob/animal/sif/frostfly/Initialize()
-	..()
+/mob/living/simple_mob/animal/sif/frostfly/Initialize(mapload)
+	. = ..()
 	smoke_special = new
 	verbs += /mob/living/proc/ventcrawl
 	verbs += /mob/living/proc/hide

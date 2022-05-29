@@ -179,7 +179,7 @@
 	icon_state = "setup_drone_secbot"
 	desc = "It's a case, for building mobile electronics with. This one resembles a Securitron."
 
-/obj/item/electronic_assembly/drone/medbot
+/obj/item/electronic_assembly/drone/medibot
 	name = "type-d electronic drone"
 	icon_state = "setup_drone_medbot"
 	desc = "It's a case, for building mobile electronics with. This one resembles a Medibot."
@@ -210,7 +210,7 @@
 	if(get_dist(on_wall,user) > 1)
 		return
 	var/ndir = get_dir(on_wall, user)
-	if(!(ndir in cardinal))
+	if(!(ndir in GLOB.cardinal))
 		return
 	var/turf/T = get_turf(user)
 	if(!istype(T, /turf/simulated/floor))

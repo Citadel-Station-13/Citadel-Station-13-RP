@@ -33,11 +33,11 @@
 	..()
 
 /obj/item/slime_extract/examine(mob/user)
-	..()
+	. = ..()
 	if(uses)
-		to_chat(user, "This extract has [uses] more use\s.")
+		. += "This extract has [uses] more use\s."
 	else
-		to_chat(user, "This extract is inert.")
+		. += "This extract is inert."
 
 /datum/chemical_reaction/slime
 	var/required = null
@@ -53,7 +53,7 @@
 	var/obj/item/slime_extract/T = holder.my_atom
 	T.uses--
 	if(T.uses <= 0)
-		T.visible_message("\icon[T]<span class='notice'>\The [T] goes inert.</span>")
+		T.visible_message("[icon2html(thing = T, target = world)] <span class='notice'>\The [T] goes inert.</span>")
 		T.name = "inert [initial(T.name)]"
 
 
@@ -71,13 +71,14 @@
 	name = "Slime Spawn"
 	id = "m_spawn"
 	result = null
-	required_reagents = list("phoron" = 5)
+	required_reagents = list(MAT_PHORON = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/grey
 
 /datum/chemical_reaction/slime/grey_new_slime/on_reaction(var/datum/reagents/holder)
 	holder.my_atom.visible_message("<span class='warning'>Infused with phoron, the core begins to quiver and grow, and soon a new baby slime emerges from it!</span>")
-	new /mob/living/simple_mob/slime/xenobio(get_turf(holder.my_atom))
+	var/mob/living/simple_mob/slime/xenobio/S = new(get_turf(holder.my_atom))
+	S.Weaken(10)
 	..()
 
 /datum/chemical_reaction/slime/grey_monkey
@@ -119,14 +120,14 @@
 	description = "A strange metallic liquid which can rearrange itself to take the form of other metals it touches."
 	taste_description = "metallic"
 	taste_mult = 1.1
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#666666"
 	strength = 20
 
 /datum/chemical_reaction/slime/metal_metamorphic
 	name = "Slime Metal"
 	id = "m_metal"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list(MAT_PHORON = 5)
 	result = "metamorphic"
 	result_amount = REAGENTS_PER_SHEET // Makes enough to make one sheet of any metal.
 	required = /obj/item/slime_extract/metal
@@ -148,42 +149,42 @@
 /datum/chemical_reaction/metamorphic/iron
 	name = "Morph into Iron"
 	id = "morph_iron"
-	required_reagents = list("metamorphic" = REAGENTS_PER_SHEET, "iron" = REAGENTS_PER_SHEET)
+	required_reagents = list("metamorphic" = REAGENTS_PER_SHEET, MAT_IRON = REAGENTS_PER_SHEET)
 	result = "iron"
 
 
 /datum/chemical_reaction/metamorphic/silver
 	name = "Morph into Silver"
 	id = "morph_silver"
-	required_reagents = list("metamorphic" = REAGENTS_PER_SHEET, "silver" = REAGENTS_PER_SHEET)
+	required_reagents = list("metamorphic" = REAGENTS_PER_SHEET, MAT_SILVER = REAGENTS_PER_SHEET)
 	result = "silver"
 
 
 /datum/chemical_reaction/metamorphic/gold
 	name = "Morph into Gold"
 	id = "morph_gold"
-	required_reagents = list("metamorphic" = REAGENTS_PER_SHEET, "gold" = REAGENTS_PER_SHEET)
+	required_reagents = list("metamorphic" = REAGENTS_PER_SHEET, MAT_GOLD = REAGENTS_PER_SHEET)
 	result = "gold"
 
 
 /datum/chemical_reaction/metamorphic/platinum
 	name = "Morph into Platinum"
 	id = "morph_platinum"
-	required_reagents = list("metamorphic" = REAGENTS_PER_SHEET, "platinum" = REAGENTS_PER_SHEET)
+	required_reagents = list("metamorphic" = REAGENTS_PER_SHEET, MAT_PLATINUM = REAGENTS_PER_SHEET)
 	result = "platinum"
 
 
 /datum/chemical_reaction/metamorphic/uranium
 	name = "Morph into Uranium"
 	id = "morph_uranium"
-	required_reagents = list("metamorphic" = REAGENTS_PER_SHEET, "uranium" = REAGENTS_PER_SHEET)
+	required_reagents = list("metamorphic" = REAGENTS_PER_SHEET, MAT_URANIUM = REAGENTS_PER_SHEET)
 	result = "uranium"
 
 
 /datum/chemical_reaction/metamorphic/phoron
 	name = "Morph into Phoron"
 	id = "morph_phoron"
-	required_reagents = list("metamorphic" = REAGENTS_PER_SHEET, "phoron" = REAGENTS_PER_SHEET)
+	required_reagents = list("metamorphic" = REAGENTS_PER_SHEET, MAT_PHORON = REAGENTS_PER_SHEET)
 	result = "phoron"
 
 
@@ -203,7 +204,7 @@
 	description = "A strange metallic liquid which can bind other metals together that would otherwise require intense heat to alloy."
 	taste_description = "metallic"
 	taste_mult = 1.1
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#666666"
 	strength = 20
 
@@ -219,7 +220,7 @@
 	name = "Bind into Steel"
 	id = "bind_steel"
 	result = "steel"
-	required_reagents = list("binding" = REAGENTS_PER_SHEET, "iron" = REAGENTS_PER_SHEET, "carbon" = REAGENTS_PER_SHEET)
+	required_reagents = list("binding" = REAGENTS_PER_SHEET, MAT_IRON = REAGENTS_PER_SHEET, MAT_CARBON = REAGENTS_PER_SHEET)
 	result_amount = REAGENTS_PER_SHEET
 
 /datum/reagent/steel
@@ -227,14 +228,14 @@
 	id = "steel"
 	description = "An 'alloy' of iron and carbon, forced to bind together by another strange metallic liquid."
 	taste_description = "metallic"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#888888"
 
 
 /datum/chemical_reaction/binding/plasteel // Two parts 'steel', one part platnium matches the smelter alloy recipe.
 	name = "Bind into Plasteel"
 	id = "bind_plasteel"
-	required_reagents = list("binding" = REAGENTS_PER_SHEET, "steel" = REAGENTS_PER_SHEET * 2, "platinum" = REAGENTS_PER_SHEET)
+	required_reagents = list("binding" = REAGENTS_PER_SHEET, MAT_STEEL = REAGENTS_PER_SHEET * 2, MAT_PLATINUM = REAGENTS_PER_SHEET)
 	result = "plasteel"
 
 /datum/reagent/plasteel
@@ -242,7 +243,7 @@
 	id = "plasteel"
 	description = "An 'alloy' of iron, carbon, and platinum, forced to bind together by another strange metallic liquid."
 	taste_description = "metallic"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#AAAAAA"
 
 
@@ -262,7 +263,7 @@
 	name = "Slime Frost Oil"
 	id = "m_frostoil"
 	result = "frostoil"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list(MAT_PHORON = 5)
 	result_amount = 20
 	required = /obj/item/slime_extract/blue
 
@@ -294,7 +295,7 @@
 /datum/chemical_reaction/slime/purple_steroid
 	name = "Slime Steroid"
 	id = "m_steroid"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list(MAT_PHORON = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/purple
 
@@ -316,7 +317,7 @@
 /datum/chemical_reaction/slime/orange_fire
 	name = "Slime Fire"
 	id = "m_fire"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list(MAT_PHORON = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/orange
 
@@ -371,7 +372,7 @@
 /datum/chemical_reaction/slime/yellow_battery
 	name = "Slime Cell"
 	id = "m_cell"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list(MAT_PHORON = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/yellow
 
@@ -405,7 +406,7 @@
 	name = "Slime Gold"
 	id = "m_gold"
 	result = "gold"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list(MAT_PHORON = 5)
 	result_amount = 5
 	required = /obj/item/slime_extract/gold
 
@@ -424,7 +425,7 @@
 	name = "Slime Silver"
 	id = "m_silver"
 	result = "silver"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list(MAT_PHORON = 5)
 	result_amount = 5
 	required = /obj/item/slime_extract/silver
 
@@ -465,7 +466,7 @@
 /datum/chemical_reaction/slime/dark_blue_cold_snap
 	name = "Slime Cold Snap"
 	id = "m_cold_snap"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list(MAT_PHORON = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/dark_blue
 
@@ -478,7 +479,7 @@
 	if(!istype(T))
 		return
 
-	var/zone/Z = T.zone
+	var/datum/zas_zone/Z = T.zone
 	if(!Z) // Paranoid.
 		return
 
@@ -583,7 +584,7 @@
 /datum/chemical_reaction/slime/red_mutation
 	name = "Slime Mutation"
 	id = "m_mutation"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list(MAT_PHORON = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/red
 
@@ -604,7 +605,7 @@
 	name = "Slime Uranium"
 	id = "m_uranium"
 	result = "uranium"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list(MAT_PHORON = 5)
 	result_amount = 5
 	required = /obj/item/slime_extract/green
 
@@ -633,7 +634,7 @@
 	name = "Slime Bone Med"
 	id = "m_bone_fixer"
 	result = "slime_bone_fixer"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list(MAT_PHORON = 5)
 	result_amount = 30
 	required = /obj/item/slime_extract/pink
 
@@ -733,7 +734,7 @@
 /datum/chemical_reaction/slime/bluespace_greater
 	name = "Slime Greater Tele"
 	id = "m_tele_lesser"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list(MAT_PHORON = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/bluespace
 
@@ -766,7 +767,7 @@
 /datum/chemical_reaction/slime/cerulean_enhancer
 	name = "Slime Enhancer"
 	id = "m_enhancer"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list(MAT_PHORON = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/cerulean
 
@@ -788,7 +789,7 @@
 /datum/chemical_reaction/slime/amber_slimefood
 	name = "Slime Feeding"
 	id = "m_slime_food"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list(MAT_PHORON = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/amber
 
@@ -823,7 +824,7 @@
 /datum/chemical_reaction/slime/sapphire_promethean
 	name = "Slime Promethean"
 	id = "m_promethean"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list(MAT_PHORON = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/sapphire
 
@@ -844,7 +845,7 @@
 /datum/chemical_reaction/slime/ruby_swole
 	name = "Slime Strength"
 	id = "m_strength"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list(MAT_PHORON = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/ruby
 
@@ -893,7 +894,7 @@
 /datum/chemical_reaction/slime/emerald_fast
 	name = "Slime Agility"
 	id = "m_agility"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list(MAT_PHORON = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/emerald
 
@@ -942,7 +943,7 @@
 /datum/chemical_reaction/slime/light_pink_friendship
 	name = "Slime Friendship"
 	id = "m_friendship"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list(MAT_PHORON = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/light_pink
 
@@ -966,7 +967,7 @@
 /datum/chemical_reaction/slime/rainbow_random_slime
 	name = "Slime Random Slime"
 	id = "m_rng_slime"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list(MAT_PHORON = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/rainbow
 
@@ -998,5 +999,10 @@
 	new /obj/item/slimepotion/unity(get_turf(holder.my_atom))
 	..()
 
-
-
+/datum/chemical_reaction/slime/sapphire_mutation//Was in chemistry-reagents_vr.dm
+	name = "Slime Mutation Toxins"
+	id = "slime_mutation_tox"
+	result = "mutationtoxin"
+	required_reagents = list("blood" = 5)
+	result_amount = 30
+	required = /obj/item/slime_extract/sapphire

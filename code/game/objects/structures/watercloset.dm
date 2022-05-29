@@ -12,7 +12,8 @@
 	var/w_items = 0			//the combined w_class of all the items in the cistern
 	var/mob/living/swirlie = null	//the mob being given a swirlie
 
-/obj/structure/toilet/New()
+/obj/structure/toilet/Initialize(mapload)
+	. = ..()
 	open = round(rand(0, 1))
 	update_icon()
 
@@ -133,7 +134,7 @@
 	var/list/temperature_settings = list("normal" = 310, "boiling" = T0C+100, "freezing" = T0C)
 	var/datum/looping_sound/showering/soundloop
 
-/obj/machinery/shower/Initialize()
+/obj/machinery/shower/Initialize(mapload)
 	create_reagents(50)
 	soundloop = new(list(src), FALSE)
 	return ..()
@@ -299,12 +300,12 @@
 
 	reagents.splash(O, 10)
 
-/obj/machinery/shower/process()
+/obj/machinery/shower/process(delta_time)
 	if(!on) return
 	for(var/thing in loc)
 		var/atom/movable/AM = thing
 		var/mob/living/L = thing
-		if(istype(AM) && AM.simulated)
+		if(istype(AM) && !(AM.flags & AF_ABSTRACT))
 			wash(AM)
 			if(istype(L))
 				process_heat(L)
@@ -426,6 +427,16 @@
 					"<span class='danger'>[user] was stunned by [TU.his] wet [O]!</span>", \
 					"<span class='userdanger'>[user] was stunned by [TU.his] wet [O]!</span>")
 				return 1
+	else if(istype (O, /obj/item/stack/hairlesshide))
+		var/obj/item/stack/hairlesshide/HH = O
+		usr.visible_message("<span class='notice'>\The [usr] starts soaking \the [HH]</span>", "<span class='notice'>You start soaking \the [HH]</span>", "You hear the sound of something being submerged")
+		if(do_after(user,30))
+			to_chat(usr, "<span class='notice'>You completely saturate the [HH.singular_name]</span>")
+			HH.use(1)
+			var/turf/T = get_turf(usr)
+			new /obj/item/stack/wetleather(T)
+		else
+			return 1
 	else if(istype(O, /obj/item/mop))
 		O.reagents.add_reagent("water", 5)
 		to_chat(user, "<span class='notice'>You wet \the [O] in \the [src].</span>")
@@ -471,3 +482,123 @@
 	icon_state = "puddle-splash"
 	..()
 	icon_state = "puddle"
+
+//***Oil well puddles from Main.
+/obj/structure/sink/oil_well	//You're not going to enjoy bathing in this...
+	name = "oil well"
+	desc = "A bubbling pool of oil.This would probably be valuable, had bluespace technology not destroyed the need for fossil fuels 200 years ago."
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "puddle-oil"
+	var/dispensedreagent = /datum/reagent/oil
+
+/obj/structure/sink/oil_well/Initialize(mapload)
+	.=..()
+	create_reagents(20)
+	reagents.add_reagent(dispensedreagent, 20)
+
+/* Okay, just straight up, I tried to code this like blood overlays, but I just do NOT understand the system. If someone wants to sort it, enable this too.
+/obj/structure/sink/oil_well/attack_hand(mob/M)
+	flick("puddle-oil-splash",src)
+	reagents.reaction(M, 20) //Covers target in 20u of oil.
+	to_chat(M, "<span class='notice'>You touch the pool of oil, only to get oil all over yourself. It would be wise to wash this off with water.</span>")
+*/
+
+/obj/structure/sink/oil_well/attackby(obj/item/O, mob/user, params)
+	flick("puddle-oil-splash",src)
+	if(O == /obj/item/shovel) //attempt to deconstruct the puddle with a shovel
+		to_chat(user, "You fill in the oil well with soil.")
+		qdel()
+		return 1
+	if(istype(O, /obj/item/reagent_containers)) //Refilling bottles with oil
+		var/obj/item/reagent_containers/RG = O
+		if (istype(RG) && RG.is_open_container())
+			RG.reagents.add_reagent("oil", min(RG.volume - RG.reagents.total_volume, RG.amount_per_transfer_from_this))
+			user.visible_message("<span class='notice'>[user] fills \the [RG] using \the [src].</span>","<span class='notice'>You fill \the [RG] using \the [src].</span>")
+			return 1
+	if(user.a_intent != INTENT_HARM)
+		to_chat(user, "<span class='notice'>You won't have any luck getting \the [O] out if you drop it in the oil.</span>")
+		return 1
+	else
+		return ..()
+
+/obj/item/plunger
+	name = "plunger"
+	desc = "It's a plunger, for plunging."
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "plunger"
+	slot_flags = SLOT_MASK
+	var/plunge_mod = 1 //time*plunge_mod = total time we take to plunge an object
+	var/reinforced = FALSE //whether we do heavy duty stuff like geysers
+
+/obj/item/plunger/attack(obj/O, mob/living/user)
+	if(!O.plunger_act(src, user, reinforced))
+		return ..()
+
+/obj/item/plunger/throw_impact(atom/hit_atom, mob/living/carbon/human/target, target_zone)
+	. = ..()
+	if(target_zone != BP_HEAD)
+		return
+	if(iscarbon(hit_atom))
+		var/mob/living/carbon/H = hit_atom
+		if(!H.wear_mask)
+			H.equip_to_slot_if_possible(src, SLOT_MASK)
+			H.visible_message("<span class='warning'>The plunger slams into [H]'s face!</span>", "<span class='warning'>The plunger suctions to your face!</span>")
+
+/obj/item/plunger/reinforced
+	name = "reinforced plunger"
+	desc = "It's an Mk7 Reinforced Plunger, for heavy duty plunging."
+	icon_state = "reinforced_plunger"
+
+	reinforced = TRUE
+	plunge_mod = 0.8
+
+/* Nooooope, not yet.
+/obj/structure/geyser
+	name = "geyser"
+	icon = 'icons/obj/lavaland/terrain.dmi'
+	icon_state = "geyser"
+	anchored = TRUE
+
+	var/erupting_state = null //set to null to get it greyscaled from "[icon_state]_soup". Not very usable with the whole random thing, but more types can be added if you change the spawn prob
+	var/activated = FALSE //whether we are active and generating chems
+	var/reagent_id = /datum/reagent/oil
+	var/potency = 2 //how much reagents we add every process (2 seconds)
+	var/max_volume = 500
+	var/start_volume = 50
+
+/obj/structure/geyser/proc/start_chemming()
+	activated = TRUE
+	create_reagents(max_volume, DRAINABLE)
+	reagents.add_reagent(reagent_id, start_volume)
+	START_PROCESSING(SSfluids, src) //It's main function is to be plumbed, so use SSfluids
+	if(erupting_state)
+		icon_state = erupting_state
+	else
+		var/mutable_appearance/I = mutable_appearance('icons/obj/lavaland/terrain.dmi', "[icon_state]_soup")
+		I.color = reagents.get_color()
+		add_overlay(I)
+
+/obj/structure/geyser/process()
+	if(activated && reagents.total_volume <= reagents.maximum_volume) //this is also evaluated in add_reagent, but from my understanding proc calls are expensive
+		reagents.add_reagent(reagent_id, potency)
+
+/obj/structure/geyser/plunger_act(obj/item/plunger/P, mob/living/user, _reinforced)
+	if(!_reinforced)
+		to_chat(user, "<span class='warning'>The [P.name] isn't strong enough!</span>")
+		return
+	if(activated)
+		to_chat(user, "<span class'warning'>The [name] is already active!</span>")
+		return
+
+	to_chat(user, "<span class='notice'>You start vigorously plunging [src]!</span>")
+	if(do_after(user, 50 * P.plunge_mod, target = src) && !activated)
+		start_chemming()
+
+/obj/structure/geyser/random
+	erupting_state = null
+	var/list/options = list(/datum/reagent/clf3 = 10, /datum/reagent/water/hollowwater = 10, /datum/reagent/medicine/omnizine/protozine = 6, /datum/reagent/wittel = 1)
+
+/obj/structure/geyser/random/Initialize(mapload)
+	. = ..()
+	reagent_id = pickweight(options)
+*/

@@ -6,7 +6,7 @@
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
-	matter = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 1000)
+	matter = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
 	var/obj/item/implant/imp = null
 	var/active = 1
 
@@ -61,9 +61,7 @@
 
 						if(ishuman(M))
 							var/mob/living/carbon/human/H = M
-							ENABLE_BITFIELD(H.hud_updateflag, IMPLOYAL_HUD)
-							ENABLE_BITFIELD(H.hud_updateflag, BACKUP_HUD) //VOREStation Add - Backup HUD updates
-
+							H.update_hud_sec_implants()
 					src.imp = null
 					update()
 	else
@@ -73,39 +71,31 @@
 /obj/item/implanter/loyalty
 	name = "implanter-loyalty"
 
-/obj/item/implanter/loyalty/New()
+/obj/item/implanter/loyalty/Initialize(mapload)
 	src.imp = new /obj/item/implant/loyalty( src )
-	..()
-	update()
-	return
+	return ..()
 
 /obj/item/implanter/explosive
 	name = "implanter (E)"
 
-/obj/item/implanter/explosive/New()
+/obj/item/implanter/explosive/Initialize(mapload)
 	src.imp = new /obj/item/implant/explosive( src )
-	..()
-	update()
-	return
+	return ..()
 
 /obj/item/implanter/adrenalin
 	name = "implanter-adrenalin"
 
-/obj/item/implanter/adrenalin/New()
+/obj/item/implanter/adrenalin/Initialize(mapload)
 	src.imp = new /obj/item/implant/adrenalin(src)
-	..()
-	update()
-	return
+	return ..()
 
 /obj/item/implanter/compressed
 	name = "implanter (C)"
 	icon_state = "cimplanter1"
 
-/obj/item/implanter/compressed/New()
+/obj/item/implanter/compressed/Initialize(mapload)
 	imp = new /obj/item/implant/compressed( src )
-	..()
-	update()
-	return
+	return ..()
 
 /obj/item/implanter/compressed/update()
 	if (imp)
@@ -150,3 +140,21 @@
 			S.remove_from_storage(A)
 		A.loc.contents.Remove(A)
 		update()
+
+/// Universal translator implant.
+/obj/item/implanter/uni_translator
+	name = "implanter-language"
+
+/obj/item/implanter/uni_translator/Initialize(mapload)
+	. = ..()
+	imp = new /obj/item/implant/uni_translator( src )
+	update()
+
+/obj/item/implanter/restrainingbolt
+	name = "implanter (bolt)"
+
+/obj/item/implanter/restrainingbolt/New()
+	src.imp = new /obj/item/implant/restrainingbolt( src )
+	..()
+	update()
+	return

@@ -1,5 +1,5 @@
-/obj/structure/window/New()
-	..()
+/obj/structure/window/Initialize(mapload)
+	. = ..()
 	for(var/obj/structure/table/T in view(src, 1))
 		T.update_connections()
 		T.update_icon()
@@ -11,10 +11,8 @@
 		T.update_connections()
 		T.update_icon()
 
-/obj/structure/window/Move()
-	var/oldloc = loc
+/obj/structure/window/Moved(atom/oldloc)
 	. = ..()
-	if(loc != oldloc)
-		for(var/obj/structure/table/T in view(oldloc, 1) | view(loc, 1))
-			T.update_connections()
-			T.update_icon()
+	for(var/obj/structure/table/T in view(oldloc, 1) | view(loc, 1))
+		T.update_connections()
+		T.update_icon()

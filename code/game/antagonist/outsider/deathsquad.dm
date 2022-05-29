@@ -10,7 +10,7 @@ var/datum/antagonist/deathsquad/deathsquad
 	landmark_id = "Commando"
 	flags = ANTAG_OVERRIDE_JOB | ANTAG_OVERRIDE_MOB | ANTAG_HAS_NUKE | ANTAG_HAS_LEADER
 	default_access = list(access_cent_general, access_cent_specops, access_cent_living, access_cent_storage)
-	antaghud_indicator = "huddeathsquad"
+	antaghud_indicator = "deathsquad"
 
 	hard_cap = 4
 	hard_cap_round = 8
@@ -33,7 +33,7 @@ var/datum/antagonist/deathsquad/deathsquad
 		return
 
 	if (player.mind == leader)
-		player.equip_to_slot_or_del(new /obj/item/clothing/under/rank/centcom_officer(player), slot_w_uniform)
+		player.equip_to_slot_or_del(new /obj/item/clothing/under/rank/centcom/officer(player), slot_w_uniform)
 	else
 		player.equip_to_slot_or_del(new /obj/item/clothing/under/color/green(player), slot_w_uniform)
 
@@ -46,7 +46,7 @@ var/datum/antagonist/deathsquad/deathsquad
 		player.equip_to_slot_or_del(new /obj/item/disk/nuclear(player), slot_r_store)
 	else
 		player.equip_to_slot_or_del(new /obj/item/plastique(player), slot_l_store)
-	player.equip_to_slot_or_del(new /obj/item/gun/projectile/revolver/mateba(player), slot_belt)
+	player.equip_to_slot_or_del(new /obj/item/gun/projectile/revolver/combat(player), slot_belt)
 	player.equip_to_slot_or_del(new /obj/item/gun/energy/pulse_rifle(player), slot_r_hand)
 	player.equip_to_slot_or_del(new /obj/item/rig/ert/assetprotection(player), slot_back)
 	player.equip_to_slot_or_del(new /obj/item/melee/energy/sword(player), slot_s_store)

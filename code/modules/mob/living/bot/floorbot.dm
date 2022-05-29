@@ -4,95 +4,136 @@
 // Therefore that functionality is disabled for now.  But it can be turned on by uncommenting this.
 // #define FLOORBOT_PATCHES_HOLES 1
 
+/datum/category_item/catalogue/technology/bot/floorbot
+	name = "Bot - Floorbot"
+	desc = "The standard Floorbot is an oft forgotten automaton \
+	utilized by Engineering teams to help rapidly patch catastrophic \
+	breaches. Although roughly as effective as a trained Engineer working \
+	by hand, Floorbots are most effectively deployed as force multipliers."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/bot/floorbot
 	name = "Floorbot"
 	desc = "A little floor repairing robot, it looks so excited!"
-	icon_state = "floorbot0"
+	icon = 'icons/obj/bots/floorbots.dmi'
+	icon_state = "floorbot"
+	base_icon_state = "toolbox"
 	req_one_access = list(access_robotics, access_construction)
-	wait_if_pulled = 1
+
+	wait_if_pulled = TRUE
 	min_target_dist = 0
+	catalogue_data = list(/datum/category_item/catalogue/technology/bot/floorbot)
 
 	var/amount = 10 // 1 for tile, 2 for lattice
 	var/maxAmount = 60
 	var/tilemake = 0 // When it reaches 100, bot makes a tile
-	var/improvefloors = 0
-	var/eattiles = 0
-	var/maketiles = 0
+	var/improvefloors = FALSE
+	var/eattiles = FALSE
+	var/maketiles = FALSE
 	var/targetdirection = null
 	var/floor_build_type = /decl/flooring/tiling // Basic steel floor.
+	var/toolbox = /obj/item/storage/toolbox/mechanical
+	skin = "blue" // Blue Toolbox is the default
 
-/mob/living/bot/floorbot/update_icons()
+/mob/living/bot/floorbot/Initialize(mapload, new_skin)
+	. = ..()
+	skin = new_skin
+	update_icon()
+
+/mob/living/bot/floorbot/update_icon()
+	. = ..()
+	cut_overlays()
+
+	if(skin)
+		icon_state = "[base_icon_state]-[skin]"
+		add_overlay("[base_icon_state]-prox-[skin]")
 	if(busy)
-		icon_state = "floorbot-c"
-	else if(amount > 0)
-		icon_state = "floorbot[on]"
+		add_overlay("[base_icon_state]-action")
 	else
-		icon_state = "floorbot[on]e"
+		add_overlay("[base_icon_state]-arms")
+		if(amount > 0)
+			add_overlay("[base_icon_state]-tile")
+	if(emagged)
+		add_overlay("[base_icon_state]-[emagged ? "spark" : null]")
+	else
+		add_overlay("[base_icon_state]-[on]")
+
+
+/mob/living/bot/floorbot/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Floorbot", name)
+		ui.open()
+
+/mob/living/bot/floorbot/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	var/list/data = ..()
+
+	data["on"] = on
+	data["open"] = open
+	data["locked"] = locked
+
+	data["amount"] = amount
+
+	data["possible_bmode"] = list("NORTH", "EAST", "SOUTH", "WEST")
+
+	data["improvefloors"] = null
+	data["eattiles"] = null
+	data["maketiles"] = null
+	data["bmode"] = null
+
+	if(!locked || issilicon(user))
+		data["improvefloors"] = improvefloors
+		data["eattiles"] = eattiles
+		data["maketiles"] = maketiles
+		data["bmode"] = dir2text(targetdirection)
+
+	return data
 
 /mob/living/bot/floorbot/attack_hand(var/mob/user)
-	user.set_machine(src)
-	var/list/dat = list()
-	dat += "<TT><B>Automatic Station Floor Repairer v1.0</B></TT><BR><BR>"
-	dat += "Status: <A href='?src=\ref[src];operation=start'>[src.on ? "On" : "Off"]</A><BR>"
-	dat += "Maintenance panel is [open ? "opened" : "closed"]<BR>"
-	dat += "Tiles left: [amount]<BR>"
-	dat += "Behvaiour controls are [locked ? "locked" : "unlocked"]<BR>"
-	if(!locked || issilicon(user))
-		dat += "Improves floors: <A href='?src=\ref[src];operation=improve'>[improvefloors ? "Yes" : "No"]</A><BR>"
-		dat += "Finds tiles: <A href='?src=\ref[src];operation=tiles'>[eattiles ? "Yes" : "No"]</A><BR>"
-		dat += "Make singles pieces of metal into tiles when empty: <A href='?src=\ref[src];operation=make'>[maketiles ? "Yes" : "No"]</A><BR>"
-		var/bmode
-		if(targetdirection)
-			bmode = dir2text(targetdirection)
-		else
-			bmode = "Disabled"
-		dat += "<BR><BR>Bridge Mode : <A href='?src=\ref[src];operation=bridgemode'>[bmode]</A><BR>"
-	var/datum/browser/popup = new(user, "autorepair", "Repairbot v1.1 controls")
-	popup.set_content(jointext(dat,null))
-	popup.open()
-	return
+	ui_interact(user)
 
 /mob/living/bot/floorbot/emag_act(var/remaining_charges, var/mob/user)
 	. = ..()
 	if(!emagged)
-		emagged = 1
+		emagged = TRUE
 		if(user)
-			to_chat(user, "<span class='notice'>The [src] buzzes and beeps.</span>")
-			playsound(src.loc, 'sound/machines/buzzbeep.ogg', 50, 0)
-		return 1
+			to_chat(user, SPAN_NOTICE("The [src] buzzes and beeps."))
+			playsound(src.loc, 'sound/machines/buzzbeep.ogg', 50, FALSE)
+		return TRUE
 
-/mob/living/bot/floorbot/Topic(href, href_list)
+/mob/living/bot/floorbot/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
-		return
-	usr.set_machine(src)
+		return TRUE
+
 	add_fingerprint(usr)
-	switch(href_list["operation"])
+
+	switch(action)
 		if("start")
-			if (on)
+			if(on)
 				turn_off()
 			else
 				turn_on()
+			. = TRUE
+
+	if(locked && !issilicon(usr))
+		return
+
+	switch(action)
 		if("improve")
 			improvefloors = !improvefloors
+			. = TRUE
+
 		if("tiles")
 			eattiles = !eattiles
+			. = TRUE
+
 		if("make")
 			maketiles = !maketiles
+			. = TRUE
+
 		if("bridgemode")
-			switch(targetdirection)
-				if(null)
-					targetdirection = 1
-				if(1)
-					targetdirection = 2
-				if(2)
-					targetdirection = 4
-				if(4)
-					targetdirection = 8
-				if(8)
-					targetdirection = null
-				else
-					targetdirection = null
-	attack_hand(usr)
+			targetdirection = text2dir(params["dir"])
+			. = TRUE
 
 /mob/living/bot/floorbot/handleRegular()
 	++tilemake
@@ -102,7 +143,7 @@
 
 	if(prob(1))
 		custom_emote(2, "makes an excited beeping sound!")
-		playsound(src.loc, 'sound/machines/twobeep.ogg', 50, 0)
+		playsound(src.loc, 'sound/machines/twobeep.ogg', 50, FALSE)
 
 /mob/living/bot/floorbot/handleAdjacentTarget()
 	if(get_turf(target) == src.loc)
@@ -266,7 +307,7 @@
 		update_icons()
 	else if(istype(A, /obj/item/stack/material) && amount + 4 <= maxAmount)
 		var/obj/item/stack/material/M = A
-		if(M.get_material_name() == DEFAULT_WALL_MATERIAL)
+		if(M.get_material_name() == MAT_STEEL)
 			visible_message("<span class='notice'>\The [src] begins to make tiles.</span>")
 			busy = 1
 			update_icons()
@@ -328,81 +369,84 @@
 
 /* Assembly */
 
-/obj/item/storage/toolbox/mechanical/attackby(var/obj/item/stack/tile/floor/T, mob/living/user as mob)
+/obj/item/storage/toolbox/attackby(var/obj/item/stack/tile/floor/T, mob/living/user, params)
 	if(!istype(T, /obj/item/stack/tile/floor))
 		..()
 		return
+
 	if(contents.len >= 1)
-		to_chat(user, "<span class='notice'>They wont fit in as there is already stuff inside.</span>")
+		to_chat(user, SPAN_NOTICE("They wont fit in as there is already stuff inside."))
 		return
+
 	if(user.s_active)
 		user.s_active.close(user)
+
 	if(T.use(10))
-		var/obj/item/toolbox_tiles/B = new /obj/item/toolbox_tiles
+		var/obj/item/bot_assembly/floorbot/B = new
+		if(istype(src, /obj/item/storage/toolbox/mechanical/))
+			B.skin = "blue"
+		else if(istype(src, /obj/item/storage/toolbox/emergency))
+			B.skin = "red"
+		else if(istype(src, /obj/item/storage/toolbox/electrical))
+			B.skin = "yellow"
+		else if(istype(src, /obj/item/storage/toolbox/gold_fake))
+			B.skin = "gold"
+		else if(istype(src, /obj/item/storage/toolbox/syndicate))
+			B.skin = "syndicate"
+		else if(istype(src, /obj/item/storage/firstaid/surgery))
+			B.skin = "surgerykit"
 		user.put_in_hands(B)
-		to_chat(user, "<span class='notice'>You add the tiles into the empty toolbox. They protrude from the top.</span>")
+		to_chat(user, SPAN_NOTICE("You add the tiles into the empty toolbox. They protrude from the top."))
+		B.toolbox = type
 		user.drop_from_inventory(src)
 		qdel(src)
 	else
-		to_chat(user, "<span class='warning'>You need 10 floor tiles for a floorbot.</span>")
-	return
+		to_chat(user, SPAN_WARNING("You need 10 floor tiles for a floorbot."))
+		return
 
-/obj/item/toolbox_tiles
+/obj/item/bot_assembly/floorbot
 	desc = "It's a toolbox with tiles sticking out the top"
 	name = "tiles and toolbox"
-	icon = 'icons/obj/aibots.dmi'
-	icon_state = "toolbox_tiles"
-	force = 3.0
-	throwforce = 10.0
+	icon = 'icons/obj/bots/floorbots.dmi'
+	icon_state = "toolbox-blue"
+	base_icon_state = "toolbox"
+	skin = "blue"
+	force = 3
+	throwforce = 10
 	throw_speed = 2
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
-	var/created_name = "Floorbot"
+	created_name = "Floorbot"
+	var/toolbox = /obj/item/storage/toolbox
 
-/obj/item/toolbox_tiles/attackby(var/obj/item/W, mob/user as mob)
+/obj/item/bot_assembly/floorbot/Initialize(mapload)
+	. = ..()
+	spawn(1)
+		icon_state = "[base_icon_state]-[skin]"
+		add_overlay("[base_icon_state]-tile")
+
+/obj/item/bot_assembly/floorbot/attackby(obj/item/W, mob/user, params)
 	..()
-	if(isprox(W))
-		qdel(W)
-		var/obj/item/toolbox_tiles_sensor/B = new /obj/item/toolbox_tiles_sensor()
-		B.created_name = created_name
-		user.put_in_hands(B)
-		to_chat(user, "<span class='notice'>You add the sensor to the toolbox and tiles!</span>")
-		user.drop_from_inventory(src)
-		qdel(src)
-	else if (istype(W, /obj/item/pen))
-		var/t = sanitizeSafe(input(user, "Enter new robot name", name, created_name), MAX_NAME_LEN)
-		if(!t)
-			return
-		if(!in_range(src, user) && loc != user)
-			return
-		created_name = t
+	switch(build_step)
+		if(ASSEMBLY_FIRST_STEP)
+			if(isprox(W))
+				user.drop_item()
+				to_chat(user, SPAN_NOTICE("You add the proximity sensor to [src]."))
+				qdel(W)
+				name = "incomplete floorbot assembly"
+				desc = "It's a toolbox with tiles sticking out the top and a sensor attached."
+				add_overlay("[base_icon_state]-prox-[skin]")
+				build_step++
 
-/obj/item/toolbox_tiles_sensor
-	desc = "It's a toolbox with tiles sticking out the top and a sensor attached"
-	name = "tiles, toolbox and sensor arrangement"
-	icon = 'icons/obj/aibots.dmi'
-	icon_state = "toolbox_tiles_sensor"
-	force = 3.0
-	throwforce = 10.0
-	throw_speed = 2
-	throw_range = 5
-	w_class = ITEMSIZE_NORMAL
-	var/created_name = "Floorbot"
-
-/obj/item/toolbox_tiles_sensor/attackby(var/obj/item/W, mob/user as mob)
-	..()
-	if(istype(W, /obj/item/robot_parts/l_arm) || istype(W, /obj/item/robot_parts/r_arm) || (istype(W, /obj/item/organ/external/arm) && ((W.name == "robotic right arm") || (W.name == "robotic left arm"))))
-		qdel(W)
-		var/turf/T = get_turf(user.loc)
-		var/mob/living/bot/floorbot/A = new /mob/living/bot/floorbot(T)
-		A.name = created_name
-		to_chat(user, "<span class='notice'>You add the robot arm to the odd looking toolbox assembly! Boop beep!</span>")
-		user.drop_from_inventory(src)
-		qdel(src)
-	else if(istype(W, /obj/item/pen))
-		var/t = sanitizeSafe(input(user, "Enter new robot name", name, created_name), MAX_NAME_LEN)
-		if(!t)
-			return
-		if(!in_range(src, user) && loc != user)
-			return
-		created_name = t
+		if(ASSEMBLY_SECOND_STEP)
+			if(is_valid_arm(W))
+				if(!can_finish_build(W, user))
+					return
+				qdel(W)
+				var/mob/living/bot/floorbot/S = new(drop_location(), skin)
+				to_chat(user, SPAN_NOTICE("You complete the Floorbot! Beep boop."))
+				S.name = created_name
+				S.toolbox = toolbox
+				S.robot_arm = robot_arm
+				user.drop_from_inventory(src)
+				qdel(src)

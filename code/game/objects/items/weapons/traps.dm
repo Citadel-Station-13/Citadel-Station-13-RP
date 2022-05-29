@@ -9,14 +9,34 @@
 	throwforce = 0
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 18750)
+	matter = list(MAT_STEEL = 18750)
 	var/deployed = 0
 	var/camo_net = FALSE
 	var/stun_length = 0.25 SECONDS
+	var/trap_damage = 30
+	slot_flags = SLOT_MASK
+	item_icons = list(
+		/datum/inventory_slot_meta/inventory/mask = 'icons/mob/clothing/mask.dmi'
+		)
+
+/obj/item/beartrap/equipped(mob/user, slot)
+	if(ishuman(src.loc))
+		var/mob/living/carbon/human/H = src.loc
+		if(H.wear_mask == src)
+			H.verbs |= /mob/living/proc/shred_limb_temp
+		else
+			H.verbs -= /mob/living/proc/shred_limb_temp
+	..()
+
+/obj/item/beartrap/dropped(var/mob/user)
+	user.verbs -= /mob/living/proc/shred_limb_temp
+	..()
+
+
 
 /obj/item/beartrap/suicide_act(mob/user)
 	var/datum/gender/T = gender_datums[user.get_visible_gender()]
-	viewers(user) << "<span class='danger'>[user] is putting the [src.name] on [T.his] head! It looks like [T.hes] trying to commit suicide.</span>"
+	user.visible_message("<span class='danger'>[user] is putting the [src.name] on [T.his] head! It looks like [T.hes] trying to commit suicide.</span>")
 	return (BRUTELOSS)
 
 /obj/item/beartrap/proc/can_use(mob/user)
@@ -39,10 +59,13 @@
 				)
 			playsound(src.loc, 'sound/machines/click.ogg',70, 1)
 
-			deployed = 1
 			user.drop_from_inventory(src)
-			update_icon()
-			anchored = 1
+			activate()
+
+/obj/item/beartrap/proc/activate()
+	deployed = 1
+	anchored = 1
+	update_icon()
 
 /obj/item/beartrap/attack_hand(mob/user as mob)
 	if(has_buckled_mobs() && can_use(user))
@@ -93,7 +116,7 @@
 	if(soaked >= 30)
 		return
 
-	if(!L.apply_damage(30, BRUTE, target_zone, blocked, soaked, used_weapon=src))
+	if(!L.apply_damage(trap_damage, BRUTE, target_zone, blocked, soaked, used_weapon=src))
 		return 0
 
 	//trap the victim in place
@@ -105,7 +128,9 @@
 	deployed = 0
 	can_buckle = initial(can_buckle)
 
-/obj/item/beartrap/Crossed(AM as mob|obj)
+/obj/item/beartrap/Crossed(atom/movable/AM as mob|obj)
+	if(AM.is_incorporeal())
+		return
 	if(deployed && isliving(AM))
 		var/mob/living/L = AM
 		if(L.m_intent == "run")
@@ -139,7 +164,16 @@
 	name = "hunting trap"
 	desc = "A mechanically activated leg trap. High-tech and reliable. Looks like it could really hurt if you set it off."
 	stun_length = 1 SECOND
+	trap_damage = 45
 	camo_net = TRUE
 	color = "#C9DCE1"
 
 	origin_tech = list(TECH_MATERIAL = 4, TECH_BLUESPACE = 3, TECH_MAGNET = 4, TECH_PHORON = 2, TECH_ARCANE = 1)
+
+/obj/item/beartrap/hunting/emp
+	name = "stealth disruptor trap"
+	desc = "A mechanically activated leg trap. High tech and reliable. Looks like it could really be a problem for unshielded electronics."
+
+/obj/item/beartrap/hunting/emp/attack_mob(mob/living/L)
+	. = ..()
+	empulse(L.loc, 0, 0, 0, 0)	// very localized, apparently

@@ -21,8 +21,8 @@
 	var/min_harvests = -1
 	var/list/harvest_loot = null	// Should be an associative list for things to spawn, and their weights. An example would be a branch from a tree.
 
-/obj/structure/flora/Initialize()
-	..()
+/obj/structure/flora/Initialize(mapload)
+	. = ..()
 
 	if(randomize_size)
 		icon_scale_x = rand(min_x_scale * 100, max_x_scale * 100) / 100
@@ -36,9 +36,9 @@
 		max_harvests = max(0, rand(min_harvests, max_harvests)) // Incase you want to weight it more toward 'not harvestable', set min_harvests to a negative value.
 
 /obj/structure/flora/examine(mob/user)
-	. = ..(user)
+	. = ..()
 	if(harvest_count < max_harvests)
-		to_chat(user, "<span class='notice'>\The [src] seems to have something hanging from it.</span>")
+		. += "<span class='notice'>\The [src] seems to have something hanging from it.</span>"
 
 /obj/structure/flora/attackby(var/obj/item/W, var/mob/living/user)
 	if(can_harvest(W))
@@ -78,8 +78,8 @@
 	icon = 'icons/obj/flora/snowflora.dmi'
 	icon_state = "snowbush1"
 
-/obj/structure/flora/bush/New()
-	..()
+/obj/structure/flora/bush/Initialize(mapload)
+	. = ..()
 	icon_state = "snowbush[rand(1, 6)]"
 
 /obj/structure/flora/pottedplant
@@ -97,113 +97,138 @@
 	icon = 'icons/obj/flora/ausflora.dmi'
 	icon_state = "firstbush_1"
 
-/obj/structure/flora/ausbushes/New()
-	..()
+/obj/structure/flora/ausbushes/attackby(obj/item/W as obj, mob/user as mob)
+	// Dismantle
+	if(istype(W, /obj/item/shovel))
+		playsound(src.loc, W.usesound, 50, 1)
+		if(do_after(user, 10, src))
+			user.visible_message("<span class='notice'>\The [user] digs up \the [src].</span>", "<span class='notice'>You dig up \the [src].</span>")
+			new /obj/item/stack/tile/grass(get_turf(usr), 1)
+			qdel(src)
+			return
+
+/obj/structure/flora/ausbushes/Initialize(mapload)
+	. = ..()
 	icon_state = "firstbush_[rand(1, 4)]"
 
 /obj/structure/flora/ausbushes/reedbush
+	name = "reeds"
 	icon_state = "reedbush_1"
 
-/obj/structure/flora/ausbushes/reedbush/New()
-	..()
+/obj/structure/flora/ausbushes/reedbush/Initialize(mapload)
+	. = ..()
 	icon_state = "reedbush_[rand(1, 4)]"
 
 /obj/structure/flora/ausbushes/leafybush
+	name = "leafy bush"
 	icon_state = "leafybush_1"
 
-/obj/structure/flora/ausbushes/leafybush/New()
-	..()
+/obj/structure/flora/ausbushes/leafybush/Initialize(mapload)
+	. = ..()
 	icon_state = "leafybush_[rand(1, 3)]"
 
 /obj/structure/flora/ausbushes/palebush
+	name = "sparse bush"
 	icon_state = "palebush_1"
 
-/obj/structure/flora/ausbushes/palebush/New()
-	..()
+/obj/structure/flora/ausbushes/palebush/Initialize(mapload)
+	. = ..()
 	icon_state = "palebush_[rand(1, 4)]"
 
 /obj/structure/flora/ausbushes/stalkybush
+	name = "stalks"
 	icon_state = "stalkybush_1"
 
-/obj/structure/flora/ausbushes/stalkybush/New()
-	..()
+/obj/structure/flora/ausbushes/stalkybush/Initialize(mapload)
+	. = ..()
 	icon_state = "stalkybush_[rand(1, 3)]"
 
 /obj/structure/flora/ausbushes/grassybush
+	name = "lush grass"
 	icon_state = "grassybush_1"
 
-/obj/structure/flora/ausbushes/grassybush/New()
-	..()
+/obj/structure/flora/ausbushes/grassybush/Initialize(mapload)
+	. = ..()
 	icon_state = "grassybush_[rand(1, 4)]"
 
 /obj/structure/flora/ausbushes/fernybush
+	name = "ferns"
 	icon_state = "fernybush_1"
 
-/obj/structure/flora/ausbushes/fernybush/New()
-	..()
+/obj/structure/flora/ausbushes/fernybush/Initialize(mapload)
+	. = ..()
 	icon_state = "fernybush_[rand(1, 3)]"
 
 /obj/structure/flora/ausbushes/sunnybush
+	name = "sapling"
 	icon_state = "sunnybush_1"
 
-/obj/structure/flora/ausbushes/sunnybush/New()
-	..()
+/obj/structure/flora/ausbushes/sunnybush/Initialize(mapload)
+	. = ..()
 	icon_state = "sunnybush_[rand(1, 3)]"
 
 /obj/structure/flora/ausbushes/genericbush
+	name = "leafy sapling"
 	icon_state = "genericbush_1"
 
-/obj/structure/flora/ausbushes/genericbush/New()
-	..()
+/obj/structure/flora/ausbushes/genericbush/Initialize(mapload)
+	. = ..()
 	icon_state = "genericbush_[rand(1, 4)]"
 
 /obj/structure/flora/ausbushes/pointybush
+	name = "needled sapling"
 	icon_state = "pointybush_1"
 
-/obj/structure/flora/ausbushes/pointybush/New()
-	..()
+/obj/structure/flora/ausbushes/pointybush/Initialize(mapload)
+	. = ..()
 	icon_state = "pointybush_[rand(1, 4)]"
 
 /obj/structure/flora/ausbushes/lavendergrass
+	name = "patchy flowers"
 	icon_state = "lavendergrass_1"
 
-/obj/structure/flora/ausbushes/lavendergrass/New()
-	..()
+/obj/structure/flora/ausbushes/lavendergrass/Initialize(mapload)
+	. = ..()
 	icon_state = "lavendergrass_[rand(1, 4)]"
 
 /obj/structure/flora/ausbushes/ywflowers
+	name = "yellow flowers"
 	icon_state = "ywflowers_1"
 
-/obj/structure/flora/ausbushes/ywflowers/New()
-	..()
+/obj/structure/flora/ausbushes/ywflowers/Initialize(mapload)
+	. = ..()
 	icon_state = "ywflowers_[rand(1, 3)]"
 
 /obj/structure/flora/ausbushes/brflowers
+	name = "colorful flowers"
 	icon_state = "brflowers_1"
 
-/obj/structure/flora/ausbushes/brflowers/New()
-	..()
+/obj/structure/flora/ausbushes/brflowers/Initialize(mapload)
+	. = ..()
 	icon_state = "brflowers_[rand(1, 3)]"
 
 /obj/structure/flora/ausbushes/ppflowers
+	name = "purple flowers"
 	icon_state = "ppflowers_1"
 
-/obj/structure/flora/ausbushes/ppflowers/New()
-	..()
+/obj/structure/flora/ausbushes/ppflowers/Initialize(mapload)
+	. = ..()
 	icon_state = "ppflowers_[rand(1, 3)]"
 
 /obj/structure/flora/ausbushes/sparsegrass
+	name = "sparse grass"
 	icon_state = "sparsegrass_1"
 
-/obj/structure/flora/ausbushes/sparsegrass/New()
-	..()
+/obj/structure/flora/ausbushes/sparsegrass/Initialize(mapload)
+	. = ..()
 	icon_state = "sparsegrass_[rand(1, 3)]"
 
 /obj/structure/flora/ausbushes/fullgrass
+	name = "grass"
 	icon_state = "fullgrass_1"
 
-/obj/structure/flora/ausbushes/fullgrass/New()
-	..()
+/obj/structure/flora/ausbushes/fullgrass/Initialize(mapload)
+	. = ..()
 	icon_state = "fullgrass_[rand(1, 3)]"
 
 /obj/structure/flora/skeleton
@@ -399,7 +424,7 @@
 	light_color = "#FF6633"
 	catalogue_data = list(/datum/category_item/catalogue/flora/subterranean_bulbs)
 
-/obj/structure/flora/sif/subterranean/Initialize()
+/obj/structure/flora/sif/subterranean/Initialize(mapload)
 	icon_state = "[initial(icon_state)][rand(1,2)]"
 	. = ..()
 
@@ -417,7 +442,7 @@
 	icon_state = "eyeplant"
 	catalogue_data = list(/datum/category_item/catalogue/flora/eyebulbs)
 
-/obj/structure/flora/sif/eyes/Initialize()
+/obj/structure/flora/sif/eyes/Initialize(mapload)
 	icon_state = "[initial(icon_state)][rand(1,3)]"
 	. = ..()
 
@@ -435,6 +460,72 @@
 	randomize_size = TRUE
 	catalogue_data = list(/datum/category_item/catalogue/flora/mosstendrils)
 
-/obj/structure/flora/sif/tendrils/Initialize()
+/obj/structure/flora/sif/tendrils/Initialize(mapload)
 	icon_state = "[initial(icon_state)][rand(1,3)]"
 	. = ..()
+
+//Pumpkins
+/obj/structure/flora/pumpkin
+	name = "pumpkin"
+	icon = 'icons/obj/flora/pumpkins.dmi'
+	desc = "A healthy, fat pumpkin. It looks as if it was freshly plucked from its vines and shows no signs of decay."
+	icon_state = "decor-pumpkin"
+
+/atom/movable/landmark/carved_pumpkin_spawn
+	name = "jack o'lantern spawn"
+	icon = 'icons/obj/flora/pumpkins.dmi'
+	icon_state = "spawner-jackolantern"
+
+/atom/movable/landmark/carved_pumpkin_spawn/New()
+    var/new_pumpkin = pick(
+		prob(70);/obj/structure/flora/pumpkin,
+        prob(60);/obj/structure/flora/pumpkin/carved,
+        prob(30);/obj/structure/flora/pumpkin/carved/scream,
+        prob(30);/obj/structure/flora/pumpkin/carved/girly,
+        prob(10);/obj/structure/flora/pumpkin/carved/owo)
+    new new_pumpkin(src.loc)
+    ..()
+
+/obj/structure/flora/pumpkin/carved
+	name = "jack o'lantern"
+	desc = "A fat, freshly picked pumpkin. This one has a face carved into it! This one has develishly evil-looking eyes and a grinning mouth more than big enough for a very small person to hide in."
+	icon_state = "decor-jackolantern"
+
+/obj/structure/flora/pumpkin/carved/scream
+	desc = "A fat, freshly picked pumpkin. This one has a face carved into it! This one has rounded eyes looking in completely opposite directions and a wide mouth, forever frozen in a silent scream. It looks ridiculous, actually."
+	icon_state = "decor-jackolantern-scream"
+
+/obj/structure/flora/pumpkin/carved/girly
+	desc = "A fat, freshly picked pumpkin. This one has a face carved into it! This one has neatly rounded eyes topped with what appear to be cartoony eyelashes, completed with what seems to have been the carver's attempt at friendly, toothy smile. The mouth is easily the scariest part of its face."
+	icon_state = "decor-jackolantern-girly"
+
+/obj/structure/flora/pumpkin/carved/owo
+	desc = "A fat, freshly picked pumpkin. This one has a face carved into it! This one has large, round eyes and a squiggly, cat-like smiling mouth. Its pleasantly surprised expression seems to suggest that the pumpkin has noticed something about you."
+	icon_state = "decor-jackolantern-owo"
+
+//Halloween Gift Spawner
+/obj/structure/flora/pumpkin/pumpkin_patch
+	name = "pumpkin patch"
+	desc = "A big pile of pumpkins, guarded by a spooky scarecrow!"
+	icon = 'icons/obj/flora/pinetrees.dmi'
+	icon_state = "pumpkinpatch"
+
+/obj/structure/flora/pumpkin/pumpkin_patch/presents
+	desc = "A big pile of pumpkins, guarded by a spooky scarecrow! It has presents!"
+	var/gift_type = /obj/item/b_gift
+	var/list/ckeys_that_took = list()
+
+/obj/structure/flora/pumpkin/pumpkin_patch/presents/attack_hand(mob/living/user)
+	. = ..()
+	if(.)
+		return
+	if(!user.ckey)
+		return
+
+	if(ckeys_that_took[user.ckey])
+		to_chat(user, SPAN_WARNING( "There are no pumpkins that look familiar to you."))
+		return
+	to_chat(user, SPAN_NOTICE("After a bit of searching, you locate a pumpkin with your face carved into it!"))
+	ckeys_that_took[user.ckey] = TRUE
+	var/obj/item/G = new gift_type(src)
+	user.put_in_hands(G)

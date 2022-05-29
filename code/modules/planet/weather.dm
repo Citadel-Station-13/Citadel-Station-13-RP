@@ -47,7 +47,7 @@
 		our_planet.update_sun()
 	log_debug("[our_planet.name]'s weather is now [new_weather], with a temperature of [temperature]&deg;K ([temperature - T0C]&deg;C | [temperature * 1.8 - 459.67]&deg;F).")
 
-/datum/weather_holder/process()
+/datum/weather_holder/process(delta_time)
 	if(world.time >= next_weather_shift)
 		if(!current_weather) // Roundstart (hopefully).
 			initialize_weather()
@@ -69,7 +69,7 @@
 /datum/weather_holder/proc/get_next_weather(var/datum/weather/W)
 	if(!current_weather) // At roundstart, choose a suitable initial weather.
 		return pickweight(roundstart_weather_chances)
-	return pickweight(W.transition_chances)
+	return pickweight(W?.transition_chances)
 
 /datum/weather_holder/proc/advance_forecast()
 	var/new_weather = forecast[1]
@@ -115,9 +115,9 @@
 		wind_dir = 0
 		return
 	wind_speed = new_wind_speed
-	wind_dir = pick(alldirs)
+	wind_dir = pick(GLOB.alldirs)
 	var/message = "You feel the wind blowing [wind_speed > 2 ? "strongly ": ""]towards the <b>[dir2text(wind_dir)]</b>."
-	message_all_outdoor_players(span("warning", message))
+	message_all_outdoor_players(SPAN_WARNING( message))
 
 /datum/weather_holder/proc/message_all_outdoor_players(message)
 	for(var/mob/M in player_list) // Don't need to care about clientless mobs.
@@ -257,4 +257,4 @@
 // This is for special effects for specific types of weather, such as lightning flashes in a storm.
 // It's a seperate object to allow the use of flick().
 /atom/movable/weather_visuals/special
-	plane = PLANE_LIGHTING_ABOVE
+	plane = ABOVE_LIGHTING_PLANE

@@ -65,9 +65,9 @@
 	var/obj/item/robot_parts/head/head = null
 	var/created_name = ""
 
-/obj/item/robot_parts/robot_suit/New()
-	..()
-	src.updateicon()
+/obj/item/robot_parts/robot_suit/Initialize(mapload)
+	. = ..()
+	updateicon()
 
 /obj/item/robot_parts/robot_suit/proc/updateicon()
 	src.overlays.Cut()
@@ -94,7 +94,7 @@
 
 /obj/item/robot_parts/robot_suit/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-	if(istype(W, /obj/item/stack/material) && W.get_material_name() == DEFAULT_WALL_MATERIAL && !l_arm && !r_arm && !l_leg && !r_leg && !chest && !head)
+	if(istype(W, /obj/item/stack/material) && W.get_material_name() == MAT_STEEL && !l_arm && !r_arm && !l_leg && !r_leg && !chest && !head)
 		var/obj/item/stack/material/M = W
 		if (M.use(1))
 			var/obj/item/secbot_assembly/ed209_assembly/B = new /obj/item/secbot_assembly/ed209_assembly
@@ -186,7 +186,7 @@
 					to_chat(user, "<span class='warning'>This [W] does not seem to fit.</span>")
 					return
 
-			var/mob/living/silicon/robot/O = new /mob/living/silicon/robot(get_turf(loc), unfinished = 1)
+			var/mob/living/silicon/robot/O = new /mob/living/silicon/robot(get_turf(loc), TRUE)
 			if(!O)	return
 
 			user.drop_item()

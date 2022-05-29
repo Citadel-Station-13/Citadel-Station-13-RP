@@ -13,7 +13,7 @@
 	return host ? host : src
 
 /datum/nano_module/proc/can_still_topic(var/datum/topic_state/state = default_state)
-	return CanUseTopic(usr, state) == STATUS_INTERACTIVE
+	return CanUseTopic(usr, state) == UI_INTERACTIVE
 
 /datum/nano_module/proc/check_eye(var/mob/user)
 	return -1
@@ -61,4 +61,7 @@
 	return list()
 
 /datum/proc/update_layout()
+	return FALSE
+
+/datum/nano_module/proc/relaymove(var/mob/user, direction)
 	return FALSE

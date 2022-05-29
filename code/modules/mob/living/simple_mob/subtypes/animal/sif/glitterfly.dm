@@ -37,6 +37,7 @@
 
 	maxHealth = 10
 	health = 10
+	randomized = TRUE
 
 	movement_cooldown = -1
 	hovering = TRUE
@@ -55,8 +56,8 @@
 	say_list_type = /datum/say_list/glitterfly
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive/glitterfly
 
-/mob/living/simple_mob/animal/sif/glitterfly/Initialize()
-	..()
+/mob/living/simple_mob/animal/sif/glitterfly/Initialize(mapload)
+	. = ..()
 	var/colorlist = list(rgb(rand(100,255), rand(100,255), rand(100,255)) =  10, rgb(rand(5,100), rand(5,100), rand(5,100)) = 2, "#222222" = 1)
 	color = pickweight(colorlist)
 
@@ -76,10 +77,10 @@
 
 	melee_damage_upper = 5
 
-	plane = PLANE_LIGHTING_ABOVE
+	plane = ABOVE_LIGHTING_PLANE
 
-/mob/living/simple_mob/animal/sif/glitterfly/rare/Initialize()
-	..()
+/mob/living/simple_mob/animal/sif/glitterfly/rare/Initialize(mapload)
+	. = ..()
 
 /datum/say_list/glitterfly
 	speak = list("Pi..","Po...", "Pa...")

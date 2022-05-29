@@ -6,21 +6,20 @@
 	They are used with the client/screen list and the screen_loc var.
 	For more information, see the byond documentation on the screen_loc and screen vars.
 */
-/obj/screen
+/atom/movable/screen
 	name = ""
 	icon = 'icons/mob/screen1.dmi'
 	appearance_flags = TILE_BOUND|PIXEL_SCALE|NO_CLIENT_COLOR
 	layer = LAYER_HUD_BASE
 	plane = PLANE_PLAYER_HUD
-	unacidable = 1
 	var/obj/master = null	//A reference to the object in the slot. Grabs or items, generally.
 	var/datum/hud/hud = null // A reference to the owner HUD, if any.
 
-/obj/screen/Destroy()
+/atom/movable/screen/Destroy()
 	master = null
 	return ..()
 
-/obj/screen/text
+/atom/movable/screen/text
 	icon = null
 	icon_state = null
 	mouse_opacity = 0
@@ -29,14 +28,14 @@
 	maptext_width = 480
 
 
-/obj/screen/inventory
+/atom/movable/screen/inventory
 	var/slot_id	//The indentifier for the slot. It has nothing to do with ID cards.
 
 
-/obj/screen/close
+/atom/movable/screen/close
 	name = "close"
 
-/obj/screen/close/Click()
+/atom/movable/screen/close/Click()
 	if(master)
 		if(istype(master, /obj/item/storage))
 			var/obj/item/storage/S = master
@@ -44,14 +43,14 @@
 	return 1
 
 
-/obj/screen/item_action
+/atom/movable/screen/item_action
 	var/obj/item/owner
 
-/obj/screen/item_action/Destroy()
+/atom/movable/screen/item_action/Destroy()
 	. = ..()
 	owner = null
 
-/obj/screen/item_action/Click()
+/atom/movable/screen/item_action/Click()
 	if(!usr || !owner)
 		return 1
 	if(!usr.canClick())
@@ -66,25 +65,25 @@
 	owner.ui_action_click()
 	return 1
 
-/obj/screen/grab
+/atom/movable/screen/grab
 	name = "grab"
 
-/obj/screen/grab/Click()
+/atom/movable/screen/grab/Click()
 	var/obj/item/grab/G = master
 	G.s_click(src)
 	return 1
 
-/obj/screen/grab/attack_hand()
+/atom/movable/screen/grab/attack_hand()
 	return
 
-/obj/screen/grab/attackby()
+/atom/movable/screen/grab/attackby()
 	return
 
 
-/obj/screen/storage
+/atom/movable/screen/storage
 	name = "storage"
 
-/obj/screen/storage/Click()
+/atom/movable/screen/storage/Click()
 	if(!usr.canClick())
 		return 1
 	if(usr.stat || usr.paralysis || usr.stunned || usr.weakened)
@@ -97,13 +96,13 @@
 			usr.ClickOn(master)
 	return 1
 
-/obj/screen/zone_sel
+/atom/movable/screen/zone_sel
 	name = "damage zone"
 	icon_state = "zone_sel"
 	screen_loc = ui_zonesel
 	var/selecting = BP_TORSO
 
-/obj/screen/zone_sel/Click(location, control,params)
+/atom/movable/screen/zone_sel/Click(location, control,params)
 	var/list/PL = params2list(params)
 	var/icon_x = text2num(PL["icon-x"])
 	var/icon_y = text2num(PL["icon-y"])
@@ -164,19 +163,31 @@
 		update_icon()
 	return 1
 
-/obj/screen/zone_sel/proc/set_selected_zone(bodypart)
+/atom/movable/screen/zone_sel/proc/set_selected_zone(bodypart)
 	var/old_selecting = selecting
 	selecting = bodypart
 	if(old_selecting != selecting)
 		update_icon()
 
-/obj/screen/zone_sel/update_icon()
+/atom/movable/screen/zone_sel/update_icon()
 	overlays.Cut()
 	overlays += image('icons/mob/zone_sel.dmi', "[selecting]")
 
+/// The UI Button to open the TGUI Crafting Menu
+/atom/movable/screen/craft
+	name = "crafting menu"
+	icon = 'icons/mob/screen/midnight.dmi'
+	icon_state = "craft"
+	screen_loc = ui_smallquad
 
-/obj/screen/Click(location, control, params)
-	if(!usr)	return 1
+/atom/movable/screen/craft/Click(location, control, params)
+	var/datum/component/personal_crafting/C = usr.GetComponent(/datum/component/personal_crafting)
+	C?.ui_interact(usr)
+
+/atom/movable/screen/Click(location, control, params)
+	..() //Why the FUCK was this not called before
+	if(!usr)
+		return TRUE
 	switch(name)
 		if("toggle")
 			if(usr.hud_used.inventory_shown)
@@ -245,9 +256,9 @@
 					else
 
 						var/no_mask
-						if(!(C.wear_mask && C.wear_mask.item_flags & AIRTIGHT))
+						if(!(C.wear_mask && C.wear_mask.clothing_flags & ALLOWINTERNALS))
 							var/mob/living/carbon/human/H = C
-							if(!(H.head && H.head.item_flags & AIRTIGHT))
+							if(!(H.head && H.head.clothing_flags & ALLOWINTERNALS))
 								no_mask = 1
 
 						if(no_mask)
@@ -452,10 +463,10 @@
 				var/mob/living/silicon/ai/AI = usr
 				AI.view_images()
 		else
-			return attempt_vr(src,"Click_vr",list(location,control,params)) //VOREStation Add - Additional things.
+			return attempt_vr(src,"Click_vr",list(location,control,params))
 	return 1
 
-/obj/screen/inventory/Click()
+/atom/movable/screen/inventory/Click()
 	// At this point in client Click() code we have passed the 1/10 sec check and little else
 	// We don't even know if it's a middle click
 	if(!usr.canClick())
@@ -484,10 +495,10 @@
 	return 1
 
 // Hand slots are special to handle the handcuffs overlay
-/obj/screen/inventory/hand
+/atom/movable/screen/inventory/hand
 	var/image/handcuff_overlay
 
-/obj/screen/inventory/hand/update_icon()
+/atom/movable/screen/inventory/hand/update_icon()
 	..()
 	if(!hud)
 		return
@@ -499,3 +510,77 @@
 		var/mob/living/carbon/C = hud.mymob
 		if(C.handcuffed)
 			overlays |= handcuff_overlay
+
+//! ## VR FILE MERGE ## !//
+
+/atom/movable/screen/proc/Click_vr(location, control, params)
+	if(!usr)	return 1
+	switch(name)
+
+		//Shadekin
+		if("darkness")
+			var/turf/T = get_turf(usr)
+			var/darkness = round(1 - T.get_lumcount(),0.1)
+			to_chat(usr,"<span class='notice'><b>Darkness:</b> [darkness]</span>")
+		if("energy")
+			var/mob/living/simple_mob/shadekin/SK = usr
+			if(istype(SK))
+				to_chat(usr,"<span class='notice'><b>Energy:</b> [SK.energy] ([SK.dark_gains])</span>")
+			var/mob/living/carbon/human/H = usr
+			if(istype(H) && istype(H.species, /datum/species/shadekin))
+				to_chat(usr,"<span class='notice'><b>Energy:</b> [H.shadekin_get_energy(H)]</span>")
+
+		if("danger level")
+			var/mob/living/carbon/human/H = usr
+			if(istype(H) && istype(H.species, /datum/species/shapeshifter/xenochimera))
+				if(H.feral > 50)
+					to_chat(usr, "<span class='warning'>You are currently <b>completely feral.</b></span>")
+				else if(H.feral > 10)
+					to_chat(usr, "<span class='warning'>You are currently <b>crazed and confused.</b></span>")
+				else if(H.feral > 0)
+					to_chat(usr, "<span class='warning'>You are currently <b>acting on instinct.</b></span>")
+				else
+					to_chat(usr, "<span class='notice'>You are currently <b>calm and collected.</b></span>")
+				if(H.feral > 0)
+					var/feral_passing = TRUE
+					if(H.traumatic_shock > min(60, H.nutrition/10))
+						to_chat(usr, "<span class='warning'>Your pain prevents you from regaining focus.</span>")
+						feral_passing = FALSE
+					if(H.feral + H.nutrition < 150)
+						to_chat(usr, "<span class='warning'>Your hunger prevents you from regaining focus.</span>")
+						feral_passing = FALSE
+					if(H.jitteriness >= 100)
+						to_chat(usr, "<span class='warning'>Your jitterness prevents you from regaining focus.</span>")
+						feral_passing = FALSE
+					if(feral_passing)
+						var/turf/T = get_turf(H)
+						if(T.get_lumcount() <= 0.1)
+							to_chat(usr, "<span class='notice'>You are slowly calming down in darkness' safety...</span>")
+						else
+							to_chat(usr, "<span class='notice'>You are slowly calming down... But safety of darkness is much preferred.</span>")
+				else
+					if(H.nutrition < 150)
+						to_chat(usr, "<span class='warning'>Your hunger is slowly making you unstable.</span>")
+
+		else
+			return 0
+
+	return 1
+
+
+// Character setup stuff
+/atom/movable/screen/setup_preview
+
+	var/datum/preferences/pref
+
+/atom/movable/screen/setup_preview/Destroy()
+	pref = null
+	return ..()
+
+// Background 'floor'
+/atom/movable/screen/setup_preview/bg
+	mouse_over_pointer = MOUSE_HAND_POINTER
+
+/atom/movable/screen/setup_preview/bg/Click(params)
+	pref?.bgstate = next_list_item(pref.bgstate, pref.bgstate_options)
+	pref?.update_preview_icon()

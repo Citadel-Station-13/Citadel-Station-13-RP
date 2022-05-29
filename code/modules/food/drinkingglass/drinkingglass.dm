@@ -25,24 +25,24 @@
 	possible_transfer_amounts = list(5,10,15,30)
 	flags = OPENCONTAINER
 
-	matter = list("glass" = 60)
+	matter = list(MAT_GLASS = 60)
 
-/obj/item/reagent_containers/food/drinks/glass2/examine(mob/M as mob)
-	..()
+/obj/item/reagent_containers/food/drinks/glass2/examine(mob/user)
+	. = ..()
 
 	for(var/I in extras)
 		if(istype(I, /obj/item/glass_extra))
-			to_chat(M, "There is \a [I] in \the [src].")
+			. += "There is \a [I] in \the [src]."
 		else if(istype(I, /obj/item/reagent_containers/food/snacks/fruit_slice))
-			to_chat(M, "There is \a [I] on the rim.")
+			. += "There is \a [I] on the rim."
 		else
-			to_chat(M, "There is \a [I] somewhere on the glass. Somehow.")
+			. += "There is \a [I] somewhere on the glass. Somehow."
 
 	if(has_ice())
-		to_chat(M, "There is some ice floating in the drink.")
+		. += "There is some ice floating in the drink."
 
 	if(has_fizz())
-		to_chat(M, "It is fizzing slightly.")
+		. += "It is fizzing slightly."
 
 /obj/item/reagent_containers/food/drinks/glass2/proc/has_ice()
 	if(reagents.reagent_list.len > 0)
@@ -65,8 +65,8 @@
 				return 1
 	return 0
 
-/obj/item/reagent_containers/food/drinks/glass2/Initialize()
-	..()
+/obj/item/reagent_containers/food/drinks/glass2/Initialize(mapload)
+	. = ..()
 	icon_state = base_icon
 
 /obj/item/reagent_containers/food/drinks/glass2/on_reagent_change()

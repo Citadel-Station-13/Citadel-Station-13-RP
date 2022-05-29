@@ -1,5 +1,5 @@
-/mob/living/carbon/alien/say(var/message)
-	var/verb = "says"
+/mob/living/carbon/alien/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+	verb = "says"
 	var/message_range = world.view
 
 	if(client)
@@ -15,7 +15,7 @@
 	if(copytext(message,1,2) == "*")
 		return emote(copytext(message,2))
 
-	var/datum/language/speaking = parse_language(message)
+	speaking = parse_language(message)
 
 	message = trim(message)
 

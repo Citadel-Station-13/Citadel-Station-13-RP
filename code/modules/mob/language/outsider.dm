@@ -21,7 +21,7 @@
 	ask_verb = "sings"
 	exclaim_verb = "sings"
 	colour = "alien"
-	key = "x"
+	key = "" //!! THIS DOES NOT HAVE A LANGUAGE KEY IF YOU SOMEHOW MIRACULOUSLY GET ANTAGS WORKING ON RP BEFORE WE TRANSITION TO SS14 IN LIKE 2025 PUT ONE IN.
 	machine_understands = 0
 	flags = RESTRICTED | HIVEMIND
 
@@ -55,6 +55,18 @@
 /datum/language/vox/get_random_name()
 	return ..(FEMALE,1,6)
 
+/datum/language/squeakish
+	name = LANGUAGE_SQUEAKISH
+	desc = "A language native to the Altevians, it has been adopted by other rodent faring species over time."
+	key = "E"
+	colour = "squeakish"
+	speech_verb = "squeaks"
+	whisper_verb = "squiks"
+	exclaim_verb = "squeaks loudly"
+	syllables = list ("sque", "uik", "squeak", "squee", "eak", "eek", "uek", "squik",
+			"squeek", "sq", "eek", "squeee", "ee", "ek", "ak", "ueak", "squea")
+	machine_understands = 1
+
 /datum/language/cultcommon
 	name = LANGUAGE_CULT
 	desc = "The chants of the occult, the incomprehensible."
@@ -86,13 +98,14 @@
 	flags = RESTRICTED | HIVEMIND
 
 /datum/language/xenocommon
-	name = "Xenomorph"
+	name = SPECIES_XENO
 	colour = "alien"
 	desc = "The common tongue of the xenomorphs."
 	speech_verb = "hisses"
 	ask_verb = "hisses"
 	exclaim_verb = "hisses"
 	key = "u"
+	machine_understands = 0
 	flags = RESTRICTED
 	syllables = list("sss","sSs","SSS")
 
@@ -103,7 +116,8 @@
 	ask_verb = "hisses"
 	exclaim_verb = "hisses"
 	colour = "alien"
-	key = "a"
+	machine_understands = 0
+	key = "x"
 	flags = RESTRICTED | HIVEMIND
 
 /datum/language/xenos/check_special_condition(var/mob/other)
@@ -124,9 +138,20 @@
 	exclaim_verb = "shrieks"
 	colour = "changeling"
 	key = "_"
+	machine_understands = 0
 	flags = NO_STUTTER | RESTRICTED
 	syllables = list("^", "v", "-", ".", "~")
 	space_chance = 60
+
+/datum/language/squirrel
+	name = LANGUAGE_ECUREUILIAN
+	desc = "The native tongue of the inhabitants of Gaia. Squirrelkin and other beastkins of Gaia can use their ears and tails in addition to speech to communitcate."
+	speech_verb = "squeaks"
+	whisper_verb = "whispers"
+	exclaim_verb = "chitters"
+	key = "9"
+	syllables = list("sque","sqah","boo","beh","nweh","boopa","nah","wah","een","sweh")
+
 
 //for your antag purposes.
 /datum/language/minbus

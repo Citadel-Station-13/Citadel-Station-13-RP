@@ -6,8 +6,9 @@
 	no_slip = 1
 	networks = list(NETWORK_ENGINEERING)
 
-/obj/item/robot_module/drone/New(var/mob/living/silicon/robot/robot)
-	..()
+/obj/item/robot_module/drone/Initialize(mapload)
+	. = ..()
+	var/mob/living/silicon/robot/robot = loc
 	src.modules += new /obj/item/borg/sight/meson(src)
 	src.modules += new /obj/item/weldingtool/electric/mounted/cyborg(src)
 	src.modules += new /obj/item/tool/screwdriver/cyborg(src)
@@ -17,11 +18,13 @@
 	src.modules += new /obj/item/multitool(src)
 	src.modules += new /obj/item/lightreplacer(src)
 	src.modules += new /obj/item/gripper(src)
-	src.modules += new /obj/item/soap(src)
+	src.modules += new /obj/item/mop(src)
 	src.modules += new /obj/item/gripper/no_use/loader(src)
 	src.modules += new /obj/item/extinguisher(src)
 	src.modules += new /obj/item/pipe_painter(src)
 	src.modules += new /obj/item/floor_painter(src)
+	src.modules += new /obj/item/t_scanner(src)
+	src.modules += new /obj/item/analyzer(src)
 
 	robot.internals = new/obj/item/tank/jetpack/carbondioxide(src)
 	src.modules += robot.internals
@@ -89,8 +92,8 @@
 	channels = list("Engineering" = 1)
 	languages = list()
 
-/obj/item/robot_module/drone/construction/New()
-	..()
+/obj/item/robot_module/drone/construction/Initialize(mapload)
+	. = ..()
 	src.modules += new /obj/item/rcd/electric/mounted/borg/lesser(src)
 
 /obj/item/robot_module/drone/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
@@ -104,10 +107,11 @@
 	channels = list("Supply" = 1)
 	networks = list(NETWORK_MINE)
 
-/obj/item/robot_module/drone/mining/New()
-	..()
+/obj/item/robot_module/drone/mining/Initialize(mapload)
+	. = ..()
 	src.modules += new /obj/item/borg/sight/material(src)
 	src.modules += new /obj/item/pickaxe/borgdrill(src)
+	src.modules += new /obj/item/gun/energy/kinetic_accelerator/cyborg(src)
 	src.modules += new /obj/item/storage/bag/ore(src)
 	src.modules += new /obj/item/storage/bag/sheetsnatcher/borg(src)
 	src.emag = new /obj/item/pickaxe/diamonddrill(src)

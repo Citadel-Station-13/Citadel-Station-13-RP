@@ -33,8 +33,8 @@
 	var/activation_cooldown = 30 SECONDS
 	var/last_activation = 0
 
-/obj/structure/cult/pylon/Initialize()
-	..()
+/obj/structure/cult/pylon/Initialize(mapload)
+	. = ..()
 	START_PROCESSING(SSobj, src)
 
 /obj/structure/cult/pylon/attack_hand(mob/M as mob)
@@ -103,7 +103,7 @@
 	last_activation = world.time
 	return 0
 
-/obj/structure/cult/pylon/process()
+/obj/structure/cult/pylon/process(delta_time)
 	if(!isbroken && (last_activation < world.time + activation_cooldown) && pylon_unique())
 		flick("[initial(icon_state)]-surge",src)
 
@@ -153,16 +153,11 @@
 /obj/effect/gateway/active/cult/cultify()
 	return
 
-/obj/effect/gateway/active/New()
-	spawn(rand(30,60) SECONDS)
-		var/t = pick(spawnable)
-		new t(src.loc)
-		qdel(src)
+/obj/effect/gateway/active/Initialize(mapload)
+	. = ..()
+	addtimer(CALLBACK(src, .proc/spawn_things), rand(30, 60) SECONDS)
 
-/obj/effect/gateway/active/Crossed(var/atom/A)
-	if(!istype(A, /mob/living))
-		return
-
-	var/mob/living/M = A
-
-	to_chat(M, "<span class='danger'>Walking into \the [src] is probably a bad idea, you think.</span>")
+/obj/effect/gateway/active/proc/spawn_things()
+	var/t = pick(spawnable)
+	new t(drop_location())
+	qdel(src)

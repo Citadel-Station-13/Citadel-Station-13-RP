@@ -1,9 +1,8 @@
 /obj/item/gun/energy/particle //base gun, similar stats to an egun
 	name = "Anti-particle projector pistol"
-	icon = 'icons/obj/gun_vr.dmi'
 	icon_state = "ppistol"
 	item_state = "ppistol_item"
-	icon_override = 'icons/obj/gun_vr.dmi'
+	icon_override = 'icons/obj/gun/energy.dmi'
 	item_icons = null
 	desc = "A Kawashima Material Technology Model 7 anti-particle projector, housed in a rugged casing."
 	description_info = "An unconventional weapon, APP guns generate attogram-scale quantities of antimatter which \
@@ -33,6 +32,7 @@
 	slot_flags = SLOT_BELT
 	force = 8 //looks heavier than a pistol
 	w_class = ITEMSIZE_LARGE	//bigger than a pistol, too.
+	heavy = TRUE
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 5, TECH_POWER = 3, TECH_MAGNET = 3)
 	fire_delay = 6	//This one's not a handgun, it should have the same fire delay as everything else
 	self_recharge = 1
@@ -40,6 +40,7 @@
 	battery_lock = 1
 	recharge_time = 6 // every 6 ticks, recharge 2 shots. Slightly slower than AEG.
 	charge_delay = 10 //Starts recharging faster after firing than an AEG though.
+	one_handed_penalty = 15
 
 /obj/item/gun/energy/particle/cannon //particle version of laser cannon
 	name = "Anti-particle cannon"
@@ -54,10 +55,11 @@
 	fire_delay = 15 // fires faster than a laser cannon. c'mon, it's an awesome-but-impractical endgame gun.
 	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
 	force = 10
-	one_handed_penalty = 8 // The thing's heavy and huge.
-	accuracy = 3
+	one_handed_penalty = 60 // The thing's heavy and huge.
+	accuracy = 70
 	charge_cost = 400 // 6 shots
 	self_recharge = 1
+	heavy = TRUE
 	charge_delay = 15 //won't start charging until it's ready to fire again
 	recharge_time = 8 //40 ticks after that to refill the whole thing.
 
@@ -159,7 +161,7 @@
 
 /obj/item/pressurelock
 	name = "Pressure interlock"
-	icon = 'icons/obj/gun_vr.dmi'
+	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "pressurelock"
 	desc = "A safety interlock that can be installed in an antiparticle projector. It prevents the weapon from discharging in pressurised environments."
 	w_class = ITEMSIZE_TINY

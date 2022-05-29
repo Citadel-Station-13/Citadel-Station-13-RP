@@ -20,7 +20,7 @@
 	var/legacy_zone = 0	// Disable scanning and whatnot.
 	var/obj/machinery/computer/shuttle_control/belter/shuttle_control
 
-/obj/machinery/computer/roguezones/Initialize()
+/obj/machinery/computer/roguezones/Initialize(mapload)
 	. = ..()
 	shuttle_control = locate(/obj/machinery/computer/shuttle_control/belter)
 	return INITIALIZE_HINT_LATELOAD
@@ -34,12 +34,12 @@
 
 /obj/machinery/computer/roguezones/attack_hand(mob/user as mob)
 	add_fingerprint(user)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	user.set_machine(src)
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/computer/roguezones/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/roguezones/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_machine(src)
 
 
@@ -156,9 +156,6 @@
 	name = T_BOARD("asteroid belt scanning computer")
 	build_path = /obj/machinery/computer/roguezones
 	origin_tech = list(TECH_DATA = 3, TECH_BLUESPACE = 1)
-
-// Undefine our constants to not pollute namespace
-#undef SHUTTLETAG_BELTER
 
 
 /obj/item/paper/rogueminer

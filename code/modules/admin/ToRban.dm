@@ -2,8 +2,8 @@
 //fetches an external list and processes it into a list of ip addresses.
 //It then stores the processed list into a savefile for later use
 #define TORFILE "data/ToR_ban.bdb"
-#define TOR_UPDATE_INTERVAL 216000	//~6 hours
-
+///~6 hours
+#define TOR_UPDATE_INTERVAL 216000
 /proc/ToRban_isbanned(var/ip_address)
 	var/savefile/F = new(TORFILE)
 	if(F)
@@ -25,7 +25,7 @@
 		log_misc("Downloading updated ToR data...")
 		var/http[] = world.Export("https://check.torproject.org/exit-addresses")
 
-		var/list/rawlist = file2list(http["CONTENT"])
+		var/list/rawlist = world.file2list(http["CONTENT"])
 		if(rawlist.len)
 			fdel(TORFILE)
 			var/savefile/F = new(TORFILE)
@@ -37,10 +37,8 @@
 					F[cleaned] << 1
 			F["last_update"] << world.realtime
 			log_misc("ToR data updated!")
-			if(usr)	usr << "ToRban updated."
-			return 1
+			if(usr)	to_chat(usr, "ToRban updated.")
 		log_misc("ToR data update aborted: no data.")
-		return 0
 
 /client/proc/ToRban(task in list("update","toggle","show","remove","remove all","find"))
 	set name = "ToRban"

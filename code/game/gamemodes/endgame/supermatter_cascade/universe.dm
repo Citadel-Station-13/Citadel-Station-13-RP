@@ -12,13 +12,6 @@ var/global/universe_has_ended = 0
 		to_chat(user, "<span class='sinister'>All you hear on the frequency is static and panicked screaming. There will be no shuttle call today.</span>")
 	return 0
 
-/datum/universal_state/supermatter_cascade/OnTurfChange(var/turf/T)
-	var/turf/space/S = T
-	if(istype(S))
-		S.color = "#0066FF"
-	else
-		S.color = initial(S.color)
-
 /datum/universal_state/supermatter_cascade/DecayTurf(var/turf/T)
 	if(istype(T,/turf/simulated/wall))
 		var/turf/simulated/wall/W=T
@@ -39,7 +32,7 @@ var/global/universe_has_ended = 0
 	set background = 1
 	to_chat(world, "<span class='sinister' style='font-size:22pt'>You are blinded by a brilliant flash of energy.</span>")
 
-	world << sound('sound/effects/cascade.ogg')
+	SEND_SOUND(world, sound('sound/effects/cascade.ogg'))
 
 	for(var/mob/M in player_list)
 		M.flash_eyes()
@@ -73,7 +66,7 @@ The access requirements on the Asteroid Shuttles' consoles have now been revoked
 "}
 		priority_announcement.Announce(txt,"SUPERMATTER CASCADE DETECTED")
 
-		for(var/obj/machinery/computer/shuttle_control/C in machines)
+		for(var/obj/machinery/computer/shuttle_control/C in GLOB.machines)
 			if(istype(C, /obj/machinery/computer/shuttle_control/research) || istype(C, /obj/machinery/computer/shuttle_control/mining))
 				C.req_access = list()
 				C.req_one_access = list()
@@ -84,7 +77,7 @@ The access requirements on the Asteroid Shuttles' consoles have now been revoked
 		return
 
 /datum/universal_state/supermatter_cascade/proc/AreaSet()
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.sortedAreas)
 		if(!istype(A,/area) || istype(A, /area/space) || istype(A,/area/beach))
 			continue
 
@@ -97,23 +90,22 @@ The access requirements on the Asteroid Shuttles' consoles have now been revoked
 				L.update_lumcount(1,1,1)
 			else
 				L.update_lumcount(0.0, 0.4, 1)
-
 		for(var/turf/space/T in world)
-			OnTurfChange(T)
+			T.color = "#0066FF"
 
 /datum/universal_state/supermatter_cascade/proc/MiscSet()
-	for (var/obj/machinery/firealarm/alm in machines)
-		if (!(alm.stat & BROKEN))
+	for (var/obj/machinery/firealarm/alm in GLOB.machines)
+		if (!(alm.machine_stat & BROKEN))
 			alm.ex_act(2)
 
 /datum/universal_state/supermatter_cascade/proc/APCSet()
-	for (var/obj/machinery/power/apc/APC in machines)
-		if (!(APC.stat & BROKEN) && !APC.is_critical)
+	for (var/obj/machinery/power/apc/APC in GLOB.apcs)
+		if (!(APC.machine_stat & BROKEN) && !APC.is_critical)
 			APC.chargemode = 0
 			if(APC.cell)
 				APC.cell.charge = 0
 			APC.emagged = 1
-			APC.queue_icon_update()
+			APC.update_icon()
 
 /datum/universal_state/supermatter_cascade/proc/PlayerSet()
 	for(var/datum/mind/M in player_list)

@@ -1,7 +1,7 @@
 /mob/living/carbon/human/proc/change_appearance(var/flags = APPEARANCE_ALL_HAIR, var/location = src, var/mob/user = src, var/check_species_whitelist = 1, var/list/species_whitelist = list(), var/list/species_blacklist = list(), var/datum/topic_state/state = default_state)
 	var/datum/nano_module/appearance_changer/AC = new(location, src, check_species_whitelist, species_whitelist, species_blacklist)
 	AC.flags = flags
-	AC.ui_interact(user, state = state)
+	AC.nano_ui_interact(user, state = state)
 
 /mob/living/carbon/human/proc/change_species(var/new_species)
 	if(!new_species)
@@ -10,7 +10,7 @@
 	if(species == new_species)
 		return
 
-	if(!(new_species in GLOB.all_species))
+	if(!(new_species in all_species_names()))
 		return
 
 	set_species(new_species)
@@ -22,7 +22,6 @@
 		return
 
 	src.gender = gender
-	//reset_hair() //VOREStation Remove - Don't just randomize hair on gender swaps for prometheans.
 	update_icons_body()
 	update_dna()
 	return 1
@@ -47,6 +46,36 @@
 	h_style = hair_style
 
 	update_hair()
+	return 1
+
+/mob/living/carbon/human/proc/change_hair_gradient(var/hair_gradient)
+	if(!hair_gradient)
+		return
+
+	if(grad_style == hair_gradient)
+		return
+
+	if(!(hair_gradient in GLOB.hair_gradients))
+		return
+
+	grad_style = hair_gradient
+
+	update_hair()
+	return 1
+
+/mob/living/carbon/human/proc/change_wing_gradient(var/wing_gradient)
+	if(!wing_gradient)
+		return
+
+	if(grad_wingstyle == wing_gradient)
+		return
+
+	if(!(wing_gradient in GLOB.hair_gradients))
+		return
+
+	grad_wingstyle = wing_gradient
+
+	update_wing_showing()
 	return 1
 
 /mob/living/carbon/human/proc/change_facial_hair(var/facial_hair_style)
@@ -105,6 +134,17 @@
 	update_hair()
 	return 1
 
+/mob/living/carbon/human/proc/change_grad_color(var/red, var/green, var/blue)
+	if(red == r_grad && green == g_grad && blue == b_grad)
+		return
+
+	r_grad = red
+	g_grad = green
+	b_grad = blue
+
+	update_hair()
+	return 1
+
 /mob/living/carbon/human/proc/change_facial_hair_color(var/red, var/green, var/blue)
 	if(red == r_facial && green == g_facial && blue == b_facial)
 		return
@@ -117,7 +157,7 @@
 	return 1
 
 /mob/living/carbon/human/proc/change_skin_color(var/red, var/green, var/blue)
-	if(red == r_skin && green == g_skin && blue == b_skin || !(species.appearance_flags & HAS_SKIN_COLOR))
+	if(red == r_skin && green == g_skin && blue == b_skin || !(species.species_appearance_flags & HAS_SKIN_COLOR))
 		return
 
 	r_skin = red
@@ -129,7 +169,7 @@
 	return 1
 
 /mob/living/carbon/human/proc/change_skin_tone(var/tone)
-	if(s_tone == tone || !(species.appearance_flags & HAS_SKIN_TONE))
+	if(s_tone == tone || !(species.species_appearance_flags & HAS_SKIN_TONE))
 		return
 
 	s_tone = tone
@@ -144,17 +184,17 @@
 
 /mob/living/carbon/human/proc/generate_valid_species(var/check_whitelist = 1, var/list/whitelist = list(), var/list/blacklist = list())
 	var/list/valid_species = new()
-	for(var/current_species_name in GLOB.all_species)
-		var/datum/species/current_species = GLOB.all_species[current_species_name]
+	for(var/datum/species/S in all_static_species_meta())
+		var/current_species_name = S.name
 
 		if(check_whitelist && config_legacy.usealienwhitelist && !check_rights(R_ADMIN, 0, src)) //If we're using the whitelist, make sure to check it!
-			if(!(current_species.spawn_flags & SPECIES_CAN_JOIN))
+			if(!(S.spawn_flags & SPECIES_CAN_JOIN))
 				continue
 			if(whitelist.len && !(current_species_name in whitelist))
 				continue
 			if(blacklist.len && (current_species_name in blacklist))
 				continue
-			if((current_species.spawn_flags & SPECIES_IS_WHITELISTED) && !is_alien_whitelisted(src, current_species))
+			if((S.spawn_flags & SPECIES_IS_WHITELISTED) && !is_alien_whitelisted(src, S))
 				continue
 
 		valid_species += current_species_name

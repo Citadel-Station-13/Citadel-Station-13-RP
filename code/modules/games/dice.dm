@@ -6,9 +6,11 @@
 	w_class = ITEMSIZE_TINY
 	var/sides = 6
 	var/result = 6
+	var/currently_throwing = FALSE
 	attack_verb = list("diced")
 
-/obj/item/dice/New()
+/obj/item/dice/Initialize(mapload)
+	. = ..()
 	icon_state = "[name][rand(1,sides)]"
 
 /obj/item/dice/d4
@@ -56,6 +58,28 @@
 /obj/item/dice/attack_self(mob/user as mob)
 	rollDice(user, 0)
 
+/obj/item/dice/AltClick(mob/user)
+	if (Adjacent(user))
+		rollDice(user,0)
+
+/obj/item/dice/throw_at()
+	currently_throwing = TRUE
+
+/obj/item/dice/throw_impact(atom/hit_atom)
+	if(!currently_throwing)
+		return
+	currently_throwing = FALSE
+	result = rand(1, sides)
+	icon_state = "[name][result]"
+
+	var/comment = ""
+	if(sides == 20 && result == 20)
+		comment = "Nat 20!"
+	else if(sides == 20 && result == 1)
+		comment = "Ouch, bad luck."
+
+	visible_message("<span class='notice'>[src] lands on [result]. [comment]</span>", "", "")
+
 /obj/item/dice/proc/rollDice(mob/user as mob, var/silent = 0)
 	result = rand(1, sides)
 	icon_state = "[name][result]"
@@ -81,9 +105,10 @@
 	icon = 'icons/obj/dice.dmi'
 	icon_state = "dicebag"
 	base_icon = "dicebag"
+	drop_sound = 'sound/items/drop/hat.ogg'
+	pickup_sound = 'sound/items/pickup/hat.ogg'
 
-/obj/item/storage/pill_bottle/dice/New()
-	..()
+/obj/item/storage/pill_bottle/dice/PopulateContents()
 	for(var/i = 1 to 7)
 		new /obj/item/dice( src )
 
@@ -93,9 +118,10 @@
 	icon = 'icons/obj/dice.dmi'
 	icon_state = "magicdicebag"
 	base_icon = "magicdicebag"
+	drop_sound = 'sound/items/drop/hat.ogg'
+	pickup_sound = 'sound/items/pickup/hat.ogg'
 
-/obj/item/storage/pill_bottle/dice_nerd/New()
-	..()
+/obj/item/storage/pill_bottle/dice_nerd/PopulateContents()
 	new /obj/item/dice/d4( src )
 	new /obj/item/dice( src )
 	new /obj/item/dice/d8( src )
@@ -114,7 +140,7 @@
 	icon = 'icons/obj/dice.dmi'
 	icon_state = "dicecup"
 	w_class = ITEMSIZE_SMALL
-	storage_slots = 5
+	storage_slots = 6
 	can_hold = list(
 		/obj/item/dice,
 		)
@@ -153,7 +179,6 @@
 		revealDice(player)
 
 
-/obj/item/storage/dicecup/loaded/New()
-	..()
-	for(var/i = 1 to 5)
+/obj/item/storage/dicecup/loaded/PopulateContents()
+	for(var/i = 1 to 6)
 		new /obj/item/dice( src )

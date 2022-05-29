@@ -1,4 +1,4 @@
-var/list/spawntypes = list()
+var/list/datum/spawnpoint/spawntypes = list()
 
 /proc/populate_spawn_points()
 	spawntypes = list()
@@ -6,12 +6,14 @@ var/list/spawntypes = list()
 		var/datum/spawnpoint/S = new type()
 		spawntypes[S.display_name] = S
 
+// pending removal
 /datum/spawnpoint
-	var/msg          //Message to display on the arrivals computer.
-	var/list/turfs   //List of turfs to spawn on.
+	// join method
+	var/method
 	var/display_name //Name used in preference setup.
 	var/list/restrict_job = null
 	var/list/disallow_job = null
+	var/announce_channel = "Common"
 
 	proc/check_job_spawning(job)
 		if(restrict_job && !(job in restrict_job))
@@ -22,47 +24,23 @@ var/list/spawntypes = list()
 
 		return 1
 
-/datum/spawnpoint/proc/get_spawn_position()
-	return get_turf(pick(turfs))
+/datum/spawnpoint/proc/get_spawn_position(faction)
+	return SSjob.GetLatejoinSpawnpoint(faction = faction, method = method)
 
 /datum/spawnpoint/arrivals
 	display_name = "Arrivals Shuttle"
-	msg = "will arrive to the station shortly by shuttle"
-
-/datum/spawnpoint/arrivals/New()
-	..()
-	turfs = latejoin
+	method = LATEJOIN_METHOD_ARRIVALS_SHUTTLE
 
 /datum/spawnpoint/gateway
 	display_name = "Gateway"
-	msg = "has completed translation from offsite gateway"
+	method = LATEJOIN_METHOD_GATEWAY
 
-/datum/spawnpoint/gateway/New()
-	..()
-	turfs = latejoin_gateway
-/* VOREStation Edit
-/datum/spawnpoint/elevator
-	display_name = "Elevator"
-	msg = "has arrived from the residential district"
-
-/datum/spawnpoint/elevator/New()
-	..()
-	turfs = latejoin_elevator
-*/
 /datum/spawnpoint/cryo
 	display_name = "Cryogenic Storage"
-	msg = "has completed cryogenic revival"
 	disallow_job = list("Cyborg")
-
-/datum/spawnpoint/cryo/New()
-	..()
-	turfs = latejoin_cryo
+	method = LATEJOIN_METHOD_CRYOGENIC_STORAGE
 
 /datum/spawnpoint/cyborg
 	display_name = "Cyborg Storage"
-	msg = "has been activated from storage"
 	restrict_job = list("Cyborg")
-
-/datum/spawnpoint/cyborg/New()
-	..()
-	turfs = latejoin_cyborg
+	method = LATEJOIN_METHOD_ROBOT_STORAGE

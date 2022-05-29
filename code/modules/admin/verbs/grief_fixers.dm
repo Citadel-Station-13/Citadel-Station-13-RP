@@ -15,7 +15,7 @@
 	var/current_time = world.timeofday
 
 	// Depower the supermatter, as it would quickly blow up once we remove all gases from the pipes.
-	for(var/obj/machinery/power/supermatter/S in machines)
+	for(var/obj/machinery/power/supermatter/S in GLOB.machines)
 		S.power = 0
 	to_chat(usr, "\[1/5\] - Supermatter depowered")
 
@@ -28,7 +28,7 @@
 	to_chat(usr, "\[2/5\] - All pipenets purged of gas.")
 
 	// Delete all zones.
-	for(var/zone/Z in world)
+	for(var/datum/zas_zone/Z in world)
 		Z.c_invalidate()
 
 	to_chat(usr, "\[3/5\] - All ZAS Zones removed.")

@@ -93,6 +93,8 @@
 			add_overlay("laser")
 		if(istype(module_active,/obj/item/gun/energy/taser/mounted/cyborg))
 			add_overlay("taser")
+		if(istype(module_active,/obj/item/gun/energy/taser/xeno/robot))
+			add_overlay("taser")
 		if(lights_on)
 			add_overlay("eyes-[module_sprites[icontype]]-lights")
 		if(resting)
@@ -210,8 +212,8 @@
 	buckle_movable = TRUE
 	buckle_lying = FALSE
 
-/mob/living/silicon/robot/New(loc,var/unfinished = 0)
-	..()
+/mob/living/silicon/robot/Initialize(mapload, unfinished = FALSE)
+	. = ..()
 	riding_datum = new /datum/riding/dogborg(src)
 
 /mob/living/silicon/robot/buckle_mob(mob/living/M, forced = FALSE, check_loc = TRUE)

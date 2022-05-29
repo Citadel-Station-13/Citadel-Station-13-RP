@@ -7,7 +7,7 @@
 	density = 0
 	opacity = 0
 	plane = ABOVE_PLANE
-	simulated = 0
+	flags = AF_ABSTRACT
 	mouse_opacity = 0
 
 	var/mob/living/aiming_at   // Who are we currently targeting, if anyone?
@@ -18,10 +18,10 @@
 	var/active =    0          // Is our owner intending to take hostages?
 	var/target_permissions = 0 // Permission bitflags.
 
-/obj/aiming_overlay/New(var/newowner)
-	..()
-	owner = newowner
-	loc = null
+/obj/aiming_overlay/Initialize(mapload)
+	. = ..()
+	owner = loc
+	moveToNullspace()
 	verbs.Cut()
 
 /obj/aiming_overlay/proc/toggle_permission(var/perm)
@@ -76,7 +76,7 @@
 	if(aiming_at)
 		to_chat(aiming_at, "<span class='[use_span]'>You are [message].</span>")
 
-/obj/aiming_overlay/process()
+/obj/aiming_overlay/process(delta_time)
 	if(!owner)
 		qdel(src)
 		return

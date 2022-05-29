@@ -1,4 +1,10 @@
-var/global/list/ore_data = list()
+GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
+
+/proc/initialize_ore_data()
+	. = list()
+	for(var/oretype in subtypesof(/datum/ore))
+		var/datum/ore/OD = new oretype
+		.[OD.name] = OD
 
 /datum/ore
 	var/name
@@ -43,7 +49,7 @@ var/global/list/ore_data = list()
 	smelts_to = "iron"
 	alloy = 1
 	result_amount = 5
-	spread_chance = 25
+	spread_chance = 30
 	ore = /obj/item/ore/iron
 	scan_icon = "mineral_common"
 
@@ -53,7 +59,7 @@ var/global/list/ore_data = list()
 	smelts_to = "plastic"
 	alloy = 1
 	result_amount = 5
-	spread_chance = 25
+	spread_chance = 30
 	ore = /obj/item/ore/coal
 	scan_icon = "mineral_common"
 
@@ -69,7 +75,7 @@ var/global/list/ore_data = list()
 	display_name = "phoron crystals"
 	compresses_to = "phoron"
 	//smelts_to = something that explodes violently on the conveyor, huhuhuhu
-	result_amount = 5
+	result_amount = 8
 	spread_chance = 25
 	ore = /obj/item/ore/phoron
 	scan_icon = "mineral_uncommon"
@@ -86,7 +92,7 @@ var/global/list/ore_data = list()
 	display_name = "native silver"
 	smelts_to = "silver"
 	result_amount = 5
-	spread_chance = 10
+	spread_chance = 18
 	ore = /obj/item/ore/silver
 	scan_icon = "mineral_uncommon"
 
@@ -95,7 +101,7 @@ var/global/list/ore_data = list()
 	name = "gold"
 	display_name = "native gold"
 	result_amount = 5
-	spread_chance = 10
+	spread_chance = 15
 	ore = /obj/item/ore/gold
 	scan_icon = "mineral_uncommon"
 	xarch_ages = list(
@@ -110,8 +116,8 @@ var/global/list/ore_data = list()
 	display_name = "diamond"
 	alloy = 1
 	compresses_to = "diamond"
-	result_amount = 5
-	spread_chance = 10
+	result_amount = 6
+	spread_chance = 15
 	ore = /obj/item/ore/diamond
 	scan_icon = "mineral_rare"
 	xarch_source_mineral = "nitrogen"
@@ -123,7 +129,7 @@ var/global/list/ore_data = list()
 	compresses_to = "osmium"
 	alloy = 1
 	result_amount = 5
-	spread_chance = 10
+	spread_chance = 15
 	ore = /obj/item/ore/osmium
 	scan_icon = "mineral_rare"
 
@@ -138,7 +144,7 @@ var/global/list/ore_data = list()
 	name = MAT_VERDANTIUM
 	display_name = "crystalline verdantite"
 	compresses_to = MAT_VERDANTIUM
-	result_amount = 2
+	result_amount = 4
 	spread_chance = 5
 	ore = /obj/item/ore/verdantium
 	scan_icon = "mineral_rare"
@@ -151,7 +157,7 @@ var/global/list/ore_data = list()
 	name = MAT_MARBLE
 	display_name = "recrystallized carbonate"
 	compresses_to = "marble"
-	result_amount = 1
+	result_amount = 2
 	spread_chance = 10
 	ore = /obj/item/ore/marble
 	scan_icon = "mineral_common"
@@ -160,7 +166,26 @@ var/global/list/ore_data = list()
 	name = MAT_LEAD
 	display_name = "lead glance"
 	smelts_to = "lead"
-	result_amount = 3
+	result_amount = 4
 	spread_chance = 20
 	ore = /obj/item/ore/lead
 	scan_icon = "mineral_rare"
+
+/datum/ore/vaudium
+	name = MAT_VAUDIUM
+	display_name = "raw vaudium"
+	smelts_to = "bananium"
+	compresses_to = "silencium"
+	result_amount = 5
+	spread_chance = 20
+	ore = /obj/item/ore/vaudium
+	scan_icon = "mineral_rare"
+
+/datum/ore/copper
+	name = MAT_COPPER
+	display_name = "raw copper"
+	smelts_to = "copper"
+	result_amount = 4
+	spread_chance = 20
+	ore = /obj/item/ore/copper
+	scan_icon = "mineral_common"

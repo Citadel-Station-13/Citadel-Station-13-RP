@@ -43,7 +43,7 @@
 		return
 	if (ishuman(user) && src.loc == user)
 		var/mob/living/carbon/human/H = user
-		if(src == H.w_uniform) // VOREStation Edit - Un-equip on single click, but not on uniform.
+		if(src == H.w_uniform) // Un-equip on single click, but not on uniform.
 			return
 	return ..()
 
@@ -52,6 +52,10 @@
 		//makes sure that the clothing is equipped so that we can't drag it into our hand from miles away.
 		if (!(src.loc == usr))
 			return
+
+		var/targeted_mouse = (over_object.name == "r_hand") || (over_object.name == "l_hand")
+		if(!isturf(over_object) && !targeted_mouse)
+			return		// shitcode, we can refactor later.
 
 		if (( usr.restrained() ) || ( usr.stat ))
 			return
@@ -67,10 +71,10 @@
 		src.add_fingerprint(usr)
 
 /obj/item/clothing/examine(var/mob/user)
-	..(user)
+	. = ..()
 	if(LAZYLEN(accessories))
 		for(var/obj/item/clothing/accessory/A in accessories)
-			to_chat(user, "\A [A] is attached to it.")
+			. += "\A [A] is attached to it."
 
 /**
  *  Attach accessory A to src

@@ -7,7 +7,7 @@
 	var/hide_SMES_details = 0
 	var/hide_breakers = 0
 
-/datum/nano_module/rcon/ui_interact(mob/user, ui_key = "rcon", datum/nanoui/ui=null, force_open=1, var/datum/topic_state/state = default_state)
+/datum/nano_module/rcon/nano_ui_interact(mob/user, ui_key = "rcon", datum/nanoui/ui=null, force_open=1, var/datum/topic_state/state = default_state)
 	FindDevices() // Update our devices list
 	var/data[0]
 
@@ -105,11 +105,19 @@
 // Description: Refreshes local list of known devices.
 /datum/nano_module/rcon/proc/FindDevices()
 	known_SMESs = new /list()
-	for(var/obj/machinery/power/smes/buildable/SMES in machines)
+
+	var/z = get_z(nano_host())
+	var/list/map_levels = using_map.get_map_levels(z)
+
+	for(var/obj/machinery/power/smes/buildable/SMES in GLOB.machines)
+		if(!(SMES.z in map_levels))
+			continue
 		if(SMES.RCon_tag && (SMES.RCon_tag != "NO_TAG") && SMES.RCon)
 			known_SMESs.Add(SMES)
 
 	known_breakers = new /list()
-	for(var/obj/machinery/power/breakerbox/breaker in machines)
+	for(var/obj/machinery/power/breakerbox/breaker in GLOB.machines)
+		if(!(breaker.z in map_levels))
+			continue
 		if(breaker.RCon_tag != "NO_TAG")
 			known_breakers.Add(breaker)

@@ -13,9 +13,9 @@
 	var/static/radial_pickup = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_pickup")
 
 /obj/item/deskbell/examine(mob/user)
-	..()
+	. = ..()
 	if(broken)
-		to_chat(user,"<b>It looks damaged, the ringer is stuck firmly inside.</b>")
+		. += "<span class = 'danger'>It looks damaged, the ringer is stuck firmly inside.</span>"
 
 /obj/item/deskbell/attack(mob/target as mob, mob/living/user as mob)
 	if(!broken)

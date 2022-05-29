@@ -1,0 +1,316 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"j" = (
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/bosses)
+"k" = (
+/obj/structure/catwalk,
+/obj/structure/closet/crate,
+/obj/random/multiple/treasure,
+/obj/item/bone/skull,
+/turf/simulated/floor/outdoors/lava/lavaland,
+/area/lavaland/bosses)
+"m" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/outdoors/lava/lavaland,
+/area/lavaland/bosses)
+"p" = (
+/obj/structure/catwalk,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/area/lavaland/bosses)
+"B" = (
+/mob/living/simple_mob/vore/aggressive/corrupthound/surt,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/area/lavaland/bosses)
+"D" = (
+/obj/structure/loot_pile/surface/bones,
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/bosses)
+"I" = (
+/obj/effect/decal/remains/posi,
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/bosses)
+"O" = (
+/obj/effect/decal/remains/unathi,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/area/lavaland/bosses)
+"R" = (
+/mob/living/simple_mob/vore/aggressive/corrupthound/surt,
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/bosses)
+"T" = (
+/obj/effect/decal/remains/human,
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/bosses)
+"U" = (
+/turf/simulated/floor/outdoors/lava/lavaland,
+/area/lavaland/bosses)
+"W" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/bosses)
+"X" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/bosses)
+"Z" = (
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/area/lavaland/bosses)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(3,1,1) = {"
+a
+a
+U
+U
+U
+U
+U
+U
+U
+U
+U
+U
+U
+a
+a
+"}
+(4,1,1) = {"
+a
+a
+U
+Z
+Z
+X
+j
+U
+j
+j
+j
+j
+U
+a
+a
+"}
+(5,1,1) = {"
+a
+a
+U
+Z
+Z
+T
+W
+m
+W
+R
+j
+I
+U
+a
+a
+"}
+(6,1,1) = {"
+a
+a
+U
+Z
+B
+j
+j
+U
+j
+j
+j
+j
+U
+a
+a
+"}
+(7,1,1) = {"
+a
+a
+U
+Z
+Z
+W
+j
+U
+j
+j
+W
+j
+U
+a
+a
+"}
+(8,1,1) = {"
+a
+a
+U
+U
+U
+k
+U
+U
+U
+U
+m
+U
+U
+a
+a
+"}
+(9,1,1) = {"
+a
+a
+U
+Z
+Z
+W
+j
+U
+D
+j
+W
+j
+U
+a
+a
+"}
+(10,1,1) = {"
+a
+a
+U
+Z
+O
+j
+j
+U
+j
+X
+j
+j
+U
+a
+a
+"}
+(11,1,1) = {"
+a
+a
+U
+Z
+B
+Z
+p
+m
+p
+Z
+Z
+Z
+U
+a
+a
+"}
+(12,1,1) = {"
+a
+a
+U
+Z
+Z
+Z
+Z
+U
+Z
+Z
+p
+Z
+U
+a
+a
+"}
+(13,1,1) = {"
+a
+a
+U
+U
+U
+U
+U
+U
+U
+U
+m
+U
+U
+a
+a
+"}
+(14,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(15,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}

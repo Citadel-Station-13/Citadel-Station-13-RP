@@ -3,12 +3,14 @@
 	name = "brown shoes"
 	icon_state = "brown"
 	permeability_coefficient = 0.05
-	item_flags = NOSLIP
+	clothing_flags = NOSLIP
 	origin_tech = list(TECH_ILLEGAL = 3)
 	var/list/clothing_choices = list()
 	siemens_coefficient = 0.8
 	species_restricted = null
 	step_volume_mod = 0.5
+	drop_sound = 'sound/items/drop/rubber.ogg'
+	pickup_sound = 'sound/items/pickup/rubber.ogg'
 
 /obj/item/clothing/shoes/mime
 	name = "mime shoes"
@@ -21,9 +23,12 @@
 	icon_state = "galoshes"
 	permeability_coefficient = 0.05
 	siemens_coefficient = 0 //They're thick rubber boots! Of course they won't conduct electricity!
-	item_flags = NOSLIP
+	clothing_flags = NOSLIP
 	slowdown = SHOES_SLOWDOWN+1
 	species_restricted = null
+	drop_sound = 'sound/items/drop/rubber.ogg'
+	pickup_sound = 'sound/items/pickup/rubber.ogg'
+
 
 /obj/item/clothing/shoes/dress
 	name = "dress shoes"
@@ -43,6 +48,11 @@
 	body_parts_covered = 0
 
 	wizard_garb = 1
+
+obj/item/clothing/shoes/sandal/clogs
+	name = "plastic clogs"
+	desc = "A pair of plastic clog shoes."
+	icon_state = "clogs"
 
 /obj/item/clothing/shoes/sandal/marisa
 	desc = "A pair of magic, black shoes."
@@ -97,9 +107,9 @@
 	name = "bunny slippers"
 	desc = "Fluffy!"
 	icon_state = "slippers"
-	force = 0
 	species_restricted = null
-	w_class = ITEMSIZE_SMALL
+	drop_sound = 'sound/items/drop/clothing.ogg'
+	pickup_sound = 'sound/items/pickup/cloth.ogg'
 
 /obj/item/clothing/shoes/slippers_worn
 	name = "worn bunny slippers"
@@ -110,16 +120,23 @@
 	w_class = ITEMSIZE_SMALL
 
 /obj/item/clothing/shoes/laceup
-	name = "laceup shoes"
-	desc = "The height of fashion, and they're pre-polished!"
-	icon_state = "laceups"
+	name = "black oxford  shoes"
+	icon_state = "oxford_black"
+
+/obj/item/clothing/shoes/laceup/grey
+	name = "grey oxford shoes"
+	icon_state = "oxford_grey"
+
+/obj/item/clothing/shoes/laceup/brown
+	name = "brown oxford shoes"
+	icon_state = "oxford_brown"
 
 /obj/item/clothing/shoes/swimmingfins
 	desc = "Help you swim good."
 	name = "swimming fins"
 	icon_state = "flippers"
 	item_state_slots = list(slot_r_hand_str = "galoshes", slot_l_hand_str = "galoshes")
-	item_flags = NOSLIP
+	clothing_flags = NOSLIP
 	slowdown = SHOES_SLOWDOWN+1
 	species_restricted = null
 
@@ -157,6 +174,8 @@
 	force = 0
 	w_class = ITEMSIZE_SMALL
 	species_restricted = null
+	drop_sound = 'sound/items/drop/clothing.ogg'
+	pickup_sound = 'sound/items/pickup/cloth.ogg'
 
 /obj/item/clothing/shoes/boots/ranger
 	var/bootcolor = "white"
@@ -166,7 +185,7 @@
 	icon = 'icons/obj/clothing/ranger.dmi'
 	icon_state = "ranger_boots"
 
-/obj/item/clothing/shoes/boots/ranger/Initialize()
+/obj/item/clothing/shoes/boots/ranger/Initialize(mapload)
 	. = ..()
 	if(icon_state == "ranger_boots")
 		name = "[bootcolor] ranger boots"
@@ -189,3 +208,55 @@
 
 /obj/item/clothing/shoes/boots/ranger/yellow
 	bootcolor = "yellow"
+
+/obj/item/clothing/shoes/roman
+	name = "Roman Caligae"
+	desc = "Hardy leather sandles capable of holding up for many miles."
+	icon_state = "roman"
+
+/obj/item/clothing/shoes/boots/bsing
+	name = "blue performer's boots"
+	desc = "Dancing in these makes you feel lighter than air."
+	icon_state = "bsing"
+
+/obj/item/clothing/shoes/boots/ysing
+	name = "yellow performer's boots"
+	desc = "Dance down the path laid out by your predecessor."
+	icon_state = "ysing"
+
+/obj/item/clothing/shoes/santa
+	name = "santa boots"
+	desc = "If you smack these boots, a cloud of fine coal will sometimes puff out."
+	icon_state = "santaboots"
+
+/obj/item/clothing/shoes/holiday
+	name = "holiday shoes"
+	desc = "These red, fur lined boots keep you warm inside and out."
+	icon_state = "christmasbootsr"
+
+/obj/item/clothing/shoes/holiday/green
+	name = "green holiday shoes"
+	desc = "The tips of these fur lined boots curl slightly, lending them a whimsical flair."
+	icon_state = "christmasbootsg"
+
+/obj/item/clothing/shoes/bountyskin
+	name = "bounty hunter skinsuit (heels)"
+	desc = "The original skinsuit featured agility-boosting heels. These replicas grant no assistance, but look just as stylish."
+	icon_state = "bountyskin"
+
+/obj/item/clothing/shoes/antediluvian
+	name = "Antediluvian legwraps"
+	desc = "These thigh-high legwraps are designed to cling tightly to the body. Secured to the feet by stirrups, it is unknown whether shoes were meant to be worn over these."
+	icon_state = "antediluvian"
+
+// The things folks do for fashion...
+/obj/item/clothing/shoes/galoshes/black
+	name = "black galoshes"
+	desc = "A black rubber boots."
+	icon_state = "galoshes_black"
+
+/obj/item/clothing/shoes/galoshes/starcon
+	name = "dark-purple semi-galoshes"
+	desc = "A dark-purple rubber boots. They obviously don't smell like a cotton candy, roses and fresh roasted peanuts."
+	icon_state = "galoshes_sc"
+	slowdown = SHOES_SLOWDOWN

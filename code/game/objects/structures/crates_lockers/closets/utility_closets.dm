@@ -19,7 +19,7 @@
 	icon_closed = "emergency"
 	icon_opened = "emergencyopen"
 
-/obj/structure/closet/emcloset/Initialize()
+/obj/structure/closet/emcloset/Initialize(mapload)
 	switch (pickweight(list("small" = 55, "aid" = 25, "tank" = 10, "both" = 10)))
 		if ("small")
 			starts_with = list(
@@ -71,6 +71,7 @@
 		/obj/item/tank/oxygen/red,
 		/obj/item/extinguisher,
 		/obj/item/clothing/head/hardhat/red,
+		/obj/item/storage/toolbox/emergency,
 		/obj/item/stack/medical/ointment) // CIT ADD
 
 /obj/structure/closet/firecloset/full
@@ -107,7 +108,7 @@
 	icon_closed = "toolcloset"
 	icon_opened = "toolclosetopen"
 
-/obj/structure/closet/toolcloset/Initialize()
+/obj/structure/closet/toolcloset/Initialize(mapload)
 	starts_with = list()
 	if(prob(40))
 		starts_with += /obj/item/clothing/suit/storage/hazardvest
@@ -140,7 +141,7 @@
 	if(prob(40))
 		starts_with += /obj/item/clothing/head/hardhat
 	if(prob(30))
-		starts_with += /obj/item/reagent_containers/spray/windowsealant //VOREStation Add
+		starts_with += /obj/item/reagent_containers/spray/windowsealant
 	return ..()
 
 /*
@@ -216,6 +217,7 @@
 		/obj/item/tank/oxygen/red,
 		/obj/item/extinguisher,
 		/obj/item/clothing/head/hardhat/red,
+		/obj/item/storage/toolbox/emergency,
 		/obj/item/stack/medical/ointment) // CIT ADD
 
 /*

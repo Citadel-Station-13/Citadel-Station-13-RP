@@ -49,7 +49,7 @@
 
 	if(prob(speak_chance))
 		for(var/mob/M in view())
-			M << 'sound/effects/mouse_squeak.ogg'
+			SEND_SOUND(M, sound('sound/effects/mouse_squeak.ogg'))
 
 	if(!resting && prob(0.5))
 		lay_down()
@@ -63,8 +63,8 @@
 		else if(prob(1))
 			audible_emote("snuffles.")
 
-/mob/living/simple_mob/mouse/New()
-	..()
+/mob/living/simple_mob/mouse/Initialize(mapload)
+	. = ..()
 
 	verbs += /mob/living/proc/ventcrawl
 	verbs += /mob/living/proc/hide
@@ -84,7 +84,7 @@
 
 /mob/living/simple_mob/mouse/proc/splat()
 	src.health = 0
-	src.stat = DEAD
+	src.set_stat(DEAD)
 	src.icon_dead = "mouse_[body_color]_splat"
 	src.icon_state = "mouse_[body_color]_splat"
 	layer = MOB_LAYER
@@ -96,8 +96,8 @@
 	if( ishuman(AM) )
 		if(!stat)
 			var/mob/M = AM
-			M.visible_message("<font color='blue'>\icon[src] Squeek!</font>")
-			M << 'sound/effects/mouse_squeak.ogg'
+			M.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] Squeek!</font>")
+			SEND_SOUND(M, sound('sound/effects/mouse_squeak.ogg'))
 	..()
 
 /mob/living/simple_mob/mouse/death()
@@ -128,8 +128,8 @@
 	name = "Tom"
 	desc = "Jerry the cat is not amused."
 
-/mob/living/simple_mob/mouse/brown/Tom/New()
-	..()
+/mob/living/simple_mob/mouse/brown/Tom/init_outfit_decls()
+	. = ..()
 	// Change my name back, don't want to be named Tom (666)
 	name = initial(name)
 

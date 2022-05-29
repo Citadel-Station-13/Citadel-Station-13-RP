@@ -32,7 +32,7 @@
 		if(3)
 			//large range, long charge time
 			chargelevelmax = rand(20, 120)
-			effectrange = rand(20, 100) //VOREStation Edit - Map size.
+			effectrange = rand(20, 100)
 
 /datum/artifact_effect/proc/ToggleActivate(var/reveal_toggle = 1)
 	//so that other stuff happens first
@@ -53,14 +53,14 @@
 			var/atom/toplevelholder = holder
 			while(!istype(toplevelholder.loc, /turf))
 				toplevelholder = toplevelholder.loc
-			toplevelholder.visible_message("<font color='red'>\icon[toplevelholder] [toplevelholder] [display_msg]</font>")
+			toplevelholder.visible_message("<font color='red'>[icon2html(thing = toplevelholder, target = world)] [toplevelholder] [display_msg]</font>")
 
 /datum/artifact_effect/proc/DoEffectTouch(var/mob/user)
 /datum/artifact_effect/proc/DoEffectAura(var/atom/holder)
 /datum/artifact_effect/proc/DoEffectPulse(var/atom/holder)
 /datum/artifact_effect/proc/UpdateMove()
 
-/datum/artifact_effect/process()
+/datum/artifact_effect/process(delta_time)
 	if(chargelevel < chargelevelmax)
 		chargelevel++
 
@@ -119,7 +119,8 @@
 /proc/GetAnomalySusceptibility(var/mob/living/carbon/human/H)
 	if(!istype(H))
 		return 1
-	if(istype(get_area(H),/area/crew_quarters/sleep)) return 0 //VOREStation Edit - Dorms are protected from anomalies
+	if(istype(get_area(H),/area/crew_quarters/sleep))
+		return 0
 	var/protected = 0
 
 	//anomaly suits give best protection, but excavation suits are almost as good

@@ -5,7 +5,7 @@ CIRCUITS BELOW
 /datum/design/circuit
 	build_type = IMPRINTER
 	req_tech = list(TECH_DATA = 2)
-	materials = list("glass" = 2000)
+	materials = list(MAT_GLASS = 2000)
 	chemicals = list("sacid" = 20)
 	time = 5
 
@@ -36,14 +36,21 @@ CIRCUITS BELOW
 	id = "oriontrail"
 	req_tech = list(TECH_DATA = 1)
 	build_path = /obj/item/circuitboard/arcade/orion_trail
-	sort_string = "MAAAZ"		// Duplicate string, really need to redo this whole thing
+	sort_string = "MAAAB"		// Duplicate string, really need to redo this whole thing
+
+/datum/design/circuit/clawmachine
+	name = "grab-a-gift arcade machine"
+	id = "clawmachine"
+	req_tech = list(TECH_DATA = 1)
+	build_path = /obj/item/circuitboard/arcade/clawmachine
+	sort_string = "MAAAC"
 
 /datum/design/circuit/jukebox
 	name = "jukebox"
 	id = "jukebox"
 	req_tech = list(TECH_MAGNET = 2, TECH_DATA = 1)
 	build_path = /obj/item/circuitboard/jukebox
-	sort_string = "MAAAB"
+	sort_string = "MAAAO"
 
 /datum/design/circuit/seccamera
 	name = "security camera monitor"
@@ -422,6 +429,13 @@ CIRCUITS BELOW
 	build_path = /obj/item/circuitboard/skills
 	sort_string = "LAAAC"
 
+/datum/design/circuit/arf_generator
+	name = "atmospheric field generator"
+	id = "arf_generator"
+	req_tech = list(TECH_MAGNET = 4, TECH_POWER = 4, TECH_BIO = 3)
+	build_path = /obj/item/circuitboard/arf_generator
+	sort_string = "LAAAD"
+
 /datum/design/circuit/mecha
 	req_tech = list(TECH_DATA = 3)
 
@@ -505,6 +519,48 @@ CIRCUITS BELOW
 	build_path = /obj/item/circuitboard/mecha/durand/targeting
 	sort_string = "NAADC"
 
+/datum/design/circuit/mecha/honker_main
+	name = "'H.O.N.K.' central control"
+	id = "honker_main"
+	req_tech = list(TECH_DATA = 4, TECH_ILLEGAL = 4)
+	build_path = /obj/item/circuitboard/mecha/honker/main
+	sort_string = "NAAEA"
+
+/datum/design/circuit/mecha/honker_peri
+	name = "'H.O.N.K.' peripherals control"
+	id = "honker_peri"
+	req_tech = list(TECH_DATA = 4, TECH_ILLEGAL = 4)
+	build_path = /obj/item/circuitboard/mecha/honker/peripherals
+	sort_string = "NAAEB"
+
+/datum/design/circuit/mecha/honker_targ
+	name = "'H.O.N.K.' weapon control and targeting"
+	id = "honker_targ"
+	req_tech = list(TECH_DATA = 4, TECH_COMBAT = 2, TECH_ILLEGAL = 4)
+	build_path = /obj/item/circuitboard/mecha/honker/targeting
+	sort_string = "NAAEC"
+
+/datum/design/circuit/mecha/reticent_main
+	name = "'Reticent' central control"
+	id = "reticent_main"
+	req_tech = list(TECH_DATA = 5, TECH_ILLEGAL = 4)
+	build_path = /obj/item/circuitboard/mecha/reticent/main
+	sort_string = "NAAFA"
+
+/datum/design/circuit/mecha/reticent_peri
+	name = "'Reticent' peripherals control"
+	id = "reticent_peri"
+	req_tech = list(TECH_DATA = 5, TECH_ILLEGAL = 4)
+	build_path = /obj/item/circuitboard/mecha/reticent/peripherals
+	sort_string = "NAAFB"
+
+/datum/design/circuit/mecha/reticent_targ
+	name = "'Reticent' weapon control and targeting"
+	id = "reticent_targ"
+	req_tech = list(TECH_DATA = 5, TECH_COMBAT = 2, TECH_ILLEGAL = 4)
+	build_path = /obj/item/circuitboard/mecha/reticent/targeting
+	sort_string = "NAAFC"
+
 /datum/design/circuit/tcom
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4)
 
@@ -565,36 +621,6 @@ CIRCUITS BELOW
 	build_path = /obj/item/circuitboard/telecomms/exonet_node
 	sort_string = "PAAAH"
 
-/datum/design/circuit/shield
-	req_tech = list(TECH_BLUESPACE = 4, TECH_PHORON = 3)
-	materials = list("glass" = 2000, "gold" = 1000)
-
-/datum/design/circuit/shield/AssembleDesignName()
-	name = "Shield generator circuit design ([name])"
-/datum/design/circuit/shield/AssembleDesignDesc()
-	if(!desc)
-		desc = "Allows for the construction of \a [name] shield generator."
-
-/datum/design/circuit/shield/bubble
-	name = "bubble"
-	id = "shield_gen"
-	build_path = /obj/item/circuitboard/shield_gen
-	sort_string = "VAAAZ"	// Duplicate string, really need to redo this whole thing
-
-/datum/design/circuit/shield/hull
-	name = "hull"
-	id = "shield_gen_ex"
-	build_path = /obj/item/circuitboard/shield_gen_ex
-	sort_string = "VAAAB"
-
-/datum/design/circuit/shield/capacitor
-	name = "capacitor"
-	desc = "Allows for the construction of a shield capacitor circuit board."
-	id = "shield_cap"
-	req_tech = list(TECH_MAGNET = 3, TECH_POWER = 4)
-	build_path = /obj/item/circuitboard/shield_cap
-	sort_string = "VAAAC"
-
 /datum/design/circuit/ntnet_relay
 	name = "NTNet Quantum Relay"
 	id = "ntnet_relay"
@@ -615,3 +641,45 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 4, TECH_BIO = 3)
 	build_path = /obj/item/circuitboard/dnarevive
 	sort_string = "ZAAAA"
+
+/datum/design/circuit/shield_generator
+	name = "shield generator"
+	id = "shield_generator"
+	req_tech = list(TECH_MAGNET = 3, TECH_POWER = 4, TECH_BLUESPACE = 2, TECH_ENGINEERING = 3)
+	build_path = /obj/item/circuitboard/shield_generator
+	sort_string = "OAAAA"
+
+/datum/design/circuit/shield_diffuser
+	name = "shield diffuser"
+	id = "shield_diffuser"
+	req_tech = list(TECH_MAGNET = 4, TECH_POWER = 2, TECH_ENGINEERING = 5)
+	build_path = /obj/item/circuitboard/shield_diffuser
+	sort_string = "OAAAB"
+
+/datum/design/circuit/pointdefense
+	name = "point defense battery"
+	id = "pointdefense"
+	req_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 3, TECH_COMBAT = 4)
+	build_path = /obj/item/circuitboard/pointdefense
+	sort_string = "OAABA"
+
+/datum/design/circuit/pointdefense_control
+	name = "point defense control" //Once upon a time, this was called a deluxe microwave.
+	id = "pointdefense_control"
+	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 3, TECH_COMBAT = 2)
+	build_path = /obj/item/circuitboard/pointdefense_control
+	sort_string = "OAABB"
+
+/datum/design/circuit/massive_gas_pump
+	name = "High performance gas pump"
+	id = "massive_gas_pump"
+	req_tech = list(TECH_ENGINEERING = 3)
+	build_path = /obj/item/circuitboard/massive_gas_pump
+	sort_string = "OAABC"
+
+/datum/design/circuit/massive_heat_pump
+	name = "High performance heat pump"
+	id = "massive_heat_pump"
+	req_tech = list(TECH_ENGINEERING = 4)
+	build_path = /obj/item/circuitboard/massive_heat_pump
+	sort_string = "OAABD"

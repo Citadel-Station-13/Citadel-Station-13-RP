@@ -20,7 +20,7 @@
 		return TRUE
 	if(!user)
 		return FALSE
-	return (usr.default_can_use_topic(src) < STATUS_UPDATE)		//can play with TK and while resting because fun.
+	return (usr.default_can_use_topic(src) < UI_UPDATE)		//can play with TK and while resting because fun.
 
 /// CITRP EDIT UNTIL INTERACTION REFACTOR PORT!
 /obj/structure/musician/attack_hand(mob/user)
@@ -29,11 +29,11 @@
 		return
 	if(!anchored)
 		return
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/structure/musician/ui_interact(mob/user)
+/obj/structure/musician/nano_ui_interact(mob/user)
 	. = ..()
-	song.ui_interact(user)
+	song.nano_ui_interact(user)
 
 /obj/structure/musician/attackby(obj/item/I, mob/living/user)
 	if(I.is_wrench())

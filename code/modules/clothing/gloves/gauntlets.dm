@@ -39,12 +39,16 @@
 	wearer = H
 	return 1
 
-/obj/item/clothing/gloves/gauntlets/dropped()
-	var/mob/living/carbon/human/H = wearer
-	if(gloves)
-		if(!H.equip_to_slot_if_possible(gloves, slot_gloves))
-			gloves.forceMove(get_turf(src))
-		if(ring)
+/obj/item/clothing/gloves/gauntlets/restore_over_objects(mob/living/carbon/human/wearer)
+	if(ring)
+		if(gloves && !gloves.ring)
 			gloves.ring = ring
-		src.gloves = null
-	wearer = null
+			ring.forceMove(gloves)
+		else
+			ring.forceMove(get_turf(src))
+		ring = null
+	. = ..()
+	if(gloves)
+		if(!wearer.equip_to_slot_if_possible(gloves, slot_gloves))
+			gloves.forceMove(get_turf(src))
+		gloves = null

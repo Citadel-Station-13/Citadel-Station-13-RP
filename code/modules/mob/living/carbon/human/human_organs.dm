@@ -5,15 +5,6 @@
 		update_icons_body() //Body handles eyes
 		update_eyes() //For floating eyes only
 
-/mob/living/carbon/var/list/internal_organs = list()
-/mob/living/carbon/human/var/list/organs = list()
-/mob/living/carbon/human/var/list/organs_by_name = list() // map organ names to organs
-/mob/living/carbon/human/var/list/internal_organs_by_name = list() // so internal organs have less ickiness too
-
-/mob/living/carbon/human/proc/get_bodypart_name(var/zone)
-	var/obj/item/organ/external/E = get_organ(zone)
-	if(E) . = E.name
-
 /mob/living/carbon/human/proc/recheck_bad_external_organs()
 	var/damage_this_tick = getToxLoss()
 	for(var/obj/item/organ/external/O in organs)
@@ -33,11 +24,11 @@
 	if(force_process)
 		bad_external_organs.Cut()
 		for(var/obj/item/organ/external/Ex in organs)
-			bad_external_organs += Ex //VOREStation Edit - Silly and slow to |= this
+			bad_external_organs += Ex
 
 	//processing internal organs is pretty cheap, do that first.
 	for(var/obj/item/organ/I in internal_organs)
-		I.process()
+		I.process(2)
 
 	handle_stance()
 	handle_grasp()
@@ -45,7 +36,7 @@
 	if(!force_process && !bad_external_organs.len)
 		return
 
-	number_wounds = 0 //VOREStation Add - You have to reduce this at some point...
+	number_wounds = 0 // You have to reduce this at some point...
 	for(var/obj/item/organ/external/E in bad_external_organs)
 		if(!E)
 			continue
@@ -53,7 +44,7 @@
 			bad_external_organs -= E
 			continue
 		else
-			E.process()
+			E.process(2)
 			number_wounds += E.number_wounds
 
 			if (!lying && !buckled && world.time - l_move_time < 15)
@@ -114,7 +105,7 @@
 
 	// standing is poor
 	if(stance_damage >= 4 || (stance_damage >= 2 && prob(5)))
-		if(!(lying || resting) && !isbelly(loc)) //VOREStation Edit
+		if(!(lying || resting) && !isbelly(loc))
 			if(limb_pain)
 				emote("scream")
 			custom_emote(1, "collapses!")

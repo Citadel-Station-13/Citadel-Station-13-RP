@@ -1,11 +1,11 @@
 /obj/machinery/appliance/cooker
 	var/temperature = T20C
 	var/min_temp = 80 + T0C	//Minimum temperature to do any cooking
-	var/optimal_temp = 200 + T0C	//Temperature at which we have 100% efficiency. efficiency is lowered on either side of this
+	var/optimal_temp = 200 + T0C	//Temperature at which we have 100% efficiency. - Edit, efficiency is not lowered anymore for being too hot, because why would that slow down cooking?
 	var/optimal_power = 0.1//cooking power at 100%
 
 	var/loss = 1	//Temp lost per proc when equalising
-	var/resistance = 320000	//Resistance to heating. combines with active power usage to determine how long heating takes
+	var/resistance = 81000	//Resistance to heating. combines with active power usage to determine how long heating takes
 
 	var/light_x = 0
 	var/light_y = 0
@@ -13,15 +13,16 @@
 
 /obj/machinery/appliance/cooker/examine(var/mob/user)
 	. = ..()
-	if (.)	//no need to duplicate adjacency check
-		if (!stat)
-			if (temperature < min_temp)
-				to_chat(user, span("warning", "\The [src] is still heating up and is too cold to cook anything yet."))
+	if(.)	//no need to duplicate adjacency check
+		if(!machine_stat)
+			if(temperature < min_temp)
+				. += SPAN_WARNING( "\The [src] is still heating up and is too cold to cook anything yet.")
 			else
-				to_chat(user, span("notice", "It is running at [round(get_efficiency(), 0.1)]% efficiency!"))
-			to_chat(user, "Temperature: [round(temperature - T0C, 0.1)]C / [round(optimal_temp - T0C, 0.1)]C")
+				. += SPAN_NOTICE("It is running at [round(get_efficiency(), 0.1)]% efficiency!")
+			. += "Temperature: [round(temperature - T0C, 0.1)]C / [round(optimal_temp - T0C, 0.1)]C"
 		else
-			to_chat(user, span("warning", "It is switched off."))
+			if(machine_stat)
+				. += SPAN_WARNING( "It is switched off.")
 
 /obj/machinery/appliance/cooker/list_contents(var/mob/user)
 	if (cooking_objs.len)
@@ -34,13 +35,13 @@
 				string += "- [CI.container.label(num)], [report_progress(CI)]</br>"
 		to_chat(user, string)
 	else
-		to_chat(user, span("notice","It is empty."))
+		to_chat(user, SPAN_NOTICE("It is empty."))
 
 /obj/machinery/appliance/cooker/proc/get_efficiency()
 	//RefreshParts()
 	return (cooking_power / optimal_power) * 100
 
-/obj/machinery/appliance/cooker/New()
+/obj/machinery/appliance/cooker/Initialize(mapload, newdir)
 	. = ..()
 	loss = (active_power_usage / resistance)*0.5
 	cooking_objs = list()
@@ -48,12 +49,12 @@
 		cooking_objs.Add(new /datum/cooking_item/(new container_type(src)))
 	cooking = 0
 
-	update_icon() // this probably won't cause issues, but Aurora used SSIcons and queue_icon_update() instead
+	update_icon() // this probably won't cause issues, but Aurora used SSIcons and update_icon() instead
 
 /obj/machinery/appliance/cooker/update_icon()
 	cut_overlays()
 	var/image/light
-	if (use_power == 2 && !stat)
+	if (use_power == 2 && !machine_stat)
 		light = image(icon, "light_on")
 	else
 		light = image(icon, "light_off")
@@ -61,8 +62,8 @@
 	light.pixel_y = light_y
 	add_overlay(light)
 
-/obj/machinery/appliance/cooker/process()
-	if (!stat)
+/obj/machinery/appliance/cooker/process(delta_time)
+	if (!machine_stat)
 		heat_up()
 	else
 		var/turf/T = get_turf(src)
@@ -72,7 +73,7 @@
 
 /obj/machinery/appliance/cooker/power_change()
 	. = ..()
-	update_icon() // this probably won't cause issues, but Aurora used SSIcons and queue_icon_update() instead
+	update_icon() // this probably won't cause issues, but Aurora used SSIcons and update_icon() instead
 
 /obj/machinery/appliance/cooker/proc/update_cooking_power()
 	var/temp_scale = 0
@@ -88,8 +89,11 @@
 			else
 				temp_scale = 1 - (temp_scale - 1)
 
+	if(temperature > optimal_temp)
+		cooking_power = optimal_power
+	else
+		cooking_power = optimal_power * temp_scale
 
-	cooking_power = optimal_power * temp_scale
 	//RefreshParts()
 
 /obj/machinery/appliance/cooker/proc/heat_up()
@@ -98,7 +102,7 @@
 			playsound(src, 'sound/machines/click.ogg', 20, 1)
 			use_power = 2.//If we're heating we use the active power
 			update_icon()
-		temperature += active_power_usage / resistance
+		temperature += active_power_usage / (resistance/2)
 		update_cooking_power()
 		return 1
 	else

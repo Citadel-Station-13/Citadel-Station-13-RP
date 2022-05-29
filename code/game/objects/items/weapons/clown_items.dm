@@ -8,14 +8,17 @@
 /*
  * Banana Peals
  */
-/obj/item/bananapeel/Crossed(AM as mob|obj)
+/obj/item/bananapeel/Crossed(atom/movable/AM as mob|obj)
+	. = ..()
+	if(AM.is_incorporeal())
+		return
 	if (istype(AM, /mob/living))
 		var/mob/living/M = AM
 		M.slip("the [src.name]",4)
 /*
  * Soap
  */
-/obj/item/soap/Initialize()
+/obj/item/soap/Initialize(mapload)
 	. = ..()
 	create_reagents(5)
 	wet()
@@ -23,9 +26,12 @@
 /obj/item/soap/proc/wet()
 	reagents.add_reagent("cleaner", 5)
 
-/obj/item/soap/Crossed(AM as mob|obj)
-	if (istype(AM, /mob/living))
-		var/mob/living/M =	AM
+/obj/item/soap/Crossed(atom/movable/AM as mob|obj)
+	. = ..()
+	if(AM.is_incorporeal())
+		return
+	if(istype(AM, /mob/living))
+		var/mob/living/M = AM
 		M.slip("the [src.name]",3)
 
 /obj/item/soap/pre_attack(atom/target, mob/user as mob)
@@ -56,6 +62,7 @@
 /obj/item/soap/attack(mob/living/target, mob/living/user, var/target_zone)
 	if(target && user && ishuman(target) && ishuman(user) && !user.incapacitated() && user.zone_sel &&user.zone_sel.selecting == "mouth" )
 		user.visible_message("<span class='danger'>\The [user] washes \the [target]'s mouth out with soap!</span>")
+		playsound(src.loc, 'sound/items/soapmouth.ogg', 50, 1)
 		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //prevent spam
 		return
 	..()

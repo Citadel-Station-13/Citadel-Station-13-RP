@@ -1,4 +1,4 @@
-/client/proc/Jump(var/area/A in return_sorted_areas())
+/client/proc/Jump(var/area/A in GLOB.sortedAreas)
 	set name = "Jump to Area"
 	set desc = "Area to jump to"
 	set category = "Admin"
@@ -27,7 +27,7 @@
 	else
 		alert("Admin jumping disabled")
 
-/client/proc/jumptomob(var/mob/M in mob_list)
+/client/proc/jumptomob(var/mob/M in GLOB.mob_list)
 	set category = "Admin"
 	set name = "Jump to Mob"
 	set popup_menu = FALSE
@@ -92,7 +92,7 @@
 	else
 		alert("Admin jumping disabled")
 
-/client/proc/Getmob(var/mob/M in mob_list)
+/client/proc/Getmob(var/mob/M in GLOB.mob_list)
 	set category = "Admin"
 	set name = "Get Mob"
 	set desc = "Mob to teleport"
@@ -142,7 +142,7 @@
 	set name = "Send Mob"
 	if(!check_rights(R_ADMIN|R_MOD|R_DEBUG))
 		return
-	var/area/A = input(usr, "Pick an area.", "Pick an area") in return_sorted_areas()
+	var/area/A = input(usr, "Pick an area.", "Pick an area") in GLOB.sortedAreas
 	if(A)
 		if(config_legacy.allow_admin_jump)
 			M.forceMove(pick(get_area_turfs(A)))

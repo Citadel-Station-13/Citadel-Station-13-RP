@@ -10,7 +10,8 @@ var/list/fusion_cores = list()
 /obj/machinery/power/fusion_core
 	name = "\improper R-UST Mk. 8 Tokamak core"
 	desc = "An enormous solenoid for generating extremely high power electromagnetic fields. It includes a kinetic energy harvester."
-	icon = 'icons/obj/machines/power/fusion.dmi'
+	icon = 'icons/obj/machines/power/fusion_core.dmi'
+	layer = ABOVE_MOB_LAYER
 	icon_state = "core0"
 	density = 1
 	use_power = USE_POWER_IDLE
@@ -27,25 +28,25 @@ var/list/fusion_cores = list()
 /obj/machinery/power/fusion_core/mapped
 	anchored = 1
 
-/obj/machinery/power/fusion_core/Initialize()
+/obj/machinery/power/fusion_core/Initialize(mapload)
 	. = ..()
 	fusion_cores += src
 	default_apply_parts()
 
-/obj/machinery/power/fusion_core/mapped/Initialize()
+/obj/machinery/power/fusion_core/mapped/Initialize(mapload)
 	. = ..()
 	connect_to_network()
 
 /obj/machinery/power/fusion_core/Destroy()
-	for(var/obj/machinery/computer/fusion_core_control/FCC in machines)
+	for(var/obj/machinery/computer/fusion_core_control/FCC in GLOB.machines)
 		FCC.connected_devices -= src
 		if(FCC.cur_viewed_device == src)
 			FCC.cur_viewed_device = null
 	fusion_cores -= src
 	return ..()
 
-/obj/machinery/power/fusion_core/process()
-	if((stat & BROKEN) || !powernet || !owned_field)
+/obj/machinery/power/fusion_core/process(delta_time)
+	if((machine_stat & BROKEN) || !powernet || !owned_field)
 		Shutdown()
 	if(owned_field)
 		spawn(1)

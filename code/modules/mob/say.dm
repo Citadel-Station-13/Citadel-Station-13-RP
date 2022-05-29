@@ -1,4 +1,4 @@
-/mob/proc/say()
+/mob/proc/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	return
 
 /mob/proc/whisper_wrapper()
@@ -32,11 +32,9 @@
 		to_chat(usr, "<font color='red'>Speech is currently admin-disabled.</font>")
 		return
 
-	//VOREStation Edit Start
 	if(muffled)
 		return me_verb_subtle(message)
-	message = sanitize_or_reflect(message,src) //VOREStation Edit - Reflect too-long messages (within reason)
-	//VOREStation Edit End
+	message = sanitize_or_reflect(message,src) // Reflect too-long messages (within reason)
 
 	set_typing_indicator(FALSE)
 	if(use_me)
@@ -61,9 +59,9 @@
 		to_chat(usr, "<span class='danger'>You have deadchat muted.</span>")
 		return
 
-	message = say_emphasis(message)
+	message = emoji_parse(say_emphasis(message))
 
-	say_dead_direct("[pick("complains","moans","whines","laments","blubbers")], <span class='message'>\"[message]\"</span>", src)
+	say_dead_direct("[pick("complains","moans","whines","laments","blubbers")], <span class='message'>\"<span class='linkify'>[message]</span>\"</span>", src)
 
 /mob/proc/say_understands(var/mob/other,var/datum/language/speaking = null)
 
@@ -126,11 +124,11 @@
 
 	return get_turf(src)
 
-/mob/proc/say_test(var/text)
+/proc/say_test(var/text)
 	var/ending = copytext_char(text, length_char(text))
-	if (ending == "?")
+	if(ending == "?")
 		return "1"
-	else if (ending == "!")
+	else if(ending == "!")
 		return "2"
 	return "0"
 
@@ -156,10 +154,16 @@
 		return GLOB.all_languages["Noise"]
 
 	if(length_char(message) >= 2 && is_language_prefix(prefix))
-		var/language_prefix = lowertext(copytext_char(message, 2 ,3))
+		var/language_prefix = copytext_char(message, 2 ,3)
 		var/datum/language/L = GLOB.language_keys[language_prefix]
 		if (can_speak(L))
 			return L
 		else
-			return GLOB.all_languages[LANGUAGE_GIBBERISH]
+			var/alert_result = alert(src, "You dont know the langauge you are about to speak, instead you will speak Babel. Do you want to?", "Unknown Language Alert","No","Yes")
+			if(alert_result == "Yes")
+				return GLOB.all_languages[LANGUAGE_GIBBERISH]
+			else
+				if(isliving(src))
+					var/mob/living/caller = src
+					return GLOB.all_languages[caller.default_language]
 	return null

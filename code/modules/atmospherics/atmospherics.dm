@@ -10,32 +10,41 @@ Pipelines + Other Objects -> Pipe network
 
 */
 /obj/machinery/atmospherics
-	anchored = 1
+	anchored = TRUE
 	idle_power_usage = 0
 	active_power_usage = 0
 	power_channel = ENVIRON
-	var/nodealert = 0
-	var/power_rating //the maximum amount of power the machine can use to do work, affects how powerful the machine is, in Watts
-
 	layer = ATMOS_LAYER
 	plane = PLATING_PLANE
+	obj_flags = CAN_BE_HIT | ON_BLUEPRINTS
 
-	var/pipe_flags = PIPING_DEFAULT_LAYER_ONLY // Allow other layers by exception basis.
-	var/connect_types = CONNECT_TYPE_REGULAR
-	var/piping_layer = PIPING_LAYER_DEFAULT // This will replace icon_connect_type at some point ~Leshana
-	var/icon_connect_type = "" //"-supply" or "-scrubbers"
-	var/construction_type = null // Type path of the pipe item when this is deconstructed.
-	var/pipe_state // icon_state as a pipe item
-
-	var/initialize_directions = 0
+	///The color of the pipe
 	var/pipe_color
+	///The maximum amount of power the machine can use to do work, affects how powerful the machine is, in Watts
+	var/power_rating
+	///The flags of the pipe/component (PIPING_ALL_LAYER | PIPING_ONE_PER_TURF | PIPING_DEFAULT_LAYER_ONLY | PIPING_CARDINAL_AUTONORMALIZE)
+	var/pipe_flags = PIPING_DEFAULT_LAYER_ONLY
+	///What pipe layer can this connect to.
+	var/connect_types = CONNECT_TYPE_REGULAR
+	///What layer the pipe is in (from 1 to 5, default 3)
+	var/piping_layer = PIPING_LAYER_DEFAULT
+	///"-supply" or "-scrubbers"
+	var/icon_connect_type = ""
+	///The type path of the pipe item when this is deconstructed.
+	var/construction_type = null
+	///icon_state as a pipe item
+	var/pipe_state
+	///Bitflag of the initialized directions (NORTH | SOUTH | EAST | WEST)
+	var/initialize_directions = 0
+
+	var/nodealert = 0 //Apparently this is used only for plumbing or something???
 
 	var/global/datum/pipe_icon_manager/icon_manager
 	var/obj/machinery/atmospherics/node1
 	var/obj/machinery/atmospherics/node2
 
-/obj/machinery/atmospherics/New(loc, newdir)
-	..()
+/obj/machinery/atmospherics/Initialize(mapload, newdir)
+	. = ..()
 	if(!icon_manager)
 		icon_manager = new()
 	if(!isnull(newdir))
@@ -116,7 +125,7 @@ Pipelines + Other Objects -> Pipe network
 
 	return node.pipe_color
 
-/obj/machinery/atmospherics/process()
+/obj/machinery/atmospherics/process(delta_time)
 	last_flow_rate = 0
 	last_power_draw = 0
 
@@ -153,12 +162,12 @@ Pipelines + Other Objects -> Pipe network
 /obj/machinery/atmospherics/update_icon()
 	return null
 
-/obj/machinery/atmospherics/proc/can_unwrench()
+/obj/machinery/atmospherics/proc/unsafe_pressure()
 	var/datum/gas_mixture/int_air = return_air()
 	var/datum/gas_mixture/env_air = loc.return_air()
 	if((int_air.return_pressure()-env_air.return_pressure()) > 2*ONE_ATMOSPHERE)
-		return 0
-	return 1
+		return TRUE
+	return FALSE
 
 // Deconstruct into a pipe item.
 /obj/machinery/atmospherics/proc/deconstruct()
@@ -197,7 +206,6 @@ Pipelines + Other Objects -> Pipe network
 	if(pipe_flags & (PIPING_DEFAULT_LAYER_ONLY|PIPING_ALL_LAYER))
 		new_layer = PIPING_LAYER_DEFAULT
 	piping_layer = new_layer
-	// Do it the Polaris way
 	switch(piping_layer)
 		if(PIPING_LAYER_SCRUBBER)
 			icon_state = "[icon_state]-scrubbers"

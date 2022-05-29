@@ -6,7 +6,7 @@
 	density = 1
 	w_class = ITEMSIZE_HUGE
 	var/state = 0
-	var/base_icon_state = ""
+	base_icon_state = ""
 	var/base_name = "airlock"
 	var/obj/item/airlock_electronics/electronics = null
 	var/airlock_type = "" //the type path of the airlock once completed
@@ -14,8 +14,9 @@
 	var/glass = 0 // 0 = glass can be installed. -1 = glass can't be installed. 1 = glass is already installed. Text = mineral plating is installed instead.
 	var/created_name = null
 
-	New()
-		update_state()
+/obj/structure/door_assembly/Initialize(mapload)
+	. = ..()
+	update_state()
 
 /obj/structure/door_assembly/door_assembly_com
 	base_icon_state = "com"

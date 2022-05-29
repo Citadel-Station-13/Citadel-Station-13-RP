@@ -26,6 +26,7 @@
 		/obj/item/clothing/under/sl_suit = 2,
 		/obj/item/clothing/under/rank/bartender = 2,
 		/obj/item/clothing/under/rank/bartender/skirt,
+		/obj/item/clothing/under/rank/bartender/skirt_pleated,
 		/obj/item/clothing/under/dress/dress_saloon,
 		/obj/item/clothing/accessory/wcoat = 2,
 		/obj/item/clothing/shoes/black = 2,
@@ -46,6 +47,7 @@
 		/obj/item/radio/headset/headset_service = 2,
 		/obj/item/storage/box/mousetraps = 2,
 		/obj/item/clothing/under/rank/chef,
+		/obj/item/clothing/under/rank/chef/skirt_pleated,
 		/obj/item/clothing/head/chefhat,
 		/obj/item/storage/bag/food = 2)
 
@@ -60,6 +62,7 @@
 
 	starts_with = list(
 		/obj/item/clothing/under/rank/janitor,
+		/obj/item/clothing/under/rank/janitor/skirt_pleated,
 		/obj/item/clothing/under/dress/maid/janitor,
 		/obj/item/radio/headset/headset_service,
 		/obj/item/cartridge/janitor,

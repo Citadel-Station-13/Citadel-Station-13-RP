@@ -11,15 +11,15 @@
 	power_draw_per_use = 1
 	var/number_of_pins = 1
 
-/obj/item/integrated_circuit/memory/New()
+/obj/item/integrated_circuit/memory/Initialize(mapload)
 	for(var/i = 1 to number_of_pins)
 		inputs["input [i]"] = IC_PINTYPE_ANY // This is just a string since pins don't get built until ..() is called.
 		outputs["output [i]"] = IC_PINTYPE_ANY
 	complexity = number_of_pins
-	..()
+	. = ..()
 
 /obj/item/integrated_circuit/memory/examine(mob/user)
-	..()
+	. = ..()
 	var/i
 	for(i = 1, i <= outputs.len, i++)
 		var/datum/integrated_io/O = outputs[i]
@@ -30,14 +30,14 @@
 				data = "[d]"
 		else if(!isnull(O.data))
 			data = O.data
-		to_chat(user, "\The [src] has [data] saved to address [i].")
+		. += "\The [src] has [data] saved to address [i]."
 
 /obj/item/integrated_circuit/memory/do_work()
 	for(var/i = 1 to inputs.len)
 		var/datum/integrated_io/I = inputs[i]
 		var/datum/integrated_io/O = outputs[i]
 		O.data = I.data
-		O.push_data()
+		push_data()
 	activate_pin(2)
 
 /obj/item/integrated_circuit/memory/tiny
@@ -88,22 +88,22 @@
 
 /obj/item/integrated_circuit/memory/constant/attack_self(mob/user)
 	var/datum/integrated_io/O = outputs[1]
-	var/type_to_use = input("Please choose a type to use.","[src] type setting") as null|anything in list("string","number","ref", "null")
-	if(!CanInteract(user, physical_state))
+	var/type_to_use = tgui_input_list(usr, "Please choose a type to use.","[src] type setting", list("string","number","ref", "null"))
+	if(!CanInteract(user, GLOB.physical_state))
 		return
 
 	var/new_data = null
 	switch(type_to_use)
 		if("string")
 			accepting_refs = 0
-			new_data = input("Now type in a string.","[src] string writing") as null|text
-			if(istext(new_data) && CanInteract(user, physical_state))
+			new_data = input(usr, "Now type in a string.","[src] string writing") as null|text
+			if(istext(new_data) && CanInteract(user, GLOB.physical_state))
 				O.data = new_data
 				to_chat(user, "<span class='notice'>You set \the [src]'s memory to [O.display_data(O.data)].</span>")
 		if("number")
 			accepting_refs = 0
-			new_data = input("Now type in a number.","[src] number writing") as null|num
-			if(isnum(new_data) && CanInteract(user, physical_state))
+			new_data = input(usr, "Now type in a number.","[src] number writing") as null|num
+			if(isnum(new_data) && CanInteract(user, GLOB.physical_state))
 				O.data = new_data
 				to_chat(user, "<span class='notice'>You set \the [src]'s memory to [O.display_data(O.data)].</span>")
 		if("ref")

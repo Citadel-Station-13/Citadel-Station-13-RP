@@ -12,7 +12,9 @@
 /obj/effect/step_trigger/proc/Trigger(var/atom/movable/A)
 	return 0
 
-/obj/effect/step_trigger/Crossed(H as mob|obj)
+/obj/effect/step_trigger/Crossed(atom/movable/H as mob|obj)
+	if(H.is_incorporeal())
+		return
 	..()
 	if(!H)
 		return
@@ -34,7 +36,7 @@
 	var/list/affecting = list()
 
 	Trigger(var/atom/A)
-		if(!A || !istype(A, /atom/movable))
+		if(!A || !istype(A, /atom/movable) || isobserver(A))
 			return
 		var/atom/movable/AM = A
 		var/curtiles = 0
@@ -163,12 +165,12 @@
 /* Teleporter that sends objects stepping on it to a specific landmark. */
 
 /obj/effect/step_trigger/teleporter/landmark
-	var/obj/effect/landmark/the_landmark = null
+	var/atom/movable/landmark/the_landmark = null
 	var/landmark_id = null
 
-/obj/effect/step_trigger/teleporter/landmark/Initialize()
+/obj/effect/step_trigger/teleporter/landmark/Initialize(mapload)
 	. = ..()
-	for(var/obj/effect/landmark/teleport_mark/mark in tele_landmarks)
+	for(var/atom/movable/landmark/teleport_mark/mark in tele_landmarks)
 		if(mark.landmark_id == landmark_id)
 			the_landmark = mark
 			return
@@ -180,14 +182,14 @@
 
 var/global/list/tele_landmarks = list() // Terrible, but the alternative is looping through world.
 
-/obj/effect/landmark/teleport_mark
+/atom/movable/landmark/teleport_mark
 	var/landmark_id = null
 
-/obj/effect/landmark/teleport_mark/New()
-	..()
+/atom/movable/landmark/teleport_mark/Initialize(mapload)
+	. = ..()
 	tele_landmarks += src
 
-/obj/effect/landmark/teleport_mark/Destroy()
+/atom/movable/landmark/teleport_mark/Destroy()
 	tele_landmarks -= src
 	return ..()
 

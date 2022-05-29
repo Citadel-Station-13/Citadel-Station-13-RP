@@ -3,7 +3,7 @@
 	desc = "You can't top the plasma top." //TOTALLY TRADEMARK INFRINGEMENT
 	origin_tech = list(TECH_POWER = 0)
 	maxcharge = 500
-	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 40)
+	matter = list(MAT_STEEL = 700, MAT_GLASS = 40)
 
 /obj/item/cell/crap/empty
 	charge = 0
@@ -12,7 +12,7 @@
 	name = "security borg rechargable D battery"
 	origin_tech = list(TECH_POWER = 0)
 	maxcharge = 600	//600 max charge / 100 charge per shot = six shots
-	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 40)
+	matter = list(MAT_STEEL = 700, MAT_GLASS = 40)
 
 /obj/item/cell/secborg/empty
 	charge = 0
@@ -21,14 +21,14 @@
 	name = "heavy-duty power cell"
 	origin_tech = list(TECH_POWER = 1)
 	maxcharge = 5000
-	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 50)
+	matter = list(MAT_STEEL = 700, MAT_GLASS = 50)
 
 /obj/item/cell/high
 	name = "high-capacity power cell"
 	origin_tech = list(TECH_POWER = 2)
 	icon_state = "hcell"
 	maxcharge = 10000
-	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 60)
+	matter = list(MAT_STEEL = 700, MAT_GLASS = 60)
 
 /obj/item/cell/high/empty
 	charge = 0
@@ -38,7 +38,7 @@
 	origin_tech = list(TECH_POWER = 5)
 	icon_state = "scell"
 	maxcharge = 20000
-	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 70)
+	matter = list(MAT_STEEL = 700, MAT_GLASS = 70)
 
 /obj/item/cell/super/empty
 	charge = 0
@@ -48,7 +48,7 @@
 	origin_tech = list(TECH_POWER = 6)
 	icon_state = "hpcell"
 	maxcharge = 30000
-	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 80)
+	matter = list(MAT_STEEL = 700, MAT_GLASS = 80)
 
 /obj/item/cell/hyper/empty
 	charge = 0
@@ -58,7 +58,7 @@
 	icon_state = "icell"
 	origin_tech =  null
 	maxcharge = 30000 //determines how badly mobs get shocked
-	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 80)
+	matter = list(MAT_STEEL = 700, MAT_GLASS = 80)
 
 /obj/item/cell/infinite/check_charge()
 	return 1
@@ -86,6 +86,7 @@
 	maxcharge = 10000
 	matter = null
 	self_recharge = TRUE
+	charge_amount = 750
 
 //Not actually a cell, but if people look for it, they'll probably look near other cells
 /obj/item/fbp_backup_cell
@@ -97,8 +98,9 @@
 	var/amount = 100
 	var/used = FALSE
 
-/obj/item/fbp_backup_cell/Initialize()
-	overlays += image(icon,"[icon_state]1")
+/obj/item/fbp_backup_cell/Initialize(mapload)
+	. = ..()
+	add_overlay("[icon_state]1")
 
 /obj/item/fbp_backup_cell/attack(mob/living/M as mob, mob/user as mob)
 	if(!used && ishuman(M))
@@ -123,3 +125,16 @@
 	overlays.Cut()
 	target.nutrition += amount
 	user.custom_emote(message = "connects \the [src] to [user == target ? "their" : "[target]'s"] charging port, expending it.")
+
+/obj/item/cell/emergency_light
+	name = "miniature power cell"
+	desc = "A tiny power cell with a very low power capacity. Used in light fixtures to power them in the event of an outage."
+	maxcharge = 120 //Emergency lights use 0.2 W per tick, meaning ~10 minutes of emergency power from a cell
+	matter = list(MAT_GLASS = 20)
+	w_class = ITEMSIZE_TINY
+
+/obj/item/cell/emergency_light/Initialize(mapload)
+	. = ..()
+	var/area/A = get_area(src)
+	if(!A.lightswitch || !A.light_power)
+		charge = 0 //For naturally depowered areas, we start with no power

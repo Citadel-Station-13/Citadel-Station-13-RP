@@ -1,5 +1,22 @@
+GLOBAL_LIST_INIT(bitfields, generate_bitfields())
+
+/datum/bitfield
+	/// The variable name that contains the bitfield
+	var/variable
+
+	/// An associative list of the readable flag and its true value
+	var/list/flags
+
+/// Turns /datum/bitfield subtypes into a list for use in debugging
+/proc/generate_bitfields()
+	var/list/bitfields = list()
+	for (var/_bitfield in subtypesof(/datum/bitfield))
+		var/datum/bitfield/bitfield = new _bitfield
+		bitfields[bitfield.variable] = bitfield.flags
+	// sue me i haven't slept in 18 hours
+	// tl;dr convert these into DEFINE_BITFIELD's later
 #define FLAG(flag) "[#flag]" = flag
-GLOBAL_LIST_INIT(bitfields, list(
+	return bitfields + list(
 	"appearance_flags" = list(
 		"LONG_GLIDE" = LONG_GLIDE,
 		"RESET_COLOR" = RESET_COLOR,
@@ -49,7 +66,16 @@ GLOBAL_LIST_INIT(bitfields, list(
 		FLAG(PHASING),
 		FLAG(VENTCRAWLING),
 		FLAG(FLOATING)
-		)
+		),
+	"reagents_holder_flags" = list(
+		"INJECTABLE" = INJECTABLE,
+		"DRAWABLE" = DRAWABLE,
+		"REFILLABLE" = REFILLABLE,
+		"DRAINABLE" = DRAINABLE,
+		"TRANSPARENT" = TRANSPARENT,
+		"AMOUNT_VISIBLE" = AMOUNT_VISIBLE,
+		"NO_REACT" = NO_REACT,
+		),
 /*
 	"sight" = list(
 		"SEE_INFRA" = SEE_INFRA,
@@ -62,6 +88,12 @@ GLOBAL_LIST_INIT(bitfields, list(
 		"SEE_BLACKNESS" = SEE_BLACKNESS,
 		"BLIND" = BLIND
 		),
+*/
+	"obj_flags" = list(
+		"EMAGGED" = EMAGGED,
+		"CAN_BE_HIT" = CAN_BE_HIT
+		),
+/*
 	"obj_flags" = list(
 		"EMAGGED" = EMAGGED,
 		"IN_USE" = IN_USE,
@@ -72,6 +104,7 @@ GLOBAL_LIST_INIT(bitfields, list(
 		"UNIQUE_RENAME" = UNIQUE_RENAME,
 		"USES_TGUI" = USES_TGUI,
 		"FROZEN" = FROZEN,
+		"SHOVABLE_ONTO" = SHOVABLE_ONTO
 		),
 
 	"item_flags" = list(
@@ -114,6 +147,7 @@ GLOBAL_LIST_INIT(bitfields, list(
 		"INTERACT_ATOM_NO_FINGERPRINT_ATTACK_HAND" = INTERACT_ATOM_NO_FINGERPRINT_ATTACK_HAND,
 		"INTERACT_ATOM_NO_FINGERPRINT_INTERACT" = INTERACT_ATOM_NO_FINGERPRINT_INTERACT
 		),
+*/
 	"interaction_flags_machine" = list(
 		"INTERACT_MACHINE_OPEN" = INTERACT_MACHINE_OPEN,
 		"INTERACT_MACHINE_OFFLINE" = INTERACT_MACHINE_OFFLINE,
@@ -121,8 +155,10 @@ GLOBAL_LIST_INIT(bitfields, list(
 		"INTERACT_MACHINE_ALLOW_SILICON" = INTERACT_MACHINE_ALLOW_SILICON,
 		"INTERACT_MACHINE_OPEN_SILICON" = INTERACT_MACHINE_OPEN_SILICON,
 		"INTERACT_MACHINE_REQUIRES_SILICON" = INTERACT_MACHINE_REQUIRES_SILICON,
-		"INTERACT_MACHINE_SET_MACHINE" = INTERACT_MACHINE_SET_MACHINE
+		"INTERACT_MACHINE_SET_MACHINE" = INTERACT_MACHINE_SET_MACHINE,
+		"INTERACT_MACHINE_REQUIRES_SIGHT" = INTERACT_MACHINE_REQUIRES_SIGHT
 		),
+/*
 	"interaction_flags_item" = list(
 		"INTERACT_ITEM_ATTACK_HAND_PICKUP" = INTERACT_ITEM_ATTACK_HAND_PICKUP,
 		),
@@ -176,6 +212,7 @@ GLOBAL_LIST_INIT(bitfields, list(
 	"car_traits" = list(
 		"CAN_KIDNAP" = CAN_KIDNAP,
 		),
+*/
 	"mobility_flags" = list(
 		"MOVE" = MOBILITY_MOVE,
 		"STAND" = MOBILITY_STAND,
@@ -183,8 +220,9 @@ GLOBAL_LIST_INIT(bitfields, list(
 		"USE" = MOBILITY_USE,
 		"UI" = MOBILITY_UI,
 		"STORAGE" = MOBILITY_STORAGE,
-		"PULL" = MOBILITY_PULL,
-		),
+		"PULL" = MOBILITY_PULL
+	)
+/*
 	"rad_flags" = list(
 		"RAD_PROTECT_CONTENTS" = RAD_PROTECT_CONTENTS,
 		"RAD_NO_CONTAMINATE" = RAD_NO_CONTAMINATE,
@@ -208,6 +246,6 @@ GLOBAL_LIST_INIT(bitfields, list(
 	)
 */
 
-	))
+	)
 
 #undef FLAG

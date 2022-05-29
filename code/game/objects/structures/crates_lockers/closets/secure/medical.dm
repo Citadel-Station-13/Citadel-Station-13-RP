@@ -61,7 +61,7 @@
 		/obj/item/gps/medical,
 		/obj/item/storage/box/freezer = 3)
 
-/obj/structure/closet/secure_closet/medical3/Initialize()
+/obj/structure/closet/secure_closet/medical3/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/medic
 	else
@@ -126,6 +126,7 @@
 		/obj/item/clothing/suit/storage/toggle/fr_jacket,
 		/obj/item/clothing/suit/storage/toggle/labcoat/emt,
 		/obj/item/radio/headset/headset_med/alt,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/medical/para,
 		/obj/item/cartridge/medical,
 		/obj/item/storage/briefcase/inflatable,
 		/obj/item/flashlight,
@@ -139,7 +140,12 @@
 		/obj/item/extinguisher/mini,
 		/obj/item/storage/box/freezer,
 		/obj/item/clothing/accessory/storage/white_vest,
-		/obj/item/barrier_tape_roll/medical)
+		/obj/item/barrier_tape_roll/medical,
+		/obj/item/storage/lockbox/limb_plate/emt)
+
+/obj/structure/closet/secure_closet/paramedic/Initialize(mapload)
+	starts_with += /obj/item/gps/medical
+	return ..()
 
 /obj/structure/closet/secure_closet/CMO
 	name = "chief medical officer's locker"
@@ -154,6 +160,7 @@
 	starts_with = list(
 		/obj/item/clothing/under/rank/chief_medical_officer,
 		/obj/item/clothing/under/rank/chief_medical_officer/skirt,
+		/obj/item/clothing/under/rank/chief_medical_officer/skirt_pleated,
 		/obj/item/clothing/suit/storage/toggle/labcoat/cmo,
 		/obj/item/clothing/suit/storage/toggle/labcoat/cmoalt,
 		/obj/item/cartridge/cmo,
@@ -163,7 +170,7 @@
 		/obj/item/radio/headset/heads/cmo/alt,
 		/obj/item/flash,
 		/obj/item/reagent_containers/hypospray/vial,
-		/obj/item/clothing/suit/storage/hooded/wintercoat/medical,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/medical/cmo,
 		/obj/item/clothing/shoes/boots/winter/medical,
 		/obj/item/storage/box/freezer,
 		/obj/item/clothing/mask/gas,
@@ -172,9 +179,10 @@
 		/obj/item/clothing/head/bio_hood/cmo,
 		/obj/item/gps/medical/cmo,
 		/obj/item/clothing/shoes/white,
-		/obj/item/reagent_containers/glass/beaker/vial) //VOREStation Add
+		/obj/item/reagent_containers/glass/beaker/vial,
+		/obj/item/clothing/under/rank/chief_medical_officer/turtleneck)
 
-/obj/structure/closet/secure_closet/CMO/Initialize()
+/obj/structure/closet/secure_closet/CMO/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/medic
 	else
@@ -228,7 +236,7 @@
 		/obj/item/reagent_containers/dropper = 2,
 		/obj/item/reagent_containers/glass/bottle/inaprovaline = 2,
 		/obj/item/reagent_containers/glass/bottle/antitoxin = 2,
-		/obj/item/storage/fancy/vials) //VOREStation Add
+		/obj/item/storage/fancy/vials)
 
 
 /obj/structure/closet/secure_closet/psych

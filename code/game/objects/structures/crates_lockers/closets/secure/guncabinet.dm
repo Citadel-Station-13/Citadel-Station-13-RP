@@ -9,7 +9,7 @@
 	icon_opened = "base"
 	req_one_access = list(access_armory)
 
-/obj/structure/closet/secure_closet/guncabinet/Initialize()
+/obj/structure/closet/secure_closet/guncabinet/Initialize(mapload)
 	. = ..()
 	update_icon()
 
@@ -53,3 +53,49 @@
 		else
 			overlays += icon(src.icon,"open")
 
+//SC Guncabinet files
+/obj/structure/closet/secure_closet/guncabinet/sidearm
+	name = "emergency weapon cabinet"
+	req_one_access = list(access_armory,access_captain)
+
+	starts_with = list(
+		/obj/item/gun/energy/gun = 4)
+
+
+/obj/structure/closet/secure_closet/guncabinet/rifle
+	name = "rifle cabinet"
+	req_one_access = list(access_explorer,access_brig)
+
+	starts_with = list(
+		/obj/item/ammo_magazine/clip/c762/hunter = 9,
+		/obj/item/gun/projectile/shotgun/pump/rifle = 2)
+
+/obj/structure/closet/secure_closet/guncabinet/rifle/Initialize(mapload)
+	if(prob(85))
+		starts_with += /obj/item/gun/projectile/shotgun/pump/rifle
+	else
+		starts_with += /obj/item/gun/projectile/shotgun/pump/rifle/lever
+	return ..()
+
+/obj/structure/closet/secure_closet/guncabinet/phase
+	name = "explorer weapon cabinet"
+	req_one_access = list(access_explorer,access_brig)
+
+	starts_with = list(
+		/obj/item/gun/energy/phasegun = 2,
+		/obj/item/cell/device/weapon = 2,
+		/obj/item/clothing/accessory/permit/gun/planetside)
+
+/obj/structure/closet/secure_closet/guncabinet/robotics
+	name = "exosuit equipment cabinet"
+	req_one_access = list(access_robotics,access_research)
+
+/obj/structure/closet/secure_closet/guncabinet/excursion
+	name = "expedition weaponry cabinet"
+	req_one_access = list(access_explorer,access_armory)
+
+/obj/structure/closet/secure_closet/guncabinet/excursion/PopulateContents()
+	for(var/i in 1 to 4)
+		new /obj/item/gun/energy/frontier/locked(src)
+	for(var/i in 1 to 4)
+		new /obj/item/gun/energy/frontier/locked/holdout

@@ -10,6 +10,8 @@
 	var/heal_brute = 0
 	var/heal_burn = 0
 	var/apply_sounds
+	drop_sound = 'sound/items/drop/cardboardbox.ogg'
+	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 
 	var/upgrade_to	// The type path this stack can be upgraded to.
 
@@ -81,6 +83,8 @@
 	origin_tech = list(TECH_BIO = 1)
 	no_variants = FALSE
 	apply_sounds = list('sound/effects/rip1.ogg','sound/effects/rip2.ogg')
+	drop_sound = 'sound/items/drop/gloves.ogg'
+	pickup_sound = 'sound/items/pickup/gloves.ogg'
 
 	upgrade_to = /obj/item/stack/medical/bruise_pack
 
@@ -191,9 +195,9 @@
 					user.visible_message("<span class='notice'>\The [user] places a bandaid over \a [W.desc] on [M]'s [affecting.name].</span>", \
 					                              "<span class='notice'>You place a bandaid over \a [W.desc] on [M]'s [affecting.name].</span>" )
 				W.bandage()
-				// W.disinfect() // VOREStation - Tech1 should not disinfect
 				playsound(src, pick(apply_sounds), 25)
 				used++
+				M.bitten = 0
 			affecting.update_damages()
 			if(used == amount)
 				if(affecting.is_bandaged())
@@ -212,6 +216,8 @@
 	origin_tech = list(TECH_BIO = 1)
 	no_variants = FALSE
 	apply_sounds = list('sound/effects/ointment.ogg')
+	drop_sound = 'sound/items/drop/herb.ogg'
+	pickup_sound = 'sound/items/pickup/herb.ogg'
 
 /obj/item/stack/medical/ointment/attack(mob/living/carbon/M as mob, mob/user as mob)
 	if(..())
@@ -248,7 +254,7 @@
 	singular_name = "advanced trauma kit"
 	desc = "An advanced trauma kit for severe injuries."
 	icon_state = "traumakit"
-	heal_brute = 7 //VOREStation Edit
+	heal_brute = 7
 	origin_tech = list(TECH_BIO = 1)
 	apply_sounds = list('sound/effects/rip1.ogg','sound/effects/rip2.ogg','sound/effects/tape.ogg')
 
@@ -276,8 +282,6 @@
 					continue
 				if (W.bandaged && W.disinfected)
 					continue
-				//if(used == amount) //VOREStation Edit
-				//	break //VOREStation Edit
 				if(!do_mob(user, M, W.damage/5))
 					to_chat(user, "<span class='notice'>You must stand still to bandage wounds.</span>")
 					break
@@ -297,8 +301,8 @@
 				W.disinfect()
 				W.heal_damage(heal_brute)
 				playsound(src, pick(apply_sounds), 25)
-				used = 1 //VOREStation Edit
-				update_icon() // VOREStation Edit - Support for stack icons
+				used = 1
+				update_icon() //  Support for stack icons
 			affecting.update_damages()
 			if(used == amount)
 				if(affecting.is_bandaged())
@@ -312,7 +316,7 @@
 	singular_name = "advanced burn kit"
 	desc = "An advanced treatment kit for severe burns."
 	icon_state = "burnkit"
-	heal_burn = 7 //VOREStation Edit
+	heal_burn = 7
 	origin_tech = list(TECH_BIO = 1)
 	apply_sounds = list('sound/effects/ointment.ogg')
 
@@ -345,7 +349,7 @@
 			use(1)
 			affecting.salve()
 			playsound(src, pick(apply_sounds), 25)
-			update_icon() // VOREStation Edit - Support for stack icons
+			update_icon() // Support for stack icons
 
 /obj/item/stack/medical/splint
 	name = "medical splints"
@@ -354,6 +358,8 @@
 	icon_state = "splint"
 	amount = 5
 	max_amount = 5
+	drop_sound = 'sound/items/drop/hat.ogg'
+	pickup_sound = 'sound/items/pickup/hat.ogg'
 
 	var/list/splintable_organs = list(BP_HEAD, BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM, BP_L_FOOT, BP_R_FOOT, BP_L_LEG, BP_R_LEG, BP_GROIN, BP_TORSO)	//List of organs you can splint, natch.
 

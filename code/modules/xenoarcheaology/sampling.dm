@@ -94,8 +94,8 @@
 	var/obj/item/evidencebag/filled_bag
 
 /obj/item/core_sampler/examine(var/mob/user)
-	if(..(user, 2))
-		to_chat(user, "<span class='notice'>Used to extract geological core samples - this one is [sampled_turf ? "full" : "empty"], and has [num_stored_bags] bag[num_stored_bags != 1 ? "s" : ""] remaining.</span>")
+	. = ..()
+	. += "<span class='notice'>Used to extract geological core samples - this one is [sampled_turf ? "full" : "empty"], and has [num_stored_bags] bag[num_stored_bags != 1 ? "s" : ""] remaining.</span>"
 
 /obj/item/core_sampler/attackby(var/obj/item/I, var/mob/living/user)
 	if(istype(I, /obj/item/evidencebag))

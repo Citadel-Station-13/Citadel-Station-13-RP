@@ -2,24 +2,12 @@
 
 // TURFS
 
-/proc/updateVisibility(atom/A, var/opacity_check = 1)
-	if(SSticker)
-		for(var/datum/visualnet/VN in visual_nets)
-			VN.updateVisibility(A, opacity_check)
+/proc/updateVisibility(atom/A, opacity_check = 1)
+	for(var/datum/visualnet/VN in GLOB.visual_nets)
+		VN.updateVisibility(A, opacity_check)
 
 /turf
 	var/list/image/obfuscations
-
-/turf/drain_power()
-	return -1
-
-/turf/simulated/Destroy()
-	updateVisibility(src)
-	return ..()
-
-/turf/simulated/Initialize()
-	. = ..()
-	updateVisibility(src)
 
 // STRUCTURES
 
@@ -27,8 +15,8 @@
 	updateVisibility(src)
 	return ..()
 
-/obj/structure/New()
-	..()
+/obj/structure/Initialize(mapload)
+	. = ..()
 	updateVisibility(src)
 
 // EFFECTS
@@ -37,9 +25,10 @@
 	updateVisibility(src)
 	return ..()
 
-/obj/effect/New()
-	..()
-	updateVisibility(src)
+/obj/effect/Initialize(mapload)
+	. = ..()
+	if(!mapload)
+		updateVisibility(src)
 
 // DOORS
 

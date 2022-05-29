@@ -19,8 +19,8 @@
 	var/tally = 0				//The counter referenced against total_creature_max, or just to see how many mobs it has spawned.
 	var/total_creature_max	//If set, it can spawn this many creatures, total, ever.
 
-/obj/structure/prop/nest/Initialize()
-	..()
+/obj/structure/prop/nest/Initialize(mapload)
+	. = ..()
 	den_mobs = list()
 	START_PROCESSING(SSobj, src)
 	last_spawn = world.time
@@ -39,7 +39,7 @@
 	if(user && prob(disturbance_spawn_chance))
 		spawn_creature(get_turf(src))
 
-/obj/structure/prop/nest/process()
+/obj/structure/prop/nest/process(delta_time)
 	update_creatures()
 	if(world.time > last_spawn + spawn_delay)
 		spawn_creature(get_turf(src))

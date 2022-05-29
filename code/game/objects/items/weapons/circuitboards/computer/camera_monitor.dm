@@ -10,8 +10,8 @@
 	var/locked = 1
 	var/emagged = 0
 
-/obj/item/circuitboard/security/New()
-	..()
+/obj/item/circuitboard/security/Initialize(mapload)
+	. = ..()
 	network = GLOB.using_map.station_networks
 
 /obj/item/circuitboard/security/tv
@@ -23,8 +23,8 @@
 	build_path = /obj/machinery/computer/security/engineering
 	req_access = list()
 
-/obj/item/circuitboard/security/engineering/New()
-	..()
+/obj/item/circuitboard/security/engineering/Initialize(mapload)
+	. = ..()
 	network = engineering_networks
 
 /obj/item/circuitboard/security/mining
@@ -37,15 +37,15 @@
 	name = T_BOARD("entertainment camera monitor")
 	build_path = /obj/machinery/computer/security/telescreen/entertainment
 	board_type = new /datum/frame/frame_types/display
-	matter = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50)
+	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
-/obj/item/circuitboard/security/telescreen/entertainment/New()
-	..()
+/obj/item/circuitboard/security/telescreen/entertainment/Initialize(mapload)
+	. = ..()
 	network = NETWORK_THUNDER
 
 /obj/item/circuitboard/security/construct(var/obj/machinery/computer/security/C)
 	if (..(C))
-		C.network = network.Copy()
+		C.set_network(network.Copy())
 
 /obj/item/circuitboard/security/deconstruct(var/obj/machinery/computer/security/C)
 	if (..(C))

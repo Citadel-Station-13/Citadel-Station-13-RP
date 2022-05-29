@@ -197,6 +197,20 @@
 	icon_state = "ripley_r_leg"
 */
 
+////////// Firefighter
+
+/obj/item/mecha_parts/chassis/geiger
+	name = "Lightweight APLU Chassis"
+
+	New()
+		..()
+		construct = new /datum/construction/mecha/geiger_chassis(src)
+
+/obj/item/mecha_parts/part/geiger_torso
+	name="Lightweight APLU Torso"
+	icon_state = "ripley_harness"
+
+
 ////////// Phazon
 
 /obj/item/mecha_parts/chassis/phazon
@@ -211,42 +225,42 @@
 	name="Phazon Torso"
 	icon_state = "phazon_harness"
 	//construction_time = 300
-	//construction_cost = list(DEFAULT_WALL_MATERIAL=35000,"glass"=10000,"phoron"=20000)
+	//construction_cost = list(MAT_STEEL=35000,"glass"=10000,"phoron"=20000)
 	origin_tech = list(TECH_DATA = 5, TECH_MATERIAL = 7, TECH_BLUESPACE = 6, TECH_POWER = 6)
 
 /obj/item/mecha_parts/part/phazon_head
 	name="Phazon Head"
 	icon_state = "phazon_head"
 	//construction_time = 200
-	//construction_cost = list(DEFAULT_WALL_MATERIAL=15000,"glass"=5000,"phoron"=10000)
+	//construction_cost = list(MAT_STEEL=15000,"glass"=5000,"phoron"=10000)
 	origin_tech = list(TECH_DATA = 4, TECH_MATERIAL = 5, TECH_MAGNET = 6)
 
 /obj/item/mecha_parts/part/phazon_left_arm
 	name="Phazon Left Arm"
 	icon_state = "phazon_l_arm"
 	//construction_time = 200
-	//construction_cost = list(DEFAULT_WALL_MATERIAL=20000,"phoron"=10000)
+	//construction_cost = list(MAT_STEEL=20000,"phoron"=10000)
 	origin_tech = list(TECH_MATERIAL = 5, TECH_BLUESPACE = 2, TECH_MAGNET = 2)
 
 /obj/item/mecha_parts/part/phazon_right_arm
 	name="Phazon Right Arm"
 	icon_state = "phazon_r_arm"
 	//construction_time = 200
-	//construction_cost = list(DEFAULT_WALL_MATERIAL=20000,"phoron"=10000)
+	//construction_cost = list(MAT_STEEL=20000,"phoron"=10000)
 	origin_tech = list(TECH_MATERIAL = 5, TECH_BLUESPACE = 2, TECH_MAGNET = 2)
 
 /obj/item/mecha_parts/part/phazon_left_leg
 	name="Phazon Left Leg"
 	icon_state = "phazon_l_leg"
 	//construction_time = 200
-	//construction_cost = list(DEFAULT_WALL_MATERIAL=20000,"phoron"=10000)
+	//construction_cost = list(MAT_STEEL=20000,"phoron"=10000)
 	origin_tech = list(TECH_MATERIAL = 5, TECH_BLUESPACE = 3, TECH_MAGNET = 3)
 
 /obj/item/mecha_parts/part/phazon_right_leg
 	name="Phazon Right Leg"
 	icon_state = "phazon_r_leg"
 	//construction_time = 200
-	//construction_cost = list(DEFAULT_WALL_MATERIAL=20000,"phoron"=10000)
+	//construction_cost = list(MAT_STEEL=20000,"phoron"=10000)
 	origin_tech = list(TECH_MATERIAL = 5, TECH_BLUESPACE = 3, TECH_MAGNET = 3)
 
 ///////// Odysseus
@@ -299,7 +313,7 @@
 	icon_state = "odysseus_armour"
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ENGINEERING = 3)
 	construction_time = 200
-	construction_cost = list(DEFAULT_WALL_MATERIAL=15000)*/
+	construction_cost = list(MAT_STEEL=15000)*/
 
 ////////// Janus
 
@@ -340,3 +354,99 @@
 	name="Prototype Durand Right Leg"
 	icon_state = "janus_r_leg"
 	origin_tech = list(TECH_MATERIAL = 5, TECH_BLUESPACE = 3, TECH_MAGNET = 3, TECH_ARCANE = 1)
+
+///////// Honker
+
+/obj/item/mecha_parts/chassis/honker
+	name = "H.O.N.K. Chassis"
+
+	New()
+		..()
+		construct = new /datum/construction/mecha/honker_chassis(src)
+
+/obj/item/mecha_parts/part/honker_torso
+	name="H.O.N.K. Torso"
+	desc="A H.O.N.K. torso. The lining requires a distressing amount of rubber."
+	icon_state = "honker_harness"
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_BIO = 3, TECH_ENGINEERING = 3, TECH_ILLEGAL = 5)
+
+/obj/item/mecha_parts/part/honker_head
+	name="H.O.N.K. Head"
+	desc="A H.O.N.K. head. Houses advanced slip prediction sensors and a squeezable nose."
+	icon_state = "honker_head"
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_MAGNET = 3, TECH_ENGINEERING = 3, TECH_ILLEGAL = 5)
+
+/obj/item/mecha_parts/part/honker_left_arm
+	name="H.O.N.K. Left Arm"
+	desc="A H.O.N.K. left arm. Data and power sockets are compatible with the most hilarious tools and weapons."
+	icon_state = "honker_l_arm"
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_ENGINEERING = 3, TECH_ILLEGAL = 5)
+
+/obj/item/mecha_parts/part/honker_right_arm
+	name="H.O.N.K. Right Arm"
+	desc="A H.O.N.K. right arm. Data and power sockets are compatible with the most hilarious tools and weapons."
+	icon_state = "honker_r_arm"
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_ENGINEERING = 3, TECH_ILLEGAL = 5)
+
+/obj/item/mecha_parts/part/honker_left_leg
+	name="H.O.N.K. Left Leg"
+	icon_state = "honker_l_leg"
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_ENGINEERING = 3, TECH_ILLEGAL = 5)
+
+/obj/item/mecha_parts/part/honker_right_leg
+	name="H.O.N.K. Right Leg"
+	icon_state = "honker_r_leg"
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_ENGINEERING = 3, TECH_ILLEGAL = 5)
+
+/obj/item/mecha_parts/part/honker_armour
+	name="H.O.N.K. Armour Plates"
+	icon_state = "honker_armour"
+	origin_tech = list(TECH_MATERIAL = 6, TECH_COMBAT = 4, TECH_ENGINEERING = 5, TECH_ILLEGAL = 5)
+
+///////// Reticent
+
+/obj/item/mecha_parts/chassis/reticent
+	name = "Reticent Chassis"
+
+	New()
+		..()
+		construct = new /datum/construction/mecha/reticent_chassis(src)
+
+/obj/item/mecha_parts/part/reticent_torso
+	name="Reticent Torso"
+	desc="A Reticent torso. The hull is augmented by a Silencium mosaic."
+	icon_state = "reticent_harness"
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 5, TECH_BIO = 2, TECH_ENGINEERING = 3, TECH_ILLEGAL = 5)
+
+/obj/item/mecha_parts/part/reticent_head
+	name="Reticent Head"
+	desc="A Reticent head. The eyes stare dispassionately back at you."
+	icon_state = "reticent_head"
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 5, TECH_MAGNET = 2, TECH_ENGINEERING = 3, TECH_ILLEGAL = 5)
+
+/obj/item/mecha_parts/part/reticent_left_arm
+	name="Reticent Left Arm"
+	desc="A Reticent left arm. Data and power sockets are compatible with general weapons, and wickedly silent alternatives."
+	icon_state = "reticent_l_arm"
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 5, TECH_ENGINEERING = 3, TECH_ILLEGAL = 5)
+
+/obj/item/mecha_parts/part/reticent_right_arm
+	name="Reticent Right Arm"
+	desc="A Reticent right arm. Data and power sockets are compatible with general weapons, and wickedly silent alternatives."
+	icon_state = "reticent_r_arm"
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 5, TECH_ENGINEERING = 3, TECH_ILLEGAL = 5)
+
+/obj/item/mecha_parts/part/reticent_left_leg
+	name="Reticent Left Leg"
+	icon_state = "reticent_l_leg"
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 5, TECH_ENGINEERING = 3, TECH_ILLEGAL = 5)
+
+/obj/item/mecha_parts/part/reticent_right_leg
+	name="Reticent Right Leg"
+	icon_state = "reticent_r_leg"
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 5, TECH_ENGINEERING = 3, TECH_ILLEGAL = 5)
+
+/obj/item/mecha_parts/part/reticent_armour
+	name="Reticent Armour Plates"
+	icon_state = "reticent_armour"
+	origin_tech = list(TECH_MATERIAL = 6, TECH_COMBAT = 4, TECH_ENGINEERING = 5, TECH_ILLEGAL = 5)

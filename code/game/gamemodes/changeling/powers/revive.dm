@@ -41,16 +41,14 @@
 				current_limb.relocate()
 				current_limb.open = 0
 
-		ENABLE_BITFIELD(H.hud_updateflag, HEALTH_HUD)
-		ENABLE_BITFIELD(H.hud_updateflag, STATUS_HUD)
-		ENABLE_BITFIELD(H.hud_updateflag, LIFE_HUD)
+		H.update_hud_med_all()
 
 		if(H.handcuffed)
 			var/obj/item/W = H.handcuffed
 			H.handcuffed = null
 			if(H.buckled && H.buckled.buckle_require_restraints)
 				H.buckled.unbuckle_mob()
-			H.update_inv_handcuffed()
+			H.update_handcuffed()
 			if (H.client)
 				H.client.screen -= W
 			W.forceMove(H.loc)
@@ -79,7 +77,7 @@
 	C.update_canmove()
 	C.mind.changeling.purchased_powers -= C
 	feedback_add_details("changeling_powers","CR")
-	C.stat = CONSCIOUS
+	C.set_stat(CONSCIOUS)
 	C.forbid_seeing_deadchat = FALSE
 	C.timeofdeath = null
 	src.verbs -= /mob/proc/changeling_revive

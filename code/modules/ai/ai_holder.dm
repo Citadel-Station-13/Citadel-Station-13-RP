@@ -6,13 +6,14 @@
 	var/datum/ai_holder/ai_holder = null
 	var/ai_holder_type = null // Which ai_holder datum to give to the mob when initialized. If null, nothing happens.
 
-/mob/living/Initialize()
+/mob/living/Initialize(mapload)
 	if(ai_holder_type)
 		ai_holder = new ai_holder_type(src)
 	return ..()
 
 /mob/living/Destroy()
-	QDEL_NULL(ai_holder)
+	if(ai_holder)
+		QDEL_NULL(ai_holder)
 	return ..()
 
 /datum/ai_holder
@@ -21,7 +22,7 @@
 	var/intelligence_level = AI_NORMAL	// Adjust to make the AI be intentionally dumber, or make it more robust (e.g. dodging grenades).
 	var/autopilot = FALSE				// If true, the AI won't be deactivated if a client gets attached to the AI's mob.
 	var/busy = FALSE					// If true, the SSticker will skip processing this mob until this is false. Good for if you need the
-										// mob to stay still (e.g. delayed attacking). If you need the mob to be inactive for an extended period of time,
+										// mob to stay still (e.g. delayed attacwking). If you need the mob to be inactive for an extended period of time,
 										// consider sleeping the AI instead.
 
 
@@ -62,10 +63,11 @@
 // Reverses the above proc.
 // Revived mobs will wake their AI if they have one.
 /datum/ai_holder/proc/go_wake()
-	if(stance != STANCE_SLEEP)
+/*	if(stance != STANCE_SLEEP)
 		return
 	if(!should_wake())
 		return
+*/
 	set_stance(STANCE_IDLE)
 	SSai.processing += src
 

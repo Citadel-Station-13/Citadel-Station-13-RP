@@ -47,6 +47,7 @@
 		Master.StopLoadingMap()
 
 /dmm_suite/proc/load_map_impl(dmm_file, x_offset, y_offset, z_offset, cropMap, measureOnly, no_changeturf, orientation)
+	var/list/areaCache = list()
 	var/tfile = dmm_file//the map file we're creating
 	if(isfile(tfile))
 		tfile = file2text(tfile)
@@ -59,7 +60,7 @@
 		z_offset = world.maxz + 1
 
 	// If it's not a single dir, default to north (Default orientation)
-	if(!orientation in cardinal)
+	if(!(orientation in GLOB.cardinal))
 		orientation = SOUTH
 
 	var/list/bounds = list(1.#INF, 1.#INF, 1.#INF, -1.#INF, -1.#INF, -1.#INF)
@@ -94,7 +95,7 @@
 			var/ycrd = text2num(dmmRegex.group[4]) + y_offset - 1
 			var/zcrd = text2num(dmmRegex.group[5]) + z_offset - 1
 
-			if(orientation & (EAST | WEST)) //VOREStation edit we just have to pray the upstream spacebrains take into consideration before their refator is done.
+			if(orientation & (EAST | WEST))
 				xcrd = ycrd // temp variable
 				ycrd = xcrdStart
 				xcrdStart = xcrd
@@ -159,34 +160,37 @@
 
 			// Rotate the list according to orientation
 			if(orientation != SOUTH)
-				var/num_cols = key_list[1].len
+				var/list/firstlist = key_list[1]
+				var/num_cols = firstlist.len
 				var/num_rows = key_list.len
 				var/list/new_key_list = list()
 				// If it's rotated 180 degrees, the dimensions are the same
 				if(orientation == NORTH)
 					new_key_list.len = num_rows
 					for(var/i = 1 to new_key_list.len)
-						new_key_list[i] = list()
-						new_key_list[i].len = num_cols
+						var/list/L = list()
+						L.len = num_cols
+						new_key_list[i] = L
 				// Else, the dimensions are swapped
 				else
 					new_key_list.len = num_cols
 					for(var/i = 1 to new_key_list.len)
-						new_key_list[i] = list()
-						new_key_list[i].len = num_rows
-
+						var/list/L = list()
+						L.len = num_rows
+						new_key_list[i] = L
 				num_rows++ // Buffering against the base index of 1
 				num_cols++
 				// Populate the new list
 				for(var/i = 1 to new_key_list.len)
-					for(var/j = 1 to new_key_list[i].len)
+					var/list/L = new_key_list[i]
+					for(var/j = 1 to L.len)
 						switch(orientation)
 							if(NORTH)
-								new_key_list[i][j] = key_list[num_rows - i][num_cols - j]
+								L[j] = key_list[num_rows - i][num_cols - j]
 							if(EAST)
-								new_key_list[i][j] = key_list[num_rows - j][i]
+								L[j] = key_list[num_rows - j][i]
 							if(WEST)
-								new_key_list[i][j] = key_list[j][num_cols - i]
+								L[j] = key_list[j][num_cols - i]
 
 				key_list = new_key_list
 
@@ -197,7 +201,8 @@
 				for(var/i = 1 to key_list.len)
 					if(ycrd <= world.maxy && ycrd >= 1)
 						xcrd = xcrdStart
-						for(var/j = 1 to key_list[1].len)
+						var/list/firstcolumn = key_list[1]
+						for(var/j = 1 to firstcolumn.len)
 							if(xcrd > world.maxx)
 								if(cropMap)
 									break
@@ -209,7 +214,7 @@
 								if(!no_afterchange || (key_list[i][j] != space_key))
 									if(!grid_models[key_list[i][j]])
 										throw EXCEPTION("Undefined model key in DMM: [dmm_file], [key_list[i][j]]")
-									parse_grid(grid_models[key_list[i][j]], key_list[i][j], xcrd, ycrd, zcrd, no_afterchange, orientation)
+									parse_grid(grid_models[key_list[i][j]], key_list[i][j], xcrd, ycrd, zcrd, no_afterchange, orientation, areaCache)
 								#ifdef TESTING
 								else
 									++turfsSkipped
@@ -251,7 +256,7 @@
  * 4) Instanciates the atom with its variables
  *
  */
-/dmm_suite/proc/parse_grid(model as text, model_key as text, xcrd as num,ycrd as num,zcrd as num, no_changeturf as num, orientation as num)
+/dmm_suite/proc/parse_grid(model as text, model_key as text, xcrd as num,ycrd as num,zcrd as num, no_changeturf as num, orientation as num, list/areaCache)
 	/*Method parse_grid()
 	- Accepts a text string containing a comma separated list of type paths of the
 		same construction as those contained in a .dmm file, and instantiates them.
@@ -343,17 +348,20 @@
 	var/turf/crds = locate(xcrd,ycrd,zcrd)
 
 	//first instance the /area and remove it from the members list
-	index = members.len
-	if(members[index] != /area/template_noop)
-		var/atom/instance
-		var/atype = members[index]
-		world.preloader_setup(members_attributes[index], atype)//preloader for assigning  set variables on atom creation
-		for(var/area/A in all_areas)
-			if(A.type == atype)
-				instance = A
-				break
-		if(!instance)
-			instance = new atype(null)
+	index = LAZYLEN(members)
+	if(LAZYACCESS(members,index) != /area/template_noop)
+		if(!ispath(LAZYACCESS(members,index), /area))
+			// you see, some people are bad memes and break things by doing this
+			// this is a far more descriptive error than the "bad loc" you'd get otherwise.
+			CRASH("The last entry in a .dmm's key was not an /area. This will lead to serious errors if allowed to continue. Crashing read proc.")
+		var/atype = LAZYACCESS(members,index)
+		world.preloader_setup(LAZYACCESS(members_attributes,index), atype)//preloader for assigning  set variables on atom creation
+		var/atom/instance = LAZYACCESS(areaCache,atype)
+		if (!instance)
+			instance = GLOB.areas_by_type[atype]
+			if (!instance)
+				instance = new atype(null)
+			areaCache[atype] = instance
 		if(crds)
 			instance.contents.Add(crds)
 

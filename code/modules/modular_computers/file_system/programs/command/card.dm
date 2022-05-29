@@ -16,7 +16,7 @@
 	var/is_centcom = 0
 	var/show_assignments = 0
 
-/datum/nano_module/program/card_mod/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
+/datum/nano_module/program/card_mod/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
 	var/list/data = host.initial_data()
 
 	data["src"] = "\ref[src]"
@@ -44,13 +44,13 @@
 		data["id_owner"] = id_card && id_card.registered_name ? id_card.registered_name : "-----"
 		data["id_name"] = id_card ? id_card.name : "-----"
 
-	data["command_jobs"] = format_jobs(command_positions)
-	data["engineering_jobs"] = format_jobs(engineering_positions)
-	data["medical_jobs"] = format_jobs(medical_positions)
-	data["science_jobs"] = format_jobs(science_positions)
-	data["security_jobs"] = format_jobs(security_positions)
-	data["cargo_jobs"] = format_jobs(cargo_positions)
-	data["civilian_jobs"] = format_jobs(civilian_positions)
+	data["command_jobs"] = format_jobs(SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))
+	data["engineering_jobs"] = format_jobs(SSjob.get_job_titles_in_department(DEPARTMENT_ENGINEERING))
+	data["medical_jobs"] = format_jobs(SSjob.get_job_titles_in_department(DEPARTMENT_MEDICAL))
+	data["science_jobs"] = format_jobs(SSjob.get_job_titles_in_department(DEPARTMENT_RESEARCH))
+	data["security_jobs"] = format_jobs(SSjob.get_job_titles_in_department(DEPARTMENT_SECURITY))
+	data["cargo_jobs"] = format_jobs(SSjob.get_job_titles_in_department(DEPARTMENT_CARGO))
+	data["civilian_jobs"] = format_jobs(SSjob.get_job_titles_in_department(DEPARTMENT_CIVILIAN))
 	data["centcom_jobs"] = format_jobs(get_all_centcom_jobs())
 
 	data["all_centcom_access"] = is_centcom ? get_accesses(1) : null
@@ -167,13 +167,13 @@
 				computer.proc_eject_id(user)
 		if("terminate")
 			if(computer && can_run(user, 1))
-				id_card.assignment = "Dismissed"	//VOREStation Edit: setting adjustment
+				id_card.assignment = "Dismissed"
 				id_card.access = list()
 				callHook("terminate_employee", list(id_card))
 		if("edit")
 			if(computer && can_run(user, 1))
 				if(href_list["name"])
-					var/temp_name = sanitizeName(input("Enter name.", "Name", id_card.registered_name),allow_numbers=TRUE)
+					var/temp_name = sanitizeName(input("Enter name.", "Name", id_card.registered_name))
 					if(temp_name)
 						id_card.registered_name = temp_name
 					else

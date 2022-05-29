@@ -1,13 +1,14 @@
 /obj/machinery/computer
 	name = "computer"
-	icon = 'icons/obj/computer_vr.dmi'
+	icon = 'icons/obj/computer.dmi'
 	icon_state = "computer"
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 300
 	active_power_usage = 300
-	var/processing = 0
+	//blocks_emissive = FALSE
+	var/processing = FALSE
 
 	var/icon_keyboard = "generic_key"
 	var/icon_screen = "generic"
@@ -17,19 +18,16 @@
 
 	clicksound = "keyboard"
 
-/obj/machinery/computer/New()
+/obj/machinery/computer/Initialize(mapload)
 	overlay_layer = layer
-	..()
-
-/obj/machinery/computer/Initialize()
 	. = ..()
 	power_change()
 	update_icon()
 
-/obj/machinery/computer/process()
-	if(stat & (NOPOWER|BROKEN))
-		return 0
-	return 1
+/obj/machinery/computer/process(delta_time)
+	if(machine_stat & (NOPOWER|BROKEN))
+		return FALSE
+	return TRUE
 
 /obj/machinery/computer/emp_act(severity)
 	if(prob(20/severity)) set_broken()
@@ -66,34 +64,51 @@
 	ex_act(2)
 
 /obj/machinery/computer/update_icon()
-	overlays.Cut()
-	if(stat & NOPOWER)
-		set_light(0)
-		if(icon_keyboard)
-			overlays += image(icon,"[icon_keyboard]_off", overlay_layer)
-		return
-	else
-		set_light(light_range_on, light_power_on)
+	cut_overlays()
 
-	if(stat & BROKEN)
-		overlays += image(icon,"[icon_state]_broken", overlay_layer)
-	else
-		overlays += image(icon,icon_screen, overlay_layer)
+	. = list()
+
+	// Connecty //TODO: Use TG Smoothing.
+	if(initial(icon_state) == "computer")
+		var/append_string = ""
+		var/left = turn(dir, 90)
+		var/right = turn(dir, -90)
+		var/turf/L = get_step(src, left)
+		var/turf/R = get_step(src, right)
+		var/obj/machinery/computer/LC = locate() in L
+		var/obj/machinery/computer/RC = locate() in R
+		if(LC && LC.dir == dir && initial(LC.icon_state) == "computer")
+			append_string += "_L"
+		if(RC && RC.dir == dir && initial(RC.icon_state) == "computer")
+			append_string += "_R"
+		icon_state = "computer[append_string]"
 
 	if(icon_keyboard)
-		overlays += image(icon, icon_keyboard, overlay_layer)
+		if(machine_stat & NOPOWER)
+			playsound(src, 'sound/machines/terminal_off.ogg', 50, 1)
+			return add_overlay("[icon_keyboard]_off")
+		. += icon_keyboard
+
+	// This whole block lets screens ignore lighting and be visible even in the darkest room
+	var/overlay_state = icon_screen
+	if(machine_stat & BROKEN)
+		overlay_state = "[icon_state]_broken"
+	. += mutable_appearance(icon, overlay_state)
+	//. += emissive_appearance(icon, overlay_state)
+	playsound(src, 'sound/machines/terminal_on.ogg', 50, 1)
+
+	add_overlay(.)
 
 /obj/machinery/computer/power_change()
 	..()
 	update_icon()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		set_light(0)
 	else
 		set_light(light_range_on, light_power_on)
 
-
 /obj/machinery/computer/proc/set_broken()
-	stat |= BROKEN
+	machine_stat |= BROKEN
 	update_icon()
 
 /obj/machinery/computer/proc/decode(text)
@@ -101,7 +116,7 @@
 	text = replacetext(text, "\n", "<BR>")
 	return text
 
-/obj/machinery/computer/attackby(I as obj, user as mob)
+/obj/machinery/computer/attackby(obj/item/I, mob/user)
 	if(computer_deconstruction_screwdriver(user, I))
 		return
 	else

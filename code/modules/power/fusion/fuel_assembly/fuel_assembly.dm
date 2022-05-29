@@ -12,12 +12,12 @@
 	var/radioactivity = 0
 	var/const/initial_amount = 300
 
-/obj/item/fuel_assembly/New(var/newloc, var/_material, var/_colour)
+/obj/item/fuel_assembly/Initialize(mapload, _material, _colour)
+	. = ..()
 	fuel_type = _material
 	fuel_colour = _colour
-	..(newloc)
 
-/obj/item/fuel_assembly/Initialize()
+/obj/item/fuel_assembly/Initialize(mapload)
 	. = ..()
 	var/datum/material/material = get_material_by_name(fuel_type)
 	if(istype(material))
@@ -41,7 +41,7 @@
 	overlays += list(I, image(icon, "fuel_assembly_bracket"))
 	rod_quantities[fuel_type] = initial_amount
 
-/obj/item/fuel_assembly/process()
+/obj/item/fuel_assembly/process(delta_time)
 	if(!radioactivity)
 		return PROCESS_KILL
 
@@ -53,14 +53,14 @@
 	return ..()
 
 // Mapper shorthand.
-/obj/item/fuel_assembly/deuterium/New(var/newloc)
-	..(newloc, "deuterium")
+/obj/item/fuel_assembly/deuterium/Initialize(mapload, material_key)
+	return ..(mapload, "deuterium")
 
-/obj/item/fuel_assembly/tritium/New(var/newloc)
-	..(newloc, "tritium")
+/obj/item/fuel_assembly/tritium/Initialize(mapload, material_key)
+	return ..(mapload, "tritium")
 
-/obj/item/fuel_assembly/phoron/New(var/newloc)
-	..(newloc, "phoron")
+/obj/item/fuel_assembly/phoron/Initialize(mapload, material_key)
+	return ..(mapload, "phoron")
 
-/obj/item/fuel_assembly/supermatter/New(var/newloc)
-	..(newloc, "supermatter")
+/obj/item/fuel_assembly/supermatter/Initialize(mapload, material_key)
+	return ..(mapload, "supermatter")

@@ -64,62 +64,18 @@
 	name = "Distilling Biomass"
 	id = "distill_biomass"
 	result = "biomass"
-	required_reagents = list("blood" = 1, "sugar" = 1, "phoron" = 0.5)
+	required_reagents = list("blood" = 1, "sugar" = 1, MAT_PHORON = 0.5)
 	result_amount = 1 // 40 units per sheet, requires actually using the machine, and having blood to spare.
 
 	temp_range = list(T20C + 80, T20C + 130)
 	temp_shift = -2
 
 // Medicinal
-/datum/chemical_reaction/distilling/inaprovalaze
-	name = "Distilling Inaprovalaze"
-	id = "distill_inaprovalaze"
-	result = "inaprovalaze"
-	required_reagents = list("inaprovaline" = 2, "foaming_agent" = 1)
-	result_amount = 2
-
-	reaction_rate = HALF_LIFE(10)
-
-	temp_range = list(T0C + 100, T0C + 120)
-
-/datum/chemical_reaction/distilling/bicaridaze
-	name = "Distilling Bicaridaze"
-	id = "distill_bicaridaze"
-	result = "bicaridaze"
-	required_reagents = list("bicaridine" = 2, "foaming_agent" = 1)
-	result_amount = 2
-
-	reaction_rate = HALF_LIFE(10)
-
-	temp_range = list(T0C + 110, T0C + 130)
-
-/datum/chemical_reaction/distilling/dermalaze
-	name = "Distilling Dermalaze"
-	id = "distill_dermalaze"
-	result = "dermalaze"
-	required_reagents = list("dermaline" = 2, "foaming_agent" = 1)
-	result_amount = 2
-
-	reaction_rate = HALF_LIFE(10)
-
-	temp_range = list(T0C + 115, T0C + 130)
-
 /datum/chemical_reaction/distilling/spacomycaze
 	name = "Distilling Spacomycaze"
 	id = "distill_spacomycaze"
 	result = "spacomycaze"
 	required_reagents = list("paracetamol" = 1, "spaceacillin" = 1, "foaming_agent" = 1)
-	result_amount = 2
-
-	reaction_rate = HALF_LIFE(10)
-
-	temp_range = list(T0C + 100, T0C + 120)
-
-/datum/chemical_reaction/distilling/tricorlidaze
-	name = "Distilling Tricorlidaze"
-	id = "distill_tricorlidaze"
-	result = "tricorlidaze"
-	required_reagents = list("tricordrazine" = 1, "sterilizine" = 1, "foaming_agent" = 1)
 	result_amount = 2
 
 	reaction_rate = HALF_LIFE(10)
@@ -156,7 +112,7 @@
 	name = "Distilling Brute Juice"
 	id = "distill_brutejuice"
 	result = "berserkmed"
-	required_reagents = list("biomass" = 1, "hyperzine" = 3, "synaptizine" = 2, "phoron" = 1)
+	required_reagents = list("biomass" = 1, "hyperzine" = 3, "synaptizine" = 2, MAT_PHORON = 1)
 	result_amount = 3
 
 	temp_range = list(T0C + 600, T0C + 700)
@@ -209,7 +165,7 @@
 	required_reagents = list("lichpowder" = 1, "cryoxadone" = 1, "carthatoline" = 1)
 	result_amount = 2
 
-	catalysts = list("phoron" = 5)
+	catalysts = list(MAT_PHORON = 5)
 
 	reaction_rate = HALF_LIFE(20)
 

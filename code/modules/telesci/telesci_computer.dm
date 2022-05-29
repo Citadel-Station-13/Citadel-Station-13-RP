@@ -37,10 +37,10 @@
 	return ..()
 
 /obj/machinery/computer/telescience/examine(mob/user)
-	..()
-	to_chat(user, "There are [crystals.len ? crystals.len : "no"] bluespace crystal\s in the crystal slots.")
+	. = ..()
+	. += "There are [crystals.len ? crystals.len : "no"] bluespace crystal\s in the crystal slots."
 
-/obj/machinery/computer/telescience/Initialize()
+/obj/machinery/computer/telescience/Initialize(mapload)
 	. = ..()
 	recalibrate()
 	for(var/i = 1; i <= starting_crystals; i++)
@@ -49,26 +49,26 @@
 /obj/machinery/computer/telescience/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/ore/bluespace_crystal))
 		if(crystals.len >= max_crystals)
-			to_chat(user, "<span class='warning'>There are not enough crystal slots.</span>")
+			to_chat(user, SPAN_WARNING("There are not enough crystal slots."))
 			return
 		if(!user.unEquip(W))
 			return
 		crystals += W
 		W.forceMove(src)
-		user.visible_message("[user] inserts [W] into \the [src]'s crystal slot.", "<span class='notice'>You insert [W] into \the [src]'s crystal slot.</span>")
+		user.visible_message("[user] inserts [W] into \the [src]'s crystal slot.", SPAN_NOTICE("You insert [W] into \the [src]'s crystal slot."))
 		updateDialog()
 	else if(istype(W, /obj/item/gps))
 		if(!inserted_gps)
 			inserted_gps = W
 			user.unEquip(W)
 			W.forceMove(src)
-			user.visible_message("[user] inserts [W] into \the [src]'s GPS device slot.", "<span class='notice'>You insert [W] into \the [src]'s GPS device slot.</span>")
+			user.visible_message("[user] inserts [W] into \the [src]'s GPS device slot.", SPAN_NOTICE("You insert [W] into \the [src]'s GPS device slot."))
 	else if(istype(W, /obj/item/multitool))
 		var/obj/item/multitool/M = W
 		if(M.connectable && istype(M.connectable, /obj/machinery/telepad))
 			telepad = M.connectable
 			M.connectable = null
-			to_chat(user, "<span class='caution'>You upload the data from the [W.name]'s buffer.</span>")
+			to_chat(user, SPAN_CAUTION("You upload the data from the [W.name]'s buffer."))
 	else
 		return ..()
 
@@ -81,14 +81,14 @@
 /obj/machinery/computer/telescience/attack_hand(mob/user)
 	if(..())
 		return
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/computer/telescience/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/telescience/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_machine(src)
 
 	var/data[0]
 	if(!telepad)
-		in_use = 0     //Yeah so if you deconstruct teleporter while its in the process of shooting it wont disable the console
+		in_use = 0 //Yeah so if you deconstruct teleporter while its in the process of shooting it wont disable the console
 		data["noTelepad"] = 1
 	else
 		data["insertedGps"] = inserted_gps
@@ -139,9 +139,9 @@
 			return
 		if(86 to 90)
 			// Irradiate everyone in telescience!
-			for(var/obj/machinery/telepad/E in machines)
+			for(var/obj/machinery/telepad/E in GLOB.machines)
 				var/L = get_turf(E)
-				sparks(target = L)
+				sparks()
 				for(var/mob/living/carbon/human/M in viewers(L, null))
 					M.apply_effect((rand(10, 20)), IRRADIATE, 0)
 					to_chat(M, "<span class='warning'>You feel strange.</span>")
@@ -178,8 +178,8 @@
 		var/datum/projectile_data/proj_data = simple_projectile_trajectory(telepad.x, telepad.y, trueRotation, trueDistance)
 		last_tele_data = proj_data
 
-		var/trueX = proj_data.dest_x
-		var/trueY = proj_data.dest_y
+		var/trueX = round(proj_data.dest_x, 1)
+		var/trueY = round(proj_data.dest_y, 1)
 		if(trueX < 1 || trueX > world.maxx || trueY < 1 || trueY > world.maxy)
 			telefail()
 			temp_msg = "ERROR! Target coordinate is outside known time and space!"
@@ -214,7 +214,7 @@
 			S.set_up(5, 1, get_turf(telepad))
 			S.start()
 
-			if(!A || (A.flags & BLUE_SHIELDED))
+			if(!A || (A.area_flags & AF_BLUE_SHIELDED))
 				telefail()
 				temp_msg = "ERROR!<BR>Target is shielded from bluespace intersection!"
 				return

@@ -8,7 +8,8 @@
 	var/falling_type = /obj/item/reagent_containers/food/snacks/sliceable/pizza/margherita
 	var/crushing = TRUE
 
-/obj/effect/falling_effect/New()
+/obj/effect/falling_effect/Initialize(mapload)
+	. = ..()
 	new falling_type(src)
 	var/atom/movable/dropped = pick(contents) // Stupid, but allows to get spawn result without efforts if it is other type(Or if it was randomly generated).
 	dropped.loc = get_turf(src)
@@ -20,9 +21,8 @@
 	dropped.density = FALSE
 	dropped.opacity = FALSE
 	animate(dropped, pixel_y = initial_y, pixel_x = initial_x , time = 7)
-	spawn(7)
-		dropped.end_fall(crushing)
-	qdel(src)
+	addtimer(CALLBACK(dropped, /atom/movable.proc/end_fall), 7)
+	return INITIALIZE_HINT_QDEL
 
 /atom/movable/proc/end_fall(var/crushing = FALSE)
 	if(crushing)

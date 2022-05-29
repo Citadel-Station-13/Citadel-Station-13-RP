@@ -23,10 +23,10 @@
 	icon_state = "large"
 	anchored = 1
 
-/obj/effect/meteor_falling/New()
-	..()
+/obj/effect/meteor_falling/Initialize(mapload)
+	. = ..()
 	SpinAnimation()
-	meteor_fall()
+	INVOKE_ASYNC(src, .proc/meteor_fall)
 
 /obj/effect/meteor_falling/proc/meteor_fall()
 	var/turf/current = get_turf(src)
@@ -55,7 +55,7 @@
 			impacted = P
 			break
 	if(impacted)
-		for(var/mob/living/L in mob_list)
+		for(var/mob/living/L in GLOB.mob_list)
 			if(!istype(L))
 				continue
 			var/turf/mob_turf = get_turf(L)
@@ -69,7 +69,7 @@
 				to_chat(L, "<span class='danger'>The ground lurches beneath you!</span>")
 				shake_camera(L, 6, 1)
 				if(!L.ear_deaf)
-					L << 'sound/effects/explosionfar.ogg'
+					SEND_SOUND(L, sound('sound/soundbytes/effects/explosion/explosionfar.ogg'))
 	qdel(src)
 
 /obj/structure/meteorite
@@ -80,8 +80,8 @@
 	density = 1
 	climbable = 1
 
-/obj/structure/meteorite/New()
-	..()
+/obj/structure/meteorite/Initialize(mapload)
+	. = ..()
 	icon = turn(icon, 90)
 	switch(rand(1,100))
 		if(1 to 30)

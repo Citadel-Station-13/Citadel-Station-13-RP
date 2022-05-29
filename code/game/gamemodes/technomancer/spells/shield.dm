@@ -18,8 +18,8 @@
 	var/damage_to_energy_multiplier = 30.0 //Determines how much energy to charge for blocking, e.g. 20 damage attack = 600 energy cost
 	var/datum/effect_system/spark_spread/spark_system = null
 
-/obj/item/spell/shield/New()
-	..()
+/obj/item/spell/shield/Initialize(mapload)
+	. = ..()
 	set_light(3, 2, l_color = "#006AFF")
 	spark_system = new /datum/effect_system/spark_spread()
 	spark_system.set_up(5, 0, src)
@@ -51,7 +51,7 @@
 		return 0
 
 	//block as long as they are not directly behind us
-	var/bad_arc = reverse_direction(user.dir) //arc of directions from which we cannot block
+	var/bad_arc = REVERSE_DIR(user.dir) //arc of directions from which we cannot block
 	if(check_shield_arc(user, bad_arc, damage_source, attacker))
 		user.visible_message("<span class='danger'>\The [user]'s [src] blocks [attack_text]!</span>")
 		spark_system.start()

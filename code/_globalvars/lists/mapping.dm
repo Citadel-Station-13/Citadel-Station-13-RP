@@ -31,18 +31,23 @@ GLOBAL_LIST_INIT(cww_dir, list( // cww_dir[dir] = counter-clockwise rotation of 
 	48, 56, 52, 60, 49, 57, 53, 61, 50, 58, 54, 62, 51, 59, 55, 63  // UP+DOWN - Same as first line but +48
 ))
 
+/// used by jump-to-area etc. Updated by area/updateName()
+GLOBAL_LIST_EMPTY(sortedAreas)
+/// An association from typepath to area instance. Only includes areas with `unique` set.
+GLOBAL_LIST_EMPTY_TYPED(areas_by_type, /area)
+
 GLOBAL_LIST_INIT(ore_types, list(
-		"hematite" = /obj/item/ore/iron,
-		"uranium" = /obj/item/ore/uranium,
-		"gold" = /obj/item/ore/gold,
-		"silver" = /obj/item/ore/silver,
-		"diamond" = /obj/item/ore/diamond,
-		"phoron" = /obj/item/ore/phoron,
-		"osmium" = /obj/item/ore/osmium,
+		MAT_HEMATITE = /obj/item/ore/iron,
+		MAT_URANIUM = /obj/item/ore/uranium,
+		MAT_GOLD = /obj/item/ore/gold,
+		MAT_SILVER = /obj/item/ore/silver,
+		MAT_DIAMOND = /obj/item/ore/diamond,
+		MAT_PHORON = /obj/item/ore/phoron,
+		MAT_OSMIUM = /obj/item/ore/osmium,
 		"hydrogen" = /obj/item/ore/hydrogen,
 		"silicates" = /obj/item/ore/glass,
-		"carbon" = /obj/item/ore/coal,
-		"verdantium" = /obj/item/ore/verdantium,
-		"marble" = /obj/item/ore/marble,
-		"lead" = /obj/item/ore/lead
+		MAT_CARBON = /obj/item/ore/coal,
+		MAT_VERDANTIUM = /obj/item/ore/verdantium,
+		MAT_MARBLE = /obj/item/ore/marble,
+		MAT_LEAD = /obj/item/ore/lead
 	))

@@ -31,6 +31,7 @@
 	melee_damage_lower = 5
 	melee_damage_upper = 10 //makes it so 4 max dmg hits don't instakill you.
 	grab_resist = 100
+	taser_kill = 0 //This Mechanical Dog should probably not be harmed by tasers
 
 	response_help = "pets the"
 	response_disarm = "bops the"
@@ -132,3 +133,10 @@
 /datum/ai_holder/simple_mob/melee/evasive/corrupthound
 	violent_breakthrough = TRUE
 	can_breakthrough = TRUE
+
+//Lavaland Hound
+/mob/living/simple_mob/vore/aggressive/corrupthound/surt
+	name = "warped corrupt hound"
+	desc = "A remnant of a forgotten conflict. The harsh atmosphere has warped the plating on this hound. The slightest motion summons shrieks and squeals from its tortured machinery."
+
+	heat_resist = 1

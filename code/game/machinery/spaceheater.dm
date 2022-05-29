@@ -1,18 +1,19 @@
 /obj/machinery/space_heater
-	anchored = 0
-	density = 1
-	icon = 'icons/obj/atmos.dmi'
-	icon_state = "sheater0"
 	name = "space heater"
 	desc = "Made by Space Amish using traditional space techniques, this heater is guaranteed not to set the station on fire."
+	icon = 'icons/obj/atmos.dmi'
+	icon_state = "sheater0"
+	anchored = FALSE
+	density = TRUE
+
 	var/obj/item/cell/cell
 	var/cell_type = /obj/item/cell/high
-	var/on = 0
-	var/set_temperature = T0C + 20	//K
+	var/on = FALSE
+	var/set_temperature = T0C + 20 //K
 	var/heating_power = 40000
 
-/obj/machinery/space_heater/New()
-	..()
+/obj/machinery/space_heater/Initialize(mapload, newdir)
+	. = ..()
 	if(cell_type)
 		cell = new cell_type(src)
 	update_icon()
@@ -28,22 +29,18 @@
 		set_light(0)
 
 /obj/machinery/space_heater/examine(mob/user)
-	..(user)
-
-	to_chat(user, "The heater is [on ? "on" : "off"] and the hatch is [panel_open ? "open" : "closed"].")
+	. = ..()
+	. += "The heater is [on ? "on" : "off"] and the hatch is [panel_open ? "open" : "closed"]."
 	if(panel_open)
-		to_chat(user, "The power cell is [cell ? "installed" : "missing"].")
+		. += "The power cell is [cell ? "installed" : "missing"]."
 	else
-		to_chat(user, "The charge meter reads [cell ? round(cell.percent(),1) : 0]%")
-	return
+		. += "The charge meter reads [cell ? round(cell.percent(),1) : 0]%"
 
 /obj/machinery/space_heater/powered()
-	if(cell && cell.charge)
-		return 1
-	return 0
+	return !!cell?.charge
 
 /obj/machinery/space_heater/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		..(severity)
 		return
 	if(cell)
@@ -83,11 +80,9 @@
 	return
 
 /obj/machinery/space_heater/attack_hand(mob/user as mob)
-	add_fingerprint(user)
 	interact(user)
 
 /obj/machinery/space_heater/interact(mob/user as mob)
-
 	if(panel_open)
 
 		var/dat
@@ -113,7 +108,6 @@
 		on = !on
 		user.visible_message("<span class='notice'>[user] switches [on ? "on" : "off"] the [src].</span>","<span class='notice'>You switch [on ? "on" : "off"] the [src].</span>")
 		update_icon()
-	return
 
 
 /obj/machinery/space_heater/Topic(href, href_list)
@@ -157,7 +151,7 @@
 		usr.unset_machine()
 	return
 
-/obj/machinery/space_heater/process()
+/obj/machinery/space_heater/process(delta_time)
 	if(on)
 		if(cell && cell.charge)
 			var/datum/gas_mixture/env = loc.return_air()
@@ -168,10 +162,10 @@
 				if(removed)
 					var/heat_transfer = removed.get_thermal_energy_change(set_temperature)
 					if(heat_transfer > 0)	//heating air
-						heat_transfer = min(heat_transfer , heating_power) //limit by the power rating of the heater
+						heat_transfer = min(heat_transfer, heating_power) //limit by the power rating of the heater
 
 						removed.add_thermal_energy(heat_transfer)
-						cell.use(heat_transfer*CELLRATE)
+						cell.use(DYNAMIC_W_TO_CELL_UNITS(heat_transfer * SPACE_HEATER_CHEAT_FACTOR, 1))
 					else	//cooling air
 						heat_transfer = abs(heat_transfer)
 
@@ -182,10 +176,172 @@
 						heat_transfer = removed.add_thermal_energy(-heat_transfer)	//get the actual heat transfer
 
 						var/power_used = abs(heat_transfer)/cop
-						cell.use(power_used*CELLRATE)
+						cell.use(DYNAMIC_W_TO_CELL_UNITS(power_used * SPACE_HEATER_CHEAT_FACTOR, 1))
 
 				env.merge(removed)
 		else
 			on = 0
 			power_change()
 			update_icon()
+
+#define MODE_IDLE 0
+#define MODE_HEATING 1
+#define MODE_COOLING 2
+
+/obj/machinery/power/thermoregulator
+	name = "thermal regulator"
+	desc = "A massive machine that can either add or remove thermal energy from the surrounding environment. Must be secured onto a powered wire node to function."
+	icon = 'icons/obj/machines/thermoregulator_vr.dmi'
+	icon_state = "lasergen"
+	density = 1
+	anchored = 0
+
+	use_power = USE_POWER_OFF //is powered directly from cables
+	active_power_usage = 150 KILOWATTS  //BIG POWER
+	idle_power_usage = 500
+
+	circuit = /obj/item/circuitboard/thermoregulator
+
+	var/on = 0
+	var/target_temp = T20C
+	var/mode = MODE_IDLE
+
+/obj/machinery/power/thermoregulator/Initialize(mapload)
+	.=..()
+	default_apply_parts()
+
+/obj/machinery/power/thermoregulator/examine(mob/user)
+	. = ..()
+	. += "<span class = 'notice'>There is a small display that reads [target_temp]K.</span>"
+
+/obj/machinery/power/thermoregulator/attackby(obj/item/I, mob/user)
+	if(I.is_screwdriver())
+		if(default_deconstruction_screwdriver(user,I))
+			return
+	if(I.is_crowbar())
+		if(default_deconstruction_crowbar(user,I))
+			return
+	if(I.is_wrench())
+		anchored = !anchored
+		visible_message("<span class='notice'>\The [src] has been [anchored ? "bolted to the floor" : "unbolted from the floor"] by [user].</span>")
+		playsound(src, I.usesound, 75, 1)
+		if(anchored)
+			connect_to_network()
+		else
+			disconnect_from_network()
+			turn_off()
+		return
+	if(istype(I, /obj/item/multitool))
+		var/new_temp = input("Input a new target temperature, in degrees C.","Target Temperature", 20) as num
+		if(!Adjacent(user) || user.incapacitated())
+			return
+		new_temp = convert_c2k(new_temp)
+		target_temp = max(new_temp, TCMB)
+		return
+	..()
+
+/obj/machinery/power/thermoregulator/attack_hand(mob/user)
+	add_fingerprint(user)
+	interact(user)
+
+/obj/machinery/power/thermoregulator/interact(mob/user)
+	if(!anchored)
+		return
+	on = !on
+	user.visible_message("<span class='notice'>[user] [on ? "activates" : "deactivates"] \the [src].</span>","<span class='notice'>You [on ? "activate" : "deactivate"] \the [src].</span>")
+	if(!on)
+		change_mode(MODE_IDLE)
+	update_icon()
+
+/obj/machinery/power/thermoregulator/process()
+	if(!on)
+		return
+	if(!powernet)
+		turn_off()
+		return
+
+	if((draw_power(idle_power_usage * 0.001) * 1000) < idle_power_usage)
+		visible_message("<span class='notice'>\The [src] shuts down.</span>")
+		turn_off()
+		return
+
+	var/datum/gas_mixture/env = loc.return_air()
+	if(!env || abs(env.temperature - target_temp) < 1)
+		change_mode(MODE_IDLE)
+		return
+
+	var/datum/gas_mixture/removed = env.remove_ratio(0.99)
+	if(!removed)
+		change_mode(MODE_IDLE)
+		return
+
+	var/heat_transfer = removed.get_thermal_energy_change(target_temp)
+	var/power_avail
+	if(heat_transfer == 0) //just in case
+		change_mode(MODE_IDLE)
+	else if(heat_transfer > 0)
+		change_mode(MODE_HEATING)
+		power_avail = draw_power(min(heat_transfer, active_power_usage) * 0.001) * 1000
+		removed.add_thermal_energy(min(power_avail * THERMOREGULATOR_CHEAT_FACTOR, heat_transfer))
+	else
+		change_mode(MODE_COOLING)
+		heat_transfer = abs(heat_transfer)
+		var/cop = removed.temperature / TN60C
+		var/actual_heat_transfer = heat_transfer
+		heat_transfer = min(heat_transfer, active_power_usage * cop)
+		power_avail = draw_power((heat_transfer/cop) * 0.001) * 1000
+		removed.add_thermal_energy(-min(power_avail * THERMOREGULATOR_CHEAT_FACTOR * cop, actual_heat_transfer))
+	env.merge(removed)
+
+/obj/machinery/power/thermoregulator/update_icon()
+	overlays.Cut()
+	if(on)
+		overlays += "lasergen-on"
+		switch(mode)
+			if(MODE_HEATING)
+				overlays += "lasergen-heat"
+			if(MODE_COOLING)
+				overlays += "lasergen-cool"
+
+/obj/machinery/power/thermoregulator/proc/turn_off()
+	on = 0
+	change_mode(MODE_IDLE)
+	update_icon()
+
+/obj/machinery/power/thermoregulator/proc/change_mode(new_mode = MODE_IDLE)
+	if(mode == new_mode)
+		return
+	mode = new_mode
+	update_icon()
+
+/obj/machinery/power/thermoregulator/emp_act(severity)
+	if(!on)
+		on = 1
+	target_temp += rand(0, 1000)
+	update_icon()
+	..(severity)
+
+/obj/machinery/power/thermoregulator/overload(var/obj/machinery/power/source)
+	if(!anchored || !powernet)
+		return
+	// 1.5 MW
+	var/power_avail = draw_power(1500)
+	var/datum/gas_mixture/env = loc.return_air()
+	if(env)
+		var/datum/gas_mixture/removed = env.remove_ratio(0.99)
+		if(removed)
+			// OH BOY!
+			removed.add_thermal_energy(power_avail * 1000 * THERMOREGULATOR_CHEAT_FACTOR)
+			env.merge(removed)
+	var/turf/T = get_turf(src)
+	new /obj/effect/decal/cleanable/liquid_fuel(T, 5)
+	T.assume_gas(/datum/gas/volatile_fuel, 5, T20C)
+	T.hotspot_expose(700,400)
+	var/datum/effect_system/spark_spread/s = new
+	s.set_up(5, 0, T)
+	s.start()
+	visible_message("<span class='warning'>\The [src] bursts into flame!</span>")
+
+#undef MODE_IDLE
+#undef MODE_HEATING
+#undef MODE_COOLING

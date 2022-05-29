@@ -10,11 +10,10 @@
 	var/deploying
 	var/deployed
 
-/obj/structure/droppod_door/New(var/newloc, var/autoopen)
-	..(newloc)
+/obj/structure/droppod_door/Initialize(mapload, autoopen = FALSE)
+	. = ..()
 	if(autoopen)
-		spawn(100)
-			deploy()
+		addtimer(CALLBACK(src, .proc/deploy), 10 SECONDS)
 
 /obj/structure/droppod_door/attack_ai(var/mob/user)
 	if(!user.Adjacent(src))
@@ -54,11 +53,11 @@
 
 	// Destroy turf contents.
 	for(var/obj/O in origin)
-		if(!O.simulated)
+		if((O.flags & AF_ABSTRACT))
 			continue
 		qdel(O) //crunch
 	for(var/obj/O in T)
-		if(!O.simulated)
+		if((O.flags & AF_ABSTRACT))
 			continue
 		qdel(O) //crunch
 

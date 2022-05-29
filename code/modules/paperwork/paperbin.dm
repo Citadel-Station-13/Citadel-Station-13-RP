@@ -15,6 +15,9 @@
 	layer = OBJ_LAYER - 0.1
 	var/amount = 30					//How much paper is in the bin.
 	var/list/papers = new/list()	//List of papers put in the bin for reference.
+	drop_sound = 'sound/items/drop/cardboardbox.ogg'
+	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
+
 
 
 /obj/item/paper_bin/MouseDrop(mob/user as mob)
@@ -93,11 +96,12 @@
 
 
 /obj/item/paper_bin/examine(mob/user)
+	. = ..()
 	if(get_dist(src, user) <= 1)
 		if(amount)
-			to_chat(user, "<span class='notice'>There " + (amount > 1 ? "are [amount] papers" : "is one paper") + " in the bin.</span>")
+			. += "<span class='notice'>There " + (amount > 1 ? "are [amount] papers" : "is one paper") + " in the bin.</span>"
 		else
-			to_chat(user, "<span class='notice'>There are no papers in the bin.</span>")
+			. += "<span class='notice'>There are no papers in the bin.</span>"
 	return
 
 
@@ -106,3 +110,14 @@
 		icon_state = "paper_bin0"
 	else
 		icon_state = "paper_bin1"
+
+/obj/item/paper_bin/bundlenatural
+	name = "natural paper bundle"
+	desc = "A bundle of paper created using traditional methods."
+	icon_state = "paper_bundle"
+	papers = /obj/item/paper/natural
+
+/obj/item/paper_bin/bundlenatural/attack_hand(mob/user)
+	if(amount < 1)
+		qdel(src)
+	return ..()

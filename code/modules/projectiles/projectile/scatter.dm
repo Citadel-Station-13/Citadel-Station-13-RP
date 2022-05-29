@@ -28,13 +28,12 @@
 		)
 
 /obj/item/projectile/scatter/laser
-	damage = 40
-
-	submunition_spread_max = 60
-	submunition_spread_min = 30
+	submunition_spread_max = 30
+	spread_submunition_damage = FALSE
+	submunition_constant_spread = TRUE
 
 	submunitions = list(
-		/obj/item/projectile/beam = 4
+		/obj/item/projectile/beam/blaster/pellet = 6
 		)
 
 /obj/item/projectile/scatter/laser/weak
@@ -66,14 +65,12 @@
 		/obj/item/projectile/beam/heavylaser = 3
 		)
 
-
 /obj/item/projectile/scatter/laser/heavylaser/cannon
 	damage = 80
 	armor_penetration = 50
 	submunitions = list(
 		/obj/item/projectile/beam/heavylaser/cannon = 2
 		)
-
 
 /obj/item/projectile/scatter/stun
 	submunition_spread_max = 70
@@ -98,10 +95,10 @@
 	agony = 55
 
 /obj/item/projectile/scatter/ion
-	damage = 20
+	damage = 0
 
 	submunition_spread_max = 60
-	submunition_spread_min = 20
+	submunition_constant_spread = TRUE
 
 	submunitions = list(
 		/obj/item/projectile/bullet/shotgun/ion = 3

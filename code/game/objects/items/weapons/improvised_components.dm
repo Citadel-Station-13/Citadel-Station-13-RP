@@ -62,6 +62,9 @@
 	else if(I.is_wirecutter())
 		finished = new /obj/item/melee/baton/cattleprod(get_turf(user))
 		to_chat(user, "<span class='notice'>You fasten the wirecutters to the top of the rod with the cable, prongs outward.</span>")
+	else if(istype(I, /obj/item/weldingtool/mini))
+		finished = new /obj/item/weldingtool/welder_spear(get_turf(user))
+		to_chat(user, "<span class='notice'>You fasten the mini welder to the top of the rod with the cable, nozzle outward.</span>")
 	if(finished)
 		user.drop_from_inventory(src)
 		user.drop_from_inventory(I)
@@ -140,7 +143,7 @@
 	if(istype(thing, /obj/item/stack/material) && construction_stage == 5)
 		var/obj/item/stack/material/reinforcing = thing
 		var/datum/material/reinforcing_with = reinforcing.get_material()
-		if(reinforcing_with.name == DEFAULT_WALL_MATERIAL) // Steel
+		if(reinforcing_with.name == MAT_STEEL) // Steel
 			if(reinforcing.get_amount() < 3)
 				to_chat(user, "<span class='warning'>You need at least 3 [reinforcing.singular_name]\s for this task.</span>")
 				return
@@ -187,13 +190,20 @@
 	icon_state = "hammer_construction_[construction_stage]"
 
 /obj/item/material/hammer_head/examine(var/mob/user)
-	. = ..(user,2)
+	. = ..()
 	if(.)
-		switch(construction_stage)
-			if(1) to_chat(user, "<span class='notice'>It has a slot in the base for a metal rod.</span>")
-			if(2) to_chat(user, "<span class='notice'>It has a bunch of rods sticking out of the hole. Consider welding it.</span>")
-			if(3) to_chat(user, "<span class='notice'>It has a short rough metal shaft sticking to it, quite short, needs more rods.</span>")
-			if(4) to_chat(user, "<span class='notice'>It has a bunch of unwelded rods jammed into the shaft.</span>")
-			if(5) to_chat(user, "<span class='notice'>It has a pretty long rough metal shaft sticking out of it, it look hard to grab. Could make a handle with some steel...</span>")
-			if(6) to_chat(user, "<span class='notice'>It has a few unwelded sheets bent in half across the handle.</span>")
-			if(7) to_chat(user, "<span class='notice'>It has red hot, pliable looking metal sheets spread over the handle. What a sloppy job. Finish the job with a wrench.</span>")
+		switch(construction_stage) //BLACKMAJOR YOU KNOW YOU SHOULDN'T INLINE SWITCH STATEMENTS AAAA
+			if(1)
+				. += "<span class='notice'>It has a slot in the base for a metal rod.</span>"
+			if(2)
+				. += "<span class='notice'>It has a bunch of rods sticking out of the hole. Consider welding it.</span>"
+			if(3)
+				. += "<span class='notice'>It has a short rough metal shaft sticking to it, quite short, needs more rods.</span>"
+			if(4)
+				. += "<span class='notice'>It has a bunch of unwelded rods jammed into the shaft.</span>"
+			if(5)
+				. += "<span class='notice'>It has a pretty long rough metal shaft sticking out of it, it look hard to grab. Could make a handle with some steel...</span>"
+			if(6)
+				. += "<span class='notice'>It has a few unwelded sheets bent in half across the handle.</span>"
+			if(7)
+				. += "<span class='notice'>It has red hot, pliable looking metal sheets spread over the handle. What a sloppy job. Finish the job with a wrench.</span>"

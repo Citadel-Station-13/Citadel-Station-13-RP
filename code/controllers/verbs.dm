@@ -6,8 +6,10 @@
 	name = "Initializing..."
 	var/target
 
-/obj/effect/statclick/New(loc, text, target) //Don't port this to Initialize it's too critical
-	..()
+INITIALIZE_IMMEDIATE(/obj/effect/statclick)
+
+/obj/effect/statclick/Initialize(mapload, text, target) //Don't port this to Initialize it's too critical
+	. = ..()
 	name = text
 	src.target = target
 
@@ -53,12 +55,12 @@
 
 	message_admins("Admin [key_name_admin(usr)] has restarted the [controller] controller.")
 
-/client/proc/debug_antagonist_template(antag_type in all_antag_types)
+/client/proc/debug_antagonist_template(antag_type in GLOB.all_antag_types)
 	set category = "Debug"
 	set name = "Debug Antagonist"
 	set desc = "Debug an antagonist template."
 
-	var/datum/antagonist/antag = all_antag_types[antag_type]
+	var/datum/antagonist/antag = GLOB.all_antag_types[antag_type]
 	if(antag)
 		usr.client.debug_variables(antag)
 		message_admins("Admin [key_name_admin(usr)] is debugging the [antag.role_text] template.")
@@ -92,8 +94,7 @@
 	options["LEGACY: air_master"] = air_master
 	options["LEGACY: radio_controller"] = radio_controller
 	options["LEGACY: paiController"] = paiController
-	options["LEGACY: cameranet"] = cameranet
-	options["LEGACY: plant_controller"] = plant_controller
+	options["LEGACY: GLOB.cameranet"] = GLOB.cameranet
 
 	var/pick = input(mob, "Choose a controller to debug/view variables of.", "VV controller:") as null|anything in options
 	if(!pick)

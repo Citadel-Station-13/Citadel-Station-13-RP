@@ -5,7 +5,7 @@
 	id = "crayon_dust"
 	description = "Intensely coloured powder obtained by grinding crayons."
 	taste_description = "powdered wax"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#888888"
 	overdose = 5
 
@@ -54,7 +54,7 @@
 	id = "marker_ink"
 	description = "Intensely coloured ink used in markers."
 	taste_description = "extremely bitter"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#888888"
 	overdose = 5
 
@@ -108,7 +108,7 @@
 	id = "chalk_dust"
 	description = "Dusty powder obtained by grinding chalk."
 	taste_description = "powdered chalk"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#FFFFFF"
 	overdose = 5
 
@@ -132,7 +132,7 @@
 	id = "paint"
 	description = "This paint will stick to almost any object."
 	taste_description = "chalk"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#808080"
 	overdose = REAGENTS_OVERDOSE * 0.5
 	color_weight = 20
@@ -189,7 +189,7 @@
 	id = "adminordrazine"
 	description = "It's magic. We don't have to explain it."
 	taste_description = "bwoink"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
 	affects_dead = 1 //This can even heal dead people.
 	metabolism = 0.1
@@ -221,7 +221,7 @@
 	M.drowsyness = 0
 	M.stuttering = 0
 	M.SetConfused(0)
-	M.sleeping = 0
+	M.SetSleeping(0)
 	M.jitteriness = 0
 	M.radiation = 0
 	M.ExtinguishMob()
@@ -251,7 +251,7 @@
 	id = "gold"
 	description = "Gold is a dense, soft, shiny metal and the most malleable and ductile metal known."
 	taste_description = "metal"
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#F7C430"
 
 /datum/reagent/silver
@@ -259,7 +259,7 @@
 	id = "silver"
 	description = "A soft, white, lustrous transition metal, it has the highest electrical conductivity of any element and the highest thermal conductivity of any metal."
 	taste_description = "metal"
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#D0D0D0"
 
 /datum/reagent/uranium
@@ -267,7 +267,7 @@
 	id = "uranium"
 	description = "A silvery-white metallic chemical element in the actinide series, weakly radioactive."
 	taste_description = "metal"
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#B8B8C0"
 
 /datum/reagent/platinum
@@ -275,7 +275,7 @@
 	id = "platinum"
 	description = "Platinum is a dense, malleable, ductile, highly unreactive, precious, gray-white transition metal.  It is very resistant to corrosion."
 	taste_description = "metal"
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#777777"
 
 /datum/reagent/uranium/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
@@ -297,7 +297,7 @@
 	id = "adrenaline"
 	description = "Adrenaline is a hormone used as a drug to treat cardiac arrest and other cardiac dysrhythmias resulting in diminished or absent cardiac output."
 	taste_description = "bitterness"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
 	mrate_static = TRUE
 
@@ -336,7 +336,7 @@
 	description = "A caustic substance commonly used in fertilizer or household cleaners."
 	taste_description = "mordant"
 	taste_mult = 2
-	reagent_state = GAS
+	reagent_state = REAGENT_GAS
 	color = "#404030"
 
 /datum/reagent/ammonia/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -351,7 +351,7 @@
 	id = "diethylamine"
 	description = "A secondary amine, mildly corrosive."
 	taste_description = "iron"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#604030"
 
 /datum/reagent/diethylamine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -366,7 +366,7 @@
 	id = "fluorosurfactant"
 	description = "A perfluoronated sulfonic acid that forms a foam when mixed with water."
 	taste_description = "metal"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#9E6B38"
 
 /datum/reagent/foaming_agent // Metal foaming agent. This is lithium hydride. Add other recipes (e.g. LiH + H2O -> LiOH + H2) eventually.
@@ -374,7 +374,7 @@
 	id = "foaming_agent"
 	description = "A agent that yields metallic foam when mixed with light metal and a strong acid."
 	taste_description = "metal"
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#664B63"
 
 /datum/reagent/thermite
@@ -382,7 +382,7 @@
 	id = "thermite"
 	description = "Thermite produces an aluminothermic reaction known as a thermite reaction. Can be used to melt walls."
 	taste_description = "sweet tasting metal"
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#673910"
 	touch_met = 50
 
@@ -407,7 +407,7 @@
 	id = "cleaner"
 	description = "A compound used to clean things. Now with 50% more sodium hypochlorite!"
 	taste_description = "sourness"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#A5F0EE"
 	touch_met = 50
 
@@ -466,7 +466,7 @@
 	id = "lube"
 	description = "Lubricant is a substance introduced between two moving surfaces to reduce the friction and wear between them. giggity."
 	taste_description = "slime"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#009CA8"
 
 /datum/reagent/lube/touch_turf(var/turf/simulated/T)
@@ -480,7 +480,7 @@
 	id = "silicate"
 	description = "A compound that can be used to reinforce glass."
 	taste_description = "plastic"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#C7FFFF"
 
 /datum/reagent/silicate/touch_obj(var/obj/O)
@@ -495,7 +495,7 @@
 	id = "glycerol"
 	description = "Glycerol is a simple polyol compound. Glycerol is sweet-tasting and of low toxicity."
 	taste_description = "sweetness"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#808080"
 
 /datum/reagent/nitroglycerin
@@ -503,7 +503,7 @@
 	id = "nitroglycerin"
 	description = "Nitroglycerin is a heavy, colorless, oily, explosive liquid obtained by nitrating glycerol."
 	taste_description = "oil"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#808080"
 
 /datum/reagent/coolant
@@ -512,8 +512,25 @@
 	description = "Industrial cooling substance."
 	taste_description = "sourness"
 	taste_mult = 1.1
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
+	affects_robots = TRUE
+
+/datum/reagent/coolant/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(M.isSynthetic() && ishuman(M))
+		var/mob/living/carbon/human/H = M
+
+		var/datum/reagent/blood/coolant = H.get_blood(H.vessel)
+
+		if(coolant)
+			H.vessel.add_reagent("blood", removed, coolant.data)
+
+		else
+			H.vessel.add_reagent("blood", removed)
+			H.fixblood()
+
+	else
+		..()
 
 /datum/reagent/ultraglue
 	name = "Ultra Glue"
@@ -527,7 +544,7 @@
 	id = "woodpulp"
 	description = "A mass of wood fibers."
 	taste_description = "wood"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#B97A57"
 
 /datum/reagent/luminol
@@ -535,7 +552,7 @@
 	id = "luminol"
 	description = "A compound that interacts with blood on the molecular level."
 	taste_description = "metal"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#F2F3F4"
 
 /datum/reagent/luminol/touch_obj(var/obj/O)
@@ -549,7 +566,7 @@
 	id = "biomass"
 	description = "A slurry of compounds that contains the basic requirements for life."
 	taste_description = "salty meat"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#DF9FBF"
 
 // The opposite to healing nanites, exists to make unidentified hypos implied to have nanites not be 100% safe.
@@ -558,7 +575,7 @@
 	id = "defective_nanites"
 	description = "Miniature medical robots that are malfunctioning and cause bodily harm. Fortunately, they cannot self-replicate."
 	taste_description = "metal"
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#333333"
 	metabolism = REM * 3 // Broken nanomachines go a bit slower.
 	scannable = 1
@@ -574,5 +591,81 @@
 	id = "fishbait"
 	description = "A natural slurry that particularily appeals to fish."
 	taste_description = "earthy"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#62764E"
+
+////////////////////////////
+/// NW's shrinking serum ///
+////////////////////////////
+//Moved from Chemistry-Reagents-Medicine_vr.dm
+/datum/reagent/macrocillin
+	name = "Macrocillin"
+	id = "macrocillin"
+	description = "Glowing yellow liquid."
+	reagent_state = REAGENT_LIQUID
+	color = "#FFFF00" // rgb: 255, 255, 0
+	metabolism = 0.01
+	mrate_static = TRUE
+
+/datum/reagent/macrocillin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(M.size_multiplier < RESIZE_HUGE)
+		M.resize(M.size_multiplier+0.01)//Incrrease 1% per tick.
+	return
+
+/datum/reagent/microcillin
+	name = "Microcillin"
+	id = "microcillin"
+	description = "Murky purple liquid."
+	reagent_state = REAGENT_LIQUID
+	color = "#800080"
+	metabolism = 0.01
+	mrate_static = TRUE
+
+/datum/reagent/microcillin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(M.size_multiplier > RESIZE_TINY)
+		M.resize(M.size_multiplier-0.01) //Decrease 1% per tick.
+	return
+
+/datum/reagent/normalcillin
+	name = "Normalcillin"
+	id = "normalcillin"
+	description = "Translucent cyan liquid."
+	reagent_state = REAGENT_LIQUID
+	color = "#00FFFF"
+	metabolism = 0.01 //One unit will be just enough to bring someone from 200% to 100%
+	mrate_static = TRUE
+
+/datum/reagent/normalcillin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(M.size_multiplier > RESIZE_NORMAL)
+		M.resize(M.size_multiplier-0.01) //Decrease by 1% size per tick.
+	else if(M.size_multiplier < RESIZE_NORMAL)
+		M.resize(M.size_multiplier+0.01) //Increase 1% per tick.
+	return
+
+/datum/reagent/sizeoxadone
+	name = "Sizeoxadone"
+	id = "sizeoxadone"
+	description = "A volatile liquid used as a precursor to size-altering chemicals. Causes dizziness if taken unprocessed."
+	reagent_state = REAGENT_LIQUID
+	color = "#1E90FF"
+	overdose = REAGENTS_OVERDOSE
+
+/datum/reagent/sizeoxadone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	M.make_dizzy(1)
+	if(!M.confused) M.confused = 1
+	M.confused = max(M.confused, 20)
+	return
+
+/datum/reagent/oil
+	name = "Oil"
+	description = "Burns in a small smoky fire, mostly used to get Ash."
+	reagent_state = REAGENT_LIQUID
+	color = "#292929"
+	taste_description = "oil"
+
+/datum/reagent/ash
+	name = "Ash"
+	description = "Supposedly phoenixes rise from these, but you've never seen it."
+	reagent_state = REAGENT_LIQUID
+	color = "#665c56"
+	taste_description = "ash"

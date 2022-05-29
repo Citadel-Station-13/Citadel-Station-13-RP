@@ -18,17 +18,16 @@ var/list/blobs = list()
 	var/mob/observer/blob/overmind = null
 	var/base_name = "blob" // The name that gets appended along with the blob_type's name.
 
-/obj/structure/blob/New(var/newloc, var/new_overmind)
-	..(newloc)
+/obj/structure/blob/Initialize(mapload, new_overmind)
+	. = ..()
 	if(new_overmind)
 		overmind = new_overmind
 	update_icon()
 	if(!integrity)
 		integrity = max_integrity
-	setDir(pick(cardinal))
+	setDir(pick(GLOB.cardinal))
 	blobs += src
 	consume_tile()
-
 
 /obj/structure/blob/Destroy()
 	playsound(src.loc, 'sound/effects/splat.ogg', 50, 1) //Expand() is no longer broken, no check necessary.
@@ -59,13 +58,14 @@ var/list/blobs = list()
 		var/obj/item/projectile/P = mover
 		if(istype(P.firer) && P.firer.faction == "blob")
 			return TRUE
+	return FALSE
 
 /obj/structure/blob/examine(mob/user)
-	..()
+	. = ..()
 	if(!overmind)
-		to_chat(user, "It seems inert.") // Dead blob.
+		. += "It seems inert." // Dead blob.
 	else
-		to_chat(user, overmind.blob_type.desc)
+		. += overmind.blob_type.desc
 
 /obj/structure/blob/get_description_info()
 	if(overmind)
@@ -130,7 +130,7 @@ var/list/blobs = list()
 
 /obj/structure/blob/proc/expand(turf/T = null, controller = null, expand_reaction = 1)
 	if(!T)
-		var/list/dirs = cardinal.Copy()
+		var/list/dirs = GLOB.cardinal.Copy()
 		for(var/i = 1 to 4)
 			var/dirn = pick(dirs)
 			dirs.Remove(dirn)
@@ -280,7 +280,7 @@ var/list/blobs = list()
 		overmind.blob_type.on_water(src, amount)
 
 /obj/structure/blob/proc/adjust_integrity(amount)
-	integrity = between(0, integrity + amount, max_integrity)
+	integrity = clamp( integrity + amount, 0,  max_integrity)
 	if(integrity == 0)
 		playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 		if(overmind)

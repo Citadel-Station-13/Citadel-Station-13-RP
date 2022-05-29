@@ -4,7 +4,7 @@
 
 /datum/category_item/catalogue/technology/durand
 	name = "Exosuit - Durand"
-	desc = "The Durand is an old combat exosuit, that was once the most durable exosuit ever developed by humans. \
+	desc = "The Durand is an old combat exosuit; once the most durable exosuit ever developed by humans. \
 	In modern times, this exosuit has been dethroned from that title, yet it remains one of the more well built and armored \
 	exosuits, despite its age.\
 	<br><br>\
@@ -45,11 +45,11 @@
 /mob/living/simple_mob/mechanical/mecha/combat/durand/proc/set_defense_mode(new_mode)
 	defense_mode = new_mode
 	deflect_chance = defense_mode ? defense_deflect : initial(deflect_chance)
-	to_chat(src, span("notice", "You [defense_mode ? "en" : "dis"]able defense mode."))
+	to_chat(src, SPAN_NOTICE("You [defense_mode ? "en" : "dis"]able defense mode."))
 
 /mob/living/simple_mob/mechanical/mecha/combat/durand/SelfMove(turf/n, direct)
 	if(defense_mode)
-		to_chat(src, span("warning", "You are in defense mode, you cannot move."))
+		to_chat(src, SPAN_WARNING( "You are in defense mode, you cannot move."))
 		return FALSE
 	return ..()
 
@@ -62,6 +62,6 @@
 	set_defense_mode(!defense_mode)
 
 // Variant that starts in defense mode, perhaps for PoIs.
-/mob/living/simple_mob/mechanical/mecha/combat/durand/defensive/Initialize()
+/mob/living/simple_mob/mechanical/mecha/combat/durand/defensive/Initialize(mapload)
 	set_defense_mode(TRUE)
 	return ..()

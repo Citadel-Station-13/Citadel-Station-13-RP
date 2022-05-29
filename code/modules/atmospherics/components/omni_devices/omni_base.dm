@@ -1,9 +1,9 @@
 //--------------------------------------------
 // Base omni device
 //--------------------------------------------
-/obj/machinery/atmospherics/omni
+/obj/machinery/atmospherics/component/quaternary
 	name = "omni device"
-	icon = 'icons/atmos/omni_devices_vr.dmi' //VOREStation Edit - New Icon
+	icon = 'icons/atmos/omni_devices_vr.dmi'
 	icon_state = "base"
 	use_power = USE_POWER_IDLE
 	initialize_directions = 0
@@ -25,12 +25,12 @@
 
 	var/list/ports = new()
 
-/obj/machinery/atmospherics/omni/New()
-	..()
+/obj/machinery/atmospherics/component/quaternary/Initialize(mapload)
+	. = ..()
 	icon_state = "base"
 
 	ports = new()
-	for(var/d in cardinal)
+	for(var/d in GLOB.cardinal)
 		var/datum/omni_port/new_port = new(src, d)
 		switch(d)
 			if(NORTH)
@@ -47,8 +47,8 @@
 
 	build_icons()
 
-/obj/machinery/atmospherics/omni/update_icon()
-	if(stat & NOPOWER)
+/obj/machinery/atmospherics/component/quaternary/update_icon()
+	if(machine_stat & NOPOWER)
 		overlays = overlays_off
 	else if(error_check())
 		overlays = overlays_error
@@ -59,34 +59,33 @@
 
 	return
 
-/obj/machinery/atmospherics/omni/proc/error_check()
+/obj/machinery/atmospherics/component/quaternary/proc/error_check()
 	return
 
-/obj/machinery/atmospherics/omni/process()
+/obj/machinery/atmospherics/component/quaternary/process(delta_time)
 	last_power_draw = 0
 	last_flow_rate = 0
 
 	if(error_check())
 		update_use_power(USE_POWER_OFF)
 
-	if((stat & (NOPOWER|BROKEN)) || !use_power)
+	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
 		return 0
 	return 1
 
-/obj/machinery/atmospherics/omni/power_change()
-	var/old_stat = stat
+/obj/machinery/atmospherics/component/quaternary/power_change()
+	var/old_stat = machine_stat
 	..()
-	if(old_stat != stat)
+	if(old_stat != machine_stat)
 		update_icon()
 
-/obj/machinery/atmospherics/omni/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/component/quaternary/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(!W.is_wrench())
 		return ..()
 
-	if(!can_unwrench())
-		to_chat(user, "<span class='warning'>You cannot unwrench \the [src], it is too exerted due to internal pressure.</span>")
-		add_fingerprint(user)
-		return 1
+	if(unsafe_pressure())
+		to_chat(user, "<span class='warning'>You feel a gust of air blowing in your face as you try to unwrench [src]. Maybe you should reconsider..</span>")
+	add_fingerprint(user)
 	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
 	playsound(src, W.usesound, 50, 1)
 	if(do_after(user, 40 * W.toolspeed))
@@ -96,16 +95,16 @@
 			"You hear a ratchet.")
 		deconstruct()
 
-/obj/machinery/atmospherics/omni/can_unwrench()
+/obj/machinery/atmospherics/component/quaternary/unsafe_pressure()
 	var/int_pressure = 0
 	for(var/datum/omni_port/P in ports)
 		int_pressure += P.air.return_pressure()
 	var/datum/gas_mixture/env_air = loc.return_air()
 	if((int_pressure - env_air.return_pressure()) > 2*ONE_ATMOSPHERE)
-		return 0
-	return 1
+		return TRUE
+	return FALSE
 
-/obj/machinery/atmospherics/omni/attack_hand(user as mob)
+/obj/machinery/atmospherics/component/quaternary/attack_hand(user as mob)
 	if(..())
 		return
 
@@ -113,14 +112,14 @@
 	ui_interact(user)
 	return
 
-/obj/machinery/atmospherics/omni/proc/build_icons()
+/obj/machinery/atmospherics/component/quaternary/proc/build_icons()
 	if(!check_icon_cache())
 		return
 
 	var/core_icon = null
-	if(istype(src, /obj/machinery/atmospherics/omni/mixer))
+	if(istype(src, /obj/machinery/atmospherics/component/quaternary/mixer))
 		core_icon = "mixer"
-	else if(istype(src, /obj/machinery/atmospherics/omni/atmos_filter))
+	else if(istype(src, /obj/machinery/atmospherics/component/quaternary/atmos_filter))
 		core_icon = "filter"
 	else
 		return
@@ -133,7 +132,7 @@
 		overlays_error[1] = icon_manager.get_atmos_icon("omni", , , core_icon)
 		overlays_error[2] = icon_manager.get_atmos_icon("omni", , , "error")
 
-/obj/machinery/atmospherics/omni/proc/update_port_icons()
+/obj/machinery/atmospherics/component/quaternary/proc/update_port_icons()
 	if(!check_icon_cache())
 		return
 
@@ -168,7 +167,7 @@
 
 	update_icon()
 
-/obj/machinery/atmospherics/omni/proc/select_port_icons(var/datum/omni_port/P)
+/obj/machinery/atmospherics/component/quaternary/proc/select_port_icons(var/datum/omni_port/P)
 	if(!istype(P))
 		return
 
@@ -203,32 +202,32 @@
 
 		return list("on_icon" = ic_on, "off_icon" = ic_off, "pipe_icon" = pipe_state)
 
-/obj/machinery/atmospherics/omni/update_underlays()
+/obj/machinery/atmospherics/component/quaternary/update_underlays()
 	for(var/datum/omni_port/P in ports)
 		P.update = 1
 	update_ports()
 
-/obj/machinery/atmospherics/omni/hide(var/i)
+/obj/machinery/atmospherics/component/quaternary/hide(var/i)
 	update_underlays()
 
-/obj/machinery/atmospherics/omni/proc/update_ports()
+/obj/machinery/atmospherics/component/quaternary/proc/update_ports()
 	sort_ports()
 	update_port_icons()
 	for(var/datum/omni_port/P in ports)
 		P.update = 0
 
-/obj/machinery/atmospherics/omni/proc/sort_ports()
+/obj/machinery/atmospherics/component/quaternary/proc/sort_ports()
 	return
 
 
 // Housekeeping and pipe network stuff below
-/obj/machinery/atmospherics/omni/get_neighbor_nodes_for_init()
+/obj/machinery/atmospherics/component/quaternary/get_neighbor_nodes_for_init()
 	var/list/neighbor_nodes = list()
 	for(var/datum/omni_port/P in ports)
 		neighbor_nodes += P.node
 	return neighbor_nodes
 
-/obj/machinery/atmospherics/omni/network_expand(datum/pipe_network/new_network, obj/machinery/atmospherics/pipe/reference)
+/obj/machinery/atmospherics/component/quaternary/network_expand(datum/pipe_network/new_network, obj/machinery/atmospherics/pipe/reference)
 	for(var/datum/omni_port/P in ports)
 		if(reference == P.node)
 			P.network = new_network
@@ -241,7 +240,7 @@
 
 	return null
 
-/obj/machinery/atmospherics/omni/Destroy()
+/obj/machinery/atmospherics/component/quaternary/Destroy()
 	loc = null
 
 	for(var/datum/omni_port/P in ports)
@@ -252,7 +251,7 @@
 	ports = null
 	. = ..()
 
-/obj/machinery/atmospherics/omni/atmos_init()
+/obj/machinery/atmospherics/component/quaternary/atmos_init()
 	for(var/datum/omni_port/P in ports)
 		if(P.node || P.mode == 0)
 			continue
@@ -266,14 +265,14 @@
 
 	update_ports()
 
-/obj/machinery/atmospherics/omni/build_network()
+/obj/machinery/atmospherics/component/quaternary/build_network()
 	for(var/datum/omni_port/P in ports)
 		if(!P.network && P.node)
 			P.network = new /datum/pipe_network()
 			P.network.normal_members += src
 			P.network.build_network(P.node, src)
 
-/obj/machinery/atmospherics/omni/return_network(obj/machinery/atmospherics/reference)
+/obj/machinery/atmospherics/component/quaternary/return_network(obj/machinery/atmospherics/reference)
 	build_network()
 
 	for(var/datum/omni_port/P in ports)
@@ -282,14 +281,14 @@
 
 	return null
 
-/obj/machinery/atmospherics/omni/reassign_network(datum/pipe_network/old_network, datum/pipe_network/new_network)
+/obj/machinery/atmospherics/component/quaternary/reassign_network(datum/pipe_network/old_network, datum/pipe_network/new_network)
 	for(var/datum/omni_port/P in ports)
 		if(P.network == old_network)
 			P.network = new_network
 
 	return 1
 
-/obj/machinery/atmospherics/omni/return_network_air(datum/pipe_network/reference)
+/obj/machinery/atmospherics/component/quaternary/return_network_air(datum/pipe_network/reference)
 	var/list/results = list()
 
 	for(var/datum/omni_port/P in ports)
@@ -298,7 +297,7 @@
 
 	return results
 
-/obj/machinery/atmospherics/omni/disconnect(obj/machinery/atmospherics/reference)
+/obj/machinery/atmospherics/component/quaternary/disconnect(obj/machinery/atmospherics/reference)
 	for(var/datum/omni_port/P in ports)
 		if(reference == P.node)
 			qdel(P.network)

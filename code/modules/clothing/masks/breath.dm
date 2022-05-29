@@ -3,7 +3,7 @@
 	name = "breath mask"
 	icon_state = "breath"
 	item_state_slots = list(slot_r_hand_str = "breath", slot_l_hand_str = "breath")
-	item_flags = AIRTIGHT|FLEXIBLEMATERIAL
+	clothing_flags = ALLOWINTERNALS|FLEXIBLEMATERIAL
 	body_parts_covered = FACE
 	w_class = ITEMSIZE_SMALL
 	gas_transfer_coefficient = 0.10
@@ -18,13 +18,13 @@
 		if (hanging)
 			gas_transfer_coefficient = 1
 			body_parts_covered = body_parts_covered & ~FACE
-			item_flags = item_flags & ~AIRTIGHT
+			clothing_flags = clothing_flags & ~ALLOWINTERNALS
 			icon_state = "breathdown"
 			to_chat(user, "Your mask is now hanging on your neck.")
 		else
 			gas_transfer_coefficient = initial(gas_transfer_coefficient)
 			body_parts_covered = initial(body_parts_covered)
-			item_flags = initial(item_flags)
+			clothing_flags = initial(clothing_flags)
 			icon_state = initial(icon_state)
 			to_chat(user, "You pull the mask up to cover your face.")
 		update_clothing_icon()
@@ -59,3 +59,7 @@
 	icon_state = "medical"
 	item_state = "medical"
 	permeability_coefficient = 0.01
+
+/obj/item/clothing/mask/balaclava/breath
+	name = "breathaclava"
+	clothing_flags = ALLOWINTERNALS

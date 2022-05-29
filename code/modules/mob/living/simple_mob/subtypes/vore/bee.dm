@@ -1,6 +1,15 @@
+/datum/category_item/catalogue/fauna/bee
+	name = "Space Bumble Bee"
+	desc = "Unlike other attempts at modifying species for easier space transportation, \
+	bumble bee modification went off without a hitch. Space Bees are not capable of flight \
+	in space, obviously, but their survivability in hostile environments has been substantially \
+	improved."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/vore/bee
 	name = "space bumble bee"
 	desc = "Buzz buzz."
+	catalogue_data = list(/datum/category_item/catalogue/fauna/bee)
 
 	icon_state = "bee"
 	icon_living = "bee"

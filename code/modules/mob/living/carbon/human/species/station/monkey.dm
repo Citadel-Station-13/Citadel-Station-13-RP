@@ -58,7 +58,7 @@
 	if(H.stat != CONSCIOUS)
 		return
 	if(prob(33) && H.canmove && isturf(H.loc) && !H.pulledby) //won't move if being pulled
-		step(H, pick(cardinal))
+		step(H, pick(GLOB.cardinal))
 	if(prob(1))
 		H.emote(pick("scratch","jump","roll","tail"))
 
@@ -69,26 +69,26 @@
 
 /datum/species/monkey/tajaran
 	name = SPECIES_MONKEY_TAJ
-	name_plural = "Farwa"
+	name_plural = SPECIES_MONKEY_TAJ
 
 	icobase = 'icons/mob/human_races/monkeys/r_farwa.dmi'
 	deform = 'icons/mob/human_races/monkeys/r_farwa.dmi'
 
 	greater_form = SPECIES_TAJ
-	default_language = "Farwa"
+	default_language = SPECIES_MONKEY_TAJ
 	flesh_color = "#AFA59E"
 	base_color = "#333333"
 	tail = "farwatail"
 
 /datum/species/monkey/skrell
 	name = SPECIES_MONKEY_SKRELL
-	name_plural = "Neaera"
+	name_plural = SPECIES_MONKEY_SKRELL
 
 	icobase = 'icons/mob/human_races/monkeys/r_neaera.dmi'
 	deform = 'icons/mob/human_races/monkeys/r_neaera.dmi'
 
 	greater_form = SPECIES_SKRELL
-	default_language = "Neaera"
+	default_language = LANGUAGE_NEAERA
 	flesh_color = "#8CD7A3"
 	blood_color = "#1D2CBF"
 	reagent_tag = IS_SKRELL
@@ -96,30 +96,30 @@
 
 /datum/species/monkey/unathi
 	name = SPECIES_MONKEY_UNATHI
-	name_plural = "Stok"
+	name_plural = SPECIES_MONKEY_UNATHI
 
 	icobase = 'icons/mob/human_races/monkeys/r_stok.dmi'
 	deform = 'icons/mob/human_races/monkeys/r_stok.dmi'
 
 	tail = "stoktail"
 	greater_form = SPECIES_UNATHI
-	default_language = "Stok"
+	default_language = LANGUAGE_STOK
 	flesh_color = "#34AF10"
 	base_color = "#066000"
 	reagent_tag = IS_UNATHI
 
 /datum/species/monkey/shark
 	name = SPECIES_MONKEY_AKULA
-	name_plural = "Sobaka"
+	name_plural = SPECIES_MONKEY_AKULA
 	icobase = 'icons/mob/human_races/monkeys/r_sobaka_vr.dmi'
 	deform = 'icons/mob/human_races/monkeys/r_sobaka_vr.dmi'
 	tail = null //The tail is part of its body due to tail using the "icons/effects/species.dmi" file. It must be null, or they'll have a chimp tail.
-	greater_form = "Akula"
+	greater_form = SPECIES_AKULA
 	default_language = "Skrellian" //Closest we have.
 
 /datum/species/monkey/sergal
 	name = SPECIES_MONKEY_SERGAL
-	greater_form = "Sergal"
+	greater_form = SPECIES_SERGAL
 	icobase = 'icons/mob/human_races/monkeys/r_sergaling_vr.dmi'
 	deform = 'icons/mob/human_races/monkeys/r_sergaling_vr.dmi'
 	tail = null
@@ -127,24 +127,24 @@
 
 /datum/species/monkey/sparra
 	name = SPECIES_MONKEY_NEVREAN
-	name_plural = "Sparra"
-	greater_form = "Nevrean"
+	name_plural = SPECIES_MONKEY_NEVREAN
+	greater_form = SPECIES_NEVREAN
 	tail = null
 	icobase = 'icons/mob/human_races/monkeys/r_sparra_vr.dmi'
 	deform = 'icons/mob/human_races/monkeys/r_sparra_vr.dmi'
 	default_language = LANGUAGE_BIRDSONG
 
 
-/* Example from Polaris code
+/* Example
 /datum/species/monkey/tajaran
-	name = "Farwa"
-	name_plural = "Farwa"
+	name = SPECIES_MONKEY_TAJ
+	name_plural = SPECIES_MONKEY_TAJ
 
 	icobase = 'icons/mob/human_races/monkeys/r_farwa.dmi'
 	deform = 'icons/mob/human_races/monkeys/r_farwa.dmi'
 
 	greater_form = "Tajaran"
-	default_language = "Farwa"
+	default_language = LANGUAGE_FARWA
 	flesh_color = "#AFA59E"
 	base_color = "#333333"
 	tail = "farwatail"
@@ -152,12 +152,12 @@
 
 /datum/species/monkey/vulpkanin
 	name = SPECIES_MONKEY_VULPKANIN
-	name_plural = "Wolpin"
+	name_plural = SPECIES_MONKEY_VULPKANIN
 
 	icobase = 'icons/mob/human_races/monkeys/r_wolpin.dmi'
 	deform = 'icons/mob/human_races/monkeys/r_wolpin.dmi'
 
-	greater_form = "Vulpkanin"
+	greater_form = SPECIES_VULPKANIN
 	default_language = LANGUAGE_CANILUNZT
 	flesh_color = "#966464"
 	base_color = "#000000"
@@ -166,14 +166,14 @@
 //INSERT CODE HERE SO MONKEYS CAN BE SPAWNED.
 //Also, M was added to the end of the spawn names to signify that it's a monkey, since some names were conflicting.
 
-/mob/living/carbon/human/sharkm/New(var/new_loc)
-	..(new_loc, "Sobaka")
+/mob/living/carbon/human/sharkm/Initialize(mapload)
+	..(mapload, SPECIES_MONKEY_AKULA)
 
-/mob/living/carbon/human/sergallingm/New(var/new_loc)
-	..(new_loc, "Saru")
+/mob/living/carbon/human/sergallingm/Initialize(mapload)
+	..(mapload, SPECIES_MONKEY_SERGAL)
 
-/mob/living/carbon/human/sparram/New(var/new_loc)
-	..(new_loc, "Sparra")
+/mob/living/carbon/human/sparram/Initialize(mapload)
+	..(mapload, SPECIES_MONKEY_NEVREAN)
 
-/mob/living/carbon/human/wolpin/New(var/new_loc)
-	..(new_loc, "Wolpin")
+/mob/living/carbon/human/wolpin/Initialize(mapload)
+	..(mapload, SPECIES_MONKEY_VULPKANIN)

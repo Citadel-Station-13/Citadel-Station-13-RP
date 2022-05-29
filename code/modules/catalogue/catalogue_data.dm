@@ -104,7 +104,7 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 
 /datum/category_item/catalogue/proc/display_in_chatlog(mob/user)
 	to_chat(user, "<br>")
-	to_chat(user, span("notice", "<b>[uppertext(name)]</b>"))
+	to_chat(user, SPAN_NOTICE("<b>[uppertext(name)]</b>"))
 
 	// Some entries get very long so lets not totally flood the chatlog.
 	var/desc_length_limit = 750
@@ -113,9 +113,9 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 		displayed_desc = copytext(displayed_desc, 1, desc_length_limit + 1)
 		displayed_desc += "... (View databanks for full data)"
 
-	to_chat(user, span("notice", "<i>[displayed_desc]</i>"))
-	to_chat(user, span("notice", "Cataloguers : <b>[english_list(cataloguers)]</b>."))
-	to_chat(user, span("notice", "Contributes <b>[value]</b> points to personal exploration fund."))
+	to_chat(user, SPAN_NOTICE("<i>[displayed_desc]</i>"))
+	to_chat(user, SPAN_NOTICE("Cataloguers : <b>[english_list(cataloguers)]</b>."))
+	to_chat(user, SPAN_NOTICE("Contributes <b>[value]</b> points to personal exploration fund."))
 
 /*
 		// Truncates text to limit if necessary.
@@ -127,6 +127,11 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 */
 
 /datum/category_item/catalogue/flora
+
+/datum/category_item/catalogue/flora/common
+	name = "Flora - Common"
+	desc = "A common type of plant, whose seeds are typically commercially available."
+	value = CATALOGUER_REWARD_TRIVIAL
 
 /datum/category_item/catalogue/fauna
 
@@ -352,9 +357,9 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 	name = "TSC - Major Bill's Transportation"
 	datum_to_copy = /datum/lore/organization/tsc/mbt
 
-/datum/category_item/catalogue/information/organization/solgov
-	name = "Government - Solar Confederate Government"
-	datum_to_copy = /datum/lore/organization/gov/solgov
+/datum/category_item/catalogue/information/organization/theorionconfederation
+	name = "Government - The Orion Confederation"
+	datum_to_copy = /datum/lore/organization/gov/theorionconfederation
 
 /*
 /datum/category_item/catalogue/information/organization/virgov
@@ -510,7 +515,62 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 	Sometimes species one would never see anywhere close to core worlds can be met here."
 	value = CATALOGUER_REWARD_TRIVIAL
 
+/datum/category_item/catalogue/fauna/apidaen
+	name = "Sapients - Apidaen"
+	desc = ""
+	value = CATALOGUER_REWARD_EASY
+
+/datum/category_item/catalogue/fauna/vetala_ruddy
+	name = "Sapients - Ruddy Vetalan"
+	desc = ""
+	value = CATALOGUER_REWARD_MEDIUM
+
+/datum/category_item/catalogue/fauna/vetala_pale
+	name = "Sapients - Pale Vetalan"
+	desc = ""
+	value = CATALOGUER_REWARD_MEDIUM
+
+/datum/category_item/catalogue/fauna/auril
+	name = "Sapients - Auril"
+	desc = ""
+	value = CATALOGUER_REWARD_TRIVIAL
+
+/datum/category_item/catalogue/fauna/dremachir
+	name = "Sapients - Dremachir"
+	desc = ""
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /datum/category_item/catalogue/technology/resleeving
 	name = "Resleeving"
 	desc = ""
 	value = CATALOGUER_REWARD_TRIVIAL
+
+///// Template for Catalogue Data.
+// Obtained by scanning any X.
+/*
+/datum/category_item/catalogue/fauna/X
+	name = "X"
+	desc = ""
+	value = CATALOGUER_REWARD_TRIVIAL
+	unlocked_by_any = list(/datum/category_item/catalogue/fauna/X)
+
+// Obtained by scanning all X.
+/datum/category_item/catalogue/fauna/all_X
+	name = "Collection - X"
+	desc = "You have scanned a large array of different types of _, \
+	and therefore you have been granted a _ sum of points, through this \
+	entry."
+	value = CATALOGUER_REWARD_
+	unlocked_by_all = list(
+		/datum/category_item/catalogue/fauna/X,
+		/datum/category_item/catalogue/fauna/X
+		)
+
+/datum/category_item/catalogue/fauna/X/Y
+	name = "X - Y"
+	desc = ""
+	value = CATALOGUER_REWARD_TRIVIAL
+
+Mob var:
+catalogue_data = list()
+*/

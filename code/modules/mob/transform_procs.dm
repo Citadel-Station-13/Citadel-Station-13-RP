@@ -32,7 +32,7 @@
 
 	for(var/obj/item/W in src)
 		drop_from_inventory(W)
-	set_species(species.primitive_form)
+	set_species(species_type_by_name(species.primitive_form))
 	dna.SetSEState(MONKEYBLOCK,1)
 	dna.SetSEValueRange(MONKEYBLOCK,0xDAC, 0xFFF)
 
@@ -66,7 +66,7 @@
 
 /mob/proc/AIize(move=1)
 	if(client)
-		src << sound(null, repeat = 0, wait = 0, volume = 85, channel = 1) // stop the jams for AIs
+		SEND_SOUND(src, sound(null, repeat = 0, wait = 0, volume = 85, channel = 1)) // stop the jams for AIs
 	var/mob/living/silicon/ai/O = new (loc, GLOB.using_map.default_law_type,,1)//No MMI but safety is in effect.
 	O.invisibility = 0
 	O.aiRestorePowerRoutine = 0
@@ -102,26 +102,9 @@
 			O.add_language(LANGUAGE_ROOTLOCAL, 1)
 
 	if(move)
-		var/obj/loc_landmark
-		for(var/obj/effect/landmark/start/sloc in landmarks_list)
-			if (sloc.name != "AI")
-				continue
-			if ((locate(/mob/living) in sloc.loc) || (locate(/obj/structure/AIcore) in sloc.loc))
-				continue
-			loc_landmark = sloc
-		if (!loc_landmark)
-			for(var/obj/effect/landmark/tripai in landmarks_list)
-				if (tripai.name == "tripai")
-					if((locate(/mob/living) in tripai.loc) || (locate(/obj/structure/AIcore) in tripai.loc))
-						continue
-					loc_landmark = tripai
-		if (!loc_landmark)
-			to_chat(O, "Oh god sorry we can't find an unoccupied AI spawn location, so we're spawning you on top of someone.")
-			for(var/obj/effect/landmark/start/sloc in landmarks_list)
-				if (sloc.name == "AI")
-					loc_landmark = sloc
-
-		O.loc = loc_landmark.loc
+		var/atom/movable/landmark/spawnpoint/S = SSjob.GetLatejoinSpawnpoint(job_path = /datum/job/station/ai)
+		O.forceMove(S.GetSpawnLoc())
+		S.OnSpawn(O)
 
 	O.on_mob_init()
 
@@ -159,8 +142,15 @@
 
 	if(mind)		//TODO
 		mind.transfer_to(O)
-		if(O.mind.assigned_role == "Cyborg")
+		if(O.mind && O.mind.assigned_role == "Cyborg")
 			O.mind.original = O
+			if(O.mind.role_alt_title == "Drone")
+				O.mmi = new /obj/item/mmi/digital/robot(O)
+			else if(O.mind.role_alt_title == "Robot")
+				O.mmi = new /obj/item/mmi/digital/posibrain(O)
+			else
+				O.mmi = new /obj/item/mmi(O)
+			O.mmi.transfer_identity(src)
 		else if(mind && mind.special_role)
 			O.mind.store_memory("In case you look at this after being borged, the objectives are only here until I find a way to make them not show up for you, as I can't simply delete them without screwing up round-end reporting. --NeoFite")
 	else
@@ -168,28 +158,18 @@
 
 	O.loc = loc
 	O.job = "Cyborg"
-	if(O.mind.assigned_role == "Cyborg")
-		if(O.mind.role_alt_title == "Robot")
-			O.mmi = new /obj/item/mmi/digital/posibrain(O)
-		else if(O.mind.role_alt_title == "Drone")
-			O.mmi = new /obj/item/mmi/digital/robot(O)
-		else
-			O.mmi = new /obj/item/mmi(O)
-
-		O.mmi.transfer_identity(src)
 
 	if(O.client && O.client.prefs)
 		var/datum/preferences/B = O.client.prefs
 		for(var/language in B.alternate_languages)
 			O.add_language(language)
-		O.resize(B.size_multiplier, animate = TRUE)		//VOREStation Addition: add size prefs to borgs
-		O.fuzzy = B.fuzzy								//VOREStation Addition: add size prefs to borgs
+		O.resize(B.size_multiplier, animate = TRUE)		// Adds size prefs to borgs
+		O.fuzzy = B.fuzzy								// Ditto
 
 	callHook("borgify", list(O))
 	O.Namepick()
 
-	spawn(0)	// Mobs still instantly del themselves, thus we need to spawn or O will never be returned
-		qdel(src)
+	qdel(src) // Queues us for a hard delete
 	return O
 
 //human -> alien
@@ -315,8 +295,6 @@
 	if(ispath(MP, /mob/living/simple_mob/animal/space/carp))
 		return 1
 	if(ispath(MP, /mob/living/simple_mob/construct))
-		return 1
-	if(ispath(MP, /mob/living/simple_mob/tomato))
 		return 1
 	if(ispath(MP, /mob/living/simple_mob/animal/passive/mouse))
 		return 1 //It is impossible to pull up the player panel for mice (Fixed! - Nodrak)

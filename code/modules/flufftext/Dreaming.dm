@@ -12,11 +12,11 @@ var/list/dreams = list(
 	"the virologist","the roboticist","the chef","the bartender","the chaplain","the librarian","a mouse","an ert member",
 	"a beach","the holodeck","a smokey room","a voice","the cold","a mouse","an operating table","the bar","the rain","a skrell",
 	"an unathi","a tajaran","the ai core","the mining station","the research station","a beaker of strange liquid",
-	//VOREStation Additions after this
+
 	"slimey surroundings","a sexy squirrel","licking their lips","a gaping maw","an unlikely predator","sinking inside",
 	"vulpine assets","more dakka","churning guts","pools of fluid","an exceptional grip","mawing in faces","gaping throat",
 	"swallowed whole","a fox","a wolf","a cat","a tiger","a dog","a taur","a xenochimera",
-	//Cit dream text!
+	//Species
 	"a teshari","an alarune","a promethean","a vox","a sergal","an akula","a zorren","a nevrean","a chimera","a vasilissan", //actual races not covered in the defaults
 
 	"a fox","a wolf","a dog","a cat","a bird","a shark","an angel","a demon","a dragon", "a xenomorph","a security K9","a medihound","a scrubpuppy","a borgi", //common animals and other common "custom" races. This obviously isn't all of them- suggestions/additions welcome!
@@ -28,21 +28,21 @@ var/list/dreams = list(
 	//other misc. things
 	)
 
-mob/living/carbon/proc/dream()
+/mob/living/carbon/proc/dream()
 	dreaming = 1
 
 	spawn(0)
 		for(var/i = rand(1,4),i > 0, i--)
-			to_chat(src, "<font color='blue'><i>... [pick(dreams)] ...</i></font>")
+			to_chat(src, "<font color=#4F49AF><i>... [pick(dreams)] ...</i></font>")
 			sleep(rand(40,70))
 			if(paralysis <= 0)
 				dreaming = 0
-				return 0
+				return
 		dreaming = 0
-		return 1
+		return
 
-mob/living/carbon/proc/handle_dreams()
+/mob/living/carbon/proc/handle_dreams()
 	if(client && !dreaming && prob(5))
 		dream()
 
-mob/living/carbon/var/dreaming = 0
+/mob/living/carbon/var/dreaming = 0

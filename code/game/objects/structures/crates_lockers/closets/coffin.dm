@@ -8,7 +8,7 @@
 	breakout_sound = 'sound/weapons/tablehit1.ogg'
 
 /obj/structure/closet/coffin/comfy
-	name = "Extra comfortable coffin"
+	name = "extra comfortable coffin"
 	desc = "It's a burial receptacle for the dearly departed. This one has been modified with new upholstery to make it more comfortable to lay in."
 
 /obj/structure/closet/coffin/update_icon()
@@ -44,6 +44,7 @@
 	return
 
 /obj/structure/closet/grave/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
 	if(opened && ismob(mover))
 		var/mob/M = mover
 		add_fingerprint(M)

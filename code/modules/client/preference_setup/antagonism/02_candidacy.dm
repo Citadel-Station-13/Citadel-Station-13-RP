@@ -24,14 +24,22 @@ var/global/list/special_roles = list( //keep synced with the defines BE_* in set
 
 /datum/category_item/player_setup_item/antagonism/candidacy/load_character(var/savefile/S)
 	S["be_special"]	>> pref.be_special
+	S["be_event_role"] >> pref.be_event_role
+
 
 /datum/category_item/player_setup_item/antagonism/candidacy/save_character(var/savefile/S)
 	S["be_special"]	<< pref.be_special
+	S["be_event_role"] << pref.be_event_role
 
 /datum/category_item/player_setup_item/antagonism/candidacy/sanitize_character()
 	pref.be_special	= sanitize_integer(pref.be_special, 0, 65535, initial(pref.be_special))
+	pref.be_event_role = sanitize_integer(pref.be_event_role, NONE, ALL, default = NONE)
 
 /datum/category_item/player_setup_item/antagonism/candidacy/content(var/mob/user)
+	. += "<b>Event Role Preferences</b> <a href='?src=[REF(src)];event_role_help=1'>\[?]</a><br>"
+	for(var/i in GLOB.event_role_list)
+		. += "<b>[i]</b> <a href='?src=[REF(src)];event_role_help_flag=[GLOB.event_role_list[i]]'>\[?]</a>: <a href='?src=[REF(src)];event_role_toggle=[GLOB.event_role_list[i]]'><b>[pref.be_event_role & GLOB.event_role_list[i]? "Yes" : "No"]</b></a><br>"
+	. += "<br><br><b>Antagonist Preferences</b><br>"
 	if(jobban_isbanned(user, "Syndicate"))
 		. += "<b>You are banned from antagonist roles.</b>"
 		pref.be_special = 0
@@ -50,5 +58,15 @@ var/global/list/special_roles = list( //keep synced with the defines BE_* in set
 		var/num = text2num(href_list["be_special"])
 		pref.be_special ^= (1<<num)
 		return TOPIC_REFRESH
-
+	if(href_list["event_role_help"])
+		to_chat(user, "<span class='boldnotice'>Toggles candidacy/preferences for partaking in certain kinds of events. Note that this doesn't mean you necessarily will or will not be involved in a certain way, \
+		but this may help administrators decide on candidates when necessary.</span>")
+		return
+	if(href_list["event_role_help_flag"])
+		var/text = GLOB.event_role_descs[href_list["event_role_help_flag"]] || "<span class='warning'>ERROR: No help text defined.</span>"
+		to_chat(user, text)
+		return
+	if(href_list["event_role_toggle"])
+		pref.be_event_role ^= text2num(href_list["event_role_toggle"])		// do i care about href exploits no what are you gonna do turn your own prefs off LOL
+		return TOPIC_REFRESH
 	return ..()

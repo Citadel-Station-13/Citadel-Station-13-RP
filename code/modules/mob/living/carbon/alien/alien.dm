@@ -1,3 +1,32 @@
+/datum/category_item/catalogue/fauna/alien
+	name = SPECIES_XENO
+	desc = "Xenomorphs are a widely recognized and rightfully feared scourge \
+	across the Frontier. Although the origin of these creatures remains unknown, \
+	their violence and their teriffying method of procreation makes them a universally \
+	hated organism. Kill on sight."
+	value = CATALOGUER_REWARD_TRIVIAL
+	unlocked_by_any = list(/datum/category_item/catalogue/fauna/alien)
+
+// Obtained by scanning all Aliens.
+/datum/category_item/catalogue/fauna/all_aliens
+	name = "Collection - Xenomorphs"
+	desc = "You have scanned a large array of different types of Xenomorph, \
+	and therefore you have been granted a large sum of points, through this \
+	entry."
+	value = CATALOGUER_REWARD_HARD
+	unlocked_by_all = list(
+		/datum/category_item/catalogue/fauna/alien/larva,
+		/datum/category_item/catalogue/fauna/alien/drone
+		)
+
+/datum/category_item/catalogue/fauna/alien/drone
+	name = "Xenomorph - Drone"
+	desc = "The adult form of the Xenomorph, the drone's iconic \
+	morphology and biological traits make it easily identifiable across \
+	the Frontier. Feared for its prowess, the Drone is a sign that an even \
+	larger threat is present: a Xenomorph Hive. Kill on sight."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/carbon/alien
 
 	name = "alien"
@@ -8,6 +37,7 @@
 	health = 100
 	maxHealth = 100
 	mob_size = 4
+	catalogue_data = list(/datum/category_item/catalogue/fauna/alien/drone)
 
 	var/adult_form
 	var/dead_icon
@@ -20,8 +50,7 @@
 	var/adult_name
 	var/instance_num
 
-/mob/living/carbon/alien/New()
-
+/mob/living/carbon/alien/Initialize(mapload)
 	time_of_birth = world.time
 
 	verbs += /mob/living/proc/ventcrawl
@@ -37,7 +66,7 @@
 
 	gender = NEUTER
 
-	..()
+	return ..()
 
 /mob/living/carbon/alien/u_equip(obj/item/W as obj)
 	return

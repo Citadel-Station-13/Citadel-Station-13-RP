@@ -49,7 +49,7 @@
 	//New message handling won't hurt if someone enables epidemic
 	post_comm_message("Cent. Com. CONFIDENTIAL REPORT", intercepttext)
 
-	world << sound('sound/AI/commandreport.ogg')
+	SEND_SOUND(world, sound('sound/AI/commandreport.ogg'))
 
 	// add an extra law to the AI to make sure it cooperates with the heads
 	var/extra_law = "Crew authorized to know of pathogen [virus_name]'s existence are: Heads of command. Do not allow unauthorized personnel to gain knowledge of [virus_name]. Aid authorized personnel in quarantining and neutrlizing the outbreak. This law overrides all other laws."
@@ -63,7 +63,7 @@
 	intercepttext += "<B>CRUISER WILL ARRIVE IN [round(cruiser_seconds()/60)] MINUTES</B><BR>"
 
 	post_comm_message("Cent. Com. CONFIDENTIAL REPORT", intercepttext)
-	world << sound('sound/AI/commandreport.ogg')
+	SEND_SOUND(world, sound('sound/AI/commandreport.ogg'))
 
 
 /datum/game_mode/epidemic/post_setup()
@@ -118,7 +118,7 @@
 	..()
 
 
-/datum/game_mode/epidemic/process()
+/datum/game_mode/epidemic/process(delta_time)
 	if(stage == 1 && cruiser_seconds() < 60 * 30)
 		announce_to_kill_crew()
 		stage = 2
@@ -168,7 +168,7 @@
 	SSticker.mode:explosion_in_progress = 1
 	for(var/mob/M in world)
 		if(M.client)
-			M << 'sound/machines/Alarm.ogg'
+			SEND_SOUND(M, sound('sound/machines/Alarm.ogg'))
 	to_chat(world, "<span class='notice'><b>Incoming missile detected.. Impact in 10..</b></span>")
 	for (var/i=9 to 1 step -1)
 		sleep(10)

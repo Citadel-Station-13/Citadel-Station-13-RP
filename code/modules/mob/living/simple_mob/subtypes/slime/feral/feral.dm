@@ -1,11 +1,16 @@
 // These slimes lack certain xenobio features but get more combat-oriented goodies. Generally these are more oriented towards Explorers than Xenobiologists.
 
+/datum/category_item/catalogue/fauna/slime/feral
+	name = "Slime - Feral"
+	desc = "Having the means to successfully escape their lab, as well as having to survive on a harsh, cold world has made these \
+	creatures rival the ferocity of other apex predators in this region of Sif. It is considered to be a very invasive species."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/slime/feral
 	name = "feral slime"
-	desc = "The result of slimes escaping containment from some xenobiology lab. \
-	Having the means to successfully escape their lab, as well as having to survive on a harsh, cold world has made these \
-	creatures rival the ferocity of other apex predators in this region of Sif. It is considered to be a very invasive species."
+	desc = "The result of slimes escaping containment from some xenobiology lab."
 	description_info = "Note that processing this large slime will give six cores."
+	catalogue_data = list(/datum/category_item/catalogue/fauna/slime/feral)
 
 	cores = 6 // Xenobio will love getting their hands on these.
 
@@ -88,6 +93,8 @@
 
 /mob/living/simple_mob/slime/feral/dark_blue/proc/chill(mob/living/L)
 	L.inflict_cold_damage(10)
+	if(QDELETED(L))
+		return
 	if(L.get_cold_protection() < 1)
 		L.add_modifier(/datum/modifier/chilled, 5 SECONDS, src)
 

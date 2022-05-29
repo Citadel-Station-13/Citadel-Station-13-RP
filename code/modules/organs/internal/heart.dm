@@ -1,4 +1,3 @@
-#define PROCESS_ACCURACY 10
 
 /obj/item/organ/internal/heart
 	name = "heart"
@@ -30,10 +29,27 @@
 	icon_state = "heart_grey-on"
 	dead_icon = "heart_grey-off"
 
-/obj/item/organ/internal/heart/grey/colormatch/New()
+/obj/item/organ/internal/heart/grey/colormatch/Initialize(mapload)
+	. = ..()
+	addtimer(CALLBACK(src, .proc/sync_color), 15)
+
+/obj/item/organ/internal/heart/grey/colormatch/proc/sync_color()
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		color = H.species.blood_color
+
+/obj/item/organ/internal/heart/machine
+	name = "hydraulic hub"
+	icon_state = "pump-on"
+	organ_tag = O_PUMP
+	dead_icon = "pump-off"
+	robotic = ORGAN_ROBOT
+
+	standard_pulse_level = PULSE_NONE
+
+/obj/item/organ/internal/stomach/machine/handle_organ_proc_special()
 	..()
-	var/mob/living/carbon/human/H = null
-	spawn(15)
-		if(ishuman(owner))
-			H = owner
-			color = H.species.blood_color
+	if(owner && owner.stat != DEAD)
+		owner.bodytemperature += round(owner.robobody_count * 0.25, 0.1)
+
+	return

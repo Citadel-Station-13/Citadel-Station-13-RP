@@ -6,30 +6,79 @@
 	desc = "A wrench with many common uses. Can be usually found in your hand."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "wrench"
+	item_state = "wrench"
 	slot_flags = SLOT_BELT
+	tool_behaviour = TOOL_WRENCH
 	force = 6
 	throwforce = 7
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 150)
+	matter = list(MAT_STEEL = 150)
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
 	usesound = 'sound/items/ratchet.ogg'
 	toolspeed = 1
+	drop_sound = 'sound/items/drop/wrench.ogg'
+	pickup_sound = 'sound/items/pickup/wrench.ogg'
+	var/random_color = TRUE
+
+/obj/item/tool/wrench/Initialize(mapload)
+	. = ..()
+	if(random_color)
+		switch(pick("nocolor","red","yellow","green","blue"))
+			if ("nocolor")
+				icon_state = "wrench"
+			if ("red")
+				icon_state = "wrench_red"
+			if ("yellow")
+				icon_state = "wrench_yellow"
+			if ("green")
+				icon_state = "wrench_green"
+			if ("blue")
+				icon_state = "wrench_blue"
 
 /obj/item/tool/wrench/is_wrench()
 	return TRUE
+
+/obj/item/tool/wrench/red
+	icon_state = "wrench_red"
+
+/obj/item/tool/wrench/goblin
+	name = "short wrench"
+	desc = "A short, rusty old wrench. It looks like it was made for a smaller species. "
+	icon_state = "wrench_goblin"
+	random_color = FALSE
+
+/obj/item/tool/wrench/bone
+	name = "primitive wrench"
+	desc = "A primitive wrench carved from bone. It does not grip consistently."
+	icon_state = "wrench_bone"
+	toolspeed = 1.25
+	random_color = FALSE
+
+/obj/item/tool/wrench/brass
+	name = "brass wrench"
+	desc = "A brass plated wrench. Its finely tuned mechanism allows for a strong grip."
+	icon_state = "wrench_brass"
+	toolspeed = 0.75
+	random_color = FALSE
 
 /obj/item/tool/wrench/cyborg
 	name = "automatic wrench"
 	desc = "An advanced robotic wrench. Can be found in industrial synthetic shells."
 	usesound = 'sound/items/drill_use.ogg'
 	toolspeed = 0.5
+	random_color = FALSE
+
+/obj/item/tool/wrench/RIGset
+	name = "integrated wrench"
+	desc = "If you're seeing this, someone did a dum-dum."
+	usesound = 'sound/items/drill_use.ogg'
+	toolspeed = 0.7
 
 /obj/item/tool/wrench/hybrid	// Slower and bulkier than normal power tools, but it has the power of reach.
 	name = "strange wrench"
 	desc = "A wrench with many common uses. Can be usually found in your hand."
 	icon = 'icons/obj/tools.dmi'
-	/datum/category_item/catalogue/anomalous/precursor_a/alien_wrench
 	icon_state = "hybwrench"
 	slot_flags = SLOT_BELT
 	force = 8
@@ -41,8 +90,7 @@
 	usesound = 'sound/effects/stealthoff.ogg'
 	toolspeed = 0.5
 	reach = 2
-
-
+	random_color = FALSE
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_wrench
 	name = "Precursor Alpha Object - Fastener Torque Tool"
@@ -68,6 +116,7 @@
 	usesound = 'sound/effects/empulse.ogg'
 	toolspeed = 0.1
 	origin_tech = list(TECH_MATERIAL = 5, TECH_ENGINEERING = 5)
+	random_color = FALSE
 
 /obj/item/tool/wrench/power
 	name = "hand drill"
@@ -75,7 +124,7 @@
 	icon_state = "drill_bolt"
 	item_state = "drill"
 	usesound = 'sound/items/drill_use.ogg'
-	matter = list(DEFAULT_WALL_MATERIAL = 150, MAT_SILVER = 50)
+	matter = list(MAT_STEEL = 150, MAT_SILVER = 50)
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	force = 8
 	w_class = ITEMSIZE_SMALL
@@ -83,9 +132,10 @@
 	attack_verb = list("drilled", "screwed", "jabbed")
 	toolspeed = 0.25
 	var/obj/item/tool/screwdriver/power/counterpart = null
+	random_color = FALSE
 
-/obj/item/tool/wrench/power/New(newloc, no_counterpart = TRUE)
-	..(newloc)
+/obj/item/tool/wrench/power/Initialize(mapload, no_counterpart = TRUE)
+	. = ..()
 	if(!counterpart && no_counterpart)
 		counterpart = new(src, FALSE)
 		counterpart.counterpart = src

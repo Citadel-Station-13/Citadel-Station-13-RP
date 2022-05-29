@@ -11,7 +11,7 @@
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
-	matter = list(DEFAULT_WALL_MATERIAL = 3000)
+	matter = list(MAT_STEEL = 3000)
 	var/list/carrying = list() // List of things on the tray. - Doohl
 	var/max_carry = 10
 
@@ -167,6 +167,7 @@
 	return val
 
 /obj/item/tray/pickup(mob/user)
+	. = ..()
 
 	if(!isturf(loc))
 		return
@@ -183,7 +184,7 @@
 			if(calc_carry() + add >= max_carry)
 				break
 			var/image/Img = new(src.icon)
-			I.loc = src
+			I.forceMove(src)
 			carrying.Add(I)
 			Img.icon = I.icon
 			Img.icon_state = I.icon_state
@@ -195,6 +196,7 @@
 			overlays += Img
 
 /obj/item/tray/dropped(mob/user)
+	. = ..()
 	var/noTable = null
 
 	spawn() //Allows the tray to udpate location, rather than just checking against mob's location

@@ -11,9 +11,9 @@
 			usable_templates |= A
 	return usable_templates
 
-///process()
+///process(delta_time)
 ///Called by the gameSSticker
-/datum/game_mode/process()
+/datum/game_mode/process(delta_time)
 	// Slow this down a bit so latejoiners have a chance of being antags.
 	process_count++
 	if(process_count >= 10)
@@ -34,7 +34,7 @@
 	if(SSemergencyshuttle.shuttle && (SSemergencyshuttle.shuttle.moving_status == SHUTTLE_WARMUP || SSemergencyshuttle.shuttle.moving_status == SHUTTLE_INTRANSIT))
 		return // Don't do anything if the shuttle's coming.
 
-	var/mills = round_duration_in_ticks
+	var/mills = round_duration_in_ds
 	var/mins = round((mills % 36000) / 600)
 	var/hours = round(mills / 36000)
 

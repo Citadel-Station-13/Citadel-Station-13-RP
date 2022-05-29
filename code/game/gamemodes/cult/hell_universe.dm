@@ -26,15 +26,6 @@ In short:
 		for(var/obj/machinery/light/L in T.contents)
 			new /obj/structure/cult/pylon(L.loc)
 			qdel(L)
-	return
-
-
-/datum/universal_state/hell/OnTurfChange(var/turf/T)
-	var/turf/space/S = T
-	if(istype(S))
-		S.color = "#FF0000"
-	else
-		S.color = initial(S.color)
 
 // Apply changes when entering state
 /datum/universal_state/hell/OnEnter()
@@ -54,7 +45,7 @@ In short:
 
 
 /datum/universal_state/hell/proc/AreaSet()
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.sortedAreas)
 		if(!istype(A,/area) || istype(A, /area/space))
 			continue
 
@@ -64,21 +55,20 @@ In short:
 	spawn(0)
 		for(var/datum/lighting_corner/L in world)
 			L.update_lumcount(1, 0, 0)
-
 		for(var/turf/space/T in world)
-			OnTurfChange(T)
+			T.color = "#FF0000"
 
 /datum/universal_state/hell/proc/MiscSet()
 	for(var/turf/simulated/floor/T in world)
 		if(!T.holy && prob(1))
 			new /obj/effect/gateway/active/cult(T)
 
-	for (var/obj/machinery/firealarm/alm in machines)
-		if (!(alm.stat & BROKEN))
+	for (var/obj/machinery/firealarm/alm in GLOB.machines)
+		if (!(alm.machine_stat & BROKEN))
 			alm.ex_act(2)
 
 /datum/universal_state/hell/proc/APCSet()
-	for (var/obj/machinery/power/apc/APC in machines)
-		if (!(APC.stat & BROKEN) && !APC.is_critical)
+	for (var/obj/machinery/power/apc/APC in GLOB.apcs)
+		if (!(APC.machine_stat & BROKEN) && !APC.is_critical)
 			APC.emagged = 1
-			APC.queue_icon_update()
+			APC.update_icon()

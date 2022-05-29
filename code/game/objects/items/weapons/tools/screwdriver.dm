@@ -6,7 +6,9 @@
 	desc = "You can be totally screwwy with this."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "screwdriver"
+	item_state = "screwdriver"
 	slot_flags = SLOT_BELT | SLOT_EARS
+	tool_behaviour = TOOL_SCREWDRIVER
 	force = 6
 	w_class = ITEMSIZE_TINY
 	throwforce = 5
@@ -14,7 +16,9 @@
 	throw_range = 5
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	usesound = 'sound/items/screwdriver.ogg'
-	matter = list(DEFAULT_WALL_MATERIAL = 75)
+	drop_sound = 'sound/items/drop/screwdriver.ogg'
+	pickup_sound = 'sound/items/pickup/screwdriver.ogg'
+	matter = list(MAT_STEEL = 75)
 	attack_verb = list("stabbed")
 	sharp  = 1
 	toolspeed = 1
@@ -22,11 +26,12 @@
 
 /obj/item/tool/screwdriver/suicide_act(mob/user)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
-	viewers(user) << pick("<span class='danger'>\The [user] is stabbing the [src.name] into [TU.his] temple! It looks like [TU.hes] trying to commit suicide.</span>", \
-						"<span class='danger'>\The [user] is stabbing the [src.name] into [TU.his] heart! It looks like [TU.hes] trying to commit suicide.</span>")
+	user.visible_message(pick("<span class='danger'>\The [user] is stabbing the [src.name] into [TU.his] temple! It looks like [TU.hes] trying to commit suicide.</span>", \
+						"<span class='danger'>\The [user] is stabbing the [src.name] into [TU.his] heart! It looks like [TU.hes] trying to commit suicide.</span>"))
 	return(BRUTELOSS)
 
-/obj/item/tool/screwdriver/New()
+/obj/item/tool/screwdriver/Initialize(mapload)
+	. = ..()
 	if(random_color)
 		switch(pick("red","blue","purple","brown","green","cyan","yellow"))
 			if ("red")
@@ -53,7 +58,6 @@
 
 	if (prob(75))
 		src.pixel_y = rand(0, 16)
-	..()
 
 /obj/item/tool/screwdriver/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(!istype(M) || user.a_intent == "help")
@@ -67,6 +71,20 @@
 /obj/item/tool/screwdriver/is_screwdriver()
 	return TRUE
 
+
+/obj/item/tool/screwdriver/bone
+	name = "primitive screwdriver"
+	desc = "A whittled bone with a tapered point, used to remove screws, or stab."
+	icon_state = "screwdriver_bone"
+	random_color = FALSE
+	toolspeed = 1.25
+
+/obj/item/tool/screwdriver/brass
+	name = "brass screwdriver"
+	desc = "A screwdriver with a very sharp tip, that ensures fine deliberate adjustments."
+	icon_state = "screwdriver_brass"
+	toolspeed = 0.75
+	random_color = FALSE
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_screwdriver
 	name = "Precursor Alpha Object - Hard Light Torgue Tool"
@@ -114,12 +132,18 @@
 	usesound = 'sound/items/drill_use.ogg'
 	toolspeed = 0.5
 
+/obj/item/tool/screwdriver/RIGset
+	name = "integrated screwdriver"
+	desc = "If you're seeing this, someone did a dum-dum."
+	usesound = 'sound/items/drill_use.ogg'
+	toolspeed = 0.7
+
 /obj/item/tool/screwdriver/power
 	name = "hand drill"
 	desc = "A simple powered hand drill. It's fitted with a screw bit."
 	icon_state = "drill_screw"
 	item_state = "drill"
-	matter = list(DEFAULT_WALL_MATERIAL = 150, MAT_SILVER = 50)
+	matter = list(MAT_STEEL = 150, MAT_SILVER = 50)
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	slot_flags = SLOT_BELT
 	force = 8
@@ -134,8 +158,8 @@
 	random_color = FALSE
 	var/obj/item/tool/wrench/power/counterpart = null
 
-/obj/item/tool/screwdriver/power/New(newloc, no_counterpart = TRUE)
-	..(newloc)
+/obj/item/tool/screwdriver/power/Initialize(mapload, no_counterpart = TRUE)
+	. = ..()
 	if(!counterpart && no_counterpart)
 		counterpart = new(src, FALSE)
 		counterpart.counterpart = src

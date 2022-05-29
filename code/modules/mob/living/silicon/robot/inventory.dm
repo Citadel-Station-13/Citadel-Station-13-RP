@@ -94,7 +94,6 @@
 		return 1
 	else
 		return 0
-	updateicon()
 
 // This one takes an object's type instead of an instance, as above.
 /mob/living/silicon/robot/proc/has_active_type(var/type_to_compare)
@@ -253,9 +252,9 @@
 	else
 		to_chat(src, "<span class='notice'>You need to disable a module first!</span>")
 
-/mob/living/silicon/robot/put_in_hands(var/obj/item/W) // No hands.
-	W.loc = get_turf(src)
-	return 1
+/mob/living/silicon/robot/put_in_hands(obj/item/I, del_on_fail = FALSE, merge_stacks = TRUE, forced = FALSE)
+	I.forceMove(drop_location())
+	return TRUE
 
 /mob/living/silicon/robot/is_holding_item_of_type(typepath)
 	for(var/obj/item/I in list(module_state_1, module_state_2, module_state_3))

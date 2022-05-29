@@ -27,8 +27,8 @@
 	var/original_mobs = 0
 
 	// In-use spawns from the area
-	var/obj/asteroid_spawner/list/rockspawns = list()
-	var/obj/rogue_mobspawner/list/mobspawns = list()
+	var/list/obj/asteroid_spawner/rockspawns = list()
+	var/list/obj/rogue_mobspawner/mobspawns = list()
 
 /datum/rogue/zonemaster/New(var/area/A)
 	ASSERT(A)
@@ -157,7 +157,6 @@
 						if(/turf/simulated/mineral/vacuum)
 							place_resources(newturf)
 
-					newturf.update_icon(1)
 				else	// Anything not a turf
 					rm_controller.dbg("ZM(pa): Creating [T].")
 					new T(spot)
@@ -168,8 +167,8 @@
 	#define DIGSITESIZE_LOWER 4
 	#define DIGSITESIZE_UPPER 12
 	#define ARTIFACTSPAWNNUM_LOWER 1
-	#define ARTIFACTSPAWNNUM_UPPER 4 //Replace with difficulty-based ones.
-
+	///Replace with difficulty-based ones.
+#define ARTIFACTSPAWNNUM_UPPER 4
 	if(!M.mineral && prob(rm_controller.diffstep_chances[rm_controller.diffstep]))	// Difficulty translates directly into ore chance
 		rm_controller.dbg("ZM(par): Adding mineral to [M.x],[M.y].")
 		M.make_ore(rm_controller.diffstep >= 3 ? 1 : 0)
@@ -305,7 +304,7 @@
 				sleep(delay)
 
 	rm_controller.dbg("ZM(p): Zone generation done.")
-	world.log << "RM(stats): PREP [myarea] at [world.time] with [spawned_mobs.len] mobs, [mineral_rocks.len] minrocks, total of [rockspawns.len] rockspawns, [mobspawns.len] mobspawns." //DEBUG code for playtest stats gathering.
+	to_chat(world.log, "RM(stats): PREP [myarea] at [world.time] with [spawned_mobs.len] mobs, [mineral_rocks.len] minrocks, total of [rockspawns.len] rockspawns, [mobspawns.len] mobspawns.") //DEBUG code for playtest stats gathering.
 	prepared_at = world.time
 	rm_controller.mark_ready(src)
 	return myarea
@@ -365,13 +364,13 @@
 
 	rm_controller.adjust_difficulty(tally)
 	rm_controller.dbg("ZM(sz): Finished scoring and adjusted by [tally].")
-	world.log << "RM(stats): SCORE [myarea] for [tally]."	// DEBUG code for playtest stats gathering.
+	to_chat(world.log, "RM(stats): SCORE [myarea] for [tally].")	// DEBUG code for playtest stats gathering.
 	return tally
 
 // Overall 'destroy' proc (marks as unready)
-/datum/rogue/zonemaster/proc/clean_zone(var/delay = 1)
+/datum/rogue/zonemaster/proc/clean_zone()
 	rm_controller.dbg("ZM(cz): Cleaning zone with area [myarea].")
-	world.log << "RM(stats): CLEAN start [myarea] at [world.time] prepared at [prepared_at]."	// DEBUG code for playtest stats gathering.
+	to_chat(world.log, "RM(stats): CLEAN start [myarea] at [world.time] prepared at [prepared_at].")	// DEBUG code for playtest stats gathering.
 	rm_controller.unmark_ready(src)
 
 	// Cut these lists so qdel can dereference the things properly
@@ -380,44 +379,32 @@
 	rockspawns.Cut()
 	mobspawns.Cut()
 
-	var/ignored = list(
+	var/ignored = typecacheof(list(
 	/obj/asteroid_spawner,
 	/obj/rogue_mobspawner,
 	/obj/effect/shuttle_landmark,
 	/obj/effect/step_trigger/teleporter/roguemine_loop/north,
 	/obj/effect/step_trigger/teleporter/roguemine_loop/south,
 	/obj/effect/step_trigger/teleporter/roguemine_loop/east,
-	/obj/effect/step_trigger/teleporter/roguemine_loop/west)
+	/obj/effect/step_trigger/teleporter/roguemine_loop/west))
 
 	for(var/atom/I in myarea.contents)
-		if(I.type == /turf/space)
-			I.overlays.Cut()
+		if(isturf(I))
+			var/turf/T = I
+			if(!istype(T, /turf/space))
+				T.ChangeTurf(/turf/space)
 			continue
-		else if(!I.simulated)
-			continue
-		else if(I.type in ignored)
-			continue
-		qdel(I)
-		sleep(delay)
-
-	// A deletion so nice that I give it twice
-	for(var/atom/I in myarea.contents)
-		if(I.type == /turf/space)
-			I.overlays.Cut()
-			continue
-		else if(!I.simulated)
-			continue
-		else if(I.type in ignored)
+		else if(ignored[I.type])
 			continue
 		qdel(I)
-		sleep(delay)
+		CHECK_TICK
 
 	// Clean up vars
 	scored = 0
 	original_mobs = 0
 	prepared_at = 0
 
-	world.log << "RM(stats): CLEAN done [myarea] at [world.time]."	// DEBUG code for playtest stats gathering.
+	to_chat(world.log, "RM(stats): CLEAN done [myarea] at [world.time].")	// DEBUG code for playtest stats gathering.
 
 	rm_controller.dbg("ZM(cz): Finished cleaning up zone area [myarea].")
 	rm_controller.mark_clean(src)

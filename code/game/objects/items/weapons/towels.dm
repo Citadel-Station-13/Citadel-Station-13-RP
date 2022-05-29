@@ -8,16 +8,18 @@
 	attack_verb = list("whipped")
 	hitsound = 'sound/weapons/towelwhip.ogg'
 	desc = "A soft cotton towel."
+	drop_sound = 'sound/items/drop/cloth.ogg'
+	pickup_sound = 'sound/items/pickup/cloth.ogg'
 
-/obj/item/weapon/towel/equipped(var/M, var/slot)
+/obj/item/towel/equipped(var/M, var/slot)
 	..()
 	switch(slot)
 		if(slot_head)
-			sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/teshari/head.dmi')
+			sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/head.dmi')
 		if(slot_wear_suit)
-			sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/teshari/suit.dmi')
+			sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/suit.dmi')
 		if(slot_belt)
-			sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/teshari/belt.dmi')
+			sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/belt.dmi')
 
 /obj/item/towel/attack_self(mob/living/user as mob)
 	user.visible_message(text("<span class='notice'>[] uses [] to towel themselves off.</span>", user, src))
@@ -27,6 +29,6 @@
 	else if(user.fire_stacks < 0)
 		user.fire_stacks = (min(0, user.fire_stacks + 1.5))
 
-/obj/item/towel/random/New()
-	..()
-	color = "#"+get_random_colour()
+/obj/item/towel/random/Initialize(mapload)
+	. = ..()
+	add_atom_colour("#"+get_random_colour(), FIXED_COLOUR_PRIORITY)

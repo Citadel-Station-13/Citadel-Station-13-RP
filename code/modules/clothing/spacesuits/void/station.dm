@@ -5,7 +5,7 @@
 	desc = "A special helmet designed for work in a hazardous, low-pressure environment. Has radiation shielding."
 	icon_state = "rig0-engineering"
 	item_state_slots = list(slot_r_hand_str = "eng_helm", slot_l_hand_str = "eng_helm")
-	armor = list(melee = 40, bullet = 5, laser = 20, energy = 5, bomb = 35, bio = 100, rad = 80)
+	armor = list(melee = 40, bullet = 5, laser = 20, energy = 5, bomb = 35, bio = 100, rad = 100)
 	min_pressure_protection = 0  * ONE_ATMOSPHERE
 	max_pressure_protection = 15 * ONE_ATMOSPHERE
 
@@ -15,7 +15,7 @@
 	icon_state = "rig-engineering"
 	item_state_slots = list(slot_r_hand_str = "eng_voidsuit", slot_l_hand_str = "eng_voidsuit")
 	slowdown = 1
-	armor = list(melee = 40, bullet = 5, laser = 20, energy = 5, bomb = 35, bio = 100, rad = 80)
+	armor = list(melee = 40, bullet = 5, laser = 20, energy = 5, bomb = 35, bio = 100, rad = 100)
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/storage/bag/ore,/obj/item/t_scanner,/obj/item/pickaxe, /obj/item/rcd)
 	min_pressure_protection = 0  * ONE_ATMOSPHERE
 	max_pressure_protection = 15 * ONE_ATMOSPHERE
@@ -44,7 +44,7 @@
 	item_state_slots = list(slot_r_hand_str = "eng_helm_con", slot_l_hand_str = "eng_helm_con")
 
 /obj/item/clothing/suit/space/void/engineering/construction
-	name = "contstruction voidsuit"
+	name = "construction voidsuit"
 	icon_state = "rig-engineering_con"
 	item_state_slots = list(slot_r_hand_str = "eng_voidsuit_con", slot_l_hand_str = "eng_voidsuit_con")
 
@@ -86,7 +86,7 @@
 	desc = "A special helmet designed for work in a hazardous, low pressure environment. Has reinforced plating."
 	icon_state = "rig0-mining"
 	item_state_slots = list(slot_r_hand_str = "mining_helm", slot_l_hand_str = "mining_helm")
-	armor = list(melee = 50, bullet = 5, laser = 20, energy = 5, bomb = 55, bio = 100, rad = 20)
+	armor = list(melee = 50, bullet = 5, laser = 20, energy = 5, bomb = 55, bio = 100, rad = 65)
 	light_overlay = "helmet_light_dual"
 
 /obj/item/clothing/suit/space/void/mining
@@ -95,7 +95,7 @@
 	icon_state = "rig-mining"
 	item_state_slots = list(slot_r_hand_str = "mining_voidsuit", slot_l_hand_str = "mining_voidsuit")
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/pickaxe)
-	armor = list(melee = 50, bullet = 5, laser = 20, energy = 5, bomb = 55, bio = 100, rad = 20)
+	armor = list(melee = 50, bullet = 5, laser = 20, energy = 5, bomb = 55, bio = 100, rad = 65)
 
 //Mining Surplus Voidsuit
 
@@ -103,13 +103,13 @@
 	name = "frontier mining voidsuit helmet"
 	desc = "An armored cheap voidsuit helmet. Someone must have through they were pretty cool when they painted a mohawk on it."
 	icon_state = "rig0-miningalt"
-	armor = list(melee = 50, bullet = 15, laser = 20,energy = 5, bomb = 55, bio = 100, rad = 0)
+	armor = list(melee = 50, bullet = 15, laser = 20,energy = 5, bomb = 55, bio = 100, rad = 20)
 
 /obj/item/clothing/suit/space/void/mining/alt
 	icon_state = "rig-miningalt"
 	name = "frontier mining voidsuit"
 	desc = "A cheap prospecting voidsuit. What it lacks in comfort it makes up for in armor plating and street cred."
-	armor = list(melee = 50, bullet = 15, laser = 20,energy = 5, bomb = 55, bio = 100, rad = 0)
+	armor = list(melee = 50, bullet = 15, laser = 20,energy = 5, bomb = 55, bio = 100, rad = 20)
 
 //Medical
 /obj/item/clothing/head/helmet/space/void/medical
@@ -163,12 +163,26 @@
 	armor = list(melee = 20, bullet = 5, laser = 20,energy = 5, bomb = 15, bio = 100, rad = 30)
 	light_overlay = "helmet_light_dual_blue"
 
+/obj/item/clothing/head/helmet/space/void/medical/alt_plated
+	name = "streamlined medical voidsuit helmet"
+	desc = "A trendy, fully biohazard and radiation-shielded voidsuit helmet trimmed in a sleek blue."
+	icon_state = "rig0-medicalalt2"
+	armor = list(melee = 35, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 100)
+	light_overlay = "helmet_light_dual_blue"
+
 /obj/item/clothing/suit/space/void/medical/alt
 	icon_state = "rig-medicalalt"
 	name = "streamlined medical voidsuit"
 	desc = "A more recent model of Vey-Med voidsuit, exchanging physical protection for fully unencumbered movement and a complete range of motion."
 	slowdown = 0
 	armor = list(melee = 20, bullet = 5, laser = 20,energy = 5, bomb = 15, bio = 100, rad = 30)
+
+/obj/item/clothing/suit/space/void/medical/alt_plated
+	icon_state = "rig-medicalalt2"
+	name = "plated medical voidsuit"
+	desc = "An iteration of an existing Vey-Med voidsuit, allowing full biohazard, radiation and increased close-quarters protection, at the expense of projectile and ranged layers."
+	slowdown = 0
+	armor = list(melee = 35, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 100)
 
 //Security
 /obj/item/clothing/head/helmet/space/void/security
@@ -214,6 +228,18 @@
 	desc = "A heavily armored voidsuit, designed to intimidate people who find black intimidating. Surprisingly slimming."
 	armor = list(melee = 70, bullet = 20, laser = 30, energy = 5, bomb = 35, bio = 100, rad = 10)
 	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton)
+
+//Cydonia Armor
+/obj/item/clothing/head/helmet/space/void/security/cydonia
+	name = "cydonian helmet"
+	desc = "A special helmet designed with form and function in mind, capable of protecting the wearer from trauma and hazardous environments."
+	icon_state = "knight_cydonia"
+	light_overlay = "ck_overlay"
+
+/obj/item/clothing/suit/space/void/security/cydonia
+	name = "cydonian voidsuit"
+	desc = "A bulky, but well armored suit capable of protecting the wearer from both trauma and hazardous environments."
+	icon_state = "knight_cydonia"
 
 //Atmospherics
 /obj/item/clothing/head/helmet/space/void/atmos
@@ -261,7 +287,7 @@
 	icon_state = "helm_explorer"
 	item_state = "helm_explorer"
 	item_state_slots = list(slot_r_hand_str = "syndicate-helm-black", slot_l_hand_str = "syndicate-helm-black")
-	armor = list(melee = 40, bullet = 15, laser = 25,energy = 35, bomb = 30, bio = 100, rad = 70)
+	armor = list(melee = 40, bullet = 15, laser = 25,energy = 35, bomb = 30, bio = 70, rad = 70)
 	light_overlay = "helmet_light_dual" //explorer_light
 
 /obj/item/clothing/suit/space/void/exploration
@@ -269,7 +295,7 @@
 	desc = "A lightweight, radiation-resistant voidsuit, featuring the Explorer emblem on its chest plate. Designed for exploring unknown planetary environments."
 	icon_state = "void_explorer"
 	item_state_slots = list(slot_r_hand_str = "skrell_suit_black", slot_l_hand_str = "skrell_suit_black")
-	armor = list(melee = 40, bullet = 15, laser = 25,energy = 35, bomb = 30, bio = 100, rad = 70)
+	armor = list(melee = 40, bullet = 15, laser = 25,energy = 35, bomb = 30, bio = 70, rad = 70)
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/stack/flag,/obj/item/healthanalyzer,/obj/item/gps,/obj/item/radio/beacon, \
 	/obj/item/shovel,/obj/item/ammo_magazine,/obj/item/gun)
 
@@ -283,6 +309,23 @@
 	desc = "A lightweight, radiation-resistant voidsuit. Retrofitted for exploring unknown planetary environments."
 	icon_state = "void_explorer2"
 	item_state_slots = list(slot_r_hand_str = "skrell_suit_white", slot_l_hand_str = "skrell_suit_white")
+
+/obj/item/clothing/head/helmet/space/void/exploration/pathfinder
+	name = "pathfinder voidsuit helmet"
+	desc = "A comfortable helmet designed to provide protection for Pathfinder units on long-term operations."
+	icon_state = "helm_explorer_pf"
+	item_state = "helm_explorer_pf"
+	armor = list(melee = 40, bullet = 25, laser = 25,energy = 40, bomb = 30, bio = 100, rad = 70)
+
+/obj/item/clothing/suit/space/void/exploration/pathfinder
+	name = "pathfinder voidsuit"
+	desc = "A versatile, armored voidsuit, featuring the Pathfinder emblem on its chest plate. Designed for long deployments in unknown planetary environments."
+	icon_state = "void_explorer_pf"
+	item_state_slots = list(slot_r_hand_str = "skrell_suit_black", slot_l_hand_str = "skrell_suit_black")
+	armor = list(melee = 50, bullet = 40, laser = 45,energy = 45, bomb = 30, bio = 100, rad = 70)
+	move_speed = 7
+	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/stack/flag,/obj/item/healthanalyzer,/obj/item/gps,/obj/item/radio/beacon, \
+	/obj/item/shovel,/obj/item/ammo_magazine,/obj/item/gun)
 
 //Pilot
 /obj/item/clothing/head/helmet/space/void/pilot
@@ -343,28 +386,48 @@
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun)
 	slowdown = 1.5
 
-/obj/item/clothing/head/helmet/space/void/security/alt/para
+//PARA
+/obj/item/clothing/head/helmet/space/void/para
 	name = "PARA void helmet"
 	desc = "A voidsuit helmet bearing the icon of the PMD. Much like the 'MAW' system, this shields from memetic effects."
 	icon_state = "para_ert_void"
+	item_state_slots = list(slot_r_hand_str = "sec_helm", slot_l_hand_str = "sec_helm")
+	armor = list(melee = 70, bullet = 20, laser = 30, energy = 50, bomb = 35, bio = 100, rad = 10)
+	siemens_coefficient = 0.7
 	light_overlay = "helmet_light_dual" //explorer_light
+	flash_protection = FLASH_PROTECTION_MAJOR
 
-/obj/item/clothing/helmet/space/void/security/alt/para/Initialize(mob/living/carbon/human/H, src)
-	. = ..()
-	if(H.mind.isholy)
-		flash_protection = FLASH_PROTECTION_MAJOR
-	return
 
-/obj/item/clothing/suit/space/void/security/alt/para
+/obj/item/clothing/suit/space/void/para
 	name = "PARA void suit"
 	desc = "A spaceproof suit covered in foreign spells and magical protection, meant to defend a trained wearer in more than one way."
 	icon_state = "para_ert_void"
-	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton, /obj/item/nullrod)
+	item_state_slots = list(slot_r_hand_str = "sec_voidsuit", slot_l_hand_str = "sec_voidsuit")
+	armor = list(melee = 70, bullet = 20, laser = 30, energy = 50, bomb = 35, bio = 100, rad = 10)
+	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton,/obj/item/ammo_magazine,/obj/item/nullrod)
+	siemens_coefficient = 0.7
+	var/anti_magic = TRUE
 
-	var/anti_magic = FALSE
+//Gimmick and "Costume" Tier Voidsuits
 
-/obj/item/clothing/suit/space/void/security/alt/para/Initialize(mob/living/carbon/human/H, src)
-	. = ..()
-	if(H.mind.isholy)
-		anti_magic = TRUE
-	return
+/obj/item/clothing/head/helmet/space/void/para/soror
+	name = "inquisitorial bodyguard helmet"
+	desc = "A voidsuit helmet bearing the icon of the PMD. Much like the 'MAW' system, this shields from memetic effects."
+	icon_state = "knight_inq"
+	light_overlay = "ik_overlay"
+
+/obj/item/clothing/suit/space/void/para/soror
+	name = "inquisitorial bodyguard suit"
+	desc = "A spaceproof suit provided to PARA attached to Inquisitorial escort duty."
+	icon_state = "knight_inq"
+
+/obj/item/clothing/head/helmet/space/void/para/grey_knight
+	name = "spell knight helmet"
+	desc = "A bulky silver helmet sometimes worn by PMD agents due to its arcane utility."
+	icon_state = "knight_grey"
+	light_overlay = "gk_overlay"
+
+/obj/item/clothing/suit/space/void/para/grey_knight
+	name = "spell knight voidsuit"
+	desc = "An icredibly heavy suit of anti-magic armor worn by augmented PMD agents."
+	icon_state = "knight_grey"

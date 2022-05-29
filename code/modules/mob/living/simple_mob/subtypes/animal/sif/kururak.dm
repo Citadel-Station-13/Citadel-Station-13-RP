@@ -36,6 +36,7 @@
 
 	maxHealth = 200
 	health = 200
+	randomized = TRUE
 
 	universal_understand = 1
 
@@ -91,8 +92,8 @@
 	health = 250
 	instinct = 50
 
-/mob/living/simple_mob/animal/sif/kururak/Initialize()
-	..()
+/mob/living/simple_mob/animal/sif/kururak/Initialize(mapload)
+	. = ..()
 	if(!instinct)
 		if(prob(20))
 			instinct = rand(6, 10)
@@ -143,7 +144,7 @@
 	set desc = "Disorient a creature within range."
 
 	if(world.time < last_flash_time + special_attack_cooldown)
-		to_chat(src, span("warning", "You do not have the focus to do this so soon.."))
+		to_chat(src, SPAN_WARNING( "You do not have the focus to do this so soon.."))
 		return
 
 	last_flash_time = world.time
@@ -153,7 +154,7 @@
 	set waitfor = FALSE
 
 	if(stat)
-		to_chat(src, span("warning","You cannot move your tails in this state.."))
+		to_chat(src, SPAN_WARNING("You cannot move your tails in this state.."))
 		return
 
 	if(!A && src.client)
@@ -172,7 +173,7 @@
 		A = input(src,"What do we wish to flash?") in null|choices
 
 
-	visible_message(span("alien","\The [src] flares its tails!"))
+	visible_message(SPAN_ALIEN("\The [src] flares its tails!"))
 	if(isliving(A))
 		var/mob/living/L = A
 		if(iscarbon(L))
@@ -185,7 +186,7 @@
 						var/mob/living/carbon/human/H = C
 						flash_strength *= H.species.flash_mod
 						if(flash_strength > 0)
-							to_chat(H, span("alien","You are disoriented by \the [src]!"))
+							to_chat(H, SPAN_ALIEN("You are disoriented by \the [src]!"))
 							H.Confuse(flash_strength + 5)
 							H.Blind(flash_strength)
 							H.eye_blurry = max(H.eye_blurry, flash_strength + 5)
@@ -204,7 +205,7 @@
 							shield.adjust_flash_count(R, 1)
 							flashfail = TRUE
 				if(!flashfail)
-					to_chat(R, span("alien","Your optics are scrambled by \the [src]!"))
+					to_chat(R, SPAN_ALIEN("Your optics are scrambled by \the [src]!"))
 					R.Confuse(10)
 					R.flash_eyes()
 
@@ -232,7 +233,7 @@
 	set desc = "Strike viciously at an entity within range."
 
 	if(world.time < last_strike_time + special_attack_cooldown)
-		to_chat(src, span("warning", "Your claws cannot take that much stress in so short a time.."))
+		to_chat(src, SPAN_WARNING( "Your claws cannot take that much stress in so short a time.."))
 		return
 
 	last_strike_time = world.time
@@ -240,7 +241,7 @@
 
 /mob/living/simple_mob/animal/sif/kururak/proc/rending_strike(atom/A)
 	if(stat)
-		to_chat(src, span("warning","You cannot strike in this state.."))
+		to_chat(src, SPAN_WARNING("You cannot strike in this state.."))
 		return
 
 	if(!A && src.client)
@@ -254,7 +255,7 @@
 				choices += M
 
 		if(!choices.len)
-			to_chat(src, span("warning","There are no viable targets within range..."))
+			to_chat(src, SPAN_WARNING("There are no viable targets within range..."))
 			return
 
 		A = input(src,"What do we wish to strike?") in null|choices
@@ -265,7 +266,7 @@
 
 	var/damage_to_apply = rand(melee_damage_lower, melee_damage_upper) + 10
 	if(isliving(A))
-		visible_message(span("danger","\The [src] rakes its claws across [A]."))
+		visible_message(SPAN_DANGER("\The [src] rakes its claws across [A]."))
 		var/mob/living/L = A
 		if(ishuman(L))
 			var/mob/living/carbon/human/H = L
@@ -277,11 +278,11 @@
 		L.add_modifier(/datum/modifier/grievous_wounds, 60 SECONDS)
 
 	else if(istype(A, /obj/mecha))
-		visible_message(span("danger","\The [src] rakes its claws against \the [A]."))
+		visible_message(SPAN_DANGER("\The [src] rakes its claws against \the [A]."))
 		var/obj/mecha/M = A
 		M.take_damage(damage_to_apply)
 		if(prob(3) && do_after(src, 5))
-			visible_message(span("critical","\The [src]'s strike ripped \the [M]'s access hatch open, allowing it to drag [M.occupant] out!"))
+			visible_message(SPAN_CRITICAL("\The [src]'s strike ripped \the [M]'s access hatch open, allowing it to drag [M.occupant] out!"))
 			M.go_out()
 
 	else
@@ -301,7 +302,7 @@
 			if(K.faction != src.faction)
 				continue
 			var/datum/ai_holder/AI = K.ai_holder
-			to_chat(K, span("notice","The pack leader wishes for you to follow them."))
+			to_chat(K, SPAN_NOTICE("The pack leader wishes for you to follow them."))
 			AI.set_follow(src)
 
 /mob/living/simple_mob/animal/sif/kururak/proc/detect_instinct()	// Will return the Kururak within 10 tiles that has the highest instinct.

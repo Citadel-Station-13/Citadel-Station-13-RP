@@ -3,14 +3,16 @@
 	desc = "a red pillar candle. Its specially-formulated fuel-oxidizer wax mixture allows continued combustion in airless environments."
 	icon = 'icons/obj/candle.dmi'
 	icon_state = "candle1"
+	drop_sound = 'sound/items/drop/gloves.ogg'
+	pickup_sound = 'sound/items/pickup/gloves.ogg'
 	w_class = ITEMSIZE_TINY
 	light_color = "#E09D37"
 	var/wax = 2000
 	var/icon_type = "candle"
 
-/obj/item/flame/candle/New()
+/obj/item/flame/candle/Initialize(mapload)
+	. = ..()
 	wax -= rand(800, 1000) // Enough for 27-33 minutes. 30 minutes on average.
-	..()
 
 /obj/item/flame/candle/update_icon()
 	var/i
@@ -20,7 +22,6 @@
 		i = 2
 	else i = 3
 	icon_state = "[icon_type][i][lit ? "_lit" : ""]"
-
 
 /obj/item/flame/candle/attackby(obj/item/W as obj, mob/user as mob)
 	..()
@@ -49,7 +50,7 @@
 		set_light(CANDLE_LUM)
 		START_PROCESSING(SSobj, src)
 
-/obj/item/flame/candle/process()
+/obj/item/flame/candle/process(delta_time)
 	if(!lit)
 		return
 	wax--
@@ -110,13 +111,22 @@
 /obj/item/flame/candle/everburn
 	wax = 99999
 
-/obj/item/flame/candle/everburn/Initialize()
+/obj/item/flame/candle/everburn/Initialize(mapload)
 	. = ..()
 	light("<span class='notice'>\The [src] mysteriously lights itself!.</span>")
+
+/obj/item/flame/candle/everburn/white
+	desc = "a white pillar candle. Its specially-formulated fuel-oxidizer wax mixture allows continued combustion in airless environments."
+	icon_state = "whitecandle"
+	icon_type = "whitecandle"
+/obj/item/flame/candle/everburn/black
+	desc = "a black pillar candle. Ominous."
+	icon_state = "blackcandle"
+	icon_type = "blackcandle"
 
 /obj/item/flame/candle/candelabra/everburn
 	wax = 99999
 
-/obj/item/flame/candle/candelabra/everburn/Initialize()
+/obj/item/flame/candle/candelabra/everburn/Initialize(mapload)
 	. = ..()
 	light("<span class='notice'>\The [src] mysteriously lights itself!.</span>")

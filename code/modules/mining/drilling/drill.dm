@@ -18,16 +18,17 @@
 	var/obj/item/radio/intercom/faultreporter = new /obj/item/radio/intercom{channels=list("Supply")}(null)
 
 	var/list/ore_types = list(
-		"hematite" = /obj/item/ore/iron,
-		"uranium" = /obj/item/ore/uranium,
-		"gold" = /obj/item/ore/gold,
-		"silver" = /obj/item/ore/silver,
-		"diamond" = /obj/item/ore/diamond,
-		"phoron" = /obj/item/ore/phoron,
-		"osmium" = /obj/item/ore/osmium,
+		MAT_HEMATITE = /obj/item/ore/iron,
+		MAT_URANIUM = /obj/item/ore/uranium,
+		MAT_GOLD = /obj/item/ore/gold,
+		MAT_SILVER = /obj/item/ore/silver,
+		MAT_COPPER = /obj/item/ore/copper,
+		MAT_DIAMOND = /obj/item/ore/diamond,
+		MAT_PHORON = /obj/item/ore/phoron,
+		MAT_OSMIUM = /obj/item/ore/osmium,
 		"hydrogen" = /obj/item/ore/hydrogen,
 		"silicates" = /obj/item/ore/glass,
-		"carbon" = /obj/item/ore/coal
+		MAT_CARBON = /obj/item/ore/coal
 		)
 
 	//Upgrades
@@ -65,7 +66,7 @@
 /obj/machinery/mining/drill/get_cell()
 	return cell
 
-/obj/machinery/mining/drill/process()
+/obj/machinery/mining/drill/process(delta_time)
 
 	if(need_player_check)
 		return
@@ -310,7 +311,7 @@
 	var/obj/structure/ore_box/B = locate() in orange(1)
 	if(B)
 		for(var/obj/item/ore/O in contents)
-			O.loc = B
+			B.take(O)
 		to_chat(usr, "<span class='notice'>You unload the drill's storage cache into the ore box.</span>")
 	else
 		to_chat(usr, "<span class='notice'>You must move an ore box up to the drill before you can unload it.</span>")
@@ -323,9 +324,8 @@
 	circuit = /obj/item/circuitboard/miningdrillbrace
 	var/obj/machinery/mining/drill/connected
 
-/obj/machinery/mining/brace/New()
-	..()
-
+/obj/machinery/mining/brace/Initialize(mapload, newdir)
+	. = ..()
 	component_parts = list()
 
 /obj/machinery/mining/brace/attackby(obj/item/W as obj, mob/user as mob)

@@ -59,5 +59,5 @@
 	initial_sprite_stack = list("", "top-science-explorer")
 
 //Ditto in southern_cross_jobs_vr.dm
-/obj/item/card/id/science/head/pathfinder
+/obj/item/card/id/explorer/head/pathfinder
 	initial_sprite_stack = list("", "top-science-explorer", "pips-gold")

@@ -5,6 +5,6 @@
 
 /datum/topic_state/deep_inventory_state/can_use_topic(var/src_object, var/mob/user)
 	if(!user.contains(src_object))
-		return STATUS_CLOSE
+		return UI_CLOSE
 
 	return user.shared_nano_interaction()

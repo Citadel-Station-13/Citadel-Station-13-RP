@@ -13,11 +13,11 @@
 //	flags_inv = HIDEEARS|BLOCKHAIR
 
 	//Species-specific stuff.
-	species_restricted = list("Human", "Promethean", "Alraune")
+	species_restricted = list(SPECIES_HUMAN, SPECIES_PROMETHEAN, SPECIES_ALRAUNE)
 	sprite_sheets_refit = list(
-		SPECIES_UNATHI = 'icons/mob/species/unathi/helmet.dmi',
-		SPECIES_TAJ = 'icons/mob/species/tajaran/helmet.dmi',
-		SPECIES_SKRELL = 'icons/mob/species/skrell/helmet.dmi'
+		SPECIES_UNATHI = 'icons/mob/clothing/species/unathi/helmet.dmi',
+		SPECIES_TAJ = 'icons/mob/clothing/species/tajaran/helmet.dmi',
+		SPECIES_SKRELL = 'icons/mob/clothing/species/skrell/helmet.dmi'
 		//Teshari have a general sprite sheet defined in modules/clothing/clothing.dm
 		)
 	sprite_sheets_obj = list(
@@ -43,19 +43,25 @@
 	min_pressure_protection = 0 * ONE_ATMOSPHERE
 	max_pressure_protection = 10 * ONE_ATMOSPHERE
 
-	species_restricted = list("Human", SPECIES_SKRELL, "Promethean")
+	species_restricted = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_PROMETHEAN)
 	sprite_sheets_refit = list(
-		SPECIES_UNATHI = 'icons/mob/species/unathi/suit.dmi',
-		SPECIES_TAJ = 'icons/mob/species/tajaran/suit.dmi',
-		SPECIES_SKRELL = 'icons/mob/species/skrell/suit.dmi'
+		SPECIES_UNATHI = 'icons/mob/clothing/species/unathi/suit.dmi',
+		SPECIES_TAJ = 'icons/mob/clothing/species/tajaran/suit.dmi',
+		SPECIES_SKRELL = 'icons/mob/clothing/species/skrell/suit.dmi'
 		//Teshari have a general sprite sheet defined in modules/clothing/clothing.dm
 		)
 	sprite_sheets_obj = list(
-		SPECIES_UNATHI = 'icons/obj/clothing/species/unathi/suits.dmi',
-		SPECIES_TAJ = 'icons/obj/clothing/species/tajaran/suits.dmi',
-		SPECIES_SKRELL = 'icons/obj/clothing/species/skrell/suits.dmi',
-		SPECIES_TESHARI = 'icons/obj/clothing/species/teshari/suits.dmi',
-		SPECIES_VOX = 'icons/obj/clothing/species/vox/suits.dmi'
+		SPECIES_TAJ				= 'icons/obj/clothing/species/tajaran/suits.dmi',
+		SPECIES_SKRELL			= 'icons/obj/clothing/species/skrell/suits.dmi',
+		SPECIES_UNATHI			= 'icons/obj/clothing/species/unathi/suits.dmi',
+		SPECIES_TESHARI			= 'icons/obj/clothing/species/teshari/suits.dmi',
+		SPECIES_NEVREAN			= 'icons/obj/clothing/species/nevrean/suits.dmi',
+		SPECIES_AKULA			= 'icons/obj/clothing/species/akula/suits.dmi',
+		SPECIES_SERGAL			= 'icons/obj/clothing/species/sergal/suits.dmi',
+		SPECIES_ZORREN_FLAT		= 'icons/obj/clothing/species/fennec/suits.dmi',
+		SPECIES_ZORREN_HIGH		= 'icons/obj/clothing/species/fox/suits.dmi',
+		SPECIES_VULPKANIN		= 'icons/obj/clothing/species/vulpkanin/suits.dmi',
+		SPECIES_PROMETHEAN		= 'icons/obj/clothing/species/skrell/suits.dmi'
 		)
 
 	//Breach thresholds, should ideally be inherited by most (if not all) voidsuits.
@@ -71,14 +77,14 @@
 
 	action_button_name = "Toggle Helmet"
 
-/obj/item/clothing/suit/space/void/examine(user)
-	..(user)
+/obj/item/clothing/suit/space/void/examine(mob/user)
+	. = ..()
 	var/list/part_list = new
 	for(var/obj/item/I in list(helmet,boots,tank,cooler))
 		part_list += "\a [I]"
-	to_chat(user, "\The [src] has [english_list(part_list)] installed.")
+	. += "\The [src] has [english_list(part_list)] installed."
 	if(tank && in_range(src,user))
-		to_chat(user, "<span class='notice'>The wrist-mounted pressure gauge reads [max(round(tank.air_contents.return_pressure()),0)] kPa remaining in \the [tank].</span>")
+		. += "<span class='notice'>The wrist-mounted pressure gauge reads [max(round(tank.air_contents.return_pressure()),0)] kPa remaining in \the [tank].</span>"
 
 /obj/item/clothing/suit/space/void/refit_for_species(var/target_species)
 	..()
@@ -176,7 +182,7 @@
 
 	if(H.head == helmet)
 		to_chat(H, "<span class='notice'>You retract your suit helmet.</span>")
-		playsound(src, 'modular_citadel/sound/items/helmetdeploy.ogg', 40, 1)
+		playsound(src, 'sound/items/helmetdeploy.ogg', 40, 1)
 		helmet.canremove = 1
 		H.drop_from_inventory(helmet)
 		helmet.forceMove(src)
@@ -188,7 +194,7 @@
 			helmet.pickup(H)
 			helmet.canremove = 0
 			to_chat(H, "<span class='info'>You deploy your suit helmet, sealing you off from the world.</span>")
-			playsound(src, 'modular_citadel/sound/items/helmetdeploy.ogg', 40, 1)
+			playsound(src, 'sound/items/helmetdeploy.ogg', 40, 1)
 	helmet.update_light(H)
 
 /obj/item/clothing/suit/space/void/verb/toggle_magboots()

@@ -1,0 +1,188 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"b" = (
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/explored)
+"e" = (
+/turf/simulated/floor/water/shoreline/classh{
+	dir = 9
+	},
+/area/class_h/explored)
+"g" = (
+/turf/simulated/floor/water/shoreline/classh,
+/area/class_h/explored)
+"h" = (
+/obj/random/outcrop,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/explored)
+"i" = (
+/turf/simulated/floor/water/shoreline/classh{
+	dir = 10
+	},
+/area/class_h/explored)
+"j" = (
+/turf/simulated/floor/water/classh,
+/area/class_h/explored)
+"q" = (
+/turf/simulated/floor/water/shoreline/classh{
+	dir = 1
+	},
+/area/class_h/explored)
+"s" = (
+/turf/simulated/floor/water/shoreline/corner/classh{
+	dir = 8
+	},
+/area/class_h/explored)
+"u" = (
+/turf/simulated/floor/water/shoreline/classh{
+	dir = 5
+	},
+/area/class_h/explored)
+"A" = (
+/turf/simulated/floor/water/shoreline/classh{
+	dir = 8
+	},
+/area/class_h/explored)
+"B" = (
+/turf/simulated/floor/water/shoreline/classh{
+	dir = 6
+	},
+/area/class_h/explored)
+"C" = (
+/turf/simulated/floor/water/shoreline/corner/classh{
+	dir = 1
+	},
+/area/class_h/explored)
+"I" = (
+/turf/simulated/floor/water/shoreline/corner/classh,
+/area/class_h/explored)
+"N" = (
+/turf/simulated/floor/water/shoreline/corner/classh{
+	dir = 4
+	},
+/area/class_h/explored)
+"V" = (
+/turf/simulated/floor/water/shoreline/classh{
+	dir = 4
+	},
+/area/class_h/explored)
+
+(1,1,1) = {"
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+"}
+(2,1,1) = {"
+b
+h
+b
+I
+A
+A
+A
+s
+h
+b
+"}
+(3,1,1) = {"
+b
+b
+I
+B
+j
+j
+j
+u
+s
+b
+"}
+(4,1,1) = {"
+b
+I
+B
+j
+j
+j
+j
+j
+q
+b
+"}
+(5,1,1) = {"
+b
+g
+j
+j
+j
+j
+j
+e
+N
+b
+"}
+(6,1,1) = {"
+b
+g
+j
+j
+j
+j
+e
+N
+h
+b
+"}
+(7,1,1) = {"
+b
+C
+i
+j
+j
+j
+q
+b
+b
+b
+"}
+(8,1,1) = {"
+b
+b
+C
+i
+j
+e
+N
+b
+b
+b
+"}
+(9,1,1) = {"
+b
+h
+b
+C
+V
+N
+h
+b
+b
+b
+"}
+(10,1,1) = {"
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+"}

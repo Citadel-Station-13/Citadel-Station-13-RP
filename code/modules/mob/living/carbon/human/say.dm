@@ -3,7 +3,7 @@
 	if(name != GetVoice())
 		alt_name = "(as [get_id_name("Unknown")])"
 
-	message = sanitize_or_reflect(message,src) //VOREStation Edit - Reflect too-long messages, within reason
+	message = sanitize_or_reflect(message,src) // Reflect too-long messages, within reason
 	..(message, alt_name = alt_name, whispering = whispering)
 
 /mob/living/carbon/human/proc/forcesay(list/append)
@@ -138,7 +138,7 @@
 	return verb
 
 /mob/living/carbon/human/handle_speech_problems(var/list/message_data)
-	if(silent || (sdisabilities & MUTE))
+	if(sdisabilities & MUTE)
 		message_data[1] = ""
 		. = 1
 

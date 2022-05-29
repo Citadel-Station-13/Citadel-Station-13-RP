@@ -19,13 +19,15 @@
 	icon_state = "pickaxe"
 	item_state = "jackhammer"
 	w_class = ITEMSIZE_LARGE
-	matter = list(DEFAULT_WALL_MATERIAL = 3750)
+	matter = list(MAT_STEEL = 3750)
 	var/digspeed = 40 //moving the delay to an item var so R&D can make improved picks. --NEO
+	var/sand_dig = FALSE
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	attack_verb = list("hit", "pierced", "sliced", "attacked")
 	var/drill_sound = 'sound/weapons/Genhit.ogg'
 	var/drill_verb = "drilling"
 	sharp = 1
+	var/active = 1
 
 	var/excavation_amount = 200
 	var/destroy_artefacts = FALSE // some mining tools will destroy artefacts completely while avoiding side-effects.
@@ -46,6 +48,7 @@
 	origin_tech = list(TECH_MATERIAL = 2, TECH_POWER = 3, TECH_ENGINEERING = 2)
 	desc = "Yours is the drill that will pierce through the rock walls."
 	drill_verb = "drilling"
+	sand_dig = TRUE
 
 /obj/item/pickaxe/jackhammer
 	name = "sonic jackhammer"
@@ -88,7 +91,7 @@
 	desc = "A pickaxe with a diamond pick head."
 	drill_verb = "picking"
 
-/obj/item/pickaxe/diamonddrill //When people ask about the badass leader of the mining tools, they are talking about ME!
+/obj/item/pickaxe/diamonddrill // When people ask about the badass leader of the mining tools, they are talking about ME!
 	name = "diamond mining drill"
 	icon_state = "diamonddrill"
 	item_state = "jackhammer"
@@ -96,6 +99,7 @@
 	origin_tech = list(TECH_MATERIAL = 6, TECH_POWER = 4, TECH_ENGINEERING = 5)
 	desc = "Yours is the drill that will pierce the heavens!"
 	drill_verb = "drilling"
+	sand_dig = TRUE
 
 /obj/item/pickaxe/borgdrill
 	name = "enhanced sonic jackhammer"
@@ -104,6 +108,7 @@
 	digspeed = 15
 	desc = "Cracks rocks with sonic blasts. This one seems like an improved design."
 	drill_verb = "hammering"
+	sand_dig = TRUE
 
 /obj/item/pickaxe/icepick //Cannot actually lobotomize people. Yet.
 	name = "icepick"
@@ -114,12 +119,133 @@
 	icon_state = "icepick"
 	item_state = "spickaxe" //im lazy fuck u
 	w_class = ITEMSIZE_SMALL
-	matter = list(DEFAULT_WALL_MATERIAL = 2750, "titanium" = 2000) 
+	matter = list(MAT_STEEL = 2750, MAT_TITANIUM = 2000)
 	digspeed = 25 //More expensive than a diamond pick, a lot smaller but decently slower.
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	attack_verb = list("mined", "pierced", "stabbed", "attacked")
 	drill_verb = "picking"
 	sharp = 1
+
+//Snowflake drill that works like a chainsaw! How fun. Honestly they should probably all work like this or something. I dunno. Might be a fun mining overhaul later.
+/obj/item/pickaxe/tyrmalin
+	name = "\improper Tyrmalin excavator"
+	desc = "A mining drill build from scrap parts, often found on Tyrmalin mining operations. No two are alike."
+	icon_state = "goblindrill"
+	item_state = "goblindrill"
+	destroy_artefacts = TRUE
+	var/max_fuel = 100
+	active = 0
+	var/jam_chance = TRUE
+
+/obj/item/pickaxe/tyrmalin/Initialize(mapload)
+	. = ..()
+	var/datum/reagents/R = new/datum/reagents(max_fuel)
+	reagents = R
+	R.my_atom = src
+	R.add_reagent("fuel", max_fuel)
+	START_PROCESSING(SSobj, src)
+
+/obj/item/pickaxe/tyrmalin/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+
+obj/item/pickaxe/tyrmalin/proc/turnOn(mob/user as mob)
+	if(active) return
+
+	to_chat(user, "You start pulling the string on \the [src].")
+	//visible_message("[usr] starts pulling the string on the [src].")
+
+	if(max_fuel <= 0)
+		if(do_after(user, 15))
+			to_chat(user, "\The [src] won't start!")
+		else
+			to_chat(user, "You fumble with the string.")
+	else
+		if(do_after(user, 15))
+			to_chat(user, "You start \the [src] up with a loud grinding!")
+			//visible_message("[usr] starts \the [src] up with a loud grinding!")
+			attack_verb = list("shredded", "ripped", "torn")
+			playsound(src, 'sound/weapons/chainsaw_startup.ogg',40,1)
+			force = 15
+			sharp = 1
+			active = 1
+			update_icon()
+		else
+			to_chat(user, "You fumble with the string.")
+
+/obj/item/pickaxe/tyrmalin/proc/turnOff(mob/user as mob)
+	if(!active) return
+	to_chat(user, "You switch the gas nozzle on the drill, turning it off.")
+	attack_verb = list("bluntly hit", "beat", "knocked")
+	playsound(user, 'sound/weapons/chainsaw_turnoff.ogg',40,1)
+	force = 3
+	edge = 0
+	sharp = 0
+	active = 0
+	update_icon()
+
+/obj/item/pickaxe/tyrmalin/attack_self(mob/user as mob)
+	if(!active)
+		turnOn(user)
+	else
+		turnOff(user)
+
+/obj/item/pickaxe/tyrmalin/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
+	if(!proximity) return
+	..()
+	if(active)
+		playsound(src, 'sound/weapons/chainsaw_attack.ogg',40,1)
+	if(A && active)
+		if(get_fuel() > 0)
+			reagents.remove_reagent("fuel", 1)
+		if(istype(A,/obj/structure/window))
+			var/obj/structure/window/W = A
+			W.shatter()
+		else if(istype(A,/obj/structure/grille))
+			new /obj/structure/grille/broken(A.loc)
+			new /obj/item/stack/rods(A.loc)
+			qdel(A)
+	if(jam_chance && active)
+		switch(rand(1,100))
+			if(1 to 30)
+				turnOff()
+			if(31 to 100)
+				return
+	if (istype(A, /obj/structure/reagent_dispensers/fueltank) || istype(A, /obj/item/reagent_containers/portable_fuelcan) && get_dist(src,A) <= 1)
+		to_chat(usr, "<span class='notice'>You begin filling the tank on the [src].</span>")
+		if(do_after(usr, 15))
+			A.reagents.trans_to_obj(src, max_fuel)
+			playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
+			to_chat(usr, "<span class='notice'>[src] succesfully refueled.</span>")
+		else
+			to_chat(usr, "<span class='notice'>Don't move while you're refilling the [src].</span>")
+
+/obj/item/pickaxe/tyrmalin/process(delta_time)
+	if(!active)
+		return
+
+	if(get_fuel() > 0)
+		reagents.remove_reagent("fuel", 1)
+		playsound(src, 'sound/weapons/chainsaw_turnoff.ogg',15,1)
+	if(get_fuel() <= 0)
+		to_chat(usr, "\The [src] sputters to a stop!")
+		turnOff()
+
+/obj/item/pickaxe/tyrmalin/proc/get_fuel()
+	return reagents.get_reagent_amount("fuel")
+
+/obj/item/pickaxe/tyrmalin/examine(mob/user)
+	. = ..()
+	if(max_fuel)
+		. += "<span class = 'notice'>The [src] feels like it contains roughtly [get_fuel()] units of fuel left.</span>"
+
+/obj/item/pickaxe/tyrmalin/update_icon()
+	if(active)
+		icon_state = "goblindrill1"
+		item_state = "goblindrill1"
+	else
+		icon_state = "goblindrill"
+		item_state = "goblindrill"
 
 
 /*****************************Shovel********************************/
@@ -135,10 +261,11 @@
 	item_state = "shovel"
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 50)
+	matter = list(MAT_STEEL = 50)
 	attack_verb = list("bashed", "bludgeoned", "thrashed", "whacked")
 	sharp = 0
 	edge = 1
+	var/digspeed = 40
 
 /obj/item/shovel/spade
 	name = "spade"
@@ -148,6 +275,16 @@
 	force = 5.0
 	throwforce = 7.0
 	w_class = ITEMSIZE_SMALL
+
+/obj/item/shovel/bone
+	name = "serrated bone shovel"
+	desc = "A wicked tool that cleaves through dirt just as easily as it does flesh. The design was styled after ancient tribal designs."
+	icon_state = "shovel_bone"
+	force = 15
+	throwforce = 12
+	toolspeed = 0.7
+	attack_verb = list("slashed", "impaled", "stabbed", "sliced")
+	sharp = 1
 
 
 /**********************Mining car (Crate like thing, not the rail car)**************************/
@@ -173,8 +310,8 @@
 	var/upright = 0
 	var/base_state
 
-/obj/item/stack/flag/New()
-	..()
+/obj/item/stack/flag/Initialize(mapload, new_amount, merge)
+	. = ..()
 	base_state = icon_state
 
 /obj/item/stack/flag/blue

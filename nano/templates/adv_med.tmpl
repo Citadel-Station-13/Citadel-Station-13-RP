@@ -1,4 +1,4 @@
-<!-- 
+<!--
 Title: Body Scanner UI
 Used In File(s): \code\game\machinery\adv_med.dm
  -->
@@ -8,7 +8,7 @@ Used In File(s): \code\game\machinery\adv_med.dm
 	<h4><b>Occupant Data:</b></h4>
 	<div class="item">
 		<div class="itemLabelNarrow">
-			Name: 
+			Name:
 		</div>
 		<div class="itemContent">
 			{{:data.occupant.name}}
@@ -37,6 +37,7 @@ Used In File(s): \code\game\machinery\adv_med.dm
 		</div>
 	</div>
 	{{:helper.link('Print', 'document', {'print_p' : 1, 'name' : data.occupant.name})}}
+	{{:helper.link('Initiate Manual Backup', 'document', {'backup' : 1, 'name' : data.occupant.name})}}
 	<h4><b>Damage:</b></h4>
 	<table class='item'>
 		<tr>
@@ -79,13 +80,13 @@ Used In File(s): \code\game\machinery\adv_med.dm
 			</tr>
 		{{/if}}
 		{{if data.occupant.livingPrey}}
-			<tr>	
+			<tr>
 				<td class='itemLabel brute'>Foreign Creatures:</td>
 				<td class='itemContent brute'>{{:data.occupant.livingPrey}}</td>
 			</tr>
 		{{/if}}
 		{{if data.occupant.objectPrey}}
-			<tr>	
+			<tr>
 				<td class='itemLabel brute'>Foreign Objects:</td>
 				<td class='itemContent brute'>{{:data.occupant.objectPrey}}</td>
 			</tr>

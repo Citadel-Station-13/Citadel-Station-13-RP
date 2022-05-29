@@ -17,7 +17,7 @@
 
 	// Can we still see them?
 //	if(!target || !can_attack(target) || (!(target in list_targets())) )
-	if(!target || !can_attack(target))
+	if(QDELETED(target) || !can_attack(target))
 		ai_log("engage_target() : Lost sight of target.", AI_LOG_TRACE)
 		lose_target() // We lost them.
 
@@ -75,7 +75,7 @@
 		on_engagement(target)
 		if(firing_lanes && !test_projectile_safety(target))
 			// Nudge them a bit, maybe they can shoot next time.
-			var/turf/T = get_step(holder, pick(cardinal))
+			var/turf/T = get_step(holder, pick(GLOB.cardinal))
 			if(T)
 				holder.IMove(T) // IMove() will respect movement cooldown.
 				holder.face_atom(target)
@@ -141,7 +141,7 @@
 
 	// If they're right next to us then lets just say yes. check_trajectory() tends to spaz out otherwise.
 	if(holder.Adjacent(AM))
-		ai_log("test_projectile_safety() : Adjacent to target. Exiting with TRUE.", AI_LOG_TRACE)
+		ai_log("test_projectile_check_safety() : Adjacent to target. Exiting with TRUE.", AI_LOG_TRACE)
 		return TRUE
 
 	// This will hold a list of all mobs in a line, even those behind the target, and possibly the wall.
@@ -153,25 +153,25 @@
 	var/would_hit_primary_target = FALSE
 	if(AM in hit_things)
 		would_hit_primary_target = TRUE
-	ai_log("test_projectile_safety() : Test projectile did[!would_hit_primary_target ? " NOT " : " "]hit \the [AM]", AI_LOG_DEBUG)
+	ai_log("test_projectile_check_safety() : Test projectile did[!would_hit_primary_target ? " NOT " : " "]hit \the [AM]", AI_LOG_DEBUG)
 
 	// Make sure we don't have a chance to shoot our friends.
 	for(var/a in hit_things)
 		var/atom/A = a
-		ai_log("test_projectile_safety() : Evaluating \the [A] ([A.type]).", AI_LOG_TRACE)
+		ai_log("test_projectile_check_safety() : Evaluating \the [A] ([A.type]).", AI_LOG_TRACE)
 		if(isliving(A)) // Don't shoot at our friends, even if they're behind the target, as RNG can make them get hit.
 			var/mob/living/L = A
 			if(holder.IIsAlly(L))
-				ai_log("test_projectile_safety() : Would threaten ally, exiting with FALSE.", AI_LOG_DEBUG)
+				ai_log("test_projectile_check_safety() : Would threaten ally, exiting with FALSE.", AI_LOG_DEBUG)
 				return FALSE
 
 	// Don't fire if we cannot hit the primary target, and we wish to be conservative with our projectiles.
 	// We make an exception for turf targets because manual commanded AIs targeting the floor are generally intending to fire blindly.
 	if(!would_hit_primary_target && !isturf(AM) && conserve_ammo)
-		ai_log("test_projectile_safety() : conserve_ammo is set, and test projectile failed to hit primary target. Exiting with FALSE.", AI_LOG_DEBUG)
+		ai_log("test_projectile_check_safety() : conserve_ammo is set, and test projectile failed to hit primary target. Exiting with FALSE.", AI_LOG_DEBUG)
 		return FALSE
 
-	ai_log("test_projectile_safety() : Passed other tests, exiting with TRUE.", AI_LOG_TRACE)
+	ai_log("test_projectile_check_safety() : Passed other tests, exiting with TRUE.", AI_LOG_TRACE)
 	return TRUE
 
 // Test if we are within range to attempt an attack, melee or ranged.
@@ -282,7 +282,7 @@
 /datum/ai_holder/proc/destroy_surroundings(direction, violent = TRUE)
 	ai_log("destroy_surroundings() : Entering.", AI_LOG_TRACE)
 	if(!direction)
-		direction = pick(cardinal) // FLAIL WILDLY
+		direction = pick(GLOB.cardinal) // FLAIL WILDLY
 		ai_log("destroy_surroundings() : No direction given, picked [direction] randomly.", AI_LOG_DEBUG)
 
 	var/turf/problem_turf = get_step(holder, direction)
@@ -301,7 +301,7 @@
 		ai_log("destroy_surroundings() : Going to try to violently clear [problem_turf].", AI_LOG_DEBUG)
 		// First, kill windows in the way.
 		for(var/obj/structure/window/W in problem_turf)
-			if(W.dir == reverse_dir[holder.dir]) // So that windows get smashed in the right order
+			if(W.dir == GLOB.reverse_dir[holder.dir]) // So that windows get smashed in the right order
 				ai_log("destroy_surroundings() : Attacking side window.", AI_LOG_INFO)
 				return holder.IAttack(W)
 
@@ -314,6 +314,12 @@
 			if(shield.density) // Don't attack shields that are already down.
 				ai_log("destroy_surroundings() : Attacking hull shield.", AI_LOG_INFO)
 				return holder.IAttack(shield)
+
+		// Kill energy shields in the way.
+		for(var/obj/effect/shield/S in problem_turf)
+			if(S.density) // Don't attack shields that are already down.
+				ai_log("destroy_surroundings() : Attacking energy shield.", AI_LOG_INFO)
+				return melee_attack(S)
 
 		// Kill common obstacle in the way like tables.
 		var/obj/structure/obstacle = locate(/obj/structure, problem_turf)

@@ -7,7 +7,7 @@
 #define RETURN_PRECISE_POINT(A) new /datum/point(A)
 
 #define RETURN_POINT_VECTOR(ATOM, ANGLE, SPEED) {new /datum/point/vector(ATOM, null, null, null, null, ANGLE, SPEED)}
-#define RETURN_POINT_VECTOR_INCREMENT(ATOM, ANGLE, SPEED, AMT) {new /datum/point/vector(ATOM, null, null, null, null, ANGLE, SPEED, AMT)}
+#define RETURN_POINT_VECTOR_INCREMENT(ATOM, ANGLE, SPEED, AMT) new /datum/point/vector(ATOM, null, null, null, null, ANGLE, SPEED, AMT)
 
 /datum/position			//For positions with map x/y/z and pixel x/y so you don't have to return lists. Could use addition/subtraction in the future I guess.
 	var/x = 0
@@ -216,7 +216,7 @@
 	last_move = world.time
 	START_PROCESSING(SSprojectiles, src)
 
-/datum/point/vector/processed/process()
+/datum/point/vector/processed/process(delta_time)
 	if(paused)
 		last_move += world.time - last_process
 		last_process = world.time

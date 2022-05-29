@@ -8,12 +8,14 @@
 	circuit = /obj/item/circuitboard/telecomms/pda_multicaster
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 750
-	var/on = 1		// If we're currently active,
-	var/toggle = 1	// If we /should/ be active or not,
+	/// If we're currently active.
+	var/on = TRUE
+	/// If we /should/ be active or not.
+	var/toggle = TRUE
 	var/list/internal_PDAs = list() // Assoc list of PDAs inside of this, with the department name being the index,
 
-/obj/machinery/pda_multicaster/New()
-	..()
+/obj/machinery/pda_multicaster/Initialize(mapload, newdir)
+	. = ..()
 	internal_PDAs = list("command" = new /obj/item/pda/multicaster/command(src),
 		"security" = new /obj/item/pda/multicaster/security(src),
 		"engineering" = new /obj/item/pda/multicaster/engineering(src),
@@ -22,17 +24,9 @@
 		"cargo" = new /obj/item/pda/multicaster/cargo(src),
 		"civilian" = new /obj/item/pda/multicaster/civilian(src))
 
-/obj/machinery/pda_multicaster/prebuilt/New()
-	..()
-
-	component_parts = list()
-	component_parts += new /obj/item/circuitboard/telecomms/pda_multicaster(src)
-	component_parts += new /obj/item/stock_parts/subspace/ansible(src)
-	component_parts += new /obj/item/stock_parts/subspace/sub_filter(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/subspace/treatment(src)
-	component_parts += new /obj/item/stack/cable_coil(src, 2)
-	RefreshParts()
+/obj/machinery/pda_multicaster/prebuilt/Initialize(mapload, newdir)
+	. = ..()
+	default_apply_parts()
 
 /obj/machinery/pda_multicaster/Destroy()
 	for(var/atom/movable/AM in contents)
@@ -68,34 +62,34 @@
 		message_admins(msg)
 		log_game(msg)
 
-/obj/machinery/pda_multicaster/proc/update_PDAs(var/turn_off)
+/obj/machinery/pda_multicaster/proc/update_PDAs(turn_off)
 	for(var/obj/item/pda/pda in contents)
 		pda.toff = turn_off
 
 /obj/machinery/pda_multicaster/proc/update_power()
 	if(toggle)
-		if(stat & (BROKEN|NOPOWER|EMPED))
-			on = 0
-			update_PDAs(1) // 1 being to turn off.
+		if(machine_stat & (BROKEN|NOPOWER|EMPED))
+			on = FALSE
+			update_PDAs(TRUE) // 1 being to turn off.
 			idle_power_usage = 0
 		else
-			on = 1
-			update_PDAs(0)
+			on = TRUE
+			update_PDAs(FALSE)
 			idle_power_usage = 750
 	else
-		on = 0
-		update_PDAs(1)
+		on = FALSE
+		update_PDAs(TRUE)
 		idle_power_usage = 0
 	update_icon()
 
-/obj/machinery/pda_multicaster/process()
+/obj/machinery/pda_multicaster/process(delta_time)
 	update_power()
 
 /obj/machinery/pda_multicaster/emp_act(severity)
-	if(!(stat & EMPED))
-		stat |= EMPED
+	if(!(machine_stat & EMPED))
+		machine_stat |= EMPED
 		var/duration = (300 * 10)/severity
 		spawn(rand(duration - 20, duration + 20))
-			stat &= ~EMPED
+			machine_stat &= ~EMPED
 	update_icon()
 	..()

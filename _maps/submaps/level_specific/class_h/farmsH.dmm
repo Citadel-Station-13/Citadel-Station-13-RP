@@ -1,0 +1,399 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/explored)
+"d" = (
+/obj/item/corncob,
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/area/class_h/POIs/dirt_farm)
+"f" = (
+/obj/structure/table/woodentable,
+/obj/item/flame/lighter/zippo,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/dirt_farm)
+"g" = (
+/obj/structure/closet/crate,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/flour,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/dirt_farm)
+"h" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/POIs/dirt_farm)
+"m" = (
+/obj/structure/sink/puddle,
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/area/class_h/POIs/dirt_farm)
+"o" = (
+/turf/simulated/wall/sandstone/classh,
+/area/class_h/POIs/dirt_farm)
+"p" = (
+/obj/machinery/vending/hydronutrients{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/POIs/dirt_farm)
+"r" = (
+/obj/structure/bed/chair/wood/wings{
+	dir = 1
+	},
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/dirt_farm)
+"s" = (
+/obj/structure/table/woodentable,
+/obj/machinery/microwave,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/dirt_farm)
+"v" = (
+/obj/structure/simple_door/wood,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/dirt_farm)
+"w" = (
+/obj/item/bedsheet/browndouble,
+/obj/structure/bed/double,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/dirt_farm)
+"y" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/POIs/dirt_farm)
+"z" = (
+/obj/structure/bonfire,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/POIs/dirt_farm)
+"A" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/POIs/dirt_farm)
+"F" = (
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/POIs/dirt_farm)
+"J" = (
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/area/class_h/explored)
+"K" = (
+/obj/structure/closet/crate,
+/obj/fiftyspawner/log,
+/obj/fiftyspawner/log,
+/obj/fiftyspawner/log,
+/obj/machinery/light/small/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/dirt_farm)
+"M" = (
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/dirt_farm)
+"N" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/under/frontier,
+/obj/item/clothing/under/frontier,
+/obj/item/clothing/under/frontier,
+/obj/item/clothing/shoes/boots/cowboy/classic,
+/obj/item/clothing/shoes/boots/cowboy/classic,
+/obj/item/clothing/shoes/boots/cowboy/classic,
+/obj/item/clothing/head/cowboy_hat,
+/obj/item/clothing/head/cowboy_hat,
+/obj/item/clothing/head/cowboy_hat,
+/obj/item/gun/projectile/shotgun/doublebarrel/pellet,
+/obj/item/storage/box/shotgunshells,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/dirt_farm)
+"O" = (
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors,
+/area/class_h/POIs/dirt_farm)
+"P" = (
+/obj/structure/railing,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/POIs/dirt_farm)
+"S" = (
+/obj/machinery/botany,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/POIs/dirt_farm)
+"U" = (
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/area/class_h/POIs/dirt_farm)
+"W" = (
+/obj/machinery/vending/hydroseeds,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/POIs/dirt_farm)
+"Z" = (
+/obj/structure/bed/chair/wood/wings,
+/turf/simulated/floor/wood/classh,
+/area/class_h/POIs/dirt_farm)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+J
+J
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+o
+o
+o
+o
+o
+A
+A
+U
+U
+A
+A
+A
+F
+a
+"}
+(3,1,1) = {"
+a
+o
+Z
+f
+r
+o
+F
+U
+U
+U
+S
+S
+S
+h
+a
+"}
+(4,1,1) = {"
+a
+o
+M
+M
+M
+v
+U
+d
+U
+d
+F
+F
+F
+h
+a
+"}
+(5,1,1) = {"
+a
+o
+M
+M
+s
+o
+U
+U
+U
+U
+S
+S
+S
+h
+a
+"}
+(6,1,1) = {"
+a
+o
+M
+M
+o
+o
+U
+U
+U
+U
+F
+F
+F
+h
+a
+"}
+(7,1,1) = {"
+a
+o
+w
+N
+o
+m
+U
+S
+U
+U
+S
+S
+S
+h
+a
+"}
+(8,1,1) = {"
+a
+o
+o
+o
+o
+U
+U
+S
+U
+U
+d
+U
+U
+U
+J
+"}
+(9,1,1) = {"
+a
+P
+p
+F
+F
+U
+z
+S
+U
+U
+U
+U
+U
+U
+J
+"}
+(10,1,1) = {"
+a
+P
+W
+F
+F
+U
+F
+S
+U
+U
+S
+S
+S
+h
+a
+"}
+(11,1,1) = {"
+a
+o
+o
+o
+o
+U
+F
+F
+U
+U
+F
+F
+F
+h
+a
+"}
+(12,1,1) = {"
+a
+o
+g
+O
+O
+d
+U
+d
+U
+U
+F
+F
+F
+h
+a
+"}
+(13,1,1) = {"
+a
+o
+K
+O
+O
+U
+U
+U
+U
+U
+S
+S
+S
+h
+a
+"}
+(14,1,1) = {"
+a
+o
+o
+o
+o
+y
+y
+y
+U
+U
+y
+y
+y
+F
+a
+"}
+(15,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+J
+J
+a
+a
+a
+a
+a
+"}

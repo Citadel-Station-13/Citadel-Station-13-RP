@@ -2,8 +2,8 @@
 	description_info = "This pipe, and all other pipes, can be connected or disconnected by a wrench.  The internal pressure of the pipe must \
 	be less than 200 kPa above the ambient pressure to do this.  More pipes can be obtained from the pipe dispenser."
 
-/obj/machinery/atmospherics/pipe/New() //This is needed or else 20+ lines of copypasta to dance around inheritence.
-	..()
+/obj/machinery/atmospherics/pipe/Initialize(mapload, newdir)
+	. = ..()
 	description_info += "<br>Most pipes and atmospheric devices can be connected or disconnected with a wrench.  The pipe's pressure must not be too high, \
 	or if it is a device, it must be turned off first."
 
@@ -88,51 +88,51 @@
 	description_info = "Click this to turn the valve.  If red, the pipes on each end are separated.  Otherwise, they are connected."
 
 //TEG ports
-/obj/machinery/atmospherics/binary/circulator
+/obj/machinery/atmospherics/component/binary/circulator
 	description_info = "This generates electricity, depending on the difference in temperature between each side of the machine.  The meter in \
 	the center of the machine gives an indicator of how much electricity is being generated."
 
 //Passive gates
-/obj/machinery/atmospherics/binary/passive_gate
+/obj/machinery/atmospherics/component/binary/passive_gate
 	description_info = "This is a one-way regulator, allowing gas to flow only at a specific pressure and flow rate.  If the light is green, it is flowing."
 
 //Normal pumps (high power one inherits from this)
-/obj/machinery/atmospherics/binary/pump
+/obj/machinery/atmospherics/component/binary/pump
 	description_info = "This moves gas from one pipe to another.  A higher target pressure demands more energy.  The side with the red end is the output."
 
 //Vents
-/obj/machinery/atmospherics/unary/vent_pump
+/obj/machinery/atmospherics/component/unary/vent_pump
 	description_info = "This pumps the contents of the attached pipe out into the atmosphere, if needed.  It can be controlled from an Air Alarm."
 
 //Freezers
-/obj/machinery/atmospherics/unary/freezer
+/obj/machinery/atmospherics/component/unary/freezer
 	description_info = "Cools down the gas of the pipe it is connected to.  It uses massive amounts of electricity while on. \
 	It can be upgraded by replacing the capacitors, manipulators, and matter bins.  It can be deconstructed by screwing the maintenance panel open with a \
 	screwdriver, and then using a crowbar."
 
 //Heaters
-/obj/machinery/atmospherics/unary/heater
+/obj/machinery/atmospherics/component/unary/heater
 	description_info = "Heats up the gas of the pipe it is connected to.  It uses massive amounts of electricity while on. \
 	It can be upgraded by replacing the capacitors, manipulators, and matter bins.  It can be deconstructed by screwing the maintenance panel open with a \
 	screwdriver, and then using a crowbar."
 
 //Gas injectors
-/obj/machinery/atmospherics/unary/outlet_injector
+/obj/machinery/atmospherics/component/unary/outlet_injector
 	description_info = "Outputs the pipe's gas into the atmosphere, similar to an air vent.  It can be controlled by a nearby atmospherics computer. \
 	A green light on it means it is on."
 
 //Scrubbers
-/obj/machinery/atmospherics/unary/vent_scrubber
+/obj/machinery/atmospherics/component/unary/vent_scrubber
 	description_info = "This filters the atmosphere of harmful gas.  Filtered gas goes to the pipes connected to it, typically a scrubber pipe. \
 	It can be controlled from an Air Alarm.  It can be configured to drain all air rapidly with a 'panic syphon' from an air alarm."
 
 //Omni filters
-/obj/machinery/atmospherics/omni/atmos_filter
+/obj/machinery/atmospherics/component/quaternary/atmos_filter
 	description_info = "Filters gas from a custom input direction, with up to two filtered outputs and a 'everything else' \
 	output.  The filtered output's arrows glow orange."
 
 //Omni mixers
-/obj/machinery/atmospherics/omni/mixer
+/obj/machinery/atmospherics/component/quaternary/mixer
 	description_info = "Combines gas from custom input and output directions.  The percentage of combined gas can be defined."
 
 //Canisters

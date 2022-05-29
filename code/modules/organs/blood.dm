@@ -2,11 +2,14 @@
 				BLOOD SYSTEM
 ****************************************************/
 //Blood levels. These are percentages based on the species blood_volume var.
+//Retained for archival/reference purposes - KK
+/*
 var/const/BLOOD_VOLUME_SAFE =    85
 var/const/BLOOD_VOLUME_OKAY =    75
 var/const/BLOOD_VOLUME_BAD =     60
 var/const/BLOOD_VOLUME_SURVIVE = 40
 var/const/CE_STABLE_THRESHOLD = 0.5
+*/
 
 /mob/living/carbon/human/var/datum/reagents/vessel // Container for blood and BLOOD ONLY. Do not transfer other chems here.
 /mob/living/carbon/human/var/var/pale = 0          // Should affect how mob sprite is drawn, but currently doesn't.
@@ -33,8 +36,14 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 	for(var/datum/reagent/blood/B in vessel.reagent_list)
 		if(B.id == "blood")
 			B.data = list(	"donor"=src,"viruses"=null,"species"=species.name,"blood_DNA"=dna.unique_enzymes,"blood_colour"= species.get_blood_colour(src),"blood_type"=dna.b_type,	\
-							"resistances"=null,"trace_chem"=null, "virus2" = null, "antibodies" = list())
+							"resistances"=null,"trace_chem"=null, "virus2" = null, "antibodies" = list(), "blood_name" = species.get_blood_name(src))
+
+			if(isSynthetic())
+				B.data["species"] = "synthetic"
+
+
 			B.color = B.data["blood_colour"]
+			B.name = B.data["blood_name"]
 
 // Takes care blood loss and regeneration
 /mob/living/carbon/human/handle_blood()
@@ -88,22 +97,22 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 //			dmg_coef = min(1, 10/chem_effects[CE_STABLE]) //TODO: add effect for increased damage
 //			threshold_coef = min(dmg_coef / CE_STABLE_THRESHOLD, 1)
 
-		if(blood_volume >= BLOOD_VOLUME_SAFE)
+		if(blood_volume_raw >= species.blood_volume*species.blood_level_safe)
 			if(pale)
 				pale = 0
 				update_icons_body()
-		else if(blood_volume >= BLOOD_VOLUME_OKAY)
+		else if(blood_volume_raw >= species.blood_volume*species.blood_level_warning)
 			if(!pale)
 				pale = 1
 				update_icons_body()
-				var/word = pick("dizzy","woosey","faint")
-				to_chat(src, "<font color='red'>You feel [word]</font>")
+				var/word = pick("dizzy", "woozy" ,"faint" ,"disoriented" ,"unsteady")
+				to_chat(src, SPAN_DANGER("You feel slightly [word]"))
 			if(prob(1))
-				var/word = pick("dizzy","woosey","faint")
-				to_chat(src, "<font color='red'>You feel [word]</font>")
+				var/word = pick("dizzy","woozy","faint","disoriented","unsteady")
+				to_chat(src, SPAN_BOLDDANGER("You feel [word]"))
 			if(getOxyLoss() < 20 * threshold_coef)
 				adjustOxyLoss(3 * dmg_coef)
-		else if(blood_volume >= BLOOD_VOLUME_BAD)
+		else if(blood_volume_raw >= species.blood_volume*species.blood_level_danger)
 			if(!pale)
 				pale = 1
 				update_icons_body()
@@ -113,14 +122,14 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 			adjustOxyLoss(1 * dmg_coef)
 			if(prob(15))
 				Paralyse(rand(1,3))
-				var/word = pick("dizzy","woosey","faint")
-				to_chat(src, "<font color='red'>You feel extremely [word]</font>")
-		else if(blood_volume >= BLOOD_VOLUME_SURVIVE)
+				var/word = pick("dizzy","woozy","faint","disoriented","unsteady")
+				to_chat(src, SPAN_USERDANGER("You feel dangerously [word]"))
+		else if(blood_volume_raw >= species.blood_volume*species.blood_level_fatal)
 			adjustOxyLoss(5 * dmg_coef)
 //			adjustToxLoss(3 * dmg_coef)
 			if(prob(15))
-				var/word = pick("dizzy","woosey","faint")
-				to_chat(src, "<font color='red'>You feel extremely [word]</font>")
+				var/word = pick("dizzy","woozy","faint","disoriented","unsteady")
+				to_chat(src, SPAN_USERDANGER("You feel extremely [word]"))
 		else //Not enough blood to survive (usually)
 			if(!pale)
 				pale = 1
@@ -131,7 +140,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 			adjustOxyLoss(75 * dmg_coef) // 15 more than dexp fixes (also more than dex+dexp+tricord)
 
 		// Without enough blood you slowly go hungry.
-		if(blood_volume < BLOOD_VOLUME_SAFE)
+		if(blood_volume_raw < species.blood_volume*species.blood_level_safe)
 			if(nutrition >= 300)
 				nutrition -= 10
 			else if(nutrition >= 200)
@@ -321,12 +330,12 @@ proc/blood_incompatible(donor,receiver,donor_species,receiver_species)
 
 proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large)
 
-	//Vorestation Edit Start - We're not going to splatter at all because we're in something and that's silly.
+	// We're not going to splatter at all because we're in something and that's silly.
 	if(istype(source,/atom/movable))
 		var/atom/movable/A = source
 		if(!isturf(A.loc))
 			return
-	//VOREStation Edit End
+
 	var/obj/effect/decal/cleanable/blood/B
 	var/decal_type = /obj/effect/decal/cleanable/blood/splatter
 	var/turf/T = get_turf(target)
@@ -357,7 +366,7 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large)
 		drop.drips |= drips
 
 	// If there's no data to copy, call it quits here.
-	if(!source)
+	if(!istype(source))
 		return B
 
 	// Update appearance.
@@ -365,6 +374,9 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large)
 		B.basecolor = source.data["blood_colour"]
 		B.synthblood = synth
 		B.update_icon()
+
+	if(source.data["blood_name"])
+		B.name = source.data["blood_name"]
 
 	// Update blood information.
 	if(source.data["blood_DNA"])

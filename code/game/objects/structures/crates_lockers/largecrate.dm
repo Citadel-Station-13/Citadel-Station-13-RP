@@ -6,13 +6,13 @@
 	density = 1
 	var/list/starts_with
 
-/obj/structure/largecrate/Initialize()
+/obj/structure/largecrate/Initialize(mapload)
 	. = ..()
 	if(starts_with)
 		create_objects_in_loc(src, starts_with)
 		starts_with = null
 	for(var/obj/I in src.loc)
-		if(I.density || I.anchored || I == src || !I.simulated)
+		if(I.density || I.anchored || I == src || (I.flags & AF_ABSTRACT))
 			continue
 		I.forceMove(src)
 	update_icon()
@@ -29,7 +29,7 @@
 		new /obj/item/stack/material/wood(src)
 
 		for(var/atom/movable/AM in contents)
-			if(AM.simulated)
+			if(!(AM.flags & AF_ABSTRACT))
 				AM.forceMove(T)
 
 		user.visible_message("<span class='notice'>[user] pries \the [src] open.</span>", \
@@ -63,8 +63,8 @@
 	desc = "It comes in a box for the consumer's sake. ..How is this lighter?"
 	icon_state = "vehiclecrate"
 
-/obj/structure/largecrate/vehicle/Initialize()
-	..()
+/obj/structure/largecrate/vehicle/Initialize(mapload)
+	. = ..()
 	spawn(1)
 		for(var/obj/O in contents)
 			O.update_icon()
@@ -82,11 +82,11 @@
 	starts_with = list(/obj/structure/vehiclecage/quadtrailer)
 
 /obj/structure/largecrate/animal
-	icon_state = "lisacrate"	//VOREStation Edit
+	icon_state = "lisacrate"
 
 /obj/structure/largecrate/animal/mulebot
 	name = "Mulebot crate"
-	icon_state = "mulecrate"	//VOREStation Edit
+	icon_state = "mulecrate"
 	starts_with = list(/mob/living/bot/mulebot)
 
 /obj/structure/largecrate/animal/corgi
@@ -119,3 +119,112 @@
 /obj/structure/largecrate/animal/spiders
 	name = "spider crate"
 	starts_with = list(/mob/living/simple_mob/animal/giant_spider= 3)
+
+//! ## VR FILE MERGE ## !//
+/obj/structure/largecrate/birds //This is an awful hack, but it's the only way to get multiple mobs spawned in one crate.
+	name = "Bird crate"
+	desc = "You hear chirping and cawing inside the crate. It sounds like there are a lot of birds in there..."
+
+/obj/structure/largecrate/birds/attackby(obj/item/W as obj, mob/user as mob)
+	if(W.is_crowbar())
+		new /obj/item/stack/material/wood(src)
+		new /mob/living/simple_mob/animal/passive/bird(src)
+		new /mob/living/simple_mob/animal/passive/bird/parrot/kea(src)
+		new /mob/living/simple_mob/animal/passive/bird/parrot/eclectus(src)
+		new /mob/living/simple_mob/animal/passive/bird/parrot/grey_parrot(src)
+		new /mob/living/simple_mob/animal/passive/bird/parrot/black_headed_caique(src)
+		new /mob/living/simple_mob/animal/passive/bird/parrot/white_caique(src)
+		new /mob/living/simple_mob/animal/passive/bird/parrot/budgerigar(src)
+		new /mob/living/simple_mob/animal/passive/bird/parrot/budgerigar/blue(src)
+		new /mob/living/simple_mob/animal/passive/bird/parrot/budgerigar/bluegreen(src)
+		new /mob/living/simple_mob/animal/passive/bird/black_bird(src)
+		new /mob/living/simple_mob/animal/passive/bird/azure_tit(src)
+		new /mob/living/simple_mob/animal/passive/bird/european_robin(src)
+		new /mob/living/simple_mob/animal/passive/bird/goldcrest(src)
+		new /mob/living/simple_mob/animal/passive/bird/ringneck_dove(src)
+		new /mob/living/simple_mob/animal/passive/bird/parrot/cockatiel(src)
+		new /mob/living/simple_mob/animal/passive/bird/parrot/cockatiel/white(src)
+		new /mob/living/simple_mob/animal/passive/bird/parrot/cockatiel/yellowish(src)
+		new /mob/living/simple_mob/animal/passive/bird/parrot/cockatiel/grey(src)
+		new /mob/living/simple_mob/animal/passive/bird/parrot/sulphur_cockatoo(src)
+		new /mob/living/simple_mob/animal/passive/bird/parrot/white_cockatoo(src)
+		new /mob/living/simple_mob/animal/passive/bird/parrot/pink_cockatoo(src)
+		var/turf/T = get_turf(src)
+		for(var/atom/movable/AM in contents)
+			if(!(AM.flags & AF_ABSTRACT))
+				AM.forceMove(T)
+		user.visible_message("<span class='notice'>[user] pries \the [src] open.</span>", \
+							 "<span class='notice'>You pry open \the [src].</span>", \
+							 "<span class='notice'>You hear splitting wood.</span>")
+		qdel(src)
+	else
+		return attack_hand(user)
+/*
+/obj/structure/largecrate/animal/pred
+	name = "Predator carrier"
+	starts_with = list(/mob/living/simple_mob/vore/catgirl)
+*/
+
+/obj/structure/largecrate/animal/pred/Initialize(mapload) //This is nessesary to get a random one each time.
+	starts_with = list(pick(/mob/living/simple_mob/vore/bee,
+						/mob/living/simple_mob/vore/aggressive/frog,
+						/mob/living/simple_mob/vore/horse,
+						/mob/living/simple_mob/vore/aggressive/panther,
+						/mob/living/simple_mob/vore/aggressive/giant_snake,
+						/mob/living/simple_mob/animal/wolf,
+						/mob/living/simple_mob/animal/space/bear;0.5,
+						/mob/living/simple_mob/animal/space/carp,
+						/mob/living/simple_mob/vore/aggressive/mimic,
+						/mob/living/simple_mob/vore/aggressive/rat,
+						/mob/living/simple_mob/vore/aggressive/rat/tame,
+//						/mob/living/simple_mob/otie;0.5
+						))
+	return ..()
+
+/obj/structure/largecrate/animal/dangerous
+	name = "Dangerous Predator carrier"
+	starts_with = list(/mob/living/simple_mob/animal/space/alien)
+
+/obj/structure/largecrate/animal/dangerous/Initialize(mapload)
+	starts_with = list(pick(/mob/living/simple_mob/animal/space/carp/large,
+						/mob/living/simple_mob/vore/aggressive/deathclaw,
+						/mob/living/simple_mob/vore/aggressive/dino,
+						/mob/living/simple_mob/animal/space/alien,
+						/mob/living/simple_mob/animal/space/alien/drone,
+						/mob/living/simple_mob/animal/space/alien/sentinel,
+						/mob/living/simple_mob/animal/space/alien/queen,
+						/mob/living/simple_mob/vore/aggressive/corrupthound))
+	return ..()
+
+/obj/structure/largecrate/animal/wolfgirl
+	name = "Wolfgirl Crate"
+	desc = "A sketchy looking crate with airholes that shakes and thuds every now and then. Someone seems to be demanding they be let out."
+	starts_with = list(/mob/living/simple_mob/vore/wolfgirl)
+
+/obj/structure/largecrate/animal/fennec
+	name = "Fennec Crate"
+	desc = "Bounces around a lot. Looks messily packaged, were they in a hurry?"
+	starts_with = list(/mob/living/simple_mob/vore/fennec)
+
+/obj/structure/largecrate/animal/fennec/Initialize(mapload)
+	starts_with = list(pick(/mob/living/simple_mob/vore/fennec,
+						/mob/living/simple_mob/vore/fennix;0.5))
+	return ..()
+
+/obj/structure/closet/crate/large/aether
+	name = "large atmospherics crate"
+	desc = "A hefty metal crate, painted in Aether Atmospherics and Recycling colours."
+/obj/structure/closet/crate/large/einstein
+	name = "large crate"
+	desc = "A hefty metal crate, painted in Einstein Engines colours."
+/obj/structure/closet/crate/large/nanotrasen
+	name = "large crate"
+	desc = "A hefty metal crate, painted in standard NanoTrasen livery."
+/obj/structure/closet/crate/large/xion
+	name = "large crate"
+	desc = "A hefty metal crate, painted in Xion Manufacturing Group orange."
+/obj/structure/closet/crate/large/secure/heph
+	desc = "A hefty metal crate with an electronic locking system, marked with Hephaestus Industries colours."
+
+/obj/structure/closet/crate/large/secure/xion
+	desc = "A hefty metal crate with an electronic locking system, painted in Xion Manufacturing Group orange."

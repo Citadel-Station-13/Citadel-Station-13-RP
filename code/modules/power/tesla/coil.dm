@@ -21,12 +21,9 @@
 /obj/machinery/power/tesla_coil/pre_mapped
 	anchored = TRUE
 
-/obj/machinery/power/tesla_coil/New()
-	..()
-	wires = new(src)
-
-/obj/machinery/power/tesla_coil/Initialize()
+/obj/machinery/power/tesla_coil/Initialize(mapload)
 	. = ..()
+	wires = new(src)
 	default_apply_parts()
 
 /obj/machinery/power/tesla_coil/Destroy()
@@ -75,7 +72,7 @@
 		//don't lose arc power when it's not connected to anything
 		//please place tesla coils all around the station to maximize effectiveness
 		var/power_produced = powernet ? power / power_loss : power
-		add_avail(power_produced*input_power_multiplier)
+		add_avail(power_produced * input_power_multiplier * 0.001)
 		flick("coilhit", src)
 		playsound(src.loc, 'sound/effects/lightningshock.ogg', 100, 1, extrarange = 5)
 		tesla_zap(src, 5, power_produced)
@@ -90,8 +87,10 @@
 	last_zap = world.time
 	var/coeff = (20 - ((input_power_multiplier - 1) * 3))
 	coeff = max(coeff, 10)
-	var/power = (powernet.avail/2)
-	draw_power(power)
+	// upconvert from KW to W
+	var/power = (powernet.avail / 2) * 1000
+	// downconvert from KW to W
+	draw_power(power * 0.001)
 	playsound(src.loc, 'sound/effects/lightningshock.ogg', 100, 1, extrarange = 5)
 	tesla_zap(src, 10, power/(coeff/2))
 

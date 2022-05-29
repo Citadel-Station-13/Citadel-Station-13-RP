@@ -26,7 +26,7 @@
 			UpdateMove()
 	return 1
 
-/datum/artifact_effect/forcefield/process()
+/datum/artifact_effect/forcefield/process(delta_time)
 	..()
 	for(var/obj/effect/energy_field/E in created_field)
 		if(E.strength < 1)

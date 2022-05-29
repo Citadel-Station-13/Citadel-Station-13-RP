@@ -2,9 +2,9 @@
 	name = "swarm drone module"
 	var/id
 
-/obj/item/robot_module/drone/swarm/New(var/mob/living/silicon/robot/robot)
-	..()
-
+/obj/item/robot_module/drone/swarm/Initialize(mapload)
+	. = ..()
+	var/mob/living/silicon/robot/robot = loc
 	id = robot.idcard
 	src.modules += id
 
@@ -18,12 +18,10 @@
 /obj/item/robot_module/drone/swarm/ranged
 	name = "swarm gunner module"
 
-/obj/item/robot_module/drone/swarm/ranged/New(var/mob/living/silicon/robot/robot)
-	..()
-
+/obj/item/robot_module/drone/swarm/ranged/Initialize(mapload)
+	. = ..()
 	src.modules += new /obj/item/gun/energy/xray/swarm(src)
 
-/obj/item/robot_module/drone/swarm/melee/New(var/mob/living/silicon/robot/robot)
-	..()
-
+/obj/item/robot_module/drone/swarm/melee/Initialize(mapload)
+	. = ..()
 	src.modules += new /obj/item/melee/energy/sword/ionic_rapier/lance(src)

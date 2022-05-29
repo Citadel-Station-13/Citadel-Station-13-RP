@@ -1,9 +1,9 @@
 #define I_SINGULO "singulo"
 
-/atom/proc/singularity_act()
+/atom/proc/singularity_act(obj/singularity/S, current_size)
 	return
 
-/atom/proc/singularity_pull(S, current_size)
+/atom/proc/singularity_pull(obj/singularity/S, current_size)
 	return
 
 /mob/living/singularity_act()
@@ -20,7 +20,7 @@
 	if(mind)
 		if((mind.assigned_role == "Station Engineer") || (mind.assigned_role == "Chief Engineer"))
 			gain = 100
-		if(mind.assigned_role == USELESS_JOB) //VOREStation Edit - Visitor not Assistant
+		if(mind.assigned_role == USELESS_JOB)
 			gain = rand(0, 300)
 	investigate_log(I_SINGULO,"has been consumed by a singularity", I_SINGULO)
 	gib()
@@ -34,25 +34,27 @@
 				step_towards(hand, S)
 				to_chat(src, "<span class = 'warning'>The [S] pulls \the [hand] from your grip!</span>")
 
-	if(!lying && (!shoes || !(shoes.item_flags & NOSLIP)) && (!species || !(species.flags & NOSLIP)) && prob(current_size*5))
+	if(!lying && (!shoes || !(shoes.clothing_flags & NOSLIP)) && (!species || !(species.flags & NOSLIP)) && prob(current_size*5))
 		to_chat(src, "<span class='danger'>A strong gravitational force slams you to the ground!</span>")
 		Weaken(current_size)
 	..()
 
 /obj/singularity_act()
-	if(simulated)
-		ex_act(1)
-		if(src)
-			qdel(src)
-		return 2
+	if(flags & AF_ABSTRACT)
+		return
+	ex_act(1)
+	if(!QDELETED(src))
+		qdel(src)
+	return 2
 
 /obj/singularity_pull(S, current_size)
-	if(simulated)
-		if(anchored)
-			if(current_size >= STAGE_FIVE)
-				step_towards(src, S)
-		else
+	if(flags & AF_ABSTRACT)
+		return
+	if(anchored)
+		if(current_size >= STAGE_FIVE)
 			step_towards(src, S)
+	else
+		step_towards(src, S)
 
 /obj/effect/beam/singularity_pull()
 	return
@@ -104,13 +106,7 @@
 	return 1000
 
 /turf/singularity_act(S, current_size)
-	if(!is_plating())
-		for(var/obj/O in contents)
-			if(O.level != 1)
-				continue
-			if(O.invisibility == 101)
-				O.singularity_act(src, current_size)
-	ChangeTurf(get_base_turf_by_area(src))
+	ScrapeAway()
 	return 2
 
 /turf/simulated/floor/singularity_pull(S, current_size)

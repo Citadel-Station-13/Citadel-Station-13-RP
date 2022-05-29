@@ -423,7 +423,7 @@
 		var/protection = H.get_cold_protection(50)
 		if(protection < 1)
 			var/temp_change = 80 // Each hit can reduce temperature by up to 80 kelvin.
-			var/datum/species/baseline = GLOB.all_species["Human"]
+			var/datum/species/baseline = get_static_species_meta(/datum/species/human)
 			var/temp_cap = baseline.cold_level_3 - 5 // Can't go lower than this.
 
 			var/cold_factor = abs(protection - 1)
@@ -511,11 +511,11 @@
 	E.start()
 
 	// Now for sounds.
-	playsound(T, "explosion", 75, 1) // Local sound.
+	playsound(T, SFX_ALIAS_EXPLOSION, 75, 1) // Local sound.
 
 	for(var/mob/M in player_list) // For everyone else.
 		if(M.z == T.z && get_dist(M, T) > world.view && !M.ear_deaf && !istype(M.loc,/turf/space))
-			M << 'sound/effects/explosionfar.ogg'
+			SEND_SOUND(M, sound('sound/soundbytes/effects/explosion/explosionfar.ogg'))
 
 	exploding = FALSE
 

@@ -32,8 +32,10 @@
 
 	var/list/starts_with
 
-/obj/structure/closet/Initialize()
-	..()
+/obj/structure/closet/Initialize(mapload)
+	. = ..()
+	if(mapload && !opened)
+		addtimer(CALLBACK(src, .proc/take_contents), 0)
 	PopulateContents()
 	// Closets need to come later because of spawners potentially creating objects during init.
 	return INITIALIZE_HINT_LATELOAD
@@ -43,43 +45,47 @@
 	if(starts_with)
 		create_objects_in_loc(src, starts_with)
 		starts_with = null
-
-	if(!opened)		// if closed, any item at the crate's loc is put in the contents
-		if(istype(loc, /mob/living)) return //VOREStation Edit - No collecting mob organs if spawned inside mob
-		var/obj/item/I
-		for(I in src.loc)
-			if(I.density || I.anchored || I == src) continue
-			I.forceMove(src)
-		// adjust locker size to hold all items with 5 units of free store room
-		var/content_size = 0
-		for(I in src.contents)
-			content_size += CEILING(I.w_class/2, 1)
-		if(content_size > storage_capacity-5)
-			storage_capacity = content_size + 5
 	update_icon()
 
+/obj/structure/closet/proc/take_contents()
+	// if(istype(loc, /mob/living))
+	//	return // No collecting mob organs if spawned inside mob
+	// I'll leave this out, if someone dies to this from voring someone who made a closet go yell at a coder to
+	// fix the fact you can build closets inside living people, not try to make it work you numbskulls.
+	var/obj/item/I
+	for(I in src.loc)
+		if(I.density || I.anchored || I == src) continue
+		I.forceMove(src)
+	// adjust locker size to hold all items with 5 units of free store room
+	var/content_size = 0
+	for(I in src.contents)
+		content_size += CEILING(I.w_class/2, 1)
+	if(content_size > storage_capacity-5)
+		storage_capacity = content_size + 5
+
 /**
-  * The proc that fills the closet with its initial contents.
-  */
+ * The proc that fills the closet with its initial contents.
+ */
 /obj/structure/closet/proc/PopulateContents()
 	return
 
 /obj/structure/closet/examine(mob/user)
-	if(..(user, 1) && !opened)
+	. = ..()
+	if(!opened)
 		var/content_size = 0
 		for(var/obj/item/I in src.contents)
 			if(!I.anchored)
 				content_size += CEILING(I.w_class/2, 1)
 		if(!content_size)
-			to_chat(user, "It is empty.")
+			. += "It is empty."
 		else if(storage_capacity > content_size*4)
-			to_chat(user, "It is barely filled.")
+			. += "It is barely filled."
 		else if(storage_capacity > content_size*2)
-			to_chat(user, "It is less than half full.")
+			. += "It is less than half full."
 		else if(storage_capacity > content_size)
-			to_chat(user, "There is still some free space.")
+			. += "There is still some free space."
 		else
-			to_chat(user, "It is full.")
+			. += "It is full."
 
 /obj/structure/closet/CanAllowThrough(atom/movable/mover, turf/target)
 	if(wall_mounted)
@@ -110,10 +116,8 @@
 		I.forceMove(src.loc)
 
 	for(var/mob/M in src)
-		M.forceMove(src.loc)
-		if(M.client)
-			M.client.eye = M.client.mob
-			M.client.perspective = MOB_PERSPECTIVE
+		M.forceMove(loc)
+		M.update_perspective()
 
 /obj/structure/closet/proc/open()
 	if(src.opened)
@@ -184,10 +188,8 @@
 			continue
 		if(stored_units + added_units + M.mob_size > storage_capacity)
 			break
-		if(M.client)
-			M.client.perspective = EYE_PERSPECTIVE
-			M.client.eye = src
 		M.forceMove(src)
+		M.update_perspective()
 		added_units += M.mob_size
 	return added_units
 
@@ -293,6 +295,9 @@
 			W.forceMove(src.loc)
 	else if(istype(W, /obj/item/packageWrap))
 		return
+	else if(istype(W, /obj/item/extraction_pack)) //so fulton extracts dont open closets
+		src.close()
+		return
 	else if(seal_tool)
 		if(istype(W, seal_tool))
 			var/obj/item/S = W
@@ -305,6 +310,8 @@
 						to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 						return
 			if(do_after(user, 20 * S.toolspeed))
+				if(opened)
+					return
 				playsound(src, S.usesound, 50)
 				src.sealed = !src.sealed
 				src.update_icon()
@@ -326,7 +333,7 @@
 	return
 
 /obj/structure/closet/MouseDrop_T(atom/movable/O as mob|obj, mob/user as mob)
-	if(istype(O, /obj/screen))	//fix for HUD elements making their way into the world	-Pete
+	if(istype(O, /atom/movable/screen))	//fix for HUD elements making their way into the world	-Pete
 		return
 	if(O.loc == user)
 		return
@@ -368,6 +375,7 @@
 		to_chat(usr, "<span class='notice'>It won't budge!</span>")
 
 /obj/structure/closet/attack_ghost(mob/ghost)
+	. = ..()
 	if(ghost.client && ghost.client.inquisitive_ghost)
 		ghost.examinate(src)
 		if (!src.opened)
@@ -412,9 +420,11 @@
 		return 0 //closed but not sealed...
 	return 1
 
-/obj/structure/closet/proc/mob_breakout(var/mob/living/escapee)
-
-	if(breakout || !req_breakout())
+/obj/structure/closet/container_resist(mob/living/escapee)
+	if(breakout)
+		return
+	if(!req_breakout() && !opened)
+		open()
 		return
 
 	escapee.setClickCooldown(100)
@@ -424,30 +434,30 @@
 
 	visible_message("<span class='danger'>\The [src] begins to shake violently!</span>")
 
-	breakout = 1 //can't think of a better way to do this right now.
-	for(var/i in 1 to (6*breakout_time * 2)) //minutes * 6 * 5seconds * 2
-		if(!do_after(escapee, 50)) //5 seconds
-			breakout = 0
-			return
-		if(!escapee || escapee.incapacitated() || escapee.loc != src)
-			breakout = 0
-			return //closet/user destroyed OR user dead/unconcious OR user no longer in closet OR closet opened
-		//Perform the same set of checks as above for weld and lock status to determine if there is even still a point in 'resisting'...
-		if(!req_breakout())
-			breakout = 0
-			return
+	spawn(0)
+		breakout = 1 //can't think of a better way to do this right now.
+		for(var/i in 1 to (6*breakout_time * 2)) //minutes * 6 * 5seconds * 2
+			if(!do_after(escapee, 50)) //5 seconds
+				breakout = 0
+				return
+			if(!escapee || escapee.incapacitated() || escapee.loc != src)
+				breakout = 0
+				return //closet/user destroyed OR user dead/unconcious OR user no longer in closet OR closet opened
+			//Perform the same set of checks as above for weld and lock status to determine if there is even still a point in 'resisting'...
+			if(!req_breakout())
+				breakout = 0
+				return
 
+			playsound(src.loc, breakout_sound, 100, 1)
+			animate_shake()
+			add_fingerprint(escapee)
+
+		//Well then break it!
+		breakout = 0
+		to_chat(escapee, SPAN_WARNING("You successfully break out!"))
+		visible_message(SPAN_DANGER("\The [escapee] successfully broke out of \the [src]!"))
 		playsound(src.loc, breakout_sound, 100, 1)
 		animate_shake()
-		add_fingerprint(escapee)
-
-	//Well then break it!
-	breakout = 0
-	to_chat(escapee, "<span class='warning'>You successfully break out!</span>")
-	visible_message("<span class='danger'>\The [escapee] successfully broke out of \the [src]!</span>")
-	playsound(src.loc, breakout_sound, 100, 1)
-	break_open()
-	animate_shake()
 
 /obj/structure/closet/proc/break_open()
 	sealed = 0

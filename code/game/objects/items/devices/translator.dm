@@ -54,7 +54,7 @@
 	if (language && (language.flags & NONVERBAL))
 		return //Not gonna translate sign language
 
-	if (!language.machine_understands & omni == 0) // cit change - omni check
+	if (!language.machine_understands && !omni) // cit change - omni check
 		return //Any other languages that it can't translate.
 
 	if (visual && ((L.sdisabilities & BLIND) || L.eye_blind))
@@ -73,8 +73,9 @@
 			to_chat(L, "<i><b>[src]</b> translates, </i>\"<span class='[langset.colour]'>[message]</span>\"")
 
 		//They don't understand the output language
-		else
+		/*else
 			to_chat(L, "<i><b>[src]</b> translates, </i>\"<span class='[langset.colour]'>[langset.scramble(message)]</span>\"")
+		*/ //not much of a 'universal translator' with this else clause
 
 //Let's try an ear-worn version
 /obj/item/universal_translator/ear
@@ -85,3 +86,13 @@
 	slot_flags = SLOT_EARS
 	visual = 0
 	audio = 1
+
+/obj/item/universal_translator/all
+  name = "handheld omni-translator"
+  desc = "This handy device appears to translate the languages it hears into onscreen text for a user, but upgraded with more languages. Somehow."
+  omni = 1
+
+/obj/item/universal_translator/ear/all
+  name = "omni-translator earpiece"
+  desc = "This handy device appears to translate the languages it hears into another language for a user, but upgraded with more languages. Somehow."
+  omni = 1

@@ -46,7 +46,7 @@
 				if(SPECIES_SERGAL)
 					new /obj/item/digestion_remains/skull/sergal(src,owner)
 					skull_amount--
-				if(SPECIES_ZORREN_FLAT || SPECIES_ZORREN_HIGH)
+				if(SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH)
 					new /obj/item/digestion_remains/skull/zorren(src,owner)
 					skull_amount--
 				if(SPECIES_NEVREAN)
@@ -83,8 +83,10 @@
 	var/pred_ckey
 	var/pred_name
 
-/obj/item/digestion_remains/New(var/newloc,var/mob/living/pred)
-	..(newloc)
+/obj/item/digestion_remains/Initialize(mapload, mob/living/pred)
+	. = ..(mapload)
+	if(!pred)
+		return
 	pred_ckey = pred.ckey
 	pred_name = pred.name
 

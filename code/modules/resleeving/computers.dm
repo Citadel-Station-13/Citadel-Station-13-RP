@@ -17,8 +17,9 @@
 	var/organic_capable = 1
 	var/synthetic_capable = 1
 	var/obj/item/disk/transcore/disk
+	var/hasmirror = null
 
-/obj/machinery/computer/transhuman/resleeving/Initialize()
+/obj/machinery/computer/transhuman/resleeving/Initialize(mapload)
 	. = ..()
 	updatemodules()
 
@@ -88,9 +89,47 @@
 		menu = 4
 		to_chat(user, "<span class='notice'>\The [src] loads the body record from \the [W] before ejecting it.</span>")
 		attack_hand(user)
+	if(istype(W, /obj/item/implant/mirror))
+		user.drop_item()
+		W.forceMove(src)
+		hasmirror = W
+		user.visible_message("[user] inserts the [W] into the [src].", "You insert the [W] into the [src].")
+	if(istype(W, /obj/item/mirrortool))
+		var/obj/item/mirrortool/MT = W
+		if(MT.imp)
+			active_mr = MT.imp.stored_mind
+			hasmirror = MT.imp
+			MT.imp = null
+			user.visible_message("Mirror successfully transferred.")
+		else
+			if(!MT.imp)
+				user.visible_message("This Mirror Installation Tool is empty.")
+	if(istype(W, /obj/item/dogborg/mirrortool))
+		var/obj/item/mirrortool/MT = W
+		if(MT.imp)
+			active_mr = MT.imp.stored_mind
+			hasmirror = MT.imp
+			MT.imp = null
+			user.visible_message("Mirror successfully transferred.")
+		else
+			if(!MT.imp)
+				user.visible_message("This Mirror Installation Tool is empty.")
+
+
+	return ..()
+
+/obj/machinery/computer/transhuman/resleeving/verb/eject_mirror()
+	set category = "Object"
+	set name = "Eject Mirror"
+	set src in oview(1)
+
+	if(hasmirror)
+		to_chat(usr, "You eject the mirror.")
+		usr.put_in_hands(hasmirror)
+		hasmirror = null
+		active_mr = null
 	else
-		..()
-	return
+		to_chat(usr, "There is no mirror to eject.")
 
 /obj/machinery/computer/transhuman/resleeving/attack_ai(mob/user as mob)
 	return attack_hand(user)
@@ -99,14 +138,14 @@
 	user.set_machine(src)
 	add_fingerprint(user)
 
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 
 	updatemodules()
 
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/computer/transhuman/resleeving/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/transhuman/resleeving/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_machine(src)
 
 	var/data[0]
@@ -127,7 +166,7 @@
 
 	var/spods_list_ui[0]
 	for(var/obj/machinery/transhuman/synthprinter/spod in spods)
-		spods_list_ui[++spods_list_ui.len] = list("spod" = spod, "steel" = spod.stored_material[DEFAULT_WALL_MATERIAL], "glass" = spod.stored_material["glass"])
+		spods_list_ui[++spods_list_ui.len] = list("spod" = spod, MAT_STEEL = spod.stored_material[MAT_STEEL], MAT_GLASS = spod.stored_material["glass"])
 
 	var/sleevers_list_ui[0]
 	for(var/obj/machinery/transhuman/resleever/resleever in sleevers)
@@ -269,8 +308,8 @@
 						temp = "Error: SynthFab is currently busy."
 
 					//Not enough steel or glass
-					else if(spod.stored_material[DEFAULT_WALL_MATERIAL] < spod.body_cost)
-						temp = "Error: Not enough [DEFAULT_WALL_MATERIAL] in SynthFab."
+					else if(spod.stored_material[MAT_STEEL] < spod.body_cost)
+						temp = "Error: Not enough [MAT_STEEL] in SynthFab."
 					else if(spod.stored_material["glass"] < spod.body_cost)
 						temp = "Error: Not enough glass in SynthFab."
 
@@ -366,8 +405,10 @@
 				//They were dead, or otherwise available.
 				if(!temp)
 					sleever.putmind(active_mr,mode,override)
-					temp = "Initiating resleeving..."
+					temp = "Initiating resleeving and transferring mirror..."
 					menu = 1
+					qdel(hasmirror)
+					active_mr = null
 
 		//IDK but it broke somehow.
 		else
@@ -408,4 +449,4 @@
 	icon_state = "harddisk"
 	item_state = "card-id"
 	w_class = ITEMSIZE_SMALL
-	var/datum/transhuman/mind_record/list/stored = list()
+	var/list/datum/transhuman/mind_record/stored = list()

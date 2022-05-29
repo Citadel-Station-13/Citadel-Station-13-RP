@@ -8,6 +8,7 @@
 	fire_sound = 'sound/weapons/Gunshot_generic_rifle.ogg'
 	max_shells = 5
 	caliber = "7.62mm"
+	heavy = TRUE
 	origin_tech = list(TECH_COMBAT = 1)// Old as shit rifle doesn't have very good tech.
 	ammo_type = /obj/item/ammo_casing/a762
 	load_method = SINGLE_CASING|SPEEDLOADER
@@ -23,12 +24,19 @@
 	icon_state = "boltaction_c"
 	item_state = "boltaction_c"
 	ammo_type = /obj/item/ammo_casing/a762/blank
-	
+
 /obj/item/gun/projectile/shotgun/pump/rifle/ceremonial/holy
 	name = "blessed bolt-action rifle"
 	desc = "A bolt-action rifle with a heavy, high-quality wood stock that has a beautiful finish. Clearly not intended to be used in combat. Uses 7.62mm rounds."
 	ammo_type = /obj/item/ammo_casing/a762/silver
 	holy = TRUE
+
+/obj/item/gun/projectile/shotgun/pump/rifle/taj
+	name = "Adhomai bolt action rifle"
+	desc = "The A&K-c bolt action rifle. Though a simple and dated design, this Akhan and Khan rifle is a mainstay of the of the Imperial Adhomain Army and has kept Tajaran monarchy safe since the civil war."
+	item_state = "boltaction-taj"
+	icon_state = "boltaction-taj"
+	wielded_item_state = "boltaction-taj-wielded"
 
 /obj/item/gun/projectile/shotgun/pump/rifle/vox_hunting
 	name = "vox hunting rifle"
@@ -69,11 +77,12 @@
 	item_state = "leveraction"
 	icon_state = "leveraction"
 	max_shells = 10
-	caliber = "357"
+	caliber = ".357"
 	load_method = SINGLE_CASING
 	ammo_type = /obj/item/ammo_casing/a357
 	action_sound = 'sound/weapons/riflebolt.ogg'
-	
+	one_handed_penalty = 15
+
 /obj/item/gun/projectile/shotgun/pump/rifle/lever/holy
 	name = "blessed lever-action"
 	ammo_type = /obj/item/ammo_casing/a357/silver
@@ -91,7 +100,7 @@
 			item_state = "mareleg"
 			icon_state = "mareleg"
 			w_class = ITEMSIZE_NORMAL
-			caliber = "357"
+			caliber = ".357"
 			load_method = SINGLE_CASING
 			ammo_type = /obj/item/ammo_casing/a357
 			recoil = 1 // Less Ouch
@@ -112,12 +121,12 @@
 	item_state = "levercarabine" // That isn't how carbine is spelled ya knob! :U
 	icon_state = "levercarabine"
 	max_shells = 10
-	caliber = "44"
+	caliber = ".44"
 	load_method = SINGLE_CASING
 	ammo_type = /obj/item/ammo_casing/a44
 	animated_pump = 1
 	action_sound = 'sound/weapons/riflebolt.ogg'
-	
+
 /obj/item/gun/projectile/shotgun/pump/rifle/lever/vintage/holy
 	name = "blessed lever-action"
 	ammo_type = /obj/item/ammo_casing/a44/silver
@@ -135,7 +144,7 @@
 			item_state = "mareleg"
 			icon_state = "mareleg"
 			w_class = ITEMSIZE_NORMAL
-			caliber = "44"
+			caliber = ".44"
 			load_method = SINGLE_CASING
 			ammo_type = /obj/item/ammo_casing/a44
 			recoil = 1 // Less Ouch
@@ -161,7 +170,7 @@
 	caliber = "12g"
 	load_method = SINGLE_CASING
 	action_sound = 'sound/weapons/riflebolt.ogg'
-	
+
 /obj/item/gun/projectile/shotgun/pump/rifle/lever/arnold/holy
 	name = "blessed lever-action shotgun"
 	ammo_type = /obj/item/ammo_casing/a12g/silver
@@ -179,8 +188,33 @@
 	caliber = "7.62mm"
 	action_sound = 'sound/weapons/riflebolt.ogg'
 	animated_pump = 1
-	
+
 /obj/item/gun/projectile/shotgun/pump/rifle/lever/win1895/holy
 	name = "blessed lever-action"
 	ammo_type = /obj/item/ammo_casing/a762/silver
 	holy = TRUE
+
+/obj/item/gun/projectile/shotgun/pump/scopedrifle
+	name = "scoped bolt action"
+	desc = "A bolt-action rifle with a scope afixed to it by a gun smith. Uses 7.62 rounds."
+	item_state = "boltaction"
+	icon_state = "boltaction-scoped"
+	fire_sound = 'sound/weapons/Gunshot_generic_rifle.ogg'
+	max_shells = 5
+	caliber = "7.62mm"
+	heavy = TRUE
+	origin_tech = list(TECH_COMBAT = 1)
+	load_method = SINGLE_CASING|SPEEDLOADER
+	action_sound = 'sound/weapons/riflebolt.ogg'
+	pin = /obj/item/firing_pin/explorer
+	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
+	ammo_type = /obj/item/ammo_casing/a762/sniperhunter
+	accuracy = 50 //Forced missing fucking sucks ass
+	scoped_accuracy = 100
+
+/obj/item/gun/projectile/shotgun/pump/scopedrifle/verb/scope()
+	set category = "Object"
+	set name = "Use Scope"
+	set popup_menu = 1
+
+	toggle_scope(2.0)

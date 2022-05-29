@@ -2,18 +2,17 @@
 	name = SPECIES_SKELETON
 	name_plural = "Skeletons"
 	icobase = 'icons/mob/human_races/r_skeleton.dmi'
-	primitive_form = "Monkey"
+	primitive_form = SPECIES_MONKEY
 	language = "Sol Common"
 	unarmed_types = list(/datum/unarmed_attack/claws/strong, /datum/unarmed_attack/bite/sharp)	//Bones are pointy, fight me.
 	blurb = "Spooky Scary Skeletons!"
 	name_language = null // Use the first-name last-name generator rather than a language scrambler
-	min_age = 17
 	max_age = 110
 	health_hud_intensity = 1.5
 
-	flags = NO_SCAN | NO_PAIN | NO_SLIP | NO_POISON | NO_MINOR_CUT | NO_BLOOD | UNDEAD
+	flags = NO_SCAN | NO_PAIN | NO_SLIP | NO_POISON | NO_MINOR_CUT | NO_BLOOD | UNDEAD | NO_DEFIB
 	spawn_flags = SPECIES_IS_RESTRICTED
-	appearance_flags = null
+	species_appearance_flags = null
 
 	show_ssd = null
 
@@ -22,7 +21,7 @@
 	hunger_factor = 0
 	metabolic_rate = 0
 
-	virus_immune = 1
+	virus_immune = TRUE
 
 	brute_mod =     1
 	burn_mod =      0

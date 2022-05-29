@@ -16,7 +16,7 @@
 		return
 
 	gravity_is_on = !gravity_is_on
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.sortedAreas)
 		A.gravitychange(gravity_is_on,A)
 
 	feedback_inc("admin_secrets_fun_used",1)

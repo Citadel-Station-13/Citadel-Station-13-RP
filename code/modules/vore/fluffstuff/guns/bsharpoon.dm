@@ -3,7 +3,7 @@
 	name = "bluespace harpoon"
 	desc = "For climbing on bluespace mountains!"
 
-	icon = 'icons/obj/gun_vr.dmi'
+	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "harpoon-2"
 
 	w_class = ITEMSIZE_NORMAL
@@ -44,7 +44,7 @@
 	if(!T || T.check_density())
 		to_chat(user,"<span class = 'warning'>That's a little too solid to harpoon into!</span>")
 		return
-	if(get_area(A).flags & BLUE_SHIELDED)
+	if(get_area(A).area_flags & AF_BLUE_SHIELDED)
 		to_chat(user, "<span class='warning'>The target area protected by bluespace shielding!</span>")
 		return
 

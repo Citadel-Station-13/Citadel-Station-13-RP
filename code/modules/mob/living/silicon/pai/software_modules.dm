@@ -7,12 +7,12 @@
 	var/id = ""
 	// Whether this software is a toggle or not
 	// Toggled software should override toggle() and is_active()
-	// Non-toggled software should override on_ui_interact() and Topic()
+	// Non-toggled software should override on_nano_ui_interact() and Topic()
 	var/toggle = 1
 	// Whether pAIs should automatically receive this module at no cost
 	var/default = 0
 
-	proc/on_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
+	proc/on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
 		return
 
 	proc/toggle(mob/living/silicon/pai/user)
@@ -28,7 +28,7 @@
 	toggle = 0
 	default = 1
 
-	on_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
+	on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
 		var/data[0]
 
 		data["master"] = user.master
@@ -85,7 +85,7 @@
 	toggle = 0
 	default = 1
 
-	on_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui = null, force_open = 1)
+	on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui = null, force_open = 1)
 		var/data[0]
 
 		data["listening"] = user.radio.broadcasting
@@ -121,12 +121,12 @@
 	id = "manifest"
 	toggle = 0
 
-	on_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
+	on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
 		data_core.get_manifest_list()
 
 		var/data[0]
 		// This is dumb, but NanoUI breaks if it has no data to send
-		data["manifest"] = PDA_Manifest
+		data["manifest"] = GLOB.PDA_Manifest
 
 		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
 		if(!ui)
@@ -142,7 +142,7 @@
 	id = "messenger"
 	toggle = 0
 
-	on_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
+	on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
 		var/data[0]
 
 		data["receiver_off"] = user.pda.toff
@@ -218,7 +218,7 @@
 	id = "med_records"
 	toggle = 0
 
-	on_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
+	on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
 		var/data[0]
 
 		var/records[0]
@@ -272,7 +272,7 @@
 	id = "sec_records"
 	toggle = 0
 
-	on_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
+	on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
 		var/data[0]
 
 		var/records[0]
@@ -330,7 +330,7 @@
 	id = "door_jack"
 	toggle = 0
 
-	on_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
+	on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
 		var/data[0]
 
 		data["cable"] = user.cable != null
@@ -404,7 +404,7 @@
 	id = "atmos_sense"
 	toggle = 0
 
-	on_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
+	on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
 		var/data[0]
 
 		var/turf/T = get_turf_or_move(user.loc)
@@ -445,11 +445,10 @@
 
 	toggle(mob/living/silicon/pai/user)
 		user.secHUD = !user.secHUD
-		user.plane_holder.set_vis(VIS_CH_ID, user.secHUD)
-		user.plane_holder.set_vis(VIS_CH_WANTED, user.secHUD)
-		user.plane_holder.set_vis(VIS_CH_IMPTRACK, user.secHUD)
-		user.plane_holder.set_vis(VIS_CH_IMPLOYAL, user.secHUD)
-		user.plane_holder.set_vis(VIS_CH_IMPCHEM, user.secHUD)
+		if(user.secHUD)
+			get_atom_hud(DATA_HUD_SECURITY_ADVANCED).add_hud_to(user)
+		else
+			get_atom_hud(DATA_HUD_SECURITY_ADVANCED).remove_hud_from(user)
 
 	is_active(mob/living/silicon/pai/user)
 		return user.secHUD
@@ -460,9 +459,10 @@
 	id = "med_hud"
 
 	toggle(mob/living/silicon/pai/user)
-		user.medHUD = !user.medHUD
-		user.plane_holder.set_vis(VIS_CH_STATUS, user.medHUD)
-		user.plane_holder.set_vis(VIS_CH_HEALTH, user.medHUD)
+		if((user.medHUD = !user.medHUD))
+			get_atom_hud(DATA_HUD_MEDICAL).add_hud_to(user)
+		else
+			get_atom_hud(DATA_HUD_MEDICAL).remove_hud_from(user)
 
 	is_active(mob/living/silicon/pai/user)
 		return user.medHUD
@@ -499,7 +499,7 @@
 	id = "signaller"
 	toggle = 0
 
-	on_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
+	on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
 		var/data[0]
 
 		data["frequency"] = format_frequency(user.sradio.frequency)
@@ -519,7 +519,7 @@
 		if(href_list["send"])
 			P.sradio.send_signal("ACTIVATE")
 			for(var/mob/O in hearers(1, P.loc))
-				O.show_message(text("\icon[] *beep* *beep*", P), 3, "*beep* *beep*", 2)
+				to_chat(O, "[icon2html(thing = src, target = O)] *beep beep*")
 			return 1
 
 		else if(href_list["freq"])

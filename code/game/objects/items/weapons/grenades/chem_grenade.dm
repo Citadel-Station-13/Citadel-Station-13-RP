@@ -16,7 +16,7 @@
 	var/list/allowed_containers = list(/obj/item/reagent_containers/glass/beaker, /obj/item/reagent_containers/glass/bottle)
 	var/affected_area = 3
 
-/obj/item/grenade/chem_grenade/Initialize()
+/obj/item/grenade/chem_grenade/Initialize(mapload)
 	. = ..()
 	create_reagents(1000)
 
@@ -118,9 +118,9 @@
 				to_chat(user, "<span class='warning'>\The [W] is empty.</span>")
 
 /obj/item/grenade/chem_grenade/examine(mob/user)
-	..(user)
+	. = ..()
 	if(detonator)
-		to_chat(user, "With attached [detonator.name]")
+		. += "With attached [detonator.name]"
 
 /obj/item/grenade/chem_grenade/activate(mob/user as mob)
 	if(active) return
@@ -203,7 +203,7 @@
 	path = 1
 	stage = 2
 
-/obj/item/grenade/chem_grenade/metalfoam/Initialize()
+/obj/item/grenade/chem_grenade/metalfoam/Initialize(mapload)
 	. = ..()
 	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
@@ -224,7 +224,7 @@
 	path = 1
 	stage = 2
 
-/obj/item/grenade/chem_grenade/incendiary/Initialize()
+/obj/item/grenade/chem_grenade/incendiary/Initialize(mapload)
 	. = ..()
 	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
@@ -247,7 +247,7 @@
 	path = 1
 	stage = 2
 
-/obj/item/grenade/chem_grenade/antiweed/Initialize()
+/obj/item/grenade/chem_grenade/antiweed/Initialize(mapload)
 	. = ..()
 	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
@@ -269,7 +269,7 @@
 	stage = 2
 	path = 1
 
-/obj/item/grenade/chem_grenade/cleaner/Initialize()
+/obj/item/grenade/chem_grenade/cleaner/Initialize(mapload)
 	. = ..()
 	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
@@ -290,7 +290,7 @@
 	stage = 2
 	path = 1
 
-/obj/item/grenade/chem_grenade/teargas/Initialize()
+/obj/item/grenade/chem_grenade/teargas/Initialize(mapload)
 	. = ..()
 	var/obj/item/reagent_containers/glass/beaker/large/B1 = new(src)
 	var/obj/item/reagent_containers/glass/beaker/large/B2 = new(src)
@@ -313,14 +313,57 @@
 	stage = 2
 	path = 1
 
-/obj/item/grenade/chem_grenade/holy/Initialize()
+/obj/item/grenade/chem_grenade/holy/Initialize(mapload)
+	. = ..()
+	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
+	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
+
+	B1.reagents.add_reagent("fluorosurfactant", 30)
+	B1.reagents.add_reagent("cleaner", 30)
+	B2.reagents.add_reagent("water", 30)
+	B2.reagents.add_reagent("holywater", 30)
+
+	detonator = new/obj/item/assembly_holder/timer_igniter(src)
+
+	beakers += B1
+	beakers += B2
+	icon_state = initial(icon_state) +"_locked"
+
+/obj/item/grenade/chem_grenade/lube
+	name = "lubricant grenade"
+	desc = "Originally exported from Columbina, the popularity of this gag item quickly faded."
+	stage = 2
+	path = 1
+
+/obj/item/grenade/chem_grenade/lube/Initialize(mapload)
 	. = ..()
 	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
 
 	B1.reagents.add_reagent("fluorosurfactant", 40)
-	B2.reagents.add_reagent("holywater", 40)
-	B2.reagents.add_reagent("cleaner", 10)
+	B2.reagents.add_reagent("lube", 10)
+	B2.reagents.add_reagent("water", 40)
+
+	detonator = new/obj/item/assembly_holder/timer_igniter(src)
+
+	beakers += B1
+	beakers += B2
+	icon_state = initial(icon_state) +"_locked"
+
+/obj/item/grenade/chem_grenade/lube_tactical
+	name = "tactical lubricant grenade"
+	desc = "Utilized by Cloumbina Commandos, this variant of the lubricant grenade delivers a more focused payload."
+	stage = 2
+	path = 1
+
+/obj/item/grenade/chem_grenade/lube_tactical/Initialize(mapload)
+	. = ..()
+	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
+	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
+
+	B1.reagents.add_reagent("fluorosurfactant", 40)
+	B2.reagents.add_reagent("lube", 40)
+	B2.reagents.add_reagent("water", 10)
 
 	detonator = new/obj/item/assembly_holder/timer_igniter(src)
 

@@ -17,6 +17,8 @@
 	var/singular_name
 	var/amount = 1
 	var/max_amount = 50 //also see stack recipes initialisation, param "max_res_amount" must be equal to this max_amount
+	/// bandaid until new inventorycode
+	var/mid_delete = FALSE
 	var/stacktype //determines whether different stack types can merge
 	var/build_type = null //used when directly applied to a turf
 	var/uses_charge = 0
@@ -45,10 +47,9 @@
 	update_icon()
 
 /obj/item/stack/Destroy()
-	if(uses_charge)
-		return 1
 	if (src && usr && usr.machine == src)
 		usr << browse(null, "window=stack")
+	mid_delete = TRUE
 	return ..()
 
 /obj/item/stack/update_icon()
@@ -66,9 +67,9 @@
 /obj/item/stack/examine(mob/user)
 	. = ..()
 	if(!uses_charge)
-		to_chat(user, "There are [amount] [singular_name]\s in the stack.")
+		. += "There are [amount] [singular_name]\s in the stack."
 	else
-		to_chat(user, "There is enough charge for [get_amount()].")
+		. += "There is enough charge for [get_amount()]."
 
 /obj/item/stack/attack_self(mob/user as mob)
 	list_recipes(user)
@@ -100,7 +101,7 @@
 		if (istype(E, /datum/stack_recipe))
 			var/datum/stack_recipe/R = E
 			var/max_multiplier = round(src.get_amount() / R.req_amount)
-			var/title as text
+			var/title
 			var/can_build = 1
 			can_build = can_build && (max_multiplier>0)
 			if (R.res_amount>1)
@@ -220,6 +221,8 @@
 /obj/item/stack/proc/can_merge(obj/item/stack/other)
 	if(!istype(other))
 		return FALSE
+	if(mid_delete || other.mid_delete)	// bandaid until new inventory code
+		return FALSE
 	return other.stacktype == stacktype
 
 /obj/item/stack/proc/use(var/used)
@@ -228,8 +231,10 @@
 	if(!uses_charge)
 		amount -= used
 		if (amount <= 0)
-			if(usr)
-				usr.remove_from_mob(src)
+			mid_delete = TRUE
+			if(ismob(loc))
+				var/mob/M = loc
+				M.remove_from_mob(src, null)
 			qdel(src) //should be safe to qdel immediately since if someone is still using this stack it will persist for a little while longer
 		update_icon()
 		return 1
@@ -240,7 +245,6 @@
 			var/datum/matter_synth/S = synths[i]
 			S.use_charge(charge_costs[i] * used) // Doesn't need to be deleted
 		return 1
-	return 0
 
 /obj/item/stack/proc/add(var/extra)
 	if(!uses_charge)
@@ -473,3 +477,24 @@
 	New(title, recipes)
 		src.title = title
 		src.recipes = recipes
+
+/obj/item/stack/proc/set_amount(var/new_amount, var/no_limits = FALSE)
+	if(new_amount < 0 || new_amount % 1)
+		stack_trace("Tried to set a bad stack amount: [new_amount]")
+		return 0
+
+	// Clean up the new amount
+	new_amount = max(round(new_amount), 0)
+
+	// Can exceed max if you really want
+	if(new_amount > max_amount && !no_limits)
+		new_amount = max_amount
+
+	amount = new_amount
+
+	// Can set it to 0 without qdel if you really want
+	if(amount == 0 && !no_limits)
+		qdel(src)
+		return FALSE
+
+	return TRUE

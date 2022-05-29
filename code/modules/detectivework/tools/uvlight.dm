@@ -7,7 +7,7 @@
 	w_class = ITEMSIZE_SMALL
 	item_state = "electronic"
 	action_button_name = "Toggle UV light"
-	matter = list(DEFAULT_WALL_MATERIAL = 150)
+	matter = list(MAT_STEEL = 150)
 	origin_tech = list(TECH_MAGNET = 1, TECH_ENGINEERING = 1)
 
 	var/list/scanned = list()
@@ -47,7 +47,7 @@
 			if(I.fluorescent == 2) I.fluorescent = 1
 		reset_objects.Cut()
 
-/obj/item/uv_light/process()
+/obj/item/uv_light/process(delta_time)
 	clear_last_scan()
 	if(on)
 		step_alpha = round(255/range)

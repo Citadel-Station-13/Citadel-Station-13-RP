@@ -28,7 +28,7 @@ var/list/table_icon_cache = list()
 	var/carpeted = 0
 	var/carpeted_type = /obj/item/stack/tile/carpet
 
-	var/list/connections = list("nw0", "ne0", "sw0", "se0")
+	connections = list("nw0", "ne0", "sw0", "se0")
 
 	/// Can people place items on us by clicking on us?
 	var/item_place = TRUE
@@ -63,7 +63,7 @@ var/list/table_icon_cache = list()
 /obj/structure/table/blob_act()
 	take_damage(100)
 
-/obj/structure/table/Initialize()
+/obj/structure/table/Initialize(mapload)
 	. = ..()
 
 	// One table per turf.
@@ -77,7 +77,18 @@ var/list/table_icon_cache = list()
 	// reset color/alpha, since they're set for nice map previews
 	color = "#ffffff"
 	alpha = 255
-	update_connections(SSticker && SSticker.current_state == GAME_STATE_PLAYING)
+	if(mapload)		// screw off
+		return INITIALIZE_HINT_LATELOAD
+	else
+		update_connections(TRUE)
+		update_icon()
+		update_desc()
+		update_material()
+
+
+/obj/structure/table/LateInitialize()		// CURSE YOU DUMB AS ROCKS MATERIAL SYSTEM
+	. = ..()
+	update_connections(FALSE)
 	update_icon()
 	update_desc()
 	update_material()
@@ -85,9 +96,7 @@ var/list/table_icon_cache = list()
 /obj/structure/table/Destroy()
 	material = null
 	reinforced = null
-	update_connections(1) // Update tables around us to ignore us (material=null forces no connections)
-	for(var/obj/structure/table/T in oview(src, 1))
-		T.update_icon()
+	update_connections(TRUE) // Update tables around us to ignore us (material=null forces no connections)
 	. = ..()
 
 /obj/structure/table/examine(mob/user)
@@ -95,11 +104,11 @@ var/list/table_icon_cache = list()
 	if(health < maxhealth)
 		switch(health / maxhealth)
 			if(0.0 to 0.5)
-				to_chat(user, "<span class='warning'>It looks severely damaged!</span>")
+				. += "<span class='warning'>It looks severely damaged!</span>"
 			if(0.25 to 0.5)
-				to_chat(user, "<span class='warning'>It looks damaged!</span>")
+				. += "<span class='warning'>It looks damaged!</span>"
 			if(0.5 to 1.0)
-				to_chat(user, "<span class='notice'>It has a few scrapes and dents.</span>")
+				. += "<span class='notice'>It has a few scrapes and dents.</span>"
 
 /obj/structure/table/attackby(obj/item/W, mob/user)
 
@@ -225,7 +234,8 @@ var/list/table_icon_cache = list()
 		update_icon()
 		update_material()
 
-/obj/structure/table/proc/update_desc()
+/obj/structure/table/update_desc()
+	. = ..()
 	if(material)
 		name = "[material.display_name] table"
 	else
@@ -324,7 +334,7 @@ var/list/table_icon_cache = list()
 	if(full_return || prob(20))
 		new /obj/item/stack/material/steel(src.loc)
 	else
-		var/datum/material/M = get_material_by_name(DEFAULT_WALL_MATERIAL)
+		var/datum/material/M = get_material_by_name(MAT_STEEL)
 		S = M.place_shard(loc)
 		if(S) shards += S
 	qdel(src)
@@ -406,13 +416,13 @@ var/list/table_icon_cache = list()
 			overlays += "carpet_flip[type]"
 
 // set propagate if you're updating a table that should update tables around it too, for example if it's a new table or something important has changed (like material).
-/obj/structure/table/proc/update_connections(propagate=0)
+/obj/structure/table/update_connections(propagate=0)
 	if(!material)
 		connections = list("0", "0", "0", "0")
-
 		if(propagate)
-			for(var/obj/structure/table/T in oview(src, 1))
+			for(var/obj/structure/table/T in orange(src, 1))
 				T.update_connections()
+				T.update_icon()
 		return
 
 	var/list/blocked_dirs = list()
@@ -425,7 +435,7 @@ var/list/table_icon_cache = list()
 	for(var/D in list(NORTH, SOUTH, EAST, WEST) - blocked_dirs)
 		var/turf/T = get_step(src, D)
 		for(var/obj/structure/window/W in T)
-			if(W.is_fulltile() || W.dir == reverse_dir[D])
+			if(W.is_fulltile() || W.dir == GLOB.reverse_dir[D])
 				blocked_dirs |= D
 				break
 			else
@@ -436,7 +446,7 @@ var/list/table_icon_cache = list()
 		var/turf/T = get_step(src, D)
 
 		for(var/obj/structure/window/W in T)
-			if(W.is_fulltile() || W.dir & reverse_dir[D])
+			if(W.is_fulltile() || W.dir & GLOB.reverse_dir[D])
 				blocked_dirs |= D
 				break
 
@@ -450,7 +460,8 @@ var/list/table_icon_cache = list()
 
 	for(var/obj/structure/table/T in orange(src, 1))
 		var/T_dir = get_dir(src, T)
-		if(T_dir in blocked_dirs) continue
+		if(T_dir in blocked_dirs)
+			continue
 		if(material && T.material && material.name == T.material.name && flipped == T.flipped)
 			connection_dirs |= T_dir
 		if(propagate)
@@ -490,6 +501,29 @@ var/list/table_icon_cache = list()
 		ret[i] = "[.]"
 
 	return ret
+
+/**
+ * generates corner state for a corner
+ * smoothing_junction must be set at this point
+ * corner is 0 to 3 not 1 to 4
+ *
+ * proc usually used for helping us commit war crimes with custom_smooth().
+ */
+/atom/proc/get_corner_state_using_junctions(corner)
+	// north, south, east, west, in that order
+	// which translates to northwest, southeast, northeast, southwest in that order
+	// honestly fuck you, precompute.
+	// cache for sanic speed
+	var/smoothing_junction = src.smoothing_junction
+	switch(corner)
+		if(0)
+			return ((smoothing_junction & NORTHWEST_JUNCTION)? CORNER_DIAGONAL : NONE) | ((smoothing_junction & NORTH_JUNCTION)? CORNER_CLOCKWISE : NONE) | ((smoothing_junction & WEST_JUNCTION)? CORNER_COUNTERCLOCKWISE : NONE)
+		if(1)
+			return ((smoothing_junction & SOUTHEAST_JUNCTION)? CORNER_DIAGONAL : NONE) | ((smoothing_junction & SOUTH_JUNCTION)? CORNER_CLOCKWISE : NONE) | ((smoothing_junction & EAST_JUNCTION)? CORNER_COUNTERCLOCKWISE : NONE)
+		if(2)
+			return ((smoothing_junction & NORTHEAST_JUNCTION)? CORNER_DIAGONAL : NONE) | ((smoothing_junction & EAST_JUNCTION)? CORNER_CLOCKWISE : NONE) | ((smoothing_junction & NORTH_JUNCTION)? CORNER_COUNTERCLOCKWISE : NONE)
+		if(3)
+			return ((smoothing_junction & SOUTHWEST_JUNCTION)? CORNER_DIAGONAL : NONE) | ((smoothing_junction & WEST_JUNCTION)? CORNER_CLOCKWISE : NONE) | ((smoothing_junction & SOUTH_JUNCTION)? CORNER_COUNTERCLOCKWISE : NONE)
 
 #undef CORNER_NONE
 #undef CORNER_COUNTERCLOCKWISE

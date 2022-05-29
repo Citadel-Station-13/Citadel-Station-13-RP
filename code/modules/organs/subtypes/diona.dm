@@ -3,9 +3,11 @@
 		return 0
 
 	//This is a terrible hack and I should be ashamed.
-	var/datum/seed/diona = plant_controller.seeds["diona"]
+	var/datum/seed/diona = SSplants.seeds["diona"]
 	if(!diona)
 		return 0
+
+	. = TRUE
 
 	spawn(1) // So it has time to be thrown about by the gib() proc.
 		var/mob/living/carbon/alien/diona/D = new(target)
@@ -15,8 +17,6 @@
 			if(D)
 				if(!D.ckey || !D.client)
 					D.death()
-		return 1
-
 /obj/item/organ/external/diona
 	name = "tendril"
 	cannot_break = 1
@@ -151,7 +151,7 @@
 	if(prob(50) && !skip_nymph && spawn_diona_nymph(get_turf(src)))
 		qdel(src)
 
-/obj/item/organ/internal/diona/process()
+/obj/item/organ/internal/diona/process(delta_time)
 	return
 
 /obj/item/organ/internal/diona/strata
@@ -211,8 +211,8 @@
 	parent_organ = BP_TORSO
 	vital = TRUE
 
-/obj/item/organ/internal/brain/cephalon/Initialize()
-	..()
+/obj/item/organ/internal/brain/cephalon/Initialize(mapload)
+	. = ..()
 	spawn(30 SECONDS)	// FBP Dionaea need some way to be disassembled through surgery, if absolutely necessary.
 		if(!owner.isSynthetic())
 			vital = FALSE

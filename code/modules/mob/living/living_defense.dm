@@ -12,7 +12,7 @@
 	A number between 0 and 100, with higher numbers resulting in less damage taken.
 */
 /mob/living/proc/run_armor_check(var/def_zone = null, var/attack_flag = "melee", var/armour_pen = 0, var/absorb_text = null, var/soften_text = null)
-	if(Debug2)
+	if(GLOB.Debug2)
 		log_world("## DEBUG: getarmor() was called.")
 
 	if(armour_pen >= 100)
@@ -22,7 +22,7 @@
 	if(armor)
 		var/armor_variance_range = round(armor * 0.25) //Armor's effectiveness has a +25%/-25% variance.
 		var/armor_variance = rand(-armor_variance_range, armor_variance_range) //Get a random number between -25% and +25% of the armor's base value
-		if(Debug2)
+		if(GLOB.Debug2)
 			log_world("## DEBUG: The range of armor variance is [armor_variance_range].  The variance picked by RNG is [armor_variance].")
 
 		armor = min(armor + armor_variance, 100)	//Now we calcuate damage using the new armor percentage.
@@ -38,7 +38,7 @@
 				to_chat(src, "<span class='danger'>[soften_text]</span>")
 			else
 				to_chat(src, "<span class='danger'>Your armor softens the blow!</span>")
-		if(Debug2)
+		if(GLOB.Debug2)
 			log_world("## DEBUG: Armor when [src] was attacked was [armor].")
 	return armor
 
@@ -117,6 +117,7 @@
 	var/absorb = run_armor_check(def_zone, P.check_armour, P.armor_penetration)
 	var/proj_sharp = is_sharp(P)
 	var/proj_edge = has_edge(P)
+	var/final_damage = P.get_final_damage(src)
 
 	if ((proj_sharp || proj_edge) && (soaked >= round(P.damage*0.8)))
 		proj_sharp = 0
@@ -126,17 +127,21 @@
 		proj_sharp = 0
 		proj_edge = 0
 
+	var/list/impact_sounds = LAZYACCESS(P.impact_sounds, get_bullet_impact_effect_type(def_zone))
+	if(length(impact_sounds))
+		playsound(src, pick(impact_sounds), 75)
+
 	//Stun Beams
 	if(P.taser_effect)
 		stun_effect_act(0, P.agony, def_zone, P)
 		to_chat(src, "<font color='red'>You have been hit by [P]!</font>")
 		if(!P.nodamage)
-			apply_damage(P.damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
+			apply_damage(final_damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
 		qdel(P)
 		return
 
 	if(!P.nodamage)
-		apply_damage(P.damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
+		apply_damage(final_damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
 	P.on_hit(src, absorb, soaked, def_zone)
 
 	if(absorb == 100)
@@ -147,6 +152,9 @@
 		return 0
 
 //	return absorb
+
+/mob/living/get_bullet_impact_effect_type(var/def_zone)
+	return BULLET_IMPACT_MEAT
 
 //Handles the effects of "stun" weapons
 /mob/living/proc/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone, var/used_weapon=null)
@@ -163,7 +171,7 @@
 		apply_effect(STUTTER, agony_amount/10)
 		apply_effect(EYE_BLUR, agony_amount/10)
 
-/mob/living/proc/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0)
+/mob/living/proc/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null, var/stun = 1)
 	  return 0 //only carbon liveforms have this proc
 
 /mob/living/emp_act(severity)
@@ -263,7 +271,7 @@
 			miss_chance = max(15*(distance-2), 0)
 
 		if (prob(miss_chance))
-			visible_message("<font color='blue'>\The [O] misses [src] narrowly!</font>")
+			visible_message("<font color=#4F49AF>\The [O] misses [src] narrowly!</font>")
 			return
 
 		src.visible_message("<font color='red'>[src] has been hit by [O].</font>")
@@ -404,23 +412,6 @@
 //Called in MobCollide() and Crossed()
 /mob/living/proc/spread_fire(mob/living/L)
 	return
-// This is commented out pending discussion on Polaris.  If you're a downsteam and you want people to spread fire by touching each other, feel free to uncomment this.
-/*
-	if(!istype(L))
-		return
-	var/L_old_on_fire = L.on_fire
-
-	if(on_fire) //Only spread fire stacks if we're on fire
-		fire_stacks /= 2
-		L.fire_stacks += fire_stacks
-		if(L.IgniteMob())
-			message_admins("[key_name(src)] bumped into [key_name(L)] and set them on fire.")
-
-	if(L_old_on_fire) //Only ignite us and gain their stacks if they were onfire before we bumped them
-		L.fire_stacks /= 2
-		fire_stacks += L.fire_stacks
-		IgniteMob()
-*/
 
 /mob/living/proc/get_cold_protection()
 	return 0
@@ -453,29 +444,34 @@
 	stuttering += 20
 	make_jittery(150)
 	emp_act(1)
-	to_chat(src, span("critical", "You've been struck by lightning!"))
+	to_chat(src, SPAN_CRITICAL("You've been struck by lightning!"))
 
 // Called when touching a lava tile.
 // Does roughly 100 damage to unprotected mobs, and 20 to fully protected mobs.
 /mob/living/lava_act()
-	add_modifier(/datum/modifier/fire/intense, 8 SECONDS) // Around 40 total if left to burn and without fire protection per stack.
-	inflict_heat_damage(40) // Another 40, however this is instantly applied to unprotected mobs.
-	adjustFireLoss(20) // Lava cannot be 100% resisted with fire protection.
+	add_modifier(/datum/modifier/fire/intense, 3 SECONDS) // Around 40 total if left to burn and without fire protection per stack.
+	inflict_heat_damage(10) // Another 40, however this is instantly applied to unprotected mobs.
+	adjustFireLoss(10) // Lava cannot be 100% resisted with fire protection.
 
 //Acid
-/mob/living/acid_act()
+/mob/living/acid_act(var/mob/living/H)
 	make_dizzy(1)
 	adjustHalLoss(1)
-	if(!confused) confused = 1
-	confused = max(confused, 20)
-	inflict_heat_damage(30) // This is instantly applied to unprotected mobs.
-	inflict_poison_damage(10)
-	adjustFireLoss(15) // Acid cannot be 100% resisted by protection.
+	inflict_heat_damage(5) // This is instantly applied to unprotected mobs.
+	inflict_poison_damage(5)
+	adjustFireLoss(5) // Acid cannot be 100% resisted by protection.
 	adjustToxLoss(5)
+	confused = max(confused, 1)
+
+//Blood
+//Acid
+/mob/living/blood_act(var/mob/living/H)
+	inflict_poison_damage(5)
+	adjustToxLoss(5)
+
 
 /mob/living/proc/reagent_permeability()
 	return 1
-	return round(FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE*(fire_stacks/FIRE_MAX_FIRESUIT_STACKS)**2)
 
 /mob/living/proc/handle_actions()
 	//Pretty bad, i'd use picked/dropped instead but the parent calls in these are nonexistent
@@ -522,11 +518,11 @@
 	for(var/datum/action/A in actions)
 		button_number++
 		if(A.button == null)
-			var/obj/screen/movable/action_button/N = new(hud_used)
+			var/atom/movable/screen/movable/action_button/N = new(hud_used)
 			N.owner = A
 			A.button = N
 
-		var/obj/screen/movable/action_button/B = A.button
+		var/atom/movable/screen/movable/action_button/B = A.button
 
 		B.UpdateIcon()
 
@@ -558,7 +554,7 @@
 /mob/living/proc/get_accuracy_penalty()
 	// Certain statuses make it harder to score a hit.
 	var/accuracy_penalty = 0
-	if(eye_blind)
+	if(blinded)
 		accuracy_penalty += 75
 	if(eye_blurry)
 		accuracy_penalty += 30

@@ -33,7 +33,6 @@
 	icon_state = "shirt_long_female_s"
 	has_color = TRUE
 
-
 /datum/category_item/underwear/undershirt/tank_top
 	name = "Tank top"
 	icon_state = "tanktop"
@@ -178,3 +177,18 @@
 /datum/category_item/underwear/undershirt/pinkblack_tshirt
 	name = "Pink and Black T-Shirt"
 	icon_state = "pinkblack_tshirt"
+
+/datum/category_item/underwear/undershirt/shibari
+	name = "Shibari Rope"
+	icon_state = "shibari"
+	has_color = TRUE
+
+/datum/category_item/underwear/undershirt/shibari_sleeve
+	name = "Shibari Rope with sleeves"
+	icon_state = "shibari_sleeve"
+	has_color = TRUE
+
+/datum/category_item/underwear/undershirt/one_arm
+	name = "Off the Shoulder Shirt"
+	icon_state = "one_arm"
+	has_color = TRUE

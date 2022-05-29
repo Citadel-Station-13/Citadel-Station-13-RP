@@ -1,4 +1,4 @@
-/mob/living/carbon/human/verb/give(var/mob/living/carbon/target in living_mobs(1))
+/mob/living/carbon/human/verb/give(var/mob/living/carbon/target in valid_give_mobs())
 	set category = "IC"
 	set name = "Give"
 
@@ -15,7 +15,7 @@
 		to_chat(src, "<span class='warning'>You don't have anything in your hands to give to \the [target].</span>")
 		return
 
-	if(alert(target,"[src] wants to give you \a [I]. Will you accept it?","Item Offer","Yes","No") == "No") //VOREStation Edit - make yes on the left to be consistent with other dialogs
+	if(alert(target,"[src] wants to give you \a [I]. Will you accept it?","Item Offer","Yes","No") == "No")
 		target.visible_message("<span class='notice'>\The [src] tried to hand \the [I] to \the [target], \
 		but \the [target] didn't want it.</span>")
 		return
@@ -40,3 +40,14 @@
 	if(src.unEquip(I))
 		target.put_in_hands(I) // If this fails it will just end up on the floor, but that's fitting for things like dionaea.
 		target.visible_message("<span class='notice'>\The [src] handed \the [I] to \the [target].</span>")
+
+/mob/living/carbon/human/proc/valid_give_mobs()
+	var/static/list/living_typecache = typecacheof(/mob/living)
+	var/list/scan = view(1)		// lmao shitcode
+	. = list()
+	for(var/i in scan)
+		var/mob/living/L = i
+		if(!living_typecache[L.type])
+			continue
+		. += L
+	. -= src

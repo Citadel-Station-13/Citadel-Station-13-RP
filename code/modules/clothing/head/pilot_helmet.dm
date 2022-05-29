@@ -4,9 +4,9 @@
 	name = "pilot helmet"
 	desc = "Standard pilot gear. Protects the head from impacts."
 	icon_state = "pilot_helmet1"
-	item_icons = list(slot_head_str = 'icons/mob/pilot_helmet.dmi')
+	item_icons = list(/datum/inventory_slot_meta/inventory/head = 'icons/mob/clothing/pilot_helmet.dmi')
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/pilot_helmet.dmi'
+		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/pilot_helmet.dmi'
 		)
 	flags = THICKMATERIAL
 	armor = list(melee = 20, bullet = 10, laser = 10, energy = 5, bomb = 10, bio = 0, rad = 0)
@@ -18,12 +18,12 @@
 	w_class = ITEMSIZE_NORMAL
 
 	var/obj/machinery/computer/shuttle_control/shuttle_comp
-	var/obj/screen/pilot_hud
+	var/atom/movable/screen/pilot_hud
 	var/list/images
 	var/list/raw_images
 	var/last_status
 
-/obj/item/clothing/head/pilot/Initialize()
+/obj/item/clothing/head/pilot/Initialize(mapload)
 	. = ..()
 
 	images = list()
@@ -34,7 +34,7 @@
 	pilot_hud.icon = 'icons/obj/piloting_overlay.dmi'
 	pilot_hud.icon_state = "dimmer"
 	pilot_hud.layer = SCREEN_LAYER
-	pilot_hud.plane = PLANE_FULLSCREEN
+	pilot_hud.plane = FULLSCREEN_PLANE
 	pilot_hud.mouse_opacity = 0
 	pilot_hud.alpha = 0
 

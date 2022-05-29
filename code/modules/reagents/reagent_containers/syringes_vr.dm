@@ -8,7 +8,7 @@
 	var/list/targets
 	var/list/datum/disease2/disease/viruses
 
-/obj/item/reagent_containers/syringe/Initialize()
+/obj/item/reagent_containers/syringe/Initialize(mapload)
 	. = ..()
 	update_icon()
 
@@ -17,12 +17,14 @@
 	LAZYCLEARLIST(targets)
 	return ..()
 
-/obj/item/reagent_containers/syringe/process()
+/obj/item/reagent_containers/syringe/process(delta_time)
 	dirtiness = min(dirtiness + targets.len,75)
 	if(dirtiness >= 75)
 		STOP_PROCESSING(SSobj, src)
 	return 1
 
+// The code block below handles the syringes' infection chance among storing a hash of the first user targeted on it.
+//
 /obj/item/reagent_containers/syringe/proc/dirty(var/mob/living/carbon/human/target, var/obj/item/organ/external/eo)
 	if(!ishuman(loc))
 		return //Avoid borg syringe problems.
@@ -44,12 +46,13 @@
 	//Dirtiness should be very low if you're the first injectee. If you're spam-injecting 4 people in a row around you though,
 	//This gives the last one a 30% chance of infection.
 	var/infect_chance = dirtiness        //Start with dirtiness
-	if(infect_chance <= 10 && (hash in targets)) //Extra fast uses on target is free
+	infect_chance += (targets.len-1)*5    //Changed from a 10% increase to 5%.
+	if(infect_chance <= 20 && (hash in targets)) // Adjusted number as this should now work properly without infecting the first patient instantly.
 		infect_chance = 0
-	infect_chance += (targets.len-1)*10    //Extra 10% per extra target
-	if(prob(infect_chance))
-		log_and_message_admins("[loc] infected [target]'s [eo.name] with \the [src].")
-		infect_limb(eo)
+	else
+		if(prob(infect_chance))
+			log_and_message_admins("[loc] infected [target]'s [eo.name] with \the [src].")
+			infect_limb(eo)
 
 	//75% chance to spread a virus if we have one
 	if(LAZYLEN(viruses) && prob(75))
@@ -62,12 +65,7 @@
 		START_PROCESSING(SSobj, src)
 
 /obj/item/reagent_containers/syringe/proc/infect_limb(var/obj/item/organ/external/eo)
-	src = null
-	var/datum/weakref/limb_ref = WEAKREF(eo)
-	spawn(rand(5 MINUTES,10 MINUTES))
-		var/obj/item/organ/external/found_limb = limb_ref.resolve()
-		if(istype(found_limb))
-			eo.germ_level += INFECTION_LEVEL_ONE+30
+	eo.queue_syringe_infection()
 
 //Allow for capped syringe mode
 /obj/item/reagent_containers/syringe/attack_self(mob/user as mob)

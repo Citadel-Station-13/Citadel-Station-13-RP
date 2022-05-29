@@ -2,7 +2,7 @@
 	var/overlay
 	var/ckey
 
-/datum/ai_emotion/New(var/over, var/key)
+/datum/ai_emotion/New(over, key)
 	overlay = over
 	ckey = key
 
@@ -30,7 +30,7 @@ var/list/ai_status_emotions = list(
 	"Tribunal Malfunctioning"	= new /datum/ai_emotion("ai_tribunal_malf", "serithi")
 	)
 
-/proc/get_ai_emotions(var/ckey)
+/proc/get_ai_emotions(ckey)
 	var/list/emotions = new
 	for(var/emotion_name in ai_status_emotions)
 		var/datum/ai_emotion/emotion = ai_status_emotions[emotion_name]
@@ -42,7 +42,7 @@ var/list/ai_status_emotions = list(
 /proc/set_ai_status_displays(mob/user as mob)
 	var/list/ai_emotions = get_ai_emotions(user.ckey)
 	var/emote = input("Please, select a status!", "AI Status", null, null) in ai_emotions
-	for (var/obj/machinery/M in machines) //change status
+	for (var/obj/machinery/M in GLOB.machines) //change status
 		if(istype(M, /obj/machinery/ai_status_display))
 			var/obj/machinery/ai_status_display/AISD = M
 			AISD.emotion = emote
@@ -82,9 +82,11 @@ var/list/ai_status_emotions = list(
 /obj/machinery/ai_status_display/attack_ai/(mob/user as mob)
 	var/list/ai_emotions = get_ai_emotions(user.ckey)
 	var/emote = input("Please, select a status!", "AI Status", null, null) in ai_emotions
-	emotion = emote
+	var/datum/ai_emotion/ai_emotion = ai_status_emotions[emote]
+	set_picture(ai_emotion.overlay)
 
-/obj/machinery/ai_status_display/process()
+
+/obj/machinery/ai_status_display/process(delta_time)
 	return
 
 /obj/machinery/ai_status_display/proc/update()
@@ -101,7 +103,7 @@ var/list/ai_status_emotions = list(
 		set_picture("ai_bsod")
 		return
 
-/obj/machinery/ai_status_display/proc/set_picture(var/state)
+/obj/machinery/ai_status_display/proc/set_picture(state)
 	picture_state = state
 	if(overlays.len)
 		overlays.Cut()
@@ -109,7 +111,7 @@ var/list/ai_status_emotions = list(
 
 /obj/machinery/ai_status_display/power_change()
 	..()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		if(overlays.len)
 			overlays.Cut()
 	else

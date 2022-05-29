@@ -7,46 +7,47 @@
 	item_state = "electronic"
 	throw_speed = 4
 	throw_range = 20
-	matter = list(DEFAULT_WALL_MATERIAL = 500)
+	matter = list(MAT_STEEL = 500)
 	preserve_item = 1
 	var/obj/item/disk/nuclear/the_disk = null
 	var/active = 0
 
 
-	attack_self()
-		if(!active)
-			active = 1
-			workdisk()
-			to_chat(usr, "<span class='notice'>You activate the pinpointer</span>")
-		else
-			active = 0
-			icon_state = "pinoff"
-			to_chat(usr, "<span>You deactivate the pinpointer</span>")
+/obj/item/pinpointer/attack_self()
+	if(!active)
+		active = 1
+		workdisk()
+		to_chat(usr, "<span class='notice'>You activate the pinpointer</span>")
+	else
+		active = 0
+		icon_state = "pinoff"
+		to_chat(usr, "<span>You deactivate the pinpointer</span>")
 
-	proc/workdisk()
-		if(!active) return
+/obj/item/pinpointer/proc/workdisk()
+	if(!active)
+		return
+	if(!the_disk)
+		the_disk = locate()
 		if(!the_disk)
-			the_disk = locate()
-			if(!the_disk)
-				icon_state = "pinonnull"
-				return
-		setDir(get_dir(src,the_disk))
-		switch(get_dist(src,the_disk))
-			if(0)
-				icon_state = "pinondirect"
-			if(1 to 8)
-				icon_state = "pinonclose"
-			if(9 to 16)
-				icon_state = "pinonmedium"
-			if(16 to INFINITY)
-				icon_state = "pinonfar"
-		spawn(5) .()
+			icon_state = "pinonnull"
+			return
+	setDir(get_dir(src,the_disk))
+	switch(get_dist(src,the_disk))
+		if(0)
+			icon_state = "pinondirect"
+		if(1 to 8)
+			icon_state = "pinonclose"
+		if(9 to 16)
+			icon_state = "pinonmedium"
+		if(16 to INFINITY)
+			icon_state = "pinonfar"
+	spawn(5) .()
 
-	examine(mob/user)
-		..(user)
-		for(var/obj/machinery/nuclearbomb/bomb in machines)
-			if(bomb.timing)
-				to_chat(user, "Extreme danger.  Arming signal detected.   Time remaining: [bomb.timeleft]")
+/obj/item/pinpointer/examine(mob/user)
+	. = ..()
+	for(var/obj/machinery/nuclearbomb/bomb in GLOB.machines)
+		if(bomb.timing)
+			. += "<span class = 'danger'>Extreme danger.  Arming signal detected.   Time remaining: [bomb.timeleft]</span>"
 
 /obj/item/pinpointer/Destroy()
 	active = 0
@@ -60,58 +61,56 @@
 	var/turf/location = null
 	var/obj/target = null
 
-	attack_self()
-		if(!active)
-			active = 1
-			if(mode == 0)
-				workdisk()
-			if(mode == 1)
-				worklocation()
-			if(mode == 2)
-				workobj()
-			to_chat(usr, "<span class='notice'>You activate the pinpointer</span>")
-		else
-			active = 0
-			icon_state = "pinoff"
-			to_chat(usr, "<span class='notice'>You deactivate the pinpointer</span>")
+/obj/item/pinpointer/advpinpointer/attack_self()
+	if(!active)
+		active = 1
+		if(mode == 0)
+			workdisk()
+		if(mode == 1)
+			worklocation()
+		if(mode == 2)
+			workobj()
+		to_chat(usr, "<span class='notice'>You activate the pinpointer</span>")
+	else
+		active = 0
+		icon_state = "pinoff"
+		to_chat(usr, "<span class='notice'>You deactivate the pinpointer</span>")
 
+/obj/item/pinpointer/advpinpointer/proc/worklocation()
+	if(!active)
+		return
+	if(!location)
+		icon_state = "pinonnull"
+		return
+	setDir(get_dir(src,location))
+	switch(get_dist(src,location))
+		if(0)
+			icon_state = "pinondirect"
+		if(1 to 8)
+			icon_state = "pinonclose"
+		if(9 to 16)
+			icon_state = "pinonmedium"
+		if(16 to INFINITY)
+			icon_state = "pinonfar"
+	spawn(5) .()
 
-	proc/worklocation()
-		if(!active)
-			return
-		if(!location)
-			icon_state = "pinonnull"
-			return
-		setDir(get_dir(src,location))
-		switch(get_dist(src,location))
-			if(0)
-				icon_state = "pinondirect"
-			if(1 to 8)
-				icon_state = "pinonclose"
-			if(9 to 16)
-				icon_state = "pinonmedium"
-			if(16 to INFINITY)
-				icon_state = "pinonfar"
-		spawn(5) .()
-
-
-	proc/workobj()
-		if(!active)
-			return
-		if(!target)
-			icon_state = "pinonnull"
-			return
-		setDir(get_dir(src,target))
-		switch(get_dist(src,target))
-			if(0)
-				icon_state = "pinondirect"
-			if(1 to 8)
-				icon_state = "pinonclose"
-			if(9 to 16)
-				icon_state = "pinonmedium"
-			if(16 to INFINITY)
-				icon_state = "pinonfar"
-		spawn(5) .()
+/obj/item/pinpointer/advpinpointer/proc/workobj()
+	if(!active)
+		return
+	if(!target)
+		icon_state = "pinonnull"
+		return
+	setDir(get_dir(src,target))
+	switch(get_dist(src,target))
+		if(0)
+			icon_state = "pinondirect"
+		if(1 to 8)
+			icon_state = "pinonclose"
+		if(9 to 16)
+			icon_state = "pinonmedium"
+		if(16 to INFINITY)
+			icon_state = "pinonfar"
+	spawn(5) .()
 
 /obj/item/pinpointer/advpinpointer/verb/toggle_mode()
 	set category = "Object"
@@ -165,7 +164,7 @@
 					var/DNAstring = input("Input DNA string to search for." , "Please Enter String." , "")
 					if(!DNAstring)
 						return
-					for(var/mob/living/carbon/M in mob_list)
+					for(var/mob/living/carbon/M in GLOB.mob_list)
 						if(!M.dna)
 							continue
 						if(M.dna.unique_enzymes == DNAstring)
@@ -285,7 +284,7 @@
 		return
 
 	if(!our_shuttle)
-		for(var/obj/machinery/computer/shuttle_control/S in machines)
+		for(var/obj/machinery/computer/shuttle_control/S in GLOB.machines)
 			if(S.shuttle_tag == shuttle_comp_id) // Shuttle tags are used so that it will work if the computer path changes, as it does on the southern cross map.
 				our_shuttle = S
 				break

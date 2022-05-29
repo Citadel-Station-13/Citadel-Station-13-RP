@@ -32,7 +32,7 @@
 /obj/item/clothing/suit/space/vox
 	w_class = ITEMSIZE_NORMAL
 	flags = PHORONGUARD
-	item_flags = THICKMATERIAL
+	clothing_flags = THICKMATERIAL
 	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword,/obj/item/handcuffs,/obj/item/tank)
 	armor = list(melee = 60, bullet = 50, laser = 40,energy = 15, bomb = 30, bio = 100, rad = 50)
 	siemens_coefficient = 0.2
@@ -44,7 +44,7 @@
 	armor = list(melee = 60, bullet = 50, laser = 40, energy = 15, bomb = 30, bio = 100, rad = 50)
 	siemens_coefficient = 0.2
 	flags = PHORONGUARD
-	item_flags = THICKMATERIAL | AIRTIGHT
+	clothing_flags = THICKMATERIAL | ALLOWINTERNALS
 	flags_inv = 0
 	species_restricted = list(SPECIES_VOX)
 

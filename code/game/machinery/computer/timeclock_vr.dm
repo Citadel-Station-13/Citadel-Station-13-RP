@@ -16,6 +16,7 @@
 	density = FALSE
 	circuit = /obj/item/circuitboard/timeclock
 	clicksound = null
+	var/channel = "Common" //Radio channel to announce on
 
 	var/obj/item/card/id/card // Inserted Id card
 	var/obj/item/radio/intercom/announce	// Integreated announcer
@@ -29,8 +30,7 @@
 	if(card)
 		card.forceMove(get_turf(src))
 		card = null
-	QDEL_NULL(announce)
-	return ..()
+	. = ..()
 
 /obj/machinery/computer/timeclock/update_icon()
 	if(inoperable())
@@ -41,11 +41,11 @@
 		icon_state = "[initial(icon_state)]"
 
 /obj/machinery/computer/timeclock/power_change()
-	var/old_stat = stat
+	var/old_stat = machine_stat
 	. = ..()
-	if(old_stat != stat)
+	if(old_stat != machine_stat)
 		update_icon()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		set_light(0)
 	else
 		set_light(light_range_on, light_power_on)
@@ -55,7 +55,7 @@
 		if(!card && user.unEquip(I))
 			I.forceMove(src)
 			card = I
-			SSnanoui.update_uis(src)
+			SStgui.update_uis(src)
 			update_icon()
 		else if(card)
 			to_chat(user, "<span class='warning'>There is already ID card inside.</span>")
@@ -68,151 +68,157 @@
 	user.set_machine(src)
 	ui_interact(user)
 
-/obj/machinery/computer/timeclock/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	user.set_machine(src)
+/obj/machinery/computer/timeclock/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "TimeClock", name)
+		ui.open()
 
-	var/list/data = list()
+/obj/machinery/computer/timeclock/ui_data(mob/user)
+	var/list/data = ..()
+
 	// Okay, data for showing the user's OWN PTO stuff
 	if(user.client)
 		data["department_hours"] = SANITIZE_LIST(user.client.department_hours)
 	data["user_name"] = "[user]"
 
 	// Data about the card that we put into it.
+	data["card"] = null
+	data["assignment"] = null
+	data["job_datum"] = null
+	data["allow_change_job"] = null
+	data["job_choices"] = null
 	if(card)
 		data["card"] = "[card]"
 		data["assignment"] = card.assignment
-		var/datum/job/job = SSjobs.GetJob(card.rank)
-		if (job)
+		var/datum/job/job = job_master.GetJob(card.rank)
+		if(job)
 			data["job_datum"] = list(
 				"title" = job.title,
-				"department" = job.department,
+				"departments" = english_list(job.departments),
 				"selection_color" = job.selection_color,
 				"economic_modifier" = job.economic_modifier,
-				"timeoff_factor" = job.timeoff_factor
+				"timeoff_factor" = job.timeoff_factor,
+				"pto_department" = job.pto_type
 			)
 		if(config_legacy.time_off && config_legacy.pto_job_change)
 			data["allow_change_job"] = TRUE
 			if(job && job.timeoff_factor < 0) // Currently are Off Duty, so gotta lookup what on-duty jobs are open
-				data["job_choices"] = getOpenOnDutyJobs(user, job.department)
+				data["job_choices"] = getOpenOnDutyJobs(user, job.pto_type)
 
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
-		ui = new(user, src, ui_key, "timeclock_vr.tmpl", capitalize(src.name), 500, 520)
-		ui.set_initial_data(data)
-		ui.open()
+	return data
 
-/obj/machinery/computer/timeclock/Topic(href, href_list)
+/obj/machinery/computer/timeclock/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
-		return 1
-	usr.set_machine(src)
-	src.add_fingerprint(usr)
+		return TRUE
 
-	if (href_list["id"])
-		if(card)
-			usr.put_in_hands(card)
-			card = null
-		else
-			var/obj/item/I = usr.get_active_hand()
-			if (istype(I, /obj/item/card/id) && usr.unEquip(I))
-				I.forceMove(src)
-				card = I
-		update_icon()
-		return 1
-	if(href_list["switch-to-onduty"])
-		if(card)
+	add_fingerprint(usr)
+
+	switch(action)
+		if("id")
+			if(card)
+				usr.put_in_hands(card)
+				card = null
+			else
+				var/obj/item/I = usr.get_active_hand()
+				if (istype(I, /obj/item/card/id) && usr.unEquip(I))
+					I.forceMove(src)
+					card = I
+			update_icon()
+			return TRUE
+		if("switch-to-onduty-rank")
 			if(checkFace())
 				if(checkCardCooldown())
-					makeOnDuty(href_list["switch-to-onduty"])
+					makeOnDuty(params["switch-to-onduty-rank"], params["switch-to-onduty-assignment"])
 					usr.put_in_hands(card)
 					card = null
-		update_icon()
-		return 1
-	if(href_list["switch-to-offduty"])
-		if(card)
+			update_icon()
+			return TRUE
+		if("switch-to-offduty")
 			if(checkFace())
 				if(checkCardCooldown())
 					makeOffDuty()
 					usr.put_in_hands(card)
 					card = null
-		update_icon()
-		return 1
-	return 1 // Return 1 to update UI
+			update_icon()
+			return TRUE
+
 
 /obj/machinery/computer/timeclock/proc/getOpenOnDutyJobs(var/mob/user, var/department)
 	var/list/available_jobs = list()
-	for(var/datum/job/job in SSjobs.occupations)
-		if(job && job.is_position_available() && !job.whitelist_only && !jobban_isbanned(user,job.title) && job.player_old_enough(user.client))
-			if(job.department == department && !job.disallow_jobhop && job.timeoff_factor > 0)
-				available_jobs += job.title
-				if(job.alt_titles)
-					for(var/alt_job in job.alt_titles)
-						available_jobs += alt_job
+	for(var/datum/job/job in job_master.occupations)
+		if(isOpenOnDutyJob(user, department, job))
+			available_jobs[job.title] = list(job.title)
+			if(job.alt_titles)
+				for(var/alt_job in job.alt_titles)
+					if(alt_job != job.title)
+						available_jobs[job.title] += alt_job
 	return available_jobs
 
-/obj/machinery/computer/timeclock/proc/makeOnDuty(var/newjob)
-	var/datum/job/foundjob = null
-	for(var/datum/job/job in SSjobs.occupations)
-		if(newjob == job.title)
-			foundjob = job
-			break
-		if(newjob in job.alt_titles)
-			foundjob = job
-			break
-	var/datum/job/cardjob = SSjobs.GetJob(card.rank)
-	if(!(newjob in getOpenOnDutyJobs(usr, cardjob.department)))
+/obj/machinery/computer/timeclock/proc/isOpenOnDutyJob(var/mob/user, var/department, var/datum/job/job)
+	return job \
+		   && job.is_position_available() \
+		   && !job.whitelist_only \
+		   && !jobban_isbanned(user,job.title) \
+		   && job.player_old_enough(user.client) \
+		   && job.pto_type == department \
+		   && !job.disallow_jobhop \
+		   && job.timeoff_factor > 0
+
+/obj/machinery/computer/timeclock/proc/makeOnDuty(var/newrank, var/newassignment)
+	var/datum/job/oldjob = job_master.GetJob(card.rank)
+	var/datum/job/newjob = job_master.GetJob(newrank)
+	if(!oldjob || !isOpenOnDutyJob(usr, oldjob.pto_type, newjob))
 		return
-	if(foundjob && card)
-		card.access = foundjob.get_access()
-		card.rank = foundjob.title
-		card.assignment = newjob
+	if(newassignment != newjob.title && !(newassignment in newjob.alt_titles))
+		return
+	if(newjob)
+		card.access = newjob.get_access()
+		card.rank = newjob.title
+		card.assignment = newassignment
 		card.name = text("[card.registered_name]'s ID Card ([card.assignment])")
-		data_core.manifest_modify(card.registered_name, card.assignment)
+		data_core.manifest_modify(card.registered_name, card.assignment, card.rank)
 		card.last_job_switch = world.time
 		callHook("reassign_employee", list(card))
-		foundjob.current_positions++
+		newjob.current_positions++
 		var/mob/living/carbon/human/H = usr
-		H.mind.assigned_role = foundjob.title
-		H.mind.role_alt_title = newjob
-		announce.autosay("[card.registered_name] has moved On-Duty as [card.assignment].", "Employee Oversight")
+		H.mind.assigned_role = card.rank
+		H.mind.role_alt_title = card.assignment
+		announce.autosay("[card.registered_name] has moved On-Duty as [card.assignment].", "Employee Oversight", channel, zlevels = GLOB.using_map.get_map_levels(get_z(src)))
 	return
 
 /obj/machinery/computer/timeclock/proc/makeOffDuty()
-	var/datum/job/foundjob = null
-	for(var/datum/job/job in SSjobs.occupations)
-		if(card.rank == job.title)
-			foundjob = job
-			break
+	var/datum/job/foundjob = job_master.GetJob(card.rank)
 	if(!foundjob)
 		return
-	var/real_dept = foundjob.department
-	if(real_dept && real_dept == "Command")
-		real_dept = "Civilian"
+	var/new_dept = foundjob.pto_type || PTO_CIVILIAN
 	var/datum/job/ptojob = null
-	for(var/datum/job/job in SSjobs.occupations)
-		if(job.department == real_dept && job.timeoff_factor < 0)
+	for(var/datum/job/job in job_master.occupations)
+		if(job.pto_type == new_dept && job.timeoff_factor < 0)
 			ptojob = job
 			break
-	if(ptojob && card)
+	if(ptojob)
 		var/oldtitle = card.assignment
 		card.access = ptojob.get_access()
 		card.rank = ptojob.title
 		card.assignment = ptojob.title
 		card.name = text("[card.registered_name]'s ID Card ([card.assignment])")
-		data_core.manifest_modify(card.registered_name, card.assignment)
+		data_core.manifest_modify(card.registered_name, card.assignment, card.rank)
 		card.last_job_switch = world.time
 		callHook("reassign_employee", list(card))
 		var/mob/living/carbon/human/H = usr
 		H.mind.assigned_role = ptojob.title
 		H.mind.role_alt_title = ptojob.title
 		foundjob.current_positions--
-		announce.autosay("[card.registered_name], [oldtitle], has moved Off-Duty.", "Employee Oversight")
+		announce.autosay("[card.registered_name], [oldtitle], has moved Off-Duty.", "Employee Oversight", channel, zlevels = GLOB.using_map.get_map_levels(get_z(src)))
 	return
 
 /obj/machinery/computer/timeclock/proc/checkCardCooldown()
 	if(!card)
 		return FALSE
-	if((world.time - card.last_job_switch) < 15 MINUTES)
-		to_chat(usr, "You need to wait at least 15 minutes after last duty switch.")
+	var/time_left = 10 MINUTES - (world.time - card.last_job_switch)
+	if(time_left > 0)
+		to_chat(usr, "You need to wait another [round((time_left/10)/60, 1)] minute\s before you can switch.")
 		return FALSE
 	return TRUE
 
@@ -236,8 +242,8 @@
 /obj/item/card/id
 	var/last_job_switch
 
-/obj/item/card/id/New()
-	.=..()
+/obj/item/card/id/Initialize(mapload)
+	. = ..()
 	last_job_switch = world.time
 
 //

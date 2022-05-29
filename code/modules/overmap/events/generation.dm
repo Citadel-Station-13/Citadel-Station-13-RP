@@ -70,3 +70,11 @@
 	count = 12
 	radius = 3
 	hazards = /obj/effect/overmap/event/cult
+
+
+/datum/overmap_event/pirate
+	name = "Pirate Cutter"
+	count = 7
+	radius = 3
+	continuous = FALSE
+	hazards = /obj/effect/overmap/event/pirate

@@ -1,26 +1,34 @@
-/mob/living/New()
-	..()
-
-	//Prime this list if we need it.
-	if(has_huds)
-		add_overlay(backplane,TRUE) //Strap this on here, to block HUDs from appearing in rightclick menus: http://www.byond.com/forum/?post=2336679
-		hud_list = list()
-		hud_list.len = TOTAL_HUDS
-		make_hud_overlays()
+/mob/living/Initialize(mapload)
+	. = ..()
 
 	//I'll just hang my coat up over here
 	dsoverlay = image('icons/mob/darksight.dmi', GLOB.global_hud.darksight) //This is a secret overlay! Go look at the file, you'll see.
 	var/mutable_appearance/dsma = new(dsoverlay) //Changing like ten things, might as well.
 	dsma.alpha = 0
-	dsma.plane = PLANE_LIGHTING
+	dsma.plane = LIGHTING_PLANE
 	dsma.blend_mode = BLEND_ADD
 	dsoverlay.appearance = dsma
 
 	selected_image = image(icon = 'icons/mob/screen1.dmi', loc = src, icon_state = "centermarker")
 
+/mob/living/prepare_huds()
+	..()
+	prepare_data_huds()
+
+/mob/living/proc/prepare_data_huds()
+	update_hud_med_all()
+
 /mob/living/Destroy()
-	dsoverlay.loc = null //I'll take my coat with me
-	dsoverlay = null
+	if(LAZYLEN(status_effects))
+		for(var/s in status_effects)
+			var/datum/status_effect/S = s
+			if(S.on_remove_on_mob_delete) //the status effect calls on_remove when its mob is deleted
+				qdel(S)
+			else
+				S.be_replaced()
+	if(dsoverlay)
+		dsoverlay.loc = null
+		dsoverlay = null
 	if(nest) //Ew.
 		if(istype(nest, /obj/structure/prop/nest))
 			var/obj/structure/prop/nest/N = nest
@@ -31,7 +39,23 @@
 		nest = null
 	if(buckled)
 		buckled.unbuckle_mob(src, TRUE)
-	qdel(selected_image)
+	if(selected_image)
+		QDEL_NULL(selected_image)
+
+	// this all needs to be Cut and not null
+	// TODO: fix whatever is accessing these lists after qdel
+	// it should never happen.
+	organs_by_name.Cut()
+	internal_organs_by_name.Cut()
+	for(var/obj/item/organ/O in organs)
+		if(!QDELETED(O))
+			qdel(O)
+	organs.Cut()
+	for(var/obj/item/organ/O in internal_organs)
+		if(!QDELETED(O))
+			qdel(O)
+	internal_organs.Cut()
+
 	return ..()
 
 //mob verbs are faster than object verbs. See mob/verb/examine.
@@ -84,21 +108,34 @@ default behaviour is:
 		return TRUE
 	return ..()
 
+//Called when something steps onto us. This allows for mulebots and vehicles to run things over. <3
+/mob/living/Crossed(var/atom/movable/AM) // Transplanting this from /mob/living/carbon/human/Crossed()
+	if(AM == src || AM.is_incorporeal()) // We're not going to run over ourselves or ghosts
+		return
+
+	if(istype(AM, /mob/living/bot/mulebot))
+		var/mob/living/bot/mulebot/MB = AM
+		MB.runOver(src)
+
+	if(istype(AM, /obj/vehicle))
+		var/obj/vehicle/V = AM
+		V.RunOver(src)
+	return ..()
+
 /mob/living/verb/succumb()
 	set hidden = 1
 	if ((src.health < 0 && src.health > (5-src.getMaxHealth()))) // Health below Zero but above 5-away-from-death, as before, but variable
 		src.death()
-		to_chat(src, "<font color='blue'>You have given up life and succumbed to death.</font>")
+		to_chat(src, "<font color=#4F49AF>You have given up life and succumbed to death.</font>")
 	else
-		to_chat(src, "<font color='blue'>You are not injured enough to succumb to death!</font>")
+		to_chat(src, "<font color=#4F49AF>You are not injured enough to succumb to death!</font>")
 
 /mob/living/proc/updatehealth()
 	if(status_flags & GODMODE)
 		health = 100
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 	else
 		health = getMaxHealth() - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss() - halloss
-
 
 //This proc is used for mobs which are affected by pressure to calculate the amount of pressure that actually
 //affects them once clothing is factored in. ~Errorage
@@ -109,7 +146,7 @@ default behaviour is:
 //sort of a legacy burn method for /electrocute, /shock, and the e_chair
 /mob/living/proc/burn_skin(burn_amount)
 	if(istype(src, /mob/living/carbon/human))
-		//world << "DEBUG: burn_skin(), mutations=[mutations]"
+		//to_chat(world, "DEBUG: burn_skin(), mutations=[mutations]")
 		if(mShock in src.mutations) //shockproof
 			return 0
 		if (COLD_RESISTANCE in src.mutations) //fireproof
@@ -143,7 +180,7 @@ default behaviour is:
 		if(actual < desired)
 			temperature = desired
 //	if(istype(src, /mob/living/carbon/human))
-//		world << "[src] ~ [src.bodytemperature] ~ [temperature]"
+//		to_chat(world, "[src] ~ [src.bodytemperature] ~ [temperature]")
 	return temperature
 
 
@@ -324,7 +361,7 @@ default behaviour is:
 	return result
 
 /mob/living/proc/setMaxHealth(var/newMaxHealth)
-	health = (health/maxHealth) * (newMaxHealth) //VOREStation Add - Adjust existing health
+	health = (health/maxHealth) * (newMaxHealth) // Adjust existing health
 	maxHealth = newMaxHealth
 
 /mob/living/Stun(amount)
@@ -332,6 +369,15 @@ default behaviour is:
 		if(!isnull(M.disable_duration_percent))
 			amount = round(amount * M.disable_duration_percent)
 	..(amount)
+	if(stunned > 0)
+		add_status_indicator("stunned")
+
+/mob/living/SetStunned(amount)
+	..()
+	if(stunned <= 0)
+		remove_status_indicator("stunned")
+	else
+		add_status_indicator("stunned")
 
 /mob/living/AdjustStunned(amount)
 	if(amount > 0)
@@ -339,12 +385,25 @@ default behaviour is:
 			if(!isnull(M.disable_duration_percent))
 				amount = round(amount * M.disable_duration_percent)
 	..(amount)
+	if(stunned <= 0)
+		remove_status_indicator("stunned")
+	else
+		add_status_indicator("stunned")
 
 /mob/living/Weaken(amount)
 	for(var/datum/modifier/M in modifiers)
 		if(!isnull(M.disable_duration_percent))
 			amount = round(amount * M.disable_duration_percent)
 	..(amount)
+	if(weakened > 0)
+		add_status_indicator("weakened")
+
+/mob/living/SetWeakened(amount)
+	..()
+	if(weakened <= 0)
+		remove_status_indicator("weakened")
+	else
+		add_status_indicator("weakened")
 
 /mob/living/AdjustWeakened(amount)
 	if(amount > 0)
@@ -352,12 +411,25 @@ default behaviour is:
 			if(!isnull(M.disable_duration_percent))
 				amount = round(amount * M.disable_duration_percent)
 	..(amount)
+	if(weakened <= 0)
+		remove_status_indicator("weakened")
+	else
+		add_status_indicator("weakened")
 
 /mob/living/Paralyse(amount)
 	for(var/datum/modifier/M in modifiers)
 		if(!isnull(M.disable_duration_percent))
 			amount = round(amount * M.disable_duration_percent)
 	..(amount)
+	if(paralysis > 0)
+		add_status_indicator("paralysis")
+
+/mob/living/SetParalysis(amount)
+	..()
+	if(paralysis <= 0)
+		remove_status_indicator("paralysis")
+	else
+		add_status_indicator("paralysis")
 
 /mob/living/AdjustParalysis(amount)
 	if(amount > 0)
@@ -365,12 +437,25 @@ default behaviour is:
 			if(!isnull(M.disable_duration_percent))
 				amount = round(amount * M.disable_duration_percent)
 	..(amount)
+	if(paralysis <= 0)
+		remove_status_indicator("paralysis")
+	else
+		add_status_indicator("paralysis")
 
 /mob/living/Sleeping(amount)
 	for(var/datum/modifier/M in modifiers)
 		if(!isnull(M.disable_duration_percent))
 			amount = round(amount * M.disable_duration_percent)
 	..(amount)
+	if(sleeping > 0)
+		add_status_indicator("sleeping")
+
+/mob/living/SetSleeping(amount)
+	..()
+	if(sleeping <= 0)
+		remove_status_indicator("sleeping")
+	else
+		add_status_indicator("sleeping")
 
 /mob/living/AdjustSleeping(amount)
 	if(amount > 0)
@@ -378,12 +463,25 @@ default behaviour is:
 			if(!isnull(M.disable_duration_percent))
 				amount = round(amount * M.disable_duration_percent)
 	..(amount)
+	if(sleeping <= 0)
+		remove_status_indicator("sleeping")
+	else
+		add_status_indicator("sleeping")
 
 /mob/living/Confuse(amount)
 	for(var/datum/modifier/M in modifiers)
 		if(!isnull(M.disable_duration_percent))
 			amount = round(amount * M.disable_duration_percent)
 	..(amount)
+	if(confused > 0)
+		add_status_indicator("confused")
+
+/mob/living/SetConfused(amount)
+	..()
+	if(confused <= 0)
+		remove_status_indicator("confused")
+	else
+		add_status_indicator("confused")
 
 /mob/living/AdjustConfused(amount)
 	if(amount > 0)
@@ -391,6 +489,10 @@ default behaviour is:
 			if(!isnull(M.disable_duration_percent))
 				amount = round(amount * M.disable_duration_percent)
 	..(amount)
+	if(confused <= 0)
+		remove_status_indicator("confused")
+	else
+		add_status_indicator("confused")
 
 /mob/living/Blind(amount)
 	for(var/datum/modifier/M in modifiers)
@@ -488,12 +590,12 @@ default behaviour is:
 	return 0
 
 
-/mob/living/proc/can_inject()
+/mob/living/proc/can_inject(var/mob/user, var/error_msg, var/target_zone, var/ignore_thickness = FALSE)
 	return 1
 
 /mob/living/proc/get_organ_target()
 	var/mob/shooter = src
-	var/t = shooter:zone_sel.selecting
+	var/t = shooter.zone_sel.selecting
 	if ((t in list( O_EYES, O_MOUTH )))
 		t = BP_HEAD
 	var/obj/item/organ/external/def_zone = ran_zone(t)
@@ -507,7 +609,7 @@ default behaviour is:
 	src.updatehealth()
 
 // damage ONE external organ, organ gets randomly selected from damaged ones.
-/mob/living/proc/take_organ_damage(var/brute, var/burn, var/emp=0)
+/mob/living/proc/take_organ_damage(var/brute = 0, var/burn = 0, var/sharp = 0, var/edge = 0, var/emp = 0)
 	if(status_flags & GODMODE)	return 0	//godmode
 	adjustBruteLoss(brute)
 	adjustFireLoss(burn)
@@ -533,8 +635,10 @@ default behaviour is:
 
 /mob/living/proc/revive()
 	rejuvenate()
+
 	if(buckled)
 		buckled.unbuckle_mob()
+
 	if(iscarbon(src))
 		var/mob/living/carbon/C = src
 
@@ -545,9 +649,7 @@ default behaviour is:
 		if (C.legcuffed && !initial(C.legcuffed))
 			C.drop_from_inventory(C.legcuffed)
 		C.legcuffed = initial(C.legcuffed)
-	ENABLE_BITFIELD(hud_updateflag, HEALTH_HUD)
-	ENABLE_BITFIELD(hud_updateflag, STATUS_HUD)
-	ENABLE_BITFIELD(hud_updateflag, LIFE_HUD)
+
 	ExtinguishMob()
 	fire_stacks = 0
 	if(ai_holder) // AI gets told to sleep when killed. Since they're not dead anymore, wake it up.
@@ -592,19 +694,15 @@ default behaviour is:
 		timeofdeath = 0
 
 	// restore us to conciousness
-	stat = CONSCIOUS
+	set_stat(CONSCIOUS)
 
 	// make the icons look correct
 	regenerate_icons()
 
-	ENABLE_BITFIELD(hud_updateflag, HEALTH_HUD)
-	ENABLE_BITFIELD(hud_updateflag, STATUS_HUD)
-	ENABLE_BITFIELD(hud_updateflag, LIFE_HUD)
+	update_hud_med_all()
 
 	failed_last_breath = 0 //So mobs that died of oxyloss don't revive and have perpetual out of breath.
 	reload_fullscreen()
-
-	return
 
 /mob/living/proc/UpdateDamageIcon()
 	return
@@ -614,7 +712,7 @@ default behaviour is:
 	set name = "Examine Meta-Info (OOC)"
 	set category = "OOC"
 	set src in view()
-	//VOREStation Edit Start - Making it so SSD people have prefs with fallback to original style.
+	// Making it so SSD people have prefs with fallback to original style.
 	if(config_legacy.allow_Metadata)
 		if(ooc_notes)
 			to_chat(usr, "[src]'s Metainfo:<br>[ooc_notes]")
@@ -624,7 +722,6 @@ default behaviour is:
 			to_chat(usr, "[src] does not have any stored infomation!")
 	else
 		to_chat(usr, "OOC Metadata is not supported by this server!")
-	//VOREStation Edit End - Making it so SSD people have prefs with fallback to original style.
 	return
 
 
@@ -642,54 +739,33 @@ default behaviour is:
 			process_resist()
 
 /mob/living/proc/process_resist()
-	//Getting out of someone's inventory.
-	if(istype(src.loc, /obj/item/holder))
-		escape_inventory(src.loc)
-		return
-
 	//unbuckling yourself
 	if(buckled)
-		spawn() escape_buckle()
+		resist_buckle()
 		return TRUE
 
 	//Breaking out of a locker?
-	if( src.loc && (istype(src.loc, /obj/structure/closet)) )
-		var/obj/structure/closet/C = loc
-		spawn() C.mob_breakout(src)
+	if(isobj(loc))
+		var/obj/C = loc
+		C.container_resist(src)
 		return TRUE
 
-	if(istype(loc,/obj/item/clothing))
-		spawn() escape_clothes(loc)
+	else if(canmove)
+		if(on_fire)
+			resist_fire() //stop, drop, and roll
+		else
+			resist_restraints()
 
-	if(attempt_vr(src,"vore_process_resist",args)) return TRUE //VOREStation Code
+	else if(canmove)
+		if(on_fire)
+			resist_fire() //stop, drop, and roll
+		else
+			resist_restraints()
 
-/mob/living/proc/escape_inventory(obj/item/holder/H)
-	if(H != src.loc)
-		return
+	if(attempt_vr(src,"vore_process_resist",args))
+		return TRUE
 
-	var/mob/M = H.loc //Get our mob holder (if any).
-
-	if(istype(M))
-		M.drop_from_inventory(H)
-		to_chat(M, "<span class='warning'>\The [H] wriggles out of your grip!</span>")
-		to_chat(src, "<span class='warning'>You wriggle out of \the [M]'s grip!</span>")
-
-		// Update whether or not this mob needs to pass emotes to contents.
-		for(var/atom/A in M.contents)
-			if(istype(A,/mob/living/simple_mob/animal/borer) || istype(A,/obj/item/holder))
-				return
-
-	else if(istype(H.loc,/obj/item/clothing/accessory/holster))
-		var/obj/item/clothing/accessory/holster/holster = H.loc
-		if(holster.holstered == H)
-			holster.clear_holster()
-		to_chat(src, "<span class='warning'>You extricate yourself from \the [holster].</span>")
-		H.forceMove(get_turf(H))
-	else if(istype(H.loc,/obj/item))
-		to_chat(src, "<span class='warning'>You struggle free of \the [H.loc].</span>")
-		H.forceMove(get_turf(H))
-
-/mob/living/proc/escape_buckle()
+/mob/living/proc/resist_buckle()
 	if(buckled)
 		if(istype(buckled, /obj/vehicle))
 			var/obj/vehicle/vehicle = buckled
@@ -705,6 +781,12 @@ default behaviour is:
 	if(resisting)
 		visible_message("<span class='danger'>[src] resists!</span>")
 
+/mob/living/proc/resist_fire()
+	return
+
+/mob/living/proc/resist_restraints()
+	return
+
 /mob/living/verb/lay_down()
 	set name = "Rest"
 	set category = "IC"
@@ -714,7 +796,7 @@ default behaviour is:
 	update_canmove()
 
 //called when the mob receives a bright flash
-/mob/living/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /obj/screen/fullscreen/flash)
+/mob/living/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/tiled/flash)
 	if(override_blindness_check || !(disabilities & BLIND))
 		overlay_fullscreen("flash", type)
 		spawn(25)
@@ -732,6 +814,14 @@ default behaviour is:
 
 /mob/living/proc/has_eyes()
 	return 1
+
+/mob/living/proc/get_restraining_bolt()
+	var/obj/item/implant/restrainingbolt/RB = locate() in src
+	if(RB)
+		if(!RB.malfunction)
+			return TRUE
+
+	return FALSE
 
 /mob/living/proc/slip(var/slipped_on,stun_duration=8)
 	return 0
@@ -850,8 +940,12 @@ default behaviour is:
 
 	if(lying)
 		density = 0
-		if(l_hand) unEquip(l_hand)
-		if(r_hand) unEquip(r_hand)
+		if(l_hand)
+			unEquip(l_hand)
+		if(r_hand)
+			unEquip(r_hand)
+		for(var/obj/item/holder/H in get_mob_riding_slots())
+			unEquip(H)
 		update_water() // Submerges the mob.
 	else
 		density = initial(density)
@@ -864,7 +958,6 @@ default behaviour is:
 	if(lying != lying_prev)
 		lying_prev = lying
 		update_transform()
-		//VOREStation Add
 		if(lying && LAZYLEN(buckled_mobs))
 			for(var/rider in buckled_mobs)
 				var/mob/living/L = rider
@@ -875,9 +968,12 @@ default behaviour is:
 				else
 					unbuckle_mob(L)
 				L.Stun(5)
-		//VOREStation Add End
 
 	return canmove
+
+// Mob holders in these slots will be spilled if the mob goes prone.
+/mob/living/proc/get_mob_riding_slots()
+	return list(back)
 
 // Adds overlays for specific modifiers.
 // You'll have to add your own implementation for non-humans currently, just override this proc.
@@ -910,22 +1006,29 @@ default behaviour is:
 /mob/living/proc/is_sentient()
 	return TRUE
 
+/mob/living/get_icon_scale_x()
+	. = ..()
+	for(var/datum/modifier/M in modifiers)
+		if(!isnull(M.icon_scale_x_percent))
+			. *= M.icon_scale_x_percent
+
+/mob/living/get_icon_scale_y()
+	. = ..()
+	for(var/datum/modifier/M in modifiers)
+		if(!isnull(M.icon_scale_y_percent))
+			. *= M.icon_scale_y_percent
 
 /mob/living/update_transform()
 	// First, get the correct size.
-	var/desired_scale_x = size_multiplier //VOREStation edit
-	var/desired_scale_y = size_multiplier //VOREStation edit
-	for(var/datum/modifier/M in modifiers)
-		if(!isnull(M.icon_scale_x_percent))
-			desired_scale_x *= M.icon_scale_x_percent
-		if(!isnull(M.icon_scale_y_percent))
-			desired_scale_y *= M.icon_scale_y_percent
+	var/desired_scale_x = size_multiplier * icon_scale_x
+	var/desired_scale_y = size_multiplier * icon_scale_y
 
 	// Now for the regular stuff.
 	var/matrix/M = matrix()
 	M.Scale(desired_scale_x, desired_scale_y)
 	M.Translate(0, 16*(desired_scale_y-1))
-	//animate(src, transform = M, time = 10) //VOREStation edit
+	animate(src, transform = M, time = 10)
+	handle_status_indicators()
 
 // This handles setting the client's color variable, which makes everything look a specific color.
 // This proc is here so it can be called without needing to check if the client exists, or if the client relogs.
@@ -953,9 +1056,9 @@ default behaviour is:
 
 			for(var/C in colors_to_blend)
 				var/RGB = hex2rgb(C)
-				R = between(0, R + RGB[1], 255)
-				G = between(0, G + RGB[2], 255)
-				B = between(0, B + RGB[3], 255)
+				R = clamp( R + RGB[1], 0,  255)
+				G = clamp( G + RGB[2], 0,  255)
+				B = clamp( B + RGB[3], 0,  255)
 			final_color = rgb(R,G,B)
 
 		if(final_color)
@@ -1001,7 +1104,7 @@ default behaviour is:
 	src.throw_mode_off()
 	if(usr.stat || !target)
 		return
-	if(target.type == /obj/screen) return
+	if(target.type == /atom/movable/screen) return
 
 	var/atom/movable/item = src.get_active_hand()
 
@@ -1050,29 +1153,8 @@ default behaviour is:
 	else
 		return ..()
 
-//Add an entry to overlays, assuming it exists
-/mob/living/proc/apply_hud(cache_index, var/image/I)
-	hud_list[cache_index] = I
-	if((. = hud_list[cache_index]))
-		//underlays += .
-		add_overlay(.)
-
-//Remove an entry from overlays, and from the list
-/mob/living/proc/grab_hud(cache_index)
-	var/I = hud_list[cache_index]
-	if(I)
-		//underlays -= I
-		cut_overlay(I)
-		hud_list[cache_index] = null
-		return I
-
-/mob/living/proc/make_hud_overlays()
-	return
-
-
 /mob/living/proc/has_vision()
 	return !(eye_blind || (disabilities & BLIND) || stat || blinded)
-
 
 /mob/living/proc/dirties_floor()	// If we ever decide to add fancy conditionals for making dirty floors (floating, etc), here's the proc.
 	return makes_dirt
@@ -1112,3 +1194,22 @@ default behaviour is:
   */
 /mob/living/proc/get_standard_pixel_y_offset(lying = 0)
 	return default_pixel_y
+
+/mob/living/proc/OpenCraftingMenu()
+	return
+
+/**
+ *! Enable this one if you're enabling the butchering component. Otherwise it's useless.
+/mob/living/proc/harvest(mob/living/user) //used for extra objects etc. in butchering
+	return
+ */
+
+/*
+/mob/living/update_gravity(has_gravity)
+	if(!ticker)
+		return
+	if(has_gravity)
+		clear_alert("weightless")
+	else
+		throw_alert("weightless", /obj/screen/alert/weightless)
+*/

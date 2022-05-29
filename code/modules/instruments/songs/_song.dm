@@ -101,7 +101,7 @@
 	/// The kind of sustain we're using
 	var/sustain_mode = SUSTAIN_LINEAR
 	/// When a note is considered dead if it is below this in volume
-	var/sustain_dropoff_volume = 0
+	var/sustain_dropoff_volume = 1
 	/// Total duration of linear sustain for 100 volume note to get to SUSTAIN_DROPOFF
 	var/sustain_linear_duration = 5
 	/// Exponential sustain dropoff rate per decisecond
@@ -221,7 +221,7 @@
 
 /// Updates the window for our user. Override in subtypes.
 /datum/song/proc/updateDialog(mob/user)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /datum/song/process(wait)
 	if(!playing)
@@ -276,7 +276,7 @@
 /datum/song/handheld
 
 /datum/song/handheld/updateDialog(mob/user)
-	parent.ui_interact(user || usr)
+	parent.nano_ui_interact(user || usr)
 
 /datum/song/handheld/should_stop_playing(mob/user)
 	. = ..()
@@ -289,7 +289,7 @@
 /datum/song/stationary
 
 /datum/song/stationary/updateDialog(mob/user)
-	parent.ui_interact(user || usr)
+	parent.nano_ui_interact(user || usr)
 
 /datum/song/stationary/should_stop_playing(mob/user)
 	. = ..()

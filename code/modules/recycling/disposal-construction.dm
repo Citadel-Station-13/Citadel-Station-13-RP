@@ -10,7 +10,7 @@
 	anchored = 0
 	density = 0
 	pressure_resistance = 5*ONE_ATMOSPHERE
-	matter = list(DEFAULT_WALL_MATERIAL = 1850)
+	matter = list(MAT_STEEL = 1850)
 	level = 2
 	var/sortType = ""
 	var/ptype = 0
@@ -18,11 +18,11 @@
 	var/dpdir = 0	// directions as disposalpipe
 	var/base_state = "pipe-s"
 
-/obj/structure/disposalconstruct/New(var/newturf, var/newtype, var/newdir, var/flipped, var/newsubtype)
-	..(newturf)
+/obj/structure/disposalconstruct/Initialize(mapload, newtype, newdir, flipped, newsubtype)
+	. = ..(mapload, )
 	ptype = newtype
 	dir = newdir
-	if(ptype == DISPOSAL_PIPE_STRAIGHT && dir in cornerdirs)
+	if(ptype == DISPOSAL_PIPE_STRAIGHT && (dir in GLOB.cornerdirs))
 		ptype = DISPOSAL_PIPE_CORNER
 		switch(dir)
 			if(NORTHWEST)
@@ -222,7 +222,7 @@
 /obj/structure/disposalconstruct/attackby(var/obj/item/I, var/mob/user)
 	var/nicetype = "pipe"
 	var/ispipe = 0 // Indicates if we should change the level of this pipe
-	src.add_fingerprint(user)
+	add_fingerprint(user, 0, I)
 	switch(ptype)
 		if(DISPOSAL_PIPE_BIN)
 			nicetype = "disposal bin"

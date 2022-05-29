@@ -26,6 +26,7 @@
 	desc = "The compressor stage of a gas turbine generator."
 	icon = 'icons/obj/pipes.dmi'
 	icon_state = "compressor"
+	CanAtmosPass = ATMOS_PASS_PROC
 	anchored = TRUE
 	density = TRUE
 	circuit = /obj/item/circuitboard/machine/power_compressor
@@ -85,18 +86,18 @@
 #define COMPFRICTION 5e5
 #define COMPSTARTERLOAD 2800
 
-/obj/machinery/compressor/Initialize()
+/obj/machinery/compressor/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 	gas_contained = new()
 	inturf = get_step(src, dir)
 	locate_machinery()
 	if(!turbine)
-		stat |= BROKEN
+		machine_stat |= BROKEN
 
 // When anchored, don't let air past us.
-/obj/machinery/compressor/CanZASPass(turf/T, is_zone)
-	return anchored ? ATMOS_PASS_NO : ATMOS_PASS_YES
+/obj/machinery/compressor/CanAtmosPass(turf/T, d)
+	return anchored? ATMOS_PASS_AIR_BLOCKED : ATMOS_PASS_NOT_BLOCKED
 
 /obj/machinery/compressor/proc/locate_machinery()
 	if(turbine)
@@ -137,15 +138,15 @@
 			locate_machinery()
 			if(turbine)
 				to_chat(user, "<span class='notice'>Turbine connected.</span>")
-				stat &= ~BROKEN
+				machine_stat &= ~BROKEN
 			else
 				to_chat(user, "<span class='alert'>Turbine not connected.</span>")
-				stat |= BROKEN
+				machine_stat |= BROKEN
 
-/obj/machinery/compressor/process()
+/obj/machinery/compressor/process(delta_time)
 	if(!turbine)
-		stat = BROKEN
-	if(stat & BROKEN || panel_open)
+		machine_stat = BROKEN
+	if(machine_stat & BROKEN || panel_open)
 		return
 	if(!starter)
 		return
@@ -156,13 +157,13 @@
 
 	// It's a simplified version taking only 1/10 of the moles from the turf nearby. It should be later changed into a better version
 	var/transfer_moles = environment.total_moles / 10
-	var/datum/gas_mixture/removed = inturf.remove_air(transfer_moles)
+	var/datum/gas_mixture/removed = inturf.remove_moles(transfer_moles)
 	gas_contained.merge(removed)
 
 	// RPM function to include compression friction - be advised that too low/high of a compfriction value can make things screwy
 	rpm = max(0, rpm - (rpm*rpm)/(COMPFRICTION*efficiency))
 
-	if(starter && !(stat & NOPOWER))
+	if(starter && !(machine_stat & NOPOWER))
 		use_power(2800)
 		if(rpm<1000)
 			rpmtarget = 1000
@@ -192,14 +193,14 @@
 #define TURBGENQ 100000
 #define TURBGENG 0.8
 
-/obj/machinery/power/turbine/Initialize()
+/obj/machinery/power/turbine/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 	// The outlet is pointed at the direction of the turbine component
 	outturf = get_step(src, dir)
 	locate_machinery()
 	if(!compressor)
-		stat |= BROKEN
+		machine_stat |= BROKEN
 
 /obj/machinery/power/turbine/RefreshParts()
 	var/P = 0
@@ -235,15 +236,15 @@
 			locate_machinery()
 			if(compressor)
 				to_chat(user, "<span class='notice'>Compressor connected.</span>")
-				stat &= ~BROKEN
+				machine_stat &= ~BROKEN
 			else
 				to_chat(user, "<span class='alert'>Compressor not connected.</span>")
-				stat |= BROKEN
+				machine_stat |= BROKEN
 
-/obj/machinery/power/turbine/process()
+/obj/machinery/power/turbine/process(delta_time)
 	if(!compressor)
-		stat = BROKEN
-	if((stat & BROKEN) || panel_open)
+		machine_stat = BROKEN
+	if((machine_stat & BROKEN) || panel_open)
 		return
 	if(!compressor.starter)
 		return
@@ -253,7 +254,7 @@
 	// the TURBGENQ and TURBGENG values
 	lastgen = ((compressor.rpm / TURBGENQ)**TURBGENG) * TURBGENQ * productivity
 
-	add_avail(lastgen)
+	add_avail(lastgen * 0.001)
 
 	// Weird function but it works. Should be something else...
 	var/newrpm = ((compressor.gas_contained.temperature) * compressor.gas_contained.total_moles)/4
@@ -280,14 +281,14 @@
 	src.interact(user)
 
 /obj/machinery/power/turbine/interact(mob/user)
-	if(!Adjacent(user)  || (stat & (NOPOWER|BROKEN)) && !issilicon(user))
+	if(!Adjacent(user)  || (machine_stat & (NOPOWER|BROKEN)) && !issilicon(user))
 		user.unset_machine(src)
 		user << browse(null, "window=turbine")
 		return
 	user.set_machine(src)
 
 	var/t = "<TT><B>Gas Turbine Generator</B><HR><PRE>"
-	t += "Generated power : [DisplayPower(lastgen)]<BR><BR>"
+	t += "Generated power : [render_power(lastgen, ENUM_POWER_SCALE_NONE, ENUM_POWER_UNIT_WATT)]<BR><BR>"
 	t += "Turbine: [round(compressor.rpm)] RPM<BR>"
 	t += "Starter: [ compressor.starter ? "<A href='?src=\ref[src];str=1'>Off</A> <B>On</B>" : "<B>Off</B> <A href='?src=\ref[src];str=1'>On</A>"]"
 	t += "</PRE><HR><A href='?src=\ref[src];close=1'>Close</A>"
@@ -316,7 +317,7 @@
 // Turbine Computer
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/obj/machinery/computer/turbine_computer/Initialize()
+/obj/machinery/computer/turbine_computer/Initialize(mapload)
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 
@@ -326,11 +327,11 @@
 /obj/machinery/computer/turbine_computer/proc/locate_machinery()
 	if(!id)
 		return
-	for(var/obj/machinery/compressor/C in machines)
+	for(var/obj/machinery/compressor/C in GLOB.machines)
 		if(C.comp_id == id)
 			compressor = C
 	LAZYINITLIST(doors)
-	for(var/obj/machinery/door/blast/P in machines)
+	for(var/obj/machinery/door/blast/P in GLOB.machines)
 		if(P.id == id)
 			doors += P
 
@@ -347,18 +348,18 @@
 	src.interact(user)
 
 /obj/machinery/computer/turbine_computer/interact(mob/user)
-	return ui_interact(user)
+	return nano_ui_interact(user)
 
-/obj/machinery/computer/turbine_computer/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/turbine_computer/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/list/data = list()
 	data["connected"] = (compressor && compressor.turbine) ? TRUE : FALSE
-	data["compressor_broke"] = (!compressor || (compressor.stat & BROKEN)) ? TRUE : FALSE
-	data["turbine_broke"] = (!compressor || !compressor.turbine || (compressor.turbine.stat & BROKEN)) ? TRUE : FALSE
+	data["compressor_broke"] = (!compressor || (compressor.machine_stat & BROKEN)) ? TRUE : FALSE
+	data["turbine_broke"] = (!compressor || !compressor.turbine || (compressor.turbine.machine_stat & BROKEN)) ? TRUE : FALSE
 	data["broken"] = (data["compressor_broke"] || data["turbine_broke"])
 	data["door_status"] = door_status ? TRUE : FALSE
 	if(compressor && compressor.turbine)
 		data["online"] = compressor.starter
-		data["power"] = DisplayPower(compressor.turbine.lastgen)
+		data["power"] = render_power(compressor.turbine.lastgen, ENUM_POWER_SCALE_NONE, ENUM_POWER_UNIT_WATT)
 		data["rpm"] = compressor.rpm
 		data["temp"] = compressor.gas_contained.temperature
 

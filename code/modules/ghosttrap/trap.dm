@@ -49,7 +49,7 @@ proc/populate_ghost_traps()
 		if(pref_check && !(O.client.prefs.be_special & pref_check))
 			continue
 		if(O.client)
-			O << "[request_string]<a href='?src=\ref[src];candidate=\ref[O];target=\ref[target]'>Click here</a> if you wish to play as this option."
+			to_chat(O, "[request_string]<a href='?src=\ref[src];candidate=\ref[O];target=\ref[target]'>Click here</a> if you wish to play as this option.")
 
 // Handles a response to request_player().
 /datum/ghosttrap/Topic(href, href_list)
@@ -107,8 +107,8 @@ proc/populate_ghost_traps()
 	ghost_trap_role = "Plant"
 
 /datum/ghosttrap/plant/welcome_candidate(var/mob/target)
-	to_chat(target, "<span class='alium'><B>You awaken slowly, stirring into sluggish motion as the air caresses you.</B></span>")
+	to_chat(target, "<span class='green'><B>You awaken slowly, stirring into sluggish motion as the air caresses you.</B></span>")
 	// This is a hack, replace with some kind of species blurb proc.
 	if(istype(target,/mob/living/carbon/alien/diona))
 		to_chat(target, "<B>You are \a [target], one of a race of drifting interstellar plantlike creatures that sometimes share their seeds with human traders.</B>")
-		target << "<B>Too much darkness will send you into shock and starve you, but light will help you heal.</B>"
+		to_chat(target, "<B>Too much darkness will send you into shock and starve you, but light will help you heal.</B>")

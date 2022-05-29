@@ -57,17 +57,18 @@
 /obj/effect/spider/stickyweb
 	icon_state = "stickyweb1"
 
-/obj/effect/spider/stickyweb/Initialize()
+/obj/effect/spider/stickyweb/Initialize(mapload)
 	if(prob(50))
 		icon_state = "stickyweb2"
 	return ..()
 
 /obj/effect/spider/stickyweb/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
 	if(istype(mover, /mob/living/simple_mob/animal/giant_spider))
 		return TRUE
 	else if(istype(mover, /mob/living))
 		if(prob(50))
-			to_chat(mover, span("warning", "You get stuck in \the [src] for a moment."))
+			to_chat(mover, SPAN_WARNING( "You get stuck in \the [src] for a moment."))
 			return FALSE
 	else if(istype(mover, /obj/item/projectile))
 		return prob(30)
@@ -82,15 +83,15 @@
 	var/spiders_max = 24
 	var/spider_type = /obj/effect/spider/spiderling
 
-/obj/effect/spider/eggcluster/Initialize()
+/obj/effect/spider/eggcluster/Initialize(mapload)
 	pixel_x = rand(3,-3)
 	pixel_y = rand(3,-3)
 	START_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/effect/spider/eggcluster/New(var/location, var/atom/parent)
+/obj/effect/spider/eggcluster/Initialize(mapload, atom/parent)
+	. = ..()
 	get_light_and_color(parent)
-	..()
 
 /obj/effect/spider/eggcluster/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -100,7 +101,7 @@
 
 	return ..()
 
-/obj/effect/spider/eggcluster/process()
+/obj/effect/spider/eggcluster/process(delta_time)
 	amount_grown += rand(0,2)
 	if(amount_grown >= 100)
 		var/num = rand(spiders_min, spiders_max)
@@ -130,7 +131,7 @@
 	health = 3
 	var/last_itch = 0
 	var/amount_grown = -1
-	var/obj/machinery/atmospherics/unary/vent_pump/entry_vent
+	var/obj/machinery/atmospherics/component/unary/vent_pump/entry_vent
 	var/travelling_in_vent = 0
 	var/list/grow_as = list(/mob/living/simple_mob/animal/giant_spider, /mob/living/simple_mob/animal/giant_spider/nurse, /mob/living/simple_mob/animal/giant_spider/hunter)
 
@@ -139,7 +140,8 @@
 /obj/effect/spider/spiderling/frost
 	grow_as = list(/mob/living/simple_mob/animal/giant_spider/frost)
 
-/obj/effect/spider/spiderling/New(var/location, var/atom/parent)
+/obj/effect/spider/spiderling/Initialize(mapload, atom/parent)
+	. = ..()
 	pixel_x = rand(6,-6)
 	pixel_y = rand(6,-6)
 	START_PROCESSING(SSobj, src)
@@ -147,7 +149,6 @@
 	if(prob(50))
 		amount_grown = 1
 	get_light_and_color(parent)
-	..()
 
 /obj/effect/spider/spiderling/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -169,58 +170,39 @@
 	if(health <= 0)
 		die()
 
-/obj/effect/spider/spiderling/process()
+/obj/effect/spider/spiderling/process(delta_time)
 	if(travelling_in_vent)
 		if(istype(src.loc, /turf))
 			travelling_in_vent = 0
 			entry_vent = null
 	else if(entry_vent)
 		if(get_dist(src, entry_vent) <= 1)
-			//VOREStation Edit Start
-			var/obj/machinery/atmospherics/unary/vent_pump/exit_vent = get_safe_ventcrawl_target(entry_vent)
+			var/obj/machinery/atmospherics/component/unary/vent_pump/exit_vent = get_safe_ventcrawl_target(entry_vent)
 			if(!exit_vent)
 				return
-			if(1) //To maintain indentation level
-			//VOREStation Edit End
-			/*	//VOREStation Removal Start - prevent spiders in dorms
-			if(entry_vent.network && entry_vent.network.normal_members.len)
-				var/list/vents = list()
-				for(var/obj/machinery/atmospherics/unary/vent_pump/temp_vent in entry_vent.network.normal_members)
-					vents.Add(temp_vent)
-				if(!vents.len)
-					entry_vent = null
-					return
-				var/obj/machinery/atmospherics/unary/vent_pump/exit_vent = pick(vents)
-				*/ //VOREStation Removal End
-				/*if(prob(50))
-					src.visible_message("<B>[src] scrambles into the ventillation ducts!</B>")*/
+			spawn(rand(20,60))
+				loc = exit_vent
+				var/travel_time = round(get_dist(loc, exit_vent.loc) / 2)
+				spawn(travel_time)
 
-				spawn(rand(20,60))
-					loc = exit_vent
-					var/travel_time = round(get_dist(loc, exit_vent.loc) / 2)
-					spawn(travel_time)
-
-						if(!exit_vent || exit_vent.welded)
-							loc = entry_vent
-							entry_vent = null
-							return
-
-						if(prob(50))
-							src.visible_message("<span class='notice'>You hear something squeezing through the ventilation ducts.</span>",2)
-						sleep(travel_time)
-
-						if(!exit_vent || exit_vent.welded)
-							loc = entry_vent
-							entry_vent = null
-							return
-						loc = exit_vent.loc
+					if(!exit_vent || exit_vent.welded)
+						loc = entry_vent
 						entry_vent = null
-						var/area/new_area = get_area(loc)
-						if(new_area)
-							new_area.Entered(src)
-			else
-				entry_vent = null
-	//=================
+						return
+
+					if(prob(50))
+						src.visible_message("<span class='notice'>You hear something squeezing through the ventilation ducts.</span>",2)
+					sleep(travel_time)
+
+					if(!exit_vent || exit_vent.welded)
+						loc = entry_vent
+						entry_vent = null
+						return
+					loc = exit_vent.loc
+					entry_vent = null
+					var/area/new_area = get_area(loc)
+					if(new_area)
+						new_area.Entered(src)
 
 	if(isturf(loc))
 		skitter()
@@ -256,7 +238,7 @@
 					src.visible_message("<span class='notice'>\The [src] skitters[pick(" away"," around","")].</span>")
 		else if(prob(5))
 			//vent crawl!
-			for(var/obj/machinery/atmospherics/unary/vent_pump/v in view(7,src))
+			for(var/obj/machinery/atmospherics/component/unary/vent_pump/v in view(7,src))
 				if(!v.welded)
 					entry_vent = v
 					walk_to(src, entry_vent, 5)
@@ -268,6 +250,34 @@
 				spawn(2)
 					GS.make_spiderling()
 			qdel(src)
+
+//Rather than kneecap all spiderlings, I figure I'll just make a spiderling cousin that doesn't have the ability.
+/obj/effect/spider/spiderling/no_crawl
+
+/obj/effect/spider/spiderling/no_crawl/skitter()
+	if(isturf(loc))
+		if(prob(25))
+			var/list/nearby = trange(5, src) - loc
+			if(nearby.len)
+				var/target_atom = pick(nearby)
+				walk_to(src, target_atom, 5)
+				if(prob(25))
+					src.visible_message("<span class='notice'>\The [src] skitters[pick(" away"," around","")].</span>")
+		else if(prob(0))
+			//vent crawl!
+			for(var/obj/machinery/atmospherics/component/unary/vent_pump/v in view(7,src))
+				if(!v.welded)
+					entry_vent = v
+					walk_to(src, entry_vent, 5)
+					break
+		if(amount_grown >= 100)
+			var/spawn_type = pick(grow_as)
+			var/mob/living/simple_mob/animal/giant_spider/GS = new spawn_type(src.loc, src)
+			if(stunted)
+				spawn(2)
+					GS.make_spiderling()
+			qdel(src)
+
 
 /obj/effect/spider/spiderling/stunted
 	stunted = TRUE
@@ -284,10 +294,11 @@
 	name = "cocoon"
 	desc = "Something wrapped in silky spider web"
 	icon_state = "cocoon1"
-	health = 60
+	health = 10
 
-/obj/effect/spider/cocoon/New()
-		icon_state = pick("cocoon1","cocoon2","cocoon3")
+/obj/effect/spider/cocoon/Initialize(mapload)
+	. = ..()
+	icon_state = pick("cocoon1","cocoon2","cocoon3")
 
 /obj/effect/spider/cocoon/Destroy()
 	src.visible_message("<span class='warning'>\The [src] splits open.</span>")

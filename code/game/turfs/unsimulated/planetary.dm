@@ -14,10 +14,10 @@
 
 /turf/unsimulated/wall/planetary/Initialize(mapload)
 	. = ..()
-	SSplanets.addTurf(src)
+	SSplanets.addWall(src)
 
 /turf/unsimulated/wall/planetary/Destroy()
-	SSplanets.removeTurf(src)
+	SSplanets.removeWall(src)
 	return ..()
 
 /turf/unsimulated/wall/planetary/proc/set_temperature(var/new_temperature)
@@ -52,4 +52,23 @@
 	initial_gas_mix = GAS_STRING_MAGNI
 
 /turf/unsimulated/wall/planetary/desert
+	name = "Endless Sands"
+	desc = "You see nothing but featureless flat desert stretching outwards far beyond what the eye can see."
+	icon_state = "desert"
+	opacity = 0
+	density = 1
+	alpha = 0
+	blocks_air = 0
 	initial_gas_mix = GAS_STRING_STP_HOT
+
+/turf/unsimulated/wall/planetary/virgo3b
+	name = "facility wall"
+	desc = "An eight-meter tall carbyne wall. For when the wildlife on your planet is mostly militant megacorps."
+	alpha = 0xFF
+	initial_gas_mix = ATMOSPHERE_ID_VIRGO3B
+
+/turf/unsimulated/wall/planetary/triumph
+	name = "facility wall"
+	desc = "An eight-meter tall carbyne wall. For when the wildlife on your planet is mostly militant megacorps."
+	alpha = 0xFF
+	TRIUMPH_SET_ATMOS

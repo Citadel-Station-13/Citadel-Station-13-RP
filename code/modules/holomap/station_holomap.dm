@@ -31,27 +31,22 @@
 	var/bogus = TRUE		// set to 0 when you initialize the station map on a zLevel that has its own icon formatted for use by station holomaps.
 	var/datum/station_holomap/holomap_datum
 
-/obj/machinery/station_map/New()
-	..()
-	holomap_datum = new()
+/obj/machinery/station_map/Initialize(mapload)
+	holomap_datum = new
 	original_zLevel = loc.z
 	SSholomaps.station_holomaps += src
 	flags |= ON_BORDER // Why? It doesn't help if its not density
-
-/obj/machinery/station_map/Initialize()
-	. = ..()
 	if(SSholomaps.holomaps_initialized)
-		spawn(1) // Tragically we need to spawn this in order to give the frame construcing us time to set pixel_x/y
-			setup_holomap()
+		setup_holomap()
+	return ..()
 
 /obj/machinery/station_map/Destroy()
 	SSholomaps.station_holomaps -= src
 	stopWatching()
 	holomap_datum = null
-	. = ..()
+	return ..()
 
 /obj/machinery/station_map/proc/setup_holomap()
-	. = ..()
 	bogus = FALSE
 	var/turf/T = get_turf(src)
 	original_zLevel = T.z
@@ -112,7 +107,7 @@
 	// EH JUST HACK IT FOR NOW SO WE CAN SEE HOW IT LOOKS! STOP OBSESSING, ITS BEEN AN HOUR NOW!
 
 	// TODO - This part!! ~Leshana
-	if(isliving(user) && anchored && !(stat & (NOPOWER|BROKEN)))
+	if(isliving(user) && anchored && !(machine_stat & (NOPOWER|BROKEN)))
 		if(user.client)
 			holomap_datum.station_map.loc = GLOB.global_hud.holomap  // Put the image on the holomap hud
 			holomap_datum.station_map.alpha = 0 // Set to transparent so we can fade in
@@ -137,8 +132,8 @@
 	return // TODO - Implement for AI ~Leshana
 	// user.station_holomap.toggleHolomap(user, isAI(user))
 
-/obj/machinery/station_map/process()
-	if((stat & (NOPOWER|BROKEN)) || !anchored)
+/obj/machinery/station_map/process(delta_time)
+	if((machine_stat & (NOPOWER|BROKEN)) || !anchored)
 		stopWatching()
 
 /obj/machinery/station_map/proc/checkPosition()
@@ -162,20 +157,20 @@
 	. = ..()
 	update_icon()
 	// TODO - Port use_auto_lights from /vg - For now implement it manually here
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		set_light(0)
 	else
 		set_light(light_range_on, light_power_on)
 
 /obj/machinery/station_map/proc/set_broken()
-	stat |= BROKEN
+	machine_stat |= BROKEN
 	update_icon()
 
 /obj/machinery/station_map/update_icon()
 	overlays.Cut()
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		icon_state = "station_mapb"
-	else if((stat & NOPOWER) || !anchored)
+	else if((machine_stat & NOPOWER) || !anchored)
 		icon_state = "station_map0"
 	else
 		icon_state = "station_map"

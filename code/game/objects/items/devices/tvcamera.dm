@@ -10,7 +10,7 @@
 	var/obj/machinery/camera/network/thunder/camera
 	var/obj/item/radio/radio
 
-/obj/item/tvcamera/Initialize()
+/obj/item/tvcamera/Initialize(mapload)
 	. = ..()
 	listening_objects += src
 
@@ -23,11 +23,11 @@
 	..()
 
 /obj/item/tvcamera/examine()
-	..()
-	to_chat(usr, "Video feed is [camera.status ? "on" : "off"]")
-	to_chat(usr, "Audio feed is [radio.broadcasting ? "on" : "off"]")
+	. = ..()
+	. += "Video feed is [camera.status ? "on" : "off"]."
+	. += "Audio feed is [radio.broadcasting ? "on" : "off"]."
 
-/obj/item/tvcamera/Initialize()
+/obj/item/tvcamera/Initialize(mapload)
 	. = ..()
 	camera = new(src)
 	camera.c_tag = channel
@@ -55,7 +55,7 @@
 	popup.set_content(jointext(dat,null))
 	popup.open()
 
-/obj/item/tvcamera/Topic(bred, href_list, state = physical_state)
+/obj/item/tvcamera/Topic(bred, href_list, state = GLOB.physical_state)
 	if(..())
 		return 1
 	if(href_list["channel"])
@@ -93,4 +93,3 @@
 		H.update_inv_r_hand()
 		H.update_inv_l_hand()
 		H.update_inv_belt()
-

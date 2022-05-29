@@ -7,11 +7,11 @@
 	item_state = "healthanalyzer"
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_SMALL
-	matter = list(DEFAULT_WALL_MATERIAL = 200)
+	matter = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2, TECH_ILLEGAL = 1)
 
-/obj/item/bodysnatcher/New()
-	..()
+/obj/item/bodysnatcher/Initialize(mapload)
+	. = ..()
 	flags |= NOBLUDGEON //So borgs don't spark.
 
 /obj/item/bodysnatcher/attack(mob/living/M, mob/living/user)

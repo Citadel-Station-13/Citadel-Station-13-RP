@@ -138,13 +138,15 @@
 	return
 
 /obj/effect/ebeam/deadly/Crossed(atom/A)
+	if(A.is_incorporeal())
+		return
 	..()
 	A.ex_act(1)
 
 // 'Reactive' beam parts do something when touched or stood in.
 /obj/effect/ebeam/reactive
 
-/obj/effect/ebeam/reactive/Initialize()
+/obj/effect/ebeam/reactive/Initialize(mapload)
 	START_PROCESSING(SSobj, src)
 	return ..()
 
@@ -157,10 +159,12 @@
 		on_contact(A)
 
 /obj/effect/ebeam/reactive/Crossed(atom/A)
+	if(A.is_incorporeal())
+		return
 	..()
 	on_contact(A)
 
-/obj/effect/ebeam/reactive/process()
+/obj/effect/ebeam/reactive/process(delta_time)
 	for(var/A in loc)
 		on_contact(A)
 

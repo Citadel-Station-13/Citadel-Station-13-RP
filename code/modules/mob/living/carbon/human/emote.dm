@@ -1,8 +1,8 @@
 /mob/living/carbon/human/emote(var/act,var/m_type=1,var/message = null)
 	var/param = null
-
 	var/datum/gender/T = gender_datums[get_visible_gender()]
-
+	if(istype(src, /mob/living/carbon/human/dummy))
+		return
 	if (findtext(act, "-", 1, null))
 		var/t1 = findtext(act, "-", 1, null)
 		param = copytext(act, t1 + 1, length(act) + 1)
@@ -21,7 +21,8 @@
 
 	if(src.stat == 2.0 && (act != "deathgasp"))
 		return
-	if(attempt_vr(src,"handle_emote_vr",list(act,m_type,message))) return //VOREStation Add - Custom Emote Handler
+	if(attempt_vr(src,"handle_emote_vr",list(act,m_type,message)))
+		return // Custom Emote Handler
 	switch(act)
 
 		if ("airguitar")
@@ -30,7 +31,7 @@
 				m_type = 1
 
 		//Machine-only emotes
-		if("ping", "beep", "buzz", "yes", "ye", "no", "rcough", "rsneeze")
+		if("ping", "beep", "buzz", "yes", "ye", "no", "dwoop", "scary", "rcough", "rsneeze", "honk", "buzz2", "warn", "chime", "startup", "shutdown", "error", "die")
 
 			if(!isSynthetic())
 				to_chat(src, "<span class='warning'>You are not a synthetic.</span>")
@@ -50,6 +51,18 @@
 			if(act == "buzz")
 				display_msg = "buzzes"
 				use_sound = 'sound/machines/buzz-sigh.ogg'
+			else if(act == "chime")
+				display_msg = "chimes"
+				use_sound = 'sound/machines/chime.ogg'
+			else if(act == "buzz2")
+				display_msg = "buzzes twice"
+				use_sound = 'sound/machines/buzz-two.ogg'
+			else if(act == "warn")
+				display_msg = "blares an alarm"
+				use_sound = 'sound/machines/warning-buzzer.ogg'
+			else if(act == "honk")
+				display_msg = "honks"
+				use_sound = 'sound/items/bikehorn.ogg'
 			else if(act == "ping")
 				display_msg = "pings"
 				use_sound = 'sound/machines/ping.ogg'
@@ -59,6 +72,24 @@
 			else if(act == "no")
 				display_msg = "emits a negative blip"
 				use_sound = 'sound/machines/synth_no.ogg'
+			else if(act == "dwoop")
+				display_msg = "chirps happily"
+				use_sound = 'sound/machines/dwoop.ogg'
+			else if(act == "scary")
+				display_msg = "emits a disconcerting tone"
+				use_sound = 'sound/machines/synth_scary.ogg'
+			else if(act == "startup")
+				display_msg = "chimes to life"
+				use_sound = 'sound/machines/synth_startup.ogg'
+			else if(act == "shutdown")
+				display_msg = "emits a nostalgic tone as they fall silent"
+				use_sound = 'sound/machines/synth_shutdown.ogg'
+			else if(act == "error")
+				display_msg = "experiences a system error"
+				use_sound = 'sound/machines/synth_error.ogg'
+			else if(act == "die")
+				display_msg = "crumples, their chassis colder and more lifeless than usual"
+				use_sound = 'sound/machines/synth_gameover.ogg'
 			else if(act == "rcough")
 				display_msg = "emits a robotic cough"
 				if(get_gender() == FEMALE)
@@ -81,13 +112,9 @@
 
 		//Promethean-only emotes
 		if("squish")
-			//Citadel changes start
-			///* VOREStation Removal Start - Eh. People can squish maybe.
 			if(species.bump_flag != SLIME) //This should definitely do it.
 				to_chat(src, "<span class='warning'>You are not a slime thing!</span>")
 				return
-			//*/ //VOREStation Removal End
-			//Citadel changes end
 			playsound(src.loc, 'sound/effects/slime_squish.ogg', 50, 0) //Credit to DrMinky (freesound.org) for the sound.
 			message = "squishes."
 			m_type = 1
@@ -143,7 +170,7 @@
 			if (input2 == "Visible")
 				m_type = 1
 			else if (input2 == "Hearable")
-				if (src.miming)
+				if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 					return
 				m_type = 2
 			else
@@ -184,7 +211,7 @@
 			m_type = 1
 
 		if ("choke")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "clutches [T.his] throat desperately!"
 				m_type = 1
 			else
@@ -200,22 +227,36 @@
 				message = "claps."
 				playsound(src.loc, 'sound/misc/clapping.ogg')
 				m_type = 2
-				if(miming)
+				if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 					m_type = 1
 
 		if ("flap")
 			if (!src.restrained())
 				message = "flaps [T.his] wings."
 				m_type = 2
-				if(miming)
+				if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 					m_type = 1
 
 		if ("aflap")
 			if (!src.restrained())
 				message = "flaps [T.his] wings ANGRILY!"
 				m_type = 2
-				if(miming)
+				if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 					m_type = 1
+
+		if("ara")
+			message = "aras"
+			var/use_sound
+			use_sound = pick('sound/voice/ara_ara1.ogg','sound/voice/ara_ara2.ogg')
+			playsound(src.loc, use_sound, 50, 0)
+
+		if("amoan")
+			message = "moans in a rather lewd manner"
+			playsound(src.loc, 'sound/voice/anime_moan.ogg', 50, 0)
+
+		if("uwu")
+			message = "lets out a devious noise"
+			playsound(src.loc, 'sound/voice/uwu.ogg', 50, 0)
 
 		if ("drool")
 			message = "drools."
@@ -226,7 +267,7 @@
 			m_type = 1
 
 		if ("chuckle")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "appears to chuckle."
 				m_type = 1
 			else
@@ -249,11 +290,11 @@
 			message = "faints."
 			if(src.sleeping)
 				return //Can't faint while asleep
-			src.sleeping += 10 //Short-short nap
+			Sleeping(10) //Short-short nap
 			m_type = 1
 
 		if("cough", "coughs")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "appears to cough!"
 				m_type = 1
 			else
@@ -284,6 +325,28 @@
 					message = "makes a strong noise."
 					m_type = 2
 
+		if("bcough")
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+				message = "appears to cough up blood!"
+				m_type = 1
+			else
+				if(!muzzled)
+					var/robotic = 0
+					m_type = 2
+					if(should_have_organ(O_LUNGS))
+						var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]
+						if(L && L.robotic == 2)	//Hard-coded to 2, incase we add lifelike robotic lungs
+							robotic = 1
+					if(!robotic)
+						message = "coughs up a small amount of blood!"
+						BloodyMouth()
+						if(get_gender() == FEMALE)
+							if(species.female_cough_sounds)
+								playsound(src, pick(species.female_cough_sounds), 120)
+						else
+							if(species.male_cough_sounds)
+								playsound(src, pick(species.male_cough_sounds), 120)
+
 		if ("frown")
 			message = "frowns."
 			m_type = 1
@@ -301,7 +364,7 @@
 			m_type = 1
 
 		if ("gasp")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "appears to be gasping!"
 				m_type = 1
 			else
@@ -317,7 +380,7 @@
 			m_type = 1
 
 		if ("giggle")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "giggles silently!"
 				m_type = 1
 			else
@@ -380,7 +443,7 @@
 			m_type = 1
 
 		if ("cry")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "cries."
 				m_type = 1
 			else
@@ -392,7 +455,7 @@
 					m_type = 2
 
 		if ("sigh")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "sighs."
 				m_type = 1
 			else
@@ -404,12 +467,23 @@
 					m_type = 2
 
 		if ("laugh")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "acts out a laugh."
 				m_type = 1
 			else
 				if (!muzzled)
-					message = "laughs."
+					var/list/laughs = list("lets out a chuckle.", "laughs.", "chuckles.", "cracks up.", "erupts into laughter.", "cackles.")
+					message = "[pick(laughs)]"
+					if(!spam_flag)
+						if(get_gender() == MALE)
+							var/list/laughsounds = list('sound/voice/laughs/masclaugh1.ogg', 'sound/voice/laughs/masclaugh2.ogg')
+							playsound(loc, pick(laughsounds), 50, 1, -1)
+							spam_flag = TRUE
+							addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+						else
+							playsound(loc, 'sound/voice/laughs/femlaugh.ogg', 50, 1, -1)
+							spam_flag = TRUE
+							addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
 					m_type = 2
 				else
 					message = "makes a noise."
@@ -418,11 +492,11 @@
 		if ("mumble")
 			message = "mumbles!"
 			m_type = 2
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				m_type = 1
 
 		if ("grumble")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "grumbles!"
 				m_type = 1
 			if (!muzzled)
@@ -433,7 +507,7 @@
 				m_type = 2
 
 		if ("groan")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "appears to groan!"
 				m_type = 1
 			else
@@ -445,7 +519,7 @@
 					m_type = 2
 
 		if ("moan")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "appears to moan!"
 				m_type = 1
 			else
@@ -459,7 +533,7 @@
 			if (!M)
 				param = null
 			else
-				if(miming)
+				if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 					message = "takes a drag from a cigarette and blows \"[M]\" out in smoke."
 					m_type = 1
 				else
@@ -484,6 +558,12 @@
 					message = "points to [M]."
 				else
 			m_type = 1
+
+		if("crack")
+			if(!restrained())
+				message = "cracks [T.his] knuckles."
+				playsound(src, 'sound/voice/knuckles.ogg', 50, 1,)
+				m_type = 1
 
 		if ("raise")
 			if (!src.restrained())
@@ -515,7 +595,7 @@
 		if ("shiver")
 			message = "shivers."
 			m_type = 2
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				m_type = 1
 
 		if ("pale")
@@ -527,7 +607,7 @@
 			m_type = 1
 
 		if("sneeze", "sneezes")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "sneezes."
 				m_type = 1
 			else
@@ -560,11 +640,11 @@
 		if ("sniff")
 			message = "sniffs."
 			m_type = 2
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				m_type = 1
 
 		if ("snore")
-			if (miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "sleeps soundly."
 				m_type = 1
 			else
@@ -576,7 +656,7 @@
 					m_type = 2
 
 		if ("whimper")
-			if (miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "appears hurt."
 				m_type = 1
 			else
@@ -595,14 +675,14 @@
 			if (!muzzled)
 				message = "yawns."
 				m_type = 2
-				if(miming)
+				if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 					m_type = 1
 
 		if ("collapse")
 			Paralyse(2)
 			message = "collapses!"
 			m_type = 2
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				m_type = 1
 
 		if("hug")
@@ -712,24 +792,29 @@
 					//adding damage for aslaps to stop the spam
 
 		if("scream", "screams")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "acts out a scream!"
 				m_type = 1
 			else
 				if(!muzzled)
 					message = "[species.scream_verb]!"
 					m_type = 2
-					// Citchange. Re-enabled for species that do have a defined scream sound. If a species lacks it, no sound will be played.
 					if(get_gender() == FEMALE)
-						playsound(loc, "[species.female_scream_sound]", 80, 1)
-					else
-						playsound(loc, "[species.male_scream_sound]", 80, 1) //default to male screams if no gender is present.
+						if(!spam_flag)
+							playsound(loc, "[pick(species.female_scream_sound)]", 80, 1)
+							spam_flag = TRUE
+							addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
 
+					else
+						if(!spam_flag)
+							playsound(loc, "[pick(species.male_scream_sound)]", 80, 1) //default to male screams if no gender is present.
+							spam_flag = TRUE
+							addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
 				else
 					message = "makes a very loud noise."
 					m_type = 2
 		if("squeak","squeaks")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "acts out a soft squeak."
 				m_type = 1
 			else
@@ -739,7 +824,7 @@
 					playsound(loc, "sound/effects/mouse_squeak.ogg", 50, 1)
 
 		if("meow", "meows")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "acts out a soft mrowl."
 				m_type = 1
 			else
@@ -786,7 +871,7 @@
 			vomit()
 			return
 
-		if("whistle" || "whistles")
+		if("whistle", "whistles")
 			if(!muzzled)
 				message = "whistles a tune."
 				playsound(loc, 'sound/misc/longwhistle.ogg') //praying this doesn't get abused
@@ -801,16 +886,21 @@
 				message = "makes a light spitting noise, a poor attempt at a whistle."
 
 		if ("help")
-			to_chat(src, "awoo, bark, blink, blink_r, blush, bow-(none)/mob, burp, chirp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, eyebrow, fastsway/qwag, \
+			to_chat(src, "nyaha, awoo, bark, blink, blink_r, blush, bow-(none)/mob, burp, chirp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, eyebrow, fastsway/qwag, \
 					flip, frown, gasp, giggle, glare-(none)/mob, grin, groan, grumble, handshake, hiss, hug-(none)/mob, laugh, look-(none)/mob, merp, moan, mumble, nod, nya, pale, peep, point-atom, \
 					raise, salute, scream, sneeze, shake, shiver, shrug, sigh, signal-#1-10, slap-(none)/mob, smile, sneeze, sniff, snore, stare-(none)/mob, stopsway/swag, squeak, sway/wag, swish, tremble, twitch, \
-					twitch_v, vomit, weh, whimper, wink, yawn. Synthetics: beep, buzz, yes, no, rcough, rsneeze, ping. Vox: shriekshort, shriekloud")
+					twitch_v, vomit, weh, whimper, wink, yawn. Moth: mchitter, mlaugh, mscream, msqueak. Synthetics: beep, buzz, yes, no, rcough, rsneeze, ping. Vox: shriekshort, shriekloud")
 
 		else
-			to_chat(src, "<font color='blue'>Unusable emote '[act]'. Say *help or *vhelp for a list.</font>") //VOREStation Edit, mention *vhelp for Virgo-specific emotes located in emote_vr.dm.
+			to_chat(src, "<font color=#4F49AF>Unusable emote '[act]'. Say *help for a list.</font>")
+			return
 
 	if (message)
 		custom_emote(m_type,message)
+
+
+
+
 
 /mob/living/carbon/human/verb/pose()
 	set name = "Set Pose"
@@ -884,15 +974,26 @@
 		if ("awoo")
 			m_type = 2
 			message = "lets out an awoo."
-			playsound(loc, 'modular_citadel/sound/voice/awoo.ogg', 50, 1, -1)
+			playsound(loc, 'sound/voice/awoo.ogg', 50, 1, -1)
 		if ("nya")
 			message = "lets out a nya."
 			m_type = 2
-			playsound(loc, 'modular_citadel/sound/voice/nya.ogg', 50, 1, -1)
+			var/use_sound
+			use_sound = pick('sound/voice/nya.ogg','sound/voice/nya1.ogg','sound/voice/nya2.ogg')
+			playsound(src.loc, use_sound, 50, 0)
+		if ("nyaha")
+			if(!spam_flag)
+				var/list/catlaugh = list('sound/voice/catpeople/nyaha.ogg', 'sound/voice/catpeople/nyahaha1.ogg', 'sound/voice/catpeople/nyahaha2.ogg', 'sound/voice/catpeople/nyahehe.ogg')
+				playsound(loc, pick(catlaugh), 50, 1, -1)
+				spam_flag = TRUE
+				addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+			var/list/laughs = list("laughs deviously.", "lets out a catty laugh.", "nya ha ha's.")
+			message = "[pick(laughs)]"
+			m_type = 2
 		if ("peep")
 			message = "peeps like a bird."
 			m_type = 2
-			playsound(loc, 'modular_citadel/sound/voice/peep.ogg', 50, 1, -1)
+			playsound(loc, 'sound/voice/peep.ogg', 50, 1, -1)
 		if("chirp")
 			message = "chirps!"
 			playsound(src.loc, 'sound/misc/nymphchirp.ogg', 50, 0)
@@ -900,19 +1001,19 @@
 		if ("weh")
 			message = "lets out a weh."
 			m_type = 2
-			playsound(loc, 'modular_citadel/sound/voice/weh.ogg', 50, 1, -1)
+			playsound(loc, 'sound/voice/weh.ogg', 50, 1, -1)
 		if ("merp")
 			message = "lets out a merp."
 			m_type = 2
-			playsound(loc, 'modular_citadel/sound/voice/merp.ogg', 50, 1, -1)
+			playsound(loc, 'sound/voice/merp.ogg', 50, 1, -1)
 		if ("bark")
 			message = "lets out a bark."
 			m_type = 2
-			playsound(loc, 'modular_citadel/sound/voice/bark2.ogg', 50, 1, -1)
+			playsound(loc, 'sound/voice/bark2.ogg', 50, 1, -1)
 		if ("hiss")
 			message = "lets out a hiss."
 			m_type = 2
-			playsound(loc, 'modular_citadel/sound/voice/hiss.ogg', 50, 1, -1)
+			playsound(loc, 'sound/voice/hiss.ogg', 50, 1, -1)
 		if ("squeak")
 			message = "lets out a squeak."
 			m_type = 2
@@ -923,6 +1024,22 @@
 		if ("nme")
 			nme()
 			return TRUE
+		if ("mchitter")
+			message = "chitters."
+			m_type = 2
+			playsound(loc, 'sound/voice/moth/mothchitter.ogg', 50, 1, -1)
+		if ("mlaugh")
+			message = "laughs."
+			m_type = 2
+			playsound(loc, 'sound/voice/moth/mothlaugh.ogg', 50, 1, -1)
+		if ("mscream")
+			message = "screams!"
+			m_type = 2
+			playsound(loc, 'sound/voice/moth/scream_moth.ogg', 50, 1, -1)
+		if ("msqueak")
+			message = "lets out a squeak."
+			m_type = 2
+			playsound(loc, 'sound/voice/moth/mothsqueak.ogg', 50, 1, -1)
 		if ("flip")
 			var/list/involved_parts = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 			//Check if they are physically capable
@@ -931,19 +1048,29 @@
 				return 1
 			else
 				src.SpinAnimation(7,1)
-				message = "does a flip!"
+				// message = "does a flip!"
 				m_type = 1
 // New emotes below this line
 		if ("purr")
 			message = "purrs softly."
 			m_type = 2
-			playsound(loc, 'modular_citadel/sound/voice/purr.ogg', 50, 1, -1)
-
+			playsound(loc, 'sound/voice/purr.ogg', 50, 1, -1)
+		if ("clak")
+			if(!spam_flag)
+				var/msg = list("<font color='grey' size='2'>CLAKS!</font>", "claks!")
+				message = "[pick(msg)]"
+				playsound(loc, 'sound/spooky/boneclak.ogg', 50, 1, 1)
+				spam_flag = TRUE
+				addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+			m_type = 2
 	if (message)
 		custom_emote(m_type,message)
 		return 1
 
 	return 0
+
+/mob/living/carbon/human/proc/spam_flag_false() //used for addtimer
+	spam_flag = FALSE
 
 /mob/living/carbon/human/proc/toggle_tail_vr(var/setting,var/message = 0)
 	if(!tail_style || !tail_style.ani_state)
@@ -985,4 +1112,3 @@
 	set desc = "Switch tail layer on top."
 	tail_alt = !tail_alt
 	update_tail_showing()
-

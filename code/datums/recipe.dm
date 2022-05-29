@@ -51,12 +51,15 @@
 	var/time = 50    // 1/10 part of second // Citadel change, increases recipe speed.
 
 
-	#define RECIPE_REAGENT_REPLACE		0 //Reagents in the ingredients are discarded.
+	///Reagents in the ingredients are discarded.
+#define RECIPE_REAGENT_REPLACE		0
 	//Only the reagents present in the result at compiletime are used
-	#define RECIPE_REAGENT_MAX	1 //The result will contain the maximum of each reagent present between the two pools. Compiletime result, and sum of ingredients
-	#define RECIPE_REAGENT_MIN 2 //As above, but the minimum, ignoring zero values.
-	#define RECIPE_REAGENT_SUM 3 //The entire quantity of the ingredients are added to the result
-
+	///The result will contain the maximum of each reagent present between the two pools. Compiletime result, and sum of ingredients
+#define RECIPE_REAGENT_MAX	1
+	///As above, but the minimum, ignoring zero values.
+#define RECIPE_REAGENT_MIN 2
+	///The entire quantity of the ingredients are added to the result
+#define RECIPE_REAGENT_SUM 3
 	var/reagent_mix = RECIPE_REAGENT_MAX	//How to handle reagent differences between the ingredients and the results
 
 	var/appliance = MICROWAVE//Which apppliances this recipe can be made in.
@@ -194,9 +197,11 @@
 	if (items && items.len)
 		for (var/i in items)
 			var/obj/item/I = locate(i) in container
-			if (I && I.reagents)
+			if(!I)
+				continue
+			if(I.reagents)
 				I.reagents.trans_to_holder(temp.reagents,I.reagents.total_volume)
-				qdel(I)
+			qdel(I)
 
 	//Find fruits
 	if (fruit && fruit.len)

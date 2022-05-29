@@ -13,7 +13,7 @@
 		TECH_COMBAT = 7, TECH_MAGNET = 9, TECH_DATA = 5
 		)
 	sprite_sheets = list(
-		"Teshari" = 'icons/mob/species/teshari/back.dmi'
+		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/back.dmi'
 		)
 	var/energy = 10000
 	var/max_energy = 10000
@@ -30,14 +30,14 @@
 		"wizard's cloak"	= "wizard_cloak"
 		)
 
-	// Some spell-specific variables go here, since spells themselves are temporary.  Cores are more long term and more accessable than \
+	// Some spell-specific variables go here, since spells themselves are temporary.  Cores are more long term and more accessable than
 	// mind datums.  It may also allow creative players to try to pull off a 'soul jar' scenario.
 	var/list/summoned_mobs = list()	// Maintained horribly with maintain_summon_list().
 	var/list/wards_in_use = list()	// Wards don't count against the cap for other summons.
 	var/max_summons = 10			// Maximum allowed summoned entities.  Some cores will have different caps.
 
-/obj/item/technomancer_core/New()
-	..()
+/obj/item/technomancer_core/Initialize(mapload)
+	. = ..()
 	START_PROCESSING(SSobj, src)
 
 /obj/item/technomancer_core/Destroy()
@@ -46,7 +46,7 @@
 	return ..()
 
 // Add the spell buttons to the HUD.
-/obj/item/technomancer_core/equipped(mob/user)
+/obj/item/technomancer_core/equipped(mob/user, slot)
 	wearer = user
 	for(var/obj/spellbutton/spell in spells)
 		wearer.ability_master.add_technomancer_ability(spell, spell.ability_icon_state)
@@ -54,7 +54,7 @@
 
 // Removes the spell buttons from the HUD.
 /obj/item/technomancer_core/dropped(mob/user)
-	for(var/obj/screen/ability/obj_based/technomancer/A in wearer.ability_master.ability_objects)
+	for(var/atom/movable/screen/ability/obj_based/technomancer/A in wearer.ability_master.ability_objects)
 		wearer.ability_master.remove_ability(A)
 	wearer = null
 	..()
@@ -80,7 +80,7 @@
 	energy = min(energy + amount, max_energy)
 	return 1
 
-/obj/item/technomancer_core/process()
+/obj/item/technomancer_core/process(delta_time)
 	var/old_energy = energy
 	regenerate()
 	pay_dues()
@@ -141,10 +141,11 @@
 	var/obj/item/technomancer_core/core = null
 	var/ability_icon_state = null
 
-/obj/spellbutton/New(loc, var/path, var/new_name, var/new_icon_state)
+/obj/spellbutton/Initialize(mapload, path, new_name, new_icon_state)
+	. = ..()
 	if(!path || !ispath(path))
-		message_admins("ERROR: /obj/spellbutton/New() was not given a proper path!")
-		qdel(src)
+		message_admins("ERROR: /obj/spellbutton/Initializesz() was not given a proper path!")
+		return INITIALIZE_HINT_QDEL
 	src.name = new_name
 	src.spellpath = path
 	src.loc = loc
@@ -191,7 +192,7 @@
 	if(spell_to_remove in spells)
 		spells.Remove(spell_to_remove)
 		if(wearer)
-			var/obj/screen/ability/obj_based/technomancer/A = wearer.ability_master.get_ability_by_instance(spell_to_remove)
+			var/atom/movable/screen/ability/obj_based/technomancer/A = wearer.ability_master.get_ability_by_instance(spell_to_remove)
 			if(A)
 				wearer.ability_master.remove_ability(A)
 		qdel(spell_to_remove)

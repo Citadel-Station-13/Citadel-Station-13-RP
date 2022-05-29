@@ -1,11 +1,24 @@
+/datum/category_item/catalogue/fauna/cat
+	name = "Cat"
+	desc = "Felines are a popular domestic animal hailing from Earth. \
+	Sharing common ancestry with Earth's 'big cats', the housecats retain \
+	much of those primitive instincts. Although generally docile around \
+	their owners and larger creatures, cats are frequently employed for pest \
+	control on interstellar facilities. They are a popular subject for photography \
+	and film on the Exonet."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/passive/cat
 	name = "cat"
 	desc = "A domesticated, feline pet. Has a tendency to adopt crewmembers."
 	tt_desc = "E Felis silvestris catus"
 	icon_state = "cat2"
 	item_state = "cat2"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/cat)
 
 	movement_cooldown = 0.5 SECONDS
+
+	randomized = TRUE
 
 	see_in_dark = 6 // Not sure if this actually works.
 	response_help  = "pets"
@@ -19,9 +32,14 @@
 
 	var/mob/living/friend = null // Our best pal, who we'll follow. Meow.
 	var/named = FALSE //have I been named yet?
-	var/friend_name = null //VOREStation Edit - Lock befriending to this character
+	var/friend_name = null // Lock befriending to this character
 
-/mob/living/simple_mob/animal/passive/cat/Initialize()
+	meat_amount = 2
+	bone_amount = 2
+	hide_amount = 5
+	hide_type = /obj/item/stack/animalhide/cat
+
+/mob/living/simple_mob/animal/passive/cat/Initialize(mapload)
 	icon_living = "[initial(icon_state)]"
 	icon_dead = "[initial(icon_state)]_dead"
 	icon_rest = "[initial(icon_state)]_rest"
@@ -72,28 +90,26 @@
 
 	if(friend)
 		if(friend == usr)
-			to_chat(L, span("notice", "\The [src] is already your friend! Meow!"))
+			to_chat(L, SPAN_NOTICE("\The [src] is already your friend! Meow!"))
 			return
 		else
-			to_chat(L, span("warning", "\The [src] ignores you."))
+			to_chat(L, SPAN_WARNING( "\The [src] ignores you."))
 			return
 
-	//VOREStation Edit Start - Adds friend_name var checks
+	// friend_name var checks
 	if(!friend_name || L.real_name == friend_name)
 		friend = L
 		face_atom(L)
-		to_chat(L, span("notice", "\The [src] is now your friend! Meow."))
+		to_chat(L, SPAN_NOTICE("\The [src] is now your friend! Meow."))
 		visible_emote(pick("nuzzles [friend].", "brushes against [friend].", "rubs against [friend].", "purrs."))
 
 		if(has_AI())
 			var/datum/ai_holder/AI = ai_holder
 			AI.set_follow(friend)
 	else
-		to_chat(L, span("notice", "[src] ignores you."))
-	//VOREStation Edit End
+		to_chat(L, SPAN_NOTICE("[src] ignores you."))
 
 
-//RUNTIME IS ALIVE! SQUEEEEEEEE~
 /mob/living/simple_mob/animal/passive/cat/runtime
 	name = "Runtime"
 	desc = "Her fur has the look and feel of velvet, and her tail quivers occasionally."
@@ -102,7 +118,8 @@
 	icon_state = "cat"
 	item_state = "cat"
 	named = TRUE
-	makes_dirt = 0 //Vorestation Edit
+	makes_dirt = 0
+	randomized = FALSE
 
 /mob/living/simple_mob/animal/passive/cat/kitten
 	name = "kitten"
@@ -110,9 +127,9 @@
 	icon_state = "kitten"
 	item_state = "kitten"
 	gender = NEUTER
-	holder_type = /obj/item/holder/cat/kitten //VOREStation Edit
+	holder_type = /obj/item/holder/cat/kitten
 
-/mob/living/simple_mob/animal/passive/cat/kitten/Initialize()
+/mob/living/simple_mob/animal/passive/cat/kitten/Initialize(mapload)
 	if(gender == NEUTER)
 		gender = pick(MALE, FEMALE)
 	return ..()
@@ -136,8 +153,9 @@
 	item_state = "cat3"
 	named = TRUE
 	holder_type = /obj/item/holder/cat/fluff/bones
+	randomized = FALSE
 
-// VOREStation Edit - Adds generic tactical kittens
+/// Tactical kittens!
 /obj/item/holder/cat/kitten
 	icon_state = "kitten"
 	w_class = ITEMSIZE_SMALL

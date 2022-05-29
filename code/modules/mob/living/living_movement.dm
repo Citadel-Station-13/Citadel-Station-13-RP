@@ -16,9 +16,6 @@
 		return !P.can_hit_target(src, P.permutated, src == P.original, TRUE)
 	return (!mover.density || !density || lying)
 
-/mob/CanZASPass(turf/T, is_zone)
-	return ATMOS_PASS_YES
-
 /**
   * Toggle the move intent of the mob
   *
@@ -31,7 +28,7 @@
 		m_intent = MOVE_INTENT_RUN
 /*
 	if(hud_used && hud_used.static_inventory)
-		for(var/obj/screen/mov_intent/selector in hud_used.static_inventory)
+		for(var/atom/movable/screen/mov_intent/selector in hud_used.static_inventory)
 			selector.update_icon()
 */
 	// nah, vorecode bad.
@@ -115,7 +112,7 @@
 
 		//Leaping mobs just land on the tile, no pushing, no anything.
 		if(status_flags & LEAPING)
-			loc = tmob.loc
+			forceMove(tmob.loc)
 			status_flags &= ~LEAPING
 			now_pushing = 0
 			return
@@ -123,7 +120,7 @@
 		if((tmob.mob_always_swap || (tmob.a_intent == INTENT_HELP || tmob.restrained()) && (a_intent == INTENT_HELP || src.restrained())) && tmob.canmove && canmove && !tmob.buckled && !buckled && can_swap && can_move_mob(tmob, 1, 0)) // mutual brohugs all around!
 			var/turf/oldloc = loc
 			forceMove(tmob.loc)
-			//VOREstation Edit - Begin
+
 			if (istype(tmob, /mob/living/simple_mob)) //check bumpnom chance, if it's a simplemob that's bumped
 				tmob.Bumped(src)
 			else if(istype(src, /mob/living/simple_mob)) //otherwise, if it's a simplemob doing the bumping. Simplemob on simplemob doesn't seem to trigger but that's fine.
@@ -137,20 +134,20 @@
 				now_pushing = 0
 				return
 			// TODO - Check if we need to do something about the slime.UpdateFeed() we are skipping below.
-			// VOREStation Edit - End
+
 			tmob.forceMove(oldloc)
 			if(old_pulling)
 				start_pulling(old_pulling, supress_message = TRUE)
 			now_pushing = 0
 			return
-		//VOREStation Edit - Begin
+
 		else if((tmob.mob_always_swap || (tmob.a_intent == INTENT_HELP || tmob.restrained()) && (a_intent == INTENT_HELP || src.restrained())) && canmove && can_swap && handle_micro_bump_helping(tmob))
 			forceMove(tmob.loc)
 			now_pushing = 0
 			if(old_pulling)
 				start_pulling(old_pulling, supress_message = TRUE)
 			return
-		//VOREStation Edit - End
+
 
 		if(!can_move_mob(tmob, 0, 0))
 			now_pushing = 0
@@ -158,7 +155,7 @@
 		if(a_intent == INTENT_HELP || src.restrained())
 			now_pushing = 0
 			return
-		// VOREStation Edit - Begin
+
 		// Plow that nerd.
 		if(ishuman(tmob))
 			var/mob/living/carbon/human/H = tmob
@@ -169,7 +166,7 @@
 				return
 		// Handle grabbing, stomping, and such of micros!
 		if(handle_micro_bump_other(tmob)) return
-		// VOREStation Edit - End
+
 		if(istype(tmob, /mob/living/carbon/human) && (FAT in tmob.mutations))
 			if(prob(40) && !(FAT in src.mutations))
 				to_chat(src, "<span class='danger'>You fail to push [tmob]'s fat ass out of the way.</span>")
@@ -193,18 +190,9 @@
 	now_pushing = 0
 	. = ..()
 	if (!istype(AM, /atom/movable) || AM.anchored)
-		//VOREStation Edit - object-specific proc for running into things
-		if(((confused || is_blind()) && stat == CONSCIOUS && prob(50) && m_intent=="run") || flying)
+		// Object-specific proc for running into things
+		if(((confused || is_blind()) && stat == CONSCIOUS && prob(50) && m_intent=="run") || flying && !SPECIES_ADHERENT)
 			AM.stumble_into(src)
-		//VOREStation Edit End
-		/* VOREStation Removal - See above
-		if(confused && prob(50) && m_intent=="run")
-			Weaken(2)
-			playsound(loc, "punch", 25, 1, -1)
-			visible_message("<span class='warning'>[src] [pick("ran", "slammed")] into \the [AM]!</span>")
-			src.apply_damage(5, BRUTE)
-			to_chat(src, "<span class='warning'>You just [pick("ran", "slammed")] into \the [AM]!</span>")
-			*/ // VOREStation Removal End
 		return
 	if (!now_pushing)
 		if(isobj(AM))

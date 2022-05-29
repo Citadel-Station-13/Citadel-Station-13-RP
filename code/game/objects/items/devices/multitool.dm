@@ -7,6 +7,7 @@
 /obj/item/multitool
 	name = "multitool"
 	desc = "Used for pulsing wires to test which to cut. Not recommended by doctors."
+	description_info = "You can use this on airlocks or APCs to try to hack them without cutting wires."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "multitool"
 	force = 5.0
@@ -14,9 +15,10 @@
 	throwforce = 5.0
 	throw_range = 15
 	throw_speed = 3
-	desc = "You can use this on airlocks or APCs to try to hack them without cutting wires."
+	drop_sound = 'sound/items/drop/multitool.ogg'
+	pickup_sound = 'sound/items/pickup/multitool.ogg'
 
-	matter = list(DEFAULT_WALL_MATERIAL = 50,"glass" = 20)
+	matter = list(MAT_STEEL = 50, MAT_GLASS = 20)
 
 	var/mode_index = 1
 	var/toolmode = MULTITOOL_MODE_STANDARD
@@ -26,8 +28,22 @@
 	var/obj/machinery/telecomms/buffer // simple machine buffer for device linkage
 	var/obj/machinery/clonepod/connecting //same for cryopod linkage
 	var/obj/machinery/connectable	//Used to connect machinery.
-	var/weakref_wiring //Used to store weak references for integrated circuitry. This is now the Omnitool.
+	var/datum/weakref_wiring //Used to store weak references for integrated circuitry. This is now the Omnitool.
+	var/colorable = 1
+	var/color_overlay = null
 	toolspeed = 1
+
+/obj/item/multitool/Initialize(mapload)
+	. = ..()
+	if(colorable)
+		switch(pick("red","green","yellow"))
+			if ("red")
+				overlays += "multi_r"
+			if ("green")
+				overlays += "multi_g"
+			if ("yellow")
+				return
+		update_icon()
 
 /obj/item/multitool/attack_self(mob/living/user)
 	var/choice = alert("What do you want to do with \the [src]?","Multitool Menu", "Switch Mode", "Clear Buffers", "Cancel")
@@ -71,8 +87,7 @@
 	name = "multitool"
 	desc = "Optimised and stripped-down version of a regular multitool."
 	toolspeed = 0.5
-
-
+	colorable = 0
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_multitool
 	name = "Precursor Alpha Object - Pulse Tool"
@@ -94,3 +109,11 @@
 	icon_state = "multitool"
 	toolspeed = 0.1
 	origin_tech = list(TECH_MAGNET = 5, TECH_ENGINEERING = 5)
+	colorable = 0
+
+//Colored Variants
+/obj/item/multitool/red
+	color_overlay = "multi_r"
+
+/obj/item/multitool/green
+	color_overlay = "multi_g"

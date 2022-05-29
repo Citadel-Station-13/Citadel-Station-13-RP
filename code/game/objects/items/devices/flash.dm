@@ -17,7 +17,7 @@
 	var/halloss_per_flash = 30
 	var/break_mod = 3 // The percent to break increased by every use on the flash.
 
-	var/can_break = TRUE // Can the flash break?
+	var/can_break = FALSE // Can the flash break?
 	var/can_repair = FALSE // Can you repair the flash?
 	var/repairing = FALSE // Are we repairing right now?
 
@@ -33,8 +33,8 @@
 
 	var/cell_type = /obj/item/cell/device
 
-/obj/item/flash/Initialize()
-	..()
+/obj/item/flash/Initialize(mapload)
+	. = ..()
 	power_supply = new cell_type(src)
 
 /obj/item/flash/attackby(var/obj/item/W, var/mob/user)
@@ -168,20 +168,19 @@
 	playsound(src.loc, 'sound/weapons/flash.ogg', 100, 1)
 	var/flashfail = 0
 
-	//VOREStation Add - NIF
+	// NIF
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.nif && H.nif.flag_check(NIF_V_FLASHPROT,NIF_FLAGS_VISION))
 			flashfail = 1
 			H.nif.notify("High intensity light detected, and blocked!",TRUE)
-	//VOREStation Add End
 
-	if(iscarbon(M) && !flashfail) //VOREStation Add - NIF
+	if(iscarbon(M) && !flashfail)
 		var/mob/living/carbon/C = M
 		if(C.stat != DEAD)
 			var/safety = C.eyecheck()
 			if(safety <= 0)
-				var/flash_strength = 10 //Vorestation edit, making flashes behave the same as flash rounds
+				var/flash_strength = 10
 				if(ishuman(C))
 					var/mob/living/carbon/human/H = C
 					flash_strength *= H.species.flash_mod

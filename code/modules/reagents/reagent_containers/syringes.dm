@@ -11,7 +11,7 @@
 	icon = 'icons/obj/syringe.dmi'
 	item_state = "syringe_0"
 	icon_state = "0"
-	matter = list("glass" = 150)
+	matter = list(MAT_GLASS = 150)
 	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = null
 	volume = 15
@@ -24,6 +24,8 @@
 	var/visible_name = "a syringe"
 	var/time = 30
 	var/drawing = 0
+	drop_sound = 'sound/items/drop/glass.ogg'
+	pickup_sound = 'sound/items/pickup/glass.ogg'
 
 /obj/item/reagent_containers/syringe/on_reagent_change()
 	update_icon()
@@ -161,9 +163,9 @@
 				return
 
 			var/mob/living/carbon/human/H = target
-			var/obj/item/organ/external/affected //VOREStation Edit - Moved this outside this if
+			var/obj/item/organ/external/affected
 			if(istype(H))
-				affected = H.get_organ(user.zone_sel.selecting) //VOREStation Edit - See above comment.
+				affected = H.get_organ(user.zone_sel.selecting)
 				if(!affected)
 					to_chat(user, "<span class='danger'>\The [H] is missing that limb!</span>")
 					return
@@ -224,37 +226,10 @@
 			else
 				to_chat(user, "<span class='notice'>The syringe is empty.</span>")
 
-//		dirty(target,affected) //VOREStation Add -- Removed by Request
+			dirty(target,affected) //Reactivated this feature per feedback and constant requests from players. If this proves to be utter crap we'll adjust the numbers before removing outright
 
 	return
-/* VOREStation Edit - See syringes_vr.dm
-/obj/item/reagent_containers/syringe/update_icon()
-	overlays.Cut()
 
-	if(mode == SYRINGE_BROKEN)
-		icon_state = "broken"
-		return
-
-	var/rounded_vol = round(reagents.total_volume, round(reagents.maximum_volume / 3))
-	if(ismob(loc))
-		var/injoverlay
-		switch(mode)
-			if (SYRINGE_DRAW)
-				injoverlay = "draw"
-			if (SYRINGE_INJECT)
-				injoverlay = "inject"
-		overlays += injoverlay
-	icon_state = "[rounded_vol]"
-	item_state = "syringe_[rounded_vol]"
-
-	if(reagents.total_volume)
-		filling = image('icons/obj/reagentfillings.dmi', src, "syringe10")
-
-		filling.icon_state = "syringe[rounded_vol]"
-
-		filling.color = reagents.get_color()
-		overlays += filling
-*/
 /obj/item/reagent_containers/syringe/proc/syringestab(mob/living/carbon/target as mob, mob/living/carbon/user as mob)
 	if(istype(target, /mob/living/carbon/human))
 
@@ -333,45 +308,37 @@
 	name = "Syringe (inaprovaline)"
 	desc = "Contains inaprovaline - used to stabilize patients."
 
-/obj/item/reagent_containers/syringe/inaprovaline/Initialize()
+/obj/item/reagent_containers/syringe/inaprovaline/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("inaprovaline", 15)
-	//mode = SYRINGE_INJECT //VOREStation Edit - Starts capped
-	//update_icon()
 
 /obj/item/reagent_containers/syringe/antitoxin
 	name = "Syringe (anti-toxin)"
 	desc = "Contains anti-toxins."
 
-/obj/item/reagent_containers/syringe/antitoxin/Initialize()
+/obj/item/reagent_containers/syringe/antitoxin/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("anti_toxin", 15)
-	//mode = SYRINGE_INJECT //VOREStation Edit - Starts capped
-	//update_icon()
 
 /obj/item/reagent_containers/syringe/antiviral
 	name = "Syringe (spaceacillin)"
 	desc = "Contains antiviral agents."
 
-/obj/item/reagent_containers/syringe/antiviral/Initialize()
+/obj/item/reagent_containers/syringe/antiviral/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("spaceacillin", 15)
-	//mode = SYRINGE_INJECT //VOREStation Edit - Starts capped
-	//update_icon()
 
 /obj/item/reagent_containers/syringe/drugs
 	name = "Syringe (drugs)"
 	desc = "Contains aggressive drugs meant for torture."
 
-/obj/item/reagent_containers/syringe/drugs/Initialize()
+/obj/item/reagent_containers/syringe/drugs/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("space_drugs",  5)
 	reagents.add_reagent("mindbreaker",  5)
 	reagents.add_reagent("cryptobiolin", 5)
-	//mode = SYRINGE_INJECT //VOREStation Edit - Starts capped
-	//update_icon()
 
-/obj/item/reagent_containers/syringe/ld50_syringe/choral/Initialize()
+/obj/item/reagent_containers/syringe/ld50_syringe/choral/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("chloralhydrate", 50)
 	mode = SYRINGE_INJECT
@@ -381,7 +348,6 @@
 	name = "Syringe (anabolic steroids)"
 	desc = "Contains drugs for muscle growth."
 
-/obj/item/reagent_containers/syringe/steroid/Initialize()
-	..()
-	//reagents.add_reagent("adrenaline",5) //VOREStation Edit - No thanks.
+/obj/item/reagent_containers/syringe/steroid/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("hyperzine",10)

@@ -33,7 +33,8 @@ two tiles on initialization, and which way a cliff is facing may change during m
 	opacity = FALSE
 	climbable = TRUE
 	climb_delay = 10 SECONDS
-	block_turf_edges = TRUE // Don't want turf edges popping up from the cliff edge.
+	// TODO: IMPLEMENT THIS AGAIN, this was done in a horrifically slow and stupid way
+	// block_turf_edges = TRUE // Don't want turf edges popping up from the cliff edge.
 	register_as_dangerous_object = TRUE
 
 	var/icon_variant = null // Used to make cliffs less repeative by having a selection of sprites to display.
@@ -65,8 +66,8 @@ two tiles on initialization, and which way a cliff is facing may change during m
 /obj/structure/cliff/bottom
 	bottom = TRUE
 
-/obj/structure/cliff/automatic/Initialize()
-	..()
+/obj/structure/cliff/automatic/Initialize(mapload)
+	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 
 // Paranoid about the maploader, direction is very important to cliffs, since they may get bigger if initialized while facing NORTH.
@@ -114,7 +115,7 @@ two tiles on initialization, and which way a cliff is facing may change during m
 
 	var/subtraction_icon_state = "[icon_state]-subtract"
 	var/cache_string = "[icon_state]_[T.icon]_[T.icon_state]"
-	if(T && subtraction_icon_state in icon_states(icon))
+	if(T && (subtraction_icon_state in icon_states(icon)))
 		cut_overlays()
 		// If we've made the same icon before, just recycle it.
 		if(cache_string in GLOB.cliff_icon_cache)
@@ -160,14 +161,14 @@ two tiles on initialization, and which way a cliff is facing may change during m
 		return FALSE
 
 	var/turf/T = get_turf(L)
-	if(T && get_dir(T, loc) & reverse_dir[dir]) // dir points 'up' the cliff, e.g. cliff pointing NORTH will cause someone to fall if moving SOUTH into it.
+	if(T && get_dir(T, loc) & GLOB.reverse_dir[dir]) // dir points 'up' the cliff, e.g. cliff pointing NORTH will cause someone to fall if moving SOUTH into it.
 		return TRUE
 	return FALSE
 
 /obj/structure/cliff/proc/fall_off_cliff(mob/living/L)
 	if(!istype(L))
 		return FALSE
-	var/turf/T = get_step(src, reverse_dir[dir])
+	var/turf/T = get_step(src, GLOB.reverse_dir[dir])
 	var/displaced = FALSE
 
 	if(dir in list(EAST, WEST)) // Apply an offset if flying sideways, to help maintain the illusion of depth.
@@ -179,7 +180,7 @@ two tiles on initialization, and which way a cliff is facing may change during m
 			displaced = TRUE
 
 	if(istype(T))
-		visible_message(span("danger", "\The [L] falls off \the [src]!"))
+		visible_message(SPAN_DANGER("\The [L] falls off \the [src]!"))
 		L.forceMove(T)
 
 		// Do the actual hurting. Double cliffs do halved damage due to them most likely hitting twice.
@@ -187,7 +188,7 @@ two tiles on initialization, and which way a cliff is facing may change during m
 		if(istype(L.buckled, /obj/vehicle)) // People falling off in vehicles will take less damage, but will damage the vehicle severely.
 			var/obj/vehicle/vehicle = L.buckled
 			vehicle.adjust_health(40 * harm)
-			to_chat(L, span("warning", "\The [vehicle] absorbs some of the impact, damaging it."))
+			to_chat(L, SPAN_WARNING( "\The [vehicle] absorbs some of the impact, damaging it."))
 			harm /= 2
 
 		playsound(L, 'sound/effects/break_stone.ogg', 70, 1)
@@ -199,12 +200,12 @@ two tiles on initialization, and which way a cliff is facing may change during m
 		sleep(fall_time) // A brief delay inbetween the two sounds helps sell the 'ouch' effect.
 		playsound(L, "punch", 70, 1)
 		shake_camera(L, 1, 1)
-		visible_message(span("danger", "\The [L] hits the ground!"))
+		visible_message(SPAN_DANGER("\The [L] hits the ground!"))
 
 		// The bigger they are, the harder they fall.
 		// They will take at least 20 damage at the minimum, and tries to scale up to 40% of their max health.
 		// This scaling is capped at 100 total damage, which occurs if the thing that fell has more than 250 health.
-		var/damage = between(20, L.getMaxHealth() * 0.4, 100)
+		var/damage = clamp( L.getMaxHealth() * 0.4, 20,  100)
 		var/target_zone = ran_zone()
 		var/blocked = L.run_armor_check(target_zone, "melee") * harm
 		var/soaked = L.get_armor_soak(target_zone, "melee") * harm
@@ -214,7 +215,7 @@ two tiles on initialization, and which way a cliff is facing may change during m
 		// Now fall off more cliffs below this one if they exist.
 		var/obj/structure/cliff/bottom_cliff = locate() in T
 		if(bottom_cliff)
-			visible_message(span("danger", "\The [L] rolls down towards \the [bottom_cliff]!"))
+			visible_message(SPAN_DANGER("\The [L] rolls down towards \the [bottom_cliff]!"))
 			sleep(5)
 			bottom_cliff.fall_off_cliff(L)
 
@@ -229,7 +230,7 @@ two tiles on initialization, and which way a cliff is facing may change during m
 		if(held && istype(held, /obj/item/pickaxe/icepick))
 			return ..() //climb rock wall with ice pick. Makes sense.
 
-	to_chat(user, span("warning", "\The [src] is too steep to climb unassisted."))
+	to_chat(user, SPAN_WARNING( "\The [src] is too steep to climb unassisted."))
 	return FALSE
 
 // This tells AI mobs to not be dumb and step off cliffs willingly.

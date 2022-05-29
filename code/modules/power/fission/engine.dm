@@ -19,7 +19,7 @@
 	var/warning_delay = 20
 	var/meltwarned = 0
 	var/lastwarning = 0
-	var/cutoff_temp = 600
+	var/cutoff_temp = 1200
 	var/rod_capacity = 9
 	var/mapped_in = 0
 	var/repairing = 0
@@ -34,25 +34,25 @@
 	var/list/obj/machinery/atmospherics/pipe/pipes
 	var/obj/item/radio/radio
 
-/obj/machinery/power/fission/New()
+/obj/machinery/power/fission/Initialize(mapload, newdir)
 	. = ..()
+	uid = gl_uid++
 	rods = new()
 	pipes = new()
-	radio = new /obj/item/radio{channels=list("Engineering")
-		icon = 'icons/obj/robot_component.dmi'
-		icon_state = "radio"}(src)
-	if(mapped_in)
-		anchor()
+	radio = new /obj/item/radio(src)
+	radio.icon = 'icons/obj/robot_component.dmi'
+	radio.icon_state = "radio"
+	radio.channels = list("Engineering")
 
 /obj/machinery/power/fission/Destroy()
-	for(var/i=1,i<=rods.len,i++)
-		eject_rod(rods[i])
+	for(var/rod in rods) // assume the rods are valid.
+		eject_rod(rod)
 	rods = null
 	pipes = null
-	qdel(radio)
-	. = ..()
+	QDEL_NULL(radio)
+	return ..()
 
-/obj/machinery/power/fission/process()
+/obj/machinery/power/fission/process(delta_time)
 	var/turf/L = loc
 
 	if(isnull(L))		// We have a null turf...something is wrong, stop processing this entity.
@@ -98,7 +98,7 @@
 
 	if(temperature > max_temp && health > 0 && max_temp > 0) // Overheating, reduce structural integrity, emit more rads.
 		health = max(0, health - (temperature / max_temp))
-		health = between(0, health, max_health)
+		health = clamp( health, 0,  max_health)
 		if(health < 1)
 			go_nuclear()
 
@@ -106,49 +106,20 @@
 	var/power = (decay_heat / REACTOR_RADS_TO_MJ) * max(healthmul, 0.1)
 	SSradiation.radiate(src, max(power * REACTOR_RADIATION_MULTIPLIER, 0))
 
-/obj/machinery/power/fission/attack_hand(mob/user as mob)
-	ui_interact(user)
+/obj/machinery/power/fission/attack_hand(mob/user)
+	nano_ui_interact(user)
 
-/obj/machinery/power/fission/attack_robot(mob/user as mob)
-	ui_interact(user)
+/obj/machinery/power/fission/attack_robot(mob/user)
+	nano_ui_interact(user)
 
-/obj/machinery/power/fission/attack_ai(mob/user as mob)
-	ui_interact(user)
+/obj/machinery/power/fission/attack_ai(mob/user)
+	nano_ui_interact(user)
 
-/obj/machinery/power/fission/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	if(!src.powered())
+/obj/machinery/power/fission/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
+	if(!powered() || !anchored)
 		return
 
-	var/data[0]
-
-	data["integrity_percentage"] = round(get_integrity())
-	var/datum/gas_mixture/env = null
-	if(!isnull(src.loc) && !istype(src.loc, /turf/space))
-		env = src.loc.return_air()
-
-	if(!env)
-		data["ambient_temp"] = 0
-		data["ambient_pressure"] = 0
-	else
-		data["ambient_temp"] = round(env.temperature)
-		data["ambient_pressure"] = round(env.return_pressure())
-
-	data["core_temp"] = round(temperature)
-	data["max_temp"] = round(max_temp)
-	data["cutoff_point"] = cutoff_temp
-
-	data["rods"] = new /list(rods.len)
-	for(var/i=1,i<=rods.len,i++)
-		var/obj/item/fuelrod/rod = rods[i]
-		var/roddata[0]
-		roddata["rod"] = "\ref[rod]"
-		roddata["name"] = rod.name
-		roddata["integrity_percentage"] = round(between(0, rod.integrity, 100))
-		roddata["life_percentage"] = round(between(0, rod.life, 100))
-		roddata["heat"] = round(rod.temperature)
-		roddata["melting_point"] = rod.melting_point
-		roddata["insertion"] = round(rod.insertion * 100)
-		data["rods"][i] = roddata
+	var/data = nuke_ui_data()
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
@@ -156,6 +127,46 @@
 		ui.set_initial_data(data)
 		ui.open()
 		ui.set_auto_update(1)
+
+/obj/machinery/power/fission/proc/nuke_ui_data(need_power = FALSE)
+	var/data[0]
+
+	data["integrity_percentage"] = round(get_integrity())
+	data["core_temp"] = round(temperature)
+	data["max_temp"] = round(max_temp)
+	if(need_power && !powered())
+		data["powered"] = 0
+	else
+		if(need_power)
+			data["powered"] = 1
+
+		var/datum/gas_mixture/env = null
+		if(!isnull(src.loc) && !istype(src.loc, /turf/space))
+			env = src.loc.return_air()
+
+		if(!env)
+			data["ambient_temp"] = 0
+			data["ambient_pressure"] = 0
+		else
+			data["ambient_temp"] = round(env.temperature)
+			data["ambient_pressure"] = round(env.return_pressure())
+
+		data["cutoff_point"] = cutoff_temp
+
+		data["rods"] = new /list(rods.len)
+		for(var/i=1,i<=rods.len,i++)
+			var/obj/item/fuelrod/rod = rods[i]
+			var/roddata[0]
+			roddata["rod"] = "\ref[rod]"
+			roddata["name"] = rod.name
+			roddata["integrity_percentage"] = round(clamp( rod.integrity, 0,  100))
+			roddata["life_percentage"] = round(clamp( rod.life, 0,  100))
+			roddata["heat"] = round(rod.temperature)
+			roddata["melting_point"] = rod.melting_point
+			roddata["insertion"] = round(rod.insertion * 100)
+			data["rods"][i] = roddata
+
+	return data
 
 /obj/machinery/power/fission/Topic(href,href_list)
 	if(..())
@@ -165,18 +176,18 @@
 
 	if(href_list["rod_eject"])
 		var/obj/item/fuelrod/rod = locate(href_list["rod_eject"])
-		if(istype(rod))
+		if(istype(rod) && rod.loc == src)
 			eject_rod(rod)
 
 	if(href_list["rod_insertion"])
 		var/obj/item/fuelrod/rod = locate(href_list["rod_insertion"])
 		if(istype(rod) && rod.loc == src)
 			var/new_insersion = input(usr,"Enter new insertion (0-100)%","Insertion control",rod.insertion * 100) as num
-			rod.insertion = between(0, new_insersion / 100, 1)
+			rod.insertion = clamp( new_insersion / 100, 0,  1)
 
 	if(href_list["cutoff_point"])
 		var/new_cutoff = input(usr,"Enter new cutoff point in Kelvin","Cutoff point",cutoff_temp) as num
-		cutoff_temp = between(0, new_cutoff, max_temp)
+		cutoff_temp = clamp( new_cutoff, 0,  max_temp)
 		if(cutoff_temp == 0)
 			message_admins("[key_name(usr)] switched off auto shutdown on [src]",0,1)
 			log_game("[src] auto shutdown was switched off by [key_name(usr)]")
@@ -184,7 +195,7 @@
 	usr.set_machine(src)
 	src.add_fingerprint(usr)
 
-/obj/machinery/power/fission/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/power/fission/attackby(obj/item/W , mob/user)
 	add_fingerprint(user)
 	if(exploded)
 		return ..()
@@ -225,8 +236,7 @@
 		if(rods.len == 0)
 			to_chat(user, "<span class='notice'>There's nothing left to remove.</span>")
 			return
-		for(var/i=1,i<=rods.len,i++)
-			var/obj/item/fuelrod/rod = rods[i]
+		for(var/obj/item/fuelrod/rod in rods)
 			if(rod.health == 0 || rod.life == 0)
 				to_chat(user, "<span class='notice'>You carefully start removing \the [rod] from \the [src].</span>")
 				if(do_after(user, 40))
@@ -248,7 +258,7 @@
 		user.visible_message("<span class='warning'>\The [user.name] begins repairing \the [src].</span>", \
 			"<span class='notice'>You start repairing \the [src].</span>")
 		if(do_after(user, 20 * WT.toolspeed, target = src) && WT.isOn())
-			health = between(1, health + 10, max_health)
+			health = clamp( health + 10, 1,  max_health)
 		repairing = 0
 		return
 
@@ -271,12 +281,12 @@
 	var/our_heatcap = heat_capacity()
 	var/share_heatcap = sharer.heat_capacity()
 
-	if((abs(temperature-sharer.temperature)>MINIMUM_TEMPERATURE_DELTA_TO_CONSIDER) && our_heatcap + share_heatcap)
+	if((abs(temperature-sharer.temperature)>MINIMUM_MEANINGFUL_TEMPERATURE_DELTA) && our_heatcap + share_heatcap)
 		var/new_temperature = ((temperature * our_heatcap) + (sharer.temperature * share_heatcap)) / (our_heatcap + share_heatcap)
 		temperature += (new_temperature - temperature)
-		temperature = between(0, temperature, REACTOR_TEMPERATURE_CUTOFF)
+		temperature = clamp( temperature, 0,  REACTOR_TEMPERATURE_CUTOFF)
 		sharer.temperature += (new_temperature - sharer.temperature)
-		sharer.temperature = between(0, sharer.temperature, REACTOR_TEMPERATURE_CUTOFF)
+		sharer.temperature = clamp( sharer.temperature, 0,  REACTOR_TEMPERATURE_CUTOFF)
 
 	env.merge(sharer)
 
@@ -299,7 +309,7 @@
 		return
 	var/new_temperature = total_energy / total_heatcap
 	temperature += (new_temperature - temperature) * gasefficiency // Add efficiency here, since there's no gas.remove for non-gas objects.
-	temperature = between(0, temperature, REACTOR_TEMPERATURE_CUTOFF)
+	temperature = clamp( temperature, 0,  REACTOR_TEMPERATURE_CUTOFF)
 
 	for(var/i=1,i<=pipes.len,i++)
 		var/obj/machinery/atmospherics/pipe/pipe = pipes[i]
@@ -309,10 +319,10 @@
 				var/datum/gas_mixture/removed = env.remove(gasefficiency * env.total_moles)
 				if(!isnull(removed))
 					removed.temperature += (new_temperature - removed.temperature)
-					removed.temperature = between(0, removed.temperature, REACTOR_TEMPERATURE_CUTOFF)
+					removed.temperature = clamp( removed.temperature, 0,  REACTOR_TEMPERATURE_CUTOFF)
 				env.merge(removed)
 
-/obj/machinery/power/fission/proc/add_thermal_energy(var/thermal_energy)
+/obj/machinery/power/fission/add_thermal_energy(var/thermal_energy)
 	if(mass < 1)
 		return 0
 
@@ -406,8 +416,7 @@
 			anchor()
 		var/decaying_rods = 0
 		var/decay_heat = 0
-		for(var/i=1,i<=rods.len,i++)
-			var/obj/item/fuelrod/rod = rods[i]
+		for(var/obj/item/fuelrod/rod in rods)
 			if(rod.life > 0 && rod.decay_heat > 0)
 				decay_heat += rod.tick_life()
 				decaying_rods++
@@ -465,35 +474,36 @@
 
 		// Some engines just want to see the world burn.
 		spawn(17 SECONDS)
-			for(var/i=1,i<=rods.len,i++)
-				var/obj/item/fuelrod/rod = rods[i]
-				rod.loc = L
-				rods = new()
-				pipes = new()
+			for(var/obj/item/fuelrod/rod in rods)
+				rod.forceMove(L)
+			rods.Cut()
+			pipes.Cut()
 			empulse(src, decaying_rods * 10, decaying_rods * 100)
 			var/explosion_power = 4 * decaying_rods
 			if(explosion_power < 1) // If you remove the rods but it's over heating, it's still gunna go bang, but without going nuclear.
 				explosion_power = 1
-			if(off_station)
-				explosion_power = explosion_power/3 //Bandaid fix. Reduces effectiveness of using a fission reactor for mining.
 			explosion(L, explosion_power, explosion_power * 2, explosion_power * 3, explosion_power * 4, 1)
+/*
+You're stupid.
+I'm commenting this out until I have time to make this less stupid.
 			if(L.z == 13) // underdark z but hardcoded
 				now_you_done_it(L)
 
 /obj/machinery/power/fission/proc/now_you_done_it(var/turf/L)
-	spawn(3 SECONDS)
+	sleep(3 SECONDS)
 	if (!istype(L))
 		return
 	var/tx = L.x - 3
 	var/ty = L.y - 3
 	var/turf/spider_spawn
-	for(var/iy = 0,iy < 6, iy++)
+	for(var/iy = 0, iy < 6, iy++)
 		for(var/ix = 0, ix < 6, ix++)
 			spider_spawn = locate(tx + ix, ty + iy, L.z)
 			if (!istype(spider_spawn, /turf/space))
 				for (var/i = 0, i < rand(1,3), i++)
 					var/a_problem = /obj/nuclear_mistake_spawner
 					new a_problem(spider_spawn)
+*/
 
 // i know this really shouldn't be the place to put all the code to this but travis is bitching out at me
 // see Citadel-Station-13/Citadel-Station-13-RP#2039 for why i had to shove all this in here
@@ -536,7 +546,7 @@
 	var/mob/living/simple_mob/my_mob
 	var/depleted = FALSE
 
-/obj/nuclear_mistake_spawner/Initialize()
+/obj/nuclear_mistake_spawner/Initialize(mapload)
 	. = ..()
 
 	if(!LAZYLEN(mobs_to_pick_from))
@@ -544,7 +554,7 @@
 		return INITIALIZE_HINT_QDEL
 	START_PROCESSING(SSobj, src)
 
-/obj/nuclear_mistake_spawner/process()
+/obj/nuclear_mistake_spawner/process(delta_time)
 	if(my_mob && my_mob.stat != DEAD)
 		return //No need
 

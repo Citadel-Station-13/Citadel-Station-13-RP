@@ -19,17 +19,20 @@
 	w_class = ITEMSIZE_TINY
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "rag"
-	amount_per_transfer_from_this = 5
-	possible_transfer_amounts = list(5)
-	volume = 10
+	amount_per_transfer_from_this = 3
+	possible_transfer_amounts = list(3)
+	volume = 4
 	can_be_placed_into = null
 	flags = OPENCONTAINER | NOBLUDGEON
 	unacidable = 0
+	drop_sound = 'sound/items/drop/cloth.ogg'
+	pickup_sound = 'sound/items/pickup/cloth.ogg'
+
 
 	var/on_fire = 0
 	var/burn_time = 20 //if the rag burns for too long it turns to ashes
 
-/obj/item/reagent_containers/glass/rag/Initialize()
+/obj/item/reagent_containers/glass/rag/Initialize(mapload)
 	. = ..()
 	update_name()
 
@@ -58,7 +61,8 @@
 	. = ..()
 	update_name()
 
-/obj/item/reagent_containers/glass/rag/proc/update_name()
+/obj/item/reagent_containers/glass/rag/update_name()
+	. = ..()
 	if(on_fire)
 		name = "burning [initial(name)]"
 	else if(reagents.total_volume)
@@ -102,41 +106,49 @@
 		if(do_after(user,30))
 			user.visible_message("\The [user] finishes wiping off the [A]!")
 			A.clean_blood()
-			if(istype(A, /turf) || istype(A, /obj/effect/decal/cleanable) || istype(A, /obj/effect/overlay) || istype(A, /obj/effect/rune))  //VOREStation Edit - "Allows rags to clean dirt from turfs"
+			if(istype(A, /turf) || istype(A, /obj/effect/decal/cleanable) || istype(A, /obj/effect/overlay) || istype(A, /obj/effect/rune)) //Allows rags to clean dirt from turfs
 				var/turf/T = get_turf(A)
 				if(T)
-					T.clean(src, user) //VOREStation Edit End
+					T.clean(src, user)
 
 /obj/item/reagent_containers/glass/rag/attack(atom/target as obj|turf|area, mob/user as mob , flag)
-	if(isliving(target))
+	if(isliving(target)) //Leaving this as isliving.
 		var/mob/living/M = target
-		if(on_fire)
-			user.visible_message("<span class='danger'>\The [user] hits [target] with [src]!</span>",)
+		if(on_fire) //Check if rag is on fire, if so igniting them and stopping.
+			user.visible_message(SPAN_DANGER("\The [user] hits [target] with [src]!"))
 			user.do_attack_animation(src)
 			M.IgniteMob()
-		else if(reagents.total_volume)
-			if(user.zone_sel.selecting == O_MOUTH)
-				user.do_attack_animation(src)
-				user.visible_message(
-					"<span class='danger'>\The [user] smothers [target] with [src]!</span>",
-					"<span class='warning'>You smother [target] with [src]!</span>",
-					"You hear some struggling and muffled cries of surprise"
-					)
-
-				//it's inhaled, so... maybe CHEM_BLOOD doesn't make a whole lot of sense but it's the best we can do for now
-				reagents.trans_to_mob(target, amount_per_transfer_from_this, CHEM_BLOOD)
-				update_name()
+		else if(user.zone_sel.selecting == O_MOUTH) //Check player target location, provided the rag is not on fire. Then check if mouth is exposed.
+			if(ishuman(target)) //Added this since player species process reagents in majority of cases.
+				var/mob/living/carbon/human/H = target
+				if(H.head && (H.head.body_parts_covered & FACE)) //Check human head coverage.
+					to_chat(user, SPAN_WARNING("Remove their [H.head] first."))
+					return
+				else if(reagents.total_volume) //Final check. If the rag is not on fire and their face is uncovered, smother target.
+					user.do_attack_animation(src)
+					user.visible_message(
+						SPAN_DANGER("\The [user] smothers [target] with [src]!"),
+						SPAN_WARNING("You smother [target] with [src]!"),
+						"You hear some struggling and muffled cries of surprise"
+						)
+					//it's inhaled, so... maybe CHEM_BLOOD doesn't make a whole lot of sense but it's the best we can do for now
+					reagents.trans_to_mob(target, amount_per_transfer_from_this, CHEM_BLOOD)
+					update_name()
+				else
+					to_chat(user, SPAN_WARNING("You can't smother this creature."))
 			else
-				wipe_down(target, user)
-		return
-
-	return ..()
+				to_chat(user, SPAN_WARNING("You can't smother this creature."))
+		else
+			wipe_down(target, user)
+	else
+		wipe_down(target, user)
+	return
 
 /obj/item/reagent_containers/glass/rag/afterattack(atom/A as obj|turf|area, mob/user as mob, proximity)
 	if(!proximity)
 		return
 
-	if(istype(A, /obj/structure/reagent_dispensers) || istype(A, /obj/item/reagent_containers/glass/bucket) || istype(A, /obj/structure/mopbucket))  //VOREStation Edit - "Allows rags to be used on buckets and mopbuckets"
+	if(istype(A, /obj/structure/reagent_dispensers) || istype(A, /obj/item/reagent_containers/glass/bucket) || istype(A, /obj/structure/mopbucket))
 		if(!reagents.get_free_space())
 			to_chat(user, "<span class='warning'>\The [src] is already soaked.</span>")
 			return
@@ -207,7 +219,7 @@
 	update_name()
 	update_icon()
 
-/obj/item/reagent_containers/glass/rag/process()
+/obj/item/reagent_containers/glass/rag/process(delta_time)
 	if(!can_ignite())
 		visible_message("<span class='warning'>\The [src] burns out.</span>")
 		extinguish()

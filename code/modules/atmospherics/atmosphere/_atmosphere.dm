@@ -47,9 +47,17 @@
 
 	// Make sure base gases are at target pressure if it isn't already
 	if(gasmix.return_pressure() < base_target_pressure)
-		var/mult = base_target_pressure / gasmix.return_pressure()
-		for(var/gaspath in gaslist)
-			gaslist[gaspath] *= mult
+		// yeah you screwed up, redo the whole thing.
+		// screw lazy coders
+		var/moles = (base_target_pressure * CELL_VOLUME) / (R_IDEAL_GAS_EQUATION * gasmix.temperature)
+		gaslist.Cut()
+		var/total_moles_base
+		TOTAL_MOLES(base_gases, total_moles_base)
+		for(var/i in base_gases)
+			var/amount = base_gases[i]
+			var/ratio = amount / total_moles_base
+			var/actual = moles * ratio
+			gaslist[i] = actual
 
 	// Now let the random choices begin
 	if(length(normal_gases) && length(restricted_gases))

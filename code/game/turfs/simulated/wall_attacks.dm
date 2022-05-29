@@ -1,4 +1,5 @@
-
+// TODO: MAKE FALSEWALLS A F*CKING STRUCTURE
+// WHOEVER WROTE THIS IS HIGH
 //Interactions
 /turf/simulated/wall/proc/toggle_open(var/mob/user)
 
@@ -11,11 +12,9 @@
 		can_open = WALL_OPENING
 		//flick("[material.icon_base]fwall_opening", src)
 		density = 0
-		blocks_air = ZONE_BLOCKED
+		blocks_air = FALSE
 		update_icon()
 		update_air()
-		set_light(0)
-		src.blocks_air = 0
 		set_opacity(0)
 		for(var/turf/simulated/turf in loc)
 			air_master.mark_for_update(turf)
@@ -23,11 +22,9 @@
 		can_open = WALL_OPENING
 		//flick("[material.icon_base]fwall_closing", src)
 		density = 1
-		blocks_air = AIR_BLOCKED
+		blocks_air = TRUE
 		update_icon()
 		update_air()
-		set_light(1)
-		src.blocks_air = 1
 		set_opacity(1)
 		for(var/turf/simulated/turf in loc)
 			air_master.mark_for_update(turf)
@@ -36,13 +33,19 @@
 	update_icon()
 
 /turf/simulated/wall/proc/update_air()
+	update_thermal(src)
+	air_master.mark_for_update(src)
+	// old code left below because it's by time we had a hall of shame
+	// "turf in loc" on a turf
+	// you for real?
+/*
 	if(!air_master)
 		return
 
 	for(var/turf/simulated/turf in loc)
 		update_thermal(turf)
 		air_master.mark_for_update(turf)
-
+*/
 
 /turf/simulated/wall/proc/update_thermal(var/turf/simulated/source)
 	if(istype(source))
@@ -106,8 +109,33 @@
 		else
 			fail_smash(user)
 			return 1
+	if(iscarbon(user))
+		var/mob/living/carbon/M = user
+		switch(M.a_intent)
+			if(INTENT_HELP)
+				return
+			if(INTENT_DISARM, INTENT_GRAB)
+				try_touch(M, rotting)
+			if(INTENT_HARM)
+				//since only humans have organs_by_name but carbons still have intents this check only applies to humans
+				//it's hacky but it works
+				if(ishuman(user))
+					var/mob/living/carbon/human/H = user
+					var/obj/item/organ/external/E = H.organs_by_name[M.hand ? BP_L_HAND : BP_R_HAND]
+					if (!(E.is_usable()))
+						to_chat(user, SPAN_WARNING("You can't use that hand."))
+						return
+				if(rotting && !reinf_material)
+					M.visible_message(SPAN_DANGER("[M.name] punches \the [src] and it crumbles!"), SPAN_DANGER("You punch \the [src] and it crumbles!"))
+					dismantle_wall()
+					playsound(src, get_sfx("punch"), 20)
+				else
+					M.visible_message(SPAN_DANGER("[M.name] punches \the [src]!"), SPAN_DANGER("You punch \the [src]!"))
+					M.apply_damage(3, BRUTE, M.hand ? BP_L_HAND : BP_R_HAND)
+					playsound(src, get_sfx("punch"), 20)
 
-	try_touch(user, rotting)
+	else
+		try_touch(user, rotting)
 
 /turf/simulated/wall/attack_generic(var/mob/user, var/damage, var/attack_message)
 
@@ -158,8 +186,7 @@
 		if(T)
 			if(istype(T, /turf/simulated/open) || istype(T, /turf/space))
 				if(R.use(1)) // Cost of roofing tiles is 1:1 with cost to place lattice and plating
-					T.ReplaceWithLattice()
-					T.ChangeTurf(/turf/simulated/floor, preserve_outdoors = TRUE)
+					T.ChangeTurf(/turf/simulated/floor/plating, flags = CHANGETURF_PRESERVE_OUTDOORS)
 					playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
 					user.visible_message("<span class='notice'>[user] patches a hole in the ceiling.</span>", "<span class='notice'>You patch a hole in the ceiling.</span>")
 					expended_tile = TRUE
@@ -202,6 +229,12 @@
 		else if(istype(W, /obj/item/pickaxe/plasmacutter))
 			thermitemelt(user)
 			return
+
+		else if (istype(W, /obj/item/melee/thermalcutter))
+			var/obj/item/melee/thermalcutter/TC = W
+			if(TC.remove_fuel(0,user))
+				thermitemelt(user)
+				return
 
 		else if( istype(W, /obj/item/melee/energy/blade) )
 			var/obj/item/melee/energy/blade/EB = W
@@ -256,11 +289,24 @@
 			dismantle_sound = "sparks"
 			dismantle_verb = "slicing"
 			cut_delay *= 0.5
+		else if (istype(W, /obj/item/melee/thermalcutter))
+			var/obj/item/melee/thermalcutter/TC = W
+			if(!TC.isOn())
+				return
+			if(!TC.remove_fuel(0,user))
+				to_chat(user, "<span class='notice'>You need more fuel to complete this task.</span>")
+				return
+			dismantle_sound = 'sound/items/Welder.ogg'
+			dismantle_verb = "slicing"
+			cut_delay *= 0.5
 		else if(istype(W,/obj/item/pickaxe))
 			var/obj/item/pickaxe/P = W
-			dismantle_verb = P.drill_verb
-			dismantle_sound = P.drill_sound
-			cut_delay -= P.digspeed
+			if(!active)
+				return
+			else
+				dismantle_verb = P.drill_verb
+				dismantle_sound = P.drill_sound
+				cut_delay -= P.digspeed
 
 		if(dismantle_verb)
 
@@ -320,7 +366,19 @@
 						to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 						return
 				else if (istype(W, /obj/item/pickaxe/plasmacutter))
-					cut_cover = 1
+					if(!active)
+						return
+					else
+						cut_cover = 1
+				else if (istype(W, /obj/item/melee/thermalcutter))
+					var/obj/item/melee/thermalcutter/TC = W
+					if(!TC.isOn())
+						return
+					if(TC.remove_fuel(0,user))
+						cut_cover = 1
+					else
+						to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
+						return
 				if(cut_cover)
 					to_chat(user, "<span class='notice'>You begin slicing through the metal cover.</span>")
 					playsound(src, W.usesound, 100, 1)
@@ -373,7 +431,10 @@
 						to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 						return
 				else if(istype(W, /obj/item/pickaxe/plasmacutter))
-					cut_cover = 1
+					if(!active)
+						return
+					else
+						cut_cover = 1
 				if(cut_cover)
 					to_chat(user, "<span class='notice'>You begin slicing through the support rods.</span>")
 					playsound(src, W.usesound, 100, 1)
@@ -398,9 +459,4 @@
 	if(istype(W,/obj/item/frame))
 		var/obj/item/frame/F = W
 		F.try_build(src, user)
-		return
-
-	else if(!istype(W,/obj/item/rcd) && !istype(W, /obj/item/reagent_containers))
-		return attack_hand(user)
-
 

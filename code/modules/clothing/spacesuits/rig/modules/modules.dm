@@ -13,7 +13,7 @@
 	desc = "It looks pretty sciency."
 	icon = 'icons/obj/rig_modules.dmi'
 	icon_state = "module"
-	matter = list(DEFAULT_WALL_MATERIAL = 20000, "plastic" = 30000, "glass" = 5000)
+	matter = list(MAT_STEEL = 20000, MAT_PLASTIC = 30000, MAT_GLASS = 5000)
 
 	var/damage = 0
 	var/obj/item/rig/holder
@@ -54,15 +54,15 @@
 
 	var/list/stat_rig_module/stat_modules = new()
 
-/obj/item/rig_module/examine()
-	..()
+/obj/item/rig_module/examine(mob/user)
+	. = ..()
 	switch(damage)
 		if(0)
-			to_chat(usr, "It is undamaged.")
+			. += "It is undamaged."
 		if(1)
-			to_chat(usr, "It is badly damaged.")
+			. += "It is badly damaged."
 		if(2)
-			to_chat(usr, "It is almost completely destroyed.")
+			. += "It is almost completely destroyed."
 
 /obj/item/rig_module/attackby(obj/item/W as obj, mob/user as mob)
 
@@ -108,8 +108,8 @@
 		return
 	..()
 
-/obj/item/rig_module/New()
-	..()
+/obj/item/rig_module/Initialize(mapload)
+	. = ..()
 	if(suit_overlay_inactive)
 		suit_overlay = suit_overlay_inactive
 
@@ -174,13 +174,12 @@
 	return 1
 
 // Proc for toggling on active abilities.
-/obj/item/rig_module/proc/activate(var/skip_engage = 0) //VOREStation Edit - Allow us to skip the engage call.
-	//VOREStation Edit - Allow us to skip the engage call
+/obj/item/rig_module/proc/activate(var/skip_engage = 0) // Allow us to skip the engage call.
+	// Allow us to skip the engage call
 	if(active)
 		return 0
 	if(!skip_engage && !engage())
 		return 0
-	//VOREStation Edit End
 	active = 1
 
 	spawn(1)
@@ -217,7 +216,7 @@
 	return
 
 // Called by the hardsuit each rig process tick.
-/obj/item/rig_module/process()
+/obj/item/rig_module/process(delta_time)
 	if(active)
 		return active_power_cost
 	else
@@ -308,8 +307,8 @@
 /stat_rig_module/engage/CanUse()
 	return module.usable
 
-/stat_rig_module/select/New()
-	..()
+/stat_rig_module/select/Initialize(mapload)
+	. = ..()
 	name = "Select"
 	module_mode = "select"
 
@@ -319,8 +318,8 @@
 		return 1
 	return 0
 
-/stat_rig_module/charge/New()
-	..()
+/stat_rig_module/charge/Initialize(mapload)
+	. = ..()
 	name = "Change Charge"
 	module_mode = "select_charge_type"
 

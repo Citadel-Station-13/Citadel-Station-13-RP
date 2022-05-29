@@ -18,3 +18,15 @@
 	sheet_plural_name = "fluffs"
 	hardness = 60
 	weight = 20 //Strong as iron.
+
+/datum/material/darkglass
+	name = "darkglass"
+	display_name = "darkglass"
+	icon_base = "darkglass"
+	icon_colour = "#FFFFFF"
+
+/datum/material/fancyblack
+	name = "fancyblack"
+	display_name = "fancyblack"
+	icon_base = "fancyblack"
+	icon_colour = "#FFFFFF"

@@ -4,7 +4,7 @@
 	icon_state = "coilgun"
 	item_state = "coilgun"
 	icon = 'icons/obj/railgun.dmi'
-//	one_handed_penalty = 15
+	one_handed_penalty = 15
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4, TECH_ILLEGAL = 2, TECH_MAGNET = 4)
 	w_class = ITEMSIZE_LARGE
 
@@ -21,12 +21,12 @@
 	var/power_cost = 950                                       // Cost per fire, should consume almost an entire basic cell.
 	var/power_per_tick                                         // Capacitor charge per process(). Updated based on capacitor rating.
 
-/obj/item/gun/magnetic/New()
+/obj/item/gun/magnetic/Initialize(mapload)
 	START_PROCESSING(SSobj, src)
 	if(capacitor)
 		power_per_tick = (power_cost*0.15) * capacitor.rating
 	update_icon()
-	. = ..()
+	return ..()
 
 /obj/item/gun/magnetic/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -38,7 +38,7 @@
 /obj/item/gun/magnetic/get_cell()
 	return cell
 
-/obj/item/gun/magnetic/process()
+/obj/item/gun/magnetic/process(delta_time)
 	if(capacitor)
 		if(cell)
 			if(capacitor.charge < capacitor.max_charge && cell.checked_use(power_per_tick))
@@ -71,23 +71,21 @@
 		to_chat(user, "<span class='notice'>It has \a [loaded] loaded.</span>")
 
 /obj/item/gun/magnetic/examine(var/mob/user)
-	. = ..(user, 2)
-	if(.)
-		show_ammo(user)
+	. = ..()
+	show_ammo(user)
 
-		if(cell)
-			to_chat(user, "<span class='notice'>The installed [cell.name] has a charge level of [round((cell.charge/cell.maxcharge)*100)]%.</span>")
-		if(capacitor)
-			to_chat(user, "<span class='notice'>The installed [capacitor.name] has a charge level of [round((capacitor.charge/capacitor.max_charge)*100)]%.</span>")
+	if(cell)
+		. += "<span class='notice'>The installed [cell.name] has a charge level of [round((cell.charge/cell.maxcharge)*100)]%.</span>"
+	if(capacitor)
+		. += "<span class='notice'>The installed [capacitor.name] has a charge level of [round((capacitor.charge/capacitor.max_charge)*100)]%.</span>"
 
-		if(!cell || !capacitor)
-			to_chat(user, "<span class='notice'>The capacitor charge indicator is blinking <font color ='[COLOR_RED]'>red</font>. Maybe you should check the cell or capacitor.</span>")
+	if(!cell || !capacitor)
+		. += "<span class='notice'>The capacitor charge indicator is blinking <font color ='[COLOR_RED]'>red</font>. Maybe you should check the cell or capacitor.</span>"
+	else
+		if(capacitor.charge < power_cost)
+			. += "<span class='notice'>The capacitor charge indicator is <font color ='[COLOR_ORANGE]'>amber</font>.</span>"
 		else
-			if(capacitor.charge < power_cost)
-				to_chat(user, "<span class='notice'>The capacitor charge indicator is <font color ='[COLOR_ORANGE]'>amber</font>.</span>")
-			else
-				to_chat(user, "<span class='notice'>The capacitor charge indicator is <font color ='[COLOR_GREEN]'>green</font>.</span>")
-		return TRUE
+			. += "<span class='notice'>The capacitor charge indicator is <font color ='[COLOR_GREEN]'>green</font>.</span>"
 
 /obj/item/gun/magnetic/attackby(var/obj/item/thing, var/mob/user)
 
@@ -254,7 +252,7 @@
 
 	return new projectile_type(src)
 
-/obj/item/gun/magnetic/fuelrod/New()
+/obj/item/gun/magnetic/fuelrod/Initialize(mapload)
 	cell = new /obj/item/cell/high
 	capacitor = new /obj/item/stock_parts/capacitor
-	. = ..()
+	return ..()

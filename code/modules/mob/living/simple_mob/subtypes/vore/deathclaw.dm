@@ -8,8 +8,9 @@
 /mob/living/simple_mob/vore/aggressive/deathclaw
 	name = "deathclaw"
 	desc = "Big! Big! The size of three men! Claws as long as my forearm! Ripped apart! Ripped apart!"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/deathclaw)
 
-	icon_dead = "deathclaw-dead"
+	icon_dead = "deathclaw_dead"
 	icon_living = "deathclaw"
 	icon_state = "deathclaw"
 	icon = 'icons/mob/64x64.dmi'
@@ -37,6 +38,10 @@
 	mount_offset_x = 5
 	mount_offset_y = 30
 
+	randomized = TRUE
+	mod_min = 90
+	mod_max = 140
+
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/deathclaw
 
 // Activate Noms!
@@ -47,17 +52,6 @@
 	vore_min_size = RESIZE_SMALL
 	vore_pounce_chance = 0 // Beat them into crit before eating.
 	vore_icons = SA_ICON_LIVING
-
-/* //VOREStation AI Temporary Removal
-/mob/living/simple_animal/hostile/deathclaw/Login()
-	. = ..()
-	if(!riding_datum)
-		riding_datum = new /datum/riding/simple_animal(src)
-	verbs |= /mob/living/simple_animal/proc/animal_mount
-
-/mob/living/simple_animal/hostile/deathclaw/MouseDrop_T(mob/living/M, mob/living/user)
-	return
-*/
 
 /datum/ai_holder/simple_mob/melee/deathclaw
 	can_breakthrough = TRUE

@@ -11,15 +11,14 @@
 	These curious skeleton-folk react violently with oxygen, catching alight in the normal concentration needed for humans. \
 	Luckily, with the help of NT, they come equipped with specialised suits, keeping oxygen out and phoron in."
 	name_language = null // name randomisers are fucking weird
-	min_age = 18
 	max_age = 180
 	health_hud_intensity = 1.5
 	rarity_value = 5
 	blood_color = "#FC2BC5"
 
-	flags = NO_SCAN | NO_MINOR_CUT
+	flags = NO_SCAN | NO_MINOR_CUT | CONTAMINATION_IMMUNE
 	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
-	appearance_flags = HAS_EYE_COLOR
+	species_appearance_flags = HAS_EYE_COLOR
 
 	show_ssd = "completely motionless"
 
@@ -27,7 +26,7 @@
 	hunger_factor = 0
 	metabolic_rate = 1
 
-	virus_immune = 1
+	virus_immune = TRUE
 
 	brute_mod =     1
 	burn_mod =      1.2
@@ -73,7 +72,7 @@
 /datum/species/plasmaman/handle_environment_special(var/mob/living/carbon/human/H)
 	var/turf/T = H.loc
 	if(!T) return
-	var/datum/gas_mixture/environment = T.return_air()
+	var/datum/gas_mixture/environment = T.copy_cell_volume()
 	if(!environment) return
 	var/enviroment_bad = 0 //In case they're ever set on fire while wearing a spacesuit, we don't want the message that they're reacting with the atmosphere.
 
@@ -96,9 +95,12 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath(H), slot_wear_mask)
 
 	switch(H.mind?.assigned_role)
-		if("Security Officer","Detective")
+		if("Security Officer")
 			suit=/obj/item/clothing/suit/space/plasman/sec
 			helm=/obj/item/clothing/head/helmet/space/plasman/sec
+		if("Detective")
+			suit=/obj/item/clothing/suit/space/plasman/sec/detective
+			helm=/obj/item/clothing/head/helmet/space/plasman/sec/detective
 		if("Warden")
 			suit=/obj/item/clothing/suit/space/plasman/sec/warden
 			helm=/obj/item/clothing/head/helmet/space/plasman/sec
@@ -162,6 +164,9 @@
 		if("Internal Affairs Agent","Command Secretary")
 			suit=/obj/item/clothing/suit/space/plasman/fancy
 			helm=/obj/item/clothing/head/helmet/space/plasman/fancy
+		if("Visitor")
+			suit=/obj/item/clothing/suit/space/plasman/assistant
+			helm=/obj/item/clothing/head/helmet/space/plasman/assistant
 		if("Clown")
 			suit=/obj/item/clothing/suit/space/plasman/clown
 			helm=/obj/item/clothing/head/helmet/space/plasman/clown
@@ -194,4 +199,3 @@
 				H.ExtinguishMob()
 			H.equip_to_slot_or_del(new /obj/item/tank/vox(H), slot_s_store)
 			H.internal = H.s_store
-			H.internals.icon_state = "internal1"

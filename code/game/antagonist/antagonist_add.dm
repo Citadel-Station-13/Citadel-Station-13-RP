@@ -31,9 +31,9 @@
 		player.current.verbs |= faction_verb
 
 	spawn(1 SECOND) //Added a delay so that this should pop up at the bottom and not the top of the text flood the new antag gets.
-		player.current << "<span class='notice'>Once you decide on a goal to pursue, you can optionally display it to \
+		to_chat(player.current, "<span class='notice'>Once you decide on a goal to pursue, you can optionally display it to \
 			everyone at the end of the shift with the <b>Set Ambition</b> verb, located in the IC tab.  You can change this at any time, \
-			and it otherwise has no bearing on your round.</span>"
+			and it otherwise has no bearing on your round.</span>")
 	player.current.verbs |= /mob/living/proc/write_ambition
 
 	if(can_speak_aooc)
@@ -58,7 +58,7 @@
 		faction_members -= player
 		player.special_role = null
 		update_icons_removed(player)
-		ENABLE_BITFIELD(player.current.hud_updateflag, SPECIALROLE_HUD)
+		player.current.update_hud_antag()
 		if(!is_special_character(player))
 			player.current.verbs -= /mob/living/proc/write_ambition
 			player.current.client.verbs -= /client/proc/aooc

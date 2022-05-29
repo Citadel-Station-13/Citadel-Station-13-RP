@@ -33,8 +33,8 @@ RSF
 	w_class = ITEMSIZE_NORMAL
 
 /obj/item/rsf/examine(mob/user)
-	if(..(user, 0))
-		to_chat(user,"<span class='notice'>It currently holds [stored_matter]/30 fabrication-units.</span>")
+	. = ..()
+	. += "<span class='notice'>It currently holds [stored_matter]/30 fabrication-units.</span>"
 
 /obj/item/rsf/attackby(obj/item/W as obj, mob/user as mob)
 	..()
@@ -112,38 +112,38 @@ RSF
 	if(!istype(A, /obj/structure/table) && !istype(A, /turf/simulated/floor))
 		return
 
-	playsound(src.loc, 'sound/machines/click.ogg', 10, 1)
+	playsound(src, 'sound/machines/click.ogg', 10, 1)
 	var/used_energy = 0
 	var/obj/product
+	var/turf/target = get_turf(A)
 
 	switch(mode)
 		if(1)
-			product = new /obj/item/clothing/mask/smokable/cigarette()
+			product = new /obj/item/clothing/mask/smokable/cigarette(target)
 			used_energy = 10
 		if(2)
-			product = new glasstype()
+			product = new glasstype(target)
 			used_energy = 50
 		if(3)
-			product = new /obj/item/reagent_containers/food/drinks/glass2/shot()
+			product = new /obj/item/reagent_containers/food/drinks/glass2/shot(target)
 			used_energy = 25
 		if(4)
-			product = new /obj/item/reagent_containers/food/drinks/glass2/wine()
+			product = new /obj/item/reagent_containers/food/drinks/glass2/wine(target)
 			used_energy = 25
 		if(5)
-			product = new /obj/item/paper()
+			product = new /obj/item/paper(target)
 			used_energy = 10
 		if(6)
-			product = new /obj/item/pen()
+			product = new /obj/item/pen(target)
 			used_energy = 50
 		if(7)
-			product = new /obj/item/storage/pill_bottle/dice()
+			product = new /obj/item/storage/pill_bottle/dice(target)
 			used_energy = 200
 		if(8)
-			product = new /obj/random/plushie() //dear god if this gets spammed i will commit die
+			product = new /obj/random/plushie(target) //dear god if this gets spammed i will commit die
 			used_energy = 1000
 
 	to_chat(user,"<span class='notice'>Dispensing [product ? product : "product"]...</span>")
-	product.loc = get_turf(A)
 
 	if(isrobot(user))
 		var/mob/living/silicon/robot/R = user

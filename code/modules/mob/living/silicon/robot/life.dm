@@ -9,7 +9,7 @@
 
 	//Status updates, death etc.
 	clamp_values()
-	handle_regular_status_updates()
+	handle_regular_UI_updates()
 	handle_actions()
 	handle_instability()
 	// For some reason borg Life() doesn't call ..()
@@ -32,7 +32,7 @@
 //	SetStunned(min(stunned, 30))
 	SetParalysis(min(paralysis, 30))
 //	SetWeakened(min(weakened, 20))
-	sleeping = 0
+	SetSleeping(0)
 	adjustBruteLoss(0)
 	adjustToxLoss(0)
 	adjustOxyLoss(0)
@@ -40,7 +40,7 @@
 
 /mob/living/silicon/robot/proc/use_power()
 	// Debug only
-	// world << "DEBUG: life.dm line 35: cyborg use_power() called at tick [controller_iteration]"
+	// to_chat(world, "DEBUG: life.dm line 35: cyborg use_power() called at tick [controller_iteration]")
 	used_power_this_tick = 0
 	for(var/V in components)
 		var/datum/robot_component/C = components[V]
@@ -66,10 +66,10 @@
 			lights_on = 0
 			set_light(0)
 
-/mob/living/silicon/robot/handle_regular_status_updates()
+/mob/living/silicon/robot/handle_regular_UI_updates()
 
 	if(src.camera && !scrambledcodes)
-		if(src.stat == 2 || wires.IsIndexCut(BORG_WIRE_CAMERA))
+		if(src.stat == 2 || wires.is_cut(WIRE_BORG_CAMERA))
 			src.camera.set_status(0)
 		else
 			src.camera.set_status(1)
@@ -78,17 +78,14 @@
 
 	if(src.sleeping)
 		Paralyse(3)
-		src.sleeping--
-
-	//if(src.resting) // VOREStation edit. Our borgos would rather not.
-	//	Weaken(5)
+		AdjustSleeping(-1)
 
 	if(health < config_legacy.health_threshold_dead && src.stat != 2) //die only once
 		death()
 
 	if (src.stat != 2) //Alive.
 		if (src.paralysis || src.stunned || src.weakened || !src.has_power) //Stunned etc.
-			src.stat = 1
+			src.set_stat(UNCONSCIOUS)
 			if (src.stunned > 0)
 				AdjustStunned(-1)
 			if (src.weakened > 0)
@@ -100,7 +97,7 @@
 				src.blinded = 0
 
 		else	//Not stunned.
-			src.stat = 0
+			src.set_stat(CONSCIOUS)
 
 		AdjustConfused(-1)
 
@@ -109,7 +106,7 @@
 
 	if (src.stuttering) src.stuttering--
 
-	if (src.eye_blind)
+	if (src.eye_blind || HAS_TRAIT(src, TRAIT_BLIND))
 		src.AdjustBlinded(-1)
 		src.blinded = 1
 
@@ -153,49 +150,25 @@
 /mob/living/silicon/robot/handle_regular_hud_updates()
 	var/fullbright = FALSE
 	var/seemeson = FALSE
-	if (src.stat == 2 || (XRAY in mutations) || (src.sight_mode & BORGXRAY))
-		src.sight |= SEE_TURFS
-		src.sight |= SEE_MOBS
-		src.sight |= SEE_OBJS
-		src.see_in_dark = 8
-		src.see_invisible = SEE_INVISIBLE_MINIMUM
-	else if ((src.sight_mode & BORGMESON) && (src.sight_mode & BORGTHERM))
-		src.sight |= SEE_TURFS
-		src.sight |= SEE_MOBS
-		src.see_in_dark = 8
-		see_invisible = SEE_INVISIBLE_MINIMUM
+	SetSeeInDarkSelf(8)
+	SetSeeInvisibleSelf(SEE_INVISIBLE_LIVING)
+	if(stat == 2)
+		AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
+		SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
+	if((XRAY in src.mutations) || (sight_mode & BORGXRAY))
+		AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
 		fullbright = TRUE
-	else if (src.sight_mode & BORGMESON)
-		src.sight |= SEE_TURFS
-		src.see_in_dark = 8
-		see_invisible = SEE_INVISIBLE_MINIMUM
+	if(sight_mode & BORGMESON)
+		AddSightSelf(SEE_TURFS)
 		fullbright = TRUE
 		seemeson = TRUE
-	else if (src.sight_mode & BORGMATERIAL)
-		src.sight |= SEE_OBJS
-		src.see_in_dark = 8
-		see_invisible = SEE_INVISIBLE_MINIMUM
-		fullbright = TRUE
-	else if (src.sight_mode & BORGTHERM)
-		src.sight |= SEE_MOBS
-		src.see_in_dark = 8
-		src.see_invisible = SEE_INVISIBLE_LEVEL_TWO
-		fullbright = TRUE
-	else if (!seedarkness)
-		src.sight &= ~SEE_MOBS
-		src.sight &= ~SEE_TURFS
-		src.sight &= ~SEE_OBJS
-		src.see_in_dark = 8
-		src.see_invisible = SEE_INVISIBLE_NOLIGHTING
-	else if (src.stat != 2)
-		src.sight &= ~SEE_MOBS
-		src.sight &= ~SEE_TURFS
-		src.sight &= ~SEE_OBJS
-		src.see_in_dark = 8 			 // see_in_dark means you can FAINTLY see in the dark, humans have a range of 3 or so, tajaran have it at 8
-		src.see_invisible = SEE_INVISIBLE_LIVING // This is normal vision (25), setting it lower for normal vision means you don't "see" things like darkness since darkness
-							 // has a "invisible" value of 15
-	plane_holder.set_vis(VIS_FULLBRIGHT,fullbright)
-	plane_holder.set_vis(VIS_MESONS,seemeson)
+	if(sight_mode & BORGMATERIAL)
+		AddSightSelf(SEE_OBJS)
+	if(sight_mode & BORGTHERM)
+		AddSightSelf(SEE_MOBS)
+
+	plane_holder.set_vis(VIS_FULLBRIGHT, fullbright)
+	plane_holder.set_vis(VIS_MESONS, seemeson)
 	..()
 
 	if (src.healths)
@@ -284,20 +257,25 @@
 
 	if(stat != 2)
 		if(blinded)
-			overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
+			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/scaled/blind)
 		else
 			clear_fullscreen("blind")
-			set_fullscreen(disabilities & NEARSIGHTED, "impaired", /obj/screen/fullscreen/impaired, 1)
-			set_fullscreen(eye_blurry, "blurry", /obj/screen/fullscreen/blurry)
-			set_fullscreen(druggy, "high", /obj/screen/fullscreen/high)
+		if(disabilities & NEARSIGHTED)
+			overlay_fullscreen("impaired", /atom/movable/screen/fullscreen/scaled/impaired, 1)
+		else
+			clear_fullscreen("impaired")
+		if(eye_blurry)
+			overlay_fullscreen("blurry", /atom/movable/screen/fullscreen/tiled/blurry)
+		else
+			clear_fullscreen("blurry")
+		if(druggy)
+			overlay_fullscreen("high", /atom/movable/screen/fullscreen/tiled/high)
+		else
+			clear_fullscreen("high")
 
-	if (src.machine)
-		if (src.machine.check_eye(src) < 0)
-			src.reset_view(null)
-	else
-		if(client && !client.adminobs)
-			reset_view(null)
-
+	if(IsRemoteViewing())
+		if(!machine || machine.check_eye(src) < 0)
+			reset_perspective()
 	return 1
 
 /mob/living/silicon/robot/proc/update_items()

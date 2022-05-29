@@ -3,10 +3,14 @@
 	name = "space helmet"
 	icon_state = "capspace"
 	desc = "A special helmet designed for work in a hazardous, low-pressure environment. Only for the most fashionable of military figureheads."
-	item_flags = 0
+	clothing_flags = 0
 	flags_inv = HIDEFACE|BLOCKHAIR
 	permeability_coefficient = 0.01
 	armor = list(melee = 65, bullet = 50, laser = 50,energy = 25, bomb = 50, bio = 100, rad = 50)
+	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	min_pressure_protection = 0 * ONE_ATMOSPHERE
+	max_pressure_protection = 10 * ONE_ATMOSPHERE
 
 //Captain's space suit This is not the proper path but I don't currently know enough about how this all works to mess with it.
 /obj/item/clothing/suit/armor/captain
@@ -16,7 +20,7 @@
 	w_class = ITEMSIZE_HUGE
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.02
-	item_flags = 0
+	clothing_flags = 0
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy, /obj/item/gun/projectile, /obj/item/ammo_magazine, /obj/item/ammo_casing, /obj/item/melee/baton,/obj/item/handcuffs)
 	slowdown = 1.5
@@ -24,6 +28,8 @@
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	min_pressure_protection = 0 * ONE_ATMOSPHERE
+	max_pressure_protection = 10 * ONE_ATMOSPHERE
 	siemens_coefficient = 0.7
 
 //Deathsquad suit
@@ -33,7 +39,7 @@
 	icon_state = "deathsquad"
 	item_state_slots = list(slot_r_hand_str = "syndicate-helm-black-red", slot_l_hand_str = "syndicate-helm-black-red")
 	armor = list(melee = 65, bullet = 55, laser = 35,energy = 20, bomb = 30, bio = 100, rad = 60)
-	item_flags = THICKMATERIAL
+	clothing_flags = THICKMATERIAL
 	flags_inv = BLOCKHAIR
 	siemens_coefficient = 0.6
 
@@ -44,7 +50,7 @@
 	icon_state = "beret_badge"
 	item_state_slots = list(slot_r_hand_str = "beret", slot_l_hand_str = "beret")
 	armor = list(melee = 65, bullet = 55, laser = 35,energy = 20, bomb = 30, bio = 30, rad = 30)
-	item_flags = 0
+	clothing_flags = 0
 	flags_inv = BLOCKHAIR
 	siemens_coefficient = 0.9
 
@@ -53,7 +59,7 @@
 	name = "Santa's hat"
 	desc = "Ho ho ho. Merrry X-mas!"
 	icon_state = "santahat"
-	item_flags = 0
+	clothing_flags = 0
 	flags_inv = BLOCKHAIR
 	body_parts_covered = HEAD
 
@@ -62,7 +68,7 @@
 	desc = "Festive!"
 	icon_state = "santa"
 	slowdown = 0
-	item_flags = 0
+	clothing_flags = 0
 	allowed = list(/obj/item) //for stuffing exta special presents
 
 //Space pirate outfit
@@ -71,7 +77,7 @@
 	desc = "Yarr."
 	icon_state = "pirate"
 	armor = list(melee = 60, bullet = 50, laser = 30,energy = 15, bomb = 30, bio = 30, rad = 30)
-	item_flags = 0
+	clothing_flags = 0
 	flags_inv = BLOCKHAIR
 	body_parts_covered = 0
 	siemens_coefficient = 0.9
@@ -99,4 +105,17 @@
 	name = "Emergency Softsuit"
 	icon_state = "syndicate-orange"
 	desc = "A thin, ungainly softsuit colored in blaze orange for rescuers to easily locate, looks pretty fragile."
+	slowdown = 4
+
+//Russian Emergency Suit
+/obj/item/clothing/head/helmet/space/emergency/russian
+	name = "Sovjet Emergency Space Helmet"
+	icon_state = "russian"
+	desc = "A simple helmet with a built in light, smells like mothballs."
+	flash_protection = FLASH_PROTECTION_NONE
+
+/obj/item/clothing/suit/space/emergency/russian
+	name = "Sovjet Emergency Softsuit"
+	icon_state = "russian"
+	desc = "A chunky antique softsuit distributed to members of the Indo-Russian Diaspora. After all this time, it looks pretty fragile."
 	slowdown = 4

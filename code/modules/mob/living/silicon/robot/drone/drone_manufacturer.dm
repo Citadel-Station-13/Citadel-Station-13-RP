@@ -7,22 +7,23 @@
 /obj/machinery/drone_fabricator
 	name = "drone fabricator"
 	desc = "A large automated factory for producing maintenance drones."
+	icon = 'icons/obj/machines/fabricators/industrial_fab.dmi'
+	icon_state = "industrial"
+	base_icon_state = "industrial"
+
 	appearance_flags = 0
 
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	active_power_usage = 5000
-
+	var/printing = FALSE
 	var/fabricator_tag = "Upper Level"
 	var/drone_progress = 0
 	var/produce_drones = 2
 	var/time_last_drone = 500
 	var/drone_type = /mob/living/silicon/robot/drone
-
-	icon = 'icons/obj/machines/drone_fab.dmi'
-	icon_state = "drone_fab_idle"
 
 /obj/machinery/drone_fabricator/derelict
 	name = "construction drone fabricator"
@@ -34,39 +35,48 @@
 	fabricator_tag = "Upper Level Mining"
 	drone_type = /mob/living/silicon/robot/drone/mining
 
-/obj/machinery/drone_fabricator/power_change()
-	..()
-	if (stat & NOPOWER)
-		icon_state = "drone_fab_nopower"
+/obj/machinery/drone_fabricator/update_icon_state()
+	. = ..()
+	if(machine_stat & NOPOWER || !produce_drones)
+		icon_state = "[base_icon_state]-off"
+	else if(printing)
+		icon_state = "[base_icon_state]-active"
+	else
+		icon_state = base_icon_state
 
-/obj/machinery/drone_fabricator/process()
+/obj/machinery/drone_fabricator/update_overlays()
+	. = ..()
+	cut_overlays()
+	if(panel_open)
+		add_overlay("[base_icon_state]-panel")
+
+/obj/machinery/drone_fabricator/process(delta_time)
 
 	if(SSticker.current_state < GAME_STATE_PLAYING)
 		return
 
-	if(stat & NOPOWER || !produce_drones)
-		if(icon_state != "drone_fab_nopower") icon_state = "drone_fab_nopower"
-		return
-
 	if(drone_progress >= 100)
-		icon_state = "drone_fab_idle"
+		printing = FALSE
+		update_appearance()
 		return
 
-	icon_state = "drone_fab_active"
+	printing = TRUE
 	var/elapsed = world.time - time_last_drone
 	drone_progress = round((elapsed/config_legacy.drone_build_time)*100)
 
 	if(drone_progress >= 100)
 		visible_message("\The [src] voices a strident beep, indicating a drone chassis is prepared.")
 
+	update_appearance()
+
 /obj/machinery/drone_fabricator/examine(mob/user)
-	..(user)
+	. = ..()
 	if(produce_drones && drone_progress >= 100 && istype(user,/mob/observer/dead) && config_legacy.allow_drone_spawn && count_drones() < config_legacy.max_maint_drones)
-		to_chat(user, "<BR><B>A drone is prepared. Select 'Join As Drone' from the Ghost tab to spawn as a maintenance drone.</B>")
+		. += "<BR><B>A drone is prepared. Select 'Join As Drone' from the Ghost tab to spawn as a maintenance drone.</B>"
 
 /obj/machinery/drone_fabricator/proc/create_drone(var/client/player)
 
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		return
 
 	if(!produce_drones || !config_legacy.allow_drone_spawn || count_drones() >= config_legacy.max_maint_drones)
@@ -133,8 +143,8 @@
 		return
 
 	var/list/all_fabricators = list()
-	for(var/obj/machinery/drone_fabricator/DF in machines)
-		if(DF.stat & NOPOWER || !DF.produce_drones)
+	for(var/obj/machinery/drone_fabricator/DF in GLOB.machines)
+		if(DF.machine_stat & NOPOWER || !DF.produce_drones)
 			continue
 		if(DF.drone_progress >= 100)
 			all_fabricators[DF.fabricator_tag] = DF

@@ -10,8 +10,7 @@
 	idle_power_usage = 5
 	active_power_usage = 100
 	flags = NOREACT
-	var/max_n_of_items = 999 // Sorry but the BYOND infinite loop detector doesn't look things over 1000. //VOREStation Edit - Non-global
-	//var/global/max_n_of_items = 999 // Sorry but the BYOND infinite loop detector doesn't look things over 1000.
+	var/max_n_of_items = 999 // Sorry but the BYOND infinite loop detector doesn't look things over 1000.
 	var/icon_on = "smartfridge"
 	var/icon_off = "smartfridge-off"
 	var/icon_panel = "smartfridge-panel"
@@ -22,14 +21,14 @@
 	var/locked = 0
 	var/scan_id = 1
 	var/is_secure = 0
-	var/wrenchable = 0
+	var/wrenchable = TRUE
 	var/datum/wires/smartfridge/wires = null
 
 /obj/machinery/smartfridge/secure
 	is_secure = 1
 
-/obj/machinery/smartfridge/New()
-	..()
+/obj/machinery/smartfridge/Initialize(mapload)
+	. = ..()
 	if(is_secure)
 		wires = new/datum/wires/smartfridge/secure(src)
 	else
@@ -71,7 +70,6 @@
 	if(istype(O, /obj/item/slimepotion))
 		return TRUE
 	return FALSE
-
 
 /obj/machinery/smartfridge/secure/medbay
 	name = "\improper Refrigerated Medicine Storage"
@@ -126,6 +124,16 @@
 	if(istype(O,/obj/item/reagent_containers/glass) || istype(O,/obj/item/reagent_containers/food/drinks) || istype(O,/obj/item/reagent_containers/food/condiment))
 		return 1
 
+/obj/machinery/smartfridge/food
+	name = "\improper Hot Foods Display"
+	desc = "A climated storage for dishes waiting to be eaten"
+
+/obj/machinery/smartfridge/food/accept_check(obj/item/O)
+	if(istype(O,/obj/item/reagent_containers/food/snacks) && !istype(O,/obj/item/reagent_containers/food/snacks/grown))//No fruits
+		return 1
+	if(istype(O,/obj/item/reagent_containers/food/condiment))//condiments need storage as well
+		return 1
+
 /obj/machinery/smartfridge/drying_rack
 	name = "\improper Drying Rack"
 	desc = "A machine for drying plants."
@@ -140,11 +148,15 @@
 		var/obj/item/reagent_containers/food/snacks/S = O
 		if (S.dried_type)
 			return 1
+	if(istype(O, /obj/item/stack/wetleather))
+		var/obj/item/stack/wetleather/WL = O
+		if (WL.wetness == 30)
+			return 1
 	return 0
 
-/obj/machinery/smartfridge/drying_rack/process()
+/obj/machinery/smartfridge/drying_rack/process(delta_time)
 	..()
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	if(contents.len)
 		dry()
@@ -152,7 +164,7 @@
 
 /obj/machinery/smartfridge/drying_rack/update_icon()
 	overlays.Cut()
-	var/not_working = stat & (BROKEN|NOPOWER)
+	var/not_working = machine_stat & (BROKEN|NOPOWER)
 	if(not_working)
 		icon_state = icon_off
 	else
@@ -166,6 +178,18 @@
 		overlays += "drying_rack_filled"
 		if(!not_working)
 			overlays += "drying_rack_drying"
+
+/obj/machinery/smartfridge/drying_rack/attackby(var/obj/item/O as obj, mob/user)
+	. = ..()
+	if(istype(O, /obj/item/stack/wetleather/))
+		var/obj/item/stack/wetleather/WL = O
+		if(WL.amount > 2)
+			to_chat("<span class='notice'>The rack can only fit one sheet at a time!</span>")
+			return 1
+		else
+			user.remove_from_mob(WL)
+			stock(WL)
+			user.visible_message("<span class='notice'>[user] has added \the [WL] to \the [src].</span>", "<span class='notice'>You add \the [WL] to \the [src].</span>")
 
 /obj/machinery/smartfridge/drying_rack/proc/dry()
 	for(var/datum/stored_item/I in item_records)
@@ -182,10 +206,15 @@
 				new D(get_turf(src))
 				qdel(S)
 			return
-	return
+		for(var/obj/item/stack/wetleather/WL in I.instances)
+			WL.use(1)
+			I.instances -= WL
+			var/L = /obj/item/stack/material/leather
+			new L(get_turf(src))
+		return
 
-/obj/machinery/smartfridge/process()
-	if(stat & (BROKEN|NOPOWER))
+/obj/machinery/smartfridge/process(delta_time)
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	if(src.seconds_electrified > 0)
 		src.seconds_electrified--
@@ -193,13 +222,13 @@
 		src.throw_item()
 
 /obj/machinery/smartfridge/power_change()
-	var/old_stat = stat
+	var/old_stat = machine_stat
 	..()
-	if(old_stat != stat)
+	if(old_stat != machine_stat)
 		update_icon()
 
 /obj/machinery/smartfridge/update_icon()
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		icon_state = icon_off
 	else
 		icon_state = icon_on
@@ -227,7 +256,7 @@
 			attack_hand(user)
 		return
 
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		to_chat(user, "<span class='notice'>\The [src] is unpowered and useless.</span>")
 		return
 
@@ -292,16 +321,16 @@
 	attack_hand(user)
 
 /obj/machinery/smartfridge/attack_hand(mob/user as mob)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	wires.Interact(user)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /*******************
 *   SmartFridge Menu
 ********************/
 
-/obj/machinery/smartfridge/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/smartfridge/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_machine(src)
 
 	var/data[0]
@@ -380,7 +409,7 @@
 *************************/
 
 /obj/machinery/smartfridge/secure/Topic(href, href_list)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return 0
 	if(usr.contents.Find(src) || (in_range(src, usr) && istype(loc, /turf)))
 		if(!allowed(usr) && !emagged && locked != -1 && href_list["vend"])

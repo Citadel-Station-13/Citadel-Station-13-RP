@@ -1,4 +1,3 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
 /proc/dopage(src,target)
 	var/href_list
@@ -27,6 +26,7 @@
 	return max_z
 
 /proc/get_area(atom/A)
+	RETURN_TYPE(/area)
 	if(isarea(A))
 		return A
 	var/turf/T = get_turf(A)
@@ -291,21 +291,19 @@
 	var/list/hearturfs = list()
 
 	for(var/thing in hear)
-		if(istype(thing,/obj))
+		if(istype(thing, /obj)) //Can't use isobj() because /atom/movable returns true in that, and so lighting overlays would be included
 			objs += thing
 			hearturfs |= get_turf(thing)
-		else if(istype(thing,/mob))
+		if(ismob(thing))
 			mobs += thing
 			hearturfs |= get_turf(thing)
 
 	//A list of every mob with a client
 	for(var/mob in player_list)
-		//VOREStation Edit - Trying to fix some vorestation bug.
-		if(!istype(mob, /mob))
+		if(!ismob(mob))
 			player_list -= mob
 			crash_with("There is a null or non-mob reference inside player_list ([mob]).")
 			continue
-		//VOREStation Edit End - Trying to fix some vorestation bug.
 		if(get_turf(mob) in hearturfs)
 			mobs |= mob
 			continue
@@ -326,8 +324,6 @@
 			objs |= obj
 
 	return list("mobs" = mobs, "objs" = objs)
-
-#define SIGN(X) ((X<0)?-1:1)	// I know this is redefining but my smol brain can't figure out why it won't work without this. -Zandario
 
 proc
 	inLineOfSight(X1,Y1,X2,Y2,Z=1,PX1=16.5,PY1=16.5,PX2=16.5,PY2=16.5)
@@ -359,7 +355,6 @@ proc
 				if(T.opacity)
 					return 0
 		return 1
-#undef SIGN
 
 /proc/flick_overlay(image/I, list/show_to, duration, gc_after)
 	for(var/client/C in show_to)
@@ -407,11 +402,7 @@ proc/isInSight(var/atom/A, var/atom/B)
 			return get_step(start, EAST)
 
 /proc/get_mob_by_key(var/key)
-	for(var/mob/M in mob_list)
-		if(M.ckey == lowertext(key))
-			return M
-	return null
-
+	return GLOB.directory[ckey(key)]
 
 // Will return a list of active candidates. It increases the buffer 5 times until it finds a candidate which is active within the buffer.
 /proc/get_active_candidates(var/buffer = 1)
@@ -442,7 +433,7 @@ proc/isInSight(var/atom/A, var/atom/B)
 	return candidates
 
 /proc/ScreenText(obj/O, maptext="", screen_loc="CENTER-7,CENTER-7", maptext_height=480, maptext_width=480)
-	if(!isobj(O))	O = new /obj/screen/text()
+	if(!isobj(O))	O = new /atom/movable/screen/text()
 	O.maptext = maptext
 	O.maptext_height = maptext_height
 	O.maptext_width = maptext_width
@@ -629,3 +620,17 @@ datum/projectile_data
 	if (!client_or_usr)
 		return
 	winset(client_or_usr, "mainwindow", "flash=5")
+
+// used for the multiz camera console stolen from vorestatiobn
+/proc/get_bbox_of_atoms(list/atoms)
+	var/list/list_x = list()
+	var/list/list_y = list()
+	for(var/_a in atoms)
+		var/atom/a = _a
+		list_x += a.x
+		list_y += a.y
+	return list(
+		min(list_x),
+		min(list_y),
+		max(list_x),
+		max(list_y))

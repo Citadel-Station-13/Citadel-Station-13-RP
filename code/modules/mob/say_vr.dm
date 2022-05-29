@@ -11,7 +11,7 @@
 		to_chat(usr, "Speech is currently admin-disabled.")
 		return
 
-	message = sanitize_or_reflect(message,src) //VOREStation Edit - Reflect too-long messages (within reason)
+	message = sanitize_or_reflect(message,src) // Reflect too-long messages (within reason)
 	if(!message)
 		return
 
@@ -43,6 +43,7 @@
 
 	if (message)
 		message = say_emphasis(message)
+		SEND_SIGNAL(src, COMSIG_MOB_SUBTLE_EMOTE, src, message)
 
 		var/list/vis = get_mobs_and_objs_in_view_fast(get_turf(src),1,2) //Turf, Range, and type 2 is emote
 		var/list/vis_mobs = vis["mobs"]
@@ -73,7 +74,7 @@
 		to_chat(usr, "Speech is currently admin-disabled.")
 		return
 
-	message = sanitize_or_reflect(message,src) //VOREStation Edit - Reflect too-long messages (within reason)
+	message = sanitize_or_reflect(message,src) // Reflect too-long messages (within reason)
 	if(!message)
 		return
 
@@ -99,6 +100,7 @@
 
 	if (message)
 		message = say_emphasis(message)
+		SEND_SIGNAL(src, COMSIG_MOB_SUBTLE_EMOTE, src, message)
 
 		var/list/vis = get_mobs_and_objs_in_view_fast(get_turf(src),1,2) //Turf, Range, and type 2 is emote
 		var/list/vis_mobs = vis["mobs"]

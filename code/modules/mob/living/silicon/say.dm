@@ -1,6 +1,3 @@
-/mob/living/silicon/say(var/message, var/sanitize = 1, var/whispering = 0)
-	return ..((sanitize ? sanitize(message) : message), whispering = whispering)
-
 /mob/living/silicon/handle_message_mode(message_mode, message, verb, speaking, used_radios, alt_name)
 	log_say(message, src)
 
@@ -120,9 +117,8 @@
 	if(T && T.masters[src])
 		var/rendered = "<span class='game say'><span class='name'>[name]</span> <span class='message'>[message]</span></span>"
 		to_chat(src, "<i><span class='game say'>Holopad action relayed, <span class='name'>[real_name]</span> <span class='message'>[message]</span></span></i>")
-		var/obj/effect/overlay/aiholo/hologram = T.masters[src] //VOREStation Add for people in the hologram to hear the messages
+		var/obj/effect/overlay/aiholo/hologram = T.masters[src] // Add for people in the hologram to hear the messages
 
-		//var/obj/effect/overlay/hologram = T.masters[src] //VOREStation edit. Done above.
 		var/list/in_range = get_mobs_and_objs_in_view_fast(get_turf(hologram), world.view, 2) //Emotes are displayed from the hologram, not the pad
 		var/list/m_viewers = in_range["mobs"]
 		var/list/o_viewers = in_range["objs"]

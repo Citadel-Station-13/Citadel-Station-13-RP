@@ -1,7 +1,6 @@
 // This is to replace the previous datum/disease/alien_embryo for slightly improved handling and maintainability
 // It functions almost identically (see code/datums/diseases/alien_embryo.dm)
 
-/*
 /obj/item/alien_embryo	//Commented out as reference for future reproduction methods, or addition later.
 	name = "alien embryo"
 	desc = "All slimy and yuck."
@@ -21,22 +20,22 @@
 
 /obj/item/alien_embryo/Destroy()
 	if(affected_mob)
-		affected_mob.status_flags &= ~(XENO_HOST)
+		affected_mob.status_flags &= ~(TRAIT_XENO_HOST)
 		spawn(0)
 			RemoveInfectionImages(affected_mob)
 	..()
 
-/obj/item/alien_embryo/process()
+/obj/item/alien_embryo/process(delta_time)
 	if(!affected_mob)	return
 	if(loc != affected_mob)
-		affected_mob.status_flags &= ~(XENO_HOST)
+		affected_mob.status_flags &= ~(TRAIT_XENO_HOST)
 		STOP_PROCESSING(SSobj, src)
 		spawn(0)
 			RemoveInfectionImages(affected_mob)
 			affected_mob = null
 		return
 
-	if(stage < 5 && prob(3))
+	if(stage < 5 && prob(2))
 		stage++
 		spawn(0)
 			RefreshInfectionImage(affected_mob)
@@ -96,7 +95,7 @@
 	spawn(6)
 		var/mob/living/carbon/alien/larva/new_xeno = new(affected_mob.loc)
 		new_xeno.key = picked
-		new_xeno << sound('sound/voice/hiss5.ogg',0,0,0,100)	//To get the player's attention
+		SEND_SOUND(new_xeno, sound('sound/voice/hiss5.ogg',0,0,0,100))	//To get the player's attention
 		if(gib_on_success)
 			affected_mob.gib()
 		qdel(src)
@@ -116,9 +115,9 @@ Des: Removes all infection images from aliens and places an infection image on a
 			for(var/image/I in alien.client.images)
 				if(dd_hasprefix_case(I.icon_state, "infected"))
 					qdel(I)
-			for(var/mob/living/L in mob_list)
+			for(var/mob/living/L in GLOB.mob_list)
 				if(iscorgi(L) || iscarbon(L))
-					if(L.status_flags & XENO_HOST)
+					if(L.status_flags & TRAIT_XENO_HOST)
 						var/I = image('icons/mob/alien.dmi', loc = L, icon_state = "infected[stage]")
 						alien.client.images += I
 
@@ -135,7 +134,7 @@ Des: Checks if the passed mob (C) is infected with the alien egg, then gives eac
 				continue
 
 			if(alien.client)
-				if(C.status_flags & XENO_HOST)
+				if(C.status_flags & TRAIT_XENO_HOST)
 					var/I = image('icons/mob/alien.dmi', loc = C, icon_state = "infected[stage]")
 					alien.client.images += I
 
@@ -158,4 +157,3 @@ Des: Removes the alien infection image from all aliens in the world located in p
 					if(I.loc == C)
 						if(dd_hasprefix_case(I.icon_state, "infected"))
 							qdel(I)
-*/

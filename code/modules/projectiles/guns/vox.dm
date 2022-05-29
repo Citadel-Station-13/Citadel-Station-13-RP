@@ -12,14 +12,14 @@
 	var/max_spikes = 5
 	var/spikes = 5
 	release_force = 30
-	icon = 'icons/obj/gun.dmi'
+	icon = 'icons/obj/gun/launcher.dmi'
 	icon_state = "spikethrower3"
 	item_state = "spikethrower"
 	fire_sound = 'sound/weapons/bladeslice.ogg'
 	fire_sound_text = "a strange noise"
 
-/obj/item/gun/launcher/spikethrower/New()
-	..()
+/obj/item/gun/launcher/spikethrower/Initialize(mapload)
+	. = ..()
 	START_PROCESSING(SSobj, src)
 	last_regen = world.time
 
@@ -27,17 +27,18 @@
 	STOP_PROCESSING(SSobj, src)
 	..()
 
-/obj/item/gun/launcher/spikethrower/process()
+/obj/item/gun/launcher/spikethrower/process(delta_time)
 	if(spikes < max_spikes && world.time > last_regen + spike_gen_time)
 		spikes++
 		last_regen = world.time
 		update_icon()
 
 /obj/item/gun/launcher/spikethrower/examine(mob/user)
-	..(user)
-	to_chat(user, "It has [spikes] spike\s remaining.")
+	. = ..()
+	. += "It has [spikes] spike\s remaining."
 
-/obj/item/gun/launcher/spikethrower/update_icon()
+/obj/item/gun/launcher/spikethrower/update_icon_state()
+	. = ..()
 	icon_state = "spikethrower[spikes]"
 
 /obj/item/gun/launcher/spikethrower/update_release_force()
@@ -57,6 +58,7 @@
 	icon_state = "darkcannon"
 	item_state = "darkcannon"
 	w_class = ITEMSIZE_HUGE
+	heavy = TRUE
 	charge_cost = 300
 	projectile_type = /obj/item/projectile/beam/stun/darkmatter
 	cell_type = /obj/item/cell/device/weapon/recharge
@@ -120,6 +122,7 @@
 	icon_state = "noise"
 	item_state = "noise"
 	w_class = ITEMSIZE_HUGE
+	heavy = TRUE
 	cell_type = /obj/item/cell/device/weapon/recharge
 	battery_lock = 1
 	charge_cost = 400

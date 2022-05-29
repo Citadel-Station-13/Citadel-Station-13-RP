@@ -9,7 +9,10 @@
 	desc = "It even has one of those nubbins for doing the thingy."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "combitool"
+	item_state = "combitool"
 	w_class = ITEMSIZE_SMALL
+	drop_sound = 'sound/items/drop/multitool.ogg'
+	pickup_sound = 'sound/items/pickup/multitool.ogg'
 
 	var/list/spawn_tools = list(
 		/obj/item/tool/screwdriver,
@@ -27,10 +30,10 @@
 	if(loc == usr && tools.len)
 		to_chat(usr, "It has the following fittings:")
 		for(var/obj/item/tool in tools)
-			to_chat(usr, "\icon[tool] - [tool.name][tools[current_tool]==tool?" (selected)":""]")
+			to_chat(usr, "[icon2html(thing = tool, target = usr)] - [tool.name][tools[current_tool]==tool?" (selected)":""]")
 
-/obj/item/combitool/New()
-	..()
+/obj/item/combitool/Initialize(mapload)
+	. = ..()
 	for(var/type in spawn_tools)
 		tools |= new type(src)
 

@@ -15,8 +15,8 @@
 	var/wire_allow_manual_3 = FALSE
 	var/opened = FALSE
 
-/obj/machinery/power/grid_checker/New()
-	..()
+/obj/machinery/power/grid_checker/Initialize(mapload, newdir)
+	. = ..()
 	connect_to_network()
 	update_icon()
 	wires = new(src)
@@ -64,7 +64,7 @@
 	if(opened)
 		wires.Interact(user)
 
-	return ui_interact(user)
+	return nano_ui_interact(user)
 
 /obj/machinery/power/grid_checker/proc/power_failure(var/announce = TRUE)
 	if(announce)

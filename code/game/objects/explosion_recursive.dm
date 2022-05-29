@@ -28,8 +28,8 @@ proc/explosion_rec(turf/epicenter, power)
 	message_admins("Explosion with size ([power]) in area [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z])")
 	log_game("Explosion with size ([power]) in area [epicenter.loc.name] ")
 
-	playsound(epicenter, 'sound/effects/explosionfar.ogg', 100, 1, round(power*2,1) )
-	playsound(epicenter, "explosion", 100, 1, round(power,1) )
+	playsound(epicenter, 'sound/soundbytes/effects/explosion/explosionfar.ogg', 100, 1, round(power*2,1) )
+	playsound(epicenter, SFX_ALIAS_EXPLOSION, 100, 1, round(power,1) )
 
 	explosion_in_progress = 1
 	explosion_turfs = list()
@@ -37,7 +37,7 @@ proc/explosion_rec(turf/epicenter, power)
 	explosion_turfs[epicenter] = power
 
 	//This steap handles the gathering of turfs which will be ex_act() -ed in the next step. It also ensures each turf gets the maximum possible amount of power dealt to it.
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		var/turf/T = get_step(epicenter, direction)
 		T.explosion_spread(power - epicenter.explosion_resistance, direction)
 
@@ -72,6 +72,8 @@ proc/explosion_rec(turf/epicenter, power)
 
 /turf/simulated/mineral
 	explosion_resistance = 2
+	outdoors = TRUE // for weather
+	edge_blending_priority = 3
 
 /turf/simulated/shuttle/floor
 	explosion_resistance = 1

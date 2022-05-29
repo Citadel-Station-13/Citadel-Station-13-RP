@@ -65,7 +65,7 @@
 		return
 
 	if(compactor)
-		if(is_type_in_list(target,item_vore_blacklist))
+		if(is_type_in_list(target,GLOB.item_vore_blacklist))
 			to_chat(user, "<span class='warning'>You are hard-wired to not ingest this item.</span>")
 			return
 		if(istype(target, /obj/item) || istype(target, /obj/effect/decal/remains))
@@ -93,7 +93,7 @@
 			user.visible_message("<span class='warning'>[hound.name] is ingesting [trashmouse] into their [src.name].</span>", "<span class='notice'>You start ingesting [trashmouse] into your [src.name]...</span>")
 			if(do_after(user, 30, trashmouse) && length(contents) < max_item_count)
 				trashmouse.forceMove(src)
-				trashmouse.reset_view(src)
+				trashmouse.update_perspective(src)
 				user.visible_message("<span class='warning'>[hound.name]'s [src.name] groans lightly as [trashmouse] slips inside.</span>", "<span class='notice'>Your [src.name] groans lightly as [trashmouse] slips inside.</span>")
 				playsound(hound, gulpsound, vol = 60, vary = 1, falloff = 0.1, preference = /datum/client_preference/eating_noises)
 				if(delivery)
@@ -113,7 +113,7 @@
 			user.visible_message("<span class='warning'>[hound.name] is ingesting [trashman] into their [src.name].</span>", "<span class='notice'>You start ingesting [trashman] into your [src.name]...</span>")
 			if(do_after(user, 30, trashman) && !patient && !trashman.buckled && length(contents) < max_item_count)
 				trashman.forceMove(src)
-				trashman.reset_view(src)
+				trashman.update_perspective()
 				START_PROCESSING(SSobj, src)
 				user.visible_message("<span class='warning'>[hound.name]'s [src.name] groans lightly as [trashman] slips inside.</span>", "<span class='notice'>Your [src.name] groans lightly as [trashman] slips inside.</span>")
 				message_admins("[key_name(hound)] has eaten [key_name(patient)] as a dogborg. ([hound ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[hound.x];Y=[hound.y];Z=[hound.z]'>JMP</a>" : "null"])")
@@ -143,7 +143,7 @@
 				return //If you try to eat two people at once, you can only eat one.
 			else //If you don't have someone in you, proceed.
 				H.forceMove(src)
-				H.reset_view(src)
+				H.update_perspective(src)
 				update_patient()
 				START_PROCESSING(SSobj, src)
 				user.visible_message("<span class='warning'>[hound.name]'s [src.name] lights up as [H.name] slips inside.</span>", "<span class='notice'>Your [src] lights up as [H] slips inside. Life support functions engaged.</span>")
@@ -162,10 +162,10 @@
 			if(ishuman(C))
 				var/mob/living/carbon/human/person = C
 				person.forceMove(get_turf(src))
-				person.reset_view()
+				person.update_perspective()
 			else
 				var/obj/T = C
-				T.loc = hound.loc
+				T.forceMove(hound.loc)
 		playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 		update_patient()
 	else //You clicked eject with nothing in you, let's just reset stuff to be sure.
@@ -346,19 +346,20 @@
 				if(ishuman(C))
 					var/mob/living/carbon/human/person = C
 					person.forceMove(get_turf(src))
-					person.reset_view()
+					person.update_perspective()
 				else
 					var/obj/T = C
-					T.loc = hound.loc
+					T.forceMove(hound.loc)
 			playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 			update_patient()
-			deliverylists[delivery_tag].Cut()
+			var/list/tagged = deliverylists[delivery_tag]
+			tagged.Cut()
 		sleeperUI(usr)
 		return
 	if(href_list["sync"])
 		synced = TRUE
 		var/success = 0
-		for(var/obj/machinery/r_n_d/server/S in machines)
+		for(var/obj/machinery/r_n_d/server/S in GLOB.machines)
 			for(var/datum/tech/T in files.known_tech) //Uploading
 				S.files.AddTech2Known(T)
 			for(var/datum/tech/T in S.files.known_tech) //Downloading
@@ -602,7 +603,7 @@
 							if(istype(T,/obj/item/stack))
 								var/obj/item/stack/stack = T
 								total_material *= stack.get_amount()
-							if(material == DEFAULT_WALL_MATERIAL)
+							if(material == MAT_STEEL)
 								metal.add_charge(total_material)
 							if(material == "glass")
 								glass.add_charge(total_material)
@@ -621,7 +622,7 @@
 		update_patient()
 	return
 
-/obj/item/dogborg/sleeper/process()
+/obj/item/dogborg/sleeper/process(delta_time)
 	if(!istype(src.loc,/mob/living/silicon/robot))
 		return
 

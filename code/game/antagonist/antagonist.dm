@@ -21,7 +21,7 @@
 	var/role_text_plural = "Traitors"       // As above but plural.
 
 	// Visual references.
-	var/antaghud_indicator = "hudsyndicate" // Used by the ghost antagHUD.
+	var/antaghud_indicator = "unknown" // Used by the ghost antagHUD.
 	var/antag_indicator                     // icon_state for icons/mob/mob.dm visual indicator.
 	var/faction_indicator                   // See antag_indicator, but for factionalized people only.
 	var/faction_invisible                   // Can members of the faction identify other antagonists?
@@ -178,7 +178,7 @@
 
 /datum/antagonist/proc/draft_antagonist(var/datum/mind/player)
 	//Check if the player can join in this antag role, or if the player has already been given an antag role.
-	if(!can_become_antag(player) || player.assigned_role in roundstart_restricted)
+	if(!can_become_antag(player) || (player.assigned_role in roundstart_restricted))
 		log_debug("[player.key] was selected for [role_text] by lottery, but is not allowed to be that role.")
 		return 0
 	if(player.special_role)

@@ -58,7 +58,7 @@
 		return
 
 	selection.show(usr)
-	usr << selection.desc
+	to_chat(usr, selection.desc)
 
 /obj/item/camera/siliconcam/proc/deletepicture(obj/item/camera/siliconcam/cam)
 	var/selection = selectpicture(cam)

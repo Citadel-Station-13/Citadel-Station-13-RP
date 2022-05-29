@@ -6,6 +6,9 @@
 	description_info = "The projectile of this tool will travel six tiles before dissipating, excavating mineral walls as it does so. It can be reloaded with phoron sheets."
 
 
+	capacitor = new /obj/item/stock_parts/capacitor
+	manipulator = new /obj/item/stock_parts/manipulator
+
 	icon_state = "bore"
 	item_state = "bore"
 	wielded_item_state = "bore-wielded"
@@ -17,6 +20,7 @@
 
 	power_cost = 750
 	load_type = /obj/item/stack/material
+	no_pin_required = TRUE
 	var/mat_storage = 0			// How much material is stored inside? Input in multiples of 2000 as per auto/protolathe.
 	var/max_mat_storage = 8000	// How much material can be stored inside?
 	var/mat_cost = 500			// How much material is used per-shot?
@@ -25,26 +29,25 @@
 
 /obj/item/gun/magnetic/matfed/examine(mob/user)
 	. = ..()
-	show_ammo(user)
+	if(mat_storage)
+		. += SPAN_NOTICE("It has [mat_storage] out of [max_mat_storage] units of [ammo_material] loaded.")
 
-/obj/item/gun/magnetic/matfed/update_icon()
-	var/list/overlays_to_add = list()
+/obj/item/gun/magnetic/matfed/update_overlays()
+	. = ..()
 	if(removable_components)
 		if(cell)
-			overlays_to_add += image(icon, "[icon_state]_cell")
+			. += image(icon, "[icon_state]_cell")
 		if(capacitor)
-			overlays_to_add += image(icon, "[icon_state]_capacitor")
+			. += image(icon, "[icon_state]_capacitor")
 	if(!cell || !capacitor)
-		overlays_to_add += image(icon, "[icon_state]_red")
+		. += image(icon, "[icon_state]_red")
 	else if(capacitor.charge < power_cost)
-		overlays_to_add += image(icon, "[icon_state]_amber")
+		. += image(icon, "[icon_state]_amber")
 	else
-		overlays_to_add += image(icon, "[icon_state]_green")
+		. += image(icon, "[icon_state]_green")
 	if(mat_storage)
-		overlays_to_add += image(icon, "[icon_state]_loaded")
+		. += image(icon, "[icon_state]_loaded")
 
-	overlays = overlays_to_add
-	..()
 /obj/item/gun/magnetic/matfed/attack_hand(var/mob/user) // It doesn't keep a loaded item inside.
 	if(user.get_inactive_hand() == src)
 		var/obj/item/removing
@@ -69,10 +72,6 @@
 
 /obj/item/gun/magnetic/matfed/use_ammo()
 	mat_storage -= mat_cost
-
-/obj/item/gun/magnetic/matfed/show_ammo(var/mob/user)
-	if(mat_storage)
-		to_chat(user, "<span class='notice'>It has [mat_storage] out of [max_mat_storage] units of [ammo_material] loaded.</span>")
 
 /obj/item/gun/magnetic/matfed/attackby(var/obj/item/thing, var/mob/user)
 	if(removable_components)
@@ -168,9 +167,11 @@
 //phoron bore 2
 /obj/item/gun/magnetic/matfed/advanced
 	name = "advanced phoron bore"
-	description_fluff = "A revision of an ageing Grayson design, the NanoTrasen Man-Portable Phorogenic Tunneler, or NT-MPPT is capable of drilling through longer swathes of rock, at the cost of slightly worse power efficiency than the Grayson design."
+	description_fluff = "A revision of an aging Grayson design, the NanoTrasen Man-Portable Phorogenic Tunneler, or NT-MPPT is capable of drilling through longer swathes of rock, at the cost of slightly worse power efficiency than the Grayson design."
 	description_antag = "This device is exceptional at breaking down walls, though it is incredibly loud when doing so."
 	description_info = "The projectile of this tool will travel twelve tiles before dissipating, excavating mineral walls as it does so. It can be reloaded with phoron sheets, and can hold a maximum of ten sheets."
 	projectile_type = /obj/item/projectile/bullet/magnetic/bore/powerful
 	power_cost = 1000
-	max_mat_storage = 20000	// How much material can be stored inside?
+	max_mat_storage = 20000
+	manipulator = null
+	capacitor = null

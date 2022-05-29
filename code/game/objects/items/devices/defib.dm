@@ -1,6 +1,7 @@
-#define DEFIB_TIME_LIMIT (10 MINUTES) //past this many seconds, defib is useless.
-#define DEFIB_TIME_LOSS  (2 MINUTES) //past this many seconds, brain damage occurs.
-
+///past this many seconds, defib will cause maximum brain damage.
+#define DEFIB_TIME_LIMIT (10 MINUTES)
+///past this many seconds, brain damage occurs.
+#define DEFIB_TIME_LOSS  (2 MINUTES)
 //backpack item
 /obj/item/defib_kit
 	name = "defibrillator"
@@ -19,8 +20,8 @@
 	var/obj/item/shockpaddles/linked/paddles
 	var/obj/item/cell/bcell = null
 
-/obj/item/defib_kit/New() //starts without a cell for rnd
-	..()
+/obj/item/defib_kit/Initialize(mapload) //starts without a cell for rnd
+	. = ..()
 	if(ispath(paddles))
 		paddles = new paddles(src, src)
 	else
@@ -247,6 +248,7 @@
 		icon_state = "defibpaddles[wielded]_cooldown"
 
 /obj/item/shockpaddles/proc/can_use(mob/user, mob/M)
+	update_held_icon()
 	if(busy)
 		return 0
 	if(!check_charge(chargecost))
@@ -262,8 +264,8 @@
 
 //Checks for various conditions to see if the mob is revivable
 /obj/item/shockpaddles/proc/can_defib(mob/living/carbon/human/H) //This is checked before doing the defib operation
-	if((H.species.flags & NO_SCAN))
-		return "buzzes, \"Unrecogized physiology. Operation aborted.\""
+	if((H.species.flags & NO_DEFIB))
+		return "buzzes, \"Alien physiology. Operation aborted. Consider alternative resucitation methods.\""
 	else if(H.isSynthetic() && !use_on_synthetic)
 		return "buzzes, \"Synthetic Body. Operation aborted.\""
 	else if(!H.isSynthetic() && use_on_synthetic)
@@ -279,10 +281,6 @@
 
 /obj/item/shockpaddles/proc/can_revive(mob/living/carbon/human/H) //This is checked right before attempting to revive
 
-	var/deadtime = world.time - H.timeofdeath
-	if (deadtime > DEFIB_TIME_LIMIT && !H.isSynthetic())
-		return "buzzes, \"Resuscitation failed - Excessive neural degeneration. Further attempts futile.\""
-
 	H.updatehealth()
 
 	if(H.isSynthetic())
@@ -290,6 +288,7 @@
 			return "buzzes, \"Resuscitation failed - Severe damage detected. Begin manual repair before further attempts futile.\""
 
 	else if(H.health + H.getOxyLoss() <= config_legacy.health_threshold_dead || (HUSK in H.mutations) || !H.can_defib)
+		// TODO: REFACTOR DEFIBS AND HEALTH
 		return "buzzes, \"Resuscitation failed - Severe tissue damage makes recovery of patient impossible via defibrillator. Further attempts futile.\""
 
 	var/bad_vital_organ = check_vital_organs(H)
@@ -305,7 +304,7 @@
 /obj/item/shockpaddles/proc/check_contact(mob/living/carbon/human/H)
 	if(!combat)
 		for(var/obj/item/clothing/cloth in list(H.wear_suit, H.w_uniform))
-			if((cloth.body_parts_covered & UPPER_TORSO) && (cloth.item_flags & THICKMATERIAL))
+			if((cloth.body_parts_covered & UPPER_TORSO) && (cloth.clothing_flags & THICKMATERIAL))
 				return FALSE
 	return TRUE
 
@@ -330,14 +329,14 @@
 	if(!heart)
 		return TRUE
 
-	var/blood_volume = round((H.vessel.get_reagent_amount("blood")/H.species.blood_volume)*100)
+	var/blood_volume = H.vessel.get_reagent_amount("blood")
 	if(!heart || heart.is_broken())
 		blood_volume *= 0.3
 	else if(heart.is_bruised())
 		blood_volume *= 0.7
 	else if(heart.damage > 1)
 		blood_volume *= 0.8
-	return blood_volume < BLOOD_VOLUME_SURVIVE
+	return blood_volume < H.species.blood_volume*H.species.blood_level_fatal
 
 /obj/item/shockpaddles/proc/check_charge(var/charge_amt)
 	return 0
@@ -436,6 +435,10 @@
 
 	make_alive(H)
 
+	H.Confuse(120)
+	var/type_to_give = /datum/modifier/enfeeble/strong
+	H.add_modifier(type_to_give, 10 MINUTES)
+
 	log_and_message_admins("used \a [src] to revive [key_name(H)].")
 
 
@@ -478,33 +481,49 @@
 	add_attack_logs(user,H,"Shocked using [name]")
 
 /obj/item/shockpaddles/proc/make_alive(mob/living/carbon/human/M) //This revives the mob
-	var/deadtime = world.time - M.timeofdeath
-
 	dead_mob_list.Remove(M)
 	if((M in living_mob_list) || (M in dead_mob_list))
 		WARNING("Mob [M] was defibbed but already in the living or dead list still!")
 	living_mob_list += M
 
 	M.timeofdeath = 0
-	M.stat = UNCONSCIOUS //Life() can bring them back to consciousness if it needs to.
+	M.set_stat(UNCONSCIOUS) //Life() can bring them back to consciousness if it needs to.
 	M.failed_last_breath = 0 //So mobs that died of oxyloss don't revive and have perpetual out of breath.
 	M.reload_fullscreen()
 
 	M.emote("gasp")
 	M.Weaken(rand(10,25))
 	M.updatehealth()
-	apply_brain_damage(M, deadtime)
+	apply_brain_damage(M)
 
-/obj/item/shockpaddles/proc/apply_brain_damage(mob/living/carbon/human/H, var/deadtime)
-	if(deadtime < DEFIB_TIME_LOSS) return
-
-	if(!H.should_have_organ(O_BRAIN)) return //no brain
+/obj/item/shockpaddles/proc/apply_brain_damage(mob/living/carbon/human/H)
+	if(!H.should_have_organ(O_BRAIN))
+		return // No brain.
 
 	var/obj/item/organ/internal/brain/brain = H.internal_organs_by_name[O_BRAIN]
-	if(!brain) return //no brain
+	if(!brain)
+		return // Still no brain.
 
-	var/brain_damage = clamp((deadtime - DEFIB_TIME_LOSS)/(DEFIB_TIME_LIMIT - DEFIB_TIME_LOSS)*brain.max_damage, H.getBrainLoss(), brain.max_damage)
+	// If the brain'd `defib_timer` var gets below this number, brain damage will happen at a linear rate.
+	// This is measures in `Life()` ticks. E.g. 10 minute defib timer = 300 `Life()` ticks.
+	//! Original math was VERY off. Life() tick occurs every ~2 seconds, not every 2 world.time ticks.
+	var/brain_damage_timer = ((CONFIG_GET(number/defib_timer) MINUTES) / 20) - ((CONFIG_GET(number/defib_braindamage_timer) MINUTES) / 20)
+
+	if(brain.defib_timer > brain_damage_timer)
+		return // They got revived before brain damage got a chance to set in.
+
+	// As the brain decays, this will be between 0 and 1, with 1 being the most fresh.
+	var/brain_death_scale = brain.defib_timer / brain_damage_timer
+
+	// This is backwards from what you might expect, since 1 = fresh and 0 = rip.
+	var/damage_calc = LERP(brain.max_damage, H.getBrainLoss(), brain_death_scale)
+
+	// A bit of sanity.
+	var/brain_damage = clamp( damage_calc, H.getBrainLoss(),  brain.max_damage)
+
 	H.setBrainLoss(brain_damage)
+	make_announcement("beeps, \"Warning. Subject neurological structure has sustained damage.\"", "notice")
+	playsound(get_turf(src), 'sound/machines/defib_failed.ogg', 50, 0)
 
 /obj/item/shockpaddles/proc/make_announcement(var/message, var/msg_class)
 	audible_message("<b>\The [src]</b> [message]", "\The [src] vibrates slightly.")
@@ -566,9 +585,9 @@
 /obj/item/shockpaddles/linked
 	var/obj/item/defib_kit/base_unit
 
-/obj/item/shockpaddles/linked/New(newloc, obj/item/defib_kit/defib)
+/obj/item/shockpaddles/linked/Initialize(mapload, obj/item/defib_kit/defib)
+	. = ..()
 	base_unit = defib
-	..(newloc)
 
 /obj/item/shockpaddles/linked/Destroy()
 	if(base_unit)
@@ -613,7 +632,7 @@
 	SSradiation.radiate(src, charge_amt/12) //just a little bit of radiation. It's the price you pay for being powered by magic I guess
 	return 1
 
-/obj/item/shockpaddles/standalone/process()
+/obj/item/shockpaddles/standalone/process(delta_time)
 	if(fail_counter > 0)
 		SSradiation.radiate(src, fail_counter--)
 	else
@@ -671,6 +690,20 @@
 	icon_state = "jumperpaddles0"
 	item_state = "jumperpaddles0"
 	use_on_synthetic = 1
+
+// Rig Defibs
+/obj/item/shockpaddles/standalone/rig
+	desc = "You shouldn't be seeing these."
+	chargetime = (2 SECONDS)
+
+/obj/item/shockpaddles/standalone/rig/checked_use(var/charge_amt)
+	return 1
+
+/obj/item/shockpaddles/standalone/rig/emp_act(severity)
+	return
+
+/obj/item/shockpaddles/standalone/rig/can_use(mob/user, mob/M)
+	return 1
 
 #undef DEFIB_TIME_LIMIT
 #undef DEFIB_TIME_LOSS

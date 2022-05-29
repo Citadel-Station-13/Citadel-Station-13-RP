@@ -8,6 +8,7 @@
 	name = "Breaker Box"
 	icon = 'icons/obj/power.dmi'
 	icon_state = "bbox_off"
+	desc = "Large machine with heavy duty switching circuits used for advanced grid control."
 	//directwired = 0
 	var/icon_state_on = "bbox_on"
 	var/icon_state_off = "bbox_off"
@@ -22,13 +23,13 @@
 	var/datum/wires/breakerbox/wires
 
 /obj/machinery/power/breakerbox/Destroy()
-	for(var/obj/structure/cable/C in src.loc)
+	for(var/obj/structure/cable/C in loc)
 		qdel(C)
 	. = ..()
 	for(var/datum/nano_module/rcon/R in world)
 		R.FindDevices()
 
-/obj/machinery/power/breakerbox/Initialize()
+/obj/machinery/power/breakerbox/Initialize(mapload)
 	. = ..()
 	wires = new(src)
 	default_apply_parts()
@@ -37,16 +38,20 @@
 	icon_state = "bbox_on"
 
 // Enabled on server startup. Used in substations to keep them in bypass mode.
-/obj/machinery/power/breakerbox/activated/Initialize()
+/obj/machinery/power/breakerbox/activated/Initialize(mapload)
 	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/power/breakerbox/activated/LateInitialize()
 	set_state(1)
+	return ..()
 
 /obj/machinery/power/breakerbox/examine(mob/user)
-	to_chat(user, "Large machine with heavy duty switching circuits used for advanced grid control")
+	. = ..()
 	if(on)
-		to_chat(user, "<font color='green'>It seems to be online.</font>")
+		. += "<font color='green'>It seems to be online.</font>"
 	else
-		to_chat(user, "<font color='red'>It seems to be offline.</font>")
+		. += "<font color='red'>It seems to be offline.</font>"
 
 /obj/machinery/power/breakerbox/attack_ai(mob/user)
 	if(update_locked)
@@ -149,5 +154,5 @@
 		spawn(600)
 			update_locked = 0
 
-/obj/machinery/power/breakerbox/process()
+/obj/machinery/power/breakerbox/process(delta_time)
 	return 1

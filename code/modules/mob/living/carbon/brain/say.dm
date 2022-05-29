@@ -1,5 +1,5 @@
 //TODO: Convert this over for languages.
-/mob/living/carbon/brain/say(var/message)
+/mob/living/carbon/brain/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	if (silent)
 		return
 
@@ -8,10 +8,10 @@
 	if(!(container && container.can_speak))
 		return //Certain objects can speak, like MMIs. Most others cannot. -Q
 	else
-		var/datum/language/speaking = parse_language(message)
+		speaking = parse_language(message)
 		if(speaking)
 			message = copytext(message, 2+length(speaking.key))
-		var/verb = "says"
+		verb = "says"
 		var/ending = copytext(message, length(message))
 		if (speaking)
 			verb = speaking.get_spoken_verb(ending)

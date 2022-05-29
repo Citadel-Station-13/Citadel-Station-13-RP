@@ -145,7 +145,7 @@
 	var/stasis_level = 3 //Every 'this' life ticks are applied to the mob (when life_ticks%stasis_level == 1)
 	var/obj/item/reagent_containers/syringe/syringe
 
-/obj/structure/closet/body_bag/cryobag/Initialize()
+/obj/structure/closet/body_bag/cryobag/Initialize(mapload)
 	tank = new tank_type(null) //It's in nullspace to prevent ejection when the bag is opened.
 	..()
 
@@ -153,6 +153,14 @@
 	QDEL_NULL(syringe)
 	QDEL_NULL(tank)
 	return ..()
+
+/obj/structure/closet/body_bag/cryobag/attack_hand(mob/living/user)
+	if(used)
+		var/confirm = tgui_alert(user, "Are you sure you want to open \the [src]? \The [src] will expire upon opening it.", "Confirm Opening", list("No", "Yes"))
+		if(confirm == "Yes")
+			..() // Will call `toggle()` and open the bag.
+	else
+		..()
 
 /obj/structure/closet/body_bag/cryobag/open()
 	. = ..()
@@ -210,11 +218,11 @@
 		syringe.reagents.trans_to_mob(H, 30, CHEM_BLOOD)
 
 /obj/structure/closet/body_bag/cryobag/examine(mob/user)
-	..()
+	. = ..()
 	if(Adjacent(user)) //The bag's rather thick and opaque from a distance.
-		to_chat(user, "<span class='info'>You peer into \the [src].</span>")
+		. += "<span class='info'>You peer into \the [src].</span>"
 		if(syringe)
-			to_chat(user, "<span class='info'>It has a syringe added to it.</span>")
+			. += "<span class='info'>It has a syringe added to it.</span>"
 		for(var/mob/living/L in contents)
 			L.examine(user)
 

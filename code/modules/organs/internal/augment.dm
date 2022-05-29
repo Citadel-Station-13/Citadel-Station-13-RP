@@ -7,28 +7,41 @@
 
 	icon_state = "cell_bay"
 
+	robotic = ORGAN_ROBOT
 	parent_organ = BP_TORSO
 
-	organ_verbs = list(/mob/living/carbon/human/proc/augment_menu)	// Verbs added by the organ when present in the body.
-	target_parent_classes = list()	// Is the parent supposed to be organic, robotic, assisted?
-	forgiving_class = FALSE	// Will the organ give its verbs when it isn't a perfect match? I.E., assisted in organic, synthetic in organic.
+	/// Verbs added by the organ when present in the body.
+	organ_verbs = list(/mob/living/carbon/human/proc/augment_menu)
+	/// Is the parent supposed to be organic, robotic, assisted?
+	target_parent_classes = list()
+	/// Will the organ give its verbs when it isn't a perfect match? I.E., assisted in organic, synthetic in organic.
+	forgiving_class = FALSE
 
-	var/obj/item/integrated_object	// Objects held by the organ, used for re-usable, deployable things.
-	var/integrated_object_type	// Object type the organ will spawn.
+	butcherable = FALSE
+
+	/// Objects held by the organ, used for re-usable, deployable things.
+	var/obj/item/integrated_object
+	/// Object type the organ will spawn.
+	var/integrated_object_type
 	var/target_slot = null
 
 	var/silent_deploy = FALSE
 
+	//* Raidal vars *//
+	/// Holder for the augment's image.
 	var/image/my_radial_icon = null
-	var/radial_icon = null	// DMI for the augment's radial icon.
-	var/radial_name = null	// The augment's name in the Radial Menu.
-	var/radial_state = null	// Icon state for the augment's radial icon.
+	/// DMI for the augment's radial icon.
+	var/radial_icon = null
+	/// The augment's name in the Radial Menu.
+	var/radial_name = null
+	/// Icon state for the augment's radial icon.
+	var/radial_state = null
 
 	var/aug_cooldown = 30 SECONDS
 	var/last_activate = null
 
-/obj/item/organ/internal/augment/Initialize()
-	..()
+/obj/item/organ/internal/augment/Initialize(mapload)
+	. = ..()
 
 	setup_radial_icon()
 
@@ -63,6 +76,10 @@
 		else
 			return
 
+	if(robotic && owner.get_restraining_bolt())
+		to_chat(owner, SPAN_WARNING("\The [src] doesn't respond."))
+		return
+
 	var/item_to_equip = integrated_object
 	if(!item_to_equip && integrated_object_type)
 		item_to_equip = integrated_object_type
@@ -79,8 +96,10 @@
 // Attaches to the end of dropped items' code.
 
 /obj/item
-	var/destroy_on_drop = FALSE	// Used by augments to determine if the item should destroy itself when dropped, or return to its master.
-	var/obj/item/organ/my_augment = null	// Used to reference the object's host organ.
+/// Used by augments to determine if the item should destroy itself when dropped, or return to its master.
+	var/destroy_on_drop = FALSE
+	/// Used to reference the object's host organ.
+	var/obj/item/organ/my_augment = null
 
 /obj/item/dropped(mob/user)
 	. = ..()
@@ -135,19 +154,24 @@
  * destroy_on_drop is the default value for the object to be deleted if it is removed from their person, if equipping is a path, however, this will be set to TRUE,
  * cling_to_organ is a reference to the organ object itself, so they can easily return to their organ when removed by any means.
  */
-
 /mob/living/carbon/human/proc/equip_augment_item(var/slot, var/obj/item/equipping = null, var/make_sound = TRUE, var/destroy_on_drop = FALSE, var/obj/item/organ/cling_to_organ = null)
 	if(!ishuman(src))
-		return 0
+		return FALSE
 
 	if(!equipping)
-		return 0
+		return FALSE
 
 	var/mob/living/carbon/human/M = src
 
+	if(buckled)
+		var/obj/Ob = buckled
+		if(Ob.buckle_lying)
+			to_chat(M, SPAN_NOTICE("You cannot use your augments when restrained."))
+			return FALSE
+
 	if((slot == slot_l_hand && l_hand) || (slot == slot_r_hand && r_hand))
-		to_chat(M,"<span class='warning'>Your hand is full.  Drop something first.</span>")
-		return 0
+		to_chat(M, SPAN_WARNING("Your hand is full.  Drop something first."))
+		return FALSE
 
 	var/del_if_failure = destroy_on_drop
 
@@ -163,15 +187,15 @@
 			equip_to_slot(equipping, slot, 1, 1)
 		else if(destroy_on_drop || del_if_failure)
 			qdel(equipping)
-			return 0
+			return FALSE
 
 	if(cling_to_organ) // Does the object automatically return to the organ?
 		equipping.my_augment = cling_to_organ
 
 	if(make_sound)
-		playsound(src, 'sound/items/change_jaws.ogg', 30, 1)
+		playsound(src, 'sound/items/change_jaws.ogg', 30, TRUE)
 
 	if(equipping.loc != src)
 		equipping.dropped()
 
-	return 1
+	return TRUE

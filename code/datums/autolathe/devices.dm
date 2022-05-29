@@ -34,3 +34,13 @@
 	name = "electropack"
 	path =/obj/item/radio/electropack
 	hidden = 1
+
+/datum/category_item/autolathe/devices/geiger
+	name = "geiger counter"
+	path =/obj/item/geiger
+
+//! ## VR FILE MERGE ## !//
+
+/datum/category_item/autolathe/devices/sleevecard
+	name = "sleevecard"
+	path =/obj/item/sleevecard

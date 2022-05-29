@@ -1,7 +1,7 @@
 var/datum/planet/virgo3b/planet_virgo3b = null
 
 /datum/time/virgo3b
-	seconds_in_day = 3 HOURS
+	seconds_in_day = 6 HOURS
 
 /datum/planet/virgo3b
 	name = "Virgo-3B"
@@ -14,7 +14,8 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 						Z_LEVEL_SURFACE_MID,
 						Z_LEVEL_SURFACE_HIGH,
 						Z_LEVEL_SURFACE_MINE,
-						Z_LEVEL_SOLARS
+						Z_LEVEL_SOLARS,
+						Z_LEVEL_PLAINS
 						)
 	planetary_wall_type = /turf/unsimulated/wall/planetary/virgo3b
 
@@ -238,7 +239,7 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 
 	for(var/turf/simulated/floor/outdoors/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
 		if(S.z in holder.our_planet.expected_z_levels)
-			for(var/dir_checked in cardinal)
+			for(var/dir_checked in GLOB.cardinal)
 				var/turf/simulated/floor/T = get_step(S, dir_checked)
 				if(istype(T))
 					if(istype(T, /turf/simulated/floor/outdoors) && prob(33))
@@ -281,7 +282,7 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 
 	for(var/turf/simulated/floor/outdoors/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
 		if(S.z in holder.our_planet.expected_z_levels)
-			for(var/dir_checked in cardinal)
+			for(var/dir_checked in GLOB.cardinal)
 				var/turf/simulated/floor/T = get_step(S, dir_checked)
 				if(istype(T))
 					if(istype(T, /turf/simulated/floor/outdoors) && prob(50))
@@ -388,7 +389,7 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 						playsound(L, 'sound/effects/rustle1.ogg', 100, 1)
 						L.drop_from_inventory(U)
 						U.toggle_umbrella()
-						U.throw_at(get_edge_target_turf(U, pick(alldirs)), 8, 1, L)
+						U.throw_at(get_edge_target_turf(U, pick(GLOB.alldirs)), 8, 1, L)
 
 			// If they have an open umbrella, it'll guard from rain
 			if(istype(L.get_active_hand(), /obj/item/melee/umbrella))

@@ -4,7 +4,7 @@
 
 	name = "Arrivals"
 	location = FERRY_LOCATION_OFFSITE
-	warmup_time = 25	// Warmup takes 5 seconds, so 30 total.
+	warmup_time = 25 // Warmup takes 5 seconds, so 30 total.
 	always_process = TRUE
 	var/launch_delay = 3
 
@@ -45,26 +45,26 @@
 /datum/shuttle/autodock/ferry/arrivals/process()
 	if(process_state == IDLE_STATE)
 
-		if(location)	// If we're off-station (space).
-			if(check_for_passengers())	// No point arriving with an empty shuttle.
+		if(location) // If we're off-station (space).
+			if(check_for_passengers()) // No point arriving with an empty shuttle.
 				warmup_time = initial(warmup_time)
 				launch()
-				message_passengers("Arriving at [using_map.station_name] in thirty seconds...")
+				message_passengers("Arriving at [GLOB.using_map.station_name] in thirty seconds...")
 				spawn(10 SECONDS)
-					message_passengers("Arriving at [using_map.station_name] in twenty seconds.")
+					message_passengers("Arriving at [GLOB.using_map.station_name] in twenty seconds.")
 					spawn(10 SECONDS)
-						message_passengers("Arriving at [using_map.station_name] in ten seconds.  Please buckle up.")
+						message_passengers("Arriving at [GLOB.using_map.station_name] in ten seconds.  Please buckle up.")
 
-		else	// We are at the station.
-			if(!check_for_passengers())	// Don't leave with anyone.
-				if(launch_delay)		// Give some time to get on the docks so people don't get trapped inbetween the dock airlocks.
+		else // We are at the station.
+			if(!check_for_passengers()) // Don't leave with anyone.
+				if(launch_delay) // Give some time to get on the docks so people don't get trapped inbetween the dock airlocks.
 					launch_delay--
 				else
 					launch_delay = initial(launch_delay)
-					warmup_time = 0	// Gotta go fast.
+					warmup_time = 0 // Gotta go fast.
 					launch()
 
-	..()	// Do everything else
+	..() // Do everything else
 
 /*
 /datum/shuttle/autodock/ferry/arrivals/current_dock_target()

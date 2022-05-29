@@ -6,6 +6,8 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "bolt"
 	item_state = "bolt"
+	drop_sound = 'sound/items/drop/sword.ogg'
+	pickup_sound = 'sound/items/pickup/sword.ogg'
 	throwforce = 8
 	w_class = ITEMSIZE_NORMAL
 	sharp = 1
@@ -24,6 +26,8 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "metal-rod"
 	item_state = "bolt"
+	drop_sound = 'sound/items/drop/sword.ogg'
+	pickup_sound = 'sound/items/pickup/sword.ogg'
 
 /obj/item/arrow/quill
 	name = "alien quill"
@@ -55,6 +59,8 @@
 	fire_sound_text = "a solid thunk"
 	fire_delay = 25
 	slot_flags = SLOT_BACK
+	safety_state = GUN_NO_SAFETY
+	one_handed_penalty = 10
 
 	var/obj/item/bolt
 	var/tension = 0                         // Current draw on the bow.
@@ -186,14 +192,14 @@
 	bolt.icon_state = "metal-rod-superheated"
 	cell.use(500)
 
-/obj/item/gun/launcher/crossbow/update_icon()
+/obj/item/gun/launcher/crossbow/update_icon_state()
+	. = ..()
 	if(tension > 1)
 		icon_state = "crossbow-drawn"
 	else if(bolt)
 		icon_state = "crossbow-nocked"
 	else
 		icon_state = "crossbow"
-
 
 // Crossbow construction.
 /obj/item/crossbowframe
@@ -209,13 +215,18 @@
 	icon_state = "crossbowframe[buildstate]"
 
 /obj/item/crossbowframe/examine(mob/user)
-	..(user)
+	. = ..()
 	switch(buildstate)
-		if(1) user << "It has a loose rod frame in place."
-		if(2) user << "It has a steel backbone welded in place."
-		if(3) user << "It has a steel backbone and a cell mount installed."
-		if(4) user << "It has a steel backbone, plastic lath and a cell mount installed."
-		if(5) user << "It has a steel cable loosely strung across the lath."
+		if(1)
+			. += "It has a loose rod frame in place."
+		if(2)
+			. += "It has a steel backbone welded in place."
+		if(3)
+			. += "It has a steel backbone and a cell mount installed."
+		if(4)
+			. += "It has a steel backbone, plastic lath and a cell mount installed."
+		if(5)
+			. += "It has a steel cable loosely strung across the lath."
 
 /obj/item/crossbowframe/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/stack/rods))

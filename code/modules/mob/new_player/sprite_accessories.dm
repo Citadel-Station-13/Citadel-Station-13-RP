@@ -1,38 +1,44 @@
-/*
-
-	Hello and welcome to sprite_accessories: For sprite accessories, such as hair,
-	facial hair, and possibly tattoos and stuff somewhere along the line. This file is
-	intended to be friendly for people with little to no actual coding experience.
-	The process of adding in new hairstyles has been made pain-free and easy to do.
-	Enjoy! - Doohl
-
-
-	Notice: This all gets automatically compiled in a list in dna2.dm, so you do not
-	have to define any UI values for sprite accessories manually for hair and facial
-	hair. Just add in new hair types and the game will naturally adapt.
-
-	!!WARNING!!: changing existing hair information can be VERY hazardous to savefiles,
-	to the point where you may completely corrupt a server's savefiles. Please refrain
-	from doing this unless you absolutely know what you are doing, and have defined a
-	conversion in savefile.dm
-*/
+/**
+ *
+ * Hello and welcome to sprite_accessories: For sprite accessories, such as hair,
+ * facial hair, and possibly tattoos and stuff somewhere along the line. This file is
+ * intended to be friendly for people with little to no actual coding experience.
+ * The process of adding in new hairstyles has been made pain-free and easy to do.
+ * Enjoy! - Doohl
+ *
+ *
+ * Notice: This all gets automatically compiled in a list in dna2.dm, so you do not
+ * have to define any UI values for sprite accessories manually for hair and facial
+ * hair. Just add in new hair types and the game will naturally adapt.
+ *
+ * !!WARNING!!: changing existing hair information can be VERY hazardous to savefiles,
+ * to the point where you may completely corrupt a server's savefiles. Please refrain
+ * from doing this unless you absolutely know what you are doing, and have defined a
+ * conversion in savefile.dm
+ */
 
 /datum/sprite_accessory
 
-	var/icon			// the icon file the accessory is located in
-	var/icon_state		// the icon_state of the accessory
-	var/preview_state	// a custom preview state for whatever reason
+	/// The icon file the accessory is located in.
+	var/icon
+	/// The icon_state of the accessory.
+	var/icon_state
+	/// A custom preview state for whatever reason.
+	var/preview_state
 
-	var/name			// the preview name of the accessory
+	/// The preview name of the accessory.
+	var/name
 
-	// Determines if the accessory will be skipped or included in random hair generations
+	/// Determines if the accessory will be skipped or included in random hair generations.
 	var/gender = NEUTER
 
-	// Restrict some styles to specific species
+	/// Restrict some styles to specific species.
 	var/list/species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN)
 
-	// Whether or not the accessory can be affected by colouration
+	/// Whether or not the accessory can be affected by colouration.
 	var/do_colouration = 1
+
+	var/color_blend_mode = ICON_MULTIPLY	// If checked.
 
 /*
 ////////////////////////////
@@ -46,13 +52,17 @@
 	icon = 'icons/mob/human_face_m.dmi'	  // default icon for all hairs
 	var/icon_add = 'icons/mob/human_face.dmi'
 	//Enhanced colours and hair for all
-	var/color_blend_mode = ICON_MULTIPLY
-	species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_SHADEKIN) //This lets all races use the default hairstyles.
+	color_blend_mode = ICON_MULTIPLY
+	species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW, SPECIES_APIDAEN, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_AURIL, SPECIES_DREMACHIR) //This lets all races use the default hairstyles.
 	var/flags
 
 	eighties
 		name = "80's"
 		icon_state = "hair_80s"
+
+	eighties_alt
+		name = "80's (Alternative)"
+		icon_state = "hair_80s_alt"
 
 	afro
 		name = "Afro"
@@ -69,6 +79,7 @@
 	ahoge
 		name = "Ahoge"
 		icon_state = "hair_ahoge"
+		icon = 'icons/mob/human_face_vr.dmi'
 		icon_add = null
 
 	bald //Everyone goes bald.
@@ -76,8 +87,7 @@
 		icon_state = "bald"
 		gender = MALE
 		flags = HAIR_VERY_SHORT
-		species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST) //Lets all the races be bald if they want.
-
+		species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_APIDAEN, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_AURIL, SPECIES_DREMACHIR) //Lets all the races be bald if they want.
 
 	baldfade
 		name = "Balding Fade"
@@ -132,7 +142,7 @@
 	bob
 		name = "Bob"
 		icon_state = "hair_bobcut"
-		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI)
+		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI, SPECIES_APIDAEN, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_AURIL, SPECIES_DREMACHIR)
 		flags = HAIR_TIEABLE
 
 	bobcutalt
@@ -143,7 +153,7 @@
 	bobcurl
 		name = "Bobcurl"
 		icon_state = "hair_bobcurl"
-		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI)
+		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI,SPECIES_APIDAEN,SPECIES_VETALA_PALE,SPECIES_VETALA_RUDDY,SPECIES_AURIL,SPECIES_DREMACHIR)
 		flags = HAIR_TIEABLE
 
 	bowl
@@ -178,14 +188,17 @@
 	bun
 		name = "Bun"
 		icon_state = "hair_bun"
+		flags = HAIR_TIEABLE
 
 	bun2
 		name = "Bun 2"
 		icon_state = "hair_bun2"
+		flags = HAIR_TIEABLE
 
 	bun3
 		name = "Bun 3"
 		icon_state = "hair_bun3"
+		flags = HAIR_TIEABLE
 
 	bun
 		name = "Bun Casual"
@@ -207,7 +220,7 @@
 		name = "Buzzcut"
 		icon_state = "hair_buzzcut"
 		flags = HAIR_VERY_SHORT
-		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI)
+		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI,SPECIES_APIDAEN,SPECIES_VETALA_PALE,SPECIES_VETALA_RUDDY,SPECIES_AURIL,SPECIES_DREMACHIR)
 
 	crono
 		name = "Chrono"
@@ -278,6 +291,7 @@
 	halfshaved
 		name = "Emo Half-Shaved"
 		icon_state = "hair_halfshaved"
+		flags = HAIR_TIEABLE
 
 	longemo
 		name = "Emo Long"
@@ -449,11 +463,12 @@
 	modern
 		name = "Modern"
 		icon_state = "hair_modern"
+		flags = HAIR_TIEABLE
 
 	mohawk
 		name = "Mohawk"
 		icon_state = "hair_d"
-		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI)
+		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI,SPECIES_APIDAEN,SPECIES_VETALA_PALE,SPECIES_VETALA_RUDDY,SPECIES_AURIL,SPECIES_DREMACHIR)
 
 	regulationmohawk
 		name = "Mohawk Regulation"
@@ -513,6 +528,7 @@
 	shortovereye
 		name = "Overeye Short"
 		icon_state = "hair_shortovereye"
+		flags = HAIR_TIEABLE
 
 	veryshortovereyealternate
 		name = "Overeye Very Short, Alternate"
@@ -573,7 +589,7 @@
 		icon = 'icons/mob/human_face_vr.dmi'
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		icon_state = "hair_ponytail6"
-		species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA,SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST)
+		species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA,SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_APIDAEN, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_AURIL, SPECIES_DREMACHIR)
 
 	sharpponytail
 		name = "Ponytail Sharp"
@@ -583,6 +599,11 @@
 	spikyponytail
 		name = "Ponytail Spiky"
 		icon_state = "hair_spikyponytail"
+		flags = HAIR_TIEABLE
+
+	highponytail
+		name = "High Ponytail"
+		icon_state = "hair_highponytail"
 		flags = HAIR_TIEABLE
 
 	poofy
@@ -662,6 +683,13 @@
 		icon_state = "hair_shorthair3"
 		flags = HAIR_VERY_SHORT
 
+	shortalt2
+		name = "Short Hair 2 Alt"
+		icon_state = "shorthair3a"
+		flags = HAIR_VERY_SHORT
+		icon = 'icons/mob/human_face_vr.dmi'
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
+
 	short3
 		name = "Short Hair 3"
 		icon_state = "hair_shorthair4"
@@ -704,7 +732,7 @@
 	spiky
 		name = "Spiky"
 		icon_state = "hair_spikey"
-		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI)
+		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI,SPECIES_APIDAEN,SPECIES_VETALA_PALE,SPECIES_VETALA_RUDDY,SPECIES_AURIL,SPECIES_DREMACHIR)
 
 	thinning
 		name = "Thinning"
@@ -768,6 +796,11 @@
 		icon_state = "hair_undercut3"
 		gender = MALE
 		flags = HAIR_VERY_SHORT
+
+	undercutlong
+		name = "Undercut Long"
+		icon_state = "hair_undercutlong"
+		flags = HAIR_TIEABLE
 
 	unkept
 		name = "Unkept"
@@ -858,6 +891,11 @@
 		icon_state = "hair_celebcurls"
 		flags = HAIR_TIEABLE
 
+	bigcurls
+		name = "Big Curls"
+		icon_state = "hair_bigcurls"
+		flags = HAIR_TIEABLE
+
 	jessica
 		name = "Jessica"
 		icon_state = "hair_jessica"
@@ -919,6 +957,11 @@
 		name = "Vivi"
 		icon_state = "hair_vivi"
 
+	taro
+		name = "Taro"
+		icon_state = "hair_taro"
+		flags = HAIR_TIEABLE
+
 	astolfo
 		name = "Astolfo"
 		icon = 'icons/mob/human_face_vr.dmi'
@@ -958,12 +1001,49 @@
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		icon_state = "hair_twincurl"
 
-	inkling
-		name = "colorable mature inkling hair"
+	myopia
+		name = "Myopia"
 		icon = 'icons/mob/human_face_vr.dmi'
-		icon_state = "inkling-colorable"
-		color_blend_mode = ICON_MULTIPLY
-		do_colouration = 1
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		icon_state = "myopia"
+		flags = HAIR_VERY_SHORT
+
+	shortish
+		name = "Shortish"
+		icon = 'icons/mob/human_face_vr.dmi'
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		icon_state = "bshort-1"
+
+	shortmess
+		name = "Short Mess"
+		icon = 'icons/mob/human_face_vr.dmi'
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		icon_state = "bshort-2"
+
+	peaked
+		name = "Peaked"
+		icon = 'icons/mob/human_face_vr.dmi'
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		icon_state = "bshort-3"
+
+	blindbangs
+		name = "Blind Bangs"
+		icon = 'icons/mob/human_face_vr.dmi'
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		icon_state = "blindbangs"
+		flags = HAIR_TIEABLE
+
+	reallyblindbangs
+		name = "Grudge"
+		icon = 'icons/mob/human_face_vr.dmi'
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		icon_state = "grudge"
+		flags = HAIR_TIEABLE
+
+
+
+
+
 
 /*
 ///////////////////////////////////
@@ -975,21 +1055,21 @@
 
 /datum/sprite_accessory/facial_hair
 	icon = 'icons/mob/human_face_or_vr.dmi'
-	var/color_blend_mode = ICON_MULTIPLY
-	species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST) //This lets all races use the facial hair styles.
+	color_blend_mode = ICON_MULTIPLY
+	species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_APIDAEN, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_AURIL, SPECIES_DREMACHIR) //This lets all races use the facial hair styles.
 
 	shaved
 		name = "Shaved"
 		icon_state = "bald"
 		gender = NEUTER
-		species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST) //This needed to be manually defined, apparantly.
+		species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_APIDAEN, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_AURIL, SPECIES_DREMACHIR) //This needed to be manually defined, apparantly.
 
 	neck_fluff
 		name = "Neck Fluff"
 		icon = 'icons/mob/human_face_or_vr.dmi'
 		icon_state = "facial_neckfluff"
 		gender = NEUTER
-		species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST)
+		species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_APIDAEN, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_AURIL, SPECIES_DREMACHIR)
 
 	vulp_none
 		name = "None"
@@ -1747,13 +1827,20 @@
 		species_allowed = list(SPECIES_XENOHYBRID)
 		gender = NEUTER
 
+	xeno_head_hybrid_color1
+		name = "Xenohybrid dome 1"
+		icon = 'icons/mob/human_face_vr.dmi'
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		icon_state = "cxeno_hybrid1"
+		species_allowed = list(SPECIES_XENOHYBRID)
+		gender = NEUTER
 // Shadekin stuffs
 	shadekin_hair_short
 		name = "Shadekin Short Hair"
 		icon = 'icons/mob/human_face_vr.dmi'
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		icon_state = "shadekin_short"
-		species_allowed = list(SPECIES_SHADEKIN)
+		species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
 		gender = NEUTER
 
 	shadekin_hair_poofy
@@ -1761,7 +1848,7 @@
 		icon = 'icons/mob/human_face_vr.dmi'
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		icon_state = "shadekin_poofy"
-		species_allowed = list(SPECIES_SHADEKIN)
+		species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
 		gender = NEUTER
 
 	shadekin_hair_long
@@ -1769,7 +1856,7 @@
 		icon = 'icons/mob/human_face_vr.dmi'
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		icon_state = "shadekin_long"
-		species_allowed = list(SPECIES_SHADEKIN)
+		species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
 		gender = NEUTER
 
 	shadekin_hair_rivyr
@@ -1778,7 +1865,7 @@
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		icon_state = "shadekin_rivyr"
 		ckeys_allowed = list("verysoft")
-		species_allowed = list(SPECIES_SHADEKIN)
+		species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
 		gender = NEUTER
 
 /datum/sprite_accessory/facial_hair
@@ -1896,9 +1983,9 @@
 */
 
 /datum/sprite_accessory/marking
-	icon = 'icons/mob/human_races/markings.dmi'
+	icon = "icons/mob/human_races/markings.dmi"
 	do_colouration = 1 //Almost all of them have it, COLOR_ADD
-	var/color_blend_mode = ICON_ADD
+	color_blend_mode = ICON_ADD
 
 	//Empty list is unrestricted. Should only restrict the ones that make NO SENSE on other species,
 	//like Tajaran inner-ear coloring overlay stuff.
@@ -1907,10 +1994,15 @@
 	var/body_parts = list() //A list of bodyparts this covers, in organ_tag defines
 	//Reminder: BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_TORSO,BP_GROIN,BP_HEAD
 
-	tat_heart
-		name = "Tattoo (Heart, Torso)"
-		icon_state = "tat_heart"
-		body_parts = list(BP_TORSO)
+	tat_rheart
+		name = "Tattoo (Heart, R. Arm)"
+		icon_state = "tat_rheart"
+		body_parts = list(BP_R_ARM)
+
+	tat_lheart
+		name = "Tattoo (Heart, L. Arm)"
+		icon_state = "tat_lheart"
+		body_parts = list(BP_L_ARM)
 
 	tat_hive
 		name = "Tattoo (Hive, Back)"
@@ -1953,6 +2045,42 @@
 		name = "Tattoo (Tiger Stripes, Body)"
 		icon_state = "tat_tiger"
 		body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_TORSO,BP_GROIN)
+
+	tat_inmon1
+		name = "Tattoo (Inmon, Variant 1)"
+		icon_state = "tat_inmon1"
+		body_parts = list(BP_GROIN)
+
+	tat_inmon2
+		name = "Tattoo (Inmon, Variant 2)"
+		icon_state = "tat_inmon2"
+		body_parts = list(BP_GROIN)
+
+	tat_inmon3
+		name = "Tattoo (Inmon, Variant 3)"
+		icon_state = "tat_inmon3"
+		body_parts = list(BP_GROIN)
+
+	tanlines
+		name = "Tan Lines (One Piece, F)"
+		icon_state = "tan_op"
+		icon = "icons/mob/human_races/markings.dmi"
+		body_parts = list(BP_TORSO,BP_GROIN)
+
+	tanlines_m
+		name = "Tan Lines (One Piece, M)"
+		icon_state = "tan_mop"
+		body_parts = list(BP_TORSO,BP_GROIN)
+
+	tanlines_bikini
+		name = "Tan Lines (Bikini)"
+		icon_state = "tan_bikini"
+		body_parts = list(BP_TORSO,BP_GROIN)
+
+	tanlines_b_strap
+		name = "Tan Lines (Bikini, Strapless)"
+		icon_state = "tan_bikini_strap"
+		body_parts = list(BP_TORSO,BP_GROIN)
 
 	taj_paw_socks
 		name = "Socks Coloration (Taj)"
@@ -2135,6 +2263,70 @@
 		body_parts = list(BP_HEAD,BP_L_HAND,BP_R_HAND,BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM)
 		species_allowed = list(SPECIES_VOX)
 
+	vox_alt
+		name = "Vox Alternate"
+		icon_state = "bay_vox"
+		body_parts = list (BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_TORSO,BP_GROIN,BP_HEAD)
+		species_allowed = list(SPECIES_VOX)
+
+	vox_alt_eyes
+		name = "Alternate Vox Eyes"
+		icon_state = "bay_vox_eyes"
+		body_parts = list(BP_HEAD)
+		species_allowed = list(SPECIES_VOX)
+
+	// Misc
+	c_beast_body
+		name = "Cyber Body"
+		icon_state = "c_beast_body"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_TORSO,BP_GROIN)
+
+	c_beast_plating
+		name = "Cyber Plating (Use with Cyber Body)"
+		icon_state = "c_beast_plating"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM)
+
+	c_beast_band
+		name = "Cyber Band (Use with Cybertech head)"
+		icon_state = "c_beast_band"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	c_beast_cheek_a
+		name = "Cyber Beast Cheeks A (Use A, B and C)"
+		icon_state = "c_beast_a"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	c_beast_cheek_b
+		name = "Cyber Beast Cheeks B (Use A, B and C)"
+		icon_state = "c_beast_b"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	c_beast_cheek_c
+		name = "Cyber Beast Cheeks c (Use A, B and C)"
+		icon_state = "c_beast_c"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+/datum/sprite_accessory/marking/vr_special
+	icon = 'icons/mob/human_races/markings_vr.dmi'
+
+	abomination
+		name = "Abomination"
+		icon_state = "abomination"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	abomination_alt
+		name = "Abomination Alternate"
+		icon_state = "abomination2"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
 /datum/sprite_accessory/marking/vr
 	icon = 'icons/mob/human_races/markings_vr.dmi'
 
@@ -2203,14 +2395,14 @@
 		icon_state = "sergal_full"
 		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_GROIN,BP_TORSO,BP_HEAD)
-		species_allowed = list("Sergal")
+		species_allowed = list(SPECIES_SERGAL)
 
 	sergal_full_female
 		name = "Sergal Markings (Female)"
 		icon_state = "sergal_full_female"
 		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_GROIN,BP_TORSO,BP_HEAD)
-		species_allowed = list("Sergal")
+		species_allowed = list(SPECIES_SERGAL)
 
 	monoeye
 		name = "Monoeye"
@@ -2537,6 +2729,11 @@
 		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_L_FOOT,BP_L_LEG)
 
+	motheyes
+		name = "Moth Eyes"
+		icon_state = "motheyes"
+		body_parts = list(BP_HEAD)
+
 	animeeyesinner
 		name = "Anime Eyes Inner"
 		icon_state = "animeeyesinner"
@@ -2551,7 +2748,7 @@
 		name = "Panda Eye Markings"
 		icon_state = "eyes_panda"
 		body_parts = list(BP_HEAD)
-		species_allowed = list("Human")
+		species_allowed = list(SPECIES_HUMAN)
 
 	catwomantorso
 		name = "Catwoman chest stripes"
@@ -2646,11 +2843,11 @@
 		name = "Heterochromia"
 		icon_state = "heterochromia"
 		body_parts = list(BP_HEAD)
-		species_allowed = list(SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_SHADEKIN) //This lets all races use the default hairstyles.
+		species_allowed = list(SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_SHADEKIN, SPECIES_APIDAEN, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_AURIL, SPECIES_DREMACHIR) //This lets all races use the default hairstyles.
 
 	werewolf_nose
 		name = "Werewolf nose"
-		icon = 'icons/mob/species/werebeast/werebeast_markings.dmi'
+		icon = 'icons/mob/clothing/species/werebeast/werebeast_markings.dmi'
 		icon_state = "werewolf_nose"
 		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_HEAD)
@@ -2658,7 +2855,7 @@
 
 	werewolf_face
 		name = "Werewolf face"
-		icon = 'icons/mob/species/werebeast/werebeast_markings.dmi'
+		icon = 'icons/mob/clothing/species/werebeast/werebeast_markings.dmi'
 		icon_state = "werewolf"
 		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_HEAD)
@@ -2666,7 +2863,7 @@
 
 	werewolf_belly
 		name = "Werewolf belly"
-		icon = 'icons/mob/species/werebeast/werebeast_markings.dmi'
+		icon = 'icons/mob/clothing/species/werebeast/werebeast_markings.dmi'
 		icon_state = "werewolf"
 		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_GROIN,BP_TORSO)
@@ -2674,7 +2871,7 @@
 
 	werewolf_socks
 		name = "Werewolf socks"
-		icon = 'icons/mob/species/werebeast/werebeast_markings.dmi'
+		icon = 'icons/mob/clothing/species/werebeast/werebeast_markings.dmi'
 		icon_state = "werewolf"
 		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND)
@@ -2685,7 +2882,7 @@
 		icon_state = "shadekin-snoot"
 		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_HEAD)
-		species_allowed = list(SPECIES_SHADEKIN)
+		species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
 
 	taj_nose_alt
 		name = "Nose Color, alt. (Taj)"
@@ -2744,6 +2941,113 @@
 		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_L_LEG,BP_R_LEG,BP_L_HAND,BP_R_HAND,BP_TORSO,BP_GROIN,BP_HEAD)
 		species_allowed = list(SPECIES_TESHARI)
+
+	short_snoot
+		name = "Short Snout"
+		icon_state = "shortsnoot"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	short_snoot_nose
+		name = "Short Snout Nose"
+		icon_state = "snootnose"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	thirdeye
+		name = "Third Eye"
+		icon_state = "thirdeye"
+		body_parts = list(BP_HEAD)
+
+	fullhead
+		name = "Full Head Color"
+		icon_state = "fullhead"
+		body_parts = list(BP_HEAD)
+
+	panda_full
+		name = "Panda Limbs"
+		icon_state = "panda"
+		body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND)
+		color_blend_mode = ICON_ADD
+
+
+	jackal_backpattern
+		name = "Jackal Backpattern"
+		icon_state = "jackal_backpattern"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_L_ARM,BP_R_ARM,BP_TORSO)
+
+	jackal_bareback
+		name = "Jackal Bareback"
+		icon_state = "jackal_bareback"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_L_ARM,BP_R_ARM,BP_GROIN,BP_TORSO)
+
+	voxscales
+		name = "Vox Scales"
+		icon_state = "Voxscales"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_HEAD)
+
+	voxclaws
+		name = "Vox Claws"
+		icon_state = "Voxclaws"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_HAND,BP_R_HAND)
+
+	voxbeak
+		name = "Vox Beak"
+		icon_state = "Voxscales"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	unathihood
+		name = "Cobra Hood"
+		icon_state = "unathihood"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	unathidoublehorns
+		name = "Double Unathi Horns"
+		icon_state = "unathidoublehorns"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	unathihorns
+		name = "Unathi Horns"
+		icon_state = "unathihorns"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	unathiramhorns
+		name = "Unathi Ram Horns"
+		icon_state = "unathiramhorns"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	unathishortspines
+		name = "Unathi Short Spines"
+		icon_state = "unathishortspines"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	unathilongspines
+		name = "Unathi Long Spines"
+		icon_state = "unathilongspines"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	unathishortfrills
+		name = "Unathi Short Frills"
+		icon_state = "unathishortfrills"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	unathilongfrills
+		name = "Unathi Long Frills"
+		icon_state = "unathilongfrills"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
 
 //skin styles - WIP
 //going to have to re-integrate this with surgery

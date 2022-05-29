@@ -34,8 +34,7 @@
 	name = "biological disk box"
 	desc = "A box of biological data disks, apparently."
 
-/obj/item/storage/box/xenobiodisk/New()
-	..()
+/obj/item/storage/box/xenobiodisk/PopulateContents()
 	for(var/i = 0 to 7)
 		new /obj/item/disk/xenobio(src)
 
@@ -58,7 +57,7 @@
 	return attack_hand(user)
 
 /obj/machinery/xenobio/attack_hand(mob/user as mob)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/xenobio/attackby(obj/item/W as obj, mob/user as mob)
 	if(default_deconstruction_screwdriver(user, W))
@@ -89,7 +88,7 @@
 		return
 	..()
 
-/obj/machinery/xenobio/process()
+/obj/machinery/xenobio/process(delta_time)
 
 	..()
 	if(!active) return
@@ -102,15 +101,15 @@
 	in_use = 0
 	if(failed_task)
 		failed_task = 0
-		visible_message("\icon[src] [src] pings unhappily, flashing a red warning light.")
+		visible_message("[icon2html(thing = src, target = world)] [src] pings unhappily, flashing a red warning light.")
 	else
-		visible_message("\icon[src] [src] pings happily.")
+		visible_message("[icon2html(thing = src, target = world)] [src] pings happily.")
 
 	if(eject_disk)
 		eject_disk = 0
 		if(loaded_disk)
 			loaded_disk.forceMove(get_turf(src))
-			visible_message("\icon[src] [src] beeps and spits out [loaded_disk].")
+			visible_message("[icon2html(thing = src, target = world)] [src] beeps and spits out [loaded_disk].")
 			loaded_disk = null
 
 /obj/machinery/xenobio/extractor
@@ -123,8 +122,8 @@
 	var/datum/xeno/traits/genetics // Currently scanned xeno genetic structure.
 	var/degradation = 0     // Increments with each scan, stops allowing gene mods after a certain point.
 
-/obj/machinery/xenobio/extractor/New()
-	..()
+/obj/machinery/xenobio/extractor/Initialize(mapload)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/manipulator(src)
 	component_parts += new /obj/item/stock_parts/manipulator(src)
@@ -149,7 +148,7 @@
 		return
 	..()
 
-/obj/machinery/xenobio/extractor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/xenobio/extractor/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	if(!user)
 		return
 
@@ -190,7 +189,7 @@
 /obj/machinery/xenobio/proc/eject_disk()
 	if(!loaded_disk) return
 	loaded_disk.forceMove(loc)
-	visible_message("\icon[src] [src] beeps and spits out [loaded_disk].")
+	visible_message("[icon2html(thing = src, target = world)] [src] beeps and spits out [loaded_disk].")
 	loaded_disk = null
 
 /obj/machinery/xenobio/extractor/Topic(href, href_list)
@@ -202,7 +201,7 @@
 		if(!product) return
 
 		product.forceMove(get_turf(src))
-		visible_message("\icon[src] [src] beeps and spits out [product].")
+		visible_message("[icon2html(thing = src, target = world)] [src] beeps and spits out [product].")
 		product = null
 
 	if(href_list["eject_disk"])
@@ -265,8 +264,8 @@
 
 	var/mob/living/simple_mob/xeno/slime/occupant
 
-/obj/machinery/xenobio/editor/New()
-	..()
+/obj/machinery/xenobio/editor/Initialize(mapload, newdir)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/manipulator(src)
 	component_parts += new /obj/item/stock_parts/manipulator(src)
@@ -296,7 +295,7 @@
 	..()
 
 
-/obj/machinery/xenobio/editor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/xenobio/editor/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 
 	if(!user)
 		return

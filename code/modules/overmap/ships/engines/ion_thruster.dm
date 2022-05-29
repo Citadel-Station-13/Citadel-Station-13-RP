@@ -40,18 +40,28 @@
 	icon = 'icons/turf/shuttle_parts.dmi'
 	icon_state = "nozzle"
 	power_channel = ENVIRON
-	idle_power_usage = 150
+	idle_power_usage = 100
 	anchored = TRUE
 	// construct_state = /decl/machine_construction/default/panel_closed
 	var/datum/ship_engine/ion/controller
 	var/thrust_limit = 1
 	var/on = 1
-	var/burn_cost = 1000
-	var/generated_thrust = 4
+	var/burn_cost = 7500
+	var/generated_thrust = 2.5
+	var/linked = FALSE
 
-/obj/machinery/ion_engine/Initialize()
+/obj/machinery/ion_engine/Initialize(mapload)
 	. = ..()
 	controller = new(src)
+	if(SSshuttle.initialized)
+		link_to_ship()
+
+/obj/machinery/ion_engine/proc/link_to_ship()
+	for(var/ship in SSshuttle.ships)
+		var/obj/effect/overmap/visitable/ship/S = ship
+		if(S.check_ownership(src))
+			S.engines |= controller
+			linked = TRUE
 
 /obj/machinery/ion_engine/Destroy()
 	QDEL_NULL(controller)
@@ -61,9 +71,7 @@
 	. = list()
 	.+= "Location: [get_area(src)]."
 	if(!powered())
-		.+= "Insufficient power to operate."
-
-	. = jointext(.,"<br>")
+		.+= list(list("Insufficient power to operate.", "bad"))
 
 /obj/machinery/ion_engine/proc/burn()
 	if(!on && !powered())

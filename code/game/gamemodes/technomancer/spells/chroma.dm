@@ -14,8 +14,8 @@
 	aspect = ASPECT_LIGHT
 	var/color_to_use = "#FFFFFF"
 
-/obj/item/spell/chroma/New()
-	..()
+/obj/item/spell/chroma/Initialize(mapload)
+	. = ..()
 	set_light(6, 5, l_color = color_to_use)
 
 /obj/effect/chroma
@@ -24,12 +24,11 @@
 	invisibility = 101
 	var/time_to_die = 2 MINUTES //Despawn after this time, if set.
 
-/obj/effect/chroma/New(var/newloc, var/new_color = "#FFFFFF")
-	..()
+/obj/effect/chroma/Initialize(mapload, new_color = "#FFFFFF")
+	. = ..()
 	set_light(6, 5, l_color = new_color)
 	if(time_to_die)
-		spawn(time_to_die)
-			qdel(src)
+		QDEL_IN(src, time_to_die)
 
 /obj/item/spell/chroma/on_ranged_cast(atom/hit_atom, mob/user)
 	var/turf/T = get_turf(hit_atom)

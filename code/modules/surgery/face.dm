@@ -23,6 +23,7 @@
 /datum/surgery_step/generic/cut_face
 	allowed_tools = list(
 	/obj/item/surgical/scalpel = 100,		\
+	/obj/item/surgical/scalpel_primitive = 80,	\
 	/obj/item/material/knife = 75,	\
 	/obj/item/material/shard = 50, 		\
 	)
@@ -39,8 +40,8 @@
 	..()
 
 /datum/surgery_step/generic/cut_face/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	user.visible_message("<font color='blue'>[user] has cut open [target]'s face and neck with \the [tool].</font>" , \
-	"<font color='blue'> You have cut open[target]'s face and neck with \the [tool].</font>",)
+	user.visible_message("<font color=#4F49AF>[user] has cut open [target]'s face and neck with \the [tool].</font>" , \
+	"<font color=#4F49AF> You have cut open[target]'s face and neck with \the [tool].</font>",)
 	target.op_stage.face = 1
 
 /datum/surgery_step/generic/cut_face/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -58,6 +59,7 @@
 	allowed_tools = list(
 	/obj/item/surgical/hemostat = 100, 	\
 	/obj/item/stack/cable_coil = 75, 	\
+	/obj/item/surgical/hemostat_primitive = 50,	\
 	/obj/item/assembly/mousetrap = 10	//I don't know. Don't ask me. But I'm leaving it because hilarity.
 	)
 
@@ -73,8 +75,8 @@
 	..()
 
 /datum/surgery_step/face/mend_vocal/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	user.visible_message("<font color='blue'>[user] mends [target]'s vocal cords with \the [tool].</font>", \
-	"<font color='blue'>You mend [target]'s vocal cords with \the [tool].</font>")
+	user.visible_message("<font color=#4F49AF>[user] mends [target]'s vocal cords with \the [tool].</font>", \
+	"<font color=#4F49AF>You mend [target]'s vocal cords with \the [tool].</font>")
 	target.op_stage.face = 2
 
 /datum/surgery_step/face/mend_vocal/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -89,6 +91,7 @@
 /datum/surgery_step/face/fix_face
 	allowed_tools = list(
 		/obj/item/surgical/retractor = 100, 	\
+		/obj/item/surgical/retractor_primitive = 75,	\
 		/obj/item/material/kitchen/utensil/fork = 75
 	)
 
@@ -106,8 +109,8 @@
 	..()
 
 /datum/surgery_step/face/fix_face/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	user.visible_message("<font color='blue'>[user] pulls the skin on [target]'s face back in place with \the [tool].</font>",	\
-	"<font color='blue'>You pull the skin on [target]'s face back in place with \the [tool].</font>")
+	user.visible_message("<font color=#4F49AF>[user] pulls the skin on [target]'s face back in place with \the [tool].</font>",	\
+	"<font color=#4F49AF>You pull the skin on [target]'s face back in place with \the [tool].</font>")
 	target.op_stage.face = 3
 
 /datum/surgery_step/face/fix_face/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -124,6 +127,7 @@
 	allowed_tools = list(
 	/obj/item/surgical/cautery = 100,			\
 	/obj/item/clothing/mask/smokable/cigarette = 75,	\
+	/obj/item/surgical/cautery_primitive = 70,	\
 	/obj/item/flame/lighter = 50,			\
 	/obj/item/weldingtool = 25
 	)
@@ -135,14 +139,14 @@
 	return ..() && target.op_stage.face > 0
 
 /datum/surgery_step/face/cauterize/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	user.visible_message("<font color='blue'>[user] is beginning to cauterize the incision on [target]'s face and neck with \the [tool].</font>" , \
-	"<font color='blue'>You are beginning to cauterize the incision on [target]'s face and neck with \the [tool].</font>")
+	user.visible_message("<font color=#4F49AF>[user] is beginning to cauterize the incision on [target]'s face and neck with \the [tool].</font>" , \
+	"<font color=#4F49AF>You are beginning to cauterize the incision on [target]'s face and neck with \the [tool].</font>")
 	..()
 
 /datum/surgery_step/face/cauterize/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<font color='blue'>[user] cauterizes the incision on [target]'s face and neck with \the [tool].</font>", \
-	"<font color='blue'>You cauterize the incision on [target]'s face and neck with \the [tool].</font>")
+	user.visible_message("<font color=#4F49AF>[user] cauterizes the incision on [target]'s face and neck with \the [tool].</font>", \
+	"<font color=#4F49AF>You cauterize the incision on [target]'s face and neck with \the [tool].</font>")
 	affected.open = 0
 	affected.status &= ~ORGAN_BLEEDING
 	if (target.op_stage.face == 3)

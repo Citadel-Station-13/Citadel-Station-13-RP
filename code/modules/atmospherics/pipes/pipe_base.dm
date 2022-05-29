@@ -19,13 +19,10 @@
 	buckle_require_restraints = 1
 	buckle_lying = -1
 
-/obj/machinery/atmospherics/pipe/drain_power()
-	return -1
-
-/obj/machinery/atmospherics/pipe/New()
+/obj/machinery/atmospherics/pipe/Initialize(mapload, newdir)
 	if(istype(get_turf(src), /turf/simulated/wall) || istype(get_turf(src), /turf/simulated/shuttle/wall) || istype(get_turf(src), /turf/unsimulated/wall))
 		level = 1
-	..()
+	return ..()
 
 /obj/machinery/atmospherics/pipe/hides_under_flooring()
 	return level != 2
@@ -95,10 +92,9 @@
 	if (level==1 && isturf(T) && !T.is_plating())
 		to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
 		return 1
-	if(!can_unwrench())
-		to_chat(user, "<span class='warning'>You cannot unwrench \the [src], it is too exerted due to internal pressure.</span>")
-		add_fingerprint(user)
-		return 1
+	if(unsafe_pressure())
+		to_chat(user, "<span class='warning'>You feel a gust of air blowing in your face as you try to unwrench [src]. Maybe you should reconsider..</span>")
+	add_fingerprint(user)
 	playsound(src, W.usesound, 50, 1)
 	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
 	if (do_after(user, 40 * W.toolspeed))
@@ -132,11 +128,18 @@
 
 /obj/machinery/atmospherics/pipe/hide(var/i)
 	if(istype(loc, /turf/simulated))
-		invisibility = i ? 101 : 0
+		invisibility = i ? 100 : 0
 	update_icon()
 
-/obj/machinery/atmospherics/pipe/process()
+/obj/machinery/atmospherics/pipe/process(delta_time)
 	if(!parent) //This should cut back on the overhead calling build_network thousands of times per cycle
 		..()
 	else
 		. = PROCESS_KILL
+
+/obj/machinery/atmospherics/pipe/attack_ghost(mob/user)
+	. = ..()
+	if(user.client && user.client.inquisitive_ghost)
+		analyze_gases_ghost(src, user)
+	else
+		to_chat(user, "<span class='warning'>[src] doesn't have a pipenet, which is probably a bug.</span>")

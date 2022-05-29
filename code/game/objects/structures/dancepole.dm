@@ -12,9 +12,9 @@
 		anchored = !anchored
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 		if(anchored)
-			to_chat(user, "<font color='blue'>You secure \the [src].</font>")
+			to_chat(user, "<font color=#4F49AF>You secure \the [src].</font>")
 		else
-			to_chat(user, "<font color='blue'>You unsecure \the [src].</font>")
+			to_chat(user, "<font color=#4F49AF>You unsecure \the [src].</font>")
 
 	if(istype(O, /obj/item/weldingtool))
 		var/obj/item/weldingtool/WT = O

@@ -16,6 +16,8 @@ LINEN BINS
 	throw_speed = 1
 	throw_range = 2
 	w_class = ITEMSIZE_SMALL
+	drop_sound = 'sound/items/drop/backpack.ogg'
+	pickup_sound = 'sound/items/pickup/backpack.ogg'
 
 /obj/item/bedsheet/attack_self(mob/user as mob)
 	user.drop_item()
@@ -31,8 +33,8 @@ LINEN BINS
 		user.visible_message("<span class='notice'>\The [user] begins cutting up [src] with [I].</span>", "<span class='notice'>You begin cutting up [src] with [I].</span>")
 		if(do_after(user, 50))
 			to_chat(user, "<span class='notice'>You cut [src] into pieces!</span>")
-			for(var/i in 1 to rand(2,5))
-				new /obj/item/reagent_containers/glass/rag(drop_location())
+			for(var/i in 1 to rand(5,10))
+				new /obj/item/stack/material/cloth(drop_location())
 			qdel(src)
 		return
 	..()
@@ -88,6 +90,11 @@ LINEN BINS
 
 /obj/item/bedsheet/ian
 	icon_state = "sheetian"
+
+/obj/item/bedsheet/cosmos
+	name = "cosmic space bedsheet"
+	desc = "Made from the dreams of those who wonder at the stars."
+	icon_state = "sheetcosmos"
 
 /obj/item/bedsheet/double
 	icon_state = "doublesheet"
@@ -157,6 +164,9 @@ LINEN BINS
 	icon_state = "doublesheetian"
 	item_state = "sheetian"
 
+/obj/item/bedsheet/cosmosdouble
+	icon_state = "doublesheetcosmos"
+
 /obj/structure/bedsheetbin
 	name = "linen bin"
 	desc = "A linen bin. It looks rather cosy."
@@ -169,15 +179,15 @@ LINEN BINS
 
 
 /obj/structure/bedsheetbin/examine(mob/user)
-	..(user)
+	. = ..()
 
 	if(amount < 1)
-		to_chat(user, "There are no bed sheets in the bin.")
+		. += "There are no bed sheets in the bin."
 		return
 	if(amount == 1)
-		to_chat(user, "There is one bed sheet in the bin.")
+		. += "There is one bed sheet in the bin."
 		return
-	to_chat(user, "There are [amount] bed sheets in the bin.")
+	. += "There are [amount] bed sheets in the bin."
 
 
 /obj/structure/bedsheetbin/update_icon()

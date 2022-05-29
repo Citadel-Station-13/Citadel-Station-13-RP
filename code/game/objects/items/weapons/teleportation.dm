@@ -21,7 +21,7 @@
 	throw_speed = 4
 	throw_range = 20
 	origin_tech = list(TECH_MAGNET = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 400)
+	matter = list(MAT_STEEL = 400)
 
 /obj/item/locator/attack_self(mob/user as mob)
 	user.set_machine(src)
@@ -127,31 +127,31 @@ Frequency:
 	throw_speed = 3
 	throw_range = 5
 	origin_tech = list(TECH_MAGNET = 1, TECH_BLUESPACE = 3)
-	matter = list(DEFAULT_WALL_MATERIAL = 10000)
+	matter = list(MAT_STEEL = 10000)
 	preserve_item = 1
 
 /obj/item/hand_tele/attack_self(mob/user as mob)
 	var/turf/current_location = get_turf(user)//What turf is the user on?
-	if(!current_location || current_location.z in GLOB.using_map.admin_levels || current_location.block_tele)//If turf was not found or they're on z level 2 or >7 which does not currently exist.
+	if(!current_location || (current_location.z in GLOB.using_map.admin_levels) || current_location.block_tele)//If turf was not found or they're on z level 2 or >7 which does not currently exist.
 		to_chat(user, "<span class='notice'>\The [src] is malfunctioning.</span>")
 		return
 	var/list/L = list(  )
-	for(var/obj/machinery/teleport/hub/R in machines)
+	for(var/obj/machinery/tele_pad/R in GLOB.machines)
 		var/obj/machinery/computer/teleporter/com
-		var/obj/machinery/teleport/station/station
-		for(var/direction in cardinal)
-			station = locate(/obj/machinery/teleport/station, get_step(R, direction))
+		var/obj/machinery/tele_projector/station
+		for(var/direction in GLOB.cardinal)
+			station = locate(/obj/machinery/tele_projector, get_step(R, direction))
 			if(station)
-				for(direction in cardinal)
+				for(direction in GLOB.cardinal)
 					com = locate(/obj/machinery/computer/teleporter, get_step(station, direction))
 					if(com)
 						break
 				break
-		if (istype(com, /obj/machinery/computer/teleporter) && com.locked && !com.one_time_use)
-			if(R.icon_state == "tele1")
-				L["[com.id] (Active)"] = com.locked
-			else
-				L["[com.id] (Inactive)"] = com.locked
+		// if (istype(com, /obj/machinery/computer/teleporter) && com.locked && !com.one_time_use)
+		// 	if(R.icon_state == "tele1")
+		// 		L["[com.id] (Active)"] = com.locked
+		// 	else
+		// 		L["[com.id] (Inactive)"] = com.locked
 	var/list/turfs = list(	)
 	for(var/turf/T in orange(10))
 		if(T.x>world.maxx-8 || T.x<8)	continue	//putting them at the edge is dumb

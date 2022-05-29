@@ -30,10 +30,10 @@
 			if(81 to 100)
 				overlays += "bees3"
 
-/obj/machinery/beehive/examine(var/mob/user)
-	..()
+/obj/machinery/beehive/examine(mob/user)
+	. = ..()
 	if(!closed)
-		to_chat(user, "The lid is open.")
+		. += "The lid is open."
 
 /obj/machinery/beehive/attackby(var/obj/item/I, var/mob/user)
 	if(I.is_crowbar())
@@ -137,7 +137,7 @@
 			to_chat(user, "<span class='notice'>You take all filled honeycombs out.</span>")
 		return
 
-/obj/machinery/beehive/process()
+/obj/machinery/beehive/process(delta_time)
 	if(closed && !smoked && bee_count)
 		pollinate_flowers()
 		update_icon()
@@ -215,9 +215,9 @@
 	desc = "A frame for the beehive that the bees have filled with honeycombs."
 	honey = 20
 
-/obj/item/honey_frame/filled/New()
-	..()
-	overlays += "honeycomb"
+/obj/item/honey_frame/filled/Initialize(mapload)
+	. = ..()
+	add_overlay("honeycomb")
 
 /obj/item/beehive_assembly
 	name = "beehive assembly"
@@ -232,33 +232,6 @@
 		new /obj/machinery/beehive(get_turf(user))
 		user.drop_from_inventory(src)
 		qdel(src)
-	return
-
-/obj/item/stack/material/wax
-	name = "wax"
-	singular_name = "wax piece"
-	desc = "Soft substance produced by bees. Used to make candles."
-	icon = 'icons/obj/beekeeping.dmi'
-	icon_state = "wax"
-	default_type = "wax"
-	pass_color = TRUE
-	strict_color_stacking = TRUE
-
-/obj/item/stack/material/wax/New()
-	..()
-	recipes = wax_recipes
-
-/datum/material/wax
-	name = "wax"
-	stack_type = /obj/item/stack/material/wax
-	icon_colour = "#fff343"
-	melting_point = T0C+300
-	weight = 1
-	pass_stack_colors = TRUE
-
-var/global/list/datum/stack_recipe/wax_recipes = list( \
-	new/datum/stack_recipe("candle", /obj/item/flame/candle) \
-)
 
 /obj/item/bee_pack
 	name = "bee pack"
@@ -267,20 +240,20 @@ var/global/list/datum/stack_recipe/wax_recipes = list( \
 	icon_state = "beepack"
 	var/full = 1
 
-/obj/item/bee_pack/New()
-	..()
-	overlays += "beepack-full"
+/obj/item/bee_pack/Initialize(mapload)
+	. = ..()
+	add_overlay("beepack-full")
 
 /obj/item/bee_pack/proc/empty()
 	full = 0
 	name = "empty bee pack"
 	desc = "A stasis pack for moving bees. It's empty."
-	overlays.Cut()
-	overlays += "beepack-empty"
+	cut_overlays()
+	add_overlay("beepack-empty")
 
 /obj/item/bee_pack/proc/fill()
 	full = initial(full)
 	name = initial(name)
 	desc = initial(desc)
-	overlays.Cut()
-	overlays += "beepack-full"
+	cut_overlays()
+	add_overlay("beepack-full")

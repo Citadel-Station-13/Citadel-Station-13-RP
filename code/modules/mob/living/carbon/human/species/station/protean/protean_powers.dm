@@ -1,4 +1,4 @@
-#define PER_LIMB_STEEL_COST SHEET_MATERIAL_AMOUNT
+#define PER_LIMB_STEEL_COST (10000 / 10)
 ////
 //  One-part Refactor
 ////
@@ -25,22 +25,23 @@
 
 	//Organ is missing, needs restoring
 	if(!organs_by_name[choice] || istype(organs_by_name[choice], /obj/item/organ/external/stump)) //allows limb stumps to regenerate like removed limbs.
-		if(refactory.get_stored_material(DEFAULT_WALL_MATERIAL) < PER_LIMB_STEEL_COST)
+		if(refactory.get_stored_material(MAT_STEEL) < PER_LIMB_STEEL_COST)
 			to_chat(src,"<span class='warning'>You're missing that limb, and need to store at least [PER_LIMB_STEEL_COST] steel to regenerate it.</span>")
 			return
 		var/regen = alert(src,"That limb is missing, do you want to regenerate it in exchange for [PER_LIMB_STEEL_COST] steel?","Regenerate limb?","Yes","No")
 		if(regen != "Yes")
-			return
-		if(!refactory.use_stored_material(DEFAULT_WALL_MATERIAL,PER_LIMB_STEEL_COST))
 			return
 		if(organs_by_name[choice])
 			var/obj/item/organ/external/oldlimb = organs_by_name[choice]
 			oldlimb.removed()
 			qdel(oldlimb)
 
-		var/mob/living/simple_mob/protean_blob/blob = nano_intoblob()
+		// var/mob/living/simple_mob/protean_blob/blob = nano_intoblob()
 		active_regen = TRUE
-		if(do_after(blob,5 SECONDS))
+		src.visible_message("<B>[src]</B>'s flesh begins to bubble, growing oily tendrils from their limb stump...")  // Gives a visualization for regenerating limbs.
+		if(do_after(src,5 SECONDS))  // Makes you not need to blob to regen a single limb. I'm keeping the full-body regen as blob-only, though
+			if(!refactory.use_stored_material(MAT_STEEL,PER_LIMB_STEEL_COST))
+				return
 			var/list/limblist = species.has_limbs[choice]
 			var/limbpath = limblist["path"]
 			var/obj/item/organ/external/new_eo = new limbpath(src)
@@ -48,13 +49,14 @@
 			new_eo.robotize(synthetic ? synthetic.company : null) //Use the base we started with
 			regenerate_icons()
 		active_regen = FALSE
-		nano_outofblob(blob)
+		visible_message("<B>[src]</B>'s tendrils solidify into a [choice].")
+		// nano_outofblob(blob)  No longer needed as we're not going to blob
 		return
 
 	//Organ exists, let's reshape it
 	var/list/usable_manufacturers = list()
-	for(var/company in chargen_robolimbs)
-		var/datum/robolimb/M = chargen_robolimbs[company]
+	for(var/company in GLOB.chargen_robolimbs)
+		var/datum/robolimb/M = GLOB.chargen_robolimbs[company]
 		if(!(choice in M.parts))
 			continue
 		if(impersonate_bodytype in M.species_cannot_use)
@@ -106,8 +108,8 @@
 		return
 	if(swap_not_rebuild == "Reshape")
 		var/list/usable_manufacturers = list()
-		for(var/company in chargen_robolimbs)
-			var/datum/robolimb/M = chargen_robolimbs[company]
+		for(var/company in GLOB.chargen_robolimbs)
+			var/datum/robolimb/M = GLOB.chargen_robolimbs[company]
 			if(!(BP_TORSO in M.parts))
 				continue
 			if(impersonate_bodytype in M.species_cannot_use)
@@ -140,7 +142,7 @@
 		return
 
 	//Not enough resources (AND spends the resources, should be the last check)
-	if(!refactory.use_stored_material(DEFAULT_WALL_MATERIAL,refactory.max_storage))
+	if(refactory.get_stored_material(MAT_STEEL) < min(10000, refactory.max_storage))
 		to_chat(src, "<span class='warning'>You need to be maxed out on normal metal to do this!</span>")
 		return
 
@@ -152,6 +154,10 @@
 	var/mob/living/simple_mob/protean_blob/blob = nano_intoblob()
 	if(do_after(blob, delay_length, null, 0))
 		if(stat != DEAD && refactory)
+			//Not enough resources (AND spends the resources, should be the last check)
+			if(!refactory.use_stored_material(MAT_STEEL,refactory.max_storage))
+				to_chat(src, "<span class='warning'>You need to be maxed out on normal metal to do this!</span>")
+				return
 			var/list/holder = refactory.materials
 			species.create_organs(src)
 			var/obj/item/organ/external/torso = organs_by_name[BP_TORSO]
@@ -232,14 +238,14 @@
 	var/obj/item/organ/internal/nano/refactory/refactory = nano_get_refactory()
 	//Missing the organ that does this
 	if(!istype(refactory))
-		to_chat(src,"<span class='warning'>You don't have a working refactory module!</span>")
+		to_chat(temporary_form? temporary_form : src, "<span class='warning'>You don't have a working refactory module!</span>")
 		return
 	if(refactory.processingbuffs)
-		to_chat(src,"<span class='warning'>You toggle material consumption off.</span>")
+		to_chat(temporary_form? temporary_form : src, "<span class='warning'>You toggle material consumption off.</span>")
 		refactory.processingbuffs = FALSE
 	else
 		refactory.processingbuffs = TRUE
-		to_chat(src,"<span class='warning'>You toggle material consumption on.</span>")
+		to_chat(temporary_form? temporary_form : src, "<span class='warning'>You toggle material consumption on.</span>")
 
 ////
 //  Blob Form
@@ -252,8 +258,9 @@
 
 	//Blob form
 	if(temporary_form)
-
-		if(health < maxHealth*0.35) //Reforming HP threshold.
+		var/datum/species/protean/P = species
+		ASSERT(istype(P))
+		if(P.getActualDamage(src) > P.damage_to_blob) //Reforming HP threshold.
 			to_chat(temporary_form,"<span class='warning'>You need to regenerate more nanites first!</span>")
 		else if(temporary_form.stat)
 			to_chat(temporary_form,"<span class='warning'>You can only do this while not stunned.</span>")
@@ -263,6 +270,9 @@
 	//Human form
 	else if(stat)
 		to_chat(src,"<span class='warning'>You can only do this while not stunned.</span>")
+		return
+	else if(HAS_TRAIT(src, TRAIT_DISRUPTED))
+		to_chat(src,"<span class='warning'>You can't do this while disrupted!</span>")
 		return
 	else
 		nano_intoblob()
@@ -300,9 +310,9 @@
 		to_chat(user,"<span class='warning'>You don't have a working refactory module!</span>")
 		return
 
-	var/nagmessage = "Adjust your mass to be a size between 25 to 200%. Up-sizing consumes metal, downsizing returns metal."
+	var/nagmessage = "Adjust your mass to be a size between 75 to 200%. Up-sizing consumes metal, downsizing returns metal."
 	var/new_size = input(user, nagmessage, "Pick a Size", user.size_multiplier*100) as num|null
-	if(!new_size || !ISINRANGE(new_size,25,200))
+	if(!new_size || !ISINRANGE(new_size, 75, 200))
 		return
 
 	var/size_factor = new_size/100
@@ -318,14 +328,14 @@
 	//Sizing up
 	if(cost > 0)
 		if(refactory.use_stored_material(MAT_STEEL,cost))
-			user.resize(size_factor)
+			user.resize(size_factor, TRUE)
 		else
 			to_chat(user,"<span class='warning'>That size change would cost [cost] steel, which you don't have.</span>")
 	//Sizing down (or not at all)
 	else if(cost <= 0)
 		cost = abs(cost)
 		var/actually_added = refactory.add_stored_material(MAT_STEEL,cost)
-		user.resize(size_factor)
+		user.resize(size_factor, TRUE)
 		if(actually_added != cost)
 			to_chat(user,"<span class='warning'>Unfortunately, [cost-actually_added] steel was lost due to lack of storage space.</span>")
 
@@ -353,7 +363,7 @@
 /obj/effect/protean_ability
 	name = "Activate"
 	desc = ""
-	icon = 'icons/mob/species/protean/protean_powers.dmi'
+	icon = 'icons/mob/clothing/species/protean/protean_powers.dmi'
 	var/ability_name
 	var/to_call
 

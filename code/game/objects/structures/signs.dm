@@ -3,8 +3,8 @@
 	anchored = 1
 	opacity = 0
 	density = 0
-	plane = OBJ_PLANE //VOREStation Edit
-	layer = ABOVE_JUNK_LAYER //VOREStation Edit
+	plane = OBJ_PLANE
+	layer = ABOVE_JUNK_LAYER
 	w_class = ITEMSIZE_NORMAL
 
 /obj/structure/sign/ex_act(severity)
@@ -128,8 +128,8 @@
 	name = "\improper WARNING"
 	icon_state = "securearea"
 
-/obj/structure/sign/warning/New()
-	..()
+/obj/structure/sign/warning/Initialize(mapload)
+	. = ..()
 	desc = "A warning sign which reads '[name]'."
 
 /obj/structure/sign/warning/airlock
@@ -185,8 +185,8 @@
 	name = "\improper LETHAL TURRETS"
 	icon_state = "turrets"
 
-/obj/structure/sign/warning/lethal_turrets/New()
-	..()
+/obj/structure/sign/warning/lethal_turrets/Initialize(mapload)
+	. = ..()
 	desc += " Enter at own risk!."
 
 /obj/structure/sign/warning/mail_delivery
@@ -326,8 +326,8 @@
 	desc = "A direction sign, claiming to know the way."
 	icon_state = "direction"
 
-/obj/structure/sign/directions/New()
-	..()
+/obj/structure/sign/directions/Initialize(mapload)
+	. = ..()
 	desc = "A direction sign, pointing out which way \the [src] is."
 
 /obj/structure/sign/directions/science
@@ -364,7 +364,6 @@
 	desc = "A direction sign, pointing out which way the Cargo department is."
 	icon_state = "direction_crg"
 
-// VOREStation Edit - New signs for us
 /obj/structure/sign/directions/command
 	icon = 'icons/obj/decals_vr.dmi'
 	name = "\improper Command department"
@@ -376,7 +375,6 @@
 	name = "\improper Space Elevator"
 	desc = "A direction sign, pointing out which way the Space Elevator is."
 	icon_state = "direction_elv"
-// VOREStation Edit End
 
 /obj/structure/sign/directions/cryo
 	name = "\improper Cryogenic Storage"

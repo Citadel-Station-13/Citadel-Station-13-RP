@@ -32,9 +32,11 @@ Protectiveness | Armor %
 	var/unbreakable = FALSE
 	var/default_material = null // Set this to something else if you want material attributes on init.
 	var/material_armor_modifer = 1 // Adjust if you want seperate types of armor made from the same material to have different protectiveness (e.g. makeshift vs real armor)
+	/// multiplier for mat slowdown from weight
+	var/material_weight_factor
 
-/obj/item/clothing/New(var/newloc, var/material_key)
-	..(newloc)
+/obj/item/clothing/Initialize(mapload, material_key)
+	. = ..()
 	if(!material_key)
 		material_key = default_material
 	if(material_key) // May still be null if a material was not specified as a default.
@@ -180,7 +182,7 @@ Protectiveness | Armor %
 
 		// Makes sure the numbers stay capped.
 		for(var/number in list(melee_armor, bullet_armor, laser_armor, energy_armor, bomb_armor))
-			number = between(0, number, 100)
+			number = clamp( number, 0,  100)
 
 		armor["melee"] = melee_armor
 		armor["bullet"] = bullet_armor
@@ -189,12 +191,12 @@ Protectiveness | Armor %
 		armor["bomb"] = bomb_armor
 
 		if(!isnull(material.conductivity))
-			siemens_coefficient = between(0, material.conductivity / 10, 10)
-		slowdown = between(0, round(material.weight / 10, 0.1), 6)
+			siemens_coefficient = clamp( material.conductivity / 10, 0,  10)
+		slowdown = clamp(0, round(material.weight / 10, 0.1) * material_weight_factor, 6)
 
 /obj/item/clothing/suit/armor/material
 	name = "armor"
-	default_material = DEFAULT_WALL_MATERIAL
+	default_material = MAT_STEEL
 
 /obj/item/clothing/suit/armor/material/makeshift
 	name = "sheet armor"
@@ -252,7 +254,7 @@ Protectiveness | Armor %
 
 // Used to craft the makeshift helmet
 /obj/item/clothing/head/helmet/bucket
-	name = "bucket"
+	name = "improvised armor (bucket)"
 	desc = "It's a bucket with a large hole cut into it.  You could wear it on your head and look really stupid."
 	flags_inv = HIDEEARS|HIDEEYES|BLOCKHAIR
 	icon_state = "bucket"
@@ -280,7 +282,7 @@ Protectiveness | Armor %
 /obj/item/clothing/head/helmet/material
 	name = "helmet"
 	flags_inv = HIDEEARS|HIDEEYES|BLOCKHAIR
-	default_material = DEFAULT_WALL_MATERIAL
+	default_material = MAT_STEEL
 
 /obj/item/clothing/head/helmet/material/makeshift
 	name = "bucket"

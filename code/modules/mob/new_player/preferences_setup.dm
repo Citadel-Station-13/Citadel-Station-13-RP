@@ -1,36 +1,36 @@
 /datum/preferences
 	//The mob should have a gender you want before running this proc. Will run fine without H
 /datum/preferences/proc/randomize_appearance_and_body_for(var/mob/living/carbon/human/H)
-	var/datum/species/current_species = GLOB.all_species[species ? species : "Human"]
+	var/datum/species/current_species = name_static_species_meta(species) || get_static_species_meta(/datum/species/human)
 	set_biological_gender(pick(current_species.genders))
 
 	h_style = random_hair_style(biological_gender, species)
 	f_style = random_facial_hair_style(biological_gender, species)
 	if(current_species)
-		if(current_species.appearance_flags & HAS_SKIN_TONE)
+		if(current_species.species_appearance_flags & HAS_SKIN_TONE)
 			s_tone = random_skin_tone()
-		if(current_species.appearance_flags & HAS_SKIN_COLOR)
+		if(current_species.species_appearance_flags & HAS_SKIN_COLOR)
 			r_skin = rand (0,255)
 			g_skin = rand (0,255)
 			b_skin = rand (0,255)
-		if(current_species.appearance_flags & HAS_EYE_COLOR)
+		if(current_species.species_appearance_flags & HAS_EYE_COLOR)
 			randomize_eyes_color()
-		if(current_species.appearance_flags & HAS_HAIR_COLOR)
+		if(current_species.species_appearance_flags & HAS_HAIR_COLOR)
 			randomize_hair_color("hair")
 			randomize_hair_color("facial")
-		if(current_species.appearance_flags & HAS_SKIN_COLOR)
+		if(current_species.species_appearance_flags & HAS_SKIN_COLOR)
 			r_skin = rand (0,255)
 			g_skin = rand (0,255)
 			b_skin = rand (0,255)
-	if(current_species.appearance_flags & HAS_UNDERWEAR)
+	if(current_species.species_appearance_flags & HAS_UNDERWEAR)
 		all_underwear.Cut()
 		for(var/datum/category_group/underwear/WRC in GLOB.global_underwear.categories)
 			var/datum/category_item/underwear/WRI = pick(WRC.items)
 			all_underwear[WRC.name] = WRI.name
 
 
-	backbag = rand(1,5)
-	pdachoice = rand(1,6)
+	backbag = rand(1, 7)
+	pdachoice = rand(1, 7)
 	age = rand(current_species.min_age, current_species.max_age)
 	b_type = RANDOM_BLOOD_TYPE
 	if(H)
@@ -202,9 +202,9 @@
 	var/datum/job/previewJob
 	// Determine what job is marked as 'High' priority, and dress them up as such.
 	if(job_civilian_low & ASSISTANT)
-		previewJob = SSjobs.GetJob(USELESS_JOB)
+		previewJob = SSjob.get_job(USELESS_JOB)
 	else
-		for(var/datum/job/job in SSjobs.occupations)
+		for(var/datum/job/job in SSjob.occupations)
 			var/job_flag
 			switch(job.department_flag)
 				if(CIVILIAN)
@@ -217,8 +217,8 @@
 				previewJob = job
 				break
 
-	if((equip_preview_mob & EQUIP_PREVIEW_LOADOUT) && !(previewJob && (equip_preview_mob & EQUIP_PREVIEW_JOB) && (previewJob.type == /datum/job/ai || previewJob.type == /datum/job/cyborg)))
-		var/list/equipped_slots = list() //If more than one item takes the same slot only spawn the first
+	if((equip_preview_mob & EQUIP_PREVIEW_LOADOUT) && !(previewJob && (equip_preview_mob & EQUIP_PREVIEW_JOB) && (previewJob.type == /datum/job/station/ai || previewJob.type == /datum/job/station/cyborg)))
+		var/list/equipped_slots = list()
 		for(var/thing in gear)
 			var/datum/gear/G = gear_datums[thing]
 			if(G)
@@ -241,7 +241,8 @@
 				if(G.slot && !(G.slot in equipped_slots))
 					var/metadata = gear[G.display_name]
 					if(mannequin.equip_to_slot_or_del(G.spawn_item(mannequin, metadata), G.slot))
-						equipped_slots += G.slot
+						if(G.slot != slot_tie)
+							equipped_slots += G.slot
 
 	if((equip_preview_mob & EQUIP_PREVIEW_JOB) && previewJob)
 		mannequin.job = previewJob.title
@@ -250,50 +251,42 @@
 /datum/preferences/proc/update_preview_icon()
 	var/mob/living/carbon/human/dummy/mannequin/mannequin = get_mannequin(client_ckey)
 	mannequin.delete_inventory(TRUE)
+	if(regen_limbs)
+		var/datum/species/current_species = character_static_species_meta()
+		current_species.create_organs(mannequin)
+		regen_limbs = 0
 	dress_preview_mob(mannequin)
+	mannequin.update_transform()
 	COMPILE_OVERLAYS(mannequin)
 
-	preview_icon = icon('icons/effects/128x48.dmi', bgstate)
-	preview_icon.Scale(48+32, 16+32)
-
-	var/icon/stamp = getFlatIcon(mannequin, defdir=NORTH)
-	preview_icon.Blend(stamp, ICON_OVERLAY, 25, 17)
-
-	stamp = getFlatIcon(mannequin, defdir=WEST)
-	preview_icon.Blend(stamp, ICON_OVERLAY, 1, 9)
-
-	stamp = getFlatIcon(mannequin, defdir=SOUTH)
-	preview_icon.Blend(stamp, ICON_OVERLAY, 49, 1)
-
-	preview_icon.Scale(preview_icon.Width() * 2, preview_icon.Height() * 2) // Scaling here to prevent blurring in the browser.
-
-//Taur support & sensor setting in prefs.
-/datum/preferences/update_preview_icon() // Lines up and un-overlaps character edit previews. Also un-splits taurs.
-	var/mob/living/carbon/human/dummy/mannequin/mannequin = get_mannequin(client_ckey)
-	mannequin.delete_inventory(TRUE)
-	dress_preview_mob(mannequin)
-	COMPILE_OVERLAYS(mannequin)
-
-	preview_icon = icon('icons/effects/128x72_vr.dmi', bgstate)
-	preview_icon.Scale(128, 72)
-
-	mannequin.dir = NORTH
-	var/icon/stamp = getFlatIcon(mannequin)
-	stamp.Scale(stamp.Width()*size_multiplier,stamp.Height()*size_multiplier)
-	preview_icon.Blend(stamp, ICON_OVERLAY, 64-stamp.Width()/2, 5)
-
-	mannequin.dir = WEST
-	stamp = getFlatIcon(mannequin)
-	stamp.Scale(stamp.Width()*size_multiplier,stamp.Height()*size_multiplier)
-	preview_icon.Blend(stamp, ICON_OVERLAY, 16-stamp.Width()/2, 5)
-
-	mannequin.dir = SOUTH
-	stamp = getFlatIcon(mannequin)
-	stamp.Scale(stamp.Width()*size_multiplier,stamp.Height()*size_multiplier)
-	preview_icon.Blend(stamp, ICON_OVERLAY, 112-stamp.Width()/2, 5)
-
-	preview_icon.Scale(preview_icon.Width() * 2, preview_icon.Height() * 2) // Scaling here to prevent blurring in the browser.
+	update_character_previews(new /mutable_appearance(mannequin))
 
 //TFF 5/8/19 - add randomised sensor setting for random button clicking
 /datum/preferences/randomize_appearance_and_body_for(var/mob/living/carbon/human/H)
 	sensorpref = rand(1,5)
+
+/datum/preferences/proc/get_valid_hairstyles()
+	var/list/valid_hairstyles = list()
+	for(var/hairstyle in hair_styles_list)
+		var/datum/sprite_accessory/S = hair_styles_list[hairstyle]
+		if(!(species in S.species_allowed) && (!custom_base || !(custom_base in S.species_allowed))) //Custom species base species allowance
+			continue
+
+		valid_hairstyles[hairstyle] = hair_styles_list[hairstyle]
+
+	return valid_hairstyles
+
+/datum/preferences/proc/get_valid_facialhairstyles()
+	var/list/valid_facialhairstyles = list()
+	for(var/facialhairstyle in facial_hair_styles_list)
+		var/datum/sprite_accessory/S = facial_hair_styles_list[facialhairstyle]
+		if(biological_gender == MALE && S.gender == FEMALE)
+			continue
+		if(biological_gender == FEMALE && S.gender == MALE)
+			continue
+		if(!(species in S.species_allowed) && (!custom_base || !(custom_base in S.species_allowed))) //Custom species base species allowance
+			continue
+
+		valid_facialhairstyles[facialhairstyle] = facial_hair_styles_list[facialhairstyle]
+
+	return valid_facialhairstyles

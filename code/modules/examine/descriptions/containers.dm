@@ -8,7 +8,7 @@
 	description_fluff = "This cola was allegedly made after Vasily Federov, the son of Nikolas Federov and the second CEO of Federov Beverages Inc., went on a climbing expedition to an arctic planet.  He then created this citris flavored soft drink.  Scientists claim that it can eat through styrafoam in a matter of weeks, but people drink it anyway."
 
 /obj/item/reagent_containers/food/drinks/cans/thirteenloko
-	description_fluff = "A beverage loved by college students.  The Thirteen Loko Company created this highly alcoholic beverage as an energy drink.  It is illegal in much of SolGov space and most of Skrell space.  This drink has been regulated more than any other in known space, and doctors strongly advise not to drink it."
+	description_fluff = "A beverage loved by college students.  The Thirteen Loko Company created this highly alcoholic beverage as an energy drink.  It is illegal in much of OriCon and Skrell space.  This drink has been regulated more than any other in known space, and doctors strongly advise not to drink it."
 
 /obj/item/reagent_containers/food/drinks/cans/dr_gibb
 	description_fluff = "Originally made by a doctor seeking to mix several different flavors, this soda has become widely popular in the past decade.  The drink has become so popular, in fact, that Nikolas Beverages bought it.  Ever since then, the drink has never been the same.  As a result, people all across known space beg for the old formula, but Nikolas Beverages does not appear to be listening."
@@ -56,6 +56,9 @@
 	description_fluff = "This emerged as a response to Caccavo, with Patron advertising claiming to be even more toxic and dangerous. Unfortunately, when the Cancer Craze ended, Patron's stocks nosedived and they now operate only a handful of distilleries."
 
 /obj/item/reagent_containers/food/drinks/bottle/rum
+	description_fluff = "Captain Pete's was involved in a long, expensive lawsuit against Gilthari concerning their claims to be from Cuba. They're actually owned and operated by none other than Centauri Provisions, with no distillaries on Earth to speak of."
+
+/obj/item/reagent_containers/food/drinks/bottle/whiterum
 	description_fluff = "Captain Pete's was involved in a long, expensive lawsuit against Gilthari concerning their claims to be from Cuba. They're actually owned and operated by none other than Centauri Provisions, with no distillaries on Earth to speak of."
 
 /obj/item/reagent_containers/food/drinks/bottle/vermouth

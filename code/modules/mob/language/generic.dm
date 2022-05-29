@@ -26,6 +26,7 @@
 	name = LANGUAGE_GALCOM
 	desc = "The common galactic tongue, engineered for cross-species communication."
 	speech_verb = "says"
+	exclaim_verb = list("exclaims","shouts","yells")
 	whisper_verb = "whispers"
 	key = "0"
 	flags = RESTRICTED
@@ -34,19 +35,10 @@
 "ar","at","on","ee","east","ma","da", "rim")
 	partial_understanding = list(LANGUAGE_SKRELLIAN = 30, LANGUAGE_SOL_COMMON = 30)
 
-//TODO flag certain languages to use the mob-type specific say_quote and then get rid of these.
-/datum/language/common/get_spoken_verb(var/msg_end)
-	switch(msg_end)
-		if("!")
-			return pick("exclaims","shouts","yells") //TODO: make the basic proc handle lists of verbs.
-		if("?")
-			return ask_verb
-	return speech_verb
-
 // Galactic common languages (systemwide accepted standards).
 /datum/language/trader
 	name = LANGUAGE_TRADEBAND
-	desc = "Maintained by the various trading cartels in major systems, this elegant, structured language is used for bartering and bargaining." //VOREstation Edit
+	desc = "Maintained by the various trading cartels in major systems, this elegant, structured language is used for bartering and bargaining."
 	speech_verb = "enunciates"
 	colour = "say_quote"
 	key = "2"
@@ -59,13 +51,11 @@
 
 /datum/language/terminus
 	name = LANGUAGE_TERMINUS
-	desc = "A group of languages spoken by the Zorren with a certain degree of mutual intelligibility under each other. Evidence shows it was a single lingua franca which has diverged into many sub languages due to isolation." // VOREstation edit. Original : A soft language spoken by the people of the sparsely populated, socially-conscious Precursors' Crypt region.
+	desc = "A group of languages spoken by the Zorren with a certain degree of mutual intelligibility under each other. Evidence shows it was a single lingua franca which has diverged into many sub languages due to isolation."
 	speech_verb = "mentions"
 	exclaim_verb = "insinuates"
 	colour = "terminus"
 	key = "4"
-	// flags = WHITELISTED (VOREstation edit)
-	// partial_understanding = list(LANGUAGE_SOL_COMMON = 20) (VOREStation Edit: It is a Zorren language now)
 	syllables = list (".a", "spa", "pan", "blaif", "stra", "!u", "!ei", "!am", "by", ".y", "gry", "zbly", "!y", "fl",
  	"sm", "rn", "cpi", "ku", "koi", "pr", "glau", "stu", "ved", "ki", "tsa", "xau", "jbu", "sny", "stro", "nu",
  	"uan", "ju", "!i", "ge", "luk", "an", "ar", "at", "es", "et", "bel", "ki", "jaa", "ch", "ki", "gh", "ll", "uu", "wat")
@@ -78,6 +68,7 @@
 	colour = "rough"
 	key = "3"
 	space_chance = 45
+	machine_understands = FALSE
 	partial_understanding = list(LANGUAGE_GALCOM = 10, LANGUAGE_TRADEBAND = 20, LANGUAGE_SOL_COMMON = 20)
 	syllables = list (
 "gra","ba","ba","breh","bra","rah","dur","ra","ro","gro","go","ber","bar","geh","heh", "gra",
@@ -142,19 +133,6 @@
 /datum/language/sign/can_speak_special(var/mob/speaker)	// TODO: If ever we make external organs assist languages, convert this over to the new format
 	var/obj/item/organ/external/hand/hands = locate() in speaker //you can't sign without hands
 	return (hands || !iscarbon(speaker))
-
-// Rodent language for all the squeaks in the world
-/datum/language/squeakish
-	name = LANGUAGE_SQUEAKISH
-	desc = "A language that the rodents around the region seem to of adopted."
-	signlang_verb = list("nose wiggles")
-	speech_verb = "squeaks"
-	whisper_verb = "squiks"
-	exclaim_verb = "squeaks loudly"
-	colour = "say_quote"
-	key = "e"	// Squeak squeak squeee squik
-	syllables = list ("sque", "uik", "squeak", "squee", "eak", "eek", "uek", "squik",
-			"squeek", "sq", "eek", "squeee", "ee", "ek", "ak", "ueak", "squea")
 
 // Alraune language that's literally just bushes rubbing together.
 /datum/language/vernal

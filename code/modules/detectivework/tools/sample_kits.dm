@@ -1,17 +1,18 @@
 /obj/item/sample
 	name = "forensic sample"
 	icon = 'icons/obj/forensics.dmi'
+	flags = NOPRINT
 	w_class = ITEMSIZE_TINY
 	var/list/evidence = list()
 
-/obj/item/sample/New(var/newloc, var/atom/supplied)
-	..(newloc)
+/obj/item/sample/Initialize(mapload, atom/supplied)
+	. = ..()
 	if(supplied)
 		copy_evidence(supplied)
 		name = "[initial(name)] (\the [supplied])"
 
-/obj/item/sample/print/New(var/newloc, var/atom/supplied)
-	..(newloc, supplied)
+/obj/item/sample/print/Initialize(mapload, atom/supplied)
+	. = ..()
 	if(evidence && evidence.len)
 		icon_state = "fingerprint1"
 
@@ -120,6 +121,9 @@
 		for(var/print in supplied.fingerprints)
 			evidence[print] = supplied.fingerprints[print]
 		supplied.fingerprints.Cut()
+
+/obj/item/forensics
+	flags = NOPRINT
 
 /obj/item/forensics/sample_kit
 	name = "fiber collection kit"
