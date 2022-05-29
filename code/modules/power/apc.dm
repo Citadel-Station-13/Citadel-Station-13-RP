@@ -1141,9 +1141,10 @@ GLOBAL_LIST_EMPTY(apcs)
 				chargecount = 0
 
 		// show cell as fully charged if so
-		if(cell.charge >= cell.maxcharge)
-			cell.charge = cell.maxcharge
+		if(cell.percent() >= 99)	// TODO: apc refactor - this is the only way for now, otherrwise we'll never stop charging as we don't ever charge to full entirely
 			charging = 2
+		else if(charging == 2)		// if charging is supposedly fully charged but we're not actually fully charged, shunt back to charging
+			charging = 1
 
 		if(chargemode)
 			if(!charging)
