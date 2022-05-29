@@ -142,7 +142,7 @@
 					tie_msg += " Attached to it is [english_list(accessories_visible)]."
 
 		if(w_uniform.blood_DNA)
-			. += "<span class='warning'>[T.He] [T.is] wearing [icon2html(thing = w_uniform, target = user)] [w_uniform.gender==PLURAL?"some":"a"] [(w_uniform.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(w_uniform.name)]![tie_msg]</span>"
+			. += "<span class='warning'>[T.He] [T.is] wearing [icon2html(thing = w_uniform, target = user)] [w_uniform.gender==PLURAL?"some":"a"] [(w_uniform.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(w_uniform)]![tie_msg]</span>"
 		else
 			. += "[T.He] [T.is] wearing [icon2html(thing = w_uniform, target = user)] \a [FORMAT_TEXT_LOOKITEM(w_uniform)].[tie_msg]"
 
@@ -159,7 +159,7 @@
 		if(istype(wear_suit,/obj/item/clothing/suit))
 			var/obj/item/clothing/suit/U = wear_suit
 			if(LAZYLEN(U.accessories))
-				tie_msg += " Attached to it is [english_list(U.accessories)]."
+				tie_msg += " Attached to it is [english_list(FORMAT_TEXT_LOOKITEM(U.accessories))]."
 
 		if(wear_suit.blood_DNA)
 			. += "<span class='warning'>[T.He] [T.is] wearing [icon2html(thing = wear_suit, target = user)] [wear_suit.gender==PLURAL?"some":"a"] [(wear_suit.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(wear_suit)][tie_msg]!</span>"
