@@ -460,6 +460,8 @@
 	return G
 
 /atom/movable/ghost_tag_container
+	// no mouse opacity
+	name = ""
 	var/atom/movable/master
 
 /atom/movable/ghost_tag_container/Destroy()
