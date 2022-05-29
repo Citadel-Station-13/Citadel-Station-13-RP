@@ -4,17 +4,24 @@
 	desc = "Glacial permafrost, compacted harder than stone.";
 	icon_state = "icerock-dark"
 	},
-/area/space)
+/area/rift/surfacebase/outside/west_deep)
+"f" = (
+/obj/structure/stairs/spawner/north,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_deep)
 "o" = (
 /turf/simulated/open/lythios43c,
-/area/space)
+/area/rift/surfacebase/outside/west_deep)
 "p" = (
 /turf/simulated/mineral/icerock/lythios43c,
-/area/space)
+/area/rift/surfacebase/outside/west_deep)
+"C" = (
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_deep)
 "P" = (
 /obj/effect/blocker,
 /turf/simulated/open/lythios43c,
-/area/space)
+/area/rift/surfacebase/outside/west_deep)
 "T" = (
 /obj/effect/map_effect/portal/master/side_b{
 	dir = 8;
@@ -22,13 +29,13 @@
 	portal_id = "westdeepstep"
 	},
 /turf/simulated/open/lythios43c,
-/area/space)
+/area/rift/surfacebase/outside/west_deep)
 "W" = (
 /obj/effect/map_effect/portal/line/side_b{
 	dir = 8
 	},
 /turf/simulated/open/lythios43c,
-/area/space)
+/area/rift/surfacebase/outside/west_deep)
 
 (1,1,1) = {"
 a
@@ -31948,12 +31955,12 @@ p
 p
 p
 p
+C
+C
 p
 p
-p
-p
-p
-p
+C
+C
 p
 p
 p
@@ -32141,14 +32148,14 @@ p
 p
 p
 p
-p
-p
-p
-p
-p
-p
-p
-p
+C
+C
+C
+C
+C
+C
+C
+C
 p
 p
 p
@@ -32334,16 +32341,16 @@ p
 p
 p
 p
-p
-p
-p
-p
-p
-p
-p
-p
-p
-p
+C
+C
+o
+o
+C
+C
+f
+C
+C
+C
 p
 p
 p
@@ -32528,16 +32535,16 @@ p
 p
 p
 p
-p
-p
-p
-p
-p
-p
-p
-p
-p
-p
+C
+C
+o
+o
+C
+C
+f
+C
+C
+C
 p
 p
 p
@@ -32723,14 +32730,14 @@ p
 p
 p
 p
-p
-p
-p
-p
-p
-p
-p
-p
+C
+C
+C
+C
+C
+C
+C
+C
 p
 p
 p
@@ -32918,12 +32925,12 @@ p
 p
 p
 p
+C
+C
 p
 p
-p
-p
-p
-p
+C
+C
 p
 p
 p
