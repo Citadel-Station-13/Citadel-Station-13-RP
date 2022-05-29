@@ -17,7 +17,8 @@ export const PowerMonitor = () => {
   return (
     <Window
       width={550}
-      height={700}>
+      height={700}
+      resizable>
       <Window.Content scrollable>
         <PowerMonitorContent />
       </Window.Content>
@@ -26,8 +27,57 @@ export const PowerMonitor = () => {
 };
 
 export const PowerMonitorContent = (props, context) => {
-  const { data } = useBackend(context);
-  const { history } = data;
+  const { act, data } = useBackend(context);
+
+  const {
+    map_levels,
+    all_sensors,
+    focus,
+  } = data;
+
+  if (focus) {
+    return <PowerMonitorFocus focus={focus} />;
+  }
+
+  let body = (
+    <Box color="bad">No sensors detected</Box>
+  );
+
+  if (all_sensors) {
+    body = (
+      <Table>
+        {all_sensors.map(sensor => (
+          <Table.Row key={sensor.name}>
+            <Table.Cell>
+              <Button
+                content={sensor.name}
+                icon={sensor.alarm ? "bell" : "sign-in-alt"}
+                onClick={() => act("setsensor", { id: sensor.name })} />
+            </Table.Cell>
+          </Table.Row>
+        ))}
+      </Table>
+    );
+  }
+
+  return (
+    <Section
+      title="No active sensor. Listing all."
+      buttons={
+        <Button
+          content="Scan For Sensors"
+          icon="undo"
+          onClick={() => act("refresh")} />
+      }>
+      {body}
+    </Section>
+  );
+};
+
+export const PowerMonitorFocus = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { focus } = props;
+  const { history } = focus;
   const [
     sortByField,
     setSortByField,
@@ -52,9 +102,23 @@ export const PowerMonitorContent = (props, context) => {
     sortByField === 'draw' && sortBy(
       area => -powerRank(area.load),
       area => -parseFloat(area.load)),
-  ])(data.areas);
+    sortByField === 'problems' && sortBy(
+      area => area.eqp,
+      area => area.lgt,
+      area => area.env,
+      area => area.charge,
+      area => area.name),
+  ])(focus.areas);
   return (
     <>
+      <Section
+        title={focus.name}
+        buttons={
+          <Button
+            icon="sign-out-alt"
+            content="Back To Main"
+            onClick={() => act("clear")} />
+        } />
       <Flex mx={-0.5} mb={1}>
         <Flex.Item mx={0.5} width="200px">
           <Section>
@@ -121,6 +185,12 @@ export const PowerMonitorContent = (props, context) => {
             content="Draw"
             onClick={() => setSortByField(
               sortByField !== 'draw' && 'draw'
+            )} />
+          <Button.Checkbox
+            checked={sortByField === 'problems'}
+            content="Problems"
+            onClick={() => setSortByField(
+              sortByField !== 'problems' && 'problems'
             )} />
         </Box>
         <Table>
