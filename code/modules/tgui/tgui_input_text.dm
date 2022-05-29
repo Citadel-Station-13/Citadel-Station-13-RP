@@ -154,7 +154,7 @@
 	.["message"] = message
 	.["multiline"] = multiline
 	.["placeholder"] = default // Default is a reserved keyword
-	.["swapped_buttons"] = FALSE//user.client.prefs.read_preference(/datum/preference/toggle/tgui_input_swapped)
+	.["swapped_buttons"] = TRUE//user.client.prefs.read_preference(/datum/preference/toggle/tgui_input_swapped)
 	.["title"] = title
 
 /datum/tgui_input_text/ui_data(mob/user)

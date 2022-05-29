@@ -150,7 +150,7 @@
 	.["max_value"] = max_value
 	.["message"] = message
 	.["min_value"] = min_value
-	.["swapped_buttons"] = FALSE//user.client.prefs.read_preference(/datum/preference/toggle/tgui_input_swapped)
+	.["swapped_buttons"] = TRUE//user.client.prefs.read_preference(/datum/preference/toggle/tgui_input_swapped)
 	.["title"] = title
 
 /datum/tgui_input_number/ui_data(mob/user)

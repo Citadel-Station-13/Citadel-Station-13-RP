@@ -1,7 +1,7 @@
 /datum/sprite_accessory/marking/hair_fade
 	icon = 'icons/mob/hair_gradients.dmi'
 	body_parts = list(BP_HEAD)
-	draw_target = MARKING_TARGET_HAIR
+	// draw_target = MARKING_TARGET_HAIR
 	draw_order = 50 //before ears & horns
 	disallows = list(/datum/sprite_accessory/marking/hair_fade)
 

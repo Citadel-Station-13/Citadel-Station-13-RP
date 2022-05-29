@@ -29,7 +29,7 @@
 	icon = 'icons/mob/vore/ears_vr.dmi'
 	do_colouration = 0 // Set to 1 to blend (ICON_ADD) hair color
 
-	color_blend_mode = ICON_ADD // Only appliciable if do_coloration = 1
+	color_blend_mode = ICON_ADD // Only appliciable if do_colouration = 1
 	var/extra_overlay // Icon state of an additional overlay to blend in.
 	var/extra_overlay2
 	var/desc = "You should not see this..."
@@ -847,7 +847,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	icon = 'icons/mob/vore/wings_vr.dmi'
 	do_colouration = 0 //Set to 1 to enable coloration using the tail color.
 
-	color_blend_mode = ICON_ADD // Only appliciable if do_coloration = 1
+	color_blend_mode = ICON_ADD // Only appliciable if do_colouration = 1
 	var/extra_overlay // Icon state of an additional overlay to blend in.
 	var/extra_overlay2
 	var/clothing_can_hide = 1 // If true, clothing with HIDETAIL hides it. If the clothing is bulky enough to hide a tail, it should also hide wings.
@@ -1238,7 +1238,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	icon = 'icons/mob/vore/tails_vr.dmi'
 	do_colouration = 0 //Set to 1 to enable coloration using the tail color.
 
-	color_blend_mode = ICON_ADD // Only appliciable if do_coloration = 1
+	color_blend_mode = ICON_ADD // Only appliciable if do_colouration = 1
 	var/extra_overlay // Icon state of an additional overlay to blend in.
 	var/extra_overlay2 //Tertiary.
 	var/show_species_tail = 0 // If false, do not render species' tail.

@@ -20,7 +20,7 @@
 	// Reminder: BP_L_FOOT, BP_R_FOOT, BP_L_LEG, BP_R_LEG, BP_L_ARM, BP_R_ARM, BP_L_HAND, BP_R_HAND, BP_TORSO, BP_GROIN, BP_HEAD
 	/// A number used to sort markings before they are added to a sprite. Lower is earlier.
 	var/draw_order = 100
-	var/draw_target = MARKING_TARGET_SKIN
+	// var/draw_target = MARKING_TARGET_SKIN
 
 /datum/sprite_accessory/marking/tat_rheart
 	name = "Tattoo (Heart, R. Arm)"

@@ -15,7 +15,7 @@
 	name = "Bald"
 	icon_state = "bald"
 	gender = MALE
-	flags = HAIR_VERY_SHORT | HAIR_BALD
+	flags = HAIR_VERY_SHORT //| HAIR_BALD
 
 /datum/sprite_accessory/hair/eighties
 	name = "80's"
