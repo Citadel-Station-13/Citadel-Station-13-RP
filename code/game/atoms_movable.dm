@@ -454,13 +454,13 @@
 	G.maptext_x = -128 + (world.icon_size * 0.5)
 	G.maptext_y = 32
 	G.plane = PLANE_GHOSTS
+	G.loc = null		// lol
 	vis_contents += G
-	if(G.loc != src)
-		G.forceMove(src)
 	return G
 
 /atom/movable/ghost_tag_container
 	var/atom/movable/master
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /atom/movable/ghost_tag_container/Destroy()
 	if(istype(master))
