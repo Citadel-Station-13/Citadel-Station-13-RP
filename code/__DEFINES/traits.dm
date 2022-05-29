@@ -202,7 +202,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 */
 
 // common trait sources
-#define TRAIT_GENERIC "generic"
+#define GENERIC_TRAIT "generic"
 /*
 #define EYE_DAMAGE "eye_damage"
 #define GENETIC_MUTATION "genetic"

@@ -29,12 +29,13 @@
 		breather.internal = null
 		if(breather.internals)
 			breather.internals.icon_state = "internal0"
-		breather.remove_from_mob(contained)
 		visible_message(SPAN_NOTICE("\The [contained] rapidly retracts just before \the [src] is destroyed!"))
 		breather = null
 
-	QDEL_NULL(tank)
-	QDEL_NULL(contained)
+	if(tank)
+		QDEL_NULL(tank)
+	if(contained)
+		QDEL_NULL(contained)
 	return ..()
 
 /obj/machinery/oxygen_pump/OnMouseDropLegacy(mob/living/carbon/human/target, src_location, over_location)
@@ -66,9 +67,8 @@
 	if(breather)
 		if(tank)
 			tank.forceMove(src)
-		breather.remove_from_mob(contained)
 		contained.forceMove(src)
-		src.visible_message(SPAN_NOTICE("\The [user] makes \the [contained] rapidly retract back into \the [src]!"))
+		visible_message(SPAN_NOTICE("\The [user] makes \the [contained] rapidly retract back into \the [src]!"))
 		if(breather.internals)
 			breather.internals.icon_state = "internal0"
 		breather = null
@@ -160,7 +160,6 @@
 		if(!can_apply_to_target(breather))
 			if(tank)
 				tank.forceMove(src)
-			breather.remove_from_mob(contained)
 			contained.forceMove(src)
 			src.visible_message(SPAN_NOTICE("\The [contained] rapidly retracts back into \the [src]!"))
 			breather = null

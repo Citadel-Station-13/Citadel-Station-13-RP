@@ -229,14 +229,14 @@
 	if(istype(I, /obj/item/silencer))
 		if(!user.item_is_in_hands(src))	//if we're not in his hands
 			to_chat(user, "<span class='notice'>You'll need [src] in your hands to do that.</span>")
-			return CLICK_CHAIN_DO_NOT_PROPAGATE
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!user.attempt_insert_item_for_installation(I, src))
-			return CLICK_CHAIN_DO_NOT_PROPAGATE
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		to_chat(user, "<span class='notice'>You screw [I] onto [src].</span>")
 		silenced = I	//dodgy?
 		w_class = ITEMSIZE_NORMAL
 		update_icon()
-		return CLICK_CHAIN_DO_NOT_PROPAGATE
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
 /obj/item/gun/projectile/pistol/update_icon_state()

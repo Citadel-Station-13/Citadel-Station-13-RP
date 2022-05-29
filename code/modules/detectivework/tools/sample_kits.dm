@@ -45,7 +45,7 @@
 	if(O.type == src.type)
 		if(merge_evidence(O, user))
 			qdel(O)
-		return CLICK_CHAIN_DO_NOT_PROPAGATE
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
 /obj/item/sample/fibers

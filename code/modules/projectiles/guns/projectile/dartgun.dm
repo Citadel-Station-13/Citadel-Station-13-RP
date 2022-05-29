@@ -126,7 +126,7 @@
 		beakers += B
 		to_chat(user, "<font color=#4F49AF>You slot [B] into [src].</font>")
 		updateUsrDialog()
-		return CLICK_CHAIN_DO_NOT_PROPAGATE
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
 //fills the given dart with reagents

@@ -61,11 +61,11 @@
 		if(!det.secured)
 			to_chat(user, "<span class='warning'>Assembly must be secured with screwdriver.</span>")
 			return
+		if(!user.attempt_insert_item_for_installation(det, src))
+			return
 		path = 1
 		to_chat(user, "<span class='notice'>You add [W] to the metal casing.</span>")
-		playsound(src.loc, 'sound/items/Screwdriver2.ogg', 25, -3)
-		user.remove_from_mob(det)
-		det.loc = src
+		playsound(src, 'sound/items/Screwdriver2.ogg', 25, -3)
 		detonator = det
 		if(istimer(detonator.a_left))
 			var/obj/item/assembly/timer/T = detonator.a_left

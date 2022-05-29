@@ -159,7 +159,7 @@
 
 /obj/item/integrated_circuit/manipulation/grenade/attackby(var/obj/item/grenade/G, var/mob/user)
 	if(istype(G))
-		. = CLICK_CHAIN_DO_NOT_PROPAGATE
+		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if(attached_grenade)
 			to_chat(user, "<span class='warning'>There is already a grenade attached!</span>")
 		else
@@ -176,7 +176,7 @@
 		user.visible_message("<span class='warning'>\The [user] removes \an [attached_grenade] from \the [src]!</span>", "<span class='notice'>You remove \the [attached_grenade] from \the [src].</span>")
 		user.put_in_hands(attached_grenade) || attached_grenade.dropInto(loc)
 		detach_grenade()
-		return CLICK_CHAIN_DO_NOT_PROPAGATE
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	else
 		return ..()
 

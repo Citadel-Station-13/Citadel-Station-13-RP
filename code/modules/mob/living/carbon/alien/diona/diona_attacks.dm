@@ -20,5 +20,5 @@
 			return
 		wear_hat(W)
 		user.visible_message("<span class='notice'>\The [user] puts \the [W] on \the [src].</span>")
-		return CLICK_CHAIN_DO_NOT_PROPAGATE
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()

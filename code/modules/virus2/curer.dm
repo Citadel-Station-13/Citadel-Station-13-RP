@@ -10,7 +10,7 @@
 
 /obj/machinery/computer/curer/attackby(var/obj/I as obj, var/mob/user as mob)
 	if(istype(I,/obj/item/reagent_containers))
-		. = CLICK_CHAIN_DO_NOT_PROPAGATE
+		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		var/mob/living/carbon/C = user
 		if(!container)
 			if(!user.attempt_insert_item_for_installation(I, src))
@@ -31,7 +31,7 @@
 		spawn(1200) virusing = 0
 
 		state("The [src.name] Buzzes", "blue")
-		return CLICK_CHAIN_DO_NOT_PROPAGATE
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
 /obj/machinery/computer/curer/attack_ai(var/mob/user as mob)

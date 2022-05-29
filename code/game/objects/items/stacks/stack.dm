@@ -232,9 +232,6 @@
 		amount -= used
 		if (amount <= 0)
 			mid_delete = TRUE
-			if(ismob(loc))
-				var/mob/M = loc
-				M.remove_from_mob(src, null)
 			qdel(src) //should be safe to qdel immediately since if someone is still using this stack it will persist for a little while longer
 		update_icon()
 		return 1

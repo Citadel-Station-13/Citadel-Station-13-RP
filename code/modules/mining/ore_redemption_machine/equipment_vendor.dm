@@ -198,25 +198,25 @@
 /obj/machinery/mineral/equipment_vendor/attackby(obj/item/I, mob/user, params)
 	if(default_deconstruction_screwdriver(user, I))
 		updateUsrDialog()
-		return CLICK_CHAIN_DO_NOT_PROPAGATE
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	if(default_part_replacement(user, I))
-		return CLICK_CHAIN_DO_NOT_PROPAGATE
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	if(default_deconstruction_crowbar(user, I))
-		return CLICK_CHAIN_DO_NOT_PROPAGATE
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	if(istype(I, /obj/item/mining_voucher))
 		if(!powered())
 			return
 		RedeemVoucher(I, user)
-		return CLICK_CHAIN_DO_NOT_PROPAGATE
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	if(istype(I,/obj/item/card/id))
 		if(!powered())
-			return CLICK_CHAIN_DO_NOT_PROPAGATE
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		else if(!inserted_id)
 			if(!user.attempt_insert_item_for_installation(I, src))
 				return
 			inserted_id = I
 			interact(user)
-		return CLICK_CHAIN_DO_NOT_PROPAGATE
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	..()
 
 /obj/machinery/mineral/equipment_vendor/dismantle()

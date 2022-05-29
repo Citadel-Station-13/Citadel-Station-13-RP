@@ -135,8 +135,6 @@
 /obj/item/duct_tape_roll/proc/use(var/used)
 	amount -= used
 	if (amount <= 0)
-		if(usr)
-			usr.remove_from_mob(src, null)
 		qdel(src) //should be safe to qdel immediately since if someone is still using this stack it will persist for a little while longer
 	return 1
 

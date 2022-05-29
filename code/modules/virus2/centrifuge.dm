@@ -14,7 +14,7 @@
 		return ..()
 
 	if(default_unfasten_wrench(user, O, 20))
-		return CLICK_CHAIN_DO_NOT_PROPAGATE
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	if(istype(O,/obj/item/reagent_containers/glass/beaker/vial))
 		if(sample)
@@ -26,7 +26,7 @@
 
 		user.visible_message("[user] adds \a [O] to \the [src]!", "You add \a [O] to \the [src]!")
 		SStgui.update_uis(src)
-		return CLICK_CHAIN_DO_NOT_PROPAGATE
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	return ..()
 

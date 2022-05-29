@@ -41,7 +41,7 @@
 				return
 			I.forceMove(src)
 			to_chat(user, SPAN_NOTICE("You put the [I] into the [src]"))
-			return CLICK_CHAIN_DO_NOT_PROPAGATE
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
 /obj/item/reagent_containers/cooking_container/verb/empty()

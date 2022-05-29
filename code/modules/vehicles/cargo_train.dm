@@ -77,10 +77,10 @@
 	if(istype(W, key_type))
 		if(!key)
 			if(!user.attempt_insert_item_for_installation(W, src))
-				return CLICK_CHAIN_DO_NOT_PROPAGATE
+				return CLICKCHAIN_DO_NOT_PROPAGATE
 			key = W
 			verbs += /obj/vehicle/train/engine/verb/remove_key
-		return CLICK_CHAIN_DO_NOT_PROPAGATE
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
 /*

@@ -187,11 +187,10 @@
 	if(!ispath(gift_type,/obj/item))	return
 
 	var/obj/item/I = new gift_type(M)
-	M.remove_from_mob(src)
+	M.temporarily_remove_from_inventory(src, TRUE)
 	M.put_in_hands(I)
 	I.add_fingerprint(M)
 	qdel(src)
-	return
 
 /*
  * Wrapping Paper

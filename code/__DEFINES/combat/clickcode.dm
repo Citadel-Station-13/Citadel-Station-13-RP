@@ -13,6 +13,6 @@
  */
 
 /// stop the click chain from proceeding past this point
-#define CLICK_CHAIN_DO_NOT_PROPAGATE			(1<<0)
+#define CLICKCHAIN_DO_NOT_PROPAGATE			(1<<0)
 
 // TODO: roll proximity flags into this oh god oh fuck

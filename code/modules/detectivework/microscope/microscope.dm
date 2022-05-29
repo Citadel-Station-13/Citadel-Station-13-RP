@@ -16,7 +16,7 @@
 		return ..()
 
 	if(istype(W, /obj/item/forensics/swab)|| istype(W, /obj/item/sample/fibers) || istype(W, /obj/item/sample/print))
-		. = CLICK_CHAIN_DO_NOT_PROPAGATE
+		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!user.attempt_insert_item_for_installation(W, src))
 			return
 		to_chat(user, "<span class='notice'>You insert \the [W] into the microscope.</span>")

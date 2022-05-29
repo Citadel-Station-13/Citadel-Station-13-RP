@@ -58,7 +58,7 @@
 	if(user.a_intent != INTENT_HELP)
 		return ..()
 
-	. = CLICK_CHAIN_DO_NOT_PROPAGATE
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
 
 	if(machine_stat & BROKEN || !I || !user)
 		return
