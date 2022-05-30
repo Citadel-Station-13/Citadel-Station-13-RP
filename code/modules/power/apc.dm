@@ -1103,8 +1103,6 @@ GLOBAL_LIST_EMPTY(apcs)
 		// TODO: rewrite APCs. entirely.
 		// if we're empty just kill it all
 		if(cell.percent() < 1)
-			charging = 0
-			chargecount = 0
 			// This turns everything off in the case that there is still a charge left on the battery, just not enough to run the room.
 			equipment = autoset(equipment, 0)
 			lighting = autoset(lighting, 0)
