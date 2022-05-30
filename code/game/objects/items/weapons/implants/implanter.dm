@@ -127,12 +127,11 @@
 		if (c.scanned)
 			to_chat(user, "<span class='warning'>Something is already scanned inside the implant!</span>")
 			return
-		c.scanned = A
-		if(istype(A, /obj/item/storage))
-			to_chat(user, "<span class='warning'>You can't store \the [A.name] in this!</span>")
-			c.scanned = null
+		if(istype(I, /obj/item/storage))
+			to_chat(user, "<span class='warning'>You can't store [I] in this!</span>")
 			return
-		A.forceMove(src)
+		c.scanned = I
+		I.forceMove(src)
 		update()
 
 /// Universal translator implant.

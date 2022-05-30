@@ -22,14 +22,13 @@
 	nozzle_attached = 1
 
 /obj/item/weldpack/Destroy()
-	qdel(nozzle)
-	nozzle = null
+	if(nozzle)
+		QDEL_NULL(nozzle)
 	return ..()
 
 /obj/item/weldpack/dropped(mob/user)
 	..()
 	if(nozzle)
-		user.remove_from_mob(nozzle)
 		return_nozzle()
 		to_chat(user, "<span class='notice'>\The [nozzle] retracts to its fueltank.</span>")
 

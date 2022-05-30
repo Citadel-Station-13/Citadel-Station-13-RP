@@ -62,7 +62,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 		to_chat(user, "<span class='notice'>You put [I] into [src].</span>")
 
 	else if(istype(I, /obj/item/lightreplacer) && !myreplacer)
-		if(!user.attempt_insert_item_for_installation(i, src))
+		if(!user.attempt_insert_item_for_installation(I, src))
 			return
 		myreplacer = I
 		update_icon()
@@ -216,7 +216,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 /obj/structure/bed/chair/janicart/relaymove(mob/living/user, direction)
 	if(user.stat || user.stunned || user.weakened || user.paralysis)
 		unbuckle_mob()
-	if(user.get_type_in_hands(/obj/item/key))
+	if(user.get_held_item_of_type(/obj/item/key))
 		step(src, direction)
 		update_mob()
 	else

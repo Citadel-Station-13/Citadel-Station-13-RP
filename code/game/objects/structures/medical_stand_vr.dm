@@ -76,18 +76,14 @@
 	if(breather)
 		breather.internal = null
 		breather.internals?.icon_state = "internal0"
-	if(tank)
-		qdel(tank)
-	if(breather)
-		breather.remove_from_mob(contained)
-		src.visible_message(SPAN_NOTICE("The mask rapidly retracts just before \the [src] is destroyed!"))
-	qdel(contained)
-	contained = null
-	breather = null
-
+		breather = null
 	attached = null
-	qdel(beaker)
-	beaker = null
+	if(tank)
+		QDEL_NULL(tank)
+	if(contained)
+		QDEL_NULL(contained)
+	if(beaker)
+		QDEL_NULL(beaker)
 	return ..()
 
 /obj/structure/medical_stand/attack_robot(var/mob/user)

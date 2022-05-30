@@ -116,7 +116,7 @@
 			var/turf/location = src.loc
 			if(istype(location, /mob/living))
 				var/mob/living/M = location
-				if(M.item_is_in_hands(src))
+				if(M.is_holding(src))
 					location = get_turf(M)
 			if (istype(location, /turf))
 				location.hotspot_expose(700, 5)

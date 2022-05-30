@@ -80,7 +80,7 @@
 		if((P && P.loc == src)) //ifthe paper's on the board
 			var/mob/living/M = usr
 			if(istype(M))
-				var/obj/item/pen/E = M.get_type_in_hands(/obj/item/pen)
+				var/obj/item/pen/E = M.get_held_item_of_type(/obj/item/pen)
 				if(E)
 					add_fingerprint(M)
 					P.attackby(E, usr)
