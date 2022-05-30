@@ -859,7 +859,7 @@ export const ResearchConsole = (props, context) => {
   const [menu, setMenu] = useLocalState(context, "rdmenu", 0);
 
   let allTabsDisabled = false;
-  if (busy_msg || locked) {
+  if (locked) {
     allTabsDisabled = true;
   }
 
@@ -878,11 +878,7 @@ export const ResearchConsole = (props, context) => {
             </Tabs.Tab>
           ))}
         </Tabs>
-        {busy_msg && (
-          <Section title="Processing...">
-            {busy_msg}
-          </Section>
-        ) || locked && (
+        {locked && (
           <Section title="Console Locked">
             <Button
               onClick={() => act("lock")}
