@@ -118,7 +118,7 @@
 
 		var/turf/potential = get_step_multiz(src, d)
 		if(!potential)
-			return
+			continue
 		var/them_to_us = potential.CanAtmosPass(src, REVERSE_DIR(d))
 		if(them_to_us == ATMOS_PASS_AIR_BLOCKED)
 
