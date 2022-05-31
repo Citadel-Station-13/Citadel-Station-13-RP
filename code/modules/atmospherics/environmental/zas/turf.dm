@@ -1,21 +1,28 @@
 /turf
 	var/needs_air_update = FALSE
+
+/turf/proc/has_valid_zone()
+	return FALSE
+
 /turf/simulated
 	var/datum/zas_zone/zone
 	var/open_directions
 	/// Do we show gas overlays?
 	var/allow_gas_overlays = TRUE
 
+/turf/simulated/has_valid_zone()
+	return zone && !zone.invalid
+
 /turf/proc/update_air_properties()
 	var/block = CanAtmosPass(src, NONE)
 	if(block == ATMOS_PASS_AIR_BLOCKED)
 		//dbg(blocked)
-		return 1
+		return
 
 	#ifdef MULTIZAS
-	for(var/d = 1, d < 64, d *= 2)
+	for(var/d in 1, d < 64, d *= 2)
 	#else
-	for(var/d = 1, d < 16, d *= 2)
+	for(var/d in 1, d < 16, d *= 2)
 	#endif
 
 		var/turf/unsim = get_step(src, d)
@@ -26,7 +33,6 @@
 		block = unsim.CanAtmosPass(src, REVERSE_DIR(d))
 
 		if(block == ATMOS_PASS_AIR_BLOCKED)
-			//unsim.dbg(air_blocked, turn(180,d))
 			continue
 
 		var/r_block = CanAtmosPass(unsim, d)
@@ -37,7 +43,7 @@
 		if(istype(unsim, /turf/simulated))
 
 			var/turf/simulated/sim = unsim
-			if(air_master.has_valid_zone(sim))
+			if(sim.has_valid_zone())
 
 				air_master.connect(sim, src)
 
@@ -156,7 +162,7 @@
 			var/turf/simulated/sim = unsim
 			sim.open_directions |= GLOB.reverse_dir[d]
 
-			if(air_master.has_valid_zone(sim))
+			if(sim.has_valid_zone())
 
 				//Might have assigned a zone, since this happens for each direction.
 				if(!zone)
@@ -204,7 +210,7 @@
 			if(!postponed) postponed = list()
 			postponed.Add(unsim)
 
-	if(!air_master.has_valid_zone(src)) //Still no zone, make a new one.
+	if(!has_valid_zone()) //Still no zone, make a new one.
 		var/datum/zas_zone/newzone = new
 		newzone.add(src)
 

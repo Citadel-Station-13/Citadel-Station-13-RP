@@ -30,8 +30,15 @@ SUBSYSTEM_DEF(xenoarch)
 	. = ..()
 
 /datum/controller/subsystem/xenoarch/proc/SetupXenoarch()
+	var/list/faster = list()
+	var/start
+	for(var/i in 1 to world.maxz)
+		faster[i] = (i in GLOB.using_map.xenoarch_exempt_levels)
+
+	var/list/digsites_to_make = list()
+	start = world.timeofday
 	for(var/turf/simulated/mineral/M in world)
-		if(!M.density || (M.z in GLOB.using_map.xenoarch_exempt_levels))
+		if(!M.density || faster[M.z])
 			continue
 
 		if(isnull(M.geologic_data))
@@ -40,43 +47,32 @@ SUBSYSTEM_DEF(xenoarch)
 		if(!prob(XENOARCH_SPAWN_CHANCE))
 			continue
 
-		var/farEnough = 1
-		for(var/A in digsite_spawning_turfs)
-			var/turf/T = A
-			if(T in range(5, M))
-				farEnough = 0
-				break
-		if(!farEnough)
-			continue
+		digsites_to_make += M
+		CHECK_TICK
 
-		digsite_spawning_turfs.Add(M)
+	subsystem_log("gathered turfs in [round(world.timeofday - start, 0.01)]")
+
+	start = world.timeofday
+	for(var/turf/simulated/mineral/T as anything in digsites_to_make)
+
+		digsites_to_make -= RANGE_TURFS(5, T)
+
+		digsite_spawning_turfs.Add(T)
 
 		var/digsite = get_random_digsite_type()
 		var/target_digsite_size = rand(DIGSITESIZE_LOWER, DIGSITESIZE_UPPER)
 
-		var/list/processed_turfs = list()
-		var/list/turfs_to_process = list(M)
+		var/list/turfs = list()
+		for(var/turf/simulated/mineral/M in RANGE_TURFS(2, T))
+			if(!M.density || M.finds)
+				continue
+			turfs += M
 
-		var/list/viable_adjacent_turfs = list()
-		if(target_digsite_size > 1)
-			for(var/turf/simulated/mineral/T in orange(2, M))
-				if(!T.density)
-					continue
-				if(T.finds)
-					continue
-				if(T in processed_turfs)
-					continue
-				viable_adjacent_turfs.Add(T)
+		for(var/i in 1 to target_digsite_size)
+			var/turf/simulated/mineral/archeo_turf = pick_n_take(turfs)
+			if(!archeo_turf)
+				break
 
-			target_digsite_size = min(target_digsite_size, viable_adjacent_turfs.len)
-
-		for(var/i = 1 to target_digsite_size)
-			turfs_to_process += pick_n_take(viable_adjacent_turfs)
-
-		while(turfs_to_process.len)
-			var/turf/simulated/mineral/archeo_turf = pop(turfs_to_process)
-
-			processed_turfs.Add(archeo_turf)
 			if(isnull(archeo_turf.finds))
 				archeo_turf.finds = list()
 				if(prob(50))
@@ -96,8 +92,12 @@ SUBSYSTEM_DEF(xenoarch)
 					archeo_turf.update_icon()
 
 			//have a chance for an artifact to spawn here, but not in animal or plant digsites
-			if(isnull(M.artifact_find) && digsite != DIGSITE_GARDEN && digsite != DIGSITE_ANIMAL)
+			if(isnull(T.artifact_find) && digsite != DIGSITE_GARDEN && digsite != DIGSITE_ANIMAL)
 				artifact_spawning_turfs.Add(archeo_turf)
+
+	subsystem_log("spawned digsites in [round(world.timeofday - start, 0.01)]")
+
+	start = world.timeofday
 
 	//create artifact machinery
 	var/num_artifacts_spawn = rand(ARTIFACTSPAWNNUM_LOWER, ARTIFACTSPAWNNUM_UPPER)
@@ -105,9 +105,12 @@ SUBSYSTEM_DEF(xenoarch)
 		pick_n_take(artifact_spawning_turfs)
 
 	var/list/artifacts_spawnturf_temp = artifact_spawning_turfs.Copy()
-	while(artifacts_spawnturf_temp.len > 0)
-		var/turf/simulated/mineral/artifact_turf = pop(artifacts_spawnturf_temp)
-		artifact_turf.artifact_find = new()
+	while(artifacts_spawnturf_temp.len)
+		var/turf/simulated/mineral/artifact_turf = artifacts_spawnturf_temp[artifacts_spawnturf_temp.len]
+		--artifacts_spawnturf_temp.len
+		artifact_turf.artifact_find = new
+
+	subsystem_log("created artifact machinery in [round(world.timeofday - start, 0.01)]")
 
 #undef XENOARCH_SPAWN_CHANCE
 #undef DIGSITESIZE_LOWER
