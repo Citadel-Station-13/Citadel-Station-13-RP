@@ -129,7 +129,7 @@
 
 			continue
 
-		var/us_to_them = CanAtmosPass(unsim, d)
+		var/us_to_them = CanAtmosPass(potential, d)
 		if(us_to_them == ATMOS_PASS_AIR_BLOCKED)
 
 			#ifdef ZASDBG
@@ -171,21 +171,21 @@
 						LAZYSET(postponed, potential, min(them_to_us, us_to_them))
 						LAZYSET(postponed_dirs, potential, d)
 					else
-						sim.zone.add(src)
+						S.zone.add(src)
 
 						#ifdef ZASDBG
 						dbg(assigned)
 						if(verbose) to_chat(world, "Added to [zone]")
 						#endif
 
-				else if(sim.zone != zone)
+				else if(S.zone != zone)
 
 					#ifdef ZASDBG
 					if(verbose)
 						to_chat(world, "Connecting to [sim.zone]")
 					#endif
 
-					air_master.connect(src, sim, min(them_to_us, us_to_them), d)
+					air_master.connect(src, potential, min(them_to_us, us_to_them), d)
 
 			#ifdef ZASDBG
 				else if(verbose)
@@ -215,7 +215,7 @@
 	//At this point, a zone should have happened. If it hasn't, don't add more checks, fix the bug.
 
 	for(var/turf/T as anything in postponed)
-		air_master.connect(src, T, postponed[T])
+		air_master.connect(src, T, postponed[T], postponed_dirs[T])
 
 /turf/proc/post_update_air_properties()
 	connections?.update_all()

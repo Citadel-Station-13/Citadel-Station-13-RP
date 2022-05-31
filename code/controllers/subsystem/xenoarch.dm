@@ -1,8 +1,8 @@
 #define XENOARCH_SPAWN_CHANCE 0.5
 #define DIGSITESIZE_LOWER 4
 #define DIGSITESIZE_UPPER 12
-#define ARTIFACTSPAWNNUM_LOWER 6
-#define ARTIFACTSPAWNNUM_UPPER 12
+#define ARTIFACTSPAWNNUM_LOWER 24
+#define ARTIFACTSPAWNNUM_UPPER 36
 
 //
 // Xenoarch subsystem handles initialization of Xenoarcheaology artifacts and digsites.
@@ -33,7 +33,7 @@ SUBSYSTEM_DEF(xenoarch)
 	var/list/faster = list()
 	var/start
 	for(var/i in 1 to world.maxz)
-		faster[i] = (i in GLOB.using_map.xenoarch_exempt_levels)
+		faster += (i in GLOB.using_map.xenoarch_exempt_levels)
 
 	var/list/digsites_to_make = list()
 	start = world.timeofday
@@ -50,10 +50,12 @@ SUBSYSTEM_DEF(xenoarch)
 		digsites_to_make += M
 		CHECK_TICK
 
-	subsystem_log("gathered turfs in [round(world.timeofday - start, 0.01)]")
+	subsystem_log("gathered [digsites_to_make.len] turfs in [round(world.timeofday - start, 0.01)]")
 
 	start = world.timeofday
+	var/made = 0
 	for(var/turf/simulated/mineral/T as anything in digsites_to_make)
+		++made
 
 		digsites_to_make -= RANGE_TURFS(5, T)
 
@@ -95,20 +97,23 @@ SUBSYSTEM_DEF(xenoarch)
 			if(isnull(T.artifact_find) && digsite != DIGSITE_GARDEN && digsite != DIGSITE_ANIMAL)
 				artifact_spawning_turfs.Add(archeo_turf)
 
-	subsystem_log("spawned digsites in [round(world.timeofday - start, 0.01)]")
+	subsystem_log("spawned [made] digsites in [round(world.timeofday - start, 0.01)]")
 
 	start = world.timeofday
 
+	var/artifacts = 0
 	//create artifact machinery
 	var/num_artifacts_spawn = rand(ARTIFACTSPAWNNUM_LOWER, ARTIFACTSPAWNNUM_UPPER)
-	while(artifact_spawning_turfs.len > num_artifacts_spawn)
-		pick_n_take(artifact_spawning_turfs)
+	var/list/to_make = list()
+	while((to_make.len < num_artifacts_spawn) && artifact_spawning_turfs.len)
+		to_make += pick_n_take(artifact_spawning_turfs)
 
 	var/list/artifacts_spawnturf_temp = artifact_spawning_turfs.Copy()
 	while(artifacts_spawnturf_temp.len)
 		var/turf/simulated/mineral/artifact_turf = artifacts_spawnturf_temp[artifacts_spawnturf_temp.len]
 		--artifacts_spawnturf_temp.len
 		artifact_turf.artifact_find = new
+		++artifacts
 
 	subsystem_log("created artifact machinery in [round(world.timeofday - start, 0.01)]")
 
