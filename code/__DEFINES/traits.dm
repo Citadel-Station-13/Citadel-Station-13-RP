@@ -236,6 +236,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define STATUS_EFFECT_TRAIT "status-effect"
 */
 #define CLOTHING_TRAIT "clothing"
+#define RIG_TRAIT "rig"
 #define MAGBOOT_TRAIT "magboot"
 #define TOGGLE_CLOTHING_TRAIT "toggle_clothing"
 #define AUGMENT_TRAIT "trait"

@@ -84,8 +84,6 @@
 	var/locked_down = 0
 
 	var/seal_delay = SEAL_DELAY
-	var/sealing                                               // Keeps track of seal status independantly of canremove.
-	var/offline = 1                                           // Should we be applying suit maluses?
 	var/offline_slowdown = 3                                  // If the suit is deployed and unpowered, it sets slowdown to this.
 	var/vision_restriction
 	var/offline_vision_restriction = 1                        // 0 - none, 1 - welder vision, 2 - blind. Maybe move this to helmets.
@@ -173,7 +171,7 @@
 	for(var/obj/item/piece in list(gloves,helmet,boots,chest))
 		if(!istype(piece))
 			continue
-		piece.canremove = 0
+		ADD_TRAIT(piece, TRAIT_NODROP, RIG_TRAIT)
 		piece.name = "[suit_type] [initial(piece.name)]"
 		piece.desc = "It seems to be part of a [src.name]."
 		piece.icon_state = "[suit_state]"
@@ -237,6 +235,7 @@
 
 /obj/item/rig/proc/reset()
 	offline = 2
+	set_activation_state(RIG_ACTIVATION_OFF)
 	canremove = 1
 	//Reset the trap and upgrade it. Won't affect standard rigs.
 	trapSprung = 0
@@ -1142,13 +1141,22 @@
 /obj/item/rig/get_rig()
 	return src
 
-/mob/living/carbon/human/get_rig()
-	if(istype(back, /obj/item/rig))
-		return back
-	else if(istype(belt, /obj/item/rig))
-		return belt
+/mob/living/carbon/human/get_rig(requires_activated)
+	if(!requires_activated)
+		if(istype(back, /obj/item/rig))
+			return back
+		else if(istype(belt, /obj/item/rig))
+			return belt
 	else
-		return null
+		var/obj/item/rig/R
+		if(istype(belt, /obj/item/rig))
+			R = belt
+			if(R.is_activated())
+				return R
+		else if(istype(back, /obj/item/rig))
+			R = back
+			if(R.is_activated())
+				return R
 
 //Boot animation screen objects
 /atom/movable/screen/rig_booting

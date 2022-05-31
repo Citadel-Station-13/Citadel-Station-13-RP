@@ -20,11 +20,11 @@
 		to_chat(usr, "<span class='warning'>The hardsuit is not being worn.</span>")
 		return
 
-	if(!check_power_cost(usr))
+	if(!is_activated())
+		to_chat(usr, "<span class='warning'>The suit is not active.</span>")
 		return
 
-	if(canremove)
-		to_chat(usr, "<span class='warning'>The suit is not active.</span>")
+	if(!check_power_cost(usr))
 		return
 
 	if(!check_suit_access(usr))
@@ -141,14 +141,14 @@
 	set category = "Hardsuit"
 	set src = usr.contents
 
+	if(!is_activated())
+		to_chat(usr, "<span class='warning'>The suit is not active.</span>")
+		return
+
 	if(malfunction_check(usr))
 		return
 
 	if(!check_power_cost(usr, 0, 0, 0, 0))
-		return
-
-	if(canremove)
-		to_chat(usr, "<span class='warning'>The suit is not active.</span>")
 		return
 
 	if(!visor)
@@ -171,11 +171,11 @@
 	set category = "Hardsuit"
 	set src = usr.contents
 
-	if(malfunction_check(usr))
+	if(!is_activated())
+		to_chat(usr, "<span class='warning'>The suit is not active.</span>")
 		return
 
-	if(canremove)
-		to_chat(usr, "<span class='warning'>The suit is not active.</span>")
+	if(malfunction_check(usr))
 		return
 
 	if(!istype(wearer) || (!wearer.back == src && !wearer.belt == src))
@@ -195,14 +195,14 @@
 	set category = "Hardsuit"
 	set src = usr.contents
 
+	if(!is_activated())
+		to_chat(usr, "<span class='warning'>The suit is not active.</span>")
+		return
+
 	if(malfunction_check(usr))
 		return
 
 	if(!check_power_cost(usr, 0, 0, 0, 0))
-		return
-
-	if(canremove)
-		to_chat(usr, "<span class='warning'>The suit is not active.</span>")
 		return
 
 	if(!istype(wearer) || (!wearer.back == src && !wearer.belt == src))
@@ -231,14 +231,14 @@
 	set category = "Hardsuit"
 	set src = usr.contents
 
+	if(!is_activated())
+		to_chat(usr, "<span class='warning'>The suit is not active.</span>")
+		return
+
 	if(malfunction_check(usr))
 		return
 
 	if(!check_power_cost(usr, 0, 0, 0, 0))
-		return
-
-	if(canremove)
-		to_chat(usr, "<span class='warning'>The suit is not active.</span>")
 		return
 
 	if(!istype(wearer) || (!wearer.back == src && !wearer.belt == src))
@@ -269,11 +269,11 @@
 	set category = "Hardsuit"
 	set src = usr.contents
 
-	if(malfunction_check(usr))
+	if(!is_activated())
+		to_chat(usr, "<span class='warning'>The suit is not active.</span>")
 		return
 
-	if(canremove)
-		to_chat(usr, "<span class='warning'>The suit is not active.</span>")
+	if(malfunction_check(usr))
 		return
 
 	if(!istype(wearer) || (!wearer.back == src && !wearer.belt == src))
