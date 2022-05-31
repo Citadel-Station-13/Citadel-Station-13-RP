@@ -6,13 +6,13 @@
 //Meme shit for the map
 
 /obj/item/reagent_containers/food/condiment/cursed
-
-/obj/item/reagent_containers/food/condiment/cursed/Initialize()
-	..()
-	reagents.add_reagent(pick("condensedcapsaicin_v", "hydrophoron"), 50)
 	name = "NileRed's Red Hot, Hot Sauce"
 	desc = "An unknown brand of supposedly synthetic hotsauce. A disclaimer sticker says, 'Do not try at home.' Good thing you're at work."
 	icon_state = "ketchup"
+
+/obj/item/reagent_containers/food/condiment/cursed/Initialize()
+	.  = ..()
+	reagents.add_reagent(pick("condensedcapsaicin_v", "hydrophoron"), 50)
 
 /obj/structure/metal_edge
 	name = "metal underside"
