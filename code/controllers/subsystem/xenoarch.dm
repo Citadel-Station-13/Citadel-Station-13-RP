@@ -115,7 +115,7 @@ SUBSYSTEM_DEF(xenoarch)
 		artifact_turf.artifact_find = new
 		++artifacts
 
-	subsystem_log("created artifact machinery in [round(world.timeofday - start, 0.01)]")
+	subsystem_log("created [artifacts] artifact machinery in [round(world.timeofday - start, 0.01)]")
 
 #undef XENOARCH_SPAWN_CHANCE
 #undef DIGSITESIZE_LOWER

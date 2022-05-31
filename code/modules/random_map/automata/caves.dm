@@ -4,6 +4,12 @@
 	var/list/ore_turfs = list()
 	var/make_cracked_turfs = TRUE
 
+/datum/random_map/automata/cave_system/generate()
+	. = ..()
+	for(var/i in 1 to map.len)
+		if(map[i] == WALL_CHAR)
+			ore_turfs += i
+
 /datum/random_map/automata/cave_system/no_cracks
 	make_cracked_turfs = FALSE
 
@@ -18,21 +24,12 @@
 			return "X"
 	return ..(value)
 
-/datum/random_map/automata/cave_system/revive_cell(var/target_cell, var/list/use_next_map, var/final_iter)
-	..()
-	if(final_iter)
-		ore_turfs |= target_cell
-
-/datum/random_map/automata/cave_system/kill_cell(var/target_cell, var/list/use_next_map, var/final_iter)
-	..()
-	if(final_iter)
-		ore_turfs -= target_cell
-
 // Create ore turfs.
 /datum/random_map/automata/cave_system/cleanup()
 	var/ore_count = round(map.len/20)
 	while((ore_count>0) && (ore_turfs.len>0))
-		if(!priority_process) sleep(-1)
+		if(!priority_process)
+			CHECK_TICK
 		var/check_cell = pick(ore_turfs)
 		ore_turfs -= check_cell
 		if(prob(75))
