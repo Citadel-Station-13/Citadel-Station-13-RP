@@ -77,7 +77,6 @@
 	siemens_coefficient= 0.75
 	rigsuit_max_pressure = 15 * ONE_ATMOSPHERE			  // Max pressure the rig protects against when sealed
 	rigsuit_min_pressure = 0							  // Min pressure the rig protects against when sealed
-    seal_delay = 8
 	helm_type = /obj/item/clothing/head/helmet/space/rig/industrial
 
 	allowed = list(
