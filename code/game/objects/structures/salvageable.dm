@@ -56,7 +56,7 @@
 		/obj/item/stock_parts/matter_bin/adv = 20
 	)
 
-/obj/structure/salvageable/machine/Initialize()
+/obj/structure/salvageable/machine/Initialize(mapload)
 	. = ..()
 	icon_state = "machine[rand(0,6)]"
 

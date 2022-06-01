@@ -1,27 +1,37 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
 //NOTE: Breathing happens once per FOUR TICKS, unless the last breath fails. In which case it happens once per ONE TICK! So oxyloss healing is done once per 4 ticks while oxyloss damage is applied once per tick!
-#define HUMAN_MAX_OXYLOSS 1 //Defines how much oxyloss humans can get per tick. A tile with no air at all (such as space) applies this value, otherwise it's a percentage of it.
-#define HUMAN_CRIT_MAX_OXYLOSS ( 2.0 / 6) //The amount of damage you'll get when in critical condition. We want this to be a 5 minute deal = 300s. There are 50HP to get through, so (1/6)*last_tick_duration per second. Breaths however only happen every 4 ticks. last_tick_duration = ~2.0 on average
-
-#define HEAT_DAMAGE_SYNTH 1.5 //Amount of damage applied for synths experiencing heat just above 360.15k such as space walking
-#define HEAT_DAMAGE_LEVEL_1 5 //Amount of damage applied when your body temperature just passes the 360.15k safety point
-#define HEAT_DAMAGE_LEVEL_2 10 //Amount of damage applied when your body temperature passes the 400K point
-#define HEAT_DAMAGE_LEVEL_3 20 //Amount of damage applied when your body temperature passes the 1000K point
-
-#define COLD_DAMAGE_LEVEL_1 0.5 //Amount of damage applied when your body temperature just passes the 260.15k safety point
-#define COLD_DAMAGE_LEVEL_2 1.5 //Amount of damage applied when your body temperature passes the 200K point
-#define COLD_DAMAGE_LEVEL_3 3 //Amount of damage applied when your body temperature passes the 120K point
-
+///Defines how much oxyloss humans can get per tick. A tile with no air at all (such as space) applies this value, otherwise it's a percentage of it.
+#define HUMAN_MAX_OXYLOSS 1
+///The amount of damage you'll get when in critical condition. We want this to be a 5 minute deal = 300s. There are 50HP to get through, so (1/6)*last_tick_duration per second. Breaths however only happen every 4 ticks. last_tick_duration = ~2.0 on average
+#define HUMAN_CRIT_MAX_OXYLOSS ( 2.0 / 6)
+///Amount of damage applied for synths experiencing heat just above 360.15k such as space walking
+#define HEAT_DAMAGE_SYNTH 1.5
+///Amount of damage applied when your body temperature just passes the 360.15k safety point
+#define HEAT_DAMAGE_LEVEL_1 5
+///Amount of damage applied when your body temperature passes the 400K point
+#define HEAT_DAMAGE_LEVEL_2 10
+///Amount of damage applied when your body temperature passes the 1000K point
+#define HEAT_DAMAGE_LEVEL_3 20
+///Amount of damage applied when your body temperature just passes the 260.15k safety point
+#define COLD_DAMAGE_LEVEL_1 0.5
+///Amount of damage applied when your body temperature passes the 200K point
+#define COLD_DAMAGE_LEVEL_2 1.5
+///Amount of damage applied when your body temperature passes the 120K point
+#define COLD_DAMAGE_LEVEL_3 3
 //Note that gas heat damage is only applied once every FOUR ticks.
-#define HEAT_GAS_DAMAGE_LEVEL_1 2 //Amount of damage applied when the current breath's temperature just passes the 360.15k safety point
-#define HEAT_GAS_DAMAGE_LEVEL_2 4 //Amount of damage applied when the current breath's temperature passes the 400K point
-#define HEAT_GAS_DAMAGE_LEVEL_3 8 //Amount of damage applied when the current breath's temperature passes the 1000K point
-
-#define COLD_GAS_DAMAGE_LEVEL_1 0.5 //Amount of damage applied when the current breath's temperature just passes the 260.15k safety point
-#define COLD_GAS_DAMAGE_LEVEL_2 1.5 //Amount of damage applied when the current breath's temperature passes the 200K point
-#define COLD_GAS_DAMAGE_LEVEL_3 3 //Amount of damage applied when the current breath's temperature passes the 120K point
-
+///Amount of damage applied when the current breath's temperature just passes the 360.15k safety point
+#define HEAT_GAS_DAMAGE_LEVEL_1 2
+///Amount of damage applied when the current breath's temperature passes the 400K point
+#define HEAT_GAS_DAMAGE_LEVEL_2 4
+///Amount of damage applied when the current breath's temperature passes the 1000K point
+#define HEAT_GAS_DAMAGE_LEVEL_3 8
+///Amount of damage applied when the current breath's temperature just passes the 260.15k safety point
+#define COLD_GAS_DAMAGE_LEVEL_1 0.5
+///Amount of damage applied when the current breath's temperature passes the 200K point
+#define COLD_GAS_DAMAGE_LEVEL_2 1.5
+///Amount of damage applied when the current breath's temperature passes the 120K point
+#define COLD_GAS_DAMAGE_LEVEL_3 3
 #define RADIATION_SPEED_COEFFICIENT 0.1
 
 /mob/living/carbon/human
@@ -65,7 +75,7 @@
 		Sleeping(20)
 
 	//No need to update all of these procs if the guy is dead.
-	fall() //VORESTATION EDIT. Prevents people from floating
+	fall() // Prevents people from floating
 	if(stat != DEAD && !stasis)
 		//Updates the number of stored chemicals for powers
 		handle_changeling()
@@ -73,8 +83,8 @@
 		//Organs and blood
 		handle_organs()
 		stabilize_body_temperature() //Body temperature adjusts itself (self-regulation)
-		weightgain() 			//VORESTATION EDIT
-		process_weaver_silk()	//VOREStation Addition
+		weightgain()
+		process_weaver_silk()
 		handle_shock()
 
 		handle_pain()
@@ -82,7 +92,7 @@
 		handle_medical_side_effects()
 
 		handle_heartbeat()
-		handle_nif() //VOREStation Add
+		handle_nif()
 		if(!client)
 			species.handle_npc(src)
 
@@ -273,10 +283,10 @@
 	radiation = clamp(radiation,0,250)
 
 	if(!radiation)
-		if(species.appearance_flags & RADIATION_GLOWS)
+		if(species.species_appearance_flags & RADIATION_GLOWS)
 			set_light(0)
 	else
-		if(species.appearance_flags & RADIATION_GLOWS)
+		if(species.species_appearance_flags & RADIATION_GLOWS)
 			set_light(max(1,min(5,radiation/15)), max(1,min(10,radiation/25)), species.get_flesh_colour(src))
 		// END DOGSHIT SNOWFLAKE
 
@@ -344,11 +354,11 @@
 	/** breathing **/
 
 /mob/living/carbon/human/handle_chemical_smoke(var/datum/gas_mixture/environment)
-	if(wear_mask && (wear_mask.item_flags & BLOCK_GAS_SMOKE_EFFECT))
+	if(wear_mask && (wear_mask.clothing_flags & BLOCK_GAS_SMOKE_EFFECT))
 		return
-	if(glasses && (glasses.item_flags & BLOCK_GAS_SMOKE_EFFECT))
+	if(glasses && (glasses.clothing_flags & BLOCK_GAS_SMOKE_EFFECT))
 		return
-	if(head && (head.item_flags & BLOCK_GAS_SMOKE_EFFECT))
+	if(head && (head.clothing_flags & BLOCK_GAS_SMOKE_EFFECT))
 		return
 	..()
 
@@ -370,7 +380,7 @@
 			if(!rig.offline && (rig.air_supply && internal == rig.air_supply))
 				rig_supply = rig.air_supply
 
-		if ((!rig_supply && !contents.Find(internal)) || !((wear_mask && (wear_mask.item_flags & ALLOWINTERNALS)) || (head && (head.item_flags & ALLOWINTERNALS))))
+		if ((!rig_supply && !contents.Find(internal)) || !((wear_mask && (wear_mask.clothing_flags & ALLOWINTERNALS)) || (head && (head.clothing_flags & ALLOWINTERNALS))))
 			internal = null
 
 		if(internal)
@@ -674,7 +684,7 @@
 			pl_effects()
 			break
 
-	if(istype(loc, /turf/space)) //VOREStation Edit - No FBPs overheating on space turfs inside mechs or people.
+	if(istype(loc, /turf/space)) // No FBPs overheating on space turfs inside mechs or people.
 		//Don't bother if the temperature drop is less than 0.1 anyways. Hopefully BYOND is smart enough to turn this constant expression into a constant
 		if(bodytemperature > (0.1 * HUMAN_HEAT_CAPACITY/(HUMAN_EXPOSED_SURFACE_AREA*STEFAN_BOLTZMANN_CONSTANT))**(1/4) + COSMIC_RADIATION_TEMPERATURE)
 			//Thermal radiation into space
@@ -686,8 +696,8 @@
 		if(istype(loc, /obj/mecha))
 			var/obj/mecha/M = loc
 			loc_temp =  M.return_temperature()
-		else if(istype(loc, /obj/machinery/atmospherics/unary/cryo_cell))
-			var/obj/machinery/atmospherics/unary/cryo_cell/CC = loc
+		else if(istype(loc, /obj/machinery/atmospherics/component/unary/cryo_cell))
+			var/obj/machinery/atmospherics/component/unary/cryo_cell/CC = loc
 			loc_temp = CC.air_contents.temperature
 		else
 			loc_temp = environment.temperature
@@ -744,7 +754,7 @@
 			return 1	//godmode
 
 
-		if(!istype(loc, /obj/machinery/atmospherics/unary/cryo_cell))
+		if(!istype(loc, /obj/machinery/atmospherics/component/unary/cryo_cell))
 			var/cold_dam = 0
 			if(bodytemperature <= species.cold_level_1)
 				if(bodytemperature <= species.cold_level_2)
@@ -775,7 +785,7 @@
 		pressure_alert = -1
 	else
 		if( !(COLD_RESISTANCE in mutations))
-			if(!isSynthetic() || !nif || !nif.flag_check(NIF_O_PRESSURESEAL,NIF_FLAGS_OTHER)) //VOREStation Edit - NIF pressure seals
+			if(!isSynthetic() || !nif || !nif.flag_check(NIF_O_PRESSURESEAL,NIF_FLAGS_OTHER)) // NIF pressure seals
 				take_overall_damage(brute=LOW_PRESSURE_DAMAGE, used_weapon = "Low Pressure")
 			if(getOxyLoss() < 55) 		// 12 OxyLoss per 4 ticks when wearing internals;    unconsciousness in 16 ticks, roughly half a minute
 				var/pressure_dam = 3	// 16 OxyLoss per 4 ticks when no internals present; unconsciousness in 13 ticks, roughly twenty seconds
@@ -935,8 +945,9 @@
 			GET_VSC_PROP(atmos_vsc, /atmos/phoron/contamination_loss, loss_per_part)
 			for(var/obj/item/I in src)
 				if(I.contaminated)
-					if(check_belly(I)) continue //VOREStation Edit
-					if(src.species && !(src.species.flags & CONTAMINATION_IMMUNE))	//VOREStation Edit: shadekin; CitadelRP: Black-Eyed Shadekin don't get afflicted from contaminated clothing
+					if(check_belly(I))
+						continue
+					if(src.species && !(src.species.flags & CONTAMINATION_IMMUNE))
 						// This is hacky, I'm so sorry.
 						if(I != l_hand && I != r_hand)	//If the item isn't in your hands, you're probably wearing it. Full damage for you.
 							total_phoronloss += loss_per_part
@@ -986,11 +997,10 @@
 				hydration_reduction *= mod.metabolism_percent
 		adjust_hydration(-hydration_reduction)
 
-	if(noisy == TRUE && nutrition < 250 && prob(10)) //VOREStation edit for hunger noises.
+	if(noisy == TRUE && nutrition < 250 && prob(10))
 		var/sound/growlsound = sound(get_sfx("hunger_sounds"))
 		var/growlmultiplier = 100 - (nutrition / 250 * 100)
 		playsound(src, growlsound, vol = growlmultiplier, vary = 1, falloff = 0.1, ignore_walls = TRUE, preference = /datum/client_preference/digestion_noises)
-	// VOREStation Edit End
 
 	// TODO: stomach and bloodstream organ.
 	if(!isSynthetic())
@@ -1369,7 +1379,7 @@
 				var/obj/item/clothing/glasses/G = glasses
 				if(G.prescription)
 					corrected = TRUE
-			if(nif?.flag_check(NIF_V_CORRECTIVE,NIF_FLAGS_VISION))	//VOREStation Edit - NIF
+			if(nif?.flag_check(NIF_V_CORRECTIVE,NIF_FLAGS_VISION))
 				corrected = TRUE
 			if(!corrected)
 				overlay_fullscreen("impaired", /atom/movable/screen/fullscreen/scaled/impaired, 1)
@@ -1396,7 +1406,7 @@
 					var/obj/item/clothing/glasses/welding/O = glasses
 					if(!O.up)
 						found_welder = 1
-				if(!found_welder && nif && nif.flag_check(NIF_V_UVFILTER,NIF_FLAGS_VISION))	found_welder = 1 //VOREStation Add - NIF
+				if(!found_welder && nif && nif.flag_check(NIF_V_UVFILTER,NIF_FLAGS_VISION))	found_welder = 1
 				if(!found_welder && istype(head, /obj/item/clothing/head/welding))
 					var/obj/item/clothing/head/welding/O = head
 					if(!O.up)
@@ -1406,7 +1416,7 @@
 					if(O.helmet && O.helmet == head && (O.helmet.body_parts_covered & EYES))
 						if((O.offline && O.offline_vision_restriction == 1) || (!O.offline && O.vision_restriction == 1))
 							found_welder = 1
-				if(absorbed) found_welder = 1 //VOREStation Code
+				if(absorbed) found_welder = 1
 			if(found_welder)
 				client.screen |= GLOB.global_hud.darkMask
 
@@ -1420,7 +1430,7 @@
 						break
 
 	else //We aren't dead
-		SetSeeInvisibleSelf(self_perspective.see_in_dark > 2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default)
+		SetSeeInvisibleSelf(GetSeeInDarkSelf() > 2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default)
 
 		if(XRAY in mutations)
 			AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
@@ -1443,7 +1453,7 @@
 		else
 			SetSightSelf(species.get_vision_flags(src))
 			SetSeeInDarkSelf(species.darksight)
-			SetSeeInvisibleSelf(self_perspective.see_in_dark > 2? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default)
+			SetSeeInvisibleSelf(GetSeeInDarkSelf() > 2? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default)
 
 		var/glasses_processed = 0
 		var/obj/item/rig/rig = back

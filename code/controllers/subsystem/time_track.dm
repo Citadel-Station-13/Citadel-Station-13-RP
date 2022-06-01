@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(time_track)
 	name = "Time Tracking"
 	wait = 1 SECONDS
-	flags = SS_NO_INIT|SS_NO_TICK_CHECK
+	subsystem_flags = SS_NO_INIT|SS_NO_TICK_CHECK
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
 
 	var/time_dilation_current = 0

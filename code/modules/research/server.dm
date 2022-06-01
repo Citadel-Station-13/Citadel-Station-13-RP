@@ -21,7 +21,6 @@
 /obj/machinery/r_n_d/server/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
-	RefreshParts()
 
 /obj/machinery/r_n_d/server/Destroy()
 	griefProtection()
@@ -55,7 +54,7 @@
 		if(0 to T0C)
 			health = min(100, health + 1)
 		if(T0C to (T20C + 20))
-			health = between(0, health, 100)
+			health = clamp( health, 0,  100)
 		if((T20C + 20) to (T0C + 70))
 			health = max(0, health - 1)
 	if(health <= 0)
@@ -81,7 +80,7 @@
 
 //Backup files to CentCom to help admins recover data after greifer attacks
 /obj/machinery/r_n_d/server/proc/griefProtection()
-	for(var/obj/machinery/r_n_d/server/centcom/C in machines)
+	for(var/obj/machinery/r_n_d/server/centcom/C in GLOB.machines)
 		for(var/datum/tech/T in files.known_tech)
 			C.files.AddTech2Known(T)
 		for(var/datum/design/D in files.known_designs)
@@ -95,7 +94,7 @@
 	if(!use_power)
 		return
 
-	if(!(stat & (NOPOWER|BROKEN))) //Blatently stolen from telecoms
+	if(!(machine_stat & (NOPOWER|BROKEN))) //Blatently stolen from telecoms
 		var/turf/simulated/L = loc
 		if(istype(L))
 			var/datum/gas_mixture/env = L.return_air()
@@ -126,7 +125,7 @@
 /obj/machinery/r_n_d/server/centcom/proc/update_connections()
 	var/list/no_id_servers = list()
 	var/list/server_ids = list()
-	for(var/obj/machinery/r_n_d/server/S in machines)
+	for(var/obj/machinery/r_n_d/server/S in GLOB.machines)
 		switch(S.server_id)
 			if(-1)
 				continue
@@ -178,7 +177,7 @@
 
 	var/list/server_list = list()
 	data["servers"] = server_list
-	for(var/obj/machinery/r_n_d/server/S in machines)
+	for(var/obj/machinery/r_n_d/server/S in GLOB.machines)
 		if(istype(S, /obj/machinery/r_n_d/server/centcom) && !badmin)
 			continue
 		var/list/tech = list()
@@ -206,7 +205,7 @@
 
 	var/list/console_list = list()
 	data["consoles"] = console_list
-	for(var/obj/machinery/computer/rdconsole/C in machines)
+	for(var/obj/machinery/computer/rdconsole/C in GLOB.machines)
 		if(!C.sync)
 			continue
 		console_list.Add(list(list(
@@ -290,7 +289,7 @@
 			return TRUE
 
 /obj/machinery/computer/rdservercontrol/attack_hand(mob/user as mob)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	ui_interact(user)
 

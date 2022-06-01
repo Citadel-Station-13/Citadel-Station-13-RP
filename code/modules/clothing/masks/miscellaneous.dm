@@ -32,7 +32,7 @@
 	item_state_slots = list(slot_r_hand_str = "sterile", slot_l_hand_str = "sterile")
 	w_class = ITEMSIZE_SMALL
 	body_parts_covered = FACE
-	item_flags = FLEXIBLEMATERIAL
+	clothing_flags = FLEXIBLEMATERIAL
 	gas_transfer_coefficient = 0.90
 	permeability_coefficient = 0.01
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 60, rad = 0)
@@ -83,7 +83,7 @@
 	desc = "A blue neck scarf."
 	icon_state = "blueneckscarf"
 	body_parts_covered = FACE
-	item_flags = FLEXIBLEMATERIAL
+	clothing_flags = FLEXIBLEMATERIAL
 	w_class = ITEMSIZE_SMALL
 	gas_transfer_coefficient = 0.90
 
@@ -92,7 +92,7 @@
 	desc = "A red and white checkered neck scarf."
 	icon_state = "redwhite_scarf"
 	body_parts_covered = FACE
-	item_flags = FLEXIBLEMATERIAL
+	clothing_flags = FLEXIBLEMATERIAL
 	w_class = ITEMSIZE_SMALL
 	gas_transfer_coefficient = 0.90
 
@@ -101,7 +101,7 @@
 	desc = "A green neck scarf."
 	icon_state = "green_scarf"
 	body_parts_covered = FACE
-	item_flags = FLEXIBLEMATERIAL
+	clothing_flags = FLEXIBLEMATERIAL
 	w_class = ITEMSIZE_SMALL
 	gas_transfer_coefficient = 0.90
 
@@ -110,7 +110,7 @@
 	desc = "A stealthy, dark scarf."
 	icon_state = "ninja_scarf"
 	body_parts_covered = FACE
-	item_flags = FLEXIBLEMATERIAL
+	clothing_flags = FLEXIBLEMATERIAL
 	w_class = ITEMSIZE_SMALL
 	gas_transfer_coefficient = 0.90
 	siemens_coefficient = 0
@@ -188,7 +188,7 @@
 	desc = "Antique facial armor hailing from old Earth. Designed to protect against sword blows and potentially arrows. This version has been carefully retrofitted to provide air."
 	icon_state = "menpo"
 	item_state_slots = list(slot_r_hand_str = "bandblack", slot_l_hand_str = "bandblack")
-	item_flags = ALLOWINTERNALS|FLEXIBLEMATERIAL
+	clothing_flags = ALLOWINTERNALS|FLEXIBLEMATERIAL
 	body_parts_covered = FACE
 	w_class = ITEMSIZE_SMALL
 	gas_transfer_coefficient = 0.10

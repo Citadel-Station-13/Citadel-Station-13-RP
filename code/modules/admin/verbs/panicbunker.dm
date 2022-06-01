@@ -7,7 +7,7 @@ GLOBAL_LIST_EMPTY(bunker_passthrough)
 	if(!check_rights(R_ADMIN))
 		return
 
-	if (!config_legacy.sql_enabled)
+	if(!CONFIG_GET(flag/sql_enabled))
 		to_chat(usr, "<span class='adminnotice'>The Database is not enabled!</span>")
 		return
 
@@ -22,7 +22,7 @@ GLOBAL_LIST_EMPTY(bunker_passthrough)
 	set category = "Server"
 	set name = "Add PB Bypass"
 	set desc = "Allows a given ckey to connect despite the panic bunker for a given round."
-	if(!config_legacy.sql_enabled)
+	if(!CONFIG_GET(flag/sql_enabled))
 		to_chat(usr, "<span class='adminnotice'>The Database is not enabled!</span>")
 		return
 
@@ -37,7 +37,7 @@ GLOBAL_LIST_EMPTY(bunker_passthrough)
 	set category = "Server"
 	set name = "Revoke PB Bypass"
 	set desc = "Revoke's a ckey's permission to bypass the panic bunker for a given round."
-	if(!config_legacy.sql_enabled)
+	if(!CONFIG_GET(flag/sql_enabled))
 		to_chat(usr, "<span class='adminnotice'>The Database is not enabled!</span>")
 		return
 

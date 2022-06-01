@@ -33,7 +33,7 @@
 
 				if(R.use(1)) // Cost of roofing tiles is 1:1 with cost to place lattice and plating
 					T.ReplaceWithLattice()
-					T.ChangeTurf(/turf/simulated/floor, preserve_outdoors = TRUE)
+					T.ChangeTurf(/turf/simulated/floor, flags = CHANGETURF_INHERIT_AIR | CHANGETURF_PRESERVE_OUTDOORS)
 					playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
 					user.visible_message("<span class='notice'>[user] patches a hole in the ceiling.</span>", "<span class='notice'>You patch a hole in the ceiling.</span>")
 					expended_tile = TRUE
@@ -42,7 +42,7 @@
 				return
 
 		// Create a ceiling to shield from the weather
-		if(src.outdoors)
+		if(outdoors)
 			for(var/dir in GLOB.cardinal)
 				var/turf/A = get_step(src, dir)
 				if(A && !A.outdoors)

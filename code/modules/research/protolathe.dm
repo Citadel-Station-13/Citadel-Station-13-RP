@@ -24,11 +24,10 @@
 /obj/machinery/r_n_d/protolathe/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
-	RefreshParts()
 
 /obj/machinery/r_n_d/protolathe/process(delta_time)
 	..()
-	if(stat)
+	if(machine_stat)
 		update_appearance()
 		return
 	if(queue.len == 0)
@@ -85,7 +84,7 @@
 
 /obj/machinery/r_n_d/protolathe/update_icon_state()
 	. = ..()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		icon_state = "[base_icon_state]-off"
 	else if(busy)
 		icon_state = "[base_icon_state]-active"
@@ -118,7 +117,7 @@
 	if(!istype(O, /obj/item/stack/material))
 		to_chat(user, "<span class='notice'>You cannot insert this item into \the [src]!</span>")
 		return 1
-	if(stat)
+	if(machine_stat)
 		return 1
 
 	var/obj/item/stack/material/S = O

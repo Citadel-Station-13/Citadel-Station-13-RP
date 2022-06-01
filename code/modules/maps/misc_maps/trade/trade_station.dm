@@ -41,24 +41,11 @@
 
 ///////////////////////////
 //// Spawning and despawning
-var/global/list/latejoin_trade = list()
-/obj/effect/landmark/trade
-	name = "JoinLateTrade"
-	delete_me = 1
-
-/obj/effect/landmark/trade/New()
-	latejoin_trade += loc // Register this turf as trade latejoin.
-	..()
 
 /datum/spawnpoint/trade
 	display_name = "Beruang Trading Corp Cryo"
 	restrict_job = list("Trader")
-	msg = "has come out of cryostasis"
 	announce_channel = "Trade"
-
-/datum/spawnpoint/trade/New()
-	..()
-	turfs = latejoin_trade
 
 /obj/machinery/cryopod/trade
 	announce_channel = "Trade"
@@ -73,8 +60,8 @@ var/global/list/latejoin_trade = list()
 	announce_channel = "Trade"
 	on_store_name = "Beruang Trading Corp Storage"
 
-/obj/effect/landmark/map_data/trade
-    height = 2
+/atom/movable/landmark/map_data/trade
+    height = 1
 
 // Their shuttle
 

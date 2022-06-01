@@ -9,11 +9,11 @@
 	initial_generic_waypoints = list("poid_main")
 */
 
-/obj/effect/landmark/lavaland_entry
+/atom/movable/landmark/lavaland_entry
 	name = "lavaland_entry"
 
 
-/obj/effect/landmark/lavaland_exit
+/atom/movable/landmark/lavaland_exit
 	name = "lavaland_exit"
 
 
@@ -97,7 +97,7 @@
 	icon_state = "asteroid"
 	outdoors = 1
 	base_icon_state = "asteroid"
-	turf_layers = list(/turf/simulated/mineral/floor/lavaland)
+	baseturfs = /turf/simulated/mineral/floor/lavaland
 	initial_flooring = /decl/flooring/outdoors/lavaland
 
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior

@@ -6,7 +6,6 @@ var/global/image/appearance_bro = new() // Temporarily super-global because of B
 
 // Items that ask to be called every cycle.
 var/global/datum/datacore/data_core = null
-var/global/list/machines                 = list()	// ALL Machines, wether processing or not.
 var/global/list/processing_machines      = list()	// TODO - Move into SSmachines
 var/global/list/processing_power_items   = list()	// TODO - Move into SSmachines
 var/global/list/active_diseases          = list()
@@ -51,13 +50,6 @@ var/mouse_respawn_time = 5 // Amount of time that must pass between a player dyi
 var/list/monkeystart     = list()
 var/list/wizardstart     = list()
 var/list/newplayer_start = list()
-
-//Spawnpoints.
-var/list/latejoin          = list()
-var/list/latejoin_gateway  = list()
-var/list/latejoin_elevator = list()
-var/list/latejoin_cryo     = list()
-var/list/latejoin_cyborg   = list()
 
 var/list/prisonwarp         = list() // Prisoners go to these
 var/list/holdingfacility    = list() // Captured people go here
@@ -119,8 +111,8 @@ var/global/list/alphabet_uppercase = list("A","B","C","D","E","F","G","H","I","J
 // Used by robots and robot preferences.
 var/list/robot_module_types = list(
 	"Standard", "Engineering", "Medical",
-	"Miner",    "Janitor",     "Service",      "Clerical", "Security",
-	"Research"
+	"Miner",    "Janitor",     "Service",
+	"Clerical", "Security",    "Research"
 )
 
 // Some scary sounds.
@@ -147,13 +139,11 @@ var/static/list/scarySounds = list(
 // Bomb cap!
 var/max_explosion_range = 14
 
-var/list/station_departments = list("Command", "Medical", "Engineering", "Science", "Security", "Cargo", "Exploration", "Civilian") //VOREStation Edit
-
 //Keyed list for caching icons so you don't need to make them for records, IDs, etc all separately.
 //Could be useful for AI impersonation or something at some point?
 var/static/list/cached_character_icons = list()
 
-//VR FILE MERGE BELOW
+//! ## VR FILE MERGE ## !//
 
 /hook/startup/proc/modules_vr()
 	robot_module_types += "Medihound"
@@ -167,47 +157,49 @@ var/list/shell_module_types = list(
 	"Standard", "Service", "Clerical"
 )
 
-var/list/eventdestinations = list() // List of scatter landmarks for VOREStation event portals
+var/list/eventdestinations = list() // List of scatter landmarks for event portals
 
-var/global/list/acceptable_fruit_types= list(
-											"ambrosia",
-											"apple",
-											"banana",
-											"berries",
-											"cabbage",
-											"carrot",
-											"celery",
-											"cherry",
-											"chili",
-											"cocoa",
-											"corn",
-											"durian",
-											"eggplant",
-											"grapes",
-											"greengrapes",
-											"harebells",
-											"lavender",
-											"lemon",
-											"lettuce",
-											"lime",
-											"onion",
-											"orange",
-											"peanut",
-											"poppies",
-											"potato",
-											"pumpkin",
-											"rice",
-											"rose",
-											"rhubarb",
-											"soybean",
-											"spineapple",
-											"sugarcane",
-											"sunflowers",
-											"tomato",
-											"vanilla",
-											"watermelon",
-											"wheat",
-											"whitebeet")
+var/global/list/acceptable_fruit_types = list(
+	"ambrosia",
+	"apple",
+	"banana",
+	"berries",
+	"cabbage",
+	"carrot",
+	"celery",
+	"cherry",
+	"chili",
+	"cocoa",
+	"corn",
+	"durian",
+	"eggplant",
+	"grapes",
+	"greengrapes",
+	"harebells",
+	"lavender",
+	"lemon",
+	"lettuce",
+	"lime",
+	"onion",
+	"orange",
+	"peanut",
+	"poppies",
+	"potato",
+	"pumpkin",
+	"rice",
+	"rose",
+	"rhubarb",
+	"soybean",
+	"spineapple",
+	"sugarcane",
+	"sunflowers",
+	"tomato",
+	"vanilla",
+	"watermelon",
+	"wheat",
+	"whitebeet",
+	)
 
 var/global/list/acceptable_nectar_types= list(
-											"waxcomb (honey)")
+	"waxcomb (honey)",
+	)

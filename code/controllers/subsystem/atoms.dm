@@ -6,7 +6,7 @@
 SUBSYSTEM_DEF(atoms)
 	name = "Atoms"
 	init_order = INIT_ORDER_ATOMS
-	flags = SS_NO_FIRE
+	subsystem_flags = SS_NO_FIRE
 
 	var/old_subsystem_initialized
 
@@ -17,15 +17,15 @@ SUBSYSTEM_DEF(atoms)
 /datum/controller/subsystem/atoms/Initialize(timeofday)
 	//GLOB.fire_overlay.appearance_flags = RESET_COLOR
 	//setupGenetics() //to set the mutations' sequence
-	subsystem_initialized = INITIALIZATION_INNEW_MAPLOAD
+	initialized = INITIALIZATION_INNEW_MAPLOAD
 	InitializeAtoms()
 	return ..()
 
 /datum/controller/subsystem/atoms/proc/InitializeAtoms(list/atoms)
-	if(subsystem_initialized == INITIALIZATION_INSSATOMS)
+	if(initialized == INITIALIZATION_INSSATOMS)
 		return
 
-	subsystem_initialized = INITIALIZATION_INNEW_MAPLOAD
+	initialized = INITIALIZATION_INNEW_MAPLOAD
 
 	LAZYINITLIST(late_loaders)
 
@@ -49,7 +49,7 @@ SUBSYSTEM_DEF(atoms)
 	testing("Initialized [count] atoms")
 	pass(count)
 
-	subsystem_initialized = INITIALIZATION_INNEW_REGULAR
+	initialized = INITIALIZATION_INNEW_REGULAR
 
 	if(late_loaders.len)
 		for(var/I in late_loaders)
@@ -94,15 +94,15 @@ SUBSYSTEM_DEF(atoms)
 	return qdeleted || QDELING(A)
 
 /datum/controller/subsystem/atoms/proc/map_loader_begin()
-	old_subsystem_initialized = subsystem_initialized
-	subsystem_initialized = INITIALIZATION_INSSATOMS
+	old_subsystem_initialized = initialized
+	initialized = INITIALIZATION_INSSATOMS
 
 /datum/controller/subsystem/atoms/proc/map_loader_stop()
-	subsystem_initialized = old_subsystem_initialized
+	initialized = old_subsystem_initialized
 
 /datum/controller/subsystem/atoms/Recover()
-	subsystem_initialized = SSatoms.subsystem_initialized
-	if(subsystem_initialized == INITIALIZATION_INNEW_MAPLOAD)
+	initialized = SSatoms.initialized
+	if(initialized == INITIALIZATION_INNEW_MAPLOAD)
 		InitializeAtoms()
 	old_subsystem_initialized = SSatoms.old_subsystem_initialized
 	BadInitializeCalls = SSatoms.BadInitializeCalls

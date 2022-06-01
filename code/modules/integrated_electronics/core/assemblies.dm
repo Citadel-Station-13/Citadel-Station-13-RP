@@ -80,7 +80,7 @@
 
 	data["battery_charge"] = round(battery?.charge, 0.1)
 	data["battery_max"] = round(battery?.maxcharge, 0.1)
-	data["net_power"] = net_power / CELLRATE
+	data["net_power"] = DYNAMIC_CELL_UNITS_TO_W(net_power, 1)
 
 	// This works because lists are always passed by reference in BYOND, so modifying unremovable_circuits
 	// after setting data["unremovable_circuits"] = unremovable_circuits also modifies data["unremovable_circuits"]
@@ -292,7 +292,19 @@
 			return TRUE
 
 	else if(I.is_crowbar())
+		if(!opened)
+			return FALSE
+		if(!battery)
+			to_chat(usr, SPAN_WARNING("There's no power cell to remove from \the [src]."))
+			return FALSE
+		battery.forceMove(get_turf(src))
 		playsound(get_turf(src), 'sound/items/Crowbar.ogg', 50, 1)
+		to_chat(user, SPAN_NOTICE("You pull \the [battery] out of \the [src]'s power supplier."))
+		battery = null
+		return TRUE
+
+	else if(I.is_screwdriver())
+		playsound(get_turf(src), 'sound/items/Screwdriver.ogg', 50, 1)
 		opened = !opened
 		to_chat(user, SPAN_NOTICE("You [opened ? "opened" : "closed"] \the [src]."))
 		update_icon()
@@ -371,7 +383,7 @@
 // Returns true if power was successfully drawn.
 /obj/item/electronic_assembly/proc/draw_power(amount)
 	if(battery)
-		var/lost = battery.use(amount * CELLRATE)
+		var/lost = battery.use(DYNAMIC_W_TO_CELL_UNITS(amount, 1))
 		net_power -= lost
 		return lost > 0
 	return FALSE
@@ -379,7 +391,23 @@
 // Ditto for giving.
 /obj/item/electronic_assembly/proc/give_power(amount)
 	if(battery)
-		var/gained = battery.give(amount * CELLRATE)
+		var/gained = battery.give(DYNAMIC_W_TO_CELL_UNITS(amount, 1))
+		net_power += gained
+		return TRUE
+	return FALSE
+
+// Returns true if power was successfully drawn.
+/obj/item/electronic_assembly/proc/draw_power_kw(amount)
+	if(battery)
+		var/lost = battery.use(DYNAMIC_KW_TO_CELL_UNITS(amount, 1))
+		net_power -= lost
+		return lost > 0
+	return FALSE
+
+// Ditto for giving.
+/obj/item/electronic_assembly/proc/give_power_kw(amount)
+	if(battery)
+		var/gained = battery.give(DYNAMIC_KW_TO_CELL_UNITS(amount, 1))
 		net_power += gained
 		return TRUE
 	return FALSE

@@ -75,7 +75,7 @@ proc/random_facial_hair_style(gender, species = SPECIES_HUMAN)
 proc/sanitize_name(name, species = SPECIES_HUMAN)
 	var/datum/species/current_species
 	if(species)
-		current_species = GLOB.all_species[species]
+		current_species = name_static_species_meta(species)
 
 	return current_species ? current_species.sanitize_name(name) : sanitizeName(name, MAX_NAME_LEN)
 
@@ -83,7 +83,7 @@ proc/random_name(gender, species = SPECIES_HUMAN)
 
 	var/datum/species/current_species
 	if(species)
-		current_species = GLOB.all_species[species]
+		current_species = name_static_species_meta(species)
 
 	if(!current_species || current_species.name_language == null)
 		if(gender==FEMALE)
@@ -289,7 +289,7 @@ Proc for attack log creation, because really why not
 
 	return living
 
-/atom/proc/human_mobs(var/range = world.view)
+/atom/proc/human_mobs(range = world.view)
 	var/list/viewers = oviewers(src,range)
 	var/list/humans = list()
 	for(var/mob/living/carbon/human/H in viewers)
@@ -297,7 +297,7 @@ Proc for attack log creation, because really why not
 
 	return humans
 
-/proc/cached_character_icon(var/mob/desired)
+/proc/cached_character_icon(mob/desired)
 	var/cachekey = "\ref[desired][desired.real_name]"
 
 	if(cached_character_icons[cachekey])
@@ -305,3 +305,7 @@ Proc for attack log creation, because really why not
 	else
 		. = getCompoundIcon(desired)
 		cached_character_icons[cachekey] = .
+
+/// Gets the client of the mob, allowing for mocking of the client.
+/// You only need to use this if you know you're going to be mocking clients somewhere else.
+#define GET_CLIENT(mob) (##mob.client || ##mob.mock_client)

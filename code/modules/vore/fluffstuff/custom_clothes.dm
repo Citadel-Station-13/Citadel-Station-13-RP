@@ -1075,12 +1075,12 @@ END OF CITADEL CHANGES */
 		)
 	armor = list(melee = 20, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 20, rad = 25)
 
-/obj/item/clothing/suit/storage/trek/ds9/equipped()
+/obj/item/clothing/suit/storage/trek/ds9/equipped(mob/user, slot)
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.wear_suit == src)
 		if(H.species.name == SPECIES_VOX)
-			icon_override = 'icons/mob/species/vox/suit.dmi'
+			icon_override = 'icons/mob/clothing/species/vox/suit.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	update_clothing_icon()
@@ -1098,12 +1098,12 @@ END OF CITADEL CHANGES */
 	icon_state = "trek_command"
 	item_state = "trek_ds9_command"
 
-/obj/item/clothing/under/rank/trek/command/ds9/equipped() // Cit change to take into account weirdness with defines. When put on it forces the correct sprite sheet. However when removed it shows a missing sprite for either uniform or suit depending on if it's the overcoat or uniform. Don't know how to fix
+/obj/item/clothing/under/rank/trek/command/ds9/equipped(mob/user, slot) // Cit change to take into account weirdness with defines. When put on it forces the correct sprite sheet. However when removed it shows a missing sprite for either uniform or suit depending on if it's the overcoat or uniform. Don't know how to fix
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.w_uniform == src)
 		if(H.species.name == SPECIES_VOX)
-			icon_override = 'icons/mob/species/vox/uniform.dmi'
+			icon_override = 'icons/mob/clothing/species/vox/uniform.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	update_clothing_icon()
@@ -1113,12 +1113,12 @@ END OF CITADEL CHANGES */
 	icon_state = "trek_engsec"
 	item_state = "trek_ds9_engsec"
 
-/obj/item/clothing/under/rank/trek/engsec/ds9/equipped() // Cit change, ditto
+/obj/item/clothing/under/rank/trek/engsec/ds9/equipped(mob/user, slot) // Cit change, ditto
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.w_uniform == src)
 		if(H.species.name == SPECIES_VOX)
-			icon_override = 'icons/mob/species/vox/uniform.dmi'
+			icon_override = 'icons/mob/clothing/species/vox/uniform.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	update_clothing_icon()
@@ -1128,12 +1128,12 @@ END OF CITADEL CHANGES */
 	icon_state = "trek_medsci"
 	item_state = "trek_ds9_medsci"
 
-/obj/item/clothing/under/rank/trek/medsci/ds9/equipped() // Cit change, ditto
+/obj/item/clothing/under/rank/trek/medsci/ds9/equipped(mob/user, slot) // Cit change, ditto
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.w_uniform == src)
 		if(H.species.name == SPECIES_VOX)
-			icon_override = 'icons/mob/species/vox/uniform.dmi'
+			icon_override = 'icons/mob/clothing/species/vox/uniform.dmi'
 		else
 			icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	update_clothing_icon()
@@ -1150,7 +1150,7 @@ END OF CITADEL CHANGES */
 /obj/item/clothing/suit/storage/hooded/wintercoat/jessie
 	name = "Handmade Winter Suit"
 	desc = "A durable, but somewhat ragged lower portion of a snow suit fitted for a wolftaur."
-	icon = 'icons/mob/taursuits_wolf_vr.dmi'
+	icon = 'icons/mob/clothing/taursuits_wolf.dmi'
 	icon_state = "jessiecoat"
 	item_state = "jessiecoat"
 
@@ -1167,7 +1167,7 @@ END OF CITADEL CHANGES */
 	name = "Kat's Fox Taur Armor"
 	desc = "A set of security armor, light weight and easy to run in for a Taur, this item protects the \
 	entire body."
-	icon = 'icons/mob/taursuits_wolf_vr.dmi'
+	icon = 'icons/mob/clothing/taursuits_wolf.dmi'
 	icon_state = "katesuit"
 	item_state_slots = null
 
@@ -1185,7 +1185,7 @@ END OF CITADEL CHANGES */
 	desc = "Taur engineering voidsuit. Recolored navy blue and white. Slightly tweaked as well to \
 	get close to having security voidsuit protection as possible with a slight reduction in movement \
 	speed to compensate for custom padding and armor Kateryna made herself."
-	icon = 'icons/mob/taursuits_wolf_vr.dmi'
+	icon = 'icons/mob/clothing/taursuits_wolf.dmi'
 	icon_state = "lilithsuit"
 	item_state = "lilithsuit"
 	species_restricted = null
@@ -1541,7 +1541,7 @@ END OF CITADEL CHANGES */
 	name = "latex maid dress"
 	desc = "Squeak! A shiny outfit for cleaning, made by people with dirty minds."
 
-	item_icons = list(slot_w_uniform_str = 'icons/vore/custom_clothes_vr.dmi')
+	item_icons = list(/datum/inventory_slot_meta/inventory/uniform = 'icons/vore/custom_clothes_vr.dmi')
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "latexmaid"
 	item_state = "latexmaid_mob"
@@ -1621,7 +1621,7 @@ END OF CITADEL CHANGES */
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
 	desc = "A series of armor plates painted black, deployed from a back-mounted module. They fit smoothly over the unit's armor plates and projects a skintight bubble shield over the unit's uncovered parts. Faceplate and coolant unit not included."
 	species_restricted = null
-	icon = 'icons/mob/taursuits_lizard_vr.dmi'
+	icon = 'icons/mob/clothing/taursuits_lizard_vr.dmi'
 	icon_state = "hasd_suit"
 	item_state = "hasd_suit"
 	pixel_x = -16
@@ -1737,7 +1737,7 @@ END OF CITADEL CHANGES */
 
 	if(istype(M,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		if(!(H.get_species() == SPECIES_PROMETHEAN))	//Only wearable by slimes, since species_restricted actually checks bodytype, not species
+		if(!(H.get_species_name() == SPECIES_PROMETHEAN))	//Only wearable by slimes, since species_restricted actually checks bodytype, not species
 			return 0
 
 	return 1

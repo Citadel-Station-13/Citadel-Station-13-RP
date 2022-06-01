@@ -1,7 +1,7 @@
 /obj/item/clothing/suit/armor
 	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/gun/energy,/obj/item/reagent_containers/spray/pepper,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
-	item_flags = THICKMATERIAL
+	clothing_flags = THICKMATERIAL
 	valid_accessory_slots = (\
 		ACCESSORY_SLOT_OVER\
 		|ACCESSORY_SLOT_MEDAL\
@@ -137,7 +137,7 @@
 	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
-	item_flags = THICKMATERIAL
+	clothing_flags = THICKMATERIAL
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
 	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/helmet)
 	slowdown = 1
@@ -302,7 +302,7 @@
 	allowed = list(/obj/item/gun,/obj/item/reagent_containers/spray/pepper,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
 
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
-	item_flags = THICKMATERIAL
+	clothing_flags = THICKMATERIAL
 
 	cold_protection = UPPER_TORSO|LOWER_TORSO
 	min_cold_protection_temperature = ARMOR_MIN_COLD_PROTECTION_TEMPERATURE
@@ -554,7 +554,7 @@
 	name = "plate carrier"
 	desc = "A lightweight black plate carrier vest. It can be equipped with armor plates, but provides no protection of its own."
 	icon = 'icons/obj/clothing/modular_armor.dmi'
-	item_icons = list(slot_wear_suit_str = 'icons/mob/modular_armor.dmi')
+	item_icons = list(/datum/inventory_slot_meta/inventory/suit = 'icons/mob/clothing/modular_armor.dmi')
 	icon_state = "pcarrier"
 	valid_accessory_slots = (\
 		ACCESSORY_SLOT_INSIGNIA\
@@ -731,7 +731,7 @@
 	name = "wolf-taur armor vest"
 	desc = "An armored vest that protects against some damage. It appears to be created for a wolf-taur."
 	species_restricted = null //Species restricted since all it cares about is a taur half
-	icon = 'icons/mob/taursuits_wolf_vr.dmi'
+	icon = 'icons/mob/clothing/taursuits_wolf.dmi'
 	icon_state = "heavy_wolf_armor"
 	item_state = "heavy_wolf_armor"
 	valid_accessory_slots = null
@@ -743,7 +743,7 @@
 				to_chat(H,"<span class='warning'>You need to have a wolf-taur half to wear this.</span>")
 				return 0
 
-// HoS armor improved by Vorestation to be slightly better than normal security stuff.
+// HoS armor improved to be slightly better than normal security stuff.
 /obj/item/clothing/suit/storage/vest/hoscoat
 	armor = list(melee = 50, bullet = 40, laser = 40, energy = 25, bomb = 25, bio = 0, rad = 0)
 
@@ -756,7 +756,6 @@
 	icon_state = "hostrench"
 	flags_inv = HIDEHOLSTER
 
-// Override Polaris's "confederate" naming convention. I hate it.
 /obj/item/clothing/suit/storage/vest/oricon
 	name = "\improper Orion Confederation Government armored vest"
 	desc = "A synthetic armor vest. This one is marked with the crest of the Orion Confederation Group."
@@ -778,7 +777,7 @@
 	desc = "When I joined the Corps, we didn't have any fancy-schmanzy armor. We had sticks! Two sticks, and a rock for the whole platoon - and we had to <i>share</i> the rock!"
 	icon_state = "unsc_armor"
 	icon = 'icons/obj/clothing/suits_vr.dmi'
-	icon_override = 'icons/mob/suit_vr.dmi'
+	icon_override = 'icons/mob/clothing/suit.dmi'
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO // ToDo: Break up the armor into smaller bits.
 
 /obj/item/clothing/suit/armor/combat/imperial
@@ -786,7 +785,7 @@
 	desc = "Made out of an especially light metal, it lets you conquer in style."
 	icon_state = "ge_armor"
 	icon = 'icons/obj/clothing/suits_vr.dmi'
-	icon_override = 'icons/mob/suit_vr.dmi'
+	icon_override = 'icons/mob/clothing/suit.dmi'
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/suit/armor/combat/imperial/centurion
@@ -819,7 +818,7 @@
 	name = "lightweight harness"
 	desc = "A lightweight harness designed to attach to the torso. It serves as an anchor point for lightweight armor plating, but provides no protection of its own."
 	icon = 'icons/obj/clothing/ties.dmi'
-	item_icons = list(slot_wear_suit_str = 'icons/mob/ties.dmi')
+	item_icons = list(/datum/inventory_slot_meta/inventory/suit = 'icons/mob/clothing/ties.dmi')
 	icon_state = "pilot_webbing1"
 	valid_accessory_slots = (\
 		ACCESSORY_SLOT_ARMOR_C\

@@ -9,12 +9,10 @@ var/image/contamination_overlay = image('icons/effects/contamination.dmi')
 		return 0
 	else if(istype(src,/obj/item/storage/backpack))
 		return 0 //Cannot be washed :(
-	//VOREStation Addition start
 	else if(isbelly(loc))
 		return 0
 	else if(ismob(loc) && isbelly(loc.loc))
 		return 0
-	//VOREStation Addition end
 	else if(istype(src,/obj/item/clothing))
 		return 1
 
@@ -77,18 +75,18 @@ var/image/contamination_overlay = image('icons/effects/contamination.dmi')
 		var/burn_eyes = 1
 
 		//Check for protective glasses
-		if(glasses && (glasses.body_parts_covered & EYES) && (glasses.item_flags & ALLOWINTERNALS))
+		if(glasses && (glasses.body_parts_covered & EYES) && (glasses.clothing_flags & ALLOWINTERNALS))
 			burn_eyes = 0
 
 		//Check for protective maskwear
-		if(burn_eyes && wear_mask && (wear_mask.body_parts_covered & EYES) && (wear_mask.item_flags & ALLOWINTERNALS))
+		if(burn_eyes && wear_mask && (wear_mask.body_parts_covered & EYES) && (wear_mask.clothing_flags & ALLOWINTERNALS))
 			burn_eyes = 0
 
 		//Check for protective helmets
-		if(burn_eyes && head && (head.body_parts_covered & EYES) && (head.item_flags & ALLOWINTERNALS))
+		if(burn_eyes && head && (head.body_parts_covered & EYES) && (head.clothing_flags & ALLOWINTERNALS))
 			burn_eyes = 0
 
-		//VOREStation Edit - NIF Support
+		// NIF Support
 		if(nif && nif.flag_check(NIF_V_UVFILTER,NIF_FLAGS_VISION))
 			burn_eyes = 0
 

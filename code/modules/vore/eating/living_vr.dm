@@ -683,7 +683,7 @@
 		I.forceMove(vore_selected)
 		updateVRPanel()
 
-		log_admin("VORE: [src] used Eat Trash to swallow [I].")
+		log_admin("LOG: [src] used Eat Trash to swallow [I].")
 
 		if(istype(I,/obj/item/flashlight/flare) || istype(I,/obj/item/flame/match) || istype(I,/obj/item/storage/box/matches))
 			to_chat(src, "<span class='notice'>You can taste the flavor of spicy cardboard.</span>")

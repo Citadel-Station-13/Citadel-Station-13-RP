@@ -64,11 +64,10 @@
 /obj/machinery/organ_printer/Initialize(mapload, newdir)
 	. = ..()
 	default_apply_parts()
-	RefreshParts()
 
 /obj/machinery/organ_printer/update_icon_state()
 	. = ..()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		icon_state = "[base_icon_state]-off"
 	else
 		icon_state = base_icon_state
@@ -81,7 +80,7 @@
 	if(printing)
 		add_overlay("[base_icon_state]-active")
 
-/obj/machinery/organ_printer/attackby(var/obj/item/O, var/mob/user)
+/obj/machinery/organ_printer/attackby(obj/item/O, mob/user)
 	if(default_deconstruction_screwdriver(user, O))
 		updateUsrDialog()
 		return
@@ -93,7 +92,7 @@
 		return
 	return ..()
 
-/obj/machinery/organ_printer/examine(var/mob/user)
+/obj/machinery/organ_printer/examine(mob/user)
 	. = ..()
 	var/biomass = get_biomass_volume()
 	if(biomass)
@@ -132,19 +131,19 @@
 
 /obj/machinery/organ_printer/attack_hand(mob/user)
 
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 
 	if(panel_open)
-		to_chat(user, "<span class='warning'>Close the panel first!</span>")
+		to_chat(user, SPAN_WARNING("Close the panel first!"))
 		return
 
 	if(printing)
-		to_chat(user, "<span class='notice'>\The [src] is busy!</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] is busy!"))
 		return
 
 	if(container)
-		var/response = alert(user, "What do you want to do?", "Bioprinter Menu", "Print Limbs", "Cancel")
+		var/response = tgui_alert(user, "What do you want to do?", "Bioprinter Menu", list("Print Limbs", "Cancel"))
 		if(response == "Print Limbs")
 			printing_menu(user)
 	else
@@ -161,9 +160,9 @@
 	if(anomalous_organs)
 		possible_list |= anomalous_products
 
-	var/choice = input("What would you like to print?") as null|anything in possible_list
+	var/choice = tgui_input_list(usr, "What would you like to print?", "Print Choice", possible_list)
 
-	if(!choice || printing || (stat & (BROKEN|NOPOWER)))
+	if(!choice || printing || (machine_stat & (BROKEN|NOPOWER)))
 		return
 
 	if(!can_print(choice, possible_list[choice][2]))
@@ -183,7 +182,7 @@
 	printing = FALSE
 	update_appearance()
 
-	if(!choice || !src || (stat & (BROKEN|NOPOWER)))
+	if(!choice || !src || (machine_stat & (BROKEN|NOPOWER)))
 		return
 
 	print_organ(possible_list[choice][1])
@@ -195,22 +194,21 @@
 	set category = "Object"
 	set src in oview(1)
 
-	if(usr.stat != 0)
+	if(usr.stat != NONE)
 		return
 	add_fingerprint(usr)
 	remove_beaker()
 	return
 
-// Does exactly what it says it does
-// Returns 1 if it succeeds, 0 if it fails. Added in case someone wants to add messages to the user.
+/// Returns TRUE if it succeeds, FALSE if it fails. Added in case someone wants to add messages to the user.
 /obj/machinery/organ_printer/proc/remove_beaker()
 	if(container)
 		container.forceMove(get_turf(src))
 		container = null
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
-// Checks for reagents, then reports how much biomass it has in it
+/// Checks for reagents, then reports how much biomass it has in it.
 /obj/machinery/organ_printer/proc/get_biomass_volume()
 	var/biomass_count = 0
 	if(container && container.reagents)
@@ -220,17 +218,16 @@
 
 	return biomass_count
 
-/obj/machinery/organ_printer/proc/can_print(var/choice, var/biomass_needed = 0)
+/obj/machinery/organ_printer/proc/can_print(choice, biomass_needed = 0)
 	var/biomass = get_biomass_volume()
 	if(biomass < biomass_needed)
 		visible_message(SPAN_INFO("\The [src] displays a warning: 'Not enough biomass. [biomass] stored and [biomass_needed] needed.'"))
-		return 0
+		return FALSE
 
 	if(!loaded_dna || !loaded_dna["donor"])
 		visible_message(SPAN_INFO("\The [src] displays a warning: 'No DNA saved. Insert a blood sample.'"))
-		return 0
-
-	return 1
+		return FALSE
+	return TRUE
 
 /obj/machinery/organ_printer/proc/print_organ(var/choice)
 	var/new_organ = choice
@@ -246,9 +243,10 @@
 		malfunctioned = TRUE
 		var/possible_species = list(SPECIES_HUMAN, SPECIES_VOX, SPECIES_SKRELL, SPECIES_ZADDAT, SPECIES_UNATHI, SPECIES_GOLEM, SPECIES_SHADOW)
 		var/new_species = pick(possible_species)
-		if(!GLOB.all_species[new_species])
-			new_species = SPECIES_HUMAN
-		O.species = GLOB.all_species[new_species]
+		var/datum/species/S = name_static_species_meta(new_species)
+		if(!S)
+			new_species = name_static_species_meta(/datum/species/human)
+		O.species = new_species
 
 	if(istype(O, /obj/item/organ/external) && !malfunctioned)
 		var/obj/item/organ/external/E = O
@@ -271,9 +269,10 @@
 	board_type = new /datum/frame/frame_types/machine
 	origin_tech = list(TECH_DATA = 3, TECH_BIO = 3)
 	req_components = list(
-							/obj/item/stack/cable_coil = 2,
-							/obj/item/stock_parts/matter_bin = 2,
-							/obj/item/stock_parts/manipulator = 2)
+		/obj/item/stack/cable_coil = 2,
+		/obj/item/stock_parts/matter_bin = 2,
+		/obj/item/stock_parts/manipulator = 2
+		)
 
 // FLESH ORGAN PRINTER
 /obj/machinery/organ_printer/flesh
@@ -293,7 +292,7 @@
 			container = null
 	return ..()
 
-/obj/machinery/organ_printer/flesh/print_organ(var/choice)
+/obj/machinery/organ_printer/flesh/print_organ(choice)
 	var/obj/item/organ/O = ..()
 
 	playsound(src.loc, 'sound/machines/ding.ogg', 50, TRUE)

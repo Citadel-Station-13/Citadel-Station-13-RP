@@ -303,13 +303,14 @@
 	if(!istype(user))
 		return 1
 	var/safety = user.eyecheck()
-	safety = between(-1, safety + eye_safety_modifier, 2)
+	safety = clamp( safety + eye_safety_modifier, -1,  2)
 	if(istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/organ/internal/eyes/E = H.internal_organs_by_name[O_EYES]
 		if(!E)
 			return
-		if(H.nif && H.nif.flag_check(NIF_V_UVFILTER,NIF_FLAGS_VISION)) return //VOREStation Add - NIF
+		if(H.nif && H.nif.flag_check(NIF_V_UVFILTER,NIF_FLAGS_VISION))
+			return
 		switch(safety)
 			if(1)
 				to_chat(usr, "<span class='warning'>Your eyes sting a little.</span>")
@@ -677,13 +678,19 @@
 /obj/item/weldingtool/electric/mounted/cyborg
 	toolspeed = 0.5
 
+
+/obj/item/weldingtool/electric/mounted/RIGset
+	name = "arc welder"
+	toolspeed = 0.7 // Let's see if this works with RIGs
+	desc = "If you're seeing this, someone did a dum-dum."
+
 /obj/item/weldingtool/electric/mounted/exosuit
 	var/obj/item/mecha_parts/mecha_equipment/equip_mount = null
 	flame_intensity = 1
 	eye_safety_modifier = 2
 	always_process = TRUE
 
-/obj/item/weldingtool/electric/mounted/exosuit/Initialize()
+/obj/item/weldingtool/electric/mounted/exosuit/Initialize(mapload)
 	. = ..()
 
 	if(istype(loc, /obj/item/mecha_parts/mecha_equipment))

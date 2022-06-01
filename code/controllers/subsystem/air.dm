@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(air)
 	init_order = INIT_ORDER_AIR
 	priority = FIRE_PRIORITY_AIR
 	wait = 2 SECONDS // seconds (We probably can speed this up actually)
-	flags = SS_BACKGROUND // TODO - Should this really be background? It might be important.
+	subsystem_flags = SS_BACKGROUND // TODO - Should this really be background? It might be important.
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	var/static/list/part_names = list("turfs", "edges", "fire zones", "hotspots", "zones")
 
@@ -118,7 +118,7 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 		var/turf/T = currentrun[currentrun.len]
 		currentrun.len--
 		//check if the turf is self-zone-blocked
-		if(T.c_airblock(T) & ZONE_BLOCKED)
+		if(T.CheckAirBlock(T) == ATMOS_PASS_ZONE_BLOCKED)
 			selfblock_deferred += T
 			if(MC_TICK_CHECK)
 				return
@@ -185,7 +185,7 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 		src.currentrun = active_hotspots.Copy()
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
-	var/dt = (flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
+	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
 	while(currentrun.len)
 		var/atom/movable/fire/fire = currentrun[currentrun.len]
 		currentrun.len--

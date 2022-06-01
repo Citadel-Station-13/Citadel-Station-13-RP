@@ -1,14 +1,15 @@
 /obj/machinery/space_heater
-	anchored = 0
-	density = 1
-	icon = 'icons/obj/atmos.dmi'
-	icon_state = "sheater0"
 	name = "space heater"
 	desc = "Made by Space Amish using traditional space techniques, this heater is guaranteed not to set the station on fire."
+	icon = 'icons/obj/atmos.dmi'
+	icon_state = "sheater0"
+	anchored = FALSE
+	density = TRUE
+
 	var/obj/item/cell/cell
 	var/cell_type = /obj/item/cell/high
-	var/on = 0
-	var/set_temperature = T0C + 20	//K
+	var/on = FALSE
+	var/set_temperature = T0C + 20 //K
 	var/heating_power = 40000
 
 /obj/machinery/space_heater/Initialize(mapload, newdir)
@@ -28,22 +29,18 @@
 		set_light(0)
 
 /obj/machinery/space_heater/examine(mob/user)
-	..(user)
-
-	to_chat(user, "The heater is [on ? "on" : "off"] and the hatch is [panel_open ? "open" : "closed"].")
+	. = ..()
+	. += "The heater is [on ? "on" : "off"] and the hatch is [panel_open ? "open" : "closed"]."
 	if(panel_open)
-		to_chat(user, "The power cell is [cell ? "installed" : "missing"].")
+		. += "The power cell is [cell ? "installed" : "missing"]."
 	else
-		to_chat(user, "The charge meter reads [cell ? round(cell.percent(),1) : 0]%")
-	return
+		. += "The charge meter reads [cell ? round(cell.percent(),1) : 0]%"
 
 /obj/machinery/space_heater/powered()
-	if(cell && cell.charge)
-		return 1
-	return 0
+	return !!cell?.charge
 
 /obj/machinery/space_heater/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		..(severity)
 		return
 	if(cell)
@@ -83,11 +80,9 @@
 	return
 
 /obj/machinery/space_heater/attack_hand(mob/user as mob)
-	..()
 	interact(user)
 
 /obj/machinery/space_heater/interact(mob/user as mob)
-
 	if(panel_open)
 
 		var/dat
@@ -113,7 +108,6 @@
 		on = !on
 		user.visible_message("<span class='notice'>[user] switches [on ? "on" : "off"] the [src].</span>","<span class='notice'>You switch [on ? "on" : "off"] the [src].</span>")
 		update_icon()
-	return
 
 
 /obj/machinery/space_heater/Topic(href, href_list)
@@ -168,10 +162,10 @@
 				if(removed)
 					var/heat_transfer = removed.get_thermal_energy_change(set_temperature)
 					if(heat_transfer > 0)	//heating air
-						heat_transfer = min(heat_transfer , heating_power) //limit by the power rating of the heater
+						heat_transfer = min(heat_transfer, heating_power) //limit by the power rating of the heater
 
 						removed.add_thermal_energy(heat_transfer)
-						cell.use(heat_transfer*CELLRATE)
+						cell.use(DYNAMIC_W_TO_CELL_UNITS(heat_transfer * SPACE_HEATER_CHEAT_FACTOR, 1))
 					else	//cooling air
 						heat_transfer = abs(heat_transfer)
 
@@ -182,7 +176,7 @@
 						heat_transfer = removed.add_thermal_energy(-heat_transfer)	//get the actual heat transfer
 
 						var/power_used = abs(heat_transfer)/cop
-						cell.use(power_used*CELLRATE)
+						cell.use(DYNAMIC_W_TO_CELL_UNITS(power_used * SPACE_HEATER_CHEAT_FACTOR, 1))
 
 				env.merge(removed)
 		else
@@ -212,7 +206,7 @@
 	var/target_temp = T20C
 	var/mode = MODE_IDLE
 
-/obj/machinery/power/thermoregulator/Initialize()
+/obj/machinery/power/thermoregulator/Initialize(mapload)
 	.=..()
 	default_apply_parts()
 
@@ -266,7 +260,7 @@
 		turn_off()
 		return
 
-	if(draw_power(idle_power_usage) < idle_power_usage)
+	if((draw_power(idle_power_usage * 0.001) * 1000) < idle_power_usage)
 		visible_message("<span class='notice'>\The [src] shuts down.</span>")
 		turn_off()
 		return
@@ -287,16 +281,16 @@
 		change_mode(MODE_IDLE)
 	else if(heat_transfer > 0)
 		change_mode(MODE_HEATING)
-		power_avail = draw_power(min(heat_transfer, active_power_usage))
-		removed.add_thermal_energy(min(power_avail*5,heat_transfer))
+		power_avail = draw_power(min(heat_transfer, active_power_usage) * 0.001) * 1000
+		removed.add_thermal_energy(min(power_avail * THERMOREGULATOR_CHEAT_FACTOR, heat_transfer))
 	else
 		change_mode(MODE_COOLING)
 		heat_transfer = abs(heat_transfer)
-		var/cop = removed.temperature/TN60C
+		var/cop = removed.temperature / TN60C
 		var/actual_heat_transfer = heat_transfer
-		heat_transfer = min(heat_transfer, active_power_usage*cop)
-		power_avail = draw_power(heat_transfer/cop)
-		removed.add_thermal_energy(-min(power_avail*5*cop,actual_heat_transfer))
+		heat_transfer = min(heat_transfer, active_power_usage * cop)
+		power_avail = draw_power((heat_transfer/cop) * 0.001) * 1000
+		removed.add_thermal_energy(-min(power_avail * THERMOREGULATOR_CHEAT_FACTOR * cop, actual_heat_transfer))
 	env.merge(removed)
 
 /obj/machinery/power/thermoregulator/update_icon()
@@ -330,12 +324,14 @@
 /obj/machinery/power/thermoregulator/overload(var/obj/machinery/power/source)
 	if(!anchored || !powernet)
 		return
-	var/power_avail = draw_power(active_power_usage*10)
+	// 1.5 MW
+	var/power_avail = draw_power(1500)
 	var/datum/gas_mixture/env = loc.return_air()
 	if(env)
 		var/datum/gas_mixture/removed = env.remove_ratio(0.99)
 		if(removed)
-			removed.add_thermal_energy(power_avail*5)
+			// OH BOY!
+			removed.add_thermal_energy(power_avail * 1000 * THERMOREGULATOR_CHEAT_FACTOR)
 			env.merge(removed)
 	var/turf/T = get_turf(src)
 	new /obj/effect/decal/cleanable/liquid_fuel(T, 5)

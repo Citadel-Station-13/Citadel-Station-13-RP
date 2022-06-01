@@ -229,7 +229,6 @@
 		occupant_message("<span class=\"alert\">No reagent info gained from [A].</span>")
 		return 0
 	occupant_message("Analyzing reagents...")
-	//VOREStation Block Edit - Start
 	for(var/datum/reagent/R in A.reagents.reagent_list)
 		if(R.id in known_reagents)
 			occupant_message("Reagent \"[R.name]\" already present in database, skipping.")
@@ -238,7 +237,6 @@
 			send_byjax(chassis.occupant,"msyringegun.browser","reagents_form",get_reagents_form())
 		else
 			occupant_message("Reagent \"[R.name]\" unable to be scanned, skipping.")
-	//VOREstation Block Edit - End
 	occupant_message("Analysis complete.")
 	return 1
 
@@ -317,7 +315,7 @@
 
 	equip_type = EQUIP_HULL
 
-/obj/item/mecha_parts/mecha_equipment/crisis_drone/Initialize()
+/obj/item/mecha_parts/mecha_equipment/crisis_drone/Initialize(mapload)
 	. = ..()
 	drone_overlay = new(src.icon, icon_state = droid_state)
 

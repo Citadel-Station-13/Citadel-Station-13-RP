@@ -3,30 +3,21 @@
 	desc = "Used for advanced medical procedures."
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "table2-idle"
-	density = 1
+	density = TRUE
+	anchored = TRUE
 	circuit = /obj/item/circuitboard/operating_table
-	anchored = 1.0
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 1
 	active_power_usage = 5
 	surgery_odds = 100
-	throwpass = 1
+	throwpass = TRUE
 	var/mob/living/carbon/human/victim = null
-	var/strapped = 0.0
+	var/strapped = FALSE
 	var/obj/machinery/computer/operating/computer = null
 
 /obj/machinery/optable/Initialize(mapload)
 	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stock_parts/capacitor(src)
-	component_parts += new /obj/item/stock_parts/console_screen(src)
-	component_parts += new /obj/item/healthanalyzer(src)
-	component_parts += new /obj/item/stack/material/glass/reinforced (src, 2)
-
-	RefreshParts()
+	default_apply_parts()
 
 /obj/machinery/optable/Initialize(mapload)
 	. = ..()
@@ -56,10 +47,10 @@
 		else
 	return
 
-/obj/machinery/optable/attack_hand(mob/user as mob)
+/obj/machinery/optable/attack_hand(mob/user)
 	if(HULK in usr.mutations)
-		visible_message("<span class='danger'>\The [usr] destroys \the [src]!</span>")
-		density = 0
+		visible_message(SPAN_DANGER("\The [usr] destroys \the [src]!"))
+		density = FALSE
 		qdel(src)
 	return
 
@@ -68,7 +59,7 @@
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return TRUE
 
-/obj/machinery/optable/MouseDrop_T(obj/O as obj, mob/user as mob)
+/obj/machinery/optable/MouseDrop_T(obj/O, mob/user)
 	. = ..()
 	if((!(istype(O, /obj/item)) || user.get_active_hand() != O))
 		return
@@ -83,19 +74,19 @@
 		if(M.lying)
 			victim = M
 			icon_state = M.pulse ? "table2-active" : "table2-idle"
-			return 1
+			return TRUE
 	victim = null
 	icon_state = "table2-idle"
-	return 0
+	return FALSE
 
 /obj/machinery/optable/process(delta_time)
 	check_victim()
 
-/obj/machinery/optable/proc/take_victim(mob/living/carbon/C, mob/living/carbon/user as mob)
+/obj/machinery/optable/proc/take_victim(mob/living/carbon/C, mob/living/carbon/user)
 	if(C == user)
 		user.visible_message("[user] climbs on \the [src].","You climb on \the [src].")
 	else
-		visible_message("<span class='notice'>\The [C] has been laid on \the [src] by [user].</span>")
+		visible_message(SPAN_NOTICE("\The [C] has been laid on \the [src] by [user]."))
 	C.resting = 1
 	C.forceMove(loc)
 	// now that we hold parts, this must be commented out to prevent dumping our parts onto our loc. not sure what this was intended to do when it was written.
@@ -130,7 +121,7 @@
 
 	take_victim(usr,usr)
 
-/obj/machinery/optable/attackby(obj/item/W as obj, var/obj/item/I, mob/living/carbon/user as mob)
+/obj/machinery/optable/attackby(obj/item/W, obj/item/I, mob/living/carbon/user)
 	if(istype(W, /obj/item/grab))
 		var/obj/item/grab/G = W
 		if(iscarbon(G.affecting) && check_table(G.affecting))
@@ -138,15 +129,15 @@
 			qdel(W)
 			return
 
-/obj/machinery/optable/proc/check_table(mob/living/carbon/patient as mob)
+/obj/machinery/optable/proc/check_table(mob/living/carbon/patient)
 	check_victim()
 	if(victim && get_turf(victim) == get_turf(src) && victim.lying)
-		to_chat(usr, "<span class='warning'>\The [src] is already occupied!</span>")
-		return 0
+		to_chat(usr, SPAN_WARNING("\The [src] is already occupied!"))
+		return FALSE
 	if(patient.buckled)
-		to_chat(usr, "<span class='notice'>Unbuckle \the [patient] first!</span>")
-		return 0
-	return 1
+		to_chat(usr, SPAN_NOTICE("Unbuckle \the [patient] first!"))
+		return FALSE
+	return TRUE
 
 /obj/machinery/sleeper/RefreshParts()
 	var/cap_rating = 0

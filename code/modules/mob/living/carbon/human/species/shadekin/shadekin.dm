@@ -10,7 +10,7 @@
 	but next to no verifiable evidence to their existence. However, they have recently been more verifiably \
 	documented in the Virgo system, following a mining bombardment of Virgo 3. The crew of NSB Adephagia have \
 	taken to calling these creatures 'Shadekin', and the name has generally stuck and spread. "		//TODO: Something that's not wiki copypaste
-	wikilink = "https://wiki.vore-station.net/Shadekin"
+	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Shadekin"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/shadekin)
 
 	language = LANGUAGE_SHADEKIN
@@ -77,7 +77,7 @@
 	poison_type = null
 
 	vision_flags = SEE_SELF|SEE_MOBS
-	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_UNDERWEAR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_UNDERWEAR
 
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/paw
 

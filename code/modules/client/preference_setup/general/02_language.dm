@@ -13,7 +13,7 @@
 /datum/category_item/player_setup_item/general/language/sanitize_character()
 	if(!islist(pref.alternate_languages))	pref.alternate_languages = list()
 	if(pref.species)
-		var/datum/species/S = GLOB.all_species[pref.species]
+		var/datum/species/S = pref.character_static_species_meta()
 		if(S && pref.alternate_languages.len > S.num_alternate_languages)
 			pref.alternate_languages.len = S.num_alternate_languages // Truncate to allowed length
 	if(isnull(pref.language_prefixes) || !pref.language_prefixes.len)
@@ -21,7 +21,7 @@
 
 /datum/category_item/player_setup_item/general/language/content()
 	. += "<b>Languages</b><br>"
-	var/datum/species/S = GLOB.all_species[pref.species]
+	var/datum/species/S = pref.character_static_species_meta()
 	if(S.language)
 		. += "- [S.language]<br>"
 	if(S.default_language && S.default_language != S.language)
@@ -46,7 +46,7 @@
 		pref.alternate_languages.Cut(index, index+1)
 		return TOPIC_REFRESH
 	else if(href_list["add_language"])
-		var/datum/species/S = GLOB.all_species[pref.species]
+		var/datum/species/S = pref.character_static_species_meta()
 		if(pref.alternate_languages.len >= S.num_alternate_languages)
 			alert(user, "You have already selected the maximum number of alternate languages for this species!")
 		else

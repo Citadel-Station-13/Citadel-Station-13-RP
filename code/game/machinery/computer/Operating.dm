@@ -44,12 +44,12 @@
 	return ..()
 
 /obj/machinery/computer/operating/attack_ai(mob/user)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	ui_interact(user)
 
 /obj/machinery/computer/operating/attack_hand(mob/user)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	ui_interact(user)
 	..()

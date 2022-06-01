@@ -27,7 +27,7 @@
 		var/datum/atom_hud/alternate_appearance/AA = v
 		AA.onNewMob(src)
 	init_rendering()
-	hook_vr("mob_new",list(src)) //VOREStation Code
+	hook_vr("mob_new",list(src))
 	update_transform() // Some mobs may start bigger or smaller than normal.
 	return ..()
 
@@ -101,7 +101,7 @@
 			if(HUD_LIST_LIST)
 				hud_list[hud] = list()
 			else
-				var/image/I = image(GLOB.hud_icon_files[hud] || 'icons/hud/atom_hud/misc.dmi', src, "")
+				var/image/I = image(GLOB.hud_icon_files[hud] || 'icons/screen/atom_hud/misc.dmi', src, "")
 				I.plane = FLOAT_PLANE
 				I.layer = FLOAT_LAYER + 100 + (GLOB.hud_icon_layers[hud] || 0)
 				I.appearance_flags = RESET_COLOR|RESET_TRANSFORM
@@ -157,17 +157,6 @@
 		if(teleop)
 			to_chat(teleop, create_text_tag("body", "BODY:", teleop) + "[msg]")
 	return
-
-/**
- * Returns an amount of power drawn from the object (-1 if it's not viable).
- * Not sure where to define this, so it can sit here for the rest of time.
- *
- * * @params
- * * [drain_check] If is set it will not actually drain power, just return a value.
- * * [surge] If is set, it will destroy/damage the recipient and not return any power.
- */
-/atom/proc/drain_power(var/drain_check,var/surge, var/amount = 0)
-	return -1
 
 /**
  * Show a message to all mobs in earshot of this one
@@ -435,7 +424,7 @@
 	set src in usr
 	if(usr != src)
 		to_chat(usr, "No.")
-	var/msg = sanitize(input(usr,"Set the flavor text in your 'examine' verb.","Flavor Text",html_decode(flavor_text)) as message|null, extra = 0)	//VOREStation Edit: separating out OOC notes
+	var/msg = sanitize(input(usr,"Set the flavor text in your 'examine' verb.","Flavor Text",html_decode(flavor_text)) as message|null, extra = 0)
 
 	if(msg != null)
 		flavor_text = msg
@@ -553,36 +542,6 @@
 	set category = "OOC"
 	set desc = "Return to the lobby."
 	return abandon_mob()
-
-/client/verb/changes()
-	set name = "Changelog"
-	set category = "OOC"
-	getFiles(
-		'html/88x31.png',
-		'html/bug-minus.png',
-		'html/cross-circle.png',
-		'html/hard-hat-exclamation.png',
-		'html/image-minus.png',
-		'html/image-plus.png',
-		'html/map-pencil.png',
-		'html/music-minus.png',
-		'html/music-plus.png',
-		'html/tick-circle.png',
-		'html/wrench-screwdriver.png',
-		'html/spell-check.png',
-		'html/burn-exclamation.png',
-		'html/chevron.png',
-		'html/chevron-expand.png',
-		'html/changelog.css',
-		'html/changelog.js',
-		'html/changelog.html'
-		)
-	src << browse('html/changelog.html', "window=changes;size=675x650")
-	if(prefs.lastchangelog != GLOB.changelog_hash)
-		prefs.lastchangelog = GLOB.changelog_hash
-		SScharacter_setup.queue_preferences_save(prefs)
-		prefs.save_preferences()
-		winset(src, "infowindow.changelog", "background-color=none;font-style=;")
 
 /mob/verb/observe()
 	set name = "Observe"
@@ -725,7 +684,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/is_mechanical()
 	if(mind && (mind.assigned_role == "Cyborg" || mind.assigned_role == "AI"))
 		return 1
-	return istype(src, /mob/living/silicon) || get_species() == "Machine"
+	return istype(src, /mob/living/silicon) || get_species_name() == "Machine"
 
 /mob/proc/is_ready()
 	return client && !!mind
@@ -816,7 +775,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 				stat(null)
 				for(var/datum/controller/subsystem/SS in Master.subsystems)
 					SS.stat_entry()
-			//GLOB.cameranet.stat_entry()
+			//GLOB.GLOB.cameranet.stat_entry()
 		if(statpanel("Tickets"))
 			GLOB.ahelp_tickets.stat_entry()
 		if(length(GLOB.sdql2_queries))
@@ -952,7 +911,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/SetLosebreath(amount)
 	losebreath = clamp(0, amount, 25)
 
-/mob/proc/get_species()
+/mob/proc/get_species_name()
 	return ""
 
 /mob/proc/flash_weak_pain()

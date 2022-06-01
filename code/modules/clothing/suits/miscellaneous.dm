@@ -259,7 +259,7 @@
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	//yw edit - Teshari sprite
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/suit.dmi'
+		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/suit.dmi'
 		)
 	//yw edit end
 
@@ -1153,7 +1153,7 @@ obj/item/clothing/suit/kamishimo
 	desc = "Made out of an especially light metal, it lets you conquer in style. This appears less sturdy than the authentic article."
 	icon_state = "ge_armor"
 	icon = 'icons/obj/clothing/suits_vr.dmi'
-	icon_override = 'icons/mob/suit_vr.dmi'
+	icon_override = 'icons/mob/clothing/suit.dmi'
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/suit/imperial/officer_replica
@@ -1233,3 +1233,13 @@ obj/item/clothing/suit/kamishimo
 	name = "Mekkyaku hoodie"
 	desc = "This crisp white hoodie bears a strange manufacturer's mark. The colorful red accents stand out against the snowy white cloth with evocative flair."
 	icon_state = "mekkyaku"
+
+/obj/item/clothing/suit/storage/utility_fur_coat
+	name = "Utility Fur Coat"
+	desc = "A form fitting utilitarion coat with straps around the shoulders and holding a sash around the waist. The collar is lined with fur to help stay warm."
+	icon_state = "fur_utility"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)

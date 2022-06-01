@@ -1,4 +1,4 @@
-/obj/machinery/atmospherics/trinary/mixer
+/obj/machinery/atmospherics/component/trinary/mixer
 	icon = 'icons/atmos/mixer.dmi'
 	icon_state = "map"
 	construction_type = /obj/item/pipe/trinary/flippable
@@ -21,7 +21,7 @@
 
 	//node 3 is the outlet, nodes 1 & 2 are intakes
 
-/obj/machinery/atmospherics/trinary/mixer/update_icon(var/safety = 0)
+/obj/machinery/atmospherics/component/trinary/mixer/update_icon(var/safety = 0)
 	if(tee)
 		icon_state = "t"
 	else if(mirrored)
@@ -37,7 +37,7 @@
 		icon_state += "off"
 		update_use_power(USE_POWER_OFF)
 
-/obj/machinery/atmospherics/trinary/mixer/Initialize(mapload)
+/obj/machinery/atmospherics/component/trinary/mixer/Initialize(mapload)
 	. = ..()
 	air1.volume = ATMOS_DEFAULT_VOLUME_MIXER
 	air2.volume = ATMOS_DEFAULT_VOLUME_MIXER
@@ -46,13 +46,13 @@
 	if (!mixing_inputs)
 		mixing_inputs = list(src.air1 = node1_concentration, src.air2 = node2_concentration)
 
-/obj/machinery/atmospherics/trinary/mixer/process(delta_time)
+/obj/machinery/atmospherics/component/trinary/mixer/process(delta_time)
 	..()
 
 	last_power_draw = 0
 	last_flow_rate = 0
 
-	if((stat & (NOPOWER|BROKEN)) || !use_power)
+	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
 		return
 
 	//Figure out the amount of moles to transfer
@@ -77,13 +77,13 @@
 
 	return 1
 
-/obj/machinery/atmospherics/trinary/mixer/ui_interact(mob/user, datum/tgui/ui)
+/obj/machinery/atmospherics/component/trinary/mixer/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "AtmosMixer", name)
 		ui.open()
 
-/obj/machinery/atmospherics/trinary/mixer/ui_data(mob/user)
+/obj/machinery/atmospherics/component/trinary/mixer/ui_data(mob/user)
 	var/list/data = list()
 	data["on"] = use_power
 	data["set_pressure"] = round(set_flow_rate)
@@ -95,12 +95,12 @@
 	data["node2_dir"] = dir_name(node_connects[2],TRUE)
 	return data
 
-/obj/machinery/atmospherics/trinary/mixer/attack_hand(user as mob)
+/obj/machinery/atmospherics/component/trinary/mixer/attack_hand(user as mob)
 	if(..())
 		return
 	ui_interact(user)
 
-/obj/machinery/atmospherics/trinary/mixer/ui_act(action, params)
+/obj/machinery/atmospherics/component/trinary/mixer/ui_act(action, params)
 	if(..())
 		return TRUE
 
@@ -133,7 +133,7 @@
 //
 // "T" Orientation - Inputs are on oposite sides instead of adjacent
 //
-obj/machinery/atmospherics/trinary/mixer/t_mixer
+obj/machinery/atmospherics/component/trinary/mixer/t_mixer
 	icon_state = "tmap"
 	construction_type = /obj/item/pipe/trinary  // Can't flip a "T", its symmetrical
 	pipe_state = "t_mixer"
@@ -144,7 +144,7 @@ obj/machinery/atmospherics/trinary/mixer/t_mixer
 //
 // Mirrored Orientation - Flips the output dir to opposite side from normal.
 //
-/obj/machinery/atmospherics/trinary/mixer/m_mixer
+/obj/machinery/atmospherics/component/trinary/mixer/m_mixer
 	icon_state = "mmap"
 	dir = SOUTH
 	initialize_directions = SOUTH|NORTH|EAST

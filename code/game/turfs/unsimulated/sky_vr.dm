@@ -36,7 +36,7 @@
 	var/mob/living/L
 	if(isliving(AM))
 		L = AM
-		if(L.is_floating)
+		if(L.is_floating || L.flying)
 			return //Flyers/nograv can ignore it
 
 	do_fall(AM)
@@ -79,4 +79,18 @@
 
 /turf/unsimulated/floor/sky/virgo2_sky/Initialize(mapload)
 	skyfall_levels = list(z+1)
+	. = ..()
+
+/turf/unsimulated/floor/sky/depths
+	name = "darkness"
+	desc = "A straight drop down into the depths below."
+	skyfall_levels = "Western Caverns"
+	color ="#303030"
+
+/turf/unsimulated/floor/sky/depths/Initialize(mapload)
+	. = ..()
+	set_light(0, 0, "#FFFFFF")
+
+/turf/unsimulated/floor/sky/depths/Initialize(mapload)
+	skyfall_levels = list(z + 1)
 	. = ..()

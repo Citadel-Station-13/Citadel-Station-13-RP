@@ -132,7 +132,7 @@
 		mind = body.mind	//we don't transfer the mind but we keep a reference to it.
 
 	if(!T)
-		T = pick(latejoin)			//Safety in case we cannot find the body's position
+		T = SSjob.GetLatejoinSpawnpoint()
 	forceMove(T)
 
 	for(var/v in GLOB.active_alternate_appearances)
@@ -154,6 +154,11 @@
 	if(href_list["reenter"])
 		reenter_corpse()
 		return
+	if (href_list["lookitem"])
+		var/obj/item/I = locate(href_list["lookitem"])
+		if(get_dist(src, get_turf(I)) > 7)
+			return
+		src.examinate(I)
 
 /mob/observer/dead/attackby(obj/item/W, mob/user)
 	if(istype(W,/obj/item/book/tome))
@@ -224,7 +229,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 					return
 				src.client.admin_ghost()
 		else
-			response = alert(src, "Are you -sure- you want to ghost?\n(You are alive, or otherwise have the potential to become alive. Don't abuse ghost unless you are inside a cryopod or equivalent! You can't change your mind so choose wisely!)", "Are you sure you want to ghost?", "Ghost", "Stay in body") // VOREStation edit because we don't make players stay dead for 30 minutes.
+			response = alert(src, "Are you -sure- you want to ghost?\n(You are alive, or otherwise have the potential to become alive. Don't abuse ghost unless you are inside a cryopod or equivalent! You can't change your mind so choose wisely!)", "Are you sure you want to ghost?", "Ghost", "Stay in body")
 		if(response != "Ghost")
 			return
 		resting = 1
@@ -261,11 +266,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(mind.current.key && copytext(mind.current.key,1,2)!="@")	//makes sure we don't accidentally kick any clients
 		to_chat(usr, "<span class='warning'>Another consciousness is in your body... it is resisting you.</span>")
 		return
-	//VOREStation Add
 	if(prevent_respawns.Find(mind.name))
 		to_chat(usr,"<span class='warning'>You already quit this round as this character, sorry!</span>")
 		return
-	//VOREStation Add End
 	if(mind.current.ajourn && mind.current.stat != DEAD) //check if the corpse is astral-journeying (it's client ghosted using a cultist rune).
 		var/found_rune
 		for(var/obj/effect/rune/R in mind.current.loc)   //whilst corpse is alive, we can only reenter the body if it's on the rune
@@ -496,9 +499,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	//find a viable mouse candidate
 	var/mob/living/simple_mob/animal/passive/mouse/host
-	var/obj/machinery/atmospherics/unary/vent_pump/vent_found
+	var/obj/machinery/atmospherics/component/unary/vent_pump/vent_found
 	var/list/found_vents = list()
-	for(var/obj/machinery/atmospherics/unary/vent_pump/v in machines)
+	for(var/obj/machinery/atmospherics/component/unary/vent_pump/v in GLOB.machines)
 		if(!v.welded && v.z == T.z && v.network && v.network.normal_members.len > 20)
 			found_vents.Add(v)
 	if(found_vents.len)
@@ -805,7 +808,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			var/obj/item/paicard/PP = p
 			if(PP.pai == null)
 				count++
-				PP.icon = 'icons/obj/pda_vr.dmi' // VOREStation Edit
+				PP.icon = 'icons/obj/pda_vr.dmi'
 				PP.overlays += "pai-ghostalert"
 				spawn(54)
 					PP.overlays.Cut()

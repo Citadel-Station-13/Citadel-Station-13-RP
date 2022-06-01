@@ -55,8 +55,8 @@
 
 	//Organ exists, let's reshape it
 	var/list/usable_manufacturers = list()
-	for(var/company in chargen_robolimbs)
-		var/datum/robolimb/M = chargen_robolimbs[company]
+	for(var/company in GLOB.chargen_robolimbs)
+		var/datum/robolimb/M = GLOB.chargen_robolimbs[company]
 		if(!(choice in M.parts))
 			continue
 		if(impersonate_bodytype in M.species_cannot_use)
@@ -108,8 +108,8 @@
 		return
 	if(swap_not_rebuild == "Reshape")
 		var/list/usable_manufacturers = list()
-		for(var/company in chargen_robolimbs)
-			var/datum/robolimb/M = chargen_robolimbs[company]
+		for(var/company in GLOB.chargen_robolimbs)
+			var/datum/robolimb/M = GLOB.chargen_robolimbs[company]
 			if(!(BP_TORSO in M.parts))
 				continue
 			if(impersonate_bodytype in M.species_cannot_use)
@@ -363,7 +363,7 @@
 /obj/effect/protean_ability
 	name = "Activate"
 	desc = ""
-	icon = 'icons/mob/species/protean/protean_powers.dmi'
+	icon = 'icons/mob/clothing/species/protean/protean_powers.dmi'
 	var/ability_name
 	var/to_call
 

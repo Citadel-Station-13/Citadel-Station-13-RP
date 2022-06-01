@@ -106,10 +106,11 @@
 	chambered = null
 	return ..()
 
-/obj/item/gun/projectile/cell_loaded/update_icon()
+/obj/item/gun/projectile/cell_loaded/update_overlays()
+	. = ..()
+
 	update_charge()
 
-	cut_overlays()
 	if(!chambered)
 		return
 
@@ -119,13 +120,13 @@
 	//Mode bar
 	var/image/mode_bar = image(icon, icon_state = "[initial(icon_state)]_type")
 	mode_bar.color = batt_color
-	add_overlay(mode_bar)
+	. += mode_bar
 
 	//Barrel color
 	var/image/barrel_color = image(icon, icon_state = "[initial(icon_state)]_barrel")
 	barrel_color.alpha = 150
 	barrel_color.color = batt_color
-	add_overlay(barrel_color)
+	. += barrel_color
 
 	//Charge bar
 	var/ratio = CEILING(((charge_left / max_charge) * charge_sections), 1)
@@ -133,8 +134,7 @@
 		var/image/charge_bar = image(icon, icon_state = "[initial(icon_state)]_charge")
 		charge_bar.pixel_x = i
 		charge_bar.color = batt_color
-		add_overlay(charge_bar)
-
+		. += charge_bar
 
 // The Magazine //
 /obj/item/ammo_magazine/cell_mag

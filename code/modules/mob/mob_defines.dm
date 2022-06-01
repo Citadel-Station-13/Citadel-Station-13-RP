@@ -6,15 +6,15 @@
 	animate_movement = 2
 	flags = PROXMOVE | HEAR
 
-	// Rendering
+//! ## Rendering
 	/// Fullscreen objects
 	var/list/fullscreens = list()
 
-	// Intents
+//! ## Intents
 	/// How are we intending to move? Walk/run/etc.
 	var/m_intent = MOVE_INTENT_RUN
 
-	// Perspectives
+//! ## Perspectives
 	/// using perspective - if none, it'll be self - when client logs out, if using_perspective has reset_on_logout, this'll be unset.
 	var/datum/perspective/using_perspective
 
@@ -60,22 +60,28 @@
 	var/atom/movable/screen/wizard/instability/wiz_instability_display = null
 
 	var/datum/plane_holder/plane_holder = null
-	var/list/vis_enabled = null		// List of vision planes that should be graphically visible (list of their VIS_ indexes).
-	var/list/planes_visible = null	// List of atom planes that are logically visible/interactable (list of actual plane numbers).
+	/// List of vision planes that should be graphically visible (list of their VIS_ indexes).
+	var/list/vis_enabled = null
+	/// List of atom planes that are logically visible/interactable (list of actual plane numbers).
+	var/list/planes_visible = null
 
-	//spells hud icons - this interacts with add_spell and remove_spell
+	/// Spells hud icons - this interacts with add_spell and remove_spell.
 	var/list/atom/movable/screen/movable/spell_master/spell_masters = null
+	/// Ability hud icons.
 	var/atom/movable/screen/movable/ability_master/ability_master = null
 
-	/*A bunch of this stuff really needs to go under their own defines instead of being globally attached to mob.
-	A variable should only be globally attached to turfs/objects/whatever, when it is in fact needed as such.
-	The current method unnecessarily clusters up the variable list, especially for humans (although rearranging won't really clean it up a lot but the difference will be noticable for other mobs).
-	I'll make some notes on where certain variable defines should probably go.
-	Changing this around would probably require a good look-over the pre-existing code.
-	*/
+	/**
+	 * A bunch of this stuff really needs to go under their own defines instead of being globally attached to mob.
+	 *
+	 * A variable should only be globally attached to turfs/objects/whatever, when it is in fact needed as such.
+	 * The current method unnecessarily clusters up the variable list, especially for humans (although rearranging won't really clean it up a lot but the difference will be noticable for other mobs).
+	 * I'll make some notes on where certain variable defines should probably go.
+	 * Changing this around would probably require a good look-over the pre-existing code.
+	 */
 	var/atom/movable/screen/zone_sel/zone_sel = null
 
-	var/use_me = 1 //Allows all mobs to use the me verb by default, will have to manually specify they cannot
+	/// Allows all mobs to use the me verb by default, will have to manually specify they cannot.
+	var/use_me = 1
 	var/damageoverlaytemp = 0
 	var/computer_id = null
 	var/already_placed = 0.0
@@ -83,16 +89,16 @@
 	var/other_mobs = null
 	var/memory = ""
 	var/poll_answer = 0.0
-	var/sdisabilities = 0	//Carbon
-	var/disabilities = 0	//Carbon
-	var/transforming = null	//Carbon
+	var/sdisabilities = 0	//?Carbon
+	var/disabilities = 0	//?Carbon
+	var/transforming = null	//?Carbon
 	var/other = 0.0
-	var/eye_blind = null	//Carbon
-	var/eye_blurry = null	//Carbon
-	var/ear_deaf = null		//Carbon
-	var/ear_damage = null	//Carbon
-	var/stuttering = null	//Carbon
-	var/slurring = null		//Carbon
+	var/eye_blind = null	//?Carbon
+	var/eye_blurry = null	//?Carbon
+	var/ear_deaf = null		//?Carbon
+	var/ear_damage = null	//?Carbon
+	var/stuttering = null	//?Carbon
+	var/slurring = null		//?Carbon
 	var/real_name = null
 	var/nickname = null
 	var/flavor_text = ""
@@ -102,14 +108,14 @@
 	var/exploit_record = ""
 	var/exploit_addons = list()		//Assorted things that show up at the end of the exploit_record list
 	var/blinded = null
-	var/bhunger = 0			//Carbon
+	var/bhunger = 0			//?Carbon
 	var/ajourn = 0
-	var/druggy = 0			//Carbon
-	var/confused = 0		//Carbon
+	var/druggy = 0			//?Carbon
+	var/confused = 0		//?Carbon
 	var/antitoxs = null
 	var/phoron = null
-	var/sleeping = 0		//Carbon
-	var/resting = 0			//Carbon
+	var/sleeping = 0		//?Carbon
+	var/resting = 0			//?Carbon
 	var/lying = 0
 	var/lying_prev = 0
 
@@ -117,41 +123,51 @@
 	var/is_shifted = FALSE
 
 	var/canmove = 1
-	//Allows mobs to move through dense areas without restriction. For instance, in space or out of holder objects.
+	/// Allows mobs to move through dense areas without restriction. For instance, in space or out of holder objects.
 	var/incorporeal_move = 0 //0 is off, 1 is normal, 2 is for ninjas.
 	var/unacidable = 0
-	var/list/pinned = list()            // List of things pinning this creature to walls (see living_defense.dm)
-	var/list/embedded = list()          // Embedded items, since simple mobs don't have organs.
-	var/list/languages = list()         // For speaking/listening.
-	var/species_language = null			// For species who want reset to use a specified default.
-	var/only_species_language  = 0		// For species who can only speak their default and no other languages. Does not affect understanding.
-	var/list/speak_emote = list("says") // Verbs used when speaking. Defaults to 'say' if speak_emote is null.
-	var/emote_type = 1		// Define emote default type, 1 for seen emotes, 2 for heard emotes
-	var/facing_dir = null   // Used for the ancient art of moonwalking.
+	/// List of things pinning this creature to walls. (see living_defense.dm)
+	var/list/pinned = list()
+	/// Embedded items, since simple mobs don't have organs.
+	var/list/embedded = list()
+	/// For speaking/listening.
+	var/list/languages = list()
+	/// For species who want reset to use a specified default.
+	var/species_language = null
+	/// For species who can only speak their default and no other languages. Does not affect understanding.
+	var/only_species_language  = 0
+	/// Verbs used when speaking. Defaults to 'say' if speak_emote is null.
+	var/list/speak_emote = list("says")
+	/// Define emote default type, 1 for seen emotes, 2 for heard emotes.
+	var/emote_type = 1
+	/// Used for the ancient art of moonwalking.
+	var/facing_dir = null
 
-	var/name_archive //For admin things like possession
+	/// For admin things like possession.
+	var/name_archive
 
-	var/timeofdeath = 0.0//Living
-	var/cpr_time = 1.0//Carbon
+	var/timeofdeath = 0 //?Living
+	var/cpr_time = 1 //?Carbon
 
-	var/bodytemperature = 310.055	//98.7 F
-	var/drowsyness = 0.0//Carbon
-	var/charges = 0.0
+	var/bodytemperature = 310.055 //98.7 F
+	var/drowsyness = 0 //?Carbon
+	var/charges = 0
 
-	var/nutrition = 400.0//Carbon
-	var/hydration = 400.0//Carbon
+	var/nutrition = 400 //?Carbon
+	var/hydration = 400 //?Carbon
 
-	var/overeatduration = 0		// How long this guy is overeating //Carbon
-	var/paralysis = 0.0
-	var/stunned = 0.0
-	var/weakened = 0.0
-	var/losebreath = 0.0//Carbon
-	var/_intent = null//Living
+	/// How long this guy is overeating. //?Carbon
+	var/overeatduration = 0
+	var/paralysis = 0
+	var/stunned = 0
+	var/weakened = 0
+	var/losebreath = 0 //?Carbon
+	var/_intent = null //?Living
 	var/shakecamera = 0
-	var/a_intent = INTENT_HELP//Living
-	var/m_int = null//Living
+	var/a_intent = INTENT_HELP //?Living
+	var/m_int = null //?Living
 	var/lastKnownIP = null
-	var/obj/buckled = null//Living
+	var/obj/buckled = null //?Living
 
 	var/seer = 0 //for cult//Carbon, probably Human
 
@@ -165,28 +181,31 @@
 
 	var/music_lastplayed = "null"
 
-	var/job = null//Living
+	var/job = null //?Living
 
-	var/const/blindness = 1//Carbon
-	var/const/deafness = 2//Carbon
-	var/const/muteness = 4//Carbon
+	var/const/blindness = 1 //?Carbon
+	var/const/deafness = 2 //?Carbon
+	var/const/muteness = 4 //?Carbon
 
-	var/can_pull_size = ITEMSIZE_NO_CONTAINER // Maximum w_class the mob can pull.
-	var/can_pull_mobs = MOB_PULL_LARGER // Whether or not the mob can pull other mobs.
+	/// Maximum w_class the mob can pull.
+	var/can_pull_size = ITEMSIZE_NO_CONTAINER
+	/// Whether or not the mob can pull other mobs.
+	var/can_pull_mobs = MOB_PULL_LARGER
 
-	var/datum/dna/dna = null//Carbon
-	var/radiation = 0.0//Carbon
+	var/datum/dna/dna = null//?Carbon
+	var/radiation = 0 //?Carbon
 
-	var/list/mutations = list() //Carbon -- Doohl
+	var/list/mutations = list() //?Carbon
 	//see: setup.dm for list of mutations
 
 	var/voice_name = "unidentifiable voice"
 
-	var/faction = "neutral" //Used for checking whether hostile simple animals will attack you, possibly more stuff later
+	///Used for checking whether hostile simple animals will attack you, possibly more stuff later.
+	var/faction = "neutral"
+	/// To prevent pAIs/mice/etc from getting antag in autotraitor and future auto- modes. Uses inheritance instead of a bunch of typechecks.
+	var/can_be_antagged = FALSE
 
-	var/can_be_antagged = FALSE // To prevent pAIs/mice/etc from getting antag in autotraitor and future auto- modes. Uses inheritance instead of a bunch of typechecks.
-
-//Generic list for proc holders. Only way I can see to enable certain verbs/procs. Should be modified if needed.
+	/// Generic list for proc holders. Only way I can see to enable certain verbs/procs. Should be modified if needed.
 	var/proc_holder_list[] = list()//Right now unused.
 	//Also unlike the spell list, this would only store the object in contents, not an object in itself.
 
@@ -199,10 +218,10 @@
 			statpanel("[P.panel]","",P)
 	*/
 
-//The last mob/living/carbon to push/drag/grab this mob (mostly used by slimes friend recognition)
+	/// The last mob/living/carbon to push/drag/grab this mob (mostly used by slimes friend recognition)
 	var/mob/living/carbon/LAssailant = null
 
-//Wizard mode, but can be used in other modes thanks to the brand new "Give Spell" badmin button
+	/// Wizard's spell list, it can be used in other modes thanks to the "Give Spell" badmin button.
 	var/list/spell/spell_list = list()
 
 //Changlings, but can be used in other modes
@@ -210,56 +229,73 @@
 
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
 
-	var/update_icon = 1 //Set to 1 to trigger update_icons() at the next life() call
+	/// Set to TRUE to trigger update_icons() at the next life() call.
+	var/update_icon = TRUE
 
-	var/status_flags = CANSTUN|CANWEAKEN|CANPARALYSE|CANPUSH	//bitflags defining which status effects can be inflicted (replaces canweaken, canstun, etc)
+	/// Bitflags defining which status effects can be inflicted. (replaces canweaken, canstun, etc)
+	var/status_flags = CANSTUN|CANWEAKEN|CANPARALYSE|CANPUSH
 
 	var/area/lastarea = null
 
-	var/digitalcamo = 0 // Can they be tracked by the AI?
+	/// Can they be tracked by the AI?
+	var/digitalcamo = FALSE
 
-	var/silicon_privileges = NONE // Can they interact with station electronics
+	/// Can they interact with station electronics?
+	var/silicon_privileges = NONE
 
-	var/list/radar_blips = list() // list of screen objects, radar blips
-	var/radar_open = 0 	// nonzero is radar is open
+	///Used by admins to possess objects. All mobs should have this var.
+	var/obj/control_object
 
+	/// Whether or not mobs can understand other mobtypes. These stay in /mob so that ghosts can hear everything.
+	var/universal_speak = FALSE //? Set to TRUE to enable the mob to speak to everyone.
+	var/universal_understand = FALSE //? Set to TRUE to enable the mob to understand everyone, not necessarily speak
 
-	var/obj/control_object //Used by admins to possess objects. All mobs should have this var
+	/// Whether this mob's ability to stand has been affected.
+	var/stance_damage = 0
 
-	//Whether or not mobs can understand other mobtypes. These stay in /mob so that ghosts can hear everything.
-	var/universal_speak = 0 // Set to 1 to enable the mob to speak to everyone -- TLE
-	var/universal_understand = 0 // Set to 1 to enable the mob to understand everyone, not necessarily speak
+	/**
+	 * If set, indicates that the client "belonging" to this (clientless) mob is currently controlling some other mob
+	 * so don't treat them as being SSD even though their client var is null.
+	 */
+	var/mob/teleop = null //? This is mainly used for adghosts to hear things from their actual body.
 
-	var/stance_damage = 0 //Whether this mob's ability to stand has been affected
-
-	//If set, indicates that the client "belonging" to this (clientless) mob is currently controlling some other mob
-	//so don't treat them as being SSD even though their client var is null.
-	var/mob/teleop = null
-
-	var/turf/listed_turf = null  	//the current turf being examined in the stat panel
-	var/list/shouldnt_see = list()	//list of objects that this mob shouldn't see in the stat panel. this silliness is needed because of AI alt+click and cult blood runes
+	/// The current turf being examined in the stat panel.
+	var/turf/listed_turf = null
+	/// List of objects that this mob shouldn't see in the stat panel. this silliness is needed because of AI alt+click and cult blood runes.
+	var/list/shouldnt_see = list()
 
 	var/list/active_genes=list()
 	var/mob_size = MOB_MEDIUM
-	var/forbid_seeing_deadchat = FALSE // Used for lings to not see deadchat, and to have ghosting behave as if they were not really dead.
+	// Used for lings to not see deadchat, and to have ghosting behave as if they were not really dead.
+	var/forbid_seeing_deadchat = FALSE
 
-	var/seedarkness = 1	//Determines mob's ability to see shadows. 1 = Normal vision, 0 = darkvision
+	///Determines mob's ability to see shadows. 1 = Normal vision, 0 = darkvision.
+	var/seedarkness = 1
 
-	var/get_rig_stats = 0 //Moved from computer.dm
+	var/get_rig_stats = 0
 
 	var/typing
 	var/obj/effect/decal/typing_indicator
 
-	var/low_priority = TRUE //Skip processing life() if there's just no players on this Z-level
+	/// Skip processing life() if there's just no players on this Z-level.
+	var/low_priority = TRUE
 
-	var/default_pixel_x = 0 //For offsetting mobs
+	/// For offsetting mobs.
+	var/default_pixel_x = 0
+	/// For offsetting mobs.
 	var/default_pixel_y = 0
 
-	var/attack_icon //Icon to use when attacking w/o anything in-hand
-	var/attack_icon_state //State for above
+	/// Icon to use when attacking w/o anything in-hand.
+	var/attack_icon
+	/// Icon State to use when attacking w/o anything in-hand.
+	var/attack_icon_state
 
 	var/registered_z
 
-	var/in_enclosed_vehicle = 0	//For mechs and fighters ambiance. Can be used in other cases.
+	/// For mechs and fighters ambiance. Can be used in other cases.
+	var/in_enclosed_vehicle = 0
 
 	var/last_radio_sound = -INFINITY
+
+	/// A mock client, provided by tests and friends
+	var/datum/client_interface/mock_client

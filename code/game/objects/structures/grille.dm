@@ -1,7 +1,7 @@
 /obj/structure/grille
 	name = "grille"
 	desc = "A flimsy lattice of metal rods, with screws to secure it to the floor."
-	icon = 'icons/obj/structures_vr.dmi' // VOREStation Edit - New icons
+	icon = 'icons/obj/structures_vr.dmi'
 	icon_state = "grille"
 	density = 1
 	anchored = 1
@@ -71,11 +71,11 @@
 		if(BRUTE)
 			//bullets
 			if(Proj.original == src || prob(20))
-				Proj.damage *= between(0, Proj.damage/60, 0.5)
+				Proj.damage *= clamp( Proj.damage/60, 0,  0.5)
 				if(prob(max((damage-10)/25, 0))*100)
 					passthrough = 1
 			else
-				Proj.damage *= between(0, Proj.damage/60, 1)
+				Proj.damage *= clamp( Proj.damage/60, 0,  1)
 				passthrough = 1
 		if(BURN)
 			//beams and other projectiles are either blocked completely by grilles or stop half the damage.
@@ -221,7 +221,7 @@
 	desc = "A matrice built out of an unknown material, with some sort of force field blocking air around it."
 	icon_state = "grillecult"
 	health = 40 // Make it strong enough to avoid people breaking in too easily.
-	can_atmos_pass = ATMOS_PASS_NO // Make sure air doesn't drain.
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED // Make sure air doesn't drain.
 
 /obj/structure/grille/broken/cult
 	icon_state = "grillecult-b"

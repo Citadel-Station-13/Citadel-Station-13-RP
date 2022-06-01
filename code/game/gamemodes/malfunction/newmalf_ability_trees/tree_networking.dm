@@ -106,7 +106,7 @@
 			announce_hack_failure(user, "quantum message relay")
 		return
 
-	var/datum/announcement/priority/command/AN = new/datum/announcement/priority/command()
+	var/datum/legacy_announcement/priority/command/AN = new/datum/legacy_announcement/priority/command()
 	AN.title = title
 	AN.Announce(text)
 

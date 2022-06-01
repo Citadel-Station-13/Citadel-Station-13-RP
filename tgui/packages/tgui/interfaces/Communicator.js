@@ -1,3 +1,5 @@
+/* eslint-disable unused-imports/no-unused-imports */
+/* eslint-disable max-len */
 import { filter } from 'common/collections';
 import { decodeHtmlEntities, toTitleCase } from 'common/string';
 import { Fragment } from 'inferno';
@@ -1129,6 +1131,10 @@ const SettingsTab = (props, context) => {
                 : "Ringer off."
             }
             onClick={() => act("toggle_ringer")} />
+          <Button
+            fluid
+            content="Set Ringer Tone"
+            onClick={() => act("set_ringer_tone")} />
         </LabeledList.Item>
       </LabeledList>
     </Section>

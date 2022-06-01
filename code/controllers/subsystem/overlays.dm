@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(overlays)
 	name = "Overlay"
-	flags = SS_TICKER
+	subsystem_flags = SS_TICKER
 	wait = 1
 	priority = FIRE_PRIORITY_OVERLAYS
 	init_order = INIT_ORDER_OVERLAY
@@ -17,7 +17,7 @@ SUBSYSTEM_DEF(overlays)
 	stats = list()
 
 /datum/controller/subsystem/overlays/Initialize()
-	subsystem_initialized = TRUE
+	initialized = TRUE
 	fire(mc_check = FALSE)
 	..()
 

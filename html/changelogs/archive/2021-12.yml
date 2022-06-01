@@ -1,0 +1,21 @@
+2021-12-20:
+  Solaris-Shade:
+  - rscdel: Removed two pipes from the SME Engine Submap.
+2021-12-21:
+  silicons:
+  - rscadd: size prefs
+2021-12-22:
+  Quiteanything:
+  - rscadd: Added new "Moth Eyes" marking
+2021-12-23:
+  TheLordME:
+  - rscadd: HE pipes now interact with lava turfs to gain temperature
+  - code_imp: Adds easy way to add more turf to HE-pipe interactions
+  - admin: Adds variables to make turf interactions more or less efficent
+2021-12-27:
+  nevimer:
+  - bugfix: shadekins now get their verbs
+2021-12-31:
+  silicons:
+  - balance: Fission reactors are good for exploding again, even if they're a bad
+      power source.

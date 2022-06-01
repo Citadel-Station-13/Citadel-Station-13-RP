@@ -3,7 +3,7 @@ SUBSYSTEM_DEF(icon_smooth)
 	init_order = INIT_ORDER_ICON_SMOOTHING
 	wait = 1
 	priority = FIRE_PRIORITY_SMOOTHING
-	flags = SS_TICKER
+	subsystem_flags = SS_TICKER
 
 	///Blueprints assemble an image of what pipes/manifolds/wires look like on initialization, and thus should be taken after everything's been smoothed
 	// var/list/blueprint_queue = list()

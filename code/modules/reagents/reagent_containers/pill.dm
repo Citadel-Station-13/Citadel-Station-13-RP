@@ -305,10 +305,10 @@
 
 /obj/item/reagent_containers/pill/zoom/Initialize(mapload)
 	. = ..()
-	if(prob(50))						//VOREStation edit begin: Zoom pill adjustments
+	if(prob(50))
 		reagents.add_reagent("mold", 2)	//Chance to be more dangerous
 	reagents.add_reagent("expired_medicine", 5)
-	reagents.add_reagent("stimm", 5)	//VOREStation edit end: Zoom pill adjustments
+	reagents.add_reagent("stimm", 5)
 	color = reagents.get_color()
 
 /obj/item/reagent_containers/pill/diet
@@ -318,5 +318,5 @@
 
 /obj/item/reagent_containers/pill/diet/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("lipozine", 15) //VOREStation Edit
+	reagents.add_reagent("lipozine", 15)
 	color = reagents.get_color()

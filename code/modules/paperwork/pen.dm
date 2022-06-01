@@ -144,7 +144,7 @@
 	var/active_icon_state
 	var/default_icon_state
 
-/obj/item/pen/blade/Initialize()
+/obj/item/pen/blade/Initialize(mapload)
 	. = ..()
 	active_icon_state = "[icon_state]-x"
 	default_icon_state = icon_state
@@ -218,8 +218,8 @@
 
 /obj/item/pen/reagent/sleepy/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("chloralhydrate", 1)	//VOREStation Edit
-	reagents.add_reagent("stoxin", 14)	//VOREStation Add
+	reagents.add_reagent("chloralhydrate", 1)
+	reagents.add_reagent("stoxin", 14)
 
 
 /*

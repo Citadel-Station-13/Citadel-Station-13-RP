@@ -1,0 +1,142 @@
+2021-03-01:
+  nik707:
+  - bugfix: fixed missing mapmerge
+2021-03-02:
+  Enzo-Leon:
+  - balance: decay slashed.
+  - rscadd: new ATC options
+  - tweak: ATC timings & weights
+  - bugfix: Rat migration no longer is broken
+  - code_imp: air_traffic & organizations files were updated with the new fleet information.
+      More NT ships were added, homeage to the NSB Adephagia added as a station destination
+      for NT vessels to travel off to.
+  drofoljaelisglis:
+  - bugfix: Fixed the invisible sprite on the toe-less/digitigrade jackboot variants.
+  - imageadd: Adjusted the sprite on the knee-length and thigh-length jackboots (normal
+      and toe-less/digitigrade versions) to make them more visually distinct from
+      the regular jackboot sprites. Now they should align with the location they're
+      supposed to reach to.
+2021-03-03:
+  TheLordME:
+  - bugfix: Cyborgs get announced again
+  drofoljaelisglis:
+  - bugfix: Fixed communicators not displaying any stories in the newsfeed app.
+  nik707:
+  - rscadd: IAmCrystalClear donator reward
+  - tweak: requirements for command bodysuit
+2021-03-04:
+  buffyuwu:
+  - bugfix: items in the character setup preview no longer remain across different
+      slot previews
+2021-03-05:
+  buffyuwu:
+  - bugfix: you can now switch briefcases between hands
+  rpilcrow:
+  - bugfix: Fixed hud thermometer sticking at maximum
+2021-03-06:
+  CrystalClearCC:
+  - tweak: Sex on the beach has a working recipe now. (New thematic tastes too.)
+  - tweak: Virgin sex on the beach has a new recipe. (With new taste!)
+  - rscadd: Both sex on the beach variants have a new sprite.
+  FreeStylaLT:
+  - rscdel: Abundant lights on Triumph
+  nik707:
+  - rscadd: VI's briefpack
+  - bugfix: fixed the secure briefcase inhand sprite
+2021-03-07:
+  drofoljaelisglis:
+  - rscadd: New clothing items have been added.
+  - tweak: Many departmental loadout items that accidentally excluded certain roles
+      of the department have been fixed, and in some cases items that were not role-restricted
+      were given proper restrictions. The same is true for species-restricted items.
+      Some items have had role-restriction removed, as well.
+  - tweak: All items that were once named with the prefix "Civilian" have had the
+      prefix removed (This isn't a Military RP server, and there is no need to explicitly
+      specify it is "Civilian" if any role regardless of department can select it),
+      and role-restricted items were given their own category in the loadout. The
+      exception to this is species-restricted items, which still have their respective
+      department items kept in Xenowear.
+  - tweak: Naming consistency has been improved in the loadout.
+  - bugfix: Simon Pants and Simon Jacket now have visible object sprites.
+  - bugfix: Vox Pressure Suits now all have object sprites separate from the mob sprites.
+  - bugfix: Loadout behavior is now less buggy.
+  - bugfix: Many cases of repeated declaration in the loadout have been fixed.
+  - bugfix: Broken Teshari loadout options have been fixed. The sprites for some of
+      these items are still broken, but not all. Fixing all of them is beyond the
+      scope of this update, however.
+  - bugfix: Miscellaneous clothing sprites have been fixed, from object to mob sprite.
+  - imageadd: Gives the Vox Pressure Suits as well as Simon Pants & Simon Jacket object
+      sprites.
+  - imagedel: Many duplicate sprites were removed.
+  - spellcheck: The teshari's "chief engineer cloak" is now named appropriately, and
+      is no longer the "cheif engineer cloak".
+  - code_imp: 'Much of the code associated with the loadout has been touched, and
+      in some cases, rewritten entirely. Role-restricted items have been given their
+      own file, and now use an inheritance system that eliminates the need to constantly
+      re-declare restrictions for items that have more than one role that can take
+      it (ex: Departmental items). Xenowear/Species-Restricted items have been re-written
+      from the ground up to follow the same more sensible inheritance structure. The
+      latter case is an especially significant improvement, as before there were issues
+      with category placement, selectability, and in general was reported to be very
+      buggy.'
+2021-03-08:
+  buffyuwu:
+  - bugfix: machetes are now as functional as any other holsterable weapon
+2021-03-11:
+  nik707:
+  - bugfix: the dreaded square
+2021-03-12:
+  nik707:
+  - bugfix: SKUB
+2021-03-13:
+  nik707:
+  - bugfix: loadout meson eyepatch
+  - rscdel: 'deleted player_panel tweak: changed player_panel_new to player_panel'
+2021-03-15:
+  Kraseo:
+  - imageadd: Adds all the sprites needed for protean RIGs to be worn on any species
+      that can.
+2021-03-16:
+  CharlesWedge:
+  - bugfix: Added a Else Clause to Vox's delight. It now slightly heals Toxin damage
+      and no longer is toxic to them.
+  nik707:
+  - rscadd: Adds like 13 new wings
+2021-03-18:
+  Kraseo:
+  - bugfix: Bioprinters are actually worth upgrading now.
+  nik707:
+  - rscadd: J9 Janihound
+  - bugfix: someone is dumb
+2021-03-23:
+  CrystalClearCC:
+  - bugfix: dark rimmed glasses has a icon sprite now, yay
+  Enzo-Leon:
+  - rscadd: Surgery Maintenance area
+  - rscadd: Atmos for missing area
+  - rscdel: Mimics removed on all decks.
+  - balance: Hostile mob spawn
+  Kraseo:
+  - rscadd: Fox tail sprite, with wagging animation.
+  - rscadd: Slime hat to loadout.
+2021-03-25:
+  CharlesWedge:
+  - rscadd: '3 New Floor Mimics, Probability Versions of the Airlock Mimic tweaked:
+      Airlock Mimic Code in general, to be more convincing.'
+  - bugfix: Closet Mimics have a proper name and description.
+  - imageadd: new.dmi for mimics
+  Enzo-Leon:
+  - rscadd: 'Transition effect tweak: Adjusted tiling in a few areas on the main maps.'
+  - refactor: updated mapping paths to current CitRP pathing
+  silicons:
+  - admin: Global-Narrate is back. Local-Narrate is now a thing, instead of being
+      combined with Narration.
+2021-03-28:
+  Enzo-Leon:
+  - rscadd: Reactor Map Start Rotation
+  - rscadd: RUS-T / Fission / SuperMatter added
+  Hatterhat:
+  - rscadd: Mining-module equipped stationbound synthetics now get a disruptor blade
+      when given a scrambled module. What's a disruptor blade? Who knows.
+  silicons:
+  - balance: supermatter no longer hallucinates synthetics.

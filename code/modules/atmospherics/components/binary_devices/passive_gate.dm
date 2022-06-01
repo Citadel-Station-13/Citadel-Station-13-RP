@@ -1,8 +1,9 @@
 #define REGULATE_NONE	0
-#define REGULATE_INPUT	1	//shuts off when input side is below the target pressure
-#define REGULATE_OUTPUT	2	//shuts off when output side is above the target pressure
-
-/obj/machinery/atmospherics/binary/passive_gate
+///shuts off when input side is below the target pressure
+#define REGULATE_INPUT	1
+///shuts off when output side is above the target pressure
+#define REGULATE_OUTPUT	2
+/obj/machinery/atmospherics/component/binary/passive_gate
 	icon = 'icons/atmos/passive_gate.dmi'
 	icon_state = "map"
 	construction_type = /obj/item/pipe/directional
@@ -26,19 +27,19 @@
 	var/id = null
 	var/datum/radio_frequency/radio_connection
 
-/obj/machinery/atmospherics/binary/passive_gate/Initialize(mapload)
+/obj/machinery/atmospherics/component/binary/passive_gate/Initialize(mapload)
 	. = ..()
 	air1.volume = ATMOS_DEFAULT_VOLUME_PUMP * 2.5
 	air2.volume = ATMOS_DEFAULT_VOLUME_PUMP * 2.5
 
-/obj/machinery/atmospherics/binary/passive_gate/Destroy()
+/obj/machinery/atmospherics/component/binary/passive_gate/Destroy()
 	unregister_radio(src, frequency)
 	. = ..()
 
-/obj/machinery/atmospherics/binary/passive_gate/update_icon()
+/obj/machinery/atmospherics/component/binary/passive_gate/update_icon()
 	icon_state = (unlocked && flowing)? "on" : "off"
 
-/obj/machinery/atmospherics/binary/passive_gate/update_underlays()
+/obj/machinery/atmospherics/component/binary/passive_gate/update_underlays()
 	if(..())
 		underlays.Cut()
 		var/turf/T = get_turf(src)
@@ -47,10 +48,10 @@
 		add_underlay(T, node1, turn(dir, 180))
 		add_underlay(T, node2, dir)
 
-/obj/machinery/atmospherics/binary/passive_gate/hide(var/i)
+/obj/machinery/atmospherics/component/binary/passive_gate/hide(var/i)
 	update_underlays()
 
-/obj/machinery/atmospherics/binary/passive_gate/process(delta_time)
+/obj/machinery/atmospherics/component/binary/passive_gate/process(delta_time)
 	..()
 
 	last_flow_rate = 0
@@ -101,13 +102,13 @@
 
 //Radio remote control
 
-/obj/machinery/atmospherics/binary/passive_gate/proc/set_frequency(new_frequency)
+/obj/machinery/atmospherics/component/binary/passive_gate/proc/set_frequency(new_frequency)
 	radio_controller.remove_object(src, frequency)
 	frequency = new_frequency
 	if(frequency)
 		radio_connection = radio_controller.add_object(src, frequency, RADIO_ATMOSIA)
 
-/obj/machinery/atmospherics/binary/passive_gate/proc/broadcast_status()
+/obj/machinery/atmospherics/component/binary/passive_gate/proc/broadcast_status()
 	if(!radio_connection)
 		return 0
 
@@ -129,12 +130,12 @@
 
 	return 1
 
-/obj/machinery/atmospherics/binary/passive_gate/Initialize(mapload)
+/obj/machinery/atmospherics/component/binary/passive_gate/Initialize(mapload)
 	. = ..()
 	if(frequency)
 		set_frequency(frequency)
 
-/obj/machinery/atmospherics/binary/passive_gate/receive_signal(datum/signal/signal)
+/obj/machinery/atmospherics/component/binary/passive_gate/receive_signal(datum/signal/signal)
 	if(!signal.data["tag"] || (signal.data["tag"] != id) || (signal.data["sigtype"]!="command"))
 		return 0
 
@@ -167,7 +168,7 @@
 	update_icon()
 	return
 
-/obj/machinery/atmospherics/binary/passive_gate/attack_hand(user as mob)
+/obj/machinery/atmospherics/component/binary/passive_gate/attack_hand(user as mob)
 	if(..())
 		return
 	add_fingerprint(usr)
@@ -176,8 +177,8 @@
 		return
 	ui_interact(user)
 
-/obj/machinery/atmospherics/binary/passive_gate/ui_interact(mob/user, datum/tgui/ui)
-	if(stat & (BROKEN|NOPOWER))
+/obj/machinery/atmospherics/component/binary/passive_gate/ui_interact(mob/user, datum/tgui/ui)
+	if(machine_stat & (BROKEN|NOPOWER))
 		return FALSE
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -185,7 +186,7 @@
 		ui.open()
 
 //This is the data which will be sent to the ui
-/obj/machinery/atmospherics/binary/passive_gate/ui_data(mob/user)
+/obj/machinery/atmospherics/component/binary/passive_gate/ui_data(mob/user)
 	var/list/data = list()
 
 	data = list(
@@ -201,7 +202,7 @@
 
 	return data
 
-/obj/machinery/atmospherics/binary/passive_gate/ui_act(action, params)
+/obj/machinery/atmospherics/component/binary/passive_gate/ui_act(action, params)
 	if(..())
 		return TRUE
 
@@ -225,7 +226,7 @@
 					target_pressure = max_pressure_setting
 				if("set")
 					var/new_pressure = input(usr,"Enter new output pressure (0-[max_pressure_setting]kPa)","Pressure Control",src.target_pressure) as num
-					src.target_pressure = between(0, new_pressure, max_pressure_setting)
+					src.target_pressure = clamp( new_pressure, 0,  max_pressure_setting)
 
 		if("set_flow_rate")
 			. = TRUE
@@ -236,11 +237,11 @@
 					set_flow_rate = air1.volume
 				if("set")
 					var/new_flow_rate = input(usr,"Enter new flow rate limit (0-[air1.volume]L/s)","Flow Rate Control",src.set_flow_rate) as num
-					src.set_flow_rate = between(0, new_flow_rate, air1.volume)
+					src.set_flow_rate = clamp( new_flow_rate, 0,  air1.volume)
 
 	update_icon()
 
-/obj/machinery/atmospherics/binary/passive_gate/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/component/binary/passive_gate/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(istype(W, /obj/item/pen))
 		var/new_name = input(user, "Please enter the new name for this device:", "New Name")  as text|null
 		new_name = trim(new_name)
@@ -268,6 +269,6 @@
 #undef REGULATE_OUTPUT
 
 
-/obj/machinery/atmospherics/binary/passive_gate/on
+/obj/machinery/atmospherics/component/binary/passive_gate/on
 	unlocked = TRUE
 	icon_state = "on"

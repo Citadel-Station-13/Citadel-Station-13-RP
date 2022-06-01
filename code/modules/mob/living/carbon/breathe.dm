@@ -6,7 +6,7 @@
 		breathe()
 
 /mob/living/carbon/proc/breathe()
-	//if(istype(loc, /obj/machinery/atmospherics/unary/cryo_cell)) return
+	//if(istype(loc, /obj/machinery/atmospherics/component/unary/cryo_cell)) return
 	if(!should_have_organ(O_LUNGS)) return
 
 	var/datum/gas_mixture/breath = null
@@ -22,13 +22,12 @@
 	else
 		//Okay, we can breathe, now check if we can get air
 		breath = get_breath_from_internal() //First, check for air from internals
-		//VOREStation Add - Respirocytes as a NIF implant
+		// Respirocytes as a NIF implant
 		if(!breath && ishuman(src))
 			var/mob/living/carbon/human/H = src
 			if(H.nif && H.nif.flag_check(NIF_H_SPAREBREATH,NIF_FLAGS_HEALTH))
 				var/datum/nifsoft/spare_breath/SB = H.nif.imp_check(NIF_SPAREBREATH)
 				breath = SB.resp_breath()
-		//VOREStation Add End
 		if(!breath)
 			breath = get_breath_from_environment() //No breath from internals so let's try to get air from our location
 		if(!breath)
@@ -44,7 +43,7 @@
 	if(internal)
 		if (!contents.Find(internal))
 			internal = null
-		if (!(wear_mask && (wear_mask.item_flags & ALLOWINTERNALS)))
+		if (!(wear_mask && (wear_mask.clothing_flags & ALLOWINTERNALS)))
 			internal = null
 		if(internal)
 			if (internals)
@@ -77,7 +76,7 @@
 
 //Handle possble chem smoke effect
 /mob/living/carbon/proc/handle_chemical_smoke(var/datum/gas_mixture/environment)
-	if(wear_mask && (wear_mask.item_flags & BLOCK_GAS_SMOKE_EFFECT))
+	if(wear_mask && (wear_mask.clothing_flags & BLOCK_GAS_SMOKE_EFFECT))
 		return
 
 	for(var/obj/effect/smoke/chem/smoke in view(1, src))

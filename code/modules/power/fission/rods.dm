@@ -54,9 +54,9 @@
 		if(our_heatcap + share_heatcap)
 			var/new_temperature = ((temperature * our_heatcap) + (sharer.temperature * share_heatcap)) / (our_heatcap + share_heatcap)
 			temperature += (new_temperature - temperature) * efficiency // Add efficiency here, since there's no gas.remove for non-gas objects.
-			temperature = between(0, temperature, ROD_TEMPERATURE_CUTOFF)
+			temperature = clamp( temperature, 0,  ROD_TEMPERATURE_CUTOFF)
 			sharer.temperature += (new_temperature - sharer.temperature) * efficiency
-			sharer.temperature = between(0, sharer.temperature, ROD_TEMPERATURE_CUTOFF)
+			sharer.temperature = clamp( sharer.temperature, 0,  ROD_TEMPERATURE_CUTOFF)
 	else if(istype(E, /datum/gas_mixture))
 		var/datum/gas_mixture/env = E
 		var/datum/gas_mixture/sharer = env.remove(efficiency * env.total_moles)
@@ -65,9 +65,9 @@
 		if(our_heatcap + share_heatcap)
 			var/new_temperature = ((temperature * our_heatcap) + (sharer.temperature * share_heatcap)) / (our_heatcap + share_heatcap)
 			temperature += (new_temperature - temperature) * efficiency
-			temperature = between(0, temperature, ROD_TEMPERATURE_CUTOFF)
+			temperature = clamp( temperature, 0,  ROD_TEMPERATURE_CUTOFF)
 			sharer.temperature += (new_temperature - sharer.temperature)
-			sharer.temperature = between(0, sharer.temperature, ROD_TEMPERATURE_CUTOFF)
+			sharer.temperature = clamp( sharer.temperature, 0,  ROD_TEMPERATURE_CUTOFF)
 		env.merge(sharer)
 
 	var/integrity_lost = integrity
@@ -113,7 +113,7 @@
 	var/applied_insertion = 1
 	if(istype(loc, /obj/machinery/power/fission) && icon_state != "rod_melt")
 		applied_insertion = insertion
-	return between(0, applied_insertion, 1)
+	return clamp( applied_insertion, 0,  1)
 
 /obj/item/fuelrod/proc/is_melted()
 	return (icon_state == "rod_melt") ? 1 : 0

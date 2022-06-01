@@ -64,7 +64,7 @@
 				to_chat(usr, "The box contained nothing!")
 				return
 		*/
-		var/loot = pick(/obj/effect/landmark/costume,
+		var/loot = pick(/atom/movable/landmark/costume,
 						/obj/item/clothing/glasses/thermal,
 						/obj/item/clothing/gloves/combat,
 						/obj/item/clothing/gloves/combat/advanced,

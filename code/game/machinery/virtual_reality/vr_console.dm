@@ -41,7 +41,7 @@
 	go_out()
 
 /obj/machinery/vr_sleeper/process(delta_time)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		if(occupant)
 			go_out()
 			visible_message("<span class='notice'>\The [src] emits a low droning sound, before the pod door clicks open.</span>")
@@ -85,7 +85,7 @@
 		return
 
 
-/obj/machinery/vr_sleeper/MouseDrop_T(var/mob/target, var/mob/user)
+/obj/machinery/vr_sleeper/MouseDrop_T(mob/target, mob/user)
 	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user)|| !isliving(target))
 		return
 	go_in(target, user)
@@ -101,7 +101,7 @@
 
 
 /obj/machinery/vr_sleeper/emp_act(var/severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		..(severity)
 		return
 
@@ -128,7 +128,7 @@
 
 	var/forced = FALSE
 
-	if(stat & (BROKEN|NOPOWER) || occupant && occupant.stat == DEAD)
+	if(machine_stat & (BROKEN|NOPOWER) || occupant && occupant.stat == DEAD)
 		forced = TRUE
 
 	go_out(forced)
@@ -149,10 +149,10 @@
 		return 0 //maybe they should be able to get out with cuffs, but whatever
 	go_out()
 
-/obj/machinery/vr_sleeper/proc/go_in(var/mob/M, var/mob/user)
+/obj/machinery/vr_sleeper/proc/go_in(mob/M, mob/user)
 	if(!M)
 		return
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	if(!ishuman(M))
 		to_chat(user, "<span class='warning'>\The [src] rejects [M] with a sharp beep.</span>")
@@ -227,14 +227,14 @@
 		// Get the desired spawn location to put the body
 		var/S = null
 		var/list/vr_landmarks = list()
-		for(var/obj/effect/landmark/virtual_reality/sloc in GLOB.landmarks_list)
+		for(var/atom/movable/landmark/virtual_reality/sloc in GLOB.landmarks_list)
 			vr_landmarks += sloc.name
 
 		S = input(occupant, "Please select a location to spawn your avatar at:", "Spawn location") as null|anything in vr_landmarks
 		if(!S)
 			return 0
 
-		for(var/obj/effect/landmark/virtual_reality/i in GLOB.landmarks_list)
+		for(var/atom/movable/landmark/virtual_reality/i in GLOB.landmarks_list)
 			if(i.name == S)
 				S = i
 				break

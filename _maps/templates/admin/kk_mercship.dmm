@@ -81,7 +81,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -114,7 +114,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -227,7 +227,7 @@
 /obj/item/storage/box/syndie_kit/imp_uplink,
 /obj/item/storage/box/syndie_kit/imp_uplink,
 /obj/structure/table/steel_reinforced,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/item/storage/box/syndie_kit/imp_uplink,
@@ -290,7 +290,7 @@
 /area/ship/manta/hallways_star)
 "bl" = (
 /obj/structure/bed/pod,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/hos,
@@ -313,13 +313,13 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
 "bo" = (
-/obj/machinery/atmospherics/unary/heat_exchanger{
+/obj/machinery/atmospherics/component/unary/heat_exchanger{
 	dir = 1
 	},
 /obj/machinery/light_switch{
@@ -737,7 +737,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor/corner{
@@ -756,7 +756,7 @@
 /area/ship/manta/hallways_aft)
 "dc" = (
 /obj/structure/bed/pod,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/hos,
@@ -786,7 +786,7 @@
 /turf/simulated/wall/rshull,
 /area/ship/manta/med)
 "dn" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -813,7 +813,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -934,7 +934,7 @@
 /area/ship/manta/hallways_port)
 "ej" = (
 /obj/structure/bed/pod,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/hos,
@@ -942,7 +942,7 @@
 	dir = 8;
 	pixel_x = 26
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -1111,7 +1111,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1189,7 +1189,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1201,7 +1201,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "fO" = (
-/obj/machinery/atmospherics/unary/engine/bigger{
+/obj/machinery/atmospherics/component/unary/engine/bigger{
 	dir = 1
 	},
 /turf/space,
@@ -1385,7 +1385,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1504,7 +1504,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -1554,7 +1554,7 @@
 /obj/item/storage/box/trackimp,
 /obj/item/storage/box/cdeathalarm_kit,
 /obj/item/stamp/chameleon,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/wood,
 /area/ship/manta/commander)
 "hB" = (
@@ -1567,7 +1567,7 @@
 /turf/simulated/floor/wood,
 /area/ship/manta/barracks)
 "hD" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor/corner{
@@ -1589,7 +1589,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/ship/manta/barracks)
 "hN" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -1611,7 +1611,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/hallways_star)
 "hT" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
 "hU" = (
@@ -2018,7 +2018,7 @@
 /obj/item/storage/box/smokes,
 /obj/item/storage/box/frags,
 /obj/structure/table/steel_reinforced,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/item/storage/box/smokes,
@@ -2119,7 +2119,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
 "jI" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor/corner{
@@ -2191,7 +2191,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/manta/med)
 "ki" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/white,
 /area/ship/manta/med)
 "kl" = (
@@ -2241,7 +2241,7 @@
 /area/ship/manta/recreation)
 "kF" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/stack/nanopaste/advanced,
 /obj/item/surgical/bone_clamp,
 /obj/item/surgical/scalpel/manager,
@@ -2332,8 +2332,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
 "lg" = (
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume,
 /obj/machinery/embedded_controller/radio/airlock/docking_port_multi{
 	id_tag = "merc_port";
 	master_tag = "merc_master";
@@ -2467,7 +2467,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/teleporter)
 "lI" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
 "lM" = (
@@ -2530,7 +2530,7 @@
 /area/ship/manta/engine)
 "lW" = (
 /obj/structure/bed/pod,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/hos,
@@ -2544,7 +2544,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/wood,
 /area/ship/manta/barracks/bed_2)
 "lX" = (
@@ -2753,7 +2753,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/plating,
 /area/ship/manta/radiator_port)
 "nc" = (
@@ -2763,7 +2763,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/radiator_port)
 "nf" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -2798,7 +2798,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
 "nl" = (
-/obj/machinery/atmospherics/binary/pump/on,
+/obj/machinery/atmospherics/component/binary/pump/on,
 /obj/effect/catwalk_plated/dark,
 /obj/structure/railing{
 	dir = 8
@@ -3003,7 +3003,7 @@
 /turf/simulated/wall/rshull,
 /area/ship/manta/mech_bay)
 "oe" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -3058,7 +3058,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/light/small,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -3074,7 +3074,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -3103,7 +3103,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_star)
 "oy" = (
-/obj/machinery/atmospherics/unary/heat_exchanger{
+/obj/machinery/atmospherics/component/unary/heat_exchanger{
 	dir = 1
 	},
 /obj/machinery/light_switch{
@@ -3259,7 +3259,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
 "pf" = (
-/obj/effect/landmark/map_data/manta_ship,
+/atom/movable/landmark/map_data/manta_ship,
 /turf/space,
 /area/space)
 "pn" = (
@@ -3274,7 +3274,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/radiator_port)
 "pw" = (
-/obj/machinery/atmospherics/unary/heat_exchanger,
+/obj/machinery/atmospherics/component/unary/heat_exchanger,
 /turf/simulated/floor/plating,
 /area/ship/manta/radiator_port)
 "py" = (
@@ -3331,7 +3331,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor/corner{
@@ -3389,7 +3389,7 @@
 /turf/simulated/wall/rshull,
 /area/shuttle/manta_ship_boat)
 "qg" = (
-/obj/machinery/atmospherics/unary/engine{
+/obj/machinery/atmospherics/component/unary/engine{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
@@ -3732,7 +3732,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/hallways_port)
 "rV" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "rX" = (
@@ -3750,7 +3750,7 @@
 /turf/simulated/floor/wood,
 /area/ship/manta/barracks)
 "sa" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "se" = (
@@ -4146,7 +4146,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/machinery/light_switch{
@@ -4248,9 +4248,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_star)
 "uN" = (
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor{
 	pixel_y = 24
 	},
@@ -4301,7 +4301,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
@@ -4528,8 +4528,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_port)
 "vV" = (
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume,
 /obj/machinery/embedded_controller/radio/airlock/docking_port_multi{
 	id_tag = "merc_star";
 	master_tag = "merc_master";
@@ -4612,7 +4612,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "wg" = (
-/obj/machinery/atmospherics/unary/heat_exchanger,
+/obj/machinery/atmospherics/component/unary/heat_exchanger,
 /turf/simulated/floor/plating,
 /area/ship/manta/radiator_star)
 "wi" = (
@@ -5283,7 +5283,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "yy" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -5369,8 +5369,8 @@
 /area/ship/manta/holding)
 "yT" = (
 /obj/machinery/door/airlock/external,
-/obj/effect/map_helper/airlock/door/ext_door,
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/atom/movable/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor/airlock_exterior{
 	dir = 6;
 	pixel_x = 7;
@@ -5409,7 +5409,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/mech_bay)
 "za" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/mech_bay)
 "zb" = (
@@ -5712,7 +5712,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/manta_ship_boat)
 "Aw" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/white/diagonal,
@@ -5838,7 +5838,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/barracks)
 "Bi" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "Bk" = (
@@ -5960,7 +5960,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "Ca" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6201,7 +6201,7 @@
 /area/ship/manta/hallways_port)
 "De" = (
 /obj/structure/bed/pod,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/hos,
@@ -6229,9 +6229,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_as)
 "Di" = (
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor{
 	pixel_y = 24
 	},
@@ -6345,7 +6345,7 @@
 /obj/item/clothing/suit/storage/vest/heavy/merc,
 /obj/item/clothing/suit/storage/vest/heavy/merc,
 /obj/item/clothing/suit/storage/vest/heavy/merc,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6691,7 +6691,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/barracks)
 "Fv" = (
@@ -6815,11 +6815,11 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/plating,
 /area/ship/manta/radiator_star)
 "Gk" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6854,7 +6854,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "Gz" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/wood,
 /area/ship/manta/commander)
 "GA" = (
@@ -6946,8 +6946,8 @@
 /area/ship/manta/dock_star)
 "Ha" = (
 /obj/machinery/door/airlock/external,
-/obj/effect/map_helper/airlock/door/ext_door,
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/atom/movable/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor/airlock_exterior{
 	dir = 10;
 	pixel_x = -8;
@@ -7045,7 +7045,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/atmos)
 "HD" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -7597,7 +7597,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
 "Kq" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -7638,7 +7638,7 @@
 /obj/item/clothing/accessory/storage/pouches/large/green,
 /obj/item/clothing/accessory/storage/pouches/large/green,
 /obj/item/clothing/accessory/storage/pouches/large/green,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7669,7 +7669,7 @@
 /area/ship/manta/recreation)
 "KI" = (
 /obj/machinery/door/airlock/external,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
@@ -7759,7 +7759,7 @@
 	pixel_y = -26
 	},
 /obj/machinery/light,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
@@ -7843,7 +7843,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/atmos)
 "LI" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -7910,7 +7910,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "LU" = (
-/obj/machinery/atmospherics/binary/pump/fuel/on,
+/obj/machinery/atmospherics/component/binary/pump/fuel/on,
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
 "LW" = (
@@ -7969,7 +7969,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/engineering)
 "Mk" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -8058,13 +8058,13 @@
 /area/ship/manta/bridge)
 "MM" = (
 /obj/machinery/light/small,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/ship/manta/hallways_star)
 "MQ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor/corner{
@@ -8077,7 +8077,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/radiator_port)
 "MV" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor/corner{
@@ -8093,7 +8093,7 @@
 	dir = 6
 	},
 /obj/machinery/light,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -8304,7 +8304,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "NV" = (
-/obj/machinery/atmospherics/unary/heat_exchanger{
+/obj/machinery/atmospherics/component/unary/heat_exchanger{
 	dir = 1
 	},
 /obj/machinery/light_switch{
@@ -8391,7 +8391,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_y = -23
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/atom/movable/map_helper/airlock/sensor/int_sensor,
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
@@ -8594,7 +8594,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "PE" = (
-/obj/machinery/atmospherics/unary/heat_exchanger,
+/obj/machinery/atmospherics/component/unary/heat_exchanger,
 /turf/simulated/floor/plating,
 /area/ship/manta/atmos)
 "PJ" = (
@@ -8708,7 +8708,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/teleporter)
 "Qf" = (
@@ -8731,7 +8731,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "Qh" = (
-/obj/machinery/atmospherics/binary/pump/on,
+/obj/machinery/atmospherics/component/binary/pump/on,
 /obj/effect/catwalk_plated/dark,
 /obj/structure/railing{
 	dir = 4
@@ -8864,7 +8864,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/teleporter)
 "Rg" = (
@@ -8924,7 +8924,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9008,7 +9008,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9187,7 +9187,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/atmos)
 "SI" = (
-/obj/machinery/atmospherics/unary/heat_exchanger{
+/obj/machinery/atmospherics/component/unary/heat_exchanger{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -9245,7 +9245,7 @@
 /area/ship/manta/hallways_aft)
 "SW" = (
 /obj/structure/bed/pod,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/hos,
@@ -9257,7 +9257,7 @@
 /area/ship/manta/barracks/bed_1)
 "SX" = (
 /obj/structure/bed/pod,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/hos,
@@ -9271,7 +9271,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/wood,
 /area/ship/manta/barracks/bed_1)
 "Ta" = (
@@ -9407,7 +9407,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/machinery/light_switch{
@@ -9418,7 +9418,7 @@
 /area/ship/manta/dock_star)
 "TB" = (
 /obj/structure/bed/pod,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/hos,
@@ -9426,7 +9426,7 @@
 	dir = 8;
 	pixel_x = 26
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -9508,7 +9508,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_y = -23
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/atom/movable/map_helper/airlock/sensor/int_sensor,
 /obj/effect/floor_decal/techfloor{
 	dir = 10
 	},
@@ -9626,7 +9626,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "UH" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
 "UI" = (
@@ -9849,7 +9849,7 @@
 /obj/item/melee/energy/sword,
 /obj/item/melee/energy/sword,
 /obj/structure/table/steel_reinforced,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9987,7 +9987,7 @@
 /turf/simulated/floor/wood,
 /area/ship/manta/barracks)
 "Wx" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -9997,7 +9997,7 @@
 /area/ship/manta/engine)
 "WE" = (
 /obj/structure/table/woodentable,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/item/pizzabox/meat,
@@ -10428,7 +10428,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -10567,7 +10567,7 @@
 /area/ship/manta/bridge)
 "YZ" = (
 /obj/machinery/door/airlock/external,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /obj/effect/floor_decal/techfloor,
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -10639,7 +10639,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -10675,7 +10675,7 @@
 /area/ship/manta/recreation)
 "ZH" = (
 /obj/structure/table/steel_reinforced,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Syndicate-Uplink"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -10719,7 +10719,7 @@
 /area/ship/manta/atmos)
 "ZV" = (
 /obj/structure/table/woodentable,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/item/card/id/syndicate,

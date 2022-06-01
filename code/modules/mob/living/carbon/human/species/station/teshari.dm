@@ -40,7 +40,7 @@
 	damage_mask	= 'icons/mob/human_races/masks/dam_mask_teshari.dmi'
 	blood_mask	= 'icons/mob/human_races/masks/blood_teshari.dmi'
 	damage_overlays	  = 'icons/mob/human_races/masks/dam_teshari.dmi'
-	suit_storage_icon = 'icons/mob/species/teshari/belt_mirror.dmi'
+	suit_storage_icon = 'icons/mob/clothing/species/teshari/belt_mirror.dmi'
 	icobase_tail = 1
 	color_mult	 = 1
 
@@ -63,7 +63,7 @@
 	ambiguous_genders = TRUE
 
 	spawn_flags	= SPECIES_CAN_JOIN
-	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 	bump_flag	= MONKEY
 	swap_flags	= MONKEY|SLIME|SIMPLE_ANIMAL
 	push_flags	= MONKEY|SLIME|SIMPLE_ANIMAL|ALIEN

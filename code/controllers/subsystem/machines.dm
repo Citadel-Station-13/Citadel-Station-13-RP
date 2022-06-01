@@ -14,7 +14,7 @@ SUBSYSTEM_DEF(machines)
 	name = "Machines"
 	priority = FIRE_PRIORITY_MACHINES
 	init_order = INIT_ORDER_MACHINES
-	flags = SS_KEEP_TIMING
+	subsystem_flags = SS_KEEP_TIMING
 	runlevels = RUNLEVEL_GAME|RUNLEVEL_POSTGAME
 
 	var/current_step = SSMACHINES_PIPENETS
@@ -35,7 +35,7 @@ SUBSYSTEM_DEF(machines)
 /datum/controller/subsystem/machines/Initialize(timeofday)
 	makepowernets()
 	admin_notice("<span class='danger'>Initializing atmos machinery.</span>", R_DEBUG)
-	setup_atmos_machinery(global.machines)
+	setup_atmos_machinery(GLOB.machines)
 	fire()
 	..()
 
@@ -72,12 +72,12 @@ SUBSYSTEM_DEF(machines)
 		machine.build_network()
 		CHECK_TICK
 
-	for(var/obj/machinery/atmospherics/unary/U in atmos_machines)
-		if(istype(U, /obj/machinery/atmospherics/unary/vent_pump))
-			var/obj/machinery/atmospherics/unary/vent_pump/T = U
+	for(var/obj/machinery/atmospherics/component/unary/U in atmos_machines)
+		if(istype(U, /obj/machinery/atmospherics/component/unary/vent_pump))
+			var/obj/machinery/atmospherics/component/unary/vent_pump/T = U
 			T.broadcast_status()
-		else if(istype(U, /obj/machinery/atmospherics/unary/vent_scrubber))
-			var/obj/machinery/atmospherics/unary/vent_scrubber/T = U
+		else if(istype(U, /obj/machinery/atmospherics/component/unary/vent_scrubber))
+			var/obj/machinery/atmospherics/component/unary/vent_scrubber/T = U
 			T.broadcast_status()
 		CHECK_TICK
 
@@ -101,7 +101,7 @@ SUBSYSTEM_DEF(machines)
 		src.current_run = global.pipe_networks.Copy()
 	//cache for sanic speed (lists are references anyways)
 	var/list/current_run = src.current_run
-	var/dt = (flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
+	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
 	while(current_run.len)
 		var/datum/pipe_network/PN = current_run[current_run.len]
 		current_run.len--
@@ -119,7 +119,7 @@ SUBSYSTEM_DEF(machines)
 		src.current_run = global.processing_machines.Copy()
 
 	var/list/current_run = src.current_run
-	var/dt = (flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
+	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
 	while(current_run.len)
 		var/obj/machinery/M = current_run[current_run.len]
 		current_run.len--

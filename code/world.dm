@@ -3,7 +3,7 @@
 //Try looking in game/world.dm
 /world
 	mob = /mob/new_player
-	turf = /turf/space
+	turf = /turf/space/basic
 	area = /area/space
 	view = "15x15"
 	cache_lifespan = 7

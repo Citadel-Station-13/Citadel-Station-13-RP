@@ -1,8 +1,7 @@
-import { round } from 'common/math';
 import { decodeHtmlEntities } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from "../backend";
-import { Box, Button, Dropdown, Flex, Icon, Input, LabeledList, ProgressBar, Section, Tabs, NoticeBox } from "../components";
+import { Box, Button, Dropdown, Flex, Icon, Input, LabeledList, Section, Tabs } from "../components";
 import { Window } from "../layouts";
 import { TemporaryNotice } from './common/TemporaryNotice';
 import { FullscreenNotice } from './common/FullscreenNotice';

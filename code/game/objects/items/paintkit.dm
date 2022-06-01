@@ -171,17 +171,17 @@
 		piece.desc = "It seems to be part of a [RIG.name]."
 		piece.icon_state = "[RIG.suit_state]"
 		if(istype(piece, /obj/item/clothing/shoes))
-			piece.icon = 'icons/mob/custom_items_rig_boots.dmi'
-			piece.icon_override = 'icons/mob/custom_items_rig_boots.dmi'
+			piece.icon = 'icons/mob/clothing/custom_items_rig_boots.dmi'
+			piece.icon_override = 'icons/mob/clothing/custom_items_rig_boots.dmi'
 		if(istype(piece, /obj/item/clothing/suit))
-			piece.icon = 'icons/mob/custom_items_rig_suit.dmi'
-			piece.icon_override = 'icons/mob/custom_items_rig_suit.dmi'
+			piece.icon = 'icons/mob/clothing/custom_items_rig_suit.dmi'
+			piece.icon_override = 'icons/mob/clothing/custom_items_rig_suit.dmi'
 		if(istype(piece, /obj/item/clothing/head))
-			piece.icon = 'icons/mob/custom_items_rig_helmet.dmi'
-			piece.icon_override = 'icons/mob/custom_items_rig_helmet.dmi'
+			piece.icon = 'icons/mob/clothing/custom_items_rig_helmet.dmi'
+			piece.icon_override = 'icons/mob/clothing/custom_items_rig_helmet.dmi'
 		if(istype(piece, /obj/item/clothing/gloves))
-			piece.icon = 'icons/mob/custom_items_rig_gloves.dmi'
-			piece.icon_override = 'icons/mob/custom_items_rig_gloves.dmi'
+			piece.icon = 'icons/mob/clothing/custom_items_rig_gloves.dmi'
+			piece.icon_override = 'icons/mob/clothing/custom_items_rig_gloves.dmi'
 	if(RIG.helmet && istype(RIG.helmet, /obj/item/clothing/head/helmet) && new_light_overlay)
 		var/obj/item/clothing/head/helmet/H = RIG.helmet
 		H.light_overlay = new_light_overlay
@@ -197,7 +197,7 @@
 		return
 	return ..()
 
-/obj/item/kit/suit/rig/debug/Initialize()
+/obj/item/kit/suit/rig/debug/Initialize(mapload)
 	. = ..()
 	set_info("debug suit", "This is a test", "debug", CUSTOM_ITEM_OBJ, CUSTOM_ITEM_MOB)
 

@@ -1,5 +1,5 @@
 /atom/movable/screen/click_catcher
-	icon = 'icons/screen/clickcatcher.dmi'
+	icon = 'icons/screen/rendering/clickcatcher.dmi'
 	icon_state = "catcher"
 	appearance_flags = TILE_BOUND | NO_CLIENT_COLOR | RESET_TRANSFORM | RESET_COLOR | RESET_ALPHA
 	plane = CLICKCATCHER_PLANE
@@ -9,8 +9,8 @@
 
 /*
 #define MAX_SAFE_BYOND_ICON_SCALE_TILES (MAX_SAFE_BYOND_ICON_SCALE_PX / world.icon_size)
-#define MAX_SAFE_BYOND_ICON_SCALE_PX (33 * 32)			//Not using world.icon_size on purpose.
-
+///Not using world.icon_size on purpose.
+#define MAX_SAFE_BYOND_ICON_SCALE_PX (33 * 32)
 /atom/movable/screen/click_catcher/proc/UpdateFill(view_size_x = 15, view_size_y = 15)
 	var/icon/newicon = icon('icons/mob/screen_gen.dmi', "catcher")
 	var/ox = min(MAX_SAFE_BYOND_ICON_SCALE_TILES, view_size_x)

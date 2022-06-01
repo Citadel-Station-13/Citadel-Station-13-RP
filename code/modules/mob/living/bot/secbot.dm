@@ -1,7 +1,9 @@
-#define SECBOT_WAIT_TIME	3		//Around number*2 real seconds to surrender.
-#define SECBOT_THREAT_ARREST 4		//threat level at which we decide to arrest someone
-#define SECBOT_THREAT_ATTACK 8		//threat level at which was assume immediate danger and attack right away
-
+///Around number*2 real seconds to surrender.
+#define SECBOT_WAIT_TIME	3
+///threat level at which we decide to arrest someone
+#define SECBOT_THREAT_ARREST 4
+///threat level at which was assume immediate danger and attack right away
+#define SECBOT_THREAT_ATTACK 8
 /datum/category_item/catalogue/technology/bot/secbot
 	name = "Bot - Securitron"
 	desc = "The Securitron is a proprietary support bot designed by NanoTrasen. \
@@ -47,7 +49,7 @@
 	var/list/threat_found_sounds = list('sound/voice/bcriminal.ogg', 'sound/voice/bjustice.ogg', 'sound/voice/bfreeze.ogg')
 	var/list/preparing_arrest_sounds = list('sound/voice/bgod.ogg', 'sound/voice/biamthelaw.ogg', 'sound/voice/bsecureday.ogg', 'sound/voice/bradio.ogg', 'sound/voice/bcreep.ogg')
 	var/list/fighting_sounds = list('sound/voice/biamthelaw.ogg', 'sound/voice/bradio.ogg', 'sound/voice/bjustice.ogg')
-//VOREStation Add - They don't like being pulled. This is going to fuck with slimesky, but meh.	//Screw you. Just screw you and your 'meh'
+// They don't like being pulled. This is going to fuck with slimesky, but meh.	//Screw you. Just screw you and your 'meh'
 /mob/living/bot/secbot/Life()
 	..()
 	if(health > 0 && on && pulledby)
@@ -61,7 +63,6 @@
 				UnarmedAttack(L)
 				say("Do not interfere with active law enforcement routines!")
 				GLOB.global_announcer.autosay("[src] was interfered with in <b>[get_area(src)]</b>, activating defense routines.", "[src]", "Security")
-//VOREStation Add End
 
 /datum/category_item/catalogue/technology/bot/secbot/beepsky
 	name = "Bot - Officer Beepsky"
@@ -264,7 +265,8 @@
 
 /mob/living/bot/secbot/resetTarget()
 	..()
-	UnregisterSignal(target, COMSIG_MOVABLE_MOVED)
+	if(target)
+		UnregisterSignal(target, COMSIG_MOVABLE_MOVED)
 	awaiting_surrender = 0
 	attacked = FALSE
 	walk_to(src, 0)

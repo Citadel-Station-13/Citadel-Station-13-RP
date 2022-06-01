@@ -163,7 +163,7 @@
 /area/shuttle/screebarge/fore)
 "av" = (
 /obj/machinery/power/smes/buildable{
-	charge = 5e+006
+	charge = 5e+003
 	},
 /obj/structure/cable/cyan,
 /turf/simulated/floor/reinforced,
@@ -473,7 +473,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/screebarge/aft)
 "bm" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	icon_state = "map_off";
 	dir = 4
 	},
@@ -497,7 +497,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/screebarge/aft)
 "bo" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	icon_state = "map_off";
 	dir = 8
 	},
@@ -580,7 +580,7 @@
 /turf/simulated/wall/shull,
 /area/shuttle/screebarge/aft)
 "bA" = (
-/obj/machinery/atmospherics/unary/engine{
+/obj/machinery/atmospherics/component/unary/engine{
 	dir = 1
 	},
 /turf/simulated/shuttle/plating/airless/carry,

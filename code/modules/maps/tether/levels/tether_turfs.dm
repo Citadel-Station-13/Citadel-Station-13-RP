@@ -2,10 +2,6 @@
 VIRGO3B_TURF_CREATE(/turf/simulated/open)
 /turf/simulated/open/virgo3b
 	edge_blending_priority = 0.5 //Turfs which also have e_b_p and higher than this will plop decorative edges onto this turf
-/turf/simulated/open/virgo3b/Initialize(mapload)
-	. = ..()
-	if(outdoors)
-		SSplanets.addTurf(src)
 
 VIRGO3B_TURF_CREATE(/turf/simulated/floor)
 
@@ -44,10 +40,7 @@ VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 
 VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/grass/sif)
 /turf/simulated/floor/outdoors/grass/sif
-	turf_layers = list(
-		/turf/simulated/floor/outdoors/rocks/virgo3b,
-		/turf/simulated/floor/outdoors/dirt/virgo3b
-		)
+	baseturfs = /turf/simulated/floor/outdoors/dirt/virgo3b
 
 // Overriding these for the sake of submaps that use them on other planets.
 // This means that mining on tether base and space is oxygen-generating, but solars and mining should use the virgo3b subtype
@@ -101,8 +94,7 @@ VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
 			MAT_LEAD = 1))
 	if(mineral_name && (mineral_name in GLOB.ore_data))
 		mineral = GLOB.ore_data[mineral_name]
-		if(flags & INITIALIZED)
-			UpdateMineral()
+		UpdateMineral()
 
 turf/simulated/mineral/rich/make_ore(var/rare_ore)
 	if(mineral || ignore_mapgen)
@@ -134,8 +126,7 @@ turf/simulated/mineral/rich/make_ore(var/rare_ore)
 			MAT_VERDANTIUM = 1))
 	if(mineral_name && (mineral_name in GLOB.ore_data))
 		mineral = GLOB.ore_data[mineral_name]
-		if(flags & INITIALIZED)
-			UpdateMineral()
+		UpdateMineral()
 
 //Unsimulated
 /turf/unsimulated/mineral/virgo3b
@@ -175,8 +166,7 @@ turf/simulated/mineral/rich/make_ore(var/rare_ore)
 			MAT_VERDANTIUM = 1))
 	if(mineral_name && (mineral_name in GLOB.ore_data))
 		mineral = GLOB.ore_data[mineral_name]
-		if(flags & INITIALIZED)
-			UpdateMineral()
+		UpdateMineral()
 
 // Some turfs to make floors look better in centcom tram station.
 
@@ -231,9 +221,8 @@ turf/simulated/mineral/rich/make_ore(var/rare_ore)
 /turf/simulated/sky/virgo3b
 	color = "#FFBBBB"
 
-/turf/simulated/sky/virgo3b/Initialize()
+/turf/simulated/sky/virgo3b/Initialize(mapload)
 	. = ..()
-	SSplanets.addTurf(src)
 	set_light(2, 2, "#FFBBBB")
 
 /turf/simulated/sky/virgo3b/north

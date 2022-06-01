@@ -1,4 +1,4 @@
-/obj/effect/landmark/map_data
+/atom/movable/landmark/map_data
 	name = "Unknown"
 	desc = "An unknown location."
 	invisibility = 101

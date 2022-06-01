@@ -72,7 +72,7 @@ var/list/ai_verbs_default = list(
 	var/datum/trackable/track = null
 	var/last_announcement = ""
 	var/control_disabled = 0
-	var/datum/announcement/priority/announcement
+	var/datum/legacy_announcement/priority/announcement
 	var/obj/machinery/ai_powersupply/psupply = null // Backwards reference to AI's powersupply object.
 	var/hologram_follow = 1 //This is used for the AI eye, to determine if a holopad's hologram should follow it or not.
 	var/is_dummy = 0 //Used to prevent dummy AIs from spawning with communicators.
@@ -221,13 +221,13 @@ var/list/ai_verbs_default = list(
 
 	to_chat(src, radio_text)
 
-	// Vorestation Edit: Meta Info for AI's. Mostly used for Holograms
-	if (client)
+	// Meta Info for AI's. Mostly used for Holograms.
+	if(client)
 		var/meta_info = client.prefs.metadata
-		if (meta_info)
+		if(meta_info)
 			ooc_notes = meta_info
 
-	if (malf && !(mind in malf.current_antagonists))
+	if(malf && !(mind in malf.current_antagonists))
 		show_laws()
 		to_chat(src, "<b>These laws may be changed by other players, or by you being the traitor.</b>")
 
@@ -412,7 +412,7 @@ var/list/ai_verbs_default = list(
 
 	// hack to display shuttle timer
 	if(SSemergencyshuttle.online())
-		var/obj/machinery/computer/communications/C = locate() in machines
+		var/obj/machinery/computer/communications/C = locate() in GLOB.machines
 		if(C)
 			C.post_status("shuttle")
 
@@ -465,12 +465,10 @@ var/list/ai_verbs_default = list(
 	..()
 
 /mob/living/silicon/ai/Topic(href, href_list)
-	if(..()) //VOREstation edit: So the AI can actually can actually get its OOC prefs read
+	if(..()) // So the AI can actually can actually get its OOC prefs read
 		return
 	if(usr != src)
 		return
-	/*if(..()) // <------ MOVED FROM HERE
-		return*/
 	if (href_list["mach_close"])
 		if (href_list["mach_close"] == "aialerts")
 			viewalerts = 0
@@ -478,10 +476,9 @@ var/list/ai_verbs_default = list(
 		unset_machine()
 		src << browse(null, t1)
 	if (href_list["switchcamera"])
-		switchCamera(locate(href_list["switchcamera"])) in cameranet.cameras
+		switchCamera(locate(href_list["switchcamera"])) in GLOB.cameranet.cameras
 	if (href_list["showalerts"])
 		subsystem_alarm_monitor()
-	//Carn: holopad requests
 	if (href_list["jumptoholopad"])
 		var/obj/machinery/hologram/holopad/H = locate(href_list["jumptoholopad"])
 		if(stat == CONSCIOUS)
@@ -527,7 +524,7 @@ var/list/ai_verbs_default = list(
 		return
 
 	var/list/cameralist = new()
-	for (var/obj/machinery/camera/C in cameranet.cameras)
+	for (var/obj/machinery/camera/C in GLOB.cameranet.cameras)
 		if(!C.can_use())
 			continue
 		var/list/tempnetwork = difflist(C.network,restricted_camera_networks,1)
@@ -551,7 +548,7 @@ var/list/ai_verbs_default = list(
 
 	src.network = network
 
-	for(var/obj/machinery/camera/C in cameranet.cameras)
+	for(var/obj/machinery/camera/C in GLOB.cameranet.cameras)
 		if(!C.can_use())
 			continue
 		if(network in C.network)
@@ -815,11 +812,10 @@ var/list/ai_verbs_default = list(
 	set desc = "Toggles hologram movement based on moving with your virtual eye."
 
 	hologram_follow = !hologram_follow
-	//VOREStation Add - Required to stop movement because we use walk_to(wards) in hologram.dm
+	// Required to stop movement because we use walk_to(wards) in hologram.dm
 	if(holo)
 		var/obj/effect/overlay/aiholo/hologram = holo.masters[src]
 		walk(hologram, 0)
-	//VOREStation Add End
 	to_chat(usr, "Your hologram will [hologram_follow ? "follow" : "no longer follow"] you now.")
 
 

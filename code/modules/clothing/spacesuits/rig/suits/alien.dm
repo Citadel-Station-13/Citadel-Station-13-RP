@@ -48,7 +48,7 @@
 	icon_state = "vox_rig"
 	armor = list(melee = 60, bullet = 50, laser = 40, energy = 15, bomb = 30, bio = 100, rad = 50)
 	flags = PHORONGUARD
-	item_flags = THICKMATERIAL
+	clothing_flags = THICKMATERIAL
 	siemens_coefficient = 0.2
 	offline_slowdown = 5
 	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit)
@@ -68,7 +68,7 @@
 	name = "talons"
 	species_restricted = list(SPECIES_VOX)
 	sprite_sheets = list(
-		SPECIES_VOX = 'icons/mob/species/vox/shoes.dmi'
+		SPECIES_VOX = 'icons/mob/clothing/species/vox/shoes.dmi'
 		)
 
 /obj/item/clothing/suit/space/rig/vox
@@ -78,7 +78,7 @@
 	siemens_coefficient = 0
 	species_restricted = list(SPECIES_VOX)
 	sprite_sheets = list(
-		SPECIES_VOX = 'icons/mob/species/vox/gloves.dmi'
+		SPECIES_VOX = 'icons/mob/clothing/species/vox/gloves.dmi'
 		)
 
 /obj/item/rig/vox/carapace
@@ -133,7 +133,11 @@
 	offline_slowdown = 0
 	seal_delay = 1
 	var/mob/living/carbon/human/myprotean
-	initial_modules = list(/obj/item/rig_module/power_sink)
+	initial_modules = list(
+		/obj/item/rig_module/power_sink,
+		/obj/item/rig_module/device/rigwelder, // Almost forgot these, but who uses blobsuits for their intended purpose anyways?
+		/obj/item/rig_module/device/toolset    // I did say I was going to do it
+		)
 
 	helm_type = /obj/item/clothing/head/helmet/space/rig/protean
 	boot_type = /obj/item/clothing/shoes/magboots/rig/protean

@@ -1,5 +1,4 @@
-#define CYBORG_POWER_USAGE_MULTIPLIER 2 // Multiplier for amount of power cyborgs use.
-
+/// Multiplier for amount of power cyborgs use.
 /datum/category_item/catalogue/fauna/silicon/robot
 	name = "Silicons - Robot"
 	desc = "The most common form of Silicon encountered on the Frontier, \
@@ -223,24 +222,17 @@
 		lawsync()
 		photosync()
 
-/mob/living/silicon/robot/drain_power(var/drain_check, var/surge, var/amount = 0)
-
-	if(drain_check)
-		return 1
-
-	if(!cell || !cell.charge)
+/mob/living/silicon/robot/drain_energy(datum/actor, amount, flags)
+	if(!cell)
 		return 0
 
-	// Actual amount to drain from cell, using CELLRATE
-	var/cell_amount = amount * CELLRATE
+	if(!TIMER_COOLDOWN_CHECK(src, COOLDOWN_POWER_DRAIN_WARNING))
+		TIMER_COOLDOWN_START(src, COOLDOWN_POWER_DRAIN_WARNING, 2 SECONDS)
+		to_chat(src, SPAN_DANGER("Warning: Abnormal usage on power channel [rand(11, 29)] detected!"))
+	return cell.drain_energy(actor, amount, flags)
 
-	if(cell.charge > cell_amount)
-		// Spam Protection
-		if(prob(10))
-			to_chat(src, "<span class='danger'>Warning: Unauthorized access through power channel [rand(11,29)] detected!</span>")
-		cell.use(cell_amount)
-		return amount
-	return 0
+/mob/living/silicon/robot/can_drain_energy(datum/actor, flags)
+	return TRUE
 
 // setup the PDA and its name
 /mob/living/silicon/robot/proc/setup_PDA()
@@ -312,7 +304,7 @@
 		return
 
 	var/module_type = GLOB.robot_modules[modtype]
-	transform_with_anim()	//VOREStation edit: sprite animation
+	transform_with_anim()
 	new module_type(src)
 
 	hands.icon_state = lowertext(modtype)
@@ -364,7 +356,7 @@
 			flavor_text = module_flavour
 		else
 			flavor_text = client.prefs.flavour_texts_robot["Default"]
-		// Vorestation Edit: and meta info
+		// Meta info
 		var/meta_info = client.prefs.metadata
 		if (meta_info)
 			ooc_notes = meta_info
@@ -408,7 +400,7 @@
 	lights_on = !lights_on
 	to_chat(usr, "You [lights_on ? "enable" : "disable"] your integrated light.")
 	handle_light()
-	updateicon() //VOREStation Add - Since dogborgs have sprites for this
+	updateicon()
 
 /mob/living/silicon/robot/verb/self_diagnosis_verb()
 	set category = "Robot Commands"
@@ -761,7 +753,7 @@
 	return
 
 /mob/living/silicon/robot/proc/module_reset()
-	transform_with_anim() //VOREStation edit: sprite animation
+	transform_with_anim()
 	uneq_all()
 	modtype = initial(modtype)
 	hands.icon_state = initial(hands.icon_state)
@@ -1107,18 +1099,18 @@
 			icontype = module_sprites[1]
 	else
 		icontype = input("Select an icon! [triesleft ? "You have [triesleft] more chance\s." : "This is your last try."]", "Robot Icon", icontype, null) in module_sprites
-		if(notransform)				//VOREStation edit start: sprite animation
+		if(notransform)
 			to_chat(src, "Your current transformation has not finished yet!")
 			choose_icon(icon_selection_tries, module_sprites)
 			return
 		else
-			transform_with_anim()	//VOREStation edit end: sprite animation
+			transform_with_anim()
 
 	if(icontype == "Custom")
 		icon = CUSTOM_ITEM_SYNTH
 	else // This is to fix an issue where someone with a custom borg sprite chooses a non-custom sprite and turns invisible.
-		vr_sprite_check() //VOREStation Edit
-	icon_state = module_sprites[icontype]
+		vr_sprite_check()
+		icon_state = module_sprites[icontype]
 	updateicon()
 
 	if (module_sprites.len > 1 && triesleft >= 1 && client)
@@ -1158,7 +1150,7 @@
 		return 0
 
 	var/power_use = amount * CYBORG_POWER_USAGE_MULTIPLIER
-	if(cell.checked_use(CELLRATE * power_use))
+	if(cell.checked_use(DYNAMIC_W_TO_CELL_UNITS(power_use, 1)))
 		used_power_this_tick += power_use
 		return 1
 	return 0

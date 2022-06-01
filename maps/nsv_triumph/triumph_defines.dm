@@ -116,7 +116,7 @@
 
 	bot_patrolling = FALSE
 
-	allowed_spawns = list("Shuttle Station","Gateway","Cryogenic Storage","Cyborg Storage","Beruang Trading Corp Cryo")
+	allowed_spawns = list("Shuttle Bay","Gateway","Cryogenic Storage","Cyborg Storage","Beruang Trading Corp Cryo")
 	spawnpoint_died = /datum/spawnpoint/shuttle
 	spawnpoint_left = /datum/spawnpoint/shuttle
 	spawnpoint_stayed = /datum/spawnpoint/cryo
@@ -187,11 +187,14 @@
 	return 1
 
 // For making the 4-in-1 holomap, we calculate some offsets
-#define TRIUMPH_MAP_SIZE 140 // Width and height of compiled in triumph z levels.
-#define TRIUMPH_HOLOMAP_CENTER_GUTTER 40 // 40px central gutter between columns
-#define TRIUMPH_HOLOMAP_MARGIN_X ((HOLOMAP_ICON_SIZE - (2*TRIUMPH_MAP_SIZE) - TRIUMPH_HOLOMAP_CENTER_GUTTER) / 2) // 100
-#define TRIUMPH_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*TRIUMPH_MAP_SIZE)) / 2) // 60
-
+/// Width and height of compiled in triumph z levels.
+#define TRIUMPH_MAP_SIZE 140
+/// 40px central gutter between columns
+#define TRIUMPH_HOLOMAP_CENTER_GUTTER 40
+/// 100
+#define TRIUMPH_HOLOMAP_MARGIN_X ((HOLOMAP_ICON_SIZE - (2*TRIUMPH_MAP_SIZE) - TRIUMPH_HOLOMAP_CENTER_GUTTER) / 2)
+/// 60
+#define TRIUMPH_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*TRIUMPH_MAP_SIZE)) / 2)
 // We have a bunch of stuff common to the station z levels
 /datum/map_z_level/triumph/ship
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT

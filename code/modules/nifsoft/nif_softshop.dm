@@ -38,11 +38,11 @@
 
 /obj/machinery/vending/nifsoft_shop/power_change()
 	..()
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		icon_state = "[initial(icon_state)]-broken"
 		ar_image_holder.alpha = 0
 	else
-		if(!(stat & NOPOWER))
+		if(!(machine_stat & NOPOWER))
 			icon_state = initial(icon_state)
 			ar_image_holder.alpha = 255
 		else
@@ -51,7 +51,7 @@
 				ar_image_holder.alpha = 0
 
 /obj/machinery/vending/nifsoft_shop/malfunction()
-	stat |= BROKEN
+	machine_stat |= BROKEN
 	icon_state = "[initial(icon_state)]-broken"
 	ar_image_holder.alpha = 0
 
@@ -112,7 +112,7 @@
 
 //Had to override this too
 /obj/machinery/vending/nifsoft_shop/Topic(href, href_list)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	if(usr.stat || usr.restrained())
 		return

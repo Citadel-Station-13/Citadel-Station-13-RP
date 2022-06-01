@@ -26,14 +26,14 @@ Contains helper procs for airflow, handled in /connection_group.
 	return
 
 /mob/living/carbon/human/airflow_stun()
-	if(shoes && (shoes.item_flags & NOSLIP))
+	if(shoes && (shoes.clothing_flags & NOSLIP))
 		to_chat(src, "<span class='notice'>Air suddenly rushes past you!</span>")
 		return 0
 	..()
 
 /atom/movable/proc/check_airflow_movable(n)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/dense_pressure, dense_pressure)
-	if(!simulated)
+	if(flags & AF_ABSTRACT)
 		return 0
 
 	if(anchored && !ismob(src))
@@ -90,7 +90,7 @@ Contains helper procs for airflow, handled in /connection_group.
 	if(buckled)
 		return 0
 	var/obj/item/shoes = get_equipped_item(slot_shoes)
-	if(istype(shoes) && (shoes.item_flags & NOSLIP))
+	if(istype(shoes) && (shoes.clothing_flags & NOSLIP))
 		return 0
 	return 1
 
@@ -159,6 +159,6 @@ Contains helper procs for airflow, handled in /connection_group.
 	. = list()
 	for(var/turf/T in contents)
 		for(var/atom/movable/A in T)
-			if(!A.simulated || A.anchored || istype(A, /obj/effect) || istype(A, /mob/observer))
+			if((A.flags & AF_ABSTRACT) || A.anchored || istype(A, /obj/effect) || istype(A, /mob/observer))
 				continue
 			. += A

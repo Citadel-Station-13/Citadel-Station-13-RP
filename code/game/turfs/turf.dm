@@ -5,6 +5,10 @@
 	plane = TURF_PLANE
 	luminosity = 1
 	level = 1
+
+	/// turf flags
+	var/turf_flags = NONE
+
 	var/holy = 0
 
 	// Atmospherics / ZAS Environmental
@@ -22,7 +26,24 @@
 	/// Does this turf contain air/let air through?
 	var/blocks_air = FALSE
 
+	/**
+	 * Baseturfs
+	 */
+	// baseturfs can be either a list or a single turf type.
+	// In class definition like here it should always be a single type.
+	// A list will be created in initialization that figures out the baseturf's baseturf etc.
+	// In the case of a list it is sorted from bottom layer to top.
+	// This shouldn't be modified directly, use the helper procs.
+	var/list/baseturfs = /turf/baseturf_bottom
+	/// are we mid changeturf?
 	var/changing_turf = FALSE
+	// End
+
+	/**
+	 * Automata
+	 */
+	/// acted automata - automata associated to power, act_cross() will be called when something enters us while this is set
+	var/list/acting_automata
 
 	/// Icon-smoothing variable to map a diagonal wall corner with a fixed underlay.
 	var/list/fixed_underlay = null
@@ -40,6 +61,9 @@
 	var/movement_cost = 0
 
 	var/list/footstep_sounds = null
+
+	// Outdoors var determines if the game should consider the turf to be 'outdoors', which controls certain things such as weather effects.
+	var/outdoors = FALSE
 
 	/// If true, most forms of teleporting to or from this turf tile will fail.
 	var/block_tele = FALSE
@@ -68,7 +92,9 @@
 	flags |= INITIALIZED
 
 	// by default, vis_contents is inherited from the turf that was here before
-	vis_contents.Cut()
+	vis_contents.len = 0
+
+	assemble_baseturfs()
 
 	//atom color stuff
 	if(color)
@@ -95,8 +121,6 @@
 	//Pathfinding related
 	if(movement_cost && pathweight == 1)	// This updates pathweight automatically.
 		pathweight = movement_cost
-
-	ComponentInitialize()
 
 	return INITIALIZE_HINT_NORMAL
 
@@ -357,7 +381,7 @@
 /turf/rcd_act(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	if(passed_mode == RCD_FLOORWALL)
 		to_chat(user, SPAN_NOTICE("You build a floor."))
-		ChangeTurf(/turf/simulated/floor/airless, preserve_outdoors = TRUE)
+		PlaceOnTop(/turf/simulated/floor, flags = CHANGETURF_INHERIT_AIR|CHANGETURF_PRESERVE_OUTDOORS)
 		return TRUE
 	return FALSE
 

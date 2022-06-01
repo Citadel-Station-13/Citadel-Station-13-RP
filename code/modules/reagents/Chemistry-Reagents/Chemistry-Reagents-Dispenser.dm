@@ -105,7 +105,7 @@
 	if(alien == IS_DIONA)
 		strength_mod = 0
 	if(alien == IS_SLIME)
-		strength_mod *= 2 // VOREStation Edit - M.adjustToxLoss(removed)
+		strength_mod *= 2
 	if(alien == IS_ALRAUNE)
 		if(prob(5))
 			to_chat(M, "<span class='danger'>You feel your leaves start to wilt.</span>")
@@ -155,7 +155,7 @@
 	if(alien == IS_DIONA)
 		strength_mod = 0
 	if(alien == IS_SLIME)
-		strength_mod *= 2 // VOREStation Edit - M.adjustToxLoss(removed * 2)
+		strength_mod *= 2
 	var/is_vampire = M.species.is_vampire
 	if(is_vampire)
 		handle_vampire(M, alien, removed, is_vampire)

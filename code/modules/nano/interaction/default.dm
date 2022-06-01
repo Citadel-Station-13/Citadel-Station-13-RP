@@ -50,7 +50,7 @@
 	// If we're installed in a chassi, rather than transfered to an inteliCard or other container, then check if we have camera view
 	if(is_in_chassis())
 		//stop AIs from leaving windows open and using then after they lose vision
-		if(cameranet && !cameranet.checkTurfVis(get_turf(src_object)))
+		if(GLOB.cameranet && !GLOB.cameranet.checkTurfVis(get_turf(src_object)))
 			return UI_CLOSE
 		return UI_INTERACTIVE
 	else if(get_dist(src_object, src) <= client.view)	// View does not return what one would expect while installed in an inteliCard

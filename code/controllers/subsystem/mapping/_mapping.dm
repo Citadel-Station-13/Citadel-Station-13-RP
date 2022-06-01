@@ -5,7 +5,7 @@ GLOBAL_VAR_INIT(used_engine, "None")
 SUBSYSTEM_DEF(mapping)
 	name = "Mapping"
 	init_order = INIT_ORDER_MAPPING
-	flags = SS_NO_FIRE
+	subsystem_flags = SS_NO_FIRE
 
 	var/list/areas_in_z = list()
 
@@ -45,7 +45,7 @@ SUBSYSTEM_DEF(mapping)
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
 	HACK_LoadMapConfig()
-	if(subsystem_initialized)
+	if(initialized)
 		return
 	if(config.defaulted)
 		var/old_config = config
@@ -197,7 +197,7 @@ SUBSYSTEM_DEF(mapping)
 
 
 /datum/controller/subsystem/mapping/proc/wipe_reservations(wipe_safety_delay = 100)
-	if(clearing_reserved_turfs || !subsystem_initialized)			//in either case this is just not needed.
+	if(clearing_reserved_turfs || !initialized)			//in either case this is just not needed.
 		return
 	clearing_reserved_turfs = TRUE
 //	SSshuttle.transit_requesters.Cut()
@@ -267,9 +267,9 @@ SUBSYSTEM_DEF(mapping)
 	var/block = block(A, B)
 	for(var/t in block)
 		// No need to empty() these, because it's world init and they're
-		// already /turf/open/space/basic.
+		// already /turf/space/basic.
 		var/turf/T = t
-		T.flags |= UNUSED_RESERVATION_TURF
+		T.turf_flags |= UNUSED_RESERVATION_TURF
 	unused_turfs["[z]"] = block
 	reservation_ready["[z]"] = TRUE
 	clearing_reserved_turfs = FALSE
@@ -280,13 +280,13 @@ SUBSYSTEM_DEF(mapping)
 		T.empty(RESERVED_TURF_TYPE, RESERVED_TURF_TYPE, null, TRUE)
 		LAZYINITLIST(unused_turfs["[T.z]"])
 		unused_turfs["[T.z]"] |= T
-		T.flags |= UNUSED_RESERVATION_TURF
+		T.turf_flags |= UNUSED_RESERVATION_TURF
 		GLOB.areas_by_type[world.area].contents += T
 		CHECK_TICK
 
 //DO NOT CALL THIS PROC DIRECTLY, CALL wipe_reservations().
 /datum/controller/subsystem/mapping/proc/do_wipe_turf_reservations()
-	UNTIL(subsystem_initialized)							//This proc is for AFTER init, before init turf reservations won't even exist and using this will likely break things.
+	UNTIL(initialized)							//This proc is for AFTER init, before init turf reservations won't even exist and using this will likely break things.
 	for(var/i in turf_reservations)
 		var/datum/turf_reservation/TR = i
 		if(!QDELETED(TR))
@@ -304,16 +304,16 @@ SUBSYSTEM_DEF(mapping)
 
 //
 // Mapping subsystem handles initialization of random map elements at server start
-// On VOREStation that means loading our random roundstart engine!
+// For us that means loading our random roundstart engine!
 //
 /datum/controller/subsystem/mapping
 	var/list/map_templates = list()
 	var/dmm_suite/maploader = null
-	var/obj/effect/landmark/engine_loader/engine_loader
+	var/atom/movable/landmark/engine_loader/engine_loader
 	var/list/shelter_templates = list()
 
 /datum/controller/subsystem/mapping/Recover()
-	flags |= SS_NO_INIT // Make extra sure we don't initialize twice.
+	subsystem_flags |= SS_NO_INIT // Make extra sure we don't initialize twice.
 	shelter_templates = SSmapping.shelter_templates
 
 /datum/controller/subsystem/mapping/proc/load_map_templates()

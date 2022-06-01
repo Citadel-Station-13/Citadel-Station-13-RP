@@ -1,16 +1,19 @@
 /**
+ *! Copyright (c) 2020 Aleksej Komarov
+ *! SPDX-License-Identifier: MIT
+ */
+
+/**
  * tgui subsystem
  *
  * Contains all tgui state and subsystem code.
  *
- * Copyright (c) 2020 Aleksej Komarov
- * SPDX-License-Identifier: MIT
  */
 
 SUBSYSTEM_DEF(tgui)
 	name = "tgui"
 	wait = 9
-	flags = SS_NO_INIT
+	subsystem_flags = SS_NO_INIT
 	priority = FIRE_PRIORITY_TGUI
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
 
@@ -25,6 +28,10 @@ SUBSYSTEM_DEF(tgui)
 
 /datum/controller/subsystem/tgui/PreInit()
 	basehtml = file2text('tgui/public/tgui.html')
+	// Inject inline polyfills
+	var/polyfill = file2text('tgui/public/tgui-polyfill.min.js')
+	polyfill = "<script>\n[polyfill]\n</script>"
+	basehtml = replacetextEx(basehtml, "<!-- tgui:inline-polyfill -->", polyfill)
 
 /datum/controller/subsystem/tgui/Shutdown()
 	close_all_uis()

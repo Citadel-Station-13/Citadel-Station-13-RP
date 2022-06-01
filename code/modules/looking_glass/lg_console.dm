@@ -19,7 +19,7 @@
 
 	var/lg_id = "change_me"
 
-/obj/machinery/computer/looking_glass/Initialize()
+/obj/machinery/computer/looking_glass/Initialize(mapload)
 	. = ..()
 	for(var/area/looking_glass/lga in world)
 		if(lga.lg_id == lg_id)
@@ -162,7 +162,7 @@
 	..()
 
 /obj/machinery/computer/looking_glass/power_change()
-	var/oldstat = stat
+	var/oldstat = machine_stat
 	..()
-	if (stat != oldstat && (stat & NOPOWER))
+	if (machine_stat != oldstat && (machine_stat & NOPOWER))
 		unload_program()

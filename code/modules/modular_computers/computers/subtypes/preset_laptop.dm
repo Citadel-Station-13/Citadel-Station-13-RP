@@ -47,7 +47,6 @@
 	battery_module = new/obj/item/computer_hardware/battery_module/super(src)
 	battery_module.charge_to_full()
 
-//VOREStation Add Start
 /obj/item/modular_computer/laptop/preset/custom_loadout/rugged
 	name = "rugged laptop computer"
 	desc = "A rugged portable computer."
@@ -65,4 +64,3 @@
 	card_slot = new/obj/item/computer_hardware/card_slot(src)
 	battery_module = new/obj/item/computer_hardware/battery_module/super(src)
 	battery_module.charge_to_full()
-//VOREStation Add End

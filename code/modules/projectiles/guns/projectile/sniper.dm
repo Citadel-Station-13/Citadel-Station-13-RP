@@ -93,8 +93,8 @@
 	magazine_type = /obj/item/ammo_magazine/m762svd
 	allowed_magazines = list(/obj/item/ammo_magazine/m762svd)
 
-/obj/item/gun/projectile/SVD/update_icon()
-	..()
+/obj/item/gun/projectile/SVD/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = "SVD"
 	else
@@ -115,8 +115,8 @@
 	wielded_item_state = "svd-taj-wielded"
 
 
-/obj/item/gun/projectile/SVD/taj/update_icon()
-	..()
+/obj/item/gun/projectile/SVD/taj/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = "SVD-taj"
 	else

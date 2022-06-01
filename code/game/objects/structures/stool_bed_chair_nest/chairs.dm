@@ -1,7 +1,7 @@
-/obj/structure/bed/chair	//YES, chairs are a type of bed, which are a type of stool. This works, believe me.	-Pete
+/obj/structure/bed/chair //YES, chairs are a type of bed, which are a type of stool. This works, believe me. -Pete //TODO: Not this.
 	name = "chair"
 	desc = "You sit in this. Either by will or force."
-	icon = 'icons/obj/furniture_vr.dmi' //VOREStation Edit - Using Eris furniture
+	icon = 'icons/obj/furniture_vr.dmi' // Using Eris furniture //TODO: Ew how about not.
 	icon_state = "chair_preview"
 	color = "#666666"
 	base_icon = "chair"
@@ -17,12 +17,12 @@
 	. = ..()
 	update_layer()
 
-/obj/structure/bed/chair/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/bed/chair/attackby(obj/item/W, mob/user)
 	..()
 	if(!padding_material && istype(W, /obj/item/assembly/shock_kit))
 		var/obj/item/assembly/shock_kit/SK = W
 		if(!SK.status)
-			to_chat(user, "<span class='notice'>\The [SK] is not ready to be attached!</span>")
+			to_chat(user, SPAN_NOTICE("\The [SK] is not ready to be attached!"))
 			return
 		user.drop_item()
 		var/obj/structure/bed/chair/e_chair/E = new (src.loc, material.name)
@@ -33,7 +33,7 @@
 		SK.master = E
 		qdel(src)
 
-/obj/structure/bed/chair/attack_tk(mob/user as mob)
+/obj/structure/bed/chair/attack_tk(mob/user)
 	if(has_buckled_mobs())
 		..()
 	else
@@ -406,8 +406,13 @@
 	base_icon = "pewmiddle"
 	icon_state = "pewmiddle"
 
-/obj/structure/bed/chair/pew/Initialize(mapload, material_key)
-	return ..(mapload, "wood")
+
+/obj/structure/bed/chair/pew/Initialize(mapload, new_material)
+	. = ..(mapload)
+	if(!new_material)
+		new_material = MAT_WOOD
+	material = get_material_by_name(new_material)
+	update_icon()
 
 /obj/structure/bed/chair/pew/left
 	icon_state = "pewend_left"

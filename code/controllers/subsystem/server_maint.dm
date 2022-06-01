@@ -3,7 +3,7 @@
 SUBSYSTEM_DEF(server_maint)
 	name = "Server Tasks"
 	wait = 6
-	flags = SS_POST_FIRE_TIMING
+	subsystem_flags = SS_POST_FIRE_TIMING
 	priority = FIRE_PRIORITY_SERVER_MAINT
 	init_order = INIT_ORDER_SERVER_MAINT
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
@@ -83,5 +83,16 @@ SUBSYSTEM_DEF(server_maint)
 	if(tgsversion)
 		SSblackbox.record_feedback("text", "server_tools", 1, tgsversion)
 */
+
+/datum/controller/subsystem/server_maint/proc/UpdateHubStatus()
+	if(!CONFIG_GET(flag/hub) || !CONFIG_GET(number/max_hub_pop))
+		return FALSE //no point, hub / auto hub controls are disabled
+
+	var/max_pop = CONFIG_GET(number/max_hub_pop)
+
+	if(GLOB.clients.len > max_pop)
+		world.update_hub_visibility(FALSE)
+	else
+		world.update_hub_visibility(TRUE)
 
 #undef PING_BUFFER_TIME

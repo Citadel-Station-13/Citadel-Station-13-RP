@@ -1,8 +1,24 @@
-/*
-	Datum-based species. Should make for much cleaner and easier to maintain race code.
-*/
-
+/**
+ * Species Datums
+ *
+ * They are globally cached by typepath. This is out of necessity, because unlike things like movespeed modifiers,
+ * species are always assumed to be variable.
+ *
+ * Mob set_species supports either a datum or a typepath. Mobs, upon receiving a typepath, will make their own copy for modification.
+ *
+ * Mob species var should **never** be the global copy.
+ *
+ * Unfortunately, until we decide how we want to refactor species and humans proper,
+ * we're stuck doing the following:
+ * - Species procs will all be static with the template of (H, ...) where H is the human it's ticking on
+ * - **New species are allowed to have instance variables, like proteans using this for storage**, since species are no longer actually static cached copies
+ * - **New species are allowed to use these instance variables.** TODO: unified tgui for species ability control, ability datums/actions
+ * - A global cache of species by typepath will still be maintained for "static" usages of these datums, like for preferences rendering.
+ */
 /datum/species
+//! ## Intrinsics
+	/// abstract type
+	var/abstract_type = /datum/species
 
 //! ## Descriptors and strings.
 	/// Species name.
@@ -25,7 +41,7 @@
 	/// The icon_state used inside OnFire.dmi for when on fire.
 	var/fire_icon_state = "humanoid"
 	/// Icons used for worn items in suit storage slot.
-	var/suit_storage_icon = 'icons/mob/belt_mirror.dmi'
+	var/suit_storage_icon = 'icons/mob/clothing/belt_mirror.dmi'
 
 //! ## Damage overlay and masks.
 	var/damage_overlays = 'icons/mob/human_races/masks/dam_human.dmi'
@@ -52,8 +68,6 @@
 	/// Makes the icon taller/shorter.
 	var/icon_scale_y = 1
 
-	/// Used for mob icon cache string.
-	var/race_key = 0
 	/// Used for mob icon generation for non-32x32 species.
 	var/icon/icon_template
 	var/mob_size	= MOB_MEDIUM
@@ -268,7 +282,7 @@
 	/// Various specific features.
 	var/flags = 0
 	/// Appearance/display related features.
-	var/appearance_flags = 0
+	var/species_appearance_flags = 0
 	/// Flags that specify who can spawn as this species
 	var/spawn_flags = 0
 
@@ -359,7 +373,10 @@
 	var/pass_flags = 0
 
 //! ## Misc vars
+	/// descriptors
 	var/list/descriptors = list()
+	/// traits
+	var/list/traits = list()
 
 	/// This is used in character setup preview generation (prefences_setup.dm) and human mob rendering (update_icons.dm)
 	var/color_mult = 0
@@ -421,6 +438,54 @@
 			inherent_verbs = list()
 		inherent_verbs |= /mob/living/carbon/human/proc/regurgitate
 
+/**
+ * called when we apply to a mob
+ *
+ * **this does not create organs**
+ *
+ * handle_post_spawn() and create_organs() should be called manually if you are applying a species to a human being instantiated!
+ */
+/datum/species/proc/on_apply(mob/living/carbon/human/H)
+	ASSERT(istype(H))
+
+	if(language)
+		H.add_language(language)
+	if(default_language)
+		H.add_language(default_language)
+
+	if(holder_type)
+		H.holder_type = holder_type
+
+	if(!(H.gender in genders))
+		H.gender = genders[1]
+
+	H.maxHealth = total_health
+
+	add_inherent_verbs(H)
+	add_inherent_spells(H)
+
+	for(var/name in traits)
+		var/datum/trait/T = all_traits[name]
+		T.apply(src, H)
+
+/**
+ * called when we are removed from a mob
+ */
+/datum/species/proc/on_remove(mob/living/carbon/human/H)
+	if(language)
+		H.remove_language(language)
+	if(default_language)
+		H.remove_language(default_language)
+	for(var/datum/language/L in assisted_langs)
+		H.remove_language(L)
+	remove_inherent_spells(H)
+	remove_inherent_verbs(H)
+	H.holder_type = null
+
+	for(var/name in traits)
+		var/datum/trait/T = all_traits[name]
+		T.remove(src, H)
+
 /datum/species/proc/sanitize_name(var/name)
 	return sanitizeName(name, MAX_NAME_LEN)
 
@@ -476,6 +541,10 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	else
 		H.equip_to_slot_or_del(box, slot_in_backpack)
 
+/**
+ * called to ensure organs are consistent with our species's
+ * this is a destructive operation and will erase old organs!
+ */
 /datum/species/proc/create_organs(var/mob/living/carbon/human/H) //Handles creation of mob organs.
 
 	H.mob_size = mob_size
@@ -519,6 +588,29 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 		var/obj/item/nif/nif = new type(H,durability,nif_savedata)
 		nif.nifsofts = nifsofts
 
+	if(base_color)
+		H.r_skin = hex2num(copytext(base_color,2,4))
+		H.g_skin = hex2num(copytext(base_color,4,6))
+		H.b_skin = hex2num(copytext(base_color,6,8))
+	else
+		H.r_skin = 0
+		H.g_skin = 0
+		H.b_skin = 0
+
+/**
+ * called to ensure blood is consistent
+ * this is a destructive proc and will erase incompatible blood.
+ */
+/datum/species/proc/create_blood(mob/living/carbon/human/H)
+	H.make_blood()
+	if(H.vessel.total_volume < blood_volume)
+		H.vessel.maximum_volume = blood_volume
+		H.vessel.add_reagent("blood", blood_volume - H.vessel.total_volume)
+	else if(H.vessel.total_volume > blood_volume)
+		H.vessel.remove_reagent("blood", H.vessel.total_volume - blood_volume)
+		H.vessel.maximum_volume = blood_volume
+	H.fixblood()
+
 /datum/species/proc/hug(var/mob/living/carbon/human/H, var/mob/living/target)
 
 	var/t_him = "them"
@@ -538,7 +630,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 				t_him = "him"
 			if(FEMALE)
 				t_him = "her"
-	if(H.zone_sel.selecting == "head") //VOREStation Edit - Headpats and Handshakes.
+	if(H.zone_sel.selecting == "head") // Headpats and Handshakes!
 		H.visible_message( \
 			"<span class='notice'>[H] pats [target] on the head.</span>", \
 			"<span class='notice'>You pat [target] on the head.</span>", )
@@ -552,7 +644,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			"<span class='notice'>[H] boops [target]'s nose.</span>", \
 			"<span class='notice'>You boop [target] on the nose.</span>", )
 	else H.visible_message("<span class='notice'>[H] hugs [target] to make [t_him] feel better!</span>", \
-					"<span class='notice'>You hug [target] to make [t_him] feel better!</span>") //End VOREStation Edit
+					"<span class='notice'>You hug [target] to make [t_him] feel better!</span>")
 
 /datum/species/proc/remove_inherent_verbs(var/mob/living/carbon/human/H)
 	if(inherent_verbs)
@@ -574,11 +666,11 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 
 /datum/species/proc/remove_inherent_spells(var/mob/living/carbon/human/H)
 	H.spellremove()
-	return
 
+/**
+ * called after a mob is **fully** spawned
+ */
 /datum/species/proc/handle_post_spawn(var/mob/living/carbon/human/H) //Handles anything not already covered by basic species assignment.
-	add_inherent_verbs(H)
-	add_inherent_spells(H)
 	H.mob_bump_flag = bump_flag
 	H.mob_swap_flags = swap_flags
 	H.mob_push_flags = push_flags
@@ -707,3 +799,71 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 		I.appearance = equip_overlays[image_key]
 		return I
 	return overlay_image(mob_icon, mob_state, color, RESET_COLOR)
+
+/**
+ * clones us into a new datum
+ */
+/datum/species/proc/clone()
+	var/datum/species/created = new type
+	created.copy_from(src)
+
+/**
+ * completely clones us from another species, updating the provided human in the process
+ *
+ * @params
+ * to_copy - species copy
+ * traits - traits to add
+ * H - update this human
+ */
+/datum/species/proc/copy_from(datum/species/to_copy, list/traits = list(), mob/living/carbon/human/H)
+	ASSERT(to_copy)
+
+	if(ispath(to_copy))
+		to_copy = get_static_species_meta(to_copy)
+	if(istext(to_copy))
+		to_copy = name_static_species_meta(to_copy)
+
+	//Initials so it works with a simple path passed, or an instance
+	base_species = to_copy.name
+	icobase = to_copy.icobase
+	deform = to_copy.deform
+	tail = to_copy.tail
+	tail_animation = to_copy.tail_animation
+	icobase_tail = to_copy.icobase_tail
+	color_mult = to_copy.color_mult
+	primitive_form = to_copy.primitive_form
+	species_appearance_flags = to_copy.species_appearance_flags
+	flesh_color = to_copy.flesh_color
+	base_color = to_copy.base_color
+	blood_mask = to_copy.blood_mask
+	damage_mask = to_copy.damage_mask
+	damage_overlays = to_copy.damage_overlays
+	move_trail = move_trail
+	has_floating_eyes = has_floating_eyes
+
+
+	//Set up the mob provided
+	if(H)
+		// If you had traits, apply them
+		// but also make sure the human's species is actually us
+		ASSERT(H.species == src)
+
+		var/list/adding = traits - src.traits
+		var/list/removing = src.traits - traits
+		for(var/name in adding)
+			var/datum/trait/T = all_traits[name]
+			T.apply(src, H)
+		for(var/name in removing)
+			var/datum/trait/T = all_traits[name]
+			T.remove(src, H)
+		src.traits = traits
+
+		H.icon_state = lowertext(get_bodytype())
+
+		if(holder_type)
+			H.holder_type = holder_type
+
+		if(H.dna)
+			H.dna.ready_dna(H)
+	else
+		src.traits = traits

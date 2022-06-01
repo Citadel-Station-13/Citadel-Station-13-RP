@@ -66,14 +66,14 @@ var/global/list/wing_styles_list = list()
 //!Underwear
 var/datum/category_collection/underwear/global_underwear = new()
 //!Backpacks
-var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel", "Satchel Alt", "Messenger Bag", "RIG")
+var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel", "Satchel Alt", "Messenger Bag","Duffle Bag", "RIG")
 var/global/list/pdachoicelist = list("Default", "Slim", "Old", "Rugged","Minimalist", "Holographic", "Wrist-Bound")
-var/global/list/exclude_jobs = list(/datum/job/ai,/datum/job/cyborg)
+var/global/list/exclude_jobs = list(/datum/job/station/ai,/datum/job/station/cyborg)
 
 //* Visual nets
-var/list/datum/visualnet/visual_nets = list()
-var/datum/visualnet/camera/cameranet = new()
-var/datum/visualnet/cult/cultnet = new()
+GLOBAL_LIST_EMPTY(visual_nets)
+GLOBAL_DATUM_INIT(cameranet, /datum/visualnet/camera, new)
+GLOBAL_DATUM_INIT(cultnet, /datum/visualnet/cult, new)
 
 //* Runes
 var/global/list/rune_list = new()
@@ -203,6 +203,10 @@ GLOBAL_LIST_EMPTY(mannequins)
 		var/datum/job/J = new T
 		joblist[J.title] = J
 
+	if(!length(GLOB.species_meta))	// yeah i hate it too but hey
+		initialize_static_species_cache()
+	// SScharacter_setup handling static caches and body markings and sprit eaccessories when?? this is all awful
+
 	//Languages and species.
 	paths = subtypesof(/datum/language)
 	for(var/T in paths)
@@ -214,20 +218,7 @@ GLOBAL_LIST_EMPTY(mannequins)
 		if(!(L.flags & NONGLOBAL))
 			GLOB.language_keys[L.key] = L
 
-	var/rkey = 0
-	paths = typesof(/datum/species)
-	for(var/T in paths)
-
-		rkey++
-
-		var/datum/species/S = T
-		if(!initial(S.name))
-			continue
-
-		S = new T
-		S.race_key = rkey //Used in mob icon caching.
-		GLOB.all_species[S.name] = S
-
+	for(var/datum/species/S as anything in all_static_species_meta())
 		if(!(S.spawn_flags & SPECIES_IS_RESTRICTED))
 			GLOB.playable_species += S.name
 		if(S.spawn_flags & SPECIES_IS_WHITELISTED)
@@ -280,14 +271,13 @@ GLOBAL_LIST_EMPTY(mannequins)
 			if(0.1 to INFINITY)
 				positive_traits[path] = instance
 
-
 	// Custom species icon bases
 	var/list/blacklisted_icons = list(SPECIES_CUSTOM, SPECIES_PROMETHEAN)
 	var/list/whitelisted_icons = list(SPECIES_VULPKANIN, SPECIES_XENOHYBRID)
 	for(var/species_name in GLOB.playable_species)
 		if(species_name in blacklisted_icons)
 			continue
-		var/datum/species/S = GLOB.all_species[species_name]
+		var/datum/species/S = name_static_species_meta(species_name)
 		if(S.spawn_flags & SPECIES_IS_WHITELISTED)
 			continue
 		GLOB.custom_species_bases += species_name
@@ -311,9 +301,7 @@ GLOBAL_LIST_EMPTY(mannequins)
 var/global/list/hexNums = list("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F")
 
 //* Custom Species Lists *//
-GLOBAL_LIST(custom_species_bases)
-/// Species that can be used for a Custom Species icon base
-var/global/list/custom_species_bases = list()
+GLOBAL_LIST_EMPTY(custom_species_bases)
 
 //Traits
 /// Negative custom species traits, indexed by path.

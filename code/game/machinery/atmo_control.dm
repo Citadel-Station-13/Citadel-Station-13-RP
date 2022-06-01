@@ -3,13 +3,12 @@
 	icon_state = "gsensor1"
 	name = "Gas Sensor"
 
-	anchored = 1
-	var/state = 0
-
+	anchored = TRUE
+	var/on = TRUE
 	var/id_tag
 	var/frequency = 1439
+	var/state = 0
 
-	var/on = 1
 	var/output = 3
 	//Flags:
 	// 1 for pressure
@@ -185,12 +184,12 @@ obj/machinery/computer/general_air_control/Destroy()
 	switch(action)
 		if("adj_pressure")
 			var/new_pressure = text2num(params["adj_pressure"])
-			pressure_setting = between(0, new_pressure, 50*ONE_ATMOSPHERE)
+			pressure_setting = clamp( new_pressure, 0,  50*ONE_ATMOSPHERE)
 			return TRUE
 
 		if("adj_input_flow_rate")
 			var/new_flow = text2num(params["adj_input_flow_rate"])
-			input_flow_setting = between(0, new_flow, ATMOS_DEFAULT_VOLUME_PUMP + 500) //default flow rate limit for air injectors
+			input_flow_setting = clamp( new_flow, 0,  ATMOS_DEFAULT_VOLUME_PUMP + 500) //default flow rate limit for air injectors
 			return TRUE
 
 	if(!radio_connection)
@@ -286,12 +285,12 @@ obj/machinery/computer/general_air_control/Destroy()
 	switch(action)
 		if("adj_pressure")
 			var/new_pressure = text2num(params["adj_pressure"])
-			pressure_setting = between(0, new_pressure, 10*ONE_ATMOSPHERE)
+			pressure_setting = clamp( new_pressure, 0,  10*ONE_ATMOSPHERE)
 			return TRUE
 
 		if("adj_input_flow_rate")
 			var/new_flow = text2num(params["adj_input_flow_rate"])
-			input_flow_setting = between(0, new_flow, ATMOS_DEFAULT_VOLUME_PUMP + 500) //default flow rate limit for air injectors
+			input_flow_setting = clamp( new_flow, 0,  ATMOS_DEFAULT_VOLUME_PUMP + 500) //default flow rate limit for air injectors
 			return TRUE
 
 	if(!radio_connection)

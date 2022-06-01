@@ -42,16 +42,18 @@
 	if(severity >= 2 && prob(33))
 		resistance += 10
 
-	if(GLOB.all_species.len)
-		affected_species = get_infectable_species()
+	affected_species = get_infectable_species()
 
+// todo: this is not great, viruses should check on infect attempt if possible with good performance
 /proc/get_infectable_species()
 	var/list/meat = list()
 	var/list/res = list()
-	for (var/specie in GLOB.all_species)
-		var/datum/species/S = GLOB.all_species[specie]
-		if(!S.get_virus_immune())
-			meat += S
+
+	var/list/species_cache = all_static_species_meta()
+	for(var/datum/species/S in species_cache)
+		if(S.get_virus_immune())
+			continue
+		meat += S
 	if(meat.len)
 		var/num = rand(1,meat.len)
 		for(var/i=0,i<num,i++)
@@ -91,12 +93,11 @@
 		else
 			resistance += rand(1,9)
 
-	//VOREStation Add Start - Corophazine can treat higher stages
+	// Corophazine can treat higher stages
 	var/antibiotics = mob.chem_effects[CE_ANTIBIOTIC]
 	if(antibiotics == ANTIBIO_SUPER)
 		if(prob(70))
 			src.cure(mob)
-	//VOREStation Add End
 
 	//Resistance is capped at 90 without being manually set to 100
 	if(resistance > 90 && resistance < 100)
@@ -158,7 +159,7 @@
 	if (prob(5) && prob(100-resistance)) // The more resistant the disease,the lower the chance of randomly developing the antibodies
 		antigen = list(pick(ALL_ANTIGENS))
 		antigen |= pick(ALL_ANTIGENS)
-	if (prob(5) && GLOB.all_species.len)
+	if (prob(5))
 		affected_species = get_infectable_species()
 	if (prob(10))
 		resistance += rand(1,9)

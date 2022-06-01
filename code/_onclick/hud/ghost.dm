@@ -1,5 +1,5 @@
 /atom/movable/screen/ghost
-	icon = 'icons/hud/common/observer.dmi'
+	icon = 'icons/screen/hud/common/observer.dmi'
 
 /atom/movable/screen/ghost/MouseEntered(location,control,params)
 	flick(icon_state + "_anim", src)

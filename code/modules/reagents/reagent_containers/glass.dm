@@ -31,7 +31,7 @@
 		/obj/structure/closet,
 		/obj/structure/sink,
 		/obj/item/storage,
-		/obj/machinery/atmospherics/unary/cryo_cell,
+		/obj/machinery/atmospherics/component/unary/cryo_cell,
 		/obj/machinery/dna_scannernew,
 		/obj/item/grenade/chem_grenade,
 		/mob/living/bot/medibot,
@@ -282,7 +282,7 @@
 			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need one sheet of metal to arm the robot frame.</span>")
-	else if(istype(D, /obj/item/mop) || istype(D, /obj/item/soap) || istype(D, /obj/item/reagent_containers/glass/rag))  //VOREStation Edit - "Allows soap and rags to be used on buckets"
+	else if(istype(D, /obj/item/mop) || istype(D, /obj/item/soap) || istype(D, /obj/item/reagent_containers/glass/rag))
 		if(reagents.total_volume < 1)
 			to_chat(user, "<span class='warning'>\The [src] is empty!</span>")
 		else

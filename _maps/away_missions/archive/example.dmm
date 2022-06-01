@@ -16,7 +16,7 @@
 /area/awaymission/example)
 "ae" = (
 /obj/machinery/power/smes{
-	charge = 5e+006
+	charge = 5000
 	},
 /obj/structure/cable{
 	d2 = 2;
@@ -388,7 +388,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/example)
 "bv" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/space,
@@ -436,7 +436,7 @@
 "bG" = (
 /obj/machinery/door/airlock{
 	name = "Unisex Restrooms";
-	
+
 	},
 /turf/simulated/floor/tiled/white,
 /area/awaymission/example)
@@ -612,13 +612,13 @@
 /turf/simulated/floor,
 /area/awaymission/example)
 "cq" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor,
 /area/awaymission/example)
 "cr" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /obj/item/assembly/mousetrap/armed,
@@ -629,7 +629,7 @@
 /turf/simulated/floor,
 /area/awaymission/example)
 "ct" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /obj/machinery/light_construct/small{
@@ -638,7 +638,7 @@
 /turf/simulated/floor,
 /area/awaymission/example)
 "cu" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /obj/item/mop,

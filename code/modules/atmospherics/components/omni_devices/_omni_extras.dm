@@ -8,7 +8,8 @@
 #define ATM_O2		3
 #define ATM_N2		4
 #define ATM_CO2		5
-#define ATM_P		6	//Phoron
+///Phoron
+#define ATM_P		6
 #define ATM_N2O		7
 
 //--------------------------------------------
@@ -18,7 +19,7 @@
 //  to other atmospheric objects.
 //--------------------------------------------
 /datum/omni_port
-	var/obj/machinery/atmospherics/omni/master
+	var/obj/machinery/atmospherics/component/quaternary/master
 	var/dir
 	var/update = 1
 	var/mode = 0
@@ -29,7 +30,7 @@
 	var/obj/machinery/atmospherics/node
 	var/datum/pipe_network/network
 
-/datum/omni_port/New(var/obj/machinery/atmospherics/omni/M, var/direction = NORTH)
+/datum/omni_port/New(var/obj/machinery/atmospherics/component/quaternary/M, var/direction = NORTH)
 	..()
 	dir = direction
 	if(istype(M))

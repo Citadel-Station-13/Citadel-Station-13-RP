@@ -868,7 +868,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/BMPship1)
 "dE" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /obj/effect/decal/cleanable/blood/splatter,
@@ -2115,13 +2115,13 @@
 /turf/simulated/floor/airless,
 /area/awaymission)
 "hZ" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission)
 "ia" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor/plating,

@@ -80,14 +80,12 @@
 			if(equip_type == EQUIP_SPECIAL)
 				chassis.special_equipment -= src
 				listclearnulls(chassis.special_equipment)
-			//VOREStation Addition begin: MICROMECHS
 			if(equip_type == EQUIP_MICRO_UTILITY)
 				chassis.micro_utility_equipment -= src
 				listclearnulls(chassis.micro_utility_equipment)
 			if(equip_type == EQUIP_MICRO_WEAPON)
 				chassis.micro_weapon_equipment -= src
 				listclearnulls(chassis.micro_weapon_equipment)
-			//VOREStation Addition end: MICROMECHS
 		chassis.universal_equipment -= src
 		chassis.equipment -= src
 		listclearnulls(chassis.equipment)

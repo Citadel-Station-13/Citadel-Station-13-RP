@@ -26,7 +26,7 @@
 
 /obj/machinery/artifact_analyser/attack_hand(mob/user)
 	add_fingerprint(user)
-	if(stat & (NOPOWER|BROKEN) || get_dist(src, user) > 1)
+	if(machine_stat & (NOPOWER|BROKEN) || get_dist(src, user) > 1)
 		return
 	ui_interact(user)
 

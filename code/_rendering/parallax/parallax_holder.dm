@@ -86,14 +86,14 @@
 
 // better updates via client_mobs_in_contents can be created again when important recursive contents is ported!
 /datum/parallax_holder/proc/Update(full)
-	if(!full && !cached_eye || (get_turf(cached_eye) == last))
+	if(!full && (!cached_eye || (get_turf(cached_eye) == last)))
 		return
 	if(cached_eye != Eye())
 		// eye mismatch, reset
 		Reset()
 		return
 	var/turf/T = get_turf(cached_eye)
-	if(!last || T.z != last.z)
+	if(!last || !T || T.z != last.z)
 		// z mismatch, reset
 		Reset()
 		return
@@ -166,6 +166,8 @@
 	if(QDELETED(C))
 		return
 	. = list()
+	if(!C.is_preference_enabled(/datum/client_preference/parallax))
+		return
 	for(var/atom/movable/screen/parallax_layer/L in layers)
 		// if(L.parallax_intensity > owner.prefs.parallax)
 		// 	continue
@@ -307,5 +309,6 @@
 /client/proc/CreateParallax()
 	if(!parallax_holder)
 		parallax_holder = new(src)
+
 /atom/movable/screen/parallax_vis
 	screen_loc = "CENTER,CENTER"

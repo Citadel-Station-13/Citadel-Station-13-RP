@@ -48,7 +48,7 @@
 
 	flags = NO_SCAN | CONTAMINATION_IMMUNE
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
-	appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_SKIN_COLOR
+	species_appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_SKIN_COLOR
 
 	blood_color = "#9066BD"
 	flesh_color = "#a3a593"
@@ -88,7 +88,7 @@
 		/datum/mob_descriptor/vox_markings = 0
 		)
 
-	wikilink="https://wiki.vore-station.net/Vox"
+	wikilink="https://citadel-station.net/wikiRP/index.php?title=Race:_The_Vox"
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/proc/eat_trash,

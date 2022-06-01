@@ -1,0 +1,9 @@
+2019-05-02:
+  Buffalowing:
+  - bugfix: Vehicles like cargo trolleys can no longer float on open space turfs.
+  - bugfix: Aliens will no longer rapid fire spit at you.
+  - bugfix: People should stop being struck by lightning simply from being near windows.
+  - bugfix: Thunder sounds are now ambient sounds, and thus, can be turned on or off
+      based on your preferences.
+  - tweak: Cyborgs now spawn with a super cell, as opposed to having to waste time
+      getting it swapped every. Single. Round.

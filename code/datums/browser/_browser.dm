@@ -34,6 +34,9 @@
 /datum/browser/proc/set_window_options(nwindow_options)
 	window_options = nwindow_options
 
+/datum/browser/proc/set_title_image(ntitle_image)
+	//title_image = ntitle_image
+
 /datum/browser/proc/add_stylesheet(name, file)
 	if(istype(name, /datum/asset/spritesheet))
 		var/datum/asset/spritesheet/sheet = name

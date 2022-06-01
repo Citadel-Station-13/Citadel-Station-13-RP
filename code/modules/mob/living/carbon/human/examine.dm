@@ -99,11 +99,10 @@
 		CRASH("Gender datum was null; key was '[((skip_gear & EXAMINE_SKIPJUMPSUIT) && (skip_body & EXAMINE_SKIPFACE)) ? PLURAL : gender]'")
 
 	if(!((skip_gear & EXAMINE_SKIPJUMPSUIT) && (skip_body & EXAMINE_SKIPFACE)))
-		//VOREStation Add Start
 		if(custom_species)
-			whoismsg += ", a <b>[src.custom_species]</b>"
+			if(custom_species != SPECIES_HUMAN)
+				whoismsg += ", a <b>[src.custom_species]</b>"
 		else if(looks_synth)
-		//VOREStation Add End
 			var/use_gender = "a synthetic"
 			if(gender == MALE)
 				use_gender = "an android"
@@ -133,26 +132,26 @@
 				if(skip_gear & EXAMINE_SKIPHOLSTER)
 					for(var/obj/item/clothing/accessory/A in U.accessories)
 						if(A.show_examine && !istype(A, /obj/item/clothing/accessory/holster)) // If we're supposed to skip holsters, actually skip them
-							accessories_visible.Add(A)
+							accessories_visible.Add("[FORMAT_TEXT_LOOKITEM(A)]")
 				else
 					for(var/obj/item/clothing/accessory/A in U.accessories)
 						if(A.concealed_holster == 0 && A.show_examine)
-							accessories_visible.Add(A)
+							accessories_visible.Add("[FORMAT_TEXT_LOOKITEM(A)]")
 
 				if(accessories_visible.len)
 					tie_msg += " Attached to it is [english_list(accessories_visible)]."
 
 		if(w_uniform.blood_DNA)
-			. += "<span class='warning'>[T.He] [T.is] wearing [icon2html(thing = w_uniform, target = user)] [w_uniform.gender==PLURAL?"some":"a"] [(w_uniform.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [w_uniform.name]![tie_msg]</span>"
+			. += "<span class='warning'>[T.He] [T.is] wearing [icon2html(thing = w_uniform, target = user)] [w_uniform.gender==PLURAL?"some":"a"] [(w_uniform.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(w_uniform)]![tie_msg]</span>"
 		else
-			. += "[T.He] [T.is] wearing [icon2html(thing = w_uniform, target = user)] \a [w_uniform].[tie_msg]"
+			. += "[T.He] [T.is] wearing [icon2html(thing = w_uniform, target = user)] \a [FORMAT_TEXT_LOOKITEM(w_uniform)].[tie_msg]"
 
 	//head
 	if(head && !(skip_gear & EXAMINE_SKIPHELMET) && head.show_examine)
 		if(head.blood_DNA)
-			. += "<span class='warning'>[T.He] [T.is] wearing [icon2html(thing = head, target = user)] [head.gender==PLURAL?"some":"a"] [(head.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [head.name] on [T.his] head!</span>"
+			. += "<span class='warning'>[T.He] [T.is] wearing [icon2html(thing = head, target = user)] [head.gender==PLURAL?"some":"a"] [(head.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(head)] on [T.his] head!</span>"
 		else
-			. += "[T.He] [T.is] wearing [icon2html(thing = head, target = user)] \a [head] on [T.his] head."
+			. += "[T.He] [T.is] wearing [icon2html(thing = head, target = user)] \a [FORMAT_TEXT_LOOKITEM(head)] on [T.his] head."
 
 	//suit/armour
 	if(wear_suit)
@@ -160,47 +159,47 @@
 		if(istype(wear_suit,/obj/item/clothing/suit))
 			var/obj/item/clothing/suit/U = wear_suit
 			if(LAZYLEN(U.accessories))
-				tie_msg += " Attached to it is [english_list(U.accessories)]."
+				tie_msg += " Attached to it is [english_list(FORMAT_TEXT_LOOKITEM(U.accessories))]."
 
 		if(wear_suit.blood_DNA)
-			. += "<span class='warning'>[T.He] [T.is] wearing [icon2html(thing = wear_suit, target = user)] [wear_suit.gender==PLURAL?"some":"a"] [(wear_suit.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [wear_suit.name][tie_msg]!</span>"
+			. += "<span class='warning'>[T.He] [T.is] wearing [icon2html(thing = wear_suit, target = user)] [wear_suit.gender==PLURAL?"some":"a"] [(wear_suit.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(wear_suit)][tie_msg]!</span>"
 		else
-			. += "[T.He] [T.is] wearing [icon2html(thing = wear_suit, target = user)] \a [wear_suit].[tie_msg]"
+			. += "[T.He] [T.is] wearing [icon2html(thing = wear_suit, target = user)] \a [FORMAT_TEXT_LOOKITEM(wear_suit)].[tie_msg]"
 
 		//suit/armour storage
 		if(s_store && !(skip_gear & EXAMINE_SKIPSUITSTORAGE) && s_store.show_examine)
 			if(s_store.blood_DNA)
-				. += "<span class='warning'>[T.He] [T.is] carrying [icon2html(thing = s_store, target = user)] [s_store.gender==PLURAL?"some":"a"] [(s_store.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [s_store.name] on [T.his] [wear_suit.name]!</span>"
+				. += "<span class='warning'>[T.He] [T.is] carrying [icon2html(thing = s_store, target = user)] [s_store.gender==PLURAL?"some":"a"] [(s_store.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(s_store)] on [T.his] [FORMAT_TEXT_LOOKITEM(wear_suit)]!</span>"
 			else
-				. += "[T.He] [T.is] carrying [icon2html(thing = s_store, target = user)] \a [s_store] on [T.his] [wear_suit.name]."
+				. += "[T.He] [T.is] carrying [icon2html(thing = s_store, target = user)] \a [FORMAT_TEXT_LOOKITEM(s_store)] on [T.his] [FORMAT_TEXT_LOOKITEM(wear_suit)]."
 
 	//back
 	if(back && !(skip_gear & EXAMINE_SKIPBACKPACK) && back.show_examine)
 		if(back.blood_DNA)
-			. += "<span class='warning'>[T.He] [T.has] [icon2html(thing = back, target = user)] [back.gender==PLURAL?"some":"a"] [(back.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [back] on [T.his] back.</span>"
+			. += "<span class='warning'>[T.He] [T.has] [icon2html(thing = back, target = user)] [back.gender==PLURAL?"some":"a"] [(back.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(back)] on [T.his] back.</span>"
 		else
-			. += "[T.He] [T.has] [icon2html(thing = back, target = user)] \a [back] on [T.his] back."
+			. += "[T.He] [T.has] [icon2html(thing = back, target = user)] \a [FORMAT_TEXT_LOOKITEM(back)] on [T.his] back."
 
 	//left hand
 	if(l_hand && l_hand.show_examine)
 		if(l_hand.blood_DNA)
-			. += "<span class='warning'>[T.He] [T.is] holding [icon2html(thing = l_hand, target = user)] [l_hand.gender==PLURAL?"some":"a"] [(l_hand.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [l_hand.name] in [T.his] left hand!</span>"
+			. += "<span class='warning'>[T.He] [T.is] holding [icon2html(thing = l_hand, target = user)] [l_hand.gender==PLURAL?"some":"a"] [(l_hand.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(l_hand)] in [T.his] left hand!</span>"
 		else
-			. += "[T.He] [T.is] holding [icon2html(thing = l_hand, target = user)] \a [l_hand] in [T.his] left hand."
+			. += "[T.He] [T.is] holding [icon2html(thing = l_hand, target = user)] \a [FORMAT_TEXT_LOOKITEM(l_hand)] in [T.his] left hand."
 
 	//right hand
 	if(r_hand && r_hand.show_examine)
 		if(r_hand.blood_DNA)
-			. += "<span class='warning'>[T.He] [T.is] holding [icon2html(thing = r_hand, target = user)] [r_hand.gender==PLURAL?"some":"a"] [(r_hand.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [r_hand.name] in [T.his] right hand!</span>"
+			. += "<span class='warning'>[T.He] [T.is] holding [icon2html(thing = r_hand, target = user)] [r_hand.gender==PLURAL?"some":"a"] [(r_hand.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(r_hand)] in [T.his] right hand!</span>"
 		else
-			. += "[T.He] [T.is] holding [icon2html(thing = r_hand, target = user)] \a [r_hand] in [T.his] right hand."
+			. += "[T.He] [T.is] holding [icon2html(thing = r_hand, target = user)] \a [FORMAT_TEXT_LOOKITEM(r_hand)] in [T.his] right hand."
 
 	//gloves
 	if(gloves && !(skip_gear & EXAMINE_SKIPGLOVES) && gloves.show_examine)
 		if(gloves.blood_DNA)
-			. += "<span class='warning'>[T.He] [T.has] [icon2html(thing = gloves, target = user)] [gloves.gender==PLURAL?"some":"a"] [(gloves.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [gloves.name] on [T.his] hands!</span>"
+			. += "<span class='warning'>[T.He] [T.has] [icon2html(thing = gloves, target = user)] [gloves.gender==PLURAL?"some":"a"] [(gloves.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(gloves)] on [T.his] hands!</span>"
 		else
-			. += "[T.He] [T.has] [icon2html(thing = gloves, target = user)] \a [gloves] on [T.his] hands."
+			. += "[T.He] [T.has] [icon2html(thing = gloves, target = user)] \a [FORMAT_TEXT_LOOKITEM(gloves)] on [T.his] hands."
 	else if(blood_DNA && !(skip_body & EXAMINE_SKIPHANDS))
 		. += "<span class='warning'>[T.He] [T.has] [(hand_blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained hands!</span>"
 
@@ -213,21 +212,21 @@
 
 	//buckled
 	if(buckled)
-		. += "<span class='warning'>[T.He] [T.is] [icon2html(thing = buckled, target = user)] buckled to [buckled]!</span>"
+		. += "<span class='warning'>[T.He] [T.is] [icon2html(thing = buckled, target = user)] buckled to [FORMAT_TEXT_LOOKITEM(buckled)]!</span>"
 
 	//belt
 	if(belt && !(skip_gear & EXAMINE_SKIPBELT) && belt.show_examine)
 		if(belt.blood_DNA)
-			. += "<span class='warning'>[T.He] [T.has] [icon2html(thing = belt, target = user)] [belt.gender==PLURAL?"some":"a"] [(belt.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [belt.name] about [T.his] waist!</span>"
+			. += "<span class='warning'>[T.He] [T.has] [icon2html(thing = belt, target = user)] [belt.gender==PLURAL?"some":"a"] [(belt.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(belt)] about [T.his] waist!</span>"
 		else
-			. += "[T.He] [T.has] [icon2html(thing = belt, target = user)] \a [belt] about [T.his] waist."
+			. += "[T.He] [T.has] [icon2html(thing = belt, target = user)] \a [FORMAT_TEXT_LOOKITEM(belt)] about [T.his] waist."
 
 	//shoes
 	if(shoes && !(skip_gear & EXAMINE_SKIPSHOES) && shoes.show_examine)
 		if(shoes.blood_DNA)
-			. += "<span class='warning'>[T.He] [T.is] wearing [icon2html(thing = shoes, target = user)] [shoes.gender==PLURAL?"some":"a"] [(shoes.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [shoes.name] on [T.his] feet!</span>"
+			. += "<span class='warning'>[T.He] [T.is] wearing [icon2html(thing = shoes, target = user)] [shoes.gender==PLURAL?"some":"a"] [(shoes.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(shoes)] on [T.his] feet!</span>"
 		else
-			. += "[T.He] [T.is] wearing [icon2html(thing = shoes, target = user)] \a [shoes] on [T.his] feet."
+			. += "[T.He] [T.is] wearing [icon2html(thing = shoes, target = user)] \a [FORMAT_TEXT_LOOKITEM(shoes)] on [T.his] feet."
 	else if(feet_blood_DNA && !(skip_body & EXAMINE_SKIPHANDS))
 		. += "<span class='warning'>[T.He] [T.has] [(feet_blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained feet!</span>"
 
@@ -238,24 +237,24 @@
 			descriptor = "in [T.his] mouth"
 
 		if(wear_mask.blood_DNA)
-			. += "<span class='warning'>[T.He] [T.has] [icon2html(thing = wear_mask, target = user)] [wear_mask.gender==PLURAL?"some":"a"] [(wear_mask.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [wear_mask.name] [descriptor]!</span>"
+			. += "<span class='warning'>[T.He] [T.has] [icon2html(thing = wear_mask, target = user)] [wear_mask.gender==PLURAL?"some":"a"] [(wear_mask.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(wear_mask)] [descriptor]!</span>"
 		else
-			. += "[T.He] [T.has] [icon2html(thing = wear_mask, target = user)] \a [wear_mask] [descriptor]."
+			. += "[T.He] [T.has] [icon2html(thing = wear_mask, target = user)] \a [FORMAT_TEXT_LOOKITEM(wear_mask)] [descriptor]."
 
 	//eyes
 	if(glasses && !(skip_gear & EXAMINE_SKIPEYEWEAR) && glasses.show_examine)
 		if(glasses.blood_DNA)
-			. += "<span class='warning'>[T.He] [T.has] [icon2html(thing = glasses, target = user)] [glasses.gender==PLURAL?"some":"a"] [(glasses.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [glasses] covering [T.his] eyes!</span>"
+			. += "<span class='warning'>[T.He] [T.has] [icon2html(thing = glasses, target = user)] [glasses.gender==PLURAL?"some":"a"] [(glasses.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(glasses)] covering [T.his] eyes!</span>"
 		else
-			. += "[T.He] [T.has] [icon2html(thing = glasses, target = user)] \a [glasses] covering [T.his] eyes."
+			. += "[T.He] [T.has] [icon2html(thing = glasses, target = user)] \a [FORMAT_TEXT_LOOKITEM(glasses)] covering [T.his] eyes."
 
 	//left ear
 	if(l_ear && !(skip_gear & EXAMINE_SKIPEARS) && l_ear.show_examine)
-		. += "[T.He] [T.has] [icon2html(thing = l_ear, target = user)] \a [l_ear] on [T.his] left ear."
+		. += "[T.He] [T.has] [icon2html(thing = l_ear, target = user)] \a [FORMAT_TEXT_LOOKITEM(l_ear)] on [T.his] left ear."
 
 	//right ear
 	if(r_ear && !(skip_gear & EXAMINE_SKIPEARS) && r_ear.show_examine)
-		. += "[T.He] [T.has] [icon2html(thing = r_ear, target = user)] \a [r_ear] on [T.his] right ear."
+		. += "[T.He] [T.has] [icon2html(thing = r_ear, target = user)] \a [FORMAT_TEXT_LOOKITEM(r_ear)] on [T.his] right ear."
 
 	//ID
 	if(wear_id && wear_id.show_examine)
@@ -269,7 +268,7 @@
 		if(id && (id != real_name) && (get_dist(src, usr) <= 1) && prob(10))
 			. += "<span class='warning'>[T.He] [T.is] wearing [icon2html(thing = wear_id, target = user)] \a [wear_id] yet something doesn't seem right...</span>"
 		else*/
-		. += "[T.He] [T.is] wearing [icon2html(thing = wear_id, target = user)] \a [wear_id]."
+		. += "[T.He] [T.is] wearing [icon2html(thing = wear_id, target = user)] \a [FORMAT_TEXT_LOOKITEM(wear_id)]."
 
 	if(istype(src, /mob/living/carbon/human/dummy))
 		. += "[T.He] [T.is] strangely life like. You feel uneasy staring at [T.him] for too long."
@@ -287,26 +286,24 @@
 	for(var/organ in BP_ALL)
 		var/obj/item/organ/external/o = get_organ(organ)
 		if(o && o.splinted && o.splinted.loc == o)
-			. += "<span class='warning'>[T.He] [T.has] \a [o.splinted] on [T.his] [o.name]!</span>"
+			. += "<span class='warning'>[T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(o.splinted)] on [T.his] [o.name]!</span>"
 
 	if(suiciding)
 		. += "<span class='warning'>[T.He] appears to have commited suicide... there is no hope of recovery.</span>"
 
 
 	if(attempt_vr(src,"examine_weight",args))
-		. += attempt_vr(src,"examine_weight",args) //VOREStation Code
-//	if(attempt_vr(src,"examine_nutrition",args))
-//		. += attempt_vr(src,"examine_nutrition",args) //VOREStation Code
+		. += attempt_vr(src,"examine_weight",args)
 	if(attempt_vr(src,"examine_bellies",args))
-		. += attempt_vr(src,"examine_bellies",args) //VOREStation Code
+		. += attempt_vr(src,"examine_bellies",args)
 	if(attempt_vr(src,"examine_pickup_size",args))
-		. += attempt_vr(src,"examine_pickup_size",args) //VOREStation Code
+		. += attempt_vr(src,"examine_pickup_size",args)
 	if(attempt_vr(src,"examine_step_size",args))
-		. += attempt_vr(src,"examine_step_size",args) //VOREStation Code
+		. += attempt_vr(src,"examine_step_size",args)
 	if(attempt_vr(src,"examine_nif",args))
-		. += attempt_vr(src,"examine_nif",args) //VOREStation Code
+		. += attempt_vr(src,"examine_nif",args)
 	if(attempt_vr(src,"examine_chimera",args))
-		. += attempt_vr(src,"examine_chimera",args) //VOREStation Code
+		. += attempt_vr(src,"examine_chimera",args)
 
 	if(mSmallsize in mutations)
 		. += "[T.He] [T.is] very short!"
@@ -337,12 +334,10 @@
 			. += "<span class='deadsay'>[T.He] [T.is] [ssd_msg]. It doesn't look like [T.he] [T.is] waking up anytime soon.</span>"
 		else if(!client)
 			. += "<span class='deadsay'>[T.He] [T.is] [ssd_msg].</span>"
-		//VOREStation Add Start
 		if(client && ((client.inactivity / 10) / 60 > 10)) //10 Minutes
 			. += "\[Inactive for [round((client.inactivity/10)/60)] minutes\]"
 		else if(disconnect_time)
 			. += "\[Disconnected/ghosted [round(((world.realtime - disconnect_time)/10)/60)] minutes ago\]"
-		//VOREStation Add End
 
 	var/list/wound_flavor_text = list()
 	var/list/is_bleeding = list()
@@ -405,7 +400,7 @@
 	for(var/limb in is_bleeding)
 		. += is_bleeding[limb]
 	for(var/implant in get_visible_implants(0))
-		. += "<span class='danger'>[src] [T.has] \a [implant] sticking out of [T.his] flesh!</span>"
+		. += "<span class='danger'>[src] [T.has] \a [FORMAT_TEXT_LOOKITEM(implant)] sticking out of [T.his] flesh!</span>"
 	if(digitalcamo)
 		. += "[T.He] [T.is] repulsively uncanny!"
 
@@ -451,13 +446,11 @@
 	if(print_flavor_text())
 		. += "[print_flavor_text()]"
 
-	// VOREStation Start
 	if(ooc_notes)
 		. += "<span class = 'deptradio'>OOC Notes:</span> <a href='?src=\ref[src];ooc_notes=1'>\[View\]</a>"
 
 	. += "<span class='deptradio'><a href='?src=\ref[src];vore_prefs=1'>\[Mechanical Vore Preferences\]</a></span>"
 
-	// VOREStation End
 	. += "*---------*</span>"
 	. += applying_pressure
 
@@ -475,7 +468,8 @@
 /proc/hasHUD(mob/M as mob, hudtype)
 	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		if(hasHUD_vr(H,hudtype)) return 1 //VOREStation Add - Added records access for certain modes of omni-hud glasses
+		if(hasHUD_vr(H,hudtype))
+			return 1 // Added records access for certain modes of omni-hud glasses
 		switch(hudtype)
 			if("security")
 				return istype(H.glasses, /obj/item/clothing/glasses/hud/security) || istype(H.glasses, /obj/item/clothing/glasses/sunglasses/sechud)
@@ -554,7 +548,7 @@
 		if(375 to 474)
 			message = "<span class='warning'>[t_He] [t_is] incredibly obese. [t_His] massive potbelly sags over [t_his] waistline while [t_his] fat ass would probably require two chairs to sit down comfortably!</span>"
 		else
-			message += "<span class='warning'>[t_He] [t_is] so morbidly obese, you wonder how [t_he] can even stand, let alone waddle around the station. [t_He] can't get any fatter without being immobilized.</span>"
+			message = "<span class='warning'>[t_He] [t_is] so morbidly obese, you wonder how [t_he] can even stand, let alone waddle around the station. [t_He] can't get any fatter without being immobilized.</span>"
 	return message //Credit to Aronai for helping me actually get this working!
 /*
 /mob/living/carbon/human/proc/examine_nutrition()

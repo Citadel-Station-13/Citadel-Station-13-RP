@@ -30,7 +30,6 @@
 	var/log_runtime = 0					// logs world.log to a file
 	var/log_world_output = 0			// log world.log << messages
 	var/log_topic = TRUE
-	var/sql_enabled = 0					// for sql switching
 	var/allow_admin_ooccolor = 0		// Allows admins with relevant permissions to have their own ooc colour
 	var/allow_vote_restart = 0 			// allow votes to restart
 	var/ert_admin_call_only = 0
@@ -275,7 +274,7 @@
 	src.votable_modes += "secret"
 
 /datum/configuration_legacy/proc/load(filename, type = "config") //the type can also be game_options, in which case it uses a different switch. not making it separate to not copypaste code - Urist
-	var/list/Lines = file2list(filename)
+	var/list/Lines = world.file2list(filename)
 
 	for(var/t in Lines)
 		if(!t)	continue
@@ -333,9 +332,6 @@
 
 				if ("log_access")
 					config_legacy.log_access = 1
-
-				if ("sql_enabled")
-					config_legacy.sql_enabled = 1
 
 				if ("log_say")
 					config_legacy.log_say = 1
@@ -901,7 +897,7 @@
 					log_misc("Unknown setting in configuration: '[name]'")
 
 /datum/configuration_legacy/proc/loadsql(filename)  // -- TLE
-	var/list/Lines = file2list(filename)
+	var/list/Lines = world.file2list(filename)
 	for(var/t in Lines)
 		if(!t)	continue
 
@@ -947,7 +943,7 @@
 				log_misc("Unknown setting in configuration: '[name]'")
 
 /datum/configuration_legacy/proc/loadforumsql(filename)  // -- TLE
-	var/list/Lines = file2list(filename)
+	var/list/Lines = world.file2list(filename)
 	for(var/t in Lines)
 		if(!t)	continue
 

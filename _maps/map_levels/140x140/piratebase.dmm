@@ -670,7 +670,7 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/pirate/general)
 "Hz" = (
-/obj/machinery/atmospherics/unary/engine{
+/obj/machinery/atmospherics/component/unary/engine{
 	dir = 8
 	},
 /turf/simulated/shuttle/plating/airless/carry,
@@ -695,7 +695,7 @@
 /area/piratebase/facility)
 "Io" = (
 /obj/machinery/power/smes/buildable{
-	charge = 1.5e+007;
+	charge = 15000;
 	cur_coils = 3
 	},
 /obj/structure/cable/cyan{

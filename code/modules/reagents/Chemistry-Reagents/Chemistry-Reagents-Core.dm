@@ -54,18 +54,18 @@
 		M.heal_organ_damage(0.2 * removed * volume_mod, 0)	// More 'effective' blood means more usable material.
 		M.nutrition += 20 * removed * volume_mod
 		M.add_chemical_effect(CE_BLOODRESTORE, 4 * removed)
-		M.adjustToxLoss(removed / 2)	// Still has some water in the form of plasma.
+		M.adjustToxLoss(removed / 2) // Still has some water in the form of plasma.
 		return
 
 	var/is_vampire = M.species.is_vampire
 	if(is_vampire)
 		handle_vampire(M, alien, removed, is_vampire)
 	if(effective_dose > 5)
-		if(!is_vampire) //VOREStation Edit.
-			M.adjustToxLoss(removed) //VOREStation Edit.
+		if(!is_vampire)
+			M.adjustToxLoss(removed)
 	if(effective_dose > 15)
-		if(!is_vampire) //VOREStation Edit.
-			M.adjustToxLoss(removed) //VOREStation Edit.
+		if(!is_vampire)
+			M.adjustToxLoss(removed)
 	if(data && data["virus2"])
 		var/list/vlist = data["virus2"]
 		if(vlist.len)
@@ -155,7 +155,8 @@
 		M.antibodies |= src.data["antibodies"]
 	..()
 
-#define WATER_LATENT_HEAT 19000 // How much heat is removed when applied to a hot turf, in J/unit (19000 makes 120 u of water roughly equivalent to 4L)
+/// How much heat is removed when applied to a hot turf, in J/unit (19000 makes 120 u of water roughly equivalent to 4L)
+#define WATER_LATENT_HEAT 19000
 /datum/reagent/water
 	name = "Water"
 	id = "water"
@@ -215,25 +216,12 @@
 		L.adjust_fire_stacks(-(amount / 5))
 		remove_self(needed)
 
-/*  //VOREStation Edit Start. Stops slimes from dying from water. Fixes fuel affect_ingest, too.
-/datum/reagent/water/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	if(alien == IS_SLIME)
-		M.adjustToxLoss(6 * removed)
-	else
-		..()
-*/
 /datum/reagent/water/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	//if(alien == IS_SLIME)
 	//	M.adjustToxLoss(6 * removed)
 	//else
 	M.adjust_hydration(removed * 10)
 	..()
-/*
-/datum/reagent/water/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
-	if(alien == IS_SLIME)
-		M.visible_message("<span class='warning'>[M]'s flesh sizzles where the water touches it!</span>", "<span class='danger'>Your flesh burns in the water!</span>")
-	..()
-*/  //VOREStation Edit End.
 
 /datum/reagent/fuel
 	name = "Welding fuel"

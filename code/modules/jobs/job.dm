@@ -1,13 +1,20 @@
 /datum/job
-
-	// The name of the job
+	/// The name of the job , used for preferences, bans and more. Make sure you know what you're doing before changing this.
 	var/title = "NOPE"
+	/// Description of the job
+	var/desc = "No description provided."
+	/// Abstract type
+	var/abstract_type = /datum/job
+	/// Faction this job is considered part of, for the future considerations of "offmap"/offstation jobs
+	var/faction
+	/// Determines if this job can be spawned into by players
+	var/join_types = JOB_ROUNDSTART | JOB_LATEJOIN
+
 	// Job access. The use of minimal_access or access is determined by a config setting: config.jobs_have_minimal_access
 	var/list/minimal_access = list()		// Useful for servers which prefer to only have access given to the places a job absolutely needs (Larger server population)
 	var/list/access = list()				// Useful for servers which either have fewer players, so each person needs to fill more than one role, or servers which like to give more access, so players can't hide forever in their super secure departments (I'm looking at you, chemistry!)
 	var/flag = 0 							// Bitflags for the job
 	var/department_flag = 0
-	var/faction = "None"					// Players will be allowed to spawn in as jobs that are set to "Station"
 	var/total_positions = 0					// How many players can be this job
 	var/spawn_positions = 0					// How many players can spawn in as this job
 	var/current_positions = 0				// How many players have this job
@@ -34,9 +41,6 @@
 
 	var/offmap_spawn = FALSE				// Do we require weird and special spawning and datacore handling?
 	var/mob_type = JOB_CARBON				// Bitflags representing mob type this job spawns
-
-	// Description of the job's role and minimum responsibilities.
-	var/job_description = "This Job doesn't have a description! Please report it!"
 
 	// Requires a ckey to be whitelisted in jobwhitelist.txt
 	var/whitelist_only = 0
@@ -89,7 +93,7 @@
 			if(CLASS_LOWER)		income = 0.50
 
 	// Give them an account in the station database
-	var/money_amount = (rand(15,40) + rand(15,40)) * income * economic_modifier * ECO_MODIFIER //VOREStation Edit - Smoothed peaks, ECO_MODIFIER rather than per-species ones.
+	var/money_amount = (rand(15,40) + rand(15,40)) * income * economic_modifier * ECO_MODIFIER // Smoothed peaks, ECO_MODIFIER rather than per-species ones.
 	var/datum/money_account/M = create_account(H.real_name, money_amount, null, offmap_spawn)
 	if(H.mind)
 		var/remembered_info = ""
@@ -149,7 +153,7 @@
 
 /datum/job/proc/get_description_blurb(var/alt_title)
 	var/list/message = list()
-	message |= job_description
+	message |= desc
 
 	if(alt_title && alt_titles)
 		var/typepath = alt_titles[alt_title]
@@ -172,7 +176,7 @@
 
 	return job_master.job_icons[title]
 
-/datum/job/proc/dress_mannequin(var/mob/living/carbon/human/dummy/mannequin/mannequin)
+/datum/job/proc/dress_mannequin(mob/living/carbon/human/dummy/mannequin/mannequin)
 	mannequin.delete_inventory(TRUE)
 	equip_preview(mannequin)
 	if(mannequin.back)
@@ -180,11 +184,11 @@
 		mannequin.drop_from_inventory(O)
 		qdel(O)
 
-// Check client-specific availability rules.
+/// Check client-specific availability rules.
 /datum/job/proc/player_has_enough_pto(client/C)
 	return timeoff_factor >= 0 || (C && LAZYACCESS(C.department_hours, pto_type) > 0)
 
-/datum/job/proc/equip_backpack(var/mob/living/carbon/human/H)
+/datum/job/proc/equip_backpack(mob/living/carbon/human/H)
 	switch(H.backbag)
 		if(2)
 			H.equip_to_slot_or_del(new /obj/item/storage/backpack(H), slot_back)
@@ -196,4 +200,5 @@
 			H.equip_to_slot_or_del(new /obj/item/storage/backpack/messenger(H), slot_back)
 		if(6)
 			H.equip_to_slot_or_del(new /obj/item/storage/backpack/rig(H), slot_back)
-
+		if(7)
+			H.equip_to_slot_or_del(new /obj/item/storage/backpack/dufflebag(H), slot_back)

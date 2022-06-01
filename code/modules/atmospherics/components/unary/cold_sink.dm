@@ -1,7 +1,5 @@
-//TODO: Put this under a common parent type with heaters to cut down on the copypasta
-#define FREEZER_PERF_MULT 2.5
 
-/obj/machinery/atmospherics/unary/freezer
+/obj/machinery/atmospherics/component/unary/freezer
 	name = "gas cooling system"
 	desc = "Cools gas when connected to pipe network"
 	icon = 'icons/obj/Cryogenic2.dmi'
@@ -21,7 +19,7 @@
 	var/set_temperature = T20C		// Thermostat
 	var/cooling = 0
 
-/obj/machinery/atmospherics/unary/freezer/Initialize(mapload)
+/obj/machinery/atmospherics/component/unary/freezer/Initialize(mapload)
 	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/matter_bin(src)
@@ -31,7 +29,7 @@
 	component_parts += new /obj/item/stack/cable_coil(src, 2)
 	RefreshParts()
 
-/obj/machinery/atmospherics/unary/freezer/atmos_init()
+/obj/machinery/atmospherics/component/unary/freezer/atmos_init()
 	if(node)
 		return
 
@@ -48,7 +46,7 @@
 	if(node)
 		update_icon()
 
-/obj/machinery/atmospherics/unary/freezer/update_icon()
+/obj/machinery/atmospherics/component/unary/freezer/update_icon()
 	if(node)
 		if(use_power && cooling)
 			icon_state = "freezer_1"
@@ -58,19 +56,19 @@
 		icon_state = "freezer_0"
 	return
 
-/obj/machinery/atmospherics/unary/freezer/attack_ai(mob/user as mob)
+/obj/machinery/atmospherics/component/unary/freezer/attack_ai(mob/user as mob)
 	ui_interact(user)
 
-/obj/machinery/atmospherics/unary/freezer/attack_hand(mob/user as mob)
+/obj/machinery/atmospherics/component/unary/freezer/attack_hand(mob/user as mob)
 	ui_interact(user)
 
-/obj/machinery/atmospherics/unary/freezer/ui_interact(mob/user, datum/tgui/ui)
+/obj/machinery/atmospherics/component/unary/freezer/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "GasTemperatureSystem", name)
 		ui.open()
 
-/obj/machinery/atmospherics/unary/freezer/ui_data(mob/user)
+/obj/machinery/atmospherics/component/unary/freezer/ui_data(mob/user)
 	// this is the data which will be sent to the ui
 	var/data[0]
 	data["on"] = use_power ? 1 : 0
@@ -90,7 +88,7 @@
 
 	return data
 
-/obj/machinery/atmospherics/unary/freezer/ui_act(action, params)
+/obj/machinery/atmospherics/component/unary/freezer/ui_act(action, params)
 	if(..())
 		return TRUE
 
@@ -106,13 +104,13 @@
 			else
 				set_temperature = max(amount, 0)
 		if("setPower") //setting power to 0 is redundant anyways
-			var/new_setting = between(0, text2num(params["value"]), 100)
+			var/new_setting = clamp( text2num(params["value"]), 0,  100)
 			set_power_level(new_setting)
 
-/obj/machinery/atmospherics/unary/freezer/process(delta_time)
+/obj/machinery/atmospherics/component/unary/freezer/process(delta_time)
 	..()
 
-	if(stat & (NOPOWER|BROKEN) || !use_power)
+	if(machine_stat & (NOPOWER|BROKEN) || !use_power)
 		cooling = 0
 		update_icon()
 		return
@@ -124,7 +122,7 @@
 
 		//Assume the heat is being pumped into the hull which is fixed at heatsink_temperature
 		//not /really/ proper thermodynamics but whatever
-		var/cop = FREEZER_PERF_MULT * air_contents.temperature/heatsink_temperature	//heatpump coefficient of performance from thermodynamics -> power used = heat_transfer/cop
+		var/cop = THERMOMACHINE_CHEAT_FACTOR * air_contents.temperature/heatsink_temperature	//heatpump coefficient of performance from thermodynamics -> power used = heat_transfer/cop
 		heat_transfer = min(heat_transfer, cop * power_rating)	//limit heat transfer by available power
 
 		var/removed = -air_contents.add_thermal_energy(-heat_transfer)		//remove the heat
@@ -140,7 +138,7 @@
 	update_icon()
 
 //upgrading parts
-/obj/machinery/atmospherics/unary/freezer/RefreshParts()
+/obj/machinery/atmospherics/component/unary/freezer/RefreshParts()
 	..()
 	var/cap_rating = 0
 	var/manip_rating = 0
@@ -159,11 +157,11 @@
 	air_contents.volume = max(initial(internal_volume) - 200, 0) + 200 * bin_rating
 	set_power_level(power_setting)
 
-/obj/machinery/atmospherics/unary/freezer/proc/set_power_level(var/new_power_setting)
+/obj/machinery/atmospherics/component/unary/freezer/proc/set_power_level(var/new_power_setting)
 	power_setting = new_power_setting
 	power_rating = max_power_rating * (power_setting/100)
 
-/obj/machinery/atmospherics/unary/freezer/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/component/unary/freezer/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(default_deconstruction_screwdriver(user, O))
 		return
 	if(default_deconstruction_crowbar(user, O))
@@ -173,7 +171,7 @@
 
 	..()
 
-/obj/machinery/atmospherics/unary/freezer/examine(mob/user)
+/obj/machinery/atmospherics/component/unary/freezer/examine(mob/user)
 	. = ..()
 	if(panel_open)
 		. += "The maintenance hatch is open."

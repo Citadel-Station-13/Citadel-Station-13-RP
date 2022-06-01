@@ -3,7 +3,7 @@
 		D.fire_act(adj_air, adj_temp, adj_volume)
 
 /obj/machinery/door
-	var/reinforcing = 0	//vorestation addition
+	var/reinforcing = 0
 	var/tintable = 0
 	var/icon_tinted
 	var/id_tint
@@ -42,7 +42,7 @@
 		if(heat_proof)
 			to_chat(user, "<span class='warning'>\The [src] is already reinforced.</span>")
 			return TRUE
-		if((stat & BROKEN) || (health < maxhealth))
+		if((machine_stat & BROKEN) || (health < maxhealth))
 			to_chat(user, "<span class='notice'>It looks like \the [src] broken. Repair it before reinforcing it.</span>")
 			return TRUE
 		if(!density)

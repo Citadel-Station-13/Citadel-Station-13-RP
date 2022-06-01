@@ -257,7 +257,7 @@
 	icon_state = "implantcase-r"
 
 /obj/item/implantcase/vrlanguage/Initialize(mapload)
-	imp = new /obj/item/implant/vrlanguage( src )
+	imp = new /obj/item/implant/uni_translator( src )
 	return ..()
 
 /obj/item/implantcase/restrainingbolt

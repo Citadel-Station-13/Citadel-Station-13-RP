@@ -28,7 +28,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/be_special = 0					//Special role selection
 	/// Event role prefs flag
 	var/be_event_role = NONE
-	var/UI_style = "Midnight"
+	var/UI_style = UI_STYLE_DEFAULT
 	var/UI_style_color = "#ffffff"
 	var/UI_style_alpha = 255
 	var/tooltipstyle = "Midnight"		//Style for popup tooltips
@@ -57,9 +57,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/g_facial = 0					//Face hair color
 	var/b_facial = 0					//Face hair color
 	var/s_tone = 0						//Skin tone
-	var/r_skin = 238					//Skin color // Vorestation edit, so color multi sprites can aren't BLACK AS THE VOID by default.
-	var/g_skin = 206					//Skin color // Vorestation edit, so color multi sprites can aren't BLACK AS THE VOID by default.
-	var/b_skin = 179					//Skin color // Vorestation edit, so color multi sprites can aren't BLACK AS THE VOID by default.
+	var/r_skin = 238					//Skin color
+	var/g_skin = 206					//Skin color
+	var/b_skin = 179					//Skin color
 	var/s_base = ""						//For Adherent
 	var/r_eyes = 0						//Eye color
 	var/g_eyes = 0						//Eye color
@@ -76,7 +76,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/r_synth							//Used with synth_color to color synth parts that normaly can't be colored.
 	var/g_synth							//Same as above
 	var/b_synth							//Same as above
-	var/synth_markings = 1				//Enable/disable markings on synth parts. //VOREStation Edit - 1 by default
+	var/synth_markings = 1				//Enable/disable markings on synth parts.
 
 		//Some faction information.
 	var/home_system = "Unset"           //System of birth.
@@ -361,7 +361,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	else if(href_list["reload"])
 		load_preferences()
 		load_character()
-		attempt_vr(client.prefs_vr,"load_vore","") //VOREStation Edit
+		attempt_vr(client.prefs_vr,"load_vore","")
 		sanitize_preferences()
 	else if(href_list["load"])
 		if(!IsGuestKey(usr.key))
@@ -369,7 +369,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			return 1
 	else if(href_list["changeslot"])
 		load_character(text2num(href_list["changeslot"]))
-		attempt_vr(client.prefs_vr,"load_vore","") //VOREStation Edit
+		attempt_vr(client.prefs_vr,"load_vore","")
 		sanitize_preferences()
 		close_load_dialog(usr)
 	else if(href_list["resetslot"])
@@ -400,7 +400,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	player_setup.sanitize_setup()
 
 	// This needs to happen before anything else becuase it sets some variables.
-	character.set_species(species)
+	character.set_species(species_type_by_name(species))
 	// Special Case: This references variables owned by two different datums, so do it here.
 	if(be_random_name)
 		real_name = random_name(identifying_gender,species)
@@ -408,7 +408,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	// Ask the preferences datums to apply their own settings to the new mob
 	player_setup.copy_to_mob(character)
 
-	// VOREStation Edit - Sync up all their organs and species one final time
+	// Sync up all their organs and species one final time
 	character.force_update_organs()
 //	character.s_base = s_base //doesn't work, fuck me
 
@@ -422,6 +422,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if(LAZYLEN(character.descriptors))
 		for(var/entry in body_descriptors)
 			character.descriptors[entry] = body_descriptors[entry]
+
+/datum/preferences/proc/character_static_species_meta()
+	return name_static_species_meta(species) || get_static_species_meta(/datum/species/human)
 
 /datum/preferences/proc/open_load_dialog(mob/user)
 	var/dat = "<body>"

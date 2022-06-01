@@ -6,12 +6,9 @@
 			if(!src.client)	. += "\nIt appears to be in stand-by mode.\n" //afk
 		if(UNCONSCIOUS)		. += "\n<span class='warning'>It doesn't seem to be responding.</span>\n"
 		if(DEAD)			. += "\n<span class='deadsay'>It looks completely unsalvageable.</span>\n"
-	. += attempt_vr(src,"examine_bellies",args) //VOREStation Edit
-
-	// VOREStation Edit: Start
+	. += attempt_vr(src,"examine_bellies",args)
 	if(ooc_notes)
 		. += "<span class = 'deptradio'>OOC Notes:</span> <a href='?src=\ref[src];ooc_notes=1'>\[View\]</a>\n"
-	// VOREStation Edit: End
 
 	. += "\n*---------*"
 

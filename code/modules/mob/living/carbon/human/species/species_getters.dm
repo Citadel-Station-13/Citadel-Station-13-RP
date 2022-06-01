@@ -31,8 +31,14 @@
 /datum/species/proc/get_station_variant()
 	return name
 
+// used for limb caching
+// todo: rework limbs and get rid of this, numerical static keys are dumb as fuck,
+// limbs should use their own types!
 /datum/species/proc/get_race_key(var/mob/living/carbon/human/H)
-	return race_key
+	return real_race_key(H)
+
+/datum/species/proc/real_race_key(mob/living/carbon/human/H)
+	return name
 
 /datum/species/proc/get_bodytype(var/mob/living/carbon/human/H)
 	return name

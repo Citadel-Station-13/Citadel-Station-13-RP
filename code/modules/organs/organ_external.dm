@@ -325,8 +325,7 @@
 
 	if(status & ORGAN_BROKEN && brute)
 		jostle_bone(brute)
-		if(organ_can_feel_pain() && prob(40) && !isbelly(owner.loc) && !istype(owner.loc, /obj/item/dogborg/sleeper)) //VOREStation Edit
-			owner.emote("scream")	//getting hit on broken hand hurts
+		if(organ_can_feel_pain() && prob(40) && !isbelly(owner.loc) && !istype(owner.loc, /obj/item/dogborg/sleeper))			owner.emote("scream")	//getting hit on broken hand hurts
 	if(used_weapon)
 		add_autopsy_data("[used_weapon]", brute + burn)
 
@@ -473,7 +472,7 @@
 		to_chat(user, "<span class='notice'>Nothing to fix!</span>")
 		return 0
 
-	if(brute_dam + burn_dam >= min_broken_damage) //VOREStation Edit - Makes robotic limb damage scalable
+	if(brute_dam + burn_dam >= min_broken_damage) // Makes robotic limb damage scalable
 		to_chat(user, "<span class='danger'>The damage is far too severe to patch over externally.</span>")
 		return 0
 
@@ -526,7 +525,7 @@ This function completely restores a damaged organ to perfect condition.
 
 	// remove embedded objects and drop them on the floor
 	for(var/obj/implanted_object in implants)
-		if(!istype(implanted_object,/obj/item/implant) && !istype(implanted_object,/obj/item/nif))	// We don't want to remove REAL implants. Just shrapnel etc. //VOREStation Edit - NIFs pls
+		if(!istype(implanted_object,/obj/item/implant) && !istype(implanted_object,/obj/item/nif))	// We don't want to remove REAL implants. Just shrapnel etc.
 			implanted_object.loc = get_turf(src)
 			implants -= implanted_object
 
@@ -625,7 +624,7 @@ This function completely restores a damaged organ to perfect condition.
 /obj/item/organ/external/proc/need_process()
 	if(status & (ORGAN_CUT_AWAY|ORGAN_BLEEDING|ORGAN_BROKEN|ORGAN_DESTROYED|ORGAN_DEAD|ORGAN_MUTATED))
 		return 1
-	if(brute_dam || burn_dam)//VOREStation Edit - But they do for medichines! ---&& (robotic < ORGAN_ROBOT)) //Robot limbs don't autoheal and thus don't need to process when damaged
+	if(brute_dam || burn_dam) //Robot limbs don't autoheal and thus don't need to process when damaged. Aside from medichines.
 		return 1
 	if(last_dam != brute_dam + burn_dam) // Process when we are fully healed up.
 		last_dam = brute_dam + burn_dam
@@ -895,10 +894,9 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 	if(cannot_amputate || !owner)
 		return
-	//VOREStation Add
 	if(robotic >= ORGAN_NANOFORM)
 		disintegrate = DROPLIMB_BURN //Ashes will be fine
-	else if(disintegrate == DROPLIMB_EDGE && nonsolid) //VOREStation Add End
+	else if(disintegrate == DROPLIMB_EDGE && nonsolid)
 		disintegrate = DROPLIMB_BLUNT //splut
 
 	switch(disintegrate)
@@ -1106,7 +1104,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			"<span class='danger'>You hear a sickening crack.</span>")
 		jostle_bone()
 		if(organ_can_feel_pain() && !isbelly(owner.loc))
-			owner.emote("scream")
+			INVOKE_ASYNC(owner, /mob/proc/emote, "scream")
 
 	playsound(src.loc, "fracture", 10, 1, -2)
 	status |= ORGAN_BROKEN
@@ -1162,9 +1160,9 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 	if(company)
 		model = company
-		var/datum/robolimb/R = all_robolimbs[company]
+		var/datum/robolimb/R = GLOB.all_robolimbs[company]
 		if(!R || (species && (species.name in R.species_cannot_use)))
-			R = basic_robolimb
+			R = GLOB.basic_robolimb
 		if(R)
 			force_icon = R.icon
 			brute_mod *= R.robo_brute_mod
@@ -1180,7 +1178,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 	dislocated = -1
 	cannot_break = 1
-	min_broken_damage = ROBOLIMB_REPAIR_CAP //VOREStation Addition - Makes robotic limb damage scalable
+	min_broken_damage = ROBOLIMB_REPAIR_CAP // Makes robotic limb damage scalable
 	remove_splint()
 	get_icon()
 	unmutate()
@@ -1229,7 +1227,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	return !(status & (ORGAN_MUTATED|ORGAN_DEAD))
 
 /obj/item/organ/external/proc/is_malfunctioning()
-	return ((robotic >= ORGAN_ROBOT) && (brute_dam + burn_dam) >= min_broken_damage*0.83 && prob(brute_dam + burn_dam)) //VOREStation Edit - Makes robotic limb damage scalable
+	return ((robotic >= ORGAN_ROBOT) && (brute_dam + burn_dam) >= min_broken_damage*0.83 && prob(brute_dam + burn_dam)) // Makes robotic limb damage scalable
 
 /obj/item/organ/external/proc/embed(var/obj/item/W, var/silent = 0)
 	if(!owner || loc != owner)

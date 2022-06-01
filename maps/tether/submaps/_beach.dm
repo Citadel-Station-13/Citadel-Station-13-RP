@@ -55,7 +55,7 @@
 	name = "away mission initializer - beachcave"
 
 //In our case, it initializes the ores and random submaps in the beach's cave, then deletes itself
-/obj/away_mission_init/beachcave/Initialize()
+/obj/away_mission_init/beachcave/Initialize(mapload)
 	flags |= INITIALIZED
 	// Cave submaps are first.
 	/*seed_submaps(list(z), 50, /area/tether_away/cave/unexplored/normal, /datum/map_template/surface/mountains/normal)
@@ -183,29 +183,29 @@
 /area/tether_away/beach/resort/dorm1
 	name = "\improper Away Mission - Virgo 4 Private Room 1"
 	icon_state = "bluwhicir"
-	flags = RAD_SHIELDED
+	area_flags = AF_RAD_SHIELDED
 /area/tether_away/beach/resort/dorm2
 	name = "\improper Away Mission - Virgo 4 Private Room 2"
 	icon_state = "bluwhicir"
-	flags = RAD_SHIELDED
+	area_flags = AF_RAD_SHIELDED
 /area/tether_away/beach/resort/dorm3
 	name = "\improper Away Mission - Virgo 4 Private Room 3"
 	icon_state = "bluwhicir"
-	flags = RAD_SHIELDED
+	area_flags = AF_RAD_SHIELDED
 /area/tether_away/beach/resort/dorm4
 	name = "\improper Away Mission - Virgo 4 Private Room 4"
 	icon_state = "bluwhicir"
-	flags = RAD_SHIELDED
+	area_flags = AF_RAD_SHIELDED
 
 /area/tether_away/beach/cavebase
 	name = "\improper Away Mission - Virgo 4 Mysterious Cave"
 	icon = 'icons/turf/areas_vr.dmi'
 	icon_state = "orawhicir"
-	flags = RAD_SHIELDED
+	area_flags = AF_RAD_SHIELDED
 
 //Some areas for the cave, which are referenced by our init object to seed submaps and ores
 /area/tether_away/cave
-	flags = RAD_SHIELDED
+	area_flags = AF_RAD_SHIELDED
 	ambience = list('sound/ambience/ambimine.ogg', 'sound/ambience/song_game.ogg')
 	base_turf = /turf/simulated/mineral/floor/ignore_mapgen/cave
 

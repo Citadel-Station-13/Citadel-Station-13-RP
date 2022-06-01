@@ -26,7 +26,7 @@
 	density = 1
 	opacity = 1
 	anchored = 1
-	can_atmos_pass = ATMOS_PASS_NO
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	var/health = 200
 	//var/mob/living/affecting = null
 
@@ -205,7 +205,7 @@
 	STOP_PROCESSING(SSobj, src)
 	..()
 
-/obj/effect/alien/weeds/Initialize(pos, node)
+/obj/effect/alien/weeds/Initialize(mapload, node)
 	. = ..()
 	if(istype(loc, /turf/space))
 		qdel(src)
@@ -276,23 +276,18 @@ Alien plants should do something if theres a lot of poison
 	if(linked_node != src)
 		color = linked_node.set_color
 
-	direction_loop:
-		for(var/dirn in GLOB.cardinal)
-			var/turf/T = get_step(src, dirn)
+	for(var/dirn in GLOB.cardinal)
+		var/turf/T = get_step(src, dirn)
 
-			if (!istype(T) || T.density || locate(/obj/effect/alien/weeds) in T || istype(T.loc, /area/arrival) || istype(T, /turf/space))
-				continue
+		if (!istype(T) || T.density || locate(/obj/effect/alien/weeds) in T || istype(T.loc, /area/arrival) || istype(T, /turf/space))
+			continue
 
-	//		if (locate(/obj/movable, T)) // don't propogate into movables
-	//			continue
+		if(U.CheckAirBlock(T) == ATMOS_PASS_AIR_BLOCKED)
+			continue
 
-			for(var/obj/O in T)
-				if(!O.CanZASPass(U))
-					continue direction_loop
+		var/obj/effect/E = new /obj/effect/alien/weeds(T, linked_node)
 
-			var/obj/effect/E = new /obj/effect/alien/weeds(T, linked_node)
-
-			E.color = color
+		E.color = color
 
 	if(istype(src, /obj/effect/alien/weeds/node))
 		var/obj/effect/alien/weeds/node/N = src
