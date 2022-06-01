@@ -861,7 +861,7 @@ var/list/sacrificed = list()
 					cultist.drop_item_to_ground(cultist.wear_mask, TRUE)
 				if(istype(cultist.loc, /obj/structure/closet))
 					var/obj/structure/closet/C = cultist.loc
-					C.welded = FALSE
+					C.sealed = FALSE
 					if(istype(C, /obj/structure/closet/secure_closet))
 						var/obj/structure/closet/secure_closet/SC = cultist.loc
 						SC.locked = FALSE

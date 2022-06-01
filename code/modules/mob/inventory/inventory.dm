@@ -190,14 +190,20 @@
 
 /**
  * forcefully equips an item to a slot
+ * kicks out conflicting items if possible
  *
  * This CAN fail, so listen to return value
  * Why? YOU MIGHT EQUIP TO A MOB WITHOUT A CERTAIN SLOT!
  *
  * @return TRUE/FALSE
  */
-/mob/proc/force_equip_to_slot(obj/item/I, slot, update_icons)
+/mob/proc/force_equip_to_slot(obj/item/I, slot, silent, update_icons)
 
+/mob/proc/force_equip_to_slot_or_del(obj/item/I, slot, silent, update_icons)
+	if(!force_equip_to_slot(I, slot, silent, update_icons))
+		qdel(I)
+		return FALSE
+	return TRUE
 
 /mob/proc/equip_to_slot_or_del(obj/item/I, slot, silent, update_icons, ignore_fluff)
 	. = equip_to_slot_if_possible(I, slot, silent, update_icons, ignore_fluff)

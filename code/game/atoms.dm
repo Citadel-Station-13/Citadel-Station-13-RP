@@ -1035,11 +1035,7 @@
 			reagents.conditional_update()
 		else if(ismovable(A))
 			var/atom/movable/M = A
-			if(isliving(M.loc))
-				var/mob/living/L = M.loc
-				L.transferItemToLoc(M, src)
-			else
-				M.forceMove(src)
+			M.forceMove(src)
 
 /atom/proc/is_drainable()
 	return reagents && (reagents.reagents_holder_flags & DRAINABLE)

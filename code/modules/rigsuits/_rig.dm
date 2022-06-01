@@ -320,7 +320,7 @@
 	ADD_TRAIT(src, TRAIT_NODROP, RIG_TRAIT)
 	set_activation_state(is_sealing? RIG_ACTIVATION_STARTUP : RIG_ACTIVATION_SHUTDOWN)
 
-	if(!seal_target && !suit_is_deployed())
+	if(is_sealing && !suit_is_deployed())
 		M.visible_message("<span class='danger'>[M]'s suit flashes an error light.</span>","<span class='danger'>Your suit flashes an error light. It can't function properly without being fully deployed.</span>")
 		failed_to_seal = 1
 
@@ -356,25 +356,25 @@
 					if(seal_delay && !instant && !do_after(M,seal_delay,needhand=0))
 						failed_to_seal = 1
 
-					piece.icon_state = "[suit_state][!seal_target ? "_sealed" : ""]"
+					piece.icon_state = "[suit_state][is_sealing ? "_sealed" : ""]"
 					switch(msg_type)
 						if("boots")
-							to_chat(M, "<font color=#4F49AF>\The [piece] [!seal_target ? "seal around your feet" : "relax their grip on your legs"].</font>")
+							to_chat(M, "<font color=#4F49AF>\The [piece] [is_sealing ? "seal around your feet" : "relax their grip on your legs"].</font>")
 							M.update_inv_shoes()
 						if("gloves")
-							to_chat(M, "<font color=#4F49AF>\The [piece] [!seal_target ? "tighten around your fingers and wrists" : "become loose around your fingers"].</font>")
+							to_chat(M, "<font color=#4F49AF>\The [piece] [is_sealing ? "tighten around your fingers and wrists" : "become loose around your fingers"].</font>")
 							M.update_inv_gloves()
 						if("chest")
-							to_chat(M, "<font color=#4F49AF>\The [piece] [!seal_target ? "cinches tight again your chest" : "releases your chest"].</font>")
+							to_chat(M, "<font color=#4F49AF>\The [piece] [is_sealing ? "cinches tight again your chest" : "releases your chest"].</font>")
 							M.update_inv_wear_suit()
 						if("helmet")
-							to_chat(M, "<font color=#4F49AF>\The [piece] hisses [!seal_target ? "closed" : "open"].</font>")
+							to_chat(M, "<font color=#4F49AF>\The [piece] hisses [is_sealing ? "closed" : "open"].</font>")
 							M.update_inv_head()
 							if(helmet)
 								helmet.update_light(wearer)
 
 					//sealed pieces become airtight, protecting against diseases
-					if (!seal_target)
+					if (is_sealing)
 						piece.armor["bio"] = 100
 					else
 						piece.armor["bio"] = src.armor["bio"]
@@ -382,7 +382,7 @@
 				else
 					failed_to_seal = 1
 
-		if((M && !(istype(M) && (M.back == src || M.belt == src)) && !istype(M,/mob/living/silicon)) || (!seal_target && !suit_is_deployed()))
+		if((M && !(istype(M) && (M.back == src || M.belt == src)) && !istype(M,/mob/living/silicon)) || (is_sealing && !suit_is_deployed()))
 			failed_to_seal = 1
 
 	if(failed_to_seal)
@@ -394,7 +394,7 @@
 		for(var/obj/item/piece in list(helmet,boots,gloves,chest))
 			if(!piece)
 				continue
-			piece.icon_state = "[suit_state][!seal_target ? "" : "_sealed"]"
+			piece.icon_state = "[suit_state][is_activated() ? "" : "_sealed"]"
 		if(is_activated())
 			ADD_TRAIT(src, TRAIT_NODROP, RIG_TRAIT)
 		else
@@ -874,7 +874,7 @@
 		else if (deploy_mode != ONLY_RETRACT)
 			if(check_slot && check_slot == use_obj)
 				return
-			if(!H.equip_to_slot_if_possible(use_obj, equip_to, 0, 1))
+			if(!H.equip_to_slot_if_possible(use_obj, equip_to, silent = TRUE))
 				if(check_slot && warn == 1)
 					to_chat(H, "<span class='danger'>You are unable to deploy \the [piece] as \the [check_slot] [check_slot.gender == PLURAL ? "are" : "is"] in the way.</span>")
 					return
