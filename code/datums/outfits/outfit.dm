@@ -138,7 +138,7 @@
 	for(var/path in uniform_accessories)
 		var/number = uniform_accessories[path]
 		for(var/i=0,i<number,i++)
-			H.equip_to_slot_or_del(new path(H), /datum/inventory/abstract/attach_as_accessory)
+			H.equip_to_slot_or_del(new path(H), /datum/inventory_slot_meta/abstract/attach_as_accessory)
 
 	if(H.species)
 		H.species.equip_survival_gear(H, flags&OUTFIT_EXTENDED_SURVIVAL, flags&OUTFIT_COMPREHENSIVE_SURVIVAL)

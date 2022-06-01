@@ -19,6 +19,17 @@
 		return FALSE
 	return TRUE
 
+/**
+ * put in hands or del
+ *
+ * @return TRUE/FALSE based on put in hand or del'd
+ */
+/mob/proc/put_in_hands_or_del(obj/item/I, force)
+	if(!put_in_hands(I, force))
+		qdel(I)
+		return FALSE
+	return TRUE
+
 /mob/proc/put_in_right_hand(obj/item/I, force)
 	return FALSE
 

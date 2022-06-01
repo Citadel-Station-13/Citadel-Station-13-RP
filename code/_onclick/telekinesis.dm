@@ -74,19 +74,11 @@ var/const/tk_maxrange = 15
 	var/atom/movable/focus = null
 	var/mob/living/host = null
 
-/obj/item/tk_grab/dropped(mob/user, accessory, silent)
-	. = ..()
-	if(focus && user && loc != user && loc != user.loc) // drop_item() gets called when you tk-attack a table/closet with an item
-		if(focus.Adjacent(loc))
-			focus.forceMove(loc)
-	qdel(src)
-
 //stops TK grabs being equipped anywhere but into hands
-/obj/item/tk_grab/equipped(mob/user, slot, accessory, creation)
-	..()
-	if( (slot == slot_l_hand) || (slot== slot_r_hand) )	return
-	qdel(src)
-	return
+/obj/item/tk_grab/equipped(mob/user, slot, accessory, creation, silent)
+	. = ..()
+	if(slot != SLOT_ID_HANDS)
+		qdel(src)
 
 /obj/item/tk_grab/attack_self(mob/user as mob)
 	if(focus)
