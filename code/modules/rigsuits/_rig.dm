@@ -443,7 +443,7 @@
 
 /obj/item/rig/proc/update_component_sealed()
 	for(var/obj/item/piece in list(helmet,boots,gloves,chest))
-		if(canremove)
+		if(!is_activated())
 			update_airtight(piece, 0) // Unseal
 		else
 			update_airtight(piece, 1) // Seal
@@ -558,7 +558,7 @@
 				module.deactivate()
 			slowdown = offline_slowdown
 			if(istype(wearer))
-				if(!canremove)
+				if(is_activated())
 					if (offline_slowdown < 3)
 						to_chat(wearer, "<span class='danger'>Your suit beeps stridently, and suddenly goes dead.</span>")
 					else
