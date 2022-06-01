@@ -63,7 +63,7 @@
 	life_tick++
 
 	// This is not an ideal place for this but it will do for now.
-	if(wearing_rig && wearing_rig.offline)
+	if(wearing_rig && !wearing_rig.is_activated())
 		wearing_rig = null
 
 	..()
@@ -375,7 +375,7 @@
 		var/obj/item/tank/rig_supply
 		if(istype(back,/obj/item/rig))
 			var/obj/item/rig/rig = back
-			if(!rig.offline && (rig.air_supply && internal == rig.air_supply))
+			if(rig.is_activated() && (rig.air_supply && internal == rig.air_supply))
 				rig_supply = rig.air_supply
 
 		if ((!rig_supply && !contents.Find(internal)) || !((wear_mask && (wear_mask.clothing_flags & ALLOWINTERNALS)) || (head && (head.clothing_flags & ALLOWINTERNALS))))
@@ -1095,7 +1095,7 @@
 		if(istype(back,/obj/item/rig))
 			var/obj/item/rig/O = back
 			if(O.helmet && O.helmet == head && (O.helmet.body_parts_covered & EYES))
-				if((O.offline && O.offline_vision_restriction == 2) || (!O.offline && O.vision_restriction == 2))
+				if((!O.is_online() && O.offline_vision_restriction == 2) || (O.is_online() && O.vision_restriction == 2))
 					blinded = 1
 
 		// Check everything else.
@@ -1412,7 +1412,7 @@
 				if(!found_welder && istype(back, /obj/item/rig))
 					var/obj/item/rig/O = back
 					if(O.helmet && O.helmet == head && (O.helmet.body_parts_covered & EYES))
-						if((O.offline && O.offline_vision_restriction == 1) || (!O.offline && O.vision_restriction == 1))
+						if((!O.is_online() && O.offline_vision_restriction == 1) || (O.is_online() && O.vision_restriction == 1))
 							found_welder = 1
 				if(absorbed) found_welder = 1
 			if(found_welder)

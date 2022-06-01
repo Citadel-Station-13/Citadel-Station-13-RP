@@ -277,7 +277,7 @@
 							// snowflake rig handling, second highest priority
 							if(istype(C.back, /obj/item/rig))
 								var/obj/item/rig/R = C.back
-								if(R.air_supply && !R.offline)
+								if(R.air_supply && R?.is_activated())
 									locnames += "in your hardsuit"
 									tanks += R.air_supply
 							// now, slots

@@ -29,6 +29,8 @@
 	// Activation
 	/// activation state
 	var/activation_state = RIG_ACTIVATION_OFF
+	/// last online, set in process()
+	var/last_online = FALSE
 
 	var/suit_state //The string used for the suit's icon_state.
 
@@ -120,7 +122,7 @@
 	if(src.loc == usr)
 		. += "The access panel is [locked? "locked" : "unlocked"]."
 		. += "The maintenance panel is [open ? "open" : "closed"]."
-		. += "Hardsuit systems are [offline ? "<font color='red'>offline</font>" : "<font color='green'>online</font>"]."
+		. += "Hardsuit systems are [is_activated() ? "<font color='red'>offline</font>" : "<font color='green'>online</font>"]."
 		. += "The cooling stystem is [cooling_on ? "active" : "inactive"]."
 
 		if(open)
@@ -234,9 +236,8 @@
 
 
 /obj/item/rig/proc/reset()
-	offline = 2
 	set_activation_state(RIG_ACTIVATION_OFF)
-	canremove = 1
+	REMOVE_TRAIT(src, TRAIT_NODROP, RIG_TRAIT)
 	//Reset the trap and upgrade it. Won't affect standard rigs.
 	trapSprung = 0
 	springtrapped = 1
@@ -289,8 +290,8 @@
 		warn = 1
 
 /obj/item/rig/proc/toggle_seals(var/mob/living/carbon/human/M,var/instant)
-
-	if(sealing) return
+	if(is_cycling())
+		return
 
 	if(!check_power_cost(M))
 		return 0
@@ -536,37 +537,31 @@
 	// Run through cooling
 	coolingProcess()
 
-	if(!istype(wearer) || loc != wearer || (wearer.back != src && wearer.belt != src) || canremove || !cell || cell.charge <= 0)
-		if(!cell || cell.charge <= 0)
-			if(electrified > 0)
-				electrified = 0
-			if(!offline)
-				if(istype(wearer))
-					if(!canremove)
-						if (offline_slowdown < 3)
-							to_chat(wearer, "<span class='danger'>Your suit beeps stridently, and suddenly goes dead.</span>")
-						else
-							to_chat(wearer, "<span class='danger'>Your suit beeps stridently, and suddenly you're wearing a leaden mass of metal and plastic composites instead of a powered suit.</span>")
-					if(offline_vision_restriction == 1)
-						to_chat(wearer, "<span class='danger'>The suit optics flicker and die, leaving you with restricted vision.</span>")
-					else if(offline_vision_restriction == 2)
-						to_chat(wearer, "<span class='danger'>The suit optics drop out completely, drowning you in darkness.</span>")
-		if(!offline)
-			offline = 1
-	else
-		if(offline)
-			offline = 0
-			if(istype(wearer) && !wearer.wearing_rig)
-				wearer.wearing_rig = src
-			slowdown = initial(slowdown)
-
-	if(offline)
-		if(offline == 1)
+	if(!is_online())
+		if(last_online)
+			last_online = FALSE
 			for(var/obj/item/rig_module/module in installed_modules)
 				module.deactivate()
-			offline = 2
 			slowdown = offline_slowdown
+			if(istype(wearer))
+				if(!canremove)
+					if (offline_slowdown < 3)
+						to_chat(wearer, "<span class='danger'>Your suit beeps stridently, and suddenly goes dead.</span>")
+					else
+						to_chat(wearer, "<span class='danger'>Your suit beeps stridently, and suddenly you're wearing a leaden mass of metal and plastic composites instead of a powered suit.</span>")
+				if(offline_vision_restriction == 1)
+					to_chat(wearer, "<span class='danger'>The suit optics flicker and die, leaving you with restricted vision.</span>")
+				else if(offline_vision_restriction == 2)
+					to_chat(wearer, "<span class='danger'>The suit optics drop out completely, drowning you in darkness.</span>")
+			if(electrified > 0)
+				electrified = 0
 		return
+	else
+		if(!last_online)
+			last_online = TRUE
+		if(istype(wearer) && !wearer.wearing_rig)
+			wearer.wearing_rig = src
+		slowdown = initial(slowdown)
 
 	if(cell && cell.charge > 0 && electrified > 0)
 		electrified--
@@ -593,7 +588,7 @@
 			fail_msg = "<span class='warning'>You must be wearing \the [src] to do this.</span>"
 		else if(user.incorporeal_move)
 			fail_msg = "<span class='warning'>You must be solid to do this.</span>"
-	if(sealing)
+	if(is_cycling())
 		fail_msg = "<span class='warning'>The hardsuit is in the process of adjusting seals and cannot be activated.</span>"
 	else if(!fail_msg && ((use_unconcious && user.stat > 1) || (!use_unconcious && user.stat)))
 		fail_msg = "<span class='warning'>You are in no fit state to do that.</span>"
@@ -635,8 +630,8 @@
 	if(src.loc != user)
 		data["ai"] = 1
 
-	data["seals"] =     "[src.canremove]"
-	data["sealing"] =   "[src.sealing]"
+	data["seals"] =     "[src.is_activated()]"
+	data["sealing"] =   "[src.is_cycling()]"
 	data["helmet"] =    (helmet ? "[helmet.name]" : "None.")
 	data["gauntlets"] = (gloves ? "[gloves.name]" : "None.")
 	data["boots"] =     (boots ?  "[boots.name]" :  "None.")
@@ -811,7 +806,7 @@
 
 /obj/item/rig/proc/toggle_piece(var/piece, var/mob/living/carbon/human/H, var/deploy_mode)
 
-	if(sealing || !cell || !cell.charge)
+	if(is_cycling() || !cell || !cell.charge)
 		return
 
 	if(!istype(wearer) || (!wearer.back == src && !wearer.belt == src))
@@ -998,7 +993,7 @@
 
 /obj/item/rig/proc/malfunction_check(var/mob/living/carbon/human/user)
 	if(malfunction_delay)
-		if(offline)
+		if(!is_online())
 			to_chat(user, "<span class='danger'>The suit is completely unresponsive.</span>")
 		else
 			to_chat(user, "<span class='danger'>ERROR: Hardware fault. Rebooting interface...</span>")
@@ -1028,8 +1023,9 @@
 			to_chat(user, "<span class='warning'>Your host module is unable to interface with the suit.</span>")
 			return 0
 
-	if(offline || !cell || !cell.charge || locked_down)
-		if(user) to_chat(user, "<span class='warning'>Your host rig is unpowered and unresponsive.</span>")
+	if(!is_online() || locked_down)
+		if(user)
+			to_chat(user, "<span class='warning'>Your host rig is unpowered and unresponsive.</span>")
 		return 0
 	if(!wearer || (wearer.back != src && wearer.belt != src))
 		if(user) to_chat(user, "<span class='warning'>Your host rig is not being worn.</span>")

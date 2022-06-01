@@ -1,3 +1,4 @@
+// activation - bit of a misnomer: this is actually whether or not the rig is attached/sealed to you
 /**
  * set current activation state to
  */
@@ -12,3 +13,10 @@
 
 /obj/item/rig/proc/is_deactivating()
 	return activation_state == RIG_ACTIVATION_SHUTDOWN
+
+/obj/item/rig/proc/is_cycling()
+	return activation_state == RIG_ACTIVATION_STARTUP || activation_state == RIG_ACTIVATION_SHUTDOWN
+
+// online - whether or not the rig is semantically online. a completely depowered suit can be activated but not online.
+/obj/item/rig/proc/is_online()
+	return is_activated() && cell?.charge
