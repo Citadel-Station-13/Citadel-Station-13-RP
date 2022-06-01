@@ -17,7 +17,7 @@
 #define DROPDEL					(1<<6)
 
 ///when an item has this it produces no "X has been hit by Y with Z" message in the default attackby()
-//#define NOBLUDGEON			(1<<7)
+#define NOBLUDGEON				(1<<7)
 ///for all things that are technically items but used for various different stuff
 #define ABSTRACT				(1<<8)
 ///When players should not be able to change the slowdown of the item (Speed potions, ect)

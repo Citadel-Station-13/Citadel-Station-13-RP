@@ -103,7 +103,7 @@
 	origin_tech = list(TECH_MAGNET = 2, TECH_ILLEGAL = 2)
 	var/uses = 10
 
-/obj/item/card/emag/resolve_attackby(obj/item/W, mob/user, params)
+/obj/item/card/emag/resolve_attackby(atom/W, mob/user, params, attack_modifier = 1)
 	var/used_uses = W.emag_act(uses, user, src)
 	if(used_uses < 0)
 		return ..(W, user)

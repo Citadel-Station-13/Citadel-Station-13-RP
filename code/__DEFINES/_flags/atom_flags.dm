@@ -13,11 +13,8 @@
 #define AF_ABSTRACT					(1<<5)
 /// we are an holographic atom from a holodeck/AR system
 #define HOLOGRAM					(1<<6)
-
 /// Used for items if they don't want to get a blood overlay.
 #define NOBLOODY					(1<<7)
-/// When an item has this it produces no "X has been hit by Y with Z" message with the default handler.
-#define NOBLUDGEON					(1<<8)
 /// Reagents don't react inside this container.
 #define NOREACT						(1<<7)
 /// Doesn't Conduct electricity. (metal etc.)

@@ -282,7 +282,6 @@
 		if(!can_apply_to_target(breather))
 			if(tank)
 				tank.forceMove(src)
-			breather.remove_from_mob(contained)
 			contained.forceMove(src)
 			src.visible_message(SPAN_NOTICE("\The [contained] rapidly retracts back into \the [src]!"))
 			breather = null
