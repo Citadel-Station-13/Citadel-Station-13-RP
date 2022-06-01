@@ -9,10 +9,11 @@
 
 // Automata-specific procs and processing.
 /datum/random_map/automata/generate_map()
-	var/gen = generated_string = rustg_cnoise_generate(initial_wall_cell, iterations, cell_threshold, cell_threshold, limit_x, limit_y)
+	generated_string = rustg_cnoise_generate(initial_wall_cell, iterations, cell_threshold, cell_threshold, limit_x, limit_y)
+	var/gen = generated_string
 	var/_size = limit_x * limit_y
-	var/list/apply[size]
-	for(var/i in 1 to size)
+	var/list/apply[_size]
+	for(var/i in 1 to _size)
 		apply[i] = (gen[i] == "1")? cell_live_value : cell_dead_value
 
 /datum/random_map/automata/get_additional_spawns(var/value, var/turf/T)
