@@ -8433,11 +8433,11 @@
 "re" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Substation - Underground Two";
-	charge = 2e+006;
+	charge = 2000;
 	input_attempt = 1;
-	input_level = 140000;
+	input_level = 140;
 	inputting = 2;
-	output_level = 120000
+	output_level = 120
 	},
 /obj/structure/cable/green{
 	d2 = 2;

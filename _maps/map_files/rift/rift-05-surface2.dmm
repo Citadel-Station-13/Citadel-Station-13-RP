@@ -1267,11 +1267,11 @@
 "cz" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Substation - Surface Two";
-	charge = 2e+006;
+	charge = 2000;
 	input_attempt = 1;
-	input_level = 180000;
+	input_level = 180;
 	inputting = 2;
-	output_level = 160000
+	output_level = 160
 	},
 /obj/structure/cable/green{
 	d2 = 2;
