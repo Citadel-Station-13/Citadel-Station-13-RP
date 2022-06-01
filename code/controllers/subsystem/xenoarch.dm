@@ -31,6 +31,7 @@ SUBSYSTEM_DEF(xenoarch)
 
 /datum/controller/subsystem/xenoarch/proc/SetupXenoarch()
 	for(var/turf/simulated/mineral/M in world)
+		CHECK_TICK
 		if(!M.density || (M.z in GLOB.using_map.xenoarch_exempt_levels))
 			continue
 
