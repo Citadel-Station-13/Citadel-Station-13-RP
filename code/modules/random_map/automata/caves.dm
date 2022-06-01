@@ -1,5 +1,5 @@
 /datum/random_map/automata/cave_system
-	iterations = 20
+	iterations = 5
 	descriptor = "moon caves"
 	var/list/ore_turfs = list()
 	var/make_cracked_turfs = TRUE

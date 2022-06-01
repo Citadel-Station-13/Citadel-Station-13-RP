@@ -1,11 +1,11 @@
 /datum/random_map/automata
 	descriptor = "generic caves"
-	initial_wall_cell = 45
+	initial_wall_cell = 55
 	var/generated_string
 	var/iterations = 0               // Number of times to apply the automata rule.
 	var/cell_live_value = WALL_CHAR  // Cell is alive if it has this value.
 	var/cell_dead_value = FLOOR_CHAR // As above for death.
-	var/cell_threshold = 4           // Cell becomes alive with this many live neighbors.
+	var/cell_threshold = 5          // Cell becomes alive with this many live neighbors.
 
 // Automata-specific procs and processing.
 /datum/random_map/automata/generate_map()
@@ -15,6 +15,10 @@
 	var/list/apply[_size]
 	for(var/i in 1 to _size)
 		apply[i] = (gen[i] == "1")? cell_live_value : cell_dead_value
+	map = apply
+
+/datum/random_map/autoamta/seed_map()
+	return	// nah
 
 /datum/random_map/automata/get_additional_spawns(var/value, var/turf/T)
 	return

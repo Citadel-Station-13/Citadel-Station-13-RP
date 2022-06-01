@@ -5,6 +5,9 @@
 #define UNUSED_RESERVATION_TURF		(1<<2)
 /// queued for planet turf addition
 #define TURF_PLANET_QUEUED			(1<<3)
+/// registered to a planet
+#define TURF_PLANET_REGISTERED		(1<<4)
+
 ///CITMAIN TURF FLAGS - Completely unused
 /*
 /// If a turf can be made dirty at roundstart. This is also used in areas.
