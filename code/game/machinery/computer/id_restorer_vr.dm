@@ -19,7 +19,7 @@
 /obj/machinery/computer/id_restorer/attackby(obj/I, mob/user)
 	if(istype(I, /obj/item/card/id) && !(istype(I,/obj/item/card/id/guest)))
 		if(!inserted)
-			if(!userr.attempt_insert_item_for_installation(I, src))
+			if(!user.attempt_insert_item_for_installation(I, src))
 				return
 			inserted = I
 		else if(inserted)

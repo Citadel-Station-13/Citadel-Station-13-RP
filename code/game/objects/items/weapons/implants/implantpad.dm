@@ -25,7 +25,7 @@
 
 
 	attack_hand(mob/living/user as mob)
-		if ((src.case && user.item_is_in_hands(src)))
+		if ((src.case && user.is_holding(src)))
 			user.put_in_active_hand(case)
 
 			src.case.add_fingerprint(user)

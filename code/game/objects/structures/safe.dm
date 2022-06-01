@@ -88,7 +88,7 @@ FLOOR SAFES
 	var/mob/living/carbon/human/user = usr
 
 	var/canhear = 0
-	if(user.get_type_in_hands(/obj/item/clothing/accessory/stethoscope))
+	if(user.get_held_item_of_type(/obj/item/clothing/accessory/stethoscope))
 		canhear = 1
 
 	if(href_list["open"])

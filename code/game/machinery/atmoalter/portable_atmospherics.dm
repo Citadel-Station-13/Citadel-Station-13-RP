@@ -101,11 +101,11 @@
 	if ((istype(W, /obj/item/tank) && !( src.destroyed )))
 		if (holding && (user.a_intent != INTENT_GRAB))
 			return
-		if(!user.attempt_insert_item_for_installation(T, src))
+		if(!user.attempt_insert_item_for_installation(W, src))
 			return
 		var/obj/item/tank/T = W
 		if(holding)
-			holding.forceMove(drop_location())
+			user.grab_item_from_interacted_with(holding, src)
 			to_chat(user, SPAN_NOTICE("You quickly swap the tanks with the quick release valve."))
 		holding = T
 		update_icon()
