@@ -86,6 +86,7 @@ SUBSYSTEM_DEF(planets)
 			P.planet_floors += S
 			S.vis_contents |= P.weather_holder.visuals
 			S.vis_contents |= P.weather_holder.special_visuals
+			CHECK_TICK
 		for(var/turf/unsimulated/wall/planetary/S in new_outdoor_walls)
 			S.turf_flags &= ~TURF_PLANET_QUEUED
 			S.turf_flags |= TURF_PLANET_REGISTERED
@@ -95,6 +96,7 @@ SUBSYSTEM_DEF(planets)
 			if(!P)
 				continue
 			P.planet_walls += S
+			CHECK_TICK
 		new_outdoor_turfs = list()
 		new_outdoor_walls = list()
 		return

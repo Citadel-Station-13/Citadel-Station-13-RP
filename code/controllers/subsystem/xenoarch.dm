@@ -50,7 +50,7 @@ SUBSYSTEM_DEF(xenoarch)
 		digsites_to_make += M
 		CHECK_TICK
 
-	subsystem_log("gathered [digsites_to_make.len] turfs in [round(world.timeofday - start, 0.01)]")
+	subsystem_log("gathered [digsites_to_make.len] turfs in [round((world.timeofday - start) / 10, 0.01)] seconds")
 
 	start = world.timeofday
 	var/made = 0
@@ -97,7 +97,7 @@ SUBSYSTEM_DEF(xenoarch)
 			if(isnull(T.artifact_find) && digsite != DIGSITE_GARDEN && digsite != DIGSITE_ANIMAL)
 				artifact_spawning_turfs.Add(archeo_turf)
 
-	subsystem_log("spawned [made] digsites in [round(world.timeofday - start, 0.01)]")
+	subsystem_log("spawned [made] digsites in [round((world.timeofday - start) / 10, 0.01)] seconds")
 
 	start = world.timeofday
 
@@ -115,7 +115,7 @@ SUBSYSTEM_DEF(xenoarch)
 		artifact_turf.artifact_find = new
 		++artifacts
 
-	subsystem_log("created [artifacts] artifact machinery in [round(world.timeofday - start, 0.01)]")
+	subsystem_log("created [artifacts] artifact machinery in [round((world.timeofday - start) / 10, 0.01)] seconds")
 
 #undef XENOARCH_SPAWN_CHANCE
 #undef DIGSITESIZE_LOWER
