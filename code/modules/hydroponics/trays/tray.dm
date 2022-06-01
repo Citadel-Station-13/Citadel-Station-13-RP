@@ -533,7 +533,7 @@
 		for (var/obj/item/reagent_containers/food/snacks/grown/G in locate(user.x,user.y,user.z))
 			if(!S.can_be_inserted(G))
 				return
-			S.handle_item_insertion(G, 1)
+			S.handle_item_insertion(G, user, 1)
 
 	else if ( istype(O, /obj/item/plantspray) )
 		var/obj/item/plantspray/spray = O

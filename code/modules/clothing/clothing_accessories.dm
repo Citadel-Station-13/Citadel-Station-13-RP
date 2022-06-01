@@ -66,6 +66,8 @@
 		return FALSE
 
 	var/obj/item/clothing/accessory/acc = A
+	if(!istype(acc))
+		return
 	if(can_attach_accessory(acc))
 		if(!user.attempt_insert_item_for_installation(acc, src))
 			return

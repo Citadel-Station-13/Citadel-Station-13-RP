@@ -345,17 +345,6 @@ This saves us from having to call add_fingerprint() any time something is put in
 			W.equipped(src, slot)
 			worn_clothing += head
 			update_inv_head()
-		if(slot_in_backpack)
-			if(src.get_active_held_item() == W)
-				src.remove_from_mob(W)
-			W.forceMove(back)
-		#warn move to handle_abstract_slot_insertion
-		if(slot_tie)
-			for(var/obj/item/clothing/C in worn_clothing)
-				if(istype(W, /obj/item/clothing/accessory))
-					var/obj/item/clothing/accessory/A = W
-					if(C.attempt_attach_accessory(A, src))
-						return
 		else
 			to_chat(src, "<font color='red'>You are trying to equip this item to an unsupported inventory slot. How the heck did you manage that? Stop it...</font>")
 			return
@@ -505,7 +494,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 		if(!S.can_be_inserted(thing))
 			to_chat(src, "<span class='warning'>You can't fit anything in!</span>")
 			return
-		S.handle_item_insertion(thing)
+		S.handle_item_insertion(thing, src)
 		return
 	if(!equipped_back.contents.len) // nothing to take out
 		to_chat(src, "<span class='warning'>There's nothing in your backpack to take out!</span>")
@@ -538,7 +527,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 		if(!S.can_be_inserted(thing))
 			to_chat(src, "<span class='warning'>You can't fit anything in!</span>")
 			return
-		S.handle_item_insertion(thing)
+		S.handle_item_insertion(thing, src)
 		return
 	if(!equipped_belt.contents.len) // nothing to take out
 		to_chat(src, "<span class='warning'>There's nothing in your belt to take out!</span>")

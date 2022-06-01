@@ -6,7 +6,7 @@
  *
  * @return true/false based on if it worked
  */
-/mob/proc/handle_abstract_slot_insertion(obj/item/I, slot, force)
+/mob/proc/handle_abstract_slot_insertion(obj/item/I, slot, force, silent)
 	if(!ispath(slot, /datum/inventory_slot_meta/abstract))
 		slot = resolve_inventory_slot_meta(slot)?.type
 		if(!ispath(slot, /datum/inventory_slot_meta/abstract))
@@ -20,20 +20,26 @@
 		if(/datum/inventory_slot_meta/abstract/right_hand)
 			return put_in_right_hand(I, force)
 		if(/datum/inventory_slot_meta/abstract/put_in_belt)
-
+			var/obj/item/storage/S = item_by_slot(SLOT_ID_BELT)
+			return istype(S) && S.try_insert(I, src, silent, force)
 		if(/datum/inventory_slot_meta/abstract/put_in_backpack)
-
+			var/obj/item/storage/S = item_by_slot(SLOT_ID_BACK)
+			return istype(S) && S.try_insert(I, src, silent, force)
 		if(/datum/inventory_slot_meta/abstract/put_in_hands)
 			return put_in_hands(I, force = force)
 		if(/datum/inventory_slot_meta/abstract/put_in_storage)
-
+			for(var/obj/item/storage/S in get_equipped_items(TRUE, FALSE))
+				if(S.try_insert(I, src, silent, force))
+					return TRUE
+			return FALSE
 		if(/datum/inventory_slot_meta/abstract/attach_as_accessory)
-
+			for(var/obj/item/clothing/C in get_equipped_items(FALSE, FALSE))
+				if(C.attempt_attach_accessory(I))
+					return TRUE
+			return FALSE
 		else
 			CRASH("Invalid abstract slot [slot]")
 
-
-#warn impl
 
 // So why do all of these return true if the item is null?
 // Semantically, transferring/dropping nothing always works
@@ -179,6 +185,7 @@
  */
 /mob/proc/equip_to_slot_if_possible(obj/item/I, slot, silent, update_icons, ignore_fluff)
 
+#warn impl
 
 
 /**

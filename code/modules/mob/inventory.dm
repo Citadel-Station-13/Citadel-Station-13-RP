@@ -76,7 +76,8 @@
 		if(!istype(S))
 			continue
 		if(S.can_be_inserted(src, TRUE))
-			S.handle_item_insertion(src)
+			#warn nuke this from orbit this ENTIRE FUCKNIG PROC from orbit
+			S.handle_item_insertion(src, M)
 			return TRUE
 
 	to_chat(M, "<span class='warning'>You are unable to equip that!</span>")

@@ -331,37 +331,32 @@
 //This proc handles items being inserted. It does not perform any checks of whether an item can or can't be inserted. That's done by can_be_inserted()
 //The stop_warning parameter will stop the insertion message from being displayed. It is intended for cases where you are inserting multiple items at once,
 //such as when picking up all the items on a tile with one click.
-/obj/item/storage/proc/handle_item_insertion(obj/item/W as obj, prevent_warning = 0)
-	if(!istype(W)) return 0
+/obj/item/storage/proc/handle_item_insertion(obj/item/W as obj, mob/user, prevent_warning = 0)
+	if(!istype(W))
+		return 0
 
-	if(usr)
-		usr.remove_from_mob(W,target = src) //If given a target, handles forceMove()
-		W.on_enter_storage(src)
-		if (usr.client && usr.s_active != src)
-			usr.client.screen -= W
-		if(W.current_equipped_slot)
-			W.unequipped(user, W.current_equipped_slot)
-		W.dropped(usr)
-		add_fingerprint(usr)
-
+	W.forceMove(src)
+	W.on_enter_storage(src)
+	if(user)
 		if(!prevent_warning)
-			for(var/mob/M in viewers(usr, null))
+			for(var/mob/M in viewers(user))
 				if (M == usr)
 					to_chat(usr, "<span class='notice'>You put \the [W] into [src].</span>")
 				else if (M in range(1)) //If someone is standing close enough, they can tell what it is...
 					M.show_message("<span class='notice'>\The [usr] puts [W] into [src].</span>")
 				else if (W && W.w_class >= 3) //Otherwise they can only see large or normal items from a distance...
 					M.show_message("<span class='notice'>\The [usr] puts [W] into [src].</span>")
-
-		src.orient2hud(usr)
-		if(usr.s_active)
-			usr.s_active.show_to(usr)
-	else
-		W.forceMove(src)
-		W.on_enter_storage(src)
+		if(user.s_active == src)
+			orient2hud(user)
+			show_to(user)
 
 	update_icon()
 	return 1
+
+/obj/item/storage/proc/try_insert(obj/item/I, mob/user, prevent_warning = FALSE, force)
+	if(!force && !can_be_inserted(I, prevent_warning))
+		return FALSE
+	return handle_item_insertion(I, user, prevent_warning)
 
 //Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target
 /obj/item/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location)
@@ -439,7 +434,7 @@
 				to_chat(user, "<span class='warning'>God damn it!</span>")
 
 	W.add_fingerprint(user)
-	return handle_item_insertion(W)
+	return handle_item_insertion(W, user)
 
 /obj/item/storage/attack_hand(mob/user as mob)
 	if(ishuman(user))
@@ -476,7 +471,7 @@
 			failure = 1
 			continue
 		success = 1
-		handle_item_insertion(I, 1)	//The 1 stops the "You put the [src] into [S]" insertion message from being displayed.
+		handle_item_insertion(I, user, TRUE)	//The 1 stops the "You put the [src] into [S]" insertion message from being displayed.
 	if(success && !failure)
 		to_chat(user, "<span class='notice'>You put everything in [src].</span>")
 	else if(success)
@@ -496,7 +491,6 @@
 			to_chat(usr, "[src] now picks up all items on a tile at once.")
 		if(0)
 			to_chat(usr, "[src] now picks up one item at a time.")
-
 
 /obj/item/storage/verb/quick_empty()
 	set name = "Empty Contents"

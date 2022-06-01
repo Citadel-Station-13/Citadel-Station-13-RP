@@ -106,7 +106,7 @@
 		var/obj/item/shreddedp/SP = get_shredded_paper()
 		if(!SP) break
 		if(empty_into)
-			empty_into.handle_item_insertion(SP)
+			empty_into.handle_item_insertion(SP, user)
 			if(empty_into.contents.len >= empty_into.storage_slots)
 				break
 	if(empty_into)
