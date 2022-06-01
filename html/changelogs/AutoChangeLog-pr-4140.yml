@@ -1,0 +1,7 @@
+author: "silicons"
+delete-after: True
+changes: 
+  - code_imp: "slightly streamlines xenoarch"
+  - code_imp: "slightly streamlines randommaps"
+  - code_imp: "slightly streamlines zas"
+  - bugfix: "map level index duping in GLOB.using_map"
