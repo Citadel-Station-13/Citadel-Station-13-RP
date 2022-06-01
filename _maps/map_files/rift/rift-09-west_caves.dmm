@@ -24,7 +24,7 @@
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "M" = (
-/obj/structure/stairs/spawner/north,
+/obj/structure/stairs/spawner/south,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "N" = (
@@ -32344,8 +32344,8 @@ w
 h
 h
 h
-M
 h
+M
 h
 h
 h
@@ -32538,8 +32538,8 @@ w
 h
 h
 h
-M
 h
+M
 h
 h
 h
