@@ -302,13 +302,14 @@
 
 	deploy(M,instant)
 
-	var/seal_target = !canremove
+	var/is_sealing = !is_activated()
+	var/old_activation = activation_state
 	var/failed_to_seal
 
 	var/atom/movable/screen/rig_booting/booting_L = new
 	var/atom/movable/screen/rig_booting/booting_R = new
 
-	if(!seal_target)
+	if(is_sealing)
 		booting_L.icon_state = "boot_left"
 		booting_R.icon_state = "boot_load"
 		animate(booting_L, alpha=230, time=30, easing=SINE_EASING)
@@ -316,8 +317,8 @@
 		M.client.screen += booting_L
 		M.client.screen += booting_R
 
-	canremove = 0 // No removing the suit while unsealing.
-	sealing = 1
+	ADD_TRAIT(src, TRAIT_NODROP, RIG_TRAIT)
+	set_activation_state(is_sealing? RIG_ACTIVATION_STARTUP : RIG_ACTIVATION_SHUTDOWN)
 
 	if(!seal_target && !suit_is_deployed())
 		M.visible_message("<span class='danger'>[M]'s suit flashes an error light.</span>","<span class='danger'>Your suit flashes an error light. It can't function properly without being fully deployed.</span>")
@@ -384,30 +385,40 @@
 		if((M && !(istype(M) && (M.back == src || M.belt == src)) && !istype(M,/mob/living/silicon)) || (!seal_target && !suit_is_deployed()))
 			failed_to_seal = 1
 
-	sealing = null
-
 	if(failed_to_seal)
+		set_activation_state(old_activation)
 		M.client.screen -= booting_L
 		M.client.screen -= booting_R
 		qdel(booting_L)
 		qdel(booting_R)
 		for(var/obj/item/piece in list(helmet,boots,gloves,chest))
-			if(!piece) continue
+			if(!piece)
+				continue
 			piece.icon_state = "[suit_state][!seal_target ? "" : "_sealed"]"
-		canremove = !seal_target
+		if(is_activated())
+			ADD_TRAIT(src, TRAIT_NODROP, RIG_TRAIT)
+		else
+			REMOVE_TRAIT(src, TRAIT_NODROP, RIG_TRAIT)
 		if(airtight)
 			update_component_sealed()
 		update_icon(1)
 		return 0
 
 	// Success!
-	canremove = seal_target
+	if(is_sealing)
+		set_activation_state(RIG_ACTIVATION_ON)
+		ADD_TRAIT(src, TRAIT_NODROP, RIG_TRAIT)
+	else
+		set_activation_state(RIG_ACTIVATION_OFF)
+		REMOVE_TRAIT(src, TRAIT_NODROP, RIG_TRAIT)
+
 	if(M.hud_used)
-		if(canremove)
+		if(!is_activated())
 			QDEL_NULL(minihud)
 		else
 			minihud = new (M.hud_used, src)
-	to_chat(M, "<font color=#4F49AF><b>Your entire suit [canremove ? "loosens as the components relax" : "tightens around you as the components lock into place"].</b></font>")
+
+	to_chat(M, "<font color=#4F49AF><b>Your entire suit [!is_sealing ? "loosens as the components relax" : "tightens around you as the components lock into place"].</b></font>")
 	M.client.screen -= booting_L
 	qdel(booting_L)
 	booting_R.icon_state = "boot_done"
@@ -415,16 +426,19 @@
 		M.client.screen -= booting_R
 		qdel(booting_R)
 
-	if(isTrapped == 1 && springtrapped == 1)
-		springtrap(M)
-	if(isTrapped == 1 && springtrapped == 0)
-		trap(M)
+	if(is_sealing)
+		if(isTrapped == 1 && springtrapped == 1)
+			springtrap(M)
+		if(isTrapped == 1 && springtrapped == 0)
+			trap(M)
 
-	if(canremove)
+	if(!is_sealing)
 		for(var/obj/item/rig_module/module in installed_modules)
 			module.deactivate()
+
 	if(airtight)
 		update_component_sealed()
+
 	update_icon(1)
 
 /obj/item/rig/proc/update_component_sealed()
@@ -724,7 +738,7 @@
 		return 1
 
 	if(istype(user))
-		if(!canremove)
+		if(!is_activated())
 			return 1
 		if(malfunction_check(user))
 			return 0
@@ -854,19 +868,13 @@
 				if(istype(holder))
 					if(use_obj && check_slot == use_obj)
 						to_chat(H, "<font color=#4F49AF><b>Your [use_obj.name] [use_obj.gender == PLURAL ? "retract" : "retracts"] swiftly.</b></font>")
-						use_obj.canremove = 1
-						holder.drop_from_inventory(use_obj)
-						use_obj.forceMove(get_turf(src))
-						use_obj.dropped()
-						use_obj.canremove = 0
-						use_obj.forceMove(src)
+						if(!holder.transfer_item_to_loc(use_obj, src, TRUE))
+							use_obj.forceMove(src)
 
 		else if (deploy_mode != ONLY_RETRACT)
 			if(check_slot && check_slot == use_obj)
 				return
-			use_obj.forceMove(H)
 			if(!H.equip_to_slot_if_possible(use_obj, equip_to, 0, 1))
-				use_obj.forceMove(src)
 				if(check_slot && warn == 1)
 					to_chat(H, "<span class='danger'>You are unable to deploy \the [piece] as \the [check_slot] [check_slot.gender == PLURAL ? "are" : "is"] in the way.</span>")
 					return
