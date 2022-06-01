@@ -32,7 +32,7 @@
 	/// The status/visibility of the UI.
 	var/status = UI_INTERACTIVE
 	/// Timed refreshing state
-	var/refreshing = FALSE
+	var/refreshing = UI_NOT_REFRESHING
 	/// Topic state used to determine status/interactability.
 	var/datum/ui_state/state = null
 	/// Rate limit client refreshes to prevent DoS.
@@ -197,15 +197,16 @@
  *
  * optional custom_data list Custom data to send instead of ui_data.
  * optional force bool Send an update even if UI is not interactive.
+ * optional hard_refresh block the ui entirely while this is refreshing. use if you don't want users to see an ui during a queued refresh.
  */
-/datum/tgui/proc/send_full_update(custom_data, force)
+/datum/tgui/proc/send_full_update(custom_data, force, hard_refresh)
 	if(!user.client || !initialized || closing)
 		return
 	if(!COOLDOWN_FINISHED(src, refresh_cooldown))
-		refreshing = TRUE
+		refreshing = max(refreshing, hard_refresh? UI_HARD_REFRESHING : UI_SOFT_REFRESHING)
 		addtimer(CALLBACK(src, .proc/send_full_update), TGUI_REFRESH_FULL_UPDATE_COOLDOWN, TIMER_UNIQUE)
 		return
-	refreshing = FALSE
+	refreshing = UI_NOT_REFRESHING
 	var/should_update_data = force || status >= UI_UPDATE
 	window.send_message("update", get_payload(
 		custom_data,
@@ -228,6 +229,23 @@
 	window.send_message("update", get_payload(
 		custom_data,
 		with_data = should_update_data))
+
+/**
+ * public
+ *
+ * Send a partial update to the client of only the provided data lists
+ * Does not update config at all
+ * WARNING: Do not use this unless you know what you're doing
+ *
+ * required data The data to send
+ * optional force bool Send an update even if UI is not interactive.
+ */
+/datum/tgui/proc/send_custom_update(data, force)
+	if(!user.client || !initialized || closing)
+		return
+	if(!force && status < UI_UPDATE)
+		return
+	window.send_message("data", list("data" = data))
 
 /**
  * private

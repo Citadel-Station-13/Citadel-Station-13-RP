@@ -56,25 +56,35 @@
  * Forces an update on static data. Should be done manually whenever something
  * happens to change static data.
  *
- * required user the mob currently interacting with the ui
+ * If no user is provided, every user will be updated.
+ *
+ * optional user the mob currently interacting with the ui
  * optional ui tgui to be updated
+ * optional hard_refreshion use if you need to block the ui from showing if the refresh queues
  */
-/datum/proc/update_static_data(mob/user, datum/tgui/ui)
+/datum/proc/update_static_data(mob/user, datum/tgui/ui, hard_refresh)
+	if(!user)
+		for (var/datum/tgui/window as anything in SStgui.open_uis_by_src[REF(src)])
+			window.send_full_update(hard_refresh = hard_refresh)
+		return
 	if(!ui)
 		ui = SStgui.get_open_ui(user, src)
 	if(ui)
-		ui.send_full_update()
+		ui.send_full_update(hard_refresh = hard_refresh)
 
 /**
- * public
- *
- * Will force an update on static data for all viewers.
- * Should be done manually whenever something happens to
- * change static data.
+ * immediately shunts this data to either an user, an ui, or all users.
  */
-/datum/proc/update_static_data_for_all_viewers()
-	for (var/datum/tgui/window as anything in SStgui.open_uis_by_src[REF(src)])
-		window.send_full_update()
+/datum/proc/send_tgui_data_immediate(mob/user, datum/tgui/ui, list/data)
+	ASSERT(data)
+	if(!user)
+		for (var/datum/tgui/window as anything in SStgui.open_uis_by_src[REF(src)])
+			window.send_custom_update(data)
+		return
+	if(!ui)
+		ui = SStgui.get_open_ui(user, src)
+	if(ui)
+		ui.send_custom_update(data)
 
 /**
  * public

@@ -162,6 +162,12 @@
 	recipes += new/datum/stack_recipe("wooden chair", /obj/structure/bed/chair/wood, 3, time = 10, one_per_turf = 1, on_floor = 1, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("crossbow frame", /obj/item/crossbowframe, 5, time = 25, one_per_turf = 0, on_floor = 0, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("coffin", /obj/structure/closet/coffin, 5, time = 15, one_per_turf = 1, on_floor = 1, pass_stack_color = TRUE)
+	// Pew pew pew
+	recipes += new/datum/stack_recipe_list("pews", list( \
+		new/datum/stack_recipe("pew middle", /obj/structure/bed/chair/pew, 1, one_per_turf = 1, on_floor = 1, supplied_material = "[name]"), \
+		new/datum/stack_recipe("pew left", /obj/structure/bed/chair/pew/left, 1, one_per_turf = 1, on_floor = 1, supplied_material = "[name]"), \
+		new/datum/stack_recipe("pew right", /obj/structure/bed/chair/pew/right, 1, one_per_turf = 1, on_floor = 1, supplied_material = "[name]"), \
+		))
 	recipes += new/datum/stack_recipe("beehive assembly", /obj/item/beehive_assembly, 4, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("beehive frame", /obj/item/honey_frame, 1, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("book shelf", /obj/structure/bookcase, 5, time = 15, one_per_turf = 1, on_floor = 1, pass_stack_color = TRUE)
@@ -203,6 +209,12 @@
 	recipes += new/datum/stack_recipe("crossbow frame", /obj/item/crossbowframe, 5, time = 25, one_per_turf = 0, on_floor = 0)
 	recipes += new/datum/stack_recipe("coilgun stock", /obj/item/coilgun_assembly, 5)
 	recipes += new/datum/stack_recipe("coffin", /obj/structure/closet/coffin, 5, time = 15, one_per_turf = 1, on_floor = 1)
+	// Pew pew pew
+	recipes += new/datum/stack_recipe_list("pews", list( \
+		new/datum/stack_recipe("pew middle", /obj/structure/bed/chair/pew, 1, one_per_turf = 1, on_floor = 1, supplied_material = "[name]"), \
+		new/datum/stack_recipe("pew left", /obj/structure/bed/chair/pew/left, 1, one_per_turf = 1, on_floor = 1, supplied_material = "[name]"), \
+		new/datum/stack_recipe("pew right", /obj/structure/bed/chair/pew/right, 1, one_per_turf = 1, on_floor = 1, supplied_material = "[name]"), \
+		))
 	recipes += new/datum/stack_recipe("hardwood bokken blade", /obj/item/bokken_blade/hardwood, 10, time = 20)
 	recipes += new/datum/stack_recipe("hardwood wakibokken blade", /obj/item/wakibokken_blade/hardwood, 5, time = 10)
 
