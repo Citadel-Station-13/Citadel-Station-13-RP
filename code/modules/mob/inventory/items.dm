@@ -10,8 +10,9 @@
  * slot - slot id we're equipped to
  * accessory - TRUE/FALSE, are we equipped as an accessory?
  * creation - being equipped by a job datum/outfit/etc
+ * silent - suppress sounds
  */
-/obj/item/proc/equipped(mob/user, slot, accessory, creation)
+/obj/item/proc/equipped(mob/user, slot, accessory, creation, silent)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot, accessory, creation)
 	current_equipped_slot = slot
@@ -20,13 +21,9 @@
 	user.position_hud_item(src,slot)
 	if(user.client)
 		user.client.screen |= src
-	if((slot_flags & slot))
+	if(slot != SLOT_ID_HANDS)
 		if(equip_sound)
-			playsound(src, equip_sound, 30)
-		else
-			playsound(src, drop_sound, 30)
-	else if(slot == slot_l_hand || slot == slot_r_hand)
-		playsound(src, pickup_sound, 20, preference = /datum/client_preference/pickup_sounds)
+			playsound(src, equip_sound, 30, ignore_walls = FALSE)
 	user.update_inv_hands()
 
 /**
@@ -36,8 +33,9 @@
  * user - person unequipping us
  * slot - slot id we're unequipping from
  * accessory - TRUE/FALSE, are we unequipping from being an accessory or due to our accessory unequipping?
+ * silent - suppress sounds
  */
-/obj/item/proc/unequipped(mob/user, slot, accessory)
+/obj/item/proc/unequipped(mob/user, slot, accessory, silent)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_UNEQUIPPED, user, slot, accessory)
 	current_equipped_slot = null
@@ -61,8 +59,8 @@
 	item_flags &= ~IN_INVENTORY
 
 	SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user)
-	// if(!silent)
-	// 	playsound(src, drop_sound, DROP_SOUND_VOLUME, ignore_walls = FALSE)
+	if(!silent)
+		playsound(src, drop_sound, 30, ignore_walls = FALSE)
 	// user?.update_equipment_speed_mods()
 	if(zoom)
 		zoom() //binoculars, scope, etc
@@ -79,6 +77,8 @@
 	pixel_y = initial(pixel_y)
 	hud_layerise()
 	item_flags |= IN_INVENTORY
+	if(!silent)
+		playsound(src, pickup_sound, 20, ignore_walls = FALSE)
 
 /**
  * get the slowdown we incur when we're worn

@@ -258,7 +258,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 			var/list/hud_data = H.species.hud.gear[gear_slot]
 			if(hud_shown)
 				switch(hud_data["slot"])
-					if(SLOT_ID_SUIT_STORE)
+					if(SLOT_ID_SUIT_STORAGE)
 						if(H.s_store) H.s_store.screen_loc = hud_data["loc"]
 					if(SLOT_ID_WORN_ID)
 						if(H.wear_id) H.wear_id.screen_loc = hud_data["loc"]
@@ -272,7 +272,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 						if(H.r_store) H.r_store.screen_loc = hud_data["loc"]
 			else
 				switch(hud_data["slot"])
-					if(SLOT_ID_SUIT_STORE)
+					if(SLOT_ID_SUIT_STORAGE)
 						if(H.s_store) H.s_store.screen_loc = null
 					if(SLOT_ID_WORN_ID)
 						if(H.wear_id) H.wear_id.screen_loc = null

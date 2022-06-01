@@ -241,7 +241,7 @@
 			else
 				var/obj/item/reagent_containers/syringe/syringe = W
 				if(!user.attempt_insert_item_for_installation(syringe, src))
-					oreturn
+					return
 				to_chat(user,"<span class='info'>You insert \the [syringe] into \the [src], and it locks into place.</span>")
 				syringe = syringe
 				syringe.loc = null

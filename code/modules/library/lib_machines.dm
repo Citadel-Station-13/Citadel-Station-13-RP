@@ -538,7 +538,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 		sleep(rand(200,400))
 		visible_message("[src] whirs as it prints and binds a new book.")
 		var/obj/item/book/b = new(loc)
-		b.dat = O:info
+		b.dat = I:info
 		b.name = "Print Job #" + "[rand(100, 999)]"
 		b.icon_state = "book[rand(1,7)]"
 		qdel(I)

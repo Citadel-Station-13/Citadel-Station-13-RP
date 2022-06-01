@@ -69,14 +69,14 @@
 	if(thing.is_screwdriver() && construction_stage >= 9)
 		user.visible_message("<span class='notice'>\The [user] secures \the [src] and finishes it off.</span>")
 		playsound(loc, 'sound/items/Screwdriver.ogg', 50, 1)
-		var/obj/item/gun/magnetic/coilgun = new(loc)
+		var/obj/item/gun/magnetic/coilgun = new(drop_location())
 		var/put_in_hands
-		var/mob/M = src.loc
+		var/mob/M = loc
 		if(istype(M))
 			put_in_hands = M == user
-			M.drop_from_inventory(src)
+			M.temporarily_remove_from_inventory(src, TRUE)
 		if(put_in_hands)
-			user.put_in_hands(coilgun)
+			user.put_in_active_hand(coilgun)
 		qdel(src)
 		return
 

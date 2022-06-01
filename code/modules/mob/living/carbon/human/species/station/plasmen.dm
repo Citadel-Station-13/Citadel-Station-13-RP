@@ -180,7 +180,7 @@
 		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), SLOT_ID_BACK)
 		H.internal = H.back
 	else
-		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), SLOT_ID_SUIT_STORE)
+		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), SLOT_ID_SUIT_STORAGE)
 		H.internal = H.s_store
 	H.internal = locate(/obj/item/tank) in H.contents
 	if(istype(H.internal,/obj/item/tank) && H.internals)
@@ -197,5 +197,5 @@
 			H.equip_to_slot_or_del(new suit(H), SLOT_ID_SUIT)
 			if(H.on_fire)
 				H.ExtinguishMob()
-			H.equip_to_slot_or_del(new /obj/item/tank/vox(H), SLOT_ID_SUIT_STORE)
+			H.equip_to_slot_or_del(new /obj/item/tank/vox(H), SLOT_ID_SUIT_STORAGE)
 			H.internal = H.s_store

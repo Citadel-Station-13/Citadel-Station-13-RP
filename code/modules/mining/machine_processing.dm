@@ -134,7 +134,7 @@
 		else if(href_list["choice"] == "insert")
 			var/obj/item/card/id/I = usr.get_active_held_item()
 			if(istype(I))
-				if(!user.attempt_insert_item_for_installation(I, src))
+				if(!usr.attempt_insert_item_for_installation(I, src))
 					return
 				inserted_id = I
 			else

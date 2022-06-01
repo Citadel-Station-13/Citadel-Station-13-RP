@@ -97,8 +97,6 @@
 			if(!user.attempt_insert_item_for_installation(thing, src))
 				return
 			cell = thing
-			user.drop_from_inventory(cell)
-			cell.forceMove(src)
 			playsound(src, 'sound/machines/click.ogg', 10, 1)
 			user.visible_message("<span class='notice'>\The [user] slots \the [cell] into \the [src].</span>")
 			update_icon()
@@ -108,7 +106,7 @@
 			if(!capacitor)
 				to_chat(user, "<span class='warning'>\The [src] has no capacitor installed.</span>")
 				return
-			user.put_in_hands_or_drop(capacitor)
+			user.grab_item_from_interacted_with(capacitor, src)
 			user.visible_message("<span class='notice'>\The [user] unscrews \the [capacitor] from \the [src].</span>")
 			playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
 			capacitor = null
@@ -138,9 +136,9 @@
 		// specific ammo types may exist down the track.
 		var/obj/item/stack/ammo = thing
 		if(!istype(ammo))
+			if(!user.attempt_insert_item_for_installation(thing, src))
+				return
 			loaded = thing
-			user.drop_from_inventory(thing)
-			thing.forceMove(src)
 		else
 			loaded = new load_type(src, 1)
 			ammo.use(1)

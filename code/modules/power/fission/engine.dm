@@ -226,9 +226,8 @@
 				"You hear a metallic rattling.")
 			if(do_after(user, 20))
 				if(!user.attempt_insert_item_for_installation(rod, src))
-					reurn
+					return
 				rods += rod
-
 				rod.insertion = 0
 		return
 

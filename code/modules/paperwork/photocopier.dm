@@ -375,7 +375,7 @@
 	if(!..())
 		return FALSE
 	for(var/obj/item/clothing/C in M)
-		if(M.item_is_in_hands(C))
+		if(M.is_holding(C))
 			continue
 		if((C.body_parts_covered & LOWER_TORSO) && !istype(C,/obj/item/clothing/under/permit))
 			to_chat(usr, "<span class='warning'>One needs to not be wearing pants to photocopy one's ass...</span>")

@@ -34,10 +34,12 @@
 
 /**
  * puts item in hand or drops, unless we are using TK, in which case just drops at interacted loc
+ * this doesn't actually check if I is in interacted
+ * this is intentional.
  */
 /mob/proc/grab_item_from_interacted_with(obj/item/I, atom/interacted)
 	// TODO: proper TK checks
-	if(Adjacent(interacted))
+	if(!Adjacent(interacted))
 		I.forceMove(interacted.drop_location())
 		return
 	put_in_hands_or_drop(I)

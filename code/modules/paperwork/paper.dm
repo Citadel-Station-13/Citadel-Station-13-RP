@@ -441,7 +441,7 @@
 		else if (P.name != "paper" && P.name != "photo")
 			B.name = P.name
 		if(!(old_slot? (user.equip_to_slot_if_possible(B, old_slot)) : (user.put_in_hands(B))))
-			B.forceMove(get_turf(src)))
+			B.forceMove(get_turf(src))
 
 		to_chat(user, "<span class='notice'>You clip the [P.name] to [(src.name == "paper") ? "the paper" : src.name].</span>")
 		forceMove(B)

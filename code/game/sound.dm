@@ -3,6 +3,8 @@ GLOBAL_VAR_INIT(sound_env_wet, -1500)
 GLOBAL_VAR_INIT(sound_env_dry, 0)
 
 /proc/playsound(atom/source, soundin, vol as num, vary, extrarange as num, falloff, is_global, frequency = null, channel = 0, pressure_affected = TRUE, ignore_walls = TRUE, preference = null, soundenvwet, soundenvdry)
+	if(!soundin)
+		return
 	if(isnull(soundenvwet))
 		soundenvwet = GLOB.sound_env_wet
 	if(isnull(soundenvdry))

@@ -210,7 +210,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 			return has_organ(BP_TORSO)
 		if(SLOT_ID_RIGHT_POCKET)
 			return has_organ(BP_TORSO)
-		if(SLOT_ID_SUIT_STORE)
+		if(SLOT_ID_SUIT_STORAGE)
 			return has_organ(BP_TORSO)
 		if(slot_in_backpack)
 			return 1

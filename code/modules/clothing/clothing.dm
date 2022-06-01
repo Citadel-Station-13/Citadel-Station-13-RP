@@ -83,7 +83,7 @@
 				if(H.species.get_bodytype_legacy(H) in species_restricted)
 					wearable = 1
 
-			if(!wearable && !(slot in list(SLOT_ID_LEFT_POCKET, SLOT_ID_RIGHT_POCKET, SLOT_ID_SUIT_STORE)))
+			if(!wearable && !(slot in list(SLOT_ID_LEFT_POCKET, SLOT_ID_RIGHT_POCKET, SLOT_ID_SUIT_STORAGE)))
 				to_chat(H, "<span class='danger'>Your species cannot wear [src].</span>")
 				return 0
 	return 1

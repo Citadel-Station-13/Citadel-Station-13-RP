@@ -128,7 +128,7 @@
 	if(r_pocket)
 		H.equip_to_slot_or_del(new r_pocket(H),SLOT_ID_RIGHT_POCKET)
 	if(suit_store)
-		H.equip_to_slot_or_del(new suit_store(H),SLOT_ID_SUIT_STORE)
+		H.equip_to_slot_or_del(new suit_store(H),SLOT_ID_SUIT_STORAGE)
 
 	if(l_hand)
 		H.put_in_left_hand(new l_hand(H))

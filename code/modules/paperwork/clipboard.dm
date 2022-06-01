@@ -39,7 +39,7 @@
 		update_icon()
 		return
 
-	return ..()w
+	return ..()
 
 /obj/item/clipboard/attack_self(mob/user as mob)
 	var/dat = "<title>Clipboard</title>"

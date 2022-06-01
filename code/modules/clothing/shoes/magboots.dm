@@ -123,7 +123,7 @@
 		user.visible_message("The [src] go limp as they are removed from [usr]'s feet.", "The [src] go limp as they are removed from your feet.")
 		clothing_flags &= ~NOSLIP
 		magpulse = 0
-		REMOVE_TRAIT(src, TRAIT_NODROP, MAGBOOT_TARIT)
+		REMOVE_TRAIT(src, TRAIT_NODROP, MAGBOOT_TRAIT)
 
 /obj/item/clothing/shoes/magboots/vox/examine(mob/user)
 	..(user)

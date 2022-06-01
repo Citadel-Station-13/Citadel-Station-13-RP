@@ -53,10 +53,10 @@
 			if(cell)
 				to_chat(user, "There is already a power cell inside.")
 				return
-			if(!user.attempt_insert_item_for_installation(C, src))
+			if(!user.attempt_insert_item_for_installation(I, src))
 				return
-			cell = C
-			C.add_fingerprint(usr)
+			cell = I
+			I.add_fingerprint(usr)
 			user.visible_message("<span class='notice'>[user] inserts a power cell into [src].</span>", "<span class='notice'>You insert the power cell into [src].</span>")
 			power_change()
 		else
