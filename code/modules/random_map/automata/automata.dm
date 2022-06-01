@@ -9,7 +9,7 @@
 
 // Automata-specific procs and processing.
 /datum/random_map/automata/generate_map()
-	generated_string = rustg_cnoise_generate(initial_wall_cell, iterations, cell_threshold, cell_threshold, limit_x, limit_y)
+	generated_string = rustg_cnoise_generate("[initial_wall_cell]", "[iterations]", "[cell_threshold]", "[cell_threshold - 1]", "[limit_x]", "[limit_y]")
 	var/gen = generated_string
 	var/_size = limit_x * limit_y
 	var/list/apply[_size]
