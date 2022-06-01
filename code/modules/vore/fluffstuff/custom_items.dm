@@ -1255,6 +1255,7 @@
 	desc = "Seems absurd, doesn't it? Yet, here we are. Generally considered dangerous contraband unless the user has permission from Central Command."
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "hand_tele"
+	item_flags = NOBLUDGEON
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_ILLEGAL = 7)
 
@@ -1273,7 +1274,6 @@
 
 /obj/item/perfect_tele/Initialize(mapload)
 	. = ..()
-	flags |= NOBLUDGEON
 	if(cell_type)
 		power_source = new cell_type(src)
 	else
@@ -1545,15 +1545,12 @@
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "motion2"
 	w_class = ITEMSIZE_TINY
+	item_flags = NOBLUDGEON
 
 	var/tele_name
 	var/obj/item/perfect_tele/tele_hand
 	var/creator
 	var/warned_users = list()
-
-/obj/item/perfect_tele_beacon/Initialize(mapload)
-	. = ..()
-	flags |= NOBLUDGEON
 
 /obj/item/perfect_tele_beacon/Destroy()
 	tele_name = null

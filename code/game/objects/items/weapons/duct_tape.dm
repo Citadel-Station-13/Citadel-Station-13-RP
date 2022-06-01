@@ -157,13 +157,10 @@
 	icon_state = "tape"
 	w_class = ITEMSIZE_TINY
 	plane = MOB_PLANE
+	item_flags = NOBLUDGEON
 	anchored = FALSE
 
 	var/obj/item/stuck = null
-
-/obj/item/duct_tape_piece/Initialize(mapload)
-	. = ..()
-	flags |= NOBLUDGEON
 
 /obj/item/duct_tape_piece/examine(mob/user)
 	if(stuck)

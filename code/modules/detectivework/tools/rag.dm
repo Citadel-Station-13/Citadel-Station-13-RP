@@ -23,7 +23,8 @@
 	possible_transfer_amounts = list(3)
 	volume = 4
 	can_be_placed_into = null
-	flags = OPENCONTAINER | NOBLUDGEON
+	item_flags = NOBLUDGEON
+	flags = OPENCONTAINER
 	unacidable = 0
 	drop_sound = 'sound/items/drop/cloth.ogg'
 	pickup_sound = 'sound/items/pickup/cloth.ogg'

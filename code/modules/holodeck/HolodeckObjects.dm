@@ -184,7 +184,8 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 					hit(50)
 			return
 
-	if(W.flags & NOBLUDGEON) return
+	if(W.item_flags & NOBLUDGEON)
+		return
 
 	if(W.is_screwdriver())
 		to_chat(user, "<span class='notice'>It's a holowindow, you can't unfasten it!</span>")

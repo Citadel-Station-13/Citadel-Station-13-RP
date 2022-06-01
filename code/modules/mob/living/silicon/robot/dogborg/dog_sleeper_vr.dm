@@ -5,6 +5,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "sleeper"
 	w_class = ITEMSIZE_TINY
+	item_flags = NOBLUDGEON
 	var/mob/living/carbon/patient = null
 	var/mob/living/silicon/robot/hound = null
 	var/inject_amount = 10
@@ -40,7 +41,6 @@
 
 /obj/item/dogborg/sleeper/Initialize(mapload)
 	. = ..()
-	flags |= NOBLUDGEON //No more attack messages
 	files = new /datum/research/techonly(src)
 
 /obj/item/dogborg/sleeper/Destroy()

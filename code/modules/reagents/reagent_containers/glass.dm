@@ -72,7 +72,7 @@
 	update_icon()
 
 /obj/item/reagent_containers/glass/attack(mob/M as mob, mob/user as mob, def_zone)
-	if(force && !(flags & NOBLUDGEON) && user.a_intent == INTENT_HARM)
+	if(force && !(item_flags & NOBLUDGEON) && user.a_intent == INTENT_HARM)
 		return	..()
 
 	if(standard_feed_mob(user, M))
