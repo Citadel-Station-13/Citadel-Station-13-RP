@@ -24,15 +24,18 @@
 #define IMMUTABLE_SLOW			(1<<9)
 ///Tool commonly used for surgery: won't attack targets in an active surgical operation on help intent (in case of mistakes)
 #define SURGICAL_TOOL			(1<<10)
-///Can be worn on certain slots (currently belt and id) that would otherwise require an uniform.
-#define NO_UNIFORM_REQUIRED		(1<<11)
-/// This item can be used to parry. Only a basic check used to determine if we should proceed with parry chain at all.
-#define ITEM_CAN_PARRY			(1<<12)
-/// This item can be used in the directional blocking system. Only a basic check used to determine if we should proceed with directional block handling at all.
-#define ITEM_CAN_BLOCK			(1<<13)
 /// is this item in a storage component?
 #define IN_STORAGE				(1<<14)
 
+DEFINE_BITFIELD(item_flags, list(
+	BITFIELD(IN_INVENTORY),
+	BITFIELD(DROPDEL),
+	BITFIELD(NOBLUDGEON),
+	BITFIELD(ABSTRACT),
+	BITFIELD(IMMUTABLE_SLOW),
+	BITFIELD(SURGICAL_TOOL),
+	BITFIELD(IN_STORAGE),
+))
 
 //! Flags for the clothing_flags var on /obj/item
 /*
@@ -74,6 +77,18 @@
 #warn impl on rigs
 #warn impl in mob_can_equip/has limb for equip
 
+DEFINE_BITFIELD(clothing_flags, list(
+	BITFIELD(BLOCK_GAS_SMOKE_EFFECT),
+	BITFIELD(ALLOWINTERNALS),
+	BITFIELD(NOSLIP),
+	BITFIELD(THICKMATERIAL),
+	BITFIELD(SCAN_REAGENTS),
+	BITFIELD(FLEXIBLEMATERIAL),
+	BITFIELD(ALLOW_SURVIVALFOOD),
+	BITFIELD(EQUIP_IGNORE_DELIMB),
+	BITFIELD(EQUIP_IGNORE_BELTLINK),
+))
+
 //!# bitflags for the /obj/item/var/flags_inv variable. These determine when a piece of clothing hides another, i.e. a helmet hiding glasses.
 // WARNING: The following flags apply only to the external suit!
 #define HIDEGLOVES      	(1<<0)
@@ -97,6 +112,22 @@
 /// Hides the user's hair, facial and otherwise.
 #define BLOCKHAIR			(1<<12)
 
+DEFINE_BITFIELD(flags_inv, list(
+	BITFIELD(HIDEGLOVES),
+	BITFIELD(HIDESUITSTORAGE),
+	BITFIELD(HIDEJUMPSUIT),
+	BITFIELD(HIDESHOES),
+	BITFIELD(HIDETAIL),
+	BITFIELD(HIDETIE),
+	BITFIELD(HIDEHOLSTER),
+	BITFIELD(HIDEMASK)
+	BITFIELD(HIDEEARS),
+	BITFIELD(HIDEEYES),
+	BITFIELD(HIDEFACE),
+	BITFIELD(BLOCKHEADHAIR),
+	BITFIELD(BLOCKHAIR),
+))
+
 //!# bitflags for /obj/item/var/body_parts_covered
 #define HEAD        (1<<0)
 #define FACE        (1<<1)
@@ -116,6 +147,22 @@
 #define HAND_RIGHT  (1<<12)
 #define HANDS       (HAND_LEFT | HAND_RIGHT)
 #define FULL_BODY   (ALL)
+
+DEFINE_BITFIELD(body_parts_covered, list(
+	BITFIELD(HEAD),
+	BITFIELD(FACE),
+	BITFIELD(EYES),
+	BITFIELD(UPPER_TORSO),
+	BITFIELD(LOWER_TORSO),
+	BITFIELD(LEG_LEFT),
+	BITFIELD(LEG_RIGHT),
+	BITFIELD(FOOT_LEFT),
+	BITFIELD(FOOT_RIGHT),
+	BITFIELD(ARM_LEFT),
+	BITFIELD(ARM_RIGHT),
+	BITFIELD(HAND_LEFT),
+	BTIFIELD(HAND_RIGHT),
+))
 
 // Flags for the organ_flags var on /obj/item/organ
 /*
