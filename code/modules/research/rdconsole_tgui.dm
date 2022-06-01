@@ -318,7 +318,10 @@
 	switch(action)
 		if("search")
 			search = params["search"]
-			send_tgui_data_immediate(data = list("lathe_designs" = tgui_GetProtolatheDesigns(linked_lathe, design_page)))
+			send_tgui_data_immediate(data = list(
+				"lathe_designs" = tgui_GetProtolatheDesigns(linked_lathe, design_page),
+				"imprinter_designs" = tgui_GetImprinterDesigns(linked_imprinter, design_page)
+			))
 			return TRUE
 		if("design_page")
 			if(params["reset"])
