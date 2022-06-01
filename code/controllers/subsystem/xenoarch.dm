@@ -108,7 +108,7 @@ SUBSYSTEM_DEF(xenoarch)
 	while((to_make.len < num_artifacts_spawn) && artifact_spawning_turfs.len)
 		to_make += pick_n_take(artifact_spawning_turfs)
 
-	var/list/artifacts_spawnturf_temp = artifact_spawning_turfs.Copy()
+	var/list/artifacts_spawnturf_temp = to_make.Copy()
 	while(artifacts_spawnturf_temp.len)
 		var/turf/simulated/mineral/artifact_turf = artifacts_spawnturf_temp[artifacts_spawnturf_temp.len]
 		--artifacts_spawnturf_temp.len
