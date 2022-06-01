@@ -397,6 +397,9 @@
 	update_icon()
 	return 1
 
+#warn exited hook for remove from storage
+#warn split remove from storage into removal_reset and whatnot
+
 //This proc is called when you want to place an item into the storage item.
 /obj/item/storage/attackby(obj/item/W as obj, mob/user as mob)
 	..()

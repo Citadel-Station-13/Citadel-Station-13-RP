@@ -119,7 +119,7 @@
 					if(tank)
 						tank.forceMove(src)
 					if (breather.wear_mask == contained)
-						breather.remove_from_mob(contained)
+						breather.transfer_item_to_loc(contained, src, TRUE)
 						contained.forceMove(src)
 					else
 						qdel(contained)
@@ -364,7 +364,7 @@
 			if(tank)
 				tank.forceMove(src)
 			if (breather.wear_mask == contained)
-				breather.remove_from_mob(contained)
+				breather.transfer_item_to_loc(contained, src, TRUE)
 				contained.forceMove(src)
 			else
 				qdel(contained)

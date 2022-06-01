@@ -404,7 +404,6 @@
 				var/obj/item/organ/internal/mmi_holder/MMI = W
 				var/atom/movable/brain = MMI.removed()
 				if(brain)
-					M.remove_from_mob(brain,owner)
 					brain.forceMove(src)
 					items_preserved += brain
 			if(istype(W,/obj/item/organ/external/chest))

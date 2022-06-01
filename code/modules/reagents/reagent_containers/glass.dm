@@ -271,12 +271,10 @@
 	else if(istype(D, /obj/item/stack/material) && D.get_material_name() == MAT_STEEL)
 		var/obj/item/stack/material/M = D
 		if (M.use(1))
-			var/obj/item/secbot_assembly/edCLN_assembly/B = new /obj/item/secbot_assembly/edCLN_assembly
-			B.loc = get_turf(src)
+			var/obj/item/secbot_assembly/edCLN_assembly/B = new /obj/item/secbot_assembly/edCLN_assembly(get_turf(src))
 			to_chat(user, "<span class='notice'>You armed the robot frame.</span>")
-			if (user.get_inactive_held_item()==src)
-				user.remove_from_mob(src)
-				user.put_in_inactive_hand(B)
+			user.temporarily_remove_from_inventory(src, TRUE)
+			user.put_in_active_hand(B)
 			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need one sheet of metal to arm the robot frame.</span>")

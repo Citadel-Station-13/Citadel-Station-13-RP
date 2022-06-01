@@ -559,7 +559,6 @@
 							var/obj/item/organ/internal/mmi_holder/MMI = I
 							var/atom/movable/brain = MMI.removed()
 							if(brain)
-								hound.remove_from_mob(brain,src)
 								brain.forceMove(src)
 								items_preserved |= brain
 						else

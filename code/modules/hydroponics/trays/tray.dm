@@ -500,11 +500,10 @@
 			return 1
 
 	else if (istype(O, /obj/item/seeds))
-
 		if(!seed)
-
 			var/obj/item/seeds/S = O
-			user.remove_from_mob(O)
+			if(!user.attempt_insert_item_for_installation(O, src))
+				return
 
 			if(!S.seed)
 				to_chat(user, "The packet seems to be empty. You throw it away.")
@@ -537,9 +536,9 @@
 			S.handle_item_insertion(G, 1)
 
 	else if ( istype(O, /obj/item/plantspray) )
-
 		var/obj/item/plantspray/spray = O
-		user.remove_from_mob(O)
+		if(!user.temporarily_remove_from_inventory(O))
+			return
 		toxins += spray.toxicity
 		pestlevel -= spray.pest_kill_str
 		weedlevel -= spray.weed_kill_str

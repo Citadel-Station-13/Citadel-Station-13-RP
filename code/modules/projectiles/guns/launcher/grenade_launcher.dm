@@ -48,8 +48,8 @@
 		if(grenades.len >= max_grenades)
 			to_chat(user, "<span class='warning'>[src] is full.</span>")
 			return
-		user.remove_from_mob(G)
-		G.loc = src
+		if(!user.attempt_insert_item_for_installation(G, src))
+			return
 		grenades.Insert(1, G) //add to the head of the list, so that it is loaded on the next pump
 		user.visible_message("[user] inserts \a [G] into [src].", "<span class='notice'>You insert \a [G] into [src].</span>")
 		return
@@ -110,8 +110,8 @@
 		if(chambered)
 			to_chat(user, "<span class='warning'>[src] is already loaded.</span>")
 			return
-		user.remove_from_mob(G)
-		G.loc = src
+		if(!user.attempt_insert_item_for_installation(G, src))
+			return
 		chambered = G
 		user.visible_message("[user] load \a [G] into [src].", "<span class='notice'>You load \a [G] into [src].</span>")
 		return

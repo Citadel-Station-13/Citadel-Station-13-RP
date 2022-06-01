@@ -144,8 +144,8 @@
 					playsound(loc, mag_insert_sound, 75, 1)
 					update_icon()
 					AM.update_icon()
-				user.remove_from_mob(AM)
-				AM.loc = src
+				if(!user.attempt_insert_item_for_installation(AM, src))
+					return
 				ammo_magazine = AM
 				user.visible_message("[user] inserts [AM] into [src].", "<span class='notice'>You insert [AM] into [src].</span>")
 				playsound(src.loc, mag_insert_sound, 50, 1)
@@ -173,9 +173,8 @@
 		if(loaded.len >= max_shells)
 			to_chat(user, "<span class='warning'>[src] is full.</span>")
 			return
-
-		user.remove_from_mob(C)
-		C.loc = src
+		if(!user.attempt_insert_item_for_installation(C, src))
+			return
 		loaded.Insert(1, C) //add to the head of the list
 		user.visible_message("[user] inserts \a [C] into [src].", "<span class='notice'>You insert \a [C] into [src].</span>")
 		playsound(src.loc, load_sound, 50, 1)

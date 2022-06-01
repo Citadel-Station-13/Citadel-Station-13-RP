@@ -112,8 +112,8 @@
 		if(stored_ammo.len >= max_ammo)
 			to_chat(user, "<span class='warning'>[src] is full!</span>")
 			return
-		user.remove_from_mob(C)
-		C.loc = src
+		if(!user.attempt_insert_item_for_installation(C, src))
+			return
 		stored_ammo.Add(C)
 		update_icon()
 	if(istype(W, /obj/item/ammo_magazine/clip))

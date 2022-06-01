@@ -411,7 +411,7 @@
 	for(var/obj/item/I in src)
 		remove_micros(I, root) //Recursion. I'm honestly depending on there being no containment loop, but at the cost of performance that can be fixed too.
 		if(istype(I, /obj/item/holder))
-			root.remove_from_mob(I)
+			I.forceMove(root.drop_location())
 
 /mob/living/simple_mob/protean_blob/proc/useradio()
 	set name = "Utilize Radio"

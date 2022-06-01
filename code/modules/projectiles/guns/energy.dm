@@ -125,11 +125,11 @@
 			else
 				user.visible_message("[user] is reloading [src].", "<span class='notice'>You start to insert [P] into [src].</span>")
 				if(do_after(user, 5 * P.w_class))
-					user.remove_from_mob(P)
+					if(!user.attempt_insert_item_for_installation(P, src))
+						return
 					power_supply = P
-					P.loc = src
 					user.visible_message("[user] inserts [P] into [src].", "<span class='notice'>You insert [P] into [src].</span>")
-					playsound(src.loc, 'sound/weapons/flipblade.ogg', 50, 1)
+					playsound(src, 'sound/weapons/flipblade.ogg', 50, 1)
 					update_icon()
 					update_held_icon()
 		else
@@ -145,7 +145,7 @@
 		power_supply.update_icon()
 		user.visible_message("[user] removes [power_supply] from [src].", "<span class='notice'>You remove [power_supply] from [src].</span>")
 		power_supply = null
-		playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
+		playsound(src, 'sound/weapons/empty.ogg', 50, 1)
 		update_icon()
 		update_held_icon()
 	else

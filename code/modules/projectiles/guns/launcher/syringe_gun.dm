@@ -19,10 +19,10 @@
 
 /obj/item/syringe_cartridge/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/reagent_containers/syringe))
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		syringe = I
 		to_chat(user, "<span class='notice'>You carefully insert [syringe] into [src].</span>")
-		user.remove_from_mob(syringe)
-		syringe.loc = src
 		sharp = 1
 		name = "syringe dart"
 		update_icon()
@@ -30,8 +30,8 @@
 /obj/item/syringe_cartridge/attack_self(mob/user)
 	if(syringe)
 		to_chat(user, "<span class='notice'>You remove [syringe] from [src].</span>")
-		playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
-		user.put_in_hands(syringe)
+		playsound(src, 'sound/weapons/empty.ogg', 50, 1)
+		user.grab_item_from_interacted_with(syringe, src)
 		syringe = null
 		sharp = initial(sharp)
 		name = initial(name)

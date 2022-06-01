@@ -250,11 +250,8 @@
 		if (target != user && H.getarmor(target_zone, "melee") > 5 && prob(50))
 			for(var/mob/O in viewers(world.view, user))
 				O.show_message(text("<font color='red'><B>[user] tries to stab [target] in \the [hit_area] with [src.name], but the attack is deflected by armor!</B></font>"), 1)
-			user.remove_from_mob(src)
 			qdel(src)
-
 			add_attack_logs(user,target,"Syringe harmclick")
-
 			return
 
 		user.visible_message("<span class='danger'>[user] stabs [target] in \the [hit_area] with [src.name]!</span>")
@@ -265,8 +262,6 @@
 	else
 		user.visible_message("<span class='danger'>[user] stabs [target] with [src.name]!</span>")
 		target.take_organ_damage(3)// 7 is the same as crowbar punch
-
-
 
 	var/syringestab_amount_transferred = rand(0, (reagents.total_volume - 5)) //nerfed by popular demand
 	var/contained = reagents.get_reagents()
