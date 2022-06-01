@@ -108,7 +108,7 @@
 			return
 		else
 			if(W.reagents.total_volume)
-				if(!user.attempt_insert_item_for_installation(w, src))
+				if(!user.attempt_insert_item_for_installation(W, src))
 					return
 				to_chat(user, "<span class='notice'>You add \the [W] to the assembly.</span>")
 				beakers += W

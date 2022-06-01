@@ -57,8 +57,8 @@
 		if(attached_device)
 			to_chat(user, SPAN_WARNING("There is already a device attached to the valve, remove it first!"))
 			return
-			if(!user.attempt_insert_item_for_installation(item, src))
-				return
+		if(!user.attempt_insert_item_for_installation(item, src))
+			return
 		attached_device = A
 		to_chat(user, SPAN_NOTICE("You attach the [item] to the valve controls and secure it."))
 		//A.on_attach()

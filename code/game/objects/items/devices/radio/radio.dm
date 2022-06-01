@@ -669,7 +669,8 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	if (!(I.is_screwdriver() || istype(I, /obj/item/encryptionkey)))
 		return ..()
 
-	if(W.is_screwdriver())
+	if(I.is_screwdriver())
+		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if(keyslot)
 			for(var/ch_name in channels)
 				radio_controller.remove_object(src, radiochannels[ch_name])
@@ -690,6 +691,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 			to_chat(user, "This radio doesn't have any encryption keys!")
 
 	if(istype(I, /obj/item/encryptionkey))
+		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if(keyslot)
 			to_chat(user, "The radio can't hold another key!")
 			return
@@ -851,7 +853,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 	if((slot_flags & SLOT_BACK) && M.item_by_slot(SLOT_ID_BACK) == src)
 		return 1
-	if((slot_flags & SLOT_BACK) && M.item_by_slot(SLOT_ID_SUIT_STORE) == src)
+	if((slot_flags & SLOT_BACK) && M.item_by_slot(SLOT_ID_SUIT_STORAGE) == src)
 		return 1
 
 	return 0

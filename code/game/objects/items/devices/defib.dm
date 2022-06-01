@@ -216,7 +216,7 @@
 
 /obj/item/shockpaddles/update_held_icon()
 	var/mob/living/M = loc
-	if(istype(M) && M.item_is_in_hands(src) && !M.hands_are_full())
+	if(istype(M) && M.is_holding(src) && !M.hands_full())
 		wielded = 1
 		name = "[initial(name)] (wielded)"
 	else

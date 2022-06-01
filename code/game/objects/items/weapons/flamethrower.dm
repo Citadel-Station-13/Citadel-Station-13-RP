@@ -38,12 +38,10 @@
 	var/turf/location = loc
 	if(istype(location, /mob/))
 		var/mob/living/M = location
-		if(M.item_is_in_hands(src))
+		if(M.is_holding(src))
 			location = M.loc
 	if(isturf(location)) //start a fire if possible
 		location.hotspot_expose(700, 2)
-	return
-
 
 /obj/item/flamethrower/update_icon()
 	overlays.Cut()
@@ -106,7 +104,7 @@
 		if(ptank)
 			to_chat(user, "<span class='notice'>There appears to already be a phoron tank loaded in [src]!</span>")
 			return
-		if(!user.attempt_insert_item_or_installation(W, src))
+		if(!user.attempt_insert_item_for_installation(W, src))
 			return
 		ptank = W
 		update_icon()

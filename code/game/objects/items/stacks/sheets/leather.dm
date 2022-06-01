@@ -165,7 +165,7 @@
 	icon_state = "sheet-dragon_hide"
 	singular_name = "drake plate"
 	max_amount = 10
-	item_flags == NOBLUDGEON
+	item_flags = NOBLUDGEON
 	w_class = WEIGHT_CLASS_NORMAL
 	layer = MOB_LAYER
 

@@ -144,7 +144,7 @@
 	if(W.loc == user)
 		if(!user.temporarily_remove_from_inventory(W))
 			to_chat(user, SPAN_WARNING("[W] is stuck to your hand!"))
-			returrn
+			return
 	var/obj/item/duct_tape_piece/tape = new(get_turf(src))
 	tape.attach(W)
 	user.put_in_hands(tape)
