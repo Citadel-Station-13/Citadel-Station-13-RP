@@ -3,16 +3,19 @@
  * usually hazards, spatial-filling things, etc
  */
 /atom/movable/overmap_object/tiled
+	icon = 'icons/overmaps/tiled.dmi'
 	plane = OVERMAP_TILED_PLANE
 	bound_height = 32
 	bound_width = 32
 	bound_x = 0
 	bound_y = 0
 
-/atom/movable/overmap_object/tiled/Initialize(mapload)
+/atom/movable/overmap_object/tiled/Initialize(mapload, defer_smoothing)
 	. = ..()
-	if(!mapload)
-		update_neighbor_bounds_overlays()
+	if(!defer_smoothing)
+		add_bounds_overlay()
+		if(!mapload)
+			update_neighbor_bounds_overlays()
 
 /atom/movable/overmap_object/tiled/forceMove(atom/destination)
 	cut_bounds_overlay()
@@ -27,7 +30,7 @@
  * get similar tiles that visually connect to use
  */
 /atom/movable/overmap_object/tiled/proc/get_connecting_tile_dirs()
-	#warn impl
+	return
 
 /**
  * update neighbors for connections

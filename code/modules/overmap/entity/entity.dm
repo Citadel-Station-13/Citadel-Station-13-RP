@@ -9,6 +9,7 @@
  * velocity x and y are relative to the map, not the object's front.
  */
 /atom/movable/overmap_object/entity
+	icons = 'icons/overmaps/entity.dmi'
 	plane = OVERMAP_ENTITY_PLANE
 
 	// identity
@@ -61,15 +62,19 @@
 	/// our instantiation mode
 	var/instantiation = OVERMAP_ENTITY_INSTANTIATION_VIRTUAL
 
+	// hazards
+	/// active hazards associated to severities
+	var/list/active_hazards
+
 /atom/movable/overmap_object/entity/New()
 	// assign id immediately
 	id = "[++id_next]"
-	reset_physics()
 	return ..()
 
 /atom/movable/overmap_object/entity/Initialize(mapload)
 	. = ..()
 	add_to_overmap()
+	add_bounds_overlay()
 
 /atom/movable/overmap_object/entity/Destroy()
 	kill_physics()
@@ -78,6 +83,7 @@
 
 /atom/movable/overmap_object/entity/get_bounds_overlay()
 	return
+	// TODO: pixel movement
 	// return SSovermaps.entity_bounds_overlay(bound_x, bound_y, bound_width, bound_height)
 
 /**
@@ -92,3 +98,41 @@
  */
 /atom/movable/overmap_object/entity/proc/pretty_log_name()
 	return "[name] ([id])"
+
+/**
+ * normal, non-physics ticks
+ */
+/atom/movable/overmap_object/entity/proc/tick(seconds)
+	if(length(active_hazards))
+		for(var/id in active_hazards)
+			var/datum/overmap_hazard/H = SSovermaps.resolve_hazard(id)
+			if(!H)
+				stack_trace("bad hazard id [id] found")
+				active_hazards -= id
+			H.tick(src, active_hazards[id], seconds)
+
+/**
+ * should we be ticking?
+ */
+/atom/movable/overmap_object/entity/proc/should_tick()
+	return (
+		length(active_hazards)
+	)
+
+/**
+ * put us on ticking if not ticking and ticking is needed
+ */
+/atom/movable/overmap_object/entity/proc/check_ticking()
+	if(!overmap)
+		return
+	if(ticing == should_tick())
+		return
+	// at this point ticking is not should tick, so do opposite of ticking
+	if(ticking)
+		ticking = FALSE
+		overmap.ticking -= src
+		return
+	else
+		ticking = TRUE
+		overmap.ticking += src
+

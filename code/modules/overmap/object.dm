@@ -48,10 +48,6 @@
 	/// parallax vis contents object if any
 	var/atom/movable/overmap_object_skybox_holder/parallax_image_holder
 
-/atom/movable/overmap_object/Initialize(mapload)
-	add_bounds_overlay()
-	return ..()
-
 /atom/movable/overmap_object/Destroy()
 	cut_bounds_overlay()
 	return ..()

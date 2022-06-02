@@ -2,20 +2,26 @@
  * checks if we're real
  */
 /atom/movable/overmap_object/entity/proc/has_physical_location()
-	return instantiation == OVERMAP_ENTITY_INSTANTIATION_REAL || instantiation == OVERMAP_ENTITY_INSTANTIATION_UNLOADED
+	return instantiation == ENTITY_INSTANTIATION_REAL || instantiation == ENTITY_INSTANTIATION_UNLOADED
+
+/**
+ * checks if we're loaded
+ */
+/atom/movable/overmap_object/entity/proc/is_instantiated()
+	return instantiation == ENTITY_INSTANTIATION_REAL
 
 /**
  * requests we load in
  */
 /atom/movable/overmap_object/entity/proc/ensure_instantiated()
-	if(instantiation == OVERMAP_ENTITY_INSTANTIATION_REAL)
+	if(instantiation == ENTITY_INSTANTIATION_REAL)
 		return TRUE
-	if(instantiation != OVERMAP_ENTITY_INSTANTIATION_UNLOADED)
+	if(instantiation != ENTITY_INSTANTIATION_UNLOADED)
 		return FALSE
 	instantiate_location()
 	if(!location)
 		stack_trace("Failed to instantiate location upon request.")
-		instantiation = OVERMAP_ENTITY_INSTANTIATION_ERRORED
+		instantiation = ENTITY_INSTANTIATION_ERRORED
 		return FALSE
 	return TRUE
 
@@ -37,6 +43,6 @@
  * represents a physical location that an entity is
  */
 /datum/overmap_location
-	
+
 
 #warn impl

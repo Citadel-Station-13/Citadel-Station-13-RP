@@ -526,7 +526,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 				queue_priority_count -= queue_node_priority
 
 			queue_node.last_fire = world.time
-			queue_node.times_fired++
+			++queue_node.times_fired
 
 			if (queue_node_flags & SS_TICKER)
 				queue_node.next_fire = world.time + (world.tick_lag * queue_node.wait)

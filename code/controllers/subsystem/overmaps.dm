@@ -16,9 +16,16 @@ SUBSYSTEM_DEF(overmaps)
 	var/movement_accuracy = 4
 	/// movement speed modifier - this will be used to multiply normal simspeed, but still cannot exceed max entity speed!
 	var/global_entity_speed_mod = 1
+	/// tick normal processes every this many physics ticks
+	var/normal_ticks_every = 20
+
+	// hazards
+	/// hazard cache by id
+	var/static/list/hazards_by_id = list()
 
 /datum/controller/subsystem/overmaps/Initialize()
 	RecalculatePhysicsLimits()
+	InstantiateHazards()
 	if(GLOB.using_map.use_overmap)
 		GLOB.overmap_event_handler.create_events(GLOB.using_map.overmap_z, GLOB.using_map.overmap_size, GLOB.using_map.overmap_event_areas)
 	rebuild_helm_computers()
@@ -56,11 +63,17 @@ SUBSYSTEM_DEF(overmaps)
 	testing("Overmap build complete.")
 	return 1
 
-/datum/controller/subsystem/overmaps/proc/fire(resumed)
+/datum/controller/subsystem/overmaps/fire(resumed)
 	// physics tick every single tick
-	var/time = (subsystem_flags & SS_TICKER)? wait * world.tick_lag : wait
+	var/time = ((subsystem_flags & SS_TICKER)? wait * world.tick_lag : wait) * 0.1
 	for(var/datum/overmap/O as anything in overmaps)
 		O.PhysicsTick(time)
+	if(!(times_fired % normal_ticks_every))
+		var/_time = time * normal_ticks_every
+		for(var/datum/overmap/O as anything in overmaps)
+			O.Tick(_time)
+
+/datum/controller/subsystem/overmaps/
 
 /datum/controller/subsystem/overmaps/proc/RecalculatePhysicsLimits()
 	// we calculate max entity speed to avoid physics clipping issues because this is byond

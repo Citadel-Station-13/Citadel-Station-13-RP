@@ -9,6 +9,7 @@
 	luminosity = 1
 
 	#warn lighting overlay
+	#warn or maybe don't and just have it on the perspective datum??
 	var/static/image/lighting_blackness
 	/// vis holder
 	var/atom/movable/overmap_visual_holder/vis_holder

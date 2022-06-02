@@ -128,14 +128,14 @@
 #warn redo this it should be for non physics ticks
 /datum/overmap/proc/Tick(seconds)
 	for(var/atom/movable/overmap_object/entity/E as anything in ticking)
-		E.Tick(seconds)
+		E.tick(seconds)
 
 /**
  * ticks physics of all entities in us
  */
 /datum/overmap/proc/PhysicsTick(seconds)
 	for(var/atom/movable/overmap_object/entity/E as anything in moving)
-		E.PhysicsTick(seconds)
+		E.physics_tick(seconds)
 
 #warn admin simulation pause
 

@@ -69,6 +69,9 @@ What is the naming convention for planes or layers?
 #define OVERMAP_LIGHTING_PLANE	-56
 #define OVERMAP_HUD_PLANE		-55
 #define OVERMAP_UI_PLANE		-54
+// overmap layers
+#define OVERMAP_LAYER_LIGHTING_BACKDROP		-500
+#define OVERMAP_LAYER_LIGHTING_SPOTLIGHTS	-499
 
 //Turf Planes
 ///Plating
