@@ -39,6 +39,14 @@
  * scale is logarithmic
  */
 /datum/overmap_hazard/proc/tick(atom/movable/overmap_object/entity/E, scale, seconds)
+	act(E, resolve_severity(scale), seconds)
+
+/**
+ * acts on something
+ *
+ * this should be stateless
+ */
+/datum/overmap_hazard/proc/act(atom/movable/overmap_object/entity/E, multiplier, seconds)
 
 /datum/overmap_hazard/proc/cares_about(atom/movable/overmap_object/entity/E, scale)
 	return E.is_instantiated()
