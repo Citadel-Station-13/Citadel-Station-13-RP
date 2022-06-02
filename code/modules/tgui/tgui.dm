@@ -37,8 +37,6 @@
 	var/datum/ui_state/state = null
 	/// Rate limit client refreshes to prevent DoS.
 	COOLDOWN_DECLARE(refresh_cooldown)
-
-//! ## Legacy Defines - To-Be-Deprecated.
 	/// The map z-level to display.
 	var/map_z_level = 1
 	/// The Parent UI
@@ -55,15 +53,14 @@
  * required src_object datum The object or datum which owns the UI.
  * required interface string The interface used to render the UI.
  * optional title string The title of the UI.
+ * optional parent_ui datum/tgui The parent of this UI.
+ *
  * optional ui_x int Deprecated: Window width.
  * optional ui_y int Deprecated: Window height.
  *
- *! To-Be-Deprecated
- * optional parent_ui datum/tgui The parent of this UI.
- *
  * return datum/tgui The requested UI.
  */
-/datum/tgui/New(mob/user, datum/src_object, interface, title, ui_x, ui_y)
+/datum/tgui/New(mob/user, datum/src_object, interface, title, datum/tgui/parent_ui, ui_x, ui_y)
 	log_tgui(user,
 		"new [interface] fancy [user?.client?.prefs.tgui_fancy]",
 		src_object = src_object)
@@ -74,7 +71,6 @@
 	if(title)
 		src.title = title
 	src.state = src_object.ui_state(user)
-	//! To-Be-Deprecated
 	src.parent_ui = parent_ui
 	if(parent_ui)
 		parent_ui.children += src
@@ -153,7 +149,9 @@
 		src_object.ui_close(user)
 		SStgui.on_close(src)
 	state = null
-	parent_ui = null //! To-Be-Deprecated
+	if(parent_ui)
+		parent_ui.children -= src
+	parent_ui = null
 	qdel(src)
 
 /**
@@ -310,7 +308,7 @@
 		return
 	// Update through a normal call to ui_interact
 	if(status != UI_DISABLED && (autoupdate || force))
-		src_object.ui_interact(user, src, parent_ui) //! parent_ui To-Be-Deprecated
+		src_object.ui_interact(user, src, parent_ui)
 		return
 	// Update status only
 	var/needs_update = process_status()
@@ -338,7 +336,7 @@
 /datum/tgui/proc/process_status()
 	var/prev_status = status
 	status = src_object.ui_status(user, state)
-	if(parent_ui) //! parent_ui To-Be-Deprecated
+	if(parent_ui)
 		status = min(status, parent_ui.status)
 	return prev_status != status
 
