@@ -103,7 +103,7 @@ SUBSYSTEM_DEF(events)
 				message += "and ran to completion."
 		to_chat(world, message)
 
-/*
+
 //////////////
 // HOLIDAYS //
 //////////////
@@ -122,7 +122,7 @@ SUBSYSTEM_DEF(events)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //ALSO, MOST IMPORTANTLY: Don't add stupid stuff! Discuss bonus content with Project-Heads first please!//
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
-*/
+
 
 //sets up the holidays and holidays list
 /datum/controller/subsystem/events/proc/InitializeHolidays(force = FALSE)
@@ -130,11 +130,11 @@ SUBSYSTEM_DEF(events)
 		QDEL_LIST_ASSOC_VAL(holidays)
 	holidays = list()
 	if(!force && !CONFIG_GET(flag/allow_holidays))
-		return		// Holiday stuff was not enabled in the config!
+		return // Holiday stuff was not enabled in the config!
 
-	var/YY = text2num(time2text(world.timeofday, "YY")) 	// get the current year
-	var/MM = text2num(time2text(world.timeofday, "MM")) 	// get the current month
-	var/DD = text2num(time2text(world.timeofday, "DD")) 	// get the current day
+	var/YY = text2num(time2text(world.timeofday, "YY")) // get the current year
+	var/MM = text2num(time2text(world.timeofday, "MM")) // get the current month
+	var/DD = text2num(time2text(world.timeofday, "DD")) // get the current day
 	var/DDD = time2text(world.timeofday, "DDD")	// get the current weekday
 	var/W = weekdayofthemonth()	// is this the first monday? second? etc.
 

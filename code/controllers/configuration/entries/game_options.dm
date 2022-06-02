@@ -6,6 +6,7 @@
 	value_mode = VALUE_MODE_NUM
 	lowercase = TRUE
 
+/// Set to FALSE to disable holidays (you monster)
 /datum/config_entry/flag/allow_holidays
 	default = TRUE
 
@@ -49,3 +50,4 @@
 	default = "The station is under immediate threat of imminent destruction! All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill."
 
 /datum/config_entry/flag/emojis
+	default = TRUE

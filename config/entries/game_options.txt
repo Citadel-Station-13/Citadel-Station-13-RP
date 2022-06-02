@@ -1,10 +1,6 @@
 ## Set to 0 to disable holidays (you monster)
 ALLOW_HOLIDAYS
 
-## Starlight for exterior walls and breaches. Uncomment for starlight!
-## This is disabled by default to make testing quicker, should be enabled on production servers or testing servers messing with lighting
-#STARLIGHT
-
 ## Engine submap probabilities
 ## Supermatter
 ENGINE_SUBMAP EngineSubmap_SM 40
@@ -14,30 +10,3 @@ ENGINE_SUBMAP EngineSubmap_RUST 40
 ENGINE_SUBMAP EngineSubmap_Tesla 20
 ## Singulo
 ENGINE_SUBMAP EngineSubmap_Singulo 20
-
-## Comment this out if you don't want to use the 'nightshift lighting' subsystem to adjust lights based on ingame time.
-NIGHTSHIFTS_ENABLED
-
-## The descriptions of each alert status.
-ALERT_DESC_GREEN All threats to the station have passed. Security may not have weapons visible, privacy laws are once again fully enforced.
-
-ALERT_DESC_BLUE_UPTO The station has received reliable information about possible hostile activity in the local area. Security staff may have weapons visible. Privacy laws are still in effect.
-ALERT_DESC_BLUE_DOWNTO Code Blue procedures are now in effect: The immediate threat has passed. Security staff may not have weapons drawn, but may still have weapons visible. Privacy laws are once again fully enforced.
-
-ALERT_DESC_YELLOW_UPTO The station has confirmed hostile activity in the local area. Security staff may have weapons visible. Random searches are permitted.
-ALERT_DESC_YELLOW_DOWNTO Code Yellow procedures are now in effect: The immediate security threat has been downgraded. Security staff may not have weapons drawn, but may still have weapons visible. Random searches are still permitted.
-
-ALERT_DESC_VIOLET_UPTO A major medical emergency has been reported. Medical personnel are required to report to the Medbay immediately. Non-medical personnel are required to obey all relevant instructions from medical staff.
-ALERT_DESC_VIOLET_DOWNTO Code Violet procedures are now in effect: Medical personnel are required to report to the Medbay immediately. Non-medical personnel are required to obey all relevant instructions from medical staff.
-
-ALERT_DESC_ORANGE_UPTO A major engineering emergency has been reported. Engineering personnel are required to report to the affected area immediately. Non-engineering personnel are required to evacuate any affected areas and obey relevant instructions from engineering staff.
-ALERT_DESC_ORANGE_DOWNTO Code Orange procedures are now in effect: Engineering personnel are required to report to the affected area immediately. Non-engineering personnel are required to evacuate any affected areas and obey relevant instructions from engineering staff.
-
-ALERT_DESC_RED_UPTO There is an immediate serious threat to the station. Security may have weapons unholstered at all times. Random searches are allowed and advised.
-ALERT_DESC_RED_DOWNTO Code Red procedures are now in effect: The station is no longer under threat of imminent destruction, but there is still an immediate serious threat to the station. Security may have weapons unholstered at all times, random searches are allowed and advised.
-
-ALERT_DESC_DELTA The station is under immediate threat of imminent destruction! All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill.
-
-## EMOJI ###
-## Comment this out if you want to disable emojis
-EMOJIS
