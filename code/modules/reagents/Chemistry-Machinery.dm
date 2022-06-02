@@ -87,11 +87,11 @@
 		if (beaker)
 			return 1
 		else
-			src.beaker =  O
-			user.drop_item()
-			O.loc = src
+			if(!user.attempt_insert_item_for_installation(O, src))
+				return
+			beaker = O
 			update_icon()
-			src.updateUsrDialog()
+			updateUsrDialog()
 			return 0
 
 	if(holdingitems && holdingitems.len >= limit)

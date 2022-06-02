@@ -124,7 +124,7 @@
 		if(darts.len >= max_darts)
 			to_chat(user, "<span class='warning'>[src] is full!</span>")
 			return
-		if(!user.attempt_insert_item_for_installation(C, srrc))
+		if(!user.attempt_insert_item_for_installation(C, src))
 			return
 		darts += C //add to the end
 		user.visible_message("[user] inserts \a [C] into [src].", "<span class='notice'>You insert \a [C] into [src].</span>")

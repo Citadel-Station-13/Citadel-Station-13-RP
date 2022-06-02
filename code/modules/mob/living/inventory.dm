@@ -44,10 +44,47 @@
 #warn MAKE SURE TO CHECK CAN UNEQUIP FOR SLOTS...
 #warn add fingerprint, interaction flags
 /mob/living/put_in_left_hand(obj/item/I, force)
+	if(!I)
+		return TRUE
+	if(!has_hands)
+		return FALSE
+	if(l_hand)
+		if(force)
+			drop_item_to_ground(l_hand, TRUE)
+		if(l_hand)	// incase drop item fails which is potentially possible
+			return FALSE
+	if(!_common_handle_put_in_hand(I, force))
+		return FALSE
+	l_hand = I
+	l_hand.update_twohanding()
+	l_hand.update_held_icon()
+	update_inv_l_hand()
+	return TRUE
 
 /mob/living/put_in_right_hand(obj/item/I, force)
+	if(!I)
+		return TRUE
+	if(!has_hands)
+		return FALSE
+	if(r_hand)
+		if(force)
+			drop_item_to_ground(r_hand, TRUE)
+		if(r_hand)	// incase drop item fails which is potentially possible
+			return FALSE
+	if(!_commoon_handle_put_in_hand(I, force))
+		return FALSE
+	r_hand = I
+	r_hand.update_twohanding()
+	r_hand.update_held_icon()
+	update_inv_r_hand()
+	return TRUE
+
+/mob/living/proc/_common_handle_put_in_hand(obj/item/I, force)
+
+#warn clusterfuck here
 
 /mob/living/put_in_hand(obj/item/I, index, force)
+	// TODO: WHEN MULTIHAND IS DONE, BESURE TO MAKE THIS HAVE THE LOGIC I PUT INI PUT IN L/R HANDS!!
 	switch(index)
 		if(1)
 			return put_in_left_hand(I, force)
@@ -78,7 +115,7 @@
 		else
 			return ..()
 
-/mob/living/_set_inv_slot(slot, obj/item/I, update_icons)
+/mob/living/_set_inv_slot(slot, obj/item/I, update_icons, logic)
 	switch(slot)
 		if(SLOT_ID_BACK)
 			back = I
@@ -88,6 +125,16 @@
 			wear_mask = I
 			if(update_icons)
 				update_inv_wear_mask()
+				// todo: only rebuild when needed for BLOCKHAIR|BLOCKHEADHAIR
+				update_hair(0)
+				update_inv_ears()
+			if(logic)
+				if(!wear_mask)
+					// todo: why are internals code shit
+					if(internal)
+						internal = null
+						if(internals)
+							internals.icon_state = "internal0"
 		else
 			return ..()
 

@@ -23,7 +23,7 @@
 	sprite_sheets = list(INV_MASK_DEF_ICON)
 	volume = 20
 
-/obj/item/reagent_containers/hard_candy/proc/On_Consume(mob/M)
+/obj/item/reagent_containers/hard_candy/proc/On_Consume(mob/M, mob/user)
 	if(!reagents.total_volume)
 		M.visible_message("<span class='notice'>[M] finishes eating \the [src].</span>","<span class='notice'>You finish eating \the [src].</span>")
 		M.temporarily_remove_from_inventory(src, TRUE)
@@ -122,7 +122,7 @@
 				else
 					reagents.trans_to_mob(M, reagents.total_volume, CHEM_INGEST)
 				bitecount++
-				On_Consume(M)
+				On_Consume(M, user)
 			return 1
 
 	return 0
@@ -158,7 +158,7 @@
 		else
 			reagents.trans_to_mob(owner, reagents.total_volume, CHEM_INGEST)
 		succcount++
-		On_Consume(owner)
+		On_Consume(owner, owner)
 
 /obj/item/reagent_containers/hard_candy/Destroy()
 	STOP_PROCESSING(SSobj, src)

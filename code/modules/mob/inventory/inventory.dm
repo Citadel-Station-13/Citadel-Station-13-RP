@@ -291,11 +291,11 @@
 
 /mob/proc/_equip_slot(obj/item/I, slot, update_icons)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	return _set_inv_slot(slot, I, update_icons)
+	. = _set_inv_slot(slot, I, update_icons, TRUE)
 
 /mob/proc/_unequip_slot(slot, update_icons)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	return _set_inv_slot(slot, null, update_icons)
+	. = _set_inv_slot(slot, null, update_icons, TRUE)
 
 /mob/proc/_unequip_held(obj/item/I, update_icons)
 	return
@@ -320,8 +320,16 @@
  *
  * some behaviors may be included other than update icons
  * even update icons is unpreferred but we're stuck with this for now.
+ *
+ * todo: logic should be moved out of the proc, but where?
+ *
+ * @params
+ * slot - slot to set
+ * I - item or null
+ * update_icons - update icons immediately?
+ * logic - apply logic like dropping stuff from pockets when unequippiing a jumpsuit imemdiately?
  */
-/mob/proc/_set_inv_slot(slot, obj/item/I, update_icons)
+/mob/proc/_set_inv_slot(slot, obj/item/I, update_icons, logic)
 	. = FALSE
 	CRASH("Attempting to set inv slot of [slot] to [I] went to base /mob. You probably had someone assigning to a nonexistant slot!")
 

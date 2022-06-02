@@ -164,7 +164,7 @@
 			to_chat(user, "<span class='warning'>[src] is full!</span>")
 			return
 		if(!user.attempt_insert_item_for_installation(B, src))
-			rreturn
+			return
 		stored_ammo.Add(B)
 		update_icon()
 	playsound(user.loc, 'sound/weapons/flipblade.ogg', 50, 1)

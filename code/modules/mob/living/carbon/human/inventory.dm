@@ -59,16 +59,30 @@
 		else
 			return ..()
 
-/mob/living/carbon/human/_set_inv_slot(slot, obj/item/I, update_icons)
+/mob/living/carbon/human/_set_inv_slot(slot, obj/item/I, update_icons, logic)
 	switch(slot)
 		if(SLOT_ID_SUIT)
 			wear_suit = I
 			if(update_icons)
 				update_inv_wear_suit()
+			if(logic)
+				if(!wear_suit)
+					if(s_store)
+						drop_item_to_ground(s_store, TRUE)
 		if(SLOT_ID_UNIFORM)
 			w_uniform = I
 			if(update_icons)
 				update_inv_w_uniform()
+			if(logic)
+				if(!w_uniform)
+					if(r_store)
+						drop_item_to_ground(r_store, TRUE)
+					if(l_store)
+						drop_item_to_ground(l_store, TRUE)
+					if(wear_id && !(wear_id.item_flags & EQUIP_IGNORE_BELTLINK))
+						drop_item_to_ground(wear_id, TRUE)
+					if(belt && !(belt.item_flags & EQUIP_IGNORE_BELTLINK))
+						drop_item_to_ground(belt, TRUE)
 		if(SLOT_ID_SHOES)
 			shoes = I
 			if(update_icons)
@@ -89,6 +103,10 @@
 			head = I
 			if(update_icons)
 				update_inv_head()
+				// todo: only rebuild when needed for HIDEMASK|BLOCKHAIR|BLOCKHEADHAIR
+				update_hair(0)
+				update_inv_ears()
+				update_inv_wear_mask()
 		if(SLOT_ID_LEFT_EAR)
 			l_ear = I
 			if(update_icons)
@@ -187,9 +205,6 @@ This saves us from having to call add_fingerprint() any time something is put in
 			return has_organ(BP_R_HAND)
 		if(SLOT_ID_BELT)
 			return has_organ(BP_TORSO)
-		if(SLOT_ID_WORN_ID)
-			// the only relevant check for this is the uniform check
-			return 1
 		if(SLOT_ID_LEFT_EAR)
 			return has_organ(BP_HEAD)
 		if(SLOT_ID_RIGHT_EAR)
@@ -212,75 +227,8 @@ This saves us from having to call add_fingerprint() any time something is put in
 			return has_organ(BP_TORSO)
 		if(SLOT_ID_SUIT_STORAGE)
 			return has_organ(BP_TORSO)
-		if(slot_in_backpack)
-			return 1
-		if(slot_tie)
-			return 1
 
-#warn convert remaining behaviosr
-/mob/living/carbon/human/u_equip(obj/W as obj)
-	if(!W)	return 0
 
-	if (W == wear_suit)
-		if(s_store)
-			drop_from_inventory(s_store)
-		worn_clothing -= wear_suit
-		wear_suit = null
-		update_inv_wear_suit()
-	else if (W == w_uniform)
-		if (r_store)
-			drop_from_inventory(r_store)
-		if (l_store)
-			drop_from_inventory(l_store)
-		if (wear_id)
-			drop_from_inventory(wear_id)
-		if (belt && belt.suitlink == 1)
-			worn_clothing -= belt
-			drop_from_inventory(belt)
-		worn_clothing -= w_uniform
-		w_uniform = null
-		update_inv_w_uniform()
-	else if (W == head)
-		worn_clothing -= head
-		head = null
-		if(istype(W, /obj/item))
-			var/obj/item/I = W
-			if(I.flags_inv & (HIDEMASK|BLOCKHAIR|BLOCKHEADHAIR))
-				update_hair(0)	//rebuild hair
-				update_inv_ears(0)
-				update_inv_wear_mask(0)
-		update_inv_head()
-	else if (W == wear_mask)
-		worn_clothing -= wear_mask
-		wear_mask = null
-		if(istype(W, /obj/item))
-			var/obj/item/I = W
-			if(I.flags_inv & (BLOCKHAIR|BLOCKHEADHAIR))
-				update_hair(0)	//rebuild hair
-				update_inv_ears(0)
-		if(internal)
-			if(internals)
-				internals.icon_state = "internal0"
-			internal = null
-		update_inv_wear_mask()
-	else if (W == r_hand)
-		r_hand = null
-		if(l_hand)
-			l_hand.update_twohanding()
-			l_hand.update_held_icon()
-			update_inv_l_hand()
-		update_inv_r_hand()
-	else if (W == l_hand)
-		l_hand = null
-		if(r_hand)
-			r_hand.update_twohanding()
-			r_hand.update_held_icon()
-			update_inv_l_hand()
-		update_inv_l_hand()
-	else
-		return 0
-
-	return 1
 
 
 
@@ -301,19 +249,6 @@ This saves us from having to call add_fingerprint() any time something is put in
 
 	W.forceMove(src)
 	switch(slot)
-		if(SLOT_ID_BACK)
-			src.back = W
-			W.equipped(src, slot)
-			worn_clothing += back
-			update_inv_back()
-		if(SLOT_ID_MASK)
-			src.wear_mask = W
-			if(wear_mask.flags_inv & (BLOCKHAIR|BLOCKHEADHAIR))
-				update_hair()	//rebuild hair
-				update_inv_ears()
-			W.equipped(src, slot)
-			worn_clothing += wear_mask
-			update_inv_wear_mask()
 		#warn cancer
 		#warn offear already removed, make SURE to put in behavior in equip/slot checks!
 		if(SLOT_ID_LEFT_EAR)
@@ -348,13 +283,6 @@ This saves us from having to call add_fingerprint() any time something is put in
 		else
 			to_chat(src, "<font color='red'>You are trying to equip this item to an unsupported inventory slot. How the heck did you manage that? Stop it...</font>")
 			return
-
-	if((W == src.l_hand) && (slot != slot_l_hand))
-		src.l_hand = null
-		update_inv_l_hand() //So items actually disappear from hands.
-	else if((W == src.r_hand) && (slot != slot_r_hand))
-		src.r_hand = null
-		update_inv_r_hand()
 
 	W.hud_layerise()
 

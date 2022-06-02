@@ -106,3 +106,8 @@
 	var/obj/item/back = null//Human/Monkey
 	var/obj/item/tank/internal = null//Human/Monkey
 	var/obj/item/clothing/mask/wear_mask = null//Carbon
+
+	// TODO: /tg/ arbitrary hand numbers
+	/// Set to TRUE to enable the use of hands and the hands hud
+	var/has_hands = FALSE
+

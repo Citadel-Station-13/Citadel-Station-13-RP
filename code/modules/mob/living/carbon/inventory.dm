@@ -14,12 +14,13 @@
 		else
 			return ..()
 
-/mob/living/carbon/_set_inv_slot(slot, obj/item/I, update_icons)
+/mob/living/carbon/_set_inv_slot(slot, obj/item/I, update_icons, logic)
 	switch(slot)
 		if(SLOT_ID_HANDCUFFED)
 			handcuffed = I
-			if(!handcuffed && buckled && buckled.buckle_require_restraints)
-				buckled.unbuckle_mob()
+			if(logic)
+				if(!handcuffed && buckled && buckled.buckle_require_restraints)
+					buckled.unbuckle_mob()
 			if(update_icons)
 				update_inv_handcuffed()
 		if(SLOT_ID_LEGCUFFED)
