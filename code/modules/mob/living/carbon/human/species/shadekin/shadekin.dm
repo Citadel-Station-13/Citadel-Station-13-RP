@@ -91,7 +91,7 @@
 		O_EYES      = /obj/item/organ/internal/eyes,
 		O_STOMACH   = /obj/item/organ/internal/stomach,
 		O_INTESTINE = /obj/item/organ/internal/intestine
-		)
+	)
 
 	has_limbs = list(
 		BP_TORSO  = list("path" = /obj/item/organ/external/chest),
@@ -105,14 +105,14 @@
 		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
 		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
-		)
+	)
 
 	//SHADEKIN-UNIQUE STUFF GOES HERE
 	var/list/shadekin_abilities = list(
 		/datum/power/shadekin/phase_shift,
 		/datum/power/shadekin/regenerate_other,
 		/datum/power/shadekin/create_shade,
-		)
+	)
 	var/list/shadekin_ability_datums = list()
 	var/kin_type
 	var/energy_light = 0.25

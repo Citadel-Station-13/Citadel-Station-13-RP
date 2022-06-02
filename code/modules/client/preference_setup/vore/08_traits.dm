@@ -108,7 +108,7 @@
 	character.custom_exclaim = lowertext(trim(pref.custom_exclaim))
 
 	var/datum/species/S = character.species
-	var/SB = pref.custom_base ? pref.custom_base : SPECIES_HUMAN
+	var/SB = S.selects_bodytype ? pref.custom_base : pref.character_static_species_meta()
 	var/datum/species/new_S = S.copy_from(SB, pref.pos_traits + pref.neu_traits + pref.neg_traits, character)
 
 	//Any additional non-trait settings can be applied here

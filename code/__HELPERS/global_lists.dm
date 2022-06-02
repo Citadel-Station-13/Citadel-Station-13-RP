@@ -255,7 +255,7 @@ GLOBAL_LIST_EMPTY(mannequins)
 		wing_styles_list[path] = instance
 
 	// Custom species traits
-	paths = typesof(/datum/trait) - /datum/trait
+	paths = typesof(/datum/trait) - /datum/trait - /datum/trait/negative - /datum/trait/neutral - /datum/trait/positive
 	for(var/path in paths)
 		var/datum/trait/instance = new path()
 		if(!instance.name)

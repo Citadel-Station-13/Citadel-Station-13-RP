@@ -211,10 +211,10 @@ var/global/list/datum/gene/dna_genes[0]
 	src.custom_exclaim = character.custom_exclaim
 
 	// +1 to account for the none-of-the-above possibility
-	SetUIValueRange(DNA_UI_EAR_STYLE,	ear_style + 1,     ear_styles_list.len  + 1,  1)
-	SetUIValueRange(DNA_UI_TAIL_STYLE,	tail_style + 1,    tail_styles_list.len + 1,  1)
-	SetUIValueRange(DNA_UI_PLAYERSCALE,	size_multiplier,   player_sizes_list.len,     1)
-	SetUIValueRange(DNA_UI_WING_STYLE,	wing_style + 1,    wing_styles_list.len + 1,  1)
+	SetUIValueRange(DNA_UI_EAR_STYLE,   ear_style + 1,     ear_styles_list.len  + 1,  1)
+	SetUIValueRange(DNA_UI_TAIL_STYLE,  tail_style + 1,    tail_styles_list.len + 1,  1)
+	SetUIValueRange(DNA_UI_PLAYERSCALE, size_multiplier,   player_sizes_list.len,     1)
+	SetUIValueRange(DNA_UI_WING_STYLE,  wing_style + 1,    wing_styles_list.len + 1,  1)
 
 	SetUIValueRange(DNA_UI_TAIL_R,    character.r_tail,    255,    1)
 	SetUIValueRange(DNA_UI_TAIL_G,    character.g_tail,    255,    1)
