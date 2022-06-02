@@ -463,6 +463,7 @@
 	name = ""
 	var/atom/movable/master
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	appearance_flags = PIXEL_SCALE | KEEP_APART | RESET_CLIENT_COLOR
 
 /atom/movable/ghost_tag_container/Destroy()
 	if(istype(master))
