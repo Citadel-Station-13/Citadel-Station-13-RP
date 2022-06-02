@@ -183,9 +183,6 @@
 								/datum/planet/classp,
 								/datum/planet/classm)
 
-/datum/map/triumph/perform_map_generation()
-	return 1
-
 // For making the 4-in-1 holomap, we calculate some offsets
 /// Width and height of compiled in triumph z levels.
 #define TRIUMPH_MAP_SIZE 140

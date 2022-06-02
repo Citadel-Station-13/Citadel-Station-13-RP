@@ -236,6 +236,8 @@ SUBSYSTEM_DEF(ticker)
 		// type filtered, we cannot risk runtimes
 		L.OnRoundstart()
 
+	SSmapping.loaded_module?.on_roundstart()
+
 	round_start_time = world.time
 
 	// TODO Dear God Fix This.  Fix all of this. Not just this line, this entire proc. This entire file!

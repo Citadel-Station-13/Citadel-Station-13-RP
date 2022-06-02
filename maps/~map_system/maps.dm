@@ -19,6 +19,9 @@ var/list/all_maps = list()
 
 
 /datum/map
+	/// map module path, if any
+	var/module_path = /datum/map_module
+
 	var/name = "Unnamed Map"
 	var/full_name = "Unnamed Map"
 	var/path
@@ -173,9 +176,6 @@ var/list/all_maps = list()
 	return get_night(1) //Defaults to z1, customize however you want on your own maps
 
 /datum/map/proc/setup_map()
-	return
-
-/datum/map/proc/perform_map_generation()
 	return
 
 /datum/map/proc/get_network_access(var/network)

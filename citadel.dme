@@ -2498,6 +2498,7 @@
 #include "code\modules\lore_codex\robutt_data\main_robutts.dm"
 #include "code\modules\lore_codex\robutt_data\more.dm"
 #include "code\modules\mapping\map_config.dm"
+#include "code\modules\mapping\map_module.dm"
 #include "code\modules\mapping\map_orientation_patterns.dm"
 #include "code\modules\mapping\minimaps.dm"
 #include "code\modules\mapping\preloader.dm"

@@ -7,6 +7,16 @@ SUBSYSTEM_DEF(mapping)
 	init_order = INIT_ORDER_MAPPING
 	subsystem_flags = SS_NO_FIRE
 
+	// World module
+	/// active map module
+	var/datum/map_module/loaded_module
+
+	// mapgen - deepmaint
+	/// deepmaint loaders awaiting activations
+
+	/// deepmaint templates
+	var/list/datum/map_template/submap/deepmaint/deepmaint_templates = list()
+
 	var/list/areas_in_z = list()
 
 	var/list/turf/unused_turfs = list()				//Not actually unused turfs they're unused but reserved for use for whatever requests them. "[zlevel_of_turf]" = list(turfs)
@@ -42,6 +52,8 @@ SUBSYSTEM_DEF(mapping)
 		config = load_map_config(error_if_missing = FALSE)
 #endif
 	stat_map_name = config.map_name
+	if(GLOB.using_map.module_path)
+		loaded_module = new(GLOB.using_map.module_path)
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
 	HACK_LoadMapConfig()
@@ -53,22 +65,37 @@ SUBSYSTEM_DEF(mapping)
 		if(!config || config.defaulted)
 			to_chat(world, "<span class='boldannounce'>Unable to load next or default map config, defaulting to Tethermap</span>")
 			config = old_config
+
+	// perform primary world load
+	loaded_module?.pre_mapload()
+
 	loadWorld()
 	repopulate_sorted_areas()
 	world.max_z_changed() // This is to set up the player z-level list, maxz hasn't actually changed (probably)
-	maploader = new()
-	load_map_templates()
 
-	loadEngine()
-	preloadShelterTemplates()
-	// Mining generation probably should be here too
-	GLOB.using_map.perform_map_generation()
-	// TODO - Other stuff related to maps and areas could be moved here too.  Look at /tg
+	loaded_module?.post_mapload()
+
+	loaded_module?.pre_lateload()
+
 	if(GLOB.using_map)
 		loadLateMaps()
 	if(!GLOB.using_map.overmap_z)
 		build_overmap()
 
+	loaded_module?.post_lateload()
+
+	// perform special map generation not inbuilt to the map itself
+
+	load_map_templates()
+
+	loaded_module?.pre_mapgen()
+
+	mapgen_engine()
+	mapgen_deepmaint()
+
+	loaded_module?.post_mapgen()
+
+	preloadShelterTemplates()
 	// basemap - REEVALUATE when runtime maploading is in
 	transit = z_list[1]
 	initialize_reserved_level(transit.z_value)
@@ -308,7 +335,6 @@ SUBSYSTEM_DEF(mapping)
 //
 /datum/controller/subsystem/mapping
 	var/list/map_templates = list()
-	var/dmm_suite/maploader = null
 	var/atom/movable/landmark/engine_loader/engine_loader
 	var/list/shelter_templates = list()
 
@@ -326,7 +352,7 @@ SUBSYSTEM_DEF(mapping)
 		map_templates[template.name] = template
 	return TRUE
 
-/datum/controller/subsystem/mapping/proc/loadEngine()
+/datum/controller/subsystem/mapping/proc/mapgen_engine()
 	if(!engine_loader)
 		return // Seems this map doesn't need an engine loaded.
 
