@@ -118,7 +118,7 @@
 		return "unknown"
 	return species_language.get_random_name(gender)
 
-/datum/species/proc/get_vision_flags(var/mob/living/carbon/human/H)
+/datum/species/proc/get_vision_flags(mob/living/carbon/human/H)
 	return vision_flags
 
 /datum/species/proc/get_wing_hair(var/mob/living/carbon/human/H) //I have no idea what this is even used for other than teshari, but putting it in just in case.
