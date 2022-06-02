@@ -48,3 +48,4 @@
 
 /// allows admins with relevant permissions to have their own ooc colour
 /datum/config_entry/flag/allow_admin_ooccolor
+	default = TRUE
