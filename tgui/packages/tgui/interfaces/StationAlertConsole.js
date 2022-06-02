@@ -1,18 +1,13 @@
-import { sortBy } from 'common/collections';
-import { flow } from 'common/fp';
 import { useBackend } from '../backend';
-import { Button, Section, Stack } from '../components';
+import { Section, Button, Box } from '../components';
 import { Window } from '../layouts';
 
-export const StationAlertConsole = (props, context) => {
-  const { data } = useBackend(context);
-  const {
-    cameraView,
-  } = data;
+export const StationAlertConsole = () => {
   return (
     <Window
-      width={cameraView ? 390 : 345}
-      height={587}>
+      width={425}
+      height={600}
+      resizable>
       <Window.Content scrollable>
         <StationAlertConsoleContent />
       </Window.Content>
@@ -23,63 +18,55 @@ export const StationAlertConsole = (props, context) => {
 export const StationAlertConsoleContent = (props, context) => {
   const { act, data } = useBackend(context);
   const {
-    cameraView,
+    categories = [],
   } = data;
+  return categories.map(category => (
+    <Section key={category.category} title={category.category}>
+      <ul>
+        {category.alarms.length === 0 && (
+          <li className="color-good">
+            Systems Nominal
+          </li>
+        )}
+        {category.alarms.map(alarm => {
+          let footer = "";
 
-  const sortingKey = {
-    "Fire": 0,
-    "Atmosphere": 1,
-    "Power": 2,
-    "Burglar": 3,
-    "Motion": 4,
-    "Camera": 5,
-  };
+          // To be clear, this is never the case unless the user is an AI.
+          if (alarm.has_cameras) {
+            footer = (
+              <Section>
+                {alarm.cameras.map(camera => (
+                  <Button
+                    key={camera.name}
+                    disabled={camera.deact}
+                    content={camera.name
+                      + (camera.deact ? ' (deactived)' : '')}
+                    icon="video"
+                    onClick={() => act('switchTo', {
+                      camera: camera.camera,
+                    })} />
+                ))}
+              </Section>
+            );
+          } else if (alarm.lost_sources) {
+            footer = (
+              <Box color="bad">
+                Lost Alarm Sources: {alarm.lost_sources}
+              </Box>
+            );
+          }
 
-  const sortedAlarms = flow([
-    sortBy((alarm) => sortingKey[alarm.name]),
-  ])(data.alarms || []);
-
-  return (
-    <>
-      {sortedAlarms.map(category => (
-        <Section key={category.name} title={category.name + " Alarms"}>
-          <ul>
-            {category.alerts.length === 0 && (
-              <li className="color-good">
-                Systems Nominal
-              </li>
-            )}
-            {category.alerts.map(alert => (
-              <Stack 
-                key={alert.name} 
-                height="30px" 
-                align="baseline">
-                <Stack.Item grow>
-                  <li className="color-average">
-                    {alert.name} {!!cameraView && alert.sources > 1 
-                      ? " (" + alert.sources + " sources)" : ""}
-                  </li>
-                </Stack.Item>
-                {!!cameraView && (      
-                  <Stack.Item>       
-                    <Button
-                      textAlign="center"
-                      width="100px"
-                      icon={alert.cameras ? "video" : ""}
-                      disabled={!alert.cameras}
-                      content={alert.cameras === 1 
-                        ? alert.cameras + " Camera" : alert.cameras > 1
-                          ? alert.cameras + " Cameras" : "No Camera"}
-                      onClick={() => act('select_camera', {
-                        alert: alert.ref,
-                      })} />
-                  </Stack.Item>
-                )}  
-              </Stack>
-            ))}
-          </ul>
-        </Section>
-      ))}
-    </>
-  );
+          return (
+            <li key={alarm.name}>
+              {alarm.name}
+              {alarm.origin_lost
+                ? <Box color="bad">Alarm Origin Lost.</Box>
+                : ''}
+              {footer}
+            </li>
+          );
+        })}
+      </ul>
+    </Section>
+  ));
 };
