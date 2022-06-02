@@ -350,6 +350,8 @@ SUBSYSTEM_DEF(mapping)
 			qdel(template)
 			continue
 		map_templates[template.name] = template
+		if(istype(template, /datum/map_template/submap/deepmaint))
+			#warn stuff
 	return TRUE
 
 /datum/controller/subsystem/mapping/proc/mapgen_engine()
