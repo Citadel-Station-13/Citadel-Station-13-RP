@@ -1,3 +1,9 @@
 2022-06-01:
   Ghostcoffeee:
   - rscadd: 'Added pew building tweak: tweaked pew sprites to support recoloring'
+2022-06-02:
+  silicons:
+  - code_imp: slightly streamlines xenoarch
+  - code_imp: slightly streamlines randommaps
+  - code_imp: slightly streamlines zas
+  - bugfix: map level index duping in GLOB.using_map
