@@ -1,22 +1,68 @@
-// deepmaint template types we probably won't need more than 24
-// always include some form of USE_X.
+/**
+ * START PUBLIC SECTION: THIS, MAPPERS, IS WHAT YOU CARE ABOUT
+ */
+
+// deepmaint template themes we probably won't need more than 24
 /// generic
-#define DEEPMAINT_TYPE_GENERIC				(1<<0)
+#define DEEPMAINT_THEME_GENERIC				(1<<0)
 /// ice-like
-#define DEEPMAINT_TYPE_FROZEN				(1<<1)
+#define DEEPMAINT_THEME_FROZEN				(1<<1)
 /// cave/mountain
-#define DEEPMAINT_TYPE_CAVERN				(1<<2)
+#define DEEPMAINT_THEME_MOUNTAIN			(1<<2)
 /// lava-like
-#define DEEPMAINT_TYPE_MOLTEN				(1<<3)
+#define DEEPMAINT_THEME_MOLTEN				(1<<3)
 /// plains - whether above or underground
-#define DEEPMAINT_TYPE_PLAINS				(1<<4)
-/// special - marks if this should be usblae aboveground
-#define DEEPMAINT_TYPE_USE_ABOVEGROUND		(1<<5)
-/// special - marks if this should be usable underground
-#define DEEPMAINT_TYPE_USE_UNDERGRONUD		(1<<6)
-/// special - marks if this should be usable in space
-#define DEEPMAINT_TYPE_USE_SPACE			(1<<7)
+#define DEEPMAINT_THEME_PLAINS				(1<<4)
 /// asteroid
-#define DEEPMAINT_TYPE_ASTEROID				(1<<8)
+#define DEEPMAINT_THEME_ASTEROID			(1<<8)
 /// spacestation
-#define DEEPMAINT_TYPE_STATION				(1<<9)
+#define DEEPMAINT_THEME_STATION				(1<<9)
+
+// deepmaint type
+/// marks if this should be usable aboveground
+#define DEEPMAINT_TYPE_ABOVEGROUND			(1<<5)
+/// marks if this should be usable underground
+#define DEEPMAINT_TYPE_UNDERGRONUD			(1<<6)
+/// marks if this should be usable in space
+#define DEEPMAINT_TYPE_SPACE				(1<<7)
+
+// deepmaint danger rating
+/// as harmless as a suspiciuos rock outcropping
+#define DEEPMAINT_DANGER_NEGLIGIBLE			1
+/// a few rats
+#define DEEPMAINT_DANGER_ANNOYANCE			2
+/// a few spiders
+#define DEEPMAINT_DANGER_HARMFUL			3
+/// a merc or two, spider cave
+#define DEEPMAINT_DANGER_HOSTILE			4
+/// a few mercs, cult constructs, etc
+#define DEEPMAINT_DANGER_LETHAL				5
+/// this room will utterly fuck the station up if we seed it too close
+#define DEEPMAINT_DANGER_OH_SHIT			6
+
+// deepmaint rarity rating
+/// this is worthless
+#define DEEPMAINT_RARITY_WORTHLESS			1
+/// this has some tools, first aid kit, etc
+#define DEEPMAINT_RARITY_BASICS				2
+/// this has chems, low grade weapons, w/e
+#define DEEPMAINT_RARITY_UNIQUE				3
+/// this has powerful stuff
+#define DEEPMAINT_RARITY_IMPRESSIVE			4
+/// this shouldn't be seen most of the time
+#define DEEPMAINT_RARITY_SUPER				5
+
+// deepmaint template directive flags
+/// this is a branch point. this means that; 1. the deepmaint system is allowed to penetrate your template with a hallway any way it sees fit and 2. we don't care about any doorways anymore
+#define DEEPMAINT_DIRECTIVE_FREEBRANCH		(1<<0)
+
+
+
+
+
+
+
+/**
+ * END PUBLIC SECTION
+ */
+
