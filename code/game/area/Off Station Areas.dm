@@ -10,7 +10,7 @@
 
 /area/triumph/surfacebase
 	icon = 'icons/turf/areas.dmi'
-	area_flags = AREA_ALLOW_DEEPMAINT
+	area_flags = AREA_ALLOW_DEEPMAINT | AREA_ABSTRACT
 
 /area/triumph/surfacebase/outside
 	name = "Outside - Surface"
@@ -171,10 +171,12 @@
 /area/class_d/explored
 	name = "Class D World - Explored (E)"
 	icon_state = "explored"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 /area/class_d/unexplored
 	name = "Class D World - Unexplored (UE)"
 	icon_state = "unexplored"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 /area/class_d/unexplored/underground // Caves would be protected from weather. Still valid for POI generation do to being a dependent of /area/poi_d/unexplored
 
@@ -247,10 +249,12 @@
 	name = "Class G World - Explored (E)"
 	icon_state = "red"
 	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 /area/class_g/unexplored
 	name = "Class G World - Unexplored (UE)"
 	icon_state = "yellow"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 // Desert Planet world areas
 /area/class_h
@@ -301,10 +305,12 @@
 /area/class_h/explored
 	name = "Class H World - Explored (E)"
 	icon_state = "explored"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 /area/class_h/unexplored
 	name = "Class H World - Unexplored (UE)"
 	icon_state = "unexplored"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 //Gaia planet world areas
 /area/class_m
@@ -316,10 +322,12 @@
 /area/class_m/inside
 	name = "Class M World - Inside (E)"
 	icon_state = "red"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 /area/class_m/outside
 	name = "Class M World - Outside (UE)"
 	icon_state = "yellow"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 // Frozen planet world areas
 /area/class_p
@@ -339,10 +347,12 @@
 /area/class_p/explored
 	name = "Class P World - Explored (E)"
 	icon_state = "yellow"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 /area/class_p/unexplored
 	name = "Class P World - Unexplored (UE)"
 	icon_state = "red"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 /area/class_p/POIs/archaic_temple
 	name = "Archaic Temple"
@@ -359,9 +369,11 @@
 
 /area/space/debrisfield/explored
 	icon_state = "debrisexplored"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 /area/space/debrisfield/unexplored
 	icon_state = "debrisunexplored"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 /area/debrisfield/derelict
 	name = "POI - Alien Derelict"
@@ -420,8 +432,11 @@
 
 /area/mine/unexplored/underdark
 	name = "\improper Mining Underdark"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
+
 /area/mine/explored/underdark
 	name = "\improper Mining Underdark"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 // Mining outpost areas
 /area/outpost/mining_main/passage
@@ -651,10 +666,12 @@
 /area/lavaland/central/explored
 	name = "Lava Land (Center) - Thoroughfare"
 	icon_state = "red"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 /area/lavaland/central/unexplored
 	name = "Lava Land (Center) - Unknown"
 	icon_state = "yellow"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 /area/lavaland/central/transit
 	name = "Lava Land (Center) - Transit"
@@ -663,30 +680,37 @@
 /area/lavaland/north/explored
 	name = "Lava Land (North) - Thoroughfare"
 	icon_state = "red"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 /area/lavaland/north/unexplored
 	name = "Lava Land (North) - Unknown"
 	icon_state = "yellow"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 /area/lavaland/south/explored
 	name = "Lava Land (South) - Thoroughfare"
 	icon_state = "red"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 /area/lavaland/south/unexplored
 	name = "Lava Land (South) - Unknown"
 	icon_state = "yellow"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 /area/lavaland/east/explored
 	name = "Lava Land (East) - Thoroughfare"
 	icon_state = "red"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 /area/lavaland/east/unexplored
 	name = "Lava Land (East) - Unknown"
 	icon_state = "yellow"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 /area/lavaland/east/colony
 	name = "Lava Land (East) - Colony"
 	icon_state = "blue"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 /area/lavaland/east/transit
 	name = "Lava Land (East) - Transit"
@@ -710,10 +734,12 @@
 /area/lavaland/west/explored
 	name = "Lava Land (West) - Thoroughfare"
 	icon_state = "red"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 /area/lavaland/west/unexplored
 	name = "Lava Land (West) - Unknown"
 	icon_state = "yellow"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 /area/lavaland/dungeon/exterior
 	name = "Lava Land (Dungeon) - Unknown"
@@ -740,6 +766,7 @@
 	icon_state = "away"
 	requires_power = FALSE
 	dynamic_lighting = FALSE
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 /area/aerostat/inside
 	name = "\improper Away Mission - Aerostat Inside"
@@ -747,6 +774,7 @@
 	requires_power = TRUE
 	dynamic_lighting = TRUE
 	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/argitoth.ogg', 'sound/ambience/tension/burning_terror.ogg')
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 /area/aerostat/solars
 	name = "\improper Away Mission - Aerostat Solars"
@@ -760,10 +788,12 @@
 /area/aerostat/surface/explored
 	name = "Away Mission - Aerostat Surface (E)"
 	icon_state = "explored"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 /area/aerostat/surface/unexplored
 	name = "Away Mission - Aerostat Surface (UE)"
 	icon_state = "unexplored"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 
 
@@ -918,6 +948,7 @@
 					/obj/structure/flora/grass/both, /obj/structure/flora/bush, /obj/structure/flora/ausbushes/grassybush,
 					/obj/structure/flora/ausbushes/sunnybush, /obj/structure/flora/ausbushes/genericbush, /obj/structure/flora/ausbushes/pointybush,
 					/obj/structure/flora/ausbushes/lavendergrass, /obj/structure/flora/ausbushes/sparsegrass, /obj/structure/flora/ausbushes/fullgrass)
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 /area/awaymission/snow_outpost/outpost
 	icon_state = "away"
@@ -947,6 +978,7 @@
 					/obj/structure/flora/grass/both, /obj/structure/flora/bush, /obj/structure/flora/ausbushes/grassybush,
 					/obj/structure/flora/ausbushes/sunnybush, /obj/structure/flora/ausbushes/genericbush, /obj/structure/flora/ausbushes/pointybush,
 					/obj/structure/flora/ausbushes/lavendergrass, /obj/structure/flora/ausbushes/sparsegrass, /obj/structure/flora/ausbushes/fullgrass)
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 /area/awaymission/snowfield/restricted // No mob spawns!
 	icon_state = "red"

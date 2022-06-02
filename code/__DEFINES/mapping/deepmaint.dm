@@ -55,7 +55,7 @@
 // deepmaint template directive flags
 /// this is a branch point. this means that; 1. the deepmaint system is allowed to penetrate your template with a hallway any way it sees fit and 2. we don't care about any doorways anymore
 #define DEEPMAINT_DIRECTIVE_FREEBRANCH		(1<<0)
-
+/// this cares about where we join to a tunnel in that
 
 
 
@@ -65,4 +65,14 @@
 /**
  * END PUBLIC SECTION
  */
+
+// verticality
+#define DEEPMAINT_VT_SPREAD_UP					(1<<0)
+#define DEEPMAINT_VT_SPREAD_DOWN				(1<<1)
+
+// generation phase
+#define DEEPMAINT_GENERATION_STATE_NOT_STARTED			0
+#define DEEPMAINT_GENERATION_STATE_RUNNINIG				1
+#define DEEPMAINT_GENERATION_STATE_FINISHED				2
+
 

@@ -7,11 +7,17 @@ GLOBAL_VAR(deepmaint_current_exterior_wall)
 GLOBAL_VAR(deepmaint_current_interior_floor)
 GLOBAL_VAR(deepmaint_current_exterior_floor)
 
-/area/deepmaint/room
+/area/deepmaint
 	name = "Unexplored Area"
+	always_unpowered = FALSE
+
+/area/deepmaint/room
+
+/area/deepmaint/room/powered
+	requires_power = FALSE
 
 /area/deepmaint/tunnel
-	name = "Unexplored Area"
+	area_flags = AREA_ABSTRACT
 
 /turf/deepmaint
 	icon = 'icons/turf/deepmaint.dmi'

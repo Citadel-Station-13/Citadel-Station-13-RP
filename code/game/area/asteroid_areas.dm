@@ -7,10 +7,12 @@
 /area/mine/explored
 	name = "Mine"
 	icon_state = "explored"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 /area/mine/unexplored
 	name = "Mine"
 	icon_state = "unexplored"
+	area_flags = AREA_ABSTRACT | AREA_ALLOW_DEEPMAINT
 
 /area/mine/explored/upper_level
 	name = "Upper Level Mine"
