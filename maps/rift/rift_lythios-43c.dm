@@ -125,8 +125,8 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 
 /datum/weather/lythios43c
 	name = "lythios-43c base"
-	temp_high = 131.15  // -142c
-	temp_low = 116.15 // -157c
+	temp_low = 220.14
+	temp_high = 241.72
 
 /datum/weather/lythios43c/clear
 	name = "clear"
@@ -162,8 +162,8 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 /datum/weather/lythios43c/light_snow
 	name = "light snow"
 	icon_state = "snowfall_light"
-	temp_high = 130.15
-	temp_low = 116.15
+	temp_low = 218.14
+	temp_high = 239.72
 	light_modifier = 0.7
 	transition_chances = list(
 		WEATHER_OVERCAST = 20,
@@ -182,8 +182,8 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 /datum/weather/lythios43c/snow
 	name = "moderate snow"
 	icon_state = "snowfall_med"
-	temp_high = 126.15
-	temp_low = 116.15
+	temp_low = 215.14
+	temp_high = 235.72
 	light_modifier = 0.5
 	flight_failure_modifier = 5
 	transition_chances = list(
@@ -223,8 +223,8 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 /datum/weather/lythios43c/blizzard
 	name = "blizzard"
 	icon_state = "snowfall_heavy"
-	temp_high = 126.15
-	temp_low = 116.15
+	temp_low = 200.14
+	temp_high = 225.72
 	light_modifier = 0.3
 	flight_failure_modifier = 10
 	transition_chances = list(
@@ -267,6 +267,8 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 	name = "storm"
 	icon_state = "storm"
 	light_modifier = 0.3
+	temp_low = 215.14
+	temp_high = 235.72
 	flight_failure_modifier = 10
 	effect_message = list(
 		"<I>A gentle white noise of rain taps away a restless song.</I>",
@@ -351,6 +353,8 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 	name = "hail"
 	icon_state = "hail"
 	light_modifier = 0.3
+	temp_low = 215.14
+	temp_high = 225.72
 	flight_failure_modifier = 15
 	timer_low_bound = 2
 	timer_high_bound = 5
