@@ -45,6 +45,32 @@
 	lift_floor_name = "Bar, Kitchen, Bridge, Exploration, Arrivals"
 	lift_announce_str = "Arriving at surface level two."
 
+//Mining Elevator Area
+/area/turbolift/rmine/surface
+	name = "mining shaft (surface)"
+	lift_floor_label = "Surface"
+	lift_floor_name = "Cargo"
+	lift_announce_str = "Arriving at Cargo Level."
+
+/area/turbolift/rmine/under1
+	name = "mining shaft (level -1)"
+	lift_floor_label = "Undergound Level 1"
+	lift_floor_name = "Maintnence"
+	lift_announce_str = "Arriving at Maintnence Point."
+
+/area/turbolift/rmine/under2
+	name = "mining shaft (level -2)"
+	lift_floor_label = "Undergound Level 2"
+	lift_floor_name = "Mining Main"
+	lift_announce_str = "Arriving at Mining Department."
+
+/area/turbolift/rmine/under3
+	name = "mining shaft (level -3)"
+	lift_floor_label = "Undergound Level 3"
+	lift_floor_name = "Mining Bottom"
+	lift_announce_str = "Arriving at Lower Level."
+
+
 /*
 /area/turbolift/t_station/level1
 	name = "asteroid (level 1)"

@@ -1,0 +1,16 @@
+author: "CharlesWedge"
+delete-after: True
+changes: 
+  - rscadd: "Maint Bar"
+  - rscadd: "The Various Surface Batteries now have little bunkers attached for flavor."
+  - rscadd: "Small Maint Routes and caves for sneaking around"
+  - rscadd: "Mining elevator: It strectches from Cargo to Underground 3."
+  - rscadd: "Command SMES pending a station wide rewire. This SMES powers Command T-Comms and the AI chamber
+tweak: Some maint layouts.
+tweak: The Trader outpost now has an exit on Surface 3 there are stairs that allows someone to walk onto the trader dock from the snow.
+tweak: trader outpost has been modified slightly to better comply with the laws of physics (and not hang out over the snow unsupported)
+tweak: removes the bump teles from mining area.
+tweak: The HOS' consul revovler has been replaced by a Tajaran hand cannon to reflect currently unpublished map lore."
+  - bugfix: "SMESes, beaker boxes, Surface 3's very power intensive SMES."
+  - bugfix: "The Surface AA batteries now function (they will not protect the station I will have to push a future PR to add in closer ones that will)."
+  - bugfix: "all maint areas now have APCs, all amint areas are contigous areas."

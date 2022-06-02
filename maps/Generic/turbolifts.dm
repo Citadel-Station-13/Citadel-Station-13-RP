@@ -14,6 +14,22 @@
 		/area/turbolift/rsurface/level3
 		)
 
+/obj/turbolift_map_holder/rift_mining
+	name = "Atlas Minging Lift"
+	depth = 4
+	lift_size_x = 2
+	lift_size_y = 1
+	icon = 'icons/obj/turbolift_preview_3x3.dmi'
+	wall_type = null // Don't make walls
+
+	areas_to_use = list(
+		/area/turbolift/rmine/under3,
+		/area/turbolift/rmine/under2,
+		/area/turbolift/rmine/under1,
+		/area/turbolift/rmine/surface
+		)
+
+
 /obj/turbolift_map_holder/triumph
 	name = "Triumph Climber"
 	depth = 4
@@ -46,6 +62,8 @@
 		/area/turbolift/t_station/level1,
 		/area/turbolift/t_station/level2
 		)
+
+
 
 
 /* SHUT UP
