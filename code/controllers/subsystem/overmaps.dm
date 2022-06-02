@@ -24,8 +24,8 @@ SUBSYSTEM_DEF(overmaps)
 	var/static/list/hazards_by_id = list()
 
 /datum/controller/subsystem/overmaps/Initialize()
-	RecalculatePhysicsLimits()
-	InstantiateHazards()
+	recalculate_physics_limits()
+	instantiate_hazards()
 	if(GLOB.using_map.use_overmap)
 		GLOB.overmap_event_handler.create_events(GLOB.using_map.overmap_z, GLOB.using_map.overmap_size, GLOB.using_map.overmap_event_areas)
 	rebuild_helm_computers()
@@ -73,9 +73,25 @@ SUBSYSTEM_DEF(overmaps)
 		for(var/datum/overmap/O as anything in overmaps)
 			O.Tick(_time)
 
-/datum/controller/subsystem/overmaps/
+/datum/controller/subsystem/overmaps/proc/instantiate_hazards()
+	hazards_by_id = list()
+	for(var/path in subtypesof(/datum/overmap_hazard))
+		var/datum/overmap_hazard/H = path
+		if(initial(H.abstract_type) == path)
+			continue
+		if(!initial(H.id))
+			stack_trace("no ID on [path] overmap hazard")
+			continue
+		if(hazards_by_id[initial(H.id)])
+			stack_trace("duplicate ID on [path] overmap hazard")
+			continue
+		hazards_by_id[H.id] = new path
 
-/datum/controller/subsystem/overmaps/proc/RecalculatePhysicsLimits()
+/datum/controller/subsystem/overmaps/proc/resolve_hazard(id)
+	RETURN_TYPE(/datum/overmap_hazard)
+	return hazards_by_id[id]
+
+/datum/controller/subsystem/overmaps/proc/recalculate_physics_limits()
 	// we calculate max entity speed to avoid physics clipping issues because this is byond
 	// and we obviously can't do some fancy algorithm to stop this
 	max_entity_speed = world.fps * movement_accuracy

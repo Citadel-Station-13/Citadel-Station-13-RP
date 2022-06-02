@@ -63,8 +63,10 @@
 	var/instantiation = OVERMAP_ENTITY_INSTANTIATION_VIRTUAL
 
 	// hazards
-	/// active hazards associated to severities
+	/// active hazards associated to scales. scales are logarithmic.
 	var/list/active_hazards
+	/// registered hazards, used to build active hazards
+	var/list/touching_hazards
 
 /atom/movable/overmap_object/entity/New()
 	// assign id immediately
@@ -109,7 +111,31 @@
 			if(!H)
 				stack_trace("bad hazard id [id] found")
 				active_hazards -= id
+				touching_hazards -= id
 			H.tick(src, active_hazards[id], seconds)
+
+/atom/movable/overmap_object/entity/proc/compute_hazard(id)
+	if(!touching_hazards || !active_hazards)
+		active_hazards = null
+		return
+	if(!touching_hazards[id])
+		active_hazards -= id
+		return
+	// we're log so just do strongest strength
+	active_hazards[id] = max(arglist(touching_hazards[id]))
+	check_ticking()
+
+/atom/movable/overmap_object/entity/proc/register_hazard(id, scale, atom/movable/overmap_object/tiled/hazard/hazard_tile)
+	LAZYINITLIST(touching_hazards)
+	LAZYINITLIST(touching_hazards[id])
+	touching_hazards[id][hazard_tile] = scale
+	compute_hazard(id)
+
+/atom/movable/overmap_object/entity/proc/unregister_hazard(id, atom/movable/overmap_object/tiled/hazard/hazard_tile)
+	if(!touching_hazards || !touching_hazards[id])
+		return
+	touching_hazards[id] -= hazard_tile
+	compute_hazard(id)
 
 /**
  * should we be ticking?
