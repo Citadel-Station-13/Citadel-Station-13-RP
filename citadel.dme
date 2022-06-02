@@ -2509,6 +2509,7 @@
 #include "code\modules\mapping\deepmaint\generation.dm"
 #include "code\modules\mapping\deepmaint\loot.dm"
 #include "code\modules\mapping\deepmaint\templates\_template.dm"
+#include "code\modules\mapping\deepmaint\templates\unsorted.dm"
 #include "code\modules\mapping\map_helpers\_map_helpers.dm"
 #include "code\modules\mapping\map_helpers\baseturf.dm"
 #include "code\modules\mapping\map_helpers\network_builder\_network_builder.dm"

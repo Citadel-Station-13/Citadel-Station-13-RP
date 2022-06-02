@@ -148,6 +148,8 @@
 /area/tether/surfacebase/outside
 	name = "Outside - Surface"
 	sound_env = MOUNTAINS
+	area_flags = AREA_ALLOW_DEEPMAINT
+
 /area/tether/surfacebase/outside/outside1
 	icon_state = "outside1"
 /area/tether/surfacebase/outside/outside2

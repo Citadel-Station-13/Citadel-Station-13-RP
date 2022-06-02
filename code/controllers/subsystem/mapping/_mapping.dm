@@ -342,17 +342,24 @@ SUBSYSTEM_DEF(mapping)
 	subsystem_flags |= SS_NO_INIT // Make extra sure we don't initialize twice.
 	shelter_templates = SSmapping.shelter_templates
 
+// TODO: whoever made this use names instead of unique ids, FUCK YOU
 /datum/controller/subsystem/mapping/proc/load_map_templates()
+	deepmaint_templates = list()
 	for(var/T in subtypesof(/datum/map_template))
 		var/datum/map_template/template = T
+		if(initial(template.abstract_type) == T)
+			continue
 		template = new T
 		if(!template.mappath)
 			qdel(template)
 			continue
 		map_templates[template.name] = template
 		if(istype(template, /datum/map_template/submap/deepmaint))
-			#warn stuff
+			deepmaint_templates += template
 	return TRUE
+
+/datum/controller/subsystem/mapping/proc/mapgen_deepmaint()
+	return	// WIP
 
 /datum/controller/subsystem/mapping/proc/mapgen_engine()
 	if(!engine_loader)

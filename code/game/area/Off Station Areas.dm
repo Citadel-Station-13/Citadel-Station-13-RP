@@ -10,6 +10,8 @@
 
 /area/triumph/surfacebase
 	icon = 'icons/turf/areas.dmi'
+	area_flags = AREA_ALLOW_DEEPMAINT
+
 /area/triumph/surfacebase/outside
 	name = "Outside - Surface"
 	sound_env = MOUNTAINS

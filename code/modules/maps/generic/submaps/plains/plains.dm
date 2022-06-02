@@ -6,6 +6,7 @@
 // POIs here should not be dangerous, be mundane, and be somewhat conversative on the loot. Some of the loot can be useful, but it shouldn't trivialize the Wilderness.
 
 /datum/map_template/submap/level_specific/plains
+	abstract_type = /datum/map_template/submap/level_specific/plains
 	name = "Surface Content - Plains"
 	desc = "Used to make the surface outside the outpost be 16% less boring."
 	prefix = "_maps/submaps/plains/"

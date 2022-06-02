@@ -21,7 +21,7 @@
 
 /obj/random/crusader_armor/item_to_spawn()
 	return pick(prob(10);/obj/item/clothing/suit/armor/medieval/crusader/cross,
-				prob(2);/obj/item/clothing/suit/armor/medieval/crusader/cross/teutonic,
+				prob(2);/obj/item/clothingw/suit/armor/medieval/crusader/cross/teutonic,
 				prob(2);/obj/item/clothing/suit/armor/medieval/crusader/cross/templar,
 				prob(2);/obj/item/clothing/suit/armor/medieval/crusader/cross/hospitaller)
 
