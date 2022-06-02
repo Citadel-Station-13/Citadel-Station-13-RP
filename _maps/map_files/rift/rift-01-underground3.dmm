@@ -9,13 +9,6 @@
 /obj/effect/blocker,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
-"d" = (
-/obj/structure/cable/green{
-	d2 = 4;
-	icon_state = "0-4"
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
 "e" = (
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
@@ -25,13 +18,8 @@
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
-"h" = (
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/tiled,
+"g" = (
+/turf/simulated/floor/plating,
 /area/rift/surfacebase/underground/under2)
 "i" = (
 /obj/effect/zone_divider,
@@ -45,13 +33,9 @@
 /obj/effect/zone_divider,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
-"l" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/tiled,
+"k" = (
+/obj/structure/fence/door,
+/turf/simulated/floor/plating,
 /area/rift/surfacebase/underground/under2)
 "m" = (
 /obj/effect/zone_divider,
@@ -60,41 +44,23 @@
 /obj/effect/zone_divider,
 /turf/simulated/mineral/icerock,
 /area/rift/surfacebase/underground/under2)
+"n" = (
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/turbolift/rmine/under3)
 "o" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
-"q" = (
-/obj/structure/cable/green,
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
-"r" = (
-/obj/structure/cable/green{
-	d2 = 8;
-	icon_state = "0-8"
+"w" = (
+/obj/structure/fence{
+	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/plating,
 /area/rift/surfacebase/underground/under2)
-"s" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
-"C" = (
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
-"E" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
+"x" = (
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/turbolift/rmine/under3)
 "G" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
@@ -110,14 +76,10 @@
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
-"I" = (
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
+"J" = (
+/obj/turbolift_map_holder/rift_mining,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/turbolift/rmine/under3)
 "K" = (
 /obj/effect/zone_divider,
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -126,6 +88,15 @@
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
 /turf/simulated/mineral/icerock,
+/area/rift/surfacebase/underground/under2)
+"N" = (
+/obj/structure/sign/mining{
+	pixel_y = 32
+	},
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
 /area/rift/surfacebase/underground/under2)
 "O" = (
 /obj/effect/map_effect/portal/master/side_a{
@@ -139,23 +110,18 @@
 /obj/effect/zone_divider,
 /turf/simulated/mineral/icerock,
 /area/rift/surfacebase/underground/under2)
-"Q" = (
-/obj/structure/cable/green{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
-"S" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled,
-/area/rift/surfacebase/underground/under2)
 "T" = (
 /turf/simulated/mineral/icerock,
+/area/rift/surfacebase/underground/under2)
+"U" = (
+/obj/machinery/door/airlock/lift,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/turbolift/rmine/under3)
+"V" = (
+/turf/simulated/shuttle/wall/voidcraft,
+/area/turbolift/rmine/under3)
+"W" = (
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/surfacebase/underground/under2)
 "Y" = (
 /turf/simulated/wall/r_wall,
@@ -737,9 +703,9 @@ e
 e
 e
 T
-C
-S
-C
+T
+T
+T
 T
 a
 "}
@@ -931,9 +897,9 @@ e
 e
 e
 T
-h
-C
-l
+T
+T
+T
 T
 a
 "}
@@ -1125,9 +1091,9 @@ e
 e
 e
 T
-q
-r
-Q
+T
+T
+T
 T
 a
 "}
@@ -1319,9 +1285,9 @@ e
 e
 e
 T
-I
-d
-E
+T
+T
+T
 T
 a
 "}
@@ -1513,9 +1479,9 @@ e
 e
 e
 T
-C
-s
-C
+T
+T
+T
 T
 a
 "}
@@ -18098,9 +18064,9 @@ T
 T
 T
 T
-T
-T
-T
+W
+W
+W
 T
 T
 T
@@ -18290,14 +18256,14 @@ T
 T
 T
 T
-T
-T
-T
-T
-T
-T
-T
-T
+W
+W
+W
+W
+W
+W
+W
+W
 T
 T
 T
@@ -18483,16 +18449,16 @@ T
 T
 T
 T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
+W
+W
+W
+W
+W
+W
+W
+W
+W
+W
 T
 T
 T
@@ -18676,18 +18642,18 @@ T
 T
 T
 T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
+W
+W
+W
+W
+W
+W
+W
+Y
+W
+Y
+W
+Y
 T
 T
 T
@@ -18870,18 +18836,18 @@ T
 T
 T
 T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
+W
+W
+W
+x
+V
+V
+x
+w
+g
+g
+g
+g
 T
 T
 T
@@ -19064,18 +19030,18 @@ T
 T
 T
 T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
+W
+W
+W
+V
+n
+J
+V
+N
+g
+g
+g
+g
 T
 T
 T
@@ -19258,18 +19224,18 @@ T
 T
 T
 T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
+W
+W
+W
+V
+n
+n
+U
+k
+g
+g
+g
+g
 T
 T
 T
@@ -19452,18 +19418,18 @@ T
 T
 T
 T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
+W
+W
+W
+x
+n
+n
+V
+w
+g
+g
+g
+g
 T
 T
 T
@@ -19647,17 +19613,17 @@ T
 T
 T
 T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
+W
+W
+x
+V
+V
+x
+w
+g
+g
+g
+g
 T
 T
 T
@@ -19841,17 +19807,17 @@ T
 T
 T
 T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
-T
+W
+W
+W
+W
+W
+W
+Y
+W
+Y
+W
+Y
 T
 T
 T
@@ -20036,14 +20002,14 @@ T
 T
 T
 T
-T
-T
-T
-T
-T
-T
-T
-T
+W
+W
+W
+W
+W
+W
+W
+W
 T
 T
 T
@@ -20231,12 +20197,12 @@ T
 T
 T
 T
-T
-T
-T
-T
-T
-T
+W
+W
+W
+W
+W
+W
 T
 T
 T
@@ -20426,8 +20392,8 @@ T
 T
 T
 T
-T
-T
+W
+W
 T
 T
 T
