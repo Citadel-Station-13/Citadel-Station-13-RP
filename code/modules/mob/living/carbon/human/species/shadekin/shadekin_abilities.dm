@@ -24,7 +24,7 @@
 	name = "Phase Shift (100)"
 	desc = "Shift yourself out of alignment with realspace to travel quickly to different areas."
 	verbpath = /mob/living/carbon/human/proc/phase_shift
-	ability_icon_state = "tech_passwall"
+	ability_icon_state = "wiz_jaunt"
 
 /mob/living/carbon/human/proc/phase_shift()
 	set name = "Phase Shift (100)"
@@ -33,24 +33,44 @@
 
 	var/ability_cost = 100
 
+	var/darkness = 1
+	var/turf/T = get_turf(src)
+	if(!T)
+		to_chat(src, SPAN_WARNING("You can't use that here!"))
+		return FALSE
+
+	var/brightness = T.get_lumcount() //Brightness in 0.0 to 1.0
+	darkness = 1-brightness //Invert
+
+	var/watcher = 0
+	for(var/mob/living/carbon/human/watchers in oview(7,src ))	// If we can see them...
+		if(watchers in oviewers(7,src))	// And they can see us...
+			if(!(watchers.stat) && !isbelly(watchers.loc) && !istype(watchers.loc, /obj/item/holder))	// And they are alive and not being held by someone...
+				watcher++	// They are watching us!
+
+	ability_cost = clamp(ability_cost/(0.01+darkness*2),50, 80)//This allows for 1 watcher in full light
+	if(watcher>0)
+		ability_cost = ability_cost + ( 15 * watcher )
+	if(!(ability_flags & AB_PHASE_SHIFTED))
+		log_debug("[src] attempted to shift with [watcher] visible Carbons with a  cost of [ability_cost] in a darkness level of [darkness]")
+
 	var/datum/species/shadekin/SK = species
 	if(!istype(SK))
-		to_chat(src, "<span class='warning'>Only a shadekin can use that!</span>")
+		to_chat(src, SPAN_WARNING("Only a shadekin can use that!"))
 		return FALSE
 	else if(stat)
-		to_chat(src, "<span class='warning'>Can't use that ability in your state!</span>")
+		to_chat(src, SPAN_WARNING("Can't use that ability in your state!"))
 		return FALSE
 	else if(shadekin_get_energy() < ability_cost && !(ability_flags & AB_PHASE_SHIFTED))
-		to_chat(src, "<span class='warning'>Not enough energy for that ability!</span>")
+		to_chat(src, SPAN_WARNING("Not enough energy for that ability!"))
 		return FALSE
 
 	if(!(ability_flags & AB_PHASE_SHIFTED))
 		shadekin_adjust_energy(-ability_cost)
-	playsound(src, 'sound/effects/stealthoff.ogg', 75, 1)
+	playsound(src, 'sound/effects/stealthoff.ogg', 75, TRUE)
 
-	var/turf/T = get_turf(src)
 	if(!T.CanPass(src,T) || loc != T)
-		to_chat(src,"<span class='warning'>You can't use that here!</span>")
+		to_chat(src, SPAN_WARNING("You can't use that here!"))
 		return FALSE
 
 	forceMove(T)
@@ -67,6 +87,7 @@
 	//Shifting in
 	if(ability_flags & AB_PHASE_SHIFTED)
 		ability_flags &= ~AB_PHASE_SHIFTED
+		mouse_opacity = 2
 		name = real_name
 		for(var/belly in vore_organs)
 			var/obj/belly/B = belly
@@ -85,9 +106,12 @@
 		phaseanim.dir = dir
 		alpha = 0
 		custom_emote(1,"phases in!")
+		remove_a_modifier_of_type(/datum/modifier/shadekin_phase_vision)
+		RemoveSightSelf(SEE_THRU)
 		sleep(5) //The duration of the TP animation
 		canmove = original_canmove
 		alpha = initial(alpha)
+
 		// probably replace with a trait later.
 		set_movement_type(GROUND)
 
@@ -98,7 +122,7 @@
 				var/mob/living/target = pick(potentials)
 				if(istype(target) && vore_selected)
 					target.forceMove(vore_selected)
-					to_chat(target,"<span class='warning'>\The [src] phases in around you, [vore_selected.vore_verb]ing you into their [vore_selected.name]!</span>")
+					to_chat(target, SPAN_WARNING("\The [src] phases in around you, [vore_selected.vore_verb]ing you into their [vore_selected.name]!"))
 
 		//Affect nearby lights
 		var/destroy_lights = 0
@@ -115,16 +139,17 @@
 	//Shifting out
 	else
 		ability_flags |= AB_PHASE_SHIFTED
+		mouse_opacity = 0
 		custom_emote(1,"phases out!")
 		name = "Something"
 
-		for(var/belly in vore_organs)
-			var/obj/belly/B = belly
+		for(var/obj/belly/B as anything in vore_organs)
 			B.escapable = FALSE
 
 		var/obj/effect/temp_visual/shadekin/phase_out/phaseanim = new /obj/effect/temp_visual/shadekin/phase_out(src.loc)
 		phaseanim.dir = dir
 		alpha = 0
+		add_modifier(/datum/modifier/shadekin_phase_vision)
 		sleep(5)
 		invisibility = INVISIBILITY_LEVEL_TWO
 		see_invisible = INVISIBILITY_LEVEL_TWO

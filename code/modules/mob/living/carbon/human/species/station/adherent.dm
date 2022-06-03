@@ -96,12 +96,12 @@
 	)
 
 	has_organ = list(
-		BP_BRAIN =        /obj/item/organ/internal/brain/adherent,
-		BP_EYES =         /obj/item/organ/internal/eyes/adherent,
-		BP_JETS =         /obj/item/organ/internal/powered/jets,
-		BP_FLOAT =        /obj/item/organ/internal/powered/float,
-		BP_CELL =         /obj/item/organ/internal/cell/adherent,
-		BP_COOLING_FINS = /obj/item/organ/internal/powered/cooling_fins
+		O_BRAIN =        /obj/item/organ/internal/brain/adherent,
+		O_EYES =         /obj/item/organ/internal/eyes/adherent,
+		O_JETS =         /obj/item/organ/internal/powered/jets,
+		O_FLOAT =        /obj/item/organ/internal/powered/float,
+		O_CELL =         /obj/item/organ/internal/cell/adherent,
+		O_COOLING_FINS = /obj/item/organ/internal/powered/cooling_fins
 		)
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/snake
 	//If you wanna copy this for your mob, dont

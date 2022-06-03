@@ -21,7 +21,6 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 /**
  * returns inventory slot meta for an id
  *
- * **You must use a typepath for hardcoded datums.**
  * String IDs are not automatically converted to paths for speed.
  */
 /proc/resolve_inventory_slot_meta(datum/inventory_slot_meta/id)
