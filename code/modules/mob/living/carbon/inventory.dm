@@ -34,6 +34,6 @@
 	. = ..()
 	if(include_restraints)
 		if(handcuffed)
-			. += handcuffed
+			. += handcuffed._inv_return_attached()
 		if(legcuffed)
-			. += legcuffed
+			. += legcuffed._inv_return_attached()

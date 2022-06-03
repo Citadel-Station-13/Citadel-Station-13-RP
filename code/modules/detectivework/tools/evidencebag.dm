@@ -30,7 +30,7 @@
 			var/obj/item/storage/U = I.loc
 			user.client.screen -= I
 			U.contents.Remove(I)
-		else if(user.item_is_in_hands(I))
+		else if(user.is_holding(I))
 			user.drop_from_inventory(I)
 		else
 			return

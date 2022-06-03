@@ -141,9 +141,9 @@
 /mob/living/_get_all_slots(include_restraints)
 	. = ..()
 	if(back)
-		. += back
+		. += back._inv_return_attached()
 	if(wear_mask)
-		. += wear_mask
+		. += wear_mask._inv_return_attached()
 
 
 

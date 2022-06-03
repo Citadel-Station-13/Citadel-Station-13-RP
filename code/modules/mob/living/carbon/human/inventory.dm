@@ -134,31 +134,31 @@
 /mob/living/carbon/human/_get_all_slots(include_restraints)
 	. = ..()
 	if(wear_suit)
-		. += wear_suit
+		. += wear_suit._inv_return_attached()
 	if(w_uniform)
-		. += w_uniform
+		. += w_uniform._inv_return_attached()
 	if(shoes)
-		. += shoes
+		. += shoes._inv_return_attached()
 	if(belt)
-		. += belt
+		. += belt._inv_return_attached()
 	if(gloves)
-		. += gloves
+		. += gloves._inv_return_attached()
 	if(glasses)
-		. += glasses
+		. += glasses._inv_return_attached()
 	if(head)
-		. += head
+		. += head._inv_return_attached()
 	if(l_ear)
-		. += l_ear
+		. += l_ear._inv_return_attached()
 	if(r_ear)
-		. += r_ear
+		. += r_ear._inv_return_attached()
 	if(wear_id)
-		. += wear_id
+		. += wear_id._inv_return_attached()
 	if(r_store)
-		. += r_store
+		. += r_store._inv_return_attached()
 	if(l_store)
-		. += l_store
+		. += l_store._inv_return_attached()
 	if(s_store)
-		. += s_store
+		. += s_store._inv_return_attached()
 
 /mob/living/carbon/human/put_in_left_hand(obj/item/I, force)
 	if(!has_organ(BP_L_HAND))

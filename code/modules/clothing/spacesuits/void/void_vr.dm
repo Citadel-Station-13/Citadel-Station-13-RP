@@ -192,7 +192,7 @@
 	if(istype(W, /obj/item/clothing/accessory) || istype(W, /obj/item/hand_labeler))
 		return ..()
 
-	if(user.get_inventory_slot(src) == SLOT_ID_SUIT)
+	if(user.is_in_inventory(src) != SLOT_ID_HANDS)
 		to_chat(user, "<span class='warning'>You cannot modify \the [src] while it is being worn.</span>")
 		return
 

@@ -235,7 +235,7 @@
 
 	dat += "<BR><HR>"
 
-	if(species.hud.has_hands)
+	if(has_hands)
 		dat += "<BR><b>Left hand:</b> <A href='?src=\ref[src];item=[slot_l_hand]'>[istype(l_hand) ? l_hand : "nothing"]</A>"
 		dat += "<BR><b>Right hand:</b> <A href='?src=\ref[src];item=[slot_r_hand]'>[istype(r_hand) ? r_hand : "nothing"]</A>"
 
@@ -1182,6 +1182,14 @@
 	// apply new species, create organs, do post spawn stuff even though we're presumably not spawning half the time
 	// i seriously hate vorecode
 	species.on_apply(src)
+
+	// set our has hands
+	has_hands = (species && species.hud)? species.hud.has_hands : TRUE
+
+	// until we unfuck hud datums, this will force reload our entire hud
+	if(hud_used)
+		qdel(hud_used) //remove the hud objects
+	hud_used = new /datum/hud(src)
 
 	// skip the rest
 	if(skip)

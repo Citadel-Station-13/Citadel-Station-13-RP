@@ -69,10 +69,10 @@
 			update_icon()
 			return
 	else if(istype(I, bait_type))
-		if(!user.attempt_insert_item_for_installation(bait, src))
+		if(!user.attempt_insert_item_for_installation(I, src))
 			return
 		if(Bait)
-			Bait.forceMove(get_turf(user))
+			user.grab_item_from_interacted_with(Bait, src)
 			to_chat(user, "<span class='notice'>You swap \the [Bait] with \the [I].</span>")
 		Bait = I
 		update_bait()

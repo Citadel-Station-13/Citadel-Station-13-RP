@@ -28,7 +28,14 @@
 		if(/datum/inventory_slot_meta/abstract/put_in_hands)
 			return put_in_hands(I, force = force)
 		if(/datum/inventory_slot_meta/abstract/put_in_storage)
-			for(var/obj/item/storage/S in get_equipped_items(TRUE, FALSE))
+			for(var/obj/item/storage/S in get_equipped_items_in_slots(list(
+				SLOT_ID_BELT,
+				SLOT_ID_BACK,
+				SLOT_ID_UNIFORM,
+				SLOT_ID_SUIT,
+				SLOT_ID_LEFT_POCKET,
+				SLOT_ID_RIGHT_POCKET
+			)))
 				if(S.try_insert(I, src, silent, force))
 					return TRUE
 			return FALSE
@@ -235,7 +242,7 @@
  * checks for slot conflict
  */
 /mob/proc/can_equip_conflict_check(obj/item/I, slot)
-	if(_item_by_slot[slot])
+	if(_item_by_slot(slot))
 		return CAN_EQUIP_SLOT_CONFLICT_HARD
 	switch(slot)
 		if(SLOT_ID_LEFT_EAR, SLOT_ID_RIGHT_EAR)
@@ -291,11 +298,21 @@
 		drop_item_to_ground(I, force)
 
 /**
- * gets the item in a slot
+ * gets the primary item in a slot
  * null if not in inventory. inhands don't count as inventory here, use held item procs.
  */
 /mob/proc/item_by_slot(slot)
 	return _item_by_slot(slot)	// why the needless indirection? so people don't override this for slots!
+
+/**
+ * gets the primary item and nested items (e.g. gloves, magboots, accessories) in a slot
+ * null if not in inventory, otherwise list
+ * inhands do not count as inventory
+ */
+/mob/proc/items_by_slot(slot)
+	var/obj/item/I = _item_by_slot(slot)
+	I = I._inv_return_attached()
+	return islist(I)? I : list(I)
 
 /**
  * returns if we have something equipped - the slot if it is, null if not

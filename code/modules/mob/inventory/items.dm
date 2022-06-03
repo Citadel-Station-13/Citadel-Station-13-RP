@@ -123,3 +123,10 @@
 			M.update_inv_w_uniform()
 		if(SLOT_ID_WORN_ID)
 			M.update_inv_wear_id()
+
+/**
+ * returns either an item or a list
+ * get_equipped_items() uses this so accessories are included
+ */
+/obj/item/proc/_inv_return_attached()
+	return src
