@@ -218,7 +218,7 @@ var/list/all_maps = list()
 		var/list/connections = list()
 		var/turf/T = get_turf(O)
 		for(var/atom/movable/overmap_object/entity/visitable/V in range(om_range, T))
-			connections += V.map_z	// Adding list to list adds contents
+			connections |= V.map_z	// Adding list to list adds contents
 		return connections
 
 	// Traditional behavior
@@ -277,19 +277,19 @@ var/list/all_maps = list()
 	if(!z)
 		return
 	map.zlevels["[z]"] = src
-	if(flags & MAP_LEVEL_STATION) map.station_levels += z
-	if(flags & MAP_LEVEL_ADMIN) map.admin_levels += z
-	if(flags & MAP_LEVEL_CONTACT) map.contact_levels += z
-	if(flags & MAP_LEVEL_PLAYER) map.player_levels += z
-	if(flags & MAP_LEVEL_SEALED) map.sealed_levels += z
-	if(flags & MAP_LEVEL_XENOARCH_EXEMPT) map.xenoarch_exempt_levels += z
+	if(flags & MAP_LEVEL_STATION) map.station_levels |= z
+	if(flags & MAP_LEVEL_ADMIN) map.admin_levels |= z
+	if(flags & MAP_LEVEL_CONTACT) map.contact_levels |= z
+	if(flags & MAP_LEVEL_PLAYER) map.player_levels |= z
+	if(flags & MAP_LEVEL_SEALED) map.sealed_levels |= z
+	if(flags & MAP_LEVEL_XENOARCH_EXEMPT) map.xenoarch_exempt_levels |= z
 	if(flags & MAP_LEVEL_EMPTY)
 		if(!map.empty_levels) map.empty_levels = list()
-		map.empty_levels += z
+		map.empty_levels |= z
 	if(flags & MAP_LEVEL_CONSOLES)
 		if (!map.map_levels)
 			map.map_levels = list()
-		map.map_levels += z
+		map.map_levels |= z
 	if(base_turf)
 		map.base_turf_by_z["[z]"] = base_turf
 	if(transit_chance)

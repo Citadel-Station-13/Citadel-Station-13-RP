@@ -1471,6 +1471,10 @@
 			if(!druggy)
 				SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
 
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.vision_flags))
+				AddSightSelf(M.vision_flags)
+
 		if(!glasses_processed && nif)
 			var/datum/nifsoft/vision_soft
 			for(var/datum/nifsoft/NS in nif.nifsofts)
