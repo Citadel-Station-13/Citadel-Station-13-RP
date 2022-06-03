@@ -15,6 +15,9 @@
 /obj/item/electronic_assembly/clothing/ui_host()
 	return clothing.ui_host()
 
+/obj/item/electronic_assembly/clothing/ui_action_click()
+	clothing.action_circuit.do_work()
+
 /obj/item/electronic_assembly/clothing/update_icon()
 	..()
 	clothing.icon_state = icon_state
@@ -35,65 +38,63 @@
 
 // This is defined higher up, in /clothing to avoid lots of copypasta.
 /obj/item/clothing
-	var/obj/item/electronic_assembly/clothing/IC = null
+	var/obj/item/electronic_assembly/clothing/EA = null
 	var/obj/item/integrated_circuit/built_in/action_button/action_circuit = null // This gets pulsed when someone clicks the button on the hud.
 
 /obj/item/clothing/emp_act(severity)
-	if(IC)
-		IC.emp_act(severity)
+	if(EA)
+		EA.emp_act(severity)
 	..()
 
 /obj/item/clothing/examine(mob/user)
-	if(IC)
-		IC.examine(user)
+	if(EA)
+		EA.examine(user)
 	. = ..()
 
 /obj/item/clothing/attackby(obj/item/I, mob/user)
-	if(IC)
-		// This needs to be done in a better way...
-		if(I.is_crowbar() || I.is_screwdriver() || istype(I, /obj/item/integrated_circuit) || istype(I, /obj/item/cell/device) || istype(I, /obj/item/integrated_electronics) )
-			IC.attackby(I, user)
-	else
-		..()
+	if(EA)
+		return EA.attackby(I, user) ? null : ..()
 
 /obj/item/clothing/attack_self(mob/user)
-	if(IC)
-		if(IC.opened)
-			IC.attack_self(user)
-		else
-			action_circuit.do_work()
+	if(EA)
+		if(EA.opened)
+			EA.attack_self(user)
 	else
 		..()
 
 /obj/item/clothing/Moved(oldloc)
-	if(IC)
-		IC.on_loc_moved(oldloc)
+	if(EA)
+		EA.on_loc_moved(oldloc)
 	else
 		..()
 
 /obj/item/clothing/on_loc_moved(oldloc)
-	if(IC)
-		IC.on_loc_moved(oldloc)
+	if(EA)
+		EA.on_loc_moved(oldloc)
 	else
 		..()
 
 // Does most of the repeatative setup.
 /obj/item/clothing/proc/setup_integrated_circuit(new_type)
 	// Set up the internal circuit holder.
-	IC = new new_type(src)
-	IC.clothing = src
-	IC.name = name
+	EA = new new_type(src)
+	EA.clothing = src
+	EA.name = name
 
 	// Clothing assemblies can be triggered by clicking on the HUD. This allows that to occur.
-	action_circuit = new(src.IC)
-	IC.force_add_circuit(action_circuit)
-	action_button_name = "Activate [name]"
+	action_circuit = new(src.EA)
+	EA.add_component(action_circuit)
+	var/obj/item/integrated_circuit/built_in/self_sensor/S = new(src.EA)
+	EA.add_component(S)
+	EA.action_button_name = "Activate [name]"
+
+
 
 /obj/item/clothing/Destroy()
-	if(IC)
-		IC.clothing = null
+	if(EA)
+		EA.clothing = null
 		action_circuit = null // Will get deleted by qdel-ing the IC assembly.
-		qdel(IC)
+		qdel(EA)
 	return ..()
 
 // Specific subtypes.
@@ -101,7 +102,7 @@
 // Jumpsuit.
 /obj/item/clothing/under/circuitry
 	name = "electronic jumpsuit"
-	desc = "It's a wearable case for electronics. This on is a black jumpsuit with wiring weaved into the fabric."
+	desc = "It's a wearable case for electronics. This one is a black jumpsuit with wiring woven into the fabric."
 	icon_state = "circuitry"
 	worn_state = "circuitry"
 
@@ -113,7 +114,7 @@
 // Gloves.
 /obj/item/clothing/gloves/circuitry
 	name = "electronic gloves"
-	desc = "It's a wearable case for electronics. This one is a pair of black gloves, with wires woven into them. A small \
+	desc = "A wearable case for electronics comprising a pair of black gloves, with wires woven through the fabric. A small \
 	device with a screen is attached to the left glove."
 	icon_state = "circuitry"
 	item_state = "circuitry"
@@ -123,22 +124,21 @@
 	return ..()
 
 // Watch.
-/obj/item/clothing/gloves/ewatch
+/obj/item/clothing/gloves/ewatch/circuitry
 	name = "electronic watch"
-	desc = "It's a wearable case for electronics. This one is a digital watch, with an antenna and button array attatched to it.\
+	desc = "A wearable case for electronics; a digital watch with an antenna and button array attatched to it.\
 	Practical and stylish!"
 	icon_state = "communicator"
 	item_state = "ewatch"
 
-/obj/item/clothing/gloves/circuitry/Initialize(mapload)
+/obj/item/clothing/gloves/ewatch/circuitry/Initialize(mapload)
 	setup_integrated_circuit(/obj/item/electronic_assembly/clothing/small)
 	return ..()
 
 // Glasses.
 /obj/item/clothing/glasses/circuitry
 	name = "electronic goggles"
-	desc = "It's a wearable case for electronics. This one is a pair of goggles, with wiring sticking out. \
-	Could this augment your vision?" // Sadly it won't, or at least not yet.
+	desc = "A wearable case for electronics; a pair of goggles, with exposed wiring. Could this augment your vision?" // Sadly it won't, or at least not yet.
 	icon_state = "circuitry"
 	item_state = "night" // The on-mob sprite would be identical anyways.
 
@@ -149,8 +149,7 @@
 // Shoes
 /obj/item/clothing/shoes/circuitry
 	name = "electronic boots"
-	desc = "It's a wearable case for electronics. This one is a pair of boots, with wires attached to a small \
-	cover."
+	desc = "A wearable case for electronics comprising a pair of boots with sleek maintenance hatches on the inside leg."
 	icon_state = "circuitry"
 	item_state = "circuitry"
 
@@ -161,8 +160,7 @@
 // Head
 /obj/item/clothing/head/circuitry
 	name = "electronic headwear"
-	desc = "It's a wearable case for electronics. This one appears to be a very technical-looking piece that \
-	goes around the collar, with a heads-up-display attached on the right."
+	desc = "A a very technical-looking wearable case for electronics that clasps around the collar with a heads-up-display attached on the right."
 	icon_state = "circuitry"
 	item_state = "circuitry"
 
@@ -173,7 +171,7 @@
 // Ear
 /obj/item/clothing/ears/circuitry
 	name = "electronic earwear"
-	desc = "It's a wearable case for electronics. This one appears to be a technical-looking headset."
+	desc = "A wearable case for electronics, bulkier than your average headset."
 	icon = 'icons/obj/clothing/ears.dmi'
 	icon_state = "circuitry"
 	item_state = "circuitry"
@@ -185,8 +183,7 @@
 // Exo-slot
 /obj/item/clothing/suit/circuitry
 	name = "electronic chestpiece"
-	desc = "It's a wearable case for electronics. This one appears to be a very technical-looking vest, that \
-	almost looks professionally made, however the wiring popping out betrays that idea."
+	desc = "A wearable case for electronics that sits over the chest and back. The sheer bulk of it gives it an imposing presence."
 	icon_state = "circuitry"
 	item_state = "circuitry"
 

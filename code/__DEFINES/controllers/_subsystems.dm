@@ -154,6 +154,7 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_AI				-22
 #define INIT_ORDER_OPENSPACE		-50
 #define INIT_ORDER_PERSISTENCE		-95
+#define INIT_ORDER_PATH				-98
 #define INIT_ORDER_ICON_SMOOTHING	-99
 ///Should be last to ensure chat remains smooth during init.
 #define INIT_ORDER_CHAT				-100

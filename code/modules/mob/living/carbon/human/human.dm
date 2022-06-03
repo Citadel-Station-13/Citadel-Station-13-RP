@@ -635,6 +635,10 @@
 		if(get_dist(src, get_turf(I)) > 7)
 			return
 		src.examinate(I)
+		if(hascall(I, "ui_interact") && HasProximity(I))
+			var/datum/tgui/ui = SStgui.get_open_ui(I.loc, I)
+			if(ui)
+				I.ui_interact(usr, src, ui)
 
 	if (href_list["lookmob"])
 		var/mob/M = locate(href_list["lookmob"])

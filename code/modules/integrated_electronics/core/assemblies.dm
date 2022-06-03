@@ -1,49 +1,121 @@
-#define IC_COMPONENTS_BASE		20
-#define IC_COMPLEXITY_BASE		60
-
 // Here is where the base definition lives.
 // Specific subtypes are in their own folder.
 /obj/item/electronic_assembly
 	name = "electronic assembly"
+	obj_flags = CAN_BE_HIT
 	desc = "It's a case, for building small electronics with."
 	w_class = ITEMSIZE_SMALL
 	icon = 'icons/obj/integrated_electronics/electronic_setups.dmi'
 	icon_state = "setup_small"
+	item_flags = NOBLUDGEON
 	show_messages = TRUE
+	datum_flags = DF_USE_TAG
+	var/list/assembly_components = list()
+	var/list/ckeys_allowed_to_scan = list() // Players who built the circuit can scan it as a ghost.
 	var/max_components = IC_COMPONENTS_BASE
 	var/max_complexity = IC_COMPLEXITY_BASE
 	var/opened = FALSE
-	/// If true, wrenching it will anchor it.
-	var/can_anchor = FALSE
 	/// Internal cell which most circuits need to work.
 	var/obj/item/cell/device/battery = null
 	/// Set every tick, to display how much power is being drawn in total.
 	var/net_power = 0
+	var/can_charge = TRUE //Can it be charged in a recharger?
+	var/can_fire_equipped = FALSE //Can it fire/throw weapons when the assembly is being held?
+	var/charge_sections = 4
+	var/charge_tick = FALSE
+	var/charge_delay = 4
+	var/use_cyborg_cell = TRUE
+	var/ext_next_use = 0
+	var/atom/collw
+	var/obj/item/card/id/access_card
+	var/allowed_circuit_action_flags = IC_ACTION_COMBAT | IC_ACTION_LONG_RANGE //which circuit flags are allowed
+	var/combat_circuits = 0 //number of combat cicuits in the assembly, used for diagnostic hud
+	var/long_range_circuits = 0 //number of long range cicuits in the assembly, used for diagnostic hud
+	var/prefered_hud_icon = "hudstat"		// Used by the AR circuit to change the hud icon.
+	var/creator // circuit creator if any
+	var/static/next_assembly_id = 0
+	var/list/unremovable_circuits = list()
+	var/list/removable_circuits = list()
+	var/list/available_inputs = list()
+// TBI	var/hud_possible = list(DIAG_STAT_HUD, DIAG_BATT_HUD, DIAG_TRACK_HUD, DIAG_CIRCUIT_HUD) //diagnostic hud overlays
+	var/can_anchor = TRUE	/// If true, wrenching it will anchor it.
+	var/anchored_by = null
+	var/panel_locked = null
 	var/detail_color = COLOR_ASSEMBLY_BLACK
+	var/cost = 0
 
+/obj/item/electronic_assembly/GenerateTag()
+	tag = "assembly_[next_assembly_id++]"
+
+/obj/item/electronic_assembly/examine(mob/user)
+	. = ..()
+	if(can_anchor)
+		. += "<span class='notice'>The anchoring bolts [anchored ? "are" : "can be"] <b>wrenched</b> in place and the maintenance panel [opened ? "can be" : "is"] <b>screwed</b> in place.</span>"
+	else
+		. += "<span class='notice'>The maintenance panel [opened ? "can be" : "is"] <b>screwed</b> in place.</span>"
+
+	for(var/I in assembly_components)
+		var/obj/item/integrated_circuit/IC = I
+		var/text = IC.external_examine(user)
+		if(text)
+			. += text
+	ui_interact(user)
+	if(isobserver(user))
+		if(isobserver(user) && ckeys_allowed_to_scan[user.ckey] || IsAdminGhost(user))
+			. += "You can <a href='?src=[REF(src)];ghostscan=1'>scan</a> this circuit."
+		ui_interact(user)
+
+/obj/item/electronic_assembly/Bump(atom/AM)
+	collw = AM
+	.=..()
+	if((istype(collw, /obj/machinery/door/airlock) ||  istype(collw, /obj/machinery/door/window)) && (!isnull(access_card)))
+		var/obj/machinery/door/D = collw
+		if(D.check_access(access_card))
+			D.open()
 
 /obj/item/electronic_assembly/Initialize(mapload)
 	battery = new(src)
+	if(!cost)
+		cost = IC_ASSEMBLY_COST
 	START_PROCESSING(SSobj, src)
-	return ..()
+/* TBI //sets up diagnostic hud view
+	prepare_huds()
+	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
+		diag_hud.add_to_hud(src)
+	diag_hud_set_circuithealth()
+	diag_hud_set_circuitcell()
+	diag_hud_set_circuitstat()
+	diag_hud_set_circuittracking()
+*/
+	access_card = new /obj/item/card/id(src)
+	. =..()
 
 /obj/item/electronic_assembly/Destroy()
 	battery = null // It will be qdel'd by ..() if still in our contents
 	STOP_PROCESSING(SSobj, src)
+//	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
+// TBI		diag_hud.remove_from_hud(src)
+	QDEL_NULL(access_card)
 	return ..()
 
 /obj/item/electronic_assembly/process(delta_time)
 	handle_idle_power()
-
+	check_pulling()
+/* TBI	diag hud
+	//updates diagnostic hud
+	diag_hud_set_circuithealth()
+	diag_hud_set_circuitcell()
+*/
 /obj/item/electronic_assembly/proc/handle_idle_power()
 	net_power = 0 // Reset this. This gets increased/decreased with [give/draw]_power() outside of this loop.
 
-	// First we handle passive sources. Most of these make power so they go first.
-	for(var/obj/item/integrated_circuit/passive/power/P in contents)
-		P.handle_passive_energy()
+	// First we generate power.
+	for(var/obj/item/integrated_circuit/passive/power/P in assembly_components)
+		P.make_energy()
 
-	// Now we handle idle power draw.
-	for(var/obj/item/integrated_circuit/IC in contents)
+	// Now spend it.
+	for(var/I in assembly_components)
+		var/obj/item/integrated_circuit/IC = I
 		if(IC.power_draw_idle)
 			if(!draw_power(IC.power_draw_idle))
 				IC.power_fail()
@@ -69,10 +141,11 @@
 
 	var/total_parts = 0
 	var/total_complexity = 0
-	for(var/obj/item/integrated_circuit/part in contents)
+	for(var/obj/item/integrated_circuit/part in assembly_components)
 		total_parts += part.size
 		total_complexity = total_complexity + part.complexity
 
+	data["opened"] = opened
 	data["total_parts"] = total_parts
 	data["max_components"] = max_components
 	data["total_complexity"] = total_complexity
@@ -85,17 +158,23 @@
 	// This works because lists are always passed by reference in BYOND, so modifying unremovable_circuits
 	// after setting data["unremovable_circuits"] = unremovable_circuits also modifies data["unremovable_circuits"]
 	// Same for the removable one
-	var/list/unremovable_circuits = list()
+	//var/list/unremovable_circuits = list()
 	data["unremovable_circuits"] = unremovable_circuits
-	var/list/removable_circuits = list()
+	//var/list/removable_circuits = list()
 	data["removable_circuits"] = removable_circuits
-	for(var/obj/item/integrated_circuit/circuit in contents)
+	//var/list/available_inputs = list()
+	data["available_inputs"] = available_inputs
+	/*
+	for(var/obj/item/integrated_circuit/circuit in assembly_components)
 		var/list/target = circuit.removable ? removable_circuits : unremovable_circuits
-		target.Add(list(list(
-			"name" = circuit.displayed_name,
-			"ref" = REF(circuit),
-		)))
-
+		target.
+		if(istype(circuit, /obj/item/integrated_circuit))
+			var/obj/item/integrated_circuit/input = circuit
+			if(input.can_be_asked_input)
+				available_inputs.Add(list(list(
+					"name" = circuit.displayed_name,
+					"ref" = REF(circuit),
+				)))*/
 	return data
 
 /obj/item/electronic_assembly/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -103,7 +182,6 @@
 		return TRUE
 
 	var/obj/held_item = usr.get_active_hand()
-
 	switch(action)
 		//Actual assembly actions
 		if("rename")
@@ -111,9 +189,6 @@
 			return TRUE
 
 		if("remove_cell")
-			if(!battery)
-				to_chat(usr, SPAN_WARNING("There's no power cell to remove from \the [src]."))
-				return FALSE
 			var/turf/T = get_turf(src)
 			battery.forceMove(T)
 			playsound(T, 'sound/items/Crowbar.ogg', 50, TRUE)
@@ -123,21 +198,21 @@
 
 		// Circuit actions
 		if("open_circuit")
-			var/obj/item/integrated_circuit/C = locate(params["ref"]) in contents
+			var/obj/item/integrated_circuit/C = locate(params["ref"]) in assembly_components
 			if(!istype(C))
 				return
 			C.ui_interact(usr, null, ui)
 			return TRUE
 
 		if("rename_circuit")
-			var/obj/item/integrated_circuit/C = locate(params["ref"]) in contents
+			var/obj/item/integrated_circuit/C = locate(params["ref"]) in assembly_components
 			if(!istype(C))
 				return
 			C.rename_component(usr)
 			return TRUE
 
 		if("scan_circuit")
-			var/obj/item/integrated_circuit/C = locate(params["ref"]) in contents
+			var/obj/item/integrated_circuit/C = locate(params["ref"]) in assembly_components
 			if(!istype(C))
 				return
 			if(istype(held_item, /obj/item/integrated_electronics/debugger))
@@ -151,36 +226,68 @@
 			return TRUE
 
 		if("remove_circuit")
-			var/obj/item/integrated_circuit/C = locate(params["ref"]) in contents
+			var/obj/item/integrated_circuit/C = locate(params["ref"]) in assembly_components
 			if(!istype(C))
 				return
 			C.remove(usr)
 			return TRUE
 
 		if("bottom_circuit")
-			var/obj/item/integrated_circuit/C = locate(params["ref"]) in contents
+			var/obj/item/integrated_circuit/C = locate(params["ref"]) in assembly_components
 			if(!istype(C))
 				return
 			// Puts it at the bottom of our contents
 			// Note, this intentionally does *not* use forceMove, because forceMove will stop if it detects the same loc
 			C.loc = null
 			C.loc = src
-	return FALSE
-// End TGUI
 
+		if("input_selection")
+			var/obj/item/integrated_circuit/input/C = locate(params["ref"]) in assembly_components
+			if(C.ask_for_input(usr,held_item,usr.a_intent))
+				return TRUE
+			else
+				var/obj/item/integrated_circuit/D = C
+				D.attackby_react(usr,held_item,usr.a_intent)
+				return TRUE
+
+	return FALSE
+
+// Input window data.
+
+// End TGUI
+/* TBI	diag hud
+/obj/item/electronic_assembly/pickup(mob/living/user)
+	. = ..()
+	//update diagnostic hud when picked up, true is used to force the hud to be hidden
+	diag_hud_set_circuithealth(TRUE)
+	diag_hud_set_circuitcell(TRUE)
+	diag_hud_set_circuitstat(TRUE)
+	diag_hud_set_circuittracking(TRUE)
+
+/obj/item/electronic_assembly/dropped(mob/user)
+	. = ..()
+	//update diagnostic hud when dropped
+	diag_hud_set_circuithealth()
+	diag_hud_set_circuitcell()
+	diag_hud_set_circuitstat()
+	diag_hud_set_circuittracking()
+
+*/
 /obj/item/electronic_assembly/verb/rename()
 	set name = "Rename Circuit"
 	set category = "Object"
 	set desc = "Rename your circuit, useful to stay organized."
 
 	var/mob/M = usr
+	var/input = sanitizeSafe(input(usr, "What do you want to name this?", "Rename", src.name) as null|text, MAX_NAME_LEN)
 	if(!check_interactivity(M))
 		return
-
-	var/input = sanitizeSafe(input(usr, "What do you want to name this?", "Rename", src.name) as null|text, MAX_NAME_LEN)
 	if(src && input)
 		to_chat(M, SPAN_NOTICE("The machine now has a label reading '[input]'."))
 		name = input
+
+/obj/item/electronic_assembly/proc/add_allowed_scanner(ckey)
+	ckeys_allowed_to_scan[ckey] = TRUE
 
 /obj/item/electronic_assembly/proc/can_move()
 	return FALSE
@@ -210,26 +317,18 @@
 		if(id_card)
 			return id_card
 
-/obj/item/electronic_assembly/examine(mob/user)
-	. = ..()
-	if(Adjacent(user))
-		for(var/obj/item/integrated_circuit/IC in contents)
-			. += IC.external_examine(user)
-		if(opened)
-			ui_interact(user)
-
-/obj/item/electronic_assembly/proc/get_part_complexity()
+/obj/item/electronic_assembly/proc/return_total_complexity()
 	. = 0
-	for(var/obj/item/integrated_circuit/part in contents)
+	for(var/obj/item/integrated_circuit/part in assembly_components)
 		. += part.complexity
 
-/obj/item/electronic_assembly/proc/get_part_size()
+/obj/item/electronic_assembly/proc/return_total_size()
 	. = 0
-	for(var/obj/item/integrated_circuit/part in contents)
+	for(var/obj/item/integrated_circuit/part in assembly_components)
 		. += part.size
 
 // Returns true if the circuit made it inside.
-/obj/item/electronic_assembly/proc/add_circuit(var/obj/item/integrated_circuit/IC, var/mob/user)
+/obj/item/electronic_assembly/proc/try_add_component(var/obj/item/integrated_circuit/IC, var/mob/user)
 	if(!opened)
 		to_chat(user, SPAN_WARNING("\The [src] isn't opened, so you can't put anything inside.  Try using a crowbar."))
 		return FALSE
@@ -238,8 +337,8 @@
 		to_chat(user, SPAN_WARNING("\The [IC] is way too big to fit into \the [src]."))
 		return FALSE
 
-	var/total_part_size = get_part_size()
-	var/total_complexity = get_part_complexity()
+	var/total_part_size = return_total_size()
+	var/total_complexity = return_total_complexity()
 
 	if((total_part_size + IC.size) > max_components)
 		to_chat(user, SPAN_WARNING("You can't seem to add the '[IC.name]', as there's insufficient space."))
@@ -247,32 +346,54 @@
 	if((total_complexity + IC.complexity) > max_complexity)
 		to_chat(user, SPAN_WARNING("You can't seem to add the '[IC.name]', since this setup's too complicated for the case."))
 		return FALSE
-
+	if((allowed_circuit_action_flags & IC.action_flags) != IC.action_flags)
+		to_chat(user, SPAN_WARNING("You can't seem to add the '[IC.name]', since the case doesn't support the circuit type."))
+		return FALSE
 	if(!IC.forceMove(src))
 		return FALSE
 
-	IC.assembly = src
+	to_chat(user, SPAN_NOTICE("You slide [IC] inside [src]."))
+	playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
+	add_allowed_scanner(user.ckey)
+	investigate_log("had [IC]([IC.type]) inserted by [key_name(user)].", INVESTIGATE_CIRCUIT)
+	add_component(IC)
 
 	return TRUE
 
-// Non-interactive version of above that always succeeds, intended for build-in circuits that get added on assembly initialization.
-/obj/item/electronic_assembly/proc/force_add_circuit(var/obj/item/integrated_circuit/IC)
-	IC.forceMove(src)
+// Actually puts the circuit inside, doesn't perform any checks.
+/obj/item/electronic_assembly/proc/add_component(var/obj/item/integrated_circuit/IC)
+	IC.forceMove(get_object())
 	IC.assembly = src
+	var/list/IC_r = list()
+	// Build TGUI lists here for efficiency. We don't need to do that every time the UI updates.
+	IC.removable ? (IC_r = removable_circuits) : (IC_r = unremovable_circuits)
+	IC_r.Add(list(list("name" = IC.displayed_name,"ref" = REF(IC))))
+	if (IC.can_be_asked_input) available_inputs.Add(list(list("name" = IC.displayed_name,"ref" = REF(IC))))
+	assembly_components |= IC
+
+	/* TBI	diag hud
+	//increment numbers for diagnostic hud
+	if(component.action_flags & IC_ACTION_COMBAT)
+		combat_circuits += 1;
+	if(component.action_flags & IC_ACTION_LONG_RANGE)
+		long_range_circuits += 1;
+
+	//diagnostic hud update
+	diag_hud_set_circuitstat()
+	diag_hud_set_circuittracking()
+	*/
 
 /obj/item/electronic_assembly/afterattack(atom/target, mob/user, proximity)
-	if(proximity)
-		var/scanned = FALSE
-		for(var/obj/item/integrated_circuit/input/sensor/S in contents)
-//			S.set_pin_data(IC_OUTPUT, 1, WEAKREF(target))
-//			S.check_then_do_work()
-			if(S.scan(target))
-				scanned = TRUE
-		if(scanned)
+	. = ..()
+	for(var/obj/item/integrated_circuit/input/S in assembly_components)
+		if(S.sense(target,user,proximity))
 			visible_message(SPAN_NOTICE("\The [user] waves \the [src] around [target]."))
 
-/obj/item/electronic_assembly/attackby(var/obj/item/I, var/mob/user)
+/obj/item/electronic_assembly/attackby(var/obj/item/I, var/mob/user, intent)
 	if(can_anchor && I.is_wrench())
+		if(anchored_by)
+			to_chat(user, SPAN_WARNING(pick("You fail to get purchase on [anchored_by]'s bolts.","[src]'s [anchored_by] protests!","The bolts defeat your paltry [user.get_species_name()] attempts to loosen them.")))
+			return
 		anchored = !anchored
 		to_chat(user, SPAN_NOTICE("You've [anchored ? "" : "un"]secured \the [src] to \the [get_turf(src)]."))
 		if(anchored)
@@ -285,9 +406,7 @@
 	else if(istype(I, /obj/item/integrated_circuit))
 		if(!user.unEquip(I) && !istype(user, /mob/living/silicon/robot)) //Robots cannot de-equip items in grippers.
 			return FALSE
-		if(add_circuit(I, user))
-			to_chat(user, SPAN_NOTICE("You slide \the [I] inside \the [src]."))
-			playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
+		if(try_add_component(I, user))
 			ui_interact(user)
 			return TRUE
 
@@ -304,6 +423,9 @@
 		return TRUE
 
 	else if(I.is_screwdriver())
+		if(panel_locked)
+			to_chat(user, SPAN_NOTICE("The screws are hidden."))
+			return FALSE
 		playsound(get_turf(src), 'sound/items/Screwdriver.ogg', 50, 1)
 		opened = !opened
 		to_chat(user, SPAN_NOTICE("You [opened ? "opened" : "closed"] \the [src]."))
@@ -314,60 +436,44 @@
 		if(opened)
 			ui_interact(user)
 		else
-			to_chat(user, SPAN_WARNING("\The [src] isn't opened, so you can't fiddle with the internal components.  Try using a crowbar."))
+			to_chat(user, SPAN_WARNING("\The [src] isn't opened, so you can't fiddle with the internal components.  Try using a screwdriver."))
+		return TRUE
 
 	else if(istype(I, /obj/item/integrated_electronics/detailer))
 		var/obj/item/integrated_electronics/detailer/D = I
 		detail_color = D.detail_color
 		update_icon()
+		return TRUE
 
 	else if(istype(I, /obj/item/cell/device))
 		if(!opened)
 			to_chat(user, SPAN_WARNING("\The [src] isn't opened, so you can't put anything inside.  Try using a crowbar."))
+			for(var/obj/item/integrated_circuit/input/S in assembly_components)
+				S.attackby_react(I,user,user.a_intent)
 			return FALSE
 		if(battery)
 			to_chat(user, SPAN_WARNING("\The [src] already has \a [battery] inside.  Remove it first if you want to replace it."))
+			for(var/obj/item/integrated_circuit/input/S in assembly_components)
+				S.attackby_react(I,user,user.a_intent)
 			return FALSE
 		var/obj/item/cell/device/cell = I
 		user.drop_item(cell)
 		cell.forceMove(src)
 		battery = cell
+		// TBI diag_hud_set_circuitstat() //update diagnostic hud
 		playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
 		to_chat(user, SPAN_NOTICE("You slot \the [cell] inside \the [src]'s power supplier."))
 		ui_interact(user)
 		return TRUE
-	else
-		return ..()
+	else for(var/obj/item/integrated_circuit/S in assembly_components)
+		if(S.attackby_react(I,user,user.a_intent))
+			return TRUE
+	return ..()
 
 /obj/item/electronic_assembly/attack_self(mob/user)
 	if(!check_interactivity(user))
 		return
-	if(opened)
-		ui_interact(user)
-
-	var/list/input_selection = list()
-	var/list/available_inputs = list()
-	for(var/obj/item/integrated_circuit/input/input in contents)
-		if(input.can_be_asked_input)
-			available_inputs.Add(input)
-			var/i = 0
-			for(var/obj/item/integrated_circuit/s in available_inputs)
-				if(s.name == input.name && s.displayed_name == input.displayed_name && s != input)
-					i++
-			var/disp_name= "[input.displayed_name] \[[input.name]\]"
-			if(i)
-				disp_name += " ([i+1])"
-			input_selection.Add(disp_name)
-
-	var/obj/item/integrated_circuit/input/choice
-	if(available_inputs)
-		var/selection = tgui_input_list(user, "What do you want to interact with?", "Interaction", input_selection)
-		if(selection)
-			var/index = input_selection.Find(selection)
-			choice = available_inputs[index]
-
-	if(choice)
-		choice.ask_for_input(user)
+	ui_interact(user)
 
 /obj/item/electronic_assembly/attack_robot(mob/user as mob)
 	if(Adjacent(user))
@@ -376,7 +482,9 @@
 		return ..()
 
 /obj/item/electronic_assembly/emp_act(severity)
-	..()
+	. = ..()
+//	if(. & EMP_PROTECT_CONTENTS)
+//		return
 	for(var/atom/movable/AM in contents)
 		AM.emp_act(severity)
 
@@ -412,11 +520,53 @@
 		return TRUE
 	return FALSE
 
-/obj/item/electronic_assembly/on_loc_moved(oldloc)
+/obj/item/electronic_assembly/Moved(oldLoc, dir)
 	. = ..()
-	for(var/obj/O in contents)
-		O.on_loc_moved(oldloc)
+	for(var/I in assembly_components)
+		var/obj/item/integrated_circuit/IC = I
+		IC.ext_moved(oldLoc, dir)
+	if(light) //Update lighting objects (From light circuits).
+		update_light()
 
+/obj/item/electronic_assembly/stop_pulling()
+	for(var/I in assembly_components)
+		var/obj/item/integrated_circuit/IC = I
+		IC.stop_pulling()
+	..()
+
+
+// Returns the object that is supposed to be used in attack messages, location checks, etc.
+// Override in children for special behavior.
+/obj/item/electronic_assembly/proc/get_object()
+	return src
+
+// Returns the location to be used for dropping items.
+// Same as the regular drop_location(), but with checks being run on acting_object if necessary.
+/obj/item/integrated_circuit/drop_location()
+	var/atom/movable/acting_object = get_object()
+
+	// plz no infinite loops
+	if(acting_object == src)
+		return ..()
+
+	return acting_object.drop_location()
+
+/obj/item/electronic_assembly/attack_tk(mob/user)
+	if(anchored)
+		return
+	..()
+
+/obj/item/electronic_assembly/attack_hand(mob/user, act_intent = user.a_intent, unarmed_attack_flags)
+	if(anchored)
+		attack_self(user)
+		return
+	..()
+/*	TBI: Hand recog, can_trigger_gun
+/obj/item/electronic_assembly/can_trigger_gun(mob/living/user) //sanity checks against pocket death weapon circuits
+	if(!can_fire_equipped || !user.is_holding(src))
+		return FALSE
+	return ..()
+*/
 /obj/item/electronic_assembly/Moved(var/oldloc)
 	. = ..()
 	for(var/obj/O in contents)

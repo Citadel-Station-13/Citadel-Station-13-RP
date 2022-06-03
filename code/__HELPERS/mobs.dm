@@ -217,7 +217,7 @@ Proc for attack log creation, because really why not
 	if (progbar)
 		qdel(progbar)
 
-/proc/do_after(mob/user, delay, atom/target = null, needhand = TRUE, progress = TRUE, incapacitation_flags = INCAPACITATION_DEFAULT, ignore_movement = FALSE, max_distance = null)
+/proc/do_after(mob/user, delay, atom/target = null, needhand = TRUE, progress = TRUE, incapacitation_flags = INCAPACITATION_DEFAULT, ignore_movement = FALSE, max_distance = null, ignore_resist = FALSE)
 	if(!user)
 		return 0
 	if(!delay)
@@ -230,7 +230,7 @@ Proc for attack log creation, because really why not
 
 	var/obj/mecha/M = null
 
-	if(istype(user.loc, /obj/mecha))
+	if(ismecha(user.loc))
 		original_loc = get_turf(original_loc)
 		M = user.loc
 

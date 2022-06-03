@@ -88,6 +88,17 @@
  * return bool If the user's input has been handled and the UI should update.
  */
 /datum/proc/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	var/mob/M = REF(ui.src_object)
+	var/obj/O = REF(ui.src_object)
+	isobj(O) ? (M = O.loc) : null
+	if(ismob(M) && M != ui.user)
+		if(!SAFEFIND(M.grabbed_by, ui.user))
+			to_chat(usr, SPAN_WARNING("You need a firm grip to do this. You could <b>grab</b> [M.loc] but they might not like that."))
+			return
+		if(!do_after(ui.user,HUMAN_INTERACT_DELAY,src))
+			return
+		if(!SAFEFIND(M.grabbed_by, ui.user))
+			return
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_UI_ACT, usr, action)
 	// If UI is not interactive or usr calling Topic is not the UI user, bail.

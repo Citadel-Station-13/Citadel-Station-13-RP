@@ -1,35 +1,5 @@
 // Generic subtypes without a lot of special code.
 
-// Small assemblies.
-
-/obj/item/electronic_assembly/default
-	name = "type-a electronic assembly"
-
-/obj/item/electronic_assembly/calc
-	name = "type-b electronic assembly"
-	icon_state = "setup_small_calc"
-	desc = "It's a case, for building small electronics with. This one resembles a pocket calculator."
-
-/obj/item/electronic_assembly/clam
-	name = "type-c electronic assembly"
-	icon_state = "setup_small_clam"
-	desc = "It's a case, for building small electronics with. This one has a clamshell design."
-
-/obj/item/electronic_assembly/simple
-	name = "type-d electronic assembly"
-	icon_state = "setup_small_simple"
-	desc = "It's a case, for building small electronics with. This one has a simple design."
-
-/obj/item/electronic_assembly/hook
-	name = "type-e electronic assembly"
-	icon_state = "setup_small_hook"
-	desc = "It's a case, for building small electronics with. This one looks like it has a belt clip, but it's purely decorative."
-
-/obj/item/electronic_assembly/pda
-	name = "type-f electronic assembly"
-	icon_state = "setup_small_pda"
-	desc = "It's a case, for building small electronics with. This one resembles a PDA."
-
 // Tiny assemblies.
 
 /obj/item/electronic_assembly/tiny
@@ -62,6 +32,46 @@
 	name = "type-e electronic device"
 	icon_state = "setup_device_box"
 	desc = "It's a case, for building tiny-sized electronics with. This one has a boxy design."
+
+/obj/item/electronic_assembly/tiny/dildo
+	name = "type-f electronic device"
+	icon_state = "setup_dildo_small"
+	desc = "It's a case, for building tiny-sized electronics with. This one has a phallic design."
+
+// Small assemblies.
+
+/obj/item/electronic_assembly/default
+	name = "type-a electronic assembly"
+
+/obj/item/electronic_assembly/calc
+	name = "type-b electronic assembly"
+	icon_state = "setup_small_calc"
+	desc = "It's a case, for building small electronics with. This one resembles a pocket calculator."
+
+/obj/item/electronic_assembly/clam
+	name = "type-c electronic assembly"
+	icon_state = "setup_small_clam"
+	desc = "It's a case, for building small electronics with. This one has a clamshell design."
+
+/obj/item/electronic_assembly/simple
+	name = "type-d electronic assembly"
+	icon_state = "setup_small_simple"
+	desc = "It's a case, for building small electronics with. This one has a simple design."
+
+/obj/item/electronic_assembly/hook
+	name = "type-e electronic assembly"
+	icon_state = "setup_small_hook"
+	desc = "It's a case, for building small electronics with. This one looks like it has a belt clip, but it's purely decorative."
+
+/obj/item/electronic_assembly/pda
+	name = "type-f electronic assembly"
+	icon_state = "setup_small_pda"
+	desc = "It's a case, for building small electronics with. This one resembles a PDA."
+
+/obj/item/electronic_assembly/dildo
+	name = "type-g electronic assembly"
+	icon_state = "setup_dildo_medium"
+	desc = "It's a case, for building small electronics with. This one has a phallic design."
 
 // Medium assemblies.
 
@@ -97,7 +107,7 @@
 	item_state = "circuitgun"
 	desc = "It's a case, for building medium-sized electronics with. This one resembles a gun, or some type of tool, \
 	if you're feeling optimistic."
-//	can_fire_equipped = TRUE
+	can_fire_equipped = TRUE
 	item_icons = list(
 		slot_l_hand_str = 'icons/mob/items/lefthand_guns.dmi',
 		slot_r_hand_str = 'icons/mob/items/righthand_guns.dmi',
@@ -107,6 +117,11 @@
 	name = "type-f electronic mechanism"
 	icon_state = "setup_medium_radio"
 	desc = "It's a case, for building medium-sized electronics with. This one resembles an old radio."
+
+/obj/item/electronic_assembly/medium/dildo
+	name = "type-g electronic mechanism"
+	icon_state = "setup_dildo_large"
+	desc = "It's a case, for building medium-sized electronics with. This one has a phallic design."
 
 // Large assemblies.
 
@@ -158,9 +173,10 @@
 	name = "electronic drone"
 	icon_state = "setup_drone"
 	desc = "It's a case, for building mobile electronics with."
-	w_class = ITEMSIZE_NORMAL
-	max_components = IC_COMPONENTS_BASE * 1.5
-	max_complexity = IC_COMPLEXITY_BASE * 1.5
+	w_class = ITEMSIZE_LARGE
+	max_components = IC_COMPONENTS_BASE * 3
+	max_complexity = IC_COMPLEXITY_BASE * 3
+	allowed_circuit_action_flags = IC_ACTION_MOVEMENT | IC_ACTION_COMBAT | IC_ACTION_LONG_RANGE
 	can_anchor = FALSE
 
 /obj/item/electronic_assembly/drone/can_move()
@@ -193,6 +209,9 @@
 	name = "type-f electronic drone"
 	icon_state = "setup_drone_android"
 	desc = "It's a case, for building mobile electronics with. This one has a hominoid design."
+	w_class = ITEMSIZE_COST_HUGE
+	max_components = IC_COMPONENTS_BASE * 5
+	max_complexity = IC_COMPLEXITY_BASE * 5
 
 // Wall mounted assemblies.
 
