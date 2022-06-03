@@ -20,6 +20,7 @@
 
 	integrated_object_type = /obj/item/gun/energy/laser/mounted/augment
 
+
 /obj/item/organ/internal/augment/armmounted/attackby(obj/item/I as obj, mob/user as mob)
 	if(I.is_screwdriver())
 		switch(organ_tag)

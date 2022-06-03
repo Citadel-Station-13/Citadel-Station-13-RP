@@ -150,7 +150,7 @@ var/const/MAX_ACTIVE_TIME = 400
 			return
 		else if(istype(snowflake_but_also_what_about_head, /obj/item/clothing/head/welding))
 			var/obj/item/clothing/head/welding/WH = snowflake_but_also_what_about_head
-			if(WH.toggle)
+			if(!WH.up)
 				visible_message(SPAN_DANGER("[src] smashes against [target]'s [snowflake_but_also_what_about_head], but bounces off!"))
 				Die()
 				return

@@ -660,7 +660,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(w_uniform && istype(w_uniform, /obj/item/clothing/under))
 		var/obj/item/clothing/under/U = w_uniform
 		if(U.displays_id)
-			overlays_standing[ID_LAYER] = wear_id.make_worn_icon(body_type = species.get_bodytype_legacy(src), slot_id = SLOT_ID_WORN_D, default_icon = INV_WEAR_ID_DEF_ICON, default_layer = ID_LAYER)
+			overlays_standing[ID_LAYER] = wear_id.make_worn_icon(body_type = species.get_bodytype_legacy(src), slot_id = SLOT_ID_WORN_ID, default_icon = INV_WEAR_ID_DEF_ICON, default_layer = ID_LAYER)
 
 	apply_layer(ID_LAYER)
 

@@ -51,7 +51,7 @@
 			. = drop_item_to_ground(I, force)
 			cb?.Invoke(I, .)
 	else
-		var/obj/item/I = item_by_slot(slot)
+		var/obj/item/I = item_by_slot(slots)
 		. = drop_item_to_ground(I, force)
 		cb?.Invoke(I, .)
 
@@ -62,7 +62,7 @@
 			. = transfer_item_to_loc(I, A, force)
 			cb?.Invoke(I, .)
 	else
-		var/obj/item/I = item_by_slot(slot)
+		var/obj/item/I = item_by_slot(slots)
 		. = transfer_item_to_loc(I, A, force)
 		cb?.Invoke(I, .)
 

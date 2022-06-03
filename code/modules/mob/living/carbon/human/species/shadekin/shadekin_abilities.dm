@@ -165,38 +165,6 @@
 		density = FALSE
 		force_max_speed = TRUE
 
-/mob/living/carbon/human/UnarmedAttack()
-	if(shadekin_phasing_check())
-		return FALSE	//Nope.
-
-	. = ..()
-
-/mob/living/carbon/human/can_fall()
-	if(shadekin_phasing_check())
-		return FALSE	//Nope!
-
-	return ..()
-
-/mob/living/carbon/human/zMove(direction)
-	if(shadekin_phasing_check())
-		var/turf/destination = (direction == UP) ? GetAbove(src) : GetBelow(src)
-		if(destination)
-			forceMove(destination)
-		return TRUE		//Yup.
-
-	return ..()
-
-/mob/proc/shadekin_phasing_check()
-	var/mob/living/simple_mob/shadekin/s_SK = src
-	if(istype(s_SK))
-		if(s_SK.ability_flags & AB_PHASE_SHIFTED)
-			return TRUE
-	var/mob/living/carbon/human/h_SK = src
-	if(istype(h_SK))
-		if(h_SK.ability_flags & AB_PHASE_SHIFTED)
-			return TRUE
-	return FALSE
-
 /*
 /mob/living/carbon/human/MouseDroppedOnLegacy(atom/dropping, mob/user)
 	if(ability_flags & AB_PHASE_SHIFTED)
@@ -204,6 +172,10 @@
 
 	return ..()
 */
+
+/datum/modifier/shadekin_phase_vision
+	name = "Shadekin Phase Vision"
+	vision_flags = SEE_THRU
 
 
 //////////////////////////

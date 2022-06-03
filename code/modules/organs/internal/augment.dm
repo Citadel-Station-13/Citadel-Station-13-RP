@@ -47,7 +47,32 @@
 
 	if(integrated_object_type)
 		integrated_object = new integrated_object_type(src)
+		#warn kill thsi for magnetic catch
 		ADD_TRAIT(integrated_object, TRAIT_NODROP, AUGMENT_TRAIT)
+
+
+#warn integrate this
+/*
+/obj/item/organ/cyberimp/arm/proc/add_item(obj/item/I)
+	if(I in items_list)
+		return
+	I.forceMove(src)
+	items_list += I
+	// ayy only dropped signal for performance, we can't possibly have shitcode that doesn't call it when removing items from a mob, right?
+	// .. right??!
+	RegisterSignal(I, COMSIG_ITEM_DROPPED, .proc/magnetic_catch)
+
+/obj/item/organ/cyberimp/arm/proc/magnetic_catch(datum/source, mob/user)
+	. = COMPONENT_DROPPED_RELOCATION
+	var/obj/item/I = source			//if someone is misusing the signal, just runtime
+	if(I in items_list)
+		if(I in contents)		//already in us somehow? i probably shouldn't catch this so it's easier to spot bugs but eh..
+			return
+		I.visible_message("<span class='notice'>[I] snaps back into [src]!</span>")
+		I.forceMove(src)
+		if(I == holder)
+			holder = nul
+*/
 
 /obj/item/organ/internal/augment/Destroy()
 	if(integrated_object)

@@ -27,12 +27,12 @@
 		to_chat(target, "<span class='warning'>\The [src] moved too far away.</span>")
 		return
 
-	if(I.loc != src || !src.item_is_in_hands(I))
+	if(I.loc != src || !is_holding(I))
 		to_chat(src, "<span class='warning'>You need to keep the item in your hands.</span>")
 		to_chat(target, "<span class='warning'>\The [src] seems to have given up on passing \the [I] to you.</span>")
 		return
 
-	if(target.hands_are_full())
+	if(target.hands_full())
 		to_chat(target, "<span class='warning'>Your hands are full.</span>")
 		to_chat(src, "<span class='warning'>Their hands are full.</span>")
 		return

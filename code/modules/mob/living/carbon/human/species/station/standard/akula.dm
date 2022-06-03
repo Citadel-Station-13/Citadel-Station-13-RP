@@ -1,7 +1,7 @@
 /datum/species/akula
 	name = SPECIES_AKULA
 	name_plural = SPECIES_AKULA //It's singular and plural. English is weird.
-	defualt_bodytype = BODYTYPE_AKULA
+	default_bodytype = BODYTYPE_AKULA
 	icobase = 'icons/mob/human_races/r_akula.dmi'
 	deform = 'icons/mob/human_races/r_def_akula.dmi'
 	tail = "tail"
