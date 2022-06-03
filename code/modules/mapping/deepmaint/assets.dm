@@ -5,6 +5,7 @@
 GLOBAL_VAR(deepmaint_current_interior_wall)
 GLOBAL_VAR(deepmaint_current_exterior_wall)
 GLOBAL_VAR(deepmaint_current_interior_floor)
+GLOBAL_VAR(deepmaint_current_interior_plating)
 GLOBAL_VAR(deepmaint_current_exterior_floor)
 
 /area/deepmaint
@@ -31,6 +32,9 @@ GLOBAL_VAR(deepmaint_current_exterior_floor)
 	. = ..()
 	ChangeTurf(actual_path(), CHANGETURF_INHERIT_AIR)
 
+/turf/deepmaint/proc/actual_path()
+	return /turf/simulated/floor/plating
+
 /turf/deepmaint/interior_wall
 	name = "interior wall"
 	icon_state = "interior_wall"
@@ -51,6 +55,13 @@ GLOBAL_VAR(deepmaint_current_exterior_floor)
 
 /turf/deepmaint/interior_floor/actual_path()
 	return GLOB.deepmaint_current_interior_floor || /turf/simulated/floor
+
+/turf/deepmaint/interior_plating
+	name = "interior plating"
+	icon_state = "interior_plating"
+
+/turf/deepmaint/interior_plating/actual_path()
+	return GLOB.deepmaint_current_interior_plating | /turf/simulated/floor/plating
 
 /turf/deepmaint/exterior_floor
 	name = "exterior floor"
@@ -86,6 +97,24 @@ GLOBAL_VAR(deepmaint_current_exterior_floor)
 /atom/movable/landmark/deepmaint_marker/generation
 	/// id to link to
 	var/id
+
+/atom/movable/landmark/deepmaint_marker/generation/Initialize(mapload)
+	. = ..()
+	if(!id)
+		. = INITIALIZE_HINT_QDEL
+		CRASH("no ID")
+	SSmapping.add_deepmaint_marker(src, id)
+
+/atom/movable/landmark/deepmaint_marker/generation/Destroy()
+	SSmapping.remove_deepmaint_marker(src, id)
+	return ..()
+
+/atom/movable/landmark/deepmaint_marker/generation/vv_edit_var(var_name, var_value)
+	if(var_name == NAMEOF(src, id))
+		SSmapping.remove_deepmaint_marker(src, id)
+	. = ..()
+	if(var_name == NAMEOF(src, id))
+		SSmapping.add_deepmaint_marker(src, id)
 
 /**
  * deepmaint generation directive: less danger towards this area

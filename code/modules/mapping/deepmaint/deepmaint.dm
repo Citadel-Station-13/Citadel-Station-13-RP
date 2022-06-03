@@ -31,4 +31,14 @@
 	/// max danger to spawn - additive
 	var/max_danger = INFINITY
 	/// max rarity to spawn - additive
-	var/max_rarity
+	var/max_rarity = INFINITY
+	/// interior floor type
+	var/interior_floor_type
+	/// interior plating type
+	var/interior_plating_type
+	/// exterior floor type
+	var/exterior_floor_type
+	/// interior wall type
+	var/interior_wall_type
+	/// exterior wall type
+	var/exterior_wall_type

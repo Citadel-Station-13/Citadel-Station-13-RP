@@ -7,9 +7,8 @@ SUBSYSTEM_DEF(mapping)
 	init_order = INIT_ORDER_MAPPING
 	subsystem_flags = SS_NO_FIRE
 
-	// World module
-	/// active map module
-	var/datum/map_module/loaded_module
+	// Deepmaint module
+	var/static/list/deepmaint_markers_by_id = list()
 
 	// mapgen - deepmaint
 	/// deepmaint loaders awaiting activations
@@ -42,6 +41,10 @@ SUBSYSTEM_DEF(mapping)
 	// Obfuscation Module
 	/// "secret" key
 	var/obfuscation_secret
+
+	// World module
+	/// active map module
+	var/datum/map_module/loaded_module
 
 //dlete dis once #39770 is resolved
 /datum/controller/subsystem/mapping/proc/HACK_LoadMapConfig()
@@ -357,9 +360,6 @@ SUBSYSTEM_DEF(mapping)
 		if(istype(template, /datum/map_template/submap/deepmaint))
 			deepmaint_templates += template
 	return TRUE
-
-/datum/controller/subsystem/mapping/proc/mapgen_deepmaint()
-	return	// WIP
 
 /datum/controller/subsystem/mapping/proc/mapgen_engine()
 	if(!engine_loader)

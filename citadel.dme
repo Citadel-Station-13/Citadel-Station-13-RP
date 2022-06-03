@@ -392,6 +392,7 @@
 #include "code\controllers\subsystem\job\job_controller.dm"
 #include "code\controllers\subsystem\job\spawnpoints.dm"
 #include "code\controllers\subsystem\mapping\_mapping.dm"
+#include "code\controllers\subsystem\mapping\deepmaint.dm"
 #include "code\controllers\subsystem\mapping\misc.dm"
 #include "code\controllers\subsystem\mapping\obfuscation.dm"
 #include "code\controllers\subsystem\networks\_networks.dm"
