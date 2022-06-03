@@ -95,7 +95,6 @@ const AirAlarmStatus = (props, context) => {
 
 const AirAlarmUnlockedControl = (props, context) => {
   const { act, data } = useBackend(context);
-  const locked = data.locked && !data.siliconUser && !data.remoteUser;
   const {
     target_temperature,
     rcon,

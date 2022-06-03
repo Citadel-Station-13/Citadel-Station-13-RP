@@ -32,10 +32,6 @@ Class Procs:
 		AIR_BLOCKED - The connection between turfs is physically blocked. No air can pass.
 		ZONE_BLOCKED - There is a door between the turfs, so zones cannot cross. Air may or may not be permeable.
 
-	has_valid_zone(turf/T)
-		Checks the presence and validity of T's zone.
-		May be called on unsimulated turfs, returning 0.
-
 	merge(datum/zas_zone/A, datum/zas_zone/B)
 		Called when zones have a direct connection and equivalent pressure and temperature.
 		Merges the zones to create a single zone.
@@ -93,12 +89,6 @@ Class Procs:
 	zones.Remove(z)
 	zones_to_update.Remove(z)
 
-/datum/controller/subsystem/air/proc/has_valid_zone(turf/simulated/T)
-	#ifdef ZASDBG
-	ASSERT(istype(T))
-	#endif
-	return istype(T) && T.zone && !T.zone.invalid
-
 /datum/controller/subsystem/air/proc/merge(datum/zas_zone/A, datum/zas_zone/B)
 	#ifdef ZASDBG
 	ASSERT(istype(A))
@@ -114,7 +104,7 @@ Class Procs:
 		B.c_merge(A)
 		mark_zone_update(A)
 
-/datum/controller/subsystem/air/proc/connect(turf/simulated/A, turf/simulated/B)
+/datum/controller/subsystem/air/proc/connect(turf/simulated/A, turf/simulated/B, given_block, given_dir)
 	#ifdef ZASDBG
 	ASSERT(istype(A))
 	ASSERT(isturf(B))
@@ -124,7 +114,7 @@ Class Procs:
 	ASSERT(A != B)
 	#endif
 
-	var/block = A.CheckAirBlock(B)
+	var/block = isnull(given_block)? A.CheckAirBlock(B) : given_block
 	if(block == ATMOS_PASS_AIR_BLOCKED)
 		return
 
@@ -133,22 +123,26 @@ Class Procs:
 
 	if(!space)
 		if(min(A.zone.contents.len, B.zone.contents.len) < ZONE_MIN_SIZE || (direct && (equivalent_pressure(A.zone,B.zone) || current_cycle == 0)))
-			merge(A.zone,B.zone)
+			merge(A.zone, B.zone)
 			return
 
-	var/a_to_b = get_dir(A, B)
-	var/b_to_a = get_dir(B, A)
+	var/a_to_b = given_dir || get_dir_multiz(A, B)
+	var/b_to_a = given_dir? REVERSE_DIR(given_dir) : get_dir_multiz(B, A)
 
-	if(!A.connections) A.connections = new
-	if(!B.connections) B.connections = new
+	if(!A.connections)
+		A.connections = new
+	if(!B.connections)
+		B.connections = new
 
-	if(A.connections.get(a_to_b)) return
-	if(B.connections.get(b_to_a)) return
+	if(A.connections.get(a_to_b))
+		return
+	if(B.connections.get(b_to_a))
+		return
 	if(!space)
-		if(A.zone == B.zone) return
+		if(A.zone == B.zone)
+			return
 
-
-	var/datum/zas_connection/c = new(A,B)
+	var/datum/zas_connection/c = new(A, B)
 
 	A.connections.place(c, a_to_b)
 	B.connections.place(c, b_to_a)

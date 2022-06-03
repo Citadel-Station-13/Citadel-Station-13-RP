@@ -69,7 +69,6 @@
 /obj/machinery/mecha_part_fabricator/pros/Initialize(mapload)
 	. = ..()
 	manufacturer = GLOB.basic_robolimb.company
-	default_apply_parts()
 
 /obj/machinery/mecha_part_fabricator/pros/dispense_built_part(datum/design/D)
 	var/obj/item/I = ..()

@@ -61,7 +61,7 @@ Class Procs:
 #ifdef ZASDBG
 	ASSERT(!invalid)
 	ASSERT(istype(T))
-	ASSERT(!air_master.has_valid_zone(T))
+	ASSERT(!T.has_valid_zone())
 #endif
 
 	if(!istype(T))
