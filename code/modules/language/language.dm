@@ -5,6 +5,8 @@
 */
 
 /datum/language
+	/// abstract type
+	var/abstract_type = /datum/language
 	var/name = "an unknown language"  // Fluff name of language if any.
 	var/desc = "A language."          // Short description for 'Check Languages'.
 	var/speech_verb = "says"          // 'says', 'hisses', 'farts'.
@@ -20,6 +22,7 @@
 	var/list/space_chance = 55        // Likelihood of getting a space in the random scramble string
 	var/machine_understands = 1		  // Whether machines can parse and understand this language
 	var/list/partial_understanding	  // List of languages that can /somehwat/ understand it, format is: name = chance of understanding a word
+	var/list/scramble_cache = list()
 
 /datum/language/proc/get_random_name(var/gender, name_count=2, syllable_count=4, syllable_divisor=2)
 	if(!syllables || !syllables.len)
@@ -38,9 +41,6 @@
 		full_name += " [capitalize(lowertext(new_name))]"
 
 	return "[trim(full_name)]"
-
-/datum/language
-	var/list/scramble_cache = list()
 
 /datum/language/proc/scramble(var/input, var/list/known_languages)
 	var/understand_chance = 0
