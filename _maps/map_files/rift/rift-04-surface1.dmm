@@ -27478,7 +27478,7 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/obj/machinery/power/breakerbox/activated{
+/obj/machinery/power/breakerbox{
 	RCon_tag = "Surface - 1"
 	},
 /turf/simulated/floor/plating,

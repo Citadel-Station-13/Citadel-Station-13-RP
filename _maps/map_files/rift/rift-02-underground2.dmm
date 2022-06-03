@@ -7582,7 +7582,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/atmos)
 "pn" = (
-/obj/machinery/power/breakerbox/activated{
+/obj/machinery/power/breakerbox{
 	RCon_tag = "Underground - 2"
 	},
 /turf/simulated/floor/plating,
