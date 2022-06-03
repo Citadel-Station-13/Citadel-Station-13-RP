@@ -4,10 +4,17 @@
 
 	// -- MAPPERS - SET THESE VARS --
 	// Check code/__DEFINES/mapping/deepmaint.dm for values
+	/// name
+	name = "unnamed deepmaint dungeon"
+	/// unique id
+	var/id = "deepmaint_"
 	/// danger
-
-
-#warn impl
-
-
-
+	var/danger = DEEPMAINT_DANGER_HARMFUL
+	/// rarity
+	var/rarity = DEEPMAINT_RARITY_BASICS
+	/// put directive flags in here - see [code/__DEFINES/mapping/deepmaint.dm]
+	var/directives = NONE
+	/// allowed spawns per total dungeon
+	var/allowed_spawns_per = INFINITY
+	/// allowed spawns globally
+	var/allowed_spawns_all = INFINITY

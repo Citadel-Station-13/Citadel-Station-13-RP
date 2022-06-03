@@ -1,5 +1,7 @@
 /**
  * START PUBLIC SECTION: THIS, MAPPERS, IS WHAT YOU CARE ABOUT
+ *
+ * All deepmaint template defines go in here.
  */
 
 // deepmaint template themes we probably won't need more than 24
@@ -54,25 +56,27 @@
 
 // deepmaint template directive flags
 /// this is a branch point. this means that; 1. the deepmaint system is allowed to penetrate your template with a hallway any way it sees fit and 2. we don't care about any doorways anymore
-#define DEEPMAINT_DIRECTIVE_FREEBRANCH		(1<<0)
-/// this cares about where we join to a tunnel in that
-
-
-
-
+#define DEEPMAINT_DIRECTIVE_ROOM_FREEBRANCH			(1<<0)
 
 
 /**
  * END PUBLIC SECTION
  */
 
-// verticality
-#define DEEPMAINT_VT_SPREAD_UP					(1<<0)
-#define DEEPMAINT_VT_SPREAD_DOWN				(1<<1)
+/**
+ * START GENERATOR DEFINES
+ */
 
-// generation phase
+// generator directive flags
+/// ignore AREA_DEEPMAINT_ALLOWED - DANGEROUS
+#define DEEPMAINT_DIRECTIVE_GENERATOR_IGNORE_AREAS	(1<<0)
+
+// generation state
 #define DEEPMAINT_GENERATION_STATE_NOT_STARTED			0
 #define DEEPMAINT_GENERATION_STATE_RUNNINIG				1
 #define DEEPMAINT_GENERATION_STATE_FINISHED				2
 
+// generation mode/algorithm
+/// generate wrooms by shotgunning them out from a number of roots, tracing paths, and repeating up/down zlevels
+#define DEEPMAINT_ALGORITHM_DUNGEON_SPREAD				"dungeon"
 

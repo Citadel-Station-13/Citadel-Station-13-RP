@@ -2509,6 +2509,8 @@
 #include "code\modules\mapping\deepmaint\deepmaint.dm"
 #include "code\modules\mapping\deepmaint\generation.dm"
 #include "code\modules\mapping\deepmaint\loot.dm"
+#include "code\modules\mapping\deepmaint\algorithms\_algorithm.dm"
+#include "code\modules\mapping\deepmaint\algorithms\dungeon.dm"
 #include "code\modules\mapping\deepmaint\templates\_template.dm"
 #include "code\modules\mapping\deepmaint\templates\unsorted.dm"
 #include "code\modules\mapping\map_helpers\_map_helpers.dm"
