@@ -299,3 +299,16 @@
 
 	/// A mock client, provided by tests and friends
 	var/datum/client_interface/mock_client
+
+//! ## Virgo Defines
+	/// Do I have the HUD enabled?
+	var/vantag_hud = FALSE
+	/// Allows flight.
+	var/flying = FALSE
+	/// For holding onto a temporary form.
+	var/mob/temporary_form
+	/// Time of client loss, set by Logout(), for timekeeping.
+	var/disconnect_time = null
+
+	var/atom/movable/screen/shadekin/shadekin_display = null
+	var/atom/movable/screen/xenochimera/danger_level/xenochimera_danger_display = null
