@@ -225,6 +225,32 @@
 /mob/proc/can_equip(obj/item/I, slot, force, disallow_delay, ignore_fluff)
 	#warn impl
 
+/**
+ * checks if we have the bodypart for a slot
+ */
+/mob/proc/can_equip_bodypart_check(obj/item/I, slot)
+	return TRUE
+
+/**
+ * checks for slot conflict
+ */
+/mob/proc/can_equip_conflict_check(obj/item/I, slot)
+	if(_item_by_slot[slot])
+		return CAN_EQUIP_SLOT_CONFLICT_HARD
+	switch(slot)
+		if(SLOT_ID_LEFT_EAR, SLOT_ID_RIGHT_EAR)
+			if(I.slot_flags & SLOT_TWOEARS)
+				if(_item_by_slot(SLOT_ID_LEFT_EAR) || _item_by_slot(SLOT_ID_RIGHT_EAR))
+					return CAN_EQUIP_SLOT_CONFLICT_SOFT
+	return CAN_EQUIP_SLOT_CONFLICT_NONE
+
+/**
+ * checks if you can reach a slot
+ * return null or the first item blocking
+ */
+/mob/proc/inventory_slot_reachability_conflict(obj/item/I, slot, mob/user)
+
+
 #warn impl
 /mob/proc/_equip_item(obj/item/I, slot, force, silent, update_icons, ignore_fluff)
 	#warn this handles stuff like calling equipped/unequipped on slot swaps, etc
@@ -291,18 +317,18 @@
 
 /mob/proc/_equip_slot(obj/item/I, slot, update_icons)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	. = _set_inv_slot(slot, I, update_icons, TRUE)
+	. = _set_inv_slot(slot, I, update_icons, TRUE) != INVENTORY_SLOT_DOES_NOT_EXIST
 
 /mob/proc/_unequip_slot(slot, update_icons)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	. = _set_inv_slot(slot, null, update_icons, TRUE)
+	. = _set_inv_slot(slot, null, update_icons, TRUE) != INVENTORY_SLOT_DOES_NOT_EXIST
 
 /mob/proc/_unequip_held(obj/item/I, update_icons)
 	return
 
 /mob/proc/has_slot(id)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	return _item_by_slot(id) != -1
+	return _item_by_slot(id) != INVENTORY_SLOT_DOES_NOT_EXIST
 
 /**
  * THESE PROCS MUST BE OVERRIDDEN FOR NEW SLOTS ON MOBS
@@ -311,6 +337,9 @@
  * welcome.
  *
  * These are UNSAFE PROCS.
+ *
+ * oh and can_equip_x* might need overriding for complex mobs like humans but frankly
+ * sue me, there's no better way right now.
  */
 
 #warn impl these
@@ -330,7 +359,7 @@
  * logic - apply logic like dropping stuff from pockets when unequippiing a jumpsuit imemdiately?
  */
 /mob/proc/_set_inv_slot(slot, obj/item/I, update_icons, logic)
-	. = FALSE
+	. = INVENTORY_SLOT_DOES_NOT_EXIST
 	CRASH("Attempting to set inv slot of [slot] to [I] went to base /mob. You probably had someone assigning to a nonexistant slot!")
 
 /**
@@ -345,7 +374,7 @@
  * YES, MAGIC VALUE BUT SOLE USER IS 20 LINES ABOVE, SUE ME.
  */
 /mob/proc/_item_by_slot(slot)
-	return -1
+	return INVENTORY_SLOT_DOES_NOT_EXIST
 
 /mob/proc/_get_all_slots(include_restraints)
 	return list()

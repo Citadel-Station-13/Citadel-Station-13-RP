@@ -1,3 +1,35 @@
+// slot ids - reference abstract slots by type instead, these are only ids because lots of html/tgui requires strings
+#define SLOT_ID_BACK			"back"
+#define SLOT_ID_UNIFORM			"uniform"
+#define SLOT_ID_HEAD			"head"
+#define SLOT_ID_SUIT			"suit"
+#define SLOT_ID_BELT			"belt"
+#define SLOT_ID_LEFT_POCKET		"lpocket"
+#define SLOT_ID_RIGHT_POCKET	"rpocket"
+#define SLOT_ID_WORN_ID			"id"
+#define SLOT_ID_SHOES			"shoes"
+#define SLOT_ID_GLASSES			"glasses"
+#define SLOT_ID_GLOVES			"gloves"
+#define SLOT_ID_SUIT_STORAGE	"suitstore"
+#define SLOT_ID_MASK			"mask"
+#define SLOT_ID_LEFT_EAR		"lear"
+#define SLOT_ID_RIGHT_EAR		"rear"
+#define SLOT_ID_HANDCUFFED		"handcuffed"
+#define SLOT_ID_LEGCUFFED		"legcuffed"
+// this is an id because SLOT_ID_HANDS is used for current_equipped_slot when something is being held :/
+#define SLOT_ID_HANDS			"hands"
+
+// return values from can_equip_conflict_check
+/// yes
+#define CAN_EQUIP_SLOT_CONFLICT_NONE		0
+/// slot has another item, hell no
+#define CAN_EQUIP_SLOT_CONFLICT_HARD		1
+/// slot is semantically blocked by something else the user is wearing but you can force it on anyways
+#define CAN_EQUIP_SLOT_CONFLICT_SOFT		2
+
+// return values for _item_by_slot, _set_inv_slot
+/// this slot doesn't exist
+#define INVENTORY_SLOT_DOES_NOT_EXIST			-1
 
 /// Takes 40ds = 4s to strip someone.
 #define HUMAN_STRIP_DELAY        40
@@ -23,26 +55,6 @@
 ///16th bit - higher than this will overflow
 #define SLOT_HOLSTER	0x8000
 
-// slot ids - reference abstract slots by type instead, these are only ids because lots of html/tgui requires strings
-#define SLOT_ID_BACK			"back"
-#define SLOT_ID_UNIFORM			"uniform"
-#define SLOT_ID_HEAD			"head"
-#define SLOT_ID_SUIT			"suit"
-#define SLOT_ID_BELT			"belt"
-#define SLOT_ID_LEFT_POCKET		"lpocket"
-#define SLOT_ID_RIGHT_POCKET	"rpocket"
-#define SLOT_ID_WORN_ID			"id"
-#define SLOT_ID_SHOES			"shoes"
-#define SLOT_ID_GLASSES			"glasses"
-#define SLOT_ID_GLOVES			"gloves"
-#define SLOT_ID_SUIT_STORAGE	"suitstore"
-#define SLOT_ID_MASK			"mask"
-#define SLOT_ID_LEFT_EAR		"lear"
-#define SLOT_ID_RIGHT_EAR		"rear"
-#define SLOT_ID_HANDCUFFED		"handcuffed"
-#define SLOT_ID_LEGCUFFED		"legcuffed"
-// this is an id because SLOT_ID_HANDS is used for current_equipped_slot when something is being held :/
-#define SLOT_ID_HANDS			"hands"
 
 
 #warn nuke this from orbit

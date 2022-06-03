@@ -1,3 +1,10 @@
+/**
+ * returns if we semantically have a certain organ
+ */
+/mob/living/carbon/human/proc/has_organ(name)
+	var/obj/item/organ/external/O = organs_by_name[name]
+	return (O && !O.is_stump())
+
 /mob/living/carbon/human/proc/update_eyes()
 	var/obj/item/organ/internal/eyes/eyes = internal_organs_by_name[O_EYES]
 	if(eyes)

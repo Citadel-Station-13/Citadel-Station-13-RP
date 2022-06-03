@@ -809,10 +809,6 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/is_hot()
 	return FALSE
 
-/// Called when you swap hands away from the item
-/obj/item/proc/in_inactive_hand(mob/user)
-	return
-
 /// Worn icon generation for on-mob sprites
 /obj/item/proc/make_worn_icon(var/body_type,var/slot_id,var/inhands,var/default_icon,var/default_layer,var/icon/clip_mask = null)
 	//Get the required information about the base icon

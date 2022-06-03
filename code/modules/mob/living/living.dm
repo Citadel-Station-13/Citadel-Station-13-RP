@@ -1069,7 +1069,6 @@ default behaviour is:
 	if(I)
 		if(I.zoom)
 			I.zoom()
-		I.in_inactive_hand(src)	//This'll do specific things, determined by the item
 	return
 
 /mob/living/proc/activate_hand(var/selhand) //0 or "r" or "right" for right hand; 1 or "l" or "left" for left hand.

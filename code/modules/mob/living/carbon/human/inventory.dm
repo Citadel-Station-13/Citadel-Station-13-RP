@@ -160,6 +160,16 @@
 	if(s_store)
 		. += s_store
 
+/mob/living/carbon/human/put_in_left_hand(obj/item/I, force)
+	if(!has_organ(BP_L_HAND))
+		return FALSE
+	return ..()
+
+/mob/living/carbon/human/put_in_right_hand(obj/item/I, force)
+	if(!has_organ(BP_R_HAND))
+		return FALSE
+	return ..()
+
 #warn everything below this line needs evaluated
 
 /*
@@ -185,10 +195,6 @@ This saves us from having to call add_fingerprint() any time something is put in
 		qdel(W)
 	return null
 
-/mob/living/carbon/human/proc/has_organ(name)
-	var/obj/item/organ/external/O = organs_by_name[name]
-	return (O && !O.is_stump())
-
 /mob/living/carbon/human/proc/has_organ_for_slot(slot)
 	switch(slot)
 		if(SLOT_ID_BACK)
@@ -199,10 +205,6 @@ This saves us from having to call add_fingerprint() any time something is put in
 			return has_organ(BP_L_HAND) && has_organ(BP_R_HAND)
 		if(SLOT_ID_LEGCUFFED)
 			return has_organ(BP_L_FOOT) && has_organ(BP_R_FOOT)
-		if(slot_l_hand)
-			return has_organ(BP_L_HAND)
-		if(slot_r_hand)
-			return has_organ(BP_R_HAND)
 		if(SLOT_ID_BELT)
 			return has_organ(BP_TORSO)
 		if(SLOT_ID_LEFT_EAR)
@@ -248,41 +250,6 @@ This saves us from having to call add_fingerprint() any time something is put in
 		return
 
 	W.forceMove(src)
-	switch(slot)
-		#warn cancer
-		#warn offear already removed, make SURE to put in behavior in equip/slot checks!
-		if(SLOT_ID_LEFT_EAR)
-			src.l_ear = W
-			if(l_ear.slot_flags & SLOT_TWOEARS)
-				var/obj/item/clothing/ears/offear/O = new(W)
-				O.forceMove(src)
-				src.r_ear = O
-				O.hud_layerise()
-			W.equipped(src, slot)
-			update_inv_ears()
-		if(SLOT_ID_RIGHT_EAR)
-			src.r_ear = W
-			if(r_ear.slot_flags & SLOT_TWOEARS)
-				var/obj/item/clothing/ears/offear/O = new(W)
-				O.forceMove(src)
-				src.l_ear = O
-				O.hud_layerise()
-			W.equipped(src, slot)
-			update_inv_ears()
-		if(SLOT_ID_HEAD)
-			src.head = W
-			if(head.flags_inv & (BLOCKHAIR|BLOCKHEADHAIR|HIDEMASK))
-				update_hair()	//rebuild hair
-				update_inv_ears(0)
-				update_inv_wear_mask(0)
-			if(istype(W,/obj/item/clothing/head/kitty))
-				W.update_icon(src)
-			W.equipped(src, slot)
-			worn_clothing += head
-			update_inv_head()
-		else
-			to_chat(src, "<font color='red'>You are trying to equip this item to an unsupported inventory slot. How the heck did you manage that? Stop it...</font>")
-			return
 
 	W.hud_layerise()
 
@@ -291,8 +258,6 @@ This saves us from having to call add_fingerprint() any time something is put in
 
 	if(W.zoom)
 		W.zoom()
-
-	W.in_inactive_hand(src)
 
 	return 1
 
@@ -336,68 +301,6 @@ This saves us from having to call add_fingerprint() any time something is put in
 	W.add_fingerprint(src)
 	update_inv_r_hand()
 	return 1
-
-/* nah no dcs storage.. yet.
-/mob/living/carbon/human/proc/smart_equipbag() // take most recent item out of bag or place held item in bag
-	if(incapacitated())
-		return
-	var/obj/item/thing = get_active_held_item()
-	var/obj/item/equipped_back = get_item_by_slot(ITEM_SLOT_BACK)
-	if(!equipped_back) // We also let you equip a backpack like this
-		if(!thing)
-			to_chat(src, "<span class='warning'>You have no backpack to take something out of!</span>")
-			return
-		if(equip_to_slot_if_possible(thing, ITEM_SLOT_BACK))
-			update_inv_hands()
-		return
-	if(!SEND_SIGNAL(equipped_back, COMSIG_CONTAINS_STORAGE)) // not a storage item
-		if(!thing)
-			equipped_back.attack_hand(src)
-		else
-			to_chat(src, "<span class='warning'>You can't fit anything in!</span>")
-		return
-	if(thing) // put thing in backpack
-		if(!SEND_SIGNAL(equipped_back, COMSIG_TRY_STORAGE_INSERT, thing, src))
-			to_chat(src, "<span class='warning'>You can't fit anything in!</span>")
-		return
-	if(!equipped_back.contents.len) // nothing to take out
-		to_chat(src, "<span class='warning'>There's nothing in your backpack to take out!</span>")
-		return
-	var/obj/item/stored = equipped_back.contents[equipped_back.contents.len]
-	if(!stored || stored.on_found(src))
-		return
-	stored.attack_hand(src) // take out thing from backpack
-
-/mob/living/carbon/human/proc/smart_equipbelt() // put held thing in belt or take most recent item out of belt
-	if(incapacitated())
-		return
-	var/obj/item/thing = get_active_held_item()
-	var/obj/item/equipped_belt = get_item_by_slot(ITEM_SLOT_BELT)
-	if(!equipped_belt) // We also let you equip a belt like this
-		if(!thing)
-			to_chat(src, "<span class='warning'>You have no belt to take something out of!</span>")
-			return
-		if(equip_to_slot_if_possible(thing, ITEM_SLOT_BELT))
-			update_inv_hands()
-		return
-	if(!SEND_SIGNAL(equipped_belt, COMSIG_CONTAINS_STORAGE)) // not a storage item
-		if(!thing)
-			equipped_belt.attack_hand(src)
-		else
-			to_chat(src, "<span class='warning'>You can't fit anything in!</span>")
-		return
-	if(thing) // put thing in belt
-		if(!SEND_SIGNAL(equipped_belt, COMSIG_TRY_STORAGE_INSERT, thing, src))
-			to_chat(src, "<span class='warning'>You can't fit anything in!</span>")
-		return
-	if(!equipped_belt.contents.len) // nothing to take out
-		to_chat(src, "<span class='warning'>There's nothing in your belt to take out!</span>")
-		return
-	var/obj/item/stored = equipped_belt.contents[equipped_belt.contents.len]
-	if(!stored || stored.on_found(src))
-		return
-	stored.attack_hand(src) // take out thing from belt
-*/
 
 /mob/living/carbon/human/proc/smart_equipbag() // take most recent item out of bag or place held item in bag
 	if(incapacitated())
