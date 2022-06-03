@@ -6,8 +6,8 @@ var/global/list/rad_collectors = list()
 	desc = "A device which uses Hawking Radiation and phoron to produce power."
 	icon = 'icons/obj/singularity.dmi'
 	icon_state = "ca"
-	anchored = 0
-	density = 1
+	anchored = FALSE
+	density = FALSE
 	req_access = list(access_engine_equip)
 //	use_power = 0
 	var/obj/item/tank/phoron/P = null
@@ -145,4 +145,5 @@ var/global/list/rad_collectors = list()
 	else
 		icon_state = "ca"
 		flick("ca_deactive", src)
+	density = active
 	update_icons()

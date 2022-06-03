@@ -389,3 +389,15 @@
 /datum/gear/accessory/mekkyaku
 	name = "Mekkyaku Turtleneck"
 	path = /obj/item/clothing/accessory/mekkyaku
+
+/datum/gear/accessory/armsock
+	name = "Fingerless Sleeves"
+	path = /obj/item/clothing/accessory/armsocks
+
+/datum/gear/accessory/armsock_left
+	name = "Fingerless Sleeve (Left)"
+	path = /obj/item/clothing/accessory/armsock_left
+
+/datum/gear/accessory/armsock_right
+	name = "Fingerless Sleeve (Right)"
+	path = /obj/item/clothing/accessory/armsock_right

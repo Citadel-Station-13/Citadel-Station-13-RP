@@ -31,9 +31,11 @@
 /datum/nifsoft/apc_recharge/life()
 	if((. = ..()))
 		var/mob/living/carbon/human/H = nif.human
-		if(apc && (get_dist(H,apc) <= 1) && H.nutrition < H.species.max_nutrition) // 440 vs 450, life() happens before we get here so it'll never be EXACTLY 450
-			H.adjust_nutrition(10)
-			apc.drain_energy(src, DYNAMIC_KJ_TO_CELL_UNITS(SYNTHETIC_NUTRITION_KJ_PER_UNIT * 10))
+		if((apc?.cell?.percent() > 1) && (get_dist(H,apc) <= 1) && H.nutrition < (H.species.max_nutrition - 1)) // 440 vs 450, life() happens before we get here so it'll never be EXACTLY 450
+			var/needed = clamp(H.species.max_nutrition - H.nutrition, 0, 10)
+			var/in_kj = SYNTHETIC_NUTRITION_KJ_PER_UNIT * needed
+			var/got = apc.drain_energy(src, in_kj)
+			H.adjust_nutrition(got / SYNTHETIC_NUTRITION_KJ_PER_UNIT)
 			return TRUE
 		else
 			nif.notify("APC charging has ended.")

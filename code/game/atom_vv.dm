@@ -55,7 +55,10 @@
 /atom/vv_get_var(var_name)
 	switch(var_name)
 		if(NAMEOF(src, base_layer))
-			return debug_variable(isnull(base_layer)? layer : base_layer, vars[var_name], 0, src)
+			if(isnull(base_layer))
+				return debug_variable(NAMEOF(src, layer), layer, 0, src)
+			else
+				return debug_variable(NAMEOF(src, base_layer), base_layer, 0, src)
 	return ..()
 
 /**

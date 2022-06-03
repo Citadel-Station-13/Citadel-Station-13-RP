@@ -537,3 +537,18 @@
 	name = "Mekkyaku turtleneck"
 	desc = "A sleek black turtleneck sweater with a bright red stripe knit into the fabric."
 	icon_state = "mekkyaku"
+
+/obj/item/clothing/accessory/armsocks
+	name = "Stirrup Sleeves"
+	desc = "A pair of fingerless, full arm sleeves. Perfect for winter."
+	icon_state = "armsock"
+
+/obj/item/clothing/accessory/armsock_left
+	name = "Stirrup Sleeve"
+	desc = "A single of fingerless, full arm sleeves. Perfect for winter. This one is for the left arm."
+	icon_state = "armsock_left"
+
+/obj/item/clothing/accessory/armsock_right
+	name = "Stirrup Sleeve"
+	desc = "A single of fingerless, full arm sleeves. Perfect for winter. This one is for the right arm."
+	icon_state = "armsock_right"
