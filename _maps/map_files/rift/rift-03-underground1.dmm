@@ -3899,7 +3899,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
 "ha" = (
-/obj/machinery/power/breakerbox{
+/obj/machinery/power/breakerbox/activated{
 	RCon_tag = "Underground - 1"
 	},
 /turf/simulated/floor/plating,
@@ -5425,12 +5425,7 @@
 /area/hallway/secondary/engineering_hallway)
 "jU" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Underground One";
-	charge = 2000;
-	input_attempt = 1;
-	input_level = 140;
-	inputting = 2;
-	output_level = 120
+	RCon_tag = "Substation - Underground One"
 	},
 /obj/structure/cable/green{
 	d2 = 2;

@@ -14964,7 +14964,7 @@
 /turf/simulated/floor/tiled/white,
 /area/bridge/bunker)
 "Bh" = (
-/obj/machinery/power/breakerbox{
+/obj/machinery/power/breakerbox/activated{
 	RCon_tag = "Command"
 	},
 /turf/simulated/floor/plating,
@@ -22404,11 +22404,6 @@
 "PC" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Substation - Surface Three";
-	charge = 2000;
-	input_attempt = 1;
-	input_level = 210;
-	inputting = 2;
-	output_level = 190;
 	cur_coils = 2
 	},
 /obj/structure/cable/green{
@@ -25293,6 +25288,9 @@
 	dir = 1;
 	req_one_access = list(35,28)
 	},
+/obj/machinery/power/smes/buildable{
+	RCon_tag = "Substation - Underground One"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hydroponics)
 "UX" = (
@@ -25413,7 +25411,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "Vi" = (
-/obj/machinery/power/breakerbox{
+/obj/machinery/power/breakerbox/activated{
 	RCon_tag = "Surface - 3"
 	},
 /turf/simulated/floor/plating,
@@ -27329,11 +27327,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Command";
-	charge = 5000;
-	input_level = 190;
-	output_level = 210;
-	input_attempt = 1
+	RCon_tag = "Substation - Command"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/pumpstation)

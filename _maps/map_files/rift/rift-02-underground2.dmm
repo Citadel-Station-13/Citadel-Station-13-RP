@@ -7582,7 +7582,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/atmos)
 "pn" = (
-/obj/machinery/power/breakerbox{
+/obj/machinery/power/breakerbox/activated{
 	RCon_tag = "Underground - 2"
 	},
 /turf/simulated/floor/plating,
@@ -8432,12 +8432,7 @@
 /area/maintenance/substation/atmos)
 "re" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Underground Two";
-	charge = 2000;
-	input_attempt = 1;
-	input_level = 140;
-	inputting = 2;
-	output_level = 120
+	RCon_tag = "Substation - Underground Two"
 	},
 /obj/structure/cable/green{
 	d2 = 2;

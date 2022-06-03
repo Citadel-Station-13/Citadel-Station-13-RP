@@ -16720,12 +16720,7 @@
 /area/lawoffice)
 "neG" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Surface One";
-	charge = 2000;
-	input_attempt = 1;
-	input_level = 180;
-	inputting = 2;
-	output_level = 160
+	RCon_tag = "Substation - Surface One"
 	},
 /obj/structure/cable/green,
 /obj/structure/cable/green{
@@ -27478,7 +27473,7 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/obj/machinery/power/breakerbox{
+/obj/machinery/power/breakerbox/activated{
 	RCon_tag = "Surface - 1"
 	},
 /turf/simulated/floor/plating,

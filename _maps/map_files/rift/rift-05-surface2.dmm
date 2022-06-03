@@ -1266,12 +1266,7 @@
 /area/maintenance/substation/surface_two)
 "cz" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Surface Two";
-	charge = 2000;
-	input_attempt = 1;
-	input_level = 180;
-	inputting = 2;
-	output_level = 160
+	RCon_tag = "Substation - Surface Two"
 	},
 /obj/structure/cable/green{
 	d2 = 2;
@@ -1281,7 +1276,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_two)
 "cA" = (
-/obj/machinery/power/breakerbox{
+/obj/machinery/power/breakerbox/activated{
 	RCon_tag = "Surface - 2"
 	},
 /turf/simulated/floor/plating,
