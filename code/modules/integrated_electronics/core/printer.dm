@@ -195,22 +195,19 @@
 		for(var/path in circuit_list)
 			var/obj/O = path
 			var/can_build = TRUE
+			var/obj/item/integrated_circuit/IC = path
 
 			if(ispath(path, /obj/item/integrated_circuit))
-				var/obj/item/integrated_circuit/IC = path
 				if((initial(IC.spawn_flags) & IC_SPAWN_RESEARCH) && (!(initial(IC.spawn_flags) & IC_SPAWN_DEFAULT)) && !upgraded)
 					can_build = FALSE
 
 			var/cost = 1
 			if(ispath(path, /obj/item/electronic_assembly))
 				var/obj/item/electronic_assembly/E = path
-				cost = E.cost
+				cost = initial(E.cost)
 			else if(ispath(path, /obj/item/integrated_circuit))
-				if(ispath(path, /obj/item/integrated_circuit/passive))
-					var/obj/item/integrated_circuit/passive/power/I = path
-					cost = I.cost
-				var/obj/item/integrated_circuit/I = path
-				cost = I.cost
+			//	var/obj/item/integrated_circuit/I = path
+				cost = initial(IC.cost)
 			else
 				cost = initial(O.w_class)
 

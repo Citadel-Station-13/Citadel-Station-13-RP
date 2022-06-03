@@ -123,7 +123,7 @@ const ICCloningSection = (props, context) => {
     return false;
   }
   return (
-    <Section title="Cloning" fill={1} >
+    <Section title="Cloning" >
       <Flex>
         <Flex.Item basis={"50%"}>
           <Button
