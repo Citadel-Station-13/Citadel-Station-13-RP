@@ -54,25 +54,19 @@
 /obj/item/clothing/attackby(obj/item/I, mob/user)
 	if(EA)
 		return EA.attackby(I, user) ? null : ..()
+	..()
 
 /obj/item/clothing/attack_self(mob/user)
-	if(EA)
-		if(EA.opened)
-			EA.attack_self(user)
+	if(EA && EA.opened)
+		EA.attack_self(user)
 	else
 		..()
 
 /obj/item/clothing/Moved(oldloc)
-	if(EA)
-		EA.on_loc_moved(oldloc)
-	else
-		..()
+	EA ? EA.on_loc_moved(oldloc) : ..()
 
 /obj/item/clothing/on_loc_moved(oldloc)
-	if(EA)
-		EA.on_loc_moved(oldloc)
-	else
-		..()
+	EA ? EA.on_loc_moved(oldloc) : ..()
 
 // Does most of the repeatative setup.
 /obj/item/clothing/proc/setup_integrated_circuit(new_type)

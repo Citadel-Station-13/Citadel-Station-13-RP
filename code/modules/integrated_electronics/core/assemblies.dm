@@ -59,7 +59,13 @@
 		var/text = IC.external_examine(user)
 		if(text)
 			. += text
-	ui_interact(user)
+
+	if(HasProximity(user))
+		var/datum/tgui/ui = SStgui.get_open_ui(src.loc, src)
+		if(ui)
+			ui_interact(user, ui, ui)
+		else ui_interact(user)
+
 	if(isobserver(user))
 		if(isobserver(user) && ckeys_allowed_to_scan[user.ckey] || IsAdminGhost(user))
 			. += "You can <a href='?src=[REF(src)];ghostscan=1'>scan</a> this circuit."
@@ -520,11 +526,17 @@
 		return TRUE
 	return FALSE
 
-/obj/item/electronic_assembly/Moved(oldLoc, dir)
+/obj/item/electronic_assembly/on_loc_moved(oldloc)
 	. = ..()
-	for(var/I in assembly_components)
-		var/obj/item/integrated_circuit/IC = I
-		IC.ext_moved(oldLoc, dir)
+	for(var/obj/item/integrated_circuit/IC in assembly_components)
+		IC.ext_moved(oldloc, dir)
+	if(light) //Update lighting objects (From light circuits).
+		update_light()
+
+/obj/item/electronic_assembly/Moved(oldloc, dir)
+	. = ..()
+	for(var/obj/item/integrated_circuit/IC in assembly_components)
+		IC.ext_moved(oldloc, dir)
 	if(light) //Update lighting objects (From light circuits).
 		update_light()
 
@@ -567,11 +579,6 @@
 		return FALSE
 	return ..()
 */
-/obj/item/electronic_assembly/Moved(var/oldloc)
-	. = ..()
-	for(var/obj/O in contents)
-		O.on_loc_moved(oldloc)
-
 /obj/item/electronic_assembly/proc/on_anchored()
 	for(var/obj/item/integrated_circuit/IC in contents)
 		IC.on_anchored()
