@@ -185,7 +185,7 @@
 	extended_desc = list()
 	extended_desc += "The first input pin determines which sound is used.  The choices are; "
 	extended_desc += jointext(sounds, ", ")
-	extended_desc += .  The second pin determines the volume of sound that is played"
+	extended_desc += ".  The second pin determines the volume of sound that is played"
 	extended_desc += ", and the third determines if the frequency of the sound will vary with each activation."
 	extended_desc = jointext(extended_desc, null)
 
