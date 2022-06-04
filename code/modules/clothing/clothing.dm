@@ -719,9 +719,9 @@
 
 	var/taurized = FALSE //Easier than trying to 'compare icons' to see if it's a taur suit
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/suit.dmi',
-		SPECIES_VOX = 'icons/mob/clothing/species/vox/suit.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/suit.dmi')
+		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/suits.dmi',
+		SPECIES_VOX = 'icons/mob/clothing/species/vox/suits.dmi',
+		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/suits.dmi')
 
 	valid_accessory_slots = (ACCESSORY_SLOT_OVER | ACCESSORY_SLOT_ARMBAND)
 	restricted_accessory_slots = (ACCESSORY_SLOT_ARMBAND)

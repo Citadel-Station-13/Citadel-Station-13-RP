@@ -40,19 +40,19 @@
 
 /obj/item/clothing/suit/space/void
 	sprite_sheets = list(
-		SPECIES_TAJ 				= 'icons/mob/clothing/species/tajaran/suit.dmi',
-		SPECIES_SKRELL 				= 'icons/mob/clothing/species/skrell/suit.dmi',
-		SPECIES_UNATHI 				= 'icons/mob/clothing/species/unathi/suit.dmi',
-		SPECIES_TESHARI				= 'icons/mob/clothing/species/teshari/suit.dmi',
+		SPECIES_TAJ 				= 'icons/mob/clothing/species/tajaran/suits.dmi',
+		SPECIES_SKRELL 				= 'icons/mob/clothing/species/skrell/suits.dmi',
+		SPECIES_UNATHI 				= 'icons/mob/clothing/species/unathi/suits.dmi',
+		SPECIES_TESHARI				= 'icons/mob/clothing/species/teshari/suits.dmi',
 		SPECIES_NEVREAN 				= 'icons/mob/clothing/species/nevrean/suit_vr.dmi',
 		SPECIES_AKULA 				= 'icons/mob/clothing/species/akula/suit_vr.dmi',
 		SPECIES_SERGAL				= 'icons/mob/clothing/species/sergal/suit_vr.dmi',
 		SPECIES_ZORREN_FLAT 		= 'icons/mob/clothing/species/fennec/suit_vr.dmi',
 		SPECIES_ZORREN_HIGH 	= 'icons/mob/clothing/species/fox/suit_vr.dmi',
-		SPECIES_VULPKANIN				= 'icons/mob/clothing/species/vulpkanin/suit.dmi',
-		SPECIES_PROMETHEAN			= 'icons/mob/clothing/species/skrell/suit.dmi',
-		SPECIES_XENOHYBRID		= 'icons/mob/clothing/species/unathi/suit.dmi',
-		SPECIES_VOX					= 'icons/mob/clothing/species/vox/suit.dmi'
+		SPECIES_VULPKANIN				= 'icons/mob/clothing/species/vulpkanin/suits.dmi',
+		SPECIES_PROMETHEAN			= 'icons/mob/clothing/species/skrell/suits.dmi',
+		SPECIES_XENOHYBRID		= 'icons/mob/clothing/species/unathi/suits.dmi',
+		SPECIES_VOX					= 'icons/mob/clothing/species/vox/suits.dmi'
 		)
 
 
@@ -154,7 +154,7 @@
 
 /obj/item/clothing/suit/space/void/autolok
 	sprite_sheets = list(
-		SPECIES_HUMAN			= 'icons/mob/clothing/spacesuit.dmi',
+		SPECIES_HUMAN			= 'icons/mob/clothing/spacesuits.dmi',
 		SPECIES_TAJ 			= 'icons/mob/clothing/species/tajaran/suit_vr.dmi',
 		SPECIES_SKRELL 			= 'icons/mob/clothing/species/skrell/suit_vr.dmi',
 		SPECIES_UNATHI 			= 'icons/mob/clothing/species/unathi/suit_vr.dmi',
@@ -164,7 +164,7 @@
 		SPECIES_VULPKANIN		= 'icons/mob/clothing/species/vulpkanin/suit_vr.dmi',
 		SPECIES_ZORREN_HIGH		= 'icons/mob/clothing/species/vulpkanin/suit_vr.dmi',
 		SPECIES_FENNEC			= 'icons/mob/clothing/species/vulpkanin/suit_vr.dmi',
-		SPECIES_TESHARI			= 'icons/mob/clothing/species/teshari/suit.dmi'
+		SPECIES_TESHARI			= 'icons/mob/clothing/species/teshari/suits.dmi'
 		)
 	sprite_sheets_obj = list(
 		SPECIES_TAJ			= 'icons/obj/clothing/suits_vr.dmi',
