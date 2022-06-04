@@ -285,7 +285,7 @@
 	set desc = "Rename your circuit, useful to stay organized."
 
 	var/mob/M = usr
-	var/input = sanitizeSafe(input(usr, "What do you want to name this?", "Rename", src.name) as null|text, MAX_NAME_LEN)
+	var/input = tgui_input_text(usr, "What do you want to name this?", "Rename", src.name)
 	if(!check_interactivity(M))
 		return
 	if(src && input)
