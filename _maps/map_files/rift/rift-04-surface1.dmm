@@ -345,6 +345,13 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology/cell/five)
+"asS" = (
+/obj/machinery/door/airlock/highsecurity{
+	name = "Ground Defence Access";
+	req_one_access = list(1,10,15)
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/rift/surfaceeva/aa/surface_south)
 "atb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -614,6 +621,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/medical/patient_wing)
 "aEC" = (
@@ -690,6 +698,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/xenobiology)
 "aGK" = (
@@ -1841,6 +1850,7 @@
 	id_tag = "Mental 2";
 	name = "Mental Patient Cell 2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
 /area/medical/psych/psych_2)
 "bFI" = (
@@ -2785,6 +2795,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
 "cxT" = (
@@ -3625,6 +3636,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_emt_bay)
 "ddT" = (
@@ -3863,6 +3875,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/lawoffice)
 "dlb" = (
@@ -4776,6 +4789,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/medical/exam_room)
 "dPO" = (
@@ -4871,6 +4885,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/hallway/secondary/civilian_hallway_mid)
 "dSI" = (
@@ -5147,6 +5162,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/tether/station/public_meeting_room)
 "eav" = (
@@ -5760,6 +5776,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
 "ezu" = (
@@ -5991,6 +6008,7 @@
 	req_access = null
 	},
 /obj/structure/table/reinforced,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/janitor)
 "eMm" = (
@@ -6036,6 +6054,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/security/detectives_office)
 "eNx" = (
@@ -6134,6 +6153,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/crew_quarters/medbreak)
 "eTS" = (
@@ -6283,6 +6303,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
 "fdp" = (
@@ -6565,6 +6586,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/library)
 "fss" = (
@@ -6696,6 +6718,7 @@
 	req_access = list(2)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
 "fyC" = (
@@ -7192,6 +7215,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "fXl" = (
@@ -7784,6 +7808,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
 /area/medical/patient_wing)
 "gxe" = (
@@ -8436,6 +8461,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)
 "gXe" = (
@@ -10286,6 +10312,7 @@
 /area/maintenance/engineering/upper)
 "inv" = (
 /obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
 "inB" = (
@@ -11002,6 +11029,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
 "iNt" = (
@@ -11078,6 +11106,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
 "iRF" = (
@@ -11910,6 +11939,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/tether/station/public_meeting_room)
 "jAY" = (
@@ -12605,6 +12635,7 @@
 	id_tag = "Mental 1";
 	name = "Mental Patient Cell 1"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
 /area/medical/psych/psych_1)
 "kfz" = (
@@ -14273,6 +14304,7 @@
 /area/security/detectives_office)
 "llv" = (
 /obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/library)
 "llC" = (
@@ -14794,6 +14826,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/maintenance/sec,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/security/security_cell_hallway)
 "lLS" = (
@@ -14882,6 +14915,10 @@
 /obj/machinery/vending,
 /turf/simulated/floor/lino,
 /area/tether/surfacebase/entertainment/backstage)
+"lPd" = (
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/wall,
+/area/maintenance/cargo)
 "lPr" = (
 /obj/structure/disposaloutlet{
 	dir = 8
@@ -15511,6 +15548,7 @@
 /area/security/security_cell_hallway)
 "mmk" = (
 /obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "mmE" = (
@@ -16459,6 +16497,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/lawoffice)
 "mTl" = (
@@ -17285,6 +17324,7 @@
 /obj/effect/floor_decal/rust,
 /obj/machinery/door/airlock/maintenance/common,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "nxq" = (
@@ -18117,6 +18157,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_emt_bay)
 "nXT" = (
@@ -18872,6 +18913,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_one)
 "oBA" = (
@@ -19253,6 +19295,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)
 "oPn" = (
@@ -19519,6 +19562,7 @@
 	req_access = list(47)
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology)
 "oVJ" = (
@@ -19930,6 +19974,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
 "pik" = (
@@ -20629,6 +20674,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/janitor)
 "pKh" = (
@@ -22556,6 +22602,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
 "rpK" = (
@@ -23102,6 +23149,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/library)
 "rKC" = (
@@ -23851,6 +23899,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
 "skM" = (
@@ -23971,6 +24020,7 @@
 /obj/machinery/door/airlock/maintenance/int{
 	req_one_access = list(38)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/lawoffice)
 "smW" = (
@@ -25376,6 +25426,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "ttp" = (
@@ -25917,6 +25968,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
 "tIh" = (
@@ -26387,6 +26439,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
 "ucf" = (
@@ -27013,6 +27066,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/tether/station/public_meeting_room)
 "uuc" = (
@@ -27297,6 +27351,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/quartermaster/foyer)
 "uAG" = (
@@ -27392,6 +27447,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
 "uDg" = (
@@ -27488,6 +27544,11 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/trade_shop)
+"uHp" = (
+/obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/maintenance/library)
 "uKj" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
@@ -29187,6 +29248,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/visible/supply,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "whO" = (
@@ -30175,6 +30237,7 @@
 "wWJ" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "wXk" = (
@@ -31028,6 +31091,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/medical/mentalhealth)
 "xMr" = (
@@ -31561,6 +31625,7 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 2
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/tether/station/public_meeting_room)
 "yhe" = (
@@ -42673,7 +42738,7 @@ hgE
 hgE
 bRs
 bRs
-bND
+asS
 bmQ
 bRs
 hgE
@@ -43583,7 +43648,7 @@ gtQ
 fNL
 ovz
 bXZ
-bXZ
+lPd
 kSz
 kSz
 bmv
@@ -51122,7 +51187,7 @@ snT
 kRO
 snT
 snT
-hdm
+uHp
 snT
 snT
 snT
@@ -52485,7 +52550,7 @@ oZF
 oZF
 oZF
 oZF
-hdm
+uHp
 oZF
 oZF
 xZM
@@ -52868,7 +52933,7 @@ hgE
 hgE
 snT
 snT
-hdm
+uHp
 snT
 snT
 snT

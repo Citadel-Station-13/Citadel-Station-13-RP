@@ -1237,6 +1237,7 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/maintenance/lower/medsec_maintenance)
 "cx" = (
@@ -1949,6 +1950,7 @@
 "dJ" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/structure/catwalk,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/crew_quarters/coffee_shop)
 "dK" = (
@@ -3347,6 +3349,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-9"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_two)
 "gn" = (
@@ -5539,6 +5542,11 @@
 /obj/structure/railing/grey,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/locker)
+"kk" = (
+/obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/steel,
+/area/maintenance/medbay)
 "kl" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -10087,6 +10095,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
 "sl" = (
@@ -11665,6 +11674,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/showers)
 "vw" = (
@@ -13218,6 +13228,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/sleep)
 "yv" = (
@@ -13346,6 +13357,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
 "yI" = (
@@ -18312,6 +18324,7 @@
 /obj/machinery/door/airlock/maintenance/medical{
 	name = "Medbay Auxillary Storage"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay)
 "Hm" = (
@@ -20334,6 +20347,7 @@
 "KP" = (
 /obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/research/rnd)
 "KQ" = (
@@ -21063,6 +21077,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "Mc" = (
@@ -22258,6 +22273,7 @@
 /area/security/armory/red)
 "Om" = (
 /obj/machinery/door/airlock/maintenance/sec,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/security/briefing_room)
 "On" = (
@@ -24812,6 +24828,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "Tb" = (
@@ -25826,6 +25843,7 @@
 /area/crew_quarters/showers)
 "UM" = (
 /obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/medsec_maintenance)
 "UN" = (
@@ -27500,6 +27518,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/maintenance/medbay)
 "XI" = (
@@ -27574,6 +27593,7 @@
 /obj/machinery/door/airlock/maintenance/medical{
 	name = "Medbay Auxillary Storage"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/medsec_maintenance)
 "XO" = (
@@ -42355,7 +42375,7 @@ wv
 wv
 wv
 wv
-Kf
+kk
 wv
 mj
 mj

@@ -7022,6 +7022,7 @@
 "oe" = (
 /obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
 "of" = (
@@ -9557,6 +9558,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "xk" = (
@@ -9756,10 +9758,6 @@
 	name = "Crematorium";
 	req_one_access = list(27)
 	},
-/obj/structure/curtain/black{
-	anchored = 1;
-	icon_state = "open"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
@@ -9767,6 +9765,11 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/structure/curtain/black{
+	icon_state = "open";
+	opacity = 0
+	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "yp" = (
@@ -9982,9 +9985,10 @@
 /area/maintenance/chapel)
 "Av" = (
 /obj/structure/curtain/black{
-	anchored = 1;
-	icon_state = "open"
+	icon_state = "open";
+	opacity = 0
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "Aw" = (
@@ -10410,6 +10414,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
 "Eh" = (
@@ -10901,6 +10906,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/chapel/office)
 "Hx" = (
@@ -11312,6 +11318,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
 /area/chapel/chapel_morgue)
 "KS" = (
@@ -11420,6 +11427,7 @@
 /area/quartermaster/belterdock/refinery)
 "LS" = (
 /obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
 "LY" = (
@@ -11481,6 +11489,7 @@
 /area/chapel/observation)
 "Mm" = (
 /obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/chapel/main)
 "Mr" = (
@@ -11825,6 +11834,7 @@
 "OG" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/structure/catwalk,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "OI" = (
@@ -12319,10 +12329,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "Tk" = (
-/obj/structure/curtain/black{
-	anchored = 1;
-	icon_state = "open"
-	},
 /obj/machinery/door/airlock/glass{
 	name = "Chapel"
 	},
@@ -12333,6 +12339,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/main)
 "Tm" = (
@@ -12463,6 +12470,11 @@
 "Uw" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/miningdock)
+"UB" = (
+/obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/mining)
 "UC" = (
 /obj/effect/zone_divider,
 /turf/simulated/open/lythios43c,
@@ -12471,6 +12483,7 @@
 /obj/machinery/door/airlock/maintenance/common{
 	req_one_access = list(27)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/chapel/observation)
 "UK" = (
@@ -12737,6 +12750,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/chapel/main)
 "Wy" = (
@@ -12947,6 +12961,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/lino,
 /area/chapel/office)
 "Yr" = (
@@ -13075,6 +13090,7 @@
 /area/rift/station/stairs_one)
 "Zo" = (
 /obj/machinery/door/airlock/maintenance/engi,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "Zp" = (
@@ -32663,7 +32679,7 @@ JP
 JP
 JP
 JP
-wJ
+UB
 JP
 JP
 rt
