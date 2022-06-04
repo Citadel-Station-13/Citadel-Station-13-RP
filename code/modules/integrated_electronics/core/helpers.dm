@@ -38,7 +38,7 @@
 	var/datum/integrated_io/pin =  get_pin_ref(pin_type, pin_number)
 	return pin.data_as_type(as_type)
 
-// Returns a ref to the first linked pin.
+/// Returns a ref to the first linked pin.
 /obj/item/integrated_circuit/proc/get_pin_linked_src(pin_type, pin_number)
 	var/datum/integrated_io/pin = get_pin_ref(pin_type, pin_number)
 	if(!pin.linked.len) return null
@@ -74,8 +74,8 @@
 		return data.resolve()
 	return data
 
-// Returns a list of parameters necessary to locate a pin in the assembly: component number, pin type and pin number
-// Components list can be supplied from the outside, for use in savefiles
+/// Returns a list of parameters necessary to locate a pin in the assembly: component number, pin type and pin number
+/// Components list can be supplied from the outside, for use in savefiles
 /datum/integrated_io/proc/get_pin_parameters(list/components)
 	if(!holder)
 		return
@@ -103,8 +103,8 @@
 	return list(component_number, pin_type, pin_number)
 
 
-// Locates a pin in the assembly when given component number, pin type and pin number
-// Components list can be supplied from the outside, for use in savefiles
+/// Locates a pin in the assembly when given component number, pin type and pin number
+/// Components list can be supplied from the outside, for use in savefiles
 /obj/item/electronic_assembly/proc/get_pin_ref(component_number, pin_type, pin_number, list/components)
 	if(!components)
 		components = assembly_components
@@ -116,8 +116,8 @@
 	return component.get_pin_ref(pin_type, pin_number)
 
 
-// Same as get_pin_ref, but takes in a list of 3 parameters (same format as get_pin_parameters)
-// and performs extra sanity checks on parameters list and index numbers
+/// Same as get_pin_ref, but takes in a list of 3 parameters (same format as get_pin_parameters)
+/// and performs extra sanity checks on parameters list and index numbers
 /obj/item/electronic_assembly/proc/get_pin_ref_list(list/parameters, list/components)
 	if(!components)
 		components = assembly_components
@@ -134,8 +134,8 @@
 
 	return get_pin_ref(parameters[1], parameters[2], parameters[3], components)
 
-// Used to obfuscate object refs imported/exported as strings.
-// Not very secure, but if someone still finds a way to abuse refs, they deserve it.
+/// Used to obfuscate object refs imported/exported as strings.
+/// Not very secure, but if someone still finds a way to abuse refs, they deserve it.
 /proc/XorEncrypt(string, key)
 	if(!string || !key ||!istext(string)||!istext(key))
 		return

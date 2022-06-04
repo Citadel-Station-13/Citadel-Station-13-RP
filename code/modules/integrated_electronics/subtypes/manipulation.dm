@@ -987,7 +987,7 @@
 		var/atom/holder = loc
 		log_and_message_admins("activated a grenade assembly.  Last touches: Assembly: [holder.fingerprintslast] Circuit: [fingerprintslast] Grenade: [attached_grenade.fingerprintslast]")
 
-// These procs do not relocate the grenade, that's the callers responsibility
+/// These procs do not relocate the grenade, that's the callers responsibility
 /obj/item/integrated_circuit/manipulation/grenade/proc/attach_grenade(var/obj/item/grenade/G)
 	attached_grenade = G
 	RegisterSignal(attached_grenade, COMSIG_PARENT_QDELETING, .proc/detach_grenade)

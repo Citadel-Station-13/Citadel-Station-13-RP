@@ -9,39 +9,54 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	icon = 'icons/obj/integrated_electronics/electronic_components.dmi'
 	icon_state = "template"
 	w_class = ITEMSIZE_TINY
-	var/obj/item/electronic_assembly/assembly = null // Reference to the assembly holding this circuit, if any.
+	/// Reference to the assembly holding this circuit, if any.
+	var/obj/item/electronic_assembly/assembly = null
 	var/extended_desc = null
 	var/can_be_asked_input = 0
 	var/list/inputs = list()
-	var/list/inputs_default = list()			// Assoc list which will fill a pin with data upon creation.  e.g. "2" = 0 will set input pin 2 to equal 0 instead of null.
+	/// Assoc list which will fill a pin with data upon creation.  e.g. "2" = 0 will set input pin 2 to equal 0 instead of null.
+	var/list/inputs_default = list()
 	var/list/outputs = list()
-	var/list/outputs_default = list()		// Ditto, for output.
+	/// Ditto, for output.
+	var/list/outputs_default = list()
 	var/list/activators = list()
-	var/next_use = 0 //Uses world.time
-	var/complexity = 1 				//This acts as a limitation on building machines, more resource-intensive components cost more 'space'.
+	///Uses world.time
+	var/next_use = 0
+	///This acts as a limitation on building machines, more resource-intensive components cost more 'space'.
+	var/complexity = 1
 	var/size = null
-	var/cost = 1					//This acts as a limitation on building machines, bigger components cost more 'space'. -1 for size 0
-	var/cooldown_per_use = IC_DEFAULT_COOLDOWN // Circuits are limited in how many times they can be work()'d by this variable.
-	var/ext_cooldown = 0			// Circuits are limited in how many times they can be work()'d with external world by this variable.
-	var/power_draw_per_use = 0 		// How much power is drawn when work()'d.
-	var/power_draw_idle = 0			// How much power is drawn when doing nothing.
-	var/spawn_flags = null			// Used for world initializing, see the #defines above.
-	var/action_flags = NONE			// Used for telling circuits that can do certain actions from other circuits.
-	var/category_text = "NO CATEGORY THIS IS A BUG"	// To show up on circuit printer, and perhaps other places.
-	var/removable = TRUE 			// Determines if a circuit is removable from the assembly.
+	///This acts as a limitation on building machines, bigger components cost more 'space'. -1 for size 0
+	var/cost = 1
+	/// Circuits are limited in how many times they can be work()'d by this variable.
+	var/cooldown_per_use = IC_DEFAULT_COOLDOWN
+	/// Circuits are limited in how many times they can be work()'d with external world by this variable.
+	var/ext_cooldown = 0
+	/// How much power is drawn when work()'d.
+	var/power_draw_per_use = 0
+	/// How much power is drawn when doing nothing.
+	var/power_draw_idle = 0
+	/// Used for world initializing, see the #defines above.
+	var/spawn_flags = null
+	/// Used for telling circuits that can do certain actions from other circuits.
+	var/action_flags = NONE
+	/// To show up on circuit printer, and perhaps other places.
+	var/category_text = "NO CATEGORY THIS IS A BUG"
+	/// Determines if a circuit is removable from the assembly.
+	var/removable = TRUE
 	var/displayed_name = ""
-	var/allow_multitool = 1			// Allows additional multitool functionality
+	/// Allows additional multitool functionality
+	var/allow_multitool = 1
 
 /obj/item/integrated_circuit/examine(mob/user)
 	. = ..()
 	external_examine(user)
 	ui_interact(user)
 
-// Can be called via electronic_assembly/attackby()
+/// Can be called via electronic_assembly/attackby()
 /obj/item/integrated_circuit/proc/additem(var/obj/item/I, var/mob/living/user)
 	attackby(I, user)
 
-// This should be used when someone is examining while the case is opened.
+/// This should be used when someone is examining while the case is opened.
 /obj/item/integrated_circuit/proc/internal_examine(mob/user)
 	to_chat(user, "This board has [inputs.len] input pin\s, [outputs.len] output pin\s and [activators.len] activation pin\s.")
 	for(var/datum/integrated_io/I in inputs)
@@ -56,7 +71,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	to_chat(user, any_examine(user))
 	ui_interact(user)
 
-// This should be used when someone is examining from an 'outside' perspective, e.g.  reading a screen or LED.
+/// This should be used when someone is examining from an 'outside' perspective, e.g. reading a screen or LED.
 /obj/item/integrated_circuit/proc/external_examine(mob/user)
 	return any_examine(user)
 
@@ -291,7 +306,8 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	for(var/datum/integrated_io/O in outputs)
 		O.push_data()
 
-/obj/item/integrated_circuit/proc/pull_data() //! Don't use this! Very bad! Takes all data from attached pins regardless of pulse state.
+//! Don't use this!  Very bad!  Takes all data from attached pins regardless of pulse state.  Make sure you understand the consequences of this if you insist on using it.
+/obj/item/integrated_circuit/proc/pull_data()
 	for(var/datum/integrated_io/I in inputs)
 		I.push_data()
 
@@ -299,11 +315,11 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	if(assembly)
 		return assembly.draw_power(power_draw_idle)
 
-// Override this for special behaviour when there's no power left.
+/// Override this for special behaviour when there's no power left.
 /obj/item/integrated_circuit/proc/power_fail()
 	return
 
-// Returns true if there's enough power to work().
+/// Returns true if there's enough power to work().
 /obj/item/integrated_circuit/proc/check_power()
 	if(!assembly)
 		return FALSE // Not in an assembly, therefore no power.
@@ -348,7 +364,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	return
 
 
-// Returns the object that is supposed to be used in attack messages, location checks, etc.
+/// Returns the object that is supposed to be used in attack messages, location checks, etc.
 /obj/item/integrated_circuit/proc/get_object()
 	// If the component is located in an assembly, let assembly determine it.
 	if(assembly)
@@ -357,8 +373,8 @@ a creative player the means to solve many problems.  Circuits are held inside an
 		return src	// If not, the component is acting on its own.
 
 
-// Returns the location to be used for dropping items.
-// Same as the regular drop_location(), but with proc being run on assembly if there is any.
+/// Returns the location to be used for dropping items.
+/// Same as the regular drop_location(), but with proc being run on assembly if there is any.
 /obj/item/integrated_circuit/drop_location()
 	// If the component is located in an assembly, let the assembly figure that one out.
 	if(assembly)
@@ -367,7 +383,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 		return ..()	// If not, the component is acting on its own.
 
 
-// Checks if the target object is reachable.  Useful for various manipulators and manipulator-like objects.
+/// Checks if the target object is reachable.  Useful for various manipulators and manipulator-like objects.
 /obj/item/integrated_circuit/proc/check_target(atom/target, exclude_contents = FALSE, exclude_components = FALSE, exclude_self = FALSE, exclude_outside = FALSE)
 	if(!target)
 		return FALSE

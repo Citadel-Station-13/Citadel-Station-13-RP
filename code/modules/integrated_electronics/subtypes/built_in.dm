@@ -47,7 +47,7 @@
 	activators = list("set" = IC_PINTYPE_PULSE_IN, "on activation" = IC_PINTYPE_PULSE_OUT)
 
 /obj/item/integrated_circuit/built_in/self_sensor/do_work()
-	set_pin_data(IC_OUTPUT, 1, )
+	set_pin_data(IC_OUTPUT, 1, assembly.loc.loc)
 	push_data()
 	activate_pin(2)
 	. = ..()

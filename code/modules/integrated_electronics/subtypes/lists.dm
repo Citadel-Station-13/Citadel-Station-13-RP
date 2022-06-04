@@ -317,7 +317,7 @@
 	extended_desc = "Default settings will encode the entire list into a string."
 	icon_state = "join"
 	inputs = list(
-		"list to join" = IC_PINTYPE_LIST,//
+		"list to join" = IC_PINTYPE_LIST,
 		"delimiter" = IC_PINTYPE_STRING,
 		"start" = IC_PINTYPE_INDEX,
 		"end" = IC_PINTYPE_NUMBER

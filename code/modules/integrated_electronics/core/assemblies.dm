@@ -11,7 +11,8 @@
 	show_messages = TRUE
 	datum_flags = DF_USE_TAG
 	var/list/assembly_components = list()
-	var/list/ckeys_allowed_to_scan = list() // Players who built the circuit can scan it as a ghost.
+	/// Players who built the circuit can scan it as a ghost.
+	var/list/ckeys_allowed_to_scan = list()
 	var/max_components = IC_COMPONENTS_BASE
 	var/max_complexity = IC_COMPLEXITY_BASE
 	var/opened = FALSE
@@ -19,29 +20,41 @@
 	var/obj/item/cell/device/battery = null
 	/// Set every tick, to display how much power is being drawn in total.
 	var/net_power = 0
-	var/can_charge = TRUE //Can it be charged in a recharger?
-	var/can_fire_equipped = FALSE //Can it fire/throw weapons when the assembly is being held?
+	/// Can it be charged in a recharger?
+	var/can_charge = TRUE
+	/// Can it fire/throw weapons when the assembly is being held?
+	var/can_fire_equipped = FALSE
 	var/charge_sections = 4
 	var/charge_tick = FALSE
 	var/charge_delay = 4
 	var/use_cyborg_cell = TRUE
+	/// Time until circuit cn perform another external action
 	var/ext_next_use = 0
 	var/atom/collw
 	var/obj/item/card/id/access_card
-	var/allowed_circuit_action_flags = IC_ACTION_COMBAT | IC_ACTION_LONG_RANGE //which circuit flags are allowed
-	var/combat_circuits = 0 //number of combat cicuits in the assembly, used for diagnostic hud
-	var/long_range_circuits = 0 //number of long range cicuits in the assembly, used for diagnostic hud
-	var/prefered_hud_icon = "hudstat"		// Used by the AR circuit to change the hud icon.
-	var/creator // circuit creator if any
+	/// Which circuit flags are allowed
+	var/allowed_circuit_action_flags = IC_ACTION_COMBAT | IC_ACTION_LONG_RANGE
+	/// Number of combat cicuits in the assembly, used for diagnostic hud
+	var/combat_circuits = 0
+	/// Number of long range cicuits in the assembly, used for diagnostic hud
+	var/long_range_circuits = 0
+	/// Used by the AR circuit to change the hud icon.
+	var/prefered_hud_icon = "hudstat"
+	/// Circuit creator ckey if any
+	var/creator
 	var/static/next_assembly_id = 0
 	var/list/unremovable_circuits = list()
 	var/list/removable_circuits = list()
 	var/list/available_inputs = list()
 // TBI	var/hud_possible = list(DIAG_STAT_HUD, DIAG_BATT_HUD, DIAG_TRACK_HUD, DIAG_CIRCUIT_HUD) //diagnostic hud overlays
-	var/can_anchor = TRUE	/// If true, wrenching it will anchor it.
+	/// If true, wrenching it will anchor it.
+	var/can_anchor = TRUE
+	/// Holds a ref to the circuit which is currently bolting the assembly, if applicable.
 	var/anchored_by = null
+	/// Incremented by panel locking circuits.
 	var/panel_locked = null
 	var/detail_color = COLOR_ASSEMBLY_BLACK
+	/// Cost set to default during init if unset.
 	var/cost = 0
 
 /obj/item/electronic_assembly/GenerateTag()
@@ -54,6 +67,7 @@
 	else
 		. += "<span class='notice'>The maintenance panel [opened ? "can be" : "is"] <b>screwed</b> in place.</span>"
 
+	// Not using internal examine? Why? TBI? Will test how horrible/spammy it is.
 	for(var/I in assembly_components)
 		var/obj/item/integrated_circuit/IC = I
 		var/text = IC.external_examine(user)

@@ -6,15 +6,23 @@
 	w_class = ITEMSIZE_LARGE
 	var/cur_metal = 0
 	var/max_metal = 250
-	var/metal_per_sheet = 10	// One sheet equals this much metal. was 10
-	var/upgraded = FALSE		// When hit with an upgrade disk, will turn true, allowing it to print the higher tier circuits.
-	var/can_clone = TRUE		// Same for above, but will allow the printer to duplicate a specific assembly.
-	var/fast_clone = FALSE		// If this is false, then cloning will take an amount of deciseconds equal to the metal cost divided by 100.
-	var/debug = FALSE			// If true, metal is infinite.
+	/// One sheet equals this much metal.
+	var/metal_per_sheet = 10
+	/// When hit with an upgrade disk, will turn true, allowing it to print the higher tier circuits.
+	var/upgraded = FALSE
+	/// Same for above, but will allow the printer to duplicate a specific assembly.
+	var/can_clone = TRUE
+	/// If this is false, then cloning will take an amount of deciseconds equal to the metal cost divided by 100.
+	var/fast_clone = FALSE
+	/// If true, metal is infinite.
+	var/debug = FALSE
 	var/static/list/recipe_list = list()
-	var/cloning = FALSE			// If the printer is currently creating a circuit
-	var/recycling = FALSE		// If an assembly is being emptied into this printer
-	var/list/program			// Currently loaded save, in form of list
+	/// If the printer is currently creating a circuit
+	var/cloning = FALSE
+	/// If an assembly is being emptied into this printer
+	var/recycling = FALSE
+	/// Currently loaded save, in form of list
+	var/list/program
 	var/dirty_items = FALSE
 
 /obj/item/integrated_circuit_printer/examine(mob/user)
