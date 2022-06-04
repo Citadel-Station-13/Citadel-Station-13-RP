@@ -80,7 +80,7 @@
 		if(tgalert(src, message, "Report Issue","Yes","No")!="Yes")
 			return
 		var/static/issue_template = file2text(".github/ISSUE_TEMPLATE.md")
-		var/servername = CONFIG_GET(string/servername)
+		var/servername = "Citadel Station 13 RP" // CONFIG_GET(string/servername)
 		var/url_params = "Reporting client version: [byond_version].[byond_build]\n\n[issue_template]"
 		if(GLOB.round_id || servername)
 			url_params = "Issue reported from [GLOB.round_id ? " Round ID: [GLOB.round_id][servername ? " ([servername])" : ""]" : servername]\n\n[url_params]"
