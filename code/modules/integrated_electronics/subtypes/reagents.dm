@@ -56,7 +56,7 @@
 	desc = "This scary looking thing is able to pump liquids into, or suck liquids out of, whatever it's pointed at."
 	icon_state = "injector"
 	extended_desc = "This autoinjector can push up to 30 units of reagents into another container or someone else outside of the machine.  The target \
-	must be adjacent to the machine, and if it is a person, they cannot be wearing thick clothing. A negative quantity inverts the injector, sucking out reagents instead."
+	must be adjacent to the machine, and if it is a person, they cannot be wearing thick clothing.  A negative quantity inverts the injector, sucking out reagents instead."
 	flags = OPENCONTAINER
 	volume = 30
 	complexity = 20
@@ -376,7 +376,7 @@
 
 /obj/item/integrated_circuit/reagent/storage/heater
 	name = "chemical heater"
-	desc = "Stores liquid inside the device away from electrical components. It can store up to 60u. It will heat or cool the reagents \
+	desc = "Stores liquid inside the device away from electrical components.  It can store up to 60u.  It will heat or cool the reagents \
 	to the target temperature when turned on."
 	icon_state = "heater"
 	complexity = 8
@@ -476,7 +476,7 @@
 	var/d_vol = get_pin_data(IC_INPUT, 3)
 	var/obj/item/integrated_circuit/s = get_pin_linked_src(IC_INPUT, 2)
 	var/obj/item/integrated_circuit/d = get_pin_linked_src(IC_INPUT, 3)
-	// Try to transfer any pipe contents to an attached container. If no container, spill.
+	// Try to transfer any pipe contents to an attached container.  If no container, spill.
 	src.reagents.total_volume ? (d && d.reagents) ? reagents.trans_to(d, 5) : reagents.splash_area(assembly.loc, 0) : null
 	if(s && s.reagents.total_volume)
 		s.reagents.trans_to(src, 5)
@@ -487,7 +487,7 @@
 
 /obj/item/integrated_circuit/reagent/storage/grinder
 	name = "reagent grinder"
-	desc = "This is a reagent grinder. It accepts a ref to something, and refines it into reagents. It can store up to 100u."
+	desc = "This is a reagent grinder.  It accepts a ref to something, and refines it into reagents.  It can store up to 100u."
 	icon_state = "blender"
 	extended_desc = ""
 	inputs = list(
@@ -561,10 +561,10 @@
 	name = "reagent filter"
 	desc = "Filtering liquids by list of desired or unwanted reagents."
 	icon_state = "reagent_filter"
-	extended_desc = "This is a filter which will move liquids from the source ref to the target ref. \
+	extended_desc = "This is a filter which will move liquids from the source ref to the target ref.  \
 	It will move all reagents, except list, given in fourth pin if amount value is positive.\
 	Or it will move only desired reagents if amount is negative, The third pin determines \
-	how much reagent is moved per pulse, between 0 and 50. Amount is given for each separate reagent."
+	how much reagent is moved per pulse, between 0 and 50.  Amount is given for each separate reagent."
 	flags = OPENCONTAINER
 	complexity = 8
 	inputs = list("source" = IC_PINTYPE_REF, "target" = IC_PINTYPE_REF, "injection amount" = IC_PINTYPE_NUMBER, "list of reagents" = IC_PINTYPE_LIST)
@@ -618,7 +618,7 @@
 	name = "integrated extinguisher"
 	desc = "This circuit sprays any of its contents out like an extinguisher."
 	icon_state = "injector"
-	extended_desc = "This circuit can hold up to 30 units of any given chemicals. On each use, it sprays these reagents like a fire extinguisher."
+	extended_desc = "This circuit can hold up to 30 units of any given chemicals.  On each use, it sprays these reagents like a fire extinguisher."
 
 	volume = 30
 	flags = OPENCONTAINER

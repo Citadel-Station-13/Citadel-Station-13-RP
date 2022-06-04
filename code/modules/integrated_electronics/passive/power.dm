@@ -108,8 +108,8 @@
 	name = "fuel cell"
 	desc = "Produces electricity from chemicals."
 	icon_state = "chemical_cell"
-	extended_desc = "This is effectively an internal beaker. It will consume and produce power from phoron, slime jelly, welding fuel, carbon,\
-	 ethanol, and nutriments, in order of decreasing efficiency. It will consume fuel only if the battery can take more energy. Blood is also able to be used as \
+	extended_desc = "This is effectively an internal beaker.  It will consume and produce power from phoron, slime jelly, welding fuel, carbon,\
+	 ethanol, and nutriments, in order of decreasing efficiency.  It will consume fuel only if the battery can take more energy.  Blood is also able to be used as \
 	 a source of organic fuel; blood from sapient creatures is more efficient."
 	flags = OPENCONTAINER
 	complexity = 4
@@ -178,8 +178,8 @@
 	desc = "Gives or takes power from a wire underneath the machine."
 	icon_state = "powernet"
 	extended_desc = "The assembly must be anchored, with a wrench, and a wire node must be avaiable directly underneath.<br>\
-	The first pin determines if power is moved at all. The second pin, if true, will draw from the powernet to charge the assembly's \
-	cell, otherwise it will give power from the cell to the powernet. All units are in kilowatts."
+	The first pin determines if power is moved at all.  The second pin, if true, will draw from the powernet to charge the assembly's \
+	cell, otherwise it will give power from the cell to the powernet.  All units are in kilowatts."
 	complexity = 20
 	inputs = list(
 		"active" = IC_PINTYPE_BOOLEAN,

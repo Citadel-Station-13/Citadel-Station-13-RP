@@ -173,12 +173,12 @@
 
 	var/list/blocks = list()
 
-	// Block 1. Assembly.
+	// Block 1.  Assembly.
 	blocks["assembly"] = assembly.save()
 	// (implant assemblies are not yet supported)
 
 
-	// Block 2. Components.
+	// Block 2.  Components.
 	var/list/components = list()
 	for(var/c in assembly.assembly_components)
 		var/obj/item/integrated_circuit/component = c
@@ -186,7 +186,7 @@
 	blocks["components"] = components
 
 
-	// Block 3. Wires.
+	// Block 3.  Wires.
 	var/list/wires = list()
 	var/list/saved_wires = list()
 
@@ -233,7 +233,7 @@
 	var/error
 
 
-	// Block 1. Assembly.
+	// Block 1.  Assembly.
 	var/list/assembly_params = blocks["assembly"]
 
 	if(!islist(assembly_params) || !length(assembly_params))
@@ -261,7 +261,7 @@
 	blocks["metal_cost"] = assembly.cost
 
 
-	// Block 2. Components.
+	// Block 2.  Components.
 	if(!islist(blocks["components"]) || !length(blocks["components"]))
 		return "Invalid components list."	// No components or damaged components list
 
@@ -307,7 +307,7 @@
 		return "Complexity overflow."
 
 
-	// Block 3. Wires.
+	// Block 3.  Wires.
 	if(blocks["wires"])
 		if(!islist(blocks["wires"]))
 			return "Invalid wiring list."	// Damaged wires list
@@ -333,7 +333,7 @@
 // No sanity checks are performed, save file is expected to be validated by validate_electronic_assembly
 /datum/controller/subsystem/processing/circuit/proc/load_electronic_assembly(loc, list/blocks)
 
-	// Block 1. Assembly.
+	// Block 1.  Assembly.
 	var/list/assembly_params = blocks["assembly"]
 	var/obj/item/electronic_assembly/assembly_path = all_assemblies[assembly_params["type"]]
 	var/obj/item/electronic_assembly/assembly = new assembly_path(null)
@@ -341,7 +341,7 @@
 
 
 
-	// Block 2. Components.
+	// Block 2.  Components.
 	for(var/component_params in blocks["components"])
 		var/obj/item/integrated_circuit/component_path = all_components[component_params["type"]]
 		var/obj/item/integrated_circuit/component = new component_path(assembly)
@@ -349,7 +349,7 @@
 		component.load(component_params)
 
 
-	// Block 3. Wires.
+	// Block 3.  Wires.
 	if(blocks["wires"])
 		for(var/w in blocks["wires"])
 			var/list/wire = w

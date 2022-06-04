@@ -170,11 +170,11 @@
 			var/more = ""
 			if(M)
 				more = "[ADMIN_LOOKUPFLW(M)] "
-			message_admins("A concatenator circuit has greatly exceeded its [max_string_length] character limit with a total of [spamprotection] characters, and has been deleted. Assembly last touched by [more ? more : assembly.fingerprintslast].")
-			investigate_log("A concatenator circuit has greatly exceeded its [max_string_length] character limit with a total of [spamprotection] characters, and has been deleted. Assembly last touched by [assembly.fingerprintslast].", INVESTIGATE_CIRCUIT)
+			message_admins("A concatenator circuit has greatly exceeded its [max_string_length] character limit with a total of [spamprotection] characters, and has been deleted.  Assembly last touched by [more ? more : assembly.fingerprintslast].")
+			investigate_log("A concatenator circuit has greatly exceeded its [max_string_length] character limit with a total of [spamprotection] characters, and has been deleted.  Assembly last touched by [assembly.fingerprintslast].", INVESTIGATE_CIRCUIT)
 		else
-			message_admins("A concatenator circuit has greatly exceeded its [max_string_length] character limit with a total of [spamprotection] characters, and has been deleted. No associated key.")
-			investigate_log("A concatenator circuit has greatly exceeded its [max_string_length] character limit with a total of [spamprotection] characters, and has been deleted. No associated key.", INVESTIGATE_CIRCUIT)
+			message_admins("A concatenator circuit has greatly exceeded its [max_string_length] character limit with a total of [spamprotection] characters, and has been deleted.  No associated key.")
+			investigate_log("A concatenator circuit has greatly exceeded its [max_string_length] character limit with a total of [spamprotection] characters, and has been deleted.  No associated key.", INVESTIGATE_CIRCUIT)
 		return
 
 	set_pin_data(IC_OUTPUT, 1, result)
@@ -197,8 +197,8 @@
 /obj/item/integrated_circuit/converter/separator
 	name = "separator"
 	desc = "This splits a single string into two at the relative split point."
-	extended_desc = "This circuit splits a given string into two, based on the string and the index value. \
-	The index splits the string <b>after</b> the given index, including spaces. So 'a person' with an index of '3' \
+	extended_desc = "This circuit splits a given string into two, based on the string and the index value.  \
+	The index splits the string <b>after</b> the given index, including spaces.  So 'a person' with an index of '3' \
 	will split into 'a p' and 'erson'."
 	complexity = 4
 	inputs = list(
@@ -230,8 +230,8 @@
 /obj/item/integrated_circuit/converter/findstring
 	name = "find text"
 	desc = "This circuit outputs the position of the sample in the string or returns 0."
-	extended_desc = "The first pin is the string to be examined. The second pin is the sample to be found. \
-	For example, inputting 'my wife has caught on fire' with 'has' as the sample will give you position 9. \
+	extended_desc = "The first pin is the string to be examined.  The second pin is the sample to be found.  \
+	For example, inputting 'my wife has caught on fire' with 'has' as the sample will give you position 9.  \
 	This circuit isn't case sensitive, and it does not ignore spaces."
 	complexity = 4
 	inputs = list(
@@ -283,8 +283,8 @@
 /obj/item/integrated_circuit/converter/exploders
 	name = "string exploder"
 	desc = "This splits a single string into a list of strings."
-	extended_desc = "This circuit splits a given string into a list of strings based on the string and given delimiter. \
-	For example, 'eat this burger' will be converted to list('eat','this','burger'). Leave the delimiter null to get a list \
+	extended_desc = "This circuit splits a given string into a list of strings based on the string and given delimiter.  \
+	For example, 'eat this burger' will be converted to list('eat','this','burger').  Leave the delimiter null to get a list \
 	of every individual character."
 	complexity = 4
 	inputs = list(
@@ -379,7 +379,7 @@
 /obj/item/integrated_circuit/converter/rel_to_abs_coords
 	name = "rel to abs coordinate converter"
 	desc = "Convert relative coordinates to absolute coordinates with this."
-	extended_desc = "Keep in mind that only one set of input coordinates should be absolute, and the other relative. \
+	extended_desc = "Keep in mind that only one set of input coordinates should be absolute, and the other relative.  \
 	The output coordinates will be the absolute form of the input relative coordinates."
 	complexity = 1
 	inputs = list(
@@ -471,7 +471,7 @@
 /obj/item/integrated_circuit/converter/rgb2hex
 	name = "rgb to hexadecimal converter"
 	desc = "This circuit can convert a RGB (Red, Green, Blue) color to a Hexadecimal RGB color."
-	extended_desc = "The first pin controls red amount, the second pin controls green amount, and the third controls blue amount. They all go from 0-255."
+	extended_desc = "The first pin controls red amount, the second pin controls green amount, and the third controls blue amount.  They all go from 0-255."
 	icon_state = "rgb-hex"
 	inputs = list(
 		"red" = IC_PINTYPE_NUMBER,

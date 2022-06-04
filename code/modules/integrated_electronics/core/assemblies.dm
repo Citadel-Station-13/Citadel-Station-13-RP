@@ -371,7 +371,7 @@
 	IC.forceMove(get_object())
 	IC.assembly = src
 	var/list/IC_r = list()
-	// Build TGUI lists here for efficiency. We don't need to do that every time the UI updates.
+	// Build TGUI lists here for efficiency.  We don't need to do that every time the UI updates.
 	IC.removable ? (IC_r = removable_circuits) : (IC_r = unremovable_circuits)
 	IC_r.Add(list(list("name" = IC.displayed_name,"ref" = REF(IC))))
 	if (IC.can_be_asked_input) available_inputs.Add(list(list("name" = IC.displayed_name,"ref" = REF(IC))))

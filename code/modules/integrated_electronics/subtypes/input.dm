@@ -187,7 +187,7 @@
 
 /obj/item/integrated_circuit/input/slime_scanner
 	name = "slime scanner"
-	desc = "A very small version of the xenobio analyser. This allows the machine to know every needed properties of slime. Output mutation list is non-associative."
+	desc = "A very small version of the xenobio analyser.  This allows the machine to know every needed properties of slime.  Output mutation list is non-associative."
 	icon_state = "medscan_adv"
 	complexity = 12
 	inputs = list("target" = IC_PINTYPE_REF)
@@ -229,7 +229,7 @@
 
 /obj/item/integrated_circuit/input/examiner
 	name = "examiner"
-	desc = "It's a little machine vision system. It can return the name, description, distance,\
+	desc = "It's a little machine vision system.  It can return the name, description, distance,\
 	relative coordinates, total amount of reagents, and maximum amount of reagents of the referenced object."
 	icon_state = "video_camera"
 	complexity = 6
@@ -347,7 +347,7 @@
 			activate_pin(3)
 			return
 
-		if(scanned_turf in view(circuit_turf)) // This is a camera. It can't examine things that it can't see.
+		if(scanned_turf in view(circuit_turf)) // This is a camera.  It can't examine things that it can't see.
 			var/list/turf_contents = new()
 			for(var/obj/U in scanned_turf)
 				turf_contents += WEAKREF(U)
@@ -423,7 +423,7 @@
 		if(!istype(H)) //Invalid input
 			return
 
-		if(H in view(T)) // This is a camera. It can't examine thngs,that it can't see.
+		if(H in view(T)) // This is a camera.  It can't examine thngs,that it can't see.
 			var/list/cont = new()
 			if(E.contents.len)
 				for(var/i = 1 to E.contents.len)
@@ -459,7 +459,7 @@
 	if(ord == 1)
 		var/datum/integrated_io/O = outputs[1]
 		O.data = null
-		if(!get_pin_data(IC_INPUT, 1)) // Check toggle. We can just grab ref if false.
+		if(!get_pin_data(IC_INPUT, 1)) // Check toggle.  We can just grab ref if false.
 			O.data = WEAKREF(assembly.loc)
 		else if(get_pin_data(IC_INPUT, 1) && istype(assembly.loc, /mob/living)) // Now check if someone's holding us.
 			O.data = WEAKREF(assembly.loc)
@@ -513,12 +513,12 @@
 /obj/item/integrated_circuit/input/advanced_locator
 	complexity = 6
 	name = "advanced locator"
-	desc = "This is needed for certain devices that demand a reference for a target to act upon. This type locates something \
+	desc = "This is needed for certain devices that demand a reference for a target to act upon.  This type locates something \
 	that is standing in given radius of up to 8 meters"
-	extended_desc = "The first pin requires a ref to a kind of object that you want the locator to acquire. This means that it will \
-	give refs to nearby objects that are similar to given sample. If this pin is a string, the locator will search for\
-	 item by matching desired text in name + description. If more than one valid object is found nearby, it will choose one of them at \
-	random. The second pin is a radius."
+	extended_desc = "The first pin requires a ref to a kind of object that you want the locator to acquire.  This means that it will \
+	give refs to nearby objects that are similar to given sample.  If this pin is a string, the locator will search for\
+	 item by matching desired text in name + description.  If more than one valid object is found nearby, it will choose one of them at \
+	random.  The second pin is a radius."
 	inputs = list("desired type" = IC_PINTYPE_ANY, "radius" = IC_PINTYPE_NUMBER)
 	outputs = list("located ref" = IC_PINTYPE_REF)
 	activators = list("locate" = IC_PINTYPE_PULSE_IN,"found" = IC_PINTYPE_PULSE_OUT,"not found" = IC_PINTYPE_PULSE_OUT)
@@ -566,10 +566,10 @@
 /obj/item/integrated_circuit/input/advanced_locator_list
 	complexity = 6
 	name = "list advanced locator"
-	desc = "This is needed for certain devices that demand list of names for a target to act upon. This type locates something \
-	that is standing in given radius of up to 8 meters. Output is non-associative. Input will only consider keys if associative."
-	extended_desc = "The first pin requires a list of the kinds of objects that you want the locator to acquire. It will locate nearby objects by name and description, \
-	and will then provide a list of all found objects which are similar. \
+	desc = "This is needed for certain devices that demand list of names for a target to act upon.  This type locates something \
+	that is standing in given radius of up to 8 meters.  Output is non-associative.  Input will only consider keys if associative."
+	extended_desc = "The first pin requires a list of the kinds of objects that you want the locator to acquire.  It will locate nearby objects by name and description, \
+	and will then provide a list of all found objects which are similar.  \
 	The second pin is a radius."
 	inputs = list("desired type ref" = IC_PINTYPE_LIST, "radius" = IC_PINTYPE_NUMBER)
 	outputs = list("located ref" = IC_PINTYPE_LIST)
@@ -805,7 +805,7 @@
 /obj/item/integrated_circuit/input/microphone
 	name = "microphone"
 	desc = "Useful for spying on people, or for voice-activated machines."
-	extended_desc = "This will automatically translate most languages it hears to Galactic Common. \
+	extended_desc = "This will automatically translate most languages it hears to Galactic Common.  \
 	The first activation pin is always pulsed when the circuit hears someone talk, while the second one \
 	is only triggered if it hears someone speaking a language other than Galactic Common."
 	icon_state = "recorder"
@@ -922,7 +922,7 @@
 
 /obj/item/integrated_circuit/input/sensor
 	name = "sensor"
-	desc = "Scans and obtains a reference for any objects or persons near you. All you need to do is shove the machine in their face."
+	desc = "Scans and obtains a reference for any objects or persons near you.  All you need to do is shove the machine in their face."
 	extended_desc = "If the 'ignore storage' pin is set to true, the sensor will disregard scanning various storage containers such as backpacks."
 	icon_state = "recorder"
 	complexity = 12
@@ -949,7 +949,7 @@
 
 /obj/item/integrated_circuit/input/sensor/ranged
 	name = "ranged sensor"
-	desc = "Scans and obtains a reference for any objects or persons in range. All you need to do is point the machine towards the target."
+	desc = "Scans and obtains a reference for any objects or persons in range.  All you need to do is point the machine towards the target."
 	extended_desc = "If the 'ignore storage' pin is set to true, the sensor will disregard scanning various storage containers such as backpacks."
 	icon_state = "recorder"
 	complexity = 36
@@ -983,8 +983,8 @@
 /obj/item/integrated_circuit/input/obj_scanner
 	name = "scanner"
 	desc = "Scans and obtains a reference for any objects you use on the assembly."
-	extended_desc = "If the 'put down' pin is set to true, the assembly will take the scanned object from your hands to its location. \
-	Useful for interaction with the grabber. The scanner only works using the help intent."
+	extended_desc = "If the 'put down' pin is set to true, the assembly will take the scanned object from your hands to its location.  \
+	Useful for interaction with the grabber.  The scanner only works using the help intent."
 	icon_state = "recorder"
 	can_be_asked_input = 1
 	complexity = 4
@@ -1097,9 +1097,9 @@
 /*
 /obj/item/integrated_circuit/input/ouija
 	name = "superstring resonator"
-	desc = "A highly dubious piece of hardware. It may do nothing or it may ruin your day."
-	extended_desc = "This chip contains an esoteric mix of sensors with spurious claims. Proponents claim it facilitates communication \
-	with beings from other dimensions. A larger majority believe it to be a sophisticated hacking device. The designers simply state\
+	desc = "A highly dubious piece of hardware.  It may do nothing or it may ruin your day."
+	extended_desc = "This chip contains an esoteric mix of sensors with spurious claims.  Proponents claim it facilitates communication \
+	with beings from other dimensions.  A larger majority believe it to be a sophisticated hacking device.  The designers simply state\
 	that \"more testing is required\"."
 	w_class = ITEMSIZE_TINY
 	complexity = 4
@@ -1173,8 +1173,8 @@
 */
 /obj/item/integrated_circuit/input/storage_examiner
 	name = "storage examiner circuit"
-	desc = "This circuit lets you scan a storage's content. (backpacks, toolboxes etc.)"
-	extended_desc = "The items are put out as reference, which makes it possible to interact with them. Additionally also gives the amount of items."
+	desc = "This circuit lets you scan a storage's content.  (backpacks, toolboxes etc.)"
+	extended_desc = "The items are put out as reference, which makes it possible to interact with them.  Additionally also gives the amount of items."
 	icon_state = "grabber"
 	can_be_asked_input = 1
 	complexity = 6
@@ -1212,7 +1212,7 @@
 /obj/item/integrated_circuit/mining/ore_analyzer
 	name = "ore analyzer"
 	desc = "Analyzes a rock for its ore type."
-	extended_desc = "Takes a reference for an object and checks if it is a rock first. If that is the case, it outputs the mineral \
+	extended_desc = "Takes a reference for an object and checks if it is a rock first.  If that is the case, it outputs the mineral \
 	inside the rock."
 	category_text = "Input"
 	ext_cooldown = 1

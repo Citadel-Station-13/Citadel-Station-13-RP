@@ -9,9 +9,9 @@
 /obj/item/integrated_circuit/time/delay
 	name = "delay circuit"
 	desc = "This sends a pulse signal out after a delay defined in tenths of a second, critical for ensuring proper \
-	control flow in a complex machine. This circuit's delay can be customized, between 1/10th of a second to one hour. \
+	control flow in a complex machine.  This circuit's delay can be customized, between 1/10th of a second to one hour.  \
 	The delay is updated upon receiving a pulse."
-	extended_desc = "The delay is defined in tenths of a second. For instance, 4 will be a delay of 0.4 seconds, or 15 for 1.5 seconds."
+	extended_desc = "The delay is defined in tenths of a second.  For instance, 4 will be a delay of 0.4 seconds, or 15 for 1.5 seconds."
 	icon_state = "delay"
 	inputs = list("delay time" = IC_PINTYPE_NUMBER)
 	activators = list("incoming"= IC_PINTYPE_PULSE_IN,"outgoing" = IC_PINTYPE_PULSE_OUT)
@@ -30,9 +30,9 @@
 /obj/item/integrated_circuit/time/ticker
 	name = "ticker circuit"
 	desc = "This circuit sends an automatic pulse every given interval, defined in tenths of a second."
-	extended_desc ="This circuit sends an automatic pulse every given interval, defined in tenths of a second. \
+	extended_desc ="This circuit sends an automatic pulse every given interval, defined in tenths of a second.  \
 	For example, setting the time pin to 4 will send a pulse every 0.4 seconds, or 15 for every 1.5 seconds.<br>\
-	The power consumption will scale based on how fast this ticks. Also, note that most components have a short \
+	The power consumption will scale based on how fast this ticks.  Also, note that most components have a short \
 	internal cooldown when activated."
 	icon_state = "tick-f"
 	complexity = 4
@@ -72,7 +72,7 @@
 
 /obj/item/integrated_circuit/time/clock
 	name = "integrated clock"
-	desc = "Tells you what the time is, in Nanotrasen Common Time. It has a toggle \
+	desc = "Tells you what the time is, in Nanotrasen Common Time.  It has a toggle \
 	for calculating time relative to the start of your shift"
 	icon_state = "clock"
 	inputs = list("shift toggle" = IC_PINTYPE_BOOLEAN)

@@ -1,4 +1,4 @@
-// These pins can only contain integer numbers between 0 and IC_MAX_LIST_LENGTH. Null is allowed.
+// These pins can only contain integer numbers between 0 and IC_MAX_LIST_LENGTH.  Null is allowed.
 /datum/integrated_io/index
 	name = "index pin"
 	data = 1

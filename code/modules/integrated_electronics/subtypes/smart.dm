@@ -4,7 +4,7 @@
 /obj/item/integrated_circuit/smart/basic_pathfinder
 	name = "basic pathfinder"
 	desc = "This complex circuit is able to determine what direction a given target is."
-	extended_desc = "This circuit uses a miniturized integrated camera to determine where the target is. If the machine \
+	extended_desc = "This circuit uses a miniturized integrated camera to determine where the target is.  If the machine \
 	cannot see the target, it will not be able to calculate the correct direction."
 	icon_state = "numberpad"
 	complexity = 5
@@ -40,8 +40,8 @@
 /obj/item/integrated_circuit/smart/coord_basic_pathfinder
 	name = "coordinate pathfinder"
 	desc = "This complex circuit is able to determine what direction a given target is."
-	extended_desc = "This circuit uses absolute coordinates to determine where the target is. If the machine \
-	cannot see the target, it will not be able to calculate the correct direction. \
+	extended_desc = "This circuit uses absolute coordinates to determine where the target is.  If the machine \
+	cannot see the target, it will not be able to calculate the correct direction.  \
 	This circuit will only work while inside an assembly."
 	icon_state = "numberpad"
 	complexity = 5
@@ -76,8 +76,8 @@
 /obj/item/integrated_circuit/smart/advanced_pathfinder
 	name = "advanced pathfinder"
 	desc = "This circuit uses a complex processor for long-range pathfinding."
-	extended_desc = "This circuit uses absolute coordinates to find its target. A path will be generated to the target, taking obstacles into account, \
-	and pathing around any instances of said input. The passkey provided from a card reader is used to calculate a valid path through airlocks."
+	extended_desc = "This circuit uses absolute coordinates to find its target.  A path will be generated to the target, taking obstacles into account, \
+	and pathing around any instances of said input.  The passkey provided from a card reader is used to calculate a valid path through airlocks."
 	icon_state = "numberpad"
 	complexity = 40
 	cooldown_per_use = 50

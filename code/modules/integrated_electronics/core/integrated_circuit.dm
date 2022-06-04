@@ -56,7 +56,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	to_chat(user, any_examine(user))
 	ui_interact(user)
 
-// This should be used when someone is examining from an 'outside' perspective, e.g. reading a screen or LED.
+// This should be used when someone is examining from an 'outside' perspective, e.g.  reading a screen or LED.
 /obj/item/integrated_circuit/proc/external_examine(mob/user)
 	return any_examine(user)
 
@@ -367,7 +367,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 		return ..()	// If not, the component is acting on its own.
 
 
-// Checks if the target object is reachable. Useful for various manipulators and manipulator-like objects.
+// Checks if the target object is reachable.  Useful for various manipulators and manipulator-like objects.
 /obj/item/integrated_circuit/proc/check_target(atom/target, exclude_contents = FALSE, exclude_components = FALSE, exclude_self = FALSE, exclude_outside = FALSE)
 	if(!target)
 		return FALSE

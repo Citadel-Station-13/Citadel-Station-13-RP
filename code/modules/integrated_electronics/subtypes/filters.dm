@@ -74,7 +74,7 @@
 
 /obj/item/integrated_circuit/filter/ref/custom
 	name = "custom filter"
-	desc = "Allows custom filtering. It will match type against a stored reference."
+	desc = "Allows custom filtering.  It will match type against a stored reference."
 	icon_state = "filter_custom"
 	inputs = list( "input" = IC_PINTYPE_REF, "expected type" = IC_PINTYPE_REF )
 
@@ -101,7 +101,7 @@
 
 /obj/item/integrated_circuit/filter/string
 	name = "string filter"
-	desc = "Allows string filtering. It will match a string against a stored string."
+	desc = "Allows string filtering.  It will match a string against a stored string."
 	extended_desc = "Matches incoming data against its filtering parameters and occasionally produces both false positives and negatives."
 	icon_state = "filter_string"
 	complexity = 2

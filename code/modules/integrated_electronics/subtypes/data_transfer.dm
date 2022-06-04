@@ -4,8 +4,8 @@
 
 /obj/item/integrated_circuit/transfer/multiplexer
 	name = "two multiplexer"
-	desc = "This is what those in the business tend to refer to as a 'mux' or data selector. It moves data from one of the selected inputs to the output."
-	extended_desc = "The first input pin is used to select which of the other input pins which has its data moved to the output. \
+	desc = "This is what those in the business tend to refer to as a 'mux' or data selector.  It moves data from one of the selected inputs to the output."
+	extended_desc = "The first input pin is used to select which of the other input pins which has its data moved to the output.  \
 	If the input selection is outside the valid range then no output is given."
 	complexity = 2
 	icon_state = "mux2"
@@ -52,8 +52,8 @@
 
 /obj/item/integrated_circuit/transfer/demultiplexer
 	name = "two demultiplexer"
-	desc = "This is what those in the business tend to refer to as a 'demux'. It moves data from the input to one of the selected outputs."
-	extended_desc = "The first input pin is used to select which of the output pins is given the data from the second input pin. \
+	desc = "This is what those in the business tend to refer to as a 'demux'.  It moves data from the input to one of the selected outputs."
+	extended_desc = "The first input pin is used to select which of the output pins is given the data from the second input pin.  \
 	If the output selection is outside the valid range then no output is given."
 	complexity = 2
 	icon_state = "dmux2"
@@ -102,7 +102,7 @@
 /obj/item/integrated_circuit/transfer/pulsedemultiplexer
 	name = "two pulse demultiplexer"
 	desc = "Selector switch to choose the pin to be activated by number."
-	extended_desc = "The first input pin is used to select which of the pulse out pins will be activated after activation of the circuit. \
+	extended_desc = "The first input pin is used to select which of the pulse out pins will be activated after activation of the circuit.  \
 	If the output selection is outside the valid range then no output is given."
 	complexity = 2
 	icon_state = "dmux2"
@@ -196,7 +196,7 @@
 
 /obj/item/integrated_circuit/transfer/wire_node
 	name = "wire node"
-	desc = "Just a wire node to make wiring easier. Transfers the pulse from in to out."
+	desc = "Just a wire node to make wiring easier.  Transfers the pulse from in to out."
 	icon_state = "wire_node"
 	activators = list("pulse in" = IC_PINTYPE_PULSE_IN, "pulse out" = IC_PINTYPE_PULSE_OUT)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH

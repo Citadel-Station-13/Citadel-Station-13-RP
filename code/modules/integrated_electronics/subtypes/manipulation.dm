@@ -7,7 +7,7 @@
 	icon_state = "locomotion"
 	extended_desc = "The circuit accepts a 'dir' number as a direction to move towards.<br>\
 	Pulsing the 'step towards dir' activator pin will cause the machine to move one step in that direction, assuming it is not \
-	being held, or anchored in some way. It should be noted that the ability to move is dependant on the type of assembly that this circuit inhabits; only drone assemblies can move."
+	being held, or anchored in some way.  It should be noted that the ability to move is dependant on the type of assembly that this circuit inhabits; only drone assemblies can move."
 	w_class = ITEMSIZE_NORMAL
 	complexity = 10
 	cooldown_per_use = 1
@@ -130,8 +130,8 @@
 	name = "plant manipulation module"
 	desc = "Used to uproot weeds and harvest/plant trays."
 	icon_state = "plant_m"
-	extended_desc = "The circuit accepts a reference to a hydroponic tray or an item on an adjacent tile. \
-	Mode input (0-harvest, 1-uproot weeds, 2-uproot plant, 3-plant seed) determines action. \
+	extended_desc = "The circuit accepts a reference to a hydroponic tray or an item on an adjacent tile.  \
+	Mode input (0-harvest, 1-uproot weeds, 2-uproot plant, 3-plant seed) determines action.  \
 	Harvesting outputs a list of the harvested plants."
 	w_class = WEIGHT_CLASS_TINY
 	complexity = 10
@@ -152,7 +152,7 @@
 			push_data()
 			activate_pin(2)
 			return
-	/*	TBI May be pointless. Testing needed on vines.
+	/*	TBI May be pointless.  Testing needed on vines.
 		if(istype(OM,/obj/structure/spacevine) && check_target(OM) && get_pin_data(IC_INPUT, 2) == 2)
 			qdel(OM)
 			push_data()
@@ -229,9 +229,9 @@
 */
 /obj/item/integrated_circuit/manipulation/grabber
 	name = "grabber"
-	desc = "A circuit with its own inventory for items. Used to grab and store things."
+	desc = "A circuit with its own inventory for items.  Used to grab and store things."
 	icon_state = "grabber"
-	extended_desc = "This circuit accepts a reference to an object to be grabbed, and can store up to 10 objects. Modes: 1 to grab, 0 to eject the first object, -1 to eject all objects, and -2 to eject the target. If you throw something from a grabber's inventory with a thrower, the grabber will update its outputs accordingly."
+	extended_desc = "This circuit accepts a reference to an object to be grabbed, and can store up to 10 objects.  Modes: 1 to grab, 0 to eject the first object, -1 to eject all objects, and -2 to eject the target.  If you throw something from a grabber's inventory with a thrower, the grabber will update its outputs accordingly."
 	w_class = WEIGHT_CLASS_SMALL
 	size = 3
 	cooldown_per_use = 5
@@ -304,7 +304,7 @@
 	name = "pulling claw"
 	desc = "Circuit which can pull things.."
 	icon_state = "pull_claw"
-	extended_desc = "This circuit accepts a reference to a thing to be pulled. Modes: 0 for release. 1 for pull."
+	extended_desc = "This circuit accepts a reference to a thing to be pulled.  Modes: 0 for release.  1 for pull."
 	w_class = WEIGHT_CLASS_SMALL
 	size = 3
 	cooldown_per_use = 5
@@ -360,9 +360,9 @@
 /obj/item/integrated_circuit/manipulation/thrower
 	name = "thrower"
 	desc = "A compact launcher to throw things from inside or nearby tiles at a low enough velocity not to harm someone."
-	extended_desc = "The first and second inputs need to be numbers which correspond to the coordinates to throw objects at relative to the machine itself. \
-	The 'fire' activator will cause the mechanism to attempt to throw objects at the coordinates, if possible. Note that the \
-	projectile needs to be inside the machine, or on an adjacent tile, and must be medium sized or smaller. The assembly \
+	extended_desc = "The first and second inputs need to be numbers which correspond to the coordinates to throw objects at relative to the machine itself.  \
+	The 'fire' activator will cause the mechanism to attempt to throw objects at the coordinates, if possible.  Note that the \
+	projectile needs to be inside the machine, or on an adjacent tile, and must be medium sized or smaller.  The assembly \
 	must also be a gun if you wish to throw something while the assembly is in hand."
 	complexity = 25
 	w_class = WEIGHT_CLASS_SMALL
@@ -457,11 +457,11 @@
 /obj/item/integrated_circuit/manipulation/matman
 	name = "material manager"
 	desc = "This circuit is designed for automatic storage and distribution of materials."
-	extended_desc = "The first input takes a ref of a machine with a material container. \
-					Second input is used for inserting material stacks into the internal material storage. \
-					Inputs 3-13 are used to transfer materials between target machine and circuit storage. \
-					Positive values will take that number of materials from another machine. \
-					Negative values will fill another machine from internal storage. Outputs show current stored amounts of mats."
+	extended_desc = "The first input takes a ref of a machine with a material container.  \
+					Second input is used for inserting material stacks into the internal material storage.  \
+					Inputs 3-13 are used to transfer materials between target machine and circuit storage.  \
+					Positive values will take that number of materials from another machine.  \
+					Negative values will fill another machine from internal storage.  Outputs show current stored amounts of mats."
 	icon_state = "grabber"
 	complexity = 16
 	inputs = list(
@@ -596,7 +596,7 @@
 	name = "inserter"
 	desc = "A nimble circuit that puts stuff inside a storage like a backpack and can take it out aswell."
 	icon_state = "grabber"
-	extended_desc = "This circuit accepts a reference to an object to be inserted or extracted depending on mode. If a storage is given for extraction, the extracted item will be put in the new storage. Modes: 1 insert, 0 to extract."
+	extended_desc = "This circuit accepts a reference to an object to be inserted or extracted depending on mode.  If a storage is given for extraction, the extracted item will be put in the new storage.  Modes: 1 insert, 0 to extract."
 	w_class = WEIGHT_CLASS_SMALL
 	size = 3
 	cooldown_per_use = 5
@@ -645,7 +645,7 @@
 /obj/item/integrated_circuit/mining/mining_drill
 	name = "mining drill"
 	desc = "A mining drill that can drill through rocks."
-	extended_desc = "A mining drill to strike the earth. It takes some time to get the job done and \
+	extended_desc = "A mining drill to strike the earth.  It takes some time to get the job done and \
 	must remain stationary until complete."
 	category_text = "Manipulation"
 	ext_cooldown = 1
@@ -735,12 +735,12 @@
 
 
 
-// Renamer circuit. Renames the assembly it is in. Useful in cooperation with telecomms-based circuits.
+// Renamer circuit.  Renames the assembly it is in.  Useful in cooperation with telecomms-based circuits.
 /obj/item/integrated_circuit/manipulation/renamer
 	name = "renamer"
-	desc = "A small circuit that renames the assembly it is in. Useful paired with speech-based circuits."
+	desc = "A small circuit that renames the assembly it is in.  Useful paired with speech-based circuits."
 	icon_state = "internalbm"
-	extended_desc = "This circuit accepts a string as input, and can be pulsed to rewrite the current assembly's name with said string. On success, it pulses the default pulse-out wire."
+	extended_desc = "This circuit accepts a string as input, and can be pulsed to rewrite the current assembly's name with said string.  On success, it pulses the default pulse-out wire."
 	inputs = list("name" = IC_PINTYPE_STRING)
 	outputs = list("current name" = IC_PINTYPE_STRING)
 	activators = list("rename" = IC_PINTYPE_PULSE_IN,"get name" = IC_PINTYPE_PULSE_IN,"pulse out" = IC_PINTYPE_PULSE_OUT)
@@ -927,8 +927,8 @@
 /obj/item/integrated_circuit/manipulation/grenade
 	name = "grenade primer"
 	desc = "This circuit comes with the ability to attach most types of grenades at prime them at will."
-	extended_desc = "Time between priming and detonation is limited to between 1 to 12 seconds but is optional. \
-					If unset, not a number, or a number less than 1 then the grenade's built-in timing will be used. \
+	extended_desc = "Time between priming and detonation is limited to between 1 to 12 seconds but is optional.  \
+					If unset, not a number, or a number less than 1 then the grenade's built-in timing will be used.  \
 					Beware: Once primed there is no aborting the process!"
 	icon_state = "grenade"
 	complexity = 30
@@ -985,7 +985,7 @@
 			attached_grenade.det_time = between(1, detonation_time.data, 12) SECONDS
 		attached_grenade.activate()
 		var/atom/holder = loc
-		log_and_message_admins("activated a grenade assembly. Last touches: Assembly: [holder.fingerprintslast] Circuit: [fingerprintslast] Grenade: [attached_grenade.fingerprintslast]")
+		log_and_message_admins("activated a grenade assembly.  Last touches: Assembly: [holder.fingerprintslast] Circuit: [fingerprintslast] Grenade: [attached_grenade.fingerprintslast]")
 
 // These procs do not relocate the grenade, that's the callers responsibility
 /obj/item/integrated_circuit/manipulation/grenade/proc/attach_grenade(var/obj/item/grenade/G)

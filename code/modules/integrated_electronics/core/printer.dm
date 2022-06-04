@@ -298,9 +298,9 @@
 					if(upgraded)
 						to_chat(usr, SPAN_NOTICE("It uses advanced component designs."))
 					else
-						to_chat(usr, SPAN_WARNING("It uses unknown component designs. Printer upgrade is required to proceed."))
+						to_chat(usr, SPAN_WARNING("It uses unknown component designs.  Printer upgrade is required to proceed."))
 				if(program["unsupported_circuit"])
-					to_chat(usr, SPAN_WARNING("This program uses components not supported by the specified assembly. Please change the assembly type in the save file to a supported one."))
+					to_chat(usr, SPAN_WARNING("This program uses components not supported by the specified assembly.  Please change the assembly type in the save file to a supported one."))
 				to_chat(usr, SPAN_NOTICE("Used space: [program["used_space"]]/[program["max_space"]]."))
 				to_chat(usr, SPAN_NOTICE("Complexity: [program["complexity"]]/[program["max_complexity"]]."))
 				to_chat(usr, SPAN_NOTICE("Metal cost: [program["metal_cost"]]."))
@@ -309,10 +309,10 @@
 			if(!program || cloning)
 				return
 			if(program["requires_upgrades"] && !upgraded && !debug)
-				to_chat(usr, SPAN_WARNING("This program uses unknown component designs. Printer upgrade is required to proceed."))
+				to_chat(usr, SPAN_WARNING("This program uses unknown component designs.  Printer upgrade is required to proceed."))
 				return
 			if(program["unsupported_circuit"] && !debug)
-				to_chat(usr, SPAN_WARNING("This program uses components not supported by the specified assembly. Please change the assembly type in the save file to a supported one."))
+				to_chat(usr, SPAN_WARNING("This program uses components not supported by the specified assembly.  Please change the assembly type in the save file to a supported one."))
 				return
 			else if(fast_clone)
 				if(debug || cur_metal < program["metal_cost"])
@@ -329,7 +329,7 @@
 				cloning_time = min(cloning_time, MAX_CIRCUIT_CLONE_TIME)
 				cloning = TRUE
 				cur_metal -= program["metal_cost"]
-				to_chat(usr, SPAN_NOTICE("You begin printing a custom assembly. This will take approximately [DisplayTimeText(cloning_time)]. You can still print \
+				to_chat(usr, SPAN_NOTICE("You begin printing a custom assembly.  This will take approximately [DisplayTimeText(cloning_time)].  You can still print \
 				off normal parts during this time."))
 				playsound(src, 'sound/items/poster_being_created.ogg', 50, TRUE)
 				addtimer(CALLBACK(src, .proc/print_program, usr), cloning_time)
@@ -338,7 +338,7 @@
 		if("cancel")
 			if(!cloning || !program)
 				return
-			to_chat(usr, SPAN_NOTICE("Cloning has been canceled. Metal cost has been refunded."))
+			to_chat(usr, SPAN_NOTICE("Cloning has been canceled.  Metal cost has been refunded."))
 			cloning = FALSE
 			cur_metal += program["metal_cost"]
 			check_max_metal(cur_metal)

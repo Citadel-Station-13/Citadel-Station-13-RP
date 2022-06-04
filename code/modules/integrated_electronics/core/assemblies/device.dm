@@ -1,6 +1,6 @@
 /obj/item/assembly/electronic_assembly
 	name = "electronic device"
-	desc = "It's a case for building electronics with. It can be attached to other small devices."
+	desc = "It's a case for building electronics with.  It can be attached to other small devices."
 	icon_state = "setup_device"
 	var/opened = 0
 

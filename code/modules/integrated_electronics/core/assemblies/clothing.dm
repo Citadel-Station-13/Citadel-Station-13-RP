@@ -1,6 +1,6 @@
 
-// The base subtype for assemblies that can be worn. Certain pieces will have more or less capabilities
-// E.g. Glasses have less room than something worn over the chest.
+// The base subtype for assemblies that can be worn.  Certain pieces will have more or less capabilities
+// E.g.  Glasses have less room than something worn over the chest.
 // Note that the electronic assembly is INSIDE the object that actually gets worn, in a similar way to implants.
 
 /obj/item/electronic_assembly/clothing
@@ -75,7 +75,7 @@
 	EA.clothing = src
 	EA.name = name
 
-	// Clothing assemblies can be triggered by clicking on the HUD. This allows that to occur.
+	// Clothing assemblies can be triggered by clicking on the HUD.  This allows that to occur.
 	action_circuit = new(src.EA)
 	EA.add_component(action_circuit)
 	var/obj/item/integrated_circuit/built_in/self_sensor/S = new(src.EA)
@@ -96,7 +96,7 @@
 // Jumpsuit.
 /obj/item/clothing/under/circuitry
 	name = "electronic jumpsuit"
-	desc = "It's a wearable case for electronics. This one is a black jumpsuit with wiring woven into the fabric."
+	desc = "It's a wearable case for electronics.  This one is a black jumpsuit with wiring woven into the fabric."
 	icon_state = "circuitry"
 	worn_state = "circuitry"
 
@@ -108,7 +108,7 @@
 // Gloves.
 /obj/item/clothing/gloves/circuitry
 	name = "electronic gloves"
-	desc = "A wearable case for electronics comprising a pair of black gloves, with wires woven through the fabric. A small \
+	desc = "A wearable case for electronics comprising a pair of black gloves, with wires woven through the fabric.  A small \
 	device with a screen is attached to the left glove."
 	icon_state = "circuitry"
 	item_state = "circuitry"
@@ -132,7 +132,7 @@
 // Glasses.
 /obj/item/clothing/glasses/circuitry
 	name = "electronic goggles"
-	desc = "A wearable case for electronics; a pair of goggles, with exposed wiring. Could this augment your vision?" // Sadly it won't, or at least not yet.
+	desc = "A wearable case for electronics; a pair of goggles, with exposed wiring.  Could this augment your vision?" // Sadly it won't, or at least not yet.
 	icon_state = "circuitry"
 	item_state = "night" // The on-mob sprite would be identical anyways.
 
@@ -177,7 +177,7 @@
 // Exo-slot
 /obj/item/clothing/suit/circuitry
 	name = "electronic chestpiece"
-	desc = "A wearable case for electronics that sits over the chest and back. The sheer bulk of it gives it an imposing presence."
+	desc = "A wearable case for electronics that sits over the chest and back.  The sheer bulk of it gives it an imposing presence."
 	icon_state = "circuitry"
 	item_state = "circuitry"
 

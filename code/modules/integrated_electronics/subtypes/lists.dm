@@ -105,7 +105,7 @@
 	name = "filter circuit"
 	desc = "This circuit will search through a list for anything matching the desired element(s) and outputs two lists: \
 	one containing only the matching elements, and one with the matching elements filtered out."
-	extended_desc = "Sample accepts lists. If no match is found, the original list is sent to output 1."
+	extended_desc = "Sample accepts lists.  If no match is found, the original list is sent to output 1."
 	inputs = list(
 		"input list" = IC_PINTYPE_LIST,
 		"sample" = IC_PINTYPE_ANY
