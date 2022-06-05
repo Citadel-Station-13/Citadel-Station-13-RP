@@ -7162,12 +7162,12 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "mV" = (
-/obj/structure/railing{
-	dir = 1
+/obj/structure/closet/secure_closet{
+	req_access = list(3);
+	name = "high security evidence locker"
 	},
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/plating,
-/area/maintenance/security/upper)
+/turf/simulated/floor/tiled/red,
+/area/security/evidence_storage)
 "mW" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -7573,27 +7573,12 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
 "nB" = (
-/obj/structure/table/steel,
-/obj/structure/noticeboard{
-	pixel_x = 32
-	},
-/obj/machinery/light/small{
-	dir = 4
-	},
-/obj/item/paper_bin{
-	pixel_y = 5
-	},
-/obj/item/storage/box/evidence{
-	pixel_x = 6
-	},
-/obj/item/hand_labeler,
-/obj/item/pen,
 /obj/structure/cable/green{
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/tiled/red,
+/turf/simulated/floor/tiled/dark,
 /area/security/evidence_storage)
 "nD" = (
 /obj/structure/table/steel,
@@ -8863,9 +8848,8 @@
 /turf/simulated/wall/r_wall,
 /area/rift/trade_shop/loading)
 "pN" = (
-/obj/structure/reagent_dispensers/fueltank,
-/turf/simulated/floor/plating,
-/area/maintenance/security/upper)
+/turf/simulated/wall/r_wall,
+/area/security/evidence_storage)
 "pO" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/book/manual/standard_operating_procedure,
@@ -9117,17 +9101,19 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "qs" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on,
-/turf/simulated/wall,
+/turf/simulated/floor/tiled/dark,
 /area/security/evidence_storage)
 "qt" = (
 /turf/simulated/wall,
 /area/rnd/research)
 "qu" = (
-/obj/effect/floor_decal/rust,
-/obj/structure/railing,
-/turf/simulated/floor/plating,
-/area/maintenance/security/upper)
+/obj/machinery/door/airlock/vault{
+	name = "High Security Evidence";
+	req_access = list(3);
+	req_one_access = list()
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/evidence_storage)
 "qv" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
@@ -10546,8 +10532,13 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/recovery_room)
 "tb" = (
+/obj/structure/railing{
+	dir = 1
+	},
 /obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/rust,
+/obj/structure/railing{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
 "tc" = (
@@ -13395,6 +13386,15 @@
 "yy" = (
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/showers)
+"yz" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing,
+/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/security/upper)
 "yA" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -17393,6 +17393,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
+"Fy" = (
+/obj/random/trash,
+/turf/simulated/floor/plating,
+/area/rift/surfacebase/outside/outside2)
 "Fz" = (
 /obj/structure/railing{
 	dir = 4
@@ -20659,10 +20663,21 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hor)
 "La" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/machinery/camera/network/security{
-	dir = 8
+/obj/structure/table/steel,
+/obj/structure/noticeboard{
+	pixel_x = 32
 	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/item/paper_bin{
+	pixel_y = 5
+	},
+/obj/item/storage/box/evidence{
+	pixel_x = 6
+	},
+/obj/item/hand_labeler,
+/obj/item/pen,
 /obj/machinery/alarm{
 	desc = null;
 	pixel_y = 24
@@ -24205,6 +24220,10 @@
 "Rz" = (
 /turf/simulated/wall,
 /area/medical/resleeving)
+"RA" = (
+/obj/structure/table/rack/shelf/steel,
+/turf/simulated/floor/tiled/red,
+/area/security/evidence_storage)
 "RB" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
@@ -25572,9 +25591,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "TY" = (
-/obj/random/trash,
-/turf/simulated/floor/plating,
-/area/maintenance/security/upper)
+/turf/simulated/floor/tiled/red,
+/area/security/evidence_storage)
 "Ua" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -50773,7 +50791,7 @@ KJ
 QI
 QI
 sq
-qs
+Zg
 zF
 wj
 PG
@@ -51161,11 +51179,11 @@ KF
 KF
 KG
 kA
+pN
+pN
+qu
 Zg
-Zg
-Zg
-Zg
-Fq
+pN
 Oe
 IX
 TK
@@ -51355,11 +51373,11 @@ KF
 KF
 Ej
 jt
-MY
-lV
-xx
-XX
-Fq
+pN
+mV
+qs
+mV
+pN
 Jp
 Tm
 KT
@@ -51549,11 +51567,11 @@ wK
 cO
 wC
 QP
-MY
-tR
+pN
+La
 TY
-PY
-Fq
+RA
+pN
 nj
 xh
 Qb
@@ -51743,11 +51761,11 @@ MY
 MY
 fD
 MY
-MY
-JZ
-Fe
-JZ
-Fq
+pN
+pN
+pN
+pN
+pN
 Fq
 Fq
 Fq
@@ -51938,10 +51956,10 @@ pf
 Dy
 jK
 pN
-qu
-Wc
-mV
-tb
+pN
+pN
+pN
+pN
 uH
 uH
 kT
@@ -52324,12 +52342,12 @@ uH
 uH
 uH
 uH
-uH
-uH
-uH
-uH
-kT
-uH
+qf
+qf
+yz
+Wc
+tb
+qf
 uH
 uH
 uH
@@ -52521,7 +52539,7 @@ JZ
 JZ
 JZ
 JZ
-JZ
+Fe
 JZ
 JZ
 JZ
@@ -52713,11 +52731,11 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
+JZ
+tR
+Fy
+PY
+JZ
 ac
 ac
 ac
@@ -52907,11 +52925,11 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
+JZ
+lV
+xx
+XX
+JZ
 ac
 ac
 ac
@@ -53101,11 +53119,11 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
+JZ
+JZ
+JZ
+JZ
+JZ
 ac
 ac
 ac
@@ -54472,8 +54490,8 @@ ac
 ac
 fr
 fr
-fr
-ac
+jc
+ns
 ac
 ac
 ac
@@ -54666,8 +54684,8 @@ ac
 ac
 ac
 fr
-jc
-ns
+ac
+ac
 ac
 ac
 ac
