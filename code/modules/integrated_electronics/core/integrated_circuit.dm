@@ -119,7 +119,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	set desc = "Rename your circuit, useful to stay organized."
 
 	var/mob/M = usr
-	var/input = sanitizeSafe(input(usr, "What do you want to name the circuit?", "Rename", src.name) as null|text, MAX_NAME_LEN)
+	var/input = tgui_input_text(usr, "What do you want to name this circuit?", "Rename", src.name, MAX_NAME_LEN)
 	if(src && input)
 		to_chat(M, SPAN_NOTICE("The circuit '[src.name]' is now labeled '[input]'."))
 		displayed_name = input

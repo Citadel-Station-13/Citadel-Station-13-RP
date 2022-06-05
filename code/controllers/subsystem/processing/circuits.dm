@@ -50,23 +50,26 @@ PROCESSING_SUBSYSTEM_DEF(circuit)
 
 
 	circuit_fabricator_recipe_list["Assemblies"] = list(
+		/obj/item/electronic_assembly/tiny/default,
+		/obj/item/electronic_assembly/tiny/cylinder,
+		/obj/item/electronic_assembly/tiny/scanner,
+		/obj/item/electronic_assembly/tiny/hook,
+		/obj/item/electronic_assembly/tiny/box,
+		/obj/item/electronic_assembly/tiny/dildo,
 		/obj/item/electronic_assembly/default,
 		/obj/item/electronic_assembly/calc,
 		/obj/item/electronic_assembly/clam,
 		/obj/item/electronic_assembly/simple,
 		/obj/item/electronic_assembly/hook,
 		/obj/item/electronic_assembly/pda,
-		/obj/item/electronic_assembly/tiny/default,
-		/obj/item/electronic_assembly/tiny/cylinder,
-		/obj/item/electronic_assembly/tiny/scanner,
-		/obj/item/electronic_assembly/tiny/hook,
-		/obj/item/electronic_assembly/tiny/box,
+		/obj/item/electronic_assembly/dildo,
 		/obj/item/electronic_assembly/medium/default,
 		/obj/item/electronic_assembly/medium/box,
 		/obj/item/electronic_assembly/medium/clam,
 		/obj/item/electronic_assembly/medium/medical,
 		/obj/item/electronic_assembly/medium/gun,
 		/obj/item/electronic_assembly/medium/radio,
+		/obj/item/electronic_assembly/medium/dildo,
 		/obj/item/electronic_assembly/large/default,
 		/obj/item/electronic_assembly/large/scope,
 		/obj/item/electronic_assembly/large/terminal,
@@ -99,5 +102,6 @@ PROCESSING_SUBSYSTEM_DEF(circuit)
 		/obj/item/integrated_electronics/wirer,
 		/obj/item/integrated_electronics/debugger,
 		/obj/item/integrated_electronics/analyzer,
-		/obj/item/integrated_electronics/detailer
+		/obj/item/integrated_electronics/detailer,
+		/obj/item/card/data
 		)

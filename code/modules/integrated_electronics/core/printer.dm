@@ -212,7 +212,7 @@
 			var/cost = 1
 			if(ispath(path, /obj/item/electronic_assembly))
 				var/obj/item/electronic_assembly/E = path
-				cost = initial(E.cost)
+				cost = round((initial(E.max_complexity) + initial(E.max_components)) / 4)
 			else if(ispath(path, /obj/item/integrated_circuit))
 			//	var/obj/item/integrated_circuit/I = path
 				cost = initial(IC.cost)
@@ -261,7 +261,7 @@
 
 	switch(action)
 		if("build")
-			var/cost = text2path(params["cost"])
+			var/cost = text2num(params["cost"])
 			var/build_type = text2path(params["build"])
 			if(!build_type || !ispath(build_type))
 				return TRUE

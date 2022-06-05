@@ -112,13 +112,9 @@
 		if(!assembly)
 			return
 		visible_message(SPAN_NOTICE("\The [assembly] whirrs.[assembly.panel_locked > 1 ? null : lock_enabled ? " The screws are now covered." : " The screws are now exposed!"]"))
-		visible_message(SPAN_NOTICE("[lock_enabled] [assembly.panel_locked]"))
 		lock_enabled *= -1
-		visible_message(SPAN_NOTICE("[lock_enabled] [assembly.panel_locked]"))
 		assembly.panel_locked += lock_enabled
-		visible_message(SPAN_NOTICE("[lock_enabled] [assembly.panel_locked]"))
 		set_pin_data(IC_OUTPUT, 1, lock_enabled)
-		visible_message(SPAN_NOTICE("[lock_enabled] [assembly.panel_locked]"))
 		push_data()
 		activate_pin(2)
 
@@ -752,7 +748,7 @@
 		return
 	switch(ord)
 		if(1)
-			var/new_name = get_pin_data(IC_INPUT, 1)
+			var/new_name = sanitizeSafe(get_pin_data(IC_INPUT, 1),MAX_NAME_LEN)
 			if(new_name)
 				assembly.name = new_name
 
