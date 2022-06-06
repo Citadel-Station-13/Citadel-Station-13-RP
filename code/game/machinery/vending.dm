@@ -2484,7 +2484,9 @@
 					/obj/item/clothing/under/bsing = 1,
 					/obj/item/clothing/shoes/boots/bsing = 1,
 					/obj/item/clothing/under/ysing = 1,
-					/obj/item/clothing/shoes/boots/ysing = 1)
+					/obj/item/clothing/shoes/boots/ysing = 1,
+					/obj/item/clothing/suit/hevsuit = 3,
+					/obj/item/clothing/head/hevhelm = 3)
 	prices = list(/obj/item/clothing/suit/storage/hooded/carp_costume = 75,
 					/obj/item/clothing/suit/storage/hooded/carp_costume = 75,
 					/obj/item/clothing/suit/chickensuit = 75,
@@ -2617,7 +2619,9 @@
 					/obj/item/clothing/under/bsing = 500,
 					/obj/item/clothing/shoes/boots/bsing = 500,
 					/obj/item/clothing/under/ysing = 500,
-					/obj/item/clothing/shoes/boots/ysing = 500)
+					/obj/item/clothing/shoes/boots/ysing = 500,
+					/obj/item/clothing/suit/hevsuit = 250,
+					/obj/item/clothing/head/hevhelm = 150)
 	premium = list(/obj/item/clothing/suit/imperium_monk = 3)
 	contraband = list(/obj/item/clothing/head/syndicatefake = 1,
 					/obj/item/clothing/suit/syndicatefake = 1)
