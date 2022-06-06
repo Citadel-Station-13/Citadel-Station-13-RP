@@ -256,7 +256,7 @@
 				return
 			// Puts it at the bottom of our contents
 			// Note, this intentionally does *not* use forceMove, because forceMove will stop if it detects the same loc
-			ui_circuit_props.Cut(params["index"],params[++"index"])
+			ui_circuit_props.Cut(params["index"],++params["index"])
 			ui_circuit_props.Add(list(list("name" = C.displayed_name,"ref" = REF(C),"removable" = C.removable,"input" = C.can_be_asked_input)))
 			C.loc = null
 			C.loc = src
