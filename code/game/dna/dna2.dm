@@ -201,23 +201,9 @@ var/global/list/datum/gene/dna_genes[0]
 
 	// Technically custom_species is not part of the UI, but this place avoids merge problems.
 	src.custom_species = character.custom_species
-	if(istype(character.species,/datum/species/custom))
-		var/datum/species/custom/CS = character.species
-		src.species_traits = CS.traits.Copy()
-		src.base_species = CS.base_species
-		src.blood_color = CS.blood_color
-
-	if(istype(character.species,/datum/species/shapeshifter/xenochimera))
-		var/datum/species/shapeshifter/xenochimera/CS = character.species
-		//src.species_traits = CS.traits.Copy() //No traits
-		src.base_species = CS.base_species
-		src.blood_color = CS.blood_color
-
-	if(istype(character.species,/datum/species/alraune))
-		var/datum/species/alraune/CS = character.species
-		//src.species_traits = CS.traits.Copy() //No traits
-		src.base_species = CS.base_species
-		src.blood_color = CS.blood_color
+	src.base_species = character.species.base_species
+	src.blood_color = character.species.blood_color
+	src.species_traits = character.species.traits.Copy()
 
 	src.custom_say = character.custom_say
 	src.custom_ask = character.custom_ask
@@ -225,10 +211,10 @@ var/global/list/datum/gene/dna_genes[0]
 	src.custom_exclaim = character.custom_exclaim
 
 	// +1 to account for the none-of-the-above possibility
-	SetUIValueRange(DNA_UI_EAR_STYLE,	ear_style + 1,     ear_styles_list.len  + 1,  1)
-	SetUIValueRange(DNA_UI_TAIL_STYLE,	tail_style + 1,    tail_styles_list.len + 1,  1)
-	SetUIValueRange(DNA_UI_PLAYERSCALE,	size_multiplier,   player_sizes_list.len,     1)
-	SetUIValueRange(DNA_UI_WING_STYLE,	wing_style + 1,    wing_styles_list.len + 1,  1)
+	SetUIValueRange(DNA_UI_EAR_STYLE,   ear_style + 1,     ear_styles_list.len  + 1,  1)
+	SetUIValueRange(DNA_UI_TAIL_STYLE,  tail_style + 1,    tail_styles_list.len + 1,  1)
+	SetUIValueRange(DNA_UI_PLAYERSCALE, size_multiplier,   player_sizes_list.len,     1)
+	SetUIValueRange(DNA_UI_WING_STYLE,  wing_style + 1,    wing_styles_list.len + 1,  1)
 
 	SetUIValueRange(DNA_UI_TAIL_R,    character.r_tail,    255,    1)
 	SetUIValueRange(DNA_UI_TAIL_G,    character.g_tail,    255,    1)

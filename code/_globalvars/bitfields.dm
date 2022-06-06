@@ -76,7 +76,7 @@ GLOBAL_LIST_INIT(bitfields, generate_bitfields())
 		"AMOUNT_VISIBLE" = AMOUNT_VISIBLE,
 		"NO_REACT" = NO_REACT,
 		),
-/*
+
 	"sight" = list(
 		"SEE_INFRA" = SEE_INFRA,
 		"SEE_SELF" = SEE_SELF,
@@ -88,7 +88,7 @@ GLOBAL_LIST_INIT(bitfields, generate_bitfields())
 		"SEE_BLACKNESS" = SEE_BLACKNESS,
 		"BLIND" = BLIND
 		),
-*/
+
 	"obj_flags" = list(
 		"EMAGGED" = EMAGGED,
 		"CAN_BE_HIT" = CAN_BE_HIT
