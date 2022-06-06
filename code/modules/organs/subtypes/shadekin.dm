@@ -5,6 +5,9 @@
 	var/max_dark_energy = 100
 	var/dark_energy_infinite = FALSE
 
+
+//! Blackeyed limbs.
+
 /obj/item/organ/external/chest/crewkin
 	min_broken_damage = 20
 

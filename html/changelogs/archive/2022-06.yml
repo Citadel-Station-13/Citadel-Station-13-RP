@@ -14,3 +14,9 @@
   - bugfix: Fixes Biogenerator TGUI
   - bugfix: Fixes Remote Air Alarm Controller TGUI
   - bugfix: Fixes Power Monitor TGUI
+2022-06-04:
+  Zandario:
+  - bugfix: 32px Emojis work again.
+  - imageadd: More emojis
+  - config: Admin OOC Color & Emojis are now in the new config.
+  - refactor: Actual different mechanical differences for Shadekin eye-colors.
