@@ -16,17 +16,13 @@ export const ICAssembly = (props, context) => {
     battery_charge,
     battery_max,
     net_power,
-    unremovable_circuits,
-    removable_circuits,
-    available_inputs,
+    circuit_props,
   } = data;
 
   return (
     <Window width={600} height={380} resizable>
       <Window.Content scrollable>
-        {available_inputs.length && (
-          <ICTerminal circuits={available_inputs} />
-        ) || null}
+        <ICTerminal circuits={circuit_props} />
         {opened ? (
           <Section title="Status">
             <LabeledList>
@@ -86,13 +82,9 @@ export const ICAssembly = (props, context) => {
           </Section>
         )
           : <Box>The assembly is closed.</Box>}
-        {opened && unremovable_circuits.length && (
-          <ICAssemblyCircuits title="Built-in Components" circuits={unremovable_circuits} />
+        {opened && (
+          <ICAssemblyCircuits title="Components" circuits={circuit_props} />
         ) || null}
-        {opened && removable_circuits.length && (
-          <ICAssemblyCircuits title="Removable Components" circuits={removable_circuits} />
-        ) || null}
-
       </Window.Content>
     </Window>
   );
@@ -109,15 +101,15 @@ const ICAssemblyCircuits = (props, context) => {
   return (
     <Section title={title}>
       <LabeledList>
-        {circuits.map(circuit => (
+        {circuits.map((circuit, i) => (
           <LabeledList.Item key={circuit.ref} label={circuit.name} >
             <Button icon="eye" onClick={() => act("open_circuit", { ref: circuit.ref })}>View</Button>
             <Button icon="eye" onClick={() => act("rename_circuit", { ref: circuit.ref })}>Rename</Button>
             <Button icon="eye" onClick={() => act("scan_circuit", { ref: circuit.ref })}>Debugger Scan</Button>
-            <Button icon="eye" onClick={() => act("remove_circuit", { ref: circuit.ref })}>Remove</Button>
-            <Button icon="eye" onClick={() => act("bottom_circuit", { ref: circuit.ref })}>Move to Bottom</Button>
-          </LabeledList.Item>
-        ))}
+            <Button icon="eye" disabled={!circuit.removable} onClick={() => act("remove_circuit", { ref: circuit.ref, index: ++i })}>Remove</Button>
+            <Button icon="eye" onClick={() => act("bottom_circuit", { ref: circuit.ref, index: ++i })}>Move to Bottom</Button>
+          </LabeledList.Item>)
+        )}
       </LabeledList>
     </Section>
   );
@@ -134,11 +126,13 @@ export const ICTerminal = (props, context) => {
   return (
     <Section title="Terminal">
       <Flex direction="row" wrap="wrap" justify="space-evenly" align="baseline">
-        {circuits.map(circuit => (
-          <Flex.Item key={circuit.ref} grow={1} wrap="wrap" maxwidth="33%" inline={1} color="label" verticalAlignContent={1} basis="30%" m={0.5} p={0.5} >
-            <Button icon="eye" content={circuit.name} width="95%" align="center" verticalAlignContent="center" height={2.5} compact={0} fluid={1} wrap="wrap" ellipsis={1} onClick={() => act("input_selection", { ref: circuit.ref })} />
-          </Flex.Item>
-        ))}
+        {circuits.map(circuit =>
+          (circuit.input && (
+            <Flex.Item key={circuit.ref} grow={1} wrap="wrap" maxwidth="33%" inline={1} color="label" verticalAlignContent={1} basis="30%" m={0.5} p={0.5} >
+              <Button icon="eye" content={circuit.name} width="95%" align="center" verticalAlignContent="center" height={2.5} compact={0} fluid={1} wrap="wrap" ellipsis={1} onClick={() => act("input_selection", { ref: circuit.ref })} />
+            </Flex.Item>
+          ) || null)
+        )}
       </Flex>
     </Section>
   );

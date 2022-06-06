@@ -136,7 +136,7 @@
 				if(IC.removable)	// If found, don't destroy the assembly later.
 					to_chat(user, SPAN_NOTICE("You begin recycling [EA]'s components..."))
 					playsound(src, 'sound/items/electronic_assembly_emptying.ogg', 50, TRUE)
-					if(!do_after(user, 30, target = src) || recycling) //short channel so you don't accidentally start emptying out a complex assembly
+					if(!do_after(user, 30, target = src) && !recycling) //short channel so you don't accidentally start emptying out a complex assembly
 						recycling = TRUE
 		if (inc == 1)
 			for(var/V in EA.assembly_components)
@@ -147,16 +147,16 @@
 						return
 					if(IC.removable)
 						playsound(src, 'sound/items/crowbar.ogg', 50, TRUE)
-						cur_metal += IC.cost
 						check_max_metal(IC.cost)
-						IC.remove(usr, TRUE)
+						cur_metal += IC.cost
+						IC.remove(usr, TRUE, V)
 						qdel(IC)
 			to_chat(user, SPAN_NOTICE("You recycle all the components[EA.assembly_components.len ? " you could " : " "]from [EA]!"))
 			playsound(src, 'sound/items/electronic_assembly_empty.ogg', 50, TRUE)
 			recycling = FALSE
 			return TRUE
 		if(inc == 0)
-			if(!do_after(user, 5, target = user))
+			if(!do_after(user, 10, target = user))
 				recycling = FALSE
 				return
 			to_chat(user, SPAN_NOTICE("You recycle the [EA]!"))

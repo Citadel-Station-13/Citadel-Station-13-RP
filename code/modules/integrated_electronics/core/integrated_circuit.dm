@@ -270,11 +270,11 @@ a creative player the means to solve many problems.  Circuits are held inside an
 					examined.ui_interact(usr)
 
 		if("remove")
-			remove(usr)
+			remove(usr, index = params["index"])
 			return
 	return FALSE
 
-/obj/item/integrated_circuit/proc/remove(mob/user, silent)
+/obj/item/integrated_circuit/proc/remove(mob/user, silent, index)
 	var/obj/item/electronic_assembly/A = assembly
 	if(!A && !silent)
 		to_chat(user, SPAN_WARNING("This circuit is not in an assembly!"))
@@ -287,10 +287,8 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	power_fail()
 	disconnect_all()
 	// Remove from helper and TGUI lists
-	A.assembly_components.Remove(src)
-	A.unremovable_circuits.Remove(src)
-	A.removable_circuits.Remove(src)
-	A.available_inputs.Remove(src)
+	A.ui_circuit_props.Cut(index,++index)
+
 	var/turf/T = get_turf(src)
 	forceMove(T)
 	assembly = null

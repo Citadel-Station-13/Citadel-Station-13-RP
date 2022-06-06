@@ -11,6 +11,7 @@
 	show_messages = TRUE
 	datum_flags = DF_USE_TAG
 	var/list/assembly_components = list()
+	var/list/ui_circuit_props = list()
 	/// Players who built the circuit can scan it as a ghost.
 	var/list/ckeys_allowed_to_scan = list()
 	var/max_components = IC_COMPONENTS_BASE
@@ -43,9 +44,6 @@
 	/// Circuit creator ckey if any
 	var/creator
 	var/static/next_assembly_id = 0
-	var/list/unremovable_circuits = list()
-	var/list/removable_circuits = list()
-	var/list/available_inputs = list()
 // TBI	var/hud_possible = list(DIAG_STAT_HUD, DIAG_BATT_HUD, DIAG_TRACK_HUD, DIAG_CIRCUIT_HUD) //diagnostic hud overlays
 	/// If true, wrenching it will anchor it.
 	var/can_anchor = TRUE
@@ -174,16 +172,16 @@
 	data["battery_charge"] = round(battery?.charge, 0.1)
 	data["battery_max"] = round(battery?.maxcharge, 0.1)
 	data["net_power"] = DYNAMIC_CELL_UNITS_TO_W(net_power, 1)
-
+	data["circuit_props"] = ui_circuit_props
 	// This works because lists are always passed by reference in BYOND, so modifying unremovable_circuits
 	// after setting data["unremovable_circuits"] = unremovable_circuits also modifies data["unremovable_circuits"]
 	// Same for the removable one
 	//var/list/unremovable_circuits = list()
-	data["unremovable_circuits"] = unremovable_circuits
+	//data["unremovable_circuits"] = unremovable_circuits
 	//var/list/removable_circuits = list()
-	data["removable_circuits"] = removable_circuits
+	//data["removable_circuits"] = removable_circuits
 	//var/list/available_inputs = list()
-	data["available_inputs"] = available_inputs
+	//data["available_inputs"] = available_inputs
 	/*
 	for(var/obj/item/integrated_circuit/circuit in assembly_components)
 		var/list/target = circuit.removable ? removable_circuits : unremovable_circuits
@@ -249,7 +247,7 @@
 			var/obj/item/integrated_circuit/C = locate(params["ref"]) in assembly_components
 			if(!istype(C))
 				return
-			C.remove(usr)
+			C.remove(usr, TRUE, index = params["index"])
 			return TRUE
 
 		if("bottom_circuit")
@@ -258,6 +256,8 @@
 				return
 			// Puts it at the bottom of our contents
 			// Note, this intentionally does *not* use forceMove, because forceMove will stop if it detects the same loc
+			ui_circuit_props.Cut(params["index"],params[++"index"])
+			ui_circuit_props.Add(list(list("name" = C.displayed_name,"ref" = REF(C),"removable" = C.removable,"input" = C.can_be_asked_input)))
 			C.loc = null
 			C.loc = src
 
@@ -384,11 +384,8 @@
 /obj/item/electronic_assembly/proc/add_component(var/obj/item/integrated_circuit/IC)
 	IC.forceMove(get_object())
 	IC.assembly = src
-	var/list/IC_r = list()
 	// Build TGUI lists here for efficiency.  We don't need to do that every time the UI updates.
-	IC.removable ? (IC_r = removable_circuits) : (IC_r = unremovable_circuits)
-	IC_r.Add(list(list("name" = IC.displayed_name,"ref" = REF(IC))))
-	if (IC.can_be_asked_input) available_inputs.Add(list(list("name" = IC.displayed_name,"ref" = REF(IC))))
+	ui_circuit_props.Add(list(list("name" = IC.displayed_name,"ref" = REF(IC),"removable" = IC.removable,"input" = IC.can_be_asked_input)))
 	assembly_components |= IC
 
 	/* TBI	diag hud
