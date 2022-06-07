@@ -230,9 +230,9 @@
 /area/rift/facility/interior/medical)
 "qS" = (
 /obj/machinery/power/apc/alarms_hidden{
-	dir = 1;
+	cell_type = null;
 	chargelevel = 0;
-	cell_type = null
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/command)
@@ -343,9 +343,9 @@
 /area/rift/facility/interior/medical)
 "As" = (
 /obj/machinery/power/apc/alarms_hidden{
-	dir = 1;
+	cell_type = null;
 	chargelevel = 0;
-	cell_type = null
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/medical)
@@ -377,9 +377,9 @@
 /area/rift/facility/interior/undergound1)
 "Ds" = (
 /obj/machinery/power/apc/alarms_hidden{
-	dir = 1;
+	cell_type = null;
 	chargelevel = 0;
-	cell_type = null
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/bathrooms)
@@ -522,9 +522,9 @@
 /area/rift/facility/interior/workroom)
 "RG" = (
 /obj/machinery/power/apc/alarms_hidden{
-	dir = 1;
+	cell_type = null;
 	chargelevel = 0;
-	cell_type = null
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/workroom)
