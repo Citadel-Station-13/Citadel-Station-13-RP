@@ -1,24 +1,12 @@
 /atom/movable/screen/shadekin
-	icon = 'icons/mob/shadekin_hud.dmi'
+	name = "shadekin status"
+	icon = 'icons/screen/hud/common/shadekin.dmi'
 	invisibility = 101
-
-/atom/movable/screen/shadekin/darkness
-	name = "darkness"
-	icon_state = "dark"
-	alpha = 150
-
-/atom/movable/screen/shadekin/energy
-	name = "energy"
-	icon_state = "energy0"
-	alpha = 150
-
-
-
 
 /atom/movable/screen/movable/ability_master/shadekin
 	name = "Shadekin Abilities"
 	icon = 'icons/mob/screen_spells.dmi'
-	icon_state = "grey_spell_ready"
+	icon_state = "nano_spell_base"
 	ability_objects = list()
 	showing = 0
 
@@ -27,7 +15,7 @@
 
 	screen_loc = ui_spell_master
 
-/atom/movable/screen/movable/ability_master/shadekin/update_abilities(forced = 0, mob/user)		//Different proc to prevent indexing
+/atom/movable/screen/movable/ability_master/shadekin/update_abilities(forced = 0, mob/user) //Different proc to prevent indexing
 	update_icon()
 	if(user && user.client)
 		if(!(src in user.client.screen))
@@ -36,10 +24,10 @@
 		ability.update_icon(forced)
 
 /atom/movable/screen/ability/verb_based/shadekin
-	icon_state = "grey_spell_base"
-	background_base_state = "grey"
+	icon_state = "nano_spell_base"
+	background_base_state = "nano"
 
-/atom/movable/screen/movable/ability_master/proc/add_shadekin_ability(var/object_given, var/verb_given, var/name_given, var/ability_icon_given, var/arguments)
+/atom/movable/screen/movable/ability_master/proc/add_shadekin_ability(object_given, verb_given, name_given, ability_icon_given, arguments)
 	if(!object_given)
 		message_admins("ERROR: add_shadekin_ability() was not given an object in its arguments.")
 	if(!verb_given)

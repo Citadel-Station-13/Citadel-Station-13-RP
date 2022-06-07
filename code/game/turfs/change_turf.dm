@@ -183,7 +183,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		. = ..()
 		if(!.)
 			return
-		if(air_master.has_valid_zone(src))
+		if(has_valid_zone())
 			stack_trace("zone rebuilt too fast")
 		// restore air
 		air = GM
@@ -201,7 +201,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		if(!.)
 			return
 		// ensure zone didn't rebuild yet
-		if(air_master.has_valid_zone(src))
+		if(has_valid_zone())
 			stack_trace("zone reubilt too fast")
 		// reset air
 		if(!air)

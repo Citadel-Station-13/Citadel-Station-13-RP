@@ -318,21 +318,27 @@
 	switch(action)
 		if("search")
 			search = params["search"]
-			send_tgui_data_immediate(data = list("lathe_designs" = tgui_GetProtolatheDesigns(linked_lathe, design_page)))
+			send_tgui_data_immediate(data = list(
+				"lathe_designs" = tgui_GetProtolatheDesigns(linked_lathe, builder_page),
+				"imprinter_designs" = tgui_GetImprinterDesigns(linked_imprinter, builder_page)
+			))
 			return TRUE
 		if("design_page")
 			if(params["reset"])
 				design_page = 0
 			else
 				design_page = max(design_page + (1 * params["reverse"]), 0)
-			send_tgui_data_immediate(data = list("lathe_designs" = tgui_GetProtolatheDesigns(linked_lathe, design_page)))
+			send_tgui_data_immediate(data = list("designs" = tgui_GetDesignInfo(design_page)))
 			return TRUE
 		if("builder_page")
 			if(params["reset"])
 				builder_page = 0
 			else
 				builder_page = max(builder_page + (1 * params["reverse"]), 0)
-			send_tgui_data_immediate(data = list("imprinter_designs" = tgui_GetImprinterDesigns(linked_imprinter, design_page)))
+			send_tgui_data_immediate(data = list(
+				"lathe_designs" = tgui_GetProtolatheDesigns(linked_lathe, builder_page),
+				"imprinter_designs" = tgui_GetImprinterDesigns(linked_imprinter, builder_page)
+			))
 			return TRUE
 
 		if("updt_tech") //Update the research holder with information from the technology disk.

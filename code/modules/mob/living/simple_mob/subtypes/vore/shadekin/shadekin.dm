@@ -6,7 +6,7 @@
 	icon_state = "map_example"
 	icon_living = "map_example"
 	faction = "shadekin"
-	ui_icons = 'icons/mob/shadekin_hud.dmi'
+	ui_icons = 'icons/screen/hud/common/shadekin.dmi'
 	mob_class = MOB_CLASS_HUMANOID
 	mob_bump_flag = HUMAN
 

@@ -1,0 +1,22 @@
+2022-06-01:
+  Ghostcoffeee:
+  - rscadd: 'Added pew building tweak: tweaked pew sprites to support recoloring'
+2022-06-02:
+  silicons:
+  - code_imp: slightly streamlines xenoarch
+  - code_imp: slightly streamlines randommaps
+  - code_imp: slightly streamlines zas
+  - bugfix: map level index duping in GLOB.using_map
+2022-06-03:
+  Zandario:
+  - bugfix: Fixes Station Alert Console TGUI
+  - bugfix: Fixes Pipe Dispenser TGUI
+  - bugfix: Fixes Biogenerator TGUI
+  - bugfix: Fixes Remote Air Alarm Controller TGUI
+  - bugfix: Fixes Power Monitor TGUI
+2022-06-04:
+  Zandario:
+  - bugfix: 32px Emojis work again.
+  - imageadd: More emojis
+  - config: Admin OOC Color & Emojis are now in the new config.
+  - refactor: Actual different mechanical differences for Shadekin eye-colors.

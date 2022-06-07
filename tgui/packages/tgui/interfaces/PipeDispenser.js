@@ -1,13 +1,17 @@
 import { useBackend, useLocalState } from '../backend';
-import { Button, LabeledList, Section, Stack, Tabs } from '../components';
+import { Box, Button, Section, Tabs } from '../components';
 import { Window } from '../layouts';
-import { ICON_BY_CATEGORY_NAME, ColorItem, LayerSelect, SmartPipeBlockSection } from './RapidPipeDispenser';
+import { ICON_BY_CATEGORY_NAME } from './RapidPipeDispenser';
 
-const PipeTypeSection = (props, context) => {
+export const PipeDispenser = (props, context) => {
   const { act, data } = useBackend(context);
   const {
+    disposals,
+    p_layer,
+    pipe_layers,
     categories = [],
   } = data;
+
   const [
     categoryName,
     setCategoryName,
@@ -16,78 +20,55 @@ const PipeTypeSection = (props, context) => {
     .find(category => category.cat_name === categoryName)
     || categories[0];
   return (
-    <Section fill scrollable>
-      <Tabs>
-        {categories.map((category, i) => (
-          <Tabs.Tab
-            fluid
-            key={category.cat_name}
-            icon={ICON_BY_CATEGORY_NAME[category.cat_name]}
-            selected={category.cat_name === shownCategory.cat_name}
-            onClick={() => setCategoryName(category.cat_name)}>
-            {category.cat_name}
-          </Tabs.Tab>
-        ))}
-      </Tabs>
-      {shownCategory?.recipes.map(recipe => (
-        <Button
-          key={recipe.pipe_index}
-          fluid
-          ellipsis
-          content={recipe.pipe_name}
-          title={recipe.pipe_name}
-          onClick={() => act('pipe_type', {
-            pipe_type: recipe.pipe_index,
-            pipe_dir: recipe.dir,
-            category: shownCategory.cat_name,
-          })} />
-      ))}
-    </Section>
-  );
-};
-
-export const PipeDispenser = (props, context) => {
-  const { act, data } = useBackend(context);
-  const {
-    category: rootCategoryIndex,
-  } = data;
-  return (
     <Window
-      width={450}
-      height={575}>
-      <Window.Content>
-        <Stack fill vertical>
-          {rootCategoryIndex === 0 && (
-            <Stack.Item>
-              <Section>
-                <LabeledList>
-                  <ColorItem />
-                </LabeledList>
-              </Section>
-            </Stack.Item>
-          )}
-          <Stack.Item grow>
-            <Stack fill>
-              {rootCategoryIndex === 0 && (
-                <Stack.Item>
-                  <Stack vertical fill>
-                    <Stack.Item>
-                      <SmartPipeBlockSection />
-                    </Stack.Item>
-                    <Stack.Item grow>
-                      <Section fill width={7.5}>
-                        <LayerSelect />
-                      </Section>
-                    </Stack.Item>
-                  </Stack>
-                </Stack.Item>
-              )}
-              <Stack.Item grow>
-                <PipeTypeSection />
-              </Stack.Item>
-            </Stack>
-          </Stack.Item>
-        </Stack>
+      width={425}
+      height={515}
+      resizable>
+      <Window.Content scrollable>
+        {!disposals && (
+          <Section title="Layer">
+            <Box>
+              {Object.keys(pipe_layers)
+                .map(layerName => (
+                  <Button.Checkbox
+                    key={layerName}
+                    fluid
+                    checked={pipe_layers[layerName] === p_layer}
+                    content={layerName}
+                    onClick={() => act('p_layer', {
+                      p_layer: pipe_layers[layerName],
+                    })} />
+                ))}
+            </Box>
+          </Section>
+        )}
+        <Section title="Pipes">
+          <Tabs>
+            {categories.map((category, i) => (
+              <Tabs.Tab
+                fluid
+                key={category.cat_name}
+                icon={ICON_BY_CATEGORY_NAME[category.cat_name]}
+                selected={category.cat_name === shownCategory.cat_name}
+                onClick={() => setCategoryName(category.cat_name)}>
+                {category.cat_name}
+              </Tabs.Tab>
+            ))}
+          </Tabs>
+          {shownCategory?.recipes.map(recipe => (
+            <Button
+              key={recipe.pipe_name}
+              fluid
+              ellipsis
+              content={recipe.pipe_name}
+              title={recipe.pipe_name}
+              onClick={() => act('dispense_pipe', {
+                ref: recipe.ref,
+                bent: recipe.bent,
+                category: shownCategory.cat_name,
+              })} />
+          ))}
+        </Section>
       </Window.Content>
     </Window>
   );
