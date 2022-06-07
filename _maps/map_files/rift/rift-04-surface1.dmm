@@ -26532,10 +26532,6 @@
 /obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
-"udX" = (
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/wall,
-/area/maintenance/cargo)
 "ueA" = (
 /turf/simulated/wall,
 /area/tether/station/public_meeting_room)
@@ -43637,7 +43633,7 @@ gtQ
 fNL
 ovz
 bXZ
-udX
+bXZ
 kSz
 kSz
 bmv
