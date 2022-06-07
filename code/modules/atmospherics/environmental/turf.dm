@@ -83,6 +83,15 @@
 	return GM
 
 /**
+ * queues us for a zone rebuild
+ */
+/turf/proc/queue_zone_update()
+	if(turf_flags & TURF_ZONE_REBUILD_QUEUED)
+		return
+	turf_flags |= TURF_ZONE_REBUILD_QUEUED
+	SSair.mark_for_update(src)
+
+/**
  * LEGACY BELOW
  */
 

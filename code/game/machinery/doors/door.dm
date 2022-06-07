@@ -488,7 +488,7 @@
 
 	for(var/turf/simulated/turf in locs)
 		update_heat_protection(turf)
-		air_master.mark_for_update(turf)
+		turf.queue_zone_update()
 
 	return 1
 

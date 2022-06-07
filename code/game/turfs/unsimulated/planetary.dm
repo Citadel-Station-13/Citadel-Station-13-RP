@@ -27,7 +27,7 @@
 	// Force ZAS to reconsider our connections because our temperature has changed
 	if(connections)
 		connections.erase_all()
-	air_master.mark_for_update(src)
+	queue_zone_update()
 
 // Normal station/earth air.
 /turf/unsimulated/wall/planetary/normal

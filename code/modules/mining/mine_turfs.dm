@@ -89,7 +89,7 @@ turf/simulated/mineral/floor/light_corner
 	blocks_air = FALSE
 	can_build_into_floor = TRUE
 	SSplanets.addTurf(src)
-	SSair.mark_for_update(src)
+	queue_zone_update()
 	QUEUE_SMOOTH(src)
 	QUEUE_SMOOTH_NEIGHBORS(src)
 
@@ -103,7 +103,7 @@ turf/simulated/mineral/floor/light_corner
 	blocks_air = TRUE
 	can_build_into_floor = FALSE
 	SSplanets.removeTurf(src)
-	SSair.mark_for_update(src)
+	queue_zone_update()
 	QUEUE_SMOOTH(src)
 	QUEUE_SMOOTH_NEIGHBORS(src)
 

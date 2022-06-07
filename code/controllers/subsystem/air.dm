@@ -126,8 +126,8 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 				continue
 		T.update_air_properties()
 		T.post_update_air_properties()
-		T.needs_air_update = 0
-		#ifdef ZASDBG
+		T.turf_flags &= ~TURF_ZONE_REBUILD_QUEUED
+		#ifdef ZAS_DEBUG_GRAPHICS
 		T.overlays -= mark
 		#endif
 		if(MC_TICK_CHECK)
@@ -143,8 +143,8 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 		selfblock_deferred.len--
 		T.update_air_properties()
 		T.post_update_air_properties()
-		T.needs_air_update = 0
-		#ifdef ZASDBG
+		T.turf_flags &= ~TURF_ZONE_REBUILD_QUEUED
+		#ifdef ZAS_DEBUG_GRAPHICS
 		T.overlays -= mark
 		#endif
 		if(MC_TICK_CHECK)

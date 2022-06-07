@@ -138,7 +138,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	// restore/update atmos
 	if(old_fire)
 		fire = old_fire
-	air_master.mark_for_update(src)
+	queue_zone_update()
 
 	// restore lighting
 	if(SSlighting.initialized)
@@ -175,7 +175,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		if(zone)
 			if(can_safely_remove_from_zone())
 				zone.remove(src)
-				SSair.mark_for_update(src)
+				queue_zone_update()
 			else
 				zone.rebuild()
 		// store air
@@ -193,7 +193,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 			// remove and rebuild zone
 			if(can_safely_remove_from_zone())
 				zone.remove(src)
-				SSair.mark_for_update(src)
+				queue_zone_update()
 			else
 				zone.rebuild()
 		// at this point the zone does not have our gas mixture in it, and is invalidated
