@@ -6,8 +6,8 @@
 	base_target_pressure = 76.9
 	minimum_pressure = 76.9
 	maximum_pressure = 76.9
-	minimum_temp = 116.15 //-157c
-	maximum_temp = 131.15 //-142c
+	minimum_temp = 220.14
+	maximum_temp = 241.72
 
 //Turfmakers
 #define LYTHIOS43C_SET_ATMOS	initial_gas_mix = ATMOSPHERE_ID_LYTHIOS43C
