@@ -71,14 +71,15 @@
 
 //! ZAS
 
+// debugging
+// if you touch anything #if'd behind a block for any of these  you better make sure this works or I will bean you with a shoe	.
 /// uncomment to enable laggy as sin ZAS debugging systems coded in for when doing bugfixes or major systems overhaulling.
 #define ZAS_DEBUG
-	// if you touch anything #if'd behind a block for this you better make sure this works or I will bean you with a shoe.
 /// uncomment to enable *actually* laggy as sin ZAS debugging, like "list in contents". don't do this without a major reason.
 // #define ZAS_DEBUG_EXPENSIVE
-
 /// uncomment to enable debugging graphics. you probably want to keep this off in live!
 // #define ZAS_DEBUG_GRAPHICS
 
+// features
 /// Uncomment to turn on Multi-Z ZAS Support!
 #define MULTIZAS
