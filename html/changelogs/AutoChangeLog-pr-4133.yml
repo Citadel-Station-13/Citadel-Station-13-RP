@@ -1,0 +1,5 @@
+author: "CharlesWedge"
+delete-after: True
+changes: 
+  - rscadd: "Three new ice world lifestock explained better above. Along with their sprites."
+  - rscadd: "Cargo packs and crates for cargo ordering of those lifestock."
