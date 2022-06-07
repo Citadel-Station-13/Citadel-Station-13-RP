@@ -93,8 +93,10 @@
 
 /obj/item/electronic_assembly/Initialize(mapload)
 	battery = new(src)
+	src.max_components = round(max_components)
+	src.max_complexity = round(max_complexity)
 	if(!cost)
-		cost = IC_ASSEMBLY_COST
+		cost = IC_ASSEMBLY_COST(src)
 	START_PROCESSING(SSobj, src)
 /* TBI //sets up diagnostic hud view
 	prepare_huds()
@@ -134,6 +136,13 @@
 	// Now spend it.
 	for(var/I in assembly_components)
 		var/obj/item/integrated_circuit/IC = I
+		/* Uncomment for debugging purposes. */
+		if(!IC)
+			to_world(SPAN_DEBUGERROR("Bad assembly_components entry in [src].  Has remove() been called incorrectly?"))
+			var/x = assembly_components.Find(null)
+			assembly_components.Cut(x,++x)
+			return
+		//*/
 		if(IC.power_draw_idle)
 			if(!draw_power(IC.power_draw_idle))
 				IC.power_fail()
@@ -256,8 +265,10 @@
 				return
 			// Puts it at the bottom of our contents
 			// Note, this intentionally does *not* use forceMove, because forceMove will stop if it detects the same loc
-			ui_circuit_props.Cut(params["index"],++params["index"])
+			ui_circuit_props.Cut(params["index"], 1 + params["index"])
 			ui_circuit_props.Add(list(list("name" = C.displayed_name,"ref" = REF(C),"removable" = C.removable,"input" = C.can_be_asked_input)))
+			assembly_components.Cut(params["index"], 1 + params["index"])
+			assembly_components.Add(C)
 			C.loc = null
 			C.loc = src
 
@@ -387,7 +398,6 @@
 	// Build TGUI lists here for efficiency.  We don't need to do that every time the UI updates.
 	ui_circuit_props.Add(list(list("name" = IC.displayed_name,"ref" = REF(IC),"removable" = IC.removable,"input" = IC.can_be_asked_input)))
 	assembly_components |= IC
-
 	/* TBI	diag hud
 	//increment numbers for diagnostic hud
 	if(component.action_flags & IC_ACTION_COMBAT)

@@ -129,15 +129,15 @@
 			to_chat(user, SPAN_WARNING("Remove [EA]'s power cell first!"))
 			return
 		var/inc = 0
-		if("removable" in EA.assembly_components)
-			++inc
-			for(var/V in EA.assembly_components)	// Start looking for recyclable components.
-				var/obj/item/integrated_circuit/IC = V
-				if(IC.removable)	// If found, don't destroy the assembly later.
-					to_chat(user, SPAN_NOTICE("You begin recycling [EA]'s components..."))
-					playsound(src, 'sound/items/electronic_assembly_emptying.ogg', 50, TRUE)
-					if(!do_after(user, 30, target = src) && !recycling) //short channel so you don't accidentally start emptying out a complex assembly
-						recycling = TRUE
+		for(var/V in EA.assembly_components)	// Start looking for recyclable components.
+			var/obj/item/integrated_circuit/IC = V
+			if(IC.removable)	// If found, don't destroy the assembly later.
+				++inc
+				to_chat(user, SPAN_NOTICE("You begin recycling [EA]'s components..."))
+				playsound(src, 'sound/items/electronic_assembly_emptying.ogg', 50, TRUE)
+				if(!do_after(user, 30, target = src) && !recycling) //short channel so you don't accidentally start emptying out a complex assembly
+					recycling = TRUE
+				break
 		if (inc == 1)
 			for(var/V in EA.assembly_components)
 				var/obj/item/integrated_circuit/IC = V
@@ -149,8 +149,9 @@
 						playsound(src, 'sound/items/crowbar.ogg', 50, TRUE)
 						check_max_metal(IC.cost)
 						cur_metal += IC.cost
-						IC.remove(usr, TRUE, V)
+						IC.remove(usr, TRUE, inc)
 						qdel(IC)
+					else ++inc
 			to_chat(user, SPAN_NOTICE("You recycle all the components[EA.assembly_components.len ? " you could " : " "]from [EA]!"))
 			playsound(src, 'sound/items/electronic_assembly_empty.ogg', 50, TRUE)
 			recycling = FALSE

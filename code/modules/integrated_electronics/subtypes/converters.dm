@@ -175,7 +175,7 @@
 		else
 			message_admins("A concatenator circuit has greatly exceeded its [max_string_length] character limit with a total of [spamprotection] characters, and has been deleted.  No associated key.")
 			investigate_log("A concatenator circuit has greatly exceeded its [max_string_length] character limit with a total of [spamprotection] characters, and has been deleted.  No associated key.", INVESTIGATE_CIRCUIT)
-		return
+		result = "ERROR"
 
 	set_pin_data(IC_OUTPUT, 1, result)
 	push_data()

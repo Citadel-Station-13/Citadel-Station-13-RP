@@ -96,6 +96,43 @@
 		push_data()
 		activate_pin(1)
 
+/obj/item/integrated_circuit/input/card_reader
+	name = "ID card reader" //To differentiate it from the data card reader
+	desc = "A circuit that can read the registred name, assignment, and PassKey string from an ID card."
+	icon_state = "card_reader"
+
+	complexity = 4
+	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
+	outputs = list(
+		"registered name" = IC_PINTYPE_STRING,
+		"assignment" = IC_PINTYPE_STRING,
+	)
+	activators = list(
+		"on read" = IC_PINTYPE_PULSE_OUT
+	)
+
+/obj/item/integrated_circuit/input/card_reader/attackby_react(obj/item/I, mob/living/user, intent)
+	var/obj/item/card/id/card = I.GetID()
+	var/list/access = I.GetAccess()
+
+	if(assembly)
+		assembly.access_card.access |= access
+
+	if(card) // An ID card.
+		set_pin_data(IC_OUTPUT, 1, card.registered_name)
+		set_pin_data(IC_OUTPUT, 2, card.assignment)
+
+	else if(length(access))	// A non-card object that has access levels.
+		set_pin_data(IC_OUTPUT, 1, null)
+		set_pin_data(IC_OUTPUT, 2, null)
+
+	else
+		return FALSE
+
+	push_data()
+	activate_pin(1)
+	return TRUE
+
 /obj/item/integrated_circuit/input/med_scanner
 	name = "integrated medical analyser"
 	desc = "A very small version of the common medical analyser.  This allows the machine to know how healthy someone is."
@@ -771,6 +808,109 @@
 	push_data()
 	activate_pin(2)
 
+/* TBI NTNet
+/obj/item/integrated_circuit/input/ntnet_packet
+	name = "NTNet networking circuit"
+	desc = "Enables the sending and receiving of messages over NTNet via packet data protocol."
+	extended_desc = "Data can be sent or received using the second pin on each side, \
+	with additonal data reserved for the third pin. When a message is received, the second activation pin \
+	will pulse whatever is connected to it. Pulsing the first activation pin will send a message. Messages \
+	can be sent to multiple recepients. Addresses must be separated with a semicolon, like this: Address1;Address2;Etc."
+	icon_state = "signal"
+	complexity = 2
+	cooldown_per_use = 1
+	inputs = list(
+		"target NTNet addresses"= IC_PINTYPE_STRING,
+		"data to send"			= IC_PINTYPE_STRING,
+		"secondary text"		= IC_PINTYPE_STRING
+		)
+	outputs = list(
+		"address received"			= IC_PINTYPE_STRING,
+		"data received"				= IC_PINTYPE_STRING,
+		"secondary text received"	= IC_PINTYPE_STRING,
+		"passkey"					= IC_PINTYPE_STRING,
+		"is_broadcast"				= IC_PINTYPE_BOOLEAN
+		)
+	activators = list("send data" = IC_PINTYPE_PULSE_IN, "on data received" = IC_PINTYPE_PULSE_OUT)
+	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
+	action_flags = IC_ACTION_LONG_RANGE
+	power_draw_per_use = 50
+	var/address
+
+/obj/item/integrated_circuit/input/ntnet_packet/Initialize(mapload)
+	. = ..()
+	var/datum/component/ntnet_interface/net = LoadComponent(/datum/component/ntnet_interface)
+	address = net.hardware_id
+	net.differentiate_broadcast = FALSE
+	desc += "<br>This circuit's NTNet hardware address is: [address]"
+
+/obj/item/integrated_circuit/input/ntnet_packet/do_work(ord)
+	if(ord == 1)
+		var/target_address = get_pin_data(IC_INPUT, 1)
+		var/message = get_pin_data(IC_INPUT, 2)
+		var/text = get_pin_data(IC_INPUT, 3)
+
+		var/datum/netdata/data = new
+		data.recipient_ids = splittext(target_address, ";")
+		data.standard_format_data(message, text, assembly ? strtohex(XorEncrypt(json_encode(assembly.access_card.access), SScircuit.cipherkey)) : null)
+		ntnet_send(data)
+
+/obj/item/integrated_circuit/input/ntnet_receive(datum/netdata/data)
+	set_pin_data(IC_OUTPUT, 1, data.sender_id)
+	set_pin_data(IC_OUTPUT, 2, data.data["data"])
+	set_pin_data(IC_OUTPUT, 3, data.data["data_secondary"])
+	set_pin_data(IC_OUTPUT, 4, data.data["encrypted_passkey"])
+	set_pin_data(IC_OUTPUT, 5, data.broadcast)
+
+	push_data()
+	activate_pin(2)
+
+/obj/item/integrated_circuit/input/ntnet_advanced
+	name = "Low level NTNet transreceiver"
+	desc = "Enables the sending and receiving of messages over NTNet via packet data protocol. Allows advanced control of message contents and signalling. Must use associative lists. Outputs associative list. Has a slower transmission rate than normal NTNet circuits, due to increased data processing complexity."
+	extended_desc = "Data can be sent or received using the second pin on each side, \
+	When a message is received, the second activation pin will pulse whatever is connected to it. \
+	Pulsing the first activation pin will send a message. Messages can be sent to multiple recepients. \
+	Addresses must be separated with a semicolon, like this: Address1;Address2;Etc."
+	icon_state = "signal"
+	complexity = 4
+	cooldown_per_use = 10
+	inputs = list(
+		"target NTNet addresses"= IC_PINTYPE_STRING,
+		"data"					= IC_PINTYPE_LIST,
+		)
+	outputs = list("received data" = IC_PINTYPE_LIST, "is_broadcast" = IC_PINTYPE_BOOLEAN)
+	activators = list("send data" = IC_PINTYPE_PULSE_IN, "on data received" = IC_PINTYPE_PULSE_OUT)
+	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
+	action_flags = IC_ACTION_LONG_RANGE
+	power_draw_per_use = 50
+	var/address
+
+/obj/item/integrated_circuit/input/ntnet_advanced/Initialize(mapload)
+	. = ..()
+	var/datum/component/ntnet_interface/net = LoadComponent(/datum/component/ntnet_interface)
+	address = net.hardware_id
+	net.differentiate_broadcast = FALSE
+	desc += "<br>This circuit's NTNet hardware address is: [address]"
+
+/obj/item/integrated_circuit/input/ntnet_advanced/do_work(ord)
+	if(ord == 1)
+		var/target_address = get_pin_data(IC_INPUT, 1)
+		var/list/message = get_pin_data(IC_INPUT, 2)
+		if(!islist(message))
+			message = list()
+		var/datum/netdata/data = new
+		data.recipient_ids = splittext(target_address, ";")
+		data.data = message
+		data.passkey = assembly.access_card.access
+		ntnet_send(data)
+
+/obj/item/integrated_circuit/input/ntnet_advanced/ntnet_receive(datum/netdata/data)
+	set_pin_data(IC_OUTPUT, 1, data.data)
+	set_pin_data(IC_OUTPUT, 2, data.broadcast)
+	push_data()
+	activate_pin(2)
+*/
 //This circuit gives information on where the machine is.
 /obj/item/integrated_circuit/input/gps
 	name = "global positioning system"
@@ -1094,7 +1234,46 @@
 					set_pin_data(IC_OUTPUT, 3, cell.percent())
 		push_data()
 		activate_pin(2)
-/*
+/*TBI NTNet
+/obj/item/integrated_circuit/input/ntnetsc
+	name = "NTNet scanner"
+	desc = "This can return the NTNet IDs of a component inside the given object, if there are any."
+	icon_state = "signalsc"
+	w_class = WEIGHT_CLASS_TINY
+	complexity = 2
+	inputs = list("target" = IC_PINTYPE_REF)
+	outputs = list(
+		"id" = IC_PINTYPE_STRING
+		)
+	activators = list("read" = IC_PINTYPE_PULSE_IN, "found" = IC_PINTYPE_PULSE_OUT,"not found" = IC_PINTYPE_PULSE_OUT)
+	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
+	power_draw_per_use = 1
+
+/obj/item/integrated_circuit/input/ntnetsc/do_work(ord)
+	if(ord == 1)
+		var/atom/AM = get_pin_data_as_type(IC_INPUT, 1, /atom)
+		var/datum/component/ntnet_interface/net
+
+		if(AM)
+			var/list/processing_list = list(AM)
+			while(processing_list.len && !net)
+				var/atom/A = processing_list[1]
+				processing_list.Cut(1, 2)
+				//Byond does not allow things to be in multiple contents, or double parent-child hierarchies, so only += is needed
+				//This is also why we don't need to check against assembled as we go along
+				processing_list += A.contents
+				net = A.GetComponent(/datum/component/ntnet_interface)
+
+		if(net)
+			set_pin_data(IC_OUTPUT, 1, net.hardware_id)
+			push_data()
+			activate_pin(2)
+		else
+			set_pin_data(IC_OUTPUT, 1, null)
+			push_data()
+			activate_pin(3)
+*/
+/* TBI ouija
 /obj/item/integrated_circuit/input/ouija
 	name = "superstring resonator"
 	desc = "A highly dubious piece of hardware.  It may do nothing or it may ruin your day."

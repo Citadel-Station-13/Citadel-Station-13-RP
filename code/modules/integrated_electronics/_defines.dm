@@ -3,7 +3,8 @@
 #define IC_COMPONENTS_BASE		25
 #define IC_COMPLEXITY_BASE		75
 #define IC_MATERIAL_MODIFIER 	1	// TBI when materials get updated.
-#define IC_ASSEMBLY_COST		round(IC_COMPONENTS_BASE + IC_COMPLEXITY_BASE / 4)
+/// Calculates the cost of a given assembly.
+#define IC_ASSEMBLY_COST(ea)	(round((ea.max_components + ea.max_complexity) / 4))
 
 // Base pin types.
 

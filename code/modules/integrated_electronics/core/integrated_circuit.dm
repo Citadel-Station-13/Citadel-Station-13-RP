@@ -287,7 +287,8 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	power_fail()
 	disconnect_all()
 	// Remove from helper and TGUI lists
-	A.ui_circuit_props.Cut(index,++index)
+	A.ui_circuit_props.Cut(index, index + 1)
+	A.assembly_components.Cut(index, index + 1)
 
 	var/turf/T = get_turf(src)
 	forceMove(T)
