@@ -180,7 +180,7 @@
 /area/rift/facility/interior/vault)
 "oG" = (
 /obj/machinery/nuclearbomb{
-	desc = "Several explosed components are visible on the bomb attached to it is a paper that reads '59/27 Co + n -> 60/27 Co -> 60/28 Ni + e- + <i>y</i>'";
+	desc = "Several explosed components are visible on the bomb, making it appear unfinished. Attached to it is a paper that reads '59/27 Co + n -> 60/27 Co -> 60/28 Ni + e- + <i>y</i>'";
 	name = "\improper Unknown Nuclear Explosive"
 	},
 /obj/effect/map_effect/radiation_emitter/chernobyl,
