@@ -446,7 +446,7 @@
 "KI" = (
 /obj/structure/table/marble,
 /obj/item/paper{
-	info = "[center]Check the vault, they couldn't get it out without the Commonwealth finding out. Careful they booby trapped the lower levels. [br][i]- Colonel Lii'jar. [/i][/center]";
+	info = "\[center]Check the vault, they couldn't get it out without the Commonwealth finding out. Careful they booby trapped the lower levels. \[br]\[i]- Colonel Lii'jar. \[/i]\[/center]";
 	name = "fancy note"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
