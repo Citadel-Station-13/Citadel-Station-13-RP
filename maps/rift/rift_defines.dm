@@ -198,12 +198,10 @@
 		/datum/planet/classm)
 
 /datum/map/rift/perform_map_generation()
-
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_WEST_CAVERN, world.maxx, world.maxy) // Create the mining Z-level.
-	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_WEST_CAVERN, 64, 64)         // Create the mining ore distribution map.
-	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_WEST_DEEP, 64, 64)         // Create the mining ore distribution map.
-	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_WEST_BASE, 64, 64)         // Create the mining ore distribution map.
-	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_UNDERGROUND_FLOOR, 64, 64)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_WEST_CAVERN, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_WEST_DEEP, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_WEST_BASE, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_UNDERGROUND_FLOOR, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
 
 	return 1
 
