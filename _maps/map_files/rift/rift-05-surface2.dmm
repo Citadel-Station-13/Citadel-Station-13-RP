@@ -9301,10 +9301,8 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "qL" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/open/lythios43c,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside2)
 "qM" = (
 /obj/machinery/hologram/holopad,
@@ -32706,7 +32704,7 @@ aa
 aa
 aa
 aa
-aa
+RM
 aa
 aa
 aa
@@ -32899,11 +32897,11 @@ aa
 aa
 aa
 aa
-aa
-RM
-RM
-RM
-aa
+rt
+kd
+Ib
+Ib
+Ib
 aa
 aa
 aa
@@ -33094,10 +33092,10 @@ aa
 aa
 aa
 jy
-Ja
+qL
 hI
 Qd
-qL
+Ib
 aa
 aa
 aa
@@ -33288,10 +33286,10 @@ aa
 aa
 aa
 rt
-Ja
+qL
 hz
 Ib
-qL
+Ib
 aa
 aa
 aa
@@ -33482,10 +33480,10 @@ aa
 aa
 aa
 jy
-Ja
-aa
-aa
 qL
+aa
+aa
+Ib
 aa
 aa
 aa
@@ -33675,11 +33673,11 @@ aa
 aa
 aa
 aa
-aa
-sh
-sh
-sh
-aa
+rt
+kd
+Ib
+Ib
+Ib
 aa
 aa
 aa
@@ -33870,7 +33868,7 @@ aa
 aa
 aa
 aa
-aa
+sh
 aa
 aa
 aa
@@ -35967,7 +35965,7 @@ hI
 hI
 aa
 aa
-aa
+RM
 aa
 aa
 aa
@@ -36160,11 +36158,11 @@ hI
 hI
 hI
 aa
-aa
-RM
-RM
-RM
-aa
+rt
+qL
+Ib
+Ib
+Ib
 aa
 aa
 aa
@@ -36355,10 +36353,10 @@ hI
 hI
 aa
 rt
-Ja
-aa
-aa
 qL
+aa
+aa
+Ib
 aa
 aa
 aa
@@ -36549,10 +36547,10 @@ hI
 hI
 aa
 rt
-kd
+qL
 hz
 Ib
-aa
+Ib
 aa
 aa
 aa
@@ -36743,10 +36741,10 @@ hI
 hI
 hI
 kg
-kd
+qL
 hI
 Qd
-qL
+Ib
 aa
 aa
 aa
@@ -36936,11 +36934,11 @@ hI
 hI
 hI
 hI
-hI
-tl
-sh
-sh
-aa
+kg
+qL
+Ib
+Ib
+Ib
 aa
 aa
 aa
@@ -37131,7 +37129,7 @@ hI
 hI
 hI
 hI
-hI
+tl
 aa
 aa
 aa

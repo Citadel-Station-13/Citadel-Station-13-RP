@@ -532,12 +532,16 @@
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/medical/mentalhealth)
 "aBm" = (
-/obj/effect/zone_divider,
 /obj/structure/catwalk,
+/obj/structure/railing,
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 8
+	},
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 1
 	},
-/turf/simulated/floor/airless/ceiling,
+/obj/effect/overlay/snow/floor/pointy,
+/turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "aBn" = (
 /obj/effect/zone_divider,
@@ -988,14 +992,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/foyer)
 "aYE" = (
-/obj/effect/zone_divider,
-/obj/effect/zone_divider,
-/obj/structure/catwalk,
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
+/obj/structure/railing{
+	dir = 8
 	},
-/turf/simulated/floor/airless/ceiling,
+/obj/effect/zone_divider,
+/turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "aZh" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -3422,10 +3423,10 @@
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfaceeva/aa/surface_south)
 "cVb" = (
-/obj/effect/zone_divider,
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/effect/zone_divider,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "cVJ" = (
@@ -9729,11 +9730,16 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/surfacebase/outside/outside1)
 "hRt" = (
-/obj/effect/zone_divider,
-/obj/structure/railing{
-	dir = 8
+/obj/structure/catwalk,
+/obj/structure/railing,
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 1
+	},
+/obj/effect/overlay/snow/floor/pointy,
+/turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "hRV" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -10604,7 +10610,6 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main/secondary)
 "ivK" = (
-/obj/effect/zone_divider,
 /obj/structure/stairs/spawner/north,
 /turf/simulated/floor/airless/ceiling,
 /area/rift/surfacebase/outside/outside1)
@@ -18921,8 +18926,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_one)
 "oBx" = (
+/obj/structure/metal_edge,
+/obj/structure/railing{
+	dir = 8
+	},
 /obj/effect/zone_divider,
-/obj/effect/floor_decal/industrial/halfstair,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "oBA" = (
@@ -26429,11 +26437,12 @@
 /turf/simulated/floor/plating,
 /area/rift/surfacebase/outside/outside1)
 "ubh" = (
-/obj/structure/catwalk,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
+/obj/structure/metal_edge,
+/obj/structure/railing{
+	dir = 4
 	},
-/turf/simulated/floor/airless/ceiling,
+/obj/effect/zone_divider,
+/turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "ubH" = (
 /obj/structure/table/wooden_reinforced,
@@ -29547,11 +29556,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/storage/surface_eva)
-"wtn" = (
-/obj/effect/zone_divider,
-/obj/structure/railing,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "wtq" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
@@ -31540,7 +31544,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/foyer)
 "ycs" = (
-/obj/effect/zone_divider,
 /turf/simulated/floor/airless/ceiling,
 /area/rift/surfacebase/outside/outside1)
 "ydt" = (
@@ -31585,11 +31588,11 @@
 /area/maintenance/evahallway)
 "yfd" = (
 /obj/structure/catwalk,
-/obj/effect/overlay/snow/floor/pointy,
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 1
 	},
-/turf/simulated/floor/airless/ceiling,
+/obj/effect/overlay/snow/floor/pointy,
+/turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "yfC" = (
 /obj/effect/floor_decal/borderfloor{
@@ -33875,10 +33878,22 @@ aBn
 aBn
 aBn
 aBn
+vFY
 aBn
 aBn
 aBn
 aBn
+aBn
+vkj
+aBn
+aBn
+aBn
+aBn
+aBn
+aBn
+vkj
+vkj
+vkj
 aBn
 aBn
 vkj
@@ -33887,19 +33902,7 @@ aBn
 aBn
 aBn
 aBn
-aBn
-vkj
-vkj
-vkj
-aBn
-aBn
-vkj
-aBn
-aBn
-aBn
-aBn
-aBn
-aBn
+vFY
 aBn
 aBn
 aBn
@@ -34104,19 +34107,7 @@ lcN
 lcN
 lcN
 lcN
-lcN
-lcN
-lcN
-lcN
-lcN
-lcN
-lcN
-aBn
-lcN
-lcN
-lcN
-lcN
-lcN
+vUA
 lcN
 lcN
 lcN
@@ -34129,6 +34120,18 @@ lcN
 lcN
 lcN
 lcN
+lcN
+lcN
+lcN
+lcN
+lcN
+lcN
+aBn
+lcN
+lcN
+lcN
+lcN
+vUA
 lcN
 lcN
 lcN
@@ -35684,9 +35687,9 @@ iFN
 iFN
 iFN
 iFN
+vUA
 iFN
-iFN
-iFN
+vUA
 mif
 iFN
 iFN
@@ -35877,13 +35880,13 @@ iFN
 iFN
 iFN
 iFN
-iFN
-iFN
-iFN
-iFN
+mif
+mif
+mif
+mif
 cVb
-evV
-iFN
+mif
+mif
 iFN
 iFN
 iFN
@@ -36071,13 +36074,13 @@ iFN
 iFN
 iFN
 iFN
-iFN
-iFN
+mif
+vUA
 vUA
 vUA
 aBm
-hHw
-iFN
+bRK
+mif
 iFN
 iFN
 iFN
@@ -36266,11 +36269,11 @@ mif
 mif
 mif
 mif
-wtn
+vUA
 ivK
 ycs
-aYE
-oBx
+yfd
+hHw
 mif
 mif
 mif
@@ -36459,13 +36462,13 @@ iFN
 iFN
 iFN
 iFN
-iFN
-iFN
-psF
-psF
+mif
+vUA
+vUA
+vUA
 hRt
-psF
-iFN
+uxH
+mif
 iFN
 iFN
 iFN
@@ -36653,13 +36656,13 @@ iFN
 iFN
 iFN
 iFN
-iFN
-iFN
-iFN
-iFN
 mif
-iFN
-iFN
+mif
+mif
+mif
+aYE
+mif
+mif
 iFN
 iFN
 iFN
@@ -38754,7 +38757,7 @@ iFN
 iFN
 iFN
 iFN
-iFN
+evV
 mif
 iFN
 iFN
@@ -38945,11 +38948,11 @@ uGR
 kAb
 arS
 iFN
-iFN
-evV
-evV
-evV
-cVb
+vUA
+vUA
+vUA
+aBm
+ubh
 iFN
 iFN
 iFN
@@ -39143,7 +39146,7 @@ vUA
 btD
 iFN
 yfd
-oBx
+fNK
 iFN
 iFN
 iFN
@@ -39336,7 +39339,7 @@ iFN
 vUA
 vUA
 vUA
-ubh
+hRt
 oBx
 iFN
 iFN
@@ -39531,7 +39534,7 @@ kAb
 arS
 iFN
 psF
-hRt
+mif
 iFN
 iFN
 iFN

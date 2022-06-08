@@ -12637,7 +12637,7 @@
 	},
 /obj/structure/railing,
 /obj/structure/lattice,
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "wI" = (
 /obj/machinery/door/firedoor/glass/hidden{
@@ -18345,7 +18345,7 @@
 	dir = 8
 	},
 /obj/structure/lattice,
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "Hz" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
@@ -22451,9 +22451,9 @@
 /area/shuttle/excursion/general)
 "Pm" = (
 /obj/effect/floor_decal/industrial/halfstair{
-	dir = 4
+	dir = 1
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "Pn" = (
 /obj/machinery/door/airlock/vault/bolted{
@@ -32037,9 +32037,9 @@ us
 us
 mn
 np
-Tq
-Tq
-Tq
+TO
+TO
+TO
 Oi
 Oi
 Oi
@@ -32233,7 +32233,7 @@ mn
 qn
 Oi
 Oi
-CA
+IA
 EH
 Oi
 Oi
@@ -32427,7 +32427,7 @@ mn
 Ls
 TO
 OP
-CA
+IA
 EH
 Oi
 Oi
@@ -32586,7 +32586,7 @@ mn
 Ls
 CA
 CA
-EH
+Lt
 BK
 us
 us
@@ -32618,10 +32618,10 @@ us
 us
 us
 mn
-qn
-CA
-CA
-CA
+yC
+IA
+IA
+IA
 EH
 Oi
 Oi
@@ -32780,8 +32780,8 @@ mn
 Ls
 CA
 CA
-EH
-BK
+Pm
+us
 us
 us
 us
@@ -32813,10 +32813,10 @@ us
 us
 us
 pc
-CA
-CA
-Tj
-Oi
+IA
+IA
+IA
+EH
 Oi
 Oi
 Oi
@@ -32974,8 +32974,8 @@ mn
 Ls
 CA
 CA
-EH
-BK
+Pm
+us
 us
 us
 us
@@ -33009,7 +33009,7 @@ us
 pc
 CA
 CA
-EH
+Tj
 Oi
 Oi
 Oi
@@ -33168,8 +33168,8 @@ mn
 qn
 CA
 CA
-EH
-BK
+Pm
+us
 us
 us
 us
@@ -33362,7 +33362,7 @@ mn
 Ls
 CA
 CA
-EH
+Tj
 BK
 us
 us
@@ -33394,7 +33394,7 @@ us
 us
 us
 mn
-qn
+uo
 CA
 CA
 EH
@@ -35298,9 +35298,9 @@ qW
 kC
 CA
 CA
-CA
-CA
-CA
+IA
+IA
+IA
 CA
 EH
 BK
@@ -35492,9 +35492,9 @@ mj
 qn
 CA
 CA
-CA
-CA
-CA
+IA
+IA
+IA
 CA
 EH
 BK
@@ -35688,7 +35688,7 @@ CA
 CA
 TO
 OP
-CA
+IA
 CA
 dS
 fo
@@ -35882,7 +35882,7 @@ CA
 CA
 EH
 Oi
-CA
+IA
 CA
 EH
 Oi
@@ -36076,7 +36076,7 @@ CA
 CA
 Hy
 wG
-CA
+IA
 CA
 Lt
 Tq
@@ -36093,9 +36093,9 @@ Tq
 Tq
 Tq
 vM
-Pm
-Pm
-Pm
+uz
+uz
+uz
 yE
 Tq
 Tq
