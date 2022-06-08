@@ -263,4 +263,3 @@
 		return // Far less likely to make noise in no gravity
 
 	playsound(T, S, volume, FALSE)
-	return
