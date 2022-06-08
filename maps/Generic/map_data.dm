@@ -10,6 +10,12 @@
 /atom/movable/landmark/map_data/triumph
 	height = 4
 
+// Lythios
+/atom/movable/landmark/map_data/lythios43c
+    height = 6
+
+/atom/movable/landmark/map_data/west_plains
+    height = 4
 
 // See beach.dm for more details on this. Placeholder for now to stop compiling issues -Bloop
 /obj/away_mission_init/beachcave
