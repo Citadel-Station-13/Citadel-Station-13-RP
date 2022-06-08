@@ -1,0 +1,8 @@
+author: "CharlesWedge"
+delete-after: True
+changes: 
+  - rscadd: "High Sec Evidence Storage armory access wevidence storage for very dangerous things."
+  - rscadd: "Adherent Maint, firelocks
+tweak: SMES/Beaker setup to be in line with previous maps.
+tweak: AA Bunkers now are accessibly by sec engi and command rather than the few with vault access."
+  - bugfix: "Rearranges the Forensics lab slightly so everything on the tables can be reached."
