@@ -109,10 +109,10 @@
 
 	var/datum/species/S = character.species
 	var/SB = S.selects_bodytype ? pref.custom_base : pref.character_static_species_meta()
-	var/datum/species/new_S = S.copy_from(SB, pref.pos_traits + pref.neu_traits + pref.neg_traits, character)
+	S.copy_from(SB, pref.pos_traits + pref.neu_traits + pref.neg_traits, character)
 
 	//Any additional non-trait settings can be applied here
-	new_S.blood_color = pref.blood_color
+	S.blood_color = pref.blood_color
 
 	if(pref.species == SPECIES_CUSTOM)
 		//Statistics for this would be nice
