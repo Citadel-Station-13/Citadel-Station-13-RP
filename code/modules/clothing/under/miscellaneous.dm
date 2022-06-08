@@ -838,6 +838,11 @@
 	desc = "A tight latex one piece. It clings tightly to the flesh, leaving very little to the imagination."
 	icon_state = "swim_latex"
 
+/obj/item/clothing/under/swimsuit/risque
+	name = "risque swimsuit"
+	desc = "This fits a bit too snug in all the right places. Comes with a collar, for inscrutable reasons."
+	icon_state = "swim_risque"
+
 /*
  * pyjamas
  */
