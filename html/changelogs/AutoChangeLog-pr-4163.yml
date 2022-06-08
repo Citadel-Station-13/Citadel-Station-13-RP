@@ -1,0 +1,5 @@
+author: "Jaybirdnerd"
+delete-after: True
+changes: 
+  - rscadd: "Adds the HEV suit from Half Life 2 to the Costume Vendor"
+  - rscadd: "ALSO adds the HEV helmet to the costume vendor but that's a given I think?"
