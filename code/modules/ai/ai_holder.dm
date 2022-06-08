@@ -167,7 +167,7 @@
 			var/obj/structure/closet/C = holder.loc
 			ai_log("handle_stance_tactical() : Inside a closet. Going to attempt escape.", AI_LOG_TRACE)
 			if(C.sealed)
-				INVOKE_ASYNC(holder, /mob/living/proc/resist)
+				INVOKE_ASYNC(holder, /mob/living/verb/resist)
 			else
 				C.open()
 
