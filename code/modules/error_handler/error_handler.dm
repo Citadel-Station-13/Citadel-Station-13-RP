@@ -14,7 +14,7 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 
 	if(!GLOB || !error_last_seen)
 		log_world("error runtime caught;")
-		++GLOB.total_runtime_seen
+		++GLOB.total_runtimes_seen
 		return ..()
 
 	if(!istype(E)) //Something threw an unusual exception

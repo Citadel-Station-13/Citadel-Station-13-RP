@@ -116,7 +116,7 @@
 
 	if(pref.species == SPECIES_CUSTOM)
 		//Statistics for this would be nice
-		var/english_traits = english_list(new_S.traits, and_text = ";", comma_text = ";")
+		var/english_traits = english_list(S.traits, and_text = ";", comma_text = ";")
 		log_game("TRAITS [pref.client_ckey]/([character]) with: [english_traits]") //Terrible 'fake' key_name()... but they aren't in the same entity yet
 
 
