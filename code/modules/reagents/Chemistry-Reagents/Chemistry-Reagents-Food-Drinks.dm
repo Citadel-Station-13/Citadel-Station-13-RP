@@ -2647,6 +2647,30 @@ End Citadel Change */
 	glass_name = "Devil's Kiss"
 	glass_desc = "Creepy time!"
 
+/datum/reagent/ethanol/narsour //wanted to keep these near the other blood cocktails - Doom
+	name = "Nar'Sour"
+	id = "narsour"
+	description = "When the tang of blood and citrus hits, your tongue just might finally be able to pronounce some of the scrawls seen in the tunnels..."
+	taste_description = "bitter iron and citrus"
+	color = "#7D1717"
+	strength = 50
+	blood_content = 0.3
+
+	glass_name = "Nar'Sour"
+	glass_desc = "When the tang of blood and citrus hits, your tongue just might finally be able to pronounce some of the scrawls seen in the tunnels..."
+
+/datum/reagent/ethanol/narsian
+	name = "Nars'Ian"
+	id = "narsian"
+	description = "NanoTrasen's 2518 Pet of The Year has been swept up in the Geometer's brilliant crimson tide! Yap!"
+	taste_description = "bloody orange creamsicle with a bite (and a bark!)"
+	color = "#7D1717"
+	strength = 50
+	blood_content = 0.3
+
+	glass_name = "Nar'Sian"
+	glass_desc = "NanoTrasen's 2518 Pet of The Year has been swept up in the Geometer's brilliant crimson tide! Yap!"
+
 /datum/reagent/ethanol/driestmartini
 	name = "Driest Martini"
 	id = "driestmartini"
