@@ -706,3 +706,57 @@ Do this eventually. */
 
 /area/rift/trade_shop/debugger
 	name = "\improper Trade Shop Debugger"
+
+
+
+//Abandoned Tajaran Base
+/area/rift/facility/exterior
+	name = "\improper Radioactive Exclusion Zone"
+
+/area/rift/facility/exterior/shuttle
+	name = "\improper Contaminated Shuttle"
+
+/area/rift/facility/interior/surface
+	name = "\improper Lythios Facility -  Ground Level"
+
+/area/rift/facility/interior/undergound1
+	name = "\improper Lythios Facility -  Sublevel 1"
+
+/area/rift/facility/interior/undergound2
+	name = "\improper Lythios Facility -  Sublevel 2"
+
+/area/rift/facility/interior/undergound3
+	name = "\improper Lythios Facility -  Sublevel 3"
+
+/area/rift/facility/interior/barracks
+	name = "\improper Lythios Facility -  Soldier Barracks"
+
+/area/rift/facility/interior/command
+	name = "\improper Lythios Facility -  Commander's Office"
+
+/area/rift/facility/interior/elevator
+	name = "\improper Lythios Facility -  Elevator Shaft"
+
+/area/rift/facility/interior/bathrooms
+	name = "\improper Lythios Facility -  Bathroom"
+
+/area/rift/facility/interior/workroom
+	name = "\improper Lythios Facility -  Work Rooms"
+
+/area/rift/facility/interior/medical
+	name = "\improper Lythios Facility -  Medical"
+
+/area/rift/facility/interior/temple
+	name = "\improper Lythios Facility -  Temple"
+
+/area/rift/facility/interior/prison
+	name = "\improper Lythios Facility -  Prison"
+
+/area/rift/facility/interior/janitorial
+	name = "\improper Lythios Facility -  Custodial Closet"
+
+/area/rift/facility/interior/vault
+	name = "\improper Lythios Facility -  Vault"
+
+/area/rift/facility/interior/core
+	name = "\improper Lythios Facility -  Reactor Core"
