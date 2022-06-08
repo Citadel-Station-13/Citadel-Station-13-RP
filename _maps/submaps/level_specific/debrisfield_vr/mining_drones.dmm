@@ -168,8 +168,7 @@
 /obj/machinery/door/airlock/external/glass{
 	density = 0;
 	health = 0;
-	icon_state = "door_open";
-	stat = 1
+	icon_state = "door_open"
 	},
 /turf/simulated/floor/airless,
 /area/submap/debrisfield_vr/mining_outpost)

@@ -4,6 +4,7 @@
 
 Yeah so we're (me) all a bunch of idiots (insane).
 As such we have a *ton* of path replacements.
+All of these regexes are for VSC. They are not necessarily optimized, so, if you're good at regexes, do help!
 
 Apply regexes in this order:
 
