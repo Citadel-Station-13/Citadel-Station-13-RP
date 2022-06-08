@@ -1,4 +1,0 @@
-author: "CharlesWedge"
-delete-after: True
-changes: 
-  - bugfix: "The down stairwell on west plains now faces the correct direction. West Deep has its proper area and stairs. A set piece cave on the lowest Z now goes to the bottom of the canyon."
