@@ -13,9 +13,10 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	throw_range = 10
 	w_class = ITEMSIZE_NORMAL
 	attack_verb = list("mopped", "bashed", "bludgeoned", "whacked")
-	matter = list(MATERIAL_PLASTIC = 3)
+	matter = list(MAT_PLASTIC = 3)
 	var/mopping = 0
 	var/mopcount = 0
+	var/mopspeed = 23
 
 	var/mopmode = MOPMODE_TILE
 	var/sweep_time = 7
@@ -48,7 +49,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 		if (mopmode == MOPMODE_TILE)
 			//user.visible_message(SPAN_WARNING("[user] begins to clean \the [T]."))
 			user.setClickCooldown(3)
-			if(do_after(user, 23, T))
+			if(do_after(user, mopspeed, T))
 				if(T)
 					T.clean(src, user)
 				to_chat(user, "<span class='warning'>You have finished mopping!</span>")
@@ -136,6 +137,43 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 		return
 	..()
 
+/obj/item/mop/advanced
+	desc = "The most advanced tool in a custodian's arsenal, with a cleaner synthesizer to boot! Just think of all the viscera you will clean up with this!"
+	name = "advanced mop"
+	icon_state = "advmop"
+	item_state = "mop"
+	force = 6
+	throwforce = 11
+	mopspeed = 15
+	var/refill_enabled = TRUE //Self-refill toggle for when a janitor decides to mop with something other than water.
+	var/refill_rate = 1 //Rate per process() tick mop refills itself
+	var/refill_reagent = "cleaner" //Determins what reagent to use for refilling, just in case someone wanted to make a HOLY MOP OF PURGING
+
+/obj/item/mop/advanced/Initialize()
+	. = ..()
+	START_PROCESSING(SSobj, src)
+
+/obj/item/mop/advanced/attack_self(mob/user)
+	refill_enabled = !refill_enabled
+	if(refill_enabled)
+		START_PROCESSING(SSobj, src)
+	else
+		STOP_PROCESSING(SSobj,src)
+	to_chat(user, "<span class='notice'>You set the condenser switch to the '[refill_enabled ? "ON" : "OFF"]' position.</span>")
+	playsound(user, 'sound/machines/click.ogg', 30, 1)
+
+/obj/item/mop/advanced/process(delta_time)
+	if(reagents.total_volume < 30)
+		reagents.add_reagent(refill_reagent, refill_rate)
+
+/obj/item/mop/advanced/examine(mob/user)
+	. = ..()
+	. += "The condenser switch is set to <b>[refill_enabled ? "ON" : "OFF"]</b>."
+
+/obj/item/mop/advanced/Destroy()
+	if(refill_enabled)
+		STOP_PROCESSING(SSobj, src)
+	return ..()
 
 #undef MOPMODE_TILE
 //#undef MOPMODE_SWEEP
