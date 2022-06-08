@@ -531,6 +531,14 @@
 /obj/item/handcuffs/disruptor,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/medical/mentalhealth)
+"aBm" = (
+/obj/effect/zone_divider,
+/obj/structure/catwalk,
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 1
+	},
+/turf/simulated/floor/airless/ceiling,
+/area/rift/surfacebase/outside/outside1)
 "aBn" = (
 /obj/effect/zone_divider,
 /turf/simulated/open/lythios43c,
@@ -979,6 +987,16 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/foyer)
+"aYE" = (
+/obj/effect/zone_divider,
+/obj/effect/zone_divider,
+/obj/structure/catwalk,
+/obj/effect/overlay/snow/floor/pointy,
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 1
+	},
+/turf/simulated/floor/airless/ceiling,
+/area/rift/surfacebase/outside/outside1)
 "aZh" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
@@ -1579,6 +1597,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
+"btD" = (
+/obj/structure/stairs/spawner/north,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "btK" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -3399,6 +3421,13 @@
 /obj/structure/railing,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfaceeva/aa/surface_south)
+"cVb" = (
+/obj/effect/zone_divider,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "cVJ" = (
 /obj/structure/grille,
 /obj/structure/foamedmetal,
@@ -7492,16 +7521,16 @@
 /obj/item/slime_scanner,
 /obj/item/slime_scanner,
 /obj/item/storage/box/monkeycubes{
-	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped = 10)
+	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped=10)
 	},
 /obj/item/storage/box/monkeycubes{
-	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped = 10)
+	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped=10)
 	},
 /obj/item/storage/box/monkeycubes{
-	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped = 10)
+	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped=10)
 	},
 /obj/item/storage/box/monkeycubes{
-	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped = 10)
+	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped=10)
 	},
 /obj/effect/floor_decal/corner/purple{
 	dir = 5
@@ -9699,6 +9728,13 @@
 /obj/machinery/atmospherics/portables_connector,
 /turf/simulated/floor/tiled/steel,
 /area/rift/surfacebase/outside/outside1)
+"hRt" = (
+/obj/effect/zone_divider,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "hRV" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
@@ -10567,6 +10603,11 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main/secondary)
+"ivK" = (
+/obj/effect/zone_divider,
+/obj/structure/stairs/spawner/north,
+/turf/simulated/floor/airless/ceiling,
+/area/rift/surfacebase/outside/outside1)
 "ivN" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -18879,6 +18920,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_one)
+"oBx" = (
+/obj/effect/zone_divider,
+/obj/effect/floor_decal/industrial/halfstair,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "oBA" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/steel,
@@ -20134,6 +20180,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
+"psF" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "psX" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -24350,7 +24402,7 @@
 	},
 /obj/machinery/door/airlock/glass_research{
 	name = "Xenoflora Research";
-	req_one_access = list(30, 35, 47, 77)
+	req_one_access = list(30,35,47,77)
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -26375,6 +26427,13 @@
 /area/rnd/hallway)
 "uaX" = (
 /turf/simulated/floor/plating,
+/area/rift/surfacebase/outside/outside1)
+"ubh" = (
+/obj/structure/catwalk,
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 1
+	},
+/turf/simulated/floor/airless/ceiling,
 /area/rift/surfacebase/outside/outside1)
 "ubH" = (
 /obj/structure/table/wooden_reinforced,
@@ -28583,7 +28642,7 @@
 "vJJ" = (
 /obj/machinery/door/airlock/glass_research{
 	name = "Xenoflora Research";
-	req_one_access = list(30, 35, 47, 77)
+	req_one_access = list(30,35,47,77)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
@@ -29488,6 +29547,11 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/storage/surface_eva)
+"wtn" = (
+/obj/effect/zone_divider,
+/obj/structure/railing,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "wtq" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
@@ -31475,6 +31539,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/foyer)
+"ycs" = (
+/obj/effect/zone_divider,
+/turf/simulated/floor/airless/ceiling,
+/area/rift/surfacebase/outside/outside1)
 "ydt" = (
 /obj/machinery/light{
 	dir = 1
@@ -31515,6 +31583,14 @@
 "yeX" = (
 /turf/simulated/floor/plating,
 /area/maintenance/evahallway)
+"yfd" = (
+/obj/structure/catwalk,
+/obj/effect/overlay/snow/floor/pointy,
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 1
+	},
+/turf/simulated/floor/airless/ceiling,
+/area/rift/surfacebase/outside/outside1)
 "yfC" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -33992,9 +34068,9 @@ iFN
 iFN
 iFN
 iFN
-iFN
-iFN
-iFN
+vUA
+vUA
+vUA
 iFN
 iFN
 iFN
@@ -34016,9 +34092,9 @@ lcN
 lcN
 lcN
 lcN
-lcN
-lcN
-lcN
+vUA
+vUA
+vUA
 lcN
 lcN
 lcN
@@ -34186,6 +34262,18 @@ iFN
 iFN
 iFN
 iFN
+vUA
+vUA
+vUA
+iFN
+iFN
+iFN
+iFN
+mif
+iFN
+iFN
+iFN
+iFN
 iFN
 iFN
 iFN
@@ -34198,20 +34286,20 @@ iFN
 iFN
 iFN
 iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-mif
-iFN
-iFN
-iFN
-iFN
+vUA
+vUA
+vUA
 lcN
 lcN
+lcN
+lcN
+aBn
+lcN
+lcN
+lcN
+vUA
+vUA
+vUA
 lcN
 lcN
 lcN
@@ -34233,21 +34321,9 @@ aBn
 lcN
 lcN
 lcN
-lcN
-lcN
-lcN
-lcN
-lcN
-lcN
-lcN
-lcN
-aBn
-lcN
-lcN
-lcN
-lcN
-lcN
-lcN
+vUA
+vUA
+vUA
 lcN
 lcN
 lcN
@@ -34380,21 +34456,9 @@ iFN
 iFN
 iFN
 iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-mif
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
+vUA
+vUA
+vUA
 iFN
 iFN
 iFN
@@ -34408,6 +34472,30 @@ iFN
 iFN
 iFN
 iFN
+iFN
+iFN
+iFN
+mif
+iFN
+iFN
+iFN
+iFN
+vUA
+vUA
+vUA
+iFN
+lcN
+lcN
+lcN
+aBn
+lcN
+lcN
+lcN
+vUA
+vUA
+vUA
+lcN
+lcN
 lcN
 lcN
 lcN
@@ -34427,21 +34515,9 @@ aBn
 lcN
 lcN
 lcN
-lcN
-lcN
-lcN
-lcN
-lcN
-lcN
-lcN
-lcN
-aBn
-lcN
-lcN
-lcN
-lcN
-lcN
-lcN
+vUA
+vUA
+vUA
 lcN
 lcN
 lcN
@@ -34609,21 +34685,9 @@ mif
 iFN
 iFN
 iFN
-iFN
-iFN
-lcN
-lcN
-lcN
-lcN
-lcN
-lcN
-aBn
-lcN
-lcN
-lcN
-lcN
-lcN
-lcN
+vUA
+vUA
+vUA
 lcN
 lcN
 lcN
@@ -34636,6 +34700,18 @@ lcN
 lcN
 lcN
 lcN
+lcN
+lcN
+lcN
+lcN
+lcN
+aBn
+lcN
+lcN
+lcN
+vUA
+vUA
+vUA
 iFN
 iFN
 iFN
@@ -35805,8 +35881,8 @@ iFN
 iFN
 iFN
 iFN
-mif
-iFN
+cVb
+evV
 iFN
 iFN
 iFN
@@ -35997,10 +36073,10 @@ iFN
 iFN
 iFN
 iFN
-iFN
-iFN
-mif
-iFN
+vUA
+vUA
+aBm
+hHw
 iFN
 iFN
 iFN
@@ -36190,11 +36266,11 @@ mif
 mif
 mif
 mif
-mif
-mif
-mif
-lFn
-mif
+wtn
+ivK
+ycs
+aYE
+oBx
 mif
 mif
 mif
@@ -36385,10 +36461,10 @@ iFN
 iFN
 iFN
 iFN
-iFN
-iFN
-mif
-iFN
+psF
+psF
+hRt
+psF
 iFN
 iFN
 iFN
@@ -37678,21 +37754,9 @@ iFN
 iFN
 iFN
 iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-mif
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
+vUA
+vUA
+vUA
 iFN
 iFN
 iFN
@@ -37714,8 +37778,20 @@ iFN
 iFN
 iFN
 iFN
+vUA
+vUA
+vUA
 iFN
 iFN
+iFN
+iFN
+mif
+iFN
+iFN
+iFN
+vUA
+vUA
+vUA
 iFN
 iFN
 iFN
@@ -37737,9 +37813,9 @@ mif
 iFN
 iFN
 iFN
-iFN
-iFN
-iFN
+vUA
+vUA
+vUA
 iFN
 iFN
 iFN
@@ -37872,21 +37948,9 @@ iFN
 iFN
 iFN
 iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-mif
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
+vUA
+vUA
+vUA
 iFN
 iFN
 iFN
@@ -37908,8 +37972,20 @@ iFN
 iFN
 iFN
 iFN
+vUA
+vUA
+vUA
 iFN
 iFN
+iFN
+iFN
+mif
+iFN
+iFN
+iFN
+vUA
+vUA
+vUA
 iFN
 iFN
 iFN
@@ -37931,9 +38007,9 @@ mif
 iFN
 iFN
 iFN
-iFN
-iFN
-iFN
+vUA
+vUA
+vUA
 iFN
 iFN
 iFN
@@ -38066,21 +38142,9 @@ iFN
 iFN
 iFN
 iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-mif
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
+vUA
+vUA
+vUA
 iFN
 iFN
 iFN
@@ -38102,8 +38166,20 @@ iFN
 iFN
 iFN
 iFN
+vUA
+vUA
+vUA
 iFN
 iFN
+iFN
+iFN
+mif
+iFN
+iFN
+iFN
+vUA
+vUA
+vUA
 iFN
 iFN
 iFN
@@ -38125,9 +38201,9 @@ mif
 iFN
 iFN
 iFN
-iFN
-iFN
-iFN
+vUA
+vUA
+vUA
 iFN
 iFN
 iFN
@@ -38870,10 +38946,10 @@ kAb
 arS
 iFN
 iFN
-iFN
-iFN
-iFN
-mif
+evV
+evV
+evV
+cVb
 iFN
 iFN
 iFN
@@ -39063,11 +39139,11 @@ qaG
 kAb
 arS
 iFN
+vUA
+btD
 iFN
-iFN
-iFN
-iFN
-mif
+yfd
+oBx
 iFN
 iFN
 iFN
@@ -39257,11 +39333,11 @@ qaG
 kAb
 arS
 iFN
-iFN
-iFN
-iFN
-iFN
-mif
+vUA
+vUA
+vUA
+ubh
+oBx
 iFN
 iFN
 iFN
@@ -39454,8 +39530,8 @@ kAb
 kAb
 arS
 iFN
-iFN
-mif
+psF
+hRt
 iFN
 iFN
 iFN
