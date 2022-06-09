@@ -160,7 +160,7 @@ var/list/flooring_types
 		'sound/effects/footstep/snow5.ogg'))
 
 /decl/flooring/snow/gravsnow
-	name = "gravsnow"
+	name = "snowy gravel"
 	desc = "A layer of coarse ice pebbles and assorted gravel."
 	icon = 'icons/turf/snow_new.dmi'
 	icon_base = "gravsnow"
