@@ -34,11 +34,11 @@
 	. = ..()
 	if(.) update_w_class()
 
-/obj/item/storage/bag/can_be_inserted(obj/item/W, mob/user, stop_messages = 0)
-	var/mob/living/carbon/human/H = ishuman(user) ? user : null // if we're human, then we need to check if bag in a pocket
-	if(istype(src.loc, /obj/item/storage) || (src in list(H.l_store, H.r_store)))
+/obj/item/storage/bag/can_be_inserted(obj/item/W, stop_messages = 0)
+	var/mob/living/carbon/human/H = usr // if we're human, then we need to check if bag in a pocket
+	if(istype(src.loc, /obj/item/storage) || ishuman(H) && (H.l_store == src || H.r_store == src))
 		if(!stop_messages)
-			to_chat(user, SPAN_NOTICE("Take \the [src] out of [istype(src.loc, /obj) ? "\the [src.loc]" : "the pocket"] first."))
+			to_chat(usr, SPAN_NOTICE("Take \the [src] out of [istype(src.loc, /obj) ? "\the [src.loc]" : "the pocket"] first."))
 		return 0 //causes problems if the bag expands and becomes larger than src.loc can hold, so disallow it
 	. = ..()
 
@@ -48,7 +48,7 @@
 		w_class = max(w_class, I.w_class)
 
 	var/cur_storage_space = storage_space_used()
-	while(21*(w_class-1) < cur_storage_space)
+	while((max_storage_space / 5 * (w_class-1)) < cur_storage_space)
 		w_class++
 
 // -----------------------------
