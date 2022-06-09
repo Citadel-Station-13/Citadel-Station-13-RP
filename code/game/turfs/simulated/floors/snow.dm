@@ -69,3 +69,16 @@
 	icon_state = "ice"
 	desc = "Seems safe enough to walk on."
 	movement_cost = 2
+
+// Snowy gravel
+/turf/simulated/floor/outdoors/gravsnow
+	name = "snowy gravel"
+	icon = 'icons/turf/snow_new.dmi'
+	icon_state = "gravsnow"
+	desc = "A layer of coarse ice pebbles and assorted gravel."
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/snow1.ogg',
+		'sound/effects/footstep/snow2.ogg',
+		'sound/effects/footstep/snow3.ogg',
+		'sound/effects/footstep/snow4.ogg',
+		'sound/effects/footstep/snow5.ogg'))

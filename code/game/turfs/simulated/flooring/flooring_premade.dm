@@ -457,9 +457,8 @@
 	icon_state = "snow"
 	var/list/crossed_dirs = list()
 
-/turf/simulated/floor/outdoors/gravsnow
+/turf/simulated/floor/snow/gravsnow
 	name = "snowy gravel"
-	desc = "A layer of coarse ice pebbles and assorted gravel."
 	icon = 'icons/turf/snow_new.dmi'
 	icon_state = "gravsnow"
 
