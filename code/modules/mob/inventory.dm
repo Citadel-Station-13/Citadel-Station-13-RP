@@ -3,7 +3,7 @@
 
 //This proc is called whenever someone clicks an inventory ui slot.
 /mob/proc/attack_ui(var/slot)
-	var/obj/item/W = get_active_hand()
+	var/obj/item/W = get_active_held_item()
 
 	var/obj/item/E = get_equipped_item(slot)
 	if (istype(E))
@@ -49,7 +49,7 @@
 	return 0
 
 /obj/item/proc/equip_to_best_slot(mob/M)
-	if(src != M.get_active_hand())
+	if(src != M.get_active_held_item())
 		to_chat(M, "<span class='warning'>You are not holding anything to equip!</span>")
 		return FALSE
 
@@ -67,7 +67,7 @@
 		possible += M:belt
 	if(M.vars.Find("back"))
 		possible += M:back
-	possible += M.get_inactive_hand()
+	possible += M.get_inactive_held_item()
 
 	for(var/i in possible)
 		if(!i)
@@ -99,7 +99,7 @@
 	// If the item is a stack and we're already holding a stack then merge
 	if (istype(I, /obj/item/stack))
 		var/obj/item/stack/I_stack = I
-		var/obj/item/stack/active_stack = get_active_hand()
+		var/obj/item/stack/active_stack = get_active_held_item()
 
 		if (I_stack.zero_amount())
 			return FALSE
@@ -110,7 +110,7 @@
 					to_chat(usr, "<span class='notice'>Your [active_stack.name] stack now contains [active_stack.get_amount()] [active_stack.singular_name]\s.</span>")
 					return TRUE
 			else
-				var/obj/item/stack/inactive_stack = get_inactive_hand()
+				var/obj/item/stack/inactive_stack = get_inactive_held_item()
 				if (istype(inactive_stack) && istype(I_stack, inactive_stack.stacktype))
 					if (I_stack.merge(inactive_stack))
 						to_chat(usr, "<span class='notice'>Your [inactive_stack.name] stack now contains [inactive_stack.get_amount()] [inactive_stack.singular_name]\s.</span>")
