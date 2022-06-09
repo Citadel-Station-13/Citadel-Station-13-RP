@@ -3,23 +3,43 @@ GLOBAL_REAL_VAR(total_runtimes) = 0
 GLOBAL_VAR_INIT(total_runtimes_seen, 0)
 GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 
+// to detect when someone fucks up royally and breaks error handling with preinit runtimes
+#ifdef UNIT_TESTS
+GLOBAL_REAL_VAR(runtime_skip_once) = FALSE
+GLOBAL_REAL_VAR(runtime_trap_triggered) = FALSE
+#endif
+
+
 #ifdef USE_CUSTOM_ERROR_HANDLER
 #define ERROR_USEFUL_LEN 2
 /world/Error(exception/E, datum/e_src)
+
+#ifdef UNIT_TESTS
+	if(runtime_skip_once)
+		runtime_skip_once = FALSE
+		runtime_trap_triggered = TRUE
+		return
+#endif
+
 	++global.total_runtimes
+	to_chat(world, "[__FILE__] [__LINE__]")
 
 	var/static/list/error_last_seen = list()
 	var/static/list/error_cooldown = list() /* Error_cooldown items will either be positive(cooldown time) or negative(silenced error)
 												If negative, starts at -1, and goes down by 1 each time that error gets skipped*/
 
 	if(!GLOB || !error_last_seen)
-		log_world("error runtime caught;")
-		++GLOB.total_runtimes_seen
+		log_world("early runtime caught;")
 		return ..()
+
+#warn test
+	to_chat(world, "[__FILE__] [__LINE__]")
+	++GLOB.total_runtimes_seen
 
 	if(!istype(E)) //Something threw an unusual exception
 		log_world("uncaught runtime error: [E]")
 		return ..()
+	to_chat(world, "[__FILE__] [__LINE__]")
 
 	//this is snowflake because of a byond bug (ID:2306577), do not attempt to call non-builtin procs in this if
 	if(copytext(E.name, 1, 32) == "Maximum recursion level reached")
@@ -38,24 +58,29 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 		TgsEndProcess()
 		Reboot(reason = 1)
 		return ..()
+	to_chat(world, "[__FILE__] [__LINE__]")
 
 	if (islist(stack_trace_storage))
 		for (var/line in splittext(E.desc, "\n"))
 			if (text2ascii(line) != 32)
 				stack_trace_storage += line
+	to_chat(world, "[__FILE__] [__LINE__]")
 
 	var/erroruid = "[E.file][E.line]"
 	var/last_seen = error_last_seen[erroruid]
 	var/cooldown = error_cooldown[erroruid] || 0
+	to_chat(world, "[__FILE__] [__LINE__]")
 
 	if(last_seen == null)
 		error_last_seen[erroruid] = world.time
 		last_seen = world.time
+	to_chat(world, "[__FILE__] [__LINE__]")
 
 	if(cooldown < 0)
 		error_cooldown[erroruid]-- //Used to keep track of skip count for this error
 		GLOB.total_runtimes_skipped++
 		return //Error is currently silenced, skip handling it
+	to_chat(world, "[__FILE__] [__LINE__]")
 
 	//Handle cooldowns and silencing spammy errors
 	var/silencing = FALSE
@@ -63,6 +88,7 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 	var/configured_error_cooldown = 600
 	var/configured_error_limit = 50
 	var/configured_error_silence_time = 6000
+	to_chat(world, "[__FILE__] [__LINE__]")
 
 /*
 	// We can runtime before config is initialized because BYOND initialize objs/map before a bunch of other stuff happens.
@@ -85,6 +111,7 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 
 	//Each occurence of a unique error adds to its cooldown time...
 	cooldown = max(0, cooldown - (world.time - last_seen)) + configured_error_cooldown
+	to_chat(world, "[__FILE__] [__LINE__]")
 	// ... which is used to silence an error if it occurs too often, too fast
 	if(cooldown > configured_error_cooldown * configured_error_limit)
 		cooldown = -1
@@ -97,9 +124,11 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 			if(skipcount > 0)
 				SEND_TEXT(world.log, "\[[time_stamp()]] Skipped [skipcount] runtimes in [E.file],[E.line].")
 				GLOB.error_cache.log_error(E, skip_count = skipcount)
+	to_chat(world, "[__FILE__] [__LINE__]")
 
 	error_last_seen[erroruid] = world.time
 	error_cooldown[erroruid] = cooldown
+	to_chat(world, "[__FILE__] [__LINE__]")
 
 	var/list/usrinfo = null
 	var/locinfo
@@ -108,6 +137,7 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 		locinfo = loc_name(usr)
 		if(locinfo)
 			usrinfo += "  usr.loc: [locinfo]"
+	to_chat(world, "[__FILE__] [__LINE__]")
 	// The proceeding mess will almost definitely break if error messages are ever changed
 	var/list/splitlines = splittext(E.desc, "\n")
 	var/list/desclines = list()
@@ -125,22 +155,27 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 				desclines += ("  " + line) // Pad any unpadded lines, so they look pretty
 			else
 				desclines += line
+	to_chat(world, "[__FILE__] [__LINE__]")
 	if(usrinfo) //If thi	s info isn't null, it hasn't been added yet
 		desclines.Add(usrinfo)
 	if(silencing)
 		desclines += "  (This error will now be silenced for [DisplayTimeText(configured_error_silence_time)])"
+	to_chat(world, "[__FILE__] [__LINE__]")
 	GLOB.error_cache?.log_error(E, desclines)
 
+	to_chat(world, "[__FILE__] [__LINE__]")
 	var/main_line = "\[[time_stamp()]] Runtime in [E.file],[E.line]: [E]"
 	SEND_TEXT(world.log, main_line)
 	for(var/line in desclines)
 		SEND_TEXT(world.log, line)
+	to_chat(world, "[__FILE__] [__LINE__]")
 
 #ifdef UNIT_TESTS
 	//good day, sir
 	GLOB.current_test?.Fail("[main_line]\n[desclines.Join("\n")]")
 #endif
 
+	to_chat(world, "[__FILE__] [__LINE__]")
 	// This writes the regular format (unwrapping newlines and inserting timestamps as needed).
 	log_runtime("runtime error: [E.name]\n[E.desc]")
 
