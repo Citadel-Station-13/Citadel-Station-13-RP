@@ -3509,6 +3509,9 @@
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled/eris/cafe,
 /area/crew_quarters/cafeteria)
+"fQ" = (
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "fR" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 2;
@@ -7526,6 +7529,12 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside3)
+"mY" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 5
+	},
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "mZ" = (
 /obj/machinery/computer/station_alert/all,
 /obj/effect/floor_decal/corner/lightorange{
@@ -8107,7 +8116,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "oe" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -12434,6 +12443,16 @@
 /obj/structure/railing,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
+"ws" = (
+/obj/structure/railing,
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "rift_aux_1";
+	pixel_y = -1;
+	pixel_x = 26
+	},
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "wt" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "AI Upload Access";
@@ -12626,12 +12645,10 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/exploration)
 "wG" = (
-/obj/structure/railing{
+/obj/effect/overlay/snow/floor/edges_new{
 	dir = 8
 	},
-/obj/structure/railing,
-/obj/structure/lattice,
-/turf/simulated/floor/plating/lythios43c,
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "wI" = (
 /obj/machinery/door/firedoor/glass/hidden{
@@ -13994,6 +14011,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
+"zf" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 10
+	},
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "zg" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4;
@@ -14947,6 +14970,13 @@
 	},
 /turf/simulated/floor/tiled/freezer/cold,
 /area/crew_quarters/freezer)
+"AV" = (
+/obj/structure/railing,
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 10
+	},
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "AW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -16983,7 +17013,7 @@
 /area/shuttle/excursion/cargo)
 "EP" = (
 /obj/effect/floor_decal/industrial/halfstair,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfaceeva/aa/cliff_north)
 "EQ" = (
 /obj/structure/cable/green{
@@ -18332,14 +18362,10 @@
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "Hy" = (
-/obj/structure/railing{
-	dir = 1
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 4
 	},
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/lattice,
-/turf/simulated/floor/plating/lythios43c,
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "Hz" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
@@ -20795,6 +20821,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
+"Mg" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "Mh" = (
 /obj/machinery/power/apc{
 	name = "south bump";
@@ -22781,7 +22813,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "PU" = (
 /obj/structure/railing,
@@ -23733,6 +23765,10 @@
 /obj/structure/window/reinforced/tinted/frosted,
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/captain)
+"RD" = (
+/obj/effect/overlay/snow/floor/edges_new,
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "RE" = (
 /obj/machinery/computer/secure_data{
 	dir = 1
@@ -24375,6 +24411,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/civvie/cockpit)
+"SM" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 6
+	},
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "SN" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
@@ -26935,6 +26977,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/exploration/showers)
+"XE" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 9
+	},
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "XF" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -26962,6 +27010,16 @@
 "XH" = (
 /obj/structure/barricade,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/rift/surfacebase/outside/outside3)
+"XI" = (
+/obj/structure/railing,
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "rift_aux_2";
+	pixel_y = -1;
+	pixel_x = 26
+	},
+/turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "XJ" = (
 /obj/structure/table/reinforced,
@@ -34516,7 +34574,7 @@ us
 us
 us
 us
-mn
+ws
 Ls
 IA
 IA
@@ -34710,7 +34768,7 @@ us
 us
 us
 us
-tI
+kf
 qn
 IA
 IA
@@ -35521,7 +35579,7 @@ us
 us
 us
 us
-mn
+XI
 Ls
 IA
 IA
@@ -35715,7 +35773,7 @@ us
 us
 us
 us
-tI
+kf
 qn
 IA
 IA
@@ -36068,8 +36126,8 @@ mn
 Ls
 IA
 IA
-Hy
-wG
+TO
+TO
 IA
 IA
 Lt
@@ -38976,16 +39034,16 @@ us
 us
 mn
 wr
-uz
-uz
+Yn
+Yn
 Di
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+XE
+wG
+wG
+wG
+wG
+wG
+zf
 cH
 cH
 cH
@@ -39170,18 +39228,18 @@ us
 us
 mn
 jp
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+Mg
+fQ
+wG
+fQ
+fQ
+Hy
+Hy
+Hy
+fQ
+fQ
+wG
+zf
 cH
 cH
 cH
@@ -39364,18 +39422,18 @@ us
 us
 mn
 jp
+mY
+Hy
+Hy
+Hy
+SM
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+mY
+Hy
+fQ
+RD
 cH
 cH
 cH
@@ -39568,8 +39626,8 @@ kr
 kr
 kr
 jp
-cH
-cH
+Mg
+RD
 cH
 cH
 cH
@@ -39762,8 +39820,8 @@ kr
 Uw
 kr
 jp
-cH
-cH
+Mg
+RD
 cH
 cH
 cH
@@ -39956,8 +40014,8 @@ kr
 HG
 kr
 jp
-cH
-cH
+Mg
+RD
 cH
 cH
 cH
@@ -40150,8 +40208,8 @@ kr
 OT
 kr
 jp
-cH
-cH
+Mg
+RD
 cH
 cH
 cH
@@ -40344,8 +40402,8 @@ kr
 Cj
 kr
 jp
-cH
-cH
+Mg
+RD
 cH
 cH
 cH
@@ -40538,8 +40596,8 @@ Sb
 Du
 kr
 jp
-cH
-cH
+Mg
+RD
 cH
 cH
 cH
@@ -40732,8 +40790,8 @@ kr
 kr
 kr
 jp
-cH
-cH
+Mg
+RD
 cH
 cH
 cH
@@ -40926,8 +40984,8 @@ Vt
 nu
 kr
 jp
-cH
-cH
+Mg
+RD
 cH
 cH
 cH
@@ -41120,14 +41178,14 @@ mT
 mT
 Dw
 PT
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+fQ
+fQ
+wG
+wG
+wG
+wG
+wG
+zf
 cH
 cH
 cH
@@ -41314,19 +41372,19 @@ qz
 sF
 tZ
 od
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+fQ
+fQ
+Hy
+Hy
+Hy
+fQ
+fQ
+fQ
+wG
+wG
+wG
+wG
+zf
 cH
 cH
 cH
@@ -41508,23 +41566,23 @@ Xx
 SS
 kr
 jp
+Mg
+RD
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+mY
+Hy
+Hy
+Hy
+Hy
+fQ
+fQ
+fQ
+wG
+wG
+wG
+zf
 cH
 iL
 LW
@@ -41702,6 +41760,8 @@ kr
 kr
 kr
 jp
+Mg
+RD
 cH
 cH
 cH
@@ -41710,18 +41770,16 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+mY
+Hy
+Hy
+Hy
+Hy
+fQ
+fQ
+wG
+wG
+wG
 UI
 IA
 IA
@@ -41889,6 +41947,15 @@ AF
 cH
 cH
 cH
+XE
+wG
+wG
+wG
+wG
+wG
+wG
+fQ
+SM
 cH
 cH
 cH
@@ -41902,20 +41969,11 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+mY
+fQ
+fQ
+Hy
+Hy
 cc
 mX
 IM
@@ -42079,7 +42137,18 @@ us
 us
 us
 us
-Zh
+NG
+wG
+wG
+wG
+fQ
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+SM
 cH
 cH
 cH
@@ -42095,19 +42164,8 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+Mg
+RD
 cH
 fk
 Uu
@@ -42273,7 +42331,11 @@ us
 us
 us
 us
-Zh
+NG
+Hy
+Hy
+Hy
+SM
 cH
 cH
 cH
@@ -42295,13 +42357,9 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+XE
+fQ
+RD
 Nk
 Uu
 Uu
@@ -42493,9 +42551,9 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
+Mg
+fQ
+SM
 fk
 Uu
 Uu
@@ -42687,8 +42745,8 @@ cH
 cH
 cH
 cH
-cH
-cH
+Mg
+RD
 Nk
 Uu
 Uu
@@ -42881,8 +42939,8 @@ cH
 cH
 cH
 cH
-cH
-cH
+Mg
+RD
 Nk
 Uu
 Uu
@@ -43075,8 +43133,8 @@ cH
 cH
 cH
 cH
-cH
-cH
+Mg
+RD
 Nk
 Uu
 Uu
@@ -43269,8 +43327,8 @@ cH
 cH
 cH
 cH
-cH
-cH
+Mg
+RD
 Nk
 Uu
 Uu
@@ -43463,8 +43521,8 @@ cH
 cH
 cH
 cH
-cH
-cH
+Mg
+RD
 Nk
 Uu
 Uu
@@ -43657,8 +43715,8 @@ cH
 cH
 cH
 cH
-cH
-cH
+Mg
+RD
 Nk
 Uu
 Uu
@@ -43851,8 +43909,8 @@ cH
 cH
 cH
 cH
-cH
-cH
+Mg
+RD
 Nk
 Uu
 Uu
@@ -44045,8 +44103,8 @@ cH
 cH
 cH
 cH
-cH
-cH
+Mg
+RD
 Nk
 Uu
 Uu
@@ -44239,9 +44297,9 @@ cH
 cH
 cH
 cH
-cH
-cH
-Nk
+Mg
+fQ
+AV
 Uu
 Uu
 Uu
@@ -44433,9 +44491,9 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
+mY
+fQ
+RD
 iL
 Uu
 Uu
@@ -44628,8 +44686,8 @@ cH
 cH
 cH
 cH
-cH
-cH
+Mg
+RD
 Nk
 Uu
 Uu
@@ -44822,9 +44880,9 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
+Mg
+fQ
+zf
 iL
 Uu
 Uu
@@ -45016,10 +45074,10 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
+Mg
+fQ
+fQ
+wG
 Hx
 SZ
 UE
@@ -45209,11 +45267,11 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
+XE
+fQ
+Hy
+Hy
+Hy
 UI
 qc
 IA
@@ -45403,8 +45461,8 @@ cH
 cH
 cH
 cH
-cH
-cH
+Mg
+RD
 cH
 fk
 xj
@@ -45597,8 +45655,8 @@ cH
 cH
 cH
 cH
-cH
-cH
+Mg
+RD
 Nk
 us
 us
@@ -45791,8 +45849,8 @@ cH
 cH
 cH
 cH
-cH
-cH
+Mg
+RD
 Nk
 us
 us
@@ -45985,8 +46043,8 @@ cH
 cH
 cH
 cH
-cH
-cH
+Mg
+RD
 Nk
 us
 us
@@ -46178,9 +46236,9 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
+XE
+fQ
+RD
 Nk
 us
 us
@@ -46372,9 +46430,9 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
+Mg
+fQ
+SM
 Nk
 us
 us
@@ -46566,8 +46624,8 @@ cH
 cH
 cH
 cH
-cH
-cH
+Mg
+RD
 cH
 Nk
 us
@@ -46760,8 +46818,8 @@ cH
 cH
 cH
 cH
-cH
-cH
+Mg
+RD
 cH
 Nk
 us
@@ -46941,21 +46999,21 @@ cH
 cH
 Ba
 cH
+XE
+wG
+zf
 cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+XE
+wG
+wG
+wG
+wG
+wG
+fQ
+RD
 cH
 Nk
 us
@@ -47135,21 +47193,21 @@ cH
 Nk
 CG
 EP
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+Hy
+fQ
+fQ
+wG
+wG
+wG
+wG
+fQ
+fQ
+Hy
+Hy
+Hy
+Hy
+Hy
+SM
 cH
 Nk
 us
@@ -47330,14 +47388,14 @@ Cb
 Ac
 TK
 jp
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+mY
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+SM
 cH
 cH
 cH

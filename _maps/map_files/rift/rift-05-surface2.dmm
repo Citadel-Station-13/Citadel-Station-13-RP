@@ -5484,8 +5484,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/researchdivision)
 "kd" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/airless/ceiling,
+/turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside2)
 "ke" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -5520,10 +5519,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/dormitory)
-"kg" = (
-/obj/structure/railing,
-/turf/simulated/floor/airless/ceiling,
-/area/rift/surfacebase/outside/outside2)
 "kh" = (
 /obj/structure/closet/wardrobe/red,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -10581,12 +10576,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/researchdivision)
-"tl" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/airless/ceiling,
-/area/rift/surfacebase/outside/outside2)
 "tm" = (
 /obj/machinery/vending/security,
 /turf/simulated/floor/tiled/red,
@@ -23292,7 +23281,7 @@
 /area/security/briefing_room)
 "Qd" = (
 /obj/structure/stairs/spawner/south,
-/turf/simulated/floor/airless/ceiling,
+/turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside2)
 "Qe" = (
 /obj/structure/catwalk,
@@ -32898,7 +32887,7 @@ aa
 aa
 aa
 rt
-kd
+qL
 Ib
 Ib
 Ib
@@ -33093,7 +33082,7 @@ aa
 aa
 jy
 qL
-hI
+kd
 Qd
 Ib
 aa
@@ -33674,7 +33663,7 @@ aa
 aa
 aa
 rt
-kd
+qL
 Ib
 Ib
 Ib
@@ -36740,9 +36729,9 @@ hI
 hI
 hI
 hI
-kg
+Ib
 qL
-hI
+kd
 Qd
 Ib
 aa
@@ -36934,8 +36923,8 @@ hI
 hI
 hI
 hI
-kg
-qL
+Ib
+Ib
 Ib
 Ib
 Ib
@@ -37129,7 +37118,7 @@ hI
 hI
 hI
 hI
-tl
+hI
 aa
 aa
 aa

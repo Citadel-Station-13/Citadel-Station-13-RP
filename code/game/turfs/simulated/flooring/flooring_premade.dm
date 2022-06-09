@@ -457,16 +457,23 @@
 	icon_state = "snow"
 	var/list/crossed_dirs = list()
 
+/turf/simulated/floor/outdoors/gravsnow
+	name = "snowy gravel"
+	desc = "A layer of coarse ice pebbles and assorted gravel."
+	icon = 'icons/turf/snow_new.dmi'
+	icon_state = "gravsnow"
+
 /turf/simulated/floor/snow/snow2
 	name = "snow"
 	icon = 'icons/turf/snow.dmi'
 	icon_state = "snow"
 	initial_flooring = /decl/flooring/snow
 
-/turf/simulated/floor/snow/gravsnow
+/turf/simulated/floor/snow/gravsnow2
 	name = "snow"
+	icon = 'icons/turf/snow.dmi'
 	icon_state = "gravsnow"
-	initial_flooring = /decl/flooring/snow/gravsnow
+	initial_flooring = /decl/flooring/snow/gravsnow2
 
 /turf/simulated/floor/snow/plating
 	name = "snowy playing"

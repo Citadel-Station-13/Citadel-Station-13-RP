@@ -258,6 +258,15 @@
 "bO" = (
 /turf/simulated/wall,
 /area/rnd/outpost)
+"bR" = (
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 8
+	},
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "bW" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -382,7 +391,7 @@
 	},
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 1;
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
@@ -508,6 +517,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
+"dx" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 6
+	},
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "dB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
@@ -614,6 +632,12 @@
 	dir = 4
 	},
 /turf/simulated/floor/lythios43c,
+/area/rift/surfacebase/outside/west)
+"ej" = (
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
 "ek" = (
 /obj/structure/cable/yellow{
@@ -733,7 +757,7 @@
 /area/rnd/outpost)
 "eU" = (
 /obj/machinery/door/firedoor/border_only{
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -1151,13 +1175,9 @@
 /turf/simulated/wall/r_wall,
 /area/rnd/outpost/anomaly_lab/analysis)
 "hx" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
+/obj/effect/overlay/snow/floor/surround_new{
+	dir = 1
 	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
-/obj/effect/overlay/snow/floor/pointy,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
 "hz" = (
@@ -1234,7 +1254,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass/hidden{
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
@@ -1413,6 +1433,19 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/tether/outpost/solars_outside)
+"jB" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/catwalk,
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 4
+	},
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 8
+	},
+/turf/simulated/floor/lythios43c,
+/area/rift/surfacebase/outside/west)
 "jC" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -1461,6 +1494,10 @@
 /obj/machinery/meter,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
+"jQ" = (
+/obj/effect/overlay/snow/floor/grav_edges,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "jR" = (
 /obj/machinery/bomb_tester,
 /turf/simulated/floor/tiled/steel_grid,
@@ -1641,9 +1678,11 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
 "ld" = (
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 5
+	},
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
@@ -1953,7 +1992,7 @@
 	},
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 2;
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
@@ -2166,7 +2205,7 @@
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west)
 "oJ" = (
-/obj/effect/overlay/snow/floor/pointy{
+/obj/effect/overlay/snow/floor/edges_new{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -2208,7 +2247,7 @@
 	name = "Toxins Mixing"
 	},
 /obj/machinery/door/firedoor/glass{
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/heating)
@@ -2273,7 +2312,7 @@
 	req_one_access = list(10,47)
 	},
 /obj/machinery/door/firedoor/border_only{
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/outpost)
@@ -2342,10 +2381,9 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "px" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 9
 	},
-/obj/effect/overlay/snow/floor/pointy,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
 "py" = (
@@ -2450,7 +2488,7 @@
 	locked = 1
 	},
 /obj/machinery/door/firedoor/glass{
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
@@ -2487,7 +2525,7 @@
 "pW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/glass{
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /obj/machinery/door/airlock/glass_science{
 	name = "Anomaly Testing Airlock Access"
@@ -2608,6 +2646,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
+"qT" = (
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 10
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "qW" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 9
@@ -2761,6 +2805,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
+"sa" = (
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 9
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "sc" = (
 /obj/machinery/camera/network/research_outpost{
 	dir = 8
@@ -2780,7 +2830,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7,
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 1;
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
@@ -3131,7 +3181,7 @@
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/outside/west)
 "um" = (
 /obj/effect/floor_decal/borderfloor{
@@ -3332,10 +3382,9 @@
 /turf/simulated/floor,
 /area/maintenance/substation/outpost)
 "ve" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 5
 	},
-/obj/effect/overlay/snow/floor/pointy,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
 "vk" = (
@@ -3399,6 +3448,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
+"vA" = (
+/obj/effect/overlay/snow/floor/surround_new,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "vB" = (
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 8
@@ -3489,9 +3542,7 @@
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west)
 "wb" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
+/obj/effect/overlay/snow/floor/edges_new,
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/west)
 "we" = (
@@ -3687,11 +3738,17 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "xr" = (
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/obj/structure/catwalk,
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 8
+	},
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 4
+	},
+/turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west)
 "xs" = (
 /obj/effect/floor_decal/borderfloor,
@@ -3920,6 +3977,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/anomaly_lab/analysis)
+"yX" = (
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 6
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "yY" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/alarm{
@@ -3964,7 +4027,7 @@
 	locked = 1
 	},
 /obj/machinery/door/firedoor/glass{
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
@@ -3999,10 +4062,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab/airlock)
+"zn" = (
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "zp" = (
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 1;
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
@@ -4032,6 +4101,12 @@
 /obj/machinery/meter,
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
+"zz" = (
+/obj/effect/overlay/snow/floor/grav_surround{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "zD" = (
 /obj/machinery/atmospherics/pipe/simple/visible/blue{
 	dir = 5
@@ -4062,7 +4137,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass/hidden{
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
@@ -4255,7 +4330,7 @@
 	req_one_access = list(47)
 	},
 /obj/machinery/door/firedoor/glass{
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -4284,7 +4359,7 @@
 	name = "Burn Chamber Air Control";
 	output_tag = "burn_out";
 	pressure_setting = 0;
-	sensors = list("burn_sensor" = "Burn Chamber Sensor")
+	sensors = list("burn_sensor"="Burn Chamber Sensor")
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -4313,7 +4388,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/border_only{
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/breakroom)
@@ -4549,7 +4624,7 @@
 	name = "Xenoarch Storage"
 	},
 /obj/machinery/door/firedoor/border_only{
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -4703,7 +4778,7 @@
 	},
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 1;
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
@@ -4806,6 +4881,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/testing_lab)
+"EA" = (
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "EQ" = (
 /obj/structure/railing{
 	dir = 4
@@ -4944,13 +5025,9 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "Fy" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor/pointy{
+/obj/effect/overlay/snow/floor/surround_new{
 	dir = 8
 	},
-/obj/effect/overlay/snow/floor/pointy,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
 "Fz" = (
@@ -5030,7 +5107,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass/hidden/steel{
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 8
@@ -5281,7 +5358,7 @@
 	},
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 1;
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
@@ -5347,7 +5424,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor/border_only{
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
@@ -5610,7 +5687,7 @@
 "JP" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 8;
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
@@ -5975,10 +6052,27 @@
 	name = "Toxins Workroom"
 	},
 /obj/machinery/door/firedoor/glass{
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/testing_lab)
+"Lp" = (
+/obj/effect/floor_decal/industrial/warning/dust,
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/tether/outpost/solars_outside)
 "LB" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
@@ -5987,7 +6081,7 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor/glass/hidden/steel{
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 5
@@ -6350,7 +6444,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/border_only{
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /obj/machinery/door/airlock/science{
 	name = "Research Outpost"
@@ -6414,7 +6508,9 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "Oi" = (
-/obj/effect/overlay/snow/floor/pointy,
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
 "Om" = (
@@ -6512,7 +6608,7 @@
 	},
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 2;
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
@@ -6651,7 +6747,7 @@
 	},
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 1;
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
@@ -6678,11 +6774,8 @@
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
 "Px" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
@@ -6787,7 +6880,7 @@
 	name = "Anomaly Storage"
 	},
 /obj/machinery/door/firedoor/border_only{
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
@@ -7109,7 +7202,7 @@
 	req_one_access = list(47)
 	},
 /obj/machinery/door/firedoor/glass{
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab/airlock)
@@ -7149,7 +7242,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
 "Sp" = (
-/obj/effect/overlay/snow/floor/pointy{
+/obj/effect/overlay/snow/floor/edges_new{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -7365,7 +7458,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor/glass{
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/testing_lab)
@@ -7465,7 +7558,7 @@
 /obj/machinery/vending/phoronresearch{
 	dir = 8;
 	name = "Toximate 2556";
-	products = list(/obj/item/transfer_valve = 3, /obj/item/assembly/timer = 6, /obj/item/assembly/signaler = 6, /obj/item/assembly/prox_sensor = 6, /obj/item/assembly/igniter = 12)
+	products = list(/obj/item/transfer_valve=3,/obj/item/assembly/timer=6,/obj/item/assembly/signaler=6,/obj/item/assembly/prox_sensor=6,/obj/item/assembly/igniter=12)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/testing_lab)
@@ -7653,7 +7746,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/border_only{
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -7772,14 +7865,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenoarch_storage)
 "WB" = (
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/outside/west)
 "WC" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -8094,7 +8180,7 @@
 	name = "General Gasworks"
 	},
 /obj/machinery/door/firedoor/glass{
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/mixing)
@@ -8133,7 +8219,7 @@
 	name = "Toxins Storage"
 	},
 /obj/machinery/door/firedoor/border_only{
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -33839,7 +33925,7 @@ ek
 ek
 ek
 ek
-Zp
+Lp
 sv
 sv
 sv
@@ -37165,7 +37251,7 @@ sv
 sv
 sv
 sv
-xr
+Fy
 BO
 pL
 pL
@@ -37529,18 +37615,18 @@ sv
 sv
 sv
 sv
+ej
+ej
+ej
+ej
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+ej
+ej
+ej
+ej
+ej
+ej
+ej
 sv
 sv
 sv
@@ -37722,28 +37808,28 @@ sv
 sv
 sv
 sv
+yX
+WB
+WB
+WB
+WB
+zz
+WB
+WB
+WB
+WB
+WB
+WB
+sa
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-px
-Sp
+hx
+vA
 sv
 sv
 Fy
 sv
-ld
+px
 lb
 lb
 lb
@@ -37915,27 +38001,27 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+jQ
+WB
+WB
+WB
+WB
+WB
+WB
+WB
+WB
+WB
+WB
+sa
+bR
+ej
+ej
 ld
 sv
 sv
 px
 Sp
-lb
+Px
 sv
 Oi
 lb
@@ -38109,24 +38195,24 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-ve
-sv
-sv
+jQ
 WB
+WB
+WB
+WB
+WB
+WB
+WB
+sa
+qT
+EA
+zz
+WB
+WB
+dx
+sv
+sv
+hx
 oJ
 Px
 sv
@@ -38304,9 +38390,9 @@ UW
 Jf
 Jf
 If
-bA
-bA
-bA
+jB
+jB
+jB
 ZK
 eg
 Jf
@@ -38324,9 +38410,9 @@ eg
 eg
 eg
 vZ
-bA
-bA
-bA
+xr
+xr
+xr
 ZK
 eg
 uC
@@ -38497,11 +38583,11 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
+jQ
+WB
+WB
+WB
+zn
 sv
 Mv
 je
@@ -38691,11 +38777,11 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
+jQ
+WB
+WB
+WB
+zn
 sv
 Mv
 je
@@ -38885,11 +38971,11 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
+jQ
+WB
+WB
+WB
+zn
 sv
 Mv
 je
@@ -39079,11 +39165,11 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
+jQ
+WB
+WB
+WB
+zn
 sv
 Mv
 je
@@ -39273,11 +39359,11 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
+jQ
+WB
+WB
+WB
+zn
 sv
 Mv
 je
@@ -39467,11 +39553,11 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
+jQ
+WB
+WB
+WB
+zn
 sv
 Mv
 je
@@ -39661,11 +39747,11 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
+jQ
+WB
+WB
+WB
+zn
 sv
 Mv
 je
@@ -39855,11 +39941,11 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
+jQ
+WB
+WB
+WB
+zn
 sv
 Mv
 je
@@ -40049,11 +40135,11 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
+jQ
+WB
+WB
+WB
+zn
 sv
 Mv
 je
@@ -40243,11 +40329,11 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
+jQ
+WB
+WB
+WB
+zn
 sv
 Mv
 je
@@ -40437,11 +40523,11 @@ mp
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
+jQ
+WB
+WB
+WB
+zn
 sv
 Mv
 je
@@ -40631,11 +40717,11 @@ Yd
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
+jQ
+WB
+WB
+WB
+zn
 sv
 Mv
 LC
@@ -40825,11 +40911,11 @@ Yd
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
+jQ
+WB
+WB
+WB
+zn
 sv
 sv
 Me
@@ -41019,11 +41105,11 @@ pn
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
+jQ
+WB
+WB
+WB
+zn
 sv
 sv
 Me
@@ -41213,11 +41299,11 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
+jQ
+WB
+WB
+WB
+zn
 sv
 sv
 Me
@@ -41407,11 +41493,11 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
+jQ
+WB
+WB
+WB
+zn
 sv
 Mv
 PJ
@@ -41601,11 +41687,11 @@ sv
 sv
 sv
 sv
-sv
+jQ
 uj
 uj
 uj
-sv
+zn
 sv
 Mv
 je

@@ -159,6 +159,18 @@ var/list/flooring_types
 		'sound/effects/footstep/snow4.ogg',
 		'sound/effects/footstep/snow5.ogg'))
 
+/decl/flooring/snow/gravsnow
+	name = "gravsnow"
+	desc = "A layer of coarse ice pebbles and assorted gravel."
+	icon = 'icons/turf/snow_new.dmi'
+	icon_base = "gravsnow"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/snow1.ogg',
+		'sound/effects/footstep/snow2.ogg',
+		'sound/effects/footstep/snow3.ogg',
+		'sound/effects/footstep/snow4.ogg',
+		'sound/effects/footstep/snow5.ogg'))
+
 /decl/flooring/snow/snow2
 	name = "snow"
 	desc = "A layer of many tiny bits of frozen water. It's hard to tell how deep it is."
@@ -166,8 +178,9 @@ var/list/flooring_types
 	icon_base = "snow"
 	flags = TURF_HAS_EDGES
 
-/decl/flooring/snow/gravsnow
-	name = "snow"
+/decl/flooring/snow/gravsnow2
+	name = "gravsnow"
+	icon = 'icons/turf/snow.dmi'
 	icon_base = "gravsnow"
 
 /decl/flooring/snow/plating
