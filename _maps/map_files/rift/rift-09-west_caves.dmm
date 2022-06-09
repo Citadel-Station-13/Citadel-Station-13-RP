@@ -57,7 +57,7 @@
 /area/rift/facility/interior/command)
 "gk" = (
 /obj/effect/blocker,
-/turf/simulated/sky/lythios43c/moving/east,
+/turf/unsimulated/floor/sky/depths/west,
 /area/rift/surfacebase/outside/west_caves)
 "gK" = (
 /obj/structure/mirror/long/left_broke{
@@ -266,7 +266,7 @@
 	name = "westcave_to_center";
 	portal_id = "westcavestep"
 	},
-/turf/simulated/sky/lythios43c/moving/east,
+/turf/unsimulated/floor/sky/depths/west,
 /area/rift/surfacebase/outside/west_caves)
 "vh" = (
 /obj/structure/stairs/spawner/south,
@@ -424,7 +424,7 @@
 /obj/effect/map_effect/portal/line/side_b{
 	dir = 8
 	},
-/turf/simulated/sky/lythios43c/moving/east,
+/turf/unsimulated/floor/sky/depths/west,
 /area/rift/surfacebase/outside/west_caves)
 "GR" = (
 /obj/random/trash,
@@ -614,7 +614,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/medical)
 "YA" = (
-/turf/simulated/sky/lythios43c/moving/east,
+/turf/unsimulated/floor/sky/depths/west,
 /area/rift/surfacebase/outside/west_caves)
 "YS" = (
 /obj/structure/stairs/spawner/south,

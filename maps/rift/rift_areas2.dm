@@ -631,6 +631,23 @@
 
 /area/shuttle/excursion/virgo3b_sky
 	name = "\improper Excursion Shuttle - Lythios-43c Sky"
+
+//Adherent Maintenance
+/area/rift/station/adherent_maintenance
+	icon_state = "yellow"
+	name = "\improper Adherent Maintenance"
+
+//Fighter Bay
+/area/rift/station/fighter_bay
+	icon_state = "blue"
+	name = "\improper Fighter Bay"
+
+/area/rift/station/fighter_bay/hangar
+	name = "\improper Fighter Hangar"
+
+/area/rift/station/fighter_bay/maintenance
+	name = "\improper Fighter Bay Maintenance"
+
 //////////////////////////////////
 
 /*

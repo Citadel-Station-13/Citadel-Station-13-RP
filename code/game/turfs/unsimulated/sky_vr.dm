@@ -84,7 +84,7 @@
 /turf/unsimulated/floor/sky/depths
 	name = "darkness"
 	desc = "A straight drop down into the depths below."
-	skyfall_levels = "Western Caverns"
+	skyfall_levels = "Eastern Canyon"
 	color ="#303030"
 
 /turf/unsimulated/floor/sky/depths/Initialize(mapload)
@@ -93,4 +93,11 @@
 
 /turf/unsimulated/floor/sky/depths/Initialize(mapload)
 	skyfall_levels = list(z + 1)
+	. = ..()
+
+/turf/unsimulated/floor/sky/depths/west
+	skyfall_levels = "Western Canyon"
+
+/turf/unsimulated/floor/sky/depths/west/Initialize(mapload)
+	skyfall_levels = list(z + 7)
 	. = ..()

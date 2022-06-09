@@ -39,7 +39,7 @@
 	name = "\improper MEMETIC HAZARD";
 	pixel_x = 32
 	},
-/turf/simulated/mineral/triumph/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/central/explored)
 "ci" = (
 /obj/structure/grille,
@@ -90,7 +90,7 @@
 	name = "to_east";
 	portal_id = "eaststep"
 	},
-/turf/unsimulated/mineral/triumph/lavaland,
+/turf/simulated/floor/tiled/dark/lavaland,
 /area/lavaland/central/transit)
 "dl" = (
 /obj/machinery/atmospherics/pipe/tank/air{
@@ -140,7 +140,7 @@
 /obj/effect/map_effect/portal/line/side_a{
 	dir = 8
 	},
-/turf/unsimulated/mineral/triumph/lavaland,
+/turf/simulated/floor/tiled/dark/lavaland,
 /area/lavaland/central/transit)
 "ew" = (
 /turf/simulated/floor/tiled,
@@ -158,7 +158,7 @@
 	id = "ll_cent_shutter_east";
 	pixel_x = 25
 	},
-/turf/simulated/mineral/triumph/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/central/explored)
 "eY" = (
 /obj/structure/catwalk,
@@ -38550,7 +38550,7 @@ RX
 RL
 MX
 RL
-RL
+gy
 gy
 gy
 gy
@@ -38743,7 +38743,7 @@ RX
 MX
 MX
 RL
-RL
+gy
 gy
 gy
 gy
@@ -38940,8 +38940,8 @@ gy
 gy
 gy
 gy
-MX
-MX
+gy
+gy
 RL
 RL
 xd
@@ -39130,11 +39130,11 @@ RX
 MX
 MX
 ch
-MX
-MX
-MX
+gy
+gy
+gy
 eU
-MX
+gy
 MX
 MX
 RX
