@@ -10689,26 +10689,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/chief)
-"sE" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 6
-	},
-/obj/effect/floor_decal/corner/mauve/bordercorner2{
-	dir = 6
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/mauve/bordercorner2{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/steel,
-/area/rift/station/fighter_bay)
 "sJ" = (
 /obj/machinery/door/airlock/maintenance/engi,
 /obj/structure/catwalk,
@@ -11311,7 +11291,14 @@
 /obj/effect/zone_divider,
 /turf/simulated/mineral/icerock,
 /area/rift/surfacebase/underground/under1)
-"um" = (
+"un" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 4
+	},
+/obj/structure/railing,
+/turf/simulated/floor/plating,
+/area/security/prison)
+"us" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
@@ -11320,13 +11307,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
-"un" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 4
-	},
-/obj/structure/railing,
-/turf/simulated/floor/plating,
-/area/security/prison)
 "uu" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/lattice,
@@ -11517,6 +11497,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/drone_fabrication)
+"wK" = (
+/obj/mecha/combat/fighter/pinnace,
+/turf/simulated/floor/tiled/techmaint,
+/area/rift/station/fighter_bay/hangar)
 "wM" = (
 /turf/simulated/wall/r_wall,
 /area/rift/station/fighter_bay/hangar)
@@ -11825,6 +11809,17 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
+"zL" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/mauve/border,
+/turf/simulated/floor/tiled/steel,
+/area/rift/station/fighter_bay)
 "zO" = (
 /obj/structure/closet/crate,
 /obj/structure/railing{
@@ -12100,12 +12095,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos/hallway)
-"Cb" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/rift/station/fighter_bay/maintenance)
 "Cq" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/random/junk,
@@ -12276,21 +12265,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
-"DH" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/mauve/bordercorner2{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel,
-/area/rift/station/fighter_bay)
 "DU" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/engineering)
@@ -12933,6 +12907,11 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/maintenance)
+"Ik" = (
+/obj/machinery/mech_recharger,
+/obj/mecha/combat/fighter/pinnace,
+/turf/simulated/floor/tiled/techmaint,
+/area/rift/station/fighter_bay/hangar)
 "Io" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -13056,6 +13035,21 @@
 	},
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
+"Jm" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/rift/station/fighter_bay)
 "Jo" = (
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
@@ -13947,6 +13941,26 @@
 "Qd" = (
 /turf/unsimulated/floor/sky/depths,
 /area/rift/surfacebase/underground/under1)
+"Qf" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/steel,
+/area/rift/station/fighter_bay)
 "Ql" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -14041,17 +14055,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/drone_fabrication)
-"Ro" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/mauve/border,
-/turf/simulated/floor/tiled/steel,
-/area/rift/station/fighter_bay)
 "Ru" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 8
@@ -14376,6 +14379,21 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
+"TL" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 10
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/steel,
+/area/rift/station/fighter_bay)
 "TM" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -14958,21 +14976,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
-"Xr" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 10
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 10
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 9
-	},
-/obj/effect/floor_decal/corner/mauve/bordercorner2{
-	dir = 9
-	},
-/turf/simulated/floor/tiled/steel,
-/area/rift/station/fighter_bay)
 "Xw" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -15224,6 +15227,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
+"Zh" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/rift/station/fighter_bay/maintenance)
 "Zk" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 8
@@ -18324,13 +18333,13 @@ aa
 Jw
 wM
 tP
-XT
+wK
 JJ
 Vn
 CO
 ye
 XT
-tP
+Ik
 wM
 aa
 aa
@@ -18912,7 +18921,7 @@ Vn
 CO
 ye
 XT
-tP
+Ik
 wM
 aa
 aa
@@ -19686,11 +19695,11 @@ Ex
 rq
 Hu
 Bh
-DH
-um
-um
+Jm
+us
+us
 xX
-Xr
+TL
 Sx
 JU
 dP
@@ -19880,7 +19889,7 @@ VP
 Gy
 SE
 vq
-sE
+Qf
 Ou
 Tv
 Nq
@@ -20272,7 +20281,7 @@ ZV
 Ih
 uT
 Jo
-Ro
+zL
 Na
 LM
 eg
@@ -20849,7 +20858,7 @@ KJ
 Gd
 jO
 eq
-Cb
+Zh
 xI
 xI
 KJ
