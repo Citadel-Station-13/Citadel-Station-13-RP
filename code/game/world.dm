@@ -105,49 +105,6 @@ GLOBAL_LIST(topic_status_cache)
 	GLOB.revdata.load_tgs_info()
 	GLOB.tgs_initialized = TRUE
 
-GLOBAL_REAL_VAR(world_log_redirected) = FALSE
-
-/**
- * so it turns out that if GLOB init or something before world.log redirect runtimes we have no way of catching it in CI
- * which is really bad?? because we kind of need it??
- * therefore
- */
-/world/proc/ensure_logging_active()
-// if we're unit testing do not ever redirect world.log or the test won't show output.
-#ifndef UNIT_TESTS
-	// we already know, we don't care
-	if(params[OVERRIDE_LOG_DIRECTORY_PARAMETER])
-		world.log = file("data/logs/[params[OVERRIDE_LOG_DIRECTORY_PARAMETER]]/dd.log")
-		return
-	if(global.world_log_redirected)
-		return
-	global.world_log_redirected = TRUE
-	if(fexists("data/logs/world_init_temporary.log"))
-		fdel("data/logs/world_init_temporary.log")
-	world.log = file("data/logs/world_init_temporary.log")
-#endif
-
-/**
- * world/New is running, shunt all of the output back.
- */
-/world/proc/shunt_redirected_log()
-// if we're unit testing do not ever redirect world.log or the test won't show output.
-#ifndef UNIT_TESTS
-	if(params[OVERRIDE_LOG_DIRECTORY_PARAMETER])
-		return		// already done above
-	world.log = file("[GLOB.log_directory]/dd.log")
-	if(!fexists("data/logs/world_init_temporary.log"))
-		log_world("No preinit logs detected, shunt skipped.")
-		return
-	log_world("Shunting preinit logs as follows:")
-	for(var/line in world.file2list("data/logs/world_init_temporary.log"))
-		line = trim(line)
-		if(!length(line))
-			continue
-		log_world(line)
-	fdel("data/logs/world_init_temporary.log")
-#endif
-
 /world/proc/HandleTestRun()
 	//trigger things to run the whole process
 	Master.sleep_offline_after_initializations = FALSE
@@ -545,3 +502,46 @@ proc/establish_old_db_connection()
 /world/proc/increment_max_z()
 	maxz++
 	max_z_changed()
+
+//! LOG SHUNTER STUFF, LEAVE THIS ALONE
+/**
+ * so it turns out that if GLOB init or something before world.log redirect runtimes we have no way of catching it in CI
+ * which is really bad?? because we kind of need it??
+ * therefore
+ */
+/world/proc/ensure_logging_active()
+// if we're unit testing do not ever redirect world.log or the test won't show output.
+#ifndef UNIT_TESTS
+	// we already know, we don't care
+	if(global.world_log_redirected)
+		return
+	global.world_log_redirected = TRUE
+	if(fexists("data/logs/world_init_temporary.log"))
+		fdel("data/logs/world_init_temporary.log")
+	world.log = file("data/logs/world_init_temporary.log")
+	SEND_TEXT(world.log, "Shunting preinit logs as following...")
+#endif
+
+/**
+ * world/New is running, shunt all of the output back.
+ */
+/world/proc/shunt_redirected_log()
+// if we're unit testing do not ever redirect world.log or the test won't show output.
+#ifndef UNIT_TESTS
+	if(!(OVERRIDE_LOG_DIRECTORY_PARAMETER in params))
+		world.log = file("[GLOB.log_directory]/dd.log")
+	if(!world_log_redirected)
+		log_world("World log shunt never happened. Something has gone wrong!")
+		return
+	else if(!fexists("data/logs/world_init_temporary.log"))
+		log_world("No preinit logs detected, shunt skipped. Something has gone wrong!")
+		return
+	for(var/line in world.file2list("data/logs/world_init_temporary.log"))
+		line = trim(line)
+		if(!length(line))
+			continue
+		log_world(line)
+	fdel("data/logs/world_init_temporary.log")
+#endif
+//! END
+

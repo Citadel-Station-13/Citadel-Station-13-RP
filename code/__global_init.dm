@@ -2,7 +2,7 @@
  * DO NOT MOVE THIS FILE. EVER. THIS ABSOLUTELY MUST GO RIGHT AFTER COMPLE OPTIONS, BECAUSE WE **NEED** THESE DATUMS TO INIT BEFORE **ANY** OTHER IMPLICIT INIT PROCS!
  */
 
-//!
+//! Log shunting - ENSURE shunt_redirected_log() IS CALLED IMMEDIATELY AFTER LOGGING IS SET UP!
 
 /**
  * log shunter, CITRP SNOWFLAKE EDITION
@@ -19,6 +19,8 @@
  *
  * thanks oranges/MSO for hinting to me about using -verbose so we can end this fucking suffering.
  */
-var/datum/world_log_shunter = new
+var/datum/world_log_shunter/world_log_shunter = new
+var/world_log_redirected = FALSE
+
 /datum/world_log_shunter/New()
 	world.ensure_logging_active()
