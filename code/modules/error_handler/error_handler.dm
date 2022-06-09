@@ -32,7 +32,6 @@ GLOBAL_REAL_VAR(runtime_trap_triggered) = FALSE
 		log_world("early runtime caught;")
 		return ..()
 
-#warn test
 	to_chat(world, "[__FILE__] [__LINE__]")
 	++GLOB.total_runtimes_seen
 
