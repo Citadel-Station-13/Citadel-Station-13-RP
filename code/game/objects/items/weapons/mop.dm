@@ -1,6 +1,6 @@
 GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 #define MOPMODE_TILE 1
-//#define MOPMODE_SWEEP 2
+#define MOPMODE_SWEEP 2
 
 /obj/item/mop
 	desc = "The world of janitalia wouldn't be complete without a mop."
@@ -25,7 +25,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	. = ..()
 	create_reagents(30)
 
-/*
+
 /obj/item/mop/attack_self(var/mob/user)
 	.=..()
 	if (mopmode == MOPMODE_TILE)
@@ -34,7 +34,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	else if (mopmode == MOPMODE_SWEEP)
 		mopmode = MOPMODE_TILE
 		to_chat(user, "<span class='warning'>You will now thoroughly clean a single tile at a time</span>")
-*/
+
 /obj/item/mop/afterattack(atom/A, mob/user, proximity)
 	if(!proximity) return
 	if(istype(A, /turf) || istype(A, /obj/effect/decal/cleanable) || istype(A, /obj/effect/overlay))
@@ -54,13 +54,13 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 					T.clean(src, user)
 				to_chat(user, "<span class='warning'>You have finished mopping!</span>")
 		//Sweep mopmode. Light and fast aoe cleaning
-		//else if (mopmode == MOPMODE_SWEEP)
-		//	sweep(user, T)
+		else if (mopmode == MOPMODE_SWEEP)
+			sweep(user, T)
 	else
 		makeWet(A, user)
 
 // TO DO : MAKE SWEEPING WORK
-/*
+
 /obj/item/mop/proc/sweep(var/mob/user, var/turf/target)
 	user.setClickCooldown(sweep_time)
 	var/direction = get_dir(get_turf(src),target)
@@ -105,7 +105,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 		for (var/mob/living/L in T)
 			attack(L)
 
-		if (turf_clear(T))
+		if (!is_blocked_turf(T))
 			T.clean(src, user, 1)
 
 		else if (user)
@@ -116,7 +116,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 			playsound(T,"thud", 20, 1, -3)
 			to_chat(user, "<span class='warning'>There's not enough space for broad sweeps here!</span>")
 			return
-*/
+
 /obj/item/mop/proc/makeWet(atom/A, mob/user)
 	if(A.is_open_container())
 		if(A.reagents)
@@ -153,7 +153,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
-/obj/item/mop/advanced/attack_self(mob/user)
+/obj/item/mop/advanced/AltClick(var/mob/user)
 	refill_enabled = !refill_enabled
 	if(refill_enabled)
 		START_PROCESSING(SSobj, src)
@@ -176,4 +176,4 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	return ..()
 
 #undef MOPMODE_TILE
-//#undef MOPMODE_SWEEP
+#undef MOPMODE_SWEEP
