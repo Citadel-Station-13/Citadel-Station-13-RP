@@ -2,14 +2,11 @@
 GLOBAL_REAL_VAR(total_runtimes) = 0
 GLOBAL_VAR_INIT(total_runtimes_seen, 0)
 GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
-
-#ifdef USE_CUSTOM_ERROR_HANDLER
-
 // to detect when someone fucks up royally and breaks error handling with preinit runtimes
-#ifdef UNIT_TESTS
 GLOBAL_REAL_VAR(runtime_skip_once) = FALSE
 GLOBAL_REAL_VAR(runtime_trap_triggered) = FALSE
-#endif
+
+#ifdef USE_CUSTOM_ERROR_HANDLER
 
 #define ERROR_USEFUL_LEN 2
 /world/Error(exception/E, datum/e_src)

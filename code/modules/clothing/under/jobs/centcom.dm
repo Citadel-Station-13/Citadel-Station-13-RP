@@ -42,7 +42,7 @@
 	name = "tactical combat uniform"
 	desc = "A dark colored uniform worn by CentCom's conscripted military forces."
 	icon_state = "military"
-	armor = list("melee" = 10, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 10, "fire" = 50, "acid" = 40)
+	armor = list(melee = 10, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, fire = 50, acid = 40)
 
 /obj/item/clothing/under/rank/centcom/military/eng
 	name = "tactical engineering uniform"
