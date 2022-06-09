@@ -2324,13 +2324,13 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/maintenance)
@@ -5414,7 +5414,6 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/station/fighter_bay/maintenance)
 "jP" = (
@@ -10048,6 +10047,18 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 10
+	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "rr" = (
@@ -10678,6 +10689,26 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/chief)
+"sE" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/steel,
+/area/rift/station/fighter_bay)
 "sJ" = (
 /obj/machinery/door/airlock/maintenance/engi,
 /obj/structure/catwalk,
@@ -11280,6 +11311,15 @@
 /obj/effect/zone_divider,
 /turf/simulated/mineral/icerock,
 /area/rift/surfacebase/underground/under1)
+"um" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/rift/station/fighter_bay)
 "un" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 4
@@ -11591,6 +11631,12 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "xZ" = (
@@ -11682,6 +11728,12 @@
 /obj/machinery/vending/snack,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 6
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
@@ -12048,6 +12100,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos/hallway)
+"Cb" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/rift/station/fighter_bay/maintenance)
 "Cq" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/random/junk,
@@ -12218,6 +12276,21 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
+"DH" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/rift/station/fighter_bay)
 "DU" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/engineering)
@@ -12246,6 +12319,12 @@
 /area/maintenance/engineering/upper)
 "Ex" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "EB" = (
@@ -12294,6 +12373,12 @@
 "EH" = (
 /obj/structure/disposalpipe/trunk,
 /obj/machinery/disposal,
+/obj/machinery/button/remote/blast_door{
+	id = "hangar_maint";
+	name = "Hangar Maintenance Shutter Control";
+	pixel_y = 28;
+	req_one_access = list(29,47)
+	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay/maintenance)
 "EI" = (
@@ -12311,6 +12396,12 @@
 	},
 /obj/machinery/vending/coffee,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 9
+	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "ES" = (
@@ -12462,14 +12553,7 @@
 /turf/simulated/floor/plating,
 /area/rift/station/fighter_bay/hangar)
 "Gd" = (
-/obj/structure/table/reinforced,
-/obj/machinery/button/remote/blast_door{
-	id = "hangar_maint";
-	name = "Hangar Maintenance Shutter Control";
-	pixel_y = 28;
-	req_one_access = list(29,47)
-	},
-/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/machinery/computer/rdconsole/robotics,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay/maintenance)
 "Gf" = (
@@ -12551,6 +12635,18 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 5
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
@@ -12758,7 +12854,7 @@
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 1
 	},
-/turf/unsimulated/floor/sky/depths,
+/turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "HH" = (
 /obj/machinery/door/airlock/maintenance/common,
@@ -12931,6 +13027,18 @@
 /obj/structure/cable/green{
 	d2 = 8;
 	icon_state = "0-8"
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
@@ -13305,6 +13413,12 @@
 "Mm" = (
 /obj/machinery/vending/cigarette,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "Mt" = (
@@ -13430,6 +13544,12 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "Ns" = (
@@ -13509,6 +13629,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/mauve/border,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "NO" = (
@@ -13634,6 +13756,12 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 5
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
@@ -13761,6 +13889,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/mauve/border,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "PR" = (
@@ -13786,6 +13916,18 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
@@ -13899,6 +14041,17 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/drone_fabrication)
+"Ro" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/mauve/border,
+/turf/simulated/floor/tiled/steel,
+/area/rift/station/fighter_bay)
 "Ru" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 8
@@ -14156,6 +14309,18 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 6
+	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "Tz" = (
@@ -14376,6 +14541,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/mauve/border,
+/obj/effect/floor_decal/borderfloor/corner2,
+/obj/effect/floor_decal/corner/mauve/bordercorner2,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "UI" = (
@@ -14584,6 +14753,12 @@
 /area/engineering/atmos/hallway)
 "VP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "VU" = (
@@ -14783,6 +14958,21 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
+"Xr" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 10
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/steel,
+/area/rift/station/fighter_bay)
 "Xw" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -14905,7 +15095,7 @@
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 1
 	},
-/turf/unsimulated/floor/sky/depths,
+/turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "Ya" = (
 /obj/structure/symbol/sa,
@@ -19496,11 +19686,11 @@ Ex
 rq
 Hu
 Bh
-Jo
-Jo
-Jo
+DH
+um
+um
 xX
-Jo
+Xr
 Sx
 JU
 dP
@@ -19690,7 +19880,7 @@ VP
 Gy
 SE
 vq
-vq
+sE
 Ou
 Tv
 Nq
@@ -20082,7 +20272,7 @@ ZV
 Ih
 uT
 Jo
-UF
+Ro
 Na
 LM
 eg
@@ -20659,7 +20849,7 @@ KJ
 Gd
 jO
 eq
-ZV
+Cb
 xI
 xI
 KJ
