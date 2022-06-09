@@ -1124,6 +1124,8 @@
 			else
 				return mask & (~setbit)
 
+/obj/structure/disposalpipe/junction/flipped //for easier and cleaner mapping
+	icon_state = "pipe-j2"
 
 /obj/structure/disposalpipe/tagger
 	name = "package tagger"

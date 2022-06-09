@@ -300,13 +300,13 @@
 	/obj/item/shovel,/obj/item/ammo_magazine,/obj/item/gun)
 
 /obj/item/clothing/head/helmet/space/void/exploration/alt
-	desc = "A radiation-resistant helmet retrofitted for exploring unknown planetary environments."
+	desc = "A radiation-resistant helmet made especially for exploring unknown planetary environments."
 	icon_state = "helm_explorer2"
 	item_state = "helm_explorer2"
 	item_state_slots = list(slot_r_hand_str = "mining_helm", slot_l_hand_str = "mining_helm")
 
 /obj/item/clothing/suit/space/void/exploration/alt
-	desc = "A lightweight, radiation-resistant voidsuit. Retrofitted for exploring unknown planetary environments."
+	desc = "A lightweight, radiation-resistant voidsuit. Designed for exploring unknown planetary environments."
 	icon_state = "void_explorer2"
 	item_state_slots = list(slot_r_hand_str = "skrell_suit_white", slot_l_hand_str = "skrell_suit_white")
 

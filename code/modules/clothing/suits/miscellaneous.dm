@@ -141,6 +141,13 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 
+/obj/item/clothing/suit/hevsuit
+	name = "Hazardous Environments Suit"
+	desc = "Better than a rediculous tie."
+	icon_state = "hevsuit"
+	body_parts_covered = UPPER_TORSO|ARMS|LOWER_TORSO|LEGS|FEET|HANDS
+	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+
 /obj/item/clothing/suit/cardborg
 	name = "cardborg suit"
 	desc = "An ordinary cardboard box with holes cut in the sides."
