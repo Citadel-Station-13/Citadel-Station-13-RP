@@ -1,6 +1,0 @@
-author: "Zandario"
-delete-after: True
-changes: 
-  - bugfix: "32px Emojis work again."
-  - imageadd: "More emojis"
-  - config: "Admin OOC Color & Emojis are now in the new config."

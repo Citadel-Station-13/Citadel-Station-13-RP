@@ -157,13 +157,12 @@
 	flash_protection = FLASH_PROTECTION_MAJOR
 	prescription = 1
 	action_button_name = "AR Console (Security Alerts)"
-	arscreen_path = /datum/nano_module/alarm_monitor/security
 	enables_planes = list(VIS_AUGMENTED)
 
 
 /obj/item/clothing/glasses/omnihud/sec/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED, DATA_HUD_MEDICAL), list(SLOT_ID_GLASSES))
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/omnihud/sec/ar_interact(var/mob/living/carbon/human/user)
 	if(arscreen)
