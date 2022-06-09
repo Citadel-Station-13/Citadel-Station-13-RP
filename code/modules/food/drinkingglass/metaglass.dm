@@ -605,6 +605,13 @@ Drinks Data
 	glass_icon_state = "devilskiss"
 	glass_center_of_mass = list("x"=16, "y"=8)
 
+/datum/reagent/ethanol/narsour
+	glass_icon_state = "narsour"
+	glass_center_of_mass = list("x"=15, "y"=10)
+
+/datum/reagent/ethanol/narsian
+	glass_icon_state = "narsian"
+
 /datum/reagent/ethanol/driestmartini
 	glass_icon_state = "driestmartiniglass"
 	glass_center_of_mass = list("x"=17, "y"=8)
