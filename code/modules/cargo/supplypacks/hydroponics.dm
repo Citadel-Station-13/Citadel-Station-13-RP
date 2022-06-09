@@ -222,3 +222,27 @@
 	cost = 20
 	container_type = /obj/structure/closet/crate/freezer
 	container_name = "Fish crate"
+
+/datum/supply_pack/hydro/woolie
+	name = "Woolie crate"
+	cost = 50
+	container_type = /obj/structure/largecrate/animal/woolie
+	container_name = "Woolie crate"
+	access = access_hydroponics
+
+/datum/supply_pack/hydro/icegoat
+	name = "Glacicorn crate"
+	cost = 50
+	container_type = /obj/structure/largecrate/animal/icegoat
+	container_name = "Glacicorn crate"
+	access = access_hydroponics
+
+/datum/supply_pack/hydro/cow
+	name = "Furnace Grub crate"
+	cost = 40
+	container_type = /obj/structure/largecrate/animal/furnacegrub
+	container_name = "Furnace Grub crate"
+	access = access_hydroponics
+
+
+
