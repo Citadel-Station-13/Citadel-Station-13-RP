@@ -135,7 +135,7 @@
 	default_language = LANGUAGE_BIRDSONG
 
 
-/* Example from Polaris code
+/* Example
 /datum/species/monkey/tajaran
 	name = SPECIES_MONKEY_TAJ
 	name_plural = SPECIES_MONKEY_TAJ

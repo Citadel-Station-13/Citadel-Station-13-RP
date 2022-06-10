@@ -34,7 +34,7 @@
 
 /client/verb/drop_item()
 	set hidden = 1
-	if(!isrobot(mob) && mob.stat == CONSCIOUS && (isturf(mob.loc) || isbelly(mob.loc)))	// VOREStation Edit: dropping in bellies
+	if(!isrobot(mob) && mob.stat == CONSCIOUS && (isturf(mob.loc) || isbelly(mob.loc)))	// Dropping in bellies
 		return mob.drop_item()
 	return
 
@@ -178,48 +178,15 @@
 	if(!mob.Process_Spacemove(direct))
 		return FALSE
 
-// shitcode, rip out when possible
-/*
-	if((istype(mob.loc, /turf/space)) || (mob.lastarea.has_gravity == 0))
-		if(!mob.Process_Spacemove(0))	return 0
-*/
-
 	if(!mob.lastarea)
 		mob.lastarea = get_area(mob.loc)
-// end
 
-/*
-	//We are now going to move
-	var/add_delay = mob.cached_multiplicative_slowdown
-	if(old_move_delay + (add_delay*MOVEMENT_DELAY_BUFFER_DELTA) + MOVEMENT_DELAY_BUFFER > world.time)
-		move_delay = old_move_delay
-	else
-		move_delay = world.time
-
-	if(L.confused)
-		var/newdir = 0
-		if(L.confused > 40)
-			newdir = pick(GLOB.alldirs)
-		else if(prob(L.confused * 1.5))
-			newdir = angle2dir(dir2angle(direct) + pick(90, -90))
-		else if(prob(L.confused * 3))
-			newdir = angle2dir(dir2angle(direct) + pick(45, -45))
-		if(newdir)
-			direct = newdir
-			n = get_step(L, direct)
-
-	. = ..()
-*/
-
-// no instead we're using polariscode
-	// added code
 	var/move_delay_add_grab = 0
 	var/add_delay = mob.movement_delay(n, direct)
 	if(old_move_delay + (add_delay*MOVEMENT_DELAY_BUFFER_DELTA) + MOVEMENT_DELAY_BUFFER > world.time)
 		mob.move_delay = old_move_delay
 	else
 		mob.move_delay = world.time
-	//
 
 	if(mob.restrained() && mob.pulledby)//Why being pulled while cuffed prevents you from moving
 		to_chat(src, "<span class='warning'>You're restrained! You can't move!</span>")

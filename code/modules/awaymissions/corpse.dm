@@ -200,7 +200,7 @@
 /atom/movable/spawner/corpse/bridgeofficer
 	name = "Bridge Officer"
 	corpseradio = /obj/item/radio/headset/heads/hop
-	corpseuniform = /obj/item/clothing/under/rank/centcom_officer
+	corpseuniform = /obj/item/clothing/under/rank/centcom/officer
 	corpsesuit = /obj/item/clothing/suit/armor/bulletproof
 	corpseshoes = /obj/item/clothing/shoes/black
 	corpseglasses = /obj/item/clothing/glasses/sunglasses
@@ -210,7 +210,7 @@
 
 /atom/movable/spawner/corpse/commander
 	name = "Commander"
-	corpseuniform = /obj/item/clothing/under/rank/centcom_captain
+	corpseuniform = /obj/item/clothing/under/rank/centcom/officer
 	corpsesuit = /obj/item/clothing/suit/armor/bulletproof
 	corpseradio = /obj/item/radio/headset/heads/captain
 	corpseglasses = /obj/item/clothing/glasses/eyepatch

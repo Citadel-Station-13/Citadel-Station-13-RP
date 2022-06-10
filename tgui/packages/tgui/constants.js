@@ -10,6 +10,10 @@ export const UI_UPDATE = 1;
 export const UI_DISABLED = 0;
 export const UI_CLOSE = -1;
 
+export const UI_NOT_REFRESHING = 0;
+export const UI_SOFT_REFRESHING = 1;
+export const UI_HARD_REFRESHING = 2;
+
 // All game related colors are stored here
 export const COLORS = {
   // Department colors
@@ -22,7 +26,25 @@ export const COLORS = {
     cargo: '#f39c12',
     centcom: '#00c100',
     other: '#c38312',
+    exploration: '#c38312',
+    silicon: '#c38312',
+    miscellaneous: '#c38312',
+    civillian: '#c38312',
   },
+  // VOREStation Addition begin
+  manifest: {
+    command: "#3333FF",
+    security: "#8e0000",
+    medical: "#006600",
+    engineering: "#b27300",
+    science: "#a65ba6",
+    cargo: "#bb9040",
+    planetside: "#555555",
+    civilian: "#a32800",
+    miscellaneous: "#666666",
+    silicon: "#222222",
+  },
+  // VOREStation Addition end
   // Damage type colors
   damageType: {
     oxy: '#3498db',
@@ -59,12 +81,11 @@ export const CSS_COLORS = [
   'label',
 ];
 
-/* IF YOU CHANGE THIS KEEP IT IN SYNC WITH CHAT CSS */
 export const RADIO_CHANNELS = [
   {
-    name: 'Syndicate',
+    name: 'Mercenary',
     freq: 1213,
-    color: '#8f4a4b',
+    color: '#a52a2a',
   },
   {
     name: 'Red Team',
@@ -75,16 +96,6 @@ export const RADIO_CHANNELS = [
     name: 'Blue Team',
     freq: 1217,
     color: '#3434fd',
-  },
-  {
-    name: 'Green Team',
-    freq: 1219,
-    color: '#34fd34',
-  },
-  {
-    name: 'Yellow Team',
-    freq: 1221,
-    color: '#fdfd34',
   },
   {
     name: 'CentCom',
@@ -109,7 +120,7 @@ export const RADIO_CHANNELS = [
   {
     name: 'Command',
     freq: 1353,
-    color: '#fcdf03',
+    color: '#5177ff',
   },
   {
     name: 'Medical',
@@ -140,7 +151,7 @@ export const RADIO_CHANNELS = [
 
 const GASES = [
   {
-    'id': 'o2',
+    'id': 'oxygen',
     'name': 'Oxygen',
     'label': 'O₂',
     'color': 'blue',
@@ -152,22 +163,22 @@ const GASES = [
     'color': 'red',
   },
   {
-    'id': 'co2',
+    'id': 'carbon dioxide',
     'name': 'Carbon Dioxide',
     'label': 'CO₂',
     'color': 'grey',
   },
   {
-    'id': 'plasma',
-    'name': 'Plasma',
-    'label': 'Plasma',
+    'id': 'phoron',
+    'name': 'Phoron',
+    'label': 'Phoron',
     'color': 'pink',
   },
   {
     'id': 'water_vapor',
     'name': 'Water Vapor',
     'label': 'H₂O',
-    'color': 'lightsteelblue',
+    'color': 'grey',
   },
   {
     'id': 'nob',
@@ -179,31 +190,37 @@ const GASES = [
     'id': 'n2o',
     'name': 'Nitrous Oxide',
     'label': 'N₂O',
-    'color': 'bisque',
+    'color': 'red',
   },
   {
     'id': 'no2',
-    'name': 'Nitrium',
-    'label': 'Nitrium',
+    'name': 'Nitryl',
+    'label': 'NO₂',
     'color': 'brown',
   },
   {
     'id': 'tritium',
     'name': 'Tritium',
     'label': 'Tritium',
-    'color': 'limegreen',
+    'color': 'green',
   },
   {
     'id': 'bz',
     'name': 'BZ',
     'label': 'BZ',
-    'color': 'mediumpurple',
+    'color': 'purple',
+  },
+  {
+    'id': 'stim',
+    'name': 'Stimulum',
+    'label': 'Stimulum',
+    'color': 'purple',
   },
   {
     'id': 'pluox',
     'name': 'Pluoxium',
     'label': 'Pluoxium',
-    'color': 'mediumslateblue',
+    'color': 'blue',
   },
   {
     'id': 'miasma',
@@ -212,52 +229,28 @@ const GASES = [
     'color': 'olive',
   },
   {
-    'id': 'Freon',
-    'name': 'Freon',
-    'label': 'Freon',
-    'color': 'paleturquoise',
-  },
-  {
     'id': 'hydrogen',
     'name': 'Hydrogen',
     'label': 'H₂',
     'color': 'white',
   },
   {
-    'id': 'healium',
-    'name': 'Healium',
-    'label': 'Healium',
-    'color': 'salmon',
+    'id': 'other',
+    'name': 'Other',
+    'label': 'Other',
+    'color': 'white',
   },
   {
-    'id': 'proto_nitrate',
-    'name': 'Proto Nitrate',
-    'label': 'Proto-Nitrate',
-    'color': 'greenyellow',
+    'id': 'pressure',
+    'name': 'Pressure',
+    'label': 'Pressure',
+    'color': 'average',
   },
   {
-    'id': 'zauker',
-    'name': 'Zauker',
-    'label': 'Zauker',
-    'color': 'darkgreen',
-  },
-  {
-    'id': 'halon',
-    'name': 'Halon',
-    'label': 'Halon',
-    'color': 'purple',
-  },
-  {
-    'id': 'helium',
-    'name': 'Helium',
-    'label': 'He',
-    'color': 'aliceblue',
-  },
-  {
-    'id': 'antinoblium',
-    'name': 'Antinoblium',
-    'label': 'Anti-Noblium',
-    'color': 'maroon',
+    'id': 'temperature',
+    'name': 'Temperature',
+    'label': 'Temperature',
+    'color': 'yellow',
   },
 ];
 
@@ -276,3 +269,8 @@ export const getGasColor = gasId => {
     || gas.name.toLowerCase() === gasSearchString);
   return gas && gas.color;
 };
+
+// VOREStation Addition start
+/** 0.0 Degrees Celsius in Kelvin */
+export const T0C = 273.15;
+// VOREStation Addition end

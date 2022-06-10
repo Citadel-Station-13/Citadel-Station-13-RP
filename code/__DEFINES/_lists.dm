@@ -33,6 +33,7 @@
 #define reverseList(L) reverseRange(L.Copy())
 
 #define SAFEPICK(L) (length(L)? pick(L) : null)
+#define SAFEFIND(L, S) (length(L)? (L.Find(S)) : null)
 #define SAFEACCESS(L, I) (isnum(I)? (SAFEINDEXACCESS(L, I)) : ((I in L)? L[I] : null))
 #define SAFEINDEXACCESS(L, I) (ISINRANGE(I, 1, length(L))? L[I] : null)
 // Returns the key based on the index

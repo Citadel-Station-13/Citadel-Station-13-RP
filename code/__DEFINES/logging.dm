@@ -3,6 +3,7 @@
 #define INVESTIGATE_ATMOS "atmos"
 #define INVESTIGATE_BOTANY "botany"
 #define INVESTIGATE_CARGO "cargo"
+#define INVESTIGATE_CIRCUIT "circuit"
 #define INVESTIGATE_CRAFTING "crafting"
 #define INVESTIGATE_EXONET "exonet"
 #define INVESTIGATE_EXPERIMENTOR "experimentor"

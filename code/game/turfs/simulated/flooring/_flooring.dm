@@ -247,7 +247,7 @@ var/list/flooring_types
 /decl/flooring/tiling
 	name = "floor"
 	desc = "Scuffed from the passage of countless greyshirts."
-	icon = 'icons/turf/flooring/tiles_vr.dmi' // VOREStation Edit - Eris floors. Polaris still hasn't added all of them properly. See: steel_ridged
+	icon = 'icons/turf/flooring/tiles_vr.dmi' // More ERIS Sprites... For now...
 	icon_base = "tiled"
 	has_damage_range = 2
 	damage_temperature = T0C+1400

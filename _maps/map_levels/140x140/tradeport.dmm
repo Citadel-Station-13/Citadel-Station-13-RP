@@ -858,7 +858,7 @@
 	dir = 1
 	},
 /obj/machinery/power/smes/buildable{
-	charge = 1.5e+007;
+	charge = 15000;
 	cur_coils = 3;
 	input_attempt = 1
 	},
@@ -2054,7 +2054,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/power/smes/buildable{
-	charge = 1.5e+007;
+	charge = 1.5e+004;
 	cur_coils = 3;
 	input_attempt = 1
 	},
@@ -9748,8 +9748,8 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/smes/buildable{
-	capacity = 1.5e+007;
-	charge = 1.5e+007;
+	capacity = 1.5e+004;
+	charge = 1.5e+004;
 	cur_coils = 3;
 	input_attempt = 1
 	},
@@ -10462,7 +10462,7 @@
 "Mx" = (
 /obj/structure/cable/yellow,
 /obj/machinery/power/smes/buildable{
-	charge = 1.5e+007;
+	charge = 1.5e+004;
 	cur_coils = 3;
 	input_attempt = 1
 	},

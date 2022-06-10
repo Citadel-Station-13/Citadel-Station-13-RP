@@ -106,8 +106,6 @@
 	///For adherent coloring....
 	var/s_base
 
-	///multiplier for the mob's icon size //VOREStation Edit (Moved to /mob/living)
-	//var/size_multiplier = 1
 	///multiplies melee combat damage
 	var/damage_multiplier = 1
 	///whether icon updating shall take place

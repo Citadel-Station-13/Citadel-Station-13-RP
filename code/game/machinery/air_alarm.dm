@@ -55,7 +55,7 @@
 	var/frequency = 1439
 	//var/skipprocess = 0 //Experimenting
 	var/alarm_frequency = 1437
-	var/remote_control = TRUE
+	var/remote_control = FALSE
 	var/rcon_setting = RCON_AUTO
 	var/rcon_time = 0
 	var/locked = TRUE
@@ -73,7 +73,7 @@
 	var/area_uid
 	var/area/alarm_area
 
-	var/target_temperature = T0C+20
+	var/target_temperature = T20C
 	var/regulating_temperature = 0
 
 	var/datum/radio_frequency/radio_connection
@@ -386,6 +386,7 @@
 		alarm_area.air_scrub_info[id_tag] = signal.data
 	else if(dev_type == "AVP")
 		alarm_area.air_vent_info[id_tag] = signal.data
+	SStgui.update_uis(src)
 
 /obj/machinery/alarm/proc/register_env_machine(var/m_id, var/device_type)
 	var/new_name
@@ -679,7 +680,7 @@
 		var/list/selected = TLV["temperature"]
 		var/max_temperature = min(selected[3] - T0C, MAX_TEMPERATURE)
 		var/min_temperature = max(selected[2] - T0C, MIN_TEMPERATURE)
-		var/input_temperature = input(usr, "What temperature would you like the system to mantain? (Capped between [min_temperature] and [max_temperature]C)", "Thermostat Controls", target_temperature - T0C) as num|null
+		var/input_temperature = tgui_input_number(usr, "What temperature would you like the system to mantain? (Capped between [min_temperature] and [max_temperature]C)", "Thermostat Controls", (target_temperature - T0C), max_temperature, min_temperature)
 		if(isnum(input_temperature))
 			if(input_temperature > max_temperature || input_temperature < min_temperature)
 				to_chat(usr, "Temperature must be between [min_temperature]C and [max_temperature]C")

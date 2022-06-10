@@ -226,7 +226,7 @@
 					target_pressure = max_pressure_setting
 				if("set")
 					var/new_pressure = input(usr,"Enter new output pressure (0-[max_pressure_setting]kPa)","Pressure Control",src.target_pressure) as num
-					src.target_pressure = between(0, new_pressure, max_pressure_setting)
+					src.target_pressure = clamp( new_pressure, 0,  max_pressure_setting)
 
 		if("set_flow_rate")
 			. = TRUE
@@ -237,7 +237,7 @@
 					set_flow_rate = air1.volume
 				if("set")
 					var/new_flow_rate = input(usr,"Enter new flow rate limit (0-[air1.volume]L/s)","Flow Rate Control",src.set_flow_rate) as num
-					src.set_flow_rate = between(0, new_flow_rate, air1.volume)
+					src.set_flow_rate = clamp( new_flow_rate, 0,  air1.volume)
 
 	update_icon()
 

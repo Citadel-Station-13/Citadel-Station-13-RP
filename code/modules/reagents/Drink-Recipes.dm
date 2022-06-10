@@ -434,6 +434,20 @@
 	required_reagents = list("rum" = 3, "spacemountainwind" = 1, "blood" = 1, "dr_gibb" = 1)
 	result_amount = 6
 
+/datum/chemical_reaction/drinks/narsour //wanted to keep these near the other blood cocktails - Doom
+	name = "Nar'Sour"
+	id = "narsour"
+	result = "narsour"
+	required_reagents = list("blood" = 1, "demonsblood" = 1, "lemonjuice" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/narsian
+	name = "Nar'Sian"
+	id = "narsian"
+	result = "narsian"
+	required_reagents = list("narsour" = 1, "thebestboy" = 1)
+	result_amount = 2
+
 /datum/chemical_reaction/drinks/booger
 	name = "Booger"
 	id = "booger"

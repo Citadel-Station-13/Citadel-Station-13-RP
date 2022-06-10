@@ -109,7 +109,9 @@
 		//0 = dont run the auto
 		//1 = run auto, use idle
 		//2 = run auto, use active
+	/// idle power usage in watts
 	var/idle_power_usage = 0
+	/// active power usage in watts
 	var/active_power_usage = 0
 	///EQUIP, ENVIRON or LIGHT
 	var/power_channel = EQUIP

@@ -34,6 +34,18 @@
 		my_atom.reagents = null
 	return ..()
 
+// Used in attack logs for reagents in pills and such
+/datum/reagents/proc/log_list()
+	if(!length(reagent_list))
+		return "no reagents"
+
+	var/list/data = list()
+	for(var/r in reagent_list) //no reagents will be left behind
+		var/datum/reagent/R = r
+		data += "[R.type] [R.volume]u)"
+		//Using IDs because SOME chemicals (I'm looking at you, chlorhydrate-beer) have the same names as other chemicals.
+	return english_list(data)
+
 /* Internal procs */
 
 /datum/reagents/proc/get_free_space() // Returns free space.
@@ -106,6 +118,11 @@
 		var/datum/chemical_reaction/C = i
 		C.post_reaction(src)
 	update_total()
+
+/datum/reagents/proc/holder_full()
+	if(total_volume >= maximum_volume)
+		return TRUE
+	return FALSE
 
 /* Holder-to-chemical */
 

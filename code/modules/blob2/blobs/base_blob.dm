@@ -280,7 +280,7 @@ var/list/blobs = list()
 		overmind.blob_type.on_water(src, amount)
 
 /obj/structure/blob/proc/adjust_integrity(amount)
-	integrity = between(0, integrity + amount, max_integrity)
+	integrity = clamp( integrity + amount, 0,  max_integrity)
 	if(integrity == 0)
 		playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 		if(overmind)

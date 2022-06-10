@@ -12,7 +12,7 @@
 	apc_powered = FALSE
 	if(!battery_module || !battery_module.check_functionality() || battery_module.battery.charge <= 0)
 		return FALSE
-	if(battery_module.battery.use(power_usage * CELLRATE) || ((power_usage == 0) && battery_module.battery.charge))
+	if(battery_module.battery.use(DYNAMIC_W_TO_CELL_UNITS(power_usage, 1)) || ((power_usage == 0) && battery_module.battery.charge))
 		return TRUE
 	return FALSE
 
@@ -30,7 +30,7 @@
 	// At this point, we know that APC can power us for this tick. Check if we also need to charge our battery, and then actually use the power.
 	if(battery_module && (battery_module.battery.charge < battery_module.battery.maxcharge) && (power_usage > 0))
 		power_usage += tesla_link.passive_charging_rate
-		battery_module.battery.give(tesla_link.passive_charging_rate * CELLRATE)
+		battery_module.battery.give(DYNAMIC_W_TO_CELL_UNITS(tesla_link.passive_charging_rate, 1))
 
 	A.use_power_oneoff(power_usage, EQUIP)
 	return TRUE

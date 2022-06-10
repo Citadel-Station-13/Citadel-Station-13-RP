@@ -1,3 +1,13 @@
+// Base cost modifiers.
+
+#define IC_COMPONENTS_BASE		25
+#define IC_COMPLEXITY_BASE		75
+#define IC_MATERIAL_MODIFIER 	1	// TBI when materials get updated.
+/// Calculates the cost of a given assembly.
+#define IC_ASSEMBLY_COST(ea)	(round((ea.max_components + ea.max_complexity) / 4))
+
+// Base pin types.
+
 #define IC_INPUT "input"
 #define IC_OUTPUT "output"
 #define IC_ACTIVATOR "activator"
@@ -5,6 +15,12 @@
 // Pin functionality.
 #define DATA_CHANNEL "data channel"
 #define PULSE_CHANNEL "pulse channel"
+
+// Categories that help differentiate circuits that can do different types of actions.
+
+#define IC_ACTION_MOVEMENT		(1<<0) // If the circuit can move the assembly
+#define IC_ACTION_COMBAT		(1<<1) // If the circuit can cause harm
+#define IC_ACTION_LONG_RANGE	(1<<2) // If the circuit communicate with something outside of the assembly
 
 // Displayed along with the pin name to show what type of pin it is.
 #define IC_FORMAT_ANY			"\<ANY\>"
@@ -16,8 +32,12 @@
 #define IC_FORMAT_BOOLEAN		"\<BOOL\>"
 #define IC_FORMAT_REF			"\<REF\>"
 #define IC_FORMAT_LIST			"\<LIST\>"
+#define IC_FORMAT_INDEX			"\<INDEX\>"
+#define IC_FORMAT_SELFREF		"\<SELF REF\>"
 
 #define IC_FORMAT_PULSE			"\<PULSE\>"
+#define IC_FORMAT_INPUT			"\<INPUT\>"
+#define IC_FORMAT_OUTPUT		"\<OUTPUT\>"
 
 // Used inside input/output list to tell the constructor what pin to make.
 #define IC_PINTYPE_ANY				/datum/integrated_io
@@ -28,42 +48,26 @@
 #define IC_PINTYPE_DIR				/datum/integrated_io/dir
 #define IC_PINTYPE_BOOLEAN			/datum/integrated_io/boolean
 #define IC_PINTYPE_REF				/datum/integrated_io/ref
-#define IC_PINTYPE_LIST				/datum/integrated_io/list
+#define IC_PINTYPE_LIST				/datum/integrated_io/lists
+#define IC_PINTYPE_INDEX			/datum/integrated_io/index
+#define IC_PINTYPE_SELFREF			/datum/integrated_io/selfref
 
 #define IC_PINTYPE_PULSE_IN			/datum/integrated_io/activate
 #define IC_PINTYPE_PULSE_OUT		/datum/integrated_io/activate/out
 
-// Data limits.
-#define IC_MAX_LIST_LENGTH			200
+// Circuit limiters.
+
+#define IC_MAX_LIST_LENGTH				500
+#define IC_DEFAULT_COOLDOWN				1
+#define IC_SMOKE_REAGENTS_MINIMUM_UNITS	10
+
+// Printer limits.
+
+#define MAX_CIRCUIT_CLONE_TIME 3 MINUTES //circuit slow-clones can only take up this amount of time to complete
 
 var/list/all_integrated_circuits = list()
 
+//Mostly deprecated, currently only used for circuit bags in integrated_electronics\core\tools.dm
 /proc/initialize_integrated_circuits_list()
 	for(var/thing in typesof(/obj/item/integrated_circuit))
 		all_integrated_circuits += new thing()
-
-/obj/item/integrated_circuit
-	name = "integrated circuit"
-	desc = "It's a tiny chip!  This one doesn't seem to do much, however."
-	icon = 'icons/obj/integrated_electronics/electronic_components.dmi'
-	icon_state = "template"
-	w_class = ITEMSIZE_TINY
-	var/obj/item/electronic_assembly/assembly = null // Reference to the assembly holding this circuit, if any.
-	var/extended_desc = null
-	var/list/inputs = list()
-	var/list/inputs_default = list()			// Assoc list which will fill a pin with data upon creation.  e.g. "2" = 0 will set input pin 2 to equal 0 instead of null.
-	var/list/outputs = list()
-	var/list/outputs_default = list()		// Ditto, for output.
-	var/list/activators = list()
-	var/next_use = 0 //Uses world.time
-	var/complexity = 1 				//This acts as a limitation on building machines, more resource-intensive components cost more 'space'.
-	var/size = null					//This acts as a limitation on building machines, bigger components cost more 'space'. -1 for size 0
-	var/cooldown_per_use = 1 SECOND // Circuits are limited in how many times they can be work()'d by this variable.
-	var/power_draw_per_use = 0 		// How much power is drawn when work()'d.
-	var/power_draw_idle = 0			// How much power is drawn when doing nothing.
-	var/spawn_flags = null			// Used for world initializing, see the #defines above.
-	var/category_text = "NO CATEGORY THIS IS A BUG"	// To show up on circuit printer, and perhaps other places.
-	var/removable = TRUE 			// Determines if a circuit is removable from the assembly.
-	var/displayed_name = ""
-	var/allow_multitool = 1			// Allows additional multitool functionality
-									// Used as a global var, (Do not set manually in children).

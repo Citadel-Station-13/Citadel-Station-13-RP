@@ -3,7 +3,7 @@
 	name = "protean blob"
 	desc = "Some sort of big viscous pool of jelly."
 	tt_desc = "Animated nanogoop"
-	icon = 'icons/mob/species/protean/protean.dmi'
+	icon = 'icons/mob/clothing/species/protean/protean.dmi'
 	icon_state = "to_puddle"
 	icon_living = "puddle2"
 	icon_rest = "rest"
@@ -14,7 +14,6 @@
 	health = 250
 	say_list_type = /datum/say_list/protean_blob
 
-	// ai_inactive = TRUE //Always off //VORESTATION AI TEMPORARY REMOVAL
 	show_stat_health = FALSE //We will do it ourselves
 	has_langs = list(LANGUAGE_GALCOM, LANGUAGE_EAL)
 	response_help = "pats the"
@@ -65,7 +64,7 @@
 /mob/living/simple_mob/protean_blob/Initialize(mapload, mob/living/carbon/human/H)
 	. = ..()
 	mob_radio = new(src)
-	myid = new(src)
+	access_card = new(src)
 	if(H)
 		humanform = H
 		updatehealth()
@@ -345,10 +344,10 @@
 	for(var/obj/item/pda/P in things_to_not_drop)
 		if(P.id)
 			var/obj/item/card/id/PID = P.id
-			blob.myid.access += PID.access
+			blob.access_card.access += PID.access
 
 	for(var/obj/item/card/id/I in things_to_not_drop)
-		blob.myid.access += I.access
+		blob.access_card.access += I.access
 
 	if(w_uniform && istype(w_uniform,/obj/item/clothing)) //No webbings tho. We do this after in case a suit was in the way
 		var/obj/item/clothing/uniform = w_uniform

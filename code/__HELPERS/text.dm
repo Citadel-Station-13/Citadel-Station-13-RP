@@ -32,7 +32,7 @@
 
 	if(extra)
 		var/temp_input = replace_characters(input, list("\n"="  ","\t"=" "))//one character is replaced by two
-		if(length(input) < (length(temp_input) - 6))//6 is the number of linebreaks allowed per message
+		if(length_char(input) < (length_char(temp_input) - 12)) //12 is the number of linebreaks allowed per message
 			input = replace_characters(temp_input,list("  "=" "))//replace again, this time the double spaces with single ones
 
 	if(encode)
@@ -359,6 +359,14 @@
 	for(var/i = length(text); i > 0; i--)
 		new_text += copytext(text, i, i+1)
 	return new_text
+
+/proc/text2charlist(text)
+	var/char = ""
+	var/lentext = length(text)
+	. = list()
+	for(var/i = 1, i <= lentext, i += length(char))
+		char = text[i]
+		. += char
 
 //Used in preferences' SetFlavorText and human's set_flavor verb
 //Previews a string of len or less length

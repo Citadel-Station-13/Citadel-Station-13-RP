@@ -99,8 +99,12 @@
 
 /obj/machinery/portable_atmospherics/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if ((istype(W, /obj/item/tank) && !( src.destroyed )))
+		// TODO: user.put_in_hands_or_drop(holding) after putting new tank in???
 		if (src.holding)
-			return
+			holding.forceMove(drop_location())
+			to_chat(user, SPAN_NOTICE("You quickly swap [W] into [src] with the quick release valve."))
+		else
+			to_chat(user, SPAN_NOTICE("You insert [W] into [src]."))
 		var/obj/item/tank/T = W
 		user.drop_item()
 		T.loc = src

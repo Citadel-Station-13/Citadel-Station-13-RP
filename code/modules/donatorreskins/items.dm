@@ -7,7 +7,7 @@
 	icon_state = "silverhelmet"
 	item_state_slots = list(slot_r_hand_str = "silverhelmet", slot_l_hand_str = "silverhelmet")
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/donatorclothing.dmi'
+	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	item_state = "silverhelmet"
 	item_state_slots = list(slot_r_hand_str = "sec_helm", slot_l_hand_str = "sec_helm")
 	species_restricted = list(SPECIES_AKULA)

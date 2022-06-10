@@ -4,7 +4,6 @@
 	icon_state = "griffinboots"
 	item_state = "griffinboots"
 	icon = 'icons/obj/clothing/shoes_vr.dmi'
-	icon_override = 'icons/mob/feet_vr.dmi' // This appends "_r" "_l" to icon state
 
 /obj/item/clothing/shoes/bhop
 	name = "jump boots"
@@ -12,7 +11,6 @@
 	icon_state = "jetboots"
 	item_state = "jetboots"
 	icon = 'icons/obj/clothing/shoes_vr.dmi'
-	icon_override = 'icons/mob/feet_vr.dmi' // This appends "_r" "_l" to icon state
 	// resistance_flags = FIRE_PROOF
 	action_button_name = "Activate Jump Boots"
 	permeability_coefficient = 0.05
@@ -31,12 +29,12 @@
 		return // User is already being thrown
 
 	if(recharging_time > world.time)
-		to_chat(user, "<span class='warning'>The boot's internal propulsion needs to recharge still!</span>")
+		to_chat(user, SPAN_WARNING("The boot's internal propulsion needs to recharge still!"))
 		return
 
 	var/atom/target = get_edge_target_turf(user, user.dir) //gets the user's direction
 
 	playsound(src, 'sound/effects/stealthoff.ogg', 50, 1, 1)
-	user.visible_message("<span class='warning'>[user] dashes forward into the air!</span>")
+	user.visible_message(SPAN_WARNING("[user] dashes forward into the air!"))
 	user.throw_at(target, jumpdistance, jumpspeed)
-	recharging_time = world.time + recharging_rate	
+	recharging_time = world.time + recharging_rate

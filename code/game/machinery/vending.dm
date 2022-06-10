@@ -721,8 +721,8 @@
 /obj/machinery/vending/cola
 	name = "Robust Softdrinks"
 	desc = "A softdrink vendor provided by Robust Industries, LLC."
-	icon_state = "Cola_Machine" //VOREStation Edit
-	icon_vend = "Cola_Machine-purchase" //VOREStation Edit
+	icon_state = "Cola_Machine"
+	icon_vend = "Cola_Machine-purchase"
 	product_slogans = "Robust Softdrinks: More robust than a toolbox to the head!"
 	product_ads = "Refreshing!;Hope you're thirsty!;Over 1 million drinks sold!;Thirsty? Why not cola?;Please, have a drink!;Drink up!;The best drinks in space."
 	products = list(/obj/item/reagent_containers/food/drinks/cans/battery = 10,
@@ -769,7 +769,6 @@
 					/obj/item/reagent_containers/food/snacks/liquidfood = 10,
 					/obj/item/reagent_containers/food/snacks/liquidprotein = 10,
 					/obj/item/reagent_containers/pill/diet = 8,
-					///obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose = 5,	//VOREStation Removal,
 					/obj/item/towel/random = 8)
 
 	prices = list(/obj/item/reagent_containers/food/drinks/smallmilk = 3,
@@ -780,7 +779,6 @@
 					/obj/item/reagent_containers/food/snacks/liquidfood = 10,
 					/obj/item/reagent_containers/food/snacks/liquidprotein = 10,
 					/obj/item/reagent_containers/pill/diet = 25,
-					///obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose = 5,	//VOREStation Removal,
 					/obj/item/towel/random = 40,
 					)
 
@@ -2226,13 +2224,7 @@
 					/obj/item/clothing/suit/kamishimo = 5,
 					/obj/item/clothing/suit/kimono = 5,
 					/obj/item/clothing/suit/storage/toggle/labcoat = 5,
-					/obj/item/clothing/suit/storage/toggle/labcoat/blue = 5,
-					/obj/item/clothing/suit/storage/toggle/labcoat/blue_edge = 5,
 					/obj/item/clothing/suit/storage/toggle/labcoat/green = 5,
-					/obj/item/clothing/suit/storage/toggle/labcoat/orange = 5,
-					/obj/item/clothing/suit/storage/toggle/labcoat/pink = 5,
-					/obj/item/clothing/suit/storage/toggle/labcoat/red = 5,
-					/obj/item/clothing/suit/storage/toggle/labcoat/yellow = 5,
 					/obj/item/clothing/suit/leathercoat = 5,
 					/obj/item/clothing/suit/overcoat = 5,
 					/obj/item/clothing/suit/storage/toggle/leather_jacket = 5,
@@ -2316,13 +2308,7 @@
 					/obj/item/clothing/suit/kamishimo = 25,
 					/obj/item/clothing/suit/kimono = 25,
 					/obj/item/clothing/suit/storage/toggle/labcoat = 25,
-					/obj/item/clothing/suit/storage/toggle/labcoat/blue = 25,
-					/obj/item/clothing/suit/storage/toggle/labcoat/blue_edge = 25,
 					/obj/item/clothing/suit/storage/toggle/labcoat/green = 25,
-					/obj/item/clothing/suit/storage/toggle/labcoat/orange = 25,
-					/obj/item/clothing/suit/storage/toggle/labcoat/pink = 25,
-					/obj/item/clothing/suit/storage/toggle/labcoat/red = 25,
-					/obj/item/clothing/suit/storage/toggle/labcoat/yellow = 25,
 					/obj/item/clothing/suit/leathercoat = 25,
 					/obj/item/clothing/suit/overcoat = 25,
 					/obj/item/clothing/suit/storage/toggle/leather_jacket = 25,
@@ -2505,7 +2491,9 @@
 					/obj/item/clothing/under/bsing = 1,
 					/obj/item/clothing/shoes/boots/bsing = 1,
 					/obj/item/clothing/under/ysing = 1,
-					/obj/item/clothing/shoes/boots/ysing = 1)
+					/obj/item/clothing/shoes/boots/ysing = 1,
+					/obj/item/clothing/suit/hevsuit = 3,
+					/obj/item/clothing/head/hevhelm = 3)
 	prices = list(/obj/item/clothing/suit/storage/hooded/carp_costume = 75,
 					/obj/item/clothing/suit/storage/hooded/carp_costume = 75,
 					/obj/item/clothing/suit/chickensuit = 75,
@@ -2638,7 +2626,9 @@
 					/obj/item/clothing/under/bsing = 500,
 					/obj/item/clothing/shoes/boots/bsing = 500,
 					/obj/item/clothing/under/ysing = 500,
-					/obj/item/clothing/shoes/boots/ysing = 500)
+					/obj/item/clothing/shoes/boots/ysing = 500,
+					/obj/item/clothing/suit/hevsuit = 250,
+					/obj/item/clothing/head/hevhelm = 150)
 	premium = list(/obj/item/clothing/suit/imperium_monk = 3)
 	contraband = list(/obj/item/clothing/head/syndicatefake = 1,
 					/obj/item/clothing/suit/syndicatefake = 1)

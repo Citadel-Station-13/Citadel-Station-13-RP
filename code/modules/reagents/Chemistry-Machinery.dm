@@ -40,7 +40,6 @@
 	. = ..()
 	beaker = new /obj/item/reagent_containers/glass/beaker/large(src)
 	default_apply_parts()
-	RefreshParts()
 
 /obj/machinery/reagentgrinder/examine(mob/user)
 	. = ..()
@@ -77,11 +76,9 @@
 		if(default_deconstruction_crowbar(user, O))
 			return
 
-	//vorestation edit start - for solargrubs
-	if (istype(O, /obj/item/multitool))
+	// For solargrubs
+	if(istype(O, /obj/item/multitool))
 		return ..()
-	//vorestation edit end
-
 
 	if (istype(O,/obj/item/reagent_containers/glass) || \
 		istype(O,/obj/item/reagent_containers/food/drinks/glass2) || \

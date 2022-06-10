@@ -50,10 +50,10 @@
 ////#define COMSIG_MOB_MIND_TRANSFERRED_INTO "mob_mind_transferred_into"
 
 /// From base of obj/allowed(mob/M): (/obj) returns ACCESS_ALLOWED if mob has id access to the obj
-////#define COMSIG_MOB_TRIED_ACCESS "tried_access"
-	////#define ACCESS_ALLOWED (1<<0)
-	////#define ACCESS_DISALLOWED (1<<1)
-	////#define LOCKED_ATOM_INCOMPATIBLE (1<<2)
+#define COMSIG_MOB_TRIED_ACCESS "tried_access"
+	#define ACCESS_ALLOWED (1<<0)
+	#define ACCESS_DISALLOWED (1<<1)
+	#define LOCKED_ATOM_INCOMPATIBLE (1<<2)
 
 /// From base of mob/can_cast_magic(): (mob/user, magic_flags, charge_cost)
 ////#define COMSIG_MOB_RESTRICT_MAGIC "mob_cast_magic"
@@ -77,7 +77,7 @@
 	///? return this if you want to block printing this message to this person, if you want to print your own (does not affect the other person's message)
 	////#define COMSIG_BLOCK_EYECONTACT (1<<0)
 /// From base of /mob/update_sight(): ()
-////#define COMSIG_MOB_UPDATE_SIGHT "mob_update_sight"
+#define COMSIG_MOB_UPDATE_SIGHT "mob_update_sight"
 //// From /mob/living/say(): ()
 ////#define COMSIG_MOB_SAY "mob_say"
 	////#define COMPONENT_UPPERCASE_SPEECH (1<<0)

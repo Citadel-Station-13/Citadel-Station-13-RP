@@ -14,7 +14,6 @@
 /obj/machinery/telepad/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
-	RefreshParts()
 	update_icon()
 
 /obj/machinery/telepad/RefreshParts()

@@ -20,7 +20,7 @@
 	var/mob/living/carbon/owner
 	var/mutable_appearance/head
 	var/headcolor = rgb(0, 0, 0)
-	sprite_sheets = list('icons/mob/mask.dmi')
+	sprite_sheets = list(INV_MASK_DEF_ICON)
 	volume = 20
 
 /obj/item/reagent_containers/hard_candy/Initialize(mapload)
@@ -69,7 +69,6 @@
 					to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
 					return
 
-			 // Vorestation edits in this section.
 			user.setClickCooldown(user.get_attack_speed(src)) //puts a limit on how fast people can eat/drink things
 			if (fullness <= 100)
 				to_chat(M, "<span class='danger'>You hungrily chew out a piece of [src] and gobble it!</span>")
@@ -107,14 +106,9 @@
 					to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
 					return
 
-			if(!istype(M, /mob/living/carbon/slime))		//If you're feeding it to someone else.
+			if(!istype(M, /mob/living/carbon/slime)) // If you're feeding it to someone else.
 
-				/*if (fullness <= (550 * (1 + M.overeatduration / 1000))) // Vorestation edit
-					user.visible_message("<span class='danger'>[user] attempts to feed [M] [src].</span>")
-				else
-					user.visible_message("<span class='danger'>[user] cannot force anymore of [src] down [M]'s throat.</span>")
-					return 0*/
-				user.visible_message("<span class='danger'>[user] attempts to feed [M] [src].</span>") // Vorestation edit
+				user.visible_message(SPAN_DANGER("[user] attempts to feed [M] [src]."))
 
 				user.setClickCooldown(user.get_attack_speed(src))
 				if(!do_mob(user, M)) return

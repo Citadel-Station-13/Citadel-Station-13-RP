@@ -40,13 +40,16 @@
 	name = OUTFIT_JOB_NAME("Security Officer")
 	uniform = /obj/item/clothing/under/rank/security
 	l_pocket = /obj/item/flash
-	id_type = /obj/item/card/id/security/officer
-	pda_type = /obj/item/pda/security
 	glasses = /obj/item/clothing/glasses/sunglasses/sechud
 	l_ear = /obj/item/radio/headset/headset_sec
 	gloves = /obj/item/clothing/gloves/black
 	shoes = /obj/item/clothing/shoes/boots/jackboots
+
+	id_type = /obj/item/card/id/security/officer
+	pda_type = /obj/item/pda/security
+
 	backpack = /obj/item/storage/backpack/security
-	satchel_one = /obj/item/storage/backpack/satchel/sec
 	backpack_contents = list(/obj/item/handcuffs = 1)
+	satchel_one = /obj/item/storage/backpack/satchel/sec
 	messenger_bag = /obj/item/storage/backpack/messenger/sec
+	dufflebag = /obj/item/storage/backpack/dufflebag/sec
