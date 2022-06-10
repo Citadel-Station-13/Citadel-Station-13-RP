@@ -73,3 +73,8 @@
   Zandario:
   - bugfix: You can once again exit resleevers.
   - rscadd: Blizzard and snow sound go brrr
+2022-06-10:
+  lingonberry1234:
+  - rscadd: Added new circuits from everywhere, plus a couple of extras. Circuit cloning.
+  - bugfix: Input circuits live again
+  - refactor: Integrated circuits backend ported from Main
