@@ -1,7 +1,8 @@
 /datum/language/species/moth
 #warn impl
 	name = LANGUAGE_LUINIMMA
-	desc = ""
+	desc = "The language of the Dnin-Nepids, Luinimma sounds like a quick, tonal series of chitters and clicks to \
+	non-speakers."
 	speech_verb = "chitters"
 	ask_verb = "clacks"
 	exclaim_verb = "rasps"
