@@ -19,6 +19,9 @@
 //! ## Intrinsics
 	/// abstract type
 	var/abstract_type = /datum/species
+	/// uid
+	var/id
+	// TODO: ref species by id in code, so we can rename as needed
 
 //! ## Descriptors and strings.
 	/// Species name.
@@ -409,8 +412,10 @@
 	var/base_species = null // Unused outside of a few species
 	var/selects_bodytype = FALSE // Allows the species to choose from body types intead of being forced to be just one.
 
-
 /datum/species/New()
+	if(isnull(id))
+		id = ckey(name)
+
 	if(hud_type)
 		hud = new hud_type()
 	else

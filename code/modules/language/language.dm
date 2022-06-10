@@ -7,6 +7,9 @@
 /datum/language
 	/// abstract type
 	var/abstract_type = /datum/language
+	/// uid
+	var/id
+	// TODO: ref languages by id in code, so we can rename as needed
 	var/name = "an unknown language"  // Fluff name of language if any.
 	var/desc = "A language."          // Short description for 'Check Languages'.
 	var/speech_verb = "says"          // 'says', 'hisses', 'farts'.
@@ -23,6 +26,10 @@
 	var/machine_understands = 1		  // Whether machines can parse and understand this language
 	var/list/partial_understanding	  // List of languages that can /somehwat/ understand it, format is: name = chance of understanding a word
 	var/list/scramble_cache = list()
+
+/datum/language/New()
+	if(isnull(id))
+		id = ckey(name)
 
 /datum/language/proc/get_random_name(var/gender, name_count=2, syllable_count=4, syllable_divisor=2)
 	if(!syllables || !syllables.len)

@@ -32,8 +32,7 @@
 #define SPECIES_MONKEY_TAJ "Farwa"
 #define SPECIES_MONKEY_UNATHI "Stok"
 #define SPECIES_MONKEY_VULPKANIN "Wolpin"
-#warn lmao
-#define SPECIES_MOTH ""
+#define SPECIES_MOTH "Dnin-Nepid"
 #define SPECIES_NEVREAN "Nevrean"
 #define SPECIES_PLASMAMAN "Phoronoid"
 #define SPECIES_PROMETHEAN "Promethean"

@@ -1,7 +1,7 @@
 /datum/species/moth
 	name = SPECIES_MOTH
-	#warn lmao
-	name_plural = "Tajaran"
+	id = "moth"
+	name_plural = "Dnin-Nepids"
 
 	#warn sprites
 	icobase = 'icons/mob/human_races/insect_moth.dmi'
@@ -21,25 +21,30 @@
 	gluttonous = 0
 	num_alternate_languages = 3
 	rarity_value = 2
-	#warn languages
 	species_language = list(
-		LANGUAGE_
+		LANGUAGE_LUINIMMA
 	)
-	name_language = LANGUAGE_
+	name_language = LANGUAGE_LUINIMMA
+	// sensitive
 	health_hud_intensity = 1.5
 
 	// their canonical age can go over this but older ones probably aren't in human space
 	max_age = 60
 
 	// todo: this is only so high BECAUSE EVERY OTHER GODDAMN RACE IS 10, WHO DESGINED THIS?
-	economic_modifier = 6
+	// todo: nerf everyone else and rework this fucked economy
+	economic_modifier = 8
 
 	// see defines - as of right now, detects reagents at 7% instead of 15%
 	taste_sensitivity = TASTE_SENSITIVE
 
 #warn wip
 
-	blurb = ""
+	blurb = "A nomadic species hailing from the southern reaches of the galaxy, Dnin-Nepids are a relatively \
+	new contender to the galaxy's state of affairs. While most of their kind toil abroad the city-ships \
+	of their fleets, some have sought to make their homes amongst the other races inhabiting the Milky Way. Their \
+	appearance is not dissimilar to what a certain Sol insect looks like, earning them the moniker of 'moths' within the \
+	hearts of the majority."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mothpeople)
 
 #warn wip
@@ -125,7 +130,7 @@
 // todo: cataloguer rework when
 /datum/category_item/catalogue/fauna/mothpeople
 	#warn species name
-	name = "Sapients - "
+	name = "Sapients - Dnin-Nepids"
 	desc = {"
 
 	"}

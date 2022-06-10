@@ -1,13 +1,14 @@
 /datum/language/species/moth
 #warn impl
-	name = ""
+	name = LANGUAGE_LUINIMMA
 	desc = ""
-	speech_verb = ""
-	ask_verb = ""
-	exclaim_verb = ""
-	whisper_verb = ""
+	speech_verb = "chitters"
+	ask_verb = "clacks"
+	exclaim_verb = "rasps"
+	whisper_verb = "clicks"
 	signlang_verb = list("")
 	colour = "body"
+	#warn check key conflict
 	key = "m"
 	native = TRUE
 	flags = NONE
