@@ -41,10 +41,10 @@
 #warn wip
 
 	blurb = "A nomadic species hailing from the southern reaches of the galaxy, Dnin-Nepids are a relatively \
-	new contender to the galaxy's state of affairs. While most of their kind toil abroad the city-ships \
-	of their fleets, some have sought to make their homes amongst the other races inhabiting the Milky Way. Their \
-	appearance is not dissimilar to what a certain Sol insect looks like, earning them the moniker of 'moths' within the \
-	hearts of the majority."
+	new contender to the galaxy's state of affairs. They are a peaceful, innovative people with fragile, yet nimble bodies. \
+	Their appearance is not dissimilar to what certain Sol insects look like, earning them the moniker of '<b>moths</b>' by the majority. \
+	While most of their kind stick to the city-ships of their fleet, more and more have migrated to the frontiers of Orion and Jargon space - \
+	whether to see the world, or to pursue a new life."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mothpeople)
 
 #warn wip
@@ -126,11 +126,10 @@
 		/mob/living/carbon/human/proc/tie_hair
  		)
 
-#warn wip
 // todo: cataloguer rework when
 /datum/category_item/catalogue/fauna/mothpeople
-	#warn species name
 	name = "Sapients - Dnin-Nepids"
+	#warn lore dump lmfao
 	desc = {"
 
 	"}
