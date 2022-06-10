@@ -1424,8 +1424,8 @@
 /area/shuttle/tabiranth)
 "bl" = (
 /obj/machinery/power/smes/buildable{
-	input_level = 200000;
-	output_level = 200000
+	input_level = 200;
+	output_level = 200
 	},
 /obj/structure/cable/cyan{
 	icon_state = "0-4"

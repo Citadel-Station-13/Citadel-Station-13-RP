@@ -183,7 +183,7 @@
 	cost = 25
 	container_type = /obj/structure/closet/crate
 	container_name = "Ballistic ammunition crate"
-	access = access_armory //VOREStation Edit - Guns are for the armory.
+	access = access_armory // Guns are for the armory.
 
 /datum/supply_pack/munitions/bsmgammo
 	name = "Ammunition - 9mm top mounted lethal"

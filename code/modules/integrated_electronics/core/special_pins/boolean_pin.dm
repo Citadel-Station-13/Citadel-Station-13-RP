@@ -20,6 +20,6 @@
 	return IC_FORMAT_BOOLEAN
 
 /datum/integrated_io/boolean/display_data(var/input)
-	if(data == TRUE)
-		return "(True)"
-	return "(False)"
+	if(data)
+		return "(TRUE)"
+	return "(FALSE)"

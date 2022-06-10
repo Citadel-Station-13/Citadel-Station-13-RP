@@ -1,34 +1,33 @@
 // PRESETS
 /*
 var/global/list/station_networks = list(
-//										NETWORK_CAFE_DOCK,
-										NETWORK_CARGO,
-										NETWORK_CIVILIAN,
-//										NETWORK_CIVILIAN_EAST,
-//										NETWORK_CIVILIAN_WEST,
-										NETWORK_COMMAND,
-										NETWORK_ENGINE,
-										NETWORK_ENGINEERING,
-										NETWORK_ENGINEERING_OUTPOST,
-										NETWORK_DEFAULT,
-										NETWORK_MEDICAL,
-										NETWORK_MINE,
-										NETWORK_NORTHERN_STAR,
-										NETWORK_RESEARCH,
-										NETWORK_RESEARCH_OUTPOST,
-										NETWORK_ROBOTS,
-										NETWORK_PRISON,
-										NETWORK_SECURITY,
-										NETWORK_INTERROGATION
-										)
+	NETWORK_CAFE_DOCK,
+	NETWORK_CARGO,
+	NETWORK_CIVILIAN,
+	NETWORK_CIVILIAN_EAST,
+	NETWORK_CIVILIAN_WEST,
+	NETWORK_COMMAND,
+	NETWORK_ENGINE,
+	NETWORK_ENGINEERING,
+	NETWORK_ENGINEERING_OUTPOST,
+	NETWORK_DEFAULT,
+	NETWORK_MEDICAL,
+	NETWORK_MINE,
+	NETWORK_NORTHERN_STAR,
+	NETWORK_RESEARCH,
+	NETWORK_RESEARCH_OUTPOST,
+	NETWORK_ROBOTS,
+	NETWORK_PRISON,
+	NETWORK_SECURITY,
+	NETWORK_INTERROGATION
+	)
 */
 var/global/list/engineering_networks = list(
-										NETWORK_ENGINE,
-										NETWORK_ENGINEERING,
-										//NETWORK_ENGINEERING_OUTPOST,	//VOREStation Edit: Tether has no Engineering Outpost,
-										NETWORK_ALARM_ATMOS,
-										NETWORK_ALARM_FIRE,
-										NETWORK_ALARM_POWER)
+	NETWORK_ENGINE,
+	NETWORK_ENGINEERING,
+	NETWORK_ALARM_ATMOS,
+	NETWORK_ALARM_FIRE,
+	NETWORK_ALARM_POWER)
 /obj/machinery/camera/network/crescent
 	network = list(NETWORK_CRESCENT)
 
@@ -132,7 +131,7 @@ var/global/list/engineering_networks = list(
 
 //Tether-unique network cameras
 /obj/machinery/camera/network/tether
-	network = list(NETWORK_TRIUMPH)
+	network = list(NETWORK_TETHER)
 
 /obj/machinery/camera/network/triumph
 	network = list(NETWORK_TRIUMPH)

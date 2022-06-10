@@ -75,7 +75,7 @@
 		Sleeping(20)
 
 	//No need to update all of these procs if the guy is dead.
-	fall() //VORESTATION EDIT. Prevents people from floating
+	fall() // Prevents people from floating
 	if(stat != DEAD && !stasis)
 		//Updates the number of stored chemicals for powers
 		handle_changeling()
@@ -83,8 +83,8 @@
 		//Organs and blood
 		handle_organs()
 		stabilize_body_temperature() //Body temperature adjusts itself (self-regulation)
-		weightgain() 			//VORESTATION EDIT
-		process_weaver_silk()	//VOREStation Addition
+		weightgain()
+		process_weaver_silk()
 		handle_shock()
 
 		handle_pain()
@@ -92,7 +92,7 @@
 		handle_medical_side_effects()
 
 		handle_heartbeat()
-		handle_nif() //VOREStation Add
+		handle_nif()
 		if(!client)
 			species.handle_npc(src)
 
@@ -684,7 +684,7 @@
 			pl_effects()
 			break
 
-	if(istype(loc, /turf/space)) //VOREStation Edit - No FBPs overheating on space turfs inside mechs or people.
+	if(istype(loc, /turf/space)) // No FBPs overheating on space turfs inside mechs or people.
 		//Don't bother if the temperature drop is less than 0.1 anyways. Hopefully BYOND is smart enough to turn this constant expression into a constant
 		if(bodytemperature > (0.1 * HUMAN_HEAT_CAPACITY/(HUMAN_EXPOSED_SURFACE_AREA*STEFAN_BOLTZMANN_CONSTANT))**(1/4) + COSMIC_RADIATION_TEMPERATURE)
 			//Thermal radiation into space
@@ -785,7 +785,7 @@
 		pressure_alert = -1
 	else
 		if( !(COLD_RESISTANCE in mutations))
-			if(!isSynthetic() || !nif || !nif.flag_check(NIF_O_PRESSURESEAL,NIF_FLAGS_OTHER)) //VOREStation Edit - NIF pressure seals
+			if(!isSynthetic() || !nif || !nif.flag_check(NIF_O_PRESSURESEAL,NIF_FLAGS_OTHER)) // NIF pressure seals
 				take_overall_damage(brute=LOW_PRESSURE_DAMAGE, used_weapon = "Low Pressure")
 			if(getOxyLoss() < 55) 		// 12 OxyLoss per 4 ticks when wearing internals;    unconsciousness in 16 ticks, roughly half a minute
 				var/pressure_dam = 3	// 16 OxyLoss per 4 ticks when no internals present; unconsciousness in 13 ticks, roughly twenty seconds
@@ -945,8 +945,9 @@
 			GET_VSC_PROP(atmos_vsc, /atmos/phoron/contamination_loss, loss_per_part)
 			for(var/obj/item/I in src)
 				if(I.contaminated)
-					if(check_belly(I)) continue //VOREStation Edit
-					if(src.species && !(src.species.flags & CONTAMINATION_IMMUNE))	//VOREStation Edit: shadekin; CitadelRP: Black-Eyed Shadekin don't get afflicted from contaminated clothing
+					if(check_belly(I))
+						continue
+					if(src.species && !(src.species.flags & CONTAMINATION_IMMUNE))
 						// This is hacky, I'm so sorry.
 						if(I != l_hand && I != r_hand)	//If the item isn't in your hands, you're probably wearing it. Full damage for you.
 							total_phoronloss += loss_per_part
@@ -996,11 +997,10 @@
 				hydration_reduction *= mod.metabolism_percent
 		adjust_hydration(-hydration_reduction)
 
-	if(noisy == TRUE && nutrition < 250 && prob(10)) //VOREStation edit for hunger noises.
+	if(noisy == TRUE && nutrition < 250 && prob(10))
 		var/sound/growlsound = sound(get_sfx("hunger_sounds"))
 		var/growlmultiplier = 100 - (nutrition / 250 * 100)
 		playsound(src, growlsound, vol = growlmultiplier, vary = 1, falloff = 0.1, ignore_walls = TRUE, preference = /datum/client_preference/digestion_noises)
-	// VOREStation Edit End
 
 	// TODO: stomach and bloodstream organ.
 	if(!isSynthetic())
@@ -1379,7 +1379,7 @@
 				var/obj/item/clothing/glasses/G = glasses
 				if(G.prescription)
 					corrected = TRUE
-			if(nif?.flag_check(NIF_V_CORRECTIVE,NIF_FLAGS_VISION))	//VOREStation Edit - NIF
+			if(nif?.flag_check(NIF_V_CORRECTIVE,NIF_FLAGS_VISION))
 				corrected = TRUE
 			if(!corrected)
 				overlay_fullscreen("impaired", /atom/movable/screen/fullscreen/scaled/impaired, 1)
@@ -1406,7 +1406,7 @@
 					var/obj/item/clothing/glasses/welding/O = glasses
 					if(!O.up)
 						found_welder = 1
-				if(!found_welder && nif && nif.flag_check(NIF_V_UVFILTER,NIF_FLAGS_VISION))	found_welder = 1 //VOREStation Add - NIF
+				if(!found_welder && nif && nif.flag_check(NIF_V_UVFILTER,NIF_FLAGS_VISION))	found_welder = 1
 				if(!found_welder && istype(head, /obj/item/clothing/head/welding))
 					var/obj/item/clothing/head/welding/O = head
 					if(!O.up)
@@ -1416,7 +1416,7 @@
 					if(O.helmet && O.helmet == head && (O.helmet.body_parts_covered & EYES))
 						if((O.offline && O.offline_vision_restriction == 1) || (!O.offline && O.vision_restriction == 1))
 							found_welder = 1
-				if(absorbed) found_welder = 1 //VOREStation Code
+				if(absorbed) found_welder = 1
 			if(found_welder)
 				client.screen |= GLOB.global_hud.darkMask
 
@@ -1470,6 +1470,10 @@
 			SetSeeInDarkSelf(8)
 			if(!druggy)
 				SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
+
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.vision_flags))
+				AddSightSelf(M.vision_flags)
 
 		if(!glasses_processed && nif)
 			var/datum/nifsoft/vision_soft

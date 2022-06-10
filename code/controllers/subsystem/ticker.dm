@@ -30,8 +30,6 @@ SUBSYSTEM_DEF(ticker)
 	var/event_time = null
 	var/event = 0
 
-	// var/login_music			// music played in pregame lobby // VOREStation Edit - We do music differently
-
 	var/list/datum/mind/minds = list()//The people in the game. Used for objective tracking.
 
 	var/Bible_icon_state	// icon_state the chaplain has chosen for his bible
@@ -226,7 +224,6 @@ SUBSYSTEM_DEF(ticker)
 	create_characters() //Create player characters and transfer them.
 	collect_minds()
 	equip_characters()
-	//data_core.manifest()	//VOREStation Removal
 
 	callHook("roundstart")
 
@@ -395,13 +392,11 @@ SUBSYSTEM_DEF(ticker)
 			else if(!player.mind.assigned_role)
 				continue
 			else
-				//VOREStation Edit Start
 				var/mob/living/carbon/human/new_char = player.create_character()
 				if(new_char)
 					qdel(player)
 				if(istype(new_char) && !(new_char.mind.assigned_role=="Cyborg"))
 					data_core.manifest_inject(new_char)
-				//VOREStation Edit End
 
 
 /datum/controller/subsystem/ticker/proc/collect_minds()
@@ -419,8 +414,6 @@ SUBSYSTEM_DEF(ticker)
 			if(!player_is_antag(player.mind, only_offstation_roles = 1))
 				job_master.EquipRank(player, player.mind.assigned_role, 0)
 				UpdateFactionList(player)
-				//equip_custom_items(player)	//VOREStation Removal
-				//player.apply_traits() //VOREStation Removal
 	if(captainless)
 		for(var/mob/M in player_list)
 			if(!istype(M,/mob/new_player))

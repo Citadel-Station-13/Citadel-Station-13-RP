@@ -151,8 +151,7 @@
 		chem_effective = 0.5
 		M.adjustBruteLoss(2 * removed) //Mends burns, but has negative effects with a Promethean's skeletal structure.
 	if(alien != IS_DIONA)
-		M.heal_organ_damage(0, 4 * removed * chem_effective) //VOREStation edit
-
+		M.heal_organ_damage(0, 4 * removed * chem_effective)
 /datum/reagent/dermaline
 	name = "Dermaline"
 	id = "dermaline"
@@ -169,8 +168,7 @@
 	if(alien == IS_SLIME)
 		chem_effective = 0.75
 	if(alien != IS_DIONA)
-		M.heal_organ_damage(0, 8 * removed * chem_effective) //VOREStation edit
-/*
+		M.heal_organ_damage(0, 8 * removed * chem_effective)/*
 /datum/reagent/dermaline/topical//Main way to obtain is destiller
 	name = "Dermalaze"
 	id = "dermalaze"
@@ -257,8 +255,7 @@
 	color = "#0080FF"
 	overdose = REAGENTS_OVERDOSE
 	scannable = 1
-	metabolism = REM * 0.25 //VOREStation Edit
-
+	metabolism = REM * 0.25
 /datum/reagent/dexalin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_VOX)
 		M.adjustToxLoss(removed * 24) //Vox breath phoron, oxygen is rather deadly to them
@@ -274,8 +271,7 @@
 		M.adjustOxyLoss(-60 * removed) //Heals alot of oxyloss damage/but
 		//keep in mind that Dexaline has a metabolism rate of 0.25*REM meaning only 0.25 units are removed every tick(if your metabolism takes usuall 1u per tick)
 
-	holder.remove_reagent("lexorin", 8 * removed) //VOREStation Edit
-
+	holder.remove_reagent("lexorin", 8 * removed)
 /datum/reagent/dexalinp
 	name = "Dexalin Plus"
 	id = "dexalinp"
@@ -1190,7 +1186,7 @@
 		M.hallucination = max(M.hallucination, 10)
 
 	//One of the levofloxacin side effects is 'spontaneous tendon rupture', which I'll immitate here. 1:1000 chance, so, pretty darn rare.
-	if(ishuman(M) && rand(1,10000) == 1) //VOREStation Edit (more rare)
+	if(ishuman(M) && rand(1,10000) == 1)
 		var/obj/item/organ/external/eo = pick(H.organs) //Misleading variable name, 'organs' is only external organs
 		eo.fracture()
 

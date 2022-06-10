@@ -5,7 +5,7 @@
 	item_state = "card-id"
 
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/id.dmi'
+		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/id.dmi'
 		)
 
 	var/access = list()
@@ -386,8 +386,8 @@
 	job_access_type = /datum/job/station/qm
 
 /obj/item/card/id/assistant
-	assignment = USELESS_JOB //VOREStation Edit - Visitor not Assistant
-	rank = USELESS_JOB //VOREStation Edit - Visitor not Assistant
+	assignment = USELESS_JOB
+	rank = USELESS_JOB
 	job_access_type = /datum/job/station/assistant
 
 /obj/item/card/id/civilian

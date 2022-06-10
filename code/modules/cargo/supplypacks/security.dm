@@ -237,7 +237,6 @@
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "Ballistic armor crate"
 	access = access_armory
-//CITADEL EDIT - YEET EM AND SKEET EM BOYS WE'RE FREEING ARMOR /* VOREStation Removal - Howabout no ERT armor being orderable?
 
 /datum/supply_pack/security/bullet_resistant_plates
 	name = "Armor - Ballistic plates"

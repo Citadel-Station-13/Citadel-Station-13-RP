@@ -73,34 +73,30 @@
 	title = "Xenobiologist"
 	title_blurb = "A Xenobiologist studies esoteric lifeforms, usually in the relative safety of their lab. They attempt to find ways to benefit \
 						from the byproducts of these lifeforms, and their main subject at present is the Giant Slime."
-	title_outfit = /datum/outfit/job/station/xenobiologist
+	title_outfit = /datum/outfit/job/station/scientist/xenobiologist
 
 /datum/alt_title/scientist/xenobotanist
 	title = "Xenobotanist"
 	title_blurb = "A Xenobotanist grows and cares for a variety of abnormal, custom made, and frequently dangerous plant life. When the products of these plants \
 					are both safe and beneficial to the station, they may choose to introduce it to the rest of the crew."
-	title_outfit = /datum/outfit/job/station/xenobiologist
+	title_outfit = /datum/outfit/job/station/scientist/xenobiologist
 
 /datum/outfit/job/station/scientist
 	name = OUTFIT_JOB_NAME("Scientist")
 	uniform = /obj/item/clothing/under/rank/scientist
-	id_type = /obj/item/card/id/science/scientist
 	suit = /obj/item/clothing/suit/storage/toggle/labcoat/science
 	l_ear = /obj/item/radio/headset/headset_sci
 	shoes = /obj/item/clothing/shoes/white
-	pda_type = /obj/item/pda/science
-	backpack = /obj/item/storage/backpack/toxins
-	satchel_one = /obj/item/storage/backpack/satchel/tox
-	messenger_bag = /obj/item/storage/backpack/messenger/tox
 
-/datum/outfit/job/station/xenobiologist
-	name = OUTFIT_JOB_NAME("Xenobiologist")
-	uniform = /obj/item/clothing/under/rank/scientist
-	id_type = /obj/item/card/id/science/xenobiologist
-	suit = /obj/item/clothing/suit/storage/toggle/labcoat/science
-	l_ear = /obj/item/radio/headset/headset_sci
-	shoes = /obj/item/clothing/shoes/white
+	id_type = /obj/item/card/id/science/scientist
 	pda_type = /obj/item/pda/science
+	pda_slot = slot_l_store
+
 	backpack = /obj/item/storage/backpack/toxins
 	satchel_one = /obj/item/storage/backpack/satchel/tox
 	messenger_bag = /obj/item/storage/backpack/messenger/tox
+	dufflebag = /obj/item/storage/backpack/dufflebag/sci
+
+/datum/outfit/job/station/scientist/xenobiologist
+	name = OUTFIT_JOB_NAME("Xenobiologist")
+	id_type = /obj/item/card/id/science/xenobiologist

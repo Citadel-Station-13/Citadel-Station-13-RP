@@ -15,7 +15,7 @@
 
 This is the codebase for the CitadelRP flavoured fork of SpaceStation 13.
 
-Citadel Station 13 RP, also known as CitadelRP was originally a fork of VOREStation, which separated on 01/25/2019. CitadelRP nowadays can be seen as a Polaris and /tg/station hybrid!
+Citadel Station 13 RP, also known as CitadelRP was originally a fork of VOREStation, which separated on 01/25/2019.
 
 ## DOWNLOADING
 [Downloading](.github/guides/DOWNLOADING.md)

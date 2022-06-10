@@ -79,6 +79,11 @@
 	var/atom/movable/holder = __vfx_see_anywhere_atom_holder_at(isturf(src)? src : loc)
 	var/mutable_appearance/MA
 	holder.plane = SONAR_PLANE
+	holder.dir = dir
+	holder.pixel_x += pixel_x
+	holder.pixel_y += pixel_y
+	// yea...
+	holder.layer = plane * 100 + layer
 	. = holder
 	switch(resolution)
 		if(SONAR_RESOLUTION_VISIBLE)

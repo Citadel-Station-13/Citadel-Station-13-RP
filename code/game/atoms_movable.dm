@@ -33,32 +33,42 @@
 	/// our default perspective - if none, a temporary one will be generated when a mob requires it
 	var/datum/perspective/self_perspective
 
-	var/anchored = 0
+	var/anchored = FALSE
 	var/move_speed = 10
 	var/l_move_time = 1
 	var/m_flag = 1
-	var/throwing = 0
+	var/throwing = FALSE
 	var/thrower
 	var/turf/throw_source = null
 	var/throw_speed = 2
 	var/throw_range = 7
-	var/moved_recently = 0
+	var/moved_recently = FALSE
 	var/mob/pulledby = null
-	var/item_state = null // Used to specify the item state for the on-mob overlays.
-	var/icon_scale_x = 1 // Used to scale icons up or down horizonally in update_transform().
-	var/icon_scale_y = 1 // Used to scale icons up or down vertically in update_transform().
-	var/icon_rotation = 0 // Used to rotate icons in update_transform()
+
+	/// Used to specify the item state for the on-mob overlays.
+	var/item_state = null
+	/// Used to scale icons up or down horizonally in update_transform().
+	var/icon_scale_x = 1
+	/// Used to scale icons up or down vertically in update_transform().
+	var/icon_scale_y = 1
+	/// Used to rotate icons in update_transform()
+	var/icon_rotation = 0
 	var/icon_expected_height = 32
 	var/icon_expected_width = 32
 	var/old_x = 0
 	var/old_y = 0
-	var/datum/riding/riding_datum //VOREStation Add - Moved from /obj/vehicle
-	var/does_spin = TRUE // Does the atom spin when thrown (of course it does :P)
 
-	var/cloaked = FALSE //If we're cloaked or not
-	var/image/cloaked_selfimage //The image we use for our client to let them see where we are
+	/// Used for vehicles and other things.
+	var/datum/riding/riding_datum
+	/// Does the atom spin when thrown.
+	var/does_spin = TRUE
 
-	///Reference to atom being orbited
+	///If we're cloaked or not.
+	var/cloaked = FALSE
+	/// The image we use for our client to let them see where we are.
+	var/image/cloaked_selfimage
+
+	/// Reference to atom being orbited.
 	var/atom/orbit_target
 
 /atom/movable/Destroy(force)
@@ -444,13 +454,15 @@
 	G.maptext_x = -128 + (world.icon_size * 0.5)
 	G.maptext_y = 32
 	G.plane = PLANE_GHOSTS
+	G.loc = null		// lol
 	vis_contents += G
-	if(G.loc != src)
-		G.forceMove(src)
 	return G
 
 /atom/movable/ghost_tag_container
+	// no mouse opacity
+	name = ""
 	var/atom/movable/master
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /atom/movable/ghost_tag_container/Destroy()
 	if(istype(master))

@@ -24,6 +24,8 @@
 */
 /// Folder directory for strings
 #define STRING_DIRECTORY "strings"
+/// Takes an atom and formats it with a hyperlink to "lookitem" for the usr. Intended for 'examine' text.
+#define FORMAT_TEXT_LOOKITEM(item) "<a HREF=?src=\ref[usr];lookitem=\ref[item]>[item]<a/>"
 /*
 // JSON text files found in the tgstation/strings folder
 /// File location for brain damage traumas

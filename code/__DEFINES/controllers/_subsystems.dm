@@ -154,6 +154,7 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_AI				-22
 #define INIT_ORDER_OPENSPACE		-50
 #define INIT_ORDER_PERSISTENCE		-95
+#define INIT_ORDER_PATH				-98
 #define INIT_ORDER_ICON_SMOOTHING	-99
 ///Should be last to ensure chat remains smooth during init.
 #define INIT_ORDER_CHAT				-100
@@ -164,7 +165,6 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define FIRE_PRIORITY_SHUTTLES		5
 #define FIRE_PRIORITY_NIGHTSHIFT	6
 #define FIRE_PRIORITY_PLANTS		5
-#define FIRE_PRIORITY_ORBIT			8
 #define FIRE_PRIORITY_VOTE			9
 #define FIRE_PRIORITY_AI			10
 #define FIRE_PRIORITY_VIS			10

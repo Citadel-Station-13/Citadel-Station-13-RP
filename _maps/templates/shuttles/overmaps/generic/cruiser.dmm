@@ -2968,12 +2968,12 @@
 /area/mothership/chemistry)
 "gh" = (
 /obj/machinery/power/smes/buildable{
-	capacity = 2e+007;
-	charge = 2e+007;
+	capacity = 2e+004;
+	charge = 2e+004;
 	cur_coils = 4;
 	input_attempt = 1;
-	input_level = 1e+006;
-	output_level = 1e+006
+	input_level = 1000;
+	output_level = 1000
 	},
 /obj/structure/cable/cyan,
 /turf/simulated/floor/tiled/techfloor/grid,

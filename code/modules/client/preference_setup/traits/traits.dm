@@ -26,8 +26,7 @@ var/list/trait_categories = list() // The categories available for the trait men
 	return 1
 
 /datum/category_item/player_setup_item/traits
-	name = "Quirks" //VOREStation Edit
-	sort_order = 1
+	name = "Quirks"	sort_order = 1
 	var/current_tab = "Physical"
 
 /datum/category_item/player_setup_item/traits/load_character(var/savefile/S)

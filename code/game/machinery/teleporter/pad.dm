@@ -15,7 +15,6 @@
 /obj/machinery/tele_pad/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
-	RefreshParts()
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/tele_pad/LateInitialize()

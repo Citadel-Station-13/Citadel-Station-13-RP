@@ -126,7 +126,7 @@
 	// Hat simulator.
 	if(hat)
 		var/hat_state = hat.item_state ? hat.item_state : hat.icon_state
-		var/image/I = image('icons/mob/head.dmi', src, hat_state)
+		var/image/I = image(INV_HEAD_DEF_ICON, src, hat_state)
 		I.pixel_y = -7 // Slimes are small.
 		I.appearance_flags = RESET_COLOR
 		add_overlay(I)
@@ -173,16 +173,14 @@
 		give_hat(I, user)
 		return
 
-	//VOREStation Edit Start
 	var/can_miss = TRUE
 	for(var/item_type in allowed_attack_types)
 		if(istype(I, item_type))
 			can_miss = FALSE
 			break
-	//VOREStation Edit End
 
 	// Otherwise they're probably fighting the slime.
-	if(prob(25) && can_miss)	//VOREStation Edit
+	if(prob(25) && can_miss)
 		visible_message(SPAN_WARNING( "\The [user]'s [I] passes right through \the [src]!"))
 		user.setClickCooldown(user.get_attack_speed(I))
 		return

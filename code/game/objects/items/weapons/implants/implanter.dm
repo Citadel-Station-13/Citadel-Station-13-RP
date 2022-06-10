@@ -141,14 +141,13 @@
 		A.loc.contents.Remove(A)
 		update()
 
-//Vorestation universal translator implant.
-
-/obj/item/implanter/vrlanguage
+/// Universal translator implant.
+/obj/item/implanter/uni_translator
 	name = "implanter-language"
 
-/obj/item/implanter/vrlanguage/Initialize(mapload)
+/obj/item/implanter/uni_translator/Initialize(mapload)
 	. = ..()
-	imp = new /obj/item/implant/vrlanguage( src )
+	imp = new /obj/item/implant/uni_translator( src )
 	update()
 
 /obj/item/implanter/restrainingbolt

@@ -2490,7 +2490,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^0.21.2":
+"axios@npm:^0.21.1":
   version: 0.21.4
   resolution: "axios@npm:0.21.4"
   dependencies:
@@ -4100,7 +4100,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fastify-static@npm:^4.4.1":
+"fastify-static@npm:^4.2.3":
   version: 4.7.0
   resolution: "fastify-static@npm:4.7.0"
   dependencies:
@@ -8171,7 +8171,7 @@ resolve@^2.0.0-next.3:
   dependencies:
     common: "workspace:*"
     fastify: ^3.20.2
-    fastify-static: ^4.4.1
+    fastify-static: ^4.2.3
     inferno: ^7.4.8
     inferno-vnode-flags: ^7.4.8
     lodash: ^4.17.21
@@ -8184,7 +8184,7 @@ resolve@^2.0.0-next.3:
   version: 0.0.0-use.local
   resolution: "tgui-dev-server@workspace:packages/tgui-dev-server"
   dependencies:
-    axios: ^0.21.2
+    axios: ^0.21.1
     glob: ^7.1.7
     source-map: ^0.7.3
     stacktrace-parser: ^0.1.10

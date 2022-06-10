@@ -5,7 +5,7 @@
 /obj/item/clothing/accessory/armor
 	name = "armor accessory"
 	desc = "You should never see this description. Ahelp this, please."
-	icon_override = 'icons/mob/modular_armor.dmi'
+	icon_override = 'icons/mob/clothing/modular_armor.dmi'
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	icon_state = "pouches"
 	w_class = ITEMSIZE_NORMAL
@@ -34,7 +34,7 @@
 /obj/item/clothing/accessory/storage/pouches
 	name = "storage pouches"
 	desc = "A collection of black pouches that can be attached to a plate carrier. Carries up to two items."
-	icon_override = 'icons/mob/modular_armor.dmi'
+	icon_override = 'icons/mob/clothing/modular_armor.dmi'
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	icon_state = "pouches"
 	w_class = ITEMSIZE_NORMAL
@@ -176,7 +176,7 @@
 /obj/item/clothing/accessory/armor/armguards
 	name = "arm guards"
 	desc = "A pair of black arm pads reinforced with armor plating. Attaches to a plate carrier."
-//	accessory_icons = list(slot_tie_str = 'icons/mob/modular_armor.dmi', /datum/inventory_slot_meta/inventory/suit = 'icons/mob/modular_armor.dmi')
+//	accessory_icons = list(slot_tie_str = 'icons/mob/clothing/modular_armor.dmi', /datum/inventory_slot_meta/inventory/suit = 'icons/mob/clothing/modular_armor.dmi')
 	icon_state = "armguards"
 	gender = PLURAL
 	body_parts_covered = ARMS
@@ -235,7 +235,7 @@
 /obj/item/clothing/accessory/armor/legguards
 	name = "leg guards"
 	desc = "A pair of armored leg pads in black. Attaches to a plate carrier."
-//	accessory_icons = list(slot_tie_str = 'icons/mob/modular_armor.dmi', /datum/inventory_slot_meta/inventory/suit = 'icons/mob/modular_armor.dmi')
+//	accessory_icons = list(slot_tie_str = 'icons/mob/clothing/modular_armor.dmi', /datum/inventory_slot_meta/inventory/suit = 'icons/mob/clothing/modular_armor.dmi')
 	icon_state = "legguards"
 	gender = PLURAL
 	body_parts_covered = LEGS
@@ -294,7 +294,7 @@
 /obj/item/clothing/accessory/armor/tag
 	name = "\improper SCG Flag"
 	desc = "An emblem depicting the Solar Confederate Government's flag."
-//	accessory_icons = list(slot_tie_str = 'icons/mob/modular_armor.dmi', /datum/inventory_slot_meta/inventory/suit = 'icons/mob/modular_armor.dmi')
+//	accessory_icons = list(slot_tie_str = 'icons/mob/clothing/modular_armor.dmi', /datum/inventory_slot_meta/inventory/suit = 'icons/mob/clothing/modular_armor.dmi')
 	icon_state = "solflag"
 	slot = ACCESSORY_SLOT_ARMOR_M
 	w_class = ITEMSIZE_SMALL
@@ -381,7 +381,7 @@
 obj/item/clothing/accessory/armor/helmcover
 	name = "helmet cover"
 	desc = "A fabric cover for armored helmets."
-	icon_override = 'icons/mob/ties.dmi'
+	icon_override = 'icons/mob/clothing/ties.dmi'
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	icon_state = "helmcover_blue"
 	slot = ACCESSORY_SLOT_HELM_C
@@ -428,7 +428,7 @@ obj/item/clothing/accessory/armor/helmcover
 	name = "armurr plating"
 	desc = "You shouldn't be seeing this. Contact a Maintainer."
 	icon = 'icons/obj/clothing/ties.dmi'
-	icon_override = 'icons/mob/ties.dmi'
+	icon_override = 'icons/mob/clothing/ties.dmi'
 	icon_state = "bronze"
 	armor = list(melee = 5, bullet = 0, laser = 0, energy = 0, bomb = 5, bio = 5, rad = 0)
 

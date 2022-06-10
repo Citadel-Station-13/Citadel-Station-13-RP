@@ -48,7 +48,7 @@
 	desc = "A simple, comfortable poncho."
 	icon_state = "classicponcho"
 	item_state = "classicponcho"
-	icon_override = 'icons/mob/ties.dmi'
+	icon_override = 'icons/mob/clothing/ties.dmi'
 	var/fire_resist = T0C+100
 	allowed = list(/obj/item/tank/emergency/oxygen)
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
@@ -59,7 +59,7 @@
 	slot = ACCESSORY_SLOT_OVER
 
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/suit.dmi'
+		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/suit.dmi'
 		)
 
 /obj/item/clothing/accessory/poncho/equipped(mob/user, slot) //Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
@@ -67,11 +67,11 @@
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.wear_suit == src)
 		if(H.species.name == SPECIES_TESHARI)
-			icon_override = 'icons/mob/species/teshari/suit.dmi'
+			icon_override = 'icons/mob/clothing/species/teshari/suit.dmi'
 		else if(H.species.name == SPECIES_VOX)
-			icon_override = 'icons/mob/species/vox/ties.dmi'
+			icon_override = 'icons/mob/clothing/species/vox/ties.dmi'
 		else
-			icon_override = 'icons/mob/ties.dmi'
+			icon_override = 'icons/mob/clothing/ties.dmi'
 		update_clothing_icon()
 
 /obj/item/clothing/accessory/poncho/green
@@ -303,7 +303,7 @@
 	desc = "For some classy, murderous fun."
 	icon_state = "vest"
 	item_state = "vest"
-	icon_override = 'icons/mob/ties.dmi'
+	icon_override = 'icons/mob/clothing/ties.dmi'
 	item_state_slots = list(slot_r_hand_str = "wcoat", slot_l_hand_str = "wcoat")
 	allowed = list(/obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
@@ -355,7 +355,7 @@
 	desc = "The standard dress shirt. Simple, versatile, clean."
 	icon_state = "button_tucked"
 	item_state = "button_tucked"
-	icon_override = 'icons/mob/ties.dmi'
+	icon_override = 'icons/mob/clothing/ties.dmi'
 	item_state_slots = list(slot_r_hand_str = "labcoat", slot_l_hand_str = "labcoat")
 	allowed = list(/obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
@@ -375,7 +375,7 @@
 /obj/item/clothing/accessory/sweater
 	name = "sweater"
 	desc = "A warm knit sweater."
-	icon_override = 'icons/mob/ties.dmi'
+	icon_override = 'icons/mob/clothing/ties.dmi'
 	icon_state = "sweater"
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
@@ -384,7 +384,7 @@
 	slot = ACCESSORY_SLOT_OVER
 
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/ties.dmi'
+		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/ties.dmi'
 		)
 
 /obj/item/clothing/accessory/sweater/equipped(mob/user, slot) // Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
@@ -392,11 +392,11 @@
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.wear_suit == src)
 		if(H.species.name == SPECIES_TESHARI)
-			icon_override = 'icons/mob/species/teshari/ties.dmi'
+			icon_override = 'icons/mob/clothing/species/teshari/ties.dmi'
 		else if(H.species.name == SPECIES_VOX)
-			icon_override = 'icons/mob/species/vox/ties.dmi'
+			icon_override = 'icons/mob/clothing/species/vox/ties.dmi'
 		else
-			icon_override = 'icons/mob/ties.dmi'
+			icon_override = 'icons/mob/clothing/ties.dmi'
 		update_clothing_icon()
 
 /obj/item/clothing/accessory/sweater/pink
@@ -537,3 +537,18 @@
 	name = "Mekkyaku turtleneck"
 	desc = "A sleek black turtleneck sweater with a bright red stripe knit into the fabric."
 	icon_state = "mekkyaku"
+
+/obj/item/clothing/accessory/armsocks
+	name = "Stirrup Sleeves"
+	desc = "A pair of fingerless, full arm sleeves. Perfect for winter."
+	icon_state = "armsock"
+
+/obj/item/clothing/accessory/armsock_left
+	name = "Stirrup Sleeve"
+	desc = "A single of fingerless, full arm sleeves. Perfect for winter. This one is for the left arm."
+	icon_state = "armsock_left"
+
+/obj/item/clothing/accessory/armsock_right
+	name = "Stirrup Sleeve"
+	desc = "A single of fingerless, full arm sleeves. Perfect for winter. This one is for the right arm."
+	icon_state = "armsock_right"

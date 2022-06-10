@@ -309,22 +309,15 @@
 		mymob.hydration_icon.screen_loc = ui_nutrition_small
 		hud_elements |= mymob.hydration_icon
 
-	//VOREStation Addition begin
-	mymob.shadekin_dark_display = new /atom/movable/screen/shadekin/darkness()
-	mymob.shadekin_dark_display.screen_loc = ui_shadekin_dark_display
-	mymob.shadekin_dark_display.icon_state = "dark"
-	hud_elements |= mymob.shadekin_dark_display
-
-	mymob.shadekin_energy_display = new /atom/movable/screen/shadekin/energy()
-	mymob.shadekin_energy_display.screen_loc = ui_shadekin_energy_display
-	mymob.shadekin_energy_display.icon_state = "energy0"
-	hud_elements |= mymob.shadekin_energy_display
+	mymob.shadekin_display = new /atom/movable/screen/shadekin()
+	mymob.shadekin_display.screen_loc = ui_shadekin_display
+	mymob.shadekin_display.icon_state = "shadekin"
+	hud_elements |= mymob.shadekin_display
 
 	mymob.xenochimera_danger_display = new /atom/movable/screen/xenochimera/danger_level()
 	mymob.xenochimera_danger_display.screen_loc = ui_xenochimera_danger_display
 	mymob.xenochimera_danger_display.icon_state = "danger00"
 	hud_elements |= mymob.xenochimera_danger_display
-	//VOREStation Addition end
 
 	mymob.ling_chem_display = new /atom/movable/screen/ling/chems()
 	mymob.ling_chem_display.screen_loc = ui_ling_chemical_display

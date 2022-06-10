@@ -69,6 +69,27 @@ GLOBAL_LIST_EMPTY(apcs)
 /obj/machinery/power/apc/alarms_hidden
 	alarms_hidden = TRUE
 
+/**
+ * APCs
+ *
+ * Power scale: Watts
+ * Power is up-converted to kilowatts for grid.
+ *
+ * TODO: rewrite apcs entirely, the code barely works and it's all awful
+ *
+ * dev notes for the next time i'm insane enough to refactor power for no reason:
+ * - dynamic power channels? probably not due to list overhead but maybe
+ * - apc with 2-5kJ capacitor, letting us have actual accumulation + cell-less apc support
+ * - config option for cell-less apc because i'm honestly evil
+ * - unfuck icon update syste
+ * - more wires, morre remote controls
+ * - wiremod?
+ * - WHY DOES IT HAVE SO MANY UNNECESSARY FLAGS JUST HAVE A SINGLE var/channels_enabled and var/channels_auto GOD
+ * - configurable shutoff intervals??
+ * - brownout support *drooling* (probably far in the future or impossible due to performance)
+ *
+ * ~silicons
+ */
 /obj/machinery/power/apc
 	name = "area power controller"
 	desc = "A control terminal for the area electrical systems."
@@ -133,6 +154,9 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/nightshift_setting = NIGHTSHIFT_AUTO
 	var/last_nightshift_switch = 0
 
+	/// tracks how behind we arre in charging TODO: literally rewrite apcs entirely to use a proper accumulator-cell system with an internal buffer, ffs
+	var/lazy_draw_accumulator = 0
+
 /obj/machinery/power/apc/updateDialog()
 	if (machine_stat & (BROKEN|MAINT))
 		return
@@ -146,30 +170,24 @@ GLOBAL_LIST_EMPTY(apcs)
 	if(terminal)
 		terminal.connect_to_network()
 
-/obj/machinery/power/apc/drain_power(var/drain_check, var/surge, var/amount = 0)
+/obj/machinery/power/apc/drain_energy(datum/actor, amount, flags)
+	charging = FALSE
+	// makes sure fully draining apc cell won't break cell charging
 
-	if(drain_check)
-		return 1
+	var/drained = 0
 
-	//This makes sure fully draining an APC cell won't break the cell charging.
-	charging = 0
-
-	var/drained_energy = 0
-
-	//Draws power from the grid first, if available.
-	//This is like draining from a cable, so nins and
-	//twizs can do that without having to pry floortiles.
-	if(terminal && terminal.powernet)
+	if(terminal?.powernet)
 		terminal.powernet.trigger_warning()
-		drained_energy += terminal.powernet.draw_power(amount)
+		// no conversion - amount = kj, draw_power is in kw
+		drained += terminal.powernet.draw_power(amount)
 
 	//The grid rarely gives the full amount requested, or perhaps the grid
 	//isn't connected (wire cut), in either case we draw what we didn't get
 	//from the cell instead.
-	if((drained_energy < amount) && cell)
-		drained_energy += cell.drain_power(0, 0, (amount - drained_energy))
+	if((drained < amount) && cell)
+		drained += cell.drain_energy(actor, amount, flags)
 
-	return drained_energy
+	return drained
 
 /obj/machinery/power/apc/Initialize(mapload, ndir, building = FALSE)
 	. = ..()
@@ -1024,16 +1042,9 @@ GLOBAL_LIST_EMPTY(apcs)
 	else
 		return 0
 
-/obj/machinery/power/apc/proc/last_surplus()
-	if(terminal && terminal.powernet)
-		return terminal.powernet.last_surplus()
-	else
-		return 0
-
 //Returns 1 if the APC should attempt to charge
 /obj/machinery/power/apc/proc/attempt_charging()
 	return (chargemode && charging == 1 && operating)
-
 
 /obj/machinery/power/apc/draw_power(var/amount)
 	if(terminal && terminal.powernet)
@@ -1086,27 +1097,29 @@ GLOBAL_LIST_EMPTY(apcs)
 
 	if(cell && !shorted && !grid_check)
 		// draw power from cell as before to power the area
-		var/cellused = min(cell.charge, CELLRATE * lastused_total)	// clamp deduction to a max, amount left in cell
+		var/cellused = min(cell.charge, DYNAMIC_W_TO_CELL_UNITS(lastused_total, 1))	// clamp deduction to a max, amount left in cell
 		cell.use(cellused)
+		// TODO: the rest of this code is war crime territory
+		// TODO: rewrite APCs. entirely.
+		// if we're empty just kill it all
+		if(cell.percent() < 1)
+			// This turns everything off in the case that there is still a charge left on the battery, just not enough to run the room.
+			equipment = autoset(equipment, 0)
+			lighting = autoset(lighting, 0)
+			environ = autoset(environ, 0)
+			autoflag = 0
 
-		if(excess > lastused_total)		// if power excess recharge the cell
-										// by the same amount just used
-			var/draw = draw_power(cellused/CELLRATE) // draw the power needed to charge this cell
-			cell.give(draw * CELLRATE)
-		else		// no excess, and not enough per-apc
-			if( (cell.charge/CELLRATE + excess) >= lastused_total)		// can we draw enough from cell+grid to cover last usage?
-				var/draw = draw_power(excess)
-				cell.charge = min(cell.maxcharge, cell.charge + CELLRATE * draw)	//recharge with what we can
-				charging = 0
-			else	// not enough power available to run the last tick!
-				charging = 0
-				chargecount = 0
-				// This turns everything off in the case that there is still a charge left on the battery, just not enough to run the room.
-				equipment = autoset(equipment, 0)
-				lighting = autoset(lighting, 0)
-				environ = autoset(environ, 0)
-				autoflag = 0
-
+		// we're lazy and i'm not writing a real accumulator, and we need to recharge in units of 1 due to floating point bullshit
+		// hence..
+		// we recharge at most lastused kw rounded down
+		var/kw = round(lastused_total * 0.001)
+		lazy_draw_accumulator += lastused_total - kw * 1000
+		if(lazy_draw_accumulator > 1000)
+			kw += round(lazy_draw_accumulator * 0.001)
+			lazy_draw_accumulator = lazy_draw_accumulator % 1000
+		if(excess > kw)
+			var/draw = draw_power(kw)
+			cell.give(DYNAMIC_KW_TO_CELL_UNITS(draw, 1))
 
 		// Set channels depending on how much charge we have left
 		update_channels()
@@ -1116,29 +1129,31 @@ GLOBAL_LIST_EMPTY(apcs)
 		if(src.attempt_charging())
 			if(excess > 0)		// check to make sure we have enough to charge
 				// Max charge is capped to % per second constant
-				var/ch = min(excess*CELLRATE, cell.maxcharge*chargelevel)
-
-				ch = draw_power(ch/CELLRATE) // Removes the power we're taking from the grid
-				cell.give(ch*CELLRATE) // actually recharge the cell
-				lastused_charging = ch
-				lastused_total += ch // Sensors need this to stop reporting APC charging as "Other" load
+				var/ch = min(DYNAMIC_KW_TO_CELL_UNITS(excess, 1), cell.maxcharge * chargelevel, cell.maxcharge - cell.charge)
+				var/charged = draw_power(DYNAMIC_CELL_UNITS_TO_KW(ch, 1)) // Removes the power we're taking from the grid
+				cell.give(DYNAMIC_KW_TO_CELL_UNITS(charged, 1)) // actually recharge the cell
+				lastused_charging = charged * 1000
+				lastused_total += lastused_charging // Sensors need this to stop reporting APC charging as "Other" load
 			else
 				charging = 0		// stop charging
 				chargecount = 0
 
 		// show cell as fully charged if so
-		if(cell.charge >= cell.maxcharge)
-			cell.charge = cell.maxcharge
+		if(cell.percent() >= 99)	// TODO: apc refactor - this is the only way for now, otherrwise we'll never stop charging as we don't ever charge to full entirely
 			charging = 2
+		else if(charging == 2)		// if charging is supposedly fully charged but we're not actually fully charged, shunt back to charging
+			charging = 1
 
 		if(chargemode)
 			if(!charging)
-				if(excess > cell.maxcharge*chargelevel)
+				var/charge_tick = cell.maxcharge * chargelevel
+				charge_tick = DYNAMIC_CELL_UNITS_TO_KW(charge_tick, 1)
+				if(excess > charge_tick)
 					chargecount++
 				else
 					chargecount = 0
 
-				if(chargecount >= 10)
+				if(chargecount >= 5)
 
 					chargecount = 0
 					charging = 1

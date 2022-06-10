@@ -30,6 +30,7 @@
 	)
 
 /obj/machinery/embedded_controller/radio/docking_port_multi/ui_act(action, params)
+	. = ..()
 	return //Apparently we swallow all input (this is corrected legacy code)
 
 //a docking port based on an airlock

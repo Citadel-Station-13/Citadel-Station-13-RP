@@ -27,7 +27,7 @@
 		var/datum/atom_hud/alternate_appearance/AA = v
 		AA.onNewMob(src)
 	init_rendering()
-	hook_vr("mob_new",list(src)) //VOREStation Code
+	hook_vr("mob_new",list(src))
 	update_transform() // Some mobs may start bigger or smaller than normal.
 	return ..()
 
@@ -157,17 +157,6 @@
 		if(teleop)
 			to_chat(teleop, create_text_tag("body", "BODY:", teleop) + "[msg]")
 	return
-
-/**
- * Returns an amount of power drawn from the object (-1 if it's not viable).
- * Not sure where to define this, so it can sit here for the rest of time.
- *
- * * @params
- * * [drain_check] If is set it will not actually drain power, just return a value.
- * * [surge] If is set, it will destroy/damage the recipient and not return any power.
- */
-/atom/proc/drain_power(var/drain_check,var/surge, var/amount = 0)
-	return -1
 
 /**
  * Show a message to all mobs in earshot of this one
@@ -435,7 +424,7 @@
 	set src in usr
 	if(usr != src)
 		to_chat(usr, "No.")
-	var/msg = sanitize(input(usr,"Set the flavor text in your 'examine' verb.","Flavor Text",html_decode(flavor_text)) as message|null, extra = 0)	//VOREStation Edit: separating out OOC notes
+	var/msg = sanitize(input(usr,"Set the flavor text in your 'examine' verb.","Flavor Text",html_decode(flavor_text)) as message|null, extra = 0)
 
 	if(msg != null)
 		flavor_text = msg

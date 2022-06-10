@@ -23,7 +23,7 @@
 		'sound/effects/footstep/plating4.ogg',
 		'sound/effects/footstep/plating5.ogg'))
 
-	var/list/old_decals = null // VOREStation Edit - Remember what decals we had between being pried up and replaced.
+	var/list/old_decals = null // Remember what decals we had between being pried up and replaced.
 
 	// Flooring data.
 	var/flooring_override
@@ -81,11 +81,10 @@
 	make_plating(null, TRUE, TRUE)
 	flooring = newflooring
 	footstep_sounds = newflooring.footstep_sounds
-	// VOREStation Edit - We are plating switching to flooring, swap out old_decals for decals
+	// We are plating switching to flooring, swap out old_decals for decals
 	var/list/overfloor_decals = old_decals
 	old_decals = decals
 	decals = overfloor_decals
-	// VOREStation Edit End
 	if(!init)
 		QUEUE_SMOOTH(src)
 		QUEUE_SMOOTH_NEIGHBORS(src)
@@ -96,11 +95,10 @@
 /turf/simulated/floor/proc/make_plating(place_product, defer_icon_update, strip_bare)
 
 	if(flooring)
-		// VOREStation Edit - We are flooring switching to plating, swap out old_decals for decals.
+		// We are flooring switching to plating, swap out old_decals for decals.
 		var/list/underfloor_decals = old_decals
 		old_decals = decals
 		decals = underfloor_decals
-		// VOREStation Edit End
 
 		if(place_product)
 			flooring.drop_product(src)

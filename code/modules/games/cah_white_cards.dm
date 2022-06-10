@@ -72,7 +72,7 @@
 	"A group of Skrell getting their squish on",
 	"Enough soporific to put the entire station down",
 	"Delicious Vietnamese cuisine",
-	
+
 	//Citadel additions
 	"Ruskit Thicklimb",
 	"The Bi-authoritative Union for Secure Yield Works Division",
@@ -92,8 +92,7 @@
 	"That one catgirl with a cock the size if your arm",
 	"Catgirl(male)",
 
-	//Here down are non-spess cards. -VOREStation Add for these.
-	//Reconciling these as well.
+	//Here down are non-spess cards.
 
 	"'Texting.'",
 	"72 virgins.",

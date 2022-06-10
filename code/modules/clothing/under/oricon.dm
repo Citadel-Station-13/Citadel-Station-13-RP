@@ -7,7 +7,7 @@
 	icon = 'icons/obj/clothing/uniforms_oricon.dmi'
 	rolled_down = 0
 	rolled_sleeves = 0
-	item_icons = list(/datum/inventory_slot_meta/inventory/uniform = 'icons/mob/uniform_oricon.dmi')
+	item_icons = list(/datum/inventory_slot_meta/inventory/uniform = 'icons/mob/clothing/uniform_oricon.dmi')
 	armor = list(melee = 5, bullet = 0, laser = 5, energy = 5, bomb = 0, bio = 5, rad = 5)
 	siemens_coefficient = 0.8
 
@@ -370,7 +370,7 @@
 	name = "olive fatigues"
 	desc = "An olive version of the JSDF marine utility uniform, made from durable material."
 	icon = 'icons/obj/clothing/uniforms_vr.dmi'
-	icon_override = 'icons/mob/uniform_vr.dmi'
+	icon_override = 'icons/mob/clothing/uniform.dmi'
 	icon_state = "bdu_olive"
 	item_state = "bdu_olive"
 
@@ -378,7 +378,7 @@
 	name = "desert fatigues"
 	desc = "A desert version of the JSDF marine utility uniform, made from durable material."
 	icon = 'icons/obj/clothing/uniforms_vr.dmi'
-	icon_override = 'icons/mob/uniform_vr.dmi'
+	icon_override = 'icons/mob/clothing/uniform.dmi'
 	icon_state = "bdu_olive"
 	item_state = "bdu_olive"
 

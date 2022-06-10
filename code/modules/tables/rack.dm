@@ -20,10 +20,15 @@
 	return
 
 /obj/structure/table/rack/update_icon()
-	if(material) //VOREStation Add for rack colors based on materials
+	if(material)
 		color = material.icon_colour
 	return
 
 /obj/structure/table/rack/holorack/dismantle(obj/item/tool/wrench/W, mob/user)
 	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")
 	return
+
+/obj/structure/rack/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
+	. = !density
+	if(istype(caller))
+		. = . || (caller.pass_flags & PASSTABLE)

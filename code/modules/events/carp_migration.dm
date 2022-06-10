@@ -51,7 +51,10 @@ GLOBAL_LIST_INIT(carp_count,list())// a list of Z levels (string), associated wi
 
 	var/n = rand(severity, severity*2)
 	var/I = 0
+	var/safety = 0
 	while(I < n)
+		if(++safety == 1000)
+			CRASH("could not get turfs for carp migration")
 		var/turf/T = get_random_edge_turf(dir,TRANSITIONEDGE + 2, Z)
 		if(istype(T,/turf/space))
 			var/mob/living/simple_mob/animal/space/M

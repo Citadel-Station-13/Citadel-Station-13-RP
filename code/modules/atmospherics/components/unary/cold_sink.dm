@@ -1,5 +1,3 @@
-//TODO: Put this under a common parent type with heaters to cut down on the copypasta
-#define FREEZER_PERF_MULT 2.5
 
 /obj/machinery/atmospherics/component/unary/freezer
 	name = "gas cooling system"
@@ -106,7 +104,7 @@
 			else
 				set_temperature = max(amount, 0)
 		if("setPower") //setting power to 0 is redundant anyways
-			var/new_setting = between(0, text2num(params["value"]), 100)
+			var/new_setting = clamp( text2num(params["value"]), 0,  100)
 			set_power_level(new_setting)
 
 /obj/machinery/atmospherics/component/unary/freezer/process(delta_time)
@@ -124,7 +122,7 @@
 
 		//Assume the heat is being pumped into the hull which is fixed at heatsink_temperature
 		//not /really/ proper thermodynamics but whatever
-		var/cop = FREEZER_PERF_MULT * air_contents.temperature/heatsink_temperature	//heatpump coefficient of performance from thermodynamics -> power used = heat_transfer/cop
+		var/cop = THERMOMACHINE_CHEAT_FACTOR * air_contents.temperature/heatsink_temperature	//heatpump coefficient of performance from thermodynamics -> power used = heat_transfer/cop
 		heat_transfer = min(heat_transfer, cop * power_rating)	//limit heat transfer by available power
 
 		var/removed = -air_contents.add_thermal_energy(-heat_transfer)		//remove the heat
