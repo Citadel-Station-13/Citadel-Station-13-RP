@@ -351,7 +351,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/veymed
 	company = "Vey-Med"
 	desc = "This high quality limb is nearly indistinguishable from an organic one."
-	icon = 'icons/mob/human_races/cyberlimbs/veymed/veymed_main_vr.dmi'
+	icon = 'icons/mob/human_races/cyberlimbs/veymed/veymed_main.dmi'
 	unavailable_to_build = TRUE
 	lifelike = 1
 	skin_tone = 1
