@@ -220,6 +220,14 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/foyer)
+"ajD" = (
+/obj/structure/metal_edge,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/zone_divider,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "ajJ" = (
 /obj/random/tool,
 /obj/random/tool,
@@ -531,18 +539,6 @@
 /obj/item/handcuffs/disruptor,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/medical/mentalhealth)
-"aBm" = (
-/obj/structure/catwalk,
-/obj/structure/railing,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor/pointy,
-/turf/simulated/floor/plating/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "aBn" = (
 /obj/effect/zone_divider,
 /turf/simulated/open/lythios43c,
@@ -596,12 +592,6 @@
 /obj/effect/floor_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/rift/trade_shop)
-"aDm" = (
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 9
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "aDo" = (
 /obj/machinery/r_n_d/server/core,
 /obj/effect/floor_decal/techfloor{
@@ -632,6 +622,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/medical/patient_wing)
 "aEC" = (
@@ -708,6 +699,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/xenobiology)
 "aGK" = (
@@ -863,14 +855,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
-"aPw" = (
-/obj/effect/zone_divider,
-/obj/effect/zone_divider,
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "aRh" = (
 /obj/structure/toilet{
 	dir = 8
@@ -959,6 +943,18 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/dark,
 /area/medical/recoveryrestroom)
+"aXA" = (
+/obj/structure/catwalk,
+/obj/structure/railing,
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 4
+	},
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 1
+	},
+/obj/effect/overlay/snow/floor/pointy,
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "aXF" = (
 /obj/structure/table/reinforced,
 /obj/item/clothing/glasses/welding,
@@ -967,6 +963,10 @@
 /obj/item/weldingtool,
 /turf/simulated/floor/tiled/steel,
 /area/storage/surface_eva)
+"aXH" = (
+/obj/structure/stairs/spawner/north,
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "aXX" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
@@ -1005,13 +1005,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/foyer)
-"aYE" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/effect/zone_divider,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "aZh" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
@@ -1612,11 +1605,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
-"btD" = (
-/obj/effect/floor_decal/industrial/halfstair,
-/obj/effect/zone_divider,
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "btK" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -1879,6 +1867,7 @@
 	id_tag = "Mental 2";
 	name = "Mental Patient Cell 2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
 /area/medical/psych/psych_2)
 "bFI" = (
@@ -1888,6 +1877,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
+"bGT" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "bHn" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/vehicle/train/trolley,
@@ -2163,10 +2158,6 @@
 	},
 /turf/simulated/open,
 /area/maintenance/engineering/pumpstation)
-"bTT" = (
-/obj/effect/overlay/snow/floor/grav_edges,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "bUG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel,
@@ -2827,6 +2818,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
 "cxT" = (
@@ -3316,6 +3308,13 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology/cell/five)
+"cOG" = (
+/obj/effect/zone_divider,
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "cPe" = (
 /obj/structure/railing{
 	dir = 1
@@ -3441,13 +3440,6 @@
 /obj/structure/railing,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfaceeva/aa/surface_south)
-"cVb" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/effect/zone_divider,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "cVJ" = (
 /obj/structure/grille,
 /obj/structure/foamedmetal,
@@ -3569,12 +3561,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/prison)
-"daT" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 10
-	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "dbE" = (
 /obj/structure/bed/chair/wood{
 	dir = 8
@@ -3680,6 +3666,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_emt_bay)
 "ddT" = (
@@ -3692,13 +3679,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora)
-"ddX" = (
-/obj/effect/zone_divider,
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 6
-	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "dew" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
@@ -3860,6 +3840,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/foyer)
+"din" = (
+/obj/effect/overlay/snow/floor/grav_edges,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "diw" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -3925,6 +3909,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/lawoffice)
 "dlb" = (
@@ -4075,6 +4060,11 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
+"dnR" = (
+/obj/effect/zone_divider,
+/obj/effect/overlay/snow/floor/edges_new,
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "dog" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin{
@@ -4303,9 +4293,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfaceone)
-"dvE" = (
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "dwm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -4400,12 +4387,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/lawoffice)
-"dyg" = (
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "dyB" = (
 /obj/structure/closet/secure_closet/paramedic,
 /obj/item/stack/medical/splint,
@@ -4590,6 +4571,13 @@
 /area/medical/exam_room)
 "dGy" = (
 /turf/unsimulated/wall/planetary/lythios43c,
+/area/rift/surfacebase/outside/outside1)
+"dGU" = (
+/obj/effect/zone_divider,
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "dHq" = (
 /obj/machinery/camera/network/research{
@@ -4847,6 +4835,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/medical/exam_room)
 "dPO" = (
@@ -4942,6 +4931,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/hallway/secondary/civilian_hallway_mid)
 "dSI" = (
@@ -5121,6 +5111,12 @@
 "dXv" = (
 /turf/simulated/wall/r_wall,
 /area/crew_quarters/heads/cmo)
+"dXx" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 9
+	},
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "dXN" = (
 /obj/machinery/camera/network/research{
 	dir = 4;
@@ -5218,6 +5214,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/tether/station/public_meeting_room)
 "eav" = (
@@ -5831,6 +5828,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
 "ezu" = (
@@ -6062,6 +6060,7 @@
 	req_access = null
 	},
 /obj/structure/table/reinforced,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/janitor)
 "eMm" = (
@@ -6107,6 +6106,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/security/detectives_office)
 "eNx" = (
@@ -6205,6 +6205,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/crew_quarters/medbreak)
 "eTS" = (
@@ -6354,6 +6355,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
 "fdp" = (
@@ -6501,6 +6503,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/security/lower)
+"fmc" = (
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 5
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "fmu" = (
 /obj/machinery/bookbinder,
 /obj/machinery/light/small{
@@ -6636,6 +6644,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/library)
 "fss" = (
@@ -6745,6 +6754,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
+"fwG" = (
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "fxa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -6767,6 +6782,7 @@
 	req_access = list(2)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
 "fyC" = (
@@ -6849,6 +6865,10 @@
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/steel,
 /area/tether/station/public_meeting_room)
+"fBT" = (
+/obj/effect/overlay/snow/floor/edges_new,
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "fCu" = (
 /obj/structure/table/glass,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
@@ -6984,13 +7004,6 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/security/prison)
-"fKZ" = (
-/obj/effect/zone_divider,
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 4
-	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "fLg" = (
 /obj/effect/overlay/snow/floor,
 /obj/effect/overlay/snow/floor/edges{
@@ -7270,6 +7283,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "fXl" = (
@@ -7512,6 +7526,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
+"giy" = (
+/obj/effect/zone_divider,
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "giP" = (
 /obj/structure/table/woodentable,
 /obj/item/paicard,
@@ -7550,11 +7571,6 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel,
 /area/security/prison)
-"glw" = (
-/obj/effect/zone_divider,
-/obj/effect/overlay/snow/floor/edges_new,
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "glF" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -7652,13 +7668,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
-"gpj" = (
-/obj/effect/zone_divider,
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "gpF" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass,
@@ -7695,6 +7704,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
+"grn" = (
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "grx" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -7874,6 +7889,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
 /area/medical/patient_wing)
 "gxe" = (
@@ -7936,14 +7952,6 @@
 "gzd" = (
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside1)
-"gzo" = (
-/obj/structure/table/reinforced,
-/obj/item/reagent_scanner,
-/obj/item/mass_spectrometer/adv,
-/obj/effect/floor_decal/borderfloorwhite,
-/obj/effect/floor_decal/corner/pink/border,
-/turf/simulated/floor/tiled/white,
-/area/security/forensics)
 "gAw" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -8142,6 +8150,11 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
+"gLM" = (
+/obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/maintenance/library)
 "gLW" = (
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
@@ -8422,6 +8435,13 @@
 /atom/movable/landmark/spawnpoint/job/detective,
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
+"gTW" = (
+/obj/effect/zone_divider,
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 5
+	},
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "gTZ" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -8501,7 +8521,10 @@
 "gVO" = (
 /obj/effect/overlay/snow/floor/pointy,
 /obj/effect/overlay/snow/floor/edges_new{
-	dir = 8
+	dir = 4
+	},
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 4
 	},
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
@@ -8529,6 +8552,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)
 "gXe" = (
@@ -8754,6 +8778,10 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology/cell)
+"hcn" = (
+/obj/effect/zone_divider,
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "hcL" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
@@ -9399,12 +9427,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/maintenance/tool_storage)
-"hCO" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 6
-	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "hDd" = (
 /obj/structure/noticeboard{
 	pixel_x = -32
@@ -9770,6 +9792,10 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
+"hNW" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "hPC" = (
 /obj/structure/catwalk,
 /obj/structure/disposalpipe/segment{
@@ -9797,18 +9823,6 @@
 	},
 /obj/machinery/atmospherics/portables_connector,
 /turf/simulated/floor/tiled/steel,
-/area/rift/surfacebase/outside/outside1)
-"hRt" = (
-/obj/structure/catwalk,
-/obj/structure/railing,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor/pointy,
-/turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "hRV" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -9839,7 +9853,6 @@
 /area/crew_quarters/medical_restroom)
 "hSF" = (
 /obj/structure/table/reinforced,
-/obj/machinery/microscope,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
 	},
@@ -9853,6 +9866,13 @@
 	dir = 4;
 	pixel_x = 24
 	},
+/obj/item/storage/box/swabs{
+	layer = 5
+	},
+/obj/item/folder/red,
+/obj/item/folder/yellow,
+/obj/item/folder/blue,
+/obj/item/hand_labeler,
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
 "hSZ" = (
@@ -10379,6 +10399,18 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/office)
+"ikX" = (
+/obj/structure/catwalk,
+/obj/structure/railing,
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 8
+	},
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 1
+	},
+/obj/effect/overlay/snow/floor/pointy,
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "imo" = (
 /obj/structure/catwalk,
 /obj/structure/railing,
@@ -10397,6 +10429,7 @@
 /area/maintenance/engineering/upper)
 "inv" = (
 /obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
 "inB" = (
@@ -10678,10 +10711,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main/secondary)
-"ivK" = (
-/obj/structure/stairs/spawner/north,
-/turf/simulated/floor/plating/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "ivN" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -10757,12 +10786,6 @@
 /obj/structure/bed/chair/bay,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/surface_south)
-"ixy" = (
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 5
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "ixH" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
@@ -11019,6 +11042,11 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology/cell/four)
+"iGS" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/obj/effect/zone_divider,
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "iHZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -11079,10 +11107,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
-"iKr" = (
-/obj/effect/overlay/snow/floor/edges_new,
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "iKU" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 6
@@ -11127,6 +11151,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
 "iNt" = (
@@ -11203,6 +11228,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
 "iRF" = (
@@ -11257,12 +11283,6 @@
 "iTF" = (
 /turf/simulated/wall/r_wall,
 /area/security/prison)
-"iUn" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 4
-	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "iVw" = (
 /turf/simulated/floor/wood/broken,
 /area/maintenance/lowmedbaymaint)
@@ -12041,6 +12061,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/tether/station/public_meeting_room)
 "jAY" = (
@@ -12224,6 +12245,13 @@
 /obj/item/pen,
 /turf/simulated/floor/tiled/techfloor,
 /area/server)
+"jKv" = (
+/obj/effect/zone_divider,
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "jKA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -12736,6 +12764,7 @@
 	id_tag = "Mental 1";
 	name = "Mental Patient Cell 1"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
 /area/medical/psych/psych_1)
 "kfz" = (
@@ -13127,13 +13156,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfaceone)
-"kpE" = (
-/obj/effect/zone_divider,
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "kpO" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
@@ -13210,6 +13232,13 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/security/forensics)
+"ksu" = (
+/obj/effect/zone_divider,
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 10
+	},
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "ktw" = (
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 1
@@ -13761,6 +13790,14 @@
 /obj/item/ore/phoron,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/warehouse)
+"kLS" = (
+/obj/effect/zone_divider,
+/obj/effect/zone_divider,
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "kMo" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -13993,6 +14030,14 @@
 "kWq" = (
 /turf/simulated/wall,
 /area/tether/surfacebase/entertainment)
+"kWB" = (
+/obj/structure/catwalk,
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 1
+	},
+/obj/effect/overlay/snow/floor/pointy,
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "kWH" = (
 /obj/structure/metal_edge,
 /obj/effect/zone_divider,
@@ -14411,6 +14456,7 @@
 /area/security/detectives_office)
 "llv" = (
 /obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/library)
 "llC" = (
@@ -14668,6 +14714,13 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
+"lxI" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/zone_divider,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "lxN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/window/reinforced{
@@ -14796,6 +14849,11 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/prison)
+"lHd" = (
+/obj/effect/zone_divider,
+/obj/effect/overlay/snow/floor/grav_edges,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "lHl" = (
 /obj/structure/mirror{
 	pixel_x = 26
@@ -14932,6 +14990,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/maintenance/sec,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/security/security_cell_hallway)
 "lLS" = (
@@ -14970,12 +15029,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main/secondary)
-"lMq" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 5
-	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "lNb" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
@@ -15382,6 +15435,12 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
+"mfX" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "mgh" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -15521,6 +15580,9 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/security/checkpoint)
+"mix" = (
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "miQ" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/vehicle/train/trolley,
@@ -15655,6 +15717,7 @@
 /area/security/security_cell_hallway)
 "mmk" = (
 /obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "mmE" = (
@@ -16603,6 +16666,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/lawoffice)
 "mTl" = (
@@ -16864,12 +16928,7 @@
 /area/lawoffice)
 "neG" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Surface One";
-	charge = 2000;
-	input_attempt = 1;
-	input_level = 180;
-	inputting = 2;
-	output_level = 160
+	RCon_tag = "Substation - Surface One"
 	},
 /obj/structure/cable/green,
 /obj/structure/cable/green{
@@ -17272,6 +17331,12 @@
 "nqL" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/engineering/upper)
+"nrR" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "nrZ" = (
 /obj/machinery/door/morgue{
 	dir = 2;
@@ -17434,6 +17499,7 @@
 /obj/effect/floor_decal/rust,
 /obj/machinery/door/airlock/maintenance/common,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "nxq" = (
@@ -17949,6 +18015,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
+"nMw" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "nMA" = (
 /obj/machinery/pointdefense_control{
 	id_tag = "s1north"
@@ -18266,6 +18338,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_emt_bay)
 "nXT" = (
@@ -19021,16 +19094,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_one)
-"oBx" = (
-/obj/structure/metal_edge,
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/effect/zone_divider,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "oBA" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/steel,
@@ -19190,6 +19256,9 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/surfaceeva)
+"oFG" = (
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "oGu" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
@@ -19410,6 +19479,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)
 "oPn" = (
@@ -19676,6 +19746,7 @@
 	req_access = list(47)
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology)
 "oVJ" = (
@@ -19704,6 +19775,12 @@
 "oWj" = (
 /turf/simulated/wall,
 /area/storage/tools)
+"oWx" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 6
+	},
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "oWz" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -20087,6 +20164,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
 "pik" = (
@@ -20147,15 +20225,6 @@
 /obj/structure/stairs/spawner/west,
 /turf/simulated/floor/tiled/steel,
 /area/medical/patient_wing)
-"pkL" = (
-/obj/effect/zone_divider,
-/obj/effect/zone_divider,
-/obj/effect/zone_divider,
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "plm" = (
 /obj/structure/railing{
 	dir = 4
@@ -20295,12 +20364,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
-"psF" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "psX" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -20801,6 +20864,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/janitor)
 "pKh" = (
@@ -21791,13 +21855,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/entertainment)
-"qzA" = (
-/obj/effect/zone_divider,
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 5
-	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "qzJ" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
@@ -22735,6 +22792,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
 "rpK" = (
@@ -22962,7 +23020,6 @@
 /area/tether/surfacebase/funny/mimeoffice)
 "rwG" = (
 /obj/structure/table/reinforced,
-/obj/machinery/microscope,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
 	},
@@ -22976,6 +23033,8 @@
 	dir = 8;
 	pixel_x = -24
 	},
+/obj/item/reagent_scanner,
+/obj/item/mass_spectrometer/adv,
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
 "rxj" = (
@@ -23281,14 +23340,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/library)
-"rKB" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 9
-	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "rKC" = (
 /obj/machinery/photocopier,
 /obj/item/radio/intercom{
@@ -23460,6 +23514,13 @@
 /obj/structure/railing,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfaceeva/aa/surface_south)
+"rPl" = (
+/obj/machinery/door/airlock/highsecurity{
+	name = "Ground Defence Access";
+	req_one_access = list(1,10,15)
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/rift/surfaceeva/aa/surface_south)
 "rPq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -23598,6 +23659,13 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/patient_wing)
+"rTt" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/zone_divider,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "rUq" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -24036,6 +24104,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
 "skM" = (
@@ -24156,6 +24225,7 @@
 /obj/machinery/door/airlock/maintenance/int{
 	req_one_access = list(38)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/lawoffice)
 "smW" = (
@@ -25561,6 +25631,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "ttp" = (
@@ -26102,6 +26173,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
 "tIh" = (
@@ -26556,14 +26628,6 @@
 "uaX" = (
 /turf/simulated/floor/plating,
 /area/rift/surfacebase/outside/outside1)
-"ubh" = (
-/obj/structure/metal_edge,
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/effect/zone_divider,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "ubH" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/reagent_containers/food/drinks/flask/barflask,
@@ -26580,6 +26644,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
 "ucf" = (
@@ -27120,13 +27185,6 @@
 /obj/effect/floor_decal/corner/brown/border,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/cargo_hallway)
-"uqE" = (
-/obj/effect/zone_divider,
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 10
-	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "uqR" = (
 /obj/machinery/door/airlock/glass_medical{
 	name = "Science First Aid";
@@ -27154,12 +27212,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
-/area/rift/surfacebase/outside/outside1)
-"ury" = (
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 6
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "usp" = (
 /atom/movable/landmark/spawnpoint/job/entertainer,
@@ -27219,6 +27271,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/tether/station/public_meeting_room)
 "uuc" = (
@@ -27377,12 +27430,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/testingroom)
-"uxb" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 8
-	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "uxF" = (
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment,
@@ -27509,6 +27556,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/quartermaster/foyer)
 "uAG" = (
@@ -27604,6 +27652,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
 "uDg" = (
@@ -27835,13 +27884,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/library)
-"uQZ" = (
-/obj/effect/zone_divider,
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 8
-	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "uRv" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloor,
@@ -28009,6 +28051,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/tankstorage)
+"uZb" = (
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 10
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "uZi" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -28504,16 +28552,6 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/security/prison)
-"vug" = (
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 4
-	},
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 4
-	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "vuz" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
@@ -28581,6 +28619,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/foyer)
+"vxA" = (
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 9
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "vyU" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/portable_atmospherics/hydroponics,
@@ -28986,12 +29030,6 @@
 /obj/machinery/space_heater,
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
-"vRT" = (
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 8
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "vRV" = (
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
@@ -29017,12 +29055,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
-"vSr" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "vST" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -29428,6 +29460,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/visible/supply,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "whO" = (
@@ -29442,10 +29475,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/prison)
-"whV" = (
-/obj/effect/floor_decal/industrial/halfstair,
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "wiH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -30021,6 +30050,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/lawoffice)
+"wDv" = (
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 6
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "wDB" = (
 /obj/machinery/r_n_d/server/robotics,
 /obj/effect/floor_decal/techfloor{
@@ -30210,11 +30245,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/evahallway)
-"wLe" = (
-/obj/effect/zone_divider,
-/obj/effect/overlay/snow/floor/grav_edges,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "wLX" = (
 /obj/structure/railing{
 	dir = 4
@@ -30401,19 +30431,9 @@
 /area/rift/trade_shop)
 "wVx" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/box/swabs{
-	layer = 5
-	},
-/obj/item/folder/yellow{
-	pixel_y = -5
-	},
-/obj/item/folder/blue{
-	pixel_y = -3
-	},
-/obj/item/folder/red,
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/pink/border,
-/obj/item/hand_labeler,
+/obj/machinery/microscope,
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
 "wWA" = (
@@ -30425,6 +30445,7 @@
 "wWJ" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "wXk" = (
@@ -30608,10 +30629,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
-"xcF" = (
-/obj/effect/zone_divider,
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "xdb" = (
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 8
@@ -30675,6 +30692,12 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/monotile,
+/area/rift/surfacebase/outside/outside1)
+"xeX" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 5
+	},
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "xfC" = (
 /obj/structure/curtain/black{
@@ -31172,12 +31195,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
-"xEP" = (
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 10
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "xEV" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -31288,6 +31305,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/medical/mentalhealth)
 "xMr" = (
@@ -31470,6 +31488,15 @@
 "xTe" = (
 /turf/simulated/wall,
 /area/quartermaster/office)
+"xTA" = (
+/obj/effect/zone_divider,
+/obj/effect/zone_divider,
+/obj/effect/zone_divider,
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "xTR" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
@@ -31613,6 +31640,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
+"xVm" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 10
+	},
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "xVy" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -31663,6 +31696,13 @@
 /obj/effect/blocker,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside1)
+"xYw" = (
+/obj/effect/zone_divider,
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 6
+	},
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "xZu" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -31691,6 +31731,14 @@
 "xZM" = (
 /turf/simulated/wall,
 /area/tether/surfacebase/funny/mimeoffice)
+"xZP" = (
+/obj/structure/metal_edge,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/zone_divider,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "yaV" = (
 /obj/machinery/firealarm{
 	dir = 8;
@@ -31730,9 +31778,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/foyer)
-"ycs" = (
-/turf/simulated/floor/plating/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "ydt" = (
 /obj/machinery/light{
 	dir = 1
@@ -31773,14 +31818,6 @@
 "yeX" = (
 /turf/simulated/floor/plating,
 /area/maintenance/evahallway)
-"yfd" = (
-/obj/structure/catwalk,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor/pointy,
-/turf/simulated/floor/plating/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "yfC" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -31832,6 +31869,7 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 2
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/tether/station/public_meeting_room)
 "yhe" = (
@@ -31896,6 +31934,13 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/evahallway)
+"ylu" = (
+/obj/effect/overlay/snow/floor/pointy,
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "yly" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -34163,11 +34208,11 @@ mif
 mif
 mif
 mif
-wLe
+lHd
 rwl
 rwl
 rwl
-pkL
+xTA
 mif
 vFY
 uAT
@@ -34357,11 +34402,11 @@ iFN
 iFN
 iFN
 iFN
-bTT
-dvE
-dvE
-dvE
-kpE
+din
+oFG
+oFG
+oFG
+cOG
 iFN
 jZZ
 nog
@@ -34551,11 +34596,11 @@ iFN
 iFN
 iFN
 iFN
-bTT
-dvE
-dvE
-dvE
-kpE
+din
+oFG
+oFG
+oFG
+cOG
 iFN
 jZZ
 nog
@@ -34745,11 +34790,11 @@ iFN
 iFN
 iFN
 iFN
-bTT
-dvE
-dvE
-dvE
-kpE
+din
+oFG
+oFG
+oFG
+cOG
 iFN
 jZZ
 ntZ
@@ -34939,11 +34984,11 @@ iFN
 iFN
 iFN
 iFN
-bTT
-dvE
-dvE
-dvE
-kpE
+din
+oFG
+oFG
+oFG
+cOG
 iFN
 iFN
 iFN
@@ -35133,11 +35178,11 @@ iFN
 iFN
 iFN
 iFN
-bTT
-dvE
-dvE
-dvE
-kpE
+din
+oFG
+oFG
+oFG
+cOG
 iFN
 iFN
 iFN
@@ -35327,11 +35372,11 @@ iFN
 iFN
 iFN
 iFN
-bTT
-dvE
-dvE
-dvE
-kpE
+din
+oFG
+oFG
+oFG
+cOG
 iFN
 iFN
 iFN
@@ -35521,11 +35566,11 @@ iFN
 iFN
 iFN
 iFN
-ury
-dvE
-dvE
-dvE
-kpE
+wDv
+oFG
+oFG
+oFG
+cOG
 iFN
 iFN
 iFN
@@ -35714,12 +35759,12 @@ iFN
 iFN
 iFN
 iFN
-bTT
-dvE
-dvE
-dvE
-dvE
-kpE
+din
+oFG
+oFG
+oFG
+oFG
+cOG
 iFN
 iFN
 iFN
@@ -35908,12 +35953,12 @@ iFN
 iFN
 iFN
 iFN
-bTT
-dvE
-dvE
-dvE
-dvE
-kpE
+din
+oFG
+oFG
+oFG
+oFG
+cOG
 iFN
 iFN
 iFN
@@ -36071,7 +36116,7 @@ mif
 mif
 mif
 mif
-cVb
+rTt
 mif
 mif
 iFN
@@ -36102,11 +36147,11 @@ iFN
 iFN
 iFN
 iFN
-bTT
-dvE
-dvE
-dvE
-aDm
+din
+oFG
+oFG
+oFG
+vxA
 mif
 iFN
 iFN
@@ -36265,7 +36310,7 @@ mif
 vUA
 vUA
 vUA
-aBm
+ikX
 bRK
 mif
 iFN
@@ -36296,11 +36341,11 @@ iFN
 iFN
 iFN
 iFN
-bTT
-dvE
-dvE
-dvE
-dyg
+din
+oFG
+oFG
+oFG
+fwG
 mif
 iFN
 iFN
@@ -36457,12 +36502,12 @@ mif
 mif
 mif
 vUA
-ivK
-ycs
-yfd
-whV
-uQZ
-uqE
+aXH
+mix
+kWB
+hNW
+jKv
+ksu
 mif
 mif
 mif
@@ -36490,11 +36535,11 @@ mif
 mif
 mif
 mif
-wLe
-xcF
-xcF
-xcF
-kpE
+lHd
+hcn
+hcn
+hcn
+cOG
 lFn
 mif
 mif
@@ -36653,11 +36698,11 @@ mif
 vUA
 vUA
 vUA
-hRt
+aXA
 uxH
-qzA
-dvE
-daT
+gTW
+oFG
+xVm
 iFN
 iFN
 iFN
@@ -36684,11 +36729,11 @@ iFN
 iFN
 iFN
 iFN
-bTT
-dvE
-dvE
-dvE
-dyg
+din
+oFG
+oFG
+oFG
+fwG
 mif
 iFN
 iFN
@@ -36847,23 +36892,11 @@ mif
 mif
 mif
 mif
-aYE
+lxI
 mif
 mif
-vSr
-iKr
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-mif
-iFN
-iFN
-iFN
-iFN
+nrR
+fBT
 iFN
 iFN
 iFN
@@ -36878,11 +36911,23 @@ iFN
 iFN
 iFN
 iFN
-bTT
-dvE
-dvE
-dvE
-dyg
+iFN
+iFN
+iFN
+iFN
+iFN
+mif
+iFN
+iFN
+iFN
+iFN
+iFN
+iFN
+din
+oFG
+oFG
+oFG
+fwG
 mif
 iFN
 iFN
@@ -37043,9 +37088,9 @@ iFN
 iFN
 mif
 iFN
-rKB
-dvE
-iKr
+dXx
+oFG
+fBT
 iFN
 iFN
 iFN
@@ -37072,11 +37117,11 @@ iFN
 iFN
 iFN
 iFN
-bTT
-dvE
-dvE
-dvE
-dyg
+din
+oFG
+oFG
+oFG
+fwG
 mif
 iFN
 iFN
@@ -37237,9 +37282,9 @@ iFN
 iFN
 mif
 iFN
-vSr
-dvE
-hCO
+nrR
+oFG
+oWx
 iFN
 iFN
 iFN
@@ -37266,11 +37311,11 @@ iFN
 iFN
 iFN
 iFN
-bTT
-dvE
-dvE
-dvE
-dyg
+din
+oFG
+oFG
+oFG
+fwG
 mif
 iFN
 iFN
@@ -37431,8 +37476,8 @@ iFN
 iFN
 mif
 iFN
-vSr
-iKr
+nrR
+fBT
 iFN
 iFN
 iFN
@@ -37460,11 +37505,11 @@ iFN
 iFN
 iFN
 iFN
-bTT
-dvE
-dvE
-dvE
-dyg
+din
+oFG
+oFG
+oFG
+fwG
 mif
 iFN
 iFN
@@ -37625,8 +37670,8 @@ iFN
 iFN
 mif
 iFN
-vSr
-iKr
+nrR
+fBT
 iFN
 iFN
 iFN
@@ -37654,11 +37699,11 @@ iFN
 iFN
 iFN
 iFN
-bTT
-dvE
-dvE
-dvE
-dyg
+din
+oFG
+oFG
+oFG
+fwG
 mif
 iFN
 iFN
@@ -37819,8 +37864,8 @@ iFN
 iFN
 mif
 iFN
-vSr
-iKr
+nrR
+fBT
 iFN
 iFN
 iFN
@@ -37848,11 +37893,11 @@ iFN
 iFN
 iFN
 iFN
-bTT
-dvE
-dvE
-dvE
-ixy
+din
+oFG
+oFG
+oFG
+fmc
 mif
 iFN
 iFN
@@ -38013,8 +38058,8 @@ iFN
 iFN
 mif
 iFN
-vSr
-iKr
+nrR
+fBT
 iFN
 iFN
 iFN
@@ -38042,12 +38087,12 @@ iFN
 iFN
 iFN
 iFN
-bTT
-dvE
-dvE
-dvE
-dvE
-kpE
+din
+oFG
+oFG
+oFG
+oFG
+cOG
 iFN
 iFN
 iFN
@@ -38207,9 +38252,9 @@ iFN
 iFN
 mif
 iFN
-vSr
-dvE
-daT
+nrR
+oFG
+xVm
 iFN
 iFN
 iFN
@@ -38236,12 +38281,12 @@ iFN
 iFN
 iFN
 iFN
-bTT
-dvE
-dvE
-dvE
-dvE
-kpE
+din
+oFG
+oFG
+oFG
+oFG
+cOG
 iFN
 iFN
 iFN
@@ -38401,9 +38446,9 @@ iFN
 iFN
 mif
 iFN
-lMq
-dvE
-iKr
+xeX
+oFG
+fBT
 iFN
 iFN
 iFN
@@ -38431,11 +38476,11 @@ iFN
 iFN
 iFN
 iFN
-xEP
-dvE
-dvE
-dvE
-kpE
+uZb
+oFG
+oFG
+oFG
+cOG
 iFN
 iFN
 iFN
@@ -38596,8 +38641,8 @@ iFN
 mif
 iFN
 iFN
-vSr
-iKr
+nrR
+fBT
 iFN
 iFN
 iFN
@@ -38625,11 +38670,11 @@ iFN
 iFN
 iFN
 iFN
-bTT
-dvE
-dvE
-dvE
-kpE
+din
+oFG
+oFG
+oFG
+cOG
 iFN
 iFN
 iFN
@@ -38790,8 +38835,8 @@ mif
 kbD
 mif
 mif
-gpj
-glw
+giy
+dnR
 mif
 mif
 mif
@@ -38819,11 +38864,11 @@ mif
 mif
 mif
 mif
-wLe
-xcF
-xcF
-xcF
-aPw
+lHd
+hcn
+hcn
+hcn
+kLS
 mif
 mif
 mif
@@ -38984,8 +39029,8 @@ iFN
 mif
 iFN
 iFN
-vSr
-iKr
+nrR
+fBT
 iFN
 iFN
 iFN
@@ -39013,11 +39058,11 @@ iFN
 iFN
 iFN
 iFN
-bTT
-dvE
-dvE
-dvE
-kpE
+din
+oFG
+oFG
+oFG
+cOG
 iFN
 iFN
 iFN
@@ -39138,8 +39183,8 @@ iFN
 vUA
 vUA
 vUA
-aBm
-ubh
+ikX
+xZP
 iFN
 iFN
 iFN
@@ -39178,8 +39223,8 @@ iFN
 mif
 iFN
 iFN
-vSr
-iKr
+nrR
+fBT
 iFN
 iFN
 iFN
@@ -39207,11 +39252,11 @@ iFN
 iFN
 iFN
 iFN
-bTT
-dvE
-dvE
-dvE
-kpE
+din
+oFG
+oFG
+oFG
+cOG
 iFN
 iFN
 iFN
@@ -39330,12 +39375,12 @@ kAb
 arS
 iFN
 vUA
-ivK
-ycs
-yfd
-btD
-uxb
-daT
+aXH
+mix
+kWB
+iGS
+bGT
+xVm
 iFN
 iFN
 iFN
@@ -39372,8 +39417,8 @@ iFN
 mif
 iFN
 iFN
-vSr
-iKr
+nrR
+fBT
 iFN
 iFN
 iFN
@@ -39401,11 +39446,11 @@ iFN
 iFN
 iFN
 iFN
-bTT
-dvE
-dvE
-dvE
-kpE
+din
+oFG
+oFG
+oFG
+cOG
 iFN
 iFN
 iFN
@@ -39526,11 +39571,11 @@ iFN
 vUA
 vUA
 vUA
-hRt
-oBx
-vSr
-dvE
-daT
+aXA
+ajD
+nrR
+oFG
+xVm
 iFN
 iFN
 iFN
@@ -39545,45 +39590,45 @@ iFN
 iFN
 iFN
 iFN
-rKB
-uxb
-uxb
-uxb
-uxb
-uxb
-uQZ
-uxb
-uxb
-uxb
-uxb
-uxb
-uxb
-uxb
-uxb
-uxb
-daT
+dXx
+bGT
+bGT
+bGT
+bGT
+bGT
+jKv
+bGT
+bGT
+bGT
+bGT
+bGT
+bGT
+bGT
+bGT
+bGT
+xVm
 iFN
 mif
 iFN
 iFN
-vSr
-iKr
+nrR
+fBT
 iFN
 iFN
-rKB
-uxb
-uxb
-uxb
-uxb
-uQZ
-uxb
-uxb
-uxb
-uxb
-uxb
-uxb
-uxb
-daT
+dXx
+bGT
+bGT
+bGT
+bGT
+jKv
+bGT
+bGT
+bGT
+bGT
+bGT
+bGT
+bGT
+xVm
 iFN
 iFN
 iFN
@@ -39595,11 +39640,11 @@ iFN
 iFN
 iFN
 iFN
-ury
-dvE
-dvE
-dvE
-kpE
+wDv
+oFG
+oFG
+oFG
+cOG
 iFN
 iFN
 iFN
@@ -39720,80 +39765,80 @@ kAb
 kAb
 arS
 iFN
-psF
+mfX
 mif
-lMq
-dvE
-iKr
+xeX
+oFG
+fBT
 iFN
 iFN
 iFN
 iFN
-rKB
-uxb
-uxb
-uxb
-uQZ
-uxb
-uxb
-uxb
-uxb
-uxb
-dvE
-dvE
-iUn
-iUn
-dvE
-dvE
-fKZ
-iUn
-iUn
-iUn
-iUn
-iUn
-iUn
-iUn
-dvE
-dvE
-dvE
-uxb
-uQZ
-uxb
-uxb
-dvE
-dvE
-uxb
-uxb
-dvE
-dvE
-iUn
-iUn
-iUn
-fKZ
-iUn
-iUn
-iUn
-iUn
-iUn
-iUn
-dvE
-dvE
-uxb
-uxb
-uxb
-uQZ
-uxb
-uxb
-uxb
-uxb
-uxb
-uxb
-uxb
-dvE
-dvE
-dvE
-dvE
-kpE
+dXx
+bGT
+bGT
+bGT
+jKv
+bGT
+bGT
+bGT
+bGT
+bGT
+oFG
+oFG
+nMw
+nMw
+oFG
+oFG
+dGU
+nMw
+nMw
+nMw
+nMw
+nMw
+nMw
+nMw
+oFG
+oFG
+oFG
+bGT
+jKv
+bGT
+bGT
+oFG
+oFG
+bGT
+bGT
+oFG
+oFG
+nMw
+nMw
+nMw
+dGU
+nMw
+nMw
+nMw
+nMw
+nMw
+nMw
+oFG
+oFG
+bGT
+bGT
+bGT
+jKv
+bGT
+bGT
+bGT
+bGT
+bGT
+bGT
+bGT
+oFG
+oFG
+oFG
+oFG
+cOG
 iFN
 iFN
 iFN
@@ -39917,28 +39962,28 @@ iFN
 iFN
 mif
 iFN
-vSr
-dvE
-uxb
-uxb
-uxb
-uxb
-dvE
-dvE
-iUn
-iUn
-fKZ
-iUn
-iUn
-iUn
-iUn
-iUn
-iUn
-hCO
+nrR
+oFG
+bGT
+bGT
+bGT
+bGT
+oFG
+oFG
+nMw
+nMw
+dGU
+nMw
+nMw
+nMw
+nMw
+nMw
+nMw
+oWx
 iFN
 iFN
-vSr
-iKr
+nrR
+fBT
 mif
 iFN
 iFN
@@ -39947,19 +39992,19 @@ iFN
 iFN
 iFN
 iFN
-lMq
-iUn
-iUn
-iUn
-fKZ
-iUn
-iUn
-iUn
-iUn
-iUn
-iUn
-iUn
-hCO
+xeX
+nMw
+nMw
+nMw
+dGU
+nMw
+nMw
+nMw
+nMw
+nMw
+nMw
+nMw
+oWx
 iFN
 iFN
 iFN
@@ -39970,24 +40015,24 @@ iFN
 iFN
 iFN
 iFN
-vSr
-dvE
-iUn
-iUn
-iUn
-fKZ
-iUn
-iUn
-iUn
-iUn
-iUn
-iUn
-iUn
-dvE
-dvE
-dvE
-dvE
-kpE
+nrR
+oFG
+nMw
+nMw
+nMw
+dGU
+nMw
+nMw
+nMw
+nMw
+nMw
+nMw
+nMw
+oFG
+oFG
+oFG
+oFG
+cOG
 iFN
 iFN
 iFN
@@ -40106,19 +40151,19 @@ bVt
 tFL
 tFL
 ipB
-whV
-uxb
-uxb
-uQZ
-uxb
-dvE
-dvE
-iUn
-iUn
-iUn
-iUn
-iUn
-hCO
+hNW
+bGT
+bGT
+jKv
+bGT
+oFG
+oFG
+nMw
+nMw
+nMw
+nMw
+nMw
+oWx
 iFN
 iFN
 mif
@@ -40131,20 +40176,8 @@ iFN
 iFN
 iFN
 iFN
-vSr
-iKr
-mif
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
+nrR
+fBT
 mif
 iFN
 iFN
@@ -40164,8 +40197,20 @@ iFN
 iFN
 iFN
 iFN
-vSr
-iKr
+iFN
+iFN
+iFN
+iFN
+iFN
+mif
+iFN
+iFN
+iFN
+iFN
+iFN
+iFN
+nrR
+fBT
 iFN
 iFN
 iFN
@@ -40177,11 +40222,11 @@ iFN
 iFN
 iFN
 iFN
-xEP
-dvE
-dvE
-dvE
-kpE
+uZb
+oFG
+oFG
+oFG
+cOG
 iFN
 iFN
 iFN
@@ -40300,13 +40345,13 @@ tEK
 uMj
 gSl
 tzP
-whV
-iUn
-iUn
-fKZ
-iUn
-iUn
-hCO
+hNW
+nMw
+nMw
+dGU
+nMw
+nMw
+oWx
 iFN
 iFN
 iFN
@@ -40325,20 +40370,8 @@ iFN
 iFN
 iFN
 iFN
-vSr
-iKr
-mif
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
-iFN
+nrR
+fBT
 mif
 iFN
 iFN
@@ -40358,8 +40391,20 @@ iFN
 iFN
 iFN
 iFN
-vSr
-iKr
+iFN
+iFN
+iFN
+iFN
+iFN
+mif
+iFN
+iFN
+iFN
+iFN
+iFN
+iFN
+nrR
+fBT
 iFN
 iFN
 iFN
@@ -40371,11 +40416,11 @@ iFN
 iFN
 iFN
 iFN
-bTT
-dvE
-dvE
-dvE
-kpE
+din
+oFG
+oFG
+oFG
+cOG
 iFN
 iFN
 iFN
@@ -40519,8 +40564,8 @@ iFN
 iFN
 iFN
 iFN
-vSr
-iKr
+nrR
+fBT
 mif
 iFN
 iFN
@@ -40552,8 +40597,8 @@ mif
 mif
 lFn
 iFN
-vSr
-iKr
+nrR
+fBT
 iFN
 iFN
 iFN
@@ -40565,11 +40610,11 @@ iFN
 iFN
 iFN
 iFN
-bTT
-dvE
-dvE
-dvE
-kpE
+din
+oFG
+oFG
+oFG
+cOG
 iFN
 iFN
 iFN
@@ -40713,8 +40758,8 @@ iFN
 iFN
 iFN
 iFN
-vSr
-iKr
+nrR
+fBT
 mif
 iFN
 iFN
@@ -40746,8 +40791,8 @@ arS
 iFN
 mif
 iFN
-vSr
-iKr
+nrR
+fBT
 iFN
 iFN
 iFN
@@ -40759,11 +40804,11 @@ iFN
 iFN
 iFN
 iFN
-bTT
-dvE
-dvE
-dvE
-kpE
+din
+oFG
+oFG
+oFG
+cOG
 iFN
 iFN
 iFN
@@ -40907,8 +40952,8 @@ iFN
 iFN
 iFN
 iFN
-vSr
-iKr
+nrR
+fBT
 mif
 iFN
 iFN
@@ -40939,9 +40984,9 @@ rEy
 jjm
 arS
 mif
-rKB
-dvE
-iKr
+dXx
+oFG
+fBT
 iFN
 iFN
 iFN
@@ -40953,11 +40998,11 @@ iFN
 iFN
 iFN
 iFN
-bTT
-dvE
-dvE
-dvE
-kpE
+din
+oFG
+oFG
+oFG
+cOG
 iFN
 iFN
 iFN
@@ -41101,8 +41146,8 @@ mif
 mif
 mif
 mif
-gpj
-glw
+giy
+dnR
 kbD
 mif
 mif
@@ -41133,9 +41178,9 @@ kYl
 qJy
 kWH
 mif
-gpj
-xcF
-ddX
+giy
+hcn
+xYw
 mif
 mif
 mif
@@ -41147,11 +41192,11 @@ mif
 mif
 mif
 mif
-wLe
-xcF
-xcF
-xcF
-aPw
+lHd
+hcn
+hcn
+hcn
+kLS
 mif
 mif
 mif
@@ -41295,8 +41340,8 @@ iFN
 iFN
 iFN
 iFN
-vSr
-iKr
+nrR
+fBT
 mif
 iFN
 iFN
@@ -41326,9 +41371,9 @@ kYl
 kYl
 fss
 hHw
-gVO
-dvE
-iKr
+ylu
+oFG
+fBT
 iFN
 iFN
 iFN
@@ -41341,11 +41386,11 @@ iFN
 mif
 iFN
 iFN
-ury
-dvE
-dvE
-dvE
-ixy
+wDv
+oFG
+oFG
+oFG
+fmc
 iFN
 iFN
 mif
@@ -41489,8 +41534,8 @@ iFN
 iFN
 evV
 iFN
-vSr
-iKr
+nrR
+fBT
 mif
 iFN
 iFN
@@ -41520,9 +41565,9 @@ kYl
 kYl
 fss
 hHw
-vug
-iUn
-hCO
+gVO
+nMw
+oWx
 iFN
 iFN
 iFN
@@ -41534,13 +41579,13 @@ iFN
 iFN
 mif
 iFN
-ury
-dvE
-dvE
-dvE
-dvE
-dvE
-ixy
+wDv
+oFG
+oFG
+oFG
+oFG
+oFG
+fmc
 iFN
 mif
 iFN
@@ -41682,9 +41727,9 @@ iFN
 iFN
 jZZ
 kfH
-whV
-iUn
-hCO
+hNW
+nMw
+oWx
 mif
 iFN
 iFN
@@ -41727,15 +41772,15 @@ iFN
 iFN
 iFN
 mif
-bTT
-dvE
-dvE
-dvE
-dvE
-dvE
-dvE
-dvE
-dyg
+din
+oFG
+oFG
+oFG
+oFG
+oFG
+oFG
+oFG
+fwG
 mif
 iFN
 iFN
@@ -41921,15 +41966,15 @@ hgE
 hgE
 iFN
 mif
-bTT
-dvE
-dvE
-aDm
-vRT
-xEP
-dvE
-dvE
-dyg
+din
+oFG
+oFG
+vxA
+grn
+uZb
+oFG
+oFG
+fwG
 mif
 iFN
 iFN
@@ -42944,7 +42989,7 @@ hgE
 hgE
 bRs
 bRs
-bND
+rPl
 bmQ
 bRs
 hgE
@@ -49851,7 +49896,7 @@ pjT
 dsd
 qnr
 mdz
-gzo
+wVx
 srm
 ovn
 kHH
@@ -51393,7 +51438,7 @@ snT
 kRO
 snT
 snT
-hdm
+gLM
 snT
 snT
 snT
@@ -52756,7 +52801,7 @@ oZF
 oZF
 oZF
 oZF
-hdm
+gLM
 oZF
 oZF
 xZM
@@ -53139,7 +53184,7 @@ hgE
 hgE
 snT
 snT
-hdm
+gLM
 snT
 snT
 snT

@@ -5,6 +5,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
+"af" = (
+/obj/structure/fence/cut/large{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/facility/exterior)
 "ah" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/cable/heavyduty{
@@ -16,6 +22,9 @@
 	},
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west)
+"ai" = (
+/turf/simulated/shuttle/wall/voidcraft,
+/area/rift/facility/interior/elevator)
 "al" = (
 /obj/machinery/atmospherics/component/unary/heater{
 	dir = 1;
@@ -24,6 +33,17 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
+"ap" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 1
+	},
+/obj/structure/railing,
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
 "ar" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -163,6 +183,12 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/outpost/storage)
+"be" = (
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 10
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "bj" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -258,21 +284,18 @@
 "bO" = (
 /turf/simulated/wall,
 /area/rnd/outpost)
-"bR" = (
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 8
-	},
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 4
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/west)
 "bW" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/anomaly_lab/testing)
+"bY" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/facility/exterior)
 "cb" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -299,6 +322,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
+"cd" = (
+/obj/structure/salvageable/console_broken_os{
+	dir = 8
+	},
+/obj/effect/overlay/snow/floor/edges{
+	dir = 5
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
 "ch" = (
 /obj/structure/table/standard,
 /obj/item/tank/phoron,
@@ -344,6 +377,24 @@
 	},
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/west)
+"ct" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/lythios43c,
+/area/rift/facility/exterior)
+"cx" = (
+/obj/structure/closet/emcloset,
+/obj/random/toolbox,
+/obj/effect/overlay/snow/floor/edges{
+	dir = 6
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
 "cy" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -518,14 +569,9 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "dx" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 6
-	},
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 9
-	},
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/rift/surfacebase/outside/west)
+/area/rift/facility/interior/surface)
 "dB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
@@ -633,12 +679,6 @@
 	},
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west)
-"ej" = (
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 4
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/west)
 "ek" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -687,9 +727,22 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
+"eq" = (
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 9
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "er" = (
 /turf/simulated/wall/r_wall,
 /area/rnd/outpost/anomaly_lab/airlock)
+"ew" = (
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 1
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
 "eA" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -755,6 +808,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
+"eO" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/facility/exterior)
 "eU" = (
 /obj/machinery/door/firedoor/border_only{
 	req_one_access = list(18,47)
@@ -798,6 +857,23 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
+"fd" = (
+/obj/structure/catwalk,
+/obj/structure/sign/signnew/danger{
+	pixel_y = 32;
+	name = "THIS IS NOT A PLACE OF HONOR";
+	desc = "What is here was dangerous and replusive to us."
+	},
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/facility/exterior)
+"fi" = (
+/obj/machinery/power/apc/alarms_hidden{
+	dir = 1;
+	chargelevel = 0;
+	cell_type = null
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/facility/interior/surface)
 "fk" = (
 /obj/effect/floor_decal/corner/purple{
 	dir = 5
@@ -819,6 +895,16 @@
 	icon_state = "icerock-dark"
 	},
 /area/rift/surfacebase/outside/west)
+"fp" = (
+/obj/structure/closet/crate/radiation,
+/obj/random/junk,
+/obj/random/junk,
+/obj/random/junk,
+/obj/random/junk,
+/obj/random/junk,
+/obj/random/junk,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
 "fs" = (
 /obj/structure/table/standard,
 /obj/machinery/vending/wallmed1{
@@ -826,6 +912,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
+"fv" = (
+/obj/structure/closet/crate/radiation,
+/obj/random/maintenance/medical,
+/obj/random/maintenance/medical,
+/obj/random/maintenance/medical,
+/obj/random/maintenance/medical,
+/obj/random/maintenance/medical,
+/obj/random/maintenance/medical,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
 "fw" = (
 /obj/machinery/alarm{
 	pixel_y = 22
@@ -1003,6 +1099,15 @@
 /obj/machinery/portable_atmospherics/canister/empty/nitrogen,
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
+"gA" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/facility/exterior)
 "gC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -1031,6 +1136,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab/airlock)
+"gF" = (
+/obj/effect/map_effect/radiation_emitter,
+/turf/simulated/open/lythios43c,
+/area/rift/facility/interior/surface)
 "gG" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -1068,6 +1177,13 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
+"gM" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
 "gN" = (
 /obj/machinery/radiocarbon_spectrometer,
 /obj/effect/floor_decal/steeldecal/steel_decals9,
@@ -1122,6 +1238,11 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
+"hb" = (
+/obj/effect/overlay/snow/floor/edges,
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
 "hh" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -1175,11 +1296,17 @@
 /turf/simulated/wall/r_wall,
 /area/rnd/outpost/anomaly_lab/analysis)
 "hx" = (
-/obj/effect/overlay/snow/floor/surround_new{
+/obj/effect/overlay/snow/floor/grav_edges{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
+"hy" = (
+/obj/effect/overlay/snow/floor/edges{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
 "hz" = (
 /obj/machinery/firealarm{
 	dir = 1;
@@ -1195,6 +1322,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
+"hA" = (
+/turf/simulated/wall,
+/area/rift/facility/interior/elevator)
 "hC" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
@@ -1214,6 +1344,12 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
+"hI" = (
+/obj/structure/table/standard,
+/obj/item/folder/yellow,
+/obj/item/clothing/head/ushanka,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/interior/surface)
 "hK" = (
 /obj/effect/floor_decal/industrial/warning/corner,
 /obj/machinery/atmospherics/pipe/simple/visible{
@@ -1233,6 +1369,12 @@
 	},
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west)
+"hV" = (
+/obj/structure/grille/broken,
+/obj/effect/overlay/snow/floor,
+/obj/random/obstruction,
+/turf/simulated/floor/lythios43c,
+/area/rift/facility/interior/surface)
 "ie" = (
 /obj/structure/table/rack,
 /obj/item/clothing/suit/bio_suit/anomaly,
@@ -1246,6 +1388,27 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
+"ii" = (
+/obj/structure/salvageable/machine_os,
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
+"il" = (
+/obj/effect/overlay/snow/floor/edges{
+	dir = 8
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
+"im" = (
+/obj/machinery/door/blast/shutters{
+	dir = 8;
+	id = "bunker"
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
 "ip" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -1258,6 +1421,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
+"it" = (
+/obj/random/trash,
+/obj/effect/overlay/snow/floor/edges{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
 "iu" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -1291,6 +1461,18 @@
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/rnd/outpost/mixing)
+"iJ" = (
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
+"iK" = (
+/obj/effect/overlay/snow/floor/grav_surround{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "iL" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -1340,6 +1522,11 @@
 	},
 /turf/simulated/floor/lythios43c,
 /area/tether/outpost/solars_outside)
+"iV" = (
+/obj/effect/overlay/snow/floor,
+/obj/random/trash_pile,
+/turf/simulated/floor/lythios43c,
+/area/rift/facility/interior/surface)
 "iY" = (
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4
@@ -1373,6 +1560,12 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
+"jg" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/interior/elevator)
 "ji" = (
 /obj/structure/catwalk,
 /obj/effect/map_effect/portal/line/side_b{
@@ -1380,6 +1573,17 @@
 	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west)
+"jk" = (
+/obj/structure/closet/crate/radiation,
+/obj/item/broken_device/random,
+/obj/item/broken_device/random,
+/obj/item/broken_device/random,
+/obj/item/broken_device/random,
+/obj/item/broken_device/random,
+/obj/item/broken_device/random,
+/obj/effect/map_effect/radiation_emitter,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
 "jl" = (
 /obj/structure/cable/yellow{
 	d1 = 2;
@@ -1433,19 +1637,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/tether/outpost/solars_outside)
-"jB" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
-/obj/structure/catwalk,
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 4
-	},
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 8
-	},
-/turf/simulated/floor/lythios43c,
-/area/rift/surfacebase/outside/west)
 "jC" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -1476,6 +1667,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
+"jE" = (
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/facility/exterior)
 "jF" = (
 /obj/machinery/atmospherics/pipe/simple/insulated{
 	dir = 9
@@ -1494,14 +1688,24 @@
 /obj/machinery/meter,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
-"jQ" = (
-/obj/effect/overlay/snow/floor/grav_edges,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/west)
 "jR" = (
 /obj/machinery/bomb_tester,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/outpost/testing_lab)
+"jS" = (
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 4
+	},
+/obj/effect/overlay/snow/floor/edges{
+	dir = 10
+	},
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
 "jT" = (
 /obj/structure/cable/green{
 	d2 = 2;
@@ -1520,6 +1724,11 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/outpost/storage)
+"jV" = (
+/obj/effect/overlay/snow/floor,
+/obj/structure/bed/chair,
+/turf/simulated/floor/lythios43c,
+/area/rift/facility/interior/surface)
 "jZ" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -1534,6 +1743,11 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
+"kf" = (
+/obj/structure/grille/broken,
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/lythios43c,
+/area/rift/facility/interior/surface)
 "kh" = (
 /turf/simulated/floor/lythios43c,
 /area/tether/outpost/solars_shed)
@@ -1554,6 +1768,12 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/outpost/anomaly_lab)
+"km" = (
+/turf/simulated/mineral/icerock,
+/area/rift/facility/exterior)
+"kp" = (
+/turf/simulated/wall,
+/area/rift/facility/interior/surface)
 "kr" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -1586,6 +1806,17 @@
 /obj/structure/bed,
 /turf/simulated/floor/wood,
 /area/rnd/outpost/breakroom)
+"kA" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/interior/surface)
+"kE" = (
+/obj/effect/overlay/snow/floor,
+/obj/random/trash,
+/turf/simulated/floor/lythios43c,
+/area/rift/facility/interior/surface)
 "kH" = (
 /obj/structure/table/woodentable,
 /obj/machinery/vending/wallmed1{
@@ -1637,6 +1868,9 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/outpost)
+"kN" = (
+/turf/simulated/open,
+/area/rift/facility/interior/surface)
 "kQ" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/railing,
@@ -1686,6 +1920,11 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
+"lh" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/lythios43c,
+/area/rift/facility/interior/surface)
 "lm" = (
 /obj/structure/sign/science,
 /turf/simulated/wall,
@@ -1707,6 +1946,10 @@
 /obj/item/clothing/glasses/welding,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/testing_lab)
+"lr" = (
+/obj/structure/lattice,
+/turf/simulated/open/lythios43c,
+/area/rift/facility/interior/surface)
 "lv" = (
 /obj/machinery/artifact_analyser,
 /turf/simulated/floor/tiled/dark,
@@ -1733,6 +1976,13 @@
 	},
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/west)
+"lG" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 10
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
 "lJ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -1805,6 +2055,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
+"mh" = (
+/obj/structure/girder,
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/lythios43c,
+/area/rift/facility/interior/surface)
 "mj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -1819,6 +2074,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
+"ml" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
 "mm" = (
 /obj/effect/floor_decal/corner/purple{
 	dir = 10
@@ -1831,6 +2090,9 @@
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
+"ms" = (
+/turf/simulated/wall,
+/area/rift/facility/exterior)
 "mv" = (
 /obj/machinery/vending/fitness{
 	dir = 8
@@ -1857,6 +2119,22 @@
 	},
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west)
+"mG" = (
+/obj/effect/overlay/snow/floor/edges{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/effect/overlay/snow/floor,
+/obj/structure/sign/warning/radioactive{
+	pixel_x = -32
+	},
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
 "mJ" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
@@ -1874,6 +2152,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
+"mN" = (
+/obj/effect/overlay/snow/floor/edges,
+/obj/effect/overlay/snow/floor,
+/obj/machinery/light/small,
+/obj/random/trash,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
 "mQ" = (
 /obj/machinery/requests_console/preset/research{
 	pixel_y = -30
@@ -2101,6 +2386,10 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
+"od" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/facility/exterior)
 "oe" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -2204,12 +2493,34 @@
 /obj/structure/railing,
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west)
+"oI" = (
+/obj/machinery/door/blast/shutters{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
 "oJ" = (
 /obj/effect/overlay/snow/floor/edges_new{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
+"oR" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/overlay/snow/floor,
+/obj/structure/sign/warning/radioactive{
+	pixel_x = 32
+	},
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
 "oV" = (
 /obj/structure/table/standard,
 /obj/machinery/camera/network/research_outpost,
@@ -2324,6 +2635,14 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/outpost/storage)
+"pr" = (
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
+"pt" = (
+/obj/effect/overlay/snow/floor/pointy,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
 "pu" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -2646,12 +2965,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
-"qT" = (
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 10
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/west)
 "qW" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 9
@@ -2698,6 +3011,11 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/tether/outpost/solars_outside)
+"re" = (
+/obj/structure/salvageable/console_broken_os,
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
 "rh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -2739,6 +3057,19 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/outpost)
+"ry" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/catwalk,
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 8
+	},
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 4
+	},
+/turf/simulated/floor/lythios43c,
+/area/rift/surfacebase/outside/west)
 "rE" = (
 /obj/structure/extinguisher_cabinet{
 	dir = 1;
@@ -2805,11 +3136,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
-"sa" = (
+"rY" = (
 /obj/effect/overlay/snow/floor/grav_edges{
-	dir = 9
+	dir = 8
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/outside/west)
 "sc" = (
 /obj/machinery/camera/network/research_outpost{
@@ -2850,6 +3181,33 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
+"sl" = (
+/obj/effect/floor_decal/industrial/warning,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
+"sq" = (
+/obj/effect/overlay/snow/floor/edges{
+	dir = 4
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
+"sr" = (
+/obj/effect/overlay/snow/floor/edges{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
 "st" = (
 /obj/machinery/power/apc{
 	dir = 8;
@@ -2884,6 +3242,15 @@
 /obj/item/pen/fountain,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/testing_lab)
+"sC" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/obj/effect/overlay/snow/floor/edges,
+/obj/structure/railing,
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
 "sE" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
@@ -2925,6 +3292,20 @@
 /obj/machinery/door/airlock/multi_tile/metal/mait,
 /turf/simulated/floor/lythios43c,
 /area/tether/outpost/solars_shed)
+"sP" = (
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 1
+	},
+/obj/effect/overlay/snow/floor/edges{
+	dir = 6
+	},
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
 "sR" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 6
@@ -2935,6 +3316,10 @@
 /obj/machinery/meter,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
+"sS" = (
+/obj/structure/fence/cut/large,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/facility/exterior)
 "sT" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -2968,6 +3353,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/breakroom)
+"sY" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/facility/exterior)
 "tb" = (
 /obj/machinery/atmospherics/component/binary/pump,
 /obj/effect/floor_decal/industrial/danger{
@@ -3010,6 +3401,14 @@
 /obj/structure/anomaly_container,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenoarch_storage)
+"tk" = (
+/obj/effect/trap/pop_up/thrower{
+	id = "LF_SL_E"
+	},
+/turf/simulated/floor/trap/plating{
+	id = "LF_SL_E"
+	},
+/area/rift/facility/interior/elevator)
 "tl" = (
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -3126,6 +3525,12 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
+"tP" = (
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 6
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "tR" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
@@ -3139,6 +3544,13 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
+"tT" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 9
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
 "tU" = (
 /obj/machinery/atmospherics/valve,
 /turf/simulated/floor/tiled/white,
@@ -3183,6 +3595,14 @@
 	},
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/outside/west)
+"uk" = (
+/obj/structure/closet/emcloset,
+/obj/effect/overlay/snow/floor/edges{
+	dir = 10
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
 "um" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -3366,6 +3786,11 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/rnd/outpost/heating)
+"uX" = (
+/obj/machinery/door/airlock/external,
+/obj/effect/overlay/snow/airlock,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/facility/interior/surface)
 "va" = (
 /obj/structure/cable/green,
 /obj/structure/cable/green{
@@ -3381,6 +3806,11 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/outpost)
+"vd" = (
+/obj/effect/overlay/snow/floor,
+/obj/random/obstruction,
+/turf/simulated/floor/lythios43c,
+/area/rift/facility/interior/surface)
 "ve" = (
 /obj/effect/overlay/snow/floor/edges_new{
 	dir = 5
@@ -3448,10 +3878,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
-"vA" = (
-/obj/effect/overlay/snow/floor/surround_new,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/rift/surfacebase/outside/west)
 "vB" = (
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 8
@@ -3491,6 +3917,11 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
+"vT" = (
+/obj/effect/overlay/snow/floor,
+/obj/structure/table,
+/turf/simulated/floor,
+/area/rift/facility/interior/surface)
 "vV" = (
 /obj/machinery/door/window/southright{
 	name = "Science Outpost EVA"
@@ -3563,6 +3994,15 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/outpost/chamber)
+"wj" = (
+/obj/structure/closet/crate/radiation,
+/obj/random/maintenance/security,
+/obj/random/maintenance/security,
+/obj/random/maintenance/security,
+/obj/random/maintenance/security,
+/obj/random/maintenance/security,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
 "wm" = (
 /obj/structure/lattice,
 /obj/structure/railing,
@@ -3589,6 +4029,10 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
+"wC" = (
+/obj/structure/metal_edge,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/facility/exterior)
 "wE" = (
 /obj/machinery/atmospherics/component/unary/heat_exchanger{
 	dir = 4
@@ -3653,6 +4097,16 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/outpost)
+"wY" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
 "wZ" = (
 /obj/structure/closet/excavation,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -3738,17 +4192,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "xr" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
-/obj/structure/catwalk,
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 8
-	},
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 4
-	},
-/turf/simulated/floor/lythios43c,
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/outside/west)
 "xs" = (
 /obj/effect/floor_decal/borderfloor,
@@ -3844,6 +4288,10 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/testing)
+"xX" = (
+/obj/effect/overlay/snow/floor/surround_new,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "ya" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 10
@@ -3913,6 +4361,19 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
+"yp" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
 "yq" = (
 /obj/machinery/atmospherics/pipe/simple/visible/supply,
 /turf/simulated/floor,
@@ -3947,6 +4408,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/anomaly_lab/testing)
+"yE" = (
+/obj/random/obstruction,
+/turf/simulated/floor,
+/area/rift/facility/interior/elevator)
 "yG" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -3970,6 +4435,30 @@
 /obj/structure/closet/crate/science,
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
+"yO" = (
+/obj/structure/loot_pile/mecha/ripley/random_sprite,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
+"yQ" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
+"yS" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/catwalk,
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 4
+	},
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 8
+	},
+/turf/simulated/floor/lythios43c,
+/area/rift/surfacebase/outside/west)
 "yU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -3977,12 +4466,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/anomaly_lab/analysis)
-"yX" = (
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 6
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/west)
 "yY" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/alarm{
@@ -4042,6 +4525,12 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
+"zh" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 8
+	},
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/facility/exterior)
 "zk" = (
 /obj/machinery/airlock_sensor/phoron{
 	frequency = 1452;
@@ -4062,12 +4551,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab/airlock)
-"zn" = (
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/west)
 "zp" = (
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 1;
@@ -4081,6 +4564,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/anomaly_lab/testing)
+"zr" = (
+/obj/effect/floor_decal/industrial/warning,
+/obj/effect/overlay/snow/floor/pointy,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
 "zt" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -4101,12 +4593,6 @@
 /obj/machinery/meter,
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
-"zz" = (
-/obj/effect/overlay/snow/floor/grav_surround{
-	dir = 4
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/west)
 "zD" = (
 /obj/machinery/atmospherics/pipe/simple/visible/blue{
 	dir = 5
@@ -4199,6 +4685,15 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/outpost/chamber)
+"Ai" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 6
+	},
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "Al" = (
 /turf/simulated/floor/lythios43c,
 /area/tether/outpost/solars_outside)
@@ -4368,6 +4863,19 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
+"Bl" = (
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
 "Bp" = (
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary{
 	scrub_id = "science_outpost"
@@ -4377,6 +4885,13 @@
 "Bq" = (
 /turf/simulated/wall,
 /area/rnd/outpost/heating)
+"Bv" = (
+/obj/effect/overlay/snow/floor,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/facility/interior/surface)
 "Bw" = (
 /obj/machinery/door/airlock/research{
 	name = "Science Outpost Personal Quarters"
@@ -4392,6 +4907,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/breakroom)
+"Bx" = (
+/obj/structure/fence/door,
+/turf/simulated/floor/lythios43c,
+/area/rift/facility/exterior)
 "BC" = (
 /obj/machinery/camera/network/engineering{
 	dir = 1
@@ -4452,6 +4971,22 @@
 /obj/structure/sign/department/toxins,
 /turf/simulated/wall,
 /area/rnd/outpost/airlock)
+"BR" = (
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 8
+	},
+/obj/effect/overlay/snow/floor/edges{
+	dir = 5
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
 "BS" = (
 /obj/machinery/firealarm{
 	dir = 1;
@@ -4471,6 +5006,13 @@
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/anomaly_lab/testing)
+"BZ" = (
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
+"Ca" = (
+/obj/effect/overlay/snow/floor/grav_edges,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "Cb" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -4490,6 +5032,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
+"Cc" = (
+/obj/effect/overlay/snow/floor/pointy,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
 "Cf" = (
 /obj/effect/floor_decal/corner/purple{
 	dir = 5
@@ -4547,6 +5097,22 @@
 /obj/structure/sign/warning/nosmoking_1,
 /turf/simulated/wall,
 /area/rnd/outpost/airlock)
+"Cx" = (
+/obj/structure/sign/signnew/danger{
+	pixel_y = 32;
+	name = "THIS IS NOT A PLACE OF HONOR";
+	desc = "What is here was dangerous and replusive to us."
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/facility/exterior)
+"Cy" = (
+/obj/random/trash,
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
 "Cz" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/effect/floor_decal/rust,
@@ -4619,6 +5185,19 @@
 /obj/machinery/portable_atmospherics/canister/empty,
 /turf/simulated/floor,
 /area/rnd/outpost/storage)
+"CY" = (
+/obj/effect/overlay/snow/floor/edges{
+	dir = 9
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
 "CZ" = (
 /obj/machinery/door/airlock/glass_science{
 	name = "Xenoarch Storage"
@@ -4882,11 +5461,21 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/testing_lab)
 "EA" = (
-/obj/effect/overlay/snow/floor/grav_edges{
+/obj/effect/overlay/snow/floor/edges{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/west)
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/obj/effect/overlay/snow/floor,
+/obj/structure/sign/warning/radioactive{
+	pixel_x = 32
+	},
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
 "EQ" = (
 /obj/structure/railing{
 	dir = 4
@@ -4938,6 +5527,9 @@
 	},
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west)
+"Fa" = (
+/turf/simulated/open/lythios43c,
+/area/rift/facility/interior/surface)
 "Fb" = (
 /turf/simulated/wall,
 /area/rnd/outpost/mixing)
@@ -5134,6 +5726,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/breakroom)
+"Gc" = (
+/obj/structure/fence,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/facility/exterior)
 "Gd" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -5292,6 +5888,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
+"GN" = (
+/obj/structure/table/reinforced,
+/obj/effect/map_effect/radiation_emitter,
+/obj/item/broken_bottle,
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
 "GO" = (
 /obj/machinery/atmospherics/pipe/simple/visible/universal,
 /obj/machinery/camera/network/research_outpost{
@@ -5338,6 +5941,14 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab/testing)
+"GV" = (
+/obj/machinery/power/apc/alarms_hidden{
+	dir = 1;
+	chargelevel = 0;
+	cell_type = null
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
 "He" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -5362,6 +5973,20 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
+"Hm" = (
+/obj/structure/closet/crate/radiation,
+/obj/item/fuel_assembly/tritium,
+/obj/item/fuel_assembly/tritium,
+/obj/item/fuelrod/plutonium,
+/obj/item/fuelrod/plutonium,
+/obj/item/fuelrod/uranium,
+/obj/item/fuelrod/uranium,
+/obj/effect/map_effect/radiation_emitter/strong,
+/obj/effect/overlay/snow/floor/edges{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
 "Ho" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
@@ -5441,6 +6066,11 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/outpost/testing_lab)
+"HL" = (
+/obj/effect/overlay/snow/floor,
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/lythios43c,
+/area/rift/facility/interior/surface)
 "HM" = (
 /obj/machinery/alarm{
 	dir = 8;
@@ -5461,6 +6091,16 @@
 	},
 /turf/simulated/floor/lythios43c,
 /area/tether/outpost/solars_outside)
+"HP" = (
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
 "HR" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -5476,6 +6116,11 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/outpost/chamber)
+"HX" = (
+/obj/structure/grille/broken,
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/lythios43c,
+/area/rift/facility/exterior/shuttle)
 "HY" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -5522,6 +6167,12 @@
 /obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/anomaly_lab/testing)
+"Ih" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
+	},
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/facility/exterior)
 "Ii" = (
 /obj/machinery/airlock_sensor/phoron{
 	id_tag = "sci_outpost_sensor";
@@ -5549,6 +6200,11 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
+"In" = (
+/obj/structure/girder,
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor,
+/area/rift/facility/interior/surface)
 "It" = (
 /obj/structure/cable/yellow{
 	d1 = 2;
@@ -5562,6 +6218,19 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/tether/outpost/solars_outside)
+"Iz" = (
+/obj/effect/overlay/snow/floor/edges{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
 "IA" = (
 /obj/structure/cable/yellow{
 	d1 = 2;
@@ -5638,6 +6307,28 @@
 /obj/machinery/atmospherics/pipe/vent/high_volume,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/west)
+"Jl" = (
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/lythios43c,
+/area/rift/facility/interior/surface)
+"Jm" = (
+/obj/structure/salvageable/data_os,
+/obj/effect/overlay/snow/floor/edges{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
+"Jt" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor,
+/area/rift/facility/interior/surface)
+"Jw" = (
+/obj/structure/table/standard,
+/obj/item/paper_bin,
+/obj/item/pen,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/interior/surface)
 "Jx" = (
 /turf/simulated/wall,
 /area/rnd/outpost/testing_lab)
@@ -5648,6 +6339,10 @@
 /obj/structure/railing,
 /turf/simulated/floor/lythios43c,
 /area/tether/outpost/solars_outside)
+"JA" = (
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor,
+/area/rift/facility/interior/surface)
 "JD" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -5722,6 +6417,10 @@
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
+"JW" = (
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/facility/interior/surface)
 "JY" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -5895,6 +6594,22 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/rnd/outpost/heating)
+"Kx" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/overlay/snow/floor/edges{
+	dir = 4
+	},
+/obj/effect/overlay/snow/floor,
+/obj/structure/sign/warning/radioactive{
+	pixel_x = -32
+	},
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
 "Ky" = (
 /obj/structure/table/standard,
 /obj/machinery/computer/atmoscontrol/laptop{
@@ -5931,6 +6646,18 @@
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
+"KF" = (
+/obj/structure/closet/crate/radiation,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/obj/effect/overlay/snow/floor/edges{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
 "KG" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
@@ -6029,6 +6756,15 @@
 /obj/structure/railing,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west)
+"Le" = (
+/obj/structure/closet/crate/radiation,
+/obj/random/junk,
+/obj/random/junk,
+/obj/random/junk,
+/obj/random/junk,
+/obj/random/junk,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
 "Lf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -6056,23 +6792,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/testing_lab)
-"Lp" = (
-/obj/effect/floor_decal/industrial/warning/dust,
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
+"Lw" = (
+/turf/simulated/mineral/icerock,
+/area/rift/surfacebase/outside/west)
 "LB" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
@@ -6131,6 +6853,17 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
+"LN" = (
+/obj/effect/overlay/snow/floor/edges{
+	dir = 6
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing,
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
 "LO" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/black,
 /obj/machinery/meter,
@@ -6162,6 +6895,19 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/outpost/chamber)
+"LU" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/effect/overlay/snow/floor/edges{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
 "LW" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 5
@@ -6239,6 +6985,15 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/outpost/anomaly_lab)
+"MB" = (
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 8
+	},
+/obj/effect/overlay/snow/floor/grav_edges{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "ME" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/floor_decal/rust,
@@ -6507,6 +7262,23 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
+"Oa" = (
+/obj/effect/overlay/snow/floor/edges{
+	dir = 5
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
+"Oe" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/interior/surface)
 "Oi" = (
 /obj/effect/overlay/snow/floor/edges_new{
 	dir = 1
@@ -6570,6 +7342,12 @@
 /obj/machinery/atmospherics/component/binary/pump,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
+"OB" = (
+/turf/unsimulated/wall/planetary/lythios43c{
+	desc = "Glacial permafrost, compacted harder than stone.";
+	icon_state = "icerock-dark"
+	},
+/area/rift/facility/exterior)
 "OC" = (
 /obj/structure/closet/secure_closet/xenoarchaeologist,
 /obj/structure/window/reinforced{
@@ -6644,6 +7422,10 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
+"OY" = (
+/obj/structure/railing,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/interior/surface)
 "Pc" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -6663,6 +7445,11 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
+"Pf" = (
+/obj/effect/overlay/snow/floor,
+/obj/random/trash,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/facility/interior/surface)
 "Pg" = (
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 4
@@ -6802,6 +7589,12 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
+"PF" = (
+/obj/machinery/door/airlock/multi_tile/metal/mait{
+	name = "Maintenance Access"
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/interior/surface)
 "PG" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -6897,6 +7690,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
+"Qg" = (
+/obj/structure/sign/signnew/radiation,
+/turf/simulated/wall,
+/area/rift/facility/exterior)
 "Qj" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -6963,6 +7760,13 @@
 	},
 /turf/simulated/floor/lythios43c,
 /area/tether/outpost/solars_shed)
+"Qz" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 5
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
 "QI" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -7131,6 +7935,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/anomaly_lab/analysis)
+"RF" = (
+/obj/effect/overlay/snow/floor/edges{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
 "RI" = (
 /obj/machinery/light/small,
 /obj/machinery/space_heater,
@@ -7154,6 +7968,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab/airlock)
+"RX" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/interior/surface)
 "RY" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -7191,6 +8011,12 @@
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/black,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
+"Se" = (
+/obj/machinery/atmospherics/component/unary/engine{
+	dir = 1
+	},
+/turf/simulated/floor/lythios43c,
+/area/rift/facility/exterior/shuttle)
 "Sf" = (
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1452;
@@ -7220,6 +8046,9 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/outpost/storage)
+"Si" = (
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/rift/facility/interior/elevator)
 "Sj" = (
 /obj/machinery/atmospherics/component/trinary/mixer/m_mixer{
 	dir = 1;
@@ -7305,6 +8134,28 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
+"SK" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
+"SL" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 4
+	},
+/obj/structure/railing,
+/turf/simulated/floor/lythios43c,
+/area/rift/facility/exterior)
+"SN" = (
+/obj/effect/overlay/snow/floor,
+/obj/random/trash_pile,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/facility/interior/surface)
+"SQ" = (
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/interior/surface)
 "SR" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 9
@@ -7342,6 +8193,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
+"Tg" = (
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/facility/interior/surface)
 "Tk" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -7402,6 +8256,20 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
+"Tw" = (
+/obj/effect/floor_decal/industrial/warning/corner,
+/obj/effect/overlay/snow/floor/edges{
+	dir = 9
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
 "Tx" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -7418,6 +8286,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/rnd/outpost/breakroom)
+"TF" = (
+/obj/effect/overlay/snow/floor/edges,
+/obj/effect/overlay/snow/floor,
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
 "TG" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/black{
 	dir = 4
@@ -7426,6 +8300,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
+"TH" = (
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/interior/elevator)
 "TL" = (
 /obj/structure/catwalk,
 /turf/simulated/open/lythios43c,
@@ -7596,6 +8473,10 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
+"UA" = (
+/obj/random/trash,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
 "UD" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -7622,6 +8503,11 @@
 /obj/item/stack/cable_coil/yellow,
 /turf/simulated/floor/lythios43c,
 /area/tether/outpost/solars_shed)
+"UJ" = (
+/obj/structure/table,
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/lythios43c,
+/area/rift/facility/interior/surface)
 "UT" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -7718,6 +8604,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenoarch_storage)
+"Ve" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/facility/exterior)
 "Vg" = (
 /obj/structure/symbol/em,
 /turf/simulated/wall,
@@ -7753,6 +8645,9 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
+"Vy" = (
+/turf/simulated/shuttle/wall/voidcraft,
+/area/rift/facility/exterior/shuttle)
 "VB" = (
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/purple/bordercorner,
@@ -7791,6 +8686,13 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
+"VL" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 6
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/facility/exterior)
 "VN" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
 	dir = 1
@@ -7865,7 +8767,10 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenoarch_storage)
 "WB" = (
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/obj/effect/overlay/snow/floor/surround_new{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
 "WC" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -7893,6 +8798,23 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
+"WJ" = (
+/obj/machinery/door/airlock/voidcraft{
+	name = "cockpit"
+	},
+/obj/effect/overlay/snow/wall{
+	dir = 4
+	},
+/obj/effect/overlay/snow/wall{
+	dir = 8
+	},
+/obj/effect/overlay/snow/floor,
+/obj/effect/overlay/snow/wall,
+/obj/effect/overlay/snow/wall{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/exterior/shuttle)
 "WO" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
 /turf/simulated/floor/tiled/white,
@@ -7968,6 +8890,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/breakroom)
+"Xf" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/facility/exterior)
 "Xk" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
@@ -8022,6 +8948,11 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
+"Xx" = (
+/obj/effect/overlay/snow/floor,
+/obj/random/obstruction,
+/turf/simulated/floor,
+/area/rift/facility/interior/surface)
 "XA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
@@ -8104,6 +9035,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
+"XV" = (
+/obj/machinery/power/apc/alarms_hidden{
+	dir = 1;
+	chargelevel = 0;
+	cell_type = null
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/interior/elevator)
 "XX" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -8119,6 +9058,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor,
 /area/maintenance/substation/outpost)
+"Yb" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/interior/surface)
 "Yd" = (
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west)
@@ -8132,6 +9078,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/rnd/outpost/breakroom)
+"Yi" = (
+/obj/random/obstruction,
+/turf/simulated/floor,
+/area/rift/facility/interior/surface)
 "Yk" = (
 /obj/machinery/atmospherics/pipe/simple/insulated{
 	dir = 9
@@ -8214,6 +9164,10 @@
 "YU" = (
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
+"YW" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/lythios43c,
+/area/rift/facility/exterior)
 "Zb" = (
 /obj/machinery/door/airlock/science{
 	name = "Toxins Storage"
@@ -8290,6 +9244,9 @@
 /obj/machinery/light,
 /turf/simulated/floor/wood,
 /area/rnd/outpost/breakroom)
+"Zw" = (
+/turf/simulated/open,
+/area/rift/facility/interior/elevator)
 "ZA" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
@@ -8409,56 +9366,56 @@
 /area/rnd/outpost/mixing)
 
 (1,1,1) = {"
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
-HC
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
 HC
 HC
 HC
@@ -8603,60 +9560,60 @@ HC
 fo
 "}
 (2,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+Lw
+Lw
+Lw
+Lw
 sv
 sv
 sv
@@ -8797,60 +9754,60 @@ sv
 HC
 "}
 (3,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+Lw
+Lw
+Lw
+Lw
 sv
 sv
 sv
@@ -8991,59 +9948,59 @@ sv
 HC
 "}
 (4,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+Lw
+Lw
+Lw
 sv
 sv
 sv
@@ -9185,58 +10142,58 @@ sv
 HC
 "}
 (5,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+Lw
+Lw
 sv
 sv
 sv
@@ -9379,57 +10336,57 @@ sv
 HC
 "}
 (6,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+Lw
 sv
 sv
 sv
@@ -9573,56 +10530,56 @@ sv
 HC
 "}
 (7,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
 sv
 sv
 sv
@@ -9767,56 +10724,56 @@ sv
 HC
 "}
 (8,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
 sv
 sv
 sv
@@ -9961,56 +10918,56 @@ sv
 HC
 "}
 (9,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
 sv
 sv
 sv
@@ -10155,56 +11112,56 @@ sv
 HC
 "}
 (10,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+ms
+jE
+jE
 sv
 sv
 sv
@@ -10349,56 +11306,56 @@ sv
 HC
 "}
 (11,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+ms
+jE
+jE
 sv
 sv
 sv
@@ -10543,56 +11500,56 @@ sv
 HC
 "}
 (12,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+ms
+jE
+jE
 sv
 sv
 sv
@@ -10737,56 +11694,56 @@ sv
 HC
 "}
 (13,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+ms
+jE
+jE
 sv
 sv
 sv
@@ -10931,56 +11888,56 @@ sv
 HC
 "}
 (14,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+ms
+jE
+jE
 sv
 sv
 sv
@@ -11125,56 +12082,56 @@ sv
 HC
 "}
 (15,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+Qg
+jE
+jE
 sv
 sv
 sv
@@ -11319,56 +12276,56 @@ sv
 HC
 "}
 (16,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -11513,56 +12470,56 @@ sv
 HC
 "}
 (17,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+CY
+RF
+yp
+Iz
+oR
+Iz
+Bl
+EA
+yp
+HP
+jS
+wC
+jE
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -11707,56 +12664,56 @@ sv
 HC
 "}
 (18,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+Tw
+VL
+Vy
+Vy
+Vy
+Vy
+im
+im
+Vy
+Vy
+Vy
+Qz
+jS
+wC
+jE
+jE
+af
+jE
+jE
 sv
 sv
 sv
@@ -11901,56 +12858,56 @@ sv
 HC
 "}
 (19,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+hA
+hA
+hA
+kp
+kp
+kp
+kp
+kp
+kp
+kp
+Jt
+Jt
+kp
+kp
+zh
+eO
+jE
+jE
+zr
+Vy
+Vy
+Jm
+uk
+Vy
+il
+hy
+KF
+jk
+Vy
+Vy
+sC
+wC
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -12095,56 +13052,56 @@ sv
 HC
 "}
 (20,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+Si
+ai
+ai
+Si
+jg
+OY
+kN
+kN
+SQ
+SQ
+kp
+iV
+kE
+Jl
+iV
+kp
+Xf
+eO
+jE
+jE
+yQ
+HX
+re
+Cy
+TF
+Vy
+yO
+UA
+Le
+Le
+Vy
+Se
+ew
+od
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -12289,56 +13246,56 @@ sv
 HC
 "}
 (21,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+ai
+Zw
+Zw
+tk
+TH
+OY
+kN
+kN
+SQ
+SQ
+PF
+Jl
+Tg
+Tg
+Jl
+Jt
+Xf
+eO
+jE
+jE
+Cc
+HX
+GN
+pr
+hb
+WJ
+pt
+BZ
+UA
+ml
+Vy
+Se
+ap
+wC
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -12483,56 +13440,56 @@ sv
 HC
 "}
 (22,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+ai
+Zw
+Zw
+tk
+TH
+SQ
+RX
+RX
+SQ
+SQ
+SQ
+Jl
+Tg
+Tg
+kE
+Jt
+Xf
+eO
+jE
+jE
+Cc
+HX
+ii
+gM
+mN
+Vy
+GV
+BZ
+wj
+fp
+Vy
+Se
+ew
+od
+jE
+jE
+Qg
+jE
+jE
 sv
 sv
 sv
@@ -12677,56 +13634,56 @@ sv
 HC
 "}
 (23,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+Si
+ai
+ai
+Si
+XV
+SQ
+kA
+SQ
+SQ
+SQ
+kp
+Tg
+Tg
+Tg
+Jl
+kp
+Xf
+eO
+jE
+jE
+sl
+Vy
+Vy
+cd
+cx
+Vy
+sq
+it
+Hm
+fv
+Vy
+Vy
+ap
+wC
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -12871,56 +13828,56 @@ sv
 HC
 "}
 (24,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+hA
+hA
+yE
+Yi
+kp
+Yi
+Yi
+kp
+kp
+fi
+Tg
+Tg
+Tg
+kf
+Xf
+eO
+jE
+jE
+BR
+lG
+Vy
+Vy
+Vy
+Vy
+oI
+oI
+Vy
+Vy
+Vy
+tT
+sP
+wC
+jE
+jE
+af
+jE
+jE
 sv
 sv
 sv
@@ -13065,56 +14022,56 @@ sv
 HC
 "}
 (25,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+Jt
+Jl
+Tg
+Tg
+Tg
+kf
+Xf
+gA
+bY
+Ve
+Ve
+Oa
+sr
+LU
+wY
+Kx
+SK
+SK
+mG
+LU
+sr
+LN
+wC
+jE
+jE
+jE
+jE
+jE
+jE
 sv
 sv
 sv
@@ -13259,56 +14216,56 @@ sv
 HC
 "}
 (26,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+Jt
+kE
+Jl
+Jl
+Tg
+kE
+Xf
+Xf
+Xf
+Xf
+Xf
+Ih
+Xf
+Xf
+Xf
+Xf
+ct
+SL
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+af
+jE
+jE
 sv
 sv
 sv
@@ -13453,56 +14410,56 @@ sv
 HC
 "}
 (27,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+kp
+kp
+kp
+mh
+Jl
+lr
+lr
+Jl
+mh
+kp
+kp
+kp
+kp
+Xf
+Xf
+Xf
+Xf
+Xf
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -13647,56 +14604,56 @@ sv
 HC
 "}
 (28,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+kp
+SN
+Jl
+lr
+lr
+Fa
+gF
+lr
+lr
+Jl
+JW
+SN
+kp
+Jt
+Jt
+kp
+Xf
+Xf
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+Qg
+jE
+jE
 sv
 sv
 sv
@@ -13841,56 +14798,56 @@ sv
 HC
 "}
 (29,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+kp
+Jl
+lr
+gF
+Fa
+Fa
+Fa
+Fa
+Fa
+lr
+Jl
+Jl
+kp
+hI
+Jw
+Jt
+Xf
+Xf
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -14035,56 +14992,56 @@ sv
 HC
 "}
 (30,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+mh
+Jl
+lr
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+lr
+Jl
+JW
+Oe
+SQ
+Yb
+kp
+Xf
+Xf
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -14229,56 +15186,56 @@ sv
 HC
 "}
 (31,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+mh
+lr
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+gF
+lr
+Jl
+kp
+JA
+SQ
+Jt
+fd
+Xf
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -14423,56 +15380,56 @@ sv
 HC
 "}
 (32,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+lr
+gF
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+lr
+kp
+Xx
+In
+kp
+Xf
+Xf
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+af
+jE
+jE
 sv
 sv
 sv
@@ -14617,56 +15574,56 @@ sv
 HC
 "}
 (33,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+lr
+mh
+jV
+vT
+Jt
+Xf
+Xf
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -14811,56 +15768,56 @@ sv
 HC
 "}
 (34,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+gF
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+gF
+lr
+vd
+Jl
+UJ
+kp
+Xf
+Xf
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -15005,56 +15962,56 @@ sv
 HC
 "}
 (35,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+lr
+Jl
+kp
+Jl
+HL
+hV
+Xf
+Xf
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -15199,56 +16156,56 @@ sv
 HC
 "}
 (36,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+lr
+Jl
+kp
+kp
+kp
+kp
+fd
+Xf
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -15393,56 +16350,56 @@ sv
 HC
 "}
 (37,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+gF
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+lr
+Jl
+kp
+Bv
+JW
+hV
+Xf
+Xf
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+Qg
+jE
+jE
 sv
 sv
 sv
@@ -15587,56 +16544,56 @@ sv
 HC
 "}
 (38,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+lr
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+gF
+lr
+Jl
+uX
+JW
+Pf
+uX
+Xf
+Xf
+Xf
+Xf
+Xf
+YW
+YW
+YW
+YW
+YW
+Bx
+jE
+jE
 sv
 sv
 sv
@@ -15781,56 +16738,56 @@ sv
 HC
 "}
 (39,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+Jl
+lr
+gF
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+lr
+Jl
+JW
+uX
+JW
+JW
+uX
+Xf
+Xf
+Xf
+Xf
+Xf
+YW
+YW
+YW
+YW
+YW
+Bx
+jE
+jE
 sv
 sv
 sv
@@ -15975,56 +16932,56 @@ sv
 HC
 "}
 (40,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+kp
+Pf
+lr
+lr
+Fa
+Fa
+Fa
+Fa
+gF
+lr
+JW
+Pf
+hV
+Pf
+dx
+lh
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+Qg
+jE
+jE
 sv
 sv
 sv
@@ -16169,56 +17126,56 @@ sv
 HC
 "}
 (41,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+kp
+kp
+mh
+Jl
+lr
+gF
+Fa
+Fa
+lr
+Jl
+mh
+kp
+kp
+kp
+kp
+kp
+Cx
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -16363,56 +17320,56 @@ sv
 HC
 "}
 (42,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+Fa
+Fa
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -16557,56 +17514,56 @@ sv
 HC
 "}
 (43,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -16751,56 +17708,56 @@ sv
 HC
 "}
 (44,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -16945,56 +17902,56 @@ sv
 HC
 "}
 (45,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -17139,56 +18096,56 @@ sv
 HC
 "}
 (46,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -17333,56 +18290,56 @@ sv
 HC
 "}
 (47,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+Qg
+jE
+jE
 sv
 sv
 sv
@@ -17527,56 +18484,56 @@ sv
 HC
 "}
 (48,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -17721,56 +18678,56 @@ sv
 HC
 "}
 (49,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -17915,56 +18872,56 @@ sv
 HC
 "}
 (50,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -18109,56 +19066,56 @@ sv
 HC
 "}
 (51,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -18303,56 +19260,56 @@ sv
 HC
 "}
 (52,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -18497,56 +19454,56 @@ sv
 HC
 "}
 (53,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -18691,56 +19648,56 @@ sv
 HC
 "}
 (54,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+Qg
+jE
+jE
 sv
 sv
 sv
@@ -18885,56 +19842,56 @@ sv
 HC
 "}
 (55,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -19079,56 +20036,56 @@ sv
 HC
 "}
 (56,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -19273,56 +20230,56 @@ sv
 HC
 "}
 (57,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -19467,56 +20424,56 @@ sv
 HC
 "}
 (58,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -19661,56 +20618,56 @@ sv
 HC
 "}
 (59,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+sY
+jE
+jE
 sv
 sv
 sv
@@ -19855,56 +20812,56 @@ sv
 HC
 "}
 (60,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+km
+ms
+ms
+ms
+ms
+ms
+ms
+Qg
+Gc
+Gc
+Gc
+Gc
+Qg
+Gc
+Gc
+Gc
+Gc
+Qg
+Gc
+sS
+Gc
+Gc
+Gc
+Qg
+Gc
+Gc
+Gc
+Gc
+Qg
+Gc
+Gc
+Gc
+Gc
+Qg
+Gc
+Gc
+Gc
+Gc
+Gc
+Qg
+jE
+jE
 sv
 sv
 sv
@@ -20049,56 +21006,56 @@ sv
 HC
 "}
 (61,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
 sv
 sv
 sv
@@ -20243,56 +21200,56 @@ sv
 HC
 "}
 (62,1,1) = {"
-HC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+OB
+km
+km
+km
+km
+km
+km
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
+jE
 sv
 sv
 sv
@@ -20438,9 +21395,9 @@ HC
 "}
 (63,1,1) = {"
 HC
-sv
-sv
-sv
+Lw
+Lw
+Lw
 sv
 sv
 sv
@@ -33925,7 +34882,7 @@ ek
 ek
 ek
 ek
-Lp
+Zp
 sv
 sv
 sv
@@ -37615,18 +38572,18 @@ sv
 sv
 sv
 sv
-ej
-ej
-ej
-ej
+iJ
+iJ
+iJ
+iJ
 sv
-ej
-ej
-ej
-ej
-ej
-ej
-ej
+iJ
+iJ
+iJ
+iJ
+iJ
+iJ
+iJ
 sv
 sv
 sv
@@ -37808,23 +38765,23 @@ sv
 sv
 sv
 sv
-yX
-WB
-WB
-WB
-WB
-zz
-WB
-WB
-WB
-WB
-WB
-WB
-sa
+tP
+xr
+xr
+xr
+xr
+iK
+xr
+xr
+xr
+xr
+xr
+xr
+eq
 sv
 sv
-hx
-vA
+WB
+xX
 sv
 sv
 Fy
@@ -38001,21 +38958,21 @@ sv
 sv
 sv
 sv
-jQ
-WB
-WB
-WB
-WB
-WB
-WB
-WB
-WB
-WB
-WB
-sa
-bR
-ej
-ej
+Ca
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+eq
+MB
+iJ
+iJ
 ld
 sv
 sv
@@ -38195,28 +39152,28 @@ sv
 sv
 sv
 sv
-jQ
-WB
-WB
-WB
-WB
-WB
-WB
-WB
-sa
-qT
-EA
-zz
-WB
-WB
-dx
+Ca
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+eq
+be
+rY
+iK
+xr
+xr
+Ai
 sv
 sv
-hx
+WB
 oJ
 Px
 sv
-hx
+WB
 oJ
 Px
 sv
@@ -38390,9 +39347,9 @@ UW
 Jf
 Jf
 If
-jB
-jB
-jB
+yS
+yS
+yS
 ZK
 eg
 Jf
@@ -38410,9 +39367,9 @@ eg
 eg
 eg
 vZ
-xr
-xr
-xr
+ry
+ry
+ry
 ZK
 eg
 uC
@@ -38583,11 +39540,11 @@ sv
 sv
 sv
 sv
-jQ
-WB
-WB
-WB
-zn
+Ca
+xr
+xr
+xr
+hx
 sv
 Mv
 je
@@ -38777,11 +39734,11 @@ sv
 sv
 sv
 sv
-jQ
-WB
-WB
-WB
-zn
+Ca
+xr
+xr
+xr
+hx
 sv
 Mv
 je
@@ -38971,11 +39928,11 @@ sv
 sv
 sv
 sv
-jQ
-WB
-WB
-WB
-zn
+Ca
+xr
+xr
+xr
+hx
 sv
 Mv
 je
@@ -39165,11 +40122,11 @@ sv
 sv
 sv
 sv
-jQ
-WB
-WB
-WB
-zn
+Ca
+xr
+xr
+xr
+hx
 sv
 Mv
 je
@@ -39359,11 +40316,11 @@ sv
 sv
 sv
 sv
-jQ
-WB
-WB
-WB
-zn
+Ca
+xr
+xr
+xr
+hx
 sv
 Mv
 je
@@ -39553,11 +40510,11 @@ sv
 sv
 sv
 sv
-jQ
-WB
-WB
-WB
-zn
+Ca
+xr
+xr
+xr
+hx
 sv
 Mv
 je
@@ -39747,11 +40704,11 @@ sv
 sv
 sv
 sv
-jQ
-WB
-WB
-WB
-zn
+Ca
+xr
+xr
+xr
+hx
 sv
 Mv
 je
@@ -39941,11 +40898,11 @@ sv
 sv
 sv
 sv
-jQ
-WB
-WB
-WB
-zn
+Ca
+xr
+xr
+xr
+hx
 sv
 Mv
 je
@@ -40135,11 +41092,11 @@ sv
 sv
 sv
 sv
-jQ
-WB
-WB
-WB
-zn
+Ca
+xr
+xr
+xr
+hx
 sv
 Mv
 je
@@ -40329,11 +41286,11 @@ sv
 sv
 sv
 sv
-jQ
-WB
-WB
-WB
-zn
+Ca
+xr
+xr
+xr
+hx
 sv
 Mv
 je
@@ -40523,11 +41480,11 @@ mp
 sv
 sv
 sv
-jQ
-WB
-WB
-WB
-zn
+Ca
+xr
+xr
+xr
+hx
 sv
 Mv
 je
@@ -40717,11 +41674,11 @@ Yd
 sv
 sv
 sv
-jQ
-WB
-WB
-WB
-zn
+Ca
+xr
+xr
+xr
+hx
 sv
 Mv
 LC
@@ -40911,11 +41868,11 @@ Yd
 sv
 sv
 sv
-jQ
-WB
-WB
-WB
-zn
+Ca
+xr
+xr
+xr
+hx
 sv
 sv
 Me
@@ -41105,11 +42062,11 @@ pn
 sv
 sv
 sv
-jQ
-WB
-WB
-WB
-zn
+Ca
+xr
+xr
+xr
+hx
 sv
 sv
 Me
@@ -41299,11 +42256,11 @@ sv
 sv
 sv
 sv
-jQ
-WB
-WB
-WB
-zn
+Ca
+xr
+xr
+xr
+hx
 sv
 sv
 Me
@@ -41493,11 +42450,11 @@ sv
 sv
 sv
 sv
-jQ
-WB
-WB
-WB
-zn
+Ca
+xr
+xr
+xr
+hx
 sv
 Mv
 PJ
@@ -41687,11 +42644,11 @@ sv
 sv
 sv
 sv
-jQ
+Ca
 uj
 uj
 uj
-zn
+hx
 sv
 Mv
 je
