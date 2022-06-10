@@ -115,7 +115,7 @@ GLOBAL_LIST_BOILERPLATE(all_engine_setup_markers, /obj/effect/engine_setup)
 
 // Tries to locate a pump, enables it, and sets it to MAX. Triggers warning if unable to locate a pump.
 /obj/effect/engine_setup/pump_max
-	name = "Pump Setup Marker
+	name = "Pump Setup Marker"
 
 /obj/effect/engine_setup/pump_max/activate()
 	..()
