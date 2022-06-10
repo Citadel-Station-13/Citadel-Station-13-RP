@@ -36,6 +36,8 @@
 #define reverseList(L) reverseRange(L.Copy())
 /// picks from L, if L is empty, return null
 #define SAFEPICK(L) (length(L)? pick(L) : null)
+/// safe find for L
+#define SAFEFIND(L, S) (length(L)? (L.Find(S)) : null)
 /// safe associative or index access for L
 #define SAFEACCESS(L, I) (isnum(I)? (SAFEINDEXACCESS(L, I)) : ((I in L)? L[I] : null))
 /// safe index access for L

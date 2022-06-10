@@ -1,4 +1,4 @@
-///MARK ALL FLAG CHANGES IN _globals/bitfields.dm!
+///MARK ALL FLAG CHANGES IN _globalvars/bitfields.dm!
 ///All flags should go in here if possible.
 /// For convenience.
 #define ALL (~0)
