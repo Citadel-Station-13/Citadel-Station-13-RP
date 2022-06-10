@@ -103,9 +103,8 @@
 			air_master.mark_zone_update(zone)
 			return zone.air
 		else
-			if(!air)
-				make_air()
 			c_copy_air()
+			zone = null		// immediately detach
 			return air
 	else
 		if(!air)
