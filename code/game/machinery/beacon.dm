@@ -3,7 +3,6 @@
 	icon_state = "floor_beaconf"
 	name = "Bluespace Gigabeacon"
 	desc = "A device that draws power from bluespace and creates a permanent tracking beacon."
-	level = 1		// underfloor
 	layer = UNDER_JUNK_LAYER
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
@@ -12,31 +11,15 @@
 
 /obj/machinery/bluespace_beacon/Initialize(mapload, newdir)
 	. = ..()
-	var/turf/T = src.loc
-	Beacon = new /obj/item/radio/beacon
+	var/turf/T = loc
+	Beacon = new(T)
 	Beacon.invisibility = INVISIBILITY_MAXIMUM
-	Beacon.loc = T
 
-	hide(!T.is_plating())
+	AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE)
 
 /obj/machinery/bluespace_beacon/Destroy()
-	if(Beacon)
-		qdel(Beacon)
-	..()
-
-// update the invisibility and icon
-/obj/machinery/bluespace_beacon/hide(intact)
-	invisibility = intact ? 101 : 0
-	update_icon()
-
-// update the icon_state
-/obj/machinery/bluespace_beacon/update_icon()
-	var/state = "floor_beacon"
-
-	if(invisibility)
-		icon_state = "[state]f"
-	else
-		icon_state = "[state]"
+	QDEL_NULL(Beacon)
+	return ..()
 
 /obj/machinery/bluespace_beacon/process(delta_time)
 	if(!Beacon)
@@ -47,5 +30,3 @@
 	if(Beacon)
 		if(Beacon.loc != src.loc)
 			Beacon.loc = src.loc
-
-	update_icon()

@@ -11,8 +11,6 @@
 
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_SCRUBBER //connects to regular and scrubber pipes
 
-	level = 1
-
 	var/area/initial_loc
 	var/id_tag = null
 	var/frequency = 1439
@@ -172,10 +170,6 @@
 		network.update = 1
 
 	return 1
-
-/obj/machinery/atmospherics/component/unary/vent_scrubber/hide(var/i) //to make the little pipe section invisible, the icon changes.
-	update_icon()
-	update_underlays()
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/receive_signal(datum/signal/signal)
 	if(stat & (NOPOWER|BROKEN))

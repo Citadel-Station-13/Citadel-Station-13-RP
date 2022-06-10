@@ -102,7 +102,7 @@
 	if(overlay_cache.len > OVERLAY_CACHE_LEN)
 		overlay_cache.Cut(1, overlay_cache.len-OVERLAY_CACHE_LEN-1)
 
-/obj/item/t_scanner/proc/get_scanned_objects(var/scan_dist)
+/obj/item/t_scanner/proc/get_scanned_objects(scan_dist)
 	. = list()
 
 	var/turf/center = get_turf(src.loc)
@@ -113,8 +113,6 @@
 			continue
 
 		for(var/obj/O in T.contents)
-			if(O.level != 1)
-				continue
 			if(!O.invisibility)
 				continue //if it's already visible don't need an overlay for it
 			. += O

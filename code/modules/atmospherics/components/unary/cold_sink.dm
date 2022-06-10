@@ -4,19 +4,23 @@
 	desc = "Cools gas when connected to pipe network"
 	icon = 'icons/obj/Cryogenic2.dmi'
 	icon_state = "freezer_0"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_OFF
-	idle_power_usage = 5			// 5 Watts for thermostat related circuitry
+	idle_power_usage = 5 // 5 Watts for thermostat related circuitry
 	circuit = /obj/item/circuitboard/unary_atmos/cooler
 
-	var/heatsink_temperature = T20C	// The constant temperature reservoir into which the freezer pumps heat. Probably the hull of the station or something.
-	var/internal_volume = 600		// L
+	/// The constant temperature reservoir into which the freezer pumps heat. Probably the hull of the station or something.
+	var/heatsink_temperature = T20C
+	/// Volume in Liters
+	var/internal_volume = 600
 
-	var/max_power_rating = 20000	// Power rating when the usage is turned up to 100
+	/// Power rating when the usage is turned up to 100.
+	var/max_power_rating = 20000
 	var/power_setting = 100
 
-	var/set_temperature = T20C		// Thermostat
+	/// Thermostat.
+	var/set_temperature = T20C
 	var/cooling = 0
 
 /obj/machinery/atmospherics/component/unary/freezer/Initialize(mapload)

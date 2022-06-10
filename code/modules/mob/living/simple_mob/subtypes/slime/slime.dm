@@ -59,6 +59,8 @@
 	speak_emote = list("chirps")
 	friendly = list("pokes")
 
+	can_enter_vent_with = list(/obj/item/clothing/head)
+
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 	say_list_type = /datum/say_list/slime
 
@@ -71,7 +73,6 @@
 	var/injection_amount = 5 // This determines how much.
 	var/mood = ":3" // Icon to use to display 'mood', as an overlay.
 
-	can_enter_vent_with = list(/obj/item/clothing/head)
 
 /datum/say_list/slime
 	speak = list("Blorp...", "Blop...")
@@ -84,6 +85,9 @@
 	glow_color = color
 	handle_light()
 	update_icon()
+
+	AddComponent(/datum/component/footstep, FOOTSTEP_MOB_SLIME, 7.5)
+
 	return ..()
 
 /mob/living/simple_mob/slime/Destroy()

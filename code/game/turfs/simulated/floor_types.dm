@@ -148,7 +148,7 @@
 
 /turf/simulated/shuttle/plating
 	name = "plating"
-	icon = 'icons/turf/floors.dmi'
+	icon = 'icons/turf/floors_old.dmi'
 	icon_state = "plating"
 
 /turf/simulated/shuttle/plating/airless

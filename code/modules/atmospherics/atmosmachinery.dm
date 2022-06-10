@@ -37,6 +37,9 @@ Pipelines + Other Objects -> Pipe network
 	///Bitflag of the initialized directions (NORTH | SOUTH | EAST | WEST)
 	var/initialize_directions = 0
 
+	///The type of the device (UNARY, BINARY, TRINARY, QUATERNARY)
+	var/device_type = NONE
+
 	var/nodealert = 0 //Apparently this is used only for plumbing or something???
 
 	var/global/datum/pipe_icon_manager/icon_manager
@@ -91,9 +94,9 @@ Pipelines + Other Objects -> Pipe network
 		return
 	..()
 
-/obj/machinery/atmospherics/proc/add_underlay(var/turf/T, var/obj/machinery/atmospherics/node, var/direction, var/icon_connect_type)
+/obj/machinery/atmospherics/proc/add_underlay(turf/T, obj/machinery/atmospherics/node, direction, icon_connect_type)
 	if(node)
-		if(!T.is_plating() && node.level == 1 && istype(node, /obj/machinery/atmospherics/pipe))
+		if(!T.is_plating() && istype(node, /obj/machinery/atmospherics/pipe))
 			//underlays += icon_manager.get_atmos_icon("underlay_down", direction, color_cache_name(node))
 			underlays += icon_manager.get_atmos_icon("underlay", direction, color_cache_name(node), "down" + icon_connect_type)
 		else
@@ -109,7 +112,7 @@ Pipelines + Other Objects -> Pipe network
 	else
 		return 0
 
-/obj/machinery/atmospherics/proc/check_icon_cache(var/safety = 0)
+/obj/machinery/atmospherics/proc/check_icon_cache(safety = FALSE)
 	if(!istype(icon_manager))
 		if(!safety) //to prevent infinite loops
 			icon_manager = new()
@@ -187,9 +190,6 @@ Pipelines + Other Objects -> Pipe network
 /obj/machinery/atmospherics/proc/on_construction(obj_color, set_layer)
 	pipe_color = obj_color
 	setPipingLayer(set_layer)
-	// TODO - M.connect_types = src.connect_types - Or otherwise copy from item? Or figure it out from piping layer?
-	var/turf/T = get_turf(src)
-	level = !T.is_plating() ? 2 : 1
 	atmos_init()
 	if(QDELETED(src))
 		return // TODO - Eventually should get rid of the need for this.

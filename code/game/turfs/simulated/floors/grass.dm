@@ -2,6 +2,36 @@ var/list/grass_types = list(
 
 )
 
+/turf/simulated/floor/grass
+	name = "grass"
+	desc = "A patch of grass."
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "grass0"
+	base_icon_state = "grass"
+	footstep = FOOTSTEP_GRASS
+	barefootstep = FOOTSTEP_GRASS
+	clawfootstep = FOOTSTEP_GRASS
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_TURF_OPEN, SMOOTH_GROUP_FLOOR_GRASS)
+	canSmoothWith = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_FLOOR_GRASS)
+	layer = ABOVE_TURF_LAYER
+	var/smooth_icon = 'icons/turf/floors/grass.dmi'
+
+	initial_flooring = /decl/flooring/grass
+
+/turf/simulated/floor/grass/break_tile()
+	. = ..()
+	icon_state = "damaged"
+
+/turf/simulated/floor/grass/Initialize(mapload)
+	. = ..()
+	if(smoothing_flags)
+		var/matrix/translation = new
+		translation.Translate(-9, -9)
+		transform = translation
+		icon = smooth_icon
+
 /turf/simulated/floor/outdoors/grass
 	name = "grass"
 	icon_state = "grass"

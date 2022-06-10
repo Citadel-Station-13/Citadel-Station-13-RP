@@ -6,7 +6,7 @@
 		make_plating()
 	break_tile()
 
-/turf/simulated/floor/proc/break_tile()
+/turf/simulated/floor/break_tile()
 	if(!flooring || !(flooring.flags & TURF_CAN_BREAK) || !isnull(broken))
 		return
 	if(flooring.has_damage_range)
@@ -15,7 +15,7 @@
 		broken = 0
 	update_appearance()
 
-/turf/simulated/floor/proc/burn_tile(var/exposed_temperature)
+/turf/simulated/floor/burn_tile(var/exposed_temperature)
 	if(!flooring || !(flooring.flags & TURF_CAN_BURN) || !isnull(burnt))
 		return
 	if(flooring.has_burn_range)

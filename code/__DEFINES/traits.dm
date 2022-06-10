@@ -173,9 +173,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 */
 #define TRAIT_NODROP            "nodrop"
 #define TRAIT_DISRUPTED			"disrupted"
-/*
+
 /// Visible on t-ray scanners if the atom/var/level == 1
 #define TRAIT_T_RAY_VISIBLE     "t-ray-visible"
+/*
 ///you just can't
 #define TRAIT_NO_TELEPORT		"no-teleport"
 //quirk traits
@@ -283,3 +284,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define FROGENITE_TRAIT "frogenite"
 #define FERVEATIUM_TRAIT "ferveatium"
 */
+
+/// Trait applied by element
+#define ELEMENT_TRAIT(source) "element_trait_[source]"

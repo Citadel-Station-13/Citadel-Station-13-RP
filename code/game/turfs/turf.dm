@@ -1,59 +1,60 @@
 /// Any floor or wall. What makes up the station and the rest of the map.
 /turf
-	icon = 'icons/turf/floors.dmi'
+	icon = 'icons/turf/floors_old.dmi'
 	layer = TURF_LAYER
 	plane = TURF_PLANE
 	luminosity = 1
-	level = 1
 
-	/// turf flags
+//! Turf Bitflags
 	var/turf_flags = NONE
 
-	var/holy = 0
+	/// If there's a tile over a basic floor that can be ripped out
+	var/overfloor_placed = FALSE
+	/// How accessible underfloor pieces such as wires, pipes, etc are on this turf. Can be HIDDEN, VISIBLE, or INTERACTABLE.
+	var/underfloor_accessibility = UNDERFLOOR_HIDDEN
 
-	// Atmospherics / ZAS Environmental
+//! ## Atmospherics / ZAS Environmental
 	/// Initial air contents, as a specially formatted gas string.
 	var/initial_gas_mix = GAS_STRING_TURF_DEFAULT
 	// End
 
-	// Properties for airtight tiles (/wall)
+//! ## Properties for airtight tiles (/wall)
 	var/thermal_conductivity = 0.05
 	var/heat_capacity = 1
 
-	// Properties for both
+//!! ## Properties for both
 	/// Initial turf temperature.
 	var/temperature = T20C
 	/// Does this turf contain air/let air through?
 	var/blocks_air = FALSE
 
-	/**
-	 * Baseturfs
-	 */
-	// baseturfs can be either a list or a single turf type.
-	// In class definition like here it should always be a single type.
-	// A list will be created in initialization that figures out the baseturf's baseturf etc.
-	// In the case of a list it is sorted from bottom layer to top.
-	// This shouldn't be modified directly, use the helper procs.
-	var/list/baseturfs = /turf/baseturf_bottom
-	/// are we mid changeturf?
-	var/changing_turf = FALSE
-	// End
 
+//! ## Baseturfs
 	/**
-	 * Automata
+	 * Baseturfs can be either a list or a single turf type.
+	 * In class definition like here it should always be a single type.
+	 * A list will be created in initialization that figures out the baseturf's baseturf etc.
+	 * In the case of a list it is sorted from bottom layer to top.
+	 * This shouldn't be modified directly, use the helper procs.
 	 */
+	var/list/baseturfs = /turf/baseturf_bottom
+	/// Are we mid changeturf?
+	var/changing_turf = FALSE
+
+//! ## Automata
 	/// acted automata - automata associated to power, act_cross() will be called when something enters us while this is set
 	var/list/acting_automata
 
 	/// Icon-smoothing variable to map a diagonal wall corner with a fixed underlay.
 	var/list/fixed_underlay = null
 
-	// General properties.
+//! ## General Properties
 	var/icon_old = null
 	/// How much does it cost to pathfind over this turf?
 	var/pathweight = 1
 	/// Has the turf been blessed?
 	var/blessed = FALSE
+	var/holy = FALSE
 
 	var/list/decals
 
@@ -73,6 +74,12 @@
 	var/list/dangerous_objects
 	/// For if you explicitly want a turf to not be affected by shield generators
 	var/noshield = FALSE
+
+//! ## Footstep Vars
+	var/footstep = null
+	var/barefootstep = null
+	var/clawfootstep = null
+	var/heavyfootstep = null
 
 /turf/vv_edit_var(var_name, new_value)
 	var/static/list/banned_edits = list(NAMEOF(src, x), NAMEOF(src, y), NAMEOF(src, z))
@@ -263,7 +270,8 @@
 
 /turf/proc/levelupdate()
 	for(var/obj/O in src)
-		O.hide(O.hides_under_flooring() && !is_plating())
+		if(O.flags & INITIALIZED)
+			SEND_SIGNAL(O, COMSIG_OBJ_HIDE, underfloor_accessibility < UNDERFLOOR_VISIBLE)
 
 /turf/proc/AdjacentTurfs(var/check_blockage = TRUE)
 	. = list()
@@ -396,4 +404,10 @@
 	return
 // We were the the B-side in a turf translation
 /turf/proc/post_translate_B(var/turf/A)
+	return
+
+/turf/proc/burn_tile()
+	return
+
+/turf/proc/break_tile()
 	return

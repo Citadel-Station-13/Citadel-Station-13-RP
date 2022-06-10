@@ -12,7 +12,6 @@
 	var/atmosalm = 0
 	var/poweralm = 1
 	var/party = null
-	level = null
 	name = "Unknown"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "unknown"

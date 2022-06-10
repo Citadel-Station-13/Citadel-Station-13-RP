@@ -10,7 +10,6 @@
 	active_power_usage = 500	// Previously 2000
 	anchored = TRUE
 	density = FALSE
-	level = 1
 	var/alarm = FALSE
 	var/enabled = TRUE
 
@@ -21,17 +20,7 @@
 		circuit = new circuit(src)
 	default_apply_parts()
 
-	var/turf/T = get_turf(src)
-	hide(!T.is_plating())
-
-//If underfloor, hide the cable^H^H diffuser
-/obj/machinery/shield_diffuser/hide(var/i)
-	if(istype(loc, /turf))
-		invisibility = i ? 101 : 0
-	update_icon()
-
-/obj/machinery/shield_diffuser/hides_under_flooring()
-	return TRUE
+	AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE, use_alpha = TRUE)
 
 /obj/machinery/shield_diffuser/process(delta_time)
 	if(alarm)

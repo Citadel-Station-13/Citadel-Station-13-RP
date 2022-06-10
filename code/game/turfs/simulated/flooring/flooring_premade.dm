@@ -93,12 +93,6 @@
 	break_tile()
 	return ..()
 
-/turf/simulated/floor/grass
-	name = "grass patch"
-	icon = 'icons/turf/flooring/grass.dmi'
-	icon_state = "grass0"
-	initial_flooring = /decl/flooring/grass
-
 /turf/simulated/floor/tiled
 	name = "floor"
 	icon = 'icons/turf/flooring/tiles.dmi'
@@ -442,10 +436,6 @@
 /turf/simulated/floor/beach/water/ocean
 */
 /turf/simulated/floor/airless/ceiling
-/turf/simulated/floor/plating
-
-/turf/simulated/floor/plating/external
-	outdoors = TRUE
 
 /turf/simulated/floor/tiled/external
 	outdoors = TRUE

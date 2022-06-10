@@ -44,8 +44,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	))
 
 /obj/structure/cable
-	level = 1
-	anchored =1
+	anchored = TRUE
 	var/datum/powernet/powernet
 	name = "power cable"
 	desc = "A flexible superconducting cable for heavy-duty power transfer."
@@ -81,12 +80,11 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		d1 = text2num( copytext( icon_state, 1, dash ) )
 		d2 = text2num( copytext( icon_state, dash+1 ) )
 
-	var/turf/T = src.loc			// hide if turf is not intact
-	if(level==1)
-		hide(!T.is_plating())
 	cable_list += src //add it to the global cable list
 	if(auto_merge)
 		auto_merge()
+
+	AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE)
 
 // cable refactor when
 /obj/structure/cable/proc/auto_merge()
@@ -121,11 +119,11 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 /obj/structure/cable/white
 	color = COLOR_WHITE
 
-/obj/structure/cable/Destroy()					// called when a cable is deleted
+/obj/structure/cable/Destroy() // called when a cable is deleted
 	if(powernet)
-		cut_cable_from_powernet()				// update the powernets
-	cable_list -= src							//remove it from global cable list
-	return ..()									// then go ahead and delete the cable
+		cut_cable_from_powernet() // update the powernets
+	cable_list -= src //remove it from global cable list
+	return ..() // then go ahead and delete the cable
 
 // Ghost examining the cable -> tells him the power
 /obj/structure/cable/attack_ghost(mob/user)
@@ -133,9 +131,9 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	if(user.client?.inquisitive_ghost)
 		// following code taken from attackby (multitool)
 		if(powernet && (powernet.avail > 0))
-			to_chat(user, "<span class='warning'>[render_power(powernet.avail, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT)] in power network.</span>")
+			to_chat(user, SPAN_WARNING("[render_power(powernet.avail, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT)] in power network."))
 		else
-			to_chat(user, "<span class='warning'>The cable is not powered.</span>")
+			to_chat(user, SPAN_WARNING("The cable is not powered."))
 
 // Rotating cables requires d1 and d2 to be rotated
 /obj/structure/cable/setDir(new_dir)
@@ -171,16 +169,9 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 // General procedures
 ///////////////////////////////////
 
-//If underfloor, hide the cable
-/obj/structure/cable/hide(var/i)
-	if(istype(loc, /turf))
-		invisibility = i ? 101 : 0
-	update_icon()
 
-/obj/structure/cable/hides_under_flooring()
-	return 1
-
-/obj/structure/cable/update_icon()
+/obj/structure/cable/update_icon_state()
+	. = ..()
 	icon_state = "[d1]-[d2]"
 	alpha = invisibility ? 127 : 255
 

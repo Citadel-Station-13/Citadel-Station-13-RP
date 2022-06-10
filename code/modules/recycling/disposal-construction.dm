@@ -7,11 +7,10 @@
 	desc = "A huge pipe segment used for constructing disposal systems."
 	icon = 'icons/obj/pipes/disposal.dmi'
 	icon_state = "conpipe-s"
-	anchored = 0
-	density = 0
+	anchored = FALSE
+	density = FALSE
 	pressure_resistance = 5*ONE_ATMOSPHERE
 	matter = list(MAT_STEEL = 1850)
-	level = 2
 	var/sortType = ""
 	var/ptype = 0
 	var/subtype = 0
@@ -44,6 +43,8 @@
 		do_a_flip()
 	else
 		update() // do_a_flip() calls update anyway, so, lazy way of catching unupdated pipe!
+
+	AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE, use_alpha = TRUE)
 
 // update iconstate and dpdir due to dir and type
 /obj/structure/disposalconstruct/proc/update()
@@ -119,13 +120,6 @@
 	else
 		alpha = 255
 		//otherwise burying half-finished pipes under floors causes them to half-fade
-
-// hide called by levelupdate if turf intact status changes
-// change visibility status and force update of icon
-/obj/structure/disposalconstruct/hide(var/intact)
-	invisibility = (intact && level==1) ? 101: 0	// hide if floor is intact
-	update()
-
 
 // flip and rotate verbs
 /obj/structure/disposalconstruct/verb/rotate()
@@ -258,12 +252,11 @@
 
 	if(I.is_wrench())
 		if(anchored)
-			anchored = 0
+			anchored = FALSE
 			if(ispipe)
-				level = 2
-				density = 0
+				density = FALSE
 			else
-				density = 1
+				density = TRUE
 			to_chat(user, "You detach the [nicetype] from the underfloor.")
 		else
 			if(ptype == DISPOSAL_PIPE_BIN || ptype == DISPOSAL_PIPE_OUTLET || ptype == DISPOSAL_PIPE_CHUTE) // Disposal or outlet
@@ -284,12 +277,11 @@
 						to_chat(user, "There is already a [nicetype] at that location.")
 						return
 
-			anchored = 1
+			anchored = TRUE
 			if(ispipe)
-				level = 1 // We don't want disposal bins to disappear under the floors
-				density = 0
+				density = FALSE
 			else
-				density = 1 // We don't want disposal bins or outlets to go density 0
+				density = TRUE // We don't want disposal bins or outlets to go density 0
 			to_chat(user, "You attach the [nicetype] to the underfloor.")
 		playsound(loc, I.usesound, 100, 1)
 		update()
@@ -312,7 +304,6 @@
 						P.base_icon_state = base_state
 						P.setDir(dir)
 						P.dpdir = dpdir
-						P.updateicon()
 
 						//Needs some special treatment ;)
 						if(ptype==DISPOSAL_PIPE_SORTER || ptype==DISPOSAL_PIPE_SORTER_FLIPPED)
@@ -349,12 +340,6 @@
 		else
 			to_chat(user, "You need to attach it to the plating first!")
 			return
-
-/obj/structure/disposalconstruct/hides_under_flooring()
-	if(anchored)
-		return 1
-	else
-		return 0
 
 /obj/structure/disposalconstruct/proc/is_pipe()
 	return (ptype != DISPOSAL_PIPE_BIN && ptype != DISPOSAL_PIPE_OUTLET && ptype != DISPOSAL_PIPE_CHUTE)

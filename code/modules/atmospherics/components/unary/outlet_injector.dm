@@ -22,8 +22,6 @@
 	var/id = null
 	var/datum/radio_frequency/radio_connection
 
-	level = 1
-
 /obj/machinery/atmospherics/component/unary/outlet_injector/Initialize(mapload)
 	. = ..()
 	air_contents.volume = ATMOS_DEFAULT_VOLUME_PUMP + 500	//Give it a small reservoir for injecting. Also allows it to have a higher flow rate limit than vent pumps, to differentiate injectors a bit more.
@@ -193,9 +191,6 @@
 	spawn(2)
 		broadcast_status()
 	update_icon()
-
-/obj/machinery/atmospherics/component/unary/outlet_injector/hide(var/i)
-	update_underlays()
 
 /obj/machinery/atmospherics/component/unary/outlet_injector/attack_hand(mob/user as mob)
 	ui_interact(user)

@@ -169,7 +169,6 @@ obj/structure/safe/ex_act(severity)
 	name = "floor safe"
 	icon_state = "floorsafe"
 	density = 0
-	level = 1	//underfloor
 	plane = TURF_PLANE
 	layer = ABOVE_UTILITY
 

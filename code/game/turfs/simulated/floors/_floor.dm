@@ -1,27 +1,40 @@
 /turf/simulated/floor
-	name = "plating"
-	desc = "Unfinished flooring."
-	icon = 'icons/turf/flooring/plating.dmi'
-	icon_state = "plating"
-	smoothing_flags = SMOOTH_CUSTOM
-	base_icon_state = "plating"
-	thermal_conductivity = 0.040
+	name = "floor"
+	icon = 'icons/turf/floors.dmi'
+	base_icon_state = "floor"
+	baseturfs = /turf/simulated/floor/plating
+
+	footstep = FOOTSTEP_FLOOR
+	barefootstep = FOOTSTEP_HARD_BAREFOOT
+	clawfootstep = FOOTSTEP_HARD_CLAW
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	// flags = NO_SCREENTIPS
+	// turf_flags = CAN_BE_DIRTY | IS_SOLID
+
+	smoothing_groups = list(SMOOTH_GROUP_TURF_OPEN, SMOOTH_GROUP_OPEN_FLOOR)
+	canSmoothWith = list(SMOOTH_GROUP_OPEN_FLOOR, SMOOTH_GROUP_TURF_OPEN)
+
+
+	thermal_conductivity = 0.04
 	heat_capacity = 10000
+	// tiled_dirt = TRUE
+
+	// overfloor_placed = TRUE
 
 	// Damage to flooring.
-	var/broken
-	var/burnt
+	var/broken = FALSE
+	var/burnt = FALSE
+	/// Path of the tile that this floor drops
+	var/floor_tile = null
+	var/list/broken_states
+	var/list/burnt_states
+
+
 
 	// Plating data.
 	var/base_name = "plating"
 	var/base_desc = "The naked hull."
 	var/base_icon = 'icons/turf/flooring/plating.dmi'
-	var/static/list/base_footstep_sounds = list("human" = list(
-		'sound/effects/footstep/plating1.ogg',
-		'sound/effects/footstep/plating2.ogg',
-		'sound/effects/footstep/plating3.ogg',
-		'sound/effects/footstep/plating4.ogg',
-		'sound/effects/footstep/plating5.ogg'))
 
 	var/list/old_decals = null // Remember what decals we had between being pried up and replaced.
 
@@ -38,14 +51,15 @@
 	. = ..()
 	if(!floortype && initial_flooring)
 		floortype = initial_flooring
+
 	if(floortype)
 		set_flooring(get_flooring_data(floortype), TRUE)
-	else
-		footstep_sounds = base_footstep_sounds
+
 	if(mapload && can_dirty && can_start_dirty)
 		if(prob(dirty_prob))
 			dirt += rand(50,100)
 			update_dirt() //5% chance to start with dirt on a floor tile- give the janitor something to do
+
 	if(outdoors)
 		SSplanets.addTurf(src)
 
@@ -90,38 +104,19 @@
 		QUEUE_SMOOTH_NEIGHBORS(src)
 	levelupdate()
 
-//This proc will set floor_type to null and the update_icon() proc will then change the icon_state of the turf
-//This proc auto corrects the grass tiles' siding.
-/turf/simulated/floor/proc/make_plating(place_product, defer_icon_update, strip_bare)
+/// Things seem to rely on this actually returning plating. Override it if you have other baseturfs.
+/turf/simulated/floor/proc/make_plating(force = FALSE)
+	return ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 
-	if(flooring)
-		// We are flooring switching to plating, swap out old_decals for decals.
-		var/list/underfloor_decals = old_decals
-		old_decals = decals
-		decals = underfloor_decals
+/turf/simulated/floor/break_tile()
+	if(broken)
+		return
+	icon_state = pick(broken_states)
+	broken = TRUE
 
-		if(place_product)
-			flooring.drop_product(src)
-		var/newtype = flooring.get_plating_type()
-		if(newtype && !strip_bare) // Has a custom plating type to become
-			set_flooring(get_flooring_data(newtype))
-		else
-			flooring = null
-			// this branch is only if we don't set flooring because otherwise it'll do it for us
-			if(!defer_icon_update)
-				name = base_name
-				desc = base_desc
-				icon = base_icon
-				icon_state = base_icon_state
-				footstep_sounds = base_footstep_sounds
-				QUEUE_SMOOTH(src)
-				QUEUE_SMOOTH_NEIGHBORS(src)
-				levelupdate()
-
-	broken = null
-	burnt = null
-	flooring_override = null
-
+///For when the floor is placed under heavy load. Calls break_tile(), but exists to be overridden by floor types that should resist crushing force.
+/turf/simulated/floor/proc/crush()
+	break_tile()
 
 /turf/simulated/floor/levelupdate()
 	for(var/obj/O in src)

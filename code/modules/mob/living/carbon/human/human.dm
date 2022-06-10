@@ -49,6 +49,7 @@
 	hydration = rand(200,400)
 
 	AddComponent(/datum/component/personal_crafting)
+	AddComponent(/datum/component/footstep, FOOTSTEP_MOB_HUMAN, 1, 2)
 
 	human_mob_list |= src
 

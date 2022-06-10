@@ -7,31 +7,22 @@
 	name = "terminal"
 	icon_state = "term"
 	desc = "It's an underfloor wiring terminal for power equipment."
-	level = 1
 	var/obj/machinery/power/master = null
-	anchored = 1
+	anchored = TRUE
 	plane = PLATING_PLANE
 	layer = WIRES_LAYER+0.01
 
 
 /obj/machinery/power/terminal/Initialize(mapload, newdir)
 	. = ..()
-	var/turf/T = src.loc
-	if(level==1)
-		hide(!T.is_plating())
+
+	AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE, use_alpha = TRUE)
 
 /obj/machinery/power/terminal/Destroy()
 	if(master)
 		master.disconnect_terminal()
 		master = null
 	return ..()
-
-/obj/machinery/power/terminal/hide(var/i)
-	invisibility = i ? 101 : 0
-	icon_state = i ? "term-f" : "term"
-
-/obj/machinery/power/terminal/hides_under_flooring()
-	return 1
 
 // Needed so terminals are not removed from machines list.
 // Powernet rebuilds need this to work properly.

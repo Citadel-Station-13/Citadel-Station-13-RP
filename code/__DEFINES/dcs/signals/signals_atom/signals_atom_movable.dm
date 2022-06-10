@@ -69,7 +69,7 @@
 /// Called when movable is expelled from a disposal pipe, bin or outlet on obj/pipe_eject: (direction)
 ////#define COMSIG_MOVABLE_PIPE_EJECTING "movable_pipe_ejecting"
 /// Called when the movable sucessfully has it's anchored var changed, from base atom/movable/set_anchored(): (value)
-////#define COMSIG_MOVABLE_SET_ANCHORED "movable_set_anchored"
+#define COMSIG_MOVABLE_SET_ANCHORED "movable_set_anchored"
 /// From base of atom/movable/setGrabState(): (newstate)
 ////#define COMSIG_MOVABLE_SET_GRAB_STATE "living_set_grab_state"
 /// Called when the movable tries to change its dynamic light color setting, from base atom/movable/lighting_overlay_set_color(): (color)

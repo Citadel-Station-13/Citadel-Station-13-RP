@@ -17,9 +17,8 @@
 
 	var/datum/pipe_network/network
 
-	var/on = 0
+	var/on = FALSE
 	use_power = USE_POWER_OFF
-	level = 1
 
 /obj/machinery/atmospherics/portables_connector/fuel
 	icon_state = "map_connector-fuel"
@@ -49,19 +48,16 @@
 			return
 		add_underlay(T, node, dir, node?.icon_connect_type)
 
-/obj/machinery/atmospherics/portables_connector/hide(var/i)
-	update_underlays()
-
 /obj/machinery/atmospherics/portables_connector/process(delta_time)
 	..()
 	if(!on)
 		return
 	if(!connected_device)
-		on = 0
+		on = FALSE
 		return
 	if(network)
-		network.update = 1
-	return 1
+		network.update = TRUE
+	return TRUE
 
 // Housekeeping and pipe network stuff below
 /obj/machinery/atmospherics/portables_connector/get_neighbor_nodes_for_init()

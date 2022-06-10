@@ -6,23 +6,25 @@
 	name = "Air Scrubber"
 	desc = "Has a valve and pump attached to it"
 	use_power = USE_POWER_OFF
-	idle_power_usage = 150		//internal circuitry, friction losses and stuff
-	power_rating = 7500			//7500 W ~ 10 HP
+	idle_power_usage = 150 //internal circuitry, friction losses and stuff
+	power_rating = 7500 //7500 W ~ 10 HP
 
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_SCRUBBER //connects to regular and scrubber pipes
-
-	level = 1
 
 	var/area/initial_loc
 	var/id_tag = null
 	var/frequency = 1439
 	var/datum/radio_frequency/radio_connection
 
-	var/hibernate = 0 //Do we even process?
-	var/scrubbing = 1 //0 = siphoning, 1 = scrubbing
-	var/list/scrubbing_gas = list(/datum/gas/carbon_dioxide)
+	/// Do we even process?
+	var/hibernate = FALSE
+	/// 0 = siphoning, 1 = scrubbing
+	var/scrubbing = TRUE\
+	/// What gases do we scrub by default.
+	var/list/scrubbing_gas = list(/datum/gas/carbon_dioxide, /datum/gas/phoron)
 
-	var/panic = 0 //is this scrubber panicked?
+	/// Is this scrubber panicked?
+	var/panic = FALSE
 
 	var/area_uid
 	var/radio_filter_out
@@ -84,7 +86,7 @@
 		var/turf/T = get_turf(src)
 		if(!istype(T))
 			return
-		if(!T.is_plating() && node && node.level == 1 && istype(node, /obj/machinery/atmospherics/pipe))
+		if(!T.is_plating() && node && istype(node, /obj/machinery/atmospherics/pipe))
 			return
 		else
 			if(node)
@@ -172,10 +174,6 @@
 		network.update = 1
 
 	return 1
-
-/obj/machinery/atmospherics/component/unary/vent_scrubber/hide(var/i) //to make the little pipe section invisible, the icon changes.
-	update_icon()
-	update_underlays()
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/receive_signal(datum/signal/signal)
 	if(machine_stat & (NOPOWER|BROKEN))
@@ -267,26 +265,26 @@
 	if(old_stat != machine_stat)
 		update_icon()
 
-/obj/machinery/atmospherics/component/unary/vent_scrubber/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/component/unary/vent_scrubber/attackby(obj/item/W as obj, mob/user as mob)
 	if (!W.is_wrench())
 		return ..()
 	if (!(machine_stat & NOPOWER) && use_power)
-		to_chat(user, "<span class='warning'>You cannot unwrench \the [src], turn it off first.</span>")
-		return 1
+		to_chat(user, SPAN_WARNING("You cannot unwrench \the [src], turn it off first."))
+		return TRUE
 	var/turf/T = src.loc
-	if (node && node.level==1 && isturf(T) && !T.is_plating())
-		to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
-		return 1
+	if (node && isturf(T) && !T.is_plating())
+		to_chat(user, SPAN_WARNING("You must remove the plating first."))
+		return TRUE
 	if(unsafe_pressure())
-		to_chat(user, "<span class='warning'>You feel a gust of air blowing in your face as you try to unwrench [src]. Maybe you should reconsider..</span>")
+		to_chat(user,  SPAN_WARNING("You feel a gust of air blowing in your face as you try to unwrench [src]. Maybe you should reconsider..."))
 	add_fingerprint(user)
 	playsound(src, W.usesound, 50, 1)
-	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
+	to_chat(user, SPAN_NOTICE("You begin to unfasten \the [src]..."))
 	if (do_after(user, 40 * W.toolspeed))
 		user.visible_message( \
-			"<span class='notice'>\The [user] unfastens \the [src].</span>", \
-			"<span class='notice'>You have unfastened \the [src].</span>", \
-			"You hear a ratchet.")
+			SPAN_NOTICE("\The [user] unfastens \the [src]."), \
+			SPAN_NOTICE("You have unfastened \the [src]."), \
+			SPAN_HEAR("You hear a ratchet."))
 		deconstruct()
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/examine(mob/user)

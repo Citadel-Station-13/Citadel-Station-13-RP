@@ -7,21 +7,21 @@
 	icon = 'icons/obj/machines/algae_vr.dmi'
 	icon_state = "algae-off"
 	circuit = /obj/item/circuitboard/algae_farm
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	power_channel = EQUIP
 	use_power = USE_POWER_IDLE
-	idle_power_usage = 100		// Minimal lights to keep algae alive
-	active_power_usage = 5000	// Powerful grow lights to stimulate oxygen production
-	//power_rating = 7500			//7500 W ~ 10 HP
+	idle_power_usage = 100 // Minimal lights to keep algae alive
+	active_power_usage = 5000 // Powerful grow lights to stimulate oxygen production
+	//power_rating = 7500 //7500 W ~ 10 HP
 	pipe_flags = PIPING_DEFAULT_LAYER_ONLY|PIPING_ONE_PER_TURF
 
 	var/list/stored_material =  list(MATERIAL_ALGAE = 0, MATERIAL_CARBON = 0)
-	// Capacity increases with matter bin quality
+	/// Capacity increases with matter bin quality
 	var/list/storage_capacity = list(MATERIAL_ALGAE = 10000, MATERIAL_CARBON = 10000)
-	// Speed at which we convert CO2 to O2.  Increases with manipulator quality
+	/// Speed at which we convert CO2 to O2.  Increases with manipulator quality
 	var/moles_per_tick = 1
-	// Power required to convert one mole of CO2 to O2 (this is powering the grow lights).  Improves with capacitors
+	/// Power required to convert one mole of CO2 to O2 (this is powering the grow lights).  Improves with capacitors
 	var/power_per_mole = 1000
 	var/algae_per_mole = 2
 	var/carbon_per_mole = 2

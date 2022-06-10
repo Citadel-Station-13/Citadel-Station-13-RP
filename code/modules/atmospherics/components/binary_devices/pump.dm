@@ -17,7 +17,6 @@ Thus, the two variables affect pump operation are set in New():
 	icon_state = "map_off"
 	construction_type = /obj/item/pipe/directional
 	pipe_state = "pump"
-	level = 1
 	var/base_icon = "pump"
 
 	name = "gas pump"
@@ -115,9 +114,6 @@ Thus, the two variables affect pump operation are set in New():
 			return
 		add_underlay(T, node1, turn(dir, -180), node1?.icon_connect_type)
 		add_underlay(T, node2, dir, node2?.icon_connect_type)
-
-/obj/machinery/atmospherics/component/binary/pump/hide(var/i)
-	update_underlays()
 
 /obj/machinery/atmospherics/component/binary/pump/process(delta_time)
 	last_power_draw = 0

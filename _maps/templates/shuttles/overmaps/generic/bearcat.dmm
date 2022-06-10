@@ -1074,7 +1074,6 @@
 /obj/machinery/atmospherics/pipe/simple{
 	dir = 4;
 	icon_state = "intact";
-	level = 2
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -2340,7 +2339,6 @@
 /obj/machinery/atmospherics/pipe/simple{
 	dir = 2;
 	icon_state = "intact";
-	level = 2
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -2963,7 +2961,6 @@
 /obj/machinery/atmospherics/pipe/simple{
 	dir = 5;
 	icon_state = "intact";
-	level = 2
 	},
 /obj/machinery/meter,
 /turf/simulated/floor/plating,

@@ -3,8 +3,7 @@
 	icon_state = "map"
 	construction_type = /obj/item/pipe/trinary/flippable
 	pipe_state = "mixer"
-	density = 0
-	level = 1
+	density = FALSE
 
 	name = "Gas mixer"
 
@@ -21,7 +20,7 @@
 
 	//node 3 is the outlet, nodes 1 & 2 are intakes
 
-/obj/machinery/atmospherics/component/trinary/mixer/update_icon(var/safety = 0)
+/obj/machinery/atmospherics/component/trinary/mixer/update_icon(safety = FALSE)
 	if(tee)
 		icon_state = "t"
 	else if(mirrored)

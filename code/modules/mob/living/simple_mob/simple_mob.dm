@@ -17,7 +17,7 @@
 	///Tooltip description
 	var/tt_desc = null
 
-	//* Settings for played mobs *//
+//! ## Settings for played mobs
 	/// Does the percentage health show in the stat panel for the mob
 	var/show_stat_health = TRUE
 	/// Set to TRUE to enable the use of hands and the hands hud
@@ -37,7 +37,7 @@
 	/// Message to print to players about 'how' to play this mob on login.
 	var/player_msg
 
-	//* Mob icon/appearance settings *//
+//! ## Mob icon/appearance settings
 	/// The iconstate if we're alive. //!REQUIRED
 	var/icon_living = ""
 	/// The iconstate if we're dead. //!REQUIRED
@@ -57,13 +57,13 @@
 	///Just the default
 	attack_icon_state = "slash"
 
-	//* Mob talking settings *//
+//! ## Mob talking settings
 	/// Can all mobs in the entire universe understand this one?
 	universal_speak = 0
 	/// Text name of their language if they speak something other than galcom. They speak the first one.
 	var/has_langs = list(LANGUAGE_GALCOM)
 
-	//* Movement things. *//
+//! ## Movement things
 	/// Lower is faster.
 	var/movement_cooldown = 5
 	/// If set, will play this sound when it moves on its own will.
@@ -75,7 +75,7 @@
 	/// If set, the mob will move through fluids with no hinderance.
 	var/aquatic_movement = 0
 
-	//* Mob interaction *//
+//! ## Mob interaction
 	/// If clicked on help intent.
 	var/response_help   = "tries to help"
 	/// If clicked on disarm intent.
@@ -91,7 +91,7 @@
 	/// An ID card if they have one to give them access to stuff.
 	var/obj/item/card/id/access_card
 
-	//* Mob environment settings *//
+//! ## Mob environment settings
 	/// Minimum "okay" temperature in kelvin
 	var/minbodytemp = 250
 	/// Maximum of above
@@ -121,11 +121,11 @@
 	/// This damage is taken when atmos doesn't fit all the requirements set.
 	var/unsuitable_atoms_damage = 2
 
-	//* Hostility settings *//
+//! ## Hostility settings
 	/// Is the mob weak to tasers?
 	var/taser_kill = 1
 
-	//* Attack ranged settings *//
+//! ## Attack ranged settings
 	/// The projectiles I shoot.
 	var/projectiletype
 	/// The sound I make when I do it
@@ -137,7 +137,7 @@
 	/// What to make the hugely laggy casings pile out of.
 	var/casingtype
 
-	//* Reloading settings, part of ranged code *//
+//! ## Reloading settings, part of ranged code
 	/// If TRUE, mob needs to reload occasionally.
 	var/needs_reload = FALSE
 	/// How many shots the mob gets before it has to reload, will not be used if needs_reload is FALSE
@@ -149,7 +149,7 @@
 	/// What sound gets played when the mob successfully reloads. Defaults to the same sound as reloading guns. Can be null.
 	var/reload_sound = 'sound/weapons/flipblade.ogg'
 
-	//* Mob melee settings *//
+//! ## Mob melee settings
 	/// Lower bound of randomized melee damage.
 	var/melee_damage_lower = 2
 	/// Upper bound of randomized melee damage.
@@ -178,7 +178,7 @@
 	/// If set, the mob will do a windup animation and can miss if the target moves out of the way.
 	var/special_attack_delay = null
 
-	//* Special attacks *//
+//! ## Special attacks
 	/// The chance to ATTEMPT a special_attack_target(). If it fails, it will do a regular attack instead.
 	//? This is commented out to ease the AI attack logic by being (a bit more) determanistic.
 	//? You should instead limit special attacks using the below vars instead.
@@ -195,7 +195,7 @@
 	/// world.time when a special attack occured last, for cooldown calculations.
 	var/last_special_attack = null
 
-	//* Damage resistances *//
+//! ## Damage resistances
 	/// Chance for a grab attempt to fail. Note that this is not a true resist and is just a prob() of failure.
 	var/grab_resist = 0
 	/// Damage reduction for all types
@@ -220,7 +220,7 @@
 				"bio" = 0,
 				"rad" = 0
 				)
-	// Protection against heat/cold/electric/water effects.
+//! ## Protection against heat/cold/electric/water effects
 	// 0 is no protection, 1 is total protection. Negative numbers increase vulnerability.
 	var/heat_resist = 0.0
 	var/cold_resist = 0.0
@@ -231,26 +231,31 @@
 	/// Stops injections and "injections".
 	var/thick_armor = FALSE
 
-	//* Cult stuff. *//
+//! ## Cult stuff
 	var/purge = 0
 	var/supernatural = FALSE
 
 
-	/// Is it contained in a cage?
-	var/in_stasis = 0
-
-	//Randomization code base
+//! ## Randomization code base
 	var/mod_min = 70
 	var/mod_max = 130
 	/// Are we randomized?
 	var/randomized = FALSE
+
+//! ## Misc stuff
+
+	/// Is it contained in a cage?
+	var/in_stasis = 0
 
 	/// Used for if the mob can drop limbs. Overrides species dmi.
 	var/limb_icon
 	/// Used for if the mob can drop limbs. Overrides the icon cache key, so it doesn't keep remaking the icon needlessly.
 	var/limb_icon_key
 
-//* randomization code. *//
+	/// What kind of footstep this mob should have. Null if it shouldn't have any.
+	var/footstep_type
+
+/// Randomization code
 /mob/living/simple_mob/proc/randomize()
 	if(randomized == TRUE)
 		var/mod = rand(mod_min,mod_max)/100
@@ -275,6 +280,9 @@
 
 	if(has_eye_glow)
 		add_eyes()
+
+	if(footstep_type)
+		AddComponent(/datum/component/footstep, footstep_type)
 
 	return ..()
 

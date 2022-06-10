@@ -30,9 +30,10 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 	if(freq)
 		warning("[src] at [x],[y],[z] has deprecated var freq=[freq].  Replace it with proper type.")
 
-	var/turf/T = loc
-	hide(!T.is_plating())
 	navbeacons += src
+
+	AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE)
+
 
 // set the transponder codes assoc list from codes_txt
 // DEPRECATED - This is kept only for compatibilty with old map files! Do not use this!
@@ -54,25 +55,6 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 		else
 			codes[e] = "1"
 
-/obj/machinery/navbeacon/hides_under_flooring()
-	return 1
-
-// called when turf state changes
-// hide the object if turf is intact
-/obj/machinery/navbeacon/hide(var/intact)
-	invisibility = intact ? 101 : 0
-	updateicon()
-
-// update the icon_state
-/obj/machinery/navbeacon/proc/updateicon()
-	var/state="navbeacon[open]"
-
-	if(invisibility)
-		icon_state = "[state]-f"	// if invisible, set icon to faded version
-									// in case revealed by T-scanner
-	else
-		icon_state = "[state]"
-
 /obj/machinery/navbeacon/attackby(obj/item/I, mob/user)
 	var/turf/T = loc
 	if(!T.is_plating())
@@ -80,10 +62,8 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 
 	if(I.is_screwdriver())
 		open = !open
-		playsound(src, I.usesound, 50, 1)
+		playsound(src, I.usesound, 50, TRUE)
 		user.visible_message("[user] [open ? "opens" : "closes"] the beacon's cover.", "You [open ? "open" : "close"] the beacon's cover.")
-
-		updateicon()
 
 	else if(I.GetID())
 		if(open)
@@ -97,10 +77,10 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 			to_chat(user, "You must open the cover first!")
 	return
 
-/obj/machinery/navbeacon/attack_ai(var/mob/user)
+/obj/machinery/navbeacon/attack_ai(mob/user)
 	interact(user, 1)
 
-/obj/machinery/navbeacon/attack_hand(var/mob/user)
+/obj/machinery/navbeacon/attack_hand(mob/user)
 
 	if(!user.IsAdvancedToolUser())
 		return FALSE

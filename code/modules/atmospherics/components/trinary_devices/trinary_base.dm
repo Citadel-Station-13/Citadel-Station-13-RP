@@ -42,9 +42,6 @@
 		add_underlay(T, node2, node_connects[2])
 		add_underlay(T, node3, node_connects[3])
 
-/obj/machinery/atmospherics/component/trinary/hide(var/i)
-	update_underlays()
-
 /obj/machinery/atmospherics/component/trinary/power_change()
 	var/old_stat = machine_stat
 	. = ..()

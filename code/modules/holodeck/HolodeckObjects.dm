@@ -51,8 +51,8 @@
 /turf/simulated/floor/holofloor/snow
 	name = "snow"
 	base_name = "snow"
-	icon = 'icons/turf/floors.dmi'
-	base_icon = 'icons/turf/floors.dmi'
+	icon = 'icons/turf/floors_old.dmi'
+	base_icon = 'icons/turf/floors_old.dmi'
 	icon_state = "snow"
 	base_icon_state = "snow"
 

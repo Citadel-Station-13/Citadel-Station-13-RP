@@ -10,7 +10,7 @@
 /// From base of code/game/machinery
 ////#define COMSIG_OBJ_DEFAULT_UNFASTEN_WRENCH "obj_default_unfasten_wrench"
 /// From base of /turf/proc/levelupdate(). (intact) true to hide and false to unhide
-////#define COMSIG_OBJ_HIDE "obj_hide"
+#define COMSIG_OBJ_HIDE "obj_hide"
 /// From /obj/item/toy/crayon/spraycan/afterattack: (color_is_dark)
 ////#define COMSIG_OBJ_PAINTED "obj_painted"
 

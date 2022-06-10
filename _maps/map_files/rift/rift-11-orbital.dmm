@@ -7546,21 +7546,21 @@
 	prices = list()
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
+	icon = 'icons/turf/floors_old.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
 "uM" = (
 /obj/structure/closet/wardrobe/ert,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
+	icon = 'icons/turf/floors_old.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
 "uN" = (
 /obj/structure/undies_wardrobe,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
+	icon = 'icons/turf/floors_old.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -7609,7 +7609,7 @@
 /area/centcom/specops)
 "uW" = (
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
+	icon = 'icons/turf/floors_old.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -7618,7 +7618,7 @@
 	name = "Response Team"
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
+	icon = 'icons/turf/floors_old.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -7628,7 +7628,7 @@
 /obj/item/storage/box/trackimp,
 /obj/item/storage/box/cdeathalarm_kit,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
+	icon = 'icons/turf/floors_old.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -7638,7 +7638,7 @@
 /obj/item/clothing/head/helmet/ert/command,
 /obj/item/storage/backpack/ert/commander,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
+	icon = 'icons/turf/floors_old.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -7655,7 +7655,7 @@
 /obj/item/ammo_magazine/nsfw_mag,
 /obj/item/gun/projectile/nsfw,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
+	icon = 'icons/turf/floors_old.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -7681,7 +7681,7 @@
 "vh" = (
 /obj/item/stool/padded,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
+	icon = 'icons/turf/floors_old.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -7695,7 +7695,7 @@
 /obj/item/pinpointer/advpinpointer,
 /obj/item/stamp/centcomm,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
+	icon = 'icons/turf/floors_old.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -7705,7 +7705,7 @@
 	req_access = list(103)
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
+	icon = 'icons/turf/floors_old.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -7716,7 +7716,7 @@
 /obj/item/ammo_magazine/m44,
 /obj/item/gun/projectile/deagle,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
+	icon = 'icons/turf/floors_old.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -7734,7 +7734,7 @@
 /obj/structure/table/reinforced,
 /obj/item/pda/ert,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
+	icon = 'icons/turf/floors_old.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -7825,7 +7825,7 @@
 /obj/item/clothing/glasses/sunglasses/sechud/tactical,
 /obj/item/material/knife/tacknife/combatknife,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
+	icon = 'icons/turf/floors_old.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -7834,7 +7834,7 @@
 /obj/item/rig/ert,
 /obj/item/clothing/accessory/storage/black_vest,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
+	icon = 'icons/turf/floors_old.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -7843,7 +7843,7 @@
 /obj/item/gun/energy/gun/nuclear,
 /obj/item/hand_tele,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
+	icon = 'icons/turf/floors_old.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -8001,7 +8001,7 @@
 	products = list(/obj/item/storage/fancy/cigarettes = 10, /obj/item/storage/box/matches = 10, /obj/item/flame/lighter/zippo = 4, /obj/item/clothing/mask/smokable/cigarette/cigar/havana = 2)
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
+	icon = 'icons/turf/floors_old.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)
@@ -8011,7 +8011,7 @@
 	prices = list()
 	},
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/floors.dmi';
+	icon = 'icons/turf/floors_old.dmi';
 	icon_state = "wood"
 	},
 /area/centcom/specops)

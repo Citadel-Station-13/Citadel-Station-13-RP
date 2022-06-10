@@ -18,7 +18,7 @@
 	maxHealth = 200
 	catalogue_data = list(/datum/category_item/catalogue/technology/bot/ed209)
 
-	is_ranged = 1
+	is_ranged = TRUE
 	preparing_arrest_sounds = new()
 
 	a_intent = INTENT_HARM

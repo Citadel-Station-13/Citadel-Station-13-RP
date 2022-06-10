@@ -8,8 +8,6 @@
 	name = "Vent"
 	desc = "A large air vent"
 
-	level = 1
-
 	volume = 250
 
 	dir = SOUTH

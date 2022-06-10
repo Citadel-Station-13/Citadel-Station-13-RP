@@ -12,7 +12,6 @@
 	var/start_pressure = 75*ONE_ATMOSPHERE
 
 	layer = ATMOS_LAYER
-	level = 1
 	dir = SOUTH
 	initialize_directions = SOUTH
 	pipe_flags = PIPING_DEFAULT_LAYER_ONLY

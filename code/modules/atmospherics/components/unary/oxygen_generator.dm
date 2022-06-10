@@ -1,7 +1,7 @@
-obj/machinery/atmospherics/component/unary/oxygen_generator
+/obj/machinery/atmospherics/component/unary/oxygen_generator
 	icon = 'icons/obj/atmospherics/oxygen_generator.dmi'
 	icon_state = "intact_off"
-	density = 1
+	density = TRUE
 
 	name = "Oxygen Generator"
 	desc = ""
@@ -9,41 +9,41 @@ obj/machinery/atmospherics/component/unary/oxygen_generator
 	dir = SOUTH
 	initialize_directions = SOUTH
 
-	var/on = 0
+	var/on = TRUE
 
 	var/oxygen_content = 10
 
-	update_icon()
-		if(node)
-			icon_state = "intact_[on?("on"):("off")]"
-		else
-			icon_state = "exposed_off"
+/obj/machinery/atmospherics/component/unary/oxygen_generator/update_icon()
+	if(node)
+		icon_state = "intact_[on?("on"):("off")]"
+	else
+		icon_state = "exposed_off"
 
-			on = 0
+		on = FALSE
 
-		return
+	return
 
-	New()
-		..()
+/obj/machinery/atmospherics/component/unary/oxygen_generator/Initialize(mapload)
+	. = ..()
 
-		air_contents.volume = 50
+	air_contents.volume = 50
 
-	process()
-		..()
-		if(!on)
-			return 0
+/obj/machinery/atmospherics/component/unary/oxygen_generator/process(delta_time)
+	. = ..()
+	if(!on)
+		return FALSE
 
-		var/total_moles = air_contents.total_moles
+	var/total_moles = air_contents.total_moles
 
-		if(total_moles < oxygen_content)
-			var/current_heat_capacity = air_contents.heat_capacity()
+	if(total_moles < oxygen_content)
+		var/current_heat_capacity = air_contents.heat_capacity()
 
-			var/added_oxygen = oxygen_content - total_moles
+		var/added_oxygen = oxygen_content - total_moles
 
-			air_contents.temperature = (current_heat_capacity*air_contents.temperature + 20*added_oxygen*T0C)/(current_heat_capacity+20*added_oxygen)
-			air_contents.adjust_gas(/datum/gas/oxygen, added_oxygen)
+		air_contents.temperature = (current_heat_capacity*air_contents.temperature + 20*added_oxygen*T0C)/(current_heat_capacity+20*added_oxygen)
+		air_contents.adjust_gas(/datum/gas/oxygen, added_oxygen)
 
-			if(network)
-				network.update = 1
+		if(network)
+			network.update = TRUE
 
-		return 1
+	return TRUE

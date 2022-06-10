@@ -397,7 +397,6 @@
 /obj/machinery/atmospherics/pipe/simple{
 	dir = 4;
 	icon_state = "intact";
-	level = 2
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/northblock)
@@ -594,7 +593,6 @@
 /obj/machinery/atmospherics/pipe/simple{
 	dir = 9;
 	icon_state = "intact";
-	level = 2
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/northblock)
@@ -1056,7 +1054,6 @@
 /obj/machinery/atmospherics/pipe/manifold{
 	dir = 8;
 	icon_state = "manifold";
-	level = 2
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/research)
@@ -1064,7 +1061,6 @@
 /obj/machinery/atmospherics/pipe/simple{
 	dir = 4;
 	icon_state = "intact";
-	level = 2
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/research)
@@ -1072,7 +1068,6 @@
 /obj/machinery/atmospherics/pipe/simple{
 	dir = 9;
 	icon_state = "intact";
-	level = 2
 	},
 /obj/machinery/light/small{
 	dir = 4

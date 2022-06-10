@@ -21,7 +21,6 @@
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_SUPPLY //connects to regular and supply pipes
 
 	var/area/initial_loc
-	level = 1
 	var/area_uid
 	var/id_tag = null
 
@@ -153,7 +152,7 @@
 	if(!istype(T))
 		return
 
-	if(!T.is_plating() && node && node.level == 1 && istype(node, /obj/machinery/atmospherics/pipe))
+	if(!T.is_plating() && node && istype(node, /obj/machinery/atmospherics/pipe))
 		vent_icon += "h"
 
 	if(welded)
@@ -171,17 +170,13 @@
 		var/turf/T = get_turf(src)
 		if(!istype(T))
 			return
-		if(!T.is_plating() && node && node.level == 1 && istype(node, /obj/machinery/atmospherics/pipe))
+		if(!T.is_plating() && node && istype(node, /obj/machinery/atmospherics/pipe))
 			return
 		else
 			if(node)
 				add_underlay(T, node, dir, node.icon_connect_type)
 			else
 				add_underlay(T,, dir)
-
-/obj/machinery/atmospherics/component/unary/vent_pump/hide()
-	update_icon()
-	update_underlays()
 
 /obj/machinery/atmospherics/component/unary/vent_pump/proc/can_pump()
 	if(machine_stat & (NOPOWER|BROKEN))
@@ -432,7 +427,7 @@
 		to_chat(user, "<span class='warning'>You cannot unwrench \the [src], turn it off first.</span>")
 		return 1
 	var/turf/T = src.loc
-	if (node && node.level==1 && isturf(T) && !T.is_plating())
+	if (node && isturf(T) && !T.is_plating())
 		to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
 		return 1
 	if(unsafe_pressure())

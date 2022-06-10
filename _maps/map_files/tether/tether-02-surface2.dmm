@@ -10333,7 +10333,6 @@
 	dir = 10
 	},
 /obj/machinery/status_display{
-	level = 4;
 	pixel_y = -32
 	},
 /obj/structure/flora/pottedplant/orientaltree,

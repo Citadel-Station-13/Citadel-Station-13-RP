@@ -24,8 +24,6 @@
 	var/fatigue_pressure = 55*ONE_ATMOSPHERE
 	alert_pressure = 55*ONE_ATMOSPHERE
 
-	level = 1
-
 /obj/machinery/atmospherics/pipe/simple/Initialize(mapload)
 	. = ..()
 
@@ -144,10 +142,6 @@
 		qdel(src)
 		return
 
-	var/turf/T = loc
-	if(level == 1 && !T.is_plating()) hide(1)
-	update_icon()
-
 /obj/machinery/atmospherics/pipe/simple/disconnect(obj/machinery/atmospherics/reference)
 	if(reference == node1)
 		if(istype(node1, /obj/machinery/atmospherics/pipe))
@@ -162,10 +156,6 @@
 	update_icon()
 
 	return null
-
-/obj/machinery/atmospherics/pipe/simple/visible
-	icon_state = "intact"
-	level = 2
 
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers
 	name = "Scrubbers pipe"
@@ -227,11 +217,6 @@
 
 /obj/machinery/atmospherics/pipe/simple/visible/purple
 	color = PIPE_COLOR_PURPLE
-
-/obj/machinery/atmospherics/pipe/simple/hidden
-	icon_state = "intact"
-	level = 1
-	alpha = 128		//set for the benefit of mapping - this is reset to opaque when the pipe is spawned in game
 
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers
 	name = "Scrubbers pipe"
@@ -306,5 +291,3 @@
 	maximum_pressure = 1000*ONE_ATMOSPHERE
 	fatigue_pressure = 900*ONE_ATMOSPHERE
 	alert_pressure = 900*ONE_ATMOSPHERE
-
-	level = 2

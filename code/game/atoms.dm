@@ -6,7 +6,6 @@
  */
 /atom
 	layer = TURF_LAYER
-	var/level = 2
 
 	/// Default pixel x shifting for the atom's icon.
 	var/base_pixel_x = 0

@@ -19,13 +19,16 @@
 	buckle_require_restraints = 1
 	buckle_lying = -1
 
-/obj/machinery/atmospherics/pipe/Initialize(mapload, newdir)
-	if(istype(get_turf(src), /turf/simulated/wall) || istype(get_turf(src), /turf/simulated/shuttle/wall) || istype(get_turf(src), /turf/unsimulated/wall))
-		level = 1
-	return ..()
+/obj/machinery/atmospherics/pipe/New()
+	add_atom_colour(pipe_color, FIXED_COLOUR_PRIORITY)
+	// volume = 35 * device_type
+	..()
 
-/obj/machinery/atmospherics/pipe/hides_under_flooring()
-	return level != 2
+///I have no idea why there's a new and at this point I'm too afraid to ask
+/obj/machinery/atmospherics/pipe/Initialize(mapload)
+	. = ..()
+
+	AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE)
 
 /obj/machinery/atmospherics/pipe/proc/pipeline_expansion()
 	return null
@@ -79,32 +82,30 @@
 			qdel(meter)
 	. = ..()
 
-/obj/machinery/atmospherics/pipe/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/pipe/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(src, /obj/machinery/atmospherics/pipe/tank))
 		return ..()
 
 	if(istype(W,/obj/item/pipe_painter))
 		return 0
 
-	if (!W.is_wrench())
+	if(!W.is_wrench())
 		return ..()
-	var/turf/T = src.loc
-	if (level==1 && isturf(T) && !T.is_plating())
-		to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
-		return 1
+
 	if(unsafe_pressure())
-		to_chat(user, "<span class='warning'>You feel a gust of air blowing in your face as you try to unwrench [src]. Maybe you should reconsider..</span>")
+		to_chat(user, SPAN_WARNING("You feel a gust of air blowing in your face as you try to unwrench [src]. Maybe you should reconsider.."))
+
 	add_fingerprint(user)
 	playsound(src, W.usesound, 50, 1)
-	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
-	if (do_after(user, 40 * W.toolspeed))
+	to_chat(user, SPAN_NOTICE("You begin to unfasten \the [src]..."))
+	if(do_after(user, 40 * W.toolspeed))
 		user.visible_message( \
-			"<span class='notice'>\The [user] unfastens \the [src].</span>", \
-			"<span class='notice'>You have unfastened \the [src].</span>", \
-			"You hear a ratchet.")
+			SPAN_NOTICE("\The [user] unfastens \the [src]."), \
+			SPAN_NOTICE("You have unfastened \the [src]."), \
+			SPAN_HEAR("You hear a ratchet."))
 		deconstruct()
 
-/obj/machinery/atmospherics/pipe/proc/change_color(var/new_color)
+/obj/machinery/atmospherics/pipe/proc/change_color(new_color)
 	//only pass valid pipe colors please ~otherwise your pipe will turn invisible
 	if(!pipe_color_check(new_color))
 		return
@@ -112,7 +113,7 @@
 	pipe_color = new_color
 	update_icon()
 
-/obj/machinery/atmospherics/pipe/color_cache_name(var/obj/machinery/atmospherics/node)
+/obj/machinery/atmospherics/pipe/color_cache_name(obj/machinery/atmospherics/node)
 	if(istype(src, /obj/machinery/atmospherics/pipe/tank))
 		return ..()
 
@@ -126,11 +127,6 @@
 	else
 		return pipe_color
 
-/obj/machinery/atmospherics/pipe/hide(var/i)
-	if(istype(loc, /turf/simulated))
-		invisibility = i ? 100 : 0
-	update_icon()
-
 /obj/machinery/atmospherics/pipe/process(delta_time)
 	if(!parent) //This should cut back on the overhead calling build_network thousands of times per cycle
 		..()
@@ -142,4 +138,4 @@
 	if(user.client && user.client.inquisitive_ghost)
 		analyze_gases_ghost(src, user)
 	else
-		to_chat(user, "<span class='warning'>[src] doesn't have a pipenet, which is probably a bug.</span>")
+		to_chat(user, SPAN_WARNING("[src] doesn't have a pipenet, which is probably a bug."))

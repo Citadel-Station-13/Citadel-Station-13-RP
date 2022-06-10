@@ -6,7 +6,6 @@
 	icon_state = "intact"
 	pipe_icon = "hepipe"
 	color = "#404040"
-	level = 2
 	connect_types = CONNECT_TYPE_HE
 	pipe_flags = PIPING_DEFAULT_LAYER_ONLY
 	construction_type = /obj/item/pipe/binary/bendable
@@ -128,7 +127,6 @@
 	icon = 'icons/atmos/junction.dmi'
 	icon_state = "intact"
 	pipe_icon = "hejunction"
-	level = 2
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_HE
 	construction_type = /obj/item/pipe/directional
 	pipe_state = "junction"
@@ -137,17 +135,17 @@
 
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction/init_dir()
 	..()
-	switch ( dir )
-		if ( SOUTH )
+	switch(dir)
+		if(SOUTH)
 			initialize_directions = NORTH
 			initialize_directions_he = SOUTH
-		if ( NORTH )
+		if(NORTH)
 			initialize_directions = SOUTH
 			initialize_directions_he = NORTH
-		if ( EAST )
+		if(EAST)
 			initialize_directions = WEST
 			initialize_directions_he = EAST
-		if ( WEST )
+		if(WEST)
 			initialize_directions = EAST
 			initialize_directions_he = WEST
 

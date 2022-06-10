@@ -1,6 +1,6 @@
 /turf/unsimulated/floor
 	name = "floor"
-	icon = 'icons/turf/floors.dmi'
+	icon = 'icons/turf/floors_old.dmi'
 	icon_state = "Floor3"
 
 /turf/unsimulated/mask
