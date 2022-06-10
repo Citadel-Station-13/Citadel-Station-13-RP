@@ -90,7 +90,7 @@
 /area/class_p/POIs/archaic_temple)
 "gS" = (
 /obj/structure/boulder,
-/turf/simulated/floor/outdoors/grass/heavy/interior/classp,
+/turf/simulated/floor/grass/outdoors/heavy/interior/classp,
 /area/class_p/POIs/archaic_temple)
 "hQ" = (
 /obj/structure/table/hardwoodtable,
@@ -1180,7 +1180,7 @@
 	name = "The Fang of Agrim'Maw"
 	},
 /obj/effect/decal/cleanable/greenglow,
-/turf/simulated/floor/outdoors/grass/heavy/interior/classp,
+/turf/simulated/floor/grass/outdoors/heavy/interior/classp,
 /area/class_p/POIs/archaic_temple)
 "Yd" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1257,7 +1257,7 @@
 /turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "ZV" = (
-/turf/simulated/floor/outdoors/grass/heavy/interior/classp,
+/turf/simulated/floor/grass/outdoors/heavy/interior/classp,
 /area/class_p/POIs/archaic_temple)
 
 (1,1,1) = {"

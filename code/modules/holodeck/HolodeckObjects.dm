@@ -10,9 +10,6 @@
 	return
 	// HOLOFLOOR DOES NOT GIVE A FUCK
 
-/turf/simulated/floor/holofloor/set_flooring()
-	return
-
 /turf/simulated/floor/holofloor/carpet
 	name = "carpet"
 	icon = 'icons/turf/flooring/carpet.dmi'
@@ -46,7 +43,6 @@
 	name = "lush grass"
 	icon = 'icons/turf/flooring/grass.dmi'
 	icon_state = "grass0"
-	initial_flooring = /decl/flooring/grass
 
 /turf/simulated/floor/holofloor/snow
 	name = "snow"

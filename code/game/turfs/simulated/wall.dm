@@ -30,11 +30,6 @@
 	var/last_state
 	var/construction_stage
 
-// Walls always hide the stuff below them.
-/turf/simulated/wall/levelupdate()
-	for(var/obj/O in src)
-		O.hide(1)
-
 /turf/simulated/wall/Initialize(mapload, materialtype, rmaterialtype, girdertype)
 	. = ..()
 	icon_state = "blank"

@@ -129,23 +129,6 @@ var/list/flooring_types
 		for(var/i in 1 to min(build_cost, 50))
 			new build_type(A)
 
-/decl/flooring/grass
-	name = "grass"
-	desc = "Do they smoke grass out in space, Bowie? Or do they smoke AstroTurf?"
-	icon = 'icons/turf/flooring/grass.dmi'
-	icon_base = "grass"
-	has_base_range = 3
-	damage_temperature = T0C+80
-	flags = TURF_HAS_EDGES | TURF_HAS_CORNERS | TURF_REMOVE_SHOVEL
-	build_type = /obj/item/stack/tile/grass
-
-
-/decl/flooring/grass/sif
-	name = "growth"
-	icon = 'icons/turf/outdoors.dmi'
-	icon_base = "grass_sif"
-	has_base_range = 2
-
 /decl/flooring/asteroid
 	name = "coarse sand"
 	desc = "Gritty and unpleasant."

@@ -137,7 +137,7 @@
 /area/lavaland/east/colony)
 "bs" = (
 /obj/structure/flora/tree/jungle,
-/turf/simulated/floor/outdoors/grass/lavaland/interior,
+/turf/simulated/floor/grass/outdoors/lavaland/interior,
 /area/lavaland/east/colony)
 "bv" = (
 /obj/structure/closet/crate/medical/blood,
@@ -269,7 +269,7 @@
 /area/lavaland/east/colony)
 "fv" = (
 /obj/structure/flora/ausbushes,
-/turf/simulated/floor/outdoors/grass/lavaland/interior,
+/turf/simulated/floor/grass/outdoors/lavaland/interior,
 /area/lavaland/east/colony)
 "fC" = (
 /obj/machinery/vending/cola,
@@ -726,7 +726,7 @@
 /area/lavaland/east/colony)
 "nL" = (
 /obj/structure/flora/ausbushes/leafybush,
-/turf/simulated/floor/outdoors/grass/lavaland/interior,
+/turf/simulated/floor/grass/outdoors/lavaland/interior,
 /area/lavaland/east/colony)
 "nR" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10,
@@ -1896,7 +1896,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "LQ" = (
-/turf/simulated/floor/outdoors/grass/lavaland/interior,
+/turf/simulated/floor/grass/outdoors/lavaland/interior,
 /area/lavaland/east/colony)
 "LU" = (
 /obj/structure/bed,
@@ -2289,7 +2289,7 @@
 /area/lavaland/east/colony)
 "Tm" = (
 /obj/structure/flora/ausbushes/grassybush,
-/turf/simulated/floor/outdoors/grass/lavaland/interior,
+/turf/simulated/floor/grass/outdoors/lavaland/interior,
 /area/lavaland/east/colony)
 "To" = (
 /obj/structure/catwalk,
@@ -2470,7 +2470,7 @@
 /area/lavaland/east/colony)
 "WM" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/outdoors/grass/lavaland/interior,
+/turf/simulated/floor/grass/outdoors/lavaland/interior,
 /area/lavaland/east/colony)
 "WO" = (
 /obj/structure/bed/chair/backed_red{
@@ -2507,7 +2507,7 @@
 /area/lavaland/east/colony)
 "Xn" = (
 /obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/outdoors/grass/lavaland/interior,
+/turf/simulated/floor/grass/outdoors/lavaland/interior,
 /area/lavaland/east/colony)
 "Xo" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -2527,7 +2527,7 @@
 /area/lavaland/east/colony)
 "XE" = (
 /obj/structure/flora/ausbushes/palebush,
-/turf/simulated/floor/outdoors/grass/lavaland/interior,
+/turf/simulated/floor/grass/outdoors/lavaland/interior,
 /area/lavaland/east/colony)
 "XF" = (
 /obj/structure/table/glass,

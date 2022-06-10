@@ -42,9 +42,6 @@
 			return
 		add_underlay(T, node1, dir)
 
-/obj/machinery/atmospherics/pipe/tank/hide()
-	update_underlays()
-
 /obj/machinery/atmospherics/pipe/tank/atmos_init()
 	var/connect_direction = dir
 

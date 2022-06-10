@@ -5430,7 +5430,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/grass/outdoors/heavy/interior,
 /area/tether/exploration/hallway)
 "alp" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -5552,7 +5552,7 @@
 /obj/effect/floor_decal/spline/fancy{
 	dir = 6
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/grass/outdoors/heavy/interior,
 /area/tether/exploration/hallway)
 "alB" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -5569,7 +5569,7 @@
 /obj/structure/flora/ausbushes/sparsegrass{
 	pixel_x = 5
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/grass/outdoors/heavy/interior,
 /area/tether/exploration/staircase)
 "alD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -5878,7 +5878,7 @@
 "amg" = (
 /obj/structure/flora/tree/jungle_small,
 /obj/effect/floor_decal/spline/fancy,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/grass/outdoors/heavy/interior,
 /area/tether/exploration/hallway)
 "amh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -12585,7 +12585,7 @@
 /obj/effect/floor_decal/spline/fancy{
 	dir = 9
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/grass/outdoors/heavy/interior,
 /area/tether/exploration/staircase)
 "aCp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -13045,7 +13045,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/grass/forest,
+/turf/simulated/floor/grass/outdoors/forest,
 /area/crew_quarters/heads/chief)
 "aDj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -15538,7 +15538,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/grass/forest,
+/turf/simulated/floor/grass/outdoors/forest,
 /area/crew_quarters/heads/chief)
 "aVH" = (
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -17634,7 +17634,7 @@
 /obj/structure/flora/ausbushes/sunnybush{
 	pixel_y = 8
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/grass/outdoors/heavy/interior,
 /area/tether/exploration/hallway)
 "ceq" = (
 /obj/machinery/door/firedoor/glass,
@@ -17983,7 +17983,7 @@
 /obj/effect/floor_decal/spline/fancy{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/grass/outdoors/heavy/interior,
 /area/tether/exploration/staircase)
 "cEi" = (
 /obj/effect/floor_decal/borderfloor{
@@ -18413,7 +18413,7 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/grass/outdoors/heavy/interior,
 /area/tether/exploration/hallway)
 "dsY" = (
 /obj/effect/floor_decal/corner_techfloor_grid,
@@ -18568,7 +18568,7 @@
 	pixel_x = 2;
 	pixel_y = 7
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/grass/outdoors/heavy/interior,
 /area/tether/exploration/hallway)
 "dKw" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -19557,7 +19557,7 @@
 	dir = 1;
 	pixel_y = 24
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/grass/outdoors/heavy/interior,
 /area/tether/exploration/equipment)
 "gai" = (
 /obj/effect/floor_decal/borderfloor{
@@ -20130,7 +20130,7 @@
 /obj/effect/floor_decal/spline/fancy{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/grass/outdoors/heavy/interior,
 /area/tether/exploration/staircase)
 "hDB" = (
 /obj/structure/cable/green{
@@ -20230,7 +20230,7 @@
 	pixel_x = -2;
 	pixel_y = 3
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/grass/outdoors/heavy/interior,
 /area/tether/exploration/staircase)
 "hPi" = (
 /obj/machinery/light/small,
@@ -20355,7 +20355,7 @@
 /area/tether/exploration/hallway)
 "iaH" = (
 /obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/grass/outdoors/heavy/interior,
 /area/tether/exploration/staircase)
 "ibn" = (
 /obj/effect/floor_decal/corner/purple/border,
@@ -20588,7 +20588,7 @@
 	pixel_x = -2;
 	pixel_y = 3
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/grass/outdoors/heavy/interior,
 /area/tether/exploration/equipment)
 "iCR" = (
 /obj/structure/disposalpipe/segment{
@@ -21267,7 +21267,7 @@
 	dir = 8
 	},
 /obj/machinery/door/window/northleft,
-/turf/simulated/floor/outdoors/grass/forest,
+/turf/simulated/floor/grass/outdoors/forest,
 /area/crew_quarters/heads/chief)
 "knj" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -21764,7 +21764,7 @@
 /obj/structure/flora/ausbushes/fernybush{
 	pixel_y = 4
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/grass/outdoors/heavy/interior,
 /area/tether/exploration/hallway)
 "lLY" = (
 /obj/structure/cable{
@@ -21923,7 +21923,7 @@
 /obj/effect/floor_decal/spline/fancy{
 	dir = 5
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/grass/outdoors/heavy/interior,
 /area/tether/exploration/hallway)
 "mnM" = (
 /obj/effect/floor_decal/borderfloor{
@@ -23814,7 +23814,7 @@
 /obj/effect/floor_decal/spline/fancy{
 	dir = 10
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/grass/outdoors/heavy/interior,
 /area/tether/exploration/hallway)
 "rhq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -23915,7 +23915,7 @@
 /obj/effect/floor_decal/borderfloorwhite/corner2{
 	dir = 9
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/grass/outdoors/heavy/interior,
 /area/tether/exploration/staircase)
 "rqC" = (
 /obj/effect/floor_decal/industrial/outline/grey,
@@ -24953,7 +24953,7 @@
 /obj/effect/floor_decal/spline/fancy{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/grass/outdoors/heavy/interior,
 /area/tether/exploration/hallway)
 "tsG" = (
 /obj/effect/floor_decal/techfloor{
@@ -25109,7 +25109,7 @@
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/grass/outdoors/heavy/interior,
 /area/tether/exploration/staircase)
 "tOr" = (
 /obj/machinery/camera/network/command{
@@ -25512,7 +25512,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/grass/outdoors/heavy/interior,
 /area/tether/exploration/staircase)
 "uOm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -25886,7 +25886,7 @@
 /area/tether/exploration/staircase)
 "vyI" = (
 /mob/living/simple_mob/animal/passive/bird/parrot/polly,
-/turf/simulated/floor/outdoors/grass/forest,
+/turf/simulated/floor/grass/outdoors/forest,
 /area/crew_quarters/heads/chief)
 "vzc" = (
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -25960,7 +25960,7 @@
 	pixel_x = 20;
 	pixel_y = 15
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/grass/outdoors/heavy/interior,
 /area/tether/exploration/staircase)
 "vGo" = (
 /obj/structure/disposalpipe/segment{
@@ -25983,7 +25983,7 @@
 /obj/effect/floor_decal/spline/fancy{
 	dir = 9
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/grass/outdoors/heavy/interior,
 /area/tether/exploration/hallway)
 "vKK" = (
 /obj/machinery/sleeper{
@@ -26825,7 +26825,7 @@
 /obj/structure/flora/ausbushes/sparsegrass{
 	pixel_x = -5
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/grass/outdoors/heavy/interior,
 /area/tether/exploration/staircase)
 "xJF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -27043,7 +27043,7 @@
 	pixel_x = 2;
 	pixel_y = 1
 	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/turf/simulated/floor/grass/outdoors/heavy/interior,
 /area/tether/exploration/staircase)
 "ycu" = (
 /obj/structure/closet/emcloset,

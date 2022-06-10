@@ -38,8 +38,8 @@ VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
 
 VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 
-VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/grass/sif)
-/turf/simulated/floor/outdoors/grass/sif
+VIRGO3B_TURF_CREATE(/turf/simulated/floor/grass/outdoors/sif)
+/turf/simulated/floor/grass/outdoors/sif
 	baseturfs = /turf/simulated/floor/outdoors/dirt/virgo3b
 
 // Overriding these for the sake of submaps that use them on other planets.

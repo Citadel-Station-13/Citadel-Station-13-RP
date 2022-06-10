@@ -10,7 +10,7 @@
 /area/submap/Chapel1)
 "ad" = (
 /obj/structure/lightpost,
-/turf/simulated/floor/outdoors/grass/sif/forest,
+/turf/simulated/floor/grass/outdoors/sif/forest,
 /area/submap/Chapel1)
 "ae" = (
 /obj/structure/closet/hydrant{
@@ -28,10 +28,10 @@
 /turf/simulated/floor/wood/sif,
 /area/submap/Chapel1)
 "ah" = (
-/turf/simulated/floor/outdoors/grass/sif,
+/turf/simulated/floor/grass/outdoors/sif,
 /area/template_noop)
 "ai" = (
-/turf/simulated/floor/outdoors/grass/sif/forest,
+/turf/simulated/floor/grass/outdoors/sif/forest,
 /area/template_noop)
 "aj" = (
 /turf/simulated/floor/outdoors/dirt,
@@ -66,7 +66,7 @@
 /area/submap/Chapel1)
 "aq" = (
 /obj/structure/closet/grave,
-/turf/simulated/floor/outdoors/grass/sif/forest,
+/turf/simulated/floor/grass/outdoors/sif/forest,
 /area/template_noop)
 "ar" = (
 /obj/random/mob/spider/nurse{
@@ -307,15 +307,15 @@
 /area/submap/Chapel1)
 "bl" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
-/turf/simulated/floor/outdoors/grass/sif,
+/turf/simulated/floor/grass/outdoors/sif,
 /area/template_noop)
 "bm" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
-/turf/simulated/floor/outdoors/grass/sif/forest,
+/turf/simulated/floor/grass/outdoors/sif/forest,
 /area/template_noop)
 "bn" = (
 /obj/structure/sink/puddle,
-/turf/simulated/floor/outdoors/grass/sif/forest,
+/turf/simulated/floor/grass/outdoors/sif/forest,
 /area/template_noop)
 "bo" = (
 /obj/item/flame/candle/everburn,

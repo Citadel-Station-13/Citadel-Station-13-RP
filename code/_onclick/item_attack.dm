@@ -34,9 +34,20 @@ avoid code duplication. This includes items that may sometimes act as a standard
 		add_fingerprint(user)
 	return A.attackby(src, user, params, attack_modifier)
 
-// No comment
-/atom/proc/attackby(obj/item/W, mob/user, params, attack_modifier)
-	return
+/**
+ * Called on an object being hit by an item
+ *
+ * Arguments:
+ * * obj/item/attacking_item - The item hitting this atom
+ * * mob/user - The wielder of this item
+ * * params - click params such as alt/shift etc
+ *
+ * See: [/obj/item/proc/melee_attack_chain]
+ */
+/atom/proc/attackby(obj/item/attacking_item, mob/user, params, attack_modifier)
+	if(SEND_SIGNAL(src, COMSIG_PARENT_ATTACKBY, attacking_item, user, params) & COMPONENT_NO_AFTERATTACK)
+		return TRUE
+	return FALSE
 
 /atom/movable/attackby(obj/item/W, mob/user, params, attack_modifier)
 	if(!(W.flags & NOBLUDGEON))

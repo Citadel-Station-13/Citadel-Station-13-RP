@@ -106,7 +106,7 @@
 /turf/simulated/floor/water/lavaland/interior
 	outdoors = 0
 
-/turf/simulated/floor/outdoors/grass/lavaland/interior
+/turf/simulated/floor/grass/outdoors/lavaland/interior
 	outdoors = 0
 
 /turf/simulated/floor/outdoors/dirt/lavaland/interior

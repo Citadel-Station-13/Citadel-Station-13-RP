@@ -4,29 +4,29 @@
 /area/mine/explored/underdark)
 "b" = (
 /obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/turf/simulated/floor/grass/outdoors/sif/virgo3b,
 /area/mine/explored/underdark)
 "c" = (
 /turf/template_noop,
 /area/mine/explored/underdark)
 "d" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/turf/simulated/floor/grass/outdoors/sif/virgo3b,
 /area/mine/explored/underdark)
 "e" = (
 /obj/structure/flora/ausbushes/leafybush,
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/turf/simulated/floor/grass/outdoors/sif/virgo3b,
 /area/mine/explored/underdark)
 "f" = (
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/turf/simulated/floor/grass/outdoors/sif/virgo3b,
 /area/mine/explored/underdark)
 "g" = (
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/turf/simulated/floor/grass/outdoors/sif/virgo3b,
 /area/mine/explored/underdark)
 "h" = (
 /obj/structure/flora/tree/pine,
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/turf/simulated/floor/grass/outdoors/sif/virgo3b,
 /area/mine/explored/underdark)
 "i" = (
 /obj/tether_away_spawner/underdark_hard,

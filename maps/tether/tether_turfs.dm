@@ -43,8 +43,8 @@ VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
 
 VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 
-VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/grass/sif)
-/turf/simulated/floor/outdoors/grass/sif
+VIRGO3B_TURF_CREATE(/turf/simulated/floor/grass/outdoors/sif)
+/turf/simulated/floor/grass/outdoors/sif
 	turf_layers = list(
 		/turf/simulated/floor/outdoors/rocks/virgo3b,
 		/turf/simulated/floor/outdoors/dirt/virgo3b

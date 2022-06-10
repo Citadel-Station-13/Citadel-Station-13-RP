@@ -668,7 +668,7 @@
 /obj/structure/disposalpipe/Initialize(mapload)
 	. = ..()
 	base_icon_state = icon_state
-	AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE, use_alpha = TRUE)
+	AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE)
 
 
 // pipe is deleted
@@ -735,59 +735,29 @@
 // expel the held objects into a turf
 // called when there is a break in the pipe
 /obj/structure/disposalpipe/proc/expel(obj/structure/disposalholder/H, turf/T, direction)
-	if(!istype(H))
-		return
-
-	// Empty the holder if it is expelled into a dense turf.
-	// Leaving it intact and sitting in a wall is stupid.
-	if(T.density)
-		for(var/atom/movable/AM in H)
-			AM.loc = T
-			AM.pipe_eject(0)
-		qdel(H)
-		return
-
-
-	if(!T.is_plating() && istype(T,/turf/simulated/floor)) //intact floor, pop the tile
-		var/turf/simulated/floor/F = T
-		F.break_tile()
-		new /obj/item/stack/tile(H)	// add to holder so it will be thrown with other stuff
-
+	if(!T)
+		T = get_turf(src)
 	var/turf/target
-	if(direction)		// direction is specified
-		if(istype(T, /turf/space)) // if ended in space, then range is unlimited
+	var/eject_range = 5
+	var/turf/simulated/floor/floorturf
+
+	if(isfloorturf(T) && T.overfloor_placed) // pop the tile if present
+		floorturf = T
+		if(floorturf.floor_tile)
+			new floorturf.floor_tile(T)
+		floorturf.make_plating(TRUE)
+	if(direction) // direction is specified
+		if(isspaceturf(T)) // if ended in space, then range is unlimited
 			target = get_edge_target_turf(T, direction)
-		else						// otherwise limit to 10 tiles
+		else // otherwise limit to 10 tiles
 			target = get_ranged_target_turf(T, direction, 10)
-
-		playsound(src, 'sound/machines/hiss.ogg', 50, 0, 0)
-		if(H)
-			for(var/atom/movable/AM in H)
-				AM.forceMove(T)
-				AM.pipe_eject(direction)
-				spawn(1)
-					if(AM)
-						AM.throw_at(target, 100, 1)
-			H.vent_gas(T)
-			qdel(H)
-
-	else	// no specified direction, so throw in random direction
-
-		playsound(src, 'sound/machines/hiss.ogg', 50, 0, 0)
-		if(H)
-			for(var/atom/movable/AM in H)
-				target = get_offset_target_turf(T, rand(5)-rand(5), rand(5)-rand(5))
-
-				AM.forceMove(T)
-				AM.pipe_eject(0)
-				spawn(1)
-					if(AM)
-						AM.throw_at(target, 5, 1)
-
-			H.vent_gas(T)	// all gas vent to turf
-			qdel(H)
-
-	return
+		eject_range = 10
+	else if(floorturf)
+		target = get_offset_target_turf(T, rand(5)-rand(5), rand(5)-rand(5))
+	playsound(src, 'sound/machines/hiss.ogg', 50, FALSE, FALSE)
+	pipe_eject(H, direction, TRUE, target, eject_range)
+	H.vent_gas(T)
+	qdel(H)
 
 // call to break the pipe
 // will expel any holder inside at the time

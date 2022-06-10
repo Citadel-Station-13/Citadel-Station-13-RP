@@ -35,7 +35,6 @@
 /obj/machinery/magnetic_module/Initialize(mapload, newdir)
 	. = ..()
 	var/turf/T = loc
-	hide(!T.is_plating())
 	center = T
 
 	spawn(10)	// must wait for map loading to finish
@@ -45,10 +44,6 @@
 	spawn()
 		magnetic_process()
 
-// update the invisibility and icon
-/obj/machinery/magnetic_module/hide(intact)
-	invisibility = intact ? 101 : 0
-	updateicon()
 
 // update the icon_state
 /obj/machinery/magnetic_module/proc/updateicon()

@@ -3,7 +3,7 @@
 /turf/unsimulated/wall/planetary/virgo3b,
 /area/mine/explored)
 "ab" = (
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/turf/simulated/floor/grass/outdoors/sif/virgo3b,
 /area/mine/explored)
 "ac" = (
 /obj/machinery/power/apc{
@@ -217,7 +217,7 @@
 /area/tether/outpost/solars_shed)
 "aw" = (
 /mob/living/simple_mob/animal/passive/gaslamp,
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/turf/simulated/floor/grass/outdoors/sif/virgo3b,
 /area/mine/explored)
 "ax" = (
 /obj/machinery/power/apc{
@@ -445,7 +445,7 @@
 	name = "from_tether_to_solars";
 	portal_id = "solarstep"
 	},
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/turf/simulated/floor/grass/outdoors/sif/virgo3b,
 /area/mine/explored)
 "aV" = (
 /obj/machinery/power/terminal{
@@ -2116,13 +2116,13 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/turf/simulated/floor/grass/outdoors/sif/virgo3b,
 /area/mine/explored)
 "eG" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 9
 	},
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/turf/simulated/floor/grass/outdoors/sif/virgo3b,
 /area/mine/explored)
 "eH" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/blue{
@@ -3218,7 +3218,7 @@
 /area/rnd/outpost/atmos)
 "gj" = (
 /obj/structure/lattice,
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/turf/simulated/floor/grass/outdoors/sif/virgo3b,
 /area/mine/explored)
 "gk" = (
 /obj/effect/floor_decal/borderfloor{
@@ -4738,19 +4738,19 @@
 /obj/machinery/atmospherics/pipe/simple/insulated{
 	dir = 5
 	},
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/turf/simulated/floor/grass/outdoors/sif/virgo3b,
 /area/mine/explored)
 "iX" = (
 /obj/machinery/atmospherics/pipe/simple/insulated{
 	dir = 9
 	},
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/turf/simulated/floor/grass/outdoors/sif/virgo3b,
 /area/mine/explored)
 "iY" = (
 /obj/machinery/atmospherics/pipe/simple/insulated{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/turf/simulated/floor/grass/outdoors/sif/virgo3b,
 /area/mine/explored)
 "iZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -8052,7 +8052,7 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/turf/simulated/floor/grass/outdoors/sif/virgo3b,
 /area/mine/explored)
 "wo" = (
 /obj/structure/sign/mining,
@@ -8068,7 +8068,7 @@
 	landmark_tag = "tether_solars_sw";
 	name = "Tether Solar Farm (SW)"
 	},
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/turf/simulated/floor/grass/outdoors/sif/virgo3b,
 /area/mine/explored)
 "AM" = (
 /obj/item/bone,
@@ -8092,7 +8092,7 @@
 /area/mine/explored)
 "HI" = (
 /obj/structure/fence,
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/turf/simulated/floor/grass/outdoors/sif/virgo3b,
 /area/mine/explored)
 "Lj" = (
 /obj/machinery/light/small{
@@ -8104,7 +8104,7 @@
 /obj/structure/fence/corner{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/turf/simulated/floor/grass/outdoors/sif/virgo3b,
 /area/mine/explored)
 "Qr" = (
 /obj/structure/cable/heavyduty{
@@ -8128,7 +8128,7 @@
 /area/mine/explored)
 "SD" = (
 /obj/structure/fence/door,
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/turf/simulated/floor/grass/outdoors/sif/virgo3b,
 /area/mine/explored)
 "SO" = (
 /obj/effect/shuttle_landmark{
@@ -8137,7 +8137,7 @@
 	landmark_tag = "tether_solars_ne";
 	name = "Tether Solar Farm (NE)"
 	},
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/turf/simulated/floor/grass/outdoors/sif/virgo3b,
 /area/mine/explored)
 "TF" = (
 /turf/simulated/wall/r_wall,

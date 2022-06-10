@@ -861,7 +861,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/recoveryward)
 "abn" = (
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/turf/simulated/floor/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside2)
 "abo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -19051,7 +19051,7 @@
 /obj/machinery/camera/network/outside{
 	dir = 5
 	},
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/turf/simulated/floor/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside2)
 "aHE" = (
 /turf/simulated/wall,
@@ -33984,7 +33984,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/turf/simulated/floor/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside2)
 "iwL" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -34276,7 +34276,7 @@
 /area/tether/surfacebase/outside/outside2)
 "nzq" = (
 /obj/random/junk,
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/turf/simulated/floor/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside2)
 "nFT" = (
 /obj/structure/cable{
@@ -34798,7 +34798,7 @@
 /area/tether/surfacebase/old_shelter)
 "wuG" = (
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/turf/simulated/floor/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside2)
 "wJy" = (
 /obj/structure/railing{

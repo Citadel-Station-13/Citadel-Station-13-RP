@@ -13,7 +13,7 @@
 /turf/template_noop,
 /area/submap/house1)
 "ad" = (
-/turf/simulated/floor/outdoors/grass/sif,
+/turf/simulated/floor/grass/outdoors/sif,
 /area/submap/house1)
 "ae" = (
 /obj/structure/railing{
@@ -25,7 +25,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/grass/sif,
+/turf/simulated/floor/grass/outdoors/sif,
 /area/submap/house1)
 "ag" = (
 /turf/simulated/floor/outdoors/dirt,
@@ -38,7 +38,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/grass/sif,
+/turf/simulated/floor/grass/outdoors/sif,
 /area/submap/house1)
 "aj" = (
 /obj/structure/target_stake,
@@ -50,11 +50,11 @@
 /area/submap/house1)
 "al" = (
 /obj/item/target,
-/turf/simulated/floor/outdoors/grass/sif,
+/turf/simulated/floor/grass/outdoors/sif,
 /area/submap/house1)
 "am" = (
 /obj/item/target/syndicate,
-/turf/simulated/floor/outdoors/grass/sif,
+/turf/simulated/floor/grass/outdoors/sif,
 /area/submap/house1)
 "an" = (
 /turf/simulated/wall/wood,
@@ -278,11 +278,11 @@
 /area/submap/house1)
 "bd" = (
 /obj/structure/loot_pile/maint/trash,
-/turf/simulated/floor/outdoors/grass/sif,
+/turf/simulated/floor/grass/outdoors/sif,
 /area/submap/house1)
 "be" = (
 /obj/structure/loot_pile/maint/junk,
-/turf/simulated/floor/outdoors/grass/sif,
+/turf/simulated/floor/grass/outdoors/sif,
 /area/submap/house1)
 
 (1,1,1) = {"

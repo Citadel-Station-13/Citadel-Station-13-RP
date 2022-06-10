@@ -11,7 +11,7 @@
 	TRIUMPH_SET_ATMOS
 	allow_gas_overlays = FALSE
 
-/turf/simulated/floor/outdoors/grass/sif
+/turf/simulated/floor/grass/outdoors/sif
 	baseturfs = /turf/simulated/floor/outdoors/dirt
 
 // Overriding these for the sake of submaps that use them on other planets.

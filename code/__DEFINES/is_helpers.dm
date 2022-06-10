@@ -18,7 +18,11 @@
 
 #define isspaceturf(A) istype(A, /turf/space)
 
+#define isfloorturf(A) (istype(A, /turf/simulated/floor))
+
 #define ismineralturf(A) istype(A, /turf/simulated/mineral)
+
+#define istransparentturf(A) (HAS_TRAIT(A, TURF_Z_TRANSPARENT_TRAIT))
 
 //Objs
 ///override the byond proc because it returns true on children of /atom/movable that aren't objs

@@ -921,3 +921,13 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/interact(mob/user)
 	add_fingerprint(user)
 	ui_interact(user)
+
+/// Plays item's usesound, if any.
+/obj/item/proc/play_tool_sound(atom/target, volume=50)
+	if(target && usesound && volume)
+		var/played_sound = usesound
+
+		if(islist(usesound))
+			played_sound = pick(usesound)
+
+		playsound(target, played_sound, volume, TRUE)

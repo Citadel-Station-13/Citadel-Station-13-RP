@@ -18,7 +18,7 @@
 	var/base_state = "pipe-s"
 
 /obj/structure/disposalconstruct/Initialize(mapload, newtype, newdir, flipped, newsubtype)
-	. = ..(mapload, )
+	. = ..()
 	ptype = newtype
 	dir = newdir
 	if(ptype == DISPOSAL_PIPE_STRAIGHT && (dir in GLOB.cornerdirs))
@@ -44,7 +44,8 @@
 	else
 		update() // do_a_flip() calls update anyway, so, lazy way of catching unupdated pipe!
 
-	AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE, use_alpha = TRUE)
+	AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE)
+	update()
 
 // update iconstate and dpdir due to dir and type
 /obj/structure/disposalconstruct/proc/update()

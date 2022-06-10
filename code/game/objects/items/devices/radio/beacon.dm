@@ -51,8 +51,7 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 
 /obj/item/radio/beacon/anchored/Initialize(mapload)
 	. = ..()
-	var/turf/T = get_turf(src)
-	hide(hides_under_flooring() && !T.is_plating())
+	AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE)
 
 
 /obj/item/radio/beacon/anchored/attackby(obj/item/I, mob/living/user)

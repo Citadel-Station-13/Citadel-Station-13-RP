@@ -14,7 +14,7 @@
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/kitchen)
 "ae" = (
-/turf/simulated/floor/outdoors/grass,
+/turf/simulated/floor/grass/outdoors,
 /area/tether_away/beach/jungle)
 "af" = (
 /obj/structure/grille,
@@ -37,7 +37,7 @@
 /area/tether_away/beach/resort/kitchen)
 "ai" = (
 /obj/effect/overlay/palmtree_r,
-/turf/simulated/floor/outdoors/grass,
+/turf/simulated/floor/grass/outdoors,
 /area/tether_away/beach/jungle)
 "aj" = (
 /turf/simulated/floor/water/beach,
@@ -86,10 +86,10 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/lockermed)
 "au" = (
-/turf/simulated/floor/outdoors/grass/forest,
+/turf/simulated/floor/grass/outdoors/forest,
 /area/tether_away/beach/jungle)
 "av" = (
-/turf/simulated/floor/outdoors/grass{
+/turf/simulated/floor/grass/outdoors{
 	outdoors = 0
 	},
 /area/tether_away/beach/jungle)
@@ -118,7 +118,7 @@
 /area/tether_away/beach)
 "aC" = (
 /obj/effect/overlay/palmtree_l,
-/turf/simulated/floor/outdoors/grass,
+/turf/simulated/floor/grass/outdoors,
 /area/tether_away/beach/jungle)
 "aD" = (
 /turf/simulated/floor/tiled/eris/cafe,
@@ -281,7 +281,7 @@
 /area/tether_away/beach/water)
 "bl" = (
 /obj/tether_away_spawner/beach_outside,
-/turf/simulated/floor/outdoors/grass,
+/turf/simulated/floor/grass/outdoors,
 /area/tether_away/beach/jungle)
 "bm" = (
 /obj/effect/shuttle_landmark{
@@ -319,7 +319,7 @@
 /area/tether_away/beach/jungle)
 "bs" = (
 /obj/effect/overlay/coconut,
-/turf/simulated/floor/outdoors/grass,
+/turf/simulated/floor/grass/outdoors,
 /area/tether_away/beach/jungle)
 "bR" = (
 /obj/effect/map_effect/portal/line/side_a,
@@ -594,7 +594,7 @@
 /area/tether_away/beach/resort)
 "hQ" = (
 /obj/structure/flora/sif/subterranean,
-/turf/simulated/floor/outdoors/grass{
+/turf/simulated/floor/grass/outdoors{
 	outdoors = 0
 	},
 /area/tether_away/beach/cavebase)
@@ -676,7 +676,7 @@
 /area/tether_away/beach/resort)
 "kd" = (
 /obj/machinery/light/small,
-/turf/simulated/floor/outdoors/grass,
+/turf/simulated/floor/grass/outdoors,
 /area/tether_away/beach/resort/kitchen)
 "kg" = (
 /obj/machinery/vending/loadout/clothing,
@@ -1327,7 +1327,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/grass,
+/turf/simulated/floor/grass/outdoors,
 /area/tether_away/beach/resort/janibar)
 "yF" = (
 /obj/structure/barricade,
@@ -1387,7 +1387,7 @@
 /area/tether_away/beach/powershed)
 "Ar" = (
 /obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/outdoors/grass/forest,
+/turf/simulated/floor/grass/outdoors/forest,
 /area/tether_away/beach/jungle)
 "Aw" = (
 /obj/item/stool/padded,
@@ -1502,7 +1502,7 @@
 /area/tether_away/beach/jungle)
 "Dq" = (
 /obj/tether_away_spawner/beach_outside_friendly,
-/turf/simulated/floor/outdoors/grass,
+/turf/simulated/floor/grass/outdoors,
 /area/tether_away/beach/jungle)
 "Dr" = (
 /obj/effect/shuttle_landmark{
@@ -1646,7 +1646,7 @@
 /area/tether_away/beach/water)
 "IA" = (
 /obj/structure/flora/tree/jungle,
-/turf/simulated/floor/outdoors/grass/forest,
+/turf/simulated/floor/grass/outdoors/forest,
 /area/tether_away/beach/jungle)
 "IB" = (
 /obj/structure/closet/secure_closet/personal,
@@ -1787,7 +1787,7 @@
 	},
 /area/tether_away/beach/resort/janibar)
 "LQ" = (
-/turf/simulated/floor/outdoors/grass,
+/turf/simulated/floor/grass/outdoors,
 /area/tether_away/beach/cavebase)
 "LT" = (
 /obj/machinery/seed_extractor,
@@ -2069,7 +2069,7 @@
 /area/tether_away/beach/resort/janibar)
 "SQ" = (
 /obj/structure/flora/ausbushes/fernybush,
-/turf/simulated/floor/outdoors/grass,
+/turf/simulated/floor/grass/outdoors,
 /area/tether_away/beach/cavebase)
 "ST" = (
 /obj/machinery/door/airlock/glass_medical{
@@ -2155,7 +2155,7 @@
 /area/tether_away/beach/cavebase)
 "VJ" = (
 /obj/structure/sink/puddle,
-/turf/simulated/floor/outdoors/grass/forest,
+/turf/simulated/floor/grass/outdoors/forest,
 /area/tether_away/beach/jungle)
 "VS" = (
 /turf/simulated/floor/water/beach/corner{
@@ -2176,7 +2176,7 @@
 /turf/simulated/floor/tiled/eris/cafe,
 /area/tether_away/beach/resort/kitchen)
 "Wf" = (
-/turf/simulated/floor/outdoors/grass,
+/turf/simulated/floor/grass/outdoors,
 /area/tether_away/beach/resort)
 "Wj" = (
 /obj/structure/simple_door/wood,
@@ -2217,7 +2217,7 @@
 	},
 /area/tether_away/beach/water)
 "Xd" = (
-/turf/simulated/floor/outdoors/grass{
+/turf/simulated/floor/grass/outdoors{
 	outdoors = 0
 	},
 /area/tether_away/beach/cavebase)

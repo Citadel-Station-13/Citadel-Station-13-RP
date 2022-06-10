@@ -201,7 +201,7 @@
 /datum/map_z_level/triumph_lateload/away_m_world
 	name = "Away Mission - Gaia Planet"
 	z = Z_LEVEL_GAIA_PLANET
-	base_turf = /turf/simulated/floor/outdoors/grass/forest
+	base_turf = /turf/simulated/floor/grass/outdoors/forest
 
 // Frozen Planet Zone.
 /datum/map_template/triumph_lateload/away_p_world

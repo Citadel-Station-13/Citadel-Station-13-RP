@@ -17,7 +17,7 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/farm1)
 "e" = (
-/turf/simulated/floor/outdoors/grass/sif,
+/turf/simulated/floor/grass/outdoors/sif,
 /area/submap/farm1)
 "f" = (
 /obj/structure/railing{

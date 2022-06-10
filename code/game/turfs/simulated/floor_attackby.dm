@@ -1,3 +1,4 @@
+/*
 /turf/simulated/floor/attackby(obj/item/C as obj, mob/user as mob)
 
 	if(!C || !user)
@@ -113,7 +114,7 @@
 						broken = null
 					else
 						to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
-
+*/
 /turf/simulated/floor/proc/try_deconstruct_tile(obj/item/W as obj, mob/user as mob)
 	if(W.is_crowbar())
 		if(broken || burnt)

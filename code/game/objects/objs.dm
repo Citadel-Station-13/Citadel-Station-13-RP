@@ -119,12 +119,6 @@
 	if(istype(M) && M.client && M.machine == src)
 		src.attack_self(M)
 
-/obj/proc/hide(h)
-	return
-
-/obj/proc/hides_under_flooring()
-	return 0
-
 	/**
  * This proc is used for telling whether something can pass by this object in a given direction, for use by the pathfinding system.
  *

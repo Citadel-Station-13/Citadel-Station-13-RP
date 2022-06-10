@@ -11,6 +11,8 @@
 	clawfootstep = FOOTSTEP_HARD_CLAW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 
+	can_start_dirty = TRUE	// But let maints and decrepit areas have some randomness
+
 	var/attachment_holes = TRUE
 
 	/// If true, will allow tiles to replace us if the tile [wants to] [/obj/item/stack/tile/var/replace_plating].
@@ -20,13 +22,13 @@
 
 /turf/simulated/floor/plating/external
 	outdoors = TRUE
-/*
+
 /turf/simulated/floor/plating/setup_broken_states()
 	return list("platingdmg1", "platingdmg2", "platingdmg3")
 
 /turf/simulated/floor/plating/setup_burnt_states()
 	return list("panelscorched")
-*/
+
 
 /turf/simulated/floor/plating/examine(mob/user)
 	. = ..()

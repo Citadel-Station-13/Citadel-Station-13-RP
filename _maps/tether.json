@@ -17,7 +17,7 @@
         "Station":true,
         "Linkage":null,
         "Gravity":true,
-        "Baseturf":"/turf/simulated/floor/outdoors/grass/sif/virgo3b",
+        "Baseturf":"/turf/simulated/floor/grass/outdoors/sif/virgo3b",
 		"FacilityWeaponLock":true
       },
       {
@@ -67,14 +67,14 @@
         "Mining":true,
         "Linkage":null,
         "Gravity":true,
-        "Baseturf":"/turf/simulated/floor/outdoors/grass/sif/virgo3b",
+        "Baseturf":"/turf/simulated/floor/grass/outdoors/sif/virgo3b",
 		"FacilityWeaponLock":false
       },
       {
         "Station":true,
         "Linkage":null,
         "Gravity":true,
-        "Baseturf":"/turf/simulated/floor/outdoors/grass/sif/virgo3b",
+        "Baseturf":"/turf/simulated/floor/grass/outdoors/sif/virgo3b",
 		"FacilityWeaponLock":false
       }
    ],

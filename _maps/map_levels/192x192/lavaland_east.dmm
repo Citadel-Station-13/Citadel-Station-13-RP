@@ -261,7 +261,7 @@
 /area/lavaland/east/colony)
 "gl" = (
 /obj/structure/flora/tree/jungle,
-/turf/simulated/floor/outdoors/grass/lavaland/interior,
+/turf/simulated/floor/grass/outdoors/lavaland/interior,
 /area/lavaland/east/colony)
 "gm" = (
 /obj/effect/decal/cleanable/blood,
@@ -1225,7 +1225,7 @@
 /area/lavaland/east/colony)
 "zl" = (
 /obj/structure/flora/ausbushes/grassybush,
-/turf/simulated/floor/outdoors/grass/lavaland/interior,
+/turf/simulated/floor/grass/outdoors/lavaland/interior,
 /area/lavaland/east/colony)
 "zv" = (
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -1420,7 +1420,7 @@
 /area/lavaland/east/colony)
 "Do" = (
 /obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/outdoors/grass/lavaland/interior,
+/turf/simulated/floor/grass/outdoors/lavaland/interior,
 /area/lavaland/east/colony)
 "Dp" = (
 /obj/machinery/mineral/unloading_machine,
@@ -1435,7 +1435,7 @@
 /area/lavaland/east/colony)
 "Dr" = (
 /obj/structure/flora/ausbushes/leafybush,
-/turf/simulated/floor/outdoors/grass/lavaland/interior,
+/turf/simulated/floor/grass/outdoors/lavaland/interior,
 /area/lavaland/east/colony)
 "DB" = (
 /obj/structure/bed/double,
@@ -1559,7 +1559,7 @@
 /turf/simulated/floor/water/lavaland/interior,
 /area/lavaland/east/colony)
 "Fh" = (
-/turf/simulated/floor/outdoors/grass/lavaland/interior,
+/turf/simulated/floor/grass/outdoors/lavaland/interior,
 /area/lavaland/east/colony)
 "Fx" = (
 /obj/machinery/door/airlock{
@@ -2428,7 +2428,7 @@
 /area/lavaland/east/colony)
 "WH" = (
 /obj/structure/flora/ausbushes,
-/turf/simulated/floor/outdoors/grass/lavaland/interior,
+/turf/simulated/floor/grass/outdoors/lavaland/interior,
 /area/lavaland/east/colony)
 "WQ" = (
 /obj/effect/floor_decal/rust,
@@ -2664,11 +2664,11 @@
 /area/lavaland/east/colony)
 "Zh" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/outdoors/grass/lavaland/interior,
+/turf/simulated/floor/grass/outdoors/lavaland/interior,
 /area/lavaland/east/colony)
 "Zi" = (
 /obj/structure/flora/ausbushes/palebush,
-/turf/simulated/floor/outdoors/grass/lavaland/interior,
+/turf/simulated/floor/grass/outdoors/lavaland/interior,
 /area/lavaland/east/colony)
 "Zv" = (
 /obj/item/material/shard,

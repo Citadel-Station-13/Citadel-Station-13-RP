@@ -4,7 +4,7 @@
 /area/class_h/POIs/ranch)
 "b" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/outdoors/grass,
+/turf/simulated/floor/grass/outdoors,
 /area/class_h/POIs/ranch)
 "d" = (
 /obj/structure/flora/ausbushes/fernybush,
@@ -27,12 +27,12 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/grass,
+/turf/simulated/floor/grass/outdoors,
 /area/class_h/POIs/ranch)
 "k" = (
 /obj/structure/flora/ausbushes/grassybush,
 /mob/living/simple_mob/animal/passive/cow,
-/turf/simulated/floor/outdoors/grass,
+/turf/simulated/floor/grass/outdoors,
 /area/class_h/POIs/ranch)
 "m" = (
 /obj/structure/simple_door/wood,
@@ -52,17 +52,17 @@
 /area/class_h/POIs/ranch)
 "p" = (
 /obj/structure/flora/ausbushes/grassybush,
-/turf/simulated/floor/outdoors/grass,
+/turf/simulated/floor/grass/outdoors,
 /area/class_h/POIs/ranch)
 "v" = (
 /turf/simulated/floor/outdoors/beach/sand/dirt/classh,
 /area/class_h/POIs/ranch)
 "w" = (
 /mob/living/simple_mob/animal/passive/chicken,
-/turf/simulated/floor/outdoors/grass,
+/turf/simulated/floor/grass/outdoors,
 /area/class_h/POIs/ranch)
 "z" = (
-/turf/simulated/floor/outdoors/grass,
+/turf/simulated/floor/grass/outdoors,
 /area/class_h/POIs/ranch)
 "A" = (
 /turf/simulated/floor/holofloor/beach/water,
@@ -89,12 +89,12 @@
 /area/class_h/POIs/ranch)
 "I" = (
 /mob/living/simple_mob/animal/passive/cow,
-/turf/simulated/floor/outdoors/grass,
+/turf/simulated/floor/grass/outdoors,
 /area/class_h/POIs/ranch)
 "J" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /mob/living/simple_mob/animal/passive/chicken,
-/turf/simulated/floor/outdoors/grass,
+/turf/simulated/floor/grass/outdoors,
 /area/class_h/POIs/ranch)
 "K" = (
 /obj/structure/railing,

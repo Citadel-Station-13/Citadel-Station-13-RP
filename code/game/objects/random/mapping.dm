@@ -476,9 +476,9 @@
 		T1.outdoors = turf_outdoors
 
 /obj/random/turf/item_to_spawn()
-	return pick(prob(25);/turf/simulated/floor/outdoors/grass/sif,
+	return pick(prob(25);/turf/simulated/floor/grass/outdoors/sif,
 				prob(25);/turf/simulated/floor/outdoors/dirt,
-				prob(25);/turf/simulated/floor/outdoors/grass/sif/forest,
+				prob(25);/turf/simulated/floor/grass/outdoors/sif/forest,
 				prob(25);/turf/simulated/floor/outdoors/rocks)
 
 /obj/random/turf/lava

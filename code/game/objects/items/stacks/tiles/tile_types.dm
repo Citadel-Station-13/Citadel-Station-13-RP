@@ -18,6 +18,10 @@
 	max_amount = 60
 	drop_sound = 'sound/items/drop/axe.ogg'
 	pickup_sound = 'sound/items/pickup/axe.ogg'
+	/// What type of turf does this tile produce.
+	var/turf_type = null
+	/// What dir will the turf have?
+	var/turf_dir = SOUTH
 
 /obj/item/stack/tile/Initialize(mapload, new_amount, merge)
 	. = ..()

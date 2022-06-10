@@ -19,7 +19,7 @@
 	heat_capacity = 10000
 	// tiled_dirt = TRUE
 
-	// overfloor_placed = TRUE
+	overfloor_placed = TRUE
 
 	// Damage to flooring.
 	var/broken = FALSE
@@ -49,24 +49,139 @@
 
 /turf/simulated/floor/Initialize(mapload, floortype)
 	. = ..()
-	if(!floortype && initial_flooring)
-		floortype = initial_flooring
+	if(broken_states)
+		stack_trace("broken_states defined at the object level for [type], move it to setup_broken_states()")
+	else
+		broken_states = string_list(setup_broken_states())
+	if(burnt_states)
+		stack_trace("burnt_states defined at the object level for [type], move it to setup_burnt_states()")
+	else
+		var/list/new_burnt_states = setup_burnt_states()
+		if(new_burnt_states)
+			burnt_states = string_list(new_burnt_states)
+	if(!broken && broken_states && (icon_state in broken_states))
+		broken = TRUE
+	if(!burnt && burnt_states && (icon_state in burnt_states))
+		burnt = TRUE
 
-	if(floortype)
-		set_flooring(get_flooring_data(floortype), TRUE)
-
+	// if(mapload && prob(33))
+	// 	MakeDirty()
 	if(mapload && can_dirty && can_start_dirty)
 		if(prob(dirty_prob))
 			dirt += rand(50,100)
 			update_dirt() //5% chance to start with dirt on a floor tile- give the janitor something to do
 
+	// if(is_station_level(z))
+	// 	GLOB.station_turfs += src
 	if(outdoors)
 		SSplanets.addTurf(src)
 
+/turf/simulated/floor/proc/setup_broken_states()
+	return list("damaged1", "damaged2", "damaged3", "damaged4", "damaged5")
+
+/turf/simulated/floor/proc/setup_burnt_states()
+	return
+
 /turf/simulated/floor/Destroy()
+	// if(is_station_level(z))
+	// 	GLOB.station_turfs -= src
 	if(outdoors)
 		SSplanets.removeTurf(src)
 	return ..()
+
+/turf/simulated/floor/proc/break_tile_to_plating()
+	var/turf/simulated/floor/plating/T = make_plating()
+	if(!istype(T))
+		return
+	T.break_tile()
+
+/turf/simulated/floor/break_tile()
+	if(broken)
+		return
+	icon_state = pick(broken_states)
+	broken = 1
+
+/turf/simulated/floor/burn_tile()
+	if(broken || burnt)
+		return
+	if(LAZYLEN(burnt_states))
+		icon_state = pick(burnt_states)
+	else
+		icon_state = pick(broken_states)
+	burnt = 1
+
+/// Things seem to rely on this actually returning plating. Override it if you have other baseturfs.
+/turf/simulated/floor/proc/make_plating(force = FALSE)
+	return ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
+
+///For when the floor is placed under heavy load. Calls break_tile(), but exists to be overridden by floor types that should resist crushing force.
+/turf/simulated/floor/proc/crush()
+	break_tile()
+
+/turf/simulated/floor/ChangeTurf(path, new_baseturf, flags)
+	if(!isfloorturf(src))
+		return ..() //fucking turfs switch the fucking src of the fucking running procs
+	if(!ispath(path, /turf/simulated/floor))
+		return ..()
+	var/old_dir = dir
+	var/turf/simulated/floor/W = ..()
+	W.setDir(old_dir)
+	W.update_appearance()
+	return W
+
+/turf/simulated/floor/attackby(obj/item/object, mob/living/user, params)
+	if(!object || !user)
+		return TRUE
+	. = ..()
+	if(.)
+		return .
+	if(overfloor_placed && istype(object, /obj/item/stack/tile))
+		try_replace_tile(object, user, params)
+		return TRUE
+	// if(user.a_intent == INTENT_HARM && istype(object, /obj/item/stack/sheet))
+	// 	var/obj/item/stack/sheet/sheets = object
+	// 	return sheets.on_attack_floor(user, params)
+	return FALSE
+
+/turf/simulated/floor/crowbar_act(mob/living/user, obj/item/I)
+	if(overfloor_placed && pry_tile(I, user))
+		return TRUE
+
+/turf/simulated/floor/proc/try_replace_tile(obj/item/stack/tile/T, mob/user, params)
+	if(T.turf_type == type && T.turf_dir == dir)
+		return
+	var/obj/item/tool/crowbar/CB = user.is_holding_item_of_type(/obj/item/tool/crowbar)
+	if(!CB)
+		return
+	var/turf/simulated/floor/plating/P = pry_tile(CB, user, TRUE)
+	if(!istype(P))
+		return
+	P.attackby(T, user, params)
+
+/turf/simulated/floor/proc/pry_tile(obj/item/I, mob/user, silent = FALSE)
+	I.play_tool_sound(src, 80)
+	return remove_tile(user, silent)
+
+/turf/simulated/floor/proc/remove_tile(mob/user, silent = FALSE, make_tile = TRUE, force_plating)
+	if(broken || burnt)
+		broken = FALSE
+		burnt = FALSE
+		if(user && !silent)
+			to_chat(user, SPAN_NOTICE("You remove the broken plating."))
+	else
+		if(user && !silent)
+			to_chat(user, SPAN_NOTICE("You remove the floor tile."))
+		if(make_tile)
+			spawn_tile()
+	return make_plating(force_plating)
+
+/turf/simulated/floor/proc/has_tile()
+	return floor_tile
+
+/turf/simulated/floor/proc/spawn_tile()
+	if(!has_tile())
+		return null
+	return new floor_tile(src)
 
 /turf/simulated/proc/make_outdoors()
 	outdoors = TRUE
@@ -86,41 +201,6 @@
 			make_outdoors()
 		else
 			make_indoors()
-
-/**
- * TODO: REWORK FLOORING GETTERS/INIT/SETTERS THIS IS BAD
- */
-
-/turf/simulated/floor/proc/set_flooring(decl/flooring/newflooring, init)
-	make_plating(null, TRUE, TRUE)
-	flooring = newflooring
-	footstep_sounds = newflooring.footstep_sounds
-	// We are plating switching to flooring, swap out old_decals for decals
-	var/list/overfloor_decals = old_decals
-	old_decals = decals
-	decals = overfloor_decals
-	if(!init)
-		QUEUE_SMOOTH(src)
-		QUEUE_SMOOTH_NEIGHBORS(src)
-	levelupdate()
-
-/// Things seem to rely on this actually returning plating. Override it if you have other baseturfs.
-/turf/simulated/floor/proc/make_plating(force = FALSE)
-	return ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
-
-/turf/simulated/floor/break_tile()
-	if(broken)
-		return
-	icon_state = pick(broken_states)
-	broken = TRUE
-
-///For when the floor is placed under heavy load. Calls break_tile(), but exists to be overridden by floor types that should resist crushing force.
-/turf/simulated/floor/proc/crush()
-	break_tile()
-
-/turf/simulated/floor/levelupdate()
-	for(var/obj/O in src)
-		O.hide(O.hides_under_flooring() && src.flooring)
 
 /turf/simulated/floor/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	switch(passed_mode)

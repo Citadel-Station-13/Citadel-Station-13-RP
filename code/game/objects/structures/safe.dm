@@ -174,13 +174,5 @@ obj/structure/safe/ex_act(severity)
 
 /obj/structure/safe/floor/Initialize(mapload)
 	. = ..()
-	var/turf/T = loc
-	if(istype(T) && !T.is_plating())
-		hide(1)
+	AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE)
 	update_icon()
-
-/obj/structure/safe/floor/hide(var/intact)
-	invisibility = intact ? 101 : 0
-
-/obj/structure/safe/floor/hides_under_flooring()
-	return 1

@@ -99,21 +99,31 @@
 	flags |= INITIALIZED
 
 	// by default, vis_contents is inherited from the turf that was here before
-	vis_contents.len = 0
+	vis_contents.Cut()
 
 	assemble_baseturfs()
+
+	levelupdate()
+
+	if (length(smoothing_groups))
+		sortTim(smoothing_groups) //In case it's not properly ordered, let's avoid duplicate entries with the same values.
+		SET_BITFLAG_LIST(smoothing_groups)
+	if (length(canSmoothWith))
+		sortTim(canSmoothWith)
+		if(canSmoothWith[length(canSmoothWith)] > MAX_S_TURF) //If the last element is higher than the maximum turf-only value, then it must scan turf contents for smoothing targets.
+			smoothing_flags |= SMOOTH_OBJ
+		SET_BITFLAG_LIST(canSmoothWith)
+	if (smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
+		QUEUE_SMOOTH(src)
+
+	visibilityChanged()
 
 	//atom color stuff
 	if(color)
 		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
 
-/*
-	if (canSmoothWith)
-		canSmoothWith = typelist("canSmoothWith", canSmoothWith)
-*/
-
-	for(var/atom/movable/AM in src)
-		Entered(AM)
+	for(var/atom/movable/content as anything in src)
+		Entered(content, null)
 
 	var/area/A = loc
 	if(!IS_DYNAMIC_LIGHTING(src) && IS_DYNAMIC_LIGHTING(A))
@@ -122,12 +132,21 @@
 	if (light_power && light_range)
 		update_light()
 
+	var/turf/T = SSmapping.get_turf_above(src)
+	if(T)
+		T.multiz_turf_new(src, DOWN)
+	T = SSmapping.get_turf_below(src)
+	if(T)
+		T.multiz_turf_new(src, UP)
+
 	if (opacity)
 		has_opaque_atom = TRUE
 
 	//Pathfinding related
 	if(movement_cost && pathweight == 1)	// This updates pathweight automatically.
 		pathweight = movement_cost
+
+	ComponentInitialize()
 
 	return INITIALIZE_HINT_NORMAL
 
@@ -136,14 +155,13 @@
 	if(!changing_turf)
 		stack_trace("Incorrect turf deletion")
 	changing_turf = FALSE
-/*
 	var/turf/T = SSmapping.get_turf_above(src)
 	if(T)
 		T.multiz_turf_del(src, DOWN)
 	T = SSmapping.get_turf_below(src)
 	if(T)
 		T.multiz_turf_del(src, UP)
-*/
+
 	if(force)
 		..()
 		//this will completely wipe turf state
@@ -151,12 +169,15 @@
 		for(var/A in B.contents)
 			qdel(A)
 		return
-	// SSair.remove_from_active(src)
-	// visibilityChanged()
+
+	visibilityChanged()
 	// QDEL_LIST(blueprint_data)
 	flags &= ~INITIALIZED
 	// requires_activation = FALSE
 	..()
+
+/turf/proc/visibilityChanged()
+	GLOB.cameranet.updateVisibility(src)
 
 /turf/ex_act(severity)
 	return 0

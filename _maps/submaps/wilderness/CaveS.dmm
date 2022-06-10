@@ -107,7 +107,7 @@
 	},
 /area/submap/CaveS)
 "v" = (
-/turf/simulated/floor/outdoors/grass/sif/forest,
+/turf/simulated/floor/grass/outdoors/sif/forest,
 /area/submap/CaveS)
 "w" = (
 /obj/random/mob/spider/mutant,
@@ -121,11 +121,11 @@
 /area/submap/CaveS)
 "y" = (
 /obj/structure/flora/tree/sif,
-/turf/simulated/floor/outdoors/grass/sif/forest,
+/turf/simulated/floor/grass/outdoors/sif/forest,
 /area/submap/CaveS)
 "z" = (
 /obj/random/landmine,
-/turf/simulated/floor/outdoors/grass/sif/forest,
+/turf/simulated/floor/grass/outdoors/sif/forest,
 /area/submap/CaveS)
 "A" = (
 /turf/simulated/floor,

@@ -13,7 +13,7 @@
 /turf/template_noop,
 /area/template_noop)
 "ad" = (
-/turf/simulated/floor/outdoors/grass/sif,
+/turf/simulated/floor/grass/outdoors/sif,
 /area/template_noop)
 "ae" = (
 /obj/structure/railing{
@@ -25,7 +25,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/grass/sif,
+/turf/simulated/floor/grass/outdoors/sif,
 /area/template_noop)
 "ag" = (
 /turf/simulated/floor/outdoors/dirt,
@@ -38,7 +38,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/grass/sif,
+/turf/simulated/floor/grass/outdoors/sif,
 /area/template_noop)
 "aj" = (
 /obj/structure/target_stake,
@@ -46,11 +46,11 @@
 /area/template_noop)
 "ak" = (
 /obj/item/target,
-/turf/simulated/floor/outdoors/grass/sif,
+/turf/simulated/floor/grass/outdoors/sif,
 /area/template_noop)
 "al" = (
 /obj/item/target/syndicate,
-/turf/simulated/floor/outdoors/grass/sif,
+/turf/simulated/floor/grass/outdoors/sif,
 /area/template_noop)
 "am" = (
 /turf/simulated/wall/wood,
@@ -272,11 +272,11 @@
 /area/template_noop)
 "bc" = (
 /obj/structure/loot_pile/maint/trash,
-/turf/simulated/floor/outdoors/grass/sif,
+/turf/simulated/floor/grass/outdoors/sif,
 /area/template_noop)
 "bd" = (
 /obj/structure/loot_pile/maint/junk,
-/turf/simulated/floor/outdoors/grass/sif,
+/turf/simulated/floor/grass/outdoors/sif,
 /area/template_noop)
 "be" = (
 /obj/structure/sign/kiddieplaque{

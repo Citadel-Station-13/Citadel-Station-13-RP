@@ -1,11 +1,6 @@
-
-#define MIDDLE_CLICK 0
-#define ALT_CLICK 1
-#define CTRL_CLICK 2
 #define MAX_HARDSUIT_CLICK_MODE 2
 
-/client
-	var/hardsuit_click_mode = MIDDLE_CLICK
+/client/var/hardsuit_click_mode = MIDDLE_CLICK
 
 /client/verb/toggle_hardsuit_mode()
 	set name = "Toggle Hardsuit Activation Mode"

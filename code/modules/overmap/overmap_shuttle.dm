@@ -178,7 +178,3 @@
 		if(contents.len == 0)
 			user.unEquip(W, target = src)
 	update_icon()
-
-// Walls hide stuff inside them, but we want to be visible.
-/obj/structure/fuel_port/hide()
-	return

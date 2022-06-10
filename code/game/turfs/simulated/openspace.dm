@@ -79,11 +79,6 @@
 			A.fall()
 	SSopenspace.add_turf(src, 1)
 
-// Override to make sure nothing is hidden
-/turf/simulated/open/levelupdate()
-	for(var/obj/O in src)
-		O.hide(0)
-
 /turf/simulated/open/examine(mob/user)
 	. = ..()
 	var/depth = 1

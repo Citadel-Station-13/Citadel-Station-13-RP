@@ -871,11 +871,10 @@
 	icon_base = "grass-heavy"
 	has_base_range = 3
 
-/turf/simulated/floor/outdoors/grass/heavy
+/turf/simulated/floor/grass/outdoors/heavy
 	name = "heavy grass"
 	icon_state = "grass-heavy0"
 	edge_blending_priority = 4
-	initial_flooring = /decl/flooring/grass/heavy
 	baseturfs = /turf/simulated/floor/outdoors/dirt
 	grass_chance = 40
 
@@ -883,7 +882,7 @@
 		/obj/structure/flora/ausbushes/sparsegrass,
 		/obj/structure/flora/ausbushes/fullgrass
 		)
-/turf/simulated/floor/outdoors/grass/heavy/interior
+/turf/simulated/floor/grass/outdoors/heavy/interior
     name = "heavy grass"
     desc = "A dense sheet of harvested turf used in interior decoration."
     outdoors = FALSE
