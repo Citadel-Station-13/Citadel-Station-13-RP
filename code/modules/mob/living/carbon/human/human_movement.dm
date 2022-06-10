@@ -222,7 +222,7 @@
 	return(prob_slip)
 
 // Handle footstep sounds
-/mob/living/carbon/human/handle_footstep(var/turf/T)
+/mob/living/carbon/human/handle_footstep(turf/T)
 	if(is_incorporeal())
 		return
 	if(!config_legacy.footstep_volume || !T.footstep_sounds || !T.footstep_sounds.len)
@@ -263,4 +263,3 @@
 		return // Far less likely to make noise in no gravity
 
 	playsound(T, S, volume, FALSE)
-	return

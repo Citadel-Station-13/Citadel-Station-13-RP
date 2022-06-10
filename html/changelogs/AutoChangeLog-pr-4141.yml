@@ -1,8 +1,0 @@
-author: "Zandario"
-delete-after: True
-changes: 
-  - bugfix: "Fixes Station Alert Console TGUI"
-  - bugfix: "Fixes Pipe Dispenser TGUI"
-  - bugfix: "Fixes Biogenerator TGUI"
-  - bugfix: "Fixes Remote Air Alarm Controller TGUI"
-  - bugfix: "Fixes Power Monitor TGUI"

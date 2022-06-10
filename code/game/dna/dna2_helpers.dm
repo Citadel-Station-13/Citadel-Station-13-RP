@@ -238,24 +238,13 @@
 		H.custom_ask = dna.custom_ask
 		H.custom_whisper = dna.custom_whisper
 		H.custom_exclaim = dna.custom_exclaim
-		if(istype(H.species,/datum/species/custom))
-			var/datum/species/custom/CS = H.species
-			CS.copy_from(dna.base_species, dna.species_traits, src)
-			CS.blood_color = dna.blood_color
+		H.species.blood_color = dna.blood_color
+		var/datum/species/S = H.species
+		S.copy_from(dna.base_species, dna.species_traits, H)
 
-		if(istype(H.species,/datum/species/shapeshifter/xenochimera))
-			var/datum/species/shapeshifter/xenochimera/CS = H.species
-			CS.copy_from(dna.base_species,dna.species_traits,src)
-			CS.blood_color = dna.blood_color
-			H.regenerate_icons()
-
-		if(istype(H.species,/datum/species/alraune))
-			var/datum/species/alraune/CS = H.species
-			CS.copy_from(dna.base_species,dna.species_traits,src)
-			CS.blood_color = dna.blood_color
 		H.force_update_organs()
 		H.force_update_limbs()
-		//H.update_body(0) // Done in force_update_limbs already
+		//H.update_icons_body(0) // Done in force_update_limbs already
 		H.update_eyes()
 		H.update_hair()
 
@@ -264,8 +253,7 @@
 		return FALSE
 
 /mob/living/carbon/human/proc/force_update_organs()
-	for(var/organ in organs + internal_organs)
-		var/obj/item/organ/O = organ
+	for(var/obj/item/organ/O as anything in organs + internal_organs)
 		O.species = species
 
 /// Used below, simple injection modifier.

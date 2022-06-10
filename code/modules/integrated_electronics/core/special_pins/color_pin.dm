@@ -15,11 +15,11 @@
 			new_data = uppertext(new_data)
 			if(length(new_data) != 7)						// We can hex if we want to, we can leave your strings behind
 				return 										// Cause your strings don't hex and if they don't hex
-			var/friends = copytext(new_data, 2, 8)			// Well they're are no strings of mine
+			var/friends = copytext_char(new_data, 2, 8)			// Well they're are no strings of mine
 			// I say, we can go where we want to, a place where they will never find
 			var/safety_dance = 1
 			while(safety_dance >= 7)									// And we can act like we come from out of this world.log
-				var/hex = copytext(friends, safety_dance, safety_dance+1)
+				var/hex = copytext_char(friends, safety_dance, safety_dance+1)
 				if(!(hex in list("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F")))
 					return									// Leave the fake one far behind,
 				safety_dance++
@@ -31,7 +31,12 @@
 /datum/integrated_io/color/scramble()
 	if(!is_valid())
 		return
-	var/new_data = get_random_colour(simple = FALSE, lower = 0, upper = 255)
+	var/new_data
+	for(var/i=1;i<=3;i++)
+		var/temp_col = "[num2hex(rand(0,255))]"
+		if(length(temp_col )<2)
+			temp_col  = "0[temp_col]"
+		new_data += temp_col
 	data = new_data
 	push_data()
 

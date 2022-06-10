@@ -211,6 +211,11 @@ var/list/table_icon_cache = list()
 	else
 		return ..()
 
+/obj/structure/table/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
+	. = !density
+	if(istype(caller))
+		. = . || (caller.pass_flags & PASSTABLE)
+
 /obj/structure/table/proc/reinforce_table(obj/item/stack/material/S, mob/user)
 	if(reinforced)
 		to_chat(user, "<span class='warning'>\The [src] is already reinforced!</span>")

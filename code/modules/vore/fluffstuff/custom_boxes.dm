@@ -309,6 +309,10 @@ Swimsuits, for general use, to avoid arriving to work with your swimsuit.
 	name = "Latex Swimsuit capsule"
 	has_items = list(/obj/item/clothing/under/swimsuit/latex)
 
+/obj/item/storage/box/fluff/swimsuit/risque
+	name = "Risque Swimsuit capsule"
+	has_items = list(/obj/item/clothing/under/swimsuit/risque)
+
 //Monkey boxes for the new primals we have
 /obj/item/storage/box/monkeycubes/sobakacubes
 	name = "sobaka cube box"
