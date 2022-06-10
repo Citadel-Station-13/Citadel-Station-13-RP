@@ -78,3 +78,15 @@
 		I = item_by_slot(slots)
 		if(I)
 			. += I
+
+/**
+ * equip to slots if possible, in order
+ *
+ * return slot equipped to if success, otherwise null
+ */
+/mob/proc/equip_to_slots_if_possible(obj/item/I, list/slots, silent, update_icons, ignore_fluff)
+	if(!islist(slots))
+		return equip_to_slot_if_possible(I, slots, silent, update_icons, ignore_fluff)? slots : null
+	for(var/slot in slots)
+		if(equip_to_slot_if_possible(I, slot, silent, update_icons, ignore_fluff))
+			return slot

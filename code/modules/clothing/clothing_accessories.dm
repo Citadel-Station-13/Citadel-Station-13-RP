@@ -1,3 +1,35 @@
+/obj/item/clothing/equipped(mob/user, slot, accessory, silent, creation)
+	. = ..()
+	// propagate through accessories
+	// DO NOT ALLOW NESTED ACCESSORIES
+	if(!accessory && LAZYLEN(accessories))
+		for(var/obj/item/I as anything in accessories)
+			I.equipped(user, slot, TRUE)
+
+/obj/item/clothing/unequipped(mob/user, slot, accessory, silent, creation)
+	. = ..()
+	// propagate through accessories
+	// DO NOT ALLOW NESTED ACCESSORIES
+	if(!accessory && LAZYLEN(accessories))
+		for(var/obj/item/I as anything in accessories)
+			I.unequipped(user, slot, TRUE)
+
+/obj/item/clothing/pickup(mob/user, accessory, silent)
+	. = ..()
+	// propagate through accessories
+	// DO NOT ALLOW NESTED ACCESSORIES
+	if(!accessory && LAZYLEN(accessories))
+		for(var/obj/item/I as anything in accessories)
+			I.equipped(user, slot, TRUE)
+
+/obj/item/clothing/dropped(mob/user, accessory, silent)
+	. = ..()
+	// propagate through accessories
+	// DO NOT ALLOW NESTED ACCESSORIES
+	if(!accessory && LAZYLEN(accessories))
+		for(var/obj/item/I as anything in accessories)
+			I.unequipped(user, slot, TRUE)
+
 /obj/item/clothing/proc/can_attach_accessory(obj/item/clothing/accessory/A)
 	//Just no, okay
 	if(!A.slot)

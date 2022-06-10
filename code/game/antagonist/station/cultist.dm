@@ -62,12 +62,11 @@ var/datum/antagonist/cultist/cult
 		return 0
 
 	var/obj/item/paper/talisman/supply/T = new(player)
-	if(player.equip_to_slots_if_possible(list(
+	if(player.equip_to_slots_if_possible(T, list(
 		SLOT_ID_LEFT_POCKET,
-		SLOT_ID_RIGHT_POCKET
+		SLOT_ID_RIGHT_POCKET,
+		SLOT_ID_HANDS
 	)))
-		return
-	if(player.put_in_hands(T))
 		return
 	if(!player.force_equip_to_slot_or_del(T, /datum/inventory_slot_meta/abstract/put_in_storage))
 		to_chat(player, SPAN_WARNING("Failed to equip you with a talismen. Ahelp."))

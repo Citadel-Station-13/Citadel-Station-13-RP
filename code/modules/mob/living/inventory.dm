@@ -40,9 +40,7 @@
 
 #warn has_hands var or something else?
 
-#warn if something is already equipped, make sure to shuffle slots/whatnot properly!
 #warn MAKE SURE TO CHECK CAN UNEQUIP FOR SLOTS...
-#warn add fingerprint, interaction flags
 /mob/living/put_in_left_hand(obj/item/I, force)
 	if(!I)
 		return TRUE
@@ -80,8 +78,17 @@
 	return TRUE
 
 /mob/living/proc/_common_handle_put_in_hand(obj/item/I, force)
-
-#warn clusterfuck here
+	if(!(I.interaction_flags_atom & INTERACT_ATOM_NO_FINGERPRINT_ON_TOUCH))
+		I.add_fingerprint(src)
+	else
+		I.add_hiddenprint(src)
+	var/existing_slot = is_in_inventory(I)
+	if(existing_slot && handle_slot_reequip(I, SLOT_ID_HANDS, existing_slot))
+		return TRUE
+	// newly equipped
+	I.pickup(src)
+	I.equipped(src, SLOT_ID_HANDS)
+	return TRUE
 
 /mob/living/put_in_hand(obj/item/I, index, force)
 	// TODO: WHEN MULTIHAND IS DONE, BESURE TO MAKE THIS HAVE THE LOGIC I PUT INI PUT IN L/R HANDS!!

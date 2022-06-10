@@ -130,3 +130,95 @@
  */
 /obj/item/proc/_inv_return_attached()
 	return src
+
+
+#warn refactor
+//the mob M is attempting to equip this item into the slot passed through as 'slot'. Return 1 if it can do this and 0 if it can't.
+//If you are making custom procs but would like to retain partial or complete functionality of this one, include a 'return ..()' to where you want this to happen.
+//Set disable_warning to 1 if you wish it to not give you outputs.
+//Should probably move the bulk of this into mob code some time, as most of it is related to the definition of slots and not item-specific
+/obj/item/proc/mob_can_equip(M as mob, slot, disable_warning = 0)
+	if(!slot)
+		return 0
+	if(!M)
+		return 0
+
+	if(!ishuman(M)) return 0
+
+	var/mob/living/carbon/human/H = M
+	var/list/mob_equip = list()
+	#warn abstract check goes before equip slots
+	if(H.species.hud && H.species.hud.equip_slots)
+		mob_equip = H.species.hud.equip_slots
+
+	if(H.species && !(slot in mob_equip))
+		return 0
+
+	//First check if the item can be equipped to the desired slot.
+	if("[slot]" in slot_flags_enumeration)
+		var/req_flags = slot_flags_enumeration["[slot]"]
+		if(!(req_flags & slot_flags))
+			return 0
+
+	//Next check if the slot is accessible.
+	var/mob/_user = disable_warning? null : H
+	if(!H.slot_is_accessible(slot, src, _user))
+		return 0
+
+	//Lastly, check special rules for the desired slot.
+	switch(slot)
+		if(SLOT_ID_WORN_ID)
+			if(!H.w_uniform && (SLOT_ID_UNIFORM in mob_equip))
+				if(!disable_warning)
+					to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [name].</span>")
+				return 0
+		if(SLOT_ID_LEFT_POCKET, SLOT_ID_RIGHT_POCKET)
+			if(!H.w_uniform && (SLOT_ID_UNIFORM in mob_equip))
+				if(!disable_warning)
+					to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [name].</span>")
+				return 0
+			if(slot_flags & SLOT_DENYPOCKET)
+				return 0
+			if( w_class > ITEMSIZE_SMALL && !(slot_flags & SLOT_POCKET) )
+				return 0
+		if(SLOT_ID_SUIT_STORAGE)
+			if(!H.wear_suit && (SLOT_ID_SUIT in mob_equip))
+				if(!disable_warning)
+					to_chat(H, "<span class='warning'>You need a suit before you can attach this [name].</span>")
+				return 0
+			if(!H.wear_suit.allowed)
+				if(!disable_warning)
+					to_chat(usr, "<span class='warning'>You somehow have a suit with no defined allowed items for suit storage, stop that.</span>")
+				return 0
+			if( !(istype(src, /obj/item/pda) || istype(src, /obj/item/pen) || is_type_in_list(src, H.wear_suit.allowed)) )
+				return 0
+		if(slot_in_backpack) //used entirely for equipping spawned mobs or at round start
+			var/allow = 0
+			if(H.back && istype(H.back, /obj/item/storage/backpack))
+				var/obj/item/storage/backpack/B = H.back
+				if(B.can_be_inserted(src,1))
+					allow = 1
+			if(!allow)
+				return 0
+		if(slot_tie)
+			var/allow = 0S
+			for(var/obj/item/clothing/C in H.worn_clothing)	//Runs through everything you're wearing, returns if you can't attach the thing
+				if(C.can_attach_accessory(src))
+					allow = 1
+					break
+			if(!allow)
+				if(!disable_warning)
+					to_chat(H, "<span class='warning'>You're not wearing anything you can attach this [name] to.</span>")
+				return 0
+	return 1
+
+#warn refactor
+/obj/item/proc/mob_can_unequip(mob/M, slot, disable_warning = 0)
+	if(!slot) return 0
+	if(!M) return 0
+
+	if(!canremove)
+		return 0
+	if(!M.slot_is_accessible(slot, src, disable_warning? null : M))
+		return 0
+	return 1

@@ -42,7 +42,6 @@
 		if(/datum/inventory_slot_meta/abstract/attach_as_accessory)
 			for(var/obj/item/clothing/C in get_equipped_items(FALSE, FALSE))
 				if(C.attempt_attach_accessory(I))
-					return TRUE
 			return FALSE
 		else
 			CRASH("Invalid abstract slot [slot]")
@@ -225,11 +224,37 @@
  * @params
  * - I - item
  * - slot - slot ID
- * - force - we can forcefully dislodge an item if needed, also ignore nodrops
+ * - user - user trying to equip that thing to us there
+ * - force - we can forcefully dislodge an item if needed, also ignore nodrops and "fluff" blockers.
  * - disallow_delay - fail if we'd need to sleep
- * - ignore_fluff - ignore self equip delay, item zone checks, etc
+ * - ignore_fluff - ignore self equip delay, item zone checks, etc. implied by force.
+ * - silent - don't display a warning message if we find an error
+ * - harder_force - normally when you force yo are saying ignore fluff conflicts/nodrops/dislodge item if needed. this means we also bypass "soft" safety checks, like an item equipping to a slot that it doesn't have the flags for. requires force.
  */
-/mob/proc/can_equip(obj/item/I, slot, force, disallow_delay, ignore_fluff)
+/mob/proc/can_equip(obj/item/I, slot, mob/user, force, disallow_delay, ignore_fluff, silent, harder_force)
+	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
+	var/self_equip = user == src
+	if(!slot_meta)
+		. = FALSE
+		CRASH("Failed to resolve to slot datm.")
+
+	switch(can_equip_conflict_check(I, slot))
+		if(CAN_EQUIP_SLOT_CONFLICT_HARD)
+			if(!silent)
+				to_chat(user, SPAN_WARNING("[self_equip? "You" : "They"] are already [slot_meta.display_plural? "holding too many things" : "wearing something"] [slot_meta.display_preposition] [self_equip? "your" : "their"] [slot_meta.display_name"]."))
+			return FALSE
+		if(CAN_EQUIP_SLOT_CONFLICT_SOFT)
+			if(!force && !harder_force)
+				if(!silent)
+					to_chat(user, SPAN_WARNING("[self_equip? "You" : "They"] are already [slot_meta.display_plural? "holding too many things" : "wearing something"] [slot_meta.display_preposition] [self_equip? "your" : "their"] [slot_meta.display_name"]."))
+				return FALSE
+
+	if(!can_equip_semantic_check(I, slot, user) && (!force || !harder_force))
+		if(!silent)
+			to_chat(user, SPAN_WARNING("[I] doesn't go there!"))
+		return FALSE
+
+
 	#warn impl
 
 /**
@@ -257,12 +282,56 @@
  */
 /mob/proc/inventory_slot_reachability_conflict(obj/item/I, slot, mob/user)
 
+/**
+ * semantic check - should this thing ever be here?
+ *
+ * return TRUE if conflicting, otherwise FALSE
+ */
+/mob/proc/inventory_slot_semantic_conflict(obj/item/I, slot, mob/user)
+	. = FALSE
+	switch(slot)
+		if(SLOT_ID_LEGCUFFED)
+			if(!istype(I, /obj/item/handcuffs/legcuffs))
+				return TRUE
+		if(SLOT_ID_HANDCUFFED)
+			// TODO: refactor handcuffs
+			if(!istype(I, /obj/item/handcuffs/legcuffs) || istype(I, /obj/item/handcuffs/legcuffs))
+				return TRUE
+
+/**
+ * slot check - does this item fit here?
+ *
+ * return TRUE/FALSE
+ */
+/mob/proc/can_equip_slot_check(obj/item/I, slot, mob/user)
 
 #warn impl
 /mob/proc/_equip_item(obj/item/I, slot, force, silent, update_icons, ignore_fluff)
 	#warn this handles stuff like calling equipped/unequipped on slot swaps, etc
 	#warn make sure to shuffle around properly/call the right procs
+	#warn make sure to handle item reequip!
 	update_action_buttons()
+
+/**
+ * checks if we already have something in our inventory
+ * if so, this will shift the slots over, calling equipped/unequipped automatically
+ * this does absolutely NO safety checks, and doesn't even set vars; its sole job is to handle the call chain.
+ *
+ * returns old slot if slot shifted, otherwise null
+ */
+/mob/proc/_handle_item_reequip(obj/item/I, slot, old_slot)
+	if(!old_slot)
+		// DO NOT USE _slot_by_item - at this point, the item has already been var-set into the new slot!
+		// slot_by_item however uses cached values still!
+		old_slot = slot_by_item(I)
+		if(!old_slot)
+			// still not there, wasn't already in inv
+			return
+	// this IS a slot shift!
+	. = old_slot
+	// handle procs
+	I.unequipped(src, old_slot)
+	I.equipped(src, slot)
 
 /**
  * get all equipped items
@@ -349,7 +418,7 @@
 
 /**
  * THESE PROCS MUST BE OVERRIDDEN FOR NEW SLOTS ON MOBS
- * yes, i managed to shove all behaviors that needed overriding into 4 procs
+ * yes, i managed to shove all basic behaviors that needed overriding into 4 procs
  * you're
  * welcome.
  *
@@ -358,8 +427,6 @@
  * oh and can_equip_x* might need overriding for complex mobs like humans but frankly
  * sue me, there's no better way right now.
  */
-
-#warn impl these
 
 /**
  * sets a slot to icon or null
