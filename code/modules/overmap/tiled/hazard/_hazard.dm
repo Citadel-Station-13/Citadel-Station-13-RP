@@ -24,11 +24,15 @@
 	var/display_tile_icon = 'icons/overmaps/hazards.dmi'
 	/// icon state this uses - can be a list to pick().
 	var/display_tile_icon_state = ""
+	/// above this base tile multiplier we are considered hazardous (should be avoided)
+	var/multiplier_considered_hazardous = 0
+	/// above this base tile multiplier we are considered dangerous (red)
+	var/multiplier_considered_dangerous = 0
 
 	// simulation
-	/// when flattening scale to a severity multiplier, this is min amount
+	/// when flattening multiplier to a severity multiplier, this is min amount
 	var/multiplier_min = 0.01
-	/// when flattening scale to a severity multiplier, this is max amount
+	/// when flattening multiplier to a severity multiplier, this is max amount
 	var/multiplier_max = 100
 	/// modify the end multiplier by this much
 	var/multiplier_add = 0
@@ -36,10 +40,10 @@
 	var/multiplier_mod = 1
 
 /**
- * scale is logarithmic
+ * multiplier is logarithmic
  */
-/datum/overmap_hazard/proc/tick(atom/movable/overmap_object/entity/E, scale, seconds)
-	act(E, resolve_severity(scale), seconds)
+/datum/overmap_hazard/proc/tick(atom/movable/overmap_object/entity/E, multiplier, seconds)
+	act(E, resolve_severity(multiplier), seconds)
 
 /**
  * acts on something
@@ -48,13 +52,15 @@
  */
 /datum/overmap_hazard/proc/act(atom/movable/overmap_object/entity/E, multiplier, seconds)
 
-/datum/overmap_hazard/proc/cares_about(atom/movable/overmap_object/entity/E, scale)
+/datum/overmap_hazard/proc/cares_about(atom/movable/overmap_object/entity/E, multiplier)
 	return E.is_instantiated()
 
-/datum/overmap_hazard/proc/resolve_severity(scale)
-	return clamp(((10 ** scale) * multiplier_mod) + multiplier_add, multiplier_min, multiplier_max)
+/datum/overmap_hazard/proc/resolve_severity(multiplier)
+	return clamp(((multiplier) * multiplier_mod) + multiplier_add, multiplier_min, multiplier_max)
 
 /atom/movable/overmap_object/tiled/hazard
+	icon = 'icons/overmaps/hazards.dmi'
+	icon_state = ""
 
 /atom/movable/overmap_object/tiled/hazard/get_connecting_tile_dirs()
 	. = NONE
@@ -70,8 +76,8 @@
 /atom/movable/overmap_object/tiled/hazard/single
 	/// our hazard id
 	var/hazard_id
-	/// our hazard scale - WARNING WARNING THIS IS **LOGARITHMIIC**, every 1 is generally 10x stronger. default is 0.
-	var/hazard_scale = OVERMAP_HAZARD_SCALE_DEFAULT
+	/// our hazard multiplier
+	var/hazard_multiplier = OVERMAP_HAZARD_MULTIPLIER_DEFAULT
 	/// a ref to our hazard datum (because why tf would you ever delete a hazard datum?)
 	var/datum/overmap_hazard/hazard_ref
 
@@ -114,7 +120,7 @@
 	var/atom/movable/overmap_object/entity/E = AM
 	if(!hazard_ref.cares_about(E))
 		return ..()
-	E.register_hazard(hazard_id, hazard_scale, src)
+	E.register_hazard(hazard_id, hazard_multiplier, src)
 	return ..()
 
 /atom/movable/overmap_object/tiled/hazard/single/Uncrossed(atom/movable/AM)
@@ -127,13 +133,13 @@
 	return ..()
 
 /atom/movable/overmap_object/tiled/hazard/single/vv_edit_var(var_name, var_value)
-	if(var_name == NAMEOF(src, hazard_id) || var_name == NAMEOF(src, hazard_scale))
+	if(var_name == NAMEOF(src, hazard_id) || var_name == NAMEOF(src, hazard_multiplier))
 		// lmfao
 		for(var/atom/movable/AM in bounds(src, 0))
 			Uncrossed(AM)
 		hazard_ref = null
 	. = ..()
-	if(var_name == NAMEOF(src, hazard_id) || var_name == NAMEOF(src, hazard_scale))
+	if(var_name == NAMEOF(src, hazard_id) || var_name == NAMEOF(src, hazard_multiplier))
 		update_hazard_ref()
 		for(var/atom/movable/AM in bounds(src, 0))
 			Crossed(AM)

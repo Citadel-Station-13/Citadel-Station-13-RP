@@ -1,10 +1,10 @@
-// hazard scales WARNING WARNING THIS IS LOGARITHMIC -10 IS 10 MILLION TIMES WEAKER AND VICE VERSA
-/// min severity - below this expect nothing to happen
-#define OVERMAP_HAZARD_SCALE_MIN				-10
+// hazard multipliers
+/// min multiplier - below this expect nothing to happen
+#define OVERMAP_HAZARD_MULTIPLIER_MIN				0.01
 /// default severity - used as a baseline
-#define OVERMAP_HAZARD_SCALE_DEFAULT			0
+#define OVERMAP_HAZARD_MULTIPLIER_DEFAULT			1
 /// max severity - above this expect awful things to happen
-#define OVERMAP_HAZARD_SCALE_MAX				10
+#define OVERMAP_HAZARD_MULTIPLIER_MAX				100
 
 // hazard ids
 /// dust
