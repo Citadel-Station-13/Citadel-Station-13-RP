@@ -37,17 +37,11 @@
 				ping("\The [src] pings, \"New pathogen added to data bank.\"")
 
 			var/obj/item/paper/P = new /obj/item/paper(src.loc)
+			var/info = dish.virus2.get_info()
 			P.name = "paper - [dish.virus2.name()]"
-
-			var/r = dish.virus2.get_info()
-			P.info = {"
-				[virology_letterhead("Post-Analysis Memo")]
-				[r]
-				<hr>
-				<u>Additional Notes:</u>&nbsp;
-"}
+			P.info = "[virology_letterhead("Post-Analysis Memo")]<br>[info]<hr><u>Additional Notes:</u><br>"
 			dish.basic_info = dish.virus2.get_basic_info()
-			dish.info = r
+			dish.info = info
 			dish.name = "[initial(dish.name)] ([dish.virus2.name()])"
 			dish.analysed = 1
 			dish.loc = src.loc
@@ -69,4 +63,3 @@
 
 				src.state("\The [src] buzzes, \"Insufficient growth density to complete analysis.\"")
 				pause = 0
-	return
