@@ -7,7 +7,7 @@
 		user << browse(null, text("window=mob[src.name]"))
 		return
 
-	var/obj/item/target_slot = get_equipped_item(text2num(slot_to_strip))
+	var/obj/item/target_slot = item_by_slot(text2num(slot_to_strip))
 
 	switch(slot_to_strip)
 		// Handle things that are part of this interface but not removing/replacing a given item.

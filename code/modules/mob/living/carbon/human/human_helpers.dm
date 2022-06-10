@@ -158,7 +158,7 @@
 	var/list/compiled_vis = list()
 
 	for(var/slot in slots)
-		var/obj/item/clothing/O = get_equipped_item(slot) //Change this type if you move the vision stuff to item or something.
+		var/obj/item/clothing/O = item_by_slot(slot) //Change this type if you move the vision stuff to item or something.
 		if(istype(O) && O.enables_planes && (slot in O.plane_slots))
 			compiled_vis |= O.enables_planes
 

@@ -219,6 +219,8 @@
 	if(user.incapacitated()  || !user.Adjacent(src))
 		return
 
+	#warn DONT USE WEIRD HARDCODING AND USE ENUMERATION, DIPSTICK
+
 	var/obj/item/clothing/under/suit = null
 	if (istype(w_uniform, /obj/item/clothing/under))
 		suit = w_uniform
@@ -230,7 +232,7 @@
 		var/list/slot_ref = species.hud.gear[entry]
 		if((slot_ref["slot"] in list(SLOT_ID_LEFT_POCKET, SLOT_ID_RIGHT_POCKET)))
 			continue
-		var/obj/item/thing_in_slot = get_equipped_item(slot_ref["slot"])
+		var/obj/item/thing_in_slot = item_by_slot(slot_ref["slot"])
 		dat += "<BR><B>[slot_ref["name"]]:</b> <a href='?src=\ref[src];item=[slot_ref["slot"]]'>[istype(thing_in_slot) ? thing_in_slot : "nothing"]</a>"
 
 	dat += "<BR><HR>"

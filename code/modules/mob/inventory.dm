@@ -5,7 +5,7 @@
 /mob/proc/attack_ui(var/slot)
 	var/obj/item/W = get_active_held_item()
 
-	var/obj/item/E = get_equipped_item(slot)
+	var/obj/item/E = item_by_slot(slot)
 	if (istype(E))
 		if(istype(W))
 			E.attackby(W,src)

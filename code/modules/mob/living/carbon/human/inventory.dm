@@ -306,7 +306,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 	if(incapacitated())
 		return
 	var/obj/item/thing = get_active_held_item()
-	var/obj/item/equipped_back = get_equipped_item(SLOT_ID_BACK)
+	var/obj/item/equipped_back = item_by_slot(SLOT_ID_BACK)
 	if(!equipped_back) // We also let you equip a backpack like this
 		if(!thing)
 			to_chat(src, "<span class='warning'>You have no backpack to take something out of!</span>")
@@ -339,7 +339,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 	if(incapacitated())
 		return
 	var/obj/item/thing = get_active_held_item()
-	var/obj/item/equipped_belt = get_equipped_item(SLOT_ID_BELT)
+	var/obj/item/equipped_belt = item_by_slot(SLOT_ID_BELT)
 	if(!equipped_belt) // We also let you equip a belt like this
 		if(!thing)
 			to_chat(src, "<span class='warning'>You have no belt to take something out of!</span>")

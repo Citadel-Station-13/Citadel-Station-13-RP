@@ -445,7 +445,7 @@
 			return 0
 
 	//Next check that the slot is free
-	if(H.get_equipped_item(slot))
+	if(H.item_by_slot(slot))
 		return 0
 
 	//Next check if the slot is accessible.
@@ -459,7 +459,7 @@
 			var/slot_other_ear = (slot == SLOT_ID_LEFT_EAR)? SLOT_ID_RIGHT_EAR : SLOT_ID_LEFT_EAR
 			if( (w_class > ITEMSIZE_TINY) && !(slot_flags & SLOT_EARS) )
 				return 0
-			if( (slot_flags & SLOT_TWOEARS) && H.get_equipped_item(slot_other_ear) )
+			if( (slot_flags & SLOT_TWOEARS) && H.item_by_slot(slot_other_ear) )
 				return 0
 		if(SLOT_ID_WORN_ID)
 			if(!H.w_uniform && (SLOT_ID_UNIFORM in mob_equip))

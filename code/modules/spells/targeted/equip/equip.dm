@@ -16,7 +16,7 @@
 			var/to_create = equipped_summons[slot_id]
 			slot_id = text2num(slot_id) //because the index is text, we access this instead
 			var/obj/item/new_item = summon_item(to_create)
-			var/obj/item/old_item = L.get_equipped_item(slot_id)
+			var/obj/item/old_item = L.item_by_slot(slot_id)
 			if(old_item)
 				if(delete_old)
 					qdel(old_item)
