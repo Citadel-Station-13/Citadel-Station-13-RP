@@ -9,10 +9,10 @@
  * user - person equipping us
  * slot - slot id we're equipped to
  * accessory - TRUE/FALSE, are we equipped as an accessory?
- * creation - being equipped by a job datum/outfit/etc
  * silent - suppress sounds
+ * creation - being equipped by a job datum/outfit/etc
  */
-/obj/item/proc/equipped(mob/user, slot, accessory, creation, silent)
+/obj/item/proc/equipped(mob/user, slot, accessory, silent, creation)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot, accessory, creation)
 	current_equipped_slot = slot
@@ -201,7 +201,7 @@
 			if(!allow)
 				return 0
 		if(slot_tie)
-			var/allow = 0S
+			var/allow = 0
 			for(var/obj/item/clothing/C in H.worn_clothing)	//Runs through everything you're wearing, returns if you can't attach the thing
 				if(C.can_attach_accessory(src))
 					allow = 1

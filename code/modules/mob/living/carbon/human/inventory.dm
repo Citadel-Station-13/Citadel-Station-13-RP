@@ -281,27 +281,6 @@ This saves us from having to call add_fingerprint() any time something is put in
 		return 0
 	return 1
 
-
-/mob/living/carbon/human/put_in_left_hand(var/obj/item/W)
-	if(!..() || l_hand)
-		return 0
-	W.forceMove(src)
-	l_hand = W
-	W.equipped(src,slot_l_hand)
-	W.add_fingerprint(src)
-	update_inv_l_hand()
-	return 1
-
-/mob/living/carbon/human/put_in_right_hand(var/obj/item/W)
-	if(!..() || r_hand)
-		return 0
-	W.forceMove(src)
-	r_hand = W
-	W.equipped(src,slot_r_hand)
-	W.add_fingerprint(src)
-	update_inv_r_hand()
-	return 1
-
 /mob/living/carbon/human/proc/smart_equipbag() // take most recent item out of bag or place held item in bag
 	if(incapacitated())
 		return

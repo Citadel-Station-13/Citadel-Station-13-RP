@@ -69,7 +69,7 @@
 			drop_item_to_ground(r_hand, TRUE)
 		if(r_hand)	// incase drop item fails which is potentially possible
 			return FALSE
-	if(!_commoon_handle_put_in_hand(I, force))
+	if(!_common_handle_put_in_hand(I, force))
 		return FALSE
 	r_hand = I
 	r_hand.update_twohanding()
@@ -83,7 +83,7 @@
 	else
 		I.add_hiddenprint(src)
 	var/existing_slot = is_in_inventory(I)
-	if(existing_slot && handle_slot_reequip(I, SLOT_ID_HANDS, existing_slot))
+	if(existing_slot && _handle_item_reequip(I, SLOT_ID_HANDS, existing_slot))
 		return TRUE
 	// newly equipped
 	I.pickup(src)
