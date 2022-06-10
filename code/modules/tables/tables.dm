@@ -525,6 +525,8 @@ var/list/table_icon_cache = list()
 		if(3)
 			return ((smoothing_junction & SOUTHWEST_JUNCTION)? CORNER_DIAGONAL : NONE) | ((smoothing_junction & WEST_JUNCTION)? CORNER_CLOCKWISE : NONE) | ((smoothing_junction & SOUTH_JUNCTION)? CORNER_COUNTERCLOCKWISE : NONE)
 
+/datum/silly_datum_to_block_byond_bug_2072419
+
 #undef CORNER_NONE
 #undef CORNER_COUNTERCLOCKWISE
 #undef CORNER_DIAGONAL
