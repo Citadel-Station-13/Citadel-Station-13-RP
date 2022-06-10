@@ -5736,15 +5736,6 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/excursion/general)
-"jQ" = (
-/obj/effect/shuttle_landmark{
-	landmark_tag = "rift_aux_2";
-	name = "NSB Atlas - Auxiliary Pad 2";
-	base_area = /area/rift/surfacebase/outside/outside3;
-	base_turf = /turf/simulated/floor/reinforced/lythios43c
-	},
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "jR" = (
 /obj/structure/table/bench/steel,
 /obj/effect/floor_decal/borderfloor{
@@ -12442,16 +12433,6 @@
 /obj/structure/metal_edge,
 /obj/structure/railing,
 /turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
-"ws" = (
-/obj/structure/railing,
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "rift_aux_1";
-	pixel_y = -1;
-	pixel_x = 26
-	},
-/turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "wt" = (
 /obj/machinery/door/airlock/highsecurity{
@@ -21718,15 +21699,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
-"NV" = (
-/obj/effect/shuttle_landmark{
-	landmark_tag = "rift_aux_1";
-	name = "NSB Atlas - Auxiliary Pad 1";
-	base_area = /area/rift/surfacebase/outside/outside3;
-	base_turf = /turf/simulated/floor/reinforced/lythios43c
-	},
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "NW" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 8
@@ -27011,16 +26983,6 @@
 /obj/structure/barricade,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
-"XI" = (
-/obj/structure/railing,
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "rift_aux_2";
-	pixel_y = -1;
-	pixel_x = 26
-	},
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "XJ" = (
 /obj/structure/table/reinforced,
 /obj/machinery/chemical_dispenser/bar_alc,
@@ -29118,25 +29080,25 @@ UZ
 UZ
 UZ
 UZ
+TO
 UZ
 UZ
 UZ
 UZ
 UZ
 UZ
+TO
+UZ
+UZ
+UZ
+TO
 UZ
 UZ
 UZ
 UZ
 UZ
 UZ
-UZ
-UZ
-UZ
-UZ
-UZ
-UZ
-UZ
+TO
 UZ
 UZ
 UZ
@@ -30123,25 +30085,25 @@ UZ
 UZ
 UZ
 UZ
+TO
 UZ
 UZ
 UZ
 UZ
 UZ
 UZ
+TO
+UZ
+UZ
+UZ
+TO
 UZ
 UZ
 UZ
 UZ
 UZ
 UZ
-UZ
-UZ
-UZ
-UZ
-UZ
-UZ
-UZ
+TO
 UZ
 UZ
 UZ
@@ -30276,7 +30238,7 @@ OC
 OC
 Oi
 Oi
-BK
+TO
 us
 us
 us
@@ -30306,7 +30268,7 @@ us
 us
 us
 us
-mn
+TO
 np
 Oi
 Oi
@@ -31281,7 +31243,7 @@ np
 Oi
 Oi
 Oi
-BK
+TO
 us
 us
 us
@@ -31311,7 +31273,7 @@ us
 us
 us
 us
-mn
+TO
 np
 Oi
 Oi
@@ -31634,7 +31596,7 @@ OC
 OC
 Oi
 Oi
-BK
+TO
 us
 us
 us
@@ -31664,7 +31626,7 @@ us
 us
 us
 us
-mn
+TO
 yC
 IA
 IA
@@ -32050,7 +32012,7 @@ us
 us
 us
 us
-NV
+us
 us
 us
 pc
@@ -32410,7 +32372,7 @@ OC
 OC
 Oi
 Oi
-BK
+TO
 us
 us
 us
@@ -32440,7 +32402,7 @@ us
 us
 us
 us
-mn
+TO
 uo
 IA
 IA
@@ -32639,7 +32601,7 @@ Ls
 IA
 IA
 Lt
-BK
+TO
 us
 us
 us
@@ -32669,7 +32631,7 @@ us
 us
 us
 us
-mn
+TO
 yC
 IA
 IA
@@ -33055,7 +33017,7 @@ us
 us
 us
 us
-jQ
+us
 us
 us
 pc
@@ -33415,7 +33377,7 @@ Ls
 IA
 IA
 Tj
-BK
+TO
 us
 us
 us
@@ -33445,7 +33407,7 @@ us
 us
 us
 us
-mn
+TO
 uo
 IA
 IA
@@ -33768,7 +33730,7 @@ OC
 OC
 Oi
 Oi
-BK
+TO
 us
 us
 us
@@ -33798,7 +33760,7 @@ us
 us
 us
 us
-mn
+TO
 Ls
 IA
 IA
@@ -34574,7 +34536,7 @@ us
 us
 us
 us
-ws
+mn
 Ls
 IA
 IA
@@ -34768,12 +34730,12 @@ us
 us
 us
 us
-kf
+tI
 qn
 IA
 IA
 EH
-BK
+TO
 us
 us
 us
@@ -34803,7 +34765,7 @@ us
 us
 us
 us
-mn
+TO
 Ls
 IA
 IA
@@ -34938,25 +34900,25 @@ TN
 TN
 TN
 TN
+TO
 TN
 TN
 TN
 TN
 TN
 TN
+TO
+TN
+TN
+TN
+TO
 TN
 TN
 TN
 TN
 TN
 TN
-TN
-TN
-TN
-TN
-TN
-TN
-TN
+TO
 TN
 TN
 TN
@@ -35579,7 +35541,7 @@ us
 us
 us
 us
-XI
+mn
 Ls
 IA
 IA
@@ -35773,7 +35735,7 @@ us
 us
 us
 us
-kf
+tI
 qn
 IA
 IA
@@ -35943,25 +35905,25 @@ TN
 TN
 TN
 TN
+TO
 TN
 TN
 TN
 TN
 TN
 TN
-TN
-TN
+TO
 us
 us
 us
+TO
 TN
 TN
 TN
 TN
 TN
 TN
-TN
-TN
+TO
 TN
 TN
 TN
