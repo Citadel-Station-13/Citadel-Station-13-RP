@@ -5,13 +5,6 @@
 	var/obj/item/organ/external/O = organs_by_name[name]
 	return (O && !O.is_stump())
 
-/mob/living/carbon/human/proc/update_eyes()
-	var/obj/item/organ/internal/eyes/eyes = internal_organs_by_name[O_EYES]
-	if(eyes)
-		eyes.update_colour()
-		update_icons_body() //Body handles eyes
-		update_eyes() //For floating eyes only
-
 /mob/living/carbon/human/proc/recheck_bad_external_organs()
 	var/damage_this_tick = getToxLoss()
 	for(var/obj/item/organ/external/O in organs)

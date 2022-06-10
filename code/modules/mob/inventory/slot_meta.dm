@@ -56,6 +56,8 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	var/abstract_type = /datum/inventory_slot_meta
 	/// is inventory? if not, this won't be rendered as part of the hud's inventory
 	var/is_inventory = FALSE
+	/// hide unless inventory is expanded
+	var/display_requires_expand = TRUE
 	/// always show on strip/force equip menu, or only show when full
 	var/always_show_on_strip_menu = TRUE
 	/// fully abstract - represents "put into something"
@@ -82,6 +84,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	name = "back"
 	render_key = "back"
 	id = SLOT_ID_BACK
+	display_requires_expand = FALSE
 
 /datum/inventory_slot_meta/inventory/uniform
 	name = "uniform"
@@ -102,10 +105,12 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	name = "belt"
 	render_key = "belt"
 	id = SLOT_ID_BELT
+	display_requires_expand = FALSE
 
 /datum/inventory_slot_meta/inventory/pocket
 	abstract_type = /datum/inventory_slot_meta/inventory/pocket
 	is_rendered = FALSE
+	display_requires_expand = FALSE
 
 /datum/inventory_slot_meta/inventory/pocket/left
 	name = "left pocket"
@@ -119,6 +124,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	name = "id"
 	render_key = "id"
 	id = SLOT_ID_WORN_ID
+	display_requires_expand = FALSE
 
 /datum/inventory_slot_meta/inventory/shoes
 	name = "shoes"
@@ -139,6 +145,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	name = "suit storage"
 	render_key = "suit-store"
 	id = SLOT_ID_SUIT_STORAGE
+	display_requires_expand = FALSE
 
 /datum/inventory_slot_meta/inventory/ears
 	abstract_type = /datum/inventory_slot_meta/inventory/ears
@@ -188,6 +195,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 /datum/inventory_slot_meta/abstract/put_in_hands
 	name = "put in hands"
 	id = SLOT_ID_HANDS
+	display_requires_expand = FALSE
 
 /datum/inventory_slot_meta/abstract/attach_as_accessory
 	name = "attach as accessory"

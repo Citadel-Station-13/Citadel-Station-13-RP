@@ -441,7 +441,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		apply_layer(UNDERWEAR_LAYER)
 
 //HAIR OVERLAY
-/mob/living/carbon/human/proc/update_hair()
+/mob/living/carbon/human/update_hair()
 	if(QDESTROYING(src))
 		return
 
@@ -510,9 +510,14 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	overlays_standing[HAIR_LAYER] = image(face_standing, layer = BODY_LAYER+HAIR_LAYER)
 	apply_layer(HAIR_LAYER)
 
-/mob/living/carbon/human/update_eyes()
+/mob/living/carbon/human/proc/update_eyes()
 	if(QDESTROYING(src))
 		return
+
+	var/obj/item/organ/internal/eyes/eyes = internal_organs_by_name[O_EYES]
+	if(eyes)
+		eyes.update_colour()
+		update_icons_body()
 
 	//Reset our eyes
 	remove_layer(EYES_LAYER)

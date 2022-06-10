@@ -173,29 +173,6 @@
 	if(r_hand)
 		r_hand.update_held_icon()
 
-/mob/living/u_equip(obj/W as obj)
-	if (W == r_hand)
-		r_hand = null
-		update_inv_r_hand()
-	else if (W == l_hand)
-		l_hand = null
-		update_inv_l_hand()
-	else if (W == back)
-		back = null
-		update_inv_back()
-	else if (W == wear_mask)
-		wear_mask = null
-		update_inv_wear_mask()
-	return
-
-/mob/living/get_equipped_item(var/slot)
-	switch(slot)
-		if(slot_l_hand) return l_hand
-		if(slot_r_hand) return r_hand
-		if(SLOT_ID_BACK) return back
-		if(SLOT_ID_MASK) return wear_mask
-	return null
-
 /mob/living/show_inv(mob/user as mob)
 	user.set_machine(src)
 	var/dat = {"

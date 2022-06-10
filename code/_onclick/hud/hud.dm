@@ -161,6 +161,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 
 	var/atom/movable/screen/movable/action_button/hide_toggle/hide_actions_toggle
 	var/action_buttons_hidden = 0
+	#warn INHANDS SHOULDNT BE HERE, DIPSHIT
 	var/list/slot_info
 
 	// pending hardsync

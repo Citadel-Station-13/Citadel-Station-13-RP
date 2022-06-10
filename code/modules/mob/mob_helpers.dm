@@ -585,16 +585,17 @@ var/list/global/organ_rel_size = list(
 		return A.sound_env
 
 /mob/proc/position_hud_item(var/obj/item/item, var/slot)
+	var/held = is_holding(item)
 	if(!istype(hud_used) || !slot || !LAZYLEN(hud_used.slot_info))
 		return
 
 	//They may have hidden their entire hud but the hands
-	if(!hud_used.hud_shown && slot > slot_r_hand)
+	if(!hud_used.hud_shown && held)
 		item.screen_loc = null
 		return
 
 	//They may have hidden the icons in the bottom left with the hide button
-	if(!hud_used.inventory_shown && slot > SLOT_ID_RIGHT_POCKET)
+	if(!hud_used.inventory_shown && !held && resolve_inventory_slot_meta(slot)?.display_requires_expanded)
 		item.screen_loc = null
 		return
 
