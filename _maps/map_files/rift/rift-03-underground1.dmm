@@ -11331,8 +11331,8 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
-/obj/structure/marker_beacon,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/marker_beacon,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rift/station/fighter_bay/hangar)
 "uI" = (
@@ -11628,7 +11628,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/warning/corner,
-/obj/structure/marker_beacon,
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
 	id = "hangar_lockdown";
@@ -11638,6 +11637,7 @@
 	req_one_access = list(19,29,38,43,47,63,67)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/marker_beacon,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rift/station/fighter_bay/hangar)
 "ye" = (
@@ -12191,8 +12191,8 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/marker_beacon,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/marker_beacon,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rift/station/fighter_bay/hangar)
 "CY" = (
@@ -12205,7 +12205,6 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
-/obj/structure/marker_beacon,
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
 	id = "hangar_pad";
@@ -12215,6 +12214,7 @@
 	req_one_access = list(19,29,38,43,47,63,67)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/marker_beacon,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rift/station/fighter_bay/hangar)
 "Do" = (
@@ -12601,8 +12601,8 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
 	},
-/obj/structure/marker_beacon,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/marker_beacon,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rift/station/fighter_bay/hangar)
 "Gy" = (
@@ -12909,7 +12909,9 @@
 /area/rift/station/fighter_bay/maintenance)
 "Ik" = (
 /obj/machinery/mech_recharger,
-/obj/mecha/combat/fighter/pinnace,
+/obj/mecha/combat/fighter/pinnace{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/hangar)
 "Io" = (
@@ -13766,8 +13768,8 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/marker_beacon,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/marker_beacon,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rift/station/fighter_bay/hangar)
 "OZ" = (
@@ -14729,8 +14731,8 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
-/obj/structure/marker_beacon,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/marker_beacon,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rift/station/fighter_bay/hangar)
 "VG" = (
@@ -15257,8 +15259,8 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
 	},
-/obj/structure/marker_beacon,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/marker_beacon,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rift/station/fighter_bay/hangar)
 "Zs" = (
