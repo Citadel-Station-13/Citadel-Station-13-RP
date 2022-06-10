@@ -315,6 +315,36 @@
 	reagents.add_reagent("protein", 1)
 	bitesize = 2
 
+/obj/item/reagent_containers/food/snacks/spunow
+	name = "spunoW bar"
+	desc = "Sticky, sweet coconut covered in dark chocolate."
+	icon_state = "spunow"
+	trash = /obj/item/trash/candy
+	filling_color = "#d6d6d6"
+	nutriment_amt = 3
+	nutriment_desc = list("chocolate" = 2, "coconut" = 2)
+
+/obj/item/reagent_containers/food/snacks/spunow/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("coconutmilk", 4)
+	reagents.add_reagent("protein", 1)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/glad2nut
+	name = "Glad2Nut bar"
+	desc = "Sticky, sweet coconut and almonds covered in milk chocolate."
+	icon_state = "glad2nut"
+	trash = /obj/item/trash/candy
+	filling_color = "#d6d6d6"
+	nutriment_amt = 3
+	nutriment_desc = list("chocolate" = 2, "coconut" = 2, "almond" = 1)
+
+/obj/item/reagent_containers/food/snacks/glad2nut/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("coconutmilk", 4)
+	reagents.add_reagent("protein", 1)
+	bitesize = 2
+
 /obj/item/reagent_containers/food/snacks/candy/proteinbar // Buff 17 >> 21
 	name = "protein bar"
 	desc = "SwoleMAX brand protein bars, guaranteed to get you feeling perfectly overconfident."

@@ -16,6 +16,13 @@
 	required_reagents = list("water" = 5, "teapowder" = 1)
 	result_amount = 5
 
+/datum/chemical_reaction/drinks/greentea
+	name = "Green Tea"
+	id = "greentea"
+	result = "greentea"
+	required_reagents = list("water" = 5, "matchapowder" = 1)
+	result_amount = 5
+
 /datum/chemical_reaction/drinks/hot_coco
 	name = "Hot Coco"
 	id = "hot_coco"
@@ -1575,7 +1582,7 @@
 /datum/chemical_reaction/drink/desiretodie
 	name = "A Desire to Die"
 	id = "desiretodie"
-	result = "desire to die"
+	result = "desiretodie"
 	required_reagents = list("deathbell" = 1, "nuclearwaste" = 1)
 	result_amount = 2
 
@@ -1683,3 +1690,67 @@
 	result = "royaljelly"
 	required_reagents = list("winebrandy" = 2, "honey" = 3)
 	result_amount = 5
+
+/datum/chemical_reaction/drinks/coquito
+	name = "Coquito"
+	id = "coquito"
+	result = "coquito"
+	required_reagents = list("firepunch" = 2, "coconutmilk" = 3)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/horchata
+	name = "Horchata"
+	id = "horchata"
+	result = "horchata"
+	required_reagents = list("sugar" = 2, "coconutmilk" = 3)
+	catalysts = list("rice" = 5)	//The rice isn't used up in horchata. The leftover rice is often reused in other dishes, typically stuff that pairs well with its coconut/cinnamon flavors like rice pudding.
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/milktea
+	name = "Milk Tea"
+	id = "milktea"
+	result = "milktea"
+	required_reagents = list("milk" = 2, "sweettea" = 3)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/honeybubbletea
+	name = "Honey Bubble Tea"
+	id = "honeybubbletea"
+	result = "honeybubbletea"
+	required_reagents = list("milktea" = 5, "honey" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/matchabubbletea
+	name = "Matcha Bubble Tea"
+	id = "matchabubbletea"
+	result = "matchabubbletea"
+	required_reagents = list("milktea" = 5, "matchapowder" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/tarobubbletea
+	name = "Taro Bubble Tea"
+	id = "tarobubbletea"
+	result = "tarobubbletea"
+	required_reagents = list("milktea" = 5, "taropowder" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/cocoabubbletea
+	name = "Chocolate Bubble Tea"
+	id = "cocoabubbletea"
+	result = "cocoabubbletea"
+	required_reagents = list("milktea" = 5, "coco" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/mochabubbletea
+	name = "Matcha Bubble Tea"
+	id = "matchabubbletea"
+	result = "matchabubbletea"
+	required_reagents = list("chocobubbletea" = 5, "coffee" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/pinacolada
+	name = "Piña Colada"
+	id = "pinacolada"
+	result = "pinacolada"
+	required_reagents = list("rum" = 1, "pineapplejuice" = 1, "coconutmilk" = 1, "ice" = 1)
+	result_amount = 3

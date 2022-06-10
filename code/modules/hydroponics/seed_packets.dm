@@ -160,6 +160,12 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 /obj/item/seeds/carrotseed
 	seed_type = "carrot"
 
+/obj/item/seeds/taroseed
+	seed_type = "taro"
+
+/obj/item/seeds/coconutseed
+	seed_type = "coconut"
+
 /obj/item/seeds/reishimycelium
 	seed_type = "reishi"
 

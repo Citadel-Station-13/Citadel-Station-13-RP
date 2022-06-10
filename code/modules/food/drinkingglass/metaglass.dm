@@ -971,3 +971,12 @@ Drinks Data
 
 /datum/reagent/ethanol/royaljelly
 	glass_icon_state = "royaljelly"
+
+/datum/reagent/drink/tea/icetea/milktea/matchabubbletea
+	glass_icon_state = "bubbleteamatcha"
+
+/datum/reagent/drink/tea/icetea/milktea/tarobubbletea
+	glass_icon_state = "bubbleteataro"
+
+/datum/reagent/ethanol/coquito
+	glass_icon_state = "coconut"
