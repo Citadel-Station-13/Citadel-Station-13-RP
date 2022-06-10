@@ -143,7 +143,7 @@ turf/simulated/mineral/rich/make_ore(var/rare_ore)
 	blocks_air = TRUE
 
 /turf/unsimulated/floor/steel
-	icon = 'icons/turf/flooring/tiles_vr.dmi'
+	icon = 'icons/turf/flooring/tiles.dmi'
 	icon_state = "steel"
 
 /turf/simulated/mineral/virgo3b/rich/make_ore(var/rare_ore)

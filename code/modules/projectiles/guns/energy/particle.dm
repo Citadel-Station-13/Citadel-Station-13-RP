@@ -171,7 +171,7 @@
 
 /obj/item/projectile/bullet/particle
 	name = "antimatter pellet"
-	icon = 'icons/obj/projectiles_vr.dmi'
+	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "particle"
 	damage = 40
 	damage_type = BURN
@@ -192,4 +192,3 @@
 		if(prob(Proj.damage))
 			GetDrilled()
 	..()
-

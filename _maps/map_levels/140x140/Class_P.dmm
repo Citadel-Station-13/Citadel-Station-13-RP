@@ -3,7 +3,7 @@
 /obj/structure/blob/normal,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -11,7 +11,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -28,7 +28,7 @@
 /obj/machinery/light,
 /turf/simulated/floor/old_tile/green/classp{
 	color = "#63A83A";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -40,7 +40,7 @@
 /obj/structure/blob/normal,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -53,7 +53,7 @@
 /obj/structure/blob/normal,
 /turf/simulated/floor/old_tile/green/classp{
 	color = "#63A83A";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -61,7 +61,7 @@
 /obj/structure/barricade,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -71,7 +71,7 @@
 /obj/structure/blob/normal,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -115,7 +115,7 @@
 	},
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -129,7 +129,7 @@
 /obj/vehicle/train/rover/engine/dunebuggy,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -139,7 +139,7 @@
 	},
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -159,7 +159,7 @@
 /obj/structure/table/standard,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -191,7 +191,7 @@
 /obj/structure/blob/normal,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -201,7 +201,7 @@
 	},
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -218,7 +218,7 @@
 	},
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -247,7 +247,7 @@
 	},
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -268,7 +268,7 @@
 /obj/structure/blob/normal,
 /turf/simulated/floor/old_tile/green/classp{
 	color = "#63A83A";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -296,7 +296,7 @@
 	},
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -311,7 +311,7 @@
 /obj/structure/blob/normal,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -339,7 +339,7 @@
 	},
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -360,7 +360,7 @@
 	},
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -369,7 +369,7 @@
 /obj/structure/blob/normal,
 /turf/simulated/floor/old_tile/green/classp{
 	color = "#63A83A";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -397,7 +397,7 @@
 	},
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -414,7 +414,7 @@
 /obj/structure/blob/normal,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -445,14 +445,14 @@
 	},
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
 "rL" = (
 /turf/simulated/floor/old_tile/green/classp{
 	color = "#63A83A";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -463,7 +463,7 @@
 	},
 /turf/simulated/floor/old_tile/green/classp{
 	color = "#63A83A";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -487,7 +487,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -501,7 +501,7 @@
 	},
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -520,7 +520,7 @@
 /obj/machinery/light,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -528,7 +528,7 @@
 /obj/structure/table/wooden_reinforced,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -536,7 +536,7 @@
 /obj/machinery/artifact_scanpad,
 /turf/simulated/floor/old_tile/green/classp{
 	color = "#63A83A";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -568,7 +568,7 @@
 	},
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -576,7 +576,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/universal,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -609,7 +609,7 @@
 	},
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -627,7 +627,7 @@
 /obj/structure/table/marble,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -641,7 +641,7 @@
 /obj/structure/closet/statue,
 /turf/simulated/floor/old_tile/green/classp{
 	color = "#63A83A";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -653,7 +653,7 @@
 /obj/structure/blob/normal,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -665,7 +665,7 @@
 /obj/machinery/power/smes/buildable/point_of_interest,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -674,7 +674,7 @@
 /obj/structure/blob/normal,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -686,7 +686,7 @@
 /obj/structure/blob/normal,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -694,7 +694,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -711,7 +711,7 @@
 /obj/machinery/power/terminal,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -725,7 +725,7 @@
 /obj/structure/blob/normal,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -741,7 +741,7 @@
 	},
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -751,7 +751,7 @@
 	},
 /turf/simulated/floor/old_tile/green/classp{
 	color = "#63A83A";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -772,7 +772,7 @@
 	},
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -783,7 +783,7 @@
 	},
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -800,7 +800,7 @@
 	},
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -820,7 +820,7 @@
 "II" = (
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -831,7 +831,7 @@
 /obj/structure/blob/normal,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -856,7 +856,7 @@
 /obj/structure/blob/normal,
 /turf/simulated/floor/old_tile/green/classp{
 	color = "#63A83A";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -899,7 +899,7 @@
 	},
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -907,7 +907,7 @@
 /obj/structure/table/rack/shelf,
 /turf/simulated/floor/old_tile/green/classp{
 	color = "#63A83A";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -923,7 +923,7 @@
 /obj/structure/blob/normal,
 /turf/simulated/floor/old_tile/green/classp{
 	color = "#63A83A";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -943,7 +943,7 @@
 	},
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -961,7 +961,7 @@
 /obj/structure/barricade,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -974,7 +974,7 @@
 /obj/structure/table/standard,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -1028,7 +1028,7 @@
 /obj/structure/blob/normal,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -1049,7 +1049,7 @@
 	},
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -1074,7 +1074,7 @@
 	},
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -1093,7 +1093,7 @@
 /obj/structure/blob/normal,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -1106,7 +1106,7 @@
 /obj/structure/blob/normal,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -1117,7 +1117,7 @@
 /obj/structure/bed,
 /turf/simulated/floor/old_tile/green/classp{
 	color = "#63A83A";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -1132,7 +1132,7 @@
 /obj/structure/blob/normal,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)
@@ -1146,7 +1146,7 @@
 /obj/machinery/artifact_analyser,
 /turf/simulated/floor/old_tile/green/classp{
 	color = "#63A83A";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/facility)

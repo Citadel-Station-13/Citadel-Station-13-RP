@@ -5,7 +5,7 @@
 "f" = (
 /turf/simulated/floor/old_tile/green/classp{
 	color = "#63A83A";
-	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "tile_full"
 	},
 /area/class_p/ruins)

@@ -5061,7 +5061,7 @@
 /area/awaymission/zoo)
 "nD" = (
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/turf/flooring/misc_vr.dmi';
+	icon = 'icons/turf/flooring/misc.dmi';
 	icon_state = "hive";
 	name = "giant honeycomb"
 	},
@@ -5428,7 +5428,7 @@
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/turf/flooring/misc_vr.dmi';
+	icon = 'icons/turf/flooring/misc.dmi';
 	icon_state = "hive";
 	name = "giant honeycomb"
 	},

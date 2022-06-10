@@ -94,7 +94,7 @@
 
 // Medigun
 /obj/effect/projectile/muzzle/medigun
-	icon = 'icons/obj/projectiles_vr.dmi'
+	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "muzzle_medbeam"
 	light_range = 2
 	light_power = 0.5

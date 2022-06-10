@@ -123,7 +123,7 @@ LYTHIOS43C_TURF_CREATE(/turf/unsimulated/mineral/icerock)
 //Unsimulated
 
 /turf/unsimulated/floor/steel
-	icon = 'icons/turf/flooring/tiles_vr.dmi'
+	icon = 'icons/turf/flooring/tiles.dmi'
 	icon_state = "steel"
 
 /turf/unsimulated/wall
@@ -136,7 +136,7 @@ LYTHIOS43C_TURF_CREATE(/turf/unsimulated/mineral/icerock)
 
 /turf/unsimulated/floor/techfloor_grid
 	name = "floor"
-	icon = 'icons/turf/flooring/techfloor_vr.dmi'
+	icon = 'icons/turf/flooring/techfloor.dmi'
 	icon_state = "techfloor_grid"
 
 /turf/unsimulated/floor/maglev

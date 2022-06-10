@@ -139,6 +139,18 @@ var/list/flooring_types
 	flags = TURF_HAS_EDGES | TURF_REMOVE_SHOVEL
 	build_type = /obj/item/stack/tile/grass
 
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/grass1.ogg',
+		'sound/effects/footstep/grass2.ogg',
+		'sound/effects/footstep/grass3.ogg',
+		'sound/effects/footstep/grass4.ogg'))
+
+/decl/flooring/grass/sif
+	name = "growth"
+	icon = 'icons/turf/outdoors.dmi'
+	icon_base = "grass_sif"
+	has_base_range = 2
+
 /decl/flooring/asteroid
 	name = "coarse sand"
 	desc = "Gritty and unpleasant."
@@ -247,7 +259,7 @@ var/list/flooring_types
 /decl/flooring/tiling
 	name = "floor"
 	desc = "Scuffed from the passage of countless greyshirts."
-	icon = 'icons/turf/flooring/tiles_vr.dmi' // More ERIS Sprites... For now...
+	icon = 'icons/turf/flooring/tiles.dmi' // More ERIS Sprites... For now...
 	icon_base = "tiled"
 	has_damage_range = 2
 	damage_temperature = T0C+1400
@@ -263,7 +275,7 @@ var/list/flooring_types
 
 /decl/flooring/tiling/tech
 	desc = "Scuffed from the passage of countless greyshirts."
-	icon = 'icons/turf/flooring/techfloor_vr.dmi'
+	icon = 'icons/turf/flooring/techfloor.dmi'
 	icon_base = "techfloor_gray"
 	build_type = /obj/item/stack/tile/floor/techgrey
 	can_paint = null
@@ -479,7 +491,7 @@ var/list/flooring_types
 /decl/flooring/wood
 	name = "wooden floor"
 	desc = "Polished redwood planks."
-	icon = 'icons/turf/flooring/wood_vr.dmi'
+	icon = 'icons/turf/flooring/wood.dmi'
 	icon_base = "wood"
 	has_damage_range = 6
 	damage_temperature = T0C+200
@@ -567,22 +579,6 @@ var/list/flooring_types
 		'sound/effects/footstep/asteroid3.ogg',
 		'sound/effects/footstep/asteroid4.ogg'))
 
-
-/decl/flooring/outdoors/grass
-	name = "grass"
-	icon = 'icons/turf/outdoors.dmi'
-	icon_base = "grass"
-	footstep_sounds = list("human" = list(
-		'sound/effects/footstep/grass1.ogg',
-		'sound/effects/footstep/grass2.ogg',
-		'sound/effects/footstep/grass3.ogg',
-		'sound/effects/footstep/grass4.ogg'))
-
-/decl/flooring/outdoors/grass/sif
-	name = "growth"
-	icon = 'icons/turf/outdoors.dmi'
-	icon_base = "grass_sif"
-
 /decl/flooring/water
 	name = "water"
 	desc = "Water is wet, gosh, who knew!"
@@ -639,7 +635,7 @@ var/list/flooring_types
 /decl/flooring/trap
 	name = "suspicious flooring"
 	desc = "There's something off about this tile."
-	icon = 'icons/turf/flooring/plating_vr.dmi'
+	icon = 'icons/turf/flooring/plating.dmi'
 	icon_base = "plating"
 	build_type = null
 	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK
