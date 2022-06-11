@@ -65,7 +65,7 @@
 "cR" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/purpledouble,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/lavaland/central/base/common)
 "cY" = (
 /obj/machinery/light/small{
@@ -399,7 +399,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/lavaland/central/base/common)
 "ix" = (
 /obj/structure/cable/green{
@@ -443,7 +443,7 @@
 	pixel_y = -23;
 	req_one_access = list(48)
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/lavaland/central/base/common)
 "jR" = (
 /obj/machinery/atmospherics/component/binary/pump/high_power/on{
@@ -823,7 +823,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/lavaland/central/base/common)
 "pz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -911,7 +911,7 @@
 "ql" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/greendouble,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/lavaland/central/base/common)
 "qp" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -1213,7 +1213,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/lavaland/central/base/common)
 "vm" = (
 /obj/structure/table/marble,
@@ -1392,7 +1392,7 @@
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
 "yP" = (
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/lavaland/central/base/common)
 "yX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1803,7 +1803,7 @@
 	pixel_y = -23;
 	req_one_access = list(48)
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/lavaland/central/base/common)
 "Iy" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -1868,7 +1868,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/lavaland/central/base/common)
 "KX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -2022,7 +2022,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/lavaland/central/base/common)
 "Oq" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -2046,7 +2046,7 @@
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/lavaland/central/base/common)
 "OB" = (
 /obj/structure/undies_wardrobe,
@@ -2076,7 +2076,7 @@
 	pixel_y = 22;
 	req_one_access = list(48)
 	},
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/lavaland/central/base/common)
 "Pv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -2089,7 +2089,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/lavaland/central/base/common)
 "PZ" = (
 /obj/machinery/light/small{
@@ -2099,14 +2099,14 @@
 /area/lavaland/central/base/common)
 "Qo" = (
 /obj/structure/bed/chair,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/lavaland/central/base/common)
 "Qs" = (
 /obj/machinery/alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(48)
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/lavaland/central/base/common)
 "Qu" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -2125,7 +2125,7 @@
 "QC" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/double,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/lavaland/central/base/common)
 "QN" = (
 /obj/machinery/light/small{
@@ -2148,7 +2148,7 @@
 	id = "wind_orange";
 	pixel_y = -25
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/lavaland/central/base/common)
 "Ro" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -2164,7 +2164,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/lavaland/central/base/common)
 "RE" = (
 /obj/machinery/door/firedoor{
@@ -2204,7 +2204,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/lavaland/central/base/common)
 "RX" = (
 /turf/simulated/mineral/triumph/lavaland,
@@ -2266,7 +2266,7 @@
 	id = "wind_blue";
 	pixel_y = -25
 	},
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/lavaland/central/base/common)
 "SJ" = (
 /obj/machinery/button/remote/airlock{
@@ -2278,7 +2278,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/lavaland/central/base/common)
 "SL" = (
 /obj/structure/extinguisher_cabinet{
@@ -2290,7 +2290,7 @@
 "SM" = (
 /obj/structure/bed,
 /obj/item/bedsheet/red,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/lavaland/central/base/common)
 "SN" = (
 /obj/structure/extinguisher_cabinet{
@@ -2308,7 +2308,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/lavaland/central/base/common)
 "TA" = (
 /obj/machinery/button/remote/airlock{
@@ -2324,7 +2324,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/lavaland/central/base/common)
 "TJ" = (
 /obj/structure/cable{
@@ -2371,7 +2371,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/lavaland/central/base/common)
 "UV" = (
 /obj/machinery/mining/brace{
@@ -2483,7 +2483,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/lavaland/central/base/common)
 "We" = (
 /obj/machinery/light/small,
@@ -2497,7 +2497,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/lavaland/central/base/common)
 "Wh" = (
 /obj/machinery/door/firedoor{
@@ -2618,7 +2618,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/lavaland/central/base/common)
 "Yb" = (
 /obj/machinery/door/airlock/glass_medical{

@@ -261,7 +261,7 @@
 "aU" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/bluedouble,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/submap/spa)
 "aV" = (
 /obj/structure/table/woodentable,
@@ -275,22 +275,22 @@
 	pixel_x = 26;
 	specialfunctions = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/submap/spa)
 "aW" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/greendouble,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/submap/spa)
 "aX" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/purpledouble,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/submap/spa)
 "aY" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/reddouble,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/submap/spa)
 "aZ" = (
 /turf/simulated/floor/tiled/white,
@@ -321,7 +321,7 @@
 /turf/simulated/floor/reinforced,
 /area/submap/spa)
 "be" = (
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/submap/spa)
 "bf" = (
 /obj/structure/table/woodentable,
@@ -335,7 +335,7 @@
 	pixel_x = -26;
 	specialfunctions = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/submap/spa)
 "bg" = (
 /obj/structure/sink{
@@ -372,7 +372,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/submap/spa)
 "bm" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -411,7 +411,7 @@
 "br" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/browndouble,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/submap/spa)
 "bs" = (
 /obj/structure/table/woodentable,
@@ -425,22 +425,22 @@
 	pixel_x = 26;
 	specialfunctions = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/submap/spa)
 "bt" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/orangedouble,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/submap/spa)
 "bu" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/rainbowdouble,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/submap/spa)
 "bv" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/yellowdouble,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/submap/spa)
 "bw" = (
 /obj/structure/toilet{
@@ -490,7 +490,7 @@
 	pixel_x = -26;
 	specialfunctions = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/submap/spa)
 "bD" = (
 /obj/machinery/light{
@@ -572,7 +572,7 @@
 	pixel_x = 26;
 	specialfunctions = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/submap/spa)
 "bQ" = (
 /obj/structure/table/woodentable,
@@ -583,7 +583,7 @@
 	pixel_x = -26;
 	specialfunctions = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/submap/spa)
 "bR" = (
 /obj/structure/table/woodentable,
@@ -594,7 +594,7 @@
 	pixel_x = 26;
 	specialfunctions = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/submap/spa)
 "bS" = (
 /obj/structure/table/woodentable,
@@ -605,7 +605,7 @@
 	pixel_x = -26;
 	specialfunctions = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/submap/spa)
 "bT" = (
 /obj/machinery/door/airlock{

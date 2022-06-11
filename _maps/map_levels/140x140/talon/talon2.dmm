@@ -312,7 +312,7 @@
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/hopdouble,
 /atom/movable/landmark/spawnpoint/job/talon_captain,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/talon/decktwo/cap_room)
 "fg" = (
 /turf/simulated/wall/rshull,
@@ -445,7 +445,7 @@
 	pixel_y = -30;
 	specialfunctions = 4
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/talon/decktwo/cap_room)
 "gm" = (
 /obj/structure/cable/green{
@@ -2476,7 +2476,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_aft)
 "BL" = (
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/talon/decktwo/cap_room)
 "BU" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -2590,7 +2590,7 @@
 "CV" = (
 /obj/structure/closet/secure_closet/talon_captain,
 /obj/item/binoculars/spyglass,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/talon/decktwo/cap_room)
 "Db" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
@@ -3831,7 +3831,7 @@
 /obj/structure/closet/secure_closet/personal/cabinet{
 	locked = 0
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/talon/decktwo/cap_room)
 "Ph" = (
 /obj/machinery/light/small{
@@ -4561,7 +4561,7 @@
 /area/talon/maintenance/decktwo_port)
 "Yj" = (
 /obj/machinery/suit_cycler/vintage/tcaptain,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/talon/decktwo/cap_room)
 "Yn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{

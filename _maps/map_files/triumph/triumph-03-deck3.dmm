@@ -1624,7 +1624,7 @@
 "brC" = (
 /obj/item/bedsheet/medical,
 /obj/structure/bed/padded,
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet/cyan,
 /area/medical/patient_d)
 "brK" = (
 /obj/effect/floor_decal/borderfloor{
@@ -1701,7 +1701,7 @@
 "buE" = (
 /obj/structure/table/woodentable,
 /obj/item/toy/plushie/therapy/green,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/medical/psych/psych_2)
 "buX" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -1849,7 +1849,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet/cyan,
 /area/medical/patient_b)
 "bCs" = (
 /obj/random/trash,
@@ -2088,7 +2088,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/breakroom)
 "bLi" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -2279,7 +2279,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/breakroom)
 "bTi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2327,7 +2327,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet/cyan,
 /area/medical/patient_d)
 "bUK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -3551,7 +3551,7 @@
 "cVk" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp/green,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/medical/psych/psych_2)
 "cVZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -3607,7 +3607,7 @@
 /obj/structure/bed/chair/sofa/black/right{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/hallway)
 "cXI" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -4357,7 +4357,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet/cyan,
 /area/medical/patient_a)
 "dGj" = (
 /obj/structure/cable/green{
@@ -4472,7 +4472,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/medical/psych/psych_2)
 "dLs" = (
 /turf/simulated/wall/r_wall,
@@ -4560,7 +4560,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/medical/psych/psych_1)
 "dNE" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -5426,7 +5426,7 @@
 /obj/structure/noticeboard{
 	pixel_y = 32
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/breakroom)
 "exw" = (
 /obj/machinery/door/firedoor/glass,
@@ -6660,7 +6660,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/breakroom)
 "fwI" = (
 /obj/effect/floor_decal/borderfloorwhite/corner{
@@ -7164,7 +7164,7 @@
 "fSC" = (
 /obj/structure/bed/chair/office/dark,
 /atom/movable/landmark/spawnpoint/job/psychiatrist,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/medical/psych/psych_1)
 "fSY" = (
 /obj/machinery/suspension_gen,
@@ -7898,7 +7898,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet/cyan,
 /area/medical/patient_d)
 "gxS" = (
 /turf/simulated/floor/wood,
@@ -8412,7 +8412,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet/cyan,
 /area/medical/patient_a)
 "gST" = (
 /turf/simulated/wall/r_wall,
@@ -8828,7 +8828,7 @@
 /obj/structure/bed/chair/sofa/black/left{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/hallway)
 "hgS" = (
 /obj/structure/cable/green{
@@ -8847,7 +8847,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
 "hhg" = (
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/breakroom)
 "hhy" = (
 /obj/structure/closet/crate/bin{
@@ -9152,7 +9152,7 @@
 "huo" = (
 /obj/structure/table/glass,
 /obj/item/reagent_containers/spray/cleaner,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/breakroom)
 "huE" = (
 /obj/machinery/door/firedoor,
@@ -9858,7 +9858,7 @@
 	dir = 8;
 	pixel_x = 25
 	},
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet/cyan,
 /area/medical/patient_a)
 "ibD" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -9895,7 +9895,7 @@
 	dir = 8;
 	pixel_x = 25
 	},
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet/cyan,
 /area/medical/patient_c)
 "idJ" = (
 /obj/machinery/door/airlock/glass,
@@ -10930,7 +10930,7 @@
 	dir = 8
 	},
 /atom/movable/landmark/spawnpoint/job/psychiatrist,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/medical/psych/psych_2)
 "iYU" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -11324,7 +11324,7 @@
 /area/rnd/rdoffice)
 "jrD" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/medical/psych/psych_1)
 "jrF" = (
 /obj/machinery/door/firedoor,
@@ -11512,7 +11512,7 @@
 	dir = 8
 	},
 /atom/movable/landmark/spawnpoint/job/scientist,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/breakroom)
 "jAZ" = (
 /obj/machinery/firealarm{
@@ -12094,7 +12094,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/medical/psych/psych_1)
 "jXs" = (
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -12381,7 +12381,7 @@
 	dir = 10
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/breakroom)
 "kiX" = (
 /obj/structure/bed/chair/comfy/brown{
@@ -13041,7 +13041,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/breakroom)
 "kJp" = (
 /obj/machinery/iv_drip,
@@ -13390,7 +13390,7 @@
 /area/medical/virologyaccess)
 "kZj" = (
 /obj/structure/bed/chair/sofa/black/right,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/hallway)
 "kZS" = (
 /obj/machinery/light,
@@ -13601,7 +13601,7 @@
 /obj/machinery/computer/med_data/laptop{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/medical/psych/psych_2)
 "liX" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -15240,7 +15240,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/breakroom)
 "myL" = (
 /obj/structure/sign/greencross,
@@ -15458,7 +15458,7 @@
 	dir = 8;
 	pixel_x = 25
 	},
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet/cyan,
 /area/medical/patient_d)
 "mJq" = (
 /obj/machinery/door/firedoor,
@@ -15590,7 +15590,7 @@
 	pixel_x = -5;
 	pixel_y = 4
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/medical/psych/psych_1)
 "mNl" = (
 /obj/structure/table/glass,
@@ -16711,7 +16711,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/medical/psych/psych_2)
 "nNT" = (
 /obj/effect/floor_decal/techfloor,
@@ -17104,7 +17104,7 @@
 /area/maintenance/medbay/aft)
 "ocR" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/medical/psych/psych_2)
 "odD" = (
 /obj/item/storage/box/beakers{
@@ -18185,7 +18185,7 @@
 "oPL" = (
 /obj/structure/table/glass,
 /obj/item/book/manual/standard_operating_procedure,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/breakroom)
 "oRm" = (
 /obj/machinery/door/window/westleft{
@@ -18378,7 +18378,7 @@
 "oWH" = (
 /obj/item/bedsheet/medical,
 /obj/structure/bed/padded,
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet/cyan,
 /area/medical/patient_c)
 "oWX" = (
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -19989,7 +19989,7 @@
 	dir = 8;
 	pixel_x = 25
 	},
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet/cyan,
 /area/medical/patient_b)
 "pTV" = (
 /obj/structure/table/steel_reinforced,
@@ -20860,7 +20860,7 @@
 "qEs" = (
 /obj/item/bedsheet/medical,
 /obj/structure/bed/padded,
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet/cyan,
 /area/medical/patient_b)
 "qED" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -21166,7 +21166,7 @@
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/medical/psych/psych_1)
 "qOS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -22049,7 +22049,7 @@
 /area/medical/medbay4)
 "rru" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/medical/psych/psych_2)
 "rrw" = (
 /obj/machinery/shield_diffuser,
@@ -22747,7 +22747,7 @@
 /area/rnd/anomaly_lab)
 "rUT" = (
 /obj/structure/table/glass,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/breakroom)
 "rVq" = (
 /obj/machinery/computer/timeclock/premade/south,
@@ -22840,13 +22840,13 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet/cyan,
 /area/medical/patient_b)
 "rZI" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/breakroom)
 "rZJ" = (
 /obj/item/clothing/shoes/magboots,
@@ -23261,7 +23261,7 @@
 /area/triumph/station/stairs_three)
 "spM" = (
 /obj/structure/table/glass,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/hallway)
 "sqe" = (
 /obj/machinery/camera/network/medbay,
@@ -25142,7 +25142,7 @@
 	dir = 1
 	},
 /obj/structure/bed/chair/sofa/black/left,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/hallway)
 "tFb" = (
 /obj/structure/railing{
@@ -25383,7 +25383,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
 "tOE" = (
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/medical/psych/psych_1)
 "tOF" = (
 /obj/machinery/atmospherics/component/binary/pump{
@@ -25882,7 +25882,7 @@
 "ukD" = (
 /obj/structure/table/glass,
 /obj/item/duct_tape_roll,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/breakroom)
 "ukM" = (
 /obj/machinery/door/firedoor,
@@ -26140,12 +26140,12 @@
 	dir = 4
 	},
 /atom/movable/landmark/spawnpoint/job/scientist,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/breakroom)
 "uxH" = (
 /obj/item/bedsheet/medical,
 /obj/structure/bed/padded,
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet/cyan,
 /area/medical/patient_a)
 "uxJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -27849,7 +27849,7 @@
 	dir = 4
 	},
 /atom/movable/landmark/spawnpoint/job/scientist,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/breakroom)
 "vPH" = (
 /obj/effect/floor_decal/techfloor{
@@ -28507,7 +28507,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet/cyan,
 /area/medical/patient_c)
 "wpd" = (
 /obj/effect/floor_decal/borderfloor{
@@ -30677,7 +30677,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet/cyan,
 /area/medical/patient_c)
 "xTs" = (
 /obj/structure/cable/green{

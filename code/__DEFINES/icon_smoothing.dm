@@ -84,8 +84,52 @@ DEFINE_BITFIELD(smoothing_junction, list(
 #define SMOOTH_GROUP_FLOOR_ICE S_TURF(9) ///turf/simulated/misc/ice
 #define SMOOTH_GROUP_FLOOR_SNOWED S_TURF(10) ///turf/simulated/floor/plating/snowed
 
-#define SMOOTH_GROUP_UNSIMULATED_TURFS S_TURF(11) ///turf/unsimulated
-#define SMOOTH_GROUP_CLOSED_TURFS S_TURF(12) ///!THIS IS TEMPORARY
+#define SMOOTH_GROUP_CARPET S_TURF(10) ///turf/open/floor/carpet
+#define SMOOTH_GROUP_CARPET_BLACK S_TURF(11) ///turf/open/floor/carpet/black
+#define SMOOTH_GROUP_CARPET_BLUE S_TURF(12) ///turf/open/floor/carpet/blue
+#define SMOOTH_GROUP_CARPET_CYAN S_TURF(13) ///turf/open/floor/carpet/cyan
+#define SMOOTH_GROUP_CARPET_GREEN S_TURF(14) ///turf/open/floor/carpet/green
+#define SMOOTH_GROUP_CARPET_ORANGE S_TURF(15) ///turf/open/floor/carpet/orange
+#define SMOOTH_GROUP_CARPET_PURPLE S_TURF(16) ///turf/open/floor/carpet/purple
+#define SMOOTH_GROUP_CARPET_RED S_TURF(17) ///turf/open/floor/carpet/red
+#define SMOOTH_GROUP_CARPET_ROYAL_BLACK S_TURF(18) ///turf/open/floor/carpet/royalblack
+#define SMOOTH_GROUP_CARPET_ROYAL_BLUE S_TURF(19) ///turf/open/floor/carpet/royalblue
+#define SMOOTH_GROUP_CARPET_EXECUTIVE S_TURF(20) ///turf/open/floor/carpet/executive
+#define SMOOTH_GROUP_CARPET_STELLAR S_TURF(21) ///turf/open/floor/carpet/stellar
+#define SMOOTH_GROUP_CARPET_DONK S_TURF(22) ///turf/open/floor/carpet/donk
+#define SMOOTH_GROUP_CARPET_NEON S_TURF(23) //![turf/open/floor/carpet/neon]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON S_TURF(24) //![turf/open/floor/carpet/neon/simple]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON_WHITE S_TURF(25) //![turf/open/floor/carpet/neon/simple/white]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON_BLACK S_TURF(26) //![turf/open/floor/carpet/neon/simple/black]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON_RED S_TURF(27) //![turf/open/floor/carpet/neon/simple/red]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON_ORANGE S_TURF(28) //![turf/open/floor/carpet/neon/simple/orange]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON_YELLOW S_TURF(29) //![turf/open/floor/carpet/neon/simple/yellow]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON_LIME S_TURF(30) //![turf/open/floor/carpet/neon/simple/lime]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON_GREEN S_TURF(31) //![turf/open/floor/carpet/neon/simple/green]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON_TEAL S_TURF(32) //![turf/open/floor/carpet/neon/simple/teal]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON_CYAN S_TURF(33) //![turf/open/floor/carpet/neon/simple/cyan]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON_BLUE S_TURF(34) //![turf/open/floor/carpet/neon/simple/blue]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON_PURPLE S_TURF(35) //![turf/open/floor/carpet/neon/simple/purple]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON_VIOLET S_TURF(36) //![turf/open/floor/carpet/neon/simple/violet]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON_PINK S_TURF(37) //![turf/open/floor/carpet/neon/simple/pink]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON_NODOTS S_TURF(38) //![turf/open/floor/carpet/neon/simple/nodots]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON_WHITE_NODOTS S_TURF(39) //![turf/open/floor/carpet/neon/simple/white/nodots]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON_BLACK_NODOTS S_TURF(40) //![turf/open/floor/carpet/neon/simple/black/nodots]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON_RED_NODOTS S_TURF(41) //![turf/open/floor/carpet/neon/simple/red/nodots]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON_ORANGE_NODOTS S_TURF(42) //![turf/open/floor/carpet/neon/simple/orange/nodots]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON_YELLOW_NODOTS S_TURF(43) //![turf/open/floor/carpet/neon/simple/yellow/nodots]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON_LIME_NODOTS S_TURF(44) //![turf/open/floor/carpet/neon/simple/lime/nodots]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON_GREEN_NODOTS S_TURF(45) //![turf/open/floor/carpet/neon/simple/green/nodots]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON_TEAL_NODOTS S_TURF(46) //![turf/open/floor/carpet/neon/simple/teal/nodots]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON_CYAN_NODOTS S_TURF(47) //![turf/open/floor/carpet/neon/simple/cyan/nodots]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON_BLUE_NODOTS S_TURF(48) //![turf/open/floor/carpet/neon/simple/blue/nodots]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON_PURPLE_NODOTS S_TURF(49) //![turf/open/floor/carpet/neon/simple/purple/nodots]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON_VIOLET_NODOTS S_TURF(50) //![turf/open/floor/carpet/neon/simple/violet/nodots]
+#define SMOOTH_GROUP_CARPET_SIMPLE_NEON_PINK_NODOTS S_TURF(51) //![turf/open/floor/carpet/neon/simple/pink/nodots]
+#define SMOOTH_GROUP_BAMBOO_FLOOR S_TURF(52) //![/turf/open/floor/bamboo]
+
+#define SMOOTH_GROUP_UNSIMULATED_TURFS S_TURF(53) ///turf/unsimulated
+#define SMOOTH_GROUP_CLOSED_TURFS S_TURF(54) ///!THIS IS TEMPORARY
 
 #define MAX_S_TURF SMOOTH_GROUP_CLOSED_TURFS //Always match this value with the one above it.
 

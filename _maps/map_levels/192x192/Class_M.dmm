@@ -432,11 +432,11 @@
 /turf/simulated/floor/tiled/classm,
 /area/class_m/inside)
 "lC" = (
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "lG" = (
 /obj/structure/bed/chair/wood/wings,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "lI" = (
 /obj/effect/overmap/visitable/sector/gaia_planet,
@@ -472,7 +472,7 @@
 /area/class_m/inside)
 "mt" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "mv" = (
 /obj/structure/table/marble,
@@ -483,7 +483,7 @@
 /obj/structure/bed/chair/wood/wings{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "mN" = (
 /obj/structure/table/marble,
@@ -587,13 +587,13 @@
 "oO" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/rddouble,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/class_m/inside)
 "oQ" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/class_m/inside)
 "oT" = (
 /turf/simulated/floor/tiled/classm/outdoors,
@@ -659,17 +659,17 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/class_m/inside)
 "pY" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/class_m/inside)
 "qd" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/class_m/inside)
 "qv" = (
 /obj/structure/undies_wardrobe,
@@ -849,7 +849,7 @@
 /turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "vd" = (
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/class_m/inside)
 "vh" = (
 /obj/machinery/light{
@@ -973,7 +973,7 @@
 	dir = 8;
 	light_range = 12
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/class_m/inside)
 "xW" = (
 /obj/structure/sign/warning/secure_area/armory{
@@ -1001,7 +1001,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/class_m/inside)
 "yo" = (
 /obj/machinery/light{
@@ -1200,11 +1200,11 @@
 /area/class_m/inside)
 "Cp" = (
 /obj/item/stool/padded,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/class_m/inside)
 "Cu" = (
 /obj/structure/table/gamblingtable,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/class_m/inside)
 "CG" = (
 /obj/machinery/button/remote/airlock{
@@ -1227,7 +1227,7 @@
 /turf/simulated/outdoors/beach/sand/classm,
 /area/class_m/outside)
 "Dm" = (
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/class_m/inside)
 "Du" = (
 /obj/structure/railing{
@@ -1285,13 +1285,13 @@
 /obj/structure/table/gamblingtable,
 /obj/item/deck/holder,
 /obj/item/deck/tarot,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/class_m/inside)
 "En" = (
 /obj/structure/table/gamblingtable,
 /obj/item/storage/pill_bottle/dice,
 /obj/item/storage/dicecup/loaded,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/class_m/inside)
 "EE" = (
 /obj/machinery/door/airlock{
@@ -1446,7 +1446,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/class_m/inside)
 "HD" = (
 /obj/structure/flora/pottedplant/flower,
@@ -1582,7 +1582,7 @@
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "JM" = (
 /obj/structure/grille,
@@ -1591,18 +1591,18 @@
 /area/class_m/inside)
 "JZ" = (
 /obj/structure/filingcabinet/chestdrawer,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "Kj" = (
 /obj/structure/table/marble,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "Ks" = (
 /obj/structure/table/marble,
 /obj/machinery/cash_register/civilian{
 	req_access = null
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "Kt" = (
 /obj/structure/flora/tree/jungle_small,
@@ -1633,11 +1633,11 @@
 /area/class_m/inside)
 "Lc" = (
 /obj/machinery/door/window/westleft,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "Lf" = (
 /obj/machinery/door/window/eastright,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "Lp" = (
 /turf/simulated/outdoors/beach/sand/classm,
@@ -1672,7 +1672,7 @@
 "Lv" = (
 /obj/structure/table/marble,
 /obj/item/glass_jar,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "Lx" = (
 /obj/structure/table/marble,
@@ -1680,7 +1680,7 @@
 	dir = 1;
 	req_access = null
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "LH" = (
 /obj/structure/flora/pottedplant/subterranean,
@@ -1713,13 +1713,13 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "MF" = (
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "MP" = (
 /obj/structure/bed/double/padded,
@@ -1776,7 +1776,7 @@
 /area/class_m/inside)
 "Ol" = (
 /obj/machinery/computer/arcade/battle,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "On" = (
 /obj/item/stool/padded,
@@ -1860,7 +1860,7 @@
 /area/class_m/inside)
 "QC" = (
 /obj/item/stool/padded,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "QK" = (
 /obj/machinery/door/airlock{
@@ -1923,7 +1923,7 @@
 /area/class_m/outside)
 "Sd" = (
 /obj/machinery/computer/arcade/orion_trail,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "Sg" = (
 /obj/structure/flora/ausbushes/palebush,

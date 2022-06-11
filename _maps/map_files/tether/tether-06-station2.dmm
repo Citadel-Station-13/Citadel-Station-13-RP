@@ -669,7 +669,7 @@
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/public_meeting_room)
 "aeY" = (
 /obj/machinery/light{
@@ -3996,7 +3996,7 @@
 /area/hallway/station/port)
 "aoH" = (
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/office)
 "aoI" = (
 /obj/structure/cable{
@@ -4189,7 +4189,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/office)
 "app" = (
 /obj/effect/floor_decal/borderfloor{
@@ -4852,7 +4852,7 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/drinks/bottle/holywater,
 /obj/item/nullrod,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/office)
 "aqN" = (
 /obj/effect/floor_decal/borderfloor{
@@ -5208,7 +5208,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/table/wooden_reinforced,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/chapel/main)
 "arA" = (
 /obj/structure/closet/crate,
@@ -6246,7 +6246,7 @@
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/office)
 "auC" = (
 /turf/simulated/wall/r_wall,
@@ -6711,7 +6711,7 @@
 "avU" = (
 /obj/structure/bed/chair/wood,
 /atom/movable/landmark/spawnpoint/job/chaplain,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/office)
 "awa" = (
 /obj/structure/table/standard,
@@ -6785,14 +6785,14 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/office)
 "awA" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/office)
 "awC" = (
 /obj/machinery/door/firedoor/glass,
@@ -6848,18 +6848,18 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/office)
 "awZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/office)
 "axa" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/office)
 "axb" = (
 /obj/machinery/light{
@@ -6919,16 +6919,16 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/office)
 "axl" = (
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/office)
 "axm" = (
 /obj/structure/bed/chair/sofa/brown/left{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/office)
 "axn" = (
 /obj/machinery/door/firedoor/glass,
@@ -6941,7 +6941,7 @@
 "axo" = (
 /obj/structure/table/woodentable,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/office)
 "axq" = (
 /obj/structure/disposalpipe/segment,
@@ -7149,7 +7149,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/main)
 "ayf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -7332,7 +7332,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/office)
 "ayU" = (
 /obj/machinery/button/remote/driver{
@@ -7388,7 +7388,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/main)
 "aza" = (
 /obj/structure/disposalpipe/segment{
@@ -7411,7 +7411,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/chapel/main)
 "azb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -7422,7 +7422,7 @@
 /obj/structure/bookcase{
 	name = "bookcase (Religious)"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/main)
 "azh" = (
 /obj/machinery/light/small{
@@ -7515,7 +7515,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/chapel/main)
 "azs" = (
 /obj/structure/cable{
@@ -7523,7 +7523,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/main)
 "azt" = (
 /obj/structure/cable{
@@ -7637,7 +7637,7 @@
 /area/tether/station/burial)
 "aAh" = (
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/main)
 "aAk" = (
 /obj/machinery/light/small{
@@ -7655,7 +7655,7 @@
 /area/chapel/main)
 "aAm" = (
 /obj/structure/table/wooden_reinforced,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/main)
 "aAu" = (
 /obj/machinery/door/firedoor/glass,
@@ -7668,7 +7668,7 @@
 "aAx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/chapel/main)
 "aAI" = (
 /atom/movable/landmark/spawnpoint/job/chaplain,
@@ -7736,13 +7736,13 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/main)
 "aBc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/main)
 "aBd" = (
 /turf/simulated/wall/r_wall,
@@ -8871,7 +8871,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/public_meeting_room)
 "aHb" = (
 /obj/structure/closet/crate,
@@ -9392,7 +9392,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/public_meeting_room)
 "aIC" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -9411,7 +9411,7 @@
 	layer = 3.3;
 	pixel_y = 26
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/public_meeting_room)
 "aIK" = (
 /obj/effect/floor_decal/borderfloor,
@@ -9561,7 +9561,7 @@
 /area/ai_core_foyer)
 "aJn" = (
 /obj/machinery/photocopier,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/office)
 "aJp" = (
 /obj/machinery/alarm{
@@ -9587,7 +9587,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/public_meeting_room)
 "aJr" = (
 /obj/machinery/porta_turret/ai_defense,
@@ -9980,7 +9980,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/office)
 "aKR" = (
 /obj/machinery/light_switch{
@@ -10035,7 +10035,7 @@
 /obj/item/flame/candle/candelabra,
 /obj/item/flame/candle/candelabra,
 /obj/item/flame/candle/candelabra,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/office)
 "aLd" = (
 /obj/structure/inflatable/door,
@@ -10248,7 +10248,7 @@
 /obj/structure/bed/chair/sofa/brown/right{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/office)
 "aLW" = (
 /obj/structure/cable/cyan{
@@ -10360,7 +10360,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/office)
 "aMz" = (
 /obj/structure/disposalpipe/segment{
@@ -10691,7 +10691,7 @@
 	id = "chapel";
 	pixel_x = -25
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/office)
 "aNM" = (
 /obj/structure/lattice,
@@ -11128,7 +11128,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/public_meeting_room)
 "aPn" = (
 /obj/effect/floor_decal/corner_steel_grid{
@@ -11191,7 +11191,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/hologram/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/chapel/main)
 "aPA" = (
 /obj/machinery/camera/network/exploration{
@@ -11318,14 +11318,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/public_meeting_room)
 "aPS" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/public_meeting_room)
 "aPV" = (
 /obj/effect/floor_decal/rust,
@@ -11889,7 +11889,7 @@
 	dir = 4
 	},
 /obj/item/folder,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/public_meeting_room)
 "aRN" = (
 /obj/structure/shuttle/engine/propulsion{
@@ -12106,7 +12106,7 @@
 /obj/machinery/camera/network/tether{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/office)
 "aSz" = (
 /obj/structure/closet/emcloset,
@@ -12186,7 +12186,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/public_meeting_room)
 "aSW" = (
 /obj/machinery/alarm{
@@ -12611,7 +12611,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/public_meeting_room)
 "aUq" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -12945,7 +12945,7 @@
 	pixel_x = 2;
 	pixel_y = 7
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/office)
 "aVq" = (
 /obj/machinery/light{
@@ -13383,7 +13383,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/office)
 "aXb" = (
 /obj/structure/bed/chair/shuttle,
@@ -13915,10 +13915,10 @@
 	dir = 4
 	},
 /obj/structure/bed/chair/bay/chair/padded/beige,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/visitorhallway/office)
 "aYT" = (
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/main)
 "aYV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -14182,7 +14182,7 @@
 "aZK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/public_meeting_room)
 "aZL" = (
 /obj/effect/floor_decal/rust,
@@ -14331,7 +14331,7 @@
 /obj/structure/bed/chair/bay/chair/padded/beige{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/visitorhallway/office)
 "bgk" = (
 /obj/effect/floor_decal/borderfloor{
@@ -15229,7 +15229,7 @@
 /obj/machinery/button/windowtint{
 	id = "visitor_meeting"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/visitorhallway/office)
 "dmP" = (
 /obj/effect/floor_decal/borderfloor,
@@ -15355,7 +15355,7 @@
 	dir = 5
 	},
 /obj/structure/table/woodentable,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/visitorhallway/office)
 "dDo" = (
 /obj/structure/cable/cyan{
@@ -15406,7 +15406,7 @@
 /obj/structure/bed/chair/bay/chair/padded/beige{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/visitorhallway/office)
 "dFU" = (
 /obj/effect/floor_decal/spline/fancy,
@@ -16560,7 +16560,7 @@
 /turf/simulated/floor,
 /area/maintenance/station/cargo)
 "fEB" = (
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/visitorhallway/office)
 "fEJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -16666,7 +16666,7 @@
 	dir = 6
 	},
 /obj/structure/table/woodentable,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/visitorhallway/office)
 "fLn" = (
 /obj/machinery/power/apc{
@@ -17606,7 +17606,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/visitorhallway/office)
 "hfq" = (
 /obj/structure/cable/cyan{
@@ -18724,7 +18724,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/visitorhallway/office)
 "jhY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -18748,7 +18748,7 @@
 /obj/structure/bed/chair/bay/comfy{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/visitorhallway/office)
 "jlM" = (
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -18771,7 +18771,7 @@
 "jnd" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/storage/bible,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/main)
 "joh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -19099,7 +19099,7 @@
 	dir = 10
 	},
 /obj/structure/bed/chair/bay/chair/padded/beige,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/visitorhallway/office)
 "jNP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -20417,7 +20417,7 @@
 /turf/simulated/floor,
 /area/maintenance/station/cargo)
 "mwj" = (
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/chapel/main)
 "mxe" = (
 /obj/effect/floor_decal/borderfloor,
@@ -20796,7 +20796,7 @@
 /obj/structure/bed/chair/bay/chair/padded/beige{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/visitorhallway/office)
 "naQ" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
@@ -20964,7 +20964,7 @@
 	},
 /obj/structure/table/wooden_reinforced,
 /obj/item/storage/bible,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/main)
 "nqi" = (
 /obj/effect/floor_decal/spline/fancy{
@@ -22358,7 +22358,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/visitorhallway/office)
 "pzb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -22654,7 +22654,7 @@
 /area/tether/exploration)
 "qbt" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/visitorhallway/office)
 "qcI" = (
 /obj/structure/disposalpipe/segment{
@@ -23146,7 +23146,7 @@
 "qRd" = (
 /obj/item/deck/tarot,
 /obj/structure/table/wooden_reinforced,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/main)
 "qRy" = (
 /obj/structure/disposalpipe/segment{
@@ -23418,7 +23418,7 @@
 /obj/structure/bed/chair/bay/chair/padded/beige{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/visitorhallway/office)
 "roM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -23737,7 +23737,7 @@
 	dir = 4
 	},
 /obj/structure/table/woodentable,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/visitorhallway/office)
 "rVd" = (
 /obj/machinery/access_button{
@@ -24667,7 +24667,7 @@
 	pixel_x = 1;
 	pixel_y = 5
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/visitorhallway/office)
 "tGi" = (
 /obj/effect/floor_decal/borderfloor{
@@ -25021,7 +25021,7 @@
 /area/quartermaster/belterdock/gear)
 "uks" = (
 /obj/structure/bed/chair/bay/chair/padded/beige,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/visitorhallway/office)
 "ulU" = (
 /obj/machinery/vending/coffee,
@@ -25193,7 +25193,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/visitorhallway/office)
 "uJH" = (
 /obj/effect/floor_decal/corner/lightgrey{
@@ -26348,7 +26348,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/main)
 "wQo" = (
 /obj/structure/cable/green{
@@ -26376,7 +26376,7 @@
 /obj/structure/bed/chair/bay/chair/padded/beige{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/visitorhallway/office)
 "wSQ" = (
 /obj/structure/disposalpipe/sortjunction/untagged/flipped{
@@ -26704,7 +26704,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/visitorhallway/office)
 "xvK" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -26721,7 +26721,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/station/visitorhallway/office)
 "xxE" = (
 /obj/structure/disposalpipe/segment{

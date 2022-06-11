@@ -76,7 +76,7 @@
 	dir = 8;
 	light_range = 12
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/class_m/inside)
 "bK" = (
 /obj/structure/lightpost,
@@ -106,7 +106,7 @@
 /area/class_m/outside)
 "cU" = (
 /obj/item/stool/padded,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "cY" = (
 /obj/structure/closet/athletic_mixed,
@@ -364,7 +364,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/class_m/inside)
 "iH" = (
 /obj/structure/flora/ausbushes/pointybush,
@@ -430,7 +430,7 @@
 /area/class_m/inside)
 "jN" = (
 /obj/structure/bed/chair/wood/wings,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "kd" = (
 /obj/structure/railing{
@@ -558,7 +558,7 @@
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
 "no" = (
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/class_m/inside)
 "nr" = (
 /obj/structure/fence{
@@ -668,7 +668,7 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/class_m/inside)
 "pU" = (
 /obj/structure/railing{
@@ -709,7 +709,7 @@
 /obj/structure/bed/chair/wood/wings{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "ql" = (
 /turf/simulated/water/shoreline/corner/classm{
@@ -914,7 +914,7 @@
 /turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "tS" = (
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "tX" = (
 /obj/machinery/light{
@@ -967,7 +967,7 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/class_m/inside)
 "ve" = (
 /obj/machinery/vending/snack,
@@ -1004,7 +1004,7 @@
 /area/class_m/inside)
 "vR" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/class_m/inside)
 "vX" = (
 /obj/item/ore/coal,
@@ -1176,7 +1176,7 @@
 /area/class_m/inside)
 "zJ" = (
 /obj/machinery/computer/arcade/battle,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "zK" = (
 /obj/machinery/appliance/mixer/cereal,
@@ -1320,7 +1320,7 @@
 /area/class_m/inside)
 "CE" = (
 /obj/item/stool/padded,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/class_m/inside)
 "CZ" = (
 /mob/living/bot/farmbot{
@@ -1423,7 +1423,7 @@
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "EL" = (
 /obj/structure/table/marble,
@@ -1447,7 +1447,7 @@
 /area/class_m/outside)
 "Fq" = (
 /obj/structure/filingcabinet/chestdrawer,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "Fv" = (
 /turf/simulated/floor/tiled/classm/outdoors,
@@ -1460,7 +1460,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/class_m/inside)
 "FJ" = (
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/class_m/inside)
 "FT" = (
 /obj/structure/railing{
@@ -1486,7 +1486,7 @@
 /area/class_m/inside)
 "Gd" = (
 /obj/structure/table/marble,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "Ge" = (
 /obj/machinery/seed_extractor,
@@ -1496,7 +1496,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/class_m/inside)
 "GC" = (
 /obj/structure/railing{
@@ -1579,7 +1579,7 @@
 /obj/machinery/cash_register/civilian{
 	req_access = null
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "Iq" = (
 /obj/structure/closet/crate/bin{
@@ -1687,13 +1687,13 @@
 /area/class_m/inside)
 "Ky" = (
 /obj/machinery/door/window/westleft,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "KB" = (
 /obj/structure/table/gamblingtable,
 /obj/item/deck/holder,
 /obj/item/deck/tarot,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/class_m/inside)
 "KH" = (
 /obj/structure/railing{
@@ -1929,7 +1929,7 @@
 "QL" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/rddouble,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/class_m/inside)
 "QQ" = (
 /mob/living/simple_mob/animal/passive/bird/azure_tit/tweeter,
@@ -1988,11 +1988,11 @@
 /obj/structure/table/gamblingtable,
 /obj/item/storage/pill_bottle/dice,
 /obj/item/storage/dicecup/loaded,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/class_m/inside)
 "RU" = (
 /obj/machinery/door/window/eastright,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "Sj" = (
 /obj/structure/window/reinforced{
@@ -2023,7 +2023,7 @@
 "SE" = (
 /obj/structure/table/marble,
 /obj/item/glass_jar,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "SS" = (
 /obj/structure/fence/post{
@@ -2055,7 +2055,7 @@
 /area/class_m/inside)
 "Tu" = (
 /obj/structure/table/gamblingtable,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/class_m/inside)
 "Tx" = (
 /turf/simulated/grass/outdoors/classm,
@@ -2078,7 +2078,7 @@
 /area/class_m/inside)
 "Ua" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "Uq" = (
 /obj/machinery/seed_extractor,
@@ -2099,7 +2099,7 @@
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/class_m/inside)
 "Vc" = (
 /mob/living/simple_mob/animal/passive/fish/rockfish,
@@ -2196,7 +2196,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "Xv" = (
 /obj/machinery/door/airlock/glass{
@@ -2266,14 +2266,14 @@
 	dir = 1;
 	req_access = null
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "YA" = (
 /turf/simulated/floor/tiled/white,
 /area/class_m/inside)
 "YP" = (
 /obj/machinery/computer/arcade/orion_trail,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "YW" = (
 /obj/structure/bed/chair/comfy/beige{
@@ -2333,7 +2333,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_m/inside)
 "ZN" = (
 /obj/structure/fireplace{

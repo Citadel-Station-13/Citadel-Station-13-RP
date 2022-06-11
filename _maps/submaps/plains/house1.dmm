@@ -178,38 +178,38 @@
 /turf/simulated/floor/tiled/freezer,
 /area/submap/house1)
 "aJ" = (
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/submap/house1)
 "aK" = (
 /obj/structure/bed/chair/wood,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/submap/house1)
 "aL" = (
 /obj/structure/bed/chair/wood{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/submap/house1)
 "aM" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/storage/fancy/candle_box,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/submap/house1)
 "aN" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/binoculars/spyglass,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/submap/house1)
 "aO" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/flashlight/lantern,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/submap/house1)
 "aP" = (
 /obj/structure/bed/chair/wood{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/submap/house1)
 "aQ" = (
 /obj/structure/table/rack,
@@ -218,14 +218,14 @@
 /area/submap/house1)
 "aR" = (
 /obj/structure/simple_door/wood,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/submap/house1)
 "aS" = (
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/submap/house1)
 "aT" = (
 /obj/machinery/space_heater,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/submap/house1)
 "aU" = (
 /obj/structure/table/rack,
@@ -262,12 +262,12 @@
 /obj/structure/table/woodentable,
 /obj/random/action_figure,
 /obj/item/flashlight/lantern,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/submap/house1)
 "bb" = (
 /obj/item/bedsheet/hopdouble,
 /obj/structure/bed/double/padded,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/submap/house1)
 "bc" = (
 /obj/structure/sign/kiddieplaque{

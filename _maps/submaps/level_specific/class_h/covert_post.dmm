@@ -9,7 +9,7 @@
 /area/class_h/POIs/covert_post)
 "c" = (
 /obj/structure/filingcabinet/chestdrawer,
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/class_h/POIs/covert_post)
 "d" = (
 /turf/simulated/floor/bananium,
@@ -46,11 +46,11 @@
 /turf/simulated/floor/tiled/white,
 /area/class_h/POIs/covert_post)
 "l" = (
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/class_h/POIs/covert_post)
 "m" = (
 /obj/machinery/papershredder,
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/class_h/POIs/covert_post)
 "n" = (
 /obj/structure/sink{
@@ -80,14 +80,14 @@
 /obj/item/folder/yellow,
 /obj/item/folder/yellow,
 /obj/item/clothing/ears/earmuffs,
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/class_h/POIs/covert_post)
 "s" = (
 /obj/structure/bed/chair/comfy/lime{
 	dir = 1
 	},
 /mob/living/simple_mob/humanoid/clown/commando/melee,
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/class_h/POIs/covert_post)
 "t" = (
 /mob/living/simple_mob/humanoid/clown/commando/melee,
@@ -98,7 +98,7 @@
 /area/class_h/POIs/covert_post)
 "v" = (
 /obj/machinery/computer/telecomms/monitor,
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/class_h/POIs/covert_post)
 "w" = (
 /obj/machinery/light/small{
@@ -145,7 +145,7 @@
 /obj/machinery/door/airlock/glass{
 	name = "Monitoring Room"
 	},
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/class_h/POIs/covert_post)
 "F" = (
 /obj/structure/table/bananium_reinforced,
@@ -168,7 +168,7 @@
 /obj/structure/table/bananium_reinforced,
 /obj/item/paper_bin,
 /obj/item/pen/crayon/rainbow,
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/class_h/POIs/covert_post)
 "J" = (
 /turf/simulated/mineral/classh,
@@ -193,7 +193,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/class_h/POIs/covert_post)
 "O" = (
 /obj/structure/table/bananium_reinforced,

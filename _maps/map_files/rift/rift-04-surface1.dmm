@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aag" = (
 /obj/structure/barricade/cutout/mime,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "abg" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
@@ -382,7 +382,7 @@
 	pixel_y = 2
 	},
 /obj/item/book/manual/medical_diagnostics_manual,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/cmo)
 "atw" = (
 /obj/structure/table/wooden_reinforced,
@@ -779,7 +779,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "aMM" = (
 /obj/machinery/pointdefense_control{
@@ -1113,7 +1113,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "bdy" = (
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/crew_quarters/game_room)
 "bdR" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
@@ -1343,7 +1343,7 @@
 	dir = 4
 	},
 /obj/item/flashlight/lamp,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/library)
 "bmv" = (
 /turf/simulated/wall/r_wall,
@@ -1505,7 +1505,7 @@
 /obj/structure/bed/chair/sofa/black/right{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/library)
 "bqL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -1891,7 +1891,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/crew_quarters/game_room)
 "bIr" = (
 /obj/machinery/door/airlock{
@@ -2353,7 +2353,7 @@
 /obj/item/radio/intercom{
 	pixel_y = -24
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/library)
 "cdP" = (
 /obj/structure/flora/ausbushes/fullgrass,
@@ -2674,7 +2674,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced/tinted/frosted,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/lawoffice)
 "cuo" = (
 /obj/effect/overlay/snow/floor/pointy{
@@ -2806,7 +2806,7 @@
 /area/rnd/chemistry_lab)
 "cxW" = (
 /obj/structure/undies_wardrobe,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "cyu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -3059,7 +3059,7 @@
 /area/hallway/secondary/civilian_hallway_mid)
 "cGW" = (
 /obj/structure/table/reinforced,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/lawoffice)
 "cHz" = (
 /obj/structure/catwalk,
@@ -3614,7 +3614,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/medbreak)
 "ddN" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -4038,7 +4038,7 @@
 	pixel_y = -2
 	},
 /obj/item/stamp/internalaffairs,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/lawoffice)
 "doS" = (
 /obj/effect/floor_decal/borderfloor{
@@ -4235,7 +4235,7 @@
 /area/maintenance/security/lower)
 "duD" = (
 /obj/structure/bed/chair/comfy/black,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/library)
 "dvl" = (
 /obj/effect/floor_decal/borderfloor{
@@ -5393,7 +5393,7 @@
 	pixel_y = -2
 	},
 /obj/item/stamp/internalaffairs,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/lawoffice)
 "ejc" = (
 /obj/structure/cable/green{
@@ -5710,7 +5710,7 @@
 	},
 /obj/item/flame/lighter/zippo/ironic,
 /obj/item/clothing/mask/smokable/pipe/cobpipe,
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/tether/surfacebase/funny/clownoffice)
 "evU" = (
 /obj/effect/floor_decal/borderfloor{
@@ -6168,7 +6168,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "eVR" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -6185,7 +6185,7 @@
 	dir = 4
 	},
 /atom/movable/landmark/spawnpoint/job/lawyer,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/lawoffice)
 "eXq" = (
 /obj/structure/cable/green{
@@ -7010,7 +7010,7 @@
 /obj/item/book/manual/medical_diagnostics_manual{
 	pixel_y = 7
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/medbreak)
 "fNE" = (
 /obj/structure/table/woodentable,
@@ -7174,7 +7174,7 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/medbreak)
 "fWO" = (
 /obj/effect/overlay/snow/floor/pointy{
@@ -7226,7 +7226,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "fXU" = (
 /obj/structure/cable/green{
@@ -7414,7 +7414,7 @@
 	},
 /atom/movable/landmark/spawnpoint/job/medical_doctor,
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/medbreak)
 "ghF" = (
 /obj/machinery/door/airlock/glass_medical{
@@ -8167,7 +8167,7 @@
 /area/maintenance/evahallway)
 "gPk" = (
 /obj/machinery/photocopier,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/library)
 "gPt" = (
 /obj/effect/floor_decal/techfloor{
@@ -8407,7 +8407,7 @@
 /obj/structure/table/glass,
 /obj/item/deck/cards,
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/medbreak)
 "gVI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -8421,7 +8421,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/library)
 "gVO" = (
 /obj/effect/overlay/snow/floor/pointy,
@@ -8714,7 +8714,7 @@
 	desc = null;
 	pixel_y = 24
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "hdO" = (
 /obj/structure/railing{
@@ -8930,7 +8930,7 @@
 /area/hallway/primary/surfaceone)
 "hja" = (
 /obj/structure/bed/chair/comfy/beige,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/crew_quarters/game_room)
 "hjN" = (
 /obj/machinery/light{
@@ -9326,7 +9326,7 @@
 /obj/structure/noticeboard{
 	pixel_x = -32
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/medbreak)
 "hDE" = (
 /obj/structure/cable/green{
@@ -10267,7 +10267,7 @@
 /turf/simulated/grass,
 /area/rnd/xenobiology/xenoflora)
 "ijz" = (
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/lawoffice)
 "ikf" = (
 /obj/structure/table/wooden_reinforced,
@@ -10430,7 +10430,7 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/crew_quarters/game_room)
 "iqX" = (
 /atom/movable/landmark/spawnpoint/job/assistant,
@@ -10851,7 +10851,7 @@
 "iFe" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/mimedouble,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "iFF" = (
 /obj/machinery/hologram/holopad,
@@ -11343,7 +11343,7 @@
 /obj/structure/bed/chair/sofa/black/right{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/library)
 "jei" = (
 /obj/structure/bed/chair/office/dark,
@@ -11600,7 +11600,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/library)
 "jkK" = (
 /atom/movable/landmark/spawnpoint/job/quartermaster,
@@ -12405,7 +12405,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/tether/surfacebase/funny/clownoffice)
 "jTM" = (
 /obj/effect/floor_decal/spline/plain{
@@ -13158,7 +13158,7 @@
 	pixel_y = 32
 	},
 /obj/machinery/camera/network/medbay,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/medbreak)
 "kvW" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -13214,7 +13214,7 @@
 /obj/item/radio/intercom{
 	pixel_y = -24
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/lawoffice)
 "kxS" = (
 /obj/structure/table/rack/shelf,
@@ -13525,7 +13525,7 @@
 /area/rift/trade_shop)
 "kHg" = (
 /obj/structure/table/wooden_reinforced,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/crew_quarters/game_room)
 "kHh" = (
 /obj/structure/table/reinforced,
@@ -13596,7 +13596,7 @@
 /turf/simulated/floor/wood,
 /area/lawoffice)
 "kJN" = (
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/lawoffice)
 "kJV" = (
 /atom/movable/landmark/spawnpoint/job/assistant,
@@ -13824,7 +13824,7 @@
 /obj/structure/table/woodentable,
 /obj/item/paper_bin,
 /obj/item/pen,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/library)
 "kVA" = (
 /obj/structure/catwalk,
@@ -14279,7 +14279,7 @@
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced/tinted/frosted,
 /obj/item/flashlight/lamp,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/lawoffice)
 "lkO" = (
 /obj/machinery/door/airlock/maintenance/rnd,
@@ -14448,7 +14448,7 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/crew_quarters/game_room)
 "ltv" = (
 /obj/structure/bed/chair{
@@ -14458,7 +14458,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/medbreak)
 "ltQ" = (
 /obj/structure/disposalpipe/segment,
@@ -15248,7 +15248,7 @@
 /area/security/forensics)
 "mdW" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/library)
 "mea" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -15257,7 +15257,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/foyer)
 "mfm" = (
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/cmo)
 "mfn" = (
 /obj/structure/disposalpipe/segment{
@@ -15565,7 +15565,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/tether/surfacebase/funny/clownoffice)
 "mnn" = (
 /obj/structure/closet/secure_closet/xenoarchaeologist,
@@ -15754,13 +15754,13 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "mrc" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/library)
 "mrL" = (
 /obj/machinery/door/firedoor/glass,
@@ -16010,7 +16010,7 @@
 	dir = 1;
 	pixel_y = 24
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/medbreak)
 "mAo" = (
 /obj/effect/floor_decal/borderfloor{
@@ -16121,7 +16121,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "mFC" = (
 /obj/structure/table/reinforced,
@@ -16190,7 +16190,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "mHK" = (
 /obj/structure/table/glass,
@@ -16747,7 +16747,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/lawoffice)
 "neG" = (
 /obj/machinery/power/smes/buildable{
@@ -16937,7 +16937,7 @@
 	dir = 4
 	},
 /atom/movable/landmark/spawnpoint/job/paramedic,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/medbreak)
 "nkZ" = (
 /obj/structure/cable/heavyduty{
@@ -17063,7 +17063,7 @@
 /obj/item/toy/character/lich,
 /obj/item/toy/character/voidone,
 /obj/item/toy/character/alien,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/crew_quarters/game_room)
 "npu" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -17527,7 +17527,7 @@
 "nDQ" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/library)
 "nEd" = (
 /obj/structure/cable/green{
@@ -17929,7 +17929,7 @@
 "nOq" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/hopdouble,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/cmo)
 "nOt" = (
 /obj/structure/sink{
@@ -18104,7 +18104,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/tether/surfacebase/funny/clownoffice)
 "nXK" = (
 /obj/effect/floor_decal/borderfloor,
@@ -18680,7 +18680,7 @@
 /obj/structure/curtain/black{
 	anchored = 1
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/library)
 "opT" = (
 /obj/effect/floor_decal/borderfloor,
@@ -18930,7 +18930,7 @@
 	dir = 1;
 	pixel_y = 24
 	},
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/lawoffice)
 "oBZ" = (
 /obj/machinery/requests_console/preset/research{
@@ -19407,7 +19407,7 @@
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/lawoffice)
 "oRQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -20349,7 +20349,7 @@
 	},
 /obj/item/folder/yellow,
 /obj/machinery/light,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/lawoffice)
 "pwi" = (
 /obj/machinery/door/firedoor/glass,
@@ -20575,7 +20575,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "pFY" = (
 /obj/machinery/door/airlock/research{
@@ -20610,7 +20610,7 @@
 	dir = 4
 	},
 /atom/movable/landmark/spawnpoint/job/lawyer,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/lawoffice)
 "pIu" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -20841,7 +20841,7 @@
 	name = "plastic table frame"
 	},
 /obj/item/flashlight/lamp/green,
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/tether/surfacebase/funny/clownoffice)
 "pRe" = (
 /obj/structure/curtain/open/bed{
@@ -20994,7 +20994,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/hallway)
 "pXY" = (
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/library)
 "pYF" = (
 /obj/structure/table/rack/shelf,
@@ -21488,7 +21488,7 @@
 "qug" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/flame/candle/everburn,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/crew_quarters/game_room)
 "qun" = (
 /obj/effect/floor_decal/borderfloor{
@@ -21698,7 +21698,7 @@
 	},
 /obj/structure/table/wooden_reinforced,
 /obj/item/deck/tarot,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/crew_quarters/game_room)
 "qCp" = (
 /obj/machinery/atmospherics/portables_connector,
@@ -21837,7 +21837,7 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/crew_quarters/game_room)
 "qKS" = (
 /obj/structure/table/woodentable,
@@ -22335,7 +22335,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "rcS" = (
 /obj/structure/bookcase{
@@ -22818,7 +22818,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfaceone)
 "rwy" = (
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "rwG" = (
 /obj/structure/table/reinforced,
@@ -23864,7 +23864,7 @@
 	name = "silent storage";
 	req_one_access = list(138)
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "skt" = (
 /obj/effect/floor_decal/techfloor{
@@ -25108,7 +25108,7 @@
 	name = "funny locker";
 	req_one_access = list(136)
 	},
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/tether/surfacebase/funny/clownoffice)
 "thk" = (
 /obj/structure/table/glass,
@@ -25470,7 +25470,7 @@
 	dir = 1
 	},
 /obj/item/flashlight/lamp,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/lawoffice)
 "tup" = (
 /obj/machinery/photocopier,
@@ -26159,7 +26159,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/library)
 "tRK" = (
 /obj/structure/grille,
@@ -26279,7 +26279,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/tether/surfacebase/funny/clownoffice)
 "tWT" = (
 /obj/effect/floor_decal/borderfloor{
@@ -26373,7 +26373,7 @@
 /area/crew_quarters/game_room)
 "tZJ" = (
 /obj/structure/table/reinforced,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/lawoffice)
 "tZY" = (
 /obj/structure/bed/chair/wood{
@@ -26744,7 +26744,7 @@
 	name = "obscure table"
 	},
 /obj/random/mre,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "ukK" = (
 /obj/item/book/manual/security_space_law,
@@ -27470,7 +27470,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/medbreak)
 "uEJ" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -28951,7 +28951,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/chemistry_lab)
 "vXh" = (
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/tether/surfacebase/funny/clownoffice)
 "vXi" = (
 /obj/effect/overlay/snow/floor/pointy{
@@ -29320,7 +29320,7 @@
 /obj/structure/bed/chair/sofa/black/left{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/library)
 "wmH" = (
 /obj/effect/floor_decal/borderfloor{
@@ -30475,7 +30475,7 @@
 	anchored = 1;
 	icon_state = "open"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/library)
 "xfH" = (
 /obj/effect/floor_decal/borderfloor{
@@ -30633,7 +30633,7 @@
 "xlG" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/clowndouble,
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/tether/surfacebase/funny/clownoffice)
 "xlJ" = (
 /obj/structure/cable/green{
@@ -30819,7 +30819,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/tether/surfacebase/funny/clownoffice)
 "xxj" = (
 /obj/machinery/door/window/brigdoor/northright{
@@ -31179,7 +31179,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "xQb" = (
 /obj/effect/floor_decal/spline/plain,

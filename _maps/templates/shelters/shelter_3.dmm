@@ -138,21 +138,21 @@
 /area/survivalpod)
 "x" = (
 /obj/item/stool/padded,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/survivalpod)
 "y" = (
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/survivalpod)
 "z" = (
 /obj/machinery/vending/cigarette,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/survivalpod)
 "A" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
 /obj/machinery/disposal,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/survivalpod)
 "B" = (
 /obj/structure/sign/mining/survival{
@@ -180,7 +180,7 @@
 /area/survivalpod)
 "D" = (
 /obj/structure/bed/chair/comfy/black,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/survivalpod)
 "E" = (
 /obj/machinery/door/airlock/voidcraft/survival_pod,
@@ -196,7 +196,7 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/survivalpod)
 "G" = (
 /obj/structure/urinal{
@@ -227,15 +227,15 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/survivalpod)
 "L" = (
 /obj/machinery/vending/snack,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/survivalpod)
 "M" = (
 /obj/machinery/light,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/survivalpod)
 "N" = (
 /obj/structure/toilet{

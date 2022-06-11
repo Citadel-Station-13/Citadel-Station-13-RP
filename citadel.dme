@@ -1551,6 +1551,7 @@
 #include "code\game\turfs\simulated\flooring\flooring_traps.dm"
 #include "code\game\turfs\simulated\flooring\shuttle_vr.dm"
 #include "code\game\turfs\simulated\floors\_floor.dm"
+#include "code\game\turfs\simulated\floors\carpet.dm"
 #include "code\game\turfs\simulated\floors\dungeon.dm"
 #include "code\game\turfs\simulated\floors\floor_acts.dm"
 #include "code\game\turfs\simulated\floors\floor_static.dm"

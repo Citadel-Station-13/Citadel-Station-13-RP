@@ -54,7 +54,7 @@
 /turf/simulated/floor/wood,
 /area/submap/Boathouse)
 "am" = (
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/submap/Boathouse)
 "an" = (
 /obj/structure/table/woodentable,
@@ -79,12 +79,12 @@
 "ar" = (
 /obj/structure/table/woodentable,
 /obj/item/deck/cards,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/submap/Boathouse)
 "as" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/chips,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/submap/Boathouse)
 "at" = (
 /obj/structure/table/woodentable,
@@ -109,12 +109,12 @@
 "ax" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/drinks/bottle/whiskey,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/submap/Boathouse)
 "ay" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/drinks/glass2/shot,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/submap/Boathouse)
 "az" = (
 /obj/structure/table/woodentable,
@@ -127,7 +127,7 @@
 /obj/item/reagent_containers/food/drinks/glass2/shot,
 /obj/item/reagent_containers/food/drinks/glass2/shot,
 /obj/item/reagent_containers/food/drinks/glass2/shot,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/submap/Boathouse)
 "aB" = (
 /turf/simulated/floor/wood{
@@ -196,7 +196,7 @@
 /turf/simulated/floor/wood,
 /area/submap/Boathouse)
 "aP" = (
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/submap/Boathouse)
 "aQ" = (
 /obj/structure/table/woodentable,
@@ -205,7 +205,7 @@
 /area/submap/Boathouse)
 "aR" = (
 /obj/structure/bookcase,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/submap/Boathouse)
 "aS" = (
 /obj/structure/table/woodentable,
@@ -220,7 +220,7 @@
 /area/submap/Boathouse)
 "aU" = (
 /obj/structure/bed/chair/wood,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/submap/Boathouse)
 "aV" = (
 /obj/structure/table/rack,
@@ -249,11 +249,11 @@
 "aZ" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/submap/Boathouse)
 "ba" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/submap/Boathouse)
 "bb" = (
 /turf/simulated/dirt,

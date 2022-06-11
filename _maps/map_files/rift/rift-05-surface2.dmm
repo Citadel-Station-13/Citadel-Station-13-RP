@@ -4484,7 +4484,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "ij" = (
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/crew_quarters/heads/hos)
 "ik" = (
 /obj/machinery/door/airlock/command{
@@ -4519,7 +4519,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/reading_room)
 "ip" = (
 /obj/machinery/light{
@@ -5043,7 +5043,7 @@
 /area/medical/sleeper)
 "jl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/breakroom)
 "jm" = (
 /obj/machinery/space_heater,
@@ -5800,7 +5800,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/evidence_storage)
 "kE" = (
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/breakroom)
 "kF" = (
 /obj/machinery/door/airlock{
@@ -6059,7 +6059,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/breakroom)
 "lc" = (
 /obj/structure/toilet{
@@ -8853,7 +8853,7 @@
 "pO" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/book/manual/standard_operating_procedure,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/breakroom)
 "pP" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -10268,7 +10268,7 @@
 	pixel_y = 2
 	},
 /obj/item/book/manual/security_space_law,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/crew_quarters/heads/hos)
 "sA" = (
 /obj/structure/railing,
@@ -12887,7 +12887,7 @@
 /turf/simulated/wall,
 /area/crew_quarters/sleep/Dorm_3)
 "xB" = (
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/reading_room)
 "xC" = (
 /obj/structure/table/rack/shelf,
@@ -13125,7 +13125,7 @@
 "xY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/breakroom)
 "xZ" = (
 /obj/effect/floor_decal/borderfloor,
@@ -15873,7 +15873,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/breakroom)
 "Dd" = (
 /obj/structure/extinguisher_cabinet{
@@ -18164,7 +18164,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/reading_room)
 "GL" = (
 /obj/structure/table/standard,
@@ -19685,7 +19685,7 @@
 "Jr" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/clothing/glasses/science,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/breakroom)
 "Js" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -19909,7 +19909,7 @@
 "JN" = (
 /obj/item/bedsheet/rddouble,
 /obj/structure/bed/double/padded,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/crew_quarters/heads/hor)
 "JO" = (
 /obj/effect/floor_decal/borderfloorwhite/corner{
@@ -21020,7 +21020,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/rnd/breakroom)
 "LG" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -21565,7 +21565,7 @@
 "MA" = (
 /obj/item/bedsheet/hosdouble,
 /obj/structure/bed/double/padded,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/crew_quarters/heads/hos)
 "MB" = (
 /obj/effect/floor_decal/borderfloor{
@@ -22152,7 +22152,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "NF" = (
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/crew_quarters/heads/hor)
 "NH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{

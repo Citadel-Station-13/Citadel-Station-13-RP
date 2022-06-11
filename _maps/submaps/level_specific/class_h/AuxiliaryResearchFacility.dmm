@@ -16,7 +16,7 @@
 	dir = 1;
 	pixel_x = 16
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "an" = (
 /obj/structure/girder/displaced,
@@ -145,7 +145,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "cF" = (
 /obj/structure/bookcase,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "cO" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -322,7 +322,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "ho" = (
 /turf/simulated/floor/plating,
@@ -349,7 +349,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/random/trash,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "hR" = (
 /obj/structure/railing{
@@ -402,7 +402,7 @@
 	dir = 5
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "jk" = (
 /obj/effect/floor_decal/techfloor/corner{
@@ -543,7 +543,7 @@
 	pixel_y = 16
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "lH" = (
 /obj/effect/floor_decal/rust,
@@ -716,7 +716,7 @@
 /obj/effect/floor_decal/carpet{
 	pixel_x = 16
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "pJ" = (
 /obj/random/trash,
@@ -741,7 +741,7 @@
 	dir = 4;
 	pixel_y = 16
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "qA" = (
 /obj/structure/simple_door/wood,
@@ -798,7 +798,7 @@
 /obj/effect/floor_decal/carpet{
 	pixel_x = 16
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "rG" = (
 /obj/structure/table/bench/padded,
@@ -874,7 +874,7 @@
 	pixel_x = 16
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "tU" = (
 /obj/structure/table/bench/wooden,
@@ -1032,7 +1032,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "xl" = (
 /obj/random/trash,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "xy" = (
 /obj/random/trash,
@@ -1198,7 +1198,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/random/trash,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "AW" = (
 /obj/machinery/light{
@@ -1208,7 +1208,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Bf" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Bk" = (
 /turf/simulated/mineral/cave,
@@ -1232,7 +1232,7 @@
 	dir = 1;
 	pixel_x = 16
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "BF" = (
 /obj/effect/floor_decal/techfloor/corner,
@@ -1261,7 +1261,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Cp" = (
 /obj/effect/floor_decal/rust,
@@ -1306,7 +1306,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "CX" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -1387,7 +1387,7 @@
 	pixel_y = 16
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "EE" = (
 /obj/machinery/photocopier,
@@ -1418,7 +1418,7 @@
 	dir = 4;
 	pixel_y = 16
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Fo" = (
 /obj/machinery/light{
@@ -1456,7 +1456,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "GB" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Hb" = (
 /obj/item/stack/material/silver,
@@ -1484,7 +1484,7 @@
 /obj/effect/floor_decal/carpet{
 	dir = 5
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "HJ" = (
 /obj/effect/floor_decal/techfloor{
@@ -1508,7 +1508,7 @@
 	dir = 8;
 	pixel_y = 16
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Ij" = (
 /obj/structure/table/bench/wooden,
@@ -1537,7 +1537,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "IO" = (
 /obj/structure/table/rack,
@@ -1724,7 +1724,7 @@
 /turf/simulated/floor/tiled/white,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "MN" = (
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "MP" = (
 /obj/effect/decal/cleanable/blood,
@@ -1784,7 +1784,7 @@
 	pixel_x = 16
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Oe" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -1911,7 +1911,7 @@
 	pixel_x = 16
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Rq" = (
 /obj/random/trash,
@@ -2176,7 +2176,7 @@
 	dir = 8;
 	pixel_y = 16
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Yi" = (
 /obj/effect/floor_decal/transit/orange,
@@ -2219,7 +2219,7 @@
 	dir = 6
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "YA" = (
 /obj/random/trash_pile,

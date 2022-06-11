@@ -18707,19 +18707,19 @@
 "aGG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/bridge/meeting_room)
 "aGH" = (
 /obj/structure/bed/chair/comfy/black,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/bridge/meeting_room)
 "aGI" = (
 /obj/structure/bed/chair/comfy/black,
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/bridge/meeting_room)
 "aGJ" = (
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/bridge/meeting_room)
 "aGK" = (
 /obj/machinery/firealarm{
@@ -18835,7 +18835,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/bridge/meeting_room)
 "aHb" = (
 /obj/item/book/manual/security_space_law,
@@ -18843,19 +18843,19 @@
 	dir = 8
 	},
 /obj/structure/table/wooden_reinforced,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/bridge/meeting_room)
 "aHc" = (
 /obj/item/folder/red,
 /obj/structure/disposalpipe/segment,
 /obj/structure/table/wooden_reinforced,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/bridge/meeting_room)
 "aHd" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/bridge/meeting_room)
 "aHe" = (
 /obj/machinery/power/apc{
@@ -18952,7 +18952,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/bridge/meeting_room)
 "aHs" = (
 /obj/item/paper_bin{
@@ -18964,20 +18964,20 @@
 	dir = 8
 	},
 /obj/structure/table/wooden_reinforced,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/bridge/meeting_room)
 "aHt" = (
 /obj/item/folder/blue,
 /obj/structure/disposalpipe/segment,
 /obj/structure/table/wooden_reinforced,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/bridge/meeting_room)
 "aHu" = (
 /atom/movable/landmark/spawnpoint/job/command_secretary,
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/bridge/meeting_room)
 "aHv" = (
 /obj/item/radio/intercom{
@@ -19107,20 +19107,20 @@
 /area/tether/surfacebase/surface_two_hall)
 "aHL" = (
 /obj/machinery/hologram/holopad,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/bridge/meeting_room)
 "aHM" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/bridge/meeting_room)
 "aHN" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/bridge/meeting_room)
 "aHO" = (
 /obj/effect/floor_decal/borderfloor{

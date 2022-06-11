@@ -12485,7 +12485,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/toilet)
 "aBW" = (
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/bridge/meeting_room)
 "aCa" = (
 /obj/machinery/recharge_station,
@@ -13135,7 +13135,7 @@
 /obj/structure/bed/chair/comfy/blue{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/bridge/meeting_room)
 "aDD" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
@@ -13146,7 +13146,7 @@
 /obj/structure/bed/chair/comfy/blue{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/bridge/meeting_room)
 "aDJ" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
@@ -13306,7 +13306,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/bridge/meeting_room)
 "aEi" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -14759,7 +14759,7 @@
 /area/maintenance/station/eng_lower)
 "aMy" = (
 /obj/structure/bed/chair/comfy/black,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/bridge/meeting_room)
 "aMB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -15050,7 +15050,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/crew_quarters/heads/chief)
 "aQl" = (
 /obj/machinery/power/apc{
@@ -15201,7 +15201,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "aRX" = (
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/crew_quarters/heads/chief)
 "aRZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -15255,7 +15255,7 @@
 	name = "CE Office Door Control";
 	pixel_x = 26
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/crew_quarters/heads/chief)
 "aSo" = (
 /atom/movable/landmark/spawnpoint/latejoin/station/cryogenics,
@@ -15354,7 +15354,7 @@
 /area/crew_quarters/sleep/engi_wash)
 "aTm" = (
 /obj/machinery/hologram/holopad,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/crew_quarters/heads/chief)
 "aTA" = (
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -15446,7 +15446,7 @@
 	},
 /obj/item/folder/yellow_ce,
 /obj/item/pen/multi,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/crew_quarters/heads/chief)
 "aTX" = (
 /obj/machinery/computer/general_air_control{
@@ -15864,7 +15864,7 @@
 	},
 /obj/item/clothing/glasses/welding/superior,
 /obj/item/flashlight/lamp,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/crew_quarters/heads/chief)
 "baI" = (
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -16036,7 +16036,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/structure/table/reinforced,
 /obj/item/stamp/ce,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/crew_quarters/heads/chief)
 "bcp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -16057,7 +16057,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/crew_quarters/heads/chief)
 "bcw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -16067,7 +16067,7 @@
 	dir = 9
 	},
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/crew_quarters/heads/chief)
 "bcx" = (
 /obj/structure/cable/green{
@@ -16448,7 +16448,7 @@
 /area/tether/station/stairs_one)
 "bfT" = (
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/crew_quarters/heads/chief)
 "bgr" = (
 /obj/structure/table/rack{
@@ -18603,7 +18603,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/bridge/meeting_room)
 "dQG" = (
 /obj/effect/floor_decal/borderfloor{
@@ -18687,7 +18687,7 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/bridge/meeting_room)
 "eed" = (
 /obj/structure/cable{
@@ -19918,7 +19918,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/bridge/meeting_room)
 "gVL" = (
 /obj/effect/floor_decal/borderfloor{
@@ -20694,7 +20694,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/bridge/meeting_room)
 "iPt" = (
 /obj/random/trash_pile,
@@ -24565,7 +24565,7 @@
 /obj/structure/bed/chair/comfy/black,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/bridge/meeting_room)
 "syM" = (
 /obj/machinery/door/window/brigdoor/eastleft{

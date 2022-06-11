@@ -14,7 +14,6 @@
 	name = "carpet"
 	icon = 'icons/turf/flooring/carpet.dmi'
 	icon_state = "carpet"
-	initial_flooring = /decl/flooring/carpet
 
 /turf/simulated/floor/holofloor/tiled
 	name = "floor"

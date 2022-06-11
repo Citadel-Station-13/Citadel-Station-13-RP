@@ -8337,13 +8337,13 @@
 /area/mothership/engineering)
 "ro" = (
 /obj/structure/table/steel_reinforced,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/mothership/engineering)
 "rp" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/mothership/engineering)
 "rq" = (
 /obj/machinery/computer/station_alert/all{
@@ -8446,10 +8446,10 @@
 	},
 /obj/item/pen/multi,
 /obj/item/folder/yellow_ce,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/mothership/engineering)
 "rG" = (
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/mothership/engineering)
 "rH" = (
 /obj/item/modular_computer/console/preset/mercenary{

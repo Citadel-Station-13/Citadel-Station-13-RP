@@ -56,7 +56,7 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = -32
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/itglight/captain)
 "ag" = (
 /obj/structure/closet/walllocker_double{
@@ -170,7 +170,7 @@
 /obj/structure/curtain{
 	color = "#2e1604"
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/itglight/captain)
 "aq" = (
 /obj/structure/closet/walllocker/autolok_wall{
@@ -210,7 +210,7 @@
 /turf/simulated/floor,
 /area/itglight/captain)
 "ay" = (
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/itglight/captain)
 "aH" = (
 /obj/structure/cable/pink{
@@ -363,7 +363,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/itglight/captain)
 "bC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -505,13 +505,13 @@
 	},
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/browndouble,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/itglight/crew4)
 "cv" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/itglight/captain)
 "cw" = (
 /obj/machinery/telecomms/allinone,
@@ -740,7 +740,7 @@
 /obj/random/contraband,
 /obj/machinery/vending/cola,
 /obj/item/radio,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/itglight/crew1)
 "ed" = (
 /obj/machinery/power/apc/hyper{
@@ -1068,7 +1068,7 @@
 	pixel_y = 36;
 	specialfunctions = 4
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/itglight/crew2)
 "gt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -1088,7 +1088,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/itglight/captain)
 "gA" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
@@ -1135,14 +1135,14 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/itglight/captain)
 "gO" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /obj/structure/filingcabinet/chestdrawer,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/itglight/captain)
 "gS" = (
 /obj/structure/bed/chair/sofa/brown/right,
@@ -1317,7 +1317,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/itglight/captain)
 "hY" = (
 /turf/simulated/wall/rshull,
@@ -1344,7 +1344,7 @@
 	pixel_y = 36;
 	specialfunctions = 4
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/itglight/crew4)
 "ie" = (
 /obj/structure/grille,
@@ -1426,7 +1426,7 @@
 /obj/random/contraband,
 /obj/machinery/vending/cola,
 /obj/item/radio,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/itglight/crew2)
 "iq" = (
 /obj/machinery/door/firedoor/glass,
@@ -3262,7 +3262,7 @@
 	},
 /obj/structure/closet/secure_closet/personal,
 /obj/machinery/light/small,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/itglight/crew4)
 "vO" = (
 /obj/structure/cable/pink{
@@ -3482,7 +3482,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/itglight/common)
 "wX" = (
 /obj/structure/cable/pink{
@@ -3597,7 +3597,7 @@
 /obj/item/reagent_containers/food/snacks/candy/proteinbar,
 /obj/item/gun/energy/taser,
 /obj/item/clothing/accessory/holster/hip,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/itglight/captain)
 "xx" = (
 /turf/simulated/wall/rshull,
@@ -3624,7 +3624,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/itglight/crew2)
 "xO" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -3744,7 +3744,7 @@
 	},
 /obj/structure/closet/secure_closet/personal,
 /obj/machinery/light/small,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/itglight/crew2)
 "yJ" = (
 /obj/machinery/door/firedoor/glass,
@@ -3772,7 +3772,7 @@
 	icon_state = "frame";
 	pixel_y = 62
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/itglight/common)
 "yN" = (
 /obj/machinery/seed_extractor,
@@ -3801,7 +3801,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/itglight/crew3)
 "yS" = (
 /obj/structure/handrail{
@@ -3906,7 +3906,7 @@
 	},
 /obj/structure/closet/secure_closet/personal,
 /obj/machinery/light/small,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/itglight/crew3)
 "zv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -4035,7 +4035,7 @@
 	dir = 4;
 	pixel_x = -26
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/itglight/crew4)
 "AF" = (
 /obj/structure/cable/pink{
@@ -4198,7 +4198,7 @@
 	dir = 4;
 	pixel_x = -26
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/itglight/crew3)
 "BJ" = (
 /obj/structure/bed/chair/bay/chair{
@@ -4265,7 +4265,7 @@
 /obj/random/contraband,
 /obj/machinery/vending/cola,
 /obj/item/radio,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/itglight/crew4)
 "BU" = (
 /obj/machinery/power/apc/hyper{
@@ -4279,7 +4279,7 @@
 	},
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/browndouble,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/itglight/crew1)
 "BW" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
@@ -4338,7 +4338,7 @@
 	dir = 4;
 	pixel_x = -26
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/itglight/crew2)
 "Cp" = (
 /obj/machinery/portable_atmospherics/canister/air/airlock,
@@ -4558,7 +4558,7 @@
 /obj/random/contraband,
 /obj/machinery/vending/cola,
 /obj/item/radio,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/itglight/crew3)
 "Dy" = (
 /obj/structure/cable/pink{
@@ -4732,7 +4732,7 @@
 	dir = 4;
 	pixel_x = -26
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/itglight/crew1)
 "Ep" = (
 /obj/machinery/light{
@@ -4842,7 +4842,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/itglight/common)
 "EP" = (
 /obj/structure/cable/pink{
@@ -5140,7 +5140,7 @@
 	pixel_y = 36;
 	specialfunctions = 4
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/itglight/crew3)
 "Gl" = (
 /obj/structure/bed/chair/bay/chair{
@@ -5758,7 +5758,7 @@
 	},
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/browndouble,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/itglight/crew3)
 "JT" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -5960,7 +5960,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/itglight/crew4)
 "LA" = (
 /obj/machinery/vending/wallmed2{
@@ -6068,7 +6068,7 @@
 	},
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/browndouble,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/itglight/crew2)
 "Ml" = (
 /obj/structure/bed/chair/comfy/brown{
@@ -6159,7 +6159,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/itglight/common)
 "MF" = (
 /obj/structure/table/wooden_reinforced,
@@ -6167,7 +6167,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/itglight/common)
 "MG" = (
 /obj/structure/cable{
@@ -6221,7 +6221,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/itglight/common)
 "MY" = (
 /obj/structure/bed/chair/sofa/brown/right{
@@ -6282,7 +6282,7 @@
 	dir = 4
 	},
 /obj/random/coin,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/itglight/common)
 "No" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -6314,7 +6314,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/itglight/common)
 "Nv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -6770,7 +6770,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/itglight/common)
 "Qq" = (
 /obj/structure/grille,
@@ -6838,7 +6838,7 @@
 /area/itglight/medbay)
 "QI" = (
 /obj/structure/table/wooden_reinforced,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/itglight/common)
 "QN" = (
 /obj/structure/handrail{
@@ -6914,7 +6914,7 @@
 /area/itglight/medbay)
 "Rb" = (
 /obj/structure/flora/pottedplant/orientaltree,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/itglight/common)
 "Rd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -7067,7 +7067,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/itglight/common)
 "Sw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -7397,7 +7397,7 @@
 /turf/simulated/wall/shull,
 /area/itglight/medbay)
 "UF" = (
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/itglight/common)
 "UH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -7475,7 +7475,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/itglight/common)
 "Vd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -7565,7 +7565,7 @@
 	pixel_y = 36;
 	specialfunctions = 4
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/itglight/crew1)
 "VE" = (
 /obj/effect/floor_decal/borderfloorwhite/full,
@@ -7907,7 +7907,7 @@
 	},
 /obj/structure/closet/secure_closet/personal,
 /obj/machinery/light/small,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/itglight/crew1)
 "XO" = (
 /obj/structure/cable/pink{
@@ -8327,7 +8327,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/itglight/crew1)
 "ZT" = (
 /obj/machinery/sleeper{

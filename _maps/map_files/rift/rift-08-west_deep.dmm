@@ -512,7 +512,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/prison)
 "CN" = (
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/rift/facility/interior/temple)
 "Db" = (
 /obj/effect/floor_decal/corner/black{
@@ -740,7 +740,7 @@
 /area/rift/facility/interior/temple)
 "VC" = (
 /obj/machinery/light/small,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/rift/facility/interior/temple)
 "VD" = (
 /turf/simulated/open,

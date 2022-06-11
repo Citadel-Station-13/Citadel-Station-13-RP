@@ -100,7 +100,7 @@
 	dir = 4;
 	icon_state = "computer"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "ao" = (
 /obj/structure/cable{
@@ -108,7 +108,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "ap" = (
 /obj/structure/cable{
@@ -132,7 +132,7 @@
 	name = "curabitur fax machine";
 	pixel_y = 6
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "aq" = (
 /obj/structure/sign/redcross,
@@ -155,7 +155,7 @@
 /obj/structure/closet/crate/large,
 /obj/item/gun/energy/particle/cannon,
 /obj/item/gun/energy/particle/cannon,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "au" = (
 /obj/structure/medical_stand,
@@ -172,7 +172,7 @@
 	dir = 4;
 	req_one_access = null
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "aw" = (
 /obj/structure/cable{
@@ -182,7 +182,7 @@
 	dir = 1;
 	icon_state = "bay_comfychair_preview"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "ax" = (
 /obj/machinery/computer/ship/engines{
@@ -193,13 +193,13 @@
 	dir = 4;
 	icon_state = "window"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "ay" = (
 /obj/item/bedsheet/bluedouble,
 /obj/structure/bed/double/padded,
 /obj/structure/curtain/open/bed,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "az" = (
 /turf/simulated/wall/rpshull,
@@ -264,13 +264,13 @@
 	icon_state = "tube1";
 	pixel_x = 0
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "aF" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "aG" = (
 /obj/machinery/button/remote/blast_door{
@@ -297,7 +297,7 @@
 	name = "Main airlock lock";
 	pixel_y = 8
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "aH" = (
 /obj/item/storage/secure/safe{
@@ -330,7 +330,7 @@
 /obj/item/spacecash/c1000,
 /obj/item/spacecash/c1000,
 /obj/item/spacecash/c1000,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "aI" = (
 /turf/simulated/wall/rpshull,
@@ -403,7 +403,7 @@
 /obj/item/material/knife/machete,
 /obj/item/clothing/accessory/storage/white_drop_pouches,
 /obj/item/clothing/accessory/storage/white_drop_pouches,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "aO" = (
 /obj/structure/cable{
@@ -412,13 +412,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "aP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "aQ" = (
 /obj/machinery/recharger/wallcharger{
@@ -433,7 +433,7 @@
 	pixel_x = 31;
 	pixel_y = 7
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "aR" = (
 /obj/machinery/sleeper,
@@ -480,7 +480,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "aW" = (
 /obj/structure/cable{
@@ -493,13 +493,13 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "aX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "aY" = (
 /obj/machinery/atmospherics/pipe/simple/visible/blue{
@@ -712,7 +712,7 @@
 	density = 0;
 	pixel_x = 11
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/shuttle/curabitur/curashuttle/med)
 "bu" = (
 /obj/structure/table/darkglass,
@@ -725,18 +725,18 @@
 /obj/item/storage/box/monkeycubes,
 /obj/item/storage/box/monkeycubes,
 /obj/item/reagent_containers/food/snacks/cracker,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/shuttle/curabitur/curashuttle/med)
 "bv" = (
 /obj/structure/table/darkglass,
 /obj/item/reagent_containers/food/snacks/bangersandmash,
 /obj/item/reagent_containers/food/snacks/candiedapple,
 /obj/item/reagent_containers/food/snacks/chickenwing,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/shuttle/curabitur/curashuttle/med)
 "bw" = (
 /obj/structure/closet/crate/bin,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/shuttle/curabitur/curashuttle/med)
 "bx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -848,7 +848,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/shuttle/curabitur/curashuttle/med)
 "bF" = (
 /obj/machinery/vending/wallmed1/public{
@@ -875,7 +875,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/shuttle/curabitur/curashuttle/med)
 "bG" = (
 /obj/machinery/computer/ship/navigation/telescreen{
@@ -900,7 +900,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/shuttle/curabitur/curashuttle/med)
 "bH" = (
 /obj/machinery/vending/wallmed1/public{
@@ -927,7 +927,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/shuttle/curabitur/curashuttle/med)
 "bI" = (
 /obj/structure/cable{

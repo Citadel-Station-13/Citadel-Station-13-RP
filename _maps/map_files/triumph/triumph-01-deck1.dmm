@@ -117,7 +117,7 @@
 /area/maintenance/engineering)
 "aw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/chief)
 "ay" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/red{
@@ -1155,7 +1155,7 @@
 /turf/simulated/wall,
 /area/space)
 "dZ" = (
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/chief)
 "ea" = (
 /obj/structure/toilet{
@@ -1405,7 +1405,7 @@
 /area/storage/tech)
 "eZ" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/chief)
 "fe" = (
 /obj/structure/cable{
@@ -1699,7 +1699,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/chief)
 "gb" = (
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -2265,7 +2265,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/chief)
 "hV" = (
 /obj/structure/disposalpipe/segment{
@@ -2554,7 +2554,7 @@
 	dir = 4
 	},
 /mob/living/simple_mob/animal/passive/snake/noodle,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/chief)
 "iZ" = (
 /obj/machinery/light{
@@ -5160,7 +5160,7 @@
 /area/maintenance/engineering)
 "rE" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/chief)
 "rF" = (
 /obj/structure/cable/yellow{
@@ -6470,7 +6470,7 @@
 /area/space)
 "wa" = (
 /obj/machinery/vending/fitness,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/engineering/break_room)
 "wb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
@@ -8363,7 +8363,7 @@
 /area/crew_quarters/heads/chief)
 "CU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/chief)
 "CX" = (
 /obj/structure/table/rack{
@@ -9155,7 +9155,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/chief)
 "Fr" = (
 /obj/structure/table/reinforced,
@@ -9196,7 +9196,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/storage)
 "Fw" = (
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/engineering/break_room)
 "Fy" = (
 /obj/structure/ladder/up,
@@ -9454,7 +9454,7 @@
 /area/engineering/hallway/lower)
 "Go" = (
 /obj/machinery/vending/cola,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/engineering/break_room)
 "Gp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -9786,7 +9786,7 @@
 	icon_state = "2-8"
 	},
 /mob/living/simple_mob/animal/passive/bird/parrot/polly,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/chief)
 "Ho" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -10210,7 +10210,7 @@
 /area/station/stairs_one)
 "IP" = (
 /obj/machinery/hologram/holopad,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/chief)
 "IR" = (
 /obj/effect/floor_decal/industrial/warning/corner,
@@ -10227,7 +10227,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/chief)
 "IW" = (
 /obj/structure/cable{
@@ -10246,7 +10246,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/chief)
 "Jc" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -10475,7 +10475,7 @@
 /area/engineering/atmos/monitoring)
 "JQ" = (
 /obj/machinery/vending/coffee,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/engineering/break_room)
 "JT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -11095,7 +11095,7 @@
 /area/engineering/atmos)
 "LM" = (
 /obj/structure/reagent_dispensers/water_cooler/full,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/engineering/break_room)
 "LO" = (
 /obj/structure/railing,
@@ -13388,7 +13388,7 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_x = -32
 	},
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/engineering/break_room)
 "Tk" = (
 /obj/machinery/keycard_auth{
@@ -13684,7 +13684,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/engineering/break_room)
 "Uw" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
@@ -14089,7 +14089,7 @@
 	dir = 1
 	},
 /atom/movable/landmark/spawnpoint/job/chief_engineer,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/chief)
 "VE" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,

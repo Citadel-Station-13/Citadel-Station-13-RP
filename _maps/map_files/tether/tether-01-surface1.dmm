@@ -31099,7 +31099,7 @@
 /area/tether/surfacebase/outside/outside1)
 "biK" = (
 /obj/structure/barricade/cutout/mime,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "bog" = (
 /obj/structure/bed/chair/wood{
@@ -31699,7 +31699,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "cWS" = (
 /obj/item/radio/beacon,
@@ -32181,7 +32181,7 @@
 	icon_state = "1-2"
 	},
 /mob/living/simple_mob/animal/passive/mimepet,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "enB" = (
 /obj/random/junk,
@@ -32431,7 +32431,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civ_west)
 "fkx" = (
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "fmY" = (
 /obj/effect/floor_decal/borderfloor,
@@ -32455,7 +32455,7 @@
 "fvL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "fyp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -32563,7 +32563,7 @@
 	name = "funny locker";
 	req_one_access = list(136)
 	},
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/tether/surfacebase/funny/clownoffice)
 "fKm" = (
 /obj/random/junk,
@@ -32841,7 +32841,7 @@
 /obj/machinery/vending/sovietsoda{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/tether/surfacebase/funny/clownoffice)
 "guV" = (
 /obj/structure/closet,
@@ -32935,7 +32935,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/tether/surfacebase/funny/clownoffice)
 "gIt" = (
 /obj/machinery/vending/loadout/costume{
@@ -33571,7 +33571,7 @@
 /area/crew_quarters/locker/laundry_arrival)
 "iwQ" = (
 /obj/item/stool,
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/tether/surfacebase/funny/clownoffice)
 "ixF" = (
 /obj/structure/cable/green{
@@ -33679,7 +33679,7 @@
 /area/tether/surfacebase/security/brig/bathroom)
 "iWa" = (
 /obj/structure/bed/chair/bar_stool,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "iWx" = (
 /obj/effect/floor_decal/corner/lightorange{
@@ -33813,14 +33813,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "joK" = (
 /obj/structure/table/standard{
 	name = "plastic table frame"
 	},
 /obj/item/flashlight/lamp/green,
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/tether/surfacebase/funny/clownoffice)
 "jva" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -34098,7 +34098,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/tether/surfacebase/funny/clownoffice)
 "kbZ" = (
 /obj/effect/floor_decal/borderfloor{
@@ -34759,7 +34759,7 @@
 /obj/machinery/alarm{
 	pixel_y = 25
 	},
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/tether/surfacebase/funny/clownoffice)
 "lDW" = (
 /obj/structure/catwalk,
@@ -34992,7 +34992,7 @@
 /obj/machinery/vending/coffee{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "lWT" = (
 /obj/effect/floor_decal/borderfloor{
@@ -35037,7 +35037,7 @@
 	},
 /area/tether/surfacebase/old_tram)
 "meS" = (
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/tether/surfacebase/funny/clownoffice)
 "mgu" = (
 /turf/simulated/floor/maglev/virgo3b,
@@ -35188,7 +35188,7 @@
 	name = "obscure table"
 	},
 /obj/item/reagent_containers/food/drinks/bottle/bottleofnothing,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "mzX" = (
 /obj/machinery/firealarm{
@@ -35604,7 +35604,7 @@
 /area/maintenance/lower/trash_pit)
 "nmb" = (
 /obj/structure/closet/crate/bin,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "nmf" = (
 /obj/structure/cable/green{
@@ -35911,7 +35911,7 @@
 /area/maintenance/lower/trash_pit)
 "nZj" = (
 /obj/structure/undies_wardrobe,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "ocx" = (
 /obj/machinery/door/firedoor/glass,
@@ -36255,13 +36255,13 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "oMC" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/tether/surfacebase/funny/clownoffice)
 "oQm" = (
 /obj/effect/floor_decal/borderfloor/corner,
@@ -36538,7 +36538,7 @@
 /obj/machinery/alarm{
 	pixel_y = 25
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "qct" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -37072,7 +37072,7 @@
 "rse" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/mimedouble,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "rsN" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -37122,7 +37122,7 @@
 "rxD" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/clowndouble,
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/tether/surfacebase/funny/clownoffice)
 "rxG" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -37223,7 +37223,7 @@
 /area/tether/surfacebase/security/weaponsrange)
 "rIU" = (
 /atom/movable/landmark/spawnpoint/job/mime,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "rJi" = (
 /obj/structure/bed/chair/office/dark,
@@ -37549,7 +37549,7 @@
 	name = "west bump";
 	pixel_x = -28
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "sHO" = (
 /obj/effect/floor_decal/steeldecal/steel_decals6{
@@ -37627,7 +37627,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/tether/surfacebase/funny/clownoffice)
 "sVX" = (
 /obj/structure/table/steel,
@@ -37841,7 +37841,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "tIm" = (
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -38456,7 +38456,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "vlJ" = (
 /obj/effect/floor_decal/borderfloor{
@@ -38524,7 +38524,7 @@
 /obj/machinery/vending/cigarette{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "vBZ" = (
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -38557,7 +38557,7 @@
 	name = "silent storage";
 	req_one_access = list(138)
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "vDb" = (
 /obj/effect/floor_decal/borderfloor,
@@ -38586,7 +38586,7 @@
 /area/tether/surfacebase/surface_one_hall)
 "vEc" = (
 /obj/machinery/light/small,
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/tether/surfacebase/funny/clownoffice)
 "vEJ" = (
 /obj/structure/bonfire/sifwood,
@@ -38986,7 +38986,7 @@
 	name = "obscure table"
 	},
 /obj/random/mre,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "wTo" = (
 /turf/simulated/floor/maglev/virgo3b,
@@ -39203,7 +39203,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/tether/surfacebase/funny/clownoffice)
 "xtS" = (
 /obj/machinery/power/apc{
@@ -39225,7 +39225,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/tether/surfacebase/funny/clownoffice)
 "xuM" = (
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -39466,7 +39466,7 @@
 	dir = 4;
 	pixel_x = -25
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/tether/surfacebase/funny/mimeoffice)
 "ygY" = (
 /obj/effect/floor_decal/borderfloor{
@@ -39505,7 +39505,7 @@
 /area/security/checkpoint)
 "ylH" = (
 /obj/machinery/fitness/punching_bag/clown,
-/turf/simulated/floor/carpet/gaycarpet,
+/turf/simulated/floor/carpet/purple,
 /area/tether/surfacebase/funny/clownoffice)
 
 (1,1,1) = {"

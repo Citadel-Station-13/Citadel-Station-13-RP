@@ -174,66 +174,6 @@ var/list/flooring_types
 /decl/flooring/snow/plating/drift
 	icon_base = "snowyplayingdrift"
 
-/decl/flooring/carpet
-	name = "carpet"
-	desc = "Imported and comfy."
-	icon = 'icons/turf/flooring/carpet.dmi'
-	icon_base = "carpet"
-	build_type = /obj/item/stack/tile/carpet
-	damage_temperature = T0C+200
-	flags = TURF_HAS_EDGES | TURF_HAS_CORNERS | TURF_REMOVE_CROWBAR | TURF_CAN_BURN
-	footstep_sounds = list("human" = list(
-		'sound/effects/footstep/carpet1.ogg',
-		'sound/effects/footstep/carpet2.ogg',
-		'sound/effects/footstep/carpet3.ogg',
-		'sound/effects/footstep/carpet4.ogg',
-		'sound/effects/footstep/carpet5.ogg'))
-
-/decl/flooring/carpet/bcarpet
-	name = "black carpet"
-	icon_base = "bcarpet"
-	build_type = /obj/item/stack/tile/carpet/bcarpet
-
-/decl/flooring/carpet/blucarpet
-	name = "blue carpet"
-	icon_base = "blucarpet"
-	build_type = /obj/item/stack/tile/carpet/blucarpet
-
-/decl/flooring/carpet/turcarpet
-	name = "tur carpet"
-	icon_base = "turcarpet"
-	build_type = /obj/item/stack/tile/carpet/turcarpet
-
-/decl/flooring/carpet/sblucarpet
-	name = "silver blue carpet"
-	icon_base = "sblucarpet"
-	build_type = /obj/item/stack/tile/carpet/sblucarpet
-
-/decl/flooring/carpet/gaycarpet
-	name = "clown carpet"
-	icon_base = "gaycarpet"
-	build_type = /obj/item/stack/tile/carpet/gaycarpet
-
-/decl/flooring/carpet/purcarpet
-	name = "purple carpet"
-	icon_base = "purcarpet"
-	build_type = /obj/item/stack/tile/carpet/purcarpet
-
-/decl/flooring/carpet/oracarpet
-	name = "orange carpet"
-	icon_base = "oracarpet"
-	build_type = /obj/item/stack/tile/carpet/oracarpet
-
-/decl/flooring/carpet/tealcarpet
-	name = "teal carpet"
-	icon_base = "tealcarpet"
-	build_type = /obj/item/stack/tile/carpet/teal
-
-/decl/flooring/carpet/arcadecarpet
-	name = "arcade carpet"
-	icon_base = "arcade"
-	build_type = /obj/item/stack/tile/carpet/arcadecarpet
-
 /decl/flooring/tiling
 	name = "floor"
 	desc = "Scuffed from the passage of countless greyshirts."

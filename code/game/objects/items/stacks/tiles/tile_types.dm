@@ -117,54 +117,154 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	drop_sound = 'sound/items/drop/cloth.ogg'
 	pickup_sound = 'sound/items/pickup/cloth.ogg'
 
-/obj/item/stack/tile/carpet/teal
-	name = "teal carpet"
-	singular_name = "teal carpet"
-	desc = "A piece of teal carpet. It is the same size as a normal floor tile!"
-	icon_state = "tile-tealcarpet"
-	no_variants = FALSE
+/obj/item/stack/tile/carpet/symbol
+	name = "symbol carpet"
+	singular_name = "symbol carpet tile"
+	icon_state = "tile-carpet-symbol"
+	desc = "A piece of carpet. This one has a symbol on it."
+	turf_type = /turf/simulated/floor/carpet/lone
+	stacktype = /obj/item/stack/tile/carpet/symbol
+	// tile_rotate_dirs = list(SOUTH, NORTH, EAST, WEST, SOUTHEAST)
 
-/obj/item/stack/tile/carpet/bcarpet
+/obj/item/stack/tile/carpet/star
+	name = "star carpet"
+	singular_name = "star carpet tile"
+	icon_state = "tile-carpet-star"
+	desc = "A piece of carpet. This one has a star on it."
+	turf_type = /turf/simulated/floor/carpet/lone/star
+	stacktype = /obj/item/stack/tile/carpet/star
+
+/obj/item/stack/tile/carpet/black
 	name = "black carpet"
-	singular_name = "black carpet"
-	desc = "A piece of black carpet. It is the same size as a normal floor tile!"
-	icon_state = "tile-bcarpet"
-/obj/item/stack/tile/carpet/blucarpet
-	name = "blue carpet"
-	singular_name = "blue carpet"
-	desc = "A piece of blue carpet. It is the same size as a normal floor tile!"
-	icon_state = "tile-blucarpet"
-/obj/item/stack/tile/carpet/turcarpet
-	name = "tur carpet"
-	singular_name = "tur carpet"
-	desc = "A piece of turquoise carpet. It is the same size as a normal floor tile!"
-	icon_state = "tile-turcarpet"
-/obj/item/stack/tile/carpet/sblucarpet
-	name = "silver-blue carpet"
-	singular_name = "silver-blue carpet"
-	desc = "A piece of silver-blue carpet. It is the same size as a normal floor tile!"
-	icon_state = "tile-sblucarpet"
-/obj/item/stack/tile/carpet/gaycarpet
-	name = "funny carpet"
-	singular_name = "funny carpet"
-	desc = "A piece of funny carpet. Perfect for clowning around on."
-	icon_state = "tile-gaycarpet"
-/obj/item/stack/tile/carpet/purcarpet
-	name = "purple carpet"
-	singular_name = "purple carpet"
-	desc = "A piece of purple carpet. It is the same size as a normal floor tile!"
-	icon_state = "tile-purcarpet"
-/obj/item/stack/tile/carpet/oracarpet
-	name = "orange carpet"
-	singular_name = "orange carpet"
-	desc = "A piece of orange carpet. It is the same size as a normal floor tile!"
-	icon_state = "tile-oracarpet"
-/obj/item/stack/tile/carpet/arcadecarpet
-	name = "arcadey carpet"
-	singular_name = "arcadey carpet"
-	desc = "A piece of arcadey carpet. It is the same size as a normal floor tile!"
-	icon_state = "tile-carpet-arcade"
+	icon_state = "tile-carpet-black"
+	item_state = "tile-carpet-black"
+	turf_type = /turf/simulated/floor/carpet/black
+	// tableVariant = /obj/structure/table/wood/fancy/black
+	stacktype = /obj/item/stack/tile/carpet/black
 
+/obj/item/stack/tile/carpet/blue
+	name = "blue carpet"
+	icon_state = "tile-carpet-blue"
+	item_state = "tile-carpet-blue"
+	turf_type = /turf/simulated/floor/carpet/blue
+	// tableVariant = /obj/structure/table/wood/fancy/blue
+	stacktype = /obj/item/stack/tile/carpet/blue
+
+/obj/item/stack/tile/carpet/cyan
+	name = "cyan carpet"
+	icon_state = "tile-carpet-cyan"
+	item_state = "tile-carpet-cyan"
+	turf_type = /turf/simulated/floor/carpet/cyan
+	// tableVariant = /obj/structure/table/wood/fancy/cyan
+	stacktype = /obj/item/stack/tile/carpet/cyan
+
+/obj/item/stack/tile/carpet/green
+	name = "green carpet"
+	icon_state = "tile-carpet-green"
+	item_state = "tile-carpet-green"
+	turf_type = /turf/simulated/floor/carpet/green
+	// tableVariant = /obj/structure/table/wood/fancy/green
+	stacktype = /obj/item/stack/tile/carpet/green
+
+/obj/item/stack/tile/carpet/orange
+	name = "orange carpet"
+	icon_state = "tile-carpet-orange"
+	item_state = "tile-carpet-orange"
+	turf_type = /turf/simulated/floor/carpet/orange
+	// tableVariant = /obj/structure/table/wood/fancy/orange
+	stacktype = /obj/item/stack/tile/carpet/orange
+
+/obj/item/stack/tile/carpet/purple
+	name = "purple carpet"
+	icon_state = "tile-carpet-purple"
+	item_state = "tile-carpet-purple"
+	turf_type = /turf/simulated/floor/carpet/purple
+	// tableVariant = /obj/structure/table/wood/fancy/purple
+	stacktype = /obj/item/stack/tile/carpet/purple
+
+/obj/item/stack/tile/carpet/red
+	name = "red carpet"
+	icon_state = "tile-carpet-red"
+	item_state = "tile-carpet-red"
+	turf_type = /turf/simulated/floor/carpet/red
+	// tableVariant = /obj/structure/table/wood/fancy/red
+	stacktype = /obj/item/stack/tile/carpet/red
+
+/obj/item/stack/tile/carpet/royalblack
+	name = "royal black carpet"
+	icon_state = "tile-carpet-royalblack"
+	item_state = "tile-carpet-royalblack"
+	turf_type = /turf/simulated/floor/carpet/royalblack
+	// tableVariant = /obj/structure/table/wood/fancy/royalblack
+	stacktype = /obj/item/stack/tile/carpet/royalblack
+
+/obj/item/stack/tile/carpet/royalblue
+	name = "royal blue carpet"
+	icon_state = "tile-carpet-royalblue"
+	item_state = "tile-carpet-royalblue"
+	turf_type = /turf/simulated/floor/carpet/royalblue
+	// tableVariant = /obj/structure/table/wood/fancy/royalblue
+	stacktype = /obj/item/stack/tile/carpet/royalblue
+
+/obj/item/stack/tile/carpet/executive
+	name = "executive carpet"
+	icon_state = "tile_carpet_executive"
+	item_state = "tile-carpet-royalblue"
+	turf_type = /turf/simulated/floor/carpet/executive
+	stacktype = /obj/item/stack/tile/carpet/executive
+
+/obj/item/stack/tile/carpet/stellar
+	name = "stellar carpet"
+	icon_state = "tile_carpet_stellar"
+	item_state = "tile-carpet-royalblue"
+	turf_type = /turf/simulated/floor/carpet/stellar
+	stacktype = /obj/item/stack/tile/carpet/stellar
+
+/obj/item/stack/tile/carpet/donk
+	name = "\improper Donk Co. promotional carpet"
+	icon_state = "tile_carpet_donk"
+	item_state = "tile-carpet-orange"
+	turf_type = /turf/simulated/floor/carpet/donk
+	stacktype = /obj/item/stack/tile/carpet/donk
+
+/obj/item/stack/tile/carpet/fifty
+	amount = 50
+
+/obj/item/stack/tile/carpet/black/fifty
+	amount = 50
+
+/obj/item/stack/tile/carpet/blue/fifty
+	amount = 50
+
+/obj/item/stack/tile/carpet/cyan/fifty
+	amount = 50
+
+/obj/item/stack/tile/carpet/green/fifty
+	amount = 50
+
+/obj/item/stack/tile/carpet/orange/fifty
+	amount = 50
+
+/obj/item/stack/tile/carpet/purple/fifty
+	amount = 50
+
+/obj/item/stack/tile/carpet/red/fifty
+	amount = 50
+
+/obj/item/stack/tile/carpet/royalblack/fifty
+	amount = 50
+
+/obj/item/stack/tile/carpet/royalblue/fifty
+	amount = 50
+
+/obj/item/stack/tile/carpet/executive/thirty
+	amount = 30
+
+/obj/item/stack/tile/carpet/stellar/thirty
+	amount = 30
+
+/obj/item/stack/tile/carpet/donk/thirty
+	amount = 30
 /obj/item/stack/tile/floor
 	name = "floor tile"
 	singular_name = "floor tile"

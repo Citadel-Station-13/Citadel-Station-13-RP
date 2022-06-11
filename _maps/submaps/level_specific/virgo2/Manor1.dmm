@@ -73,11 +73,11 @@
 /turf/simulated/wall/virgo2,
 /area/submap/virgo2/Manor1)
 "aq" = (
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/submap/virgo2/Manor1)
 "ar" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/submap/virgo2/Manor1)
 "as" = (
 /obj/structure/simple_door/wood,
@@ -183,7 +183,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "aQ" = (
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/submap/virgo2/Manor1)
 "aR" = (
 /obj/structure/table/standard,
@@ -288,12 +288,12 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "bl" = (
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/submap/virgo2/Manor1)
 "bm" = (
 /obj/structure/loot_pile/surface/bones,
 /obj/item/clothing/accessory/sweater/blue,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/submap/virgo2/Manor1)
 "bn" = (
 /obj/structure/window/reinforced/full,
@@ -301,11 +301,11 @@
 /area/submap/virgo2/Manor1)
 "bo" = (
 /obj/item/material/twohanded/baseballbat/metal,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/submap/virgo2/Manor1)
 "bp" = (
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/submap/virgo2/Manor1)
 "bq" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -347,7 +347,7 @@
 /area/submap/virgo2/Manor1)
 "bw" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/submap/virgo2/Manor1)
 "bx" = (
 /obj/structure/bed/chair/comfy/purp{
@@ -443,7 +443,7 @@
 /area/submap/virgo2/Manor1)
 "bN" = (
 /obj/structure/simple_door/wood,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/submap/virgo2/Manor1)
 "bO" = (
 /obj/machinery/icecream_vat,
@@ -451,7 +451,7 @@
 /area/submap/virgo2/Manor1)
 "bP" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/submap/virgo2/Manor1)
 "bQ" = (
 /obj/effect/decal/cleanable/blood,
@@ -468,11 +468,11 @@
 /area/submap/virgo2/Manor1)
 "bT" = (
 /obj/item/material/minihoe,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/submap/virgo2/Manor1)
 "bU" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/submap/virgo2/Manor1)
 "bV" = (
 /turf/simulated/floor/holofloor/wood{
@@ -540,7 +540,7 @@
 "ch" = (
 /obj/structure/loot_pile/surface/bones,
 /obj/item/clothing/accessory/sweater,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/submap/virgo2/Manor1)
 "ci" = (
 /obj/structure/closet/crate,
@@ -560,7 +560,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "cl" = (
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/submap/virgo2/Manor1)
 "cm" = (
 /obj/effect/decal/cleanable/blood,
@@ -594,7 +594,7 @@
 "cr" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/airlock/external,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/submap/virgo2/Manor1)
 "cs" = (
 /obj/item/material/twohanded/spear,
@@ -712,7 +712,7 @@
 /area/template_noop)
 "cO" = (
 /obj/machinery/door/airlock/external,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/submap/virgo2/Manor1)
 "kI" = (
 /obj/tether_away_spawner/aerostat_surface,
@@ -720,11 +720,11 @@
 /area/submap/virgo2/Manor1)
 "KY" = (
 /obj/tether_away_spawner/aerostat_surface,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/submap/virgo2/Manor1)
 "VR" = (
 /obj/tether_away_spawner/aerostat_surface,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/purple,
 /area/submap/virgo2/Manor1)
 "Yk" = (
 /obj/structure/salvageable/personal,

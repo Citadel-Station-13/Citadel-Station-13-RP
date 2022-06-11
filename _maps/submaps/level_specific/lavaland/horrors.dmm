@@ -24,7 +24,7 @@
 /obj/structure/bed/chair/pew/left{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/black/lavaland,
 /area/lavaland/horrors)
 "k" = (
 /turf/simulated/wall/r_wall,
@@ -38,7 +38,7 @@
 /obj/structure/bed/chair/pew/right{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/black/lavaland,
 /area/lavaland/horrors)
 "q" = (
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran/surt,
@@ -53,7 +53,7 @@
 /area/lavaland/horrors)
 "x" = (
 /obj/structure/statue/gold/rd,
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/black/lavaland,
 /area/lavaland/horrors)
 "y" = (
 /obj/effect/floor_decal/asteroid,
@@ -79,7 +79,7 @@
 "O" = (
 /obj/item/flame/candle/candelabra/everburn,
 /obj/structure/table/woodentable,
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/black/lavaland,
 /area/lavaland/horrors)
 "P" = (
 /obj/effect/decal/cleanable/blood,
@@ -104,7 +104,7 @@
 /obj/structure/bed/chair/pew/left{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/black/lavaland,
 /area/lavaland/horrors)
 
 (1,1,1) = {"

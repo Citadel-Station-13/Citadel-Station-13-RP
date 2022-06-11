@@ -178,38 +178,38 @@
 /turf/simulated/floor/tiled/freezer,
 /area/template_noop)
 "aJ" = (
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/template_noop)
 "aK" = (
 /obj/structure/bed/chair/wood,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/template_noop)
 "aL" = (
 /obj/structure/bed/chair/wood{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/template_noop)
 "aM" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/storage/fancy/candle_box,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/template_noop)
 "aN" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/binoculars/spyglass,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/template_noop)
 "aO" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/flashlight/lantern,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/template_noop)
 "aP" = (
 /obj/structure/bed/chair/wood{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/template_noop)
 "aQ" = (
 /obj/structure/table/rack,
@@ -219,14 +219,14 @@
 /area/template_noop)
 "aR" = (
 /obj/structure/simple_door/wood,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/template_noop)
 "aS" = (
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/template_noop)
 "aT" = (
 /obj/machinery/space_heater,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/template_noop)
 "aU" = (
 /obj/structure/table/rack,
@@ -263,12 +263,12 @@
 /obj/structure/table/woodentable,
 /obj/random/action_figure,
 /obj/item/flashlight/lantern,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/template_noop)
 "bb" = (
 /obj/item/bedsheet/hopdouble,
 /obj/structure/bed/double/padded,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/template_noop)
 "bc" = (
 /obj/structure/sign/kiddieplaque{

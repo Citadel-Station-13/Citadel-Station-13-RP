@@ -25,7 +25,7 @@
 /area/space/debrisfield/explored)
 "gF" = (
 /obj/machinery/computer/ship/sensors,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/space/debrisfield/explored)
 "gX" = (
 /turf/simulated/floor/wood,
@@ -73,7 +73,7 @@
 /obj/item/reagent_containers/food/drinks/bottle/cola,
 /obj/item/reagent_containers/food/drinks/bottle/cola,
 /obj/item/reagent_containers/food/drinks/bottle/cola,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/space/debrisfield/explored)
 "uL" = (
 /obj/structure/sink{
@@ -109,10 +109,10 @@
 /obj/machinery/computer/shuttle_control/explore{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/space/debrisfield/explored)
 "Aj" = (
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/space/debrisfield/explored)
 "Bk" = (
 /obj/machinery/power/apc/alarms_hidden{
@@ -122,7 +122,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/space/debrisfield/explored)
 "Eb" = (
 /obj/machinery/door/window/westright{
@@ -136,7 +136,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/space/debrisfield/explored)
 "Eu" = (
 /obj/machinery/ion_engine{
@@ -148,13 +148,13 @@
 /obj/machinery/computer/ship/helm{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/space/debrisfield/explored)
 "Gz" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/space/debrisfield/explored)
 "GA" = (
 /obj/structure/bed/chair/comfy/brown{
@@ -163,7 +163,7 @@
 /obj/structure/closet/walllocker/emerglocker{
 	pixel_y = -32
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/space/debrisfield/explored)
 "GR" = (
 /turf/simulated/wall/wood,
@@ -174,7 +174,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/space/debrisfield/explored)
 "JA" = (
 /obj/structure/bed/chair/comfy/brown{
@@ -183,7 +183,7 @@
 /obj/structure/closet/walllocker/emerglocker{
 	pixel_y = -32
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/space/debrisfield/explored)
 "Pa" = (
 /turf/space,
@@ -195,7 +195,7 @@
 /obj/structure/bed/chair/sofa/right{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/space/debrisfield/explored)
 "Rz" = (
 /obj/machinery/computer/ship/navigation/telescreen{
@@ -204,12 +204,12 @@
 /obj/structure/bed/chair/sofa/corner{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/space/debrisfield/explored)
 "TB" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/browndouble,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/space/debrisfield/explored)
 "TP" = (
 /turf/space/basic,

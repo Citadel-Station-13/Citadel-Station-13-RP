@@ -7870,7 +7870,7 @@
 /obj/structure/bed/chair/bay/comfy/brown{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/crew_quarters/heads/chief)
 "nW" = (
 /obj/item/storage/briefcase/inflatable,
@@ -7895,7 +7895,7 @@
 "nX" = (
 /obj/structure/table/reinforced,
 /obj/item/stamp/ce,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/crew_quarters/heads/chief)
 "nY" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -7929,7 +7929,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/crew_quarters/heads/chief)
 "ob" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -8024,7 +8024,7 @@
 	name = "CE Office Door Control";
 	pixel_x = 17
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/crew_quarters/heads/chief)
 "oj" = (
 /obj/item/storage/briefcase/inflatable,
@@ -8053,7 +8053,7 @@
 	pixel_y = 5
 	},
 /obj/item/pen,
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/crew_quarters/heads/chief)
 "ol" = (
 /turf/simulated/wall/r_wall,
@@ -8064,7 +8064,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/carpet/orange,
 /area/crew_quarters/heads/chief)
 "on" = (
 /obj/machinery/firealarm{

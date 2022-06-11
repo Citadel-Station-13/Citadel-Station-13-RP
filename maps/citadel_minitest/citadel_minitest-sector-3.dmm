@@ -53,7 +53,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "am" = (
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/awaymission/wwmines)
 "an" = (
 /obj/structure/table/woodentable,
@@ -78,12 +78,12 @@
 "ar" = (
 /obj/structure/table/woodentable,
 /obj/item/deck/cards,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/awaymission/wwmines)
 "as" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/chips,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/awaymission/wwmines)
 "at" = (
 /obj/structure/table/woodentable,
@@ -108,12 +108,12 @@
 "ax" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/drinks/bottle/whiskey,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/awaymission/wwmines)
 "ay" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/drinks/glass2/shot,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/awaymission/wwmines)
 "az" = (
 /obj/structure/table/woodentable,
@@ -126,7 +126,7 @@
 /obj/item/reagent_containers/food/drinks/glass2/shot,
 /obj/item/reagent_containers/food/drinks/glass2/shot,
 /obj/item/reagent_containers/food/drinks/glass2/shot,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/awaymission/wwmines)
 "aB" = (
 /turf/simulated/floor/wood{
@@ -211,7 +211,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "aO" = (
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/awaymission/wwmines)
 "aP" = (
 /obj/structure/table/woodentable,
@@ -220,7 +220,7 @@
 /area/awaymission/wwmines)
 "aQ" = (
 /obj/structure/bookcase,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/awaymission/wwmines)
 "aR" = (
 /obj/structure/table/woodentable,
@@ -235,7 +235,7 @@
 /area/awaymission/wwmines)
 "aT" = (
 /obj/structure/bed/chair/wood,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/awaymission/wwmines)
 "aU" = (
 /obj/structure/table/rack,
@@ -264,11 +264,11 @@
 "aY" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/awaymission/wwmines)
 "aZ" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/awaymission/wwmines)
 "ba" = (
 /turf/simulated/dirt,

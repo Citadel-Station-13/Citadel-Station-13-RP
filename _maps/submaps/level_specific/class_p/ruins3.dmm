@@ -17,7 +17,7 @@
 "L" = (
 /obj/structure/table/gamblingtable,
 /obj/random/triumph/uncertain,
-/turf/simulated/floor/carpet/purcarpet/classp,
+/turf/simulated/floor/carpet/purple/classp,
 /area/class_p/ruins)
 "M" = (
 /turf/simulated/snow/classp/no_tree,
@@ -28,7 +28,7 @@
 /area/class_p/ruins)
 "O" = (
 /obj/structure/bed,
-/turf/simulated/floor/carpet/purcarpet/classp,
+/turf/simulated/floor/carpet/purple/classp,
 /area/class_p/ruins)
 "Q" = (
 /obj/random/mob/robotic/hivebot{
@@ -37,7 +37,7 @@
 /turf/simulated/snow/classp/no_tree,
 /area/class_p/ruins)
 "S" = (
-/turf/simulated/floor/carpet/purcarpet/classp,
+/turf/simulated/floor/carpet/purple/classp,
 /area/class_p/ruins)
 "W" = (
 /turf/simulated/floor/wood/classp,

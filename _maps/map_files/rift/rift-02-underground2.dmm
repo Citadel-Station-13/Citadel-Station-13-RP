@@ -8981,7 +8981,7 @@
 /obj/structure/bed/chair/pew/right{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/observation)
 "sH" = (
 /obj/structure/catwalk,
@@ -9306,7 +9306,7 @@
 /obj/machinery/computer/security/telescreen{
 	pixel_y = 24
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/observation)
 "vs" = (
 /obj/machinery/atmospherics/component/binary/circulator{
@@ -9645,7 +9645,7 @@
 	icon_state = "2-8"
 	},
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/main)
 "xC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -9899,7 +9899,7 @@
 /area/chapel/observation)
 "zr" = (
 /obj/item/flame/candle/candelabra/everburn,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/main)
 "zt" = (
 /obj/structure/railing{
@@ -10087,7 +10087,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/main)
 "Bd" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
@@ -10397,7 +10397,7 @@
 /obj/structure/bed/chair/pew{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/observation)
 "DZ" = (
 /obj/effect/floor_decal/industrial/loading{
@@ -10872,7 +10872,7 @@
 /obj/structure/bed/chair/pew{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/observation)
 "Hp" = (
 /obj/machinery/light/small{
@@ -11018,7 +11018,7 @@
 /turf/simulated/floor/wood,
 /area/chapel/observation)
 "IQ" = (
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/main)
 "IR" = (
 /obj/machinery/power/apc{
@@ -11344,7 +11344,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/main)
 "KW" = (
 /obj/structure/cable/green{
@@ -11620,7 +11620,7 @@
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/observation)
 "Na" = (
 /obj/structure/railing{
@@ -11661,7 +11661,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/main)
 "Nt" = (
 /obj/structure/loot_pile/maint/trash,
@@ -11734,7 +11734,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/main)
 "NP" = (
 /obj/effect/floor_decal/industrial/outline/grey,
@@ -12094,7 +12094,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/main)
 "QV" = (
 /obj/effect/zone_divider,
@@ -12300,7 +12300,7 @@
 /obj/structure/bed/chair/pew/left{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/observation)
 "Td" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -12345,7 +12345,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/main)
 "Tm" = (
 /obj/effect/floor_decal/techfloor{
@@ -12443,7 +12443,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/main)
 "Uf" = (
 /obj/structure/loot_pile/maint/trash,
@@ -12677,7 +12677,7 @@
 /obj/structure/bed/chair/pew/right{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/observation)
 "VS" = (
 /obj/machinery/light/small/emergency{
@@ -12788,7 +12788,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "WT" = (
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/observation)
 "WX" = (
 /obj/effect/floor_decal/techfloor{
@@ -13159,7 +13159,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/chapel/main)
 "ZZ" = (
 /obj/structure/catwalk,

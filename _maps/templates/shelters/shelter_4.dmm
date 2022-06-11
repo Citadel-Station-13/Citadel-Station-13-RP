@@ -117,12 +117,12 @@
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/item/material/knife/tacknife/survival,
 /obj/item/storage/box/survival/comp,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/survivalpod)
 "k" = (
 /obj/structure/bed/pod,
 /obj/item/bedsheet/captain,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/survivalpod)
 "l" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -215,7 +215,7 @@
 /turf/simulated/shuttle/floor/voidcraft/light,
 /area/survivalpod)
 "y" = (
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/survivalpod)
 "z" = (
 /obj/machinery/disposal,
@@ -245,7 +245,7 @@
 /obj/item/storage/box/survival/comp{
 	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/candy/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/survivalpod)
 "C" = (
 /obj/structure/closet/crate/freezer/rations,

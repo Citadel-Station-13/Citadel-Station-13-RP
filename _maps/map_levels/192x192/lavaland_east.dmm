@@ -202,7 +202,7 @@
 /obj/structure/table/hardwoodtable,
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/item/flame/candle/everburn,
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/black/lavaland,
 /area/lavaland/east/colony)
 "fk" = (
 /turf/simulated/mineral/ignore_mapgen/lavaland,
@@ -214,7 +214,7 @@
 "fQ" = (
 /obj/structure/table/hardwoodtable,
 /obj/effect/floor_decal/spline/fancy/wood,
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/black/lavaland,
 /area/lavaland/east/colony)
 "fT" = (
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -332,7 +332,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/black/lavaland,
 /area/lavaland/east/colony)
 "hu" = (
 /obj/machinery/light{
@@ -350,7 +350,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/black/lavaland,
 /area/lavaland/east/colony)
 "hM" = (
 /turf/simulated/wall/lavaland,
@@ -401,13 +401,13 @@
 	dir = 9
 	},
 /obj/structure/simple_door/hardwood,
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/black/lavaland,
 /area/lavaland/east/colony)
 "iX" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/black/lavaland,
 /area/lavaland/east/colony)
 "jd" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner,
@@ -438,7 +438,7 @@
 /obj/effect/floor_decal/spline/fancy/wood/corner{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/black/lavaland,
 /area/lavaland/east/colony)
 "jD" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -450,7 +450,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/black/lavaland,
 /area/lavaland/east/colony)
 "jK" = (
 /obj/structure/table/marble,
@@ -503,11 +503,11 @@
 	dir = 10
 	},
 /obj/structure/simple_door/hardwood,
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/black/lavaland,
 /area/lavaland/east/colony)
 "ll" = (
 /obj/effect/floor_decal/spline/fancy/wood,
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/black/lavaland,
 /area/lavaland/east/colony)
 "ln" = (
 /obj/effect/floor_decal/industrial/warning/dust,
@@ -522,7 +522,7 @@
 /obj/effect/floor_decal/spline/fancy/wood/corner{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/black/lavaland,
 /area/lavaland/east/colony)
 "lp" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -531,7 +531,7 @@
 /obj/effect/gibspawner/generic,
 /obj/item/melee/nanite_knife,
 /mob/living/simple_mob/mechanical/cyber_horror/surt,
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/black/lavaland,
 /area/lavaland/east/colony)
 "lt" = (
 /obj/effect/decal/cleanable/blood,
@@ -542,13 +542,13 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/black/lavaland,
 /area/lavaland/east/colony)
 "lT" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 6
 	},
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/black/lavaland,
 /area/lavaland/east/colony)
 "lU" = (
 /obj/structure/dispenser/oxygen,
@@ -583,7 +583,7 @@
 	dir = 1
 	},
 /obj/item/flame/candle/everburn,
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/black/lavaland,
 /area/lavaland/east/colony)
 "mH" = (
 /obj/machinery/door/airlock/glass_mining{
@@ -596,7 +596,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/black/lavaland,
 /area/lavaland/east/colony)
 "mP" = (
 /obj/machinery/door/airlock{
@@ -1764,7 +1764,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/black/lavaland,
 /area/lavaland/east/colony)
 "JG" = (
 /obj/item/stack/rods,
@@ -1778,7 +1778,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/black/lavaland,
 /area/lavaland/east/colony)
 "JY" = (
 /obj/effect/floor_decal/spline/plain,
@@ -1816,7 +1816,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/black/lavaland,
 /area/lavaland/east/colony)
 "Kw" = (
 /obj/structure/bed/chair/sofa/black/left{
@@ -1825,7 +1825,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet/lavaland,
+/turf/simulated/floor/carpet/black/lavaland,
 /area/lavaland/east/colony)
 "Kx" = (
 /obj/machinery/door/airlock/glass_external{

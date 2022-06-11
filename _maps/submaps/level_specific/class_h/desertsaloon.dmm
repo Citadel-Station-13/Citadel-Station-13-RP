@@ -4,7 +4,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_h/POIs/saloon)
 "bF" = (
 /obj/structure/table/wooden_reinforced,
@@ -78,7 +78,7 @@
 	dir = 1
 	},
 /obj/random/cash,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/class_h/POIs/saloon)
 "lb" = (
 /obj/structure/bed/chair/wood{
@@ -93,7 +93,7 @@
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/saloon)
 "lo" = (
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_h/POIs/saloon)
 "lW" = (
 /obj/structure/sink/kitchen{
@@ -117,7 +117,7 @@
 /obj/effect/floor_decal/spline/fancy/wood/corner{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/class_h/POIs/saloon)
 "qA" = (
 /obj/item/ammo_casing/spent{
@@ -149,7 +149,7 @@
 	dir = 8
 	},
 /obj/structure/musician/piano,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/class_h/POIs/saloon)
 "tt" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -160,7 +160,7 @@
 	},
 /obj/structure/railing,
 /mob/living/simple_mob/humanoid/merc/ranged/smg/poi,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/class_h/POIs/saloon)
 "ur" = (
 /obj/structure/bed/chair/wood{
@@ -220,7 +220,7 @@
 	dir = 8
 	},
 /obj/random/coin,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/class_h/POIs/saloon)
 "Et" = (
 /obj/effect/floor_decal/spline/fancy/wood/corner{
@@ -228,11 +228,11 @@
 	},
 /atom/movable/spawner/corpse/clown,
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/blue,
 /area/class_h/POIs/saloon)
 "EJ" = (
 /obj/random/coin,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_h/POIs/saloon)
 "EY" = (
 /obj/machinery/light/small{
@@ -319,7 +319,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/black,
 /area/class_h/POIs/saloon)
 "OS" = (
 /obj/structure/railing{

@@ -53,7 +53,7 @@
 /area/submap/Oldhouse)
 "n" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/submap/Oldhouse)
 "o" = (
 /obj/effect/decal/cleanable/dirt,
@@ -71,7 +71,7 @@
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "r" = (
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/submap/Oldhouse)
 "s" = (
 /turf/simulated/floor/wood{
@@ -126,7 +126,7 @@
 /area/submap/Oldhouse)
 "C" = (
 /obj/structure/bookcase,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/submap/Oldhouse)
 "D" = (
 /obj/structure/table,
@@ -145,7 +145,7 @@
 "G" = (
 /obj/item/reagent_containers/food/snacks/chips,
 /obj/item/reagent_containers/food/snacks/chips,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/submap/Oldhouse)
 "H" = (
 /obj/structure/table/woodentable,
@@ -157,11 +157,11 @@
 	icon_state = "wooden_chair";
 	dir = 8
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/submap/Oldhouse)
 "J" = (
 /obj/effect/decal/remains/mouse,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/submap/Oldhouse)
 "K" = (
 /obj/structure/table/woodentable,
@@ -191,12 +191,12 @@
 	movement_cooldown = 8;
 	name = "Mr. Tuddly"
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/submap/Oldhouse)
 "O" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/submap/Oldhouse)
 "P" = (
 /obj/item/circuitboard/papershredder,
@@ -205,7 +205,7 @@
 "Q" = (
 /obj/item/reagent_containers/food/snacks/cheesiehonkers,
 /obj/item/reagent_containers/food/snacks/cheesiehonkers,
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/carpet/green,
 /area/submap/Oldhouse)
 "R" = (
 /obj/effect/decal/cleanable/spiderling_remains,
