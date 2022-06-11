@@ -14,3 +14,67 @@
   - bugfix: Fixes Biogenerator TGUI
   - bugfix: Fixes Remote Air Alarm Controller TGUI
   - bugfix: Fixes Power Monitor TGUI
+2022-06-04:
+  Zandario:
+  - bugfix: 32px Emojis work again.
+  - imageadd: More emojis
+  - config: Admin OOC Color & Emojis are now in the new config.
+  - refactor: Actual different mechanical differences for Shadekin eye-colors.
+2022-06-08:
+  AnalWerewolf:
+  - rscadd: 'Sec EVA Equipment storage room for Atlas. tweak: Edited the cafe and
+      access for various areas.'
+  AnalWerewolf, others:
+  - rscadd: The planetary station, NSB Atlas by AnalWerewolf has been added to rotation.
+  CharlesWedge:
+  - bugfix: The down stairwell on west plains now faces the correct direction. West
+      Deep has its proper area and stairs. A set piece cave on the lowest Z now goes
+      to the bottom of the canyon.
+  - rscadd: Maint Bar
+  - rscadd: The Various Surface Batteries now have little bunkers attached for flavor.
+  - rscadd: Small Maint Routes and caves for sneaking around
+  - rscadd: 'Mining elevator: It strectches from Cargo to Underground 3.'
+  - rscadd: 'Command SMES pending a station wide rewire. This SMES powers Command
+      T-Comms and the AI chamber tweak: Some maint layouts. tweak: The Trader outpost
+      now has an exit on Surface 3 there are stairs that allows someone to walk onto
+      the trader dock from the snow. tweak: trader outpost has been modified slightly
+      to better comply with the laws of physics (and not hang out over the snow unsupported)
+      tweak: removes the bump teles from mining area. tweak: The HOS'' consul revovler
+      has been replaced by a Tajaran hand cannon to reflect currently unpublished
+      map lore.'
+  - bugfix: SMESes, beaker boxes, Surface 3's very power intensive SMES.
+  - bugfix: The Surface AA batteries now function (they will not protect the station
+      I will have to push a future PR to add in closer ones that will).
+  - bugfix: all maint areas now have APCs, all amint areas are contigous areas.
+  - rscadd: Three new ice world lifestock explained better above. Along with their
+      sprites.
+  - rscadd: Cargo packs and crates for cargo ordering of those lifestock.
+  Jaybirdnerd:
+  - rscadd: Adds the HEV suit from Half Life 2 to the Costume Vendor
+  - rscadd: ALSO adds the HEV helmet to the costume vendor but that's a given I think?
+  yourdoom9898:
+  - rscadd: Added the Nar'sour, 1 part Demon's Blood, 1 part Lemon Juice, 1 part Blood
+  - rscadd: Added the Nar'sian, 1 part Nar'sour, 1 part The Best Boy
+2022-06-09:
+  Captain277:
+  - rscadd: Adds the risque swimsuit.
+  CharlesWedge:
+  - rscadd: High Sec Evidence Storage armory access wevidence storage for very dangerous
+      things.
+  - rscadd: 'Adherent Maint, firelocks tweak: SMES/Beaker setup to be in line with
+      previous maps. tweak: AA Bunkers now are accessibly by sec engi and command
+      rather than the few with vault access.'
+  - bugfix: Rearranges the Forensics lab slightly so everything on the tables can
+      be reached.
+  - rscadd: Lythios Disaster site at the North West Corner of the Wester plains. A
+      multilevel radioactive disaster site.
+  - rscadd: 3rd Extreme Radiation Emitter, since 100 Bqs is not enough to simulate
+      an Elephant's foot.
+  Zandario:
+  - bugfix: You can once again exit resleevers.
+  - rscadd: Blizzard and snow sound go brrr
+2022-06-10:
+  lingonberry1234:
+  - rscadd: Added new circuits from everywhere, plus a couple of extras. Circuit cloning.
+  - bugfix: Input circuits live again
+  - refactor: Integrated circuits backend ported from Main

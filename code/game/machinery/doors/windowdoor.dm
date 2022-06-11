@@ -99,6 +99,10 @@
 		return ATMOS_PASS_NOT_BLOCKED
 	return density? ATMOS_PASS_AIR_BLOCKED : ATMOS_PASS_ZONE_BLOCKED
 
+//used in the AStar algorithm to determinate if the turf the door is on is passable
+/obj/machinery/door/window/CanAStarPass(obj/item/card/id/ID, to_dir)
+	return !density || (dir != to_dir) || (check_access(ID) && inoperable())
+
 /obj/machinery/door/window/CheckExit(atom/movable/mover as mob|obj, turf/target as turf)
 	if(istype(mover) && mover.checkpass(PASSGLASS))
 		return 1
