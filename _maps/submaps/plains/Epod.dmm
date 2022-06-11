@@ -43,7 +43,7 @@
 /turf/simulated/shuttle/floor,
 /area/submap/Epod1)
 "j" = (
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/Epod1)
 "k" = (
 /obj/structure/bed/chair,
@@ -79,7 +79,7 @@
 /area/submap/Epod1)
 "n" = (
 /obj/structure/flora/tree/dead,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/Epod1)
 
 (1,1,1) = {"

@@ -6,17 +6,17 @@
 /turf/template_noop,
 /area/submap/DoomP)
 "ac" = (
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/DoomP)
 "ad" = (
-/turf/simulated/floor/grass/outdoors/sif/forest,
+/turf/simulated/grass/outdoors/sif/forest,
 /area/submap/DoomP)
 "ae" = (
 /mob/living/simple_mob/mechanical/viscerator,
 /turf/template_noop,
 /area/submap/DoomP)
 "af" = (
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/submap/DoomP)
 "ag" = (
 /obj/structure/flora/tree/sif,
@@ -24,48 +24,48 @@
 /area/submap/DoomP)
 "ah" = (
 /obj/random/landmine,
-/turf/simulated/floor/grass/outdoors/sif/forest,
+/turf/simulated/grass/outdoors/sif/forest,
 /area/submap/DoomP)
 "ai" = (
 /mob/living/simple_mob/mechanical/viscerator,
-/turf/simulated/floor/grass/outdoors/sif/forest,
+/turf/simulated/grass/outdoors/sif/forest,
 /area/submap/DoomP)
 "aj" = (
 /obj/effect/decal/cleanable/blood,
 /obj/random/landmine,
-/turf/simulated/floor/grass/outdoors/sif/forest,
+/turf/simulated/grass/outdoors/sif/forest,
 /area/submap/DoomP)
 "ak" = (
-/turf/simulated/floor/water/deep,
+/turf/simulated/water/deep,
 /area/submap/DoomP)
 "al" = (
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/grass/outdoors/sif/forest,
+/turf/simulated/grass/outdoors/sif/forest,
 /area/submap/DoomP)
 "am" = (
 /obj/random/landmine,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/DoomP)
 "an" = (
 /obj/effect/decal/remains/mouse,
-/turf/simulated/floor/grass/outdoors/sif/forest,
+/turf/simulated/grass/outdoors/sif/forest,
 /area/submap/DoomP)
 "ao" = (
 /obj/effect/decal/remains/deer,
-/turf/simulated/floor/grass/outdoors/sif/forest,
+/turf/simulated/grass/outdoors/sif/forest,
 /area/submap/DoomP)
 "ap" = (
 /obj/effect/decal/remains/mouse,
 /obj/random/landmine,
-/turf/simulated/floor/grass/outdoors/sif/forest,
+/turf/simulated/grass/outdoors/sif/forest,
 /area/submap/DoomP)
 "aq" = (
 /obj/structure/flora/tree/sif,
-/turf/simulated/floor/grass/outdoors/sif/forest,
+/turf/simulated/grass/outdoors/sif/forest,
 /area/submap/DoomP)
 "ar" = (
 /obj/machinery/light/small,
-/turf/simulated/floor/grass/outdoors/sif/forest,
+/turf/simulated/grass/outdoors/sif/forest,
 /area/submap/DoomP)
 "as" = (
 /obj/machinery/porta_turret/poi,
@@ -193,7 +193,7 @@
 /area/submap/DoomP)
 "aL" = (
 /obj/structure/lattice,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/DoomP)
 "aM" = (
 /obj/structure/bed/chair{
@@ -274,7 +274,7 @@
 /area/submap/DoomP)
 "aX" = (
 /obj/structure/lattice,
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/submap/DoomP)
 "aY" = (
 /obj/machinery/light/small{
@@ -517,7 +517,7 @@
 /area/submap/DoomP)
 "bK" = (
 /obj/structure/lattice,
-/turf/simulated/floor/grass/outdoors/sif/forest,
+/turf/simulated/grass/outdoors/sif/forest,
 /area/submap/DoomP)
 "bL" = (
 /mob/living/simple_mob/humanoid/merc/melee/sword/poi,

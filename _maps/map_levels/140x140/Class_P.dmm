@@ -167,7 +167,7 @@
 /obj/effect/shuttle_landmark/automatic{
 	docking_controller = "frozen"
 	},
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/snow/classp/no_tree,
 /area/class_p/explored)
 "eY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -228,10 +228,10 @@
 /area/class_p/facility)
 "hp" = (
 /obj/machinery/crystal/ice,
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/snow/classp,
 /area/class_p/unexplored)
 "hC" = (
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/snow/classp,
 /area/class_p/explored)
 "iu" = (
 /obj/structure/table/standard,
@@ -302,7 +302,7 @@
 /area/class_p/facility)
 "kD" = (
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/ice/classp,
+/turf/simulated/ice/classp,
 /area/class_p/unexplored)
 "kP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -319,7 +319,7 @@
 /obj/random/mob/robotic/hivebot{
 	mob_faction = "frozen"
 	},
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/snow/classp,
 /area/class_p/unexplored)
 "lC" = (
 /obj/structure/cable{
@@ -375,7 +375,7 @@
 /area/class_p/facility)
 "mM" = (
 /obj/structure/sandbag,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/snow/classp/no_tree,
 /area/class_p/unexplored)
 "oa" = (
 /obj/machinery/alarm/alarms_hidden{
@@ -389,7 +389,7 @@
 /turf/simulated/floor/classp,
 /area/class_p/facility)
 "od" = (
-/turf/simulated/floor/outdoors/shelfice/classp,
+/turf/simulated/outdoors/shelfice/classp,
 /area/class_p/unexplored)
 "oe" = (
 /obj/machinery/alarm/alarms_hidden{
@@ -513,7 +513,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/ice/classp,
+/turf/simulated/ice/classp,
 /area/class_p/unexplored)
 "uA" = (
 /obj/structure/blob/normal,
@@ -589,7 +589,7 @@
 /mob/living/simple_mob/animal/space/tree{
 	faction = "frozen"
 	},
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/snow/classp,
 /area/class_p/unexplored)
 "wW" = (
 /obj/structure/blob/normal,
@@ -621,7 +621,7 @@
 	name = "Frozen Dock Controller";
 	pixel_y = 30
 	},
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/snow/classp,
 /area/class_p/explored)
 "zo" = (
 /obj/structure/table/marble,
@@ -632,10 +632,10 @@
 	},
 /area/class_p/facility)
 "zK" = (
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/snow/classp,
 /area/class_p/ruins)
 "AG" = (
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/snow/classp/no_tree,
 /area/class_p/unexplored)
 "AK" = (
 /obj/structure/closet/statue,
@@ -810,7 +810,7 @@
 /turf/simulated/floor/classp,
 /area/class_p/facility)
 "Hm" = (
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/snow/classp/no_tree,
 /area/class_p/explored)
 "HC" = (
 /obj/structure/anomaly_container,
@@ -933,7 +933,7 @@
 /area/class_p/facility)
 "OB" = (
 /obj/structure/bonfire,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/snow/classp/no_tree,
 /area/class_p/unexplored)
 "OT" = (
 /obj/structure/cable{
@@ -967,7 +967,7 @@
 /area/class_p/facility)
 "PL" = (
 /obj/effect/overmap/visitable/sector/class_p,
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/snow/classp,
 /area/class_p/explored)
 "PO" = (
 /obj/structure/table/standard,
@@ -1007,7 +1007,7 @@
 /obj/random/mob/robotic/hivebot{
 	mob_faction = "frozen"
 	},
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/snow/classp/no_tree,
 /area/class_p/unexplored)
 "Rn" = (
 /obj/machinery/artifact_harvester,
@@ -1036,7 +1036,7 @@
 /obj/effect/shuttle_landmark/automatic{
 	docking_controller = "frozen"
 	},
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/snow/classp,
 /area/class_p/unexplored)
 "Tr" = (
 /obj/structure/blob/normal,
@@ -1054,7 +1054,7 @@
 	},
 /area/class_p/facility)
 "TP" = (
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/snow/classp,
 /area/class_p/unexplored)
 "Ug" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1111,7 +1111,7 @@
 	},
 /area/class_p/facility)
 "WI" = (
-/turf/simulated/floor/outdoors/ice/classp,
+/turf/simulated/ice/classp,
 /area/class_p/explored)
 "WJ" = (
 /obj/structure/bed,
@@ -1137,7 +1137,7 @@
 	},
 /area/class_p/facility)
 "Yq" = (
-/turf/simulated/floor/outdoors/ice/classp,
+/turf/simulated/ice/classp,
 /area/class_p/unexplored)
 "Yr" = (
 /turf/simulated/wall/classp,

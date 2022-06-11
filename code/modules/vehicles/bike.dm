@@ -96,7 +96,7 @@
 	if(kickstand)
 		src.visible_message("You put up \the [src]'s kickstand.")
 	else
-		if(istype(src.loc,/turf/space) || istype(src.loc, /turf/simulated/floor/water))
+		if(istype(src.loc,/turf/space) || istype(src.loc, /turf/simulated/water))
 			to_chat(usr, "<span class='warning'> You don't think kickstands work here...</span>")
 			return
 		src.visible_message("You put down \the [src]'s kickstand.")
@@ -144,7 +144,7 @@
 	if(on && cell)
 		cell.use(charge_use)
 
-	if(istype(destination,/turf/space) || istype(destination, /turf/simulated/floor/water) || pulledby)
+	if(istype(destination,/turf/space) || istype(destination, /turf/simulated/water) || pulledby)
 		if(!space_speed)
 			return 0
 		move_delay = space_speed

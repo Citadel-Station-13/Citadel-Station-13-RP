@@ -6,7 +6,7 @@
 /area/submap/HeadscientistHQ)
 "aq" = (
 /obj/random/trash,
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/dirt/classp,
 /area/template_noop)
 "ar" = (
 /obj/structure/sign/warning/secure_area/armory,
@@ -14,7 +14,7 @@
 /area/submap/HeadscientistHQ)
 "ay" = (
 /mob/living/simple_mob/humanoid/merc/ranged/ionrifle,
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/dirt/classp,
 /area/template_noop)
 "aA" = (
 /obj/structure/shuttle/engine/heater{
@@ -31,13 +31,13 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/dirt/classp,
 /area/template_noop)
 "aM" = (
 /obj/structure/fence/corner{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/dirt/classp,
 /area/template_noop)
 "aP" = (
 /mob/living/simple_mob/humanoid/merc/ranged/garand,
@@ -131,7 +131,7 @@
 /obj/structure/fence/corner{
 	dir = 5
 	},
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/dirt/classp,
 /area/template_noop)
 "fJ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -149,7 +149,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/dirt/classp,
 /area/template_noop)
 "gk" = (
 /obj/machinery/computer/ship/helm,
@@ -158,7 +158,7 @@
 /area/submap/HeadscientistHQ)
 "gQ" = (
 /obj/structure/fence,
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/dirt/classp,
 /area/template_noop)
 "gV" = (
 /obj/effect/decal/cleanable/dirt,
@@ -216,7 +216,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/dirt/classp,
 /area/template_noop)
 "jq" = (
 /obj/effect/decal/cleanable/dirt,
@@ -250,7 +250,7 @@
 /area/submap/HeadscientistHQ)
 "kr" = (
 /obj/structure/sandbag,
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/dirt/classp,
 /area/template_noop)
 "kD" = (
 /obj/machinery/papershredder,
@@ -334,7 +334,7 @@
 /area/submap/HeadscientistHQ)
 "nZ" = (
 /obj/structure/fence/corner,
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/dirt/classp,
 /area/template_noop)
 "on" = (
 /obj/structure/table/rack/shelf,
@@ -420,7 +420,7 @@
 /obj/structure/fence/corner{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/dirt/classp,
 /area/template_noop)
 "sV" = (
 /obj/effect/decal/cleanable/dirt,
@@ -440,7 +440,7 @@
 "tN" = (
 /obj/effect/decal/cleanable/blood/oil,
 /mob/living/simple_mob/humanoid/merc/melee/sword,
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/dirt/classp,
 /area/template_noop)
 "tU" = (
 /obj/structure/cable/green{
@@ -474,12 +474,12 @@
 /area/submap/HeadscientistHQ)
 "uG" = (
 /obj/effect/decal/remains/robot,
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/dirt/classp,
 /area/template_noop)
 "va" = (
 /obj/effect/decal/cleanable/blood/oil,
 /mob/living/simple_mob/humanoid/merc/ranged/space/shotgun,
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/dirt/classp,
 /area/template_noop)
 "ve" = (
 /obj/effect/decal/cleanable/dirt,
@@ -494,7 +494,7 @@
 "vk" = (
 /obj/effect/decal/cleanable/blood,
 /mob/living/simple_mob/humanoid/merc/ranged/grenadier/poi,
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/dirt/classp,
 /area/template_noop)
 "vn" = (
 /mob/living/simple_mob/mechanical/viscerator/mercenary,
@@ -514,7 +514,7 @@
 /area/submap/HeadscientistHQ)
 "wS" = (
 /obj/random/trash_pile,
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/dirt/classp,
 /area/template_noop)
 "xA" = (
 /obj/item/mecha_parts/mecha_equipment/repair_droid,
@@ -554,7 +554,7 @@
 "zD" = (
 /obj/effect/decal/cleanable/blood,
 /mob/living/simple_mob/humanoid/merc/ranged/space,
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/dirt/classp,
 /area/template_noop)
 "zG" = (
 /obj/effect/decal/cleanable/dirt,
@@ -760,7 +760,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/dirt/classp,
 /area/template_noop)
 "Ga" = (
 /obj/machinery/door/airlock/glass_security,
@@ -817,7 +817,7 @@
 /obj/structure/fence{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/dirt/classp,
 /area/template_noop)
 "IS" = (
 /obj/structure/bed/chair/shuttle,
@@ -840,7 +840,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/dirt/classp,
 /area/template_noop)
 "Ki" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -915,7 +915,7 @@
 /area/template_noop)
 "LC" = (
 /obj/effect/decal/mecha_wreckage/durand,
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/dirt/classp,
 /area/template_noop)
 "LF" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -934,7 +934,7 @@
 /area/template_noop)
 "LY" = (
 /mob/living/simple_mob/humanoid/merc/ranged,
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/dirt/classp,
 /area/template_noop)
 "Nb" = (
 /obj/structure/shuttle/engine/heater{
@@ -998,7 +998,7 @@
 /area/submap/HeadscientistHQ)
 "Rn" = (
 /mob/living/simple_mob/mechanical/viscerator/mercenary,
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/dirt/classp,
 /area/template_noop)
 "RC" = (
 /obj/machinery/door/airlock/glass,
@@ -1110,7 +1110,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/dirt/classp,
 /area/template_noop)
 "Wq" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1157,7 +1157,7 @@
 /turf/simulated/shuttle/floor/yellow/classp,
 /area/submap/HeadscientistHQ)
 "Yi" = (
-/turf/simulated/floor/outdoors/dirt/classp,
+/turf/simulated/dirt/classp,
 /area/template_noop)
 "YH" = (
 /turf/simulated/shuttle/wall/voidcraft/red,

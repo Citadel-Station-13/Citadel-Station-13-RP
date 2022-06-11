@@ -81,7 +81,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/Epod4)
 "Y" = (
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/virgo2/Epod4)
 
 (1,1,1) = {"

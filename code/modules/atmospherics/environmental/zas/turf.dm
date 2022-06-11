@@ -1,5 +1,4 @@
-/turf
-	var/needs_air_update = FALSE
+/turf/var/needs_air_update = FALSE
 
 /turf/proc/has_valid_zone()
 	return FALSE

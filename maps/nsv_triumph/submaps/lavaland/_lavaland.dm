@@ -90,7 +90,7 @@
 
 // Lava Land turfs
 
-/turf/simulated/floor/outdoors/lavaland
+/turf/simulated/outdoors/lavaland
 	name = "ash sand"
 	desc = "Soft and ominous."
 	icon = 'icons/turf/flooring/asteroid.dmi'
@@ -103,13 +103,13 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior
 	outdoors = 1
 
-/turf/simulated/floor/water/lavaland/interior
+/turf/simulated/water/lavaland/interior
 	outdoors = 0
 
-/turf/simulated/floor/grass/outdoors/lavaland/interior
+/turf/simulated/grass/outdoors/lavaland/interior
 	outdoors = 0
 
-/turf/simulated/floor/outdoors/dirt/lavaland/interior
+/turf/simulated/dirt/lavaland/interior
 	outdoors = 0
 
 // This is a special subtype of the thing that generates ores on a map

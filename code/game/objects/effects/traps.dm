@@ -66,7 +66,7 @@ Add those other swinging traps you mentioned above!
 	density = 0
 	//invisibility = INVISIBILITY_MAXIMUM  - Commented this invis variant out due to balancing issues/its blocking of warning text and effect icons.
 	//mouse_opacity = MOUSE_OPACITY_TRANSPARENT - Commented out for admin QOL and cleanup.
-	var/trap_floor_type = /turf/simulated/floor/water/acid
+	var/trap_floor_type = /turf/simulated/water/acid
 	var/tripped = FALSE
 	var/id = "trap_debug_controller"
 	var/broken = FALSE
@@ -146,13 +146,13 @@ Add those other swinging traps you mentioned above!
 			to_chat(user, "<span class='warning'>You need two tiles to rearm the trap.</span>")
 
 /obj/effect/trap/pit/deep
-	trap_floor_type = /turf/simulated/floor/water/acid/deep
+	trap_floor_type = /turf/simulated/water/acid/deep
 
 /obj/effect/trap/pit/blood
-	trap_floor_type = /turf/simulated/floor/water/blood
+	trap_floor_type = /turf/simulated/water/blood
 
 /obj/effect/trap/pit/blood/deep
-	trap_floor_type = /turf/simulated/floor/water/blood/deep
+	trap_floor_type = /turf/simulated/water/blood/deep
 
 //Punji Spear Traps
 /obj/effect/trap/pit/punji

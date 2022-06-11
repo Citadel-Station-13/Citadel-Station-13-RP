@@ -336,7 +336,7 @@
 /area/rift/stairwell/primary/surfaceone)
 "arS" = (
 /obj/structure/metal_edge,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "asR" = (
 /obj/structure/disposaloutlet,
@@ -1956,7 +1956,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/rnd/xenobiology/xenoflora)
 "bMj" = (
 /obj/machinery/vending/fitness,
@@ -2091,7 +2091,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "bTa" = (
 /obj/structure/extinguisher_cabinet{
@@ -2372,7 +2372,7 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hallway/primary/surfaceone)
 "cdQ" = (
 /obj/effect/floor_decal/borderfloor{
@@ -5163,7 +5163,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/rnd/xenobiology/xenoflora)
 "eaK" = (
 /obj/machinery/door/firedoor/glass/hidden{
@@ -5738,7 +5738,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "ewn" = (
 /obj/structure/flora/pottedplant/tall,
@@ -6944,7 +6944,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/safeice/indoors,
+/turf/simulated/outdoors/safeice/indoors,
 /area/maintenance/starboard)
 "fLt" = (
 /obj/structure/catwalk,
@@ -7028,7 +7028,7 @@
 "fNK" = (
 /obj/effect/floor_decal/industrial/halfstair,
 /obj/effect/zone_divider,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "fNL" = (
 /turf/simulated/floor/plating,
@@ -7862,7 +7862,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/cargo_hallway)
 "gzd" = (
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside1)
 "gAw" = (
 /obj/structure/bed/chair{
@@ -7950,7 +7950,7 @@
 "gGT" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/rnd/xenobiology/xenoflora)
 "gGU" = (
 /obj/effect/floor_decal/borderfloor{
@@ -8425,7 +8425,7 @@
 /area/library)
 "gVO" = (
 /obj/effect/overlay/snow/floor/pointy,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "gVW" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -8750,7 +8750,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/rnd/xenobiology/xenoflora)
 "heE" = (
 /obj/structure/window/reinforced{
@@ -9501,7 +9501,7 @@
 /area/library)
 "hHw" = (
 /obj/effect/floor_decal/industrial/halfstair,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "hIo" = (
 /obj/machinery/washing_machine,
@@ -9820,7 +9820,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/safeice/indoors,
+/turf/simulated/outdoors/safeice/indoors,
 /area/maintenance/starboard)
 "hVL" = (
 /obj/machinery/vending/nifsoft_shop,
@@ -10264,7 +10264,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main/secondary)
 "ijr" = (
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/rnd/xenobiology/xenoflora)
 "ijz" = (
 /turf/simulated/floor/carpet/blucarpet,
@@ -10336,7 +10336,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/safeice/indoors,
+/turf/simulated/outdoors/safeice/indoors,
 /area/maintenance/starboard)
 "ipB" = (
 /obj/machinery/door/airlock/glass_external/public{
@@ -10368,7 +10368,7 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hallway/primary/surfaceone)
 "ipE" = (
 /obj/structure/table/reinforced,
@@ -10871,7 +10871,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "iFN" = (
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "iFU" = (
 /obj/effect/map_effect/portal/line/side_a{
@@ -12048,7 +12048,7 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hallway/primary/surfaceone)
 "jEU" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -12526,7 +12526,7 @@
 /area/rnd/hallway)
 "jZZ" = (
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "kaE" = (
 /obj/machinery/door/firedoor/glass/hidden,
@@ -12574,7 +12574,7 @@
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "kcb" = (
 /obj/structure/railing{
@@ -13885,7 +13885,7 @@
 "kWH" = (
 /obj/structure/metal_edge,
 /obj/effect/zone_divider,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "kWT" = (
 /obj/effect/floor_decal/borderfloor{
@@ -14663,7 +14663,7 @@
 "lFn" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "lFE" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -15390,7 +15390,7 @@
 /area/rnd/xenobiology/cell/five)
 "mif" = (
 /obj/effect/zone_divider,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "miu" = (
 /obj/structure/cable/green{
@@ -16536,7 +16536,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/rnd/xenobiology/xenoflora)
 "mUU" = (
 /turf/simulated/wall,
@@ -19130,7 +19130,7 @@
 /area/rnd/xenobiology/cell/three)
 "oJf" = (
 /obj/effect/ceiling,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside1)
 "oJs" = (
 /obj/machinery/media/jukebox,
@@ -19430,7 +19430,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/rnd/xenobiology/xenoflora)
 "oTt" = (
 /obj/structure/cable/green{
@@ -20058,7 +20058,7 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hallway/primary/surfaceone)
 "pog" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
@@ -20639,7 +20639,7 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hallway/primary/surfaceone)
 "pJC" = (
 /obj/structure/catwalk,
@@ -22799,7 +22799,7 @@
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "rwr" = (
 /obj/machinery/door/firedoor/glass,
@@ -25145,7 +25145,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/rnd/xenobiology/xenoflora)
 "tio" = (
 /turf/simulated/floor/tiled/monotile,
@@ -27244,7 +27244,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "uxJ" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -27464,7 +27464,7 @@
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "uEs" = (
 /obj/structure/bed/chair{
@@ -28704,7 +28704,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "vOe" = (
 /obj/effect/floor_decal/borderfloor,
@@ -29811,7 +29811,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/rnd/xenobiology/xenoflora)
 "wCM" = (
 /obj/structure/railing,
@@ -31359,7 +31359,7 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hallway/primary/surfaceone)
 "xUX" = (
 /obj/effect/floor_decal/borderfloor{
@@ -31419,7 +31419,7 @@
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "xWD" = (
 /obj/effect/floor_decal/techfloor,

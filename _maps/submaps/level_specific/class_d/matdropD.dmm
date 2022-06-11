@@ -48,7 +48,7 @@
 /turf/simulated/floor/tiled,
 /area/class_d/POIs/landing_pad)
 "n" = (
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/explored)
 "p" = (
 /obj/machinery/door/airlock/maintenance/int,

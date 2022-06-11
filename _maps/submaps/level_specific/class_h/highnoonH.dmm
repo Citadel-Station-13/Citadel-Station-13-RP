@@ -83,7 +83,7 @@
 /area/class_h/POIs/WW_Town)
 "oL" = (
 /obj/machinery/light/flamp/noshade,
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/turf/simulated/outdoors/beach/sand/lowdesert,
 /area/class_h/POIs/WW_Town)
 "oU" = (
 /obj/machinery/light/small{
@@ -192,7 +192,7 @@
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/WW_Town)
 "GS" = (
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/turf/simulated/outdoors/beach/sand/lowdesert,
 /area/class_h/POIs/WW_Town)
 "KK" = (
 /obj/structure/bed/chair/wood{
@@ -293,7 +293,7 @@
 /turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "Xx" = (
-/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/turf/simulated/outdoors/beach/sand/dirtlight,
 /area/class_h/POIs/WW_Town)
 
 (1,1,1) = {"

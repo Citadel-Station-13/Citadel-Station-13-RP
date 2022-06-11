@@ -28,13 +28,13 @@
 /area/submap/CaveS)
 "h" = (
 /obj/random/landmine,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/CaveS)
 "i" = (
 /obj/effect/spider/stickyweb,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/CaveS)
@@ -44,7 +44,7 @@
 /turf/template_noop,
 /area/submap/CaveS)
 "k" = (
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/CaveS)
@@ -54,78 +54,78 @@
 /area/submap/CaveS)
 "m" = (
 /obj/effect/spider/stickyweb,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/CaveS)
 "n" = (
 /obj/item/clothing/accessory/storage/webbing,
 /obj/item/material/knife/tacknife/combatknife,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/CaveS)
 "o" = (
 /mob/living/simple_mob/animal/giant_spider,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/CaveS)
 "p" = (
 /obj/effect/decal/cleanable/cobweb,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/CaveS)
 "q" = (
 /obj/random/mob/spider,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/CaveS)
 "r" = (
 /mob/living/simple_mob/animal/giant_spider/lurker,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/CaveS)
 "s" = (
 /obj/effect/decal/cleanable/cobweb2,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/CaveS)
 "t" = (
 /mob/living/simple_mob/animal/giant_spider/webslinger,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/CaveS)
 "u" = (
 /obj/effect/decal/cleanable/cobweb2,
 /mob/living/simple_mob/animal/giant_spider/lurker,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/CaveS)
 "v" = (
-/turf/simulated/floor/grass/outdoors/sif/forest,
+/turf/simulated/grass/outdoors/sif/forest,
 /area/submap/CaveS)
 "w" = (
 /obj/random/mob/spider/mutant,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/CaveS)
 "x" = (
 /mob/living/simple_mob/animal/giant_spider/lurker,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/CaveS)
 "y" = (
 /obj/structure/flora/tree/sif,
-/turf/simulated/floor/grass/outdoors/sif/forest,
+/turf/simulated/grass/outdoors/sif/forest,
 /area/submap/CaveS)
 "z" = (
 /obj/random/landmine,
-/turf/simulated/floor/grass/outdoors/sif/forest,
+/turf/simulated/grass/outdoors/sif/forest,
 /area/submap/CaveS)
 "A" = (
 /turf/simulated/floor,
@@ -194,7 +194,7 @@
 "J" = (
 /obj/effect/spider/stickyweb,
 /mob/living/simple_mob/animal/giant_spider/lurker,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/CaveS)

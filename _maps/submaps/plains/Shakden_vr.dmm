@@ -9,13 +9,13 @@
 /turf/simulated/mineral/ignore_mapgen,
 /area/submap/Shakden)
 "d" = (
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/Shakden)
 "e" = (
 /obj/effect/decal/remains/mouse,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/Shakden)
@@ -25,7 +25,7 @@
 /obj/item/reagent_containers/food/snacks/meat,
 /obj/item/reagent_containers/food/snacks/meat,
 /obj/item/reagent_containers/food/snacks/meat,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/Shakden)
@@ -33,22 +33,22 @@
 /obj/item/reagent_containers/food/snacks/meat,
 /obj/item/reagent_containers/food/snacks/meat,
 /obj/item/reagent_containers/food/snacks/meat,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/Shakden)
 "h" = (
 /mob/living/simple_mob/vore/aggressive/dragon/virgo3b,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/Shakden)
 "i" = (
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/Shakden)
 "j" = (
 /obj/item/reagent_containers/food/snacks/meat,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/Shakden)
@@ -58,7 +58,7 @@
 /obj/item/reagent_containers/food/snacks/meat,
 /obj/item/reagent_containers/food/snacks/meat,
 /obj/item/material/knife/hook,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/Shakden)

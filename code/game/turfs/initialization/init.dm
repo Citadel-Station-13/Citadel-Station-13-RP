@@ -1,8 +1,7 @@
-/datum/turf_initializer/proc/InitializeTurf(var/turf/T)
+/datum/turf_initializer/proc/InitializeTurf(turf/T)
 	return
 
-/area
-	var/datum/turf_initializer/turf_initializer = null
+/area/var/datum/turf_initializer/turf_initializer = null
 
 /area/LateInitialize()
 	. = ..()

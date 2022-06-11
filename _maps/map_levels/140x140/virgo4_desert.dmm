@@ -7,22 +7,22 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/turf/simulated/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
 "eN" = (
 /obj/item/bone/skull,
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/turf/simulated/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
 "hw" = (
 /obj/random/outcrop,
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/turf/simulated/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
 "iq" = (
 /obj/machinery/light/small,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tether_away/beach/desert/explored)
 "iL" = (
-/turf/simulated/floor/water/shoreline/classh{
+/turf/simulated/water/shoreline/classh{
 	dir = 6
 	},
 /area/tether_away/beach/desert/explored)
@@ -32,7 +32,7 @@
 /turf/simulated/floor/wood/classh,
 /area/tether_away/beach/desert/explored)
 "kK" = (
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/turf/simulated/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
 "lX" = (
 /obj/structure/barricade,
@@ -56,12 +56,12 @@
 /turf/simulated/floor/wood/classh,
 /area/tether_away/beach/desert/explored)
 "od" = (
-/turf/simulated/floor/water/shoreline/classh{
+/turf/simulated/water/shoreline/classh{
 	dir = 9
 	},
 /area/tether_away/beach/desert/explored)
 "of" = (
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/tether_away/beach/desert/explored)
 "pc" = (
 /obj/effect/decal/cleanable/blood,
@@ -74,12 +74,12 @@
 /turf/simulated/floor/tiled/external,
 /area/tether_away/beach/desert/explored)
 "se" = (
-/turf/simulated/floor/water/shoreline/corner{
+/turf/simulated/water/shoreline/corner{
 	dir = 8
 	},
 /area/tether_away/beach/desert/explored)
 "uY" = (
-/turf/simulated/floor/water/shoreline/corner,
+/turf/simulated/water/shoreline/corner,
 /area/tether_away/beach/desert/explored)
 "vd" = (
 /turf/simulated/wall/sandstone/classh,
@@ -90,7 +90,7 @@
 	name = "V4_desert_to_beach";
 	portal_id = "V4_desert_step"
 	},
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/turf/simulated/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
 "vr" = (
 /obj/random/humanoidremains,
@@ -99,13 +99,13 @@
 /area/tether_away/beach/desert/explored)
 "wb" = (
 /obj/item/pickaxe,
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/turf/simulated/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
 "wH" = (
 /obj/machinery/light/small/flicker{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/turf/simulated/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
 "xw" = (
 /obj/effect/map_effect/portal/master/side_a{
@@ -131,7 +131,7 @@
 /obj/effect/map_effect/portal/line/side_b{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/turf/simulated/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
 "yo" = (
 /obj/random/humanoidremains,
@@ -141,7 +141,7 @@
 	},
 /area/tether_away/beach/desert/explored)
 "zN" = (
-/turf/simulated/floor/water/shoreline{
+/turf/simulated/water/shoreline{
 	dir = 6
 	},
 /area/tether_away/beach/desert/explored)
@@ -150,7 +150,7 @@
 /turf/simulated/floor/plating/external,
 /area/tether_away/beach/desert/explored)
 "BS" = (
-/turf/simulated/floor/water/shoreline,
+/turf/simulated/water/shoreline,
 /area/tether_away/beach/desert/explored)
 "CM" = (
 /turf/simulated/floor/wood/classh,
@@ -167,7 +167,7 @@
 /obj/effect/map_effect/portal/line/side_b{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tether_away/beach/desert/explored)
 "Eh" = (
 /obj/structure/simple_door/wood,
@@ -178,12 +178,12 @@
 /turf/simulated/mineral/floor/classh,
 /area/tether_away/beach/desert/explored)
 "EJ" = (
-/turf/simulated/floor/water/shoreline{
+/turf/simulated/water/shoreline{
 	dir = 8
 	},
 /area/tether_away/beach/desert/explored)
 "FM" = (
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tether_away/beach/desert/explored)
 "Iw" = (
 /obj/item/ammo_casing/spent,
@@ -191,7 +191,7 @@
 	pixel_x = -2;
 	pixel_y = 7
 	},
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/turf/simulated/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
 "II" = (
 /obj/item/ammo_casing/spent{
@@ -202,7 +202,7 @@
 	pixel_x = 5;
 	pixel_y = -3
 	},
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/turf/simulated/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
 "Js" = (
 /turf/simulated/mineral/floor/cave{
@@ -221,7 +221,7 @@
 	},
 /area/tether_away/beach/desert/explored)
 "JW" = (
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/turf/simulated/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/unexplored)
 "Kt" = (
 /obj/machinery/light/small/flicker{
@@ -230,7 +230,7 @@
 /turf/simulated/floor/plating/external,
 /area/tether_away/beach/desert/explored)
 "LF" = (
-/turf/simulated/floor/water/shoreline/classh{
+/turf/simulated/water/shoreline/classh{
 	dir = 5
 	},
 /area/tether_away/beach/desert/explored)
@@ -245,7 +245,7 @@
 /turf/simulated/floor/plating/external,
 /area/tether_away/beach/desert/explored)
 "Mv" = (
-/turf/simulated/floor/water/shoreline{
+/turf/simulated/water/shoreline{
 	dir = 4
 	},
 /area/tether_away/beach/desert/explored)
@@ -261,7 +261,7 @@
 	pixel_x = 5;
 	pixel_y = 7
 	},
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/turf/simulated/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
 "Ov" = (
 /obj/random/trash,
@@ -304,12 +304,12 @@
 /turf/simulated/mineral/floor/classh,
 /area/tether_away/beach/desert/explored)
 "UP" = (
-/turf/simulated/floor/water/shoreline{
+/turf/simulated/water/shoreline{
 	dir = 1
 	},
 /area/tether_away/beach/desert/explored)
 "WT" = (
-/turf/simulated/floor/water/shoreline/corner{
+/turf/simulated/water/shoreline/corner{
 	dir = 4
 	},
 /area/tether_away/beach/desert/explored)

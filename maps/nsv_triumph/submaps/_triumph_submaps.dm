@@ -161,7 +161,7 @@
 /datum/map_z_level/triumph_lateload/away_d_world
 	name = "Away Mission - Rogue Planet"
 	z = Z_LEVEL_UNKNOWN_PLANET
-	base_turf = /turf/simulated/floor/outdoors/rocks/classd
+	base_turf = /turf/simulated/outdoors/rocks/classd
 
 // Class H Desert Planet Exploration Zone.
 /datum/map_template/triumph_lateload/away_h_world
@@ -181,7 +181,7 @@
 /datum/map_z_level/triumph_lateload/away_h_world
 	name = "Away Mission - Desert Planet"
 	z = Z_LEVEL_DESERT_PLANET
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+	base_turf = /turf/simulated/outdoors/beach/sand/desert/classh
 
 // Gaia Planet Zone.
 /datum/map_template/triumph_lateload/away_m_world
@@ -201,7 +201,7 @@
 /datum/map_z_level/triumph_lateload/away_m_world
 	name = "Away Mission - Gaia Planet"
 	z = Z_LEVEL_GAIA_PLANET
-	base_turf = /turf/simulated/floor/grass/outdoors/forest
+	base_turf = /turf/simulated/grass/outdoors/forest
 
 // Frozen Planet Zone.
 /datum/map_template/triumph_lateload/away_p_world
@@ -219,7 +219,7 @@
 /datum/map_z_level/triumph_lateload/away_p_world
 	name = "Away Mission - Frozen Planet"
 	z = Z_LEVEL_FROZEN_PLANET
-	base_turf = /turf/simulated/floor/outdoors/snow/classp
+	base_turf = /turf/simulated/snow/classp
 
 // Trade post
 #include "space/trade_port/_tradeport.dm"

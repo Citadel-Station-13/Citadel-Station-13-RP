@@ -101,7 +101,7 @@
 
 /datum/map_z_level/tether_lateload/away_beach
 	name = "Away Mission - Desert Beach"
-	base_turf = /turf/simulated/floor/outdoors/rocks/caves
+	base_turf = /turf/simulated/outdoors/rocks/caves
 
 /datum/map_template/tether_lateload/away_beach_cave
 	name = "Desert Planet - Z2 Cave"
@@ -120,7 +120,7 @@
 
 /datum/map_z_level/tether_lateload/away_beach_cave
 	name = "Away Mission - Desert Cave"
-	base_turf = /turf/simulated/floor/outdoors/rocks/caves
+	base_turf = /turf/simulated/outdoors/rocks/caves
 
 /datum/map_template/tether_lateload/away_desert
 	name = "Desert Planet - Z3 Desert"
@@ -134,7 +134,7 @@
 
 /datum/map_z_level/tether_lateload/away_desert
 	name = "Away Mission - Desert"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/lowdesert
+	base_turf = /turf/simulated/outdoors/beach/sand/lowdesert
 
 
 /obj/effect/step_trigger/zlevel_fall/beach

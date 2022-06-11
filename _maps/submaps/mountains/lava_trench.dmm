@@ -6,80 +6,80 @@
 /obj/structure/cliff/automatic{
 	dir = 9
 	},
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "ac" = (
 /obj/structure/cliff/automatic,
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "ad" = (
 /obj/structure/cliff/automatic{
 	dir = 5
 	},
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "ae" = (
 /obj/structure/cliff/automatic/corner{
 	dir = 9
 	},
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "af" = (
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "ag" = (
 /obj/structure/cliff/automatic/corner,
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "ah" = (
 /obj/structure/fence/end{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "ai" = (
 /obj/structure/fence/post{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "aj" = (
 /obj/structure/fence/door/opened,
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "ak" = (
 /obj/structure/fence/end{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "al" = (
 /obj/structure/cliff/automatic{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "am" = (
 /obj/structure/fence/end{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "an" = (
 /obj/structure/cliff/automatic{
 	dir = 9
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "ao" = (
 /obj/structure/cliff/automatic,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "ap" = (
 /obj/structure/cliff/automatic{
 	dir = 5
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "aq" = (
 /obj/structure/sign/warning/lava,
@@ -87,54 +87,54 @@
 /area/submap/lava_trench)
 "ar" = (
 /obj/structure/fence/post,
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "as" = (
 /obj/structure/cliff/automatic{
 	dir = 6
 	},
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "at" = (
 /obj/structure/cliff/automatic/corner{
 	dir = 9
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "au" = (
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "av" = (
 /obj/structure/cliff/automatic/corner,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "aw" = (
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "ax" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "ay" = (
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "az" = (
 /obj/structure/fence/door/opened{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "aA" = (
 /obj/structure/cliff/automatic{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "aB" = (
 /turf/simulated/mineral/floor/ignore_mapgen,
@@ -144,37 +144,37 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "aE" = (
 /obj/structure/cliff/automatic,
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "aF" = (
 /obj/structure/cliff/automatic{
 	dir = 10
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "aG" = (
 /obj/structure/cliff/automatic/corner{
 	dir = 10
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "aH" = (
 /obj/structure/railing{
 	dir = 4
 	},
 /obj/effect/step_trigger/teleporter/offset/east,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "aI" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "aJ" = (
 /obj/structure/ore_box,
@@ -185,19 +185,19 @@
 	dir = 8
 	},
 /obj/effect/step_trigger/teleporter/offset/west,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "aL" = (
 /obj/structure/cliff/automatic{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "aM" = (
 /obj/machinery/light/small/flicker{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "aN" = (
 /obj/machinery/door/airlock/hatch{
@@ -231,31 +231,31 @@
 /area/submap/lava_trench/outpost)
 "aT" = (
 /obj/structure/fence/end,
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "aU" = (
 /obj/structure/cliff/automatic{
 	dir = 2
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "aV" = (
 /obj/structure/cliff/automatic{
 	dir = 10
 	},
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "aW" = (
 /obj/structure/cliff/automatic/corner{
 	dir = 10
 	},
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "aX" = (
 /obj/structure/cliff/automatic/corner{
 	dir = 6
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "aY" = (
 /obj/structure/cliff/automatic{
@@ -264,7 +264,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "aZ" = (
 /obj/structure/cliff/automatic{
@@ -273,23 +273,23 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "ba" = (
 /obj/machinery/crystal/lava,
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "bb" = (
 /obj/structure/cliff/automatic{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "bc" = (
 /obj/structure/cliff/automatic{
 	dir = 6
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "bd" = (
 /obj/structure/table/steel,
@@ -305,55 +305,55 @@
 /area/submap/lava_trench)
 "bf" = (
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "bg" = (
 /obj/structure/cliff/automatic{
 	dir = 10
 	},
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "bh" = (
 /obj/structure/cliff/automatic/corner{
 	dir = 10
 	},
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "bi" = (
 /obj/structure/railing,
 /obj/effect/step_trigger/teleporter/offset/south,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "bj" = (
 /obj/structure/cliff/automatic{
 	dir = 4
 	},
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "bk" = (
 /obj/structure/catwalk,
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "bl" = (
 /obj/structure/catwalk,
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "bm" = (
 /obj/structure/fence/door/opened{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "bn" = (
 /obj/structure/cliff/automatic{
 	dir = 2
 	},
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "bo" = (
 /obj/effect/floor_decal/corner_oldtile/purple/full{
@@ -364,7 +364,7 @@
 /area/submap/lava_trench/outpost)
 "bp" = (
 /obj/machinery/floodlight,
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "bq" = (
 /obj/machinery/newscaster{
@@ -397,7 +397,7 @@
 /obj/structure/cliff/automatic/corner{
 	dir = 6
 	},
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "bv" = (
 /obj/item/slime_crystal,
@@ -454,7 +454,7 @@
 /area/submap/lava_trench/outpost)
 "bD" = (
 /obj/effect/step_trigger/teleporter/offset/north,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/lava_trench)
 "bE" = (
 /obj/machinery/crystal/lava,
@@ -510,7 +510,7 @@
 "bN" = (
 /obj/structure/anomaly_container,
 /obj/machinery/artifact,
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "bO" = (
 /obj/machinery/light/small/flicker{
@@ -533,13 +533,13 @@
 /obj/machinery/light/small/flicker{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "bR" = (
 /obj/machinery/light/small/flicker{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "bS" = (
 /obj/effect/floor_decal/corner_oldtile/blue{
@@ -566,7 +566,7 @@
 /area/submap/lava_trench)
 "bW" = (
 /obj/structure/anomaly_container,
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "bX" = (
 /obj/effect/floor_decal/corner_oldtile/purple/full{
@@ -602,7 +602,7 @@
 /area/submap/lava_trench/outpost)
 "ch" = (
 /obj/structure/loot_pile/maint/trash,
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "cj" = (
 /obj/item/clothing/head/bio_hood/anomaly,
@@ -632,7 +632,7 @@
 /area/submap/lava_trench)
 "cs" = (
 /obj/item/banner/nt,
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/lava_trench)
 
 (1,1,1) = {"

@@ -8,13 +8,13 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/outpost/exploration_shed)
 "ab" = (
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/outpost/exploration_plains)
 "ac" = (
 /turf/simulated/mineral/virgo3b,
 /area/tether/outpost/exploration_plains)
 "ad" = (
-/turf/simulated/floor/outdoors/dirt/virgo3b,
+/turf/simulated/dirt/virgo3b,
 /area/tether/outpost/exploration_plains)
 "ae" = (
 /turf/simulated/mineral/virgo3b/rich,
@@ -76,7 +76,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/outpost/exploration_shed)
 "an" = (
-/turf/simulated/floor/outdoors/dirt/virgo3b,
+/turf/simulated/dirt/virgo3b,
 /area/tether/outpost/exploration_shed)
 "ao" = (
 /obj/machinery/door/blast/shutters{
@@ -102,10 +102,10 @@
 	pixel_x = -1;
 	pixel_y = 25
 	},
-/turf/simulated/floor/outdoors/dirt/virgo3b,
+/turf/simulated/dirt/virgo3b,
 /area/tether/outpost/exploration_shed)
 "ar" = (
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/outpost/exploration_shed)
 "as" = (
 /turf/unsimulated/wall/planetary/virgo3b,
@@ -133,15 +133,15 @@
 /turf/simulated/mineral/virgo3b,
 /area/mine/explored)
 "At" = (
-/turf/simulated/floor/outdoors/dirt/virgo3b,
+/turf/simulated/dirt/virgo3b,
 /area/mine/unexplored)
 "BE" = (
 /mob/living/simple_mob/animal/space/goose/virgo3b,
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/outpost/exploration_plains)
 "Em" = (
 /mob/living/simple_mob/animal/passive/gaslamp,
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/outpost/exploration_plains)
 "Pd" = (
 /obj/effect/floor_decal/rust,

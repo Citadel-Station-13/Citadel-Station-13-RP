@@ -15,10 +15,10 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/lowernortheva/external)
 "aad" = (
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "aae" = (
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/lowernortheva/external)
 "aaf" = (
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
@@ -1158,7 +1158,7 @@
 /area/rnd/testingroom)
 "acc" = (
 /obj/structure/flora/ausbushes/genericbush,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tether/surfacebase/medical/mentalhealth)
 "acd" = (
 /obj/structure/table/rack,
@@ -1198,7 +1198,7 @@
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tether/surfacebase/medical/mentalhealth)
 "acf" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -1517,7 +1517,7 @@
 /area/tether/surfacebase/medical/paramed)
 "acI" = (
 /obj/structure/flora/ausbushes/lavendergrass,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tether/surfacebase/medical/mentalhealth)
 "acJ" = (
 /obj/effect/floor_decal/borderfloor,
@@ -1532,7 +1532,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tether/surfacebase/medical/mentalhealth)
 "acL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -1832,7 +1832,7 @@
 	name = "Tweeter's Bed"
 	},
 /mob/living/simple_mob/animal/passive/bird/azure_tit/tweeter,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tether/surfacebase/medical/mentalhealth)
 "adn" = (
 /turf/simulated/wall/r_wall,
@@ -1855,7 +1855,7 @@
 /area/maintenance/lower/mining_eva)
 "adq" = (
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tether/surfacebase/medical/mentalhealth)
 "adr" = (
 /obj/structure/disposalpipe/segment{
@@ -5753,7 +5753,7 @@
 /area/rnd/hallway)
 "ajK" = (
 /mob/living/simple_mob/animal/passive/gaslamp,
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "ajL" = (
 /turf/simulated/wall,
@@ -6243,7 +6243,7 @@
 /obj/machinery/camera/network/outside{
 	dir = 9
 	},
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/holodeck_control)
 "akI" = (
 /obj/structure/catwalk,
@@ -8459,10 +8459,10 @@
 /area/tether/surfacebase/surface_one_hall)
 "aoi" = (
 /obj/structure/flora/pottedplant,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tether/surfacebase/surface_one_hall)
 "aoj" = (
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tether/surfacebase/surface_one_hall)
 "aok" = (
 /obj/structure/disposalpipe/segment,
@@ -8843,11 +8843,11 @@
 /area/tether/surfacebase/surface_one_hall)
 "aoR" = (
 /obj/machinery/light/flamp/noshade,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tether/surfacebase/surface_one_hall)
 "aoS" = (
 /obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tether/surfacebase/surface_one_hall)
 "aoT" = (
 /obj/effect/floor_decal/borderfloor{
@@ -9234,7 +9234,7 @@
 /area/maintenance/lower/xenoflora)
 "apA" = (
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tether/surfacebase/surface_one_hall)
 "apB" = (
 /obj/structure/railing{
@@ -9243,13 +9243,13 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/water/pool,
 /area/tether/surfacebase/surface_one_hall)
 "apC" = (
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/water/pool,
 /area/tether/surfacebase/surface_one_hall)
 "apD" = (
 /obj/structure/railing{
@@ -9258,7 +9258,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/water/pool,
 /area/tether/surfacebase/surface_one_hall)
 "apE" = (
 /obj/effect/floor_decal/borderfloor{
@@ -9530,16 +9530,16 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/water/pool,
 /area/tether/surfacebase/surface_one_hall)
 "aqf" = (
-/turf/simulated/floor/water/pool,
+/turf/simulated/water/pool,
 /area/tether/surfacebase/surface_one_hall)
 "aqg" = (
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/water/pool,
 /area/tether/surfacebase/surface_one_hall)
 "aqh" = (
 /obj/effect/floor_decal/borderfloor{
@@ -9906,7 +9906,7 @@
 /area/tether/surfacebase/surface_one_hall)
 "aqK" = (
 /mob/living/simple_mob/animal/passive/fish/koi/poisonous,
-/turf/simulated/floor/water/pool,
+/turf/simulated/water/pool,
 /area/tether/surfacebase/surface_one_hall)
 "aqL" = (
 /obj/effect/floor_decal/borderfloor{
@@ -10119,7 +10119,7 @@
 /area/tether/surfacebase/surface_one_hall)
 "arg" = (
 /obj/structure/railing,
-/turf/simulated/floor/water/pool,
+/turf/simulated/water/pool,
 /area/tether/surfacebase/surface_one_hall)
 "arh" = (
 /obj/structure/disposalpipe/segment{
@@ -10278,18 +10278,18 @@
 /area/maintenance/lower/xenoflora)
 "ary" = (
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tether/surfacebase/surface_one_hall)
 "arz" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tether/surfacebase/surface_one_hall)
 "arA" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tether/surfacebase/surface_one_hall)
 "arB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -10599,14 +10599,14 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tether/surfacebase/surface_one_hall)
 "asd" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tether/surfacebase/surface_one_hall)
 "ase" = (
 /obj/structure/disposalpipe/segment,
@@ -10995,7 +10995,7 @@
 "asO" = (
 /obj/machinery/light/small,
 /obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tether/surfacebase/surface_one_hall)
 "asP" = (
 /obj/effect/floor_decal/rust,
@@ -11683,7 +11683,7 @@
 /area/tether/surfacebase/tram)
 "auf" = (
 /obj/structure/stairs/spawner/east,
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "aug" = (
 /obj/structure/cable/green{
@@ -12037,7 +12037,7 @@
 /area/maintenance/lower/solars)
 "auI" = (
 /obj/structure/stairs/spawner/west,
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "auJ" = (
 /obj/machinery/door/airlock{
@@ -12085,14 +12085,14 @@
 	dir = 8
 	},
 /obj/structure/railing,
-/turf/simulated/floor/water/pool,
+/turf/simulated/water/pool,
 /area/tether/surfacebase/surface_one_hall)
 "auP" = (
 /obj/structure/railing,
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/water/pool,
 /area/tether/surfacebase/surface_one_hall)
 "auQ" = (
 /obj/effect/floor_decal/borderfloor{
@@ -29527,7 +29527,7 @@
 /turf/simulated/mineral/floor/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "baV" = (
-/turf/simulated/floor/outdoors/dirt/virgo3b,
+/turf/simulated/dirt/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "baW" = (
 /obj/structure/sign/warning/caution{
@@ -30647,7 +30647,7 @@
 /atom/movable/landmark{
 	name = "droppod_landing"
 	},
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "bcY" = (
 /obj/structure/catwalk,
@@ -31261,7 +31261,7 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "bMs" = (
 /obj/machinery/door/airlock/glass_external/public,
@@ -32004,7 +32004,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "dQn" = (
 /obj/machinery/power/terminal{
@@ -33068,7 +33068,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "hjA" = (
 /obj/machinery/light/small/emergency{
@@ -33667,7 +33667,7 @@
 /area/tether/surfacebase/outside/outside1)
 "iTM" = (
 /obj/structure/stairs/spawner/north,
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "iUF" = (
 /obj/structure/table/steel,
@@ -33698,7 +33698,7 @@
 /area/tether/surfacebase/security/lowerhall)
 "iWC" = (
 /obj/structure/fence/door/locked,
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "iZr" = (
 /obj/machinery/light/small/emergency{
@@ -34907,7 +34907,7 @@
 /area/tether/surfacebase/surface_one_hall)
 "lRZ" = (
 /obj/structure/stairs/spawner/south,
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "lSW" = (
 /obj/structure/table/reinforced,
@@ -35706,7 +35706,7 @@
 	name = "Mech Refill Point";
 	pixel_y = 32
 	},
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "ntZ" = (
 /obj/structure/cable/green{
@@ -37213,7 +37213,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "rHb" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -37537,7 +37537,7 @@
 /area/tether/surfacebase/surface_one_hall)
 "sFC" = (
 /obj/structure/railing,
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "sHK" = (
 /obj/structure/cable/green{
@@ -38488,7 +38488,7 @@
 /area/rnd/hallway)
 "vsz" = (
 /obj/structure/fence,
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "vuz" = (
 /obj/structure/fence/door,
@@ -39143,7 +39143,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "xlW" = (
 /obj/effect/floor_decal/industrial/warning/dust{

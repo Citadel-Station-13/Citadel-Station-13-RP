@@ -1,4 +1,4 @@
-/turf/simulated/floor/outdoors
+/turf/simulated/outdoors
 	name = "generic ground"
 	desc = "Rather boring."
 	icon = 'icons/turf/outdoors.dmi'
@@ -7,38 +7,38 @@
 	outdoors = TRUE					// This variable is used for weather effects.
 	can_dirty = FALSE				// Looks hideous with dirt on it.
 	can_build_into_floor = TRUE
-	baseturfs = /turf/simulated/floor/outdoors/rocks
+	baseturfs = /turf/simulated/outdoors/rocks
 
-/turf/simulated/floor/outdoors/Initialize(mapload)
+/turf/simulated/outdoors/Initialize(mapload)
 	QUEUE_SMOOTH(src)
 	return ..()
 
-/turf/simulated/floor/outdoors/mud
+/turf/simulated/outdoors/mud
 	name = "mud"
 	icon_state = "mud_dark"
 	edge_blending_priority = 3
 
-/turf/simulated/floor/outdoors/rocks
+/turf/simulated/outdoors/rocks
 	name = "rocks"
 	desc = "Hard as a rock."
 	icon_state = "rock"
 	edge_blending_priority = 1
 	baseturfs = /turf/baseturf_bottom
 
-/turf/simulated/floor/outdoors/rocks/caves
+/turf/simulated/outdoors/rocks/caves
 	outdoors = FALSE
 
 // Called by weather processes, and maybe technomancers in the future.
-/turf/simulated/floor/proc/chill()
+/turf/simulated/proc/chill()
 	return
 
-/turf/simulated/floor/outdoors/chill()
-	PlaceOnTop(/turf/simulated/floor/outdoors/snow, flags = CHANGETURF_PRESERVE_OUTDOORS|CHANGETURF_INHERIT_AIR)
+/turf/simulated/outdoors/chill()
+	PlaceOnTop(/turf/simulated/snow, flags = CHANGETURF_PRESERVE_OUTDOORS|CHANGETURF_INHERIT_AIR)
 
-/turf/simulated/floor/outdoors/snow/chill()
+/turf/simulated/snow/chill()
 	return // Todo: Add heavy snow.
 
-/turf/simulated/floor/outdoors/ex_act(severity)
+/turf/simulated/outdoors/ex_act(severity)
 	switch(severity)
 		// Outdoor turfs are less explosion resistant
 		if(1)

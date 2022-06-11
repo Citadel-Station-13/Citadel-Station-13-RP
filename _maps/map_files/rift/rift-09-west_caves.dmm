@@ -1,9 +1,9 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aQ" = (
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/facility/interior/medical)
 "be" = (
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "dc" = (
 /obj/effect/map_effect/radiation_emitter/strong,
@@ -92,7 +92,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/bathrooms)
 "iD" = (
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/facility/interior/medical)
 "iF" = (
 /turf/simulated/shuttle/wall/voidcraft,
@@ -618,7 +618,7 @@
 /area/rift/surfacebase/outside/west_caves)
 "YS" = (
 /obj/structure/stairs/spawner/south,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 
 (1,1,1) = {"

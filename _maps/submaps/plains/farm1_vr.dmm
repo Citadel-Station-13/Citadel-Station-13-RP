@@ -3,28 +3,28 @@
 /turf/template_noop,
 /area/template_noop)
 "b" = (
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/farm1)
 "c" = (
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/farm1)
 "d" = (
 /obj/structure/railing{
 	icon_state = "railing0";
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/farm1)
 "e" = (
-/turf/simulated/floor/grass/outdoors/sif,
+/turf/simulated/grass/outdoors/sif,
 /area/submap/farm1)
 "f" = (
 /obj/structure/railing{
 	icon_state = "railing0";
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/farm1)
 "g" = (
 /turf/simulated/wall/wood,
@@ -58,12 +58,12 @@
 "n" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
 /obj/item/seeds/cornseed,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/farm1)
 "o" = (
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/farm1)
@@ -85,19 +85,19 @@
 "r" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
 /obj/item/seeds/bluetomatoseed,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/farm1)
 "s" = (
-/turf/simulated/floor/outdoors/mud{
+/turf/simulated/outdoors/mud{
 	outdoors = 0
 	},
 /area/submap/farm1)
 "t" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
 /obj/item/seeds/icepepperseed,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/farm1)
@@ -108,23 +108,23 @@
 "v" = (
 /obj/machinery/door/window/eastleft,
 /obj/machinery/door/window/westleft,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/farm1)
 "w" = (
 /mob/living/bot/farmbot,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/farm1)
 "x" = (
 /obj/structure/sink/puddle,
-/turf/simulated/floor/outdoors/mud{
+/turf/simulated/outdoors/mud{
 	outdoors = 0
 	},
 /area/submap/farm1)
 "y" = (
 /obj/item/material/knife/machete/hatchet,
-/turf/simulated/floor/outdoors/mud{
+/turf/simulated/outdoors/mud{
 	outdoors = 0
 	},
 /area/submap/farm1)
@@ -162,7 +162,7 @@
 "F" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
 /obj/item/seeds/wheatseed,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/farm1)
@@ -190,13 +190,13 @@
 /turf/simulated/floor/wood,
 /area/submap/farm1)
 "L" = (
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/farm1)
 "M" = (
 /turf/simulated/floor/plating,
 /area/submap/farm1)
 "N" = (
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/submap/farm1)
 "O" = (
 /obj/structure/loot_pile/maint/technical,
@@ -224,7 +224,7 @@
 	icon_state = "railing0";
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/farm1)
 
 (1,1,1) = {"

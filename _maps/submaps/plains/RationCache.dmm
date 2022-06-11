@@ -3,18 +3,18 @@
 /turf/template_noop,
 /area/template_noop)
 "b" = (
-/turf/simulated/floor/outdoors/snow,
+/turf/simulated/snow,
 /area/submap/RationCache)
 "c" = (
 /mob/living/simple_mob/animal/sif/diyaab,
-/turf/simulated/floor/outdoors/snow,
+/turf/simulated/snow,
 /area/submap/RationCache)
 "d" = (
 /mob/living/simple_mob/animal/sif/diyaab,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/RationCache)
 "e" = (
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/RationCache)
 "f" = (
 /obj/item/trash/liquidfood,
@@ -27,7 +27,7 @@
 /area/submap/RationCache)
 "g" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/RationCache)
 
 (1,1,1) = {"

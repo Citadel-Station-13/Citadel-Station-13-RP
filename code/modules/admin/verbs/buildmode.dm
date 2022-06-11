@@ -307,7 +307,7 @@
 				if(istype(object,/turf/space) || istype(object, /turf/simulated/open))
 					T.ChangeTurf(/turf/simulated/floor/plating)
 					return
-				else if(istype(object, /turf/simulated/floor/outdoors))
+				else if(istype(object, /turf/simulated/outdoors))
 					T.PlaceOnTop(/turf/simulated/floor/plating)
 					return
 				else if(istype(object,/turf/simulated/floor))

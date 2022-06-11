@@ -13,7 +13,7 @@
 /turf/simulated/mineral/ignore_mapgen,
 /area/submap/Cragzone1)
 "e" = (
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/Cragzone1)
 
 (1,1,1) = {"

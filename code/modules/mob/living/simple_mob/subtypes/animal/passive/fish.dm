@@ -27,11 +27,11 @@
 
 	// By default they can be in any water turf.  Subtypes might restrict to deep/shallow etc
 	var/global/list/suitable_turf_types =  list(
-		/turf/simulated/floor/outdoors/beach/water,
-		/turf/simulated/floor/outdoors/beach/coastline,
+		/turf/simulated/outdoors/beach/water,
+		/turf/simulated/outdoors/beach/coastline,
 		/turf/simulated/floor/holofloor/beach/water,
 		/turf/simulated/floor/holofloor/beach/coastline,
-		/turf/simulated/floor/water
+		/turf/simulated/water
 	)
 
 // Makes the AI unable to willingly go on land.

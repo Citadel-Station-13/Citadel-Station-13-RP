@@ -10491,7 +10491,7 @@
 /area/maintenance/engineering)
 "sj" = (
 /obj/item/pickaxe,
-/turf/simulated/floor/outdoors/safeice/indoors,
+/turf/simulated/outdoors/safeice/indoors,
 /area/security/prison)
 "sk" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
@@ -11328,7 +11328,7 @@
 "vE" = (
 /obj/item/storage/excavation,
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/outdoors/safeice/indoors,
+/turf/simulated/outdoors/safeice/indoors,
 /area/security/prison)
 "vI" = (
 /turf/simulated/wall/r_wall,
@@ -12030,7 +12030,7 @@
 "FM" = (
 /obj/item/pickaxe/hand,
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/outdoors/safeice/indoors,
+/turf/simulated/outdoors/safeice/indoors,
 /area/security/prison)
 "FQ" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -12102,7 +12102,7 @@
 /area/maintenance/elevator)
 "GB" = (
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/outdoors/safeice/indoors,
+/turf/simulated/outdoors/safeice/indoors,
 /area/security/prison)
 "GC" = (
 /obj/structure/closet/emcloset,
@@ -12342,7 +12342,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "IA" = (
-/turf/simulated/floor/outdoors/safeice/indoors,
+/turf/simulated/outdoors/safeice/indoors,
 /area/security/prison)
 "IC" = (
 /obj/effect/floor_decal/rust,

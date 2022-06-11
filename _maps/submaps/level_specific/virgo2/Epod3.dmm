@@ -6,7 +6,7 @@
 /turf/template_noop,
 /area/submap/virgo2/Epod3)
 "c" = (
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/virgo2/Epod3)
 "d" = (
 /obj/tether_away_spawner/aerostat_surface,
@@ -17,7 +17,7 @@
 /area/submap/virgo2/Epod3)
 "f" = (
 /obj/tether_away_spawner/aerostat_surface,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/virgo2/Epod3)
 "g" = (
 /obj/effect/spider/stickyweb,
@@ -77,7 +77,7 @@
 /area/submap/virgo2/Epod3)
 "l" = (
 /obj/effect/spider/stickyweb,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/virgo2/Epod3)
 "m" = (
 /obj/machinery/door/airlock/external{

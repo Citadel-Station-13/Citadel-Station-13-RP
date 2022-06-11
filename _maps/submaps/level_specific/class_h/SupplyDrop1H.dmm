@@ -49,7 +49,7 @@
 /turf/simulated/wall/titanium,
 /area/class_h/explored)
 "I" = (
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/turf/simulated/outdoors/beach/sand/dirt/classh,
 /area/class_h/explored)
 
 (1,1,1) = {"

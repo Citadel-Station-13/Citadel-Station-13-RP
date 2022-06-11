@@ -26,7 +26,7 @@
 /area/lavaland/idleruins)
 "x" = (
 /obj/structure/boulder,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/template_noop)
 "y" = (
 /obj/structure/boulder,
@@ -54,7 +54,7 @@
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "P" = (
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/template_noop)
 "R" = (
 /obj/structure/boulder,
@@ -66,7 +66,7 @@
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "X" = (
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/idleruins)
 
 (1,1,1) = {"

@@ -1324,11 +1324,11 @@
 /area/shuttle/tether/crash1
 	name = "\improper Crash Site 1"
 	icon_state = "shuttle2"
-	base_turf = /turf/simulated/floor/outdoors/dirt/virgo3b
+	base_turf = /turf/simulated/dirt/virgo3b
 /area/shuttle/tether/crash2
 	name = "\improper Crash Site 2"
 	icon_state = "shuttle2"
-	base_turf = /turf/simulated/floor/outdoors/dirt/virgo3b
+	base_turf = /turf/simulated/dirt/virgo3b
 
 // Exploration Shuttle stuff //
 /area/tether/exploration

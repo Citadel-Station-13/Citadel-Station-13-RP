@@ -24,7 +24,7 @@
 /area/lavaland/idleruins)
 "m" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
-/turf/simulated/floor/outdoors/dirt/lavaland/interior,
+/turf/simulated/dirt/lavaland/interior,
 /area/lavaland/idleruins)
 "n" = (
 /obj/machinery/vending/hydronutrients,
@@ -86,7 +86,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
 "T" = (
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/idleruins)
 "U" = (
 /obj/item/seeds/killertomatoseed,

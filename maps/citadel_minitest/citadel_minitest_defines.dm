@@ -75,6 +75,6 @@
 */
 	return 1
 
-/turf/simulated/floor/water
+/turf/simulated/water
 
-/turf/simulated/floor/water/deep
+/turf/simulated/water/deep

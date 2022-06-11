@@ -4,18 +4,18 @@
 /area/template_noop)
 "o" = (
 /obj/random/outcrop,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/explored)
 "u" = (
 /obj/structure/meteorite,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/explored)
 "w" = (
 /obj/effect/floor_decal/asteroid,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/explored)
 "Y" = (
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/explored)
 
 (1,1,1) = {"

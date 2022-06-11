@@ -10,21 +10,21 @@
 	},
 /area/class_p/ruins)
 "i" = (
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/snow/classp/no_tree,
 /area/class_p/ruins)
 "v" = (
 /obj/structure/closet/crate/secure/loot,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/snow/classp/no_tree,
 /area/class_p/ruins)
 "B" = (
 /obj/structure/loot_pile/mecha/gygax,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/snow/classp/no_tree,
 /area/class_p/ruins)
 "C" = (
 /obj/random/mob/sif/hostile{
 	mob_faction = "frozen"
 	},
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/snow/classp/no_tree,
 /area/class_p/ruins)
 "G" = (
 /turf/simulated/floor/classp/outdoors,

@@ -139,34 +139,34 @@
 /area/tether_away/beach
 	name = "\improper Away Mission - Virgo 4 Beach"
 	icon_state = "away"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand //This is what the ground turns into if destroyed/bombed/etc
+	base_turf = /turf/simulated/outdoors/beach/sand //This is what the ground turns into if destroyed/bombed/etc
 	dynamic_lighting = 1
 	requires_power = 1
 
 /area/tether_away/beach/powershed
 	name = "\improper Away Mission - Virgo 4 Coast PS"
 	icon_state = "blue2"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand
+	base_turf = /turf/simulated/outdoors/beach/sand
 
 /area/tether_away/beach/coast
 	name = "\improper Away Mission - Virgo 4 Coast"
 	icon_state = "blue2"
-	base_turf = /turf/simulated/floor/outdoors/beach/coastline
+	base_turf = /turf/simulated/outdoors/beach/coastline
 
 /area/tether_away/beach/water
 	name = "\improper Away Mission - Virgo 4 Water"
 	icon_state = "bluenew"
-	base_turf = /turf/simulated/floor/water
+	base_turf = /turf/simulated/water
 
 /area/tether_away/beach/jungle
 	name = "\improper Away Mission - Virgo 4 Desert"
 	icon_state = "green"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert
+	base_turf = /turf/simulated/outdoors/beach/sand/desert
 
 /area/tether_away/beach/resort
 	icon = 'icons/turf/areas_vr.dmi'
 	icon_state = "yellow"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand
+	base_turf = /turf/simulated/outdoors/beach/sand
 
 /area/tether_away/beach/resort/kitchen
 	name = "\improper Away Mission - Virgo 4 Kitchen"

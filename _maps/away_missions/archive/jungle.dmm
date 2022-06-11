@@ -492,26 +492,26 @@
 	},
 /area/jungle/temple_five)
 "cF" = (
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/jungle)
 "cG" = (
-/turf/simulated/floor/grass/outdoors/forest,
+/turf/simulated/grass/outdoors/forest,
 /area/jungle)
 "cH" = (
 /turf/simulated/mineral,
 /area/jungle)
 "cI" = (
 /obj/structure/largecrate,
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/jungle)
 "cJ" = (
 /obj/structure/closet/crate/secure/gear,
 /obj/item/extinguisher,
 /obj/item/material/minihoe,
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/jungle)
 "cK" = (
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/jungle)
 "cN" = (
 /obj/structure/bed/roller,
@@ -526,15 +526,15 @@
 /area/jungle)
 "cR" = (
 /obj/item/trash/chips,
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/jungle)
 "cS" = (
 /obj/item/trash/pistachios,
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/jungle)
 "cT" = (
 /obj/item/bot_assembly/medibot,
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/jungle)
 "cU" = (
 /obj/structure/barricade,
@@ -561,7 +561,7 @@
 /area/jungle)
 "cY" = (
 /obj/structure/barricade,
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/jungle)
 "cZ" = (
 /obj/item/storage/pill_bottle/antitox,
@@ -585,7 +585,7 @@
 /area/jungle)
 "de" = (
 /obj/structure/reagent_dispensers,
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/jungle)
 "df" = (
 /obj/item/pen,
@@ -609,31 +609,31 @@
 /area/jungle)
 "dj" = (
 /obj/item/trash/raisins,
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/jungle)
 "dk" = (
 /obj/structure/closet/crate/secure/gear,
 /obj/item/material/knife/machete/hatchet,
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/jungle)
 "dm" = (
 /obj/item/trash/sosjerky,
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/jungle)
 "dn" = (
 /obj/item/trash/chips,
 /turf/simulated/floor/tiled/white,
 /area/jungle)
 "do" = (
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/jungle/crash_ship_one)
 "dp" = (
 /obj/item/secbot_assembly,
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/jungle)
 "dq" = (
 /obj/item/trash/candy,
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/jungle)
 "ds" = (
 /obj/structure/barricade,
@@ -641,27 +641,27 @@
 	desc = "A warning sign which reads 'DANGEROUS WILDLIFE'. Sounds like some of the local fauna are vicious.";
 	name = "DANGEROUS WILDLIFE"
 	},
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/jungle)
 "dt" = (
 /obj/structure/largecrate,
 /turf/simulated/floor/tiled/white,
 /area/jungle)
 "du" = (
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/jungle/crash_ship_two)
 "dv" = (
-/turf/simulated/floor/grass/outdoors/forest,
+/turf/simulated/grass/outdoors/forest,
 /area/jungle/crash_ship_source)
 "dw" = (
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/jungle/crash_ship_source)
 "dy" = (
 /atom/movable/landmark/loot_spawn/low,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/jungle/crash_ship_source)
 "dA" = (
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /turf/simulated/shuttle/wall,
 /area/jungle/crash_ship_source)
 "dB" = (
@@ -721,7 +721,7 @@
 	density = 0;
 	icon_state = "brokengrille"
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/jungle/crash_ship_source)
 "dP" = (
 /obj/item/storage/toolbox/mechanical,
@@ -740,20 +740,20 @@
 /area/jungle/crash_ship_source)
 "dT" = (
 /obj/item/storage/firstaid/regular,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/jungle/crash_ship_source)
 "dV" = (
 /obj/item/storage/toolbox/electrical,
 /turf/simulated/floor/tiled/white,
 /area/jungle/crash_ship_source)
 "dY" = (
-/turf/simulated/floor/grass/outdoors/forest,
+/turf/simulated/grass/outdoors/forest,
 /area/jungle/crash_ship_clean)
 "dZ" = (
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/jungle/crash_ship_three)
 "ea" = (
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/jungle/crash_ship_four)
 
 (1,1,1) = {"

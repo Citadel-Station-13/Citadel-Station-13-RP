@@ -7,7 +7,7 @@
 /turf/template_noop,
 /area/template_noop)
 "c" = (
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/template_noop)
 "d" = (
 /obj/structure/grille,
@@ -19,7 +19,7 @@
 /area/submap/construction1)
 "f" = (
 /obj/structure/lattice,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/template_noop)
 "g" = (
 /turf/simulated/floor/plating/external,
@@ -31,7 +31,7 @@
 /area/submap/construction1)
 "i" = (
 /obj/item/clothing/gloves/black,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/template_noop)
 "j" = (
 /turf/simulated/floor/tiled/external,
@@ -49,7 +49,7 @@
 /area/submap/construction1)
 "n" = (
 /obj/item/pickaxe/drill,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/template_noop)
 "o" = (
 /obj/structure/girder,

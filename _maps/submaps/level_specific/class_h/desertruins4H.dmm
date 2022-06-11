@@ -3,10 +3,10 @@
 /turf/template_noop,
 /area/template_noop)
 "b" = (
-/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/turf/simulated/outdoors/beach/sand/dirtlight,
 /area/class_h/POIs/tomb)
 "c" = (
-/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/turf/simulated/outdoors/beach/sand/dirtlight,
 /area/class_h/explored)
 "d" = (
 /obj/random/mob/spider/nurse,
@@ -42,7 +42,7 @@
 /turf/simulated/mineral/classh,
 /area/class_h/explored)
 "o" = (
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/turf/simulated/outdoors/beach/sand/lowdesert,
 /area/class_h/explored)
 "p" = (
 /obj/random/mob/spider,

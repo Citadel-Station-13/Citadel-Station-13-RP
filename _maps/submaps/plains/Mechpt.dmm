@@ -46,7 +46,7 @@
 /turf/template_noop,
 /area/submap/Mechpt)
 "j" = (
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/Mechpt)
 "k" = (
 /obj/structure/railing{
@@ -57,27 +57,27 @@
 /area/submap/Mechpt)
 "l" = (
 /obj/item/stack/rods,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/Mechpt)
 "m" = (
 /obj/effect/decal/cleanable/blood/oil,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/Mechpt)
 "n" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/Mechpt)
 "o" = (
 /obj/effect/decal/mecha_wreckage/ripley/deathripley,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/Mechpt)
 "p" = (
 /obj/effect/decal/mecha_wreckage/ripley/firefighter,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/Mechpt)
 "q" = (
 /obj/item/stack/cable_coil,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/Mechpt)
 "r" = (
 /obj/structure/railing{

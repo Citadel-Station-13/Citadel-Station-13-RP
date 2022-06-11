@@ -432,3 +432,9 @@
 
 /turf/proc/break_tile()
 	return
+
+/turf/proc/GetHeatCapacity()
+	. = heat_capacity
+
+/turf/proc/GetTemperature()
+	. = temperature

@@ -11,18 +11,18 @@
 	TRIUMPH_SET_ATMOS
 	allow_gas_overlays = FALSE
 
-/turf/simulated/floor/grass/outdoors/sif
-	baseturfs = /turf/simulated/floor/outdoors/dirt
+/turf/simulated/grass/outdoors/sif
+	baseturfs = /turf/simulated/dirt
 
 // Overriding these for the sake of submaps that use them on other planets.
 // This means that mining on tether base and space is oxygen-generating, but solars and mining should use the triumph subtype
 /turf/simulated/mineral
 	initial_gas_mix = GAS_STRING_STP
 
-/turf/simulated/floor/outdoors
+/turf/simulated/outdoors
 	initial_gas_mix = GAS_STRING_STP
 
-/turf/simulated/floor/water
+/turf/simulated/water
 	initial_gas_mix = GAS_STRING_STP
 
 /turf/simulated/mineral/vacuum

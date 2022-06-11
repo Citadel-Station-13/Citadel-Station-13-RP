@@ -173,3 +173,9 @@
 		new /obj/effect/decal/cleanable/blood/oil(src)
 	else if(ishuman(M))
 		add_blood(M)
+
+/turf/simulated/GetHeatCapacity()
+	. = air.heat_capacity()
+
+/turf/simulated/GetTemperature()
+	. = air.temperature

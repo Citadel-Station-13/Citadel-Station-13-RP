@@ -8,7 +8,7 @@
 /area/rift/facility/interior/core)
 "az" = (
 /obj/structure/stairs/spawner/south,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_base)
 "aJ" = (
 /obj/structure/table/rack/shelf,
@@ -136,7 +136,7 @@
 	name = "westbase_to_center";
 	portal_id = "westbasestep"
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/west_base)
 "mA" = (
 /obj/effect/overlay/snow/floor/edges,
@@ -154,16 +154,16 @@
 /obj/machinery/fusion_fuel_injector/mapped{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/facility/interior/core)
 "nm" = (
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_base)
 "ns" = (
 /obj/effect/map_effect/portal/line/side_b{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/west_base)
 "nQ" = (
 /obj/effect/overlay/snow/floor/edges{
@@ -190,7 +190,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/vault)
 "py" = (
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/west_base)
 "pS" = (
 /obj/structure/closet,
@@ -277,7 +277,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/undergound3)
 "vc" = (
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/facility/interior/core)
 "wq" = (
 /obj/structure/bed,
@@ -286,7 +286,7 @@
 /area/rift/facility/interior/barracks)
 "ws" = (
 /obj/effect/blocker,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/west_base)
 "yJ" = (
 /turf/simulated/shuttle/wall/voidcraft,
@@ -325,7 +325,7 @@
 /obj/machinery/fusion_fuel_injector/mapped{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/facility/interior/core)
 "CO" = (
 /obj/effect/overlay/snow/floor/edges{
@@ -349,7 +349,7 @@
 /area/rift/facility/interior/core)
 "EP" = (
 /obj/effect/map_effect/radiation_emitter/chernobyl,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/facility/interior/core)
 "ET" = (
 /turf/simulated/wall/dungeon,
@@ -501,7 +501,7 @@
 /obj/machinery/fusion_fuel_injector/mapped{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/facility/interior/core)
 "PN" = (
 /obj/structure/closet,
@@ -571,7 +571,7 @@
 /area/rift/facility/interior/undergound3)
 "Up" = (
 /obj/machinery/fusion_fuel_injector/mapped,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/facility/interior/core)
 "VN" = (
 /obj/structure/table/rack/shelf,
@@ -602,7 +602,7 @@
 /area/rift/facility/interior/undergound3)
 "Xw" = (
 /obj/machinery/power/fusion_core/mapped,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/facility/interior/core)
 "XG" = (
 /obj/structure/reagent_dispensers/watertank/high,

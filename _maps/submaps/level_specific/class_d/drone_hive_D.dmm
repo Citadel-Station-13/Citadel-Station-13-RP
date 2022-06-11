@@ -8,18 +8,18 @@
 /area/class_d/POIs/reactor)
 "e" = (
 /obj/effect/decal/remains/tajaran,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/POIs/reactor)
 "f" = (
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/POIs/reactor)
 "g" = (
 /obj/effect/decal/remains/deer,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/POIs/reactor)
 "h" = (
 /obj/structure/ore_box,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/POIs/reactor)
 "i" = (
 /turf/simulated/wall/classd/indoors,
@@ -30,7 +30,7 @@
 /area/class_d/POIs/reactor)
 "m" = (
 /obj/structure/barricade,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/POIs/reactor)
 "n" = (
 /obj/machinery/door/airlock/multi_tile/glass,

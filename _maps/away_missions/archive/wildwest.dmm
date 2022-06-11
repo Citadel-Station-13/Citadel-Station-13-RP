@@ -1155,16 +1155,16 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/wwgov)
 "fK" = (
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/wwgov)
 "fL" = (
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/wwgov)
 "fM" = (
 /obj/structure/window/reinforced{
@@ -1173,7 +1173,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/wwgov)
 "fN" = (
 /obj/structure/window/reinforced{
@@ -1207,17 +1207,17 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/wwgov)
 "fV" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/wwgov)
 "fW" = (
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/wwgov)
 "fX" = (
 /obj/structure/window/reinforced{
@@ -1246,14 +1246,14 @@
 /area/awaymission/wwmines)
 "ga" = (
 /obj/structure/window/reinforced,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/wwgov)
 "gb" = (
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/wwgov)
 "gc" = (
 /obj/structure/window/reinforced{
@@ -1279,7 +1279,7 @@
 /area/awaymission/wwmines)
 "gi" = (
 /obj/machinery/door/airlock/external,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/wwgov)
 "gj" = (
 /obj/effect/decal/cleanable/blood/gibs/core,
@@ -1299,7 +1299,7 @@
 /area/awaymission/wwmines)
 "gn" = (
 /mob/living/simple_mob/creature,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/wwgov)
 "gp" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -1338,7 +1338,7 @@
 /atom/movable/spawner/corpse/syndicatecommando{
 	mobname = "Syndicate Commando"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/wwgov)
 "gz" = (
 /obj/structure/window/reinforced,
@@ -1388,7 +1388,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/wwgov)
 "gG" = (
 /obj/structure/window/reinforced,

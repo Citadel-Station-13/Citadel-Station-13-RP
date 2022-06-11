@@ -32,9 +32,9 @@
 /area/awaymission/snow_outpost/outside/EvalValidSpawnTurfs()
 	..()
 	if(mobcountmax || floracountmax)
-		for(var/turf/simulated/floor/water/W in src)
+		for(var/turf/simulated/water/W in src)
 			valid_spawn_turfs -= W
-		for(var/turf/simulated/floor/outdoors/ice/I in src)
+		for(var/turf/simulated/ice/I in src)
 			valid_spawn_turfs -= I
 
 /area/awaymission/snow_outpost/dark

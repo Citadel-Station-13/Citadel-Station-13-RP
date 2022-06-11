@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /obj/effect/decal/cleanable/cobweb,
-/turf/simulated/floor/outdoors/dirt/virgo3b,
+/turf/simulated/dirt/virgo3b,
 /area/mine/explored/underdark)
 "b" = (
 /turf/template_noop,
@@ -12,75 +12,75 @@
 "d" = (
 /obj/effect/decal/cleanable/blood/tracks/paw,
 /obj/effect/decal/cleanable/blood/drip,
-/turf/simulated/floor/outdoors/dirt/virgo3b,
+/turf/simulated/dirt/virgo3b,
 /area/mine/explored/underdark)
 "f" = (
 /obj/structure/barricade,
-/turf/simulated/floor/outdoors/dirt/virgo3b,
+/turf/simulated/dirt/virgo3b,
 /area/mine/explored/underdark)
 "g" = (
-/turf/simulated/floor/outdoors/dirt/virgo3b,
+/turf/simulated/dirt/virgo3b,
 /area/mine/explored/underdark)
 "h" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/simulated/floor/outdoors/dirt/virgo3b,
+/turf/simulated/dirt/virgo3b,
 /area/mine/explored/underdark)
 "i" = (
 /obj/effect/decal/cleanable/blood/tracks/paw,
-/turf/simulated/floor/outdoors/dirt/virgo3b,
+/turf/simulated/dirt/virgo3b,
 /area/mine/explored/underdark)
 "j" = (
 /obj/effect/decal/remains/mouse,
-/turf/simulated/floor/outdoors/dirt/virgo3b,
+/turf/simulated/dirt/virgo3b,
 /area/mine/explored/underdark)
 "k" = (
 /mob/living/simple_mob/vore/aggressive/rat/phoron,
-/turf/simulated/floor/outdoors/dirt/virgo3b,
+/turf/simulated/dirt/virgo3b,
 /area/mine/explored/underdark)
 "l" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/outdoors/dirt/virgo3b,
+/turf/simulated/dirt/virgo3b,
 /area/mine/explored/underdark)
 "m" = (
 /obj/effect/decal/remains/deer,
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/outdoors/dirt/virgo3b,
+/turf/simulated/dirt/virgo3b,
 /area/mine/explored/underdark)
 "n" = (
 /obj/structure/frame,
-/turf/simulated/floor/outdoors/dirt/virgo3b,
+/turf/simulated/dirt/virgo3b,
 /area/mine/explored/underdark)
 "o" = (
 /obj/structure/bonfire/permanent,
-/turf/simulated/floor/outdoors/dirt/virgo3b,
+/turf/simulated/dirt/virgo3b,
 /area/mine/explored/underdark)
 "p" = (
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/outdoors/dirt/virgo3b,
+/turf/simulated/dirt/virgo3b,
 /area/mine/explored/underdark)
 "q" = (
 /obj/effect/decal/remains/tajaran,
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/outdoors/dirt/virgo3b,
+/turf/simulated/dirt/virgo3b,
 /area/mine/explored/underdark)
 "r" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/structure/barricade,
-/turf/simulated/floor/outdoors/dirt/virgo3b,
+/turf/simulated/dirt/virgo3b,
 /area/mine/explored/underdark)
 "s" = (
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/outdoors/dirt/virgo3b,
+/turf/simulated/dirt/virgo3b,
 /area/mine/explored/underdark)
 "t" = (
 /obj/structure/girder,
-/turf/simulated/floor/outdoors/dirt/virgo3b,
+/turf/simulated/dirt/virgo3b,
 /area/mine/explored/underdark)
 "u" = (
 /obj/structure/outcrop/diamond,
-/turf/simulated/floor/outdoors/dirt/virgo3b,
+/turf/simulated/dirt/virgo3b,
 /area/mine/explored/underdark)
 
 (1,1,1) = {"

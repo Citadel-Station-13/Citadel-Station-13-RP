@@ -57,7 +57,7 @@
 /area/submap/ButcherShack)
 "l" = (
 /obj/structure/loot_pile/maint/trash,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/ButcherShack)
 "m" = (
 /obj/structure/kitchenspike,
@@ -106,7 +106,7 @@
 /turf/simulated/floor/wood/sif/broken,
 /area/submap/ButcherShack)
 "v" = (
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/ButcherShack)
 "w" = (
 /obj/structure/window/basic,

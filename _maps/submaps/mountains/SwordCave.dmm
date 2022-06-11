@@ -13,10 +13,10 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/swordcave)
 "e" = (
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/submap/cave/swordcave)
 "f" = (
-/turf/simulated/floor/water/deep,
+/turf/simulated/water/deep,
 /area/submap/cave/swordcave)
 "g" = (
 /obj/structure/ghost_pod/manual/cursedblade,

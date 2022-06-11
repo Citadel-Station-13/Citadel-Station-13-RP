@@ -26,13 +26,13 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/engineering/engine_room)
 "ai" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/engineering/engine_room)
 "aj" = (
 /obj/effect/floor_decal/techfloor{
@@ -50,17 +50,17 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/engineering/engine_room)
 "al" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/engineering/engine_room)
 "am" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/engineering/engine_room)
 "an" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -92,7 +92,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 9
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/engineering/engine_room)
 "aq" = (
 /obj/structure/grille,

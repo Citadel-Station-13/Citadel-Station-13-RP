@@ -26,15 +26,15 @@ FROZEN_TURF_CREATE(/turf/simulated/floor/phoron)
 FROZEN_TURF_CREATE(/turf/simulated/floor/silver)
 FROZEN_TURF_CREATE(/turf/simulated/floor/wmarble)
 FROZEN_TURF_CREATE(/turf/simulated/floor/wood)
-FROZEN_TURF_CREATE(/turf/simulated/floor/water/indoors)
+FROZEN_TURF_CREATE(/turf/simulated/water/indoors)
 FROZEN_TURF_CREATE(/turf/simulated/floor/old_tile/red)
 FROZEN_TURF_CREATE(/turf/simulated/floor/old_tile/blue)
 FROZEN_TURF_CREATE(/turf/simulated/floor/old_tile/green)
-FROZEN_TURF_CREATE(/turf/simulated/floor/outdoors/ice)
-FROZEN_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
-FROZEN_TURF_CREATE(/turf/simulated/floor/grass/outdoors/heavy/interior)
-FROZEN_TURF_CREATE(/turf/simulated/floor/outdoors/mud)
-FROZEN_TURF_CREATE(/turf/simulated/floor/outdoors/shelfice)
+FROZEN_TURF_CREATE(/turf/simulated/ice)
+FROZEN_TURF_CREATE(/turf/simulated/dirt)
+FROZEN_TURF_CREATE(/turf/simulated/grass/outdoors/heavy/interior)
+FROZEN_TURF_CREATE(/turf/simulated/outdoors/mud)
+FROZEN_TURF_CREATE(/turf/simulated/outdoors/shelfice)
 FROZEN_TURF_CREATE(/turf/simulated/floor/carpet/purcarpet)
 FROZEN_TURF_CREATE(/turf/simulated/floor/trap/bmarble)
 FROZEN_TURF_CREATE(/turf/simulated/floor/trap/crystal)
@@ -70,7 +70,7 @@ FROZEN_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 /turf/simulated/floor/wood/classp/outdoors
 	outdoors = TRUE
 
-/turf/simulated/floor/outdoors/snow/classp/no_tree
+/turf/simulated/snow/classp/no_tree
 	tree_chance = 0
 	deadtree_chance = 0
 
@@ -83,14 +83,14 @@ FROZEN_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 /turf/simulated/floor/old_tile/green/outdoors
 	outdoors = TRUE
 
-/turf/simulated/floor/outdoors/mud/classp/indoors
+/turf/simulated/outdoors/mud/classp/indoors
 	outdoors = FALSE
 
-/turf/simulated/floor/outdoors/ice/classp/indoors
+/turf/simulated/ice/classp/indoors
 	outdoors = FALSE
 
-/turf/simulated/floor/water/acid/classp/indoors
+/turf/simulated/water/acid/classp/indoors
 	outdoors = FALSE
 
-/turf/simulated/floor/water/acid/deep/classp/indoors
+/turf/simulated/water/acid/deep/classp/indoors
 	outdoors = FALSE

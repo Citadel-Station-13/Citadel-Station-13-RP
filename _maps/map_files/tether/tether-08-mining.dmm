@@ -3,7 +3,7 @@
 /turf/unsimulated/wall/planetary/virgo3b,
 /area/mine/explored)
 "ab" = (
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/mine/explored)
 "ac" = (
 /turf/simulated/mineral/virgo3b,
@@ -1101,7 +1101,7 @@
 /area/outpost/mining_main/drill_equipment)
 "cu" = (
 /mob/living/simple_mob/animal/passive/gaslamp,
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/mine/explored)
 "cv" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -1718,11 +1718,11 @@
 "Ck" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/mine/explored;
-	base_turf = /turf/simulated/floor/grass/outdoors/sif/virgo3b;
+	base_turf = /turf/simulated/grass/outdoors/sif/virgo3b;
 	landmark_tag = "tether_mine_nw";
 	name = "Tether Mine (NW)"
 	},
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/mine/explored)
 "Cx" = (
 /turf/simulated/mineral/floor/virgo3b{
@@ -1872,7 +1872,7 @@
 	dir = 4;
 	pixel_x = -16
 	},
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/mine/explored)
 "JA" = (
 /obj/item/bedsheet/orange,
@@ -1905,7 +1905,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/mine/explored)
 "Pv" = (
 /obj/effect/floor_decal/industrial/warning/dust,
@@ -1960,7 +1960,7 @@
 /area/outpost/mining_main/maintenance)
 "SW" = (
 /obj/structure/railing,
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/mine/explored)
 "Uk" = (
 /turf/simulated/floor/tiled/steel_grid,
@@ -2007,7 +2007,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/mine/explored)
 "WK" = (
 /obj/structure/table/woodentable,

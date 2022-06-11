@@ -6,7 +6,7 @@
 /turf/simulated/open/virgo3b,
 /area/tether/surfacebase/outside/outside3)
 "aac" = (
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside3)
 "aad" = (
 /obj/structure/grille,
@@ -570,7 +570,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside3)
 "aaV" = (
 /obj/structure/cable/green{
@@ -837,7 +837,7 @@
 /area/maintenance/lower/medsec_maintenance)
 "abn" = (
 /obj/structure/railing,
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside3)
 "abo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -3410,7 +3410,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "afa" = (
 /obj/machinery/status_display{
@@ -3516,7 +3516,7 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside3)
 "afk" = (
 /obj/structure/cable{
@@ -3986,7 +3986,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "afU" = (
 /obj/structure/table/steel,
@@ -5623,7 +5623,7 @@
 "aiq" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
 /obj/machinery/camera/network/civilian,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tether/surfacebase/public_garden_three)
 "air" = (
 /obj/effect/floor_decal/borderfloor{
@@ -5779,7 +5779,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tether/surfacebase/public_garden_three)
 "aiG" = (
 /obj/machinery/light,
@@ -8048,25 +8048,25 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
 	},
-/turf/simulated/floor/water/deep/pool,
+/turf/simulated/water/deep/pool,
 /area/crew_quarters/pool)
 "amP" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/water/deep/pool,
+/turf/simulated/water/deep/pool,
 /area/crew_quarters/pool)
 "amQ" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/water/pool,
 /area/crew_quarters/pool)
 "amR" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/water/pool,
 /area/crew_quarters/pool)
 "amS" = (
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide,
@@ -8355,19 +8355,19 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/simulated/floor/water/deep/pool,
+/turf/simulated/water/deep/pool,
 /area/crew_quarters/pool)
 "anx" = (
-/turf/simulated/floor/water/deep/pool,
+/turf/simulated/water/deep/pool,
 /area/crew_quarters/pool)
 "any" = (
-/turf/simulated/floor/water/pool,
+/turf/simulated/water/pool,
 /area/crew_quarters/pool)
 "anz" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/water/pool,
 /area/crew_quarters/pool)
 "anB" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4,
@@ -8497,7 +8497,7 @@
 /obj/structure/bed/chair/wood{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "anO" = (
 /obj/structure/catwalk,
@@ -8804,7 +8804,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_three_hall)
 "aop" = (
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aoq" = (
 /obj/structure/bed/chair{
@@ -9044,7 +9044,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aoN" = (
 /obj/structure/bed/chair/wood{
@@ -9841,7 +9841,7 @@
 /area/tether/surfacebase/surface_three_hall)
 "aqe" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aqf" = (
 /obj/structure/disposalpipe/segment{
@@ -9950,7 +9950,7 @@
 /area/rnd/xenobiology/xenoflora)
 "aqm" = (
 /obj/machinery/beehive,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aqn" = (
 /obj/structure/cable/green{
@@ -9976,11 +9976,11 @@
 /area/hydroponics)
 "aqp" = (
 /obj/machinery/portable_atmospherics/hydroponics,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aqq" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aqr" = (
 /obj/structure/bed/chair{
@@ -10001,21 +10001,21 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
-/turf/simulated/floor/water/deep/pool,
+/turf/simulated/water/deep/pool,
 /area/crew_quarters/pool)
 "aqt" = (
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/water/deep/pool,
+/turf/simulated/water/deep/pool,
 /area/crew_quarters/pool)
 "aqu" = (
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/water/pool,
+/turf/simulated/water/pool,
 /area/crew_quarters/pool)
 "aqv" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/water/pool,
 /area/crew_quarters/pool)
 "aqw" = (
 /obj/machinery/door/firedoor/glass,
@@ -10281,7 +10281,7 @@
 "aqV" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/leafybush,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aqW" = (
 /obj/effect/floor_decal/borderfloor{
@@ -10422,7 +10422,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside3)
 "aro" = (
 /obj/machinery/power/apc{
@@ -10696,7 +10696,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "arL" = (
 /obj/structure/grille,
@@ -10783,13 +10783,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "arR" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/light,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "arS" = (
 /obj/machinery/portable_atmospherics/hydroponics,
@@ -10917,7 +10917,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside3)
 "asf" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -10977,7 +10977,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "asl" = (
 /obj/machinery/door/firedoor/glass,
@@ -11020,7 +11020,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "asp" = (
 /obj/structure/cable/green{
@@ -11032,7 +11032,7 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "asq" = (
 /obj/structure/cable/green{
@@ -11044,7 +11044,7 @@
 	dir = 2;
 	icon_state = "pipe-j2"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "asr" = (
 /obj/effect/floor_decal/borderfloor,
@@ -11089,7 +11089,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_three_hall)
 "asu" = (
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics/cafegarden)
 "asv" = (
 /obj/machinery/light,
@@ -11243,13 +11243,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "asI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics/cafegarden)
 "asJ" = (
 /obj/structure/closet/firecloset,
@@ -11297,7 +11297,7 @@
 /area/tether/surfacebase/security/upperhall)
 "asN" = (
 /obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics/cafegarden)
 "asO" = (
 /obj/structure/flora/ausbushes/lavendergrass,
@@ -11308,7 +11308,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "asP" = (
 /obj/effect/floor_decal/borderfloor{
@@ -11329,7 +11329,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "asR" = (
 /obj/effect/floor_decal/borderfloor{
@@ -11378,7 +11378,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "asW" = (
 /obj/structure/closet/l3closet/scientist,
@@ -11393,19 +11393,19 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics/cafegarden)
 "asZ" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /obj/structure/table/woodentable,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "ata" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "atb" = (
 /turf/simulated/wall,
@@ -11471,15 +11471,15 @@
 	pixel_x = -12;
 	pixel_y = 2
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "ath" = (
 /obj/structure/flora/ausbushes/genericbush,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "ati" = (
 /obj/structure/flora/ausbushes/pointybush,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics/cafegarden)
 "atj" = (
 /obj/machinery/firealarm{
@@ -11494,7 +11494,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/biogenerator,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "atl" = (
 /obj/structure/grille,
@@ -11517,7 +11517,7 @@
 /obj/machinery/smartfridge/drying_rack{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "atp" = (
 /obj/structure/bed/chair/office/dark,
@@ -11613,7 +11613,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics/cafegarden)
 "atz" = (
 /obj/structure/table/standard{
@@ -11794,7 +11794,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "atS" = (
 /obj/machinery/portable_atmospherics/hydroponics,
@@ -11972,7 +11972,7 @@
 "auk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aul" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -11991,7 +11991,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics/cafegarden)
 "aun" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -12302,7 +12302,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "auV" = (
 /obj/structure/railing{
@@ -12419,7 +12419,7 @@
 	pixel_y = 32
 	},
 /obj/structure/table/woodentable,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "avh" = (
 /obj/structure/extinguisher_cabinet{
@@ -12545,13 +12545,13 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "avr" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "avs" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -12720,7 +12720,7 @@
 	dir = 1
 	},
 /obj/machinery/honey_extractor,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "avO" = (
 /obj/machinery/firealarm{
@@ -13039,7 +13039,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics/cafegarden)
 "awr" = (
 /obj/machinery/alarm{
@@ -13389,7 +13389,7 @@
 	dir = 9
 	},
 /obj/machinery/light,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "awR" = (
 /obj/structure/bed/chair/wood{
@@ -13756,7 +13756,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics/cafegarden)
 "axw" = (
 /obj/structure/cable/green{
@@ -15997,7 +15997,7 @@
 "aBp" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lime/border,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aBq" = (
 /obj/item/radio/intercom{
@@ -16177,7 +16177,7 @@
 /area/tether/surfacebase/surface_three_hall)
 "aBG" = (
 /obj/structure/flora/ausbushes/fernybush,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aBI" = (
 /obj/structure/table/reinforced,
@@ -16493,7 +16493,7 @@
 /area/tether/surfacebase/botanystorage)
 "aCh" = (
 /obj/structure/flora/ausbushes/lavendergrass,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aCi" = (
 /obj/effect/floor_decal/corner/beige{
@@ -16517,7 +16517,7 @@
 /obj/effect/floor_decal/corner/lime/bordercorner{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aCk" = (
 /obj/structure/table/woodentable,
@@ -16742,7 +16742,7 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aCJ" = (
 /obj/structure/cable/green{
@@ -16834,7 +16834,7 @@
 /obj/structure/flora/ausbushes/sunnybush,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aCS" = (
 /obj/structure/grille,
@@ -16923,7 +16923,7 @@
 /area/tether/surfacebase/public_garden_three)
 "aDa" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tether/surfacebase/public_garden_three)
 "aDb" = (
 /obj/structure/grille,
@@ -16948,14 +16948,14 @@
 	dir = 1
 	},
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tether/surfacebase/public_garden_three)
 "aDe" = (
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tether/surfacebase/public_garden_three)
 "aDf" = (
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tether/surfacebase/public_garden_three)
 "aDg" = (
 /turf/simulated/floor/tiled,
@@ -17289,7 +17289,7 @@
 	pixel_x = 5;
 	pixel_y = 28
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aDJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -17318,7 +17318,7 @@
 "aDL" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
 /obj/machinery/light,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tether/surfacebase/public_garden_three)
 "aDM" = (
 /obj/machinery/seed_extractor,
@@ -17390,7 +17390,7 @@
 "aDT" = (
 /obj/machinery/light,
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tether/surfacebase/public_garden_three)
 "aDU" = (
 /obj/structure/table/wooden_reinforced,
@@ -17438,7 +17438,7 @@
 /area/tether/surfacebase/botanystorage)
 "aDY" = (
 /obj/structure/flora/tree/jungle,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aEa" = (
 /obj/machinery/door/airlock/glass_command{
@@ -17536,7 +17536,7 @@
 /obj/structure/flora/ausbushes/lavendergrass,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aEi" = (
 /obj/structure/grille,
@@ -17765,7 +17765,7 @@
 /obj/structure/sink{
 	pixel_y = 24
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aEC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -17983,7 +17983,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aEY" = (
 /obj/structure/cable/green{
@@ -17999,7 +17999,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aFa" = (
 /obj/machinery/door/firedoor/glass,
@@ -18295,7 +18295,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/flora/ausbushes/pointybush,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics/cafegarden)
 "aFA" = (
 /obj/structure/table/gamblingtable,
@@ -18477,7 +18477,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aFP" = (
 /obj/structure/disposalpipe/segment{
@@ -18490,7 +18490,7 @@
 	dir = 1
 	},
 /obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aFQ" = (
 /obj/structure/cable/green{
@@ -18548,7 +18548,7 @@
 /obj/effect/floor_decal/corner/lime/border{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aFT" = (
 /obj/effect/floor_decal/borderfloor,
@@ -18658,7 +18658,7 @@
 	dir = 1
 	},
 /obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aGe" = (
 /obj/machinery/portable_atmospherics/hydroponics,
@@ -18704,7 +18704,7 @@
 	dir = 1
 	},
 /obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aGh" = (
 /obj/machinery/door/firedoor,
@@ -18889,7 +18889,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics/cafegarden)
 "aGu" = (
 /obj/effect/floor_decal/borderfloor,
@@ -19067,7 +19067,7 @@
 /area/tether/surfacebase/servicebackroom)
 "aGH" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aGI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -19451,7 +19451,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aHq" = (
 /turf/simulated/floor/tiled,
@@ -19509,7 +19509,7 @@
 	dir = 8
 	},
 /obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aHx" = (
 /obj/structure/disposalpipe/segment,
@@ -19544,7 +19544,7 @@
 	dir = 8
 	},
 /obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aHB" = (
 /obj/structure/disposalpipe/segment{
@@ -20593,7 +20593,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 6
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aJv" = (
 /obj/structure/disposalpipe/segment{
@@ -20611,7 +20611,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics/cafegarden)
 "aJx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -20738,7 +20738,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aJK" = (
 /obj/effect/floor_decal/spline/plain{
@@ -21037,7 +21037,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aKn" = (
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary{
@@ -21107,7 +21107,7 @@
 "aKw" = (
 /obj/machinery/light,
 /mob/living/simple_mob/animal/passive/chicken,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics/cafegarden)
 "aKx" = (
 /obj/structure/cable/green{
@@ -21391,7 +21391,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aLc" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
@@ -21432,7 +21432,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aLh" = (
 /obj/machinery/light,
@@ -21660,7 +21660,7 @@
 /area/tether/surfacebase/servicebackroom)
 "aLG" = (
 /obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aLH" = (
 /obj/structure/disposalpipe/trunk{
@@ -22786,7 +22786,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aOh" = (
 /obj/structure/cable/green,
@@ -24059,7 +24059,7 @@
 /obj/machinery/camera/network/outside{
 	dir = 1
 	},
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside3)
 "aQX" = (
 /obj/structure/window/reinforced{
@@ -24800,7 +24800,7 @@
 /atom/movable/landmark{
 	name = "droppod_landing"
 	},
-/turf/simulated/floor/grass/outdoors/sif/virgo3b,
+/turf/simulated/grass/outdoors/sif/virgo3b,
 /area/tether/surfacebase/outside/outside3)
 "aSv" = (
 /obj/structure/cable/green{
@@ -24823,14 +24823,14 @@
 	dir = 1
 	},
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aSy" = (
 /obj/machinery/light{
 	dir = 8
 	},
 /obj/structure/flora/ausbushes/palebush,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aSz" = (
 /obj/structure/window/basic/full,
@@ -25441,7 +25441,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aTJ" = (
 /obj/machinery/conveyor{
@@ -25805,7 +25805,7 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aUs" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -26417,13 +26417,13 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tether/surfacebase/public_garden_three)
 "aVy" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aVz" = (
 /obj/structure/grille,
@@ -26450,7 +26450,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aVC" = (
 /obj/structure/cable/green{
@@ -26620,7 +26620,7 @@
 /obj/effect/floor_decal/corner/lime/border{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aVQ" = (
 /obj/effect/floor_decal/borderfloor{
@@ -27123,7 +27123,7 @@
 /area/shuttle/tourbus/general)
 "aWM" = (
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aWN" = (
 /obj/effect/floor_decal/borderfloor,
@@ -27382,7 +27382,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aXi" = (
 /obj/machinery/portable_atmospherics/hydroponics,
@@ -27399,7 +27399,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aXk" = (
 /obj/structure/sign/directions/medical{
@@ -27563,7 +27563,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aXw" = (
 /obj/structure/closet/hydrant{
@@ -28726,7 +28726,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aZz" = (
 /obj/structure/bed/chair{
@@ -29766,7 +29766,7 @@
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics/cafegarden)
 "bbp" = (
 /obj/structure/filingcabinet/chestdrawer,
@@ -30566,7 +30566,7 @@
 	name = "east bump";
 	pixel_x = 28
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics/cafegarden)
 "bcG" = (
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -30879,19 +30879,19 @@
 /obj/machinery/alarm{
 	pixel_y = 25
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "bdj" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "bdk" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "bdl" = (
 /obj/machinery/disposal,
@@ -30906,7 +30906,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "bdm" = (
 /obj/machinery/light{
@@ -31091,7 +31091,7 @@
 /area/crew_quarters/bar)
 "bdH" = (
 /obj/structure/flora/ausbushes/leafybush,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "bdI" = (
 /obj/structure/flora/ausbushes/sparsegrass,
@@ -31104,7 +31104,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -30
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics/cafegarden)
 "bdJ" = (
 /obj/structure/cable/green{
@@ -31635,7 +31635,7 @@
 /obj/effect/floor_decal/corner/lime/border{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "beQ" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -31710,7 +31710,7 @@
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics/cafegarden)
 "bfc" = (
 /obj/structure/table/woodentable,
@@ -31856,7 +31856,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "bfu" = (
 /obj/structure/cable/green{
@@ -31865,7 +31865,7 @@
 	icon_state = "1-8"
 	},
 /obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "bfv" = (
 /obj/structure/closet/crate,
@@ -35686,7 +35686,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/water/pool,
 /area/triumph/surfacebase/sauna)
 "bMK" = (
 /obj/effect/floor_decal/industrial/outline/red,
@@ -37243,7 +37243,7 @@
 /area/crew_quarters/recreation_area)
 "glj" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "glm" = (
 /obj/effect/floor_decal/spline/plain,
@@ -37344,7 +37344,7 @@
 /area/crew_quarters/barrestroom)
 "gEc" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics/cafegarden)
 "gHh" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -37564,7 +37564,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 4
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "hgf" = (
 /obj/machinery/door/firedoor/glass/hidden{
@@ -37656,7 +37656,7 @@
 "hBx" = (
 /obj/effect/mist,
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/water/pool,
+/turf/simulated/water/pool,
 /area/triumph/surfacebase/sauna)
 "hCr" = (
 /obj/effect/floor_decal/borderfloor{
@@ -38099,7 +38099,7 @@
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics/cafegarden)
 "iRX" = (
 /obj/machinery/light{
@@ -38146,7 +38146,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/water/pool,
 /area/triumph/surfacebase/sauna)
 "iVH" = (
 /obj/structure/lattice,
@@ -38228,7 +38228,7 @@
 /obj/structure/disposalpipe/junction{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "jpB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
@@ -38338,7 +38338,7 @@
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics/cafegarden)
 "jFq" = (
 /obj/structure/table/reinforced,
@@ -39007,7 +39007,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "llH" = (
 /obj/effect/floor_decal/borderfloor,
@@ -39887,7 +39887,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/water/pool,
 /area/triumph/surfacebase/sauna)
 "nJe" = (
 /turf/simulated/floor/tiled/techfloor,
@@ -40538,7 +40538,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/water/pool,
 /area/triumph/surfacebase/sauna)
 "pnq" = (
 /obj/effect/floor_decal/borderfloor{
@@ -40679,7 +40679,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/water/pool,
 /area/triumph/surfacebase/sauna)
 "pEC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -40891,7 +40891,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "qem" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -41328,7 +41328,7 @@
 /obj/machinery/vending/hydronutrients{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "rrG" = (
 /obj/structure/table/steel,
@@ -41505,7 +41505,7 @@
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics/cafegarden)
 "rWd" = (
 /obj/structure/disposalpipe/segment,
@@ -41943,7 +41943,7 @@
 	pixel_x = -30;
 	pixel_y = 30
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tether/surfacebase/public_garden_three)
 "sXR" = (
 /obj/item/radio/intercom/department/security{
@@ -41995,7 +41995,7 @@
 /area/tether/surfacebase/surface_three_hall)
 "tdZ" = (
 /obj/effect/mist,
-/turf/simulated/floor/water/deep/pool,
+/turf/simulated/water/deep/pool,
 /area/triumph/surfacebase/sauna)
 "tfD" = (
 /obj/machinery/chemical_dispenser/full,
@@ -43405,7 +43405,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/water/pool,
 /area/triumph/surfacebase/sauna)
 "wxq" = (
 /obj/effect/floor_decal/borderfloorwhite/corner{
@@ -43475,7 +43475,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/water/pool,
 /area/triumph/surfacebase/sauna)
 "wIw" = (
 /obj/structure/disposalpipe/segment,
@@ -43903,7 +43903,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "xBf" = (
 /obj/effect/floor_decal/borderfloor{

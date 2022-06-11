@@ -18,7 +18,7 @@
 					/*|| (locate(/obj/structure/window/full) in tile)*/)
 
 // Turfs that will be colored as HOLOMAP_PATH
-#define IS_PATH(tile) ((istype(tile, /turf/simulated/floor) && !istype(tile, /turf/simulated/floor/outdoors)) \
+#define IS_PATH(tile) ((istype(tile, /turf/simulated/floor) && !istype(tile, /turf/simulated/outdoors)) \
 					|| istype(tile, /turf/unsimulated/floor) \
 					/*|| istype(tile, /turf/simulated/shuttle/floor)*/ \
 					|| (locate(/obj/structure/catwalk) in tile))

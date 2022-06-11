@@ -8,13 +8,13 @@
 /turf/template_noop,
 /area/submap/cave/IceCave1C)
 "c" = (
-/turf/simulated/floor/outdoors/ice{
+/turf/simulated/ice{
 	outdoors = 0
 	},
 /area/submap/cave/IceCave1C)
 "d" = (
 /obj/machinery/crystal/ice,
-/turf/simulated/floor/outdoors/ice{
+/turf/simulated/ice{
 	outdoors = 0
 	},
 /area/submap/cave/IceCave1C)

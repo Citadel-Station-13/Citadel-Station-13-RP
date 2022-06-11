@@ -15,7 +15,7 @@
 /obj/item/ore/coal,
 /obj/item/ore/coal,
 /obj/item/ore/coal,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/Thiefc)
@@ -24,13 +24,13 @@
 /obj/item/extinguisher,
 /obj/item/extinguisher,
 /obj/item/extinguisher,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/Thiefc)
 "f" = (
 /obj/structure/reagent_dispensers/watertank,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/Thiefc)
@@ -43,12 +43,12 @@
 /obj/item/ore/coal,
 /obj/item/ore/coal,
 /obj/item/ore/coal,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/Thiefc)
 "h" = (
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/Thiefc)
@@ -57,21 +57,21 @@
 /obj/item/lipstick,
 /obj/item/lipstick/black,
 /obj/item/lipstick/random,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/Thiefc)
 "j" = (
 /obj/structure/table/steel,
 /obj/item/beartrap,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/Thiefc)
 "k" = (
 /obj/vehicle/train/trolley,
 /obj/random/firstaid,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/Thiefc)
@@ -81,7 +81,7 @@
 /obj/item/folder/red,
 /obj/item/folder/white,
 /obj/item/folder/yellow,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/Thiefc)
@@ -91,13 +91,13 @@
 	desc = "This is some bullshit. First chance we got to knick something that looks half decent turns out to be mostly junk. And now we're getting calls that the other stash we've got has got a spider problem. Fuck this, Between the shitty weather, The pissed of bugs, And now apparently some NT goon running around in the area there's hardly enough reason to stick around. I'm telling Carl I'm out tommorow.";
 	name = "Note"
 	},
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/Thiefc)
 "n" = (
 /obj/vehicle/train/trolley,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/Thiefc)
@@ -105,7 +105,7 @@
 /obj/structure/closet/crate,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/Thiefc)
@@ -113,7 +113,7 @@
 /obj/structure/closet/crate,
 /obj/item/storage/box/shotgunammo,
 /obj/item/storage/box/practiceshells,
-/turf/simulated/floor/outdoors/dirt{
+/turf/simulated/dirt{
 	outdoors = 0
 	},
 /area/submap/Thiefc)

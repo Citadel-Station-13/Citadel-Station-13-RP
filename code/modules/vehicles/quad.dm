@@ -45,15 +45,15 @@
 	var/turf/T = get_turf(src)
 	..() //Move it move it, so we can test it test it.
 	if(T != get_turf(src) && !istype(destination, T.type))	//Did we move at all, and are we changing turf types?
-		if(istype(destination, /turf/simulated/floor/water))
+		if(istype(destination, /turf/simulated/water))
 			speed_mod = outdoors_speed_mod * 4 //It kind of floats due to its tires, but it is slow.
-		else if(istype(destination, /turf/simulated/floor/outdoors/rocks))
+		else if(istype(destination, /turf/simulated/outdoors/rocks))
 			speed_mod = initial(speed_mod) //Rocks are good, rocks are solid.
-		else if(istype(destination, /turf/simulated/floor/outdoors/dirt) || istype(destination, /turf/simulated/floor/grass/outdoors))
+		else if(istype(destination, /turf/simulated/dirt) || istype(destination, /turf/simulated/grass/outdoors))
 			speed_mod = outdoors_speed_mod //Dirt and grass are the outdoors bench mark.
-		else if(istype(destination, /turf/simulated/floor/outdoors/mud))
+		else if(istype(destination, /turf/simulated/outdoors/mud))
 			speed_mod = outdoors_speed_mod * 1.5 //Gets us roughly 1. Mud may be fun, but it's not the best.
-		else if(istype(destination, /turf/simulated/floor/outdoors/snow))
+		else if(istype(destination, /turf/simulated/snow))
 			speed_mod = outdoors_speed_mod * 1.7 //Roughly a 1.25. Snow is coarse and wet and gets everywhere, especially your electric motors.
 		else
 			speed_mod = initial(speed_mod)

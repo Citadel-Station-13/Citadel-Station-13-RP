@@ -348,7 +348,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "aE" = (
 /obj/structure/table/rack/shelf,
@@ -1235,7 +1235,7 @@
 "bS" = (
 /obj/effect/floor_decal/spline/plain,
 /atom/movable/landmark/spawnpoint/job/botanist,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "bT" = (
 /obj/structure/table/steel_reinforced,
@@ -1631,7 +1631,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "cH" = (
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "cI" = (
 /obj/machinery/power/apc{
@@ -2493,7 +2493,7 @@
 	dir = 8
 	},
 /obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "ec" = (
 /obj/structure/catwalk,
@@ -2942,7 +2942,7 @@
 /area/maintenance/bar)
 "eO" = (
 /obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "eP" = (
 /obj/machinery/light{
@@ -3165,7 +3165,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "fl" = (
 /obj/structure/ladder,
@@ -4907,7 +4907,7 @@
 /area/crew_quarters/heads/hop)
 "il" = (
 /obj/structure/snowman,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "im" = (
 /obj/effect/floor_decal/borderfloor,
@@ -4955,7 +4955,7 @@
 "iq" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/structure/flora/ausbushes/lavendergrass,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "ir" = (
 /obj/effect/floor_decal/spline/plain{
@@ -5016,7 +5016,7 @@
 "ix" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "iy" = (
 /obj/structure/cable/green{
@@ -5102,7 +5102,7 @@
 /area/tcommsat/chamber)
 "iG" = (
 /obj/item/pickaxe,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "iH" = (
 /obj/structure/cable/green{
@@ -5171,7 +5171,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "iM" = (
 /obj/structure/closet/secure_closet/guncabinet/excursion,
@@ -5488,7 +5488,7 @@
 /area/maintenance/station/exploration)
 "jp" = (
 /obj/structure/metal_edge,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "jq" = (
 /obj/machinery/atmospherics/component/unary/engine{
@@ -6034,7 +6034,7 @@
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/aa/cliff_north)
 "kk" = (
-/turf/simulated/floor/outdoors/safeice/indoors,
+/turf/simulated/outdoors/safeice/indoors,
 /area/maintenance/ai)
 "kl" = (
 /obj/effect/floor_decal/borderfloor{
@@ -6866,7 +6866,7 @@
 /area/shuttle/civvie/general)
 "lH" = (
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "lI" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -6934,7 +6934,7 @@
 "lP" = (
 /obj/machinery/honey_extractor,
 /obj/structure/flora/ausbushes/leafybush,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "lQ" = (
 /obj/structure/panic_button,
@@ -7085,7 +7085,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "mf" = (
 /obj/effect/floor_decal/borderfloor{
@@ -7313,7 +7313,7 @@
 /area/hallway/secondary/docking_hallway2)
 "mA" = (
 /obj/effect/decal/mecha_wreckage/ripley,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "mB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -7751,7 +7751,7 @@
 /area/rift/surfaceeva/airlock/arrivals/secondary)
 "ns" = (
 /obj/machinery/portable_atmospherics/hydroponics,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "nt" = (
 /obj/effect/floor_decal/spline/plain{
@@ -8163,7 +8163,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "oe" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -8849,7 +8849,7 @@
 /area/rift/surfaceeva/aa/cliff_south)
 "pw" = (
 /obj/structure/flora/ausbushes/genericbush,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "px" = (
 /obj/machinery/telecomms/server/presets/unused,
@@ -9126,7 +9126,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "pY" = (
 /obj/structure/bed/chair{
@@ -9158,7 +9158,7 @@
 	dir = 8
 	},
 /obj/machinery/beehive,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "qb" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -9452,7 +9452,7 @@
 /turf/simulated/floor/wood,
 /area/bridge/bunker)
 "qG" = (
-/turf/simulated/floor/outdoors/safeice/indoors,
+/turf/simulated/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside3)
 "qH" = (
 /obj/item/paper_bin,
@@ -10499,7 +10499,7 @@
 /area/rift/surfaceeva/airlock/arrivals)
 "sH" = (
 /obj/effect/spider/cocoon,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "sI" = (
 /obj/structure/railing,
@@ -11223,7 +11223,7 @@
 	dir = 6
 	},
 /obj/structure/flora/ausbushes/lavendergrass,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "tY" = (
 /obj/structure/catwalk,
@@ -11475,7 +11475,7 @@
 /area/crew_quarters/heads/hop)
 "uw" = (
 /obj/effect/spider/spiderling/virgo,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "ux" = (
 /turf/simulated/floor/tiled/monotile,
@@ -11881,7 +11881,7 @@
 	pixel_y = 32
 	},
 /obj/machinery/seed_extractor,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "vm" = (
 /obj/machinery/door/airlock{
@@ -12295,7 +12295,7 @@
 /area/ai)
 "wb" = (
 /mob/living/simple_mob/animal/passive/cow,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "wc" = (
 /obj/structure/railing{
@@ -13180,7 +13180,7 @@
 /obj/machinery/holoposter{
 	pixel_y = 32
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "xx" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -13224,7 +13224,7 @@
 /area/maintenance/station/exploration)
 "xA" = (
 /mob/living/simple_mob/animal/giant_spider/nurse,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "xB" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
@@ -13386,7 +13386,7 @@
 /area/shuttle/excursion/general)
 "xR" = (
 /mob/living/simple_mob/animal/giant_spider/frost,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "xS" = (
 /turf/unsimulated/wall/planetary/lythios43c,
@@ -13486,7 +13486,7 @@
 /area/crew_quarters/kitchen)
 "ya" = (
 /obj/machinery/crystal/lava,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "yb" = (
 /obj/structure/bed/chair{
@@ -13502,7 +13502,7 @@
 /area/rift/surfacebase/shuttle)
 "yd" = (
 /obj/structure/snowman/spider,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "ye" = (
 /obj/structure/cable/green{
@@ -13538,7 +13538,7 @@
 /area/hallway/secondary/docking_hallway2)
 "yg" = (
 /obj/structure/flora/ausbushes/lavendergrass,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "yh" = (
 /obj/effect/floor_decal/spline/plain{
@@ -14694,7 +14694,7 @@
 /area/crew_quarters/bar_backroom)
 "As" = (
 /mob/living/simple_mob/animal/giant_spider/carrier,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "At" = (
 /obj/machinery/door/airlock/multi_tile/glass{
@@ -14837,7 +14837,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "AG" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -14873,7 +14873,7 @@
 /obj/structure/bed/chair/wood{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "AK" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -15046,7 +15046,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "Bb" = (
 /obj/machinery/camera/network/command{
@@ -15210,7 +15210,7 @@
 "Bq" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "Bs" = (
 /obj/effect/floor_decal/borderfloor{
@@ -17033,7 +17033,7 @@
 /area/shuttle/excursion/cargo)
 "EP" = (
 /obj/effect/floor_decal/industrial/halfstair,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfaceeva/aa/cliff_north)
 "EQ" = (
 /obj/structure/cable/green{
@@ -17568,7 +17568,7 @@
 	dir = 4
 	},
 /atom/movable/landmark/spawnpoint/job/botanist,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "FQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -17973,7 +17973,7 @@
 	},
 /obj/structure/reagent_dispensers/watertank/high,
 /obj/item/reagent_containers/glass/bucket,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "GL" = (
 /obj/machinery/door/airlock/glass_research{
@@ -18001,7 +18001,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals/secondary)
 "GO" = (
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "GP" = (
 /obj/structure/shuttle/engine/heater,
@@ -18121,7 +18121,7 @@
 "Ha" = (
 /obj/structure/flora/ausbushes/brflowers,
 /atom/movable/landmark/spawnpoint/job/botanist,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "Hb" = (
 /obj/machinery/door/airlock/maintenance/engi{
@@ -18471,7 +18471,7 @@
 /area/exploration)
 "HF" = (
 /obj/item/pickaxe,
-/turf/simulated/floor/outdoors/safeice/indoors,
+/turf/simulated/outdoors/safeice/indoors,
 /area/rift/surfacebase/outside/outside3)
 "HG" = (
 /obj/structure/cable/green{
@@ -19705,7 +19705,7 @@
 "JV" = (
 /obj/random/humanoidremains,
 /obj/random/multiple/voidsuit/vintage,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "JW" = (
 /obj/structure/window/reinforced{
@@ -19962,7 +19962,7 @@
 /turf/simulated/floor/tiled/freezer/cold,
 /area/crew_quarters/freezer)
 "Kv" = (
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "Kw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -20288,7 +20288,7 @@
 /area/exploration/explorer_prep)
 "KZ" = (
 /obj/effect/spider/eggcluster/small/frost,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "La" = (
 /obj/structure/grille,
@@ -20464,7 +20464,7 @@
 /area/shuttle/excursion/cargo)
 "Lv" = (
 /obj/effect/floor_decal/industrial/halfstair,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfaceeva/aa/cliff_south)
 "Lw" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9{
@@ -21199,11 +21199,11 @@
 /area/shuttle/courser/general)
 "MN" = (
 /obj/item/digestion_remains/ribcage,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "MO" = (
 /obj/structure/barricade,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "MP" = (
 /obj/machinery/door/airlock/maintenance/common,
@@ -21375,7 +21375,7 @@
 /area/rift/turbolift/maint)
 "Nk" = (
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "Nl" = (
 /obj/effect/floor_decal/borderfloor,
@@ -21689,7 +21689,7 @@
 "NQ" = (
 /obj/structure/bed/chair/wood,
 /atom/movable/landmark/spawnpoint/job/botanist,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "NR" = (
 /obj/structure/table/reinforced,
@@ -21798,7 +21798,7 @@
 /area/hydroponics)
 "Oa" = (
 /obj/structure/inflatable/door,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "Ob" = (
 /atom/movable/landmark/spawnpoint/job/ai,
@@ -22847,7 +22847,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "PU" = (
 /obj/structure/railing,
@@ -24272,7 +24272,7 @@
 "Sr" = (
 /obj/effect/spider/eggcluster,
 /obj/random/multiple/corp_crate,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "Ss" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -25087,7 +25087,7 @@
 /area/shuttle/courser/cockpit)
 "Ub" = (
 /obj/effect/decal/mecha_wreckage/gygax,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "Uc" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -25166,7 +25166,7 @@
 "Ul" = (
 /obj/machinery/beehive,
 /obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "Um" = (
 /obj/item/stool/padded,
@@ -25216,7 +25216,7 @@
 /area/shuttle/excursion/general)
 "Up" = (
 /obj/effect/spider/eggcluster,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "Uq" = (
 /obj/effect/floor_decal/borderfloor{
@@ -25413,7 +25413,7 @@
 /area/rift/surfacebase/shuttle)
 "UF" = (
 /obj/effect/decal/remains/tajaran,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "UG" = (
 /obj/effect/floor_decal/borderfloor{
@@ -25483,7 +25483,7 @@
 /area/exploration/meeting)
 "UM" = (
 /atom/movable/landmark/spawnpoint/job/botanist,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "UN" = (
 /obj/structure/railing,
@@ -25624,7 +25624,7 @@
 /area/hydroponics)
 "Vb" = (
 /obj/effect/spider/eggcluster/small,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "Vc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -25684,7 +25684,7 @@
 	dir = 4;
 	pixel_x = 12
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "Vh" = (
 /obj/structure/bed/chair/sofa/black/right,
@@ -25788,7 +25788,7 @@
 /area/bridge/bunker)
 "Vp" = (
 /obj/random/multiple/voidsuit/mining,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "Vq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -26072,7 +26072,7 @@
 "VT" = (
 /obj/structure/flora/ausbushes/brflowers,
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "VU" = (
 /obj/effect/floor_decal/borderfloor{
@@ -26714,7 +26714,7 @@
 /area/crew_quarters/captain)
 "Xd" = (
 /obj/machinery/crystal/ice,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "Xe" = (
 /obj/structure/railing{
@@ -26761,7 +26761,7 @@
 /area/bridge)
 "Xh" = (
 /obj/machinery/crystal,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "Xi" = (
 /obj/structure/cable/green{
@@ -27066,7 +27066,7 @@
 /area/exploration)
 "XH" = (
 /obj/structure/barricade,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "XJ" = (
 /obj/structure/table/reinforced,
@@ -27233,7 +27233,7 @@
 /area/maintenance/bar)
 "Yb" = (
 /mob/living/simple_mob/animal/giant_spider/nurse/queen,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "Yc" = (
 /obj/effect/floor_decal/borderfloor{
@@ -27249,7 +27249,7 @@
 /area/hallway/primary/surfacethree)
 "Yd" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "Ye" = (
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -27791,7 +27791,7 @@
 /area/crew_quarters/bar)
 "Zh" = (
 /obj/effect/floor_decal/industrial/halfstair,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "Zi" = (
 /turf/simulated/wall,
@@ -27908,7 +27908,7 @@
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "Zw" = (
 /obj/structure/cable/green{
@@ -27946,7 +27946,7 @@
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "ZB" = (
 /obj/structure/shuttle/engine/heater,
@@ -28033,7 +28033,7 @@
 /obj/structure/flora/ausbushes/leafybush,
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/glass/bucket/wood,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/hydroponics)
 "ZL" = (
 /obj/machinery/computer/shuttle_control/explore/excursion{

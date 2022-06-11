@@ -7,16 +7,16 @@
 /area/rift/surfacebase/underground/under2)
 "c" = (
 /obj/effect/blocker,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "e" = (
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "f" = (
 /obj/effect/map_effect/portal/line/side_a{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "g" = (
 /turf/simulated/floor/plating,
@@ -31,7 +31,7 @@
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "k" = (
 /obj/structure/fence/door,
@@ -50,7 +50,7 @@
 "o" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "w" = (
 /obj/structure/fence{
@@ -67,14 +67,14 @@
 /obj/effect/map_effect/portal/line/side_a{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "H" = (
 /obj/effect/zone_divider,
 /obj/effect/map_effect/portal/line/side_a{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "J" = (
 /obj/turbolift_map_holder/rift_mining,
@@ -82,7 +82,7 @@
 /area/turbolift/rmine/under3)
 "K" = (
 /obj/effect/zone_divider,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "L" = (
 /obj/effect/zone_divider,
@@ -104,7 +104,7 @@
 	name = "center_to_westbase";
 	portal_id = "westbasestep"
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "P" = (
 /obj/effect/zone_divider,
@@ -121,7 +121,7 @@
 /turf/simulated/shuttle/wall/voidcraft,
 /area/turbolift/rmine/under3)
 "W" = (
-/turf/simulated/floor/outdoors/safeice/indoors,
+/turf/simulated/outdoors/safeice/indoors,
 /area/rift/surfacebase/underground/under2)
 "Y" = (
 /turf/simulated/wall/r_wall,

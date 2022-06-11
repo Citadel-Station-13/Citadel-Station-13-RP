@@ -13,7 +13,7 @@
 /turf/template_noop,
 /area/submap/Rocky2)
 "e" = (
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/Rocky2)
 "f" = (
 /obj/structure/flora/tree/pine,

@@ -69,7 +69,7 @@
 /turf/simulated/floor/silver/classp,
 /area/class_p/POIs/archaic_temple)
 "fQ" = (
-/turf/simulated/floor/outdoors/mud/classp/indoors,
+/turf/simulated/outdoors/mud/classp/indoors,
 /area/class_p/POIs/archaic_temple)
 "fS" = (
 /obj/structure/window/reinforced/polarized/full{
@@ -90,7 +90,7 @@
 /area/class_p/POIs/archaic_temple)
 "gS" = (
 /obj/structure/boulder,
-/turf/simulated/floor/grass/outdoors/heavy/interior/classp,
+/turf/simulated/grass/outdoors/heavy/interior/classp,
 /area/class_p/POIs/archaic_temple)
 "hQ" = (
 /obj/structure/table/hardwoodtable,
@@ -357,10 +357,10 @@
 /area/class_p/POIs/archaic_temple)
 "rO" = (
 /obj/structure/boulder,
-/turf/simulated/floor/outdoors/mud/classp/indoors,
+/turf/simulated/outdoors/mud/classp/indoors,
 /area/class_p/POIs/archaic_temple)
 "rU" = (
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/snow/classp,
 /area/template_noop)
 "se" = (
 /turf/simulated/floor/classp,
@@ -394,7 +394,7 @@
 	name = "Sundial of Anak-Hun-Tamuun"
 	},
 /obj/structure/table/marble,
-/turf/simulated/floor/outdoors/mud/classp/indoors,
+/turf/simulated/outdoors/mud/classp/indoors,
 /area/class_p/POIs/archaic_temple)
 "tc" = (
 /obj/machinery/door/blast/puzzle{
@@ -494,7 +494,7 @@
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "yt" = (
-/turf/simulated/floor/outdoors/ice/classp/indoors,
+/turf/simulated/ice/classp/indoors,
 /area/class_p/POIs/archaic_temple)
 "yw" = (
 /obj/structure/statue/marble/male{
@@ -534,7 +534,7 @@
 /turf/simulated/floor/wmarble/classp,
 /area/class_p/POIs/archaic_temple)
 "zC" = (
-/turf/simulated/floor/water/indoors/classp,
+/turf/simulated/water/indoors/classp,
 /area/class_p/POIs/archaic_temple)
 "zY" = (
 /turf/simulated/floor/gold/classp,
@@ -778,7 +778,7 @@
 /turf/simulated/floor/silver/classp,
 /area/class_p/POIs/archaic_temple)
 "ID" = (
-/turf/simulated/floor/water/acid/deep/classp/indoors,
+/turf/simulated/water/acid/deep/classp/indoors,
 /area/class_p/POIs/archaic_temple)
 "IE" = (
 /turf/simulated/floor/trap/phoron/classp{
@@ -820,7 +820,7 @@
 "JU" = (
 /obj/structure/table/marble,
 /obj/item/flame/candle/candelabra/everburn,
-/turf/simulated/floor/outdoors/mud/classp/indoors,
+/turf/simulated/outdoors/mud/classp/indoors,
 /area/class_p/POIs/archaic_temple)
 "Kf" = (
 /obj/effect/trap/pop_up/spear{
@@ -1180,7 +1180,7 @@
 	name = "The Fang of Agrim'Maw"
 	},
 /obj/effect/decal/cleanable/greenglow,
-/turf/simulated/floor/grass/outdoors/heavy/interior/classp,
+/turf/simulated/grass/outdoors/heavy/interior/classp,
 /area/class_p/POIs/archaic_temple)
 "Yd" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1245,7 +1245,7 @@
 /turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "Zx" = (
-/turf/simulated/floor/water/acid/classp/indoors,
+/turf/simulated/water/acid/classp/indoors,
 /area/class_p/POIs/archaic_temple)
 "ZM" = (
 /obj/structure/grille/cult,
@@ -1257,7 +1257,7 @@
 /turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "ZV" = (
-/turf/simulated/floor/grass/outdoors/heavy/interior/classp,
+/turf/simulated/grass/outdoors/heavy/interior/classp,
 /area/class_p/POIs/archaic_temple)
 
 (1,1,1) = {"

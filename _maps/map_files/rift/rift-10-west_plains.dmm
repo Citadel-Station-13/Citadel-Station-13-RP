@@ -9,7 +9,7 @@
 /obj/structure/fence/cut/large{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/facility/exterior)
 "ah" = (
 /obj/effect/floor_decal/rust,
@@ -153,7 +153,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
 "ba" = (
 /obj/machinery/atmospherics/component/binary/pump,
@@ -288,7 +288,7 @@
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/facility/exterior)
 "cb" = (
 /obj/effect/floor_decal/rust,
@@ -473,7 +473,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
 "cK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -630,7 +630,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
 "dY" = (
 /obj/effect/floor_decal/borderfloor{
@@ -800,7 +800,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/facility/exterior)
 "eU" = (
 /obj/machinery/door/firedoor/border_only{
@@ -860,7 +860,7 @@
 	chargelevel = 0;
 	cell_type = null
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/facility/interior/surface)
 "fk" = (
 /obj/effect/floor_decal/corner/purple{
@@ -1094,7 +1094,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/facility/exterior)
 "gC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1648,7 +1648,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "jE" = (
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/facility/exterior)
 "jF" = (
 /obj/machinery/atmospherics/pipe/simple/insulated{
@@ -2066,7 +2066,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
 "ms" = (
 /turf/simulated/wall,
@@ -2366,7 +2366,7 @@
 /area/rnd/outpost)
 "od" = (
 /obj/effect/floor_decal/industrial/halfstair,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/facility/exterior)
 "oe" = (
 /obj/structure/cable/green{
@@ -2582,7 +2582,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
 "po" = (
 /obj/structure/cable/green{
@@ -2960,7 +2960,7 @@
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
 "qZ" = (
 /obj/effect/map_effect/portal/line/side_b{
@@ -3180,7 +3180,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "sv" = (
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
 "sz" = (
 /obj/machinery/atmospherics/component/binary/pump{
@@ -3278,7 +3278,7 @@
 /area/rnd/outpost/mixing)
 "sS" = (
 /obj/structure/fence/cut/large,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/facility/exterior)
 "sT" = (
 /obj/effect/floor_decal/borderfloor{
@@ -3317,7 +3317,7 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/facility/exterior)
 "tb" = (
 /obj/machinery/atmospherics/component/binary/pump,
@@ -3547,7 +3547,7 @@
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
 "uk" = (
 /obj/structure/closet/emcloset,
@@ -3988,7 +3988,7 @@
 /area/rnd/outpost/anomaly_lab/storage)
 "wC" = (
 /obj/structure/metal_edge,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/facility/exterior)
 "wE" = (
 /obj/machinery/atmospherics/component/unary/heat_exchanger{
@@ -4240,7 +4240,7 @@
 	dir = 4
 	},
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/rnd/outpost)
 "xU" = (
 /obj/structure/grille,
@@ -4587,7 +4587,7 @@
 	dir = 4
 	},
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/rnd/outpost)
 "zP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -5034,7 +5034,7 @@
 	name = "THIS IS NOT A PLACE OF HONOR";
 	desc = "What is here was dangerous and replusive to us."
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/facility/exterior)
 "Cy" = (
 /obj/random/trash,
@@ -5059,7 +5059,7 @@
 /obj/machinery/atmospherics/pipe/simple/insulated{
 	dir = 5
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
 "CG" = (
 /turf/simulated/wall,
@@ -5199,7 +5199,7 @@
 /area/rnd/outpost/anomaly_lab)
 "Dp" = (
 /obj/structure/lattice,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
 "Dq" = (
 /obj/machinery/atmospherics/component/binary/pump{
@@ -5561,7 +5561,7 @@
 /obj/machinery/atmospherics/pipe/simple/insulated{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
 "FF" = (
 /obj/structure/cable/green{
@@ -5663,7 +5663,7 @@
 /area/rnd/outpost/breakroom)
 "Gc" = (
 /obj/structure/fence,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/facility/exterior)
 "Gd" = (
 /obj/effect/floor_decal/borderfloor{
@@ -5936,7 +5936,7 @@
 	dir = 8
 	},
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
 "HC" = (
 /turf/unsimulated/wall/planetary/lythios43c{
@@ -6579,7 +6579,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 9
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
 "KF" = (
 /obj/structure/closet/crate/radiation,
@@ -6904,7 +6904,7 @@
 /area/tether/outpost/solars_shed)
 "Mv" = (
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
 "Mz" = (
 /obj/structure/reagent_dispensers/coolanttank,
@@ -7147,7 +7147,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
 "NS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -7740,7 +7740,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
 "QT" = (
 /obj/effect/floor_decal/steeldecal/steel_decals6{
@@ -8121,7 +8121,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "Tg" = (
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/facility/interior/surface)
 "Tk" = (
 /obj/structure/cable/green{
@@ -8535,7 +8535,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/facility/exterior)
 "Vg" = (
 /obj/structure/symbol/em,
@@ -9017,7 +9017,7 @@
 /obj/machinery/atmospherics/pipe/simple/insulated{
 	dir = 9
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
 "Ys" = (
 /obj/machinery/atmospherics/component/trinary/atmos_filter{

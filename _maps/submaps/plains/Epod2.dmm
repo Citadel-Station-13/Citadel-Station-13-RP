@@ -6,28 +6,28 @@
 /turf/template_noop,
 /area/submap/Epod2)
 "c" = (
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/Epod2)
 "d" = (
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/Epod2)
 "e" = (
 /obj/structure/boulder{
 	icon_state = "boulder3"
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/Epod2)
 "f" = (
 /obj/structure/boulder{
 	icon_state = "boulder2"
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/Epod2)
 "g" = (
 /obj/structure/boulder{
 	icon_state = "boulder3"
 	},
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/Epod2)
 "h" = (
 /turf/simulated/shuttle/wall,
@@ -41,7 +41,7 @@
 /area/submap/Epod2)
 "j" = (
 /obj/structure/boulder,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/Epod2)
 "k" = (
 /obj/structure/grille{
@@ -119,13 +119,13 @@
 /obj/structure/boulder{
 	icon_state = "boulder4"
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/Epod2)
 "q" = (
 /obj/structure/boulder{
 	icon_state = "boulder2"
 	},
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/Epod2)
 
 (1,1,1) = {"

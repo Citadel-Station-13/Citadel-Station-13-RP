@@ -27,19 +27,19 @@
 "ah" = (
 /obj/item/arrow/rod,
 /obj/item/stack/material/steel,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/virgo2/DecoupledEngine)
 "ai" = (
 /obj/item/stack/material/steel,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/DecoupledEngine)
 "aj" = (
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/virgo2/DecoupledEngine)
 "ak" = (
 /obj/structure/lattice,
 /obj/structure/girder/displaced,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/virgo2/DecoupledEngine)
 "al" = (
 /obj/effect/floor_decal/rust,
@@ -51,11 +51,11 @@
 /turf/template_noop,
 /area/submap/virgo2/DecoupledEngine)
 "an" = (
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/virgo2/DecoupledEngine)
 "ao" = (
 /obj/structure/lattice,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/virgo2/DecoupledEngine)
 "ap" = (
 /obj/effect/floor_decal/rust,
@@ -96,7 +96,7 @@
 "ax" = (
 /obj/structure/lattice,
 /obj/structure/grille/broken,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/virgo2/DecoupledEngine)
 "ay" = (
 /obj/effect/floor_decal/rust,
@@ -220,7 +220,7 @@
 	icon_state = "propulsion_r";
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/virgo2/DecoupledEngine)
 "aP" = (
 /obj/effect/floor_decal/rust,
@@ -297,15 +297,15 @@
 /obj/structure/shuttle/engine/propulsion{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/virgo2/DecoupledEngine)
 "aZ" = (
 /obj/item/stack/material/steel,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/virgo2/DecoupledEngine)
 "ba" = (
 /obj/item/stack/rods,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/virgo2/DecoupledEngine)
 "bb" = (
 /obj/structure/lattice,
@@ -374,7 +374,7 @@
 /obj/structure/shuttle/engine/propulsion{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/virgo2/DecoupledEngine)
 "bj" = (
 /obj/machinery/atmospherics/tvalve/digital{
@@ -416,7 +416,7 @@
 	icon_state = "propulsion_l";
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/virgo2/DecoupledEngine)
 "bo" = (
 /obj/effect/floor_decal/rust,
@@ -483,11 +483,11 @@
 /area/submap/virgo2/DecoupledEngine)
 "bx" = (
 /obj/structure/girder,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/virgo2/DecoupledEngine)
 "by" = (
 /obj/structure/girder/displaced,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/virgo2/DecoupledEngine)
 "bz" = (
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,

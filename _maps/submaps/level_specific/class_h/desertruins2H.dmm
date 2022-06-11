@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/turf/simulated/outdoors/beach/sand/lowdesert,
 /area/class_h/explored)
 "h" = (
 /turf/simulated/wall/sandstone/classh,

@@ -1319,7 +1319,7 @@
 /turf/simulated/wall/cult,
 /area/awaymission/labyrinth/boss)
 "dH" = (
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/awaymission/labyrinth/arrival)
 "dI" = (
 /turf/unsimulated/floor{

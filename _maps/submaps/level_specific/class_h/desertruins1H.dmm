@@ -4,25 +4,25 @@
 /area/class_h/explored)
 "l" = (
 /obj/structure/loot_pile/surface/bones,
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/turf/simulated/outdoors/beach/sand/lowdesert,
 /area/class_h/explored)
 "n" = (
-/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/turf/simulated/outdoors/beach/sand/dirtlight,
 /area/class_h/explored)
 "s" = (
 /obj/item/bone,
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/turf/simulated/outdoors/beach/sand/lowdesert,
 /area/class_h/explored)
 "G" = (
 /obj/structure/loot_pile/surface/bones,
-/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/turf/simulated/outdoors/beach/sand/dirtlight,
 /area/class_h/explored)
 "W" = (
 /obj/item/bone,
-/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/turf/simulated/outdoors/beach/sand/dirtlight,
 /area/class_h/explored)
 "X" = (
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/turf/simulated/outdoors/beach/sand/lowdesert,
 /area/class_h/explored)
 
 (1,1,1) = {"

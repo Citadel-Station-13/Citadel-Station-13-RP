@@ -7,13 +7,13 @@
 /area/submap/virgo2/Lake1)
 "d" = (
 /obj/machinery/crystal/lava,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/virgo2/Lake1)
 "f" = (
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/virgo2/Lake1)
 "h" = (
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/virgo2/Lake1)
 "i" = (
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,

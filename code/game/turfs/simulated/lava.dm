@@ -1,4 +1,4 @@
-/turf/simulated/floor/outdoors/lava
+/turf/simulated/lava
 	name = "lava"
 	desc = "A pool of molten rock."
 	description_info = "Molten rock is extremly dangerous, as it will cause massive harm to anything that touches it.<br>\
@@ -7,50 +7,64 @@
 	icon = 'icons/turf/outdoors.dmi'
 	icon_state = "lava"
 	edge_blending_priority = 4
-	light_range = 2
-	light_power = 0.75
-	light_color = LIGHT_COLOR_LAVA
-	flags = TURF_HAS_EDGES
 	movement_cost = 2
 	special_temperature = T0C + 2200
 
-/turf/simulated/floor/outdoors/lava/indoors
-	outdoors = TRUE
+	light_range = 2
+	light_power = 0.75
+	light_color = LIGHT_COLOR_LAVA
+
+	footstep = FOOTSTEP_LAVA
+	barefootstep = FOOTSTEP_LAVA
+	clawfootstep = FOOTSTEP_LAVA
+	heavyfootstep = FOOTSTEP_LAVA
+
+
+/turf/open/lava/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
+	underlay_appearance.icon = 'icons/turf/floors.dmi'
+	underlay_appearance.icon_state = "basalt"
+	return TRUE
+
+/turf/open/lava/GetHeatCapacity()
+	. = 700000
+
+/turf/open/lava/GetTemperature()
+	. = 5000
 
 // For maximum pedantry.
-/turf/simulated/floor/outdoors/lava/Initialize(mapload)
+/turf/simulated/lava/Initialize(mapload)
 	if(!outdoors)
 		name = "magma"
 	return ..()
 
-/turf/simulated/floor/outdoors/lava/make_outdoors()
+/turf/simulated/lava/make_outdoors()
 	..()
 	name = "lava"
 
-/turf/simulated/floor/outdoors/lava/make_indoors()
+/turf/simulated/lava/make_indoors()
 	..()
 	name = "magma"
 
-/turf/simulated/floor/outdoors/lava/Entered(atom/movable/AM)
+/turf/simulated/lava/Entered(atom/movable/AM)
 	..()
 	if(burn_stuff(AM))
 		START_PROCESSING(SSobj, src)
 
-/turf/simulated/floor/outdoors/lava/hitby(atom/movable/AM)
+/turf/simulated/lava/hitby(atom/movable/AM)
 	if(burn_stuff(AM))
 		START_PROCESSING(SSobj, src)
 
-/turf/simulated/floor/outdoors/lava/process(delta_time)
+/turf/simulated/lava/process(delta_time)
 	if(!burn_stuff())
 		STOP_PROCESSING(SSobj, src)
 
-/turf/simulated/floor/outdoors/lava/proc/is_safe()
+/turf/simulated/lava/proc/is_safe()
 	//if anything matching this typecache is found in the lava, we don't burn things
 	var/static/list/lava_safeties_typecache = typecacheof(list(/obj/structure/catwalk))
 	var/list/found_safeties = typecache_filter_list(contents, lava_safeties_typecache)
 	return LAZYLEN(found_safeties)
 
-/turf/simulated/floor/outdoors/lava/proc/burn_stuff(atom/movable/AM)
+/turf/simulated/lava/proc/burn_stuff(atom/movable/AM)
 	. = FALSE
 
 	if(is_safe())
@@ -76,16 +90,16 @@
 			L.lava_act()
 
 // Lava that does nothing at all.
-/turf/simulated/floor/outdoors/lava/harmless/burn_stuff(atom/movable/AM)
+/turf/simulated/lava/harmless/burn_stuff(atom/movable/AM)
 	return FALSE
 
 // Tells AI mobs to not suicide by pathing into lava if it would hurt them.
-/turf/simulated/floor/outdoors/lava/is_safe_to_enter(mob/living/L)
+/turf/simulated/lava/is_safe_to_enter(mob/living/L)
 	if(!is_safe() && !L.hovering)
 		return FALSE
 	return ..()
 
-/turf/simulated/floor/outdoors/lava/attackby(obj/item/W as obj, mob/user as mob)
+/turf/simulated/lava/attackby(obj/item/W as obj, mob/user as mob)
 	if(!istype(W))
 		return
 	else if(istype(W,/obj/item/stack/rods))

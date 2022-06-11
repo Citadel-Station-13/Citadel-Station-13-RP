@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/turf/simulated/outdoors/beach/sand/lowdesert,
 /area/class_h/POIs/covert_post)
 "b" = (
 /obj/structure/table/bananium_reinforced,
@@ -217,7 +217,7 @@
 /area/class_h/POIs/covert_post)
 "S" = (
 /mob/living/simple_mob/humanoid/clown/commando/melee,
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/turf/simulated/outdoors/beach/sand/lowdesert,
 /area/class_h/POIs/covert_post)
 "U" = (
 /obj/item/bananapeel,

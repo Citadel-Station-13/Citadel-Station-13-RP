@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/snow/classp,
 /area/class_p/ruins)
 "j" = (
 /turf/simulated/floor/classp/outdoors,
@@ -20,7 +20,7 @@
 /turf/simulated/floor/carpet/purcarpet/classp,
 /area/class_p/ruins)
 "M" = (
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/snow/classp/no_tree,
 /area/class_p/ruins)
 "N" = (
 /obj/structure/closet/crate/secure/loot,
@@ -34,7 +34,7 @@
 /obj/random/mob/robotic/hivebot{
 	mob_faction = "frozen"
 	},
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/snow/classp/no_tree,
 /area/class_p/ruins)
 "S" = (
 /turf/simulated/floor/carpet/purcarpet/classp,

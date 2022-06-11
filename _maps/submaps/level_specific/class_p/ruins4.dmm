@@ -1,10 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/snow/classp,
 /area/class_p/ruins)
 "e" = (
 /obj/random/triumph/uncertain,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/snow/classp/no_tree,
 /area/class_p/ruins)
 "m" = (
 /obj/effect/spider/stickyweb,
@@ -24,10 +24,10 @@
 "t" = (
 /obj/effect/spider/stickyweb,
 /obj/structure/closet/crate/secure/loot,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/snow/classp/no_tree,
 /area/class_p/ruins)
 "w" = (
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/snow/classp/no_tree,
 /area/class_p/ruins)
 "B" = (
 /turf/simulated/wall/classp,
@@ -39,11 +39,11 @@
 /obj/random/mob/sif/hostile{
 	mob_faction = "frozen"
 	},
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/snow/classp/no_tree,
 /area/class_p/ruins)
 "S" = (
 /obj/effect/spider/stickyweb,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/snow/classp/no_tree,
 /area/class_p/ruins)
 
 (1,1,1) = {"

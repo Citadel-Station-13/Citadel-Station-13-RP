@@ -255,7 +255,7 @@
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/vault)
 "xe" = (
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/turf/simulated/outdoors/beach/sand/lowdesert,
 /area/class_h/explored)
 "xt" = (
 /obj/effect/decal/cleanable/dirt,

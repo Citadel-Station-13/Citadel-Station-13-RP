@@ -24,7 +24,7 @@
 /obj/structure/fence/cut/large{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/east/colony)
 "aL" = (
 /obj/structure/bed/double,
@@ -111,7 +111,7 @@
 /area/lavaland/east/colony)
 "cs" = (
 /mob/living/simple_mob/animal/space/bats/surt,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/east/unexplored)
 "cL" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -173,7 +173,7 @@
 /area/lavaland/east/colony)
 "dK" = (
 /obj/structure/fence,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/east/colony)
 "dO" = (
 /obj/structure/table/woodentable,
@@ -181,7 +181,7 @@
 /area/lavaland/east/colony)
 "ed" = (
 /mob/living/simple_mob/animal/space/bats/surt,
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/lava/lavaland,
 /area/lavaland/east/unexplored)
 "ej" = (
 /obj/effect/floor_decal/industrial/warning/dust,
@@ -261,7 +261,7 @@
 /area/lavaland/east/colony)
 "gl" = (
 /obj/structure/flora/tree/jungle,
-/turf/simulated/floor/grass/outdoors/lavaland/interior,
+/turf/simulated/grass/outdoors/lavaland/interior,
 /area/lavaland/east/colony)
 "gm" = (
 /obj/effect/decal/cleanable/blood,
@@ -394,7 +394,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "ix" = (
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/east/explored)
 "iM" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -458,7 +458,7 @@
 /area/lavaland/east/colony)
 "kh" = (
 /obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/outdoors/dirt/lavaland/interior,
+/turf/simulated/dirt/lavaland/interior,
 /area/lavaland/east/colony)
 "kw" = (
 /obj/machinery/light{
@@ -472,7 +472,7 @@
 /area/lavaland/east/explored)
 "kN" = (
 /obj/structure/barricade,
-/turf/simulated/floor/outdoors/dirt/lavaland,
+/turf/simulated/dirt/lavaland,
 /area/lavaland/east/colony)
 "kP" = (
 /obj/structure/closet/crate/medical/blood,
@@ -611,7 +611,7 @@
 /area/lavaland/east/colony)
 "nh" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/east/explored)
 "ni" = (
 /obj/structure/sign/warning/docking_area{
@@ -620,7 +620,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/east/colony)
 "nt" = (
 /obj/machinery/light/small,
@@ -628,13 +628,13 @@
 /area/lavaland/east/transit)
 "nD" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/lava/lavaland,
 /area/lavaland/east/explored)
 "nK" = (
 /obj/structure/fence/cut/medium{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/east/colony)
 "nU" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -651,7 +651,7 @@
 /area/lavaland/east/colony)
 "oC" = (
 /mob/living/simple_mob/animal/space/bats/surt,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/east/explored)
 "oI" = (
 /obj/machinery/door/airlock{
@@ -697,7 +697,7 @@
 /obj/structure/fence/door/opened{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/dirt/lavaland,
+/turf/simulated/dirt/lavaland,
 /area/lavaland/east/colony)
 "pV" = (
 /obj/item/trash/cheesie,
@@ -711,7 +711,7 @@
 /area/lavaland/east/colony)
 "qK" = (
 /obj/structure/flora/ausbushes/stalkybush,
-/turf/simulated/floor/water/lavaland/interior,
+/turf/simulated/water/lavaland/interior,
 /area/lavaland/east/colony)
 "qN" = (
 /obj/structure/bed/double,
@@ -763,7 +763,7 @@
 	name = "\improper MEMETIC HAZARD";
 	pixel_x = -32
 	},
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/east/explored)
 "rw" = (
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -785,7 +785,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "rS" = (
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/east/colony)
 "si" = (
 /obj/structure/table/woodentable,
@@ -1077,7 +1077,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "ww" = (
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/lava/lavaland,
 /area/lavaland/east/unexplored)
 "wx" = (
 /obj/structure/bed/chair/sofa/black/left,
@@ -1096,7 +1096,7 @@
 /obj/structure/fence/door/opened{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/dirt/lavaland,
+/turf/simulated/dirt/lavaland,
 /area/lavaland/east/colony)
 "wF" = (
 /obj/structure/toilet{
@@ -1106,14 +1106,14 @@
 /area/lavaland/east/colony)
 "wG" = (
 /obj/structure/fence/cut/large,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/east/colony)
 "wL" = (
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "wP" = (
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/east/unexplored)
 "wV" = (
 /obj/structure/table/marble,
@@ -1199,7 +1199,7 @@
 	dir = 1
 	},
 /obj/structure/fence,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/east/colony)
 "yQ" = (
 /obj/effect/gibspawner/human,
@@ -1225,7 +1225,7 @@
 /area/lavaland/east/colony)
 "zl" = (
 /obj/structure/flora/ausbushes/grassybush,
-/turf/simulated/floor/grass/outdoors/lavaland/interior,
+/turf/simulated/grass/outdoors/lavaland/interior,
 /area/lavaland/east/colony)
 "zv" = (
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -1420,7 +1420,7 @@
 /area/lavaland/east/colony)
 "Do" = (
 /obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/grass/outdoors/lavaland/interior,
+/turf/simulated/grass/outdoors/lavaland/interior,
 /area/lavaland/east/colony)
 "Dp" = (
 /obj/machinery/mineral/unloading_machine,
@@ -1435,7 +1435,7 @@
 /area/lavaland/east/colony)
 "Dr" = (
 /obj/structure/flora/ausbushes/leafybush,
-/turf/simulated/floor/grass/outdoors/lavaland/interior,
+/turf/simulated/grass/outdoors/lavaland/interior,
 /area/lavaland/east/colony)
 "DB" = (
 /obj/structure/bed/double,
@@ -1556,10 +1556,10 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "Fa" = (
-/turf/simulated/floor/water/lavaland/interior,
+/turf/simulated/water/lavaland/interior,
 /area/lavaland/east/colony)
 "Fh" = (
-/turf/simulated/floor/grass/outdoors/lavaland/interior,
+/turf/simulated/grass/outdoors/lavaland/interior,
 /area/lavaland/east/colony)
 "Fx" = (
 /obj/machinery/door/airlock{
@@ -1718,10 +1718,10 @@
 /area/lavaland/east/colony)
 "ID" = (
 /obj/structure/fence/corner,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/east/colony)
 "IE" = (
-/turf/simulated/floor/outdoors/dirt/lavaland/interior,
+/turf/simulated/dirt/lavaland/interior,
 /area/lavaland/east/colony)
 "IK" = (
 /obj/machinery/light{
@@ -1942,7 +1942,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "MG" = (
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/lava/lavaland,
 /area/lavaland/east/explored)
 "ML" = (
 /obj/structure/ore_box,
@@ -2076,7 +2076,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/east/colony)
 "Pg" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -2228,7 +2228,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "RK" = (
-/turf/simulated/floor/outdoors/dirt/lavaland,
+/turf/simulated/dirt/lavaland,
 /area/lavaland/east/colony)
 "Su" = (
 /obj/structure/grille,
@@ -2335,7 +2335,7 @@
 	pixel_x = -25;
 	pixel_y = -1
 	},
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/east/explored)
 "TO" = (
 /obj/machinery/mineral/input,
@@ -2381,7 +2381,7 @@
 /area/lavaland/east/colony)
 "Ve" = (
 /obj/structure/barricade,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/east/colony)
 "Vq" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -2404,13 +2404,13 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "Wk" = (
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/lava/lavaland,
 /area/lavaland/east/colony)
 "Wp" = (
 /obj/structure/fence/cut/medium{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/east/colony)
 "Ws" = (
 /obj/structure/girder/displaced,
@@ -2428,7 +2428,7 @@
 /area/lavaland/east/colony)
 "WH" = (
 /obj/structure/flora/ausbushes,
-/turf/simulated/floor/grass/outdoors/lavaland/interior,
+/turf/simulated/grass/outdoors/lavaland/interior,
 /area/lavaland/east/colony)
 "WQ" = (
 /obj/effect/floor_decal/rust,
@@ -2442,7 +2442,7 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/east/colony)
 "Xr" = (
 /obj/machinery/mech_recharger,
@@ -2664,11 +2664,11 @@
 /area/lavaland/east/colony)
 "Zh" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/grass/outdoors/lavaland/interior,
+/turf/simulated/grass/outdoors/lavaland/interior,
 /area/lavaland/east/colony)
 "Zi" = (
 /obj/structure/flora/ausbushes/palebush,
-/turf/simulated/floor/grass/outdoors/lavaland/interior,
+/turf/simulated/grass/outdoors/lavaland/interior,
 /area/lavaland/east/colony)
 "Zv" = (
 /obj/item/material/shard,

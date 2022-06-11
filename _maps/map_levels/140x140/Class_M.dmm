@@ -7,7 +7,7 @@
 "ah" = (
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "aj" = (
 /obj/machinery/appliance/mixer/candy,
@@ -15,16 +15,16 @@
 /area/class_m/inside)
 "ao" = (
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/outdoors/dirt/classm,
+/turf/simulated/dirt/classm,
 /area/class_m/outside)
 "aN" = (
 /obj/structure/flora/tree/jungle,
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "aS" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/outdoors/dirt/classm,
+/turf/simulated/dirt/classm,
 /area/class_m/outside)
 "aW" = (
 /obj/structure/bed/chair/wood/wings,
@@ -32,7 +32,7 @@
 /area/class_m/inside)
 "ba" = (
 /obj/structure/flora/ausbushes/reedbush,
-/turf/simulated/floor/water/deep/classm,
+/turf/simulated/water/deep/classm,
 /area/class_m/outside)
 "bg" = (
 /obj/structure/table/woodentable,
@@ -50,7 +50,7 @@
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
 "bs" = (
-/turf/simulated/floor/water/deep/classm,
+/turf/simulated/water/deep/classm,
 /area/class_m/outside)
 "bu" = (
 /obj/structure/mirror{
@@ -80,11 +80,11 @@
 /area/class_m/inside)
 "bK" = (
 /obj/structure/lightpost,
-/turf/simulated/floor/outdoors/dirt/classm,
+/turf/simulated/dirt/classm,
 /area/class_m/outside)
 "co" = (
 /mob/living/simple_mob/animal/passive/bird/ringneck_dove,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "cs" = (
 /obj/machinery/door/airlock,
@@ -93,16 +93,16 @@
 "cu" = (
 /obj/structure/flora/tree/jungle_small,
 /mob/living/simple_mob/animal/passive/mouse/brown,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "cw" = (
 /mob/living/simple_mob/animal/passive/fish/bass,
-/turf/simulated/floor/water/deep/classm,
+/turf/simulated/water/deep/classm,
 /area/class_m/outside)
 "cL" = (
 /obj/structure/fence,
 /obj/structure/fence/corner,
-/turf/simulated/floor/outdoors/beach/sand/classm,
+/turf/simulated/outdoors/beach/sand/classm,
 /area/class_m/outside)
 "cU" = (
 /obj/item/stool/padded,
@@ -116,7 +116,7 @@
 "dw" = (
 /obj/structure/flora/ausbushes/palebush,
 /obj/structure/flora/ausbushes/pointybush,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "dQ" = (
 /obj/structure/sink{
@@ -195,7 +195,7 @@
 /area/class_m/inside)
 "fe" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/water/deep/classm,
+/turf/simulated/water/deep/classm,
 /area/class_m/outside)
 "fg" = (
 /obj/structure/bonfire,
@@ -214,11 +214,11 @@
 /obj/structure/sink/puddle{
 	pixel_y = 6
 	},
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "fI" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "fJ" = (
 /obj/structure/closet/crate/hydroponics,
@@ -230,7 +230,7 @@
 /obj/item/analyzer/plant_analyzer,
 /obj/item/analyzer/plant_analyzer,
 /obj/item/tool/wirecutters/clippers/trimmers,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "fU" = (
 /obj/structure/closet/crate/bin{
@@ -262,20 +262,20 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "gE" = (
 /obj/structure/fence/corner{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/beach/sand/classm,
+/turf/simulated/outdoors/beach/sand/classm,
 /area/class_m/outside)
 "gF" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /obj/structure/flora/ausbushes/genericbush,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "gG" = (
 /obj/machinery/light,
@@ -289,22 +289,22 @@
 /area/class_m/inside)
 "gV" = (
 /mob/living/simple_mob/animal/passive/bird/parrot/cockatiel/grey,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "gZ" = (
 /obj/item/reagent_containers/glass/bucket/wood,
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "hm" = (
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/beach/sand/classm,
+/turf/simulated/outdoors/beach/sand/classm,
 /area/class_m/outside)
 "hr" = (
 /mob/living/simple_mob/animal/passive/fish/solarfish,
-/turf/simulated/floor/water/deep/classm,
+/turf/simulated/water/deep/classm,
 /area/class_m/outside)
 "hv" = (
 /obj/structure/bed/double/padded,
@@ -315,7 +315,7 @@
 /obj/structure/fence/corner{
 	dir = 1
 	},
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "hH" = (
 /obj/machinery/recharge_station,
@@ -327,7 +327,7 @@
 "hS" = (
 /obj/structure/flora/tree/jungle_small,
 /obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "ib" = (
 /obj/structure/grille,
@@ -349,7 +349,7 @@
 /obj/structure/fence/post{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/beach/sand/classm,
+/turf/simulated/outdoors/beach/sand/classm,
 /area/class_m/outside)
 "il" = (
 /obj/structure/toilet{
@@ -368,7 +368,7 @@
 /area/class_m/inside)
 "iH" = (
 /obj/structure/flora/ausbushes/pointybush,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "iK" = (
 /obj/structure/table/marble,
@@ -394,7 +394,7 @@
 /area/class_m/inside)
 "jg" = (
 /obj/structure/fence,
-/turf/simulated/floor/outdoors/dirt/classm,
+/turf/simulated/dirt/classm,
 /area/class_m/outside)
 "jj" = (
 /obj/structure/closet/crate/bin{
@@ -418,11 +418,11 @@
 /turf/simulated/floor/tiled/classm/outdoors,
 /area/class_m/inside)
 "jz" = (
-/turf/simulated/floor/water/classm,
+/turf/simulated/water/classm,
 /area/class_m/outside)
 "jF" = (
 /obj/effect/floor_decal/grass_edge,
-/turf/simulated/floor/outdoors/dirt/classm,
+/turf/simulated/dirt/classm,
 /area/class_m/outside)
 "jH" = (
 /obj/structure/flora/pottedplant/crystal,
@@ -456,7 +456,7 @@
 "lp" = (
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/ausbushes/grassybush,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "ls" = (
 /turf/simulated/mineral/classm,
@@ -469,7 +469,7 @@
 /turf/simulated/floor/carpet,
 /area/class_m/inside)
 "lG" = (
-/turf/simulated/floor/water/shoreline/corner/classm,
+/turf/simulated/water/shoreline/corner/classm,
 /area/class_m/outside)
 "lJ" = (
 /obj/structure/closet/chefcloset,
@@ -503,7 +503,7 @@
 "mi" = (
 /obj/structure/flora/tree/jungle,
 /obj/structure/flora/ausbushes/grassybush,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "mm" = (
 /obj/item/stool/padded,
@@ -529,11 +529,11 @@
 /area/class_m/inside)
 "mP" = (
 /obj/structure/flora/tree/jungle,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "mT" = (
 /obj/structure/fence/end,
-/turf/simulated/floor/water/shoreline/classm,
+/turf/simulated/water/shoreline/classm,
 /area/class_m/outside)
 "mY" = (
 /obj/structure/bed/chair/comfy/black{
@@ -564,7 +564,7 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/simulated/floor/water/deep/classm,
+/turf/simulated/water/deep/classm,
 /area/class_m/outside)
 "nx" = (
 /obj/structure/bed/double/padded,
@@ -579,11 +579,11 @@
 /area/class_m/inside)
 "nK" = (
 /obj/structure/flora/ausbushes/fernybush,
-/turf/simulated/floor/water/deep/classm,
+/turf/simulated/water/deep/classm,
 /area/class_m/outside)
 "nW" = (
 /obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "ob" = (
 /obj/machinery/portable_atmospherics/hydroponics,
@@ -596,7 +596,7 @@
 /area/class_m/outside)
 "om" = (
 /mob/living/simple_mob/animal/passive/cat,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "on" = (
 /obj/structure/table/rack,
@@ -643,7 +643,7 @@
 /area/class_m/outside)
 "pn" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "po" = (
 /obj/item/bone/skull/unknown,
@@ -662,7 +662,7 @@
 "pQ" = (
 /obj/structure/fence,
 /obj/structure/fence/corner,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "pR" = (
 /obj/structure/bed/chair/comfy/beige{
@@ -683,7 +683,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "qa" = (
 /obj/structure/closet/secure_closet/hydroponics{
@@ -712,7 +712,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/class_m/inside)
 "ql" = (
-/turf/simulated/floor/water/shoreline/corner/classm{
+/turf/simulated/water/shoreline/corner/classm{
 	dir = 1
 	},
 /area/class_m/outside)
@@ -731,7 +731,7 @@
 /area/class_m/inside)
 "qR" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/outdoors/dirt/classm,
+/turf/simulated/dirt/classm,
 /area/class_m/outside)
 "qX" = (
 /obj/machinery/icecream_vat,
@@ -754,7 +754,7 @@
 /obj/structure/fence/corner{
 	dir = 1
 	},
-/turf/simulated/floor/water/shoreline/classm{
+/turf/simulated/water/shoreline/classm{
 	dir = 4
 	},
 /area/class_m/outside)
@@ -776,7 +776,7 @@
 "rC" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "rD" = (
 /obj/item/stool/padded,
@@ -813,7 +813,7 @@
 /area/class_m/inside)
 "rZ" = (
 /obj/structure/fence,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "sd" = (
 /obj/structure/fence/door,
@@ -852,7 +852,7 @@
 /area/class_m/inside)
 "ss" = (
 /obj/structure/flora/ausbushes/grassybush,
-/turf/simulated/floor/outdoors/dirt/classm,
+/turf/simulated/dirt/classm,
 /area/class_m/outside)
 "sL" = (
 /obj/item/ore,
@@ -872,7 +872,7 @@
 /area/class_m/inside)
 "tb" = (
 /obj/structure/flora/ausbushes/sunnybush,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "tc" = (
 /obj/structure/sign/warning/secure_area/armory{
@@ -893,7 +893,7 @@
 /area/class_m/inside)
 "tp" = (
 /obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/outdoors/dirt/classm,
+/turf/simulated/dirt/classm,
 /area/class_m/outside)
 "tz" = (
 /obj/item/bone/ribs,
@@ -911,7 +911,7 @@
 "tK" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/pointybush,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "tS" = (
 /turf/simulated/floor/carpet/bcarpet,
@@ -945,7 +945,7 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/dirt/classm,
+/turf/simulated/dirt/classm,
 /area/class_m/outside)
 "uF" = (
 /obj/machinery/smartfridge,
@@ -1019,11 +1019,11 @@
 /area/class_m/inside)
 "wa" = (
 /obj/structure/flora/ausbushes/palebush,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "wl" = (
 /obj/structure/flora/ausbushes/genericbush,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "wp" = (
 /obj/structure/table/rack,
@@ -1047,7 +1047,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/class_m/inside)
 "wD" = (
-/turf/simulated/floor/water/shoreline/classm{
+/turf/simulated/water/shoreline/classm{
 	dir = 4
 	},
 /area/class_m/outside)
@@ -1065,7 +1065,7 @@
 /area/class_m/inside)
 "xv" = (
 /obj/structure/fence,
-/turf/simulated/floor/outdoors/beach/sand/classm,
+/turf/simulated/outdoors/beach/sand/classm,
 /area/class_m/outside)
 "xB" = (
 /obj/machinery/light{
@@ -1076,11 +1076,11 @@
 "xI" = (
 /obj/structure/flora/tree/jungle_small,
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "yd" = (
 /obj/structure/closet/crate/trashcart,
-/turf/simulated/floor/outdoors/dirt/classm,
+/turf/simulated/dirt/classm,
 /area/class_m/outside)
 "yk" = (
 /obj/structure/table/marble,
@@ -1095,12 +1095,12 @@
 "yF" = (
 /obj/structure/flora/tree/jungle_small,
 /obj/structure/flora/tree/jungle,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "yJ" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /mob/living/simple_mob/animal/passive/snake,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "yM" = (
 /obj/machinery/door/airlock{
@@ -1111,7 +1111,7 @@
 /area/class_m/inside)
 "yQ" = (
 /mob/living/simple_mob/animal/passive/fox,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "yW" = (
 /obj/machinery/light,
@@ -1139,12 +1139,12 @@
 /area/class_m/inside)
 "zj" = (
 /mob/living/simple_mob/animal/passive/bird/european_robin,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "zy" = (
 /obj/structure/flora/ausbushes/brflowers,
 /mob/living/simple_mob/animal/passive/bird/european_robin,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "zH" = (
 /obj/structure/table/marble,
@@ -1216,7 +1216,7 @@
 /area/class_m/inside)
 "Ao" = (
 /obj/machinery/vending/fishing,
-/turf/simulated/floor/outdoors/dirt/classm,
+/turf/simulated/dirt/classm,
 /area/class_m/outside)
 "Aq" = (
 /obj/machinery/seed_storage/garden,
@@ -1294,7 +1294,7 @@
 /turf/simulated/floor/tiled/classm/outdoors,
 /area/class_m/inside)
 "BU" = (
-/turf/simulated/floor/outdoors/beach/sand/classm,
+/turf/simulated/outdoors/beach/sand/classm,
 /area/class_m/outside)
 "Ca" = (
 /obj/item/ore/coal,
@@ -1309,7 +1309,7 @@
 /area/class_m/inside)
 "CC" = (
 /mob/living/simple_mob/animal/passive/fish/perch,
-/turf/simulated/floor/water/deep/classm,
+/turf/simulated/water/deep/classm,
 /area/class_m/outside)
 "CD" = (
 /obj/structure/table/woodentable,
@@ -1347,7 +1347,7 @@
 /area/class_m/inside)
 "Dj" = (
 /obj/structure/flora/ausbushes/grassybush,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "Dp" = (
 /obj/structure/railing{
@@ -1383,13 +1383,13 @@
 "DY" = (
 /obj/structure/flora/tree/jungle,
 /obj/structure/flora/ausbushes/genericbush,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "DZ" = (
-/turf/simulated/floor/water/shoreline/classm,
+/turf/simulated/water/shoreline/classm,
 /area/class_m/outside)
 "El" = (
-/turf/simulated/floor/outdoors/dirt/classm,
+/turf/simulated/dirt/classm,
 /area/class_m/outside)
 "Eo" = (
 /obj/structure/railing{
@@ -1417,7 +1417,7 @@
 /obj/structure/fence/corner{
 	dir = 8
 	},
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "ED" = (
 /obj/structure/closet/crate/bin{
@@ -1443,7 +1443,7 @@
 /area/class_m/inside)
 "Fl" = (
 /obj/machinery/vending/hydronutrients,
-/turf/simulated/floor/outdoors/dirt/classm,
+/turf/simulated/dirt/classm,
 /area/class_m/outside)
 "Fq" = (
 /obj/structure/filingcabinet/chestdrawer,
@@ -1478,7 +1478,7 @@
 /obj/item/analyzer/plant_analyzer,
 /obj/item/analyzer/plant_analyzer,
 /obj/item/tool/wirecutters/clippers/trimmers,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "Gb" = (
 /obj/structure/table/marble,
@@ -1525,7 +1525,7 @@
 /area/class_m/inside)
 "Hl" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "Hm" = (
 /obj/structure/window/reinforced/full,
@@ -1555,12 +1555,12 @@
 /area/class_m/inside)
 "HC" = (
 /obj/effect/overmap/visitable/sector/gaia_planet,
-/turf/simulated/floor/water/deep/classm,
+/turf/simulated/water/deep/classm,
 /area/class_m/outside)
 "HE" = (
 /obj/structure/flora/tree/jungle,
 /obj/structure/flora/ausbushes/pointybush,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "HP" = (
 /obj/item/melee/umbrella,
@@ -1632,7 +1632,7 @@
 /obj/structure/fence/post{
 	dir = 8
 	},
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "JW" = (
 /obj/machinery/chem_master/condimaster,
@@ -1663,7 +1663,7 @@
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "Kh" = (
 /obj/structure/window/reinforced/tinted/frosted{
@@ -1705,7 +1705,7 @@
 "KM" = (
 /obj/structure/flora/ausbushes/grassybush,
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "KR" = (
 /obj/structure/railing,
@@ -1713,11 +1713,11 @@
 /area/class_m/inside)
 "KY" = (
 /obj/structure/fence/post,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "KZ" = (
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/outdoors/dirt/classm,
+/turf/simulated/dirt/classm,
 /area/class_m/outside)
 "Lg" = (
 /obj/machinery/appliance/cooker/fryer,
@@ -1725,7 +1725,7 @@
 /area/class_m/inside)
 "Lk" = (
 /obj/item/stool,
-/turf/simulated/floor/outdoors/beach/sand/classm,
+/turf/simulated/outdoors/beach/sand/classm,
 /area/class_m/outside)
 "Lt" = (
 /obj/structure/table/marble,
@@ -1767,11 +1767,11 @@
 "MK" = (
 /obj/structure/flora/tree/jungle,
 /mob/living/simple_mob/animal/passive/mouse/brown,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "ML" = (
 /mob/living/simple_mob/animal/passive/snake,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "MV" = (
 /turf/simulated/mineral/floor/classm,
@@ -1801,7 +1801,7 @@
 /area/class_m/inside)
 "Oi" = (
 /obj/structure/flora/ausbushes/lavendergrass,
-/turf/simulated/floor/outdoors/dirt/classm,
+/turf/simulated/dirt/classm,
 /area/class_m/outside)
 "Oo" = (
 /turf/simulated/wall/classm,
@@ -1823,11 +1823,11 @@
 "OE" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /obj/structure/lightpost,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "OM" = (
 /obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "ON" = (
 /obj/machinery/door/airlock/glass{
@@ -1847,7 +1847,7 @@
 /obj/structure/flora/tree/jungle_small,
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "Pe" = (
 /obj/structure/undies_wardrobe,
@@ -1855,11 +1855,11 @@
 /area/class_m/inside)
 "Pf" = (
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "Pu" = (
 /obj/structure/flora/ausbushes,
-/turf/simulated/floor/water/deep/classm,
+/turf/simulated/water/deep/classm,
 /area/class_m/outside)
 "Pv" = (
 /obj/machinery/door/airlock{
@@ -1933,7 +1933,7 @@
 /area/class_m/inside)
 "QQ" = (
 /mob/living/simple_mob/animal/passive/bird/azure_tit/tweeter,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "QV" = (
 /obj/machinery/vending/boozeomat{
@@ -1966,7 +1966,7 @@
 /area/class_m/inside)
 "Rr" = (
 /obj/structure/bonfire,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "Rt" = (
 /obj/machinery/door/airlock/freezer{
@@ -1977,10 +1977,10 @@
 /area/class_m/inside)
 "RB" = (
 /mob/living/simple_mob/animal/passive/fish/salmon,
-/turf/simulated/floor/water/deep/classm,
+/turf/simulated/water/deep/classm,
 /area/class_m/outside)
 "RF" = (
-/turf/simulated/floor/water/shoreline/classm{
+/turf/simulated/water/shoreline/classm{
 	dir = 6
 	},
 /area/class_m/outside)
@@ -2006,7 +2006,7 @@
 "So" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /obj/structure/fence,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "SB" = (
 /obj/machinery/shower{
@@ -2029,7 +2029,7 @@
 /obj/structure/fence/post{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/beach/sand/classm,
+/turf/simulated/outdoors/beach/sand/classm,
 /area/class_m/outside)
 "SV" = (
 /obj/effect/shuttle_landmark/automatic{
@@ -2038,7 +2038,7 @@
 /turf/simulated/floor/tiled/classm/outdoors,
 /area/class_m/outside)
 "Td" = (
-/turf/simulated/floor/water/shoreline/classm{
+/turf/simulated/water/shoreline/classm{
 	dir = 8
 	},
 /area/class_m/outside)
@@ -2058,7 +2058,7 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/class_m/inside)
 "Tx" = (
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "TD" = (
 /obj/machinery/button/remote/airlock{
@@ -2090,7 +2090,7 @@
 /area/class_m/inside)
 "UD" = (
 /mob/living/simple_mob/animal/passive/mouse/brown,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "UQ" = (
 /turf/simulated/mineral/floor,
@@ -2103,7 +2103,7 @@
 /area/class_m/inside)
 "Vc" = (
 /mob/living/simple_mob/animal/passive/fish/rockfish,
-/turf/simulated/floor/water/deep/classm,
+/turf/simulated/water/deep/classm,
 /area/class_m/outside)
 "Ve" = (
 /obj/structure/closet/secure_closet/hydroponics{
@@ -2121,11 +2121,11 @@
 "Vm" = (
 /obj/structure/flora/tree/jungle,
 /obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "Vs" = (
 /obj/structure/lightpost,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "Vy" = (
 /obj/machinery/vending/snack,
@@ -2150,7 +2150,7 @@
 /area/class_m/inside)
 "VH" = (
 /obj/structure/flora/bush,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "VX" = (
 /obj/structure/grille,
@@ -2172,7 +2172,7 @@
 /area/class_m/inside)
 "Wj" = (
 /obj/item/ore/coal,
-/turf/simulated/floor/outdoors/dirt/classm,
+/turf/simulated/dirt/classm,
 /area/class_m/outside)
 "Wk" = (
 /obj/machinery/vending/fitness,
@@ -2190,7 +2190,7 @@
 /area/class_m/inside)
 "WY" = (
 /obj/machinery/vending/hydroseeds,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "Xd" = (
 /obj/machinery/light{
@@ -2238,7 +2238,7 @@
 /turf/simulated/floor/tiled/white,
 /area/class_m/inside)
 "XI" = (
-/turf/simulated/floor/water/shoreline/classm{
+/turf/simulated/water/shoreline/classm{
 	dir = 10
 	},
 /area/class_m/outside)
@@ -2322,7 +2322,7 @@
 /area/class_m/inside)
 "Zx" = (
 /obj/structure/flora/ausbushes/lavendergrass,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "ZC" = (
 /obj/structure/table/marble,
@@ -2344,7 +2344,7 @@
 "ZO" = (
 /obj/structure/flora/tree/jungle,
 /obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/grass/outdoors/classm,
+/turf/simulated/grass/outdoors/classm,
 /area/class_m/outside)
 "ZS" = (
 /obj/structure/table/rack,

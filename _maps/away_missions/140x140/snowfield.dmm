@@ -3,40 +3,40 @@
 /turf/unsimulated/wall/planetary/sif,
 /area/awaymission/snowfield/restricted)
 "ab" = (
-/turf/simulated/floor/outdoors/snow{
+/turf/simulated/snow{
 	temperature = 243.15
 	},
 /area/awaymission/snowfield/restricted)
 "ac" = (
 /obj/effect/blocker,
-/turf/simulated/floor/outdoors/snow{
+/turf/simulated/snow{
 	temperature = 243.15
 	},
 /area/awaymission/snowfield/restricted)
 "ad" = (
-/turf/simulated/floor/outdoors/snow{
+/turf/simulated/snow{
 	temperature = 243.15
 	},
 /area/awaymission/snowfield/outside)
 "ae" = (
-/turf/simulated/floor/outdoors/snow{
+/turf/simulated/snow{
 	temperature = 243.15
 	},
 /area/awaymission/snowfield)
 "af" = (
 /atom/movable/landmark/gateway_scatter,
-/turf/simulated/floor/outdoors/snow{
+/turf/simulated/snow{
 	temperature = 243.15
 	},
 /area/awaymission/snowfield)
 "ag" = (
 /obj/machinery/light/small,
-/turf/simulated/floor/outdoors/snow{
+/turf/simulated/snow{
 	temperature = 243.15
 	},
 /area/awaymission/snowfield/base)
 "ah" = (
-/turf/simulated/floor/outdoors/snow{
+/turf/simulated/snow{
 	temperature = 243.15
 	},
 /area/awaymission/snowfield/base)
@@ -1218,7 +1218,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/snowfield/base)
 "dw" = (
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/snowfield/base)
 "dx" = (
 /turf/simulated/floor/holofloor/wood,
@@ -1281,7 +1281,7 @@
 	icon_state = "tube1";
 	pixel_y = 0
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/snowfield/base)
 "dI" = (
 /obj/structure/bed/chair/wood{
@@ -1300,7 +1300,7 @@
 	dir = 4;
 	icon_state = "tube1"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/snowfield/base)
 "dL" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -1451,7 +1451,7 @@
 /area/awaymission/snowfield/base)
 "ei" = (
 /obj/structure/coatrack,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/snowfield/base)
 "ej" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -1641,7 +1641,7 @@
 /area/awaymission/snowfield/base)
 "Bw" = (
 /obj/effect/overmap/visitable/sector/tether_gateway/snowfield,
-/turf/simulated/floor/outdoors/snow{
+/turf/simulated/snow{
 	temperature = 243.15
 	},
 /area/awaymission/snowfield/restricted)

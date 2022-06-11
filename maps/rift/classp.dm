@@ -155,12 +155,12 @@ var/datum/planet/classp/planet_classp = null
 
 /datum/weather/classp/snow/process_effects()
 	..()
-	for(var/turf/simulated/floor/outdoors/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
+	for(var/turf/simulated/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
 		if(S.z in holder.our_planet.expected_z_levels)
 			for(var/dir_checked in GLOB.cardinal)
 				var/turf/simulated/floor/T = get_step(S, dir_checked)
 				if(istype(T))
-					if(istype(T, /turf/simulated/floor/outdoors) && prob(33))
+					if(istype(T, /turf/simulated/outdoors) && prob(33))
 						T.chill()
 
 /datum/weather/classp/blizzard
@@ -187,16 +187,16 @@ var/datum/planet/classp/planet_classp = null
 
 /datum/weather/classp/blizzard/process_effects()
 	..()
-	for(var/turf/simulated/floor/outdoors/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
+	for(var/turf/simulated/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
 		if(S.z in holder.our_planet.expected_z_levels)
 			for(var/dir_checked in GLOB.cardinal)
 				var/turf/simulated/floor/T = get_step(S, dir_checked)
 				if(istype(T))
-					if(istype(T, /turf/simulated/floor/outdoors) && prob(50))
+					if(istype(T, /turf/simulated/outdoors) && prob(50))
 						T.chill()
 
 //Base Turf to determine the fancy treegen.
-/turf/simulated/floor/outdoors/snow/classp
+/turf/simulated/snow/classp
 	name = "snow"
 	desc = "A layer of many tiny bits of frozen water. It's hard to tell how deep it is."
 	icon = 'icons/turf/snow_new.dmi'
@@ -206,7 +206,7 @@ var/datum/planet/classp/planet_classp = null
 	var/deadtree_chance = 5
 	initial_gas_mix = ATMOSPHERE_ID_FROZEN
 
-/turf/simulated/floor/outdoors/snow/classp/Initialize(mapload)
+/turf/simulated/snow/classp/Initialize(mapload)
 	if(tree_chance && prob(tree_chance) && !check_density())
 		new /obj/structure/flora/tree/pine(src)
 	if(deadtree_chance && prob(deadtree_chance) && !check_density())

@@ -13,10 +13,10 @@
 /turf/template_noop,
 /area/submap/Rocky4)
 "e" = (
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/Rocky4)
 "f" = (
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/submap/Rocky4)
 
 (1,1,1) = {"

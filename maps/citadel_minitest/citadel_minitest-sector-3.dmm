@@ -7,13 +7,13 @@
 /turf/simulated/floor/beach/sand,
 /area/awaymission/wwmines)
 "ac" = (
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/awaymission/wwmines)
 "ad" = (
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/awaymission/wwmines)
 "ae" = (
-/turf/simulated/floor/water/deep,
+/turf/simulated/water/deep,
 /area/awaymission/wwmines)
 "af" = (
 /turf/simulated/floor/beach/sand,
@@ -65,11 +65,11 @@
 	dir = 8
 	},
 /obj/structure/railing,
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/awaymission/wwmines)
 "ap" = (
 /obj/structure/railing,
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/awaymission/wwmines)
 "aq" = (
 /obj/item/stool/padded,
@@ -103,7 +103,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/awaymission/wwmines)
 "ax" = (
 /obj/structure/table/woodentable,
@@ -141,18 +141,18 @@
 	icon_state = "railing0";
 	dir = 1
 	},
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/awaymission/wwmines)
 "aD" = (
 /obj/structure/railing{
 	icon_state = "railing0";
 	dir = 1
 	},
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/awaymission/wwmines)
 "aE" = (
 /obj/vehicle/boat/sifwood,
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/awaymission/wwmines)
 "aF" = (
 /obj/structure/window/reinforced/full,
@@ -169,7 +169,7 @@
 	icon_state = "railing0";
 	dir = 8
 	},
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/awaymission/wwmines)
 "aI" = (
 /obj/structure/table/woodentable,
@@ -190,7 +190,7 @@
 	icon_state = "railing0";
 	dir = 1
 	},
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/awaymission/wwmines)
 "aL" = (
 /obj/structure/simple_door/wood,
@@ -271,7 +271,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/awaymission/wwmines)
 "ba" = (
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/awaymission/wwmines)
 "bb" = (
 /obj/structure/flora/tree/sif,

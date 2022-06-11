@@ -27,7 +27,7 @@
 /area/class_p/unexplored)
 "bs" = (
 /obj/structure/sandbag,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/snow/classp/no_tree,
 /area/class_p/unexplored)
 "by" = (
 /obj/structure/table/standard,
@@ -112,7 +112,7 @@
 	},
 /area/class_p/unexplored)
 "dV" = (
-/turf/simulated/floor/outdoors/ice/classp,
+/turf/simulated/ice/classp,
 /area/class_p/unexplored)
 "eo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -132,7 +132,7 @@
 /obj/effect/shuttle_landmark/automatic{
 	docking_controller = "frozen"
 	},
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/snow/classp,
 /area/class_p/unexplored)
 "gu" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
@@ -215,7 +215,7 @@
 	},
 /area/class_p/unexplored)
 "iL" = (
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/snow/classp/no_tree,
 /area/class_p/unexplored)
 "ja" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green{
@@ -239,7 +239,7 @@
 /obj/effect/shuttle_landmark/automatic{
 	docking_controller = "frozen"
 	},
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/snow/classp/no_tree,
 /area/class_p/explored)
 "jK" = (
 /obj/machinery/light{
@@ -248,7 +248,7 @@
 /turf/simulated/floor/classp,
 /area/class_p/unexplored)
 "kq" = (
-/turf/simulated/floor/outdoors/shelfice/classp,
+/turf/simulated/outdoors/shelfice/classp,
 /area/class_p/unexplored)
 "kU" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -268,7 +268,7 @@
 /mob/living/simple_mob/animal/space/tree{
 	faction = "frozen"
 	},
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/snow/classp,
 /area/class_p/unexplored)
 "lZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -333,7 +333,7 @@
 /obj/random/mob/robotic/hivebot{
 	mob_faction = "frozen"
 	},
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/snow/classp/no_tree,
 /area/class_p/unexplored)
 "qJ" = (
 /obj/machinery/door/airlock/centcom{
@@ -627,7 +627,7 @@
 	name = "Frozen Dock Controller";
 	pixel_y = 30
 	},
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/snow/classp,
 /area/class_p/explored)
 "Ea" = (
 /obj/machinery/artifact,
@@ -667,13 +667,13 @@
 /turf/simulated/floor/classp,
 /area/class_p/unexplored)
 "EA" = (
-/turf/simulated/floor/outdoors/ice/classp,
+/turf/simulated/ice/classp,
 /area/class_p/explored)
 "EW" = (
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/ice/classp,
+/turf/simulated/ice/classp,
 /area/class_p/unexplored)
 "Fm" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -752,7 +752,7 @@
 /turf/simulated/wall/classp,
 /area/class_p/unexplored)
 "IV" = (
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/snow/classp,
 /area/class_p/explored)
 "Jw" = (
 /obj/machinery/atmospherics/component/binary/pump/on,
@@ -850,7 +850,7 @@
 	},
 /area/class_p/unexplored)
 "Pp" = (
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/snow/classp/no_tree,
 /area/class_p/explored)
 "Pr" = (
 /obj/structure/table/standard,
@@ -862,7 +862,7 @@
 /area/class_p/unexplored)
 "Pz" = (
 /obj/structure/bonfire,
-/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/turf/simulated/snow/classp/no_tree,
 /area/class_p/unexplored)
 "PB" = (
 /obj/machinery/atmospherics/pipe/simple/visible/universal,
@@ -892,7 +892,7 @@
 /area/class_p/unexplored)
 "PT" = (
 /obj/machinery/crystal/ice,
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/snow/classp,
 /area/class_p/unexplored)
 "Qj" = (
 /obj/machinery/computer/gyrotron_control,
@@ -993,7 +993,7 @@
 /area/class_p/unexplored)
 "Us" = (
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/ice/classp,
+/turf/simulated/ice/classp,
 /area/class_p/unexplored)
 "UO" = (
 /obj/machinery/atmospherics/pipe/simple/visible/universal,
@@ -1097,7 +1097,7 @@
 /area/class_p/unexplored)
 "XR" = (
 /obj/effect/overmap/visitable/sector/class_p,
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/snow/classp,
 /area/class_p/unexplored)
 "Yh" = (
 /obj/structure/barricade,
@@ -1121,7 +1121,7 @@
 /turf/simulated/floor/classp,
 /area/class_p/unexplored)
 "Zl" = (
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/snow/classp,
 /area/class_p/ruins)
 "Zn" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
@@ -1132,7 +1132,7 @@
 /obj/random/mob/robotic/hivebot{
 	mob_faction = "frozen"
 	},
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/snow/classp,
 /area/class_p/unexplored)
 "ZD" = (
 /obj/machinery/artifact_analyser,
@@ -1143,7 +1143,7 @@
 	},
 /area/class_p/unexplored)
 "ZK" = (
-/turf/simulated/floor/outdoors/snow/classp,
+/turf/simulated/snow/classp,
 /area/class_p/unexplored)
 "ZZ" = (
 /obj/structure/cable{

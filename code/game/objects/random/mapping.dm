@@ -476,10 +476,10 @@
 		T1.outdoors = turf_outdoors
 
 /obj/random/turf/item_to_spawn()
-	return pick(prob(25);/turf/simulated/floor/grass/outdoors/sif,
-				prob(25);/turf/simulated/floor/outdoors/dirt,
-				prob(25);/turf/simulated/floor/grass/outdoors/sif/forest,
-				prob(25);/turf/simulated/floor/outdoors/rocks)
+	return pick(prob(25);/turf/simulated/grass/outdoors/sif,
+				prob(25);/turf/simulated/dirt,
+				prob(25);/turf/simulated/grass/outdoors/sif/forest,
+				prob(25);/turf/simulated/outdoors/rocks)
 
 /obj/random/turf/lava
 	name = "random Lava spawn"
@@ -489,8 +489,8 @@
 	turf_outdoors = FALSE
 
 /obj/random/turf/lava/item_to_spawn()
-	return pick(prob(5);/turf/simulated/floor/outdoors/lava,
-				prob(3);/turf/simulated/floor/outdoors/rocks/caves,
+	return pick(prob(5);/turf/simulated/lava,
+				prob(3);/turf/simulated/outdoors/rocks/caves,
 				prob(1);/turf/simulated/mineral)
 
 /obj/random/trash_pile

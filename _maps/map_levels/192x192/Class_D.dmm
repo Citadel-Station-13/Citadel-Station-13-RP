@@ -14,7 +14,7 @@
 /turf/simulated/mineral/classd/indoors,
 /area/class_d/unexplored/underground)
 "bC" = (
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/unexplored)
 "bX" = (
 /obj/mob_spawner/alien/easy,
@@ -30,15 +30,15 @@
 /area/class_d/unexplored)
 "co" = (
 /obj/structure/ore_box,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "cR" = (
 /obj/mob_spawner/carp/large,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/unexplored)
 "ds" = (
 /obj/mob_spawner/carp/medium,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/unexplored)
 "dJ" = (
 /turf/simulated/mineral/classd/indoors,
@@ -49,14 +49,14 @@
 /area/class_d/unexplored)
 "dR" = (
 /obj/mob_spawner/drone_spawner,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/unexplored)
 "eb" = (
 /obj/mob_spawner/hound_spawner,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/unexplored)
 "ex" = (
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/explored/underground)
 "eL" = (
 /obj/item/beartrap{
@@ -64,26 +64,26 @@
 	deployed = 1;
 	icon_state = "beartrap1"
 	},
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/explored)
 "fh" = (
 /obj/structure/barricade/cutout/monky,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/explored)
 "fj" = (
 /obj/machinery/light/spot,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "fm" = (
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/wildcat_mining_base/exterior_power)
 "fA" = (
 /obj/machinery/light/spot/flicker,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "fO" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "fQ" = (
 /turf/simulated/wall/classd,
@@ -115,11 +115,11 @@
 /obj/machinery/light/spot/flicker{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "hM" = (
 /obj/machinery/atmospherics/pipe/vent,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "hQ" = (
 /obj/mob_spawner/alien/easy,
@@ -135,7 +135,7 @@
 /obj/machinery/light/spot/flicker{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "is" = (
 /obj/structure/sandbag,
@@ -269,7 +269,7 @@
 /obj/machinery/light/spot{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "lk" = (
 /turf/simulated/mineral/classd/indoors,
@@ -307,7 +307,7 @@
 /turf/simulated/floor/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/utility_room)
 "ms" = (
-/turf/simulated/floor/outdoors/rocks/classd,
+/turf/simulated/outdoors/rocks/classd,
 /area/class_d/unexplored)
 "mB" = (
 /obj/structure/fence/door/locked{
@@ -425,10 +425,10 @@
 /turf/simulated/floor/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "ql" = (
-/turf/simulated/floor/outdoors/rocks/classd,
+/turf/simulated/outdoors/rocks/classd,
 /area/class_d/explored)
 "qm" = (
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/explored)
 "qr" = (
 /obj/effect/shuttle_landmark/automatic{
@@ -566,7 +566,7 @@
 /area/class_d/wildcat_mining_base/interior/main_room)
 "sp" = (
 /obj/effect/map_effect/radiation_emitter,
-/turf/simulated/floor/outdoors/rocks/classd,
+/turf/simulated/outdoors/rocks/classd,
 /area/class_d/explored)
 "sq" = (
 /obj/machinery/light/spot/flicker{
@@ -735,7 +735,7 @@
 /area/class_d/wildcat_mining_base/interior/main_room)
 "vA" = (
 /obj/effect/map_effect/radiation_emitter/strong,
-/turf/simulated/floor/outdoors/rocks/classd,
+/turf/simulated/outdoors/rocks/classd,
 /area/class_d/explored)
 "vG" = (
 /obj/structure/fence/cut/large,
@@ -797,7 +797,7 @@
 /obj/machinery/light/spot{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "ym" = (
 /obj/structure/fence/cut/medium,
@@ -854,7 +854,7 @@
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "zK" = (
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "zP" = (
 /obj/effect/floor_decal/corner_kafel/yellow/diagonal,
@@ -880,11 +880,11 @@
 /area/class_d/wildcat_mining_base/exterior_power)
 "AD" = (
 /obj/mob_spawner/carp/small,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/unexplored)
 "AG" = (
 /obj/structure/barricade,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "AM" = (
 /obj/effect/floor_decal/rust,
@@ -943,7 +943,7 @@
 /obj/item/stack/material/wood{
 	amount = 10
 	},
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "Bp" = (
 /obj/structure/cable/orange{
@@ -970,7 +970,7 @@
 /obj/item/stack/material/wood{
 	amount = 10
 	},
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "CE" = (
 /turf/simulated/mineral/classd/indoors,
@@ -1023,7 +1023,7 @@
 /turf/simulated/wall/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bunk_room)
 "Ex" = (
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "EF" = (
 /obj/machinery/alarm/alarms_hidden{
@@ -1531,7 +1531,7 @@
 /obj/machinery/light/spot{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "Qw" = (
 /obj/item/beartrap,
@@ -1753,7 +1753,7 @@
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "WJ" = (
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/unexplored/underground)
 "WK" = (
 /obj/random/multiple/large_corp_crate/no_weapons,
@@ -1838,7 +1838,7 @@
 /obj/machinery/light/spot/flicker{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "YK" = (
 /obj/mob_spawner/alien/medium,

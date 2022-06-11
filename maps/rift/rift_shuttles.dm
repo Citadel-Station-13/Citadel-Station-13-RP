@@ -93,7 +93,7 @@
 /obj/effect/shuttle_landmark/rift/away/plains
 	name = "NSB Atlas Western Plains"
 	landmark_tag = "rift_plains"
-	base_turf = /turf/simulated/floor/outdoors/snow/lythios43c
+	base_turf = /turf/simulated/snow/lythios43c
 	base_area = /area/rift/surfacebase/outside/west
 
 // TRANSIT NAV POINTS

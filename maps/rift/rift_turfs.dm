@@ -22,26 +22,26 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/tiled/techfloor/grid)
 
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/tiled/techfloor)
 
-LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
+LYTHIOS43C_TURF_CREATE(/turf/simulated/dirt)
 
-LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
+LYTHIOS43C_TURF_CREATE(/turf/simulated/outdoors/rocks)
 
-LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/snow)
-/turf/simulated/floor/outdoors/snow/lythios43c
-	baseturfs = /turf/simulated/floor/outdoors/safeice/lythios43c
+LYTHIOS43C_TURF_CREATE(/turf/simulated/snow)
+/turf/simulated/snow/lythios43c
+	baseturfs = /turf/simulated/outdoors/safeice/lythios43c
 
-LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/safeice)
-/turf/simulated/floor/outdoors/safeice/indoors
+LYTHIOS43C_TURF_CREATE(/turf/simulated/outdoors/safeice)
+/turf/simulated/outdoors/safeice/indoors
 	outdoors = FALSE /* So that we don't get weather effects for the ice used indoors. Convuluted, I know, but this
 	means I don't need another, almost identical turf to be created. */
 
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors
+/turf/simulated/outdoors/safeice/lythios43c/indoors
 	outdoors = FALSE
 
 /turf/simulated/mineral/icerock
 	initial_gas_mix = GAS_STRING_STP
 
-/turf/simulated/floor/outdoors
+/turf/simulated/outdoors
 	initial_gas_mix = GAS_STRING_STP
 
 /turf/simulated/mineral/vacuum

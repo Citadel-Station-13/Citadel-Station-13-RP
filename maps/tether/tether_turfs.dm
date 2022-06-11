@@ -36,18 +36,18 @@ VIRGO3B_TURF_CREATE(/turf/simulated/floor/maglev)
 /turf/simulated/floor/wood/sif/virgo3b
 	initial_gas_mix = ATMOSPHERE_ID_VIRGO3B
 
-VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
-/turf/simulated/floor/outdoors/dirt/virgo3b
+VIRGO3B_TURF_CREATE(/turf/simulated/dirt)
+/turf/simulated/dirt/virgo3b
 	icon = 'icons/turf/flooring/asteroid.dmi'
 	icon_state = "asteroid"
 
-VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
+VIRGO3B_TURF_CREATE(/turf/simulated/outdoors/rocks)
 
-VIRGO3B_TURF_CREATE(/turf/simulated/floor/grass/outdoors/sif)
-/turf/simulated/floor/grass/outdoors/sif
+VIRGO3B_TURF_CREATE(/turf/simulated/grass/outdoors/sif)
+/turf/simulated/grass/outdoors/sif
 	turf_layers = list(
-		/turf/simulated/floor/outdoors/rocks/virgo3b,
-		/turf/simulated/floor/outdoors/dirt/virgo3b
+		/turf/simulated/outdoors/rocks/virgo3b,
+		/turf/simulated/dirt/virgo3b
 		)
 
 // Overriding these for the sake of submaps that use them on other planets.
@@ -55,10 +55,10 @@ VIRGO3B_TURF_CREATE(/turf/simulated/floor/grass/outdoors/sif)
 /turf/simulated/mineral
 	initial_gas_mix = GAS_STRING_STP
 
-/turf/simulated/floor/outdoors
+/turf/simulated/outdoors
 	initial_gas_mix = GAS_STRING_STP
 
-/turf/simulated/floor/water
+/turf/simulated/water
 	initial_gas_mix = GAS_STRING_STP
 
 /turf/simulated/mineral/vacuum

@@ -237,12 +237,12 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 			if(show_message)
 				to_chat(L, pick(effect_message))
 
-	for(var/turf/simulated/floor/outdoors/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
+	for(var/turf/simulated/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
 		if(S.z in holder.our_planet.expected_z_levels)
 			for(var/dir_checked in GLOB.cardinal)
 				var/turf/simulated/floor/T = get_step(S, dir_checked)
 				if(istype(T))
-					if(istype(T, /turf/simulated/floor/outdoors) && prob(33))
+					if(istype(T, /turf/simulated/outdoors) && prob(33))
 						T.chill()
 
 /datum/weather/virgo3b/blizzard
@@ -280,12 +280,12 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 			if(show_message)
 				to_chat(L, pick(effect_message))
 
-	for(var/turf/simulated/floor/outdoors/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
+	for(var/turf/simulated/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
 		if(S.z in holder.our_planet.expected_z_levels)
 			for(var/dir_checked in GLOB.cardinal)
 				var/turf/simulated/floor/T = get_step(S, dir_checked)
 				if(istype(T))
-					if(istype(T, /turf/simulated/floor/outdoors) && prob(50))
+					if(istype(T, /turf/simulated/outdoors) && prob(50))
 						T.chill()
 
 /datum/weather/virgo3b/rain

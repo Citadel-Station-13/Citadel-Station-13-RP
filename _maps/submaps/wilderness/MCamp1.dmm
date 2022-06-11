@@ -6,7 +6,7 @@
 /turf/template_noop,
 /area/submap/MilitaryCamp1)
 "c" = (
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/MilitaryCamp1)
 "d" = (
 /obj/random/landmine,
@@ -22,11 +22,11 @@
 /area/submap/MilitaryCamp1)
 "g" = (
 /obj/random/landmine,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/MilitaryCamp1)
 "h" = (
 /obj/effect/decal/remains,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/MilitaryCamp1)
 "i" = (
 /obj/effect/mine,
@@ -35,7 +35,7 @@
 "j" = (
 /obj/effect/decal/remains,
 /obj/random/landmine,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/MilitaryCamp1)
 "k" = (
 /obj/structure/flora/tree/sif,

@@ -18,17 +18,17 @@
 /turf/template_noop,
 /area/submap/Lake1)
 "f" = (
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/Lake1)
 "g" = (
 /obj/structure/flora/ausbushes/palebush,
 /turf/template_noop,
 /area/submap/Lake1)
 "h" = (
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/submap/Lake1)
 "i" = (
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/Lake1)
 "j" = (
 /turf/simulated/mineral,

@@ -968,7 +968,7 @@
 /turf/simulated/floor,
 /area/awaymission/academy/classrooms)
 "dz" = (
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/academy/headmaster)
 "dA" = (
 /obj/structure/table/woodentable,
@@ -2217,7 +2217,7 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/awaymission/academy/academyaft)
 "ib" = (
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/academy/academyaft)
 "ic" = (
 /obj/structure/table/rack,
@@ -2700,10 +2700,10 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/academy/academygate)
 "jK" = (
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/academy/academygate)
 "jL" = (
 /turf/simulated/floor/carpet,
@@ -2715,7 +2715,7 @@
 /area/awaymission/academy/academygate)
 "jN" = (
 /obj/structure/window/reinforced,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/academy/academygate)
 "jO" = (
 /obj/structure/cable{

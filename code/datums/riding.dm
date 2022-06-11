@@ -139,7 +139,7 @@
 	var/turf/next = get_step(ridden, direction)
 	var/turf/current = get_turf(ridden)
 
-	if(istype(next, /turf/simulated/floor/water) || istype(current, /turf/simulated/floor/water)) //We can move from land to water, or water to land, but not from land to land
+	if(istype(next, /turf/simulated/water) || istype(current, /turf/simulated/water)) //We can move from land to water, or water to land, but not from land to land
 		..()
 	else
 		to_chat(user, "<span class='warning'>Boats don't go on land!</span>")

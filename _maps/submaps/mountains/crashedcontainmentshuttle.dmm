@@ -181,7 +181,7 @@
 /turf/simulated/shuttle/floor/white,
 /area/submap/crashedcontainmentshuttle)
 "aP" = (
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/crashedcontainmentshuttle)
 "aQ" = (
 /obj/structure/grille{

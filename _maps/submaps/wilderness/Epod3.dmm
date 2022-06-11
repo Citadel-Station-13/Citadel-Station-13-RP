@@ -6,7 +6,7 @@
 /turf/template_noop,
 /area/submap/Epod3)
 "c" = (
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/Epod3)
 "d" = (
 /obj/structure/flora/tree/sif,
@@ -17,7 +17,7 @@
 /area/submap/Epod3)
 "f" = (
 /obj/structure/flora/tree/sif,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/Epod3)
 "g" = (
 /obj/effect/spider/stickyweb,
@@ -76,7 +76,7 @@
 /area/submap/Epod3)
 "l" = (
 /obj/effect/spider/stickyweb,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/Epod3)
 "m" = (
 /obj/machinery/door/airlock/external{
@@ -87,7 +87,7 @@
 /area/submap/Epod3)
 "n" = (
 /obj/effect/spider/eggcluster/small/frost,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/Epod3)
 "o" = (
 /mob/living/simple_mob/animal/giant_spider/carrier{
@@ -104,7 +104,7 @@
 /mob/living/simple_mob/animal/giant_spider/frost/sif{
 	ai_holder_type = /datum/ai_holder/simple_mob/guard/give_chase
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/Epod3)
 "r" = (
 /obj/structure/shuttle/window,

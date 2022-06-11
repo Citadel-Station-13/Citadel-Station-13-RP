@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ax" = (
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/central/unexplored)
 "aN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -10,7 +10,7 @@
 /area/lavaland/central/base/common)
 "bG" = (
 /mob/living/simple_mob/animal/space/bats/surt,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/central/unexplored)
 "bH" = (
 /obj/machinery/hyperpad/centre{
@@ -22,7 +22,7 @@
 /area/lavaland/central/base/common)
 "bJ" = (
 /mob/living/simple_mob/construct/shade/surt,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/central/explored)
 "bM" = (
 /turf/simulated/wall/lavaland,
@@ -60,7 +60,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/lava/lavaland,
 /area/lavaland/central/explored)
 "cR" = (
 /obj/structure/bed/double/padded,
@@ -162,7 +162,7 @@
 /area/lavaland/central/explored)
 "eY" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/central/explored)
 "fg" = (
 /obj/machinery/button/remote/blast_door{
@@ -183,28 +183,28 @@
 /area/lavaland/central/transit)
 "fj" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/lava/lavaland,
 /area/lavaland/central/explored)
 "fm" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/lava/lavaland,
 /area/lavaland/central/explored)
 "fv" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/lava/lavaland,
 /area/lavaland/central/explored)
 "fw" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
 	dir = 1
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/lava/lavaland,
 /area/lavaland/central/explored)
 "fx" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
@@ -214,7 +214,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/lava/lavaland,
 /area/lavaland/central/explored)
 "fX" = (
 /obj/machinery/door/firedoor{
@@ -268,7 +268,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "gy" = (
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/central/explored)
 "gE" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
@@ -679,20 +679,20 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/lava/lavaland,
 /area/lavaland/central/explored)
 "nx" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 9
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/lava/lavaland,
 /area/lavaland/central/explored)
 "nz" = (
 /obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/central/base/common)
 "nC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -1028,7 +1028,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/lava/lavaland,
 /area/lavaland/central/explored)
 "sJ" = (
 /obj/structure/grille,
@@ -1222,7 +1222,7 @@
 /area/lavaland/central/base/common)
 "vu" = (
 /mob/living/simple_mob/animal/space/bats/surt,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/central/explored)
 "vz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -1601,13 +1601,13 @@
 	},
 /obj/structure/catwalk,
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/lava/lavaland,
 /area/lavaland/central/explored)
 "CX" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
 	},
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/lava/lavaland,
 /area/lavaland/central/explored)
 "Du" = (
 /obj/structure/table/marble,
@@ -1633,7 +1633,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "DG" = (
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/lava/lavaland,
 /area/lavaland/central/explored)
 "Em" = (
 /obj/machinery/door/firedoor/multi_tile{
@@ -1753,7 +1753,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/lava/lavaland,
 /area/lavaland/central/explored)
 "HU" = (
 /obj/structure/closet/emcloset,
@@ -1789,7 +1789,7 @@
 	name = "\improper MEMETIC HAZARD";
 	pixel_x = -32
 	},
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/central/base/common)
 "Ir" = (
 /obj/machinery/light/small{
@@ -1845,7 +1845,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/lava/lavaland,
 /area/lavaland/central/explored)
 "Kj" = (
 /obj/machinery/recharge_station,
@@ -2014,7 +2014,7 @@
 	dir = 5
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/lava/lavaland,
 /area/lavaland/central/explored)
 "Op" = (
 /obj/structure/table/woodentable,
@@ -2032,7 +2032,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/lava/lavaland,
 /area/lavaland/central/explored)
 "Ow" = (
 /obj/machinery/button/remote/airlock{
@@ -2060,7 +2060,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/lava/lavaland,
 /area/lavaland/central/explored)
 "Pk" = (
 /turf/simulated/wall/solidrock,
@@ -2112,7 +2112,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
 	},
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/lava/lavaland,
 /area/lavaland/central/explored)
 "QA" = (
 /obj/machinery/door/airlock/glass_external{
@@ -2461,7 +2461,7 @@
 	pixel_y = -4
 	},
 /atom/movable/map_helper/airlock/sensor/ext_sensor,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/central/base/common)
 "Wb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2573,7 +2573,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
 	},
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/lava/lavaland,
 /area/lavaland/central/explored)
 "WZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2716,7 +2716,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/lava/lavaland,
 /area/lavaland/central/explored)
 "ZO" = (
 /obj/structure/curtain/open/shower/engineering,

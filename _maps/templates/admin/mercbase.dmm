@@ -51,7 +51,7 @@
 	},
 /area/antag/antag_base)
 "ag" = (
-/turf/simulated/floor/grass/outdoors/sif/virgo3b{
+/turf/simulated/grass/outdoors/sif/virgo3b{
 	tree_chance = 0
 	},
 /area/antag/antag_base)
@@ -63,7 +63,7 @@
 /area/antag/antag_base)
 "ai" = (
 /obj/structure/flora/tree/sif,
-/turf/simulated/floor/grass/outdoors/sif/virgo3b{
+/turf/simulated/grass/outdoors/sif/virgo3b{
 	tree_chance = 0
 	},
 /area/antag/antag_base)

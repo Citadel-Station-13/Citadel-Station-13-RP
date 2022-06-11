@@ -18,14 +18,14 @@ CLASSD_TURF_CREATE(/turf/simulated/floor)
 CLASSD_TURF_CREATE(/turf/simulated/floor/reinforced)
 CLASSD_TURF_CREATE(/turf/simulated/floor/tiled)
 CLASSD_TURF_CREATE(/turf/simulated/floor/tiled/steel_dirty)
-CLASSD_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
-CLASSD_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
-CLASSD_TURF_CREATE(/turf/simulated/floor/outdoors/beach/sand/dirt)
+CLASSD_TURF_CREATE(/turf/simulated/dirt)
+CLASSD_TURF_CREATE(/turf/simulated/outdoors/rocks)
+CLASSD_TURF_CREATE(/turf/simulated/outdoors/beach/sand/dirt)
 CLASSD_TURF_CREATE(/turf/simulated/mineral)
 CLASSD_TURF_CREATE(/turf/simulated/mineral/floor)
 CLASSD_TURF_CREATE(/turf/simulated/mineral/ignore_mapgen)
 CLASSD_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
-CLASSD_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
+CLASSD_TURF_CREATE(/turf/simulated/outdoors/rocks)
 
 // Now to make this a planet //
 
@@ -128,7 +128,7 @@ CLASSD_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 	)
 
 // Turfs
-/turf/simulated/floor/outdoors/classd
+/turf/simulated/outdoors/classd
 	name = "irradiated sand"
 	desc = "It literally glows in the dark."
 	icon = 'icons/turf/flooring/asteroid.dmi'

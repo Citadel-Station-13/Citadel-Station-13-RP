@@ -348,14 +348,14 @@
 /area/awaymission/research)
 "bS" = (
 /mob/living/simple_mob/animal/passive/lizard,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/research)
 "bT" = (
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/research)
 "bU" = (
 /mob/living/carbon/human/monkey,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/research)
 "bW" = (
 /obj/structure/shuttle/engine/heater{
@@ -384,7 +384,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/research)
 "ch" = (
 /obj/machinery/power/emitter{
@@ -468,21 +468,21 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/research)
 "cv" = (
 /obj/structure/window/reinforced,
 /mob/living/carbon/human/monkey,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/research)
 "cw" = (
 /obj/structure/window/reinforced,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/research)
 "cx" = (
 /obj/structure/window/reinforced,
 /obj/effect/overlay/palmtree_l,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/awaymission/research)
 "cy" = (
 /obj/structure/shuttle/engine/propulsion{

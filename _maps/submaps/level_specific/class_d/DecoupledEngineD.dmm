@@ -19,21 +19,21 @@
 /area/template_noop)
 "ag" = (
 /obj/machinery/power/rad_collector,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/POIs/ship)
 "ah" = (
 /obj/item/arrow/rod,
 /obj/item/stack/material/steel,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/POIs/ship)
 "ak" = (
 /obj/structure/lattice,
 /obj/structure/girder/displaced,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/POIs/ship)
 "al" = (
 /obj/item/projectile/bullet/magnetic/fuelrod,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/POIs/ship)
 "am" = (
 /obj/item/arrow/rod,
@@ -74,7 +74,7 @@
 "ax" = (
 /obj/structure/lattice,
 /obj/structure/grille/broken,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/POIs/ship)
 "ay" = (
 /obj/effect/floor_decal/rust,
@@ -108,7 +108,7 @@
 /area/class_d/POIs/ship)
 "aC" = (
 /obj/structure/ghost_pod/manual/lost_drone/dogborg,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/POIs/ship)
 "aD" = (
 /obj/structure/grille,
@@ -190,7 +190,7 @@
 	dir = 4;
 	icon_state = "propulsion_r"
 	},
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/POIs/ship)
 "aP" = (
 /obj/effect/floor_decal/rust,
@@ -258,11 +258,11 @@
 /area/class_d/POIs/ship)
 "aZ" = (
 /obj/item/stack/material/steel,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/POIs/ship)
 "ba" = (
 /obj/item/stack/rods,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/POIs/ship)
 "bb" = (
 /obj/structure/grille,
@@ -330,7 +330,7 @@
 /obj/structure/shuttle/engine/propulsion{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/POIs/ship)
 "bj" = (
 /obj/machinery/atmospherics/tvalve/digital{
@@ -370,7 +370,7 @@
 	dir = 4;
 	icon_state = "propulsion_l"
 	},
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/POIs/ship)
 "bo" = (
 /obj/effect/floor_decal/rust,
@@ -432,27 +432,27 @@
 /area/class_d/POIs/ship)
 "bx" = (
 /obj/structure/girder,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/POIs/ship)
 "by" = (
 /obj/structure/girder/displaced,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/POIs/ship)
 "bA" = (
 /obj/item/arrow/rod,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/POIs/ship)
 "bB" = (
 /obj/item/fuel_assembly/deuterium,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/POIs/ship)
 "bC" = (
 /obj/item/material/shard/phoron,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/POIs/ship)
 "bE" = (
 /obj/mob_spawner/alien/medium,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/POIs/ship)
 "gU" = (
 /obj/item/fuel_assembly/deuterium,
@@ -460,10 +460,10 @@
 /area/template_noop)
 "sU" = (
 /obj/structure/lattice,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/POIs/ship)
 "WD" = (
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/POIs/ship)
 
 (1,1,1) = {"

@@ -2,7 +2,7 @@
 "aa" = (
 /obj/structure/flora/pumpkin,
 /obj/effect/floor_decal/grass_edge,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/tradeport/cyndishow)
 "ab" = (
 /obj/structure/table/steel_reinforced,
@@ -33,7 +33,7 @@
 /area/shuttle/trade_ship/general)
 "ai" = (
 /obj/effect/floor_decal/grass_edge,
-/turf/simulated/floor/outdoors/dirtlight,
+/turf/simulated/dirt/light,
 /area/tradeport/cyndishow)
 "al" = (
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -121,7 +121,7 @@
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/safari)
 "az" = (
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tradeport/cyndishow)
 "aC" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -324,7 +324,7 @@
 /area/tradeport/facility)
 "bj" = (
 /obj/effect/decal/remains/mummy1,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tradeport/cyndishow)
 "bk" = (
 /obj/structure/outcrop,
@@ -353,7 +353,7 @@
 "bq" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/item/reagent_containers/glass/bucket,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport)
 "br" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -520,7 +520,7 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 10
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/tradeport/cyndishow)
 "cd" = (
 /obj/machinery/door/firedoor{
@@ -605,7 +605,7 @@
 /obj/machinery/door/airlock/glass{
 	name = "Hydroponics"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport)
 "cp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -988,7 +988,7 @@
 /area/shuttle/trade_ship/general)
 "dz" = (
 /obj/structure/flora/pumpkin/carved/owo,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/tradeport/cyndishow)
 "dA" = (
 /turf/simulated/wall/r_wall,
@@ -1535,7 +1535,7 @@
 "fK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/biogenerator,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport)
 "fL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1624,7 +1624,7 @@
 /obj/machinery/door/window/westleft{
 	dir = 2
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport/safarizoo)
 "fZ" = (
 /obj/structure/closet/emcloset,
@@ -1746,7 +1746,7 @@
 /area/tradeport/commons)
 "gx" = (
 /obj/machinery/seed_extractor,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport)
 "gy" = (
 /obj/machinery/cryopod/robot/trade,
@@ -2462,7 +2462,7 @@
 	dir = 1
 	},
 /obj/structure/lightpost,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport/safarizoo)
 "iX" = (
 /obj/structure/sink{
@@ -3006,7 +3006,7 @@
 "kT" = (
 /obj/structure/window/reinforced,
 /obj/random/humanoidremains,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tradeport/cyndishow)
 "kU" = (
 /obj/structure/transit_tube/station{
@@ -3120,7 +3120,7 @@
 	},
 /obj/structure/railing,
 /obj/structure/lightpost,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport/safarizoo)
 "lo" = (
 /obj/structure/cable/green{
@@ -3433,7 +3433,7 @@
 /area/shuttle/trade_ship/general)
 "mr" = (
 /obj/structure/flora/pumpkin/carved/scream,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/tradeport/cyndishow)
 "ms" = (
 /obj/structure/cable/green{
@@ -3694,7 +3694,7 @@
 /area/tradeport/commons)
 "nr" = (
 /obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport/safarizoo)
 "nt" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -3775,7 +3775,7 @@
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/trade_ship/general)
 "nN" = (
-/turf/simulated/floor/water/shoreline,
+/turf/simulated/water/shoreline,
 /area/tradeport/safarizoo)
 "nO" = (
 /obj/machinery/light/small{
@@ -4262,7 +4262,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport/safarizoo)
 "pX" = (
 /obj/structure/bed/chair,
@@ -4752,7 +4752,7 @@
 /obj/effect/floor_decal/plaque{
 	desc = "Ancient tombs like these are common across multiple species. The final resting place of Ahten-Ka is a popular topic amongst modern occult enthusiasts, who still debate whether the strange occurrence at that cyclopean pyramid were in fact early instances of Low Frequency Wave interference on humankind."
 	},
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tradeport/cyndishow)
 "rK" = (
 /obj/structure/table/rack/shelf/steel,
@@ -4788,7 +4788,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
 "rP" = (
-/turf/simulated/floor/outdoors/dirtlight,
+/turf/simulated/dirt/light,
 /area/tradeport/cyndishow)
 "rQ" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -5299,7 +5299,7 @@
 /area/tradeport/commons)
 "tS" = (
 /obj/structure/flora/tree/jungle,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport/safarizoo)
 "tU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -5478,7 +5478,7 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/tradeport/cyndishow)
 "uG" = (
 /obj/structure/railing{
@@ -5527,7 +5527,7 @@
 /area/tradeport/expansion)
 "uN" = (
 /obj/structure/railing,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport/safarizoo)
 "uP" = (
 /obj/machinery/light{
@@ -5926,7 +5926,7 @@
 /area/space)
 "vX" = (
 /obj/structure/lightpost,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport/safarizoo)
 "vY" = (
 /obj/machinery/door/firedoor{
@@ -6332,7 +6332,7 @@
 "xo" = (
 /obj/structure/flora/pumpkin/carved/girly,
 /obj/effect/floor_decal/grass_edge,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/tradeport/cyndishow)
 "xp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -6972,7 +6972,7 @@
 	dir = 1
 	},
 /obj/structure/table/marble,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tradeport/cyndishow)
 "zE" = (
 /obj/machinery/door/blast/shutters{
@@ -7021,7 +7021,7 @@
 /area/tradeport/atmospherics)
 "zK" = (
 /obj/machinery/vending/hydronutrients,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport)
 "zM" = (
 /obj/machinery/alarm/alarms_hidden{
@@ -7087,7 +7087,7 @@
 "Aa" = (
 /obj/structure/flora/pumpkin/carved,
 /obj/effect/floor_decal/grass_edge,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/tradeport/cyndishow)
 "Ac" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -7226,7 +7226,7 @@
 "AK" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/bone/skull,
-/turf/simulated/floor/outdoors/ice,
+/turf/simulated/ice,
 /area/tradeport/cyndishow)
 "AL" = (
 /obj/effect/floor_decal/industrial/outline/grey,
@@ -7382,7 +7382,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport)
 "Bj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -7496,7 +7496,7 @@
 	dir = 8
 	},
 /obj/structure/lightpost,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport/safarizoo)
 "BA" = (
 /obj/structure/table/standard,
@@ -7989,7 +7989,7 @@
 "Dm" = (
 /obj/machinery/light/small,
 /obj/structure/flora/pumpkin,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/tradeport/cyndishow)
 "Dq" = (
 /obj/structure/table/rack/shelf/steel,
@@ -8050,7 +8050,7 @@
 /area/shuttle/trade_ship/general)
 "DB" = (
 /obj/structure/cult/pylon,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tradeport/cyndishow)
 "DC" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -8085,7 +8085,7 @@
 "DE" = (
 /obj/structure/window/reinforced,
 /obj/structure/cult/pylon,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tradeport/cyndishow)
 "DF" = (
 /obj/structure/cable/yellow{
@@ -8124,7 +8124,7 @@
 /area/tradeport/cafeteria)
 "DL" = (
 /obj/machinery/smartfridge,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport)
 "DM" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -8134,7 +8134,7 @@
 /area/tradeport/dock)
 "DN" = (
 /mob/living/simple_mob/vore/redpanda,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport/safarizoo)
 "DO" = (
 /obj/machinery/light{
@@ -8972,7 +8972,7 @@
 /area/tradeport)
 "GJ" = (
 /obj/machinery/portable_atmospherics/hydroponics,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport)
 "GM" = (
 /obj/structure/window/reinforced{
@@ -9110,7 +9110,7 @@
 	desc = "This diorama features soil and produce cultivated from the very place of the infamous massacre. The scarecrow came with the purchase for free, and is a guest favorite for photographs.";
 	name = "Durian V Massacre"
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/tradeport/cyndishow)
 "Hf" = (
 /obj/machinery/light{
@@ -9370,7 +9370,7 @@
 	dir = 8
 	},
 /obj/structure/railing,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport/safarizoo)
 "In" = (
 /obj/machinery/light{
@@ -9415,7 +9415,7 @@
 /area/shuttle/trade_ship/general)
 "Iv" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/simulated/floor/outdoors/ice,
+/turf/simulated/ice,
 /area/tradeport/cyndishow)
 "Iw" = (
 /obj/machinery/light{
@@ -9976,7 +9976,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/shuttle/trade_ship/general)
 "KP" = (
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/tradeport/safarizoo)
 "KQ" = (
 /obj/structure/closet/wardrobe/pjs,
@@ -10549,7 +10549,7 @@
 	},
 /obj/structure/window/reinforced,
 /obj/structure/table/marble,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/tradeport/cyndishow)
 "MR" = (
 /obj/structure/cable/yellow{
@@ -10786,7 +10786,7 @@
 /obj/machinery/door/window/westright{
 	dir = 2
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport/safarizoo)
 "NJ" = (
 /obj/machinery/door/blast/shutters{
@@ -11024,7 +11024,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport)
 "OA" = (
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport/safarizoo)
 "OB" = (
 /obj/effect/floor_decal/rust,
@@ -11481,7 +11481,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport)
 "Qf" = (
 /obj/machinery/media/jukebox,
@@ -11522,7 +11522,7 @@
 	},
 /obj/structure/railing,
 /obj/structure/lightpost,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport/safarizoo)
 "Qv" = (
 /obj/structure/railing,
@@ -11570,7 +11570,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
 "QF" = (
-/turf/simulated/floor/outdoors/ice,
+/turf/simulated/ice,
 /area/tradeport/cyndishow)
 "QI" = (
 /turf/simulated/floor/plating,
@@ -11873,7 +11873,7 @@
 /area/tradeport/safarizoo)
 "RB" = (
 /obj/machinery/seed_storage/xenobotany,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport)
 "RC" = (
 /obj/structure/cable/yellow{
@@ -11908,7 +11908,7 @@
 "RF" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/effect/floor_decal/grass_edge,
-/turf/simulated/floor/outdoors/dirtlight,
+/turf/simulated/dirt/light,
 /area/tradeport/cyndishow)
 "RG" = (
 /obj/machinery/power/apc/alarms_hidden{
@@ -11933,7 +11933,7 @@
 	dir = 1
 	},
 /obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/tradeport/cyndishow)
 "RM" = (
 /obj/structure/window/reinforced{
@@ -11964,7 +11964,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport/safarizoo)
 "RS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -12999,7 +12999,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/dirtlight,
+/turf/simulated/dirt/light,
 /area/tradeport/cyndishow)
 "VW" = (
 /obj/machinery/button/remote/blast_door{
@@ -13124,7 +13124,7 @@
 /area/tradeport/dock)
 "Wn" = (
 /obj/structure/flora/pumpkin,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/tradeport/cyndishow)
 "Wo" = (
 /obj/structure/table/rack/shelf/steel,
@@ -13377,7 +13377,7 @@
 	dir = 4
 	},
 /obj/structure/lightpost,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport/safarizoo)
 "Xt" = (
 /obj/structure/janitorialcart,
@@ -13504,7 +13504,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport/safarizoo)
 "XV" = (
 /obj/structure/bed/chair{
@@ -13733,7 +13733,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/tradeport/safarizoo)
 "YK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,

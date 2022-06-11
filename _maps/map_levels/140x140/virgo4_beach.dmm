@@ -1,20 +1,20 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tether_away/beach/jungle)
 "ab" = (
 /obj/effect/overlay/palmtree_r,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tether_away/beach/jungle)
 "ac" = (
 /obj/effect/overlay/palmtree_l,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tether_away/beach/jungle)
 "ad" = (
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/kitchen)
 "ae" = (
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/tether_away/beach/jungle)
 "af" = (
 /obj/structure/grille,
@@ -37,19 +37,19 @@
 /area/tether_away/beach/resort/kitchen)
 "ai" = (
 /obj/effect/overlay/palmtree_r,
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/tether_away/beach/jungle)
 "aj" = (
-/turf/simulated/floor/water/beach,
+/turf/simulated/water/beach,
 /area/tether_away/beach)
 "ak" = (
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/tether_away/beach/coast)
 "al" = (
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/lockermed)
 "am" = (
-/turf/simulated/floor/water/deep,
+/turf/simulated/water/deep,
 /area/tether_away/beach/water)
 "an" = (
 /turf/simulated/mineral/floor/cave{
@@ -62,7 +62,7 @@
 /area/tether_away/beach/resort/janibar)
 "ap" = (
 /obj/effect/overlay/palmtree_r,
-/turf/simulated/floor/water/beach/corner{
+/turf/simulated/water/beach/corner{
 	dir = 8;
 	icon_state = "beachcorner"
 	},
@@ -86,10 +86,10 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/lockermed)
 "au" = (
-/turf/simulated/floor/grass/outdoors/forest,
+/turf/simulated/grass/outdoors/forest,
 /area/tether_away/beach/jungle)
 "av" = (
-/turf/simulated/floor/grass/outdoors{
+/turf/simulated/grass/outdoors{
 	outdoors = 0
 	},
 /area/tether_away/beach/jungle)
@@ -118,7 +118,7 @@
 /area/tether_away/beach)
 "aC" = (
 /obj/effect/overlay/palmtree_l,
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/tether_away/beach/jungle)
 "aD" = (
 /turf/simulated/floor/tiled/eris/cafe,
@@ -243,58 +243,58 @@
 /area/tether_away/beach)
 "bb" = (
 /obj/structure/bed/chair,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tether_away/beach)
 "bc" = (
 /obj/item/reagent_containers/food/drinks/cans/waterbottle,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tether_away/beach)
 "bd" = (
 /obj/item/beach_ball,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tether_away/beach)
 "be" = (
 /obj/item/clothing/head/collectable/paper,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tether_away/beach)
 "bf" = (
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/tether_away/beach/water)
 "bg" = (
 /turf/simulated/mineral/ignore_mapgen,
 /area/tether_away/beach/coast)
 "bh" = (
 /obj/effect/overlay/coconut,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tether_away/beach/jungle)
 "bi" = (
 /turf/simulated/wall,
 /area/tether_away/beach/water)
 "bj" = (
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/tether_away/beach/jungle)
 "bk" = (
-/turf/simulated/floor/water/beach{
+/turf/simulated/water/beach{
 	dir = 1;
 	icon_state = "beach"
 	},
 /area/tether_away/beach/water)
 "bl" = (
 /obj/tether_away_spawner/beach_outside,
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/tether_away/beach/jungle)
 "bm" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/tether_away/beach/jungle;
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert;
+	base_turf = /turf/simulated/outdoors/beach/sand/desert;
 	landmark_tag = "beach_c";
 	name = "Virgo 4 Beach (Center)"
 	},
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tether_away/beach/jungle)
 "bn" = (
 /mob/living/simple_mob/animal/passive/fish,
-/turf/simulated/floor/water/deep,
+/turf/simulated/water/deep,
 /area/tether_away/beach/water)
 "bo" = (
 /obj/effect/map_effect/portal/master/side_a{
@@ -306,7 +306,7 @@
 	},
 /area/tether_away/beach/jungle)
 "bp" = (
-/turf/simulated/floor/outdoors/beach/sand,
+/turf/simulated/outdoors/beach/sand,
 /area/tether_away/beach/jungle)
 "bq" = (
 /turf/simulated/mineral/ignore_mapgen,
@@ -319,11 +319,11 @@
 /area/tether_away/beach/jungle)
 "bs" = (
 /obj/effect/overlay/coconut,
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/tether_away/beach/jungle)
 "bR" = (
 /obj/effect/map_effect/portal/line/side_a,
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/turf/simulated/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/jungle)
 "bT" = (
 /obj/structure/cable/cyan{
@@ -344,7 +344,7 @@
 	},
 /area/tether_away/beach/resort)
 "ce" = (
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/turf/simulated/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/jungle)
 "cf" = (
 /turf/simulated/floor/tiled/asteroid_steel,
@@ -356,7 +356,7 @@
 	},
 /area/tether_away/beach/cavebase)
 "cA" = (
-/turf/simulated/floor/water/beach{
+/turf/simulated/water/beach{
 	dir = 10;
 	icon_state = "beach"
 	},
@@ -368,13 +368,13 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/janibar)
 "cS" = (
-/turf/simulated/floor/water/beach/corner,
+/turf/simulated/water/beach/corner,
 /area/tether_away/beach/water)
 "dd" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
 	},
-/turf/simulated/floor/water/deep/pool{
+/turf/simulated/water/deep/pool{
 	outdoors = 1
 	},
 /area/tether_away/beach/resort)
@@ -399,7 +399,7 @@
 /turf/simulated/floor/tiled/kafel_full/white,
 /area/tether_away/beach/resort/lockermed)
 "dY" = (
-/turf/simulated/floor/water/beach/corner{
+/turf/simulated/water/beach/corner{
 	dir = 8;
 	icon_state = "beachcorner"
 	},
@@ -469,7 +469,7 @@
 /area/tether_away/beach/resort/lockermed)
 "eX" = (
 /obj/effect/map_effect/portal/line/side_a,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tether_away/beach/jungle)
 "fl" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
@@ -510,7 +510,7 @@
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/dorm3)
 "fQ" = (
-/turf/simulated/floor/water/beach,
+/turf/simulated/water/beach,
 /area/tether_away/beach/water)
 "gd" = (
 /obj/structure/simple_door/sandstone,
@@ -523,7 +523,7 @@
 	},
 /area/tether_away/beach/cavebase)
 "gA" = (
-/turf/simulated/floor/water/beach{
+/turf/simulated/water/beach{
 	dir = 6;
 	icon_state = "beach"
 	},
@@ -538,7 +538,7 @@
 /area/tether_away/beach/resort/janibar)
 "hg" = (
 /obj/effect/overlay/palmtree_r,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tether_away/beach/resort)
 "hj" = (
 /turf/simulated/wall/sandstone,
@@ -547,7 +547,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/water/deep/pool{
+/turf/simulated/water/deep/pool{
 	outdoors = 1
 	},
 /area/tether_away/beach/resort)
@@ -570,7 +570,7 @@
 /area/tether_away/beach/resort/lockermed)
 "hx" = (
 /obj/effect/overmap/visitable/sector/virgo4,
-/turf/simulated/floor/water/deep,
+/turf/simulated/water/deep,
 /area/tether_away/beach/water)
 "hL" = (
 /obj/structure/table/steel_reinforced,
@@ -590,11 +590,11 @@
 	desc = "An old, worn out fox plushie. It smells of the ocean. You feel it holds emotional significance. Holding it gives you a vague sense of wanderlust, and appreciation for life. It always seems to find the way home.";
 	name = "old orange fox plushie"
 	},
-/turf/simulated/floor/outdoors/beach/sand,
+/turf/simulated/outdoors/beach/sand,
 /area/tether_away/beach/resort)
 "hQ" = (
 /obj/structure/flora/sif/subterranean,
-/turf/simulated/floor/grass/outdoors{
+/turf/simulated/grass/outdoors{
 	outdoors = 0
 	},
 /area/tether_away/beach/cavebase)
@@ -656,13 +656,13 @@
 /area/tether_away/beach/resort)
 "jH" = (
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/water/pool{
+/turf/simulated/water/pool{
 	outdoors = 1
 	},
 /area/tether_away/beach/resort)
 "jN" = (
 /obj/tether_away_spawner/beach_outside,
-/turf/simulated/floor/outdoors/beach/sand,
+/turf/simulated/outdoors/beach/sand,
 /area/tether_away/beach/resort)
 "jQ" = (
 /obj/structure/cable/cyan{
@@ -676,7 +676,7 @@
 /area/tether_away/beach/resort)
 "kd" = (
 /obj/machinery/light/small,
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/tether_away/beach/resort/kitchen)
 "kg" = (
 /obj/machinery/vending/loadout/clothing,
@@ -705,7 +705,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/simulated/floor/water/deep/pool{
+/turf/simulated/water/deep/pool{
 	outdoors = 1
 	},
 /area/tether_away/beach/resort)
@@ -775,7 +775,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/janibar)
 "le" = (
-/turf/simulated/floor/water/beach{
+/turf/simulated/water/beach{
 	dir = 5;
 	icon_state = "beach"
 	},
@@ -801,7 +801,7 @@
 /turf/simulated/floor/beach/sand,
 /area/tether_away/beach/resort)
 "lI" = (
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tether_away/beach/resort)
 "mb" = (
 /obj/machinery/power/apc/alarms_hidden{
@@ -833,7 +833,7 @@
 /turf/simulated/floor/lino,
 /area/tether_away/beach/resort/kitchen)
 "mC" = (
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tether_away/beach/water)
 "mF" = (
 /obj/structure/sink{
@@ -934,7 +934,7 @@
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/dorm1)
 "oC" = (
-/turf/simulated/floor/water/beach{
+/turf/simulated/water/beach{
 	dir = 4;
 	icon_state = "beach"
 	},
@@ -969,17 +969,17 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/janibar)
 "pq" = (
-/turf/simulated/floor/water/beach/corner,
+/turf/simulated/water/beach/corner,
 /area/tether_away/beach/jungle)
 "pw" = (
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/tether_away/beach/cavebase)
 "px" = (
 /obj/effect/map_effect/portal/master/side_a{
 	name = "V4_Desert_Entrance";
 	portal_id = "V4_desert_step"
 	},
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/turf/simulated/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/jungle)
 "py" = (
 /obj/structure/cable{
@@ -1009,7 +1009,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/simulated/floor/water/pool{
+/turf/simulated/water/pool{
 	outdoors = 1
 	},
 /area/tether_away/beach/resort)
@@ -1049,10 +1049,10 @@
 /area/tether_away/beach/resort)
 "pP" = (
 /obj/effect/overlay/palmtree_l,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tether_away/beach/resort)
 "pS" = (
-/turf/simulated/floor/water/beach{
+/turf/simulated/water/beach{
 	dir = 1;
 	icon_state = "beach"
 	},
@@ -1114,17 +1114,17 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/beach/sand,
+/turf/simulated/outdoors/beach/sand,
 /area/tether_away/beach/resort/lockermed)
 "sD" = (
 /turf/simulated/wall/wood,
 /area/tether_away/beach/resort/janibar)
 "sT" = (
 /obj/effect/overlay/coconut,
-/turf/simulated/floor/outdoors/beach/sand,
+/turf/simulated/outdoors/beach/sand,
 /area/tether_away/beach/resort)
 "tj" = (
-/turf/simulated/floor/water/beach{
+/turf/simulated/water/beach{
 	dir = 5;
 	icon_state = "beach"
 	},
@@ -1159,7 +1159,7 @@
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/dorm1)
 "tr" = (
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tether_away/beach)
 "ts" = (
 /obj/structure/cable{
@@ -1203,7 +1203,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
 	},
-/turf/simulated/floor/water/pool{
+/turf/simulated/water/pool{
 	outdoors = 1
 	},
 /area/tether_away/beach/resort)
@@ -1216,7 +1216,7 @@
 /area/tether_away/beach/water)
 "us" = (
 /obj/effect/overlay/coconut,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tether_away/beach/resort)
 "uL" = (
 /obj/structure/cable/cyan{
@@ -1233,7 +1233,7 @@
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/dorm3)
 "uO" = (
-/turf/simulated/floor/water/pool{
+/turf/simulated/water/pool{
 	outdoors = 1
 	},
 /area/tether_away/beach/resort)
@@ -1298,13 +1298,13 @@
 /area/tether_away/beach/resort/kitchen)
 "xb" = (
 /obj/structure/flora/ausbushes/fernybush,
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/tether_away/beach/cavebase)
 "xi" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/beach/sand,
+/turf/simulated/outdoors/beach/sand,
 /area/tether_away/beach/resort/janibar)
 "xy" = (
 /turf/simulated/mineral/floor/cave{
@@ -1313,11 +1313,11 @@
 /area/tether_away/beach/cavebase)
 "xT" = (
 /obj/tether_away_spawner/beach_outside_friendly,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tether_away/beach/resort)
 "xW" = (
 /obj/tether_away_spawner/beach_outside_friendly,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tether_away/beach/jungle)
 "yf" = (
 /obj/structure/table/reinforced,
@@ -1327,7 +1327,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/tether_away/beach/resort/janibar)
 "yF" = (
 /obj/structure/barricade,
@@ -1387,7 +1387,7 @@
 /area/tether_away/beach/powershed)
 "Ar" = (
 /obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/grass/outdoors/forest,
+/turf/simulated/grass/outdoors/forest,
 /area/tether_away/beach/jungle)
 "Aw" = (
 /obj/item/stool/padded,
@@ -1452,7 +1452,7 @@
 /turf/simulated/wall/sandstone,
 /area/tether_away/beach/resort/dorm3)
 "BG" = (
-/turf/simulated/floor/water/beach/corner{
+/turf/simulated/water/beach/corner{
 	dir = 8;
 	icon_state = "beachcorner"
 	},
@@ -1470,7 +1470,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/beach/sand,
+/turf/simulated/outdoors/beach/sand,
 /area/tether_away/beach/resort)
 "Cr" = (
 /obj/structure/cable/cyan{
@@ -1486,7 +1486,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/simulated/floor/water/deep/pool{
+/turf/simulated/water/deep/pool{
 	outdoors = 1
 	},
 /area/tether_away/beach/resort)
@@ -1495,23 +1495,23 @@
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/kitchen)
 "CP" = (
-/turf/simulated/floor/water/beach{
+/turf/simulated/water/beach{
 	dir = 10;
 	icon_state = "beach"
 	},
 /area/tether_away/beach/jungle)
 "Dq" = (
 /obj/tether_away_spawner/beach_outside_friendly,
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/tether_away/beach/jungle)
 "Dr" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/tether_away/beach/jungle;
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert;
+	base_turf = /turf/simulated/outdoors/beach/sand/desert;
 	landmark_tag = "beach_e";
 	name = "Virgo 4 Beach (E)"
 	},
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tether_away/beach/jungle)
 "DA" = (
 /obj/structure/cable{
@@ -1525,7 +1525,7 @@
 	},
 /area/tether_away/beach/resort)
 "DB" = (
-/turf/simulated/floor/water/deep/pool{
+/turf/simulated/water/deep/pool{
 	outdoors = 1
 	},
 /area/tether_away/beach/resort)
@@ -1542,7 +1542,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/dorm2)
 "DL" = (
-/turf/simulated/floor/water/beach/corner{
+/turf/simulated/water/beach/corner{
 	dir = 8;
 	icon_state = "beachcorner"
 	},
@@ -1554,7 +1554,7 @@
 	},
 /area/tether_away/beach/cavebase)
 "Ee" = (
-/turf/simulated/floor/water/beach/corner{
+/turf/simulated/water/beach/corner{
 	dir = 4;
 	icon_state = "beachcorner"
 	},
@@ -1579,7 +1579,7 @@
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/dorm4)
 "Ey" = (
-/turf/simulated/floor/water/beach{
+/turf/simulated/water/beach{
 	dir = 6;
 	icon_state = "beach"
 	},
@@ -1620,7 +1620,7 @@
 /area/tether_away/beach/resort/lockermed)
 "GS" = (
 /obj/effect/overlay/coconut,
-/turf/simulated/floor/outdoors/beach/sand,
+/turf/simulated/outdoors/beach/sand,
 /area/tether_away/beach/jungle)
 "Hv" = (
 /obj/structure/table/steel_reinforced,
@@ -1639,14 +1639,14 @@
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/dorm3)
 "Ij" = (
-/turf/simulated/floor/water/beach/corner{
+/turf/simulated/water/beach/corner{
 	dir = 4;
 	icon_state = "beachcorner"
 	},
 /area/tether_away/beach/water)
 "IA" = (
 /obj/structure/flora/tree/jungle,
-/turf/simulated/floor/grass/outdoors/forest,
+/turf/simulated/grass/outdoors/forest,
 /area/tether_away/beach/jungle)
 "IB" = (
 /obj/structure/closet/secure_closet/personal,
@@ -1671,7 +1671,7 @@
 /area/tether_away/beach/resort/dorm1)
 "IZ" = (
 /obj/effect/overlay/palmtree_r,
-/turf/simulated/floor/outdoors/beach/sand,
+/turf/simulated/outdoors/beach/sand,
 /area/tether_away/beach/resort)
 "Ja" = (
 /obj/structure/cable/cyan{
@@ -1700,7 +1700,7 @@
 /area/tether_away/beach/resort/kitchen)
 "JG" = (
 /obj/effect/step_trigger/zlevel_fall/beach,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tether_away/beach/water)
 "JU" = (
 /obj/structure/cable/cyan{
@@ -1726,7 +1726,7 @@
 /turf/simulated/floor/lino,
 /area/tether_away/beach/resort/kitchen)
 "Kw" = (
-/turf/simulated/floor/water/beach{
+/turf/simulated/water/beach{
 	dir = 8;
 	icon_state = "beach"
 	},
@@ -1765,7 +1765,7 @@
 /turf/simulated/wall/sandstone,
 /area/tether_away/beach/resort/kitchen)
 "LJ" = (
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/tether_away/beach/resort)
 "LO" = (
 /obj/machinery/shower{
@@ -1787,7 +1787,7 @@
 	},
 /area/tether_away/beach/resort/janibar)
 "LQ" = (
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/tether_away/beach/cavebase)
 "LT" = (
 /obj/machinery/seed_extractor,
@@ -1857,7 +1857,7 @@
 	},
 /area/tether_away/beach/resort)
 "Nv" = (
-/turf/simulated/floor/outdoors/beach/sand,
+/turf/simulated/outdoors/beach/sand,
 /area/tether_away/beach/resort)
 "ND" = (
 /obj/structure/table/glass,
@@ -1877,7 +1877,7 @@
 /area/tether_away/beach/resort/kitchen)
 "OK" = (
 /obj/effect/overlay/palmtree_l,
-/turf/simulated/floor/outdoors/beach/sand,
+/turf/simulated/outdoors/beach/sand,
 /area/tether_away/beach/resort)
 "PG" = (
 /obj/machinery/shower{
@@ -1905,7 +1905,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/simulated/floor/water/pool{
+/turf/simulated/water/pool{
 	outdoors = 1
 	},
 /area/tether_away/beach/resort)
@@ -1999,7 +1999,7 @@
 /area/tether_away/beach/resort/lockermed)
 "RD" = (
 /obj/tether_away_spawner/beach_outside_friendly,
-/turf/simulated/floor/outdoors/beach/sand,
+/turf/simulated/outdoors/beach/sand,
 /area/tether_away/beach/resort)
 "RH" = (
 /obj/structure/closet/cabinet{
@@ -2026,7 +2026,7 @@
 	},
 /area/tether_away/beach/resort)
 "RQ" = (
-/turf/simulated/floor/water/beach{
+/turf/simulated/water/beach{
 	dir = 8;
 	icon_state = "beach"
 	},
@@ -2043,7 +2043,7 @@
 	},
 /area/tether_away/beach/resort)
 "Sv" = (
-/turf/simulated/floor/water/beach{
+/turf/simulated/water/beach{
 	dir = 9;
 	icon_state = "beach"
 	},
@@ -2069,7 +2069,7 @@
 /area/tether_away/beach/resort/janibar)
 "SQ" = (
 /obj/structure/flora/ausbushes/fernybush,
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/tether_away/beach/cavebase)
 "ST" = (
 /obj/machinery/door/airlock/glass_medical{
@@ -2085,7 +2085,7 @@
 /area/tether_away/beach/resort/lockermed)
 "Tg" = (
 /mob/living/simple_mob/animal/passive/fish/solarfish,
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/tether_away/beach/cavebase)
 "Tp" = (
 /obj/machinery/power/apc/alarms_hidden{
@@ -2104,13 +2104,13 @@
 /area/tether_away/beach/resort/lockermed)
 "TU" = (
 /obj/tether_away_spawner/beach_outside,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tether_away/beach/resort)
 "Ue" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
-/turf/simulated/floor/water/pool{
+/turf/simulated/water/pool{
 	outdoors = 1
 	},
 /area/tether_away/beach/resort)
@@ -2142,7 +2142,7 @@
 	},
 /area/tether_away/beach/resort/lockermed)
 "Va" = (
-/turf/simulated/floor/water/beach/corner{
+/turf/simulated/water/beach/corner{
 	dir = 1;
 	icon_state = "beachcorner"
 	},
@@ -2155,10 +2155,10 @@
 /area/tether_away/beach/cavebase)
 "VJ" = (
 /obj/structure/sink/puddle,
-/turf/simulated/floor/grass/outdoors/forest,
+/turf/simulated/grass/outdoors/forest,
 /area/tether_away/beach/jungle)
 "VS" = (
-/turf/simulated/floor/water/beach/corner{
+/turf/simulated/water/beach/corner{
 	dir = 1;
 	icon_state = "beachcorner"
 	},
@@ -2176,7 +2176,7 @@
 /turf/simulated/floor/tiled/eris/cafe,
 /area/tether_away/beach/resort/kitchen)
 "Wf" = (
-/turf/simulated/floor/grass/outdoors,
+/turf/simulated/grass/outdoors,
 /area/tether_away/beach/resort)
 "Wj" = (
 /obj/structure/simple_door/wood,
@@ -2211,13 +2211,13 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/lockermed)
 "WX" = (
-/turf/simulated/floor/water/beach{
+/turf/simulated/water/beach{
 	dir = 9;
 	icon_state = "beach"
 	},
 /area/tether_away/beach/water)
 "Xd" = (
-/turf/simulated/floor/grass/outdoors{
+/turf/simulated/grass/outdoors{
 	outdoors = 0
 	},
 /area/tether_away/beach/cavebase)
@@ -2248,7 +2248,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
 	},
-/turf/simulated/floor/water/deep/pool{
+/turf/simulated/water/deep/pool{
 	outdoors = 1
 	},
 /area/tether_away/beach/resort)
@@ -2263,7 +2263,7 @@
 	},
 /area/tether_away/beach/resort)
 "Yv" = (
-/turf/simulated/floor/water/beach,
+/turf/simulated/water/beach,
 /area/tether_away/beach/jungle)
 "YE" = (
 /turf/simulated/wall/sandstone,
@@ -2271,11 +2271,11 @@
 "YO" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/tether_away/beach/jungle;
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert;
+	base_turf = /turf/simulated/outdoors/beach/sand/desert;
 	landmark_tag = "beach_nw";
 	name = "Virgo 4 Beach (NW)"
 	},
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/outdoors/beach/sand/desert,
 /area/tether_away/beach/jungle)
 "YR" = (
 /obj/structure/cable/cyan{

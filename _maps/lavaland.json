@@ -10,13 +10,13 @@
 		 "Station":false,
 		 "Linkage":null,
 		 "Gravity":true,
-		 "Baseturf":"/turf/simulated/floor/outdoors/lava/lavaland"
+		 "Baseturf":"/turf/simulated/lava/lavaland"
 	   },
 	   {
 		"Station":false,
 		"Linkage":null,
 		"Gravity":true,
-		"Baseturf":"/turf/simulated/floor/outdoors/lava/lavaland"
+		"Baseturf":"/turf/simulated/lava/lavaland"
 	   }
 	],
 	"minetype":"lavaland"

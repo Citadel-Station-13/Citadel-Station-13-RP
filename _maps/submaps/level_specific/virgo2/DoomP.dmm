@@ -6,17 +6,17 @@
 /turf/template_noop,
 /area/submap/virgo2/DoomP)
 "ac" = (
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/virgo2/DoomP)
 "ad" = (
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/DoomP)
 "ae" = (
 /mob/living/simple_mob/mechanical/viscerator,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/virgo2/DoomP)
 "af" = (
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/lava,
 /area/submap/virgo2/DoomP)
 "ah" = (
 /obj/random/landmine,
@@ -32,7 +32,7 @@
 /area/submap/virgo2/DoomP)
 "am" = (
 /obj/random/landmine,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/virgo2/DoomP)
 "an" = (
 /obj/effect/decal/remains/deer,
@@ -176,7 +176,7 @@
 /area/submap/virgo2/DoomP)
 "aL" = (
 /obj/structure/lattice,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/virgo2/DoomP)
 "aM" = (
 /obj/structure/bed/chair{
@@ -525,7 +525,7 @@
 /area/submap/virgo2/DoomP)
 "bN" = (
 /obj/machinery/crystal/lava,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/virgo2/DoomP)
 "bO" = (
 /obj/machinery/crystal/lava,
@@ -533,7 +533,7 @@
 /area/submap/virgo2/DoomP)
 "mi" = (
 /obj/structure/barricade,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/virgo2/DoomP)
 "El" = (
 /obj/structure/barricade,

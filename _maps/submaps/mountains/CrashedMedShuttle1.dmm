@@ -3,11 +3,11 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/CrashedMedShuttle)
 "ab" = (
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "ac" = (
 /obj/structure/lattice,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "ad" = (
 /obj/effect/spider/stickyweb,
@@ -40,7 +40,7 @@
 	},
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/lattice,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "aj" = (
 /obj/machinery/light/small{
@@ -73,7 +73,7 @@
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/loot_pile/surface/bones,
 /obj/structure/lattice,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "ao" = (
 /obj/item/circuitboard/broken,
@@ -103,7 +103,7 @@
 "at" = (
 /obj/item/material/shard,
 /obj/structure/lattice,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "au" = (
 /obj/structure/closet/secure_closet/personal/patient,
@@ -141,7 +141,7 @@
 "aB" = (
 /obj/structure/lattice,
 /obj/item/stack/rods,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "aC" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -200,11 +200,11 @@
 /area/submap/CrashedMedShuttle)
 "aM" = (
 /obj/item/material/shard,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "aN" = (
 /obj/effect/decal/cleanable/blood/oil,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "aO" = (
 /obj/item/material/shard{
@@ -229,7 +229,7 @@
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/loot_pile/surface/bones,
 /obj/structure/lattice,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "aT" = (
 /obj/machinery/light,
@@ -247,11 +247,11 @@
 /area/submap/CrashedMedShuttle)
 "aV" = (
 /obj/effect/spider/stickyweb,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "aW" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "aX" = (
 /obj/machinery/computer,
@@ -277,17 +277,17 @@
 /obj/item/material/shard{
 	icon_state = "medium"
 	},
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "bd" = (
 /obj/item/stack/rods,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "be" = (
 /obj/effect/spider/stickyweb,
 /obj/structure/girder/displaced,
 /obj/structure/lattice,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "bf" = (
 /obj/machinery/light{
@@ -301,21 +301,21 @@
 /obj/structure/lattice,
 /obj/item/gps/internal/poi,
 /obj/structure/flora/tree/sif,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "bg" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/loot_pile/surface/bones,
 /obj/effect/decal/cleanable/blood/drip,
 /obj/structure/lattice,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "bh" = (
 /obj/structure/grille/broken,
 /obj/item/material/shard{
 	icon_state = "medium"
 	},
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "bi" = (
 /obj/effect/decal/mecha_wreckage/odysseus,
@@ -331,12 +331,12 @@
 	icon_state = "beartrap1"
 	},
 /obj/random/trash,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "bk" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/lattice,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "bl" = (
 /obj/effect/spider/stickyweb,
@@ -349,12 +349,12 @@
 /area/submap/CrashedMedShuttle)
 "bn" = (
 /mob/living/simple_mob/animal/giant_spider/webslinger,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "bo" = (
 /obj/effect/spider/cocoon,
 /obj/structure/lattice,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "bp" = (
 /obj/structure/prop/fake_ai/dead/crashed_med_shuttle,
@@ -362,12 +362,12 @@
 /area/submap/CrashedMedShuttle)
 "bq" = (
 /obj/structure/flora/tree/sif,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "br" = (
 /obj/structure/grille/broken,
 /obj/item/material/shard,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "bs" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -382,12 +382,12 @@
 "bu" = (
 /obj/effect/decal/remains/tajaran,
 /obj/item/surgical/circular_saw,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "bv" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/spider/stickyweb,
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "bw" = (
 /obj/item/material/shard,
@@ -418,7 +418,7 @@
 	icon_state = "propulsion_r";
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "bC" = (
 /obj/structure/shuttle/engine/heater{

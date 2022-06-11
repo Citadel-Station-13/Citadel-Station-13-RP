@@ -2,11 +2,10 @@ var/list/grass_types = list(
 
 )
 
-/turf/simulated/floor/grass
+/turf/simulated/grass
 	name = "grass patch"
 	desc = "You can't tell if this is real grass or just cheap plastic imitation."
 	icon_state = "grass0"
-	floor_tile = /obj/item/stack/tile/grass
 	flags = NONE
 	footstep = FOOTSTEP_GRASS
 	barefootstep = FOOTSTEP_GRASS
@@ -14,18 +13,15 @@ var/list/grass_types = list(
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	// tiled_dirt = FALSE
 
-/turf/simulated/floor/grass/setup_broken_states()
-	return list("sand")
-
-/turf/simulated/floor/grass/Initialize(mapload)
+/turf/simulated/grass/Initialize(mapload)
 	. = ..()
 	spawniconchange()
 	AddComponent(/datum/component/diggable, /obj/item/ore/glass, 2, "uproot")
 
-/turf/simulated/floor/grass/proc/spawniconchange()
+/turf/simulated/grass/proc/spawniconchange()
 	icon_state = "grass[rand(0,3)]"
 /*
-/turf/simulated/floor/grass/fairy //like grass but fae-er
+/turf/simulated/grass/fairy //like grass but fae-er
 	name = "fairygrass patch"
 	desc = "Something about this grass makes you want to frolic. Or get high."
 	icon_state = "fairygrass0"
@@ -34,16 +30,16 @@ var/list/grass_types = list(
 	light_power = 0.80
 	light_color = COLOR_BLUE_LIGHT
 
-/turf/simulated/floor/grass/fairy/spawniconchange()
+/turf/simulated/grass/fairy/spawniconchange()
 	icon_state = "fairygrass[rand(0,3)]"
 */
-/turf/simulated/floor/grass/outdoors
+/turf/simulated/grass/outdoors
 	name = "grass"
 	desc = "A patch of grass."
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "grass0"
 	base_icon_state = "grass"
-	baseturfs = /turf/simulated/floor/outdoors/dirt
+	baseturfs = /turf/simulated/dirt
 	footstep = FOOTSTEP_GRASS
 	barefootstep = FOOTSTEP_GRASS
 	clawfootstep = FOOTSTEP_GRASS
@@ -60,11 +56,11 @@ var/list/grass_types = list(
 		/obj/structure/flora/ausbushes/fullgrass
 		)
 
-/turf/simulated/floor/grass/outdoors/break_tile()
+/turf/simulated/grass/outdoors/break_tile()
 	. = ..()
 	icon_state = "damaged"
 
-/turf/simulated/floor/grass/outdoors/Initialize(mapload)
+/turf/simulated/grass/outdoors/Initialize(mapload)
 	. = ..()
 	if(smoothing_flags)
 		var/matrix/translation = new
@@ -72,7 +68,7 @@ var/list/grass_types = list(
 		transform = translation
 		icon = smooth_icon
 
-/turf/simulated/floor/grass/outdoors/Initialize(mapload)
+/turf/simulated/grass/outdoors/Initialize(mapload)
 	if(prob(50))
 		icon_state = "[initial(icon_state)]2"
 		//edge_blending_priority++
@@ -82,6 +78,18 @@ var/list/grass_types = list(
 		new grass_type(src)
 	. = ..()
 
+/turf/simulated/grass/outdoors/attackby(obj/item/S as obj, mob/user as mob)
+	if(istype(S, /obj/item/shovel))
+		to_chat(user, SPAN_NOTICE("You begin to dig in \the [src] with your [S]."))
+		if(do_after(user, 4 SECONDS * S.toolspeed))
+			to_chat(user, SPAN_NOTICE("\The [src] has been dug up, a worm pops from the ground."))
+			new /obj/item/reagent_containers/food/snacks/worm(src)
+		else
+			to_chat(user, SPAN_NOTICE("You decide to not finish digging in \the [src]."))
+	else
+		..()
+
+
 /datum/category_item/catalogue/flora/sif_grass
 	name = "Sivian Flora - Moss"
 	desc = "A natural moss that has adapted to the sheer cold climate of Sif. \
@@ -90,7 +98,7 @@ var/list/grass_types = list(
 	The moss has evolved into it's distinctive blue hue thanks to it's reliance on bacteria that has a similar color."
 	value = CATALOGUER_REWARD_TRIVIAL
 
-/turf/simulated/floor/grass/outdoors/sif
+/turf/simulated/grass/outdoors/sif
 	name = "growth"
 	icon_state = "grass_sif"
 	edge_blending_priority = 4
@@ -105,19 +113,19 @@ var/list/grass_types = list(
 	catalogue_data = list(/datum/category_item/catalogue/flora/sif_grass)
 	catalogue_delay = 2 SECONDS
 
-/turf/simulated/floor/grass/outdoors/sif/Initialize(mapload)
+/turf/simulated/grass/outdoors/sif/Initialize(mapload)
 	if(tree_chance && prob(tree_chance) && !check_density())
 		new /obj/structure/flora/tree/sif(src)
 	. = ..()
 
-/turf/simulated/floor/grass/outdoors/forest
+/turf/simulated/grass/outdoors/forest
 	name = "thick grass"
 	icon_state = "grass-dark"
 	grass_chance = 80
 	//tree_chance = 20
 	edge_blending_priority = 5
 
-/turf/simulated/floor/grass/outdoors/sif/forest
+/turf/simulated/grass/outdoors/sif/forest
 	name = "thick growth"
 	icon_state = "grass_sif_dark"
 	edge_blending_priority = 5

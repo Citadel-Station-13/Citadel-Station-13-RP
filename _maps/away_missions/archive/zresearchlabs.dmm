@@ -155,7 +155,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/labs/cave)
 "aI" = (
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/awaymission/labs/cave)
 "aJ" = (
 /obj/structure/table/standard,
@@ -199,7 +199,7 @@
 /area/awaymission/labs/cave)
 "aN" = (
 /obj/effect/alien/weeds/node,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/awaymission/labs/cave)
 "aP" = (
 /obj/machinery/door/airlock/engineering,
@@ -207,14 +207,14 @@
 /area/awaymission/labs/cave)
 "aQ" = (
 /obj/structure/girder,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/awaymission/labs/cave)
 "aS" = (
 /turf/space,
 /area/awaymission/labs/cave)
 "aV" = (
 /obj/structure/ore_box,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/awaymission/labs/cave)
 "aX" = (
 /turf/simulated/floor{
@@ -447,7 +447,7 @@
 	},
 /area/awaymission/labs/cave)
 "bS" = (
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/awaymission/desert)
 "bT" = (
 /obj/machinery/floodlight,
@@ -3620,7 +3620,7 @@
 /area/awaymission/labs/solars)
 "jY" = (
 /obj/machinery/porta_turret,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/awaymission/desert)
 "jZ" = (
 /obj/structure/cable{
@@ -4507,7 +4507,7 @@
 /area/awaymission/desert)
 "lQ" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/awaymission/desert)
 "lR" = (
 /obj/structure/cable{
@@ -5995,11 +5995,11 @@
 /area/awaymission/labs/cargo)
 "pE" = (
 /obj/machinery/conveyor,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/awaymission/desert)
 "pF" = (
 /obj/effect/decal/mecha_wreckage/ripley,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/awaymission/labs/cave)
 "pG" = (
 /obj/structure/table/reinforced,
@@ -6103,7 +6103,7 @@
 	},
 /area/awaymission/labs/command)
 "pR" = (
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/awaymission/labs/command)
 "pS" = (
 /obj/structure/cable{
@@ -6111,7 +6111,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/awaymission/labs/command)
 "pY" = (
 /obj/machinery/door/window/northleft,
@@ -6150,7 +6150,7 @@
 /obj/effect/alien/weeds{
 	icon_state = "flesh2"
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/awaymission/labs/cave)
 "qd" = (
 /atom/movable/spawner/corpse/chef{
@@ -6273,13 +6273,13 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/awaymission/labs/cave)
 "qt" = (
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/awaymission/labs/cave)
 "qu" = (
 /obj/machinery/light{
@@ -6376,7 +6376,7 @@
 /area/awaymission/labs/command)
 "qL" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/awaymission/labs/cave)
 "qO" = (
 /obj/structure/closet/secure_closet/captains,
@@ -6496,7 +6496,7 @@
 	icon_state = "flesh2"
 	},
 /obj/effect/decal/cleanable/blood/gibs/up,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/awaymission/labs/cave)
 "rb" = (
 /obj/effect/decal/cleanable/blood,
@@ -6610,7 +6610,7 @@
 /area/awaymission/labs/command)
 "rp" = (
 /obj/effect/decal/cleanable/blood/gibs/core,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/awaymission/labs/cave)
 "rq" = (
 /obj/structure/cable{
@@ -6772,7 +6772,7 @@
 /area/awaymission/labs/command)
 "rO" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/awaymission/labs/cave)
 "rP" = (
 /turf/simulated/floor{
@@ -6830,7 +6830,7 @@
 /area/awaymission/labs/civilian)
 "rZ" = (
 /obj/effect/decal/cleanable/blood/gibs/limb,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/awaymission/labs/cave)
 "sa" = (
 /obj/machinery/shower{

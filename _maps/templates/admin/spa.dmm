@@ -22,7 +22,7 @@
 /turf/simulated/floor/wood,
 /area/submap/spa)
 "af" = (
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/submap/spa)
 "ag" = (
 /obj/structure/grille,
@@ -52,11 +52,11 @@
 	icon_state = "railing0";
 	dir = 8
 	},
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/submap/spa)
 "ak" = (
 /mob/living/simple_mob/animal/passive/fox,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/submap/spa)
 "al" = (
 /obj/structure/railing{
@@ -64,11 +64,11 @@
 	dir = 1
 	},
 /obj/structure/flora/ausbushes/sunnybush,
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/submap/spa)
 "am" = (
 /obj/structure/flora/ausbushes/sunnybush,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/submap/spa)
 "an" = (
 /obj/structure/grille,
@@ -87,24 +87,24 @@
 	icon_state = "railing0";
 	dir = 1
 	},
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/submap/spa)
 "ap" = (
 /obj/structure/railing{
 	icon_state = "railing0";
 	dir = 8
 	},
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/submap/spa)
 "aq" = (
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/submap/spa)
 "ar" = (
 /obj/structure/railing{
 	icon_state = "railing0";
 	dir = 4
 	},
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/submap/spa)
 "as" = (
 /obj/structure/flora/ausbushes/palebush,
@@ -112,7 +112,7 @@
 	icon_state = "railing0";
 	dir = 4
 	},
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/submap/spa)
 "at" = (
 /obj/structure/railing{
@@ -120,11 +120,11 @@
 	dir = 8
 	},
 /obj/structure/flora/ausbushes/palebush,
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/submap/spa)
 "au" = (
 /obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/submap/spa)
 "av" = (
 /obj/structure/railing{
@@ -132,16 +132,16 @@
 	dir = 8
 	},
 /obj/structure/railing,
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/submap/spa)
 "aw" = (
 /obj/structure/railing,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/submap/spa)
 "ax" = (
 /obj/structure/railing,
 /obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/submap/spa)
 "ay" = (
 /obj/structure/window/reinforced{
@@ -162,7 +162,7 @@
 "aB" = (
 /obj/structure/railing,
 /obj/structure/flora/ausbushes/sunnybush,
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/submap/spa)
 "aC" = (
 /obj/structure/window/reinforced,
@@ -177,7 +177,7 @@
 	icon_state = "railing0";
 	dir = 4
 	},
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/submap/spa)
 "aE" = (
 /obj/structure/window/reinforced,
@@ -461,7 +461,7 @@
 	icon_state = "tube1";
 	pixel_y = 0
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/submap/spa)
 "bz" = (
 /obj/structure/table/woodentable,
@@ -624,7 +624,7 @@
 /area/space)
 "bW" = (
 /mob/living/simple_mob/vore/redpanda,
-/turf/simulated/floor/grass,
+/turf/simulated/grass,
 /area/submap/spa)
 "bX" = (
 /turf/simulated/floor/carpet/blue,

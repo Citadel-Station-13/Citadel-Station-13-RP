@@ -3,20 +3,20 @@
 /turf/template_noop,
 /area/template_noop)
 "b" = (
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/cave/random_geyser)
 "c" = (
 /obj/random/turf/lava,
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/cave/random_geyser)
 "d" = (
 /obj/random/outcrop,
 /obj/random/turf/lava,
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/cave/random_geyser)
 "e" = (
 /obj/random/outcrop,
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/cave/random_geyser)
 "f" = (
 /obj/effect/map_effect/interval/effect_emitter/steam,
@@ -30,14 +30,14 @@
 /obj/effect/map_effect/interval/screen_shaker{
 	interval_upper_bound = 600
 	},
-/turf/simulated/floor/water/deep{
+/turf/simulated/water/deep{
 	outdoors = 0
 	},
 /area/submap/cave/random_geyser)
 "g" = (
 /obj/random/turf/lava,
 /obj/random/outcrop,
-/turf/simulated/floor/outdoors/rocks/caves,
+/turf/simulated/outdoors/rocks/caves,
 /area/submap/cave/random_geyser)
 
 (1,1,1) = {"

@@ -34,7 +34,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/crashedcontainmentshuttle)
 "ai" = (
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/crashedcontainmentshuttle)
 "aj" = (
 /obj/item/material/shard,

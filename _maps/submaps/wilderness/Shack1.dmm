@@ -9,7 +9,7 @@
 /turf/template_noop,
 /area/submap/Shack1)
 "d" = (
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/dirt,
 /area/submap/Shack1)
 "e" = (
 /obj/effect/decal/cleanable/cobweb,

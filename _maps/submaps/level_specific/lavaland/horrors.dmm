@@ -13,7 +13,7 @@
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/horrors)
 "d" = (
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/horrors)
 "i" = (
 /obj/structure/girder,
@@ -31,7 +31,7 @@
 /area/lavaland/horrors)
 "n" = (
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/horrors)
 "o" = (
 /obj/effect/decal/cleanable/blood/gibs,
@@ -57,7 +57,7 @@
 /area/lavaland/horrors)
 "y" = (
 /obj/effect/floor_decal/asteroid,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/horrors)
 "A" = (
 /obj/effect/decal/cleanable/blood,
@@ -71,7 +71,7 @@
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/horrors)
 "K" = (
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/template_noop)
 "N" = (
 /turf/template_noop,
@@ -88,7 +88,7 @@
 /area/lavaland/horrors)
 "Q" = (
 /obj/effect/decal/cleanable/generic,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/outdoors/lavaland,
 /area/lavaland/horrors)
 "U" = (
 /obj/structure/table,

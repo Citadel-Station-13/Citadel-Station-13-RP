@@ -224,13 +224,13 @@
 	z = Z_LEVEL_UNDERGROUND_FLOOR
 	name = "Eastern Canyon"
 	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
-	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
+	base_turf = /turf/simulated/outdoors/safeice/lythios43c
 
 /datum/map_z_level/rift/station/underground_deep
 	z = Z_LEVEL_UNDERGROUND_DEEP
 	name = "Underground 2"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
-	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
+	base_turf = /turf/simulated/outdoors/safeice/lythios43c
 
 /datum/map_z_level/rift/station/underground_shallow
 	z = Z_LEVEL_UNDERGROUND
@@ -267,7 +267,7 @@
 	z = Z_LEVEL_WEST_BASE
 	name = "Western Canyon"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c/indoors
+	base_turf = /turf/simulated/outdoors/safeice/lythios43c/indoors
 
 /datum/map_z_level/rift/deep
 	z = Z_LEVEL_WEST_DEEP
@@ -279,7 +279,7 @@
 	z = Z_LEVEL_WEST_CAVERN
 	name = "Western Caves"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c/indoors
+	base_turf = /turf/simulated/outdoors/safeice/lythios43c/indoors
 
 /datum/map_z_level/rift/plains
 	z = Z_LEVEL_WEST_PLAIN

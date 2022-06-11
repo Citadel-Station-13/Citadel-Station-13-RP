@@ -6,10 +6,10 @@
 /turf/template_noop,
 /area/submap/Peninsula)
 "c" = (
-/turf/simulated/floor/outdoors/rocks,
+/turf/simulated/outdoors/rocks,
 /area/submap/Peninsula)
 "d" = (
-/turf/simulated/floor/water,
+/turf/simulated/water,
 /area/submap/Peninsula)
 "e" = (
 /obj/structure/flora/tree/sif,

@@ -145,7 +145,7 @@
 /turf/simulated/floor/tiled/kafel_full,
 /area/class_d/POIs/landing_pad)
 "w" = (
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/POIs/landing_pad)
 "x" = (
 /obj/effect/floor_decal/rust,
@@ -271,7 +271,7 @@
 /area/class_d/POIs/landing_pad)
 "P" = (
 /obj/machinery/floodlight,
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/POIs/landing_pad)
 "Q" = (
 /obj/effect/decal/cleanable/dirt,
@@ -304,7 +304,7 @@
 /obj/machinery/light/spot{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/classd,
+/turf/simulated/outdoors/classd,
 /area/class_d/POIs/landing_pad)
 "W" = (
 /obj/effect/floor_decal/rust,
