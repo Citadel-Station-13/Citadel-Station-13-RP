@@ -78,3 +78,10 @@
   - rscadd: Added new circuits from everywhere, plus a couple of extras. Circuit cloning.
   - bugfix: Input circuits live again
   - refactor: Integrated circuits backend ported from Main
+2022-06-11:
+  CharlesWedge:
+  - rscadd: Oregen Across All Cave Zs
+  - bugfix: Atlas Weather now effects all Atlas Z levels.
+  silicons:
+  - bugfix: zone weirdness
+  - code_imp: ZAS hard asserts are now fixed

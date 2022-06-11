@@ -1,5 +1,0 @@
-author: "silicons"
-delete-after: True
-changes: 
-  - bugfix: "zone weirdness"
-  - code_imp: "ZAS hard asserts are now fixed"
