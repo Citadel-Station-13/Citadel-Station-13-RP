@@ -95,6 +95,30 @@
 	skyfall_levels = list(z - 1)
 	. = ..()
 
+//This is a test adjustment to the do_fall proc to see if I can get it to land in the Lythios canyon turfs specifically. This is a RIFT ONLY edit until someone more skilled can find an elegant solution.
+/turf/simulated/floor/sky/depths/do_fall(atom/movable/AM)
+	//Bye
+	var/attempts = 100
+	var/turf/simulated/floor/outdoors/snow/lythios43c/T
+	while(attempts && !T)
+		var/turf/simulated/candidate = locate(rand(5,world.maxx-5),rand(5,world.maxy-5),pick(skyfall_levels))
+		if(candidate.density)
+			attempts--
+			continue
+
+		T = candidate
+		break
+
+	if(!T)
+		return
+
+	AM.forceMove(T)
+	if(isliving(AM))
+		var/mob/living/L = AM
+		message_admins("\The [AM] fell out of the sky.")
+		L.fall_impact(T, 42, 90, FALSE, TRUE)	//You will not be defibbed from this.
+
+
 /turf/simulated/floor/sky/depths/west
 	skyfall_levels = "Western Canyon"
 
