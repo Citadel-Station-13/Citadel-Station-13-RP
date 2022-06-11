@@ -36,7 +36,7 @@
 		if(is_type_in_list(target_move, ventcrawl_machinery) && target_move.can_crawl_through())
 			user.remove_ventcrawl()
 			user.forceMove(target_move.loc) //handles entering and so on
-			M.update_perspective()
+			user.update_perspective()
 			user.visible_message("You hear something squeezing through the ducts.", "You climb out the ventilation system.")
 		else if(target_move.can_crawl_through())
 			if(target_move.return_network(target_move) != return_network(src))
