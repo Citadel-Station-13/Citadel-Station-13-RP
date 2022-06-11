@@ -539,3 +539,4 @@
 	var/datum/gas_mixture/GM = new(CELL_VOLUME)
 	GM.copy_from(src)
 	GM.group_multiplier = 1
+	return GM

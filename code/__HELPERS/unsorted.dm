@@ -730,12 +730,11 @@ proc/GaussRandRound(var/sigma,var/roundto)
 
 					//Move the air from source to dest
 					var/turf/simulated/ST = T
-					if(istype(ST) && ST.zone)
+					if(istype(ST))
 						var/turf/simulated/SX = X
 						if(!SX.air)
 							SX.make_air()
-						SX.air.copy_from(ST.zone.air)
-						ST.zone.remove(ST)
+						SX.air.copy_from(ST.copy_cell_volume())
 
 					var/z_level_change = FALSE
 					if(T.z != X.z)
@@ -908,16 +907,11 @@ proc/DuplicateObject(obj/original, var/perfectcopy = 0 , var/sameloc = 0)
 					refined_trg -= B
 					continue moving
 
-
-
-
 	if(toupdate.len)
 		for(var/turf/simulated/T1 in toupdate)
-			air_master.mark_for_update(T1)
+			T1.queue_zone_update()
 
 	return copiedobjs
-
-
 
 proc/get_cardinal_dir(atom/A, atom/B)
 	var/dx = abs(B.x - A.x)
