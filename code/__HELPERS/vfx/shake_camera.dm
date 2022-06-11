@@ -16,7 +16,7 @@
 		var/old_x = C.pixel_x
 		var/old_y = C.pixel_y
 		for(var/i in 1 to duration)
-			if(i == 0)
+			if(i == 1)
 				animate(C, pixel_x = rand(min, max), pixel_y = rand(min, max), time = 1)
 			else
 				animate(pixel_x = rand(min, max), pixel_y = rand(min, max), time = 1)
