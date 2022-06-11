@@ -79,7 +79,7 @@
 	var/turf/simulated/open/OS = GetAbove(M)
 	while(istype(OS))
 		if(!M.shadow)
-			M.shadow = new /mob/shadow(OS, M)
+			M.shadow = new /mob/zshadow(OS, M)
 		M = M.shadow
 		OS = OS.Above()
 	// The topmost level does not need a shadow!
