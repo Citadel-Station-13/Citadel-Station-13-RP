@@ -1,0 +1,5 @@
+author: "CharlesWedge"
+delete-after: True
+changes: 
+  - rscadd: "Oregen Across All Cave Zs"
+  - bugfix: "Atlas Weather now effects all Atlas Z levels."
