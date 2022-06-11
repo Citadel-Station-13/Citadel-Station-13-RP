@@ -486,6 +486,10 @@ em {
   font-style: italic;
 }
 
+blockquote.warning {
+  border-color: #c51e1e;
+}
+
 .alertwarning {
   color: #FF0000;
   font-weight: bold;
@@ -525,8 +529,16 @@ em {
   color: #9ab0ff;
 }
 
+blockquote.info {
+  border-color: #9ab0ff;
+}
+
 .notice {
   color: #6685f5;
+}
+
+blockquote.notice {
+  border-color: #6685f5;
 }
 
 .tinynotice {
@@ -584,16 +596,32 @@ em {
   color: #059223;
 }
 
+blockquote.green {
+  border-color: #059223;
+}
+
 .red {
   color: #FF0000;
+}
+
+blockquote.red {
+  border-color: #FF0000;
 }
 
 .blue {
   color: #215cff;
 }
 
+blockquote.blue {
+  border-color: #215cff;
+}
+
 .nicegreen {
   color: #059223;
+}
+
+blockquote.nicegreen {
+  border-color: #059223;
 }
 
 /* hornichems */
@@ -612,6 +640,10 @@ em {
 
 .cult {
   color: #973e3b;
+}
+
+blockquote.cult {
+  border-color: #973e3b;
 }
 
 .cultitalic {
@@ -667,6 +699,10 @@ em {
 
 .purple {
   color: #9956d3;
+}
+
+blockquote.purple {
+  border-color: #9956d3;
 }
 
 .holoparasite {
@@ -730,6 +766,10 @@ em {
 /* from decon_msg: font-size: 185% == font-size 3*/
 .brass {
   color: #BE8700;
+}
+
+blockquote.brass {
+  border-color: #BE8700;
 }
 
 .heavy_brass {
