@@ -43,7 +43,7 @@ GLOBAL_VAR_INIT(fileaccess_timer, 0)
 
 	return path
 
-#define FTPDELAY 200 //200 tick delay to discourage spam
+#define FTPDELAY 50 // 50 tick delay to discourage spam
 #define ADMIN_FTPDELAY_MODIFIER 0.5 //Admins get to spam files faster since we ~trust~ them!
 /* This proc is a failsafe to prevent spamming of file requests.
 	It is just a timer that only permits a download every [FTPDELAY] ticks.

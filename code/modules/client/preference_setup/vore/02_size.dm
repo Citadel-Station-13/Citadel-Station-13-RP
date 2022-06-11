@@ -33,7 +33,7 @@
 	S["fuzzy"]				<< pref.fuzzy
 
 /datum/category_item/player_setup_item/vore/size/sanitize_character()
-	pref.weight_vr			= sanitize_integer(pref.weight_vr, WEIGHT_MIN, WEIGHT_MAX, initial(pref.weight_vr))
+	pref.weight_vr			= isnum(pref.weight_vr) ? round(clamp(pref.weight_vr, WEIGHT_MIN, WEIGHT_MAX)) : initial(pref.weight_vr)
 	pref.weight_gain		= sanitize_integer(pref.weight_gain, WEIGHT_CHANGE_MIN, WEIGHT_CHANGE_MAX, initial(pref.weight_gain))
 	pref.weight_loss		= sanitize_integer(pref.weight_loss, WEIGHT_CHANGE_MIN, WEIGHT_CHANGE_MAX, initial(pref.weight_loss))
 	pref.fuzzy				= sanitize_integer(pref.fuzzy, 0, 1, initial(pref.fuzzy))

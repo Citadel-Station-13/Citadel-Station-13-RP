@@ -376,6 +376,7 @@
 				T.smooth_icon()
 			else
 				QUEUE_SMOOTH(T)
+		CHECK_TICK
 		for(var/R in T)
 			var/atom/A = R
 			if(IS_SMOOTH(A))

@@ -84,6 +84,11 @@ var/list/cheartstopper = list("potassium_chloride")                       // Thi
 ///Max length of a custom pill/condiment/whatever
 #define MAX_CUSTOM_NAME_LEN 64
 
+///Syringe
+#define SYRINGE_DRAW 0
+#define SYRINGE_INJECT 1
+#define SYRINGE_BROKEN 2
+
 //reagents_holder_flags defines
 ///Makes it possible to add reagents through droppers and syringes.
 #define INJECTABLE (1<<0)

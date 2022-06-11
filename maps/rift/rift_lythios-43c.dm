@@ -8,12 +8,14 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 	desc = "A freezing ball of ice,"
 	current_time = new /datum/time/lythios43c()
 	expected_z_levels = list(
+						Z_LEVEL_UNDERGROUND_FLOOR,
 						Z_LEVEL_UNDERGROUND_DEEP,
 						Z_LEVEL_UNDERGROUND,
 						Z_LEVEL_SURFACE_LOW,
 						Z_LEVEL_SURFACE_MID,
 						Z_LEVEL_SURFACE_HIGH,
 						Z_LEVEL_WEST_BASE,
+						Z_LEVEL_WEST_DEEP,
 						Z_LEVEL_WEST_CAVERN,
 						Z_LEVEL_WEST_PLAIN
 						)
@@ -200,6 +202,8 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 		"<I>A momentary pause in wind leaves the air still before it finds its peaceful rhythm again.</I>",
 		"<I>Blanketed cold envelops you as the wind carries its chilled embrace.</I>"
 	)
+	outdoor_sounds_type = /datum/looping_sound/weather/outside_snow
+	indoor_sounds_type = /datum/looping_sound/weather/inside_snow
 
 /datum/weather/lythios43c/snow/process_effects()
 	..()
@@ -243,6 +247,8 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 		"Strong winds howl around you as a blizzard appears.",
 		"It starts snowing heavily, and it feels extremly cold now."
 	)
+	outdoor_sounds_type = /datum/looping_sound/weather/outside_blizzard
+	indoor_sounds_type = /datum/looping_sound/weather/inside_blizzard
 
 /datum/weather/lythios43c/blizzard/process_effects()
 	..()
@@ -401,4 +407,3 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 
 			if(show_message)
 				to_chat(H, pick(effect_message))
-
