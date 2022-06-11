@@ -22,7 +22,7 @@ obj/item/clothing/suit/web_bindings
 /obj/item/clothing/suit/straight_jacket/web_bindings/get_worn_icon_file(body_type, slot_id, default_icon, inhands)
 	if(body_type == SPECIES_TESHARI)
 		if(!inhands)
-			return 'icons/mob/clothing/species/teshari/suit.dmi'
+			return 'icons/mob/clothing/species/teshari/suits.dmi'
 	else
 		return ..()
 
