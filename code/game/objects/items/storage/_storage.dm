@@ -182,6 +182,12 @@
 			is_seeing -= M
 	return cansee
 
+/// Adds up the combined w_classes.
+/obj/item/storage/proc/storage_space_used()
+	. = 0
+	for(var/obj/item/I in contents)
+		. += I.get_storage_cost()
+
 //This proc draws out the inventory and places the items on it. tx and ty are the upper left tile and mx, my are the bottm right.
 //The numbers are calculated from the bottom-left The bottom-left slot being 1,1.
 /obj/item/storage/proc/orient_objs(tx, ty, mx, my)
@@ -347,11 +353,7 @@
 			to_chat(usr, "<span class='notice'>[W] is too long for \the [src].</span>")
 		return 0
 
-	var/total_storage_space = W.get_storage_cost()
-	for(var/obj/item/I in contents)
-		total_storage_space += I.get_storage_cost() //Adds up the combined w_classes which will be in the storage item if the item is added to it.
-
-	if(total_storage_space > max_storage_space)
+	if((storage_space_used() + W.get_storage_cost()) > max_storage_space) //Adds up the combined w_classes which will be in the storage item if the item is added to it.
 		if(!stop_messages)
 			to_chat(usr, "<span class='notice'>[src] is too full, make some space.</span>")
 		return 0
@@ -611,11 +613,10 @@
 
 /obj/item/storage/proc/PopulateContents()
 
+
+///Prevents spawned containers from being too small for their contents.
 /obj/item/storage/proc/calibrate_size()
-	var/total_storage_space = 0
-	for(var/obj/item/I in contents)
-		total_storage_space += I.get_storage_cost()
-	max_storage_space = max(total_storage_space,max_storage_space) //Prevents spawned containers from being too small for their contents.
+	max_storage_space = max(storage_space_used(),max_storage_space)
 
 /obj/item/storage/emp_act(severity)
 	if(!istype(src.loc, /mob/living))
