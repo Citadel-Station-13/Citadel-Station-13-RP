@@ -26,6 +26,8 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
 
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 
+LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/gravsnow)
+
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/snow)
 
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/sky/depths)
