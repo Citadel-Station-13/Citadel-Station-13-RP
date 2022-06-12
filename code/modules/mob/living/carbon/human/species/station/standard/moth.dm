@@ -5,7 +5,6 @@
 	name_plural = "Dnin-Nepids"
 	examine_name = "Dnin-Nepid"
 
-	#warn sprites
 	icobase = 'icons/mob/human_races/moth.dmi'
 
 	wing = "moth_plain"

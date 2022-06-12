@@ -3,7 +3,11 @@
 /**
  * Species IDs
  */
-#define SPECIES_ID_MOTH
+#define SPECIES_ID_MOTH "moth"
+#define SPECIES_ID_MOTH_LIGHT "moth_light"
+#define SPECIES_ID_MOTH_DARK "moth_dark"
+#define SPECIES_ID_PROMETHEAN "promethean"
+
 
 // TODO: give rest of species ids
 
