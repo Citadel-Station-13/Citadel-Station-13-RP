@@ -666,7 +666,7 @@
 	set category = "Soulcatcher"
 
 	if(!message)
-		message = input("Type an action to perform.","Emote into Soulcatcher") as text|null
+		message = input("Type an action to perform.","Emote into Soulcatcher") as message|null
 	message = sanitize(message)
 	if(message)
 		soulcatcher.emote_into(message,src,null)

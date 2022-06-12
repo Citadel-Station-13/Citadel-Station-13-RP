@@ -369,16 +369,14 @@
 /obj/item/clothing/under/oricon/utility/marine/olive
 	name = "olive fatigues"
 	desc = "An olive version of the JSDF marine utility uniform, made from durable material."
-	icon = 'icons/obj/clothing/uniforms_vr.dmi'
-	icon_override = 'icons/mob/clothing/uniform.dmi'
+	icon = 'icons/obj/clothing/uniforms.dmi'
 	icon_state = "bdu_olive"
 	item_state = "bdu_olive"
 
 /obj/item/clothing/under/oricon/utility/marine/desert
 	name = "desert fatigues"
 	desc = "A desert version of the JSDF marine utility uniform, made from durable material."
-	icon = 'icons/obj/clothing/uniforms_vr.dmi'
-	icon_override = 'icons/mob/clothing/uniform.dmi'
+	icon = 'icons/obj/clothing/uniforms.dmi'
 	icon_state = "bdu_olive"
 	item_state = "bdu_olive"
 
@@ -417,5 +415,4 @@
 /obj/item/clothing/under/worn_fatigues
 	name = "special ops fatigues"
 	desc = "These worn fatigues match the pattern known to be used by JSDF Marine Corps special forces."
-	icon = 'icons/obj/clothing/uniforms_vr.dmi'
 	icon_state = "russobluecamo"

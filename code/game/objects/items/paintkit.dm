@@ -174,8 +174,8 @@
 			piece.icon = 'icons/mob/clothing/custom_items_rig_boots.dmi'
 			piece.icon_override = 'icons/mob/clothing/custom_items_rig_boots.dmi'
 		if(istype(piece, /obj/item/clothing/suit))
-			piece.icon = 'icons/mob/clothing/custom_items_rig_suit.dmi'
-			piece.icon_override = 'icons/mob/clothing/custom_items_rig_suit.dmi'
+			piece.icon = 'icons/mob/clothing/custom_items_rig_suits.dmi'
+			piece.icon_override = 'icons/mob/clothing/custom_items_rig_suits.dmi'
 		if(istype(piece, /obj/item/clothing/head))
 			piece.icon = 'icons/mob/clothing/custom_items_rig_helmet.dmi'
 			piece.icon_override = 'icons/mob/clothing/custom_items_rig_helmet.dmi'
