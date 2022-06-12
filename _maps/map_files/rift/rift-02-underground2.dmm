@@ -2233,7 +2233,7 @@
 	input_tag = "mix_in";
 	name = "Gas Mix Supply Control";
 	output_tag = "mix_out";
-	sensors = list("mix_sensor" = "Tank")
+	sensors = list("mix_sensor"="Tank")
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 8
@@ -6076,7 +6076,7 @@
 	},
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 1;
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -6655,7 +6655,7 @@
 	},
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 1;
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /obj/machinery/alarm{
 	desc = " ";
@@ -8552,7 +8552,7 @@
 	input_tag = "co2_in";
 	name = "Carbon Dioxide Supply Control";
 	output_tag = "co2_out";
-	sensors = list("co2_sensor" = "Tank")
+	sensors = list("co2_sensor"="Tank")
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
@@ -8637,7 +8637,7 @@
 	input_tag = "tox_in";
 	name = "Phoron Supply Control";
 	output_tag = "tox_out";
-	sensors = list("tox_sensor" = "Tank")
+	sensors = list("tox_sensor"="Tank")
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
@@ -8664,7 +8664,7 @@
 	input_tag = "n2o_in";
 	name = "Nitrous Oxide Supply Control";
 	output_tag = "n2o_out";
-	sensors = list("n2o_sensor" = "Tank")
+	sensors = list("n2o_sensor"="Tank")
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
@@ -8821,7 +8821,7 @@
 	input_tag = "o2_in";
 	name = "Oxygen Supply Control";
 	output_tag = "o2_out";
-	sensors = list("o2_sensor" = "Tank")
+	sensors = list("o2_sensor"="Tank")
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 8
@@ -8851,7 +8851,7 @@
 	input_tag = "n2_in";
 	name = "Nitrogen Supply Control";
 	output_tag = "n2_out";
-	sensors = list("n2_sensor" = "Tank")
+	sensors = list("n2_sensor"="Tank")
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 8
@@ -8899,7 +8899,7 @@
 	name = "Mixed Air Supply Control";
 	output_tag = "air_out";
 	pressure_setting = 2000;
-	sensors = list("air_sensor" = "Tank")
+	sensors = list("air_sensor"="Tank")
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
@@ -15505,9 +15505,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+ML
+ML
+ML
 aa
 aa
 aa
@@ -15529,9 +15529,9 @@ WA
 WA
 WA
 WA
-WA
-WA
-WA
+ML
+ML
+ML
 WA
 WA
 WA
@@ -15699,6 +15699,18 @@ aa
 aa
 aa
 aa
+ML
+ML
+ML
+aa
+aa
+aa
+aa
+TF
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -15711,20 +15723,20 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-TF
-aa
-aa
-aa
-aa
+ML
+ML
+ML
 WA
 WA
+WA
+WA
+UC
+WA
+WA
+WA
+ML
+ML
+ML
 WA
 WA
 WA
@@ -15746,21 +15758,9 @@ UC
 WA
 WA
 WA
-WA
-WA
-WA
-WA
-WA
-WA
-WA
-WA
-UC
-WA
-WA
-WA
-WA
-WA
-WA
+ML
+ML
+ML
 WA
 WA
 WA
@@ -15893,21 +15893,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-TF
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ML
+ML
+ML
 aa
 aa
 aa
@@ -15921,6 +15909,30 @@ aa
 aa
 aa
 aa
+aa
+aa
+aa
+TF
+aa
+aa
+aa
+aa
+ML
+ML
+ML
+aa
+WA
+WA
+WA
+UC
+WA
+WA
+WA
+ML
+ML
+ML
+WA
+WA
 WA
 WA
 WA
@@ -15940,21 +15952,9 @@ UC
 WA
 WA
 WA
-WA
-WA
-WA
-WA
-WA
-WA
-WA
-WA
-UC
-WA
-WA
-WA
-WA
-WA
-WA
+ML
+ML
+ML
 WA
 WA
 WA
@@ -16122,21 +16122,9 @@ TF
 aa
 aa
 aa
-aa
-aa
-WA
-WA
-WA
-WA
-WA
-WA
-UC
-WA
-WA
-WA
-WA
-WA
-WA
+ML
+ML
+ML
 WA
 WA
 WA
@@ -16149,6 +16137,18 @@ WA
 WA
 WA
 WA
+WA
+WA
+WA
+WA
+WA
+UC
+WA
+WA
+WA
+ML
+ML
+ML
 aa
 aa
 aa
