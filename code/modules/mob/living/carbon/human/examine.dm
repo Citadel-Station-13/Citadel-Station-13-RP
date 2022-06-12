@@ -99,9 +99,9 @@
 		CRASH("Gender datum was null; key was '[((skip_gear & EXAMINE_SKIPJUMPSUIT) && (skip_body & EXAMINE_SKIPFACE)) ? PLURAL : gender]'")
 
 	if(!((skip_gear & EXAMINE_SKIPJUMPSUIT) && (skip_body & EXAMINE_SKIPFACE)))
+		// TODO: do we really want this to be cheesable?? god i hate proteans, maybe do main's colorations for organic/synthetic/protean/slime/etc
 		if(custom_species)
-			if(custom_species != SPECIES_HUMAN)
-				whoismsg += ", a <b>[src.custom_species]</b>"
+			whoismsg += ", a <b>[src.custom_species]</b>"
 		else if(looks_synth)
 			var/use_gender = "a synthetic"
 			if(gender == MALE)
@@ -111,7 +111,7 @@
 
 			whoismsg += ", <b><font color='#555555'>[use_gender]!</font></b>"
 
-		else if(species.name != SPECIES_HUMAN)
+		else
 			whoismsg += ", <b><font color='[species.get_flesh_colour(src)]'>\a [species.get_examine_name()]!</font></b>"
 
 	var/extra_species_text = species.get_additional_examine_text(src)

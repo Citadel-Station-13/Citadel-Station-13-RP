@@ -24,8 +24,13 @@
 	// TODO: ref species by id in code, so we can rename as needed
 
 //! ## Descriptors and strings.
-	/// Species name.
+	/// Species real name.
+	// TODO: STOP USING THIS. This is being phased out for species IDs.
 	var/name
+	/// what you see on tooltip/examine
+	var/examine_name
+	/// what you see on health analyzers/IC
+	var/display_name
 	/// Pluralized name (since "[name]s" is not always valid)
 	var/name_plural
 	/// A brief lore summary for use in the chargen screen.

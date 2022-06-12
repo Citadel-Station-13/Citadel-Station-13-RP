@@ -22,9 +22,6 @@
 /datum/species/proc/get_damage_mask(mob/living/carbon/human/H)
 	return damage_mask
 
-/datum/species/proc/get_examine_name(mob/living/carbon/human/H)
-	return name
-
 /datum/species/proc/get_icobase(mob/living/carbon/human/H, get_deform)
 	return (get_deform ? deform : icobase)
 
@@ -125,7 +122,17 @@
 	return wing_hair //Since the tail has it.
 
 /datum/species/proc/get_wing(mob/living/carbon/human/H)
-		return wing
+	return wing
 
 /datum/species/proc/get_wing_animation(mob/living/carbon/human/H)
 	return wing_animation
+
+//!# Names
+/datum/species/proc/get_true_name(mob/living/carbon/human/H)
+	return name
+
+/datum/species/proc/get_display_name(mob/living/carbon/human/H)
+	return display_name || name
+
+/datum/species/proc/get_examine_name(mob/living/carbon/human/H)
+	return examine_name || name

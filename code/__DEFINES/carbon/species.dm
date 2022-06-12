@@ -1,5 +1,12 @@
 //! *ALL DEFINES RELATED TO SPECIES GO HERE* !//
 
+/**
+ * Species IDs
+ */
+#define SPECIES_ID_MOTH
+
+// TODO: give rest of species ids
+
 //* ALL NAME DEFINES FOR SPECIES *//
 /**
  * !It is important to note that these are not only used for the name of the species.
@@ -33,6 +40,8 @@
 #define SPECIES_MONKEY_UNATHI "Stok"
 #define SPECIES_MONKEY_VULPKANIN "Wolpin"
 #define SPECIES_MOTH "Dnin-Nepid"
+#define SPECIES_MOTH_LIGHT "Dnin-Nepid (Light-Adapted)"
+#define SPECIES_MOTH_DARK "Dnin-Nepid (Dark-Adapted)"
 #define SPECIES_NEVREAN "Nevrean"
 #define SPECIES_PLASMAMAN "Phoronoid"
 #define SPECIES_PROMETHEAN "Promethean"

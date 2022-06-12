@@ -1,12 +1,12 @@
 /datum/species/moth
 	name = SPECIES_MOTH
 	id = "moth"
+	abstract_type = /datum/species/moth
 	name_plural = "Dnin-Nepids"
+	examine_name = "Dnin-Nepid"
 
 	#warn sprites
-	icobase = 'icons/mob/human_races/insect_moth.dmi'
-	#warn wtf is deform
-	deform = 'icons/mob/human_races/r_def_tajaran_vr.dmi'
+	icobase = 'icons/mob/human_races/moth.dmi'
 
 	wing = "moth_plain"
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
@@ -14,9 +14,9 @@
 	darksight = 7
 	// i'd like to see oyu move in water with wings
 	water_movement = 0.3
-	// slightly brittle because i can't give them brittle bones on this rotten species backend until we make species backend more Fun
-	brute_mod = 1.05
-	burn_mod =  1.05
+	// TODO: slightly brittle because i can't give them brittle bones on this rotten species backend until we make species backend more Fun
+	brute_mod = 1
+	burn_mod =  1
 	metabolic_rate = 0.5
 	gluttonous = 0
 	num_alternate_languages = 3
@@ -107,7 +107,7 @@
 
 	has_organ = list(
 		O_HEART =		/obj/item/organ/internal/heart,
-		O_LUNGS =		/obj/item/organ/internal/lungs,w
+		O_LUNGS =		/obj/item/organ/internal/lungs,
 		O_VOICE = 		/obj/item/organ/internal/voicebox,
 		O_LIVER =		/obj/item/organ/internal/liver,
 		O_KIDNEYS =		/obj/item/organ/internal/kidneys,
@@ -136,3 +136,21 @@
 
 	"}
 	value = CATALOGUER_REWARD_TRIVIAL
+
+/datum/species/moth/dark
+	name = SPECIES_MOTH_DARK
+	id = SPECIES_ID_MOTH_DARK
+
+	// darksight, but weak to light
+	darksight = 7
+	flash_burn = 5
+	flash_mod = 1.2
+
+/datum/species/moth/light
+	name = SPECIES_MOTH_LIGHT
+	id = SPECIES_ID_MOTH_LIGHT
+
+	// hardy, but no darksight
+	darksight = 2
+	flash_mod = 0.5
+	item_slowdown_mod = 0.5

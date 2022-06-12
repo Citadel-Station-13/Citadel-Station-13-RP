@@ -9,11 +9,9 @@
 	whisper_verb = "clicks"
 	signlang_verb = list("")
 	colour = "body"
-	#warn check key conflict
-	key = "m"
+	key = "e"
 	native = TRUE
 	flags = NONE
-	#warn lmao
 	syllables = list(
 		"at", "az", "ak", "afz",
 		"bv", "bz",
