@@ -268,3 +268,8 @@
 /datum/status_effect/grouped/before_remove(source)
 	sources -= source
 	return !length(sources)
+
+/// Gets and formats examine text associated with our status effect.
+/// Return 'null' to have no examine text appear (default behavior).
+/datum/status_effect/proc/get_examine_text()
+	return null

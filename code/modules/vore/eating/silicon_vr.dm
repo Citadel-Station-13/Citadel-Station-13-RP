@@ -75,18 +75,18 @@
 		return //Probably cancelled
 
 	if(!istype(prey))
-		to_chat(usr, "<span class='warning'>Invalid mob choice!</span>")
+		to_chat(usr, SPAN_WARNING("Invalid mob choice!"))
 		return
 
 	hologram.visible_message("[hologram] starts engulfing [prey] in hardlight holograms!")
-	to_chat(src, "<span class='notice'>You begin engulfing [prey] in hardlight holograms.</span>") //Can't be part of the above, because the above is from the hologram.
+	to_chat(src, SPAN_NOTICE("You begin engulfing [prey] in hardlight holograms.")) //Can't be part of the above, because the above is from the hologram.
 	if(do_after(user=eyeobj,delay=50,target=prey,needhand=0) && holo && hologram && !hologram.bellied) //Didn't move and still projecting and effect exists and no other bellied people
 		hologram.get_prey(prey)
 
-/mob/living/AIShiftClick(var/mob/user) //Shift-click as AI overridden on mobs to examine.
+/mob/living/AIShiftClick(mob/user) //Shift-click as AI overridden on mobs to examine.
 	if(user.client)
 		var/list/result = examine(user)
-		to_chat(user, result.Join("\n"))
+		to_chat(src, "<blockquote class='info'>[result.Join("\n")]</blockquote>")
 
 //This can go here with all the references.
 /obj/effect/overlay/aiholo/examine(mob/user)
@@ -95,4 +95,4 @@
 	//If you need an ooc_notes copy paste, this is NOT the one to use.
 	var/ooc_notes = master.ooc_notes
 	if(ooc_notes)
-		. += "<span class = 'deptradio'>OOC Notes:</span> <a href='?src=\ref[master];ooc_notes=1'>\[View\]</a>\n"
+		. += SPAN_BOLDNOTICE("OOC Notes: <a href='?src=\ref[master];ooc_notes=1'>\[View\]</a>\n")
