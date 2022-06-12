@@ -18,21 +18,21 @@
 
 /mob/zshadow/Initialize(mapload, mob/attach)
 	. = ..()
-	if(!isliving(loc))
-		return INITIALIZE_HINT_QDEL
 	owner = attach
 	sync_icon(attach)
 
 /mob/zshadow/Destroy()
-	owner?.shadow = null
-	owner = null
+	if(owner)
+		if(owner.shadow == src)
+			owner.shadow = null
+		owner = null
 	..() //But we don't return because the hint is wrong
 	return QDEL_HINT_QUEUE
 
 /mob/Destroy()
 	if(shadow)
 		QDEL_NULL(shadow)
-	. = ..()
+	return ..()
 
 /mob/zshadow/examine(mob/user)
 	if(!owner)
@@ -72,18 +72,19 @@
 
 /mob/living/proc/check_shadow()
 	var/mob/M = src
-	if(isturf(M.loc))
-		var/turf/simulated/open/OS = GetAbove(src)
-		while(OS && istype(OS))
-			if(!M.shadow)
-				M.shadow = new /mob/zshadow(M, M)
-			M.shadow.forceMove(OS)
-			M = M.shadow
-			OS = GetAbove(M)
+	if(!isturf(M.loc))
+		if(M.shadow)
+			QDEL_NULL(M.shadow)
+		return
+	var/turf/simulated/open/OS = GetAbove(M)
+	while(istype(OS))
+		if(!M.shadow)
+			M.shadow = new /mob/zshadow(OS, M)
+		M = M.shadow
+		OS = OS.Above()
 	// The topmost level does not need a shadow!
 	if(M.shadow)
-		qdel(M.shadow)
-		M.shadow = null
+		QDEL_NULL(M.shadow)
 
 //
 // Handle cases where the owner mob might have changed its icon or overlays.
