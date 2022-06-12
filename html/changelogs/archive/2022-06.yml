@@ -55,3 +55,43 @@
   yourdoom9898:
   - rscadd: Added the Nar'sour, 1 part Demon's Blood, 1 part Lemon Juice, 1 part Blood
   - rscadd: Added the Nar'sian, 1 part Nar'sour, 1 part The Best Boy
+2022-06-09:
+  Captain277:
+  - rscadd: Adds the risque swimsuit.
+  CharlesWedge:
+  - rscadd: High Sec Evidence Storage armory access wevidence storage for very dangerous
+      things.
+  - rscadd: 'Adherent Maint, firelocks tweak: SMES/Beaker setup to be in line with
+      previous maps. tweak: AA Bunkers now are accessibly by sec engi and command
+      rather than the few with vault access.'
+  - bugfix: Rearranges the Forensics lab slightly so everything on the tables can
+      be reached.
+  - rscadd: Lythios Disaster site at the North West Corner of the Wester plains. A
+      multilevel radioactive disaster site.
+  - rscadd: 3rd Extreme Radiation Emitter, since 100 Bqs is not enough to simulate
+      an Elephant's foot.
+  Zandario:
+  - bugfix: You can once again exit resleevers.
+  - rscadd: Blizzard and snow sound go brrr
+2022-06-10:
+  lingonberry1234:
+  - rscadd: Added new circuits from everywhere, plus a couple of extras. Circuit cloning.
+  - bugfix: Input circuits live again
+  - refactor: Integrated circuits backend ported from Main
+2022-06-11:
+  CharlesWedge:
+  - rscadd: Oregen Across All Cave Zs
+  - bugfix: Atlas Weather now effects all Atlas Z levels.
+  silicons:
+  - bugfix: zone weirdness
+  - code_imp: ZAS hard asserts are now fixed
+2022-06-12:
+  Funkeronipasta:
+  - rscdel: Unused sprite
+  - bugfix: Male and Female Vey-Med FBP sprites
+  Zandario:
+  - bugfix: Fixes invisible labcoats and such
+  lingonberry1234:
+  - rscadd: 'Brings in the Advanced Mop and Bluespace Trashbag from Bay/Main. tweak:
+      Tweaks a few values and adds to the RnD console.'
+  - bugfix: Fixes mop description.

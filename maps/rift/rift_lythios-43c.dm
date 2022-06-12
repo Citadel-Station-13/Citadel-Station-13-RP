@@ -8,12 +8,14 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 	desc = "A freezing ball of ice,"
 	current_time = new /datum/time/lythios43c()
 	expected_z_levels = list(
+						Z_LEVEL_UNDERGROUND_FLOOR,
 						Z_LEVEL_UNDERGROUND_DEEP,
 						Z_LEVEL_UNDERGROUND,
 						Z_LEVEL_SURFACE_LOW,
 						Z_LEVEL_SURFACE_MID,
 						Z_LEVEL_SURFACE_HIGH,
 						Z_LEVEL_WEST_BASE,
+						Z_LEVEL_WEST_DEEP,
 						Z_LEVEL_WEST_CAVERN,
 						Z_LEVEL_WEST_PLAIN
 						)

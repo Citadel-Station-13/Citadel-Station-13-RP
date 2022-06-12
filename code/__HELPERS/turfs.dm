@@ -116,14 +116,13 @@
 	X.underlays = old_underlays
 	X.decals = old_decals
 
-	// Move the air from source to dest
+	//Move the air from source to dest
 	var/turf/simulated/ST = T
-	if(istype(ST) && ST.zone)
+	if(istype(ST))
 		var/turf/simulated/SX = X
 		if(!SX.air)
 			SX.make_air()
-		SX.air.copy_from(ST.zone.air)
-		ST.zone.remove(ST)
+		SX.air.copy_from(ST.copy_cell_volume())
 
 	var/z_level_change = FALSE
 	if(T.z != X.z)
