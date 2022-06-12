@@ -97,7 +97,7 @@ var/list/wrapped_species_by_ref = list()
 			continue
 		if(gender == FEMALE && S.gender == MALE)
 			continue
-		if(!(species.get_bodytype(src) in S.species_allowed))
+		if(S.apply_restrictions && !(species.get_bodytype(src) in S.species_allowed))
 			continue
 		valid_hairstyles += hairstyle
 	for(var/facialhairstyle in facial_hair_styles_list)
@@ -106,7 +106,7 @@ var/list/wrapped_species_by_ref = list()
 			continue
 		if(gender == FEMALE && S.gender == MALE)
 			continue
-		if(!(species.get_bodytype(src) in S.species_allowed))
+		if(S.apply_restrictions && !(species.get_bodytype(src) in S.species_allowed))
 			continue
 		valid_facialhairstyles += facialhairstyle
 

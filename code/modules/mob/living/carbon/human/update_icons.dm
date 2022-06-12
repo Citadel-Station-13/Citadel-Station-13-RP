@@ -462,7 +462,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	if(f_style)
 		var/datum/sprite_accessory/facial_hair_style = facial_hair_styles_list[f_style]
-		if(facial_hair_style && facial_hair_style.species_allowed && (src.species.get_bodytype(src) in facial_hair_style.species_allowed))
+		if(facial_hair_style && (!facial_hair_style.apply_restrictions || (src.species.get_bodytype(src) in facial_hair_style.species_allowed)))
 			var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
 			if(facial_hair_style.do_colouration)
 				facial_s.Blend(rgb(r_facial, g_facial, b_facial), facial_hair_style.color_blend_mode)
@@ -475,7 +475,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 			if(!(hair_style.flags & HAIR_VERY_SHORT))
 				hair_style = hair_styles_list["Short Hair"]
 
-		if(hair_style && (src.species.get_bodytype(src) in hair_style.species_allowed))
+		if(hair_style && (!hair_style.apply_restrictions || (src.species.get_bodytype(src) in hair_style.species_allowed)))
 			var/icon/grad_s
 			var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
 			var/icon/hair_s_add
