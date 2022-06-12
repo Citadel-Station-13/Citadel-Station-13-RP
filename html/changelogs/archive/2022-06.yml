@@ -85,3 +85,13 @@
   silicons:
   - bugfix: zone weirdness
   - code_imp: ZAS hard asserts are now fixed
+2022-06-12:
+  Funkeronipasta:
+  - rscdel: Unused sprite
+  - bugfix: Male and Female Vey-Med FBP sprites
+  Zandario:
+  - bugfix: Fixes invisible labcoats and such
+  lingonberry1234:
+  - rscadd: 'Brings in the Advanced Mop and Bluespace Trashbag from Bay/Main. tweak:
+      Tweaks a few values and adds to the RnD console.'
+  - bugfix: Fixes mop description.
