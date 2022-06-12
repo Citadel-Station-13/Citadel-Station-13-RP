@@ -1,7 +1,7 @@
 /datum/language/species/moth
 #warn impl
 	name = LANGUAGE_LUINIMMA
-	desc = "The language of the Dnin-Nepids, Luinimma sounds like a quick, tonal series of chitters and clicks to \
+	desc = "The language of the Dnin-Nepids, Luinimma sounds like a quick, tonal series of chitters, chirps, and clicks to \
 	non-speakers."
 	speech_verb = "chitters"
 	ask_verb = "clacks"
@@ -15,13 +15,30 @@
 	flags = NONE
 	#warn lmao
 	syllables = list(
-
+		"at", "az", "ak", "afz",
+		"bv", "bz",
+		"ch", "cz", "cih", "chi",
+		"di",
+		"et", "ez", "ecz", "eht",
+		"ft", "fih",
+		"h",
+		"iz", "it", "ich", "ihz",
+		"ki", "ke", "k",
+		"l",
+		"ok", "ock", "ot",
+		"pz", "pt", "pht", "pf", "pft",
+		"qr", "qi", "qk",
+		"ri", "ra", "re", "ro",
+		"st", "sz", "sck", "ss", "sit",
+		"ti", "tch", "tk", "tck", "tc", "tz", "thi",
+		"vt", "vz",
+		"wr",
+		"xi", "xt", "xhi", "xct", "xci",
+		"z"
 	)
-	space_chance = 55
+	space_chance = 35
 	machine_understands = FALSE
-	partial_understanding = list(
-
-	)
+	partial_understanding = list()
 
 /datum/language/species/moth/get_random_name(gender, name_count = 2, syllable_count= 4 , syllable_divisor = 2)
 	#warn maybe don't use this

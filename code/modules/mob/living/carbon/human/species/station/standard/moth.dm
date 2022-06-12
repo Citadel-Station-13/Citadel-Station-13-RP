@@ -38,8 +38,6 @@
 	// see defines - as of right now, detects reagents at 7% instead of 15%
 	taste_sensitivity = TASTE_SENSITIVE
 
-#warn wip
-
 	blurb = "A nomadic species hailing from the southern reaches of the galaxy, Dnin-Nepids are a relatively \
 	new contender to the galaxy's state of affairs. They are a peaceful, innovative people with fragile, yet nimble bodies. \
 	Their appearance is not dissimilar to what certain Sol insects look like, earning them the moniker of '<b>moths</b>' by the majority. \
@@ -47,48 +45,52 @@
 	whether to see the world, or to pursue a new life."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mothpeople)
 
-#warn wip
+	// slightly cooler than average
+	body_temperature = 307.15
 
-#warn check defines
-	// WIP BELOW
-	body_temperature = 320.15	//Even more cold resistant, even more flammable
+	// cold resistant
+	cold_level_1 = 225
+	cold_level_2 = 160
+	cold_level_3 = 100
 
-	cold_level_1 = 200 //Default 260
-	cold_level_2 = 140 //Default 200
-	cold_level_3 = 80  //Default 120
+	breath_cold_level_1 = 215
+	breath_cold_level_2 = 150
+	breath_cold_level_3 = 90
 
-	breath_cold_level_1 = 180	//Default 240 - Lower is better
-	breath_cold_level_2 = 100	//Default 180
-	breath_cold_level_3 = 60	//Default 100
+	// sensitive
+	cold_discomfort_level = 265
+	cold_discomfort_strings = list(
+		"You feel chilly.",
+		"You feel your wings icing over.",
+		"You shiver.",
+		"You feel a bit rigid."
+	)
 
-	heat_level_1 = 330 //Default 360
-	heat_level_2 = 380 //Default 400
-	heat_level_3 = 800 //Default 1000
+	// heat nominal
+	heat_level_1 = 360
+	heat_level_2 = 400
+	heat_level_3 = 1000
 
-	breath_heat_level_1 = 360	//Default 380 - Higher is better
-	breath_heat_level_2 = 430	//Default 450
-	breath_heat_level_3 = 1000	//Default 1250
+	breath_heat_level_1 = 380
+	breath_heat_level_2 = 350
+	breath_heat_level_3 = 1250
 
-
-	heat_discomfort_level = 295 //Prevents heat discomfort spam at 20c
+	// very sensitive
+	heat_discomfort_level = 310
 	heat_discomfort_strings = list(
-		"Your fur prickles in the heat.",
+		"You reflexively flick your wings.",
 		"You feel uncomfortably warm.",
-		"Your overheated skin itches."
-		)
+		"Your hair stands on end from the warmth.",
+		"You feel strangely energetic."
+	)
 
-	cold_discomfort_level = 275
+	// slightly more tolerant, high sensitivity
+	warning_low_pressure = 60
+	hazard_low_pressure = 7.5
 
-	/// Dangerously high pressure.
-	var/hazard_high_pressure = HAZARD_HIGH_PRESSURE
-	/// High pressure warning.
-	var/warning_high_pressure = WARNING_HIGH_PRESSURE
-	/// Low pressure warning.
-	var/warning_low_pressure = WARNING_LOW_PRESSURE
-	/// Dangerously low pressure.
-	var/hazard_low_pressure = HAZARD_LOW_PRESSURE
-	var/safe_pressure = ONE_ATMOSPHERE
-
+	// way less tolerant, very senstiive
+	warning_high_pressure = 250
+	hazard_high_pressure = 350
 	// WIP ABOVE
 
 	blood_color = "#606000"
@@ -105,7 +107,7 @@
 
 	has_organ = list(
 		O_HEART =		/obj/item/organ/internal/heart,
-		O_LUNGS =		/obj/item/organ/internal/lungs,
+		O_LUNGS =		/obj/item/organ/internal/lungs,w
 		O_VOICE = 		/obj/item/organ/internal/voicebox,
 		O_LIVER =		/obj/item/organ/internal/liver,
 		O_KIDNEYS =		/obj/item/organ/internal/kidneys,
@@ -119,7 +121,7 @@
 
 	color_mult = 1
 	// todo: replace with proper name
-	wikilink="https://citadel-station.net/wikiRP/index.php?title=Race:_Moths"
+	wikilink="https://citadel-station.net/wikiRP/index.php?title=Race:_Dnin-Nepids"
 	inherent_verbs = list(
 		/mob/living/proc/flying_toggle,
 		/mob/living/proc/start_wings_hovering,
