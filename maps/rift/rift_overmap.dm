@@ -16,8 +16,6 @@
 		"rift_airspace_NE",
 		"rift_airspace_N",
 		"rift_plains",
-		"rift_aux_1",
-		"rift_aux_2",
 		)
 
 	initial_restricted_waypoints = list(
