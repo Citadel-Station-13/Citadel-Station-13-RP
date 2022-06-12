@@ -120,7 +120,7 @@ var/global/list/limb_icon_cache = list()
 	//Facial hair
 	if(owner.f_style)
 		var/datum/sprite_accessory/facial_hair_style = facial_hair_styles_list[owner.f_style]
-		if(facial_hair_style && (!facial_hair_style.apply_restrictions || && (species.get_bodytype(owner) in facial_hair_style.species_allowed)))
+		if(facial_hair_style && (!facial_hair_style.apply_restrictions || (species.get_bodytype(owner) in facial_hair_style.species_allowed)))
 			var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
 			if(facial_hair_style.do_colouration)
 				facial_s.Blend(rgb(owner.r_facial, owner.g_facial, owner.b_facial), facial_hair_style.color_blend_mode)
