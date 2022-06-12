@@ -71,11 +71,11 @@
 /// From base of /mob/throw_item(): (atom/target)
 ////#define COMSIG_MOB_THROW "mob_throw"
 /// From base of /mob/verb/examinate(): (atom/target)
-////#define COMSIG_MOB_EXAMINATE "mob_examinate"
+#define COMSIG_MOB_EXAMINATE "mob_examinate"
 /// From /mob/living/handle_eye_contact(): (mob/living/other_mob)
-////#define COMSIG_MOB_EYECONTACT "mob_eyecontact"
+#define COMSIG_MOB_EYECONTACT "mob_eyecontact"
 	///? return this if you want to block printing this message to this person, if you want to print your own (does not affect the other person's message)
-	////#define COMSIG_BLOCK_EYECONTACT (1<<0)
+	#define COMSIG_BLOCK_EYECONTACT (1<<0)
 /// From base of /mob/update_sight(): ()
 #define COMSIG_MOB_UPDATE_SIGHT "mob_update_sight"
 //// From /mob/living/say(): ()

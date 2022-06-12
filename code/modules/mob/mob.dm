@@ -270,6 +270,7 @@
 		return
 
 	if(is_blind()) //blind people see things differently (through touch)
+		to_chat(src, SPAN_WARNING("Something is there but you can't see it!"))
 		return
 
 	face_atom(A)
@@ -279,13 +280,14 @@
 				if(M == src || M.is_blind())
 					continue
 				if(M.client && M.client.is_preference_enabled(/datum/client_preference/examine_look))
-					to_chat(M, "<span class='tinynotice'><b>\The [src]</b> looks at \the [A].</span>")
+					to_chat(M, SPAN_TINYNOTICE("<b>\The [src]</b> looks at \the [A]."))
 
 	var/list/result
 	if(client)
 		result = A.examine(src) // if a tree is examined but no client is there to see it, did the tree ever really exist?
 
-	to_chat(src, result.Join("\n"))
+	to_chat(src, "<blockquote class='info'>[result.Join("\n")]</blockquote>")
+	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, A)
 
 /**
  * Point at an atom
@@ -1308,3 +1310,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
  */
 /mob/proc/allow_examine(atom/A)
 	return client && (client.eye == src)
+
+/// Checks for slots that are currently obscured by other garments.
+/mob/proc/check_obscured_slots()
+	return

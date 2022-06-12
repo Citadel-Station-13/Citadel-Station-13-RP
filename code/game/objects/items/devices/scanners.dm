@@ -24,7 +24,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	throw_range = 10
 	matter = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 1, TECH_BIO = 1)
-	var/mode = 1;
+	var/mode = 1
 	var/advscan = 0
 	var/showadvscan = 1
 
@@ -45,74 +45,75 @@ HALOGEN COUNTER	- Radcount on mobs
 /obj/item/healthanalyzer/proc/scan_mob(mob/living/M, mob/living/user)
 	var/dat = ""
 	if ((CLUMSY in user.mutations) && prob(50))
-		user.visible_message("<span class='warning'>\The [user] has analyzed the floor's vitals!</span>", "<span class='warning'>You try to analyze the floor's vitals!</span>")
-		dat += "Analyzing Results for the floor:<br>"
-		dat += "Overall Status: Healthy<br>"
-		dat += "\tDamage Specifics: 0-0-0-0<br>"
-		dat += "Key: Suffocation/Toxin/Burns/Brute<br>"
-		dat += "Body Temperature: ???"
-		user.show_message("<span class='notice'>[dat]</span>", 1)
+		user.visible_message(SPAN_WARNING("\The [user] has analyzed the floor's vitals!"), SPAN_WARNING("You try to analyze the floor's vitals!"))
+
+		dat += "<span class='info'>Analyzing results for the floor:\n<blockquote class='notice'>Overall status: Healthy"
+		dat += "\nDamage Specifics: 0-0-0-0"
+		dat += "\nKey: Suffocation/Toxin/Burns/Brute"
+		dat += "\nBody Temperature: ???"
+		user.show_message(SPAN_NOTICE("[dat]"), 1)
 		return
 	if (!(ishuman(user) || SSticker) && SSticker.mode.name != "monkey")
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return
 
 	flick("[icon_state]-scan", src)	//makes it so that it plays the scan animation on a succesful scan
-	user.visible_message("<span class='notice'>[user] has analyzed [M]'s vitals.</span>","<span class='notice'>You have analyzed [M]'s vitals.</span>")
+	user.visible_message(SPAN_NOTICE("[user] has analyzed [M]'s vitals."), SPAN_NOTICE("You have analyzed [M]'s vitals."))
 
 	if (!ishuman(M) || M.isSynthetic())
 		//these sensors are designed for organic life
-		dat += "<span class='notice'>Analyzing Results for ERROR:\n\tOverall Status: ERROR<br>"
-		dat += "\tKey: <font color='cyan'>Suffocation</font>/<font color='green'>Toxin</font>/<font color='#FFA500'>Burns</font>/<font color='red'>Brute</font><br>"
-		dat += "\tDamage Specifics: <font color='cyan'>?</font> - <font color='green'>?</font> - <font color='#FFA500'>?</font> - <font color='red'>?</font><br>"
-		dat += "Body Temperature: [M.bodytemperature-T0C]&deg;C ([M.bodytemperature*1.8-459.67]&deg;F)</span><br>"
-		dat += "<span class='warning'>Warning: Blood Level ERROR: --% --cl.</span> <span class='notice'>Type: ERROR</span><br>"
-		dat += "<span class='notice'>Subject's pulse: <font color='red'>-- bpm.</font></span>"
+		dat += "<span class='info'>Analyzing results for ERROR:\n<blockquote class='notice'>Overall status: ERROR"
+		dat += "\nKey: <font color='cyan'>Suffocation</font>/<font color='green'>Toxin</font>/<font color='#FFA500'>Burns</font>/<font color='red'>Brute</font>"
+		dat += "\nDamage Specifics: <font color='cyan'>?</font> - <font color='green'>?</font> - <font color='#FFA500'>?</font> - <font color='red'>?</font>"
+		dat += "\nBody Temperature: [M.bodytemperature-T0C]&deg;C ([M.bodytemperature*1.8-459.67]&deg;F)</span>"
+		dat += "\n<span class='warning'>Warning: Blood Level ERROR: --% --cl.</span> <span class='notice'>Type: ERROR</span>"
+		dat += "\n<span class='notice'>Subject's pulse: <font color='red'>-- bpm.</font></span>"
 		user.show_message(dat, 1)
 		return
 
 	var/fake_oxy = max(rand(1,40), M.getOxyLoss(), (300 - (M.getToxLoss() + M.getFireLoss() + M.getBruteLoss())))
-	var/OX = M.getOxyLoss() > 50 	? 	"<b>[M.getOxyLoss()]</b>" 		: M.getOxyLoss()
-	var/TX = M.getToxLoss() > 50 	? 	"<b>[M.getToxLoss()]</b>" 		: M.getToxLoss()
-	var/BU = M.getFireLoss() > 50 	? 	"<b>[M.getFireLoss()]</b>" 		: M.getFireLoss()
-	var/BR = M.getBruteLoss() > 50 	? 	"<b>[M.getBruteLoss()]</b>" 	: M.getBruteLoss()
+	var/OX = M.getOxyLoss() > 50   ? "<b>[M.getOxyLoss()]</b>"   : M.getOxyLoss()
+	var/TX = M.getToxLoss() > 50   ? "<b>[M.getToxLoss()]</b>"   : M.getToxLoss()
+	var/BU = M.getFireLoss() > 50  ? "<b>[M.getFireLoss()]</b>"  : M.getFireLoss()
+	var/BR = M.getBruteLoss() > 50 ? "<b>[M.getBruteLoss()]</b>" : M.getBruteLoss()
 	if(M.status_flags & FAKEDEATH)
-		OX = fake_oxy > 50 			? 	"<b>[fake_oxy]</b>" 			: fake_oxy
-		dat += "<span class='notice'>Analyzing Results for [M]:</span><br>"
-		dat += "<span class='notice'>Overall Status: dead</span><br>"
+		OX = fake_oxy > 50 ? "<b>[fake_oxy]</b>" : fake_oxy
+		dat += SPAN_NOTICE("\nAnalyzing Results for [M]:")
+		dat += SPAN_NOTICE("\nOverall Status: dead")
 	else
-		dat += 	"<span class='notice'>Analyzing Results for [M]:\n\t Overall Status: [M.stat > 1 ? "dead" : "[round((M.health/M.getMaxHealth())*100) ]% healthy"]<br>"
-	dat += 		"\tKey: <font color='cyan'>Suffocation</font>/<font color='green'>Toxin</font>/<font color='#FFA500'>Burns</font>/<font color='red'>Brute</font><br>"
-	dat += 		"\tDamage Specifics: <font color='cyan'>[OX]</font> - <font color='green'>[TX]</font> - <font color='#FFA500'>[BU]</font> - <font color='red'>[BR]</font><br>"
-	dat +=		"Body Temperature: [M.bodytemperature-T0C]&deg;C ([M.bodytemperature*1.8-459.67]&deg;F)</span><br>"
+		dat += "<span class='info'>Analyzing results for [M]:\n<blockquote class='notice'>Overall Status: [M.stat > 1 ? "dead" : "[round((M.health/M.getMaxHealth())*100) ]% healthy"]"
+	dat += "\nKey: <font color='cyan'>Suffocation</font>/<font color='green'>Toxin</font>/<font color='#FFA500'>Burns</font>/<font color='red'>Brute</font>"
+	dat += "\nDamage Specifics: <font color='cyan'>[OX]</font> - <font color='green'>[TX]</font> - <font color='#FFA500'>[BU]</font> - <font color='red'>[BR]</font>"
+	dat += "\nBody Temperature: [M.bodytemperature-T0C]&deg;C ([M.bodytemperature*1.8-459.67]&deg;F)</span>"
 	dat +=		"Species: <b>[M.get_species_name()]</b><br>"
+
 	if(M.timeofdeath && (M.stat == DEAD || (M.status_flags & FAKEDEATH)))
-		dat += 	"<span class='notice'>Time of Death: [worldtime2stationtime(M.timeofdeath)]</span><br>"
+		dat += 	SPAN_NOTICE("\nTime of Death: [worldtime2stationtime(M.timeofdeath)]")
 		var/tdelta = round(world.time - M.timeofdeath)
 		if(tdelta < (DEFIB_TIME_LIMIT * 10))
-			dat += "<span class='notice'><b>Subject died [DisplayTimeText(tdelta)] ago - resuscitation may be possible!</b></span><br>"
+			dat += SPAN_BOLDNOTICE("\nSubject died [DisplayTimeText(tdelta)] ago - resuscitation may be possible!")
 	if(istype(M, /mob/living/carbon/human) && mode == 1)
 		var/mob/living/carbon/human/H = M
 		var/list/damaged = H.get_damaged_organs(1,1)
-		dat += 	"<span class='notice'>Localized Damage, Brute/Burn:</span><br>"
+		dat += 	SPAN_NOTICE("\nLocalized Damage, Brute/Burn:")
 		if(length(damaged)>0)
 			for(var/obj/item/organ/external/org in damaged)
 				if(org.robotic >= ORGAN_ROBOT)
 					continue
 				else
-					dat += "<span class='notice'>     [capitalize(org.name)]: [(org.brute_dam > 0) ? "<span class='warning'>[org.brute_dam]</span>" : 0]"
-					dat += "[(org.status & ORGAN_BLEEDING)?"<span class='danger'>\[Bleeding\]</span>":""] - "
-					dat += "[(org.burn_dam > 0) ? "<font color='#FFA500'>[org.burn_dam]</font>" : 0]</span><br>"
+					dat += SPAN_NOTICE("\n[capitalize(org.name)]: [(org.brute_dam > 0) ? SPAN_WARNING("[org.brute_dam]") : 0]")
+					dat += SPAN_NOTICE("[(org.status & ORGAN_BLEEDING) ? SPAN_DANGER("\[Bleeding\]") : ""] - ")
+					dat += SPAN_NOTICE("[(org.burn_dam > 0) ? "<font color='#FFA500'>[org.burn_dam]</font>" : 0]")
 		else
-			dat += "<span class='notice'>    Limbs are OK.</span><br>"
+			dat += SPAN_NOTICE("\nLimbs are OK.")
 
-	OX = M.getOxyLoss() > 50 ? 	 "<font color='cyan'><b>Severe oxygen deprivation detected</b></font>" 		: 	"Subject bloodstream oxygen level normal"
-	TX = M.getToxLoss() > 50 ? 	 "<font color='green'><b>Dangerous amount of toxins detected</b></font>" 	: 	"Subject bloodstream toxin level minimal"
-	BU = M.getFireLoss() > 50 ?  "<font color='#FFA500'><b>Severe burn damage detected</b></font>" 			:	"Subject burn injury status O.K"
-	BR = M.getBruteLoss() > 50 ? "<font color='red'><b>Severe anatomical damage detected</b></font>" 		: 	"Subject brute-force injury status O.K"
+	OX = M.getOxyLoss()   > 50 ? "<font color='cyan'><b>Severe oxygen deprivation detected</b></font>"   : "Subject bloodstream oxygen level normal"
+	TX = M.getToxLoss()   > 50 ? "<font color='green'><b>Dangerous amount of toxins detected</b></font>" : "Subject bloodstream toxin level minimal"
+	BU = M.getFireLoss()  > 50 ? "<font color='#FFA500'><b>Severe burn damage detected</b></font>"     : "Subject burn injury status O.K"
+	BR = M.getBruteLoss() > 50 ? "<font color='red'><b>Severe anatomical damage detected</b></font>"     : "Subject brute-force injury status O.K"
 	if(M.status_flags & FAKEDEATH)
-		OX = fake_oxy > 50 ? 		"<span class='warning'>Severe oxygen deprivation detected</span>" 	: 	"Subject bloodstream oxygen level normal"
-	dat += "[OX] | [TX] | [BU] | [BR]<br>"
+		OX = fake_oxy     > 50 ? SPAN_WARNING("Severe oxygen deprivation detected")                      : "Subject bloodstream oxygen level normal"
+	dat += "\n[OX] | [TX] | [BU] | [BR]"
 	if(M.radiation)
 		if(advscan >= 2 && showadvscan == 1)
 			var/severity = ""
@@ -124,9 +125,10 @@ HALOGEN COUNTER	- Radcount on mobs
 				severity = "Moderate"
 			else if(M.radiation >= 1)
 				severity = "Low"
-			dat += "<span class='warning'>[severity] levels of radiation detected. [(severity == "Critical") ? " Immediate treatment advised." : ""]</span><br>"
+			dat += SPAN_WARNING("\n[severity] levels of radiation detected. [(severity == "Critical") ? " Immediate treatment advised." : ""]")
 		else
-			dat += "<span class='warning'>Radiation detected.</span><br>"
+			dat += SPAN_WARNING("\nRadiation detected.")
+
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
 		if(C.reagents.total_volume)
@@ -136,21 +138,21 @@ HALOGEN COUNTER	- Radcount on mobs
 			for(var/A in C.reagents.reagent_list)
 				var/datum/reagent/R = A
 				if(R.scannable)
-					reagentdata["[R.id]"] = "<span class='notice'>\t[round(C.reagents.get_reagent_amount(R.id), 1)]u [R.name]</span><br>"
+					reagentdata["[R.id]"] = SPAN_NOTICE("\n[round(C.reagents.get_reagent_amount(R.id), 1)]u [R.name]")
 				else
 					unknown++
-					unknownreagents["[R.id]"] = "<span class='notice'>\t[round(C.reagents.get_reagent_amount(R.id), 1)]u [R.name]</span><br>"
+					unknownreagents["[R.id]"] =  SPAN_NOTICE("\n[round(C.reagents.get_reagent_amount(R.id), 1)]u [R.name]")
 			if(reagentdata.len)
-				dat += "<span class='notice'>Beneficial reagents detected in subject's blood:</span><br>"
+				dat += SPAN_NOTICE("\nBeneficial reagents detected in subject's blood:")
 				for(var/d in reagentdata)
 					dat += reagentdata[d]
 			if(unknown)
 				if(advscan >= 3 && showadvscan == 1)
-					dat += "<span class='warning'>Warning: Non-medical reagent[(unknown>1)?"s":""] detected in subject's blood:</span><br>"
+					dat += SPAN_WARNING("\nWarning: Non-medical reagent[(unknown>1)?"s":""] detected in subject's blood:")
 					for(var/d in unknownreagents)
 						dat += unknownreagents[d]
 				else
-					dat += "<span class='warning'>Warning: Unknown substance[(unknown>1)?"s":""] detected in subject's blood.</span><br>"
+					dat += SPAN_WARNING("\nWarning: Unknown substance[(unknown>1)?"s":""] detected in subject's blood.")
 		if(C.ingested && C.ingested.total_volume)
 			var/unknown = 0
 			var/stomachreagentdata[0]
@@ -158,23 +160,23 @@ HALOGEN COUNTER	- Radcount on mobs
 			for(var/B in C.ingested.reagent_list)
 				var/datum/reagent/T = B
 				if(T.scannable)
-					stomachreagentdata["[T.id]"] = "<span class='notice'>\t[round(C.ingested.get_reagent_amount(T.id), 1)]u [T.name]</span><br>"
+					stomachreagentdata["[T.id]"] = SPAN_NOTICE("\n[round(C.ingested.get_reagent_amount(T.id), 1)]u [T.name]")
 					if (advscan == 0 || showadvscan == 0)
-						dat += "<span class='notice'>[T.name] found in subject's stomach.</span><br>"
+						dat += SPAN_NOTICE("\n[T.name] found in subject's stomach.")
 				else
 					++unknown
-					stomachunknownreagents["[T.id]"] = "<span class='notice'>\t[round(C.ingested.get_reagent_amount(T.id), 1)]u [T.name]</span><br>"
+					stomachunknownreagents["[T.id]"] = SPAN_NOTICE("\n[round(C.ingested.get_reagent_amount(T.id), 1)]u [T.name]")
 			if(advscan >= 1 && showadvscan == 1)
-				dat += "<span class='notice'>Beneficial reagents detected in subject's stomach:</span><br>"
+				dat += SPAN_NOTICE("\nBeneficial reagents detected in subject's stomach:")
 				for(var/d in stomachreagentdata)
 					dat += stomachreagentdata[d]
 			if(unknown)
 				if(advscan >= 3 && showadvscan == 1)
-					dat += "<span class='warning'>Warning: Non-medical reagent[(unknown > 1)?"s":""] found in subject's stomach:</span><br>"
+					dat += SPAN_WARNING("\nWarning: Non-medical reagent[(unknown > 1)?"s":""] found in subject's stomach:")
 					for(var/d in stomachunknownreagents)
 						dat += stomachunknownreagents[d]
 				else
-					dat += "<span class='warning'>Unknown substance[(unknown > 1)?"s":""] found in subject's stomach.</span><br>"
+					dat += SPAN_WARNING("\nUnknown substance[(unknown > 1)?"s":""] found in subject's stomach.")
 		if(C.touching && C.touching.total_volume)
 			var/unknown = 0
 			var/touchreagentdata[0]
@@ -182,44 +184,44 @@ HALOGEN COUNTER	- Radcount on mobs
 			for(var/B in C.touching.reagent_list)
 				var/datum/reagent/T = B
 				if(T.scannable)
-					touchreagentdata["[T.id]"] = "<span class='notice'>\t[round(C.touching.get_reagent_amount(T.id), 1)]u [T.name]</span><br>"
+					touchreagentdata["[T.id]"] = SPAN_NOTICE("\n[round(C.touching.get_reagent_amount(T.id), 1)]u [T.name]")
 					if (advscan == 0 || showadvscan == 0)
-						dat += "<span class='notice'>[T.name] found in subject's dermis.</span><br>"
+						dat += SPAN_NOTICE("\n[T.name] found in subject's dermis.")
 				else
 					++unknown
-					touchunknownreagents["[T.id]"] = "<span class='notice'>\t[round(C.ingested.get_reagent_amount(T.id), 1)]u [T.name]</span><br>"
+					touchunknownreagents["[T.id]"] = SPAN_NOTICE("\n[round(C.ingested.get_reagent_amount(T.id), 1)]u [T.name]")
 			if(advscan >= 1 && showadvscan == 1)
-				dat += "<span class='notice'>Beneficial reagents detected in subject's dermis:</span><br>"
+				dat += SPAN_NOTICE("\nBeneficial reagents detected in subject's dermis:")
 				for(var/d in touchreagentdata)
 					dat += touchreagentdata[d]
 			if(unknown)
 				if(advscan >= 3 && showadvscan == 1)
-					dat += "<span class='warning'>Warning: Non-medical reagent[(unknown > 1)?"s":""] found in subject's dermis:</span><br>"
+					dat += SPAN_WARNING("\nWarning: Non-medical reagent[(unknown > 1)?"s":""] found in subject's dermis:")
 					for(var/d in touchunknownreagents)
 						dat += touchunknownreagents[d]
 				else
-					dat += "<span class='warning'>Unknown substance[(unknown > 1)?"s":""] found in subject's dermis.</span><br>"
+					dat += SPAN_WARNING("\nUnknown substance[(unknown > 1)?"s":""] found in subject's dermis.")
 		if(C.virus2.len)
 			for (var/ID in C.virus2)
 				if (ID in virusDB)
 					var/datum/data/record/V = virusDB[ID]
-					dat += "<span class='warning'>Warning: Pathogen [V.fields["name"]] detected in subject's blood. Known antigen : [V.fields["antigen"]]</span><br>"
+					dat += SPAN_WARNING("\nWarning: Pathogen [V.fields["name"]] detected in subject's blood. Known antigen : [V.fields["antigen"]]")
 				else
-					dat += "<span class='warning'>Warning: Unknown pathogen detected in subject's blood.</span><br>"
+					dat += SPAN_WARNING("\nWarning: Unknown pathogen detected in subject's blood.")
 	if (M.getCloneLoss())
-		dat += "<span class='warning'>Subject appears to have been imperfectly cloned.</span><br>"
+		dat += SPAN_WARNING("\nSubject appears to have been imperfectly cloned.")
 //	if (M.reagents && M.reagents.get_reagent_amount("inaprovaline"))
 //		user.show_message("<span class='notice'>Bloodstream Analysis located [M.reagents:get_reagent_amount("inaprovaline")] units of rejuvenation chemicals.</span>")
 	if (M.has_brain_worms())
-		dat += "<span class='warning'>Subject suffering from aberrant brain activity. Recommend further scanning.</span><br>"
+		dat += SPAN_WARNING("\nSubject suffering from aberrant brain activity.  Recommend further scanning.")
 	else if (M.getBrainLoss() >= 60 || !M.has_brain())
-		dat += "<span class='warning'>Subject is brain dead.</span><br>"
+		dat += SPAN_WARNING("\nSubject is brain dead.")
 	else if (M.getBrainLoss() >= 25)
-		dat += "<span class='warning'>Severe brain damage detected. Subject likely to have a traumatic brain injury.</span><br>"
+		dat += SPAN_WARNING("\nSevere brain damage detected. Subject likely to have a traumatic brain injury.")
 	else if (M.getBrainLoss() >= 10)
-		dat += "<span class='warning'>Significant brain damage detected. Subject may have had a concussion.</span><br>"
+		dat += SPAN_WARNING("\nSignificant brain damage detected. Subject may have had a concussion.")
 	else if (M.getBrainLoss() >= 1 && advscan >= 2 && showadvscan == 1)
-		dat += "<span class='warning'>Minor brain damage detected.</span><br>"
+		dat += SPAN_WARNING("\nMinor brain damage detected.")
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		for(var/obj/item/organ/internal/appendix/a in H.internal_organs)
@@ -231,7 +233,7 @@ HALOGEN COUNTER	- Radcount on mobs
 			else if(a.inflamed >= 1)
 				severity = "Mild"
 			if(severity)
-				dat += "<span class='warning'>[severity] inflammation detected in subject [a.name].</span><br>"
+				dat += SPAN_WARNING("\n[severity] inflammation detected in subject [a.name].")
 		// Infections, fractures, and IB
 		var/basic_fracture = 0	// If it's a basic scanner
 		var/basic_ib = 0		// If it's a basic scanner
@@ -244,25 +246,25 @@ HALOGEN COUNTER	- Radcount on mobs
 			// Broken limbs
 			if(e.status & ORGAN_BROKEN)
 				if((e.name in list("l_arm", "r_arm", "l_leg", "r_leg", "head", "chest", "groin")) && (!e.splinted))
-					fracture_dat += "<span class='warning'>Unsecured fracture in subject [e.name]. Splinting recommended for transport.</span><br>"
+					fracture_dat += SPAN_WARNING("\nUnsecured fracture in subject [e.name]. Splinting recommended for transport.")
 				else if(advscan >= 1 && showadvscan == 1)
-					fracture_dat += "<span class='warning'>Bone fractures detected in subject [e.name].</span><br>"
+					fracture_dat += SPAN_WARNING("\nBone fractures detected in subject [e.name].")
 				else
 					basic_fracture = 1
 			// Infections
 			if(e.has_infected_wound())
-				dat += "<span class='warning'>Infected wound detected in subject [e.name]. Disinfection recommended.</span><br>"
+				dat += SPAN_WARNING("\nInfected wound detected in subject [e.name]. Disinfection recommended.")
 			// IB
 			for(var/datum/wound/W in e.wounds)
 				if(W.internal)
 					if(advscan >= 1 && showadvscan == 1)
-						ib_dat += "<span class='warning'>Internal bleeding detected in subject [e.name].</span><br>"
+						ib_dat += SPAN_WARNING("\nInternal bleeding detected in subject [e.name].")
 					else
 						basic_ib = 1
 		if(basic_fracture)
-			fracture_dat += "<span class='warning'>Bone fractures detected. Advanced scanner required for location.</span><br>"
+			fracture_dat += SPAN_WARNING("\nBone fractures detected. Advanced scanner required for location.")
 		if(basic_ib)
-			ib_dat += "<span class='warning'>Internal bleeding detected. Advanced scanner required for location.</span><br>"
+			ib_dat += SPAN_WARNING("\nInternal bleeding detected. Advanced scanner required for location.")
 		dat += fracture_dat
 		dat += infection_dat
 		dat += ib_dat
@@ -273,14 +275,15 @@ HALOGEN COUNTER	- Radcount on mobs
 			var/blood_percent =  round((blood_volume / H.species.blood_volume)*100)
 			var/blood_type = H.dna.b_type
 			if(blood_volume <= H.species.blood_volume*H.species.blood_level_danger)
-				dat += SPAN_DANGER("<i>Warning: Blood Level CRITICAL: [blood_percent]% [blood_volume]cl. Type: [blood_type]</i><br>")
+				dat += SPAN_DANGER("\n<i>Warning: Blood Level CRITICAL: [blood_percent]% [blood_volume]cl. Type: [blood_type]</i>")
 			else if(blood_volume <= H.species.blood_volume*H.species.blood_level_warning)
-				dat += SPAN_DANGER("<i>Warning: Blood Level VERY LOW: [blood_percent]% [blood_volume]cl. Type: [blood_type]</i><br>")
+				dat += SPAN_DANGER("\n<i>Warning: Blood Level VERY LOW: [blood_percent]% [blood_volume]cl. Type: [blood_type]</i>")
 			else if(blood_volume <= H.species.blood_volume*H.species.blood_level_safe)
-				dat += SPAN_DANGER("Warning: Blood Level LOW: [blood_percent]% [blood_volume]cl. Type: [blood_type]<br>")
+				dat += SPAN_DANGER("\nWarning: Blood Level LOW: [blood_percent]% [blood_volume]cl. Type: [blood_type]")
 			else
-				dat += "<span class='notice'>Blood Level Normal: [blood_percent]% [blood_volume]cl. Type: [blood_type]</span><br>"
-		dat += "<span class='notice'>Subject's pulse: <font color='[H.pulse == PULSE_THREADY || H.pulse == PULSE_NONE ? "red" : "blue"]'>[H.get_pulse(GETPULSE_TOOL)] bpm.</font></span>"
+				dat += SPAN_NOTICE("\nBlood Level Normal: [blood_percent]% [blood_volume]cl. Type: [blood_type]")
+		dat += SPAN_NOTICE("\nSubject's pulse: <font color='[H.pulse == PULSE_THREADY || H.pulse == PULSE_NONE ? "red" : "blue"]'>[H.get_pulse(GETPULSE_TOOL)] bpm.</font>")
+	dat += "</blockquote>"
 	user.show_message(dat, 1)
 
 /obj/item/healthanalyzer/verb/toggle_mode()

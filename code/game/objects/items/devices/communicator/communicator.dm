@@ -245,9 +245,8 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	populate_known_devices() //Update the devices so ghosts can see the list on NanoUI.
 	..()
 
-/mob/observer/dead
-	var/datum/exonet_protocol/exonet = null
-	var/list/exonet_messages = list()
+/mob/observer/dead/var/datum/exonet_protocol/exonet = null
+/mob/observer/dead/var/list/exonet_messages = list()
 
 // Proc: New()
 // Parameters: None
