@@ -1,6 +1,0 @@
-author: "lingonberry1234"
-delete-after: True
-changes: 
-  - rscadd: "Added new circuits from everywhere, plus a couple of extras. Circuit cloning."
-  - bugfix: "Input circuits live again"
-  - refactor: "Integrated circuits backend ported from Main"
