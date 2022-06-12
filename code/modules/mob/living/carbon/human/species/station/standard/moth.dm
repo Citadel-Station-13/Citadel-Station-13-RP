@@ -130,9 +130,16 @@
 // todo: cataloguer rework when
 /datum/category_item/catalogue/fauna/mothpeople
 	name = "Sapients - Dnin-Nepids"
-	#warn lore dump lmfao
 	desc = {"
+		The Dnin-Nepids are a nomadic species hailing from the southern side of the Milky Way. A relatively new contender
+		to the galaxy's state of affairs, they are a nomadic and innovative race that tends to stick to themselves. Dnin-Nepids
+		often sport lithe, yet nimble bodies - covered with fuzz and sporting wings and antennae, leading them to gain the
+		moniker of 'moths' due to their resemblence to a certain Earth-originating insect.
 
+		While most of the Dnin-Nepids live aboard their arkships - whether within their main fleets, or as part of an expeditionary crew,
+		more and more have been spotted on the frontier - oft either seeking a new adventure, or a new life amongst the other races of the galaxy.
+		As a race of natural, if enigmatic and unpredictable engineers, they are oft found working aboard vessels as navigators and maintainers,
+		taking advantage of their adaptability where they lack in things like brawn and numbers.
 	"}
 	value = CATALOGUER_REWARD_TRIVIAL
 
