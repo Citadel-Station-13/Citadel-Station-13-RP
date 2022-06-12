@@ -5,6 +5,7 @@
 	name_plural = "Dnin-Nepids"
 	examine_name = "Dnin-Nepid"
 
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 	icobase = 'icons/mob/human_races/moth.dmi'
 
 	wing = "moth_plain"
