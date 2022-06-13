@@ -44,7 +44,7 @@
 	var/suit_storage_icon = 'icons/mob/clothing/belt_mirror.dmi'
 
 	/// default bodytype to use for clothing rendering
-	var/default_bodytype = BODYTYPE_NORMAL
+	var/default_bodytype = BODYTYPE_DEFAULT
 
 //! ## Damage overlay and masks.
 	var/damage_overlays = 'icons/mob/human_races/masks/dam_human.dmi'

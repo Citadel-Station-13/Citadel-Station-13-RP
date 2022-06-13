@@ -2,9 +2,17 @@
 #warn impl - check overrides too
 #warn make sure this acts right if an item is already held, same with left/right/active/inactive procs.
 
-/mob/proc/put_in_hands(obj/item/I, force)
+/mob/proc/put_in_hands(obj/item/I, force, merge_stacks = TRUE)
 	if(is_holding(I))
 		return TRUE
+
+	if(merge_stacks && istype(I, /obj/item/stack))
+		var/obj/item/stack/S = I
+		for(var/obj/item/stack/held_stack in get_held_items())
+			if(S.can_merge(held_stack) && S.merge(held_stack))
+				to_chat(src, SPAN_NOTICE("Your [held_stack] stack now contains [held_stack.get_amount()] [held_stack.singular_name]\s."))
+				return TRUE
+
 	return put_in_active_hand(I, force) || put_in_inactive_hand(I, force)
 
 /**

@@ -40,7 +40,7 @@
 					return TRUE
 			return FALSE
 		if(/datum/inventory_slot_meta/abstract/attach_as_accessory)
-			for(var/obj/item/clothing/C in get_equipped_items(FALSE, FALSE))
+			for(var/obj/item/clothing/C in get_equipped_items())
 				if(C.attempt_attach_accessory(I))
 			return FALSE
 		else
@@ -135,7 +135,8 @@
 	PROTECTED_PROC(TRUE)
 	if(!I)
 		return TRUE
-	// enforcement: if it gets to here, you probably did something wrong, given that even forceMove is hooked to unequip automatically.
+
+	#warn check reachability, fluff, item can unequip, etc.
 
 	if(!force && HAS_TRAIT(I, TRAIT_NODROP))
 		return FALSE
@@ -144,13 +145,16 @@
 	if(hand)
 		_unequip_held(I, TRUE)
 	else
-		#warn handling for no current equipped slot?
+		if(!I.current_equipped_slot)
+			stack_trace("tried to unequip an item without current equipped slot.")
+			I.current_equipped_slot = _slot_by_item(I)
 		_unequip_slot(I.current_equipped_slot, TRUE)
 		I.unequipped(src, I.current_equipped_slot)
 
 	. = TRUE
 
 	if(I)
+		// todo: better rendering that takes observers into account
 		if(client)
 			client.screen -= I
 			I.screen_loc = null
@@ -278,7 +282,7 @@
 
 	if(!inventory_slot_semantic_conflict(I, slot, user) && (!force || !harder_force))
 		if(!silent)
-			to_chat(user, SPAN_WARNING("[I] doesn't go there!"))
+			to_chat(user, SPAN_WARNING("[I] doesn't fit there."))
 		return FALSE
 
 
@@ -313,7 +317,7 @@
 	return null
 
 /**
- * semantic check - should this thing ever be here?
+ * semantic check - should this item fit here? slot flag checks/etc should go in here.
  *
  * return TRUE if conflicting, otherwise FALSE
  */
@@ -328,12 +332,6 @@
 			if(!istype(I, /obj/item/handcuffs/legcuffs) || istype(I, /obj/item/handcuffs/legcuffs))
 				return TRUE
 
-/**
- * slot check - does this item fit here?
- *
- * return TRUE/FALSE
- */
-/mob/proc/can_equip_slot_check(obj/item/I, slot, mob/user)
 
 #warn impl
 /mob/proc/_equip_item(obj/item/I, slot, force, silent, update_icons, ignore_fluff)

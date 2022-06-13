@@ -18,6 +18,7 @@
 	current_equipped_slot = slot
 	// current_equipped_slot = get_inventory_slot_datum(slot)
 	hud_layerise()
+	// todo: better hud rendering
 	user.position_hud_item(src,slot)
 	if(user.client)
 		user.client.screen |= src
@@ -195,24 +196,6 @@
 					to_chat(usr, "<span class='warning'>You somehow have a suit with no defined allowed items for suit storage, stop that.</span>")
 				return 0
 			if( !(istype(src, /obj/item/pda) || istype(src, /obj/item/pen) || is_type_in_list(src, H.wear_suit.allowed)) )
-				return 0
-		if(slot_in_backpack) //used entirely for equipping spawned mobs or at round start
-			var/allow = 0
-			if(H.back && istype(H.back, /obj/item/storage/backpack))
-				var/obj/item/storage/backpack/B = H.back
-				if(B.can_be_inserted(src,1))
-					allow = 1
-			if(!allow)
-				return 0
-		if(slot_tie)
-			var/allow = 0
-			for(var/obj/item/clothing/C in H.worn_clothing)	//Runs through everything you're wearing, returns if you can't attach the thing
-				if(C.can_attach_accessory(src))
-					allow = 1
-					break
-			if(!allow)
-				if(!disable_warning)
-					to_chat(H, "<span class='warning'>You're not wearing anything you can attach this [name] to.</span>")
 				return 0
 	return 1
 
