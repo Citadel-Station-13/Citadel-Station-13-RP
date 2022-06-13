@@ -437,6 +437,13 @@
 	// if this returns bad data well fuck you, don't break equipped()/unequipped().
 
 /**
+ * returns if an item is in inventory (equipped) rather than hands
+ */
+/mob/proc/is_wearing(obj/item/I)
+	var/slot = is_in_inventory(I)
+	return slot && (slot != SLOT_ID_HANDS)
+
+/**
  * get slot of item if it's equipped.
  * null if not in inventory. SLOT_HANDS if held.
  */
