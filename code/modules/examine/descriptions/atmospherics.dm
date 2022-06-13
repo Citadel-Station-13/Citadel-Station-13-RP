@@ -127,7 +127,7 @@
 	It can be controlled from an Air Alarm.  It can be configured to drain all air rapidly with a 'panic syphon' from an air alarm."
 
 //Omni filters
-/obj/machinery/atmospherics/component/quaternary/atmos_filter
+/obj/machinery/atmospherics/component/quaternary/filter
 	description_info = "Filters gas from a custom input direction, with up to two filtered outputs and a 'everything else' \
 	output.  The filtered output's arrows glow orange."
 
@@ -164,4 +164,3 @@
 /obj/machinery/pipedispenser
 	description_info = "This can be moved by using a wrench.  You will need to wrench it again when you want to use it.  You can put \
 	excess (atmospheric) pipes into the dispenser, as well.  The dispenser requires electricity to function."
-

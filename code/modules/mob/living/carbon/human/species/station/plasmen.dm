@@ -37,7 +37,7 @@
 	chemOD_mod =	1 // turns out this is just damage
 
 	breath_type = /datum/gas/phoron
-	poison_type = /datum/gas/oxygen
+	poison_types = list(/datum/gas/oxygen = TRUE)
 	siemens_coefficient = 1
 
 	speech_bubble_appearance = "phoron"

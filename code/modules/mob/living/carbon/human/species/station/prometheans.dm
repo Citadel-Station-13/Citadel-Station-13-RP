@@ -36,7 +36,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 	blood_color = "#05FF9B"
 	flesh_color = "#05FFFB"
 	breath_type = null
-	poison_type = null
+	poison_types = null
 
 	speech_bubble_appearance = "slime"
 

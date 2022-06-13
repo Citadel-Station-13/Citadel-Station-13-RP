@@ -20,7 +20,7 @@
 
 	body_temperature = T20C
 	breath_type = /datum/gas/carbon_dioxide
-	poison_type = /datum/gas/phoron
+	poison_types = list(/datum/gas/phoron = TRUE)
 	exhale_type = /datum/gas/oxygen
 
 	// Heat and cold resistances are 20 degrees broader on the level 1 range, level 2 is default, level 3 is much weaker, halfway between L2 and normal L3.
@@ -174,7 +174,7 @@
 	var/failed_exhale = 0
 
 	inhaling = breath.gas[breath_type]
-	poison = breath.gas[poison_type]
+	poison = breath.gas[poison_types]
 	exhaling = breath.gas[exhale_type]
 
 	var/inhale_pp = (inhaling/breath.total_moles)*breath_pressure
@@ -227,7 +227,7 @@
 		var/ratio = (poison/safe_toxins_max) * 10
 		if(H.reagents)
 			H.reagents.add_reagent("toxin", clamp(ratio, MIN_TOXIN_DAMAGE, MAX_TOXIN_DAMAGE))
-			breath.adjust_gas(poison_type, -poison/6, update = 0) //update after
+			breath.adjust_gas(poison_types, -poison/6, update = 0) //update after
 		H.phoron_alert = max(H.phoron_alert, 1)
 	else
 		H.phoron_alert = 0

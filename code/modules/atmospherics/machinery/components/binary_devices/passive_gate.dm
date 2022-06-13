@@ -75,7 +75,7 @@
 		flowing = 1
 
 		//flow rate limit
-		var/transfer_moles = (set_flow_rate/air1.volume)*air1.total_moles
+		var/transfer_moles = (set_flow_rate/air1.volume) * air1.total_moles
 
 		//Figure out how much gas to transfer to meet the target pressure.
 		switch (regulate_mode)

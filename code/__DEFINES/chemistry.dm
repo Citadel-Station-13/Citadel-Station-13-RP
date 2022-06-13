@@ -52,6 +52,11 @@
 #define CE_SLOWDOWN "goslow"
 /// Don't puke.
 #define CE_ANTACID "nopuke"
+/// Helium voice. Squeak squeak.
+#define CE_SQUEAKY "squeaky"
+
+/// Determines the exchange ratio of reagents being converted to gas and vice versa.
+#define REAGENT_GAS_EXCHANGE_FACTOR 10
 #define REAGENTS_PER_SHEET 20
 
 // Attached to CE_ANTIBIOTIC

@@ -437,7 +437,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "bb" = (
-/obj/machinery/atmospherics/component/quaternary/atmos_filter{
+/obj/machinery/atmospherics/component/quaternary/filter{
 	tag_east = 1;
 	tag_north = 3;
 	tag_south = 2
@@ -445,7 +445,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "bc" = (
-/obj/machinery/atmospherics/component/quaternary/atmos_filter{
+/obj/machinery/atmospherics/component/quaternary/filter{
 	tag_east = 1;
 	tag_north = 4;
 	tag_west = 2

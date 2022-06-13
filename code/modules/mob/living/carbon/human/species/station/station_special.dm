@@ -82,7 +82,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/xenochimera)
 
 	breath_type = /datum/gas/oxygen
-	poison_type = /datum/gas/phoron
+	poison_types = list(/datum/gas/phoron = TRUE)
 	exhale_type = /datum/gas/carbon_dioxide
 
 	hazard_high_pressure = HAZARD_HIGH_PRESSURE
@@ -471,15 +471,15 @@
 		switch(resp_biomorph)
 			if(/datum/gas/oxygen)
 				target.species.breath_type = /datum/gas/oxygen
-				target.species.poison_type = /datum/gas/phoron
+				target.species.poison_types = list(/datum/gas/phoron = TRUE)
 				target.species.exhale_type = /datum/gas/carbon_dioxide
 			if(/datum/gas/phoron)
 				target.species.breath_type = /datum/gas/phoron
-				target.species.poison_type = null
+				target.species.poison_types = null
 				target.species.exhale_type = /datum/gas/nitrogen
 			if(/datum/gas/nitrogen)
 				target.species.breath_type = /datum/gas/nitrogen
-				target.species.poison_type = null
+				target.species.poison_types = null
 			if(/datum/gas/carbon_dioxide)
 				target.species.breath_type = /datum/gas/carbon_dioxide
 				target.species.exhale_type = /datum/gas/oxygen

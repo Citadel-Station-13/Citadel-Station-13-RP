@@ -113,12 +113,12 @@
 /obj/machinery/alarm/server/Initialize(mapload)
 	. = ..()
 	req_access = list(access_rd, access_atmospherics, access_engine_equip)
-	TLV[/datum/gas/oxygen] =			list(16,   19,   135, 140) // Partial pressure, kpa
-	TLV[/datum/gas/carbon_dioxide] =	list(-1.0, -1.0,   5,  10) // Partial pressure, kpa
-	TLV[/datum/gas/phoron] =			list(-1.0, -1.0,   0, 0.5) // Partial pressure, kpa
-	TLV["other"] =			list(-1.0, -1.0, 0.5, 1.0) // Partial pressure, kpa
-	TLV["pressure"] =		list(ONE_ATMOSPHERE * 0.80, ONE_ATMOSPHERE * 0.90, ONE_ATMOSPHERE * 1.10, ONE_ATMOSPHERE * 1.20) /* kpa */
-	TLV["temperature"] =	list(T0C - 26, T0C, T0C + 40, T0C + 66) // K
+	TLV[GAS_OXYGEN] =    list(  16,   19, 135, 140) // Partial pressure, kpa
+	TLV[GAS_CO2] =       list(-1.0, -1.0,   5,  10) // Partial pressure, kpa
+	TLV[GAS_PHORON] =    list(-1.0, -1.0,   0, 0.5) // Partial pressure, kpa
+	TLV["other"] =       list(-1.0, -1.0, 0.5, 1.0) // Partial pressure, kpa
+	TLV["pressure"] =    list(ONE_ATMOSPHERE * 0.80, ONE_ATMOSPHERE * 0.90, ONE_ATMOSPHERE * 1.10, ONE_ATMOSPHERE * 1.20) /* kpa */
+	TLV["temperature"] = list(T0C - 26, T0C, T0C + 40, T0C + 66) // K
 
 /obj/machinery/alarm/Initialize(mapload)
 	. = ..()
@@ -149,13 +149,13 @@
 		wires = new(src)
 
 	// breathable air according to human/Life()
-	TLV["oxygen"] =			list(16, 19, 135, 140) // Partial pressure, kpa
-	TLV["nitrogen"] =		list(0, 0, 135, 140) // Partial pressure, kpa
-	TLV["carbon dioxide"] = list(-1.0, -1.0, 5, 10) // Partial pressure, kpa
-	TLV["phoron"] =			list(-1.0, -1.0, 0, 0.5) // Partial pressure, kpa
-	TLV["other"] =			list(-1.0, -1.0, 0.5, 1.0) // Partial pressure, kpa
-	TLV["pressure"] =		list(ONE_ATMOSPHERE * 0.80, ONE_ATMOSPHERE * 0.90, ONE_ATMOSPHERE * 1.10, ONE_ATMOSPHERE * 1.20) /* kpa */
-	TLV["temperature"] =	list(T0C - 26, T0C, T0C + 40, T0C + 66) // K
+	TLV[GAS_OXYGEN]    = list(  16,   19, 135, 140) // Partial pressure, kpa
+	TLV[GAS_NITROGEN]  = list(   0,    0, 135, 140) // Partial pressure, kpa
+	TLV[GAS_CO2]       = list(-1.0, -1.0,   5,  10) // Partial pressure, kpa
+	TLV[GAS_PHORON]    = list(-1.0, -1.0,   0, 0.5) // Partial pressure, kpa
+	TLV["other"]       = list(-1.0, -1.0, 0.5, 1.0) // Partial pressure, kpa
+	TLV["pressure"]    = list(ONE_ATMOSPHERE * 0.80, ONE_ATMOSPHERE * 0.90, ONE_ATMOSPHERE * 1.10, ONE_ATMOSPHERE * 1.20) /* kpa */
+	TLV["temperature"] = list(T0C - 26, T0C, T0C + 40, T0C + 66) // K
 
 	update_icon()
 
@@ -170,7 +170,8 @@
 		return
 
 	var/turf/simulated/location = src.loc
-	if(!istype(location))	return//returns if loc is not simulated
+	if(!istype(location))
+		return//returns if loc is not simulated
 
 	var/datum/gas_mixture/environment = location.return_air()
 
@@ -259,7 +260,7 @@
 
 			environment.merge(gas)
 
-/obj/machinery/alarm/proc/overall_danger_level(var/datum/gas_mixture/environment)
+/obj/machinery/alarm/proc/overall_danger_level(datum/gas_mixture/environment)
 	var/partial_pressure = R_IDEAL_GAS_EQUATION * environment.temperature/environment.volume
 	var/environment_pressure = environment.return_pressure()
 
@@ -270,11 +271,11 @@
 	DECLARE_TLV_VALUES
 	LOAD_TLV_VALUES(TLV["pressure"], environment_pressure)
 	pressure_dangerlevel = TEST_TLV_VALUES // not local because it's used in process()
-	LOAD_TLV_VALUES(TLV["oxygen"], environment.gas[/datum/gas/oxygen]*partial_pressure)
+	LOAD_TLV_VALUES(TLV[GAS_OXYGEN], environment.gas[/datum/gas/oxygen]*partial_pressure)
 	var/oxygen_dangerlevel = TEST_TLV_VALUES
-	LOAD_TLV_VALUES(TLV["carbon dioxide"], environment.gas[/datum/gas/carbon_dioxide]*partial_pressure)
+	LOAD_TLV_VALUES(TLV[GAS_CO2], environment.gas[/datum/gas/carbon_dioxide]*partial_pressure)
 	var/co2_dangerlevel = TEST_TLV_VALUES
-	LOAD_TLV_VALUES(TLV["phoron"], environment.gas[/datum/gas/phoron]*partial_pressure)
+	LOAD_TLV_VALUES(TLV[GAS_PHORON], environment.gas[/datum/gas/phoron]*partial_pressure)
 	var/phoron_dangerlevel = TEST_TLV_VALUES
 	LOAD_TLV_VALUES(TLV["temperature"], environment.temperature)
 	var/temperature_dangerlevel = TEST_TLV_VALUES

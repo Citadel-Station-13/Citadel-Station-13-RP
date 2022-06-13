@@ -29,7 +29,7 @@
 	darksight = 3 // Major darksight is a bit much, regular one will do for the moment.
 
 	breath_type = null
-	poison_type = null
+	poison_types = null
 
 	virus_immune =	1
 	blood_volume =	0

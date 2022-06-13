@@ -119,7 +119,7 @@
 	var/core_icon = null
 	if(istype(src, /obj/machinery/atmospherics/component/quaternary/mixer))
 		core_icon = "mixer"
-	else if(istype(src, /obj/machinery/atmospherics/component/quaternary/atmos_filter))
+	else if(istype(src, /obj/machinery/atmospherics/component/quaternary/filter))
 		core_icon = "filter"
 	else
 		return

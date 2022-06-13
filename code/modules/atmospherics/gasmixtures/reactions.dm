@@ -86,6 +86,9 @@
 		remove_by_flag(GAS_FLAG_OXIDIZER, used_oxidizers)
 		remove_by_flag(GAS_FLAG_FUEL, used_gas_fuel)
 		adjust_gas(/datum/gas/carbon_dioxide, used_oxidizers)
+		var/datum/gas_mixture/burned_fuel = remove_by_flag(GAS_FLAG_FUEL, used_gas_fuel)
+		for(var/g in burned_fuel.gas)
+			adjust_gas(GLOB.meta_gas_burn_products[g], burned_fuel.gas[g])
 
 		if(zone)
 			zone.remove_liquidfuel(used_liquid_fuel, !check_combustability())

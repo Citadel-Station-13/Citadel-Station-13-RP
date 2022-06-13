@@ -10241,7 +10241,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/secondary)
 "auY" = (
-/obj/machinery/atmospherics/component/quaternary/atmos_filter{
+/obj/machinery/atmospherics/component/quaternary/filter{
 	tag_east = 2;
 	tag_north = 1;
 	tag_south = 4;

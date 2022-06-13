@@ -1303,3 +1303,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /// Checks for slots that are currently obscured by other garments.
 /mob/proc/check_obscured_slots()
 	return
+
+/mob/proc/has_chem_effect(chem, threshold)
+	return FALSE

@@ -9,10 +9,10 @@
 	name = "Gas filter"
 
 	use_power = USE_POWER_IDLE
-	idle_power_usage = 150		//internal circuitry, friction losses and stuff
-	power_rating = 7500	//This also doubles as a measure of how powerful the filter is, in Watts. 7500 W ~ 10 HP
+	idle_power_usage = 150 //internal circuitry, friction losses and stuff
+	power_rating = 7500    //This also doubles as a measure of how powerful the filter is, in Watts. 7500 W ~ 10 HP
 
-	var/temp = null // -- TLE
+	var/temp = null
 
 	var/set_flow_rate = ATMOS_DEFAULT_VOLUME_FILTER
 

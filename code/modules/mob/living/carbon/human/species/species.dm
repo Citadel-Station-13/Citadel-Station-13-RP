@@ -184,7 +184,7 @@
 	/// Non-oxygen gas breathed, if any.
 	var/breath_type = /datum/gas/oxygen
 	/// Poisonous air.
-	var/poison_type = /datum/gas/phoron
+	var/poison_types = list(/datum/gas/phoron = TRUE, /datum/gas/chlorine = TRUE) // Noticeably poisonous air - ie. updates the toxins indicator on the HUD.
 	/// Exhaled gas type.
 	var/exhale_type = /datum/gas/carbon_dioxide
 

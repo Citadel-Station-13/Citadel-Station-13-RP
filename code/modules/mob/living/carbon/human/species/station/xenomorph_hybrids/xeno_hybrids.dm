@@ -65,8 +65,8 @@
 	hazard_high_pressure = 550
 
 	//Doesnt work, defaults are set at checks
-	//breath_type = null	//they don't breathe
-	//poison_type = null
+	breath_type = null	//they don't breathe
+	poison_types = null
 
 	cold_level_1 = 90	//Space if fucking cold, so we need low temperature tolerance
 	cold_level_2 = -1

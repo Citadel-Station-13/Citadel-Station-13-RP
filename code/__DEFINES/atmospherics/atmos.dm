@@ -147,12 +147,39 @@
 #define ZONE_SLEEPING 0
 
 // Defines how much of certain gas do the Atmospherics tanks start with. Values are in kpa per tile (assuming 20C)
-/// A lot of N2 is needed to produce air mix, that's why we keep 90MPa of it
-#define ATMOSTANK_NITROGEN      90000
-/// O2 is also important for airmix, but not as much as N2 as it's only 21% of it.
-#define ATMOSTANK_OXYGEN        40000
-/// CO2 and PH are not critically important for station, only for toxins and alternative coolants, no need to store a lot of those.
-#define ATMOSTANK_CO2           25000
+#define ATMOSTANK_NITROGEN      90000 // A lot of N2 is needed to produce air mix, that's why we keep 90MPa of it
+#define ATMOSTANK_OXYGEN        50000 // O2 is also important for airmix, but not as much as N2 as it's only 21% of it.
+#define ATMOSTANK_CO2           60000 // CO2 is used for the GUP, Charon, and Torch as the primary fuel propellant, and we need lots to stick around.
 #define ATMOSTANK_PHORON        25000
-/// N2O doesn't have a real useful use, i guess it's on station just to allow refilling of sec's riot control canisters?
-#define ATMOSTANK_NITROUSOXIDE  10000
+#define ATMOSTANK_PHORON_FUEL   15000
+#define ATMOSTANK_HYDROGEN      50000
+#define ATMOSTANK_HYDROGEN_FUEL 25000
+#define ATMOSTANK_NITROUSOXIDE  10000 // N2O doesn't have a real useful use, i guess it's on station just to allow refilling of sec's riot control canisters?
+
+#define MAX_PUMP_PRESSURE 15000 // Maximal pressure setting for pumps and vents
+#define MAX_OMNI_PRESSURE 15000 // Maximal output(s) pressure for omni devices (filters/mixers)
+
+#define GAS_OXYGEN         "oxygen"
+#define GAS_CO2            "carbon_dioxide"
+#define GAS_CO             "carbon_monoxide"
+#define GAS_METHYL_BROMIDE "methyl_bromide"
+#define GAS_N2O            "sleeping_agent"
+#define GAS_NITROGEN       "nitrogen"
+#define GAS_NO2            "nitrodioxide"
+#define GAS_NO             "nitricoxide"
+#define GAS_METHANE        "methane"
+#define GAS_ALIEN          "aliether"
+#define GAS_HYDROGEN       "hydrogen"
+#define GAS_DEUTERIUM      "deuterium"
+#define GAS_TRITIUM        "tritium"
+#define GAS_HELIUM         "helium"
+#define GAS_ARGON          "argon"
+#define GAS_KRYPTON        "krypton"
+#define GAS_NEON           "neon"
+#define GAS_XENON          "xenon"
+#define GAS_AMMONIA        "ammonia"
+#define GAS_CHLORINE       "chlorine"
+#define GAS_SULFUR         "sulfurdioxide"
+#define GAS_STEAM          "water"
+#define GAS_PHORON         "phoron"
+#define GAS_BORON          "boron"

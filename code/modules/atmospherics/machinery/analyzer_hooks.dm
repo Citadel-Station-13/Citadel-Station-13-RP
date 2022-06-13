@@ -75,7 +75,7 @@
 /obj/machinery/atmospherics/component/trinary/mixer/atmosanalyze(var/mob/user)
 	return atmosanalyzer_scan(src, src.air3, user)
 
-/obj/machinery/atmospherics/component/quaternary/atmos_filter/atmosanalyze(var/mob/user)
+/obj/machinery/atmospherics/component/quaternary/filter/atmosanalyze(var/mob/user)
 	return atmosanalyzer_scan(src, src.input.air, user)
 
 /obj/machinery/atmospherics/component/quaternary/mixer/atmosanalyze(var/mob/user)

@@ -26,6 +26,10 @@ GLOBAL_LIST_INIT(meta_gas_by_flag, meta_gas_by_flag_list())
 GLOBAL_LIST_INIT(meta_gas_molar_mass, meta_gas_molar_mass_list())
 /// Typecache of gases with no overlays
 GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_list())
+/// Products created when burned. For fuel only for now (not oxidizers)
+GLOBAL_LIST_INIT(meta_gas_burn_products, meta_gas_burn_product_list())
+/// Reagent created when inhaled by lungs.
+GLOBAL_LIST_INIT(meta_gas_breathed_products, meta_gas_breathed_product_list())
 
 /proc/meta_gas_heat_list()
 	. = subtypesof(/datum/gas)
@@ -116,6 +120,18 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 		if (!initial(gasvar.gas_overlay))
 			.[gastype] = TRUE
 
+/proc/meta_gas_burn_product_list()
+	. = subtypesof(/datum/gas)
+	for(var/gas_path in .)
+		var/datum/gas/gas = gas_path
+		.[gas_path] = initial(gas.burn_product)
+
+/proc/meta_gas_breathed_product_list()
+	. = subtypesof(/datum/gas)
+	for(var/gas_path in .)
+		var/datum/gas/gas = gas_path
+		.[gas_path] = initial(gas.breathed_product)
+
 // Visual overlay
 /obj/effect/overlay/gas
 	icon = 'icons/effects/atmospherics.dmi'
@@ -159,28 +175,34 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	var/molar_mass = 0
 	/// Gas flags. See [code/__DEFINES/atmospherics/flags.dm]
 	var/gas_flags
+	/// Products created when burned. For fuel only for now (not oxidizers)
+	var/burn_product = GAS_CO2
+	/// Reagent created when inhaled by lungs.
+	var/breathed_product
 
 /datum/gas/oxygen
-	id = "o2"
+	id = GAS_OXYGEN
 	name = "Oxygen"
 	specific_heat = 20
 	molar_mass = 0.032
 	gas_flags = GAS_FLAG_OXIDIZER
+	breathed_product = /datum/reagent/oxygen
 
 /datum/gas/nitrogen
-	id = "n2"
+	id = GAS_NITROGEN
 	name = "Nitrogen"
 	specific_heat = 20
 	molar_mass = 0.028
 
 /datum/gas/carbon_dioxide
-	id = "co2"
+	id = GAS_CO2
 	name = "Carbon Dioxide"
 	specific_heat = 30
 	molar_mass = 0.044
+	breathed_product = /datum/reagent/carbon_dioxide
 
 /datum/gas/phoron
-	id = "phoron"
+	id = GAS_PHORON
 	name = "Phoron"
 	//Note that this has a significant impact on TTV yield.
 	//Because it is so high, any leftover phoron soaks up a lot of heat and drops the yield pressure.
@@ -190,12 +212,10 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	//Using multiplicity rule, it's atomic number is 162
 	//and following a N/Z ratio of 1.5, the molar mass of a monatomic gas is:
 	molar_mass = 0.405	// kg/mol
-
 	gas_overlay = "phoron"
-
 	moles_visible = 0.7
-
 	gas_flags = GAS_FLAG_FUEL | GAS_FLAG_FUSION_FUEL | GAS_FLAG_CONTAMINANT
+	breathed_product = /datum/reagent/toxin/phoron
 
 /datum/gas/volatile_fuel
 	id = "volatile_fuel"
@@ -206,44 +226,42 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	gas_flags = GAS_FLAG_FUEL
 
 /datum/gas/nitrous_oxide
-	id = "n2o"
+	id = GAS_N2O
 	name = "Nitrous Oxide"
 	specific_heat = 40
 	molar_mass = 0.044
-
 	gas_overlay = "nitrous_oxide"
 	moles_visible = 1
-
 	gas_flags = GAS_FLAG_OXIDIZER
+	breathed_product = /datum/reagent/nitrous_oxide
 
 //The following is partially stolen from Nebula
 //I am not rewriting our handling of air for this, at least for now.
 /datum/gas/helium
-	id = "helium"
+	id = GAS_HELIUM
 	name = "Helium"
 	specific_heat = 80
 	molar_mass = 0.004
-
 	gas_flags = GAS_FLAG_FUSION_FUEL
 
 /datum/gas/carbon_monoxide
-	id = "carbon monoxide"
+	id = GAS_CO
 	name = "Carbon Monoxide"
 	//lore_text = "A highly poisonous gas."
 	specific_heat = 30
 	molar_mass = 0.028
-
 	//gas_symbol_html = "CO"
 	//gas_symbol = "CO"
 	//taste_description = "stale air"
 	//metabolism = 0.05 // As with helium.
 
 /datum/gas/methyl_bromide
-	id = "methyl bromide"
+	id = GAS_METHYL_BROMIDE
 	name = "Methyl Bromide"
 	//lore_text = "A once-popular fumigant and weedkiller."
 	specific_heat = 42.59
 	molar_mass = 0.095
+	// breathed_product = /datum/reagent/toxin/methyl_bromide
 	//gas_symbol_html = "CH<sub>3</sub>Br"
 	//gas_symbol = "CH3Br"
 	//taste_description = "pestkiller"
@@ -253,7 +271,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	value = 0.25*/
 
 /datum/gas/nitrodioxide
-	id = "nitrogen dioxide"
+	id = GAS_NO2
 	name = "Nitrogen Dioxide"
 	//color = "#ca6409"
 	specific_heat = 37
@@ -263,16 +281,17 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	//gas_symbol = "NO2"
 
 /datum/gas/nitricoxide
-	id = "nitric oxide"
+	id = GAS_NO
 	name = "Nitric Oxide"
 	specific_heat = 10
 	molar_mass = 0.030
 	gas_flags = GAS_FLAG_OXIDIZER
+	breathed_product = /datum/reagent/toxin
 	//gas_symbol_html = "NO"
 	//gas_symbol = "NO"
 
 /datum/gas/methane
-	id = "methane"
+	id = GAS_METHANE
 	name = "Methane"
 	specific_heat = 30
 	molar_mass = 0.016
@@ -281,7 +300,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	//gas_symbol = "CH4"
 
 /datum/gas/argon
-	id = "argon"
+	id = GAS_ARGON
 	name = "Argon"
 	//lore_text = "Just when you need it, all of your supplies argon."
 	specific_heat = 10
@@ -292,7 +311,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 
 // If narcosis is ever simulated, krypton has a narcotic potency seven times greater than regular airmix.
 /datum/gas/krypton
-	id = "krypton"
+	id = GAS_KRYPTON
 	name = "Krypton"
 	specific_heat = 5
 	molar_mass = 0.036
@@ -301,7 +320,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	//value = 0.25
 
 /datum/gas/neon
-	id = "neon"
+	id = GAS_NEON
 	name = "Neon"
 	specific_heat = 20
 	molar_mass = 0.01
@@ -310,7 +329,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	//value = 0.25
 
 /datum/gas/ammonia
-	id = "Ammonia"
+	id = GAS_AMMONIA
 	name = "ammonia"
 	specific_heat = 20
 	molar_mass = 0.017
@@ -325,22 +344,25 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	//overdose = 5
 
 /datum/gas/xenon
-	id = "Xenon"
+	id = GAS_XENON
 	name = "xenon"
 	specific_heat = 3
 	molar_mass = 0.054
+	breathed_product = /datum/reagent/nitrous_oxide/xenon
 	//gas_symbol_html = "Xe"
 	//gas_symbol = "Xe"
 	//value = 0.25
 
 /datum/gas/chlorine
-	id = "chlorine"
+	id = GAS_CHLORINE
 	name = "Chlorine"
+	gas_overlay = "chlorine"
 	//color = "#c5f72d"
 	//gas_overlay_limit = 0.5
 	specific_heat = 5
 	molar_mass = 0.017
 	gas_flags = GAS_FLAG_CONTAMINANT
+	breathed_product = /datum/reagent/toxin/chlorine
 	/*gas_symbol_html = "Cl"
 	gas_symbol = "Cl"
 	taste_description = "bleach"
@@ -350,7 +372,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	toxicity = 15*/
 
 /datum/gas/sulfur_dioxide
-	id = "sulfur dioxide"
+	id = GAS_SULFUR
 	name = "Sulfur Dioxide"
 	specific_heat = 30
 	molar_mass = 0.044
@@ -362,7 +384,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	)*/
 
 /datum/gas/hydrogen
-	id = "hydrogen"
+	id = GAS_HYDROGEN
 	name = "Hydrogen"
 	//lore_text = "A colorless, flammable gas."
 	//flags = MAT_FLAG_FUSION_FUEL
@@ -371,16 +393,18 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	specific_heat = 100
 	molar_mass = 0.002
 	gas_flags = GAS_FLAG_FUEL | GAS_FLAG_FUSION_FUEL
-	/*burn_product = /decl/material/liquid/water
+	burn_product = GAS_STEAM
+	/*
 	gas_symbol_html = "H<sub>2</sub>"
 	gas_symbol = "H2"
 	dissolves_into = list(
 		/decl/material/liquid/fuel/hydrazine = 1
 	)
-	value = 0.4*/
+	value = 0.4
+	*/
 
 /datum/gas/hydrogen/tritium
-	id = "tritium"
+	id = GAS_TRITIUM
 	name = "Tritium"
 	/*lore_text = "A radioactive isotope of hydrogen. Useful as a fusion reactor fuel material."
 	mechanics_text = "Tritium is useable as a fuel in some forms of portable generator. It can also be converted into a fuel rod suitable for a R-UST fusion plant injector by using a fuel compressor. It fuses hotter than deuterium but is correspondingly more unstable."
@@ -391,7 +415,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	gas_symbol = "T"*/
 
 /datum/gas/hydrogen/deuterium
-	id = "Deuterium"
+	id = GAS_DEUTERIUM
 	name = "Deuterium"
 	/*lore_text = "One of the two stable isotopes of hydrogen; also known as heavy hydrogen. Useful as a chemically synthesised fusion reactor fuel material."
 	mechanics_text = "Deuterium can be converted into a fuel rod suitable for a R-UST fusion plant injector by using a fuel compressor. It is the most 'basic' fusion fuel."
@@ -420,3 +444,25 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 
 	gas_overlay = "vimur"
 	moles_visible = 0.1
+
+/datum/gas/vapor
+	id = GAS_STEAM
+	name = "Steam"
+	gas_overlay = "generic"
+	// overlay_limit = 0.5
+	specific_heat = 30	// J/(mol*K)
+	molar_mass = 0.020	// kg/mol
+	breathed_product = /datum/reagent/water
+	// breathed_product =     /datum/reagent/water
+	// condensation_product = /datum/reagent/water
+	// condensation_point =   308.15 // 35C. Dew point is ~20C but this is better for gameplay considerations.
+	// symbol_html = "H<sub>2</sub>O"
+	// symbol = "H2O"
+
+/datum/gas/vapor
+	id = GAS_HELIUM
+	name = "Helium"
+	specific_heat = 80	// J/(mol*K)
+	molar_mass = 0.004	// kg/mol
+	gas_flags = GAS_FLAG_FUSION_FUEL
+	breathed_product = /datum/reagent/helium

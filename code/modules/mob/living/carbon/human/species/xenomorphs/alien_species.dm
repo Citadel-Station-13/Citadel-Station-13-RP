@@ -42,7 +42,7 @@
 	virus_immune = TRUE
 
 	breath_type = null
-	poison_type = null
+	poison_types = null
 
 	vision_flags = SEE_SELF|SEE_MOBS
 

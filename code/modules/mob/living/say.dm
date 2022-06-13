@@ -103,22 +103,26 @@ proc/get_radio_key_from_channel(var/channel)
 		message_data[1] = ""
 		return
 
-	if((HULK in mutations) && health >= 25 && length_char(message))
+	else if((HULK in mutations) && health >= 25 && length_char(message))
 		message = "[uppertext(message)]!!!"
 		verb = pick("yells","roars","hollers")
 		whispering = 0
 		. = 1
-	if(slurring)
+	else if(slurring)
 		message = slur(message)
 		verb = pick("slobbers","slurs")
 		. = 1
-	if(stuttering)
+	else if(stuttering)
 		message = stutter(message)
 		verb = pick("stammers","stutters")
 		. = 1
-	if(muffled)
+	else if(muffled)
 		verb = pick("muffles")
 		whispering = 1
+		. = 1
+	else if(has_chem_effect(CE_SQUEAKY, 1))
+		message = "<font face = 'Comic Sans MS'>[message]</font>"
+		verb = "squeaks"
 		. = 1
 
 	message_data[1] = message

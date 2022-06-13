@@ -7,11 +7,12 @@
 	pipe_state = "omni_mixer"
 
 	use_power = USE_POWER_IDLE
-	idle_power_usage = 150		//internal circuitry, friction losses and stuff
-	power_rating = 3700			//3700 W ~ 5 HP
+	idle_power_usage = 150 // internal circuitry, friction losses and stuff
+	power_rating = 15000   // 15000 W ~ 20 HP
 
 	var/list/inputs = new()
 	var/datum/omni_port/output
+	var/max_output_pressure = MAX_OMNI_PRESSURE
 
 	//setup tags for initial concentration values (must be decimal)
 	var/tag_north_con
@@ -19,8 +20,8 @@
 	var/tag_east_con
 	var/tag_west_con
 
-	var/max_flow_rate = 200
-	var/set_flow_rate = 200
+	var/max_flow_rate = ATMOS_DEFAULT_VOLUME_MIXER
+	var/set_flow_rate = ATMOS_DEFAULT_VOLUME_MIXER
 
 	var/list/mixing_inputs = list()
 
@@ -100,12 +101,18 @@
 
 /obj/machinery/atmospherics/component/quaternary/mixer/process(delta_time)
 	if(!..())
-		return 0
+		return FALSE
 
 	//Figure out the amount of moles to transfer
 	var/transfer_moles = 0
+	var/datum/gas_mixture/output_gas = output.air
+	var/delta = clamp((output_gas ? (max_output_pressure - output_gas.return_pressure()) : 0), 0, max_output_pressure)
+	var/transfer_moles_max = INFINITY
+
 	for (var/datum/omni_port/P in inputs)
 		transfer_moles += (set_flow_rate*P.concentration/P.air.volume)*P.air.total_moles
+		transfer_moles_max = min(transfer_moles_max, calculate_transfer_moles(P.air, output.air, delta, (output && output.network && output.network.volume) ? output.network.volume : 0))
+	transfer_moles = clamp(transfer_moles, 0, transfer_moles_max)
 
 	var/power_draw = -1
 	if (transfer_moles > MINIMUM_MOLES_TO_FILTER)
@@ -113,7 +120,7 @@
 
 	if (power_draw >= 0)
 		last_power_draw = power_draw
-		use_power(power_draw)
+		use_power_oneoff(power_draw)
 
 		for(var/datum/omni_port/P in inputs)
 			if(P.concentration && P.network)
@@ -149,11 +156,12 @@
 			if(ATM_OUTPUT)
 				output = 1
 
-		portData[++portData.len] = list("dir" = dir_name(P.dir, capitalize = 1), \
-										"concentration" = P.concentration, \
-										"input" = input, \
-										"output" = output, \
-										"con_lock" = P.con_lock)
+		portData[++portData.len] = list( \
+			"dir" = dir_name(P.dir, capitalize = 1), \
+			"concentration" = P.concentration, \
+			"input" = input, \
+			"output" = output, \
+			"con_lock" = P.con_lock)
 
 	if(portData.len)
 		data["ports"] = portData
@@ -203,7 +211,7 @@
 
 	update_icon()
 
-/obj/machinery/atmospherics/component/quaternary/mixer/proc/switch_mode(var/port = NORTH, var/mode = ATM_NONE)
+/obj/machinery/atmospherics/component/quaternary/mixer/proc/switch_mode(port = NORTH, mode = ATM_NONE)
 	if(mode != ATM_INPUT && mode != ATM_OUTPUT)
 		switch(mode)
 			if("in")
@@ -243,7 +251,7 @@
 	update_ports()
 	rebuild_mixing_inputs()
 
-/obj/machinery/atmospherics/component/quaternary/mixer/proc/change_concentration(var/port = NORTH)
+/obj/machinery/atmospherics/component/quaternary/mixer/proc/change_concentration(port = NORTH)
 	tag_north_con = null
 	tag_south_con = null
 	tag_east_con = null
@@ -291,7 +299,7 @@
 	for(var/datum/omni_port/P in inputs)
 		mixing_inputs[P.air] = P.concentration
 
-/obj/machinery/atmospherics/component/quaternary/mixer/proc/con_lock(var/port = NORTH)
+/obj/machinery/atmospherics/component/quaternary/mixer/proc/con_lock(port = NORTH)
 	for(var/datum/omni_port/P in inputs)
 		if(P.dir == port)
 			P.con_lock = !P.con_lock

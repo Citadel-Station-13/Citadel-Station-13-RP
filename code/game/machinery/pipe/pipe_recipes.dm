@@ -34,7 +34,7 @@ GLOBAL_LIST_INIT(atmos_pipe_recipes, list(
 		new /datum/pipe_info/pipe("Gas Mixer", /obj/machinery/atmospherics/component/trinary/mixer, TRUE),
 		new /datum/pipe_info/pipe("Gas Mixer 'T'", /obj/machinery/atmospherics/component/trinary/mixer/t_mixer, TRUE),
 		new /datum/pipe_info/pipe("Omni Gas Mixer", /obj/machinery/atmospherics/component/quaternary/mixer, TRUE),
-		new /datum/pipe_info/pipe("Omni Gas Filter", /obj/machinery/atmospherics/component/quaternary/atmos_filter, TRUE),
+		new /datum/pipe_info/pipe("Omni Gas Filter", /obj/machinery/atmospherics/component/quaternary/filter, TRUE),
 		new /datum/pipe_info/meter("Meter"),
 	),
 	"Heat Exchange" = list(

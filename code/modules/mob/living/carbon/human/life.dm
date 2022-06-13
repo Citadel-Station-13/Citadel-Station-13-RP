@@ -453,7 +453,7 @@
 	var/exhaling
 
 	var/breath_type
-	var/poison_type
+	var/list/poison_types
 	var/exhale_type
 
 	var/failed_inhale = 0
@@ -465,11 +465,11 @@
 		breath_type = /datum/gas/oxygen
 	inhaling = breath.gas[breath_type]
 
-	if(species.poison_type)
-		poison_type = species.poison_type
+	if(species.poison_types)
+		poison_types = species.poison_types
 	else
-		poison_type = /datum/gas/phoron
-	poison = breath.gas[poison_type]
+		poison_types = list(/datum/gas/phoron = TRUE)
+	poison = breath.gas[poison_types]
 
 	if(species.exhale_type)
 		exhale_type = species.exhale_type
@@ -540,7 +540,7 @@
 		var/ratio = (poison/safe_toxins_max) * 10
 		if(reagents)
 			reagents.add_reagent("toxin", clamp(ratio, MIN_TOXIN_DAMAGE, MAX_TOXIN_DAMAGE))
-			breath.adjust_gas(poison_type, -poison/6, update = 0) //update after
+			breath.adjust_gas(poison_types, -poison/6, update = 0) //update after
 		phoron_alert = max(phoron_alert, 1)
 	else
 		phoron_alert = 0

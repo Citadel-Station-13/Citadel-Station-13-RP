@@ -8067,7 +8067,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "qn" = (
-/obj/machinery/atmospherics/component/quaternary/atmos_filter{
+/obj/machinery/atmospherics/component/quaternary/filter{
 	name = "CO2 Filter";
 	tag_east = 2;
 	tag_south = 5;
@@ -8100,7 +8100,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "qq" = (
-/obj/machinery/atmospherics/component/quaternary/atmos_filter{
+/obj/machinery/atmospherics/component/quaternary/filter{
 	name = "Phoron Filter";
 	tag_east = 2;
 	tag_south = 6;
@@ -8131,7 +8131,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/atmos)
 "qu" = (
-/obj/machinery/atmospherics/component/quaternary/atmos_filter{
+/obj/machinery/atmospherics/component/quaternary/filter{
 	name = "N2O Filter";
 	tag_east = 2;
 	tag_south = 7;
@@ -8209,7 +8209,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "qF" = (
-/obj/machinery/atmospherics/component/quaternary/atmos_filter{
+/obj/machinery/atmospherics/component/quaternary/filter{
 	name = "N2/O2 Filter";
 	tag_east = 2;
 	tag_south = 4;

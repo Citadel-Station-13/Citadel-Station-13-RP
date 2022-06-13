@@ -1,16 +1,20 @@
 //--------------------------------------------
 // Omni device port types
 //--------------------------------------------
-#define ATM_NONE	0
-#define ATM_INPUT	1
-#define ATM_OUTPUT	2
+#define ATM_NONE    0
+#define ATM_INPUT   1
+#define ATM_OUTPUT  2
 
-#define ATM_O2		3
-#define ATM_N2		4
-#define ATM_CO2		5
-///Phoron
-#define ATM_P		6
-#define ATM_N2O		7
+#define ATM_GAS_MIN 3 // Lower bound for gas mode iteration.
+#define ATM_O2      3 // Oxygen.
+#define ATM_N2      4 // Nitrogen.
+#define ATM_CO2     5 // Carbon dioxide.
+#define ATM_P       6 // Phoron.
+#define ATM_N2O     7 // Nitrous oxide.
+#define ATM_H2      8 // Hydrogen.
+#define ATM_CH3BR   9 // Methyl bromide.
+#define ATM_GAS_MAX 9 // Upper bound for gas mode iteration.
+
 
 //--------------------------------------------
 // Omni port datum
@@ -30,13 +34,13 @@
 	var/obj/machinery/atmospherics/node
 	var/datum/pipe_network/network
 
-/datum/omni_port/New(var/obj/machinery/atmospherics/component/quaternary/M, var/direction = NORTH)
+/datum/omni_port/New(obj/machinery/atmospherics/component/quaternary/M, direction = NORTH)
 	..()
 	dir = direction
 	if(istype(M))
 		master = M
 	air = new
-	air.volume = 200
+	air.volume = ATMOS_DEFAULT_VOLUME_FILTER
 
 /datum/omni_port/proc/connect()
 	if(node)
@@ -60,7 +64,7 @@
 //returns a text string based on the direction flag input
 // if capitalize is true, it will return the string capitalized
 // otherwise it will return the direction string in lower case
-/proc/dir_name(var/dir, var/capitalize = 0)
+/proc/dir_name(dir, capitalize = FALSE)
 	var/string = null
 	switch(dir)
 		if(NORTH)
@@ -79,7 +83,7 @@
 
 //returns a direction flag based on the string passed to it
 // case insensitive
-/proc/dir_flag(var/dir)
+/proc/dir_flag(dir)
 	dir = lowertext(dir)
 	switch(dir)
 		if("north")
@@ -91,19 +95,4 @@
 		if("west")
 			return WEST
 		else
-			return 0
-
-/proc/mode_to_gasid(var/mode)
-	switch(mode)
-		if(ATM_O2)
-			return /datum/gas/oxygen
-		if(ATM_N2)
-			return /datum/gas/nitrogen
-		if(ATM_CO2)
-			return /datum/gas/carbon_dioxide
-		if(ATM_P)
-			return /datum/gas/phoron
-		if(ATM_N2O)
-			return /datum/gas/nitrous_oxide
-		else
-			return null
+			return FALSE

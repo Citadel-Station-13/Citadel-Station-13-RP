@@ -6,6 +6,8 @@
 	organ_tag = O_LUNGS
 	parent_organ = BP_TORSO
 
+	var/list/poison_types
+
 /obj/item/organ/internal/lungs/process(delta_time)
 	..()
 

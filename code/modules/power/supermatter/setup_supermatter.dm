@@ -238,7 +238,7 @@ GLOBAL_LIST_BOILERPLATE(all_engine_setup_markers, /obj/effect/engine_setup)
 
 /obj/effect/engine_setup/atmo_filter/activate()
 	..()
-	var/obj/machinery/atmospherics/component/quaternary/atmos_filter/F = locate() in get_turf(src)
+	var/obj/machinery/atmospherics/component/quaternary/filter/F = locate() in get_turf(src)
 	if(!F)
 		log_and_message_admins("## WARNING: Unable to locate omni filter at [x] [y] [z]!")
 		return SETUP_WARNING
