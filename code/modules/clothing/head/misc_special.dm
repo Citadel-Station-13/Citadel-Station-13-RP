@@ -147,7 +147,6 @@
 /obj/item/clothing/head/ushanka
 	name = "ushanka"
 	desc = "Perfect for winter in Siberia, da?"
-	icon = 'icons/obj/clothing/hats_cit.dmi'
 	icon_state = "ushankadown"
 	flags_inv = HIDEEARS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE

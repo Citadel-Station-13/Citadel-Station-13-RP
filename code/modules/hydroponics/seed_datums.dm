@@ -959,6 +959,44 @@
 	set_trait(TRAIT_PLANT_ICON,"carrot")
 	set_trait(TRAIT_WATER_CONSUMPTION, 6)
 
+/datum/seed/taro
+	name = "taro"
+	seed_name = "taro"
+	display_name = "taro root"
+	kitchen_tag = "taro"
+	chems = list("nutriment" = list(1,20), "taropowder" = list(10,20))
+
+/datum/seed/taro/New()
+	..()
+	set_trait(TRAIT_MATURATION,10)
+	set_trait(TRAIT_PRODUCTION,1)
+	set_trait(TRAIT_YIELD,5)
+	set_trait(TRAIT_POTENCY,10)
+	set_trait(TRAIT_PRODUCT_ICON,"carrot")
+	set_trait(TRAIT_PRODUCT_COLOUR,"#858070")
+	set_trait(TRAIT_PLANT_ICON,"carrot")
+	set_trait(TRAIT_WATER_CONSUMPTION, 6)
+
+/datum/seed/coconut
+	name = "coconut"
+	seed_name = "coconut"
+	display_name = "palm tree"
+	kitchen_tag = "coconut"
+	chems = list("nutriment" = list(1,20), "coconutwater" = list(10,20), "coconutmilk" = list(10,20))
+
+/datum/seed/coconut/New()
+	..()
+	set_trait(TRAIT_HARVEST_REPEAT,1)
+	set_trait(TRAIT_MATURATION,6)
+	set_trait(TRAIT_PRODUCTION,6)
+	set_trait(TRAIT_YIELD,3)
+	set_trait(TRAIT_PRODUCT_ICON,"coconut")
+	set_trait(TRAIT_PRODUCT_COLOUR,"#814d08")
+	set_trait(TRAIT_PLANT_COLOUR,"#69AD50")
+	set_trait(TRAIT_PLANT_ICON,"tree4")
+	set_trait(TRAIT_IDEAL_HEAT, 298)
+	set_trait(TRAIT_IDEAL_LIGHT, 7)
+	set_trait(TRAIT_WATER_CONSUMPTION, 6)
 /datum/seed/weeds
 	name = "weeds"
 	seed_name = "weed"

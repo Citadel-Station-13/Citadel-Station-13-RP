@@ -78,3 +78,41 @@
   - rscadd: Added new circuits from everywhere, plus a couple of extras. Circuit cloning.
   - bugfix: Input circuits live again
   - refactor: Integrated circuits backend ported from Main
+2022-06-11:
+  CharlesWedge:
+  - rscadd: Oregen Across All Cave Zs
+  - bugfix: Atlas Weather now effects all Atlas Z levels.
+  silicons:
+  - bugfix: zone weirdness
+  - code_imp: ZAS hard asserts are now fixed
+2022-06-12:
+  Funkeronipasta:
+  - rscdel: Unused sprite
+  - bugfix: Male and Female Vey-Med FBP sprites
+  Zandario:
+  - bugfix: Fixes invisible labcoats and such
+  lingonberry1234:
+  - rscadd: 'Brings in the Advanced Mop and Bluespace Trashbag from Bay/Main. tweak:
+      Tweaks a few values and adds to the RnD console.'
+  - bugfix: Fixes mop description.
+2022-06-13:
+  AlphaM01:
+  - rscadd: 2 30x30 landing pads to the rift map, these are located west and southwest
+      of the trade pad.
+  - rscadd: '"snowy gravel" turf for pathing.'
+  - rscadd: 'edges and surround overlays for rift''s snow texture and the new gravsnow
+      texture. tweak: renamed the old "gravsnow" to "gravsnow2" (Now matches it''s
+      accompanying snow texture "snow2")'
+  - imageadd: added gravsnow, gravsnow_edges, gravsnow_surround to snow_new.dmi
+  - imageadd: added snow_edges, snow_surround to snow_new.dmi. (These are based on
+      and connect seamlessly to the snow texture from snow_new.dmi being used in rift,
+      as opposed to the currently existing ones based on snow2)
+  - code_imp: added possibly jank code for the new turf/overlays.
+  Captain277:
+  - rscadd: 'Adds Fighter Bay to Underground 1. tweak: Tweaks canyon skyfall turfs.'
+  Zandario:
+  - rscadd: TGChat Blockquotes
+  - bugfix: Fixed examine issues with gender and species.
+  - refactor: Examine code overhauled.
+  silicons:
+  - bugfix: you can tilde again

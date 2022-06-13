@@ -557,6 +557,18 @@
 	. = ..()
 	reagents.add_reagent("lemonjuice", 100)
 
+/obj/item/reagent_containers/food/drinks/bottle/coconutmilk
+	name = "Coconut Milk"
+	desc = "A carton of NutClarity brand coconut milk."
+	icon_state = "milkbox"
+	item_state = "carton"
+	center_of_mass = list("x"=16, "y"=8)
+	isGlass = 0
+
+/obj/item/reagent_containers/food/drinks/bottle/coconutmilk/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("coconutmilk", 100)
+
 //Small bottles
 /obj/item/reagent_containers/food/drinks/bottle/small
 	volume = 50

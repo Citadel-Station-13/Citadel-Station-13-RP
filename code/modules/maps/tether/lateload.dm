@@ -161,7 +161,7 @@
 
 /datum/map_z_level/tether_lateload/away_aerostat
 	name = "Away Mission - Aerostat"
-	base_turf = /turf/unsimulated/floor/sky/virgo2_sky
+	base_turf = /turf/simulated/floor/sky/virgo2_sky
 
 /datum/map_template/tether_lateload/away_aerostat_surface
 	name = "Remmi Aerostat - Z2 Surface"
