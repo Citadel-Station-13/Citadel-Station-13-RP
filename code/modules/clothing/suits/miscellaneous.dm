@@ -266,7 +266,7 @@
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	//yw edit - Teshari sprite
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/suit.dmi'
+		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/suits.dmi'
 		)
 	//yw edit end
 
@@ -1156,8 +1156,6 @@ obj/item/clothing/suit/kamishimo
 	name = "replica imperial soldier armor"
 	desc = "Made out of an especially light metal, it lets you conquer in style. This appears less sturdy than the authentic article."
 	icon_state = "ge_armor"
-	icon = 'icons/obj/clothing/suits_vr.dmi'
-	icon_override = 'icons/mob/clothing/suit.dmi'
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/suit/imperial/officer_replica

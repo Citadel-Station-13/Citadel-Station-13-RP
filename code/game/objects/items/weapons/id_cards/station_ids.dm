@@ -40,6 +40,15 @@
 	. = ..()
 	show(user)
 
+/obj/item/card/id/examine_more(mob/user)
+	. = ..()
+	var/list/msg = list(SPAN_NOTICE("<i>You examine [src] closer, and note the following...</i>"))
+
+	if(mining_points)
+		msg += "There's [mining_points] mining equipment redemption point\s loaded onto this card."
+	return msg
+
+
 /obj/item/card/id/proc/prevent_tracking()
 	return 0
 

@@ -370,7 +370,7 @@
 
 	. += get_name_chaser(user)
 	if(desc)
-		. += desc
+		. += "<hr>[desc]"
 /*
 	if(custom_materials)
 		var/list/materials_list = list()

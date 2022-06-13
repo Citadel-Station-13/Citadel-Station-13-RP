@@ -645,13 +645,13 @@
 	name = "imperial soldier helmet"
 	desc = "Reproduction headgear fashioned after the standard helmet of the ill fated Neo Macedonian Empire. The material is too flimsy to provide protection."
 	icon_state = "ge_helm"
-	icon = 'icons/obj/clothing/hats_vr.dmi'
+	icon = 'icons/obj/clothing/hats.dmi'
 
 /obj/item/clothing/head/imperial_officer_replica
 	name = "imperial officer helmet"
 	desc = "Reproduction headgear fashioned after the officer's helmet of the ill fated Neo Macedonian Empire. The material is too flimsy to provide protection."
 	icon_state = "ge_helmcent"
-	icon = 'icons/obj/clothing/hats_vr.dmi'
+	icon = 'icons/obj/clothing/hats.dmi'
 
 /obj/item/clothing/head/papersack
 	name = "paper sack hat"

@@ -122,7 +122,7 @@
 	input = replacetext_char(input, bold, "<b>$1</b>")
 	var/static/regex/underline = regex("_(?=\\S)(.+?)(?=\\S)_", "g")
 	input = replacetext_char(input, underline, "<u>$1</u>")
-	var/static/regex/strikethrough = regex("~(?=\\S)(.+?)(?=\\S)~", "g")
+	var/static/regex/strikethrough = regex("~~(?=\\S)(.+?)(?=\\S)~~", "g")
 	input = replacetext_char(input, strikethrough, "<s>$1</s>")
 	return input
 

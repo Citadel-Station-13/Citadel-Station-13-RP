@@ -225,6 +225,18 @@
 	reagents.add_reagent("battery", 20)
 	reagents.add_reagent("blood", 10)
 
+/obj/item/reagent_containers/food/drinks/cans/coconutwater
+	name = "Coconut Water"
+	desc = "A bottle of NutClarity brand coconut water."
+	icon_state = "tallwaterbottle"
+	center_of_mass = list("x"=16, "y"=10)
+	drop_sound = 'sound/items/drop/disk.ogg'
+	pickup_sound = 'sound/items/pickup/disk.ogg'
+
+/obj/item/reagent_containers/food/drinks/cans/coconutwater/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("coconutwater", 30)
+
 
 //Alraune Drink Import
 /obj/item/reagent_containers/food/drinks/cans/alraune

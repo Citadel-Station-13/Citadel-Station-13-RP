@@ -390,6 +390,15 @@
 	setDir(turn(dir, 270))
 	updateSilicate()
 
+//! Does this work? idk. Let's call it TBI.
+/obj/structure/window/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
+	if(!density)
+		return TRUE
+	if((is_fulltile()) || (dir == to_dir))
+		return FALSE
+
+	return TRUE
+
 /obj/structure/window/Initialize(mapload, start_dir, constructed = FALSE)
 	. = ..(mapload)
 	if (start_dir)

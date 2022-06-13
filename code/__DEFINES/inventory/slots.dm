@@ -32,7 +32,9 @@
 #define INVENTORY_SLOT_DOES_NOT_EXIST			-1
 
 /// Takes 40ds = 4s to strip someone.
-#define HUMAN_STRIP_DELAY        40
+#define HUMAN_STRIP_DELAY		4 SECONDS
+/// Takes 2s to use a UI element in somebody else's hands.
+#define HUMAN_INTERACT_DELAY	2 SECONDS
 
 // Item inventory slot bitmasks.
 #define SLOT_OCLOTHING  0x1

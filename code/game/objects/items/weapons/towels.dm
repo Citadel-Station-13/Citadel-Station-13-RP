@@ -17,7 +17,7 @@
 		if(SLOT_ID_HEAD)
 			sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/head.dmi')
 		if(SLOT_ID_SUIT)
-			sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/suit.dmi')
+			sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/suits.dmi')
 		if(SLOT_ID_BELT)
 			sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/belt.dmi')
 

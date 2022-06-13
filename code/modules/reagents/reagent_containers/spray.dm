@@ -186,6 +186,7 @@
 			D.create_reagents(amount_per_transfer_from_this)
 			if(!src)
 				return
+			playsound(src.loc, 'sound/effects/spray2.ogg', 50, 1, -6)
 			reagents.trans_to_obj(D, amount_per_transfer_from_this)
 			D.set_color()
 			D.set_up(my_target, rand(6, 8), 2)

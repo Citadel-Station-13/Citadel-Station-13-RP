@@ -274,8 +274,6 @@
 
 	spread_fire(AM)
 
-	..() // call parent because we moved behavior to parent
-
 // Get rank from ID, ID inside PDA, PDA, ID in wallet, etc.
 /mob/living/carbon/human/proc/get_authentification_rank(var/if_no_id = "No id", var/if_no_job = "No job")
 	var/obj/item/pda/pda = wear_id
@@ -1673,3 +1671,13 @@
 	if(istype(gloves, /obj/item/clothing/gloves/gauntlets/rig))
 		return 2
 	return ..()
+
+/mob/living/carbon/human/check_obscured_slots()
+	. = ..()
+	if(wear_suit)
+		if(wear_suit.flags_inv & HIDEGLOVES)
+			LAZYOR(., SLOT_GLOVES)
+		if(wear_suit.flags_inv & HIDEJUMPSUIT)
+			LAZYOR(., SLOT_ICLOTHING)
+		if(wear_suit.flags_inv & HIDESHOES)
+			LAZYOR(., SLOT_FEET)

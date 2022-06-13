@@ -109,14 +109,14 @@
 
 	var/datum/species/S = character.species
 	var/SB = S.selects_bodytype ? pref.custom_base : pref.character_static_species_meta()
-	var/datum/species/new_S = S.copy_from(SB, pref.pos_traits + pref.neu_traits + pref.neg_traits, character)
+	S.copy_from(SB, pref.pos_traits + pref.neu_traits + pref.neg_traits, character)
 
 	//Any additional non-trait settings can be applied here
-	new_S.blood_color = pref.blood_color
+	S.blood_color = pref.blood_color
 
 	if(pref.species == SPECIES_CUSTOM)
 		//Statistics for this would be nice
-		var/english_traits = english_list(new_S.traits, and_text = ";", comma_text = ";")
+		var/english_traits = english_list(S.traits, and_text = ";", comma_text = ";")
 		log_game("TRAITS [pref.client_ckey]/([character]) with: [english_traits]") //Terrible 'fake' key_name()... but they aren't in the same entity yet
 
 

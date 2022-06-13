@@ -355,7 +355,7 @@ END OF CITADEL CHANGES */
 	item_state = "gun"
 	fire_delay = null // Lugers are quite comfortable to shoot, thus allowing for more controlled follow-up shots. Rate of fire similar to a laser carbine.
 	battery_lock = 1 // In exchange for balance, you cannot remove the battery. Also there's no sprite for that and I fucking suck at sprites. -Ace
-	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2, TECH_ILLEGAL = 2) // Illegal tech cuz Space Nazis
+	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2, TECH_ILLEGAL = 2)
 	modifystate = "elugerstun"
 	fire_sound = 'sound/weapons/Taser.ogg'
 	firemodes = list(

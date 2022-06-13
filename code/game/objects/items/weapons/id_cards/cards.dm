@@ -6,8 +6,6 @@
  *		FINGERPRINT CARD
  */
 
-
-
 /*
  * DATA CARDS - Used for the teleporter
  */
@@ -17,7 +15,7 @@
 	icon = 'icons/obj/card_cit.dmi'
 	icon_state = "generic"
 	w_class = ITEMSIZE_TINY
-	slot_flags = SLOT_EARS
+	slot_flags = SLOT_ID | SLOT_EARS
 	var/associated_account_number = 0
 
 	var/list/initial_sprite_stack = list("")

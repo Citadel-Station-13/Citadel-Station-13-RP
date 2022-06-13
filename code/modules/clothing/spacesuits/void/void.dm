@@ -45,9 +45,9 @@
 
 	species_restricted = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_PROMETHEAN)
 	sprite_sheets_refit = list(
-		SPECIES_UNATHI = 'icons/mob/clothing/species/unathi/suit.dmi',
-		SPECIES_TAJ = 'icons/mob/clothing/species/tajaran/suit.dmi',
-		SPECIES_SKRELL = 'icons/mob/clothing/species/skrell/suit.dmi'
+		SPECIES_UNATHI = 'icons/mob/clothing/species/unathi/suits.dmi',
+		SPECIES_TAJ = 'icons/mob/clothing/species/tajaran/suits.dmi',
+		SPECIES_SKRELL = 'icons/mob/clothing/species/skrell/suits.dmi'
 		//Teshari have a general sprite sheet defined in modules/clothing/clothing.dm
 		)
 	sprite_sheets_obj = list(

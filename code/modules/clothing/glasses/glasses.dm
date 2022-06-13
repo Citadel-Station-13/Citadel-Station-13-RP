@@ -806,7 +806,7 @@ BLIND     // can't see anything
 /obj/item/clothing/glasses/tajblind
 	name = "embroidered veil"
 	desc = "An Tajaran made veil that allows the user to see while obscuring their eyes."
-	icon = 'icons/obj/clothing/glasses_vr.dmi'
+	icon = 'icons/obj/clothing/glasses.dmi'
 	icon_override = 'icons/mob/clothing/eyes.dmi'
 	icon_state = "tajblind"
 	item_state = "tajblind"
@@ -816,7 +816,7 @@ BLIND     // can't see anything
 /obj/item/clothing/glasses/hud/health/tajblind
 	name = "lightweight veil"
 	desc = "An Tajaran made veil that allows the user to see while obscuring their eyes. This one has an installed medical HUD."
-	icon = 'icons/obj/clothing/glasses_vr.dmi'
+	icon = 'icons/obj/clothing/glasses.dmi'
 	icon_override = 'icons/mob/clothing/eyes.dmi'
 	icon_state = "tajblind_med"
 	item_state = "tajblind_med"
@@ -825,7 +825,7 @@ BLIND     // can't see anything
 /obj/item/clothing/glasses/sunglasses/sechud/tajblind
 	name = "sleek veil"
 	desc = "An Tajaran made veil that allows the user to see while obscuring their eyes. This one has an in-built security HUD."
-	icon = 'icons/obj/clothing/glasses_vr.dmi'
+	icon = 'icons/obj/clothing/glasses.dmi'
 	icon_override = 'icons/mob/clothing/eyes.dmi'
 	icon_state = "tajblind_sec"
 	item_state = "tajblind_sec"
@@ -835,7 +835,7 @@ BLIND     // can't see anything
 /obj/item/clothing/glasses/meson/prescription/tajblind
 	name = "industrial veil"
 	desc = "An Tajaran made veil that allows the user to see while obscuring their eyes. This one has installed mesons."
-	icon = 'icons/obj/clothing/glasses_vr.dmi'
+	icon = 'icons/obj/clothing/glasses.dmi'
 	icon_override = 'icons/mob/clothing/eyes.dmi'
 	icon_state = "tajblind_meson"
 	item_state = "tajblind_meson"
@@ -845,7 +845,7 @@ BLIND     // can't see anything
 /obj/item/clothing/glasses/material/prescription/tajblind
 	name = "mining veil"
 	desc = "An Tajaran made veil that allows the user to see while obscuring their eyes. This one has an installed material scanner."
-	icon = 'icons/obj/clothing/glasses_vr.dmi'
+	icon = 'icons/obj/clothing/glasses.dmi'
 	icon_override = 'icons/mob/clothing/eyes.dmi'
 	icon_state = "tajblind_meson"
 	item_state = "tajblind_meson"
