@@ -172,8 +172,9 @@
 		if(2000 to 8000) . =  4
 		else             . =  8
 */
-/datum/species/adherent/get_additional_examine_text(var/mob/living/carbon/human/H)
-	if(can_overcome_gravity(H)) return "\nThey are floating on a cloud of shimmering distortion."
+/datum/species/adherent/get_additional_examine_text(mob/living/carbon/human/H)
+	if(can_overcome_gravity(H))
+		return "They are floating on a cloud of shimmering distortion."
 
 /datum/hud_data/adherent
 	has_internals = FALSE

@@ -18,7 +18,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
 "bh" = (
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/sky/depths/west/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
 "bY" = (
 /obj/machinery/door/window/brigdoor/southleft,
@@ -125,8 +125,8 @@
 "hZ" = (
 /obj/effect/decal/cleanable/blood/writing{
 	dir = 8;
-	name = "bloody message";
-	message = "THEY KILLED US"
+	message = "THEY KILLED US";
+	name = "bloody message"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/prison)
@@ -136,7 +136,7 @@
 	name = "westdeep_to_center";
 	portal_id = "westdeepstep"
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/sky/depths/west/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
 "iq" = (
 /obj/effect/floor_decal/corner/white{
@@ -193,7 +193,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/undergound2)
 "ju" = (
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/sky/depths/west/lythios43c,
 /area/rift/facility/interior/undergound2)
 "jw" = (
 /obj/structure/table/marble,
@@ -310,9 +310,9 @@
 	dir = 4
 	},
 /obj/machinery/power/apc/alarms_hidden{
-	dir = 1;
+	cell_type = null;
 	chargelevel = 0;
-	cell_type = null
+	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
@@ -337,7 +337,7 @@
 /area/rift/facility/interior/temple)
 "pT" = (
 /obj/effect/blocker,
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/sky/depths/west/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
 "pX" = (
 /obj/structure/bed/chair/wood{
@@ -475,9 +475,9 @@
 "yG" = (
 /obj/structure/bed/chair,
 /obj/machinery/power/apc/alarms_hidden{
-	dir = 1;
+	cell_type = null;
 	chargelevel = 0;
-	cell_type = null
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/prison)
@@ -612,9 +612,9 @@
 /area/rift/facility/interior/elevator)
 "Mc" = (
 /obj/machinery/power/apc/alarms_hidden{
-	dir = 1;
+	cell_type = null;
 	chargelevel = 0;
-	cell_type = null
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/undergound2)
@@ -676,7 +676,7 @@
 /area/rift/facility/interior/undergound2)
 "Sw" = (
 /obj/effect/map_effect/radiation_emitter/chernobyl,
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/sky/depths/west/lythios43c,
 /area/rift/facility/interior/undergound2)
 "Sy" = (
 /obj/effect/floor_decal/corner/black{
@@ -722,9 +722,9 @@
 /area/rift/facility/interior/prison)
 "UD" = (
 /obj/machinery/power/apc/alarms_hidden{
-	dir = 1;
+	cell_type = null;
 	chargelevel = 0;
-	cell_type = null
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/janitorial)
@@ -780,7 +780,7 @@
 /obj/effect/map_effect/portal/line/side_b{
 	dir = 8
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/sky/depths/west/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
 "YK" = (
 /turf/simulated/floor/tiled/steel_dirty,
@@ -33105,8 +33105,8 @@ so
 so
 lq
 lq
-bh
-bh
+lq
+lq
 lq
 lq
 kx
@@ -33299,8 +33299,8 @@ so
 so
 lq
 lq
-bh
-bh
+lq
+lq
 lq
 lq
 kx

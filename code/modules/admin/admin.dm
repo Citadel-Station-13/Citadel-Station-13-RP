@@ -205,7 +205,7 @@ proc/admin_notice(var/message, var/rights)
 		</body></html>
 	"}
 
-	usr << browse(body, "window=adminplayeropts;size=550x515")
+	usr << browse(body, "window=[M.ckey]_playerpanel;size=550x515")
 	feedback_add_details("admin_verb","SPP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 

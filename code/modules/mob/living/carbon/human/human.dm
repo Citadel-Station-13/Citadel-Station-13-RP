@@ -1661,3 +1661,13 @@
 	if(istype(gloves, /obj/item/clothing/gloves/gauntlets/rig))
 		return 2
 	return ..()
+
+/mob/living/carbon/human/check_obscured_slots()
+	. = ..()
+	if(wear_suit)
+		if(wear_suit.flags_inv & HIDEGLOVES)
+			LAZYOR(., SLOT_GLOVES)
+		if(wear_suit.flags_inv & HIDEJUMPSUIT)
+			LAZYOR(., SLOT_ICLOTHING)
+		if(wear_suit.flags_inv & HIDESHOES)
+			LAZYOR(., SLOT_FEET)
