@@ -16,6 +16,10 @@
 	var/state = DEEPMAINT_GENERATION_STATE_NOT_STARTED
 	/// algorithm
 	var/algorithm = DEEPMAINT_ALGORITHM_DUNGEON_SPREAD
+	/// type
+	var/deepmaint_type = DEEPMAINT_TYPE_ANY
+	/// theme
+	var/deepmanit_theme = DEEPMAINT_THEME_ANY
 	/// state vars for the algorithm
 	var/list/blackboard
 	/// number of zlevels to spread upwards
@@ -42,3 +46,11 @@
 	var/interior_wall_type
 	/// exterior wall type
 	var/exterior_wall_type
+
+/atom/movable/landmark/deepmaint_root/New()
+	SSmapping.deepmaint_loaders += src
+	return ..()
+
+/atom/movable/landmark/deepmaint_root/Destroy()
+	SSmapping.deepmaint_loaders -= src
+	return ..()

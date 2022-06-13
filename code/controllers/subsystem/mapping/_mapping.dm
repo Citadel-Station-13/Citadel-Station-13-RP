@@ -7,14 +7,13 @@ SUBSYSTEM_DEF(mapping)
 	init_order = INIT_ORDER_MAPPING
 	subsystem_flags = SS_NO_FIRE
 
-	// Deepmaint module
+	//!# mapgen - deepmaint
+	/// deepmainit markers by id
 	var/static/list/deepmaint_markers_by_id = list()
-
-	// mapgen - deepmaint
 	/// deepmaint loaders awaiting activations
-
+	var/static/list/atom/movable/landmark/deepmaint_root/deepmaint_loaders = list()
 	/// deepmaint templates
-	var/list/datum/map_template/submap/deepmaint/deepmaint_templates = list()
+	var/static/list/datum/map_template/submap/deepmaint/deepmaint_templates = list()
 
 	var/list/areas_in_z = list()
 

@@ -32,7 +32,7 @@ GLOBAL_VAR(deepmaint_generating)
 		if(DEEPMAINT_ALGORITHM_DUNGEON_SPREAD)
 			algorithm_instance = new /datum/deepmaint_algorithm/dungeon
 	if(algorithm_instance)
-		algorithm_instance.generate(src, get_turf(src), gather_markers())
+		algorithm_instance.generate(src, get_turf(src), gather_markers(), gather_templates())
 	else
 		stack_trace("Couldn't find algorithm instance for algorithm [algorithm]")
 	_unlock_from_generation()
@@ -43,3 +43,13 @@ GLOBAL_VAR(deepmaint_generating)
 
 /atom/movable/landmark/deepmaint_root/proc/gather_markers()
 	return SSmapping.get_deepmaint_markers(id)
+
+/atom/movable/landmark/deepmaint_root/proc/gather_templates()
+	. = list()
+	for(var/datum/map_template/submap/deepmaint/T in SSmapping.deepmaint_templates)
+		if(!(T.deepmaint_type & deepmaint_type))
+			continue
+		if(!(T.deepmaint_theme & deepmaint_theme))
+			continue
+		. += T
+

@@ -20,6 +20,8 @@
 /// spacestation
 #define DEEPMAINT_THEME_STATION				(1<<9)
 
+#define DEEPMAINT_THEME_ANY					ALL
+
 // deepmaint type
 /// marks if this should be usable aboveground
 #define DEEPMAINT_TYPE_ABOVEGROUND			(1<<5)
@@ -27,6 +29,8 @@
 #define DEEPMAINT_TYPE_UNDERGRONUD			(1<<6)
 /// marks if this should be usable in space
 #define DEEPMAINT_TYPE_SPACE				(1<<7)
+
+#define DEEPMAINT_TYPE_ANY					ALL
 
 // deepmaint danger rating
 /// as harmless as a suspiciuos rock outcropping
