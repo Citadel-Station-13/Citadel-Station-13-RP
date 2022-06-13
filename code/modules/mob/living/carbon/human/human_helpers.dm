@@ -34,9 +34,7 @@
 
 /mob/living/carbon/human/proc/get_coverage()
 	var/list/coverage = list()
-	for(var/obj/item/clothing/C in src)
-		if(item_is_in_hands(C))
-			continue
+	for(var/obj/item/clothing/C in get_equipped_items())
 		if(C.body_parts_covered & HEAD)
 			coverage += list(organs_by_name[BP_HEAD])
 		if(C.body_parts_covered & UPPER_TORSO)

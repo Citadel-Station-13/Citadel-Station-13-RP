@@ -23,4 +23,4 @@
  * - I - item in question - optional. With this we can make a slightly more educated guess
  */
 /datum/species/proc/get_effective_bodytype(slot, obj/item/I)
-	#warn impl
+	return BODYTYPE_DEFAULT

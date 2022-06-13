@@ -42,6 +42,26 @@
 /mob/proc/get_held_items()
 	. = list()
 
+/mob/proc/get_left_held_item()
+	return
+
+/mob/proc/get_left_held_items()
+	var/obj/item/I = get_left_held_item()
+	if(I)
+		return list(I)
+	return list()
+	// TODO: actual variable hand count
+
+/mob/proc/get_right_held_item()
+	return
+
+/mob/proc/get_right_held_items()
+	var/obj/item/I = get_right_held_item()
+	if(I)
+		return list(I)
+	return list()
+	// TODO: actual variable hand count
+
 /**
  * get held items of type
  */
@@ -97,6 +117,16 @@
  */
 /mob/proc/get_inactive_held_item()
 	return
+
+/**
+ * returns all items held in non active hands
+ */
+/mob/proc/get_inactive_held_items()
+	var/obj/item/I = get_inactive_held_item()
+	if(I)
+		return list(I)
+	return list()
+	// TODO: actual multihanding support, for now this is just a wrapper
 
 /**
  * get number of hand slots

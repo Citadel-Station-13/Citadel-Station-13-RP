@@ -1,6 +1,6 @@
 // bodytypes - they are flags for var storage, but should only be passed one at a time to rendering!
 /// normal human bodytype
-#define BODYTYPE_NORMAL				(1<<0)
+#define BODYTYPE_DEFAULT			(1<<0)
 /// teshari bodytype
 #define BODYTYPE_TESHARI			(1<<2)
 /// adherent bodytype

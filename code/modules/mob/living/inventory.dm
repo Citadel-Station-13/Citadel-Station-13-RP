@@ -4,6 +4,12 @@
 /mob/living/get_inactive_held_item()
 	return hand? r_hand : l_hand
 
+/mob/living/get_left_held_item()
+	return l_hand
+
+/mob/living/get_right_held_item()
+	return r_hand
+
 /mob/living/get_held_index(obj/item/I)
 	if(l_hand == I)
 		return 1

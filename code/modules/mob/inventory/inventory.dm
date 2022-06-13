@@ -247,9 +247,9 @@
 		// special handling: make educated guess, defaulting to yes
 		switch(slot_meta.type)
 			if(/datum/inventory_slot_meta/abstract/left_hand)
-				return force || get_left_held_item()
+				return force || !get_left_held_item()
 			if(/datum/inventory_slot_meta/abstract/right_hand)
-				return force || get_right_held_item()
+				return force || !get_right_held_item()
 			if(/datum/inventory_slot_meta/abstract/put_in_backpack)
 				var/obj/item/storage/S = item_by_slot(SLOT_ID_BACK)
 				if(!istype(S))
@@ -268,12 +268,12 @@
 	switch(inventory_slot_conflict_check(I, slot))
 		if(CAN_EQUIP_SLOT_CONFLICT_HARD)
 			if(!silent)
-				to_chat(user, SPAN_WARNING("[self_equip? "You" : "They"] are already [slot_meta.display_plural? "holding too many things" : "wearing something"] [slot_meta.display_preposition] [self_equip? "your" : "their"] [slot_meta.display_name"]."))
+				to_chat(user, SPAN_WARNING("[self_equip? "You" : "They"] are already [slot_meta.display_plural? "holding too many things" : "wearing something"] [slot_meta.display_preposition] [self_equip? "your" : "their"] [slot_meta.display_name]."))
 			return FALSE
 		if(CAN_EQUIP_SLOT_CONFLICT_SOFT)
 			if(!force && !harder_force)
 				if(!silent)
-					to_chat(user, SPAN_WARNING("[self_equip? "You" : "They"] are already [slot_meta.display_plural? "holding too many things" : "wearing something"] [slot_meta.display_preposition] [self_equip? "your" : "their"] [slot_meta.display_name"]."))
+					to_chat(user, SPAN_WARNING("[self_equip? "You" : "They"] are already [slot_meta.display_plural? "holding too many things" : "wearing something"] [slot_meta.display_preposition] [self_equip? "your" : "their"] [slot_meta.display_name]."))
 				return FALSE
 
 	if(!inventory_slot_semantic_conflict(I, slot, user) && (!force || !harder_force))

@@ -14,7 +14,7 @@
 
 	parent_organ = BP_L_ARM
 
-	target_slot = slot_l_hand
+	target_slot = /datum/inventory_slot_meta/abstract/left_hand
 
 	target_parent_classes = list(ORGAN_FLESH, ORGAN_ASSISTED)
 
@@ -27,11 +27,11 @@
 			if(O_AUG_L_FOREARM)
 				organ_tag = O_AUG_R_FOREARM
 				parent_organ = BP_R_ARM
-				target_slot = slot_r_hand
+				target_slot = /datum/inventory_slot_meta/abstract/left_hand
 			if(O_AUG_R_FOREARM)
 				organ_tag = O_AUG_L_FOREARM
 				parent_organ = BP_L_ARM
-				target_slot = slot_l_hand
+				target_slot = /datum/inventory_slot_meta/abstract/right_hand
 		to_chat(user, "<span class='notice'>You swap \the [src]'s servos to install neatly into \the lower [parent_organ] mount.</span>")
 		return
 
@@ -72,11 +72,11 @@
 			if(O_AUG_L_HAND)
 				organ_tag = O_AUG_R_HAND
 				parent_organ = BP_R_HAND
-				target_slot = slot_r_hand
+				target_slot = /datum/inventory_slot_meta/abstract/left_hand
 			if(O_AUG_R_HAND)
 				organ_tag = O_AUG_L_HAND
 				parent_organ = BP_L_HAND
-				target_slot = slot_l_hand
+				target_slot = /datum/inventory_slot_meta/abstract/right_hand
 		to_chat(user, "<span class='notice'>You swap \the [src]'s servos to install neatly into \the upper [parent_organ] mount.</span>")
 		return
 
@@ -109,11 +109,11 @@
 			if(O_AUG_L_UPPERARM)
 				organ_tag = O_AUG_R_UPPERARM
 				parent_organ = BP_R_ARM
-				target_slot = slot_r_hand
+				target_slot = /datum/inventory_slot_meta/abstract/left_hand
 			if(O_AUG_R_UPPERARM)
 				organ_tag = O_AUG_L_UPPERARM
 				parent_organ = BP_L_ARM
-				target_slot = slot_l_hand
+				target_slot = /datum/inventory_slot_meta/abstract/right_hand
 		to_chat(user, "<span class='notice'>You swap \the [src]'s servos to install neatly into \the upper [parent_organ] mount.</span>")
 		return
 

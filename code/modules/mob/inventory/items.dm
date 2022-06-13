@@ -131,6 +131,10 @@
 /obj/item/proc/_inv_return_attached()
 	return src
 
+/obj/item/proc/can_equip(mob/M, mob/user, slot, silent, disallow_delay)
+
+/obj/item/proc/can_unequip(mob/M, mob/user, slot, silent, disallow_delay)
+
 
 #warn refactor
 //the mob M is attempting to equip this item into the slot passed through as 'slot'. Return 1 if it can do this and 0 if it can't.
