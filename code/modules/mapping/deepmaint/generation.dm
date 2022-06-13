@@ -7,10 +7,39 @@ GLOBAL_VAR(deepmaint_generating)
 			return FALSE
 		stoplag(1)
 	GLOB.deepmaint_generating = src
+	GLOB.deepmaint_current_exterior_floor = exterior_floor_type
+	GLOB.deepmaint_current_exterior_wall = exterior_wall_type
+	GLOB.deepmaint_current_interior_floor = interior_floor_type
+	GLOB.deepmaint_current_interior_plating = interior_plating_type
+	GLOB.deepmaint_current_interior_wall = interior_wall_type
 	return TRUE
 
 /atom/movable/landmark/deepmaint_root/proc/_unlock_from_generation()
 	if(GLOB.deepmaint_generating != src)
 		CRASH("wasn't even our turn")
 	GLOB.deepmaint_generating = null
+	GLOB.deepmaint_current_exterior_floor = null
+	GLOB.deepmaint_current_exterior_wall = null
+	GLOB.deepmaint_current_interior_floor = null
+	GLOB.deepmaint_current_interior_plating = null
+	GLOB.deepmaint_current_interior_wall = null
 	return TRUE
+
+/atom/movable/landmark/deepmaint_root/proc/generate()
+	_lock_for_generation()
+	var/datum/deepmaint_algorithm/algorithm_instance
+	switch(algorithm)
+		if(DEEPMAINT_ALGORITHM_DUNGEON_SPREAD)
+			algorithm_instance = new /datum/deepmaint_algorithm/dungeon
+	if(algorithm_instance)
+		algorithm_instance.generate(src, get_turf(src), gather_markers())
+	else
+		stack_trace("Couldn't find algorithm instance for algorithm [algorithm]")
+	_unlock_from_generation()
+
+/atom/movable/landmark/deepmaint_root/proc/generate_async()
+	set waitfor = FALSE
+	generate()
+
+/atom/movable/landmark/deepmaint_root/proc/gather_markers()
+	return SSmapping.get_deepmaint_markers(id)

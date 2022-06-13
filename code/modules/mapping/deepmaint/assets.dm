@@ -151,3 +151,10 @@ GLOBAL_VAR(deepmaint_current_exterior_floor)
  */
 /atom/movable/landmark/deepmaint_marker/generation/crowd
 	icon_state = "crowd"
+
+/**
+ * deepmaint generation directive: attepmt to use this as an entrance connector
+ * this can be put in entrance templates.
+ */
+/atom/movable/landmark/deepmaint_marker/generation/entrance
+	icon_state = "entrance"

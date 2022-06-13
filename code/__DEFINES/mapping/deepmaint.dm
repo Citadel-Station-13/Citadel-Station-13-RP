@@ -57,6 +57,8 @@
 // deepmaint template directive flags
 /// this is a branch point. this means that; 1. the deepmaint system is allowed to penetrate your template with a hallway any way it sees fit and 2. we don't care about any doorways anymore
 #define DEEPMAINT_DIRECTIVE_ROOM_FREEBRANCH			(1<<0)
+/// this is an entrance template. use this on edges and whatnot.
+#define DEEPMAINT_DIRECTIVE_ROOM_ENTRANCE			(1<<1)
 
 
 /**
