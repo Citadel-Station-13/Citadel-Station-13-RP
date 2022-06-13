@@ -107,13 +107,13 @@ VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 
 // -- Turfs -- //
 
-/turf/unsimulated/floor/sky/virgo2_sky
+/turf/simulated/floor/sky/virgo2_sky
 	name = "virgo 2 atmosphere"
 	desc = "Be careful where you step!"
 	color = "#eacd7c"
 	initial_gas_mix = ATMOSPHERE_ID_VIRGO2
 
-/turf/unsimulated/floor/sky/virgo2_sky/Initialize(mapload)
+/turf/simulated/floor/sky/virgo2_sky/Initialize(mapload)
 	skyfall_levels = list(z+1)
 	. = ..()
 

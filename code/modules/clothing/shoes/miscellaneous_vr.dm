@@ -3,14 +3,14 @@
 	desc = "A pair of costume boots fashioned after bird talons."
 	icon_state = "griffinboots"
 	item_state = "griffinboots"
-	icon = 'icons/obj/clothing/shoes_vr.dmi'
+	icon = 'icons/obj/clothing/shoes.dmi'
 
 /obj/item/clothing/shoes/bhop
 	name = "jump boots"
 	desc = "A specialized pair of combat boots with a built-in propulsion system for rapid foward movement."
 	icon_state = "jetboots"
 	item_state = "jetboots"
-	icon = 'icons/obj/clothing/shoes_vr.dmi'
+	icon = 'icons/obj/clothing/shoes.dmi'
 	// resistance_flags = FIRE_PROOF
 	action_button_name = "Activate Jump Boots"
 	permeability_coefficient = 0.05

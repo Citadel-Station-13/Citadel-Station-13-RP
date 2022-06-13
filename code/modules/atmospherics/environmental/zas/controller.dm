@@ -90,7 +90,7 @@ Class Procs:
 	zones_to_update.Remove(z)
 
 /datum/controller/subsystem/air/proc/merge(datum/zas_zone/A, datum/zas_zone/B)
-	#ifdef ZASDBG
+	#ifdef ZAS_DEBUG
 	ASSERT(istype(A))
 	ASSERT(istype(B))
 	ASSERT(!A.invalid)
@@ -105,29 +105,34 @@ Class Procs:
 		mark_zone_update(A)
 
 /datum/controller/subsystem/air/proc/connect(turf/simulated/A, turf/simulated/B, given_block, given_dir)
-	#ifdef ZASDBG
+	#ifdef ZAS_DEBUG
 	ASSERT(istype(A))
 	ASSERT(isturf(B))
-	ASSERT(A.zone)
-	ASSERT(!A.zone.invalid)
+	ASSERT(A.has_valid_zone())
 	//ASSERT(B.zone)
 	ASSERT(A != B)
 	#endif
+	// TODO: find a better way
+	// reason we do this here is because if a turf postpones a connect due to no zone,
+	// but then joins a zone, it'll try to merge into itself.
+
 
 	var/block = isnull(given_block)? A.CheckAirBlock(B) : given_block
 	if(block == ATMOS_PASS_AIR_BLOCKED)
 		return
 
 	var/direct = block == ATMOS_PASS_NOT_BLOCKED
-	var/space = !istype(B)
 
-	if(!space)
+	if(istype(B))
+		// we're simulated, not unsim edge
+		if(A.zone == B.zone)
+			return
 		if(min(A.zone.contents.len, B.zone.contents.len) < ZONE_MIN_SIZE || (direct && (equivalent_pressure(A.zone,B.zone) || current_cycle == 0)))
 			merge(A.zone, B.zone)
 			return
 
 	var/a_to_b = given_dir || get_dir_multiz(A, B)
-	var/b_to_a = given_dir? REVERSE_DIR(given_dir) : get_dir_multiz(B, A)
+	var/b_to_a = REVERSE_DIR(a_to_b)
 
 	if(!A.connections)
 		A.connections = new
@@ -138,9 +143,6 @@ Class Procs:
 		return
 	if(B.connections.get(b_to_a))
 		return
-	if(!space)
-		if(A.zone == B.zone)
-			return
 
 	var/datum/zas_connection/c = new(A, B)
 
@@ -151,38 +153,39 @@ Class Procs:
 		c.mark_direct()
 
 /datum/controller/subsystem/air/proc/mark_for_update(turf/T)
-	#ifdef ZASDBG
+	#ifdef ZAS_DEBUG
 	ASSERT(isturf(T))
 	#endif
-	if(T.needs_air_update) return
-	tiles_to_update |= T
-	#ifdef ZASDBG
+	tiles_to_update += T
+	#ifdef ZAS_DEBUG_GRAPHICS
 	T.overlays += mark
 	#endif
-	T.needs_air_update = 1
 
 /datum/controller/subsystem/air/proc/mark_zone_update(datum/zas_zone/Z)
-	#ifdef ZASDBG
+	#ifdef ZAS_DEBUG
 	ASSERT(istype(Z))
 	#endif
-	if(Z.needs_update) return
-	zones_to_update.Add(Z)
+	if(Z.needs_update)
+		return
+	zones_to_update += Z
 	Z.needs_update = 1
 
 /datum/controller/subsystem/air/proc/mark_edge_sleeping(datum/zas_edge/E)
-	#ifdef ZASDBG
+	#ifdef ZAS_DEBUG
 	ASSERT(istype(E))
 	#endif
-	if(E.sleeping) return
-	active_edges.Remove(E)
+	if(E.sleeping)
+		return
+	active_edges -= E
 	E.sleeping = 1
 
 /datum/controller/subsystem/air/proc/mark_edge_active(datum/zas_edge/E)
-	#ifdef ZASDBG
+	#ifdef ZAS_DEBUG
 	ASSERT(istype(E))
 	#endif
-	if(!E.sleeping) return
-	active_edges.Add(E)
+	if(!E.sleeping)
+		return
+	active_edges += E
 	E.sleeping = 0
 
 /datum/controller/subsystem/air/proc/equivalent_pressure(datum/zas_zone/A, datum/zas_zone/B)

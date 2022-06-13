@@ -323,19 +323,19 @@
 	desc = "If you wanna to keep your brain inside yo' head, you'd best put this on!"
 	icon_state = "unsc_helm"
 	item_state = "unsc_helm"
-	icon = 'icons/obj/clothing/hats_vr.dmi'
+	icon = 'icons/obj/clothing/hats.dmi'
 
 /obj/item/clothing/head/helmet/combat/imperial
 	name = "imperial soldier helmet"
 	desc = "Veni, vidi, vici; I came, I saw, I conquered."
 	icon_state = "ge_helm"
-	icon = 'icons/obj/clothing/hats_vr.dmi'
+	icon = 'icons/obj/clothing/hats.dmi'
 
 /obj/item/clothing/head/helmet/combat/imperial/centurion
 	name = "imperial centurion helmet"
 	desc = "Vendi, vidi, visa; I came, I saw, I realised this hat was too expensive."
 	icon_state = "ge_helmcent"
-	icon = 'icons/obj/clothing/hats_vr.dmi'
+	icon = 'icons/obj/clothing/hats.dmi'
 
 //Pirate
 /obj/item/clothing/head/helmet/pirate
@@ -347,7 +347,7 @@
 /obj/item/clothing/head/helmet/cyberpunk
 	name = "cyberpunk goggles"
 	desc = "These armored goggles help to augment the sight of the wearer. Initially designed to allow the user to enter a fully immersive digital environment, they have since been phased out in favor of NIFs and personal VR suites."
-	icon = 'icons/obj/clothing/hats_vr.dmi'
+	icon = 'icons/obj/clothing/hats.dmi'
 	icon_state = "cyberpunkgoggle"
 
 //Strange Plate Armor
