@@ -147,6 +147,7 @@
 /datum/species/moth/dark
 	name = SPECIES_MOTH_DARK
 	id = SPECIES_ID_MOTH_DARK
+	spawn_flags = SPECIES_CAN_JOIN
 
 	// darksight, but weak to light
 	darksight = 7
@@ -156,6 +157,7 @@
 /datum/species/moth/light
 	name = SPECIES_MOTH_LIGHT
 	id = SPECIES_ID_MOTH_LIGHT
+	spawn_flags = SPECIES_CAN_JOIN
 
 	// hardy, but no darksight
 	darksight = 2
