@@ -44,6 +44,11 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
  *
  * **Typepaths for these are used directly in most circumstances of slot IDs**
  * **Use get_inventory_slot_meta(id) to automatically translate anything to the static datum.**
+ *
+ * ABSTRACT SLOTS:
+ * Abstract slots attempts to do something special, based on mob.
+ * They only work on equips - can_equip, and anything unrelating to unequips, cannot check for it well.
+ * Can equip supports some abstract slots but not others.
  */
 /datum/inventory_slot_meta
 	/// slot name

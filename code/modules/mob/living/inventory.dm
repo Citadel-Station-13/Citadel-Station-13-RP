@@ -36,11 +36,6 @@
 /mob/living/get_number_of_hands()
 	return 2
 
-#warn impl
-
-#warn has_hands var or something else?
-
-#warn MAKE SURE TO CHECK CAN UNEQUIP FOR SLOTS...
 /mob/living/put_in_left_hand(obj/item/I, force)
 	if(!I)
 		return TRUE
@@ -83,7 +78,7 @@
 	else
 		I.add_hiddenprint(src)
 	var/existing_slot = is_in_inventory(I)
-	if(existing_slot && _handle_item_reequip(I, SLOT_ID_HANDS, existing_slot))
+	if(existing_slot && _handle_item_reequip(I, SLOT_ID_HANDS, existing_slot, force))
 		return TRUE
 	// newly equipped
 	I.pickup(src)

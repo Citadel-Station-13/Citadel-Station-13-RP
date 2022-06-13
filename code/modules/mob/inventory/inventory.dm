@@ -123,12 +123,15 @@
  * - I - item
  * - force - ignore nodrop/other restrictions
  * - newloc - where to transfer to. null for nullspace, FALSE for don't transfer
+ * - user - can be null - person doing the removal
  * - swapping - swapping clothes, don't drop pockets/whatnot
  * - silent - don't display warnings
+ * - ignore_fluff - ignore stuff like reachability checks
+ * - disallow_delay - fail if there'd be an equip delay
  *
  * @return TRUE/FALSE for success
  */
-/mob/proc/_unequip_item(obj/item/I, force, newloc, swapping, silent)
+/mob/proc/_unequip_item(obj/item/I, force, newloc, mob/user, swapping, disallow_delay, ignore_fluff, silent)
 	PROTECTED_PROC(TRUE)
 	if(!I)
 		return TRUE
@@ -170,11 +173,13 @@
  *
  * @params
  * - I - item
+ * - user - stripper
  * - force - ignore nodrops, etc
  * - dislalow_delay - fail if we'd need to do a do_after, instead of sleeping
  * - ignore_fluff - ignore equip delay, item zone checks, etc
+ * - silent - do not play warning messages
  */
-/mob/proc/can_unequip(obj/item/I, force, disallow_delay, ignore_fluff)
+/mob/proc/can_unequip(obj/item/I, mob/user, force, disallow_delay, ignore_fluff, silent)
 	#warn impl
 
 /**
@@ -229,7 +234,7 @@
  * - disallow_delay - fail if we'd need to sleep
  * - ignore_fluff - ignore self equip delay, item zone checks, etc. implied by force.
  * - silent - don't display a warning message if we find an error
- * - harder_force - normally when you force yo are saying ignore fluff conflicts/nodrops/dislodge item if needed. this means we also bypass "soft" safety checks, like an item equipping to a slot that it doesn't have the flags for. requires force.
+ * - harder_force - normally when you force you are saying ignore fluff conflicts/nodrops/dislodge item if needed. this means we also bypass "soft" safety checks, like an item equipping to a slot that it doesn't have the flags for. requires force.
  */
 /mob/proc/can_equip(obj/item/I, slot, mob/user, force, disallow_delay, ignore_fluff, silent, harder_force)
 	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
@@ -238,7 +243,29 @@
 		. = FALSE
 		CRASH("Failed to resolve to slot datm.")
 
-	switch(can_equip_conflict_check(I, slot))
+	if(slot_meta.is_abstract)
+		// special handling: make educated guess, defaulting to yes
+		switch(slot_meta.type)
+			if(/datum/inventory_slot_meta/abstract/left_hand)
+				return force || get_left_held_item()
+			if(/datum/inventory_slot_meta/abstract/right_hand)
+				return force || get_right_held_item()
+			if(/datum/inventory_slot_meta/abstract/put_in_backpack)
+				var/obj/item/storage/S = item_by_slot(SLOT_ID_BACK)
+				if(!istype(S))
+					return FALSE
+				return S.can_be_inserted(I, TRUE)
+			if(/datum/inventory_slot_meta/abstract/put_in_belt)
+				var/obj/item/storage/S = item_by_slot(SLOT_ID_BACK)
+				if(!istype(S))
+					return FALSE
+				return S.can_be_inserted(I, TRUE)
+			if(/datum/inventory_slot_meta/abstract/put_in_hands)
+				return force || !hands_full()
+		return TRUE
+
+
+	switch(inventory_slot_conflict_check(I, slot))
 		if(CAN_EQUIP_SLOT_CONFLICT_HARD)
 			if(!silent)
 				to_chat(user, SPAN_WARNING("[self_equip? "You" : "They"] are already [slot_meta.display_plural? "holding too many things" : "wearing something"] [slot_meta.display_preposition] [self_equip? "your" : "their"] [slot_meta.display_name"]."))
@@ -249,7 +276,7 @@
 					to_chat(user, SPAN_WARNING("[self_equip? "You" : "They"] are already [slot_meta.display_plural? "holding too many things" : "wearing something"] [slot_meta.display_preposition] [self_equip? "your" : "their"] [slot_meta.display_name"]."))
 				return FALSE
 
-	if(!can_equip_semantic_check(I, slot, user) && (!force || !harder_force))
+	if(!inventory_slot_semantic_conflict(I, slot, user) && (!force || !harder_force))
 		if(!silent)
 			to_chat(user, SPAN_WARNING("[I] doesn't go there!"))
 		return FALSE
@@ -260,13 +287,14 @@
 /**
  * checks if we have the bodypart for a slot
  */
-/mob/proc/can_equip_bodypart_check(obj/item/I, slot)
+/mob/proc/inventory_slot_bodypart_check(obj/item/I, slot)
+	#warn impl humans
 	return TRUE
 
 /**
  * checks for slot conflict
  */
-/mob/proc/can_equip_conflict_check(obj/item/I, slot)
+/mob/proc/inventory_slot_conflict_check(obj/item/I, slot)
 	if(_item_by_slot(slot))
 		return CAN_EQUIP_SLOT_CONFLICT_HARD
 	switch(slot)
@@ -281,6 +309,8 @@
  * return null or the first item blocking
  */
 /mob/proc/inventory_slot_reachability_conflict(obj/item/I, slot, mob/user)
+	#warn impl humans
+	return null
 
 /**
  * semantic check - should this thing ever be here?
@@ -314,12 +344,13 @@
 
 /**
  * checks if we already have something in our inventory
- * if so, this will shift the slots over, calling equipped/unequipped automatically
- * this does absolutely NO safety checks, and doesn't even set vars; its sole job is to handle the call chain.
+ * if so, this will try to shift the slots over, calling equipped/unequipped automatically
+ *
+ * force will allow ignoring can unequip.
  *
  * returns old slot if slot shifted, otherwise null
  */
-/mob/proc/_handle_item_reequip(obj/item/I, slot, old_slot)
+/mob/proc/_handle_item_reequip(obj/item/I, slot, old_slot, force)
 	if(!old_slot)
 		// DO NOT USE _slot_by_item - at this point, the item has already been var-set into the new slot!
 		// slot_by_item however uses cached values still!
@@ -329,9 +360,23 @@
 			return
 	// this IS a slot shift!
 	. = old_slot
-	// handle procs
-	I.unequipped(src, old_slot)
-	I.equipped(src, slot)
+	if(slot == old_slot)
+		// lol we're done
+		return
+	if(slot == SLOT_ID_HANDS)
+		// if we're going into hands,
+		// just check can unequip
+		if(!force && !can_unequip(I, force))
+			// check can unequip
+			return null
+		// call procs
+		I.unequipped(src, old_slot)
+		I.equipped(src, slot)
+		// hand procs handle rest
+		return
+	else
+		// else, this gets painful
+		#warn impl
 
 /**
  * get all equipped items
