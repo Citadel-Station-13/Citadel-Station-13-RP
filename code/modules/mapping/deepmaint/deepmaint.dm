@@ -12,13 +12,13 @@
 
 	/// generator directives
 	var/directives = NONE
-	/// state
+	/// state - enum, usually used for internal calculations. either not done, in progress, or done.
 	var/state = DEEPMAINT_GENERATION_STATE_NOT_STARTED
-	/// algorithm
+	/// algorithm - enum, check defines, this determines the algorithm datum we'll use
 	var/algorithm = DEEPMAINT_ALGORITHM_DUNGEON_SPREAD
-	/// type
+	/// type flags - only allows templates with matching types to spawn
 	var/deepmaint_type = DEEPMAINT_TYPE_ANY
-	/// theme
+	/// theme flags - only allows tempaltes with matching themes to spawn
 	var/deepmaint_theme = DEEPMAINT_THEME_ANY
 	/// state vars for the algorithm
 	var/list/blackboard
