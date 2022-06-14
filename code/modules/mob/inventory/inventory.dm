@@ -127,18 +127,17 @@
  * - swapping - swapping clothes, don't drop pockets/whatnot
  * - silent - don't display warnings
  * - ignore_fluff - ignore stuff like reachability checks
+ * - update_icons - update mob icons?
  * - disallow_delay - fail if there'd be an equip delay
  *
  * @return TRUE/FALSE for success
  */
-/mob/proc/_unequip_item(obj/item/I, force, newloc, mob/user, swapping, disallow_delay, ignore_fluff, silent)
+/mob/proc/_unequip_item(obj/item/I, force, newloc, mob/user = src, disallow_delay, ignore_fluff, silent, update_icons = TRUE, swapping)
 	PROTECTED_PROC(TRUE)
 	if(!I)
 		return TRUE
 
-	#warn check reachability, fluff, item can unequip, etc.
-
-	if(!force && HAS_TRAIT(I, TRAIT_NODROP))
+	if(!can_unequip(I, user, force, disallow_delay, ignore_fluff, silent))
 		return FALSE
 
 	var/hand = get_held_index(I)
@@ -186,6 +185,9 @@
 /mob/proc/can_unequip(obj/item/I, mob/user, force, disallow_delay, ignore_fluff, silent)
 	#warn impl
 
+	if(!force && HAS_TRAIT(I, TRAIT_NODROP))
+		return FALSE
+
 /**
  * equips an item to a slot if possible
  *
@@ -199,9 +201,7 @@
  * @return TRUE/FALSE
  */
 /mob/proc/equip_to_slot_if_possible(obj/item/I, slot, silent, update_icons, ignore_fluff)
-
-#warn impl
-
+	return _equip_item(I, FALSE, slot, null, silent, disallow_delay, ignore_fluff, update_icons)
 
 /**
  * forcefully equips an item to a slot
@@ -238,9 +238,8 @@
  * - disallow_delay - fail if we'd need to sleep
  * - ignore_fluff - ignore self equip delay, item zone checks, etc. implied by force.
  * - silent - don't display a warning message if we find an error
- * - harder_force - normally when you force you are saying ignore fluff conflicts/nodrops/dislodge item if needed. this means we also bypass "soft" safety checks, like an item equipping to a slot that it doesn't have the flags for. requires force.
  */
-/mob/proc/can_equip(obj/item/I, slot, mob/user, force, disallow_delay, ignore_fluff, silent, harder_force)
+/mob/proc/can_equip(obj/item/I, slot, mob/user, force, disallow_delay, ignore_fluff, silent)
 	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
 	var/self_equip = user == src
 	if(!slot_meta)
@@ -275,12 +274,12 @@
 				to_chat(user, SPAN_WARNING("[self_equip? "You" : "They"] are already [slot_meta.display_plural? "holding too many things" : "wearing something"] [slot_meta.display_preposition] [self_equip? "your" : "their"] [slot_meta.display_name]."))
 			return FALSE
 		if(CAN_EQUIP_SLOT_CONFLICT_SOFT)
-			if(!force && !harder_force)
+			if(!force)
 				if(!silent)
 					to_chat(user, SPAN_WARNING("[self_equip? "You" : "They"] are already [slot_meta.display_plural? "holding too many things" : "wearing something"] [slot_meta.display_preposition] [self_equip? "your" : "their"] [slot_meta.display_name]."))
 				return FALSE
 
-	if(!inventory_slot_semantic_conflict(I, slot, user) && (!force || !harder_force))
+	if(!inventory_slot_semantic_conflict(I, slot, user) && !force)
 		if(!silent)
 			to_chat(user, SPAN_WARNING("[I] doesn't fit there."))
 		return FALSE
@@ -332,9 +331,36 @@
 			if(!istype(I, /obj/item/handcuffs/legcuffs) || istype(I, /obj/item/handcuffs/legcuffs))
 				return TRUE
 
+/**
+ * handles internal logic of equipping an item
+ *
+ * @params
+ * - I - item to equip
+ * - force - knock out current items, ignore softer checks
+ * - slot - slot to equip it to
+ * - user - user trying to put it on us
+ * - silent - suppress error messages going to the user
+ * - disallow_delay - fail if we need to do_after or similar
+ * - ignore_fluff - ignore stuff like reachability checks. implied by force.
+ * - update_icons - update mob icons
+ *
+ * @return TRUE/FALSE on success
+ */
+/mob/proc/_equip_item(obj/item/I, force, slot, mob/user = src, silent, disallow_delay, ignore_fluff, update_icons = TRUE)
+	PROTECTED_PROC(TRUE)
 
-#warn impl
-/mob/proc/_equip_item(obj/item/I, slot, force, silent, update_icons, ignore_fluff)
+	if(!I)		// how tf would we put on "null"?
+		return FALSE
+
+	// resolve slot
+	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
+	if(slot_meta.is_abstract)
+		// if it's abstract, we go there directly - do not use can_equip as that will just guess.
+		return handle_abstract_slot_insertion(I, slot, force, silent)
+
+	if(!can_equip(I, slot, user, force, disallow_delay, ignore_fluff, silent))
+		return FALSE
+
 	#warn this handles stuff like calling equipped/unequipped on slot swaps, etc
 	#warn make sure to shuffle around properly/call the right procs
 	#warn make sure to handle item reequip!

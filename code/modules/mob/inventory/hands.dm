@@ -1,7 +1,3 @@
-
-#warn impl - check overrides too
-#warn make sure this acts right if an item is already held, same with left/right/active/inactive procs.
-
 /mob/proc/put_in_hands(obj/item/I, force, merge_stacks = TRUE)
 	if(is_holding(I))
 		return TRUE

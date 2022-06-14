@@ -34,6 +34,7 @@
 
 #include "core/_core.dm"
 #include "human/_human.dm"
+#include "mob/_mob.dm"
 
 // #include "anchored_mobs.dm"
 #include "bespoke_id.dm"

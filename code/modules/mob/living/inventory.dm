@@ -84,9 +84,11 @@
 	else
 		I.add_hiddenprint(src)
 	var/existing_slot = is_in_inventory(I)
-	if(existing_slot && _handle_item_reequip(I, SLOT_ID_HANDS, existing_slot, force))
-		return TRUE
+	if(existing_slot)
+		// handle item reequip can fail.
+		return _handle_item_reequip(I, SLOT_ID_HANDS, existing_slot, force)
 	// newly equipped
+	I.forceMove(src)
 	I.pickup(src)
 	I.equipped(src, SLOT_ID_HANDS)
 	return TRUE

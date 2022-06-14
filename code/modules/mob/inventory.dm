@@ -16,25 +16,6 @@
 
 /* Inventory manipulation */
 
-//This is a SAFE proc. Use this instead of equip_to_slot()!
-//set del_on_fail to have it delete W if it fails to equip
-//set disable_warning to disable the 'you are unable to equip that' warning.
-//unset redraw_mob to prevent the mob from being redrawn at the end.
-/mob/proc/equip_to_slot_if_possible(obj/item/W as obj, slot, del_on_fail = 0, disable_warning = 0, redraw_mob = 1)
-	if(!W)
-		return 0
-	if(!W.mob_can_equip(src, slot, disable_warning)) //Previously did not propagate disable_warning. I can't imagine why not.
-		if(del_on_fail)
-			qdel(W)
-
-		else
-			if(!disable_warning)
-				to_chat(src, "<font color='red'>You are unable to equip that.</font>") //Only print if del_on_fail is false
-		return 0
-
-	equip_to_slot(W, slot, redraw_mob) //This proc should not ever fail.
-	return 1
-
 //Checks if a given slot can be accessed at this time, either to equip or unequip I
 /mob/proc/slot_is_accessible(var/slot, var/obj/item/I, mob/user=null)
 	return 1

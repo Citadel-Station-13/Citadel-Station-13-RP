@@ -80,8 +80,6 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	/// allow random id?
 	var/allow_random_id = FALSE
 
-#warn unit test for id uniqueness
-
 /datum/inventory_slot_meta/New()
 	if(allow_random_id && !id)
 		id = "[++id_next]"

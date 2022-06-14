@@ -74,7 +74,7 @@
 	if(allow_mobs && istype(I, /obj/item/holder))
 		var/obj/item/holder/H = I
 		var/mob/victim = H.held_mob
-		if(!user.transferItemToLoc(I, src))
+		if(!user.transfer_item_to_loc(I, src))
 			to_chat(user, SPAN_WARNING("[I] is stuck to your hand!"))
 			return
 		if(!QDELETED(H))
