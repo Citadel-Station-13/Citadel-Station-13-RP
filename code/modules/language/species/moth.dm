@@ -39,7 +39,7 @@
 
 /datum/language/species/moth/get_random_name(gender, name_count = 2, syllable_count= 4 , syllable_divisor = 2)
 	var/list/names = GLOB.moth_lore_data["name"]
-	var/list/occupations = GLOB.moth_lore_data["occupation"]
+	var/list/occupations = GLOB.moth_lore_data["profession"]
 	var/i
 	i = rand(1, names.len)
 	var/name = capitalize(names[i])
