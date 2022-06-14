@@ -1,6 +1,7 @@
 {
-	"formal_name_template": "%name% %suffix%, %ship%, %lineage% %name%"
-	"names": [
+	"formal_name_template": "%name% %profession%, %ship%, %lineage% %name%",
+	"name_template": "%name% %profession%",
+	"name": [
 		"Abgal",
 		"Ada",
 		"Adamen",
@@ -327,7 +328,7 @@
 		"Zizi",
 		"Zua"
 	],
-	"professions": {
+	"profession": {
 		"Azu": "Healer",
 		"Guda": "Engineer",
 		"Engiz": "Caretaker",
@@ -339,7 +340,7 @@
 		"Giris": "Drifter",
 		"Sal": "Navigator"
 	},
-	"ships": [
+	"ship": [
 		"Starlit Ark from Paradise",
 		"Faded Glory of Forgotten Summers Below the Gods",
 		"Into Fate’s Warm Embrace",

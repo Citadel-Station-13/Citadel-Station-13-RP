@@ -1,3 +1,9 @@
+// TODO: unified, json-driven lore system :drooling:
+GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
+
+/proc/init_moth_lore()
+	return json_decode(file2text('strings/misc/moth_species.json'))
+
 /datum/species/moth
 	name = SPECIES_MOTH
 	id = "moth"
