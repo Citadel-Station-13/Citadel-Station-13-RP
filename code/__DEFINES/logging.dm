@@ -1,13 +1,15 @@
 // helpers
 /// sets up a simple log. only use this for dumber logs that don't need any special logic.
 #define SIMPLE_LOG_BOILERPLATE(type)						\
-/world/_setup_logs_boilerplate()							\
+/world/_setup_logs_boilerplate(){							\
 	GLOB.##type_log = "[GLOB.log_directory]/[#type].log";	\
 	start_log(GLOB.##type_log);								\
-GLOBAL_PROTECT(##type_log)									\
-GLOBAL_VAR(##type_log)										\
-/proc/log_##type(text)										\
-	WRITE_LOG(GLOB.##type_log, text)
+}															\
+/proc/log_##type(text){										\
+	WRITE_LOG(GLOB.##type_log, text);						\
+}															\
+GLOBAL_PROTECT(##type_log);									\
+GLOBAL_VAR(##type_log);
 
 //Investigate logging defines
 #define INVESTIGATE_ATMOS "atmos"
