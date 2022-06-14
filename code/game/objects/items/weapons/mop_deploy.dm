@@ -71,5 +71,6 @@
 							organ.implants -= src
 			host.pinned -= src
 			host.embedded -= src
-			host.drop_from_inventory(src)
+			host._handle_inventory_hud_remove(src)
+		qdel(src)
 		spawn(1) if(!QDELETED(src)) qdel(src)

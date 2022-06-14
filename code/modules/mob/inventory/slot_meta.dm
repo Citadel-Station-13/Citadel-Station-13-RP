@@ -79,6 +79,8 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	var/is_rendered = TRUE
 	/// allow random id?
 	var/allow_random_id = FALSE
+	/// our screen loc
+	var/hud_position
 
 /datum/inventory_slot_meta/New()
 	if(allow_random_id && !id)
@@ -96,6 +98,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	display_requires_expand = FALSE
 	display_name = "back"
 	display_preposition = "on"
+	hud_position = ui_back
 
 /datum/inventory_slot_meta/inventory/uniform
 	name = "uniform"
@@ -103,6 +106,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	id = SLOT_ID_UNIFORM
 	display_name = "body"
 	display_preposition = "on"
+	hud_position = ui_iclothing
 
 /datum/inventory_slot_meta/inventory/head
 	name = "head"
@@ -112,6 +116,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	display_preposition = "on"
 	display_name = "head"
 	display_preposition = "on"
+	hud_position = ui_head
 
 /datum/inventory_slot_meta/inventory/suit
 	name = "outerwear"
@@ -119,6 +124,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	id = SLOT_ID_SUIT
 	display_name = "clohtes"
 	display_preposition = "over"
+	hud_position = ui_oclothing
 
 /datum/inventory_slot_meta/inventory/belt
 	name = "belt"
@@ -127,6 +133,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	display_requires_expand = FALSE
 	display_name = "waist"
 	display_preposition = "on"
+	hud_position = ui_belt
 
 /datum/inventory_slot_meta/inventory/pocket
 	abstract_type = /datum/inventory_slot_meta/inventory/pocket
@@ -138,12 +145,14 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	id = SLOT_ID_LEFT_POCKET
 	display_name = "left pocket"
 	display_preposition = "in"
+	hud_position = ui_storage1
 
 /datum/inventory_slot_meta/inventory/pocket/right
 	name = "right pocket"
 	id = SLOT_ID_RIGHT_POCKET
 	display_name = "right pocket"
 	display_preposition = "in"
+	hud_position = ui_storage2
 
 /datum/inventory_slot_meta/inventory/id
 	name = "id"
@@ -152,6 +161,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	display_requires_expand = FALSE
 	display_name = "badge"
 	display_preposition = "as"
+	hud_position = ui_id
 
 /datum/inventory_slot_meta/inventory/shoes
 	name = "shoes"
@@ -159,6 +169,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	id = SLOT_ID_SHOES
 	display_name = "feet"
 	display_preposition = "on"
+	hud_position = ui_shoes
 
 /datum/inventory_slot_meta/inventory/gloves
 	name = "gloves"
@@ -166,6 +177,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	id = SLOT_ID_GLOVES
 	display_name = "hands"
 	display_preposition = "on"
+	hud_position = ui_gloves
 
 /datum/inventory_slot_meta/inventory/glasses
 	name = "glasses"
@@ -173,6 +185,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	id = SLOT_ID_GLASSES
 	display_name = "eyes"
 	display_preposition = "over"
+	hud_position = ui_glasses
 
 /datum/inventory_slot_meta/inventory/suit_storage
 	name = "suit storage"
@@ -181,6 +194,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	display_requires_expand = FALSE
 	display_name = "suit"
 	display_preposition = "on"
+	hud_position = ui_sstore1
 
 /datum/inventory_slot_meta/inventory/ears
 	abstract_type = /datum/inventory_slot_meta/inventory/ears
@@ -191,6 +205,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	id = SLOT_ID_LEFT_EAR
 	display_name = "left ear"
 	display_preposition = "on"
+	hud_position = ui_l_ear
 
 /datum/inventory_slot_meta/inventory/ears/right
 	name = "right ear"
@@ -198,6 +213,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	id = SLOT_ID_RIGHT_EAR
 	display_name = "left ear"
 	display_preposition = "on"
+	hud_position = ui_r_ear
 
 /datum/inventory_slot_meta/inventory/mask
 	name = "mask"
@@ -205,6 +221,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	id = SLOT_ID_MASK
 	display_name = "face"
 	display_preposition = "on"
+	hud_position = ui_mask
 
 /datum/inventory_slot_meta/restraints
 	is_inventory = FALSE

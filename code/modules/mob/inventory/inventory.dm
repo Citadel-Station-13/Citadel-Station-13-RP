@@ -413,6 +413,27 @@
 
 		log_inventory("[key_name(src)] moved [I] from [old_slot] to [slot].")
 
+#warn impl and hook
+
+/**
+ * handles removing an item from our hud
+ *
+ * some things call us from outside inventory code. this is shitcode and shouldn't be propageted.
+ */
+/mob/proc/_handle_inventory_hud_remove(obj/item/I)
+	if(client)
+		client.screen -= I
+	I.screen_loc = null
+
+/**
+ * handles adding an item or updating an item to our hud
+ */
+/mob/proc/_handle_inventory_hud_update(obj/item/I, slot)
+	var/datum/inventory_slot_meta/meta = resolve_inventory_slot_meta(slot)
+	I.screen_loc = meta.hud_position
+	if(client)
+		client.screen |= I
+
 /**
  * get all equipped items
  *
