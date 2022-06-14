@@ -427,3 +427,10 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	throw_range = 20
 	flags = 0
 	no_variants = FALSE
+
+/obj/item/stack/tile/pool
+	name = "pool tiling"
+	desc = "A set of tiles designed to build fluid pools."
+	singular_name = "pool tile"
+	icon_state = "tile_pool"
+	matter = list(MAT_STEEL = 450)

@@ -211,6 +211,14 @@
 		var/turf/T = loc
 		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guranteed to be on afterwards anyways.
 
+	// apply materials properly from the default custom_materials value
+	// This MUST come after atom_integrity is set above, as if old materials get removed,
+	// atom_integrity is checked against max_integrity and can BREAK the atom.
+	// The integrity to max_integrity ratio is still preserved.
+	// set_custom_materials(custom_materials) //TODO: SSmaterials
+
+	ComponentInitialize()
+
 	return INITIALIZE_HINT_NORMAL
 
 /**
@@ -226,6 +234,10 @@
  */
 /atom/proc/LateInitialize()
 	set waitfor = FALSE
+
+/// Put your [AddComponent] calls here
+/atom/proc/ComponentInitialize()
+	return
 
 /**
  * Top level of the destroy chain for most atoms
@@ -1128,3 +1140,34 @@
 
 /atom/proc/get_cell()
 	return
+
+/**
+ * An atom has entered this atom's contents
+ *
+ * Default behaviour is to send the [COMSIG_ATOM_ENTERED]
+ */
+/atom/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
+	SEND_SIGNAL(src, COMSIG_ATOM_ENTERED, arrived, old_loc, old_locs)
+	SEND_SIGNAL(arrived, COMSIG_ATOM_ENTERING, src, old_loc, old_locs)
+
+/**
+ * An atom is attempting to exit this atom's contents
+ *
+ * Default behaviour is to send the [COMSIG_ATOM_EXIT]
+ */
+/atom/Exit(atom/movable/leaving, direction)
+	// Don't call `..()` here, otherwise `Uncross()` gets called.
+	// See the doc comment on `Uncross()` to learn why this is bad.
+
+	if(SEND_SIGNAL(src, COMSIG_ATOM_EXIT, leaving, direction) & COMPONENT_ATOM_BLOCK_EXIT)
+		return FALSE
+
+	return TRUE
+
+/**
+ * An atom has exited this atom's contents
+ *
+ * Default behaviour is to send the [COMSIG_ATOM_EXITED]
+ */
+/atom/Exited(atom/movable/gone, direction)
+	SEND_SIGNAL(src, COMSIG_ATOM_EXITED, gone, direction)

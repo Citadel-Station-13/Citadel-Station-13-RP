@@ -92,8 +92,6 @@ SUBSYSTEM_DEF(fluids)
 				UPDATE_FLUID_BLOCKED_DIRS(T)
 				if((T.fluid_blocked_dirs & coming_from) || !T.CanFluidPass(coming_from))
 					continue
-				var/obj/effect/fluid/other = locate() in T.contents
-				if(other && (QDELETED(other) || other.fluid_amount <= FLUID_DELETING))
 				var/turf/current = get_turf(F)
 				if((F.fluid_amount + current.height) <= T.height) //Water cannot flow up height differences
 					continue

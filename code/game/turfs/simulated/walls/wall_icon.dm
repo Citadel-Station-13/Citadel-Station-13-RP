@@ -9,7 +9,7 @@
 	generated.len = amt
 	. = generated
 	for(var/i in 1 to 16)
-		var/image/I = image(icon = 'icons/turf/wall/damage_masks.dmi', icon_state = "overlay_damage")
+		var/image/I = image(icon = 'icons/turf/walls/damage_masks.dmi', icon_state = "overlay_damage")
 		I.blend_mode = BLEND_MULTIPLY
 		I.alpha = (i * alpha_inc) - 1
 		generated[i] = I

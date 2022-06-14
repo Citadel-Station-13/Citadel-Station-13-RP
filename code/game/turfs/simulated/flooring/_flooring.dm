@@ -70,17 +70,19 @@ var/list/flooring_types
 
 	//How we smooth with other flooring
 	var/decal_layer = DECAL_LAYER
-	var/floor_smooth = SMOOTH_NONE
+	var/floor_smooth = SMOOTH_ALL
 	var/list/flooring_whitelist = list() //Smooth with nothing except the contents of this list
 	var/list/flooring_blacklist = list() //Smooth with everything except the contents of this list
 
 	//How we smooth with walls
-	var/wall_smooth = SMOOTH_NONE
+	var/wall_smooth = SMOOTH_ALL
 	//There are no lists for walls at this time
 
 	//How we smooth with space and openspace tiles
-	var/space_smooth = SMOOTH_NONE
+	var/space_smooth = SMOOTH_ALL
 	//There are no lists for spaces
+
+	var/height = 0
 
 	/*
 	How we smooth with movable atoms
@@ -142,7 +144,7 @@ var/list/flooring_types
 	floor_smooth = SMOOTH_NONE
 	wall_smooth = SMOOTH_ALL
 	space_smooth = SMOOTH_NONE
-	decal_layer = ABOVE_WIRE_LAYER
+	decal_layer = ABOVE_UTILITY
 
 /decl/flooring/asteroid
 	name = "coarse sand"

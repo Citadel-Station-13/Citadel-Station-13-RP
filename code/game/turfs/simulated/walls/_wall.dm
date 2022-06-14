@@ -6,22 +6,27 @@
 /turf/simulated/wall
 	name = "wall"
 	desc = "A huge chunk of iron used to separate rooms."
-	icon = 'icons/turf/wall_masks.dmi'
-	icon_state = "generic"
-	opacity = TRUE
-	density = TRUE
-	blocks_air = TRUE
-//	air_status = AIR_STATUS_BLOCK
+	icon = 'icons/turf/walls/wall.dmi'
+	icon_state = "wall-0"
+	base_icon_state = "wall"
+	// explosion_block = 1
+	color = "#666666"
 	thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
+	/// A little over 5 cm thick , 62500 for 1 m by 2.5 m by 0.25 m iron wall.
+	/// Also indicates the temperature at wich the wall will melt (currently only able to melt with H/E pipes).
+	heat_capacity = 62500
+
 	heat_capacity = 312500 //a little over 5 cm thick , 312500 for 1 m by 2.5 m by 0.25 m plasteel wall
 	baseturfs = /turf/simulated/floor/plating
-	smoothing_flags = SMOOTH_CUSTOM
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_WALLS)
+	canSmoothWith = list(SMOOTH_GROUP_WALLS)
 
 	var/icon/wall_masks = 'icons/turf/wall_masks.dmi'
 	var/damage = 0
 	var/damage_overlay = 0
 	/// damage overlays are cached
-	var/static/list/damage_overlays = generate_wall_damage_overlays()
+	// var/static/list/damage_overlays = generate_wall_damage_overlays()
 	var/active
 	var/can_open = FALSE
 	var/datum/material/girder_material
@@ -35,20 +40,23 @@
 	for(var/obj/O in src)
 		O.hide(1)
 
-/turf/simulated/wall/Initialize(mapload, materialtype, rmaterialtype, girdertype)
+/turf/simulated/wall/Initialize(mapload)
 	. = ..()
-	icon_state = "blank"
-	if(!materialtype)
-		materialtype = MAT_STEEL
-	material = get_material_by_name(materialtype)
-	if(!girdertype)
-		girdertype = MAT_STEEL
-	girder_material = get_material_by_name(girdertype)
-	if(!isnull(rmaterialtype))
-		reinf_material = get_material_by_name(rmaterialtype)
-	update_material(TRUE)
-	if(material?.radioactivity || reinf_material?.radioactivity || girder_material?.radioactivity)
-		START_PROCESSING(SSturfs, src)
+	// if(!can_engrave)
+	// 	ADD_TRAIT(src, TRAIT_NOT_ENGRAVABLE, INNATE_TRAIT)
+	// if(is_station_level(z))
+	// 	GLOB.station_turfs += src
+	if(smoothing_flags & SMOOTH_DIAGONAL_CORNERS && fixed_underlay) //Set underlays for the diagonal walls.
+		var/mutable_appearance/underlay_appearance = mutable_appearance(layer = TURF_LAYER, plane = TURF_PLANE)
+		if(fixed_underlay["space"])
+			underlay_appearance.icon = 'icons/turf/space.dmi'
+			underlay_appearance.icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
+			underlay_appearance.plane = SPACE_PLANE
+		else
+			underlay_appearance.icon = fixed_underlay["icon"]
+			underlay_appearance.icon_state = fixed_underlay["icon_state"]
+		fixed_underlay = string_assoc_list(fixed_underlay)
+		underlays += underlay_appearance
 
 /turf/simulated/wall/Destroy()
 	STOP_PROCESSING(SSturfs, src)

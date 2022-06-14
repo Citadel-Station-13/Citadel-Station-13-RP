@@ -124,7 +124,7 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 	underlays += under_MA
 	if(under_EM)
 		underlays += under_EM
-
+/*
 // Trust me, this is WAY faster than the normal wall overlays shenanigans, don't worry about performance
 /turf/simulated/wall/fancy_shuttle/update_icon()
 
@@ -149,7 +149,7 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 			overlay = damage_overlays.len
 
 		add_overlay(damage_overlays[overlay])
-
+*/
 /obj/effect/floor_decal/fancy_shuttle
 	icon = 'icons/turf/fancy_shuttles/_fancy_helpers.dmi'
 	icon_state = "fancy_shuttle"
