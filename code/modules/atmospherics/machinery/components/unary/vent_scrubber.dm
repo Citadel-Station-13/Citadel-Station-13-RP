@@ -146,7 +146,7 @@
 	if (!node)
 		update_use_power(USE_POWER_OFF)
 	//broadcast_status()
-	if(!use_power || (stat & (NOPOWER|BROKEN)))
+	if(!use_power || (machine_stat & (NOPOWER|BROKEN)))
 		return 0
 
 	var/datum/gas_mixture/environment = loc.return_air()
@@ -178,7 +178,7 @@
 	update_underlays()
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/receive_signal(datum/signal/signal)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	if(!signal.data["tag"] || (signal.data["tag"] != id_tag) || (signal.data["sigtype"]!="command"))
 		return 0
@@ -262,15 +262,15 @@
 	return
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/power_change()
-	var/old_stat = stat
+	var/old_stat = machine_stat
 	..()
-	if(old_stat != stat)
+	if(old_stat != machine_stat)
 		update_icon()
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if (!W.is_wrench())
 		return ..()
-	if (!(stat & NOPOWER) && use_power)
+	if (!(machine_stat & NOPOWER) && use_power)
 		to_chat(user, "<span class='warning'>You cannot unwrench \the [src], turn it off first.</span>")
 		return 1
 	var/turf/T = src.loc

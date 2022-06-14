@@ -1,6 +1,0 @@
-author: "Zandario"
-delete-after: True
-changes: 
-  - rscadd: "TGChat Blockquotes"
-  - bugfix: "Fixed examine issues with gender and species."
-  - refactor: "Examine code overhauled."
