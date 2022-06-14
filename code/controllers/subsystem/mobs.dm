@@ -36,7 +36,7 @@ SUBSYSTEM_DEF(mobs)
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
 	var/times_fired = src.times_fired
-	var/dt = (flags & SS_TICKER)? (world.tick_lag * wait) : wait
+	var/dt = (subsystem_flags & SS_TICKER)? (world.tick_lag * wait) : wait
 	while(currentrun.len)
 		var/mob/M = currentrun[currentrun.len]
 		currentrun.len--

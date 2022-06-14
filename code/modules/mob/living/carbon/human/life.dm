@@ -1825,7 +1825,7 @@
 	if(!nif) return
 
 	//Process regular life stuff
-	nif.life()
+	nif.on_life()
 
 /mob/living/carbon/human/proc/handle_defib_timer()
 	if(!should_have_organ(O_BRAIN))
