@@ -103,9 +103,11 @@
 		to_chat(L, "<span class='warning'>You feel a small shock rushing through your veins.</span>")
 		L.reagents.add_reagent(poison_type, poison_per_bite)
 
-/mob/living/simple_mob/vore/solarmoth/Life(seconds, times_fired)
-	. = ..()
-	if(icon_state != icon_dead) //I mean on death() Life() should disable but i guess doesnt hurt to make sure -shark
+/mob/living/simple_mob/vore/solarmoth/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
+	if(stat != DEAD)
 		var/datum/gas_mixture/env = loc.return_air() //Gets all the information on the local air.
 		var/transfer_moles = 0.25 * env.total_moles //The bigger the room, the harder it is to heat the room.
 		var/datum/gas_mixture/removed = env.remove(transfer_moles)
@@ -123,8 +125,6 @@
 			return
 
 		env.merge(removed)
-
-
 
 	//Since I'm changing hyper mode to be variable we need to store old power
 	original_temp = heating_power //We remember our old goal, for use in non perpetual heating level increase
@@ -171,9 +171,11 @@
 	//light
 	mycolour = COLOR_BLUE
 
-/mob/living/simple_mob/vore/solarmoth/lunarmoth/Life(seconds, times_fired)
-	. = ..()
-	if(icon_state != icon_dead)
+/mob/living/simple_mob/vore/solarmoth/lunarmoth/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
+	if(stat != DEAD)
 		var/datum/gas_mixture/env = loc.return_air()
 		var/transfer_moles = 0.35 * env.total_moles
 		var/datum/gas_mixture/removed = env.remove(transfer_moles)

@@ -1,4 +1,6 @@
 /mob/living/silicon/pai/Life(seconds, times_fired)
+	if((. = ..()))
+		return
 
 	if (src.stat == 2)
 		return
@@ -25,7 +27,6 @@
 
 	if(health <= 0)
 		death(null,"gives one shrill beep before falling lifeless.")
-
 
 /mob/living/silicon/pai/updatehealth()
 	if(status_flags & GODMODE)

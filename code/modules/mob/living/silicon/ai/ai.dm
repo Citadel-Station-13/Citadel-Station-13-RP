@@ -915,6 +915,7 @@ var/list/ai_verbs_default = list(
 	silicon_mob_list -= src
 
 /mob/living/silicon/ai/announcer/Life(seconds, times_fired)
+	SHOULD_CALL_PARENT(FALSE)
 	return
 
 #undef AI_CHECK_WIRELESS

@@ -1,4 +1,9 @@
 /mob/living/silicon/ai/Life(seconds, times_fired)
+	if((. = ..()))
+		return
+
+	// i'm not converting thhis life proc, christ ~silicons
+
 	if (src.stat == DEAD)
 		return
 	else //I'm not removing that shitton of tabs, unneeded as they are. -- Urist

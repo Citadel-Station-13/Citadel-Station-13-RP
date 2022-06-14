@@ -54,8 +54,9 @@
 	var/obj/movement_target
 	randomized = FALSE
 
-/mob/living/simple_mob/animal/passive/snake/noodle/Life(seconds, times_fired)
-	..()
+/mob/living/simple_mob/animal/passive/snake/noodle/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
 
 	//Not replacing with SA FollowTarget mechanics because Ian behaves... very... specifically.
 

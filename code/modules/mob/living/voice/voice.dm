@@ -99,7 +99,8 @@
 	if(comm)
 		if(!comm.node || !comm.node.on || !comm.node.allow_external_communicators)
 			comm.close_connection(user = src, target = src, reason = "Connection to telecommunications array timed out")
-	..()
+			return TRUE
+	return ..()
 
 // Proc: say()
 // Parameters: 4 (generic say() arguments)

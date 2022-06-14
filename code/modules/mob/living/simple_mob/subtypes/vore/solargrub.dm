@@ -80,9 +80,9 @@ GLOBAL_LIST_EMPTY(solargrubs)
 //	existing_solargrubs += src
 //	..()
 
-/mob/living/simple_mob/vore/solargrub/Life(seconds, times_fired)
-	. = ..()
-	if(!.) return
+/mob/living/simple_mob/vore/solargrub/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
 
 	if(!ai_holder.target)
 			//first, check for potential cables nearby to powersink

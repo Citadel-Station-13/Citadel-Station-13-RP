@@ -54,9 +54,11 @@
 	else
 		..()
 
-/mob/living/simple_mob/animal/passive/cow/Life(seconds, times_fired)
-	. = ..()
-	if(stat == CONSCIOUS)
+/mob/living/simple_mob/animal/passive/cow/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
+	if(stat != DEAD)
 		if(udder && prob(5))
 			udder.add_reagent("milk", rand(5, 10))
 

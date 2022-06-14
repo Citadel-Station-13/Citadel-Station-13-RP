@@ -563,19 +563,20 @@ var/global/list/default_infomorph_software = list()
 	if (pose)
 		. += "\nIt is [pose]"
 
-
-
 /mob/living/silicon/infomorph/Life(seconds, times_fired)
-	//We're dead or EMP'd or something.
-	if (src.stat == 2)
-		return
-
 	//Person was sleeved or otherwise moved away from us, become inert card.
 	if(!ckey || !key)
-		death(0)
+		death()
+		return TRUE
+
+	if((. = ..()))
 		return
 
-	//Clean up the cable if it leaves.
+	//Wipe all the huds, then readd them (of course...)
+	handle_regular_hud_updates()
+	handle_statuses()
+
+	// clean up cable if it leaves
 	if(src.cable)
 		if(get_dist(src, src.cable) > 1)
 			var/turf/T = get_turf(src)
@@ -583,16 +584,11 @@ var/global/list/default_infomorph_software = list()
 			qdel(src.cable)
 			cable = null
 
-	//Wipe all the huds, then readd them (of course...)
-	handle_regular_hud_updates()
-
 	//In response to EMPs, we can be silenced
 	if(silence_time)
 		if(world.timeofday >= silence_time)
 			silence_time = null
 			to_chat(src, "<font color=green>Communication circuit reinitialized. Speech and messaging functionality restored.</font>")
-
-	handle_statuses()
 
 	//Only every so often
 	if(air_master.current_cycle%30 == 1)

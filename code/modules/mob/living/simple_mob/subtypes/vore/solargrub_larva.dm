@@ -79,25 +79,27 @@ var/global/list/grub_machine_overlays = list()
 	return ..()
 
 /mob/living/simple_mob/animal/solargrub_larva/Life(seconds, times_fired)
-	. = ..()
+	if((. = ..()))
+		return
 
 	if(machine_effect && !istype(loc, /obj/machinery))
 		QDEL_NULL(machine_effect)
 
-	if(!.)	// || ai_inactive
-		return
-
 	if(power_drained >= 7 MEGAWATTS && prob(5))
 		expand_grub()
+		return TRUE
+
+/mob/living/simple_mob/animal/solargrub_larva/PhysicalLife()
+	if((. = ..()))
 		return
 
 	if(istype(loc, /obj/machinery))
-		if(machine_effect && air_master.current_cycle%30)
+		// to anyone who sees me on git blame, i'm not responsible for this shit code ~silicons
+		if(machine_effect && (air_master.current_cycle % 30))
 			for(var/mob/M in player_list)
 				SEND_IMAGE(M, machine_effect)
 		if(prob(10))
 			sparks.start()
-		return
 
 /mob/living/simple_mob/animal/solargrub_larva/attack_target(atom/A)
 	if(istype(A, /obj/machinery) && !istype(A, /obj/machinery/atmospherics/component/unary/vent_pump))

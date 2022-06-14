@@ -96,11 +96,11 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 	else
 		..()
 
-/mob/living/simple_mob/animal/passive/chicken/Life(seconds, times_fired)
-	. =..()
-	if(!.)
+/mob/living/simple_mob/animal/passive/chicken/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
 		return
-	if(!stat && prob(3) && eggsleft > 0)
+
+	if((stat != DEAD) && prob(3) && eggsleft > 0)
 		visible_message("[src] [pick("lays an egg.","squats down and croons.","begins making a huge racket.","begins clucking raucously.")]")
 		eggsleft--
 		var/obj/item/reagent_containers/food/snacks/egg/E = new(get_turf(src))
@@ -108,12 +108,6 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 		E.pixel_y = rand(-6,6)
 		if(GLOB.chicken_count < GLOB.MAX_CHICKENS && prob(10))
 			START_PROCESSING(SSobj, E)
-
-
-
-
-
-
 
 /obj/item/reagent_containers/food/snacks/egg/var/amount_grown = 0
 
@@ -168,11 +162,11 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 	pixel_x = rand(-6, 6)
 	pixel_y = rand(0, 10)
 
-/mob/living/simple_mob/animal/passive/chick/Life(seconds, times_fired)
-	. =..()
-	if(!.)
+/mob/living/simple_mob/animal/passive/chick/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
 		return
-	if(!stat)
+
+	if(stat != DEAD)
 		amount_grown += rand(1,2)
 		if(amount_grown >= 100)
 			new /mob/living/simple_mob/animal/passive/chicken(src.loc)

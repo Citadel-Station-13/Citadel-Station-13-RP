@@ -11,6 +11,9 @@
  */
 /mob/proc/Life(seconds, times_fired)
 	SHOULD_CALL_PARENT(TRUE)
+	if(transforming)
+		return TRUE
+
 	. = SEND_SIGNAL(src, COMSIG_MOB_ON_LIFE, seconds, times_fired)
 
 	if(!(. & COMPONENT_INTERRUPT_PHYSICAL_LIFE))
@@ -18,6 +21,8 @@
 
 	if(!(. & COMPONENT_INTERRUPT_BIOLOGICAL_LIFE))
 		BiologicalLife(seconds, times_fired)
+
+	handle_modifiers(.) // Needs to be done even if in nullspace.
 
 	. = FALSE
 
@@ -42,3 +47,8 @@
  */
 /mob/proc/BiologicalLife(seconds, times_fired)
 	SHOULD_CALL_PARENT(TRUE)
+
+/**
+ * handle modifiers - physical/biological life haltedd is passed in
+ */
+/mob/proc/handle_modifiers(component_signal)
