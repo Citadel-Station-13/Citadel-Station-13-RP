@@ -2138,12 +2138,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/alarm{
-	dir = 1;
-	pixel_y = -24
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 1;
+	id = "main_ext_shutter";
+	name = "External airlock emergency override";
+	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
@@ -13697,6 +13699,26 @@
 "kYl" = (
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside1)
+"kYq" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "main_ext_shutter";
+	name = "External airlock emergency override";
+	pixel_x = -28;
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfaceone)
 "kYr" = (
 /obj/machinery/light{
 	dir = 8
@@ -28919,6 +28941,10 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
 "wuY" = (
@@ -43145,7 +43171,7 @@ miu
 vrW
 mFC
 nYH
-oWi
+kYq
 ttD
 pJn
 pHO
