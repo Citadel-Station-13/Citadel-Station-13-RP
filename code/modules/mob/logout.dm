@@ -1,5 +1,6 @@
 /mob/Logout()
-	SEND_SIGNAL(src, COMSIG_MOB_CLIENT_LOGOUT, client)
+	SEND_SIGNAL(src, COMSIG_MOB_LOGOUT)
+	log_message("[key_name(src)] is no longer owning mob [src]([src.type])", LOG_OWNERSHIP)
 	SSnanoui.user_logout(src) // this is used to clean up (remove) this user's Nano UIs
 	SStgui.on_logout(src) // Cleanup any TGUIs the user has open
 	player_list -= src
@@ -21,4 +22,4 @@
 		reset_perspective()
 
 	..()
-	return 1
+	return TRUE

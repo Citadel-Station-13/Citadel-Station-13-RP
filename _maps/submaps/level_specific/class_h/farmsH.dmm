@@ -34,7 +34,7 @@
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/class_h/POIs/dirt_farm)
 "m" = (
-/obj/structure/sink/puddle,
+/obj/structure/hygiene/sink/puddle,
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
 /area/class_h/POIs/dirt_farm)
 "o" = (

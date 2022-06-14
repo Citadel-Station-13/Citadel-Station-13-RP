@@ -77,7 +77,7 @@
 /turf/simulated/shuttle/wall/hard_corner,
 /area/submap/cave/qShuttle)
 "am" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/vomit,

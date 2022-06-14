@@ -42,6 +42,8 @@
 	next_move = 1
 	disconnect_time = null // Clear the disconnect time
 
+	SEND_SIGNAL(src, COMSIG_MOB_LOGIN)
+
 	..()
 
 	reload_fullscreen() // Reload any fullscreen overlays this mob has.

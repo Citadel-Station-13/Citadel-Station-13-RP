@@ -405,7 +405,7 @@
 	},
 /area/tether_away/beach)
 "et" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 8;
 	pixel_x = -2
 	},
@@ -836,7 +836,7 @@
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/tether_away/beach/water)
 "mF" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	icon_state = "sink";
 	pixel_x = 11;
@@ -1130,7 +1130,7 @@
 	},
 /area/tether_away/beach/water)
 "tl" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 4;
 	icon_state = "shower";
 	pixel_x = 2;
@@ -1713,7 +1713,7 @@
 	},
 /area/tether_away/beach/resort)
 "JX" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/machinery/light/small{
@@ -1768,7 +1768,7 @@
 /turf/simulated/floor/water,
 /area/tether_away/beach/resort)
 "LO" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 4;
 	icon_state = "shower";
 	pixel_x = 2;
@@ -1880,7 +1880,7 @@
 /turf/simulated/floor/outdoors/beach/sand,
 /area/tether_away/beach/resort)
 "PG" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 8;
 	pixel_x = -2
 	},
@@ -2049,7 +2049,7 @@
 	},
 /area/tether_away/beach/jungle)
 "Sz" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	icon_state = "sink";
 	pixel_x = 11;
@@ -2154,7 +2154,7 @@
 	},
 /area/tether_away/beach/cavebase)
 "VJ" = (
-/obj/structure/sink/puddle,
+/obj/structure/hygiene/sink/puddle,
 /turf/simulated/floor/outdoors/grass/forest,
 /area/tether_away/beach/jungle)
 "VS" = (

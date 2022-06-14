@@ -16,6 +16,8 @@
 	var/base_icon_state
 	/// Atom flags.
 	var/flags = NONE
+	/// Atom resistance flags. //TODO: Implement. Currently unused.
+	var/resistance_flags = NONE // INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ON_FIRE | UNACIDABLE | ACID_PROOF
 	/// Intearaction flags.
 	var/interaction_flags_atom = NONE
 	/// Holder for the last time we have been bumped.

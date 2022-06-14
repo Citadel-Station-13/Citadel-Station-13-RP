@@ -88,7 +88,7 @@
 /turf/simulated/floor/bluegrid,
 /area/awaymission/carpfarm/base)
 "at" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 4;
 	icon_state = "shower";
 	pixel_x = 5
@@ -107,7 +107,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/carpfarm/base)
 "aw" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/machinery/light/small{
@@ -226,7 +226,7 @@
 /turf/simulated/floor/bluegrid,
 /area/awaymission/carpfarm/base)
 "aP" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	icon_state = "sink";
 	dir = 8;
 	pixel_x = -12;

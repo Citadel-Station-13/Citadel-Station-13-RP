@@ -586,7 +586,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_sh_engineering)
 "lB" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 14
 	},
@@ -963,7 +963,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/gecko_sh)
 "tV" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -14
 	},
@@ -1020,7 +1020,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/gecko_sh_engineering)
 "uR" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -1119,7 +1119,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/gecko_sh_engineering)
 "xB" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4
 	},
 /turf/simulated/floor/plating,

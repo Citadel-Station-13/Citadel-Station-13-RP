@@ -742,11 +742,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "cR" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_x = 4;
 	pixel_y = 3
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12
 	},
@@ -755,11 +755,11 @@
 /turf/simulated/floor/tiled/white,
 /area/submap/cave/cultmine)
 "cS" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_x = 4;
 	pixel_y = 3
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12
 	},

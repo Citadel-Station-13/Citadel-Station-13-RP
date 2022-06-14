@@ -275,7 +275,7 @@
 /turf/simulated/floor/wood,
 /area/submap/DJOutpost1)
 "N" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	icon_state = "sink";
 	pixel_x = 15

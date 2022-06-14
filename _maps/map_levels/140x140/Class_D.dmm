@@ -215,7 +215,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12
 	},
@@ -732,7 +732,7 @@
 	dir = 8;
 	pixel_x = 28
 	},
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner_kafel/yellow/diagonal,
@@ -1167,7 +1167,7 @@
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "ES" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 16
 	},
 /obj/structure/curtain/open/shower,

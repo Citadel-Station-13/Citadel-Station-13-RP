@@ -1618,7 +1618,7 @@
 	dir = 3;
 	pixel_y = 24
 	},
-/obj/structure/toilet,
+/obj/structure/hygiene/toilet,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "dI" = (
@@ -1877,7 +1877,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 18
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -2341,7 +2341,7 @@
 	pixel_y = -26;
 	specialfunctions = 4
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12
 	},

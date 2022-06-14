@@ -396,7 +396,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "bs" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,

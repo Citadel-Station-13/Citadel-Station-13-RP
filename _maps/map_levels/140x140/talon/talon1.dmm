@@ -34,7 +34,7 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 22
 	},
 /obj/structure/medical_stand/anesthetic,
@@ -4622,7 +4622,7 @@
 /obj/structure/mirror{
 	pixel_y = 32
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/eris/white,
@@ -4899,7 +4899,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/toilet,
+/obj/structure/hygiene/toilet,
 /obj/machinery/door/window/brigdoor/eastleft{
 	dir = 8;
 	req_access = list(301)
@@ -5988,7 +5988,7 @@
 /turf/simulated/floor/airless,
 /area/talon/deckone/engine)
 "VH" = (
-/obj/machinery/shower,
+/obj/structure/hygiene/shower,
 /obj/structure/curtain,
 /obj/item/soap/deluxe,
 /turf/simulated/floor/tiled/eris/white,

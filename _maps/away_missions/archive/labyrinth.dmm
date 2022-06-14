@@ -636,7 +636,7 @@
 	},
 /area/awaymission/labyrinth/arrival)
 "cc" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -683,7 +683,7 @@
 	},
 /area/awaymission/labyrinth/arrival)
 "ci" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4
 	},
 /turf/unsimulated/floor{
@@ -691,7 +691,7 @@
 	},
 /area/awaymission/labyrinth/arrival)
 "cj" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 8
 	},
 /obj/structure/curtain/open/shower,

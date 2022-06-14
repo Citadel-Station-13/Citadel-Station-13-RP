@@ -657,7 +657,7 @@
 	},
 /area/ninja_dojo/dojo)
 "bC" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4
 	},
 /turf/unsimulated/floor{
@@ -710,7 +710,7 @@
 	},
 /area/ninja_dojo/dojo)
 "bK" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -808,7 +808,7 @@
 	},
 /area/ninja_dojo/dojo)
 "bX" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 8;
 	pixel_x = -5;
 	pixel_y = -1

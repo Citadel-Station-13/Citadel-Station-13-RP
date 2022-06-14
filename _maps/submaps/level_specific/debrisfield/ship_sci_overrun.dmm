@@ -325,7 +325,7 @@
 /turf/simulated/floor/tiled/white/airless,
 /area/space/debrisfield/scioverrun)
 "bg" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12
 	},

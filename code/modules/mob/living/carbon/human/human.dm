@@ -1681,10 +1681,10 @@
 /mob/living/carbon/human/get_breath_from_environment(volume_needed = STD_BREATH_VOLUME)
 	var/datum/gas_mixture/breath = ..(volume_needed)
 	var/turf/T = get_turf(src)
-	if(istype(T) && T.is_flooded(lying) && should_have_organ(BP_LUNGS))
+	if(istype(T) && T.is_flooded(lying) && should_have_organ(O_LUNGS))
 		var/can_breathe_water = (istype(wear_mask) && wear_mask.filters_water()) ? TRUE : FALSE
 		if(!can_breathe_water)
-			var/obj/item/organ/internal/lungs/lungs = internal_organs_by_name[BP_LUNGS]
+			var/obj/item/organ/internal/lungs/lungs = internal_organs_by_name[O_LUNGS]
 			if(lungs && lungs.can_drown())
 				can_breathe_water = TRUE
 		if(can_breathe_water)

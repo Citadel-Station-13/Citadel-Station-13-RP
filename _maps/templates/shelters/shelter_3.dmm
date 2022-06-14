@@ -199,7 +199,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/survivalpod)
 "G" = (
-/obj/structure/urinal{
+/obj/structure/hygiene/urinal{
 	pixel_y = 24
 	},
 /turf/simulated/shuttle/floor/voidcraft/light,
@@ -208,7 +208,7 @@
 /turf/simulated/shuttle/floor/voidcraft/light,
 /area/survivalpod)
 "I" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -238,7 +238,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/survivalpod)
 "N" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/machinery/light/small{

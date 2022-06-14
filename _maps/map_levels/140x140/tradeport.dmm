@@ -1283,7 +1283,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport)
 "ew" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -14
 	},
@@ -1478,7 +1478,7 @@
 	dir = 2;
 	req_one_access = list(160)
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 3
 	},
 /obj/structure/window/reinforced{
@@ -1791,7 +1791,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport)
 "gE" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -1874,7 +1874,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/pads)
 "gN" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -2749,7 +2749,7 @@
 	dir = 4
 	},
 /obj/random/maintenance/clean,
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 19
 	},
 /turf/simulated/floor/tiled/old_cargo/beige,
@@ -2942,7 +2942,7 @@
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "kR" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -3634,7 +3634,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/engineering)
 "nn" = (
-/obj/structure/toilet,
+/obj/structure/hygiene/toilet,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -3714,7 +3714,7 @@
 /area/tradeport/commhall)
 "ny" = (
 /obj/structure/curtain/open/shower,
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 3
 	},
 /obj/structure/handrail{
@@ -4562,7 +4562,7 @@
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/safari)
 "qi" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/structure/window/reinforced/tinted,
@@ -4935,7 +4935,7 @@
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "rJ" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -13
 	},
@@ -7095,7 +7095,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade_ship/general)
 "yY" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/old_tile/white,
@@ -7976,7 +7976,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
 "CG" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -13
 	},
@@ -8000,7 +8000,7 @@
 	dir = 2;
 	req_one_access = list(160)
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 3
 	},
 /obj/structure/window/reinforced{
@@ -8017,7 +8017,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/shuttle/trade_ship/general)
 "CO" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -14
 	},
@@ -9851,7 +9851,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport)
 "Ki" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -10872,7 +10872,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
 "NO" = (
-/obj/structure/toilet,
+/obj/structure/hygiene/toilet,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -10993,7 +10993,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "Op" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -11280,7 +11280,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
 "Pw" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/structure/window/reinforced/tinted,
@@ -11368,7 +11368,7 @@
 /area/space)
 "PT" = (
 /obj/structure/window/reinforced,
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -14
 	},
@@ -13418,7 +13418,7 @@
 /turf/simulated/wall/r_wall,
 /area/tradeport/spine)
 "Xu" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/structure/window/reinforced/tinted{
@@ -13487,7 +13487,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "XE" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -14
 	},

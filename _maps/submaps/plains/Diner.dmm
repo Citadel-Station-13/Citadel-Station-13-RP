@@ -51,7 +51,7 @@
 /turf/simulated/floor/tiled/white,
 /area/submap/Diner)
 "am" = (
-/obj/structure/sink/kitchen,
+/obj/structure/hygiene/sink/kitchen,
 /turf/simulated/wall,
 /area/submap/Diner)
 "an" = (
@@ -405,7 +405,7 @@
 /turf/simulated/floor/tiled/white,
 /area/submap/Diner)
 "bs" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	icon_state = "sink";
 	dir = 8;
 	pixel_x = -12;
@@ -417,7 +417,7 @@
 /turf/simulated/floor/tiled/hydro,
 /area/submap/Diner)
 "bu" = (
-/obj/structure/toilet,
+/obj/structure/hygiene/toilet,
 /turf/simulated/floor/tiled/hydro,
 /area/submap/Diner)
 "bv" = (

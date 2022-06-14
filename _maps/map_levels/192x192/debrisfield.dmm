@@ -40,7 +40,7 @@
 /area/space/debrisfield/explored)
 "ls" = (
 /obj/structure/table/steel,
-/obj/structure/sink/kitchen,
+/obj/structure/hygiene/sink/kitchen,
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/space/debrisfield/explored)
 "oK" = (
@@ -76,15 +76,15 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/space/debrisfield/explored)
 "uL" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
 	},
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 10
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile/yellow,

@@ -69,7 +69,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "ap" = (
-/obj/structure/sink,
+/obj/structure/hygiene/sink,
 /turf/simulated/wall/virgo2,
 /area/submap/virgo2/Manor1)
 "aq" = (
@@ -612,7 +612,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "cv" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/hydro,
@@ -664,14 +664,14 @@
 /turf/simulated/floor/tiled/hydro,
 /area/submap/virgo2/Manor1)
 "cG" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	icon_state = "toilet00";
 	dir = 8
 	},
 /turf/simulated/floor/tiled/hydro,
 /area/submap/virgo2/Manor1)
 "cH" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	icon_state = "shower";
 	dir = 8
 	},
@@ -683,7 +683,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "cJ" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	icon_state = "shower";
 	dir = 8
 	},
@@ -696,7 +696,7 @@
 /turf/simulated/floor/tiled/hydro,
 /area/submap/virgo2/Manor1)
 "cL" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	icon_state = "toilet00";
 	dir = 1
 	},

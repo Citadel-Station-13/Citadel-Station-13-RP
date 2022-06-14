@@ -110,7 +110,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored/underdark)
 "aD" = (
-/obj/structure/sink,
+/obj/structure/hygiene/sink,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored/underdark)
 "aE" = (

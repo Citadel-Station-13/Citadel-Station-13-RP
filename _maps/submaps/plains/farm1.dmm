@@ -107,7 +107,7 @@
 	},
 /area/submap/farm1)
 "w" = (
-/obj/structure/sink/puddle,
+/obj/structure/hygiene/sink/puddle,
 /turf/simulated/floor/outdoors/mud{
 	outdoors = 0
 	},

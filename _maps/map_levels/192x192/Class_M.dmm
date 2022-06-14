@@ -81,7 +81,7 @@
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
 "cj" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/classm,
@@ -192,7 +192,7 @@
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
 "fn" = (
-/obj/structure/sink/puddle{
+/obj/structure/hygiene/sink/puddle{
 	pixel_y = 6
 	},
 /turf/simulated/floor/outdoors/grass/classm,
@@ -311,7 +311,7 @@
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
 "jK" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -352,7 +352,7 @@
 	},
 /area/class_m/outside)
 "kg" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -872,7 +872,7 @@
 	dir = 4;
 	pixel_y = 33
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/white,
@@ -897,7 +897,7 @@
 /turf/simulated/floor/tiled/white,
 /area/class_m/inside)
 "wu" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -922,7 +922,7 @@
 /turf/simulated/floor/tiled/white,
 /area/class_m/inside)
 "xw" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /obj/machinery/light/small{
@@ -950,7 +950,7 @@
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
 "xR" = (
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	dir = 8;
 	name = "sink";
 	pixel_x = 13
@@ -1137,7 +1137,7 @@
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
 "AT" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -1149,7 +1149,7 @@
 /turf/simulated/floor/tiled/white,
 /area/class_m/inside)
 "Bb" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -1256,7 +1256,7 @@
 /turf/simulated/floor/tiled/white,
 /area/class_m/inside)
 "DO" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -1338,7 +1338,7 @@
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
 "FC" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 16
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{

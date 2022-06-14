@@ -52,19 +52,19 @@
 	force_divisor = 0.1
 	thrown_force_divisor = 0.1
 
-/obj/item/material/wirerod/attackby(var/obj/item/I, mob/user as mob)
+/obj/item/material/wirerod/attackby(obj/item/I, mob/user)
 	..()
 	var/obj/item/finished
 	if(istype(I, /obj/item/material/shard) || istype(I, /obj/item/material/butterflyblade))
 		var/obj/item/material/tmp_shard = I
 		finished = new /obj/item/material/twohanded/spear(get_turf(user), tmp_shard.material.name)
-		to_chat(user, "<span class='notice'>You fasten \the [I] to the top of the rod with the cable.</span>")
+		to_chat(user, SPAN_NOTICE("You fasten \the [I] to the top of the rod with the cable."))
 	else if(I.is_wirecutter())
 		finished = new /obj/item/melee/baton/cattleprod(get_turf(user))
-		to_chat(user, "<span class='notice'>You fasten the wirecutters to the top of the rod with the cable, prongs outward.</span>")
+		to_chat(user, SPAN_NOTICE("You fasten the wirecutters to the top of the rod with the cable, prongs outward."))
 	else if(istype(I, /obj/item/weldingtool/mini))
 		finished = new /obj/item/weldingtool/welder_spear(get_turf(user))
-		to_chat(user, "<span class='notice'>You fasten the mini welder to the top of the rod with the cable, nozzle outward.</span>")
+		to_chat(user, SPAN_NOTICE("You fasten the mini welder to the top of the rod with the cable, nozzle outward."))
 	if(finished)
 		user.drop_from_inventory(src)
 		user.drop_from_inventory(I)

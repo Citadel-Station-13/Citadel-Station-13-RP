@@ -688,7 +688,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12
 	},
@@ -1504,7 +1504,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
 "acm" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -1826,7 +1826,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -5504,7 +5504,7 @@
 	layer = 3.3;
 	pixel_x = 26
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -7150,7 +7150,7 @@
 /obj/effect/floor_decal/techfloor/hole/right{
 	dir = 4
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 8;
 	pixel_x = -2
 	},
@@ -7303,7 +7303,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_three_hall)
 "all" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 8
 	},
 /obj/item/soap/deluxe,
@@ -8574,7 +8574,7 @@
 /area/crew_quarters/panic_shelter)
 "anU" = (
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor/hole/right,
@@ -11466,7 +11466,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "atg" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -12213,7 +12213,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "auL" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -12963,7 +12963,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/captain)
 "awj" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -12981,7 +12981,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/recreation_area_restroom)
 "awl" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -13598,7 +13598,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /obj/machinery/button/remote/airlock{
@@ -17024,7 +17024,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_three)
 "aDo" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 4;
 	pixel_x = 5
 	},
@@ -17762,7 +17762,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_three_hall)
 "aEB" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 24
 	},
 /turf/simulated/floor/grass,
@@ -17856,7 +17856,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12
 	},
@@ -19674,7 +19674,7 @@
 	dir = 8
 	},
 /obj/structure/curtain/open/shower,
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 4;
 	pixel_x = 5
 	},
@@ -21137,7 +21137,7 @@
 /area/tether/surfacebase/surface_three_hall)
 "aKy" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	pixel_y = 28
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -22024,7 +22024,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics/mechbay)
 "aMw" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12
 	},
@@ -22131,7 +22131,7 @@
 /area/crew_quarters/pool)
 "aMJ" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	name = "sink";
 	pixel_y = 32
 	},
@@ -22830,7 +22830,7 @@
 	dir = 1;
 	pixel_y = 24
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 4;
 	pixel_x = 5
 	},
@@ -24235,13 +24235,13 @@
 /area/rnd/outpost/xenobiology/outpost_decon)
 "aRr" = (
 /obj/structure/curtain/open/shower,
-/obj/machinery/shower,
+/obj/structure/hygiene/shower,
 /obj/random/soap,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/xenobiology/outpost_decon)
 "aRs" = (
 /obj/structure/curtain/open/shower,
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 8
 	},
 /obj/random/soap,
@@ -24421,7 +24421,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/admin)
 "aRH" = (
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	name = "sink";
 	pixel_y = 32
 	},
@@ -25961,7 +25961,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -27749,7 +27749,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /obj/machinery/button/remote/airlock{
@@ -31782,7 +31782,7 @@
 	dir = 4
 	},
 /obj/structure/reagent_dispensers/beerkeg,
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 28
 	},
 /turf/simulated/floor/wood,
@@ -33521,7 +33521,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/topairlock)
 "biS" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/dark,
@@ -33691,7 +33691,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/cafeteria)
 "bjl" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals9{
@@ -34464,7 +34464,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/triage)
 "blG" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 32
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -35762,7 +35762,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12
 	},
@@ -37360,7 +37360,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/shuttle_pad)
 "gIo" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 20
 	},
 /obj/structure/mirror{
@@ -39177,7 +39177,7 @@
 /turf/simulated/floor/carpet,
 /area/tether/surfacebase/security/hos)
 "lGo" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 8;
 	pixel_x = -5
 	},
@@ -40717,7 +40717,7 @@
 /area/tether/surfacebase/security/briefingroom)
 "pHD" = (
 /obj/structure/curtain/open/shower,
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 8;
 	pixel_x = -5
 	},
@@ -41261,7 +41261,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/surfacebase/barbackmaintenance)
 "rex" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 20
 	},
 /obj/structure/mirror{
@@ -41292,7 +41292,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/recreation_area_restroom)
 "rgy" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/machinery/light/small{
@@ -42889,7 +42889,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/processing)
 "vnz" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/machinery/light/small{

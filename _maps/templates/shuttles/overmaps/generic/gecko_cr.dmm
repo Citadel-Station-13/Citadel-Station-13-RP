@@ -424,7 +424,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/gecko_cr_engineering)
 "ju" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 14
 	},
@@ -496,7 +496,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/gecko_cr_cockpit)
 "kJ" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -14
 	},
@@ -576,7 +576,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_cr_engineering)
 "lB" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -1011,7 +1011,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/gecko_cr_cockpit)
 "tV" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4
 	},
 /turf/simulated/floor/plating,

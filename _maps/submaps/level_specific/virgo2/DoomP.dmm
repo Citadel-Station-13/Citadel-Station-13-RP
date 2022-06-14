@@ -421,7 +421,7 @@
 /turf/simulated/floor/tiled/white,
 /area/submap/virgo2/DoomP)
 "bA" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	icon_state = "sink";
 	pixel_x = 11;
@@ -459,14 +459,14 @@
 /turf/simulated/floor/tiled/white,
 /area/submap/virgo2/DoomP)
 "bF" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/structure/curtain/open/shower,
 /turf/simulated/floor/tiled/white,
 /area/submap/virgo2/DoomP)
 "bG" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,

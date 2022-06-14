@@ -704,7 +704,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "dB" = (
-/obj/structure/toilet,
+/obj/structure/hygiene/toilet,
 /mob/living/simple_mob/creature,
 /turf/simulated/floor,
 /area/awaymission/wwgov)
@@ -788,7 +788,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/wwgov)
 "dV" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 4
 	},
 /turf/simulated/floor{
@@ -796,7 +796,7 @@
 	},
 /area/awaymission/wwmines)
 "dW" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 8
 	},
 /turf/simulated/floor{
@@ -1035,7 +1035,7 @@
 /turf/simulated/floor,
 /area/awaymission/wwrefine)
 "fe" = (
-/obj/structure/sink,
+/obj/structure/hygiene/sink,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "ff" = (
@@ -1094,7 +1094,7 @@
 /turf/simulated/floor,
 /area/awaymission/wwrefine)
 "fp" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /turf/simulated/floor/wood,

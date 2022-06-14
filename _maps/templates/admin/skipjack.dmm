@@ -140,7 +140,7 @@
 	},
 /area/skipjack_station)
 "av" = (
-/obj/structure/urinal{
+/obj/structure/hygiene/urinal{
 	pixel_y = 32
 	},
 /obj/item/soap/syndie,
@@ -155,7 +155,7 @@
 	},
 /area/skipjack_station)
 "ax" = (
-/obj/structure/toilet,
+/obj/structure/hygiene/toilet,
 /turf/unsimulated/floor{
 	icon_state = "freezerfloor"
 	},
@@ -343,7 +343,7 @@
 	},
 /area/skipjack_station)
 "aT" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -357,7 +357,7 @@
 	},
 /area/skipjack_station)
 "aU" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /turf/unsimulated/floor{
@@ -1354,7 +1354,7 @@
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/skipjack)
 "dn" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -1446,7 +1446,7 @@
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/skipjack)
 "dB" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4
 	},
 /turf/simulated/shuttle/plating,
@@ -1492,7 +1492,7 @@
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/skipjack)
 "dH" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -1566,7 +1566,7 @@
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/skipjack)
 "dS" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -1594,7 +1594,7 @@
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/skipjack)
 "dX" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4
 	},
 /obj/machinery/light/small{

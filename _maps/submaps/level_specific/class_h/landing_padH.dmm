@@ -46,7 +46,7 @@
 /obj/structure/loot_pile/surface/medicine_cabinet/fresh{
 	pixel_y = -35
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 25
 	},
 /turf/simulated/floor/tiled/kafel_full,
@@ -207,7 +207,7 @@
 "K" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/curtain/open/shower,
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/machinery/light/small{

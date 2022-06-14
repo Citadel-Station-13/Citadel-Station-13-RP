@@ -60,13 +60,13 @@
 /turf/simulated/shuttle/floor/voidcraft,
 /area/survivalpod)
 "h" = (
-/obj/machinery/shower,
+/obj/structure/hygiene/shower,
 /obj/item/soap/deluxe,
 /obj/structure/curtain,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/survivalpod)
 "i" = (
-/obj/structure/toilet,
+/obj/structure/hygiene/toilet,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/survivalpod)
 "j" = (
@@ -176,7 +176,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/survivalpod)
 "y" = (
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	icon_state = "sink_alt";
 	dir = 4;
 	pixel_x = -13

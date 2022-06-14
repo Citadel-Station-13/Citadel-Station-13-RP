@@ -322,3 +322,9 @@
 
 /// If you examine the same atom twice in this timeframe, we call examine_more() instead of examine()
 #define EXAMINE_MORE_TIME 1 SECONDS
+
+#define NO_SLIP_WHEN_WALKING (1<<0)
+#define SLIDE (1<<1)
+#define GALOSHES_DONT_HELP (1<<2)
+#define SLIDE_ICE (1<<3)
+#define SLIP_WHEN_CRAWLING (1<<4) //clown planet ruin

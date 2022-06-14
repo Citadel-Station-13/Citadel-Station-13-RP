@@ -858,7 +858,7 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/awaymission/academy/classrooms)
 "dh" = (
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	pixel_y = 28
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
@@ -2286,7 +2286,7 @@
 /turf/simulated/floor,
 /area/awaymission/academy/academyaft)
 "io" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -2306,7 +2306,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/academy/academyaft)
 "it" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -2319,7 +2319,7 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/awaymission/academy/academyaft)
 "iv" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/machinery/light/small{
@@ -2331,7 +2331,7 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/awaymission/academy/academyaft)
 "iw" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4
 	},
 /obj/machinery/light/small{
@@ -2348,7 +2348,7 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/awaymission/academy/academyaft)
 "iy" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/machinery/light/small{
@@ -2382,7 +2382,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/awaymission/academy/academyaft)
 "iF" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/machinery/light/small{

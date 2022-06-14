@@ -198,6 +198,8 @@ var/list/admin_verbs_server = list(
 var/list/admin_verbs_debug = list(
 	/client/proc/cmd_admin_list_open_jobs,
 	/client/proc/Debug2,
+	/datum/admins/proc/jump_to_fluid_source,
+	/datum/admins/proc/jump_to_fluid_active,
 	/client/proc/kill_air,
 	/client/proc/ZASSettings,
 	/client/proc/reload_configuration,

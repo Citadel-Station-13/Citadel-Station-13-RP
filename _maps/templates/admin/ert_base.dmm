@@ -872,14 +872,14 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "bO" = (
-/obj/structure/toilet,
+/obj/structure/hygiene/toilet,
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/specops/centcom)
 "bP" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -895,7 +895,7 @@
 /area/shuttle/specops/centcom)
 "bR" = (
 /obj/structure/curtain/open/shower,
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 3
 	},
 /turf/simulated/shuttle/floor/white,
@@ -1235,7 +1235,7 @@
 /area/shuttle/specops/centcom)
 "cy" = (
 /obj/structure/medical_stand,
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 12;
 	pixel_y = 8

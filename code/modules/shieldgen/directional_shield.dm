@@ -11,7 +11,7 @@
 	anchored = TRUE
 	unacidable = TRUE
 	layer = MOB_LAYER + 0.1
-	mouse_opacity = FALSE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/obj/item/shield_projector/projector = null // The thing creating the shield.
 	var/x_offset = 0 // Offset from the 'center' of where the projector is, so that if it moves, the shield can recalc its position.
 	var/y_offset = 0 // Ditto.

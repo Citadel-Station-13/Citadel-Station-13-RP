@@ -177,7 +177,7 @@
 /turf/simulated/floor/airless,
 /area/submap/debrisfield_vr/sci_overrun)
 "aJ" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12
 	},

@@ -9,49 +9,41 @@
 	item_state = "welder"
 	slot_flags = SLOT_BELT
 	tool_behaviour = TOOL_WELDER
+	waterproof = FALSE
 
 	//Amount of OUCH when it's thrown
-	force = 3
-	throwforce = 5
+	force = 3.0
+	throwforce = 5.0
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
 
 	//Cost to make in the autolathe
-	matter = list(MAT_STEEL = 70, MAT_GLASS = 30)
+	matter = list(DEFAULT_WALL_MATERIAL = 70, "glass" = 30)
 
 	//R&D tech level
 	origin_tech = list(TECH_ENGINEERING = 1)
 
-	toolspeed = 1
-	usesound = 'sound/items/Welder2.ogg'
-	drop_sound = 'sound/items/drop/weldingtool.ogg'
-	pickup_sound = 'sound/items/pickup/weldingtool.ogg'
-	waterproof = FALSE
-
-	/// Whether or not the welding tool is off(0), on(1) or currently welding(2)
+	//Welding tool specific stuff
+	/// Whether or not the welding tool is off(0), on(1) or currently welding(2).
 	var/welding = 0
-	/// Whether the welder is secured or unsecured (able to attach rods to it to make a flamethrower)
+	/// Whether the welder is secured or unsecured (able to attach rods to it to make a flamethrower).
 	var/status = 1
-	/// The max amount of fuel the welder can hold
+	/// The max amount of fuel the welder can hold.
 	var/max_fuel = 20
 
 	var/acti_sound = 'sound/items/welderactivate.ogg'
 	var/deac_sound = 'sound/items/welderdeactivate.ogg'
-
+	usesound = 'sound/items/Welder2.ogg'
 	var/change_icons = TRUE
-	/// How powerful the emitted light is when used.
-	var/flame_intensity = 2
-	/// What color the welder light emits when its on.  Default is an orange-ish color.
-	var/flame_color = "#FF9933"
-	/// Increasing this will make less eye protection needed to stop eye damage.  IE at 1, sunglasses will fully protect.
-	var/eye_safety_modifier = 0
-	/// Keeps track of how long the welder's been on, used to gradually empty the welder if left one, without RNG.
-	var/burned_fuel_for = 0
-	/// If true, keeps the welder on the process list even if it's off.  Used for when it needs to regenerate fuel.
-	var/always_process = FALSE
-
-	var/welding_resource = "welding fuel"
+	var/flame_intensity = 2 //how powerful the emitted light is when used.
+	var/flame_color = "#FF9933" // What color the welder light emits when its on.  Default is an orange-ish color.
+	var/eye_safety_modifier = 0 // Increasing this will make less eye protection needed to stop eye damage.  IE at 1, sunglasses will fully protect.
+	var/burned_fuel_for = 0 // Keeps track of how long the welder's been on, used to gradually empty the welder if left one, without RNG.
+	var/always_process = FALSE // If true, keeps the welder on the process list even if it's off.  Used for when it needs to regenerate fuel.
+	toolspeed = 1
+	drop_sound = 'sound/items/drop/weldingtool.ogg'
+	pickup_sound = 'sound/items/pickup/weldingtool.ogg'
 
 /obj/item/weldingtool/Initialize(mapload)
 	. = ..()

@@ -114,7 +114,7 @@
 	layer = ABOVE_MOB_LAYER
 
 /obj/effect/overlay/holographic
-	mouse_opacity = FALSE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	anchored = TRUE
 	plane = ABOVE_PLANE
 

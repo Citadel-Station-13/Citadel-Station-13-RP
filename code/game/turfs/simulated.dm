@@ -32,13 +32,11 @@
 
 // This is not great.
 /turf/simulated/proc/wet_floor(wet_val = 1)
-	if(wet > 2)	//Can't mop up ice
+	if(wet_val < wet)
 		return
-	spawn(0)
+
+	if(!wet)
 		wet = wet_val
-		if(wet_overlay)
-			cut_overlay(wet_overlay)
-		wet_overlay = image('icons/effects/water.dmi', icon_state = "wet_floor")
 		add_overlay(wet_overlay)
 		sleep(800)
 		if(wet == 2)
@@ -47,6 +45,15 @@
 		if(wet_overlay)
 			cut_overlay(wet_overlay)
 			wet_overlay = null
+
+/turf/simulated/proc/unwet_floor(check_very_wet)
+	if(check_very_wet && wet >= 2)
+		return
+
+	wet = 0
+	if(wet_overlay)
+		overlays -= wet_overlay
+		wet_overlay = null
 
 /turf/simulated/proc/freeze_floor()
 	if(!wet) // Water is required for it to freeze.
@@ -177,3 +184,9 @@
 
 /turf/simulated/floor/plating
 	can_start_dirty = TRUE	// But let maints and decrepit areas have some randomness
+
+/turf/simulated/GetHeatCapacity()
+	. = air.heat_capacity()
+
+/turf/simulated/GetTemperature()
+	. = air.temperature

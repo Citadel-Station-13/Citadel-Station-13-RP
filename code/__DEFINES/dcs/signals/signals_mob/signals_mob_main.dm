@@ -10,9 +10,9 @@
 /// Called on /basic when updating its speed, from base of /mob/living/basic/update_basic_mob_varspeed(): ()
 ////#define POST_BASIC_MOB_UPDATE_VARSPEED "post_basic_mob_update_varspeed"
 /// From base of /mob/Login(): ()
-////#define COMSIG_MOB_LOGIN "mob_login"
+#define COMSIG_MOB_LOGIN "mob_login"
 /// From base of /mob/Logout(): ()
-////#define COMSIG_MOB_LOGOUT "mob_logout"
+#define COMSIG_MOB_LOGOUT "mob_logout"
 /// From base of mob/set_stat(): (new_stat, old_stat)
 ////#define COMSIG_MOB_STATCHANGE "mob_statchange"
 /// From base of mob/clickon(): (atom/A, params)
@@ -32,13 +32,18 @@
 ////#define COMSIG_MOB_BOT_STEP "mob_bot_step"
 
 /// From base of /client/Move()
-////#define COMSIG_MOB_CLIENT_PRE_MOVE "mob_client_pre_move"
-	///? Should always match COMPONENT_MOVABLE_BLOCK_PRE_MOVE as these are interchangeable and used to block movement.
-	////#define COMSIG_MOB_CLIENT_BLOCK_PRE_MOVE COMPONENT_MOVABLE_BLOCK_PRE_MOVE
-/// From base of /client/Move()
 ////#define COMSIG_MOB_CLIENT_PRE_LIVING_MOVE "mob_client_pre_living_move"
 	///? Should we stop the current living movement attempt
 	////#define COMSIG_MOB_CLIENT_BLOCK_PRE_LIVING_MOVE COMPONENT_MOVABLE_BLOCK_PRE_MOVE
+
+/// From base of /client/Move(): (list/move_args)
+#define COMSIG_MOB_CLIENT_PRE_MOVE "mob_client_pre_move"
+	/// Should always match COMPONENT_MOVABLE_BLOCK_PRE_MOVE as these are interchangeable and used to block movement.
+	#define COMSIG_MOB_CLIENT_BLOCK_PRE_MOVE COMPONENT_MOVABLE_BLOCK_PRE_MOVE
+	/// The argument of move_args which corresponds to the loc we're moving to
+	#define MOVE_ARG_NEW_LOC 1
+	/// The arugment of move_args which dictates our movement direction
+	#define MOVE_ARG_DIRECTION 2
 /// From base of /client/Move()
 ////#define COMSIG_MOB_CLIENT_MOVED "mob_client_moved"
 /// From base of /client/proc/change_view() (mob/source, new_size)
@@ -111,8 +116,6 @@
 ////#define COMSIG_MOB_EMOTED(emote_key) "mob_emoted_[emote_key]"
 /// Sent when a mob/login() finishes: (client)
 #define COMSIG_MOB_CLIENT_LOGIN "comsig_mob_client_login"
-/// Sent when a mob/logout() begins: (client)
-#define COMSIG_MOB_CLIENT_LOGOUT "comsig_mob_client_logout"
 /// From base of client/MouseDown(): (/client, object, location, control, params)
 ////#define COMSIG_CLIENT_MOUSEDOWN "client_mousedown"
 /// From base of client/MouseUp(): (/client, object, location, control, params)

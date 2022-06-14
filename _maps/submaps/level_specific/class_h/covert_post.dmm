@@ -53,7 +53,7 @@
 /turf/simulated/floor/carpet/gaycarpet,
 /area/class_h/POIs/covert_post)
 "n" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12
 	},
@@ -104,7 +104,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile,

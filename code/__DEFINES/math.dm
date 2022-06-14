@@ -6,8 +6,8 @@
 
 #define SQRT_2 1.414214
 
-#define M_PI (3.14159265)
-#define INFINITY (1.#INF)	//closer then enough
+#define M_PI						(3.14159265)
+#define INFINITY				(1.#INF)	//closer then enough
 
 #define SHORT_REAL_LIMIT 16777216
 
@@ -29,7 +29,7 @@
 
 /// Value or the next integer in a positive direction: Ceil(-1.5) = -1 , Ceil(1.5) = 2
 #define CEIL(value) ( -round(-(value)) )
-// Same as CEIL but for x,y
+// Same as about but for x,y
 #define CEILING(x, y) ( -round(-(x) / (y)) * (y) )
 
 // round() acts like floor(x, 1) by default but can't handle other values

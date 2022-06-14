@@ -921,7 +921,7 @@
 	dir = 4;
 	icon_state = "twindow"
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 4;
 	icon_state = "shower"
 	},
@@ -932,7 +932,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/crew_toilets)
 "cm" = (
-/obj/structure/toilet,
+/obj/structure/hygiene/toilet,
 /obj/structure/window/reinforced/tinted{
 	dir = 4;
 	icon_state = "twindow"
@@ -951,7 +951,7 @@
 /obj/structure/mirror{
 	pixel_y = 29
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 18
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -1181,7 +1181,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/crew_dorms)
 "cM" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 4;
 	icon_state = "shower"
 	},
@@ -1193,7 +1193,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/crew_toilets)
 "cN" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1;
 	icon_state = "toilet00"
 	},

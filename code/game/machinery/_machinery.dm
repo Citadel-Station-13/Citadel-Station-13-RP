@@ -314,7 +314,7 @@
 	uid = gl_uid
 	gl_uid++
 
-/obj/machinery/proc/state(var/msg)
+/obj/machinery/proc/state(msg)
 	for(var/mob/O in hearers(src, null))
 		O.show_message("[icon2html(thing = src, target = O)] [SPAN_NOTICE(msg)]", 2)
 
@@ -323,13 +323,13 @@
 		text = "\The [src] pings."
 
 	state(text, "blue")
-	playsound(src.loc, 'sound/machines/ping.ogg', 50, 0)
+	playsound(src.loc, 'sound/machines/ping.ogg', 50, FALSE)
 
 /obj/machinery/proc/shock(mob/user, prb)
 	if(inoperable())
-		return 0
+		return FALSE
 	if(!prob(prb))
-		return 0
+		return FALSE
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(5, 1, src)
 	s.start()
@@ -341,8 +341,8 @@
 			if(temp_apc && temp_apc.terminal && temp_apc.terminal.powernet)
 				temp_apc.terminal.powernet.trigger_warning()
 		if(user.stunned)
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 /obj/machinery/proc/default_apply_parts()
 	var/obj/item/circuitboard/CB = circuit
@@ -351,14 +351,14 @@
 	CB.apply_default_parts(src)
 	RefreshParts()
 
-/obj/machinery/proc/default_part_replacement(var/mob/user, var/obj/item/storage/part_replacer/R)
+/obj/machinery/proc/default_part_replacement(mob/user, obj/item/storage/part_replacer/R)
 	if(!istype(R))
-		return 0
+		return FALSE
 	if(!component_parts)
-		return 0
-	to_chat(user, "<span class='notice'>Following parts detected in [src]:</span>")
+		return FALSE
+	to_chat(user, SPAN_NOTICE("Following parts detected in [src]:"))
 	for(var/obj/item/C in component_parts)
-		to_chat(user, "<span class='notice'>    [C.name]</span>")
+		to_chat(user, SPAN_NOTICE("[FOURSPACES][C.name]"))
 	if(panel_open || !R.panel_req)
 		var/obj/item/circuitboard/CB = circuit
 		var/P
@@ -375,100 +375,101 @@
 						component_parts -= A
 						component_parts += B
 						B.loc = null
-						to_chat(user, "<span class='notice'>[A.name] replaced with [B.name].</span>")
+						to_chat(user, SPAN_NOTICE("[A.name] replaced with [B.name]."))
 						break
 			update_appearance()
 			RefreshParts()
-	return 1
+	return TRUE
 
-// Default behavior for wrenching down machines.  Supports both delay and instant modes.
-/obj/machinery/proc/default_unfasten_wrench(var/mob/user, var/obj/item/W, var/time = 0)
-	if(!W.is_wrench())
+/// Default behavior for wrenching down machines.  Supports both delay and instant modes.
+/obj/machinery/proc/default_unfasten_wrench(mob/user, obj/item/our_tool, time = 0)
+	if(!our_tool.is_wrench())
 		return FALSE
 	if(panel_open)
 		return FALSE // Close panel first!
-	playsound(loc, W.usesound, 50, 1)
-	var/actual_time = W.toolspeed * time
+	playsound(loc, our_tool.usesound, 50, TRUE)
+	var/actual_time = our_tool.toolspeed * time
 	if(actual_time != 0)
 		user.visible_message( \
-			"<span class='warning'>\The [user] begins [anchored ? "un" : ""]securing \the [src].</span>", \
-			"<span class='notice'>You start [anchored ? "un" : ""]securing \the [src].</span>")
+			SPAN_WARNING("\The [user] begins [anchored ? "un" : ""]securing \the [src]."), \
+			SPAN_NOTICE("You start [anchored ? "un" : ""]securing \the [src]."))
 	if(actual_time == 0 || do_after(user, actual_time, target = src))
 		user.visible_message( \
-			"<span class='warning'>\The [user] has [anchored ? "un" : ""]secured \the [src].</span>", \
-			"<span class='notice'>You [anchored ? "un" : ""]secure \the [src].</span>")
+			SPAN_WARNING("\The [user] has [anchored ? "un" : ""]secured \the [src]."), \
+			SPAN_NOTICE("You [anchored ? "un" : ""]secure \the [src]."))
 		anchored = !anchored
 		power_change() //Turn on or off the machine depending on the status of power in the new area.
-		update_appearance()
+		update_icon()
 	return TRUE
 
-/obj/machinery/proc/default_deconstruction_crowbar(var/mob/user, var/obj/item/C)
-	if(!C.is_crowbar())
-		return 0
+/obj/machinery/proc/default_deconstruction_crowbar(mob/user, obj/item/our_tool)
+	if(!our_tool.is_crowbar())
+		return FALSE
 	if(!panel_open)
-		return 0
+		return FALSE
 	. = dismantle()
 
-/obj/machinery/proc/default_deconstruction_screwdriver(var/mob/user, var/obj/item/S)
-	if(!S.is_screwdriver())
-		return 0
-	playsound(src, S.usesound, 50, 1)
+/obj/machinery/proc/default_deconstruction_screwdriver(mob/user, obj/item/our_tool)
+	if(!our_tool.is_screwdriver())
+		return FALSE
+	playsound(src, our_tool.usesound, 50, TRUE)
 	panel_open = !panel_open
-	to_chat(user, "<span class='notice'>You [panel_open ? "open" : "close"] the maintenance hatch of [src].</span>")
-	update_appearance()
-	return 1
+	to_chat(user, SPAN_NOTICE("You [panel_open ? "open" : "close"] the maintenance hatch of [src]."))
+	update_icon()
+	return TRUE
 
-/obj/machinery/proc/computer_deconstruction_screwdriver(var/mob/user, var/obj/item/S)
-	if(!S.is_screwdriver())
-		return 0
+/obj/machinery/proc/computer_deconstruction_screwdriver(mob/user, obj/item/our_tool)
+	if(!our_tool.is_screwdriver())
+		return FALSE
 	if(!circuit)
-		return 0
-	to_chat(user, "<span class='notice'>You start disconnecting the monitor.</span>")
-	playsound(src, S.usesound, 50, 1)
-	if(do_after(user, 20 * S.toolspeed))
+		return FALSE
+	to_chat(user, SPAN_NOTICE("You start disconnecting the monitor."))
+	playsound(src, our_tool.usesound, 50, TRUE)
+	if(do_after(user, 20 * our_tool.toolspeed))
 		if(machine_stat & BROKEN)
-			to_chat(user, "<span class='notice'>The broken glass falls out.</span>")
+			to_chat(user, SPAN_NOTICE("The broken glass falls out."))
 			new /obj/item/material/shard(src.loc)
 		else
-			to_chat(user, "<span class='notice'>You disconnect the monitor.</span>")
+			to_chat(user, SPAN_NOTICE("You disconnect the monitor."))
 		. = dismantle()
 
-/obj/machinery/proc/alarm_deconstruction_screwdriver(var/mob/user, var/obj/item/S)
-	if(!S.is_screwdriver())
-		return 0
-	playsound(src, S.usesound, 50, 1)
+/obj/machinery/proc/alarm_deconstruction_screwdriver(mob/user, obj/item/our_tool)
+	if(!our_tool.is_screwdriver())
+		return FALSE
+	playsound(src, our_tool.usesound, 50, TRUE)
 	panel_open = !panel_open
-	to_chat(user, "The wires have been [panel_open ? "exposed" : "unexposed"]")
-	update_appearance()
-	return 1
+	to_chat(user, SPAN_NOTICE("The wires have been [panel_open ? "exposed" : "unexposed"]"))
+	update_icon()
+	return TRUE
 
-/obj/machinery/proc/alarm_deconstruction_wirecutters(var/mob/user, var/obj/item/W)
-	if(!W.is_wirecutter())
-		return 0
+/obj/machinery/proc/alarm_deconstruction_wirecutters(mob/user, obj/item/our_tool)
+	if(!our_tool.is_wirecutter())
+		return FALSE
 	if(!panel_open)
-		return 0
-	user.visible_message("<span class='warning'>[user] has cut the wires inside \the [src]!</span>", "You have cut the wires inside \the [src].")
-	playsound(src.loc, W.usesound, 50, 1)
+		return FALSE
+	user.visible_message( \
+		SPAN_WARNING("[user] has cut the wires inside \the [src]!"), \
+		SPAN_NOTICE("You have cut the wires inside \the [src]."))
+	playsound(src.loc, our_tool.usesound, 50, TRUE)
 	new/obj/item/stack/cable_coil(get_turf(src), 5)
 	. = dismantle()
 
 /obj/machinery/proc/dismantle()
-	playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
-	//TFF 3/6/19 - port Cit RP fix of infinite frames. If it doesn't have a circuit board, don't create a frame. Return a smack instead. BONK!
+	playsound(src.loc, 'sound/items/Crowbar.ogg', 50, TRUE)
 	if(!circuit)
-		return 0
+		return FALSE
 	var/obj/structure/frame/A = new /obj/structure/frame(src.loc)
 	var/obj/item/circuitboard/M = circuit
 	A.circuit = M
-	A.anchored = 1
+	A.anchored = TRUE
 	A.frame_type = M.board_type
 	if(A.frame_type.circuit)
-		A.need_circuit = 0
+		A.need_circuit = FALSE
 
 	if(A.frame_type.frame_class == FRAME_CLASS_ALARM || A.frame_type.frame_class == FRAME_CLASS_DISPLAY)
-		A.density = 0
+		A.density = FALSE
 	else
-		A.density = 1
+		A.density = TRUE
 
 	if(A.frame_type.frame_class == FRAME_CLASS_MACHINE)
 		for(var/obj/D in component_parts)

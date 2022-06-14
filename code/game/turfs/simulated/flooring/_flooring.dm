@@ -69,6 +69,7 @@ var/list/flooring_types
 	//SMOOTH_GREYLIST: Objects only: Use both lists
 
 	//How we smooth with other flooring
+	var/decal_layer = DECAL_LAYER
 	var/floor_smooth = SMOOTH_NONE
 	var/list/flooring_whitelist = list() //Smooth with nothing except the contents of this list
 	var/list/flooring_blacklist = list() //Smooth with everything except the contents of this list
@@ -115,7 +116,7 @@ var/list/flooring_types
 /decl/flooring/proc/get_plating_type(var/turf/T)
 	return plating_type
 
-/decl/flooring/proc/get_flooring_overlay(var/cache_key, var/icon_base, var/icon_dir = 0, var/layer = BUILTIN_DECAL_LAYER)
+/decl/flooring/proc/get_flooring_overlay(var/cache_key, var/icon_base, var/icon_dir = 0, var/layer = AUTODECAL_LAYER)
 	if(!flooring_cache[cache_key])
 		var/image/I = image(icon = icon, icon_state = icon_base, dir = icon_dir)
 		I.layer = layer
@@ -138,6 +139,10 @@ var/list/flooring_types
 	damage_temperature = T0C+80
 	flags = TURF_HAS_EDGES | TURF_REMOVE_SHOVEL
 	build_type = /obj/item/stack/tile/grass
+	floor_smooth = SMOOTH_NONE
+	wall_smooth = SMOOTH_ALL
+	space_smooth = SMOOTH_NONE
+	decal_layer = ABOVE_WIRE_LAYER
 
 /decl/flooring/asteroid
 	name = "coarse sand"
@@ -205,6 +210,9 @@ var/list/flooring_types
 	build_type = /obj/item/stack/tile/carpet
 	damage_temperature = T0C+200
 	flags = TURF_HAS_EDGES | TURF_HAS_CORNERS | TURF_REMOVE_CROWBAR | TURF_CAN_BURN
+	floor_smooth = SMOOTH_NONE
+	wall_smooth = SMOOTH_NONE
+	space_smooth = SMOOTH_NONE
 	footstep_sounds = list("human" = list(
 		'sound/effects/footstep/carpet1.ogg',
 		'sound/effects/footstep/carpet2.ogg',
@@ -646,6 +654,7 @@ var/list/flooring_types
 		'sound/effects/footstep/asteroid2.ogg',
 		'sound/effects/footstep/asteroid3.ogg',
 		'sound/effects/footstep/asteroid4.ogg'))
+
 /turf/simulated/floor/tiled/freezer/cold
 	temperature = T0C - 5
 
@@ -676,3 +685,15 @@ var/list/flooring_types
 	damage_temperature = T0C+200
 	build_type = /obj/item/stack/tile/honeycomb
 	flags = TURF_CAN_BREAK | TURF_IS_FRAGILE | TURF_REMOVE_SCREWDRIVER
+
+/decl/flooring/pool
+	name = "pool floor"
+	desc = "Sunken flooring designed to hold liquids."
+	icon = 'icons/turf/flooring/pool.dmi'
+	icon_base = "pool"
+	build_type = /obj/item/stack/tile/pool
+	flags = TURF_HAS_CORNERS | TURF_HAS_INNER_CORNERS | TURF_REMOVE_CROWBAR
+	floor_smooth = SMOOTH_NONE
+	wall_smooth = SMOOTH_NONE
+	space_smooth = SMOOTH_NONE
+	height = -FLUID_OVER_MOB_HEAD * 2

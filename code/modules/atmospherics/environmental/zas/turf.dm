@@ -1,14 +1,12 @@
-/turf
-	var/needs_air_update = FALSE
+/turf/var/needs_air_update = FALSE
 
 /turf/proc/has_valid_zone()
 	return FALSE
 
-/turf/simulated
-	var/datum/zas_zone/zone
-	var/open_directions
-	/// Do we show gas overlays?
-	var/allow_gas_overlays = TRUE
+/turf/simulated/var/datum/zas_zone/zone
+/turf/simulated/var/open_directions
+/// Do we show gas overlays?
+/turf/simulated/var/allow_gas_overlays = TRUE
 
 /turf/simulated/has_valid_zone()
 	return zone && !zone.invalid

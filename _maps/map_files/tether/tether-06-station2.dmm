@@ -13286,7 +13286,7 @@
 /turf/simulated/open,
 /area/tether/exploration)
 "aWE" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 8
@@ -17695,7 +17695,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/surface_mining_outpost_shuttle_hangar)
 "hiV" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/structure/curtain/open/shower,
@@ -18256,7 +18256,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/station/visitorhallway/lounge)
 "iqM" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 10
 	},
 /turf/simulated/floor/tiled/white,
@@ -19681,7 +19681,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 31
 	},
 /turf/simulated/floor/tiled,
@@ -19816,7 +19816,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
 "kWk" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1;
 	pixel_y = -4
 	},
@@ -22041,7 +22041,7 @@
 	},
 /area/quartermaster/belterdock/gear)
 "paq" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 22
 	},
 /obj/structure/mirror{
@@ -22505,7 +22505,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/exploration)
 "pNu" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},

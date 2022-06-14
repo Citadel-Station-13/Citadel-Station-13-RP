@@ -29,7 +29,6 @@
 	if(!istype(start_loc))
 		qdel(src)
 		return
-
 	var/turf/simulated/T = start_loc
 	if(istype(T))
 		T.unwet_floor(FALSE)
@@ -53,15 +52,13 @@
 
 	if(fluid_amount > FLUID_OVER_MOB_HEAD)
 		layer = DEEP_FLUID_LAYER
-		plane = EFFECTS_BELOW_LIGHTING_PLANE
 	else
 		layer = SHALLOW_FLUID_LAYER
-		plane = HIDING_MOB_PLANE
 
 	if(fluid_amount > FLUID_DEEP)
 		alpha = FLUID_MAX_ALPHA
 	else
-		alpha = min(FLUID_MAX_ALPHA,max(FLUID_MIN_ALPHA,ceil(255*(fluid_amount/FLUID_DEEP))))
+		alpha = min(FLUID_MAX_ALPHA,max(FLUID_MIN_ALPHA,CEIL(255*(fluid_amount/FLUID_DEEP))))
 
 	if(fluid_amount > FLUID_DELETING && fluid_amount <= FLUID_EVAPORATION_POINT)
 		APPLY_FLUID_OVERLAY("shallow_still")
@@ -81,7 +78,7 @@
 
 	var/fluid_amount = FLUID_MAX_DEPTH
 
-/obj/effect/fluid_mapped/Initialize(mapload)
+/obj/effect/fluid_mapped/Initialize()
 	. = ..()
 	var/turf/T = get_turf(src)
 	if(istype(T))
@@ -107,6 +104,6 @@
 /obj/effect/flood/ex_act()
 	return
 
-/obj/effect/flood/Initialize(mapload)
-	. = ..()
+/obj/effect/flood/New()
+	..()
 	verbs.Cut()

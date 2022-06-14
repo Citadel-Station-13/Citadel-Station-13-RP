@@ -105,7 +105,7 @@
 /turf/simulated/floor/tiled,
 /area/class_d/Mountain)
 "qa" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 15
 	},
 /turf/simulated/floor/tiled/white,
@@ -172,7 +172,7 @@
 /area/class_d/Mountain)
 "As" = (
 /obj/structure/curtain/open/shower,
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 16
 	},
 /turf/simulated/floor/tiled/white,
@@ -368,7 +368,7 @@
 /turf/simulated/floor/classd/indoors,
 /area/class_d/explored)
 "Xh" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -15
 	},

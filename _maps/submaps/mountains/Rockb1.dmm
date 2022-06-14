@@ -173,7 +173,7 @@
 /turf/simulated/floor/tiled/hydro,
 /area/submap/Rockb1)
 "G" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,

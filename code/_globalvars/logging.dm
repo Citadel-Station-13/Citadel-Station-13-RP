@@ -43,3 +43,5 @@ GLOBAL_PROTECT(picture_logging_prefix)
 /// Intended to hold all logins that failed due to suspicious circumstances such as ban detection, CID randomisation etc.
 GLOBAL_VAR(world_suspicious_login_log)
 GLOBAL_PROTECT(world_suspicious_login_log)
+GLOBAL_VAR(world_mecha_log)
+GLOBAL_PROTECT(world_mecha_log)

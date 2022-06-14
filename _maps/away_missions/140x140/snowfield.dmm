@@ -509,7 +509,7 @@
 /obj/effect/floor_decal/corner/green/full{
 	dir = 8
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	icon_state = "sink";
 	dir = 8;
 	pixel_x = -12;
@@ -778,7 +778,7 @@
 /area/awaymission/snowfield/base)
 "cc" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal,
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/white,
@@ -825,7 +825,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snowfield/base)
 "cj" = (
-/obj/structure/toilet,
+/obj/structure/hygiene/toilet,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snowfield/base)
 "ck" = (
@@ -836,7 +836,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 3
 	},
 /turf/simulated/floor/tiled/white,
@@ -888,7 +888,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snowfield/base)
 "cr" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	icon_state = "sink";
 	dir = 8;
 	pixel_x = -12;

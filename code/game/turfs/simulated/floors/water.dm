@@ -30,7 +30,7 @@
 	..() // To get the edges.
 
 	icon_state = under_state // This isn't set at compile time in order for it to show as water in the map editor.
-	var/image/water_sprite = image(icon = 'icons/turf/outdoors.dmi', icon_state = water_state, layer = WATER_LAYER)
+	var/image/water_sprite = image(icon = 'icons/turf/outdoors.dmi', icon_state = water_state, layer = DEEP_FLUID_LAYER)
 	add_overlay(water_sprite)
 
 /turf/simulated/floor/water/attackby(obj/item/O as obj, mob/user as mob)
@@ -131,10 +131,6 @@
 		return T.depth
 	return 0
 
-// Use this to have things react to having water applied to them.
-/atom/movable/proc/water_act(amount)
-	return
-
 /mob/living/water_act(amount)
 	adjust_fire_stacks(-amount * 5)
 	for(var/atom/movable/AM in contents)
@@ -179,7 +175,7 @@ var/list/shoreline_icon_cache = list()
 		var/icon/shoreline_subtract = icon(src.icon, "[initial(icon_state)]_subtract", src.dir)
 		shoreline_water.Blend(shoreline_subtract,ICON_SUBTRACT)
 		var/image/final = image(shoreline_water)
-		final.layer = WATER_LAYER
+		final.layer = DEEP_FLUID_LAYER
 
 		shoreline_icon_cache[cache_string] = final
 		add_overlay(shoreline_icon_cache[cache_string])
@@ -221,7 +217,7 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 	..() // To get the edges.
 
 	icon_state = under_state // This isn't set at compile time in order for it to show as water in the map editor.
-	var/image/acid_sprite = image(icon = 'icons/turf/outdoors.dmi', icon_state = acid_state, layer = WATER_LAYER)
+	var/image/acid_sprite = image(icon = 'icons/turf/outdoors.dmi', icon_state = acid_state, layer = DEEP_FLUID_LAYER)
 	add_overlay(acid_sprite)
 
 /turf/simulated/floor/water/acid/return_air_for_internal_lifeform(var/mob/living/L)
@@ -332,7 +328,7 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 /turf/simulated/floor/water/blood/update_icon()
 	..()
 	icon_state = under_state // This isn't set at compile time in order for it to show as water in the map editor.
-	var/image/blood_sprite = image(icon = 'icons/turf/outdoors.dmi', icon_state = blood_state, layer = WATER_LAYER)
+	var/image/blood_sprite = image(icon = 'icons/turf/outdoors.dmi', icon_state = blood_state, layer = DEEP_FLUID_LAYER)
 	add_overlay(blood_sprite)
 
 /turf/simulated/floor/water/blood/return_air_for_internal_lifeform(var/mob/living/L)

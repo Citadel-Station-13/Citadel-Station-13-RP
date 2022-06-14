@@ -264,11 +264,6 @@
 		chassis.occupant_message("[icon2html(src, world)] [message]")
 	return
 
-/obj/item/mecha_parts/mecha_equipment/proc/log_message(message)
-	if(chassis)
-		chassis.log_message("<i>[src]:</i> [message]")
-	return
-
 ///Allows mech equipment to do an action upon the mech moving
 /obj/item/mecha_parts/mecha_equipment/proc/MoveAction()
 	return

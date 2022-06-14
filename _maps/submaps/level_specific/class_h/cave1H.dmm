@@ -26,7 +26,7 @@
 /turf/simulated/mineral/floor/classh,
 /area/class_h/explored)
 "D" = (
-/obj/structure/sink/puddle,
+/obj/structure/hygiene/sink/puddle,
 /turf/simulated/mineral/floor/classh,
 /area/class_h/explored)
 "E" = (

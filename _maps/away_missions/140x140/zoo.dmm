@@ -447,7 +447,7 @@
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "bt" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 2
 	},
 /obj/effect/floor_decal/corner/beige{
@@ -1500,14 +1500,14 @@
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
 "et" = (
-/obj/structure/toilet,
+/obj/structure/hygiene/toilet,
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
 "eu" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	icon_state = "sink";
 	dir = 8;
 	pixel_x = -12;
@@ -1525,7 +1525,7 @@
 /area/awaymission/zoo/tradeship)
 "ew" = (
 /obj/structure/curtain/open/shower,
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 3
 	},
 /turf/simulated/shuttle/floor/black,
@@ -2298,7 +2298,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/zoo/pirateship)
 "gM" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/machinery/light/small{
@@ -2343,7 +2343,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/zoo/pirateship)
 "gW" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	icon_state = "sink";
 	dir = 8;
 	pixel_x = -12;
@@ -2726,7 +2726,7 @@
 /turf/simulated/shuttle/floor/darkred,
 /area/awaymission/zoo/syndieship)
 "hM" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/darkred,
@@ -3264,7 +3264,7 @@
 /turf/simulated/shuttle/floor/darkred,
 /area/awaymission/zoo/syndieship)
 "iP" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	icon_state = "sink";
 	pixel_x = 11;
@@ -3818,7 +3818,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/zoo)
 "kf" = (
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/white,
@@ -4010,13 +4010,13 @@
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "kN" = (
-/obj/structure/urinal{
+/obj/structure/hygiene/urinal{
 	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo)
 "kO" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	icon_state = "sink";
 	pixel_x = 11;
@@ -4029,7 +4029,7 @@
 /turf/simulated/wall,
 /area/awaymission/zoo)
 "kQ" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	icon_state = "sink";
 	dir = 8;
 	pixel_x = -12;
@@ -4044,7 +4044,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo)
 "kS" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -4266,7 +4266,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/zoo)
 "lB" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /atom/movable/landmark/away,
@@ -4441,7 +4441,7 @@
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "md" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -7409,7 +7409,7 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "tt" = (
-/obj/structure/sink/puddle,
+/obj/structure/hygiene/sink/puddle,
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "tu" = (
@@ -7862,7 +7862,7 @@
 	},
 /area/awaymission/zoo)
 "ux" = (
-/obj/structure/sink/puddle,
+/obj/structure/hygiene/sink/puddle,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass0"
 	},

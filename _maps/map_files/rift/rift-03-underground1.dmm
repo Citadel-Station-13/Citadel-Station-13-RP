@@ -612,7 +612,7 @@
 /turf/simulated/wall,
 /area/hallway/primary/underone)
 "bB" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 18
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -764,7 +764,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "bN" = (
-/obj/structure/toilet,
+/obj/structure/hygiene/toilet,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 5
 	},
@@ -933,7 +933,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "cg" = (
-/obj/structure/toilet,
+/obj/structure/hygiene/toilet,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
 	},
@@ -980,7 +980,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "ck" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 18
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -4065,7 +4065,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_balcony)
 "hu" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 18
 	},
 /obj/structure/mirror{
@@ -8204,7 +8204,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12
 	},
@@ -8273,7 +8273,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/chief)
 "oL" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/structure/curtain/open/shower/engineering,
@@ -9767,7 +9767,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/chief)
 "qS" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -13130,7 +13130,7 @@
 /area/engineering/engineering_monitoring)
 "Jj" = (
 /obj/effect/floor_decal/rust,
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -14584,7 +14584,7 @@
 /area/rift/station/fighter_bay/hangar)
 "UN" = (
 /obj/effect/floor_decal/rust,
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2

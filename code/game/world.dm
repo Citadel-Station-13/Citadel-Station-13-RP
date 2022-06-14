@@ -141,13 +141,31 @@ GLOBAL_LIST(topic_status_cache)
 		GLOB.picture_log_directory = "data/picture_logs/[override_dir]"
 
 	GLOB.world_game_log = "[GLOB.log_directory]/game.log"
+	// GLOB.world_silicon_log = "[GLOB.log_directory]/silicon.log"
+	// GLOB.world_tool_log = "[GLOB.log_directory]/tools.log"
+	GLOB.world_suspicious_login_log = "[GLOB.log_directory]/suspicious_logins.log"
+	GLOB.world_mecha_log = "[GLOB.log_directory]/mecha.log"
+	// GLOB.world_virus_log = "[GLOB.log_directory]/virus.log"
+	// GLOB.world_cloning_log = "[GLOB.log_directory]/cloning.log"
 	GLOB.world_asset_log = "[GLOB.log_directory]/asset.log"
 	GLOB.world_attack_log = "[GLOB.log_directory]/attack.log"
+	// GLOB.world_econ_log = "[GLOB.log_directory]/econ.log"
+	// GLOB.world_pda_log = "[GLOB.log_directory]/pda.log"
+	// GLOB.world_uplink_log = "[GLOB.log_directory]/uplink.log"
+	// GLOB.world_telecomms_log = "[GLOB.log_directory]/telecomms.log"
+	// GLOB.world_manifest_log = "[GLOB.log_directory]/manifest.log"
 	GLOB.world_href_log = "[GLOB.log_directory]/hrefs.log"
 	GLOB.world_qdel_log = "[GLOB.log_directory]/qdel.log"
+	// GLOB.world_mob_tag_log = "[GLOB.log_directory]/mob_tags.log"
+	// GLOB.sql_error_log = "[GLOB.log_directory]/sql.log"
 	GLOB.world_map_error_log = "[GLOB.log_directory]/map_errors.log"
 	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
+	// GLOB.query_debug_log = "[GLOB.log_directory]/query_debug.log"
+	// GLOB.world_job_debug_log = "[GLOB.log_directory]/job_debug.log"
+	// GLOB.world_paper_log = "[GLOB.log_directory]/paper.log"
 	GLOB.tgui_log = "[GLOB.log_directory]/tgui.log"
+	// GLOB.world_shuttle_log = "[GLOB.log_directory]/shuttle.log"
+	// GLOB.filter_log = "[GLOB.log_directory]/filters.log"
 	GLOB.subsystem_log = "[GLOB.log_directory]/subsystem.log"
 
 #ifdef UNIT_TESTS
@@ -156,11 +174,18 @@ GLOBAL_LIST(topic_status_cache)
 #endif
 	start_log(GLOB.world_game_log)
 	start_log(GLOB.world_attack_log)
+	// start_log(GLOB.world_econ_log)
+	// start_log(GLOB.world_pda_log)
+	// start_log(GLOB.world_uplink_log)
+	// start_log(GLOB.world_telecomms_log)
+	// start_log(GLOB.world_manifest_log)
 	start_log(GLOB.world_href_log)
 	start_log(GLOB.world_qdel_log)
-	start_log(GLOB.world_map_error_log)
+	// start_log(GLOB.world_mob_tag_log)
 	start_log(GLOB.world_runtime_log)
+	// start_log(GLOB.world_job_debug_log)
 	start_log(GLOB.tgui_log)
+	// start_log(GLOB.world_shuttle_log)
 	start_log(GLOB.subsystem_log)
 
 	var/latest_changelog = file("[global.config.directory]/../html/changelogs/archive/" + time2text(world.timeofday, "YYYY-MM") + ".yml")
@@ -544,4 +569,3 @@ proc/establish_old_db_connection()
 	fdel("data/logs/world_init_temporary.log")
 #endif
 //! END
-

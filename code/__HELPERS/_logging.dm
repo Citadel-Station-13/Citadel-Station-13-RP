@@ -75,6 +75,66 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 #define log_reftracker(msg)
 #endif
 
+/**
+ * Generic logging helper
+ *
+ * reads the type of the log
+ * and writes it to the respective log file
+ * unless log_globally is FALSE
+ * Arguments:
+ * * message - The message being logged
+ * * message_type - the type of log the message is(ATTACK, SAY, etc)
+ * * color - color of the log text
+ * * log_globally - boolean checking whether or not we write this log to the log file
+ */
+/atom/proc/log_message(message, message_type, color = null, log_globally = TRUE)
+	if(!log_globally)
+		return
+
+	var/log_text = "[key_name(src)] [message] [loc_name(src)]"
+	switch(message_type)
+		if(LOG_ATTACK)
+			log_attack(log_text)
+		if(LOG_SAY)
+			log_say(log_text)
+		if(LOG_WHISPER)
+			log_whisper(log_text)
+		if(LOG_EMOTE)
+			log_emote(log_text)
+		// if(LOG_RADIO_EMOTE)
+		// 	log_radio_emote(log_text)
+		if(LOG_DSAY)
+			log_dsay(log_text)
+		if(LOG_PDA)
+			log_pda(log_text)
+		// if(LOG_CHAT)
+		// 	log_chat(log_text)
+		// if(LOG_COMMENT)
+		// 	log_comment(log_text)
+		// if(LOG_TELECOMMS)
+		// 	log_telecomms(log_text)
+		// if(LOG_ECON)
+		// 	log_econ(log_text)
+		if(LOG_OOC)
+			log_ooc(log_text)
+		if(LOG_ADMIN)
+			log_admin(log_text)
+		if(LOG_ADMIN_PRIVATE)
+			log_admin_private(log_text)
+		if(LOG_ASAY)
+			log_adminsay(log_text)
+		if(LOG_OWNERSHIP)
+			log_game(log_text)
+		if(LOG_GAME)
+			log_game(log_text)
+		if(LOG_MECHA)
+			log_mecha(log_text)
+		if(LOG_SHUTTLE)
+			log_shuttle(log_text)
+		else
+			stack_trace("Invalid individual logging type: [message_type]. Defaulting to [LOG_GAME] (LOG_GAME).")
+			log_game(log_text)
+
 /* Items with ADMINPRIVATE prefixed are stripped from public logs. */
 /proc/log_admin(text)
 	admin_log.Add(text)
@@ -141,6 +201,11 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 	if(speaker.client)
 		speaker.dialogue_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>SAY:</u> - <span style='color:#32cd32'>[text]</span>"
 		GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>SAY:</u> - <span style='color:#32cd32'>[text]</span>"
+
+/// Logging for DeachatSay (DSAY) messages
+/proc/log_dsay(text)
+	if (CONFIG_GET(flag/log_adminchat))
+		WRITE_LOG(GLOB.world_game_log, "ADMIN: DSAY: [text]")
 
 /proc/log_ooc(text, client/user)
 	if (config_legacy.log_ooc)

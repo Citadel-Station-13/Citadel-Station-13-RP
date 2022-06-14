@@ -118,7 +118,7 @@
 	},
 /area/syndicate_mothership)
 "av" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/red,
@@ -139,7 +139,7 @@
 /turf/simulated/shuttle/floor,
 /area/syndicate_mothership)
 "az" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -151,7 +151,7 @@
 /area/syndicate_mothership)
 "aA" = (
 /obj/structure/curtain/open/shower,
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 3
 	},
 /turf/simulated/shuttle/floor,
@@ -862,14 +862,14 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "cg" = (
-/obj/structure/toilet,
+/obj/structure/hygiene/toilet,
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/trade)
 "ch" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -885,7 +885,7 @@
 /area/shuttle/trade)
 "cj" = (
 /obj/structure/curtain/open/shower,
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 3
 	},
 /turf/simulated/shuttle/floor/white,

@@ -1164,7 +1164,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Am" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/structure/curtain/open/shower,

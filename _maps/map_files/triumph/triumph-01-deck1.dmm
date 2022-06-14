@@ -1078,7 +1078,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
 "dQ" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 22
 	},
 /turf/simulated/floor/wood,
@@ -1158,7 +1158,7 @@
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/heads/chief)
 "ea" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4
 	},
 /obj/machinery/light/small,
@@ -2788,7 +2788,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 10
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/structure/window/reinforced{
@@ -2853,7 +2853,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/hallway/lower)
 "jQ" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4
 	},
 /obj/machinery/light/small{
@@ -5620,7 +5620,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 8;
 	name = "emergency shower"
 	},
@@ -5979,7 +5979,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 10
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/structure/window/reinforced{
@@ -8766,7 +8766,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "Ex" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 22
 	},
 /obj/structure/mirror{
@@ -9942,7 +9942,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 8;
 	name = "emergency shower"
 	},
@@ -10554,7 +10554,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway/lower)
 "Kg" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 22
 	},
 /obj/structure/mirror{

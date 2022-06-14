@@ -204,7 +204,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "aU" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/item/soap/syndie,
@@ -985,7 +985,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "ex" = (
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	pixel_y = 28
 	},
 /obj/effect/floor_decal/techfloor{
@@ -1583,7 +1583,7 @@
 /turf/simulated/floor/wood,
 /area/ship/manta/commander)
 "hL" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/freezer,
@@ -1927,7 +1927,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "iW" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -5307,7 +5307,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "yE" = (
-/obj/structure/toilet,
+/obj/structure/hygiene/toilet,
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
@@ -5383,7 +5383,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/dock_star)
 "yV" = (
-/obj/structure/toilet,
+/obj/structure/hygiene/toilet,
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/techfloor{
 	dir = 5
@@ -8327,7 +8327,7 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 4
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/item/soap/syndie,
@@ -8436,7 +8436,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "OL" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor{
@@ -10645,7 +10645,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "ZF" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 12;
 	pixel_y = 8

@@ -708,7 +708,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/Blackshuttledown)
 "ci" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/hydro,

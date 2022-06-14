@@ -45,6 +45,10 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 // Creates a new turf
 // new_baseturfs can be either a single type or list of types, formated the same as baseturfs. see turf.dm
 /turf/proc/ChangeTurf(path, list/new_baseturfs, flags)
+
+	if(isturf(src) && !flooded && flood_object)
+		QDEL_NULL(flood_object)
+
 	switch(path)
 		if(null)
 			return
@@ -96,6 +100,10 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	var/old_outdoors = outdoors
 	var/old_dangerous_objects = dangerous_objects
 
+	// store flood info
+	// var/old_flooded = flooded
+	// var/old_flood_object = flood_object
+
 	// prep for change
 	var/list/old_baseturfs = baseturfs
 	var/old_type = type
@@ -139,6 +147,12 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	if(old_fire)
 		fire = old_fire
 	queue_zone_update()
+
+	// restore flood details
+	// if(old_flood_object && !old_flooded)
+	// 	qdel(old_flood_object)
+	// else
+	// 	flood_object = old_flood_object
 
 	// restore lighting
 	if(SSlighting.initialized)

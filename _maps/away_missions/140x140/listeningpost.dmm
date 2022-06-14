@@ -226,14 +226,14 @@
 /turf/simulated/floor/tiled/freezer,
 /area/awaymission/listeningpost)
 "I" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	icon_state = "shower";
 	dir = 8
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/awaymission/listeningpost)
 "J" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	icon_state = "toilet00";
 	dir = 8
 	},

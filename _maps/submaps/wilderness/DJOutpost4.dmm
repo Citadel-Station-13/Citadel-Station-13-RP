@@ -320,7 +320,7 @@
 /turf/simulated/wall/rpshull,
 /area/submap/DJOutpost1)
 "aX" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 15
 	},

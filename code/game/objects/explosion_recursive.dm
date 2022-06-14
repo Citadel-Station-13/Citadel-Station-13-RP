@@ -3,8 +3,7 @@
 	var/turf/T = get_turf(src.mob)
 	explosion_rec(T, power)
 
-/obj
-	var/explosion_resistance
+/obj/var/explosion_resistance
 
 
 
@@ -61,34 +60,18 @@ proc/explosion_rec(turf/epicenter, power)
 
 	explosion_in_progress = 0
 
-/turf
-	var/explosion_resistance
+/turf/var/explosion_resistance
 
-/turf/space
-	explosion_resistance = 3
-
-/turf/simulated/floor
-	explosion_resistance = 1
-
-/turf/simulated/mineral
-	explosion_resistance = 2
-	outdoors = TRUE // for weather
-	edge_blending_priority = 3
-
-/turf/simulated/shuttle/floor
-	explosion_resistance = 1
-
-/turf/simulated/shuttle/floor4
-	explosion_resistance = 1
-
-/turf/simulated/shuttle/plating
-	explosion_resistance = 1
-
-/turf/simulated/shuttle/wall
-	explosion_resistance = 10
-
-/turf/simulated/wall
-	explosion_resistance = 10
+/turf/space/explosion_resistance = 3
+/turf/simulated/wall/explosion_resistance = 10
+/turf/simulated/floor/explosion_resistance = 1
+/turf/simulated/mineral/explosion_resistance = 2
+/turf/simulated/mineral/outdoors = TRUE // for weather
+/turf/simulated/mineral/edge_blending_priority = 3
+/turf/simulated/shuttle/floor/explosion_resistance = 1
+/turf/simulated/shuttle/floor4/explosion_resistance = 1
+/turf/simulated/shuttle/plating/explosion_resistance = 1
+/turf/simulated/shuttle/wall/explosion_resistance = 10
 
 //Code-wise, a safe value for power is something up to ~25 or ~30.. This does quite a bit of damage to the station.
 //direction is the direction that the spread took to come to this tile. So it is pointing in the main blast direction - meaning where this tile should spread most of it's force.

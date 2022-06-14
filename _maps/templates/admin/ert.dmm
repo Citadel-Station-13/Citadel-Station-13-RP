@@ -1998,7 +1998,7 @@
 /area/ship/ert/barracks)
 "pb" = (
 /obj/structure/medical_stand,
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 12;
 	pixel_y = 8
@@ -5410,7 +5410,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/engineering)
 "MC" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 12;
 	pixel_y = 8

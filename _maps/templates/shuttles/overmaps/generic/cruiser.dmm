@@ -528,7 +528,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/hydroponics)
 "bq" = (
-/obj/structure/sink/kitchen,
+/obj/structure/hygiene/sink/kitchen,
 /turf/simulated/wall/rpshull,
 /area/mothership/hydroponics)
 "br" = (
@@ -585,7 +585,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/hydroponics)
 "bv" = (
-/obj/structure/sink/kitchen,
+/obj/structure/hygiene/sink/kitchen,
 /turf/simulated/wall/rpshull,
 /area/mothership/kitchen)
 "bw" = (
@@ -1435,7 +1435,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/bathroom1)
 "dh" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 32
 	},
 /obj/structure/cable/cyan{
@@ -1581,7 +1581,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/mothership/bathroom2)
 "dp" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 32
 	},
 /obj/structure/cable/cyan{
@@ -1610,7 +1610,7 @@
 /turf/simulated/wall/rpshull,
 /area/mothership/bathroom2)
 "dt" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 4;
 	pixel_x = 2
 	},
@@ -1632,7 +1632,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/bathroom1)
 "dv" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /obj/machinery/power/apc{
@@ -1711,7 +1711,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "dG" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /obj/machinery/power/apc{
@@ -1740,7 +1740,7 @@
 /obj/machinery/door/window/survival_pod{
 	dir = 8
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 8;
 	pixel_x = 2
 	},
@@ -2713,7 +2713,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 12;
 	pixel_y = 8
@@ -3983,7 +3983,7 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/treatment)
 "iu" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 12;
 	pixel_y = 8

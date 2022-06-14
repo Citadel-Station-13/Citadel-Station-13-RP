@@ -244,7 +244,7 @@
 /obj/item/reagent_containers/food/drinks/shaker,
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/glass/rag,
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	pixel_y = 28
 	},
 /obj/machinery/camera/network/civilian{
@@ -521,7 +521,7 @@
 /area/hallway/secondary/docking_hallway2)
 "aS" = (
 /atom/movable/landmark/spawnpoint/job/bartender,
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	dir = 4;
 	pixel_x = -15
 	},
@@ -851,7 +851,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/general)
 "bo" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -2541,7 +2541,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "ef" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/structure/window/reinforced/tinted/frosted{
@@ -2636,7 +2636,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacethree)
 "em" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -5287,11 +5287,11 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 8
 	},
 /obj/structure/curtain/open/shower,
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloorblack/full,
@@ -6388,7 +6388,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/exploration/excursion_dock)
 "kO" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -8139,7 +8139,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
 "nT" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -9561,7 +9561,7 @@
 	dir = 8
 	},
 /obj/structure/curtain/open/shower,
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 13
 	},
 /obj/effect/floor_decal/borderfloorblack/full,
@@ -11823,7 +11823,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_three)
 "uX" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 4
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -12081,7 +12081,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/ai)
 "vw" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -12330,7 +12330,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "vV" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -12447,7 +12447,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals/secondary)
 "wf" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 12
 	},
@@ -12754,7 +12754,7 @@
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 4
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -12909,7 +12909,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "wS" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -13025,7 +13025,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "xb" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -14263,7 +14263,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "zt" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 8
 	},
 /obj/structure/curtain/open/shower,
@@ -14344,7 +14344,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/pumpstation)
 "zC" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -15225,7 +15225,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/primary/surfacethree)
 "Bg" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4
 	},
 /obj/machinery/light/small{
@@ -16339,7 +16339,7 @@
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/emt/general)
 "Dn" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/machinery/button/remote/airlock{
@@ -16771,7 +16771,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	pixel_y = 28
 	},
 /turf/simulated/floor/tiled/white,
@@ -18063,7 +18063,7 @@
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "GG" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 9
 	},
 /obj/machinery/light/small{
@@ -19097,7 +19097,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfacethree)
 "IE" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/structure/curtain/open/shower,
@@ -19885,7 +19885,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hop)
 "Ka" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 18
 	},
 /obj/structure/curtain/open/shower,
@@ -20685,7 +20685,7 @@
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/shuttle)
 "LE" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -21223,7 +21223,7 @@
 /turf/simulated/floor/carpet/blue,
 /area/bridge/meeting_room)
 "MC" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/machinery/button/remote/airlock{
@@ -25289,7 +25289,7 @@
 	dir = 4;
 	pixel_x = -25
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12
 	},
@@ -25522,7 +25522,7 @@
 	dir = 4;
 	pixel_x = -25
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12
 	},
@@ -25861,7 +25861,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hydroponics)
 "Vg" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 12
 	},
@@ -26532,7 +26532,7 @@
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 1
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 12
 	},
@@ -27482,7 +27482,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "Yk" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 18
 	},
 /obj/structure/mirror{
@@ -27656,7 +27656,7 @@
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/shuttle)
 "YE" = (
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	pixel_y = 28
 	},
 /obj/item/reagent_containers/glass/bucket/wood,

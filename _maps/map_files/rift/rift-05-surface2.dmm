@@ -15,7 +15,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 4
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 12
 	},
@@ -903,7 +903,7 @@
 /area/hallway/primary/surfacetwo)
 "bJ" = (
 /obj/machinery/light/small,
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
@@ -2128,7 +2128,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	dir = 8;
 	pixel_x = 12
 	},
@@ -2755,7 +2755,7 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 6
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 12
 	},
@@ -3726,7 +3726,7 @@
 /obj/effect/floor_decal/corner/purple/bordercorner2{
 	dir = 4
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/steel,
@@ -6080,7 +6080,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -6222,7 +6222,7 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/rnd/breakroom)
 "lc" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/vomit{
@@ -6549,7 +6549,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/structure/curtain/open/shower/security,
@@ -9039,7 +9039,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12
 	},
@@ -9760,7 +9760,7 @@
 	dir = 1;
 	pixel_y = 34
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 12
 	},
@@ -10288,7 +10288,7 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 5
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 12
 	},
@@ -11199,7 +11199,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/research/researchdivision)
 "uk" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 17
 	},
 /obj/structure/curtain/open/shower/security,
@@ -11353,7 +11353,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12
 	},
@@ -11475,7 +11475,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 8
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -11710,7 +11710,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "vf" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 18
 	},
 /obj/structure/mirror{
@@ -12103,7 +12103,7 @@
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 4
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -12231,7 +12231,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker)
 "wd" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 9
 	},
 /obj/machinery/light/small{
@@ -13218,7 +13218,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "ye" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 18
 	},
 /obj/structure/mirror{
@@ -13588,7 +13588,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 4
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -13836,7 +13836,7 @@
 /turf/simulated/wall,
 /area/crew_quarters/locker)
 "zp" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -14113,7 +14113,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/assembly/robotics)
 "zS" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 9
 	},
 /turf/simulated/floor/tiled/steel_dirty,
@@ -16705,7 +16705,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/sleep)
 "Eo" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 18
 	},
 /obj/structure/mirror{
@@ -17057,7 +17057,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
 "EQ" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 17
 	},
 /obj/structure/curtain/open/shower/security,
@@ -18384,7 +18384,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacetwo)
 "GZ" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 9
 	},
 /turf/simulated/floor/tiled/white,
@@ -18535,7 +18535,7 @@
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 1
 	},
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -18640,7 +18640,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
 "Hx" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 18
 	},
 /obj/structure/mirror{
@@ -19039,7 +19039,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hos)
 "Ik" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -19610,7 +19610,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/researchdivision)
 "Jh" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 9
 	},
 /turf/simulated/floor/tiled/white,
@@ -20275,7 +20275,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "Kr" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12
 	},
@@ -20326,7 +20326,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "Kw" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/steel,
@@ -20608,7 +20608,7 @@
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 8
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -21130,7 +21130,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research)
 "LR" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 18
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -21583,7 +21583,7 @@
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 4
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -22033,7 +22033,7 @@
 /turf/simulated/wall/r_wall,
 /area/security/warden)
 "Nu" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -23129,7 +23129,7 @@
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 8
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -24003,7 +24003,7 @@
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 4
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -24044,7 +24044,7 @@
 	dir = 4
 	},
 /obj/machinery/light,
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -24453,7 +24453,7 @@
 /turf/simulated/floor/plating,
 /area/medical/resleeving)
 "RQ" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 9
 	},
 /turf/simulated/floor/tiled/white,
@@ -24735,7 +24735,7 @@
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "Sp" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 9
 	},
 /turf/simulated/floor/tiled/white,
@@ -24882,7 +24882,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "SC" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 18
 	},
 /obj/structure/mirror{
@@ -25352,7 +25352,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/hallway)
 "Tt" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 9
 	},
 /turf/simulated/floor/tiled/white,
@@ -25844,7 +25844,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 8
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -25867,7 +25867,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/medical/sleeper)
 "Ur" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 18
 	},
 /obj/structure/mirror{
@@ -26028,7 +26028,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/brig)
 "UF" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 9
 	},
 /turf/simulated/floor/tiled/white,
@@ -26067,7 +26067,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "UI" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	desc = "The HT-42069 HEPHAESTUS is a toilet reinforced with durasteel applique armor to handle the toughest shit.";
 	name = "TACTICAL TOILET";
 	pixel_y = 9
@@ -26518,7 +26518,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/interrogation)
 "VA" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /obj/machinery/button/remote/blast_door{
@@ -26657,7 +26657,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/assembly/robotics)
 "VK" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 12
 	},
@@ -27157,7 +27157,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery_hallway)
 "WF" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 18
 	},
 /obj/structure/mirror{
@@ -27379,13 +27379,13 @@
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 8
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_4)
 "Xb" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 18
 	},
 /obj/structure/mirror{
@@ -27631,7 +27631,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/rnd)
 "Xu" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -27889,7 +27889,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker)
 "XT" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 9
 	},
 /turf/simulated/floor/tiled/white,
@@ -28201,7 +28201,7 @@
 /turf/simulated/floor/plating,
 /area/security/lobby)
 "Yu" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -29015,7 +29015,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker)
 "ZL" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 17
 	},
 /obj/structure/curtain/open/privacy,

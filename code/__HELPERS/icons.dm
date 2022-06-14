@@ -1095,7 +1095,7 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 //Lame.
 /image/proc/setDir(newdir)
 	dir = newdir
-/*
+
 GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0,0,0)))
 
 /obj/proc/make_frozen_visual()
@@ -1115,7 +1115,7 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 		remove_atom_colour(TEMPORARY_COLOUR_PRIORITY, GLOB.freon_color_matrix)
 		alpha += 25
 		obj_flags &= ~FROZEN
-*/
+
 
 /// Generate a filename for this asset
 /// The same asset will always lead to the same asset name

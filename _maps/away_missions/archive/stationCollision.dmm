@@ -639,7 +639,7 @@
 /turf/simulated/floor,
 /area/awaymission/northblock)
 "db" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 4
 	},
 /obj/structure/window/reinforced/tinted,
@@ -811,7 +811,7 @@
 /turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "dC" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 4;
 	pixel_y = -10
 	},
@@ -1953,7 +1953,7 @@
 /turf/simulated/floor/airless,
 /area/awaymission/midblock)
 "hE" = (
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	pixel_y = 32
 	},
 /turf/simulated/floor,
@@ -2358,7 +2358,7 @@
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "iR" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4
 	},
 /turf/simulated/floor/airless,
@@ -2905,7 +2905,7 @@
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "kM" = (
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	pixel_y = 32
 	},
 /turf/simulated/floor,
@@ -3153,7 +3153,7 @@
 /turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "lI" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 32
 	},
 /turf/simulated/floor/airless,

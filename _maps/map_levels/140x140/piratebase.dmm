@@ -47,7 +47,7 @@
 /turf/simulated/floor/reinforced,
 /area/piratebase/facility)
 "bW" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 18
 	},
 /turf/simulated/floor/reinforced,
@@ -67,7 +67,7 @@
 /turf/space,
 /area/space)
 "cM" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 23
 	},
 /turf/simulated/floor/reinforced,
@@ -169,7 +169,7 @@
 /turf/simulated/floor/reinforced,
 /area/piratebase/facility)
 "hX" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 18
 	},
 /obj/machinery/light{
@@ -194,7 +194,7 @@
 /turf/simulated/floor/reinforced,
 /area/piratebase/facility)
 "ip" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 16
 	},
 /obj/machinery/light{
@@ -418,7 +418,7 @@
 /turf/space,
 /area/space)
 "ud" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 16
 	},
 /turf/simulated/floor/reinforced,
@@ -497,7 +497,7 @@
 /turf/simulated/floor/reinforced,
 /area/piratebase/facility)
 "wN" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 16
 	},
 /obj/machinery/light{
@@ -953,7 +953,7 @@
 /turf/simulated/floor/reinforced,
 /area/piratebase/facility)
 "QK" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 23
 	},
 /mob/living/simple_mob/humanoid/merc/voxpirate/pirate,

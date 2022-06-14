@@ -663,7 +663,7 @@
 	},
 /area/awaymission/BMPship2)
 "cF" = (
-/obj/structure/sink,
+/obj/structure/hygiene/sink,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/BMPship2)
 "cG" = (
@@ -2208,7 +2208,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/BMPship1)
 "iv" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/machinery/light/small{
@@ -2236,7 +2236,7 @@
 /turf/simulated/floor,
 /area/awaymission/BMPship1)
 "iA" = (
-/obj/structure/sink,
+/obj/structure/hygiene/sink,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/BMPship1)
 "iB" = (

@@ -19,7 +19,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "be" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 10
 	},
 /obj/machinery/light/small{
@@ -465,7 +465,7 @@
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/dungeon/exterior)
 "vx" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -558,7 +558,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "yD" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -873,7 +873,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "Nq" = (
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	dir = 4;
 	pixel_x = -11
 	},
@@ -1145,7 +1145,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "XG" = (
-/obj/structure/urinal{
+/obj/structure/hygiene/urinal{
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,

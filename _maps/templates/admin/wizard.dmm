@@ -30,7 +30,7 @@
 	},
 /area/wizard_station)
 "af" = (
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	pixel_y = 28
 	},
 /turf/unsimulated/floor{

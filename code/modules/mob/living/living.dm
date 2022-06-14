@@ -632,6 +632,13 @@ default behaviour is:
 	return
 
 
+//TODO: Update rejuvenate() to fully_heal
+//proc used to completely heal a mob.
+//admin_revive = TRUE is used in other procs, for example mob/living/carbon/fully_heal()
+/mob/living/proc/fully_heal(admin_revive = FALSE)
+	rejuvenate()
+	stop_sound_channel(CHANNEL_HEARTBEAT)
+	SEND_SIGNAL(src, COMSIG_LIVING_POST_FULLY_HEAL, admin_revive)
 
 /mob/living/proc/revive()
 	rejuvenate()

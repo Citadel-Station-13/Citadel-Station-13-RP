@@ -118,7 +118,7 @@
 /turf/simulated/floor/tiled/old_tile,
 /area/lavaland/central/base/common)
 "dX" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -1629,7 +1629,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "EX" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile,
@@ -1868,7 +1868,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/lavaland/central/base/common)
 "Jx" = (
-/obj/structure/urinal{
+/obj/structure/hygiene/urinal{
 	pixel_y = 31
 	},
 /obj/machinery/light/small{
@@ -1910,7 +1910,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "JR" = (
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	dir = 4;
 	pixel_x = -11
 	},
@@ -2672,7 +2672,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "Zg" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -2716,7 +2716,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "ZJ" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2

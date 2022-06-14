@@ -195,7 +195,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/Lab1)
 "H" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	icon_state = "sink";
 	pixel_x = 11;

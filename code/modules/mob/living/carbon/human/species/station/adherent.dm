@@ -7,7 +7,7 @@
 	whose home system and burgeoning stellar empire was scoured to bedrock by a solar flare. \
 	Physically, they are large, floating squidlike machines made of a crystalline composite."
 //	hidden_from_codex = FALSE
-//	silent_steps = TRUE
+	// silent_steps = TRUE
 
 	meat_type = null
 //	bone_material = null

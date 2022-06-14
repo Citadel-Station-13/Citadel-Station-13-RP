@@ -64,7 +64,7 @@
 	dir = 1;
 	pixel_y = -32
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = -18
 	},
 /turf/simulated/floor/tiled/steel_dirty,
@@ -85,7 +85,7 @@
 	dir = 1;
 	pixel_y = -32
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = -18
 	},
 /obj/random/trash,
@@ -98,7 +98,7 @@
 /turf/simulated/shuttle/wall/voidcraft,
 /area/rift/facility/interior/elevator)
 "jd" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 9
 	},
 /obj/random/trash,
@@ -128,7 +128,7 @@
 /obj/structure/mirror/long/broke{
 	pixel_y = -32
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = -18
 	},
 /turf/simulated/floor/tiled/steel_dirty,
@@ -565,7 +565,7 @@
 /turf/simulated/floor/lythios43c,
 /area/rift/facility/interior/medical)
 "Vb" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 9
 	},
 /obj/random/trash,
@@ -583,7 +583,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/workroom)
 "WL" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 9
 	},
 /obj/machinery/light/small{

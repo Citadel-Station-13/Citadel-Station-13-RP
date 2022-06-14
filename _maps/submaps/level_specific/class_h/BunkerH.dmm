@@ -146,7 +146,7 @@
 /obj/structure/mirror/long{
 	pixel_y = 32
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 22
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -304,7 +304,7 @@
 /obj/structure/mirror/long/left{
 	pixel_y = 32
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 22
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -377,7 +377,7 @@
 /turf/simulated/mineral/ignore_mapgen/classh,
 /area/class_h/explored)
 "FA" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -441,7 +441,7 @@
 /obj/structure/mirror/long/right{
 	pixel_y = 32
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 22
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -580,7 +580,7 @@
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/vault)
 "SM" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,

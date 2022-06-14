@@ -57,8 +57,7 @@
 			. += "<span class='notice'>There is a thick layer of silicate covering it.</span>"
 
 /obj/structure/window/CanFluidPass(coming_from)
-	return (!is_full_window() && coming_from != dir)
-
+	return (!is_fulltile() && coming_from != dir)
 
 /obj/structure/window/take_damage(damage = 0, sound_effect = 1)
 	var/initialhealth = health

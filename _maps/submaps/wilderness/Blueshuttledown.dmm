@@ -486,7 +486,7 @@
 /turf/simulated/floor/tiled/yellow,
 /area/submap/Blackshuttledown)
 "bw" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	icon_state = "sink";
 	pixel_x = -16
@@ -712,7 +712,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "cf" = (
-/obj/structure/urinal{
+/obj/structure/hygiene/urinal{
 	dir = 4;
 	icon_state = "urinal";
 	pixel_x = -32
@@ -720,7 +720,7 @@
 /turf/simulated/floor/tiled/hydro,
 /area/submap/Blackshuttledown)
 "cg" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	icon_state = "toilet00";
 	dir = 4
 	},

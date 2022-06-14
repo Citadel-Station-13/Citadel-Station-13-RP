@@ -3012,7 +3012,7 @@
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/metingroom)
 "tx" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 21
 	},
 /obj/structure/closet/walllocker_double{
@@ -6372,7 +6372,7 @@
 /turf/simulated/floor/tiled/eris/cafe,
 /area/itglight/kitchen)
 "NR" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 21
 	},
 /obj/item/frame/mirror{
@@ -7251,7 +7251,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -7317,7 +7317,7 @@
 /turf/simulated/floor/airless,
 /area/itglight/portengi)
 "TE" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 21
 	},
 /obj/item/frame/mirror{
@@ -8054,7 +8054,7 @@
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/itglightshuttle)
 "YL" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 21;
 	plane = -34
 	},
@@ -8067,7 +8067,7 @@
 /area/itglight/kitchen)
 "YM" = (
 /obj/structure/curtain/open/shower,
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /turf/simulated/floor/tiled{

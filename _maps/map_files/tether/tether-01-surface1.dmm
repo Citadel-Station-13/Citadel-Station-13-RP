@@ -7771,7 +7771,7 @@
 /obj/random/junk,
 /obj/random/junk,
 /obj/random/maintenance/cargo,
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -9563,7 +9563,7 @@
 /obj/effect/floor_decal/corner/lime/border{
 	dir = 1
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 22
 	},
 /obj/structure/mirror{
@@ -9616,7 +9616,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/storage/surface_eva/external)
 "aqp" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals9{
@@ -12158,7 +12158,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/external)
 "auX" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /obj/machinery/light/small{
@@ -14453,7 +14453,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "ayd" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 4;
 	pixel_x = 2
 	},
@@ -14477,7 +14477,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyaccess)
 "ayf" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -17947,7 +17947,7 @@
 	pixel_y = 36;
 	req_one_access = list(25)
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 28
 	},
 /turf/simulated/floor/tiled,
@@ -20111,7 +20111,7 @@
 /area/tether/surfacebase/cargostore)
 "aHB" = (
 /obj/effect/floor_decal/rust,
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 10
 	},
 /turf/simulated/floor/tiled/white,
@@ -20251,7 +20251,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "aHO" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 10
 	},
 /turf/simulated/floor/plating,
@@ -20368,7 +20368,7 @@
 /area/crew_quarters/sleep/maintDorm1)
 "aHX" = (
 /obj/effect/floor_decal/rust,
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 22
 	},
 /obj/structure/mirror{
@@ -22622,7 +22622,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
 "aLW" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 22
 	},
 /obj/structure/mirror{
@@ -22632,7 +22632,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_8)
 "aLX" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 10
 	},
 /obj/machinery/alarm{
@@ -23443,7 +23443,7 @@
 /turf/simulated/floor/plating,
 /area/crew_quarters/sleep/maintDorm1)
 "aNu" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/structure/curtain/open/shower,
@@ -23920,7 +23920,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
 "aOu" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 22
 	},
 /obj/structure/mirror{
@@ -23930,7 +23930,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_6)
 "aOv" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 10
 	},
 /obj/machinery/alarm{
@@ -24447,7 +24447,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
 "aPk" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/structure/curtain/open/shower,
@@ -25001,7 +25001,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "aQm" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 22
 	},
 /obj/structure/mirror{
@@ -25011,7 +25011,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_4)
 "aQn" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 10
 	},
 /obj/machinery/alarm{
@@ -25612,7 +25612,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "aRt" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/structure/curtain/open/shower,
@@ -26100,7 +26100,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
 "aSu" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 22
 	},
 /obj/structure/mirror{
@@ -26110,7 +26110,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_2)
 "aSv" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 10
 	},
 /obj/machinery/alarm{
@@ -26669,7 +26669,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
 "aTI" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/structure/curtain/open/shower,
@@ -27347,13 +27347,13 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "aUW" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/showers)
 "aUX" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -28035,7 +28035,7 @@
 /turf/simulated/floor/wood,
 /area/vacant/vacant_bar)
 "aWa" = (
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	pixel_y = 28
 	},
 /turf/simulated/floor/wood,
@@ -28974,7 +28974,7 @@
 /turf/simulated/floor/wood,
 /area/vacant/vacant_bar)
 "aYr" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 22
 	},
 /obj/structure/mirror{
@@ -28984,7 +28984,7 @@
 /turf/simulated/floor/tiled/white,
 /area/vacant/vacant_bar)
 "aYs" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 10
 	},
 /turf/simulated/floor/tiled/white,
@@ -29016,7 +29016,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/maintDorm3)
 "aYv" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 22
 	},
 /obj/structure/mirror{
@@ -29033,7 +29033,7 @@
 /turf/simulated/floor/plating,
 /area/crew_quarters/sleep/maintDorm2)
 "aYz" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 22
 	},
 /obj/structure/mirror{
@@ -29050,7 +29050,7 @@
 /turf/simulated/floor/plating,
 /area/crew_quarters/sleep/maintDorm1)
 "aYE" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 10
 	},
 /turf/simulated/floor/plating,
@@ -29161,7 +29161,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/lowernorthhall)
 "aZi" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/structure/curtain/open/shower,
@@ -29189,7 +29189,7 @@
 /turf/simulated/floor/plating,
 /area/crew_quarters/sleep/maintDorm3)
 "aZm" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -29222,7 +29222,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/maintDorm2)
 "aZq" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/structure/curtain/open/shower,
@@ -29238,7 +29238,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/sleep/maintDorm2)
 "aZu" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/structure/curtain/open/shower,
@@ -30934,7 +30934,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 1
 	},
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	pixel_y = 30
 	},
 /turf/simulated/floor/tiled{
@@ -31991,7 +31991,7 @@
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/funny/clownoffice)
 "dPC" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -32580,7 +32580,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/lowerhall)
 "fOy" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 16
 	},
 /obj/structure/curtain/open/shower/security,
@@ -36193,7 +36193,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/lowerhall)
 "ozx" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -39457,7 +39457,7 @@
 	},
 /area/tether/surfacebase/old_tram)
 "yey" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2

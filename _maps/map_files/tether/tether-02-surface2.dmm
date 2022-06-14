@@ -1538,7 +1538,7 @@
 /turf/simulated/open/virgo3b,
 /area/tether/surfacebase/outside/outside2)
 "acq" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -2078,7 +2078,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -5674,7 +5674,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralhall)
 "aiI" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/machinery/light/small{
@@ -6243,7 +6243,7 @@
 	dir = 4;
 	pixel_x = -25
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -6873,7 +6873,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/uppersouthstairwell)
 "akH" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/machinery/light/small{
@@ -6909,7 +6909,7 @@
 	dir = 4;
 	pixel_x = -25
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -7681,7 +7681,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/bathroom)
 "alT" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/machinery/light/small{
@@ -9533,7 +9533,7 @@
 	dir = 4;
 	pixel_x = -25
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -10379,7 +10379,7 @@
 	dir = 4;
 	pixel_x = -25
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -12843,7 +12843,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -13367,7 +13367,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
 "avk" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/structure/curtain/open/shower/security,
@@ -18316,7 +18316,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
 "aFI" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 8;
 	pixel_x = -2
 	},
@@ -24256,7 +24256,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/pumpstation)
 "aSj" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/machinery/light/small{
@@ -24354,7 +24354,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/uppersouthstairwell)
 "aSs" = (
-/obj/structure/toilet,
+/obj/structure/hygiene/toilet,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -24635,7 +24635,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos/storage)
 "aSU" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /obj/machinery/light/small,
@@ -25559,7 +25559,7 @@
 	dir = 5
 	},
 /obj/structure/janitorialcart,
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	pixel_y = 28
 	},
 /turf/simulated/floor/tiled,
@@ -25661,7 +25661,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/breakroom/bathroom)
 "aVh" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -25906,7 +25906,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/breakroom/bathroom)
 "aVM" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -27232,7 +27232,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -29400,7 +29400,7 @@
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "beq" = (
 /obj/structure/reagent_dispensers/watertank,
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	name = "sink";
 	pixel_y = 32
 	},
@@ -33253,7 +33253,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 10
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/structure/window/reinforced{
@@ -33314,7 +33314,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 10
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/structure/window/reinforced{
@@ -33503,7 +33503,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 10
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/structure/window/reinforced{
@@ -33525,7 +33525,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 10
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/structure/window/reinforced{
@@ -34341,7 +34341,7 @@
 /turf/simulated/mineral/floor/virgo3b,
 /area/tether/surfacebase/outside/outside2)
 "pqb" = (
-/obj/structure/sink/puddle,
+/obj/structure/hygiene/sink/puddle,
 /turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/tether/surfacebase/fish_farm)
 "pKw" = (

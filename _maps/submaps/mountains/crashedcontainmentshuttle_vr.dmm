@@ -362,7 +362,7 @@
 /turf/simulated/shuttle/wall/dark,
 /area/submap/crashedcontainmentshuttle)
 "bA" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	icon_state = "sink";
 	dir = 8;
 	pixel_x = -12;
@@ -380,7 +380,7 @@
 /turf/simulated/shuttle/floor/white,
 /area/submap/crashedcontainmentshuttle)
 "bD" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/effect/gibspawner/generic,

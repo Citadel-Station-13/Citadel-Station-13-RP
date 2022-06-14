@@ -50,6 +50,9 @@
 #define MIN_TOXIN_DAMAGE 1
 #define MAX_TOXIN_DAMAGE 10
 
+// Liters in a normal breath.
+#define STD_BREATH_VOLUME 12 //! I know it's a duplicate. Cry about it. (shit needs to be reworked)
+
 /// Liters in a normal breath.
 #define BREATH_VOLUME       0.5
 /// Amount of air to take a from a tile

@@ -1625,7 +1625,7 @@
 /area/shuttle/tabiranth)
 "bC" = (
 /obj/machinery/organ_printer/flesh/full,
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	dir = 4;
 	pixel_x = -13
 	},

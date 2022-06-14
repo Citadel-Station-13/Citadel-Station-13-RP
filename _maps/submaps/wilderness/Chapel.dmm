@@ -314,7 +314,7 @@
 /turf/simulated/floor/outdoors/grass/sif/forest,
 /area/template_noop)
 "bn" = (
-/obj/structure/sink/puddle,
+/obj/structure/hygiene/sink/puddle,
 /turf/simulated/floor/outdoors/grass/sif/forest,
 /area/template_noop)
 "bo" = (

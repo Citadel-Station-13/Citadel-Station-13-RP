@@ -41,7 +41,7 @@
 /turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "hI" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4;
 	pixel_x = -10
 	},

@@ -403,7 +403,7 @@
 /turf/simulated/shuttle/floor/darkred,
 /area/space)
 "bo" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/darkred,
@@ -960,7 +960,7 @@
 /turf/simulated/shuttle/floor/darkred,
 /area/space)
 "cy" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},

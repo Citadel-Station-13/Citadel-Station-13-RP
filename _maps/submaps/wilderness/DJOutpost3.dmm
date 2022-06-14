@@ -268,7 +268,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/DJOutpost1)
 "aO" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 15
 	},

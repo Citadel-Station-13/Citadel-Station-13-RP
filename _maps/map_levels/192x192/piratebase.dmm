@@ -93,7 +93,7 @@
 /turf/simulated/floor/reinforced,
 /area/piratebase/facility)
 "eq" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 23
 	},
 /mob/living/simple_mob/humanoid/merc/voxpirate/pirate,
@@ -294,7 +294,7 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/pirate/general)
 "oZ" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 23
 	},
 /turf/simulated/floor/reinforced,
@@ -474,7 +474,7 @@
 /turf/simulated/floor/reinforced,
 /area/piratebase/facility)
 "wr" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 18
 	},
 /turf/simulated/floor/reinforced,
@@ -595,7 +595,7 @@
 /turf/space,
 /area/space)
 "BD" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 16
 	},
 /obj/machinery/light{
@@ -834,7 +834,7 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/pirate/general)
 "NU" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 16
 	},
 /obj/machinery/light{
@@ -928,7 +928,7 @@
 /turf/simulated/floor/reinforced,
 /area/piratebase/facility)
 "Te" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 18
 	},
 /obj/machinery/light{
@@ -962,7 +962,7 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/pirate/general)
 "UW" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 16
 	},
 /turf/simulated/floor/reinforced,

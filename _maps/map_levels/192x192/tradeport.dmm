@@ -967,7 +967,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
 "dw" = (
-/obj/structure/toilet,
+/obj/structure/hygiene/toilet,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -1669,7 +1669,7 @@
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport/spine)
 "gi" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -2137,7 +2137,7 @@
 	dir = 4
 	},
 /obj/random/maintenance/clean,
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 19
 	},
 /turf/simulated/floor/tiled/old_cargo/beige,
@@ -2161,7 +2161,7 @@
 /turf/simulated/floor/tiled/old_cargo/red,
 /area/shuttle/trade_ship/general)
 "ie" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -14
 	},
@@ -2420,7 +2420,7 @@
 	dir = 2;
 	req_one_access = list(160)
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 3
 	},
 /obj/structure/window/reinforced{
@@ -2465,7 +2465,7 @@
 /turf/simulated/floor/grass,
 /area/tradeport/safarizoo)
 "iX" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -2878,7 +2878,7 @@
 /turf/simulated/mineral/floor/vacuum,
 /area/tradeport/exterior)
 "kz" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -14
 	},
@@ -4024,7 +4024,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/tradeport)
 "oV" = (
-/obj/structure/toilet,
+/obj/structure/hygiene/toilet,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -5020,7 +5020,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
 "sU" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -5550,7 +5550,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport)
 "uR" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/structure/window/reinforced/tinted{
@@ -9659,7 +9659,7 @@
 /turf/simulated/floor,
 /area/tradeport/pads)
 "Jo" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/old_tile/white,
@@ -9832,7 +9832,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tradeport/medical)
 "Ke" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/structure/window/reinforced/tinted,
@@ -10025,7 +10025,7 @@
 /turf/simulated/floor/beach/sand,
 /area/tradeport/safarizoo)
 "Lc" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -14
 	},
@@ -10204,7 +10204,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
 "LM" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -10812,7 +10812,7 @@
 /turf/simulated/floor/tiled/old_cargo/red,
 /area/shuttle/trade_ship/general)
 "NL" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/structure/window/reinforced/tinted,
@@ -10982,7 +10982,7 @@
 /turf/simulated/floor/tiled/hydro,
 /area/tradeport/cyndishow)
 "Or" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -11611,7 +11611,7 @@
 /area/tradeport/cyndishow)
 "QQ" = (
 /obj/structure/window/reinforced,
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -14
 	},
@@ -12344,7 +12344,7 @@
 /turf/simulated/floor/tiled/old_cargo/beige,
 /area/tradeport/atmospherics)
 "Tl" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -13
 	},
@@ -12621,7 +12621,7 @@
 /area/tradeport/engineering)
 "Ut" = (
 /obj/structure/curtain/open/shower,
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 3
 	},
 /obj/structure/handrail{
@@ -12736,7 +12736,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
 "UG" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -13
 	},
@@ -13757,7 +13757,7 @@
 	dir = 2;
 	req_one_access = list(160)
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 3
 	},
 /obj/structure/window/reinforced{

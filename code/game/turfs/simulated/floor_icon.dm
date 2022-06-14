@@ -17,7 +17,10 @@ GLOBAL_LIST_EMPTY(turf_edge_cache)
 var/list/flooring_cache = list()
 
 /turf/simulated/floor/update_icon()
+	..()
 	cut_overlays()
+
+	update_flood_overlay()
 
 	if(flooring)
 		// Set initial icon and strings.
@@ -279,9 +282,24 @@ var/list/flooring_cache = list()
 
 	return is_linked
 
-/turf/simulated/floor/proc/get_flooring_overlay(var/cache_key, var/icon_base, var/icon_dir = 0)
+/turf/simulated/floor/proc/get_flooring_overlay(cache_key, icon_base, icon_dir = 0, external = FALSE)
 	if(!flooring_cache[cache_key])
 		var/image/I = image(icon = flooring.icon, icon_state = icon_base, dir = icon_dir)
+		I.plane = plane
 		I.layer = layer
+
+		//External overlays will be offset out of this tile
+		if(external)
+			if(icon_dir & NORTH)
+				I.pixel_y = world.icon_size
+			else if(icon_dir & SOUTH)
+				I.pixel_y = -world.icon_size
+
+			if(icon_dir & WEST)
+				I.pixel_x = -world.icon_size
+			else if(icon_dir & EAST)
+				I.pixel_x = world.icon_size
+		I.layer = flooring.decal_layer
+
 		flooring_cache[cache_key] = I
 	return flooring_cache[cache_key]

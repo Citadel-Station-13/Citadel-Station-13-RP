@@ -36,6 +36,8 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define SEE_INVISIBLE_MINIMUM		5
 #define INVISIBILITY_MAXIMUM		100
 
+#define INVISIBILITY_ABSTRACT		101 //only used for abstract objects (e.g. spacevine_controller), things that are not really there.
+
 /// Pseudo-Invis, like Ninja, Ling, Etc.
 /// Below this, can't be examined, may as well be invisible to the game
 #define EFFECTIVE_INVIS				50

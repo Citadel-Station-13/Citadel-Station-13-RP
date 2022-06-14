@@ -96,7 +96,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/class_h/POIs/saloon)
 "lW" = (
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	name = "sink";
 	pixel_y = 28
 	},

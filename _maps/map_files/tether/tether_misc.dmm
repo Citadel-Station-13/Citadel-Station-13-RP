@@ -875,11 +875,11 @@
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm5)
 "cH" = (
-/obj/structure/toilet,
+/obj/structure/hygiene/toilet,
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm5)
 "cI" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 13
 	},
 /obj/structure/curtain/open/shower,
@@ -896,11 +896,11 @@
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm6)
 "cL" = (
-/obj/structure/toilet,
+/obj/structure/hygiene/toilet,
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm6)
 "cM" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 13
 	},
 /obj/structure/curtain/open/shower,
@@ -3678,7 +3678,7 @@
 /turf/simulated/floor/lino,
 /area/centcom/simulated/bar)
 "Dd" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12
 	},
@@ -4551,7 +4551,7 @@
 	},
 /area/space)
 "Qg" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -4638,7 +4638,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -4842,11 +4842,11 @@
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm4)
 "Sq" = (
-/obj/structure/toilet,
+/obj/structure/hygiene/toilet,
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm4)
 "Sr" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 13
 	},
 /obj/structure/curtain/open/shower,
@@ -4997,11 +4997,11 @@
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm3)
 "Tb" = (
-/obj/structure/toilet,
+/obj/structure/hygiene/toilet,
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm3)
 "Tc" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 13
 	},
 /obj/structure/curtain/open/shower,
@@ -5165,11 +5165,11 @@
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm2)
 "TQ" = (
-/obj/structure/toilet,
+/obj/structure/hygiene/toilet,
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm2)
 "TR" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 13
 	},
 /obj/structure/curtain/open/shower,
@@ -5327,11 +5327,11 @@
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm1)
 "UC" = (
-/obj/structure/toilet,
+/obj/structure/hygiene/toilet,
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm1)
 "UD" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 13
 	},
 /obj/structure/curtain/open/shower,
@@ -6163,7 +6163,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/escape)
 "XX" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -6178,7 +6178,7 @@
 /turf/unsimulated/beach/sand,
 /area/beach)
 "XZ" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 12;
 	pixel_y = 8

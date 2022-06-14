@@ -74,7 +74,7 @@
 ////#define COMSIG_LIVING_CAN_TRACK "mob_cantrack"
 	////#define COMPONENT_CANT_TRACK (1<<0)
 /// From end of fully_heal(): (admin_revive)
-////#define COMSIG_LIVING_POST_FULLY_HEAL "living_post_fully_heal"
+#define COMSIG_LIVING_POST_FULLY_HEAL "living_post_fully_heal"
 /// from start of /mob/living/handle_breathing(): (delta_time, times_fired)
 ////#define COMSIG_LIVING_HANDLE_BREATHING "living_handle_breathing"
 /// From /obj/item/hand_item/slapper/attack_atom(): (source=mob/living/slammer, obj/structure/table/slammed_table)

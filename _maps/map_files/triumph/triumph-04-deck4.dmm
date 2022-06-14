@@ -1138,7 +1138,7 @@
 /turf/simulated/wall/r_wall,
 /area/maintenance/security/starboard)
 "aST" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 17
 	},
 /obj/structure/curtain/open/shower/security,
@@ -2625,7 +2625,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "bVl" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4
 	},
 /obj/machinery/light/small{
@@ -3467,7 +3467,7 @@
 /turf/simulated/floor/tiled,
 /area/teleporter)
 "czA" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -4239,7 +4239,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "djR" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -4655,7 +4655,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 16
 	},
 /obj/structure/curtain/open/shower/security,
@@ -5408,7 +5408,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/secondary/civilian_hallway_mid)
 "dVj" = (
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	pixel_y = 28
 	},
 /turf/simulated/floor/plating,
@@ -5522,7 +5522,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "dZf" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -6779,7 +6779,7 @@
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
 "eLn" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -9324,7 +9324,7 @@
 /turf/simulated/floor/tiled,
 /area/exploration/excursion_dock)
 "gxR" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 8
 	},
 /obj/structure/curtain/open/shower{
@@ -11059,13 +11059,13 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/hallway/secondary/civilian_hallway_mid)
 "hFz" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/heads/hos)
 "hFL" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 17
 	},
 /obj/structure/curtain/open/shower/security,
@@ -11232,7 +11232,7 @@
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "hMb" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
@@ -11473,7 +11473,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/HOP_quarters)
 "hSQ" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 8
 	},
 /obj/item/soap/deluxe,
@@ -12144,7 +12144,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
 "ioq" = (
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	dir = 8;
 	name = "sink";
 	pixel_x = 13
@@ -12182,7 +12182,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/sink/puddle{
+/obj/structure/hygiene/sink/puddle{
 	pixel_y = 6
 	},
 /obj/machinery/camera/network/civilian{
@@ -13524,7 +13524,7 @@
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "jmF" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/machinery/light/small{
@@ -14363,7 +14363,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
 "jUH" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -15901,7 +15901,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "lbd" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/machinery/light/small{
@@ -16557,7 +16557,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "luJ" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 17
 	},
 /obj/structure/curtain/open/shower/security,
@@ -18178,7 +18178,7 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/security/range)
 "myY" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 8
 	},
 /obj/item/soap/deluxe,
@@ -20454,7 +20454,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -20806,7 +20806,7 @@
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/prison/cell_block)
 "oqU" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -21522,7 +21522,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/main)
 "oRW" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -22179,7 +22179,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "pjn" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/machinery/light/small{
@@ -23163,7 +23163,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
 "pVu" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -27041,7 +27041,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "sqL" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -28785,7 +28785,7 @@
 /turf/simulated/floor/tiled/old_cargo/white,
 /area/security/forensics)
 "tvO" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
@@ -28838,7 +28838,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 16
 	},
 /obj/structure/curtain/open/shower/security,
@@ -30725,7 +30725,7 @@
 /turf/simulated/floor/tiled,
 /area/security/eva)
 "uRN" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -31237,7 +31237,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "vjX" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 30
 	},
 /obj/structure/window/reinforced/tinted/frosted{
@@ -31709,7 +31709,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "vyT" = (
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	dir = 4;
 	pixel_x = -12
 	},
@@ -32458,7 +32458,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/central)
 "vRU" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/machinery/light/small{
@@ -32512,7 +32512,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "vSM" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 8
 	},
 /obj/structure/curtain/open/shower{
@@ -33187,7 +33187,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "woY" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 8
 	},
 /obj/structure/curtain/open/shower,
@@ -33296,7 +33296,7 @@
 /turf/simulated/floor/tiled,
 /area/security/security_lockerroom)
 "wuH" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 8
 	},
 /obj/item/soap/deluxe,
@@ -33611,7 +33611,7 @@
 /turf/simulated/floor/tiled,
 /area/security/lobby)
 "wET" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 8
 	},
 /obj/structure/curtain/open/shower{
@@ -34900,7 +34900,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "xyD" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 8
 	},
 /obj/structure/curtain/open/shower,
@@ -34972,7 +34972,7 @@
 /turf/simulated/wall/r_wall,
 /area/security/tactical)
 "xAR" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 10
 	},
 /obj/machinery/alarm{
@@ -35011,7 +35011,7 @@
 	},
 /area/exploration/pilot_prep)
 "xDD" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 16
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals9,
@@ -35737,7 +35737,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/excursion_dock)
 "ycp" = (
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	dir = 4;
 	pixel_x = -12
 	},

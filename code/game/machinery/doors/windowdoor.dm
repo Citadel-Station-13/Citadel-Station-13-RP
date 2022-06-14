@@ -8,7 +8,7 @@
 	hitsound = 'sound/effects/Glasshit.ogg'
 	maxhealth = 150 //If you change this, consiter changing ../door/window/brigdoor/ health at the bottom of this .dm file
 	health = 150
-	visible = 0.0
+	visible = 0
 	use_power = USE_POWER_OFF
 	flags = ON_BORDER
 	opacity = MOUSE_OPACITY_TRANSPARENT
@@ -187,6 +187,9 @@
 		sleep(6)
 		open()
 		return 1
+
+/obj/machinery/door/window/CanFluidPass(var/coming_from)
+	return ((dir in GLOB.cardinal) && coming_from != dir)
 
 /obj/machinery/door/window/attackby(obj/item/I as obj, mob/user as mob)
 

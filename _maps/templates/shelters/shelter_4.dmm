@@ -177,7 +177,7 @@
 "s" = (
 /obj/structure/table/survival_pod,
 /obj/item/storage/firstaid/surgery,
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	icon_state = "sink_alt";
 	dir = 4;
 	pixel_x = -13
@@ -195,7 +195,7 @@
 /turf/simulated/shuttle/floor/voidcraft,
 /area/survivalpod)
 "v" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 4
 	},
 /obj/item/soap/deluxe,
@@ -208,7 +208,7 @@
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/survivalpod)
 "x" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /obj/machinery/light/small,

@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(fluids)
 	name = "Fluids"
 	wait = 10
-	flags = SS_NO_INIT
+	subsystem_flags = SS_NO_INIT
 
 	var/next_water_act = 0
 	var/water_act_delay = 15 // A bit longer than machines.
@@ -28,10 +28,8 @@ SUBSYSTEM_DEF(fluids)
 		)
 
 
-/datum/controller/subsystem/fluids/UpdateStat(time)
-	if (PreventUpdateStat(time))
-		return ..()
-	..("Sources: [water_sources.len] Active Fluids: [active_fluids.len]")
+/datum/controller/subsystem/fluids/stat_entry(time)
+	..("A:[active_fluids.len] S:[water_sources.len]")
 
 
 /datum/controller/subsystem/fluids/fire(resumed = 0)
@@ -94,6 +92,8 @@ SUBSYSTEM_DEF(fluids)
 				UPDATE_FLUID_BLOCKED_DIRS(T)
 				if((T.fluid_blocked_dirs & coming_from) || !T.CanFluidPass(coming_from))
 					continue
+				var/obj/effect/fluid/other = locate() in T.contents
+				if(other && (QDELETED(other) || other.fluid_amount <= FLUID_DELETING))
 				var/turf/current = get_turf(F)
 				if((F.fluid_amount + current.height) <= T.height) //Water cannot flow up height differences
 					continue
@@ -149,11 +149,11 @@ SUBSYSTEM_DEF(fluids)
 					F.flow_amount = flow_amount
 					setting_dir = get_dir(F, other)
 
-			F.set_dir(setting_dir)
+			F.setDir(setting_dir)
 
 			if(islist(F.equalizing_fluids) && F.equalizing_fluids.len > 1)
-				F.equalize_avg_depth = Floor(F.equalize_avg_depth/F.equalizing_fluids.len)
-				F.equalize_avg_temp = Floor(F.equalize_avg_temp/F.equalizing_fluids.len)
+				F.equalize_avg_depth = round(F.equalize_avg_depth/F.equalizing_fluids.len)
+				F.equalize_avg_temp = round(F.equalize_avg_temp/F.equalizing_fluids.len)
 				for(var/thing in F.equalizing_fluids)
 					var/obj/effect/fluid/other = thing
 					if(!QDELETED(other))

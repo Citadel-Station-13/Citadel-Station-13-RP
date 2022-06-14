@@ -283,7 +283,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/morgue)
 "ajS" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -1357,7 +1357,7 @@
 	dir = 4;
 	pixel_x = 24
 	},
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 10
 	},
 /obj/machinery/light/small{
@@ -2881,7 +2881,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
 "ctY" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12
 	},
@@ -3168,7 +3168,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	pixel_y = 28
 	},
 /obj/effect/floor_decal/industrial/danger/corner{
@@ -5346,7 +5346,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "esg" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -5904,7 +5904,7 @@
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "ePY" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 10
 	},
 /obj/machinery/light/small{
@@ -6290,7 +6290,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -6335,7 +6335,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 19
 	},
 /turf/simulated/floor/tiled/white,
@@ -6550,7 +6550,7 @@
 	},
 /area/holodeck/alphadeck)
 "fsl" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -8804,7 +8804,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/test_area)
 "hfH" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/structure/curtain/medical,
@@ -10743,7 +10743,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
 "iTn" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 16
 	},
 /obj/structure/curtain/open/shower,
@@ -10863,7 +10863,7 @@
 /obj/structure/mirror{
 	pixel_y = 33
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 19
 	},
 /turf/simulated/floor/tiled/white,
@@ -13087,7 +13087,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
 "kKT" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 19
 	},
 /turf/simulated/floor/tiled/white,
@@ -14088,7 +14088,7 @@
 /turf/simulated/wall,
 /area/triumph/station/stairs_three)
 "lIL" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/machinery/alarm{
@@ -15073,7 +15073,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "mrG" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 16
 	},
 /obj/structure/curtain/open/shower/medical,
@@ -15128,7 +15128,7 @@
 	name = "west bump";
 	pixel_x = -28
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 19
 	},
 /turf/simulated/floor/tiled/white,
@@ -16387,7 +16387,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 19
 	},
 /turf/simulated/floor/tiled/white,
@@ -17847,7 +17847,7 @@
 	dir = 8
 	},
 /obj/machinery/door/window/westleft,
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 16
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -19518,7 +19518,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/machinery/door/window/eastleft,
@@ -20689,7 +20689,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/reception_desk)
 "qyS" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 24
 	},
 /obj/structure/mirror{
@@ -21100,7 +21100,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "qMC" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -21144,7 +21144,7 @@
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/assembly/robotics)
 "qOA" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12
 	},
@@ -21430,7 +21430,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -22056,7 +22056,7 @@
 /turf/simulated/floor/airless/ceiling,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "rsv" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /obj/machinery/light/small,
@@ -22099,7 +22099,7 @@
 /area/medical/reception)
 "rty" = (
 /obj/machinery/light/small,
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -22296,7 +22296,7 @@
 /area/medical/surgeryprep)
 "rBb" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 19
 	},
 /turf/simulated/floor/tiled/white,
@@ -22341,7 +22341,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/virologyaccess)
 "rDt" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/blue{
@@ -22955,7 +22955,7 @@
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/assembly/robotics/surgery)
 "sef" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /obj/machinery/light/small{
@@ -23108,7 +23108,7 @@
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "sjc" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/structure/curtain/medical,
@@ -23164,7 +23164,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -23791,7 +23791,7 @@
 /turf/simulated/wall,
 /area/assembly/chargebay)
 "sHc" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 16
 	},
 /obj/structure/curtain/open/shower,
@@ -24481,7 +24481,7 @@
 /turf/simulated/wall,
 /area/medical/patient_b)
 "tjy" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -24573,7 +24573,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
 "tmj" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 16
 	},
 /obj/structure/curtain/open/shower,
@@ -25207,7 +25207,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/universal{
 	dir = 4
 	},
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 16
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -25699,7 +25699,7 @@
 /turf/simulated/floor/wood,
 /area/medical/psych/psych_2)
 "tZu" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -25841,7 +25841,7 @@
 /turf/simulated/floor/tiled,
 /area/teleporter/departing)
 "ujk" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -27242,7 +27242,7 @@
 /turf/simulated/floor/plating,
 /area/medical/resleeving)
 "vjK" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -28306,7 +28306,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
 	},
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	pixel_y = 28
 	},
 /turf/simulated/floor/tiled,
@@ -28665,7 +28665,7 @@
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "wuI" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 16
 	},
 /obj/structure/curtain/open/shower,
@@ -28957,7 +28957,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	pixel_y = 19
 	},
 /obj/structure/mirror{
@@ -30447,7 +30447,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
 "xKH" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -30695,7 +30695,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyaccess)
 "xUd" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12
 	},

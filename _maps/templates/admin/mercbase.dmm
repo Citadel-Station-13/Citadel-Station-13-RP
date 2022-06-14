@@ -1841,7 +1841,7 @@
 	},
 /area/antag/antag_base)
 "cM" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4
 	},
 /obj/effect/floor_decal/rust,
@@ -2036,7 +2036,7 @@
 	},
 /area/antag/antag_base)
 "df" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4
 	},
 /turf/unsimulated/floor{
@@ -2104,7 +2104,7 @@
 	},
 /area/antag/antag_base)
 "dl" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	pixel_y = 32
 	},
 /obj/structure/window/reinforced/tinted{
@@ -2121,7 +2121,7 @@
 	},
 /area/antag/antag_base)
 "dn" = (
-/obj/structure/toilet,
+/obj/structure/hygiene/toilet,
 /turf/unsimulated/floor{
 	icon_state = "freezerfloor"
 	},
@@ -2140,7 +2140,7 @@
 	},
 /area/antag/antag_base)
 "dq" = (
-/obj/structure/sink/kitchen{
+/obj/structure/hygiene/sink/kitchen{
 	pixel_y = 28
 	},
 /turf/unsimulated/floor{
@@ -2339,7 +2339,7 @@
 	},
 /area/antag/antag_base)
 "dN" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 1
 	},
 /obj/structure/window/reinforced/tinted{
@@ -2356,7 +2356,7 @@
 	},
 /area/antag/antag_base)
 "dP" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -2968,7 +2968,7 @@
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/mercenary)
 "eX" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 8
@@ -3180,7 +3180,7 @@
 /turf/simulated/shuttle/floor,
 /area/shuttle/mercenary)
 "fy" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -3872,7 +3872,7 @@
 	},
 /area/shuttle/mercenary)
 "gL" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 4
 	},
 /obj/machinery/light/small{
@@ -3894,7 +3894,7 @@
 /obj/structure/mirror{
 	pixel_y = 28
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -4079,7 +4079,7 @@
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/mercenary)
 "hf" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 8;
 	pixel_x = -5
 	},

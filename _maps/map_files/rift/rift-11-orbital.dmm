@@ -5042,7 +5042,7 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/bathroom)
 "ox" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -5089,7 +5089,7 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "oD" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 12;
 	pixel_y = 8
@@ -5252,7 +5252,7 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/bathroom)
 "pa" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
@@ -5528,7 +5528,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -5992,7 +5992,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/simulated/terminal)
 "rl" = (
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12
 	},

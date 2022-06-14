@@ -68,3 +68,19 @@
 #define FLOATING				(1<<4)
 /// Ventcrawling
 #define VENTCRAWLING			(1<<5)
+
+//TODO: Fully implement resistance_flags.
+//Fire and Acid stuff, for resistance_flags
+#define LAVA_PROOF (1<<0)
+/// 100% immune to fire damage (but not necessarily to lava or heat)
+#define FIRE_PROOF (1<<1)
+#define FLAMMABLE (1<<2)
+#define ON_FIRE (1<<3)
+/// acid can't even appear on it, let alone melt it.
+#define UNACIDABLE (1<<4)
+/// acid stuck on it doesn't melt it.
+#define ACID_PROOF (1<<5)
+/// doesn't take damage
+#define INDESTRUCTIBLE (1<<6)
+/// can't be frozen
+#define FREEZE_PROOF (1<<7)

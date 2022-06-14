@@ -169,8 +169,8 @@ Class Procs:
 
 	// Handle condensation from the air.
 	for(var/g in air.gas)
-		var/product = gas_data.condensation_products[g]
-		if(product && air.temperature <= gas_data.condensation_points[g])
+		var/product = GLOB.meta_gas_condensation_products[g]
+		if(product && air.temperature <= GLOB.meta_gas_condensation_points[g])
 			var/condensation = min(air.gas[g], 5)
 			while(condensation > 0)
 				condensation--

@@ -129,3 +129,7 @@
 
 /datum/species/proc/get_wing_animation(mob/living/carbon/human/H)
 	return wing_animation
+
+
+/datum/species/proc/get_footstep(var/mob/living/carbon/human/H, var/footstep_type)
+	return

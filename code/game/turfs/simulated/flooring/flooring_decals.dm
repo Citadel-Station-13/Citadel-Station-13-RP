@@ -7,7 +7,7 @@ var/list/floor_decals = list()
 	name = "floor decal"
 	icon = 'icons/turf/flooring/decals_vr.dmi'
 	plane = DECAL_PLANE
-	layer = MAPPER_DECAL_LAYER
+	layer = DECAL_LAYER
 	var/supplied_dir
 
 /obj/effect/floor_decal/Initialize(mapload, newdir, newcolour)
@@ -23,7 +23,7 @@ var/list/floor_decals = list()
 
 /obj/effect/floor_decal/proc/make_decal_image()
 	var/image/I = image(icon = icon, icon_state = icon_state, dir = dir)
-	I.layer = MAPPER_DECAL_LAYER
+	I.layer = DECAL_LAYER
 	I.color = color
 	I.alpha = alpha
 	return I

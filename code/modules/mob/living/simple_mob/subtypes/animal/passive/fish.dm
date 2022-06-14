@@ -17,7 +17,7 @@
 	randomized = TRUE
 	// So fish are actually underwater.
 	plane = TURF_PLANE
-	layer = UNDERWATER_LAYER
+	layer = SHALLOW_FLUID_LAYER
 
 	holder_type = /obj/item/holder/fish
 
