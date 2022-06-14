@@ -176,7 +176,7 @@
  *
  * @params
  * - I - item
- * - user - stripper
+ * - user - stripper - can be null
  * - force - ignore nodrops, etc
  * - dislalow_delay - fail if we'd need to do a do_after, instead of sleeping
  * - ignore_fluff - ignore equip delay, item zone checks, etc
@@ -233,7 +233,7 @@
  * @params
  * - I - item
  * - slot - slot ID
- * - user - user trying to equip that thing to us there
+ * - user - user trying to equip that thing to us there - can be null
  * - force - we can forcefully dislodge an item if needed, also ignore nodrops and "fluff" blockers.
  * - disallow_delay - fail if we'd need to sleep
  * - ignore_fluff - ignore self equip delay, item zone checks, etc. implied by force.

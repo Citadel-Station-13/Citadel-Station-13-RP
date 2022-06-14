@@ -156,11 +156,11 @@
 			if(!do_after(user, 10, target = user))
 				recycling = FALSE
 				return
+			if(!user.attempt_consume_item_for_construction(EA))
+				return
 			to_chat(user, SPAN_NOTICE("You recycle the [EA]!"))
 			check_max_metal(EA.cost)
 			cur_metal += EA.cost
-			user.remove_from_mob(EA)
-			qdel(EA)
 			return TRUE
 	return ..()
 

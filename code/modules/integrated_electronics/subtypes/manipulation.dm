@@ -415,21 +415,10 @@
 			return
 
 		// If the item is in mob's inventory, try to remove it from there.
+			// No. this is not going to work out since mob code would need to shift can equip/unequip to atom level. ~silicons
 		if(ismob(A.loc))
-			var/mob/living/M = A.loc
-			if(A.current_equipped_slot && M.canUnEquip(A))
-				visible_message(SPAN_DANGER("\The [src] is trying to remove \the [M]'s [A.name]!"))
-				do_atom(src, M, HUMAN_STRIP_DELAY)
-				if(!check_target(A, exclude_components = TRUE))
-					activate_pin(3)
-					return
-				add_attack_logs("IC Assembly",src,"Removed equipment from slot [A]")
-				M.unEquip(A)
-				activate_pin(2)
-				return TRUE
-			if(!M.unEquip(A))
-				activate_pin(3)
-				return
+			activate_pin(3)
+			return FALSE
 
 		// If the item is in a grabber circuit we'll update the grabber's outputs after we've thrown it.
 		var/obj/item/integrated_circuit/manipulation/grabber/G = A.loc
