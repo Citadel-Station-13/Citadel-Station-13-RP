@@ -33,6 +33,11 @@ var/list/wrapped_species_by_ref = list()
 	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_bodytype(H)
 
+/datum/species/shapeshifter/get_worn_legacy_bodytype(var/mob/living/carbon/human/H)
+	if(!H) return ..()
+	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
+	return S.get_worn_legacy_bodytype(H)
+
 /datum/species/shapeshifter/get_blood_mask(var/mob/living/carbon/human/H)
 	if(!H) return ..()
 	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))

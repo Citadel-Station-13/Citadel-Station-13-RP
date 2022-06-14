@@ -50,6 +50,8 @@
 	var/fire_icon_state = "humanoid"
 	/// Icons used for worn items in suit storage slot.
 	var/suit_storage_icon = 'icons/mob/clothing/belt_mirror.dmi'
+	/// override for bodytype
+	var/override_worn_legacy_bodytype
 
 //! ## Damage overlay and masks.
 	var/damage_overlays = 'icons/mob/human_races/masks/dam_human.dmi'
@@ -868,7 +870,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			T.remove(src, H)
 		src.traits = traits
 
-		H.icon_state = lowertext(get_bodytype())
+		H.icon_state = lowertext(get_worn_legacy_bodytype())
 
 		if(holder_type)
 			H.holder_type = holder_type

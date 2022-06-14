@@ -4,6 +4,7 @@
 	abstract_type = /datum/species/moth
 	name_plural = "Dnin-Nepids"
 	examine_name = "Dnin-Nepid"
+	override_worn_legacy_bodytype = SPECIES_HUMAN
 
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 	icobase = 'icons/mob/human_races/moth.dmi'

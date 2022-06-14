@@ -168,6 +168,9 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 		return H.impersonate_bodytype || ..()
 	return ..()
 
+/datum/species/protena/get_worn_legacy_bodytype(mob/living/carbon/human/H)
+	return H?.impersonate_bodytype || ..()
+
 /datum/species/protean/create_organs(mob/living/carbon/human/H)
 	H.synth_color = TRUE
 	. = ..()

@@ -40,6 +40,9 @@
 /datum/species/proc/get_bodytype(mob/living/carbon/human/H)
 	return name
 
+/datum/species/proc/get_worn_legacy_bodytype(mob/living/carbon/human/H)
+	return override_worn_legacy_bodytype || name
+
 /datum/species/proc/get_knockout_message(mob/living/carbon/human/H)
 	return ((H && H.isSynthetic()) ? "encounters a hardware fault and suddenly reboots!" : knockout_message)
 
