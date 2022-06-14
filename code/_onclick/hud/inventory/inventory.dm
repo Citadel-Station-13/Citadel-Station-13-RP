@@ -37,6 +37,8 @@
 
 // Hand slots are special to handle the handcuffs overlay
 /atom/movable/screen/inventory/hand
+	/// hand index
+	var/index
 	var/image/handcuff_overlay
 
 /atom/movable/screen/inventory/hand/Click()

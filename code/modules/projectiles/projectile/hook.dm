@@ -94,12 +94,10 @@
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 				return
 
-			for(var/obj/item/I in holding)
-				if(I)
-					H.drop_from_inventory(I)
-					visible_message("<span class='danger'>\The [src] has disarmed [H]!</span>")
-					playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
-					return
+			H.drop_all_held_items()
+			visible_message("<span class='danger'>\The [src] has disarmed [H]!</span>")
+			playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
+			return
 
 /obj/item/projectile/energy/hook/proc/perform_intent_unique(atom/target)
 	playsound(src, impact_sound, 40, 1)

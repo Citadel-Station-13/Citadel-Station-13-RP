@@ -173,6 +173,7 @@
 
 /obj/item/organ/external/foot/removed()
 	if(owner)
+		#warn replace all of these with reconsider_inventory_slot_bodypart
 		owner.drop_from_inventory(owner.shoes)
 	..()
 
