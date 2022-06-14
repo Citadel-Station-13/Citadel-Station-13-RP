@@ -284,7 +284,7 @@
 			continue
 		if(biological_gender == FEMALE && S.gender == MALE)
 			continue
-		if(!S.apply_restrictions && !(species in S.species_allowed) && (!custom_base || !(custom_base in S.species_allowed))) //Custom species base species allowance
+		if(S.apply_restrictions && !(species in S.species_allowed) && (!custom_base || !(custom_base in S.species_allowed))) //Custom species base species allowance
 			continue
 
 		valid_facialhairstyles[facialhairstyle] = facial_hair_styles_list[facialhairstyle]
