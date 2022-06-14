@@ -4,7 +4,7 @@
 	icon_state = "foodcart-0"
 	desc = "The ultimate in food transport! When opened you notice two compartments with odd blue glows to them. One feels very warm, while the other is very cold."
 	anchored = 0
-	opacity = 0
+	opacity = MOUSE_OPACITY_TRANSPARENT
 	density = 1
 
 /obj/structure/foodcart/Initialize(mapload)

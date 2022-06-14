@@ -11,7 +11,7 @@
 	visible = 0.0
 	use_power = USE_POWER_OFF
 	flags = ON_BORDER
-	opacity = 0
+	opacity = MOUSE_OPACITY_TRANSPARENT
 	var/obj/item/airlock_electronics/electronics = null
 	explosion_resistance = 5
 	air_properties_vary_with_direction = 1
@@ -360,3 +360,6 @@
 	dir = SOUTH
 	icon_state = "rightsecure"
 	base_state = "rightsecure"
+
+/obj/machinery/door/window/CanFluidPass(coming_from)
+	return ((dir in GLOB.cardinal) && coming_from != dir)

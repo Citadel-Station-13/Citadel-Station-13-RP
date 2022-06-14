@@ -18,6 +18,6 @@
 		reveal("<span class='notice'>You have stopped hiding.</span>")
 	else
 		status_flags |= HIDING
-		set_base_layer(HIDING_LAYER)
+		set_base_layer(HIDING_MOB_LAYER)
 		plane = OBJ_PLANE
 		to_chat(src,"<span class='notice'>You are now hiding.</span>")

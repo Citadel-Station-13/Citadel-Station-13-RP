@@ -7,7 +7,7 @@
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "ladder00"
 	density = 0
-	opacity = 0
+	opacity = MOUSE_OPACITY_TRANSPARENT
 	anchored = 0
 	w_class = ITEMSIZE_HUGE
 

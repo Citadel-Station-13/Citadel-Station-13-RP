@@ -9,7 +9,7 @@
 /obj/item/inflatable/attack_self(mob/user)
 	inflate(user,user.loc)
 
-/obj/item/inflatable/afterattack(var/atom/A, var/mob/user)
+/obj/item/inflatable/afterattack(atom/A, mob/user)
 	..(A, user)
 	if(!user)
 		return
@@ -25,9 +25,9 @@
 /obj/structure/inflatable
 	name = "inflatable wall"
 	desc = "An inflated membrane. Do not puncture."
-	density = 1
-	anchored = 1
-	opacity = 0
+	density = TRUE
+	anchored = TRUE
+	opacity = MOUSE_OPACITY_TRANSPARENT
 	CanAtmosPass = ATMOS_PASS_DENSITY
 
 	icon = 'icons/obj/inflatable.dmi'
@@ -43,7 +43,7 @@
 	update_nearby_tiles()
 	return ..()
 
-/obj/structure/inflatable/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/inflatable/bullet_act(obj/item/projectile/Proj)
 	var/proj_damage = Proj.get_structure_damage()
 	if(!proj_damage) return
 
@@ -69,11 +69,11 @@
 /obj/structure/inflatable/blob_act()
 	puncture()
 
-/obj/structure/inflatable/attack_hand(mob/user as mob)
+/obj/structure/inflatable/attack_hand(mob/user)
 		add_fingerprint(user)
 		return
 
-/obj/structure/inflatable/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/inflatable/attackby(obj/item/W, mob/user)
 	if(!istype(W)) return
 
 	if (can_puncture(W))
@@ -84,7 +84,7 @@
 		..()
 	return
 
-/obj/structure/inflatable/proc/hit(var/damage, var/sound_effect = 1)
+/obj/structure/inflatable/proc/hit(damage, sound_effect = 1)
 	health = max(0, health - damage)
 	if(sound_effect)
 		playsound(loc, 'sound/effects/Glasshit.ogg', 75, 1)
@@ -94,7 +94,7 @@
 /obj/structure/inflatable/CtrlClick()
 	hand_deflate()
 
-/obj/item/inflatable/proc/inflate(var/mob/user,var/location)
+/obj/item/inflatable/proc/inflate(mob/user, location)
 	playsound(location, 'sound/items/zip.ogg', 75, 1)
 	to_chat(user,"<span class='notice'>You inflate [src].</span>")
 	var/obj/structure/inflatable/R = new deploy_path(location)
@@ -129,7 +129,7 @@
 	verbs -= /obj/structure/inflatable/verb/hand_deflate
 	deflate()
 
-/obj/structure/inflatable/attack_generic(var/mob/user, var/damage, var/attack_verb)
+/obj/structure/inflatable/attack_generic(mob/user, damage, attack_verb)
 	health -= damage
 	user.do_attack_animation(src)
 	if(health <= 0)
@@ -139,12 +139,15 @@
 		user.visible_message("<span class='danger'>[user] [attack_verb] at [src]!</span>")
 	return 1
 
-/obj/structure/inflatable/take_damage(var/damage)
+/obj/structure/inflatable/take_damage(damage)
 	health -= damage
 	if(health <= 0)
 		visible_message("<span class='danger'>The [src] deflates!</span>")
 		spawn(1) puncture()
 	return 1
+
+/obj/structure/inflatable/CanFluidPass(coming_from)
+	return !density
 
 /obj/item/inflatable/door/
 	name = "inflatable door"
@@ -157,7 +160,7 @@
 	name = "inflatable door"
 	density = 1
 	anchored = 1
-	opacity = 0
+	opacity = MOUSE_OPACITY_TRANSPARENT
 
 	icon = 'icons/obj/inflatable.dmi'
 	icon_state = "door_closed"

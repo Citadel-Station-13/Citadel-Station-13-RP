@@ -1,7 +1,7 @@
 /obj/structure/girder
 	icon_state = "girder"
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	plane = PLATING_PLANE
 	w_class = ITEMSIZE_HUGE
 	var/state = 0
@@ -42,7 +42,7 @@
 	return total_radiation
 
 
-/obj/structure/girder/proc/set_material(var/new_material)
+/obj/structure/girder/proc/set_material(new_material)
 	girder_material = get_material_by_name(new_material)
 	if(!girder_material)
 		qdel(src)
@@ -68,7 +68,7 @@
 
 /obj/structure/girder/displaced
 	icon_state = "displaced"
-	anchored = 0
+	anchored = FALSE
 	health = 50
 	cover = 25
 
@@ -79,19 +79,20 @@
 /obj/structure/girder/proc/displace()
 	name = "displaced [girder_material.display_name] [initial(name)]"
 	icon_state = "displaced"
-	anchored = 0
+	anchored = FALSE
 	health = (displaced_health - round(current_damage / 4))
 	cover = 25
 
-/obj/structure/girder/attack_generic(var/mob/user, var/damage, var/attack_message = "smashes apart")
+/obj/structure/girder/attack_generic(mob/user, damage, attack_message = "smashes apart")
 	if(damage < STRUCTURE_MIN_DAMAGE_THRESHOLD)
-		return 0
+		return FALSE
 	user.do_attack_animation(src)
-	visible_message("<span class='danger'>[user] [attack_message] the [src]!</span>")
-	spawn(1) dismantle()
-	return 1
+	visible_message(SPAN_DANGER("[user] [attack_message] the [src]!"))
+	spawn(1)
+		dismantle()
+	return TRUE
 
-/obj/structure/girder/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/girder/bullet_act(obj/item/projectile/Proj)
 	//Girders only provide partial cover. There's a chance that the projectiles will just pass through. (unless you are trying to shoot the girder)
 	if(Proj.original != src && !prob(cover))
 		return PROJECTILE_CONTINUE //pass through
@@ -109,7 +110,7 @@
 		damage = round(new_damage)
 		Proj.damage = outgoing_damage
 
-		visible_message("<span class='danger'>\The [src] reflects \the [Proj]!</span>")
+		visible_message(SPAN_DANGER("\The [src] reflects \the [Proj]!"))
 
 		// Find a turf near or on the original location to bounce to
 		var/new_x = Proj.starting.x + pick(0, 0, 0, -1, 1, -2, 2)
@@ -132,9 +133,12 @@
 /obj/structure/girder/blob_act()
 	dismantle()
 
+/obj/structure/girder/CanFluidPass(coming_from)
+	return TRUE
+
 /obj/structure/girder/proc/reset_girder()
 	name = "[girder_material.display_name] [initial(name)]"
-	anchored = 1
+	anchored = TRUE
 	cover = initial(cover)
 	health = min(max_health - current_damage,max_health)
 	state = 0
@@ -143,7 +147,7 @@
 	if(reinf_material)
 		reinforce_girder()
 
-/obj/structure/girder/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/girder/attackby(obj/item/W, mob/user)
 	if(W.is_wrench() && state == 0)
 		if(anchored && !reinf_material)
 			playsound(src, W.usesound, 100, 1)
@@ -212,7 +216,7 @@
 	else
 		return ..()
 
-/obj/structure/girder/take_damage(var/damage)
+/obj/structure/girder/take_damage(damage)
 	health -= damage
 	if(health <= 0)
 		dismantle()
@@ -223,40 +227,40 @@
 /obj/structure/girder/proc/construct_wall(obj/item/stack/material/S, mob/user)
 	var/amount_to_use = reinf_material ? 1 : 2
 	if(S.get_amount() < amount_to_use)
-		to_chat(user, "<span class='notice'>There isn't enough material here to construct a wall.</span>")
-		return 0
+		to_chat(user, SPAN_NOTICE("There isn't enough material here to construct a wall."))
+		return FALSE
 
 	var/datum/material/M = name_to_material[S.default_type]
 	if(!istype(M))
-		return 0
+		return FALSE
 
 	var/wall_fake
 	add_hiddenprint(usr)
 
 	if(M.integrity < 50)
 		to_chat(user, "<span class='notice'>This material is too soft for use in wall construction.</span>")
-		return 0
+		return FALSE
 
 	to_chat(user, "<span class='notice'>You begin adding the plating...</span>")
 
 	if(!do_after(user,40) || !S.use(amount_to_use))
-		return 1 //once we've gotten this far don't call parent attackby()
+		return TRUE //once we've gotten this far don't call parent attackby()
 
 	if(anchored)
 		to_chat(user, "<span class='notice'>You added the plating!</span>")
 	else
 		to_chat(user, "<span class='notice'>You create a false wall! Push on it to open or close the passage.</span>")
-		wall_fake = 1
+		wall_fake = TRUE
 
 	var/turf/Tsrc = get_turf(src)
 	Tsrc.PlaceOnTop(/turf/simulated/wall)
 	var/turf/simulated/wall/T = get_turf(src)
 	T.set_material(M, reinf_material, girder_material)
 	if(wall_fake)
-		T.can_open = 1
+		T.can_open = TRUE
 	T.add_hiddenprint(usr)
 	qdel(src)
-	return 1
+	return TRUE
 
 /obj/structure/girder/proc/reinforce_with_material(obj/item/stack/material/S, mob/user) //if the verb is removed this can be renamed.
 	if(reinf_material)

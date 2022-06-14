@@ -1554,7 +1554,7 @@
 		if(stat == DEAD || paralysis || weakened || stunned || restrained() || buckled || LAZYLEN(grabbed_by) || has_buckled_mobs())
 			reveal(null)
 		else
-			set_base_layer(HIDING_LAYER)
+			set_base_layer(HIDING_MOB_LAYER)
 
 /mob/living/carbon/human/proc/get_display_species()
 	//Shows species in tooltip
@@ -1671,3 +1671,31 @@
 			LAZYOR(., SLOT_ICLOTHING)
 		if(wear_suit.flags_inv & HIDESHOES)
 			LAZYOR(., SLOT_FEET)
+
+/mob/living/carbon/human/can_drown()
+	if(!internal && (!istype(wear_mask) || !wear_mask.filters_water()))
+		var/obj/item/organ/internal/lungs/L = locate() in internal_organs
+		return (!L || L.can_drown())
+	return FALSE
+
+/mob/living/carbon/human/get_breath_from_environment(volume_needed = STD_BREATH_VOLUME)
+	var/datum/gas_mixture/breath = ..(volume_needed)
+	var/turf/T = get_turf(src)
+	if(istype(T) && T.is_flooded(lying) && should_have_organ(BP_LUNGS))
+		var/can_breathe_water = (istype(wear_mask) && wear_mask.filters_water()) ? TRUE : FALSE
+		if(!can_breathe_water)
+			var/obj/item/organ/internal/lungs/lungs = internal_organs_by_name[BP_LUNGS]
+			if(lungs && lungs.can_drown())
+				can_breathe_water = TRUE
+		if(can_breathe_water)
+			if(!breath)
+				breath = new
+				breath.volume = volume_needed
+				breath.temperature = T.temperature
+			breath.adjust_gas(GAS_OXYGEN, ONE_ATMOSPHERE * volume_needed/(R_IDEAL_GAS_EQUATION*T20C))
+			T.show_bubbles()
+	return breath
+
+/mob/living/carbon/human/water_act(depth)
+	species.water_act(src, depth)
+	..(depth)

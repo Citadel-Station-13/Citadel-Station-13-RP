@@ -39,7 +39,7 @@
 	name = "resin membrane"
 	desc = "Purple slime just thin enough to let light pass through."
 	icon_state = "resinmembrane"
-	opacity = 0
+	opacity = MOUSE_OPACITY_TRANSPARENT
 	health = 120
 
 /obj/effect/alien/resin/Initialize(mapload)
@@ -381,7 +381,7 @@ Alien plants should do something if theres a lot of poison
 	icon_state = "acid"
 
 	density = 0
-	opacity = 0
+	opacity = MOUSE_OPACITY_TRANSPARENT
 	anchored = 1
 
 	var/atom/target

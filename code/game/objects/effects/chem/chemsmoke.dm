@@ -3,7 +3,7 @@
 /////////////////////////////////////////////
 /obj/effect/smoke/chem
 	icon = 'icons/effects/chemsmoke.dmi'
-	opacity = 0
+	opacity = MOUSE_OPACITY_TRANSPARENT
 	time_to_live = 300
 	pass_flags = PASSTABLE | PASSGRILLE | PASSGLASS //PASSGLASS is fine here, it's just so the visual effect can "flow" around glass
 

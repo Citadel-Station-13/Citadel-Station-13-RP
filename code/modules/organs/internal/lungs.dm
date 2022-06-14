@@ -6,6 +6,7 @@
 	organ_tag = O_LUNGS
 	parent_organ = BP_TORSO
 
+	var/has_gills = FALSE
 	var/list/poison_types
 
 /obj/item/organ/internal/lungs/process(delta_time)
@@ -51,6 +52,9 @@
 		if(prob(1))
 			owner.custom_pain("You suddenly feel short of breath and take a sharp, painful breath!",1)
 			owner.adjustOxyLoss(30) //Look it's hard to simulate low O2 perfusion okay
+
+/obj/item/organ/internal/lungs/proc/can_drown()
+	return (is_broken() || !has_gills)
 
 /obj/item/organ/internal/lungs/grey
 	icon_state = "lungs_grey"

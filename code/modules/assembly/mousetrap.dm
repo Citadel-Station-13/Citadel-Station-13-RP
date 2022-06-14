@@ -123,5 +123,5 @@
 	if(usr.stat)
 		return
 
-	layer = HIDING_LAYER
+	layer = HIDING_MOB_LAYER
 	to_chat(usr, "<span class='notice'>You hide [src].</span>")

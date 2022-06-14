@@ -24,11 +24,11 @@
 	////#define COMSIG_MOB_CANCEL_CLICKON (1<<0)
 /// From base of mob/alt_click_on_secodary(): (atom/A)
 ////#define COMSIG_MOB_ALTCLICKON_SECONDARY "mob_altclickon_secondary"
-/// From base of /mob/living/simple_animal/bot/proc/bot_step()
+/// From base of /mob/living/simple_mob/bot/proc/bot_step()
 ////#define COMSIG_MOB_BOT_PRE_STEP "mob_bot_pre_step"
 	///? Should always match COMPONENT_MOVABLE_BLOCK_PRE_MOVE as these are interchangeable and used to block movement.
 	////#define COMPONENT_MOB_BOT_BLOCK_PRE_STEP COMPONENT_MOVABLE_BLOCK_PRE_MOVE
-/// From base of /mob/living/simple_animal/bot/proc/bot_step()
+/// From base of /mob/living/simple_mob/bot/proc/bot_step()
 ////#define COMSIG_MOB_BOT_STEP "mob_bot_step"
 
 /// From base of /client/Move()

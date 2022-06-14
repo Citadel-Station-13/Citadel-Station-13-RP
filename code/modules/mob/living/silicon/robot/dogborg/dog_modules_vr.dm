@@ -215,7 +215,7 @@
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if(user.client && (target in user.client.screen))
 		to_chat(user, "<span class='warning'>You need to take \the [target.name] off before cleaning it!</span>")
-	if(istype(target, /obj/structure/sink) || istype(target, /obj/structure/toilet)) //Dog vibes.
+	if(istype(target, /obj/structure/hygiene/sink) || istype(target, /obj/structure/hygiene/toilet)) //Dog vibes.
 		user.visible_message("[user] begins to lap up water from [target.name].", "<span class='notice'>You begin to lap up water from [target.name].</span>")
 		if(do_after (user, 50))
 			water.add_charge(500)

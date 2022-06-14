@@ -309,10 +309,10 @@
 	if(src in KA.modkits) // Sanity check to prevent installing the same modkit twice thanks to occasional click/lag delays.
 		return FALSE
 	// if(minebot_upgrade)
-	// 	if(minebot_exclusive && !istype(KA.loc, /mob/living/simple_animal/hostile/mining_drone))
+	// 	if(minebot_exclusive && !istype(KA.loc, /mob/living/simple_mob/hostile/mining_drone))
 	// 		to_chat(user, "<span class='notice'>The modkit you're trying to install is only rated for minebot use.</span>")
 	// 		return FALSE
-	// else if(istype(KA.loc, /mob/living/simple_animal/hostile/mining_drone))
+	// else if(istype(KA.loc, /mob/living/simple_mob/hostile/mining_drone))
 	// 	to_chat(user, "<span class='notice'>The modkit you're trying to install is not rated for minebot use.</span>")
 	// 	return FALSE
 	if(denied_type)

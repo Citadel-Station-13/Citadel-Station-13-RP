@@ -17,7 +17,7 @@
 	///Tooltip description
 	var/tt_desc = null
 
-	//* Settings for played mobs *//
+//! ## SETTINGS
 	/// Does the percentage health show in the stat panel for the mob
 	var/show_stat_health = TRUE
 	/// Set to TRUE to enable the use of hands and the hands hud
@@ -37,7 +37,7 @@
 	/// Message to print to players about 'how' to play this mob on login.
 	var/player_msg
 
-	//* Mob icon/appearance settings *//
+//! ## APPEARANCE
 	/// The iconstate if we're alive. //!REQUIRED
 	var/icon_living = ""
 	/// The iconstate if we're dead. //!REQUIRED
@@ -57,13 +57,13 @@
 	///Just the default
 	attack_icon_state = "slash"
 
-	//* Mob talking settings *//
+//! ## SPEECH
 	/// Can all mobs in the entire universe understand this one?
 	universal_speak = 0
 	/// Text name of their language if they speak something other than galcom. They speak the first one.
 	var/has_langs = list(LANGUAGE_GALCOM)
 
-	//* Movement things. *//
+//! ## MOVEMENT
 	/// Lower is faster.
 	var/movement_cooldown = 5
 	/// If set, will play this sound when it moves on its own will.
@@ -75,7 +75,7 @@
 	/// If set, the mob will move through fluids with no hinderance.
 	var/aquatic_movement = 0
 
-	//* Mob interaction *//
+//! ## INTERACTIONS
 	/// If clicked on help intent.
 	var/response_help   = "tries to help"
 	/// If clicked on disarm intent.
@@ -91,7 +91,7 @@
 	/// An ID card if they have one to give them access to stuff.
 	var/obj/item/card/id/access_card
 
-	//* Mob environment settings *//
+//! ## ENVIRONMENT SETTINGS
 	/// Minimum "okay" temperature in kelvin
 	var/minbodytemp = 250
 	/// Maximum of above
@@ -121,11 +121,11 @@
 	/// This damage is taken when atmos doesn't fit all the requirements set.
 	var/unsuitable_atoms_damage = 2
 
-	//* Hostility settings *//
+//! ## HOSTILITY
 	/// Is the mob weak to tasers?
 	var/taser_kill = 1
 
-	//* Attack ranged settings *//
+//! RANGED ATTACKS
 	/// The projectiles I shoot.
 	var/projectiletype
 	/// The sound I make when I do it
@@ -137,7 +137,7 @@
 	/// What to make the hugely laggy casings pile out of.
 	var/casingtype
 
-	//* Reloading settings, part of ranged code *//
+//! ## RANGED RELOADING
 	/// If TRUE, mob needs to reload occasionally.
 	var/needs_reload = FALSE
 	/// How many shots the mob gets before it has to reload, will not be used if needs_reload is FALSE
@@ -149,7 +149,7 @@
 	/// What sound gets played when the mob successfully reloads. Defaults to the same sound as reloading guns. Can be null.
 	var/reload_sound = 'sound/weapons/flipblade.ogg'
 
-	//* Mob melee settings *//
+//! ## MELEE
 	/// Lower bound of randomized melee damage.
 	var/melee_damage_lower = 2
 	/// Upper bound of randomized melee damage.
@@ -178,7 +178,7 @@
 	/// If set, the mob will do a windup animation and can miss if the target moves out of the way.
 	var/special_attack_delay = null
 
-	//* Special attacks *//
+//! ## SPECIAL ATTACKS
 	/// The chance to ATTEMPT a special_attack_target(). If it fails, it will do a regular attack instead.
 	//? This is commented out to ease the AI attack logic by being (a bit more) determanistic.
 	//? You should instead limit special attacks using the below vars instead.
@@ -195,43 +195,43 @@
 	/// world.time when a special attack occured last, for cooldown calculations.
 	var/last_special_attack = null
 
-	//* Damage resistances *//
+//! ## DMG RESISTANCES
 	/// Chance for a grab attempt to fail. Note that this is not a true resist and is just a prob() of failure.
 	var/grab_resist = 0
 	/// Damage reduction for all types
 	var/resistance = 0
 	/// Values for normal getarmor() checks
 	var/list/armor = list(
-				"melee" = 0,
-				"bullet" = 0,
-				"laser" = 0,
-				"energy" = 0,
-				"bomb" = 0,
-				"bio" = 100,
-				"rad" = 100
-				)
+		"melee" = 0,
+		"bullet" = 0,
+		"laser" = 0,
+		"energy" = 0,
+		"bomb" = 0,
+		"bio" = 100,
+		"rad" = 100
+	)
 	/// Values for getsoak() checks.
 	var/list/armor_soak = list(
-				"melee" = 0,
-				"bullet" = 0,
-				"laser" = 0,
-				"energy" = 0,
-				"bomb" = 0,
-				"bio" = 0,
-				"rad" = 0
-				)
+		"melee" = 0,
+		"bullet" = 0,
+		"laser" = 0,
+		"energy" = 0,
+		"bomb" = 0,
+		"bio" = 0,
+		"rad" = 0
+	)
 	// Protection against heat/cold/electric/water effects.
 	// 0 is no protection, 1 is total protection. Negative numbers increase vulnerability.
-	var/heat_resist = 0.0
-	var/cold_resist = 0.0
-	var/shock_resist = 0.0
-	var/water_resist = 1.0
-	var/poison_resist = 0.0
+	var/heat_resist = 0
+	var/cold_resist = 0
+	var/shock_resist = 0
+	var/water_resist = 1
+	var/poison_resist = 0
 
 	/// Stops injections and "injections".
 	var/thick_armor = FALSE
 
-	//* Cult stuff. *//
+//! ## CULT VARS
 	var/purge = 0
 	var/supernatural = FALSE
 
@@ -250,7 +250,7 @@
 	/// Used for if the mob can drop limbs. Overrides the icon cache key, so it doesn't keep remaking the icon needlessly.
 	var/limb_icon_key
 
-//* randomization code. *//
+
 /mob/living/simple_mob/proc/randomize()
 	if(randomized == TRUE)
 		var/mod = rand(mod_min,mod_max)/100
@@ -301,7 +301,7 @@
 	to_chat(src,"<b>You are \the [src].</b> [player_msg]")
 
 
-/mob/living/simple_mob/emote(var/act, var/type, var/desc)
+/mob/living/simple_mob/emote(act, type, desc)
 	if(act)
 		..(act, type, desc)
 
@@ -371,7 +371,7 @@
 	update_icon()
 
 
-/mob/living/simple_mob/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+/mob/living/simple_mob/say(message, datum/language/speaking, verb="says", alt_name="", whispering = FALSE)
 	verb = "says"
 	if(speak_emote.len)
 		verb = pick(speak_emote)
@@ -380,7 +380,7 @@
 
 	return ..()
 
-/mob/living/simple_mob/get_speech_ending(verb, var/ending)
+/mob/living/simple_mob/get_speech_ending(verb, ending)
 	return verb
 
 
@@ -437,7 +437,7 @@
 	return "<i>[tt_desc]</i>"
 
 /// Override for special butchering checks.
-/mob/living/simple_mob/can_butcher(var/mob/user, var/obj/item/I)
+/mob/living/simple_mob/can_butcher(mob/user, obj/item/I)
 	. = ..()
 	if(. && (!is_sharp(I) || !has_edge(I)))
 		return FALSE

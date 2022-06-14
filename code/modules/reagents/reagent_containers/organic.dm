@@ -26,7 +26,7 @@
 		/obj/machinery/reagentgrinder,
 		/obj/structure/table,
 		/obj/structure/closet,
-		/obj/structure/sink,
+		/obj/structure/hygiene/sink,
 		/obj/item/storage,
 		/obj/item/storage/secure/safe,
 		/obj/machinery/disposal,

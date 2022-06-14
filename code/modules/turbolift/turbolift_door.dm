@@ -2,7 +2,7 @@
 	name = "Elevator Door"
 	desc = "Ding."
 	req_access = list(access_maint_tunnels)
-	opacity = 0
+	opacity = MOUSE_OPACITY_TRANSPARENT
 	autoclose = 0
 	glass = 1
 	icon = 'icons/obj/doors/doorlift.dmi'

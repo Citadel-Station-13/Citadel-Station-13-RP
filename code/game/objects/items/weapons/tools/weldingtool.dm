@@ -11,8 +11,8 @@
 	tool_behaviour = TOOL_WELDER
 
 	//Amount of OUCH when it's thrown
-	force = 3.0
-	throwforce = 5.0
+	force = 3
+	throwforce = 5
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
@@ -23,23 +23,35 @@
 	//R&D tech level
 	origin_tech = list(TECH_ENGINEERING = 1)
 
-	//Welding tool specific stuff
-	var/welding = 0 	//Whether or not the welding tool is off(0), on(1) or currently welding(2)
-	var/status = 1 		//Whether the welder is secured or unsecured (able to attach rods to it to make a flamethrower)
-	var/max_fuel = 20 	//The max amount of fuel the welder can hold
+	toolspeed = 1
+	usesound = 'sound/items/Welder2.ogg'
+	drop_sound = 'sound/items/drop/weldingtool.ogg'
+	pickup_sound = 'sound/items/pickup/weldingtool.ogg'
+	waterproof = FALSE
+
+	/// Whether or not the welding tool is off(0), on(1) or currently welding(2)
+	var/welding = 0
+	/// Whether the welder is secured or unsecured (able to attach rods to it to make a flamethrower)
+	var/status = 1
+	/// The max amount of fuel the welder can hold
+	var/max_fuel = 20
 
 	var/acti_sound = 'sound/items/welderactivate.ogg'
 	var/deac_sound = 'sound/items/welderdeactivate.ogg'
-	usesound = 'sound/items/Welder2.ogg'
+
 	var/change_icons = TRUE
-	var/flame_intensity = 2 //how powerful the emitted light is when used.
-	var/flame_color = "#FF9933" // What color the welder light emits when its on.  Default is an orange-ish color.
-	var/eye_safety_modifier = 0 // Increasing this will make less eye protection needed to stop eye damage.  IE at 1, sunglasses will fully protect.
-	var/burned_fuel_for = 0 // Keeps track of how long the welder's been on, used to gradually empty the welder if left one, without RNG.
-	var/always_process = FALSE // If true, keeps the welder on the process list even if it's off.  Used for when it needs to regenerate fuel.
-	toolspeed = 1
-	drop_sound = 'sound/items/drop/weldingtool.ogg'
-	pickup_sound = 'sound/items/pickup/weldingtool.ogg'
+	/// How powerful the emitted light is when used.
+	var/flame_intensity = 2
+	/// What color the welder light emits when its on.  Default is an orange-ish color.
+	var/flame_color = "#FF9933"
+	/// Increasing this will make less eye protection needed to stop eye damage.  IE at 1, sunglasses will fully protect.
+	var/eye_safety_modifier = 0
+	/// Keeps track of how long the welder's been on, used to gradually empty the welder if left one, without RNG.
+	var/burned_fuel_for = 0
+	/// If true, keeps the welder on the process list even if it's off.  Used for when it needs to regenerate fuel.
+	var/always_process = FALSE
+
+	var/welding_resource = "welding fuel"
 
 /obj/item/weldingtool/Initialize(mapload)
 	. = ..()
@@ -62,6 +74,11 @@
 	if(max_fuel)
 		. += "[icon2html(thing = src, target = world)] The [src.name] contains [get_fuel()]/[src.max_fuel] units of fuel!"
 
+
+/obj/item/weldingtool/water_act()
+	if(welding && !waterproof)
+		setWelding(0)
+
 /obj/item/weldingtool/attack(atom/A, mob/living/user, def_zone)
 	if(ishuman(A) && user.a_intent == INTENT_HELP)
 		var/mob/living/carbon/human/H = A
@@ -71,12 +88,12 @@
 			return ..()
 
 		if(!welding)
-			to_chat(user, "<span class='warning'>You'll need to turn [src] on to patch the damage on [H]'s [S.name]!</span>")
-			return 1
+			to_chat(user, SPAN_WARNING("You'll need to turn [src] on to patch the damage on [H]'s [S.name]!"))
+			return TRUE
 
 		if(S.robo_repair(15, BRUTE, "some dents", src, user))
 			remove_fuel(1, user)
-			return 1
+			return TRUE
 
 	return ..()
 
@@ -122,7 +139,7 @@
 		++burned_fuel_for
 		if(burned_fuel_for >= WELDER_FUEL_BURN_INTERVAL)
 			remove_fuel(1)
-		if(get_fuel() < 1)
+		if((!waterproof && submerged()) || get_fuel() < 1)
 			setWelding(0)
 		else			//Only start fires when its on and has enough fuel to actually keep working
 			var/turf/location = src.loc
@@ -256,8 +273,14 @@
 
 //Sets the welding state of the welding tool. If you see W.welding = 1 anywhere, please change it to W.setWelding(1)
 //so that the welding tool updates accordingly
-/obj/item/weldingtool/proc/setWelding(var/set_welding, var/mob/M)
-	if(!status)	return
+/obj/item/weldingtool/proc/setWelding(set_welding, mob/M)
+	if(!status)
+		return
+
+	if(!welding && !waterproof && submerged())
+		if(M)
+			to_chat(M, SPAN_WARNING("You cannot light \the [src] underwater."))
+		return
 
 	var/turf/T = get_turf(src)
 	//If we're turning it on

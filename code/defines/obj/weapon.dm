@@ -1,3 +1,4 @@
+//TODO: SEPERATE ALL THIS SHIT
 /obj/item/phone
 	name = "red phone"
 	desc = "Should anything ever go wrong..."
@@ -16,40 +17,12 @@
 	desc = "A device used to rapidly deploy seeds."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "rcd"
-	opacity = 0
-	density = 0
-	anchored = 0.0
+	opacity = MOUSE_OPACITY_TRANSPARENT
+	density = FALSE
+	anchored = FALSE
 	var/stored_matter = 0
 	var/mode = 1
 	w_class = ITEMSIZE_NORMAL
-
-/obj/item/soap
-	name = "soap"
-	desc = "A cheap bar of soap. Doesn't smell."
-	gender = PLURAL
-	icon = 'icons/obj/items.dmi'
-	icon_state = "soap"
-	flags = NOCONDUCT
-	w_class = ITEMSIZE_SMALL
-	slot_flags = SLOT_HOLSTER
-	throwforce = 0
-	throw_speed = 4
-	throw_range = 20
-
-/obj/item/soap/nanotrasen
-	desc = "A NanoTrasen-brand bar of soap. Smells of phoron."
-	icon_state = "soapnt"
-
-/obj/item/soap/deluxe
-	icon_state = "soapdeluxe"
-
-/obj/item/soap/deluxe/Initialize(mapload)
-	. = ..()
-	desc = "A deluxe Waffle Co. brand bar of soap. Smells of [pick("lavender", "vanilla", "strawberry", "chocolate" ,"space")]."
-
-/obj/item/soap/syndie
-	desc = "An untrustworthy bar of soap. Smells of fear."
-	icon_state = "soapsyndie"
 
 /obj/item/bikehorn
 	name = "bike horn"

@@ -26,6 +26,8 @@
 	var/throwpass = FALSE
 	/// The higher the germ level, the more germ on the atom.
 	var/germ_level = GERM_LEVEL_AMBIENT
+	/// Filter for actions - used by lighting overlays.
+	var/simulated = TRUE
 	/// The 'action' the atom takes to speak.
 	var/atom_say_verb = "says"
 	/// What icon the atom uses for speechbubbles.

@@ -287,7 +287,7 @@ obj/machinery/door/blast/regular
 obj/machinery/door/blast/regular/open
 	icon_state = "pdoor0"
 	density = 0
-	opacity = 0
+	opacity = MOUSE_OPACITY_TRANSPARENT
 
 // SUBTYPE: Shutters
 // Nicer looking, and also weaker, shutters. Found in kitchen and similar areas.

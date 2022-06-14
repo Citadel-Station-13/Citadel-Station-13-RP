@@ -30,7 +30,7 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "m_shield"
 	anchored = 1.0
-	opacity = 0
+	opacity = MOUSE_OPACITY_TRANSPARENT
 	density = 1
 	unacidable = 1
 	invisibility = 101

@@ -49,6 +49,7 @@
 	origin_tech = list(TECH_COMBAT = 1)
 	attack_verb = list("struck", "hit", "bashed")
 	zoomdevicename = "scope"
+	waterproof = FALSE
 
 	var/burst = 1
 	var/fire_delay = 6 	//delay after shooting before the gun can be used again
@@ -378,14 +379,16 @@
 		src.add_fingerprint(usr)
 
 /obj/item/gun/proc/Fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
-	if(!user || !target) return
-	if(target.z != user.z) return
+	if(!user || !target)
+		return
+	if(target.z != user.z)
+		return
 
 	add_fingerprint(user)
 
 	user.break_cloak()
 
-	if(!special_check(user))
+	if((!waterproof && submerged()) || !special_check(user))
 		return
 
 	if(world.time < next_fire_time)

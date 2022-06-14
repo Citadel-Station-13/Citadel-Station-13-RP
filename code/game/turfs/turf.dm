@@ -74,6 +74,11 @@
 	/// For if you explicitly want a turf to not be affected by shield generators
 	var/noshield = FALSE
 
+	var/fluid_can_pass
+	var/obj/effect/flood/flood_object
+	var/fluid_blocked_dirs = 0
+	var/flooded // Whether or not this turf is absolutely flooded ie. a water source.
+
 /turf/vv_edit_var(var_name, new_value)
 	var/static/list/banned_edits = list(NAMEOF(src, x), NAMEOF(src, y), NAMEOF(src, z))
 	if(var_name in banned_edits)
@@ -137,6 +142,8 @@
 	if(T)
 		T.multiz_turf_del(src, UP)
 */
+	fluid_update()
+	REMOVE_ACTIVE_FLUID_SOURCE(src)
 	if(force)
 		..()
 		//this will completely wipe turf state
@@ -150,6 +157,16 @@
 	flags &= ~INITIALIZED
 	// requires_activation = FALSE
 	..()
+
+/turf/update_icon()
+	update_flood_overlay()
+
+/turf/proc/update_flood_overlay()
+	if(is_flooded(absolute = TRUE))
+		if(!flood_object)
+			flood_object = new(src)
+	else if(flood_object)
+		QDEL_NULL(flood_object)
 
 /turf/ex_act(severity)
 	return 0

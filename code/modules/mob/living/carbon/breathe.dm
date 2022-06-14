@@ -11,8 +11,8 @@
 
 	var/datum/gas_mixture/breath = null
 
-	//First, check if we can breathe at all
-	if(health < config_legacy.health_threshold_crit && !(CE_STABLE in chem_effects)) //crit aka circulatory shock
+	//First, check if we can breathe at all //TODO: port is_asystole from bay
+	if(handle_drowning() || health < config_legacy.health_threshold_crit && !(CE_STABLE in chem_effects)) //crit aka circulatory shock
 		AdjustLosebreath(1)
 
 	if(losebreath>0) //Suffocating so do not take a breath

@@ -28,9 +28,10 @@
 	. = ..()
 	if(mapload)
 		levelupdate()
+		fluid_update()
 
 // This is not great.
-/turf/simulated/proc/wet_floor(var/wet_val = 1)
+/turf/simulated/proc/wet_floor(wet_val = 1)
 	if(wet > 2)	//Can't mop up ice
 		return
 	spawn(0)

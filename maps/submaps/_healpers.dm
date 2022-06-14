@@ -36,7 +36,7 @@
 	name = "use a subtype! - stairs"
 	icon = 'icons/obj/stairs.dmi'
 	density = 1
-	opacity = 0
+	opacity = MOUSE_OPACITY_TRANSPARENT
 	anchored = 1
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER

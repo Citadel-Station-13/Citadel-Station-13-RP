@@ -5,7 +5,7 @@
 	desc = "Stairs leading to another deck.  Not too useful if the gravity goes out."
 	icon = 'icons/obj/structures/multiz.dmi'
 	icon_state = "stair"
-	opacity = 0
+	opacity = MOUSE_OPACITY_TRANSPARENT
 	density = 0
 	anchored = 1
 	layer = STAIRS_LAYER

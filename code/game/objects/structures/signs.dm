@@ -1,7 +1,7 @@
 /obj/structure/sign
 	icon = 'icons/obj/decals.dmi'
 	anchored = 1
-	opacity = 0
+	opacity = MOUSE_OPACITY_TRANSPARENT
 	density = 0
 	plane = OBJ_PLANE
 	layer = ABOVE_JUNK_LAYER

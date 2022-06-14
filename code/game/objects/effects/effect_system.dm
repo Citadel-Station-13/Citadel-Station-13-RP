@@ -204,7 +204,7 @@ steam.start() -- spawns the effect
 
 /obj/effect/smoke/illumination
 	name = "illumination"
-	opacity = 0
+	opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "sparks"
 

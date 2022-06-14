@@ -32,7 +32,7 @@
 			var/turf/T = i
 			for(var/obj/structure/spawner/nest in T)
 				qdel(nest)
-			for(var/mob/living/simple_animal/monster in T)
+			for(var/mob/living/simple_mob/monster in T)
 				qdel(monster)
 			for(var/obj/structure/flora/ash/plant in T)
 				qdel(plant)

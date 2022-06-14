@@ -4085,7 +4085,7 @@ END CITADEL CHANGE */
 	var/composition_reagent
 	var/composition_reagent_quantity
 
-/mob/living/simple_animal/adultslime
+/mob/living/simple_mob/adultslime
 	composition_reagent = "slimejelly"
 
 /mob/living/carbon/slime
@@ -4097,13 +4097,13 @@ END CITADEL CHANGE */
 /mob/living/simple_mob/slime
 	composition_reagent = "slimejelly"
 
-/mob/living/simple_animal
+/mob/living/simple_mob
 	var/kitchen_tag = "animal" //Used for cooking with animals
 
-/mob/living/simple_animal/mouse
+/mob/living/simple_mob/mouse
 	kitchen_tag = "rodent"
 
-/mob/living/simple_animal/lizard
+/mob/living/simple_mob/lizard
 	kitchen_tag = "lizard"
 
 /obj/item/reagent_containers/food/snacks/sliceable/cheesewheel

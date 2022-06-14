@@ -12,7 +12,7 @@
 /obj/effect/mark_spell
 	name = "mark"
 	desc = "This is a strange looking disturbance."
-	opacity = 0
+	opacity = MOUSE_OPACITY_TRANSPARENT
 	density = 0
 	anchored = 1
 
@@ -108,4 +108,3 @@
 	else
 		to_chat(user, "<span class='warning'>You can't afford the energy cost!</span>")
 		return 0
-

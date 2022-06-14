@@ -4,7 +4,7 @@
 	icon_state = "ladder01"
 	icon = 'icons/obj/structures/multiz.dmi'
 	density = 0
-	opacity = 0
+	opacity = MOUSE_OPACITY_TRANSPARENT
 	anchored = 1
 
 	var/allowed_directions = DOWN

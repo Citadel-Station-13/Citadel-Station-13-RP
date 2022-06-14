@@ -7,17 +7,16 @@
 	icon_state = "steel"
 	initial_flooring = null
 
-/turf/simulated/floor/fixed/attackby(var/obj/item/C, var/mob/user)
-	if(istype(C, /obj/item/stack) && !istype(C, /obj/item/stack/cable_coil))
+/turf/simulated/floor/fixed/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/stack) && !istype(I, /obj/item/stack/cable_coil))
 		return
 	return ..()
 
 /turf/simulated/floor/fixed/update_icon()
-	return
+	update_flood_overlay()
 
 /turf/simulated/floor/fixed/is_plating()
-	return 0
+	return FALSE
 
 /turf/simulated/floor/fixed/set_flooring()
 	return
-

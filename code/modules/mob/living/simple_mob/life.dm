@@ -15,6 +15,8 @@
 	handle_special()
 	handle_guts()
 
+	handle_atmos()
+
 	return TRUE
 
 
@@ -168,3 +170,40 @@
 		update_icon()
 
 	return ..(gibbed,deathmessage)
+
+/mob/living/simple_mob/proc/handle_atmos(atmos_suitable = TRUE)
+	//Atmos
+	if(!loc)
+		return
+
+	var/datum/gas_mixture/environment = loc.return_air()
+	if(environment)
+
+		if(abs(environment.temperature - bodytemperature) > 40 )
+			bodytemperature += ((environment.temperature - bodytemperature) / 5)
+
+		 // don't bother checking it twice if we got a supplied 0 val.
+		if(atmos_suitable)
+			if(LAZYLEN(min_gas))
+				for(var/gas in min_gas)
+					if(environment.gas[gas] < min_gas[gas])
+						atmos_suitable = 0
+						break
+			if(atmos_suitable && LAZYLEN(max_gas))
+				for(var/gas in max_gas)
+					if(environment.gas[gas] < max_gas[gas])
+						atmos_suitable = 0
+						break
+
+	//Atmos effect
+	if(bodytemperature < minbodytemp)
+		fire_alert = 2
+		adjustBruteLoss(cold_damage_per_tick)
+	else if(bodytemperature > maxbodytemp)
+		fire_alert = 1
+		adjustBruteLoss(heat_damage_per_tick)
+	else
+		fire_alert = 0
+
+	if(!atmos_suitable)
+		adjustBruteLoss(unsuitable_atoms_damage)

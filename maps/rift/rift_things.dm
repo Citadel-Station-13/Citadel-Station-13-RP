@@ -286,10 +286,10 @@
 	prob_fall = 50
 	guard = 20
 	mobs_to_pick_from = list(
-		/mob/living/simple_animal/hostile/jelly = 3,
-		/mob/living/simple_animal/hostile/giant_spider/hunter = 1,
-		/mob/living/simple_animal/hostile/giant_spider/phorogenic = 1,
-		/mob/living/simple_animal/hostile/giant_spider/lurker = 1,
+		/mob/living/simple_mob/hostile/jelly = 3,
+		/mob/living/simple_mob/hostile/giant_spider/hunter = 1,
+		/mob/living/simple_mob/hostile/giant_spider/phorogenic = 1,
+		/mob/living/simple_mob/hostile/giant_spider/lurker = 1,
 	)
 
 /obj/tether_away_spawner/underdark_hard
@@ -300,9 +300,9 @@
 	prob_fall = 50
 	guard = 20
 	mobs_to_pick_from = list(
-		/mob/living/simple_animal/hostile/corrupthound = 1,
-		/mob/living/simple_animal/hostile/rat = 1,
-		/mob/living/simple_animal/hostile/mimic = 1
+		/mob/living/simple_mob/hostile/corrupthound = 1,
+		/mob/living/simple_mob/hostile/rat = 1,
+		/mob/living/simple_mob/hostile/mimic = 1
 	)
 
 /obj/tether_away_spawner/underdark_boss
@@ -313,7 +313,7 @@
 	prob_fall = 100
 	guard = 70
 	mobs_to_pick_from = list(
-		/mob/living/simple_animal/hostile/dragon = 1
+		/mob/living/simple_mob/hostile/dragon = 1
 	)
 
 /obj/machinery/camera/network/research/xenobio

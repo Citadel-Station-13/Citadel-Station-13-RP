@@ -29,7 +29,7 @@
 		/obj/machinery/reagentgrinder,
 		/obj/structure/table,
 		/obj/structure/closet,
-		/obj/structure/sink,
+		/obj/structure/hygiene/sink,
 		/obj/item/storage,
 		/obj/machinery/atmospherics/component/unary/cryo_cell,
 		/obj/machinery/dna_scannernew,

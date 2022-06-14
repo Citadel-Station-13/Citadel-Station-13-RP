@@ -6,7 +6,7 @@
 	icon = 'icons/obj/machines/implantchair.dmi'
 	icon_state = "implantchair"
 	density = 1
-	opacity = 0
+	opacity = MOUSE_OPACITY_TRANSPARENT
 	anchored = 1
 
 	var/ready = 1

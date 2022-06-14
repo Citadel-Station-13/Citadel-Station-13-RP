@@ -175,7 +175,7 @@
 	name = "resin membrane"
 	desc = "Purple slime just thin enough to let light pass through."
 	icon_state = "resinmembrane"
-	opacity = 0
+	opacity = MOUSE_OPACITY_TRANSPARENT
 	health = 120
 
 /obj/effect/alien/hybrid_resin/Initialize(mapload)

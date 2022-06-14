@@ -1,5 +1,5 @@
 //An AI-controlled 'companion' for the Technomancer.  It's tough, strong, and can also use spells.
-/mob/living/simple_animal/technomancer_golem
+/mob/living/simple_mob/technomancer_golem
 	name = "G.O.L.E.M."
 	desc = "A rather unusual looking synthetic."
 	icon = 'icons/mob/mob.dmi'
@@ -83,24 +83,24 @@
 		"golem_sword_attack_4" = 3
 	)
 
-/mob/living/simple_animal/technomancer_golem/Initialize(mapload)
+/mob/living/simple_mob/technomancer_golem/Initialize(mapload)
 	. = ..()
 	core = new(src)
 	sword_image = image(icon, src, "golem_sword")
 	spell_image = image(icon, src, "golem_spell")
 	update_icon()
 
-/mob/living/simple_animal/technomancer_golem/Destroy()
+/mob/living/simple_mob/technomancer_golem/Destroy()
 	qdel(core)
 	qdel(sword_image)
 	qdel(spell_image)
 	return ..()
 
-/mob/living/simple_animal/technomancer_golem/unref_spell()
+/mob/living/simple_mob/technomancer_golem/unref_spell()
 	active_spell = null
 	return ..()
 
-/mob/living/simple_animal/hostile/hivebot/death()
+/mob/living/simple_mob/hostile/hivebot/death()
 	..()
 	visible_message("\The [src] disintegrates!")
 	new /obj/effect/decal/cleanable/blood/gibs/robot(src.loc)
@@ -109,7 +109,7 @@
 	s.start()
 	qdel(src)
 
-/mob/living/simple_animal/technomancer_golem/update_icon()
+/mob/living/simple_mob/technomancer_golem/update_icon()
 	overlays.Cut()
 	overlays += sword_image
 	overlays += spell_image
@@ -129,34 +129,34 @@
 		I.icon_state = reset_to
 		overlays += I
 
-/mob/living/simple_animal/technomancer_golem/proc/spellcast_pre_animation()
+/mob/living/simple_mob/technomancer_golem/proc/spellcast_pre_animation()
 	setClickCooldown(5)
 	manual_flick(spell_pre_attack_states, spell_image, reset_to = "golem_spell_attack_3")
 
-/mob/living/simple_animal/technomancer_golem/proc/spellcast_post_animation()
+/mob/living/simple_mob/technomancer_golem/proc/spellcast_post_animation()
 	setClickCooldown(8)
 	manual_flick(spell_post_attack_states, spell_image, reset_to = "golem_spell")
 
-/mob/living/simple_animal/technomancer_golem/proc/sword_pre_animation()
+/mob/living/simple_mob/technomancer_golem/proc/sword_pre_animation()
 	setClickCooldown(6)
 	manual_flick(sword_pre_attack_states, sword_image)
 
-/mob/living/simple_animal/technomancer_golem/proc/sword_post_animation()
+/mob/living/simple_mob/technomancer_golem/proc/sword_post_animation()
 	setClickCooldown(3)
 	manual_flick(sword_post_attack_states, sword_image, reset_to = "golem_sword")
 
-/mob/living/simple_animal/technomancer_golem/DoPunch(var/atom/A)
+/mob/living/simple_mob/technomancer_golem/DoPunch(var/atom/A)
 	sword_pre_animation()
 	. = ..() // This does the actual attack and will check adjacency again.
 	sword_post_animation()
 
-/mob/living/simple_animal/technomancer_golem/isSynthetic()
+/mob/living/simple_mob/technomancer_golem/isSynthetic()
 	return TRUE // So Mend Synthetic will work on them.
 
-/mob/living/simple_animal/technomancer_golem/speech_bubble_appearance()
+/mob/living/simple_mob/technomancer_golem/speech_bubble_appearance()
 	return "synthetic_evil"
 
-/mob/living/simple_animal/technomancer_golem/place_spell_in_hand(var/path)
+/mob/living/simple_mob/technomancer_golem/place_spell_in_hand(var/path)
 	if(!path || !ispath(path))
 		return 0
 
@@ -166,7 +166,7 @@
 	var/obj/item/spell/S = new path(src)
 	active_spell = S
 
-/mob/living/simple_animal/technomancer_golem/verb/test_giving_spells()
+/mob/living/simple_mob/technomancer_golem/verb/test_giving_spells()
 	var/choice = input(usr, "What spell?", "Give spell") as null|anything in known_spells
 	if(choice)
 		place_spell_in_hand(known_spells[choice])
@@ -174,14 +174,14 @@
 		qdel(active_spell)
 
 // Used to cast spells.
-/mob/living/simple_animal/technomancer_golem/RangedAttack(var/atom/A, var/params)
+/mob/living/simple_mob/technomancer_golem/RangedAttack(var/atom/A, var/params)
 	if(active_spell)
 		spellcast_pre_animation()
 		if(active_spell.cast_methods & CAST_RANGED)
 			active_spell.on_ranged_cast(A, src)
 		spellcast_post_animation()
 
-/mob/living/simple_animal/technomancer_golem/UnarmedAttack(var/atom/A, var/proximity)
+/mob/living/simple_mob/technomancer_golem/UnarmedAttack(var/atom/A, var/proximity)
 	if(proximity)
 		if(active_spell)
 			spellcast_pre_animation()
@@ -198,27 +198,27 @@
 		else
 			..()
 
-/mob/living/simple_animal/technomancer_golem/get_technomancer_core()
+/mob/living/simple_mob/technomancer_golem/get_technomancer_core()
 	return core
 
-/mob/living/simple_animal/technomancer_golem/proc/bind_to_mob(mob/user)
+/mob/living/simple_mob/technomancer_golem/proc/bind_to_mob(mob/user)
 	if(!user || master)
 		return
 	master = user
 	name = "[master]'s [initial(name)]"
 
-/mob/living/simple_animal/technomancer_golem/examine(mob/user)
+/mob/living/simple_mob/technomancer_golem/examine(mob/user)
 	. = ..()
 	if(user.mind && technomancers.is_antagonist(user.mind))
 		. += "Your pride and joy.  It's a very special synthetic robot, capable of using functions similar to you, and you built it \
 		yourself!  It'll always stand by your side, ready to help you out.  You have no idea what GOLEM stands for, however..."
 
-/mob/living/simple_animal/technomancer_golem/Life()
+/mob/living/simple_mob/technomancer_golem/Life()
 	..()
 	handle_ai()
 
 // This is where the real spaghetti begins.
-/mob/living/simple_animal/technomancer_golem/proc/handle_ai()
+/mob/living/simple_mob/technomancer_golem/proc/handle_ai()
 	if(!master)
 		return
 	if(get_dist(src, master) > 6 || src.z != master.z)
@@ -230,7 +230,7 @@
 			support_friend(L)
 			return
 
-/mob/living/simple_animal/technomancer_golem/proc/support_friend(var/mob/living/L)
+/mob/living/simple_mob/technomancer_golem/proc/support_friend(var/mob/living/L)
 	if(L.getBruteLoss() >= 10 || L.getFireLoss() >= 10)
 		if(L.isSynthetic() && !L.has_modifier_of_type(/datum/modifier/technomancer/mend_synthetic))
 			place_spell_in_hand(known_spells["mend synthetic"])
@@ -249,7 +249,7 @@
 		RangedAttack(L)
 		return
 
-/mob/living/simple_animal/technomancer_golem/proc/targeted_blink(var/atom/target)
+/mob/living/simple_mob/technomancer_golem/proc/targeted_blink(var/atom/target)
 	var/datum/effect_system/spark_spread/spark_system = new()
 	spark_system.set_up(5, 0, get_turf(src))
 	spark_system.start()

@@ -1,4 +1,4 @@
-//GENERAL
+//! ## GENERAL
 #define COLOR_WHITE						"#FFFFFF"
 #define COLOR_VERY_LIGHT_GRAY			"#EEEEEE"
 #define COLOR_SILVER					"#C0C0C0"
@@ -35,7 +35,7 @@
 #define COLOR_PURPLE_GRAY				"#A2819E"
 #define COLOR_DEEP_SKY_BLUE				"#00e1ff"
 
-// Color defines used by the assembly detailer.
+//! ## CIRCUITS
 #define COLOR_ASSEMBLY_BLACK			"#545454"
 #define COLOR_ASSEMBLY_BGRAY			"#9497AB"
 #define COLOR_ASSEMBLY_WHITE			"#E2E2E2"
@@ -53,13 +53,16 @@
 #define COLOR_ASSEMBLY_PURPLE			"#6F6192"
 #define COLOR_ASSEMBLY_HOT_PINK			"#FF69B4"
 
-///MISC
+//! ## MISC
 #define COLOR_ASTEROID_ROCK				"#735555"
 #define COLOR_FLOORTILE_GRAY			"#8D8B8B"
 
-///INTERFACE
+//! ## INTERFACE
 #define COLOR_INPUT_DISABLED			"#F0F0F0"
 #define COLOR_INPUT_ENABLED				"#D3B5B5"
 #define COLOR_DARKMODE_BACKGROUND		"#202020"
 #define COLOR_DARKMODE_DARKBACKGROUND	"#171717"
 #define COLOR_DARKMODE_TEXT				"#a4bad6"
+
+//! FLUIDS
+#define COLOR_OCEAN "#99f5ff"

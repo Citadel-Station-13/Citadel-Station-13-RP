@@ -71,6 +71,9 @@
 	/// Reference to atom being orbited.
 	var/atom/orbit_target
 
+	/// This atom is waterproof!
+	var/waterproof = TRUE
+
 /atom/movable/Destroy(force)
 	. = ..()
 	if(reagents)

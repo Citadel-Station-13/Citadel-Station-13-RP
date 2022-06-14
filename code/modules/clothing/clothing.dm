@@ -530,6 +530,9 @@
 /obj/item/clothing/mask/proc/filter_air(datum/gas_mixture/air)
 	return
 
+/obj/item/clothing/mask/proc/filters_water()
+	return FALSE
+
 ///////////////////////////////////////////////////////////////////////
 //Shoes
 /obj/item/clothing/shoes

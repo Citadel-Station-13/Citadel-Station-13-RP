@@ -4,7 +4,7 @@ obj/structure/firedoor_assembly
 	icon = 'icons/obj/doors/DoorHazard.dmi'
 	icon_state = "door_construction"
 	anchored = 0
-	opacity = 0
+	opacity = MOUSE_OPACITY_TRANSPARENT
 	density = 1
 	var/wired = 0
 

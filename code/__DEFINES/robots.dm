@@ -1,6 +1,6 @@
 /*ALL DEFINES FOR AIS, CYBORGS, AND BOTS*/
 
-//Mode defines. If you add a new one make sure you update mode_name in /mob/living/simple_animal/bot
+//Mode defines. If you add a new one make sure you update mode_name in /mob/living/simple_mob/bot
 /*
 /// idle
 #define BOT_IDLE          0

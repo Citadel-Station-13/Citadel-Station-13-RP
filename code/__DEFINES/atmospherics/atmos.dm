@@ -13,6 +13,9 @@
 #define TCMB 2.7
 ///    -60 degrees celcius
 #define TN60C 213.15
+
+#define CELCIUS + T0C
+
 // Radiation constants.
 /// W/(m^2*K^4).
 #define STEFAN_BOLTZMANN_CONSTANT    5.6704e-8

@@ -151,6 +151,7 @@ var/list/admin_verbs_fun = list(
 
 var/list/admin_verbs_spawn = list(
 	/datum/admins/proc/spawn_fruit,
+	/datum/admins/proc/spawn_fluid_verb,
 	/datum/admins/proc/spawn_custom_item,
 	/datum/admins/proc/check_custom_items,
 	/datum/admins/proc/spawn_plant,
@@ -241,7 +242,9 @@ var/list/admin_verbs_debug = list(
 	/datum/admins/proc/change_weather,
 	/datum/admins/proc/change_time,
 	/client/proc/admin_give_modifier,
-	/client/proc/simple_DPS
+	/client/proc/simple_DPS,
+	/datum/admins/proc/jump_to_fluid_source,
+	/datum/admins/proc/jump_to_fluid_active,
 	)
 
 var/list/admin_verbs_paranoid_debug = list(

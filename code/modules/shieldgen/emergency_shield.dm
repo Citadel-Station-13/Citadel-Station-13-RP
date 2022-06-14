@@ -4,7 +4,7 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "shield-old"
 	density = 1
-	opacity = 0
+	opacity = MOUSE_OPACITY_TRANSPARENT
 	anchored = 1
 	unacidable = 1
 	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
@@ -34,7 +34,7 @@
 	update_nearby_tiles(need_rebuild=1)
 
 /obj/machinery/shield/Destroy()
-	opacity = 0
+	opacity = MOUSE_OPACITY_TRANSPARENT
 	density = 0
 	update_nearby_tiles()
 	..()
@@ -121,7 +121,7 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "shieldoff"
 	density = 1
-	opacity = 0
+	opacity = MOUSE_OPACITY_TRANSPARENT
 	anchored = 0
 	pressure_resistance = 2*ONE_ATMOSPHERE
 	req_access = list(access_engine)

@@ -1,4 +1,4 @@
-/mob/living/simple_animal/construct
+/mob/living/simple_mob/construct
 	name = "Construct"
 	real_name = "Construct"
 	var/construct_type = "shade"
@@ -74,7 +74,7 @@
 				"bio" = 100,
 				"rad" = 100)
 
-/mob/living/simple_animal/construct/place_spell_in_hand(var/path)
+/mob/living/simple_mob/construct/place_spell_in_hand(var/path)
 	if(!path || !ispath(path))
 		return 0
 
@@ -106,10 +106,10 @@
 		qdel(S)
 		return 0
 
-/mob/living/simple_animal/construct/cultify()
+/mob/living/simple_mob/construct/cultify()
 	return
 
-/mob/living/simple_animal/construct/Initialize(mapload)
+/mob/living/simple_mob/construct/Initialize(mapload)
 	. = ..()
 	name = text("[initial(name)] ([rand(1, 1000)])")
 	real_name = name
@@ -119,26 +119,26 @@
 		src.add_spell(new spell, "const_spell_ready")
 	updateicon()
 
-/mob/living/simple_animal/construct/updateicon()
+/mob/living/simple_mob/construct/updateicon()
 	overlays.Cut()
 	..()
 	if(do_glow)
 		add_glow()
 
-/mob/living/simple_animal/construct/update_icon()
+/mob/living/simple_mob/construct/update_icon()
 	..()
 	if(do_glow)
 		add_glow()
 
-/mob/living/simple_animal/construct/death()
+/mob/living/simple_mob/construct/death()
 	new /obj/item/ectoplasm (src.loc)
 	..(null,"collapses in a shattered heap.")
 	ghostize()
 	qdel(src)
 
-/mob/living/simple_animal/construct/attack_generic(var/mob/user)
-	if(istype(user, /mob/living/simple_animal/construct/builder))
-		var/mob/living/simple_animal/construct/builder/B = user
+/mob/living/simple_mob/construct/attack_generic(var/mob/user)
+	if(istype(user, /mob/living/simple_mob/construct/builder))
+		var/mob/living/simple_mob/construct/builder/B = user
 		if(health < getMaxHealth())
 			var/repair_lower_bound = B.melee_damage_lower * -1
 			var/repair_upper_bound = B.melee_damage_upper * -1
@@ -150,7 +150,7 @@
 		return
 	return ..()
 
-/mob/living/simple_animal/construct/examine(mob/user)
+/mob/living/simple_mob/construct/examine(mob/user)
 	. = ..()
 	. += "<span cass='info'>This is [icon2html(thing = src, target = user)]\a <EM>[src]</EM>!\n"
 	if (src.health < src.getMaxHealth())
@@ -162,14 +162,14 @@
 		. += "</span>"
 
 
-/mob/living/simple_animal/construct/Process_Spacemove()
+/mob/living/simple_mob/construct/Process_Spacemove()
 	return 1 //Constructs levitate, can fall from a shuttle with no harm, and are piloted by either damned spirits or some otherworldly entity. It's not hard to believe.
 
 /////////////////Juggernaut///////////////
 
 
 
-/mob/living/simple_animal/construct/armoured
+/mob/living/simple_mob/construct/armoured
 	name = "Juggernaut"
 	real_name = "Juggernaut"
 	construct_type = "juggernaut"
@@ -206,11 +206,11 @@
 				"bio" = 100,
 				"rad" = 100)
 
-/mob/living/simple_animal/construct/armoured/Life()
+/mob/living/simple_mob/construct/armoured/Life()
 	weakened = 0
 	..()
 
-/mob/living/simple_animal/construct/armoured/bullet_act(var/obj/item/projectile/P)
+/mob/living/simple_mob/construct/armoured/bullet_act(var/obj/item/projectile/P)
 //	if(istype(P, /obj/item/projectile/energy) || istype(P, /obj/item/projectile/beam)) //If it's going to be slow, it's probably going to need every reflect it can get.
 	var/reflectchance = 80 - round(P.damage/3)
 	if(prob(reflectchance))
@@ -258,7 +258,7 @@
 
 
 
-/mob/living/simple_animal/construct/wraith
+/mob/living/simple_mob/construct/wraith
 	name = "Wraith"
 	real_name = "Wraith"
 	construct_type = "wraith"
@@ -282,7 +282,7 @@
 							/spell/targeted/ambush_mode
 							)
 
-/mob/living/simple_animal/construct/wraith/DoPunch(var/atom/A)
+/mob/living/simple_mob/construct/wraith/DoPunch(var/atom/A)
 	. = ..()
 	if(. && isliving(A))
 		var/mob/living/L = A
@@ -292,7 +292,7 @@
 
 
 
-/mob/living/simple_animal/construct/builder
+/mob/living/simple_mob/construct/builder
 	name = "Artificer"
 	real_name = "Artificer"
 	construct_type = "artificer"
@@ -327,7 +327,7 @@
  * The Behemoth. Admin-allowance only, still try to keep it in some guideline of 'Balanced', even if it means Security has to be fully geared to be so.
  */
 
-/mob/living/simple_animal/construct/behemoth
+/mob/living/simple_mob/construct/behemoth
 	name = "Behemoth"
 	real_name = "Behemoth"
 	construct_type = "juggernaut"
@@ -364,7 +364,7 @@
 							/spell/targeted/construct_advanced/slam
 							)
 
-/mob/living/simple_animal/construct/behemoth/bullet_act(var/obj/item/projectile/P)
+/mob/living/simple_mob/construct/behemoth/bullet_act(var/obj/item/projectile/P)
 	var/reflectchance = 80 - round(P.damage/3)
 	if(prob(reflectchance))
 		visible_message("<span class='danger'>The [P.name] gets reflected by [src]'s shell!</span>", \
@@ -389,7 +389,7 @@
  * Master of Spells and Ranged Abilities. Not as fragile as the Wraith, but nowhere near as maneuverable and deadly in melee.
  */
 
-/mob/living/simple_animal/construct/harvester
+/mob/living/simple_mob/construct/harvester
 	name = "Harvester"
 	real_name = "Harvester"
 	construct_type = "harvester"
@@ -424,19 +424,19 @@
 			/spell/rune_write
 		)
 
-////////////////Glow//////////////////
-/mob/living/simple_animal/construct/proc/add_glow()
+//Glowing Procs
+/mob/living/simple_mob/construct/proc/add_glow()
 	var/image/eye_glow = image(icon,"glow-[icon_state]")
 	eye_glow.plane = ABOVE_LIGHTING_PLANE
 	overlays += eye_glow
 	set_light(2, -2, l_color = "#FFFFFF")
 
-/mob/living/simple_animal/construct/proc/remove_glow()
+/mob/living/simple_mob/construct/proc/remove_glow()
 	overlays.Cut()
 
 ////////////////HUD//////////////////////
 
-/mob/living/simple_animal/construct/Life()
+/mob/living/simple_mob/construct/Life()
 	. = ..()
 	if(.)
 		if(fire)
@@ -452,7 +452,7 @@
 
 		silence_spells(purge)
 
-/mob/living/simple_animal/construct/updatehealth() //Special icons.
+/mob/living/simple_mob/construct/updatehealth() //Special icons.
 	health = getMaxHealth() - getToxLoss() - getFireLoss() - getBruteLoss()
 
 	//Alive, becoming dead

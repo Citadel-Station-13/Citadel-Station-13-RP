@@ -1,4 +1,4 @@
-/mob/living/simple_animal/hostile/asteroid/goliath
+/mob/living/simple_mob/hostile/asteroid/goliath
 	name = "goliath"
 	desc = "A massive beast that uses long tentacles to ensnare its prey, threatening them is not advised under any conditions."
 	icon = 'icons/mob/lavaland/lavaland_monsters.dmi'
@@ -37,30 +37,30 @@
 
 	footstep_type = FOOTSTEP_MOB_HEAVY
 
-/mob/living/simple_animal/hostile/asteroid/goliath/BiologicalLife(seconds, times_fired)
+/mob/living/simple_mob/hostile/asteroid/goliath/BiologicalLife(seconds, times_fired)
 	if(!(. = ..()))
 		return
 	handle_preattack()
 
-/mob/living/simple_animal/hostile/asteroid/goliath/proc/handle_preattack()
+/mob/living/simple_mob/hostile/asteroid/goliath/proc/handle_preattack()
 	if(ranged_cooldown <= world.time + ranged_cooldown_time*0.25 && !pre_attack)
 		pre_attack++
 	if(!pre_attack || stat || AIStatus == AI_IDLE)
 		return
 	icon_state = pre_attack_icon
 
-/mob/living/simple_animal/hostile/asteroid/goliath/revive(full_heal = 0, admin_revive = 0)
+/mob/living/simple_mob/hostile/asteroid/goliath/revive(full_heal = 0, admin_revive = 0)
 	if(..())
 		anchored = TRUE
 		. = 1
 
-/mob/living/simple_animal/hostile/asteroid/goliath/death(gibbed)
+/mob/living/simple_mob/hostile/asteroid/goliath/death(gibbed)
 	move_force = MOVE_FORCE_DEFAULT
 	move_resist = MOVE_RESIST_DEFAULT
 	pull_force = PULL_FORCE_DEFAULT
 	..(gibbed)
 
-/mob/living/simple_animal/hostile/asteroid/goliath/OpenFire()
+/mob/living/simple_mob/hostile/asteroid/goliath/OpenFire()
 	var/tturf = get_turf(target)
 	if(!isturf(tturf))
 		return
@@ -71,19 +71,19 @@
 		icon_state = icon_aggro
 		pre_attack = 0
 
-/mob/living/simple_animal/hostile/asteroid/goliath/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
+/mob/living/simple_mob/hostile/asteroid/goliath/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
 	ranged_cooldown -= 5
 	handle_preattack()
 	. = ..()
 
-/mob/living/simple_animal/hostile/asteroid/goliath/Aggro()
+/mob/living/simple_mob/hostile/asteroid/goliath/Aggro()
 	vision_range = aggro_vision_range
 	handle_preattack()
 	if(icon_state != icon_aggro)
 		icon_state = icon_aggro
 
 //Lavaland Goliath
-/mob/living/simple_animal/hostile/asteroid/goliath/beast
+/mob/living/simple_mob/hostile/asteroid/goliath/beast
 	name = "goliath"
 	desc = "A hulking, armor-plated beast with long tendrils arching from its back."
 	icon = 'icons/mob/lavaland/lavaland_monsters.dmi'
@@ -100,13 +100,13 @@
 	stat_attack = UNCONSCIOUS
 	robust_searching = 1
 
-/mob/living/simple_animal/hostile/asteroid/goliath/beast/random/Initialize(mapload)
+/mob/living/simple_mob/hostile/asteroid/goliath/beast/random/Initialize(mapload)
 	. = ..()
 	if(prob(1))
-		new /mob/living/simple_animal/hostile/asteroid/goliath/beast/ancient(loc)
+		new /mob/living/simple_mob/hostile/asteroid/goliath/beast/ancient(loc)
 		return INITIALIZE_HINT_QDEL
 
-/mob/living/simple_animal/hostile/asteroid/goliath/beast/ancient
+/mob/living/simple_mob/hostile/asteroid/goliath/beast/ancient
 	name = "ancient goliath"
 	desc = "Goliaths are biologically immortal, and rare specimens have survived for centuries. This one is clearly ancient, and its tentacles constantly churn the earth around it."
 	icon_state = "Goliath"
@@ -128,7 +128,7 @@
 	var/turf/last_location
 	var/tentacle_recheck_cooldown = 100
 
-/mob/living/simple_animal/hostile/asteroid/goliath/beast/ancient/BiologicalLife(seconds, times_fired)
+/mob/living/simple_mob/hostile/asteroid/goliath/beast/ancient/BiologicalLife(seconds, times_fired)
 	if(!(. = ..()))
 		return
 	if(isturf(loc))
@@ -145,7 +145,7 @@
 			else
 				cached_tentacle_turfs -= t
 
-/mob/living/simple_animal/hostile/asteroid/goliath/beast/tendril
+/mob/living/simple_mob/hostile/asteroid/goliath/beast/tendril
 	fromtendril = TRUE
 
 //tentacles

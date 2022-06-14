@@ -30,6 +30,10 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 GLOBAL_LIST_INIT(meta_gas_burn_products, meta_gas_burn_product_list())
 /// Reagent created when inhaled by lungs.
 GLOBAL_LIST_INIT(meta_gas_breathed_products, meta_gas_breathed_product_list())
+/// Temperature in K that the gas will condense.
+GLOBAL_LIST_INIT(meta_gas_condensation_points, meta_gas_condensation_point_list())
+/// Reagent path resulting from condesation.
+GLOBAL_LIST_INIT(meta_gas_condensation_products, meta_gas_condensation_product_list())
 
 /proc/meta_gas_heat_list()
 	. = subtypesof(/datum/gas)
@@ -132,6 +136,18 @@ GLOBAL_LIST_INIT(meta_gas_breathed_products, meta_gas_breathed_product_list())
 		var/datum/gas/gas = gas_path
 		.[gas_path] = initial(gas.breathed_product)
 
+/proc/meta_gas_condensation_point_list()
+	. = subtypesof(/datum/gas)
+	for(var/gas_path in .)
+		var/datum/gas/gas = gas_path
+		.[gas_path] = initial(gas.condensation_point)
+
+/proc/meta_gas_condensation_product_list()
+	. = subtypesof(/datum/gas)
+	for(var/gas_path in .)
+		var/datum/gas/gas = gas_path
+		.[gas_path] = initial(gas.condensation_products)
+
 // Visual overlay
 /obj/effect/overlay/gas
 	icon = 'icons/effects/atmospherics.dmi'
@@ -179,6 +195,10 @@ GLOBAL_LIST_INIT(meta_gas_breathed_products, meta_gas_breathed_product_list())
 	var/burn_product = GAS_CO2
 	/// Reagent created when inhaled by lungs.
 	var/breathed_product
+	// Temperature in K that the gas will condense.
+	var/condensation_point = INFINITY
+	// Reagent path resulting from condesation.
+	var/condensation_products
 
 /datum/gas/oxygen
 	id = GAS_OXYGEN
@@ -453,13 +473,12 @@ GLOBAL_LIST_INIT(meta_gas_breathed_products, meta_gas_breathed_product_list())
 	specific_heat = 30	// J/(mol*K)
 	molar_mass = 0.020	// kg/mol
 	breathed_product = /datum/reagent/water
-	// breathed_product =     /datum/reagent/water
-	// condensation_product = /datum/reagent/water
-	// condensation_point =   308.15 // 35C. Dew point is ~20C but this is better for gameplay considerations.
+	condensation_products = /datum/reagent/water
+	condensation_point = 308.15 // 35C. Dew point is ~20C but this is better for gameplay considerations.
 	// symbol_html = "H<sub>2</sub>O"
 	// symbol = "H2O"
 
-/datum/gas/vapor
+/datum/gas/helium
 	id = GAS_HELIUM
 	name = "Helium"
 	specific_heat = 80	// J/(mol*K)

@@ -11,7 +11,7 @@
 	icon_state = "open"
 	plane = OBJ_PLANE
 	layer = 3.3 //3.3 so its above windows, not the same as them. anything below 3.3 puts the curtain beneath the window sprite in current build
-	opacity = 0
+	opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/structure/curtain/bullet_act(obj/item/projectile/P, def_zone)
 	if(!P.nodamage)

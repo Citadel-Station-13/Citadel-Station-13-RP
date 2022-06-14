@@ -5,7 +5,7 @@
 	icon = 'icons/turf/wall_masks.dmi'
 	icon_state = "rdebug"
 	anchored = 1.0
-	opacity = 0
+	opacity = MOUSE_OPACITY_TRANSPARENT
 	density = 1
 	unacidable = 1
 

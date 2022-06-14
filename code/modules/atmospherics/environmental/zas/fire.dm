@@ -91,6 +91,9 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 	return 0
 
 /turf/simulated/create_fire(fl)
+	if(submerged())
+		return TRUE
+
 	if(fire)
 		fire.firelevel = max(fl, fire.firelevel)
 		return 1
@@ -153,12 +156,12 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 	air_master.active_hotspots.Remove(src)
 
 /atom/movable/fire/process(delta_time)
-	. = 1
+	. = TRUE
 
 	var/turf/simulated/my_tile = loc
-	if(!istype(my_tile) || !my_tile.zone)
+	if(!istype(my_tile) || !my_tile.zone || my_tile.submerged())
 		qdel(src)
-		return 1
+		return TRUE
 
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/firelevel_multiplier, firelevel_multiplier)
 	var/datum/gas_mixture/air_contents = my_tile.return_air()

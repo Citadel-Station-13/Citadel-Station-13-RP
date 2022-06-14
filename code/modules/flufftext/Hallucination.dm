@@ -224,7 +224,7 @@ proc/check_panel(mob/M)
 	desc = ""
 	density = 0
 	anchored = 1
-	opacity = 0
+	opacity = MOUSE_OPACITY_TRANSPARENT
 	var/mob/living/carbon/human/my_target = null
 	var/weapon_name = null
 	var/obj/item/weap = null

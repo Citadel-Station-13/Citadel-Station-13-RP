@@ -3,7 +3,7 @@
 	desc = "A magnetic storage ring."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "rcdammo"
-	opacity = 0
+	opacity = MOUSE_OPACITY_TRANSPARENT
 	density = 0
 	anchored = 0.0
 	var/fuel = 0
