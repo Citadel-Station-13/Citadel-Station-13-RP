@@ -3,6 +3,7 @@
 	name = "web"
 	desc = "it's stringy and sticky"
 	icon = 'icons/effects/effects.dmi'
+	mouse_opacity = MOUSE_OPACITY_ICON
 	anchored = 1
 	density = 0
 	var/health = 15
