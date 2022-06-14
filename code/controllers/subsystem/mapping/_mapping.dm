@@ -79,8 +79,13 @@ SUBSYSTEM_DEF(mapping)
 
 	loaded_module?.pre_lateload()
 
+// load on normal
+#if BOOT_MODE == BOOT_MODE_NORMAL
 	if(GLOB.using_map)
 		loadLateMaps()
+#endif
+
+// overmaps will handle switching based on load mode
 	if(!GLOB.using_map.overmap_z)
 		build_overmap()
 
@@ -92,8 +97,15 @@ SUBSYSTEM_DEF(mapping)
 
 	loaded_module?.pre_mapgen()
 
+// load on normal, fastboot
+#if BOOT_MODE != BOOT_MODE_MINIMAL
 	mapgen_engine()
+#endif
+
+// load on normal
+#if BOOT_MODE == BOOT_MODE_NORMAL
 	mapgen_deepmaint()
+#endif
 
 	loaded_module?.post_mapgen()
 

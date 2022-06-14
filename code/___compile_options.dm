@@ -1,21 +1,35 @@
+/**
+ * CORE
+ */
+//!# Launch
+
+/// normal - load everything
+#define BOOT_MODE_NORMAL 0
+/// fastboot - load only base station, things like overmaps, generated things, deepmaint etc, shouldn't be loaded
+#define BOOT_MODE_FASTBOOT 1
+/// low memory - load special testing station, absolute minimal launch
+#define BOOT_MODE_MINIMAL 2
+
+#ifndef BOOT_MODE
+	#define BOOT_MODE BOOT_MODE_NORMAL
+#endif
+
+//!# Debugging Options
+
 ///By using the testing("message") proc you can create debug-feedback for people with this
 //#define TESTING
 								//uncommented, but not visible in the release version)
 
 ///Enables the ability to cache datum vars and retrieve later for debugging which vars changed.
 //#define DATUMVAR_DEBUGGING_MODE
+
 // Comment this out if you are debugging problems that might be obscured by custom error handling in world/Error
 #ifdef DEBUG
 #define USE_CUSTOM_ERROR_HANDLER
 #endif
 
-#define DEBUG_SHUTTLES
-
-#define TIMER_LOOP_DEBUGGING
 
 #ifdef TESTING
-#define DATUMVAR_DEBUGGING_MODE
-
 ///Used to find the sources of harddels, quite laggy, don't be surpised if it freezes your client for a good while
 #ifdef REFERENCE_TRACKING
 
@@ -39,10 +53,6 @@
 #endif							//	1 to use the default behaviour;
 								//	2 for preloading absolutely everything;
 
-#ifdef LOWMEMORYMODE
-#define FORCE_MAP "_maps/runtimestation.json"
-#endif
-
 //Update this whenever you need to take advantage of more recent byond features
 #define MIN_COMPILER_VERSION 513
 #define MIN_COMPILER_BUILD 1514
@@ -65,9 +75,25 @@
 #define TESTING
 #endif
 
+/**
+ * BY FEATURE
+ */
+
+//!# Overlays
+
 // A reasonable number of maximum overlays an object needs
 // If you think you need more, rethink it
 #define MAX_ATOM_OVERLAYS 100
+
+//!# Shuttles
+
+/// Adds debug asserts to shuttles.
+#define DEBUG_SHUTTLES
+
+//!# Timers
+
+/// Adds slight overhead to timer system to detect certain looping timer issues
+// #define TIMER_LOOP_DEBUGGING
 
 //! ZAS
 

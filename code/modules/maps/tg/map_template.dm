@@ -1,6 +1,15 @@
 /datum/map_template
-	var/name = "Default Template Name"
+	/// name - should be unique in a specific context, e.g. shelter, deepmaint, etc
+	var/name = "Unnamed Map Template"
+	/// description of what the template is
 	var/desc = "Some text should go here. Maybe."
+	/// id - must be unique in a domain
+	var/id = "default"
+	/// domain: the group of an id
+	var/domain = "template"
+	/// uid - set on /New(), generated from id and domain
+	var/uid
+
 	var/template_group = null	// If this is set, no more than one template in the same group will be spawned, per submap seeding.
 	var/width = 0
 	var/height = 0
@@ -31,6 +40,9 @@
 		preload_size(mappath)
 	if(rename)
 		name = rename
+	uid = "[domain]:[id]"
+	if(isnull(name))
+		name = uid
 
 /datum/map_template/proc/preload_size(path, orientation = SOUTH)
 	var/bounds = maploader.load_map(file(path), 1, 1, 1, cropMap=FALSE, measureOnly=TRUE, orientation=orientation)

@@ -19,7 +19,7 @@
 	/// type
 	var/deepmaint_type = DEEPMAINT_TYPE_ANY
 	/// theme
-	var/deepmanit_theme = DEEPMAINT_THEME_ANY
+	var/deepmaint_theme = DEEPMAINT_THEME_ANY
 	/// state vars for the algorithm
 	var/list/blackboard
 	/// number of zlevels to spread upwards
