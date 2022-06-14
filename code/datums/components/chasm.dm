@@ -15,7 +15,7 @@
 		/obj/effect/portal,
 		/obj/effect/abstract,
 		/obj/effect/hotspot,
-		/atom/movable/landmark,
+		/obj/landmark,
 		/obj/effect/temp_visual,
 		/obj/effect/light_emitter/tendril,
 		/obj/effect/collapse,

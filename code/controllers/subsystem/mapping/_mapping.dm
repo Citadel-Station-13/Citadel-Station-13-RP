@@ -309,7 +309,7 @@ SUBSYSTEM_DEF(mapping)
 /datum/controller/subsystem/mapping
 	var/list/map_templates = list()
 	var/dmm_suite/maploader = null
-	var/atom/movable/landmark/engine_loader/engine_loader
+	var/obj/landmark/engine_loader/engine_loader
 	var/list/shelter_templates = list()
 
 /datum/controller/subsystem/mapping/Recover()

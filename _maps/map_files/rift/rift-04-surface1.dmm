@@ -176,7 +176,7 @@
 /obj/structure/bed/chair/comfy/brown{
 	dir = 8
 	},
-/atom/movable/landmark/spawnpoint/job/librarian,
+/obj/landmark/spawnpoint/job/librarian,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -428,7 +428,7 @@
 /obj/machinery/atmospherics/component/unary/freezer{
 	dir = 1
 	},
-/atom/movable/landmark{
+/obj/landmark{
 	name = "blobstart"
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -761,7 +761,7 @@
 /area/security/checkpoint)
 "aLs" = (
 /obj/structure/bed/chair/bar_stool,
-/atom/movable/landmark/spawnpoint/job/mime,
+/obj/landmark/spawnpoint/job/mime,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
@@ -3415,7 +3415,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/atom/movable/landmark/spawnpoint/job/janitor,
+/obj/landmark/spawnpoint/job/janitor,
 /turf/simulated/floor/tiled/monotile,
 /area/janitor)
 "daf" = (
@@ -4149,7 +4149,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/atom/movable/landmark/spawnpoint/job/janitor,
+/obj/landmark/spawnpoint/job/janitor,
 /turf/simulated/floor/tiled/monotile,
 /area/janitor)
 "dwP" = (
@@ -4159,7 +4159,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
-/atom/movable/landmark/spawnpoint/job/cargo_technician,
+/obj/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/delivery)
 "dwS" = (
@@ -4983,7 +4983,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/paleblue/border,
-/atom/movable/landmark/spawnpoint/job/paramedic,
+/obj/landmark/spawnpoint/job/paramedic,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_emt_bay)
 "dZO" = (
@@ -5992,7 +5992,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/job/lawyer,
+/obj/landmark/spawnpoint/job/lawyer,
 /turf/simulated/floor/carpet/blucarpet,
 /area/lawoffice)
 "eXq" = (
@@ -7205,7 +7205,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/atom/movable/landmark/spawnpoint/job/medical_doctor,
+/obj/landmark/spawnpoint/job/medical_doctor,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/medbreak)
@@ -8141,7 +8141,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/job/detective,
+/obj/landmark/spawnpoint/job/detective,
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
 "gTW" = (
@@ -10055,7 +10055,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/atom/movable/landmark/spawnpoint/job/cargo_technician,
+/obj/landmark/spawnpoint/job/cargo_technician,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
@@ -10216,7 +10216,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/game_room)
 "iqX" = (
-/atom/movable/landmark/spawnpoint/job/assistant,
+/obj/landmark/spawnpoint/job/assistant,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -10425,7 +10425,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/job/cargo_technician,
+/obj/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/office)
 "ixx" = (
@@ -10827,7 +10827,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
 "iPn" = (
-/atom/movable/landmark/spawnpoint/job/assistant,
+/obj/landmark/spawnpoint/job/assistant,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel,
 /area/storage/surface_eva)
@@ -10858,7 +10858,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
 "iQB" = (
-/atom/movable/landmark/spawnpoint/job/psychiatrist,
+/obj/landmark/spawnpoint/job/psychiatrist,
 /obj/structure/bed/chair/office/dark,
 /turf/simulated/floor/carpet/blue,
 /area/tether/surfacebase/medical/mentalhealth)
@@ -11008,7 +11008,7 @@
 /area/lawoffice)
 "iZK" = (
 /obj/item/stool/padded,
-/atom/movable/landmark/spawnpoint/job/entertainer,
+/obj/landmark/spawnpoint/job/entertainer,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -11366,7 +11366,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "jkK" = (
-/atom/movable/landmark/spawnpoint/job/quartermaster,
+/obj/landmark/spawnpoint/job/quartermaster,
 /obj/structure/bed/chair/bay/comfy/beige{
 	dir = 1
 	},
@@ -12153,7 +12153,7 @@
 /area/maintenance/starboard)
 "jTL" = (
 /obj/item/stool,
-/atom/movable/landmark/spawnpoint/job/clown,
+/obj/landmark/spawnpoint/job/clown,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
@@ -12531,7 +12531,7 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
 /obj/structure/bed/chair/office/light,
-/atom/movable/landmark/spawnpoint/job/cargo_technician,
+/obj/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "kjk" = (
@@ -12960,7 +12960,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/atom/movable/landmark/spawnpoint/job/detective,
+/obj/landmark/spawnpoint/job/detective,
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
 "kyM" = (
@@ -13317,7 +13317,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/lawoffice)
 "kJV" = (
-/atom/movable/landmark/spawnpoint/job/assistant,
+/obj/landmark/spawnpoint/job/assistant,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel,
 /area/storage/tools)
@@ -14182,7 +14182,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/atom/movable/landmark/spawnpoint/job/medical_doctor,
+/obj/landmark/spawnpoint/job/medical_doctor,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -14293,7 +14293,7 @@
 /area/server)
 "lyg" = (
 /obj/item/stool/padded,
-/atom/movable/landmark/spawnpoint/job/entertainer,
+/obj/landmark/spawnpoint/job/entertainer,
 /obj/machinery/power/apc{
 	name = "south bump";
 	pixel_y = -24
@@ -15587,7 +15587,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/hallway)
 "mvu" = (
-/atom/movable/landmark/spawnpoint/job/assistant,
+/obj/landmark/spawnpoint/job/assistant,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -15664,7 +15664,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/atom/movable/landmark/spawnpoint/job/janitor,
+/obj/landmark/spawnpoint/job/janitor,
 /turf/simulated/floor/tiled/steel,
 /area/janitor)
 "mza" = (
@@ -16612,7 +16612,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/job/paramedic,
+/obj/landmark/spawnpoint/job/paramedic,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/medbreak)
 "nkZ" = (
@@ -17157,7 +17157,7 @@
 /area/rift/surfaceeva/airlock/main)
 "nAA" = (
 /obj/structure/bed/chair/office/dark,
-/atom/movable/landmark/spawnpoint/job/scientist,
+/obj/landmark/spawnpoint/job/scientist,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -17507,7 +17507,7 @@
 	pixel_x = 36;
 	pixel_y = 38
 	},
-/atom/movable/landmark/spawnpoint/job/chief_medical_officer,
+/obj/landmark/spawnpoint/job/chief_medical_officer,
 /obj/structure/bed/chair/bay/comfy/teal{
 	dir = 4
 	},
@@ -18787,7 +18787,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
 	},
-/atom/movable/landmark/spawnpoint/job/assistant,
+/obj/landmark/spawnpoint/job/assistant,
 /turf/simulated/floor/tiled/steel,
 /area/tether/station/public_meeting_room)
 "oIR" = (
@@ -20229,7 +20229,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/job/lawyer,
+/obj/landmark/spawnpoint/job/lawyer,
 /turf/simulated/floor/carpet/bcarpet,
 /area/lawoffice)
 "pIu" = (
@@ -21036,7 +21036,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/atom/movable/landmark/spawnpoint/job/janitor,
+/obj/landmark/spawnpoint/job/janitor,
 /turf/simulated/floor/tiled/monotile,
 /area/janitor)
 "qtA" = (
@@ -21511,7 +21511,7 @@
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
-/atom/movable/landmark/spawnpoint/job/cargo_technician,
+/obj/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "qPt" = (
@@ -22286,7 +22286,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/tankstorage)
 "rvR" = (
-/atom/movable/landmark/spawnpoint/job/librarian,
+/obj/landmark/spawnpoint/job/librarian,
 /obj/structure/bed/chair/comfy/brown{
 	dir = 4
 	},
@@ -25580,7 +25580,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/storage/surface_eva)
 "tRc" = (
-/atom/movable/landmark/spawnpoint/job/quartermaster,
+/obj/landmark/spawnpoint/job/quartermaster,
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/office)
 "tRv" = (
@@ -26412,7 +26412,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/central_heating/surface_one)
 "usp" = (
-/atom/movable/landmark/spawnpoint/job/entertainer,
+/obj/landmark/spawnpoint/job/entertainer,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -26872,7 +26872,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/atom/movable/landmark/spawnpoint/job/medical_doctor,
+/obj/landmark/spawnpoint/job/medical_doctor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
@@ -29262,7 +29262,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
-/atom/movable/landmark/spawnpoint/job/paramedic,
+/obj/landmark/spawnpoint/job/paramedic,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_emt_bay)
 "wGW" = (

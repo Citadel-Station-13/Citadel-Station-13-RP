@@ -45,7 +45,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate2)
 "ap" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor,
@@ -105,7 +105,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate3)
 "aF" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor,
@@ -185,7 +185,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate1)
 "be" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor,
@@ -502,7 +502,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "cQ" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor,
