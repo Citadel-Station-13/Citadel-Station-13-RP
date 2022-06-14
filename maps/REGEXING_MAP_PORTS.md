@@ -22,10 +22,10 @@ Apply regexes in this order:
 `/obj/landmark/start\{\n\tname = "([A-z]+) ([A-z]+)"\n\t\}`-`/obj/landmark/spawnpoint/job/\L$1_\L$2`
 `/obj/landmark/start\{\n\tname = "([A-z]+) ([A-z]+) ([A-z]+)"\n\t\}`-`/obj/landmark/spawnpoint/job/\L$1_\L$2_\L$3`
 /// Specific job landmarks
-`/atom/movable/spawnpoint/job/search_and_rescue`-`/atom/movable/spawnpoint/job/field_medic`
-`/atom/movable/spawnpoint/job/facility_director`-`/atom/movable/spawnpoint/job/captain`
-`/atom/movable/spawnpoint/job/internal_affairs_agent`-`/atom/movable/spawnpoint/job/lawyer`
-`/atom/movable/spawnpoint/job/gardener`-`/atom/movable/spawnpoint/job/botanist`
+`/obj/landmark/spawnpoint/job/search_and_rescue`-`/obj/landmark/spawnpoint/job/field_medic`
+`/obj/landmark/spawnpoint/job/facility_director`-`/obj/landmark/spawnpoint/job/captain`
+`/obj/landmark/spawnpoint/job/internal_affairs_agent`-`/obj/landmark/spawnpoint/job/lawyer`
+`/obj/landmark/spawnpoint/job/gardener`-`/obj/landmark/spawnpoint/job/botanist`
 
 // TODO: MAKE SURE NO / AFTER COSTUME
 `/obj/landmark/costume`-`/obj/landmark/costume/random`
