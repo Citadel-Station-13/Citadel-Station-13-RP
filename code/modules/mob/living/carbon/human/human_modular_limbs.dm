@@ -151,7 +151,7 @@
 		return FALSE
 
 	last_special = world.time
-	drop_from_inventory(E)
+	temporarily_remove_from_inventory(E, TRUE)
 	E.replaced(src)
 
 	// Reconnect the organ and children as normally this is done with surgery.

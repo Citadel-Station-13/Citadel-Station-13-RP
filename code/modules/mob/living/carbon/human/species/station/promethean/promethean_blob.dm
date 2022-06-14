@@ -357,11 +357,12 @@
 		if(H)
 			new_hat = H
 			has_hat = TRUE
-			drop_from_inventory(H)
+			temporarily_remove_from_inventory(H, TRUE)
 			things_to_drop -= H
+			break
 
 	for(var/obj/item/I in things_to_drop) //rip hoarders
-		drop_from_inventory(I)
+		drop_item_to_ground(I)
 
 	if(w_uniform && istype(w_uniform,/obj/item/clothing)) //No webbings tho. We do this after in case a suit was in the way
 		var/obj/item/clothing/uniform = w_uniform
@@ -458,8 +459,9 @@
 	blob.name = "Promethean Blob"
 	var/obj/item/hat = blob.hat
 	blob.drop_hat()
-	drop_from_inventory(hat) // Hat me baby
-	equip_to_slot_if_possible(hat, SLOT_ID_HEAD)
+
+	if(!equip_to_slot_if_possible(hat, SLOT_ID_HEAD))
+		hat.forceMove(drop_location())
 	nutrition = blob.nutrition // food good
 
 

@@ -117,8 +117,7 @@
 	setBrainLoss(braindamage)
 
 	//Drop everything
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+	drop_inventory(TRUE, TRUE, TRUE)
 
 	//Unfreeze some things
 	does_not_breathe = FALSE

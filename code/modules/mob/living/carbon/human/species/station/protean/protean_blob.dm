@@ -319,18 +319,16 @@
 	things_to_drop -= things_to_not_drop //Crunch the lists
 	things_to_drop -= organs //Mah armbs
 	things_to_drop -= internal_organs //Mah sqeedily spooch
+
 	for(var/obj/item/rig/protean/O in things_to_drop)
 		things_to_drop -= O
 
 	for(var/obj/item/I in things_to_drop) //rip hoarders
-		drop_from_inventory(I)
+		drop_item_to_ground(I)
 
-
-	if(istype(SLOT_ID_GLOVES, /obj/item/clothing/gloves/gauntlets/rig)) //drop RIGsuit gauntlets to avoid fucky wucky-ness.
-		drop_from_inventory(SLOT_ID_GLOVES)
-
-	if(istype(SLOT_ID_SHOES, /obj/item/clothing/shoes/magboots)) //drop magboots because they're super heavy. also drops RIGsuit boots because they're magboot subtypes.
-		drop_from_inventory(SLOT_ID_SHOES)
+	if(wearing_rig)
+		for(var/obj/item/I in list(wearing_rig.helmet, wearing_rig.chest, wearing_rig.gloves, wearing_rig.boots))
+			transfer_item_to_loc(I, wearing_rig, TRUE)
 
 	for(var/obj/item/radio/headset/HS in things_to_not_drop)
 		if(HS.keyslot1)

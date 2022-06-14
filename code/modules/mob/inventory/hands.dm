@@ -40,6 +40,12 @@
 /mob/proc/put_in_left_hand(obj/item/I, force)
 	return FALSE
 
+/mob/proc/put_in_active_hand(obj/item/I, force)
+	return FALSE
+
+/mob/proc/put_in_inactive_hand(obj/item/I, force)
+	return FALSE
+
 /mob/proc/put_in_hand(obj/item/I, index, force)
 	return index == 1? put_in_left_hand(I, force) : put_in_right_hand(I, force)
 
@@ -106,15 +112,6 @@
  * get held item item at index
  */
 /mob/proc/get_held_item_of_index(index)
-	return FALSE
-
-/mob/proc/put_in_active_hand(obj/item/I, force)
-	return FALSE
-
-/mob/proc/put_in_inactive_hand(obj/item/I, force)
-	return FALSE
-
-/mob/proc/put_in_hand(obj/item/I, index, force)
 	return FALSE
 
 /**

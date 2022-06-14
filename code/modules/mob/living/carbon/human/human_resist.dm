@@ -58,7 +58,7 @@
 			"<span class='danger'>\The [src] manages to remove \the [wear_suit]!</span>",
 			"<span class='notice'>You successfully remove \the [wear_suit].</span>"
 			)
-		drop_from_inventory(wear_suit)
+		drop_item_to_ground(wear_suit, TRUE)
 
 #undef RESIST_ATTACK_DEFAULT
 #undef RESIST_ATTACK_CLAWS
