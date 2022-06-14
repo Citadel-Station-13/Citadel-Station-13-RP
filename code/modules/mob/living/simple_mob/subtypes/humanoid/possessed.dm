@@ -83,7 +83,7 @@
 		playsound(src, pick('sound/h_sounds/headcrab.ogg', 'sound/h_sounds/holla.ogg', 'sound/h_sounds/lynx.ogg', 'sound/h_sounds/mumble.ogg', 'sound/h_sounds/yell.ogg'), 50, 1)
 
 //Plays the sound every ~4 seconds.
-/mob/living/simple_mob/humanoid/possessed/Life()
+/mob/living/simple_mob/humanoid/possessed/Life(seconds, times_fired)
 	if(idle <= 0 && silenced == 0)
 		playsound(src, 'sound/h_sounds/breathing.ogg', 60, 1)
 		idle = 4

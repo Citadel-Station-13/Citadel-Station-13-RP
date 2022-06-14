@@ -1,4 +1,4 @@
-/mob/living/carbon/slime/Life()
+/mob/living/carbon/slime/Life(seconds, times_fired)
 	set invisibility = 0
 	set background = 1
 

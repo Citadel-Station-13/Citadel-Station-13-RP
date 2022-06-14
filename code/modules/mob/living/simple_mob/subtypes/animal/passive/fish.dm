@@ -102,7 +102,7 @@
 	reagents.add_reagent("toxin", 45)
 	reagents.add_reagent("impedrezene", 15)
 
-/mob/living/simple_mob/animal/passive/fish/koi/poisonous/Life()
+/mob/living/simple_mob/animal/passive/fish/koi/poisonous/Life(seconds, times_fired)
 	..()
 	if(isbelly(loc) && prob(10))
 		var/obj/belly/B = loc

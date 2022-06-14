@@ -80,7 +80,7 @@ GLOBAL_LIST_EMPTY(solargrubs)
 //	existing_solargrubs += src
 //	..()
 
-/mob/living/simple_mob/vore/solargrub/Life()
+/mob/living/simple_mob/vore/solargrub/Life(seconds, times_fired)
 	. = ..()
 	if(!.) return
 

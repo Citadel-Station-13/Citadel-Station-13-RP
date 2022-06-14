@@ -46,11 +46,9 @@
 			if(100 to 200)
 				wiz_instability_display.icon_state = "instability3"
 
-// Proc: Life()
-// Parameters: 0
-// Description: Makes instability tick along with Life().
-/mob/living/Life()
-	. = ..()
+/mob/living/PhysicalLife()
+	if((. = ..()))
+		return
 	handle_instability()
 
 // Proc: handle_instability()

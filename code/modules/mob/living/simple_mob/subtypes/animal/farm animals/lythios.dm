@@ -55,7 +55,7 @@
 	udder = new(50)
 	udder.my_atom = src
 
-/mob/living/simple_mob/animal/icegoat/Life()
+/mob/living/simple_mob/animal/icegoat/Life(seconds, times_fired)
 	. = ..()
 	if(.)
 		if(stat == CONSCIOUS)
@@ -146,7 +146,7 @@
 	. = ..()
 	coat_amount = 2
 
-/mob/living/simple_mob/animal/passive/woolie/Life()
+/mob/living/simple_mob/animal/passive/woolie/Life(seconds, times_fired)
 	. = ..()
 	if(.)
 		if(stat == CONSCIOUS)
@@ -209,7 +209,7 @@
 	var/heating_power = 30000
 
 
-/mob/living/simple_mob/animal/passive/furnacegrub/Life()
+/mob/living/simple_mob/animal/passive/furnacegrub/Life(seconds, times_fired)
 	. = ..()
 	if(icon_state != icon_dead) //I mean on death() Life() should disable but i guess doesnt hurt to make sure -shark
 		var/datum/gas_mixture/env = loc.return_air() //Gets all the information on the local air.

@@ -96,7 +96,7 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 	else
 		..()
 
-/mob/living/simple_mob/animal/passive/chicken/Life()
+/mob/living/simple_mob/animal/passive/chicken/Life(seconds, times_fired)
 	. =..()
 	if(!.)
 		return
@@ -168,7 +168,7 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 	pixel_x = rand(-6, 6)
 	pixel_y = rand(0, 10)
 
-/mob/living/simple_mob/animal/passive/chick/Life()
+/mob/living/simple_mob/animal/passive/chick/Life(seconds, times_fired)
 	. =..()
 	if(!.)
 		return

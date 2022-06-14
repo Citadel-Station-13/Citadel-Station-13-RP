@@ -54,7 +54,7 @@
 	else
 		..()
 
-/mob/living/simple_mob/animal/passive/cow/Life()
+/mob/living/simple_mob/animal/passive/cow/Life(seconds, times_fired)
 	. = ..()
 	if(stat == CONSCIOUS)
 		if(udder && prob(5))

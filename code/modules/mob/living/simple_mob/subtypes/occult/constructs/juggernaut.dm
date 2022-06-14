@@ -55,7 +55,7 @@
 				"bio" = 100,
 				"rad" = 100)
 
-/mob/living/simple_mob/construct/juggernaut/Life()
+/mob/living/simple_mob/construct/juggernaut/Life(seconds, times_fired)
 	SetWeakened(0)
 	..()
 

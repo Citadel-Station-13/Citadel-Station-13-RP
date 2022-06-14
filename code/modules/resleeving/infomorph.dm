@@ -565,7 +565,7 @@ var/global/list/default_infomorph_software = list()
 
 
 
-/mob/living/silicon/infomorph/Life()
+/mob/living/silicon/infomorph/Life(seconds, times_fired)
 	//We're dead or EMP'd or something.
 	if (src.stat == 2)
 		return

@@ -1,4 +1,4 @@
-/mob/living/simple_mob/Life()
+/mob/living/simple_mob/Life(seconds, times_fired)
 	..()
 
 	//Health

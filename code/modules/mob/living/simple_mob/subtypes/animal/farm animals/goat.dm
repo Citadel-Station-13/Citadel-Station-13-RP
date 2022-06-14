@@ -46,7 +46,7 @@
 	udder = new(50)
 	udder.my_atom = src
 
-/mob/living/simple_mob/animal/goat/Life()
+/mob/living/simple_mob/animal/goat/Life(seconds, times_fired)
 	. = ..()
 	if(.)
 		if(stat == CONSCIOUS)

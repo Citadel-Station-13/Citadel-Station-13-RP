@@ -23,7 +23,7 @@
 		mode = initial(mode)
 		nif.human.Stasis(0)
 
-/datum/nifsoft/medichines_org/life()
+/datum/nifsoft/medichines_org/Life(seconds, times_fired)
 	if((. = ..()))
 		var/mob/living/carbon/human/H = nif.human
 		var/HP_percent = H.health/H.getMaxHealth()
@@ -94,7 +94,7 @@
 	if((. = ..()))
 		mode = 0
 
-/datum/nifsoft/medichines_syn/life()
+/datum/nifsoft/medichines_syn/Life(seconds, times_fired)
 	if((. = ..()))
 		//We're good!
 		if(!nif.human.bad_external_organs.len)
@@ -148,7 +148,7 @@
 	if((. = ..()))
 		nif.notify("Now taking air from environment and refilling reserves.")
 
-/datum/nifsoft/spare_breath/life()
+/datum/nifsoft/spare_breath/Life(seconds, times_fired)
 	if((. = ..()))
 		if(active) //Supplying air, not recharging it
 			switch(filled) //Text warnings

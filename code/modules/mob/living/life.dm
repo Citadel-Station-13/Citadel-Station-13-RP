@@ -1,5 +1,7 @@
-/mob/living/Life()
+/mob/living/Life(seconds, times_fired)
 	..()
+
+	handle_instability()
 
 	if (transforming)
 		return

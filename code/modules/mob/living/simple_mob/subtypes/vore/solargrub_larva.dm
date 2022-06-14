@@ -78,7 +78,7 @@ var/global/list/grub_machine_overlays = list()
 		QDEL_NULL(machine_effect)
 	return ..()
 
-/mob/living/simple_mob/animal/solargrub_larva/Life()
+/mob/living/simple_mob/animal/solargrub_larva/Life(seconds, times_fired)
 	. = ..()
 
 	if(machine_effect && !istype(loc, /obj/machinery))

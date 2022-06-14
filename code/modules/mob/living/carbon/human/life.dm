@@ -46,7 +46,7 @@
 	var/last_synthcooling_message = 0 		// to whoever is looking at git blame in the future, i'm not the author, and this is shitcode, but what came before i changed it
 	// made me vomit
 
-/mob/living/carbon/human/Life()
+/mob/living/carbon/human/Life(seconds, times_fired)
 
 	if (transforming)
 		return
@@ -1010,7 +1010,7 @@
 
 	return //TODO: DEFERRED
 
-//DO NOT CALL handle_statuses() from this proc, it's called from living/Life() as long as this returns a true value.
+//DO NOT CALL handle_statuses() from this proc, it's called from living/Life(seconds, times_fired) as long as this returns a true value.
 /mob/living/carbon/human/handle_regular_UI_updates()
 	if(skip_some_updates())
 		return FALSE

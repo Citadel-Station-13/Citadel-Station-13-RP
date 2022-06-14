@@ -103,7 +103,7 @@
 		to_chat(L, "<span class='warning'>You feel a small shock rushing through your veins.</span>")
 		L.reagents.add_reagent(poison_type, poison_per_bite)
 
-/mob/living/simple_mob/vore/solarmoth/Life()
+/mob/living/simple_mob/vore/solarmoth/Life(seconds, times_fired)
 	. = ..()
 	if(icon_state != icon_dead) //I mean on death() Life() should disable but i guess doesnt hurt to make sure -shark
 		var/datum/gas_mixture/env = loc.return_air() //Gets all the information on the local air.
@@ -171,7 +171,7 @@
 	//light
 	mycolour = COLOR_BLUE
 
-/mob/living/simple_mob/vore/solarmoth/lunarmoth/Life()
+/mob/living/simple_mob/vore/solarmoth/lunarmoth/Life(seconds, times_fired)
 	. = ..()
 	if(icon_state != icon_dead)
 		var/datum/gas_mixture/env = loc.return_air()

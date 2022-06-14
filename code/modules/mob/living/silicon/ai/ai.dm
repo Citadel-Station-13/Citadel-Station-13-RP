@@ -914,7 +914,7 @@ var/list/ai_verbs_default = list(
 	ai_list -= src
 	silicon_mob_list -= src
 
-/mob/living/silicon/ai/announcer/Life()
+/mob/living/silicon/ai/announcer/Life(seconds, times_fired)
 	return
 
 #undef AI_CHECK_WIRELESS
