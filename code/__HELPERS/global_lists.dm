@@ -210,7 +210,10 @@ GLOBAL_LIST_EMPTY(mannequins)
 	//Languages and species.
 	paths = subtypesof(/datum/language)
 	for(var/T in paths)
-		var/datum/language/L = new T
+		var/datum/language/L = T
+		if(initial(L.abstract_type) == T)
+			continue
+		L = new T
 		GLOB.all_languages[L.name] = L
 
 	for (var/language_name in GLOB.all_languages)

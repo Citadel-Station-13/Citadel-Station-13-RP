@@ -33,6 +33,11 @@ var/list/wrapped_species_by_ref = list()
 	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_bodytype(H)
 
+/datum/species/shapeshifter/get_worn_legacy_bodytype(var/mob/living/carbon/human/H)
+	if(!H) return ..()
+	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
+	return S.get_worn_legacy_bodytype(H)
+
 /datum/species/shapeshifter/get_blood_mask(var/mob/living/carbon/human/H)
 	if(!H) return ..()
 	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
@@ -97,7 +102,7 @@ var/list/wrapped_species_by_ref = list()
 			continue
 		if(gender == FEMALE && S.gender == MALE)
 			continue
-		if(!(species.get_bodytype(src) in S.species_allowed))
+		if(S.apply_restrictions && !(species.get_bodytype(src) in S.species_allowed))
 			continue
 		valid_hairstyles += hairstyle
 	for(var/facialhairstyle in facial_hair_styles_list)
@@ -106,7 +111,7 @@ var/list/wrapped_species_by_ref = list()
 			continue
 		if(gender == FEMALE && S.gender == MALE)
 			continue
-		if(!(species.get_bodytype(src) in S.species_allowed))
+		if(S.apply_restrictions && !(species.get_bodytype(src) in S.species_allowed))
 			continue
 		valid_facialhairstyles += facialhairstyle
 
