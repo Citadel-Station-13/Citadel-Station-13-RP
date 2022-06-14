@@ -60,7 +60,7 @@
 	announce_channel = "Trade"
 	on_store_name = "Beruang Trading Corp Storage"
 
-/atom/movable/landmark/map_data/trade
+/obj/landmark/map_data/trade
     height = 1
 
 // Their shuttle

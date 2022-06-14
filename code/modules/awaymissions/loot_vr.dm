@@ -1,5 +1,5 @@
 // Legacy version. Need to investigate what the hell lootdrop in loot.dm does later. -Ace
-/atom/movable/landmark/loot_spawn
+/obj/landmark/loot_spawn
 	name = "loot spawner"
 	icon_state = "grabbed1"
 	var/live_cargo = 1 // So you can turn off aliens.
@@ -7,12 +7,12 @@
 	var/spawned_faction = "hostile" // Spawned mobs can have their faction changed.
 
 
-/atom/movable/landmark/loot_spawn/low
+/obj/landmark/loot_spawn/low
 	name = "low prob loot spawner"
 	icon_state = "grabbed"
 	low_probability = 1
 
-/atom/movable/landmark/loot_spawn/New()
+/obj/landmark/loot_spawn/New()
 
 	switch(pick( \
 	low_probability * 1000;"nothing", \
