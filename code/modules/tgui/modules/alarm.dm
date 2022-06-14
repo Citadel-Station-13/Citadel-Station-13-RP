@@ -1,8 +1,10 @@
 /datum/tgui_module/alarm_monitor
 	name = "Alarm monitor"
 	tgui_id = "StationAlertConsole"
-	var/list_cameras = 0						// Whether or not to list camera references. A future goal would be to merge this with the enginering/security camera console. Currently really only for AI-use.
-	var/list/datum/alarm_handler/alarm_handlers // The particular list of alarm handlers this alarm monitor should present to the user.
+	/// Whether or not to list camera references. A future goal would be to merge this with the enginering/security camera console. Currently really only for AI-use.
+	var/list_cameras = 0
+	/// The particular list of alarm handlers this alarm monitor should present to the user.
+	var/list/datum/alarm_handler/alarm_handlers
 
 /datum/tgui_module/alarm_monitor/New()
 	..()
@@ -106,7 +108,7 @@
 
 	switch(action)
 		if("switchTo")
-			var/obj/machinery/camera/C = locate(params["camera"]) in cameranet.cameras
+			var/obj/machinery/camera/C = locate(params["camera"]) in GLOB.cameranet.cameras
 			if(!C)
 				return
 

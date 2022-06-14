@@ -122,6 +122,8 @@
 	input = replacetext_char(input, bold, "<b>$1</b>")
 	var/static/regex/underline = regex("_(?=\\S)(.+?)(?=\\S)_", "g")
 	input = replacetext_char(input, underline, "<u>$1</u>")
+	var/static/regex/strikethrough = regex("~~(?=\\S)(.+?)(?=\\S)~~", "g")
+	input = replacetext_char(input, strikethrough, "<s>$1</s>")
 	return input
 
 /mob/proc/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/part_c, var/mob/speaker = null, var/hard_to_hear = 0, var/vname ="")

@@ -147,7 +147,6 @@
 /obj/item/clothing/head/ushanka
 	name = "ushanka"
 	desc = "Perfect for winter in Siberia, da?"
-	icon = 'icons/obj/clothing/hats_cit.dmi'
 	icon_state = "ushankadown"
 	flags_inv = HIDEEARS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
@@ -188,10 +187,10 @@
 
 	update_icon(var/mob/living/carbon/human/user)
 		if(!istype(user)) return
-		var/icon/ears = new/icon("icon" = 'icons/mob/head.dmi', "icon_state" = "kitty")
+		var/icon/ears = new/icon("icon" = INV_HEAD_DEF_ICON, "icon_state" = "kitty")
 		ears.Blend(rgb(user.r_hair, user.g_hair, user.b_hair), ICON_ADD)
 
-		var/icon/earbit = new/icon("icon" = 'icons/mob/head.dmi', "icon_state" = "kittyinner")
+		var/icon/earbit = new/icon("icon" = INV_HEAD_DEF_ICON, "icon_state" = "kittyinner")
 		ears.Blend(earbit, ICON_OVERLAY)
 
 /obj/item/clothing/head/richard

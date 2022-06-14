@@ -1,0 +1,63 @@
+2021-05-03:
+  CrystalClearCC:
+  - bugfix: changed pulsar emissions away from world-detroying pulsar emissions.
+2021-05-04:
+  nik707:
+  - rscadd: Mirror Implant
+  - rscdel: 'Comments out a lot of transcore code tweak: NIFs are not given upon resleeving
+      tweak: Body scanners can initiate manual mirror backups'
+2021-05-05:
+  buffyuwu:
+  - rscadd: You can now pretend to be drunk, stutter, or twitch in the IC tab
+2021-05-07:
+  nevimer:
+  - balance: Guide tells you the safest way to start the engine possible
+2021-05-10:
+  nevimer:
+  - rscadd: Burn chamber engine submap.
+2021-05-11:
+  nik707:
+  - rscadd: Mirror tool for borgs
+  - bugfix: 'fixed a bug that would allow infinite mirror production tweak: tweaks
+      spawn in text when resleeving'
+  - rscadd: further sanity checks to the mirror tool for more easy usage
+2021-05-16:
+  silicons:
+  - rscadd: every winter coat from main is now here
+2021-05-17:
+  nevimer:
+  - bugfix: Machines no longer say they're off upon inspect when they're on.
+  - rscadd: Moles measurement to pipes and cannisters
+  - rscadd: Ghosts can inspect pipes
+2021-05-18:
+  Ghostcoffeee:
+  - rscadd: 'Added non-blob regen tweak: Increased blob regen, so that there''s some
+      incentive to use it over the normal tweak: Changed Protean limb health from
+      10 hp/limb to the standard 80 hp/limb'
+  - balance: Changes to a few resistances and other values
+  Knouli:
+  - rscadd: Miko Garb custom sprite
+  - code_imp: New .dms for event rewards, separate from donator sprites
+2021-05-21:
+  CharlesWedge:
+  - rscadd: Pirate Boarding Event, Pirates will invade the ship in area I determined
+      to be "High-Value" and begin wrecking things
+  - rscadd: 'Pirate Ships labelled as "Unflagged Vessels" now spawn across the overmap
+      in small groups. tweak: Changed the Pistoler''s projectile to 12g slug, more
+      in line with the zip gun they are using.'
+  - balance: Pirate Reloads greatly decreased so they don't spam high damage bullets
+      and lasers in your face.
+  - imageadd: One Sprite for pirate ships
+2021-05-23:
+  Kraseo:
+  - rscadd: Black-eyed shadekin.
+  nevimer:
+  - rscadd: 'IP reputation checking tweak: return to menu is now respawn.'
+  - config: 'new things to config: IP rep'
+  - admin: IP rep admin verb
+2021-05-24:
+  nevimer:
+  - bugfix: TTS Devices are now usable in while sitting in chairs and from pockets.
+2021-05-29:
+  nevimer:
+  - rscadd: long-range analyzer to RnD for engineering.

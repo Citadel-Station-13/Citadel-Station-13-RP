@@ -93,7 +93,7 @@
 	desc = "A bag Joan uses to carry her work equipment. It has the 82nd Battle Group Insignia on it."
 	icon_state = "joanbag"
 	icon = 'icons/vore/custom_items_vr.dmi'
-	item_state = "duffle_med"
+	item_state = "duffle-med"
 	slowdown = 0
 
 	New()
@@ -308,6 +308,10 @@ Swimsuits, for general use, to avoid arriving to work with your swimsuit.
 /obj/item/storage/box/fluff/swimsuit/latex
 	name = "Latex Swimsuit capsule"
 	has_items = list(/obj/item/clothing/under/swimsuit/latex)
+
+/obj/item/storage/box/fluff/swimsuit/risque
+	name = "Risque Swimsuit capsule"
+	has_items = list(/obj/item/clothing/under/swimsuit/risque)
 
 //Monkey boxes for the new primals we have
 /obj/item/storage/box/monkeycubes/sobakacubes

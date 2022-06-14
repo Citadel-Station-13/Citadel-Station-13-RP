@@ -45,7 +45,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate2)
 "ap" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor,
@@ -105,7 +105,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate3)
 "aF" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor,
@@ -185,7 +185,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate1)
 "be" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor,
@@ -400,7 +400,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "cs" = (
-/obj/effect/landmark/corpse/engineer{
+/atom/movable/spawner/corpse/engineer{
 	mobname = "Rosen Miller";
 	name = "Rosen Miller"
 	},
@@ -502,7 +502,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "cQ" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor,
@@ -517,7 +517,7 @@
 	},
 /area/awaymission/spacebattle/cruiser)
 "cU" = (
-/obj/effect/landmark/corpse/engineer{
+/atom/movable/spawner/corpse/engineer{
 	mobname = "Bill Sanchez";
 	name = "Bill Sanchez"
 	},
@@ -581,7 +581,7 @@
 	},
 /area/awaymission/spacebattle/cruiser)
 "di" = (
-/obj/effect/landmark/corpse/engineer{
+/atom/movable/spawner/corpse/engineer{
 	mobname = "John Locke";
 	name = "John Locke"
 	},
@@ -605,7 +605,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "do" = (
-/obj/effect/landmark/corpse/doctor{
+/atom/movable/spawner/corpse/doctor{
 	mobname = "Daniel Kalla";
 	name = "Daniel Kalla"
 	},
@@ -619,7 +619,7 @@
 	},
 /area/awaymission/spacebattle/cruiser)
 "dz" = (
-/obj/effect/landmark/corpse/chef{
+/atom/movable/spawner/corpse/chef{
 	mobname = "Nathaniel Waters";
 	name = "Nathaniel Waters"
 	},
@@ -704,7 +704,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "ea" = (
-/obj/effect/landmark/corpse/engineer/rig{
+/atom/movable/spawner/corpse/engineer/rig{
 	corpseidjob = "Gunner";
 	mobname = "Andrew Thorn";
 	name = "Andrew Thorn"
@@ -728,7 +728,7 @@
 	},
 /area/awaymission/spacebattle/cruiser)
 "ed" = (
-/obj/effect/landmark/corpse/engineer{
+/atom/movable/spawner/corpse/engineer{
 	mobname = "Clay Dawson";
 	name = "Clay Dawson"
 	},
@@ -836,7 +836,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "eB" = (
-/obj/effect/landmark/corpse/bridgeofficer{
+/atom/movable/spawner/corpse/bridgeofficer{
 	mobname = "Davis Hume";
 	name = "Davis Hume"
 	},
@@ -864,7 +864,7 @@
 /mob/living/simple_mob/humanoid/merc/melee/sword/space,
 /area/awaymission/spacebattle/cruiser)
 "eK" = (
-/obj/effect/landmark/corpse/engineer/rig{
+/atom/movable/spawner/corpse/engineer/rig{
 	corpseidjob = "Gunner";
 	mobname = "Peter West";
 	name = "Peter West"
@@ -929,13 +929,13 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "fa" = (
-/obj/effect/landmark/corpse/syndicatesoldier,
+/atom/movable/spawner/corpse/syndicatesoldier,
 /obj/item/melee/energy/sword,
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "fb" = (
-/obj/effect/landmark/corpse/bridgeofficer{
+/atom/movable/spawner/corpse/bridgeofficer{
 	mobname = "Kurt Kliest";
 	name = "Kurt Kliest"
 	},
@@ -953,7 +953,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "fe" = (
-/obj/effect/landmark/corpse/engineer/rig{
+/atom/movable/spawner/corpse/engineer/rig{
 	corpseidjob = "Gunner";
 	mobname = "Eric Abnett";
 	name = "Eric Abnett"
@@ -995,7 +995,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "ft" = (
-/obj/effect/landmark/corpse/syndicatesoldier,
+/atom/movable/spawner/corpse/syndicatesoldier,
 /obj/item/gun/projectile/automatic/c20r,
 /obj/item/ammo_casing/a10mm,
 /obj/item/ammo_casing/a10mm,
@@ -1003,7 +1003,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "fv" = (
-/obj/effect/landmark/corpse/bridgeofficer{
+/atom/movable/spawner/corpse/bridgeofficer{
 	mobname = "Walter Strider";
 	name = "Walter Strider"
 	},
@@ -1017,7 +1017,7 @@
 /obj/item/ammo_casing/a357,
 /obj/item/ammo_casing/a357,
 /obj/item/gun/projectile/revolver/mateba,
-/obj/effect/landmark/corpse/commander{
+/atom/movable/spawner/corpse/commander{
 	mobname = "Aaron Bowden";
 	name = "Aaron Bowden"
 	},
@@ -1053,7 +1053,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "gh" = (
-/obj/effect/landmark/corpse/bridgeofficer{
+/atom/movable/spawner/corpse/bridgeofficer{
 	mobname = "Robert Faver";
 	name = "Robert Faver"
 	},
@@ -1146,7 +1146,7 @@
 	},
 /area/awaymission/spacebattle/cruiser)
 "gK" = (
-/obj/effect/landmark/corpse/doctor{
+/atom/movable/spawner/corpse/doctor{
 	mobname = "Adam Smith";
 	name = "Adam Smith"
 	},
@@ -1183,7 +1183,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "gT" = (
-/obj/effect/landmark/corpse/engineer/rig{
+/atom/movable/spawner/corpse/engineer/rig{
 	corpseidjob = "Gunner";
 	name = "Jeremy Tailor"
 	},
@@ -1211,7 +1211,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "ha" = (
-/obj/effect/landmark/corpse/doctor{
+/atom/movable/spawner/corpse/doctor{
 	mobname = "Allan Yoshimaru";
 	name = "Allan Yoshimaru"
 	},
@@ -1252,7 +1252,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/spacebattle/cruiser)
 "hm" = (
-/obj/effect/landmark/corpse/engineer/rig{
+/atom/movable/spawner/corpse/engineer/rig{
 	corpseidjob = "Gunner";
 	mobname = "Dan Hedricks";
 	name = "Dan Hedricks"
@@ -1402,7 +1402,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/spacebattle/cruiser)
 "hP" = (
-/obj/effect/landmark/corpse/engineer{
+/atom/movable/spawner/corpse/engineer{
 	corpseidjob = "Gunner";
 	mobname = "William Gannon";
 	name = "William Gannon"
@@ -1435,7 +1435,7 @@
 	},
 /area/awaymission/spacebattle/cruiser)
 "hV" = (
-/obj/effect/landmark/corpse/engineer{
+/atom/movable/spawner/corpse/engineer{
 	mobname = "Javier Wismer";
 	name = "Javier Wismer"
 	},
@@ -1498,7 +1498,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "im" = (
-/obj/effect/landmark/corpse/doctor{
+/atom/movable/spawner/corpse/doctor{
 	mobname = "Herbert West";
 	name = "Herbert West"
 	},
@@ -1506,7 +1506,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "in" = (
-/obj/effect/landmark/corpse/engineer{
+/atom/movable/spawner/corpse/engineer{
 	mobname = "Carth Robinson";
 	name = "Carth Robinson"
 	},
@@ -1529,7 +1529,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "iw" = (
-/obj/effect/landmark/corpse/engineer{
+/atom/movable/spawner/corpse/engineer{
 	mobname = "Cyrion";
 	name = "Cyrion"
 	},
@@ -1538,12 +1538,12 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "iy" = (
-/obj/effect/landmark/corpse/syndicatesoldier,
+/atom/movable/spawner/corpse/syndicatesoldier,
 /obj/item/gun/projectile/automatic/c20r,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "iA" = (
-/obj/effect/landmark/corpse/engineer{
+/atom/movable/spawner/corpse/engineer{
 	mobname = "Mercutio";
 	name = "Mercutio"
 	},
@@ -1555,7 +1555,7 @@
 /turf/space,
 /area)
 "iC" = (
-/obj/effect/landmark/corpse/syndicatesoldier,
+/atom/movable/spawner/corpse/syndicatesoldier,
 /turf/space,
 /area)
 "iD" = (
@@ -1577,7 +1577,7 @@
 	},
 /area)
 "iH" = (
-/obj/effect/landmark/corpse/syndicatesoldier,
+/atom/movable/spawner/corpse/syndicatesoldier,
 /turf/simulated/floor/airless{
 	dir = 10
 	},

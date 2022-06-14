@@ -8,26 +8,27 @@ FIRE ALARM
 	icon_state = "fire0"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
-	var/detecting = 1.0
-	var/working = 1.0
-	var/time = 10.0
-	var/timing = 0.0
-	var/lockdownbyai = 0
-	anchored = 1.0
-	use_power = 1
+	var/detecting = TRUE
+	var/working = TRUE
+	var/time = 10
+	var/timing = 0
+	var/lockdownbyai = FALSE
+	anchored = TRUE
+	use_power = TRUE
 	idle_power_usage = 2
 	active_power_usage = 6
 	power_channel = ENVIRON
 	var/last_process = 0
-	panel_open = 0
+	panel_open = FALSE
 	var/seclevel
 	circuit = /obj/item/circuitboard/firealarm
-	var/alarms_hidden = FALSE //If the alarms from this machine are visible on consoles
+	/// If the alarms from this machine are visible on consoles.
+	var/alarms_hidden = FALSE
 
 /obj/machinery/firealarm/alarms_hidden
 	alarms_hidden = TRUE
 
-/obj/machinery/firealarm/Initialize()
+/obj/machinery/firealarm/Initialize(mapload)
 	. = ..()
 	if(z in GLOB.using_map.contact_levels)
 		set_security_level(security_level ? get_security_level() : "green")
@@ -39,10 +40,10 @@ FIRE ALARM
 		set_light(0)
 		return
 
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		icon_state = "firex"
 		set_light(0)
-	else if(stat & NOPOWER)
+	else if(machine_stat & NOPOWER)
 		icon_state = "firep"
 		set_light(0)
 	else
@@ -67,7 +68,7 @@ FIRE ALARM
 			alarm()			// added check of detector status here
 	return
 
-/obj/machinery/firealarm/attack_ai(mob/user as mob)
+/obj/machinery/firealarm/attack_ai(mob/user)
 	return attack_hand(user)
 
 /obj/machinery/firealarm/bullet_act()
@@ -78,7 +79,7 @@ FIRE ALARM
 		alarm(rand(30 / severity, 60 / severity))
 	..()
 
-/obj/machinery/firealarm/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/firealarm/attackby(obj/item/W, mob/user)
 	add_fingerprint(user)
 
 	if(alarm_deconstruction_screwdriver(user, W))
@@ -90,16 +91,20 @@ FIRE ALARM
 		if(istype(W, /obj/item/multitool))
 			detecting = !(detecting)
 			if(detecting)
-				user.visible_message("<span class='notice'>\The [user] has reconnected [src]'s detecting unit!</span>", "<span class='notice'>You have reconnected [src]'s detecting unit.</span>")
+				user.visible_message( \
+					SPAN_NOTICE("\The [user] has reconnected [src]'s detecting unit!"), \
+					SPAN_NOTICE("You have reconnected [src]'s detecting unit."))
 			else
-				user.visible_message("<span class='notice'>\The [user] has disconnected [src]'s detecting unit!</span>", "<span class='notice'>You have disconnected [src]'s detecting unit.</span>")
+				user.visible_message( \
+					SPAN_NOTICE("\The [user] has disconnected [src]'s detecting unit!"), \
+					SPAN_NOTICE("You have disconnected [src]'s detecting unit."))
 		return
 
 	alarm()
 	return
 
 /obj/machinery/firealarm/process()//Note: this processing was mostly phased out due to other code, and only runs when needed
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 
 	if(timing)
@@ -123,8 +128,8 @@ FIRE ALARM
 	spawn(rand(0,15))
 		update_icon()
 
-/obj/machinery/firealarm/attack_hand(mob/user as mob)
-	if(user.stat || stat & (NOPOWER | BROKEN))
+/obj/machinery/firealarm/attack_hand(mob/user)
+	if(user.stat || machine_stat & (NOPOWER | BROKEN))
 		return
 
 	user.set_machine(src)
@@ -166,7 +171,7 @@ FIRE ALARM
 
 /obj/machinery/firealarm/Topic(href, href_list)
 	..()
-	if(usr.stat || stat & (BROKEN | NOPOWER))
+	if(usr.stat || machine_stat & (BROKEN | NOPOWER))
 		return
 
 	if((usr.contents.Find(src) || ((get_dist(src, usr) <= 1) && istype(src.loc, /turf))) || (istype(usr, /mob/living/silicon)))
@@ -232,18 +237,18 @@ Just a object used in constructing fire alarms
 	desc = "Cuban Pete is in the house!"
 	icon = 'icons/obj/monitors.dmi'
 	icon_state = "fire0"
-	var/detecting = 1.0
-	var/working = 1.0
-	var/time = 10.0
-	var/timing = 0.0
-	var/lockdownbyai = 0
-	anchored = 1.0
-	use_power = 1
+	var/detecting = TRUE
+	var/working = TRUE
+	var/time = 10
+	var/timing = 0
+	var/lockdownbyai = FALSE
+	anchored = TRUE
+	use_power = TRUE
 	idle_power_usage = 2
 	active_power_usage = 6
 
-/obj/machinery/partyalarm/attack_hand(mob/user as mob)
-	if(user.stat || stat & (NOPOWER|BROKEN))
+/obj/machinery/partyalarm/attack_hand(mob/user)
+	if(user.stat || machine_stat & (NOPOWER|BROKEN))
 		return
 
 	user.machine = src
@@ -300,7 +305,7 @@ Just a object used in constructing fire alarms
 
 /obj/machinery/partyalarm/Topic(href, href_list)
 	..()
-	if(usr.stat || stat & (BROKEN|NOPOWER))
+	if(usr.stat || machine_stat & (BROKEN|NOPOWER))
 		return
 	if((usr.contents.Find(src) || ((get_dist(src, usr) <= 1) && istype(loc, /turf))) || (istype(usr, /mob/living/silicon/ai)))
 		usr.machine = src

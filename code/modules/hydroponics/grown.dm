@@ -148,13 +148,11 @@
 		return
 	if(seed && seed.get_trait(TRAIT_JUICY) == 2)
 		if(istype(M))
-
 			if(M.buckled)
 				return
-
 			if(istype(M,/mob/living/carbon/human))
 				var/mob/living/carbon/human/H = M
-				if(H.shoes && H.shoes.item_flags & NOSLIP)
+				if(H.shoes && H.shoes.clothing_flags & NOSLIP)
 					return
 				if(H.flags & NO_SLIP)//Species that dont slip naturally
 					return
@@ -164,9 +162,7 @@
 			M.Stun(8)
 			M.Weaken(5)
 			seed.thrown_at(src,M)
-			sleep(-1)
-			if(src)
-				qdel(src)
+			qdel(src)
 			return
 
 /obj/item/reagent_containers/food/snacks/grown/throw_impact(atom/hit_atom)

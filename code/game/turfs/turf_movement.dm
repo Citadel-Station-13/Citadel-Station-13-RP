@@ -1,34 +1,39 @@
 var/const/enterloopsanity = 100
-/turf/Entered(atom/atom as mob|obj)
+/turf/Entered(atom/movable/AM)
 	..()
 
-	if(!istype(atom, /atom/movable))
-		return
+	if(LAZYLEN(acting_automata))
+		for(var/datum/automata/A as anything in acting_automata)
+			A.act_cross(AM, acting_automata[A])
 
-	var/atom/movable/A = atom
+	/**
+	 * everything below this is legacy and deserves to burn in fire
+	 * ESPECIALLY vore flying overrides
+	 * ESPECIALLY proxmove.
+	 */
 
-	if(ismob(A))
-		var/mob/M = A
+	if(ismob(AM))
+		var/mob/M = AM
 		if(!M.lastarea)
 			M.lastarea = get_area(M.loc)
-		if(M.flying) //VORESTATION Edit Start. This overwrites the above is_space without touching it all that much.
-			M.make_floating(1) //VOREStation Edit End.
+		if(M.flying) // This overwrites the above is_space without touching it all that much.
+			M.make_floating(1)
 		else if(!is_space())
 			M.make_floating(0)
 		if(isliving(M) && CHECK_BITFIELD(M.movement_type, GROUND))
 			var/mob/living/L = M
 			L.handle_footstep(src)
-	..()
+
 	var/objects = 0
-	if(A && (A.flags & PROXMOVE))
+	if(AM.flags & PROXMOVE)
 		for(var/atom/movable/thing in range(1))
 			if(objects++ > enterloopsanity)
 				break
 			spawn(0)
-				if(A) //Runtime prevention
-					A.HasProximity(thing, 1)
-					if ((thing && A) && (thing.flags & PROXMOVE))
-						thing.HasProximity(A, 1)
+				if(AM) //Runtime prevention
+					AM.HasProximity(thing, 1)
+					if ((thing && AM) && (thing.flags & PROXMOVE))
+						thing.HasProximity(AM, 1)
 
 
 //There's a lot of QDELETED() calls here if someone can figure out how to optimize this but not runtime when something gets deleted by a Bump/CanAllowThrough/Cross call, lemme know or go ahead and fix this mess - kevinz000

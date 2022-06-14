@@ -39,12 +39,7 @@
 
 /mob/living/simple_mob/vore/aggressive/dragon/Process_Spacemove(var/check_drift = 0)
 	return 1	//No drifting in space for space dragons!
-/*
-/mob/living/simple_mob/vore/aggressive/dragon/FindTarget()
-	. = ..()
-	if(.)
-		custom_emote(1,"snaps at [.]")
-*/
+
 // Activate Noms!
 /mob/living/simple_mob/vore/aggressive/dragon
 	vore_active = 1
@@ -57,16 +52,6 @@
 	health = 200
 	faction = "virgo3b"
 
-/* //VOREStation AI Temporary Removal
-/mob/living/simple_animal/hostile/dragon/Login()
-	. = ..()
-	if(!riding_datum)
-		riding_datum = new /datum/riding/simple_animal(src)
-	verbs |= /mob/living/simple_animal/proc/animal_mount
-
-/mob/living/simple_animal/hostile/dragon/MouseDrop_T(mob/living/M, mob/living/user)
-	return
-*/
 
 /datum/say_list/dragonboss
 	say_got_target = list("roars and snaps it jaws!")

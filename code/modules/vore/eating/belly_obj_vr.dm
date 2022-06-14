@@ -322,7 +322,7 @@
 			if(!P.absorbed) //This is required first, in case there's a person absorbed and not absorbed in a stomach.
 				total_bulge += P.size_multiplier
 		if(total_bulge >= bulge_size && bulge_size != 0)
-			return("<span class='warning'>[formatted_message]</span><BR>")
+			return(SPAN_WARNING("[formatted_message]"))
 		else
 			return ""
 
@@ -498,8 +498,8 @@
 		return owner.drop_location()
 	//Sketchy fallback for safety, put them somewhere safe.
 	else
-		log_debug("[src] (\ref[src]) doesn't have an owner, and dropped someone at a latespawn point!")
-		var/fallback = pick(latejoin)
+		stack_trace("[src] (\ref[src]) doesn't have an owner, and dropped someone at a latespawn point!")
+		var/fallback = SSjob.GetLatejoinSpawnpoint(faction = JOB_FACTION_STATION)
 		return get_turf(fallback)
 
 //Yes, it's ""safe"" to drop items here

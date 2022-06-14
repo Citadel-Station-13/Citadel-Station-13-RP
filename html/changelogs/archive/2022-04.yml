@@ -1,0 +1,260 @@
+2022-04-01:
+  Captain277:
+  - rscadd: Adds two new wax floor tiles.
+  - rscadd: Adds wax crafting recipes.
+  - rscadd: Three Apidean themed guns.
+  - rscadd: More food recipes.
+  plumeofsmoke:
+  - rscadd: Added new updated names and terms
+  - rscdel: Removed old and outdated terms
+  - bugfix: Fixed old terms and corrected information
+2022-04-03:
+  Captain277:
+  - rscadd: 'Adds new pirate mob sprites. tweak: Updates Donator Perms.'
+  - rscadd: Adds two new cosmetic skins for wrenches, as well as the ability for random
+      colored wrench spawning.
+  - rscadd: Adds Tyrmalin Mining Charges, Tyrmalin Excavator drill, thermal cutter,
+      welder spear.
+  - rscadd: 'Apidean Scanners: Health, Atmospheric, and Reagent, Drone Grenade, Throne
+      and Stool'
+  - rscadd: Adds Wax Chemistry Reaction
+  - rscadd: 'Adds Culture and Weapon Crates: Apidean and Tyrmalin'
+  - rscadd: Adds more cosmetic stirrup style stockings.
+  - rscadd: Adds prescription welding goggles.
+  - rscadd: Adds portable fuel tanks.
+  - rscadd: New guns - Junker Pistol, Ermitter Rifle, Rokkitlauncher, Botbuster, Warplock
+      Jezzail
+  - rscadd: Snack Foods - Canned Cavemoss, Canned Digger Stew, Canned Beetles, Canned
+      Iron Soup, Snack Bar, Bugsnacks
+  - rscadd: Recipes - Spider Wing Fangchu, Steamed Spider, Spider Loaf, Bear Ribs,
+      Sapling's Delight, Blue Cheese
+  - rscadd: Drinks - Green Stuff, Phobos, Royal Jelly, Moonshine, Ambrosia Mead, Rotgut
+      (Bottles) & Loam Nutri-Juice, Gondola Energy Drink, Geometer Energy Drink (Cans)
+  - rscadd: 'Mecha Paint Kits & Randomizer for Maps remove: Duplicate/Fake Mecha Paint
+      Kits tweak: Changes Mead recipe from 1 Sugar, 1 Water, 5 Enzyme to 1 Honey,
+      1 Water, 5 Enzyme'
+  - rscadd: Apidean "Beebot" Medbot
+  - rscadd: Colored Medbot Subtypes
+  - rscadd: Collapsible Missile Launcher
+  - rscadd: Memorial Wall
+  - config: Adds songs to the jukebox?
+2022-04-04:
+  TheLordME:
+  - rscadd: Added a heat pump, it pumps heat
+  nik707:
+  - bugfix: we are now capable of the succ
+2022-04-06:
+  Captain277:
+  - rscadd: Adds the NT-57.
+  - rscadd: Adds the NT-R-7.
+  - rscadd: 'Adds the WT274 AB-SMG. tweak: Updates the names of pulse weapons. tweak:
+      Returns the pulse sidearm to CCOs. tweak: Rearranges gun icons. tweak: Changes
+      weapon randomspawn rates.'
+  - rscdel: Removes gun.dmi and gun2.dmi
+  - rscdel: Comments out the M1911-P
+  - rscadd: Adds Pariah Jacket.
+  - bugfix: Fixes goblin food icon paths.
+  - bugfix: Fixes goblin drill examine.
+  CrystalClearCC:
+  - rscadd: Cuban Pete's has released a new rum! This one is white.
+  - rscadd: Three new knives have been added. Knife nuts rejoice.
+2022-04-07:
+  Mouseofthecake:
+  - balance: reduced sizeshift trait cost to 2
+  Zandario:
+  - rscadd: Shield Generator TGUI
+  - imageadd: Animated shield sprites
+2022-04-09:
+  Captain277:
+  - rscadd: Adds DONKsoft guns.
+  - rscadd: 'Adds foam bullet types. tweak: Damage on Foam weapons.'
+  - rscadd: Foam riot shields.
+  - rscadd: Two crate vectors for DONKsoft products.
+  - bugfix: Fixes broken icon path in bedsheets.
+  - rscadd: Adds more barsigns.
+  - rscadd: Adds a new AI icon.
+  - rscadd: Adds a new softsuit and voidsuit.
+  - rscadd: Adds some new flavor armor.
+  Funkeronipasta:
+  - rscadd: '*startup'
+  - rscadd: '*shutdown'
+  - rscadd: '*error'
+  - rscadd: '*die'
+  - rscadd: '*ara'
+  - rscadd: '*amoan'
+  - rscadd: '*uwu edit: *nya'
+  Shadowtail117:
+  - server: Alert descriptions have been moved to game_options.txt.
+  - rscadd: You can now tactical- and speed-reload a ballistic weapon by clicking
+      on it with the appropriate magazine on grab or harm intent, respectively.
+  - rscadd: Added sound effects for transmitting/receiving a radio message from Baystation.
+  yeayea130:
+  - balance: Capped borg shielding percentage at 60% maximum
+2022-04-10:
+  Zandario:
+  - rscadd: All standard medkits now make a unique Medibot, each with their own default
+      name!
+  - rscadd: New Floorbot sprites, variants included.
+  - bugfix: Medibot crafting.
+  - soundadd: Added a ton of Medibot sounds, mostly unused atm.
+  - imageadd: My own new Medibots!
+  - imagedel: The old Medibot Sprites.
+  - refactor: The code handling basic information for Medibots have been overhauled
+      to support future variants.
+2022-04-11:
+  Captain277:
+  - rscdel: Removes the egun in the HoP locker.
+  Shadowtail117:
+  - rscadd: The alert status is now shown when logging in and when displaying the
+      MOTD.
+  Zandario:
+  - bugfix: Fixed dark mode supply channel
+2022-04-12:
+  CrystalClearCC:
+  - spellcheck: a borg now loads items onto their tray.
+2022-04-14:
+  Shadowtail117:
+  - rscdel: Removed the skills page and some admin procs relating to skills.
+  TheLordME:
+  - bugfix: Fixes xenohybrids being unable to buckle anyone into their nests
+  - bugfix: Fixes heat pumps being able to pump heat into empty pipe grids
+  Zandario:
+  - bugfix: fixed a few things, including prevention of out-of-bounds teleportation
+      (iirc)
+  - imageadd: New Teleporter related sprites, including beacons.
+  - imagedel: Merged radio_vr.dmi
+  - spellcheck: Beacon.dm -> beacon.dm
+  - refactor: Teleporters pretty much entirely reworked.
+2022-04-16:
+  Captain277:
+  - rscadd: Adds red and green multitool skins.
+  Shadowtail117:
+  - rscadd: 'Added thirst as a mechanic. It goes down over time like hunger and is
+      replenished by drinking most normal fluids. It does not have an effect on your
+      character. tweak: You can click on your health doll to examine yourself for
+      injuries. tweak: Updated the HUD status icons for temperature, pressure, oxygen,
+      toxins, food, and thirst to modern Baystation equivalents; they are always visible
+      and you can click on them for a description of your current status of that need.'
+2022-04-17:
+  Shadowtail117:
+  - rscadd: Guns now have safeties. You cannot fire a gun while its safety is on.
+  - imageadd: Guns now have an overlay when holding them showing whether or not the
+      safety is on.
+  - rscadd: You can control-click a gun in your hand to toggle its safety or use the
+      new Toggle Gun Safety keybind. Unholstering it while on harm intent or attempting
+      to fire it while on harm intent have a 50% chance to take off the safety reflexively
+      in case you forget.
+  - rscdel: Removed the Gun Firing Intent Requirement.
+  - rscdel: 'Removed the Toggle Auto-Hiss OOC verb. tweak: Autohiss is now in the
+      Species Customization section of your character setup.'
+  TheLordME:
+  - bugfix: fixed mobs processing as high priority on default
+2022-04-18:
+  Captain277:
+  - rscadd: Adds water bottles to MRE bags.
+  Zandario:
+  - rscadd: Security TGUI
+  - bugfix: Fixed missing leather sheet options in biogenerator
+  - imageadd: Better Detective machine sprites
+2022-04-19:
+  Bishop3K:
+  - rscdel: Containment Specialist Exploration alt job title
+  Shadowtail117:
+  - soundadd: Added new sound effects for interacting with gun magazines/bullets.
+  - soundadd: Added new sound effects for getting hit by, or being barely missed by,
+      a bullet.
+  - rscadd: Re-added a verb to toggle your autohissing mode, named "Toggle Autohiss"
+      in the OOC tab.
+  - rscadd: You can now change what kind of species you autohiss as (such as hissssing
+      of unathi or rrrrrolling of tajarans) with the new "Toggle Autohiss Type" verb
+      in the OOC tab.
+  - rscdel: Removed the chimera's ability to change its vocal biomorph since the above
+      verbs accomplish the same thing.
+  TheLordME:
+  - bugfix: fixed human subspecies not being able to wear human voidsuits
+2022-04-20:
+  Shadowtail117:
+  - bugfix: Potentially fixed an error where you would spawn with the "overfed" nutrition
+      icon despite having normal nutrition amounts.
+  - spellcheck: triupmh -> triumph
+2022-04-22:
+  TheLordME:
+  - bugfix: Fixes the Nutrition HUD being wrong most of the time
+  - bugfix: Fixes some Adherent organ drawing nutrition twice
+  - refactor: Diona now use max_nutrition for their procs
+  Zandario:
+  - rscadd: Science TGUI
+  - rscadd: Some engineering stuff as well, and med...
+  - refactor: Yes. Lots of things, mainly SSplants and alarms
+2022-04-23:
+  CrystalClearCC:
+  - rscadd: Introducing Bludbox(TM)! These cute little cartons come in multiple flavours
+      and help satisfy the midnight cravings of our undead friends.
+  - rscadd: Medical now has access to Blud Max! These are little snacc boxes for the
+      hungry undead who come to raid your Blood-Onator.
+  - rscadd: Alcoholic beverages that contain blood now also feed vampires! The framework
+      for this can be implemented to any new drink.
+  - spellcheck: 'Fixed a typo in the description of the A- bloodbags found in medical.
+      tweak: A bunch of backend stuff around vampires has been cleaned.'
+2022-04-24:
+  Captain277:
+  - bugfix: Fixes explosion values.
+  CharlesWedge:
+  - rscadd: Vox and RATS can now spawn during the Pirate Boarders Event.
+  - bugfix: Vox Sword pirates and Vox Shotgun pirates now don't overwrite eachother.
+  - bugfix: The overmap variant of the pirate event now reflects the new serious take
+      on pirates.
+  Ghostcoffeee:
+  - rscadd: Added the swimsuit capsule selection to general loadout tab
+  - bugfix: fixed loadout swimsuits giving capsules instead of the suits
+  Holdelta:
+  - rscadd: Promethean Blobform
+2022-04-25:
+  Bishop3K:
+  - rscadd: Added Akula Language, useable with 'a'.
+  - rscdel: 'The ''x'' language key from the Cortical Borer race. tweak: Changed hive
+      mind to x from a.'
+  Captain277:
+  - bugfix: Fixes PR overwrite.
+2022-04-26:
+  Captain277:
+  - rscadd: Adds Modular Limb Plates
+  Zandario:
+  - bugfix: Fixed Pipe Dispenser
+  - bugfix: Fixed NIF UI generating shadows.
+2022-04-27:
+  Captain277:
+  - bugfix: Lack of swimsuit debug item.
+  Zandario:
+  - rscadd: FBP Organs
+  - code_imp: Did a lot of reorganizing of species, organs, and language related defines.
+  - refactor: Some organ stuff
+2022-04-28:
+  TheLordME:
+  - rscadd: Added High performance gas pumps
+2022-04-29:
+  Captain277:
+  - rscadd: Adds the Mekkyaku clothing set.
+  CrystalClearCC:
+  - balance: Nerfs the R-UST Operating Manual. It no longer causes an EMP blast strong
+      enough to murder any robot on-site.
+  - bugfix: Brought the other two manuals up-to-date with the wiki. They should be
+      clearer and easier to follow now.
+  - bugfix: "Adds CorpReg, SOP, and Chain of Command books to the proper bookshelf.\
+      \ They are presently empty \U0001F629"
+2022-04-30:
+  Captain277:
+  - rscadd: Adds FTL and Shunt Drive Rooms + Infrastructure
+  - rscadd: 'Restores Burn Chamber Engine Submap tweak: QOL Adjustments to Deck 1
+      and Engine Submaps'
+  - rscadd: Adds the male parade jerkins.
+  - rscadd: Adds male and female jerkins to Cap's wardrobe.
+  - rscadd: 'Adds prescription sunglasses. tweak: Re-genders female jerkins.'
+  Zandario:
+  - rscadd: Optional third color for markings.
+  - rscadd: Removeable prosthetics. aka Modular_limbs
+  - rscadd: Restraining Bolt
+  - bugfix: Defib timer is correct.
+  - code_imp: Added a item scaling element
+  - code_imp: Updated Component code a bit
+  - code_imp: Ported the organized/split up signal defines for DCS

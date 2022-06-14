@@ -23,7 +23,7 @@
 		return 0
 
 	//block as long as they are not directly behind us
-	var/bad_arc = reverse_direction(user.dir) //arc of directions from which we cannot block
+	var/bad_arc = REVERSE_DIR(user.dir) //arc of directions from which we cannot block
 	if(!check_shield_arc(user, bad_arc, damage_source, attacker))
 		return 0
 
@@ -46,7 +46,7 @@
 		return 0
 
 	//block as long as they are not directly behind us
-	var/bad_arc = reverse_direction(user.dir) //arc of directions from which we cannot block
+	var/bad_arc = REVERSE_DIR(user.dir) //arc of directions from which we cannot block
 	if(check_shield_arc(user, bad_arc, damage_source, attacker))
 		if(prob(get_block_chance(user, damage, damage_source, attacker)))
 			user.visible_message("<span class='danger'>\The [user] blocks [attack_text] with \the [src]!</span>")
@@ -77,7 +77,7 @@
 		return 0
 
 	//block as long as they are not directly behind us
-	var/bad_arc = reverse_direction(user.dir) //arc of directions from which we cannot block
+	var/bad_arc = REVERSE_DIR(user.dir) //arc of directions from which we cannot block
 	if(check_shield_arc(user, bad_arc, damage_source, attacker))
 		if(prob(get_block_chance(user, damage, damage_source, attacker)))
 			//At this point, we succeeded in our roll for a block attempt, however these kinds of shields struggle to stand up
@@ -115,7 +115,7 @@
 	var/obj/item/flash/embedded_flash
 	var/flashfail = 0
 
-/obj/item/shield/riot/flash/Initialize()
+/obj/item/shield/riot/flash/Initialize(mapload)
 	. = ..()
 	embedded_flash = new(src)
 
@@ -207,7 +207,7 @@
 	max_integrity = 100
 	obj_integrity = 100
 	can_shatter = FALSE
-	item_flags = ITEM_CAN_BLOCK
+	clothing_flags = ITEM_CAN_BLOCK
 	shield_flags = SHIELD_FLAGS_DEFAULT | SHIELD_KINETIC_STRONG | SHIELD_DISABLER_DISRUPTED
 	var/recharge_timerid
 	var/recharge_delay = 15 SECONDS
@@ -446,7 +446,7 @@
 	throwforce = 5.0
 	throw_speed = 2
 	throw_range = 6
-	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_melee_vr.dmi', slot_r_hand_str = 'icons/mob/items/righthand_melee_vr.dmi', slot_back_str = 'icons/vore/custom_items_vr.dmi', slot_wear_suit_str = 'icons/vore/custom_items_vr.dmi')
+	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_melee_vr.dmi', slot_r_hand_str = 'icons/mob/items/righthand_melee_vr.dmi', /datum/inventory_slot_meta/inventory/back = 'icons/vore/custom_items_vr.dmi', /datum/inventory_slot_meta/inventory/suit = 'icons/vore/custom_items_vr.dmi')
 	attack_verb = list("shoved", "bashed")
 	var/cooldown = 0 //shield bash cooldown. based on world.time
 	allowed = list(/obj/item/melee/fluffstuff/wolfgirlsword)

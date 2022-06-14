@@ -139,7 +139,7 @@
 /turf/simulated/wall/rdshull,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "ar" = (
-/obj/item/storage/toolbox/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/surgical/scalpel/manager,
 /obj/item/surgical/scalpel/ripper,
 /obj/item/surgical/circular_saw/manager,
@@ -385,7 +385,7 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/curabitur/curashuttle/med)
 "aN" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/structure/closet,
@@ -792,7 +792,7 @@
 /obj/structure/table/standard,
 /obj/item/reagent_containers/glass/beaker/bluespace,
 /obj/item/reagent_containers/glass/beaker/bluespace,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/structure/cable{
@@ -981,7 +981,7 @@
 	icon_state = "4-8";
 	pixel_y = 0
 	},
-/obj/machinery/atmospherics/binary/pump/fuel{
+/obj/machinery/atmospherics/component/binary/pump/fuel{
 	dir = 8;
 	icon_state = "map_off-fuel"
 	},
@@ -1176,7 +1176,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/curabitur/curashuttle/hangar)
 "cd" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 1
 	},
 /obj/structure/fireaxecabinet{
@@ -1188,7 +1188,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/curabitur/curashuttle/eng)
 "ce" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -1253,7 +1253,7 @@
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper,
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper,
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -1314,7 +1314,7 @@
 /turf/simulated/floor/tiled/monofloor,
 /area/shuttle/curabitur/curashuttle/eng)
 "cv" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 8
 	},
 /obj/machinery/light/small,
@@ -1342,7 +1342,7 @@
 /area/shuttle/curabitur/curashuttle/eng)
 "cy" = (
 /obj/machinery/light/small,
-/obj/machinery/atmospherics/binary/pump,
+/obj/machinery/atmospherics/component/binary/pump,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/curabitur/curashuttle/eng)
 "cz" = (
@@ -1452,7 +1452,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/curabitur/curashuttle/hangar)
 "cM" = (
-/obj/machinery/atmospherics/unary/engine{
+/obj/machinery/atmospherics/component/unary/engine{
 	dir = 1
 	},
 /turf/simulated/shuttle/plating/airless/carry,
@@ -1464,7 +1464,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/curabitur/curashuttle/hangar)
 "cO" = (
-/obj/machinery/atmospherics/unary/engine{
+/obj/machinery/atmospherics/component/unary/engine{
 	dir = 1
 	},
 /turf/space,

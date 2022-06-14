@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2020 Aleksej Komarov
- * SPDX-License-Identifier: MIT
+ *! Copyright (c) 2020 Aleksej Komarov
+ *! SPDX-License-Identifier: MIT
  */
 
 SUBSYSTEM_DEF(chat)
 	name = "Chat"
-	flags = SS_TICKER
+	subsystem_flags = SS_TICKER
 	wait = 1
 	priority = FIRE_PRIORITY_CHAT
 	init_order = INIT_ORDER_CHAT
@@ -36,3 +36,7 @@ SUBSYSTEM_DEF(chat)
 	var/client/client = CLIENT_FROM_VAR(target)
 	if(client)
 		LAZYADD(payload_by_client[client], list(message))
+
+/datum/controller/subsystem/chat/Recover()
+	payload_by_client = list()
+	initialized = SSchat.initialized

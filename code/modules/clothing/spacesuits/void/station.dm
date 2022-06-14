@@ -300,13 +300,13 @@
 	/obj/item/shovel,/obj/item/ammo_magazine,/obj/item/gun)
 
 /obj/item/clothing/head/helmet/space/void/exploration/alt
-	desc = "A radiation-resistant helmet retrofitted for exploring unknown planetary environments."
+	desc = "A radiation-resistant helmet made especially for exploring unknown planetary environments."
 	icon_state = "helm_explorer2"
 	item_state = "helm_explorer2"
 	item_state_slots = list(slot_r_hand_str = "mining_helm", slot_l_hand_str = "mining_helm")
 
 /obj/item/clothing/suit/space/void/exploration/alt
-	desc = "A lightweight, radiation-resistant voidsuit. Retrofitted for exploring unknown planetary environments."
+	desc = "A lightweight, radiation-resistant voidsuit. Designed for exploring unknown planetary environments."
 	icon_state = "void_explorer2"
 	item_state_slots = list(slot_r_hand_str = "skrell_suit_white", slot_l_hand_str = "skrell_suit_white")
 
@@ -395,12 +395,8 @@
 	armor = list(melee = 70, bullet = 20, laser = 30, energy = 50, bomb = 35, bio = 100, rad = 10)
 	siemens_coefficient = 0.7
 	light_overlay = "helmet_light_dual" //explorer_light
+	flash_protection = FLASH_PROTECTION_MAJOR
 
-/obj/item/clothing/helmet/space/void/para/Initialize(mob/living/carbon/human/H, src)
-	. = ..()
-	if(H.mind.isholy)
-		flash_protection = FLASH_PROTECTION_MAJOR
-	return
 
 /obj/item/clothing/suit/space/void/para
 	name = "PARA void suit"
@@ -410,13 +406,7 @@
 	armor = list(melee = 70, bullet = 20, laser = 30, energy = 50, bomb = 35, bio = 100, rad = 10)
 	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton,/obj/item/ammo_magazine,/obj/item/nullrod)
 	siemens_coefficient = 0.7
-	var/anti_magic = FALSE
-
-/obj/item/clothing/suit/space/void/para/Initialize(mob/living/carbon/human/H, src)
-	. = ..()
-	if(H.mind.isholy)
-		anti_magic = TRUE
-	return
+	var/anti_magic = TRUE
 
 //Gimmick and "Costume" Tier Voidsuits
 
@@ -430,7 +420,6 @@
 	name = "inquisitorial bodyguard suit"
 	desc = "A spaceproof suit provided to PARA attached to Inquisitorial escort duty."
 	icon_state = "knight_inq"
-	anti_magic = FALSE
 
 /obj/item/clothing/head/helmet/space/void/para/grey_knight
 	name = "spell knight helmet"
@@ -442,4 +431,3 @@
 	name = "spell knight voidsuit"
 	desc = "An icredibly heavy suit of anti-magic armor worn by augmented PMD agents."
 	icon_state = "knight_grey"
-	anti_magic = FALSE

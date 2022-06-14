@@ -3,7 +3,7 @@
 
 	if (transforming)
 		return
-	handle_modifiers() //VOREStation Edit - Needs to be done even if in nullspace.
+	handle_modifiers() // Needs to be done even if in nullspace.
 	if(!loc)
 		return
 
@@ -12,8 +12,7 @@
 
 	var/datum/gas_mixture/environment = loc.return_air()
 
-	//handle_modifiers() // Do this early since it might affect other things later. //VOREStation Edit
-
+	//handle_modifiers() // Do this early since it might affect other things later.
 	handle_light()
 
 	if(stat != DEAD)
@@ -42,9 +41,6 @@
 
 	//Check if we're on fire
 	handle_fire()
-
-	//stuff in the stomach
-	//handle_stomach() //VOREStation Code
 
 	update_gravity(mob_has_gravity())
 
@@ -194,10 +190,18 @@
 	return TRUE
 
 /mob/living/proc/update_sight()
+	SEND_SIGNAL(src, COMSIG_MOB_UPDATE_SIGHT)
 	if(!seedarkness)
-		see_invisible = SEE_INVISIBLE_NOLIGHTING
+		SetSeeInvisibleSelf(SEE_INVISIBLE_NOLIGHTING)
 	else
-		see_invisible = initial(see_invisible)
+		SetSeeInvisibleSelf(initial(see_invisible))
+
+	sight = initial(sight)
+
+	for(var/datum/modifier/M in modifiers)
+		if(!isnull(M.vision_flags))
+			AddSightSelf(M.vision_flags)
+
 	return
 
 /mob/living/proc/handle_hud_icons()

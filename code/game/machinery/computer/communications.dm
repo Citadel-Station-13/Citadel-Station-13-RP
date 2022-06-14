@@ -1,4 +1,3 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
 // The communications computer
 /obj/machinery/computer/communications
@@ -36,7 +35,7 @@
 	var/stat_msg2
 
 	var/datum/lore/atc_controller/ATC
-	var/datum/announcement/priority/crew_announcement = new
+	var/datum/legacy_announcement/priority/crew_announcement = new
 
 /obj/machinery/computer/communications/Initialize(mapload)
 	. = ..()
@@ -430,7 +429,7 @@
 	return dat
 
 /proc/enable_prison_shuttle(var/mob/user)
-	for(var/obj/machinery/computer/prison_shuttle/PS in machines)
+	for(var/obj/machinery/computer/prison_shuttle/PS in GLOB.machines)
 		PS.allowedtocall = !(PS.allowedtocall)
 
 /proc/call_shuttle_proc(var/mob/user)
@@ -468,7 +467,7 @@
 	SSemergencyshuttle.call_evac()
 	log_game("[key_name(user)] has called the shuttle.")
 	message_admins("[key_name_admin(user)] has called the shuttle.", 1)
-	admin_chat_message(message = "Emergency evac beginning! Called by [key_name(user)]!", color = "#CC2222") //VOREStation Add
+	admin_chat_message(message = "Emergency evac beginning! Called by [key_name(user)]!", color = "#CC2222")
 
 
 	return
@@ -516,7 +515,7 @@
 
 	log_game("[user? key_name(user) : "Autotransfer"] has called the shuttle.")
 	message_admins("[user? key_name_admin(user) : "Autotransfer"] has called the shuttle.", 1)
-	admin_chat_message(message = "Autotransfer shuttle dispatched, shift ending soon.", color = "#2277BB") //VOREStation Add
+	admin_chat_message(message = "Autotransfer shuttle dispatched, shift ending soon.", color = "#2277BB")
 
 	return
 
@@ -534,12 +533,12 @@
 
 
 /proc/is_relay_online()
-    for(var/obj/machinery/telecomms/relay/M in world)
-        if(M.stat == 0)
-            return 1
-    return 0
+	for(var/obj/machinery/telecomms/relay/M in world)
+		if(M.machine_stat == 0)
+			return TRUE
+	return FALSE
 
-/obj/machinery/computer/communications/proc/post_status(var/command, var/data1, var/data2)
+/obj/machinery/computer/communications/proc/post_status(command, data1, data2)
 
 	var/datum/radio_frequency/frequency = radio_controller.return_frequency(1435)
 

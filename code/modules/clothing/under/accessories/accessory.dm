@@ -16,8 +16,8 @@
 	var/mob/living/carbon/human/wearer = null 	// To check if the wearer changes, so species spritesheets change properly.
 	var/list/on_rolled = list()					// Used when jumpsuit sleevels are rolled ("rolled" entry) or it's rolled down ("down"). Set to "none" to hide in those states.
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/ties.dmi', //Teshari can into webbing, too!
-		SPECIES_VOX = 'icons/mob/species/vox/ties.dmi')
+		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/ties.dmi', //Teshari can into webbing, too!
+		SPECIES_VOX = 'icons/mob/clothing/species/vox/ties.dmi')
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 
@@ -520,7 +520,7 @@
 	slot_flags = SLOT_TIE | SLOT_OCLOTHING
 	desc = "A simple, plain choker. Or maybe it's a collar? Use in-hand to customize it."
 	icon = 'icons/obj/clothing/collars.dmi'
-	icon_override = 'icons/mob/ties.dmi'
+	icon_override = 'icons/mob/clothing/ties.dmi'
 	icon_state = "choker_cst"
 	item_state = "choker_cst_overlay"
 	overlay_state = "choker_cst_overlay"
@@ -541,7 +541,7 @@
 /obj/item/clothing/accessory/collar
 	slot_flags = SLOT_TIE | SLOT_OCLOTHING
 	icon = 'icons/obj/clothing/collars.dmi'
-	icon_override = 'icons/mob/ties.dmi'
+	icon_override = 'icons/mob/clothing/ties.dmi'
 	var/icon_previous_override
 	var/writtenon = 0
 
@@ -552,7 +552,7 @@
 
 // Solution for race-specific sprites for an accessory which is also a suit.
 // Suit icons break if you don't use icon override which then also overrides race-specific sprites.
-/obj/item/clothing/accessory/collar/equipped()
+/obj/item/clothing/accessory/collar/equipped(mob/user, slot)
 	..()
 	setUniqueSpeciesSprite()
 
@@ -563,7 +563,7 @@
 			H = has_suit.loc
 	if(istype(H))
 		if(H.species.name == SPECIES_TESHARI)
-			icon_override = 'icons/mob/species/teshari/ties.dmi'
+			icon_override = 'icons/mob/clothing/species/teshari/ties.dmi'
 		update_clothing_icon()
 
 /obj/item/clothing/accessory/collar/on_attached(var/obj/item/clothing/S, var/mob/user)

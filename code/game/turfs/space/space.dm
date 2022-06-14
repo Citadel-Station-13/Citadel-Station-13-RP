@@ -14,7 +14,10 @@
 	var/edge = 0		// If we're an edge
 	var/forced_dirs = 0	// Force this one to pretend it's an overedge turf
 
-/turf/open/space/basic/New()	//Do not convert to Initialize
+/turf/space/basic
+	flags = INITIALIZED
+
+/turf/space/basic/New()	//Do not convert to Initialize
 	//This is used to optimize the map loader
 	return
 
@@ -80,7 +83,7 @@
 			qdel(L)
 			playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
 			S.use(1)
-			ChangeTurf(/turf/simulated/floor/airless)
+			ChangeTurf(/turf/simulated/floor/plating, flags = CHANGETURF_INHERIT_AIR)
 			return
 		else
 			to_chat(user, "<span class='warning'>The plating is going to need some support.</span>")
@@ -102,7 +105,7 @@
 
 				if(R.use(1))	// Cost of roofing tiles is 1:1 with cost to place lattice and plating
 					T.ReplaceWithLattice()
-					T.ChangeTurf(/turf/simulated/floor)
+					T.ChangeTurf(/turf/simulated/floor, flags = CHANGETURF_INHERIT_AIR)
 					playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
 					user.visible_message("<span class='notice'>[user] expands the ceiling.</span>", "<span class='notice'>You expand the ceiling.</span>")
 			else
@@ -121,6 +124,3 @@
 /turf/space/proc/on_atom_edge_touch(atom/movable/AM)
 	if(!QDELETED(AM) && (AM.loc == src))
 		AM.touch_map_edge()
-
-/turf/space/ChangeTurf(var/turf/N, var/tell_universe, var/force_lighting_update, var/preserve_outdoors)
-	return ..(N, tell_universe, 1, preserve_outdoors)

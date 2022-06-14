@@ -13,8 +13,9 @@
 	. = ..()
 
 /obj/structure/adherent_bath/return_air()
-	var/datum/gas_mixture/venus = new(CELL_VOLUME, 500 - 10)
-	venus.adjust_multi( MOLES_N2STANDARD, /datum/gas/phoron, MOLES_O2STANDARD)
+	var/datum/gas_mixture/venus = new(CELL_VOLUME)
+	venus.adjust_multi(/datum/gas/nitrogen, MOLES_N2STANDARD, /datum/gas/oxygen, MOLES_O2STANDARD)
+	venus.temperature = 490
 	return venus
 
 /obj/structure/adherent_bath/attackby(var/obj/item/thing, var/mob/user)

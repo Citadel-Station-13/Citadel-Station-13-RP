@@ -1,7 +1,8 @@
 // Used to be tether_jobs.dm and only loaded on tether... Why I do not know - Bloop
 // Make sure to have these z levels defined in whatever map defines you are creating. Tempted to just define them here but thats something to test later
 /*
-#define Z_LEVEL_OFFMAP1					1000	//Change the numbers here as appropriate
+///Change the numbers here as appropriate
+#define Z_LEVEL_OFFMAP1					1000
 #define Z_LEVEL_OFFMAP2					1001
 */
 ///////////////////////////////////
@@ -22,7 +23,7 @@
 	flag = TALCAP
 	department_flag = TALON
 	departments_managed = list(DEPARTMENT_TALON)
-	job_description = "The captain's job is to generate profit through trade or other means such as salvage or even privateering."
+	desc = "The captain's job is to generate profit through trade or other means such as salvage or even privateering."
 	supervisors = "yourself"
 	outfit_type = /datum/outfit/job/talon_captain
 
@@ -46,7 +47,7 @@
 	title = "Talon Doctor"
 	flag = TALDOC
 	department_flag = TALON
-	job_description = "The doctor's job is to make sure the crew of the ITV Talon remain in good health and to monitor them when away from the ship."
+	desc = "The doctor's job is to make sure the crew of the ITV Talon remain in good health and to monitor them when away from the ship."
 	supervisors = "the ITV Talon's captain"
 	outfit_type = /datum/outfit/job/talon_doctor
 
@@ -71,7 +72,7 @@
 	title = "Talon Engineer"
 	flag = TALENG
 	department_flag = TALON
-	job_description = "The engineer's job is to ensure the ITV Talon remains in tip-top shape and to repair any damage as well as manage the shields."
+	desc = "The engineer's job is to ensure the ITV Talon remains in tip-top shape and to repair any damage as well as manage the shields."
 	supervisors = "the ITV Talon's captain"
 	outfit_type = /datum/outfit/job/talon_engineer
 
@@ -96,7 +97,7 @@
 	title = "Talon Pilot"
 	flag = TALPIL
 	department_flag = TALON
-	job_description = "The pilot's job is to fly the ITV Talon in the most efficient and profitable way possible."
+	desc = "The pilot's job is to fly the ITV Talon in the most efficient and profitable way possible."
 	supervisors = "the ITV Talon's captain"
 	outfit_type = /datum/outfit/job/talon_pilot
 
@@ -121,7 +122,7 @@
 	title = "Talon Guard"
 	flag = TALSEC
 	department_flag = TALON
-	job_description = "The guard's job is to keep the crew of the ITV Talon safe and ensure the captain's wishes are carried out."
+	desc = "The guard's job is to keep the crew of the ITV Talon safe and ensure the captain's wishes are carried out."
 	supervisors = "the ITV Talon's captain"
 	outfit_type = /datum/outfit/job/talon_security
 

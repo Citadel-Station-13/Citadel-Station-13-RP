@@ -2,14 +2,13 @@
 // Mobs Subsystem - Process mob.Life()
 //
 
-//VOREStation Edits - Contains temporary debugging code to diagnose extreme tick consumption.
-//Revert file to Polaris version when done.
+// Contains temporary debugging code to diagnose extreme tick consumption.
 
 SUBSYSTEM_DEF(mobs)
 	name = "Mobs"
 	priority = 100
 	wait = 2 SECONDS
-	flags = SS_KEEP_TIMING|SS_NO_INIT
+	subsystem_flags = SS_KEEP_TIMING|SS_NO_INIT
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
 	var/list/currentrun = list()

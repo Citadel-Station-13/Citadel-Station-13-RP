@@ -79,13 +79,13 @@
 
 /obj/item/clothing/shoes/magboots/changeling/attack_self(mob/user)
 	if(magpulse)
-		item_flags &= ~NOSLIP
+		clothing_flags &= ~NOSLIP
 		magpulse = 0
 		set_slowdown()
 		force = 3
 		to_chat(user, "We release our grip on the floor.")
 	else
-		item_flags |= NOSLIP
+		clothing_flags |= NOSLIP
 		magpulse = 1
 		set_slowdown()
 		force = 5

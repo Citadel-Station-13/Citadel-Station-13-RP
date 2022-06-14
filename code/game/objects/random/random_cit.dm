@@ -54,7 +54,7 @@
 /obj/random/crusader_cloak
 	name = "random crusader cloak"
 	desc = "This is a random crusader cloak."
-	icon = 'icons/obj/clothing/ties_cit.dmi'
+	icon = 'icons/obj/clothing/ties.dmi'
 	icon_state = "cloak_crusader"
 
 /obj/random/crusader_cloak/item_to_spawn()

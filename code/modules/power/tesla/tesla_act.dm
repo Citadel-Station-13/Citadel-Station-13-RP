@@ -30,7 +30,7 @@
 /obj/machinery/tesla_act(power, explosive = FALSE)
 	..()
 	if(prob(85) && explosive)
-		explosion(loc, 0, 2, 4, /*flame_range = 2,*/ adminlog = FALSE/*, smoke = FALSE*/) // VOREStation Edit - No devastation range
+		explosion(loc, 0, 2, 4, /*flame_range = 2,*/ adminlog = FALSE/*, smoke = FALSE*/) // No devastation range
 	else if(prob(50))
 		emp_act(2)
 	else
@@ -63,12 +63,3 @@
 /obj/mecha/tesla_act(power)
 	..()
 	take_damage(power / 200, "energy") // A surface lightning strike will do 100 damage.
-
-
-
-
-
-
-
-
-

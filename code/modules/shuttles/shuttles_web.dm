@@ -152,7 +152,6 @@
 	var/new_name = input(user, "Please enter a new name for this vessel. Note that you can only set its name once, so choose wisely.", "Rename Shuttle", visible_name) as null|text
 	var/sanitized_name = sanitizeName(new_name, MAX_NAME_LEN, TRUE)
 	if(sanitized_name)
-		//can_rename = FALSE //VOREStation Removal
 		to_chat(user, "<span class='notice'>You've renamed the vessel to '[sanitized_name]'.</span>")
 		message_admins("[key_name_admin(user)] renamed shuttle '[visible_name]' to '[sanitized_name]'.")
 		visible_name = sanitized_name
@@ -171,7 +170,7 @@
 
 // Note - Searching own area for doors/sensors is fine for legacy web shuttles as they are single-area.
 //        However if this code is copied to future multi-area shuttles, should search in all shuttle areas
-/obj/machinery/computer/shuttle_control/web/Initialize()
+/obj/machinery/computer/shuttle_control/web/Initialize(mapload)
 	. = ..()
 	var/area/my_area = get_area(src)
 	if(my_doors)
@@ -276,7 +275,7 @@
 		"docking_status" = shuttle.shuttle_docking_controller? shuttle.shuttle_docking_controller.get_docking_status() : null,
 		"docking_override" = shuttle.shuttle_docking_controller? shuttle.shuttle_docking_controller.override_enabled : null,
 		"is_in_transit" = shuttle.has_arrive_time(),
-		"travel_progress" = between(0, percent_finished, 100),
+		"travel_progress" = clamp( percent_finished, 0,  100),
 		"time_left" = round( (total_time - elapsed_time) / 10),
 		"can_cloak" = shuttle.can_cloak ? 1 : 0,
 		"cloaked" = shuttle.cloaked ? 1 : 0,
@@ -407,7 +406,7 @@
 	var/shuttle_name					//Text name of the shuttle to connect to
 	var/list/destinations				//Make sure this STARTS with a destination that builds a route to one that always exists as an anchor.
 
-/obj/shuttle_connector/Initialize()
+/obj/shuttle_connector/Initialize(mapload)
 	. = ..()
 	GLOB.shuttle_added.register_global(src, .proc/setup_routes)
 

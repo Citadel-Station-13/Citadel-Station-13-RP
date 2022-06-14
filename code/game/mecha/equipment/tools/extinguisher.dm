@@ -12,7 +12,7 @@
 	var/spray_amount = 5
 	var/max_water = 1000
 
-/obj/item/mecha_parts/mecha_equipment/tool/extinguisher/Initialize()
+/obj/item/mecha_parts/mecha_equipment/tool/extinguisher/Initialize(mapload)
 	. = ..()
 	reagents = new/datum/reagents(max_water)
 	reagents.my_atom = src

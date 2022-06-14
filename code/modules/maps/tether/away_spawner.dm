@@ -26,7 +26,7 @@
 	var/mob/living/simple_mob/my_mob
 	var/depleted = FALSE
 
-/obj/tether_away_spawner/Initialize()
+/obj/tether_away_spawner/Initialize(mapload)
 	. = ..()
 
 	if(!LAZYLEN(mobs_to_pick_from))
@@ -77,11 +77,6 @@
 					my_mob.max_n2 = gaslist[/datum/gas/nitrogen] * 1.2
 				if(my_mob.max_co2)
 					my_mob.max_co2 = gaslist[/datum/gas/carbon_dioxide] * 1.2
-/* //VORESTATION AI TEMPORARY REMOVAL
-		if(guard)
-			my_mob.returns_home = TRUE
-			my_mob.wander_distance = guard
-*/
 		return
 	else
 		STOP_PROCESSING(SSobj, src)

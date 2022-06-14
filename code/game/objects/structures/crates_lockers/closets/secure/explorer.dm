@@ -37,54 +37,7 @@
 		starts_with += /obj/item/storage/backpack
 	else
 		starts_with += /obj/item/storage/backpack/satchel/norm
-	/* VOREStation Removal - Always give both
-	if(prob(75))
-		starts_with += /obj/item/material/knife/tacknife/survival
-	else
-		starts_with += /obj/item/material/knife/machete
-	*/ //VOREStation Removal End
 	return ..()
-
-//SAR Lockers
-/*This one is actually not the right one.
-/obj/structure/closet/secure_closet/sar
-	name = "search and rescue locker"
-	desc = "Supplies for a wilderness first responder."
-	icon_state = "medical1"
-	icon_closed = "medical"
-	icon_locked = "medical1"
-	icon_opened = "medicalopen"
-	icon_broken = "medicalbroken"
-	icon_off = "medicaloff"
-	req_access = list(access_medical_equip)
-
-	starts_with = list(
-		/obj/item/storage/backpack/dufflebag/emt,
-		/obj/item/storage/box/autoinjectors,
-		/obj/item/storage/box/syringes,
-		/obj/item/reagent_containers/glass/bottle/inaprovaline,
-		/obj/item/reagent_containers/glass/bottle/antitoxin,
-		/obj/item/storage/belt/medical/emt,
-		/obj/item/clothing/mask/gas,
-		/obj/item/clothing/suit/storage/hooded/wintercoat/medical/sar,
-		/obj/item/clothing/shoes/boots/winter/explorer,
-		/obj/item/radio/headset/sar,
-		/obj/item/cartridge/medical,
-		/obj/item/flashlight,
-		/obj/item/tank/emergency/oxygen/engi,
-		/obj/item/clothing/glasses/hud/health,
-		/obj/item/healthanalyzer,
-		/obj/item/radio/off,
-		/obj/random/medical,
-		/obj/item/tool/crowbar,
-		/obj/item/extinguisher/mini,
-		/obj/item/storage/box/freezer,
-		/obj/item/clothing/accessory/storage/white_vest,
-		/obj/item/barrier_tape_roll/medical,
-		/obj/item/gps/medical,
-		/obj/item/geiger,
-		/obj/item/bodybag/cryobag)
-*/
 
 //SC Misc_vr locker.
 /obj/structure/closet/secure_closet/sar
@@ -126,28 +79,9 @@
 		/obj/item/cataloguer/compact)
 
 //Pilot Locker
-
 /obj/structure/closet/secure_closet/pilot
 	name = "pilot locker"
 	req_access = list(access_pilot)
-/*
-	starts_with = list(
-		/obj/item/storage/backpack/parachute,
-		/obj/item/material/knife/tacknife/survival,
-		/obj/item/clothing/head/pilot,
-		/obj/item/clothing/under/rank/pilot1,
-		/obj/item/clothing/suit/storage/toggle/bomber/pilot,
-		/obj/item/clothing/mask/gas/half,
-		/obj/item/clothing/shoes/black,
-		/obj/item/clothing/gloves/fingerless,
-		/obj/item/radio/headset/pilot/alt,
-		/obj/item/flashlight,
-		/obj/item/reagent_containers/food/snacks/liquidfood,
-		/obj/item/reagent_containers/food/drinks/cans/waterbottle,
-		/obj/item/storage/box/flare,
-		/obj/item/cell/device,
-		/obj/item/radio)
-*/
 
 /obj/structure/closet/secure_closet/pilot
 	starts_with = list(

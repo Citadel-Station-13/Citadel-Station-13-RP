@@ -1,28 +1,16 @@
-import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import { Box, Button, Dimmer, Icon, LabeledList, NoticeBox, ProgressBar, Section, Flex } from '../components';
+import { Box, Button, Dimmer, Icon, LabeledList, NoticeBox, ProgressBar, Section } from '../components';
 import { Window } from '../layouts';
 import { InterfaceLockNoticeBox } from './common/InterfaceLockNoticeBox';
 import { FullscreenNotice } from './common/FullscreenNotice';
 
 export const APC = (props, context) => {
-  const { act, data } = useBackend(context);
-
-  let body = <ApcContent />;
-
-  if (data.gridCheck) {
-    body = <GridCheck />;
-  } else if (data.failTime) {
-    body = <ApcFailure />;
-  }
-
   return (
     <Window
       width={450}
-      height={475}
-      resizable>
+      height={445}>
       <Window.Content scrollable>
-        {body}
+        <ApcContent />
       </Window.Content>
     </Window>
   );
@@ -52,21 +40,21 @@ const malfMap = {
     content: 'Override Programming',
     action: 'hack',
   },
-  // 2: {
-  //   icon: 'caret-square-down',
-  //   content: 'Shunt Core Process',
-  //   action: 'occupy',
-  // },
-  // 3: {
-  //   icon: 'caret-square-left',
-  //   content: 'Return to Main Core',
-  //   action: 'deoccupy',
-  // },
-  // 4: {
-  //   icon: 'caret-square-down',
-  //   content: 'Shunt Core Process',
-  //   action: 'occupy',
-  // },
+  2: {
+    icon: 'caret-square-down',
+    content: 'Shunt Core Process',
+    action: 'occupy',
+  },
+  3: {
+    icon: 'caret-square-left',
+    content: 'Return to Main Core',
+    action: 'deoccupy',
+  },
+  4: {
+    icon: 'caret-square-down',
+    content: 'Shunt Core Process',
+    action: 'occupy',
+  },
 };
 
 const ApcContent = (props, context) => {
@@ -78,16 +66,32 @@ const ApcContent = (props, context) => {
   const chargingStatus = powerStatusMap[data.chargingStatus]
     || powerStatusMap[0];
   const channelArray = data.powerChannels || [];
-  // const malfStatus = malfMap[data.malfStatus] || null;
+  const malfStatus = malfMap[data.malfStatus] || malfMap[0];
   const adjustedCellChange = data.powerCellStatus / 100;
-
+  if (data.failTime > 0) {
+    return (
+      <NoticeBox>
+        <b><h3>SYSTEM FAILURE</h3></b>
+        <i>
+          I/O regulators malfunction detected!
+          Waiting for system reboot...
+        </i>
+        <br />
+        Automatic reboot in {data.failTime} seconds...
+        <Button
+          icon="sync"
+          content="Reboot Now"
+          onClick={() => act('reboot')} />
+      </NoticeBox>
+    );
+  }
   return (
-    <Fragment>
+    <>
       <InterfaceLockNoticeBox deny={data.emagged} denialMessage={(
-        <Fragment>
+        <>
           <Box color="bad" fontSize="1.5rem">Fault in ID authenticator.</Box>
           <Box color="bad">Please contact maintenance for service.</Box>
-        </Fragment>
+        </>
       )} />
       <Section title="Power Status">
         <LabeledList>
@@ -134,7 +138,7 @@ const ApcContent = (props, context) => {
                 key={channel.title}
                 label={channel.title}
                 buttons={(
-                  <Fragment>
+                  <>
                     <Box inline mx={2}
                       color={channel.status >= 2 ? 'good' : 'bad'}>
                       {channel.status >= 2 ? 'On' : 'Off'}
@@ -159,7 +163,7 @@ const ApcContent = (props, context) => {
                       selected={!locked && channel.status === 0}
                       disabled={locked}
                       onClick={() => act('channel', topicParams.off)} />
-                  </Fragment>
+                  </>
                 )}>
                 {channel.powerLoad} W
               </LabeledList.Item>
@@ -196,7 +200,7 @@ const ApcContent = (props, context) => {
           <LabeledList.Item
             label="Night Shift Lighting"
             buttons={(
-              <Fragment>
+              <>
                 <Button
                   icon="lightbulb-o"
                   content="Disabled"
@@ -218,10 +222,10 @@ const ApcContent = (props, context) => {
                   onClick={() => act('nightshift', {
                     nightshift: 3,
                   })} />
-              </Fragment>
+              </>
             )} />
           <LabeledList.Item
-            label="Emergency Lighting"
+            label="Night Shift Lighting"
             buttons={(
               <Button
                 icon="lightbulb-o"
@@ -231,7 +235,7 @@ const ApcContent = (props, context) => {
             )} />
         </LabeledList>
       </Section>
-    </Fragment>
+    </>
   );
 };
 

@@ -46,7 +46,7 @@ field_generator power level display
 	// Scale % power to % num_power_levels and truncate value
 	var/level = round(num_power_levels * power / field_generator_max_power)
 	// Clamp between 0 and num_power_levels for out of range power values
-	level = between(0, level, num_power_levels)
+	level = clamp( level, 0,  num_power_levels)
 	if(level)
 		. += "+p[level]"
 
@@ -324,11 +324,11 @@ field_generator power level display
 	//I want to avoid using global variables.
 	spawn(1)
 		var/temp = 1 //stops spam
-		for(var/obj/singularity/O in machines)
+		for(var/obj/singularity/O in GLOB.machines)
 			if(O.last_warning && temp)
 				if((world.time - O.last_warning) > 50) //to stop message-spam
 					temp = 0
-					admin_chat_message(message = "SINGUL/TESLOOSE!", color = "#FF2222") //VOREStation Add
+					admin_chat_message(message = "SINGUL/TESLOOSE!", color = "#FF2222")
 					message_admins("A singulo exists and a containment field has failed.",1)
 					investigate_log("has <font color='red'>failed</font> whilst a singulo exists.","singulo")
 					log_game("FIELDGEN([x],[y],[z]) Containment failed while singulo/tesla exists.")

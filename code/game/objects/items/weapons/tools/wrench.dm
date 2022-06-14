@@ -6,6 +6,7 @@
 	desc = "A wrench with many common uses. Can be usually found in your hand."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "wrench"
+	item_state = "wrench"
 	slot_flags = SLOT_BELT
 	tool_behaviour = TOOL_WRENCH
 	force = 6
@@ -67,6 +68,12 @@
 	usesound = 'sound/items/drill_use.ogg'
 	toolspeed = 0.5
 	random_color = FALSE
+
+/obj/item/tool/wrench/RIGset
+	name = "integrated wrench"
+	desc = "If you're seeing this, someone did a dum-dum."
+	usesound = 'sound/items/drill_use.ogg'
+	toolspeed = 0.7
 
 /obj/item/tool/wrench/hybrid	// Slower and bulkier than normal power tools, but it has the power of reach.
 	name = "strange wrench"

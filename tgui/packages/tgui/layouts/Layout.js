@@ -8,22 +8,6 @@ import { classes } from 'common/react';
 import { computeBoxClassName, computeBoxProps } from '../components/Box';
 import { addScrollableNode, removeScrollableNode } from '../events';
 
-/**
- * Brings Layout__content DOM element back to focus.
- *
- * Commonly used to keep the content scrollable in IE.
- */
-export const refocusLayout = () => {
-  // IE8: Focus method is seemingly fucked.
-  if (Byond.IS_LTE_IE8) {
-    return;
-  }
-  const element = document.getElementById('Layout__content');
-  if (element) {
-    element.focus();
-  }
-};
-
 export const Layout = props => {
   const {
     className,
@@ -37,7 +21,7 @@ export const Layout = props => {
         className={classes([
           'Layout',
           className,
-          ...computeBoxClassName(rest),
+          computeBoxClassName(rest),
         ])}
         {...computeBoxProps(rest)}>
         {children}
@@ -59,7 +43,7 @@ const LayoutContent = props => {
         'Layout__content',
         scrollable && 'Layout__content--scrollable',
         className,
-        ...computeBoxClassName(rest),
+        computeBoxClassName(rest),
       ])}
       {...computeBoxProps(rest)}>
       {children}

@@ -64,10 +64,10 @@
 #define DNA_UI_WING3_R     45
 #define DNA_UI_WING3_G     46
 #define DNA_UI_WING3_B     47
-#define DNA_UI_LENGTH      47 //! Needs to match the highest number above.
-
-#define DNA_SE_LENGTH 50 // (original was UI+11)
-
+///! Needs to match the highest number above.
+#define DNA_UI_LENGTH      47
+/// (original was UI+11)
+#define DNA_SE_LENGTH 50
 // Defines which values mean "on" or "off".
 //  This is to make some of the more OP superpowers a larger PITA to activate,
 //  and to tell our new DNA datum which values to set in order to turn something
@@ -106,7 +106,6 @@ var/global/list/datum/gene/dna_genes[0]
 	var/b_type = "A+"  // Should probably change to an integer => string map but I'm lazy.
 	var/real_name          // Stores the real name of the person who originally got this dna datum. Used primarily for changelings,
 
-	// VOREStation
 	var/custom_species
 	var/base_species = SPECIES_HUMAN
 	var/list/species_traits = list()
@@ -115,7 +114,6 @@ var/global/list/datum/gene/dna_genes[0]
 	var/custom_ask
 	var/custom_whisper
 	var/custom_exclaim
-	// VOREStation
 
 	// New stuff
 	var/species = SPECIES_HUMAN
@@ -149,6 +147,7 @@ var/global/list/datum/gene/dna_genes[0]
 	new_dna.UpdateUI()
 	new_dna.UpdateSE()
 	return new_dna
+
 ///////////////////////////////////////
 // UNIQUE IDENTITY
 ///////////////////////////////////////
@@ -178,9 +177,6 @@ var/global/list/datum/gene/dna_genes[0]
 		character.f_style = "Shaved"
 	var/beard	= facial_hair_styles_list.Find(character.f_style)
 
-
-	// VOREStation Edit Start
-
 	// Demi Ears
 	var/ear_style = 0
 	if(character.ear_style)
@@ -205,23 +201,9 @@ var/global/list/datum/gene/dna_genes[0]
 
 	// Technically custom_species is not part of the UI, but this place avoids merge problems.
 	src.custom_species = character.custom_species
-	if(istype(character.species,/datum/species/custom))
-		var/datum/species/custom/CS = character.species
-		src.species_traits = CS.traits.Copy()
-		src.base_species = CS.base_species
-		src.blood_color = CS.blood_color
-
-	if(istype(character.species,/datum/species/shapeshifter/xenochimera))
-		var/datum/species/shapeshifter/xenochimera/CS = character.species
-		//src.species_traits = CS.traits.Copy() //No traits
-		src.base_species = CS.base_species
-		src.blood_color = CS.blood_color
-
-	if(istype(character.species,/datum/species/alraune))
-		var/datum/species/alraune/CS = character.species
-		//src.species_traits = CS.traits.Copy() //No traits
-		src.base_species = CS.base_species
-		src.blood_color = CS.blood_color
+	src.base_species = character.species.base_species
+	src.blood_color = character.species.blood_color
+	src.species_traits = character.species.traits.Copy()
 
 	src.custom_say = character.custom_say
 	src.custom_ask = character.custom_ask
@@ -229,10 +211,10 @@ var/global/list/datum/gene/dna_genes[0]
 	src.custom_exclaim = character.custom_exclaim
 
 	// +1 to account for the none-of-the-above possibility
-	SetUIValueRange(DNA_UI_EAR_STYLE,	ear_style + 1,     ear_styles_list.len  + 1,  1)
-	SetUIValueRange(DNA_UI_TAIL_STYLE,	tail_style + 1,    tail_styles_list.len + 1,  1)
-	SetUIValueRange(DNA_UI_PLAYERSCALE,	size_multiplier,   player_sizes_list.len,     1)
-	SetUIValueRange(DNA_UI_WING_STYLE,	wing_style + 1,    wing_styles_list.len + 1,  1)
+	SetUIValueRange(DNA_UI_EAR_STYLE,   ear_style + 1,     ear_styles_list.len  + 1,  1)
+	SetUIValueRange(DNA_UI_TAIL_STYLE,  tail_style + 1,    tail_styles_list.len + 1,  1)
+	SetUIValueRange(DNA_UI_PLAYERSCALE, size_multiplier,   player_sizes_list.len,     1)
+	SetUIValueRange(DNA_UI_WING_STYLE,  wing_style + 1,    wing_styles_list.len + 1,  1)
 
 	SetUIValueRange(DNA_UI_TAIL_R,    character.r_tail,    255,    1)
 	SetUIValueRange(DNA_UI_TAIL_G,    character.g_tail,    255,    1)

@@ -5,7 +5,7 @@
  */
 
 import { BooleanLike, classes, pureComponentHooks } from 'common/react';
-import { createVNode, InfernoNode } from 'inferno';
+import { createVNode, InfernoNode, SFC } from 'inferno';
 import { ChildFlags, VNodeFlags } from 'inferno-vnode-flags';
 import { CSS_COLORS } from '../constants';
 
@@ -34,8 +34,6 @@ export interface BoxProps {
   opacity?: number;
   textAlign?: string | BooleanLike;
   verticalAlign?: string | BooleanLike;
-  textTransform?: string | BooleanLike; // VOREStation Addition
-  unselectable?: string | BooleanLike; // VOREStation Addition
   inline?: BooleanLike;
   bold?: BooleanLike;
   italic?: BooleanLike;
@@ -58,20 +56,6 @@ export interface BoxProps {
   color?: string | BooleanLike;
   textColor?: string | BooleanLike;
   backgroundColor?: string | BooleanLike;
-  // VOREStation Addition Start
-  // Flex props
-  order?: string | BooleanLike,
-  flexDirection?: string | BooleanLike,
-  flexGrow?: string | BooleanLike,
-  flexShrink?: string | BooleanLike,
-  flexWrap?: string | BooleanLike,
-  flexFlow?: string | BooleanLike,
-  flexBasis?: string | BooleanLike,
-  flex?: string | BooleanLike,
-  alignItems?: string | BooleanLike,
-  justifyContent?: string | BooleanLike,
-  alignSelf?: string | BooleanLike,
-  // VOREStation Addition End
   fillPositionedParent?: boolean;
 }
 
@@ -173,8 +157,6 @@ const styleMapperByPropName = {
   opacity: mapRawPropTo('opacity'),
   textAlign: mapRawPropTo('text-align'),
   verticalAlign: mapRawPropTo('vertical-align'),
-  textTransform: mapRawPropTo('text-transform'), // VOREStation Addition
-  unselectable: mapRawPropTo('unselectable'), // VOREStation Addition
   // Boolean props
   inline: mapBooleanPropTo('display', 'inline-block'),
   bold: mapBooleanPropTo('font-weight', 'bold'),
@@ -213,20 +195,6 @@ const styleMapperByPropName = {
   color: mapColorPropTo('color'),
   textColor: mapColorPropTo('color'),
   backgroundColor: mapColorPropTo('background-color'),
-  // VOREStation Addition Start
-  // Flex props
-  order: mapRawPropTo('order'),
-  flexDirection: mapRawPropTo('flex-direction'),
-  flexGrow: mapRawPropTo('flex-grow'),
-  flexShrink: mapRawPropTo('flex-shrink'),
-  flexWrap: mapRawPropTo('flex-wrap'),
-  flexFlow: mapRawPropTo('flex-flow'),
-  flexBasis: mapRawPropTo('flex-basis'),
-  flex: mapRawPropTo('flex'),
-  alignItems: mapRawPropTo('align-items'),
-  justifyContent: mapRawPropTo('justify-content'),
-  alignSelf: mapRawPropTo('align-self'),
-  // VOREStation Addition End
   // Utility props
   fillPositionedParent: (style, value) => {
     if (value) {
@@ -288,7 +256,7 @@ export const computeBoxClassName = (props: BoxProps) => {
   ]);
 };
 
-export const Box = (props: BoxProps) => {
+export const Box: SFC<BoxProps> = (props: BoxProps) => {
   const {
     as = 'div',
     className,
@@ -310,7 +278,9 @@ export const Box = (props: BoxProps) => {
     computedClassName,
     children,
     ChildFlags.UnknownChildren,
-    computedProps);
+    computedProps,
+    undefined,
+  );
 };
 
 Box.defaultHooks = pureComponentHooks;

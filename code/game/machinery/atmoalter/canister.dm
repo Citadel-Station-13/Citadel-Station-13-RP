@@ -40,9 +40,6 @@
 	interact_offline = 1 // Allows this to be used when not in powered area.
 	var/update_flag = 0
 
-/obj/machinery/portable_atmospherics/canister/drain_power()
-	return -1
-
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide
 	name = "Canister: \[N2O\]"
 	icon_state = "redws"

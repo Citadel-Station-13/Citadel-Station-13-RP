@@ -1,4 +1,4 @@
 //Luma coefficients suggested for HDTVs. If you change these, make sure they add up to 1.
-#define LUMR 0.2126
-#define LUMG 0.7152
-#define LUMB 0.0722
+#define LUMA_R 0.213
+#define LUMA_G 0.715
+#define LUMA_B 0.072

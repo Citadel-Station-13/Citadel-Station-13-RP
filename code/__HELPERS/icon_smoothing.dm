@@ -24,36 +24,6 @@
 	To see an example of a diagonal wall, see '/turf/closed/wall/mineral/titanium' and its subtypes.
 */
 
-//Redefinitions of the diagonal directions so they can be stored in one var without conflicts
-#define NORTH_JUNCTION NORTH //(1<<0)
-#define SOUTH_JUNCTION SOUTH //(1<<1)
-#define EAST_JUNCTION EAST  //(1<<2)
-#define WEST_JUNCTION WEST  //(1<<3)
-#define NORTHEAST_JUNCTION (1<<4)
-#define SOUTHEAST_JUNCTION (1<<5)
-#define SOUTHWEST_JUNCTION (1<<6)
-#define NORTHWEST_JUNCTION (1<<7)
-
-DEFINE_BITFIELD(smoothing_junction, list(
-	"NORTH_JUNCTION" = NORTH_JUNCTION,
-	"SOUTH_JUNCTION" = SOUTH_JUNCTION,
-	"EAST_JUNCTION" = EAST_JUNCTION,
-	"WEST_JUNCTION" = WEST_JUNCTION,
-	"NORTHEAST_JUNCTION" = NORTHEAST_JUNCTION,
-	"SOUTHEAST_JUNCTION" = SOUTHEAST_JUNCTION,
-	"SOUTHWEST_JUNCTION" = SOUTHWEST_JUNCTION,
-	"NORTHWEST_JUNCTION" = NORTHWEST_JUNCTION,
-))
-
-
-#define NO_ADJ_FOUND 0
-#define ADJ_FOUND 1
-#define NULLTURF_BORDER 2
-
-#define DEFAULT_UNDERLAY_ICON 'icons/turf/floors.dmi'
-#define DEFAULT_UNDERLAY_ICON_STATE "plating"
-
-
 #define SET_ADJ_IN_DIR(source, junction, direction, direction_flag) \
 	do { \
 		var/turf/neighbor = get_step(source, direction); \
@@ -142,12 +112,10 @@ DEFINE_BITFIELD(smoothing_junction, list(
 				if(ADJ_FOUND)
 					. |= SOUTHEAST_JUNCTION
 
-
 /atom/movable/calculate_adjacencies()
 	if(can_be_unanchored && !anchored)
 		return NONE
 	return ..()
-
 
 ///do not use, use QUEUE_SMOOTH(atom)
 /atom/proc/smooth_icon()
@@ -162,11 +130,15 @@ DEFINE_BITFIELD(smoothing_junction, list(
 			corners_cardinal_smooth(calculate_adjacencies())
 	else if(smoothing_flags & SMOOTH_BITMASK)
 		bitmask_smooth()
+	else if(smoothing_flags & SMOOTH_CUSTOM)
+		custom_smooth(calculate_adjacencies())		// citrp snowflake smoothing for turfs
 	else
 		CRASH("smooth_icon called for [src] with smoothing_flags == [smoothing_flags]")
 	SEND_SIGNAL(src, COMSIG_ATOM_SMOOTHED_ICON)
 	update_appearance(~UPDATE_SMOOTHING)
 
+/atom/proc/custom_smooth()
+	CRASH("based custom_smooth called on atom")
 
 /atom/proc/corners_diagonal_smooth(adjacencies)
 	switch(adjacencies)
@@ -399,14 +371,15 @@ DEFINE_BITFIELD(smoothing_junction, list(
 	var/list/away_turfs = block(locate(1, 1, zlevel), locate(world.maxx, world.maxy, zlevel))
 	for(var/V in away_turfs)
 		var/turf/T = V
-		if(T.smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
+		if(IS_SMOOTH(T))
 			if(now)
 				T.smooth_icon()
 			else
 				QUEUE_SMOOTH(T)
+		CHECK_TICK
 		for(var/R in T)
 			var/atom/A = R
-			if(A.smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
+			if(IS_SMOOTH(A))
 				if(now)
 					A.smooth_icon()
 				else
@@ -499,21 +472,5 @@ DEFINE_BITFIELD(smoothing_junction, list(
 	underlay_appearance.icon_state = icon_state
 	underlay_appearance.dir = adjacency_dir
 	return TRUE
-
-#undef NORTH_JUNCTION
-#undef SOUTH_JUNCTION
-#undef EAST_JUNCTION
-#undef WEST_JUNCTION
-#undef NORTHEAST_JUNCTION
-#undef NORTHWEST_JUNCTION
-#undef SOUTHEAST_JUNCTION
-#undef SOUTHWEST_JUNCTION
-
-#undef NO_ADJ_FOUND
-#undef ADJ_FOUND
-#undef NULLTURF_BORDER
-
-#undef DEFAULT_UNDERLAY_ICON
-#undef DEFAULT_UNDERLAY_ICON_STATE
 
 #undef SET_ADJ_IN_DIR

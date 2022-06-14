@@ -72,26 +72,26 @@
 
 	if(pref.species != SPECIES_CUSTOM)
 		pref.pos_traits.Cut()
-		pref.neu_traits.Cut()
 		pref.neg_traits.Cut()
-	else
-		// Clean up positive traits
-		for(var/path in pref.pos_traits)
-			if(!(path in positive_traits))
-				pref.pos_traits -= path
-		//Neutral traits
-		for(var/path in pref.neu_traits)
-			if(!(path in neutral_traits))
-				pref.neu_traits -= path
-		//Negative traits
-		for(var/path in pref.neg_traits)
-			if(!(path in negative_traits))
-				pref.neg_traits -= path
+	// Clean up positive traits
+	for(var/path in pref.pos_traits)
+		if(!(path in positive_traits))
+			pref.pos_traits -= path
+	//Neutral traits
+	for(var/path in pref.neu_traits)
+		if(!(path in neutral_traits))
+			pref.neu_traits -= path
+		if(!(pref.species == SPECIES_CUSTOM) && !(path in everyone_traits))
+			pref.neu_traits -= path
+	//Negative traits
+	for(var/path in pref.neg_traits)
+		if(!(path in negative_traits))
+			pref.neg_traits -= path
 
-	var/datum/species/selected_species = GLOB.all_species[pref.species]
+	var/datum/species/selected_species = pref.character_static_species_meta()
 	if(selected_species.selects_bodytype)
 		// Allowed!
-	else if(!pref.custom_base || !(pref.custom_base in custom_species_bases))
+	else if(!pref.custom_base || !(pref.custom_base in GLOB.custom_species_bases))
 		pref.custom_base = SPECIES_HUMAN
 
 	pref.custom_say = lowertext(trim(pref.custom_say))
@@ -99,44 +99,45 @@
 	pref.custom_ask = lowertext(trim(pref.custom_ask))
 	pref.custom_exclaim = lowertext(trim(pref.custom_exclaim))
 
-/datum/category_item/player_setup_item/vore/traits/copy_to_mob(var/mob/living/carbon/human/character)
-	character.custom_species	= pref.custom_species
-	character.custom_say		= lowertext(trim(pref.custom_say))
-	character.custom_ask		= lowertext(trim(pref.custom_ask))
-	character.custom_whisper	= lowertext(trim(pref.custom_whisper))
-	character.custom_exclaim	= lowertext(trim(pref.custom_exclaim))
-	var/datum/species/selected_species = GLOB.all_species[pref.species]
-	if(selected_species.selects_bodytype)
-		var/datum/species/custom/CS = character.species
-		var/S = pref.custom_base ? pref.custom_base : SPECIES_HUMAN
-		var/datum/species/custom/new_CS = CS.produceCopy(S, pref.pos_traits + pref.neu_traits + pref.neg_traits, character)
 
-		//Any additional non-trait settings can be applied here
-		new_CS.blood_color = pref.blood_color
+/datum/category_item/player_setup_item/vore/traits/copy_to_mob(mob/living/carbon/human/character)
+	character.custom_species = pref.custom_species
+	character.custom_say     = lowertext(trim(pref.custom_say))
+	character.custom_ask     = lowertext(trim(pref.custom_ask))
+	character.custom_whisper = lowertext(trim(pref.custom_whisper))
+	character.custom_exclaim = lowertext(trim(pref.custom_exclaim))
 
-		if(pref.species == SPECIES_CUSTOM)
-			//Statistics for this would be nice
-			var/english_traits = english_list(new_CS.traits, and_text = ";", comma_text = ";")
-			log_game("TRAITS [pref.client_ckey]/([character]) with: [english_traits]") //Terrible 'fake' key_name()... but they aren't in the same entity yet
+	var/datum/species/S = character.species
+	var/SB = S.selects_bodytype ? pref.custom_base : pref.character_static_species_meta()
+	S.copy_from(SB, pref.pos_traits + pref.neu_traits + pref.neg_traits, character)
 
-/datum/category_item/player_setup_item/vore/traits/content(var/mob/user)
+	//Any additional non-trait settings can be applied here
+	S.blood_color = pref.blood_color
+
+	if(pref.species == SPECIES_CUSTOM)
+		//Statistics for this would be nice
+		var/english_traits = english_list(S.traits, and_text = ";", comma_text = ";")
+		log_game("TRAITS [pref.client_ckey]/([character]) with: [english_traits]") //Terrible 'fake' key_name()... but they aren't in the same entity yet
+
+
+/datum/category_item/player_setup_item/vore/traits/content(mob/user)
 	. += "<b>Custom Species Name:</b> "
 	. += "<a href='?src=\ref[src];custom_species=1'>[pref.custom_species ? pref.custom_species : "-Input Name-"]</a><br>"
 
-	var/datum/species/selected_species = GLOB.all_species[pref.species]
+	var/datum/species/selected_species = pref.character_static_species_meta()
 	if(selected_species.selects_bodytype)
 		. += "<b>Icon Base: </b> "
 		. += "<a href='?src=\ref[src];custom_base=1'>[pref.custom_base ? pref.custom_base : SPECIES_HUMAN]</a><br>"
 
+	var/traits_left = pref.max_traits
+	. += "<b>Traits Left:</b> [traits_left]<br>"
 	if(pref.species == SPECIES_CUSTOM)
 		var/points_left = pref.starting_trait_points
-		var/traits_left = pref.max_traits
 		for(var/T in pref.pos_traits + pref.neg_traits)
 			points_left -= traits_costs[T]
 			traits_left--
 
 		. += "<b>Points Left:</b> [points_left]<br>"
-		. += "<b>Traits Left:</b> [traits_left]<br>"
 		if(points_left < 0 || traits_left < 0 || !pref.custom_species)
 			. += "<span style='color:red;'><b>^ Fix things! ^</b></span><br>"
 
@@ -147,19 +148,20 @@
 			. += "<li>- <a href='?src=\ref[src];clicked_pos_trait=[T]'>[trait.name] ([trait.cost])</a></li>"
 		. += "</ul>"
 
-		. += "<a href='?src=\ref[src];add_trait=[NEUTRAL_MODE]'>Neutral Trait +</a><br>"
-		. += "<ul>"
-		for(var/T in pref.neu_traits)
-			var/datum/trait/trait = neutral_traits[T]
-			. += "<li>- <a href='?src=\ref[src];clicked_neu_trait=[T]'>[trait.name] ([trait.cost])</a></li>"
-		. += "</ul>"
-
 		. += "<a href='?src=\ref[src];add_trait=[NEGATIVE_MODE]'>Negative Trait +</a><br>"
 		. += "<ul>"
 		for(var/T in pref.neg_traits)
 			var/datum/trait/trait = negative_traits[T]
 			. += "<li>- <a href='?src=\ref[src];clicked_neg_trait=[T]'>[trait.name] ([trait.cost])</a></li>"
 		. += "</ul>"
+
+	. += "<a href='?src=\ref[src];add_trait=[NEUTRAL_MODE]'>Neutral Trait +</a><br>"
+	. += "<ul>"
+	for(var/T in pref.neu_traits)
+		var/datum/trait/trait = neutral_traits[T]
+		. += "<li>- <a href='?src=\ref[src];clicked_neu_trait=[T]'>[trait.name] ([trait.cost])</a></li>"
+	. += "</ul>"
+
 	. += "<b>Blood Color: </b>" //People that want to use a certain species to have that species traits (xenochimera/promethean/spider) should be able to set their own blood color.
 	. += "<a href='?src=\ref[src];blood_color=1'>Set Color</a>"
 	. += "<a href='?src=\ref[src];blood_reset=1'>R</a><br>"
@@ -192,7 +194,7 @@
 		return TOPIC_REFRESH
 
 	else if(href_list["custom_base"])
-		var/list/choices = custom_species_bases
+		var/list/choices = GLOB.custom_species_bases
 		if(pref.species != SPECIES_CUSTOM)
 			choices = (choices | pref.species)
 		var/text_choice = input("Pick an icon set for your species:","Icon Base") in choices
@@ -266,8 +268,12 @@
 				picklist = positive_traits.Copy() - pref.pos_traits
 				mylist = pref.pos_traits
 			if(NEUTRAL_MODE)
-				picklist = neutral_traits.Copy() - pref.neu_traits
-				mylist = pref.neu_traits
+				if(pref.species == SPECIES_CUSTOM)
+					picklist = neutral_traits.Copy() - pref.neu_traits
+					mylist = pref.neu_traits
+				else
+					picklist = everyone_traits.Copy() - pref.neu_traits
+					mylist = pref.neu_traits
 			if(NEGATIVE_MODE)
 				picklist = negative_traits.Copy() - pref.neg_traits
 				mylist = pref.neg_traits
@@ -313,6 +319,13 @@
 
 			var/conflict = FALSE
 
+			// if(pref.species in instance.banned_species)
+			// 	tgui_alert_async(usr, "The trait you've selected cannot be taken by the species you've chosen!", "Error")
+			// 	return TOPIC_REFRESH
+
+			if( LAZYLEN(instance.allowed_species) && !(pref.species in instance.allowed_species))
+				tgui_alert_async(usr, "The trait you've selected cannot be taken by the species you've chosen!", "Error")
+				return TOPIC_REFRESH
 			if(trait_choice in pref.pos_traits + pref.neu_traits + pref.neg_traits)
 				conflict = instance.name
 

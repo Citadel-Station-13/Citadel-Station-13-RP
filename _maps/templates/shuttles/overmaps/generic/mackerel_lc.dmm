@@ -90,7 +90,7 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/mackerel_lc)
 "gU" = (
@@ -103,7 +103,7 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/extinguisher_cabinet{
 	dir = 8;
 	pixel_x = 30
@@ -180,11 +180,11 @@
 /area/shuttle/mackerel_lc)
 "mw" = (
 /obj/structure/handrail,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/light,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -224,8 +224,8 @@
 /area/shuttle/mackerel_lc)
 "pZ" = (
 /obj/machinery/door/airlock/hatch,
-/obj/effect/map_helper/airlock/door/ext_door,
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/atom/movable/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle{
 	dir = 10;
 	pixel_x = -8;
@@ -295,7 +295,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_x = 26
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/atom/movable/map_helper/airlock/sensor/int_sensor,
 /obj/effect/floor_decal/industrial/warning/corner,
 /obj/structure/railing/grey,
 /obj/random/multiple/corp_crate,
@@ -325,7 +325,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/mackerel_lc)
 "um" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/machinery/light{
@@ -445,7 +445,7 @@
 /turf/simulated/floor/airless,
 /area/shuttle/mackerel_lc)
 "Dl" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/structure/cable{
@@ -500,8 +500,8 @@
 /area/shuttle/mackerel_lc)
 "FL" = (
 /obj/machinery/door/airlock/hatch,
-/obj/effect/map_helper/airlock/door/ext_door,
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/atom/movable/map_helper/airlock/door/ext_door,
+/atom/movable/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle{
 	dir = 6;
 	pixel_x = 7;
@@ -523,7 +523,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/mackerel_lc)
 "Gm" = (
-/obj/machinery/atmospherics/unary/engine{
+/obj/machinery/atmospherics/component/unary/engine{
 	dir = 1
 	},
 /obj/structure/window/reinforced{
@@ -568,7 +568,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/mackerel_lc)
 "Kb" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/cable{
@@ -641,7 +641,7 @@
 "PL" = (
 /obj/machinery/door/airlock/hatch,
 /obj/machinery/door/firedoor/glass,
-/obj/effect/map_helper/airlock/door/int_door,
+/atom/movable/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/mackerel_lc)
 "Qu" = (
@@ -699,7 +699,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_x = -25
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/atom/movable/map_helper/airlock/sensor/int_sensor,
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
@@ -708,18 +708,18 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/mackerel_lc)
 "UY" = (
-/obj/machinery/atmospherics/unary/engine{
+/obj/machinery/atmospherics/component/unary/engine{
 	dir = 1
 	},
 /turf/simulated/floor/airless,
 /area/shuttle/mackerel_lc)
 "Vs" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1
 	},
 /obj/structure/handrail,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/light,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -810,7 +810,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/mackerel_lc)
 "ZJ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/light{

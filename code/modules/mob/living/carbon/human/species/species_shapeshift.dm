@@ -4,6 +4,7 @@
 var/list/wrapped_species_by_ref = list()
 
 /datum/species/shapeshifter
+	abstract_type = /datum/species/shapeshifter
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/shapeshifter_select_shape,
@@ -21,45 +22,45 @@ var/list/wrapped_species_by_ref = list()
 
 /datum/species/shapeshifter/get_icobase(var/mob/living/carbon/human/H, var/get_deform)
 	if(!H) return ..(null, get_deform)
-	var/datum/species/S = GLOB.all_species[wrapped_species_by_ref["\ref[H]"]]
+	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_icobase(H, get_deform)
 
-/datum/species/shapeshifter/get_race_key(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/real_race_key(mob/living/carbon/human/H)
 	return "[..()]-[wrapped_species_by_ref["\ref[H]"]]"
 
 /datum/species/shapeshifter/get_bodytype(var/mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = GLOB.all_species[wrapped_species_by_ref["\ref[H]"]]
+	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_bodytype(H)
 
 /datum/species/shapeshifter/get_blood_mask(var/mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = GLOB.all_species[wrapped_species_by_ref["\ref[H]"]]
+	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_blood_mask(H)
 
 /datum/species/shapeshifter/get_damage_mask(var/mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = GLOB.all_species[wrapped_species_by_ref["\ref[H]"]]
+	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_damage_mask(H)
 
 /datum/species/shapeshifter/get_damage_overlays(var/mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = GLOB.all_species[wrapped_species_by_ref["\ref[H]"]]
+	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_damage_overlays(H)
 
 /datum/species/shapeshifter/get_tail(var/mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = GLOB.all_species[wrapped_species_by_ref["\ref[H]"]]
+	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_tail(H)
 
 /datum/species/shapeshifter/get_tail_animation(var/mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = GLOB.all_species[wrapped_species_by_ref["\ref[H]"]]
+	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_tail_animation(H)
 
 /datum/species/shapeshifter/get_tail_hair(var/mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = GLOB.all_species[wrapped_species_by_ref["\ref[H]"]]
+	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_tail_hair(H)
 
 /datum/species/shapeshifter/handle_post_spawn(var/mob/living/carbon/human/H)
@@ -141,7 +142,7 @@ var/list/wrapped_species_by_ref = list()
 	if(!new_gender)
 		return
 
-	var/new_gender_identity = input("Please select a gender Identity.", "Shapeshifter Gender Identity") as null|anything in list(FEMALE, MALE, NEUTER, PLURAL, HERM) //VOREStation Edit
+	var/new_gender_identity = input("Please select a gender Identity.", "Shapeshifter Gender Identity") as null|anything in list(FEMALE, MALE, NEUTER, PLURAL, HERM)
 	if(!new_gender_identity)
 		return
 
@@ -162,7 +163,7 @@ var/list/wrapped_species_by_ref = list()
 	var/new_species = null
 	new_species = input("Please select a species to emulate.", "Shapeshifter Body") as null|anything in species.get_valid_shapeshifter_forms(src)
 
-	if(!new_species || !GLOB.all_species[new_species] || wrapped_species_by_ref["\ref[src]"] == new_species)
+	if(!new_species || !name_static_species_meta(new_species) || wrapped_species_by_ref["\ref[src]"] == new_species)
 		return
 	shapeshifter_change_shape(new_species)
 
@@ -246,70 +247,6 @@ var/list/wrapped_species_by_ref = list()
 /mob/living/carbon/human/proc/shapeshifter_set_facial_color(var/new_fhair)
 
 	change_facial_hair_color(hex2num(copytext(new_fhair, 2, 4)), hex2num(copytext(new_fhair, 4, 6)), hex2num(copytext(new_fhair, 6, 8)))
-
-// Replaces limbs and copies wounds
-/mob/living/carbon/human/proc/shapeshifter_change_species(var/new_species)
-	if(!species)
-		return
-
-	dna.species = new_species
-
-	var/list/limb_exists = list(
-		BP_TORSO =  0,
-		BP_GROIN =  0,
-		BP_HEAD =   0,
-		BP_L_ARM =  0,
-		BP_R_ARM =  0,
-		BP_L_LEG =  0,
-		BP_R_LEG =  0,
-		BP_L_HAND = 0,
-		BP_R_HAND = 0,
-		BP_L_FOOT = 0,
-		BP_R_FOOT = 0
-		)
-	var/list/wounds_by_limb = list(
-		BP_TORSO =  new/list(),
-		BP_GROIN =  new/list(),
-		BP_HEAD =   new/list(),
-		BP_L_ARM =  new/list(),
-		BP_R_ARM =  new/list(),
-		BP_L_LEG =  new/list(),
-		BP_R_LEG =  new/list(),
-		BP_L_HAND = new/list(),
-		BP_R_HAND = new/list(),
-		BP_L_FOOT = new/list(),
-		BP_R_FOOT = new/list()
-		)
-
-	// Copy damage values
-	for(var/limb in organs_by_name)
-		var/obj/item/organ/external/O = organs_by_name[limb]
-		limb_exists[O.organ_tag] = 1
-		wounds_by_limb[O.organ_tag] = O.wounds
-
-	species = GLOB.all_species[new_species]
-	species.create_organs(src)
-//	species.handle_post_spawn(src)
-
-	for(var/limb in organs_by_name)
-		var/obj/item/organ/external/O = organs_by_name[limb]
-		if(limb_exists[O.organ_tag])
-			O.species = GLOB.all_species[new_species]
-			O.wounds = wounds_by_limb[O.organ_tag]
-			// sync the organ's damage with its wounds
-			O.update_damages()
-			O.owner.updatehealth() //droplimb will call updatehealth() again if it does end up being called
-		else
-			organs.Remove(O)
-			organs_by_name.Remove(O)
-
-	spawn(0)
-		regenerate_icons()
-/* VOREStation Edit - Our own trait system, sorry.
-	if(species && mind)
-		apply_traits()
-*/
-	return
 
 /mob/living/carbon/human/proc/shapeshifter_select_eye_colour()
 
@@ -522,18 +459,6 @@ var/list/wrapped_species_by_ref = list()
 	update_icons_body()
 
 /datum/species/shapeshifter/handle_environment_special(var/mob/living/carbon/human/H)
-/* VOREStation Removal - Too crazy with our uncapped hunger and slowdown stuff.
-	var/turf/T = H.loc
-	if(istype(T))
-		var/obj/effect/decal/cleanable/C = locate() in T
-		if(C && !(H.shoes || (H.wear_suit && (H.wear_suit.body_parts_covered & FEET))))
-			qdel(C)
-			if (istype(T, /turf/simulated))
-				var/turf/simulated/S = T
-				S.dirt = 0
-
-			H.nutrition = min(500, max(0, H.nutrition + rand(15, 30)))
-VOREStation Removal End */
 	// Heal remaining damage.
 	if(H.fire_stacks >= 0 && heal_rate > 0)
 		if(H.getBruteLoss() || H.getFireLoss() || H.getOxyLoss() || H.getToxLoss())

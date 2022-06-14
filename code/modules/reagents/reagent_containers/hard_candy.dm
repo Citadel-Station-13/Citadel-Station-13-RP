@@ -20,7 +20,7 @@
 	var/mob/living/carbon/owner
 	var/mutable_appearance/head
 	var/headcolor = rgb(0, 0, 0)
-	sprite_sheets = list('icons/mob/mask.dmi')
+	sprite_sheets = list(INV_MASK_DEF_ICON)
 	volume = 20
 
 /obj/item/reagent_containers/hard_candy/Initialize(mapload)
@@ -69,7 +69,6 @@
 					to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
 					return
 
-			 // Vorestation edits in this section.
 			user.setClickCooldown(user.get_attack_speed(src)) //puts a limit on how fast people can eat/drink things
 			if (fullness <= 100)
 				to_chat(M, "<span class='danger'>You hungrily chew out a piece of [src] and gobble it!</span>")
@@ -107,14 +106,9 @@
 					to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
 					return
 
-			if(!istype(M, /mob/living/carbon/slime))		//If you're feeding it to someone else.
+			if(!istype(M, /mob/living/carbon/slime)) // If you're feeding it to someone else.
 
-				/*if (fullness <= (550 * (1 + M.overeatduration / 1000))) // Vorestation edit
-					user.visible_message("<span class='danger'>[user] attempts to feed [M] [src].</span>")
-				else
-					user.visible_message("<span class='danger'>[user] cannot force anymore of [src] down [M]'s throat.</span>")
-					return 0*/
-				user.visible_message("<span class='danger'>[user] attempts to feed [M] [src].</span>") // Vorestation edit
+				user.visible_message(SPAN_DANGER("[user] attempts to feed [M] [src]."))
 
 				user.setClickCooldown(user.get_attack_speed(src))
 				if(!do_mob(user, M)) return
@@ -207,7 +201,7 @@
 	desc = "A candy perfect for those stingy ouchies. Can be eaten or put in the mask slot."
 	nutriment_desc = list("cough syrup" = 1, "artificial sweetness" = 1)
 
-/obj/item/reagent_containers/hard_candy/lollipop/bicard/Initialize()
+/obj/item/reagent_containers/hard_candy/lollipop/bicard/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("bicaridine", 5)
 	reagents.add_reagent("sugar", 1)
@@ -218,7 +212,7 @@
 	desc = "A candy perfect for those frowny feelings. Can be eaten or put in the mask slot."
 	nutriment_desc = list("cough syrup" = 1, "artificial sweetness" = 1)
 
-/obj/item/reagent_containers/hard_candy/lollipop/citalopram/Initialize()
+/obj/item/reagent_containers/hard_candy/lollipop/citalopram/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("citalopram", 5)
 	reagents.add_reagent("sugar", 1)
@@ -228,7 +222,7 @@
 	name = "Commed-pop"
 	desc = "A lolipop devised to heal wounds overtime, with a slower amount of reagent use. Can be eaten or put in the mask slot"
 
-/obj/item/reagent_containers/hard_candy/lollipop/combat/Initialize()
+/obj/item/reagent_containers/hard_candy/lollipop/combat/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("bicaridine", 5)
 	reagents.add_reagent("kelotane", 5)
@@ -240,7 +234,7 @@
 	desc = "A candy perfect for those raspy gaspies. Can be eaten or put in the mask slot."
 	nutriment_desc = list("cough syrup" = 1, "artificial sweetness" = 1)
 
-/obj/item/reagent_containers/hard_candy/lollipop/dexalin/Initialize()
+/obj/item/reagent_containers/hard_candy/lollipop/dexalin/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("dexalin", 5)
 	reagents.add_reagent("sugar", 1)
@@ -251,7 +245,7 @@
 	desc = "A candy perfect for keeping your blood sweet. Can be eaten or put in the mask slot."
 	nutriment_desc = list("cough syrup" = 1, "artificial sweetness" = 1)
 
-/obj/item/reagent_containers/hard_candy/lollipop/dylovene/Initialize()
+/obj/item/reagent_containers/hard_candy/lollipop/dylovene/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("dylovene", 5)
 	reagents.add_reagent("sugar", 1)
@@ -262,7 +256,7 @@
 	desc = "A candy perfect for the functional alcoholic. Can be eaten or put in the mask slot."
 	nutriment_desc = list("cough syrup" = 1, "artificial sweetness" = 1)
 
-/obj/item/reagent_containers/hard_candy/lollipop/ethylredoxrazine/Initialize()
+/obj/item/reagent_containers/hard_candy/lollipop/ethylredoxrazine/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("ethylredoxrazine", 5)
 	reagents.add_reagent("sugar", 1)
@@ -273,7 +267,7 @@
 	desc = "A candy perfect for keeping your cells from melting. Can be eaten or put in the mask slot."
 	nutriment_desc = list("cough syrup" = 1, "artificial sweetness" = 1)
 
-/obj/item/reagent_containers/hard_candy/lollipop/hyronalin/Initialize()
+/obj/item/reagent_containers/hard_candy/lollipop/hyronalin/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("hyronalin", 5)
 	reagents.add_reagent("sugar", 1)
@@ -284,7 +278,7 @@
 	desc = "A candy perfect for those sizzly wizzlies. Can be eaten or put in the mask slot."
 	nutriment_desc = list("cough syrup" = 1, "artificial sweetness" = 1)
 
-/obj/item/reagent_containers/hard_candy/lollipop/kelotane/Initialize()
+/obj/item/reagent_containers/hard_candy/lollipop/kelotane/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("kelotane", 5)
 	reagents.add_reagent("sugar", 1)
@@ -295,7 +289,7 @@
 	desc = "Your reward for behaving so well in the medbay. Can be eaten or put in the mask slot."
 	nutriment_desc = list("cough syrup" = 1, "artificial sweetness" = 1)
 
-/obj/item/reagent_containers/hard_candy/lollipop/tramadol/Initialize()
+/obj/item/reagent_containers/hard_candy/lollipop/tramadol/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("tramadol", 4)
 	reagents.add_reagent("sugar", 1)
@@ -306,7 +300,7 @@
 	nutriment_desc = list("cough syrup" = 1, "artificial sweetness" = 1)
 	volume = 15
 
-/obj/item/reagent_containers/hard_candy/lollipop/tricord/Initialize()
+/obj/item/reagent_containers/hard_candy/lollipop/tricord/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("tricordrazine", 10)
 	reagents.add_reagent("sugar", 1)

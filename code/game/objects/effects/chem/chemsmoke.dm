@@ -107,7 +107,7 @@
 			for(var/atom/A in T.contents)
 				if(istype(A, /obj/effect/smoke/chem) || istype(A, /mob))
 					continue
-				else if(isobj(A) && !A.simulated)
+				else if(isobj(A) && (A.flags & AF_ABSTRACT))
 					chemholder.reagents.touch_obj(A)
 
 	var/color = chemholder.reagents.get_color() //build smoke icon
@@ -211,9 +211,7 @@
 					continue
 				if(!(target in targetTurfs))
 					continue
-				if(current.c_airblock(target)) //this is needed to stop chemsmoke from passing through thin window walls
-					continue
-				if(target.c_airblock(current))
+				if(current.CheckAirBlock(target) == ATMOS_PASS_AIR_BLOCKED) //this is needed to stop chemsmoke from passing through thin window walls
 					continue
 				pending += target
 

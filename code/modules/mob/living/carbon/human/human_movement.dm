@@ -36,7 +36,6 @@
 	if (hungry >= 70)
 		tally += hungry/50
 
-	//VOREstation start
 	if (feral >= 10) //crazy feral animals give less and less of a shit about pain and hunger as they get crazier
 		tally = max(species.slowdown, species.slowdown+((tally-species.slowdown)/(feral/10))) // As feral scales to damage, this amounts to an effective +1 slowdown cap
 		if(shock_stage >= 10) tally -= 1.5 //this gets a +3 later, feral critters take reduced penalty
@@ -52,7 +51,6 @@
 					tally += 1
 				if(H.weight > L.weight)
 					tally += 1
-	//VOREstation end
 
 	if(istype(buckled, /obj/structure/bed/chair/wheelchair))
 		for(var/organ_name in list(BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM))
@@ -211,7 +209,7 @@
 		prob_slip = 0 // Changing this to zero to make it line up with the comment, and also, make more sense.
 
 	//Do we have magboots or such on if so no slip
-	if(istype(shoes, /obj/item/clothing/shoes/magboots) && (shoes.item_flags & NOSLIP))
+	if(istype(shoes, /obj/item/clothing/shoes/magboots) && (shoes.clothing_flags & NOSLIP))
 		prob_slip = 0
 
 	//Check hands and mod slip
@@ -224,7 +222,7 @@
 	return(prob_slip)
 
 // Handle footstep sounds
-/mob/living/carbon/human/handle_footstep(var/turf/T)
+/mob/living/carbon/human/handle_footstep(turf/T)
 	if(is_incorporeal())
 		return
 	if(!config_legacy.footstep_volume || !T.footstep_sounds || !T.footstep_sounds.len)
@@ -265,4 +263,3 @@
 		return // Far less likely to make noise in no gravity
 
 	playsound(T, S, volume, FALSE)
-	return

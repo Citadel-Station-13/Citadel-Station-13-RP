@@ -1,11 +1,10 @@
 //! *ALL DEFINES RELATED TO ORGANS GO HERE* !//
 
 /// Global list of organs for future use.
-#define O_ALL list(O_ALL_STANDARD, O_ALL_NONSTANDARD)
+#define O_ALL (O_ALL_STANDARD + O_ALL_NONSTANDARD)
 /// Global list of all standard body parts.
-#define BP_ALL list(BP_ALL_STANDARD) //TODO: Currently used for random limb dmg, needs a refactor to make it species-based instead.
-
-
+///TODO: Currently used for random limb dmg, needs a refactor to make it species-based instead.
+#define BP_ALL BP_ALL_STANDARD
 //* GENERIC INTERNAL ORGANS *//
 #define O_APPENDIX "appendix"
 #define O_BRAIN "brain"
@@ -151,13 +150,13 @@
 
 
 //* ADHERENT EXTERNAL ORGANS *//
-#define BP_COOLING_FINS "cooling fins"
-#define BP_FLOAT "floatation disc"
+#define O_COOLING_FINS "cooling fins"
+#define O_FLOAT "floatation disc"
 #define BP_JETS "maneuvering jets"
 /// List of all Adherent body parts.
 #define BP_ALL_ADHERENT list( \
-		BP_COOLING_FINS, \
-		BP_FLOAT, \
+		O_COOLING_FINS, \
+		O_FLOAT, \
 		BP_JETS)
 
 
@@ -182,13 +181,16 @@
 
 
 //* CARBON TASTE SENSITIVITY *// Used in mob/living/carbon/proc/ingest
-#define TASTE_HYPERSENSITIVE 3 //anything below 5%
-#define TASTE_SENSITIVE 2 //anything below 7%
-#define TASTE_NORMAL 1 //anything below 15%
-#define TASTE_DULL 0.5 //anything below 30%
-#define TASTE_NUMB 0.1 //anything below 150%
-
-
+///anything below 5%
+#define TASTE_HYPERSENSITIVE 3
+///anything below 7%
+#define TASTE_SENSITIVE 2
+///anything below 15%
+#define TASTE_NORMAL 1
+///anything below 30%
+#define TASTE_DULL 0.5
+///anything below 150%
+#define TASTE_NUMB 0.1
 //* ORGAN FLAGS *//
 #define BP_IS_ASSISTED(org) ((org) && ((org).robotic == ORGAN_ASSISTED))
 #define BP_IS_BRITTLE(org)  ((org) && ((org).status == ORGAN_BRITTLE))

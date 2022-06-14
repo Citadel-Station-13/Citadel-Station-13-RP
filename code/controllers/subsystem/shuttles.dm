@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(shuttle)
 	wait = 2 SECONDS
 	priority = FIRE_PRIORITY_SHUTTLES
 	init_order = INIT_ORDER_SHUTTLES
-	flags = SS_KEEP_TIMING|SS_NO_TICK_CHECK
+	subsystem_flags = SS_KEEP_TIMING|SS_NO_TICK_CHECK
 	runlevels = RUNLEVEL_GAME|RUNLEVEL_POSTGAME
 
 	var/overmap_halted = FALSE						// Whether ships can move on the overmap; used for adminbus.
@@ -81,7 +81,7 @@ SUBSYSTEM_DEF(shuttle)
 	hook_up_shuttle_objects(shuttles_made)
 	shuttles_to_initialize = null
 	/// citadel edit - initialize overmaps shuttles here until we rewrite overmaps to not be a dumpster fire god damnit
-	for(var/obj/machinery/atmospherics/unary/engine/E in world)
+	for(var/obj/machinery/atmospherics/component/unary/engine/E in world)
 		if(E.linked)
 			continue
 		E.link_to_ship()

@@ -24,7 +24,7 @@
 	var/list/med = new()
 	var/list/sci = new()
 	var/list/car = new()
-	var/list/pla = new() //VOREStation Edit
+	var/list/pla = new()
 	var/list/civ = new()
 	var/list/bot = new()
 	var/list/off = new()
@@ -79,11 +79,9 @@
 		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_CARGO))
 			car[name] = rank
 			department = 1
-		//VOREStation Add Begin
 		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_PLANET))
 			pla[name] = rank
 			department = 1
-		//VOREStation Add End
 		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_CIVILIAN))
 			civ[name] = rank
 			department = 1
@@ -148,13 +146,11 @@
 		for(name in car)
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[car[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
-	//VOREStation Edit Begin
 	if(pla.len > 0)
 		dat += "<tr><th colspan=3>Exploration</th></tr>"
 		for(name in pla)
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[pla[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
-	//VOREStation Edit End
 	if(civ.len > 0)
 		dat += "<tr><th colspan=3>Civilian</th></tr>"
 		for(name in civ)
@@ -288,7 +284,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 		list("cat" = "Medical", "elems" = med),
 		list("cat" = "Science", "elems" = sci),
 		list("cat" = "Cargo", "elems" = car),
-		list("cat" = "Exploration", "elems" = pla), // VOREStation Edit
+		list("cat" = "Exploration", "elems" = pla),
 		list("cat" = "Civilian", "elems" = civ),
 		list("cat" = "Silicon", "elems" = bot),
 		list("cat" = "Miscellaneous", "elems" = misc)
@@ -366,7 +362,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 		G.fields["p_stat"]		= "Active"
 		G.fields["m_stat"]		= "Stable"
 		G.fields["sex"]			= gender2text(H.gender)
-		G.fields["species"]		= H.get_species()
+		G.fields["species"]		= H.get_species_name()
 		G.fields["home_system"]	= H.home_system
 		G.fields["citizenship"]	= H.citizenship
 		G.fields["faction"]		= H.personal_faction
@@ -412,7 +408,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 		L.fields["b_dna"]		= H.dna.unique_enzymes
 		L.fields["enzymes"]		= H.dna.SE // Used in respawning
 		L.fields["identity"]	= H.dna.UI // "
-		L.fields["species"]		= H.get_species()
+		L.fields["species"]		= H.get_species_name()
 		L.fields["home_system"]	= H.home_system
 		L.fields["citizenship"]	= H.citizenship
 		L.fields["faction"]		= H.personal_faction
@@ -431,7 +427,7 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 /proc/generate_record_id()
 	return add_zero(num2hex(rand(1, 65535)), 4)	//no point generating higher numbers because of the limitations of num2hex
 
-/datum/datacore/proc/CreateGeneralRecord(var/mob/living/carbon/human/H, var/id, var/hidden)
+/datum/datacore/proc/CreateGeneralRecord(mob/living/carbon/human/H, id, hidden)
 	ResetPDAManifest()
 	var/icon/front
 	var/icon/side

@@ -54,11 +54,10 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 /obj/machinery/r_n_d/circuit_imprinter/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
-	RefreshParts()
 
 /obj/machinery/r_n_d/circuit_imprinter/process(delta_time)
 	..()
-	if(stat)
+	if(machine_stat)
 		update_appearance()
 		return
 	if(queue.len == 0)
@@ -98,10 +97,10 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 
 /obj/machinery/r_n_d/circuit_imprinter/update_icon_state()
 	. = ..()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		icon_state = "[base_icon_state]-off"
 	else if(busy)
-		icon_state = "[base_icon_state]-active"
+		icon_state = "[base_icon_state]-ani"
 	else
 		icon_state = base_icon_state
 
@@ -155,7 +154,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	if(!istype(O, /obj/item/stack/material)) //Previously checked for specific material sheets, for some reason? Made the check on 133 redundant.
 		to_chat(user, SPAN_NOTICE("You cannot insert this item into \the [src]."))
 		return 1
-	if(stat)
+	if(machine_stat)
 		return 1
 
 	if(TotalMaterials() + SHEET_MATERIAL_AMOUNT > max_material_storage)

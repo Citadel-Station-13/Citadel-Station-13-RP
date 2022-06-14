@@ -3,6 +3,11 @@
 	icon = 'icons/obj/items.dmi'
 	w_class = ITEMSIZE_NORMAL
 
+	/// flags relating to items - see [code/__DEFINES/_flags/item_flags.dm]
+	var/item_flags = NONE
+	/// Miscellaneous flags pertaining to equippable objects. - see [code/__DEFINES/_flags/item_flags.dm]
+	var/clothing_flags = NONE
+
 	/// This saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/image/blood_overlay = null
 	var/abstract = 0
@@ -56,9 +61,6 @@
 	var/body_parts_covered = 0
 
 	var/tool_behaviour = NONE
-
-	/// Miscellaneous flags pertaining to equippable objects.
-	var/item_flags = 0
 
 	/// 0 prevents all transfers, 1 is invisible
 	//var/heat_transfer_coefficient = 1
@@ -255,19 +257,40 @@
 /// See inventory_sizes.dm for the defines.
 /obj/item/examine(mob/user)
 	. = ..()
-	var/size
-	switch(src.w_class)
-		if(ITEMSIZE_TINY)
-			size = "tiny"
-		if(ITEMSIZE_SMALL)
-			size = "small"
-		if(ITEMSIZE_NORMAL)
-			size = "normal-sized"
-		if(ITEMSIZE_LARGE)
-			size = "bulky"
-		if(ITEMSIZE_HUGE)
-			size = "huge"
-	. += "It is a [size] item."
+	. += "[gender == PLURAL ? "They are" : "It is"] a [weightclass2text(w_class)] item."
+
+	// if(resistance_flags & INDESTRUCTIBLE)
+	// 	. += "[src] seems extremely robust! It'll probably withstand anything that could happen to it!"
+	// else
+	// 	if(resistance_flags & LAVA_PROOF)
+	// 		. += "[src] is made of an extremely heat-resistant material, it'd probably be able to withstand lava!"
+	// 	if(resistance_flags & (ACID_PROOF | UNACIDABLE))
+	// 		. += "[src] looks pretty robust! It'd probably be able to withstand acid!"
+	// 	if(resistance_flags & FREEZE_PROOF)
+	// 		. += "[src] is made of cold-resistant materials."
+	// 	if(resistance_flags & FIRE_PROOF)
+	// 		. += "[src] is made of fire-retardant materials."
+
+	// if(item_flags & (ITEM_CAN_BLOCK | ITEM_CAN_PARRY))
+	// 	var/datum/block_parry_data/data = return_block_parry_datum(block_parry_data)
+	// 	. += "[src] has the capacity to be used to block and/or parry. <a href='?src=[REF(data)];name=[name];block=[item_flags & ITEM_CAN_BLOCK];parry=[item_flags & ITEM_CAN_PARRY];render=1'>\[Show Stats\]</a>"
+
+/proc/weightclass2text(w_class)
+	switch(w_class)
+		if(WEIGHT_CLASS_TINY, ITEMSIZE_TINY)
+			. = "tiny"
+		if(WEIGHT_CLASS_SMALL, ITEMSIZE_SMALL)
+			. = "small"
+		if(WEIGHT_CLASS_NORMAL, ITEMSIZE_NORMAL)
+			. = "normal-sized"
+		if(WEIGHT_CLASS_BULKY, ITEMSIZE_LARGE)
+			. = "bulky"
+		if(WEIGHT_CLASS_HUGE, ITEMSIZE_HUGE)
+			. = "huge"
+		if(WEIGHT_CLASS_GIGANTIC)
+			. = "gigantic"
+		else
+			. = ""
 
 /obj/item/attack_hand(mob/living/user as mob)
 	if (!user) return
@@ -762,21 +785,21 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	return
 
 /// Worn icon generation for on-mob sprites
-/obj/item/proc/make_worn_icon(var/body_type,var/slot_name,var/inhands,var/default_icon,var/default_layer,var/icon/clip_mask = null)
+/obj/item/proc/make_worn_icon(var/body_type,var/slot_id,var/inhands,var/default_icon,var/default_layer,var/icon/clip_mask = null)
 	//Get the required information about the base icon
-	var/icon/icon2use = get_worn_icon_file(body_type = body_type, slot_name = slot_name, default_icon = default_icon, inhands = inhands)
-	var/state2use = get_worn_icon_state(slot_name = slot_name)
+	var/icon/icon2use = get_worn_icon_file(body_type = body_type, slot_id = slot_id, default_icon = default_icon, inhands = inhands)
+	var/state2use = get_worn_icon_state(slot_id = slot_id)
 	var/layer2use = get_worn_layer(default_layer = default_layer)
 
 	//Snowflakey inhand icons in a specific slot
 	if(inhands && icon2use == icon_override)
-		switch(slot_name)
+		switch(slot_id)
 			if(slot_r_hand_str)
 				state2use += "_r"
 			if(slot_l_hand_str)
 				state2use += "_l"
 
-	// testing("[src] (\ref[src]) - Slot: [slot_name], Inhands: [inhands], Worn Icon:[icon2use], Worn State:[state2use], Worn Layer:[layer2use]")
+	// testing("[src] (\ref[src]) - Slot: [slot_id], Inhands: [inhands], Worn Icon:[icon2use], Worn State:[state2use], Worn Layer:[layer2use]")
 
 	//Generate the base onmob icon
 	var/icon/standing_icon = icon(icon = icon2use, icon_state = state2use)
@@ -805,7 +828,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	return standing
 
 //Returns the icon object that should be used for the worn icon
-/obj/item/proc/get_worn_icon_file(var/body_type,var/slot_name,var/default_icon,var/inhands)
+/obj/item/proc/get_worn_icon_file(var/body_type,var/slot_id,var/default_icon,var/inhands)
 
 	//1: icon_override var
 	if(icon_override)
@@ -819,7 +842,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 	//3: slot-specific sprite sheets
 	if(LAZYLEN(item_icons))
-		var/sheet = item_icons[slot_name]
+		var/sheet = item_icons[slot_id]
 		if(sheet)
 			return sheet
 
@@ -835,11 +858,11 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	return
 
 //Returns the state that should be used for the worn icon
-/obj/item/proc/get_worn_icon_state(var/slot_name)
+/obj/item/proc/get_worn_icon_state(var/slot_id)
 
 	//1: slot-specific sprite sheets
 	if(LAZYLEN(item_state_slots))
-		var/state = item_state_slots[slot_name]
+		var/state = item_state_slots[slot_id]
 		if(state)
 			return state
 
@@ -851,8 +874,8 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	if(icon_state)
 		return icon_state
 
-//Returns the layer that should be used for the worn icon (as a FLOAT_LAYER layer, so negative)
-/obj/item/proc/get_worn_layer(var/default_layer = 0)
+/// Returns the layer that should be used for the worn icon (as a FLOAT_LAYER layer, so negative)
+/obj/item/proc/get_worn_layer(default_layer = 0)
 
 	//1: worn_layer variable
 	if(!isnull(worn_layer)) //Can be zero, so...

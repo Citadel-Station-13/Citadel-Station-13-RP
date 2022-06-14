@@ -3,7 +3,7 @@
 	desc = "A combination autopainter and flash anodizer designed to give electronic assemblies a colorful, wear-resistant finish."
 	icon = 'icons/obj/integrated_electronics/electronic_tools.dmi'
 	icon_state = "detailer"
-	item_flags = NOBLUDGEON
+	clothing_flags = NOBLUDGEON
 	w_class = ITEMSIZE_SMALL
 	var/detail_color = COLOR_ASSEMBLY_WHITE
 	var/list/color_list = list(
@@ -14,7 +14,7 @@
 		"orange" = COLOR_ASSEMBLY_ORANGE,
 		"beige" = COLOR_ASSEMBLY_BEIGE,
 		"brown" = COLOR_ASSEMBLY_BROWN,
-		MAT_GOLD = COLOR_ASSEMBLY_GOLD,
+		"gold" = COLOR_ASSEMBLY_GOLD,
 		"yellow" = COLOR_ASSEMBLY_YELLOW,
 		"gurkha" = COLOR_ASSEMBLY_GURKHA,
 		"light green" = COLOR_ASSEMBLY_LGREEN,

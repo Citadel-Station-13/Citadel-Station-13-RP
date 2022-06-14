@@ -2,8 +2,6 @@
 #error T_BOARD macro is not defined but we need it!
 #endif
 
-// VOREStation specific circuit boards!
-
 // Board for the parts lathe in partslathe.dm
 /obj/item/circuitboard/partslathe
 	name = T_BOARD("parts lathe")
@@ -18,7 +16,7 @@
 // Board for the algae oxygen generator in algae_generator.dm
 /obj/item/circuitboard/algae_farm
 	name = T_BOARD("algae oxygen generator")
-	build_path = /obj/machinery/atmospherics/binary/algae_farm
+	build_path = /obj/machinery/atmospherics/component/binary/algae_farm
 	board_type = new /datum/frame/frame_types/machine
 	origin_tech = list(TECH_ENGINEERING = 3, TECH_BIO = 2)
 	req_components = list(
@@ -30,7 +28,7 @@
 //Board for the High performance gas pump
 /obj/item/circuitboard/massive_gas_pump
 	name = T_BOARD("High performance gas pump")
-	build_path = /obj/machinery/atmospherics/binary/massive_gas_pump
+	build_path = /obj/machinery/atmospherics/component/binary/massive_gas_pump
 	board_type = new /datum/frame/frame_types/machine
 	origin_tech = list(TECH_ENGINEERING = 3, TECH_POWER = 2)
 	req_components = list(
@@ -40,7 +38,7 @@
 
 /obj/item/circuitboard/massive_heat_pump
 	name = T_BOARD("High performance heat pump")
-	build_path = /obj/machinery/atmospherics/binary/massive_heat_pump
+	build_path = /obj/machinery/atmospherics/component/binary/massive_heat_pump
 	board_type = new /datum/frame/frame_types/machine
 	origin_tech = list(TECH_ENGINEERING = 3, TECH_POWER = 2)
 	req_components = list(

@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(air)
 	init_order = INIT_ORDER_AIR
 	priority = FIRE_PRIORITY_AIR
 	wait = 2 SECONDS // seconds (We probably can speed this up actually)
-	flags = SS_BACKGROUND // TODO - Should this really be background? It might be important.
+	subsystem_flags = SS_BACKGROUND // TODO - Should this really be background? It might be important.
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	var/static/list/part_names = list("turfs", "edges", "fire zones", "hotspots", "zones")
 
@@ -46,14 +46,16 @@ SUBSYSTEM_DEF(air)
 		S.update_air_properties()
 		CHECK_TICK
 
-	admin_notice({"<span class='danger'>Geometry initialized in [round(0.1*(REALTIMEOFDAY-timeofday),0.1)] seconds.</span>
-<span class='info'>
-Total Simulated Turfs: [simulated_turf_count]
-Total Zones: [zones.len]
-Total Edges: [edges.len]
-Total Active Edges: [active_edges.len ? "<span class='danger'>[active_edges.len]</span>" : "None"]
-Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_count]
-</span>"}, R_DEBUG)
+	var/to_send = "<blockquote class ='info'>"
+	to_send += SPAN_DEBUG("<b>Geometry initialized in [round(0.1*(REALTIMEOFDAY-timeofday),0.1)] seconds.</b><hr>")
+	to_send += SPAN_DEBUGINFO("Total Simulated Turfs: [simulated_turf_count]")
+	to_send += SPAN_DEBUGINFO("\nTotal Zones: [zones.len]")
+	to_send += SPAN_DEBUGINFO("\nTotal Edges: [edges.len]")
+	to_send += SPAN_DEBUGINFO("\nTotal Active Edges: [active_edges.len ? SPAN_DANGER("[active_edges.len]") : "None"]")
+	to_send += SPAN_DEBUGINFO("\nTotal Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_count]")
+	to_send += SPAN_DEBUGINFO("</blockquote>")
+
+	admin_notice(to_send, R_DEBUG)
 
 	// Note - Baystation settles the air by running for one tick.  We prefer to not have active edges.
 	// Maps should not have active edges on boot.  If we've got some, log it so it can get fixed.
@@ -118,7 +120,7 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 		var/turf/T = currentrun[currentrun.len]
 		currentrun.len--
 		//check if the turf is self-zone-blocked
-		if(T.c_airblock(T) & ZONE_BLOCKED)
+		if(T.CheckAirBlock(T) == ATMOS_PASS_ZONE_BLOCKED)
 			selfblock_deferred += T
 			if(MC_TICK_CHECK)
 				return
@@ -126,8 +128,8 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 				continue
 		T.update_air_properties()
 		T.post_update_air_properties()
-		T.needs_air_update = 0
-		#ifdef ZASDBG
+		T.turf_flags &= ~TURF_ZONE_REBUILD_QUEUED
+		#ifdef ZAS_DEBUG_GRAPHICS
 		T.overlays -= mark
 		#endif
 		if(MC_TICK_CHECK)
@@ -143,8 +145,8 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 		selfblock_deferred.len--
 		T.update_air_properties()
 		T.post_update_air_properties()
-		T.needs_air_update = 0
-		#ifdef ZASDBG
+		T.turf_flags &= ~TURF_ZONE_REBUILD_QUEUED
+		#ifdef ZAS_DEBUG_GRAPHICS
 		T.overlays -= mark
 		#endif
 		if(MC_TICK_CHECK)
@@ -185,7 +187,7 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 		src.currentrun = active_hotspots.Copy()
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
-	var/dt = (flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
+	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
 	while(currentrun.len)
 		var/atom/movable/fire/fire = currentrun[currentrun.len]
 		currentrun.len--

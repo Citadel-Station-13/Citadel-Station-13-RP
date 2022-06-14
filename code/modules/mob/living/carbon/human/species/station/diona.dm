@@ -104,10 +104,6 @@
 	else
 		H.equip_to_slot_or_del(new /obj/item/flashlight/flare(H.back), slot_in_backpack)
 
-/datum/species/diona/handle_post_spawn(var/mob/living/carbon/human/H)
-	H.gender = NEUTER
-	return ..()
-
 /datum/species/diona/handle_death(var/mob/living/carbon/human/H)
 
 	var/mob/living/carbon/alien/diona/S = new(get_turf(H))
@@ -117,8 +113,7 @@
 
 	if(H.isSynthetic())
 		H.visible_message("<span class='danger'>\The [H] collapses into parts, revealing a solitary diona nymph at the core.</span>")
-
-		H.species = GLOB.all_species[SPECIES_HUMAN] // This is hard-set to default the body to a normal FBP, without changing anything.
+		H.set_species(get_static_species_meta(/datum/species/human), skip = TRUE, force = TRUE)
 
 		for(var/obj/item/organ/internal/diona/Org in H.internal_organs) // Remove Nymph organs.
 			qdel(Org)

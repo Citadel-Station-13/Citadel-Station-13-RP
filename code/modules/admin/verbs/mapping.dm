@@ -58,7 +58,7 @@ GLOBAL_LIST_BOILERPLATE(all_debugging_effects, /obj/effect/debugging)
 		qdel(C)
 
 	if(camera_range_display_status)
-		for(var/obj/machinery/camera/C in cameranet.cameras)
+		for(var/obj/machinery/camera/C in GLOB.cameranet.cameras)
 			new/obj/effect/debugging/camera_range(C.loc)
 	feedback_add_details("admin_verb","mCRD") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -86,7 +86,7 @@ GLOBAL_LIST_EMPTY(dirty_vars)
 
 	var/list/obj/machinery/camera/CL = list()
 
-	for(var/obj/machinery/camera/C in cameranet.cameras)
+	for(var/obj/machinery/camera/C in GLOB.cameranet.cameras)
 		CL += C
 
 	var/output = {"<B>CAMERA ANNOMALITIES REPORT</B><HR>
@@ -129,7 +129,7 @@ GLOBAL_LIST_EMPTY(dirty_vars)
 		qdel(M)
 
 	if(intercom_range_display_status)
-		for(var/obj/item/radio/intercom/I in machines)
+		for(var/obj/item/radio/intercom/I in GLOB.machines)
 			for(var/turf/T in orange(7,I))
 				var/obj/effect/debugging/marker/F = new/obj/effect/debugging/marker(T)
 				if (!(F in view(7,I.loc)))

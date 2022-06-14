@@ -1,6 +1,7 @@
 GLOBAL_LIST_EMPTY(apcs)
 
-#define CRITICAL_APC_EMP_PROTECTION 10 // EMP effect duration is divided by this number if the APC has "critical" flag
+/// EMP effect duration is divided by this number if the APC has "critical" flag
+#define CRITICAL_APC_EMP_PROTECTION 10
 //update_state
 #define UPDATE_CELL_IN 1
 #define UPDATE_OPENED1 2
@@ -28,19 +29,22 @@ GLOBAL_LIST_EMPTY(apcs)
 #define APC_UPOVERLAY_OPERATING 8192
 
 
-#define APC_UPDATE_ICON_COOLDOWN 100 // 10 seconds
-
+/// 10 seconds
+#define APC_UPDATE_ICON_COOLDOWN 100
 // the Area Power Controller (APC), formerly Power Distribution Unit (PDU)
 // one per area, needs wire conection to power network through a terminal
 
 // controls power to devices in that area
 // may be opened to change power cell
 // three different channels (lighting/equipment/environ) - may each be set to on, off, or auto
-#define POWERCHAN_OFF      0 // Power channel is off and will stay that way dammit
-#define POWERCHAN_OFF_AUTO 1 // Power channel is off until power rises above a threshold
-#define POWERCHAN_ON       2 // Power channel is on until there is no power
-#define POWERCHAN_ON_AUTO  3 // Power channel is on until power drops below a threshold
-
+/// Power channel is off and will stay that way dammit
+#define POWERCHAN_OFF      0
+/// Power channel is off until power rises above a threshold
+#define POWERCHAN_OFF_AUTO 1
+/// Power channel is on until there is no power
+#define POWERCHAN_ON       2
+/// Power channel is on until power drops below a threshold
+#define POWERCHAN_ON_AUTO  3
 #define NIGHTSHIFT_AUTO 1
 #define NIGHTSHIFT_NEVER 2
 #define NIGHTSHIFT_ALWAYS 3
@@ -65,10 +69,31 @@ GLOBAL_LIST_EMPTY(apcs)
 /obj/machinery/power/apc/alarms_hidden
 	alarms_hidden = TRUE
 
+/**
+ * APCs
+ *
+ * Power scale: Watts
+ * Power is up-converted to kilowatts for grid.
+ *
+ * TODO: rewrite apcs entirely, the code barely works and it's all awful
+ *
+ * dev notes for the next time i'm insane enough to refactor power for no reason:
+ * - dynamic power channels? probably not due to list overhead but maybe
+ * - apc with 2-5kJ capacitor, letting us have actual accumulation + cell-less apc support
+ * - config option for cell-less apc because i'm honestly evil
+ * - unfuck icon update syste
+ * - more wires, morre remote controls
+ * - wiremod?
+ * - WHY DOES IT HAVE SO MANY UNNECESSARY FLAGS JUST HAVE A SINGLE var/channels_enabled and var/channels_auto GOD
+ * - configurable shutoff intervals??
+ * - brownout support *drooling* (probably far in the future or impossible due to performance)
+ *
+ * ~silicons
+ */
 /obj/machinery/power/apc
 	name = "area power controller"
 	desc = "A control terminal for the area electrical systems."
-	icon = 'icons/obj/power_vr.dmi' //VOREStation Edit - New Icon
+	icon = 'icons/obj/power_vr.dmi'
 	icon_state = "apc0"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
@@ -129,8 +154,11 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/nightshift_setting = NIGHTSHIFT_AUTO
 	var/last_nightshift_switch = 0
 
+	/// tracks how behind we arre in charging TODO: literally rewrite apcs entirely to use a proper accumulator-cell system with an internal buffer, ffs
+	var/lazy_draw_accumulator = 0
+
 /obj/machinery/power/apc/updateDialog()
-	if (stat & (BROKEN|MAINT))
+	if (machine_stat & (BROKEN|MAINT))
 		return
 	..()
 
@@ -142,30 +170,24 @@ GLOBAL_LIST_EMPTY(apcs)
 	if(terminal)
 		terminal.connect_to_network()
 
-/obj/machinery/power/apc/drain_power(var/drain_check, var/surge, var/amount = 0)
+/obj/machinery/power/apc/drain_energy(datum/actor, amount, flags)
+	charging = FALSE
+	// makes sure fully draining apc cell won't break cell charging
 
-	if(drain_check)
-		return 1
+	var/drained = 0
 
-	//This makes sure fully draining an APC cell won't break the cell charging.
-	charging = 0
-
-	var/drained_energy = 0
-
-	//Draws power from the grid first, if available.
-	//This is like draining from a cable, so nins and
-	//twizs can do that without having to pry floortiles.
-	if(terminal && terminal.powernet)
+	if(terminal?.powernet)
 		terminal.powernet.trigger_warning()
-		drained_energy += terminal.powernet.draw_power(amount)
+		// no conversion - amount = kj, draw_power is in kw
+		drained += terminal.powernet.draw_power(amount)
 
 	//The grid rarely gives the full amount requested, or perhaps the grid
 	//isn't connected (wire cut), in either case we draw what we didn't get
 	//from the cell instead.
-	if((drained_energy < amount) && cell)
-		drained_energy += cell.drain_power(0, 0, (amount - drained_energy))
+	if((drained < amount) && cell)
+		drained += cell.drain_energy(actor, amount, flags)
 
-	return drained_energy
+	return drained
 
 /obj/machinery/power/apc/Initialize(mapload, ndir, building = FALSE)
 	. = ..()
@@ -187,7 +209,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		opened = 1
 		operating = 0
 		name = "[area.name] APC"
-		stat |= MAINT
+		machine_stat |= MAINT
 		src.update_icon()
 
 /obj/machinery/power/apc/Destroy()
@@ -266,7 +288,7 @@ GLOBAL_LIST_EMPTY(apcs)
 /obj/machinery/power/apc/examine(mob/user)
 	. = ..()
 	if(Adjacent(user))
-		if(stat & BROKEN)
+		if(machine_stat & BROKEN)
 			. += "This APC is broken."
 			return
 		if(opened)
@@ -361,7 +383,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	if(update & 2)
 		if(overlays.len)
 			overlays.len = 0
-		if(!(stat & (BROKEN|MAINT)) && update_state & UPDATE_ALLGOOD)
+		if(!(machine_stat & (BROKEN|MAINT)) && update_state & UPDATE_ALLGOOD)
 			overlays += status_overlays_lock[locked+1]
 			overlays += status_overlays_charging[charging+1]
 			if(operating)
@@ -372,7 +394,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	if(update & 3)
 		if(update_state & UPDATE_BLUESCREEN)
 			set_light(l_range = 2, l_power = 0.25, l_color = "#0000FF")
-		else if(!(stat & (BROKEN|MAINT)) && update_state & UPDATE_ALLGOOD)
+		else if(!(machine_stat & (BROKEN|MAINT)) && update_state & UPDATE_ALLGOOD)
 			var/color
 			switch(charging)
 				if(0)
@@ -394,9 +416,9 @@ GLOBAL_LIST_EMPTY(apcs)
 
 	if(cell)
 		update_state |= UPDATE_CELL_IN
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		update_state |= UPDATE_BROKE
-	if(stat & MAINT)
+	if(machine_stat & MAINT)
 		update_state |= UPDATE_MAINT
 	if(opened)
 		if(opened==1)
@@ -482,7 +504,7 @@ GLOBAL_LIST_EMPTY(apcs)
 			if(do_after(user, 50 * W.toolspeed))
 				if (has_electronics==1)
 					has_electronics = 0
-					if ((stat & BROKEN))
+					if ((machine_stat & BROKEN))
 						user.visible_message(\
 							"<span class='warning'>[user.name] has broken the charred power control board inside [src.name]!</span>",\
 							"<span class='notice'>You broke the charred power control board and remove the remains.</span>",
@@ -496,8 +518,8 @@ GLOBAL_LIST_EMPTY(apcs)
 		else if (opened!=2) //cover isn't removed
 			opened = 0
 			update_icon()
-	else if (W.is_crowbar() && !(stat & BROKEN) )
-		if(coverlocked && !(stat & MAINT))
+	else if (W.is_crowbar() && !(machine_stat & BROKEN) )
+		if(coverlocked && !(machine_stat & MAINT))
 			to_chat(user,"<span class='warning'>The cover is locked and cannot be opened.</span>")
 			return
 		else
@@ -507,7 +529,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		if(cell)
 			to_chat(user,"The [src.name] already has a power cell installed.")
 			return
-		if (stat & MAINT)
+		if (machine_stat & MAINT)
 			to_chat(user,"<span class='warning'>You need to install the wiring and electronics first.</span>")
 			return
 		if(W.w_class != ITEMSIZE_NORMAL)
@@ -530,12 +552,12 @@ GLOBAL_LIST_EMPTY(apcs)
 			else
 				if (has_electronics==1 && terminal)
 					has_electronics = 2
-					stat &= ~MAINT
+					machine_stat &= ~MAINT
 					playsound(src.loc, W.usesound, 50, 1)
 					to_chat(user,"You screw the circuit electronics into place.")
 				else if (has_electronics==2)
 					has_electronics = 1
-					stat |= MAINT
+					machine_stat |= MAINT
 					playsound(src.loc, W.usesound, 50, 1)
 					to_chat(user,"You unfasten the electronics.")
 				else /* has_electronics==0 */
@@ -555,7 +577,7 @@ GLOBAL_LIST_EMPTY(apcs)
 			to_chat(user,"You must close the cover to swipe an ID card.")
 		else if(wiresexposed)
 			to_chat(user,"You must close the wire panel.")
-		else if(stat & (BROKEN|MAINT))
+		else if(machine_stat & (BROKEN|MAINT))
 			to_chat(user,"Nothing happens.")
 		else if(hacker)
 			to_chat(user,"<span class='warning'>Access denied.</span>")
@@ -612,7 +634,7 @@ GLOBAL_LIST_EMPTY(apcs)
 				new /obj/item/stack/cable_coil(loc,10)
 				to_chat(user,"<span class='notice'>You cut the cables and dismantle the power terminal.</span>")
 				qdel(terminal)
-	else if (istype(W, /obj/item/module/power_control) && opened && has_electronics==0 && !((stat & BROKEN)))
+	else if (istype(W, /obj/item/module/power_control) && opened && has_electronics==0 && !((machine_stat & BROKEN)))
 		user.visible_message("<span class='warning'>[user.name] inserts the power control board into [src].</span>", \
 							"You start to insert the power control board into the frame...")
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
@@ -622,7 +644,7 @@ GLOBAL_LIST_EMPTY(apcs)
 				reboot()
 				to_chat(user,"<span class='notice'>You place the power control board inside the frame.</span>")
 				qdel(W)
-	else if (istype(W, /obj/item/module/power_control) && opened && has_electronics==0 && ((stat & BROKEN)))
+	else if (istype(W, /obj/item/module/power_control) && opened && has_electronics==0 && ((machine_stat & BROKEN)))
 		to_chat(user,"<span class='warning'>The [src] is too broken for that. Repair it first.</span>")
 		return
 	else if (istype(W, /obj/item/weldingtool) && opened && has_electronics==0 && !terminal)
@@ -636,7 +658,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		playsound(src, WT.usesound, 25, 1)
 		if(do_after(user, 50 * WT.toolspeed))
 			if(!src || !WT.remove_fuel(3, user)) return
-			if (emagged || (stat & BROKEN) || opened==2)
+			if (emagged || (machine_stat & BROKEN) || opened==2)
 				new /obj/item/stack/material/steel(loc)
 				user.visible_message(\
 					"<span class='warning'>[src] has been cut apart by [user.name] with the [WT.name].</span>",\
@@ -650,8 +672,8 @@ GLOBAL_LIST_EMPTY(apcs)
 					"You hear welding.")
 			qdel(src)
 			return
-	else if (opened && ((stat & BROKEN) || hacker || emagged))
-		if (istype(W, /obj/item/frame/apc) && (stat & BROKEN))
+	else if (opened && ((machine_stat & BROKEN) || hacker || emagged))
+		if (istype(W, /obj/item/frame/apc) && (machine_stat & BROKEN))
 			if(cell)
 				to_chat(user, "<span class='warning'>You need to remove the power cell first.</span>")
 				return
@@ -661,7 +683,7 @@ GLOBAL_LIST_EMPTY(apcs)
 				user.visible_message("<span class='notice'>[user.name] has replaced the damaged APC cover with a new one.</span>",\
 					"You replace the damaged APC cover with a new one.")
 				qdel(W)
-				stat &= ~BROKEN
+				machine_stat &= ~BROKEN
 				reboot()
 				if (opened==2)
 					opened = 1
@@ -678,7 +700,7 @@ GLOBAL_LIST_EMPTY(apcs)
 				playsound(src.loc, 'sound/machines/chime.ogg', 25, 1)
 				reboot()
 	else
-		if ((stat & BROKEN) \
+		if ((machine_stat & BROKEN) \
 				&& !opened \
 				&& W.force >= 5 \
 				&& W.w_class >= ITEMSIZE_SMALL )
@@ -717,7 +739,7 @@ GLOBAL_LIST_EMPTY(apcs)
 			to_chat(user,"You must close the cover to do that.")
 		else if(wiresexposed)
 			to_chat(user,"You must close the wire panel first.")
-		else if(stat & (BROKEN|MAINT))
+		else if(machine_stat & (BROKEN|MAINT))
 			to_chat(user,"The [src] isn't working.")
 		else
 			flick("apc-spark", src)
@@ -777,7 +799,7 @@ GLOBAL_LIST_EMPTY(apcs)
 			charging = 0
 			src.update_icon()
 		return
-	if(stat & (BROKEN|MAINT))
+	if(machine_stat & (BROKEN|MAINT))
 		return
 	// do APC interaction
 	src.interact(user)
@@ -880,7 +902,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	switch(action)
 		if("lock")
 			if(locked_exception) // Yay code reuse
-				if(emagged || (stat & (BROKEN|MAINT)))
+				if(emagged || (machine_stat & (BROKEN|MAINT)))
 					to_chat(usr, "The APC does not respond to the command.")
 					return
 				locked = !locked
@@ -1020,16 +1042,9 @@ GLOBAL_LIST_EMPTY(apcs)
 	else
 		return 0
 
-/obj/machinery/power/apc/proc/last_surplus()
-	if(terminal && terminal.powernet)
-		return terminal.powernet.last_surplus()
-	else
-		return 0
-
 //Returns 1 if the APC should attempt to charge
 /obj/machinery/power/apc/proc/attempt_charging()
 	return (chargemode && charging == 1 && operating)
-
 
 /obj/machinery/power/apc/draw_power(var/amount)
 	if(terminal && terminal.powernet)
@@ -1044,7 +1059,7 @@ GLOBAL_LIST_EMPTY(apcs)
 
 /obj/machinery/power/apc/process(delta_time)
 
-	if(stat & (BROKEN|MAINT))
+	if(machine_stat & (BROKEN|MAINT))
 		return
 	if(!area.requires_power)
 		return
@@ -1082,27 +1097,29 @@ GLOBAL_LIST_EMPTY(apcs)
 
 	if(cell && !shorted && !grid_check)
 		// draw power from cell as before to power the area
-		var/cellused = min(cell.charge, CELLRATE * lastused_total)	// clamp deduction to a max, amount left in cell
+		var/cellused = min(cell.charge, DYNAMIC_W_TO_CELL_UNITS(lastused_total, 1))	// clamp deduction to a max, amount left in cell
 		cell.use(cellused)
+		// TODO: the rest of this code is war crime territory
+		// TODO: rewrite APCs. entirely.
+		// if we're empty just kill it all
+		if(cell.percent() < 1)
+			// This turns everything off in the case that there is still a charge left on the battery, just not enough to run the room.
+			equipment = autoset(equipment, 0)
+			lighting = autoset(lighting, 0)
+			environ = autoset(environ, 0)
+			autoflag = 0
 
-		if(excess > lastused_total)		// if power excess recharge the cell
-										// by the same amount just used
-			var/draw = draw_power(cellused/CELLRATE) // draw the power needed to charge this cell
-			cell.give(draw * CELLRATE)
-		else		// no excess, and not enough per-apc
-			if( (cell.charge/CELLRATE + excess) >= lastused_total)		// can we draw enough from cell+grid to cover last usage?
-				var/draw = draw_power(excess)
-				cell.charge = min(cell.maxcharge, cell.charge + CELLRATE * draw)	//recharge with what we can
-				charging = 0
-			else	// not enough power available to run the last tick!
-				charging = 0
-				chargecount = 0
-				// This turns everything off in the case that there is still a charge left on the battery, just not enough to run the room.
-				equipment = autoset(equipment, 0)
-				lighting = autoset(lighting, 0)
-				environ = autoset(environ, 0)
-				autoflag = 0
-
+		// we're lazy and i'm not writing a real accumulator, and we need to recharge in units of 1 due to floating point bullshit
+		// hence..
+		// we recharge at most lastused kw rounded down
+		var/kw = round(lastused_total * 0.001)
+		lazy_draw_accumulator += lastused_total - kw * 1000
+		if(lazy_draw_accumulator > 1000)
+			kw += round(lazy_draw_accumulator * 0.001)
+			lazy_draw_accumulator = lazy_draw_accumulator % 1000
+		if(excess > kw)
+			var/draw = draw_power(kw)
+			cell.give(DYNAMIC_KW_TO_CELL_UNITS(draw, 1))
 
 		// Set channels depending on how much charge we have left
 		update_channels()
@@ -1112,29 +1129,31 @@ GLOBAL_LIST_EMPTY(apcs)
 		if(src.attempt_charging())
 			if(excess > 0)		// check to make sure we have enough to charge
 				// Max charge is capped to % per second constant
-				var/ch = min(excess*CELLRATE, cell.maxcharge*chargelevel)
-
-				ch = draw_power(ch/CELLRATE) // Removes the power we're taking from the grid
-				cell.give(ch*CELLRATE) // actually recharge the cell
-				lastused_charging = ch
-				lastused_total += ch // Sensors need this to stop reporting APC charging as "Other" load
+				var/ch = min(DYNAMIC_KW_TO_CELL_UNITS(excess, 1), cell.maxcharge * chargelevel, cell.maxcharge - cell.charge)
+				var/charged = draw_power(DYNAMIC_CELL_UNITS_TO_KW(ch, 1)) // Removes the power we're taking from the grid
+				cell.give(DYNAMIC_KW_TO_CELL_UNITS(charged, 1)) // actually recharge the cell
+				lastused_charging = charged * 1000
+				lastused_total += lastused_charging // Sensors need this to stop reporting APC charging as "Other" load
 			else
 				charging = 0		// stop charging
 				chargecount = 0
 
 		// show cell as fully charged if so
-		if(cell.charge >= cell.maxcharge)
-			cell.charge = cell.maxcharge
+		if(cell.percent() >= 99)	// TODO: apc refactor - this is the only way for now, otherrwise we'll never stop charging as we don't ever charge to full entirely
 			charging = 2
+		else if(charging == 2)		// if charging is supposedly fully charged but we're not actually fully charged, shunt back to charging
+			charging = 1
 
 		if(chargemode)
 			if(!charging)
-				if(excess > cell.maxcharge*chargelevel)
+				var/charge_tick = cell.maxcharge * chargelevel
+				charge_tick = DYNAMIC_CELL_UNITS_TO_KW(charge_tick, 1)
+				if(excess > charge_tick)
 					chargecount++
 				else
 					chargecount = 0
 
-				if(chargecount >= 10)
+				if(chargecount >= 5)
 
 					chargecount = 0
 					charging = 1
@@ -1269,7 +1288,7 @@ obj/machinery/power/apc/proc/autoset(var/cur_state, var/on)
 	// Aesthetically much better!
 	spawn(rand(2,5))
 		src.visible_message("<span class='warning'>[src]'s screen flickers suddenly, then explodes in a rain of sparks and small debris!</span>")
-		stat |= BROKEN
+		machine_stat |= BROKEN
 		operating = 0
 		update_icon()
 		update()

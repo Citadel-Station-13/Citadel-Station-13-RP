@@ -33,15 +33,24 @@ $servers = array();
 $enable_live_tracking = true;
 $path_to_script = 'tools/WebhookProcessor/github_webhook_processor.php';
 $tracked_branch = "master";
-$trackPRBalance = true;
-$prBalanceJson = '';
-$startingPRBalance = 30;
 $maintainer_team_id = 133041;
 $validation = "org";
 $validation_count = 1;
 $tracked_branch = 'master';
 $require_changelogs = false;
 $discordWebHooks = array();
+
+// Only these repositories will announce in game.
+// Any repository that players actually care about.
+$game_announce_whitelist = array(
+	"tgstation",
+	"TerraGov-Marine-Corps",
+);
+
+// Any repository that matches in this blacklist will not appear on Discord.
+$discord_announce_blacklist = array(
+	"/^event-.*$/",
+);
 
 require_once 'secret.php';
 
@@ -235,7 +244,6 @@ function tag_pr($payload, $opened) {
 
 		if(strpos(strtolower($title), 'refactor') !== FALSE)
 			$tags[] = 'Refactor';
-
 		if(strpos(strtolower($title), 'revert') !== FALSE)
 			$tags[] = 'Revert';
 		if(strpos(strtolower($title), 'removes') !== FALSE)
@@ -262,6 +270,7 @@ function tag_pr($payload, $opened) {
 			$tags[] = $tag;
 
 	check_tag_and_replace($payload, '[dnm]', 'Do Not Merge', $tags);
+	check_tag_and_replace($payload, '[no gbp]', 'GBP: No Update', $tags);
 
 	return array($tags, $remove);
 }
@@ -313,8 +322,21 @@ function check_dismiss_changelog_review($payload){
 				dismiss_review($payload, $R['id'], 'Changelog added/fixed.');
 }
 
+function is_blacklisted($blacklist, $name) {
+	foreach ($blacklist as $pattern) {
+		if (preg_match($pattern, $name)) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
 function handle_pr($payload) {
+	global $discord_announce_blacklist;
 	global $no_changelog;
+	global $game_announce_whitelist;
+
 	$action = 'opened';
 	$validated = validate_user($payload);
 	switch ($payload["action"]) {
@@ -323,14 +345,6 @@ function handle_pr($payload) {
 			set_labels($payload, $labels, $remove);
 			if($no_changelog)
 				check_dismiss_changelog_review($payload);
-			/*
-			if(get_pr_code_friendliness($payload) <= 0){
-				$balances = pr_balances();
-				$author = $payload['pull_request']['user']['login'];
-				if(isset($balances[$author]) && $balances[$author] < 0 && !is_maintainer($payload, $author))
-					create_comment($payload, 'You currently have a negative Fix/Feature pull request delta of ' . $balances[$author] . '. Maintainers may close this PR at will. Fixing issues or improving the codebase will improve this score.');
-			}
-			*/
 			break;
 		case 'edited':
 			check_dismiss_changelog_review($payload);
@@ -349,7 +363,6 @@ function handle_pr($payload) {
 				$action = 'merged';
 				auto_update($payload);
 				checkchangelog($payload, true);
-				update_pr_balance($payload);
 				$validated = TRUE; //pr merged events always get announced.
 			}
 			break;
@@ -364,9 +377,16 @@ function handle_pr($payload) {
 	if (!$validated) {
 		$pr_flags |= F_UNVALIDATED_USER;
 	}
-	discord_announce($action, $payload, $pr_flags);
-	game_announce($action, $payload, $pr_flags);
 
+	$repo_name = $payload['repository']['name'];
+
+	if (in_array($repo_name, $game_announce_whitelist)) {
+		game_announce($action, $payload, $pr_flags);
+	}
+
+	if (!is_blacklisted($discord_announce_blacklist, $repo_name)) {
+		discord_announce($action, $payload, $pr_flags);
+	}
 }
 
 function filter_announce_targets($targets, $owner, $repo, $action, $pr_flags) {
@@ -548,66 +568,6 @@ function get_pr_labels_array($payload){
 	return $result;
 }
 
-//helper for getting the path the the balance json file
-function pr_balance_json_path(){
-	global $prBalanceJson;
-	return $prBalanceJson != '' ? $prBalanceJson : 'pr_balances.json';
-}
-
-//return the assoc array of login -> balance for prs
-function pr_balances(){
-	$path = pr_balance_json_path();
-	if(file_exists($path))
-		return json_decode(file_get_contents($path), true);
-	else
-		return array();
-}
-
-//returns the difference in PR balance a pull request would cause
-function get_pr_code_friendliness($payload, $oldbalance = null){
-	global $startingPRBalance;
-	if($oldbalance == null)
-		$oldbalance = $startingPRBalance;
-	$labels = get_pr_labels_array($payload);
-	//anything not in this list defaults to 0
-	$label_values = array(
-		'Fix' => 3,
-		'Refactor' => 10,
-		'Code Improvement' => 2,
-		'Grammar and Formatting' => 1,
-		'Quality of Life' => 1,
-		'Priority: High' => 15,
-		'Priority: CRITICAL' => 20,
-		'Unit Tests' => 6,
-		'Logging' => 1,
-		'Feedback' => 2,
-		'Performance' => 12,
-		'Atomic' => 2,
-		'Feature' => -10,
-		'Balance/Rebalance' => -8,
-		'Sound' => 1,
-		'Sprites' => 1,
-		'GBP: Reset' => $startingPRBalance - $oldbalance,
-	);
-
-	$maxNegative = 0;
-	$maxPositive = 0;
-	foreach($labels as $l){
-		if($l == 'GBP: No Update') {	//no effect on balance
-			return 0;
-		}
-		else if(isset($label_values[$l])) {
-			$friendliness = $label_values[$l];
-			if($friendliness > 0)
-				$maxPositive = max($friendliness, $maxPositive);
-			else
-				$maxNegative = min($friendliness, $maxNegative);
-		}
-	}
-
-	return $maxNegative + $maxPositive;
-}
-
 function is_maintainer($payload, $author){
 	global $maintainer_team_id;
 	$repo_is_org = $payload['pull_request']['base']['repo']['owner']['type'] == 'Organization';
@@ -622,29 +582,6 @@ function is_maintainer($payload, $author){
 		$result = json_decode(github_apisend($check_url), true);
 		return isset($result['state']) && $result['state'] == 'active';
 	}
-}
-
-//payload is a merged pull request, updates the pr balances file with the correct positive or negative balance based on comments
-function update_pr_balance($payload) {
-	global $startingPRBalance;
-	global $trackPRBalance;
-	if(!$trackPRBalance)
-		return;
-	$author = $payload['pull_request']['user']['login'];
-	$balances = pr_balances();
-	if(!isset($balances[$author]))
-		$balances[$author] = $startingPRBalance;
-	$friendliness = get_pr_code_friendliness($payload, $balances[$author]);
-	$balances[$author] += $friendliness;
-	if(!is_maintainer($payload, $author)){	//immune
-		if($balances[$author] < 0 && $friendliness < 0)
-			create_comment($payload, 'Your Fix/Feature pull request delta is currently below zero (' . $balances[$author] . '). Maintainers may close future Feature/Tweak/Balance PRs. Fixing issues or helping to improve the codebase will raise this score.');
-		else if($balances[$author] >= 0 && ($balances[$author] - $friendliness) < 0)
-			create_comment($payload, 'Your Fix/Feature pull request delta is now above zero (' . $balances[$author] . '). Feel free to make Feature/Tweak/Balance PRs.');
-	}
-	$balances_file = fopen(pr_balance_json_path(), 'w');
-	fwrite($balances_file, json_encode($balances));
-	fclose($balances_file);
 }
 
 $github_diff = null;
@@ -792,7 +729,7 @@ function checkchangelog($payload, $compile = true) {
 			case 'add':
 			case 'adds':
 			case 'rscadd':
-				if($item != 'Added new things' && $item != 'Added more things') {
+				if($item != 'Added new mechanics or gameplay changes' && $item != 'Added more things') {
 					$tags[] = 'Feature';
 					$currentchangelogblock[] = array('type' => 'rscadd', 'body' => $item);
 				}
@@ -831,9 +768,6 @@ function checkchangelog($payload, $compile = true) {
 					$tags[] = 'Balance/Rebalance';
 					$currentchangelogblock[] = array('type' => 'balance', 'body' => $item);
 				}
-				break;
-			case 'tgs':
-				$currentchangelogblock[] = array('type' => 'tgs', 'body' => $item);
 				break;
 			case 'code_imp':
 			case 'code':

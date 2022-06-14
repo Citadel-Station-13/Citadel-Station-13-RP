@@ -10,7 +10,7 @@
 // Exterior access button: (obj/machinery/access_button/airlock_exterior),  master_tag = "[base]"
 // Interior access button: (obj/machinery/access_button/airlock_interior),  master_tag = "[base]"
 // Srubbers: (obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary), frequency = "1379", scrub_id = "[base]_scrubber"
-// Pumps: (obj/machinery/atmospherics/unary/vent_pump/high_volume), frequency = 1379 id_tag = "[base]_pump"
+// Pumps: (obj/machinery/atmospherics/component/unary/vent_pump/high_volume), frequency = 1379 id_tag = "[base]_pump"
 //
 
 obj/machinery/airlock_sensor/phoron
@@ -50,7 +50,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 	var/frequency = 0
 	var/datum/radio_frequency/radio_connection
 
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/Initialize()
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/Initialize(mapload)
 	. = ..()
 	if(frequency)
 		set_frequency(frequency)
@@ -119,7 +119,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 /obj/machinery/embedded_controller/radio/airlock/phoron
 	var/tag_scrubber
 
-/obj/machinery/embedded_controller/radio/airlock/phoron/Initialize()
+/obj/machinery/embedded_controller/radio/airlock/phoron/Initialize(mapload)
 	. = ..()
 	program = new/datum/computer/file/embedded_program/airlock/phoron(src)
 

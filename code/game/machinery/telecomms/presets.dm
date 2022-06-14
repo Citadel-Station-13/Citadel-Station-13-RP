@@ -41,14 +41,14 @@
 	network = "tcommsat"
 	autolinkers = list("hub", "relay", "c_relay", "s_relay", "m_relay", "r_relay", "science", "medical",
 	"supply", "service", "common", "command", "engineering", "security", "unused", "hb_relay",
-	"receiverA", "broadcasterA") //VOREStation Edit - Added "hb_relay"
+	"receiverA", "broadcasterA")
 
 /obj/machinery/telecomms/hub/preset_cent
 	id = "CentCom Hub"
 	network = "tcommsat"
 	produces_heat = 0
 	autolinkers = list("hub_cent", "c_relay", "s_relay", "m_relay", "r_relay", "hb_relay",
-	 "centcom", "receiverCent", "broadcasterCent") //VOREStation Edit - Added "hb_relay"
+	 "centcom", "receiverCent", "broadcasterCent")
 
 //Receivers
 
@@ -86,7 +86,7 @@
 	freq_listening = list(SUP_FREQ, SRV_FREQ)
 	autolinkers = list("processor2", "supply", "service", "unused")
 
-/obj/machinery/telecomms/bus/preset_two/Initialize()
+/obj/machinery/telecomms/bus/preset_two/Initialize(mapload)
 	for(var/i = PUBLIC_LOW_FREQ, i < PUBLIC_HIGH_FREQ, i += 2)
 		if(i == PUB_FREQ)
 			continue
@@ -177,7 +177,7 @@
 	freq_listening = list()
 	autolinkers = list("unused")
 
-/obj/machinery/telecomms/server/presets/unused/Initialize()
+/obj/machinery/telecomms/server/presets/unused/Initialize(mapload)
 	for(var/i = PUBLIC_LOW_FREQ, i < PUBLIC_HIGH_FREQ, i += 2)
 		if(i == AI_FREQ || i == PUB_FREQ)
 			continue

@@ -249,7 +249,7 @@
 		wall_fake = 1
 
 	var/turf/Tsrc = get_turf(src)
-	Tsrc.ChangeTurf(/turf/simulated/wall)
+	Tsrc.PlaceOnTop(/turf/simulated/wall)
 	var/turf/simulated/wall/T = get_turf(src)
 	T.set_material(M, reinf_material, girder_material)
 	if(wall_fake)
@@ -291,6 +291,11 @@
 /obj/structure/girder/proc/dismantle()
 	girder_material.place_dismantled_product(get_turf(src), 2)
 	qdel(src)
+
+/obj/structure/girder/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
+	. = !density
+	if(istype(caller))
+		. = . || (caller.pass_flags & PASSGRILLE)
 
 /obj/structure/girder/attack_hand(mob/user as mob)
 	if (HULK in user.mutations)
@@ -397,7 +402,7 @@
 		if(RCD_FLOORWALL)
 			to_chat(user, SPAN_NOTICE("You finish a wall."))
 			// This is mostly the same as using on a floor. The girder's material is preserved, however.
-			T.ChangeTurf(/turf/simulated/wall)
+			T.PlaceOnTop(/turf/simulated/wall)
 			var/turf/simulated/wall/new_T = get_turf(src) // Ref to the wall we just built.
 			// Apparently set_material(...) for walls requires refs to the material singletons and not strings.
 			// This is different from how other material objects with their own set_material(...) do it, but whatever.

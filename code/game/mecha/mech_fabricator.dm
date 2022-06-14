@@ -100,13 +100,12 @@
 		materials[Name] = 0
 
 	default_apply_parts()
-	RefreshParts()
 	files = new /datum/research(src) //Setup the research data holder.
 
 
 /obj/machinery/mecha_part_fabricator/update_icon_state()
 	. = ..()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		icon_state = "[base_icon_state]-off"
 	else
 		icon_state = base_icon_state

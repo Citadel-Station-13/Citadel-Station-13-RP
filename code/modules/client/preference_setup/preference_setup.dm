@@ -7,12 +7,6 @@
 	sort_order = 1
 	category_item_type = /datum/category_item/player_setup_item/general
 
-/*
-/datum/category_group/player_setup_category/skill_preferences
-name = "Skills"
-sort_order = 2
-category_item_type = /datum/category_item/player_setup_item/skills
-*/
 /datum/category_group/player_setup_category/appearance_preferences
 	name = "Antagonism"
 	sort_order = 4
@@ -22,12 +16,7 @@ category_item_type = /datum/category_item/player_setup_item/skills
 	name = "Loadout"
 	sort_order = 5
 	category_item_type = /datum/category_item/player_setup_item/loadout
-/* //VOREStation Removal
-/datum/category_group/player_setup_category/trait_preferences
-	name = "Traits"
-	sort_order = 6
-	category_item_type = /datum/category_item/player_setup_item/traits
-*/ //VOREStation Removal End
+
 /datum/category_group/player_setup_category/global_preferences
 	name = "Global"
 	sort_order = 6
@@ -272,7 +261,7 @@ category_item_type = /datum/category_item/player_setup_item/skills
 	return 0 //Something went wrong!
 
 /datum/category_item/player_setup_item/proc/get_min_age() //Minimum limit is 18
-	var/datum/species/S = GLOB.all_species[pref.species ? pref.species : SPECIES_HUMAN]
+	var/datum/species/S = pref.character_static_species_meta()
 	if(S.min_age > 18)
 		return S.min_age
 	else if(!is_FBP())
@@ -280,7 +269,7 @@ category_item_type = /datum/category_item/player_setup_item/skills
 	return S.min_age
 
 /datum/category_item/player_setup_item/proc/get_max_age()
-	var/datum/species/S = GLOB.all_species[pref.species ? pref.species : SPECIES_HUMAN]
+	var/datum/species/S = pref.character_static_species_meta()
 	if(!is_FBP())
 		return S.max_age // If they're not a robot, we can just use the species var.
 	var/FBP_type = get_FBP_type()

@@ -10,7 +10,6 @@
 	circuit = /obj/item/circuitboard/mining_equipment_vendor
 	var/icon_deny = "mining-deny"
 	var/obj/item/card/id/inserted_id
-	//VOREStation Edit Start - Heavily modified list
 	var/child = FALSE//To tell topic() to bypass this iteration of it
 	var/list/prize_list = list(
 		new /datum/data/mining_equipment("1 Marker Beacon",				/obj/item/stack/marker_beacon,										10),
@@ -91,7 +90,6 @@
 		new /datum/data/mining_equipment("Durasteel Fishing Rod",		/obj/item/material/fishing_rod/modern/strong,				7500),
 		new /datum/data/mining_equipment("Bar Shelter Capsule",		/obj/item/survivalcapsule/luxurybar,							10000)
 		)
-	//VOREStation Edit End
 
 /datum/data/mining_equipment
 	var/equipment_name = "generic"
@@ -108,9 +106,9 @@
 	default_apply_parts()
 
 /obj/machinery/mineral/equipment_vendor/power_change()
-	var/old_stat = stat
+	var/old_stat = machine_stat
 	..()
-	if(old_stat != stat)
+	if(old_stat != machine_stat)
 		update_icon()
 	if(inserted_id && !powered())
 		visible_message("<span class='notice'>The ID slot indicator light flickers on \the [src] as it spits out a card before powering down.</span>")
@@ -228,20 +226,12 @@
 	var/selection = input(redeemer, "Pick your equipment", "Mining Voucher Redemption") as null|anything in list("Kinetic Accelerator", "Resonator", "Mining Drone", "Advanced Scanner", "Crusher")
 	if(!selection || !Adjacent(redeemer) || voucher.loc != redeemer)
 		return
-	//VOREStation Edit Start - Uncommented these
 	var/drop_location = drop_location()
 	switch(selection)
 		if("Kinetic Accelerator")
 			new /obj/item/gun/energy/kinetic_accelerator(drop_location)
 		if("Resonator")
 			new /obj/item/resonator(drop_location)
-	//VOREStation Edit End
-		// if("Mining Drone")
-		// 	new /obj/item/storage/box/drone_kit(drop_location)
-		// if("Advanced Scanner")
-		// 	new /obj/item/t_scanner/adv_mining_scanner(drop_location)
-		// if("Crusher")
-		// 	new /obj/item/twohanded/required/mining_hammer(drop_location)
 	qdel(voucher)
 
 /obj/machinery/mineral/equipment_vendor/proc/new_prize(var/name, var/path, var/cost) // Generic proc for adding new entries. Good for abusing for FUN and PROFIT.

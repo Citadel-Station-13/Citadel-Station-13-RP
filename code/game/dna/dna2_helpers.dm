@@ -173,8 +173,6 @@
 		if((0 < beard) && (beard <= facial_hair_styles_list.len))
 			H.f_style = facial_hair_styles_list[beard]
 
-		// VORE StationEdit Start
-
 		// Ears
 		var/ears = dna.GetUIValueRange(DNA_UI_EAR_STYLE, ear_styles_list.len + 1) - 1
 		if(ears <= 1)
@@ -240,39 +238,24 @@
 		H.custom_ask = dna.custom_ask
 		H.custom_whisper = dna.custom_whisper
 		H.custom_exclaim = dna.custom_exclaim
-		if(istype(H.species,/datum/species/custom))
-			var/datum/species/custom/CS = H.species
-			var/datum/species/custom/new_CS = CS.produceCopy(dna.base_species,dna.species_traits,src)
-			new_CS.blood_color = dna.blood_color
+		H.species.blood_color = dna.blood_color
+		var/datum/species/S = H.species
+		S.copy_from(dna.base_species, dna.species_traits, H)
 
-		if(istype(H.species,/datum/species/shapeshifter/xenochimera))
-			var/datum/species/shapeshifter/xenochimera/CS = H.species
-			var/datum/species/shapeshifter/xenochimera/new_CS = CS.produceCopy(dna.base_species,dna.species_traits,src)
-			new_CS.blood_color = dna.blood_color
-			H.regenerate_icons()
-
-		if(istype(H.species,/datum/species/alraune))
-			var/datum/species/alraune/CS = H.species
-			var/datum/species/alraune/new_CS = CS.produceCopy(dna.base_species,dna.species_traits,src)
-			new_CS.blood_color = dna.blood_color
-		// VOREStation Edit End
-		H.force_update_organs() //VOREStation Add - Gotta do this too
+		H.force_update_organs()
 		H.force_update_limbs()
-		//H.update_body(0) //VOREStation Edit - Done in force_update_limbs already
+		//H.update_icons_body(0) // Done in force_update_limbs already
 		H.update_eyes()
 		H.update_hair()
 
-		return 1
+		return TRUE
 	else
-		return 0
+		return FALSE
 
-//VOREStation Add
 /mob/living/carbon/human/proc/force_update_organs()
-	for(var/organ in organs + internal_organs)
-		var/obj/item/organ/O = organ
+	for(var/obj/item/organ/O as anything in organs + internal_organs)
 		O.species = species
-//VOREStation Add End
 
-// Used below, simple injection modifier.
+/// Used below, simple injection modifier.
 /proc/probinj(var/pr, var/inj)
 	return prob(pr+inj*pr)

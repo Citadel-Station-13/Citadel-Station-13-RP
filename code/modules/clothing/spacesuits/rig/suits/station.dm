@@ -77,7 +77,6 @@
 	siemens_coefficient= 0.75
 	rigsuit_max_pressure = 15 * ONE_ATMOSPHERE			  // Max pressure the rig protects against when sealed
 	rigsuit_min_pressure = 0							  // Min pressure the rig protects against when sealed
-
 	helm_type = /obj/item/clothing/head/helmet/space/rig/industrial
 
 	allowed = list(
@@ -102,7 +101,8 @@
 		/obj/item/rig_module/device/drill,
 		/obj/item/rig_module/device/orescanner,
 		/obj/item/rig_module/vision/material,
-		/obj/item/rig_module/maneuvering_jets) //VOREStation Edit - Added maneuvering jets
+		/obj/item/rig_module/maneuvering_jets,
+		)
 
 //Engineering suit
 /obj/item/rig/eva
@@ -115,7 +115,8 @@
 	offline_slowdown = 1
 	offline_vision_restriction = 1
 	siemens_coefficient= 0.75
-	seal_delay = 8
+	seal_delay = 24 //Should be slightly faster than other hardsuits, giving Engineering faster response time for emergencies.
+	
 
 	helm_type = /obj/item/clothing/head/helmet/space/rig/eva
 	glove_type = /obj/item/clothing/gloves/gauntlets/rig/eva
@@ -163,6 +164,7 @@
 	siemens_coefficient= 0.75
 	rigsuit_max_pressure = 20 * ONE_ATMOSPHERE			  // Max pressure the rig protects against when sealed
 	rigsuit_min_pressure = 0							  // Min pressure the rig protects against when sealed
+	seal_delay = 8 //Why did we give the EVA hardsuit a better equip time than the CE hardsuit, again? I'm changing it.
 
 	helm_type = /obj/item/clothing/head/helmet/space/rig/ce
 	glove_type = /obj/item/clothing/gloves/gauntlets/rig/ce
@@ -198,7 +200,9 @@
 		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/device/plasmacutter,
 		/obj/item/rig_module/device/rcd,
-		/obj/item/rig_module/vision/meson
+		/obj/item/rig_module/vision/meson,
+		/obj/item/rig_module/device/rigwelder, // CE gets tools in their RIG
+		/obj/item/rig_module/device/toolset
 		)
 
 //Research Director's suit. Just add red crowbar.

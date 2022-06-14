@@ -1,6 +1,6 @@
 import { useBackend } from "../backend";
 import { Fragment } from "inferno";
-import { Box, Button, LabeledList, ProgressBar, Section, LabeledControls, AnimatedNumber } from "../components";
+import { Box, Button, LabeledList, Section } from "../components";
 import { Window } from "../layouts";
 
 const getStatusText = port => {

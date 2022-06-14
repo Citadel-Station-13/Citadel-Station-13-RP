@@ -1,7 +1,9 @@
-#define SEC_DATA_R_LIST	2	// Record list
-#define SEC_DATA_MAINT	3	// Records maintenance
-#define SEC_DATA_RECORD	4	// Record
-
+/// Record list
+#define SEC_DATA_R_LIST	2
+/// Records maintenance
+#define SEC_DATA_MAINT	3
+/// Record
+#define SEC_DATA_RECORD	4
 #define FIELD(N, V, E) list(field = N, value = V, edit = E)
 
 /obj/machinery/computer/secure_data//TODO:SANITY
@@ -478,7 +480,7 @@
 			return selection.img
 
 /obj/machinery/computer/secure_data/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		..(severity)
 		return
 

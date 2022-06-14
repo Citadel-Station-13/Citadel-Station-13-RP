@@ -22,7 +22,7 @@
 /*
 /// attempt pickup on attack_hand for items
 #define INTERACT_ITEM_ATTACK_HAND_PICKUP (1<<0)
-
+*/
 /// can_interact() while open
 #define INTERACT_MACHINE_OPEN (1<<0)
 /// can_interact() while offline
@@ -41,4 +41,3 @@
 #define INTERACT_MACHINE_SET_MACHINE (1<<6)
 /// the user must have vision to interact (blind people need not apply)
 #define INTERACT_MACHINE_REQUIRES_SIGHT (1<<7)
-*/

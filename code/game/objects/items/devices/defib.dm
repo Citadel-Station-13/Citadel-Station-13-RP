@@ -1,6 +1,7 @@
-#define DEFIB_TIME_LIMIT (10 MINUTES) //past this many seconds, defib will cause maximum brain damage.
-#define DEFIB_TIME_LOSS  (2 MINUTES) //past this many seconds, brain damage occurs.
-
+///past this many seconds, defib will cause maximum brain damage.
+#define DEFIB_TIME_LIMIT (10 MINUTES)
+///past this many seconds, brain damage occurs.
+#define DEFIB_TIME_LOSS  (2 MINUTES)
 //backpack item
 /obj/item/defib_kit
 	name = "defibrillator"
@@ -247,6 +248,7 @@
 		icon_state = "defibpaddles[wielded]_cooldown"
 
 /obj/item/shockpaddles/proc/can_use(mob/user, mob/M)
+	update_held_icon()
 	if(busy)
 		return 0
 	if(!check_charge(chargecost))
@@ -279,10 +281,6 @@
 
 /obj/item/shockpaddles/proc/can_revive(mob/living/carbon/human/H) //This is checked right before attempting to revive
 
-	var/obj/item/organ/internal/brain/brain = H.internal_organs_by_name[O_BRAIN]
-	if(H.should_have_organ(O_BRAIN) && (!brain || brain.defib_timer <= 0 ) )
-		return "buzzes, \"Resuscitation failed - Excessive neural degeneration. Further attempts futile.\""
-
 	H.updatehealth()
 
 	if(H.isSynthetic())
@@ -290,6 +288,7 @@
 			return "buzzes, \"Resuscitation failed - Severe damage detected. Begin manual repair before further attempts futile.\""
 
 	else if(H.health + H.getOxyLoss() <= config_legacy.health_threshold_dead || (HUSK in H.mutations) || !H.can_defib)
+		// TODO: REFACTOR DEFIBS AND HEALTH
 		return "buzzes, \"Resuscitation failed - Severe tissue damage makes recovery of patient impossible via defibrillator. Further attempts futile.\""
 
 	var/bad_vital_organ = check_vital_organs(H)
@@ -305,7 +304,7 @@
 /obj/item/shockpaddles/proc/check_contact(mob/living/carbon/human/H)
 	if(!combat)
 		for(var/obj/item/clothing/cloth in list(H.wear_suit, H.w_uniform))
-			if((cloth.body_parts_covered & UPPER_TORSO) && (cloth.item_flags & THICKMATERIAL))
+			if((cloth.body_parts_covered & UPPER_TORSO) && (cloth.clothing_flags & THICKMATERIAL))
 				return FALSE
 	return TRUE
 
@@ -520,7 +519,7 @@
 	var/damage_calc = LERP(brain.max_damage, H.getBrainLoss(), brain_death_scale)
 
 	// A bit of sanity.
-	var/brain_damage = between(H.getBrainLoss(), damage_calc, brain.max_damage)
+	var/brain_damage = clamp( damage_calc, H.getBrainLoss(),  brain.max_damage)
 
 	H.setBrainLoss(brain_damage)
 	make_announcement("beeps, \"Warning. Subject neurological structure has sustained damage.\"", "notice")

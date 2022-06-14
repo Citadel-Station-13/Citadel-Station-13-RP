@@ -78,21 +78,13 @@ export const createSearch = (searchText, stringifier) => {
   };
 };
 
-export const isUppercase = chr => {
-  return chr.toUpperCase() === chr;
-};
-
 export const capitalize = str => {
   // Handle array
   if (Array.isArray(str)) {
     return str.map(capitalize);
   }
   // Handle string
-  let chr = str.charAt(0);
-  if (isUppercase(chr)) {
-    return str; // Already caps, might be an acronym, so don't mess it up by lowercasing the rest
-  }
-  return chr.toUpperCase() + str.slice(1).toLowerCase();
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 };
 
 export const toTitleCase = str => {
@@ -105,7 +97,7 @@ export const toTitleCase = str => {
     return str;
   }
   // Handle string
-  const WORDS_UPPER = ['Id', 'Tv', 'Rcd']; // VOREStation Edit
+  const WORDS_UPPER = ['Id', 'Tv'];
   const WORDS_LOWER = [
     'A', 'An', 'And', 'As', 'At', 'But', 'By', 'For', 'For', 'From', 'In',
     'Into', 'Near', 'Nor', 'Of', 'On', 'Onto', 'Or', 'The', 'To', 'With',
@@ -119,7 +111,7 @@ export const toTitleCase = str => {
   }
   for (let word of WORDS_UPPER) {
     const regex = new RegExp('\\b' + word + '\\b', 'g');
-    currentStr = currentStr.replace(regex, str => str.toUpperCase());
+    currentStr = currentStr.replace(regex, str => str.toLowerCase());
   }
   return currentStr;
 };
@@ -134,16 +126,14 @@ export const decodeHtmlEntities = str => {
   if (!str) {
     return str;
   }
-  const translate_re = /&(nbsp|amp|deg|quot|lt|gt|apos|trade);/g;
+  const translate_re = /&(nbsp|amp|quot|lt|gt|apos);/g;
   const translate = {
     nbsp: ' ',
     amp: '&',
-    deg: '°',
     quot: '"',
     lt: '<',
     gt: '>',
     apos: '\'',
-    trade: '™',
   };
   return str
     // Newline tags

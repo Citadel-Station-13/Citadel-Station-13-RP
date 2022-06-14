@@ -4,6 +4,7 @@
 	for(var/mob/living/M in src) //ventcrawling is serious business
 		M.remove_ventcrawl()
 		M.forceMove(get_turf(src))
+		M.update_perspective()
 	if(pipe_image)
 		for(var/mob/living/M in player_list)
 			if(M.client)
@@ -35,6 +36,7 @@
 		if(is_type_in_list(target_move, ventcrawl_machinery) && target_move.can_crawl_through())
 			user.remove_ventcrawl()
 			user.forceMove(target_move.loc) //handles entering and so on
+			user.update_perspective()
 			user.visible_message("You hear something squeezing through the ducts.", "You climb out the ventilation system.")
 		else if(target_move.can_crawl_through())
 			if(target_move.return_network(target_move) != return_network(src))
@@ -49,6 +51,7 @@
 		if((direction & initialize_directions) || is_type_in_list(src, ventcrawl_machinery) && src.can_crawl_through()) //if we move in a way the pipe can connect, but doesn't - or we're in a vent
 			user.remove_ventcrawl()
 			user.forceMove(loc)
+			user.update_perspective()
 			user.visible_message("You hear something squeezing through the pipes.", "You climb out the ventilation system.")
 	user.canmove = 0
 	spawn(1)
@@ -57,7 +60,7 @@
 /obj/machinery/atmospherics/proc/can_crawl_through()
 	return 1
 
-/obj/machinery/atmospherics/unary/can_crawl_through()
+/obj/machinery/atmospherics/component/unary/can_crawl_through()
 	if(welded)
 		return 0
 
@@ -75,7 +78,7 @@
 /obj/machinery/atmospherics/pipe/manifold/isConnectable(var/obj/machinery/atmospherics/target)
 	return (target == node3 || ..())
 
-obj/machinery/atmospherics/trinary/isConnectable(var/obj/machinery/atmospherics/target)
+obj/machinery/atmospherics/component/trinary/isConnectable(var/obj/machinery/atmospherics/target)
 	return (target == node3 || ..())
 
 /obj/machinery/atmospherics/pipe/manifold4w/isConnectable(var/obj/machinery/atmospherics/target)
@@ -90,5 +93,5 @@ obj/machinery/atmospherics/trinary/isConnectable(var/obj/machinery/atmospherics/
 /obj/machinery/atmospherics/portables_connector/isConnectable(var/obj/machinery/atmospherics/target)
 	return (target == node || ..())
 
-/obj/machinery/atmospherics/unary/isConnectable(var/obj/machinery/atmospherics/target)
+/obj/machinery/atmospherics/component/unary/isConnectable(var/obj/machinery/atmospherics/target)
 	return (target == node || ..())

@@ -101,6 +101,7 @@
 	icon_state = "c_tube"
 	throwforce = 1
 	w_class = ITEMSIZE_SMALL
+	slot_flags = SLOT_HOLSTER
 	throw_speed = 4
 	throw_range = 5
 

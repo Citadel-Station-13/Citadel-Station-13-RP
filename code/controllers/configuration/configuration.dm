@@ -23,6 +23,9 @@
 
 	var/motd
 
+	/// If the configuration is loaded
+	var/loaded = FALSE
+
 /datum/controller/configuration/proc/admin_reload()
 	if(IsAdminAdvancedProcCall())
 		return
@@ -42,7 +45,7 @@
 	// LoadModes()
 	// storyteller_cache = typecacheof(/datum/dynamic_storyteller, TRUE)
 	if(fexists("[directory]/config.txt") && LoadEntries("config.txt") <= 1)
-		var/list/legacy_configs = list("game_options.txt", "dbconfig.txt", "comms.txt")
+		var/list/legacy_configs = list("legacy/game_options.txt", "legacy/dbconfig.txt")
 		for(var/I in legacy_configs)
 			if(fexists("[directory]/[I]"))
 				log_config("No $include directives found in config.txt! Loading legacy [legacy_configs.Join("/")] files...")
@@ -51,6 +54,8 @@
 				break
 	loadmaplist(CONFIG_MAPS_FILE)
 	LoadMOTD()
+
+	loaded = TRUE
 
 	if (Master)
 		Master.OnConfigLoad()
@@ -143,6 +148,16 @@
 			else
 				LoadEntries(value, stack)
 				++.
+			continue
+
+		// Reset directive, used for setting a config value back to defaults. Useful for string list config types
+		if (entry == "$reset")
+			var/datum/config_entry/resetee = _entries[lowertext(value)]
+			if (!value || !resetee)
+				log_config("Warning: invalid $reset directive: [value]")
+				continue
+			resetee.set_default()
+			log_config("Reset configured value for [value] to original defaults")
 			continue
 
 		var/datum/config_entry/E = _entries[entry]

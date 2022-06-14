@@ -115,14 +115,13 @@
 		if("replacenutri")
 			replaces_nutriment = !replaces_nutriment
 			. = TRUE
-		// VOREStation Edit: No automatic hydroponics
+		// No automatic hydroponics //TODO: Reconsider?
 		// if("collect")
 		// 	collects_produce = !collects_produce
 		// 	. = TRUE
 		// if("removedead")
 		// 	removes_dead = !removes_dead
 		// 	. = TRUE
-		// VOREStation Edit End
 
 /mob/living/bot/farmbot/update_icons()
 	if(on && action)
@@ -236,7 +235,7 @@
 
 		busy = 1
 		while(do_after(src, 10) && tank.reagents.total_volume < tank.reagents.maximum_volume)
-			tank.reagents.add_reagent("water", 100) //VOREStation Edit
+			tank.reagents.add_reagent("water", 100)
 			if(prob(5))
 				playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 

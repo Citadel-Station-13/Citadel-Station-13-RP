@@ -1,4 +1,3 @@
-import { round } from 'common/math';
 import { capitalize } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from "../backend";
@@ -40,9 +39,12 @@ const digestModeToPreyMode = {
 
 /**
  * There are three main sections to this UI.
- *  - The Inside Panel, where all relevant data for interacting with a belly you're in is located.
- *  - The Belly Selection Panel, where you can select what belly people will go into and customize the active one.
- *  - User Preferences, where you can adjust all of your vore preferences on the fly.
+ *  - The Inside Panel, where all relevant data for interacting with a belly
+ *  - you're in is located.
+ *  - The Belly Selection Panel, where you can select what belly people will go
+ *  - into and customize the active one.
+ *  - User Preferences, where you can adjust all of your vore preferences on the
+ *  - fly.
  */
 export const VorePanel = (props, context) => {
   const { act, data } = useBackend(context);
@@ -95,17 +97,33 @@ const VoreInsidePanel = (props, context) => {
 
   return (
     <Section title="Inside">
-      <Box color="green" inline>You are currently {absorbed ? "absorbed into" : "inside"}</Box>&nbsp;
-      <Box color="yellow" inline>{pred}&apos;s</Box>&nbsp;
-      <Box color="red" inline>{belly_name}</Box>&nbsp;
-      <Box color="yellow" inline>and you are</Box>&nbsp;
-      <Box color={digestModeToColor[belly_mode]} inline>{digestModeToPreyMode[belly_mode]}</Box>&nbsp;
-      <Box color="label">
+      <Box
+        color="green" inline>You are currently
+        {absorbed ? "absorbed into" : "inside"}
+      </Box>&nbsp;
+      <Box
+        color="yellow" inline>{pred}&apos;s
+      </Box>&nbsp;
+      <Box
+        color="red" inline>{belly_name}
+      </Box>&nbsp;
+      <Box
+        color="yellow" inline>and you are
+      </Box>&nbsp;
+      <Box
+        color={digestModeToColor[belly_mode]}
+        inline>{digestModeToPreyMode[belly_mode]}
+      </Box>&nbsp;
+      <Box
+        color="label">
         {desc}
       </Box>
       {contents.length && (
-        <Collapsible title="Belly Contents">
-          <VoreContentsPanel contents={contents} belly={ref} />
+        <Collapsible
+          title="Belly Contents">
+          <VoreContentsPanel
+            contents={contents} belly={ref}
+          />
         </Collapsible>
       ) || "There is nothing else around you."}
     </Section>
@@ -129,7 +147,8 @@ const VoreBellySelectionAndCustomization = (props, context) => {
             selected={belly.selected}
             textColor={digestModeToColor[belly.digest_mode]}
             onClick={() => act("bellypick", { bellypick: belly.ref })}>
-            <Box inline textColor={belly.selected && digestModeToColor[belly.digest_mode] || null}>
+            <Box inline textColor={belly.selected
+              && digestModeToColor[belly.digest_mode] || null}>
               {belly.name} ({belly.contents})
             </Box>
           </Tabs.Tab>

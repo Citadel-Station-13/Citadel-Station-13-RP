@@ -76,7 +76,6 @@
 					to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
 					return
 
-			 // Vorestation edits in this section.
 			user.setClickCooldown(user.get_attack_speed(src)) //puts a limit on how fast people can eat/drink things
 			if (fullness <= 100)
 				to_chat(M, "<span class='danger'>You hungrily chew out a piece of [src] and gobble it!</span>")
@@ -114,14 +113,9 @@
 					to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
 					return
 
-			if(!istype(M, /mob/living/carbon/slime))		//If you're feeding it to someone else.
+			if(!istype(M, /mob/living/carbon/slime)) // If you're feeding it to someone else.
 
-				/*if (fullness <= (550 * (1 + M.overeatduration / 1000))) // Vorestation edit
-					user.visible_message("<span class='danger'>[user] attempts to feed [M] [src].</span>")
-				else
-					user.visible_message("<span class='danger'>[user] cannot force anymore of [src] down [M]'s throat.</span>")
-					return 0*/
-				user.visible_message("<span class='danger'>[user] attempts to feed [M] [src].</span>") // Vorestation edit
+				user.visible_message(SPAN_DANGER("[user] attempts to feed [M] [src]."))
 
 				user.setClickCooldown(user.get_attack_speed(src))
 				if(!do_mob(user, M)) return
@@ -315,6 +309,36 @@
 	reagents.add_reagent("protein", 1)
 	bitesize = 2
 
+/obj/item/reagent_containers/food/snacks/spunow
+	name = "spunoW bar"
+	desc = "Sticky, sweet coconut covered in dark chocolate."
+	icon_state = "spunow"
+	trash = /obj/item/trash/candy
+	filling_color = "#d6d6d6"
+	nutriment_amt = 3
+	nutriment_desc = list("chocolate" = 2, "coconut" = 2)
+
+/obj/item/reagent_containers/food/snacks/spunow/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("coconutmilk", 4)
+	reagents.add_reagent("protein", 1)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/glad2nut
+	name = "Glad2Nut bar"
+	desc = "Sticky, sweet coconut and almonds covered in milk chocolate."
+	icon_state = "glad2nut"
+	trash = /obj/item/trash/candy
+	filling_color = "#d6d6d6"
+	nutriment_amt = 3
+	nutriment_desc = list("chocolate" = 2, "coconut" = 2, "almond" = 1)
+
+/obj/item/reagent_containers/food/snacks/glad2nut/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("coconutmilk", 4)
+	reagents.add_reagent("protein", 1)
+	bitesize = 2
+
 /obj/item/reagent_containers/food/snacks/candy/proteinbar // Buff 17 >> 21
 	name = "protein bar"
 	desc = "SwoleMAX brand protein bars, guaranteed to get you feeling perfectly overconfident."
@@ -388,17 +412,17 @@
 	nutriment_desc = list("sugar" = 3, "protein" = 2)
 	slot_flags = SLOT_MASK
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/masks.dmi',
-		SPECIES_VOX = 'icons/mob/species/vox/masks.dmi',
-		SPECIES_TAJ = 'icons/mob/species/tajaran/mask_vr.dmi',
-		SPECIES_UNATHI = 'icons/mob/species/unathi/mask_vr.dmi',
-		SPECIES_SERGAL = 'icons/mob/species/sergal/mask_vr.dmi',
-		SPECIES_NEVREAN = 'icons/mob/species/nevrean/mask_vr.dmi',
-		SPECIES_ZORREN_HIGH = 'icons/mob/species/fox/mask_vr.dmi',
-		SPECIES_ZORREN_FLAT = 'icons/mob/species/fennec/mask_vr.dmi',
-		SPECIES_AKULA = 'icons/mob/species/akula/mask_vr.dmi',
-		SPECIES_VULPKANIN = 'icons/mob/species/vulpkanin/mask.dmi',
-		SPECIES_XENOCHIMERA = 'icons/mob/species/tajaran/mask_vr.dmi'
+		SPECIES_AKULA       = 'icons/mob/clothing/species/akula/mask.dmi',
+		SPECIES_NEVREAN     = 'icons/mob/clothing/species/nevrean/mask.dmi',
+		SPECIES_SERGAL      = 'icons/mob/clothing/species/sergal/mask.dmi',
+		SPECIES_TAJ         = 'icons/mob/clothing/species/tajaran/mask.dmi',
+		SPECIES_TESHARI     = 'icons/mob/clothing/species/teshari/masks.dmi',
+		SPECIES_UNATHI      = 'icons/mob/clothing/species/unathi/mask.dmi',
+		SPECIES_VOX         = 'icons/mob/clothing/species/vox/masks.dmi',
+		SPECIES_VULPKANIN   = 'icons/mob/clothing/species/vulpkanin/mask.dmi',
+		SPECIES_XENOCHIMERA = 'icons/mob/clothing/species/tajaran/mask.dmi',
+		SPECIES_ZORREN_FLAT = 'icons/mob/clothing/species/fennec/mask.dmi',
+		SPECIES_ZORREN_HIGH = 'icons/mob/clothing/species/fox/mask.dmi',
 		)
 /obj/item/reagent_containers/food/snacks/dtreat/Initialize(mapload)
 	. = ..()
@@ -802,7 +826,7 @@
 	icon_state = "bearmeat"
 	nutriment_amt = 2
 
-/obj/item/reagent_containers/food/snacks/horsemeat/Initialize()
+/obj/item/reagent_containers/food/snacks/horsemeat/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 4)
 	bitesize = 3
@@ -1802,7 +1826,7 @@
 /obj/item/reagent_containers/food/snacks/monkeycube/proc/Expand()
 	src.visible_message("<span class='notice'>\The [src] expands!</span>")
 	var/mob/living/carbon/human/H = new(get_turf(src))
-	H.set_species(monkey_type)
+	H.set_species(species_type_by_name(monkey_type))
 	H.real_name = H.species.get_random_name()
 	H.name = H.real_name
 	if(ismob(loc))
@@ -5707,7 +5731,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("rice" = 5, "fish" = 5)
 	nutriment_amt = 20
 
-/obj/item/reagent_containers/food/snacks/sliceable/sushi/crab/Initialize()
+/obj/item/reagent_containers/food/snacks/sliceable/sushi/crab/Initialize(mapload)
 	..()
 	reagents.add_reagent("protein", 15)
 	bitesize = 5
@@ -5733,7 +5757,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("rice" = 5, "fish" = 5)
 	nutriment_amt = 20
 
-/obj/item/reagent_containers/food/snacks/sliceable/sushi/horse/Initialize()
+/obj/item/reagent_containers/food/snacks/sliceable/sushi/horse/Initialize(mapload)
 	..()
 	reagents.add_reagent("protein", 15)
 	bitesize = 5
@@ -5759,7 +5783,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("rice" = 5, "fish" = 5)
 	nutriment_amt = 20
 
-/obj/item/reagent_containers/food/snacks/sliceable/sushi/mystery/Initialize()
+/obj/item/reagent_containers/food/snacks/sliceable/sushi/mystery/Initialize(mapload)
 	..()
 	reagents.add_reagent("protein", 15)
 	bitesize = 5

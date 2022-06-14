@@ -84,7 +84,7 @@
 	base_action_state = "adherent-pack"
 	maintenance_cost = 0.2
 
-/obj/item/organ/internal/powered/jets/Initialize()
+/obj/item/organ/internal/powered/jets/Initialize(mapload)
 	. = ..()
 	//verbs |= /obj/item/organ/internal/powered/jets/proc/activatej
 
@@ -117,14 +117,14 @@
 	name = "levitation plate"
 	desc = "A broad, flat disc of exotic matter. Slick to the touch."
 	action_button_name = "Toggle Antigravity"
-	organ_tag = BP_FLOAT
+	organ_tag = O_FLOAT
 	parent_organ = BP_GROIN
 	robotic = ORGAN_CRYSTAL
 	icon_state = "float"
 	use_descriptor = "hover"
 	base_action_state = "adherent-float"
 
-/obj/item/organ/internal/powered/float/Initialize()
+/obj/item/organ/internal/powered/float/Initialize(mapload)
 	. = ..()
 	//verbs |= /obj/item/organ/internal/powered/float/proc/flying_toggle
 	verbs |= /obj/item/organ/internal/powered/float/proc/hover
@@ -140,7 +140,7 @@
 	organ_tag = O_EYES
 	innate_flash_protection = FLASH_PROTECTION_MAJOR
 
-/obj/item/organ/internal/eyes/adherent/Initialize()
+/obj/item/organ/internal/eyes/adherent/Initialize(mapload)
 	. = ..()
 	verbs |= /obj/item/organ/internal/eyes/proc/change_eye_color
 
@@ -156,7 +156,7 @@
 	gender = PLURAL
 	desc = "A lacy filligree of heat-radiating fins."
 	action_button_name = "Toggle Cooling"
-	organ_tag = BP_COOLING_FINS
+	organ_tag = O_COOLING_FINS
 	parent_organ = BP_GROIN
 	status = ORGAN_CRYSTAL
 	icon_state = "fins"
@@ -167,7 +167,7 @@
 	var/max_cooling = 10
 	var/target_temp = T20C
 
-/obj/item/organ/internal/powered/cooling_fins/Initialize()
+/obj/item/organ/internal/powered/cooling_fins/Initialize(mapload)
 	. = ..()
 	verbs |= /obj/item/organ/internal/powered/cooling_fins/proc/activatecf
 

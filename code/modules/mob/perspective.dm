@@ -12,11 +12,17 @@
   * - no_optimizations - if true, it'll be a true reset. use for things like cancel camera view which should always force updates.
   */
 /mob/proc/reset_perspective(datum/perspective/P, apply = TRUE, forceful = TRUE, no_optimizations)
-	if(!no_optimizations && (P? ((ismovable(P) && istype(using_perspective, /datum/perspective/self/temporary))? (using_perspective?.eye == P) : (P == using_perspective)) : (using_perspective && (using_perspective == self_perspective))))
+	if(P)
+		ASSERT(istype(P) || ismovable(P))
+	if(!no_optimizations && (																																\
+		P?	(ismovable(P)? (istype(using_perspective, /datum/perspective/self/temporary) && (using_perspective.eye == P)) : (using_perspective == P))		\
+		:																																					\
+			(using_perspective && (using_perspective == self_perspective))																					\
+	))
 		// if we don't need to reset, assume it's an update.
 		// this is bad practice but stuff like mechs need this to work, since
 		// they reset for brainmobs but only need to update for others.
-		update_perspective()
+		update_perspective(TRUE)
 		return
 	if(ismovable(P))
 		var/atom/movable/AM = P
@@ -24,7 +30,7 @@
 	/// first of all if we are already on the right perspective we really don't care!
 	if(!client)		// this is way easier if no client, and microoptimization
 		if(using_perspective)
-			using_perspective.RemoveMob(src)
+			using_perspective.RemoveMob(src, TRUE)
 			if(using_perspective)
 				stack_trace("using perspective didn't clear us")
 				using_perspective = null
@@ -34,7 +40,7 @@
 	var/old = using_perspective
 	// get old perspective first
 	if(using_perspective)
-		using_perspective.RemoveMob(src)
+		using_perspective.RemoveMob(src, TRUE)
 		if(using_perspective)
 			stack_trace("using perspective didn't clear us")
 			using_perspective = null
@@ -83,10 +89,15 @@
 /**
  * updates our curent perspective
  */
-/mob/proc/update_perspective()
+/mob/proc/update_perspective(shunted)
 	if(!client)
 		return
 	if(using_perspective != client.using_perspective)	// shunt them back in, useful if something's temporarily shunted our client away
+		if(!client.using_perspective)
+			reset_perspective(using_perspective)
+			CRASH("client had no using perspective, how? in mob/update_perspective")
+		if(shunted)
+			CRASH("Caught an infinite loop. What's going on here?")
 		reset_perspective(using_perspective)
 		return
 	SEND_SIGNAL(src, COMSIG_MOB_UPDATE_PERSPECTIVE)
@@ -97,6 +108,20 @@
  */
 /mob/proc/IsRemoteViewing()
 	return get_using_perspective()?.considered_remote(src)
+
+/**
+ * for mob make_perspective, set our current_values
+ */
+/mob/make_perspective()
+	. = ..()
+	self_perspective.see_in_dark = see_in_dark
+	self_perspective.see_invisible = see_invisible
+	self_perspective.sight = sight
+
+////////// ALL OF THESE SHOULD BE REGEXED LATER /////////////
+// However, there is currently no way to deal with the getters due to them requiring self_perspective be set, but
+// we don't necessarily want all mobs to have it, as perspectives are generally for client'd mobs
+// We'll decide later, the setters/getters work for now.
 
 /**
  * wrapper for self_perspective.AddSight for regexing later
@@ -132,6 +157,12 @@
 /mob/proc/SetSeeInDarkSelf(see_invisible)
 	ensure_self_perspective()
 	self_perspective.SetDarksight(see_invisible)
+
+/**
+ * ditto
+ */
+/mob/proc/GetSeeInDarkSelf()
+	return self_perspective? self_perspective.see_in_dark : see_in_dark
 
 // Set client view distance (size of client's screen). Returns TRUE if anything changed.
 // TODO: remove this and make everything change self perspective's viewsize

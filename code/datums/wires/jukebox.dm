@@ -22,7 +22,7 @@
 /datum/wires/jukebox/get_status()
 	var/obj/machinery/media/jukebox/A = holder
 	. = ..()
-	. += "The power light is [A.stat & (BROKEN|NOPOWER) ? "off." : "on."]"
+	. += "The power light is [A.machine_stat & (BROKEN|NOPOWER) ? "off." : "on."]"
 	. += "The parental guidance light is [A.hacked ? "off." : "on."]"
 	. += "The data light is [is_cut(WIRE_REVERSE) ? "hauntingly dark." : "glowing softly."]"
 

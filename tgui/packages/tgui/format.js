@@ -34,15 +34,18 @@ const SI_SYMBOLS = [
 
 const SI_BASE_INDEX = SI_SYMBOLS.indexOf(' ');
 
-
 /**
  * Formats a number to a human readable form, by reducing it to SI units.
+ * @param value the value to format
+ * @param minBase1000 the minimum base 1000 to render,
+  e.g. 1 makes it render 0.5kW even if it's 500W
+ * @param unit the unit to use, aka W for kW/MW/GW, etc.
  * TODO: This is quite a shit code and shit math, needs optimization.
  */
 export const formatSiUnit = (
   value,
   minBase1000 = -SI_BASE_INDEX,
-  unit = ''
+  unit = '',
 ) => {
   if (typeof value !== 'number' || !Number.isFinite(value)) {
     return value;
@@ -196,15 +199,3 @@ export const formatTime = (val, formatType) => {
     }
   }
 };
-
-/* VOREStation Addition Start */
-export const formatCommaNumber = value => {
-  if (!Number.isFinite(value)) {
-    return value;
-  }
-  // From http://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
-  let parts = value.toString().split(".");
-  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  return parts.join(".");
-};
-/* VOREStation Addition End */

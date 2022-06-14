@@ -2,8 +2,9 @@
 	////////////
 	//SECURITY//
 	////////////
-#define UPLOAD_LIMIT		1048576	//Restricts client uploads to the server to 1MB //Could probably do with being lower.
-
+///Could probably do with being lower.
+///Restricts client uploads to the server to 1MB
+#define UPLOAD_LIMIT		1048576
 GLOBAL_LIST_INIT(blacklisted_builds, list(
 	"1407" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
 	"1408" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
@@ -168,9 +169,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	GLOB.directory[ckey] = src
 
 	// Instantiate tgui panel
-	tgui_panel = new(src)
+	tgui_panel = new(src, "browseroutput")
 
 	GLOB.ahelp_tickets.ClientLogin(src)
+	SSserver_maint.UpdateHubStatus()
 	var/connecting_admin = FALSE //because de-admined admins connecting should be treated like admins.
 	//Admin Authorisation
 	holder = admin_datums[ckey]
@@ -289,13 +291,19 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 				disconnect_with_message("Your version of BYOND ([byond_version].[byond_build]) is blacklisted for the following reason: [GLOB.blacklisted_builds[num2text(byond_build)]]. Please download a new version of byond. If [byond_build] is the latest, you can go to <a href=\"https://secure.byond.com/download/build\">BYOND's website</a> to download other versions.")
 				return
 
-	if(SSinput.subsystem_initialized)
+	if(SSinput.initialized)
 		set_macros()
 		update_movement_keys()
 
+	// Initialize stat panel
+	// stat_panel.initialize(
+	// 	inline_html = file2text('html/statbrowser.html'),
+	// 	inline_js = file2text('html/statbrowser.js'),
+	// 	inline_css = file2text('html/statbrowser.css'),
+	// )
+
 	// Initialize tgui panel
 	tgui_panel.initialize()
-	// src << browse(file('html/statbrowser.html'), "window=statbrowser")
 
 	//if(alert_mob_dupe_login)
 	//	spawn()
@@ -370,12 +378,12 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
 		winset(src, "infowindow.changelog", "background-color=#eaeaea;font-style=bold")
 		if(config_legacy.aggressive_changelog)
-			src.changes()
+			changelog()
 
 	if(!winexists(src, "asset_cache_browser")) // The client is using a custom skin, tell them.
 		to_chat(src, "<span class='warning'>Unable to access asset cache browser, if you are using a custom skin file, please allow DS to download the updated version, if you are not, then make a bug report. This is not a critical issue but can cause issues with resource downloading, as it is impossible to know when extra resources arrived to you.</span>")
 
-	hook_vr("client_new",list(src)) //VOREStation Code
+	hook_vr("client_new",list(src))
 
 	if(config_legacy.paranoia_logging)
 		if(isnum(player_age) && player_age == -1)
@@ -399,12 +407,17 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	GLOB.directory -= ckey
 	log_access("Logout: [key_name(src)]")
 	GLOB.ahelp_tickets.ClientLogout(src)
+	SSserver_maint.UpdateHubStatus()
 	if(holder)
 		holder.owner = null
 		admins -= src
 		GLOB.admins -= src //delete them on the managed one too
 	if(using_perspective)
 		set_perspective(null)
+
+	active_mousedown_item = null
+	SSping.currentrun -= src
+
 	. = ..() //Even though we're going to be hard deleted there are still some things that want to know the destroy is happening
 	return QDEL_HINT_HARDDEL_NOW
 
@@ -541,14 +554,13 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		else
 			log_admin("Couldn't perform IP check on [key] with [address]")
 
-	// VOREStation Edit Start - Department Hours
+	// Department Hours
 	if(config_legacy.time_off)
 		var/DBQuery/query_hours = dbcon.NewQuery("SELECT department, hours FROM vr_player_hours WHERE ckey = '[sql_ckey]'")
 		query_hours.Execute()
 		while(query_hours.NextRow())
 			LAZYINITLIST(department_hours)
 			department_hours[query_hours.item[1]] = text2num(query_hours.item[2])
-	// VOREStation Edit End - Department Hours
 
 	if(sql_id)
 		//Player already identified previously, we need to just update the 'lastseen', 'ip' and 'computer_id' variables
@@ -725,7 +737,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		perspective = EYE_PERSPECTIVE
 		return
 	P.AddClient(src)
-	using_perspective = P
+	if(using_perspective != P)
+		stack_trace("using perspective didn't set")
 
 /**
  * reset perspective to default - usually to our mob's

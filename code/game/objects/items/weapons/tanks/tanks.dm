@@ -11,7 +11,7 @@ var/list/global/tank_gauge_cache = list()
 	name = "tank"
 	icon = 'icons/obj/tank.dmi'
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/back.dmi'
+		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/back.dmi'
 		)
 	drop_sound = 'sound/items/drop/gascan.ogg'
 	pickup_sound = 'sound/items/pickup/gascan.ogg'
@@ -255,11 +255,11 @@ var/list/global/tank_gauge_cache = list()
 		.["connected"] = FALSE
 
 	.["maskConnected"] = FALSE
-	if(C.wear_mask && (C.wear_mask.item_flags & ALLOWINTERNALS))
+	if(C.wear_mask && (C.wear_mask.clothing_flags & ALLOWINTERNALS))
 		.["maskConnected"] = TRUE
 	else if(ishuman(C))
 		var/mob/living/carbon/human/H = C
-		if(H.head && (H.head.item_flags & ALLOWINTERNALS))
+		if(H.head && (H.head.clothing_flags & ALLOWINTERNALS))
 			.["maskConnected"] = TRUE
 
 	return .
@@ -299,11 +299,11 @@ var/list/global/tank_gauge_cache = list()
 				location.internals.icon_state = "internal0"
 		else
 			var/can_open_valve
-			if(location.wear_mask && (location.wear_mask.item_flags & ALLOWINTERNALS))
+			if(location.wear_mask && (location.wear_mask.clothing_flags & ALLOWINTERNALS))
 				can_open_valve = 1
 			else if(istype(location,/mob/living/carbon/human))
 				var/mob/living/carbon/human/H = location
-				if(H.head && (H.head.item_flags & ALLOWINTERNALS))
+				if(H.head && (H.head.clothing_flags & ALLOWINTERNALS))
 					can_open_valve = 1
 
 			if(can_open_valve)

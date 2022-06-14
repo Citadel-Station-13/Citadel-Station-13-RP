@@ -1,0 +1,12 @@
+## Community short-name: This appears in parentheses after the server's active station name
+# COMMUNITYSHORTNAME citadel
+
+## Community link: Requires a community short-name defined. Attaches a link to the community's shortname, and requires a short-name defined.
+## You could alternatively just add raw HTML to the above, but this is more newbie-friendly
+# COMMUNITYLINK http://crouton.net
+
+## TAGLINE - Hub tagline
+TAGLINE <br><small><a href='https://discord.gg/citadelstation'>Roleplay focused 18+ server with extensive species choices.</a></small></br>
+
+## Use tagline strings: Uncomment to have the server's tagline be randomly selected from taglines.txt
+# USETAGLINESTRINGS

@@ -1,6 +1,6 @@
-#define FUSION_ENERGY_PER_K 20
-#define PLASMA_TEMP_RADIATION_DIVISIOR 20 //radiation divisior. plasma temp / divisor = radiation.
-
+#define FUSION_ENERGY_KW_PER_K 0.02
+///radiation divisior. plasma temp / divisor = radiation.
+#define PLASMA_TEMP_RADIATION_DIVISIOR 20
 GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 
 /obj/effect/fusion_em_field
@@ -145,7 +145,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	React()
 
 	// Dump power to our powernet.
-	owned_core.add_avail(FUSION_ENERGY_PER_K * plasma_temperature)
+	owned_core.add_avail(FUSION_ENERGY_KW_PER_K * plasma_temperature)
 
 	// Energy decay.
 	if(plasma_temperature >= 1)
@@ -329,7 +329,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 		var/empsev = max(1, min(3, CEILING(size/2, 1)))
 		for(var/atom/movable/AM in range(max(1,FLOOR(size/2, 1)), loc))
 
-			if(AM == src || AM == owned_core || !AM.simulated)
+			if(AM == src || AM == owned_core || (AM.flags & AF_ABSTRACT))
 				continue
 			if(ignore_types[AM.type])
 				continue

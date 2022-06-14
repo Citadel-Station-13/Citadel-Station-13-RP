@@ -9,7 +9,7 @@
 
 /mob/observer/eye/aiEye/Initialize(mapload)
 	. = ..()
-	visualnet = cameranet
+	visualnet = GLOB.cameranet
 
 /mob/observer/eye/aiEye/setLoc(var/T, var/cancel_tracking = 1)
 	if(..())
@@ -27,8 +27,7 @@
 
 // The AI's "eye". Described on the top of the page.
 
-/mob/living/silicon/ai
-	var/obj/machinery/hologram/holopad/holo = null
+/mob/living/silicon/ai/var/obj/machinery/hologram/holopad/holo = null
 
 /mob/living/silicon/ai/proc/destroy_eyeobj(var/atom/new_eye)
 	if(!eyeobj)

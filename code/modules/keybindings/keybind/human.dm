@@ -37,18 +37,3 @@
 	var/mob/living/carbon/human/H = user.mob
 	H.smart_equipbag()
 	return TRUE
-
-/datum/keybinding/human/toggle_gun_safety
-	hotkey_keys = list("C")
-	name = "toggle_gun_safety"
-	full_name = "Toggle Gun Safety"
-	description = "Toggle the safety of a gun in your hand"
-
-/datum/keybinding/human/toggle_gun_safety/down(client/user)
-	var/mob/living/carbon/human/H = user.mob
-	if(H)
-		var/obj/item/gun/G = H.get_active_hand()
-		if(!G)
-			G = H.get_inactive_hand() //We'll try both hands just in case
-		if(G)
-			G.toggle_safety_verb()

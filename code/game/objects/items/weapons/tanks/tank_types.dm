@@ -121,7 +121,7 @@
 	icon_state = "phoron_vox"
 	w_class = ITEMSIZE_NORMAL
 
-/obj/item/tank/phoron/pressurized/Initialize()
+/obj/item/tank/phoron/pressurized/Initialize(mapload)
 	. = ..()
 	adjust_scale(0.8)
 	air_contents.adjust_gas(/datum/gas/phoron, (7*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
@@ -130,7 +130,7 @@
 	name = "double emergency phoron tank"
 	desc = "Contains dangerous phoron. Do not inhale. Warning: extremely flammable."
 	icon = 'icons/obj/tank_vr.dmi'
-	icon_override = 'icons/mob/belt_vr.dmi'
+	icon_override = 'icons/mob/clothing/belt.dmi'
 	icon_state = "emergency_double_vox"
 	gauge_icon = "indicator_double"
 	gauge_cap = 3

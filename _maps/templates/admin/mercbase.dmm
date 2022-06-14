@@ -12,7 +12,7 @@
 	icon_state = "frame";
 	pixel_y = 32
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Syndicate-Spawn"
 	},
 /turf/unsimulated/floor{
@@ -456,7 +456,7 @@
 /area/antag/antag_base)
 "aN" = (
 /obj/structure/bed/padded,
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/red,
@@ -613,7 +613,7 @@
 	icon_state = "frame";
 	pixel_x = 32
 	},
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/red,
@@ -972,7 +972,7 @@
 	},
 /area/antag/antag_base)
 "bB" = (
-/obj/effect/landmark{
+/atom/movable/landmark{
 	name = "Syndicate-Uplink"
 	},
 /turf/unsimulated/floor{
@@ -2154,14 +2154,14 @@
 	},
 /area/antag/antag_base)
 "ds" = (
-/obj/machinery/atmospherics/unary/cryo_cell,
+/obj/machinery/atmospherics/component/unary/cryo_cell,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
 "dt" = (
-/obj/machinery/atmospherics/unary/freezer,
+/obj/machinery/atmospherics/component/unary/freezer,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -2685,7 +2685,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/mercenary)
 "es" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1331;
 	id_tag = "merc_shuttle_pump"
@@ -2742,7 +2742,7 @@
 	},
 /area/shuttle/mercenary)
 "ex" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1331;
 	id_tag = "merc_shuttle_pump"
@@ -2796,7 +2796,7 @@
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/mercenary)
 "eD" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1331;
 	id_tag = "merc_shuttle_pump"
@@ -4133,7 +4133,7 @@
 	},
 /area/shuttle/mercenary)
 "hk" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1379;
 	id_tag = "merc_south_airlock_pump"
@@ -4152,7 +4152,7 @@
 	},
 /area/shuttle/mercenary)
 "hm" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1379;
 	id_tag = "merc_south_airlock_pump"
@@ -4184,7 +4184,7 @@
 	pixel_x = 8;
 	pixel_y = -25
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1379;
 	id_tag = "merc_south_airlock_pump"

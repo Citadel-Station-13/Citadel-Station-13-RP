@@ -38,7 +38,7 @@
 	max_universal_equip = 1
 	max_special_equip = 1
 
-/obj/mecha/combat/fighter/Initialize()
+/obj/mecha/combat/fighter/Initialize(mapload)
 	. = ..()
 	ion_trail = new /datum/effect_system/ion_trail_follow()
 	ion_trail.set_up(src)
@@ -164,7 +164,10 @@
 
 // No falling if we've got our boosters on
 /obj/mecha/combat/fighter/can_fall()
-	return (stabilization_enabled && has_charge(step_energy_drain))
+	if(stabilization_enabled && has_charge(step_energy_drain))
+		return FALSE
+	else
+		return TRUE
 
 /obj/mecha/combat/fighter/proc/consider_gravity(var/moved = FALSE)
 	var/gravity = has_gravity()
@@ -241,14 +244,14 @@
 	var/image/stripe1_overlay
 	var/image/stripe2_overlay
 
-/obj/mecha/combat/fighter/gunpod/loaded/Initialize() //Loaded version with gans
+/obj/mecha/combat/fighter/gunpod/loaded/Initialize(mapload) //Loaded version with gans
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
 	ME.attach(src)
 	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/explosive
 	ME.attach(src)
 
-/obj/mecha/combat/fighter/gunpod/recon/Initialize() //Blinky
+/obj/mecha/combat/fighter/gunpod/recon/Initialize(mapload) //Blinky
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/teleporter(src)
 	ME.attach(src)
@@ -313,7 +316,7 @@
 
 	ground_capable = FALSE
 
-/obj/mecha/combat/fighter/baron/loaded/Initialize() //Loaded version with gans
+/obj/mecha/combat/fighter/baron/loaded/Initialize(mapload) //Loaded version with gans
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
 	ME.attach(src)
@@ -350,7 +353,7 @@
 
 	ground_capable = FALSE
 
-/obj/mecha/combat/fighter/scoralis/loaded/Initialize() //Loaded version with gans
+/obj/mecha/combat/fighter/scoralis/loaded/Initialize(mapload) //Loaded version with gans
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg
 	ME.attach(src)
@@ -389,7 +392,7 @@
 	health = 500
 	maxhealth = 500
 
-/obj/mecha/combat/fighter/allure/loaded/Initialize() //Loaded version with gans
+/obj/mecha/combat/fighter/allure/loaded/Initialize(mapload) //Loaded version with gans
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/cloak
 	ME.attach(src)
@@ -429,7 +432,7 @@
 
 	ground_capable = TRUE
 
-/obj/mecha/combat/fighter/pinnace/loaded/Initialize() //Loaded version with gans
+/obj/mecha/combat/fighter/pinnace/loaded/Initialize(mapload) //Loaded version with gans
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/tool/passenger
 	ME.attach(src)

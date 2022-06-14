@@ -76,7 +76,7 @@ var/list/_client_preferences_by_type
 	if(!enabled)
 		SEND_SOUND(preference_mob, sound(null, repeat = 0, wait = 0, volume = 0, channel = 1))
 		SEND_SOUND(preference_mob, sound(null, repeat = 0, wait = 0, volume = 0, channel = 2))
-//VOREStation Add - Need to put it here because it should be ordered riiiight here.
+// Need to put it here because it should be ordered riiiight here.
 /datum/client_preference/play_jukebox
 	description ="Play jukebox music"
 	key = "SOUND_JUKEBOX"
@@ -98,7 +98,7 @@ var/list/_client_preferences_by_type
 	key = "DIGEST_NOISES"
 	enabled_description = "Noisy"
 	disabled_description = "Silent"
-//VOREStation Add End
+
 /datum/client_preference/weather_sounds
 	description ="Weather sounds"
 	key = "SOUND_WEATHER"
@@ -257,6 +257,13 @@ var/list/_client_preferences_by_type
 	enabled_description = "Announce"
 	disabled_description = "Silent"
 
+/datum/client_preference/help_intent_firing
+	description = "Allow firing on help intent"
+	key = "HELP_INTENT_SAFETY"
+	enabled_by_default = FALSE
+	enabled_description = "Allow"
+	disabled_description = "Forbid"
+
 /datum/client_preference/status_indicators
 	description = "Status Indicators"
 	key = "SHOW_STATUS"
@@ -269,6 +276,15 @@ var/list/_client_preferences_by_type
 		var/datum/plane_holder/PH = preference_mob.plane_holder
 		PH.set_vis(VIS_STATUS, enabled)
 
+/datum/client_preference/parallax
+	description = "Parallax (fancy space, disable for FPS issues"
+	key = "PARALLAX_ENABLED"
+	enabled_description = "Enabled"
+	disabled_description = "Disabled"
+
+/datum/client_preference/parallax/toggled(mob/preference_mob, enabled)
+	. = ..()
+	preference_mob?.client?.parallax_holder?.Reset()
 
 /********************
 * Staff Preferences *
@@ -356,4 +372,3 @@ datum/client_preference/debug/age_verified
 	key = "EXAMINE_LOOK"
 	enabled_description = "Show"
 	disabled_description = "Hide"
-

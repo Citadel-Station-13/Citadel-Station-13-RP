@@ -1,78 +1,60 @@
 import { map } from 'common/collections';
 import { useBackend } from '../backend';
-import { Button, Box, NoticeBox, Section, Table } from '../components';
+import { Button, NoticeBox, Section, Table } from '../components';
 import { Window } from '../layouts';
 
 export const SmartVend = (props, context) => {
-  const { act, config, data } = useBackend(context);
+  const { act, data } = useBackend(context);
   return (
     <Window
       width={440}
-      height={550}
-      resizable>
+      height={550}>
       <Window.Content scrollable>
-        <Section title="Storage">
-          {data.secure && (
-            <NoticeBox danger={data.locked === -1} info={data.locked !== -1}>
-              {data.locked === -1 ? (
-                <Box>Sec.re ACC_** //):securi_nt.diag=&gt;##&apos;or 1=1&apos;%($...</Box>
-              ) : (
-                <Box>Secure Access: Please have your identification ready.</Box>
-              )}
-            </NoticeBox>
-          ) || null}
+        <Section
+          title="Storage"
+          buttons={!!data.isdryer && (
+            <Button
+              icon={data.drying ? 'stop' : 'tint'}
+              onClick={() => act('Dry')}>
+              {data.drying ? 'Stop drying' : 'Dry'}
+            </Button>
+          )}>
           {data.contents.length === 0 && (
             <NoticeBox>
-              Unfortunately, this {config.title} is empty.
+              Unfortunately, this {data.name} is empty.
             </NoticeBox>
           ) || (
             <Table>
               <Table.Row header>
-                <Table.Cell collapsing>
+                <Table.Cell>
                   Item
                 </Table.Cell>
+                <Table.Cell collapsing />
                 <Table.Cell collapsing textAlign="center">
-                  Amount
-                </Table.Cell>
-                <Table.Cell collapsing textAlign="center">
-                  Dispense
+                  {data.verb ? data.verb : 'Dispense'}
                 </Table.Cell>
               </Table.Row>
               {map((value, key) => (
                 <Table.Row key={key}>
-                  <Table.Cell collapsing>
+                  <Table.Cell>
                     {value.name}
                   </Table.Cell>
-                  <Table.Cell collapsing textAlign="center">
-                    {value.amount} in stock
+                  <Table.Cell collapsing textAlign="right">
+                    {value.amount}
                   </Table.Cell>
                   <Table.Cell collapsing>
                     <Button
-                      content="1"
+                      content="One"
                       disabled={value.amount < 1}
                       onClick={() => act('Release', {
-                        index: value.index,
+                        name: value.name,
                         amount: 1,
                       })} />
                     <Button
-                      content="5"
-                      disabled={value.amount < 5}
+                      content="Many"
+                      disabled={value.amount <= 1}
                       onClick={() => act('Release', {
-                        index: value.index,
-                        amount: 5,
-                      })} />
-                    <Button
-                      content="Custom"
-                      disabled={value.amount < 1}
-                      onClick={() => act('Release', {
-                        index: value.index,
-                      })} />
-                    <Button
-                      content="All"
-                      disabled={value.amount < 1}
-                      onClick={() => act('Release', {
-                        index: value.index,
-                        amount: value.amount,
+                        name: value.name,
                       })} />
                   </Table.Cell>
                 </Table.Row>

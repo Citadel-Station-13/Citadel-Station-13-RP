@@ -1,5 +1,3 @@
-import { capitalize } from 'common/string';
-import { round } from 'common/math';
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
 import {

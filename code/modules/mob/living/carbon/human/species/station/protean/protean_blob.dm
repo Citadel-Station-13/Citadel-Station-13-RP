@@ -3,7 +3,7 @@
 	name = "protean blob"
 	desc = "Some sort of big viscous pool of jelly."
 	tt_desc = "Animated nanogoop"
-	icon = 'icons/mob/species/protean/protean.dmi'
+	icon = 'icons/mob/clothing/species/protean/protean.dmi'
 	icon_state = "to_puddle"
 	icon_living = "puddle2"
 	icon_rest = "rest"
@@ -14,7 +14,6 @@
 	health = 250
 	say_list_type = /datum/say_list/protean_blob
 
-	// ai_inactive = TRUE //Always off //VORESTATION AI TEMPORARY REMOVAL
 	show_stat_health = FALSE //We will do it ourselves
 	has_langs = list(LANGUAGE_GALCOM, LANGUAGE_EAL)
 	response_help = "pats the"
@@ -52,7 +51,7 @@
 	var/obj/prev_left_hand
 	var/obj/prev_right_hand
 
-	player_msg = "In this form, you can move a little faster, your health will regenerate as long as you have metal in you, and you can ventcrawl!"
+	player_msg = "In this form, you can move a little faster and your health will regenerate as long as you have metal in you!"
 	holder_type = /obj/item/holder/protoblob
 	can_buckle = TRUE //Blobsurfing
 
@@ -65,12 +64,11 @@
 /mob/living/simple_mob/protean_blob/Initialize(mapload, mob/living/carbon/human/H)
 	. = ..()
 	mob_radio = new(src)
-	myid = new(src)
+	access_card = new(src)
 	if(H)
 		humanform = H
 		updatehealth()
 		refactory = locate() in humanform.internal_organs
-		verbs |= /mob/living/proc/ventcrawl
 		verbs |= /mob/living/proc/hide
 		verbs |= /mob/living/simple_mob/protean_blob/proc/useradio
 		verbs |= /mob/living/simple_mob/protean_blob/proc/appearanceswitch
@@ -147,9 +145,6 @@
 		humanform.adjustBruteLossByPart(amount, BP_TORSO)
 	else
 		..()
-
-/mob/living/simple_mob/protean_blob/ventcrawl_carry()
-	return TRUE //proteans can have literally any small inside them and should still be able to ventcrawl regardless.
 
 /mob/living/simple_mob/protean_blob/adjustFireLoss(var/amount,var/include_robo)
 	if(humanform)
@@ -349,10 +344,10 @@
 	for(var/obj/item/pda/P in things_to_not_drop)
 		if(P.id)
 			var/obj/item/card/id/PID = P.id
-			blob.myid.access += PID.access
+			blob.access_card.access += PID.access
 
 	for(var/obj/item/card/id/I in things_to_not_drop)
-		blob.myid.access += I.access
+		blob.access_card.access += I.access
 
 	if(w_uniform && istype(w_uniform,/obj/item/clothing)) //No webbings tho. We do this after in case a suit was in the way
 		var/obj/item/clothing/uniform = w_uniform
@@ -546,7 +541,7 @@
 	..()
 	plane_holder.set_vis(VIS_AUGMENTED, TRUE)
 
-/datum/modifier/protean/steelBlob // Blob regen is stronger than non-blob to have some incentive other than erp/ventcrawling
+/datum/modifier/protean/steelBlob // Blob regen is stronger than non-blob to have some incentive other than erp
 	name = "Protean Blob Effect - Steel"
 	desc = "You're affected by the presence of steel."
 

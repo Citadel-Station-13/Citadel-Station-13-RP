@@ -22,10 +22,10 @@
 	// No need to do anything else in our power scheme.
 
 // Defining directly here to avoid conflicts with existing set_broken procs in our codebase that behave differently.
-/obj/machinery/atmospherics/unary/engine/proc/set_broken(var/new_state, var/cause)
-	if(!(stat & BROKEN) == !new_state)
+/obj/machinery/atmospherics/component/unary/engine/proc/set_broken(var/new_state, var/cause)
+	if(!(machine_stat & BROKEN) == !new_state)
 		return // Nothing changed
-	stat ^= BROKEN
+	machine_stat ^= BROKEN
 	update_icon()
 
 
@@ -84,7 +84,7 @@
 	if((. = ..()))
 		return
 	if(!allowed(user))
-		to_chat(user, "<span class='warning'>Access Denied.</span>")
+		to_chat(user, SPAN_WARNING("Access Denied."))
 		return TRUE
 	if(ui_status(user, ui_state()) > UI_CLOSE)
 		return interface_interact(user)

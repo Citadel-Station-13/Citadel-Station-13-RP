@@ -178,7 +178,8 @@
 
 #define SDQL2_OPTION_SELECT_OUTPUT_SKIP_NULLS			(1<<0)
 #define SDQL2_OPTION_BLOCKING_CALLS						(1<<1)
-#define SDQL2_OPTION_HIGH_PRIORITY						(1<<2)		//High priority SDQL query, allow using almost all of the tick.
+///High priority SDQL query, allow using almost all of the tick.
+#define SDQL2_OPTION_HIGH_PRIORITY						(1<<2)
 #define SDQL2_OPTION_DO_NOT_AUTOGC						(1<<3)
 
 #define SDQL2_OPTIONS_DEFAULT		(SDQL2_OPTION_SELECT_OUTPUT_SKIP_NULLS)
@@ -499,7 +500,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 			if(length(select_text))
 				var/text = islist(select_text)? select_text.Join() : select_text
 				var/static/result_offset = 0
-				showmob << browse(text, "window=SDQL-result-[result_offset++];size=800x1200")
+				showmob << browse(text, "window=SDQL-result-[result_offset++];size=600x800")
 	show_next_to_key = null
 	if(qdel_on_finish)
 		qdel(src)

@@ -5,7 +5,7 @@
 /mob/living/silicon/robot/get_active_hand()
 	return module_active
 
-/*-------TODOOOOOOOOOO--------*/
+//TODO: Something apparently?
 
 //Verbs used by hotkeys.
 /mob/living/silicon/robot/verb/cmd_unequip_module()

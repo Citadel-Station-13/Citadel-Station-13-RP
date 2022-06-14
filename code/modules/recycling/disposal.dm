@@ -5,10 +5,12 @@
 // Automatically recharges air (unless off), will flush when ready if pre-set
 // Can hold items and human size things, no other draggables
 // Toilets are a type of disposal bin for small objects only and work on magic. By magic, I mean torque rotation
-#define SEND_PRESSURE (700 + ONE_ATMOSPHERE) //kPa - assume the inside of a dispoal pipe is 1 atm, so that needs to be added.
-#define PRESSURE_TANK_VOLUME 150	//L
-#define PUMP_MAX_FLOW_RATE 90		//L/s - 4 m/s using a 15 cm by 15 cm inlet
-
+///kPa - assume the inside of a dispoal pipe is 1 atm, so that needs to be added.
+#define SEND_PRESSURE (700 + ONE_ATMOSPHERE)
+///L
+#define PRESSURE_TANK_VOLUME 150
+///L/s - 4 m/s using a 15 cm by 15 cm inlet
+#define PUMP_MAX_FLOW_RATE 90
 /obj/machinery/disposal
 	name = "disposal unit"
 	desc = "A pneumatic waste disposal unit."
@@ -53,7 +55,7 @@
 
 // attack by item places it in to disposal
 /obj/machinery/disposal/attackby(var/obj/item/I, var/mob/user)
-	if(stat & BROKEN || !I || !user)
+	if(machine_stat & BROKEN || !I || !user)
 		return
 
 	add_fingerprint(user, 0, I)
@@ -221,7 +223,7 @@
 // human interact with machine
 /obj/machinery/disposal/attack_hand(mob/user as mob)
 
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		return
 
 	if(user && user.loc == src)
@@ -240,7 +242,7 @@
 /obj/machinery/disposal/interact(mob/user, var/ai=0)
 
 	src.add_fingerprint(user)
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		user.unset_machine()
 		return
 
@@ -283,7 +285,7 @@
 	if(..())
 		return
 
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		return
 	if(usr.stat || usr.restrained() || src.flushing)
 		return
@@ -326,7 +328,7 @@
 // update the icon & overlays to reflect mode & status
 /obj/machinery/disposal/proc/update()
 	overlays.Cut()
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		icon_state = "disposal-broken"
 		mode = 0
 		flush = 0
@@ -337,7 +339,7 @@
 		overlays += image('icons/obj/pipes/disposal.dmi', "dispover-handle")
 
 	// only handle is shown if no power
-	if(stat & NOPOWER || mode == -1)
+	if(machine_stat & NOPOWER || mode == -1)
 		return
 
 	// 	check for items in disposal - occupied light
@@ -353,7 +355,7 @@
 // timed process
 // charge the gas reservoir and perform flush if ready
 /obj/machinery/disposal/process(delta_time)
-	if(!air_contents || (stat & BROKEN))			// nothing can happen if broken
+	if(!air_contents || (machine_stat & BROKEN))			// nothing can happen if broken
 		update_use_power(USE_POWER_OFF)
 		return
 
@@ -380,7 +382,7 @@
 		src.pressurize() //otherwise charge
 
 /obj/machinery/disposal/proc/pressurize()
-	if(stat & NOPOWER)			// won't charge if no power
+	if(machine_stat & NOPOWER)			// won't charge if no power
 		update_use_power(USE_POWER_OFF)
 		return
 
@@ -1127,6 +1129,8 @@
 			else
 				return mask & (~setbit)
 
+/obj/structure/disposalpipe/junction/flipped //for easier and cleaner mapping
+	icon_state = "pipe-j2"
 
 /obj/structure/disposalpipe/tagger
 	name = "package tagger"

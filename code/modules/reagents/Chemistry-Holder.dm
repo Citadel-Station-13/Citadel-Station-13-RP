@@ -1,5 +1,5 @@
-#define PROCESS_REACTION_ITER 5 //when processing a reaction, iterate this many times
-
+///when processing a reaction, iterate this many times
+#define PROCESS_REACTION_ITER 5
 /datum/reagents
 	var/list/datum/reagent/reagent_list = list()
 	var/total_volume = 0
@@ -33,6 +33,18 @@
 	if(my_atom && my_atom.reagents == src)
 		my_atom.reagents = null
 	return ..()
+
+// Used in attack logs for reagents in pills and such
+/datum/reagents/proc/log_list()
+	if(!length(reagent_list))
+		return "no reagents"
+
+	var/list/data = list()
+	for(var/r in reagent_list) //no reagents will be left behind
+		var/datum/reagent/R = r
+		data += "[R.type] [R.volume]u)"
+		//Using IDs because SOME chemicals (I'm looking at you, chlorhydrate-beer) have the same names as other chemicals.
+	return english_list(data)
 
 /* Internal procs */
 
@@ -107,6 +119,11 @@
 		C.post_reaction(src)
 	update_total()
 
+/datum/reagents/proc/holder_full()
+	if(total_volume >= maximum_volume)
+		return TRUE
+	return FALSE
+
 /* Holder-to-chemical */
 
 /datum/reagents/proc/add_reagent(var/id, var/amount, var/data = null, var/safety = 0)
@@ -119,7 +136,7 @@
 	for(var/datum/reagent/current in reagent_list)
 		if(current.id == id)
 			if(current.id == "blood")
-				if(!isnull(data["species"]) && !isnull(current.data["species"]) && data["species"] != current.data["species"])	// Species bloodtypes are already incompatible, this just stops it from mixing into the one already in a container.
+				if(data && !isnull(data["species"]) && !isnull(current.data["species"]) && data["species"] != current.data["species"])	// Species bloodtypes are already incompatible, this just stops it from mixing into the one already in a container.
 					continue
 
 			current.volume += amount

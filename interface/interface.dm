@@ -9,11 +9,11 @@
 				var/output = replacetext(config_legacy.wikisearchurl, "%s", url_encode(query))
 				src << link(output)
 			else
-				to_chat(src, "<span class='warning'> The wiki search URL is not set in the server configuration.</span>")
+				to_chat(src, SPAN_WARNING("The wiki search URL is not set in the server configuration."))
 		else
 			src << link(config_legacy.wikiurl)
 	else
-		to_chat(src, "<span class='warning'>The wiki URL is not set in the server configuration.</span>")
+		to_chat(src, SPAN_WARNING("The wiki URL is not set in the server configuration."))
 		return
 
 /client/verb/forum()
@@ -25,7 +25,7 @@
 			return
 		src << link(config_legacy.forumurl)
 	else
-		to_chat(src, "<span class='warning'>The forum URL is not set in the server configuration.</span>")
+		to_chat(src, SPAN_WARNING("The forum URL is not set in the server configuration."))
 		return
 
 /client/verb/rules()
@@ -38,7 +38,7 @@
 			return
 		src << link(config_legacy.rulesurl)
 	else
-		to_chat(src, "<span class='danger'>The rules URL is not set in the server configuration.</span>")
+		to_chat(src, SPAN_DANGER("The rules URL is not set in the server configuration."))
 	return
 
 /client/verb/map()
@@ -51,7 +51,7 @@
 			return
 		src << link(config_legacy.mapurl)
 	else
-		to_chat(src, "<span class='danger'>The map URL is not set in the server configuration.</span>")
+		to_chat(src, SPAN_DANGER("The map URL is not set in the server configuration."))
 	return
 
 /client/verb/github()
@@ -64,8 +64,42 @@
 			return
 		src << link(CONFIG_GET(string/githuburl))
 	else
-		to_chat(src, "<span class='danger'>The GitHub URL is not set in the server configuration.</span>")
+		to_chat(src, SPAN_DANGER("The GitHub URL is not set in the server configuration."))
 	return
+
+/client/verb/reportissue()
+	set name = "report-issue"
+	set desc = "Report an issue"
+	set hidden = 1
+	var/githuburl = CONFIG_GET(string/githuburl)
+	if(githuburl)
+		var/message = "This will open the Github issue reporter in your browser. Are you sure?"
+		if(GLOB.revdata.testmerge.len)
+			message += "<br>The following experimental changes are active and are probably the cause of any new or sudden issues you may experience. If possible, please try to find a specific thread for your issue instead of posting to the general issue tracker:<br>"
+			message += GLOB.revdata.GetTestMergeInfo(FALSE)
+		if(tgalert(src, message, "Report Issue","Yes","No")!="Yes")
+			return
+		var/static/issue_template = file2text(".github/ISSUE_TEMPLATE.md")
+		var/servername = "Citadel Station 13 RP" // CONFIG_GET(string/servername)
+		var/url_params = "Reporting client version: [byond_version].[byond_build]\n\n[issue_template]"
+		if(GLOB.round_id || servername)
+			url_params = "Issue reported from [GLOB.round_id ? " Round ID: [GLOB.round_id][servername ? " ([servername])" : ""]" : servername]\n\n[url_params]"
+		DIRECT_OUTPUT(src, link("[githuburl]/issues/new?body=[url_encode(url_params)]"))
+	else
+		to_chat(src, "<span class='danger'>The Github URL is not set in the server configuration.</span>")
+	return
+
+/client/verb/changelog()
+	set name = "Changelog"
+	set category = "OOC"
+	if(!GLOB.changelog_tgui)
+		GLOB.changelog_tgui = new /datum/changelog()
+
+	GLOB.changelog_tgui.ui_interact(usr)
+	if(prefs.lastchangelog != GLOB.changelog_hash)
+		prefs.lastchangelog = GLOB.changelog_hash
+		prefs.save_preferences()
+		winset(src, "infowindow.changelog", "font-style=;")
 
 /client/verb/hotkeys_help()
 	set name = "hotkeys-help"

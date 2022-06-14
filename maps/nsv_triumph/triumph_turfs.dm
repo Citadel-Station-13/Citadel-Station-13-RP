@@ -12,10 +12,7 @@
 	allow_gas_overlays = FALSE
 
 /turf/simulated/floor/outdoors/grass/sif
-	turf_layers = list(
-		/turf/simulated/floor/outdoors/rocks,
-		/turf/simulated/floor/outdoors/dirt
-		)
+	baseturfs = /turf/simulated/floor/outdoors/dirt
 
 // Overriding these for the sake of submaps that use them on other planets.
 // This means that mining on tether base and space is oxygen-generating, but solars and mining should use the triumph subtype
@@ -68,8 +65,7 @@
 			MAT_URANIUM = 5))
 	if(mineral_name && (mineral_name in GLOB.ore_data))
 		mineral = GLOB.ore_data[mineral_name]
-		if(flags & INITIALIZED)
-			UpdateMineral()
+		UpdateMineral()
 
 /turf/simulated/mineral/rich/make_ore(var/rare_ore)
 	if(mineral || ignore_mapgen)
@@ -103,8 +99,7 @@
 			MAT_VERDANTIUM = 1))
 	if(mineral_name && (mineral_name in GLOB.ore_data))
 		mineral = GLOB.ore_data[mineral_name]
-		if(flags & INITIALIZED)
-			UpdateMineral()
+		UpdateMineral()
 
 //Unsimulated
 /turf/unsimulated/wall/planetary/triumph
@@ -159,6 +154,7 @@
 	name = "bluespace"
 	icon = 'icons/turf/space.dmi'
 	icon_state = "bluespace"
+
 /turf/space/bluespace/Initialize(mapload)
 	. = ..()
 	icon = 'icons/turf/space.dmi'
@@ -169,6 +165,7 @@
 	name = "sand transit"
 	icon = 'icons/turf/transit_vr.dmi'
 	icon_state = "desert_ns"
+
 /turf/space/sandyscroll/Initialize(mapload)
 	. = ..()
 	icon_state = "desert_ns"
@@ -180,7 +177,6 @@
 
 /turf/simulated/sky/triumph/Initialize(mapload)
 	. = ..()
-	SSplanets.addTurf(src)
 	set_light(2, 2, "#FFBBBB")
 
 /turf/simulated/sky/triumph/north

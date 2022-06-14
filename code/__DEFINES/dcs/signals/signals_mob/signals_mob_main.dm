@@ -50,10 +50,10 @@
 ////#define COMSIG_MOB_MIND_TRANSFERRED_INTO "mob_mind_transferred_into"
 
 /// From base of obj/allowed(mob/M): (/obj) returns ACCESS_ALLOWED if mob has id access to the obj
-////#define COMSIG_MOB_TRIED_ACCESS "tried_access"
-	////#define ACCESS_ALLOWED (1<<0)
-	////#define ACCESS_DISALLOWED (1<<1)
-	////#define LOCKED_ATOM_INCOMPATIBLE (1<<2)
+#define COMSIG_MOB_TRIED_ACCESS "tried_access"
+	#define ACCESS_ALLOWED (1<<0)
+	#define ACCESS_DISALLOWED (1<<1)
+	#define LOCKED_ATOM_INCOMPATIBLE (1<<2)
 
 /// From base of mob/can_cast_magic(): (mob/user, magic_flags, charge_cost)
 ////#define COMSIG_MOB_RESTRICT_MAGIC "mob_cast_magic"
@@ -71,13 +71,13 @@
 /// From base of /mob/throw_item(): (atom/target)
 ////#define COMSIG_MOB_THROW "mob_throw"
 /// From base of /mob/verb/examinate(): (atom/target)
-////#define COMSIG_MOB_EXAMINATE "mob_examinate"
+#define COMSIG_MOB_EXAMINATE "mob_examinate"
 /// From /mob/living/handle_eye_contact(): (mob/living/other_mob)
-////#define COMSIG_MOB_EYECONTACT "mob_eyecontact"
+#define COMSIG_MOB_EYECONTACT "mob_eyecontact"
 	///? return this if you want to block printing this message to this person, if you want to print your own (does not affect the other person's message)
-	////#define COMSIG_BLOCK_EYECONTACT (1<<0)
+	#define COMSIG_BLOCK_EYECONTACT (1<<0)
 /// From base of /mob/update_sight(): ()
-////#define COMSIG_MOB_UPDATE_SIGHT "mob_update_sight"
+#define COMSIG_MOB_UPDATE_SIGHT "mob_update_sight"
 //// From /mob/living/say(): ()
 ////#define COMSIG_MOB_SAY "mob_say"
 	////#define COMPONENT_UPPERCASE_SPEECH (1<<0)
@@ -96,6 +96,10 @@
 	////#define MOB_DEADSAY_SIGNAL_INTERCEPT (1<<0)
 /// From /mob/living/emote(): ()
 ////#define COMSIG_MOB_EMOTE "mob_emote"
+/// Sent on custom emote. (mob, raw_emote)
+#define COMSIG_MOB_CUSTOM_EMOTE				"custom_emote"
+/// Sent on subtle/subtler. (mob, raw_emote)
+#define COMSIG_MOB_SUBTLE_EMOTE				"subtle_emote"
 /// From base of mob/swap_hand(): (obj/item)
 ////#define COMSIG_MOB_SWAP_HANDS "mob_swap_hands"
 	////#define COMPONENT_BLOCK_SWAP (1<<0)

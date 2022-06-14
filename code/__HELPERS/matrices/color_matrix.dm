@@ -49,6 +49,12 @@ list(0.393,0.349,0.272,0, 0.769,0.686,0.534,0, 0.189,0.168,0.131,0, 0,0,0,1, 0,0
 
 	return list(R + x,R,R, G,G + x,G, B,B,B + x)
 
+/**
+ * greyscale matrix
+ */
+/proc/color_matrix_greyscale()
+	return list(LUMA_R, LUMA_R, LUMA_R, LUMA_G, LUMA_G, LUMA_G, LUMA_B, LUMA_B, LUMA_B)
+
 //Changes distance colors have from rgb(127,127,127) grey
 //1 is identity. 0 makes everything grey >1 blows out colors and greys
 /proc/color_matrix_contrast(value)
@@ -138,6 +144,25 @@ round(cos_inv_third+sqrt3_sin, 0.001), round(cos_inv_third-sqrt3_sin, 0.001), ro
 	var/sinval = round(sin(angle), 0.001); var/cosval = round(cos(angle), 0.001)
 	return list(cosval,sinval,0,0, -sinval,cosval,0,0, 0,0,1,0, 0,0,0,1, 0,0,0,0)
 
+/**
+ * Builds a color matrix that transforms the hue, saturation, and value, all in one operation.
+ */
+/proc/color_matrix_hsv(hue, saturation, value)
+	hue = clamp(360 - hue, 0, 360)
+
+	// This is very much a rough approximation of hueshifting. This carries some artifacting, such as negative values that simply shouldn't exist, but it does get the job done, and that's what matters.
+	var/cos_a = cos(hue) // These have to be inverted from 360, otherwise the hue's inverted
+	var/sin_a = sin(hue)
+	var/rot_x = cos_a + (1 - cos_a) / 3
+	var/rot_y = (1 - cos_a) / 3 - 0.5774 * sin_a // 0.5774 is sqrt(1/3)
+	var/rot_z = (1 - cos_a) / 3 + 0.5774 * sin_a
+
+	return list(
+		round((((1-saturation) * LUMA_R) + (rot_x * saturation)) * value, 0.01), round((((1-saturation) * LUMA_R) + (rot_y * saturation)) * value, 0.01), round((((1-saturation) * LUMA_R) + (rot_z * saturation)) * value, 0.01),
+		round((((1-saturation) * LUMA_G) + (rot_z * saturation)) * value, 0.01), round((((1-saturation) * LUMA_G) + (rot_x * saturation)) * value, 0.01), round((((1-saturation) * LUMA_G) + (rot_y * saturation)) * value, 0.01),
+		round((((1-saturation) * LUMA_B) + (rot_y * saturation)) * value, 0.01), round((((1-saturation) * LUMA_B) + (rot_z * saturation)) * value, 0.01), round((((1-saturation) * LUMA_B) + (rot_x * saturation)) * value, 0.01),
+		0, 0, 0
+	)
 
 //Returns a matrix addition of A with B
 /proc/color_matrix_add(list/A, list/B)
@@ -179,3 +204,17 @@ round(cos_inv_third+sqrt3_sin, 0.001), round(cos_inv_third-sqrt3_sin, 0.001), ro
  */
 /proc/rgba_construct_color_matrix(rr = 1, rg, rb, ra, gr, gg = 1, gb, ga, br, bg, bb = 1, ba, ar, ag, ab, aa = 1, cr, cg, cb, ca)
 	return list(rr, rg, rb, ra, gr, gg, gb, ga, br, bg, bb, ba, ar, ag, ab, aa, cr, cg, cb, ca)
+
+/**
+ * constructs a colored greyscale matrix
+ * warning: bad math up ahead
+ */
+/proc/rgba_auto_greyscale_matrix(rgba_string)
+	// process rgb(a)
+	var/list/L1 = ReadRGB(rgba_string)
+	ASSERT(L1.len)
+	if(L1.len == 3)
+		return rgba_construct_color_matrix(0.39, 0.39, 0.39, 0, 0.5, 0.5, 0.5, 0, 0.11, 0.11, 0.11, 0, 0, 0, 0, 1, max(-0.5, (L1[1] - 255) / 255), max(-0.5, (L1[2] - 255) / 255), max(-0.5, (L1[3] - 255) / 255), 0)
+	else
+		// alpha
+		return rgba_construct_color_matrix(0.39, 0.39, 0.39, 0, 0.5, 0.5, 0.5, 0, 0.11, 0.11, 0.11, 0, 0, 0, 0, 0, max(-0.5, (L1[1] - 255) / 255), max(-0.5, (L1[2] - 255) / 255), max(-0.5, (L1[3] - 255) / 255), L1[4] / 255)

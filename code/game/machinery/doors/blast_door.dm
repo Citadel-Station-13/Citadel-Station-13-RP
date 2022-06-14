@@ -125,7 +125,7 @@
 /obj/machinery/door/blast/attackby(obj/item/C as obj, mob/user as mob)
 	src.add_fingerprint(user, 0, C)
 	if(istype(C, /obj/item)) // For reasons unknown, sometimes C is actually not what it is advertised as, like a mob.
-		if(C.pry == 1 && (user.a_intent != INTENT_HARM || (stat & BROKEN))) // Can we pry it open with something, like a crowbar/fireaxe/lingblade?
+		if(C.pry == 1 && (user.a_intent != INTENT_HARM || (machine_stat & BROKEN))) // Can we pry it open with something, like a crowbar/fireaxe/lingblade?
 			if(istype(C,/obj/item/material/twohanded/fireaxe)) // Fireaxes need to be in both hands to pry.
 				var/obj/item/material/twohanded/fireaxe/F = C
 				if(!F.wielded)
@@ -133,7 +133,7 @@
 					return
 
 			// If we're at this point, it's a fireaxe in both hands or something else that doesn't care for twohanding.
-			if(((stat & NOPOWER) || (stat & BROKEN)) && !( src.operating ))
+			if(((machine_stat & NOPOWER) || (machine_stat & BROKEN)) && !( src.operating ))
 				force_toggle(1, user)
 
 			else
@@ -212,7 +212,7 @@
 // Parameters: Attacking simple mob, incoming damage.
 // Description: Checks the power or integrity of the blast door, if either have failed, chekcs the damage to determine if the creature would be able to open the door by force. Otherwise, super.
 /obj/machinery/door/blast/attack_generic(mob/living/user, damage)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		if(damage >= STRUCTURE_MIN_DAMAGE_THRESHOLD)
 			user.set_AI_busy(TRUE) // If the mob doesn't have an AI attached, this won't do anything.
 			if(src.density)
@@ -239,11 +239,11 @@
 		force_open()
 		return 1
 	else
-		if (src.operating || (stat & BROKEN || stat & NOPOWER))
+		if (src.operating || (machine_stat & BROKEN || machine_stat & NOPOWER))
 			return 1
 		force_open()
 
-	if(autoclose && src.operating && !(stat & BROKEN || stat & NOPOWER))
+	if(autoclose && src.operating && !(machine_stat & BROKEN || machine_stat & NOPOWER))
 		spawn(150)
 			close()
 	return 1
@@ -252,7 +252,7 @@
 // Parameters: None
 // Description: Closes the door. Does necessary checks.
 /obj/machinery/door/blast/close()
-	if (src.operating || (stat & BROKEN || stat & NOPOWER))
+	if (src.operating || (machine_stat & BROKEN || machine_stat & NOPOWER))
 		return
 	force_close()
 
@@ -262,8 +262,8 @@
 // Description: Fully repairs the blast door.
 /obj/machinery/door/blast/proc/repair()
 	health = maxhealth
-	if(stat & BROKEN)
-		stat &= ~BROKEN
+	if(machine_stat & BROKEN)
+		machine_stat &= ~BROKEN
 
 /*
 // This replicates the old functionality coded into CanPass() for this object, however it appeared to have made blast doors not airtight.

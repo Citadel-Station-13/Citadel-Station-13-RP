@@ -15,15 +15,14 @@
 	var/amount = 3
 	var/expand = 1
 	var/metal = 0
-	var/dries = 1 //VOREStation Add
-	var/slips = 0 //VOREStation Add
+	var/dries = 1
+	var/slips = 0
 
-/obj/effect/foam/Initialize(var/mapload, var/ismetal = 0)
+/obj/effect/foam/Initialize(mapload, ismetal = FALSE)
 	. = ..()
-	//icon_state = "[ismetal? "m" : ""]foam" //VOREStation Removal
 	metal = ismetal
 	playsound(src, 'sound/effects/bubbles2.ogg', 80, 1, -3)
-	if(dries) //VOREStation Add
+	if(dries)
 		addtimer(CALLBACK(src, .proc/post_spread), 3 + metal * 3)
 		addtimer(CALLBACK(src, .proc/pre_harden), 12 SECONDS)
 		addtimer(CALLBACK(src, .proc/harden), 15 SECONDS)
@@ -33,8 +32,7 @@
 	checkReagents()
 
 /obj/effect/foam/proc/pre_harden()
-	return //VOREStation Edit
-
+	return
 /obj/effect/foam/proc/harden()
 	if(metal)
 		var/obj/structure/foamedmetal/M = new(src.loc)
@@ -87,14 +85,17 @@
 		return
 	if(metal)
 		return
-	if(slips && istype(AM, /mob/living)) //VOREStation Add
+	if(slips && istype(AM, /mob/living))
 		var/mob/living/M = AM
 		M.slip("the foam", 6)
 
 /datum/effect_system/foam_spread
-	var/amount = 5				// the size of the foam spread.
-	var/list/carried_reagents	// the IDs of reagents present when the foam was mixed
-	var/metal = 0				// 0 = foam, 1 = metalfoam, 2 = ironfoam
+	/// The size of the foam spread.
+	var/amount = 5
+	/// The IDs of reagents present when the foam was mixed.
+	var/list/carried_reagents
+	/// 0 = foam, 1 = metalfoam, 2 = ironfoam.
+	var/metal = 0
 
 /datum/effect_system/foam_spread/set_up(amt=5, loca, var/datum/reagents/carry = null, var/metalfoam = 0)
 	amount = round(sqrt(amt / 3), 1)
@@ -141,7 +142,7 @@
 	anchored = 1
 	name = "foamed metal"
 	desc = "A lightweight foamed metal wall."
-	can_atmos_pass = ATMOS_PASS_NO
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	var/metal = 1 // 1 = aluminum, 2 = iron
 
 /obj/structure/foamedmetal/New()

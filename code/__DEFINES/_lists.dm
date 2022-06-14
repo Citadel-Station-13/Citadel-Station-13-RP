@@ -14,6 +14,8 @@
 #define LAZYADD(L, I) if(!L) { L = list(); } L += I;
 /// Adds I to L, initalizing L if necessary, if I is not already in L
 #define LAZYDISTINCTADD(L, I) if(!L) { L = list(); } L |= I;
+/// please use LAZYDISTINCTADD instead, this is juts an alias for tgcode ports
+#define LAZYOR(L, I) LAZYDISTINCTADD(L, I)
 #define LAZYFIND(L, V) (L ? L.Find(V) : 0)
 /// Reads I from L safely - Works with both associative and traditional lists.
 #define LAZYACCESS(L, I) (L ? (isnum(I) ? (I > 0 && I <= length(L) ? L[I] : null) : L[I]) : null)
@@ -31,6 +33,7 @@
 #define reverseList(L) reverseRange(L.Copy())
 
 #define SAFEPICK(L) (length(L)? pick(L) : null)
+#define SAFEFIND(L, S) (length(L)? (L.Find(S)) : null)
 #define SAFEACCESS(L, I) (isnum(I)? (SAFEINDEXACCESS(L, I)) : ((I in L)? L[I] : null))
 #define SAFEINDEXACCESS(L, I) (ISINRANGE(I, 1, length(L))? L[I] : null)
 // Returns the key based on the index

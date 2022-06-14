@@ -23,7 +23,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 	push_flags = ~HEAVY
 	swap_flags = ~HEAVY
 	flags = NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT
-	appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | RADIATION_GLOWS | HAS_UNDERWEAR
+	species_appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | RADIATION_GLOWS | HAS_UNDERWEAR
 	spawn_flags = SPECIES_CAN_JOIN
 	health_hud_intensity = 2
 	num_alternate_languages = 2
@@ -136,7 +136,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 	color_mult = 1
 	trashcan = TRUE //They have goopy bodies. They can just dissolve things within them.
 
-	wikilink="https://wiki.vore-station.net/Promethean"
+	wikilink = "N/A"
 
 /datum/species/shapeshifter/promethean/New()
 	..()
@@ -160,7 +160,8 @@ var/datum/species/shapeshifter/promethean/prometheans
 
 /datum/species/shapeshifter/promethean/hug(var/mob/living/carbon/human/H, var/mob/living/target)
 
-	if(H.zone_sel.selecting == "head" || H.zone_sel.selecting == "r_hand" || H.zone_sel.selecting == "l_hand") return ..() //VOREStation Edit
+	if(H.zone_sel.selecting == "head" || H.zone_sel.selecting == "r_hand" || H.zone_sel.selecting == "l_hand")
+		return ..()
 	var/t_him = "them"
 	if(ishuman(target))
 		var/mob/living/carbon/human/T = target
@@ -203,8 +204,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 		t_she = "They are"
 	else if(H.identifying_gender == NEUTER)
 		t_she = "It is"
-	else if(H.identifying_gender == HERM) //VOREStation Edit
-		t_she = "Shi is"
+	else if(H.identifying_gender == HERM)		t_she = "Shi is"
 
 	switch(stored_shock_by_ref["\ref[H]"])
 		if(1 to 10)
