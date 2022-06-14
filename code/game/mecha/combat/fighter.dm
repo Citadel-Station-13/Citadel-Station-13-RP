@@ -416,14 +416,14 @@
 
 /obj/mecha/combat/fighter/pinnace
 	name = "pinnace"
-	desc = "A cramped ship's boat, capable of atmospheric and space flight. Not capable of mounting weapons. Capable of fitting one pilot and one passenger."
+	desc = "A cramped ship's boat, capable of atmospheric and space flight. Not capable of mounting traditional weapons. Capable of fitting one pilot and one passenger."
 	icon = 'icons/mecha/fighters64x64.dmi'
 	icon_state = "pinnace"
 	initial_icon = "pinnace"
 
 	max_hull_equip = 1
 	max_weapon_equip = 0
-	max_utility_equip = 0
+	max_utility_equip = 1
 	max_universal_equip = 0
 	max_special_equip = 1
 
