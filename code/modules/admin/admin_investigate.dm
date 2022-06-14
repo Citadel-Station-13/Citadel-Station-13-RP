@@ -19,14 +19,15 @@
 	if(fdel(INVESTIGATE_DIR))	return 1
 	return 0
 
-/atom/proc/investigate_log(var/message, var/subject)
-	if(!message)	return
+/atom/proc/investigate_log(message, subject)
+	if(!message)
+		return
 	var/F = investigate_subject2file(subject)
 	if(!F)	return
 	F << "<small>[time2text(world.timeofday,"hh:mm")] \ref[src] ([x],[y],[z])</small> || [src] [message]<br>"
 
 //ADMINVERBS
-/client/proc/investigate_show( subject in list("singulo","telesci", INVESTIGATE_ATMOS) )
+/client/proc/investigate_show(subject as null|anything in ALL_INVESTIGATE_SUBJECTS)
 	set name = "Investigate"
 	set category = "Admin"
 	if(!holder)	return

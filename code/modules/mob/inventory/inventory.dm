@@ -141,12 +141,15 @@
 		return FALSE
 
 	var/hand = get_held_index(I)
+	var/old
 	if(hand)
 		_unequip_held(I, TRUE)
+		old = SLOT_ID_HANDS
 	else
 		if(!I.current_equipped_slot)
 			stack_trace("tried to unequip an item without current equipped slot.")
 			I.current_equipped_slot = _slot_by_item(I)
+		old = I.current_equipped_slot
 		_unequip_slot(I.current_equipped_slot, TRUE)
 		I.unequipped(src, I.current_equipped_slot)
 
@@ -166,6 +169,8 @@
 		I.dropped(src)
 		if(QDELETED(I))
 			. = FALSE
+
+	log_inventory("[key_name(src)] unequipped [I] from [slot].")
 
 	update_action_buttons()
 
@@ -364,6 +369,9 @@
 	#warn this handles stuff like calling equipped/unequipped on slot swaps, etc
 	#warn make sure to shuffle around properly/call the right procs
 	#warn make sure to handle item reequip!
+
+	log_inventory("[key_name(src)] equipped [I] to [slot].")
+
 	update_action_buttons()
 
 /**
@@ -396,11 +404,14 @@
 		// call procs
 		I.unequipped(src, old_slot)
 		I.equipped(src, slot)
+		log_inventory("[key_name(src)] moved [I] from [old_slot] to hands.")
 		// hand procs handle rest
 		return
 	else
 		// else, this gets painful
 		#warn impl
+
+		log_inventory("[key_name(src)] moved [I] from [old_slot] to [slot].")
 
 /**
  * get all equipped items

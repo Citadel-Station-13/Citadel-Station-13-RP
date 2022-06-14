@@ -40,6 +40,19 @@
 /mob/proc/put_in_left_hand(obj/item/I, force)
 	return FALSE
 
+/mob/proc/put_in_hand(obj/item/I, index, force)
+	return index == 1? put_in_left_hand(I, force) : put_in_right_hand(I, force)
+
+/mob/proc/put_in_hand_or_del(obj/item/I, index, force)
+	. = index == 1? put_in_left_hand(I, force) : put_in_right_hand(I, force)
+	if(!.)
+		qdel(I)
+
+/mob/proc/put_in_hand_or_drop(obj/item/I, index, force, atom/drop_loc = drop_location())
+	. = index == 1? put_in_left_hand(I, force) : put_in_right_hand(I, force)
+	if(!.)
+		I.forceMove(drop_loc)
+
 /**
  * returns held items
  */

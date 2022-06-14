@@ -1,5 +1,3 @@
-#define I_SINGULO "singulo"
-
 /atom/proc/singularity_act(obj/singularity/S, current_size)
 	return
 
@@ -7,7 +5,7 @@
 	return
 
 /mob/living/singularity_act()
-	investigate_log("has been consumed by a singularity", I_SINGULO)
+	investigate_log("has been consumed by a singularity", INVESTIGATE_SINGULO)
 	gib()
 	return 20
 
@@ -22,7 +20,7 @@
 			gain = 100
 		if(mind.assigned_role == USELESS_JOB)
 			gain = rand(0, 300)
-	investigate_log(I_SINGULO,"has been consumed by a singularity", I_SINGULO)
+	investigate_log(INVESTIGATE_SINGULO,"has been consumed by a singularity", INVESTIGATE_SINGULO)
 	gib()
 	return gain
 

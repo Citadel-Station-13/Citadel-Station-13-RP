@@ -1,16 +1,21 @@
 #warn refactor everything
 /atom/movable/screen/inventory
-	var/slot_id	//The indentifier for the slot. It has nothing to do with ID cards.
 
-/atom/movable/screen/inventory/Click()
-	// At this point in client Click() code we have passed the 1/10 sec check and little else
-	// We don't even know if it's a middle click
-	if(!usr.canClick())
-		return 1
-	if(usr.stat || usr.paralysis || usr.stunned || usr.weakened)
-		return 1
-	if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech
-		return 1
+/atom/movable/screen/inventory/proc/check_inventory_usage(mob/user)
+	if(!user.canClick())
+		return FALSE
+	if(user.stunned || user.paralysis || user.weakened || user.stat)
+		return FALSE
+	return TRUE
+
+/atom/movable/screen/inventory/slot
+	/// the ID of this slot
+	var/slot_id
+
+/atom/movable/screen/inventory/slot/Click()
+	if(!check_inventory_usage(usr))
+		return
+
 	switch(name)
 		if("r_hand")
 			if(iscarbon(usr))
@@ -21,9 +26,9 @@
 				var/mob/living/carbon/C = usr
 				C.activate_hand("l")
 		if("swap")
-			usr:swap_hand()
+			usr.swap_hand()
 		if("hand")
-			usr:swap_hand()
+			usr.swap_hand()
 		else
 			if(usr.attack_ui(slot_id))
 				usr.update_inv_l_hand(0)
@@ -33,6 +38,10 @@
 // Hand slots are special to handle the handcuffs overlay
 /atom/movable/screen/inventory/hand
 	var/image/handcuff_overlay
+
+/atom/movable/screen/inventory/hand/Click()
+	if(!check_inventory_usage(usr))
+		return
 
 /atom/movable/screen/inventory/hand/update_icon()
 	..()
