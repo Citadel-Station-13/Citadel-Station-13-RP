@@ -301,7 +301,7 @@
 	if(!can_reenter_corpse)
 		qdel(src)
 
-/mob/living/carbon/brain/caught_soul/on_life()
+/mob/living/carbon/brain/caught_soul/Life(seconds, times_fired)
 	if(!mind || !key)
 		qdel(src)
 		return TRUE

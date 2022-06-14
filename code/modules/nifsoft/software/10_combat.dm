@@ -34,7 +34,7 @@
 	tick_flags = NIF_ACTIVETICK
 	combat_flags = (NIF_C_PAINKILLERS)
 
-/datum/nifsoft/painkillers/Life(seconds, times_fired)
+/datum/nifsoft/painkillers/on_life()
 	if((. = ..()))
 		var/mob/living/carbon/human/H = nif.human
 		H.bloodstr.add_reagent("numbenzyme",0.5)

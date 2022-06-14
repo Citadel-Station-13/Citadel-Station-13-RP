@@ -371,7 +371,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 			//Process all the ones that want that
 			for(var/datum/nifsoft/nifsoft as anything in nifsofts_life)
-				nifsoft.life(human)
+				nifsoft.on_life(human)
 
 		if(NIF_POWFAIL)
 			if(human && human.nutrition < 100)
