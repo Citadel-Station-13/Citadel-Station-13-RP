@@ -140,8 +140,10 @@
 	var/obj/movement_target
 	randomized = FALSE
 
-/mob/living/simple_mob/animal/passive/dog/pug/SirPogsley/Life()
-	..()
+/mob/living/simple_mob/animal/passive/dog/pug/SirPogsley/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
 
 	//Feeding, chasing food, FOOOOODDDD
 	if(!stat && !resting && !buckled)
@@ -199,8 +201,9 @@
 	makes_dirt = FALSE
 	randomized = FALSE
 
-/mob/living/simple_mob/animal/passive/dog/corgi/Ian/Life()
-	..()
+/mob/living/simple_mob/animal/passive/dog/corgi/Ian/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
 
 	//Not replacing with SA FollowTarget mechanics because Ian behaves... very... specifically.
 
@@ -271,8 +274,10 @@
 		return
 	..()
 
-/mob/living/simple_mob/animal/passive/dog/corgi/Lisa/Life()
-	..()
+/mob/living/simple_mob/animal/passive/dog/corgi/Lisa/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
 
 	if(!stat && !resting && !buckled)
 		turns_since_scan++

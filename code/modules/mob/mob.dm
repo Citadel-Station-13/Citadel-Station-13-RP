@@ -194,11 +194,6 @@
 			return M
 	return 0
 
-/mob/proc/Life()
-//	if(organStructure)
-//		organStructure.ProcessOrgans()
-	return
-
 #define UNBUCKLED 0
 #define PARTIALLY_BUCKLED 1
 #define FULLY_BUCKLED 2

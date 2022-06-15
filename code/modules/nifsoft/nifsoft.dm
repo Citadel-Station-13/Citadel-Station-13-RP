@@ -91,7 +91,7 @@
 		qdel(src)
 
 ///Called every life() tick on a mob on active implants
-/datum/nifsoft/proc/life(var/mob/living/carbon/human/human)
+/datum/nifsoft/proc/on_life(var/mob/living/carbon/human/human)
 	return TRUE
 
 ///Called when attempting to activate an implant (could be a 'pulse' activation or toggling it on)
