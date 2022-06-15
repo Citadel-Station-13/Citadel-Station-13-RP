@@ -389,6 +389,24 @@ End Citadel Change */
 	reagent_state = REAGENT_LIQUID
 	color = "#CF3600"
 
+/datum/reagent/nutriment/taropowder
+	name = "Taro Powder"
+	id = "taropowder"
+	description = "A sweet starchy powder made by grinding taro root."
+	taste_description = "sweet purpo"
+	taste_mult = 1.3
+	nutriment_factor = 1
+	color = "#a17d92"
+
+/datum/reagent/nutriment/matchapowder
+	name = "Matcha Powder"
+	id = "matchapowder"
+	description = "An aromatic green tea powder."
+	taste_description = "grassy green"
+	taste_mult = 1.3
+	nutriment_factor = 1
+	color = "#05703e"
+
 /datum/reagent/lipozine // The anti-nutriment.
 	name = "Lipozine"
 	id = "lipozine"
@@ -961,6 +979,20 @@ End Citadel Change */
 	cup_name = "Cup of Milk"
 	cup_desc = "White and nutritious goodness!"
 
+/datum/reagent/drink/milk/coconutmilk
+	name = "Coconut Milk"
+	id = "coconutmilk"
+	description = "An opaque white liquid made from the white inner flesh of a coconut."
+	taste_description = "creamy coconut"
+	color = "#cecece"
+
+	glass_name = "Coconut Milk"
+	glass_desc = "An opaque white liquid made from the white inner flesh of a coconut."
+
+	cup_icon_state = "cup_cream"
+	cup_name = "Cup of Milk"
+	cup_desc = "An opaque white liquid made from the white inner flesh of a coconut."
+
 /datum/reagent/drink/tea
 	name = "Tea"
 	id = "tea"
@@ -1081,6 +1113,110 @@ End Citadel Change */
 
 	cup_name = "Cup of Berry Tea"
 	cup_desc = "A tasty mixture of berries and tea. It's apparently good for you!"
+
+/datum/reagent/drink/tea/icetea/milktea
+	name = "Milk Tea"
+	id = "milktea"
+	description = "Sweet iced tea cut with milk."
+	taste_description = "sweet, silky smooth tea"
+	color = "#ffffff"
+
+	glass_name = "Milk Tea"
+	glass_desc = "Sweet iced tea cut with milk."
+
+	cup_icon_state = "cup_tea"
+	cup_name = "Cup of Milk Tea"
+	cup_desc = "Sweet iced tea cut with milk."
+
+/datum/reagent/drink/tea/icetea/milktea/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)	//Milk tea and its variants inherit the properties of both iced tea and milk.
+	..()
+	if(alien == IS_DIONA)
+		return
+	if(alien == IS_ALRAUNE) //cit change: milk good for plant.
+		to_chat(M, "<span class='vox'>You feel nourished by the milk tea.</span>")
+		M.nutrition += removed * 3
+	M.heal_organ_damage(0.5 * removed, 0)
+	holder.remove_reagent("capsaicin", 10 * removed)
+
+/datum/reagent/drink/tea/icetea/milktea/honeybubbletea
+	name = "Honey Bubble Tea"
+	id = "honeybubbletea"
+	description = "Chilled milk tea with chewy tapioca pearls and a spoonful of honey."
+	taste_description = "sweet, silky smooth tea and notes of honey"
+	color = "#ffffff"
+
+	glass_name = "Honey Bubble Tea"
+	glass_desc = "Chilled milk tea with chewy tapioca pearls and a spoonful of honey."
+
+	cup_icon_state = "cup_tea"
+	cup_name = "Cup of Honey Bubble Tea"
+	cup_desc = "Chilled milk tea with chewy tapioca pearls and a spoonful of honey."
+
+/datum/reagent/drink/tea/icetea/milktea/matchabubbletea
+	name = "Matcha Bubble Tea"
+	id = "matchabubbletea"
+	description = "Chilled milk and green tea with chewy tapioca pearls."
+	taste_description = "sweet, silky smooth green tea"
+	color = "#1db883"
+
+	glass_name = "Matcha Bubble Tea"
+	glass_desc = "Chilled milk and green tea with chewy tapioca pearls. It's GREEN!"
+
+	cup_icon_state = "cup_tea"
+	cup_name = "Cup of Matcha Bubble Tea"
+	cup_desc = "Chilled milk and green tea with chewy tapioca pearls. It's GREEN!"
+
+/datum/reagent/drink/tea/icetea/milktea/tarobubbletea
+	name = "Taro Bubble Tea"
+	id = "tarobubbletea"
+	description = "Chilled milk tea with chewy tapioca pearls and taro."
+	taste_description = "incredibly sweet, silky smooth tea"
+	color = "#b87098"
+
+	glass_name = "Taro Bubble Tea"
+	glass_desc = "Chilled milk tea with chewy tapioca pearls and taro. It's PURPLE!"
+
+	cup_icon_state = "cup_tea"
+	cup_name = "Cup of Taro Bubble Tea"
+	cup_desc = "Chilled milk tea with chewy tapioca pearls and taro. It's PURPLE!"
+
+/datum/reagent/drink/tea/icetea/milktea/cocoabubbletea
+	name = "Chocolate Bubble Tea"
+	id = "cocoabubbletea"
+	description = "Chilled milk tea with chewy tapioca pearls and a spoonful of chocolate mixed in."
+	taste_description = "sweet, silky smooth tea and notes of chocolate"
+	color = "#754a2e"
+
+	glass_name = "Chocolate Bubble Tea"
+	glass_desc = "Chilled milk tea with chewy tapioca pearls and a spoonful of chocolate mixed in."
+
+	cup_icon_state = "cup_tea"
+	cup_name = "Cup of Chocolate Bubble Tea"
+	cup_desc = "Chilled milk tea with chewy tapioca pearls and a spoonful of chocolate mixed in."
+
+/datum/reagent/drink/tea/icetea/milktea/mochabubbletea
+	name = "Mocha Bubble Tea"
+	id = "mochabubbletea"
+	description = "Super sweet mix of milk, tea, coffee, and chocolate, topped off with a generaous helping of whipped cream."
+	taste_description = "barista's ire and sugarmilk overload"
+	color = "#5c2c0c"
+
+	glass_name = "Mocha Bubble Tea"
+	glass_desc = "Super sweet mix of milk, tea, coffee, and chocolate, topped off with a generaous helping of whipped cream. That seems like a lot of sugar. You're going to put that in you?"
+
+	cup_icon_state = "cup_tea"
+	cup_name = "Cup of Mocha Bubble Tea"
+	cup_desc = "Super sweet mix of milk, tea, coffee, and chocolate, topped off with a generaous helping of whipped cream. That seems like a lot of sugar. You're going to put that in you?"
+
+/datum/reagent/drink/coconutwater
+	name = "Coconut Water"
+	id = "coconutwater"
+	description = "A fresh clear liquid found within coconuts."
+	taste_description = "tropical, somewhat buttery water"
+	color = "#fafafa70"
+
+	glass_name = "Coconut Water"
+	glass_desc = "A fresh clear liquid found within coconuts."
 
 /datum/reagent/drink/coffee
 	name = "Coffee"
@@ -4034,6 +4170,28 @@ End Citadel Change */
 	glass_name = "Royal Jelly"
 	glass_desc = "A drink usually enjoyed by only the highest castes of Apinae society. Incredibly sweet, it is said to have enormous health benefits."
 
+/datum/reagent/ethanol/coquito
+	name = "Coquito"
+	id = "coquito"
+	description = "A holiday beverage akin to eggnog, made with coconut milk."
+	taste_description = "creamy spiced coconut"
+	color = "#ffffff"
+	strength = 20
+
+	glass_name = "Coquito"
+	glass_desc = "It's a little coconut!"
+
+/datum/reagent/ethanol/pinacolada
+	name = "Pina Colada"
+	id = "pinacolada"
+	description = "Rum, pineapple, and coconut plended up with ice."
+	taste_description = "coconuts and pineapple soaked in rum"
+	color = "#fdf49e"
+	strength = 20
+
+	glass_name = "Piña Colada"
+	glass_desc = "For those not into yoga."
+
 //This functions the same as Doctor's Delight, except it gets you drunk too.
 /datum/reagent/ethanol/royaljelly/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
@@ -4181,7 +4339,7 @@ End Citadel Change */
 //Calculates a scaling factor for scalding damage, based on the temperature of the oil and creature's heat resistance
 /datum/reagent/nutriment/triglyceride/oil/proc/heatdamage(var/mob/living/carbon/M)
 	var/threshold = 360//Human heatdamage threshold
-	var/datum/species/S = M.get_species_name(1)
+	var/datum/species/S = M.species
 	if (S && istype(S))
 		threshold = S.heat_level_1
 

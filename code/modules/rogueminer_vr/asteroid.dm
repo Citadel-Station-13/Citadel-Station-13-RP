@@ -23,7 +23,7 @@
 	var/difficulty	= 0		//Difficulty this asteroid was created at
 
 	//Locational stats
-	var/atom/movable/landmark/asteroid_spawn/mylandmark	//The landmark I'm spawned at, if any.
+	var/obj/landmark/asteroid_spawn/mylandmark	//The landmark I'm spawned at, if any.
 
 	//Asteroid map
 	//The map struct is:

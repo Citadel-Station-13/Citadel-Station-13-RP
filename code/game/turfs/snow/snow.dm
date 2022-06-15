@@ -33,8 +33,9 @@
 	icon = 'icons/turf/snow.dmi'
 	icon_state = "snow"
 
-/turf/snow/gravsnow
+/turf/snow/gravsnow2
 	name = "snow"
+	icon = 'icons/turf/snow.dmi'
 	icon_state = "gravsnow"
 
 /turf/snow/plating
@@ -44,3 +45,8 @@
 /turf/snow/drift
 	name = "snowy plating"
 	icon_state = "snowyplayingdrift"
+
+/turf/snow/gravsnow
+	name = "snow"
+	icon = 'icons/turf/snow_new.dmi'
+	icon_state = "gravsnow"

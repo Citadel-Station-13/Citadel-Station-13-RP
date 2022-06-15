@@ -1773,7 +1773,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "fx" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor{
@@ -3221,7 +3221,7 @@
 	},
 /area/awaymission/labs/command)
 "iW" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor,
@@ -3562,7 +3562,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "jK" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor/plating,
@@ -4781,7 +4781,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/civilian)
 "mz" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor/plating,
@@ -4873,7 +4873,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/cargo)
 "mL" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor,
@@ -6788,7 +6788,7 @@
 	},
 /area/awaymission/labs/civilian)
 "rU" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor{

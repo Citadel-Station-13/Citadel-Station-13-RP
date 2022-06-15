@@ -4,7 +4,7 @@
 
 /* Documenting a couple of potentially useful color matrices here to inspire ideas
 // Greyscale - indentical to saturation @ 0
-list(LUM_R,LUM_R,LUM_R,0, LUM_G,LUM_G,LUM_G,0, LUM_B,LUM_B,LUM_B,0, 0,0,0,1, 0,0,0,0)
+list(LUMA_R,LUMA_R,LUMA_R,0, LUMA_G,LUMA_G,LUMA_G,0, LUMA_B,LUMA_B,LUMA_B,0, 0,0,0,1, 0,0,0,0)
 
 // Color inversion
 list(-1,0,0,0, 0,-1,0,0, 0,0,-1,0, 0,0,0,1, 1,1,1,0)
@@ -26,9 +26,9 @@ list(0.393,0.349,0.272,0, 0.769,0.686,0.534,0, 0.189,0.168,0.131,0, 0,0,0,1, 0,0
 //1 is identity, 0 is greyscale, >1 oversaturates colors
 /proc/color_matrix_saturation(value)
 	var/inv = 1 - value
-	var/R = round(LUM_R * inv, 0.001)
-	var/G = round(LUM_G * inv, 0.001)
-	var/B = round(LUM_B * inv, 0.001)
+	var/R = round(LUMA_R * inv, 0.001)
+	var/G = round(LUMA_G * inv, 0.001)
+	var/B = round(LUMA_B * inv, 0.001)
 
 	return list(R + value,R,R,0, G,G + value,G,0, B,B,B + value,0, 0,0,0,1, 0,0,0,0)
 
@@ -43,9 +43,9 @@ list(0.393,0.349,0.272,0, 0.769,0.686,0.534,0, 0.189,0.168,0.131,0, 0,0,0,1, 0,0
 		percent *= 3
 	var/x = 1 + percent / 100
 	var/inv = 1 - x
-	var/R = LUM_R * inv
-	var/G = LUM_G * inv
-	var/B = LUM_B * inv
+	var/R = LUMA_R * inv
+	var/G = LUMA_G * inv
+	var/B = LUMA_B * inv
 
 	return list(R + x,R,R, G,G + x,G, B,B,B + x)
 
@@ -53,7 +53,7 @@ list(0.393,0.349,0.272,0, 0.769,0.686,0.534,0, 0.189,0.168,0.131,0, 0,0,0,1, 0,0
  * greyscale matrix
  */
 /proc/color_matrix_greyscale()
-	return list(LUM_R, LUM_R, LUM_R, LUM_G, LUM_G, LUM_G, LUM_B, LUM_B, LUM_B)
+	return list(LUMA_R, LUMA_R, LUMA_R, LUMA_G, LUMA_G, LUMA_G, LUMA_B, LUMA_B, LUMA_B)
 
 //Changes distance colors have from rgb(127,127,127) grey
 //1 is identity. 0 makes everything grey >1 blows out colors and greys
@@ -125,9 +125,9 @@ round(cos_inv_third+sqrt3_sin, 0.001), round(cos_inv_third-sqrt3_sin, 0.001), ro
 	var/constB = 0.140
 	var/constC = -0.283
 	return list(
-	LUM_R + cos * (1-LUM_R) + sin * -LUM_R, LUM_R + cos * -LUM_R + sin * constA, LUM_R + cos * -LUM_R + sin * -(1-LUM_R),
-	LUM_G + cos * -LUM_G + sin * -LUM_G, LUM_G + cos * (1-LUM_G) + sin * constB, LUM_G + cos * -LUM_G + sin * LUM_G,
-	LUM_B + cos * -LUM_B + sin * (1-LUM_B), LUM_B + cos * -LUM_B + sin * constC, LUM_B + cos * (1-LUM_B) + sin * LUM_B
+	LUMA_R + cos * (1-LUMA_R) + sin * -LUMA_R, LUMA_R + cos * -LUMA_R + sin * constA, LUMA_R + cos * -LUMA_R + sin * -(1-LUMA_R),
+	LUMA_G + cos * -LUMA_G + sin * -LUMA_G, LUMA_G + cos * (1-LUMA_G) + sin * constB, LUMA_G + cos * -LUMA_G + sin * LUMA_G,
+	LUMA_B + cos * -LUMA_B + sin * (1-LUMA_B), LUMA_B + cos * -LUMA_B + sin * constC, LUMA_B + cos * (1-LUMA_B) + sin * LUMA_B
 	)
 
 //These next three rotate values about one axis only
@@ -144,6 +144,25 @@ round(cos_inv_third+sqrt3_sin, 0.001), round(cos_inv_third-sqrt3_sin, 0.001), ro
 	var/sinval = round(sin(angle), 0.001); var/cosval = round(cos(angle), 0.001)
 	return list(cosval,sinval,0,0, -sinval,cosval,0,0, 0,0,1,0, 0,0,0,1, 0,0,0,0)
 
+/**
+ * Builds a color matrix that transforms the hue, saturation, and value, all in one operation.
+ */
+/proc/color_matrix_hsv(hue, saturation, value)
+	hue = clamp(360 - hue, 0, 360)
+
+	// This is very much a rough approximation of hueshifting. This carries some artifacting, such as negative values that simply shouldn't exist, but it does get the job done, and that's what matters.
+	var/cos_a = cos(hue) // These have to be inverted from 360, otherwise the hue's inverted
+	var/sin_a = sin(hue)
+	var/rot_x = cos_a + (1 - cos_a) / 3
+	var/rot_y = (1 - cos_a) / 3 - 0.5774 * sin_a // 0.5774 is sqrt(1/3)
+	var/rot_z = (1 - cos_a) / 3 + 0.5774 * sin_a
+
+	return list(
+		round((((1-saturation) * LUMA_R) + (rot_x * saturation)) * value, 0.01), round((((1-saturation) * LUMA_R) + (rot_y * saturation)) * value, 0.01), round((((1-saturation) * LUMA_R) + (rot_z * saturation)) * value, 0.01),
+		round((((1-saturation) * LUMA_G) + (rot_z * saturation)) * value, 0.01), round((((1-saturation) * LUMA_G) + (rot_x * saturation)) * value, 0.01), round((((1-saturation) * LUMA_G) + (rot_y * saturation)) * value, 0.01),
+		round((((1-saturation) * LUMA_B) + (rot_y * saturation)) * value, 0.01), round((((1-saturation) * LUMA_B) + (rot_z * saturation)) * value, 0.01), round((((1-saturation) * LUMA_B) + (rot_x * saturation)) * value, 0.01),
+		0, 0, 0
+	)
 
 //Returns a matrix addition of A with B
 /proc/color_matrix_add(list/A, list/B)

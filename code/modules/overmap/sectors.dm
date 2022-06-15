@@ -198,7 +198,7 @@
 
 	if(!levels_for_distress)
 		levels_for_distress = list(1)
-	for(var/zlevel in levels_for_distress)
+	for(var/zlevel in 1 to world.maxz)
 		priority_announcement.Announce(message, new_title = "Automated Distress Signal", new_sound = 'sound/AI/sos.ogg', zlevel = zlevel)
 
 	var/image/I = image(icon, icon_state = "distress")

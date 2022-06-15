@@ -1,7 +1,7 @@
 /area/looking_glass
 	name = "make a subtype"
 
-	var/atom/movable/landmark/looking_glass/our_landmark
+	var/obj/landmark/looking_glass/our_landmark
 	var/list/our_turfs = list()
 	var/list/our_optional_turfs = list()
 

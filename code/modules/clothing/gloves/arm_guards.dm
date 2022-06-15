@@ -61,3 +61,8 @@
 	armor = list(melee = 40, bullet = 40, laser = 60, energy = 35, bomb = 30, bio = 0, rad = 0)
 	min_cold_protection_temperature = T0C - 20
 	cold_protection = ARMS
+
+/obj/item/clothing/gloves/arm_guard/combat/imperial
+	name = "imperial gauntlets"
+	desc = "Made of some exotic metal, and crafted by space elves. Elves have delicate hands."
+	icon_state = "ge_gloves"

@@ -29,6 +29,19 @@
 	else
 		return
 
+/obj/structure/plasticflaps/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
+	if(isliving(caller))
+		if(isbot(caller))
+			return TRUE
+
+		var/mob/living/living_caller = caller
+		if(!living_caller.can_ventcrawl() && living_caller.mob_size > MOB_TINY)
+			return FALSE
+
+	if(caller?.pulling)
+		return CanAStarPass(ID, to_dir, caller.pulling)
+	return TRUE //diseases, stings, etc can pass
+
 /obj/structure/plasticflaps/CanAllowThrough(atom/A, turf/T)
 	if(istype(A) && A.checkpass(PASSGLASS))
 		return prob(60)

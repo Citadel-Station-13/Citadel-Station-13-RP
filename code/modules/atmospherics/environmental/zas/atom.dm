@@ -6,7 +6,7 @@
 		return 0
 
 	for(var/turf/simulated/turf in locs)
-		air_master.mark_for_update(turf)
+		turf.queue_zone_update()
 
 	return 1
 

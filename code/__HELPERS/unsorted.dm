@@ -730,12 +730,11 @@ proc/GaussRandRound(var/sigma,var/roundto)
 
 					//Move the air from source to dest
 					var/turf/simulated/ST = T
-					if(istype(ST) && ST.zone)
+					if(istype(ST))
 						var/turf/simulated/SX = X
 						if(!SX.air)
 							SX.make_air()
-						SX.air.copy_from(ST.zone.air)
-						ST.zone.remove(ST)
+						SX.air.copy_from(ST.copy_cell_volume())
 
 					var/z_level_change = FALSE
 					if(T.z != X.z)
@@ -908,27 +907,22 @@ proc/DuplicateObject(obj/original, var/perfectcopy = 0 , var/sameloc = 0)
 					refined_trg -= B
 					continue moving
 
-
-
-
 	if(toupdate.len)
 		for(var/turf/simulated/T1 in toupdate)
-			air_master.mark_for_update(T1)
+			T1.queue_zone_update()
 
 	return copiedobjs
 
-
-
-proc/get_cardinal_dir(atom/A, atom/B)
+/proc/get_cardinal_dir(atom/A, atom/B)
 	var/dx = abs(B.x - A.x)
 	var/dy = abs(B.y - A.y)
 	return get_dir(A, B) & (rand() * (dx+dy) < dy ? 3 : 12)
 
 ///Chances are 1:value. anyprob(1) will always return true
-proc/anyprob(value)
+/proc/anyprob(value)
 	return (rand(1,value)==value)
 
-proc/view_or_range(distance = world.view , center = usr , type)
+/proc/view_or_range(distance = world.view , center = usr , type)
 	switch(type)
 		if("view")
 			. = view(distance,center)
@@ -936,7 +930,7 @@ proc/view_or_range(distance = world.view , center = usr , type)
 			. = range(distance,center)
 	return
 
-proc/oview_or_orange(distance = world.view , center = usr , type)
+/proc/oview_or_orange(distance = world.view , center = usr , type)
 	switch(type)
 		if("view")
 			. = oview(distance,center)
@@ -944,7 +938,7 @@ proc/oview_or_orange(distance = world.view , center = usr , type)
 			. = orange(distance,center)
 	return
 
-proc/get_mob_with_client_list()
+/proc/get_mob_with_client_list()
 	var/list/mobs = list()
 	for(var/mob/M in GLOB.mob_list)
 		if (M.client)

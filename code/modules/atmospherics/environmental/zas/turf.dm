@@ -93,7 +93,7 @@
 
 	var/self_block = CanAtmosPass(src, NONE)
 	if(self_block == ATMOS_PASS_AIR_BLOCKED)
-		#ifdef ZASDBG
+		#ifdef ZAS_DEBUG_GRAPHICS
 		if(verbose)
 			to_chat(world, "Self-blocked.")
 		//dbg(blocked)
@@ -122,7 +122,7 @@
 		var/them_to_us = potential.CanAtmosPass(src, REVERSE_DIR(d))
 		if(them_to_us == ATMOS_PASS_AIR_BLOCKED)
 
-			#ifdef ZASDBG
+			#ifdef ZAS_DEBUG_GRAPHICS
 			if(verbose) to_chat(world, "[d] is blocked.")
 			//unsim.dbg(air_blocked, turn(180,d))
 			#endif
@@ -132,7 +132,7 @@
 		var/us_to_them = CanAtmosPass(potential, d)
 		if(us_to_them == ATMOS_PASS_AIR_BLOCKED)
 
-			#ifdef ZASDBG
+			#ifdef ZAS_DEBUG_GRAPHICS
 			if(verbose) to_chat(world, "[d] is blocked.")
 			//dbg(air_blocked, d)
 			#endif
@@ -153,7 +153,6 @@
 			var/turf/simulated/S = potential
 			S.open_directions |= REVERSE_DIR(d)
 			if(S.has_valid_zone())
-
 				//Might have assigned a zone, since this happens for each direction.
 				if(!zone)
 
@@ -161,7 +160,7 @@
 					//    they are blocking us and we are not blocking them, or if
 					//    we are blocking them and not blocking ourselves - this prevents tiny zones from forming on doorways.
 					if(((them_to_us == ATMOS_PASS_ZONE_BLOCKED) && (us_to_them != ATMOS_PASS_ZONE_BLOCKED)) || ((us_to_them == ATMOS_PASS_ZONE_BLOCKED) && (self_block != ATMOS_PASS_ZONE_BLOCKED)))
-						#ifdef ZASDBG
+						#ifdef ZAS_DEBUG_GRAPHICS
 						if(verbose)
 							to_chat(world, "[d] is zone blocked.")
 						//dbg(zone_blocked, d)
@@ -173,21 +172,21 @@
 					else
 						S.zone.add(src)
 
-						#ifdef ZASDBG
+						#ifdef ZAS_DEBUG_GRAPHICS
 						dbg(assigned)
 						if(verbose) to_chat(world, "Added to [zone]")
 						#endif
 
 				else if(S.zone != zone)
 
-					#ifdef ZASDBG
+					#ifdef ZAS_DEBUG_GRAPHICS
 					if(verbose)
 						to_chat(world, "Connecting to [sim.zone]")
 					#endif
 
 					air_master.connect(src, potential, min(them_to_us, us_to_them), d)
 
-			#ifdef ZASDBG
+			#ifdef ZAS_DEBUG_GRAPHICS
 				else if(verbose)
 					to_chat(world, "[d] has same zone.")
 
@@ -204,7 +203,7 @@
 		var/datum/zas_zone/newzone = new
 		newzone.add(src)
 
-	#ifdef ZASDBG
+	#ifdef ZAS_DEBUG_GRAPHICS
 		dbg(created)
 	#endif
 

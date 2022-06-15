@@ -14,7 +14,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 
 /turf/proc/empty(turf_type=/turf/space, baseturf_type, list/ignore_typecache, flags)
 	// Remove all atoms except observers, landmarks, docking ports
-	var/static/list/ignored_atoms = typecacheof(list(/mob/observer, /atom/movable/landmark, /atom/movable/lighting_object, /obj/effect/shuttle_landmark))
+	var/static/list/ignored_atoms = typecacheof(list(/mob/observer, /obj/landmark, /atom/movable/lighting_object, /obj/effect/shuttle_landmark))
 	var/list/allowed_contents = typecache_filter_list_reverse(GetAllContentsIgnoring(ignore_typecache), ignored_atoms)
 	allowed_contents -= src
 	for(var/i in 1 to allowed_contents.len)
@@ -138,7 +138,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	// restore/update atmos
 	if(old_fire)
 		fire = old_fire
-	air_master.mark_for_update(src)
+	queue_zone_update()
 
 	// restore lighting
 	if(SSlighting.initialized)
@@ -172,10 +172,10 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 /turf/simulated/ChangeTurf(path, list/new_baseturfs, flags)
 	if((flags & CHANGETURF_INHERIT_AIR) && ispath(path, /turf/simulated))
 		// invalidate zone
-		if(zone)
+		if(has_valid_zone())
 			if(can_safely_remove_from_zone())
 				zone.remove(src)
-				SSair.mark_for_update(src)
+				queue_zone_update()
 			else
 				zone.rebuild()
 		// store air
@@ -189,11 +189,11 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		air = GM
 	else
 		// if we're not doing so,
-		if(zone)
+		if(has_valid_zone())
 			// remove and rebuild zone
 			if(can_safely_remove_from_zone())
 				zone.remove(src)
-				SSair.mark_for_update(src)
+				queue_zone_update()
 			else
 				zone.rebuild()
 		// at this point the zone does not have our gas mixture in it, and is invalidated
