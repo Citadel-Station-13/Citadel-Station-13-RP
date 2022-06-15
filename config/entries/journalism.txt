@@ -1,0 +1,8 @@
+## Set to anything but 0 to enable picture store. Both SQL and a web server are required.
+PICTURE_STORE
+
+## Folder to save pictures to. In production, you probably don't want asset-cache.
+PICTURE_STORE_WEBROOT data/asset-store/pictures/
+
+## URL to grab pictures from.
+PICTURE_STORE_URL

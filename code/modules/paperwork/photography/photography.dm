@@ -21,7 +21,6 @@
 /********
 * photo *
 ********/
-var/global/photo_count = 0
 
 /obj/item/photo
 	name = "photo"

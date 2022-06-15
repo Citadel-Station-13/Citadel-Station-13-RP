@@ -14,10 +14,16 @@
 	var/md5
 	/// taken this round
 	var/made_this_round = FALSE
-	/// icon file if loaded into memory
-	var/icon/loaded
+	/// asset - the data that comprises of this picture
+	var/asset
+	/// the type of asset we hold. freshly deserialized probably have a path, freshly captured proabbly have an icon
+	var/asset_type
 	/// thumbnail icon - cached
 	var/icon/thumbnail
+	/// size in pixels
+	var/size_x
+	/// size in pixels
+	var/size_y
 
 	//!# Metadata
 	/// name - by user
@@ -32,3 +38,14 @@
 	var/metadata_scribbles
 
 
+
+
+
+
+/**
+ * requests we load our actual icon into memory
+ *
+ * returns FALSE if we can't
+ */
+/datum/picture/proc/load_into_memory(timeout = 1 MINUTES)
+	#warn impl

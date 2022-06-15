@@ -1,0 +1,2 @@
+## Is the SQL backend enabled?
+SQL_ENABLED

@@ -1,13 +1,15 @@
 # You can use the "$include" directive to split your configs however you want
 
-#$include dbconfig.txt
 #$include comms.txt
 #$include antag_rep.txt
 $include resources.txt
 $include logging.txt
+$include entries/dbconfig.txt
 $include entries/fail2topic.txt
 $include entries/game_options.txt
+$include entries/journalism.txt
 $include entries/lobby.txt
+$include entries/persistence.txt
 $include entries/urls.txt
 $include entries/hub.txt
 
