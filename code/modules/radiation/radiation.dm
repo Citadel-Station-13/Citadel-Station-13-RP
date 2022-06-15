@@ -1,12 +1,18 @@
 // Describes a point source of radiation.  Created either in response to a pulse of radiation, or over an irradiated atom.
 // Sources will decay over time, unless something is renewing their power!
 /datum/radiation_source
-	var/turf/source_turf		// Location of the radiation source.
-	var/rad_power				// Strength of the radiation being emitted.
-	var/decay = TRUE			// True for automatic decay.  False if owner promises to handle it (i.e. supermatter)
-	var/respect_maint = FALSE	// True for not affecting AF_RAD_SHIELDED areas.
-	var/flat = FALSE			// True for power falloff with distance.
-	var/range					// Cached maximum range, used for quick checks against mobs.
+	/// Location of the radiation source.
+	var/turf/source_turf
+	/// Strength of the radiation being emitted.
+	var/rad_power
+	/// True for automatic decay.  False if owner promises to handle it (i.e. supermatter)
+	var/decay = TRUE
+	/// True for not affecting AF_RAD_SHIELDED areas.
+	var/respect_maint = FALSE
+	/// True for power falloff with distance.
+	var/flat = FALSE
+	/// Cached maximum range, used for quick checks against mobs.
+	var/range
 
 /datum/radiation_source/Destroy()
 	SSradiation.sources -= src
@@ -25,8 +31,7 @@
 		if(!flat)
 			range = min(round(sqrt(rad_power / config_legacy.radiation_lower_limit)), 31)  // R = rad_power / dist**2 - Solve for dist
 
-/turf
-	var/cached_rad_resistance = 0
+/turf/var/cached_rad_resistance = 0
 
 /turf/proc/calc_rad_resistance()
 	cached_rad_resistance = 0
@@ -36,7 +41,8 @@
 
 		else if(O.density) //So open doors don't get counted
 			var/datum/material/M = O.get_material()
-			if(!M)	continue
+			if(!M)
+				continue
 			cached_rad_resistance += M.weight + M.radiation_resistance
 	// Looks like storing the contents length is meant to be a basic check if the cache is stale due to items enter/exiting.  Better than nothing so I'm leaving it as is. ~Leshana
 	SSradiation.resistance_cache[src] = (length(contents) + 1)
@@ -48,11 +54,11 @@
 /obj/var/rad_resistance = 0  // Allow overriding rad resistance
 
 // If people expand the system, this may be useful. Here as a placeholder until then
-/atom/proc/rad_act(var/severity)
-	return 1
+/atom/proc/rad_act(severity)
+	return TRUE
 
-/mob/living/rad_act(var/severity)
-	if(severity && !isbelly(loc)) //eaten mobs are made immune to radiation
-		src.apply_effect(severity, IRRADIATE, src.getarmor(null, "rad"))
+/mob/living/rad_act(severity)
+	if(severity > RAD_LEVEL_LOW)
+		apply_damage(severity, IRRADIATE, getarmor(null, "rad"))
 		for(var/atom/I in src)
 			I.rad_act(severity)

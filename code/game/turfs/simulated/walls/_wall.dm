@@ -43,8 +43,19 @@
 	for(var/obj/O in src)
 		O.hide(1)
 
-/turf/simulated/wall/Initialize(mapload)
+/turf/simulated/wall/Initialize(mapload, materialtype, rmaterialtype, girdertype)
 	. = ..()
+	if(!materialtype)
+		materialtype = MAT_STEEL
+	material = get_material_by_name(materialtype)
+	if(!girdertype)
+		girdertype = MAT_STEEL
+	girder_material = get_material_by_name(girdertype)
+	if(!isnull(rmaterialtype))
+		reinf_material = get_material_by_name(rmaterialtype)
+	// update_material(TRUE)
+	if(material?.radioactivity || reinf_material?.radioactivity || girder_material?.radioactivity)
+		START_PROCESSING(SSturfs, src)
 	// if(!can_engrave)
 	// 	ADD_TRAIT(src, TRAIT_NOT_ENGRAVABLE, INNATE_TRAIT)
 	// if(is_station_level(z))
