@@ -18,6 +18,8 @@
 #define LANGUAGE_GALCOM "Galactic Common"
 #define LANGUAGE_GIBBERISH "Babel"
 #define LANGUAGE_GUTTER "Gutter"
+/// moth native language
+#define LANGUAGE_LUINIMMA "Luinimma"
 #define LANGUAGE_MINBUS "Minbus"
 #define LANGUAGE_NEAERA "Neaeranae"
 #define LANGUAGE_OCCULT "Occult"

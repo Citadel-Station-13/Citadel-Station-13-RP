@@ -116,3 +116,9 @@
   - refactor: Examine code overhauled.
   silicons:
   - bugfix: you can tilde again
+2022-06-14:
+  Captain277:
+  - rscadd: 'Added new things tweak: tweaked a few things'
+  - bugfix: Fixes distress beacon alert.
+  Zandario:
+  - rscadd: User-friendly colormate matrix UI

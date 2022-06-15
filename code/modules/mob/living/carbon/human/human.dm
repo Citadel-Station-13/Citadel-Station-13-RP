@@ -750,14 +750,19 @@
 
 	return 0
 
-
 /mob/living/carbon/human/proc/check_dna()
 	dna.check_integrity(src)
 	return
 
-/mob/living/carbon/human/get_species_name()
+/mob/living/carbon/human/get_species_name(examine)
 	// no more species check, if we runtime, fuck you, fix your bugs.
-	return species.name
+	return examine? species.get_examine_name() : species.get_display_name()
+
+/mob/living/carbon/human/get_true_species_name()
+	return species.get_true_name()
+
+/mob/living/carbon/human/get_species_id()
+	return species.id
 
 /mob/living/carbon/human/proc/play_xylophone()
 	if(!src.xylophone)

@@ -47,7 +47,7 @@
 
 		var/obj/L = null
 
-		for(var/atom/movable/landmark/sloc in GLOB.landmarks_list)
+		for(var/obj/landmark/sloc in GLOB.landmarks_list)
 			if(sloc.name != C.data) continue
 			if(locate(/mob/living) in sloc.loc) continue
 			L = sloc
@@ -56,7 +56,7 @@
 		if(!L)
 			L = locate("landmark*[C.data]") // use old stype
 
-		if(istype(L, /atom/movable/landmark) && istype(L.loc, /turf))
+		if(istype(L, /obj/landmark) && istype(L.loc, /turf))
 			if(!user.attempt_consume_item_for_construction(I))
 				return
 			to_chat(usr, "You insert the coordinates into the machine.")

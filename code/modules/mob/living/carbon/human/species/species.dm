@@ -19,10 +19,18 @@
 //! ## Intrinsics
 	/// abstract type
 	var/abstract_type = /datum/species
+	/// uid
+	var/id
+	// TODO: ref species by id in code, so we can rename as needed
 
 //! ## Descriptors and strings.
-	/// Species name.
+	/// Species real name.
+	// TODO: STOP USING THIS. This is being phased out for species IDs.
 	var/name
+	/// what you see on tooltip/examine
+	var/examine_name
+	/// what you see on health analyzers/IC
+	var/display_name
 	/// Pluralized name (since "[name]s" is not always valid)
 	var/name_plural
 	/// A brief lore summary for use in the chargen screen.
@@ -42,6 +50,8 @@
 	var/fire_icon_state = "humanoid"
 	/// Icons used for worn items in suit storage slot.
 	var/suit_storage_icon = 'icons/mob/clothing/belt_mirror.dmi'
+	/// override for bodytype
+	var/override_worn_legacy_bodytype
 
 	/// default bodytype to use for clothing rendering
 	var/default_bodytype = BODYTYPE_DEFAULT
@@ -412,8 +422,10 @@
 	var/base_species = null // Unused outside of a few species
 	var/selects_bodytype = FALSE // Allows the species to choose from body types intead of being forced to be just one.
 
-
 /datum/species/New()
+	if(isnull(id))
+		id = ckey(name)
+
 	if(hud_type)
 		hud = new hud_type()
 	else

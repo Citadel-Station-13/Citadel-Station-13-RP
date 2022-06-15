@@ -462,7 +462,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	if(f_style)
 		var/datum/sprite_accessory/facial_hair_style = facial_hair_styles_list[f_style]
-		if(facial_hair_style && facial_hair_style.species_allowed && (src.species.get_bodytype_legacy(src) in facial_hair_style.species_allowed))
+		if(facial_hair_style && (!facial_hair_style.apply_restrictions || (src.species.get_bodytype_legacy(src) in facial_hair_style.species_allowed)))
 			var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
 			if(facial_hair_style.do_colouration)
 				facial_s.Blend(rgb(r_facial, g_facial, b_facial), facial_hair_style.color_blend_mode)
@@ -475,7 +475,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 			if(!(hair_style.flags & HAIR_VERY_SHORT))
 				hair_style = hair_styles_list["Short Hair"]
 
-		if(hair_style && (src.species.get_bodytype_legacy(src) in hair_style.species_allowed))
+		if(hair_style && (!hair_style.apply_restrictions || (src.species.get_bodytype_legacy(src) in hair_style.species_allowed)))
 			var/icon/grad_s
 			var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
 			var/icon/hair_s_add
@@ -648,7 +648,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		var/obj/item/clothing/suit/S = wear_suit
 		if((wear_suit?.flags_inv & HIDETAIL) || (istype(S) && S.taurized)) // Reasons to not mask: 1. If you're wearing a suit that hides the tail or if you're wearing a taurized suit.
 			c_mask = null
-	overlays_standing[UNIFORM_LAYER] = w_uniform.make_worn_icon(body_type = species.get_bodytype_legacy(src), slot_id = SLOT_ID_UNIFORM, default_icon = INV_W_UNIFORM_DEF_ICON, default_layer = UNIFORM_LAYER, clip_mask = c_mask)
+	overlays_standing[UNIFORM_LAYER] = w_uniform.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_UNIFORM, default_icon = INV_W_UNIFORM_DEF_ICON, default_layer = UNIFORM_LAYER, clip_mask = c_mask)
 
 	apply_layer(UNIFORM_LAYER)
 
@@ -665,7 +665,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(w_uniform && istype(w_uniform, /obj/item/clothing/under))
 		var/obj/item/clothing/under/U = w_uniform
 		if(U.displays_id)
-			overlays_standing[ID_LAYER] = wear_id.make_worn_icon(body_type = species.get_bodytype_legacy(src), slot_id = SLOT_ID_WORN_ID, default_icon = INV_WEAR_ID_DEF_ICON, default_layer = ID_LAYER)
+			overlays_standing[ID_LAYER] = wear_id.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_WORN_ID, default_icon = INV_WEAR_ID_DEF_ICON, default_layer = ID_LAYER)
 
 	apply_layer(ID_LAYER)
 
@@ -678,7 +678,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!gloves)
 		return //No gloves, no reason to be here.
 
-	overlays_standing[GLOVES_LAYER]	= gloves.make_worn_icon(body_type = species.get_bodytype_legacy(src), slot_id = SLOT_ID_GLOVES, default_icon = INV_GLOVES_DEF_ICON, default_layer = GLOVES_LAYER)
+	overlays_standing[GLOVES_LAYER]	= gloves.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_GLOVES, default_icon = INV_GLOVES_DEF_ICON, default_layer = GLOVES_LAYER)
 
 	apply_layer(GLOVES_LAYER)
 
@@ -691,7 +691,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!glasses)
 		return //Not wearing glasses, no need to update anything.
 
-	overlays_standing[GLASSES_LAYER] = glasses.make_worn_icon(body_type = species.get_bodytype_legacy(src), slot_id = SLOT_ID_GLOVES, default_icon = INV_EYES_DEF_ICON, default_layer = GLASSES_LAYER)
+	overlays_standing[GLASSES_LAYER] = glasses.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_GLOVES, default_icon = INV_EYES_DEF_ICON, default_layer = GLASSES_LAYER)
 
 	apply_layer(GLASSES_LAYER)
 
@@ -711,11 +711,11 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	var/image/both = image(icon = 'icons/effects/effects.dmi', icon_state = "nothing", layer = BODY_LAYER+EARS_LAYER)
 
 	if(l_ear)
-		var/image/standing = l_ear.make_worn_icon(body_type = species.get_bodytype_legacy(src), slot_id = SLOT_ID_LEFT_EAR, default_icon = INV_EARS_DEF_ICON, default_layer = EARS_LAYER)
+		var/image/standing = l_ear.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_LEFT_EAR, default_icon = INV_EARS_DEF_ICON, default_layer = EARS_LAYER)
 		both.add_overlay(standing)
 
 	if(r_ear)
-		var/image/standing = r_ear.make_worn_icon(body_type = species.get_bodytype_legacy(src), slot_id = SLOT_ID_RIGHT_EAR, default_icon = INV_EARS_DEF_ICON, default_layer = EARS_LAYER)
+		var/image/standing = r_ear.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_RIGHT_EAR, default_icon = INV_EARS_DEF_ICON, default_layer = EARS_LAYER)
 		both.add_overlay(standing)
 
 	overlays_standing[EARS_LAYER] = both
@@ -744,7 +744,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 			shoe_layer = SHOES_LAYER_ALT
 
 	//NB: the use of a var for the layer on this one
-	overlays_standing[shoe_layer] = shoes.make_worn_icon(body_type = species.get_bodytype_legacy(src), slot_id = SLOT_ID_SHOES, default_icon = INV_FEET_DEF_ICON, default_layer = shoe_layer)
+	overlays_standing[shoe_layer] = shoes.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_SHOES, default_icon = INV_FEET_DEF_ICON, default_layer = shoe_layer)
 
 	apply_layer(SHOES_LAYER)
 	apply_layer(SHOES_LAYER_ALT)
@@ -776,7 +776,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!head)
 		return //No head item, why bother.
 
-	overlays_standing[HEAD_LAYER] = head.make_worn_icon(body_type = species.get_bodytype_legacy(src), slot_id = SLOT_ID_HEAD, default_icon = INV_HEAD_DEF_ICON, default_layer = HEAD_LAYER)
+	overlays_standing[HEAD_LAYER] = head.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_HEAD, default_icon = INV_HEAD_DEF_ICON, default_layer = HEAD_LAYER)
 
 	apply_layer(HEAD_LAYER)
 
@@ -798,7 +798,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 			belt_layer = BELT_LAYER_ALT
 
 	//NB: this uses a var from above
-	overlays_standing[belt_layer] = belt.make_worn_icon(body_type = species.get_bodytype_legacy(src), slot_id = SLOT_ID_BELT, default_icon = INV_BELT_DEF_ICON, default_layer = belt_layer)
+	overlays_standing[belt_layer] = belt.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_BELT, default_icon = INV_BELT_DEF_ICON, default_layer = belt_layer)
 
 	apply_layer(belt_layer)
 
@@ -831,8 +831,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	if(tail_is_rendered && valid_clip_mask && !(istype(S) && S.taurized)) //Clip the lower half of the suit off using the tail's clip mask for taurs since taur bodies aren't hidden.
 		c_mask = valid_clip_mask
-	overlays_standing[SUIT_LAYER] = wear_suit.make_worn_icon(body_type = species.get_bodytype_legacy(src), slot_id = SLOT_ID_SUIT, default_icon = iconFile, default_layer = SUIT_LAYER, clip_mask = c_mask)
-
+	overlays_standing[SUIT_LAYER] = wear_suit.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_SUIT, default_icon = iconFile, default_layer = SUIT_LAYER, clip_mask = c_mask)
 
 	apply_layer(SUIT_LAYER)
 
@@ -845,7 +844,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!wear_mask || (head && head.flags_inv & HIDEMASK))
 		return //Why bother, nothing in mask slot.
 
-	overlays_standing[FACEMASK_LAYER] = wear_mask.make_worn_icon(body_type = species.get_bodytype_legacy(src), slot_id = SLOT_ID_MASK, default_icon = INV_MASK_DEF_ICON, default_layer = FACEMASK_LAYER)
+	overlays_standing[FACEMASK_LAYER] = wear_mask.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_MASK, default_icon = INV_MASK_DEF_ICON, default_layer = FACEMASK_LAYER)
 
 	apply_layer(FACEMASK_LAYER)
 
@@ -858,7 +857,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!back)
 		return //Why do anything
 
-	overlays_standing[BACK_LAYER] = back.make_worn_icon(body_type = species.get_bodytype_legacy(src), slot_id = SLOT_ID_BACK, default_icon = INV_BACK_DEF_ICON, default_layer = BACK_LAYER)
+	overlays_standing[BACK_LAYER] = back.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_BACK, default_icon = INV_BACK_DEF_ICON, default_layer = BACK_LAYER)
 
 	apply_layer(BACK_LAYER)
 
@@ -891,7 +890,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!handcuffed)
 		return //Not cuffed, why bother
 
-	overlays_standing[HANDCUFF_LAYER] = handcuffed.make_worn_icon(body_type = species.get_bodytype_legacy(src), slot_id = SLOT_ID_HANDCUFFED, default_icon = INV_HCUFF_DEF_ICON, default_layer = HANDCUFF_LAYER)
+	overlays_standing[HANDCUFF_LAYER] = handcuffed.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_HANDCUFFED, default_icon = INV_HCUFF_DEF_ICON, default_layer = HANDCUFF_LAYER)
 
 	apply_layer(HANDCUFF_LAYER)
 
@@ -904,7 +903,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!legcuffed)
 		return //Not legcuffed, why bother.
 
-	overlays_standing[LEGCUFF_LAYER] = legcuffed.make_worn_icon(body_type = species.get_bodytype_legacy(src), slot_id = SLOT_ID_LEGCUFFED, default_icon = INV_LCUFF_DEF_ICON, default_layer = LEGCUFF_LAYER)
+	overlays_standing[LEGCUFF_LAYER] = legcuffed.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_LEGCUFFED, default_icon = INV_LCUFF_DEF_ICON, default_layer = LEGCUFF_LAYER)
 
 	apply_layer(LEGCUFF_LAYER)
 
@@ -917,7 +916,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!r_hand)
 		return //No hand, no bother.
 
-	overlays_standing[R_HAND_LAYER] = r_hand.make_worn_icon(body_type = species.get_bodytype_legacy(src), inhands = TRUE, slot_id = slot_r_hand_str, default_icon = INV_R_HAND_DEF_ICON, default_layer = R_HAND_LAYER)
+	overlays_standing[R_HAND_LAYER] = r_hand.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), inhands = TRUE, slot_id = slot_r_hand_str, default_icon = INV_R_HAND_DEF_ICON, default_layer = R_HAND_LAYER)
 
 	apply_layer(R_HAND_LAYER)
 
@@ -930,7 +929,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!l_hand)
 		return //No hand, no bother.
 
-	overlays_standing[L_HAND_LAYER] = l_hand.make_worn_icon(body_type = species.get_bodytype_legacy(src), inhands = TRUE, slot_id = slot_l_hand_str, default_icon = INV_L_HAND_DEF_ICON, default_layer = L_HAND_LAYER)
+	overlays_standing[L_HAND_LAYER] = l_hand.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), inhands = TRUE, slot_id = slot_l_hand_str, default_icon = INV_L_HAND_DEF_ICON, default_layer = L_HAND_LAYER)
 
 	apply_layer(L_HAND_LAYER)
 

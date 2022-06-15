@@ -192,14 +192,14 @@
 		// Get the desired spawn location to put the body
 		var/S = null
 		var/list/vr_landmarks = list()
-		for(var/atom/movable/landmark/virtual_reality/sloc in GLOB.landmarks_list)
+		for(var/obj/landmark/virtual_reality/sloc in GLOB.landmarks_list)
 			vr_landmarks += sloc.name
 
 		S = input(occupant, "Please select a location to spawn your avatar at:", "Spawn location") as null|anything in vr_landmarks
 		if(!S)
 			return 0
 
-		for(var/atom/movable/landmark/virtual_reality/i in GLOB.landmarks_list)
+		for(var/obj/landmark/virtual_reality/i in GLOB.landmarks_list)
 			if(i.name == S)
 				S = i
 				break

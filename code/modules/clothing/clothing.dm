@@ -77,10 +77,10 @@
 
 		if(H.species)
 			if(exclusive)
-				if(!(H.species.get_bodytype_legacy(H) in species_restricted))
+				if(!(H.species.get_worn_legacy_bodytype(H) in species_restricted))
 					wearable = 1
 			else
-				if(H.species.get_bodytype_legacy(H) in species_restricted)
+				if(H.species.get_worn_legacy_bodytype(H) in species_restricted)
 					wearable = 1
 
 			if(!wearable && !(slot in list(SLOT_ID_LEFT_POCKET, SLOT_ID_RIGHT_POCKET, SLOT_ID_SUIT_STORAGE)))
@@ -789,8 +789,8 @@
 	var/icon/under_icon
 	if(icon_override)
 		under_icon = icon_override
-	else if(H && sprite_sheets && sprite_sheets[H.species.get_bodytype_legacy(H)])
-		under_icon = sprite_sheets[H.species.get_bodytype_legacy(H)]
+	else if(H && sprite_sheets && sprite_sheets[H.species.get_worn_legacy_bodytype(H)])
+		under_icon = sprite_sheets[H.species.get_worn_legacy_bodytype(H)]
 	else if(item_icons && item_icons[SLOT_ID_UNIFORM])
 		under_icon = item_icons[SLOT_ID_UNIFORM]
 	else if ("[worn_state]_s" in icon_states(rolled_down_icon))
@@ -814,8 +814,8 @@
 	var/icon/under_icon
 	if(icon_override)
 		under_icon = icon_override
-	else if(H && sprite_sheets && sprite_sheets[H.species.get_bodytype_legacy(H)])
-		under_icon = sprite_sheets[H.species.get_bodytype_legacy(H)]
+	else if(H && sprite_sheets && sprite_sheets[H.species.get_worn_legacy_bodytype(H)])
+		under_icon = sprite_sheets[H.species.get_worn_legacy_bodytype(H)]
 	else if(item_icons && item_icons[SLOT_ID_UNIFORM])
 		under_icon = item_icons[SLOT_ID_UNIFORM]
 	else if ("[worn_state]_s" in icon_states(rolled_down_sleeves_icon))

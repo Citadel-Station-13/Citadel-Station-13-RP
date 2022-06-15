@@ -229,7 +229,7 @@
 /obj/machinery/crypod/Initialize(mapload)
 	. = ..()
 	if(type == /obj/machinery/cryopod) // sue me
-		AddComponent(/datum/component/slaved_atom_to_loc, /atom/movable/landmark/spawnpoint/latejoin/station/cryogenics, TRUE)
+		AddComponent(/datum/component/slaved_atom_to_loc, /obj/landmark/spawnpoint/latejoin/station/cryogenics, TRUE)
 
 /obj/machinery/cryopod/robot
 	name = "robotic storage unit"

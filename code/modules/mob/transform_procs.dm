@@ -101,7 +101,7 @@
 			O.add_language(LANGUAGE_ROOTLOCAL, 1)
 
 	if(move)
-		var/atom/movable/landmark/spawnpoint/S = SSjob.GetLatejoinSpawnpoint(job_path = /datum/job/station/ai)
+		var/obj/landmark/spawnpoint/S = SSjob.GetLatejoinSpawnpoint(job_path = /datum/job/station/ai)
 		O.forceMove(S.GetSpawnLoc())
 		S.OnSpawn(O)
 
