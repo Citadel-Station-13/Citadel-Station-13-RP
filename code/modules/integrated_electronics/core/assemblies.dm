@@ -419,7 +419,7 @@
 /obj/item/electronic_assembly/attackby(var/obj/item/I, var/mob/user, intent)
 	if(can_anchor && I.is_wrench())
 		if(anchored_by)
-			to_chat(user, SPAN_WARNING(pick("You fail to get purchase on [anchored_by]'s bolts.","[src]'s [anchored_by] protests!","The bolts defeat your paltry [user.get_species_name()] attempts to loosen them.")))
+			to_chat(user, SPAN_WARNING(pick("You fail to get purchase on [anchored_by]'s bolts.","[src]'s [anchored_by] protests!","The bolts defeat your paltry attempts to loosen them.")))
 			return
 		anchored = !anchored
 		to_chat(user, SPAN_NOTICE("You've [anchored ? "" : "un"]secured \the [src] to \the [get_turf(src)]."))

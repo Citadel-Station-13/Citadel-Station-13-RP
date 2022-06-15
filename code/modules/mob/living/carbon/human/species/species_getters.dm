@@ -22,9 +22,6 @@
 /datum/species/proc/get_damage_mask(mob/living/carbon/human/H)
 	return damage_mask
 
-/datum/species/proc/get_examine_name(mob/living/carbon/human/H)
-	return name
-
 /datum/species/proc/get_icobase(mob/living/carbon/human/H, get_deform)
 	return (get_deform ? deform : icobase)
 
@@ -42,6 +39,9 @@
 
 /datum/species/proc/get_bodytype(mob/living/carbon/human/H)
 	return name
+
+/datum/species/proc/get_worn_legacy_bodytype(mob/living/carbon/human/H)
+	return override_worn_legacy_bodytype || name
 
 /datum/species/proc/get_knockout_message(mob/living/carbon/human/H)
 	return ((H && H.isSynthetic()) ? "encounters a hardware fault and suddenly reboots!" : knockout_message)
@@ -125,11 +125,17 @@
 	return wing_hair //Since the tail has it.
 
 /datum/species/proc/get_wing(mob/living/carbon/human/H)
-		return wing
+	return wing
 
 /datum/species/proc/get_wing_animation(mob/living/carbon/human/H)
 	return wing_animation
 
+//!# Names
+/datum/species/proc/get_true_name(mob/living/carbon/human/H)
+	return name
 
-/datum/species/proc/get_footstep(var/mob/living/carbon/human/H, var/footstep_type)
-	return
+/datum/species/proc/get_display_name(mob/living/carbon/human/H)
+	return display_name || name
+
+/datum/species/proc/get_examine_name(mob/living/carbon/human/H)
+	return examine_name || name

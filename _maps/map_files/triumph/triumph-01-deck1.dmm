@@ -1162,7 +1162,7 @@
 	dir = 4
 	},
 /obj/machinery/light/small,
-/atom/movable/landmark{
+/obj/landmark{
 	name = "xeno_spawn";
 	pixel_x = -1
 	},
@@ -2859,7 +2859,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/atom/movable/landmark{
+/obj/landmark{
 	name = "xeno_spawn";
 	pixel_x = -1
 	},
@@ -4676,7 +4676,7 @@
 	dir = 1
 	},
 /obj/structure/table/bench/padded,
-/atom/movable/landmark/spawnpoint/job/station_engineer,
+/obj/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "pW" = (
@@ -5112,7 +5112,7 @@
 /turf/simulated/wall,
 /area/engineering/atmos/storage)
 "rv" = (
-/atom/movable/landmark/spawnpoint/job/atmospheric_technician,
+/obj/landmark/spawnpoint/job/atmospheric_technician,
 /obj/item/radio/intercom{
 	dir = 1;
 	name = "Station Intercom (General)";
@@ -7973,7 +7973,7 @@
 	dir = 5
 	},
 /obj/structure/lattice,
-/atom/movable/landmark/engine_loader,
+/obj/landmark/engine_loader,
 /turf/space,
 /area/space)
 "BC" = (
@@ -8206,7 +8206,7 @@
 	pixel_y = 32
 	},
 /obj/structure/table/bench/padded,
-/atom/movable/landmark/spawnpoint/job/station_engineer,
+/obj/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "Cy" = (
@@ -8448,7 +8448,7 @@
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "Dt" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "carpspawn"
 	},
 /turf/space,
@@ -9255,7 +9255,7 @@
 /area/engineering/hallway/lower)
 "FF" = (
 /obj/machinery/camera/network/engineering,
-/atom/movable/landmark/spawnpoint/job/atmospheric_technician,
+/obj/landmark/spawnpoint/job/atmospheric_technician,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/engineering/atmos/storage)
 "FG" = (
@@ -10320,7 +10320,7 @@
 	dir = 5
 	},
 /obj/structure/table/bench/padded,
-/atom/movable/landmark/spawnpoint/job/station_engineer,
+/obj/landmark/spawnpoint/job/station_engineer,
 /obj/item/storage/toolbox/lunchbox/nt,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
@@ -12185,7 +12185,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "Ps" = (
-/atom/movable/landmark/spawnpoint/job/atmospheric_technician,
+/obj/landmark/spawnpoint/job/atmospheric_technician,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/engineering/atmos/storage)
 "Pu" = (
@@ -14072,7 +14072,7 @@
 /area/maintenance/engi_engine)
 "VA" = (
 /obj/structure/table/bench/padded,
-/atom/movable/landmark/spawnpoint/job/station_engineer,
+/obj/landmark/spawnpoint/job/station_engineer,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
@@ -14088,7 +14088,7 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 1
 	},
-/atom/movable/landmark/spawnpoint/job/chief_engineer,
+/obj/landmark/spawnpoint/job/chief_engineer,
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/heads/chief)
 "VE" = (

@@ -1204,7 +1204,7 @@
 	},
 /area/centcom/specops)
 "bT" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "Response Team"
 	},
 /turf/unsimulated/floor/steel{
@@ -2918,7 +2918,7 @@
 /area/tdome/tdomeobserve)
 "fc" = (
 /obj/structure/bed/chair,
-/atom/movable/landmark{
+/obj/landmark{
 	name = "tdomeobserve"
 	},
 /turf/unsimulated/floor{
@@ -3587,7 +3587,7 @@
 	},
 /area/tdome/tdome1)
 "gm" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "tdome2"
 	},
 /turf/unsimulated/floor{
@@ -3606,7 +3606,7 @@
 	},
 /area/tdome/tdome1)
 "go" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "tdome1"
 	},
 /turf/unsimulated/floor{
@@ -3741,7 +3741,7 @@
 /obj/machinery/recharger{
 	pixel_y = 4
 	},
-/atom/movable/landmark{
+/obj/landmark{
 	name = "tdome2"
 	},
 /turf/unsimulated/floor{
@@ -3753,7 +3753,7 @@
 /obj/machinery/recharger{
 	pixel_y = 4
 	},
-/atom/movable/landmark{
+/obj/landmark{
 	name = "tdome1"
 	},
 /turf/unsimulated/floor{
@@ -3932,7 +3932,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
 "hc" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "tdome2"
 	},
 /obj/machinery/camera/network/thunder{
@@ -3953,7 +3953,7 @@
 	},
 /area/tdome)
 "he" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "tdome1"
 	},
 /obj/machinery/camera/network/thunder{
@@ -16174,7 +16174,7 @@
 /turf/unsimulated/wall/planetary/virgo3b,
 /area/centcom/bathroom)
 "DB" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "Commando"
 	},
 /turf/unsimulated/floor{

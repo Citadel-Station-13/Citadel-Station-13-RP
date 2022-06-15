@@ -276,7 +276,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "fD" = (
-/atom/movable/landmark/map_data/lavaland_east,
+/obj/landmark/map_data/lavaland_east,
 /turf/simulated/mineral/triumph/lavaland,
 /area/lavaland/east/explored)
 "fL" = (

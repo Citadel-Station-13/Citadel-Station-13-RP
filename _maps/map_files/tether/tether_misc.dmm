@@ -289,7 +289,7 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_theatre)
 "aP" = (
-/atom/movable/landmark/costume/random,
+/obj/landmark/costume/random,
 /obj/structure/table/rack/holorack,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_theatre)
@@ -382,7 +382,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
 "bj" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "Holocarp Spawn"
 	},
 /turf/simulated/floor/holofloor/reinforced,
@@ -1347,7 +1347,7 @@
 /turf/simulated/shuttle/floor/alien,
 /area/unknown/dorm5)
 "ec" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "Holocarp Spawn Random"
 	},
 /turf/simulated/floor/holofloor/space,
@@ -1928,7 +1928,7 @@
 	},
 /area/holodeck/holodorm/source_beach)
 "gm" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "Wolfgirl Spawn"
 	},
 /turf/simulated/floor/holofloor/snow,
@@ -2039,7 +2039,7 @@
 /area/shuttle/escape)
 "hg" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/atom/movable/landmark{
+/obj/landmark{
 	name = "Catgirl Spawn"
 	},
 /turf/simulated/floor/holofloor/grass,
@@ -3794,7 +3794,7 @@
 /area/centcom/simulated/medical)
 "FH" = (
 /obj/structure/bed/chair,
-/atom/movable/landmark{
+/obj/landmark{
 	name = "endgame_exit"
 	},
 /obj/item/toy/plushie/mouse{
@@ -5126,13 +5126,13 @@
 /area/unknown/dorm3)
 "TF" = (
 /obj/structure/bed/chair,
-/atom/movable/landmark{
+/obj/landmark{
 	name = "endgame_exit"
 	},
 /turf/unsimulated/beach/sand,
 /area/beach)
 "TG" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "endgame_exit"
 	},
 /turf/unsimulated/beach/sand,
