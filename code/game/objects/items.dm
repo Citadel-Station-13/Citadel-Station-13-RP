@@ -259,19 +259,40 @@
 /// See inventory_sizes.dm for the defines.
 /obj/item/examine(mob/user)
 	. = ..()
-	var/size
-	switch(src.w_class)
-		if(ITEMSIZE_TINY)
-			size = "tiny"
-		if(ITEMSIZE_SMALL)
-			size = "small"
-		if(ITEMSIZE_NORMAL)
-			size = "normal-sized"
-		if(ITEMSIZE_LARGE)
-			size = "bulky"
-		if(ITEMSIZE_HUGE)
-			size = "huge"
-	. += "It is a [size] item."
+	. += "[gender == PLURAL ? "They are" : "It is"] a [weightclass2text(w_class)] item."
+
+	// if(resistance_flags & INDESTRUCTIBLE)
+	// 	. += "[src] seems extremely robust! It'll probably withstand anything that could happen to it!"
+	// else
+	// 	if(resistance_flags & LAVA_PROOF)
+	// 		. += "[src] is made of an extremely heat-resistant material, it'd probably be able to withstand lava!"
+	// 	if(resistance_flags & (ACID_PROOF | UNACIDABLE))
+	// 		. += "[src] looks pretty robust! It'd probably be able to withstand acid!"
+	// 	if(resistance_flags & FREEZE_PROOF)
+	// 		. += "[src] is made of cold-resistant materials."
+	// 	if(resistance_flags & FIRE_PROOF)
+	// 		. += "[src] is made of fire-retardant materials."
+
+	// if(item_flags & (ITEM_CAN_BLOCK | ITEM_CAN_PARRY))
+	// 	var/datum/block_parry_data/data = return_block_parry_datum(block_parry_data)
+	// 	. += "[src] has the capacity to be used to block and/or parry. <a href='?src=[REF(data)];name=[name];block=[item_flags & ITEM_CAN_BLOCK];parry=[item_flags & ITEM_CAN_PARRY];render=1'>\[Show Stats\]</a>"
+
+/proc/weightclass2text(w_class)
+	switch(w_class)
+		if(WEIGHT_CLASS_TINY, ITEMSIZE_TINY)
+			. = "tiny"
+		if(WEIGHT_CLASS_SMALL, ITEMSIZE_SMALL)
+			. = "small"
+		if(WEIGHT_CLASS_NORMAL, ITEMSIZE_NORMAL)
+			. = "normal-sized"
+		if(WEIGHT_CLASS_BULKY, ITEMSIZE_LARGE)
+			. = "bulky"
+		if(WEIGHT_CLASS_HUGE, ITEMSIZE_HUGE)
+			. = "huge"
+		if(WEIGHT_CLASS_GIGANTIC)
+			. = "gigantic"
+		else
+			. = ""
 
 /obj/item/attack_hand(mob/living/user as mob)
 	if (!user) return

@@ -1,6 +1,0 @@
-author: "lingonberry1234"
-delete-after: True
-changes: 
-  - rscadd: "Brings in the Advanced Mop and Bluespace Trashbag from Bay/Main.
-tweak: Tweaks a few values and adds to the RnD console."
-  - bugfix: "Fixes mop description."

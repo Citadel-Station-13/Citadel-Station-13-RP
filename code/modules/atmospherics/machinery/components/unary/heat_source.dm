@@ -1,5 +1,3 @@
-//TODO: Put this under a common parent type with freezers to cut down on the copypasta
-#define THERMOMACHINE_CHEAT_FACTOR 2.5
 
 /obj/machinery/atmospherics/component/unary/heater
 	name = "gas heating system"
@@ -58,7 +56,7 @@
 /obj/machinery/atmospherics/component/unary/heater/process(delta_time)
 	..()
 
-	if(stat & (NOPOWER|BROKEN) || !use_power)
+	if(machine_stat & (NOPOWER|BROKEN) || !use_power)
 		heating = 0
 		update_icon()
 		return

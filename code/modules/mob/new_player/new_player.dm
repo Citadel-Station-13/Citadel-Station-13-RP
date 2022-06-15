@@ -256,7 +256,7 @@
 
 			observer.started_as_observer = 1
 			close_spawn_windows()
-			var/atom/movable/landmark/L = pick_landmark_by_key(/atom/movable/landmark/observer_spawn)
+			var/obj/landmark/L = pick_landmark_by_key(/obj/landmark/observer_spawn)
 			if(L)
 				to_chat(src, SPAN_NOTICE("Now teleporting."))
 				observer.forceMove(L.loc)
@@ -504,7 +504,7 @@
 
 	//Find our spawning point.
 	var/list/join_props = job_master.LateSpawn(client, rank)
-	var/atom/movable/landmark/spawnpoint/SP = join_props["spawnpoint"]
+	var/obj/landmark/spawnpoint/SP = join_props["spawnpoint"]
 	var/announce_channel = join_props["channel"] || "Common"
 
 	if(!SP)

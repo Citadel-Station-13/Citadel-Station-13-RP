@@ -2233,7 +2233,7 @@
 	input_tag = "mix_in";
 	name = "Gas Mix Supply Control";
 	output_tag = "mix_out";
-	sensors = list("mix_sensor" = "Tank")
+	sensors = list("mix_sensor"="Tank")
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 8
@@ -6076,7 +6076,7 @@
 	},
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 1;
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -6655,7 +6655,7 @@
 	},
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 1;
-	req_one_access = list(18, 47)
+	req_one_access = list(18,47)
 	},
 /obj/machinery/alarm{
 	desc = " ";
@@ -7573,7 +7573,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 10
 	},
-/atom/movable/landmark{
+/obj/landmark{
 	name = "JoinLateCryo"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -8552,7 +8552,7 @@
 	input_tag = "co2_in";
 	name = "Carbon Dioxide Supply Control";
 	output_tag = "co2_out";
-	sensors = list("co2_sensor" = "Tank")
+	sensors = list("co2_sensor"="Tank")
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
@@ -8637,7 +8637,7 @@
 	input_tag = "tox_in";
 	name = "Phoron Supply Control";
 	output_tag = "tox_out";
-	sensors = list("tox_sensor" = "Tank")
+	sensors = list("tox_sensor"="Tank")
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
@@ -8664,7 +8664,7 @@
 	input_tag = "n2o_in";
 	name = "Nitrous Oxide Supply Control";
 	output_tag = "n2o_out";
-	sensors = list("n2o_sensor" = "Tank")
+	sensors = list("n2o_sensor"="Tank")
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
@@ -8821,7 +8821,7 @@
 	input_tag = "o2_in";
 	name = "Oxygen Supply Control";
 	output_tag = "o2_out";
-	sensors = list("o2_sensor" = "Tank")
+	sensors = list("o2_sensor"="Tank")
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 8
@@ -8851,7 +8851,7 @@
 	input_tag = "n2_in";
 	name = "Nitrogen Supply Control";
 	output_tag = "n2_out";
-	sensors = list("n2_sensor" = "Tank")
+	sensors = list("n2_sensor"="Tank")
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 8
@@ -8899,7 +8899,7 @@
 	name = "Mixed Air Supply Control";
 	output_tag = "air_out";
 	pressure_setting = 2000;
-	sensors = list("air_sensor" = "Tank")
+	sensors = list("air_sensor"="Tank")
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
@@ -9445,7 +9445,7 @@
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/sky/depths/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "wy" = (
 /obj/structure/table/rack,
@@ -9535,7 +9535,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/job/shaft_miner,
+/obj/landmark/spawnpoint/job/shaft_miner,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "xb" = (
@@ -9770,11 +9770,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/structure/curtain/black{
-	icon_state = "open";
-	opacity = 0
-	},
 /obj/machinery/door/firedoor/glass,
+/obj/structure/curtain/black,
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "yp" = (
@@ -9811,7 +9808,7 @@
 /obj/effect/map_effect/portal/line/side_a{
 	dir = 4
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/sky/depths/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "yG" = (
 /obj/structure/railing{
@@ -9827,7 +9824,7 @@
 /obj/effect/map_effect/portal/line/side_a{
 	dir = 4
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/sky/depths/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "za" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -9989,11 +9986,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "Av" = (
-/obj/structure/curtain/black{
-	icon_state = "open";
-	opacity = 0
-	},
 /obj/machinery/door/firedoor/glass,
+/obj/structure/curtain/black,
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "Aw" = (
@@ -10081,7 +10075,7 @@
 /area/engineering/engine_room)
 "AW" = (
 /obj/effect/blocker,
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/sky/depths/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "AZ" = (
 /obj/structure/disposalpipe/segment{
@@ -10154,7 +10148,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/atom/movable/landmark/spawnpoint/job/assistant,
+/obj/landmark/spawnpoint/job/assistant,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "BG" = (
@@ -10162,7 +10156,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
 "BP" = (
-/atom/movable/landmark/spawnpoint/job/shaft_miner,
+/obj/landmark/spawnpoint/job/shaft_miner,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	d1 = 1;
@@ -10500,7 +10494,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
 "EP" = (
-/atom/movable/landmark/spawnpoint/job/shaft_miner,
+/obj/landmark/spawnpoint/job/shaft_miner,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/refinery)
 "EQ" = (
@@ -10612,7 +10606,7 @@
 /area/chapel/observation)
 "Fq" = (
 /obj/structure/bed/chair/backed_red,
-/atom/movable/landmark/spawnpoint/job/chaplain,
+/obj/landmark/spawnpoint/job/chaplain,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/lino,
@@ -10833,7 +10827,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/atom/movable/landmark{
+/obj/landmark{
 	name = "JoinLateCryo"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -11371,7 +11365,7 @@
 	name = "center_to_westdeep";
 	portal_id = "westdeepstep"
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/sky/depths/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "Lj" = (
 /turf/simulated/wall,
@@ -11583,7 +11577,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "MR" = (
-/atom/movable/landmark/spawnpoint/job/chaplain,
+/obj/landmark/spawnpoint/job/chaplain,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
@@ -12068,7 +12062,7 @@
 "Qs" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/sky/depths/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "QD" = (
 /obj/structure/table/woodentable,
@@ -12238,7 +12232,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/chapel/chapel_morgue)
 "Sm" = (
-/atom/movable/landmark/spawnpoint/job/shaft_miner,
+/obj/landmark/spawnpoint/job/shaft_miner,
 /obj/machinery/power/apc{
 	dir = 1;
 	pixel_y = 24
@@ -12345,6 +12339,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/structure/curtain/black,
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/main)
 "Tm" = (
@@ -12477,7 +12472,7 @@
 /area/quartermaster/miningdock)
 "UC" = (
 /obj/effect/zone_divider,
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/sky/depths/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "UF" = (
 /obj/machinery/door/airlock/maintenance/common{
@@ -12771,7 +12766,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "WA" = (
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/sky/depths/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "WD" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -12872,7 +12867,7 @@
 /obj/effect/map_effect/portal/line/side_a{
 	dir = 4
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/sky/depths/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "Xx" = (
 /obj/effect/floor_decal/chapel,
@@ -13108,7 +13103,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/job/assistant,
+/obj/landmark/spawnpoint/job/assistant,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "ZB" = (
@@ -13129,7 +13124,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/atom/movable/landmark{
+/obj/landmark{
 	name = "JoinLateCryo"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -15505,9 +15500,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+ML
+ML
+ML
 aa
 aa
 aa
@@ -15529,9 +15524,9 @@ WA
 WA
 WA
 WA
-WA
-WA
-WA
+ML
+ML
+ML
 WA
 WA
 WA
@@ -15699,6 +15694,18 @@ aa
 aa
 aa
 aa
+ML
+ML
+ML
+aa
+aa
+aa
+aa
+TF
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -15711,20 +15718,20 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-TF
-aa
-aa
-aa
-aa
+ML
+ML
+ML
 WA
 WA
+WA
+WA
+UC
+WA
+WA
+WA
+ML
+ML
+ML
 WA
 WA
 WA
@@ -15746,21 +15753,9 @@ UC
 WA
 WA
 WA
-WA
-WA
-WA
-WA
-WA
-WA
-WA
-WA
-UC
-WA
-WA
-WA
-WA
-WA
-WA
+ML
+ML
+ML
 WA
 WA
 WA
@@ -15893,21 +15888,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-TF
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ML
+ML
+ML
 aa
 aa
 aa
@@ -15921,6 +15904,30 @@ aa
 aa
 aa
 aa
+aa
+aa
+aa
+TF
+aa
+aa
+aa
+aa
+ML
+ML
+ML
+aa
+WA
+WA
+WA
+UC
+WA
+WA
+WA
+ML
+ML
+ML
+WA
+WA
 WA
 WA
 WA
@@ -15940,21 +15947,9 @@ UC
 WA
 WA
 WA
-WA
-WA
-WA
-WA
-WA
-WA
-WA
-WA
-UC
-WA
-WA
-WA
-WA
-WA
-WA
+ML
+ML
+ML
 WA
 WA
 WA
@@ -16122,21 +16117,9 @@ TF
 aa
 aa
 aa
-aa
-aa
-WA
-WA
-WA
-WA
-WA
-WA
-UC
-WA
-WA
-WA
-WA
-WA
-WA
+ML
+ML
+ML
 WA
 WA
 WA
@@ -16149,6 +16132,18 @@ WA
 WA
 WA
 WA
+WA
+WA
+WA
+WA
+WA
+UC
+WA
+WA
+WA
+ML
+ML
+ML
 aa
 aa
 aa

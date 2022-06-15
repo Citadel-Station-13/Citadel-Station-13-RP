@@ -19,7 +19,7 @@
 	announce_channel = "Talon"
 	on_store_name = "ITV Talon Robotic Storage"
 
-/atom/movable/landmark/map_data/talon
+/obj/landmark/map_data/talon
     height = 2
 
 ///////////////////////////
