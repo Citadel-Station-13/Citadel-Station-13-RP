@@ -75,7 +75,7 @@ What is the naming convention for planes or layers?
 #define TURF_PLANE				-45
 	#define WATER_FLOOR_LAYER		2.0 /// The 'bottom' of water tiles.
 	#define AUTODECAL_LAYER			2.1 /// For floors that automatically add decal overlays.
-	#define DECAL_LAYER				2.2 ///For intentionally placed floor decal overlays
+	#define DECAL_LAYER				2.2 /// For intentionally placed floor decal overlays
 	#define UNDERWATER_LAYER		2.5	/// Anything on this layer will render under the water layer.
 	#define WATER_LAYER				3.0 /// Layer for water overlays.
 	#define ABOVE_TURF_LAYER		3.1 /// Snow and wallmounted/floormounted equipment.
@@ -150,7 +150,7 @@ What is the naming convention for planes or layers?
 #define PLANE_PLANETLIGHTING	4
 
 //! ## BELOW LIGHTING PLANES ----
-#define BELOW_LIGHTING_PLANE	6
+#define BELOW_LIGHTING_PLANE	5
 	#define DEEP_FLUID_LAYER		2
 
 //! ## LIGHTING PLANES ----
