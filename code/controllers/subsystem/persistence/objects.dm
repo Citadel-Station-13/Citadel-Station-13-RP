@@ -1,8 +1,8 @@
-/datum/controller/subsystem/persistence/LoadPersistence()
+/datum/controller/subsystem/persistence/LoadMapPersistence()
 	LoadObjects()
 	return ..()
 
-/datum/controller/subsystem/persistence/SavePersistence()
+/datum/controller/subsystem/persistence/SaveMapPersistence()
 	SaveObjects()
 	return ..()
 

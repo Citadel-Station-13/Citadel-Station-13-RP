@@ -1,9 +1,9 @@
 // Persistent panic bunker passthrough
-/datum/controller/subsystem/persistence/LoadPersistence()
+/datum/controller/subsystem/persistence/LoadServerPersistence()
 	LoadPanicBunker()
 	return ..()
 
-/datum/controller/subsystem/persistence/SavePersistence()
+/datum/controller/subsystem/persistence/SaveServerPersistence()
 	SavePanicBunker()
 	return ..()
 

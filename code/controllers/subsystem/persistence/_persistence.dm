@@ -7,23 +7,37 @@ SUBSYSTEM_DEF(persistence)
 
 /datum/controller/subsystem/persistence/Initialize()
 	SetMapDirectory()
-	LoadPersistence()
+	LoadServerPersistence()
+	LoadMapPersistence()
 	return ..()
 
 /datum/controller/subsystem/persistence/Shutdown()
-	SavePersistence()
+	SaveServerPersistence()
+	SaveMapPersistence()
 	return ..()
 
 /**
-  * Loads all persistent information from disk.
+  * Loads all globally persistent information from disk.
   */
-/datum/controller/subsystem/persistence/proc/LoadPersistence()
+/datum/controller/subsystem/persistence/proc/LoadServerPersistence()
 	return
 
 /**
-  * Saves all persistent information to disk.
+  * Saves all globally persistent information to disk.
   */
-/datum/controller/subsystem/persistence/proc/SavePersistence()
+/datum/controller/subsystem/persistence/proc/SaveServerPersistence()
+	return
+
+/**
+  * Loads all persistent information relevant to a specific map from disk.
+  */
+/datum/controller/subsystem/persistence/proc/LoadMapPersistence()
+	return
+
+/**
+  * Saves all persistent information relevant to a specific map to disk.
+  */
+/datum/controller/subsystem/persistence/proc/SaveMapPersistence()
 	return
 
 /**

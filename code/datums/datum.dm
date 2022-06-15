@@ -183,7 +183,7 @@
 	CRASH("Attempted to serialize datum [src] of type [type] without serialize_list being implemented!")
 
 ///Accepts a LIST from deserialize_datum. Should return src or another datum.
-/datum/proc/deserialize_list(json, list/options)
+/datum/proc/deserialize_list(list/data, list/options)
 	CRASH("Attempted to deserialize datum [src] of type [type] without deserialize_list being implemented!")
 
 ///Serializes into JSON. Does not encode type.
