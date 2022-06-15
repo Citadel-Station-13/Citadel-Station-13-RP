@@ -8,8 +8,9 @@
 	if (!default_language && species_language)
 		default_language = GLOB.all_languages[species_language]
 
-/mob/living/carbon/Life()
-	..()
+/mob/living/carbon/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
 
 	handle_viruses()
 

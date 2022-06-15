@@ -70,8 +70,10 @@
 
 	return ..()
 
-/mob/living/simple_mob/vore/demon/Life()
-	. = ..()
+/mob/living/simple_mob/vore/demon/Life(seconds, times_fired)
+	if((. = ..()))
+		return
+
 	if(shifted_out)
 		density = FALSE
 

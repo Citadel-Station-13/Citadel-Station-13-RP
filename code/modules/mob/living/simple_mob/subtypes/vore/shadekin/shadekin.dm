@@ -188,10 +188,16 @@
 		"The chaos of being digested fades as you're snuffed out by a harsh clench! You're steadily broken down into a thick paste, processed and absorbed by the predator!"
 		)
 
-/mob/living/simple_mob/shadekin/Life()
-	. = ..()
+/mob/living/simple_mob/shadekin/Life(seconds, times_fired)
+	if((. = ..()))
+		return
+
 	if(ability_flags & AB_PHASE_SHIFTED)
 		density = FALSE
+
+/mob/living/simple_mob/shadekin/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
 
 	//Convert spare nutrition into energy at a certain ratio
 	if(. && nutrition > initial(nutrition) && energy < 100)
@@ -229,7 +235,7 @@
 	. = ..(FALSE, deathmessage)
 
 //They reach nutritional equilibrium (important for blue-eyes healbelly)
-/mob/living/simple_mob/shadekin/Life()
+/mob/living/simple_mob/shadekin/Life(seconds, times_fired)
 	if((. = ..()))
 		handle_shade()
 

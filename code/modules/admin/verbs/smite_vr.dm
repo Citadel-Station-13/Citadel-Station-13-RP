@@ -43,7 +43,7 @@
 			shadekin.ai_holder.give_target(target)
 			shadekin.ai_holder.hostile = FALSE
 			shadekin.ai_holder.mauling = TRUE
-			shadekin.Life()
+			shadekin.Life(1, SSmobs.times_fired)
 			//Remove when done
 			spawn(10 SECONDS)
 				if(shadekin)
