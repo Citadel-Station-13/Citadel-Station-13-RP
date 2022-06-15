@@ -1,6 +1,8 @@
 /datum/config_entry/flag/emergency_tgui_logging
 	default = FALSE
 
+/datum/config_entry/flag/log_game
+
 /// log messages sent in OOC
 /datum/config_entry/flag/log_ooc
 

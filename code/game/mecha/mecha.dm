@@ -899,7 +899,7 @@
 
 	internal_damage |= int_dam_flag
 	pr_internal_damage.start()
-	log_append_to_last("Internal damage of type [int_dam_flag].",1)
+	log_append_to_last("Internal damage of type [int_dam_flag].")
 	occupant << sound('sound/mecha/internaldmgalarm.ogg',volume=50) //Better sounding.
 	return
 
@@ -930,7 +930,7 @@
 		health -= damage
 
 		update_health()
-		log_append_to_last("Took [damage] points of damage. Damage type: \"[type]\".",1)
+		log_append_to_last("Took [damage] points of damage. Damage type: \"[type]\".")
 	return
 
 /obj/mecha/proc/components_handle_damage(var/damage, var/type = BRUTE)
@@ -996,7 +996,7 @@
 		return
 
 	user.setClickCooldown(user.get_attack_speed())
-	src.log_message("Attack by hand/paw. Attacker - [user].",1)
+	src.log_message("Attack by hand/paw. Attacker - [user].")
 
 	var/obj/item/mecha_parts/component/armor/ArmC = internal_components[MECH_ARMOR]
 
@@ -1040,7 +1040,7 @@
 
 /obj/mecha/hitby(atom/movable/A as mob|obj) //wrapper
 	..()
-	src.log_message("Hit by [A].",1)
+	src.log_message("Hit by [A].")
 	call((proc_res["dynhitby"]||src), "dynhitby")(A)
 	return
 
@@ -1114,7 +1114,7 @@
 		Test.hit |= occupant // Register a hit on the occupant, for things like turrets, or in simple-mob cases stopping friendly fire in firing line mode.
 		return
 
-	src.log_message("Hit by projectile. Type: [Proj.name]([Proj.check_armour]).",1)
+	src.log_message("Hit by projectile. Type: [Proj.name]([Proj.check_armour]).")
 	call((proc_res["dynbulletdamage"]||src), "dynbulletdamage")(Proj) //calls equipment
 	..()
 	return
@@ -1212,7 +1212,7 @@
 	else
 		temp_deflect_chance = round(ArmC.get_efficiency() * ArmC.deflect_chance + (defence_mode ? 25 : 0))
 
-	src.log_message("Affected by explosion of severity: [severity].",1)
+	src.log_message("Affected by explosion of severity: [severity].")
 	if(prob(temp_deflect_chance))
 		severity++
 		src.log_append_to_last("Armor saved, changing severity to [severity].")
@@ -1235,7 +1235,7 @@
 
 /*Will fix later -Sieve
 /obj/mecha/attack_blob(mob/user as mob)
-	src.log_message("Attack by blob. Attacker - [user].",1)
+	src.log_message("Attack by blob. Attacker - [user].")
 	if(!prob(src.deflect_chance))
 		src.take_damage(6)
 		src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
@@ -1259,7 +1259,7 @@
 	if(get_charge())
 		use_power((cell.charge/2)/severity)
 		take_damage(50 / severity,"energy")
-	src.log_message("EMP detected",1)
+	src.log_message("EMP detected")
 	if(prob(80))
 		check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),1)
 	return
@@ -1269,7 +1269,7 @@
 
 /obj/mecha/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(exposed_temperature>src.max_temperature)
-		src.log_message("Exposed to dangerous temperature.",1)
+		src.log_message("Exposed to dangerous temperature.")
 		src.take_damage(5,"fire")	//The take_damage() proc handles armor values
 		src.check_for_internal_damage(list(MECHA_INT_FIRE, MECHA_INT_TEMP_CONTROL))
 	return
@@ -2513,7 +2513,7 @@
 				src.log_message("Recalibration of coordination system finished with 0 errors.")
 			else
 				src.occupant_message("<font color='red'>Recalibration failed.</font>")
-				src.log_message("Recalibration of coordination system failed with 1 error.",1)
+				src.log_message("Recalibration of coordination system failed with 1 error.")
 	if(href_list["drop_from_cargo"])
 		var/obj/O = locate(href_list["drop_from_cargo"])
 		if(O && (O in src.cargo))
@@ -2650,7 +2650,7 @@
 	if(!damage)
 		return 0
 
-	src.log_message("Attacked. Attacker - [user].",1)
+	src.log_message("Attacked. Attacker - [user].")
 	user.do_attack_animation(src)
 
 	if(prob(temp_deflect_chance))//Deflected

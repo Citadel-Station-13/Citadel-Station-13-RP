@@ -132,7 +132,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 		if(LOG_SHUTTLE)
 			log_shuttle(log_text)
 		else
-			stack_trace("Invalid individual logging type: [message_type]. Defaulting to [LOG_GAME] (LOG_GAME).")
+			// stack_trace("Invalid individual logging type: [message_type]. Defaulting to [LOG_GAME] (LOG_GAME).")
 			log_game(log_text)
 
 /* Items with ADMINPRIVATE prefixed are stripped from public logs. */
@@ -168,7 +168,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 
 /* All other items are public. */
 /proc/log_game(text)
-	if (config_legacy.log_game)
+	if(CONFIG_GET(flag/log_game))
 		WRITE_LOG(GLOB.world_game_log, "GAME: [text]")
 
 /proc/log_asset(text)
