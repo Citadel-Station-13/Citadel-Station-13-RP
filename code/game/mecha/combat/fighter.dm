@@ -222,6 +222,13 @@
 	else
 		who << sound('sound/mecha/fighter_entered.ogg',volume=50)
 
+//causes damage when running into objects
+/obj/mecha/combat/fighter/Bump(var/atom/obstacle)
+	if(istype(obstacle, /obj))
+		occupant_message("Collision Alert!")
+		take_damage(25, "brute")
+		playsound(src, 'sound/effects/grillehit.ogg', 50, 1)
+
 ////////////// Gunpod //////////////
 
 /obj/mecha/combat/fighter/gunpod
