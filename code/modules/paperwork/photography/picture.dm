@@ -7,13 +7,17 @@
  *
  * a (not recommended) fallback mode does exist for servers
  * without web services. persistence will be entirely disabled in that case.
+ *
+ * !NOTICE!
+ *   This may seem somewhat counterintuitive but the procs to make new pictures are in SSpersistence
+ *   Go to [code/controllers/subsystem/persistence/pictures.dm].
  */
 /datum/picture
 	//!# Data
 	/// md5 - this is our GUID
 	var/md5
-	/// taken this round
-	var/made_this_round = FALSE
+	/// flags
+	var/picture_flags = NONE
 	/// asset - the data that comprises of this picture
 	var/asset
 	/// the type of asset we hold. freshly deserialized probably have a path, freshly captured proabbly have an icon
@@ -37,15 +41,32 @@
 	/// scribbled on the back...
 	var/metadata_scribbles
 
-
-
-
-
-
 /**
  * requests we load our actual icon into memory
  *
  * returns FALSE if we can't
  */
 /datum/picture/proc/load_into_memory(timeout = 1 MINUTES)
+	#warn impl
+
+/**
+ * requests we unload out of memory
+ *
+ * returns FALSE if we can't
+ */
+/datum/picture/proc/unload()
+
+/**
+ * save changes
+ */
+/datum/picture/proc/flush()
+	return SSpersistence.save_picture(src)
+
+/**
+ * kinda like icon2html
+ * sends us to a list of people
+ *
+ * returns a usable url
+ */
+/datum/picture/proc/send_asset(list/users)
 	#warn impl
