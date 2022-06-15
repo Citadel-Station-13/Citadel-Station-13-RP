@@ -12,7 +12,7 @@
  *
  * make sure you add an update to the schema_version stable in the db changelog
  */
-//#define DB_MAJOR_VERSION 5
+#define DB_MAJOR_VERSION 1
 
 /**
  * DB minor schema version
@@ -21,7 +21,7 @@
  *
  * make sure you add an update to the schema_version stable in the db changelog
  */
-//#define DB_MINOR_VERSION 0
+#define DB_MINOR_VERSION 1
 
 //! ## Timing subsystem
 /**
