@@ -11,7 +11,7 @@
 	visible = 0
 	use_power = USE_POWER_OFF
 	flags = ON_BORDER
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	var/obj/item/airlock_electronics/electronics = null
 	explosion_resistance = 5
 	air_properties_vary_with_direction = 1

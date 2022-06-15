@@ -16,7 +16,7 @@
 	icon = 'icons/obj/doors/DoorHazard.dmi'
 	icon_state = "door_open"
 	req_one_access = list(access_eva)	//access_atmospherics, access_engine_equip)
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	density = 0
 	layer = DOOR_OPEN_LAYER - 0.01
 	open_layer = DOOR_OPEN_LAYER - 0.01 // Just below doors when open

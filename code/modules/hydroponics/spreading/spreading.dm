@@ -30,7 +30,7 @@
 
 /obj/effect/dead_plant
 	anchored = 1
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	density = 0
 	color = DEAD_PLANT_COLOUR
 
@@ -47,7 +47,7 @@
 	name = "plant"
 	anchored = 1
 	can_buckle = 1
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	density = 0
 	icon = 'icons/obj/hydroponics_growing.dmi'
 	icon_state = "bush4-1"

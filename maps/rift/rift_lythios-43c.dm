@@ -8,17 +8,18 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 	desc = "A freezing ball of ice,"
 	current_time = new /datum/time/lythios43c()
 	expected_z_levels = list(
-						Z_LEVEL_UNDERGROUND_FLOOR,
-						Z_LEVEL_UNDERGROUND_DEEP,
-						Z_LEVEL_UNDERGROUND,
-						Z_LEVEL_SURFACE_LOW,
-						Z_LEVEL_SURFACE_MID,
-						Z_LEVEL_SURFACE_HIGH,
-						Z_LEVEL_WEST_BASE,
-						Z_LEVEL_WEST_DEEP,
-						Z_LEVEL_WEST_CAVERN,
-						Z_LEVEL_WEST_PLAIN
-						)
+		Z_LEVEL_UNDERGROUND_FLOOR,
+		Z_LEVEL_UNDERGROUND_DEEP,
+		Z_LEVEL_UNDERGROUND,
+		Z_LEVEL_SURFACE_LOW,
+		Z_LEVEL_SURFACE_MID,
+		Z_LEVEL_SURFACE_HIGH,
+		Z_LEVEL_WEST_BASE,
+		Z_LEVEL_WEST_DEEP,
+		Z_LEVEL_WEST_CAVERN,
+		Z_LEVEL_WEST_PLAIN
+	)
+
 	planetary_wall_type = /turf/unsimulated/wall/planetary/lythios43c
 
 /datum/planet/lythios43c/New()
@@ -115,15 +116,15 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 		WEATHER_SNOW		= new /datum/weather/lythios43c/snow(),
 		WEATHER_BLIZZARD	= new /datum/weather/lythios43c/blizzard(),
 		WEATHER_HAIL		= new /datum/weather/lythios43c/hail(),
-		)
+	)
 	roundstart_weather_chances = list(
 		WEATHER_CLEAR		= 27.5,
 		WEATHER_OVERCAST	= 20,
 		WEATHER_LIGHT_SNOW	= 20,
 		WEATHER_SNOW		= 15,
 		WEATHER_BLIZZARD	= 15,
-		WEATHER_HAIL		= 2.5
-		)
+		WEATHER_HAIL		= 2.5,
+	)
 
 /datum/weather/lythios43c
 	name = "lythios-43c base"

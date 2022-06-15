@@ -4,7 +4,7 @@
 	icon = 'icons/obj/decals.dmi'
 	icon_state = "shrine_seal"
 	layer = 3.3 //3.3 so its above windows, not the same as them. anything below 3.3 puts the curtain beneath the window sprite in current build
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 
 /obj/structure/shrine_seal/bullet_act(obj/item/projectile/P, def_zone)
 	if(!P.nodamage)

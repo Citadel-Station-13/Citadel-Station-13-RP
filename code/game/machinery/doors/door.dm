@@ -14,7 +14,7 @@
 	var/open_layer = DOOR_OPEN_LAYER
 	var/closed_layer = DOOR_CLOSED_LAYER
 
-	var/visible = 1
+	var/visible = TRUE
 	var/p_open = FALSE // [bool]is the door open?
 	var/operating = FALSE // [bool]Is the door opening or closing?
 	var/autoclose = FALSE // [bool]should the door close automaticly
@@ -524,5 +524,5 @@
 	icon = 'icons/turf/stomach_vr.dmi'
 	icon_state = "fleshclosed"
 
-/obj/machinery/door/CanFluidPass(var/coming_from)
+/obj/machinery/door/CanFluidPass(coming_from)
 	return !density

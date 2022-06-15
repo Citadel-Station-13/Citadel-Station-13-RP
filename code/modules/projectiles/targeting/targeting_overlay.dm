@@ -5,7 +5,7 @@
 	icon_state = "locking"
 	anchored = 1
 	density = 0
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	plane = ABOVE_PLANE
 	flags = AF_ABSTRACT
 	mouse_opacity = 0

@@ -88,7 +88,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 			qdel(fuel)
 
 /turf/proc/create_fire(fl)
-	return 0
+	return FALSE
 
 /turf/simulated/create_fire(fl)
 	if(submerged())
@@ -96,10 +96,10 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 
 	if(fire)
 		fire.firelevel = max(fl, fire.firelevel)
-		return 1
+		return TRUE
 
 	if(!zone)
-		return 1
+		return TRUE
 
 	fire = new(src, fl)
 	air_master.active_fire_zones |= zone
@@ -109,13 +109,13 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 	if(fuel)
 		zone.fuel_objs += fuel
 
-	return 0
+	return FALSE
 
 /atom/movable/fire
 	//Icon for fire on turfs.
 
-	anchored = 1
-	mouse_opacity = 0
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 	blend_mode = BLEND_ADD
 
@@ -160,6 +160,8 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 
 	var/turf/simulated/my_tile = loc
 	if(!istype(my_tile) || !my_tile.zone || my_tile.submerged())
+		if(my_tile && my_tile.fire == src)
+			my_tile.fire = null
 		qdel(src)
 		return TRUE
 

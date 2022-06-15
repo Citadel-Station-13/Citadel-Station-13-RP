@@ -10,7 +10,7 @@
 	icon = 'icons/mecha/micro.dmi'
 	force = 10 //still a robot
 	anchored = 0 //light enough to push and pull, but you still can't just walk past them. Like people on non-help.
-	opacity = MOUSE_OPACITY_TRANSPARENT //small enough to see around, like people.
+	opacity = 0 //small enough to see around, like people.
 	step_energy_drain = 2 // They're light and small. A compact is gonna get better MPG than a truck.
 	var/melee_cooldown = 10
 	var/melee_can_hit = 1

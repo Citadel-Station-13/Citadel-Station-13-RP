@@ -44,19 +44,24 @@
 	admin_levels = list()
 	sealed_levels = list()
 	empty_levels = null
-	station_levels = list(Z_LEVEL_UNDERGROUND_DEEP,
+	station_levels = list(
+		Z_LEVEL_UNDERGROUND_DEEP,
 		Z_LEVEL_UNDERGROUND,
 		Z_LEVEL_SURFACE_LOW,
 		Z_LEVEL_SURFACE_MID,
-		Z_LEVEL_SURFACE_HIGH)
-	contact_levels = list(Z_LEVEL_UNDERGROUND_DEEP,
+		Z_LEVEL_SURFACE_HIGH,
+	)
+	contact_levels = list(
+		Z_LEVEL_UNDERGROUND_DEEP,
 		Z_LEVEL_UNDERGROUND,
 		Z_LEVEL_SURFACE_LOW,
 		Z_LEVEL_SURFACE_MID,
 		Z_LEVEL_SURFACE_HIGH,
 		Z_LEVEL_WEST_BASE,
-		Z_LEVEL_WEST_PLAIN)
-	player_levels = list(Z_LEVEL_UNDERGROUND_FLOOR,
+		Z_LEVEL_WEST_PLAIN,
+	)
+	player_levels = list(
+		Z_LEVEL_UNDERGROUND_FLOOR,
 		Z_LEVEL_UNDERGROUND_DEEP,
 		Z_LEVEL_UNDERGROUND,
 		Z_LEVEL_SURFACE_LOW,
@@ -71,7 +76,8 @@
 		Z_LEVEL_UNDERGROUND,
 		Z_LEVEL_SURFACE_LOW,
 		Z_LEVEL_SURFACE_MID,
-		Z_LEVEL_SURFACE_HIGH))
+		Z_LEVEL_SURFACE_HIGH,
+	))
 
 	station_name  = "NSB Atlas"
 	station_short = "Atlas"
@@ -94,35 +100,35 @@
 	emergency_shuttle_recall_message = "The evacuation flight has been cancelled."
 
 	station_networks = list(
-							NETWORK_CARGO,
-							NETWORK_CIRCUITS,
-							NETWORK_CIVILIAN,
-							NETWORK_COMMAND,
-							NETWORK_ENGINE,
-							NETWORK_ENGINEERING,
-							NETWORK_EXPLORATION,
-							//NETWORK_DEFAULT,  //Is this even used for anything? Robots show up here, but they show up in ROBOTS network too,
-							NETWORK_MEDICAL,
-							NETWORK_MINE,
-							NETWORK_OUTSIDE,
-							NETWORK_RESEARCH,
-							NETWORK_RESEARCH_OUTPOST,
-							NETWORK_ROBOTS,
-							NETWORK_SECURITY,
-							NETWORK_TCOMMS,
-							NETWORK_LYTHIOS
-							)
+		NETWORK_CARGO,
+		NETWORK_CIRCUITS,
+		NETWORK_CIVILIAN,
+		NETWORK_COMMAND,
+		NETWORK_ENGINE,
+		NETWORK_ENGINEERING,
+		NETWORK_EXPLORATION,
+		//NETWORK_DEFAULT,  //Is this even used for anything? Robots show up here, but they show up in ROBOTS network too,
+		NETWORK_MEDICAL,
+		NETWORK_MINE,
+		NETWORK_OUTSIDE,
+		NETWORK_RESEARCH,
+		NETWORK_RESEARCH_OUTPOST,
+		NETWORK_ROBOTS,
+		NETWORK_SECURITY,
+		NETWORK_TCOMMS,
+		NETWORK_LYTHIOS,
+	)
 	secondary_networks = list(
-							NETWORK_ERT,
-							NETWORK_MERCENARY,
-							NETWORK_THUNDER,
-							NETWORK_COMMUNICATORS,
-							NETWORK_ALARM_ATMOS,
-							NETWORK_ALARM_POWER,
-							NETWORK_ALARM_FIRE,
-							NETWORK_TALON_HELMETS,
-							NETWORK_TALON_SHIP
-							)
+		NETWORK_ERT,
+		NETWORK_MERCENARY,
+		NETWORK_THUNDER,
+		NETWORK_COMMUNICATORS,
+		NETWORK_ALARM_ATMOS,
+		NETWORK_ALARM_POWER,
+		NETWORK_ALARM_FIRE,
+		NETWORK_TALON_HELMETS,
+		NETWORK_TALON_SHIP,
+	)
 
 	bot_patrolling = FALSE
 
@@ -150,16 +156,19 @@
 		/area/rnd/external) //  Outside,
 
 /* Finish this when you have a ship and the locations for it to access
-	belter_docked_z = 		list(Z_LEVEL_DECK_TWO)
-	belter_transit_z =	 	list(Z_LEVEL_SHIPS)
-	belter_belt_z = 		list(Z_LEVEL_ROGUEMINE_1,
-						 		 Z_LEVEL_ROGUEMINE_2,
-						 	 	 Z_LEVEL_ROGUEMINE_3,
-								 Z_LEVEL_ROGUEMINE_4)
+	belter_docked_z = list(Z_LEVEL_DECK_TWO)
+	belter_transit_z = list(Z_LEVEL_SHIPS)
+	belter_belt_z = list(Z_LEVEL_ROGUEMINE_1,
+		Z_LEVEL_ROGUEMINE_2,
+		Z_LEVEL_ROGUEMINE_3,
+		Z_LEVEL_ROGUEMINE_4,
+	)
 */
 
-	lavaland_levels =		list(Z_LEVEL_LAVALAND,
-								 Z_LEVEL_LAVALAND_EAST)
+	lavaland_levels = list(
+		Z_LEVEL_LAVALAND,
+		Z_LEVEL_LAVALAND_EAST,
+	)
 
 	lateload_z_levels = list(
 //		list("Rift - Misc"), // Stock Rift lateload maps || Currently not in use, takes too long to load, breaks shuttles.
@@ -184,24 +193,26 @@
 		Z_LEVEL_SURFACE_HIGH,
 		Z_LEVEL_MISC)
 
-	mining_station_z =		list(Z_LEVEL_UNDERGROUND_DEEP)
-	mining_outpost_z =		list(Z_LEVEL_WEST_PLAIN)
+	mining_station_z = list(Z_LEVEL_UNDERGROUND_DEEP)
+	mining_outpost_z = list(Z_LEVEL_WEST_PLAIN)
 
 	lateload_single_pick = null //Nothing right now.
 
-	planet_datums_to_make = list(/datum/planet/lythios43c,
+	planet_datums_to_make = list(
+		/datum/planet/lythios43c,
 		/datum/planet/lavaland,
 		/datum/planet/classg,
 		/datum/planet/classd,
 		/datum/planet/classh,
 		/datum/planet/classp,
-		/datum/planet/classm)
+		/datum/planet/classm,
+	)
 
 /datum/map/rift/perform_map_generation()
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_WEST_CAVERN, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_WEST_CAVERN, world.maxx - 4, world.maxy - 4)       // Create the mining ore distribution map.
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_WEST_DEEP, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_WEST_BASE, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_UNDERGROUND_FLOOR, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_UNDERGROUND_FLOOR, world.maxx - 4, world.maxy - 4) // Create the mining ore distribution map.
 
 	return 1
 

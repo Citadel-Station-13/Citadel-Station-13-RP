@@ -55,7 +55,7 @@
 	name = "Endless Sands"
 	desc = "You see nothing but featureless flat desert stretching outwards far beyond what the eye can see."
 	icon_state = "desert"
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	density = 1
 	alpha = 0
 	blocks_air = 0

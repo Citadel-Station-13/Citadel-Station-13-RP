@@ -10,7 +10,7 @@ RSF
 	description_info = "Control Clicking on the device will allow you to choose the glass it dispenses when in the proper mode."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "rsf"
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	density = 0
 	anchored = 0.0
 	var/stored_matter = 30

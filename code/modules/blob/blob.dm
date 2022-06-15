@@ -7,7 +7,7 @@
 	light_color = "#b5ff5b"
 	desc = "Some blob creature thingy"
 	density = 1
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	anchored = 1
 	mouse_opacity = 2
 

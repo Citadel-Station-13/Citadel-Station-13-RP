@@ -25,12 +25,12 @@
 #define MIN_TEMPERATURE -40
 
 //all air alarms in area are connected via magic
-/area
-	var/obj/machinery/alarm/master_air_alarm
-	var/list/air_vent_names = list()
-	var/list/air_scrub_names = list()
-	var/list/air_vent_info = list()
-	var/list/air_scrub_info = list()
+
+/area/var/obj/machinery/alarm/master_air_alarm
+/area/var/list/air_vent_names = list()
+/area/var/list/air_scrub_names = list()
+/area/var/list/air_vent_info = list()
+/area/var/list/air_scrub_info = list()
 
 /obj/machinery/alarm
 	name = "alarm"
@@ -837,7 +837,7 @@
 /obj/machinery/alarm/freezer/first_run()
 	. = ..()
 
-	TLV["temperature"] =	list(T0C - 40, T0C - 20, T0C + 40, T0C + 66) // K, Lower Temperature for Freezer Air Alarms (This is because TLV is hardcoded to be generated on first_run, and therefore the only way to modify this without changing TLV generation)
+	TLV["temperature"] = list(T0C - 40, T0C - 20, T0C + 40, T0C + 66) // K, Lower Temperature for Freezer Air Alarms (This is because TLV is hardcoded to be generated on first_run, and therefore the only way to modify this without changing TLV generation)
 
 #undef LOAD_TLV_VALUES
 #undef TEST_TLV_VALUES

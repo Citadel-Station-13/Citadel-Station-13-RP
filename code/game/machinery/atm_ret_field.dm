@@ -179,7 +179,7 @@
 	icon_state = "arfg_field"
 	anchored = TRUE
 	density = FALSE
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
 	//mouse_opacity = 0

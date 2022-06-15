@@ -171,7 +171,7 @@ GLOBAL_LIST_INIT(meta_gas_condensation_products, meta_gas_condensation_product_l
 ||||only by meta_gas_list().            ||||
 \*||||||||||||||||||||||||||||||||||||||||*/
 /datum/gas
-	/// Text ID for things like gas strings. THIS SHOULD NEVER, EVER, BE CHANGED! Pick one and stick with it. Change this and EVERYTHING breaks. The typepath, infact, is more mutable than this!
+	///! Text ID for things like gas strings. THIS SHOULD NEVER, EVER, BE CHANGED! Pick one and stick with it. Change this and EVERYTHING breaks. The typepath, infact, is more mutable than this!
 	var/id = ""
 	/// Specific heat in J/(mol*K)
 	var/specific_heat = 0

@@ -38,7 +38,7 @@
 	icon_state = "energynet"
 
 	density = 1
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	mouse_opacity = 1
 	anchored = 0
 

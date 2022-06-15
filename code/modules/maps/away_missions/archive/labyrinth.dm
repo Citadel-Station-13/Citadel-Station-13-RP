@@ -49,7 +49,7 @@
 	icon_state = "red"
 
 /turf/unsimulated/wall/exterior
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	// For the outside of a building, or a massive wall.
 
 /turf/unsimulated/floor/lava

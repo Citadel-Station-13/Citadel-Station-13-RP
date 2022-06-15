@@ -9,7 +9,7 @@ var/list/obj/effect/bump_teleporter/BUMP_TELEPORTERS = list()
 	invisibility = 101 		//nope, can't see this
 	anchored = 1
 	density = 1
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 
 /obj/effect/bump_teleporter/Initialize(mapload)
 	. = ..()

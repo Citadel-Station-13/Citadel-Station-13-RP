@@ -21,7 +21,7 @@
 	var/global/list/starting_illegal_nifsoft
 
 	density = 0
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 
 /obj/machinery/vending/nifsoft_shop/Initialize(mapload)
 	. = ..()

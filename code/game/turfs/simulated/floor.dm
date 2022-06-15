@@ -7,6 +7,7 @@
 	base_icon_state = "plating"
 	thermal_conductivity = 0.040
 	heat_capacity = 10000
+	height = -FLUID_SHALLOW / 2
 
 	// Damage to flooring.
 	var/broken
@@ -126,6 +127,13 @@
 /turf/simulated/floor/levelupdate()
 	for(var/obj/O in src)
 		O.hide(O.hides_under_flooring() && src.flooring)
+
+	if(flooring)
+		layer = TURF_LAYER
+		height = flooring.height
+	else
+		layer = PLATING_LAYER
+		height = -FLUID_SHALLOW / 2
 
 /turf/simulated/floor/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	switch(passed_mode)

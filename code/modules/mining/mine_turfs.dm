@@ -70,7 +70,7 @@
 	icon = 'icons/turf/flooring/asteroid.dmi'
 	icon_state = "asteroid"
 	density = 0
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	blocks_air = 0
 	can_build_into_floor = TRUE
 

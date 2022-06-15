@@ -75,7 +75,7 @@
 
 	sleep(3 SECONDS)
 	var/mutable_appearance/MA = new (src)
-	MA.opacity = MOUSE_OPACITY_TRANSPARENT
+	MA.opacity = 0
 	MA.density = 0
 	MA.icon_state = "origin_switching"
 	MA.plane = initial(plane)

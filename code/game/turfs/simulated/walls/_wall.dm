@@ -9,6 +9,9 @@
 	icon = 'icons/turf/walls/wall.dmi'
 	icon_state = "wall-0"
 	base_icon_state = "wall"
+	opacity = TRUE
+	density = TRUE
+	blocks_air = TRUE
 	// explosion_block = 1
 	color = "#666666"
 	thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT

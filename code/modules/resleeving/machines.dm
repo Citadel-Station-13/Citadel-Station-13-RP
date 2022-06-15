@@ -409,7 +409,7 @@
 	icon_state = "implantchair"
 	circuit = /obj/item/circuitboard/transhuman_resleever
 	density = 1
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	anchored = 1
 	var/blur_amount
 	var/confuse_amount

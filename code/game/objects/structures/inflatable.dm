@@ -27,7 +27,7 @@
 	desc = "An inflated membrane. Do not puncture."
 	density = TRUE
 	anchored = TRUE
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	CanAtmosPass = ATMOS_PASS_DENSITY
 
 	icon = 'icons/obj/inflatable.dmi'
@@ -160,7 +160,7 @@
 	name = "inflatable door"
 	density = 1
 	anchored = 1
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 
 	icon = 'icons/obj/inflatable.dmi'
 	icon_state = "door_closed"

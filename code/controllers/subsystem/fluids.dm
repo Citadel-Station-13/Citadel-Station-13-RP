@@ -1,7 +1,8 @@
 SUBSYSTEM_DEF(fluids)
 	name = "Fluids"
 	wait = 10
-	subsystem_flags = SS_NO_INIT
+	subsystem_flags = SS_BACKGROUND|SS_KEEP_TIMING
+	runlevels = RUNLEVEL_GAME|RUNLEVEL_POSTGAME
 
 	var/next_water_act = 0
 	var/water_act_delay = 15 // A bit longer than machines.

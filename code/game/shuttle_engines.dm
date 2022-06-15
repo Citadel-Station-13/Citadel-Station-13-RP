@@ -7,7 +7,7 @@
 	icon = 'icons/obj/podwindows.dmi'
 	icon_state = "0_0" //The states are a bitflag for connecting window directions, then connecting shuttle wall directions
 	density = 1
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	anchored = 1
 	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 

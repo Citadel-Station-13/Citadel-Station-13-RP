@@ -12,7 +12,7 @@
 /obj/effect/mark_spell
 	name = "mark"
 	desc = "This is a strange looking disturbance."
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	density = 0
 	anchored = 1
 

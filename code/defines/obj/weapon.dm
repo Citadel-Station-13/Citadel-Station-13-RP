@@ -17,7 +17,7 @@
 	desc = "A device used to rapidly deploy seeds."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "rcd"
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	density = FALSE
 	anchored = FALSE
 	var/stored_matter = 0

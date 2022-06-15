@@ -47,7 +47,7 @@
 	name = "electrical storm"
 	events = list(/datum/event/electrical_storm/overmap)
 	color = "#EEEEEE"
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	event_icon_states = list("electrical1", "electrical2", "electrical3", "electrical4")
 	difficulty = EVENT_LEVEL_MAJOR
 	weaknesses = OVERMAP_WEAKNESS_EMP
@@ -62,7 +62,7 @@
 /obj/effect/overmap/event/ion
 	name = "ion cloud"
 	events = list(/datum/event/ionstorm/overmap)
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	event_icon_states = list("ion1", "ion2", "ion3", "ion4")
 	color = "#EEEEEE"
 	difficulty = EVENT_LEVEL_MAJOR
@@ -71,7 +71,7 @@
 /obj/effect/overmap/event/carp
 	name = "carp shoal"
 	events = list(/datum/event/carp_migration/overmap)
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	event_icon_states = list("carp1", "carp2")
 	color = "#EEEEEE"
 	difficulty = EVENT_LEVEL_MODERATE
@@ -80,7 +80,7 @@
 /obj/effect/overmap/event/carp_heavy
 	name = "carp school"
 	events = list(/datum/event/carp_migration/overmap)
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	event_icon_states = list("carp3", "carp4")
 	color = "#DD4444"
 	difficulty = EVENT_LEVEL_MAJOR
@@ -89,7 +89,7 @@
 /obj/effect/overmap/event/hostile_migration
 	name = "unknown lifesigns"
 	events = list(/datum/event/hostile_migration/overmap)
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	event_icon_states = list("rats1", "rats2")
 	color = "#DD4444"
 	difficulty = EVENT_LEVEL_MODERATE
@@ -107,7 +107,7 @@
 /obj/effect/overmap/event/cult
 	name = "eerie signals"
 	events = list(/datum/event/cult/overmap)
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	event_icon_states = list("cultist","cultist2")
 	color = "#DD4444"
 	difficulty = EVENT_LEVEL_MAJOR
@@ -116,7 +116,7 @@
 /obj/effect/overmap/event/pirate
 	name = "unflagged cruiser"
 	events = list(/datum/event/pirate/overmap)
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	event_icon_states = list("pirate")
 	color = "#DD4444"
 	difficulty = EVENT_LEVEL_MAJOR

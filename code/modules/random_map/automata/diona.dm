@@ -17,7 +17,7 @@
 	icon = 'icons/obj/diona.dmi'
 	anchored = 1
 	density = 1
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	layer = TURF_LAYER + 0.01
 
 /obj/structure/diona/vines

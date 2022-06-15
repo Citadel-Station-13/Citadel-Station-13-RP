@@ -64,6 +64,7 @@ What is the naming convention for planes or layers?
 
 //? Plating.
 #define PLATING_PLANE			-44
+	#define PLATING_LAYER			1.0
 	#define DISPOSAL_LAYER			2.1 /// Under objects, even when planeswapped.
 	#define PIPES_LAYER				2.2 /// Under objects, even when planeswapped.
 	#define WIRES_LAYER				2.3 /// Under objects, even when planeswapped.

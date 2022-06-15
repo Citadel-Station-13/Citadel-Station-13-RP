@@ -11,7 +11,7 @@
 	olddens = parent_atom.density
 	oldopac = parent_atom.opacity
 	parent_atom.density = 0
-	parent_atom.opacity = MOUSE_OPACITY_TRANSPARENT
+	parent_atom.opacity = 0
 	if(isliving(parent_atom))
 		var/mob/living/L = parent_atom
 		L.add_movespeed_modifier(MOVESPEED_ID_SHRINK_RAY, update=TRUE, priority=100, multiplicative_slowdown=4, movetypes=GROUND)

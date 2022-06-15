@@ -1,18 +1,14 @@
 // Math constants.
-/// kPa*L/(K*mol).
-#define R_IDEAL_GAS_EQUATION       8.31
-/// kPa.
-#define ONE_ATMOSPHERE             101.325
-/// (mol^3 * s^3) / (kg^3 * L).
-#define IDEAL_GAS_ENTROPY_CONSTANT 1164
-///    0.0 degrees celcius
-#define T0C  273.15
-///   20.0 degrees celcius
-#define T20C 293.15
-/// -270.3 degrees celcius
-#define TCMB 2.7
-///    -60 degrees celcius
-#define TN60C 213.15
+
+#define R_IDEAL_GAS_EQUATION       8.31    // kPa*L/(K*mol).
+#define ONE_ATMOSPHERE             101.325 // kPa.
+#define IDEAL_GAS_ENTROPY_CONSTANT 1164    // (mol^3 * s^3) / (kg^3 * L).
+
+#define T100C 373.15 //  100.0 degrees celsius
+#define T20C  293.15 //   20.0 degrees celsius
+#define T0C   273.15 //    0.0 degrees celsius
+#define TCMB  2.7    // -270.3 degrees celsius
+#define TN60C 213.15 //    -60 degrees celcius
 
 #define CELCIUS + T0C
 
@@ -165,12 +161,18 @@
 #define MAX_PUMP_PRESSURE 15000 // Maximal pressure setting for pumps and vents
 #define MAX_OMNI_PRESSURE 15000 // Maximal output(s) pressure for omni devices (filters/mixers)
 
-#define GAS_OXYGEN         "oxygen"
-#define GAS_CO2            "carbon_dioxide"
+/**
+ *! ## GAS IDS - THIS SHOULD NEVER, EVER, BE CHANGED!
+ *? Text ID for things like gas strings.
+ *? Pick one and stick with it. Change this and EVERYTHING breaks. The typepath, infact, is more mutable than this!
+ */
+
+#define GAS_OXYGEN         "o2"  //TODO: CHANGE -> oxygen
+#define GAS_CO2            "co2" //TODO: CHANGE -> carbon_dioxide
 #define GAS_CO             "carbon_monoxide"
 #define GAS_METHYL_BROMIDE "methyl_bromide"
-#define GAS_N2O            "sleeping_agent"
-#define GAS_NITROGEN       "nitrogen"
+#define GAS_N2O            "n2o" //TODO: CHANGE -> nitrous_oxide
+#define GAS_NITROGEN       "n2"  //TODO: CHANGE -> nitrogen
 #define GAS_NO2            "nitrodioxide"
 #define GAS_NO             "nitricoxide"
 #define GAS_METHANE        "methane"

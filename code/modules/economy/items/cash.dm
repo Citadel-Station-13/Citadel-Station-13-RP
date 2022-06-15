@@ -4,7 +4,7 @@
 	gender = PLURAL
 	icon = 'icons/obj/items.dmi'
 	icon_state = "spacecash1"
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	density = 0
 	anchored = 0.0
 	force = 1.0

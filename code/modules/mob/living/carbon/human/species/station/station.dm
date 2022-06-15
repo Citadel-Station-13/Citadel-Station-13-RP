@@ -327,12 +327,12 @@
 	reagent_tag = null
 
 	has_organ = list(
-		BP_HEART   = /obj/item/organ/internal/heart,
-		BP_LUNGS   = /obj/item/organ/internal/lungs/skrell,
-		BP_LIVER   = /obj/item/organ/internal/liver,
-		BP_KIDNEYS = /obj/item/organ/internal/kidneys,
-		BP_BRAIN   = /obj/item/organ/internal/brain,
-		BP_EYES    = /obj/item/organ/internal/eyes
+		O_HEART   = /obj/item/organ/internal/heart,
+		O_LUNGS   = /obj/item/organ/internal/lungs/skrell,
+		O_LIVER   = /obj/item/organ/internal/liver,
+		O_KIDNEYS = /obj/item/organ/internal/kidneys,
+		O_BRAIN   = /obj/item/organ/internal/brain,
+		O_EYES    = /obj/item/organ/internal/eyes
 		)
 
 	has_limbs = list(

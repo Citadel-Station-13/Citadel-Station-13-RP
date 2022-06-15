@@ -211,7 +211,7 @@
 	name = "External Airlock"
 	icon = 'icons/obj/doors/Doorextglass.dmi'
 	assembly_type = /obj/structure/door_assembly/door_assembly_ext
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	glass = 1
 	req_one_access = list(access_external_airlocks)
 	open_sound_powered = 'sound/machines/door/space1o.ogg'
@@ -225,7 +225,7 @@
 	close_sound_powered = 'sound/machines/door/hall1c.ogg'
 	maxhealth = 300
 	explosion_resistance = 5
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/centcom
@@ -239,7 +239,7 @@
 /obj/machinery/door/airlock/glass_centcom
 	name = "Airlock"
 	icon = 'icons/obj/doors/Dooreleglass.dmi'
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	glass = 1
 	open_sound_powered = 'sound/machines/door/cmd3o.ogg'
 	close_sound_powered = 'sound/machines/door/cmd3c.ogg'
@@ -293,7 +293,7 @@
 	hitsound = 'sound/effects/Glasshit.ogg'
 	maxhealth = 300
 	explosion_resistance = 5
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_com
 	glass = 1
 	req_one_access = list(access_heads)
@@ -307,7 +307,7 @@
 	hitsound = 'sound/effects/Glasshit.ogg'
 	maxhealth = 300
 	explosion_resistance = 5
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_eng
 	glass = 1
 	req_one_access = list(access_engine)
@@ -320,7 +320,7 @@
 	hitsound = 'sound/effects/Glasshit.ogg'
 	maxhealth = 300
 	explosion_resistance = 5
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_eat
 	glass = 1
 	req_one_access = list(access_atmospherics)
@@ -333,7 +333,7 @@
 	hitsound = 'sound/effects/Glasshit.ogg'
 	maxhealth = 300
 	explosion_resistance = 5
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_sec
 	glass = 1
 	req_one_access = list(access_security)
@@ -346,7 +346,7 @@
 	hitsound = 'sound/effects/Glasshit.ogg'
 	maxhealth = 300
 	explosion_resistance = 5
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_med
 	glass = 1
 	req_one_access = list(access_medical)
@@ -382,7 +382,7 @@
 	hitsound = 'sound/effects/Glasshit.ogg'
 	maxhealth = 300
 	explosion_resistance = 5
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_research
 	glass = 1
 	req_one_access = list(access_research)
@@ -395,7 +395,7 @@
 	hitsound = 'sound/effects/Glasshit.ogg'
 	maxhealth = 300
 	explosion_resistance = 5
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_min
 	glass = 1
 	req_one_access = list(access_mining)
@@ -408,7 +408,7 @@
 	hitsound = 'sound/effects/Glasshit.ogg'
 	maxhealth = 300
 	explosion_resistance = 5
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_atmo
 	glass = 1
 	req_one_access = list(access_atmospherics)
@@ -517,7 +517,7 @@
 /obj/machinery/door/airlock/glass_science
 	name = "Glass Airlocks"
 	icon = 'icons/obj/doors/Doorsciglass.dmi'
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_science
 	glass = 1
 	req_one_access = list(access_research)
@@ -539,7 +539,7 @@
 	desc = "It's an extra resilient airlock intended for spacefaring vessels."
 	icon = 'icons/obj/doors/shuttledoors.dmi'
 	explosion_resistance = 20
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	glass = 1
 	assembly_type = /obj/structure/door_assembly/door_assembly_voidcraft
 	open_sound_powered = 'sound/machines/door/shuttle1o.ogg'

@@ -6,7 +6,7 @@
 	name = "foam"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "foam"
-	opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = 0
 	anchored = 1
 	density = 0
 	layer = OBJ_LAYER + 0.9
