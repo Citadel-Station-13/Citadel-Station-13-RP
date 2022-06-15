@@ -135,7 +135,7 @@ What is the naming convention for planes or layers?
 
 	//#define MOB_LAYER			4 //For easy recordkeeping; this is a byond define
 
-	//#define FLY_LAYER			5	//For easy recordkeeping; this is a byond define
+	//#define FLY_LAYER			5 //For easy recordkeeping; this is a byond define
 
 	//? Above lighting, but below obfuscation.
 	#define HUD_LAYER				20 /// For in-game HUD effects (whereas SCREEN_LAYER is for abstract/OOC things like inventory slots).

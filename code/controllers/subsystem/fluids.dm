@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(fluids)
 
 
 /datum/controller/subsystem/fluids/stat_entry(time)
-	..("A:[active_fluids.len] S:[water_sources.len]")
+	..("Sources: [water_sources.len] Active Fluids: [active_fluids.len]")
 
 
 /datum/controller/subsystem/fluids/fire(resumed = 0)

@@ -6,8 +6,8 @@
 	icon = 'icons/obj/structures/multiz.dmi'
 	icon_state = "stair"
 	opacity = 0
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 	layer = STAIRS_LAYER
 
 /obj/structure/stairs/Initialize(mapload)
@@ -22,10 +22,11 @@
 //  - B2: Loc of middle stair
 //  - T1: Openspace over bottom stair
 //  - T2: Loc of top stair, over middle stair
-/obj/structure/stairs/proc/check_integrity(var/obj/structure/stairs/bottom/B = null,
-										   var/obj/structure/stairs/middle/M = null,
-										   var/obj/structure/stairs/top/T = null,
-										   var/turf/simulated/open/O = null)
+/obj/structure/stairs/proc/check_integrity(
+	obj/structure/stairs/bottom/B = null,
+	obj/structure/stairs/middle/M = null,
+	obj/structure/stairs/top/T = null,
+	turf/simulated/open/O = null)
 
 	// Base cases: Something is missing!
 	// The parent type doesn't know enough about the positional relations to find neighbors, only evaluate if they're connected

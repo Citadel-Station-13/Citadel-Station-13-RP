@@ -1,5 +1,5 @@
 /turf/CanFluidPass(coming_from)
-	if(density)
+	if(flooded || density)
 		return FALSE
 	if(isnull(fluid_can_pass))
 		fluid_can_pass = TRUE

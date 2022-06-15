@@ -26,7 +26,7 @@
 /obj/effect/fluid/Initialize(mapload)
 	. = ..()
 	start_loc = get_turf(src)
-	if(!istype(start_loc))
+	if(!istype(start_loc) || start_loc.flooded)
 		qdel(src)
 		return
 	var/turf/simulated/T = start_loc
@@ -58,7 +58,7 @@
 	if(fluid_amount > FLUID_DEEP)
 		alpha = FLUID_MAX_ALPHA
 	else
-		alpha = min(FLUID_MAX_ALPHA,max(FLUID_MIN_ALPHA,CEIL(255*(fluid_amount/FLUID_DEEP))))
+		alpha = min(FLUID_MAX_ALPHA, max(FLUID_MIN_ALPHA, CEIL(255*(fluid_amount/FLUID_DEEP))))
 
 	if(fluid_amount > FLUID_DELETING && fluid_amount <= FLUID_EVAPORATION_POINT)
 		APPLY_FLUID_OVERLAY("shallow_still")

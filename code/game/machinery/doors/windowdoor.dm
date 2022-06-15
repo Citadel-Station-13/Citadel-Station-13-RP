@@ -188,7 +188,7 @@
 		open()
 		return 1
 
-/obj/machinery/door/window/CanFluidPass(var/coming_from)
+/obj/machinery/door/window/CanFluidPass(coming_from)
 	return ((dir in GLOB.cardinal) && coming_from != dir)
 
 /obj/machinery/door/window/attackby(obj/item/I as obj, mob/user as mob)
@@ -363,6 +363,3 @@
 	dir = SOUTH
 	icon_state = "rightsecure"
 	base_state = "rightsecure"
-
-/obj/machinery/door/window/CanFluidPass(coming_from)
-	return ((dir in GLOB.cardinal) && coming_from != dir)
