@@ -170,7 +170,6 @@ SUBSYSTEM_DEF(fluids)
 	while (af_index <= processing_fluids.len)
 		var/obj/effect/fluid/F = processing_fluids[af_index++]
 		if (QDELETED(F))
-		if (QDELETED(F))
 			processing_fluids -= F
 		else
 			if (!F.loc || F.loc != F.start_loc)

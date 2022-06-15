@@ -43711,7 +43711,7 @@
 /turf/simulated/floor/plating/eris/under,
 /area/shuttle/tourbus/cockpit)
 "xcL" = (
-/obj/machinery/shower{
+/obj/structure/hygiene/shower{
 	dir = 8;
 	pixel_x = -5
 	},

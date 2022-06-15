@@ -12178,7 +12178,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/sink{
+/obj/structure/hygiene/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -12394,7 +12394,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
 "CG" = (
-/obj/structure/toilet{
+/obj/structure/hygiene/toilet{
 	pixel_y = 9
 	},
 /turf/simulated/floor/tiled/steel,
