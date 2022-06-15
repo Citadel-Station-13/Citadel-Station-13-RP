@@ -50,7 +50,6 @@
 
 	if(glasses)
 		if(aug && aug.integrated_object == glasses)
-			drop_from_inventory(glasses)
 			aug.integrated_object.forceMove(aug)
 			if(!glasses)
 				to_chat(src, "<span class='alien'>Your [aug.integrated_object] retract into your skull.</span>")
@@ -61,7 +60,6 @@
 			if(!HAS_TRAIT_FROM(G, TRAIT_NODROP, AUGMENT_TRAIT))
 				to_chat(src, "<span class='notice'>\The [G] are not your integrated shades.</span>")
 			else
-				drop_from_inventory(G)
 				to_chat(src, "<span class='notice'>\The [G] retract into your skull.</span>")
 				qdel(G)
 

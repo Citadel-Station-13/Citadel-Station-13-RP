@@ -171,12 +171,6 @@
 	force = 3
 	throwforce = 6
 
-/obj/item/organ/external/foot/removed()
-	if(owner)
-		#warn replace all of these with reconsider_inventory_slot_bodypart
-		owner.drop_from_inventory(owner.shoes)
-	..()
-
 /obj/item/organ/external/foot/handle_germ_effects()
 	. = ..() //Should return an infection level
 	if(!. || (status & ORGAN_DEAD)) return //If it's already above 2, it's become necrotic and we can just not worry about it.
@@ -217,11 +211,6 @@
 	base_miss_chance = 50
 	force = 3
 	throwforce = 5
-
-/obj/item/organ/external/hand/removed()
-	if(owner)
-		owner.drop_from_inventory(owner.gloves)
-	..()
 
 /obj/item/organ/external/hand/handle_germ_effects()
 	. = ..() //Should return an infection level
@@ -286,11 +275,6 @@
 	if(owner)
 		if(iscarbon(owner))
 			name = "[owner.real_name]'s head"
-			owner.drop_from_inventory(owner.glasses)
-			owner.drop_from_inventory(owner.head)
-			owner.drop_from_inventory(owner.l_ear)
-			owner.drop_from_inventory(owner.r_ear)
-			owner.drop_from_inventory(owner.wear_mask)
 			spawn(1)
 				owner.update_hair()
 	get_icon()

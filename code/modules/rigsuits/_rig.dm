@@ -895,28 +895,16 @@
 
 	if(sealed)
 		if(H.head)
-			var/obj/item/garbage = H.head
-			H.drop_from_inventory(garbage)
-			H.head = null
-			qdel(garbage)
+			qdel(H.head)
 
 		if(H.gloves)
-			var/obj/item/garbage = H.gloves
-			H.drop_from_inventory(garbage)
-			H.gloves = null
-			qdel(garbage)
+			qdel(H.gloves)
 
 		if(H.shoes)
-			var/obj/item/garbage = H.shoes
-			H.drop_from_inventory(garbage)
-			H.shoes = null
-			qdel(garbage)
+			qdel(H.shoes)
 
 		if(H.wear_suit)
-			var/obj/item/garbage = H.wear_suit
-			H.drop_from_inventory(garbage)
-			H.wear_suit = null
-			qdel(garbage)
+			qdel(H.wear_suit)
 
 	for(var/piece in list("helmet","gauntlets","chest","boots"))
 		toggle_piece(piece, H, ONLY_DEPLOY)

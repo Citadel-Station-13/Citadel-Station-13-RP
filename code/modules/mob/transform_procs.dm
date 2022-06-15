@@ -1,10 +1,7 @@
 /mob/living/carbon/human/proc/monkeyize()
 	if (transforming)
 		return
-	for(var/obj/item/W in src)
-		if (W==w_uniform) // will be torn
-			continue
-		drop_from_inventory(W)
+	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
 	transforming = 1
 	canmove = 0
@@ -30,8 +27,6 @@
 		gib()
 		return
 
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
 	set_species(species_type_by_name(species.primitive_form))
 	dna.SetSEState(MONKEYBLOCK,1)
 	dna.SetSEValueRange(MONKEYBLOCK,0xDAC, 0xFFF)
@@ -118,8 +113,7 @@
 /mob/living/carbon/human/proc/Robotize()
 	if (transforming)
 		return
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
 	transforming = 1
 	canmove = 0
@@ -175,8 +169,7 @@
 /mob/living/carbon/human/proc/Alienize()
 	if (transforming)
 		return
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
 	transforming = 1
 	canmove = 0
@@ -199,8 +192,7 @@
 /mob/living/carbon/human/proc/corgize()
 	if (transforming)
 		return
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
 	transforming = 1
 	canmove = 0
@@ -228,8 +220,8 @@
 
 	if(transforming)
 		return
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+
+	drop_inventory(TRUE, TRUE, TRUE)
 
 	regenerate_icons()
 	transforming = 1

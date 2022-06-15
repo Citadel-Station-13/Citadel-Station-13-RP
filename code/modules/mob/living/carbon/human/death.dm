@@ -118,8 +118,7 @@
 		src.exit_vr()
 		src.vr_holder.vr_link = null
 		for(var/obj/item/W in src)
-			#warn ughh
-			src.drop_from_inventory(W)
+			_handle_inventory_hud_remove(W)
 
 	// If our mind is in VR, bring it back to the real world so it can die with its body
 	if(vr_link)

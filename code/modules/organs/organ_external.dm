@@ -1026,12 +1026,12 @@ Note that amputating the affected organ does in fact remove the infection from t
 		holder.visible_message(\
 			"\The [holder.handcuffed.name] falls off of [holder.name].",\
 			"\The [holder.handcuffed.name] falls off you.")
-		holder.drop_from_inventory(holder.handcuffed)
+		holder.drop_item_to_ground(holder.handcuffed, force = TRUE)
 	if (holder.legcuffed && (body_part in list(FOOT_LEFT, FOOT_RIGHT, LEG_LEFT, LEG_RIGHT)))
 		holder.visible_message(\
 			"\The [holder.legcuffed.name] falls off of [holder.name].",\
 			"\The [holder.legcuffed.name] falls off you.")
-		holder.drop_from_inventory(holder.legcuffed)
+		holder.drop_item_to_ground(holder.legcuffed, force = TRUE)
 
 // checks if all wounds on the organ are bandaged
 /obj/item/organ/external/proc/is_bandaged()
@@ -1252,6 +1252,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 /obj/item/organ/external/removed(var/mob/living/user, var/ignore_children = 0)
 	if(!owner)
 		return
+	owner.reconsider_inventory_slot_bodypart(organ_tag)
 	var/is_robotic = robotic >= ORGAN_ROBOT
 	var/mob/living/carbon/human/victim = owner
 
