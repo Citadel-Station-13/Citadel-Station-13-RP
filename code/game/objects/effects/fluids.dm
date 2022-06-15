@@ -52,8 +52,10 @@
 
 	if(fluid_amount > FLUID_OVER_MOB_HEAD)
 		layer = DEEP_FLUID_LAYER
+		plane = BELOW_LIGHTING_PLANE
 	else
 		layer = SHALLOW_FLUID_LAYER
+		plane = HIDING_MOB_LAYER
 
 	if(fluid_amount > FLUID_DEEP)
 		alpha = FLUID_MAX_ALPHA
@@ -91,7 +93,8 @@
 /obj/effect/flood
 	name = ""
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	layer = FLY_LAYER
+	layer = DEEP_FLUID_LAYER
+	plane = BELOW_LIGHTING_PLANE
 	color = COLOR_OCEAN
 	icon = 'icons/effects/liquids.dmi'
 	icon_state = "ocean"

@@ -149,10 +149,13 @@ What is the naming convention for planes or layers?
 //? Lighting on planets.
 #define PLANE_PLANETLIGHTING	4
 
+//! ## BELOW LIGHTING PLANES ----
+#define BELOW_LIGHTING_PLANE	6
+	#define DEEP_FLUID_LAYER		2
 
 //! ## LIGHTING PLANES ----
 //? Where the lighting (and darkness) lives (ignoring all other higher planes).
-#define LIGHTING_PLANE			5
+#define LIGHTING_PLANE			6
 	#define LIGHTBULB_LAYER			0
 	#define LIGHTING_LAYER			1
 	#define ABOVE_LIGHTING_LAYER	2
@@ -160,13 +163,12 @@ What is the naming convention for planes or layers?
 
 //! ## ABOVE LIGHTING PLANES ----
 //? For glowy eyes etc. that shouldn't be affected by darkness.
-#define ABOVE_LIGHTING_PLANE	6
+#define ABOVE_LIGHTING_PLANE	7
 	#define EYE_GLOW_LAYER			1
-	#define DEEP_FLUID_LAYER		2
 	#define BEAM_PROJECTILE_LAYER	3
 	#define SUPERMATTER_WALL_LAYER	4
 
-#define SONAR_PLANE				8
+#define SONAR_PLANE				9
 
 //? Spooooooooky ghooooooosts
 #define PLANE_GHOSTS			10

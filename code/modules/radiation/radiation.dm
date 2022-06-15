@@ -45,8 +45,7 @@
 	SSradiation.resistance_cache[src] = (length(contents) + 1)
 	cached_rad_resistance = (density ? material.weight + material.radiation_resistance : 0)
 
-/obj
-	var/rad_resistance = 0  // Allow overriding rad resistance
+/obj/var/rad_resistance = 0  // Allow overriding rad resistance
 
 // If people expand the system, this may be useful. Here as a placeholder until then
 /atom/proc/rad_act(var/severity)

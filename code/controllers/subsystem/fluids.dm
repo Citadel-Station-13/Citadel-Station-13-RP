@@ -1,8 +1,7 @@
 SUBSYSTEM_DEF(fluids)
 	name = "Fluids"
-	wait = 10
-	subsystem_flags = SS_BACKGROUND|SS_KEEP_TIMING
-	runlevels = RUNLEVEL_GAME|RUNLEVEL_POSTGAME
+	wait = 1 SECOND
+	init_order = INIT_ORDER_FLUIDS
 
 	var/next_water_act = 0
 	var/water_act_delay = 15 // A bit longer than machines.
@@ -33,7 +32,7 @@ SUBSYSTEM_DEF(fluids)
 	..("Sources: [water_sources.len] Active Fluids: [active_fluids.len]")
 
 
-/datum/controller/subsystem/fluids/fire(resumed = 0)
+/datum/controller/subsystem/fluids/fire(resumed)
 	if (!resumed)
 		processing_sources = water_sources.Copy()
 		active_fluids_copied_yet = FALSE
@@ -77,7 +76,8 @@ SUBSYSTEM_DEF(fluids)
 				if(istype(current, /turf/simulated/open))
 					var/turf/T = GetBelow(F)
 					var/obj/effect/fluid/other = locate() in T
-					if((!istype(other) || other.fluid_amount < FLUID_MAX_DEPTH) && T.CanFluidPass(UP))
+					// if((!istype(other) || other.fluid_amount < FLUID_MAX_DEPTH) && T.CanFluidPass(UP))
+					if(!istype(other) || other.fluid_amount < FLUID_MAX_DEPTH)
 						if(!other)
 							other = new /obj/effect/fluid(T)
 						F.equalizing_fluids += other
@@ -169,6 +169,7 @@ SUBSYSTEM_DEF(fluids)
 
 	while (af_index <= processing_fluids.len)
 		var/obj/effect/fluid/F = processing_fluids[af_index++]
+		if (QDELETED(F))
 		if (QDELETED(F))
 			processing_fluids -= F
 		else
