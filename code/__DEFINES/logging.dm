@@ -14,6 +14,7 @@ GLOBAL_VAR(##type_log);
 //Investigate logging defines
 #define INVESTIGATE_ATMOS "atmos"
 #define INVESTIGATE_CIRCUIT "circuit"
+#define INVESTIGATE_PRESENTS "presents"
 #define INVESTIGATE_RECORDS "records"
 #define INVESTIGATE_SINGULO "singulo"
 #define INVESTIGATE_SUPERMATTER "supermatter"
@@ -22,6 +23,7 @@ GLOBAL_VAR(##type_log);
 #define ALL_INVESTIGATE_SUBJECTS list(	\
 	INVESTIGATE_ATMOS,					\
 	INVESTIGATE_CIRCUIT,				\
+	INVESTIGATE_PRESENTS,				\
 	INVESTIGATE_RECORDS,				\
 	INVESTIGATE_SINGULO,				\
 	INVESTIGATE_SUPERMATTER,			\

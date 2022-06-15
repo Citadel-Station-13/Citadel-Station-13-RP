@@ -31,7 +31,7 @@
 			user.client.screen -= I
 			U.contents.Remove(I)
 		else if(user.is_holding(I))
-			user.drop_from_inventory(I)
+			user.transfer_item_to_loc(I, src)
 		else
 			return
 

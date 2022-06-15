@@ -179,9 +179,6 @@
 			to_chat(user, "You neatly sort the cash into the box.")
 			cash_stored += SC.worth
 			overlays |= "register_cash"
-			if(ishuman(user))
-				var/mob/living/carbon/human/H = user
-				H.drop_from_inventory(SC)
 			qdel(SC)
 		else
 			scan_cash(SC)
@@ -332,9 +329,6 @@
 		SC.worth -= transaction_amount
 		SC.update_icon()
 		if(!SC.worth)
-			if(ishuman(SC.loc))
-				var/mob/living/carbon/human/H = SC.loc
-				H.drop_from_inventory(SC)
 			qdel(SC)
 		cash_stored += transaction_amount
 

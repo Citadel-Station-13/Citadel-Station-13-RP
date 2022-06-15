@@ -343,7 +343,7 @@
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		else if(istype(over, /atom/movable/screen/inventory/slot))
 			var/atom/movable/screen/inventory/slot/S = over
-			user.equip_to_slot_if_possible(src, S.slot)
+			user.equip_to_slot_if_possible(src, S.slot_id)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		// check for slide
 		if(Adjacent(over) && (istype(over, /obj/structure/rack) || istype(over, /obj/structure/table) || istype(over, /turf)))
@@ -362,7 +362,7 @@
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		else if(istype(over, /atom/movable/screen/inventory/slot))
 			var/atom/movable/screen/inventory/slot/S = over
-			user.equip_to_slot_if_possible(src, S.slot)
+			user.equip_to_slot_if_possible(src, S.slot_id)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		else if(istype(over, /turf))
 			user.drop_item_to_ground(src)
