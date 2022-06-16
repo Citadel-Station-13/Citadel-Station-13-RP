@@ -14,7 +14,7 @@
 	var/obj/machinery/power/shield_generator/gen = null // Owning generator
 	var/disabled_for = 0
 	var/diffused_for = 0
-	can_atmos_pass = ATMOS_PASS_YES
+	CanAtmosPass = ATMOS_PASS_NOT_BLOCKED
 	var/enabled_icon_state
 
 /obj/effect/shield/proc/update_visuals()
@@ -63,7 +63,7 @@
 	return FALSE
 
 /obj/effect/shield/Destroy()
-	if(can_atmos_pass != ATMOS_PASS_YES)
+	if(CanAtmosPass != ATMOS_PASS_NOT_BLOCKED)
 		update_nearby_tiles() //Force ZAS update
 	. = ..()
 	if(gen)
@@ -208,9 +208,9 @@
 	return 1
 
 /obj/effect/shield/proc/set_can_atmos_pass(var/new_value)
-	if(new_value == can_atmos_pass)
+	if(new_value == CanAtmosPass)
 		return
-	can_atmos_pass = new_value
+	CanAtmosPass = new_value
 	update_nearby_tiles() //Force ZAS update
 
 
@@ -285,7 +285,7 @@
 		return
 
 	// Update airflow - If atmospheric we block air as long as we're enabled (density works for this)
-	set_can_atmos_pass(gen.check_flag(MODEFLAG_ATMOSPHERIC) ? ATMOS_PASS_DENSITY : ATMOS_PASS_YES)
+	set_can_atmos_pass(gen.check_flag(MODEFLAG_ATMOSPHERIC) ? ATMOS_PASS_DENSITY : ATMOS_PASS_NOT_BLOCKED)
 	update_visuals()
 	update_explosion_resistance()
 

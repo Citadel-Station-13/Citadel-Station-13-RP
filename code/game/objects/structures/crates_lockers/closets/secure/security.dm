@@ -23,6 +23,7 @@
 		/obj/item/flash,
 		/obj/item/gps/command,
 		/obj/item/storage/belt/sheath,
+		/obj/item/melee/baton/loaded/mini,
 		/obj/item/storage/box/ids)
 
 /obj/structure/closet/secure_closet/hop
@@ -43,10 +44,10 @@
 		/obj/item/radio/headset/heads/hop/alt,
 		/obj/item/storage/box/ids = 2,
 		/obj/item/gps/command,
-		/obj/item/gun/energy/gun/martin, //VOREStation Add,
-		/obj/item/storage/box/commandkeys, //VOREStation Add,
-		/obj/item/storage/box/servicekeys, //VOREStation Add,
-		///obj/item/gun/projectile/sec/flash, //VOREStation Removal,
+		/obj/item/gun/energy/gun,
+		/obj/item/storage/box/commandkeys,
+		/obj/item/storage/box/servicekeys,
+		/obj/item/melee/baton/loaded/mini,
 		/obj/item/flash)
 
 /obj/structure/closet/secure_closet/hop2
@@ -288,7 +289,6 @@
 		/obj/item/clothing/accessory/storage/black_vest,
 		/obj/item/clothing/head/soft/sec/corp,
 		/obj/item/clothing/under/rank/security/corp,
-		///obj/item/ammo_magazine/m45/rubber, //VOREStation Removal,
 		/obj/item/gun/energy/taser,
 		/obj/item/cell/device/weapon,
 		/obj/item/gps/security,
@@ -346,7 +346,6 @@
 		/obj/item/ammo_magazine/s45/rubber,
 		/obj/item/ammo_magazine/s45/rubber,
 		/obj/item/reagent_containers/spray/pepper,
-		///obj/item/gunbox, //VOREStation Removal,
 		/obj/item/storage/belt/detective,
 		/obj/item/storage/box/evidence,
 		/obj/item/radio/headset/headset_sec,

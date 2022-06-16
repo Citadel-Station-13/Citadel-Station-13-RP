@@ -162,7 +162,7 @@
 	..()
 
 /obj/machinery/computer/looking_glass/power_change()
-	var/oldstat = stat
+	var/oldstat = machine_stat
 	..()
-	if (stat != oldstat && (stat & NOPOWER))
+	if (machine_stat != oldstat && (machine_stat & NOPOWER))
 		unload_program()

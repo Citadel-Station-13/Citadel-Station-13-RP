@@ -40,7 +40,6 @@
 	. = ..()
 	beaker = new /obj/item/reagent_containers/glass/beaker/large(src)
 	default_apply_parts()
-	RefreshParts()
 
 /obj/machinery/reagentgrinder/examine(mob/user)
 	. = ..()
@@ -60,7 +59,7 @@
 			var/obj/item/O = i
 			. += "<span class='notice'>- \A [O.name].</span>"
 
-	if(!(stat & (NOPOWER|BROKEN)))
+	if(!(machine_stat & (NOPOWER|BROKEN)))
 		. += "<span class='notice'>The status display reads:</span>\n"
 		if(beaker)
 			for(var/datum/reagent/R in beaker.reagents.reagent_list)
@@ -77,11 +76,9 @@
 		if(default_deconstruction_crowbar(user, O))
 			return
 
-	//vorestation edit start - for solargrubs
-	if (istype(O, /obj/item/multitool))
+	// For solargrubs
+	if(istype(O, /obj/item/multitool))
 		return ..()
-	//vorestation edit end
-
 
 	if (istype(O,/obj/item/reagent_containers/glass) || \
 		istype(O,/obj/item/reagent_containers/food/drinks/glass2) || \
@@ -168,7 +165,7 @@
 		options["eject"] = radial_eject
 
 	if(isAI(user))
-		if(stat & NOPOWER)
+		if(machine_stat & NOPOWER)
 			return
 		options["examine"] = radial_examine
 
@@ -186,7 +183,7 @@
 		choice = show_radial_menu(user, src, options, require_near = !issilicon(user))
 
 	// post choice verification
-	if(inuse || (isAI(user) && stat & NOPOWER) || user.incapacitated())
+	if(inuse || (isAI(user) && machine_stat & NOPOWER) || user.incapacitated())
 		return
 
 	switch(choice)
@@ -210,7 +207,7 @@
 /obj/machinery/reagentgrinder/proc/grind()
 
 	power_change()
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 
 	// Sanity check.

@@ -351,7 +351,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/veymed
 	company = "Vey-Med"
 	desc = "This high quality limb is nearly indistinguishable from an organic one."
-	icon = 'icons/mob/human_races/cyberlimbs/veymed/veymed_main_vr.dmi'
+	icon = 'icons/mob/human_races/cyberlimbs/veymed/veymed_main.dmi'
 	unavailable_to_build = TRUE
 	lifelike = 1
 	skin_tone = 1
@@ -363,17 +363,13 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	robo_burn_mod = 1.1
 	modular_bodyparts = MODULAR_BODYPART_INVALID
 
-/datum/robolimb/veymed_skrell
+/datum/robolimb/veymed/skrell
 	company = "Vey-Med - Skrell"
-	desc = "This high quality limb is nearly indistinguishable from an organic one."
-	icon = 'icons/mob/human_races/cyberlimbs/veymed/veymed_skrell.dmi'
 	species_cannot_use = list(SPECIES_TESHARI, SPECIES_PROMETHEAN, SPECIES_TAJ, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_UNATHI, SPECIES_DIONA, SPECIES_ZADDAT)
 	blood_color = "#4451cf"
-	blood_name = "coolant"
 	speech_bubble_appearance = "normal"
 	robo_brute_mod = 1.05
 	robo_burn_mod = 1.05
-	modular_bodyparts = MODULAR_BODYPART_INVALID
 
 // thanks kraso
 /datum/robolimb/moth

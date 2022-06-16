@@ -6,66 +6,88 @@
 	desc = "A generic vending machine."
 	icon = 'icons/obj/vending.dmi'
 	icon_state = "generic"
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 
-	var/icon_vend //Icon_state when vending
-	var/icon_deny //Icon_state when denying access
+//! ## Icons
+	/// Icon_state when vending.
+	var/icon_vend
+	/// Icon_state when denying access.
+	var/icon_deny
 
-	// Power
+//! ## Power
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	var/vend_power_usage = 150 //actuators and stuff
 
-	// Vending-related
-	var/active = 1 //No sales pitches if off!
-	var/vend_ready = 1 //Are we ready to vend?? Is it time??
-	var/vend_delay = 10 //How long does it take to vend?
-	var/categories = CAT_NORMAL // Bitmask of cats we're currently showing
-	var/datum/stored_item/vending_product/currently_vending = null // What we're requesting payment for right now
-	var/status_message = "" // Status screen messages like "insufficient funds", displayed in NanoUI
-	var/status_error = 0 // Set to 1 if status_message is an error
+//! ## Vending-related
+	/// No sales pitches if off!
+	var/active = TRUE
+	/// Are we ready to vend?? Is it time??
+	var/vend_ready = TRUE
+	/// How long does it take to vend?
+	var/vend_delay = 1 SECOND
+	/// Bitmask of categories we're currently showing.
+	var/categories = CAT_NORMAL
+	/// What we're requesting payment for right now.
+	var/datum/stored_item/vending_product/currently_vending = null
+	/// Status screen messages like "insufficient funds", displayed in NanoUI.
+	var/status_message = ""
+	/// Set to TRUE if status_message is an error.
+	var/status_error = FALSE
 
-	/*
-		Variables used to initialize the product list
-		These are used for initialization only, and so are optional if
-		product_records is specified
+	/**
+	 * Variables used to initialize the product list
+	 * These are used for initialization only, and so are optional if
+	 * product_records is specified
 	*/
 	var/list/products	= list() // For each, use the following pattern:
 	var/list/contraband	= list() // list(/type/path = amount,/type/path2 = amount2)
 	var/list/premium 	= list() // No specified amount = only one in stock
 	var/list/prices     = list() // Prices for each item, list(/type/path = price), items not in the list don't have a price.
 
-	// List of vending_product items available.
+	/// List of vending_product items available.
 	var/list/product_records = list()
 
 
 	// Variables used to initialize advertising
-	var/product_slogans = "" //String of slogans spoken out loud, separated by semicolons
-	var/product_ads = "" //String of small ad messages in the vending screen
+	/// String of slogans spoken out loud, separated by semicolons.
+	var/product_slogans = ""
+	/// String of small ad messages in the vending screen.
+	var/product_ads = ""
 
 	var/list/ads_list = list()
 
 	// Stuff relating vocalizations
 	var/list/slogan_list = list()
-	var/shut_up = 1 //Stop spouting those godawful pitches!
-	var/vend_reply //Thank you for shopping!
-	var/last_reply = 0
-	var/last_slogan = 0 //When did we last pitch?
-	var/slogan_delay = 6000 //How long until we can pitch again?
+	/// Set to true to silence it.
+	var/shut_up = TRUE
+	/// Thank you for shopping!
+	var/vend_reply
+	var/last_reply = FALSE
+	/// When did we last pitch?
+	var/last_slogan = 0
+	/// How long until we can pitch again?
+	var/slogan_delay = 10 MINUTES
 
 	// Things that can go wrong
-	emagged = 0 //Ignores if somebody doesn't have card access to that machine.
-	var/seconds_electrified = 0 //Shock customers like an airlock.
-	var/shoot_inventory = 0 //Fire items at customers! We're broken!
+	/// Ignores if somebody doesn't have card access to that machine.
+	emagged = FALSE
+	/// Shock customers like an airlock.
+	var/seconds_electrified = 0
+	/// Fire items at customers! We're broken!
+	var/shoot_inventory = FALSE
 
-	var/scan_id = 1
+	var/scan_id = TRUE
 	var/obj/item/coin/coin
 	var/datum/wires/vending/wires = null
 
 	var/list/log = list()
-	var/req_log_access = access_cargo //default access for checking logs is cargo
-	var/has_logs = 0 //defaults to 0, set to anything else for vendor to have logs
+
+	/// Default access for checking logs is cargo.
+	var/req_log_access = access_cargo
+	/// Defaults to 0, set to anything else for vendor to have logs.
+	var/has_logs = NONE
 
 
 /obj/machinery/vending/Initialize(mapload)
@@ -259,7 +281,7 @@
 	return attack_hand(user)
 
 /obj/machinery/vending/attack_hand(mob/user as mob)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 
 	if(seconds_electrified != 0)
@@ -320,7 +342,7 @@
 		ui.open()
 
 /obj/machinery/vending/Topic(href, href_list)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	if(!IsAdminGhost(usr) && (usr.stat || usr.restrained()))
 		return
@@ -484,7 +506,7 @@
 	SSnanoui.update_uis(src)
 
 /obj/machinery/vending/process(delta_time)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 
 	if(!active)
@@ -504,8 +526,8 @@
 
 	return
 
-/obj/machinery/vending/proc/speak(var/message)
-	if(stat & NOPOWER)
+/obj/machinery/vending/proc/speak(message)
+	if(machine_stat & NOPOWER)
 		return
 
 	if(!message)
@@ -517,10 +539,10 @@
 
 /obj/machinery/vending/power_change()
 	..()
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		icon_state = "[initial(icon_state)]-broken"
 	else
-		if(!(stat & NOPOWER))
+		if(!(machine_stat & NOPOWER))
 			icon_state = initial(icon_state)
 		else
 			spawn(rand(0, 15))
@@ -533,7 +555,7 @@
 			R.get_product(loc)
 		break
 
-	stat |= BROKEN
+	machine_stat |= BROKEN
 	icon_state = "[initial(icon_state)]-broken"
 	return
 
@@ -638,6 +660,7 @@
 					/obj/item/reagent_containers/food/drinks/bottle/space_mountain_wind = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/champagne/jericho = 1,
 					/obj/item/reagent_containers/food/drinks/bottle/champagne = 3,
+					/obj/item/reagent_containers/food/drinks/bottle/coconutmilk = 5,
 					/obj/item/reagent_containers/food/drinks/cans/sodawater = 15,
 					/obj/item/reagent_containers/food/drinks/cans/tonic = 15,
 					/obj/item/reagent_containers/food/drinks/cans/gingerale = 15,
@@ -645,6 +668,8 @@
 					/obj/item/reagent_containers/food/drinks/flask/vacuumflask = 5,
 					/obj/item/reagent_containers/food/drinks/ice = 10,
 					/obj/item/reagent_containers/food/drinks/tea = 15,
+					/obj/item/reagent_containers/food/condiment/small/packet/matchapowder = 5,
+					/obj/item/reagent_containers/food/condiment/small/packet/taropowder = 5,
 					/obj/item/glass_extra/stick = 30,
 					/obj/item/glass_extra/straw = 30)
 	contraband = list()
@@ -684,22 +709,25 @@
 	products = list(/obj/item/reagent_containers/food/snacks/candy = 6,/obj/item/reagent_containers/food/drinks/dry_ramen = 6,/obj/item/reagent_containers/food/snacks/chips =6,
 					/obj/item/reagent_containers/food/snacks/sosjerky = 6,/obj/item/reagent_containers/food/snacks/no_raisin = 6,/obj/item/reagent_containers/food/snacks/spacetwinkie = 6,
 					/obj/item/reagent_containers/food/snacks/cheesiehonkers = 6, /obj/item/reagent_containers/food/snacks/tastybread = 6, /obj/item/reagent_containers/food/snacks/skrellsnacks = 3,
-					/obj/item/reagent_containers/food/snacks/baschbeans = 6, /obj/item/reagent_containers/food/snacks/creamcorn = 6, /obj/item/reagent_containers/hard_candy/lollipop = 6)
+					/obj/item/reagent_containers/food/snacks/baschbeans = 6, /obj/item/reagent_containers/food/snacks/creamcorn = 6, /obj/item/reagent_containers/hard_candy/lollipop = 6,
+					/obj/item/reagent_containers/food/snacks/spunow = 6, /obj/item/reagent_containers/food/snacks/glad2nut = 6)
 	contraband = list(/obj/item/reagent_containers/food/snacks/syndicake = 6,/obj/item/reagent_containers/food/snacks/unajerky = 6,)
 	prices = list(/obj/item/reagent_containers/food/snacks/candy = 1,/obj/item/reagent_containers/food/drinks/dry_ramen = 5,/obj/item/reagent_containers/food/snacks/chips = 1,
 					/obj/item/reagent_containers/food/snacks/sosjerky = 2,/obj/item/reagent_containers/food/snacks/no_raisin = 1,/obj/item/reagent_containers/food/snacks/spacetwinkie = 1,
 					/obj/item/reagent_containers/food/snacks/cheesiehonkers = 1, /obj/item/reagent_containers/food/snacks/tastybread = 2, /obj/item/reagent_containers/food/snacks/skrellsnacks = 4,
-					/obj/item/reagent_containers/food/snacks/baschbeans = 6, /obj/item/reagent_containers/food/snacks/creamcorn = 6, /obj/item/reagent_containers/hard_candy/lollipop = 6)
+					/obj/item/reagent_containers/food/snacks/baschbeans = 6, /obj/item/reagent_containers/food/snacks/creamcorn = 6, /obj/item/reagent_containers/hard_candy/lollipop = 6,
+					/obj/item/reagent_containers/food/snacks/spunow = 1, /obj/item/reagent_containers/food/snacks/glad2nut = 1)
 
 /obj/machinery/vending/cola
 	name = "Robust Softdrinks"
 	desc = "A softdrink vendor provided by Robust Industries, LLC."
-	icon_state = "Cola_Machine" //VOREStation Edit
-	icon_vend = "Cola_Machine-purchase" //VOREStation Edit
+	icon_state = "Cola_Machine"
+	icon_vend = "Cola_Machine-purchase"
 	product_slogans = "Robust Softdrinks: More robust than a toolbox to the head!"
 	product_ads = "Refreshing!;Hope you're thirsty!;Over 1 million drinks sold!;Thirsty? Why not cola?;Please, have a drink!;Drink up!;The best drinks in space."
 	products = list(/obj/item/reagent_containers/food/drinks/cans/battery = 10,
 					/obj/item/reagent_containers/food/drinks/cans/waterbottle = 10,
+					/obj/item/reagent_containers/food/drinks/cans/coconutwater = 10,
 					/obj/item/reagent_containers/food/drinks/bottle/small/sassafras = 10,
 					/obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 10,
 					/obj/item/reagent_containers/food/drinks/cans/gingerale = 10,
@@ -725,7 +753,8 @@
 					/obj/item/reagent_containers/food/drinks/bottle/small/sassafras = 1, /obj/item/reagent_containers/food/drinks/cans/ochamidori = 3,
 					/obj/item/reagent_containers/food/drinks/cans/ramune = 2, /obj/item/reagent_containers/food/drinks/cans/battery = 5,
 					/obj/item/reagent_containers/food/drinks/cans/crystalgibb = 2, /obj/item/reagent_containers/food/drinks/cans/gondola_energy = 5,
-					/obj/item/reagent_containers/food/drinks/bludbox = 50, /obj/item/reagent_containers/food/drinks/bludboxlight = 70)
+					/obj/item/reagent_containers/food/drinks/bludbox = 50, /obj/item/reagent_containers/food/drinks/bludboxlight = 70,
+					/obj/item/reagent_containers/food/drinks/cans/coconutwater = 6)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
 /obj/machinery/vending/fitness // Added Liquid Protein and slightly adjusted price of liquid food items due to buff.
@@ -740,7 +769,6 @@
 					/obj/item/reagent_containers/food/snacks/liquidfood = 10,
 					/obj/item/reagent_containers/food/snacks/liquidprotein = 10,
 					/obj/item/reagent_containers/pill/diet = 8,
-					///obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose = 5,	//VOREStation Removal,
 					/obj/item/towel/random = 8)
 
 	prices = list(/obj/item/reagent_containers/food/drinks/smallmilk = 3,
@@ -751,7 +779,6 @@
 					/obj/item/reagent_containers/food/snacks/liquidfood = 10,
 					/obj/item/reagent_containers/food/snacks/liquidprotein = 10,
 					/obj/item/reagent_containers/pill/diet = 25,
-					///obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose = 5,	//VOREStation Removal,
 					/obj/item/towel/random = 40,
 					)
 
@@ -903,9 +930,9 @@
 	product_ads = "We like plants!;Grow some crops!;Grow, baby, growww!;Aw h'yeah son!"
 	icon_state = "seeds"
 
-	products = list(/obj/item/seeds/bananaseed = 3,/obj/item/seeds/berryseed = 3,/obj/item/seeds/carrotseed = 3,/obj/item/seeds/chantermycelium = 3,/obj/item/seeds/chiliseed = 3,
+	products = list(/obj/item/seeds/bananaseed = 3,/obj/item/seeds/berryseed = 3,/obj/item/seeds/carrotseed = 3,/obj/item/seeds/coconutseed = 3,/obj/item/seeds/chantermycelium = 3,/obj/item/seeds/chiliseed = 3,
 					/obj/item/seeds/cornseed = 3, /obj/item/seeds/eggplantseed = 3, /obj/item/seeds/potatoseed = 3, /obj/item/seeds/replicapod = 3,/obj/item/seeds/soyaseed = 3,
-					/obj/item/seeds/sunflowerseed = 3,/obj/item/seeds/tomatoseed = 3,/obj/item/seeds/towermycelium = 3,/obj/item/seeds/wheatseed = 3,/obj/item/seeds/appleseed = 3,
+					/obj/item/seeds/sunflowerseed = 3,/obj/item/seeds/taroseed = 3,/obj/item/seeds/tomatoseed = 3,/obj/item/seeds/towermycelium = 3,/obj/item/seeds/wheatseed = 3,/obj/item/seeds/appleseed = 3,
 					/obj/item/seeds/poppyseed = 3,/obj/item/seeds/sugarcaneseed = 3,/obj/item/seeds/ambrosiavulgarisseed = 3,/obj/item/seeds/peanutseed = 3,/obj/item/seeds/whitebeetseed = 3,/obj/item/seeds/watermelonseed = 3,/obj/item/seeds/lavenderseed = 3,/obj/item/seeds/limeseed = 3,
 					/obj/item/seeds/lemonseed = 3,/obj/item/seeds/orangeseed = 3,/obj/item/seeds/grassseed = 3,/obj/item/seeds/cocoapodseed = 3,/obj/item/seeds/plumpmycelium = 2,
 					/obj/item/seeds/cabbageseed = 3,/obj/item/seeds/grapeseed = 3,/obj/item/seeds/pumpkinseed = 3,/obj/item/seeds/cherryseed = 3,/obj/item/seeds/plastiseed = 3,/obj/item/seeds/riceseed = 3)
@@ -2197,13 +2224,7 @@
 					/obj/item/clothing/suit/kamishimo = 5,
 					/obj/item/clothing/suit/kimono = 5,
 					/obj/item/clothing/suit/storage/toggle/labcoat = 5,
-					/obj/item/clothing/suit/storage/toggle/labcoat/blue = 5,
-					/obj/item/clothing/suit/storage/toggle/labcoat/blue_edge = 5,
 					/obj/item/clothing/suit/storage/toggle/labcoat/green = 5,
-					/obj/item/clothing/suit/storage/toggle/labcoat/orange = 5,
-					/obj/item/clothing/suit/storage/toggle/labcoat/pink = 5,
-					/obj/item/clothing/suit/storage/toggle/labcoat/red = 5,
-					/obj/item/clothing/suit/storage/toggle/labcoat/yellow = 5,
 					/obj/item/clothing/suit/leathercoat = 5,
 					/obj/item/clothing/suit/overcoat = 5,
 					/obj/item/clothing/suit/storage/toggle/leather_jacket = 5,
@@ -2287,13 +2308,7 @@
 					/obj/item/clothing/suit/kamishimo = 25,
 					/obj/item/clothing/suit/kimono = 25,
 					/obj/item/clothing/suit/storage/toggle/labcoat = 25,
-					/obj/item/clothing/suit/storage/toggle/labcoat/blue = 25,
-					/obj/item/clothing/suit/storage/toggle/labcoat/blue_edge = 25,
 					/obj/item/clothing/suit/storage/toggle/labcoat/green = 25,
-					/obj/item/clothing/suit/storage/toggle/labcoat/orange = 25,
-					/obj/item/clothing/suit/storage/toggle/labcoat/pink = 25,
-					/obj/item/clothing/suit/storage/toggle/labcoat/red = 25,
-					/obj/item/clothing/suit/storage/toggle/labcoat/yellow = 25,
 					/obj/item/clothing/suit/leathercoat = 25,
 					/obj/item/clothing/suit/overcoat = 25,
 					/obj/item/clothing/suit/storage/toggle/leather_jacket = 25,
@@ -2476,7 +2491,9 @@
 					/obj/item/clothing/under/bsing = 1,
 					/obj/item/clothing/shoes/boots/bsing = 1,
 					/obj/item/clothing/under/ysing = 1,
-					/obj/item/clothing/shoes/boots/ysing = 1)
+					/obj/item/clothing/shoes/boots/ysing = 1,
+					/obj/item/clothing/suit/hevsuit = 3,
+					/obj/item/clothing/head/hevhelm = 3)
 	prices = list(/obj/item/clothing/suit/storage/hooded/carp_costume = 75,
 					/obj/item/clothing/suit/storage/hooded/carp_costume = 75,
 					/obj/item/clothing/suit/chickensuit = 75,
@@ -2609,7 +2626,9 @@
 					/obj/item/clothing/under/bsing = 500,
 					/obj/item/clothing/shoes/boots/bsing = 500,
 					/obj/item/clothing/under/ysing = 500,
-					/obj/item/clothing/shoes/boots/ysing = 500)
+					/obj/item/clothing/shoes/boots/ysing = 500,
+					/obj/item/clothing/suit/hevsuit = 250,
+					/obj/item/clothing/head/hevhelm = 150)
 	premium = list(/obj/item/clothing/suit/imperium_monk = 3)
 	contraband = list(/obj/item/clothing/head/syndicatefake = 1,
 					/obj/item/clothing/suit/syndicatefake = 1)

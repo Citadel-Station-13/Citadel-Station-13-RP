@@ -49,7 +49,7 @@
 
 /obj/structure/closet/proc/take_contents()
 	// if(istype(loc, /mob/living))
-	//	return //VOREStation Edit - No collecting mob organs if spawned inside mob
+	//	return // No collecting mob organs if spawned inside mob
 	// I'll leave this out, if someone dies to this from voring someone who made a closet go yell at a coder to
 	// fix the fact you can build closets inside living people, not try to make it work you numbskulls.
 	var/obj/item/I
@@ -64,8 +64,8 @@
 		storage_capacity = content_size + 5
 
 /**
-  * The proc that fills the closet with its initial contents.
-  */
+ * The proc that fills the closet with its initial contents.
+ */
 /obj/structure/closet/proc/PopulateContents()
 	return
 

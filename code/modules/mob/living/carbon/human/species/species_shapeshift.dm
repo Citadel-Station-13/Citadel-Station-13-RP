@@ -33,6 +33,11 @@ var/list/wrapped_species_by_ref = list()
 	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_bodytype(H)
 
+/datum/species/shapeshifter/get_worn_legacy_bodytype(var/mob/living/carbon/human/H)
+	if(!H) return ..()
+	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
+	return S.get_worn_legacy_bodytype(H)
+
 /datum/species/shapeshifter/get_blood_mask(var/mob/living/carbon/human/H)
 	if(!H) return ..()
 	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
@@ -97,7 +102,7 @@ var/list/wrapped_species_by_ref = list()
 			continue
 		if(gender == FEMALE && S.gender == MALE)
 			continue
-		if(!(species.get_bodytype(src) in S.species_allowed))
+		if(S.apply_restrictions && !(species.get_bodytype(src) in S.species_allowed))
 			continue
 		valid_hairstyles += hairstyle
 	for(var/facialhairstyle in facial_hair_styles_list)
@@ -106,7 +111,7 @@ var/list/wrapped_species_by_ref = list()
 			continue
 		if(gender == FEMALE && S.gender == MALE)
 			continue
-		if(!(species.get_bodytype(src) in S.species_allowed))
+		if(S.apply_restrictions && !(species.get_bodytype(src) in S.species_allowed))
 			continue
 		valid_facialhairstyles += facialhairstyle
 
@@ -142,7 +147,7 @@ var/list/wrapped_species_by_ref = list()
 	if(!new_gender)
 		return
 
-	var/new_gender_identity = input("Please select a gender Identity.", "Shapeshifter Gender Identity") as null|anything in list(FEMALE, MALE, NEUTER, PLURAL, HERM) //VOREStation Edit
+	var/new_gender_identity = input("Please select a gender Identity.", "Shapeshifter Gender Identity") as null|anything in list(FEMALE, MALE, NEUTER, PLURAL, HERM)
 	if(!new_gender_identity)
 		return
 
@@ -459,18 +464,6 @@ var/list/wrapped_species_by_ref = list()
 	update_icons_body()
 
 /datum/species/shapeshifter/handle_environment_special(var/mob/living/carbon/human/H)
-/* VOREStation Removal - Too crazy with our uncapped hunger and slowdown stuff.
-	var/turf/T = H.loc
-	if(istype(T))
-		var/obj/effect/decal/cleanable/C = locate() in T
-		if(C && !(H.shoes || (H.wear_suit && (H.wear_suit.body_parts_covered & FEET))))
-			qdel(C)
-			if (istype(T, /turf/simulated))
-				var/turf/simulated/S = T
-				S.dirt = 0
-
-			H.nutrition = min(500, max(0, H.nutrition + rand(15, 30)))
-VOREStation Removal End */
 	// Heal remaining damage.
 	if(H.fire_stacks >= 0 && heal_rate > 0)
 		if(H.getBruteLoss() || H.getFireLoss() || H.getOxyLoss() || H.getToxLoss())

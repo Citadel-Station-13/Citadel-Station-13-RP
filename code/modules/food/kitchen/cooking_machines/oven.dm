@@ -20,7 +20,7 @@
 	max_contents = 5
 	container_type = /obj/item/reagent_containers/cooking_container/oven
 
-	stat = POWEROFF	//Starts turned off
+	machine_stat = POWEROFF	//Starts turned off
 
 	var/open = 1
 
@@ -47,7 +47,7 @@
 
 /obj/machinery/appliance/cooker/oven/update_icon()
 	if (!open)
-		if (!stat)
+		if (!machine_stat)
 			icon_state = "ovenclosed_on"
 			if(oven_loop)
 				oven_loop.stop(src)

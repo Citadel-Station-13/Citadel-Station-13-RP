@@ -1,8 +1,9 @@
-#define DEFAULT_HUNGER_FACTOR 0.03 // Factor of how fast mob nutrition decreases
-#define DEFAULT_THIRST_FACTOR 0.03 // Factor of how fast mob hydration decreases
-
-#define REM 0.2 // Means 'Reagent Effect Multiplier'. This is how many units of reagent are consumed per tick
-
+/// Factor of how fast mob nutrition decreases
+#define DEFAULT_HUNGER_FACTOR 0.03
+/// Factor of how fast mob hydration decreases
+#define DEFAULT_THIRST_FACTOR 0.03
+/// Means 'Reagent Effect Multiplier'. This is how many units of reagent are consumed per tick
+#define REM 0.2
 #define CHEM_TOUCH 1
 #define CHEM_INGEST 2
 #define CHEM_BLOOD 3
@@ -16,9 +17,10 @@
 
 #define REAGENTS_OVERDOSE 30
 
-#define CHEM_SYNTH_ENERGY 500 // How much energy does it take to synthesize 1 unit of chemical, in Joules.
-
+/// How much energy does it take to synthesize 1 unit of chemical, in Joules.
+#define CHEM_SYNTH_ENERGY 500
 // Some on_mob_life() procs check for alien races.
+// TODO: better way? flags? we won't possibly need more than 24 right...?
 #define IS_DIONA   1
 #define IS_VOX     2
 #define IS_SKRELL  3
@@ -33,17 +35,25 @@
 #define IS_ALRAUNE 14
 #define IS_APIDAEN 15
 #define IS_XENOHYBRID 16
+#define IS_MOTH		17
 
-#define CE_STABLE "stable" // Inaprovaline
-#define CE_ANTIBIOTIC "antibiotic" // Antibiotics
-#define CE_BLOODRESTORE "bloodrestore" // Iron/nutriment
+/// Inaprovaline
+#define CE_STABLE "stable"
+/// Antibiotics
+#define CE_ANTIBIOTIC "antibiotic"
+/// Iron/nutriment
+#define CE_BLOODRESTORE "bloodrestore"
 #define CE_PAINKILLER "painkiller"
-#define CE_ALCOHOL "alcohol" // Liver filtering
-#define CE_ALCOHOL_TOXIC "alcotoxic" // Liver damage
-#define CE_SPEEDBOOST "gofast" // Hyperzine
-#define CE_SLOWDOWN "goslow" // Slowdown
-#define CE_ANTACID "nopuke" // Don't puke.
-
+/// Liver filtering
+#define CE_ALCOHOL "alcohol"
+/// Liver damage
+#define CE_ALCOHOL_TOXIC "alcotoxic"
+/// Hyperzine
+#define CE_SPEEDBOOST "gofast"
+/// Slowdown
+#define CE_SLOWDOWN "goslow"
+/// Don't puke.
+#define CE_ANTACID "nopuke"
 #define REAGENTS_PER_SHEET 20
 
 // Attached to CE_ANTIBIOTIC
@@ -75,6 +85,11 @@ var/list/cheartstopper = list("potassium_chloride")                       // Thi
 #define MAX_UNITS_PER_BOTTLE 60
 ///Max length of a custom pill/condiment/whatever
 #define MAX_CUSTOM_NAME_LEN 64
+
+///Syringe
+#define SYRINGE_DRAW 0
+#define SYRINGE_INJECT 1
+#define SYRINGE_BROKEN 2
 
 //reagents_holder_flags defines
 ///Makes it possible to add reagents through droppers and syringes.

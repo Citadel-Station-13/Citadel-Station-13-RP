@@ -151,6 +151,13 @@
 	siemens_coefficient = 2.0
 	body_parts_covered = HEAD|FACE|EYES
 
+/obj/item/clothing/head/hevhelm
+	name = "Hazardous Environments Helmet"
+	desc = "Don't get Kleiner'd, wear the Helmet."
+	icon_state = "hevhelm"
+	flags_inv = BLOCKHAIR|HIDEEARS|HIDEMASK
+	body_parts_covered = HEAD|FACE
+
 /obj/item/clothing/head/cueball
 	name = "cueball helmet"
 	desc = "A large, featureless white orb mean to be worn on your head. How do you even see out of this thing?"
@@ -401,7 +408,6 @@
 	name = "beanie"
 	desc = "A head-hugging brimless winter cap. This one is tight."
 	icon_state = "beanie"
-	addblends = "beanie_a"
 	body_parts_covered = 0
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 
@@ -639,15 +645,13 @@
 	name = "imperial soldier helmet"
 	desc = "Reproduction headgear fashioned after the standard helmet of the ill fated Neo Macedonian Empire. The material is too flimsy to provide protection."
 	icon_state = "ge_helm"
-	icon = 'icons/obj/clothing/hats_vr.dmi'
-	icon_override = 'icons/mob/head_vr.dmi'
+	icon = 'icons/obj/clothing/hats.dmi'
 
 /obj/item/clothing/head/imperial_officer_replica
 	name = "imperial officer helmet"
 	desc = "Reproduction headgear fashioned after the officer's helmet of the ill fated Neo Macedonian Empire. The material is too flimsy to provide protection."
 	icon_state = "ge_helmcent"
-	icon = 'icons/obj/clothing/hats_vr.dmi'
-	icon_override = 'icons/mob/head_vr.dmi'
+	icon = 'icons/obj/clothing/hats.dmi'
 
 /obj/item/clothing/head/papersack
 	name = "paper sack hat"

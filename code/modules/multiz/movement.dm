@@ -57,7 +57,7 @@
 			else
 				to_chat(src, "<span class='warning'>You gave up on pulling yourself up.</span>")
 				return 0
-		else if(ismob(src)) //VOREStation Edit Start. Are they a mob, and are they currently flying??
+		else if(ismob(src)) // Are they a mob, and are they currently flying??
 			var/mob/living/H = src
 			if(H.flying)
 				if(H.incapacitated(INCAPACITATION_ALL))
@@ -75,7 +75,7 @@
 					return 0
 			else
 				to_chat(src, "<span class='warning'>Gravity stops you from moving upward.</span>")
-				return 0 //VOREStation Edit End.
+				return 0
 		else
 			to_chat(src, "<span class='warning'>Gravity stops you from moving upward.</span>")
 			return 0
@@ -141,9 +141,8 @@
 	if(hovering || is_incorporeal())
 		return TRUE
 
-	if(flying) //VOREStation Edit. Allows movement up/down with wings.
-		return 1 //VOREStation Edit
-
+	if(flying) // Allows movement up/down with wings.
+		return 1
 	if(Process_Spacemove())
 		return TRUE
 
@@ -206,7 +205,7 @@
 		return
 
 	if(ismob(src))
-		var/mob/H = src //VOREStation Edit Start. Flight on mobs.
+		var/mob/H = src // Flight on mobs.
 		if(H.flying) //Some other checks are done in the wings_toggle proc
 			if(H.nutrition > 2)
 				H.nutrition -= 0.5 //You use up 0.5 nutrition per TILE and tick of flying above open spaces. If people wanna flap their wings in the hallways, shouldn't penalize them for it. Lowered to make winged people less sad.

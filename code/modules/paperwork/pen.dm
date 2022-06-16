@@ -218,8 +218,8 @@
 
 /obj/item/pen/reagent/sleepy/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("chloralhydrate", 1)	//VOREStation Edit
-	reagents.add_reagent("stoxin", 14)	//VOREStation Add
+	reagents.add_reagent("chloralhydrate", 1)
+	reagents.add_reagent("stoxin", 14)
 
 
 /*

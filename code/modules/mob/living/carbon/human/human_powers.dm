@@ -293,52 +293,37 @@
 		update_icons_body()
 
 /mob/living/carbon/human
-	var/next_sonar_ping = 0
 
 /mob/living/carbon/human/proc/sonar_ping()
-	set name = "Listen In"
+	set name = "Sonar Pulse"
 	set desc = "Allows you to listen in to movement and noises around you."
 	set category = "Abilities"
 
 	if(incapacitated())
 		to_chat(src, SPAN_WARNING("You need to recover before you can use this ability."))
 		return
-	if(world.time < next_sonar_ping)
-		to_chat(src, SPAN_WARNING("You need another moment to focus."))
-		return
-	if(is_deaf() || is_below_sound_pressure(get_turf(src)))
+	if(is_deaf())
 		to_chat(src, SPAN_WARNING("You are for all intents and purposes currently deaf!"))
 		return
-	next_sonar_ping += 10 SECONDS
-	var/heard_something = FALSE
-	to_chat(src, SPAN_WARNING("You take a moment to listen in to your environment..."))
-	for(var/mob/living/L in range(client.view, src))
-		var/turf/T = get_turf(L)
-		if(!T || L == src || L.stat == DEAD || is_below_sound_pressure(T))
-			continue
-		heard_something = TRUE
-		var/feedback = list()
-		feedback += "<span class='notice'>There are noises of movement "
-		var/direction = get_dir(src, L)
-		if(direction)
-			feedback += "towards the [dir2text(direction)], "
-			switch(get_dist(src, L) / client.view)
-				if(0 to 0.2)
-					feedback += "very close by."
-				if(0.2 to 0.4)
-					feedback += "close by."
-				if(0.4 to 0.6)
-					feedback += "some distance away."
-				if(0.6 to 0.8)
-					feedback += "further away."
-				else
-					feedback += "far away."
-		else // No need to check distance if they're standing right on-top of us
-			feedback += "right on top of you."
-		feedback += "</span>"
-		to_chat(src, jointext(feedback,null))
-	if(!heard_something)
-		to_chat(src, SPAN_NOTICE("You hear no movement but your own."))
+	if(!get_turf(src))
+		to_chat(src, SPAN_WARNING("Not from here you can't."))
+		return
+	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_SONAR_PULSE))
+		to_chat(src, SPAN_WARNING("You need to wait some more to do that!"))
+		return
+	TIMER_COOLDOWN_START(src, COOLDOWN_SONAR_PULSE, 2 SECONDS)
+
+	visible_message(
+		SPAN_WARNING("[src] emits a quiet click."),
+		SPAN_WARNING("You emit a quiet click."),
+		SPAN_WARNING("You hear a quiet, high-pitched click.")
+	)
+	plane_holder.set_vis(VIS_SONAR, TRUE)
+	var/datum/automata/wave/sonar/single_mob/sonar_automata = new
+	sonar_automata.receiver = src
+	sonar_automata.setup_auto(get_turf(src), 14)
+	sonar_automata.start()
+	addtimer(CALLBACK(plane_holder, /datum/plane_holder/proc/set_vis, VIS_SONAR, FALSE), 5 SECONDS, flags = TIMER_OVERRIDE|TIMER_UNIQUE)
 
 /mob/living/carbon/human/proc/regenerate()
 	set name = "Regenerate"

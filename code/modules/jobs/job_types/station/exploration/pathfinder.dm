@@ -39,12 +39,18 @@
 	uniform = /obj/item/clothing/under/explorer //TODO: Uniforms.
 	l_ear = /obj/item/radio/headset/pathfinder
 	id_slot = slot_wear_id
+
 	pda_slot = slot_l_store
 	pda_type = /obj/item/pda/pathfinder
 	id_type = /obj/item/card/id/explorer/head/pathfinder
 	id_pda_assignment = "Pathfinder"
-	flags = OUTFIT_HAS_BACKPACK|OUTFIT_EXTENDED_SURVIVAL|OUTFIT_COMPREHENSIVE_SURVIVAL
+
+	backpack = /obj/item/storage/backpack/voyager
 	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/planetside = 1)
+	satchel_one = /obj/item/storage/backpack/satchel/voyager
+	dufflebag = /obj/item/storage/backpack/dufflebag/voyager
+
+	flags = OUTFIT_HAS_BACKPACK|OUTFIT_EXTENDED_SURVIVAL|OUTFIT_COMPREHENSIVE_SURVIVAL
 
 /datum/outfit/job/station/pathfinder/post_equip(mob/living/carbon/human/H)
 	..()

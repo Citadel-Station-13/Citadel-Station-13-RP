@@ -90,7 +90,7 @@
 		//	step_to(holder, A)
 			if(holder.IMove(get_step_to(holder, A)) == MOVEMENT_FAILED)
 				ai_log("walk_path() : Failed to move, attempting breakthrough.", AI_LOG_INFO)
-				breakthrough(A) // We failed to move, time to smash things.
+				INVOKE_ASYNC(src, .proc/breakthrough, A)
 			return
 
 		if(move_once() == FALSE) // Start walking the path.

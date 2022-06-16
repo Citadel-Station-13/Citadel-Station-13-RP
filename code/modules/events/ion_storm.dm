@@ -31,7 +31,7 @@
 		if(!(S.z in affecting_z))
 			continue
 		var/area/A = get_area(S)
-		if(!A || A.flags & RAD_SHIELDED)	// Rad shielding will protect from ions too
+		if(!A || A.area_flags & AF_RAD_SHIELDED)	// Rad shielding will protect from ions too
 			continue
 		to_chat(S, "<span class='warning'>Your integrated sensors detect an ionospheric anomaly. Your systems will be impacted as you begin a partial restart.</span>")
 		var/ionbug = rand(3, 9)
@@ -211,7 +211,7 @@ Would like to add a law like "Law x is _______" where x = a number, and _____ is
 		to_chat(world, "Finished processing SMES. Processed: [smesnum]")
 	spawn(0)
 		to_chat(world, "Started processing AIRLOCKS")
-		for (var/obj/machinery/door/airlock/D in machines)
+		for (var/obj/machinery/door/airlock/D in GLOB.machines)
 			if(D.z in station_levels)
 				//if(length(D.req_access) > 0 && !(12 in D.req_access)) //not counting general access and maintenance airlocks
 				airlocknum++
@@ -220,7 +220,7 @@ Would like to add a law like "Law x is _______" where x = a number, and _____ is
 		to_chat(world, "Finished processing AIRLOCKS. Processed: [airlocknum]")
 	spawn(0)
 		to_chat(world, "Started processing FIREDOORS")
-		for (var/obj/machinery/door/firedoor/D in machines)
+		for (var/obj/machinery/door/firedoor/D in GLOB.machines)
 			if(D.z in station_levels)
 				firedoornum++;
 				spawn(0)

@@ -113,8 +113,8 @@
 #define RUNLEVELS_DEFAULT (RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME)
 
 var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_GAME, RUNLEVEL_POSTGAME)
-#define RUNLEVEL_FLAG_TO_INDEX(flag) (log(2, flag) + 1)	// Convert from the runlevel bitfield constants to index in runlevel_flags list
-
+/// Convert from the runlevel bitfield constants to index in runlevel_flags list
+#define RUNLEVEL_FLAG_TO_INDEX(flag) (log(2, flag) + 1)
 // Subsystem init_order, from highest priority to lowest priority
 // Subsystems shutdown in the reverse of the order they initialize in
 // The numbers just define the ordering, they are meaningless otherwise.
@@ -154,9 +154,10 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_AI				-22
 #define INIT_ORDER_OPENSPACE		-50
 #define INIT_ORDER_PERSISTENCE		-95
+#define INIT_ORDER_PATH				-98
 #define INIT_ORDER_ICON_SMOOTHING	-99
-#define INIT_ORDER_CHAT				-100 //Should be last to ensure chat remains smooth during init.
-
+///Should be last to ensure chat remains smooth during init.
+#define INIT_ORDER_CHAT				-100
 // Subsystem fire priority, from lowest to highest priority
 // If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)
 
@@ -164,7 +165,6 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define FIRE_PRIORITY_SHUTTLES		5
 #define FIRE_PRIORITY_NIGHTSHIFT	6
 #define FIRE_PRIORITY_PLANTS		5
-#define FIRE_PRIORITY_ORBIT			8
 #define FIRE_PRIORITY_VOTE			9
 #define FIRE_PRIORITY_AI			10
 #define FIRE_PRIORITY_VIS			10
@@ -188,8 +188,8 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define FIRE_PRIORITY_OVERLAYS		500
 #define FIRE_PRIORITY_SMOOTHING		500
 #define FIRE_PRIORITY_TIMER			700
-#define FIRE_PRIORITY_INPUT			1000		//never drop input
-
+///never drop input
+#define FIRE_PRIORITY_INPUT			1000
 ///Compile all the overlays for an atom from the cache lists
 // |= on overlays is not actually guaranteed to not add same appearances but we're optimistically using it anyway.
 #define COMPILE_OVERLAYS(A)\

@@ -29,6 +29,19 @@
 	else
 		return
 
+/obj/structure/plasticflaps/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
+	if(isliving(caller))
+		if(isbot(caller))
+			return TRUE
+
+		var/mob/living/living_caller = caller
+		if(!living_caller.can_ventcrawl() && living_caller.mob_size > MOB_TINY)
+			return FALSE
+
+	if(caller?.pulling)
+		return CanAStarPass(ID, to_dir, caller.pulling)
+	return TRUE //diseases, stings, etc can pass
+
 /obj/structure/plasticflaps/CanAllowThrough(atom/A, turf/T)
 	if(istype(A) && A.checkpass(PASSGLASS))
 		return prob(60)
@@ -65,4 +78,4 @@
 /obj/structure/plasticflaps/mining //A specific type for mining that doesn't allow airflow because of them damn crates
 	name = "airtight plastic flaps"
 	desc = "Heavy duty, airtight, plastic flaps. Have extra safety installed, preventing passage of living beings."
-	can_atmos_pass = ATMOS_PASS_NO
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED

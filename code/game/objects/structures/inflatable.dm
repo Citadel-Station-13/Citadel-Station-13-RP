@@ -28,7 +28,7 @@
 	density = 1
 	anchored = 1
 	opacity = 0
-	can_atmos_pass = ATMOS_PASS_DENSITY
+	CanAtmosPass = ATMOS_PASS_DENSITY
 
 	icon = 'icons/obj/inflatable.dmi'
 	icon_state = "wall"
@@ -206,8 +206,8 @@
 	isSwitchingStates = 1
 	flick("door_opening",src)
 	sleep(10)
-	density = 0
-	opacity = 0
+	set_density(FALSE)
+	set_opacity(FALSE)
 	state = 1
 	update_icon()
 	isSwitchingStates = 0
@@ -216,8 +216,8 @@
 	isSwitchingStates = 1
 	flick("door_closing",src)
 	sleep(10)
-	density = 1
-	opacity = 0
+	set_density(TRUE)
+	set_opacity(FALSE)
 	state = 0
 	update_icon()
 	isSwitchingStates = 0

@@ -1,15 +1,15 @@
-#define HEAT_CAPACITY_HUMAN 100 //249840 J/K, for a 72 kg person.
-
+///249840 J/K, for a 72 kg person.
+#define HEAT_CAPACITY_HUMAN 100
 /obj/machinery/atmospherics/component/unary/cryo_cell
 	name = "cryo cell"
 	icon = 'icons/obj/cryogenics.dmi' // map only
 	icon_state = "pod_preview"
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
 	layer = UNDER_JUNK_LAYER
-	interact_offline = 1
+	interact_offline = TRUE
 
-	var/on = 0
+	var/on = FALSE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	active_power_usage = 200
@@ -26,12 +26,11 @@
 
 /obj/machinery/atmospherics/component/unary/cryo_cell/Initialize(mapload)
 	. = ..()
+
 	icon = 'icons/obj/cryogenics_split.dmi'
 	icon_state = "base"
 	initialize_directions = dir
 
-/obj/machinery/atmospherics/component/unary/cryo_cell/Initialize(mapload)
-	. = ..()
 	var/image/tank = image(icon,"tank")
 	tank.alpha = 200
 	tank.pixel_y = 18
@@ -42,6 +41,7 @@
 	fluid.alpha = 200
 	fluid.plane = MOB_PLANE
 	fluid.layer = MOB_LAYER+0.1 //Below glass, above mob
+
 	add_overlay(tank)
 	update_icon()
 
@@ -70,11 +70,11 @@
 		expel_gas()
 
 	if(abs(temperature_archived-air_contents.temperature) > 1)
-		network.update = 1
+		network.update = TRUE
 
-	return 1
+	return TRUE
 
-/obj/machinery/atmospherics/component/unary/cryo_cell/relaymove(mob/user as mob)
+/obj/machinery/atmospherics/component/unary/cryo_cell/relaymove(mob/user)
 	// note that relaymove will also be called for mobs outside the cell with UI open
 	if(occupant == user && !user.stat)
 		go_out()
@@ -93,7 +93,7 @@
   *
   * @return nothing
   */
-/obj/machinery/atmospherics/component/unary/cryo_cell/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/atmospherics/component/unary/cryo_cell/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = TRUE)
 
 	if(user == occupant || user.stat)
 		return
@@ -101,7 +101,7 @@
 	// this is the data which will be sent to the ui
 	var/data[0]
 	data["isOperating"] = on
-	data["hasOccupant"] = occupant ? 1 : 0
+	data["hasOccupant"] = occupant ? TRUE : FALSE
 
 	var/occupantData[0]
 	if(occupant)
@@ -124,7 +124,7 @@
 	else if(air_contents.temperature > 225)
 		data["cellTemperatureStatus"] = "average"
 
-	data["isBeakerLoaded"] = beaker ? 1 : 0
+	data["isBeakerLoaded"] = beaker ? TRUE : FALSE
 	/* // Removing beaker contents list from front-end, replacing with a total remaining volume
 	var beakerContents[0]
 	if(beaker && beaker.reagents && beaker.reagents.reagent_list.len)
@@ -144,7 +144,7 @@
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		// the ui does not exist, so we'll create a new() one
-        // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
+		// for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
 		ui = new(user, src, ui_key, "cryo.tmpl", "Cryo Cell Control System", 520, 410)
 		// when the ui is first opened this is the data it will use
 		ui.set_initial_data(data)
@@ -155,17 +155,17 @@
 
 /obj/machinery/atmospherics/component/unary/cryo_cell/Topic(href, href_list)
 	if(usr == occupant)
-		return 0 // don't update UIs attached to this object
+		return FALSE // don't update UIs attached to this object
 
 	if(..())
-		return 0 // don't update UIs attached to this object
+		return FALSE // don't update UIs attached to this object
 
 	if(href_list["switchOn"])
-		on = 1
+		on = TRUE
 		update_icon()
 
 	if(href_list["switchOff"])
-		on = 0
+		on = FALSE
 		update_icon()
 
 	if(href_list["ejectBeaker"])
@@ -176,15 +176,15 @@
 
 	if(href_list["ejectOccupant"])
 		if(!occupant || isslime(usr) || ispAI(usr))
-			return 0 // don't update UIs attached to this object
+			return FALSE // don't update UIs attached to this object
 		go_out()
 
-	return 1 // update UIs attached to this object
+	return TRUE // update UIs attached to this object
 
-/obj/machinery/atmospherics/component/unary/cryo_cell/attackby(var/obj/item/G as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/component/unary/cryo_cell/attackby(obj/item/G, mob/user)
 	if(istype(G, /obj/item/reagent_containers/glass))
 		if(beaker)
-			to_chat(user, "<span class='warning'>A beaker is already loaded into the machine.</span>")
+			to_chat(user, SPAN_WARNING("A beaker is already loaded into the machine."))
 			return
 
 		beaker =  G
@@ -192,12 +192,13 @@
 		G.loc = src
 		user.visible_message("[user] adds \a [G] to \the [src]!", "You add \a [G] to \the [src]!")
 		update_icon()
+
 	else if(istype(G, /obj/item/grab))
 		var/obj/item/grab/grab = G
 		if(!ismob(grab.affecting))
 			return
 		if(occupant)
-			to_chat(user,"<span class='warning'>\The [src] is already occupied by [occupant].</span>")
+			to_chat(user, SPAN_WARNING("\The [src] is already occupied by [occupant]."))
 		if(grab.affecting.has_buckled_mobs())
 			to_chat(user, SPAN_WARNING( "\The [grab.affecting] has other entities attached to it. Remove them first."))
 			return
@@ -207,7 +208,7 @@
 
 	return
 
-/obj/machinery/atmospherics/component/unary/cryo_cell/MouseDrop_T(var/mob/target, var/mob/user) //Allows borgs to put people into cryo without external assistance
+/obj/machinery/atmospherics/component/unary/cryo_cell/MouseDrop_T(mob/target, mob/user) //Allows borgs to put people into cryo without external assistance
 	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user)|| !ishuman(target))
 		return
 	put_mob(target)
@@ -284,29 +285,30 @@
 	current_heat_capacity = initial(current_heat_capacity)
 	update_use_power(USE_POWER_IDLE)
 	return
+
 /obj/machinery/atmospherics/component/unary/cryo_cell/proc/put_mob(mob/living/carbon/M as mob)
-	if(stat & (NOPOWER|BROKEN))
-		to_chat(usr, "<span class='warning'>The cryo cell is not functioning.</span>")
+	if(machine_stat & (NOPOWER|BROKEN))
+		to_chat(usr, SPAN_WARNING("The cryo cell is not functioning."))
 		return
 	if(!istype(M))
-		to_chat(usr, "<span class='danger'>The cryo cell cannot handle such a lifeform!</span>")
+		to_chat(usr, SPAN_DANGER("The cryo cell cannot handle such a lifeform!"))
 		return
 	if(occupant)
-		to_chat(usr, "<span class='danger'>The cryo cell is already occupied!</span>")
+		to_chat(usr, SPAN_DANGER("The cryo cell is already occupied!"))
 		return
 	if(M.abiotic())
-		to_chat(usr, "<span class='warning'>Subject may not have abiotic items on.</span>")
+		to_chat(usr, SPAN_WARNING("Subject may not have abiotic items on."))
 		return
 	if(M.buckled)
-		to_chat(usr, "<span class='warning'>[M] is buckled to something!</span>")
+		to_chat(usr, SPAN_WARNING("[M] is buckled to something!"))
 		return
 	if(!node)
-		to_chat(usr, "<span class='warning'>The cell is not correctly connected to its pipe network!</span>")
+		to_chat(usr, SPAN_WARNING("The cell is not correctly connected to its pipe network!"))
 		return
 	M.forceMove(src)
 	M.ExtinguishMob()
 	if(M.health > -100 && (M.health < 0 || M.sleeping))
-		to_chat(M, "<span class='notice'><b>You feel a cold liquid surround you. Your skin starts to freeze up.</b></span>")
+		to_chat(M, SPAN_USERDANGER("You feel a cold liquid surround you. Your skin starts to freeze up."))
 	occupant = M
 	occupant.update_perspective()
 	vis_contents |= occupant
@@ -316,7 +318,7 @@
 //	M.metabslow = 1
 	add_fingerprint(usr)
 	update_icon()
-	return 1
+	return TRUE
 
 /obj/machinery/atmospherics/component/unary/cryo_cell/verb/move_eject()
 	set name = "Eject occupant"
@@ -325,7 +327,7 @@
 	if(usr == occupant)//If the user is inside the tube...
 		if(usr.stat == 2)//and he's not dead....
 			return
-		to_chat(usr, "<span class='notice'>Release sequence activated. This will take two minutes.</span>")
+		to_chat(usr, SPAN_NOTICE("Release sequence activated. This will take two minutes."))
 		sleep(1200)
 		if(!src || !usr || !occupant || (occupant != usr)) //Check if someone's released/replaced/bombed him already
 			return
@@ -344,13 +346,13 @@
 	if(isliving(usr))
 		var/mob/living/L = usr
 		if(L.has_buckled_mobs())
-			to_chat(L, SPAN_WARNING( "You have other entities attached to yourself. Remove them first."))
+			to_chat(L, SPAN_WARNING("You have other entities attached to yourself. Remove them first."))
 			return
 		if(L.stat != CONSCIOUS)
 			return
 		put_mob(L)
 
-/atom/proc/return_air_for_internal_lifeform(var/mob/living/lifeform)
+/atom/proc/return_air_for_internal_lifeform(mob/living/lifeform)
 	return return_air()
 
 /obj/machinery/atmospherics/component/unary/cryo_cell/return_air_for_internal_lifeform()
@@ -364,7 +366,7 @@
 /datum/data/function/proc/reset()
 	return
 
-/datum/data/function/proc/r_input(href, href_list, mob/user as mob)
+/datum/data/function/proc/r_input(href, href_list, mob/user)
 	return
 
 /datum/data/function/proc/display()

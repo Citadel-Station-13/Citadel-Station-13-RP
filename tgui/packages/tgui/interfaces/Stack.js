@@ -1,5 +1,7 @@
-import { useBackend } from "../backend";
-import { Box, Button, Section, Collapsible, Table } from "../components";
+import { createSearch } from 'common/string';
+import { sortBy } from 'common/collections';
+import { useBackend, useLocalState } from "../backend";
+import { Box, Button, Input, NoticeBox, Section, Collapsible, Table } from "../components";
 import { Window } from "../layouts";
 
 export const Stack = (props, context) => {
@@ -7,14 +9,53 @@ export const Stack = (props, context) => {
 
   const {
     amount,
-    recipes,
+    recipes = [],
   } = data;
 
+  const [
+    searchText,
+    setSearchText,
+  ] = useLocalState(context, 'searchText', '');
+
+  const testSearch = createSearch(searchText, item => {
+    return item;
+  });
+
+  const items = searchText.length > 0
+   && Object.keys(recipes)
+     .filter(testSearch)
+     .reduce((obj, key) => {
+       obj[key] = recipes[key];
+       return obj;
+     }, {})
+    || recipes;
+
+  const height = Math.max(94 + Object.keys(recipes).length * 26, 250);
+
   return (
-    <Window width={400} height={600} resizable>
+    <Window
+      width={400}
+      height={Math.min(height, 500)}>
       <Window.Content scrollable>
-        <Section title={"Amount: " + amount}>
-          <RecipeList recipes={recipes} />
+        <Section
+          title={"Amount: " + amount}
+          buttons={(
+            <>
+              Search
+              <Input
+                autoFocus
+                value={searchText}
+                onInput={(e, value) => setSearchText(value)}
+                mx={1} />
+            </>
+          )}>
+          {items.length === 0 && (
+            <NoticeBox>
+              No recipes found.
+            </NoticeBox>
+          ) || (
+            <RecipeList recipes={items} />
+          )}
         </Section>
       </Window.Content>
     </Window>
@@ -28,34 +69,16 @@ const RecipeList = (props, context) => {
     recipes,
   } = props;
 
-  let sortedKeys = Object.keys(recipes).sort();
-
-  // Shunt all categories to the top.
-  // We're not using this for now, keeping it here in case someone really hates
-  // color coding later.
-  // let nonCategories = sortedKeys.filter(
-  //   item => recipes[item].ref !== undefined
-  // );
-  // let categories = sortedKeys.filter(
-  //   item => recipes[item].ref === undefined
-  // );
-
-  // categories.unshift("--DIVIDER--");
-
-  // let newSortedKeys = nonCategories.concat(categories);
+  const sortedKeys = sortBy(key => key.toLowerCase())(Object.keys(recipes));
 
   return sortedKeys.map(title => {
-    // if (title === "--DIVIDER--") {
-    //   return (
-    //     <Box mt={1} mb={1}>
-    //       <Divider />
-    //     </Box>
-    //   );
-    // }
-    let recipe = recipes[title];
+    const recipe = recipes[title];
     if (recipe.ref === undefined) {
       return (
-        <Collapsible ml={1} mb={-0.7} color="label" title={title}>
+        <Collapsible
+          ml={1}
+          color="label"
+          title={title}>
           <Box ml={1}>
             <RecipeList recipes={recipe} />
           </Box>
@@ -63,7 +86,9 @@ const RecipeList = (props, context) => {
       );
     } else {
       return (
-        <Recipe title={title} recipe={recipe} />
+        <Recipe
+          title={title}
+          recipe={recipe} />
       );
     }
   });
@@ -85,14 +110,14 @@ const Multipliers = (props, context) => {
     maxMultiplier,
   } = props;
 
-  let maxM = Math.min(maxMultiplier,
+  const maxM = Math.min(maxMultiplier,
     Math.floor(recipe.max_res_amount / recipe.res_amount));
 
-  let multipliers = [5, 10, 25];
+  const multipliers = [5, 10, 25];
 
   let finalResult = [];
 
-  for (let multiplier of multipliers) {
+  for (const multiplier of multipliers) {
     if (maxM >= multiplier) {
       finalResult.push((
         <Button
@@ -148,10 +173,10 @@ const Recipe = (props, context) => {
     buttonName = res_amount + "x " + buttonName;
   }
 
-  let maxMultiplier = buildMultiplier(recipe, amount);
+  const maxMultiplier = buildMultiplier(recipe, amount);
 
   return (
-    <Box>
+    <Box mb={1}>
       <Table>
         <Table.Row>
           <Table.Cell>
@@ -167,7 +192,9 @@ const Recipe = (props, context) => {
           </Table.Cell>
           {max_res_amount > 1 && maxMultiplier > 1 && (
             <Table.Cell collapsing>
-              <Multipliers recipe={recipe} maxMultiplier={maxMultiplier} />
+              <Multipliers
+                recipe={recipe}
+                maxMultiplier={maxMultiplier} />
             </Table.Cell>
           )}
         </Table.Row>

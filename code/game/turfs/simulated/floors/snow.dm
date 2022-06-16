@@ -62,3 +62,19 @@
 	icon_state = "ice"
 	desc = "Looks slippery."
 	movement_cost = 4
+
+// Ice that is safe to walk on.
+/turf/simulated/floor/outdoors/safeice
+	name = "ice"
+	icon_state = "ice"
+	desc = "Seems safe enough to walk on."
+	movement_cost = 2
+
+// Snowy gravel
+/turf/simulated/floor/outdoors/gravsnow
+	name = "snowy gravel"
+	icon = 'icons/turf/snow_new.dmi'
+	icon_state = "gravsnow"
+	desc = "A layer of coarse ice pebbles and assorted gravel."
+	initial_flooring = /decl/flooring/snow/gravsnow
+	baseturfs = /turf/simulated/floor/outdoors/dirt

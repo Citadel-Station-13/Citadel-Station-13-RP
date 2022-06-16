@@ -6,7 +6,6 @@ var/global/image/appearance_bro = new() // Temporarily super-global because of B
 
 // Items that ask to be called every cycle.
 var/global/datum/datacore/data_core = null
-var/global/list/machines                 = list()	// ALL Machines, wether processing or not.
 var/global/list/processing_machines      = list()	// TODO - Move into SSmachines
 var/global/list/processing_power_items   = list()	// TODO - Move into SSmachines
 var/global/list/active_diseases          = list()
@@ -112,8 +111,8 @@ var/global/list/alphabet_uppercase = list("A","B","C","D","E","F","G","H","I","J
 // Used by robots and robot preferences.
 var/list/robot_module_types = list(
 	"Standard", "Engineering", "Medical",
-	"Miner",    "Janitor",     "Service",      "Clerical", "Security",
-	"Research"
+	"Miner",    "Janitor",     "Service",
+	"Clerical", "Security",    "Research"
 )
 
 // Some scary sounds.
@@ -144,7 +143,7 @@ var/max_explosion_range = 14
 //Could be useful for AI impersonation or something at some point?
 var/static/list/cached_character_icons = list()
 
-//VR FILE MERGE BELOW
+//! ## VR FILE MERGE ## !//
 
 /hook/startup/proc/modules_vr()
 	robot_module_types += "Medihound"
@@ -158,47 +157,49 @@ var/list/shell_module_types = list(
 	"Standard", "Service", "Clerical"
 )
 
-var/list/eventdestinations = list() // List of scatter landmarks for VOREStation event portals
+var/list/eventdestinations = list() // List of scatter landmarks for event portals
 
-var/global/list/acceptable_fruit_types= list(
-											"ambrosia",
-											"apple",
-											"banana",
-											"berries",
-											"cabbage",
-											"carrot",
-											"celery",
-											"cherry",
-											"chili",
-											"cocoa",
-											"corn",
-											"durian",
-											"eggplant",
-											"grapes",
-											"greengrapes",
-											"harebells",
-											"lavender",
-											"lemon",
-											"lettuce",
-											"lime",
-											"onion",
-											"orange",
-											"peanut",
-											"poppies",
-											"potato",
-											"pumpkin",
-											"rice",
-											"rose",
-											"rhubarb",
-											"soybean",
-											"spineapple",
-											"sugarcane",
-											"sunflowers",
-											"tomato",
-											"vanilla",
-											"watermelon",
-											"wheat",
-											"whitebeet")
+var/global/list/acceptable_fruit_types = list(
+	"ambrosia",
+	"apple",
+	"banana",
+	"berries",
+	"cabbage",
+	"carrot",
+	"celery",
+	"cherry",
+	"chili",
+	"cocoa",
+	"corn",
+	"durian",
+	"eggplant",
+	"grapes",
+	"greengrapes",
+	"harebells",
+	"lavender",
+	"lemon",
+	"lettuce",
+	"lime",
+	"onion",
+	"orange",
+	"peanut",
+	"poppies",
+	"potato",
+	"pumpkin",
+	"rice",
+	"rose",
+	"rhubarb",
+	"soybean",
+	"spineapple",
+	"sugarcane",
+	"sunflowers",
+	"tomato",
+	"vanilla",
+	"watermelon",
+	"wheat",
+	"whitebeet",
+	)
 
 var/global/list/acceptable_nectar_types= list(
-											"waxcomb (honey)")
+	"waxcomb (honey)",
+	)

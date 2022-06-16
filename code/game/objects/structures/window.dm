@@ -1,9 +1,9 @@
 /obj/structure/window
 	name = "window"
 	desc = "A window."
-	icon = 'icons/obj/structures_vr.dmi' // VOREStation Edit - New icons
+	icon = 'icons/obj/structures_vr.dmi'
 	density = 1
-	can_atmos_pass = ATMOS_PASS_DENSITY
+	CanAtmosPass = ATMOS_PASS_PROC
 	w_class = ITEMSIZE_NORMAL
 
 	layer = WINDOW_LAYER
@@ -11,8 +11,8 @@
 	anchored = 1.0
 	flags = ON_BORDER
 	var/maxhealth = 14.0
-	var/maximal_heat = T0C + 100 		// Maximal heat before this window begins taking damage from fire
-	var/damage_per_fire_tick = 2.0 		// Amount of damage per fire tick. Regular windows are not fireproof so they might as well break quickly.
+	var/maximal_heat = T0C + 100 // Maximal heat before this window begins taking damage from fire
+	var/damage_per_fire_tick = 2.0 // Amount of damage per fire tick. Regular windows are not fireproof so they might as well break quickly.
 	var/health
 	var/force_threshold = 0
 	var/ini_dir = null
@@ -150,11 +150,10 @@
 	else
 		return TRUE
 
-
-/obj/structure/window/CanZASPass(turf/T, is_zone)
-	if(is_fulltile() || get_dir(T, loc) == turn(dir, 180)) // Make sure we're handling the border correctly.
-		return anchored ? ATMOS_PASS_NO : ATMOS_PASS_YES // If it's anchored, it'll block air.
-	return ATMOS_PASS_YES // Don't stop airflow from the other sides.
+/obj/structure/window/CanAtmosPass(turf/T, d)
+	if(is_fulltile() || (d == dir))
+		return anchored? ATMOS_PASS_AIR_BLOCKED : ATMOS_PASS_NOT_BLOCKED
+	return ATMOS_PASS_NOT_BLOCKED
 
 /obj/structure/window/CheckExit(atom/movable/AM, turf/target)
 	if(is_fulltile())
@@ -389,6 +388,15 @@
 
 	setDir(turn(dir, 270))
 	updateSilicate()
+
+//! Does this work? idk. Let's call it TBI.
+/obj/structure/window/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
+	if(!density)
+		return TRUE
+	if((is_fulltile()) || (dir == to_dir))
+		return FALSE
+
+	return TRUE
 
 /obj/structure/window/Initialize(mapload, start_dir, constructed = FALSE)
 	. = ..(mapload)

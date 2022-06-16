@@ -167,8 +167,8 @@
 	#define DIGSITESIZE_LOWER 4
 	#define DIGSITESIZE_UPPER 12
 	#define ARTIFACTSPAWNNUM_LOWER 1
-	#define ARTIFACTSPAWNNUM_UPPER 4 //Replace with difficulty-based ones.
-
+	///Replace with difficulty-based ones.
+#define ARTIFACTSPAWNNUM_UPPER 4
 	if(!M.mineral && prob(rm_controller.diffstep_chances[rm_controller.diffstep]))	// Difficulty translates directly into ore chance
 		rm_controller.dbg("ZM(par): Adding mineral to [M.x],[M.y].")
 		M.make_ore(rm_controller.diffstep >= 3 ? 1 : 0)

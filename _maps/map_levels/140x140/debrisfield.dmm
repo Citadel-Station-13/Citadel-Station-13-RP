@@ -162,7 +162,7 @@
 /area/space/debrisfield/explored)
 "J" = (
 /obj/machinery/power/smes/buildable{
-	charge = 1.5e+007;
+	charge = 15000;
 	cur_coils = 3
 	},
 /obj/structure/cable/green{

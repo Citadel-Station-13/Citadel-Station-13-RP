@@ -3,7 +3,7 @@ SUBSYSTEM_DEF(vote)
 	wait = 10
 	priority = FIRE_PRIORITY_VOTE
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
-	flags = SS_KEEP_TIMING | SS_NO_INIT
+	subsystem_flags = SS_KEEP_TIMING | SS_NO_INIT
 	var/list/round_voters = list()
 
 	//Current vote
@@ -105,8 +105,7 @@ SUBSYSTEM_DEF(vote)
 						factor = 1.4
 				choices["Initiate Crew Transfer"] = round(choices["Initiate Crew Transfer"] * factor)
 				to_chat(world, "\n<span class='infoplain'><font color='purple'>Crew Transfer Factor: [factor]</font></span>")
-				greatest_votes = max(choices["Initiate Crew Transfer"], choices["Extend the Shift"]) //VOREStation Edit
-
+				greatest_votes = max(choices["Initiate Crew Transfer"], choices["Extend the Shift"])
 	. = list() // Get all options with that many votes and return them in a list
 	if(greatest_votes)
 		for(var/option in choices)
@@ -215,8 +214,8 @@ SUBSYSTEM_DEF(vote)
 					if(SSticker.current_state <= GAME_STATE_SETTING_UP)
 						to_chat(initiator_key, "The crew transfer button has been disabled!")
 						return 0
-				question = "Your PDA beeps with a message from Central. Would you like an additional hour to finish ongoing projects?" //VOREStation Edit
-				choices.Add("Initiate Crew Transfer", "Extend the Shift")  //VOREStation Edit
+				question = "Your PDA beeps with a message from Central. Would you like an additional hour to finish ongoing projects?"
+				choices.Add("Initiate Crew Transfer", "Extend the Shift")
 			if(VOTE_ADD_ANTAGONIST)
 				if(!config_legacy.allow_extra_antags || SSticker.current_state >= GAME_STATE_SETTING_UP)
 					return 0

@@ -99,9 +99,10 @@
 	if(handle_casings != HOLD_CASINGS)
 		chambered = null
 
-#define TACTICAL_RELOAD_SPEED 1 SECOND //time it takes to tac reload a gun
-#define SPEED_RELOAD_SPEED    0.5 SECONDS //time it takes to speed reload a gun
-
+///time it takes to tac reload a gun
+#define TACTICAL_RELOAD_SPEED 1 SECOND
+///time it takes to speed reload a gun
+#define SPEED_RELOAD_SPEED    0.5 SECONDS
 //Attempts to load A into src, depending on the type of thing being loaded and the load_method
 //Maybe this should be broken up into separate procs for each load method?
 /obj/item/gun/projectile/proc/load_ammo(obj/item/A, mob/user)

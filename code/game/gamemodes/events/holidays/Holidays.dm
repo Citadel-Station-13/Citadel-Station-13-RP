@@ -10,21 +10,21 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //ALSO, MOST IMPORTANTLY: Don't add stupid stuff! Discuss bonus content with Project-Heads first please!//
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
-//																							~Carn
 
 /hook/startup/proc/updateHoliday()
 	Get_Holiday()
 	return 1
 
-//sets up the Holiday global variable. Shouldbe called on game configuration or something.
+/// Sets up the Holiday global variable. Shouldbe called on game configuration or something.
 /proc/Get_Holiday()
-	if(!Holiday)	return		// Holiday stuff was not enabled in the config!
+	if(!Holiday)
+		return // Holiday stuff was not enabled in the config!
 
-	Holiday = list()			// reset our switch now so we can recycle it as our Holiday name
+	Holiday = list() // reset our switch now so we can recycle it as our Holiday name
 
-	var/YY	=	text2num(time2text(world.timeofday, "YY")) 	// get the current year
-	var/MM	=	text2num(time2text(world.timeofday, "MM")) 	// get the current month
-	var/DD	=	text2num(time2text(world.timeofday, "DD")) 	// get the current day
+	var/YY = text2num(time2text(world.timeofday, "YY")) // get the current year
+	var/MM = text2num(time2text(world.timeofday, "MM")) // get the current month
+	var/DD = text2num(time2text(world.timeofday, "DD")) // get the current day
 
 	//Main switch. If any of these are too dumb/inappropriate, or you have better ones, feel free to change whatever
 	//Holidays are now associate lists.  You should write holidays like this.
@@ -129,11 +129,8 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 //				if(10)
 //					Holiday["S'randarr's Day"] = "A Tajaran holiday that occurs on the longest day of the year in summer,
 //					on Ahdomai. It is named after the Tajaran deity of Light, and huge celebrations are common."
-//VOREStation Add - Of course we need this.
 				if(8)
-					Holiday["Vore Day"] = "A holiday representing the innate desire in all/most/some/a few of us to devour each other or be devoured. \
-					That's probably why you're here, isn't it? Get to it, then!"
-//VOREStation Add End.
+					Holiday["Vore Day"] = "A holiday representing the innate desire in all/most/some/a few of us to devour each other or be devoured."
 
 				if(27)
 					Holiday["Forgiveness Day"] = "A time to forgive and be forgiven."

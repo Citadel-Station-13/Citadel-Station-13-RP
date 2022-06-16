@@ -20,21 +20,21 @@
 	overflow_spawnpoints = list()
 	custom_spawnpoints = list()
 	// O(2n) but sue me
-	for(var/atom/movable/landmark/spawnpoint/S in GLOB.landmarks_list)
+	for(var/obj/landmark/spawnpoint/S in GLOB.landmarks_list)
 		spawnpoints += S
-	for(var/atom/movable/landmark/spawnpoint/job/S in GLOB.landmarks_list)
+	for(var/obj/landmark/spawnpoint/job/S in GLOB.landmarks_list)
 		if(!S.job_path)
 			continue
 		LAZYDISTINCTADD(job_spawnpoints[S.job_path], S)
-	for(var/atom/movable/landmark/spawnpoint/latejoin/S in GLOB.landmarks_list)
+	for(var/obj/landmark/spawnpoint/latejoin/S in GLOB.landmarks_list)
 		if(!S.faction)
 			continue
 		LAZYDISTINCTADD(latejoin_spawnpoints[S.faction], S)
-	for(var/atom/movable/landmark/spawnpoint/overflow/S in GLOB.landmarks_list)
+	for(var/obj/landmark/spawnpoint/overflow/S in GLOB.landmarks_list)
 		if(!S.faction)
 			continue
 		LAZYDISTINCTADD(latejoin_spawnpoints[S.faction], S)
-	for(var/atom/movable/landmark/spawnpoint/custom/S in GLOB.landmarks_list)
+	for(var/obj/landmark/spawnpoint/custom/S in GLOB.landmarks_list)
 		if(!S.key)
 			continue
 		LAZYDISTINCTADD(custom_spawnpoints[S.key], S)
@@ -52,11 +52,12 @@
  *
  */
 /datum/controller/subsystem/job/proc/GetRoundstartSpawnpoint(mob/M, client/C, job_path, faction, random = TRUE, harder = FALSE)
+	RETURN_TYPE(/obj/landmark/spawnpoint)
 	if(random)
 		. = list()
 	// Priority 1: Job specific spawnpoints
 	if(job_path && length(job_spawnpoints[job_path]))
-		for(var/atom/movable/landmark/spawnpoint/job/J as anything in job_spawnpoints[job_path])
+		for(var/obj/landmark/spawnpoint/job/J as anything in job_spawnpoints[job_path])
 			if(!J.roundstart)
 				continue
 			if(!J.Available(M, C, harder))
@@ -69,7 +70,7 @@
 		return pick(.)
 	// Priority 2: Overflow spawnpoints as a last resort
 	if(length(overflow_spawnpoints[faction]))
-		for(var/atom/movable/landmark/spawnpoint/overflow/S as anything in overflow_spawnpoints[faction])
+		for(var/obj/landmark/spawnpoint/overflow/S as anything in overflow_spawnpoints[faction])
 			if(!S.Available(M, C, harder))
 				continue
 			if(random)
@@ -99,10 +100,11 @@
  * - harder - used when the first iteration failed, tells spawnpoints to skip certain checks
  */
 /datum/controller/subsystem/job/proc/GetLatejoinSpawnpoint(client/C, job_path, faction = JOB_FACTION_STATION, method, random = TRUE, harder = FALSE)
+	RETURN_TYPE(/obj/landmark/spawnpoint)
 	if(random)
 		. = list()	// Priority 1: Job specific spawnpoints
 	if(job_path && length(job_spawnpoints[job_path]))
-		for(var/atom/movable/landmark/spawnpoint/job/J as anything in job_spawnpoints[job_path])
+		for(var/obj/landmark/spawnpoint/job/J as anything in job_spawnpoints[job_path])
 			if(!J.latejoin)
 				continue
 			if(!J.latejoin_override && method && (method != J.method))
@@ -117,7 +119,7 @@
 		return pick(.)
 	// Priority 2: Latejoin spawnpoints, if latejoin
 	if(length(latejoin_spawnpoints[faction]))
-		for(var/atom/movable/landmark/spawnpoint/latejoin/S as anything in latejoin_spawnpoints[faction])
+		for(var/obj/landmark/spawnpoint/latejoin/S as anything in latejoin_spawnpoints[faction])
 			if(!S.Available(null, C, harder))
 				continue
 			if(method && (S.method != method))
@@ -130,7 +132,7 @@
 		return pick(.)
 	// Priority 3: Overflow spawnpoints as a last resort
 	if(length(overflow_spawnpoints[faction]))
-		for(var/atom/movable/landmark/spawnpoint/overflow/S as anything in overflow_spawnpoints[faction])
+		for(var/obj/landmark/spawnpoint/overflow/S as anything in overflow_spawnpoints[faction])
 			if(!S.Available(null, C, harder))
 				continue
 			if(random)
@@ -161,7 +163,7 @@
 	. = list()
 	// Get all job specific methods, and allow for override if needed
 	if(job_path && length(job_spawnpoints[job_path]))
-		for(var/atom/movable/landmark/spawnpoint/job/J as anything in job_spawnpoints[job_path])
+		for(var/obj/landmark/spawnpoint/job/J as anything in job_spawnpoints[job_path])
 			if(!J.latejoin)
 				continue
 			if(J.latejoin_override)
@@ -171,13 +173,13 @@
 			. |= J.method
 	// Get all standard latejoin methods
 	if(length(latejoin_spawnpoints[faction]))
-		for(var/atom/movable/landmark/spawnpoint/latejoin/S as anything in latejoin_spawnpoints[faction])
+		for(var/obj/landmark/spawnpoint/latejoin/S as anything in latejoin_spawnpoints[faction])
 			if(!S.Available(null, C, TRUE))
 				continue
 			. |= S.method
 	// If there's none, add overflow method if overflow spawnpoints exist
 	if(!length(.) && length(overflow_spawnpoints[faction]))
-		for(var/atom/movable/landmark/spawnpoint/overflow/S as anything in overflow_spawnpoints[faction])
+		for(var/obj/landmark/spawnpoint/overflow/S as anything in overflow_spawnpoints[faction])
 			if(S.Available(null, C, TRUE))
 				return list("Overflow")
 
@@ -192,7 +194,7 @@
 /datum/controller/subsystem/job/proc/GetCustomSpawnpoint(mob/M, client/C, key)
 	if(!length(custom_spawnpoints[key]))
 		return
-	for(var/atom/movable/landmark/spawnpoint/S as anything in custom_spawnpoints[key])
+	for(var/obj/landmark/spawnpoint/S as anything in custom_spawnpoints[key])
 		if(!S.Available(M, C))
 			continue
 		return S

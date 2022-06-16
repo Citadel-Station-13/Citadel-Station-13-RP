@@ -30,8 +30,6 @@ SUBSYSTEM_DEF(ticker)
 	var/event_time = null
 	var/event = 0
 
-	// var/login_music			// music played in pregame lobby // VOREStation Edit - We do music differently
-
 	var/list/datum/mind/minds = list()//The people in the game. Used for objective tracking.
 
 	var/Bible_icon_state	// icon_state the chaplain has chosen for his bible
@@ -226,7 +224,6 @@ SUBSYSTEM_DEF(ticker)
 	create_characters() //Create player characters and transfer them.
 	collect_minds()
 	equip_characters()
-	//data_core.manifest()	//VOREStation Removal
 
 	callHook("roundstart")
 
@@ -235,7 +232,7 @@ SUBSYSTEM_DEF(ticker)
 		cb.InvokeAsync()
 	LAZYCLEARLIST(round_start_events)
 
-	for(var/atom/movable/landmark/L in GLOB.landmarks_list)
+	for(var/obj/landmark/L in GLOB.landmarks_list)
 		// type filtered, we cannot risk runtimes
 		L.OnRoundstart()
 
@@ -267,11 +264,10 @@ SUBSYSTEM_DEF(ticker)
 
 	Master.SetRunLevel(RUNLEVEL_GAME)
 
-	if(config_legacy.sql_enabled)
+	if(CONFIG_GET(flag/sql_enabled))
 		//THIS REQUIRES THE INVOKE ASYNC.
 		INVOKE_ASYNC(GLOBAL_PROC, .proc/statistic_cycle) // Polls population totals regularly and stores them in an SQL DB -- TLE
-
-	return 1
+	return TRUE
 
 //These callbacks will fire after roundstart key transfer
 /datum/controller/subsystem/ticker/proc/OnRoundstart(datum/callback/cb)
@@ -332,19 +328,19 @@ SUBSYSTEM_DEF(ticker)
 				if("mercenary") //Nuke wasn't on station when it blew up
 					flick("intro_nuke",cinematic)
 					sleep(35)
-					SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
+					SEND_SOUND(world, sound('sound/soundbytes/effects/explosion/explosionfar.ogg'))
 					flick("station_intact_fade_red",cinematic)
 					cinematic.icon_state = "summary_nukefail"
 				else
 					flick("intro_nuke",cinematic)
 					sleep(35)
-					SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
+					SEND_SOUND(world, sound('sound/soundbytes/effects/explosion/explosionfar.ogg'))
 					//flick("end",cinematic)
 
 
 		if(2)	//nuke was nowhere nearby	//TODO: a really distant explosion animation
 			sleep(50)
-			SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
+			SEND_SOUND(world, sound('sound/soundbytes/effects/explosion/explosionfar.ogg'))
 
 
 		else	//station was destroyed
@@ -355,25 +351,25 @@ SUBSYSTEM_DEF(ticker)
 					flick("intro_nuke",cinematic)
 					sleep(35)
 					flick("station_explode_fade_red",cinematic)
-					SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
+					SEND_SOUND(world, sound('sound/soundbytes/effects/explosion/explosionfar.ogg'))
 					cinematic.icon_state = "summary_nukewin"
 				if("AI malfunction") //Malf (screen,explosion,summary)
 					flick("intro_malf",cinematic)
 					sleep(76)
 					flick("station_explode_fade_red",cinematic)
-					SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
+					SEND_SOUND(world, sound('sound/soundbytes/effects/explosion/explosionfar.ogg'))
 					cinematic.icon_state = "summary_malf"
 				if("blob") //Station nuked (nuke,explosion,summary)
 					flick("intro_nuke",cinematic)
 					sleep(35)
 					flick("station_explode_fade_red",cinematic)
-					SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
+					SEND_SOUND(world, sound('sound/soundbytes/effects/explosion/explosionfar.ogg'))
 					cinematic.icon_state = "summary_selfdes"
 				else //Station nuked (nuke,explosion,summary)
 					flick("intro_nuke",cinematic)
 					sleep(35)
 					flick("station_explode_fade_red", cinematic)
-					SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
+					SEND_SOUND(world, sound('sound/soundbytes/effects/explosion/explosionfar.ogg'))
 					cinematic.icon_state = "summary_selfdes"
 			for(var/mob/living/M in living_mob_list)
 				if(M.loc.z in GLOB.using_map.station_levels)
@@ -396,13 +392,11 @@ SUBSYSTEM_DEF(ticker)
 			else if(!player.mind.assigned_role)
 				continue
 			else
-				//VOREStation Edit Start
 				var/mob/living/carbon/human/new_char = player.create_character()
 				if(new_char)
 					qdel(player)
 				if(istype(new_char) && !(new_char.mind.assigned_role=="Cyborg"))
 					data_core.manifest_inject(new_char)
-				//VOREStation Edit End
 
 
 /datum/controller/subsystem/ticker/proc/collect_minds()
@@ -420,8 +414,6 @@ SUBSYSTEM_DEF(ticker)
 			if(!player_is_antag(player.mind, only_offstation_roles = 1))
 				job_master.EquipRank(player, player.mind.assigned_role, 0)
 				UpdateFactionList(player)
-				//equip_custom_items(player)	//VOREStation Removal
-				//player.apply_traits() //VOREStation Removal
 	if(captainless)
 		for(var/mob/M in player_list)
 			if(!istype(M,/mob/new_player))
@@ -432,7 +424,7 @@ SUBSYSTEM_DEF(ticker)
 	if(current_state != GAME_STATE_PLAYING)
 		return 0
 
-	var/dt = (flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
+	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
 	mode.process(dt)
 
 	var/game_finished = 0
@@ -463,7 +455,11 @@ SUBSYSTEM_DEF(ticker)
 			blackbox.save_all_data_to_sql()
 
 		send2irc("Server", "A round of [mode.name] just ended.")
-		world.TgsTargetedChatBroadcast("The round has ended.", FALSE)
+		if(CONFIG_GET(string/chat_roundend_notice_tag))
+			var/broadcastmessage = "The round has ended."
+			if(CONFIG_GET(string/chat_reboot_role))
+				broadcastmessage += "\n\n<@&[CONFIG_GET(string/chat_reboot_role)]>, the server will reboot shortly!"
+			send2chat(broadcastmessage, CONFIG_GET(string/chat_roundend_notice_tag))
 
 		SSpersistence.SavePersistence()
 		ready_for_reboot = TRUE

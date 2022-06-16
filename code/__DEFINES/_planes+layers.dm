@@ -41,61 +41,91 @@ What is the naming convention for planes or layers?
 */
 
 #define CLICKCATCHER_PLANE		-99
-#define SPACE_PLANE				-95	// Reserved for use in space/parallax
-#define PARALLAX_PLANE			-90	// Reserved for use in space/parallax
-	#define PARALLAX_VIS_LAYER_BELOW			-10000		// everything layering below
+/// Reserved for use in space/parallax
+#define SPACE_PLANE				-95
+/// Reserved for use in space/parallax
+#define PARALLAX_PLANE			-90
+	/// everything layering below
+#define PARALLAX_VIS_LAYER_BELOW			-10000
 	#define PARALLAX_LAYER_CENTER				0
-	#define PARALLAX_VIS_LAYER_ABOVE			10000		// ditto
-
-#define PLANE_LOOKINGGLASS		-77	//For the Looking Glass holodecks
-#define PLANE_LOOKINGGLASS_IMG	-76	//For the Looking Glass holodecks
-
+	/// ditto
+#define PARALLAX_VIS_LAYER_ABOVE			10000
+///For the Looking Glass holodecks
+#define PLANE_LOOKINGGLASS		-77
+///For the Looking Glass holodecks
+#define PLANE_LOOKINGGLASS_IMG	-76
 //OPENSPACE_PLANE reserves all planes between OPENSPACE_PLANE_START and OPENSPACE_PLANE_END inclusive
-#define OPENSPACE_PLANE			-75	///turf/simulated/open will use OPENSPACE_PLANE + z (Valid z's being 2 thru 17)
+///turf/simulated/open will use OPENSPACE_PLANE + z (Valid z's being 2 thru 17)
+#define OPENSPACE_PLANE			-75
 #define OPENSPACE_PLANE_START	-73
 #define OPENSPACE_PLANE_END		-58
 #define OVER_OPENSPACE_PLANE	-57
 
 //Turf Planes
-#define PLATING_PLANE			-44	//Plating
-	#define DISPOSAL_LAYER		2.1	//Under objects, even when planeswapped
-	#define PIPES_LAYER			2.2	//Under objects, even when planeswapped
-	#define WIRES_LAYER			2.3	//Under objects, even when planeswapped
-	#define ATMOS_LAYER			2.4	//Pipe-like atmos machinery that goes on the floor, like filters.
-	#define ABOVE_UTILITY		2.5	//Above stuff like pipes and wires
-#define TURF_PLANE				-45	//Turfs themselves, most flooring
-	#define WATER_FLOOR_LAYER	2.0	//The 'bottom' of water tiles.
-	#define BUILTIN_DECAL_LAYER 2.01	//For floors that automatically add decal overlays
-	#define MAPPER_DECAL_LAYER	2.02	//For intentionally placed floor decal overlays
-	#define UNDERWATER_LAYER	2.5	//Anything on this layer will render under the water layer.
-	#define WATER_LAYER			3.0	//Layer for water overlays.
-	#define ABOVE_TURF_LAYER	3.1	//Snow and wallmounted/floormounted equipment
-#define DECAL_PLANE				-44	//Permanent decals
-#define DIRTY_PLANE				-43	//Nonpermanent decals
-#define BLOOD_PLANE				-42	//Blood is really dirty, but we can do special stuff if we separate it
-
+///Plating
+#define PLATING_PLANE			-44
+	///Under objects, even when planeswapped
+#define DISPOSAL_LAYER		2.1
+	///Under objects, even when planeswapped
+#define PIPES_LAYER			2.2
+	///Under objects, even when planeswapped
+#define WIRES_LAYER			2.3
+	///Pipe-like atmos machinery that goes on the floor, like filters.
+#define ATMOS_LAYER			2.4
+	///Above stuff like pipes and wires
+#define ABOVE_UTILITY		2.5
+///Turfs themselves, most flooring
+#define TURF_PLANE				-45
+	///The 'bottom' of water tiles.
+#define WATER_FLOOR_LAYER	2.0
+	///For floors that automatically add decal overlays
+#define BUILTIN_DECAL_LAYER 2.01
+	///For intentionally placed floor decal overlays
+#define MAPPER_DECAL_LAYER	2.02
+	///Anything on this layer will render under the water layer.
+#define UNDERWATER_LAYER	2.5
+	///Layer for water overlays.
+#define WATER_LAYER			3.0
+	///Snow and wallmounted/floormounted equipment
+#define ABOVE_TURF_LAYER	3.1
+///Permanent decals
+#define DECAL_PLANE				-44
+///Nonpermanent decals
+#define DIRTY_PLANE				-43
+///Blood is really dirty, but we can do special stuff if we separate it
+#define BLOOD_PLANE				-42
 //Obj planes
 #define OBJ_PLANE				-35
-	#define STAIRS_LAYER			2.5	//Layer for stairs
-	#define HIDING_LAYER			2.6	//Layer at which mobs hide to be under things like tables
-	#define DOOR_OPEN_LAYER			2.7	//Under all objects if opened. 2.7 due to tables being at 2.6
-	#define TABLE_LAYER				2.8	//Just under stuff that wants to be slightly below common objects.
+	///Layer for stairs
+#define STAIRS_LAYER			2.5
+	///Layer at which mobs hide to be under things like tables
+#define HIDING_LAYER			2.6
+	///Under all objects if opened. 2.7 due to tables being at 2.6
+#define DOOR_OPEN_LAYER			2.7
+	///Just under stuff that wants to be slightly below common objects.
+#define TABLE_LAYER				2.8
 	#define PROJECTILE_HIT_THRESHOLD_LAYER 2.8
-	#define UNDER_JUNK_LAYER		2.9	//Things that want to be slightly below common objects
+	///Things that want to be slightly below common objects
+#define UNDER_JUNK_LAYER		2.9
 	//Turf/Obj layer boundary
-	#define ABOVE_JUNK_LAYER		3.1	//Things that want to be slightly above common objects
-	#define DOOR_CLOSED_LAYER		3.1	//Doors when closed
-	#define WINDOW_LAYER			3.2	//Windows
-	#define ON_WINDOW_LAYER			3.3	//Ontop of a window
-	#define ABOVE_WINDOW_LAYER		3.4	//Above full tile windows so wall items are clickable
+	///Things that want to be slightly above common objects
+#define ABOVE_JUNK_LAYER		3.1
+	///Doors when closed
+#define DOOR_CLOSED_LAYER		3.1
+	///Windows
+#define WINDOW_LAYER			3.2
+	///Ontop of a window
+#define ON_WINDOW_LAYER			3.3
+	///Above full tile windows so wall items are clickable
+#define ABOVE_WINDOW_LAYER		3.4
 	#define MID_LANDMARK_LAYER		3.5
 
 //Mob planes
 #define MOB_PLANE				-25
-	#define BELOW_MOB_LAYER			3.9	//Should be converted to plane swaps
-	#define ABOVE_MOB_LAYER			4.1	//Should be converted to plane swaps
-
-
+	///Should be converted to plane swaps
+#define BELOW_MOB_LAYER			3.9
+	///Should be converted to plane swaps
+#define ABOVE_MOB_LAYER			4.1
 //Invisible things plane
 #define CLOAKED_PLANE			-15
 
@@ -105,7 +135,8 @@ What is the naming convention for planes or layers?
 	//define FLOAT_LAYER		-1	//For easy recordkeeping; this is a byond define
 
 ////////////////////////////////////////////////////////////////////////////////////////
-#define PLANE_WORLD				0	//BYOND's default value for plane, the "base plane"
+///BYOND's default value for plane, the "base plane"
+#define PLANE_WORLD				0
 ////////////////////////////////////////////////////////////////////////////////////////
 
 	//#define AREA_LAYER		1	//For easy recordkeeping; this is a byond define
@@ -118,31 +149,39 @@ What is the naming convention for planes or layers?
 
 	//#define FLY_LAYER			5	//For easy recordkeeping; this is a byond define
 
-	#define HUD_LAYER				20	//Above lighting, but below obfuscation. For in-game HUD effects (whereas SCREEN_LAYER is for abstract/OOC things like inventory slots)
-	#define SCREEN_LAYER			22	//Mob HUD/effects layer
-
-#define PLANE_STATUS			2	//Status Indicators that show over mobs' heads when certain things like stuns affect them.
-
-#define PLANE_ADMIN1			3	//Purely for shenanigans (below lighting)
-#define PLANE_PLANETLIGHTING	4	//Lighting on planets
-#define LIGHTING_PLANE			5	//Where the lighting (and darkness) lives (ignoring all other higher planes)
+	///Above lighting, but below obfuscation. For in-game HUD effects (whereas SCREEN_LAYER is for abstract/OOC things like inventory slots)
+#define HUD_LAYER				20
+	///Mob HUD/effects layer
+#define SCREEN_LAYER			22
+///Status Indicators that show over mobs' heads when certain things like stuns affect them.
+#define PLANE_STATUS			2
+///Purely for shenanigans (below lighting)
+#define PLANE_ADMIN1			3
+///Lighting on planets
+#define PLANE_PLANETLIGHTING	4
+///Where the lighting (and darkness) lives (ignoring all other higher planes)
+#define LIGHTING_PLANE			5
 	#define LIGHTBULB_LAYER			0
 	#define LIGHTING_LAYER			1
 	#define ABOVE_LIGHTING_LAYER	2
-#define ABOVE_LIGHTING_PLANE	6	//For glowy eyes etc. that shouldn't be affected by darkness
+///For glowy eyes etc. that shouldn't be affected by darkness
+#define ABOVE_LIGHTING_PLANE	6
 	#define EYE_GLOW_LAYER			1
 	#define BEAM_PROJECTILE_LAYER	2
 	#define SUPERMATTER_WALL_LAYER	3
 
-#define PLANE_GHOSTS			10	//Spooooooooky ghooooooosts
-#define PLANE_AI_EYE			11	//The AI eye lives here
+#define SONAR_PLANE				8
 
-#define PLANE_MESONS			30 //Stuff seen with mesons, like open ceilings. This is 30 for downstreams.
-
-#define PLANE_ADMIN2			33	//Purely for shenanigans (above lighting)
-
-#define PLANE_AUGMENTED				40 //Augmented-reality plane
-
+///Spooooooooky ghooooooosts
+#define PLANE_GHOSTS			10
+///The AI eye lives here
+#define PLANE_AI_EYE			11
+///Stuff seen with mesons, like open ceilings. This is 30 for downstreams.
+#define PLANE_MESONS			30
+///Purely for shenanigans (above lighting)
+#define PLANE_ADMIN2			33
+///Augmented-reality plane
+#define PLANE_AUGMENTED				40
 #define FULLSCREEN_PLANE 90
 #define OBFUSCATION_LAYER 19.9
 #define FLASH_LAYER 20
@@ -154,17 +193,22 @@ What is the naming convention for planes or layers?
 #define FULLSCREEN_RENDER_TARGET "FULLSCREEN_PLANE"
 
 //Client UI HUD stuff
-#define PLANE_PLAYER_HUD		95	//The character's UI is on this plane
-	#define LAYER_HUD_UNDER		1	//Under the HUD items
-	#define LAYER_HUD_BASE		2	//The HUD items themselves
-	#define LAYER_HUD_ITEM		3	//Things sitting on HUD items (largely irrelevant because PLANE_PLAYER_HUD_ITEMS)
-	#define LAYER_HUD_ABOVE		4	//Things that reside above items (highlights)
-#define PLANE_PLAYER_HUD_ITEMS	96	//Separate layer with which to apply colorblindness
-#define PLANE_PLAYER_HUD_ABOVE	97	//Things above the player hud
-
-#define PLANE_ADMIN3			99	//Purely for shenanigans (above HUD)
-
-
+///The character's UI is on this plane
+#define PLANE_PLAYER_HUD		95
+	///Under the HUD items
+#define LAYER_HUD_UNDER		1
+	///The HUD items themselves
+#define LAYER_HUD_BASE		2
+	///Things sitting on HUD items (largely irrelevant because PLANE_PLAYER_HUD_ITEMS)
+#define LAYER_HUD_ITEM		3
+	///Things that reside above items (highlights)
+#define LAYER_HUD_ABOVE		4
+///Separate layer with which to apply colorblindness
+#define PLANE_PLAYER_HUD_ITEMS	96
+///Things above the player hud
+#define PLANE_PLAYER_HUD_ABOVE	97
+///Purely for shenanigans (above HUD)
+#define PLANE_ADMIN3			99
 //////////////////////////
 /atom/proc/hud_layerise()
 	plane = PLANE_PLAYER_HUD_ITEMS

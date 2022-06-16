@@ -27,7 +27,7 @@
 		var/datum/atom_hud/alternate_appearance/AA = v
 		AA.onNewMob(src)
 	init_rendering()
-	hook_vr("mob_new",list(src)) //VOREStation Code
+	hook_vr("mob_new",list(src))
 	update_transform() // Some mobs may start bigger or smaller than normal.
 	return ..()
 
@@ -159,17 +159,6 @@
 	return
 
 /**
- * Returns an amount of power drawn from the object (-1 if it's not viable).
- * Not sure where to define this, so it can sit here for the rest of time.
- *
- * * @params
- * * [drain_check] If is set it will not actually drain power, just return a value.
- * * [surge] If is set, it will destroy/damage the recipient and not return any power.
- */
-/atom/proc/drain_power(var/drain_check,var/surge, var/amount = 0)
-	return -1
-
-/**
  * Show a message to all mobs in earshot of this one
  *
  * This would be for audible actions by the src mob
@@ -204,11 +193,6 @@
 		if (M.real_name == text("[]", msg))
 			return M
 	return 0
-
-/mob/proc/Life()
-//	if(organStructure)
-//		organStructure.ProcessOrgans()
-	return
 
 #define UNBUCKLED 0
 #define PARTIALLY_BUCKLED 1
@@ -281,6 +265,7 @@
 		return
 
 	if(is_blind()) //blind people see things differently (through touch)
+		to_chat(src, SPAN_WARNING("Something is there but you can't see it!"))
 		return
 
 	face_atom(A)
@@ -290,13 +275,14 @@
 				if(M == src || M.is_blind())
 					continue
 				if(M.client && M.client.is_preference_enabled(/datum/client_preference/examine_look))
-					to_chat(M, "<span class='tinynotice'><b>\The [src]</b> looks at \the [A].</span>")
+					to_chat(M, SPAN_TINYNOTICE("<b>\The [src]</b> looks at \the [A]."))
 
 	var/list/result
 	if(client)
 		result = A.examine(src) // if a tree is examined but no client is there to see it, did the tree ever really exist?
 
-	to_chat(src, result.Join("\n"))
+	to_chat(src, "<blockquote class='info'>[result.Join("\n")]</blockquote>")
+	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, A)
 
 /**
  * Point at an atom
@@ -435,7 +421,7 @@
 	set src in usr
 	if(usr != src)
 		to_chat(usr, "No.")
-	var/msg = sanitize(input(usr,"Set the flavor text in your 'examine' verb.","Flavor Text",html_decode(flavor_text)) as message|null, extra = 0)	//VOREStation Edit: separating out OOC notes
+	var/msg = sanitize(input(usr,"Set the flavor text in your 'examine' verb.","Flavor Text",html_decode(flavor_text)) as message|null, extra = 0)
 
 	if(msg != null)
 		flavor_text = msg
@@ -925,6 +911,17 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/get_species_name()
 	return ""
 
+/**
+ * DO NOT USE THIS
+ *
+ * this should be phased out for get_species_id().
+ */
+/mob/proc/get_true_species_name()
+	return ""
+
+/mob/proc/get_species_id()
+	return
+
 /mob/proc/flash_weak_pain()
 	flick("weak_pain",pain)
 
@@ -1308,3 +1305,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
  */
 /mob/proc/allow_examine(atom/A)
 	return client && (client.eye == src)
+
+/// Checks for slots that are currently obscured by other garments.
+/mob/proc/check_obscured_slots()
+	return

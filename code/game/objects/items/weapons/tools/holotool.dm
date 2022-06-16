@@ -4,6 +4,7 @@
 	name = "switchtool"
 	icon = 'icons/obj/switchtool.dmi'
 	icon_state = "switchtool"
+	item_state = "switchtool"
 	desc = "A multi-deployable, multi-instrument, finely crafted multi-purpose tool. The envy of engineers everywhere."
 	siemens_coefficient = 1
 	force = 3

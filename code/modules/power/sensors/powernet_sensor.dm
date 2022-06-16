@@ -10,14 +10,22 @@
 /obj/machinery/power/sensor
 	name = "Powernet Sensor"
 	desc = "Small machine which transmits data about specific powernet"
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	layer = ABOVE_UTILITY
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "floor_beacon" // If anyone wants to make better sprite, feel free to do so without asking me.
 
-	var/name_tag = "#UNKN#" // ID tag displayed in list of powernet sensors. Each sensor should have it's own tag!
-	var/long_range = 0		// If 1, sensor reading will show on all computers, regardless of Zlevel
+	/// ID tag displayed in list of powernet sensors. Each sensor should have it's own tag!
+	var/name_tag = "#UNKN#"
+	/// If TRUE, sensor reading will show on all computers, regardless of Zlevel.
+	var/long_range = FALSE
+
+	var/list/history = list()
+	var/record_size = 60
+	var/record_interval = 50
+	var/next_record = 0
+	var/is_secret_monitor = FALSE
 
 // Proc: New()
 // Parameters: None
@@ -25,6 +33,8 @@
 /obj/machinery/power/sensor/Initialize(mapload, newdir)
 	. = ..()
 	auto_set_name()
+	history["supply"] = list()
+	history["demand"] = list()
 
 // Proc: auto_set_name()
 // Parameters: None
@@ -35,9 +45,11 @@
 /obj/machinery/power/sensor/Destroy()
 	. = ..()
 	// TODO - Switch power_monitor to register deletion events instead of this.
-	for(var/obj/machinery/computer/power_monitor/PM in machines)
+	for(var/obj/machinery/computer/power_monitor/PM in GLOB.machines)
 		if(PM.power_monitor)
 			PM.power_monitor.refresh_sensors()
+	history.Cut()
+	history = null
 
 // Proc: check_grid_warning()
 // Parameters: None
@@ -46,35 +58,72 @@
 	connect_to_network()
 	if(powernet)
 		if(powernet.problem)
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 // Proc: process()
 // Parameters: None
 // Description: This has to be here because we need sensors to remain in Machines list.
 /obj/machinery/power/sensor/process(delta_time)
-	return 1
+	if(!powernet)
+		use_power = USE_POWER_IDLE
+		connect_to_network()
+	else
+		use_power = USE_POWER_ACTIVE
+		record()
+	return TRUE
 
-// Proc: reading_to_text()
-// Parameters: 1 (amount - Power in Watts to be converted to W, kW or MW)
-// Description: Helper proc that converts reading in Watts to kW or MW (returns string version of amount parameter)
-/obj/machinery/power/sensor/proc/reading_to_text(var/amount = 0)
-	var/units = ""
-	// 10kW and less - Watts
-	if(amount < 10000)
-		units = "W"
-	// 10MW and less - KiloWatts
-	else if(amount < 10000000)
-		units = "kW"
-		amount = (round(amount/100) / 10)
-	// More than 10MW - MegaWatts
-	else
-		units = "MW"
-		amount = (round(amount/10000) / 100)
-	if (units == "W")
-		return "[amount] W"
-	else
-		return "~[amount] [units]" //kW and MW are only approximate readings, therefore add "~"
+/// This tracks historical usage, for TGUI power monitors
+/obj/machinery/power/sensor/proc/record()
+	if(world.time >= next_record)
+		next_record = world.time + record_interval
+
+		var/datum/powernet/connected_powernet = powernet
+
+		var/list/supply = history["supply"]
+		if(connected_powernet)
+			supply += connected_powernet.viewavail
+		if(supply.len > record_size)
+			supply.Cut(1, 2)
+
+		var/list/demand = history["demand"]
+		if(connected_powernet)
+			demand += connected_powernet.viewload
+		if(demand.len > record_size)
+			demand.Cut(1, 2)
+
+/obj/machinery/power/sensor/ui_data()
+	var/list/data = list()
+
+	data["name"] = name_tag
+	data["stored"] = record_size
+	data["interval"] = record_interval / 10
+	data["attached"] = !!powernet
+	data["history"] = history
+
+	data["areas"] = list()
+	if(powernet)
+		for(var/obj/machinery/power/terminal/term in powernet.nodes)
+			if(istype(term.master, /obj/machinery/power/apc))
+				var/obj/machinery/power/apc/A = term.master
+				if(istype(A))
+					var/cell_charge
+					if(!A.cell)
+						cell_charge = 0
+					else
+						cell_charge = A.cell.percent()
+					data["areas"] += list(list(
+						"name" = A.area.name,
+						"charge" = cell_charge,
+						// "load" = DisplayPower(A.lastused_total),
+						"load" = render_power(A.lastused_total, ENUM_POWER_SCALE_NONE, ENUM_POWER_UNIT_WATT, 0.01),
+						"charging" = A.charging,
+						"eqp" = A.equipment,
+						"lgt" = A.lighting,
+						"env" = A.environ,
+					))
+
+	return data
 
 // Proc: find_apcs()
 // Parameters: None
@@ -126,14 +175,15 @@
 			else
 				out += "<td>NO CELL"
 			var/load = A.lastused_total // Load.
-			total_apc_load += load
-			load = reading_to_text(load)
+			// scale W down to kW
+			total_apc_load += load * 0.001
+			load = render_power(load, ENUM_POWER_SCALE_NONE, ENUM_POWER_UNIT_WATT, 0.01)
 			out += "<td>[load]"
 
-	out += "<br><b>TOTAL AVAILABLE: [reading_to_text(powernet.avail)]</b>"
-	out += "<br><b>APC LOAD: [reading_to_text(total_apc_load)]</b>"
-	out += "<br><b>OTHER LOAD: [reading_to_text(max(powernet.load - total_apc_load, 0))]</b>"
-	out += "<br><b>TOTAL GRID LOAD: [reading_to_text(powernet.viewload)] ([round((powernet.load / powernet.avail) * 100)]%)</b>"
+	out += "<br><b>TOTAL AVAILABLE: [render_power(powernet.avail, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, 0.01, TRUE)]</b>"
+	out += "<br><b>APC LOAD: [render_power(total_apc_load, ENUM_POWER_SCALE_NONE, ENUM_POWER_UNIT_WATT, 0.01, TRUE)]</b>"
+	out += "<br><b>OTHER LOAD: [render_power(max(powernet.load - total_apc_load, 0), ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, 0.01, TRUE)]</b>"
+	out += "<br><b>TOTAL GRID LOAD: [render_power(powernet.viewload, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, 0.01, TRUE)] ([round((powernet.load / powernet.avail) * 100)]%)</b>"
 
 	if(powernet.problem)
 		out += "<br><b>WARNING: Abnormal grid activity detected!</b>"
@@ -168,14 +218,14 @@
 			APC_entry["s_lighting"] = S[A.lighting+1]
 			APC_entry["s_environment"] = S[A.environ+1]
 			// Cell Status
-			APC_entry["cell_charge"] = A.cell ? round(A.cell.percent()) : "NO CELL"
+			APC_entry["cell_charge"] = A.cell ? round(A.cell.percent(), 1) : "NO CELL"
 			APC_entry["cell_status"] = A.cell ? chg[A.charging+1] : "N"
 			// Location
 			APC_entry["x"] = A.x
 			APC_entry["y"] = A.y
 			APC_entry["z"] = A.z
 			// Other info
-			APC_entry["total_load"] = reading_to_text(A.lastused_total)
+			APC_entry["total_load"] = render_power(A.lastused_total, ENUM_POWER_SCALE_NONE, ENUM_POWER_UNIT_WATT, 0.01)
 			// Hopefully removes those goddamn \improper s which are screwing up the UI
 			var/N = A.area.name
 			if(findtext(N, "�"))
@@ -186,10 +236,11 @@
 			// Add load of this APC to total APC load calculation
 			total_apc_load += A.lastused_total
 	data["apc_data"] = APC_data
-	data["total_avail"] = reading_to_text(max(powernet.avail, 0))
-	data["total_used_apc"] = reading_to_text(max(total_apc_load, 0))
-	data["total_used_other"] = reading_to_text(max(powernet.viewload - total_apc_load, 0))
-	data["total_used_all"] = reading_to_text(max(powernet.viewload, 0))
+	data["total_avail"] = render_power(powernet.avail, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, 0.01, TRUE)
+	data["total_used_apc"] = render_power(total_apc_load, ENUM_POWER_SCALE_NONE, ENUM_POWER_UNIT_WATT, 0.01, TRUE)
+	data["total_used_other"] = render_power(max(powernet.load - total_apc_load, 0), ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, 0.01, TRUE)
+	data["total_used_all"] = render_power(powernet.viewload, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, 0.01, TRUE)
+
 	// Prevents runtimes when avail is 0 (division by zero)
 	if(powernet.avail)
 		data["load_percentage"] = round((powernet.viewload / powernet.avail) * 100)
@@ -197,8 +248,3 @@
 		data["load_percentage"] = 100
 	data["alarm"] = powernet.problem ? 1 : 0
 	return data
-
-
-
-
-

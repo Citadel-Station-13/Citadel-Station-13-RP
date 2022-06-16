@@ -3,7 +3,7 @@
 	name = "protean blob"
 	desc = "Some sort of big viscous pool of jelly."
 	tt_desc = "Animated nanogoop"
-	icon = 'icons/mob/species/protean/protean.dmi'
+	icon = 'icons/mob/clothing/species/protean/protean.dmi'
 	icon_state = "to_puddle"
 	icon_living = "puddle2"
 	icon_rest = "rest"
@@ -14,7 +14,6 @@
 	health = 250
 	say_list_type = /datum/say_list/protean_blob
 
-	// ai_inactive = TRUE //Always off //VORESTATION AI TEMPORARY REMOVAL
 	show_stat_health = FALSE //We will do it ourselves
 	has_langs = list(LANGUAGE_GALCOM, LANGUAGE_EAL)
 	response_help = "pats the"
@@ -65,7 +64,7 @@
 /mob/living/simple_mob/protean_blob/Initialize(mapload, mob/living/carbon/human/H)
 	. = ..()
 	mob_radio = new(src)
-	myid = new(src)
+	access_card = new(src)
 	if(H)
 		humanform = H
 		updatehealth()
@@ -179,9 +178,10 @@
 
 	return ..()
 
-/mob/living/simple_mob/protean_blob/Life()
-	. = ..()
-	if(. && istype(refactory) && humanform)
+/mob/living/simple_mob/protean_blob/BiologicalLife()
+	if((. = ..()))
+		return
+	if(istype(refactory) && humanform)
 		if(!humanform.has_modifier_of_type(/datum/modifier/protean/steelBlob) && health < maxHealth && refactory.get_stored_material(MAT_STEEL) >= 100 && refactory.processingbuffs)
 			healing = humanform.add_modifier(/datum/modifier/protean/steelBlob, origin = refactory)
 		else if(humanform.has_modifier_of_type(/datum/modifier/protean/steelBlob) && health >= maxHealth)
@@ -345,10 +345,10 @@
 	for(var/obj/item/pda/P in things_to_not_drop)
 		if(P.id)
 			var/obj/item/card/id/PID = P.id
-			blob.myid.access += PID.access
+			blob.access_card.access += PID.access
 
 	for(var/obj/item/card/id/I in things_to_not_drop)
-		blob.myid.access += I.access
+		blob.access_card.access += I.access
 
 	if(w_uniform && istype(w_uniform,/obj/item/clothing)) //No webbings tho. We do this after in case a suit was in the way
 		var/obj/item/clothing/uniform = w_uniform
@@ -510,7 +510,7 @@
 	if(blob.prev_left_hand) put_in_l_hand(blob.prev_left_hand) //The restore for when reforming.
 	if(blob.prev_right_hand) put_in_r_hand(blob.prev_right_hand)
 
-	Life(1) //Fix my blindness right meow //Has to be moved up here, there exists a circumstance where blob could be deleted without vore organs moving right.
+	Life(1, SSmobs.times_fired)
 
 	//Get rid of friend blob
 	qdel(blob)

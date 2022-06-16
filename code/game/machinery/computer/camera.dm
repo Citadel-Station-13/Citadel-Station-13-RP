@@ -31,7 +31,7 @@
 
 /obj/machinery/computer/security/attack_hand(mob/user)
 	add_fingerprint(user)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	ui_interact(user)
 
@@ -89,7 +89,7 @@
 /obj/machinery/computer/security/telescreen/entertainment/power_change()
 	..()
 	if(radio)
-		if(stat & NOPOWER)
+		if(machine_stat & NOPOWER)
 			radio.on = FALSE
 		else
 			radio.on = TRUE

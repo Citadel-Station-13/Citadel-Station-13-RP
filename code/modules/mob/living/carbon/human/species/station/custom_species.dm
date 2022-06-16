@@ -8,8 +8,8 @@
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
 
 	blurb = "This is a custom species where you can assign various species traits to them as you wish, to \
-	create a (hopefully) balanced species. You will see the options to customize them on the VORE tab once \
-	you select and set this species as your species. Please look at the VORE tab if you select this species."
+	create a (hopefully) balanced species. You will see the options to customize them on the Species Customization tab once \
+	you select and set this species as your species. Please look at the Species Customization tab if you select this species."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/custom_species)
 
 	name_language = null // Use the first-name last-name generator rather than a language scrambler
@@ -38,8 +38,10 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right, "descriptor" = "right foot")
 		)
 
-/datum/species/custom/get_bodytype()
-	return base_species
+/datum/species/custom/get_worn_legacy_bodytype()
+	var/datum/species/real = name_static_species_meta(base_species)
+	// infinite loop guard
+	return istype(real, src)? base_species : real.get_worn_legacy_bodytype()
 
 /datum/species/custom/get_race_key(mob/living/carbon/human/H)
 	var/datum/species/real = name_static_species_meta(base_species)

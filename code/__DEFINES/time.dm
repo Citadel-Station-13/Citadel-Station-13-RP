@@ -1,6 +1,7 @@
-#define DS2TICKS(DS) ((DS)/world.tick_lag)	// Convert deciseconds to ticks
-#define TICKS2DS(T) ((T) TICKS) 				// Convert ticks to deciseconds
-
+/// Convert deciseconds to ticks
+#define DS2TICKS(DS) ((DS)/world.tick_lag)
+/// Convert ticks to deciseconds
+#define TICKS2DS(T) ((T) TICKS)
 #define SECOND *10
 #define SECONDS *10
 

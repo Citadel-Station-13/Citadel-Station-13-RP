@@ -24,7 +24,7 @@
 
 /obj/machinery/computer/crew/attack_hand(mob/user)
 	..()
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	ui_interact(user)
 

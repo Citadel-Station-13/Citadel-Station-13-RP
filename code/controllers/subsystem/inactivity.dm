@@ -1,13 +1,13 @@
 SUBSYSTEM_DEF(inactivity)
 	name = "AFK Kick"
 	wait = 600
-	flags = SS_BACKGROUND | SS_NO_TICK_CHECK
+	subsystem_flags = SS_BACKGROUND | SS_NO_TICK_CHECK
 
 /datum/controller/subsystem/inactivity/fire()
 	if(config_legacy.kick_inactive)
 		for(var/i in GLOB.clients)
 			var/client/C = i
-			if(C.is_afk(config_legacy.kick_inactive MINUTES) && !C.holder) // VOREStation Edit - Allow admins to idle
+			if(C.is_afk(config_legacy.kick_inactive MINUTES) && !C.holder) // Allow admins to idle
 				to_chat(C,"<span class='warning'>You have been inactive for more than [config_legacy.kick_inactive] minute\s and have been disconnected.</span>")
 				var/information
 

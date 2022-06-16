@@ -5,6 +5,10 @@
 	plane = TURF_PLANE
 	luminosity = 1
 	level = 1
+
+	/// turf flags
+	var/turf_flags = NONE
+
 	var/holy = 0
 
 	// Atmospherics / ZAS Environmental
@@ -22,7 +26,9 @@
 	/// Does this turf contain air/let air through?
 	var/blocks_air = FALSE
 
-	// Baseturfs System
+	/**
+	 * Baseturfs
+	 */
 	// baseturfs can be either a list or a single turf type.
 	// In class definition like here it should always be a single type.
 	// A list will be created in initialization that figures out the baseturf's baseturf etc.
@@ -32,6 +38,12 @@
 	/// are we mid changeturf?
 	var/changing_turf = FALSE
 	// End
+
+	/**
+	 * Automata
+	 */
+	/// acted automata - automata associated to power, act_cross() will be called when something enters us while this is set
+	var/list/acting_automata
 
 	/// Icon-smoothing variable to map a diagonal wall corner with a fixed underlay.
 	var/list/fixed_underlay = null

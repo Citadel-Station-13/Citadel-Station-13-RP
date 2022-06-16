@@ -100,9 +100,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/solar/fake{
-	stat = 1
-	},
+/obj/machinery/power/solar/fake,
 /turf/simulated/floor/airless,
 /area/submap/debrisfield_vr/old_sat)
 "n" = (

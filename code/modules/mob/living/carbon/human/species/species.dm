@@ -19,10 +19,18 @@
 //! ## Intrinsics
 	/// abstract type
 	var/abstract_type = /datum/species
+	/// uid
+	var/id
+	// TODO: ref species by id in code, so we can rename as needed
 
 //! ## Descriptors and strings.
-	/// Species name.
+	/// Species real name.
+	// TODO: STOP USING THIS. This is being phased out for species IDs.
 	var/name
+	/// what you see on tooltip/examine
+	var/examine_name
+	/// what you see on health analyzers/IC
+	var/display_name
 	/// Pluralized name (since "[name]s" is not always valid)
 	var/name_plural
 	/// A brief lore summary for use in the chargen screen.
@@ -41,7 +49,9 @@
 	/// The icon_state used inside OnFire.dmi for when on fire.
 	var/fire_icon_state = "humanoid"
 	/// Icons used for worn items in suit storage slot.
-	var/suit_storage_icon = 'icons/mob/belt_mirror.dmi'
+	var/suit_storage_icon = 'icons/mob/clothing/belt_mirror.dmi'
+	/// override for bodytype
+	var/override_worn_legacy_bodytype
 
 //! ## Damage overlay and masks.
 	var/damage_overlays = 'icons/mob/human_races/masks/dam_human.dmi'
@@ -70,7 +80,7 @@
 
 	/// Used for mob icon generation for non-32x32 species.
 	var/icon/icon_template
-	var/mob_size	= MOB_MEDIUM
+	var/mob_size = MOB_MEDIUM
 	var/show_ssd = "fast asleep"
 	var/virus_immune
 	/// Permanent weldervision.
@@ -127,11 +137,11 @@
 
 //! ## Soundy emotey things.
 	var/scream_verb = "screams"
-	var/male_scream_sound		= list('sound/voice/screams/sound_voice_scream_scream_m1.ogg', 'sound/voice/screams/sound_voice_scream_scream_m2.ogg')
-	var/female_scream_sound		= list('sound/voice/screams/sound_voice_scream_scream_f1.ogg', 'sound/voice/screams/sound_voice_scream_scream_f2.ogg', 'sound/voice/screams/sound_voice_scream_scream_f3.ogg')
-	var/male_cough_sounds = list('sound/effects/mob_effects/m_cougha.ogg','sound/effects/mob_effects/m_coughb.ogg', 'sound/effects/mob_effects/m_coughc.ogg')
+	var/male_scream_sound   = list('sound/voice/screams/sound_voice_scream_scream_m1.ogg', 'sound/voice/screams/sound_voice_scream_scream_m2.ogg')
+	var/female_scream_sound = list('sound/voice/screams/sound_voice_scream_scream_f1.ogg', 'sound/voice/screams/sound_voice_scream_scream_f2.ogg', 'sound/voice/screams/sound_voice_scream_scream_f3.ogg')
+	var/male_cough_sounds   = list('sound/effects/mob_effects/m_cougha.ogg','sound/effects/mob_effects/m_coughb.ogg', 'sound/effects/mob_effects/m_coughc.ogg')
 	var/female_cough_sounds = list('sound/effects/mob_effects/f_cougha.ogg','sound/effects/mob_effects/f_coughb.ogg')
-	var/male_sneeze_sound = 'sound/effects/mob_effects/sneeze.ogg'
+	var/male_sneeze_sound   = 'sound/effects/mob_effects/sneeze.ogg'
 	var/female_sneeze_sound = 'sound/effects/mob_effects/f_sneeze.ogg'
 
 //! ## Combat vars.
@@ -141,7 +151,7 @@
 	var/list/unarmed_types = list(
 		/datum/unarmed_attack,
 		/datum/unarmed_attack/bite
-		)
+	)
 	/// For empty hand harm-intent attack
 	var/list/unarmed_attacks = null
 	/// Physical damage multiplier.
@@ -212,7 +222,7 @@
 		"You feel chilly.",
 		"You shiver suddenly.",
 		"Your chilly flesh stands out in goosebumps."
-		)
+	)
 
 //! ## Hot
 	/// Heat damage level 1 above this point.
@@ -235,7 +245,7 @@
 		"You feel sweat drip down your neck.",
 		"You feel uncomfortably warm.",
 		"Your skin prickles in the heat."
-		)
+	)
 
 
 	/// Species will gain this much temperature every second
@@ -330,7 +340,7 @@
 		O_EYES      = /obj/item/organ/internal/eyes,
 		O_STOMACH   = /obj/item/organ/internal/stomach,
 		O_INTESTINE = /obj/item/organ/internal/intestine
-		)
+	)
 	/// If set, this organ is required for vision. Defaults to "eyes" if the species has them.
 	var/vision_organ
 	/// If set, the species will be affected by flashbangs regardless if they have eyes or not, as they see in large areas.
@@ -348,7 +358,7 @@
 		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
 		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
-		)
+	)
 
 	/// Used for species that only need to change one or two entries in has_limbs.
 	//var/list/override_limb_types //Not used yet.
@@ -409,8 +419,10 @@
 	var/base_species = null // Unused outside of a few species
 	var/selects_bodytype = FALSE // Allows the species to choose from body types intead of being forced to be just one.
 
-
 /datum/species/New()
+	if(isnull(id))
+		id = ckey(name)
+
 	if(hud_type)
 		hud = new hud_type()
 	else
@@ -630,7 +642,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 				t_him = "him"
 			if(FEMALE)
 				t_him = "her"
-	if(H.zone_sel.selecting == "head") //VOREStation Edit - Headpats and Handshakes.
+	if(H.zone_sel.selecting == "head") // Headpats and Handshakes!
 		H.visible_message( \
 			"<span class='notice'>[H] pats [target] on the head.</span>", \
 			"<span class='notice'>You pat [target] on the head.</span>", )
@@ -644,7 +656,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			"<span class='notice'>[H] boops [target]'s nose.</span>", \
 			"<span class='notice'>You boop [target] on the nose.</span>", )
 	else H.visible_message("<span class='notice'>[H] hugs [target] to make [t_him] feel better!</span>", \
-					"<span class='notice'>You hug [target] to make [t_him] feel better!</span>") //End VOREStation Edit
+					"<span class='notice'>You hug [target] to make [t_him] feel better!</span>")
 
 /datum/species/proc/remove_inherent_verbs(var/mob/living/carbon/human/H)
 	if(inherent_verbs)
@@ -774,7 +786,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 /datum/species/proc/handle_falling(mob/living/carbon/human/H, atom/hit_atom, damage_min, damage_max, silent, planetary)
 	return FALSE
 
-/datum/species/proc/get_offset_overlay_image(var/spritesheet, var/mob_icon, var/mob_state, var/color, var/slot)
+/datum/species/proc/get_offset_overlay_image(spritesheet, mob_icon, mob_state, color, slot)
 
 	// If we don't actually need to offset this, don't bother with any of the generation/caching.
 	if(!spritesheet && equip_adjust.len && equip_adjust[slot] && LAZYLEN(equip_adjust[slot]))
@@ -858,7 +870,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			T.remove(src, H)
 		src.traits = traits
 
-		H.icon_state = lowertext(get_bodytype())
+		H.icon_state = lowertext(get_worn_legacy_bodytype())
 
 		if(holder_type)
 			H.holder_type = holder_type

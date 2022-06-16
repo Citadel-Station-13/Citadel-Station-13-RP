@@ -11,7 +11,7 @@
 
 /client/proc/stop_line_profiling()
 	set category = "Profile"
-	set name = "Stops Line Profiling"
+	set name = "Stop Line Profiling"
 	set desc = "Stops tracking line by line profiling for code lines that support it"
 
 	LINE_PROFILE_STOP

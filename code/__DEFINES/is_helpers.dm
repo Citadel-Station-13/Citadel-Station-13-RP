@@ -4,6 +4,8 @@
 
 #define isatom(A) (isloc(A))
 
+#define isdatum(D) (istype(D, /datum))
+
 #define isweakref(D) (istype(D, /datum/weakref))
 
 //Datums
@@ -19,8 +21,8 @@
 #define ismineralturf(A) istype(A, /turf/simulated/mineral)
 
 //Objs
-#define isobj(A) istype(A, /obj) //override the byond proc because it returns true on children of /atom/movable that aren't objs
-
+///override the byond proc because it returns true on children of /atom/movable that aren't objs
+#define isobj(A) istype(A, /obj)
 #define isitem(A) (istype(A, /obj/item))
 
 #define isclothing(A) (istype(A, /obj/item/clothing))

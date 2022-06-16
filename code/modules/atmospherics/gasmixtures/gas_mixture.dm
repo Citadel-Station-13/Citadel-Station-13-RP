@@ -40,13 +40,12 @@
 	if(moles == 0)
 		return
 
-	if(moles > 0 && abs(temperature - temp) > MINIMUM_TEMPERATURE_DELTA_TO_CONSIDER)
-		var/self_heat_capacity = heat_capacity()
-		var/giver_heat_capacity = GLOB.meta_gas_specific_heats[gasid] * moles
+	var/self_heat_capacity = heat_capacity()
+	var/giver_heat_capacity = GLOB.meta_gas_specific_heats[gasid] * moles
 
-		var/combined_heat_capacity = giver_heat_capacity + self_heat_capacity
-		if(combined_heat_capacity != 0)
-			temperature = (temp * giver_heat_capacity + temperature * self_heat_capacity) / combined_heat_capacity
+	var/combined_heat_capacity = giver_heat_capacity + self_heat_capacity
+	if(combined_heat_capacity != 0)
+		temperature = (temp * giver_heat_capacity + temperature * self_heat_capacity) / combined_heat_capacity
 
 	if (group_multiplier != 1)
 		gas[gasid] += moles/group_multiplier
@@ -83,12 +82,11 @@
 	if(!giver)
 		return
 
-	if(abs(temperature-giver.temperature)>MINIMUM_TEMPERATURE_DELTA_TO_CONSIDER)
-		var/self_heat_capacity = heat_capacity()
-		var/giver_heat_capacity = giver.heat_capacity()
-		var/combined_heat_capacity = giver_heat_capacity + self_heat_capacity
-		if(combined_heat_capacity != 0)
-			temperature = (giver.temperature*giver_heat_capacity + temperature*self_heat_capacity)/combined_heat_capacity
+	var/self_heat_capacity = heat_capacity()
+	var/giver_heat_capacity = giver.heat_capacity()
+	var/combined_heat_capacity = giver_heat_capacity + self_heat_capacity
+	if(combined_heat_capacity != 0)
+		temperature = (giver.temperature*giver_heat_capacity + temperature*self_heat_capacity)/combined_heat_capacity
 
 	if((group_multiplier != 1)||(giver.group_multiplier != 1))
 		for(var/g in giver.gas)
@@ -106,7 +104,7 @@
 	var/share_heatcap = sharer.heat_capacity()
 
 	// Special exception: there isn't enough air around to be worth processing this edge next tick, zap both to zero.
-	if(total_moles + sharer.total_moles <= MINIMUM_AIR_TO_SUSPEND)
+	if(total_moles + sharer.total_moles <= MINIMUM_MOLES_TO_DISSIPATE)
 		gas.Cut()
 		sharer.gas.Cut()
 
@@ -229,7 +227,7 @@
 /datum/gas_mixture/proc/remove_ratio(ratio, out_group_multiplier = 1)
 	if(ratio <= 0)
 		return null
-	out_group_multiplier = between(1, out_group_multiplier, group_multiplier)
+	out_group_multiplier = clamp( out_group_multiplier, 1,  group_multiplier)
 
 	ratio = min(ratio, 1)
 
@@ -294,16 +292,28 @@
 
 
 //Checks if we are within acceptable range of another gas_mixture to suspend processing or merge.
-/datum/gas_mixture/proc/compare(const/datum/gas_mixture/sample, var/vacuum_exception = 0)
-	if(!sample) return 0
+// returns TRUE if we are considered equal enough
+/datum/gas_mixture/proc/compare(datum/gas_mixture/sample, var/vacuum_exception = 0)
+	if(!sample)
+		return FALSE
 
-	if(vacuum_exception)
-		// Special case - If one of the two is zero pressure, the other must also be zero.
-		// This prevents suspending processing when an air-filled room is next to a vacuum,
-		// an edge case which is particually obviously wrong to players
-		if(total_moles == 0 && sample.total_moles != 0 || sample.total_moles == 0 && total_moles != 0)
-			return 0
+	if(vacuum_exception && ((!total_moles) ^ (!sample.total_moles)))
+		return FALSE
 
+	if(abs(temperature - sample.temperature) > MINIMUM_MEANINGFUL_TEMPERATURE_DELTA)
+		return FALSE
+
+	var/list/us = list()
+	// man.
+	for(var/id in gas)
+		us[id] = gas[id]
+	for(var/id in sample.gas)
+		if(abs(sample.gas[id] - us[id]) > MINIMUM_MEANINGFUL_MOLES_DELTA)
+			return FALSE
+	return TRUE
+
+/*
+	// this is the old code
 	var/list/marked = list()
 	for(var/g in gas)
 		if((abs(gas[g] - sample.gas[g]) > MINIMUM_AIR_TO_SUSPEND) && \
@@ -326,7 +336,7 @@
 			return 0
 
 	return 1
-
+*/
 
 /datum/gas_mixture/proc/react()
 	zburn(null, force_burn=0, no_check=0) //could probably just call zburn() here with no args but I like being explicit.
@@ -505,6 +515,16 @@
 	update_values()
 	return TRUE
 
+/**
+  * Adds from a specially formatted gas string, taking on its gas values as our own as well as their temperature.
+  */
+/datum/gas_mixture/proc/merge_gas_string(gas_string)
+	var/datum/gas_mixture/temp = new(volume)
+	temp.parse_gas_string(gas_string)
+	merge(temp)
+	qdel(temp)
+	return TRUE
+
 /datum/gas_mixture/proc/get_mass()
 	for(var/g in gas)
 		. += gas[g] * GLOB.meta_gas_molar_mass[g] * group_multiplier
@@ -519,3 +539,4 @@
 	var/datum/gas_mixture/GM = new(CELL_VOLUME)
 	GM.copy_from(src)
 	GM.group_multiplier = 1
+	return GM

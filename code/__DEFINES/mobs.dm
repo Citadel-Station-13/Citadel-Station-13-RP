@@ -10,11 +10,13 @@
 #define CANPUSH     0x8
 #define LEAPING     0x10
 #define HIDING      0x20
-#define PASSEMOTES  0x40    // Mob has a cortical borer or holders inside of it that need to see emotes.
+/// Mob has a cortical borer or holders inside of it that need to see emotes.
+#define PASSEMOTES  0x40
 #define GODMODE     0x1000
-#define FAKEDEATH   0x2000  // Replaces stuff like changeling.changeling_fakedeath.
-#define DISFIGURED  0x4000  // Set but never checked. Remove this sometime and replace occurences with the appropriate organ code
-
+/// Replaces stuff like changeling.changeling_fakedeath.
+#define FAKEDEATH   0x2000
+/// Set but never checked. Remove this sometime and replace occurences with the appropriate organ code
+#define DISFIGURED  0x4000
 // Grab levels.
 #define GRAB_PASSIVE    1
 #define GRAB_AGGRESSIVE 2
@@ -27,29 +29,48 @@
 #define BORGXRAY  0x4
 #define BORGMATERIAL  0x8
 
-#define STANCE_ATTACK    11 // Backwards compatability
-#define STANCE_ATTACKING 12 // Ditto
+/// Backwards compatability
+#define STANCE_ATTACK    11
+/// Ditto
+#define STANCE_ATTACKING 12
 /*
-#define STANCE_IDLE      1	// Looking for targets if hostile.  Does idle wandering.
-#define STANCE_ALERT     2	// Bears
-#define STANCE_ATTACK    3	// Attempting to get into attack position
-#define STANCE_ATTACKING 4	// Doing attacks
-#define STANCE_TIRED     5	// Bears
-#define STANCE_FOLLOW    6	// Following somone
-#define STANCE_BUSY      7	// Do nothing on life ticks (Other code is running)
+/// Looking for targets if hostile.  Does idle wandering.
+#define STANCE_IDLE      1
+/// Bears
+#define STANCE_ALERT     2
+/// Attempting to get into attack position
+#define STANCE_ATTACK    3
+/// Doing attacks
+#define STANCE_ATTACKING 4
+/// Bears
+#define STANCE_TIRED     5
+/// Following somone
+#define STANCE_FOLLOW    6
+/// Do nothing on life ticks (Other code is running)
+#define STANCE_BUSY      7
 */
-#define STANCE_SLEEP        0	// Doing (almost) nothing, to save on CPU because nobody is around to notice or the mob died.
-#define STANCE_IDLE         1	// The more or less default state. Wanders around, looks for baddies, and spouts one-liners.
-#define STANCE_ALERT        2	// A baddie is visible but not too close, and essentially we tell them to go away or die.
-#define STANCE_APPROACH     3	// Attempting to get into range to attack them.
-#define STANCE_FIGHT	    4	// Actually fighting, with melee or ranged.
-#define STANCE_BLINDFIGHT   5	// Fighting something that cannot be seen by the mob, from invisibility or out of sight.
-#define STANCE_REPOSITION   6	// Relocating to a better position while in combat. Also used when moving away from a danger like grenades.
-#define STANCE_MOVE         7	// Similar to above but for out of combat. If a baddie is seen, they'll cancel and fight them.
-#define STANCE_FOLLOW       8	// Following somone, without trying to murder them.
-#define STANCE_FLEE         9	// Run away from the target because they're too spooky/we're dying/some other reason.
-#define STANCE_DISABLED     10	// Used when the holder is afflicted with certain status effects, such as stuns or confusion.
-
+/// Doing (almost) nothing, to save on CPU because nobody is around to notice or the mob died.
+#define STANCE_SLEEP        0
+/// The more or less default state. Wanders around, looks for baddies, and spouts one-liners.
+#define STANCE_IDLE         1
+/// A baddie is visible but not too close, and essentially we tell them to go away or die.
+#define STANCE_ALERT        2
+/// Attempting to get into range to attack them.
+#define STANCE_APPROACH     3
+/// Actually fighting, with melee or ranged.
+#define STANCE_FIGHT	    4
+/// Fighting something that cannot be seen by the mob, from invisibility or out of sight.
+#define STANCE_BLINDFIGHT   5
+/// Relocating to a better position while in combat. Also used when moving away from a danger like grenades.
+#define STANCE_REPOSITION   6
+/// Similar to above but for out of combat. If a baddie is seen, they'll cancel and fight them.
+#define STANCE_MOVE         7
+/// Following somone, without trying to murder them.
+#define STANCE_FOLLOW       8
+/// Run away from the target because they're too spooky/we're dying/some other reason.
+#define STANCE_FLEE         9
+/// Used when the holder is afflicted with certain status effects, such as stuns or confusion.
+#define STANCE_DISABLED     10
 #define STANCES_COMBAT      list(STANCE_ALERT, STANCE_APPROACH, STANCE_FIGHT, STANCE_BLINDFIGHT, STANCE_REPOSITION)
 
 #define LEFT  0x1
@@ -57,15 +78,22 @@
 #define UNDER 0x4
 
 // Pulse levels, very simplified.
-#define PULSE_NONE    0 // So !M.pulse checks would be possible.
-#define PULSE_SLOW    1 // <60     bpm
-#define PULSE_NORM    2 //  60-90  bpm
-#define PULSE_FAST    3 //  90-120 bpm
-#define PULSE_2FAST   4 // >120    bpm
-#define PULSE_THREADY 5 // Occurs during hypovolemic shock
-#define GETPULSE_HAND 0 // Less accurate. (hand)
-#define GETPULSE_TOOL 1 // More accurate. (med scanner, sleeper, etc.)
-
+/// So !M.pulse checks would be possible.
+#define PULSE_NONE    0
+/// <60     bpm
+#define PULSE_SLOW    1
+///  60-90  bpm
+#define PULSE_NORM    2
+///  90-120 bpm
+#define PULSE_FAST    3
+/// >120    bpm
+#define PULSE_2FAST   4
+/// Occurs during hypovolemic shock
+#define PULSE_THREADY 5
+/// Less accurate. (hand)
+#define GETPULSE_HAND 0
+/// More accurate. (med scanner, sleeper, etc.)
+#define GETPULSE_TOOL 1
 //These are used Bump() code for living mobs, in the mob_bump_flag, mob_swap_flags, and mob_push_flags vars to determine whom can bump/swap with whom.
 #define HUMAN 1
 #define MONKEY 2
@@ -97,41 +125,42 @@
 #define APPEARANCE_ALL       0xFFFF
 
 // Click cooldown
-#define DEFAULT_ATTACK_COOLDOWN 8 //Default timeout for aggressive actions
+///Default timeout for aggressive actions
+#define DEFAULT_ATTACK_COOLDOWN 8
 #define DEFAULT_QUICK_COOLDOWN  4
-
+#define DEFAULT_PULL_COODDOWN	2
 
 #define MIN_SUPPLIED_LAW_NUMBER 15
 #define MAX_SUPPLIED_LAW_NUMBER 50
 
 //default item on-mob icons
-#define INV_HEAD_DEF_ICON 'icons/mob/head.dmi'
-#define INV_BACK_DEF_ICON 'icons/mob/back.dmi'
+#define INV_HEAD_DEF_ICON 'icons/mob/clothing/head.dmi'
+#define INV_BACK_DEF_ICON 'icons/mob/clothing/back.dmi'
 #define INV_L_HAND_DEF_ICON 'icons/mob/items/lefthand.dmi'
 #define INV_R_HAND_DEF_ICON 'icons/mob/items/righthand.dmi'
-#define INV_W_UNIFORM_DEF_ICON 'icons/mob/uniform.dmi'
-#define INV_ACCESSORIES_DEF_ICON 'icons/mob/ties.dmi'
-#define INV_TIE_DEF_ICON 'icons/mob/ties.dmi'
-#define INV_SUIT_DEF_ICON 'icons/mob/suit.dmi'
-#define INV_SPACESUIT_DEF_ICON 'icons/mob/spacesuit.dmi'
+#define INV_W_UNIFORM_DEF_ICON 'icons/mob/clothing/uniform.dmi'
+#define INV_ACCESSORIES_DEF_ICON 'icons/mob/clothing/ties.dmi'
+#define INV_TIE_DEF_ICON 'icons/mob/clothing/ties.dmi'
+#define INV_SUIT_DEF_ICON 'icons/mob/clothing/suits.dmi'
+#define INV_SPACESUIT_DEF_ICON 'icons/mob/clothing/spacesuits.dmi'
 #define INV_WEAR_ID_DEF_ICON 'icons/mob/mob.dmi'
-#define INV_GLOVES_DEF_ICON 'icons/mob/hands.dmi'
-#define INV_EYES_DEF_ICON 'icons/mob/eyes.dmi'
-#define INV_EARS_DEF_ICON 'icons/mob/ears.dmi'
-#define INV_FEET_DEF_ICON 'icons/mob/feet.dmi'
-#define INV_BELT_DEF_ICON 'icons/mob/belt.dmi'
-#define INV_MASK_DEF_ICON 'icons/mob/mask.dmi'
+#define INV_GLOVES_DEF_ICON 'icons/mob/clothing/hands.dmi'
+#define INV_EYES_DEF_ICON 'icons/mob/clothing/eyes.dmi'
+#define INV_EARS_DEF_ICON 'icons/mob/clothing/ears.dmi'
+#define INV_FEET_DEF_ICON 'icons/mob/clothing/feet.dmi'
+#define INV_BELT_DEF_ICON 'icons/mob/clothing/belt.dmi'
+#define INV_MASK_DEF_ICON 'icons/mob/clothing/mask.dmi'
 #define INV_HCUFF_DEF_ICON 'icons/mob/mob.dmi'
 #define INV_LCUFF_DEF_ICON 'icons/mob/mob.dmi'
 
 // Character's economic class
-#define CLASS_UPPER 		"Wealthy"
-#define CLASS_UPMID			"Well-off"
-#define CLASS_MIDDLE 		"Average"
-#define CLASS_LOWMID		"Underpaid"
-#define CLASS_LOWER			"Poor"
+#define CLASS_UPPER  "Wealthy"
+#define CLASS_UPMID  "Well-off"
+#define CLASS_MIDDLE "Average"
+#define CLASS_LOWMID "Underpaid"
+#define CLASS_LOWER  "Poor"
 
-#define ECONOMIC_CLASS		list(CLASS_UPPER,CLASS_UPMID,CLASS_MIDDLE,CLASS_LOWMID,CLASS_LOWER)
+#define ECONOMIC_CLASS list(CLASS_UPPER,CLASS_UPMID,CLASS_MIDDLE,CLASS_LOWMID,CLASS_LOWER)
 
 
 // Defines mob sizes, used by lockers and to determine what is considered a small sized mob, etc.
@@ -161,7 +190,8 @@
 #define INCAPACITATION_BUCKLED_PARTIALLY 2
 #define INCAPACITATION_BUCKLED_FULLY 4
 #define INCAPACITATION_STUNNED 8
-#define INCAPACITATION_FORCELYING 16 //needs a better name - represents being knocked down BUT still conscious.
+///needs a better name - represents being knocked down BUT still conscious.
+#define INCAPACITATION_FORCELYING 16
 #define INCAPACITATION_KNOCKOUT 32
 #define INCAPACITATION_NONE 0
 
@@ -198,26 +228,37 @@
 
 // More refined version of SA_* ""intelligence"" seperators.
 // Now includes bitflags, so to target two classes you just do 'MOB_CLASS_ANIMAL|MOB_CLASS_HUMANOID'
-#define MOB_CLASS_NONE 			NONE	// Default value, and used to invert for _ALL.
-
-#define MOB_CLASS_PLANT			(1<<0)		// Unused at the moment.
-#define MOB_CLASS_ANIMAL		(1<<1)		// Animals and beasts like spiders, saviks, and bears.
-#define MOB_CLASS_HUMANOID		(1<<2)		// Non-robotic humanoids, including /simple_mob and /carbon/humans and their alien variants.
-#define MOB_CLASS_SYNTHETIC		(1<<3)		// Silicons, mechanical simple mobs, FBPs, and anything else that would pass is_synthetic()
-#define MOB_CLASS_SLIME			(1<<4)		// Everyone's favorite xenobiology specimen (and maybe prometheans?).
-#define MOB_CLASS_ABERRATION	(1<<5)		// Weird shit.
-#define MOB_CLASS_DEMONIC		(1<<6)		// Cult stuff.
-#define MOB_CLASS_BOSS			(1<<7)		// Future megafauna hopefully someday.
-#define MOB_CLASS_ILLUSION		(1<<8)		// Fake mobs, e.g. Technomancer illusions.
-#define MOB_CLASS_PHOTONIC		(1<<9)		// Holographic mobs like holocarp, similar to _ILLUSION, but that make no attempt to hide their true nature.
-
+/// Default value, and used to invert for _ALL.
+#define MOB_CLASS_NONE 			NONE
+/// Unused at the moment.
+#define MOB_CLASS_PLANT			(1<<0)
+/// Animals and beasts like spiders, saviks, and bears.
+#define MOB_CLASS_ANIMAL		(1<<1)
+/// Non-robotic humanoids, including /simple_mob and /carbon/humans and their alien variants.
+#define MOB_CLASS_HUMANOID		(1<<2)
+/// Silicons, mechanical simple mobs, FBPs, and anything else that would pass is_synthetic()
+#define MOB_CLASS_SYNTHETIC		(1<<3)
+/// Everyone's favorite xenobiology specimen (and maybe prometheans?).
+#define MOB_CLASS_SLIME			(1<<4)
+/// Weird shit.
+#define MOB_CLASS_ABERRATION	(1<<5)
+/// Cult stuff.
+#define MOB_CLASS_DEMONIC		(1<<6)
+/// Future megafauna hopefully someday.
+#define MOB_CLASS_BOSS			(1<<7)
+/// Fake mobs, e.g. Technomancer illusions.
+#define MOB_CLASS_ILLUSION		(1<<8)
+/// Holographic mobs like holocarp, similar to _ILLUSION, but that make no attempt to hide their true nature.
+#define MOB_CLASS_PHOTONIC		(1<<9)
 #define MOB_CLASS_ALL			(~MOB_CLASS_NONE)
 
 // For slime commanding.  Higher numbers allow for more actions.
-#define SLIME_COMMAND_OBEY		1 // When disciplined.
-#define SLIME_COMMAND_FACTION	2 // When in the same 'faction'.
-#define SLIME_COMMAND_FRIEND	3 // When befriended with a slime friendship agent.
-
+/// When disciplined.
+#define SLIME_COMMAND_OBEY		1
+/// When in the same 'faction'.
+#define SLIME_COMMAND_FACTION	2
+/// When befriended with a slime friendship agent.
+#define SLIME_COMMAND_FRIEND	3
 // Threshold for mobs being able to damage things like airlocks or reinforced glass windows.
 // If the damage is below this, nothing will happen besides a message saying that the attack was ineffective.
 // Generally, this was not a define but was commonly set to 10, however 10 may be too low now since simple_mobs now attack twice as fast,
@@ -245,8 +286,9 @@
 #define VIS_PARALLAX		14
 #define VIS_STATUS			15
 #define VIS_SPACE			16
-#define VIS_COUNT			16 //Must be highest number from above.
-
+#define VIS_SONAR			17
+///Must be highest number from above.
+#define VIS_COUNT			17
 //Some mob icon layering defines
 #define BODY_LAYER		-100
 
@@ -274,3 +316,9 @@
 #define EXAMINE_SKIPHANDS			0x0040
 #define EXAMINE_SKIPLEGS			0x0080
 #define EXAMINE_SKIPFEET			0x0100
+
+/// How far away you can be to make eye contact with someone while examining
+#define EYE_CONTACT_RANGE 5
+
+/// If you examine the same atom twice in this timeframe, we call examine_more() instead of examine()
+#define EXAMINE_MORE_TIME 1 SECONDS

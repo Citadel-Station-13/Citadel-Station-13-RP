@@ -20,7 +20,7 @@
 	if(mind)
 		if((mind.assigned_role == "Station Engineer") || (mind.assigned_role == "Chief Engineer"))
 			gain = 100
-		if(mind.assigned_role == USELESS_JOB) //VOREStation Edit - Visitor not Assistant
+		if(mind.assigned_role == USELESS_JOB)
 			gain = rand(0, 300)
 	investigate_log(I_SINGULO,"has been consumed by a singularity", I_SINGULO)
 	gib()
@@ -40,19 +40,21 @@
 	..()
 
 /obj/singularity_act()
-	if(simulated)
-		ex_act(1)
-		if(src)
-			qdel(src)
-		return 2
+	if(flags & AF_ABSTRACT)
+		return
+	ex_act(1)
+	if(!QDELETED(src))
+		qdel(src)
+	return 2
 
 /obj/singularity_pull(S, current_size)
-	if(simulated)
-		if(anchored)
-			if(current_size >= STAGE_FIVE)
-				step_towards(src, S)
-		else
+	if(flags & AF_ABSTRACT)
+		return
+	if(anchored)
+		if(current_size >= STAGE_FIVE)
 			step_towards(src, S)
+	else
+		step_towards(src, S)
 
 /obj/effect/beam/singularity_pull()
 	return

@@ -2,16 +2,24 @@
 // note: if you add more HUDs, even for non-human atoms, make sure to use unique numbers for the defines!
 // /datum/atom_hud expects these to be unique
 // these need to be strings in order to make them associative lists
-#define STATUS_HUD		"1" // dead, alive, sick, health status
-#define LIFE_HUD		"2" // a simple line rounding the mob's number health
-#define ID_HUD			"3" // the job asigned to your ID
-#define WANTED_HUD		"4" // wanted, released, parroled, security status
-#define IMPLOYAL_HUD	"5" // loyality implant
-#define IMPCHEM_HUD		"6" // chemical implant
-#define IMPTRACK_HUD	"7" // tracking implant
-#define ANTAG_HUD		"8"	// antag icon
-#define WORLD_BENDER_ANIMAL_HUD					"9"		// animal alt appearance
-
+/// dead, alive, sick, health status
+#define STATUS_HUD		"1"
+/// a simple line rounding the mob's number health
+#define LIFE_HUD		"2"
+/// the job asigned to your ID
+#define ID_HUD			"3"
+/// wanted, released, parroled, security status
+#define WANTED_HUD		"4"
+/// loyality implant
+#define IMPLOYAL_HUD	"5"
+/// chemical implant
+#define IMPCHEM_HUD		"6"
+/// tracking implant
+#define IMPTRACK_HUD	"7"
+/// antag icon
+#define ANTAG_HUD		"8"
+/// animal alt appearance
+#define WORLD_BENDER_ANIMAL_HUD					"9"
 // todo: datum hud icons
 
 // constant list lookup of hud to icon
@@ -46,4 +54,5 @@ GLOBAL_LIST_INIT(hud_icon_layers, list(
 
 #define WORLD_BENDER_HUD_ANIMALS		6
 
-#define ADD_HUD_TO_COOLDOWN 20 //cooldown for being shown the images for any particular data hud
+///cooldown for being shown the images for any particular data hud
+#define ADD_HUD_TO_COOLDOWN 20

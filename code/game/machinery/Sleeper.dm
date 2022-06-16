@@ -1,14 +1,14 @@
 /obj/machinery/sleep_console
 	name = "sleeper console"
-	icon = 'icons/obj/Cryogenic2.dmi' //VOREStation Edit - Better icon.
+	icon = 'icons/obj/Cryogenic2.dmi'
 	icon_state = "sleeperconsole"
 	var/obj/machinery/sleeper/sleeper
-	anchored = 1 //About time someone fixed this.
-	density = 1 //VOREStation Edit - Big console
+	anchored = TRUE
+	density = TRUE
 	dir = 8
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 40
-	interact_offline = 1
+	interact_offline = TRUE
 	circuit = /obj/item/circuitboard/sleeper_console
 
 /obj/machinery/sleep_console/Initialize(mapload, newdir)
@@ -29,17 +29,15 @@
 	for(dir in list(NORTH, EAST, SOUTH, WEST)) // Loop through every direction
 		sleepernew = locate(/obj/machinery/sleeper, get_step(src, dir)) // Try to find a scanner in that direction
 		if(sleepernew)
-			// VOREStation Edit Start
 			sleeper = sleepernew
 			sleepernew.console = src
 			break
-			// VOREStation Edit End
 
 
-/obj/machinery/sleep_console/attack_ai(var/mob/user)
+/obj/machinery/sleep_console/attack_ai(mob/user)
 	return attack_hand(user)
 
-/obj/machinery/sleep_console/attack_hand(var/mob/user)
+/obj/machinery/sleep_console/attack_hand(mob/user)
 	if(..())
 		return 1
 
@@ -56,7 +54,7 @@
 	if(sleeper)
 		return nano_ui_interact(user)
 
-/obj/machinery/sleep_console/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/sleep_console/attackby(obj/item/I, mob/user)
 	if(computer_deconstruction_screwdriver(user, I))
 		return
 	else
@@ -64,7 +62,7 @@
 
 /obj/machinery/sleep_console/power_change()
 	..()
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		icon_state = "sleeperconsole-p"
 	else
 		icon_state = initial(icon_state)
@@ -75,7 +73,7 @@
 	var/obj/machinery/sleeper/S = sleeper
 	var/mob/living/carbon/human/occupant = sleeper.occupant
 
-	data["power"] = S.stat & (NOPOWER|BROKEN) ? 0 : 1
+	data["power"] = S.machine_stat & (NOPOWER|BROKEN) ? FALSE : TRUE
 
 	var/list/reagents = list()
 	for(var/T in S.available_chemicals)
@@ -185,14 +183,13 @@
 	. = ..()
 	beaker = new /obj/item/reagent_containers/glass/beaker/large(src)
 	default_apply_parts()
-	RefreshParts()
 
 /obj/machinery/sleeper/Destroy()
 	if(console)
 		console.sleeper = null
 	return ..()
 
-/obj/machinery/sleeper/RefreshParts(var/limited = 0)
+/obj/machinery/sleeper/RefreshParts(limited = FALSE)
 	var/man_rating = 0
 	var/cap_rating = 0
 
@@ -241,7 +238,7 @@
 	update_icon()
 
 /obj/machinery/sleeper/process(delta_time)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	if(occupant)
 		occupant.Stasis(stasis_level)
@@ -333,7 +330,7 @@
 	if(pumping)
 		toggle_pump()
 
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		..(severity)
 		return
 
@@ -356,7 +353,7 @@
 /obj/machinery/sleeper/proc/go_in(var/mob/M, var/mob/user)
 	if(!M)
 		return
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	if(occupant)
 		to_chat(user, SPAN_WARNING("\The [src] is already occupied."))
@@ -407,8 +404,8 @@
 		beaker = null
 		toggle_filter()
 
-/obj/machinery/sleeper/proc/inject_chemical(var/mob/living/user, var/chemical, var/amount)
-	if(stat & (BROKEN|NOPOWER))
+/obj/machinery/sleeper/proc/inject_chemical(mob/living/user, chemical, amount)
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 
 	if(occupant && occupant.reagents)

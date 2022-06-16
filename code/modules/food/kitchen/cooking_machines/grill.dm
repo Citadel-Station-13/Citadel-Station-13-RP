@@ -13,7 +13,7 @@
 
 	optimal_power = 1.2 // Things on the grill cook .6 faster - this is now the fastest appliance to heat and to cook on. BURGERS GO SIZZLE.
 
-	stat = POWEROFF // Starts turned off.
+	machine_stat = POWEROFF // Starts turned off.
 
 	// Grill is faster to heat and setup than the rest.
 	optimal_temp = 120 + T0C
@@ -32,7 +32,7 @@
 	return ..()
 
 /obj/machinery/appliance/cooker/grill/update_icon() // TODO: Cooking icon
-	if(!stat)
+	if(!machine_stat)
 		icon_state = on_icon
 		if(cooking == TRUE)
 			if(grill_loop)
