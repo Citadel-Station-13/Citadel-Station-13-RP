@@ -5,6 +5,7 @@
 		var/datum/reagent/R = path
 		var/id = initial(R.id)
 		if(id_lookup[id])
+			LAZYINITLIST(colliding[id])
 			colliding[id] |= id_lookup[id]
 			colliding[id] |= path
 			continue
