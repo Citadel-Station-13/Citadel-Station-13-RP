@@ -127,3 +127,6 @@
   - rscadd: 'Added new things tweak: tweaked a few things'
   silicons:
   - rscadd: Dnin-Nepids, aka Moths, are now a species.
+2022-06-16:
+  silicons:
+  - refactor: Life(), a little.
