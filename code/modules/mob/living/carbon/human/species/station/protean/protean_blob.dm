@@ -178,9 +178,10 @@
 
 	return ..()
 
-/mob/living/simple_mob/protean_blob/Life()
-	. = ..()
-	if(. && istype(refactory) && humanform)
+/mob/living/simple_mob/protean_blob/BiologicalLife()
+	if((. = ..()))
+		return
+	if(istype(refactory) && humanform)
 		if(!humanform.has_modifier_of_type(/datum/modifier/protean/steelBlob) && health < maxHealth && refactory.get_stored_material(MAT_STEEL) >= 100 && refactory.processingbuffs)
 			healing = humanform.add_modifier(/datum/modifier/protean/steelBlob, origin = refactory)
 		else if(humanform.has_modifier_of_type(/datum/modifier/protean/steelBlob) && health >= maxHealth)
@@ -507,7 +508,7 @@
 	if(blob.prev_left_hand) put_in_left_hand(blob.prev_left_hand) //The restore for when reforming.
 	if(blob.prev_right_hand) put_in_right_hand(blob.prev_right_hand)
 
-	Life(1) //Fix my blindness right meow //Has to be moved up here, there exists a circumstance where blob could be deleted without vore organs moving right.
+	Life(1, SSmobs.times_fired)
 
 	//Get rid of friend blob
 	qdel(blob)

@@ -352,7 +352,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 			notify("Calibration complete! User data stored! Welcome to your Nanite Implant Framework!")
 
 //Called each life() tick on the mob
-/obj/item/nif/proc/life()
+/obj/item/nif/proc/on_life()
 	if(!human || loc != human.get_organ(should_be_in))
 		unimplant(human)
 		return FALSE
@@ -371,7 +371,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 			//Process all the ones that want that
 			for(var/datum/nifsoft/nifsoft as anything in nifsofts_life)
-				nifsoft.life(human)
+				nifsoft.on_life(human)
 
 		if(NIF_POWFAIL)
 			if(human && human.nutrition < 100)

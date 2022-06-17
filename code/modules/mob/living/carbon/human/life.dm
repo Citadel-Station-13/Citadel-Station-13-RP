@@ -46,11 +46,7 @@
 	var/last_synthcooling_message = 0 		// to whoever is looking at git blame in the future, i'm not the author, and this is shitcode, but what came before i changed it
 	// made me vomit
 
-/mob/living/carbon/human/Life()
-
-	if (transforming)
-		return
-
+/mob/living/carbon/human/Life(seconds, times_fired)
 	//Apparently, the person who wrote this code designed it so that
 	//blinded get reset each cycle and then get activated later in the
 	//code. Very ugly. I dont care. Moving this stuff here so its easy
@@ -58,24 +54,34 @@
 	blinded = 0
 	fire_alert = 0 //Reset this here, because both breathe() and handle_environment() have a chance to set it.
 
+	if((. = ..()))
+		return
+
 	//TODO: seperate this out
 	// update the current life tick, can be used to e.g. only do something every 4 ticks
 	life_tick++
-
+	//Update our name based on whether our face is obscured/disfigured
+	name = get_visible_name()
 	// This is not an ideal place for this but it will do for now.
 	if(wearing_rig && !wearing_rig.is_activated())
 		wearing_rig = null
-
-	..()
-
 	voice = GetVoice()
+
+/mob/living/carbon/human/PhysicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
+	fall() // Prevents people from floating
+
+/mob/living/carbon/human/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
 
 	var/stasis = inStasisNow()
 	if(getStasis() > 2)
 		Sleeping(20)
 
 	//No need to update all of these procs if the guy is dead.
-	fall() // Prevents people from floating
 	if(stat != DEAD && !stasis)
 		//Updates the number of stored chemicals for powers
 		handle_changeling()
@@ -86,11 +92,8 @@
 		weightgain()
 		process_weaver_silk()
 		handle_shock()
-
 		handle_pain()
-
 		handle_medical_side_effects()
-
 		handle_heartbeat()
 		handle_nif()
 		if(!client)
@@ -101,9 +104,6 @@
 
 	if(skip_some_updates())
 		return											//We go ahead and process them 5 times for HUD images and other stuff though.
-
-	//Update our name based on whether our face is obscured/disfigured
-	name = get_visible_name()
 
 	pulse = handle_pulse()
 
@@ -1008,7 +1008,7 @@
 
 	return //TODO: DEFERRED
 
-//DO NOT CALL handle_statuses() from this proc, it's called from living/Life() as long as this returns a true value.
+//DO NOT CALL handle_statuses() from this proc, it's called from living/Life(seconds, times_fired) as long as this returns a true value.
 /mob/living/carbon/human/handle_regular_UI_updates()
 	if(skip_some_updates())
 		return FALSE
@@ -1823,7 +1823,7 @@
 	if(!nif) return
 
 	//Process regular life stuff
-	nif.life()
+	nif.on_life()
 
 /mob/living/carbon/human/proc/handle_defib_timer()
 	if(!should_have_organ(O_BRAIN))
