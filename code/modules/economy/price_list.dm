@@ -207,10 +207,10 @@
 /datum/reagent/ethanol/booger
 	price_tag = 4
 
-/datum/reagent/ethanol/brave_bull
+/datum/reagent/ethanol/coffee/brave_bull
 	price_tag = 4
 
-/datum/reagent/ethanol/changeling_sting
+/datum/reagent/ethanol/changelingsting
 	price_tag = 4
 
 /datum/reagent/ethanol/martini
@@ -303,7 +303,7 @@
 /datum/reagent/ethanol/syndicatebomb
 	price_tag = 4
 
-/datum/reagent/ethanol/tequillasunrise
+/datum/reagent/ethanol/tequilla_sunrise
 	price_tag = 4
 
 /datum/reagent/ethanol/threemileisland

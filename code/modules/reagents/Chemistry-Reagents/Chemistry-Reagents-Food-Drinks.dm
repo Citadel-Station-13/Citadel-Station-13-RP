@@ -840,7 +840,7 @@ End Citadel Change */
 	glass_name = "orange juice"
 	glass_desc = "Vitamins! Yay!"
 
-/datum/reagent/drink/orangejuice/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/drink/juice/orange/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
 	if(alien == IS_DIONA)
 		return
@@ -1489,7 +1489,7 @@ End Citadel Change */
 	glass_name = "Milkshake"
 	glass_desc = "Glorious brainfreezing mixture."
 
-/datum/reagent/milkshake/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/drink/milkshake/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
 
 	var/effective_dose = dose/2
@@ -1613,7 +1613,7 @@ End Citadel Change */
 	glass_name = "Grenadine Syrup"
 	glass_desc = "Sweet and tangy, a bar syrup used to add color and flavor to drinks."
 
-/datum/reagent/drink/soda/space_cola
+/datum/reagent/drink/soda
 	name = "Space Cola"
 	id = "cola"
 	description = "A refreshing beverage."
@@ -2038,7 +2038,7 @@ End Citadel Change */
 	glass_desc = "Mint, bubbly water, and citrus, made for sailing."
 	glass_special = list(DRINK_FIZZ)
 
-/datum/reagent/drink/sexonthebeach
+/datum/reagent/drink/virginsexonthebeach
 	name = "Virgin Sex On The Beach"
 	id = "virginsexonthebeach"
 	description = "A secret combination of orange juice and pomegranate."
@@ -2070,7 +2070,7 @@ End Citadel Change */
 	glass_desc = "How <font face='comic sans ms'>berry cordial</font> of you."
 	glass_icon = DRINK_ICON_NOISY
 
-/datum/reagent/drink/blud/bludoriginal
+/datum/reagent/drink/blud
 	name = "Blud"
 	id = "blud"
 	description = "A sweet mix of blood-like additives. Vampiric."
@@ -2276,6 +2276,7 @@ End Citadel Change */
 
 //Base type for alchoholic drinks containing coffee
 /datum/reagent/ethanol/coffee
+	id = "cofee_liqueur"
 	overdose = 45
 
 /datum/reagent/ethanol/coffee/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
@@ -3215,6 +3216,17 @@ End Citadel Change */
 	glass_name = "Syndicate Bomb"
 	glass_desc = "Tastes like terrorism!"
 
+/datum/reagent/ethanol/tequilla
+	name = "Tequila"
+	id = "tequilla"
+	description = "A drink made for fighting."
+	taste_description = "paint thinner"
+	color = "#cccac5"
+	strength = 25
+
+	glass_name = "Tequila"
+	glass_desc = "Is that guy making fun of you? You should show him what's what."
+
 /datum/reagent/ethanol/tequilla_sunrise
 	name = "Tequila Sunrise"
 	id = "tequillasunrise"
@@ -3536,7 +3548,7 @@ End Citadel Change */
 	glass_name = "Soemmer Fire"
 	glass_desc = "A painfully hot mixed drink, for when you absolutely need to hurt right now."
 
-/datum/reagent/drink/soemmerfire/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/ethanol/soemmerfire/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
 	if(alien == IS_DIONA)
 		return
@@ -3597,7 +3609,7 @@ End Citadel Change */
 	glass_name = "Vox's Delight"
 	glass_desc = "Not recommended if you enjoy having organs."
 
-/datum/reagent/drink/voxdelight/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/ethanol/voxdelight/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
 	if(alien == IS_DIONA)
 		return
@@ -3662,7 +3674,7 @@ End Citadel Change */
 	glass_name = "Named Bullet"
 	glass_desc = "A thick slime jelly shot. You can feel your death approaching."
 
-/datum/reagent/drink/slimeshot/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/ethanol/slimeshot/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
 	if(alien == IS_DIONA)
 		return
@@ -4215,6 +4227,8 @@ End Citadel Change */
 	Generally coatings are intended for deep frying foods
 */
 /datum/reagent/nutriment/coating
+	name = "coating"
+	id = "coating"
 	nutriment_factor = 6 //Less dense than the food itself, but coatings still add extra calories
 	var/messaged = 0
 	var/icon_raw
