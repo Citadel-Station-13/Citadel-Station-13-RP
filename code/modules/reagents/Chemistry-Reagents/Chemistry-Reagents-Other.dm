@@ -658,6 +658,7 @@
 
 /datum/reagent/oil
 	name = "Oil"
+	id = "oil"
 	description = "Burns in a small smoky fire, mostly used to get Ash."
 	reagent_state = REAGENT_LIQUID
 	color = "#292929"
@@ -665,6 +666,7 @@
 
 /datum/reagent/ash
 	name = "Ash"
+	id = "ash"
 	description = "Supposedly phoenixes rise from these, but you've never seen it."
 	reagent_state = REAGENT_LIQUID
 	color = "#665c56"
