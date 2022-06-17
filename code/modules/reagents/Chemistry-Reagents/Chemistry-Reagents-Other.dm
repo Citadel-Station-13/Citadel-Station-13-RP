@@ -656,7 +656,7 @@
 	M.confused = max(M.confused, 20)
 	return
 
-/datum/reagent/oil
+/datum/reagent/crude_oil
 	name = "Oil"
 	id = "oil"
 	description = "Burns in a small smoky fire, mostly used to get Ash."
@@ -664,7 +664,7 @@
 	color = "#292929"
 	taste_description = "oil"
 
-/datum/reagent/ash
+/datum/reagent/ash_powder
 	name = "Ash"
 	id = "ash"
 	description = "Supposedly phoenixes rise from these, but you've never seen it."

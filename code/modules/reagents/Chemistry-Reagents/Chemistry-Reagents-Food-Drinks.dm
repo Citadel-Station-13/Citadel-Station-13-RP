@@ -3217,7 +3217,22 @@ End Citadel Change */
 	glass_name = "Syndicate Bomb"
 	glass_desc = "Tastes like terrorism!"
 
+<<<<<<< HEAD
 /datum/reagent/ethanol/tequila_sunrise
+=======
+/datum/reagent/ethanol/tequilla
+	name = "Tequila"
+	id = "tequilla"
+	description = "A drink made for fighting."
+	taste_description = "paint thinner"
+	color = "#cccac5"
+	strength = 25
+
+	glass_name = "Tequila"
+	glass_desc = "Is that guy making fun of you? You should show him what's what."
+
+/datum/reagent/ethanol/tequilla_sunrise
+>>>>>>> citrp/master
 	name = "Tequila Sunrise"
 	id = "tequilasunrise"
 	description = "Tequila and orange juice. Much like a Screwdriver, only Mexican~."
