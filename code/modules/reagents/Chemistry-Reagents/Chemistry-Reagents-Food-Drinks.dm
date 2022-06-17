@@ -2276,6 +2276,7 @@ End Citadel Change */
 
 //Base type for alchoholic drinks containing coffee
 /datum/reagent/ethanol/coffee
+	id = "cofee_liqueur"
 	overdose = 45
 
 /datum/reagent/ethanol/coffee/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
@@ -3214,6 +3215,17 @@ End Citadel Change */
 
 	glass_name = "Syndicate Bomb"
 	glass_desc = "Tastes like terrorism!"
+
+/datum/reagent/ethanol/tequilla
+	name = "Tequila"
+	id = "tequilla"
+	description = "A drink made for fighting."
+	taste_description = "paint thinner"
+	color = "#cccac5"
+	strength = 25
+
+	glass_name = "Tequila"
+	glass_desc = "Is that guy making fun of you? You should show him what's what."
 
 /datum/reagent/ethanol/tequilla_sunrise
 	name = "Tequila Sunrise"
