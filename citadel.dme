@@ -3673,6 +3673,7 @@
 #include "code\modules\species\station\protean\protean_species.dm"
 #include "code\modules\species\station\standard\human.dm"
 #include "code\modules\species\station\standard\moth.dm"
+#include "code\modules\species\station\standard\skrell.dm"
 #include "code\modules\species\station\xenomorph_hybrids\hybrid_abilities.dm"
 #include "code\modules\species\station\xenomorph_hybrids\hybrid_resin.dm"
 #include "code\modules\species\station\xenomorph_hybrids\xeno_hybrids.dm"
