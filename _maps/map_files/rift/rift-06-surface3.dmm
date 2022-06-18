@@ -1327,8 +1327,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/exploration)
 "cb" = (
-/obj/structure/table/standard,
-/obj/item/storage/laundry_basket,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
@@ -1343,6 +1341,7 @@
 	name = "Station Intercom (General)";
 	pixel_x = -24
 	},
+/obj/machinery/washing_machine,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker/laundry_arrival)
 "cc" = (
@@ -2573,7 +2572,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/exploration)
 "ei" = (
-/obj/machinery/washing_machine,
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
 	},
@@ -2589,6 +2587,8 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
+/obj/structure/table/standard,
+/obj/item/storage/laundry_basket,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker/laundry_arrival)
 "ej" = (
@@ -5961,7 +5961,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 4
 	},
-/obj/machinery/recharge_station,
+/obj/machinery/vending/loadout/gadget,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker/laundry_arrival)
 "kc" = (
@@ -6298,6 +6298,9 @@
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 8
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -30
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker/laundry_arrival)
@@ -15206,7 +15209,6 @@
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "Bf" = (
-/obj/machinery/vending/loadout/gadget,
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
 	},
@@ -15222,6 +15224,7 @@
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
+/obj/machinery/vending/giftvendor,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/primary/surfacethree)
 "Bg" = (
@@ -15309,9 +15312,6 @@
 	},
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 10
-	},
-/obj/structure/extinguisher_cabinet{
-	pixel_y = -30
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 9

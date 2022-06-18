@@ -2999,7 +2999,6 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "fn" = (
-/obj/machinery/vending/cigarette,
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
 	},
@@ -3012,6 +3011,7 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner2{
 	dir = 8
 	},
+/obj/machinery/vending/giftvendor,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/sleep)
 "fo" = (

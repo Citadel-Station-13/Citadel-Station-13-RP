@@ -8793,10 +8793,10 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/lower)
 "hiW" = (
-/obj/machinery/vending/coffee,
 /obj/machinery/camera/network/civilian{
 	dir = 10
 	},
+/obj/machinery/vending/giftvendor,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/primary/surfaceone)
 "hja" = (
