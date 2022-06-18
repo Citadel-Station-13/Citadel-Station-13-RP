@@ -1,5 +1,0 @@
-author: "racobio"
-delete-after: True
-changes: 
-  - rscadd: "Added collision damage to fighters"
-  - rscadd: "Added alert message on fighter collision"
