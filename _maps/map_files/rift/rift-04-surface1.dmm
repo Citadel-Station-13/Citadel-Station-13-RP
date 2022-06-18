@@ -13367,6 +13367,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/hallway)
+"kCW" = (
+/obj/machinery/crystal/ice,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/rift/surfacebase/outside/outside1)
 "kDc" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/techfloor,
@@ -17211,6 +17215,10 @@
 "nqL" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/engineering/upper)
+"nrG" = (
+/obj/machinery/crystal,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/rift/surfacebase/outside/outside1)
 "nrR" = (
 /obj/effect/overlay/snow/floor/edges_new{
 	dir = 1
@@ -54628,17 +54636,17 @@ gzd
 hgE
 hgE
 hgE
+nrG
+gzd
+hgE
+hgE
+hgE
+hgE
+hgE
+hgE
 gzd
 gzd
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-gzd
-gzd
-gzd
+kCW
 gzd
 gzd
 gzd
@@ -54816,7 +54824,7 @@ gzd
 gzd
 gzd
 gzd
-gzd
+kCW
 gzd
 gzd
 gzd
@@ -55020,7 +55028,7 @@ gzd
 gzd
 gzd
 gzd
-gzd
+kCW
 hgE
 gzd
 gzd
@@ -55032,7 +55040,7 @@ gzd
 gzd
 gzd
 gzd
-gzd
+kCW
 gzd
 hgE
 hgE
@@ -55803,7 +55811,7 @@ xiB
 cfy
 tlw
 tlw
-iuZ
+ktX
 tlw
 iDx
 xiB
@@ -56198,7 +56206,7 @@ tlw
 xiB
 jhN
 gzd
-gzd
+nrG
 hgE
 hgE
 hgE
@@ -56572,7 +56580,7 @@ ifH
 gQQ
 ifH
 eIn
-qKO
+osC
 qKO
 rCN
 ifH
@@ -56960,8 +56968,8 @@ xiB
 xiB
 xiB
 jfy
-qKO
 bGb
+qKO
 uYb
 xiB
 xiB
@@ -57154,8 +57162,8 @@ jhN
 jhN
 jhN
 jfy
-qKO
 bGb
+qKO
 uYb
 xiB
 xiB
@@ -57330,7 +57338,7 @@ hgE
 hgE
 hgE
 gzd
-gzd
+kCW
 gzd
 gzd
 gzd
@@ -57554,7 +57562,7 @@ gzd
 gzd
 gzd
 gzd
-gzd
+kCW
 hgE
 hgE
 hgE
@@ -57729,21 +57737,21 @@ rpP
 rpP
 rpP
 rpP
-rpP
+xtl
 jhN
 gzd
 gzd
 jhN
 jhN
 jfy
-qKO
+bGb
 qKO
 uYb
 jhN
 gzd
 gzd
 gzd
-gzd
+kCW
 gzd
 hgE
 gzd
@@ -57914,7 +57922,7 @@ hgE
 hgE
 hgE
 hgE
-gzd
+kCW
 gzd
 gzd
 jhN
@@ -57930,8 +57938,8 @@ jhN
 jhN
 tlw
 jfy
-qKO
 bGb
+qKO
 lIN
 jhN
 gzd
@@ -58125,7 +58133,7 @@ hZP
 bBD
 ncs
 qKO
-bGb
+qKO
 uYb
 jhN
 gzd
@@ -58499,7 +58507,7 @@ gzd
 gzd
 gzd
 jhN
-rpP
+xtl
 rpP
 rpP
 rpP
@@ -58517,7 +58525,7 @@ osC
 uYb
 jhN
 gzd
-gzd
+nrG
 hgE
 hgE
 hgE
@@ -59272,7 +59280,7 @@ hgE
 hgE
 hgE
 hgE
-gzd
+kCW
 gzd
 gzd
 jhN
@@ -59482,7 +59490,7 @@ gzd
 gzd
 gzd
 gzd
-gzd
+kCW
 gzd
 hgE
 gzd
@@ -59860,13 +59868,13 @@ hgE
 gzd
 gzd
 gzd
-gzd
+nrG
 hgE
 gzd
 gzd
 gzd
 gzd
-gzd
+kCW
 hgE
 hgE
 hgE

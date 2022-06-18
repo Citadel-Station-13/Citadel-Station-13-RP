@@ -15317,7 +15317,7 @@
 /turf/simulated/floor/tiled/red,
 /area/security/security_processing)
 "Bg" = (
-/turf/simulated/open/lythios43c,
+/turf/simulated/open,
 /area/rift/station/public_garden/stairwell)
 "Bh" = (
 /obj/structure/table/rack/shelf/steel,
