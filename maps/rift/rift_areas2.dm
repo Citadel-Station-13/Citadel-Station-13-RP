@@ -777,3 +777,28 @@ Do this eventually. */
 
 /area/rift/facility/interior/core
 	name = "\improper Lythios Facility -  Reactor Core"
+
+//Other Lythios outdoor areas
+/area/rift/exterior/nuketown
+	name = "\improper High Yield Explosives Test Site"
+
+/area/rift/exterior/nuketown/interior
+	name = "\improper Mock Townhouse"
+
+/area/rift/exterior/nuketown/bunker
+	name = "\improper Mock Bomb Shelter"
+
+/area/rift/exterior/bunker
+	name = "\improper Bunker Buster Explosives Test Site - Surface"
+
+/area/rift/exterior/bunker/lower
+	name = "\improper Bunker Buster Explosives Test Site - Lower Level"
+
+/area/rift/exterior/bunker/bottom
+	name = "\improper Bunker Buster Explosives Test Site - Blast Site"
+
+/area/rift/exterior/checkpoint/south
+	name = "\improper Southern Abandoned Checkpoint"
+
+/area/rift/exterior/mineshaft
+	name = "\improper Abandoned Mineshaft"
