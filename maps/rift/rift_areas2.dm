@@ -648,6 +648,19 @@
 /area/rift/station/fighter_bay/maintenance
 	name = "\improper Fighter Bay Maintenance"
 
+//Civilian Garden
+
+/area/rift/station/public_garden
+	icon_state = "green"
+	name = "\improper Public Garden"
+
+/area/rift/station/public_garden/stairwell
+	name = "\improper Public Garden Stairwell"
+
+/area/rift/station/public_garden/lower_stairwell
+	name = "\improper Public Garden Lower Stairwell"
+
+
 //////////////////////////////////
 
 /*
