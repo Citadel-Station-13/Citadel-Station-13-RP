@@ -9235,6 +9235,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfaceone)
+"hAa" = (
+/obj/item/bikehorn/rubberducky,
+/turf/simulated/floor/water/indoors,
+/area/rift/station/public_garden)
 "hAl" = (
 /obj/machinery/door/airlock/mining{
 	name = "Quartermaster";
@@ -14936,6 +14940,10 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main/secondary)
+"lMw" = (
+/obj/item/inflatable_duck,
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors,
+/area/rift/station/public_garden)
 "lNb" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
@@ -56394,7 +56402,7 @@ qKO
 qKO
 iuZ
 iuZ
-iuZ
+lMw
 iuZ
 tlw
 xiB
@@ -57936,7 +57944,7 @@ jhN
 jhN
 jhN
 jhN
-tlw
+hAa
 jfy
 bGb
 qKO
