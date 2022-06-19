@@ -2157,6 +2157,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
+/obj/item/storage/box/glasses,
 /turf/simulated/floor/wood,
 /area/rift/station/public_garden/gantry)
 "dK" = (
@@ -24465,12 +24466,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/security/briefing_room)
-"Qd" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/wall,
-/area/rift/station/public_garden/gantry)
 "Qe" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -56790,7 +56785,7 @@ XH
 XH
 UM
 Iv
-Qd
+Fy
 lD
 XH
 XH

@@ -12357,6 +12357,10 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
+"jQX" = (
+/obj/structure/table/woodentable,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/public_garden)
 "jRk" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -12946,6 +12950,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/medical/psych/psych_2)
+"kjW" = (
+/obj/machinery/light/fairy{
+	dir = 4
+	},
+/obj/structure/flora/ausbushes/ppflowers,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/public_garden)
 "kkn" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
@@ -17601,6 +17612,13 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
+"nzU" = (
+/obj/machinery/light/fairy{
+	dir = 8
+	},
+/obj/structure/flora/ausbushes/brflowers,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/public_garden)
 "nzV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -30037,6 +30055,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfaceone)
+"wHl" = (
+/obj/machinery/light/fairy{
+	dir = 8
+	},
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/public_garden)
 "wHK" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -30906,10 +30931,10 @@
 /turf/simulated/floor/carpet/gaycarpet,
 /area/tether/surfacebase/funny/clownoffice)
 "xxe" = (
-/obj/structure/flora/tree/jungle,
 /obj/machinery/light/fairy{
 	dir = 4
 	},
+/obj/structure/table/bench/wooden,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rift/station/public_garden)
 "xxj" = (
@@ -56976,7 +57001,7 @@ rpP
 qDk
 rpP
 rpP
-rpP
+qyE
 tlw
 xiB
 xiB
@@ -57170,7 +57195,7 @@ rpP
 skM
 rpP
 bfY
-rpP
+qyE
 iDx
 xiB
 xiB
@@ -57363,8 +57388,8 @@ rpP
 qDk
 rpP
 rpP
-qyE
-qyE
+rpP
+rpP
 jhN
 jhN
 jhN
@@ -57552,12 +57577,12 @@ gzd
 gzd
 jhN
 jhN
+wHl
+wHl
 baN
 baN
 baN
-baN
-baN
-baN
+nzU
 jhN
 jhN
 gzd
@@ -57746,12 +57771,12 @@ gzd
 gzd
 gzd
 jhN
+jQX
+jQX
 rpP
-rpP
-eGP
 sQo
-rpP
-sxj
+qyE
+qyE
 jhN
 gzd
 gzd
@@ -57940,12 +57965,12 @@ gzd
 gzd
 gzd
 jhN
-sur
+qyE
+qyE
 rpP
 rpP
-rpP
-rpP
-rpP
+jQX
+jQX
 jhN
 gzd
 gzd
@@ -58134,12 +58159,12 @@ kCW
 gzd
 gzd
 jhN
-nNl
+kjW
 nNl
 nNl
 nNl
 xxe
-nNl
+xxe
 jhN
 jhN
 jhN
@@ -58332,7 +58357,7 @@ rpP
 rpP
 rpP
 rpP
-rpP
+bfY
 rpP
 rpP
 skM
