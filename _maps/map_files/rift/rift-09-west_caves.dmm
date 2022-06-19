@@ -122,10 +122,10 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/bathrooms)
 "ji" = (
-/obj/effect/floormimic/tile/dangerous,
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/effect/floormimic/tile,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/exterior/nuketown/bunker)
 "jj" = (

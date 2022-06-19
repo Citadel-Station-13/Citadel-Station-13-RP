@@ -10720,7 +10720,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "ZX" = (
-/obj/effect/floormimic/dangerous,
+/obj/effect/floormimic,
 /turf/simulated/floor/wood,
 /area/rift/exterior/nuketown/interior)
 "ZY" = (
@@ -19377,7 +19377,7 @@ OH
 jq
 jq
 jq
-Yg
+jq
 yO
 ed
 ed
@@ -23055,7 +23055,7 @@ UU
 EH
 ed
 jq
-Yg
+ZX
 jq
 jq
 jq
@@ -23063,7 +23063,7 @@ jq
 jq
 jq
 jq
-Yg
+jq
 yO
 ed
 ed
@@ -23237,7 +23237,7 @@ jq
 jq
 jq
 YI
-Yg
+ZX
 xc
 sS
 sS
