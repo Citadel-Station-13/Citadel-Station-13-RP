@@ -310,6 +310,9 @@
 "oh" = (
 /turf/simulated/wall,
 /area/rift/facility/interior/prison)
+"oz" = (
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/rift/exterior/mineshaft)
 "oI" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
@@ -448,7 +451,7 @@
 /area/rift/facility/interior/janitorial)
 "wx" = (
 /turf/simulated/open/lythios43c,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/mineshaft)
 "xa" = (
 /obj/structure/girder,
 /obj/effect/map_effect/radiation_emitter,
@@ -601,7 +604,7 @@
 "Hp" = (
 /obj/structure/lattice,
 /turf/simulated/open/lythios43c,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/mineshaft)
 "Hs" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -621,10 +624,10 @@
 "Jd" = (
 /obj/random/outcrop,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/mineshaft)
 "JS" = (
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/mineshaft)
 "Kd" = (
 /obj/structure/bed/chair/wood{
 	dir = 4
@@ -656,7 +659,7 @@
 "LQ" = (
 /obj/structure/ladder/updown,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/mineshaft)
 "Mc" = (
 /obj/machinery/power/apc/alarms_hidden{
 	cell_type = null;
@@ -801,7 +804,7 @@
 /area/rift/facility/interior/undergound2)
 "VZ" = (
 /turf/simulated/wall/wood,
-/area/rift/surfacebase/outside/west_deep)
+/area/rift/exterior/mineshaft)
 "Wb" = (
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor,
@@ -2737,11 +2740,11 @@ so
 so
 WW
 WW
-lq
-lq
-lq
-lq
-lq
+oz
+oz
+oz
+oz
+oz
 Jd
 WW
 WW
@@ -2930,14 +2933,14 @@ so
 so
 so
 WW
-lq
+oz
 JS
 JS
 JS
 JS
 JS
 JS
-lq
+oz
 WW
 so
 so
@@ -3132,7 +3135,7 @@ JS
 JS
 JS
 JS
-lq
+oz
 so
 so
 so
@@ -3315,9 +3318,9 @@ so
 so
 so
 VZ
-lq
+oz
 VZ
-lq
+oz
 JS
 JS
 VZ
@@ -3326,7 +3329,7 @@ Hp
 VZ
 JS
 JS
-lq
+oz
 so
 so
 so
@@ -3714,7 +3717,7 @@ wx
 Hp
 JS
 JS
-lq
+oz
 so
 so
 so
@@ -3897,9 +3900,9 @@ so
 so
 so
 VZ
-lq
+oz
 VZ
-lq
+oz
 JS
 JS
 VZ
@@ -3908,7 +3911,7 @@ Hp
 VZ
 JS
 JS
-lq
+oz
 so
 so
 so
@@ -4093,7 +4096,7 @@ so
 so
 so
 so
-lq
+oz
 JS
 JS
 JS
@@ -4102,7 +4105,7 @@ JS
 JS
 JS
 JS
-lq
+oz
 so
 so
 so
@@ -4288,14 +4291,14 @@ so
 so
 so
 WW
-lq
+oz
 JS
 JS
 JS
 JS
 JS
 JS
-lq
+oz
 WW
 so
 so
@@ -4483,12 +4486,12 @@ so
 so
 WW
 WW
-lq
+oz
 Jd
-lq
-lq
-lq
-lq
+oz
+oz
+oz
+oz
 WW
 WW
 so

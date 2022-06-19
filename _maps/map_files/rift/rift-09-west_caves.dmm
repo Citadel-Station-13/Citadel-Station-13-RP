@@ -7,7 +7,7 @@
 /area/rift/surfacebase/outside/west_caves)
 "cd" = (
 /turf/simulated/wall/wood,
-/area/rift/surfacebase/outside/west_caves)
+/area/rift/exterior/mineshaft)
 "dc" = (
 /obj/effect/map_effect/radiation_emitter/strong,
 /turf/simulated/open/lythios43c,
@@ -33,7 +33,7 @@
 "dQ" = (
 /obj/random/outcrop,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_caves)
+/area/rift/exterior/mineshaft)
 "dS" = (
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/medical)
@@ -374,7 +374,7 @@
 /area/rift/facility/interior/workroom)
 "yv" = (
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/rift/surfacebase/outside/west_caves)
+/area/rift/exterior/mineshaft)
 "yE" = (
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 4
@@ -465,6 +465,9 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/workroom)
+"Ec" = (
+/turf/simulated/open/lythios43c,
+/area/rift/exterior/mineshaft)
 "Eh" = (
 /turf/simulated/open,
 /area/rift/facility/interior/elevator)
@@ -490,6 +493,9 @@
 /obj/random/tech_supply/component/nofail,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/workroom)
+"FY" = (
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/rift/exterior/mineshaft)
 "GI" = (
 /obj/effect/map_effect/portal/line/side_b{
 	dir = 8
@@ -504,7 +510,7 @@
 "GX" = (
 /obj/structure/lattice,
 /turf/simulated/open/lythios43c,
-/area/rift/surfacebase/outside/west_caves)
+/area/rift/exterior/mineshaft)
 "Hh" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/rift/facility/interior/elevator)
@@ -517,7 +523,7 @@
 "Io" = (
 /obj/structure/ladder/updown,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/rift/surfacebase/outside/west_caves)
+/area/rift/exterior/mineshaft)
 "JD" = (
 /turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
@@ -2603,11 +2609,11 @@ JD
 JD
 Sn
 Sn
-be
-be
-be
-be
-be
+FY
+FY
+FY
+FY
+FY
 dQ
 Sn
 Sn
@@ -2796,14 +2802,14 @@ JD
 JD
 JD
 Sn
-be
+FY
 yv
 yv
 yv
 yv
 yv
 yv
-be
+FY
 Sn
 JD
 JD
@@ -3181,9 +3187,9 @@ JD
 JD
 JD
 cd
-be
+FY
 cd
-be
+FY
 yv
 yv
 cd
@@ -3192,7 +3198,7 @@ GX
 cd
 yv
 yv
-be
+FY
 JD
 JD
 JD
@@ -3381,12 +3387,12 @@ yv
 yv
 yv
 GX
-Ra
-Ra
+Ec
+Ec
 GX
 yv
 yv
-be
+FY
 JD
 JD
 JD
@@ -3575,12 +3581,12 @@ yv
 yv
 yv
 GX
-Ra
-Ra
+Ec
+Ec
 GX
 yv
 yv
-be
+FY
 JD
 JD
 JD
@@ -3763,9 +3769,9 @@ JD
 JD
 JD
 cd
-be
+FY
 cd
-be
+FY
 yv
 yv
 cd
@@ -3774,7 +3780,7 @@ GX
 cd
 yv
 yv
-be
+FY
 JD
 JD
 JD
@@ -3959,7 +3965,7 @@ JD
 JD
 JD
 JD
-be
+FY
 yv
 yv
 yv
@@ -3968,7 +3974,7 @@ yv
 yv
 yv
 yv
-be
+FY
 JD
 JD
 JD
@@ -4161,7 +4167,7 @@ yv
 yv
 yv
 yv
-be
+FY
 Sn
 JD
 JD
@@ -4349,11 +4355,11 @@ JD
 JD
 Sn
 Sn
-be
-be
-be
-be
-be
+FY
+FY
+FY
+FY
+FY
 dQ
 Sn
 Sn

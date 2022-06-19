@@ -1874,11 +1874,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/anomaly_lab/testing)
-"iZ" = (
-/obj/effect/floor_decal/rust/mono_rusted3,
-/obj/structure/closet/lasertag/blue,
-/turf/simulated/floor/tiled/monotile,
-/area/rift/exterior/nuketown/interior)
 "jb" = (
 /obj/machinery/camera/network/research_outpost{
 	dir = 8
@@ -1976,6 +1971,11 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/tether/outpost/solars_outside)
+"jx" = (
+/obj/effect/floor_decal/rust/mono_rusted3,
+/obj/structure/closet/lasertag/red,
+/turf/simulated/floor/tiled/monotile,
+/area/rift/exterior/nuketown/interior)
 "jy" = (
 /obj/structure/closet/crate/radiation,
 /obj/item/broken_device/random,
@@ -2965,9 +2965,6 @@
 /obj/machinery/artifact_harvester,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
-"oA" = (
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/rift/exterior/mineshaft)
 "oB" = (
 /obj/effect/overlay/snow/floor/grav_edges{
 	dir = 10
@@ -3339,10 +3336,6 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
-"qa" = (
-/obj/structure/lattice,
-/turf/simulated/open/lythios43c,
-/area/rift/exterior/mineshaft)
 "qf" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
@@ -3751,6 +3744,11 @@
 "sl" = (
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/facility/interior/surface)
+"so" = (
+/obj/effect/floor_decal/rust/mono_rusted3,
+/obj/structure/closet/lasertag/blue,
+/turf/simulated/floor/tiled/monotile,
+/area/rift/exterior/nuketown/interior)
 "sr" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating/lythios43c,
@@ -3766,6 +3764,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
+"su" = (
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/rift/exterior/mineshaft)
 "sv" = (
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
@@ -4040,9 +4041,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
-"tx" = (
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/rift/exterior/mineshaft)
 "tB" = (
 /obj/machinery/alarm{
 	pixel_y = 22
@@ -4427,6 +4425,9 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/rnd/outpost/heating)
+"uT" = (
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/rift/exterior/mineshaft)
 "uU" = (
 /obj/machinery/power/apc/alarms_hidden{
 	dir = 1;
@@ -5884,6 +5885,9 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
+"Cr" = (
+/turf/simulated/open/lythios43c,
+/area/rift/exterior/mineshaft)
 "Cs" = (
 /obj/structure/closet/secure_closet/freezer/fridge{
 	starts_with = null
@@ -7021,6 +7025,10 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/exterior/shuttle)
+"Is" = (
+/obj/structure/lattice,
+/turf/simulated/open/lythios43c,
+/area/rift/exterior/mineshaft)
 "It" = (
 /obj/structure/cable/yellow{
 	d1 = 2;
@@ -7554,11 +7562,6 @@
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
-"KE" = (
-/obj/effect/floor_decal/rust/mono_rusted3,
-/obj/structure/closet/lasertag/red,
-/turf/simulated/floor/tiled/monotile,
-/area/rift/exterior/nuketown/interior)
 "KF" = (
 /obj/machinery/door/airlock/maintenance/rnd{
 	name = "Anomaly Storage"
@@ -7788,7 +7791,8 @@
 /obj/structure/table/standard,
 /obj/structure/salvageable/personal,
 /obj/item/paper{
-	name = "screen taped note"
+	name = "screen taped note";
+	info = "This for whoever is replacing me, if anyone comes. We are not alone here, there is someone or something out there with us. My superiors don't believe my they say no one else is here but us. I see them in the snow, watching observing. Keep an eye out for them, don't let them take you by surprise."
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/exterior/checkpoint/south)
@@ -9039,9 +9043,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
-"RH" = (
-/turf/simulated/open/lythios43c,
-/area/rift/exterior/mineshaft)
 "RI" = (
 /obj/machinery/light/small,
 /obj/machinery/space_heater,
@@ -11451,7 +11452,7 @@ PP
 PP
 GV
 Cd
-tx
+su
 GV
 PP
 PP
@@ -11642,12 +11643,12 @@ PP
 PP
 PP
 PP
-tx
-tx
-tx
-tx
-tx
-tx
+su
+su
+su
+su
+su
+su
 PP
 PP
 PP
@@ -11837,11 +11838,11 @@ PP
 PP
 PP
 Cd
-tx
-tx
-tx
-tx
-tx
+su
+su
+su
+su
+su
 PP
 PP
 PP
@@ -12031,10 +12032,10 @@ PP
 PP
 PP
 PP
-tx
+su
 AO
-tx
-tx
+su
+su
 Cd
 PP
 PP
@@ -12225,10 +12226,10 @@ PP
 PP
 PP
 PP
-tx
+su
 AO
 aM
-tx
+su
 PP
 PP
 PP
@@ -12419,10 +12420,10 @@ PP
 PP
 PP
 PP
-tx
+su
 AO
 aM
-tx
+su
 PP
 PP
 PP
@@ -12603,11 +12604,11 @@ PP
 PP
 PP
 PP
-tx
+su
 Cd
-tx
-tx
-tx
+su
+su
+su
 Cd
 PP
 PP
@@ -12616,7 +12617,7 @@ PP
 Cd
 AO
 aM
-tx
+su
 PP
 PP
 PP
@@ -12796,14 +12797,14 @@ PP
 PP
 PP
 PP
-tx
+su
 hX
 KG
 KG
 KG
 KG
 Tv
-tx
+su
 PP
 PP
 PP
@@ -12822,8 +12823,8 @@ PP
 PP
 PP
 Cd
-tx
-tx
+su
+su
 Cd
 PP
 PP
@@ -12989,19 +12990,19 @@ PP
 PP
 PP
 PP
-tx
+su
 hX
-oA
-oA
-oA
-oA
-oA
-oA
+uT
+uT
+uT
+uT
+uT
+uT
 Tv
 Hc
 PP
 PP
-tx
+su
 AO
 aM
 ZM
@@ -13015,10 +13016,10 @@ PP
 PP
 PP
 Cd
-tx
-tx
-tx
-tx
+su
+su
+su
+su
 Rq
 PP
 PP
@@ -13181,39 +13182,39 @@ PP
 PP
 PP
 jz
-tx
+su
 jz
-tx
+su
 Ua
-oA
+uT
 jz
-qa
-qa
+Is
+Is
 jz
-oA
+uT
 dH
-tx
+su
 jz
-tx
+su
 Cd
 AO
 aM
-tx
-tx
+su
+su
 jz
 Cd
-tx
-tx
-tx
-tx
-tx
+su
+su
+su
+su
+su
 jz
-tx
-tx
-tx
-tx
-tx
-tx
+su
+su
+su
+su
+su
+su
 PP
 PP
 PP
@@ -13378,20 +13379,20 @@ SE
 KG
 KG
 KG
-oA
-oA
-qa
-RH
-RH
-qa
-oA
-oA
+uT
+uT
+Is
+Cr
+Cr
+Is
+uT
+uT
 KG
 Rc
 KG
 KG
-oA
-oA
+uT
+uT
 KG
 KG
 KG
@@ -13403,10 +13404,10 @@ KG
 KG
 KG
 KG
-tx
-tx
-tx
-tx
+su
+su
+su
+su
 Cd
 PP
 PP
@@ -13572,20 +13573,20 @@ oP
 Qh
 Qh
 Qh
-oA
-oA
-qa
-RH
-RH
-qa
-oA
-oA
+uT
+uT
+Is
+Cr
+Cr
+Is
+uT
+uT
 Qh
 IH
 Qh
 Qh
-oA
-oA
+uT
+uT
 Qh
 Qh
 Qh
@@ -13598,10 +13599,10 @@ Qh
 Qh
 Qh
 Qh
-tx
-tx
-tx
-tx
+su
+su
+su
+su
 PP
 PP
 PP
@@ -13763,38 +13764,38 @@ PP
 PP
 PP
 jz
-tx
+su
 jz
-tx
+su
 AO
-oA
+uT
 jz
-qa
-qa
+Is
+Is
 jz
-oA
+uT
 aM
-tx
+su
 jz
-tx
-tx
+su
+su
 AO
 aM
 Cd
-tx
+su
 jz
-tx
-tx
-tx
-tx
+su
+su
+su
+su
 Cd
-tx
+su
 jz
-tx
-tx
-tx
-tx
-tx
+su
+su
+su
+su
+su
 PP
 PP
 PP
@@ -13961,20 +13962,20 @@ PP
 PP
 Cd
 Ps
-oA
-oA
-oA
-oA
-oA
-oA
+uT
+uT
+uT
+uT
+uT
+uT
 sA
-tx
+su
 PP
 PP
-tx
+su
 AO
 aM
-tx
+su
 PP
 PP
 PP
@@ -13986,7 +13987,7 @@ PP
 PP
 PP
 PP
-tx
+su
 Cd
 PP
 PP
@@ -14154,14 +14155,14 @@ PP
 PP
 PP
 PP
-tx
+su
 Ps
 Qh
 Qh
 Qh
 Qh
 sA
-tx
+su
 PP
 PP
 PP
@@ -14349,17 +14350,17 @@ PP
 PP
 PP
 PP
-tx
-tx
-tx
-tx
-tx
+su
+su
+su
+su
+su
 Cd
 PP
 PP
 PP
 PP
-tx
+su
 AO
 aM
 Cd
@@ -14553,10 +14554,10 @@ PP
 PP
 PP
 PP
-tx
+su
 AO
 aM
-tx
+su
 PP
 PP
 PP
@@ -14747,10 +14748,10 @@ PP
 PP
 PP
 PP
-tx
+su
 AO
 aM
-tx
+su
 PP
 PP
 PP
@@ -14941,10 +14942,10 @@ PP
 PP
 PP
 PP
-tx
+su
 AO
 aM
-tx
+su
 PP
 PP
 PP
@@ -15135,10 +15136,10 @@ PP
 PP
 PP
 PP
-tx
+su
 AO
 aM
-tx
+su
 PP
 PP
 PP
@@ -15332,7 +15333,7 @@ PP
 Cd
 AO
 aM
-tx
+su
 PP
 PP
 PP
@@ -15717,7 +15718,7 @@ PP
 PP
 PP
 PP
-tx
+su
 AO
 aM
 Cd
@@ -15911,10 +15912,10 @@ PP
 PP
 PP
 PP
-tx
+su
 AO
 aM
-tx
+su
 PP
 PP
 PP
@@ -16105,7 +16106,7 @@ PP
 PP
 PP
 PP
-tx
+su
 AO
 aM
 ZM
@@ -16302,7 +16303,7 @@ PP
 Cd
 AO
 aM
-tx
+su
 PP
 PP
 PP
@@ -16496,7 +16497,7 @@ PP
 gv
 AO
 aM
-tx
+su
 PP
 PP
 PP
@@ -16690,7 +16691,7 @@ PP
 Hc
 AO
 aM
-tx
+su
 PP
 PP
 PP
@@ -24010,7 +24011,7 @@ Cs
 Za
 OR
 OH
-iZ
+so
 Oq
 Oq
 Oq
@@ -24204,7 +24205,7 @@ OH
 OH
 OH
 OH
-KE
+jx
 Oq
 Oq
 OH
