@@ -1104,9 +1104,6 @@
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "bJ" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	d1 = 1;
@@ -1116,6 +1113,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfacethree)
 "bK" = (
@@ -1502,6 +1500,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/universal,
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
 "ct" = (
@@ -1699,6 +1698,11 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/component/binary/passive_gate/on{
+	dir = 1;
+	pressure_resistance = 750;
+	target_pressure = 750
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
 "cM" = (
@@ -1832,12 +1836,10 @@
 /turf/simulated/wall,
 /area/security/checkpoint2)
 "da" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 4
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfacethree)
 "db" = (
@@ -3074,6 +3076,7 @@
 /turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
 "fa" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "fb" = (
@@ -5850,6 +5853,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
+"jS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/surfacethree)
 "jT" = (
 /obj/machinery/light,
 /obj/landmark/spawnpoint/job/pilot,
@@ -7572,6 +7581,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/cargo)
+"mR" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/surfacethree)
 "mS" = (
 /obj/machinery/telecomms/server/presets/supply,
 /turf/simulated/floor/tiled/dark{
@@ -7635,6 +7650,13 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside3)
+"mY" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/surfacethree)
 "mZ" = (
 /obj/machinery/computer/station_alert/all,
 /obj/effect/floor_decal/corner/lightorange{
@@ -15911,6 +15933,7 @@
 "Cv" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
 "Cw" = (
@@ -20824,6 +20847,11 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/pathfinder_office)
+"LS" = (
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/plating,
+/area/maintenance/bar)
 "LT" = (
 /obj/machinery/suit_storage_unit/standard_unit,
 /obj/effect/floor_decal/borderfloorblack/full,
@@ -23323,6 +23351,18 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
+"Qx" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/surfacethree)
 "Qy" = (
 /obj/machinery/door/airlock/voidcraft/vertical{
 	name = "battery hatch"
@@ -26035,9 +26075,6 @@
 /obj/effect/overlay/snow/floor/pointy,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfaceeva/aa/cliff_north)
-"Vx" = (
-/turf/simulated/floor/airless/ceiling,
-/area/rift/surfacebase/outside/outside3)
 "Vy" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/secure/briefcase,
@@ -26314,6 +26351,11 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/exploration/courser_dock)
+"VY" = (
+/obj/machinery/hologram/holopad,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/surfacethree)
 "VZ" = (
 /obj/machinery/conveyor{
 	dir = 1;
@@ -26804,15 +26846,15 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "WT" = (
-/obj/structure/catwalk,
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
-	dir = 5
-	},
 /obj/structure/cable/green{
 	d1 = 2;
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
+	dir = 8
+	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
 "WU" = (
@@ -35487,22 +35529,22 @@ Oi
 Oi
 Oi
 Oi
-Vx
-Vx
-Vx
 Oi
 Oi
 Oi
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
 Oi
 Oi
 Oi
@@ -35681,24 +35723,24 @@ Oi
 Oi
 Oi
 Oi
-Vx
-Vx
-Vx
 Oi
 Oi
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
 Oi
 Oi
 Oi
@@ -35875,25 +35917,25 @@ Oi
 Oi
 Oi
 Oi
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
 Oi
 Oi
 Oi
@@ -36068,26 +36110,26 @@ Oi
 Oi
 Oi
 Oi
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
 Oi
 Oi
 Oi
@@ -36262,26 +36304,26 @@ Oi
 Oi
 Oi
 Oi
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
 Oi
 Oi
 Oi
@@ -36456,26 +36498,26 @@ Oi
 Oi
 Oi
 Oi
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
 Oi
 Oi
 Oi
@@ -36650,26 +36692,26 @@ Oi
 Oi
 Oi
 Oi
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
 Oi
 Oi
 Oi
@@ -36844,26 +36886,26 @@ Oi
 Oi
 Oi
 Oi
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
 Oi
 Oi
 Oi
@@ -37038,26 +37080,26 @@ Oi
 Oi
 Oi
 Oi
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
 Oi
 Oi
 Oi
@@ -37233,25 +37275,25 @@ Oi
 Oi
 Oi
 Oi
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
 Oi
 Oi
 Oi
@@ -37432,19 +37474,19 @@ Oi
 Oi
 Oi
 Oi
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
 Oi
 Oi
 Oi
@@ -37627,16 +37669,16 @@ Oi
 Oi
 Oi
 Oi
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
-Vx
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
 Oi
 Oi
 Oi
@@ -41680,14 +41722,14 @@ Rz
 WT
 cL
 cs
-Rc
-Rc
+LS
+LS
 Cv
 fa
 fa
 fa
-Wg
-aQ
+mY
+mR
 FX
 Fk
 Vc
@@ -41881,7 +41923,7 @@ Bf
 rH
 vC
 da
-fM
+VY
 Ig
 Nl
 MT
@@ -42074,8 +42116,8 @@ NS
 NS
 NS
 tH
-Ik
-aQ
+Wg
+jS
 Wg
 Rd
 Zi
@@ -42269,7 +42311,7 @@ wQ
 Tz
 tJ
 bJ
-AW
+Qx
 AQ
 Bu
 Xu

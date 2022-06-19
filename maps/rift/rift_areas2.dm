@@ -657,8 +657,8 @@
 /area/rift/station/public_garden/stairwell
 	name = "\improper Public Garden Stairwell"
 
-/area/rift/station/public_garden/lower_stairwell
-	name = "\improper Public Garden Lower Stairwell"
+/area/rift/station/public_garden/gantry
+	name = "\improper Public Garden Gantry"
 
 
 //////////////////////////////////

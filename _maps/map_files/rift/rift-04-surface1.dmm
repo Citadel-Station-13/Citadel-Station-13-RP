@@ -143,8 +143,8 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 9
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
@@ -1060,6 +1060,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenoarch_storage)
+"baN" = (
+/obj/machinery/light/fairy{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/public_garden)
 "bbs" = (
 /obj/machinery/door/airlock/glass{
 	name = "Game Room"
@@ -1722,6 +1728,9 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/machinery/light/fairy{
+	dir = 4
+	},
 /turf/simulated/floor/water/indoors,
 /area/rift/station/public_garden)
 "bBS" = (
@@ -2271,6 +2280,11 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
+"cap" = (
+/obj/structure/flora/ausbushes/ywflowers,
+/obj/machinery/light/fairy,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/public_garden)
 "cbA" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/structure/window/reinforced{
@@ -5156,6 +5170,9 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
 "ebp" = (
@@ -5909,6 +5926,10 @@
 	dir = 8
 	},
 /obj/structure/railing,
+/obj/machinery/light/fairy,
+/obj/machinery/light/fairy{
+	dir = 8
+	},
 /turf/simulated/floor/water/deep/indoors,
 /area/rift/station/public_garden)
 "eKm" = (
@@ -6163,6 +6184,9 @@
 	},
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
@@ -7365,6 +7389,9 @@
 /obj/structure/railing{
 	dir = 8
 	},
+/obj/machinery/light/fairy{
+	dir = 8
+	},
 /turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/rift/station/public_garden)
 "ggJ" = (
@@ -8170,6 +8197,9 @@
 "gQQ" = (
 /obj/structure/flora/ausbushes/reedbush,
 /obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/light/fairy{
 	dir = 8
 	},
 /turf/simulated/floor/water/deep/indoors,
@@ -9364,6 +9394,9 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/surfaceeva)
 "hEu" = (
@@ -9604,6 +9637,9 @@
 /area/quartermaster/qm)
 "hMa" = (
 /obj/structure/railing{
+	dir = 4
+	},
+/obj/machinery/light/fairy{
 	dir = 4
 	},
 /turf/simulated/floor/water/deep/indoors,
@@ -9885,6 +9921,9 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/machinery/light/fairy{
+	dir = 4
+	},
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rift/station/public_garden)
 "hZV" = (
@@ -10115,6 +10154,9 @@
 /area/tether/surfacebase/funny/clownoffice)
 "ifH" = (
 /obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/light/fairy{
 	dir = 8
 	},
 /turf/simulated/floor/water/deep/indoors,
@@ -11021,6 +11063,16 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
+"iJU" = (
+/obj/machinery/portable_atmospherics/hydroponics/soil,
+/obj/machinery/light/fairy{
+	dir = 8
+	},
+/obj/structure/window/wooden{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/public_garden)
 "iKN" = (
 /obj/structure/railing,
 /turf/simulated/floor/tiled/steel,
@@ -11480,6 +11532,7 @@
 /area/rift/surfaceeva/aa/surface_south)
 "jfy" = (
 /obj/structure/railing,
+/obj/machinery/light/fairy,
 /turf/simulated/floor/water/deep/indoors,
 /area/rift/station/public_garden)
 "jfR" = (
@@ -12404,6 +12457,9 @@
 	dir = 8
 	},
 /obj/structure/flora/ausbushes/stalkybush,
+/obj/machinery/light/fairy{
+	dir = 8
+	},
 /turf/simulated/floor/water/indoors,
 /area/rift/station/public_garden)
 "jSG" = (
@@ -13137,9 +13193,24 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/cargo_hallway)
 "ktX" = (
-/obj/structure/lightpost,
-/turf/simulated/floor/outdoors/beach/sand/desert/indoors,
-/area/rift/station/public_garden)
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/obj/machinery/atmospherics/component/binary/passive_gate/on{
+	dir = 8;
+	pressure_resistance = 750;
+	target_pressure = 750
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfaceone)
 "kuE" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -14029,6 +14100,9 @@
 	pixel_x = -28;
 	pixel_y = 26
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
 "kYr" = (
@@ -14797,6 +14871,9 @@
 	dir = 1
 	},
 /obj/structure/flora/ausbushes/reedbush,
+/obj/machinery/light/fairy{
+	dir = 1
+	},
 /turf/simulated/floor/water/deep/indoors,
 /area/rift/station/public_garden)
 "lIR" = (
@@ -16037,6 +16114,9 @@
 /obj/structure/railing{
 	dir = 8
 	},
+/obj/machinery/light/fairy{
+	dir = 8
+	},
 /turf/simulated/floor/water/indoors,
 /area/rift/station/public_garden)
 "mza" = (
@@ -16759,6 +16839,10 @@
 	dir = 4
 	},
 /obj/structure/railing,
+/obj/machinery/light/fairy{
+	dir = 4
+	},
+/obj/machinery/light/fairy,
 /turf/simulated/floor/water/indoors,
 /area/rift/station/public_garden)
 "ncE" = (
@@ -17223,10 +17307,6 @@
 "nqL" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/engineering/upper)
-"nrG" = (
-/obj/machinery/crystal,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/rift/surfacebase/outside/outside1)
 "nrR" = (
 /obj/effect/overlay/snow/floor/edges_new{
 	dir = 1
@@ -17561,6 +17641,13 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/rnd/chemistry_lab)
+"nAK" = (
+/obj/structure/flora/ausbushes/grassybush,
+/obj/machinery/light/fairy{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/public_garden)
 "nBa" = (
 /obj/effect/overlay/snow/floor/edges{
 	dir = 4
@@ -17865,6 +17952,9 @@
 	dir = 1
 	},
 /obj/structure/table/bench/wooden,
+/obj/machinery/light/fairy{
+	dir = 1
+	},
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rift/station/public_garden)
 "nLt" = (
@@ -17988,6 +18078,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
+"nNl" = (
+/obj/machinery/light/fairy{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/public_garden)
 "nNw" = (
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
 	on = 1
@@ -18801,9 +18897,22 @@
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/exam_room)
 "osC" = (
-/obj/structure/lightpost,
-/turf/simulated/floor/wood,
-/area/rift/station/public_garden)
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/universal{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfaceone)
 "oti" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
@@ -19247,6 +19356,12 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/machinery/light/fairy{
+	dir = 4
+	},
+/obj/machinery/light/fairy{
+	dir = 1
+	},
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rift/station/public_garden)
 "oKV" = (
@@ -19416,6 +19531,12 @@
 	},
 /obj/structure/railing{
 	dir = 8
+	},
+/obj/machinery/light/fairy{
+	dir = 8
+	},
+/obj/machinery/light/fairy{
+	dir = 1
 	},
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rift/station/public_garden)
@@ -20188,6 +20309,9 @@
 	dir = 4
 	},
 /obj/structure/flora/ausbushes/reedbush,
+/obj/machinery/light/fairy{
+	dir = 4
+	},
 /turf/simulated/floor/water/deep/indoors,
 /area/rift/station/public_garden)
 "ppO" = (
@@ -22005,6 +22129,9 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/surfaceeva)
 "qPy" = (
@@ -22944,6 +23071,12 @@
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/machinery/light/fairy{
+	dir = 1
+	},
+/obj/machinery/light/fairy{
+	dir = 8
+	},
 /turf/simulated/floor/water/deep/indoors,
 /area/rift/station/public_garden)
 "rDi" = (
@@ -23710,6 +23843,9 @@
 /area/security/detectives_office)
 "sgf" = (
 /obj/structure/flora/ausbushes,
+/obj/structure/window/wooden{
+	dir = 8
+	},
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rift/station/public_garden)
 "sgv" = (
@@ -24689,6 +24825,9 @@
 	dir = 4
 	},
 /obj/structure/flora/ausbushes/fullgrass,
+/obj/machinery/light/fairy{
+	dir = 4
+	},
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rift/station/public_garden)
 "sSw" = (
@@ -25930,6 +26069,13 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/xenobiology)
+"tHO" = (
+/obj/structure/flora/ausbushes/fullgrass,
+/obj/machinery/light/fairy{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/public_garden)
 "tHR" = (
 /obj/structure/table/reinforced,
 /obj/item/pen/red{
@@ -27777,6 +27923,9 @@
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/machinery/light/fairy{
+	dir = 1
+	},
 /turf/simulated/floor/water/deep/indoors,
 /area/rift/station/public_garden)
 "uYH" = (
@@ -28290,6 +28439,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
+"vuC" = (
+/obj/structure/window/wooden{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/public_garden)
 "vuD" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 2
@@ -28690,9 +28845,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva)
 "vOW" = (
@@ -29805,6 +29958,10 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva)
+"wGa" = (
+/obj/machinery/light/fairy,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/public_garden)
 "wGi" = (
 /obj/structure/railing{
 	dir = 4
@@ -29902,6 +30059,9 @@
 /area/security/security_cell_hallway)
 "wKe" = (
 /obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/light/fairy{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/grass/heavy/interior,
@@ -30081,6 +30241,12 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/security/security_cell_hallway)
+"wUh" = (
+/obj/machinery/light/fairy{
+	dir = 1
+	},
+/turf/simulated/floor/water/deep/indoors,
+/area/rift/station/public_garden)
 "wUi" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -30639,9 +30805,28 @@
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "xtl" = (
-/obj/structure/lightpost,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
-/area/rift/station/public_garden)
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/obj/machinery/holoposter{
+	pixel_y = 32
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfaceone)
 "xtr" = (
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 1
@@ -30715,6 +30900,13 @@
 	},
 /turf/simulated/floor/carpet/gaycarpet,
 /area/tether/surfacebase/funny/clownoffice)
+"xxe" = (
+/obj/structure/flora/tree/jungle,
+/obj/machinery/light/fairy{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/public_garden)
 "xxj" = (
 /obj/machinery/door/window/brigdoor/northright{
 	name = "Containment Pen";
@@ -31159,6 +31351,9 @@
 	dir = 8
 	},
 /obj/structure/flora/ausbushes/fernybush,
+/obj/machinery/light/fairy{
+	dir = 8
+	},
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rift/station/public_garden)
 "xTe" = (
@@ -43953,7 +44148,7 @@ lnP
 aJT
 wsX
 bok
-oWi
+ktX
 ttD
 jER
 pHO
@@ -44147,7 +44342,7 @@ dDu
 rOA
 psX
 sQN
-oWi
+osC
 ttD
 cdP
 pHO
@@ -44729,7 +44924,7 @@ smW
 kaF
 kaF
 kaF
-xEG
+xtl
 otM
 otM
 otM
@@ -54644,7 +54839,7 @@ gzd
 hgE
 hgE
 hgE
-nrG
+kCW
 gzd
 hgE
 hgE
@@ -55412,10 +55607,10 @@ gzd
 jhN
 jhN
 sgf
-sLo
-sLo
-sLo
-rpP
+iJU
+iJU
+iJU
+vuC
 tlw
 xiB
 xiB
@@ -55615,7 +55810,7 @@ tlw
 xiB
 xiB
 tlw
-ktX
+iuZ
 jhN
 gzd
 gzd
@@ -55819,11 +56014,11 @@ xiB
 cfy
 tlw
 tlw
-ktX
+iuZ
 tlw
 iDx
 xiB
-xiB
+wUh
 jhN
 gzd
 gzd
@@ -56017,7 +56212,7 @@ iuZ
 iuZ
 tlw
 xiB
-xiB
+wUh
 jhN
 gzd
 hgE
@@ -56211,10 +56406,10 @@ iuZ
 iuZ
 tlw
 tlw
-xiB
+wUh
 jhN
 gzd
-nrG
+kCW
 hgE
 hgE
 hgE
@@ -56383,7 +56578,7 @@ oKV
 rpP
 rpP
 qDk
-xtl
+rpP
 rpP
 skM
 qKO
@@ -56405,7 +56600,7 @@ iuZ
 lMw
 iuZ
 tlw
-xiB
+wUh
 jhN
 gzd
 gzd
@@ -56588,7 +56783,7 @@ ifH
 gQQ
 ifH
 eIn
-osC
+qKO
 qKO
 rCN
 ifH
@@ -56599,7 +56794,7 @@ iuZ
 iuZ
 tlw
 tlw
-xiB
+wUh
 jhN
 gzd
 gzd
@@ -56789,11 +56984,11 @@ xiB
 iDx
 tlw
 tlw
-ktX
+iuZ
 tlw
 tlw
 xiB
-cfy
+wUh
 jhN
 gzd
 hgE
@@ -56986,7 +57181,7 @@ tlw
 tlw
 tlw
 xiB
-xiB
+cfy
 jhN
 jhN
 gzd
@@ -57352,12 +57547,12 @@ gzd
 gzd
 jhN
 jhN
-rpP
-rpP
-xtl
-rpP
-rpP
-rpP
+baN
+baN
+baN
+baN
+baN
+baN
 jhN
 jhN
 gzd
@@ -57745,7 +57940,7 @@ rpP
 rpP
 rpP
 rpP
-xtl
+rpP
 jhN
 gzd
 gzd
@@ -57934,12 +58129,12 @@ kCW
 gzd
 gzd
 jhN
-rpP
-rpP
-rpP
-rpP
-bfY
-rpP
+nNl
+nNl
+nNl
+nNl
+xxe
+nNl
 jhN
 jhN
 jhN
@@ -58321,7 +58516,7 @@ gzd
 gzd
 gzd
 jhN
-rpP
+wGa
 rpP
 eGP
 qDk
@@ -58515,7 +58710,7 @@ gzd
 gzd
 gzd
 jhN
-xtl
+wGa
 rpP
 rpP
 rpP
@@ -58529,11 +58724,11 @@ qKO
 qKO
 qKO
 qKO
-osC
+qKO
 uYb
 jhN
 gzd
-nrG
+kCW
 hgE
 hgE
 hgE
@@ -58709,7 +58904,7 @@ gzd
 gzd
 gzd
 jhN
-skM
+cap
 rpP
 rpP
 rpP
@@ -58903,13 +59098,13 @@ hgE
 gzd
 gzd
 jhN
+wGa
 rpP
 rpP
 rpP
 rpP
 rpP
 rpP
-xtl
 rpP
 rpP
 eGP
@@ -59292,12 +59487,12 @@ kCW
 gzd
 gzd
 jhN
-rpP
-qDk
-rpP
-rpP
-rpP
-wZk
+baN
+tHO
+baN
+baN
+baN
+nAK
 jhN
 jhN
 jhN
@@ -59876,7 +60071,7 @@ hgE
 gzd
 gzd
 gzd
-nrG
+kCW
 hgE
 gzd
 gzd
