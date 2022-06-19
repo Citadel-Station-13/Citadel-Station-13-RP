@@ -28,7 +28,7 @@ SUBSYSTEM_DEF(air)
 	var/current_step = null
 
 	// Updating zone tiles requires temporary storage location of self-zone-blocked turfs across resumes. Used only by process_tiles_to_update.
-	var/list/selfblock_deferred = null
+	var/list/selfblock_deferred = list()
 
 	// This is used to tell Travis WHERE the edges are.
 	var/list/startup_active_edge_log = list()
@@ -107,8 +107,8 @@ SUBSYSTEM_DEF(air)
 		//have valid zones when the self-zone-blocked turfs update.
 		//This ensures that doorways don't form their own single-turf zones, since doorways are self-zone-blocked and
 		//can merge with an adjacent zone, whereas zones that are formed on adjacent turfs cannot merge with the doorway.
-		if(src.selfblock_deferred != null) // Sanity check to make sure it was not remaining from last cycle somehow.
-			stack_trace("WARNING: SELFBLOCK_DEFFERED WAS NOT NULL. Something went wrong.")
+		if(src.selfblock_deferred.len) // Sanity check to make sure it was not remaining from last cycle somehow.
+			stack_trace("WARNING: SELFBLOCK_DEFFERED WAS NOT EMPTY. Something went wrong.")
 		src.selfblock_deferred = list()
 
 	//cache for sanic speed (lists are references anyways)
@@ -152,9 +152,8 @@ SUBSYSTEM_DEF(air)
 		if(MC_TICK_CHECK)
 			return
 
-	if(LAZYLEN(selfblock_deferred) != 0)
+	if(selfblock_deferred.len != 0)
 		stack_trace("WARNING: selfblock_defered was not empty after selfblock tiles process (length [LAZYLEN(selfblock_deferred)])")
-	selfblock_deferred = null
 
 /datum/controller/subsystem/air/proc/process_active_edges(resumed = 0)
 	if (!resumed)
