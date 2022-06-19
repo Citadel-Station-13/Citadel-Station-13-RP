@@ -40,13 +40,13 @@ var/silent_ert = 0
 	log_admin("[key_name(usr)] used Dispatch Response Team.")
 	trigger_armed_response_team(1)
 
-client/verb/JoinResponseTeam()
+/client/verb/JoinResponseTeam()
 
 	set name = "Join Response Team"
 	set category = "IC"
 
 	if(!MayRespawn(1))
-		to_chat(usr, "<span class='warning'>You cannot join the response team at this time.</span>")
+		to_chat(usr, SPAN_WARNING("You cannot join the response team at this time."))
 		return
 
 	if(istype(usr,/mob/observer/dead) || istype(usr,/mob/new_player))
@@ -54,7 +54,7 @@ client/verb/JoinResponseTeam()
 			to_chat(usr, "No emergency response team is currently being sent.")
 			return
 		if(jobban_isbanned(usr, "Syndicate") || jobban_isbanned(usr, "Emergency Response Team") || jobban_isbanned(usr, "Security Officer"))
-			to_chat(usr, "<span class='danger'>You are jobbanned from the emergency reponse team!</span>")
+			to_chat(usr, SPAN_DANGER("You are jobbanned from the emergency reponse team!"))
 			return
 		if(ert.current_antagonists.len >= ert.hard_cap)
 			to_chat(usr, "The emergency response team is already full!")

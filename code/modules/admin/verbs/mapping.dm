@@ -28,16 +28,17 @@ GLOBAL_LIST_BOILERPLATE(all_debugging_effects, /obj/effect/debugging)
 	icon = 'icons/480x480.dmi'
 	icon_state = "25percent"
 
-	New()
-		src.pixel_x = -224
-		src.pixel_y = -224
+/obj/effect/debugging/camera_range/Initialize(mapload, ...)
+	. = ..()
+	pixel_x = -224
+	pixel_y = -224
 
 /obj/effect/debugging/marker
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "yellow"
 
 /obj/effect/debugging/marker/Move()
-	return 0
+	return FALSE
 
 /client/proc/do_not_use_these()
 	set category = "Mapping"
@@ -48,10 +49,9 @@ GLOBAL_LIST_BOILERPLATE(all_debugging_effects, /obj/effect/debugging)
 	set name = "Camera Range Display"
 
 	if(camera_range_display_status)
-		camera_range_display_status = 0
+		camera_range_display_status = FALSE
 	else
-		camera_range_display_status = 1
-
+		camera_range_display_status = TRUE
 
 
 	for(var/obj/effect/debugging/camera_range/C in GLOB.all_debugging_effects)
@@ -134,47 +134,47 @@ GLOBAL_LIST_EMPTY(dirty_vars)
 				var/obj/effect/debugging/marker/F = new/obj/effect/debugging/marker(T)
 				if (!(F in view(7,I.loc)))
 					qdel(F)
-	feedback_add_details("admin_verb","mIRD") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	feedback_add_details("admin_verb", "mIRD") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 var/list/debug_verbs = list (
-        /client/proc/do_not_use_these
-        ,/client/proc/camera_view
-        ,/client/proc/sec_camera_report
-        ,/client/proc/intercom_view
-        ,/client/proc/Cell
-        ,/client/proc/atmosscan
-        ,/client/proc/powerdebug
-        ,/client/proc/count_objects_on_z_level
-        ,/client/proc/count_objects_all
-        ,/client/proc/cmd_assume_direct_control
-        ,/client/proc/jump_to_dead_group
-        ,/client/proc/startSinglo
-        ,/client/proc/ticklag
-        ,/client/proc/cmd_admin_grantfullaccess
-        ,/client/proc/kaboom
-        ,/client/proc/cmd_admin_areatest
-        ,/client/proc/cmd_admin_rejuvenate
-        ,/datum/admins/proc/show_traitor_panel
-        ,/client/proc/print_jobban_old
-        ,/client/proc/print_jobban_old_filter
-        ,/client/proc/forceEvent
-        ,/client/proc/break_all_air_groups
-        ,/client/proc/regroup_all_air_groups
-        ,/client/proc/kill_pipe_processing
-        ,/client/proc/kill_air_processing
-        ,/client/proc/disable_communication
-        ,/client/proc/disable_movement
-        ,/client/proc/Zone_Info
-        ,/client/proc/Test_ZAS_Connection
-        ,/client/proc/ZoneTick
-        ,/client/proc/rebootAirMaster
-        ,/client/proc/hide_debug_verbs
-        ,/client/proc/testZAScolors
-        ,/client/proc/testZAScolors_remove
-        ,/datum/admins/proc/setup_supermatter
-		,/client/proc/atmos_toggle_debug
-		,/client/proc/spawn_tanktransferbomb
-		,/client/proc/take_picture
+	/client/proc/do_not_use_these,
+	/client/proc/camera_view,
+	/client/proc/sec_camera_report,
+	/client/proc/intercom_view,
+	/client/proc/Cell,
+	/client/proc/atmosscan,
+	/client/proc/powerdebug,
+	/client/proc/count_objects_on_z_level,
+	/client/proc/count_objects_all,
+	/client/proc/cmd_assume_direct_control,
+	/client/proc/jump_to_dead_group,
+	/client/proc/startSinglo,
+	/client/proc/ticklag,
+	/client/proc/cmd_admin_grantfullaccess,
+	/client/proc/kaboom,
+	/client/proc/cmd_admin_areatest,
+	/client/proc/cmd_admin_rejuvenate,
+	/datum/admins/proc/show_traitor_panel,
+	/client/proc/print_jobban_old,
+	/client/proc/print_jobban_old_filter,
+	/client/proc/forceEvent,
+	/client/proc/break_all_air_groups,
+	/client/proc/regroup_all_air_groups,
+	/client/proc/kill_pipe_processing,
+	/client/proc/kill_air_processing,
+	/client/proc/disable_communication,
+	/client/proc/disable_movement,
+	/client/proc/Zone_Info,
+	/client/proc/Test_ZAS_Connection,
+	/client/proc/ZoneTick,
+	/client/proc/rebootAirMaster,
+	/client/proc/hide_debug_verbs,
+	/client/proc/testZAScolors,
+	/client/proc/testZAScolors_remove,
+	/datum/admins/proc/setup_supermatter,
+	/client/proc/atmos_toggle_debug,
+	/client/proc/spawn_tanktransferbomb,
+	/client/proc/take_picture,
 	)
 
 

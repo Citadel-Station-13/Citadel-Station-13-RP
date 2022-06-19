@@ -9,15 +9,18 @@
 	item_state = "broken_beer" //Generic held-item sprite until unique ones are made.
 	force = 6
 	var/smash_duration = 5 //Directly relates to the 'weaken' duration. Lowered by armor (i.e. helmets)
-	var/isGlass = 1 //Whether the 'bottle' is made of glass or not so that milk cartons dont shatter when someone gets hit by it
+	var/isGlass = TRUE //Whether the 'bottle' is made of glass or not so that milk cartons dont shatter when someone gets hit by it
 
 	var/obj/item/reagent_containers/glass/rag/rag = null
 	var/rag_underlay = "rag"
-	on_reagent_change() return // To suppress price updating. Bottles have their own price tags.
+
+/obj/item/reagent_containers/food/drinks/bottle/on_reagent_change()
+	return // To suppress price updating. Bottles have their own price tags.
 
 /obj/item/reagent_containers/food/drinks/bottle/Initialize(mapload)
 	. = ..()
-	if(isGlass) unacidable = 1
+	if(isGlass)
+		unacidable = TRUE
 
 /obj/item/reagent_containers/food/drinks/bottle/Destroy()
 	if(rag)
@@ -25,8 +28,8 @@
 	rag = null
 	return ..()
 
-//when thrown on impact, bottles smash and spill their contents
-/obj/item/reagent_containers/food/drinks/bottle/throw_impact(atom/hit_atom, var/speed)
+/// When thrown on impact, bottles smash and spill their contents
+/obj/item/reagent_containers/food/drinks/bottle/throw_impact(atom/hit_atom, speed)
 	..()
 
 	var/mob/M = thrower
@@ -34,21 +37,21 @@
 		var/throw_dist = get_dist(throw_source, loc)
 		if(speed >= throw_speed && smash_check(throw_dist)) //not as reliable as smashing directly
 			if(reagents)
-				hit_atom.visible_message("<span class='notice'>The contents of \the [src] splash all over [hit_atom]!</span>")
+				hit_atom.visible_message(SPAN_NOTICE("The contents of \the [src] splash all over [hit_atom]!"))
 				reagents.splash(hit_atom, reagents.total_volume)
 			src.smash(loc, hit_atom)
 
-/obj/item/reagent_containers/food/drinks/bottle/proc/smash_check(var/distance)
+/obj/item/reagent_containers/food/drinks/bottle/proc/smash_check(distance)
 	if(!isGlass || !smash_duration)
-		return 0
+		return FALSE
 
 	var/list/chance_table = list(100, 95, 90, 85, 75, 55, 35) //starting from distance 0
 	var/idx = max(distance + 1, 1) //since list indices start at 1
 	if(idx > chance_table.len)
-		return 0
+		return FALSE
 	return prob(chance_table[idx])
 
-/obj/item/reagent_containers/food/drinks/bottle/proc/smash(var/newloc, atom/against = null)
+/obj/item/reagent_containers/food/drinks/bottle/proc/smash(newloc, atom/against = null)
 	if(ismob(loc))
 		var/mob/M = loc
 		M.drop_from_inventory(src)
@@ -69,7 +72,7 @@
 		var/mob/living/L = against
 		L.IgniteMob()
 
-	playsound(src, "shatter", 70, 1)
+	playsound(src, "shatter", 70, TRUE)
 	src.transfer_fingerprints_to(B)
 
 	qdel(src)
@@ -88,12 +91,12 @@
 	if(!choice)
 		return
 	if(!(choice.density && usr.Adjacent(choice)))
-		to_chat(usr, "<span class='warning'>You must stay close to your target! You moved away from \the [choice]</span>")
+		to_chat(usr, SPAN_WARNING("You must stay close to your target! You moved away from \the [choice]"))
 		return
 
 	usr.put_in_hands(src.smash(usr.loc, choice))
-	usr.visible_message("<span class='danger'>\The [usr] smashed \the [src] on \the [choice]!</span>")
-	to_chat(usr, "<span class='danger'>You smash \the [src] on \the [choice]!</span>")
+	usr.visible_message(SPAN_DANGER("\The [usr] smashed \the [src] on \the [choice]!"))
+	to_chat(usr, SPAN_DANGER("You smash \the [src] on \the [choice]!"))
 
 /obj/item/reagent_containers/food/drinks/bottle/attackby(obj/item/W, mob/user)
 	if(!rag && istype(W, /obj/item/reagent_containers/glass/rag))
@@ -111,23 +114,26 @@
 		..()
 
 /obj/item/reagent_containers/food/drinks/bottle/proc/insert_rag(obj/item/reagent_containers/glass/rag/R, mob/user)
-	if(!isGlass || rag) return
+	if(!isGlass || rag)
+		return
 	if(user.unEquip(R))
-		to_chat(user, "<span class='notice'>You stuff [R] into [src].</span>")
+		to_chat(user, SPAN_NOTICE("You stuff [R] into [src]."))
 		rag = R
 		rag.forceMove(src)
 		flags &= ~OPENCONTAINER
 		update_icon()
 
 /obj/item/reagent_containers/food/drinks/bottle/proc/remove_rag(mob/user)
-	if(!rag) return
+	if(!rag)
+		return
 	user.put_in_hands(rag)
 	rag = null
 	flags |= (initial(flags) & OPENCONTAINER)
 	update_icon()
 
 /obj/item/reagent_containers/food/drinks/bottle/open(mob/user)
-	if(rag) return
+	if(rag)
+		return
 	..()
 
 /obj/item/reagent_containers/food/drinks/bottle/update_icon()
@@ -139,7 +145,7 @@
 	else
 		set_light(0)
 
-/obj/item/reagent_containers/food/drinks/bottle/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
+/obj/item/reagent_containers/food/drinks/bottle/apply_hit_effect(mob/living/target, mob/living/user, hit_zone)
 	var/blocked = ..()
 
 	if(user.a_intent != INTENT_HARM)
@@ -153,15 +159,15 @@
 		weaken_duration = smash_duration + min(0, force - target.getarmor(hit_zone, "melee") + 10)
 
 	if(hit_zone == "head" && istype(target, /mob/living/carbon/))
-		user.visible_message("<span class='danger'>\The [user] smashes [src] over [target]'s head!</span>")
+		user.visible_message(SPAN_DANGER("\The [user] smashes [src] over [target]'s head!"))
 		if(weaken_duration)
 			target.apply_effect(min(weaken_duration, 5), WEAKEN, blocked) // Never weaken more than a flash!
 	else
-		user.visible_message("<span class='danger'>\The [user] smashes [src] into [target]!</span>")
+		user.visible_message(SPAN_DANGER("\The [user] smashes [src] into [target]!"))
 
 	//The reagents in the bottle splash all over the target, thanks for the idea Nodrak
 	if(reagents)
-		user.visible_message("<span class='notice'>The contents of \the [src] splash all over [target]!</span>")
+		user.visible_message(SPAN_NOTICE("The contents of \the [src] splash all over [target]!"))
 		reagents.splash(target, reagents.total_volume)
 
 	//Finally, smash the bottle. This kills (qdel) the bottle.
@@ -181,12 +187,12 @@
 	item_state = "beer"
 	flags = NOCONDUCT
 	attack_verb = list("stabbed", "slashed", "attacked")
-	sharp = 1
-	edge = 0
+	sharp = TRUE
+	edge = FALSE
 	var/icon/broken_outline = icon('icons/obj/drinks.dmi', "broken")
 
-/obj/item/broken_bottle/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
-	playsound(loc, 'sound/weapons/bladeslice.ogg', 50, 1, -1)
+/obj/item/broken_bottle/attack(mob/living/carbon/M, mob/living/carbon/user)
+	playsound(loc, 'sound/weapons/bladeslice.ogg', 50, TRUE, -1)
 	return ..()
 
 /obj/item/reagent_containers/food/drinks/bottle/gin

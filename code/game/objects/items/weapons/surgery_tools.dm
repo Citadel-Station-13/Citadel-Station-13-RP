@@ -69,25 +69,26 @@
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
 	attack_verb = list("drilled")
 
-	suicide_act(mob/user)
-		var/datum/gender/TU = gender_datums[user.get_visible_gender()]
-		user.visible_message(pick("<span class='danger'>\The [user] is pressing \the [src] to [TU.his] temple and activating it! It looks like [TU.hes] trying to commit suicide.</span>",
-		                       "<span class='danger'>\The [user] is pressing \the [src] to [TU.his] chest and activating it! It looks like [TU.hes] trying to commit suicide.</span>"))
-		return (BRUTELOSS)
+/obj/item/surgical/surgicaldrillsuicide_act(mob/user)
+	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	user.visible_message(pick(
+		SPAN_DANGER("\The [user] is pressing \the [src] to [TU.his] temple and activating it! It looks like [TU.hes] trying to commit suicide."),
+		SPAN_DANGER("\The [user] is pressing \the [src] to [TU.his] chest and activating it! It looks like [TU.hes] trying to commit suicide.")))
+	return (BRUTELOSS)
 
-/*
+/**
  * Scalpel
  */
 /obj/item/surgical/scalpel
 	name = "scalpel"
 	desc = "Cut, cut, and once more cut."
 	icon_state = "scalpel"
-	force = 10.0
-	sharp = 1
-	edge = 1
+	force = 10
+	sharp = TRUE
+	edge = TRUE
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
-	throwforce = 5.0
+	throwforce = 5
 	throw_speed = 3
 	throw_range = 5
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
@@ -96,12 +97,13 @@
 
 /obj/item/surgical/scalpel/suicide_act(mob/user)
 		var/datum/gender/TU = gender_datums[user.get_visible_gender()]
-		user.visible_message(pick("<span class='danger'>\The [user] is slitting [TU.his] wrists with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
-		                      "<span class='danger'>\The [user] is slitting [TU.his] throat with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
-		                      "<span class='danger'>\The [user] is slitting [TU.his] stomach open with the [src.name]! It looks like [TU.hes] trying to commit seppuku.</span>"))
+		user.visible_message(pick(
+			SPAN_DANGER("\The [user] is slitting [TU.his] wrists with the [src.name]! It looks like [TU.hes] trying to commit suicide."),
+			SPAN_DANGER("\The [user] is slitting [TU.his] throat with the [src.name]! It looks like [TU.hes] trying to commit suicide."),
+			SPAN_DANGER("\The [user] is slitting [TU.his] stomach open with the [src.name]! It looks like [TU.hes] trying to commit seppuku.")))
 		return (BRUTELOSS)
 
-/*
+/**
  * Researchable Scalpels
  */
 /obj/item/surgical/scalpel/laser1
@@ -115,14 +117,14 @@
 	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field.  This one looks somewhat advanced."
 	icon_state = "scalpel_laser2_on"
 	damtype = "fire"
-	force = 12.0
+	force = 12
 
 /obj/item/surgical/scalpel/laser3
 	name = "laser scalpel"
 	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field.  This one looks to be the pinnacle of precision energy cutlery!"
 	icon_state = "scalpel_laser3_on"
 	damtype = "fire"
-	force = 15.0
+	force = 15
 
 /obj/item/surgical/scalpel/manager
 	name = "incision management system"
@@ -135,11 +137,11 @@
 	desc = "A horrifying bladed tool with a large metal spike in its center. The tool is used for rapidly removing organs from hopefully willing patients."
 	icon_state = "organ_ripper"
 	item_state = "bone_setter"
-	force = 15.0
+	force = 15
 	toolspeed = 0.75
 	origin_tech = list(TECH_MATERIAL = 5, TECH_BIO = 3, TECH_ILLEGAL = 2)
 
-/*
+/**
  * Circular Saw
  */
 /obj/item/surgical/circular_saw
@@ -147,7 +149,7 @@
 	desc = "For heavy duty cutting."
 	icon_state = "saw3"
 	hitsound = 'sound/weapons/circsawhit.ogg'
-	force = 15.0
+	force = 15
 	w_class = ITEMSIZE_NORMAL
 	throwforce = 9.0
 	throw_speed = 3
@@ -155,8 +157,8 @@
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
 	matter = list(MAT_STEEL = 20000, MAT_GLASS = 10000)
 	attack_verb = list("attacked", "slashed", "sawed", "cut")
-	sharp = 1
-	edge = 1
+	sharp = TRUE
+	edge = TRUE
 
 /obj/item/surgical/circular_saw/manager
 	name = "energetic bone diverter"
@@ -176,15 +178,15 @@
 	name = "bone gel"
 	desc = "For fixing bones."
 	icon_state = "bone-gel"
-	force = 0
-	throwforce = 1.0
+	force = FALSE
+	throwforce = 1
 
 /obj/item/surgical/FixOVein
 	name = "FixOVein"
 	desc = "Like bone gel. For veins."
 	icon_state = "fixovein"
-	force = 0
-	throwforce = 1.0
+	force = FALSE
+	throwforce = 1
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 3)
 	var/usage_amount = 10
 
@@ -192,8 +194,8 @@
 	name = "bone setter"
 	desc = "Put them in their place."
 	icon_state = "bone_setter"
-	force = 8.0
-	throwforce = 9.0
+	force = 8
+	throwforce = 9
 	throw_speed = 3
 	throw_range = 5
 	attack_verb = list("attacked", "hit", "bludgeoned")
@@ -208,7 +210,7 @@
 	throw_range = 5
 	attack_verb = list("attacked", "hit", "bludgeoned")
 
-/*
+/**
  * Bio Regen
  */
 /obj/item/surgical/bioregen
@@ -310,12 +312,12 @@
 	name = "primitive scalpel"
 	desc = "Finely knapped glass attached to a carved bone by sinew. It seems like it'd be good at cutting."
 	icon_state = "scalpel_bone"
-	force = 10.0
-	sharp = 1
-	edge = 1
+	force = 10
+	sharp = TRUE
+	edge = TRUE
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
-	throwforce = 5.0
+	throwforce = 5
 	throw_speed = 3
 	throw_range = 5
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
@@ -323,26 +325,27 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 /obj/item/surgical/scalpel_primitive/suicide_act(mob/user)
-		var/datum/gender/TU = gender_datums[user.get_visible_gender()]
-		user.visible_message(pick("<span class='danger'>\The [user] is slitting [TU.his] wrists with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
-		                      "<span class='danger'>\The [user] is slitting [TU.his] throat with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
-		                      "<span class='danger'>\The [user] is slitting [TU.his] stomach open with the [src.name]! It looks like [TU.hes] trying to commit seppuku.</span>"))
-		return (BRUTELOSS)
+	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	user.visible_message(pick(
+		SPAN_DANGER("\The [user] is slitting [TU.his] wrists with the [src.name]! It looks like [TU.hes] trying to commit suicide."),
+		SPAN_DANGER("\The [user] is slitting [TU.his] throat with the [src.name]! It looks like [TU.hes] trying to commit suicide."),
+		SPAN_DANGER("\The [user] is slitting [TU.his] stomach open with the [src.name]! It looks like [TU.hes] trying to commit seppuku.")))
+	return (BRUTELOSS)
 
 /obj/item/surgical/saw_primitive
 	name = "primitive bone saw"
 	desc = "An admittedly complex, yet still inferior tool, this bone saw uses knapped volcanic glass as cutting teeth."
 	icon_state = "saw_bone"
-	force = 15.0
+	force = 15
 	w_class = ITEMSIZE_NORMAL
-	throwforce = 9.0
+	throwforce = 9
 	throw_speed = 3
 	throw_range = 5
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
 	matter = list("bone" = 6000, MAT_GLASS = 4000)
 	attack_verb = list("attacked", "slashed", "sawed", "cut")
-	sharp = 1
-	edge = 1
+	sharp = TRUE
+	edge = TRUE
 
 /obj/item/surgical/bonesetter_primitive
 	name = "primitive bone setter"

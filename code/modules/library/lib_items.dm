@@ -100,92 +100,97 @@
 /obj/structure/bookcase/manuals/medical
 	name = "Medical Manuals bookcase"
 
-	New()
-		..()
-		new /obj/item/book/manual/medical_cloning(src)
-		new /obj/item/book/manual/medical_diagnostics_manual(src)
-		new /obj/item/book/manual/medical_diagnostics_manual(src)
-		new /obj/item/book/manual/medical_diagnostics_manual(src)
-		update_icon()
+/obj/structure/bookcase/manuals/medical/Initialize(mapload)
+	. = ..()
+
+	new /obj/item/book/manual/medical_cloning(src)
+	new /obj/item/book/manual/medical_diagnostics_manual(src)
+	new /obj/item/book/manual/medical_diagnostics_manual(src)
+	new /obj/item/book/manual/medical_diagnostics_manual(src)
+	update_icon()
 
 
 /obj/structure/bookcase/manuals/engineering
 	name = "Engineering Manuals bookcase"
 
-	New()
-		..()
-		new /obj/item/book/manual/engineering_construction(src)
-		new /obj/item/book/manual/engineering_particle_accelerator(src)
-		new /obj/item/book/manual/engineering_hacking(src)
-		new /obj/item/book/manual/engineering_guide(src)
-		new /obj/item/book/manual/atmospipes(src)
-		new /obj/item/book/manual/engineering_singularity_safety(src)
-		new /obj/item/book/manual/evaguide(src)
-		update_icon()
+/obj/structure/bookcase/manuals/engineering/Initialize(mapload)
+	. = ..()
+
+	new /obj/item/book/manual/engineering_construction(src)
+	new /obj/item/book/manual/engineering_particle_accelerator(src)
+	new /obj/item/book/manual/engineering_hacking(src)
+	new /obj/item/book/manual/engineering_guide(src)
+	new /obj/item/book/manual/atmospipes(src)
+	new /obj/item/book/manual/engineering_singularity_safety(src)
+	new /obj/item/book/manual/evaguide(src)
+	update_icon()
 
 /obj/structure/bookcase/manuals/research_and_development
 	name = "R&D Manuals bookcase"
 
-	New()
-		..()
-		new /obj/item/book/manual/research_and_development(src)
-		update_icon()
+/obj/structure/bookcase/manuals/research_and_development/Initialize(mapload)
+	. = ..()
+	new /obj/item/book/manual/research_and_development(src)
+	update_icon()
 
 /obj/structure/bookcase/legal/sop
 	name = "Legal Manuals bookcase"
 	icon_state = "legalbook-0"
 
-	New()
-		..()
-		new /obj/item/book/manual/legal/sop_vol1
-		new /obj/item/book/manual/legal/sop_vol2
-		new /obj/item/book/manual/legal/sop_vol3
-		new /obj/item/book/manual/legal/sop_vol4
-		new /obj/item/book/manual/legal/sop_vol5_1
-		new /obj/item/book/manual/legal/sop_vol5_2
-		new /obj/item/book/manual/legal/sop_vol5_3
-		new /obj/item/book/manual/legal/sop_vol5_4
-		new /obj/item/book/manual/legal/sop_vol5_5
-		new /obj/item/book/manual/legal/sop_vol5_6
-		new /obj/item/book/manual/legal/sop_vol5_7
-		update_icon()
+/obj/structure/bookcase/legal/sop/Initialize(mapload)
+	. = ..()
+
+	new /obj/item/book/manual/legal/sop_vol1
+	new /obj/item/book/manual/legal/sop_vol2
+	new /obj/item/book/manual/legal/sop_vol3
+	new /obj/item/book/manual/legal/sop_vol4
+	new /obj/item/book/manual/legal/sop_vol5_1
+	new /obj/item/book/manual/legal/sop_vol5_2
+	new /obj/item/book/manual/legal/sop_vol5_3
+	new /obj/item/book/manual/legal/sop_vol5_4
+	new /obj/item/book/manual/legal/sop_vol5_5
+	new /obj/item/book/manual/legal/sop_vol5_6
+	new /obj/item/book/manual/legal/sop_vol5_7
+	update_icon()
 
 /obj/structure/bookcase/legal/corpreg
 	name = "Corporate Regulations bookcase"
 	icon_state = "legalbook-0"
 
-	New()
-		..()
-		new /obj/item/book/manual/legal/cr_vol1
-		new /obj/item/book/manual/legal/cr_vol2
-		new /obj/item/book/manual/legal/cr_vol3
-		new /obj/item/book/manual/legal/cr_vol4
-		new /obj/item/book/manual/legal/cr_vol5
-		update_icon()
+/obj/structure/bookcase/legal/corpreg/Initialize(mapload)
+	. = ..()
+
+	new /obj/item/book/manual/legal/cr_vol1
+	new /obj/item/book/manual/legal/cr_vol2
+	new /obj/item/book/manual/legal/cr_vol3
+	new /obj/item/book/manual/legal/cr_vol4
+	new /obj/item/book/manual/legal/cr_vol5
+	update_icon()
 
 /obj/structure/bookcase/legal/combo
 	name = "Policy Reference bookcase"
 	icon_state = "legalbook-0"
 
-	New()
-		..()
-		new /obj/item/book/manual/legal/sop_vol1
-		new /obj/item/book/manual/legal/sop_vol2
-		new /obj/item/book/manual/legal/sop_vol3
-		new /obj/item/book/manual/legal/sop_vol4
-		new /obj/item/book/manual/legal/sop_vol5_1
-		new /obj/item/book/manual/legal/sop_vol5_2
-		new /obj/item/book/manual/legal/sop_vol5_3
-		new /obj/item/book/manual/legal/sop_vol5_4
-		new /obj/item/book/manual/legal/sop_vol5_5
-		new /obj/item/book/manual/legal/sop_vol5_6
-		new /obj/item/book/manual/legal/sop_vol5_7
-		new /obj/item/book/manual/legal/cr_vol1
-		new /obj/item/book/manual/legal/cr_vol2
-		new /obj/item/book/manual/legal/cr_vol3
-		new /obj/item/book/manual/legal/cr_vol4
-		new /obj/item/book/manual/legal/cr_vol5
-		update_icon()
+/obj/structure/bookcase/legal/combo/Initialize(mapload)
+	. = ..()
+
+	new /obj/item/book/manual/legal/sop_vol1
+	new /obj/item/book/manual/legal/sop_vol2
+	new /obj/item/book/manual/legal/sop_vol3
+	new /obj/item/book/manual/legal/sop_vol4
+	new /obj/item/book/manual/legal/sop_vol5_1
+	new /obj/item/book/manual/legal/sop_vol5_2
+	new /obj/item/book/manual/legal/sop_vol5_3
+	new /obj/item/book/manual/legal/sop_vol5_4
+	new /obj/item/book/manual/legal/sop_vol5_5
+	new /obj/item/book/manual/legal/sop_vol5_6
+	new /obj/item/book/manual/legal/sop_vol5_7
+	new /obj/item/book/manual/legal/cr_vol1
+	new /obj/item/book/manual/legal/cr_vol2
+	new /obj/item/book/manual/legal/cr_vol3
+	new /obj/item/book/manual/legal/cr_vol4
+	new /obj/item/book/manual/legal/cr_vol5
+	update_icon()
 
 /obj/structure/bookcase/legal/update_icon()
 	if(contents.len < 5)
@@ -193,7 +198,7 @@
 	else
 		icon_state = "legalbook-5"
 
-/*
+/**
  * Book
  */
 /obj/item/book
@@ -203,29 +208,38 @@
 	throw_speed = 1
 	throw_range = 5
 	flags = NOCONDUCT
-	w_class = ITEMSIZE_NORMAL		 //upped to three because books are, y'know, pretty big. (and you could hide them inside eachother recursively forever)
+	/// Upped to three because books are, y'know, pretty big. (and you could hide them inside eachother recursively forever)
+	w_class = ITEMSIZE_NORMAL
 	attack_verb = list("bashed", "whacked", "educated")
-	var/dat			 // Actual page content
-	var/due_date = 0 // Game time in 1/10th seconds
-	var/author		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
-	var/libcategory = "Miscellaneous"	// The library category this book sits in. "Fiction", "Non-Fiction", "Adult", "Reference", "Religion"
-	var/unique = 0   // 0 - Normal book, 1 - Should not be treated as normal book, unable to be copied, unable to be modified
-	var/title		 // The real name of the book.
-	var/carved = 0	 // Has the book been hollowed out for use as a secret storage item?
-	var/obj/item/store	//What's in the book?
+	/// Actual page content.
+	var/dat
+	/// Game time in 1/10th seconds.
+	var/due_date = 0
+	/// Who wrote the thing, can be changed by pen or PC. It is not automatically assigned.
+	var/author
+	/// The library category this book sits in. "Fiction", "Non-Fiction", "Adult", "Reference", "Religion".
+	var/libcategory = "Miscellaneous"
+	/// 0 - Normal book, 1 - Should not be treated as normal book, unable to be copied, unable to be modified.
+	var/unique = 0
+	/// The real name of the book.
+	var/title
+	/// Has the book been hollowed out for use as a secret storage item?
+	var/carved = 0
+	/// What's in the book?
+	var/obj/item/store
 	drop_sound = 'sound/items/drop/book.ogg'
 	pickup_sound = 'sound/items/pickup/book.ogg'
 
 
-/obj/item/book/attack_self(var/mob/user as mob)
+/obj/item/book/attack_self(mob/user)
 	if(carved)
 		if(store)
-			to_chat(user, "<span class='notice'>[store] falls out of [title]!</span>")
+			to_chat(user, SPAN_NOTICE("[store] falls out of [title]!"))
 			store.loc = get_turf(src.loc)
 			store = null
 			return
 		else
-			to_chat(user, "<span class='notice'>The pages of [title] have been cut out!</span>")
+			to_chat(user, SPAN_NOTICE("The pages of [title] have been cut out!"))
 			return
 	if(src.dat)
 		user << browse("<TT><I>Penned by [author].</I></TT> <BR>" + "[dat]", "window=book")
@@ -234,20 +248,20 @@
 	else
 		to_chat(user, "This book is completely blank!")
 
-/obj/item/book/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/book/attackby(obj/item/W, mob/user)
 	if(carved)
 		if(!store)
 			if(W.w_class < ITEMSIZE_LARGE)
 				user.drop_item()
 				W.loc = src
 				store = W
-				to_chat(user, "<span class='notice'>You put [W] in [title].</span>")
+				to_chat(user, SPAN_NOTICE("You put [W] in [title]."))
 				return
 			else
-				to_chat(user, "<span class='notice'>[W] won't fit in [title].</span>")
+				to_chat(user, SPAN_NOTICE("[W] won't fit in [title]."))
 				return
 		else
-			to_chat(user, "<span class='notice'>There's already something in [title]!</span>")
+			to_chat(user, SPAN_NOTICE("There's already something in [title]!"))
 			return
 	if(istype(W, /obj/item/pen))
 		if(unique)
@@ -394,7 +408,7 @@
 	else
 		to_chat(usr, "<span class='notice'>You need to hold it in your hands!</span>")
 
-/*
+/**
  * Barcode Scanner
  */
 /obj/item/barcodescanner
@@ -404,30 +418,33 @@
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
-	var/obj/machinery/librarycomp/computer // Associated computer - Modes 1 to 3 use this
-	var/obj/item/book/book	 //  Currently scanned book
-	var/mode = 0 					// 0 - Scan only, 1 - Scan and Set Buffer, 2 - Scan and Attempt to Check In, 3 - Scan and Attempt to Add to Inventory
+	/// Associated computer - Modes 1 to 3 use this.
+	var/obj/machinery/librarycomp/computer
+	/// Currently scanned book.
+	var/obj/item/book/book
+	/// 0 - Scan only, 1 - Scan and Set Buffer, 2 - Scan and Attempt to Check In, 3 - Scan and Attempt to Add to Inventory.
+	var/mode = 0
 
-	attack_self(mob/user as mob)
-		mode += 1
-		if(mode > 3)
-			mode = 0
-		to_chat(user, "[src] Status Display:")
-		var/modedesc
-		switch(mode)
-			if(0)
-				modedesc = "Scan book to local buffer."
-			if(1)
-				modedesc = "Scan book to local buffer and set associated computer buffer to match."
-			if(2)
-				modedesc = "Scan book to local buffer, attempt to check in scanned book."
-			if(3)
-				modedesc = "Scan book to local buffer, attempt to add book to general inventory."
-			else
-				modedesc = "ERROR"
-		to_chat(user, " - Mode [mode] : [modedesc]")
-		if(src.computer)
-			to_chat(user, "<font color=green>Computer has been associated with this unit.</font>")
+/obj/item/barcodescanner/attack_self(mob/user)
+	mode += 1
+	if(mode > 3)
+		mode = 0
+	to_chat(user, "[src] Status Display:")
+	var/modedesc
+	switch(mode)
+		if(0)
+			modedesc = "Scan book to local buffer."
+		if(1)
+			modedesc = "Scan book to local buffer and set associated computer buffer to match."
+		if(2)
+			modedesc = "Scan book to local buffer, attempt to check in scanned book."
+		if(3)
+			modedesc = "Scan book to local buffer, attempt to add book to general inventory."
 		else
-			to_chat(user, "<font color=red>No associated computer found. Only local scans will function properly.</font>")
-		to_chat(user, "\n")
+			modedesc = "ERROR"
+	to_chat(user, " - Mode [mode] : [modedesc]")
+	if(src.computer)
+		to_chat(user, SPAN_GREEN("Computer has been associated with this unit."))
+	else
+		to_chat(user, SPAN_WARNING("No associated computer found. Only local scans will function properly."))
+	to_chat(user, "\n")

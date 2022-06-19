@@ -62,22 +62,23 @@
 	//Mob melee settings
 	melee_damage_lower = 5
 	melee_damage_upper = 15
-	list/attacktext = list("attacked", "chomped", "gnawed on")
-	list/friendly = list("baps", "nuzzles")
+	var/list/attacktext = list("attacked", "chomped", "gnawed on")
+	var/list/friendly = list("baps", "nuzzles")
 	attack_armor_type = "melee"
-	attack_sharp = 1
-	attack_edge = 1
+	attack_sharp = TRUE
+	attack_edge = TRUE
 
 	//Damage resistances
 	shock_resist = 1
 	armor = list(
-				"melee" = 30,
-				"bullet" = 20,
-				"laser" = 20,
-				"energy" = 10,
-				"bomb" = 10,
-				"bio" = 0,
-				"rad" = 0)	//Standard armor vest stats, slightly dropped due to scale.
+		"melee" = 30,
+		"bullet" = 20,
+		"laser" = 20,
+		"energy" = 10,
+		"bomb" = 10,
+		"bio" = 0,
+		"rad" = 0,
+	) //Standard armor vest stats, slightly dropped due to scale.
 
 	has_langs = list("Mouse")
 
@@ -112,7 +113,7 @@
 	icon_dead = "mouse_[rank]_dead"
 	icon_rest = "mouse_[rank]_sleep"
 
-/mob/living/simple_mob/animal/space/mouse_army/Crossed(atom/movable/AM as mob|obj)
+/mob/living/simple_mob/animal/space/mouse_army/Crossed(atom/movable/AM)
 	if(AM.is_incorporeal())
 		return
 	if(ishuman(AM))
@@ -124,7 +125,7 @@
 
 /mob/living/simple_mob/animal/space/mouse_army/death()
 	layer = MOB_LAYER
-	playsound(src, 'sound/effects/mouse_squeak_loud.ogg', 35, 1)
+	playsound(src, 'sound/effects/mouse_squeak_loud.ogg', 35, TRUE)
 	if(client)
 		client.time_died_as_mouse = world.time
 	..()

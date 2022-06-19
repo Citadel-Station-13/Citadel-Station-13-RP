@@ -476,23 +476,22 @@
 	else
 		return ..()
 
-/mob/living/carbon/human/proc/set_default_attack(var/datum/unarmed_attack/u_attack)
+/mob/living/carbon/human/proc/set_default_attack(datum/unarmed_attack/u_attack)
 	default_attack = u_attack
 
-/datum/unarmed_attack
-	var/attack_name = "fist"
+/datum/unarmed_attack/var/attack_name = "fist"
 
-/datum/unarmed_attack
-	bite/attack_name = "bite"
-	bite/sharp/attack_name = "sharp bite"
-	bite/strong/attack_name = "strong bite"
-	punch/attack_name = "punch"
-	kick/attack_name = "kick"
-	stomp/attack_name = "stomp"
-	stomp/weak/attack_name = "weak stomp"
-	light_strike/attack_name = "light hit"
-	diona attack_name = "tendrils"
-	claws/attack_name = "claws"
-	claws/strong/attack_name = "strong claws"
-	slime_glomp/attack_name = "glomp"
-	bite/sharp/numbing/attack_name = "numbing bite"
+
+/datum/unarmed_attack/bite/attack_name = "bite"
+/datum/unarmed_attack/bite/sharp/attack_name = "sharp bite"
+/datum/unarmed_attack/bite/strong/attack_name = "strong bite"
+/datum/unarmed_attack/punch/attack_name = "punch"
+/datum/unarmed_attack/kick/attack_name = "kick"
+/datum/unarmed_attack/stomp/attack_name = "stomp"
+/datum/unarmed_attack/stomp/weak/attack_name = "weak stomp"
+/datum/unarmed_attack/light_strike/attack_name = "light hit"
+/datum/unarmed_attack/diona attack_name = "tendrils"
+/datum/unarmed_attack/claws/attack_name = "claws"
+/datum/unarmed_attack/claws/strong/attack_name = "strong claws"
+/datum/unarmed_attack/slime_glomp/attack_name = "glomp"
+/datum/unarmed_attack/bite/sharp/numbing/attack_name = "numbing bite"

@@ -114,7 +114,7 @@ CLASSD_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 		/mob/living/simple_mob/animal/giant_spider/webslinger = 2
 	)
 
-	obj/tether_away_spawner/classd/crater
+/obj/tether_away_spawner/classd/crater
 	name = "Class D Crater Spawner"
 	faction = "crater"
 	atmos_comp = TRUE
@@ -124,7 +124,7 @@ CLASSD_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 	mobs_to_pick_from = list(
 		/mob/living/simple_mob/vore/aggressive/corrupthound = 1,
 		/mob/living/simple_mob/vore/aggressive/corrupthound/prettyboi = 3,
-		/mob/living/simple_mob/mechanical/corrupt_maint_drone = 2
+		/mob/living/simple_mob/mechanical/corrupt_maint_drone = 2,
 	)
 
 // Turfs
@@ -133,7 +133,7 @@ CLASSD_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 	desc = "It literally glows in the dark."
 	icon = 'icons/turf/flooring/asteroid.dmi'
 	icon_state = "asteroid"
-	outdoors = 1
+	outdoors = TRUE
 	color = "#eaa17c"
 	base_icon_state = "asteroid"
 	initial_gas_mix = ATMOSPHERE_ID_CLASSD

@@ -1,9 +1,8 @@
-/*
-	Badges are worn on the belt or neck, and can be used to show that the holder is an authorized
-	Security agent - the user details can be imprinted on holobadges with a Security-access ID card,
-	or they can be emagged to accept any ID for use in disguises.
-*/
-
+/**
+ * Badges are worn on the belt or neck, and can be used to show that the holder is an authorized
+ * Security agent - the user details can be imprinted on holobadges with a Security-access ID card,
+ * or they can be emagged to accept any ID for use in disguises.
+ */
 /obj/item/clothing/accessory/badge
 	name = "detective's badge"
 	desc = "Security Department detective's badge, made from gold."
@@ -112,15 +111,17 @@
 /obj/item/storage/box/holobadge
 	name = "holobadge box"
 	desc = "A box claiming to contain holobadges."
-	New()
-		new /obj/item/clothing/accessory/badge/holo(src)
-		new /obj/item/clothing/accessory/badge/holo(src)
-		new /obj/item/clothing/accessory/badge/holo(src)
-		new /obj/item/clothing/accessory/badge/holo(src)
-		new /obj/item/clothing/accessory/badge/holo/cord(src)
-		new /obj/item/clothing/accessory/badge/holo/cord(src)
-		..()
-		return
+
+/obj/item/storage/box/holobadge/Initialize(mapload)
+	. = ..()
+	new /obj/item/clothing/accessory/badge/holo(src)
+	new /obj/item/clothing/accessory/badge/holo(src)
+	new /obj/item/clothing/accessory/badge/holo(src)
+	new /obj/item/clothing/accessory/badge/holo(src)
+	new /obj/item/clothing/accessory/badge/holo/cord(src)
+	new /obj/item/clothing/accessory/badge/holo/cord(src)
+	..()
+	return
 
 /obj/item/clothing/accessory/badge/holo/warden
 	name = "warden's holobadge"
@@ -143,19 +144,20 @@
 /obj/item/storage/box/holobadge/hos
 	name = "holobadge box"
 	desc = "A box claiming to contain holobadges."
-	New()
-		new /obj/item/clothing/accessory/badge/holo(src)
-		new /obj/item/clothing/accessory/badge/holo(src)
-		new /obj/item/clothing/accessory/badge/holo/warden(src)
-		new /obj/item/clothing/accessory/badge/holo/detective(src)
-		new /obj/item/clothing/accessory/badge/holo/detective(src)
-		new /obj/item/clothing/accessory/badge/holo/hos(src)
-		new /obj/item/clothing/accessory/badge/holo/cord(src)
-		..()
-		return
 
-// Synthmorph bag / Corporation badges. Primarily used on the robobag, but can be worn. Default is NT.
+/obj/item/storage/box/holobadge/hos/Initialize(mapload)
+	. = ..()
+	new /obj/item/clothing/accessory/badge/holo(src)
+	new /obj/item/clothing/accessory/badge/holo(src)
+	new /obj/item/clothing/accessory/badge/holo/warden(src)
+	new /obj/item/clothing/accessory/badge/holo/detective(src)
+	new /obj/item/clothing/accessory/badge/holo/detective(src)
+	new /obj/item/clothing/accessory/badge/holo/hos(src)
+	new /obj/item/clothing/accessory/badge/holo/cord(src)
+	..()
+	return
 
+/// Synthmorph bag / Corporation badges. Primarily used on the robobag, but can be worn. Default is NT.
 /obj/item/clothing/accessory/badge/corporate_tag
 	name = "NanoTrasen Badge"
 	desc = "A plain metallic plate that might denote the wearer as a member of NanoTrasen."

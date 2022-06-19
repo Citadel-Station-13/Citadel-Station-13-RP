@@ -174,21 +174,30 @@
 	drop_sound = 'sound/items/drop/card.ogg'
 	pickup_sound = 'sound/items/pickup/card.ogg'
 	var/owner_name = "" //So the ATM can set it so the EFTPOS can put a valid name on transactions.
-	attack_self() return  //Don't act
-	attackby()    return  //like actual
-	update_icon() return  //space cash
+
+/obj/item/spacecash/ewallet/attack_self()
+	return  //Don't act
+
+/obj/item/spacecash/ewallet/attackby()
+	return  //like actual
+
+/obj/item/spacecash/ewallet/update_icon()
+	return  //space cash
 
 /obj/item/spacecash/ewallet/examine(mob/user)
 	. = ..()
 	if (!(user in view(2)) && user!=src.loc)
 		return
-	. += "<font color=#4F49AF>Charge card's owner: [src.owner_name]. Thalers remaining: [src.worth].</font>"
+	. += SPAN_INFO("Charge card's owner: [owner_name]. Thalers remaining: [worth].")
 
 /obj/item/spacecash/ewallet/is_static_currency(prevent_types)
 	return (prevent_types & PAYMENT_TYPE_CHARGE_CARD)? NOT_STATIC_CURRENCY : DISCRETE_STATIC_CURRENCY
 
 /obj/item/spacecash/ewallet/do_static_currency_feedback(amount, mob/user, atom/target, range)
-	visible_message(SPAN_NOTICE("[user] swipes [src] through [target]."), SPAN_NOTICE("You swipe [src] through [target]."), SPAN_NOTICE("You hear a card swipe."), range)
+	visible_message(
+		SPAN_NOTICE("[user] swipes [src] through [target]."),
+		SPAN_NOTICE("You swipe [src] through [target]."),
+		SPAN_NOTICE("You hear a card swipe."), range)
 
 /obj/item/spacecash/ewallet/amount_static_currency()
 	return worth

@@ -14,22 +14,24 @@ var/global/list/cached_icons = list()
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(10,20,30,60)
 	volume = 60
-	unacidable = 0
+	unacidable = FALSE
 	flags = OPENCONTAINER
 	var/paint_type = "red"
 
-	afterattack(turf/simulated/target, mob/user, proximity)
-		if(!proximity) return
-		if(istype(target) && reagents.total_volume > 5)
-			user.visible_message("<span class='warning'>\The [target] has been splashed with something by [user]!</span>")
-			reagents.trans_to_turf(target, 5)
-		else
-			return ..()
+/obj/item/reagent_containers/glass/paint/afterattack(turf/simulated/target, mob/user, proximity)
+	if(!proximity)
+		return
+	if(istype(target) && reagents.total_volume > 5)
+		user.visible_message(SPAN_WARNING("\The [target] has been splashed with something by [user]!"))
+		reagents.trans_to_turf(target, 5)
+	else
+		return ..()
 
-	New()
+/obj/item/reagent_containers/glass/paint/Initialize(mapload)
+	. = ..()
 		if(paint_type && length(paint_type) > 0)
 			name = paint_type + " " + name
-		..()
+
 		reagents.add_reagent("water", volume*3/5)
 		reagents.add_reagent("plasticide", volume/5)
 		if(paint_type == "white") //why don't white crayons exist
@@ -40,30 +42,30 @@ var/global/list/cached_icons = list()
 			reagents.add_reagent("marker_ink_[paint_type]", volume/5)
 		reagents.handle_reactions()
 
-	red
-		icon_state = "paint_red"
-		paint_type = "red"
+/obj/item/reagent_containers/glass/paint/red
+	icon_state = "paint_red"
+	paint_type = "red"
 
-	yellow
-		icon_state = "paint_yellow"
-		paint_type = "yellow"
+/obj/item/reagent_containers/glass/paint/yellow
+	icon_state = "paint_yellow"
+	paint_type = "yellow"
 
-	green
-		icon_state = "paint_green"
-		paint_type = "green"
+/obj/item/reagent_containers/glass/paint/green
+	icon_state = "paint_green"
+	paint_type = "green"
 
-	blue
-		icon_state = "paint_blue"
-		paint_type = "blue"
+/obj/item/reagent_containers/glass/paint/blue
+	icon_state = "paint_blue"
+	paint_type = "blue"
 
-	purple
-		icon_state = "paint_violet"
-		paint_type = "purple"
+/obj/item/reagent_containers/glass/paint/purple
+	icon_state = "paint_violet"
+	paint_type = "purple"
 
-	black
-		icon_state = "paint_black"
-		paint_type = "black"
+/obj/item/reagent_containers/glass/paint/black
+	icon_state = "paint_black"
+	paint_type = "black"
 
-	white
-		icon_state = "paint_white"
-		paint_type = "white"
+/obj/item/reagent_containers/glass/paint/white
+	icon_state = "paint_white"
+	paint_type = "white"

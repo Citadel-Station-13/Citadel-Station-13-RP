@@ -31,13 +31,13 @@ var/can_call_traders = 1
 	log_admin("[key_name(usr)] used Hire Nebula Gas Employees.")
 	trigger_trader_visit()
 
-client/verb/JoinTraders()
+/client/verb/JoinTraders()
 
 	set name = "Join as Nebula Gas Employee"
 	set category = "IC"
 
 	if(!MayRespawn(1))
-		to_chat(usr, "<span class='warning'>You cannot join the traders.</span>")
+		to_chat(usr, SPAN_WARNING("You cannot join the traders."))
 		return
 
 	if(istype(usr,/mob/observer/dead) || istype(usr,/mob/new_player))
