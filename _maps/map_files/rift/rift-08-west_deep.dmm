@@ -450,7 +450,7 @@
 /turf/simulated/wall,
 /area/rift/facility/interior/janitorial)
 "wx" = (
-/turf/simulated/open/lythios43c,
+/turf/simulated/open,
 /area/rift/exterior/mineshaft)
 "xa" = (
 /obj/structure/girder,
@@ -554,6 +554,9 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/undergound2)
+"Eq" = (
+/turf/simulated/floor/outdoors/safeice/lythios43c,
+/area/rift/exterior/bunker/bottom)
 "Et" = (
 /obj/effect/floor_decal/corner/white{
 	dir = 4
@@ -603,7 +606,7 @@
 /area/rift/facility/interior/prison)
 "Hp" = (
 /obj/structure/lattice,
-/turf/simulated/open/lythios43c,
+/turf/simulated/open,
 /area/rift/exterior/mineshaft)
 "Hs" = (
 /obj/machinery/light/small,
@@ -14596,8 +14599,8 @@ hW
 gI
 gI
 MM
-MM
-MM
+Eq
+Eq
 MM
 gI
 gI
@@ -14790,8 +14793,8 @@ hW
 gI
 gI
 gI
-MM
-MM
+Eq
+Eq
 MM
 gI
 gI

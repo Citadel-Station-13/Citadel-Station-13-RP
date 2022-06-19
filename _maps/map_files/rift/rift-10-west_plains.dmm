@@ -3569,7 +3569,7 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/exterior/nuketown)
 "rk" = (
-/turf/simulated/open/lythios43c,
+/turf/simulated/open,
 /area/rift/exterior/nuketown/bunker)
 "rn" = (
 /obj/structure/table/marble,
@@ -4440,7 +4440,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/open,
 /area/rift/exterior/nuketown/bunker)
 "va" = (
 /obj/structure/cable/green,
@@ -5886,7 +5886,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "Cr" = (
-/turf/simulated/open/lythios43c,
+/turf/simulated/open,
 /area/rift/exterior/mineshaft)
 "Cs" = (
 /obj/structure/closet/secure_closet/freezer/fridge{
@@ -7027,7 +7027,7 @@
 /area/rift/facility/exterior/shuttle)
 "Is" = (
 /obj/structure/lattice,
-/turf/simulated/open/lythios43c,
+/turf/simulated/open,
 /area/rift/exterior/mineshaft)
 "It" = (
 /obj/structure/cable/yellow{

@@ -466,7 +466,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/workroom)
 "Ec" = (
-/turf/simulated/open/lythios43c,
+/turf/simulated/open,
 /area/rift/exterior/mineshaft)
 "Eh" = (
 /turf/simulated/open,
@@ -509,7 +509,7 @@
 /area/rift/facility/interior/medical)
 "GX" = (
 /obj/structure/lattice,
-/turf/simulated/open/lythios43c,
+/turf/simulated/open,
 /area/rift/exterior/mineshaft)
 "Hh" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
