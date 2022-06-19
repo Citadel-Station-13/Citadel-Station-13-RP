@@ -118,7 +118,7 @@
 	container_type = /obj/structure/closet
 	container_name = "Formalwear for the best occasions."
 
-datum/supply_pack/costumes/witch
+/datum/supply_pack/costumes/witch
 	name = "Witch costume"
 	container_name = "Witch costume"
 	container_type = /obj/structure/closet

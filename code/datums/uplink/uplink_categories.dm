@@ -12,7 +12,7 @@
 			return 1
 	return 0
 
-datum/uplink_category/ammunition
+/datum/uplink_category/ammunition
 	name = "Ammunition"
 
 /datum/uplink_category/services

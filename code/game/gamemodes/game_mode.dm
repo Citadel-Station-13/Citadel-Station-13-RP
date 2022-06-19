@@ -114,7 +114,7 @@ var/global/list/additional_antag_types = list()
 				return
 
 /datum/game_mode/proc/announce() //to be called when round starts
-	to_chat(world, "<B>The current game mode is [capitalize(name)]!</B>") 
+	to_chat(world, "<B>The current game mode is [capitalize(name)]!</B>")
 	to_chat(world, "<B>The current engine is [GLOB.used_engine]!</B>")//Actually, why not expand this....
 	if(round_description) to_chat(world, "[round_description]")
 	if(round_autoantag) to_chat(world, "Antagonists will be added to the round automagically as needed.")
@@ -298,7 +298,7 @@ var/global/list/additional_antag_types = list()
 	var/escaped_total = 0
 	var/escaped_on_shuttle = 0
 
-	var/list/area/escape_locations = list(/area/shuttle/escape/centcom, /area/shuttle/escape_pod1/centcom, 
+	var/list/area/escape_locations = list(/area/shuttle/escape/centcom, /area/shuttle/escape_pod1/centcom,
 		/area/shuttle/escape_pod2/centcom, /area/shuttle/escape_pod3/centcom, /area/shuttle/escape_pod5/centcom,
 		/area/shuttle/escape,/area/centcom/terminal)
 
@@ -438,7 +438,7 @@ var/global/list/additional_antag_types = list()
 //////////////////////////
 //Reports player logouts//
 //////////////////////////
-proc/display_roundstart_logout_report()
+/proc/display_roundstart_logout_report()
 	var/msg = "<span class='notice'><b>Roundstart logout report</b>\n\n"
 	for(var/mob/living/L in GLOB.mob_list)
 
@@ -490,7 +490,7 @@ proc/display_roundstart_logout_report()
 		if(M.client && M.client.holder)
 			to_chat(M, msg)
 
-proc/get_nt_opposed()
+/proc/get_nt_opposed()
 	var/list/dudes = list()
 	for(var/mob/living/carbon/human/man in player_list)
 		if(man.client)

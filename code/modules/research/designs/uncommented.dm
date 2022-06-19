@@ -22,7 +22,7 @@
 	materials = list(MAT_GLASS = 2000, "sacid" = 20)
 	build_path = "/obj/item/circuitboard/rust_core_control"
 
-datum/design/rust_fuel_control
+/datum/design/rust_fuel_control
 	name = "Circuit Design (RUST fuel controller)"
 	desc = "Allows for the construction of circuit boards used to build a fuel injector control console for the RUST fusion engine."
 	id = "rust_fuel_control"
@@ -31,7 +31,7 @@ datum/design/rust_fuel_control
 	materials = list(MAT_GLASS = 2000, "sacid" = 20)
 	build_path = "/obj/item/circuitboard/rust_fuel_control"
 
-datum/design/rust_fuel_port
+/datum/design/rust_fuel_port
 	name = "Internal circuitry (RUST fuel port)"
 	desc = "Allows for the construction of circuit boards used to build a fuel injection port for the RUST fusion engine."
 	id = "rust_fuel_port"
@@ -40,7 +40,7 @@ datum/design/rust_fuel_port
 	materials = list(MAT_GLASS = 2000, "sacid" = 20, MAT_URANIUM = 3000)
 	build_path = "/obj/item/module/rust_fuel_port"
 
-datum/design/rust_fuel_compressor
+/datum/design/rust_fuel_compressor
 	name = "Circuit Design (RUST fuel compressor)"
 	desc = "Allows for the construction of circuit boards used to build a fuel compressor of the RUST fusion engine."
 	id = "rust_fuel_compressor"
@@ -49,7 +49,7 @@ datum/design/rust_fuel_compressor
 	materials = list(MAT_GLASS = 2000, "sacid" = 20, MAT_PHORON = 3000, MAT_DIAMOND = 1000)
 	build_path = "/obj/item/module/rust_fuel_compressor"
 
-datum/design/rust_core
+/datum/design/rust_core
 	name = "Internal circuitry (RUST tokamak core)"
 	desc = "The circuit board that for a RUST-pattern tokamak fusion core."
 	id = "pacman"
@@ -58,7 +58,7 @@ datum/design/rust_core
 	materials = list(MAT_GLASS = 2000, "sacid" = 20, MAT_PHORON = 3000, MAT_DIAMOND = 2000)
 	build_path = "/obj/item/circuitboard/rust_core"
 
-datum/design/rust_injector
+/datum/design/rust_injector
 	name = "Internal circuitry (RUST tokamak core)"
 	desc = "The circuit board that for a RUST-pattern particle accelerator."
 	id = "pacman"

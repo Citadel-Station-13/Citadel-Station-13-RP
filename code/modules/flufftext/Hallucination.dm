@@ -211,7 +211,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 
 	return start_txt + mocktxt + end_txt + "</TT></BODY></HTML>"
 
-proc/check_panel(mob/M)
+/proc/check_panel(mob/M)
 	if (istype(M, /mob/living/carbon/human) || istype(M, /mob/living/silicon/ai))
 		if(M.hallucination < 15)
 			return 1

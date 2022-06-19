@@ -78,7 +78,7 @@
 /datum/legacy_announcement/priority/security/Message(var/message as text, var/message_title as text, var/list/zlevels)
 	GLOB.global_announcer.autosay("<span class='alert'>[message_title]:</span> [message]", ANNOUNCER_NAME, channel = "Common", zlevels = zlevels)
 
-datum/legacy_announcement/proc/NewsCast(message as text, message_title as text)
+/datum/legacy_announcement/proc/NewsCast(message as text, message_title as text)
 	if(!newscast)
 		return
 
@@ -110,14 +110,14 @@ datum/legacy_announcement/proc/NewsCast(message as text, message_title as text)
 /datum/legacy_announcement/proc/Sound(var/message_sound, var/list/zlevels)
 	PlaySound(message_sound, zlevels)
 
-datum/legacy_announcement/priority/Sound(var/message_sound)
+/datum/legacy_announcement/priority/Sound(var/message_sound)
 	if(message_sound)
 		SEND_SOUND(world, message_sound)
 
-datum/legacy_announcement/priority/command/Sound(var/message_sound)
+/datum/legacy_announcement/priority/command/Sound(var/message_sound)
 	PlaySound(message_sound)
 
-datum/legacy_announcement/proc/Log(message as text, message_title as text)
+/datum/legacy_announcement/proc/Log(message as text, message_title as text)
 	if(log)
 		log_game("[key_name(usr)] has made \a [announcement_type]: [message_title] - [message] - [announcer]")
 		message_admins("[key_name_admin(usr)] has made \a [announcement_type].", 1)

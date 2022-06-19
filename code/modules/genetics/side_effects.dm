@@ -75,7 +75,7 @@
 		if(!H.reagents.has_reagent("anti_toxin"))
 			H.Confuse(100)
 
-proc/trigger_side_effect(mob/living/carbon/human/H)
+/proc/trigger_side_effect(mob/living/carbon/human/H)
 	spawn
 		if(!istype(H)) return
 		var/tp = pick(typesof(/datum/genetics/side_effect) - /datum/genetics/side_effect)

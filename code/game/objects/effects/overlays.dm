@@ -1,34 +1,37 @@
 /obj/effect/overlay
 	name = "overlay"
-	unacidable = 1
-	var/i_attached//Added for possible image attachments to objects. For hallucinations and the like.
+	unacidable = TRUE
+	var/i_attached //Added for possible image attachments to objects. For hallucinations and the like.
 
-/obj/effect/overlay/beam//Not actually a projectile, just an effect.
-	name="beam"
-	icon='icons/effects/beam.dmi'
-	icon_state="b_beam"
+/// Not actually a projectile, just an effect.
+/obj/effect/overlay/beam
+	name = "beam"
+	icon = 'icons/effects/beam.dmi'
+	icon_state = "b_beam"
 	var/tmp/atom/BeamSource
-	New()
-		..()
-		spawn(10) qdel(src)
+
+/obj/effect/overlay/beam/Initialize(mapload)
+	. = ..()
+	spawn(10)
+		qdel(src)
 
 /obj/effect/overlay/palmtree_r
 	name = "Palm tree"
 	icon = 'icons/misc/beach2.dmi'
 	icon_state = "palm1"
-	density = 1
+	density = TRUE
+	anchored = TRUE
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
-	anchored = 1
 
 /obj/effect/overlay/palmtree_l
 	name = "Palm tree"
 	icon = 'icons/misc/beach2.dmi'
 	icon_state = "palm2"
-	density = 1
+	density = TRUE
+	anchored = TRUE
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
-	anchored = 1
 
 /obj/effect/overlay/coconut
 	name = "Coconuts"
@@ -45,11 +48,11 @@
 	name = "wallrot"
 	desc = "Ick..."
 	icon = 'icons/effects/wallrot.dmi'
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/effect/overlay/wallrot/Initialize(mapload)
 	. = ..()
@@ -60,14 +63,14 @@
 	name = "snow"
 	icon = 'icons/turf/overlays.dmi'
 	icon_state = "snow"
-	anchored = 1
+	anchored = TRUE
 
 // Todo: Add a version that gradually reaccumulates over time by means of alpha transparency. -Spades
-/obj/effect/overlay/snow/attackby(obj/item/W as obj, mob/user as mob)
+/obj/effect/overlay/snow/attackby(obj/item/W, mob/user)
 	if (istype(W, /obj/item/shovel))
-		user.visible_message("<span class='notice'>[user] begins to shovel away \the [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] begins to shovel away \the [src]."))
 		if(do_after(user, 40))
-			to_chat(user, "<span class='notice'>You have finished shoveling!</span>")
+			to_chat(user, SPAN_NOTICE("You have finished shoveling!"))
 			qdel(src)
 		return
 
@@ -75,7 +78,7 @@
 	icon_state = "snowfloor"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
-	mouse_opacity = 0 //Don't block underlying tile interactions
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT //Don't block underlying tile interactions
 
 /obj/effect/overlay/snow/floor/edges
 	icon = 'icons/turf/snow.dmi'
@@ -118,7 +121,7 @@
 	anchored = TRUE
 	plane = ABOVE_PLANE
 
-// Similar to the tesla ball but doesn't actually do anything and is purely visual.
+/// Similar to the tesla ball but doesn't actually do anything and is purely visual.
 /obj/effect/overlay/energy_ball
 	name = "energy ball"
 	desc = "An energy ball."
@@ -132,7 +135,7 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	anchored = TRUE
 	vis_flags = VIS_INHERIT_DIR
-	///When detected to be unused it gets set to world.time, after a while it gets removed
-	var/unused = 0
-	///overlays which go unused for this amount of time get cleaned up
+	/// When detected to be unused it gets set to world.time, after a while it gets removed
+	var/unused = FALSE
+	/// Overlays which go unused for this amount of time get cleaned up
 	var/cache_expiration = 2 MINUTES

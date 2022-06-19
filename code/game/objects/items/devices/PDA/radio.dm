@@ -8,52 +8,56 @@
 	var/on = 0 //Are we currently active??
 	var/menu_message = ""
 
-	New()
-		..()
-		if (istype(loc.loc, /obj/item/pda))
-			hostpda = loc.loc
+/obj/item/integated_radio/Initialize(mapload)
+	. = ..()
+	if(istype(loc.loc, /obj/item/pda))
+		hostpda = loc.loc
 
-	proc/post_signal(var/freq, var/key, var/value, var/key2, var/value2, var/key3, var/value3, s_filter)
+/obj/item/integated_radio/proc/post_signal(freq, key, value, key2, value2, key3, value3, s_filter)
 
-		//to_chat(world, "Post: [freq]: [key]=[value], [key2]=[value2]")
-		var/datum/radio_frequency/frequency = radio_controller.return_frequency(freq)
+	//to_chat(world, "Post: [freq]: [key]=[value], [key2]=[value2]")
+	var/datum/radio_frequency/frequency = radio_controller.return_frequency(freq)
 
-		if(!frequency) return
-
-		var/datum/signal/signal = new()
-		signal.source = src
-		signal.transmission_method = 1
-		signal.data[key] = value
-		if(key2)
-			signal.data[key2] = value2
-		if(key3)
-			signal.data[key3] = value3
-
-		frequency.post_signal(src, signal, radio_filter = s_filter)
-
+	if(!frequency)
 		return
 
-	proc/generate_menu()
+	var/datum/signal/signal = new()
+	signal.source = src
+	signal.transmission_method = 1
+	signal.data[key] = value
+	if(key2)
+		signal.data[key2] = value2
+	if(key3)
+		signal.data[key3] = value3
+
+	frequency.post_signal(src, signal, radio_filter = s_filter)
+
+	return
+
+/obj/item/integated_radio/proc/generate_menu()
 
 /obj/item/integated_radio/beepsky
-	var/list/botlist = null		// list of bots
-	var/mob/living/bot/secbot/active 	// the active bot; if null, show bot list
-	var/list/botstatus			// the status signal sent by the bot
+	/// List of bots.
+	var/list/botlist = null
+	/// The active bot; if null, show bot list.
+	var/mob/living/bot/secbot/active
+	/// The status signal sent by the bot.
+	var/list/botstatus
 
 	var/control_freq = BOT_FREQ
 
-	// create a new QM cartridge, and register to receive bot control & beacon message
-	New()
-		..()
-		spawn(5)
-			if(radio_controller)
-				radio_controller.add_object(src, control_freq, radio_filter = RADIO_SECBOT)
+/// Create a new QM cartridge, and register to receive bot control & beacon message
+/obj/item/integated_radio/beepsky/Initialize(mapload)
+	. = ..()
+	spawn(5)
+		if(radio_controller)
+			radio_controller.add_object(src, control_freq, radio_filter = RADIO_SECBOT)
 
 	// receive radio signals
 	// can detect bot status signals
 	// create/populate list as they are recvd
 
-	receive_signal(datum/signal/signal)
+/obj/item/integated_radio/beepsky/receive_signal(datum/signal/signal)
 //		var/obj/item/pda/P = src.loc
 
 		/*
@@ -61,43 +65,43 @@
 		for(var/d in signal.data)
 			to_chat(world, "- [d] = [signal.data[d]]")
 		*/
-		if (signal.data["type"] == "secbot")
-			if(!botlist)
-				botlist = new()
+	if(signal.data["type"] == "secbot")
+		if(!botlist)
+			botlist = new()
 
-			if(!(signal.source in botlist))
-				botlist += signal.source
+		if(!(signal.source in botlist))
+			botlist += signal.source
 
-			if(active == signal.source)
-				var/list/b = signal.data
-				botstatus = b.Copy()
+		if(active == signal.source)
+			var/list/b = signal.data
+			botstatus = b.Copy()
 
 //		if (istype(P)) P.updateSelfDialog()
 
-	Topic(href, href_list)
-		..()
-		var/obj/item/pda/PDA = src.hostpda
+/obj/item/integated_radio/beepsky/Topic(href, href_list)
+	..()
+	var/obj/item/pda/PDA = src.hostpda
 
-		switch(href_list["op"])
+	switch(href_list["op"])
 
-			if("control")
-				active = locate(href_list["bot"])
-				post_signal(control_freq, "command", "bot_status", "active", active, s_filter = RADIO_SECBOT)
+		if("control")
+			active = locate(href_list["bot"])
+			post_signal(control_freq, "command", "bot_status", "active", active, s_filter = RADIO_SECBOT)
 
-			if("scanbots")		// find all bots
-				botlist = null
-				post_signal(control_freq, "command", "bot_status", s_filter = RADIO_SECBOT)
+		if("scanbots") // find all bots
+			botlist = null
+			post_signal(control_freq, "command", "bot_status", s_filter = RADIO_SECBOT)
 
-			if("botlist")
-				active = null
+		if("botlist")
+			active = null
 
-			if("stop", "go")
-				post_signal(control_freq, "command", href_list["op"], "active", active, s_filter = RADIO_SECBOT)
-				post_signal(control_freq, "command", "bot_status", "active", active, s_filter = RADIO_SECBOT)
+		if("stop", "go")
+			post_signal(control_freq, "command", href_list["op"], "active", active, s_filter = RADIO_SECBOT)
+			post_signal(control_freq, "command", "bot_status", "active", active, s_filter = RADIO_SECBOT)
 
-			if("summon")
-				post_signal(control_freq, "command", "summon", "active", active, "target", get_turf(PDA) , s_filter = RADIO_SECBOT)
-				post_signal(control_freq, "command", "bot_status", "active", active, s_filter = RADIO_SECBOT)
+		if("summon")
+			post_signal(control_freq, "command", "summon", "active", active, "target", get_turf(PDA) , s_filter = RADIO_SECBOT)
+			post_signal(control_freq, "command", "bot_status", "active", active, s_filter = RADIO_SECBOT)
 
 
 /obj/item/integated_radio/beepsky/Destroy()
@@ -105,11 +109,9 @@
 		radio_controller.remove_object(src, control_freq)
 	return ..()
 
-/*
- *	Radio Cartridge, essentially a signaler.
+/**
+ * Radio Cartridge, essentially a signaler.
  */
-
-
 /obj/item/integated_radio/signal
 	var/frequency = 1457
 	var/code = 30.0
@@ -121,7 +123,7 @@
 	if(!radio_controller)
 		return
 
-	if (src.frequency < PUBLIC_LOW_FREQ || src.frequency > PUBLIC_HIGH_FREQ)
+	if(src.frequency < PUBLIC_LOW_FREQ || src.frequency > PUBLIC_HIGH_FREQ)
 		src.frequency = sanitize_frequency(src.frequency)
 
 	set_frequency(frequency)

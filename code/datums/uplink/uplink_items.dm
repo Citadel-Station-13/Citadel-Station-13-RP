@@ -111,7 +111,7 @@ var/datum/uplink/uplink = new()
 	log_and_message_admins("used \the [U.loc] to buy \a [src]")
 	U.purchase_log[src] = U.purchase_log[src] + 1
 
-datum/uplink_item/dd_SortValue()
+/datum/uplink_item/dd_SortValue()
 	return cost(INFINITY)
 
 /********************************

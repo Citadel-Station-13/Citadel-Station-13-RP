@@ -33,7 +33,7 @@
 
 	return mobs
 
-proc/random_hair_style(gender, species = SPECIES_HUMAN)
+/proc/random_hair_style(gender, species = SPECIES_HUMAN)
 	var/h_style = "Bald"
 
 	var/list/valid_hairstyles = list()
@@ -52,7 +52,7 @@ proc/random_hair_style(gender, species = SPECIES_HUMAN)
 
 	return h_style
 
-proc/random_facial_hair_style(gender, species = SPECIES_HUMAN)
+/proc/random_facial_hair_style(gender, species = SPECIES_HUMAN)
 	var/f_style = "Shaved"
 
 	var/list/valid_facialhairstyles = list()
@@ -72,14 +72,14 @@ proc/random_facial_hair_style(gender, species = SPECIES_HUMAN)
 
 		return f_style
 
-proc/sanitize_name(name, species = SPECIES_HUMAN)
+/proc/sanitize_name(name, species = SPECIES_HUMAN)
 	var/datum/species/current_species
 	if(species)
 		current_species = name_static_species_meta(species)
 
 	return current_species ? current_species.sanitize_name(name) : sanitizeName(name, MAX_NAME_LEN)
 
-proc/random_name(gender, species = SPECIES_HUMAN)
+/proc/random_name(gender, species = SPECIES_HUMAN)
 
 	var/datum/species/current_species
 	if(species)
@@ -93,7 +93,7 @@ proc/random_name(gender, species = SPECIES_HUMAN)
 	else
 		return current_species.get_random_name(gender)
 
-proc/random_skin_tone()
+/proc/random_skin_tone()
 	switch(pick(60;"caucasian", 15;"afroamerican", 10;"african", 10;"latino", 5;"albino"))
 		if("caucasian")		. = -10
 		if("afroamerican")	. = -115
@@ -103,7 +103,7 @@ proc/random_skin_tone()
 		else				. = rand(-185,34)
 	return min(max( .+rand(-25, 25), -185),34)
 
-proc/skintone2racedescription(tone)
+/proc/skintone2racedescription(tone)
 	switch (tone)
 		if(30 to INFINITY)		return "albino"
 		if(20 to 30)			return "pale"
@@ -115,7 +115,7 @@ proc/skintone2racedescription(tone)
 		if(-INFINITY to -65)	return "black"
 		else					return "unknown"
 
-proc/age2agedescription(age)
+/proc/age2agedescription(age)
 	switch(age)
 		if(0 to 1)			return "infant"
 		if(1 to 3)			return "toddler"

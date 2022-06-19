@@ -31,36 +31,36 @@
 	. = ..()
 	. += "The service panel is [src.open ? "open" : "closed"]."
 
-/obj/item/storage/secure/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/storage/secure/attackby(obj/item/W, mob/user)
 	if(locked)
 		if (istype(W, /obj/item/melee/energy/blade) && emag_act(INFINITY, user, "You slice through the lock of \the [src]"))
 			var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 			spark_system.set_up(5, 0, src.loc)
 			spark_system.start()
-			playsound(src.loc, 'sound/weapons/blade1.ogg', 50, 1)
-			playsound(src.loc, "sparks", 50, 1)
+			playsound(src.loc, 'sound/weapons/blade1.ogg', 50, TRUE)
+			playsound(src.loc, "sparks", 50, TRUE)
 			return
 		if (W.is_screwdriver())
 			if (do_after(user, 20 * W.toolspeed))
 				src.open =! src.open
-				playsound(src, W.usesound, 50, 1)
-				user.show_message(text("<span class='notice'>You [] the service panel.</span>", (src.open ? "open" : "close")))
+				playsound(src, W.usesound, 50, TRUE)
+				user.show_message(SPAN_NOTICE("You [] the service panel."), (src.open ? "open" : "close"))
 			return
 		if (istype(W, /obj/item/multitool) && (src.open == 1)&& (!src.l_hacking))
-			user.show_message("<span class='notice'>Now attempting to reset internal memory, please hold.</span>", 1)
-			src.l_hacking = 1
+			user.show_message(SPAN_NOTICE("Now attempting to reset internal memory, please hold."), 1)
+			src.l_hacking = TRUE
 			if (do_after(usr, 100))
 				if (prob(40))
-					src.l_setshort = 1
-					src.l_set = 0
-					user.show_message("<span class='notice'>Internal memory reset. Please give it a few seconds to reinitialize.</span>", 1)
+					src.l_setshort = TRUE
+					src.l_set = FALSE
+					user.show_message(SPAN_NOTICE("Internal memory reset. Please give it a few seconds to reinitialize."), 1)
 					sleep(80)
-					src.l_setshort = 0
-					src.l_hacking = 0
+					src.l_setshort = FALSE
+					src.l_hacking = FALSE
 				else
-					user.show_message("<span class='warning'>Unable to reset internal memory.</span>", 1)
-					src.l_hacking = 0
-			else	src.l_hacking = 0
+					user.show_message(SPAN_WARNING("Unable to reset internal memory."), 1)
+					src.l_hacking = FALSE
+			else	src.l_hacking = FALSE
 			return
 		//At this point you have exhausted all the special things to do when locked
 		// ... but it's still locked.
@@ -71,39 +71,39 @@
 
 
 /obj/item/storage/secure/MouseDrop(over_object, src_location, over_location)
-	if (locked)
+	if(locked)
 		src.add_fingerprint(usr)
 		return
 	..()
 
 
-/obj/item/storage/secure/attack_self(mob/user as mob)
+/obj/item/storage/secure/attack_self(mob/user)
 	user.set_machine(src)
 	var/dat = text("<TT><B>[]</B><BR>\n\nLock Status: []",src, (src.locked ? "LOCKED" : "UNLOCKED"))
 	var/message = "Code"
-	if ((src.l_set == 0) && (!src.emagged) && (!src.l_setshort))
+	if((src.l_set == 0) && (!src.emagged) && (!src.l_setshort))
 		dat += text("<p>\n<b>5-DIGIT PASSCODE NOT SET.<br>ENTER NEW PASSCODE.</b>")
-	if (src.emagged)
+	if(src.emagged)
 		dat += text("<p>\n<font color=red><b>LOCKING SYSTEM ERROR - 1701</b></font>")
-	if (src.l_setshort)
+	if(src.l_setshort)
 		dat += text("<p>\n<font color=red><b>ALERT: MEMORY SYSTEM ERROR - 6040 201</b></font>")
 	message = text("[]", src.code)
-	if (!src.locked)
+	if(!src.locked)
 		message = "*****"
 	dat += text("<HR>\n>[]<BR>\n<A href='?src=\ref[];type=1'>1</A>-<A href='?src=\ref[];type=2'>2</A>-<A href='?src=\ref[];type=3'>3</A><BR>\n<A href='?src=\ref[];type=4'>4</A>-<A href='?src=\ref[];type=5'>5</A>-<A href='?src=\ref[];type=6'>6</A><BR>\n<A href='?src=\ref[];type=7'>7</A>-<A href='?src=\ref[];type=8'>8</A>-<A href='?src=\ref[];type=9'>9</A><BR>\n<A href='?src=\ref[];type=R'>R</A>-<A href='?src=\ref[];type=0'>0</A>-<A href='?src=\ref[];type=E'>E</A><BR>\n</TT>", message, src, src, src, src, src, src, src, src, src, src, src, src)
 	user << browse(dat, "window=caselock;size=300x280")
 
 /obj/item/storage/secure/Topic(href, href_list)
-	if ((usr.stat || usr.restrained()) || (get_dist(src, usr) > 1))
+	if((usr.stat || usr.restrained()) || (get_dist(src, usr) > 1))
 		..()
 		return
-	if (href_list["type"])
+	if(href_list["type"])
 		if (href_list["type"] == "E")
-			if ((src.l_set == 0) && (length(src.code) == 5) && (!src.l_setshort) && (src.code != "ERROR"))
+			if ((src.l_set == FALSE) && (length(src.code) == 5) && (!src.l_setshort) && (src.code != "ERROR"))
 				src.l_code = src.code
-				src.l_set = 1
+				src.l_set = TRUE
 			else if ((src.code == src.l_code) && (src.emagged == 0) && (src.l_set == 1))
-				src.locked = 0
+				src.locked = FALSE
 				src.overlays = null
 				overlays += image('icons/obj/storage.dmi', icon_opened)
 				src.code = null
@@ -111,7 +111,7 @@
 				src.code = "ERROR"
 		else
 			if ((href_list["type"] == "R") && (src.emagged == 0) && (!src.l_setshort))
-				src.locked = 1
+				src.locked = TRUE
 				src.overlays = null
 				src.code = null
 				src.close(usr)
@@ -125,14 +125,14 @@
 			return
 	return
 
-/obj/item/storage/secure/emag_act(var/remaining_charges, var/mob/user, var/feedback)
+/obj/item/storage/secure/emag_act(remaining_charges, mob/user, feedback)
 	if(!emagged)
-		emagged = 1
+		emagged = TRUE
 		src.overlays += image('icons/obj/storage.dmi', icon_sparking)
 		sleep(6)
 		src.overlays = null
 		overlays += image('icons/obj/storage.dmi', icon_locking)
-		locked = 0
+		locked = FALSE
 		to_chat(user, (feedback ? feedback : "You short out the lock of \the [src]."))
 		return 1
 
@@ -145,29 +145,29 @@
 	icon_state = "secure"
 	item_state_slots = list(slot_r_hand_str = "case", slot_l_hand_str = "case")
 	desc = "A large briefcase with a digital locking system."
-	force = 8.0
+	force = 8
 	throw_speed = 1
 	throw_range = 4
 	max_w_class = ITEMSIZE_NORMAL
 	w_class = ITEMSIZE_LARGE
 	max_storage_space = ITEMSIZE_COST_NORMAL * 4
 
-	attack_hand(mob/user as mob)
-		if ((src.loc == user) && (src.locked == 1))
-			to_chat(user, "<span class='warning'>[src] is locked and cannot be opened!</span>")
-		else if ((src.loc == user) && (!src.locked))
-			src.open(usr)
-		else
-			..()
-			for(var/mob/M in range(1))
-				if (M.s_active == src)
-					src.close(M)
-		src.add_fingerprint(user)
-		return
+/obj/item/storage/secure/briefcase/attack_hand(mob/user)
+	if((src.loc == user) && (src.locked == TRUE))
+		to_chat(user, SPAN_WARNING("[src] is locked and cannot be opened!"))
+	else if ((src.loc == user) && (!src.locked))
+		src.open(usr)
+	else
+		..()
+		for(var/mob/M in range(1))
+			if (M.s_active == src)
+				src.close(M)
+	src.add_fingerprint(user)
+	return
 
-/obj/item/storage/secure/briefcase/MouseDrop(mob/user as mob)
+/obj/item/storage/secure/briefcase/MouseDrop(mob/user)
 	if(ismob(src.loc))
-		if ((src.loc == user) && (src.locked == 1))
+		if ((src.loc == user) && (src.locked == TRUE))
 			return
 		if(!CanMouseDrop(src))
 			return
@@ -185,7 +185,7 @@
 
 	starts_with = list(
 		/obj/item/paper,
-		/obj/item/pen
+		/obj/item/pen,
 	)
 //DONATOR ITEM
 
@@ -214,16 +214,16 @@
 	icon_opened = "safe0"
 	icon_locking = "safeb"
 	icon_sparking = "safespark"
-	force = 8.0
+	force = 8
 	w_class = ITEMSIZE_NO_CONTAINER
 	max_w_class = ITEMSIZE_LARGE // This was 8 previously...
-	anchored = 1.0
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	cant_hold = list(/obj/item/storage/secure/briefcase)
 	starts_with = list(
 		/obj/item/paper,
-		/obj/item/pen
+		/obj/item/pen,
 	)
 
-/obj/item/storage/secure/safe/attack_hand(mob/user as mob)
+/obj/item/storage/secure/safe/attack_hand(mob/user)
 	return attack_self(user)

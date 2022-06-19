@@ -105,7 +105,7 @@ VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
 		if(flags & INITIALIZED)
 			UpdateMineral()
 
-turf/simulated/mineral/rich/make_ore(var/rare_ore)
+/turf/simulated/mineral/rich/make_ore(var/rare_ore)
 	if(mineral || ignore_mapgen)
 		return
 	var/mineral_name

@@ -29,7 +29,7 @@ var/list/cached_space = list()
 			return 0
 	return 1
 
-proc/get_deepspace(x,y)
+/proc/get_deepspace(x,y)
 	var/turf/unsimulated/map/overmap_turf = locate(x,y,GLOB.using_map.overmap_z)
 	if(!istype(overmap_turf))
 		CRASH("Attempt to get deepspace at ([x],[y]) which is not on overmap: [overmap_turf]")
@@ -83,7 +83,7 @@ proc/get_deepspace(x,y)
 	return FALSE
 	// return isnull(client) && !key && stat == DEAD // Allows bodies that players have ghosted from to be deleted - Ater
 
-proc/overmap_spacetravel(var/turf/space/T, var/atom/movable/A)
+/proc/overmap_spacetravel(var/turf/space/T, var/atom/movable/A)
 	if (!T || !A)
 		return
 

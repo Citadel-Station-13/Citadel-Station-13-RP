@@ -284,14 +284,14 @@
 	var/obj/item/sample_object
 	var/number
 
-	New(obj/item/sample as obj)
-		if(!istype(sample))
-			qdel(src)
-		sample_object = sample
-		number = 1
+/datum/numbered_display/New(obj/item/sample)
+	if(!istype(sample))
+		qdel(src)
+	sample_object = sample
+	number = 1
 
-//This proc determins the size of the inventory to be displayed. Please touch it only if you know what you're doing.
-/obj/item/storage/proc/orient2hud(mob/user as mob)
+/// This proc determins the size of the inventory to be displayed. Please touch it only if you know what you're doing.
+/obj/item/storage/proc/orient2hud(mob/user)
 
 	var/adjusted_contents = contents.len
 
@@ -321,55 +321,59 @@
 		src.slot_orient_objs(row_num, col_count, numbered_contents)
 	return
 
-//This proc return 1 if the item can be picked up and 0 if it can't.
-//Set the stop_messages to stop it from printing messages
-/obj/item/storage/proc/can_be_inserted(obj/item/W as obj, stop_messages = 0)
-	if(!istype(W)) return //Not an item
+/// This proc return 1 if the item can be picked up and 0 if it can't.
+/// Set the stop_messages to stop it from printing messages
+/obj/item/storage/proc/can_be_inserted(obj/item/W, stop_messages = FALSE)
+	if(!istype(W))
+		return //Not an item
 
 	if(usr && usr.isEquipped(W) && !usr.canUnEquip(W))
-		return 0
+		return FALSE
 
 	if(src.loc == W)
-		return 0 //Means the item is already in the storage item
+		return FALSE //Means the item is already in the storage item
 	if(storage_slots != null && contents.len >= storage_slots)
 		if(!stop_messages)
-			to_chat(usr, "<span class='notice'>[src] is full, make some space.</span>")
-		return 0 //Storage item is full
+			to_chat(usr, SPAN_NOTICE("[src] is full, make some space."))
+		return FALSE //Storage item is full
 
 	if(can_hold.len && !is_type_in_list(W, can_hold))
 		if(!stop_messages)
 			if (istype(W, /obj/item/hand_labeler))
-				return 0
-			to_chat(usr, "<span class='notice'>[src] cannot hold [W].</span>")
-		return 0
+				return FALSE
+			to_chat(usr, SPAN_NOTICE("[src] cannot hold [W]."))
+		return FALSE
 
 	if(cant_hold.len && is_type_in_list(W, cant_hold))
 		if(!stop_messages)
-			to_chat(usr, "<span class='notice'>[src] cannot hold [W].</span>")
-		return 0
+			to_chat(usr, SPAN_NOTICE("[src] cannot hold [W]."))
+		return FALSE
 
 	if (max_w_class != null && W.w_class > max_w_class)
 		if(!stop_messages)
-			to_chat(usr, "<span class='notice'>[W] is too long for \the [src].</span>")
-		return 0
+			to_chat(usr, SPAN_NOTICE("[W] is too long for \the [src]."))
+		return FALSE
 
 	if((storage_space_used() + W.get_storage_cost()) > max_storage_space) //Adds up the combined w_classes which will be in the storage item if the item is added to it.
 		if(!stop_messages)
-			to_chat(usr, "<span class='notice'>[src] is too full, make some space.</span>")
-		return 0
+			to_chat(usr, SPAN_NOTICE("[src] is too full, make some space."))
+		return FALSE
 
 	if(W.w_class >= src.w_class && (istype(W, /obj/item/storage)))
 		if(!stop_messages)
-			to_chat(usr, "<span class='notice'>[src] cannot hold [W] as it's a storage item of the same size.</span>")
-		return 0 //To prevent the stacking of same sized storage items.
+			to_chat(usr, SPAN_NOTICE("[src] cannot hold [W] as it's a storage item of the same size."))
+		return FALSE //To prevent the stacking of same sized storage items.
 
-	return 1
+	return TRUE
 
-//This proc handles items being inserted. It does not perform any checks of whether an item can or can't be inserted. That's done by can_be_inserted()
-//The stop_warning parameter will stop the insertion message from being displayed. It is intended for cases where you are inserting multiple items at once,
-//such as when picking up all the items on a tile with one click.
-/obj/item/storage/proc/handle_item_insertion(obj/item/W as obj, prevent_warning = 0)
-	if(!istype(W)) return 0
+/**
+ * This proc handles items being inserted. It does not perform any checks of whether an item can or can't be inserted. That's done by can_be_inserted()
+ * The stop_warning parameter will stop the insertion message from being displayed. It is intended for cases where you are inserting multiple items at once,
+ * such as when picking up all the items on a tile with one click.
+ */
+/obj/item/storage/proc/handle_item_insertion(obj/item/W, prevent_warning = FALSE)
+	if(!istype(W))
+		return FALSE
 
 	if(usr)
 		usr.remove_from_mob(W,target = src) //If given a target, handles forceMove()
@@ -382,11 +386,11 @@
 		if(!prevent_warning)
 			for(var/mob/M in viewers(usr, null))
 				if (M == usr)
-					to_chat(usr, "<span class='notice'>You put \the [W] into [src].</span>")
+					to_chat(usr, SPAN_NOTICE("You put \the [W] into [src]."))
 				else if (M in range(1)) //If someone is standing close enough, they can tell what it is...
-					M.show_message("<span class='notice'>\The [usr] puts [W] into [src].</span>")
+					M.show_message(SPAN_NOTICE("\The [usr] puts [W] into [src]."))
 				else if (W && W.w_class >= 3) //Otherwise they can only see large or normal items from a distance...
-					M.show_message("<span class='notice'>\The [usr] puts [W] into [src].</span>")
+					M.show_message(SPAN_NOTICE("\The [usr] puts [W] into [src]."))
 
 		src.orient2hud(usr)
 		if(usr.s_active)
@@ -396,11 +400,12 @@
 		W.on_enter_storage(src)
 
 	update_icon()
-	return 1
+	return TRUE
 
-//Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target
-/obj/item/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location)
-	if(!istype(W)) return 0
+/// Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target.
+/obj/item/storage/proc/remove_from_storage(obj/item/W, atom/new_location)
+	if(!istype(W))
+		return FALSE
 
 	if(istype(src, /obj/item/storage/fancy))
 		var/obj/item/storage/fancy/F = src
@@ -430,10 +435,10 @@
 		W.maptext = ""
 	W.on_exit_storage(src)
 	update_icon()
-	return 1
+	return TRUE
 
-//This proc is called when you want to place an item into the storage item.
-/obj/item/storage/attackby(obj/item/W as obj, mob/user as mob)
+/// This proc is called when you want to place an item into the storage item.
+/obj/item/storage/attackby(obj/item/W, mob/user)
 	..()
 
 	if(isrobot(user))
@@ -461,22 +466,22 @@
 		var/obj/item/tray/T = W
 		if(T.calc_carry() > 0)
 			if(prob(85))
-				to_chat(user, "<span class='warning'>The tray won't fit in [src].</span>")
+				to_chat(user, SPAN_WARNING("The tray won't fit in [src]."))
 				return
 			else
 				W.forceMove(get_turf(user))
 				if ((user.client && user.s_active != src))
 					user.client.screen -= W
 				W.dropped(user)
-				to_chat(user, "<span class='warning'>God damn it!</span>")
+				to_chat(user, SPAN_WARNING("God damn it!"))
 
 	W.add_fingerprint(user)
 	return handle_item_insertion(W)
 
-/obj/item/storage/attack_hand(mob/user as mob)
+/obj/item/storage/attack_hand(mob/user)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(H.l_store == src && !H.get_active_hand())	//Prevents opening if it's in a pocket.
+		if(H.l_store == src && !H.get_active_hand()) //Prevents opening if it's in a pocket.
 			H.put_in_hands(src)
 			H.l_store = null
 			return
@@ -495,27 +500,27 @@
 	src.add_fingerprint(user)
 	return
 
-/obj/item/storage/proc/gather_all(turf/T as turf, mob/user as mob)
+/obj/item/storage/proc/gather_all(turf/T, mob/user)
 	var/list/rejections = list()
-	var/success = 0
-	var/failure = 0
+	var/success = FALSE
+	var/failure = FALSE
 
 	for(var/obj/item/I in T)
 		if(I.type in rejections) // To limit bag spamming: any given type only complains once
 			continue
 		if(!can_be_inserted(I, user))	// Note can_be_inserted still makes noise when the answer is no
 			rejections += I.type	// therefore full bags are still a little spammy
-			failure = 1
+			failure = TRUE
 			continue
-		success = 1
+		success = TRUE
 		handle_item_insertion(I, 1)	//The 1 stops the "You put the [src] into [S]" insertion message from being displayed.
 	if(success && !failure)
-		to_chat(user, "<span class='notice'>You put everything in [src].</span>")
+		to_chat(user, SPAN_NOTICE("You put everything in [src]."))
 	else if(success)
-		to_chat(user, "<span class='notice'>You put some things in [src].</span>")
+		to_chat(user, SPAN_NOTICE("You put some things in [src]."))
 	else
 		if(world.time >= last_message == 0)
-			to_chat(user, "<span class='notice'>You fail to pick anything up with \the [src].</span>")
+			to_chat(user, SPAN_NOTICE("You fail to pick anything up with \the [src]."))
 			last_message = world.time + 200
 
 /obj/item/storage/verb/toggle_gathering_mode()
@@ -600,7 +605,7 @@
 
 	PopulateContents()
 
-	//calibrate_size()			//Let's not!
+	//calibrate_size() //Let's not!
 
 /obj/item/storage/proc/populate_contents_legacy()
 	if(LAZYLEN(starts_with) && !empty)
@@ -614,7 +619,7 @@
 /obj/item/storage/proc/PopulateContents()
 
 
-///Prevents spawned containers from being too small for their contents.
+/// Prevents spawned containers from being too small for their contents.
 /obj/item/storage/proc/calibrate_size()
 	max_storage_space = max(storage_space_used(),max_storage_space)
 
@@ -630,8 +635,8 @@
 			src.quick_empty()
 			return 1
 
-//Returns the storage depth of an atom. This is the number of storage items the atom is contained in before reaching toplevel (the area).
-//Returns -1 if the atom was not found on container.
+/// Returns the storage depth of an atom. This is the number of storage items the atom is contained in before reaching toplevel (the area).
+/// Returns -1 if the atom was not found on container.
 /atom/proc/storage_depth(atom/container)
 	var/depth = 0
 	var/atom/cur_atom = src
@@ -648,8 +653,8 @@
 
 	return depth
 
-//Like storage depth, but returns the depth to the nearest turf
-//Returns -1 if no top level turf (a loc was null somewhere, or a non-turf atom's loc was an area somehow).
+/// Like storage depth, but returns the depth to the nearest turf.
+/// Returns -1 if no top level turf (a loc was null somewhere, or a non-turf atom's loc was an area somehow).
 /atom/proc/storage_depth_turf()
 	var/depth = 0
 	var/atom/cur_atom = src
@@ -666,7 +671,7 @@
 
 	return depth
 
-// See inventory_sizes.dm for the defines.
+/// See inventory_sizes.dm for the defines.
 /obj/item/proc/get_storage_cost()
 	if (storage_cost)
 		return storage_cost
@@ -696,7 +701,7 @@
 		max_w_class = max(I.w_class, max_w_class)
 		max_storage_space += I.get_storage_cost()
 
-/*
+/**
  * Trinket Box - READDING SOON
  */
 /obj/item/storage/trinketbox
@@ -704,7 +709,7 @@
 	desc = "A box that can hold small trinkets, such as a ring."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "trinketbox"
-	var/open = 0
+	var/open = FALSE
 	storage_slots = 1
 	can_hold = list(
 		/obj/item/clothing/gloves/ring,
@@ -748,7 +753,7 @@
 	. = ..()
 	if(open && contents.len)
 		var/display_item = contents[1]
-		. += "<span class='notice'>\The [src] contains \the [display_item]!</span>"
+		. += SPAN_NOTICE("\The [src] contains \the [display_item]!")
 
 /obj/item/storage/AllowDrop()
 	return TRUE

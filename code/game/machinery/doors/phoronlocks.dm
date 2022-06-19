@@ -1,25 +1,25 @@
-//
-// Objects for making phoron airlocks work
-// Instructions: Choose a base tag, and include equipment with tags as follows:
-// Phoron Lock Controller (/obj/machinery/embedded_controller/radio/airlock/phoron), id_tag = "[base]"
-// 		Don't set any other tag vars, they will be auto-populated
-// Internal Sensor (obj/machinery/airlock_sensor/phoron), id_tag = "[base]_sensor"
-//		Make sure it is actually located inside the airlock, not on a wall turf.  use pixel_x/y
-// Exterior doors: (obj/machinery/door/airlock), id_tag = "[base]_outer"
-// Interior doors: (obj/machinery/door/airlock), id_tag = "[base]_inner"
-// Exterior access button: (obj/machinery/access_button/airlock_exterior),  master_tag = "[base]"
-// Interior access button: (obj/machinery/access_button/airlock_interior),  master_tag = "[base]"
-// Srubbers: (obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary), frequency = "1379", scrub_id = "[base]_scrubber"
-// Pumps: (obj/machinery/atmospherics/component/unary/vent_pump/high_volume), frequency = 1379 id_tag = "[base]_pump"
-//
+/**
+ * Objects for making phoron airlocks work
+ * Instructions: Choose a base tag, and include equipment with tags as follows:
+ * Phoron Lock Controller (/obj/machinery/embedded_controller/radio/airlock/phoron), id_tag = "[base]"
+ * 		Don't set any other tag vars, they will be auto-populated
+ * Internal Sensor (obj/machinery/airlock_sensor/phoron), id_tag = "[base]_sensor"
+ *		Make sure it is actually located inside the airlock, not on a wall turf.  use pixel_x/y
+ * Exterior doors: (obj/machinery/door/airlock), id_tag = "[base]_outer"
+ * Interior doors: (obj/machinery/door/airlock), id_tag = "[base]_inner"
+ * Exterior access button: (obj/machinery/access_button/airlock_exterior),  master_tag = "[base]"
+ * Interior access button: (obj/machinery/access_button/airlock_interior),  master_tag = "[base]"
+ * Srubbers: (obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary), frequency = "1379", scrub_id = "[base]_scrubber"
+ * Pumps: (obj/machinery/atmospherics/component/unary/vent_pump/high_volume), frequency = 1379 id_tag = "[base]_pump"
+ */
 
-obj/machinery/airlock_sensor/phoron
+/obj/machinery/airlock_sensor/phoron
 	icon = 'icons/obj/airlock_machines.dmi'
 	icon_state = "airlock_sensor_off"
 	name = "phoronlock sensor"
 	var/previousPhoron
 
-obj/machinery/airlock_sensor/phoron/process()
+/obj/machinery/airlock_sensor/phoron/process(delta_time)
 	if(on)
 		var/datum/gas_mixture/air_sample = return_air()
 		var/pressure = round(air_sample.return_pressure(), 0.1)
@@ -38,10 +38,10 @@ obj/machinery/airlock_sensor/phoron/process()
 			alert = (pressure < ONE_ATMOSPHERE*0.8) || (phoron > 0.5)
 			update_icon()
 
-obj/machinery/airlock_sensor/phoron/airlock_interior
+/obj/machinery/airlock_sensor/phoron/airlock_interior
 	command = "cycle_interior"
 
-obj/machinery/airlock_sensor/phoron/airlock_exterior
+/obj/machinery/airlock_sensor/phoron/airlock_exterior
 	command = "cycle_exterior"
 
 
@@ -63,7 +63,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/receive_signal(datum/signal/signal)
 	if(!signal.data["tag"] || (signal.data["tag"] != scrub_id) || (signal.data["sigtype"] != "command"))
-		return 0
+		return FALSE
 	if(signal.data["power"])
 		on = text2num(signal.data["power"]) ? TRUE : FALSE
 	if("power_toggle" in signal.data)
@@ -79,7 +79,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/proc/broadcast_status()
 	if(!radio_connection)
-		return 0
+		return FALSE
 	var/datum/signal/signal = new
 	signal.transmission_method = TRANSMISSION_RADIO
 	signal.source = src
@@ -89,7 +89,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 		"sigtype" = "status"
 	)
 	radio_connection.post_signal(src, signal, radio_filter = RADIO_AIRLOCK)
-	return 1
+	return TRUE
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock		//Special scrubber with bonus inbuilt heater
 	volume_rate = 40000
@@ -156,7 +156,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 /datum/computer/file/embedded_program/airlock/phoron
 	var/tag_scrubber
 
-/datum/computer/file/embedded_program/airlock/phoron/New(var/obj/machinery/embedded_controller/M)
+/datum/computer/file/embedded_program/airlock/phoron/New(obj/machinery/embedded_controller/M)
 	..(M)
 	memory["chamber_sensor_phoron"] = 0
 	// warning: hardcode alert
@@ -196,7 +196,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 // Note: This code doesn't wait for pumps and scrubbers to be offline like other code does
 // The idea is to make the doors open and close faster, since there isn't much harm really.
 // But lets evaluate how it actually works in the game.
-/datum/computer/file/embedded_program/airlock/phoron/process()
+/datum/computer/file/embedded_program/airlock/phoron/process(delta_time)
 	switch(state)
 		if(STATE_IDLE)
 			if(target_state == TARGET_INOPEN)
@@ -265,7 +265,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 	signalPump(tag_airpump, 0)
 	signalScrubber(tag_scrubber, 0)
 
-/datum/computer/file/embedded_program/airlock/phoron/proc/signalScrubber(var/tag, var/power)
+/datum/computer/file/embedded_program/airlock/phoron/proc/signalScrubber(tag, power)
 	var/datum/signal/signal = new
 	signal.data = list(
 		"tag" = tag,

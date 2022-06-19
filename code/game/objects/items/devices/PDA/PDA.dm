@@ -1527,22 +1527,24 @@ GLOBAL_LIST_EMPTY(PDAs)
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "pdabox"
 
-	New()
-		..()
-		new /obj/item/pda(src)
-		new /obj/item/pda(src)
-		new /obj/item/pda(src)
-		new /obj/item/pda(src)
-		new /obj/item/cartridge/head(src)
+/obj/item/storage/box/PDAs/Initialize(mapload)
+	. = ..()
+	new /obj/item/pda(src)
+	new /obj/item/pda(src)
+	new /obj/item/pda(src)
+	new /obj/item/pda(src)
+	new /obj/item/cartridge/head(src)
 
-		var/newcart = pick(	/obj/item/cartridge/engineering,
-							/obj/item/cartridge/security,
-							/obj/item/cartridge/medical,
-							/obj/item/cartridge/signal/science,
-							/obj/item/cartridge/quartermaster)
-		new newcart(src)
+	var/newcart = pick(
+		/obj/item/cartridge/engineering,
+		/obj/item/cartridge/security,
+		/obj/item/cartridge/medical,
+		/obj/item/cartridge/signal/science,
+		/obj/item/cartridge/quartermaster,
+	)
+	new newcart(src)
 
-// Pass along the pulse to atoms in contents, largely added so pAIs are vulnerable to EMP
+/// Pass along the pulse to atoms in contents, largely added so pAIs are vulnerable to EMP
 /obj/item/pda/emp_act(severity)
 	for(var/atom/A in src)
 		A.emp_act(severity)

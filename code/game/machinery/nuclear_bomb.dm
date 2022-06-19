@@ -200,7 +200,7 @@ var/bomb_set
 		extended = 1
 	return
 
-obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
+/obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
 	var/dat
 	dat += "<TT><B>Nuclear Fission Explosive</B><BR>\nNuclear Device Wires:</A><HR>"
 	for(var/wire in wires)

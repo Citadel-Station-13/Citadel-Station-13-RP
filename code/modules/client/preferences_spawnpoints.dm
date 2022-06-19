@@ -6,7 +6,7 @@ var/list/datum/spawnpoint/spawntypes = list()
 		var/datum/spawnpoint/S = new type()
 		spawntypes[S.display_name] = S
 
-// pending removal
+//! pending removal
 /datum/spawnpoint
 	// join method
 	var/method
@@ -15,14 +15,14 @@ var/list/datum/spawnpoint/spawntypes = list()
 	var/list/disallow_job = null
 	var/announce_channel = "Common"
 
-	proc/check_job_spawning(job)
-		if(restrict_job && !(job in restrict_job))
-			return 0
+/datum/spawnpoint/proc/check_job_spawning(job)
+	if(restrict_job && !(job in restrict_job))
+		return FALSE
 
-		if(disallow_job && (job in disallow_job))
-			return 0
+	if(disallow_job && (job in disallow_job))
+		return FALSE
 
-		return 1
+	return TRUE
 
 /datum/spawnpoint/proc/get_spawn_position(faction)
 	return SSjob.GetLatejoinSpawnpoint(faction = faction, method = method)

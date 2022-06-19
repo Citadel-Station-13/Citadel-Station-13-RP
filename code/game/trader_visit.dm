@@ -48,7 +48,7 @@ client/verb/JoinTraders()
 	else
 		to_chat(usr, "You need to be an observer or new player to use this.")
 
-proc/trigger_trader_visit()
+/proc/trigger_trader_visit()
 	if(!can_call_traders)
 		return
 	if(hire_nebula)

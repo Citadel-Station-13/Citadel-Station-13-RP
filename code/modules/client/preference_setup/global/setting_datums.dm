@@ -354,7 +354,7 @@ var/list/_client_preferences_by_type
 	disabled_description = "Normal Ghost"
 
 
-datum/client_preference/debug/age_verified
+/datum/client_preference/debug/age_verified
 	description = "(Debug) Age Verified Status"
 	key = "AGE_VERIFIED"
 	enabled_description = "TRUE"

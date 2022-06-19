@@ -748,7 +748,7 @@
 		return 0
 
 /atom/proc/checkpass(passflag)
-	return (pass_flags&passflag)
+	return (pass_flags & passflag)
 
 /atom/proc/isinspace()
 	if(istype(get_turf(src), /turf/space))

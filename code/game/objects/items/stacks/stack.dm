@@ -456,32 +456,33 @@
 	var/use_material
 	var/pass_color
 
-	New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1, time = 0, one_per_turf = 0, on_floor = 0, supplied_material = null, pass_stack_color)
-		src.title = title
-		src.result_type = result_type
-		src.req_amount = req_amount
-		src.res_amount = res_amount
-		src.max_res_amount = max_res_amount
-		src.time = time
-		src.one_per_turf = one_per_turf
-		src.on_floor = on_floor
-		src.use_material = supplied_material
-		src.pass_color = pass_stack_color
+/datum/stack_recipe/New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1, time = 0, one_per_turf = 0, on_floor = 0, supplied_material = null, pass_stack_color)
+	src.title = title
+	src.result_type = result_type
+	src.req_amount = req_amount
+	src.res_amount = res_amount
+	src.max_res_amount = max_res_amount
+	src.time = time
+	src.one_per_turf = one_per_turf
+	src.on_floor = on_floor
+	src.use_material = supplied_material
+	src.pass_color = pass_stack_color
 
-/*
+/**
  * Recipe list datum
  */
 /datum/stack_recipe_list
 	var/title = "ERROR"
 	var/list/recipes = null
-	New(title, recipes)
-		src.title = title
-		src.recipes = recipes
+
+/datum/stack_recipe_list/New(title, recipes)
+	src.title = title
+	src.recipes = recipes
 
 /obj/item/stack/proc/set_amount(var/new_amount, var/no_limits = FALSE)
 	if(new_amount < 0 || new_amount % 1)
 		stack_trace("Tried to set a bad stack amount: [new_amount]")
-		return 0
+		return FALSE
 
 	// Clean up the new amount
 	new_amount = max(round(new_amount), 0)

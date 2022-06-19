@@ -1,5 +1,3 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
-
 /obj/item/storage/lockbox
 	name = "lockbox"
 	desc = "A locked box."
@@ -9,70 +7,70 @@
 	max_w_class = ITEMSIZE_NORMAL
 	max_storage_space = ITEMSIZE_COST_NORMAL * 4 //The sum of the w_classes of all the items in this storage item.
 	req_access = list(access_armory)
-	preserve_item = 1
-	var/locked = 1
-	var/broken = 0
+	preserve_item = TRUE
+	var/locked = TRUE
+	var/broken = FALSE
 	var/icon_locked = "lockbox+l"
 	var/icon_closed = "lockbox"
 	var/icon_broken = "lockbox+b"
 
 
-	attackby(obj/item/W as obj, mob/user as mob)
-		if (istype(W, /obj/item/card/id))
-			if(src.broken)
-				to_chat(user, "<span class='warning'>It appears to be broken.</span>")
+/obj/item/storage/lockbox/attackby(obj/item/W, mob/user)
+	if (istype(W, /obj/item/card/id))
+		if(src.broken)
+			to_chat(user, SPAN_WARNING("It appears to be broken."))
+			return
+		if(src.allowed(user))
+			src.locked = !( src.locked )
+			if(src.locked)
+				src.icon_state = src.icon_locked
+				to_chat(user, SPAN_NOTICE("You lock \the [src]!"))
+				close_all()
 				return
-			if(src.allowed(user))
-				src.locked = !( src.locked )
-				if(src.locked)
-					src.icon_state = src.icon_locked
-					to_chat(user, "<span class='notice'>You lock \the [src]!</span>")
-					close_all()
-					return
-				else
-					src.icon_state = src.icon_closed
-					to_chat(user, "<span class='notice'>You unlock \the [src]!</span>")
-					return
 			else
-				to_chat(user, "<span class='warning'>Access Denied</span>")
-		else if(istype(W, /obj/item/melee/energy/blade))
-			if(emag_act(INFINITY, user, W, "The locker has been sliced open by [user] with an energy blade!", "You hear metal being sliced and sparks flying."))
-				var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
-				spark_system.set_up(5, 0, src.loc)
-				spark_system.start()
-				playsound(src.loc, 'sound/weapons/blade1.ogg', 50, 1)
-				playsound(src.loc, "sparks", 50, 1)
-		if(!locked)
-			..()
+				src.icon_state = src.icon_closed
+				to_chat(user, SPAN_NOTICE("You unlock \the [src]!"))
+				return
 		else
-			to_chat(user, "<span class='warning'>It's locked!</span>")
-		return
+			to_chat(user, SPAN_WARNING("Access Denied"))
+	else if(istype(W, /obj/item/melee/energy/blade))
+		if(emag_act(INFINITY, user, W, "The locker has been sliced open by [user] with an energy blade!", "You hear metal being sliced and sparks flying."))
+			var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
+			spark_system.set_up(5, 0, src.loc)
+			spark_system.start()
+			playsound(src.loc, 'sound/weapons/blade1.ogg', 50, TRUE)
+			playsound(src.loc, "sparks", 50, TRUE)
+	if(!locked)
+		..()
+	else
+		to_chat(user, SPAN_WARNING("It's locked!"))
+	return
 
 
-	show_to(mob/user as mob)
-		if(locked)
-			to_chat(user, "<span class='warning'>It's locked!</span>")
-		else
-			..()
-		return
+/obj/item/storage/lockbox/show_to(mob/user)
+	if(locked)
+		to_chat(user, SPAN_WARNING("It's locked!"))
+	else
+		..()
+	return
 
-/obj/item/storage/lockbox/emag_act(var/remaining_charges, var/mob/user, var/emag_source, var/visual_feedback = "", var/audible_feedback = "")
+/obj/item/storage/lockbox/emag_act(remaining_charges, mob/user, emag_source, visual_feedback = "", audible_feedback = "")
 	if(!broken)
 		if(visual_feedback)
-			visual_feedback = "<span class='warning'>[visual_feedback]</span>"
+			visual_feedback  = SPAN_WARNING("[visual_feedback]")
 		else
-			visual_feedback = "<span class='warning'>The locker has been sliced open by [user] with an electromagnetic card!</span>"
+			visual_feedback  = SPAN_WARNING("The locker has been sliced open by [user] with an electromagnetic card!")
 		if(audible_feedback)
-			audible_feedback = "<span class='warning'>[audible_feedback]</span>"
+			audible_feedback = SPAN_WARNING("[audible_feedback]")
 		else
-			audible_feedback = "<span class='warning'>You hear a faint electrical spark.</span>"
+			audible_feedback = SPAN_WARNING("You hear a faint electrical spark.")
 
-		broken = 1
-		locked = 0
+		broken = TRUE
+		locked = FALSE
 		desc = "It appears to be broken."
 		icon_state = src.icon_broken
 		visible_message(visual_feedback, audible_feedback)
-		return 1
+		return TRUE
 
 /obj/item/storage/lockbox/loyalty
 	name = "lockbox of loyalty implants"

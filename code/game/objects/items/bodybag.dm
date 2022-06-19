@@ -7,26 +7,25 @@
 	icon_state = "bodybag_folded"
 	w_class = ITEMSIZE_SMALL
 
-	attack_self(mob/user)
-		var/obj/structure/closet/body_bag/R = new /obj/structure/closet/body_bag(user.loc)
-		R.add_fingerprint(user)
-		qdel(src)
-
+/obj/item/bodybag/attack_self(mob/user)
+	var/obj/structure/closet/body_bag/R = new /obj/structure/closet/body_bag(user.loc)
+	R.add_fingerprint(user)
+	qdel(src)
 
 /obj/item/storage/box/bodybags
 	name = "body bags"
 	desc = "This box contains body bags."
 	icon_state = "bodybags"
-	New()
-		..()
-		new /obj/item/bodybag(src)
-		new /obj/item/bodybag(src)
-		new /obj/item/bodybag(src)
-		new /obj/item/bodybag(src)
-		new /obj/item/bodybag(src)
-		new /obj/item/bodybag(src)
-		new /obj/item/bodybag(src)
 
+/obj/item/storage/box/bodybags/Initialize(mapload)
+	. = ..()
+	new /obj/item/bodybag(src)
+	new /obj/item/bodybag(src)
+	new /obj/item/bodybag(src)
+	new /obj/item/bodybag(src)
+	new /obj/item/bodybag(src)
+	new /obj/item/bodybag(src)
+	new /obj/item/bodybag(src)
 
 /obj/structure/closet/body_bag
 	name = "body bag"
@@ -38,19 +37,19 @@
 	open_sound = 'sound/items/zip.ogg'
 	close_sound = 'sound/items/zip.ogg'
 	var/item_path = /obj/item/bodybag
-	density = 0
+	density = FALSE
 	storage_capacity = (MOB_MEDIUM * 2) - 1
-	var/contains_body = 0
+	var/contains_body = FALSE
 
-/obj/structure/closet/body_bag/attackby(var/obj/item/W as obj, mob/user as mob)
-	if (istype(W, /obj/item/pen))
-		var/t = input(user, "What would you like the label to be?", text("[]", src.name), null)  as text
-		if (user.get_active_hand() != W)
+/obj/structure/closet/body_bag/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/pen))
+		var/t = input(user, "What would you like the label to be?", text("[]", src.name), null) as text
+		if(user.get_active_hand() != W)
 			return
-		if (!in_range(src, user) && src.loc != user)
+		if(!in_range(src, user) && src.loc != user)
 			return
 		t = sanitizeSafe(t, MAX_NAME_LEN)
-		if (t)
+		if(t)
 			src.name = "body bag - "
 			src.name += t
 			src.overlays += image(src.icon, "bodybag_label")
@@ -64,22 +63,25 @@
 		src.overlays.Cut()
 		return
 
-/obj/structure/closet/body_bag/store_mobs(var/stored_units)
+/obj/structure/closet/body_bag/store_mobs(stored_units)
 	contains_body = ..()
 	return contains_body
 
 /obj/structure/closet/body_bag/close()
 	if(..())
-		density = 0
-		return 1
-	return 0
+		density = FALSE
+		return TRUE
+	return FALSE
 
 /obj/structure/closet/body_bag/MouseDrop(over_object, src_location, over_location)
 	..()
 	if((over_object == usr && (in_range(src, usr) || usr.contents.Find(src))))
-		if(!ishuman(usr))	return 0
-		if(opened)	return 0
-		if(contents.len)	return 0
+		if(!ishuman(usr))
+			return FALSE
+		if(opened)
+			return FALSE
+		if(contents.len)
+			return FALSE
 		visible_message("[usr] folds up the [src.name]")
 		var/folded = new item_path(get_turf(src))
 		spawn(0)
@@ -98,7 +100,7 @@
 		occupants += H
 	return occupants
 
-/obj/structure/closet/body_bag/proc/update(var/broadcast=0)
+/obj/structure/closet/body_bag/proc/update(broadcast = FALSE)
 	if(istype(loc, /obj/structure/morgue))
 		var/obj/structure/morgue/M = loc
 		M.update(broadcast)
@@ -137,17 +139,17 @@
 	especially useful if short on time or in a hostile enviroment."
 	icon = 'icons/obj/cryobag.dmi'
 	item_path = /obj/item/bodybag/cryobag
-	store_misc = 0
-	store_items = 0
-	var/used = 0
+	store_misc = FALSE
+	store_items = FALSE
+	var/used = FALSE
 	var/obj/item/tank/tank = null
 	var/tank_type = /obj/item/tank/stasis/oxygen
 	var/stasis_level = 3 //Every 'this' life ticks are applied to the mob (when life_ticks%stasis_level == 1)
 	var/obj/item/reagent_containers/syringe/syringe
 
 /obj/structure/closet/body_bag/cryobag/Initialize(mapload)
+	. = ..()
 	tank = new tank_type(null) //It's in nullspace to prevent ejection when the bag is opened.
-	..()
 
 /obj/structure/closet/body_bag/cryobag/Destroy()
 	QDEL_NULL(syringe)
@@ -183,14 +185,14 @@
 	if(ishuman(AM))
 		var/mob/living/carbon/human/H = AM
 		H.Stasis(stasis_level)
-		src.used = 1
+		src.used = TRUE
 		inject_occupant(H)
 
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
-		O.preserved = 1
+		O.preserved = TRUE
 		for(var/obj/item/organ/organ in O)
-			organ.preserved = 1
+			organ.preserved = TRUE
 	..()
 
 /obj/structure/closet/body_bag/cryobag/Exited(atom/movable/AM)
@@ -200,17 +202,18 @@
 
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
-		O.preserved = 0
+		O.preserved = FALSE
 		for(var/obj/item/organ/organ in O)
-			organ.preserved = 0
+			organ.preserved = FALSE
 	..()
 
-/obj/structure/closet/body_bag/cryobag/return_air() //Used to make stasis bags protect from vacuum.
+/// Used to make stasis bags protect from vacuum.
+/obj/structure/closet/body_bag/cryobag/return_air()
 	if(tank)
 		return tank.air_contents
 	..()
 
-/obj/structure/closet/body_bag/cryobag/proc/inject_occupant(var/mob/living/carbon/human/H)
+/obj/structure/closet/body_bag/cryobag/proc/inject_occupant(mob/living/carbon/human/H)
 	if(!syringe)
 		return
 
@@ -220,9 +223,9 @@
 /obj/structure/closet/body_bag/cryobag/examine(mob/user)
 	. = ..()
 	if(Adjacent(user)) //The bag's rather thick and opaque from a distance.
-		. += "<span class='info'>You peer into \the [src].</span>"
+		. += SPAN_INFO("You peer into \the [src].")
 		if(syringe)
-			. += "<span class='info'>It has a syringe added to it.</span>"
+			. += SPAN_INFO("It has a syringe added to it.")
 		for(var/mob/living/L in contents)
 			L.examine(user)
 
@@ -237,10 +240,10 @@
 
 		else if(istype(W,/obj/item/reagent_containers/syringe))
 			if(syringe)
-				to_chat(user,"<span class='warning'>\The [src] already has an injector! Remove it first.</span>")
+				to_chat(user, SPAN_WARNING("\The [src] already has an injector! Remove it first."))
 			else
 				var/obj/item/reagent_containers/syringe/syringe = W
-				to_chat(user,"<span class='info'>You insert \the [syringe] into \the [src], and it locks into place.</span>")
+				to_chat(user, SPAN_INFO("You insert \the [syringe] into \the [src], and it locks into place."))
 				user.unEquip(syringe)
 				src.syringe = syringe
 				syringe.loc = null
@@ -251,11 +254,10 @@
 		else if(W.is_screwdriver())
 			if(syringe)
 				if(used)
-					to_chat(user,"<span class='warning'>The injector cannot be removed now that the stasis bag has been used!</span>")
+					to_chat(user, SPAN_WARNING("The injector cannot be removed now that the stasis bag has been used!"))
 				else
 					syringe.forceMove(src.loc)
-					to_chat(user,"<span class='info'>You pry \the [syringe] out of \the [src].</span>")
+					to_chat(user, SPAN_INFO("You pry \the [syringe] out of \the [src]."))
 					syringe = null
-
 		else
 			..()

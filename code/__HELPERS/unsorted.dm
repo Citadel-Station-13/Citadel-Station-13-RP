@@ -570,7 +570,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	return max(min(middle, high), low)
 
 ///Returns random gauss number
-proc/GaussRand(var/sigma)
+/proc/GaussRand(var/sigma)
 	var/x,y,rsq
 	do
 		x=2*rand()-1
@@ -580,7 +580,7 @@ proc/GaussRand(var/sigma)
 	return sigma*y*sqrt(-2*log(rsq)/rsq)
 
 ///Returns random gauss number, rounded to 'roundto'
-proc/GaussRandRound(var/sigma,var/roundto)
+/proc/GaussRandRound(var/sigma,var/roundto)
 	return round(GaussRand(sigma),roundto)
 
 ///Step-towards method of determining whether one atom can see another. Similar to viewers()
@@ -768,7 +768,7 @@ proc/GaussRandRound(var/sigma,var/roundto)
 					refined_trg -= B
 					continue moving
 
-proc/DuplicateObject(obj/original, var/perfectcopy = 0 , var/sameloc = 0)
+/proc/DuplicateObject(obj/original, var/perfectcopy = 0 , var/sameloc = 0)
 	if(!original)
 		return null
 
@@ -995,7 +995,7 @@ var/global/list/common_tools = list(
 		return TRUE
 	return
 
-proc/is_hot(obj/item/W as obj)
+/proc/is_hot(obj/item/W as obj)
 	switch(W.type)
 		if(/obj/item/weldingtool)
 			var/obj/item/weldingtool/WT = W

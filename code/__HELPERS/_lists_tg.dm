@@ -239,7 +239,7 @@ This actually tests if they have the same entries and values.
 			min = mid+1
 
 /*
-proc/dd_sortedObjectList(list/incoming)
+/proc/dd_sortedObjectList(list/incoming)
 	/*
 	   Use binary search to order by dd_SortValue().
 	   This works by going to the half-point of the list, seeing if the node in

@@ -78,7 +78,7 @@
 	w_class = ITEMSIZE_NORMAL
 	ammo_type = /obj/item/ammo_casing/a12g/beanbag
 
-obj/item/gun/projectile/shotgun/pump/combat/warden/verb/rename_gun()
+/obj/item/gun/projectile/shotgun/pump/combat/warden/verb/rename_gun()
 	set name = "Name Gun"
 	set category = "Object"
 	set desc = "Rename your gun. If you're the Warden."
@@ -202,7 +202,7 @@ obj/item/gun/projectile/shotgun/pump/combat/warden/verb/rename_gun()
 	ammo_type = /obj/item/ammo_casing/a12g/silver
 	holy = TRUE
 
-obj/item/gun/projectile/shotgun/doublebarrel/quad
+/obj/item/gun/projectile/shotgun/doublebarrel/quad
 	name = "quad-barreled shotgun"
 	desc = "A shotgun pattern designed to make the most out of the limited machining capability of the frontier. 4 Whole barrels of death, loads using 12 gauge rounds."
 	icon_state = "shotgun_q"

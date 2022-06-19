@@ -105,7 +105,7 @@
 	name = "Trenchcoat - Grey"
 	path = /obj/item/clothing/suit/storage/trench/grey
 
-datum/gear/suit/duster
+/datum/gear/suit/duster
 	name = "Cowboy Duster"
 	path = /obj/item/clothing/suit/storage/duster
 

@@ -1,5 +1,3 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
-
 var/cultwords = list()
 var/runedec = 0
 var/global/list/engwords = list("travel", "blood", "join", "hell", "destroy", "technology", "self", "see", "other", "hide")
@@ -21,54 +19,55 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 		runewords-=cultwords[word]
 
 /obj/effect/rune
-	desc = "A strange collection of symbols drawn in blood."
-	anchored = 1
 	icon = 'icons/obj/rune.dmi'
 	icon_state = "1"
-	var/visibility = 0
-	unacidable = 1
+	desc = "A strange collection of symbols drawn in blood."
+	anchored = TRUE
+	unacidable = TRUE
 	layer = TURF_LAYER
 
-
+	var/visibility = FALSE
 	var/word1
 	var/word2
 	var/word3
 	var/image/blood_image
 	var/list/converting = list()
 
-// Places these combos are mentioned: this file - twice in the rune code, once in imbued tome, once in tome's HTML runes.dm - in the imbue rune code. If you change a combination - dont forget to change it everywhere.
-
-// travel self [word] - Teleport to random [rune with word destination matching]
-// travel other [word] - Portal to rune with word destination matching - kinda doesnt work. At least the icon. No idea why.
-// see blood Hell - Create a new tome
-// join blood self - Incorporate person over the rune into the group
-// Hell join self - Summon TERROR
-// destroy see technology - EMP rune
-// travel blood self - Drain blood
-// see Hell join - See invisible
-// blood join Hell - Raise dead
-
-// hide see blood - Hide nearby runes
-// blood see hide - Reveal nearby runes  - The point of this rune is that its reversed obscure rune. So you always know the words to reveal the rune once oyu have obscured it.
-
-// Hell travel self - Leave your body and ghost around
-// blood see travel - Manifest a ghost into a mortal body
-// Hell tech join - Imbue a rune into a talisman
-// Hell blood join - Sacrifice rune
-// destroy travel self - Wall rune
-// join other self - Summon cultist rune
-// travel technology other - Freeing rune    //    other blood travel was freedom join other
-
-// hide other see - Deafening rune     //     was destroy see hear
-// destroy see other - Blinding rune
-// destroy see blood - BLOOD BOIL
-
-// self other technology - Communication rune  //was other hear blood
-// join hide technology - stun rune. Rune color: bright pink.
+/**
+ *  Places these combos are mentioned: this file - twice in the rune code, once in imbued tome, once in tome's HTML runes.dm - in the imbue rune code. If you change a combination - dont forget to change it everywhere.
+ *
+ *  travel self [word] - Teleport to random [rune with word destination matching]
+ *  travel other [word] - Portal to rune with word destination matching - kinda doesnt work. At least the icon. No idea why.
+ *  see blood Hell - Create a new tome
+ *  join blood self - Incorporate person over the rune into the group
+ *  Hell join self - Summon TERROR
+ *  destroy see technology - EMP rune
+ *  travel blood self - Drain blood
+ *  see Hell join - See invisible
+ *  blood join Hell - Raise dead
+ *
+ *  hide see blood - Hide nearby runes
+ *  blood see hide - Reveal nearby runes  - The point of this rune is that its reversed obscure rune. So you always know the words to reveal the rune once oyu have obscured it.
+ *
+ *  Hell travel self - Leave your body and ghost around
+ *  blood see travel - Manifest a ghost into a mortal body
+ *  Hell tech join - Imbue a rune into a talisman
+ *  Hell blood join - Sacrifice rune
+ *  destroy travel self - Wall rune
+ *  join other self - Summon cultist rune
+ *  travel technology other - Freeing rune    //    other blood travel was freedom join other
+ *
+ *  hide other see - Deafening rune     //     was destroy see hear
+ *  destroy see other - Blinding rune
+ *  destroy see blood - BLOOD BOIL
+ *
+ *  self other technology - Communication rune  //was other hear blood
+ *  join hide technology - stun rune. Rune color: bright pink.
+ */
 /obj/effect/rune/Initialize(mapload)
 	. = ..()
 	blood_image = image(loc = src)
-	blood_image.override = 1
+	blood_image.override = TRUE
 	for(var/mob/living/silicon/ai/AI in player_list)
 		if(AI.client)
 			AI.client.images += blood_image
@@ -88,18 +87,16 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 	if(iscultist(user))
 		. += "This spell circle reads: <i>[word1] [word2] [word3]</i>."
 
-
 /obj/effect/rune/attackby(var/obj/I, mob/user)
 	if(istype(I, /obj/item/book/tome) && iscultist(user))
 		to_chat(user, "You retrace your steps, carefully undoing the lines of the rune.")
 		qdel(src)
 		return
 	else if(istype(I, /obj/item/nullrod))
-		to_chat(user, "<span class='notice'>You disrupt the vile magic with the deadening field of the null rod!</span>")
+		to_chat(user, SPAN_NOTICE("You disrupt the vile magic with the deadening field of the null rod!"))
 		qdel(src)
 		return
 	return
-
 
 /obj/effect/rune/attack_hand(mob/user)
 	if(!ishuman(user))
@@ -171,7 +168,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 	else
 		usr.whisper(pick("Hakkrutju gopoenjim.", "Nherasai pivroiashan.", "Firjji prhiv mazenhor.", "Tanah eh wakantahe.", "Obliyae na oraie.", "Miyf hon vnor'c.", "Wakabai hij fen juswix."))
 	for (var/mob/V in viewers(src))
-		V.show_message("<span class='warning'>The markings pulse with a small burst of light, then fall dark.</span>", 3, "<span class='warning'>You hear a faint fizzle.</span>", 2)
+		V.show_message(SPAN_WARNING("The markings pulse with a small burst of light, then fall dark."), 3, SPAN_WARNING("You hear a faint fizzle."), 2)
 	return
 
 /obj/effect/rune/proc/check_icon()
@@ -184,7 +181,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
-	unique = 1
+	unique = TRUE
 	var/tomedat = ""
 	var/list/words = list("ire" = "ire", "ego" = "ego", "nahlizet" = "nahlizet", "certum" = "certum", "veri" = "veri", "jatkaa" = "jatkaa", "balaq" = "balaq", "mgar" = "mgar", "karazet" = "karazet", "geeri" = "geeri")
 
@@ -283,6 +280,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 				</body>
 				</html>
 				"}
+
 /obj/item/book/tome/Initialize(mapload)
 	. = ..()
 	if(!cultwords["travel"])
@@ -291,7 +289,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 		words[cultwords[V]] = V
 
 /obj/item/book/tome/attack(mob/living/M, mob/user)
-	add_attack_logs(user,M,"Hit with [name]")
+	add_attack_logs(user, M, "Hit with [name]")
 	if(istype(M,/mob/observer/dead))
 		var/mob/observer/dead/D = M
 		D.manifest(user)
@@ -304,8 +302,8 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 		return
 	M.take_organ_damage(0,rand(5,20)) //really lucky - 5 hits for a crit
 	for(var/mob/O in viewers(M, null))
-		O.show_message("<span class='warning'>\The [user] beats \the [M] with \the [src]!</span>", 1)
-	to_chat(M, "<span class='danger'>You feel searing heat inside!</span>")
+		O.show_message(SPAN_WARNING("\The [user] beats \the [M] with \the [src]!"), 1)
+	to_chat(M, SPAN_DANGER("You feel searing heat inside!"))
 
 /obj/item/book/tome/attack_self(mob/user)
 	if(!ishuman(user))
@@ -320,13 +318,13 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 		for(var/obj/effect/rune/N in rune_list)
 			C++
 		if (!istype(H.loc,/turf))
-			to_chat(H, "<span class='warning'>You do not have enough space to write a proper rune.</span>")
+			to_chat(H, SPAN_WARNING("You do not have enough space to write a proper rune."))
 			return
 		if (C>=26 + runedec + cult.current_antagonists.len) //including the useless rune at the secret room, shouldn't count against the limit of 25 runes - Urist
 			alert("The cloth of reality can't take that much of a strain. Remove some runes first!")
 			return
 		else
-			switch(alert("You open the tome",,"Read it","Scribe a rune", "Cancel"))
+			switch(tgui_alert(user, "You open the tome", , list("Read it", "Scribe a rune", "Cancel")))
 				if("Cancel")
 					return
 				if("Read it")
@@ -360,7 +358,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 			"stun" = list("join","hide","technology"),
 			"armor" = list("hell","destroy","other"),
 			"teleport" = list("travel","self"),
-			"teleport other" = list("travel","other")
+			"teleport other" = list("travel","other"),
 		)
 		var/list/english = list()
 		var/list/scribewords = list("none")
@@ -373,21 +371,23 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 				scribewords += entry
 		var/chosen_rune = null
 		if(H)
-			chosen_rune = input ("Choose a rune to scribe.") in scribewords
+			chosen_rune = tgui_input_list(user, "Choose a rune to scribe.",, scribewords)
 			if (!chosen_rune)
 				return
 			if (chosen_rune == "none")
-				to_chat(H, "<span class='notice'>You decide against scribing a rune, perhaps you should take this time to study your notes.</span>")
+				to_chat(H, SPAN_NOTICE("You decide against scribing a rune, perhaps you should take this time to study your notes."))
 				return
 			if (chosen_rune == "teleport")
-				dictionary[chosen_rune] += input ("Choose a destination word") in english
+				dictionary[chosen_rune] += tgui_input_list(user, "Choose a destination word",, english)
 			if (chosen_rune == "teleport other")
-				dictionary[chosen_rune] += input ("Choose a destination word") in english
+				dictionary[chosen_rune] += tgui_input_list(user, "Choose a destination word",, english)
 		if(H.get_active_hand() != src)
 			return
-		for (var/mob/V in viewers(src))
-			V.show_message("<span class='danger'>\The [user] slices open a finger and begins to chant and paint symbols on the floor.</span>", 3, "<span class='danger'>You hear chanting.</span>", 2)
-		to_chat(user, "<span class='danger'>You slice open one of your fingers and begin drawing a rune on the floor whilst chanting the ritual that binds your life essence with the dark arcane energies flowing through the surrounding world.</span>")
+		for(var/mob/V in viewers(src))
+			V.show_message(\
+				SPAN_DANGER("\The [user] slices open a finger and begins to chant and paint symbols on the floor."), 3, \
+				SPAN_DANGER("You hear chanting."), 2)
+		to_chat(user, SPAN_DANGER("You slice open one of your fingers and begin drawing a rune on the floor whilst chanting the ritual that binds your life essence with the dark arcane energies flowing through the surrounding world."))
 		H.take_overall_damage((rand(9)+1)/10) // 0.1 to 1.0 damage
 		if(do_after(H, 50))
 			var/area/A = get_area(user)
@@ -395,7 +395,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 			if(H.get_active_hand() != src)
 				return
 			var/obj/effect/rune/R = new /obj/effect/rune(user.loc)
-			to_chat(H, "<span class='notice'>You finish drawing the arcane markings of the Geometer.</span>")
+			to_chat(H, SPAN_NOTICE("You finish drawing the arcane markings of the Geometer."))
 			var/list/required = dictionary[chosen_rune]
 			R.word1 = english[required[1]]
 			R.word2 = english[required[2]]
@@ -415,180 +415,182 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 	else
 		. += "The scriptures of Nar-Sie, The One Who Sees, The Geometer of Blood. Contains the details of every ritual his followers could think of. Most of these are useless, though."
 
-obj/item/book/tome/cultify()
+/obj/item/book/tome/cultify()
 	return
 
-/obj/item/book/tome/imbued //admin tome, spawns working runes without waiting
+/// Admin tome, spawns working runes without waiting.
+/obj/item/book/tome/imbued
 	w_class = ITEMSIZE_SMALL
-	var/cultistsonly = 1
-	attack_self(mob/user as mob)
-		if(src.cultistsonly && !iscultist(usr))
-			return
-		if(!cultwords["travel"])
-			runerandom()
-		if(user)
-			var/r
-			if (!istype(user.loc,/turf))
-				to_chat(user, "<span class='notice'>You do not have enough space to write a proper rune.</span>")
-			var/list/runes = list("teleport", "itemport", "tome", "armor", "convert", "tear in reality", "emp", "drain", "seer", "raise", "obscure", "reveal", "astral journey", "manifest", "imbue talisman", "sacrifice", "wall", "freedom", "cultsummon", "deafen", "blind", "bloodboil", "communicate", "stun")
-			r = input("Choose a rune to scribe", "Rune Scribing") in runes //not cancellable.
-			var/obj/effect/rune/R = new /obj/effect/rune
-			if(istype(user, /mob/living/carbon/human))
-				var/mob/living/carbon/human/H = user
-				R.blood_DNA = list()
-				R.blood_DNA[H.dna.unique_enzymes] = H.dna.b_type
-			var/area/A = get_area(user)
-			log_and_message_admins("created \an [r] rune at \the [A.name] - [user.loc.x]-[user.loc.y]-[user.loc.z].")
-			switch(r)
-				if("teleport")
-					var/list/words = list("ire", "ego", "nahlizet", "certum", "veri", "jatkaa", "balaq", "mgar", "karazet", "geeri")
-					var/beacon
-					if(usr)
-						beacon = input("Select the last rune", "Rune Scribing") in words
-					R.word1=cultwords["travel"]
-					R.word2=cultwords["self"]
-					R.word3=beacon
-					R.loc = user.loc
-					R.check_icon()
-				if("itemport")
-					var/list/words = list("ire", "ego", "nahlizet", "certum", "veri", "jatkaa", "balaq", "mgar", "karazet", "geeri")
-					var/beacon
-					if(usr)
-						beacon = input("Select the last rune", "Rune Scribing") in words
-					R.word1=cultwords["travel"]
-					R.word2=cultwords["other"]
-					R.word3=beacon
-					R.loc = user.loc
-					R.check_icon()
-				if("tome")
-					R.word1=cultwords["see"]
-					R.word2=cultwords["blood"]
-					R.word3=cultwords["hell"]
-					R.loc = user.loc
-					R.check_icon()
-				if("armor")
-					R.word1=cultwords["hell"]
-					R.word2=cultwords["destroy"]
-					R.word3=cultwords["other"]
-					R.loc = user.loc
-					R.check_icon()
-				if("convert")
-					R.word1=cultwords["join"]
-					R.word2=cultwords["blood"]
-					R.word3=cultwords["self"]
-					R.loc = user.loc
-					R.check_icon()
-				if("tear in reality")
-					R.word1=cultwords["hell"]
-					R.word2=cultwords["join"]
-					R.word3=cultwords["self"]
-					R.loc = user.loc
-					R.check_icon()
-				if("emp")
-					R.word1=cultwords["destroy"]
-					R.word2=cultwords["see"]
-					R.word3=cultwords["technology"]
-					R.loc = user.loc
-					R.check_icon()
-				if("drain")
-					R.word1=cultwords["travel"]
-					R.word2=cultwords["blood"]
-					R.word3=cultwords["self"]
-					R.loc = user.loc
-					R.check_icon()
-				if("seer")
-					R.word1=cultwords["see"]
-					R.word2=cultwords["hell"]
-					R.word3=cultwords["join"]
-					R.loc = user.loc
-					R.check_icon()
-				if("raise")
-					R.word1=cultwords["blood"]
-					R.word2=cultwords["join"]
-					R.word3=cultwords["hell"]
-					R.loc = user.loc
-					R.check_icon()
-				if("obscure")
-					R.word1=cultwords["hide"]
-					R.word2=cultwords["see"]
-					R.word3=cultwords["blood"]
-					R.loc = user.loc
-					R.check_icon()
-				if("astral journey")
-					R.word1=cultwords["hell"]
-					R.word2=cultwords["travel"]
-					R.word3=cultwords["self"]
-					R.loc = user.loc
-					R.check_icon()
-				if("manifest")
-					R.word1=cultwords["blood"]
-					R.word2=cultwords["see"]
-					R.word3=cultwords["travel"]
-					R.loc = user.loc
-					R.check_icon()
-				if("imbue talisman")
-					R.word1=cultwords["hell"]
-					R.word2=cultwords["technology"]
-					R.word3=cultwords["join"]
-					R.loc = user.loc
-					R.check_icon()
-				if("sacrifice")
-					R.word1=cultwords["hell"]
-					R.word2=cultwords["blood"]
-					R.word3=cultwords["join"]
-					R.loc = user.loc
-					R.check_icon()
-				if("reveal")
-					R.word1=cultwords["blood"]
-					R.word2=cultwords["see"]
-					R.word3=cultwords["hide"]
-					R.loc = user.loc
-					R.check_icon()
-				if("wall")
-					R.word1=cultwords["destroy"]
-					R.word2=cultwords["travel"]
-					R.word3=cultwords["self"]
-					R.loc = user.loc
-					R.check_icon()
-				if("freedom")
-					R.word1=cultwords["travel"]
-					R.word2=cultwords["technology"]
-					R.word3=cultwords["other"]
-					R.loc = user.loc
-					R.check_icon()
-				if("cultsummon")
-					R.word1=cultwords["join"]
-					R.word2=cultwords["other"]
-					R.word3=cultwords["self"]
-					R.loc = user.loc
-					R.check_icon()
-				if("deafen")
-					R.word1=cultwords["hide"]
-					R.word2=cultwords["other"]
-					R.word3=cultwords["see"]
-					R.loc = user.loc
-					R.check_icon()
-				if("blind")
-					R.word1=cultwords["destroy"]
-					R.word2=cultwords["see"]
-					R.word3=cultwords["other"]
-					R.loc = user.loc
-					R.check_icon()
-				if("bloodboil")
-					R.word1=cultwords["destroy"]
-					R.word2=cultwords["see"]
-					R.word3=cultwords["blood"]
-					R.loc = user.loc
-					R.check_icon()
-				if("communicate")
-					R.word1=cultwords["self"]
-					R.word2=cultwords["other"]
-					R.word3=cultwords["technology"]
-					R.loc = user.loc
-					R.check_icon()
-				if("stun")
-					R.word1=cultwords["join"]
-					R.word2=cultwords["hide"]
-					R.word3=cultwords["technology"]
-					R.loc = user.loc
-					R.check_icon()
+	var/cultistsonly = TRUE
+
+/obj/item/book/tome/imbued/attack_self(mob/user)
+	if(src.cultistsonly && !iscultist(usr))
+		return
+	if(!cultwords["travel"])
+		runerandom()
+	if(user)
+		var/r
+		if (!istype(user.loc,/turf))
+			to_chat(user, SPAN_NOTICE("You do not have enough space to write a proper rune."))
+		var/list/runes = list("teleport", "itemport", "tome", "armor", "convert", "tear in reality", "emp", "drain", "seer", "raise", "obscure", "reveal", "astral journey", "manifest", "imbue talisman", "sacrifice", "wall", "freedom", "cultsummon", "deafen", "blind", "bloodboil", "communicate", "stun")
+		r = input("Choose a rune to scribe", "Rune Scribing") in runes //not cancellable.
+		var/obj/effect/rune/R = new /obj/effect/rune
+		if(istype(user, /mob/living/carbon/human))
+			var/mob/living/carbon/human/H = user
+			R.blood_DNA = list()
+			R.blood_DNA[H.dna.unique_enzymes] = H.dna.b_type
+		var/area/A = get_area(user)
+		log_and_message_admins("created \an [r] rune at \the [A.name] - [user.loc.x]-[user.loc.y]-[user.loc.z].")
+		switch(r)
+			if("teleport")
+				var/list/words = list("ire", "ego", "nahlizet", "certum", "veri", "jatkaa", "balaq", "mgar", "karazet", "geeri")
+				var/beacon
+				if(usr)
+					beacon = tgui_input_list(user, "Select the last rune", "Rune Scribing", words)
+				R.word1 = cultwords["travel"]
+				R.word2 = cultwords["self"]
+				R.word3 = beacon
+				R.loc = user.loc
+				R.check_icon()
+			if("itemport")
+				var/list/words = list("ire", "ego", "nahlizet", "certum", "veri", "jatkaa", "balaq", "mgar", "karazet", "geeri")
+				var/beacon
+				if(usr)
+					beacon = tgui_input_list(user, "Select the last rune", "Rune Scribing", words)
+				R.word1 = cultwords["travel"]
+				R.word2 = cultwords["other"]
+				R.word3 = beacon
+				R.loc = user.loc
+				R.check_icon()
+			if("tome")
+				R.word1 = cultwords["see"]
+				R.word2 = cultwords["blood"]
+				R.word3 = cultwords["hell"]
+				R.loc = user.loc
+				R.check_icon()
+			if("armor")
+				R.word1 = cultwords["hell"]
+				R.word2 = cultwords["destroy"]
+				R.word3 = cultwords["other"]
+				R.loc = user.loc
+				R.check_icon()
+			if("convert")
+				R.word1 = cultwords["join"]
+				R.word2 = cultwords["blood"]
+				R.word3 = cultwords["self"]
+				R.loc = user.loc
+				R.check_icon()
+			if("tear in reality")
+				R.word1 = cultwords["hell"]
+				R.word2 = cultwords["join"]
+				R.word3 = cultwords["self"]
+				R.loc = user.loc
+				R.check_icon()
+			if("emp")
+				R.word1 = cultwords["destroy"]
+				R.word2 = cultwords["see"]
+				R.word3 = cultwords["technology"]
+				R.loc = user.loc
+				R.check_icon()
+			if("drain")
+				R.word1 = cultwords["travel"]
+				R.word2 = cultwords["blood"]
+				R.word3 = cultwords["self"]
+				R.loc = user.loc
+				R.check_icon()
+			if("seer")
+				R.word1 = cultwords["see"]
+				R.word2 = cultwords["hell"]
+				R.word3 = cultwords["join"]
+				R.loc = user.loc
+				R.check_icon()
+			if("raise")
+				R.word1 = cultwords["blood"]
+				R.word2 = cultwords["join"]
+				R.word3 = cultwords["hell"]
+				R.loc = user.loc
+				R.check_icon()
+			if("obscure")
+				R.word1 = cultwords["hide"]
+				R.word2 = cultwords["see"]
+				R.word3 = cultwords["blood"]
+				R.loc = user.loc
+				R.check_icon()
+			if("astral journey")
+				R.word1 = cultwords["hell"]
+				R.word2 = cultwords["travel"]
+				R.word3 = cultwords["self"]
+				R.loc = user.loc
+				R.check_icon()
+			if("manifest")
+				R.word1 = cultwords["blood"]
+				R.word2 = cultwords["see"]
+				R.word3 = cultwords["travel"]
+				R.loc = user.loc
+				R.check_icon()
+			if("imbue talisman")
+				R.word1 = cultwords["hell"]
+				R.word2 = cultwords["technology"]
+				R.word3 = cultwords["join"]
+				R.loc = user.loc
+				R.check_icon()
+			if("sacrifice")
+				R.word1 = cultwords["hell"]
+				R.word2 = cultwords["blood"]
+				R.word3 = cultwords["join"]
+				R.loc = user.loc
+				R.check_icon()
+			if("reveal")
+				R.word1 = cultwords["blood"]
+				R.word2 = cultwords["see"]
+				R.word3 = cultwords["hide"]
+				R.loc = user.loc
+				R.check_icon()
+			if("wall")
+				R.word1 = cultwords["destroy"]
+				R.word2 = cultwords["travel"]
+				R.word3 = cultwords["self"]
+				R.loc = user.loc
+				R.check_icon()
+			if("freedom")
+				R.word1 = cultwords["travel"]
+				R.word2 = cultwords["technology"]
+				R.word3 = cultwords["other"]
+				R.loc = user.loc
+				R.check_icon()
+			if("cultsummon")
+				R.word1 = cultwords["join"]
+				R.word2 = cultwords["other"]
+				R.word3 = cultwords["self"]
+				R.loc = user.loc
+				R.check_icon()
+			if("deafen")
+				R.word1 = cultwords["hide"]
+				R.word2 = cultwords["other"]
+				R.word3 = cultwords["see"]
+				R.loc = user.loc
+				R.check_icon()
+			if("blind")
+				R.word1 = cultwords["destroy"]
+				R.word2 = cultwords["see"]
+				R.word3 = cultwords["other"]
+				R.loc = user.loc
+				R.check_icon()
+			if("bloodboil")
+				R.word1 = cultwords["destroy"]
+				R.word2 = cultwords["see"]
+				R.word3 = cultwords["blood"]
+				R.loc = user.loc
+				R.check_icon()
+			if("communicate")
+				R.word1 = cultwords["self"]
+				R.word2 = cultwords["other"]
+				R.word3 = cultwords["technology"]
+				R.loc = user.loc
+				R.check_icon()
+			if("stun")
+				R.word1 = cultwords["join"]
+				R.word2 = cultwords["hide"]
+				R.word3 = cultwords["technology"]
+				R.loc = user.loc
+				R.check_icon()

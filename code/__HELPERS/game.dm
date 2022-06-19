@@ -325,36 +325,35 @@
 
 	return list("mobs" = mobs, "objs" = objs)
 
-proc
-	inLineOfSight(X1,Y1,X2,Y2,Z=1,PX1=16.5,PY1=16.5,PX2=16.5,PY2=16.5)
-		var/turf/T
-		if(X1==X2)
-			if(Y1==Y2)
-				return 1 //Light cannot be blocked on same tile
-			else
-				var/s = SIGN(Y2-Y1)
-				Y1+=s
-				while(Y1!=Y2)
-					T=locate(X1,Y1,Z)
-					if(T.opacity)
-						return 0
-					Y1+=s
+/proc/inLineOfSight(X1, Y1, X2, Y2, Z=1, PX1=16.5, PY1=16.5, PX2=16.5, PY2=16.5)
+	var/turf/T
+	if(X1==X2)
+		if(Y1==Y2)
+			return TRUE //Light cannot be blocked on same tile
 		else
-			var/m=(32*(Y2-Y1)+(PY2-PY1))/(32*(X2-X1)+(PX2-PX1))
-			var/b=(Y1+PY1/32-0.015625)-m*(X1+PX1/32-0.015625) //In tiles
-			var/signX = SIGN(X2-X1)
-			var/signY = SIGN(Y2-Y1)
-			if(X1<X2)
-				b+=m
-			while(X1!=X2 || Y1!=Y2)
-				if(round(m*X1+b-Y1))
-					Y1+=signY //Line exits tile vertically
-				else
-					X1+=signX //Line exits tile horizontally
+			var/s = SIGN(Y2-Y1)
+			Y1+=s
+			while(Y1!=Y2)
 				T=locate(X1,Y1,Z)
 				if(T.opacity)
-					return 0
-		return 1
+					return FALSE
+				Y1+=s
+	else
+		var/m=(32*(Y2-Y1)+(PY2-PY1))/(32*(X2-X1)+(PX2-PX1))
+		var/b=(Y1+PY1/32-0.015625)-m*(X1+PX1/32-0.015625) //In tiles
+		var/signX = SIGN(X2-X1)
+		var/signY = SIGN(Y2-Y1)
+		if(X1<X2)
+			b+=m
+		while(X1!=X2 || Y1!=Y2)
+			if(round(m*X1+b-Y1))
+				Y1+=signY //Line exits tile vertically
+			else
+				X1+=signX //Line exits tile horizontally
+			T=locate(X1,Y1,Z)
+			if(T.opacity)
+				return FALSE
+	return TRUE
 
 /proc/flick_overlay(image/I, list/show_to, duration, gc_after)
 	for(var/client/C in show_to)
@@ -373,18 +372,17 @@ proc
 			viewing += M.client
 	flick_overlay(I, viewing, duration, gc_after)
 
-proc/isInSight(var/atom/A, var/atom/B)
+/proc/isInSight(atom/A, atom/B)
 	var/turf/Aturf = get_turf(A)
 	var/turf/Bturf = get_turf(B)
 
 	if(!Aturf || !Bturf)
-		return 0
+		return FALSE
 
-	if(inLineOfSight(Aturf.x,Aturf.y, Bturf.x,Bturf.y,Aturf.z))
-		return 1
-
+	if(inLineOfSight(Aturf.x, Aturf.y, Bturf.x, Bturf.y, Aturf.z))
+		return TRUE
 	else
-		return 0
+		return FALSE
 
 /proc/get_cardinal_step_away(atom/start, atom/finish) //returns the position of a step from start away from finish, in one of the cardinal directions
 	//returns only NORTH, SOUTH, EAST, or WEST
@@ -450,7 +448,7 @@ proc/isInSight(var/atom/A, var/atom/B)
 			for(var/client/C in group)
 				C.screen -= O
 
-datum/projectile_data
+/datum/projectile_data
 	var/src_x
 	var/src_y
 	var/time
@@ -460,8 +458,7 @@ datum/projectile_data
 	var/dest_x
 	var/dest_y
 
-/datum/projectile_data/New(var/src_x, var/src_y, var/time, var/distance, \
-						   var/power_x, var/power_y, var/dest_x, var/dest_y)
+/datum/projectile_data/New(src_x, src_y, time, distance, power_x, power_y, dest_x, dest_y)
 	src.src_x = src_x
 	src.src_y = src_y
 	src.time = time
@@ -471,11 +468,13 @@ datum/projectile_data
 	src.dest_x = dest_x
 	src.dest_y = dest_y
 
-/proc/projectile_trajectory(var/src_x, var/src_y, var/rotation, var/angle, var/power)
+/**
+ * returns the destination (Vx,y) that a projectile shot at [src_x], [src_y], with an angle of [angle],
+ * rotated at [rotation] and with the power of [power]
+ * Thanks to VistaPOWA for this function
+ */
+/proc/projectile_trajectory(src_x, src_y, rotation, angle, power)
 
-	// returns the destination (Vx,y) that a projectile shot at [src_x], [src_y], with an angle of [angle],
-	// rotated at [rotation] and with the power of [power]
-	// Thanks to VistaPOWA for this function
 
 	var/power_x = power * cos(angle)
 	var/power_y = power * sin(angle)
@@ -501,8 +500,8 @@ datum/projectile_data
 	return list(
 			GetRedPart(hexa),
 			GetGreenPart(hexa),
-			GetBluePart(hexa)
-		)
+			GetBluePart(hexa),
+	)
 
 /proc/MixColors(const/list/colors)
 	var/list/reds = list()
@@ -521,21 +520,21 @@ datum/projectile_data
 	var/b = mixOneColor(weights, blues)
 	return rgb(r,g,b)
 
-/proc/mixOneColor(var/list/weight, var/list/color)
+/proc/mixOneColor(list/weight, list/color)
 	if (!weight || !color || length(weight)!=length(color))
-		return 0
+		return FALSE
 
 	var/contents = length(weight)
 	var/i
 
-	//normalize weights
+	// normalize weights
 	var/listsum = 0
 	for(i=1; i<=contents; i++)
 		listsum += weight[i]
 	for(i=1; i<=contents; i++)
 		weight[i] /= listsum
 
-	//mix them
+	// mix them
 	var/mixedcolor = 0
 	for(i=1; i<=contents; i++)
 		mixedcolor += weight[i]*color[i]
@@ -553,7 +552,7 @@ datum/projectile_data
 * Gets the highest and lowest pressures from the tiles in cardinal directions
 * around us, then checks the difference.
 */
-/proc/getOPressureDifferential(var/turf/loc)
+/proc/getOPressureDifferential(turf/loc)
 	var/minp=16777216;
 	var/maxp=0;
 	for(var/dir in GLOB.cardinal)

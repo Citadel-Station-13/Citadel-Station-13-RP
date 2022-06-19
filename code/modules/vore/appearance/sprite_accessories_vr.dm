@@ -491,7 +491,7 @@
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "tesharilowinner"
 
-datum/sprite_accessory/ears/tesh_pattern_ear_male
+/datum/sprite_accessory/ears/tesh_pattern_ear_male
 	icon = 'icons/mob/vore/ears_vr.dmi'
 	name = "Teshari male ear pattern (colorable)"
 	desc = ""

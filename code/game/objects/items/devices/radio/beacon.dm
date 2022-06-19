@@ -75,10 +75,10 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 		else
 			to_chat(user, SPAN_WARNING("You can't work on \the [src] until its been opened up."))
 
-/obj/item/radio/beacon/bacon //Probably a better way of doing this, I'm lazy.
-	proc/digest_delay()
-		spawn(600)
-			qdel(src)
+/// Probably a better way of doing this, I'm lazy.
+/obj/item/radio/beacon/bacon/proc/digest_delay()
+	spawn(600)
+		qdel(src)
 
 
 /// SINGULO BEACON SPAWNER
@@ -91,6 +91,6 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 	if(user)
 		to_chat(user, SPAN_NOTICE("Locked In"))
 		new /obj/machinery/power/singularity_beacon/syndicate(user.loc)
-		playsound(src, 'sound/effects/pop.ogg', 100, 1, 1)
+		playsound(src, 'sound/effects/pop.ogg', 100, TRUE, 1)
 		qdel(src)
 	return

@@ -395,7 +395,7 @@ var/failed_old_db_connections = 0
 		log_world("Feedback database connection established.")
 	return 1
 
-proc/setup_database_connection()
+/proc/setup_database_connection()
 
 	if(failed_db_connections > FAILED_DB_CONNECTION_CUTOFF)	//If it failed to establish a connection more than 5 times in a row, don't bother attempting to conenct anymore.
 		return 0
@@ -420,7 +420,7 @@ proc/setup_database_connection()
 	return .
 
 //This proc ensures that the connection to the feedback database (global variable dbcon) is established
-proc/establish_db_connection()
+/proc/establish_db_connection()
 	if(failed_db_connections > FAILED_DB_CONNECTION_CUTOFF)
 		return 0
 
@@ -440,7 +440,7 @@ proc/establish_db_connection()
 	return 1
 
 //These two procs are for the old database, while it's being phased out. See the tgstation.sql file in the SQL folder for more information.
-proc/setup_old_database_connection()
+/proc/setup_old_database_connection()
 
 	if(failed_old_db_connections > FAILED_DB_CONNECTION_CUTOFF)	//If it failed to establish a connection more than 5 times in a row, don't bother attempting to conenct anymore.
 		return 0
@@ -465,7 +465,7 @@ proc/setup_old_database_connection()
 	return .
 
 //This proc ensures that the connection to the feedback database (global variable dbcon) is established
-proc/establish_old_db_connection()
+/proc/establish_old_db_connection()
 	if(failed_old_db_connections > FAILED_DB_CONNECTION_CUTOFF)
 		return 0
 
@@ -544,4 +544,3 @@ proc/establish_old_db_connection()
 	fdel("data/logs/world_init_temporary.log")
 #endif
 //! END
-

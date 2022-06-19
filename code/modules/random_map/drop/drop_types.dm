@@ -96,7 +96,7 @@ var/global/list/datum/supply_drop_loot/supply_drop
 		/obj/item/grenade/empgrenade,
 		/obj/item/material/knife/tacknife/combatknife)
 
-datum/supply_drop_loot/riot
+/datum/supply_drop_loot/riot
 	name = "Riot Gear"
 	container = /obj/structure/largecrate
 /datum/supply_drop_loot/riot/New()
