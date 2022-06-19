@@ -74,10 +74,10 @@ SUBSYSTEM_DEF(air)
 	var/timer
 	if(!resumed)
 		if(LAZYLEN(currentrun) != 0)
-			stack_trace("Currentrun not empty when it should be. [english_list(currentrun)]")
+			stack_trace("Currentrun not empty before processing cycle when it should be. [english_list(currentrun)]")
 		currentrun = list()
 		if(current_step != null)
-			stack_trace("current_step was [current_step] instead of null")
+			stack_trace("current_step before processing cycle was [current_step] instead of null")
 		current_step = SSAIR_TURFS
 		current_cycle++
 
@@ -89,10 +89,10 @@ SUBSYSTEM_DEF(air)
 
 	// Okay, we're done! Woo! Got thru a whole air_master cycle!
 	if(LAZYLEN(currentrun) != 0)
-		stack_trace("Currentrun not empty when it should be. [english_list(currentrun)]")
+		stack_trace("Currentrun not empty after processing cycle when it should be. [english_list(currentrun.Copy(1, min(currentrun.len, 5)))]")
 	currentrun = null
 	if(current_step != SSAIR_DONE)
-		stack_trace("current_step was [current_step] instead of [SSAIR_DONE]")
+		stack_trace("current_step after processing cycle was [current_step] instead of [SSAIR_DONE]")
 	current_step = null
 
 /datum/controller/subsystem/air/proc/process_tiles_to_update(resumed = 0)
@@ -136,8 +136,8 @@ SUBSYSTEM_DEF(air)
 			return
 
 	if(LAZYLEN(currentrun) != 0)
-		stack_trace("WARNING: Currentrun was not empty when it should be.")
-	currentrun = list()
+		stack_trace("WARNING: Currentrun was not empty after tiles process when it should be.")
+		currentrun = list()
 
 	// Run thru the deferred list and processing them
 	while(selfblock_deferred.len)
@@ -153,8 +153,8 @@ SUBSYSTEM_DEF(air)
 			return
 
 	if(LAZYLEN(selfblock_deferred) != 0)
-		stack_trace("WARNING: selfblock_deffered was not empty (length [LAZYLEN(selfblock_deferred)])")
-	src.selfblock_deferred = null
+		stack_trace("WARNING: selfblock_defered was not empty after selfblock tiles process (length [LAZYLEN(selfblock_deferred)])")
+	selfblock_deferred = null
 
 /datum/controller/subsystem/air/proc/process_active_edges(resumed = 0)
 	if (!resumed)
