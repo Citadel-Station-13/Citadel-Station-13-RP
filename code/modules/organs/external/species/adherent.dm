@@ -4,7 +4,7 @@
 	joint = "central axis"
 	model = "NULL DATA."
 	w_class = ITEMSIZE_LARGE
-	gendered_icon = FALSE
+	gendered_icon = 0
 	dislocated = -1
 	max_damage = 50
 	min_broken_damage = 25
@@ -20,7 +20,7 @@
 	dislocated = -1
 	max_damage = 50
 	min_broken_damage = 25
-	gendered_icon = FALSE
+	gendered_icon = 0
 	encased = "ceramic hull"
 	robotic = ORGAN_CRYSTAL
 //	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_STAND | ORGAN_FLAG_CAN_BREAK
@@ -29,13 +29,13 @@
 	name = "chassis core"
 	amputation_point = "connector socket"
 	joint = "connector socket"
-	gendered_icon = FALSE
+	gendered_icon = 0
 //	arterial_bleed_severity = 0
 	dislocated = -1
 	max_damage = 50
 	min_broken_damage = 25
 	encased = "ceramic hull"
-	eye_icon_location = 'icons/mob/species/adherent/eyes.dmi'
+	eye_icon_location = 'icons/mob/human_races/adherent/eyes.dmi'
 	eye_icon = "eyes"
 	robotic = ORGAN_CRYSTAL
 //	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_HEALS_OVERKILL | ORGAN_FLAG_CAN_BREAK
@@ -44,7 +44,7 @@
 	name = "left grasping tendril"
 	amputation_point = "midpoint"
 	joint = "base"
-	gendered_icon = FALSE
+	gendered_icon = 0
 //	arterial_bleed_severity = 0
 	dislocated = -1
 	max_damage = 20
@@ -56,7 +56,7 @@
 	name = "right grasping tendril"
 	amputation_point = "midpoint"
 	joint = "base"
-	gendered_icon = FALSE
+	gendered_icon = 0
 //	arterial_bleed_severity = 0
 	dislocated = -1
 	max_damage = 20
@@ -68,7 +68,7 @@
 	name = "left maniple tendril"
 	amputation_point = "midpoint"
 	joint = "base"
-	gendered_icon = FALSE
+	gendered_icon = 0
 //	arterial_bleed_severity = 0
 	dislocated = -1
 	max_damage = 20
@@ -80,7 +80,7 @@
 	name = "right maniple tendril"
 	amputation_point = "midpoint"
 	joint = "base"
-	gendered_icon = FALSE
+	gendered_icon = 0
 //	arterial_bleed_severity = 0
 	dislocated = -1
 	max_damage = 20
@@ -93,7 +93,7 @@
 	name = "first tendril"
 	amputation_point = "midpoint"
 	joint = "base"
-	gendered_icon = FALSE
+	gendered_icon = 0
 	organ_tag = BP_L_LEG
 	parent_organ = BP_TORSO
 //	arterial_bleed_severity = 0
@@ -106,9 +106,11 @@
 /obj/item/organ/external/leg/right/tendril
 	name = "second tendril"
 	robotic = ORGAN_CRYSTAL
+
 /obj/item/organ/external/foot/tendril
 	name = "third tendril"
 	robotic = ORGAN_CRYSTAL
+
 /obj/item/organ/external/foot/right/tendril
 	name = "fourth tendril"
 	robotic = ORGAN_CRYSTAL

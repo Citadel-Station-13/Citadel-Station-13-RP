@@ -12,12 +12,12 @@
 	min_broken_damage = 35
 	w_class = ITEMSIZE_HUGE
 	body_part = UPPER_TORSO
-	vital = 1
+	vital = TRUE
 	amputation_point = "spine"
 	joint = "neck"
 	dislocated = -1
-	gendered_icon = 1
-	cannot_amputate = 1
+	gendered_icon = TRUE
+	cannot_amputate = TRUE
 	parent_organ = null
 	encased = "ribcage"
 	organ_rel_size = 70
@@ -54,13 +54,13 @@
 	min_broken_damage = 35
 	w_class = ITEMSIZE_LARGE
 	body_part = LOWER_TORSO
-	vital = 1
+	vital = TRUE
 	parent_organ = BP_TORSO
 	amputation_point = "lumbar"
 	joint = "hip"
 	dislocated = -1
-	gendered_icon = 1
-	cannot_amputate = 1
+	gendered_icon = TRUE
+	cannot_amputate = TRUE
 	organ_rel_size = 30
 
 /obj/item/organ/external/groin/handle_germ_effects()
@@ -87,7 +87,7 @@
 	parent_organ = BP_TORSO
 	joint = "left elbow"
 	amputation_point = "left shoulder"
-	can_grasp = 1
+	can_grasp = TRUE
 	force = 7
 	throwforce = 10
 
@@ -128,7 +128,7 @@
 	parent_organ = BP_GROIN
 	joint = "left knee"
 	amputation_point = "left hip"
-	can_stand = 1
+	can_stand = TRUE
 	force = 10
 	throwforce = 12
 
@@ -167,7 +167,7 @@
 	parent_organ = BP_L_LEG
 	joint = "left ankle"
 	amputation_point = "left ankle"
-	can_stand = 1
+	can_stand = TRUE
 	force = 3
 	throwforce = 6
 
@@ -211,7 +211,7 @@
 	parent_organ = BP_L_ARM
 	joint = "left wrist"
 	amputation_point = "left wrist"
-	can_grasp = 1
+	can_grasp = TRUE
 	organ_rel_size = 10
 	base_miss_chance = 50
 	force = 3
@@ -257,20 +257,20 @@
 	min_broken_damage = 35
 	w_class = ITEMSIZE_NORMAL
 	body_part = HEAD
-	vital = 1
+	vital = TRUE
 	parent_organ = BP_TORSO
 	joint = "jaw"
 	amputation_point = "neck"
-	gendered_icon = 1
+	gendered_icon = TRUE
 	cannot_gib = TRUE
 	encased = "skull"
 	base_miss_chance = 40
-	var/can_intake_reagents = 1
-	var/eye_icon = "eyes_s"
 	force = 3
 	throwforce = 7
-	var/eyes_over_markings = FALSE
 
+	var/can_intake_reagents = TRUE
+	var/eyes_over_markings = FALSE
+	var/eye_icon = "eyes_s"
 	var/eye_icon_location = 'icons/mob/human_face.dmi'
 
 /obj/item/organ/external/head/Initialize(mapload)
@@ -278,7 +278,7 @@
 		cannot_gib = FALSE
 	return ..()
 
-/obj/item/organ/external/head/robotize(var/company, var/skip_prosthetics, var/keep_organs)
+/obj/item/organ/external/head/robotize(company, skip_prosthetics, keep_organs)
 	return ..(company, skip_prosthetics, 1)
 
 /obj/item/organ/external/head/removed()
