@@ -2290,12 +2290,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
-"cap" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside1)
 "cbA" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/structure/window/reinforced{
@@ -57770,7 +57764,7 @@ hgE
 gzd
 gzd
 gzd
-cap
+jhN
 mbJ
 mbJ
 rpP
@@ -57964,7 +57958,7 @@ hgE
 gzd
 gzd
 gzd
-cap
+jhN
 qyE
 qyE
 rpP
@@ -58158,7 +58152,7 @@ hgE
 hgE
 kCW
 gzd
-cap
+jhN
 xaV
 nNl
 nNl
