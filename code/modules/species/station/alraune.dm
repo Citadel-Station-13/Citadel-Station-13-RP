@@ -58,8 +58,8 @@
 		) //Give them the voremodes related to wrapping people in vines and sapping their fluids
 
 	color_mult = 1
-	icobase = 'icons/mob/human_races/r_human_vr.dmi'
-	deform = 'icons/mob/human_races/r_def_human_vr.dmi'
+	icobase = 'icons/mob/species/r_human_vr.dmi'
+	deform = 'icons/mob/species/r_def_human_vr.dmi'
 	flesh_color = "#9ee02c"
 	blood_color = "#edf4d0" //sap!
 	base_color = "#1a5600"

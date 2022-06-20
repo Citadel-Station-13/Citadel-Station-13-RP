@@ -35,11 +35,11 @@
 
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/paw
 
-	icobase	= 'icons/mob/human_races/r_teshari_vr.dmi'
-	deform	= 'icons/mob/human_races/r_teshari_vr.dmi'
-	damage_mask	= 'icons/mob/human_races/masks/dam_mask_teshari.dmi'
-	blood_mask	= 'icons/mob/human_races/masks/blood_teshari.dmi'
-	damage_overlays	  = 'icons/mob/human_races/masks/dam_teshari.dmi'
+	icobase	= 'icons/mob/species/r_teshari_vr.dmi'
+	deform	= 'icons/mob/species/r_teshari_vr.dmi'
+	damage_mask	= 'icons/mob/species/masks/dam_mask_teshari.dmi'
+	blood_mask	= 'icons/mob/species/masks/blood_teshari.dmi'
+	damage_overlays	  = 'icons/mob/species/masks/dam_teshari.dmi'
 	suit_storage_icon = 'icons/mob/clothing/species/teshari/belt_mirror.dmi'
 	icobase_tail = 1
 	color_mult	 = 1

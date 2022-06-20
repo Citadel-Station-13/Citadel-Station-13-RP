@@ -3,11 +3,11 @@
 	name_plural = "Monkeys"
 	blurb = "Ook."
 
-	icobase = 'icons/mob/human_races/monkeys/r_monkey.dmi'
-	deform = 'icons/mob/human_races/monkeys/r_monkey.dmi'
-	damage_overlays = 'icons/mob/human_races/masks/dam_monkey.dmi'
-	damage_mask = 'icons/mob/human_races/masks/dam_mask_monkey.dmi'
-	blood_mask = 'icons/mob/human_races/masks/blood_monkey.dmi'
+	icobase = 'icons/mob/species/monkeys/r_monkey.dmi'
+	deform = 'icons/mob/species/monkeys/r_monkey.dmi'
+	damage_overlays = 'icons/mob/species/masks/dam_monkey.dmi'
+	damage_mask = 'icons/mob/species/masks/dam_mask_monkey.dmi'
+	blood_mask = 'icons/mob/species/masks/blood_monkey.dmi'
 	language = null
 	default_language = "Chimpanzee"
 	greater_form = SPECIES_HUMAN
@@ -71,8 +71,8 @@
 	name = SPECIES_MONKEY_TAJ
 	name_plural = SPECIES_MONKEY_TAJ
 
-	icobase = 'icons/mob/human_races/monkeys/r_farwa.dmi'
-	deform = 'icons/mob/human_races/monkeys/r_farwa.dmi'
+	icobase = 'icons/mob/species/monkeys/r_farwa.dmi'
+	deform = 'icons/mob/species/monkeys/r_farwa.dmi'
 
 	greater_form = SPECIES_TAJ
 	default_language = SPECIES_MONKEY_TAJ
@@ -84,8 +84,8 @@
 	name = SPECIES_MONKEY_SKRELL
 	name_plural = SPECIES_MONKEY_SKRELL
 
-	icobase = 'icons/mob/human_races/monkeys/r_neaera.dmi'
-	deform = 'icons/mob/human_races/monkeys/r_neaera.dmi'
+	icobase = 'icons/mob/species/monkeys/r_neaera.dmi'
+	deform = 'icons/mob/species/monkeys/r_neaera.dmi'
 
 	greater_form = SPECIES_SKRELL
 	default_language = LANGUAGE_NEAERA
@@ -98,8 +98,8 @@
 	name = SPECIES_MONKEY_UNATHI
 	name_plural = SPECIES_MONKEY_UNATHI
 
-	icobase = 'icons/mob/human_races/monkeys/r_stok.dmi'
-	deform = 'icons/mob/human_races/monkeys/r_stok.dmi'
+	icobase = 'icons/mob/species/monkeys/r_stok.dmi'
+	deform = 'icons/mob/species/monkeys/r_stok.dmi'
 
 	tail = "stoktail"
 	greater_form = SPECIES_UNATHI
@@ -111,8 +111,8 @@
 /datum/species/monkey/shark
 	name = SPECIES_MONKEY_AKULA
 	name_plural = SPECIES_MONKEY_AKULA
-	icobase = 'icons/mob/human_races/monkeys/r_sobaka_vr.dmi'
-	deform = 'icons/mob/human_races/monkeys/r_sobaka_vr.dmi'
+	icobase = 'icons/mob/species/monkeys/r_sobaka_vr.dmi'
+	deform = 'icons/mob/species/monkeys/r_sobaka_vr.dmi'
 	tail = null //The tail is part of its body due to tail using the "icons/effects/species.dmi" file. It must be null, or they'll have a chimp tail.
 	greater_form = SPECIES_AKULA
 	default_language = "Skrellian" //Closest we have.
@@ -120,8 +120,8 @@
 /datum/species/monkey/sergal
 	name = SPECIES_MONKEY_SERGAL
 	greater_form = SPECIES_SERGAL
-	icobase = 'icons/mob/human_races/monkeys/r_sergaling_vr.dmi'
-	deform = 'icons/mob/human_races/monkeys/r_sergaling_vr.dmi'
+	icobase = 'icons/mob/species/monkeys/r_sergaling_vr.dmi'
+	deform = 'icons/mob/species/monkeys/r_sergaling_vr.dmi'
 	tail = null
 	default_language = LANGUAGE_SAGARU
 
@@ -130,8 +130,8 @@
 	name_plural = SPECIES_MONKEY_NEVREAN
 	greater_form = SPECIES_NEVREAN
 	tail = null
-	icobase = 'icons/mob/human_races/monkeys/r_sparra_vr.dmi'
-	deform = 'icons/mob/human_races/monkeys/r_sparra_vr.dmi'
+	icobase = 'icons/mob/species/monkeys/r_sparra_vr.dmi'
+	deform = 'icons/mob/species/monkeys/r_sparra_vr.dmi'
 	default_language = LANGUAGE_BIRDSONG
 
 
@@ -140,8 +140,8 @@
 	name = SPECIES_MONKEY_TAJ
 	name_plural = SPECIES_MONKEY_TAJ
 
-	icobase = 'icons/mob/human_races/monkeys/r_farwa.dmi'
-	deform = 'icons/mob/human_races/monkeys/r_farwa.dmi'
+	icobase = 'icons/mob/species/monkeys/r_farwa.dmi'
+	deform = 'icons/mob/species/monkeys/r_farwa.dmi'
 
 	greater_form = "Tajaran"
 	default_language = LANGUAGE_FARWA
@@ -154,8 +154,8 @@
 	name = SPECIES_MONKEY_VULPKANIN
 	name_plural = SPECIES_MONKEY_VULPKANIN
 
-	icobase = 'icons/mob/human_races/monkeys/r_wolpin.dmi'
-	deform = 'icons/mob/human_races/monkeys/r_wolpin.dmi'
+	icobase = 'icons/mob/species/monkeys/r_wolpin.dmi'
+	deform = 'icons/mob/species/monkeys/r_wolpin.dmi'
 
 	greater_form = SPECIES_VULPKANIN
 	default_language = LANGUAGE_CANILUNZT

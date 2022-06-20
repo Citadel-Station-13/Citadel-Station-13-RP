@@ -7,8 +7,8 @@
 /datum/species/shapeshifter/xenochimera //Scree's race.
 	name = SPECIES_XENOCHIMERA
 	name_plural = "Xenochimeras"
-	icobase = 'icons/mob/human_races/r_xenochimera.dmi'
-	deform = 'icons/mob/human_races/r_def_xenochimera.dmi'
+	icobase = 'icons/mob/species/r_xenochimera.dmi'
+	deform = 'icons/mob/species/r_def_xenochimera.dmi'
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 	rarity_value = 4
 	darksight = 8		//critters with instincts to hide in the dark need to see in the dark - about as good as tajara.
@@ -643,8 +643,8 @@
 /datum/species/spider //These actually look pretty damn spooky!
 	name = SPECIES_VASILISSAN
 	name_plural = "Vasilissans"
-	icobase = 'icons/mob/human_races/r_spider.dmi'
-	deform = 'icons/mob/human_races/r_def_spider.dmi'
+	icobase = 'icons/mob/species/r_spider.dmi'
+	deform = 'icons/mob/species/r_def_spider.dmi'
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp, /datum/unarmed_attack/bite/sharp/numbing)
 	darksight = 8		//Can see completely in the dark. They are spiders, after all. Not that any of this matters because people will be using custom race.
 	slowdown = -0.15	//Small speedboost, as they've got a bunch of legs. Or something. I dunno.
@@ -718,9 +718,9 @@
 /datum/species/werebeast
 	name = SPECIES_WEREBEAST
 	name_plural = "Werebeasts"
-	icobase = 'icons/mob/human_races/r_werebeast.dmi'
-	deform = 'icons/mob/human_races/r_def_werebeast.dmi'
-	icon_template = 'icons/mob/human_races/r_werebeast.dmi'
+	icobase = 'icons/mob/species/r_werebeast.dmi'
+	deform = 'icons/mob/species/r_def_werebeast.dmi'
+	icon_template = 'icons/mob/species/r_werebeast.dmi'
 	tail = "tail"
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 	total_health = 200
@@ -780,8 +780,8 @@
 /datum/species/apidaen
 	name = SPECIES_APIDAEN
 	name_plural = SPECIES_APIDAEN
-	icobase = 'icons/mob/human_races/r_def_apidaen.dmi'
-	deform = 'icons/mob/human_races/r_def_apidaen.dmi'
+	icobase = 'icons/mob/species/r_def_apidaen.dmi'
+	deform = 'icons/mob/species/r_def_apidaen.dmi'
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 	darksight = 6		//Not quite as good as spiders. Meant to represent compound eyes and/or better hearing.
 	slowdown = -0.10	//Speed boost similar to spiders, slightly nerfed due to two less legs.

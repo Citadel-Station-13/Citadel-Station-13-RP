@@ -1,74 +1,49 @@
-
-///Don't ask why it's here, I just know it won't work without it. This is my personnal coconut.jpg - Papalus
-//GLOBAL_LIST_INIT(full_alphabet, list("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"))
-//#define PROTOCOL_ARTICLE "Protocol article [rand(100,999)]-[uppertext(pick(GLOB.full_alphabet))] subsection #[rand(10,99)]"
-
 /obj/item/organ/internal/brain/adherent
 	name = "mentality matrix"
 	desc = "The self-contained, self-supporting internal 'brain' of an Adherent unit."
-	icon = 'icons/mob/human_races/adherent/organs.dmi'
+	icon = 'icons/mob/species/adherent/organs.dmi'
 	icon_state = "brain"
 	organ_tag = O_BRAIN
 	robotic = ORGAN_CRYSTAL
 
-/*
-/obj/item/organ/internal/brain/adherent/attack_self(var/mob/user)
-	. = ..()
-	if(.)
-		var/regex/name_regex = regex("\[A-Z\]{2}-\[A-Z\]{1} \[0-9\]{4}")
-		name_regex.Find(owner.real_name)
-		if(world.time < next_rename)
-			to_chat(owner, "<span class='warning'>[PROTOCOL_ARTICLE] forbids changing your ident again so soon.</span>")
-			return
-		var/res = name_regex.match
-		if(isnull(res))
-			to_chat(user, "<span class='warning'>Nonstandard names are not subject to real-time modification under [PROTOCOL_ARTICLE].</span>")
-			return
-		var/newname = sanitizeSafe(input(user, "Enter a new ident.", "Reset Ident") as text, MAX_NAME_LEN)
-		if(newname)
-			var/confirm = input(user, "Are you sure you wish your name to become [newname] [res]?","Reset Ident") as anything in list("No", "Yes")
-			if(confirm == "Yes" && owner && user == owner && !owner.incapacitated() && world.time >= next_rename)
-				next_rename = world.time + rename_delay
-				owner.real_name = "[newname] [res]"
-				if(owner.mind)
-					owner.mind.name = owner.real_name
-				owner.SetName(owner.real_name)
-				to_chat(user, "<span class='notice'>You are now designated <b>[owner.real_name]</b>.</span>")
-*/
 /obj/item/organ/internal/powered
-	icon = 'icons/mob/human_races/adherent/organs.dmi'
+	icon = 'icons/mob/species/adherent/organs.dmi'
+	robotic = ORGAN_CRYSTAL
+
 	var/maintenance_cost = 0.5
 	var/base_action_state
 	var/active = FALSE
 	var/use_descriptor
-	robotic = ORGAN_CRYSTAL
 
-/obj/item/organ/internal/powered/process()
+/obj/item/organ/internal/powered/process(delta_time)
 	. = ..()
-	if(owner)
-		if(active)
-			if(owner.nutrition > 0)
-				owner.adjust_nutrition(-maintenance_cost)
-				active = FALSE
-				to_chat(owner, "<span class='danger'>Your [name] [gender == PLURAL ? "are" : "is"] out of power!</span>")
-				refresh_action_button()
+	if(!owner)
+		return
+	if(!active)
+		return
+	if(owner.nutrition > 0)
+		owner.adjust_nutrition(-maintenance_cost)
+		active = FALSE
+		to_chat(owner, SPAN_USERDANGER("Your [name] [gender == PLURAL ? "are" : "is"] out of power!"))
+		refresh_action_button()
 
 /obj/item/organ/internal/powered/refresh_action_button()
 	. = ..()
 	if(.)
 		action.button_icon_state = "[base_action_state]-[active ? "on" : "off"]"
-		if(action.button) action.button.UpdateIcon()
+		if(action.button)
+			action.button.UpdateIcon()
 
-/obj/item/organ/internal/powered/attack_self(var/mob/user)
+/obj/item/organ/internal/powered/attack_self(mob/user)
 	. = ..()
 	if(.)
 		playsound(user, sound('sound/effects/ding.ogg'))
 		if(is_broken())
-			to_chat(owner, "<span class='warning'>\The [src] [gender == PLURAL ? "are" : "is"] too damaged to function.</span>")
+			to_chat(owner, SPAN_WARNING("\The [src] [gender == PLURAL ? "are" : "is"] too damaged to function."))
 			active = FALSE
 		else
 			active = !active
-			to_chat(owner, "<span class='notice'>You are [active ? "now" : "no longer"] using your [name] to [use_descriptor].</span>")
+			to_chat(owner, SPAN_NOTICE("You are [active ? "now" : "no longer"] using your [name] to [use_descriptor]."))
 		refresh_action_button()
 
 /obj/item/organ/internal/powered/jets
@@ -101,14 +76,14 @@
 		to_chat(C, "You cannot fly in this state!")
 		return
 	if(C.nutrition < 25 && !C.flying) //Don't have any food in you?" You can't fly.
-		to_chat(C, "<span class='notice'>You lack the energy to fly.</span>")
+		to_chat(C, SPAN_NOTICE("You lack the energy to fly."))
 		return
 	owner.pass_flags ^= PASSTABLE
 	C.flying = !C.flying
 	C.update_floating()
-	to_chat(C, "<span class='notice'>You have [C.flying?"started":"stopped"] flying.</span>")
+	to_chat(C, SPAN_NOTICE("You have [C.flying?"started":"stopped"] flying.)")
 
-/obj/item/organ/internal/powered/jets/process()
+/obj/item/organ/internal/powered/jets/process(delta_time)
 	var/mob/living/carbon/human/C = src.owner
 	if(active)
 		C.nutrition = C.nutrition - maintenance_cost
@@ -131,10 +106,11 @@
 
 /obj/item/organ/internal/powered/float/ui_action_click()
 	hover()
+
 /obj/item/organ/internal/eyes/adherent
 	name = "receptor prism"
-	icon = 'icons/mob/human_races/adherent/organs.dmi'
-//	eye_icon = 'icons/mob/human_races/adherent/eyes.dmi'
+	icon = 'icons/mob/species/adherent/organs.dmi'
+//	eye_icon = 'icons/mob/species/adherent/eyes.dmi'
 	icon_state = "eyes"
 	robotic = ORGAN_CRYSTAL
 	organ_tag = O_EYES
@@ -146,7 +122,7 @@
 
 /obj/item/organ/internal/cell/adherent
 	name = "piezoelectric core"
-	icon = 'icons/mob/human_races/adherent/organs.dmi'
+	icon = 'icons/mob/species/adherent/organs.dmi'
 	icon_state = "cell"
 	organ_tag = O_CELL
 	status = ORGAN_CRYSTAL
@@ -163,6 +139,7 @@
 	maintenance_cost = 0
 	use_descriptor = "radiate heat"
 	base_action_state = "adherent-fins"
+
 	var/cooling = FALSE
 	var/max_cooling = 10
 	var/target_temp = T20C
@@ -194,21 +171,27 @@
 			maintenance_cost = 0
 
 /obj/item/organ/internal/powered/float/proc/flying_toggle()
-	/*set name = "Toggle Flight"
-	set desc = "While flying over open spaces, you will use up some energy. If you run out energy, you will fall. Additionally, you can't fly if you are too heavy."
+/*
+	set name = "Toggle Flight"
+	set desc = "While flying over open spaces, you will use up some energy. If you run out energy, you will fall. \
+	Additionally, you can't fly if you are too heavy."
 	set category = "Abilities"
 
 	var/mob/living/carbon/human/C = src.owner
 	if(C.incapacitated(INCAPACITATION_ALL))
-		to_chat(C, "You cannot fly in this state!")
+		to_chat(C, SPAN_NOTICE("You cannot fly in this state!"))
 		return
-	if(C.nutrition < 25 && !C.flying) //Don't have any food in you?" You can't fly.
-		to_chat(C, "<span class='notice'>You lack the energy to fly.</span>")
+
+	// Don't have any food in you?" You can't fly.
+	if(C.nutrition < 25 && !C.flying)
+		to_chat(C, SPAN_NOTICE("You lack the energy to fly."))
 		return
+
 	owner.pass_flags ^= PASSTABLE
 	C.flying = !C.flying
 	C.update_floating()
-	to_chat(C, "<span class='notice'>You have [C.flying?"started":"stopped"] flying.</span>")*/
+	to_chat(C, SPAN_NOTICE("You have [C.flying?"started":"stopped"] flying."))
+*/
 
 /obj/item/organ/internal/powered/float/proc/hover()
 	set name = "Hover"
@@ -217,24 +200,29 @@
 
 	var/mob/living/carbon/human/C = src.owner
 	if(!C.flying)
-		to_chat(src, "You must be flying to hover!")
-		return
-	if(C.incapacitated(INCAPACITATION_ALL))
-		to_chat(src, "You cannot hover in your current state!")
-		return
-	if(C.nutrition < 50 && !C.flying) //Don't have any food in you?" You can't hover, since it takes up 25 nutrition. And it's not 25 since we don't want them to immediately fall.
-		to_chat(C, "<span class='notice'>You lack the energy to fly.</span>")
-		return
-	if(C.anchored)
-		to_chat(C, "<span class='notice'>You are already hovering and/or anchored in place!</span>")
+		to_chat(src, SPAN_NOTICE("You must be flying to hover!"))
 		return
 
-	if(!C.anchored && !C.pulledby) //Not currently anchored, and not pulled by anyone.
-		C.anchored = 1 //This is the only way to stop the inertial_drift.
+	if(C.incapacitated(INCAPACITATION_ALL))
+		to_chat(src, SPAN_NOTICE("You cannot hover in your current state!"))
+		return
+
+	// Don't have any food in you?" You can't hover, since it takes up 25 nutrition. And it's not 25 since we don't want them to immediately fall.
+	if(C.nutrition < 50 && !C.flying)
+		to_chat(C, SPAN_NOTICE("You lack the energy to fly."))
+		return
+
+	if(C.anchored)
+		to_chat(C, SPAN_NOTICE("You are already hovering and/or anchored in place!"))
+		return
+
+	// Not currently anchored, and not pulled by anyone.
+	if(!C.anchored && !C.pulledby)
+		C.anchored = TRUE // This is the only way to stop the inertial_drift.
 		C.nutrition -= 25
 		C.update_floating()
-		to_chat(C, "<span class='notice'>You hover in place.</span>")
+		to_chat(C, SPAN_NOTICE("You hover in place."))
 		spawn(6) //.6 seconds.
-			C.anchored = 0
+			C.anchored = FALSE
 	else
 		return

@@ -42,7 +42,7 @@
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	color_mult = 1
-	icobase = 'icons/mob/human_races/subspecies/r_gravworlder.dmi'
+	icobase = 'icons/mob/species/subspecies/r_gravworlder.dmi'
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 	base_color = "#EECEB3"
 
@@ -82,7 +82,7 @@
 		)
 
 	color_mult = 1
-	icobase = 'icons/mob/human_races/subspecies/r_spacer.dmi'
+	icobase = 'icons/mob/species/subspecies/r_spacer.dmi'
 	spawn_flags = SPECIES_CAN_JOIN
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 	base_color = "#EECEB3"
@@ -115,8 +115,8 @@
 		)
 
 	color_mult = 1
-	icobase = 'icons/mob/human_races/r_human_vr.dmi'
-	//icobase = 'icons/mob/human_races/subspecies/r_vatgrown.dmi'
+	icobase = 'icons/mob/species/r_human_vr.dmi'
+	//icobase = 'icons/mob/species/subspecies/r_vatgrown.dmi'
 	//Icon base needs Greyscaleing
 	spawn_flags = SPECIES_CAN_JOIN
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
@@ -129,5 +129,5 @@
 	name = "uplifted Chimpanzee"
 	name_plural = "uplifted Chimpanzees"
 	blurb = "Ook ook."
-	icobase = 'icons/mob/human_races/subspecies/r_upliftedchimp.dmi'
+	icobase = 'icons/mob/species/subspecies/r_upliftedchimp.dmi'
 */

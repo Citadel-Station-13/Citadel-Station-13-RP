@@ -29,8 +29,8 @@
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	color_mult = 1
-	icobase = 'icons/mob/human_races/r_human_vr.dmi'
-	deform = 'icons/mob/human_races/r_def_human_vr.dmi'
+	icobase = 'icons/mob/species/r_human_vr.dmi'
+	deform = 'icons/mob/species/r_def_human_vr.dmi'
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 	blood_color = "#ce4a4a"
 	base_color = "#EECEB3"
@@ -102,8 +102,8 @@
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	color_mult = 1
-	icobase = 'icons/mob/human_races/r_human_vr.dmi'
-	deform = 'icons/mob/human_races/r_def_human_vr.dmi'
+	icobase = 'icons/mob/species/r_human_vr.dmi'
+	deform = 'icons/mob/species/r_def_human_vr.dmi'
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 	blood_color = "#720d0d"
 	base_color = "#EECEB3"

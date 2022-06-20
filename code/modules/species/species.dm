@@ -40,9 +40,9 @@
 
 //! ## Icon/appearance vars.
 	/// Normal icon set.
-	var/icobase = 'icons/mob/human_races/r_human.dmi'
+	var/icobase = 'icons/mob/species/r_human.dmi'
 	/// Mutated icon set.
-	var/deform = 'icons/mob/human_races/r_def_human.dmi'
+	var/deform = 'icons/mob/species/r_def_human.dmi'
 
 	/// Part of icon_state to use for speech bubbles when talking.	See talk.dmi for available icons.
 	var/speech_bubble_appearance = "normal"
@@ -54,9 +54,9 @@
 	var/override_worn_legacy_bodytype
 
 //! ## Damage overlay and masks.
-	var/damage_overlays = 'icons/mob/human_races/masks/dam_human.dmi'
-	var/damage_mask = 'icons/mob/human_races/masks/dam_mask_human.dmi'
-	var/blood_mask = 'icons/mob/human_races/masks/blood_human.dmi'
+	var/damage_overlays = 'icons/mob/species/masks/dam_human.dmi'
+	var/damage_mask = 'icons/mob/species/masks/dam_mask_human.dmi'
+	var/blood_mask = 'icons/mob/species/masks/blood_human.dmi'
 
 	/// If set, draws this from icobase when mob is prone.
 	var/prone_icon

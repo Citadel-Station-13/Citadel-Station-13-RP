@@ -158,7 +158,7 @@ var/global/list/limb_icon_cache = list()
 		mob_icon = new /icon(force_icon, "[icon_name][gendered_icon ? "_[gender]" : ""]")
 	else
 		if(!dna)
-			mob_icon = new /icon('icons/mob/human_races/r_human.dmi', "[icon_name][gendered_icon ? "_[gender]" : ""]")
+			mob_icon = new /icon('icons/mob/species/r_human.dmi', "[icon_name][gendered_icon ? "_[gender]" : ""]")
 		else
 
 			if(!gendered_icon)
@@ -170,9 +170,9 @@ var/global/list/limb_icon_cache = list()
 					gender = "m"
 
 			if(skeletal)
-				mob_icon = new /icon('icons/mob/human_races/r_skeleton.dmi', "[icon_name][gender ? "_[gender]" : ""]")
+				mob_icon = new /icon('icons/mob/species/r_skeleton.dmi', "[icon_name][gender ? "_[gender]" : ""]")
 			else if (robotic >= ORGAN_ROBOT && species == !SPECIES_ADHERENT)
-				mob_icon = new /icon('icons/mob/human_races/robotic.dmi', "[icon_name][s_base ? "[s_base]" : ""][gender ? "_[gender]" : ""]")
+				mob_icon = new /icon('icons/mob/species/robotic.dmi', "[icon_name][s_base ? "[s_base]" : ""][gender ? "_[gender]" : ""]")
 			else
 				mob_icon = new /icon(species.get_icobase(owner, (status & ORGAN_MUTATED)), "[icon_name][s_base ? "_[s_base]" : ""][gender ? "_[gender]" : ""]")
 				log_qdel("generated a [species] specific [src] with [icon_name] and _[s_base]")

@@ -2,8 +2,8 @@
 	name = SPECIES_GOLEM
 	name_plural = "golems"
 
-	icobase = 'icons/mob/human_races/r_golem.dmi'
-	deform = 'icons/mob/human_races/r_golem.dmi'
+	icobase = 'icons/mob/species/r_golem.dmi'
+	deform = 'icons/mob/species/r_golem.dmi'
 
 	language = "Sol Common" //todo?
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch)

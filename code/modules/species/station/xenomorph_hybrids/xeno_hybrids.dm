@@ -1,8 +1,8 @@
 /datum/species/xenohybrid
 	name = SPECIES_XENOHYBRID
 	name_plural = "Xenomorph Hybrids"
-	icobase = 'icons/mob/human_races/r_xenomorph.dmi'
-	deform = 'icons/mob/human_races/r_def_xenomorph.dmi'
+	icobase = 'icons/mob/species/r_xenomorph.dmi'
+	deform = 'icons/mob/species/r_def_xenomorph.dmi'
 	tail = "tail"
 	icobase_tail = 1
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)

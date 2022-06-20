@@ -42,8 +42,8 @@
 		/mob/living/carbon/human/proc/tie_hair)
 
 	color_mult = 1
-	icobase = 'icons/mob/human_races/r_human_vr.dmi'
-	deform = 'icons/mob/human_races/r_def_human_vr.dmi'
+	icobase = 'icons/mob/species/r_human_vr.dmi'
+	deform = 'icons/mob/species/r_def_human_vr.dmi'
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 	base_color = "#EECEB3"
 	wikilink="https://citadel-station.net/wikiRP/index.php?title=Race:_Humanity"
@@ -54,8 +54,8 @@
 /datum/species/unathi
 	name = SPECIES_UNATHI
 	name_plural = SPECIES_UNATHI
-	icobase = 'icons/mob/human_races/r_lizard_vr.dmi'
-	deform = 'icons/mob/human_races/r_def_lizard_vr.dmi'
+	icobase = 'icons/mob/species/r_lizard_vr.dmi'
+	deform = 'icons/mob/species/r_def_lizard_vr.dmi'
 	tail = "sogtail"
 	tail_animation = 'icons/mob/clothing/species/unathi/tail_vr.dmi'
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
@@ -175,8 +175,8 @@
 /datum/species/tajaran
 	name = SPECIES_TAJ
 	name_plural = "Tajaran"
-	icobase = 'icons/mob/human_races/r_tajaran_vr.dmi'
-	deform = 'icons/mob/human_races/r_def_tajaran_vr.dmi'
+	icobase = 'icons/mob/species/r_tajaran_vr.dmi'
+	deform = 'icons/mob/species/r_def_tajaran_vr.dmi'
 	tail = "tajtail"
 	tail_animation = 'icons/mob/clothing/species/tajaran/tail_vr.dmi'
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
@@ -270,8 +270,8 @@
 /datum/species/skrell
 	name = SPECIES_SKRELL
 	name_plural = SPECIES_SKRELL
-	icobase = 'icons/mob/human_races/r_skrell_vr.dmi'
-	deform = 'icons/mob/human_races/r_def_skrell_vr.dmi'
+	icobase = 'icons/mob/species/r_skrell_vr.dmi'
+	deform = 'icons/mob/species/r_def_skrell_vr.dmi'
 	primitive_form = SPECIES_MONKEY_SKRELL
 	unarmed_types = list(/datum/unarmed_attack/punch)
 	blurb = "An amphibious species, Skrell come from the star system known as Qerr'Vallis, which translates to 'Star of \
@@ -349,8 +349,8 @@
 /datum/species/zaddat
 	name = SPECIES_ZADDAT
 	name_plural = SPECIES_ZADDAT
-	icobase = 'icons/mob/human_races/r_zaddat.dmi'
-	deform = 'icons/mob/human_races/r_zaddat.dmi'
+	icobase = 'icons/mob/species/r_zaddat.dmi'
+	deform = 'icons/mob/species/r_zaddat.dmi'
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch)
 	brute_mod = 1.15
 	burn_mod =  1.15
@@ -466,8 +466,8 @@
 /datum/species/sergal
 	name = SPECIES_SERGAL
 	name_plural = "Naramadi"
-	icobase = 'icons/mob/human_races/r_sergal.dmi'
-	deform = 'icons/mob/human_races/r_def_sergal.dmi'
+	icobase = 'icons/mob/species/r_sergal.dmi'
+	deform = 'icons/mob/species/r_def_sergal.dmi'
 	tail = "tail"
 	icobase_tail = 1
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
@@ -529,8 +529,8 @@
 /datum/species/akula
 	name = SPECIES_AKULA
 	name_plural = SPECIES_AKULA //It's singular and plural. English is weird.
-	icobase = 'icons/mob/human_races/r_akula.dmi'
-	deform = 'icons/mob/human_races/r_def_akula.dmi'
+	icobase = 'icons/mob/species/r_akula.dmi'
+	deform = 'icons/mob/species/r_def_akula.dmi'
 	tail = "tail"
 	icobase_tail = 1
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
@@ -579,8 +579,8 @@
 /datum/species/nevrean
 	name = SPECIES_NEVREAN
 	name_plural = "Nevreans"
-	icobase = 'icons/mob/human_races/r_nevrean.dmi'
-	deform = 'icons/mob/human_races/r_def_nevrean.dmi'
+	icobase = 'icons/mob/species/r_nevrean.dmi'
+	deform = 'icons/mob/species/r_def_nevrean.dmi'
 	tail = "tail"
 	icobase_tail = 1
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
@@ -629,8 +629,8 @@
 /datum/species/hi_zoxxen
 	name = SPECIES_ZORREN_HIGH
 	name_plural = "Zorren"
-	icobase = 'icons/mob/human_races/r_fox_vr.dmi'
-	deform = 'icons/mob/human_races/r_def_fox.dmi'
+	icobase = 'icons/mob/species/r_fox_vr.dmi'
+	deform = 'icons/mob/species/r_def_fox.dmi'
 	tail = "tail"
 	icobase_tail = 1
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
@@ -675,8 +675,8 @@
 /datum/species/fl_zorren
 	name = SPECIES_ZORREN_FLAT
 	name_plural = "Zorren"
-	icobase = 'icons/mob/human_races/r_fennec_vr.dmi'
-	deform = 'icons/mob/human_races/r_def_fennec.dmi'
+	icobase = 'icons/mob/species/r_fennec_vr.dmi'
+	deform = 'icons/mob/species/r_def_fennec.dmi'
 	tail = "tail"
 	icobase_tail = 1
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
@@ -721,8 +721,8 @@
 /datum/species/vulpkanin
 	name = SPECIES_VULPKANIN
 	name_plural = SPECIES_VULPKANIN
-	icobase = 'icons/mob/human_races/r_vulpkanin.dmi'
-	deform = 'icons/mob/human_races/r_vulpkanin.dmi'
+	icobase = 'icons/mob/species/r_vulpkanin.dmi'
+	deform = 'icons/mob/species/r_vulpkanin.dmi'
 //	path = /mob/living/carbon/human/vulpkanin
 //	default_language = "Sol Common"
 	secondary_langs = list(LANGUAGE_CANILUNZT)
@@ -763,8 +763,8 @@
 /datum/species/harpy
 	name = SPECIES_RAPALA
 	name_plural = "Rapalans"
-	icobase = 'icons/mob/human_races/r_harpy_vr.dmi'
-	deform = 'icons/mob/human_races/r_def_harpy_vr.dmi'
+	icobase = 'icons/mob/species/r_harpy_vr.dmi'
+	deform = 'icons/mob/species/r_def_harpy_vr.dmi'
 	tail = "tail"
 	icobase_tail = 1
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
@@ -804,8 +804,8 @@
 /datum/species/crew_shadekin
 	name = SPECIES_SHADEKIN_CREW
 	name_plural = SPECIES_SHADEKIN_CREW
-	icobase = 'icons/mob/human_races/r_shadekin_vr.dmi'
-	deform = 'icons/mob/human_races/r_shadekin_vr.dmi'
+	icobase = 'icons/mob/species/r_shadekin_vr.dmi'
+	deform = 'icons/mob/species/r_shadekin_vr.dmi'
 	tail = "tail"
 	blurb = "Very little is known about these creatures. They appear to be largely mammalian in appearance. \
 	Seemingly very rare to encounter, there have been widespread myths of these creatures the galaxy over, \

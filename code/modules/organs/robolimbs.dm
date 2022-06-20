@@ -68,7 +68,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	/// Seen when examining a limb.
 	var/desc = "A generic unbranded robotic prosthesis."
 	/// Icon base to draw from.
-	var/icon = 'icons/mob/human_races/robotic.dmi'
+	var/icon = 'icons/mob/species/robotic.dmi'
 	/// Where it draws the monitor icon from.
 	var/monitor_icon = "icons/mob/monitor_icons.dmi"
 	/// If set, not available at character creator.
@@ -115,7 +115,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/unbranded_monitor
 	company = "Unbranded Monitor"
 	desc = "A generic unbranded interpretation of a popular prosthetic head model. It looks rudimentary and cheaply constructed."
-	icon = 'icons/mob/human_races/cyberlimbs/unbranded/unbranded_monitor.dmi'
+	icon = 'icons/mob/cyberlimbs/unbranded/unbranded_monitor.dmi'
 	parts = list(BP_HEAD)
 	monitor_styles = standard_monitor_styles
 	unavailable_to_build = TRUE
@@ -123,13 +123,13 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/unbranded_alt1
 	company = "Unbranded - Protez"
 	desc = "A simple robotic limb with retro design. Seems rather stiff."
-	icon = 'icons/mob/human_races/cyberlimbs/unbranded/unbranded_alt1.dmi'
+	icon = 'icons/mob/cyberlimbs/unbranded/unbranded_alt1.dmi'
 	unavailable_to_build = TRUE
 
 /datum/robolimb/unbranded_alt2
 	company = "Unbranded - Mantis Prosis"
 	desc = "This limb has a casing of sleek black metal and repulsive insectile design."
-	icon = 'icons/mob/human_races/cyberlimbs/unbranded/unbranded_alt2.dmi'
+	icon = 'icons/mob/cyberlimbs/unbranded/unbranded_alt2.dmi'
 	unavailable_to_build = TRUE
 
 /datum/robolimb/unbranded_tajaran
@@ -137,7 +137,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	species_cannot_use = list(SPECIES_TESHARI, SPECIES_PROMETHEAN, SPECIES_DIONA, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_UNATHI, SPECIES_SKRELL, SPECIES_ZADDAT)
 	suggested_species = SPECIES_TAJ
 	desc = "A simple robotic limb with feline design. Seems rather stiff."
-	icon = 'icons/mob/human_races/cyberlimbs/unbranded/unbranded_tajaran.dmi'
+	icon = 'icons/mob/cyberlimbs/unbranded/unbranded_tajaran.dmi'
 	unavailable_to_build = TRUE
 
 /datum/robolimb/unbranded_unathi
@@ -145,7 +145,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	species_cannot_use = list(SPECIES_TESHARI, SPECIES_PROMETHEAN, SPECIES_DIONA, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_TAJ, SPECIES_SKRELL, SPECIES_ZADDAT)
 	suggested_species = SPECIES_UNATHI
 	desc = "A simple robotic limb with reptilian design. Seems rather stiff."
-	icon = 'icons/mob/human_races/cyberlimbs/unbranded/unbranded_unathi.dmi'
+	icon = 'icons/mob/cyberlimbs/unbranded/unbranded_unathi.dmi'
 	unavailable_to_build = TRUE
 
 /datum/robolimb/unbranded_teshari
@@ -153,13 +153,13 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	species_cannot_use = list(SPECIES_UNATHI, SPECIES_PROMETHEAN, SPECIES_DIONA, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_TAJ, SPECIES_SKRELL, SPECIES_ZADDAT)
 	suggested_species = SPECIES_TESHARI
 	desc = "A simple robotic limb with a small, raptor-like design. Seems rather stiff."
-	icon = 'icons/mob/human_races/cyberlimbs/unbranded/unbranded_teshari.dmi'
+	icon = 'icons/mob/cyberlimbs/unbranded/unbranded_teshari.dmi'
 	unavailable_to_build = TRUE
 
 /datum/robolimb/nanotrasen
 	company = "NanoTrasen"
 	desc = "A simple but efficient robotic limb, created by NanoTrasen."
-	icon = 'icons/mob/human_races/cyberlimbs/nanotrasen/nanotrasen_main.dmi'
+	icon = 'icons/mob/cyberlimbs/nanotrasen/nanotrasen_main.dmi'
 	species_alternates = list(SPECIES_TAJ = "NanoTrasen - Tajaran", SPECIES_UNATHI = "NanoTrasen - Unathi")
 
 /datum/robolimb/nanotrasen_tajaran
@@ -168,7 +168,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	species_alternates = list(SPECIES_HUMAN = "NanoTrasen")
 	suggested_species = SPECIES_TAJ
 	desc = "A simple but efficient robotic limb, created by NanoTrasen."
-	icon = 'icons/mob/human_races/cyberlimbs/nanotrasen/nanotrasen_tajaran.dmi'
+	icon = 'icons/mob/cyberlimbs/nanotrasen/nanotrasen_tajaran.dmi'
 	unavailable_to_build = TRUE
 
 /datum/robolimb/nanotrasen_unathi
@@ -177,32 +177,32 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	species_alternates = list(SPECIES_HUMAN = "NanoTrasen")
 	suggested_species = SPECIES_UNATHI
 	desc = "A simple but efficient robotic limb, created by NanoTrasen."
-	icon = 'icons/mob/human_races/cyberlimbs/nanotrasen/nanotrasen_unathi.dmi'
+	icon = 'icons/mob/cyberlimbs/nanotrasen/nanotrasen_unathi.dmi'
 	unavailable_to_build = TRUE
 
 /datum/robolimb/bishop
 	company = "Bishop"
 	desc = "This limb has a white polymer casing with blue holo-displays."
-	icon = 'icons/mob/human_races/cyberlimbs/bishop/bishop_main.dmi'
+	icon = 'icons/mob/cyberlimbs/bishop/bishop_main.dmi'
 	unavailable_to_build = TRUE
 
 /datum/robolimb/bishop_alt1
 	company = "Bishop - Glyph"
 	desc = "This limb has a white polymer casing with blue holo-displays."
-	icon = 'icons/mob/human_races/cyberlimbs/bishop/bishop_alt1.dmi'
+	icon = 'icons/mob/cyberlimbs/bishop/bishop_alt1.dmi'
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 
 /datum/robolimb/bishop_alt2
 	company = "Bishop - Rook"
 	desc = "This limb has a solid plastic casing with blue lights along it."
-	icon = 'icons/mob/human_races/cyberlimbs/bishop/bishop_alt2.dmi'
+	icon = 'icons/mob/cyberlimbs/bishop/bishop_alt2.dmi'
 	unavailable_to_build = TRUE
 
 /datum/robolimb/bishop_monitor
 	company = "Bishop Monitor"
 	desc = "Bishop Cybernetics' unique spin on a popular prosthetic head model. The themes conflict in an intriguing way."
-	icon = 'icons/mob/human_races/cyberlimbs/bishop/bishop_monitor.dmi'
+	icon = 'icons/mob/cyberlimbs/bishop/bishop_monitor.dmi'
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 	monitor_styles = standard_monitor_styles
@@ -210,7 +210,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/cenilimicybernetics_teshari
 	company = "Cenilimi Cybernetics"
 	desc = "Made by a Teshari-owned company, for Teshari."
-	icon = 'icons/mob/human_races/cyberlimbs/cenilimicybernetics/cenilimicybernetics_teshari.dmi'
+	icon = 'icons/mob/cyberlimbs/cenilimicybernetics/cenilimicybernetics_teshari.dmi'
 	suggested_species = SPECIES_TESHARI
 	species_cannot_use = list(SPECIES_UNATHI, SPECIES_PROMETHEAN, SPECIES_DIONA, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_TAJ, SPECIES_SKRELL, SPECIES_ZADDAT)
 	species_alternates = list(SPECIES_HUMAN = "NanoTrasen")
@@ -219,7 +219,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/gestaltframe
 	company = "Skrellian Exoskeleton"
 	desc = "This limb looks to be more like a strange.. puppet, than a prosthetic."
-	icon = 'icons/mob/human_races/cyberlimbs/veymed/dionaea/skrellian.dmi'
+	icon = 'icons/mob/cyberlimbs/veymed/dionaea/skrellian.dmi'
 	blood_color = "#63b521"
 	blood_name = "synthetic ichor"
 	speech_bubble_appearance = "machine"
@@ -233,37 +233,37 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/cybersolutions
 	company = "Cyber Solutions"
 	desc = "This limb is grey and rough, with little in the way of aesthetic."
-	icon = 'icons/mob/human_races/cyberlimbs/cybersolutions/cybersolutions_main.dmi'
+	icon = 'icons/mob/cyberlimbs/cybersolutions/cybersolutions_main.dmi'
 	unavailable_to_build = TRUE
 
 /datum/robolimb/cybersolutions_alt1
 	company = "Cyber Solutions - Wight"
 	desc = "This limb has cheap plastic panels mounted on grey metal."
-	icon = 'icons/mob/human_races/cyberlimbs/cybersolutions/cybersolutions_alt1.dmi'
+	icon = 'icons/mob/cyberlimbs/cybersolutions/cybersolutions_alt1.dmi'
 	unavailable_to_build = TRUE
 /datum/robolimb/cybersolutions_alt2
 	company = "Cyber Solutions - Outdated"
 	desc = "This limb is of severely outdated design; there's no way it's comfortable or very functional to use."
-	icon = 'icons/mob/human_races/cyberlimbs/cybersolutions/cybersolutions_alt2.dmi'
+	icon = 'icons/mob/cyberlimbs/cybersolutions/cybersolutions_alt2.dmi'
 	unavailable_to_build = TRUE
 
 /datum/robolimb/cybersolutions_alt3
 	company = "Cyber Solutions - Array"
 	desc = "This limb is simple and functional; array of sensors on a featureless case."
-	icon = 'icons/mob/human_races/cyberlimbs/cybersolutions/cybersolutions_alt3.dmi'
+	icon = 'icons/mob/cyberlimbs/cybersolutions/cybersolutions_alt3.dmi'
 	unavailable_to_build = 1
 	parts = list(BP_HEAD)
 
 /datum/robolimb/einstein
 	company = "Einstein Engines"
 	desc = "This limb is lightweight with a sleek design."
-	icon = 'icons/mob/human_races/cyberlimbs/einstein/einstein_main.dmi'
+	icon = 'icons/mob/cyberlimbs/einstein/einstein_main.dmi'
 	unavailable_to_build = TRUE
 
 /datum/robolimb/grayson
 	company = "Grayson"
 	desc = "This limb has a sturdy and heavy build to it."
-	icon = 'icons/mob/human_races/cyberlimbs/grayson/grayson_main.dmi'
+	icon = 'icons/mob/cyberlimbs/grayson/grayson_main.dmi'
 	unavailable_to_build = TRUE
 	monitor_styles = "blank=grayson_off;\
 		red=grayson_red;\
@@ -274,7 +274,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/grayson_alt1
 	company = "Grayson - Reinforced"
 	desc = "This limb has a sturdy and heavy build to it."
-	icon = 'icons/mob/human_races/cyberlimbs/grayson/grayson_alt1.dmi'
+	icon = 'icons/mob/cyberlimbs/grayson/grayson_alt1.dmi'
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 	monitor_styles = "blank=grayson_alt_off;\
@@ -286,7 +286,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/grayson_monitor
 	company = "Grayson Monitor"
 	desc = "This limb has a sturdy and heavy build to it, and uses plastics in the place of glass for the monitor."
-	icon = 'icons/mob/human_races/cyberlimbs/grayson/grayson_monitor.dmi'
+	icon = 'icons/mob/cyberlimbs/grayson/grayson_monitor.dmi'
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 	monitor_styles = standard_monitor_styles
@@ -294,13 +294,13 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/hephaestus
 	company = "Hephaestus"
 	desc = "This limb has a militaristic black and green casing with gold stripes."
-	icon = 'icons/mob/human_races/cyberlimbs/hephaestus/hephaestus_main.dmi'
+	icon = 'icons/mob/cyberlimbs/hephaestus/hephaestus_main.dmi'
 	unavailable_to_build = TRUE
 
 /datum/robolimb/hephaestus_alt1
 	company = "Hephaestus - Frontier"
 	desc = "A rugged prosthetic head featuring the standard Hephaestus theme, a visor and an external display."
-	icon = 'icons/mob/human_races/cyberlimbs/hephaestus/hephaestus_alt1.dmi'
+	icon = 'icons/mob/cyberlimbs/hephaestus/hephaestus_alt1.dmi'
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 	monitor_styles = "blank=hephaestus_alt_off;\
@@ -314,7 +314,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/hephaestus_alt2
 	company = "Hephaestus - Athena"
 	desc = "This rather thick limb has a militaristic green plating."
-	icon = 'icons/mob/human_races/cyberlimbs/hephaestus/hephaestus_alt2.dmi'
+	icon = 'icons/mob/cyberlimbs/hephaestus/hephaestus_alt2.dmi'
 	unavailable_to_build = TRUE
 	monitor_styles = "red=athena_red;\
 		blank=athena_off"
@@ -322,7 +322,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/hephaestus_monitor
 	company = "Hephaestus Monitor"
 	desc = "Hephaestus' unique spin on a popular prosthetic head model. It looks rugged and sturdy."
-	icon = 'icons/mob/human_races/cyberlimbs/hephaestus/hephaestus_monitor.dmi'
+	icon = 'icons/mob/cyberlimbs/hephaestus/hephaestus_monitor.dmi'
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 	monitor_styles = standard_monitor_styles
@@ -330,28 +330,28 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/morpheus
 	company = "Morpheus"
 	desc = "This limb is simple and functional; no effort has been made to make it look human."
-	icon = 'icons/mob/human_races/cyberlimbs/morpheus/morpheus_main.dmi'
+	icon = 'icons/mob/cyberlimbs/morpheus/morpheus_main.dmi'
 	unavailable_to_build = TRUE
 	monitor_styles = standard_monitor_styles
 
 /datum/robolimb/morpheus_alt1
 	company = "Morpheus - Zenith"
 	desc = "This limb is simple and functional; no effort has been made to make it look human."
-	icon = 'icons/mob/human_races/cyberlimbs/morpheus/morpheus_alt1.dmi'
+	icon = 'icons/mob/cyberlimbs/morpheus/morpheus_alt1.dmi'
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 
 /datum/robolimb/morpheus_alt2
 	company = "Morpheus - Skeleton Crew"
 	desc = "This limb is simple and functional; it's basically just a case for a brain."
-	icon = 'icons/mob/human_races/cyberlimbs/morpheus/morpheus_alt2.dmi'
+	icon = 'icons/mob/cyberlimbs/morpheus/morpheus_alt2.dmi'
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 
 /datum/robolimb/veymed
 	company = "Vey-Med"
 	desc = "This high quality limb is nearly indistinguishable from an organic one."
-	icon = 'icons/mob/human_races/cyberlimbs/veymed/veymed_main.dmi'
+	icon = 'icons/mob/cyberlimbs/veymed/veymed_main.dmi'
 	unavailable_to_build = TRUE
 	lifelike = 1
 	skin_tone = 1
@@ -375,7 +375,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/moth
 	company = "Psyche - Moth"
 	desc = "This high quality limb is nearly indistinguishable from an organic one."
-	icon = 'icons/mob/human_races/cyberlimbs/psyche/moth.dmi'
+	icon = 'icons/mob/cyberlimbs/psyche/moth.dmi'
 	blood_color = "#808000"
 	lifelike = 1
 	skin_tone = TRUE
@@ -385,7 +385,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/insect
 	company = "Psyche - Insect"
 	desc = "This high quality limb is nearly indistinguishable from an organic one."
-	icon = 'icons/mob/human_races/cyberlimbs/psyche/insect.dmi'
+	icon = 'icons/mob/cyberlimbs/psyche/insect.dmi'
 	blood_color = "#808000"
 	lifelike = 1
 	skin_tone = TRUE
@@ -396,26 +396,26 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/wardtakahashi
 	company = "Ward-Takahashi"
 	desc = "This limb features sleek black and white polymers."
-	icon = 'icons/mob/human_races/cyberlimbs/wardtakahashi/wardtakahashi_main.dmi'
+	icon = 'icons/mob/cyberlimbs/wardtakahashi/wardtakahashi_main.dmi'
 	unavailable_to_build = TRUE
 
 /datum/robolimb/wardtakahashi_alt1
 	company = "Ward-Takahashi - Shroud"
 	desc = "This limb features sleek black and white polymers. This one looks more like a helmet of some sort."
-	icon = 'icons/mob/human_races/cyberlimbs/wardtakahashi/wardtakahashi_alt1.dmi'
+	icon = 'icons/mob/cyberlimbs/wardtakahashi/wardtakahashi_alt1.dmi'
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 
 /datum/robolimb/wardtakahashi_alt2
 	company = "Ward-Takahashi - Spirit"
 	desc = "This limb has white and purple features, with a heavier casing."
-	icon = 'icons/mob/human_races/cyberlimbs/wardtakahashi/wardtakahashi_alt2.dmi'
+	icon = 'icons/mob/cyberlimbs/wardtakahashi/wardtakahashi_alt2.dmi'
 	unavailable_to_build = TRUE
 
 /datum/robolimb/wardtakahashi_monitor
 	company = "Ward-Takahashi Monitor"
 	desc = "Ward-Takahashi's unique spin on a popular prosthetic head model. It looks sleek and modern."
-	icon = 'icons/mob/human_races/cyberlimbs/wardtakahashi/wardtakahashi_monitor.dmi'
+	icon = 'icons/mob/cyberlimbs/wardtakahashi/wardtakahashi_monitor.dmi'
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 	monitor_styles = standard_monitor_styles
@@ -423,20 +423,20 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/xion
 	company = "Xion"
 	desc = "This limb has a minimalist black and red casing."
-	icon = 'icons/mob/human_races/cyberlimbs/xion/xion_main.dmi'
+	icon = 'icons/mob/cyberlimbs/xion/xion_main.dmi'
 	unavailable_to_build = TRUE
 
 /datum/robolimb/xion_alt1
 	company = "Xion - Breach"
 	desc = "This limb has a minimalist black and red casing. Looks a bit menacing."
-	icon = 'icons/mob/human_races/cyberlimbs/xion/xion_alt1.dmi'
+	icon = 'icons/mob/cyberlimbs/xion/xion_alt1.dmi'
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 
 /datum/robolimb/xion_alt2
 	company = "Xion - Hull"
 	desc = "This limb has a thick orange casing with steel plating."
-	icon = 'icons/mob/human_races/cyberlimbs/xion/xion_alt2.dmi'
+	icon = 'icons/mob/cyberlimbs/xion/xion_alt2.dmi'
 	unavailable_to_build = TRUE
 	monitor_styles = "blank=xion_off;\
 		red=xion_red;\
@@ -447,13 +447,13 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/xion_alt3
 	company = "Xion - Whiteout"
 	desc = "This limb has a minimalist black and white casing."
-	icon = 'icons/mob/human_races/cyberlimbs/xion/xion_alt3.dmi'
+	icon = 'icons/mob/cyberlimbs/xion/xion_alt3.dmi'
 	unavailable_to_build = TRUE
 
 /datum/robolimb/xion_alt4
 	company = "Xion - Breach - Whiteout"
 	desc = "This limb has a minimalist black and white casing. Looks a bit menacing."
-	icon = 'icons/mob/human_races/cyberlimbs/xion/xion_alt4.dmi'
+	icon = 'icons/mob/cyberlimbs/xion/xion_alt4.dmi'
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 
@@ -461,7 +461,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/xion_monitor
 	company = "Xion Monitor"
 	desc = "Xion Mfg.'s unique spin on a popular prosthetic head model. It looks and minimalist and utilitarian."
-	icon = 'icons/mob/human_races/cyberlimbs/xion/xion_monitor.dmi'
+	icon = 'icons/mob/cyberlimbs/xion/xion_monitor.dmi'
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 	monitor_styles = standard_monitor_styles
@@ -471,7 +471,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/zenghu
 	company = "Zeng-Hu"
 	desc = "This limb has a rubbery fleshtone covering with visible seams."
-	icon = 'icons/mob/human_races/cyberlimbs/zenghu/zenghu_main.dmi'
+	icon = 'icons/mob/cyberlimbs/zenghu/zenghu_main.dmi'
 	species_alternates = list(SPECIES_TAJ = "Zeng-Hu - Tajaran")
 	unavailable_to_build = TRUE
 	skin_tone = TRUE
@@ -481,7 +481,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/cyber_beast
 	company = "Cyber Tech"
 	desc = "Adjusted for deep space the material is durable, and heavy."
-	icon = 'icons/mob/human_races/cyberlimbs/c-tech/c_beast.dmi'
+	icon = 'icons/mob/cyberlimbs/c-tech/c_beast.dmi'
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 	monitor_styles = cyberbeast_monitor_styles
@@ -489,7 +489,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/wooden
 	company = "Morgan Trading Co"
 	desc = "A simplistic, metal-banded, wood-panelled prosthetic."
-	icon = 'icons/mob/human_races/cyberlimbs/prosthesis/wooden.dmi'
+	icon = 'icons/mob/cyberlimbs/prosthesis/wooden.dmi'
 	modular_bodyparts = MODULAR_BODYPART_PROSTHETIC
 	parts = list(BP_L_ARM, BP_R_ARM, BP_L_HAND, BP_R_HAND, BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 
@@ -585,7 +585,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/eggnerdltd
 	company = "Eggnerd Prototyping Ltd."
 	desc = "This limb has a slight salvaged handicraft vibe to it. The CE-marking on it is definitely not the standardized one, it looks more like a hand-written sharpie monogram."
-	icon = 'icons/mob/human_races/cyberlimbs/_fluff_vr/rahboop.dmi'
+	icon = 'icons/mob/cyberlimbs/_fluff_vr/rahboop.dmi'
 	blood_color = "#5e280d"
 	includes_tail = 1
 	unavailable_to_build = TRUE
@@ -599,7 +599,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/vulkanwrks
 	company = "Vulkan Brassworks Inc."
 	desc = "This limb is crafted out of hammered brass. Unlike other prosthetics, the internals of this device run off of a complex system of clockwork gears and arms, with a wired superstructure layered on top. This level of craftsmanship is incredibly atypical."
-	icon = 'icons/mob/human_races/cyberlimbs/_fluff_vr/brassworks.dmi'
+	icon = 'icons/mob/cyberlimbs/_fluff_vr/brassworks.dmi'
 	blood_color = "#1F2631"
 	unavailable_to_build = TRUE
 
@@ -613,7 +613,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/talon //They're buildable by default due to being extremely basic.
 	company = "Talon LLC"
 	desc = "This metallic limb is sleek and featuresless apart from some exposed motors"
-	icon = 'icons/mob/human_races/cyberlimbs/talon/talon_main.dmi' //Sprited by: Viveret
+	icon = 'icons/mob/cyberlimbs/talon/talon_main.dmi' //Sprited by: Viveret
 
 /obj/item/disk/limb/talon
 	company = "Talon LLC"
@@ -621,14 +621,14 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/zenghu_taj //This wasn't indented. At all. It's a miracle this didn't break literally everything.
 	company = "Zeng-Hu - Tajaran"
 	desc = "This limb has a rubbery fleshtone covering with visible seams."
-	icon = 'icons/mob/human_races/cyberlimbs/zenghu/zenghu_taj.dmi'
+	icon = 'icons/mob/cyberlimbs/zenghu/zenghu_taj.dmi'
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 
 /datum/robolimb/eggnerdltdred
 	company = "Eggnerd Prototyping Ltd. (Red)"
 	desc = "A slightly more refined limb variant from Eggnerd Prototyping. Its got red plating instead of orange."
-	icon = 'icons/mob/human_races/cyberlimbs/rahboopred/rahboopred.dmi'
+	icon = 'icons/mob/cyberlimbs/rahboopred/rahboopred.dmi'
 	blood_color = "#5e280d"
 	includes_tail = 1
 	unavailable_to_build = TRUE
@@ -644,7 +644,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/dsi_tajaran
 	company = "DSI - Tajaran"
 	desc = "This limb feels soft and fluffy, realistic design and squish. By Darkside Incorperated."
-	icon = 'icons/mob/human_races/cyberlimbs/DSITajaran/dsi_tajaran.dmi'
+	icon = 'icons/mob/cyberlimbs/DSITajaran/dsi_tajaran.dmi'
 	blood_color = "#ffe2ff"
 	lifelike = 1
 	unavailable_to_build = TRUE
@@ -660,7 +660,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/dsi_lizard
 	company = "DSI - Lizard"
 	desc = "This limb feels smooth and scalie, realistic design and squish. By Darkside Incorperated."
-	icon = 'icons/mob/human_races/cyberlimbs/DSILizard/dsi_lizard.dmi'
+	icon = 'icons/mob/cyberlimbs/DSILizard/dsi_lizard.dmi'
 	blood_color = "#ffe2ff"
 	lifelike = 1
 	unavailable_to_build = TRUE
@@ -676,7 +676,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/dsi_sergal
 	company = "DSI - Sergal"
 	desc = "This limb feels soft and fluffy, realistic design and toned muscle. By Darkside Incorperated."
-	icon = 'icons/mob/human_races/cyberlimbs/DSISergal/dsi_sergal.dmi'
+	icon = 'icons/mob/cyberlimbs/DSISergal/dsi_sergal.dmi'
 	blood_color = "#ffe2ff"
 	lifelike = 1
 	unavailable_to_build = TRUE
@@ -692,7 +692,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/dsi_nevrean
 	company = "DSI - Nevrean"
 	desc = "This limb feels soft and feathery, lightweight, realistic design and squish. By Darkside Incorperated."
-	icon = 'icons/mob/human_races/cyberlimbs/DSINevrean/dsi_nevrean.dmi'
+	icon = 'icons/mob/cyberlimbs/DSINevrean/dsi_nevrean.dmi'
 	blood_color = "#ffe2ff"
 	lifelike = 1
 	unavailable_to_build = TRUE
@@ -708,7 +708,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/dsi_vulpkanin
 	company = "DSI - Vulpkanin"
 	desc = "This limb feels soft and fluffy, realistic design and squish. Seems a little mischievous. By Darkside Incorperated."
-	icon = 'icons/mob/human_races/cyberlimbs/DSIVulpkanin/dsi_vulpkanin.dmi'
+	icon = 'icons/mob/cyberlimbs/DSIVulpkanin/dsi_vulpkanin.dmi'
 	blood_color = "#ffe2ff"
 	lifelike = 1
 	unavailable_to_build = TRUE
@@ -724,7 +724,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/dsi_akula
 	company = "DSI - Akula"
 	desc = "This limb feels soft and fleshy, realistic design and squish. Seems a little mischievous. By Darkside Incorperated."
-	icon = 'icons/mob/human_races/cyberlimbs/DSIAkula/dsi_akula.dmi'
+	icon = 'icons/mob/cyberlimbs/DSIAkula/dsi_akula.dmi'
 	blood_color = "#ffe2ff"
 	lifelike = 1
 	unavailable_to_build = TRUE
@@ -740,7 +740,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/dsi_spider
 	company = "DSI - Vasilissan"
 	desc = "This limb feels hard and chitinous, realistic design. Seems a little mischievous. By Darkside Incorperated."
-	icon = 'icons/mob/human_races/cyberlimbs/DSISpider/dsi_spider.dmi'
+	icon = 'icons/mob/cyberlimbs/DSISpider/dsi_spider.dmi'
 	blood_color = "#ffe2ff"
 	lifelike = 1
 	unavailable_to_build = TRUE
@@ -756,7 +756,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/dsi_teshari
 	company = "DSI - Teshari"
 	desc = "This limb has a thin synthflesh casing with a few connection ports."
-	icon = 'icons/mob/human_races/cyberlimbs/DSITeshari/dsi_teshari.dmi'
+	icon = 'icons/mob/cyberlimbs/DSITeshari/dsi_teshari.dmi'
 	lifelike = 1
 	unavailable_to_build = TRUE
 	skin_tone = 1
@@ -775,7 +775,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/braincase
 	company = "cortexCases - MMI"
 	desc = "A solid, transparent case to hold your important bits in with style."
-	icon = 'icons/mob/human_races/cyberlimbs/cortex/braincase.dmi'
+	icon = 'icons/mob/cyberlimbs/cortex/braincase.dmi'
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 
@@ -785,7 +785,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/posicase
 	company = "cortexCases - Posi"
 	desc = "A solid, transparent case to hold your important bits in with style."
-	icon = 'icons/mob/human_races/cyberlimbs/cortex/posicase.dmi'
+	icon = 'icons/mob/cyberlimbs/cortex/posicase.dmi'
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 
@@ -795,7 +795,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/antares
 	company = "Antares Robotics"
 	desc = "Mustard-yellow industrial limb. Heavyset and thick."
-	icon = 'icons/mob/human_races/cyberlimbs/antares/antares_main.dmi'
+	icon = 'icons/mob/cyberlimbs/antares/antares_main.dmi'
 	unavailable_to_build = TRUE
 	monitor_styles = standard_monitor_styles
 
@@ -805,7 +805,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/adherent
 	company = "NULL DATA."
 	desc = "NULL DATA."
-	icon = 'icons/mob/human_races/r_adherent.dmi'
+	icon = 'icons/mob/species/adherent/body.dmi'
 	unavailable_to_build = TRUE
 	suggested_species = SPECIES_ADHERENT
 
