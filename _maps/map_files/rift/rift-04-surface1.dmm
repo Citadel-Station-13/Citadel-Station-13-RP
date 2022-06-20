@@ -2122,6 +2122,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/hallway)
+"bTk" = (
+/obj/machinery/light/fairy{
+	dir = 8
+	},
+/obj/structure/flora/ausbushes/brflowers,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/public_garden)
 "bTN" = (
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 1
@@ -2284,10 +2291,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
 "cap" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/machinery/light/fairy,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
-/area/rift/station/public_garden)
+/obj/machinery/door/firedoor,
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/rift/surfacebase/outside/outside1)
 "cbA" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/structure/window/reinforced{
@@ -6436,6 +6444,9 @@
 /obj/structure/closet/crate,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/warehouse)
+"fnO" = (
+/turf/space/basic,
+/area/rift/station/public_garden)
 "foD" = (
 /turf/simulated/wall/r_wall,
 /area/rnd/chemistry_lab)
@@ -12357,10 +12368,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
-"jQX" = (
-/obj/structure/table/woodentable,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
-/area/rift/station/public_garden)
 "jRk" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -12950,13 +12957,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/medical/psych/psych_2)
-"kjW" = (
-/obj/machinery/light/fairy{
-	dir = 4
-	},
-/obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
-/area/rift/station/public_garden)
 "kkn" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
@@ -15321,6 +15321,10 @@
 /obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
+"mbJ" = (
+/obj/structure/table/woodentable,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/public_garden)
 "mbK" = (
 /obj/effect/floor_decal/borderfloorwhite/corner{
 	dir = 1
@@ -17612,13 +17616,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
-"nzU" = (
-/obj/machinery/light/fairy{
-	dir = 8
-	},
-/obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
-/area/rift/station/public_garden)
 "nzV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -27831,6 +27828,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/checkpoint)
+"uSd" = (
+/obj/machinery/appliance/cooker/grill,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/public_garden)
 "uSm" = (
 /obj/machinery/light{
 	dir = 8
@@ -29991,7 +29992,10 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva)
 "wGa" = (
-/obj/machinery/light/fairy,
+/obj/machinery/light/fairy{
+	dir = 8
+	},
+/obj/structure/table/bench/wooden,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rift/station/public_garden)
 "wGi" = (
@@ -30055,13 +30059,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfaceone)
-"wHl" = (
-/obj/machinery/light/fairy{
-	dir = 8
-	},
-/obj/structure/table/bench/wooden,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
-/area/rift/station/public_garden)
 "wHK" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -30406,6 +30403,13 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/surface_south)
+"xaV" = (
+/obj/machinery/light/fairy{
+	dir = 4
+	},
+/obj/structure/flora/ausbushes/ppflowers,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/public_garden)
 "xbC" = (
 /obj/structure/table/woodentable,
 /obj/structure/mirror/long/left{
@@ -57576,13 +57580,13 @@ gzd
 gzd
 gzd
 jhN
-jhN
-wHl
-wHl
+wGa
+wGa
 baN
 baN
 baN
-nzU
+baN
+bTk
 jhN
 jhN
 gzd
@@ -57769,11 +57773,11 @@ hgE
 gzd
 gzd
 gzd
-gzd
-jhN
-jQX
-jQX
+cap
+mbJ
+mbJ
 rpP
+uSd
 sQo
 qyE
 qyE
@@ -57963,14 +57967,14 @@ hgE
 gzd
 gzd
 gzd
-gzd
-jhN
+cap
 qyE
 qyE
 rpP
+uSd
 rpP
-jQX
-jQX
+mbJ
+mbJ
 jhN
 gzd
 gzd
@@ -58157,9 +58161,9 @@ hgE
 hgE
 kCW
 gzd
-gzd
-jhN
-kjW
+cap
+xaV
+nNl
 nNl
 nNl
 nNl
@@ -58352,9 +58356,9 @@ hgE
 gzd
 gzd
 jhN
-jhN
 rpP
 rpP
+fnO
 rpP
 rpP
 bfY
@@ -58546,7 +58550,7 @@ gzd
 gzd
 gzd
 jhN
-wGa
+rpP
 rpP
 eGP
 qDk
@@ -58740,7 +58744,7 @@ gzd
 gzd
 gzd
 jhN
-wGa
+rpP
 rpP
 rpP
 rpP
@@ -58934,7 +58938,7 @@ gzd
 gzd
 gzd
 jhN
-cap
+skM
 rpP
 rpP
 rpP
@@ -59128,7 +59132,7 @@ hgE
 gzd
 gzd
 jhN
-wGa
+rpP
 rpP
 rpP
 rpP

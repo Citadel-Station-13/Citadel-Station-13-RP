@@ -1085,6 +1085,7 @@ var/global/list/light_type_cache = list()
 	icon_state = "fbulb"
 	base_state = "fbulb"
 	matter = list(MAT_GLASS = 10)
+	brightness_range = 4
 
 // update the icon state and description of the light
 /obj/item/light/update_icon()
