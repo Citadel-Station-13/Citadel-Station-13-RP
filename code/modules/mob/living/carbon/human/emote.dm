@@ -21,7 +21,8 @@
 
 	if(src.stat == 2.0 && (act != "deathgasp"))
 		return
-	if(attempt_vr(src,"handle_emote_vr",list(act,m_type,message))) return //VOREStation Add - Custom Emote Handler
+	if(attempt_vr(src,"handle_emote_vr",list(act,m_type,message)))
+		return // Custom Emote Handler
 	switch(act)
 
 		if ("airguitar")
@@ -111,13 +112,9 @@
 
 		//Promethean-only emotes
 		if("squish")
-			//Citadel changes start
-			///* VOREStation Removal Start - Eh. People can squish maybe.
 			if(species.bump_flag != SLIME) //This should definitely do it.
 				to_chat(src, "<span class='warning'>You are not a slime thing!</span>")
 				return
-			//*/ //VOREStation Removal End
-			//Citadel changes end
 			playsound(src.loc, 'sound/effects/slime_squish.ogg', 50, 0) //Credit to DrMinky (freesound.org) for the sound.
 			message = "squishes."
 			m_type = 1

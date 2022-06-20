@@ -337,7 +337,7 @@
 		SStgui.update_uis(src)
 
 /obj/machinery/computer/skills/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		..(severity)
 		return
 

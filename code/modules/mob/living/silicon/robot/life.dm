@@ -1,24 +1,23 @@
-/mob/living/silicon/robot/Life()
-	set invisibility = 0
-	set background = 1
-
-	if (src.transforming)
+/mob/living/silicon/robot/Life(seconds, times_fired)
+	if((. = ..()))
 		return
-
-	src.blinded = null
 
 	//Status updates, death etc.
 	clamp_values()
 	handle_regular_UI_updates()
 	handle_actions()
-	handle_instability()
+
+/mob/living/silicon/robot/PhysicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
 	// For some reason borg Life() doesn't call ..()
 	handle_modifiers()
 	handle_light()
+	handle_regular_hud_updates()
+	handle_vision()
 
 	if(client)
-		handle_regular_hud_updates()
-		handle_vision()
 		update_items()
 	if (src.stat != DEAD) //still using power
 		use_power()
@@ -79,9 +78,6 @@
 	if(src.sleeping)
 		Paralyse(3)
 		AdjustSleeping(-1)
-
-	//if(src.resting) // VOREStation edit. Our borgos would rather not.
-	//	Weaken(5)
 
 	if(health < config_legacy.health_threshold_dead && src.stat != 2) //die only once
 		death()

@@ -1,14 +1,16 @@
-#define TECHNOMANCER_INSTABILITY_DECAY				0.97	// Multipler for how much instability is lost per Life() tick.
+/// Multipler for how much instability is lost per Life() tick.
+#define TECHNOMANCER_INSTABILITY_DECAY				0.97
 // Numbers closer to 1.0 make instability decay slower.  Instability will never decay if it's at 1.0.
 // When set to 0.98, it has a half life of roughly 35 Life() ticks, or 1.1 minutes.
 // For 0.97, it has a half life of about 23 ticks, or 46 seconds.
 // For 0.96, it is 17 ticks, or 34 seconds.
 // 0.95 is 14 ticks.
-#define TECHNOMANCER_INSTABILITY_MIN_DECAY			0.1 	// Minimum removed every Life() tick, always.
-#define TECHNOMANCER_INSTABILITY_PRECISION			0.1 	// Instability is rounded to this.
-#define TECHNOMANCER_INSTABILITY_MIN_GLOW			10		// When above this number, the entity starts glowing, affecting others.
-
-
+/// Minimum removed every Life() tick, always.
+#define TECHNOMANCER_INSTABILITY_MIN_DECAY			0.1
+/// Instability is rounded to this.
+#define TECHNOMANCER_INSTABILITY_PRECISION			0.1
+/// When above this number, the entity starts glowing, affecting others.
+#define TECHNOMANCER_INSTABILITY_MIN_GLOW			10
 /mob/living
 	var/instability = 0
 	var/last_instability = 0 // Used to calculate instability delta.
@@ -44,11 +46,9 @@
 			if(100 to 200)
 				wiz_instability_display.icon_state = "instability3"
 
-// Proc: Life()
-// Parameters: 0
-// Description: Makes instability tick along with Life().
-/mob/living/Life()
-	. = ..()
+/mob/living/PhysicalLife()
+	if((. = ..()))
+		return
 	handle_instability()
 
 // Proc: handle_instability()
@@ -286,4 +286,3 @@
 		else
 			to_chat(src, "<span class='cult'><font size='4'>The purple glow makes you feel strange...</font></span>")
 	adjust_instability(amount)
-

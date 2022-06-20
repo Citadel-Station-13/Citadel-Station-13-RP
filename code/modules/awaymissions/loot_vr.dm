@@ -1,5 +1,5 @@
 // Legacy version. Need to investigate what the hell lootdrop in loot.dm does later. -Ace
-/atom/movable/landmark/loot_spawn
+/obj/landmark/loot_spawn
 	name = "loot spawner"
 	icon_state = "grabbed1"
 	var/live_cargo = 1 // So you can turn off aliens.
@@ -7,12 +7,12 @@
 	var/spawned_faction = "hostile" // Spawned mobs can have their faction changed.
 
 
-/atom/movable/landmark/loot_spawn/low
+/obj/landmark/loot_spawn/low
 	name = "low prob loot spawner"
 	icon_state = "grabbed"
 	low_probability = 1
 
-/atom/movable/landmark/loot_spawn/New()
+/obj/landmark/loot_spawn/New()
 
 	switch(pick( \
 	low_probability * 1000;"nothing", \
@@ -24,12 +24,9 @@
 	100 - low_probability * 50;"spacesuit", \
 	"health", \
 	25 + low_probability * 75;"snacks", \
-	/*25;"alien", \ */ //VORESTATION AI TEMPORARY REMOVAL
 	"lights", \
 	25 - low_probability * 25;"engineering", \
 	25 - low_probability * 25;"coffin", \
-	/*25;"mimic", \ //VORESTATION AI TEMPORARY REMOVAL
-	25;"viscerator", \ */ //VORESTATION AI TEMPORARY REMOVAL
 	))
 		if("treasure")
 			var/obj/structure/closet/crate/C = new(src.loc)
@@ -334,19 +331,14 @@
 				new /obj/effect/decal/remains/human(src)
 			else if(prob(50))
 				new /obj/effect/decal/remains/xeno(src)
+
 		if("mimic")
-			//a guardian of the tomb!
-			// var/mob/living/simple_mob/hostile/mimic/crate/mimic = new(src.loc)
-			// mimic.faction = spawned_faction
-			var/obj/structure/closet/crate/secure/gear/C = new(src.loc) //VORESTATION AI TEMPORARY EDIT
-			new /obj/item/storage/toolbox/electrical(C) //Placeholder to prevent errors. //VORESTATION AI TEMPORARY EDIT
+			var/obj/structure/closet/crate/secure/gear/C = new(src.loc)
+			new /obj/item/storage/toolbox/electrical(C)
+
 		if("viscerator")
-			//more tomb guardians!
-			//var/num = rand(1,3) //VORESTATION AI TEMPORARY REMOVAL
-			var/obj/structure/closet/crate/secure/gear/C = new(src.loc) //VORESTATION AI TEMPORARY EDIT
-			new /obj/item/storage/toolbox/electrical(C) //Placeholder to prevent errors. //VORESTATION AI TEMPORARY EDIT
-			//for(var/i=0,i<num,i++) //VORESTATION AI TEMPORARY REMOVAL
-				//new /mob/living/simple_mob/hostile/viscerator(C)  //VORESTATION AI TEMPORARY REMOVAL
+			var/obj/structure/closet/crate/secure/gear/C = new(src.loc)
+			new /obj/item/storage/toolbox/electrical(C)
 
 	qdel(src)
 

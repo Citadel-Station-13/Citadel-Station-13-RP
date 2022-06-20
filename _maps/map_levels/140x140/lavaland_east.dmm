@@ -276,7 +276,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "fD" = (
-/atom/movable/landmark/map_data/lavaland_east,
+/obj/landmark/map_data/lavaland_east,
 /turf/simulated/mineral/triumph/lavaland,
 /area/lavaland/east/explored)
 "fL" = (
@@ -302,7 +302,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/solar{
-	stat = 1
+	machine_stat = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
@@ -447,7 +447,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/solar{
-	stat = 1
+	machine_stat = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
@@ -672,7 +672,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/solar{
-	stat = 1
+	machine_stat = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
@@ -1146,7 +1146,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/solar{
-	stat = 1
+	machine_stat = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
@@ -1263,7 +1263,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/solar{
-	stat = 1
+	machine_stat = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
@@ -1936,7 +1936,7 @@
 "MA" = (
 /obj/machinery/power/solar_control{
 	dir = 1;
-	stat = 1
+	machine_stat = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/east/colony)
@@ -2459,7 +2459,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/solar{
-	stat = 1
+	machine_stat = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
@@ -2574,7 +2574,7 @@
 /area/lavaland/east/colony)
 "Yx" = (
 /obj/machinery/power/solar{
-	stat = 1
+	machine_stat = 1
 	},
 /obj/structure/cable/yellow{
 	d2 = 8;

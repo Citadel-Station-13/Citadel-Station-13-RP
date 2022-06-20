@@ -37,7 +37,7 @@
 
 /obj/effect/overlay/bluespacify
 	name = "Bluespace"
-	icon = 'icons/turf/space.dmi' //VOREStation Edit
+	icon = 'icons/turf/space.dmi'
 	icon_state = "bluespacify"
 	plane = ABOVE_PLANE
 
@@ -78,10 +78,28 @@
 	mouse_opacity = 0 //Don't block underlying tile interactions
 
 /obj/effect/overlay/snow/floor/edges
+	icon = 'icons/turf/snow.dmi'
 	icon_state = "snow_edges"
 
 /obj/effect/overlay/snow/floor/surround
+	icon = 'icons/turf/snow.dmi'
 	icon_state = "snow_surround"
+
+/obj/effect/overlay/snow/floor/edges_new
+	icon = 'icons/turf/snow_new.dmi'
+	icon_state = "snow_edges"
+
+/obj/effect/overlay/snow/floor/surround_new
+	icon = 'icons/turf/snow_new.dmi'
+	icon_state = "snow_surround"
+
+/obj/effect/overlay/snow/floor/grav_edges
+	icon = 'icons/turf/snow_new.dmi'
+	icon_state = "gravsnow_edges"
+
+/obj/effect/overlay/snow/floor/grav_surround
+	icon = 'icons/turf/snow_new.dmi'
+	icon_state = "gravsnow_surround"
 
 /obj/effect/overlay/snow/airlock
 	icon_state = "snowairlock"

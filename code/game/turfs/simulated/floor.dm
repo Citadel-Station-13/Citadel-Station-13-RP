@@ -23,7 +23,7 @@
 		'sound/effects/footstep/plating4.ogg',
 		'sound/effects/footstep/plating5.ogg'))
 
-	var/list/old_decals = null // VOREStation Edit - Remember what decals we had between being pried up and replaced.
+	var/list/old_decals = null // Remember what decals we had between being pried up and replaced.
 
 	// Flooring data.
 	var/flooring_override
@@ -73,42 +73,32 @@
 		else
 			make_indoors()
 
+/**
+ * TODO: REWORK FLOORING GETTERS/INIT/SETTERS THIS IS BAD
+ */
+
 /turf/simulated/floor/proc/set_flooring(decl/flooring/newflooring, init)
 	make_plating(null, TRUE, TRUE)
 	flooring = newflooring
 	footstep_sounds = newflooring.footstep_sounds
-	// VOREStation Edit - We are plating switching to flooring, swap out old_decals for decals
+	// We are plating switching to flooring, swap out old_decals for decals
 	var/list/overfloor_decals = old_decals
 	old_decals = decals
 	decals = overfloor_decals
-	// VOREStation Edit End
 	if(!init)
 		QUEUE_SMOOTH(src)
 		QUEUE_SMOOTH_NEIGHBORS(src)
-	else		// if we are initing we aren't changeturfing which usually handles levelupdates
-		levelupdate()
+	levelupdate()
 
 //This proc will set floor_type to null and the update_icon() proc will then change the icon_state of the turf
 //This proc auto corrects the grass tiles' siding.
 /turf/simulated/floor/proc/make_plating(place_product, defer_icon_update, strip_bare)
-	if(!defer_icon_update)		// if we're set flooring all of these get set again anyways, if it doesn't someone fucked up
-		name = base_name
-		desc = base_desc
-		icon = base_icon
-		icon_state = base_icon_state
-		footstep_sounds = base_footstep_sounds
-		cut_overlays()
-		QUEUE_SMOOTH(src)
-		QUEUE_SMOOTH_NEIGHBORS(src)
-		levelupdate()
-
 
 	if(flooring)
-		// VOREStation Edit - We are flooring switching to plating, swap out old_decals for decals.
+		// We are flooring switching to plating, swap out old_decals for decals.
 		var/list/underfloor_decals = old_decals
 		old_decals = decals
 		decals = underfloor_decals
-		// VOREStation Edit End
 
 		if(place_product)
 			flooring.drop_product(src)
@@ -117,11 +107,21 @@
 			set_flooring(get_flooring_data(newtype))
 		else
 			flooring = null
-
+			// this branch is only if we don't set flooring because otherwise it'll do it for us
+			if(!defer_icon_update)
+				name = base_name
+				desc = base_desc
+				icon = base_icon
+				icon_state = base_icon_state
+				footstep_sounds = base_footstep_sounds
+				QUEUE_SMOOTH(src)
+				QUEUE_SMOOTH_NEIGHBORS(src)
+				levelupdate()
 
 	broken = null
 	burnt = null
 	flooring_override = null
+
 
 /turf/simulated/floor/levelupdate()
 	for(var/obj/O in src)

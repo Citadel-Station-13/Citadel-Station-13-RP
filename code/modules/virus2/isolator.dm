@@ -9,7 +9,7 @@
 	var/obj/item/reagent_containers/syringe/sample = null
 
 /obj/machinery/disease2/isolator/update_icon()
-	if (stat & (BROKEN|NOPOWER))
+	if (machine_stat & (BROKEN|NOPOWER))
 		icon_state = "isolator"
 		return
 
@@ -41,8 +41,8 @@
 
 	src.attack_hand(user)
 
-/obj/machinery/disease2/isolator/attack_hand(mob/user as mob)
-	if(stat & (NOPOWER|BROKEN))
+/obj/machinery/disease2/isolator/attack_hand(mob/user)
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	ui_interact(user)
 
@@ -71,7 +71,7 @@
 
 				var/mob/living/carbon/human/D = B.data["donor"]
 				pathogen_pool.Add(list(list(\
-					"name" = "[D.get_species_name()] [B.name]", \
+					"name" = "[D.get_true_species_name()] [B.name]", \
 					"dna" = B.data["blood_DNA"], \
 					"unique_id" = V.uniqueID, \
 					"reference" = "\ref[V]", \
@@ -160,7 +160,7 @@
 
 			for(var/datum/reagent/blood/B in sample.reagents.reagent_list)
 				var/mob/living/carbon/human/D = B.data["donor"]
-				P.info += "<large><u>[D.get_species_name()] [B.name]:</u></large><br>[B.data["blood_DNA"]]<br>"
+				P.info += "<large><u>[D.get_true_species_name()] [B.name]:</u></large><br>[B.data["blood_DNA"]]<br>"
 
 				var/list/virus = B.data["virus2"]
 				P.info += "<u>Pathogens:</u> <br>"

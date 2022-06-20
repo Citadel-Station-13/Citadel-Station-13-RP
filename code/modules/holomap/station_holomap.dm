@@ -107,7 +107,7 @@
 	// EH JUST HACK IT FOR NOW SO WE CAN SEE HOW IT LOOKS! STOP OBSESSING, ITS BEEN AN HOUR NOW!
 
 	// TODO - This part!! ~Leshana
-	if(isliving(user) && anchored && !(stat & (NOPOWER|BROKEN)))
+	if(isliving(user) && anchored && !(machine_stat & (NOPOWER|BROKEN)))
 		if(user.client)
 			holomap_datum.station_map.loc = GLOB.global_hud.holomap  // Put the image on the holomap hud
 			holomap_datum.station_map.alpha = 0 // Set to transparent so we can fade in
@@ -133,7 +133,7 @@
 	// user.station_holomap.toggleHolomap(user, isAI(user))
 
 /obj/machinery/station_map/process(delta_time)
-	if((stat & (NOPOWER|BROKEN)) || !anchored)
+	if((machine_stat & (NOPOWER|BROKEN)) || !anchored)
 		stopWatching()
 
 /obj/machinery/station_map/proc/checkPosition()
@@ -157,20 +157,20 @@
 	. = ..()
 	update_icon()
 	// TODO - Port use_auto_lights from /vg - For now implement it manually here
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		set_light(0)
 	else
 		set_light(light_range_on, light_power_on)
 
 /obj/machinery/station_map/proc/set_broken()
-	stat |= BROKEN
+	machine_stat |= BROKEN
 	update_icon()
 
 /obj/machinery/station_map/update_icon()
 	overlays.Cut()
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		icon_state = "station_mapb"
-	else if((stat & NOPOWER) || !anchored)
+	else if((machine_stat & NOPOWER) || !anchored)
 		icon_state = "station_map0"
 	else
 		icon_state = "station_map"

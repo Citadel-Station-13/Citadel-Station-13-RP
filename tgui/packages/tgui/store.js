@@ -49,11 +49,12 @@ export const configureStore = (options = {}) => {
 
 const loggingMiddleware = store => next => action => {
   const { type, payload } = action;
-  if (type === 'update' || type === 'backend/update') {
+  if (type === 'update' || type === 'backend/update' || type === 'data' || type === 'backend/data') {
     logger.debug('action', { type });
   }
   else {
     logger.debug('action', action);
+
   }
   return next(action);
 };

@@ -6,6 +6,7 @@
 	desc = "This cuts wires."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "cutters"
+	item_state = "cutters"
 	slot_flags = SLOT_BELT
 	tool_behaviour = TOOL_WIRECUTTER
 	force = 6
@@ -99,6 +100,12 @@
 	desc = "This cuts wires.  With science."
 	usesound = 'sound/items/jaws_cut.ogg'
 	toolspeed = 0.5
+
+/obj/item/tool/wirecutters/RIGset
+	name = "integrated wirecutters"
+	desc = "If you're seeing this, someone did a dum-dum."
+	usesound = 'sound/items/jaws_cut.ogg'
+	toolspeed = 0.7
 
 /obj/item/tool/wirecutters/hybrid
 	name = "strange wirecutters"

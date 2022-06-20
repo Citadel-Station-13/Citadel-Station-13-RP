@@ -1,4 +1,3 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
 /obj/machinery/computer/card
 	name = "\improper ID card modification console"
@@ -77,7 +76,7 @@
 /obj/machinery/computer/card/attack_hand(mob/user as mob)
 	if(..())
 		return
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	ui_interact(user)
 
@@ -203,7 +202,7 @@
 					modify.access -= access_type
 					if(!access_allowed)
 						modify.access += access_type
-				modify.lost_access = list()	//VOREStation addition: reset the lost access upon any modifications
+				modify.lost_access = list()
 			. = TRUE
 
 		if("assign")
@@ -228,7 +227,7 @@
 					modify.access = access
 					modify.assignment = t1
 					modify.rank = t1
-					modify.lost_access = list()	//VOREStation addition: reset the lost access upon any modifications
+					modify.lost_access = list()
 
 				callHook("reassign_employee", list(modify))
 			. = TRUE
@@ -284,9 +283,9 @@
 
 		if("terminate")
 			if(is_authenticated())
-				modify.assignment = "Dismissed"	//VOREStation Edit: setting adjustment
+				modify.assignment = "Dismissed"
 				modify.access = list()
-				modify.lost_access = list()	//VOREStation addition: reset the lost access upon any modifications
+				modify.lost_access = list() // Reset the lost access upon any modifications
 
 				callHook("terminate_employee", list(modify))
 

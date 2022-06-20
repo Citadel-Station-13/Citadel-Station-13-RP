@@ -250,12 +250,12 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 	if(W.is_wrench())
 		to_chat(user, "<span class='notice'>It's a holochair, you can't dismantle it!</span>")
 	return
-//VOREStation Add
+
 /obj/structure/bed/holobed/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
 		to_chat(user, "<span class='notice'>It's a holochair, you can't dismantle it!</span>")
 	return
-//VOREStation Add End
+
 /obj/item/holo
 	damtype = HALLOSS
 	no_attack_log = 1
@@ -410,7 +410,7 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 
 /obj/machinery/readybutton/attack_hand(mob/user as mob)
 
-	if(user.stat || stat & (NOPOWER|BROKEN))
+	if(user.stat || machine_stat & (NOPOWER|BROKEN))
 		to_chat(user, "This device is not powered.")
 		return
 
@@ -495,3 +495,7 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 /mob/living/simple_mob/animal/space/carp/holodeck/proc/derez()
 	visible_message("<span class='notice'>\The [src] fades away!</span>")
 	qdel(src)
+
+/obj/item/paper/fluff/holodeck/trek_diploma
+	name = "paper - Starfleet Academy Diploma"
+	info = {"<h2>Starfleet Academy</h2></br><p>Official Diploma</p></br>"}

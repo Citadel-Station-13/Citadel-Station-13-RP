@@ -159,7 +159,8 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 /datum/admins/vv_edit_var(var_name, var_value)
 #ifdef TESTING
 	return ..()
-#endif
+#else
 	if(var_name == NAMEOF(src, rank) || var_name == NAMEOF(src, rights))
 		return FALSE
 	return ..()
+#endif

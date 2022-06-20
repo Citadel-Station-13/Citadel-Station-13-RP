@@ -120,7 +120,7 @@
 					SPAN_NOTICE("You have unfastened \the [src]. Now it can be pulled somewhere else."), \
 					"You hear ratchet.")
 				src.anchored = 0
-				src.stat |= MAINT
+				src.machine_stat |= MAINT
 				src.unwrenched = 1
 				if (usr.machine==src)
 					usr << browse(null, "window=pipedispenser")
@@ -133,7 +133,7 @@
 					SPAN_NOTICE("You have fastened \the [src]. Now it can dispense pipes."), \
 					"You hear ratchet.")
 				src.anchored = 1
-				src.stat &= ~MAINT
+				src.machine_stat &= ~MAINT
 				src.unwrenched = 0
 				power_change()
 	else

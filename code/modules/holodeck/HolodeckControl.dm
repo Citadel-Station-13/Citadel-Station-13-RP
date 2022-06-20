@@ -203,7 +203,7 @@
 /obj/machinery/computer/HolodeckControl/power_change()
 	var/oldstat
 	..()
-	if (stat != oldstat && active && (stat & NOPOWER))
+	if (machine_stat != oldstat && active && (machine_stat & NOPOWER))
 		emergencyShutdown()
 
 /obj/machinery/computer/HolodeckControl/process(delta_time)
@@ -331,7 +331,7 @@
 	linkedholodeck.sound_env = A.sound_env
 
 	spawn(30)
-		for(var/atom/movable/landmark/L in linkedholodeck)
+		for(var/obj/landmark/L in linkedholodeck)
 			if(L.name=="Atmospheric Test Start")
 				spawn(20)
 					var/turf/T = get_turf(L)

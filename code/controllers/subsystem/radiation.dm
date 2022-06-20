@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(radiation)
 	name = "Radiation"
 	wait = 2 SECONDS
-	flags = SS_NO_INIT
+	subsystem_flags = SS_NO_INIT
 
 	var/list/sources = list()			// all radiation source datums
 	var/list/sources_assoc = list()		// Sources indexed by turf for de-duplication.
@@ -71,7 +71,7 @@ SUBSYSTEM_DEF(radiation)
 			continue // Radiation is not multi-z
 		if(source.respect_maint)
 			var/area/A = T.loc
-			if(A.flags & RAD_SHIELDED)
+			if(A.area_flags & AF_RAD_SHIELDED)
 				continue // In shielded area
 
 		var/dist = get_dist(source.source_turf, T)
@@ -116,7 +116,7 @@ SUBSYSTEM_DEF(radiation)
 	add_source(S)
 
 // Sets the radiation in a range to a constant value.
-/datum/controller/subsystem/radiation/proc/flat_radiate(source, power, range, var/respect_maint = TRUE)	//VOREStation edit; Respect shielded areas by default please.
+/datum/controller/subsystem/radiation/proc/flat_radiate(source, power, range, respect_maint = TRUE) // Respect shielded areas by default please.
 	if(!(source && power && range))
 		return
 	var/datum/radiation_source/S = new()
@@ -128,7 +128,7 @@ SUBSYSTEM_DEF(radiation)
 	add_source(S)
 
 // Irradiates a full Z-level. Hacky way of doing it, but not too expensive.
-/datum/controller/subsystem/radiation/proc/z_radiate(var/atom/source, power, var/respect_maint = TRUE)	//VOREStation edit; Respect shielded areas by default please.
+/datum/controller/subsystem/radiation/proc/z_radiate(atom/source, power, respect_maint = TRUE) // Respect shielded areas by default please.
 	if(!(power && source))
 		return
 	var/turf/epicentre = locate(round(world.maxx / 2), round(world.maxy / 2), source.z)

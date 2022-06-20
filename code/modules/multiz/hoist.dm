@@ -32,7 +32,7 @@
 	if (use_check(user, USE_DISALLOW_SILICONS))
 		return
 
-	if (!AM.simulated || AM.anchored)
+	if ((AM.flags & AF_ABSTRACT) || AM.anchored)
 		to_chat(user, SPAN_NOTICE("You can't do that."))
 		return
 	if (source_hoist.hoistee)

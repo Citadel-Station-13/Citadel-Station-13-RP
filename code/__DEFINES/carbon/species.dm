@@ -1,5 +1,16 @@
 //! *ALL DEFINES RELATED TO SPECIES GO HERE* !//
 
+/**
+ * Species IDs
+ */
+#define SPECIES_ID_MOTH "moth"
+#define SPECIES_ID_MOTH_LIGHT "moth_light"
+#define SPECIES_ID_MOTH_DARK "moth_dark"
+#define SPECIES_ID_PROMETHEAN "promethean"
+
+
+// TODO: give rest of species ids
+
 //* ALL NAME DEFINES FOR SPECIES *//
 /**
  * !It is important to note that these are not only used for the name of the species.
@@ -7,7 +18,7 @@
  * -Zandario
  */
 
-//* ALL THE AFOREMENTIONED NAME DEFINES *//
+//! ## ALL THE AFOREMENTIONED NAME DEFINES
 #define SPECIES_ADHERENT "Adherent"
 #define SPECIES_AKULA "Akula"
 #define SPECIES_ALRAUNE "Alraune"
@@ -32,6 +43,9 @@
 #define SPECIES_MONKEY_TAJ "Farwa"
 #define SPECIES_MONKEY_UNATHI "Stok"
 #define SPECIES_MONKEY_VULPKANIN "Wolpin"
+#define SPECIES_MOTH "Dnin-Nepid"
+#define SPECIES_MOTH_LIGHT "Dnin-Nepid (Light-Adapted)"
+#define SPECIES_MOTH_DARK "Dnin-Nepid (Dark-Adapted)"
 #define SPECIES_NEVREAN "Nevrean"
 #define SPECIES_PLASMAMAN "Phoronoid"
 #define SPECIES_PROMETHEAN "Promethean"
@@ -77,7 +91,7 @@
 #define SPECIES_ZORREN_HIGH "Highlander Zorren"
 
 
-//* SPECIES-RELATED FLAGS *//
+//! ## SPECIES-RELATED FLAGS
 /// Can step on broken glass with no ill-effects. Either thick skin (diona), cut resistant (slimes) or incorporeal (shadows)
 #define NO_MINOR_CUT (1 << 0)
 /// Is a treeperson.
@@ -107,7 +121,7 @@
 // unused: 0x8000 - higher than this will overflow
 
 
-//* SPECIES-RELATED SPAWN FLAGS *//
+//! ## SPAWN FLAGS
 /// Must be whitelisted to play.
 #define SPECIES_IS_WHITELISTED (1 << 0)
 /// Is not a core/normally playable species. (castes, mutantraces)
@@ -124,7 +138,7 @@
 #define SPECIES_WHITELIST_SELECTABLE (1 << 6)
 
 
-//* SPECIES-RELATED APPEARANCE FLAGS *// /datum/species/species_appearance_flags
+//! ## APPEARANCE FLAGS
 /// Skin tone selectable in chargen. (0-255)
 #define HAS_SKIN_TONE (1 << 0)
 /// Skin colour selectable in chargen. (RGB)
@@ -154,7 +168,24 @@ DEFINE_BITFIELD(species_appearance_flags, list(
 ))
 
 
-//* SPECIES-RELATED SKIN FLAGS *//
+//! ## SKIN FLAGS
 #define SKIN_NORMAL (1 << 0)
 #define SKIN_THREAT (1 << 1)
 #define SKIN_CLOAK  (1 << 2)
+
+
+
+//! ## SHADEKIN DEFINES
+#define NOT_WHILE_SHIFTED 1
+#define ONLY_WHILE_SHIFTED 2
+#define SHIFTED_OR_NOT 3
+
+#define BLUE_EYES 1
+#define RED_EYES 2
+#define PURPLE_EYES 3
+#define YELLOW_EYES 4
+#define GREEN_EYES 5
+#define ORANGE_EYES 6
+
+#define AB_PHASE_SHIFTED	0x1
+#define AB_SHADE_REGEN		0x2

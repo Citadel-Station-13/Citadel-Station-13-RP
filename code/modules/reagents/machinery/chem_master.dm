@@ -30,6 +30,7 @@
 
 /obj/machinery/chem_master/Initialize(mapload, newdir)
 	. = ..()
+	default_apply_parts()
 	create_reagents(1000)
 
 /obj/machinery/chem_master/ex_act(severity)
@@ -78,8 +79,8 @@
 
 	return
 
-/obj/machinery/chem_master/attack_hand(mob/user as mob)
-	if(stat & BROKEN)
+/obj/machinery/chem_master/attack_hand(mob/user)
+	if(machine_stat & BROKEN)
 		return
 	user.set_machine(src)
 	ui_interact(user)

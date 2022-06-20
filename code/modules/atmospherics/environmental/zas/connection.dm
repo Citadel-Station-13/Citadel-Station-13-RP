@@ -58,8 +58,8 @@ Class Procs:
 	var/state = 0
 
 /datum/zas_connection/New(turf/simulated/A, turf/simulated/B)
-	#ifdef ZASDBG
-	ASSERT(air_master.has_valid_zone(A))
+	#ifdef ZAS_DEBUG
+	ASSERT(A.has_valid_zone())
 	//ASSERT(air_master.has_valid_zone(B))
 	#endif
 	src.A = A
@@ -107,15 +107,15 @@ Class Procs:
 		erase()
 		return
 
-	var/block_status = air_master.air_blocked(A,B)
-	if(block_status & AIR_BLOCKED)
-		//to_chat(world, "Blocked connection.")
-		erase()
-		return
-	else if(block_status & ZONE_BLOCKED)
-		mark_indirect()
-	else
-		mark_direct()
+	var/block_status = A.CheckAirBlock(B)
+	switch(block_status)
+		if(ATMOS_PASS_AIR_BLOCKED)
+			erase()
+			return
+		if(ATMOS_PASS_ZONE_BLOCKED)
+			mark_indirect()
+		if(ATMOS_PASS_NOT_BLOCKED)
+			mark_direct()
 
 	var/b_is_space = !istype(B,/turf/simulated)
 

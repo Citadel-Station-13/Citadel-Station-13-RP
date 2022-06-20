@@ -21,6 +21,7 @@ import { resumeRenderer, suspendRenderer } from './renderer';
 const logger = createLogger('backend');
 
 export const backendUpdate = createAction('backend/update');
+export const backendData = createAction('backend/data');
 export const backendSetSharedState = createAction('backend/setSharedState');
 export const backendSuspendStart = createAction('backend/suspendStart');
 
@@ -78,6 +79,19 @@ export const backendReducer = (state = initialState, action) => {
     };
   }
 
+  if (type === 'backend/data') {
+    // Merge data
+    const data = {
+      ...state.data,
+      ...payload.data,
+    };
+    // Return new state
+    return {
+      ...state,
+      data,
+    };
+  }
+
   if (type === 'backend/setSharedState') {
     const { key, nextState } = payload;
     return {
@@ -125,6 +139,11 @@ export const backendMiddleware = store => {
 
     if (type === 'update') {
       store.dispatch(backendUpdate(payload));
+      return;
+    }
+
+    if (type === 'data') {
+      store.dispatch(backendData(payload));
       return;
     }
 

@@ -10,6 +10,7 @@
 	icon = 'icons/turf/walls.dmi'
 	icon_state = "rock"
 	smoothing_flags = SMOOTH_CUSTOM
+	var/sand_icon = 'icons/turf/flooring/asteroid.dmi'
 	var/rock_side_icon_state = "rock_side"
 	var/sand_icon_state = "asteroid"
 	var/rock_icon_state = "rock"
@@ -47,6 +48,20 @@
 	rock_icon_state = "rock-light"
 	random_icon = 1
 
+/turf/simulated/mineral/icerock
+	name = "icerock"
+	icon_state = "icerock"
+	rock_side_icon_state = "icerock_side"
+	sand_icon_state = "ice"
+	rock_icon_state = "icerock"
+	random_icon = 1
+
+/turf/unsimulated/mineral/icerock
+	name = "impassable icerock"
+	icon = 'icons/turf/walls.dmi'
+	icon_state = "icerock-dark"
+	density = 1
+
 /turf/simulated/mineral/ignore_mapgen
 	ignore_mapgen = 1
 
@@ -79,6 +94,11 @@ turf/simulated/mineral/floor/light_corner
 /turf/simulated/mineral/floor/ignore_mapgen
 	ignore_mapgen = 1
 
+/turf/simulated/mineral/floor/icerock
+	name = "ice"
+	icon_state = "ice"
+	sand_icon_state = "ice"
+
 /turf/simulated/mineral/proc/make_floor()
 	if(!density && !opacity)
 		return
@@ -89,7 +109,7 @@ turf/simulated/mineral/floor/light_corner
 	blocks_air = FALSE
 	can_build_into_floor = TRUE
 	SSplanets.addTurf(src)
-	SSair.mark_for_update(src)
+	queue_zone_update()
 	QUEUE_SMOOTH(src)
 	QUEUE_SMOOTH_NEIGHBORS(src)
 
@@ -103,7 +123,7 @@ turf/simulated/mineral/floor/light_corner
 	blocks_air = TRUE
 	can_build_into_floor = FALSE
 	SSplanets.removeTurf(src)
-	SSair.mark_for_update(src)
+	queue_zone_update()
 	QUEUE_SMOOTH(src)
 	QUEUE_SMOOTH_NEIGHBORS(src)
 
@@ -170,7 +190,7 @@ turf/simulated/mineral/floor/light_corner
 	//We are a sand floor
 	else
 		name = "sand"
-		icon = 'icons/turf/flooring/asteroid.dmi'
+		icon = sand_icon // So that way we can source from other files.
 		icon_state = sand_icon_state
 
 		if(sand_dug)
@@ -369,7 +389,6 @@ GLOBAL_LIST_EMPTY(mining_overlay_cache)
 			else
 				to_chat(user, "<span class='warning'>The plating is going to need some support.</span>")
 				return
-
 
 	else
 		if (istype(W, /obj/item/core_sampler))
@@ -689,8 +708,8 @@ GLOBAL_LIST_EMPTY(mining_overlay_cache)
 			if(7)
 				new /obj/item/stack/material/uranium(src, rand(5,25))
 
-/turf/simulated/mineral/proc/make_ore(var/rare_ore)
-	if(mineral || ignore_mapgen || ignore_oregen) //VOREStation Edit - Makes sense, doesn't it?
+/turf/simulated/mineral/proc/make_ore(rare_ore)
+	if(mineral || ignore_mapgen || ignore_oregen)
 		return
 
 	var/mineral_name

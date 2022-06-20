@@ -17,12 +17,12 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 	desc = "This advanced pump draws magma from subterranean reservoirs and diverts it. Its extremely hardy materials make it difficult to disrupt, once in action."
 	icon = 'icons/obj/machines/event.dmi'
 	icon_state = "pump"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 1
 	active_power_usage = 5
-	var/on = 0
+	var/on = FALSE
 
 /obj/machinery/magma_pump/Initialize(mapload)
 	. = ..()
@@ -48,17 +48,17 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 
 /obj/machinery/magma_pump/ex_act(severity)
 	switch(severity)
-		if(1.0)
+		if(1)
 			//SN src = null
 			qdel(src)
 			return
-		if(2.0)
+		if(2)
 			if(prob(50))
 				//SN src = null
 				qdel(src)
 				new /obj/structure/broken_pump(src)
 				return
-		if(3.0)
+		if(3)
 			if(prob(25))
 				qdel(src)
 				new /obj/structure/broken_pump(src)
@@ -70,16 +70,24 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 
 /obj/machinery/magma_pump/interact(mob/user)
 	if(on)
-		visible_message("You start closing the valves on the \the [src].", "[usr] starts closing the valves on the [src].")
+		visible_message("You start closing the valves on \the [src].", "[usr] starts closing the valves on \the [src].")
 		if(do_after(user, 15))
-			on = 0
-			user.visible_message("<span class='notice'>[user] closes the valves of the [src].</span>","<span class='notice'>You close the valves of the [src].</span>")
+			on = FALSE
+			user.visible_message( \
+				SPAN_NOTICE("[user] closes the valves of \the [src]."), \
+				SPAN_NOTICE("You close the valves of \the [src]."))
 			update_icon()
 	else
-		visible_message("You start opening the valves on the \the [src].", "[usr] starts opening the valves on the [src].")
+		visible_message( \
+			SPAN_NOTICE("You start opening the valves on the \the [src]."), \
+			SPAN_NOTICE("[usr] starts opening the valves on \the [src]."))
+
 		if(do_after(user, 15))
-			on = 1
-			user.visible_message("<span class='notice'>[user] opens the valves of the [src].</span>","<span class='notice'>You open the valves of the [src].</span>")
+			on = TRUE
+			user.visible_message( \
+				SPAN_NOTICE("[user] opens the valves of \the [src]."), \
+				SPAN_NOTICE("You open the valves of \the [src]."))
+
 			update_icon()
 	return
 
@@ -97,27 +105,27 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 	desc = "This pump has been damaged by a devastating explosion. It is beyond salvaging, but it might be dismantled still."
 	icon = 'icons/obj/machines/event.dmi'
 	icon_state = "pump_broken"
-	density = 1
-	anchored = 1
-	var/sliced = 0
-	var/gutted = 0
+	density = TRUE
+	anchored = TRUE
+	var/sliced = FALSE
+	var/gutted = FALSE
 
 /obj/structure/broken_pump/attackby(obj/item/I as obj, mob/user)
 	if(istype(I, /obj/item/weldingtool) && !sliced)
 		var/obj/item/weldingtool/W = I
-		to_chat(user, "<span class='notice'>You begin cutting through the exterior plating of the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You begin cutting through the exterior plating of \the [src]."))
 		if(do_after(user,30) || W.remove_fuel(5, user))
-			playsound(src.loc, 'sound/items/Welder2.ogg', 50, 1)
+			playsound(src.loc, 'sound/items/Welder2.ogg', 50, TRUE)
 			var/turf/T = get_turf(src)
 			new /obj/item/stack/material/durasteel(T)
-			sliced = 1
+			sliced = TRUE
 			update_icon()
 		else
 			return
 	if(istype(I, /obj/item/tool/crowbar) && sliced)
 		var/turf/T = get_turf(src)
-		to_chat(user, "<span class='notice'>You begin prying out any salvageable components from the [src].</span>")
-		playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
+		to_chat(user, SPAN_NOTICE("You begin prying out any salvageable components from \the [src]."))
+		playsound(src.loc, 'sound/items/Crowbar.ogg', 50, TRUE)
 		if(do_after(user, 30))
 			switch(rand(1,10))
 				if(1 to 2)
@@ -134,9 +142,9 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 			return
 	if(istype(I, /obj/item/weldingtool) && gutted)
 		var/obj/item/weldingtool/W = I
-		to_chat(user, "<span class='notice'>You begin deconstructing the housing of the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You begin deconstructing the housing of \the [src]."))
 		if(do_after(user,30) || W.remove_fuel(5, user))
-			playsound(src.loc, 'sound/items/Welder2.ogg', 50, 1)
+			playsound(src.loc, 'sound/items/Welder2.ogg', 50, TRUE)
 			var/turf/T = get_turf(src)
 			new /obj/item/frame(T)
 			qdel(src)
@@ -158,12 +166,12 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 	desc = "A hardy backflow reservoir where the pumps store magma and magma until it can be diverted. Its extremely hardy materials make it difficult to disrupt, once in action."
 	icon = 'icons/obj/machines/event.dmi'
 	icon_state = "reservoir"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 1
 	active_power_usage = 5
-	var/on = 0
+	var/on = FALSE
 
 /obj/machinery/magma_reservoir/Initialize(mapload)
 	. = ..()
@@ -186,17 +194,17 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 
 /obj/machinery/magma_reservoir/ex_act(severity)
 	switch(severity)
-		if(1.0)
+		if(1)
 			//SN src = null
 			qdel(src)
 			return
-		if(2.0)
+		if(2)
 			if(prob(50))
 				//SN src = null
 				qdel(src)
 				new /obj/structure/broken_reservoir(src)
 				return
-		if(3.0)
+		if(3)
 			if(prob(25))
 				qdel(src)
 				new /obj/structure/broken_reservoir(src)
@@ -208,16 +216,26 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 
 /obj/machinery/magma_reservoir/interact(mob/user)
 	if(on)
-		visible_message("You start the draining sequence for \the [src].", "[usr] starts the draining sequence for the [src].")
+		visible_message( \
+			SPAN_NOTICE("You start the draining sequence for \the [src].", \
+			SPAN_NOTICE("[usr] starts the draining sequence for \the [src]."))
+
 		if(do_after(user, 15))
-			on = 0
-			user.visible_message("<span class='notice'>[user] finishes the draining sequence for the [src].</span>","<span class='notice'>You finish the draining sequence for the [src].</span>")
+			on = FALSE
+			user.visible_message( \
+				SPAN_NOTICE("[user] finishes the draining sequence for \the [src]."), \
+				SPAN_NOTICE("You finish the draining sequence for \the [src]."))
 			update_icon()
 	else
-		visible_message("You start the filling sequence for \the [src].", "[usr] starts the filling sequence for the [src].")
+		visible_message( \
+			SPAN_NOTICE("You start the filling sequence for \the [src]."), \
+			SPAN_NOTICE("[usr] starts the filling sequence for the [src]."))
+
 		if(do_after(user, 15))
-			on = 1
-			user.visible_message("<span class='notice'>[user] completes the fill sequence of the [src].</span>","<span class='notice'>You complete the fill sequence of the [src].</span>")
+			on = TRUE
+			user.visible_message(
+				SPAN_NOTICE("[user] completes the fill sequence of \the [src]."), \
+				SPAN_NOTICE("You complete the fill sequence of \the [src]."))
 			update_icon()
 	return
 
@@ -235,27 +253,27 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 	desc = "This reservoir has been shattered by a devastating explosion. It is beyond salvaging, but it might be dismantled still."
 	icon = 'icons/obj/machines/event.dmi'
 	icon_state = "reservoir_broken"
-	density = 1
-	anchored = 1
-	var/sliced = 0
-	var/gutted = 0
+	density = TRUE
+	anchored = TRUE
+	var/sliced = FALSE
+	var/gutted = FALSE
 
 /obj/structure/broken_reservoir/attackby(obj/item/I as obj, mob/user)
 	if(istype(I, /obj/item/weldingtool) && !sliced)
 		var/obj/item/weldingtool/W = I
-		to_chat(user, "<span class='notice'>You begin cutting through the thick glass of the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You begin cutting through the thick glass of the [src]."))
 		if(do_after(user,30) || W.remove_fuel(5, user))
-			playsound(src.loc, 'sound/items/Welder2.ogg', 50, 1)
+			playsound(src.loc, 'sound/items/Welder2.ogg', 50, TRUE)
 			var/turf/T = get_turf(src)
 			new /obj/item/stack/material/glass/phoronrglass(T, 2)
-			sliced = 1
+			sliced = TRUE
 			update_icon()
 		else
 			return
 	if(istype(I, /obj/item/tool/crowbar) && sliced)
 		var/turf/T = get_turf(src)
-		to_chat(user, "<span class='notice'>You begin prying out any salvageable components from the [src].</span>")
-		playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
+		to_chat(user, SPAN_NOTICE("You begin prying out any salvageable components from \the [src]."))
+		playsound(src.loc, 'sound/items/Crowbar.ogg', 50, TRUE)
 		if(do_after(user, 30))
 			switch(rand(1,10))
 				if(1 to 2)
@@ -266,15 +284,15 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 					new /obj/item/stack/material/steel(T)
 				if(8 to 10)
 					new /obj/item/stack/cable_coil(T)
-			gutted = 1
+			gutted = TRUE
 			update_icon()
 		else
 			return
 	if(istype(I, /obj/item/weldingtool) && gutted)
 		var/obj/item/weldingtool/W = I
-		to_chat(user, "<span class='notice'>You begin deconstructing the housing of the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You begin deconstructing the housing of \the [src]."))
 		if(do_after(user,30) || W.remove_fuel(5, user))
-			playsound(src.loc, 'sound/items/Welder2.ogg', 50, 1)
+			playsound(src.loc, 'sound/items/Welder2.ogg', 50, TRUE)
 			var/turf/T = get_turf(src)
 			new /obj/item/frame(T)
 			qdel(src)

@@ -52,7 +52,7 @@
 
 /atom/ui_status(mob/user)
 	. = ..()
-	if(!can_interact(user))
+	if(!can_interact(user) && !IsAdminGhost(user))
 		. = min(., UI_UPDATE)
 
 /atom/movable/can_interact(mob/user)

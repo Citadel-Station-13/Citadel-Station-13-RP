@@ -3,12 +3,16 @@
 #define TEST_TLV_VALUES (((tlv_comparitor >= red_max && red_max > 0) || tlv_comparitor <= red_min) ? 2 : ((tlv_comparitor >= yel_max && yel_max > 0) || tlv_comparitor <= yel_min) ? 1 : 0)
 
 #define AALARM_MODE_SCRUBBING	1
-#define AALARM_MODE_REPLACEMENT	2 //like scrubbing, but faster.
-#define AALARM_MODE_PANIC		3 //constantly sucks all air
-#define AALARM_MODE_CYCLE		4 //sucks off all air, then refill and switches to scrubbing
-#define AALARM_MODE_FILL		5 //emergency fill
-#define AALARM_MODE_OFF			6 //Shuts it all down.
-
+///like scrubbing, but faster.
+#define AALARM_MODE_REPLACEMENT	2
+///constantly sucks all air
+#define AALARM_MODE_PANIC		3
+///sucks off all air, then refill and switches to scrubbing
+#define AALARM_MODE_CYCLE		4
+///emergency fill
+#define AALARM_MODE_FILL		5
+///Shuts it all down.
+#define AALARM_MODE_OFF			6
 #define AALARM_SCREEN_MAIN		1
 #define AALARM_SCREEN_VENT		2
 #define AALARM_SCREEN_SCRUB		3
@@ -51,7 +55,7 @@
 	var/frequency = 1439
 	//var/skipprocess = 0 //Experimenting
 	var/alarm_frequency = 1437
-	var/remote_control = TRUE
+	var/remote_control = FALSE
 	var/rcon_setting = RCON_AUTO
 	var/rcon_time = 0
 	var/locked = TRUE
@@ -69,7 +73,7 @@
 	var/area_uid
 	var/area/alarm_area
 
-	var/target_temperature = T0C+20
+	var/target_temperature = T20C
 	var/regulating_temperature = 0
 
 	var/datum/radio_frequency/radio_connection
@@ -162,7 +166,7 @@
 		elect_master()
 
 /obj/machinery/alarm/process(delta_time)
-	if((stat & (NOPOWER|BROKEN)) || shorted)
+	if((machine_stat & (NOPOWER|BROKEN)) || shorted)
 		return
 
 	var/turf/simulated/location = src.loc
@@ -286,37 +290,36 @@
 		temperature_dangerlevel
 		)
 
-// Returns whether this air alarm thinks there is a breach, given the sensors that are available to it.
+/// Returns whether this air alarm thinks there is a breach, given the sensors that are available to it.
 /obj/machinery/alarm/proc/breach_detected()
 	var/turf/simulated/location = src.loc
 
 	if(!istype(location))
-		return 0
+		return FALSE
 
-	if(breach_detection	== 0)
-		return 0
+	if(!breach_detection)
+		return FALSE
 
 	var/datum/gas_mixture/environment = location.return_air()
 	var/environment_pressure = environment.return_pressure()
 	var/pressure_levels = TLV["pressure"]
 
-	if(environment_pressure <= pressure_levels[1])		//low pressures
+	if(environment_pressure <= pressure_levels[1]) // Low pressures
 		if(!(mode == AALARM_MODE_PANIC || mode == AALARM_MODE_CYCLE))
-			return 1
-
-	return 0
+			return TRUE
+	return FALSE
 
 /obj/machinery/alarm/proc/master_is_operating()
-	return alarm_area && alarm_area.master_air_alarm && !(alarm_area.master_air_alarm.stat & (NOPOWER | BROKEN))
+	return alarm_area && alarm_area.master_air_alarm && !(alarm_area.master_air_alarm.machine_stat & (NOPOWER | BROKEN))
 
 /obj/machinery/alarm/proc/elect_master(exclude_self = FALSE)
 	for(var/obj/machinery/alarm/AA in alarm_area)
 		if(exclude_self && AA == src)
 			continue
-		if(!(AA.stat & (NOPOWER|BROKEN)))
+		if(!(AA.machine_stat & (NOPOWER|BROKEN)))
 			alarm_area.master_air_alarm = AA
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 /obj/machinery/alarm/update_icon()
 	cut_overlays()
@@ -326,7 +329,7 @@
 		set_light(0)
 		//set_light_on(FALSE)
 		return
-	if((stat & (NOPOWER|BROKEN)) || shorted)
+	if((machine_stat & (NOPOWER|BROKEN)) || shorted)
 		icon_state = "alarmp"
 		set_light(0)
 		//set_light_on(FALSE)
@@ -358,7 +361,7 @@
 	//set_light_on(TRUE)
 
 /obj/machinery/alarm/receive_signal(datum/signal/signal)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	if(alarm_area.master_air_alarm != src)
 		if(master_is_operating())
@@ -383,6 +386,7 @@
 		alarm_area.air_scrub_info[id_tag] = signal.data
 	else if(dev_type == "AVP")
 		alarm_area.air_vent_info[id_tag] = signal.data
+	SStgui.update_uis(src)
 
 /obj/machinery/alarm/proc/register_env_machine(var/m_id, var/device_type)
 	var/new_name
@@ -676,7 +680,7 @@
 		var/list/selected = TLV["temperature"]
 		var/max_temperature = min(selected[3] - T0C, MAX_TEMPERATURE)
 		var/min_temperature = max(selected[2] - T0C, MIN_TEMPERATURE)
-		var/input_temperature = input(usr, "What temperature would you like the system to mantain? (Capped between [min_temperature] and [max_temperature]C)", "Thermostat Controls", target_temperature - T0C) as num|null
+		var/input_temperature = tgui_input_number(usr, "What temperature would you like the system to mantain? (Capped between [min_temperature] and [max_temperature]C)", "Thermostat Controls", (target_temperature - T0C), max_temperature, min_temperature)
 		if(isnum(input_temperature))
 			if(input_temperature > max_temperature || input_temperature < min_temperature)
 				to_chat(usr, "Temperature must be between [min_temperature]C and [max_temperature]C")
@@ -807,7 +811,7 @@
 	return ..()
 
 /obj/machinery/alarm/verb/togglelock(mob/user as mob)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		to_chat(user, "It does nothing.")
 		return
 	else

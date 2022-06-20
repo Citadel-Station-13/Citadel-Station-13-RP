@@ -6,10 +6,6 @@ import { Box, Button, Icon, LabeledList, ProgressBar, Stack, Section, Tabs, Slid
 import { Window } from "../layouts";
 import { capitalize } from 'common/string';
 
-// Common power multiplier
-const POWER_MUL = 1e3;
-
-
 export const RCON = (props, context) => {
   return (
     <Window
@@ -110,7 +106,7 @@ const SMESItem = (props, context) => {
                 average: [0.15, 0.5],
                 bad: [-Infinity, 0.15],
               }}>
-              {round(charge/(1000*60), 1)} kWh / {round(capacity/(1000*60))} kWh
+              {round(charge/60, 1)} kWh / {round(capacity/60)} kWh
               ({capacityPercent}%)
             </ProgressBar>
           </Stack.Item>
@@ -213,21 +209,21 @@ const SMESControls = (props, context) => {
               icon="backward"
               disabled={level === 0}
               onClick={() => act(changeAmountAct, {
-                adjust: -10000,
+                adjust: -10,
                 smes: RCON_tag,
               })} />
           </Stack.Item>
           <Stack.Item grow={1}>
             <Slider
-              value={level / POWER_MUL}
-              fillValue={available / POWER_MUL}
+              value={level}
+              fillValue={available}
               minValue={0}
-              maxValue={levelMax / POWER_MUL}
+              maxValue={levelMax}
               step={5}
               stepPixelSize={4}
-              format={value => formatPower(available, 1) + "/" + formatPower(value * POWER_MUL, 1)}
+              format={value => formatPower(available * 1000, 1) + "/" + formatPower(value * 1000, 1)}
               onDrag={(e, value) => act(changeAmountAct, {
-                target: value * POWER_MUL,
+                target: value,
                 smes: RCON_tag,
               })} />
           </Stack.Item>
@@ -236,7 +232,7 @@ const SMESControls = (props, context) => {
               icon="forward"
               disabled={level === levelMax}
               onClick={() => act(changeAmountAct, {
-                adjust: 10000,
+                adjust: 10,
                 smes: RCON_tag,
               })} />
             <Button

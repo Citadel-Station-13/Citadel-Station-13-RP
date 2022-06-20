@@ -159,6 +159,18 @@ var/list/flooring_types
 		'sound/effects/footstep/snow4.ogg',
 		'sound/effects/footstep/snow5.ogg'))
 
+/decl/flooring/snow/gravsnow
+	name = "snowy gravel"
+	desc = "A layer of coarse ice pebbles and assorted gravel."
+	icon = 'icons/turf/snow_new.dmi'
+	icon_base = "gravsnow"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/snow1.ogg',
+		'sound/effects/footstep/snow2.ogg',
+		'sound/effects/footstep/snow3.ogg',
+		'sound/effects/footstep/snow4.ogg',
+		'sound/effects/footstep/snow5.ogg'))
+
 /decl/flooring/snow/snow2
 	name = "snow"
 	desc = "A layer of many tiny bits of frozen water. It's hard to tell how deep it is."
@@ -166,8 +178,9 @@ var/list/flooring_types
 	icon_base = "snow"
 	flags = TURF_HAS_EDGES
 
-/decl/flooring/snow/gravsnow
-	name = "snow"
+/decl/flooring/snow/gravsnow2
+	name = "gravsnow"
+	icon = 'icons/turf/snow.dmi'
 	icon_base = "gravsnow"
 
 /decl/flooring/snow/plating
@@ -247,7 +260,7 @@ var/list/flooring_types
 /decl/flooring/tiling
 	name = "floor"
 	desc = "Scuffed from the passage of countless greyshirts."
-	icon = 'icons/turf/flooring/tiles_vr.dmi' // VOREStation Edit - Eris floors. Polaris still hasn't added all of them properly. See: steel_ridged
+	icon = 'icons/turf/flooring/tiles_vr.dmi' // More ERIS Sprites... For now...
 	icon_base = "tiled"
 	has_damage_range = 2
 	damage_temperature = T0C+1400
@@ -292,6 +305,9 @@ var/list/flooring_types
 
 /decl/flooring/tiling/new_tile/monotile
 	icon_base = "monotile"
+
+/decl/flooring/tiling/new_tile/monowhite
+	icon_base = "monowhite"
 
 /decl/flooring/tiling/new_tile/steel_grid
 	icon_base = "steel_grid"

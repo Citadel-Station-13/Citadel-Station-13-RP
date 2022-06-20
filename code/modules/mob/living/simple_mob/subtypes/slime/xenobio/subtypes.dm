@@ -196,24 +196,10 @@
 	qdel(src)
 
 /mob/living/simple_mob/slime/xenobio/dark_purple/proc/get_ignition_turfs(amt = 25, maxrad = 2)
-	. = list()
 	var/turf/T = get_turf(src)
 	if(!T)
-		return
-	var/list/processing = list(T)
-	var/list/processed = list()
-	while(processing.len)
-		var/turf/check = processing[1]
-		processing.Cut(1, 2)
-		processed[check] = TRUE
-		if(get_dist(check, T) > maxrad)
-			continue
-		. += check
-		for(var/d in GLOB.cardinal)
-			var/turf/enemy = get_step(check, d)
-			if(!enemy || !check.CanZASPass(enemy) || !enemy.CanZASPass(check) || processed[enemy])
-				continue
-			processing += enemy
+		return list()
+	return T.AtmosAdjacencyFloodfillHeuristic(amt, maxrad)
 
 /mob/living/simple_mob/slime/xenobio/dark_purple/ex_act(severity)
 	log_and_message_admins("[src] ignited due to a chain reaction with an explosion.")

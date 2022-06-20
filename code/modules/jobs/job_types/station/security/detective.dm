@@ -8,7 +8,7 @@
 	supervisors = "the Head of Security"
 	selection_color = "#601C1C"
 	idtype = /obj/item/card/id/security/detective
-	access = list(access_security, access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_eva, access_external_airlocks, access_brig) //Vorestation edit - access_brig
+	access = list(access_security, access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_eva, access_external_airlocks, access_brig)
 	minimal_access = list(access_security, access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_eva, access_external_airlocks)
 	economic_modifier = 5
 	minimal_player_age = 3
@@ -24,7 +24,7 @@
 /datum/alt_title/detective/csi
 	title = "Crime Scene Investigator"
 
-// Detective Alt Titles
+/// Detective Alt Titles
 /datum/alt_title/detective/forensics_tech
 	title = "Forensic Technician"
 	title_blurb = "A Forensic Technician works more with hard evidence and labwork than a Detective, but they share the purpose of solving crimes."
@@ -38,14 +38,18 @@
 	gloves = /obj/item/clothing/gloves/forensic
 	l_pocket = /obj/item/flame/lighter/zippo
 	shoes = /obj/item/clothing/shoes/laceup
+	l_ear = /obj/item/radio/headset/headset_sec
+	glasses = /obj/item/clothing/glasses/sunglasses/sechud
 	r_hand = /obj/item/storage/briefcase/crimekit
+
 	id_type = /obj/item/card/id/security/detective
 	pda_type = /obj/item/pda/detective
+
 	backpack = /obj/item/storage/backpack
-	satchel_one = /obj/item/storage/backpack/satchel/norm
 	backpack_contents = list(/obj/item/storage/box/evidence = 1)
-	glasses = /obj/item/clothing/glasses/sunglasses/sechud
-	l_ear = /obj/item/radio/headset/headset_sec
+	satchel_one = /obj/item/storage/backpack/satchel/sec
+	messenger_bag = /obj/item/storage/backpack/messenger/sec
+	dufflebag = /obj/item/storage/backpack/dufflebag/sec
 
 /datum/outfit/job/station/detective/forensic
 	name = OUTFIT_JOB_NAME("Forensic technician")

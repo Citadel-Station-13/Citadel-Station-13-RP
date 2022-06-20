@@ -16,9 +16,9 @@
 		var/obj/item/gripper/G = locate(/obj/item/gripper) in module
 		if(G)
 			G.drop_item()
-		var/obj/item/dogborg/sleeper/S = locate(/obj/item/dogborg/sleeper) in module //VOREStation edit.
+		var/obj/item/dogborg/sleeper/S = locate(/obj/item/dogborg/sleeper) in module
 		if(S)
-			S.go_out() //VOREStation edit.
+			S.go_out()
 	remove_robot_verbs()
 	sql_report_cyborg_death(src)
 	return ..(gibbed, "shudders violently for a moment, then becomes motionless, its eyes slowly darkening.")

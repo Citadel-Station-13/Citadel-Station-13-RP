@@ -31,8 +31,8 @@ BLIND     // can't see anything
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/eyes.dmi',
-		SPECIES_VOX = 'icons/mob/species/vox/eyes.dmi'
+		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/eyes.dmi',
+		SPECIES_VOX = 'icons/mob/clothing/species/vox/eyes.dmi'
 		)
 
 /obj/item/clothing/glasses/update_clothing_icon()
@@ -542,7 +542,7 @@ BLIND     // can't see anything
 /obj/item/clothing/glasses/sunglasses/sechud
 	name = "\improper HUD sunglasses"
 	desc = "Sunglasses with a HUD."
-	icon_state = "sunSecHud"
+	icon_state = "sunhudsec"
 
 /obj/item/clothing/glasses/sunglasses/sechud/Initialize(mapload)
 	. = ..()
@@ -811,8 +811,8 @@ BLIND     // can't see anything
 /obj/item/clothing/glasses/tajblind
 	name = "embroidered veil"
 	desc = "An Tajaran made veil that allows the user to see while obscuring their eyes."
-	icon = 'icons/obj/clothing/glasses_vr.dmi'
-	icon_override = 'icons/mob/eyes_vr.dmi'
+	icon = 'icons/obj/clothing/glasses.dmi'
+	icon_override = 'icons/mob/clothing/eyes.dmi'
 	icon_state = "tajblind"
 	item_state = "tajblind"
 	prescription = 1
@@ -821,8 +821,8 @@ BLIND     // can't see anything
 /obj/item/clothing/glasses/hud/health/tajblind
 	name = "lightweight veil"
 	desc = "An Tajaran made veil that allows the user to see while obscuring their eyes. This one has an installed medical HUD."
-	icon = 'icons/obj/clothing/glasses_vr.dmi'
-	icon_override = 'icons/mob/eyes_vr.dmi'
+	icon = 'icons/obj/clothing/glasses.dmi'
+	icon_override = 'icons/mob/clothing/eyes.dmi'
 	icon_state = "tajblind_med"
 	item_state = "tajblind_med"
 	body_parts_covered = EYES
@@ -830,8 +830,8 @@ BLIND     // can't see anything
 /obj/item/clothing/glasses/sunglasses/sechud/tajblind
 	name = "sleek veil"
 	desc = "An Tajaran made veil that allows the user to see while obscuring their eyes. This one has an in-built security HUD."
-	icon = 'icons/obj/clothing/glasses_vr.dmi'
-	icon_override = 'icons/mob/eyes_vr.dmi'
+	icon = 'icons/obj/clothing/glasses.dmi'
+	icon_override = 'icons/mob/clothing/eyes.dmi'
 	icon_state = "tajblind_sec"
 	item_state = "tajblind_sec"
 	prescription = 1
@@ -840,8 +840,8 @@ BLIND     // can't see anything
 /obj/item/clothing/glasses/meson/prescription/tajblind
 	name = "industrial veil"
 	desc = "An Tajaran made veil that allows the user to see while obscuring their eyes. This one has installed mesons."
-	icon = 'icons/obj/clothing/glasses_vr.dmi'
-	icon_override = 'icons/mob/eyes_vr.dmi'
+	icon = 'icons/obj/clothing/glasses.dmi'
+	icon_override = 'icons/mob/clothing/eyes.dmi'
 	icon_state = "tajblind_meson"
 	item_state = "tajblind_meson"
 	off_state = "tajblind"
@@ -850,8 +850,8 @@ BLIND     // can't see anything
 /obj/item/clothing/glasses/material/prescription/tajblind
 	name = "mining veil"
 	desc = "An Tajaran made veil that allows the user to see while obscuring their eyes. This one has an installed material scanner."
-	icon = 'icons/obj/clothing/glasses_vr.dmi'
-	icon_override = 'icons/mob/eyes_vr.dmi'
+	icon = 'icons/obj/clothing/glasses.dmi'
+	icon_override = 'icons/mob/clothing/eyes.dmi'
 	icon_state = "tajblind_meson"
 	item_state = "tajblind_meson"
 	off_state = "tajblind"
@@ -859,9 +859,9 @@ BLIND     // can't see anything
 
 /obj/item/clothing/glasses
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/eyes.dmi',
-		SPECIES_VOX = 'icons/mob/species/vox/eyes.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/eyes.dmi'
+		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/eyes.dmi',
+		SPECIES_VOX = 'icons/mob/clothing/species/vox/eyes.dmi',
+		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/eyes.dmi'
 		)
 
 /obj/item/clothing/glasses/welding/laconic

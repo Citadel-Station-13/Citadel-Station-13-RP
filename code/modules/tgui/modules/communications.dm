@@ -31,7 +31,7 @@
 	var/stat_msg2
 	var/display_type = "blank"
 
-	var/datum/announcement/priority/crew_announcement
+	var/datum/legacy_announcement/priority/crew_announcement
 
 	var/datum/lore/atc_controller/ATC
 
@@ -379,7 +379,7 @@
 
 /* Etc global procs */
 /proc/enable_prison_shuttle(var/mob/user)
-	for(var/obj/machinery/computer/prison_shuttle/PS in machines)
+	for(var/obj/machinery/computer/prison_shuttle/PS in GLOB.machines)
 		PS.allowedtocall = !(PS.allowedtocall)
 
 /proc/call_shuttle_proc(var/mob/user)
@@ -417,7 +417,7 @@
 	emergency_shuttle.call_evac()
 	log_game("[key_name(user)] has called the shuttle.")
 	message_admins("[key_name_admin(user)] has called the shuttle.", 1)
-	admin_chat_message(message = "Emergency evac beginning! Called by [key_name(user)]!", color = "#CC2222") //VOREStation Add
+	admin_chat_message(message = "Emergency evac beginning! Called by [key_name(user)]!", color = "#CC2222")
 
 	return
 
@@ -464,7 +464,7 @@
 
 	log_game("[user? key_name(user) : "Autotransfer"] has called the shuttle.")
 	message_admins("[user? key_name_admin(user) : "Autotransfer"] has called the shuttle.", 1)
-	admin_chat_message(message = "Autotransfer shuttle dispatched, shift ending soon.", color = "#2277BB") //VOREStation Add
+	admin_chat_message(message = "Autotransfer shuttle dispatched, shift ending soon.", color = "#2277BB")
 
 	return
 

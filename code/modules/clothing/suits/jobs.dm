@@ -170,21 +170,6 @@
 	/obj/item/clothing/mask/gas, /obj/item/barrier_tape_roll/engineering)
 	body_parts_covered = UPPER_TORSO
 
-/obj/item/clothing/suit/storage/hazardvest/blue
-	name = "blue hazard vest"
-	desc = "A high-visibility vest used in work zones. This one is blue!"
-	icon_state = "hazard_b"
-
-/obj/item/clothing/suit/storage/hazardvest/green
-	name = "green hazard vest"
-	desc = "A high-visibility vest used by emergency responders. This one is green!"
-	icon_state = "hazard_g"
-
-/obj/item/clothing/suit/storage/hazardvest/white
-	name = "white hazard vest"
-	desc = "A high-visibility vest used in work zones. This one has a red cross!"
-	icon_state = "hazard_w"
-
 //Lawyer
 /obj/item/clothing/suit/storage/toggle/lawyer/bluejacket
 	name = "blue suit jacket"
@@ -263,12 +248,12 @@
 	name = "pilot jacket"
 	desc = "A thick, blue bomber jacket."
 	icon_state = "pilot_bomber"
-	item_icons = list(slot_wear_suit_str = 'icons/map_assets/southern_cross/mob/sc_suit.dmi')
+	item_icons = list(/datum/inventory_slot_meta/inventory/suit = 'icons/map_assets/southern_cross/mob/sc_suits.dmi')
 	item_state_slots = list(slot_r_hand_str = "brown_jacket", slot_l_hand_str = "brown_jacket")
-	icon = 'icons/map_assets/southern_cross/obj/sc_suit.dmi'
+	icon = 'icons/map_assets/southern_cross/obj/sc_suits.dmi'
 	sprite_sheets = list(
-			SPECIES_TESHARI = 'icons/map_assets/southern_cross/mob/species/teshari/sc_suit.dmi',
-			SPECIES_VOX = 'icons/map_assets/southern_cross/mob/species/vox/sc_suit.dmi'
+			SPECIES_TESHARI = 'icons/map_assets/southern_cross/mob/species/teshari/sc_suits.dmi',
+			SPECIES_VOX = 'icons/map_assets/southern_cross/mob/species/vox/sc_suits.dmi'
 			)
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 
@@ -278,8 +263,8 @@
 	name = "search and rescue winter coat"
 	desc = "A heavy winter jacket. A white star of life is emblazoned on the back, with the words search and rescue written underneath."
 	icon_state = "coatsar"
-	item_icons = list(slot_wear_suit_str = 'icons/map_assets/southern_cross/mob/sc_suit.dmi')
-	icon = 'icons/map_assets/southern_cross/obj/sc_suit.dmi'
+	item_icons = list(/datum/inventory_slot_meta/inventory/suit = 'icons/map_assets/southern_cross/mob/sc_suits.dmi')
+	icon = 'icons/map_assets/southern_cross/obj/sc_suits.dmi'
 	armor = list(melee = 15, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 50, rad = 5)
 	valid_accessory_slots = (ACCESSORY_SLOT_INSIGNIA)
 	allowed = list (/obj/item/gun,/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,

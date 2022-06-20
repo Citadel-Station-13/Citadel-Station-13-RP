@@ -1,4 +1,9 @@
-/mob/living/silicon/ai/Life()
+/mob/living/silicon/ai/Life(seconds, times_fired)
+	if((. = ..()))
+		return
+
+	// i'm not converting thhis life proc, christ ~silicons
+
 	if (src.stat == DEAD)
 		return
 	else //I'm not removing that shitton of tabs, unneeded as they are. -- Urist
@@ -106,7 +111,7 @@
 						var/PRP
 						for (PRP=1, PRP<=4, PRP++)
 							for (var/obj/machinery/power/apc/APC in current_area)
-								if (!(APC.stat & BROKEN))
+								if (!(APC.machine_stat & BROKEN))
 									theAPC = APC
 									break
 							if (!theAPC)

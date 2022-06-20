@@ -1,6 +1,5 @@
 // Access check is of the type requires one. These have been carefully selected to avoid allowing the janitor to see channels he shouldn't
 GLOBAL_LIST_INIT(default_internal_channels, list(
-//VOREStation Edit Start - Updating this for Virgo
 	num2text(PUB_FREQ) = list(),
 	num2text(AI_FREQ)  = list(access_synth),
 	num2text(ENT_FREQ) = list(),
@@ -576,8 +575,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		return -1
 	if(!(0 in level))
 		var/turf/position = get_turf(src)
-		if((!position || !(position.z in level)) && !bluespace_radio) //VOREStation Edit
-			return -1
+		if((!position || !(position.z in level)) && !bluespace_radio)			return -1
 	if(freq in ANTAG_FREQS)
 		if(!(src.syndie))//Checks to see if it's allowed on that frequency, based on the encryption keys
 			return -1
@@ -790,7 +788,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	desc = "A powerful new radio originally gifted to Nanotrasen from Ward Takahashi. Immensely expensive, this communications device has the ability to send and recieve transmissions from anywhere."
 	catalogue_data = list()///datum/category_item/catalogue/information/organization/ward_takahashi)
 	icon = 'icons/vore/custom_items_vr.dmi'
-	icon_override = 'icons/mob/back_vr.dmi'
+	icon_override = 'icons/mob/clothing/back.dmi'
 	icon_state = "radiopack"
 	item_state = "radiopack"
 	slot_flags = SLOT_BACK

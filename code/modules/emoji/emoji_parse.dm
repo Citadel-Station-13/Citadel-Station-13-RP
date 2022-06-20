@@ -1,7 +1,7 @@
 /proc/emoji_parse(text) //turns :ai: into an emoji in text.
 	. = text
-	var/list/emojis = icon_states(icon('icons/emoji.dmi'))
-	emojis |= icon_states(icon('icons/emoji_32.dmi'))
+	if(!CONFIG_GET(flag/emojis))
+		return
 	var/parsed = ""
 	var/pos = 1
 	var/search = 0
@@ -36,8 +36,10 @@
 
 /proc/emoji_sanitize(text) //cuts any text that would not be parsed as an emoji
 	. = text
-	var/list/emojis = icon_states(icon('icons/emoji.dmi'))
-	emojis |= icon_states(icon('icons/emoji_32.dmi'))
+	if(!CONFIG_GET(flag/emojis))
+		return
+	var/list/emojis = icon_states(icon('icons/ui_icons/emoji/emoji.dmi'))
+	emojis |= icon_states(icon('icons/ui_icons/emoji/emoji32.dmi'))
 	var/final = "" //only tags are added to this
 	var/pos = 1
 	var/search = 0

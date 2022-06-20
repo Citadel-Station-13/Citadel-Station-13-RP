@@ -279,7 +279,7 @@ var/atom/movable/screen/robot_inventory
 		hands.icon_state = lowertext(modtype)
 	..()
 
-//VR FILE MERGE
+//! ## VR FILE MERGE ## !//
 /mob/living/silicon/robot/update_hud()
 	if(ui_style_vr)
 		hands.icon = 'icons/mob/screen1_robot_vr.dmi'

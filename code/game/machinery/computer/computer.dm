@@ -25,7 +25,7 @@
 	update_icon()
 
 /obj/machinery/computer/process(delta_time)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return FALSE
 	return TRUE
 
@@ -83,16 +83,15 @@
 			append_string += "_R"
 		icon_state = "computer[append_string]"
 
-
 	if(icon_keyboard)
-		if(stat & NOPOWER)
+		if(machine_stat & NOPOWER)
 			playsound(src, 'sound/machines/terminal_off.ogg', 50, 1)
 			return add_overlay("[icon_keyboard]_off")
 		. += icon_keyboard
 
 	// This whole block lets screens ignore lighting and be visible even in the darkest room
 	var/overlay_state = icon_screen
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		overlay_state = "[icon_state]_broken"
 	. += mutable_appearance(icon, overlay_state)
 	//. += emissive_appearance(icon, overlay_state)
@@ -103,13 +102,13 @@
 /obj/machinery/computer/power_change()
 	..()
 	update_icon()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		set_light(0)
 	else
 		set_light(light_range_on, light_power_on)
 
 /obj/machinery/computer/proc/set_broken()
-	stat |= BROKEN
+	machine_stat |= BROKEN
 	update_icon()
 
 /obj/machinery/computer/proc/decode(text)
@@ -117,7 +116,7 @@
 	text = replacetext(text, "\n", "<BR>")
 	return text
 
-/obj/machinery/computer/attackby(I as obj, user as mob)
+/obj/machinery/computer/attackby(obj/item/I, mob/user)
 	if(computer_deconstruction_screwdriver(user, I))
 		return
 	else

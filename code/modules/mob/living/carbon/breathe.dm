@@ -22,13 +22,12 @@
 	else
 		//Okay, we can breathe, now check if we can get air
 		breath = get_breath_from_internal() //First, check for air from internals
-		//VOREStation Add - Respirocytes as a NIF implant
+		// Respirocytes as a NIF implant
 		if(!breath && ishuman(src))
 			var/mob/living/carbon/human/H = src
 			if(H.nif && H.nif.flag_check(NIF_H_SPAREBREATH,NIF_FLAGS_HEALTH))
 				var/datum/nifsoft/spare_breath/SB = H.nif.imp_check(NIF_SPAREBREATH)
 				breath = SB.resp_breath()
-		//VOREStation Add End
 		if(!breath)
 			breath = get_breath_from_environment() //No breath from internals so let's try to get air from our location
 		if(!breath)
@@ -80,7 +79,7 @@
 	if(wear_mask && (wear_mask.clothing_flags & BLOCK_GAS_SMOKE_EFFECT))
 		return
 
-	for(var/obj/effect/smoke/chem/smoke in view(1, src))
+	for(var/obj/effect/particle_effect/smoke/chem/smoke in view(1, src))
 		if(smoke.reagents.total_volume)
 			smoke.reagents.trans_to_mob(src, 10, CHEM_INGEST, copy = 1)
 			//maybe check air pressure here or something to see if breathing in smoke is even possible.

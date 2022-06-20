@@ -1,10 +1,16 @@
-/mob/living/simple_mob/Life()
-	..()
+/mob/living/simple_mob/Life(seconds, times_fired)
+	if((. = ..()))
+		return
 
 	//Health
 	updatehealth()
+
+/mob/living/simple_mob/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
 	if(stat >= DEAD)
-		return FALSE
+		return
 
 	handle_stunned()
 	handle_weakened()
@@ -14,9 +20,6 @@
 
 	handle_special()
 	handle_guts()
-
-	return TRUE
-
 
 //Should we be dead?
 /mob/living/simple_mob/updatehealth()
@@ -89,7 +92,7 @@
 
 		if(Environment)
 
-			if( abs(Environment.temperature - bodytemperature) > temperature_range )	//VOREStation Edit: heating adjustments
+			if( abs(Environment.temperature - bodytemperature) > temperature_range )
 				bodytemperature += ((Environment.temperature - bodytemperature) / 5)
 
 			if(min_oxy)

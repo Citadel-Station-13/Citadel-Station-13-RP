@@ -6,6 +6,7 @@
 	desc = "You can be totally screwwy with this."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "screwdriver"
+	item_state = "screwdriver"
 	slot_flags = SLOT_BELT | SLOT_EARS
 	tool_behaviour = TOOL_SCREWDRIVER
 	force = 6
@@ -130,6 +131,12 @@
 	desc = "An electrical screwdriver, designed to be both precise and quick."
 	usesound = 'sound/items/drill_use.ogg'
 	toolspeed = 0.5
+
+/obj/item/tool/screwdriver/RIGset
+	name = "integrated screwdriver"
+	desc = "If you're seeing this, someone did a dum-dum."
+	usesound = 'sound/items/drill_use.ogg'
+	toolspeed = 0.7
 
 /obj/item/tool/screwdriver/power
 	name = "hand drill"

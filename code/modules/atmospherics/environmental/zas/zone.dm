@@ -58,14 +58,12 @@ Class Procs:
 	air.volume = CELL_VOLUME
 
 /datum/zas_zone/proc/add(turf/simulated/T)
-#ifdef ZASDBG
+#ifdef ZAS_DEBUG
 	ASSERT(!invalid)
 	ASSERT(istype(T))
-	ASSERT(!air_master.has_valid_zone(T))
+	ASSERT(!T.has_valid_zone())
 #endif
 
-	if(!istype(T))
-		return
 	var/datum/gas_mixture/turf_air = T.return_air()
 	add_tile_air(turf_air)
 	T.zone = src
@@ -79,11 +77,14 @@ Class Procs:
 		T.vis_contents += turf_graphics
 
 /datum/zas_zone/proc/remove(turf/simulated/T)
-#ifdef ZASDBG
+#ifdef ZAS_DEBUG
 	ASSERT(!invalid)
 	ASSERT(istype(T))
 	ASSERT(T.zone == src)
-	soft_assert(T in contents, "Lists are weird broseph")
+#endif
+#ifdef ZAS_DEBUG_EXPENSIVE
+	if(!(T in contents))
+		stack_trace("Turf was not in contents.")
 #endif
 	contents.Remove(T)
 	fire_tiles.Remove(T)
@@ -98,17 +99,18 @@ Class Procs:
 		c_invalidate()
 
 /datum/zas_zone/proc/c_merge(datum/zas_zone/into)
-#ifdef ZASDBG
+#ifdef ZAS_DEBUG
 	ASSERT(!invalid)
 	ASSERT(istype(into))
 	ASSERT(into != src)
 	ASSERT(!into.invalid)
 #endif
+
 	c_invalidate()
 	for(var/turf/simulated/T in contents)
 		T.vis_contents -= turf_graphics
 		into.add(T)
-		#ifdef ZASDBG
+		#ifdef ZAS_DEBUG_GRAPHICS
 		T.dbg(merged)
 		#endif
 
@@ -117,24 +119,24 @@ Class Procs:
 		if(E.contains_zone(into))
 			continue //don't need to rebuild this edge
 		for(var/turf/T in E.connecting_turfs)
-			air_master.mark_for_update(T)
+			T.queue_zone_update()
 
 /datum/zas_zone/proc/c_invalidate()
 	invalid = 1
 	air_master.remove_zone(src)
-	#ifdef ZASDBG
+	#ifdef ZAS_DEBUG_GRAPHICS
 	for(var/turf/simulated/T in contents)
 		T.dbg(invalid_zone)
 	#endif
 
 /datum/zas_zone/proc/rebuild()
-	if(invalid) return //Short circuit for explosions where rebuild is called many times over.
+	if(invalid)
+		return //Short circuit for explosions where rebuild is called many times over.
 	c_invalidate()
 	for(var/turf/simulated/T in contents)
 		T.vis_contents -= turf_graphics
 		//T.dbg(invalid_zone)
-		T.needs_air_update = 0 //Reset the marker so that it will be added to the list.
-		air_master.mark_for_update(T)
+		T.queue_zone_update()
 
 /datum/zas_zone/proc/add_tile_air(datum/gas_mixture/tile_air)
 	//air.volume += CELL_VOLUME
@@ -190,3 +192,7 @@ Class Procs:
 
 	//for(var/turf/T in unsimulated_contents)
 	//	to_chat(M, "[T] at ([T.x],[T.y])")
+
+/**
+ * TODO: SUPERCONDUCTION
+ */

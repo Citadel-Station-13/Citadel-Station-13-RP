@@ -778,7 +778,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/smes/buildable{
-	charge = 1.5e+007;
+	charge = 1.5e+004;
 	cur_coils = 3
 	},
 /turf/simulated/floor/plating,
@@ -2859,15 +2859,15 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/cafeteria)
 "gx" = (
-/atom/movable/landmark/spawnpoint/latejoin/station/elevator,
+/obj/landmark/spawnpoint/latejoin/station/elevator,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gy" = (
-/atom/movable/landmark/spawnpoint/latejoin/station/gateway,
+/obj/landmark/spawnpoint/latejoin/station/gateway,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gz" = (
-/atom/movable/landmark/observer_spawn,
+/obj/landmark/observer_spawn,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gA" = (
@@ -2875,11 +2875,11 @@
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gB" = (
-/atom/movable/landmark/spawnpoint/latejoin/station,
+/obj/landmark/spawnpoint/latejoin/station,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gC" = (
-/atom/movable/landmark/spawnpoint/latejoin/station/cryogenics,
+/obj/landmark/spawnpoint/latejoin/station/cryogenics,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gD" = (
@@ -3086,7 +3086,7 @@
 /turf/simulated/shuttle/floor,
 /area/shuttle/ferrydemo)
 "hp" = (
-/atom/movable/landmark/spawnpoint/latejoin/station,
+/obj/landmark/spawnpoint/latejoin/station,
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	id_tag = "station_hangar";
 	layer = 3.1;

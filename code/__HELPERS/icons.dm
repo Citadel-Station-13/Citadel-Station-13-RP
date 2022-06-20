@@ -1116,9 +1116,6 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 		alpha += 25
 		obj_flags &= ~FROZEN
 */
-/// Save file used in icon2base64. Used for converting icons to base64.
-GLOBAL_DATUM_INIT(dummySave, /savefile, new("tmp/dummySave.sav")) //Cache of icons for the browser output
-
 
 /// Generate a filename for this asset
 /// The same asset will always lead to the same asset name
@@ -1127,21 +1124,27 @@ GLOBAL_DATUM_INIT(dummySave, /savefile, new("tmp/dummySave.sav")) //Cache of ico
 	return "asset.[md5(fcopy_rsc(file))]"
 
 /**
-  * Converts an icon to base64. Operates by putting the icon in the iconCache savefile,
-  * exporting it as text, and then parsing the base64 from that.
-  * (This relies on byond automatically storing icons in savefiles as base64)
-  */
+ * Converts an icon to base64. Operates by putting the icon in the iconCache savefile,
+ * exporting it as text, and then parsing the base64 from that.
+ * (This relies on byond automatically storing icons in savefiles as base64)
+ */
 /proc/icon2base64(icon/icon)
 	if (!isicon(icon))
 		return FALSE
-	WRITE_FILE(GLOB.dummySave["dummy"], icon)
-	var/iconData = GLOB.dummySave.ExportText("dummy")
+	var/savefile/dummySave = new("tmp/dummySave.sav")
+	WRITE_FILE(dummySave["dummy"], icon)
+	var/iconData = dummySave.ExportText("dummy")
 	var/list/partial = splittext(iconData, "{")
-	return replacetext(copytext_char(partial[2], 3, -5), "\n", "")
+	. = replacetext(copytext_char(partial[2], 3, -5), "\n", "") //if cleanup fails we want to still return the correct base64
+	dummySave.Unlock()
+	dummySave = null
+	fdel("tmp/dummySave.sav") //if you get the idea to try and make this more optimized, make sure to still call unlock on the savefile after every write to unlock it.
 
-/proc/icon2html(thing, target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE)
+/proc/icon2html(thing, target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE, extra_classes = null)
 	if (!thing)
 		return
+//	if(SSlag_switch.measures[DISABLE_USR_ICON2HTML] && usr && !HAS_TRAIT(usr, TRAIT_BYPASS_MEASURES))
+//		return
 
 	var/key
 	var/icon/I = thing
@@ -1158,19 +1161,21 @@ GLOBAL_DATUM_INIT(dummySave, /savefile, new("tmp/dummySave.sav")) //Cache of ico
 		targets = target
 		if (!targets.len)
 			return
+
 	if (!isicon(I))
 		if (isfile(thing)) //special snowflake
-			var/name = sanitize_filename("[generate_asset_name(thing)].png")
+			var/name = SANITIZE_FILENAME("[generate_asset_name(thing)].png")
 			if (!SSassets.cache[name])
 				SSassets.transport.register_asset(name, thing)
 			for (var/thing2 in targets)
 				SSassets.transport.send_assets(thing2, name)
 			if(sourceonly)
 				return SSassets.transport.get_asset_url(name)
-			return "<img class='icon icon-misc' src='[SSassets.transport.get_asset_url(name)]'>"
+			return "<img class='[extra_classes] icon icon-misc' src='[SSassets.transport.get_asset_url(name)]'>"
 		var/atom/A = thing
 
 		I = A.icon
+
 		if (isnull(icon_state))
 			icon_state = A.icon_state
 			if (!(icon_state in icon_states(I, 1)))
@@ -1199,8 +1204,9 @@ GLOBAL_DATUM_INIT(dummySave, /savefile, new("tmp/dummySave.sav")) //Cache of ico
 		SSassets.transport.register_asset(key, I)
 	for (var/thing2 in targets)
 		SSassets.transport.send_assets(thing2, key)
-
-	return "<img class='icon icon-[icon_state]' src='[SSassets.transport.get_asset_url(key)]'>"
+	if(sourceonly)
+		return SSassets.transport.get_asset_url(key)
+	return "<img class='[extra_classes] icon icon-[icon_state]' src='[SSassets.transport.get_asset_url(key)]'>"
 
 /proc/icon2base64html(thing)
 	if (!thing)
@@ -1231,20 +1237,23 @@ GLOBAL_DATUM_INIT(dummySave, /savefile, new("tmp/dummySave.sav")) //Cache of ico
 			I = icon()
 			I.Insert(temp, dir = SOUTH)
 
-		bicon_cache[key] = icon2base64(I, key)
+		bicon_cache[key] = icon2base64(I)
 
 	return "<img class='icon icon-[A.icon_state]' src='data:image/png;base64,[bicon_cache[key]]'>"
 
-//Costlier version of icon2html() that uses getFlatIcon() to account for overlays, underlays, etc. Use with extreme moderation, ESPECIALLY on mobs.
-/proc/costly_icon2html(thing, target)
+/// Costlier version of icon2html() that uses getFlatIcon() to account for overlays, underlays, etc. Use with extreme moderation, ESPECIALLY on mobs.
+/proc/costly_icon2html(thing, target, sourceonly = FALSE)
 	if (!thing)
 		return
+//	if(SSlag_switch.measures[DISABLE_USR_ICON2HTML] && usr && !HAS_TRAIT(usr, TRAIT_BYPASS_MEASURES))
+//		return
 
 	if (isicon(thing))
 		return icon2html(thing, target)
 
 	var/icon/I = getFlatIcon(thing)
-	return icon2html(I, target)
+	return icon2html(I, target, sourceonly = sourceonly)
+
 
 /// VSTATION SPECIFIC ///
 
@@ -1442,3 +1451,19 @@ GLOBAL_DATUM_INIT(dummySave, /savefile, new("tmp/dummySave.sav")) //Cache of ico
 			if (I.GetPixel(x_pixel, y_pixel))
 				return y_pixel - 1
 	return null
+
+/* Gives the result RGB of a RGB string after a matrix transformation. No alpha.
+ * Input: rr, rg, rb, gr, gg, gb, br, bg, bb, cr, cg, cb
+ * Output: RGB string
+ */
+/proc/RGBMatrixTransform(list/color, list/cm)
+	ASSERT(cm.len >= 9)
+	if(cm.len < 12)		// fill in the rest
+		for(var/i in 1 to (12 - cm.len))
+			cm += 0
+	if(!islist(color))
+		color = ReadRGB(color)
+	color[1] = color[1] * cm[1] + color[2] * cm[2] + color[3] * cm[3] + cm[10] * 255
+	color[2] = color[1] * cm[4] + color[2] * cm[5] + color[3] * cm[6] + cm[11] * 255
+	color[3] = color[1] * cm[7] + color[2] * cm[8] + color[3] * cm[9] + cm[12] * 255
+	return rgb(color[1], color[2], color[3])

@@ -11,25 +11,36 @@
 #define FAT             6
 #define HUSK            7
 #define NOCLONE         8
-#define LASER           9  // Harm intent - click anywhere to shoot lasers from eyes.
-#define HEAL            10 // Healing people with hands.
-
+/// Harm intent - click anywhere to shoot lasers from eyes.
+#define LASER           9
+/// Healing people with hands.
+#define HEAL            10
 #define SKELETON      29
 #define PLANT         30
 
 // Other Mutations:
-#define mNobreath      100 // No need to breathe.
-#define mRemote        101 // Remote viewing.
-#define mRegen         102 // Health regeneration.
-#define mRun           103 // No slowdown.
-#define mRemotetalk    104 // Remote talking.
-#define mMorph         105 // Hanging appearance.
-#define mBlend         106 // Nothing. (seriously nothing)
-#define mHallucination 107 // Hallucinations.
-#define mFingerprints  108 // No fingerprints.
-#define mShock         109 // Insulated hands.
-#define mSmallsize     110 // Table climbing.
-
+/// No need to breathe.
+#define mNobreath      100
+/// Remote viewing.
+#define mRemote        101
+/// Health regeneration.
+#define mRegen         102
+/// No slowdown.
+#define mRun           103
+/// Remote talking.
+#define mRemotetalk    104
+/// Hanging appearance.
+#define mMorph         105
+/// Nothing. (seriously nothing)
+#define mBlend         106
+/// Hallucinations.
+#define mHallucination 107
+/// No fingerprints.
+#define mFingerprints  108
+/// Insulated hands.
+#define mShock         109
+/// Table climbing.
+#define mSmallsize     110
 // disabilities
 #define NEARSIGHTED 0x1
 #define EPILEPSY    0x2

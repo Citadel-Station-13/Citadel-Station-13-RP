@@ -1,4 +1,4 @@
-var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
+var/datum/legacy_announcement/minor/captain_announcement = new(do_newscast = 1)
 
 /datum/job/station/captain
 	title = "Facility Director"
@@ -56,11 +56,14 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	uniform = /obj/item/clothing/under/rank/captain
 	l_ear = /obj/item/radio/headset/heads/captain
 	shoes = /obj/item/clothing/shoes/brown
+
+	id_type = /obj/item/card/id/gold/captain
+	pda_type = /obj/item/pda/captain
+
 	backpack = /obj/item/storage/backpack/captain
 	satchel_one = /obj/item/storage/backpack/satchel/cap
 	messenger_bag = /obj/item/storage/backpack/messenger/com
-	id_type = /obj/item/card/id/gold/captain
-	pda_type = /obj/item/pda/captain
+	dufflebag = /obj/item/storage/backpack/dufflebag/captain
 
 /datum/outfit/job/station/captain/post_equip(var/mob/living/carbon/human/H)
 	..()

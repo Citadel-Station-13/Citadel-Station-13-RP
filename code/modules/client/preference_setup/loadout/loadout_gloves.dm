@@ -144,3 +144,7 @@
 /datum/gear/gloves/hasie
 	name = "Hasie Fingerless Gloves"
 	path = /obj/item/clothing/gloves/hasie
+
+/datum/gear/gloves/utility_fur_gloves
+	name = "Utility Fur Gloves"
+	path = /obj/item/clothing/gloves/utility_fur_gloves

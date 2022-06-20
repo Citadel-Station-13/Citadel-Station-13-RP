@@ -391,8 +391,8 @@
 		ExtinguishMob() //Fire's been put out.
 		return 1
 
-	var/datum/gas_mixture/G = loc.return_air() // Check if we're standing in an oxygenless environment
-	if(G.gas[/datum/gas/oxygen] < 1)
+	var/datum/gas_mixture/G = loc?.return_air() // Check if we're standing in an oxygenless environment
+	if(!G || (G.gas[/datum/gas/oxygen] < 1))
 		ExtinguishMob() //If there's no oxygen in the tile we're on, put out the fire
 		return 1
 
@@ -412,23 +412,6 @@
 //Called in MobCollide() and Crossed()
 /mob/living/proc/spread_fire(mob/living/L)
 	return
-// This is commented out pending discussion on Polaris.  If you're a downsteam and you want people to spread fire by touching each other, feel free to uncomment this.
-/*
-	if(!istype(L))
-		return
-	var/L_old_on_fire = L.on_fire
-
-	if(on_fire) //Only spread fire stacks if we're on fire
-		fire_stacks /= 2
-		L.fire_stacks += fire_stacks
-		if(L.IgniteMob())
-			message_admins("[key_name(src)] bumped into [key_name(L)] and set them on fire.")
-
-	if(L_old_on_fire) //Only ignite us and gain their stacks if they were onfire before we bumped them
-		L.fire_stacks /= 2
-		fire_stacks += L.fire_stacks
-		IgniteMob()
-*/
 
 /mob/living/proc/get_cold_protection()
 	return 0

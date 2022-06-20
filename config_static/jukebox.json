@@ -8429,5 +8429,45 @@
 "lobby": false,
 "jukebox": true,
 "genre": "Sol Common Precursors"
+},
+{
+"url": "https://files.catbox.moe/vjmbsq.mp3",
+"title": "Off the Meds",
+"duration": 1400,
+"artist": "EKSE",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
+"url": "https://files.catbox.moe/me6nh9.mp3",
+"title": "Masters of War",
+"duration": 2790,
+"artist": "Bob Dylan",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Country"
+},
+{
+"url": "https://files.catbox.moe/wmls2q.mp3",
+"title": "Dice of a Generation",
+"duration": 2580,
+"artist": "DEMONDICE",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rap"
+},
+{
+"url": "https://files.catbox.moe/me6nh9.mp3",
+"title": "Misery Business",
+"duration": 2030,
+"artist": "Paramore",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
 }
 ]

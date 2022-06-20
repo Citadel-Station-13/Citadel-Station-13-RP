@@ -225,7 +225,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 			<A href='?src=\ref[src];checkout=1'>(Commit Entry)</A><BR>
 			<A href='?src=\ref[src];switchscreen=0'>(Return to main menu)</A><BR>"}
 		if(4)
-			dat += "<h3>External Archive</h3>" //VOREStation Edit
+			dat += "<h3>External Archive</h3>"
 			establish_old_db_connection()
 
 			dat += "<h3><font color=red>Warning: System Administrator has slated this archive for removal. Personal uploads should be taken to the NT board of internal literature.</font></h3>"
@@ -248,10 +248,6 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 				dat += "</table>"
 			dat += "<BR><A href='?src=\ref[src];switchscreen=0'>(Return to main menu)</A><BR>"
 		if(5)
-			//dat += "<H3>ERROR</H3>" //VOREStation Removal
-			//dat+= "<FONT color=red>Library Database is in Secure Management Mode.</FONT><BR>\ //VOREStation Removal
-			//Contact a System Administrator for more information.<BR>" //VOREStation Removal
-			//VOREstation Edit Start
 			dat += "<H3>Upload a New Title</H3>"
 			if(!scanner)
 				for(var/obj/machinery/libraryscanner/S in range(9))
@@ -269,7 +265,6 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 				dat += {"<TT>Author: </TT><A href='?src=\ref[src];setauthor=1'>[scanner.cache.author]</A><BR>
 				<TT>Category: </TT><A href='?src=\ref[src];setcategory=1'>[upload_category]</A><BR>
 				<A href='?src=\ref[src];upload=1'>\[Upload\]</A><BR>"}
-			//VOREStation Edit End
 			dat += "<A href='?src=\ref[src];switchscreen=0'>(Return to main menu)</A><BR>"
 		if(7)
 			dat += {"<h3>Accessing Forbidden Lore Vault v 1.3</h3>
@@ -391,7 +386,6 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 		if(newcategory)
 			upload_category = newcategory
 
-	//VOREStation Edit Start
 	if(href_list["upload"])
 		if(scanner)
 			if(scanner.cache)
@@ -404,12 +398,6 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 						if(!dbcon_old.IsConnected())
 							alert("Connection to Archive has been severed. Aborting.")
 						else
-							/*
-							var/sqltitle = dbcon.Quote(scanner.cache.name)
-							var/sqlauthor = dbcon.Quote(scanner.cache.author)
-							var/sqlcontent = dbcon.Quote(scanner.cache.dat)
-							var/sqlcategory = dbcon.Quote(upload_category)
-							*/
 							var/sqltitle = sanitizeSQL(scanner.cache.name)
 							var/sqlauthor = sanitizeSQL(scanner.cache.author)
 							var/sqlcontent = sanitizeSQL(scanner.cache.dat)
@@ -420,7 +408,6 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 							else
 								log_game("[usr.name]/[usr.key] has uploaded the book titled [scanner.cache.name], [length(scanner.cache.dat)] signs")
 								alert("Upload Complete.")
-	//VOREStation Edit End
 
 	if(href_list["targetid"])
 		var/sqlid = sanitizeSQL(href_list["targetid"])
@@ -529,7 +516,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 
 /obj/machinery/bookbinder/update_icon_state()
 	. = ..()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		icon_state = "[base_icon_state]-off"
 	else
 		icon_state = base_icon_state

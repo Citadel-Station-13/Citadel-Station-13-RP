@@ -139,7 +139,7 @@
 			return
 		if(86 to 90)
 			// Irradiate everyone in telescience!
-			for(var/obj/machinery/telepad/E in machines)
+			for(var/obj/machinery/telepad/E in GLOB.machines)
 				var/L = get_turf(E)
 				sparks()
 				for(var/mob/living/carbon/human/M in viewers(L, null))
@@ -214,7 +214,7 @@
 			S.set_up(5, 1, get_turf(telepad))
 			S.start()
 
-			if(!A || (A.flags & BLUE_SHIELDED))
+			if(!A || (A.area_flags & AF_BLUE_SHIELDED))
 				telefail()
 				temp_msg = "ERROR!<BR>Target is shielded from bluespace intersection!"
 				return

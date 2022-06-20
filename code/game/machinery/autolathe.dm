@@ -38,7 +38,6 @@
 		autolathe_recipes = new()
 	wires = new(src)
 	default_apply_parts()
-	RefreshParts()
 
 /obj/machinery/autolathe/Destroy()
 	QDEL_NULL(wires)
@@ -129,7 +128,7 @@
 	if(default_part_replacement(user, O))
 		return
 
-	if(stat)
+	if(machine_stat)
 		return
 
 	if(panel_open)
@@ -144,7 +143,7 @@
 	if(is_robot_module(O))
 		return FALSE
 
-	if(istype(O,/obj/item/ammo_magazine/clip) || istype(O,/obj/item/ammo_magazine/s357) || istype(O,/obj/item/ammo_magazine/s38) || istype (O,/obj/item/ammo_magazine/s44)/* VOREstation Edit*/) // Prevents ammo recycling exploit with speedloaders.
+	if(istype(O,/obj/item/ammo_magazine/clip) || istype(O,/obj/item/ammo_magazine/s357) || istype(O,/obj/item/ammo_magazine/s38) || istype (O,/obj/item/ammo_magazine/s44))
 		to_chat(user, "\The [O] is too hazardous to recycle with the autolathe!")
 		return
 

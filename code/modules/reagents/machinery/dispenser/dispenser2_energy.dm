@@ -7,7 +7,7 @@
 /obj/machinery/chemical_dispenser/process(delta_time)
 	if(!_recharge_reagents)
 		return
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	. = 0
 	for(var/id in dispense_reagents)
@@ -51,7 +51,7 @@
 /obj/machinery/chemical_dispenser/bar_alc
 	dispense_reagents = list(
 		"lemon_lime", "sugar", "orangejuice", "limejuice", "sodawater", "tonic", "beer", "kahlua",
-		"whiskey", "wine", "vodka", "cider", "gin", "rum", "tequilla", "vermouth", "cognac", "ale", "mead", "bitters",
+		"whiskey", "wine", "vodka", "cider", "gin", "rum", "tequila", "vermouth", "cognac", "ale", "mead", "bitters",
 		"alcsassafras"
 		)
 

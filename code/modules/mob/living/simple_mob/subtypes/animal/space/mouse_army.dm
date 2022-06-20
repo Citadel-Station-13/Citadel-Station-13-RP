@@ -112,17 +112,13 @@
 	icon_dead = "mouse_[rank]_dead"
 	icon_rest = "mouse_[rank]_sleep"
 
-/mob/living/simple_mob/animal/space/mouse_army/Crossed(AM as mob|obj)
-	//VOREStation Edit begin: SHADEKIN
-	var/mob/SK = AM
-	if(istype(SK))
-		if(SK.shadekin_phasing_check())
-			return
-	//VOREStation Edit end: SHADEKIN
-	if( ishuman(AM) )
+/mob/living/simple_mob/animal/space/mouse_army/Crossed(atom/movable/AM as mob|obj)
+	if(AM.is_incorporeal())
+		return
+	if(ishuman(AM))
 		if(!stat)
 			var/mob/M = AM
-			M.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] Squeek!</font>")
+			M.visible_message(SPAN_NOTICE("[icon2html(thing = src, target = world)] Squeek!"))
 			playsound(src, 'sound/effects/mouse_squeak.ogg', 35, 1)
 	..()
 

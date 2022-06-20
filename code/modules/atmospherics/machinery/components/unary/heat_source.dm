@@ -1,5 +1,3 @@
-//TODO: Put this under a common parent type with freezers to cut down on the copypasta
-#define HEATER_PERF_MULT 2.5
 
 /obj/machinery/atmospherics/component/unary/heater
 	name = "gas heating system"
@@ -24,7 +22,6 @@
 /obj/machinery/atmospherics/component/unary/heater/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
-	RefreshParts()
 
 /obj/machinery/atmospherics/component/unary/heater/atmos_init()
 	if(node)
@@ -59,13 +56,13 @@
 /obj/machinery/atmospherics/component/unary/heater/process(delta_time)
 	..()
 
-	if(stat & (NOPOWER|BROKEN) || !use_power)
+	if(machine_stat & (NOPOWER|BROKEN) || !use_power)
 		heating = 0
 		update_icon()
 		return
 
 	if(network && air_contents.total_moles && air_contents.temperature < set_temperature)
-		var/limit = clamp(air_contents.heat_capacity() * (set_temperature - air_contents.temperature), 0, power_rating * HEATER_PERF_MULT)
+		var/limit = clamp(air_contents.heat_capacity() * (set_temperature - air_contents.temperature), 0, power_rating * THERMOMACHINE_CHEAT_FACTOR)
 		air_contents.add_thermal_energy(limit)
 		use_power(power_rating)
 
@@ -122,7 +119,7 @@
 			else
 				set_temperature = max(amount, 0)
 		if("setPower") //setting power to 0 is redundant anyways
-			var/new_setting = between(0, text2num(params["value"]), 100)
+			var/new_setting = clamp( text2num(params["value"]), 0,  100)
 			set_power_level(new_setting)
 
 //upgrading parts

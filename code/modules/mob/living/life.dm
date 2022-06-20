@@ -1,20 +1,44 @@
-/mob/living/Life()
-	..()
-
-	if (transforming)
-		return
-	handle_modifiers() //VOREStation Edit - Needs to be done even if in nullspace.
-	if(!loc)
+/mob/living/Life(seconds, times_fired)
+	if((. = ..()))
 		return
 
 	if(machine && !CanMouseDrop(machine, src))
 		machine = null
 
-	var/datum/gas_mixture/environment = loc.return_air()
-
-	//handle_modifiers() // Do this early since it might affect other things later. //VOREStation Edit
-
+	handle_regular_hud_updates()
+	handle_vision()
 	handle_light()
+
+	if(handle_regular_UI_updates()) // Status & health update, are we dead or alive etc.
+		handle_disabilities() // eye, ear, brain damages
+		handle_statuses() //all special effects, stunned, weakened, jitteryness, hallucination, sleeping, etc
+
+	handle_actions()
+	update_canmove()
+
+/mob/living/PhysicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
+	handle_instability()
+
+	var/datum/gas_mixture/environment = loc?.return_air()
+	//Handle temperature/pressure differences between body and environment
+	if(environment)
+		handle_environment(environment)
+
+	//Check if we're on fire
+	handle_fire()
+	update_gravity(mob_has_gravity())
+	update_pulling()
+
+	for(var/obj/item/grab/G in src)
+		G.process(2)
+
+
+/mob/living/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
 
 	if(stat != DEAD)
 		//Breathing, if applicable
@@ -23,47 +47,14 @@
 		//Mutations and radiation
 		handle_mutations_and_radiation()
 
-
-
 		//Blood
 		handle_blood()
 
 		//Random events (vomiting etc)
 		handle_random_events()
 
-		. = 1
-
 	//Chemicals in the body, this is moved over here so that blood can be added after death
 	handle_chemicals_in_body()
-
-	//Handle temperature/pressure differences between body and environment
-	if(environment)
-		handle_environment(environment)
-
-	//Check if we're on fire
-	handle_fire()
-
-	//stuff in the stomach
-	//handle_stomach() //VOREStation Code
-
-	update_gravity(mob_has_gravity())
-
-	update_pulling()
-
-	for(var/obj/item/grab/G in src)
-		G.process(2)
-
-	if(handle_regular_UI_updates()) // Status & health update, are we dead or alive etc.
-		handle_disabilities() // eye, ear, brain damages
-		handle_statuses() //all special effects, stunned, weakened, jitteryness, hallucination, sleeping, etc
-
-	handle_actions()
-
-	update_canmove()
-
-	handle_regular_hud_updates()
-
-	handle_vision()
 
 /mob/living/proc/handle_breathing()
 	return
@@ -194,10 +185,18 @@
 	return TRUE
 
 /mob/living/proc/update_sight()
+	SEND_SIGNAL(src, COMSIG_MOB_UPDATE_SIGHT)
 	if(!seedarkness)
-		see_invisible = SEE_INVISIBLE_NOLIGHTING
+		SetSeeInvisibleSelf(SEE_INVISIBLE_NOLIGHTING)
 	else
-		see_invisible = initial(see_invisible)
+		SetSeeInvisibleSelf(initial(see_invisible))
+
+	sight = initial(sight)
+
+	for(var/datum/modifier/M in modifiers)
+		if(!isnull(M.vision_flags))
+			AddSightSelf(M.vision_flags)
+
 	return
 
 /mob/living/proc/handle_hud_icons()

@@ -163,7 +163,7 @@
 
 /mob/living/simple_mob/construct/examine(mob/user)
 	..(user)
-	var/msg = "<span cass='info'>*---------*\nThis is [icon2html(thing = src, target = user)] \a <EM>[src]</EM>!\n"
+	var/msg = "<span cass='info'>This is [icon2html(thing = src, target = user)] \a <EM>[src]</EM>!\n"
 	if (src.health < src.getMaxHealth())
 		msg += "<span class='warning'>"
 		if (src.health >= src.getMaxHealth()/2)
@@ -171,7 +171,6 @@
 		else
 			msg += "<B>It looks severely dented!</B>\n"
 		msg += "</span>"
-	msg += "*---------*</span>"
 
 	to_chat(user, msg)
 

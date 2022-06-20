@@ -9,10 +9,11 @@
 Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a string with () (eg: the _WITH_ARGS defines) to make it look nicer)
 */
 #define THIS_PROC_TYPE .....
-#define THIS_PROC_TYPE_STR "[THIS_PROC_TYPE]"	// Because you can only obtain a string of THIS_PROC_TYPE using "[]", and it's nice to just +/+= strings
+/// Because you can only obtain a string of THIS_PROC_TYPE using "[]", and it's nice to just +/+= strings
+#define THIS_PROC_TYPE_STR "[THIS_PROC_TYPE]"
 #define THIS_PROC_TYPE_STR_WITH_ARGS "[THIS_PROC_TYPE]([args.Join(",")])"
-#define THIS_PROC_TYPE_WEIRD ......				// This one is WEIRD, in some cases (When used in certain defines? (eg: ASSERT)) THIS_PROC_TYPE will fail to work, but THIS_PROC_TYPE_WEIRD will work instead
-
+/// This one is WEIRD, in some cases (When used in certain defines? (eg: ASSERT)) THIS_PROC_TYPE will fail to work, but THIS_PROC_TYPE_WEIRD will work instead
+#define THIS_PROC_TYPE_WEIRD ......
 //define THIS_PROC_TYPE_WEIRD_STR "[THIS_PROC_TYPE_WEIRD]" //Included for completeness
 //define THIS_PROC_TYPE_WEIRD_STR_WITH_ARGS "[THIS_PROC_TYPE_WEIRD]([args.Join(",")])" //Ditto
 
@@ -66,6 +67,8 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define SHUTTLE_IDLE		0
 #define SHUTTLE_WARMUP		1
 #define SHUTTLE_INTRANSIT	2
+/// Yup that can happen now
+#define SHUTTLE_CRASHED	3
 
 // Sound defines for shuttles.
 #define HYPERSPACE_WARMUP	0
@@ -80,13 +83,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define WAIT_FINISH		4
 #define DO_AUTOPILOT	5
 
-// Shuttle madness!
-#define SHUTTLE_CRASHED	3	// Yup that can happen now
-
-/// Shield from bluespace teleportation (telescience)
-#define BLUE_SHIELDED	2
-
-
 // Bluespace shelter deploy checks
 #define SHELTER_DEPLOY_ALLOWED			"allowed"
 #define SHELTER_DEPLOY_BAD_TURFS		"bad turfs"
@@ -95,14 +91,15 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 
 // Setting this much higher than 1024 could allow spammers to DOS the server easily.
-#define MAX_MESSAGE_LEN			4096	// I'm not sure about "easily". It can be a lot longer.
+/// I'm not sure about "easily". It can be a lot longer.
+#define MAX_MESSAGE_LEN			4096
 #define MAX_PAPER_MESSAGE_LEN	6144
 #define MAX_BOOK_MESSAGE_LEN	24576
 #define MAX_RECORD_LENGTH		24576
 #define MAX_LNAME_LEN			64
 #define MAX_NAME_LEN			52
-#define MAX_TEXTFILE_LENGTH		128000		// 512GQ file
-
+/// 512GQ file
+#define MAX_TEXTFILE_LENGTH		128000
 // Event defines.
 #define EVENT_LEVEL_MUNDANE		1
 #define EVENT_LEVEL_MODERATE	2
@@ -119,10 +116,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define USELESS_JOB	"Visitor"
 
 #define ECO_MODIFIER 10
-
-// Area flags, possibly more to come
-/// This area is shielded from radiation, clearly.
-#define RAD_SHIELDED	1
 
 // Convoluted setup so defines can be supplied by Bay12 main server compile script.
 // Should still work fine for people jamming the icons into their repo.
@@ -276,7 +269,8 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define DEPARTMENT_RESEARCH			"research"
 #define DEPARTMENT_SECURITY			"security"
 #define DEPARTMENT_SYNTHETIC		"synthetic"
-#define DEPARTMENT_TALON			"talon" // Leaving this definition in place, can perhaps use it in the future but removing it will require digging into other stuff im not comfortable with -BLoop
+/// Leaving this definition in place, can perhaps use it in the future but removing it will require digging into other stuff im not comfortable with -BLoop
+#define DEPARTMENT_TALON			"talon"
 #define DEPARTMENT_TRADE			"trade"
 #define DEPARTMENT_UNKNOWN			"unknown"
 
@@ -290,10 +284,10 @@ var/list/economy_station_departments = list(
 	DEPARTMENT_PLANET,
 	DEPARTMENT_RESEARCH,
 	DEPARTMENT_SECURITY
-) //VOREStation Edit
+)
 
 
-// vorstation off-duty time
+// Off-duty time
 #define PTO_CARGO			"Cargo"
 #define PTO_CIVILIAN		"Civilian"
 #define PTO_COMMAND			"Command"
@@ -307,19 +301,23 @@ var/list/economy_station_departments = list(
 // Canonical spellings of TSCs, so typos never have to happen again due to human error.
 #define TSC_BC		"Bishop Cybernetics"
 #define TSC_GIL 	"Gilthari"
-#define TSC_HEPH	"Hephaestus"	// Because everyone misspells it
+/// Because everyone misspells it
+#define TSC_HEPH	"Hephaestus"
 #define TSC_MORPH	"Morpheus"
 #define TSC_NT		"NanoTrasen"
 #define TSC_VM		"Vey Med"
 #define TSC_WT		"Ward-Takahashi"
-#define TSC_XION	"Xion"			// Not really needed but consistancy I guess.
+/// Not really needed but consistancy I guess.
+#define TSC_XION	"Xion"
 #define TSC_ZH		"Zeng-Hu"
 
 ///The number of deciseconds in a day
 #define MIDNIGHT_ROLLOVER		864000
 
-#define WORLD_ICON_SIZE 32	// Needed for the R-UST port
-#define PIXEL_MULTIPLIER WORLD_ICON_SIZE/32 //Needed for the R-UST port
+/// Needed for the R-UST port
+#define WORLD_ICON_SIZE 32
+///Needed for the R-UST port
+#define PIXEL_MULTIPLIER WORLD_ICON_SIZE/32
 /// Maximum effective value of client.view (According to DM references)
 #define MAX_CLIENT_VIEW	34
 
@@ -451,8 +449,8 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 
 
 /// Herm Gender
-#define HERM "herm" // Snowflake Global that throws a fit
-
+/// Snowflake Global that throws a fit
+#define HERM "herm"
 // For custom species
 #define STARTING_SPECIES_POINTS	1
 #define MAX_SPECIES_TRAITS		5
@@ -478,8 +476,8 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define JOB_CARBON			0x1
 #define JOB_SILICON_ROBOT	0x2
 #define JOB_SILICON_AI		0x4
-#define JOB_SILICON			0x6 // 2|4, probably don't set jobs to this, but good for checking
-
+/// 2|4, probably don't set jobs to this, but good for checking
+#define JOB_SILICON			0x6
 /*
 	Used for wire name appearances. Replaces the color name on the left with the one on the right.
 	The color on the left is the one used as the actual color of the wire, but it doesn't look good when written.
@@ -562,6 +560,3 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 		"purple"	= "darkslateblue",	\
 		"pink"		= "lightgrey"		\
 	)
-
-/// The amount of cell charge to use per 1 nutrition, given that synthetics are full at 450 nutrition
-#define SYNTHETIC_NUTRITION_CHARGE_RATE 20

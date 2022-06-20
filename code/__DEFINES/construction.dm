@@ -3,12 +3,16 @@
 //
 
 // Frame construction states
-#define FRAME_PLACED 0		// Has been placed (can be anchored or not).
-#define FRAME_UNFASTENED 1	// Circuit added.
-#define FRAME_FASTENED 2	// Circuit fastened.
-#define FRAME_WIRED 3		// Frame wired.
-#define FRAME_PANELED 4		// Glass panel added.
-
+/// Has been placed (can be anchored or not).
+#define FRAME_PLACED 0
+/// Circuit added.
+#define FRAME_UNFASTENED 1
+/// Circuit fastened.
+#define FRAME_FASTENED 2
+/// Frame wired.
+#define FRAME_WIRED 3
+/// Glass panel added.
+#define FRAME_PANELED 4
 // The frame classes define a sequence of construction steps.
 #define FRAME_CLASS_ALARM "alarm"
 #define FRAME_CLASS_COMPUTER "computer"
@@ -24,23 +28,35 @@
 //
 
 //Construction Orientation Types - Each of these categories has a different selection of how pipes can rotate and flip. Used for RPD.
-#define PIPE_STRAIGHT			0	// 2 directions: N/S, E/W
-#define PIPE_BENDABLE			1	// 6 directions: N/S, E/W, N/E, N/W, S/E, S/W
-#define PIPE_TRINARY			2	// 4 directions: N/E/S, E/S/W, S/W/N, W/N/E
-#define PIPE_TRIN_M				3	// 8 directions: N->S+E, S->N+E, N->S+W, S->N+W, E->W+S, W->E+S, E->W+N, W->E+N
-#define PIPE_DIRECTIONAL		4	// 4 directions: N, S, E, W
-#define PIPE_ONEDIR				5	// 1 direction: N/S/E/W
-#define PIPE_UNARY_FLIPPABLE	6	// 8 directions: N, S, E, W, N-flipped, S-flipped, E-flipped, W-flipped
-#define PIPE_TRIN_T				7	// 8 directions: N->S+E, S->N+E, N->S+W, S->N+W, E->W+S, W->E+S, E->W+N, W->E+N
-
+/// 2 directions: N/S, E/W
+#define PIPE_STRAIGHT			0
+/// 6 directions: N/S, E/W, N/E, N/W, S/E, S/W
+#define PIPE_BENDABLE			1
+/// 4 directions: N/E/S, E/S/W, S/W/N, W/N/E
+#define PIPE_TRINARY			2
+/// 8 directions: N->S+E, S->N+E, N->S+W, S->N+W, E->W+S, W->E+S, E->W+N, W->E+N
+#define PIPE_TRIN_M				3
+/// 4 directions: N, S, E, W
+#define PIPE_DIRECTIONAL		4
+/// 1 direction: N/S/E/W
+#define PIPE_ONEDIR				5
+/// 8 directions: N, S, E, W, N-flipped, S-flipped, E-flipped, W-flipped
+#define PIPE_UNARY_FLIPPABLE	6
+/// 8 directions: N->S+E, S->N+E, N->S+W, S->N+W, E->W+S, W->E+S, E->W+N, W->E+N
+#define PIPE_TRIN_T				7
 // Pipe connectivity bit flags
-#define CONNECT_TYPE_REGULAR	1	// Center of tile, 'normal'
-#define CONNECT_TYPE_SUPPLY		2	// Atmos air supply pipes
-#define CONNECT_TYPE_SCRUBBER	4	// Atmos air scrubber pipes
-#define CONNECT_TYPE_HE			8	// Heat exchanger pipes
-#define CONNECT_TYPE_FUEL		16	// Fuel pipes for overmap ships
-#define CONNECT_TYPE_AUX		32	// Aux pipes for 'other' things (airlocks, etc)
-
+/// Center of tile, 'normal'
+#define CONNECT_TYPE_REGULAR	1
+/// Atmos air supply pipes
+#define CONNECT_TYPE_SUPPLY		2
+/// Atmos air scrubber pipes
+#define CONNECT_TYPE_SCRUBBER	4
+/// Heat exchanger pipes
+#define CONNECT_TYPE_HE			8
+/// Fuel pipes for overmap ships
+#define CONNECT_TYPE_FUEL		16
+/// Aux pipes for 'other' things (airlocks, etc)
+#define CONNECT_TYPE_AUX		32
 // We are based on the three named layers of supply, regular, and scrubber.
 #define PIPING_LAYER_FUEL		1
 #define PIPING_LAYER_SUPPLY		2

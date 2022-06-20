@@ -182,7 +182,7 @@
 
 /mob/Initialize(mapload)
 	. = ..()
-	if(!ability_master)	//VOREStation Edit: S H A D E K I N
+	if(!ability_master)
 		ability_master = new /atom/movable/screen/movable/ability_master(src)
 
 ///////////ACTUAL ABILITIES////////////

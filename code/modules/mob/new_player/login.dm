@@ -27,7 +27,7 @@ GLOBAL_DATUM_INIT(lobby_image, /obj/effect/lobby_image, new)
 
 	var/motd = config.motd
 	if(motd)
-		to_chat(src, "<div class=\"motd\">[motd]</div>", handle_whitespace=FALSE)
+		to_chat(src, "<blockquote class=\"motd\">[motd]</blockquote>", handle_whitespace=FALSE)
 	if(client)
 		to_chat(src, client.getAlertDesc())
 

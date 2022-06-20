@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(timer)
 	wait = 1 // SS_TICKER subsystem, so wait is in ticks
 	init_order = INIT_ORDER_TIMER
 	priority = FIRE_PRIORITY_TIMER
-	flags = SS_TICKER|SS_NO_INIT
+	subsystem_flags = SS_TICKER|SS_NO_INIT
 
 	/// Queue used for storing timers that do not fit into the current buckets
 	var/list/datum/timedevent/second_queue = list()
@@ -134,7 +134,7 @@ SUBSYSTEM_DEF(timer)
 		ctime_timer.spent = REALTIMEOFDAY
 		callBack.InvokeAsync()
 
-		if(ctime_timer.flags & TIMER_LOOP)
+		if(ctime_timer.timer_flags & TIMER_LOOP)
 			ctime_timer.spent = 0
 			ctime_timer.timeToRun = REALTIMEOFDAY + ctime_timer.wait
 			BINARY_INSERT(ctime_timer, clienttime_timers, /datum/timedevent, ctime_timer, timeToRun, COMPARE_KEY)
@@ -185,7 +185,7 @@ SUBSYSTEM_DEF(timer)
 				callBack.InvokeAsync()
 				last_invoke_tick = world.time
 
-			if (timer.flags & TIMER_LOOP) // Prepare looping timers to re-enter the queue
+			if (timer.timer_flags & TIMER_LOOP) // Prepare looping timers to re-enter the queue
 				timer.spent = 0
 				timer.timeToRun = world.time + timer.wait
 #ifdef TIMER_LOOP_DEBUGGING
@@ -365,7 +365,7 @@ SUBSYSTEM_DEF(timer)
 	/// The source of the timedevent, whatever called addtimer
 	var/source
 	/// Flags associated with the timer, see _DEFINES/subsystems.dm
-	var/list/flags
+	var/list/timer_flags
 	/// Time at which the timer was invoked or destroyed
 	var/spent = 0
 	/// An informative name generated for the timer as its representation in strings, useful for debugging
@@ -380,7 +380,7 @@ SUBSYSTEM_DEF(timer)
 	id = TIMER_ID_NULL
 	src.callBack = callBack
 	src.wait = wait
-	src.flags = flags
+	src.timer_flags = flags
 	src.hash = hash
 	src.source = source
 
@@ -410,7 +410,7 @@ SUBSYSTEM_DEF(timer)
 
 /datum/timedevent/Destroy()
 	..()
-	if (flags & TIMER_UNIQUE && hash)
+	if (timer_flags & TIMER_UNIQUE && hash)
 		SStimer.hashes -= hash
 
 	if (callBack && callBack.object && callBack.object != GLOBAL_PROC && callBack.object.active_timers)
@@ -419,10 +419,10 @@ SUBSYSTEM_DEF(timer)
 
 	callBack = null
 
-	if (flags & TIMER_STOPPABLE)
+	if (timer_flags & TIMER_STOPPABLE)
 		SStimer.timer_id_dict -= id
 
-	if (flags & TIMER_CLIENT_TIME)
+	if (timer_flags & TIMER_CLIENT_TIME)
 		if (!spent)
 			spent = world.time
 			SStimer.clienttime_timers -= src
@@ -591,13 +591,13 @@ SUBSYSTEM_DEF(timer)
 /datum/timedevent/proc/bucketJoin()
 	// Generate debug-friendly name for timer
 	var/static/list/bitfield_flags = list("TIMER_UNIQUE", "TIMER_OVERRIDE", "TIMER_CLIENT_TIME", "TIMER_STOPPABLE", "TIMER_NO_HASH_WAIT", "TIMER_LOOP")
-	name = "Timer: [id] (\ref[src]), TTR: [timeToRun], wait:[wait] Flags: [jointext(bitfield2list(flags, bitfield_flags), ", ")], \
+	name = "Timer: [id] (\ref[src]), TTR: [timeToRun], wait:[wait] Flags: [jointext(bitfield2list(timer_flags, bitfield_flags), ", ")], \
 		callBack: \ref[callBack], callBack.object: [callBack.object]\ref[callBack.object]([getcallingtype()]), \
 		callBack.delegate:[callBack.delegate]([callBack.arguments ? callBack.arguments.Join(", ") : ""]), source: [source]"
 
 	// Check if this timed event should be diverted to the client time bucket, or the secondary queue
 	var/list/L
-	if (flags & TIMER_CLIENT_TIME)
+	if (timer_flags & TIMER_CLIENT_TIME)
 		L = SStimer.clienttime_timers
 	else if (timeToRun >= TIMER_MAX)
 		L = SStimer.second_queue
@@ -688,7 +688,7 @@ SUBSYSTEM_DEF(timer)
 					hash_timer.hash = null // no need having it delete it's hash if we are going to replace it
 					qdel(hash_timer)
 				else
-					if (hash_timer.flags & TIMER_STOPPABLE)
+					if (hash_timer.timer_flags & TIMER_STOPPABLE)
 						. = hash_timer.id
 					return
 	else if(flags & TIMER_OVERRIDE)
@@ -713,7 +713,7 @@ SUBSYSTEM_DEF(timer)
 		return TRUE
 	//id is string
 	var/datum/timedevent/timer = SStimer.timer_id_dict[id]
-	if (timer && (!timer.spent || timer.flags & TIMER_DELETE_ME))
+	if (timer && (!timer.spent || timer.timer_flags & TIMER_DELETE_ME))
 		qdel(timer)
 		return TRUE
 	return FALSE

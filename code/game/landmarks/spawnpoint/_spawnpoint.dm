@@ -1,4 +1,4 @@
-/atom/movable/landmark/spawnpoint
+/obj/landmark/spawnpoint
 	name = "unknown spawnpoint"
 	icon = 'icons/mapping/landmarks/spawnpoints.dmi'
 	icon_state = ""
@@ -15,20 +15,20 @@
 	/// default spawn announce text - allowed are %NAME%, %JOB% - for more complex, override RenderAnnounceMessage()
 	var/announce_template = "%NAME%, %JOB% will arrive shortly."
 
-/atom/movable/landmark/spawnpoint/Initialize(mapload)
+/obj/landmark/spawnpoint/Initialize(mapload)
 	Register()
 	return ..()
 
-/atom/movable/landmark/spawnpoint/Destroy()
+/obj/landmark/spawnpoint/Destroy()
 	Unregister()
 	return ..()
 
-/atom/movable/landmark/spawnpoint/forceMove(atom/destination)
+/obj/landmark/spawnpoint/forceMove(atom/destination)
 	Unregister()
 	. = ..()
 	Register()
 
-/atom/movable/landmark/spawnpoint/vv_edit_var(var_name, var_value, massedit)
+/obj/landmark/spawnpoint/vv_edit_var(var_name, var_value, massedit)
 	if(var_name == NAMEOF(src, priority))
 		Unregister()
 	. = ..()
@@ -36,20 +36,20 @@
 		Register()
 
 
-/atom/movable/landmark/spawnpoint/proc/Register()
+/obj/landmark/spawnpoint/proc/Register()
 	SHOULD_CALL_PARENT(TRUE)
 	SSjob.spawnpoints += src
 
-/atom/movable/landmark/spawnpoint/proc/Unregister()
+/obj/landmark/spawnpoint/proc/Unregister()
 	SHOULD_CALL_PARENT(TRUE)
 	SSjob.spawnpoints -= src
 
-/atom/movable/landmark/spawnpoint/proc/AutoListRegister(list/L)
+/obj/landmark/spawnpoint/proc/AutoListRegister(list/L)
 	if(src in L)
 		return
-	BINARY_INSERT(src, L, /atom/movable/landmark/spawnpoint, src, priority, COMPARE_KEY)
+	BINARY_INSERT(src, L, /obj/landmark/spawnpoint, src, priority, COMPARE_KEY)
 
-/atom/movable/landmark/spawnpoint/proc/AutoListUnregister(list/L)
+/obj/landmark/spawnpoint/proc/AutoListUnregister(list/L)
 	if(!L)
 		return
 	L -= src
@@ -58,7 +58,7 @@
  * Gets the spawn location of this spawnpoint
  * This should usually be underneath it, as this is where the mob will be created/moved.
  */
-/atom/movable/landmark/spawnpoint/proc/GetSpawnLoc()
+/obj/landmark/spawnpoint/proc/GetSpawnLoc()
 	if(!loc)
 		stack_trace("Landmark: Null loc detected on GetSpawnLoc().")
 	return loc
@@ -70,7 +70,7 @@
  * - M - the mob that was spawned
  * - C - (optional) - the client of the player
  */
-/atom/movable/landmark/spawnpoint/proc/OnSpawn(mob/M, client/C)
+/obj/landmark/spawnpoint/proc/OnSpawn(mob/M, client/C)
 	spawns_left = max(0, spawns_left - 1)
 	++spawned
 
@@ -83,7 +83,7 @@
  * - C - (optional) - the client of the player
  * - harder - ignore checks like prevent_mob_stack
  */
-/atom/movable/landmark/spawnpoint/proc/Available(mob/M, client/C, harder = FALSE)
+/obj/landmark/spawnpoint/proc/Available(mob/M, client/C, harder = FALSE)
 	if(!spawns_left)
 		return FALSE
 	if(prevent_mob_stack && M && !harder)
@@ -96,7 +96,7 @@
 /**
  * Used first priority for job spawning
  */
-/atom/movable/landmark/spawnpoint/job
+/obj/landmark/spawnpoint/job
 	name = "unknown job spawnpoint"
 	icon = 'icons/mapping/landmarks/job_spawnpoints.dmi'
 	spawns_left = 1
@@ -111,7 +111,7 @@
 	/// Overrides all latejoin spawnpoints even if methods mismatch
 	var/latejoin_override = FALSE
 
-/atom/movable/landmark/spawnpoint/job/Register()
+/obj/landmark/spawnpoint/job/Register()
 	. = ..()
 	if(!job_path)
 		return
@@ -119,7 +119,7 @@
 	LAZYINITLIST(SSjob.job_spawnpoints[job_path])
 	AutoListRegister(SSjob.job_spawnpoints[job_path])
 
-/atom/movable/landmark/spawnpoint/job/Unregister()
+/obj/landmark/spawnpoint/job/Unregister()
 	. = ..()
 	if(!job_path)
 		return
@@ -136,7 +136,7 @@
  * name - spawnee's name
  * job_name - job's name - useful for alt titles
  */
-/atom/movable/landmark/spawnpoint/proc/RenderAnnounceMessage(mob/M, client/C, datum/job/J, name, job_name)
+/obj/landmark/spawnpoint/proc/RenderAnnounceMessage(mob/M, client/C, datum/job/J, name, job_name)
 	return "[name || "Unknown"] will arrive shortly."
 
 /**
@@ -144,10 +144,10 @@
  *
  * if this returns TRUE, regular announce is skipped.
  */
-/atom/movable/landmark/spawnpoint/proc/OverrideAnnounceMessage(raw)
+/obj/landmark/spawnpoint/proc/OverrideAnnounceMessage(raw)
 	return !length(announce_template)		// by default, if announce template is empty, this will prevent announce!
 
-/atom/movable/landmark/spawnpoint/job/vv_edit_var(var_name, var_value, massedit)
+/obj/landmark/spawnpoint/job/vv_edit_var(var_name, var_value, massedit)
 	if(var_name == NAMEOF(src, job_path))
 		Register()
 	. = ..()
@@ -157,14 +157,14 @@
 /**
  * Used when there's no job specific latejoin spawnpoints
  */
-/atom/movable/landmark/spawnpoint/latejoin
+/obj/landmark/spawnpoint/latejoin
 	name = "unknown latejoin spawnpoint"
 	/// Faction
 	var/faction
 	/// Method - if there's more than one registered method available, a player may choose which one to use
 	var/method = LATEJOIN_METHOD_DEFAULT
 
-/atom/movable/landmark/spawnpoint/latejoin/Register()
+/obj/landmark/spawnpoint/latejoin/Register()
 	. = ..()
 	if(!faction)
 		return
@@ -172,20 +172,20 @@
 	LAZYINITLIST(SSjob.latejoin_spawnpoints[faction])
 	AutoListRegister(SSjob.latejoin_spawnpoints[faction])
 
-/atom/movable/landmark/spawnpoint/latejoin/Unregister()
+/obj/landmark/spawnpoint/latejoin/Unregister()
 	. = ..()
 	if(!faction)
 		return
 	AutoListUnregister(SSjob.latejoin_spawnpoints[faction])
 
-/atom/movable/landmark/spawnpoint/latejoin/vv_edit_var(var_name, var_value, massedit)
+/obj/landmark/spawnpoint/latejoin/vv_edit_var(var_name, var_value, massedit)
 	if(var_name == NAMEOF(src, faction))
 		Register()
 	. = ..()
 	if(var_name == NAMEOF(src, faction))
 		Unregister()
 
-/atom/movable/landmark/spawnpoint/latejoin/RenderAnnounceMessage(mob/M, client/C, name, job_name)
+/obj/landmark/spawnpoint/latejoin/RenderAnnounceMessage(mob/M, client/C, name, job_name)
 	. = announce_template
 	. = replacetext(., "%NAME%", name)
 	. = replacetext(., "%JOB%", job_name)
@@ -193,12 +193,12 @@
 /**
  * Used when all other spawnpoints are unavailable
  */
-/atom/movable/landmark/spawnpoint/overflow
+/obj/landmark/spawnpoint/overflow
 	name = "unknown overflow spawnpoint"
 	/// Faction
 	var/faction
 
-/atom/movable/landmark/spawnpoint/overflow/Register()
+/obj/landmark/spawnpoint/overflow/Register()
 	. = ..()
 	if(!faction)
 		return
@@ -206,13 +206,13 @@
 	LAZYINITLIST(SSjob.overflow_spawnpoints[faction])
 	AutoListRegister(SSjob.overflow_spawnpoints[faction])
 
-/atom/movable/landmark/spawnpoint/overflow/Unregister()
+/obj/landmark/spawnpoint/overflow/Unregister()
 	. = ..()
 	if(!faction)
 		return
 	AutoListUnregister(SSjob.overflow_spawnpoints[faction])
 
-/atom/movable/landmark/spawnpoint/overflow/vv_edit_var(var_name, var_value, massedit)
+/obj/landmark/spawnpoint/overflow/vv_edit_var(var_name, var_value, massedit)
 	if(var_name == NAMEOF(src, faction))
 		Register()
 	. = ..()
@@ -222,12 +222,12 @@
 /**
  * Custom keyed list spawnpoint supplier
  */
-/atom/movable/landmark/spawnpoint/custom
+/obj/landmark/spawnpoint/custom
 	name = "unknown custom spawnpoint"
 	/// Key
 	var/key
 
-/atom/movable/landmark/spawnpoint/custom/Register()
+/obj/landmark/spawnpoint/custom/Register()
 	. = ..()
 	if(!key)
 		return
@@ -235,13 +235,13 @@
 	LAZYINITLIST(SSjob.custom_spawnpoints[key])
 	AutoListRegister(SSjob.custom_spawnpoints[key])
 
-/atom/movable/landmark/spawnpoint/custom/Unregister()
+/obj/landmark/spawnpoint/custom/Unregister()
 	. = ..()
 	if(!key)
 		return
 	AutoListUnregister(SSjob.custom_spawnpoints[key])
 
-/atom/movable/landmark/spawnpoint/custom/vv_edit_var(var_name, var_value, massedit)
+/obj/landmark/spawnpoint/custom/vv_edit_var(var_name, var_value, massedit)
 	if(var_name == NAMEOF(src, key))
 		Register()
 	. = ..()

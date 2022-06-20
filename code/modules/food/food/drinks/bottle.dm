@@ -229,15 +229,15 @@
 	. = ..()
 	reagents.add_reagent("vodka", 100)
 
-/obj/item/reagent_containers/food/drinks/bottle/tequilla
-	name = "Caccavo Guaranteed Quality Tequilla"
+/obj/item/reagent_containers/food/drinks/bottle/tequila
+	name = "Caccavo Guaranteed Quality Tequila"
 	desc = "Made from premium petroleum distillates, pure thalidomide and other fine quality ingredients!"
-	icon_state = "tequillabottle"
+	icon_state = "tequilabottle"
 	center_of_mass = list("x"=16, "y"=3)
 
-/obj/item/reagent_containers/food/drinks/bottle/tequilla/Initialize(mapload)
+/obj/item/reagent_containers/food/drinks/bottle/tequila/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("tequilla", 100)
+	reagents.add_reagent("tequila", 100)
 
 /obj/item/reagent_containers/food/drinks/bottle/bottleofnothing
 	name = "Bottle of Nothing"
@@ -251,7 +251,7 @@
 
 /obj/item/reagent_containers/food/drinks/bottle/patron
 	name = "Wrapp Artiste Patron"
-	desc = "Silver laced tequilla, served in space night clubs across the galaxy."
+	desc = "Silver laced tequila, served in space night clubs across the galaxy."
 	icon_state = "patronbottle"
 	center_of_mass = list("x"=16, "y"=6)
 
@@ -556,6 +556,18 @@
 /obj/item/reagent_containers/food/drinks/bottle/lemonjuice/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("lemonjuice", 100)
+
+/obj/item/reagent_containers/food/drinks/bottle/coconutmilk
+	name = "Coconut Milk"
+	desc = "A carton of NutClarity brand coconut milk."
+	icon_state = "milkbox"
+	item_state = "carton"
+	center_of_mass = list("x"=16, "y"=8)
+	isGlass = 0
+
+/obj/item/reagent_containers/food/drinks/bottle/coconutmilk/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("coconutmilk", 100)
 
 //Small bottles
 /obj/item/reagent_containers/food/drinks/bottle/small

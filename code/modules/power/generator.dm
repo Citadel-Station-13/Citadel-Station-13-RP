@@ -74,7 +74,7 @@ GLOBAL_LIST_EMPTY(all_turbines)
 		circ1.temperature_overlay = null
 	if (circ2)
 		circ2.temperature_overlay = null
-	if (stat & (NOPOWER|BROKEN))
+	if (machine_stat & (NOPOWER|BROKEN))
 		return 1
 	else
 		if (lastgenlev != 0)
@@ -90,7 +90,7 @@ GLOBAL_LIST_EMPTY(all_turbines)
 		return 1
 
 /obj/machinery/power/generator/process(delta_time)
-	if(!circ1 || !circ2 || !anchored || stat & (BROKEN|NOPOWER))
+	if(!circ1 || !circ2 || !anchored || machine_stat & (BROKEN|NOPOWER))
 		stored_energy = 0
 		return
 
@@ -163,7 +163,7 @@ GLOBAL_LIST_EMPTY(all_turbines)
 	if(genlev != lastgenlev)
 		lastgenlev = genlev
 		updateicon()
-	add_avail(effective_gen)
+	add_avail(effective_gen * 0.001)
 
 /obj/machinery/power/generator/attack_ai(mob/user)
 	attack_hand(user)
@@ -189,7 +189,8 @@ GLOBAL_LIST_EMPTY(all_turbines)
 
 /obj/machinery/power/generator/attack_hand(mob/user)
 	add_fingerprint(user)
-	if(stat & (BROKEN|NOPOWER) || !anchored) return
+	if(machine_stat & (BROKEN|NOPOWER) || !anchored)
+		return
 	if(!circ1 || !circ2) //Just incase the middle part of the TEG was not wrenched last.
 		reconnect()
 	ui_interact(user)
@@ -339,4 +340,3 @@ GLOBAL_LIST_EMPTY(all_turbines)
 					sleep(1)
 				if(i >= limit)
 					break
-

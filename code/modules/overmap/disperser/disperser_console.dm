@@ -40,7 +40,7 @@
 	if(is_valid_setup())
 		return TRUE
 
-	for(var/obj/machinery/disperser/front/F in global.machines)
+	for(var/obj/machinery/disperser/front/F in GLOB.machines)
 		if(get_dist(src, F) >= link_range)
 			continue
 		var/backwards = turn(F.dir, 180)
@@ -206,4 +206,4 @@ obj/machinery/computer/ship/disperser/proc/is_valid_setup()
 			. = TRUE
 
 	if(. && !issilicon(usr))
-		playsound(src, "terminal_type", 50, 1)
+		playsound(src, SFX_ALIAS_TERMINAL, 50, 1)

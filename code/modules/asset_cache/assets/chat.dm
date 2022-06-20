@@ -3,7 +3,7 @@
 
 /datum/asset/spritesheet/chat/create_spritesheets()
 	InsertAll("emoji", EMOJI_SET)
-	InsertAll("emoji_32", EMOJI_SET32)
+	InsertAll("emoji", EMOJI32_SET)
 	/*
 	// pre-loading all lanugage icons also helps to avoid meta
 	InsertAll("language", 'icons/misc/language.dmi')
