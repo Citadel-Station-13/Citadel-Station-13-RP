@@ -6445,7 +6445,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/warehouse)
 "fnO" = (
-/turf/space/basic,
+/obj/machinery/appliance/cooker/grill,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rift/station/public_garden)
 "foD" = (
 /turf/simulated/wall/r_wall,
@@ -27828,10 +27829,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/checkpoint)
-"uSd" = (
-/obj/machinery/appliance/cooker/grill,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
-/area/rift/station/public_garden)
 "uSm" = (
 /obj/machinery/light{
 	dir = 8
@@ -57777,7 +57774,7 @@ cap
 mbJ
 mbJ
 rpP
-uSd
+fnO
 sQo
 qyE
 qyE
@@ -57971,7 +57968,7 @@ cap
 qyE
 qyE
 rpP
-uSd
+fnO
 rpP
 mbJ
 mbJ
@@ -58358,7 +58355,7 @@ gzd
 jhN
 rpP
 rpP
-fnO
+rpP
 rpP
 rpP
 bfY
