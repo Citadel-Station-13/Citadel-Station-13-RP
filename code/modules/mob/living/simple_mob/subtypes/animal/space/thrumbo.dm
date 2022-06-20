@@ -17,15 +17,7 @@
 	var/charging = 0
 	var/charging_warning = 1 SECONDS
 	minbodytemp = 0
-	maxbodytemp = 1000 //TODO: fix the numbers below
-	min_oxy = 0				// Oxygen in moles, minimum, 0 is 'no minimum'
-	max_oxy = 0					// Oxygen in moles, maximum, 0 is 'no maximum'
-	min_tox = 0					// Phoron min
-	max_tox = 0					// Phoron max
-	min_co2 = 0					// CO2 min
-	max_co2 = 0					// CO2 max
-	min_n2 = 0					// N2 min
-	max_n2 = 0					// N2 max
+	min_oxy = 0
 	attack_sharp = 1
 	melee_damage_lower = 30
 	melee_damage_upper = 50
@@ -46,7 +38,13 @@
 
 /datum/category_item/catalogue/fauna/thrumbo
 	name = "Thrumbo"
-	desc = "TODO - thrumbo long description"
+	desc = "Thrumbo are a form of life endemic to Lythios 43c. Somewhat rare, it is theorized \
+	that Thrumbo were originally pack animals not dissimilar to Terran ungulates. Tall and muscular, Thrumbo \
+	are covered in a dense white wool. Most noticeably, Thrumbo possess an incredibly hard horn not dissimilar to a glaive. \
+	Capable of cutting clean through a human being, these vicious protrusions are most commonly used in a defensive capacity. \
+	Thrumbo are not generally aggressive, and may sometimes be domesticated for their wool. Their territorial nature can \
+	sometimes lead to hostilities if the stock lack adequate space. Unfortunately, their horns are valuable on the black market, \
+	making Thrumbo a common target for poachers."
 	value = CATALOGUER_REWARD_MEDIUM
 
 /mob/living/simple_mob/animal/thrumbo/do_special_attack(atom/A)
