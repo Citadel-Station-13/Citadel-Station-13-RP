@@ -40,9 +40,9 @@
 
 //! ## Icon/appearance vars.
 	/// Normal icon set.
-	var/icobase = 'icons/mob/species/r_human.dmi'
+	var/icobase = 'icons/mob/species/human/body.dmi'
 	/// Mutated icon set.
-	var/deform = 'icons/mob/species/r_def_human.dmi'
+	var/deform = 'icons/mob/species/human/deformed_body.dmi'
 
 	/// Part of icon_state to use for speech bubbles when talking.	See talk.dmi for available icons.
 	var/speech_bubble_appearance = "normal"

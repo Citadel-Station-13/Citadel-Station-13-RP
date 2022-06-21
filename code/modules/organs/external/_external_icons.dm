@@ -158,7 +158,7 @@ var/global/list/limb_icon_cache = list()
 		mob_icon = new /icon(force_icon, "[icon_name][gendered_icon ? "_[gender]" : ""]")
 	else
 		if(!dna)
-			mob_icon = new /icon('icons/mob/species/r_human.dmi', "[icon_name][gendered_icon ? "_[gender]" : ""]")
+			mob_icon = new /icon('icons/mob/species/human/body.dmi', "[icon_name][gendered_icon ? "_[gender]" : ""]")
 		else
 
 			if(!gendered_icon)

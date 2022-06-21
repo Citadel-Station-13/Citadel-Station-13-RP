@@ -1,8 +1,8 @@
 /datum/species/vox
 	name = SPECIES_VOX
 	name_plural = SPECIES_VOX
-	icobase = 'icons/mob/species/r_vox_old.dmi'
-	deform = 'icons/mob/species/r_def_vox_old.dmi'
+	icobase = 'icons/mob/species/vox/body.dmi'
+	deform = 'icons/mob/species/vox/deformed_body.dmi'
 	default_language = LANGUAGE_VOX
 	language = LANGUAGE_GALCOM
 	species_language = LANGUAGE_VOX

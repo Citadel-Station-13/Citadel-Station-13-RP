@@ -46,11 +46,11 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	taste_sensitivity = TASTE_SENSITIVE
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mothpeople)
-	blurb = {"A nomadic species hailing from the southern reaches of the galaxy, Dnin-Nepids are a relatively
-	new contender to the galaxy's state of affairs. They are a peaceful, innovative people with fragile, yet nimble bodies.
-	Their appearance is not dissimilar to what certain Sol insects look like, earning them the moniker of '<b>moths</b>' by the majority.
-	While most of their kind stick to the city-ships of their fleet, more and more have migrated to the frontiers of Orion and Jargon space -
-	whether to see the world, or to pursue a new life."}
+	blurb = "A nomadic species hailing from the southern reaches of the galaxy, Dnin-Nepids are a relatively \
+	new contender to the galaxy's state of affairs. They are a peaceful, innovative people with fragile, yet nimble bodies. \
+	Their appearance is not dissimilar to what certain Sol insects look like, earning them the moniker of '<b>moths</b>' by the majority. \
+	While most of their kind stick to the city-ships of their fleet, more and more have migrated to the frontiers of Orion and Jargon space - \
+	whether to see the world, or to pursue a new life."
 
 	// slightly cooler than average
 	body_temperature = 307.15
@@ -113,27 +113,28 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	has_organ = list(
-		O_HEART =		/obj/item/organ/internal/heart,
-		O_LUNGS =		/obj/item/organ/internal/lungs,
-		O_VOICE = 		/obj/item/organ/internal/voicebox,
-		O_LIVER =		/obj/item/organ/internal/liver,
-		O_KIDNEYS =		/obj/item/organ/internal/kidneys,
-		O_BRAIN =		/obj/item/organ/internal/brain,
-		O_APPENDIX = 	/obj/item/organ/internal/appendix,
-		O_SPLEEN = 		/obj/item/organ/internal/spleen,
-		O_EYES =		/obj/item/organ/internal/eyes,
-		O_STOMACH =		/obj/item/organ/internal/stomach,
-		O_INTESTINE =	/obj/item/organ/internal/intestine
-		)
+		O_HEART     = /obj/item/organ/internal/heart,
+		O_LUNGS     = /obj/item/organ/internal/lungs,
+		O_VOICE     = /obj/item/organ/internal/voicebox,
+		O_LIVER     = /obj/item/organ/internal/liver,
+		O_KIDNEYS   = /obj/item/organ/internal/kidneys,
+		O_BRAIN     = /obj/item/organ/internal/brain,
+		O_APPENDIX  = /obj/item/organ/internal/appendix,
+		O_SPLEEN    = /obj/item/organ/internal/spleen,
+		O_EYES      = /obj/item/organ/internal/eyes,
+		O_STOMACH   = /obj/item/organ/internal/stomach,
+		O_INTESTINE = /obj/item/organ/internal/intestine,
+	)
+
+	inherent_verbs = list(
+		/mob/living/proc/flying_toggle,
+		/mob/living/proc/start_wings_hovering,
+		/mob/living/carbon/human/proc/tie_hair,
+	)
 
 	color_mult = 1
 	// todo: replace with proper name
 	wikilink="https://citadel-station.net/wikiRP/index.php?title=Race:_Dnin-Nepids"
-	inherent_verbs = list(
-		/mob/living/proc/flying_toggle,
-		/mob/living/proc/start_wings_hovering,
-		/mob/living/carbon/human/proc/tie_hair
- 		)
 
 // todo: cataloguer rework when
 /datum/category_item/catalogue/fauna/mothpeople

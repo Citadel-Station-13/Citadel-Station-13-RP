@@ -46,7 +46,7 @@
 	if(isnull(id))
 		id = ckey(name)
 
-/datum/language/proc/get_random_name(var/gender, name_count=2, syllable_count=4, syllable_divisor=2)
+/datum/language/proc/get_random_name(gender, name_count=2, syllable_count=4, syllable_divisor=2)
 	if(!syllables || !syllables.len)
 		if(gender==FEMALE)
 			return capitalize(pick(first_names_female)) + " " + capitalize(pick(last_names))
@@ -64,7 +64,7 @@
 
 	return "[trim(full_name)]"
 
-/datum/language/proc/scramble(var/input, var/list/known_languages)
+/datum/language/proc/scramble(input, list/known_languages)
 	var/understand_chance = 0
 	for(var/datum/language/L in known_languages)
 		if(partial_understanding && partial_understanding[L.name])
@@ -99,7 +99,7 @@
 
 	return scrambled_text
 
-/datum/language/proc/scramble_word(var/input)
+/datum/language/proc/scramble_word(input)
 	if(!syllables || !syllables.len)
 		return stars(input)
 

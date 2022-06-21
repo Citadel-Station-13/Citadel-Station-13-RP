@@ -3188,7 +3188,7 @@
 //going to have to re-integrate this with surgery
 //let the icon_state hold an icon preview for now
 /datum/sprite_accessory/skin
-	icon = 'icons/mob/species/r_human.dmi'
+	icon = 'icons/mob/species/human/body.dmi'
 
 	human
 		name = "Default human skin"
