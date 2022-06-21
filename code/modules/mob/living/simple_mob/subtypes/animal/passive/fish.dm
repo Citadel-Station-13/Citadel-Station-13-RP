@@ -21,7 +21,7 @@
 
 	holder_type = /obj/item/holder/fish
 
-	meat_amount = 1
+	meat_amount = 2
 	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat/fish
 	bone_amount = 1
 
