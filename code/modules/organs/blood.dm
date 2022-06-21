@@ -305,8 +305,9 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 					return D
 	return res
 
-proc/blood_incompatible(donor,receiver,donor_species,receiver_species)
-	if(!donor || !receiver) return 0
+/proc/blood_incompatible(donor,receiver,donor_species,receiver_species)
+	if(!donor || !receiver)
+		return FALSE
 
 	if(donor_species && receiver_species)
 		if(donor_species != receiver_species)
