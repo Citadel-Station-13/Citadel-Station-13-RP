@@ -216,7 +216,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 				else
 					pref.body_descriptors[entry] = clamp(last_descriptors[entry], 1, LAZYLEN(descriptor.standalone_value_descriptors))
 
-	return
+	// set stuff up
+	character.fixblood()
 
 /datum/category_item/player_setup_item/general/body/content(var/mob/user)
 	. = list()
