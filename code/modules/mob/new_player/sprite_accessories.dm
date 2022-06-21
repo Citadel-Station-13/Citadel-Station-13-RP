@@ -3190,31 +3190,32 @@
 /datum/sprite_accessory/skin
 	icon = 'icons/mob/species/human/body.dmi'
 
-	human
-		name = "Default human skin"
-		icon_state = "default"
-		species_allowed = list(SPECIES_HUMAN,SPECIES_HUMAN_VATBORN)
+/datum/sprite_accessory/skin/human
+	name = "Default human skin"
+	icon_state = "default"
+	species_allowed = list(SPECIES_HUMAN, SPECIES_HUMAN_VATBORN)
 
-	human_tatt01
-		name = "Tatt01 human skin"
-		icon_state = "tatt1"
-		species_allowed = list(SPECIES_HUMAN,SPECIES_HUMAN_VATBORN)
+/datum/sprite_accessory/skin/human_tatt01
+	name = "Tatt01 human skin"
+	icon_state = "tatt1"
+	icon = 'icons/mob/species/human/tatt1.dmi'
+	species_allowed = list(SPECIES_HUMAN, SPECIES_HUMAN_VATBORN)
 
-	tajaran
-		name = "Default tajaran skin"
-		icon_state = "default"
-		icon = 'icons/mob/species/r_tajaran.dmi'
-		species_allowed = list(SPECIES_TAJ)
-		apply_restrictions = TRUE
+/datum/sprite_accessory/skin/tajaran
+	name = "Default tajaran skin"
+	icon_state = "default"
+	icon = 'icons/mob/species/tajaran/body.dmi'
+	species_allowed = list(SPECIES_TAJ)
+	apply_restrictions = TRUE
 
-	unathi
-		name = "Default Unathi skin"
-		icon_state = "default"
-		icon = 'icons/mob/species/r_lizard.dmi'
-		species_allowed = list(SPECIES_UNATHI)
+/datum/sprite_accessory/skin/unathi
+	name = "Default Unathi skin"
+	icon_state = "default"
+	icon = 'icons/mob/species/unathi/body.dmi'
+	species_allowed = list(SPECIES_UNATHI)
 
-	skrell
-		name = "Default skrell skin"
-		icon_state = "default"
-		icon = 'icons/mob/species/r_skrell.dmi'
-		species_allowed = list(SPECIES_SKRELL)
+/datum/sprite_accessory/skin/skrell
+	name = "Default skrell skin"
+	icon_state = "default"
+	icon = 'icons/mob/species/skrell/body.dmi'
+	species_allowed = list(SPECIES_SKRELL)
