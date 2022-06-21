@@ -297,8 +297,12 @@
 		if(H.cl == user.client)
 			holder = H
 			break
-	if(!holder) return
+	if(!holder)
+		return
 	var/list/pa = params2list(params)
+	
+	if(!get_turf(object))
+		return
 
 	switch(buildmode)
 		if(1) // Basic Build
