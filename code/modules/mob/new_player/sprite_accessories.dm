@@ -2091,7 +2091,7 @@
 */
 
 /datum/sprite_accessory/marking
-	icon = "icons/mob/species/markings.dmi"
+	icon = "icons/mob/sprite_accessories/markings.dmi"
 	do_colouration = 1 //Almost all of them have it, COLOR_ADD
 	color_blend_mode = ICON_ADD
 
@@ -2172,7 +2172,6 @@
 	tanlines
 		name = "Tan Lines (One Piece, F)"
 		icon_state = "tan_op"
-		icon = "icons/mob/species/markings.dmi"
 		body_parts = list(BP_TORSO,BP_GROIN)
 
 	tanlines_m
@@ -2438,7 +2437,7 @@
 		body_parts = list(BP_HEAD)
 
 /datum/sprite_accessory/marking/vr_special
-	icon = 'icons/mob/species/markings_vr.dmi'
+	icon = 'icons/mob/sprite_accessories/markings_vr.dmi'
 
 	abomination
 		name = "Abomination"
@@ -2453,7 +2452,7 @@
 		body_parts = list(BP_HEAD)
 
 /datum/sprite_accessory/marking/vr
-	icon = 'icons/mob/species/markings_vr.dmi'
+	icon = 'icons/mob/sprite_accessories/markings_vr.dmi'
 
 	vulp_belly
 		name = "belly fur (Vulp)"

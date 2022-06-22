@@ -1,48 +1,50 @@
 /datum/species/teshari
 	name = SPECIES_TESHARI
 	name_plural = "Tesharii"
-	blurb = "A race of feathered raptors who developed alongside the Skrell, inhabiting \
-	the polar tundral regions outside of Skrell territory. Extremely fragile, they developed \
-	hunting skills that emphasized taking out their prey without themselves getting hit."
+	id = SPECIES_ID_TESHARI
+
+	blurb = {"
+	A race of feathered raptors who developed alongside the Skrell, inhabiting
+	the polar tundral regions outside of Skrell territory.  Extremely fragile, they developed
+	hunting skills that emphasized taking out their prey without themselves getting hit.
+	"}
+
+	icobase           = 'icons/mob/species/teshari/body.dmi'
+	deform            = 'icons/mob/species/teshari/deformed_body.dmi'
+	damage_mask       = 'icons/mob/species/teshari/damage_mask.dmi'
+	blood_mask        = 'icons/mob/species/teshari/blood_mask.dmi'
+	damage_overlays   = 'icons/mob/species/teshari/damage_overlay.dmi'
+	suit_storage_icon = 'icons/mob/clothing/species/teshari/belt_mirror.dmi'
+
+	fire_icon_state = "generic" // Humanoid is too big for them and spriting a new one is really annoying.
+	tail = "teshtail"
+	tail_hair = "feathers"
+	icobase_tail = 1
 
 	num_alternate_languages = 3
-	secondary_langs = list(LANGUAGE_SCHECHI, LANGUAGE_SKRELLIAN)
-	name_language = LANGUAGE_SCHECHI
+	name_language    = LANGUAGE_SCHECHI
 	species_language = LANGUAGE_SCHECHI
+	secondary_langs  = list(LANGUAGE_SCHECHI, LANGUAGE_SKRELLIAN)
 
-	max_age = 75
-
-	economic_modifier = 6
-
-	health_hud_intensity = 3
-
-	male_cough_sounds   = list('sound/effects/mob_effects/tesharicougha.ogg','sound/effects/mob_effects/tesharicoughb.ogg')
-	female_cough_sounds = list('sound/effects/mob_effects/tesharicougha.ogg','sound/effects/mob_effects/tesharicoughb.ogg')
+	male_cough_sounds   = list('sound/effects/mob_effects/tesharicougha.ogg', 'sound/effects/mob_effects/tesharicoughb.ogg')
+	female_cough_sounds = list('sound/effects/mob_effects/tesharicougha.ogg', 'sound/effects/mob_effects/tesharicoughb.ogg')
 	male_sneeze_sound   = 'sound/effects/mob_effects/tesharisneeze.ogg'
 	female_sneeze_sound = 'sound/effects/mob_effects/tesharisneeze.ogg'
 	male_scream_sound   = 'sound/effects/mob_effects/teshariscream.ogg'
 	female_scream_sound = 'sound/effects/mob_effects/teshariscream.ogg'
 
+	max_age = 75
+	economic_modifier = 6
+	health_hud_intensity = 3
+
+	color_mult   = 1
 	blood_color = "#D514F7"
 	flesh_color = "#5F7BB0"
 	base_color  = "#001144"
-	tail = "teshtail"
-//	tail_hair = "feathers"
+
 	reagent_tag = IS_TESHARI
 	meat_type   = /obj/item/reagent_containers/food/snacks/meat/chicken/teshari
-
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/paw
-
-	icobase           = 'icons/mob/species/r_teshari_vr.dmi'
-	deform            = 'icons/mob/species/r_teshari_vr.dmi'
-	damage_mask       = 'icons/mob/species/masks/dam_mask_teshari.dmi'
-	blood_mask        = 'icons/mob/species/masks/blood_teshari.dmi'
-	damage_overlays   = 'icons/mob/species/masks/dam_teshari.dmi'
-	suit_storage_icon = 'icons/mob/clothing/species/teshari/belt_mirror.dmi'
-	fire_icon_state = "generic" // Humanoid is too big for them and spriting a new one is really annoying.
-
-	icobase_tail = 1
-	color_mult   = 1
 
 	slowdown          = -0.5
 	snow_movement     = -1 // Ignores light snow
@@ -136,10 +138,10 @@
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/sonar_ping,
+		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/proc/hide,
 		/mob/living/proc/shred_limb,
 		/mob/living/proc/toggle_pass_table,
-		/mob/living/carbon/human/proc/tie_hair,
 	)
 
 	descriptors = list(

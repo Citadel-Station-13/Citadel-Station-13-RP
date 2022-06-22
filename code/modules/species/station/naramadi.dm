@@ -1,4 +1,4 @@
-/datum/species/sergal
+/datum/species/naramadi
 	name = SPECIES_SERGAL
 	name_plural = "Naramadi"
 	icobase = 'icons/mob/species/naramadi/body.dmi'

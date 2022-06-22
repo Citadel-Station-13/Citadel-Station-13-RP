@@ -1,21 +1,36 @@
 /datum/species/alraune
 	name = SPECIES_ALRAUNE
 	name_plural = "Alraunes"
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
-	num_alternate_languages = 3 //cit lore change
+
+	icobase = 'icons/mob/species/human/body_greyscale.dmi'
+	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
+
+	blurb = {"
+	Alraunes are an uncommon sight in space. Their bodies are reminiscent of that of plants, and yet they share many
+	traits with other humanoid beings, occasionally mimicking their forms to lure in prey.
+
+	Most Alraune are rather opportunistic in nature, being primarily self-serving; however, this does not mean they
+	are selfish or unable to empathise with others.
+
+	They are highly adaptable both mentally and physically, but tend to have a collecting intra-species mindset.
+	"}
+
+	num_alternate_languages = 3
 	language = LANGUAGE_VERNAL
 	species_language = LANGUAGE_VERNAL
+
 	slowdown = 1 //slow, they're plants. Not as slow as full diona.
 	total_health = 100 //standard
-	brute_mod = 1 //nothing special
-	burn_mod = 1.5 //plants don't like fire
-	radiation_mod = 0.7 //cit change: plants seem to be pretty resilient. shouldn't come up much.
 	metabolic_rate = 0.75 // slow metabolism
+
+	brute_mod     = 1    //nothing special
+	burn_mod      = 1.5  //plants don't like fire
+	radiation_mod = 0.7  //cit change: plants seem to be pretty resilient. shouldn't come up much.
+
 	item_slowdown_mod = 0.25 //while they start slow, they don't get much slower
 	bloodloss_rate = 0.1 //While they do bleed, they bleed out VERY slowly
-	max_age = 500 //cit lore change
+	max_age = 500
 	health_hud_intensity = 1.5
-	base_species = SPECIES_ALRAUNE
 	selects_bodytype = TRUE
 
 	body_temperature = T20C
@@ -25,14 +40,14 @@
 
 	// Heat and cold resistances are 20 degrees broader on the level 1 range, level 2 is default, level 3 is much weaker, halfway between L2 and normal L3.
 	// Essentially, they can tolerate a broader range of comfortable temperatures, but suffer more at extremes.
-	cold_level_1 = 240 //Default 260 - Lower is better
-	cold_level_2 = 200 //Default 200
-	cold_level_3 = 160 //Default 120
+	cold_level_1 = 240
+	cold_level_2 = 200
+	cold_level_3 = 160
 	cold_discomfort_level = 260	//they start feeling uncomfortable around the point where humans take damage
 
-	heat_level_1 = 380 //Default 360 - Higher is better
-	heat_level_2 = 400 //Default 400
-	heat_level_3 = 700 //Default 1000
+	heat_level_1 = 380
+	heat_level_2 = 400
+	heat_level_3 = 700
 	heat_discomfort_level = 360
 
 	breath_cold_level_1 = 240 //They don't have lungs, they breathe through their skin
@@ -43,9 +58,16 @@
 	breath_heat_level_2 = 450
 	breath_heat_level_3 = 800 //lower incineration threshold though
 
-	spawn_flags = SPECIES_CAN_JOIN
 	flags = NO_SCAN | IS_PLANT | NO_MINOR_CUT
+	spawn_flags = SPECIES_CAN_JOIN
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+
+	unarmed_types = list(
+		/datum/unarmed_attack/stomp,
+		/datum/unarmed_attack/kick,
+		/datum/unarmed_attack/punch,
+		/datum/unarmed_attack/bite,
+	)
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/succubus_drain,
@@ -54,67 +76,65 @@
 		/mob/living/carbon/human/proc/bloodsuck,
 		/mob/living/carbon/human/proc/regenerate,
 		/mob/living/carbon/human/proc/alraune_fruit_select,
-		/mob/living/carbon/human/proc/tie_hair
-		) //Give them the voremodes related to wrapping people in vines and sapping their fluids
+		/mob/living/carbon/human/proc/tie_hair,
+	) //Give them the voremodes related to wrapping people in vines and sapping their fluids
 
-	color_mult = 1
-	icobase = 'icons/mob/species/r_human_vr.dmi'
-	deform = 'icons/mob/species/r_def_human_vr.dmi'
+	color_mult  = 1
 	flesh_color = "#9ee02c"
 	blood_color = "#edf4d0" //sap!
-	base_color = "#1a5600"
+	base_color  = "#1a5600"
 
 	reagent_tag = IS_ALRAUNE
 
-	blurb = "Alraunes are an uncommon sight in space. Their bodies are reminiscent of that of plants, and yet they share many\
-	traits with other humanoid beings, occasionally mimicking their forms to lure in prey.\
-	\
-	Most Alraune are rather opportunistic in nature, being primarily self-serving; however, this does not mean they are selfish or unable to empathise with others.\
-	\
-	They are highly adaptable both mentally and physically, but tend to have a collecting intra-species mindset."
-
-	has_limbs = list(
-		BP_TORSO =  list("path" = /obj/item/organ/external/chest/unbreakable/plant),
-		BP_GROIN =  list("path" = /obj/item/organ/external/groin/unbreakable/plant),
-		BP_HEAD =   list("path" = /obj/item/organ/external/head/unbreakable/plant),
-		BP_L_ARM =  list("path" = /obj/item/organ/external/arm/unbreakable/plant),
-		BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/unbreakable/plant),
-		BP_L_LEG =  list("path" = /obj/item/organ/external/leg/unbreakable/plant),
-		BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right/unbreakable/plant),
+	has_limbs = list( //cit change - unbreakable, can survive decapitation, but damage spreads to nearby neighbors when at max dmg.
+		BP_TORSO  = list("path" = /obj/item/organ/external/chest/unbreakable/plant),
+		BP_GROIN  = list("path" = /obj/item/organ/external/groin/unbreakable/plant),
+		BP_HEAD   = list("path" = /obj/item/organ/external/head/unbreakable/plant),
+		BP_L_ARM  = list("path" = /obj/item/organ/external/arm/unbreakable/plant),
+		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right/unbreakable/plant),
+		BP_L_LEG  = list("path" = /obj/item/organ/external/leg/unbreakable/plant),
+		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right/unbreakable/plant),
 		BP_L_HAND = list("path" = /obj/item/organ/external/hand/unbreakable/plant),
 		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/unbreakable/plant),
 		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/unbreakable/plant),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/unbreakable/plant) //cit change - unbreakable, can survive decapitation, but damage spreads to nearby neighbors when at max dmg.
-		)
+		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/unbreakable/plant),
+	)
 
 	// limited organs, 'cause they're simple
 	has_organ = list(
-		O_LIVER =    /obj/item/organ/internal/liver/alraune,
-		O_KIDNEYS =  /obj/item/organ/internal/kidneys/alraune,
-		O_BRAIN =    /obj/item/organ/internal/brain/alraune,
-		O_EYES =     /obj/item/organ/internal/eyes/alraune,
-		O_FRUIT =    /obj/item/organ/internal/fruitgland,
-		)
+		O_LIVER   = /obj/item/organ/internal/liver/alraune,
+		O_KIDNEYS = /obj/item/organ/internal/kidneys/alraune,
+		O_BRAIN   = /obj/item/organ/internal/brain/alraune,
+		O_EYES    = /obj/item/organ/internal/eyes/alraune,
+		O_FRUIT   = /obj/item/organ/internal/fruitgland,
+	)
 
 /datum/species/alraune/can_breathe_water()
 	return TRUE //eh, why not? Aquatic plants are a thing.
 
 
-/datum/species/alraune/handle_environment_special(var/mob/living/carbon/human/H)
+/datum/species/alraune/handle_environment_special(mob/living/carbon/human/H)
 	if(H.inStasisNow()) // if they're in stasis, they won't need this stuff.
 		return
 
-	//setting these here 'cause ugh the defines for life are in the wrong place to compile properly
-	//set them back to HUMAN_MAX_OXYLOSS if we move the life defines to the defines folder at any point
-	var/ALRAUNE_MAX_OXYLOSS = 1 //Defines how much oxyloss humans can get per tick. A tile with no air at all (such as space) applies this value, otherwise it's a percentage of it.
-	var/ALRAUNE_CRIT_MAX_OXYLOSS = ( 2.0 / 6) //The amount of damage you'll get when in critical condition. We want this to be a 5 minute deal = 300s. There are 50HP to get through, so (1/6)*last_tick_duration per second. Breaths however only happen every 4 ticks. last_tick_duration = ~2.0 on average
+	//? Setting these here 'cause ugh the defines for life are in the wrong place to compile properly.
+	//? Set them back to HUMAN_MAX_OXYLOSS if we move the life defines to the defines folder at any point.
+
+	/// Defines how much oxyloss humans can get per tick. A tile with no air at all (such as space) applies this value, otherwise it's a percentage of it.
+	var/ALRAUNE_MAX_OXYLOSS = 1
+	/// The amount of damage you'll get when in critical condition. We want this to be a 5 minute deal = 300s.
+	/// There are 50HP to get through, so (1/6)*last_tick_duration per second.
+	///Breaths however only happen every 4 ticks. last_tick_duration = ~2.0 on average.
+	var/ALRAUNE_CRIT_MAX_OXYLOSS = (2.0 / 6)
 
 	//They don't have lungs so breathe() will just return. Instead, they breathe through their skin.
 	//This is mostly normal breath code with some tweaks that apply to their particular biology.
 
 	var/datum/gas_mixture/breath = null
-	var/fullysealed = FALSE //if they're wearing a fully sealed suit, their internals take priority.
-	var/environmentalair = FALSE //if no sealed suit, internals take priority in low pressure environements
+	/// If they're wearing a fully sealed suit, their internals take priority.
+	var/fullysealed = FALSE
+	/// If no sealed suit, internals take priority in low pressure environements.
+	var/environmentalair = FALSE
 
 	if(H.wear_suit && (H.wear_suit.min_pressure_protection = 0) && H.head && (H.head.min_pressure_protection = 0))
 		fullysealed = TRUE
@@ -317,77 +337,6 @@
 	breath.update_values()
 	return 1
 
-/obj/item/organ/internal/brain/alraune
-	icon = 'icons/mob/clothing/species/alraune/organs.dmi'
-	icon_state = "neurostroma"
-	name = "neuro-stroma"
-	desc = "A knot of fibrous plant matter."
-	parent_organ = BP_TORSO // brains in their core
-
-/obj/item/organ/internal/eyes/alraune
-	icon = 'icons/mob/clothing/species/alraune/organs.dmi'
-	icon_state = "photoreceptors"
-	name = "photoreceptors"
-	desc = "Bulbous and fleshy plant matter."
-
-/obj/item/organ/internal/kidneys/alraune
-	icon = 'icons/mob/clothing/species/alraune/organs.dmi'
-	icon_state = "rhyzofilter"
-	name = "rhyzofilter"
-	desc = "A tangle of root nodules."
-
-/obj/item/organ/internal/liver/alraune
-	icon = 'icons/mob/clothing/species/alraune/organs.dmi'
-	icon_state = "phytoextractor"
-	name = "enzoretector"
-	desc = "A bulbous gourd-like structure."
-
-//Begin fruit gland and its code.
-/obj/item/organ/internal/fruitgland //Amazing name, I know.
-	icon = 'icons/mob/clothing/species/alraune/organs.dmi'
-	icon_state = "phytoextractor"
-	name = "fruit gland"
-	desc = "A bulbous gourd-like structure."
-	organ_tag = O_FRUIT
-	var/generated_reagents = list("sugar" = 2) //This actually allows them. This could be anything, but sugar seems most fitting.
-	var/usable_volume = 250 //Five fruit.
-	var/transfer_amount = 50
-	var/empty_message = list("Your have no fruit on you.", "You have a distinct lack of fruit..")
-	var/full_message = list("You have a multitude of fruit that is ready for harvest!", "You have fruit that is ready to be picked!")
-	var/emote_descriptor = list("fruit right off of the Alraune!", "a fruit from the Alraune!")
-	var/verb_descriptor = list("grabs", "snatches", "picks")
-	var/self_verb_descriptor = list("grab", "snatch", "pick")
-	var/short_emote_descriptor = list("picks", "grabs")
-	var/self_emote_descriptor = list("grab", "pick", "snatch")
-	var/fruit_type = "apple"
-	var/mob/organ_owner = null
-	var/gen_cost = 0.5
-
-/obj/item/organ/internal/fruitgland/Initialize(mapload)
-	. = ..()
-	create_reagents(usable_volume)
-
-/obj/item/organ/internal/fruitgland/process(delta_time)
-	if(!owner) return
-	var/obj/item/organ/external/parent = owner.get_organ(parent_organ)
-	var/before_gen
-	if(parent && generated_reagents && organ_owner) //Is it in the chest/an organ, has reagents, and is 'activated'
-		before_gen = reagents.total_volume
-		if(reagents.total_volume < reagents.maximum_volume)
-			if(organ_owner.nutrition >= gen_cost)
-				do_generation()
-
-	if(reagents)
-		if(reagents.total_volume == reagents.maximum_volume * 0.05)
-			to_chat(organ_owner, "<span class='notice'>[pick(empty_message)]</span>")
-		else if(reagents.total_volume == reagents.maximum_volume && before_gen < reagents.maximum_volume)
-			to_chat(organ_owner, "<span class='warning'>[pick(full_message)]</span>")
-
-/obj/item/organ/internal/fruitgland/proc/do_generation()
-	organ_owner.nutrition -= gen_cost
-	for(var/reagent in generated_reagents)
-		reagents.add_reagent(reagent, generated_reagents[reagent])
-
 
 /mob/living/carbon/human/proc/alraune_fruit_select() //So if someone doesn't want fruit/vegetables, they don't have to select one.
 	set name = "Select Fruit"
@@ -409,7 +358,7 @@
 		fruit_gland.emote_descriptor = list("fruit right off of [fruit_gland.organ_owner]!", "a fruit from [fruit_gland.organ_owner]!")
 
 	else
-		to_chat(src, "<span class='notice'>You lack the organ required to produce fruit.</span>")
+		to_chat(src, SPAN_NOTICE("You lack the organ required to produce fruit."))
 		return
 
 /mob/living/carbon/human/proc/alraune_fruit_pick()
@@ -432,7 +381,7 @@
 			break
 	if (fruit_gland) //Do they have the gland?
 		if(fruit_gland.reagents.total_volume < fruit_gland.transfer_amount)
-			to_chat(src, "<span class='notice'>[pick(fruit_gland.empty_message)]</span>")
+			to_chat(src, SPAN_NOTICE("[pick(fruit_gland.empty_message)]"))
 			return
 
 		var/datum/seed/S = SSplants.seeds["[fruit_gland.fruit_type]"]
@@ -444,11 +393,15 @@
 			var/emote = fruit_gland.emote_descriptor[index]
 			var/verb_desc = fruit_gland.verb_descriptor[index]
 			var/self_verb_desc = fruit_gland.self_verb_descriptor[index]
-			usr.visible_message("<span class='notice'>[usr] [verb_desc] [emote]</span>",
-							"<span class='notice'>You [self_verb_desc] [emote]</span>")
+			usr.visible_message(
+				SPAN_NOTICE("[usr] [verb_desc] [emote]"),
+				SPAN_NOTICE("You [self_verb_desc] [emote]"),
+			)
 		else
-			visible_message("<span class='notice'>[src] [pick(fruit_gland.short_emote_descriptor)] a fruit.</span>",
-								"<span class='notice'>You [pick(fruit_gland.self_emote_descriptor)] a fruit.</span>")
+			visible_message(
+				SPAN_NOTICE("[src] [pick(fruit_gland.short_emote_descriptor)] a fruit."),
+				SPAN_NOTICE("You [pick(fruit_gland.self_emote_descriptor)] a fruit."),
+			)
 
 		fruit_gland.reagents.remove_any(fruit_gland.transfer_amount)
 

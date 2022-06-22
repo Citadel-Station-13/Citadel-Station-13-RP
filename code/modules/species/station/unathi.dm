@@ -2,11 +2,24 @@
 	name = SPECIES_UNATHI
 	name_plural = SPECIES_UNATHI
 	primitive_form = SPECIES_MONKEY_UNATHI
-	icobase = 'icons/mob/species/r_lizard_vr.dmi'
-	deform = 'icons/mob/species/r_def_lizard_vr.dmi'
 
+	// icon_template = 'icons/mob/species/template_tall.dmi' //TODO: Tall Unathi :D
+	icobase       = 'icons/mob/species/unathi/body_greyscale.dmi'
+	deform        = 'icons/mob/species/unathi/deformed_body_greyscale.dmi'
+	husk_icon     = 'icons/mob/species/unathi/husk.dmi'
+	preview_icon  = 'icons/mob/species/unathi/preview.dmi'
 	tail = "sogtail"
-	tail_animation = 'icons/mob/clothing/species/unathi/tail_vr.dmi'
+	tail_animation = 'icons/mob/species/unathi/tail_greyscale.dmi'
+
+	blurb = {"
+	A heavily reptillian species, Unathi hail from the Uuosa-Eso system, which roughly translates to 'burning mother'.
+
+	Coming from a harsh, inhospitable planet, they mostly hold ideals of honesty, virtue, proficiency and bravery above
+	all else, frequently even their own lives. They prefer warmer temperatures than most species and their native tongue
+	is a heavy hissing laungage called Sinta'Unathi.
+	"}
+	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Unathi"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/unathi)
 
 	num_alternate_languages = 3
 	name_language    = LANGUAGE_UNATHI
@@ -15,13 +28,16 @@
 
 	ambiguous_genders = TRUE
 	gluttonous = 1
-	slowdown = 0.5
-	
-	total_health = 125
-	brute_mod = 0.85
-	burn_mod = 1
-	metabolic_rate = 0.85
+
 	item_slowdown_mod = 0.25
+
+	total_health = 125
+
+	slowdown  = 0.5
+	brute_mod = 0.8
+	flash_mod = 1.2
+
+	metabolic_rate = 0.85
 	mob_size = MOB_LARGE
 	blood_volume = 840
 	health_hud_intensity = 2.5
@@ -29,13 +45,6 @@
 	max_age = 260
 
 	economic_modifier = 10
-
-	blurb = "A heavily reptillian species, Unathi hail from the \
-	Uuosa-Eso system, which roughly translates to 'burning mother'.<br/><br/>Coming from a harsh, inhospitable \
-	planet, they mostly hold ideals of honesty, virtue, proficiency and bravery above all \
-	else, frequently even their own lives. They prefer warmer temperatures than most species and \
-	their native tongue is a heavy hissing laungage called Sinta'Unathi."
-	catalogue_data = list(/datum/category_item/catalogue/fauna/unathi)
 
 	cold_level_1 = 280
 	cold_level_2 = 220
@@ -60,9 +69,11 @@
 	spawn_flags = SPECIES_CAN_JOIN // Species_can_join is the only spawn flag all the races get, so that none of them will be whitelist only if whitelist is enabled.
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
+	color_mult  = 1
 	flesh_color = "#34AF10"
-	blood_color = "#b3cbc3"
+	blood_color = "#f24b2e"
 	base_color  = "#066000"
+	organs_icon = 'icons/mob/species/unathi/organs.dmi'
 
 	reagent_tag = IS_UNATHI
 
@@ -79,8 +90,8 @@
 		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
 		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
 		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
-		)
+		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
+	)
 
 	//No kidneys or appendix
 	has_organ = list(
@@ -90,8 +101,8 @@
 		O_BRAIN     = /obj/item/organ/internal/brain/unathi,
 		O_EYES      = /obj/item/organ/internal/eyes,
 		O_STOMACH   = /obj/item/organ/internal/stomach/unathi,
-		O_INTESTINE = /obj/item/organ/internal/intestine/unathi
-		)
+		O_INTESTINE = /obj/item/organ/internal/intestine/unathi,
+	)
 
 	unarmed_types = list(
 		/datum/unarmed_attack/stomp,
@@ -116,9 +127,6 @@
 
 	descriptors = list()
 
-	color_mult = 1
-	gluttonous = 0
-	wikilink="https://citadel-station.net/wikiRP/index.php?title=Unathi"
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair,

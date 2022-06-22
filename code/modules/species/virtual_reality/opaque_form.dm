@@ -22,10 +22,10 @@
 
 /datum/species/shapeshifter/promethean/avatar/unathi
 	name = SPECIES_VR_UNATHI
-	icobase = 'icons/mob/species/r_lizard.dmi'
-	deform = 'icons/mob/species/r_def_lizard.dmi'
+	icobase = 'icons/mob/species/unathi/body_greyscale.dmi'
+	deform  = 'icons/mob/species/unathi/deformed_body_greyscale.dmi'
 	tail = "sogtail"
-	tail_animation = 'icons/mob/clothing/species/unathi/tail.dmi'
+	tail_animation = 'icons/mob/species/unathi/tail_greyscale.dmi'
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 	has_limbs = list(
 		BP_TORSO  = list("path" = /obj/item/organ/external/chest/unathi),
@@ -43,10 +43,10 @@
 
 /datum/species/shapeshifter/promethean/avatar/tajaran
 	name = "Virtual Reality Tajaran"
-	icobase = 'icons/mob/species/r_tajaran.dmi'
-	deform = 'icons/mob/species/r_def_tajaran.dmi'
+	icobase = 'icons/mob/species/tajaran/body_greyscale.dmi'
+	deform  = 'icons/mob/species/tajaran/deformed_body_greyscale.dmi'
 	tail = "tajtail"
-	tail_animation = 'icons/mob/clothing/species/tajaran/tail.dmi'
+	tail_animation = 'icons/mob/species/tajaran/tail_greyscale.dmi'
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 	has_limbs = list(
 		BP_TORSO  = list("path" = /obj/item/organ/external/chest),
@@ -64,8 +64,8 @@
 
 /datum/species/shapeshifter/promethean/avatar/skrell
 	name = SPECIES_VR_SKRELL
-	icobase = 'icons/mob/species/r_skrell.dmi'
-	deform = 'icons/mob/species/r_def_skrell.dmi'
+	icobase = 'icons/mob/species/skrell/body_greyscale.dmi'
+	deform  = 'icons/mob/species/skrell/deformed_body_greyscale.dmi'
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR
 	has_limbs = list(
 		BP_TORSO  = list("path" = /obj/item/organ/external/chest),
@@ -83,8 +83,8 @@
 
 /datum/species/shapeshifter/promethean/avatar/teshari
 	name = SPECIES_VR_TESHARI
-	icobase = 'icons/mob/species/r_teshari.dmi'
-	deform = 'icons/mob/species/r_teshari.dmi'
+	icobase = 'icons/mob/species/teshari/body.dmi'
+	deform  = 'icons/mob/species/teshari/deformed_body.dmi'
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 	has_limbs = list(
 		BP_TORSO  = list("path" = /obj/item/organ/external/chest),
@@ -102,9 +102,9 @@
 
 /datum/species/shapeshifter/promethean/avatar/diona
 	name = SPECIES_VR_DIONA
-	icobase = 'icons/mob/species/r_diona.dmi'
-	deform = 'icons/mob/species/r_def_plant.dmi'
-	species_appearance_flags = 0
+	icobase = 'icons/mob/species/diona/body.dmi'
+	deform  = 'icons/mob/species/diona/deformed_body.dmi'
+	species_appearance_flags = NONE
 	has_limbs = list(
 		BP_TORSO  = list("path" = /obj/item/organ/external/diona/chest),
 		BP_GROIN  = list("path" = /obj/item/organ/external/diona/groin),
@@ -121,13 +121,13 @@
 
 /datum/species/shapeshifter/promethean/avatar/monkey
 	name = SPECIES_VR_MONKEY
-	icobase = 'icons/mob/species/monkeys/r_monkey.dmi'
-	deform = 'icons/mob/species/monkeys/r_monkey.dmi'
-	damage_overlays = 'icons/mob/species/masks/dam_monkey.dmi'
-	damage_mask = 'icons/mob/species/masks/dam_mask_monkey.dmi'
-	blood_mask = 'icons/mob/species/masks/blood_monkey.dmi'
+	icobase         = 'icons/mob/species/monkey/body_monkey.dmi'
+	deform          = 'icons/mob/species/monkey/body_monkey.dmi'
+	damage_overlays = 'icons/mob/species/monkey/damage_overlay.dmi'
+	damage_mask     = 'icons/mob/species/monkey/damage_mask.dmi'
+	blood_mask      = 'icons/mob/species/monkey/blood_mask.dmi'
 	fire_icon_state = "monkey"
-	species_appearance_flags = 0
+	species_appearance_flags = NONE
 	has_limbs = list(
 		BP_TORSO  = list("path" = /obj/item/organ/external/chest),
 		BP_GROIN  = list("path" = /obj/item/organ/external/groin),
@@ -144,8 +144,8 @@
 
 /datum/species/shapeshifter/promethean/avatar/vox
 	name = SPECIES_VR_VOX
-	icobase = 'icons/mob/species/vox/body_greyscale.dmi'
-	deform = 'icons/mob/species/vox/deformed_body_greyscale.dmi'
+	icobase = 'icons/mob/species/vox/body.dmi'
+	deform  = 'icons/mob/species/vox/deformed_body.dmi'
 	species_appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR
 	has_limbs = list(
 		BP_TORSO  = list("path" = /obj/item/organ/external/chest),
@@ -163,8 +163,8 @@
 
 /datum/species/shapeshifter/promethean/avatar/skeleton
 	name = SPECIES_VR_SKELETON
-	icobase = 'icons/mob/species/r_skeleton.dmi'
-	deform = 'icons/mob/species/r_skeleton.dmi'
+	icobase = 'icons/mob/species/human/skeleton.dmi'
+	deform  = 'icons/mob/species/human/skeleton.dmi'
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 	has_limbs = list(
 		BP_TORSO  = list("path" = /obj/item/organ/external/chest),

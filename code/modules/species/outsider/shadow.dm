@@ -2,11 +2,17 @@
 	name = SPECIES_SHADOW
 	name_plural = "shadows"
 
-	icobase = 'icons/mob/species/r_shadow.dmi'
-	deform = 'icons/mob/species/r_shadow.dmi'
+	blurb = {"
+	A being of pure darkness, hates the light and all that comes with it.
+	"}
 
-	language = "Sol Common" //todo?
-	unarmed_types = list(/datum/unarmed_attack/claws/strong, /datum/unarmed_attack/bite/sharp)
+	icobase   = 'icons/mob/species/shadow/body.dmi'
+	deform    = 'icons/mob/species/shadow/body.dmi'
+	husk_icon = 'icons/mob/species/shadow/husk.dmi'
+
+	// language = "Sol Common" //todo?
+	assisted_langs = list()
+
 	light_dam = 2
 	darksight = 8
 	has_organ = list()
@@ -25,7 +31,10 @@
 
 	genders = list(NEUTER)
 
-	assisted_langs = list()
+	unarmed_types = list(
+		/datum/unarmed_attack/claws/strong,
+		/datum/unarmed_attack/bite/sharp,
+	)
 
 /datum/species/shadow/handle_death(var/mob/living/carbon/human/H)
 	spawn(1)

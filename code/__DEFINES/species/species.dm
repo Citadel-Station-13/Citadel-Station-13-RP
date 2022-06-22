@@ -2,10 +2,11 @@
  * Species IDs
  */
 #define SPECIES_ID_MOTH "moth"
-#define SPECIES_ID_MOTH_LIGHT "moth_light"
 #define SPECIES_ID_MOTH_DARK "moth_dark"
+#define SPECIES_ID_MOTH_LIGHT "moth_light"
 #define SPECIES_ID_PROMETHEAN "promethean"
-
+#define SPECIES_ID_TESHARI "teshari"
+#define SPECIES_ID_VOX "vox"
 
 //
 
@@ -40,7 +41,7 @@
 #define SPECIES_MOTH_DARK "Dnin-Nepid (Dark-Adapted)"
 #define SPECIES_MOTH_LIGHT "Dnin-Nepid (Light-Adapted)"
 #define SPECIES_NEVREAN "Nevrean"
-#define SPECIES_PLASMAMAN "Phoronoid"
+#define SPECIES_PHORONOID "Phoronoid"
 #define SPECIES_PROMETHEAN "Promethean"
 #define SPECIES_PROTEAN "Protean"
 #define SPECIES_RAPALA "Rapala"

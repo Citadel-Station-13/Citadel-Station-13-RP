@@ -1,17 +1,21 @@
 /datum/species/tajaran
 	name = SPECIES_TAJ
 	name_plural = "Tajaran"
-	icobase = 'icons/mob/species/r_tajaran_vr.dmi'
-	deform = 'icons/mob/species/r_def_tajaran_vr.dmi'
-	tail = "tajtail"
-	tail_animation = 'icons/mob/clothing/species/tajaran/tail_vr.dmi'
 
-	secondary_langs = list(LANGUAGE_SIIK, LANGUAGE_AKHANI, LANGUAGE_ALAI)
+	icobase      = 'icons/mob/species/tajaran/body.dmi'
+	deform       = 'icons/mob/species/tajaran/deformed_body.dmi'
+	preview_icon = 'icons/mob/species/tajaran/preview.dmi'
+	husk_icon    = 'icons/mob/species/tajaran/husk.dmi'
+	tail = "tajtail"
+	tail_animation = 'icons/mob/species/tajaran/tail.dmi'
+
+	num_alternate_languages = 3
 	name_language = LANGUAGE_SIIK
 	species_language = LANGUAGE_SIIK
+	secondary_langs = list(LANGUAGE_SIIK, LANGUAGE_AKHANI, LANGUAGE_ALAI)
 
 	darksight = 8
-	slowdown = -0.5
+	slowdown  = -0.5
 	snow_movement = -1 //Ignores half of light snow
 
 	brute_mod = 1.15
@@ -20,7 +24,6 @@
 
 	metabolic_rate = 1.1
 	gluttonous = 0
-	num_alternate_languages = 3
 
 	color_mult = 1
 	health_hud_intensity = 2.5
@@ -29,12 +32,14 @@
 
 	economic_modifier = 10
 
-	blurb = "The Tajaran are a mammalian species resembling roughly felines, hailing from Meralar in the Rarkajar system. \
-	While reaching to the stars independently from outside influences, the humans engaged them in peaceful trade contact \
-	and have accelerated the fledgling culture into the interstellar age. Their history is full of war and highly fractious \
-	governments, something that permeates even to today's times. They prefer colder, tundra-like climates, much like their \
-	home worlds and speak a variety of languages, especially Siik and Akhani."
+	blurb = {"
+	The Tajaran are a mammalian species resembling roughly felines, hailing from Meralar in the Rarkajar system.
 
+	While reaching to the stars independently from outside influences, the humans engaged them in peaceful trade contact
+	and have accelerated the fledgling culture into the interstellar age. Their history is full of war and highly fractious
+	governments, something that permeates even to today's times. They prefer colder, tundra-like climates, much like their
+	home worlds and speak a variety of languages, especially Siik and Akhani.
+	"}
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Tajarans"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/tajaran)
 

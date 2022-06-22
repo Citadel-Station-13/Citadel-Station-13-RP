@@ -13,7 +13,9 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	override_worn_legacy_bodytype = SPECIES_HUMAN
 
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
-	icobase = 'icons/mob/species/moth.dmi'
+
+	icobase = 'icons/mob/species/moth/body.dmi'
+	deform  = 'icons/mob/species/moth/body.dmi'
 
 	wing = "moth_plain"
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
