@@ -1,7 +1,7 @@
-//For custom heads with custom parts since the base code is restricted to a single icon file.
+//! ## Leave everything here as it is for now since this is using unique behavior.
 
+/// For custom heads with custom parts since the base code is restricted to a single icon file.
 /obj/item/organ/external/head/vr/get_icon()
-
 	..()
 	overlays.Cut()
 	if(!owner || !owner.species)

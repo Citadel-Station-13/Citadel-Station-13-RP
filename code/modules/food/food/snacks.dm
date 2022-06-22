@@ -4109,7 +4109,7 @@ END CITADEL CHANGE */
 		. = ..()
 		reagents.add_reagent("protein", 6)
 		reagents.add_reagent("batter", 1.7)
-		reagents.add_reagent("oil", 1.5)
+		reagents.add_reagent("cooking_oil", 1.5)
 		bitesize = 2
 
 /obj/item/reagent_containers/food/snacks/jalapeno_poppers
@@ -4125,7 +4125,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/jalapeno_poppers/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("batter", 2)
-	reagents.add_reagent("oil", 2)
+	reagents.add_reagent("cooking_oil", 2)
 
 /obj/item/reagent_containers/food/snacks/mouseburger
 	name = "mouse burger"
@@ -4159,7 +4159,7 @@ END CITADEL CHANGE */
 	. = ..()
 	reagents.add_reagent("protein", 6)
 	reagents.add_reagent("beerbatter", 2)
-	reagents.add_reagent("oil", 1)
+	reagents.add_reagent("cooking_oil", 1)
 	bitesize = 1.5
 
 /obj/item/reagent_containers/food/snacks/fries
@@ -4168,7 +4168,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/fries/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("oil", 1.2)//This is mainly for the benefit of adminspawning
+	reagents.add_reagent("cooking_oil", 1.2)//This is mainly for the benefit of adminspawning
 	bitesize = 2
 
 /obj/item/reagent_containers/food/snacks/microchips
@@ -4218,7 +4218,7 @@ END CITADEL CHANGE */
 	. = ..()
 	reagents.add_reagent("batter", 6.5)
 	coating = reagents.get_reagent("batter")
-	reagents.add_reagent("oil", 4)
+	reagents.add_reagent("cooking_oil", 4)
 	bitesize = 2
 
 /obj/item/reagent_containers/food/snacks/pizzacrunchslice

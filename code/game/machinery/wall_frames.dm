@@ -110,6 +110,12 @@
 	refund_amt = 1
 	build_machine_type = /obj/machinery/light_construct/small
 
+/obj/item/frame/light/fairy
+	name = "fairy light fixture frame"
+	icon_state = "fairy-construct-item"
+	refund_amt = 1
+	build_machine_type = /obj/machinery/light_construct/fairy
+
 /obj/item/frame/extinguisher_cabinet
 	name = "extinguisher cabinet frame"
 	desc = "Used for building fire extinguisher cabinets."

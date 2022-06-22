@@ -1,10 +1,3 @@
-
-/****************************************************
-				INTERNAL ORGANS DEFINES
-****************************************************/
-/obj/item/organ/internal
-	var/dead_icon // Icon to use when the organ has died.
-
 /obj/item/organ/internal/die()
 	..()
 	if((status & ORGAN_DEAD) && dead_icon)
@@ -32,10 +25,31 @@
 		if(istype(E)) E.internal_organs -= src
 	..()
 
-// Brain is defined in brain_item.dm.
-// Heart is defined in heart.dm
-// Lungs are defined in lungs.dm
-// Kidneys is defined in kidneys.dm
-// Eyes are defined in eyes.dm
-// Liver is defined in liver.dm. The process here was different than the process in liver.dm, so I just kept the one in liver.dm
-// Appendix is defined in appendix.dm
+/obj/item/organ/internal/robotize()
+	..()
+	name = "prosthetic [initial(name)]"
+	icon_state = "[initial(icon_state)]_prosthetic"
+	if(dead_icon)
+		dead_icon = "[initial(dead_icon)]_prosthetic"
+
+/obj/item/organ/internal/mechassist()
+	..()
+	name = "assisted [initial(name)]"
+	icon_state = "[initial(icon_state)]_assisted"
+	if(dead_icon)
+		dead_icon = "[initial(dead_icon)]_assisted"
+
+// Brain is defined in brain.dm
+/obj/item/organ/internal/handle_germ_effects()
+	. = ..() //Should be an interger value for infection level
+	if(!.) return
+
+	var/antibiotics = owner.chem_effects[CE_ANTIBIOTIC]
+
+	if(. >= 2 && antibiotics < ANTIBIO_NORM) //INFECTION_LEVEL_TWO
+		if (prob(3))
+			take_damage(1,silent=prob(30))
+
+	if(. >= 3 && antibiotics < ANTIBIO_OD)	//INFECTION_LEVEL_THREE
+		if (prob(50))
+			take_damage(1,silent=prob(15))

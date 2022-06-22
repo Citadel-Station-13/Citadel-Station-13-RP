@@ -2,136 +2,6 @@
 				EXTERNAL ORGANS
 ****************************************************/
 
-//These control the damage thresholds for the various ways of removing limbs
-#define DROPLIMB_THRESHOLD_EDGE 5
-#define DROPLIMB_THRESHOLD_TEAROFF 2
-#define DROPLIMB_THRESHOLD_DESTROY 1
-
-/obj/item/organ/external
-	name = "external"
-	min_broken_damage = 30
-	max_damage = 0
-	dir = SOUTH
-	organ_tag = "limb"
-
-	//* Strings *//
-	/// Fracture description if any.
-	var/broken_description
-	/// Modifier used for generating the on-mob damage overlay for this limb.
-	var/damage_state = "00"
-
-	//* Damage vars. *//
-	/// Multiplier for incoming brute damage.
-	var/brute_mod = 1
-	/// As above for burn.
-	var/burn_mod = 1
-	/// Actual current brute damage.
-	var/brute_dam = 0
-	/// Actual current burn damage.
-	var/burn_dam = 0
-	/// used in healing/processing calculations.
-	var/last_dam = -1
-	var/spread_dam = 0
-	/// If a needle has a chance to fail to penetrate.
-	var/thick_skin = 0
-	/// EMP damage multiplier
-	var/emp_mod = 1
-
-	//* Appearance vars. *//
-	/// Snowflake warning, reee. Used for slime limbs.
-	var/nonsolid
-	/// Also for slimes. Used for transparent limbs.
-	var/transparent = 0
-	/// Icon state base.
-	var/icon_name = null
-	/// Part flag
-	var/body_part = null
-	/// Used in mob overlay layering calculations.
-	var/icon_position = 0
-	/// Used when caching robolimb icons.
-	var/model
-	/// Used to force override of species-specific limb icons (for prosthetics). Also used for any limbs chopped from a simple mob, and then attached to humans.
-	var/force_icon
-	/// Used to force the override of the icon-key generated using the species. Must be used in tandem with the above.
-	var/force_icon_key
-	/// Cached icon for use in mob overlays.
-	var/icon/mob_icon
-	/// Whether or not the icon state appends a gender.
-	var/gendered_icon = 0
-	/// Skin tone.
-	var/s_tone
-	/// Skin colour
-	var/list/s_col
-	/// How the skin colour is applied.
-	var/s_col_blend = ICON_ADD
-	/// Hair colour
-	var/list/h_col
-	/// Icon blend for body hair if any.
-	var/body_hair
-	var/mob/living/applied_pressure
-	/// Markings (body_markings) to apply to the icon
-	var/list/markings = list()
-
-	//* Wound and structural data. *//
-	/// How often wounds should be updated, a higher number means less often
-	var/wound_update_accuracy = 1
-	/// Wound datum list.
-	var/list/wounds = list()
-	/// Number of wounds, which is NOT wounds.len!
-	var/number_wounds = 0
-	/// Master-limb.
-	var/obj/item/organ/external/parent
-	/// Sub-limbs.
-	var/list/children = list()
-	/// Internal organs of this body part
-	var/list/internal_organs = list()
-	/// If a prosthetic limb is emagged, it will detonate when it fails.
-	var/sabotaged = 0
-	/// Currently implanted objects.
-	var/list/implants = list()
-	/// Relative size of the organ.
-	var/organ_rel_size = 25
-	/// Chance of missing.
-	var/base_miss_chance = 20
-	var/atom/movable/splinted
-
-	//* Joint/state stuff. *//
-	/// It would be more appropriate if these two were named "affects_grasp" and "affects_stand" at this point
-	var/can_grasp
-	/// Modifies stance tally/ability to stand.
-	var/can_stand
-	/// Scarred/burned beyond recognition.
-	var/disfigured = 0
-	/// Impossible to amputate.
-	var/cannot_amputate
-	/// Impossible to fracture.
-	var/cannot_break
-	/// Impossible to gib, distinct from amputation.
-	var/cannot_gib
-	/// Descriptive string used in dislocation.
-	var/joint = "joint"
-	/// Descriptive string used in amputation.
-	var/amputation_point
-	/// If you target a joint, you can dislocate the limb, impairing it's usefulness and causing pain.
-	var/dislocated = 0
-	/// Needs to be opened with a saw to access the organs.
-	var/encased
-
-	//* Surgery vars. *//
-	var/open = 0
-	var/stage = 0
-	var/cavity = 0
-	/// Surgical repair stage for burn.
-	var/burn_stage = 0
-	/// Surgical repair stage for brute.
-	var/brute_stage = 0
-
-	/// HUD element variable, see organ_icon.dm get_damage_hud_image()
-	var/image/hud_damage_image
-
-	/// makes this dumb as fuck mechanic slightly less awful - records queued syringe infections instead of a spawn()
-	var/syringe_infection_queued
-
 /obj/item/organ/external/Destroy()
 
 	if(parent && parent.children)
@@ -1203,6 +1073,23 @@ Note that amputating the affected organ does in fact remove the infection from t
 			owner.internal_organs -= null
 		owner.refresh_modular_limb_verbs()
 	return 1
+
+//! ## VIRGO HOOK, TODO: Integrate this.
+//Sideways override for nanoform limbs (ugh)
+/obj/item/organ/external/robotize(var/company, var/skip_prosthetics = FALSE, var/keep_organs = FALSE)
+	var/original_robotic = robotic
+	if(original_robotic >= ORGAN_NANOFORM)
+		var/o_encased = encased
+		var/o_max_damage = max_damage
+		var/o_min_broken_damage = min_broken_damage
+		robotic = FALSE
+		. = ..(company = company, keep_organs = TRUE)
+		robotic = original_robotic
+		encased = o_encased
+		max_damage = o_max_damage
+		min_broken_damage = o_min_broken_damage
+	else
+		return ..()
 
 /obj/item/organ/external/proc/mutate()
 	if(src.robotic >= ORGAN_ROBOT)
