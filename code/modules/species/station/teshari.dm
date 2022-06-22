@@ -11,6 +11,7 @@
 
 	icobase           = 'icons/mob/species/teshari/body.dmi'
 	deform            = 'icons/mob/species/teshari/deformed_body.dmi'
+	preview_icon      = 'icons/mob/species/teshari/preview.dmi'
 	damage_mask       = 'icons/mob/species/teshari/damage_mask.dmi'
 	blood_mask        = 'icons/mob/species/teshari/blood_mask.dmi'
 	damage_overlays   = 'icons/mob/species/teshari/damage_overlay.dmi'
