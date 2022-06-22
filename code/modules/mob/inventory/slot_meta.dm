@@ -81,10 +81,35 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	var/allow_random_id = FALSE
 	/// our screen loc
 	var/hud_position
+	/// equip checks to use
+	var/slot_equip_checks = NONE
+	/// slot flags required to have if checking
+	var/slot_flags_required = NONE
+	/// slot flags forbidden to have if checking
+	var/slot_flags_forbidden = NONE
 
 /datum/inventory_slot_meta/New()
 	if(allow_random_id && !id)
 		id = "[++id_next]"
+
+/datum/inventory_slot_meta/proc/_equip_check(obj/item/I, mob/M, force)
+	if(slot_equip_checks & SLOT_EQUIP_CHECK_USE_FLAGS)
+		if(!CHECK_MULTIPLE_BITFIELDS(I.slot_flags, slot_flags_required))
+			return FALSE
+		if(I.slot_flags & slot_flags_forbidden)
+			return FALSE
+
+	if(slot_equip_checks & SLOT_EQUIP_CHECK_USE_PROC)
+		if(!allow_equip(I, M, force))
+			return FALSE
+
+	return TRUE
+
+/**
+ * checked if slot_equip_checks specifies to use proc
+ */
+/datum/inventory_slot_meta/proc/allow_equip(obj/item/I, mob/M, force)
+	return TRUE
 
 /datum/inventory_slot_meta/inventory
 	abstract_type = /datum/inventory_slot_meta/inventory
@@ -99,6 +124,8 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	display_name = "back"
 	display_preposition = "on"
 	hud_position = ui_back
+	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
+	slot_flags_required = SLOT_BACK
 
 /datum/inventory_slot_meta/inventory/uniform
 	name = "uniform"
@@ -107,6 +134,8 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	display_name = "body"
 	display_preposition = "on"
 	hud_position = ui_iclothing
+	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
+	slot_flags_required = SLOT_ICLOTHING
 
 /datum/inventory_slot_meta/inventory/head
 	name = "head"
@@ -117,6 +146,8 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	display_name = "head"
 	display_preposition = "on"
 	hud_position = ui_head
+	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
+	slot_flags_required = SLOT_HEAD
 
 /datum/inventory_slot_meta/inventory/suit
 	name = "outerwear"
@@ -125,6 +156,8 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	display_name = "clohtes"
 	display_preposition = "over"
 	hud_position = ui_oclothing
+	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
+	slot_flags_required = SLOT_OCLOTHING
 
 /datum/inventory_slot_meta/inventory/belt
 	name = "belt"
@@ -134,6 +167,8 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	display_name = "waist"
 	display_preposition = "on"
 	hud_position = ui_belt
+	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
+	slot_flags_required = SLOT_BELT
 
 /datum/inventory_slot_meta/inventory/pocket
 	abstract_type = /datum/inventory_slot_meta/inventory/pocket
@@ -146,6 +181,9 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	display_name = "left pocket"
 	display_preposition = "in"
 	hud_position = ui_storage1
+	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
+	slot_flags_required = SLOT_POCKET
+	slot_flags_forbidden = SLOT_DENYPOCKET
 
 /datum/inventory_slot_meta/inventory/pocket/right
 	name = "right pocket"
@@ -153,6 +191,9 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	display_name = "right pocket"
 	display_preposition = "in"
 	hud_position = ui_storage2
+	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
+	slot_flags_required = SLOT_POCKET
+	slot_flags_forbidden = SLOT_DENYPOCKET
 
 /datum/inventory_slot_meta/inventory/id
 	name = "id"
@@ -162,6 +203,8 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	display_name = "badge"
 	display_preposition = "as"
 	hud_position = ui_id
+	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
+	slot_flags_required = SLOT_ID
 
 /datum/inventory_slot_meta/inventory/shoes
 	name = "shoes"
@@ -170,6 +213,8 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	display_name = "feet"
 	display_preposition = "on"
 	hud_position = ui_shoes
+	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
+	slot_flags_required = SLOT_FEET
 
 /datum/inventory_slot_meta/inventory/gloves
 	name = "gloves"
@@ -178,6 +223,8 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	display_name = "hands"
 	display_preposition = "on"
 	hud_position = ui_gloves
+	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
+	slot_flags_required = SLOT_GLOVES
 
 /datum/inventory_slot_meta/inventory/glasses
 	name = "glasses"
@@ -186,6 +233,8 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	display_name = "eyes"
 	display_preposition = "over"
 	hud_position = ui_glasses
+	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
+	slot_flags_required = SLOT_EYES
 
 /datum/inventory_slot_meta/inventory/suit_storage
 	name = "suit storage"
@@ -206,6 +255,8 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	display_name = "left ear"
 	display_preposition = "on"
 	hud_position = ui_l_ear
+	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
+	slot_flags_required = SLOT_EARS
 
 /datum/inventory_slot_meta/inventory/ears/right
 	name = "right ear"
@@ -214,6 +265,8 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	display_name = "left ear"
 	display_preposition = "on"
 	hud_position = ui_r_ear
+	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
+	slot_flags_required = SLOT_EARS
 
 /datum/inventory_slot_meta/inventory/mask
 	name = "mask"
@@ -222,6 +275,8 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	display_name = "face"
 	display_preposition = "on"
 	hud_position = ui_mask
+	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
+	slot_flags_required = SLOT_MASK
 
 /datum/inventory_slot_meta/restraints
 	is_inventory = FALSE

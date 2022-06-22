@@ -19,6 +19,12 @@
 // this is an id because SLOT_ID_HANDS is used for current_equipped_slot when something is being held :/
 #define SLOT_ID_HANDS			"hands"
 
+// slot meta slot_equip_checks flags
+/// check slot flags - must match
+#define SLOT_EQUIP_CHECK_USE_FLAGS			(1<<0)
+/// use proc
+#define SLOT_EQUIP_CHECK_USE_PROC			(1<<1)
+
 // return values from can_equip_conflict_check
 /// yes
 #define CAN_EQUIP_SLOT_CONFLICT_NONE		0
@@ -56,26 +62,6 @@
 #define SLOT_TIE        0x4000
 ///16th bit - higher than this will overflow
 #define SLOT_HOLSTER	0x8000
-
-
-
-#warn nuke this from orbit
-//Defines which slots correspond to which slot flags
-var/list/global/slot_flags_enumeration = list(
-	"[SLOT_ID_MASK]" = SLOT_MASK,
-	"[SLOT_ID_BACK]" = SLOT_BACK,
-	"[SLOT_ID_SUIT]" = SLOT_OCLOTHING,
-	"[SLOT_ID_GLOVES]" = SLOT_GLOVES,
-	"[SLOT_ID_SHOES]" = SLOT_FEET,
-	"[SLOT_ID_BELT]" = SLOT_BELT,
-	"[SLOT_ID_GLASSES]" = SLOT_EYES,
-	"[SLOT_ID_HEAD]" = SLOT_HEAD,
-	"[SLOT_ID_LEFT_EAR]" = SLOT_EARS|SLOT_TWOEARS,
-	"[SLOT_ID_RIGHT_EAR]" = SLOT_EARS|SLOT_TWOEARS,
-	"[SLOT_ID_UNIFORM]" = SLOT_ICLOTHING,
-	"[SLOT_ID_WORN_ID]" = SLOT_ID,
-	"[slot_tie]" = SLOT_TIE,
-	)
 
 // Inventory slot strings.
 // since numbers cannot be used as associative list keys.

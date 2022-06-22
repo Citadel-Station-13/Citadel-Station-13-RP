@@ -272,7 +272,6 @@
 				return force || !hands_full()
 		return TRUE
 
-
 	switch(inventory_slot_conflict_check(I, slot))
 		if(CAN_EQUIP_SLOT_CONFLICT_HARD)
 			if(!silent)
@@ -289,6 +288,10 @@
 			to_chat(user, SPAN_WARNING("[I] doesn't fit there."))
 		return FALSE
 
+	if(!slot_meta._equip_check(I, src, user, force))
+		if(!silent)
+			to_chat(user, SPAN_WARNING("[I] doesn't fit there."))
+		return FALSE
 
 	#warn impl
 
