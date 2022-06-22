@@ -23,13 +23,9 @@
 					security++
 		if(!security)
 			//strip their stuff before they teleport into a cell :downs:
-			for(var/obj/item/W in H)
-				if(istype(W, /obj/item/organ/external))
-					continue
-					//don't strip organs
-				H.drop_from_inventory(W)
+			H.drop_inventory(TRUE, TRUE, TRUE)
 			//teleport person to cell
-			H.loc = pick(prisonwarp)
+			H.forceMove(pick(prisonwarp))
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/color/prison(H), SLOT_ID_UNIFORM)
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(H), SLOT_ID_SHOES)
 		else

@@ -26,7 +26,6 @@
 			to_chat(user, "You are unable to wear \the [src] as \the [H.gloves] are in the way.")
 			gloves = null
 			return 0
-		H.drop_from_inventory(gloves)
 		gloves.forceMove(src)
 
 	if(!..())

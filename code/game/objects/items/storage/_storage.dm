@@ -296,6 +296,7 @@
 
 	if(src.loc == W)
 		return 0 //Means the item is already in the storage item
+
 	if(storage_slots != null && contents.len >= storage_slots)
 		if(!stop_messages)
 			to_chat(usr, "<span class='notice'>[src] is full, make some space.</span>")

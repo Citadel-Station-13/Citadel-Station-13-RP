@@ -180,9 +180,7 @@
 	mannequin.delete_inventory(TRUE)
 	equip_preview(mannequin)
 	if(mannequin.back)
-		var/obj/O = mannequin.back
-		mannequin.drop_from_inventory(O)
-		qdel(O)
+		qdel(mannequin.back)
 
 /// Check client-specific availability rules.
 /datum/job/proc/player_has_enough_pto(client/C)

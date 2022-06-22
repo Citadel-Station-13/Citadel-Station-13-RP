@@ -251,7 +251,6 @@
 				ring = null
 				return 0
 			else
-				H.drop_from_inventory(ring)	//Remove the ring (or other under-glove item in the hand slot?) so you can put on the gloves.
 				ring.forceMove(src)
 				to_chat(user, "You slip \the [src] on over \the [src.ring].")
 				if(!(flags & THICKMATERIAL))
