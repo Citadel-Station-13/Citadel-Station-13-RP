@@ -185,7 +185,6 @@
 #include "code\__DEFINES\sound\sound.dm"
 #include "code\__DEFINES\species\species.dm"
 #include "code\__DEFINES\species\species_flags.dm"
-#include "code\__DEFINES\species\species_icons.dm"
 #include "code\__DEFINES\turfs\change_turf.dm"
 #include "code\__DEFINES\turfs\turfmakers.dm"
 #include "code\__HELPERS\_core.dm"
