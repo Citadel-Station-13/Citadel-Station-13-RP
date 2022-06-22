@@ -28,7 +28,7 @@
 	if((. = ..()))
 		apc = null
 
-/datum/nifsoft/apc_recharge/life()
+/datum/nifsoft/apc_recharge/on_life(seconds, times_fired)
 	if((. = ..()))
 		var/mob/living/carbon/human/H = nif.human
 		if((apc?.cell?.percent() > 1) && (get_dist(H,apc) <= 1) && H.nutrition < (H.species.max_nutrition - 1)) // 440 vs 450, life() happens before we get here so it'll never be EXACTLY 450
@@ -77,7 +77,7 @@
 /datum/nifsoft/heatsinks/stat_text()
 	return "[active ? "Active" : "Disabled"] (Stored Heat: [FLOOR((used/20), 1)]%)"
 
-/datum/nifsoft/heatsinks/life()
+/datum/nifsoft/heatsinks/on_life()
 	if((. = ..()))
 		//Not being used, all clean.
 		if(!active && !used)

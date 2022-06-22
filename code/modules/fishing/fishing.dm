@@ -39,11 +39,13 @@ GLOBAL_LIST_INIT(generic_fishing_pool_list, list(
 		/obj/item/spacecash/c100 = 1
 		))
 
+/*
 GLOBAL_LIST_INIT(indoor_fishing_chance_list, list(FISHING_RARE = 5, FISHING_UNCOMMON = 20, FISHING_COMMON = 30, FISHING_JUNK = 5, FISHING_NOTHING = 50))
 GLOBAL_LIST_INIT(indoor_fishing_junk_list, list(
 		/obj/random/junk = 15,
 		/obj/random/maintenance/clean = 1
 		))
+*/
 
 #define FISHING_RARE     "rare"
 #define FISHING_UNCOMMON "uncommon"
@@ -165,6 +167,7 @@ GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 10, FISHING_UN
 	min_fishing_time = 33
 	max_fishing_time = 99
 
+/*
 /turf/simulated/floor/water/indoors/handle_fish()
 	if(has_fish)
 		rare_fish_list = GLOB.generic_fishing_rare_list
@@ -172,12 +175,14 @@ GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 10, FISHING_UN
 		common_fish_list = GLOB.generic_fishing_common_list
 		junk_list = GLOB.indoor_fishing_junk_list
 		fishing_loot = GLOB.indoor_fishing_chance_list
+*/
 
 /turf/simulated/floor/water/deep/indoors
 	outdoors = FALSE
 	min_fishing_time = 33
 	max_fishing_time = 70
 
+/*
 /turf/simulated/floor/water/deep/indoors/handle_fish()
 	if(has_fish)
 		rare_fish_list = GLOB.generic_fishing_rare_list
@@ -185,6 +190,7 @@ GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 10, FISHING_UN
 		common_fish_list = GLOB.generic_fishing_common_list
 		junk_list = GLOB.indoor_fishing_junk_list
 		fishing_loot = GLOB.indoor_fishing_chance_list
+*/
 
 /obj/random/fishing_junk
 	name = "junk"

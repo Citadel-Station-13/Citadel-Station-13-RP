@@ -111,6 +111,8 @@ SUBSYSTEM_DEF(planets)
 		if(planet_z_count < S.z)
 			continue
 		var/datum/planet/P = z_to_planet[S.z]
+		if(!P)
+			continue
 		P.planet_floors += S
 		S.vis_contents |= P.weather_holder.visuals
 		S.vis_contents |= P.weather_holder.special_visuals
@@ -127,6 +129,8 @@ SUBSYSTEM_DEF(planets)
 		if(planet_z_count < S.z)
 			continue
 		var/datum/planet/P = z_to_planet[S.z]
+		if(!P)
+			continue
 		P.planet_walls += S
 		if(MC_TICK_CHECK)
 			return

@@ -128,11 +128,11 @@
 				if(skip_gear & EXAMINE_SKIPHOLSTER)
 					for(var/obj/item/clothing/accessory/A in U.accessories)
 						if(A.show_examine && !istype(A, /obj/item/clothing/accessory/holster)) // If we're supposed to skip holsters, actually skip them
-							accessories_visible.Add("[FORMAT_TEXT_LOOKITEM(A)]")
+							accessories_visible.Add(FORMAT_TEXT_LOOKITEM(A))
 				else
 					for(var/obj/item/clothing/accessory/A in U.accessories)
 						if(A.concealed_holster == 0 && A.show_examine)
-							accessories_visible.Add("[FORMAT_TEXT_LOOKITEM(A)]")
+							accessories_visible.Add(FORMAT_TEXT_LOOKITEM(A))
 
 				if(accessories_visible.len)
 					tie_msg += " Attached to it is [english_list(accessories_visible)]."
@@ -155,7 +155,10 @@
 		if(istype(wear_suit,/obj/item/clothing/suit))
 			var/obj/item/clothing/suit/U = wear_suit
 			if(LAZYLEN(U.accessories))
-				tie_msg += " Attached to it is [english_list(FORMAT_TEXT_LOOKITEM(U.accessories))]."
+				var/list/assembled = list()
+				for(var/obj/item/clothing/accessory/A in U.accessories)
+					assembled += FORMAT_TEXT_LOOKITEM(A)
+				tie_msg += " Attached to it is [english_list(assembled)]."
 
 		if(wear_suit.blood_DNA)
 			. += SPAN_WARNING("[T.He] [T.is] wearing [icon2html(thing = wear_suit, target = user)] [wear_suit.gender==PLURAL?"some":"a"] [(wear_suit.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(wear_suit)][tie_msg]!")
