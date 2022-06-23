@@ -439,6 +439,17 @@ Add those other swinging traps you mentioned above!
 	return
 
 /obj/effect/trap/pop_up/attackby(var/obj/item/W, var/mob/user)
+	if(istype(W, /obj/item/weldingtool))
+		var/obj/item/weldingtool/WT = W
+
+		if(WT.remove_fuel(0, user))
+			if(health < maxhealth)
+				to_chat(user, "<span class='notice'>You begin repairing \the [src.name] with \the [WT].</span>")
+			if(do_after(user, 20, src))
+				health = maxhealth
+				broken = FALSE
+			playsound(src.loc, 'sound/items/Welder.ogg', 100, 1)
+
 	if(broken)
 		return
 	if((health <= 0))
@@ -451,15 +462,7 @@ Add those other swinging traps you mentioned above!
 		src.visible_message("<span class='danger'>\The [src] has been attacked with \the [W][(user ? " by [user]." : ".")]</span>")
 	var/damage = W.force / 4.0
 
-	if(istype(W, /obj/item/weldingtool))
-		var/obj/item/weldingtool/WT = W
 
-		if(WT.remove_fuel(0, user))
-			if(health < maxhealth)
-				to_chat(user, "<span class='notice'>You begin repairing \the [src.name] with \the [WT].</span>")
-			if(do_after(user, 20, src))
-				health = maxhealth
-			playsound(src.loc, 'sound/items/Welder.ogg', 100, 1)
 
 	src.health -= damage
 	healthcheck()
