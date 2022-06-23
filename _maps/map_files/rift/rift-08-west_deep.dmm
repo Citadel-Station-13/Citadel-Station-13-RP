@@ -207,7 +207,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/undergound2)
 "ju" = (
-/turf/simulated/floor/sky/depths/west/lythios43c,
+/turf/simulated/open/lythios43c,
 /area/rift/facility/interior/undergound2)
 "jw" = (
 /obj/structure/table/marble,
@@ -449,6 +449,9 @@
 "vJ" = (
 /turf/simulated/wall,
 /area/rift/facility/interior/janitorial)
+"wb" = (
+/turf/simulated/floor/outdoors/safeice/lythios43c,
+/area/rift/exterior/bunker/bottom)
 "wx" = (
 /turf/simulated/open,
 /area/rift/exterior/mineshaft)
@@ -554,9 +557,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/undergound2)
-"Eq" = (
-/turf/simulated/floor/outdoors/safeice/lythios43c,
-/area/rift/exterior/bunker/bottom)
 "Et" = (
 /obj/effect/floor_decal/corner/white{
 	dir = 4
@@ -732,7 +732,7 @@
 /area/rift/facility/interior/undergound2)
 "Sw" = (
 /obj/effect/map_effect/radiation_emitter/chernobyl,
-/turf/simulated/floor/sky/depths/west/lythios43c,
+/turf/simulated/open/lythios43c,
 /area/rift/facility/interior/undergound2)
 "Sy" = (
 /obj/effect/floor_decal/corner/black{
@@ -14599,8 +14599,8 @@ hW
 gI
 gI
 MM
-Eq
-Eq
+wb
+wb
 MM
 gI
 gI
@@ -14793,8 +14793,8 @@ hW
 gI
 gI
 gI
-Eq
-Eq
+wb
+wb
 MM
 gI
 gI
