@@ -142,3 +142,6 @@
   racobio:
   - rscadd: Added collision damage to fighters
   - rscadd: Added alert message on fighter collision
+2022-06-22:
+  Captain277:
+  - rscadd: Adds a public garden.
