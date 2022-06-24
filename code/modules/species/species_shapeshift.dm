@@ -9,18 +9,18 @@ var/list/wrapped_species_by_ref = list()
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/shapeshifter_select_shape,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair,
-		/mob/living/carbon/human/proc/shapeshifter_select_gender
-		)
+		/mob/living/carbon/human/proc/shapeshifter_select_gender,
+	)
 
 	var/list/valid_transform_species = list()
 	var/monochromatic = FALSE
 	var/default_form = SPECIES_HUMAN
 	var/heal_rate = 0
 
-/datum/species/shapeshifter/get_valid_shapeshifter_forms(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/get_valid_shapeshifter_forms(mob/living/carbon/human/H)
 	return valid_transform_species
 
-/datum/species/shapeshifter/get_icobase(var/mob/living/carbon/human/H, var/get_deform)
+/datum/species/shapeshifter/get_icobase(mob/living/carbon/human/H, get_deform)
 	if(!H) return ..(null, get_deform)
 	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_icobase(H, get_deform)
@@ -28,47 +28,54 @@ var/list/wrapped_species_by_ref = list()
 /datum/species/shapeshifter/real_race_key(mob/living/carbon/human/H)
 	return "[..()]-[wrapped_species_by_ref["\ref[H]"]]"
 
-/datum/species/shapeshifter/get_bodytype_legacy(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/get_bodytype_legacy(mob/living/carbon/human/H)
 	if(!H) return ..()
 	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_bodytype_legacy(H)
 
-/datum/species/shapeshifter/get_worn_legacy_bodytype(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/get_worn_legacy_bodytype(mob/living/carbon/human/H)
 	if(!H) return ..()
 	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_worn_legacy_bodytype(H)
 
-/datum/species/shapeshifter/get_blood_mask(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/get_blood_mask(mob/living/carbon/human/H)
 	if(!H) return ..()
 	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_blood_mask(H)
 
-/datum/species/shapeshifter/get_damage_mask(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/get_damage_mask(mob/living/carbon/human/H)
 	if(!H) return ..()
 	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_damage_mask(H)
 
-/datum/species/shapeshifter/get_damage_overlays(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/get_damage_overlays(mob/living/carbon/human/H)
 	if(!H) return ..()
 	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_damage_overlays(H)
 
-/datum/species/shapeshifter/get_tail(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/get_tail(mob/living/carbon/human/H)
 	if(!H) return ..()
 	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_tail(H)
 
-/datum/species/shapeshifter/get_tail_animation(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/get_tail_animation(mob/living/carbon/human/H)
 	if(!H) return ..()
 	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_tail_animation(H)
 
-/datum/species/shapeshifter/get_tail_hair(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/get_tail_hair(mob/living/carbon/human/H)
 	if(!H) return ..()
 	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_tail_hair(H)
 
-/datum/species/shapeshifter/handle_post_spawn(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/get_husk_icon(mob/living/carbon/human/H)
+	if(H)
+		var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
+		if(S)
+			return S.get_husk_icon(H)
+	 return ..()
+
+/datum/species/shapeshifter/handle_post_spawn(mob/living/carbon/human/H)
 	..()
 	wrapped_species_by_ref["\ref[H]"] = default_form
 	if(monochromatic)
@@ -195,7 +202,7 @@ var/list/wrapped_species_by_ref = list()
 		return
 	shapeshifter_set_colour(new_skin)
 
-/mob/living/carbon/human/proc/shapeshifter_set_colour(var/new_skin)
+/mob/living/carbon/human/proc/shapeshifter_set_colour(new_skin)
 
 	r_skin =   hex2num(copytext(new_skin, 2, 4))
 	g_skin =   hex2num(copytext(new_skin, 4, 6))
@@ -241,20 +248,16 @@ var/list/wrapped_species_by_ref = list()
 		return
 	shapeshifter_set_facial_color(new_fhair)
 
-/mob/living/carbon/human/proc/shapeshifter_set_hair_color(var/new_hair)
-
+/mob/living/carbon/human/proc/shapeshifter_set_hair_color(new_hair)
 	change_hair_color(hex2num(copytext(new_hair, 2, 4)), hex2num(copytext(new_hair, 4, 6)), hex2num(copytext(new_hair, 6, 8)))
 
-/mob/living/carbon/human/proc/shapeshifter_set_grad_color(var/new_grad)
-
+/mob/living/carbon/human/proc/shapeshifter_set_grad_color(new_grad)
 	change_grad_color(hex2num(copytext(new_grad, 2, 4)), hex2num(copytext(new_grad, 4, 6)), hex2num(copytext(new_grad, 6, 8)))
 
-/mob/living/carbon/human/proc/shapeshifter_set_facial_color(var/new_fhair)
-
+/mob/living/carbon/human/proc/shapeshifter_set_facial_color(new_fhair)
 	change_facial_hair_color(hex2num(copytext(new_fhair, 2, 4)), hex2num(copytext(new_fhair, 4, 6)), hex2num(copytext(new_fhair, 6, 8)))
 
 /mob/living/carbon/human/proc/shapeshifter_select_eye_colour()
-
 	set name = "Select Eye Color"
 	set category = "Abilities"
 
@@ -270,7 +273,7 @@ var/list/wrapped_species_by_ref = list()
 
 	shapeshifter_set_eye_color(new_eyes)
 
-/mob/living/carbon/human/proc/shapeshifter_set_eye_color(var/new_eyes)
+/mob/living/carbon/human/proc/shapeshifter_set_eye_color(new_eyes)
 
 	var/list/new_color_rgb_list = hex2rgb(new_eyes)
 	// First, update mob vars.
@@ -463,7 +466,7 @@ var/list/wrapped_species_by_ref = list()
 	visible_message(SPAN_NOTICE("\The [src]'s interal composition seems to change."))
 	update_icons_body()
 
-/datum/species/shapeshifter/handle_environment_special(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/handle_environment_special(mob/living/carbon/human/H)
 	// Heal remaining damage.
 	if(H.fire_stacks >= 0 && heal_rate > 0)
 		if(H.getBruteLoss() || H.getFireLoss() || H.getOxyLoss() || H.getToxLoss())

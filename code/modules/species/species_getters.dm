@@ -25,6 +25,9 @@
 /datum/species/proc/get_icobase(mob/living/carbon/human/H, get_deform)
 	return (get_deform ? deform : icobase)
 
+/datum/species/proc/get_husk_icon(mob/living/carbon/human/H)
+	return husk_icon
+
 /datum/species/proc/get_station_variant()
 	return name
 

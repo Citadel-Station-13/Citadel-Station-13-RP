@@ -40,9 +40,14 @@
 
 //! ## Icon/appearance vars.
 	/// Normal icon set.
-	var/icobase = 'icons/mob/human_races/r_human.dmi'
+	var/icobase      = 'icons/mob/species/human/body.dmi'
 	/// Mutated icon set.
-	var/deform = 'icons/mob/human_races/r_def_human.dmi'
+	var/deform       = 'icons/mob/species/human/deformed_body.dmi'
+	/// Preview icon used in species selection.
+	var/preview_icon = 'icons/mob/species/human/preview.dmi'
+	/// Species-specific husk sprite if applicable.
+	var/husk_icon    = 'icons/mob/species/default_husk.dmi'
+	// var/bandages_icon
 
 	/// Part of icon_state to use for speech bubbles when talking.	See talk.dmi for available icons.
 	var/speech_bubble_appearance = "normal"
@@ -57,9 +62,9 @@
 	var/default_bodytype = BODYTYPE_DEFAULT
 
 //! ## Damage overlay and masks.
-	var/damage_overlays = 'icons/mob/human_races/masks/dam_human.dmi'
-	var/damage_mask = 'icons/mob/human_races/masks/dam_mask_human.dmi'
-	var/blood_mask = 'icons/mob/human_races/masks/blood_human.dmi'
+	var/damage_overlays = 'icons/mob/species/human/damage_overlay.dmi'
+	var/damage_mask     = 'icons/mob/species/human/damage_mask.dmi'
+	var/blood_mask      = 'icons/mob/species/human/blood_mask.dmi'
 
 	/// If set, draws this from icobase when mob is prone.
 	var/prone_icon
@@ -69,6 +74,8 @@
 	var/flesh_color = "#FFC896"
 	/// Used by changelings. Should also be used for icon previews.
 	var/base_color
+	/// Species specific internal organs icons.
+	var/organs_icon
 
 	/// Name of tail state in species effects icon file.
 	var/tail
@@ -76,13 +83,23 @@
 	var/tail_animation
 	var/tail_hair
 
+	/// Used for mob icon generation for non-32x32 species.
+	var/icon_template = 'icons/mob/species/template.dmi'
 	/// Makes the icon wider/thinner.
 	var/icon_scale_x = 1
 	/// Makes the icon taller/shorter.
 	var/icon_scale_y = 1
+	/// Used for offsetting large icons.
+	var/pixel_offset_x = 0
+	/// Used for offsetting large icons.
+	var/pixel_offset_y = 0
+	/// Used for offsetting large icons.
+	var/pixel_offset_z = 0
+	/// As above, but specifically for the antagHUD indicator.
+	// var/antaghud_offset_x = 0
+	/// As above, but specifically for the antagHUD indicator.
+	// var/antaghud_offset_y = 0
 
-	/// Used for mob icon generation for non-32x32 species.
-	var/icon/icon_template
 	var/mob_size = MOB_MEDIUM
 	var/show_ssd = "fast asleep"
 	var/virus_immune

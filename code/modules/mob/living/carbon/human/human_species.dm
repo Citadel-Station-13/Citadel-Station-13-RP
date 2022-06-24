@@ -41,7 +41,7 @@
 
 /mob/living/carbon/human/sergal
 	h_style = "Sergal Plain"
-	species = /datum/species/sergal
+	species = /datum/species/naramadi
 
 /mob/living/carbon/human/akula
 	species = /datum/species/akula
@@ -56,7 +56,7 @@
 	species = /datum/species/xenohybrid
 
 /mob/living/carbon/human/spider
-	species = /datum/species/spider
+	species = /datum/species/vasilissan
 
 /mob/living/carbon/human/vulpkanin
 	species = /datum/species/vulpkanin
