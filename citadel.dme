@@ -3684,7 +3684,6 @@
 #include "code\modules\species\station\naramadi.dm"
 #include "code\modules\species\station\nevrean.dm"
 #include "code\modules\species\station\phoronoids.dm"
-#include "code\modules\species\station\promethean.dm"
 #include "code\modules\species\station\promethean_blob.dm"
 #include "code\modules\species\station\rapala.dm"
 #include "code\modules\species\station\skrell.dm"
