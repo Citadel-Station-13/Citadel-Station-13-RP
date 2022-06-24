@@ -700,20 +700,20 @@
 	icon_state = "melanie_skeleton"
 	item_state = "melanie_skeleton_mob"
 
-	body_parts_covered = 0
+	body_parts_covered = NONE
 
 	species_restricted = list("exclude", SPECIES_TESHARI)
 
-/obj/item/clothing/under/fluff/slime_skeleton/mob_can_equip(M as mob, slot)
+/obj/item/clothing/under/fluff/slime_skeleton/mob_can_equip(mob/target, slot)
 	if(!..())
-		return 0
+		return FALSE
 
-	if(istype(M,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = M
-		if(!(H.get_species_id() == SPECIES_ID_PROMETHEAN))	//Only wearable by slimes, since species_restricted actually checks bodytype, not species
-			return 0
+	if(istype(target, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = target
+		if(!(H.get_species_id() == SPECIES_ID_PROMETHEAN)) //Only wearable by slimes, since species_restricted actually checks bodytype, not species
+			return FALSE
 
-	return 1
+	return TRUE
 
-/obj/item/clothing/under/fluff/slime_skeleton/digest_act(var/atom/movable/item_storage = null)
-	return FALSE	//Indigestible
+/obj/item/clothing/under/fluff/slime_skeleton/digest_act(atom/movable/item_storage = null)
+	return FALSE //Indigestible
