@@ -94,6 +94,7 @@ Add those other swinging traps you mentioned above!
 	deploy_location.ChangeTurf(trap_floor_type)
 
 /obj/effect/trap/proc/Break()
+	desc += " Whatever nefarious purpose this one once had, it's broken now."
 	update_icon()
 	broken = TRUE
 
@@ -438,8 +439,22 @@ Add those other swinging traps you mentioned above!
 	return
 
 /obj/effect/trap/pop_up/attackby(var/obj/item/W, var/mob/user)
+	if(istype(W, /obj/item/weldingtool))
+		var/obj/item/weldingtool/WT = W
+
+		if(WT.remove_fuel(0, user))
+			if(health < maxhealth)
+				to_chat(user, SPAN_NOTICE("You begin repairing \the [src.name] with \the [WT].>"))
+			if(do_after(user, 20, src))
+				health = maxhealth
+				broken = FALSE
+			playsound(src.loc, 'sound/items/Welder.ogg', 100, TRUE)
+
+	if(broken)
+		return
 	if((health <= 0))
 		Break()
+		src.visible_message(SPAN_DANGER(">\The [src] breaks! It was a trap!"))
 		return
 	if(W.attack_verb.len)
 		src.visible_message("<span class='danger'>\The [src] has been [pick(W.attack_verb)] with \the [W][(user ? " by [user]." : ".")]</span>")
@@ -447,15 +462,7 @@ Add those other swinging traps you mentioned above!
 		src.visible_message("<span class='danger'>\The [src] has been attacked with \the [W][(user ? " by [user]." : ".")]</span>")
 	var/damage = W.force / 4.0
 
-	if(istype(W, /obj/item/weldingtool))
-		var/obj/item/weldingtool/WT = W
 
-		if(WT.remove_fuel(0, user))
-			if(health < maxhealth)
-				to_chat(user, "<span class='notice'>You begin repairing \the [src.name] with \the [WT].</span>")
-			if(do_after(user, 20, src))
-				health = maxhealth
-			playsound(src.loc, 'sound/items/Welder.ogg', 100, 1)
 
 	src.health -= damage
 	healthcheck()
@@ -463,6 +470,7 @@ Add those other swinging traps you mentioned above!
 /obj/effect/trap/pop_up/proc/healthcheck()
 	if((health <= 0))
 		Break()
+		src.visible_message(SPAN_DANGER(">\The [src] breaks! It was a trap!"))
 
 /obj/effect/trap/pop_up/update_icon()
 	if(!tripped)
@@ -504,6 +512,8 @@ Add those other swinging traps you mentioned above!
 //Spinning Blade Column
 
 /obj/effect/trap/pop_up/pillar
+	name = "loose tile"
+	desc = "The edges of this tile are bent strangely."
 	icon_state = "popup_pillar"
 	min_damage = 10
 	max_damage = 30
@@ -552,6 +562,8 @@ if (istype(AM, /mob/living))
 
 /obj/effect/trap/pop_up/buzzsaw
 	icon_state = "popup_saw"
+	name = "loose tile"
+	desc = "This tile has straight slits running along it."
 	min_damage = 25
 	max_damage = 45
 
@@ -580,6 +592,8 @@ if (istype(AM, /mob/living))
 //Flame Trap
 
 /obj/effect/trap/pop_up/flame
+	name = "loose tile"
+	desc = "The edges of this tile shine strangely."
 	icon_state = "popup_flame"
 	min_damage = 5
 	max_damage = 15
