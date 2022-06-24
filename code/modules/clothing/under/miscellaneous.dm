@@ -843,6 +843,11 @@
 	desc = "This fits a bit too snug in all the right places. Comes with a collar, for inscrutable reasons."
 	icon_state = "swim_risque"
 
+/obj/item/clothing/under/swimsuit/streamlined
+	name = "streamlined swimsuit"
+	desc = "An all white one-piece that maintains modesty without sacrificing class."
+	icon_state = "swim_stream"
+
 /*
  * pyjamas
  */
@@ -1926,3 +1931,8 @@
 	name = "Utility Fur Pants"
 	desc = "A pair of pants designed to match the Utility Fur coat."
 	icon_state = "furup"
+
+/obj/item/clothing/under/sitri
+	name = "Sitri striped sweater"
+	desc = "A comfortable, fashionable pair of high waisted shorts paired with a striped grey and white turtleneck. The Goetic seal of Sitri is embroidered on the left breast pocket in soft grey thread. A tag on the inside of the sweater bears the name 'Lindenoak' in both Common and Daemonic."
+	icon_state = "sitri"
