@@ -145,3 +145,13 @@
 2022-06-22:
   Captain277:
   - rscadd: Adds a public garden.
+2022-06-25:
+  Captain277:
+  - rscadd: Adds a Librarian slot.
+  - rscadd: Adds the streamlined swimsuit and Sitri striped sweater.
+  Poorlycannedfood:
+  - code_imp: Changed the water in the Coco Recipe to milk.
+  Zandario:
+  - code_imp: More species-specific icon vars.
+  silicons:
+  - bugfix: people have the right blood type again.
