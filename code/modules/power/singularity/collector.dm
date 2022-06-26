@@ -160,7 +160,7 @@ var/global/list/rad_collectors = list()
 		return 0 //not a borg or human
 
 	if(O.has_buckled_mobs())
-		to_chat(user, span("warning", "\The [O] has other entities attached to it. Remove them first."))
+		to_chat(user, "<span class='warning'>\The [O] has other entities attached to it. Remove them first.</span>")
 		return
 
 	if(O == user)
