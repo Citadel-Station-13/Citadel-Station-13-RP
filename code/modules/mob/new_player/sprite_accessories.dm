@@ -2091,7 +2091,7 @@
 */
 
 /datum/sprite_accessory/marking
-	icon = "icons/mob/human_races/markings.dmi"
+	icon = "icons/mob/sprite_accessories/markings.dmi"
 	do_colouration = 1 //Almost all of them have it, COLOR_ADD
 	color_blend_mode = ICON_ADD
 
@@ -2172,7 +2172,6 @@
 	tanlines
 		name = "Tan Lines (One Piece, F)"
 		icon_state = "tan_op"
-		icon = "icons/mob/human_races/markings.dmi"
 		body_parts = list(BP_TORSO,BP_GROIN)
 
 	tanlines_m
@@ -2438,7 +2437,7 @@
 		body_parts = list(BP_HEAD)
 
 /datum/sprite_accessory/marking/vr_special
-	icon = 'icons/mob/human_races/markings_vr.dmi'
+	icon = 'icons/mob/sprite_accessories/markings_vr.dmi'
 
 	abomination
 		name = "Abomination"
@@ -2453,7 +2452,7 @@
 		body_parts = list(BP_HEAD)
 
 /datum/sprite_accessory/marking/vr
-	icon = 'icons/mob/human_races/markings_vr.dmi'
+	icon = 'icons/mob/sprite_accessories/markings_vr.dmi'
 
 	vulp_belly
 		name = "belly fur (Vulp)"
@@ -3188,33 +3187,34 @@
 //going to have to re-integrate this with surgery
 //let the icon_state hold an icon preview for now
 /datum/sprite_accessory/skin
-	icon = 'icons/mob/human_races/r_human.dmi'
+	icon = 'icons/mob/species/human/body.dmi'
 
-	human
-		name = "Default human skin"
-		icon_state = "default"
-		species_allowed = list(SPECIES_HUMAN,SPECIES_HUMAN_VATBORN)
+/datum/sprite_accessory/skin/human
+	name = "Default human skin"
+	icon_state = "default"
+	species_allowed = list(SPECIES_HUMAN, SPECIES_HUMAN_VATBORN)
 
-	human_tatt01
-		name = "Tatt01 human skin"
-		icon_state = "tatt1"
-		species_allowed = list(SPECIES_HUMAN,SPECIES_HUMAN_VATBORN)
+/datum/sprite_accessory/skin/human_tatt01
+	name = "Tatt01 human skin"
+	icon_state = "tatt1"
+	icon = 'icons/mob/species/human/tatt1.dmi'
+	species_allowed = list(SPECIES_HUMAN, SPECIES_HUMAN_VATBORN)
 
-	tajaran
-		name = "Default tajaran skin"
-		icon_state = "default"
-		icon = 'icons/mob/human_races/r_tajaran.dmi'
-		species_allowed = list(SPECIES_TAJ)
-		apply_restrictions = TRUE
+/datum/sprite_accessory/skin/tajaran
+	name = "Default tajaran skin"
+	icon_state = "default"
+	icon = 'icons/mob/species/tajaran/body.dmi'
+	species_allowed = list(SPECIES_TAJ)
+	apply_restrictions = TRUE
 
-	unathi
-		name = "Default Unathi skin"
-		icon_state = "default"
-		icon = 'icons/mob/human_races/r_lizard.dmi'
-		species_allowed = list(SPECIES_UNATHI)
+/datum/sprite_accessory/skin/unathi
+	name = "Default Unathi skin"
+	icon_state = "default"
+	icon = 'icons/mob/species/unathi/body.dmi'
+	species_allowed = list(SPECIES_UNATHI)
 
-	skrell
-		name = "Default skrell skin"
-		icon_state = "default"
-		icon = 'icons/mob/human_races/r_skrell.dmi'
-		species_allowed = list(SPECIES_SKRELL)
+/datum/sprite_accessory/skin/skrell
+	name = "Default skrell skin"
+	icon_state = "default"
+	icon = 'icons/mob/species/skrell/body.dmi'
+	species_allowed = list(SPECIES_SKRELL)
