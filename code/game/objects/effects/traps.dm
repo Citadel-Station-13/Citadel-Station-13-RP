@@ -454,7 +454,7 @@ Add those other swinging traps you mentioned above!
 		return
 	if((health <= 0))
 		Break()
-		src.visible_message(SPAN_DANGER(">\The [src] breaks! It was a trap!"))
+		src.visible_message(SPAN_DANGER("\The [src] breaks! It was a trap!"))
 		return
 	if(W.attack_verb.len)
 		src.visible_message("<span class='danger'>\The [src] has been [pick(W.attack_verb)] with \the [W][(user ? " by [user]." : ".")]</span>")
@@ -470,7 +470,7 @@ Add those other swinging traps you mentioned above!
 /obj/effect/trap/pop_up/proc/healthcheck()
 	if((health <= 0))
 		Break()
-		src.visible_message(SPAN_DANGER(">\The [src] breaks! It was a trap!"))
+		src.visible_message(SPAN_DANGER("\The [src] breaks! It was a trap!"))
 
 /obj/effect/trap/pop_up/update_icon()
 	if(!tripped)
