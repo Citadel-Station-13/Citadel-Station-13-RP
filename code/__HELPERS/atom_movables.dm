@@ -1,3 +1,19 @@
+/**
+ * returns the topmost atom on a turf we're in, or null
+ * if a non movable is passed, itself is returned
+ */
+/proc/get_top_level_atom(atom/movable/AM)
+	// if turf or area, return itself
+	if(!istype(AM))
+		return AM
+	// if nullspace, return null
+	if(!AM.loc)
+		return
+	// keep going up until we are on a turf
+	while(!isturf(AM.loc))
+		AM = AM.loc
+	return AM
+
 /proc/get_turf_pixel(atom/movable/AM)
 	if(!istype(AM))
 		return
