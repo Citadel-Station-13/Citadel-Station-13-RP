@@ -1102,7 +1102,7 @@
 		update_wing_showing()
 	return 1
 
-/mob/living/carbon/human/proc/toggle_wing_spread(var/setting,var/message = 0)
+/mob/living/carbon/human/proc/toggle_wing_spread(var/folded,var/message = 0)
 	if(!wing_style || !wing_style.spr_state)
 		if(message)
 			to_chat(src, "<span class='warning'>You don't have wings that support this.</span>")
