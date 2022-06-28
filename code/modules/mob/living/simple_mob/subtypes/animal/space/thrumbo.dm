@@ -1,6 +1,6 @@
-/mob/living/simple_mob/animal/thrumbo
-	name = "Thrumbo"
-	desc = "A huge, intimidating, white-furred creature with a single massive horn on its forehead."
+/mob/living/simple_mob/animal/horing
+	name = "Horing"
+	desc = "An intimidatingly large white-furred creature with a single massive horn on its forehead."
 	tt_desc = "Dominus Albus"
 	icon = 'icons/mob/muriki64x64.dmi'
 	icon_state = "thrumbo"
@@ -9,7 +9,7 @@
 	icon_rest = "thrumbo_rest"
 	maxHealth = 500
 	health = 500
-	faction = "thrumbo"
+	faction = "horing"
 	pixel_x = -16
 	special_attack_min_range = 3
 	special_attack_max_range = 8
@@ -28,26 +28,26 @@
 	meat_type = /obj/item/reagent_containers/food/snacks/horsemeat
 	butchery_loot = list(/obj/item/stack/animalhide = 6)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/thrumbo
+	ai_holder_type = /datum/ai_holder/simple_mob/horing
 
-/mob/living/simple_mob/animal/thrumbo/update_icon()
+/mob/living/simple_mob/animal/horing/update_icon()
 	if(charging)
 		icon_state = "[icon_living]-charge"
 	..()
  //TODO - Sprites for the charge
 
-/datum/category_item/catalogue/fauna/thrumbo
-	name = "Thrumbo"
-	desc = "Thrumbo are a form of life endemic to Lythios 43c. Somewhat rare, it is theorized \
-	that Thrumbo were originally pack animals not dissimilar to Terran ungulates. Tall and muscular, Thrumbo \
-	are covered in a dense white wool. Most noticeably, Thrumbo possess an incredibly hard horn not dissimilar to a glaive. \
+/datum/category_item/catalogue/fauna/horing
+	name = "Horing"
+	desc = "Horing are a form of life endemic to Lythios 43c. Somewhat rare, it is theorized \
+	that Horing were originally pack animals not dissimilar to Terran ungulates. Tall and muscular, Horing \
+	are covered in a dense white wool. Most noticeably, Horing possess an incredibly hard horn not dissimilar to a glaive. \
 	Capable of cutting clean through a human being, these vicious protrusions are most commonly used in a defensive capacity. \
-	Thrumbo are not generally aggressive, and may sometimes be domesticated for their wool. Their territorial nature can \
+	Horing are not generally aggressive, and may sometimes be domesticated for their wool. Their territorial nature can \
 	sometimes lead to hostilities if the stock lack adequate space. Unfortunately, their horns are valuable on the black market, \
-	making Thrumbo a common target for poachers."
+	making Horing a common target for poachers."
 	value = CATALOGUER_REWARD_MEDIUM
 
-/mob/living/simple_mob/animal/thrumbo/do_special_attack(atom/A)
+/mob/living/simple_mob/animal/horing/do_special_attack(atom/A)
 	set waitfor = FALSE
 	set_AI_busy(TRUE)
 	charging = 1
@@ -81,7 +81,7 @@
 	movement_sound = null
 	set_AI_busy(FALSE)
 
-/mob/living/simple_mob/animal/thrumbo/Bump(atom/movable/AM)
+/mob/living/simple_mob/animal/horing/Bump(atom/movable/AM)
 	if(charging)
 		if(istype(AM, /mob/living))
 			var/mob/living/M = AM
@@ -114,7 +114,7 @@
 			machinery.attack_generic(src, 20)
 	..()
 
-/mob/living/simple_mob/animal/thrumbo/proc/runOver(var/mob/living/M)
+/mob/living/simple_mob/animal/horing/proc/runOver(var/mob/living/M)
 	if(istype(M))
 		visible_message("<span class='warning'>[src] rams [M] over!</span>")
 		playsound(src, 'sound/effects/splat.ogg', 50, 1)
@@ -127,10 +127,10 @@
 		M.apply_damage(0.5 * damage, BRUTE, BP_R_ARM)
 		blood_splatter(src, M, 1)
 
-/mob/living/simple_mob/animal/thrumbo/handle_special()
+/mob/living/simple_mob/animal/horing/handle_special()
 	if(ai_holder)
-		if(istype(ai_holder, /datum/ai_holder/simple_mob/thrumbo))
-			var/datum/ai_holder/simple_mob/thrumbo/changedAI = ai_holder
+		if(istype(ai_holder, /datum/ai_holder/simple_mob/horing))
+			var/datum/ai_holder/simple_mob/horing/changedAI = ai_holder
 			var/mobtension = 0
 			mobtension = get_tension() //Check for their tension, based on dangerous mobs and allies nearby
 			if(mobtension > 170)
@@ -143,17 +143,17 @@
 	var/healthpercent = health/maxHealth
 	switch(healthpercent)
 		if(0.25 to 0)
-			icon_living = "thrumbo-25"
+			icon_living = "horing-25"
 		if(0.50 to 0.26)
-			icon_living = "thrumbo-50"
+			icon_living = "horing-50"
 		if(0.75 to 0.51)
-			icon_living = "thrumbo-75"
+			icon_living = "horing-75"
 		if(0.76 to INFINITY)
-			icon_living = "thrumbo-100"
+			icon_living = "horing-100"
 	if(beforehealth != icon_living)
 		update_icon()
 
-/datum/ai_holder/simple_mob/thrumbo
+/datum/ai_holder/simple_mob/horing
 	hostile = TRUE //Not actually hostile but neede for a check otherwise it won't work
 	retaliate = TRUE
 	cooperative = TRUE
@@ -167,7 +167,7 @@
 	threaten_timeout = 0 SECONDS //we don't want to attack immediately when they get back, only if they don't behave after we warn
 	can_flee = FALSE //No, we don't flee, we attack back.
 
-/datum/ai_holder/simple_mob/thrumbo/find_target(list/possible_targets, has_targets_list)
+/datum/ai_holder/simple_mob/horing/find_target(list/possible_targets, has_targets_list)
 	ai_log("find_target() : Entered.", AI_LOG_TRACE)
 	. = list()
 	if(!has_targets_list)
@@ -184,7 +184,7 @@
 	give_target(new_target)
 	return new_target
 
-/datum/ai_holder/simple_mob/thrumbo/proc/checkthreatened(var/possible_target, var/target_threatlevel = 0)
+/datum/ai_holder/simple_mob/horing/proc/checkthreatened(var/possible_target, var/target_threatlevel = 0)
 	if(check_attacker(possible_target))
 		return TRUE
 	if(untrusting == 1 && target_threatlevel > 130 && (possible_target in range(5)))
@@ -194,7 +194,7 @@
 	else
 		return FALSE
 
-/datum/ai_holder/simple_mob/thrumbo/threaten_target()
+/datum/ai_holder/simple_mob/horing/threaten_target()
 	holder.face_atom(target) // Constantly face the target.
 
 	if(!threatening) // First tick.
