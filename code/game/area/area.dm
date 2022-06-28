@@ -53,7 +53,7 @@
 
 	var/music = null
 
-	var/has_gravity = 1
+	var/has_gravity = TRUE
 	var/obj/machinery/power/apc/apc = null
 	var/no_air = null
 //	var/list/lights				// list of all lights on this area
