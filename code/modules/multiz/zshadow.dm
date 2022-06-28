@@ -80,6 +80,7 @@
 	while(istype(OS))
 		if(!M.shadow)
 			M.shadow = new /mob/zshadow(OS, M)
+		M.shadow.forceMove(OS)
 		M = M.shadow
 		OS = OS.Above()
 	// The topmost level does not need a shadow!
