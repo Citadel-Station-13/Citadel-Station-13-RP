@@ -10,7 +10,7 @@
 	if(!AM.loc)
 		return
 	// keep going up until we are on a turf
-	whlie(!isturf(AM.loc))
+	while(!isturf(AM.loc))
 		AM = AM.loc
 	return AM
 
