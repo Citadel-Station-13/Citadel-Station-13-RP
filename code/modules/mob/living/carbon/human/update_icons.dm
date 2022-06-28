@@ -1205,7 +1205,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 		if(wing_style.center)
 			center_image(wing_style, wing_style.dimension_x, wing_style.dimension_y)
-		return image(wing_s)
+		return image(wing_s, "pixel_x" = -16)
 
 // TODO - Move this to where it should go ~Leshana
 /mob/proc/stop_flying()

@@ -844,7 +844,8 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 */
 /datum/sprite_accessory/wing
 	name = "You should not see this..."
-	icon = 'icons/mob/vore/wings_vr.dmi'
+	icon = 'icons/mob/wings.dmi'
+	dimension_x = 64
 	do_colouration = 0 //Set to 1 to enable coloration using the tail color.
 
 	color_blend_mode = ICON_ADD // Only appliciable if do_coloration = 1
@@ -858,82 +859,6 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	var/extra_overlay2_w
 	/// use front/behind, citadel snowflake for now
 	var/front_behind_system = FALSE
-
-/datum/sprite_accessory/wing/shock //Unable to split the tail from the wings in the sprite, so let's just classify it as wings.
-	name = "pharoah hound tail (Shock Diamond)"
-	desc = ""
-	icon_state = "shock"
-	ckeys_allowed = list("icowom")
-
-/datum/sprite_accessory/wing/featheredlarge //Made by Natje!
-	name = "large feathered wings (colorable)"
-	desc = ""
-	icon_state = "feathered2"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
-
-/datum/sprite_accessory/wing/spider_legs //Not really /WINGS/ but they protrude from the back, kinda. Might as well have them here.
-	name = "spider legs"
-	desc = ""
-	icon_state = "spider-legs"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
-
-/datum/sprite_accessory/wing/mantis_arms //Same rationale as spider legs.
-	name = "mantis arms"
-	desc = ""
-	icon_state = "mantis-arms"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
-
-/datum/sprite_accessory/wing/mantis_arms_saturated
-	name = "mantis arms (saturated)"
-	desc = ""
-	icon_state = "mantis-arms_saturated"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
-
-/datum/sprite_accessory/wing/moth
-	name = "moth wings"
-	desc = ""
-	icon_state = "moth"
-	clothing_can_hide = FALSE
-
-/datum/sprite_accessory/wing/mothc
-	name = "moth wings, colorable"
-	desc = ""
-	icon_state = "moth"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
-
-/datum/sprite_accessory/wing/dragonfly
-	name = "dragonfly"
-	desc = ""
-	icon_state = "dragonfly"
-	color_blend_mode = ICON_MULTIPLY
-
-/datum/sprite_accessory/wing/citheroniamoth
-	name = "citheronia wings"
-	desc = ""
-	icon_state = "citheronia_wings"
-	ckeys_allowed = list("kira72")
-
-/datum/sprite_accessory/wing/feathered
-	name = "feathered wings, colorable"
-	desc = ""
-	icon = 'icons/mob/wings.dmi'
-	icon_state = "feathered"
-	center = 1
-	dimension_x = 64
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
-
-/datum/sprite_accessory/wing/feathered_medium
-	name = "medium feathered wings, colorable" // Keekenox made these feathery things with a little bit more shape to them than the other wings. They are medium sized wing boys.
-	desc = ""
-	icon_state = "feathered3"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/wing/bat_black
 	name = "bat wings, black"
@@ -951,12 +876,80 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "bat-red"
 
+/datum/sprite_accessory/wing/beewings
+	name = "bee wings"
+	desc = ""
+	icon_state = "beewings"
+
+/datum/sprite_accessory/wing/cyberdoe
+	name = "Cyber doe wing"
+	desc = ""
+	icon_state = "cyberdoe_s"
+	do_colouration = 0
+
+/datum/sprite_accessory/wing/cyberdragon
+	name = "Cyber dragon wing (colorable)"
+	desc = ""
+	icon_state = "cyberdragon_s"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/wing/cyberdragon_red
+	name = "Cyber dragon wing (red)"
+	desc = ""
+	icon_state = "cyberdragon_red_s"
+	do_colouration = 0
+
+/datum/sprite_accessory/wing/drago_wing
+	name = "Cybernetic Dragon wings"
+	desc = ""
+	icon_state = "drago_wing"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+	extra_overlay = "drago_wing_2"
+
+/datum/sprite_accessory/wing/dragonfly
+	name = "dragonfly"
+	desc = ""
+	icon_state = "dragonfly"
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/wing/feathered
+	name = "feathered wings (colorable)"
+	desc = ""
+	icon_state = "feathered"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/wing/feathered_medium
+	name = "medium feathered wings (colorable)" // Keekenox made these feathery things with a little bit more shape to them than the other wings. They are medium sized wing boys.
+	desc = ""
+	icon_state = "feathered2"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/wing/feathered_large //Made by Natje!
+	name = "large feathered wings (colorable)"
+	desc = ""
+	icon_state = "feathered3"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
 /datum/sprite_accessory/wing/harpywings
-	name = "harpy wings, colorable"
+	name = "harpy wings (colorable)"
 	desc = ""
 	icon_state = "harpywings"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/wing/Harpywings_alt
+	name = "harpy wings alt, archeopteryx"
+	desc = ""
+	icon_state = "Harpywings_alt"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+	extra_overlay = "Neckfur"
+	extra_overlay2 = "Harpywings_altmarkings"
 
 /datum/sprite_accessory/wing/harpywings_alt
 	name = "harpy wings alt, archeopteryx"
@@ -975,6 +968,15 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	extra_overlay = "harpywings_altmarkings"
 	extra_overlay2 = "neckfur"
 
+/datum/sprite_accessory/wing/Harpywings_Bat
+	name = "harpy wings, bat"
+	desc = ""
+	icon_state = "Harpywings_Bat"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+	extra_overlay = "Neckfur"
+	extra_overlay2 = "Harpywings_BatMarkings"
+
 /datum/sprite_accessory/wing/harpywings_bat
 	name = "harpy wings, bat"
 	desc = ""
@@ -992,6 +994,26 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	extra_overlay = "harpywings_batmarkings"
 	extra_overlay2 = "neckfur"
 
+/datum/sprite_accessory/wing/liquidfirefly_gazer //I g-guess this could be considered wings?
+	name = "gazer eyestalks"
+	desc = ""
+	icon_state = "liquidfirefly-eyestalks"
+	//ckeys_allowed = list("liquidfirefly","seiga") //At request.
+
+/datum/sprite_accessory/wing/mantis_arms //Same rationale as spider legs.
+	name = "mantis arms"
+	desc = ""
+	icon_state = "mantis-arms"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/wing/mantis_arms_saturated
+	name = "mantis arms (saturated)"
+	desc = ""
+	icon_state = "mantis-arms_saturated"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
 /datum/sprite_accessory/wing/neckfur
 	name = "neck fur"
 	desc = ""
@@ -999,81 +1021,81 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
-/datum/sprite_accessory/wing/feathered
-	name = "feathered wings, colorable"
+/datum/sprite_accessory/wing/nevrean
+	name = "nevrean wings/fantail"
 	desc = ""
-	icon_state = "feathered"
+	icon_state = "nevrean_s"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
-/datum/sprite_accessory/wing/beewings
-	name = "bee wings"
+/datum/sprite_accessory/wing/robo
+	name = "Robotic Wings"
 	desc = ""
-	icon_state = "beewings"
+	icon_state = "Drago_wing"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
 
-/datum/sprite_accessory/wing/sepulchre
-	name = "demon wings (Sepulchre)"
+/datum/sprite_accessory/wing/sepulchre_c_yw
+	name = "demon wings (colorable)"
 	desc = ""
-	icon_state = "sepulchre_wings"
-	ckeys_allowed = list("sepulchre")
+	icon_state = "sepulchre_wingsc"
+	do_colouration = 1
 
-/datum/sprite_accessory/wing/miria_fluffdragon
-	name = "fluffdragon wings (Miria Masters)"
+/datum/sprite_accessory/wing/snag
+	name = "xenomorph backplate"
 	desc = ""
-	icon_state = "miria-fluffdragontail"
-	ckeys_allowed = list("miriamasters")
+	icon_state = "snag-backplate"
 
-/datum/sprite_accessory/wing/scree
-	name = "green taj wings (Scree)"
+/datum/sprite_accessory/wing/spider_legs //Not really /WINGS/ but they protrude from the back, kinda. Might as well have them here.
+	name = "spider legs"
 	desc = ""
-	icon_state = "scree-wings"
-	ckeys_allowed = list("scree")
+	icon_state = "spider-legs"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
 
-/datum/sprite_accessory/wing/liquidfirefly_gazer //I g-guess this could be considered wings?
-	name = "gazer eyestalks"
+/datum/sprite_accessory/wing/succubus
+	name = "succubus wings, black"
 	desc = ""
-	icon_state = "liquidfirefly-eyestalks"
-	//ckeys_allowed = list("liquidfirefly","seiga") //At request.
+	icon_state = "succubus-black"
 
-/datum/sprite_accessory/wing/moth_full
-	name = "moth antenna and wings"
+/datum/sprite_accessory/wing/succubus_purple
+	name = "succubus wings, purple"
 	desc = ""
-	icon_state = "moth_full"
+	icon_state = "succubus-purple"
 
-/datum/sprite_accessory/wing/moth_royal
-	name = "royal moth wings"
+/datum/sprite_accessory/wing/succubus_red
+	name = "succubus wings, red"
 	desc = ""
-	icon_state = "moth_royal"
+	icon_state = "succubus-red"
 
-/datum/sprite_accessory/wing/moth_red
-	name = "red moth wings"
+//Moth Wings (We have a lot!)
+/datum/sprite_accessory/wing/moth
+	name = "moth wings"
 	desc = ""
-	icon_state = "moth_red"
+	icon_state = "moth"
+	clothing_can_hide = FALSE
 
-/datum/sprite_accessory/wing/moth_gothic
-	name = "gothic moth wings"
+/datum/sprite_accessory/wing/mothc
+	name = "moth wings (colorable)"
 	desc = ""
-	icon_state = "moth_gothic"
+	icon_state = "moth"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
 
-/datum/sprite_accessory/wing/moth_lover
-	name = "lover moth wings"
+/datum/sprite_accessory/wing/moth_atlas
+	name = "atlas moth wings"
 	desc = ""
-	icon_state = "moth_lover"
-
-/datum/sprite_accessory/wing/moth_monarch
-	name = "monarch moth wings"
-	desc = ""
-	icon_state = "moth_monarch"
+	icon_state = "moth_atlas"
 
 /datum/sprite_accessory/wing/moth_burnt
 	name = "burnt moth wings"
 	desc = ""
 	icon_state = "moth_burnt"
 
-/datum/sprite_accessory/wing/moth_white
-	name = "white moth wings"
+/datum/sprite_accessory/wing/moth_deathhead
+	name = "death's-head hawkmoth wings"
 	desc = ""
-	icon_state = "moth_white"
+	icon_state = "moth_deathhead"
 
 /datum/sprite_accessory/wing/moth_firewatch
 	name = "firewatch moth wings"
@@ -1081,10 +1103,50 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	icon_state = "moth_firewatch"
 	front_behind_system = TRUE
 
-/datum/sprite_accessory/wing/moth_deathhead
-	name = "death's-head hawkmoth wings"
+/datum/sprite_accessory/wing/moth_full
+	name = "moth antenna and wings"
 	desc = ""
-	icon_state = "moth_deathhead"
+	icon_state = "moth_full"
+
+/datum/sprite_accessory/wing/moth_gothic
+	name = "gothic moth wings"
+	desc = ""
+	icon_state = "moth_gothic"
+
+/datum/sprite_accessory/wing/moth_jungle
+	name = "jungle moth wings"
+	desc = ""
+	icon_state = "moth_jungle"
+
+/datum/sprite_accessory/wing/moth_lover
+	name = "lover moth wings"
+	desc = ""
+	icon_state = "moth_lover"
+
+/datum/sprite_accessory/wing/moth_luna
+	name = "luna moth wings"
+	desc = ""
+	icon_state = "moth_luna"
+
+/datum/sprite_accessory/wing/moth_monarch
+	name = "monarch moth wings"
+	desc = ""
+	icon_state = "moth_monarch"
+
+/datum/sprite_accessory/wing/moth_moonfly
+	name = "moonfly moth wings"
+	desc = ""
+	icon_state = "moth_moonfly"
+
+/datum/sprite_accessory/wing/moth_oakworm
+	name = "oakworm moth wings"
+	desc = ""
+	icon_state = "moth_oakworm"
+
+/datum/sprite_accessory/wing/moth_plain
+	name = "plain moth wings"
+	desc = ""
+	icon_state = "moth_plain"
 
 /datum/sprite_accessory/wing/moth_poison
 	name = "poison moth wings"
@@ -1096,138 +1158,35 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "moth_ragged"
 
-/datum/sprite_accessory/wing/moth_moonfly
-	name = "moonfly moth wings"
+/datum/sprite_accessory/wing/moth_red
+	name = "red moth wings"
 	desc = ""
-	icon_state = "moth_moonfly"
+	icon_state = "moth_red"
+
+/datum/sprite_accessory/wing/moth_royal
+	name = "royal moth wings"
+	desc = ""
+	icon_state = "moth_royal"
 
 /datum/sprite_accessory/wing/moth_snowy
 	name = "snowy moth wings"
 	desc = ""
 	icon_state = "moth_snowy"
 
-/datum/sprite_accessory/wing/moth_witchwing
-	name = "witchwing moth wings"
+/datum/sprite_accessory/wing/moth_white
+	name = "white moth wings"
 	desc = ""
-	icon_state = "moth_witchwing"
-
-/datum/sprite_accessory/wing/moth_oakworm
-	name = "oakworm moth wings"
-	desc = ""
-	icon_state = "moth_oakworm"
-
-/datum/sprite_accessory/wing/moth_jungle
-	name = "jungle moth wings"
-	desc = ""
-	icon_state = "moth_jungle"
-
-/datum/sprite_accessory/wing/moth_luna
-	name = "luna moth wings"
-	desc = ""
-	icon_state = "moth_luna"
-
-/datum/sprite_accessory/wing/moth_atlas
-	name = "atlas moth wings"
-	desc = ""
-	icon_state = "moth_atlas"
-
-/datum/sprite_accessory/wing/moth_plain
-	name = "plain moth wings"
-	desc = ""
-	icon_state = "moth_plain"
+	icon_state = "moth_white"
 
 /datum/sprite_accessory/wing/moth_whitefly
 	name = "whitefly moth wings"
 	desc = ""
 	icon_state = "moth_whitefly"
 
-/datum/sprite_accessory/wing/kerena
-	name = "wingwolf wings (Kerena)"
+/datum/sprite_accessory/wing/moth_witchwing
+	name = "witchwing moth wings"
 	desc = ""
-	icon_state = "kerena-wings"
-	ckeys_allowed = list("somekindofpony")
-
-/datum/sprite_accessory/wing/snag
-	name = "xenomorph backplate"
-	desc = ""
-	icon_state = "snag-backplate"
-
-/datum/sprite_accessory/wing/robo
-	name = "Robotic Wings"
-	desc = ""
-	icon_state = "Drago_wing"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
-
-/datum/sprite_accessory/wing/liquidfirefly_gazer
-	name = "gazer eyestalks"
-	desc = ""
-	icon_state = "liquidfirefly-eyestalks"
-
-/datum/sprite_accessory/wing/nevrean
-	name = "nevrean wings/fantail"
-	desc = ""
-	icon_state = "nevrean_s"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
-
-/datum/sprite_accessory/wing/sepulchre_c_yw
-	name = "demon wings (colorable)"
-	desc = ""
-	icon_state = "sepulchre_wingsc"
-	do_colouration = 1
-
-/datum/sprite_accessory/wing/cyberdragon
-	name = "Cyber dragon wing (colorable)"
-	desc = ""
-	icon_state = "cyberdragon_s"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
-
-/datum/sprite_accessory/wing/cyberdragon_red
-	name = "Cyber dragon wing (red)"
-	desc = ""
-	icon_state = "cyberdragon_red_s"
-	do_colouration = 0
-
-/datum/sprite_accessory/wing/cyberdoe
-	name = "Cyber doe wing"
-	desc = ""
-	icon_state = "cyberdoe_s"
-	do_colouration = 0
-
-/datum/sprite_accessory/wing/drago_wing
-	name = "Cybernetic Dragon wings"
-	desc = ""
-	icon_state = "drago_wing"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
-	extra_overlay = "drago_wing_2"
-
-/datum/sprite_accessory/wing/harpywings
-	name = "harpy wings, colorable"
-	desc = ""
-	icon_state = "harpywings"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
-
-/datum/sprite_accessory/wing/Harpywings_alt
-	name = "harpy wings alt, archeopteryx"
-	desc = ""
-	icon_state = "Harpywings_alt"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
-	extra_overlay = "Neckfur"
-	extra_overlay2 = "Harpywings_altmarkings"
-
-/datum/sprite_accessory/wing/Harpywings_Bat
-	name = "harpy wings, bat"
-	desc = ""
-	icon_state = "Harpywings_Bat"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
-	extra_overlay = "Neckfur"
-	extra_overlay2 = "Harpywings_BatMarkings"
+	icon_state = "moth_witchwing"
 
 /*
 ////////////////////////////
