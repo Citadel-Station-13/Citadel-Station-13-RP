@@ -926,6 +926,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "medium feathered wings (colorable)" // Keekenox made these feathery things with a little bit more shape to them than the other wings. They are medium sized wing boys.
 	desc = ""
 	icon_state = "feathered2"
+	spr_state = "feathered2_spr"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
