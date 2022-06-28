@@ -921,7 +921,10 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 /datum/sprite_accessory/wing/feathered
 	name = "feathered wings, colorable"
 	desc = ""
+	icon = 'icons/mob/wings.dmi'
 	icon_state = "feathered"
+	center = 1
+	dimension_x = 64
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
