@@ -967,6 +967,12 @@
 				message = "[flapping ? "starts" : "stops"] flapping their wings."
 			else
 				return 1
+		if ("vspread")
+			if(toggle_wing_spread(message = 1))
+				m_type = 1
+				message = "[spread ? "extends" : "retracts"] their wings."
+			else
+				return 1
 		if ("mlem")
 			message = "mlems [get_visible_gender() == MALE ? "his" : get_visible_gender() == FEMALE ? "her" : "their"] tongue up over [get_visible_gender() == MALE ? "his" : get_visible_gender() == FEMALE ? "her" : "their"] nose. Mlem."
 			m_type = 1
@@ -1087,12 +1093,24 @@
 /mob/living/carbon/human/proc/toggle_wing_vr(var/setting,var/message = 0)
 	if(!wing_style || !wing_style.ani_state)
 		if(message)
-			to_chat(src, "<span class='warning'>You don't have a tail that supports this.</span>")
+			to_chat(src, "<span class='warning'>You don't have wings that support this.</span>")
 		return 0
 
 	var/new_flapping = isnull(setting) ? !flapping : setting
 	if(new_flapping != flapping)
 		flapping = setting
+		update_wing_showing()
+	return 1
+
+/mob/living/carbon/human/proc/toggle_wing_spread(var/setting,var/message = 0)
+	if(!wing_style || !wing_style.spr_state)
+		if(message)
+			to_chat(src, "<span class='warning'>You don't have wings that support this.</span>")
+		return 0
+
+	var/new_spread = isnull(folded) ? !spread : folded
+	if(new_spread != spread)
+		spread = folded
 		update_wing_showing()
 	return 1
 

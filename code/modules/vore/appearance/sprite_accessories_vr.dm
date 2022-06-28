@@ -855,6 +855,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	// var/show_species_tail = 1 // Just so // TODO - Seems not needed ~Leshana
 	var/desc = "You should not see this..."
 	var/ani_state // State when flapping/animated
+	var/spr_state // State when spreading wings w/o anim
 	var/extra_overlay_w // Flapping state for extra overlay
 	var/extra_overlay2_w
 	/// use front/behind, citadel snowflake for now
