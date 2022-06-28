@@ -2,13 +2,16 @@
 	name = SPECIES_GOLEM
 	name_plural = "golems"
 
-	icobase = 'icons/mob/human_races/r_golem.dmi'
-	deform = 'icons/mob/human_races/r_golem.dmi'
+	icobase      = 'icons/mob/species/golem/body.dmi'
+	deform       = 'icons/mob/species/golem/body.dmi'
+	preview_icon = 'icons/mob/species/golem/preview.dmi'
+	husk_icon    = 'icons/mob/species/golem/husk.dmi'
 
 	language = "Sol Common" //todo?
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch)
-	flags = NO_PAIN | NO_SCAN | NO_POISON | NO_MINOR_CUT
+
 	spawn_flags = SPECIES_IS_RESTRICTED
+	flags = NO_PAIN | NO_SCAN | NO_POISON | NO_MINOR_CUT
+
 	siemens_coefficient = 0
 
 	assisted_langs = list()
@@ -21,15 +24,21 @@
 
 	virus_immune = TRUE
 
-	has_organ = list(
-		"brain" = /obj/item/organ/internal/brain/golem
-		)
-
 	death_message = "becomes completely motionless..."
 
 	genders = list(NEUTER)
 
-/datum/species/golem/handle_post_spawn(var/mob/living/carbon/human/H)
+	has_organ = list(
+		"brain" = /obj/item/organ/internal/brain/golem,
+		)
+
+	unarmed_types = list(
+		/datum/unarmed_attack/stomp,
+		/datum/unarmed_attack/kick,
+		/datum/unarmed_attack/punch,
+	)
+
+/datum/species/golem/handle_post_spawn(mob/living/carbon/human/H)
 	if(H.mind)
 		H.mind.assigned_role = SPECIES_GOLEM
 		H.mind.special_role = SPECIES_GOLEM

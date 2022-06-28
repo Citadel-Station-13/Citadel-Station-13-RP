@@ -1,16 +1,18 @@
 /datum/species/monkey
 	name = SPECIES_MONKEY
 	name_plural = "Monkeys"
+	greater_form = SPECIES_HUMAN
+
 	blurb = "Ook."
 
-	icobase = 'icons/mob/human_races/monkeys/r_monkey.dmi'
-	deform = 'icons/mob/human_races/monkeys/r_monkey.dmi'
-	damage_overlays = 'icons/mob/human_races/masks/dam_monkey.dmi'
-	damage_mask = 'icons/mob/human_races/masks/dam_mask_monkey.dmi'
-	blood_mask = 'icons/mob/human_races/masks/blood_monkey.dmi'
+	icobase         = 'icons/mob/species/monkey/body_monkey.dmi'
+	deform          = 'icons/mob/species/monkey/body_monkey.dmi'
+	damage_overlays = 'icons/mob/species/monkey/damage_overlay.dmi'
+	damage_mask     = 'icons/mob/species/monkey/damage_mask.dmi'
+	blood_mask      = 'icons/mob/species/monkey/blood_mask.dmi'
+
 	language = null
 	default_language = "Chimpanzee"
-	greater_form = SPECIES_HUMAN
 	mob_size = MOB_SMALL
 	has_fine_manipulation = 0
 	show_ssd = null
@@ -34,27 +36,27 @@
 
 	spawn_flags = SPECIES_IS_RESTRICTED
 
-	bump_flag = MONKEY
+	bump_flag  = MONKEY
 	swap_flags = MONKEY|SLIME|SIMPLE_ANIMAL
 	push_flags = MONKEY|SLIME|SIMPLE_ANIMAL|ALIEN
 
 	pass_flags = PASSTABLE
 
 	has_limbs = list(
-		BP_TORSO =  list("path" = /obj/item/organ/external/chest),
-		BP_GROIN =  list("path" = /obj/item/organ/external/groin),
-		BP_HEAD =   list("path" = /obj/item/organ/external/head/no_eyes),
-		BP_L_ARM =  list("path" = /obj/item/organ/external/arm),
-		BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right),
-		BP_L_LEG =  list("path" = /obj/item/organ/external/leg),
-		BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right),
+		BP_TORSO  = list("path" = /obj/item/organ/external/chest),
+		BP_GROIN  = list("path" = /obj/item/organ/external/groin),
+		BP_HEAD   = list("path" = /obj/item/organ/external/head/no_eyes),
+		BP_L_ARM  = list("path" = /obj/item/organ/external/arm),
+		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right),
+		BP_L_LEG  = list("path" = /obj/item/organ/external/leg),
+		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right),
 		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
 		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
 		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
-		)
+		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
+	)
 
-/datum/species/monkey/handle_npc(var/mob/living/carbon/human/H)
+/datum/species/monkey/handle_npc(mob/living/carbon/human/H)
 	if(H.stat != CONSCIOUS)
 		return
 	if(prob(33) && H.canmove && isturf(H.loc) && !H.pulledby) //won't move if being pulled
@@ -71,21 +73,21 @@
 	name = SPECIES_MONKEY_TAJ
 	name_plural = SPECIES_MONKEY_TAJ
 
-	icobase = 'icons/mob/human_races/monkeys/r_farwa.dmi'
-	deform = 'icons/mob/human_races/monkeys/r_farwa.dmi'
+	icobase = 'icons/mob/species/monkey/body_farwa.dmi'
+	deform  = 'icons/mob/species/monkey/body_farwa.dmi'
 
 	greater_form = SPECIES_TAJ
 	default_language = SPECIES_MONKEY_TAJ
 	flesh_color = "#AFA59E"
-	base_color = "#333333"
+	base_color  = "#333333"
 	tail = "farwatail"
 
 /datum/species/monkey/skrell
 	name = SPECIES_MONKEY_SKRELL
 	name_plural = SPECIES_MONKEY_SKRELL
 
-	icobase = 'icons/mob/human_races/monkeys/r_neaera.dmi'
-	deform = 'icons/mob/human_races/monkeys/r_neaera.dmi'
+	icobase = 'icons/mob/species/monkey/body_neaera.dmi'
+	deform  = 'icons/mob/species/monkey/body_neaera.dmi'
 
 	greater_form = SPECIES_SKRELL
 	default_language = LANGUAGE_NEAERA
@@ -98,30 +100,30 @@
 	name = SPECIES_MONKEY_UNATHI
 	name_plural = SPECIES_MONKEY_UNATHI
 
-	icobase = 'icons/mob/human_races/monkeys/r_stok.dmi'
-	deform = 'icons/mob/human_races/monkeys/r_stok.dmi'
+	icobase = 'icons/mob/species/monkey/body_stok.dmi'
+	deform  = 'icons/mob/species/monkey/body_stok.dmi'
 
 	tail = "stoktail"
 	greater_form = SPECIES_UNATHI
 	default_language = LANGUAGE_STOK
 	flesh_color = "#34AF10"
-	base_color = "#066000"
+	base_color  = "#066000"
 	reagent_tag = IS_UNATHI
 
 /datum/species/monkey/shark
 	name = SPECIES_MONKEY_AKULA
 	name_plural = SPECIES_MONKEY_AKULA
-	icobase = 'icons/mob/human_races/monkeys/r_sobaka_vr.dmi'
-	deform = 'icons/mob/human_races/monkeys/r_sobaka_vr.dmi'
+	icobase = 'icons/mob/species/monkey/body_sobaka.dmi'
+	deform  = 'icons/mob/species/monkey/body_sobaka.dmi'
 	tail = null //The tail is part of its body due to tail using the "icons/effects/species.dmi" file. It must be null, or they'll have a chimp tail.
 	greater_form = SPECIES_AKULA
-	default_language = "Skrellian" //Closest we have.
+	default_language = LANGUAGE_SKRELLIAN //Closest we have.
 
 /datum/species/monkey/sergal
 	name = SPECIES_MONKEY_SERGAL
 	greater_form = SPECIES_SERGAL
-	icobase = 'icons/mob/human_races/monkeys/r_sergaling_vr.dmi'
-	deform = 'icons/mob/human_races/monkeys/r_sergaling_vr.dmi'
+	icobase = 'icons/mob/species/monkey/body_sergaling.dmi'
+	deform  = 'icons/mob/species/monkey/body_sergaling.dmi'
 	tail = null
 	default_language = LANGUAGE_SAGARU
 
@@ -129,9 +131,9 @@
 	name = SPECIES_MONKEY_NEVREAN
 	name_plural = SPECIES_MONKEY_NEVREAN
 	greater_form = SPECIES_NEVREAN
+	icobase = 'icons/mob/species/monkey/body_sparra.dmi'
+	deform  = 'icons/mob/species/monkey/body_sparra.dmi'
 	tail = null
-	icobase = 'icons/mob/human_races/monkeys/r_sparra_vr.dmi'
-	deform = 'icons/mob/human_races/monkeys/r_sparra_vr.dmi'
 	default_language = LANGUAGE_BIRDSONG
 
 
@@ -140,8 +142,8 @@
 	name = SPECIES_MONKEY_TAJ
 	name_plural = SPECIES_MONKEY_TAJ
 
-	icobase = 'icons/mob/human_races/monkeys/r_farwa.dmi'
-	deform = 'icons/mob/human_races/monkeys/r_farwa.dmi'
+	icobase = 'icons/mob/species/monkeys/body_farwa.dmi'
+	deform  = 'icons/mob/species/monkeys/body_farwa.dmi'
 
 	greater_form = "Tajaran"
 	default_language = LANGUAGE_FARWA
@@ -154,13 +156,13 @@
 	name = SPECIES_MONKEY_VULPKANIN
 	name_plural = SPECIES_MONKEY_VULPKANIN
 
-	icobase = 'icons/mob/human_races/monkeys/r_wolpin.dmi'
-	deform = 'icons/mob/human_races/monkeys/r_wolpin.dmi'
+	icobase = 'icons/mob/species/monkey/body_wolpin.dmi'
+	deform = 'icons/mob/species/monkey/body_wolpin.dmi'
 
 	greater_form = SPECIES_VULPKANIN
 	default_language = LANGUAGE_CANILUNZT
 	flesh_color = "#966464"
-	base_color = "#000000"
+	base_color  = "#000000"
 	tail = null
 
 //INSERT CODE HERE SO MONKEYS CAN BE SPAWNED.

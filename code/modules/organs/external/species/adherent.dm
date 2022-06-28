@@ -35,7 +35,7 @@
 	max_damage = 50
 	min_broken_damage = 25
 	encased = "ceramic hull"
-	eye_icon_location = 'icons/mob/human_races/adherent/eyes.dmi'
+	eye_icon_location = 'icons/mob/species/adherent/eyes.dmi'
 	eye_icon = "eyes"
 	robotic = ORGAN_CRYSTAL
 //	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_HEALS_OVERKILL | ORGAN_FLAG_CAN_BREAK

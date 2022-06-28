@@ -7,33 +7,33 @@
 	whose home system and burgeoning stellar empire was scoured to bedrock by a solar flare. \
 	Physically, they are large, floating squidlike machines made of a crystalline composite."
 //	hidden_from_codex = FALSE
-//	silent_steps = TRUE
+//	silent_steps      = TRUE
 
-	meat_type = null
-//	bone_material = null
-//	skin_material = null
+	meat_type     = null
+	// bone_material = null
+	// skin_material = null
 
-	genders =                 list(PLURAL)
-//	cyborg_noun =             null
+	genders = list(PLURAL)
+//	cyborg_noun = null
 
-	icon_template =           'icons/mob/human_races/adherent/template.dmi'
-	icobase =                 'icons/mob/human_races/adherent/body.dmi'
-//	deform =                  'icons/mob/human_races/r_adherent.dmi'
-//	preview_icon =            'icons/mob/human_races/adherent/preview.dmi'
-	damage_overlays =         'icons/mob/human_races/adherent/damage_overlay.dmi'
-	damage_mask =             'icons/mob/human_races/adherent/damage_mask.dmi'
-	blood_mask =              'icons/mob/human_races/adherent/blood_mask.dmi'
+	icon_template   = 'icons/mob/species/adherent/template.dmi'
+	icobase         = 'icons/mob/species/adherent/body.dmi'
+	deform          = 'icons/mob/species/adherent/body.dmi'
+	preview_icon    = 'icons/mob/species/adherent/preview.dmi'
+	damage_overlays = 'icons/mob/species/adherent/damage_overlay.dmi'
+	damage_mask     = 'icons/mob/species/adherent/damage_mask.dmi'
+	blood_mask      = 'icons/mob/species/adherent/blood_mask.dmi'
 
-	siemens_coefficient =     0
-	rarity_value =            6
-	min_age =                 10000
-	max_age =                 12000
-//	antaghud_offset_y =       14
-	warning_low_pressure =    50
-	hazard_low_pressure =     -1
-	mob_size =                MOB_LARGE
-//	strength =                STR_HIGH
-	has_glowing_eyes = 		1
+	siemens_coefficient  = 0
+	rarity_value         = 6
+	min_age              = 10000
+	max_age              = 12000
+	// antaghud_offset_y    = 14
+	warning_low_pressure = 50
+	hazard_low_pressure  = -1
+	mob_size             = MOB_LARGE
+	// strength             = STR_HIGH
+	has_glowing_eyes     = 1
 
 	speech_sounds = list('sound/voice/chime.ogg')
 	speech_chance = 25
@@ -46,17 +46,17 @@
 	heat_level_2 = 1000
 	heat_level_3 = 2000
 
-	flags =				NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN
-	spawn_flags =		SPECIES_IS_WHITELISTED | SPECIES_NO_FBP_CONSTRUCTION | SPECIES_NO_FBP_CHARGEN | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
-	species_appearance_flags =	HAS_EYE_COLOR | HAS_SKIN_COLOR//BASE_SKIN_COLOR
+	flags       = NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN
+	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_NO_FBP_CONSTRUCTION | SPECIES_NO_FBP_CHARGEN | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
+	species_appearance_flags = HAS_EYE_COLOR | HAS_SKIN_COLOR //| BASE_SKIN_COLOR
 
-	language = 			LANGUAGE_ADHERENT
-	species_language = 	LANGUAGE_ADHERENT
+	language         = LANGUAGE_ADHERENT
+	species_language = LANGUAGE_ADHERENT
 	num_alternate_languages = 2
 
 	blood_color = "#2de00d"
 	flesh_color = "#90edeb"
-	base_color = "#066000"
+	base_color  = "#066000"
 
 	slowdown = -0.5
 
@@ -81,25 +81,25 @@
 	)
 */
 	has_limbs = list(
-		BP_TORSO =  list("path" = /obj/item/organ/external/chest/crystal),
-		BP_GROIN =  list("path" = /obj/item/organ/external/groin/crystal),
-		BP_HEAD =   list("path" = /obj/item/organ/external/head/crystal),
-		BP_L_ARM =  list("path" = /obj/item/organ/external/arm/crystal),
-		BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/crystal),
+		BP_TORSO  = list("path" = /obj/item/organ/external/chest/crystal),
+		BP_GROIN  = list("path" = /obj/item/organ/external/groin/crystal),
+		BP_HEAD   = list("path" = /obj/item/organ/external/head/crystal),
+		BP_L_ARM  = list("path" = /obj/item/organ/external/arm/crystal),
+		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right/crystal),
 		BP_L_HAND = list("path" = /obj/item/organ/external/hand/crystal),
 		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/crystal),
-		BP_L_LEG =  list("path" = /obj/item/organ/external/leg/tendril),
-		BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right/tendril/),
+		BP_L_LEG  = list("path" = /obj/item/organ/external/leg/tendril),
+		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right/tendril/),
 		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/tendril/),
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/tendril)
 	)
 
 	has_organ = list(
-		O_BRAIN =        /obj/item/organ/internal/brain/adherent,
-		O_EYES =         /obj/item/organ/internal/eyes/adherent,
-		O_JETS =         /obj/item/organ/internal/powered/jets,
-		O_FLOAT =        /obj/item/organ/internal/powered/float,
-		O_CELL =         /obj/item/organ/internal/cell/adherent,
+		O_BRAIN        = /obj/item/organ/internal/brain/adherent,
+		O_EYES         = /obj/item/organ/internal/eyes/adherent,
+		O_JETS         = /obj/item/organ/internal/powered/jets,
+		O_FLOAT        = /obj/item/organ/internal/powered/float,
+		O_CELL         = /obj/item/organ/internal/cell/adherent,
 		O_COOLING_FINS = /obj/item/organ/internal/powered/cooling_fins
 		)
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/snake
@@ -127,11 +127,10 @@
 	)*/
 	..()
 
-/datum/species/proc/post_organ_rejuvenate(var/obj/item/organ/org, var/mob/living/carbon/human/H)
+/datum/species/proc/post_organ_rejuvenate(obj/item/organ/org, mob/living/carbon/human/H)
 	return
 
-
-/datum/species/adherent/can_overcome_gravity(var/mob/living/carbon/human/H)
+/datum/species/adherent/can_overcome_gravity(mob/living/carbon/human/H)
 	. = FALSE
 	if(H && H.stat == CONSCIOUS)
 		for(var/obj/item/organ/internal/powered/float/float in H.internal_organs)
@@ -139,17 +138,17 @@
 				. = TRUE
 				break
 
-/datum/species/adherent/can_fall(var/mob/living/carbon/human/H)
+/datum/species/adherent/can_fall(mob/living/carbon/human/H)
 	. = !can_overcome_gravity(H)
 /*
 /datum/species/adherent/get_slowdown(var/mob/living/carbon/human/H)
 	return slowdown
 */
-/datum/species/adherent/handle_environment_special(var/mob/living/carbon/human/H)
+/datum/species/adherent/handle_environment_special(mob/living/carbon/human/H)
 	H.our_overlays = list()//This removes all overlays, including temperature and pressure warnings
 	//Todo: find a better way to adjust clothing, than to wipe all overlays
 
-/datum/species/adherent/handle_fall_special(var/mob/living/carbon/human/H, var/turf/landing)
+/datum/species/adherent/handle_fall_special(mob/living/carbon/human/H, turf/landing)
 	var/float_is_usable = FALSE
 	if(H && H.stat == CONSCIOUS)
 		for(var/obj/item/organ/internal/powered/float/float in H.internal_organs)
@@ -180,11 +179,11 @@
 	has_internals = FALSE
 	gear = list(
 		"l_ear" = list("loc" = ui_iclothing, "name" = "Aux Port", "slot" = slot_l_ear,   "state" = "ears", "toggle" = 1),
-		"head" =  list("loc" = ui_glasses,   "name" = "Hat",      "slot" = slot_head,    "state" = "hair", "toggle" = 1),
-		"back" =  list("loc" = ui_back,      "name" = "Back",     "slot" = slot_back,    "state" = "back"),
-		"id" =    list("loc" = ui_id,        "name" = "ID",       "slot" = slot_wear_id, "state" = "id"),
-		"belt" =  list("loc" = ui_belt,      "name" = "Belt",     "slot" = slot_belt,    "state" = "belt")
+		"head"  = list("loc" = ui_glasses,   "name" = "Hat",      "slot" = slot_head,    "state" = "hair", "toggle" = 1),
+		"back"  = list("loc" = ui_back,      "name" = "Back",     "slot" = slot_back,    "state" = "back"),
+		"id"    = list("loc" = ui_id,        "name" = "ID",       "slot" = slot_wear_id, "state" = "id"),
+		"belt"  = list("loc" = ui_belt,      "name" = "Belt",     "slot" = slot_belt,    "state" = "belt")
 	)
 
-/datum/species/adherent/post_organ_rejuvenate(var/obj/item/organ/org, var/mob/living/carbon/human/H)
+/datum/species/adherent/post_organ_rejuvenate(obj/item/organ/org, mob/living/carbon/human/H)
 	org.robotic = ORGAN_CRYSTAL
