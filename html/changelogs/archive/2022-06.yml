@@ -155,3 +155,14 @@
   - code_imp: More species-specific icon vars.
   silicons:
   - bugfix: people have the right blood type again.
+2022-06-29:
+  CharlesWedge:
+  - rscadd: 'A ton of new areas and set pieces to the Lythios Western Zone. tweaks:
+      Lythios Farm Animals have less exteme temperature suvivability ranges better
+      suited to the new less harsh atmosphere.'
+  silicons:
+  - bugfix: you can see mobs from upstairs again
+  - bugfix: visible examines showing for atoms not in the world
+  - bugfix: visible examines showing for atoms within oneself
+  the fun police:
+  - bugfix: radiation is fixed
