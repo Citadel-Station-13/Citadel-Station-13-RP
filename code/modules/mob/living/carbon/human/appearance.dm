@@ -217,7 +217,7 @@
 			else if(gender == FEMALE && S.gender == MALE)
 				continue
 
-		if(!(use_species in S.species_allowed))
+		if(S.apply_restrictions && !(use_species in S.species_allowed))
 			continue
 		valid_hairstyles += hairstyle
 
@@ -239,7 +239,7 @@
 			else if(gender == FEMALE && S.gender == MALE)
 				continue
 
-		if(!(use_species in S.species_allowed))
+		if(S.apply_restrictions && !(use_species in S.species_allowed))
 			continue
 
 		valid_facial_hairstyles += facialhairstyle

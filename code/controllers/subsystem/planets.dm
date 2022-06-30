@@ -37,13 +37,20 @@ SUBSYSTEM_DEF(planets)
 			z_to_planet[Z] = NP
 
 /datum/controller/subsystem/planets/proc/addTurf(turf/T)
+	if(T.turf_flags & (TURF_PLANET_QUEUED | TURF_PLANET_REGISTERED))
+		return
+	T.turf_flags |= TURF_PLANET_QUEUED
 	new_outdoor_turfs += T
 
 /datum/controller/subsystem/planets/proc/addWall(turf/T)
+	if(T.turf_flags & (TURF_PLANET_QUEUED | TURF_PLANET_REGISTERED))
+		return
+	T.turf_flags |= TURF_PLANET_QUEUED
 	new_outdoor_walls += T
 
 /datum/controller/subsystem/planets/proc/removeTurf(turf/T)
 	new_outdoor_turfs -= T
+	T.turf_flags &= ~(TURF_PLANET_QUEUED | TURF_PLANET_REGISTERED)
 	if(z_to_planet.len >= T.z)
 		var/datum/planet/P = z_to_planet[T.z]
 		if(!P)
@@ -54,6 +61,7 @@ SUBSYSTEM_DEF(planets)
 
 /datum/controller/subsystem/planets/proc/removeWall(turf/T)
 	new_outdoor_walls -= T
+	T.turf_flags &= ~(TURF_PLANET_QUEUED | TURF_PLANET_REGISTERED)
 	if(z_to_planet.len >= T.z)
 		var/datum/planet/P = z_to_planet[T.z]
 		if(!P)
@@ -68,34 +76,44 @@ SUBSYSTEM_DEF(planets)
 	if(initial)
 		// make sure no duplicates are there
 		for(var/turf/simulated/S in new_outdoor_turfs)
+			S.turf_flags &= ~TURF_PLANET_QUEUED
+			S.turf_flags |= TURF_PLANET_REGISTERED
 			if(planet_z_count < S.z)
 				continue
 			var/datum/planet/P = z_to_planet[S.z]
 			if(!P)
 				continue
-			P.planet_floors |= S
+			P.planet_floors += S
 			S.vis_contents |= P.weather_holder.visuals
 			S.vis_contents |= P.weather_holder.special_visuals
+			CHECK_TICK
 		for(var/turf/unsimulated/wall/planetary/S in new_outdoor_walls)
+			S.turf_flags &= ~TURF_PLANET_QUEUED
+			S.turf_flags |= TURF_PLANET_REGISTERED
 			if(planet_z_count < S.z)
 				continue
 			var/datum/planet/P = z_to_planet[S.z]
 			if(!P)
 				continue
-			P.planet_walls |= S
+			P.planet_walls += S
+			CHECK_TICK
 		new_outdoor_turfs = list()
 		new_outdoor_walls = list()
 		return
 	var/list/curr = new_outdoor_turfs
 	while(curr.len)
 		var/turf/simulated/S = curr[curr.len]
+		S.turf_flags &= ~TURF_PLANET_QUEUED
+		S.turf_flags |= TURF_PLANET_REGISTERED
 		curr.len--
 		if(!istype(S))
 			continue
 		if(planet_z_count < S.z)
 			continue
 		var/datum/planet/P = z_to_planet[S.z]
-		P.planet_floors |= S
+		if(!P)
+			continue
+		P.planet_floors += S
 		S.vis_contents |= P.weather_holder.visuals
 		S.vis_contents |= P.weather_holder.special_visuals
 		if(MC_TICK_CHECK)
@@ -103,13 +121,17 @@ SUBSYSTEM_DEF(planets)
 	curr = new_outdoor_walls
 	while(curr.len)
 		var/turf/unsimulated/wall/planetary/S = curr[curr.len]
+		S.turf_flags &= ~TURF_PLANET_QUEUED
+		S.turf_flags |= TURF_PLANET_REGISTERED
 		curr.len--
 		if(!istype(S))
 			continue
 		if(planet_z_count < S.z)
 			continue
 		var/datum/planet/P = z_to_planet[S.z]
-		P.planet_walls |= S
+		if(!P)
+			continue
+		P.planet_walls += S
 		if(MC_TICK_CHECK)
 			return
 

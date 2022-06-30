@@ -102,7 +102,7 @@
 	return UI_UPDATE
 
 /datum/ui_state/air_alarm_remote/proc/has_access(mob/user)
-	return user && (isAI(user) || atmos_control.access.allowed(user) || atmos_control.emagged || air_alarm.rcon_setting == RCON_YES || (air_alarm.alarm_area.atmosalm && air_alarm.rcon_setting == RCON_AUTO) || (access_ce in user.GetAccess()))
+	return user && (isAI(user) || atmos_control.access.allowed(user) || atmos_control.emagged || air_alarm.rcon_setting == (RCON_YES || RCON_AUTO) || (air_alarm.alarm_area.atmosalm && air_alarm.rcon_setting == RCON_AUTO) || (access_atmospherics in user.GetAccess()))
 
 /datum/ui_state/air_alarm_remote/Destroy()
 	atmos_control = null

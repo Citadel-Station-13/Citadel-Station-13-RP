@@ -16,8 +16,7 @@
 		update_icon()
 		update_air()
 		set_opacity(0)
-		for(var/turf/simulated/turf in loc)
-			air_master.mark_for_update(turf)
+		queue_zone_update()
 	else
 		can_open = WALL_OPENING
 		//flick("[material.icon_base]fwall_closing", src)
@@ -26,15 +25,14 @@
 		update_icon()
 		update_air()
 		set_opacity(1)
-		for(var/turf/simulated/turf in loc)
-			air_master.mark_for_update(turf)
+		queue_zone_update()
 
 	can_open = WALL_CAN_OPEN
 	update_icon()
 
 /turf/simulated/wall/proc/update_air()
 	update_thermal(src)
-	air_master.mark_for_update(src)
+	queue_zone_update()
 	// old code left below because it's by time we had a hall of shame
 	// "turf in loc" on a turf
 	// you for real?

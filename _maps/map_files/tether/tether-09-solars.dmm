@@ -394,7 +394,7 @@
 /turf/simulated/floor/virgo3b,
 /area/tether/outpost/solars_shed)
 "aP" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "bluespacerift"
 	},
 /turf/simulated/floor/outdoors/dirt/virgo3b,

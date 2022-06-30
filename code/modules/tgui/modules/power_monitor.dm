@@ -1,5 +1,5 @@
 /datum/tgui_module/power_monitor
-	name = "Power monitor"
+	name = "Power Monitor"
 	tgui_id = "PowerMonitor"
 	var/list/grid_sensors
 	var/active_sensor = null	//name_tag of the currently selected sensor

@@ -152,7 +152,7 @@
 
 /mob/living/simple_animal/construct/examine(mob/user)
 	. = ..()
-	. += "<span cass='info'>*---------*\nThis is [icon2html(thing = src, target = user)]\a <EM>[src]</EM>!\n"
+	. += "<span cass='info'>This is [icon2html(thing = src, target = user)]\a <EM>[src]</EM>!\n"
 	if (src.health < src.getMaxHealth())
 		. += "<span class='warning'>"
 		if (src.health >= src.getMaxHealth()/2)
@@ -160,7 +160,6 @@
 		else
 			. += "<B>It looks severely dented!</B>\n"
 		. += "</span>"
-	. += "*---------*</span>"
 
 
 /mob/living/simple_animal/construct/Process_Spacemove()
@@ -207,7 +206,7 @@
 				"bio" = 100,
 				"rad" = 100)
 
-/mob/living/simple_animal/construct/armoured/Life()
+/mob/living/simple_animal/construct/armoured/Life(seconds, times_fired)
 	weakened = 0
 	..()
 
@@ -437,7 +436,7 @@
 
 ////////////////HUD//////////////////////
 
-/mob/living/simple_animal/construct/Life()
+/mob/living/simple_animal/construct/Life(seconds, times_fired)
 	. = ..()
 	if(.)
 		if(fire)

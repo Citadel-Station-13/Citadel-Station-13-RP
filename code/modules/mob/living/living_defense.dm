@@ -302,9 +302,10 @@
 			var/dir = get_dir(O.throw_source, src)
 
 			visible_message("<font color='red'>[src] staggers under the impact!</font>","<font color='red'>You stagger under the impact!</font>")
-			src.throw_at(get_edge_target_turf(src,dir),1,momentum)
+			src.throw_at(get_edge_target_turf(src,dir), 1, momentum)
 
-			if(!O || !src) return
+			if(!O || !src)
+				return
 
 			if(O.sharp) //Projectile is suitable for pinning.
 				if(soaked >= round(throw_damage*0.8))
@@ -391,8 +392,8 @@
 		ExtinguishMob() //Fire's been put out.
 		return 1
 
-	var/datum/gas_mixture/G = loc.return_air() // Check if we're standing in an oxygenless environment
-	if(G.gas[/datum/gas/oxygen] < 1)
+	var/datum/gas_mixture/G = loc?.return_air() // Check if we're standing in an oxygenless environment
+	if(!G || (G.gas[/datum/gas/oxygen] < 1))
 		ExtinguishMob() //If there's no oxygen in the tile we're on, put out the fire
 		return 1
 

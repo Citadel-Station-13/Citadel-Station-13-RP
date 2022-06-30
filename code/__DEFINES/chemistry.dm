@@ -20,6 +20,7 @@
 /// How much energy does it take to synthesize 1 unit of chemical, in Joules.
 #define CHEM_SYNTH_ENERGY 500
 // Some on_mob_life() procs check for alien races.
+// TODO: better way? flags? we won't possibly need more than 24 right...?
 #define IS_DIONA   1
 #define IS_VOX     2
 #define IS_SKRELL  3
@@ -34,6 +35,7 @@
 #define IS_ALRAUNE 14
 #define IS_APIDAEN 15
 #define IS_XENOHYBRID 16
+#define IS_MOTH		17
 
 /// Inaprovaline
 #define CE_STABLE "stable"
@@ -83,6 +85,11 @@ var/list/cheartstopper = list("potassium_chloride")                       // Thi
 #define MAX_UNITS_PER_BOTTLE 60
 ///Max length of a custom pill/condiment/whatever
 #define MAX_CUSTOM_NAME_LEN 64
+
+///Syringe
+#define SYRINGE_DRAW 0
+#define SYRINGE_INJECT 1
+#define SYRINGE_BROKEN 2
 
 //reagents_holder_flags defines
 ///Makes it possible to add reagents through droppers and syringes.

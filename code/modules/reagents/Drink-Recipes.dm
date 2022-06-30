@@ -16,11 +16,18 @@
 	required_reagents = list("water" = 5, "teapowder" = 1)
 	result_amount = 5
 
+/datum/chemical_reaction/drinks/greentea
+	name = "Green Tea"
+	id = "greentea"
+	result = "greentea"
+	required_reagents = list("water" = 5, "matchapowder" = 1)
+	result_amount = 5
+
 /datum/chemical_reaction/drinks/hot_coco
 	name = "Hot Coco"
 	id = "hot_coco"
 	result = "hot_coco"
-	required_reagents = list("water" = 5, "coco" = 1)
+	required_reagents = list("milk" = 5, "coco" = 1)
 	result_amount = 5
 
 /datum/chemical_reaction/drinks/grapejuice
@@ -62,7 +69,7 @@
 	name = "Patron"
 	id = "patron"
 	result = "patron"
-	required_reagents = list("tequilla" = 10, MAT_SILVER = 1)
+	required_reagents = list("tequila" = 10, MAT_SILVER = 1)
 	result_amount = 10
 
 /datum/chemical_reaction/drinks/bilk
@@ -256,14 +263,14 @@
 	name = "Brave Bull"
 	id = "bravebull"
 	result = "bravebull"
-	required_reagents = list("tequilla" = 2, "kahlua" = 1)
+	required_reagents = list("tequila" = 2, "kahlua" = 1)
 	result_amount = 3
 
-/datum/chemical_reaction/drinks/tequilla_sunrise
-	name = "Tequilla Sunrise"
-	id = "tequillasunrise"
-	result = "tequillasunrise"
-	required_reagents = list("tequilla" = 1, "orangejuice" = 2)
+/datum/chemical_reaction/drinks/tequila_sunrise
+	name = "Tequila Sunrise"
+	id = "tequilasunrise"
+	result = "tequilasunrise"
+	required_reagents = list("tequila" = 1, "orangejuice" = 2)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/phoron_special
@@ -333,21 +340,21 @@
 	name = "Margarita"
 	id = "margarita"
 	result = "margarita"
-	required_reagents = list("tequilla" = 1, "limejuice" = 2)
+	required_reagents = list("tequila" = 1, "limejuice" = 2)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/longislandicedtea
 	name = "Long Island Iced Tea"
 	id = "longislandicedtea"
 	result = "longislandicedtea"
-	required_reagents = list("vodka" = 1, "gin" = 1, "tequilla" = 1, "cubalibre" = 3)
+	required_reagents = list("vodka" = 1, "gin" = 1, "tequila" = 1, "cubalibre" = 3)
 	result_amount = 6
 
 /datum/chemical_reaction/drinks/icedtea
 	name = "Long Island Iced Tea"
 	id = "longislandicedtea"
 	result = "longislandicedtea"
-	required_reagents = list("vodka" = 1, "gin" = 1, "tequilla" = 1, "cubalibre" = 3)
+	required_reagents = list("vodka" = 1, "gin" = 1, "tequila" = 1, "cubalibre" = 3)
 	result_amount = 6
 
 /datum/chemical_reaction/drinks/threemileisland
@@ -426,6 +433,20 @@
 	result = "demonsblood"
 	required_reagents = list("rum" = 3, "spacemountainwind" = 1, "blood" = 1, "dr_gibb" = 1)
 	result_amount = 6
+
+/datum/chemical_reaction/drinks/narsour //wanted to keep these near the other blood cocktails - Doom
+	name = "Nar'Sour"
+	id = "narsour"
+	result = "narsour"
+	required_reagents = list("blood" = 1, "demonsblood" = 1, "lemonjuice" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/narsian
+	name = "Nar'Sian"
+	id = "narsian"
+	result = "narsian"
+	required_reagents = list("narsour" = 1, "thebestboy" = 1)
+	result_amount = 2
 
 /datum/chemical_reaction/drinks/booger
 	name = "Booger"
@@ -877,7 +898,7 @@
 	name = "Erebus Moonrise"
 	id = "erebusmoonrise"
 	result = "erebusmoonrise"
-	required_reagents = list("whiskey" = 1, "vodka" = 1, "tequilla" = 1)
+	required_reagents = list("whiskey" = 1, "vodka" = 1, "tequila" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/balloon
@@ -926,7 +947,7 @@
 	name = "Binman Bliss"
 	id = "binmanbliss"
 	result = "binmanbliss"
-	required_reagents = list("sake" = 1, "tequilla" = 1)
+	required_reagents = list("sake" = 1, "tequila" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/drinks/chrysanthemum
@@ -1103,7 +1124,7 @@
 	name = "Paloma"
 	id = "paloma"
 	result = "paloma"
-	required_reagents = list("orangejuice" = 1, "sodawater" = 1, "tequilla" = 1)
+	required_reagents = list("orangejuice" = 1, "sodawater" = 1, "tequila" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/mojito
@@ -1575,7 +1596,7 @@
 /datum/chemical_reaction/drink/desiretodie
 	name = "A Desire to Die"
 	id = "desiretodie"
-	result = "desire to die"
+	result = "desiretodie"
 	required_reagents = list("deathbell" = 1, "nuclearwaste" = 1)
 	result_amount = 2
 
@@ -1683,3 +1704,67 @@
 	result = "royaljelly"
 	required_reagents = list("winebrandy" = 2, "honey" = 3)
 	result_amount = 5
+
+/datum/chemical_reaction/drinks/coquito
+	name = "Coquito"
+	id = "coquito"
+	result = "coquito"
+	required_reagents = list("firepunch" = 2, "coconutmilk" = 3)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/horchata
+	name = "Horchata"
+	id = "horchata"
+	result = "horchata"
+	required_reagents = list("sugar" = 2, "coconutmilk" = 3)
+	catalysts = list("rice" = 5)	//The rice isn't used up in horchata. The leftover rice is often reused in other dishes, typically stuff that pairs well with its coconut/cinnamon flavors like rice pudding.
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/milktea
+	name = "Milk Tea"
+	id = "milktea"
+	result = "milktea"
+	required_reagents = list("milk" = 2, "sweettea" = 3)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/honeybubbletea
+	name = "Honey Bubble Tea"
+	id = "honeybubbletea"
+	result = "honeybubbletea"
+	required_reagents = list("milktea" = 5, "honey" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/matchabubbletea
+	name = "Matcha Bubble Tea"
+	id = "matchabubbletea"
+	result = "matchabubbletea"
+	required_reagents = list("milktea" = 5, "matchapowder" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/tarobubbletea
+	name = "Taro Bubble Tea"
+	id = "tarobubbletea"
+	result = "tarobubbletea"
+	required_reagents = list("milktea" = 5, "taropowder" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/cocoabubbletea
+	name = "Chocolate Bubble Tea"
+	id = "cocoabubbletea"
+	result = "cocoabubbletea"
+	required_reagents = list("milktea" = 5, "coco" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/mochabubbletea
+	name = "Matcha Bubble Tea"
+	id = "matchabubbletea"
+	result = "matchabubbletea"
+	required_reagents = list("chocobubbletea" = 5, "coffee" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/pinacolada
+	name = "Piña Colada"
+	id = "pinacolada"
+	result = "pinacolada"
+	required_reagents = list("rum" = 1, "pineapplejuice" = 1, "coconutmilk" = 1, "ice" = 1)
+	result_amount = 3

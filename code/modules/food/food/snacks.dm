@@ -309,6 +309,36 @@
 	reagents.add_reagent("protein", 1)
 	bitesize = 2
 
+/obj/item/reagent_containers/food/snacks/spunow
+	name = "spunoW bar"
+	desc = "Sticky, sweet coconut covered in dark chocolate."
+	icon_state = "spunow"
+	trash = /obj/item/trash/candy
+	filling_color = "#d6d6d6"
+	nutriment_amt = 3
+	nutriment_desc = list("chocolate" = 2, "coconut" = 2)
+
+/obj/item/reagent_containers/food/snacks/spunow/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("coconutmilk", 4)
+	reagents.add_reagent("protein", 1)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/glad2nut
+	name = "Glad2Nut bar"
+	desc = "Sticky, sweet coconut and almonds covered in milk chocolate."
+	icon_state = "glad2nut"
+	trash = /obj/item/trash/candy
+	filling_color = "#d6d6d6"
+	nutriment_amt = 3
+	nutriment_desc = list("chocolate" = 2, "coconut" = 2, "almond" = 1)
+
+/obj/item/reagent_containers/food/snacks/glad2nut/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("coconutmilk", 4)
+	reagents.add_reagent("protein", 1)
+	bitesize = 2
+
 /obj/item/reagent_containers/food/snacks/candy/proteinbar // Buff 17 >> 21
 	name = "protein bar"
 	desc = "SwoleMAX brand protein bars, guaranteed to get you feeling perfectly overconfident."
@@ -382,17 +412,17 @@
 	nutriment_desc = list("sugar" = 3, "protein" = 2)
 	slot_flags = SLOT_MASK
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/masks.dmi',
-		SPECIES_VOX = 'icons/mob/clothing/species/vox/masks.dmi',
-		SPECIES_TAJ = 'icons/mob/clothing/species/tajaran/mask_vr.dmi',
-		SPECIES_UNATHI = 'icons/mob/clothing/species/unathi/mask_vr.dmi',
-		SPECIES_SERGAL = 'icons/mob/clothing/species/sergal/mask_vr.dmi',
-		SPECIES_NEVREAN = 'icons/mob/clothing/species/nevrean/mask_vr.dmi',
-		SPECIES_ZORREN_HIGH = 'icons/mob/clothing/species/fox/mask_vr.dmi',
-		SPECIES_ZORREN_FLAT = 'icons/mob/clothing/species/fennec/mask_vr.dmi',
-		SPECIES_AKULA = 'icons/mob/clothing/species/akula/mask_vr.dmi',
-		SPECIES_VULPKANIN = 'icons/mob/clothing/species/vulpkanin/mask.dmi',
-		SPECIES_XENOCHIMERA = 'icons/mob/clothing/species/tajaran/mask_vr.dmi'
+		SPECIES_AKULA       = 'icons/mob/clothing/species/akula/mask.dmi',
+		SPECIES_NEVREAN     = 'icons/mob/clothing/species/nevrean/mask.dmi',
+		SPECIES_SERGAL      = 'icons/mob/clothing/species/sergal/mask.dmi',
+		SPECIES_TAJ         = 'icons/mob/clothing/species/tajaran/mask.dmi',
+		SPECIES_TESHARI     = 'icons/mob/clothing/species/teshari/masks.dmi',
+		SPECIES_UNATHI      = 'icons/mob/clothing/species/unathi/mask.dmi',
+		SPECIES_VOX         = 'icons/mob/clothing/species/vox/masks.dmi',
+		SPECIES_VULPKANIN   = 'icons/mob/clothing/species/vulpkanin/mask.dmi',
+		SPECIES_XENOCHIMERA = 'icons/mob/clothing/species/tajaran/mask.dmi',
+		SPECIES_ZORREN_FLAT = 'icons/mob/clothing/species/fennec/mask.dmi',
+		SPECIES_ZORREN_HIGH = 'icons/mob/clothing/species/fox/mask.dmi',
 		)
 /obj/item/reagent_containers/food/snacks/dtreat/Initialize(mapload)
 	. = ..()
@@ -4090,7 +4120,7 @@ END CITADEL CHANGE */
 		. = ..()
 		reagents.add_reagent("protein", 6)
 		reagents.add_reagent("batter", 1.7)
-		reagents.add_reagent("oil", 1.5)
+		reagents.add_reagent("cooking_oil", 1.5)
 		bitesize = 2
 
 /obj/item/reagent_containers/food/snacks/jalapeno_poppers
@@ -4106,7 +4136,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/jalapeno_poppers/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("batter", 2)
-	reagents.add_reagent("oil", 2)
+	reagents.add_reagent("cooking_oil", 2)
 
 /obj/item/reagent_containers/food/snacks/mouseburger
 	name = "mouse burger"
@@ -4140,7 +4170,7 @@ END CITADEL CHANGE */
 	. = ..()
 	reagents.add_reagent("protein", 6)
 	reagents.add_reagent("beerbatter", 2)
-	reagents.add_reagent("oil", 1)
+	reagents.add_reagent("cooking_oil", 1)
 	bitesize = 1.5
 
 /obj/item/reagent_containers/food/snacks/fries
@@ -4149,7 +4179,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/fries/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("oil", 1.2)//This is mainly for the benefit of adminspawning
+	reagents.add_reagent("cooking_oil", 1.2)//This is mainly for the benefit of adminspawning
 	bitesize = 2
 
 /obj/item/reagent_containers/food/snacks/microchips
@@ -4199,7 +4229,7 @@ END CITADEL CHANGE */
 	. = ..()
 	reagents.add_reagent("batter", 6.5)
 	coating = reagents.get_reagent("batter")
-	reagents.add_reagent("oil", 4)
+	reagents.add_reagent("cooking_oil", 4)
 	bitesize = 2
 
 /obj/item/reagent_containers/food/snacks/pizzacrunchslice

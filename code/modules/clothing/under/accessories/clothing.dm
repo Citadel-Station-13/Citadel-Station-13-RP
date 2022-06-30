@@ -59,7 +59,7 @@
 	slot = ACCESSORY_SLOT_OVER
 
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/suit.dmi'
+		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/suits.dmi'
 		)
 
 /obj/item/clothing/accessory/poncho/equipped(mob/user, slot) //Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
@@ -67,7 +67,7 @@
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.wear_suit == src)
 		if(H.species.name == SPECIES_TESHARI)
-			icon_override = 'icons/mob/clothing/species/teshari/suit.dmi'
+			icon_override = 'icons/mob/clothing/species/teshari/suits.dmi'
 		else if(H.species.name == SPECIES_VOX)
 			icon_override = 'icons/mob/clothing/species/vox/ties.dmi'
 		else
@@ -537,3 +537,18 @@
 	name = "Mekkyaku turtleneck"
 	desc = "A sleek black turtleneck sweater with a bright red stripe knit into the fabric."
 	icon_state = "mekkyaku"
+
+/obj/item/clothing/accessory/armsocks
+	name = "Stirrup Sleeves"
+	desc = "A pair of fingerless, full arm sleeves. Perfect for winter."
+	icon_state = "armsock"
+
+/obj/item/clothing/accessory/armsock_left
+	name = "Stirrup Sleeve"
+	desc = "A single of fingerless, full arm sleeves. Perfect for winter. This one is for the left arm."
+	icon_state = "armsock_left"
+
+/obj/item/clothing/accessory/armsock_right
+	name = "Stirrup Sleeve"
+	desc = "A single of fingerless, full arm sleeves. Perfect for winter. This one is for the right arm."
+	icon_state = "armsock_right"
