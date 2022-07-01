@@ -1708,8 +1708,8 @@
 
 /datum/chemical_reaction/drinks/mochabubbletea
 	name = "Matcha Bubble Tea"
-	id = "matchabubbletea"
-	result = "matchabubbletea"
+	id = "mochaabubbletea"
+	result = "mochabubbletea"
 	required_reagents = list("chocobubbletea" = 5, "coffee" = 1)
 	result_amount = 5
 

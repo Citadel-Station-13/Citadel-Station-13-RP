@@ -1197,16 +1197,16 @@ End Citadel Change */
 /datum/reagent/drink/tea/icetea/milktea/mochabubbletea
 	name = "Mocha Bubble Tea"
 	id = "mochabubbletea"
-	description = "Super sweet mix of milk, tea, coffee, and chocolate, topped off with a generaous helping of whipped cream."
+	description = "Super sweet mix of milk, tea, coffee, and chocolate, topped off with a generous helping of whipped cream."
 	taste_description = "barista's ire and sugarmilk overload"
 	color = "#5c2c0c"
 
 	glass_name = "Mocha Bubble Tea"
-	glass_desc = "Super sweet mix of milk, tea, coffee, and chocolate, topped off with a generaous helping of whipped cream. That seems like a lot of sugar. You're going to put that in you?"
+	glass_desc = "Super sweet mix of milk, tea, coffee, and chocolate, topped off with a generous helping of whipped cream. That seems like a lot of sugar. You're going to put that in you?"
 
 	cup_icon_state = "cup_tea"
 	cup_name = "Cup of Mocha Bubble Tea"
-	cup_desc = "Super sweet mix of milk, tea, coffee, and chocolate, topped off with a generaous helping of whipped cream. That seems like a lot of sugar. You're going to put that in you?"
+	cup_desc = "Super sweet mix of milk, tea, coffee, and chocolate, topped off with a generous helping of whipped cream. That seems like a lot of sugar. You're going to put that in you?"
 
 /datum/reagent/drink/coconutwater
 	name = "Coconut Water"
