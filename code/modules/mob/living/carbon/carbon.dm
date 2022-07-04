@@ -348,3 +348,6 @@
 	if(wear_mask)
 		if(wear_mask.flags_inv & HIDEEYES)
 			LAZYOR(., SLOT_EYES)
+
+/mob/living/carbon/camera_visual_data(datum/actor)
+	return "[name] - they [pose]"
