@@ -269,13 +269,12 @@
 		return
 
 	face_atom(A)
-	if(!isobserver(src) && !isturf(A) && A != src)
-		if(A.loc != src)
-			for(var/mob/M in viewers(4, src))
-				if(M == src || M.is_blind())
-					continue
-				if(M.client && M.client.is_preference_enabled(/datum/client_preference/examine_look))
-					to_chat(M, SPAN_TINYNOTICE("<b>\The [src]</b> looks at \the [A]."))
+	if(!isobserver(src) && !isturf(A) && (get_top_level_atom(A) != src) && get_turf(A))
+		for(var/mob/M in viewers(4, src))
+			if(M == src || M.is_blind())
+				continue
+			if(M.client && M.client.is_preference_enabled(/datum/client_preference/examine_look))
+				to_chat(M, SPAN_TINYNOTICE("<b>\The [src]</b> looks at \the [A]."))
 
 	var/list/result
 	if(client)

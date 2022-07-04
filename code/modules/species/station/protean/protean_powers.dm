@@ -48,8 +48,8 @@
 			organs_by_name[choice] = new_eo
 			new_eo.robotize(synthetic ? synthetic.company : null) //Use the base we started with
 			regenerate_icons()
+			visible_message("<B>[src]</B>'s tendrils solidify into a [new_eo].")
 		active_regen = FALSE
-		visible_message("<B>[src]</B>'s tendrils solidify into a [choice].")
 		// nano_outofblob(blob)  No longer needed as we're not going to blob
 		return
 
@@ -76,7 +76,7 @@
 		return //Lost it meanwhile
 
 	eo.robotize(manu_choice)
-	visible_message("<B>[src]</B>'s [choice] loses its shape, then reforms.")
+	visible_message("<B>[src]</B>'s [eo] subtly contorts.")
 	update_icons_body()
 
 ////

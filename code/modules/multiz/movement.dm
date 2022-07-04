@@ -505,16 +505,16 @@
 		back.handleParachute()
 		return TRUE
 	if(s_store && s_store.isParachute())
-		back.handleParachute()
+		s_store.handleParachute()
 		return TRUE
 	if(belt && belt.isParachute())
-		back.handleParachute()
+		belt.handleParachute()
 		return TRUE
 	if(wear_suit && wear_suit.isParachute())
-		back.handleParachute()
+		wear_suit.handleParachute()
 		return TRUE
 	if(w_uniform && w_uniform.isParachute())
-		back.handleParachute()
+		w_uniform.handleParachute()
 		return TRUE
 	else
 		return parachuting

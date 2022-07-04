@@ -246,8 +246,8 @@
 	desc = "Refills pepper spray canisters."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "peppertank"
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	amount_per_transfer_from_this = 45
 
 /obj/structure/reagent_dispensers/peppertank/Initialize(mapload)
@@ -262,7 +262,7 @@
 	icon = 'icons/obj/vending.dmi'
 	icon_state = "water_cooler"
 	possible_transfer_amounts = null
-	anchored = 1
+	anchored = TRUE
 	var/bottle = 0
 	var/cups = 0
 	var/cupholder = 0
@@ -418,7 +418,8 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "virusfoodtank"
 	amount_per_transfer_from_this = 10
-	anchored = 1
+	anchored = TRUE
+	density = FALSE
 
 /obj/structure/reagent_dispensers/virusfood/Initialize(mapload)
 	. = ..()
@@ -430,7 +431,8 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "acidtank"
 	amount_per_transfer_from_this = 10
-	anchored = 1
+	anchored = TRUE
+	density = FALSE
 
 /obj/structure/reagent_dispensers/acid/Initialize(mapload)
 	. = ..()
@@ -478,7 +480,7 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "oiltank"
 	amount_per_transfer_from_this = 10
-	anchored = 1
+	anchored = TRUE
 
 /obj/structure/reagent_dispensers/oil/Initialize(mapload)
 	. = ..()

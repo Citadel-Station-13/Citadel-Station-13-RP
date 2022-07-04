@@ -46,9 +46,6 @@
 		return
 
 	var/newturf = get_turf(video_source)
-	if(!is_on_same_plane_or_station(get_z(newturf), get_z(src)))
-		show_static()
-		return
 
 	var/obj/item/communicator/communicator = video_source.loc
 	if(istype(communicator))
@@ -69,10 +66,6 @@
 
 	// We get a new turf in case they've moved in the last half decisecond (it's BYOND, it might happen)
 	last_camera_turf = get_turf(video_source)
-
-	if(!is_on_same_plane_or_station(get_z(last_camera_turf), get_z(src)))
-		show_static()
-		return
 
 	var/list/visible_turfs = list()
 	var/list/visible_things = view(video_range, last_camera_turf)

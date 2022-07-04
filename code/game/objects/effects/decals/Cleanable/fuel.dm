@@ -2,7 +2,8 @@
 	//Liquid fuel is used for things that used to rely on volatile fuels or phoron being contained to a couple tiles.
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "fuel"
-	anchored = 1
+	plane = DIRTY_PLANE
+	anchored = TRUE
 	var/amount = 1
 
 /obj/effect/decal/cleanable/liquid_fuel/Initialize(mapload, amt = 1, nologs = TRUE)
@@ -12,13 +13,13 @@
 		log_game("Liquid fuel has spilled in [newLoc.loc.name] ([newLoc.x],[newLoc.y],[newLoc.z])")
 	src.amount = amt
 
-	var/has_spread = 0
+	var/has_spread = FALSE
 	//Be absorbed by any other liquid fuel in the tile.
 	for(var/obj/effect/decal/cleanable/liquid_fuel/other in newLoc)
 		if(other != src)
 			other.amount += src.amount
 			other.Spread()
-			has_spread = 1
+			has_spread = TRUE
 			break
 
 	. = ..()
@@ -29,9 +30,11 @@
 
 /obj/effect/decal/cleanable/liquid_fuel/proc/Spread(exclude=list())
 	//Allows liquid fuels to sometimes flow into other tiles.
-	if(amount < 15) return //lets suppose welder fuel is fairly thick and sticky. For something like water, 5 or less would be more appropriate.
+	if(amount < 15)
+		return //lets suppose welder fuel is fairly thick and sticky. For something like water, 5 or less would be more appropriate.
 	var/turf/simulated/S = loc
-	if(!istype(S)) return
+	if(!istype(S))
+		return
 	for(var/d in GLOB.cardinal)
 		var/turf/simulated/target = get_step(src,d)
 		var/turf/simulated/origin = get_turf(src)
@@ -48,13 +51,13 @@
 
 /obj/effect/decal/cleanable/liquid_fuel/flamethrower_fuel
 	icon_state = "mustard"
-	anchored = 0
+	anchored = FALSE
 
 /obj/effect/decal/cleanable/liquid_fuel/flamethrower_fuel/Initialize(mapload, amt = 1, d = 0)
 	setDir(d) //Setting this direction means you won't get torched by your own flamethrower.
 	if(istype(loc, /turf/simulated))
 		var/turf/simulated/T = loc
-		T.hotspot_expose((T20C*2) + 380,500) //Ignite the fuel.
+		T.hotspot_expose((T20C*2) + 380, 500) //Ignite the fuel.
 	. = ..()
 
 /obj/effect/decal/cleanable/liquid_fuel/flamethrower_fuel/Spread()

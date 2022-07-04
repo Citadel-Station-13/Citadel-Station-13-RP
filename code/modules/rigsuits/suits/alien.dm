@@ -147,7 +147,7 @@
 /obj/item/rig/protean/relaymove(mob/user, var/direction)
 	if(user.stat || user.stunned)
 		return
-	forced_move(direction, user, FALSE)
+	forced_move(direction, user, FALSE, TRUE)
 
 /obj/item/rig/protean/check_suit_access(mob/living/carbon/human/user)
 	if(user == myprotean)
