@@ -444,9 +444,9 @@
 	return
 
 
-// called when holder is expelled from a disposal
-// should usually only occur if the pipe network is modified
-/obj/machinery/disposal/proc/expel(var/obj/structure/disposalholder/H)
+/// Called when holder is expelled from a disposal.
+/// Should usually only occur if the pipe network is modified.
+/obj/machinery/disposal/proc/expel(obj/structure/disposalholder/H)
 
 	var/turf/target
 	playsound(src, 'sound/machines/hiss.ogg', 50, 0, 0)
@@ -463,6 +463,15 @@
 
 		H.vent_gas(loc)
 		qdel(H)
+
+/obj/machinery/disposal/hitby(atom/movable/yeeted_atom)
+	. = ..()
+	if(istype(yeeted_atom, /obj/item) && !istype(yeeted_atom, /obj/item/projectile))
+		if(prob(75))
+			yeeted_atom.forceMove(src)
+			visible_message("\The [yeeted_atom] lands in \the [src].")
+		else
+			visible_message("\The [yeeted_atom] bounces off of \the [src]'s rim!")
 
 /obj/machinery/disposal/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover, /obj/item/projectile))

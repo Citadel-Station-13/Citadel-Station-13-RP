@@ -361,7 +361,7 @@
 	reagents.add_reagent("matchapowder", 5)
 
 /obj/item/reagent_containers/food/condiment/small/packet/taropowder
-	name = "matcha powder packet"
+	name = "taro powder packet"
 	desc = "Contains 5u of taro powder."
 
 /obj/item/reagent_containers/food/condiment/small/packet/taropowder/Initialize(mapload)

@@ -148,7 +148,7 @@
 	return ..()
 
 // Called by Life().
-/mob/living/proc/handle_modifiers()
+/mob/living/handle_modifiers(component_signal)
 	if(!modifiers.len) // No work to do.
 		return
 	// Get rid of anything we shouldn't have.

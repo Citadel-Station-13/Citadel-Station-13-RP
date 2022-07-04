@@ -7,7 +7,7 @@
 	exclaim_verb = "rasps"
 	whisper_verb = "clicks"
 	signlang_verb = list("")
-	colour = "body"
+	colour = "luinimma"
 	key = "e"
 	native = TRUE
 	flags = NONE

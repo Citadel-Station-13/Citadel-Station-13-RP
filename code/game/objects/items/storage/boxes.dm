@@ -480,6 +480,12 @@
 		/obj/item/light/bulb = 8
 		)
 
+/obj/item/storage/box/lights/fairy
+	name = "box of replacement fairy bulbs"
+	icon_state = "lightfairy"
+	can_hold = list(/obj/item/light/bulb/fairy)
+	starts_with = list(/obj/item/light/bulb/fairy = 24)
+
 //Colored Lights
 /obj/item/storage/box/lights/bulbs_colored
 	name = "box of colored bulbs"

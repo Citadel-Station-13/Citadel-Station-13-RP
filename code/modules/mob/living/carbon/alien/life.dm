@@ -1,22 +1,19 @@
 // Alien larva are quite simple.
-/mob/living/carbon/alien/Life()
-
-	set invisibility = 0
-	set background = 1
-
-	if (transforming)	return
-	if(!loc)			return
-
-	..()
-
-	if (stat != DEAD) //still breathing
-		// GROW!
-		update_progression()
-
+/mob/living/carbon/alien/Life(seconds, times_fired)
 	blinded = null
+	. = ..()
+	if(.)
+		return
 
-	//Status updates, death etc.
-	update_icons()
+	if(!transforming)
+		update_icons()
+
+/mob/living/carbon/alien/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
+	if(stat != DEAD)
+		update_progression()
 
 /mob/living/carbon/alien/handle_mutations_and_radiation()
 

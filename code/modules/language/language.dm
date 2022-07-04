@@ -10,28 +10,43 @@
 	/// uid
 	var/id
 	// TODO: ref languages by id in code, so we can rename as needed
-	var/name = "an unknown language"  // Fluff name of language if any.
-	var/desc = "A language."          // Short description for 'Check Languages'.
-	var/speech_verb = "says"          // 'says', 'hisses', 'farts'.
-	var/ask_verb = "asks"             // Used when sentence ends in a ?
-	var/exclaim_verb = "exclaims"     // Used when sentence ends in a !
-	var/whisper_verb                  // Optional. When not specified speech_verb + quietly/softly is used instead.
-	var/signlang_verb = list("signs", "gestures") // list of emotes that might be displayed if this language has NONVERBAL or SIGNLANG flags
-	var/colour = "body"               // CSS style to use for strings in this language.
-	var/key = "x"                     // Character used to speak in language eg. :o for Unathi.
-	var/flags = 0                     // Various language flags.
-	var/native                        // If set, non-native speakers will have trouble speaking.
-	var/list/syllables                // Used when scrambling text for a non-speaker.
-	var/list/space_chance = 55        // Likelihood of getting a space in the random scramble string
-	var/machine_understands = 1		  // Whether machines can parse and understand this language
-	var/list/partial_understanding	  // List of languages that can /somehwat/ understand it, format is: name = chance of understanding a word
+	/// Fluff name of language if any.
+	var/name = "an unknown language"
+	/// Short description for 'Check Languages'.
+	var/desc = "A language."
+	/// 'says', 'hisses', 'farts'.
+	var/speech_verb = "says"
+	/// Used when sentence ends in a ?
+	var/ask_verb = "asks"
+	/// Used when sentence ends in a !
+	var/exclaim_verb = "exclaims"
+	/// Optional. When not specified speech_verb + quietly/softly is used instead.
+	var/whisper_verb
+	/// list of emotes that might be displayed if this language has NONVERBAL or SIGNLANG flags
+	var/signlang_verb = list("signs", "gestures")
+	/// CSS style to use for strings in this language.
+	var/colour = "body"
+	/// Character used to speak in language eg. :o for Unathi.
+	var/key = "x"
+	/// Various language flags.
+	var/flags = 0
+	/// If set, non-native speakers will have trouble speaking.
+	var/native
+	/// Used when scrambling text for a non-speaker.
+	var/list/syllables
+	/// Likelihood of getting a space in the random scramble string
+	var/list/space_chance = 55
+	/// Whether machines can parse and understand this language
+	var/machine_understands = 1
+	/// List of languages that can /somehwat/ understand it, format is: name = chance of understanding a word
+	var/list/partial_understanding
 	var/list/scramble_cache = list()
 
 /datum/language/New()
 	if(isnull(id))
 		id = ckey(name)
 
-/datum/language/proc/get_random_name(var/gender, name_count=2, syllable_count=4, syllable_divisor=2)
+/datum/language/proc/get_random_name(gender, name_count=2, syllable_count=4, syllable_divisor=2)
 	if(!syllables || !syllables.len)
 		if(gender==FEMALE)
 			return capitalize(pick(first_names_female)) + " " + capitalize(pick(last_names))
@@ -49,7 +64,7 @@
 
 	return "[trim(full_name)]"
 
-/datum/language/proc/scramble(var/input, var/list/known_languages)
+/datum/language/proc/scramble(input, list/known_languages)
 	var/understand_chance = 0
 	for(var/datum/language/L in known_languages)
 		if(partial_understanding && partial_understanding[L.name])
@@ -84,7 +99,7 @@
 
 	return scrambled_text
 
-/datum/language/proc/scramble_word(var/input)
+/datum/language/proc/scramble_word(input)
 	if(!syllables || !syllables.len)
 		return stars(input)
 
