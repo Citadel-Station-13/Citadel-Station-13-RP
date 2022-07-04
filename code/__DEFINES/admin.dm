@@ -81,3 +81,17 @@
 // LOG BROWSE TYPES
 #define BROWSE_ROOT_ALL_LOGS 1
 #define BROWSE_ROOT_CURRENT_LOGS 2
+
+/// magic helper for admin verb defs - id goes after /datum/admin_verb/ automatically, and must be unique.
+#define ADMIN_VERB_DEF(id, name, category, args...)	\
+/datum/admin_verb/##id{ 							\
+	verb_path = /datum/admin_verb/invoke_##id;		\
+	name = #name;									\
+	category = #category;							\
+}													\
+													\
+/datum/admin_verb/invoke_##id(##args){				\
+	set name = #name;								\
+	set category = #category;						\
+	Invoke(arglist(args));							\
+}

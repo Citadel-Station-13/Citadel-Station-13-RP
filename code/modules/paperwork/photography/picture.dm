@@ -14,8 +14,10 @@
  */
 /datum/picture
 	//!# Data
-	/// md5 - this is our GUID
-	var/md5
+	/// our hash
+	var/our_hash
+	/// asset hash
+	var/asset_hash
 	/// flags
 	var/picture_flags = NONE
 	/// asset - the data that comprises of this picture

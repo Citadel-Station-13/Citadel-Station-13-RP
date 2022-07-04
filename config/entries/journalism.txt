@@ -1,8 +1,23 @@
 ## Set to anything but 0 to enable picture store. Both SQL and a web server are required.
 PICTURE_STORE
 
+## picture storage dbtable name
+PICTURE_STORE_DBTABLE pictures
+
+## picture storage dbtable should use unified prefix
+PICTURE_STORE_DBTABLE_USE_UNIFIED
+
 ## Folder to save pictures to. In production, you probably don't want asset-store.
 PICTURE_STORE_WEBROOT data/asset-store/pictures/
 
 ## URL to grab pictures from.
 PICTURE_STORE_URL
+
+## enable newscasters - both SQL and a web server are required.
+NEWSCASTERS_ENABLED
+
+## newscaster dbtable name prefix
+NEWSCASTER_DBTABLE_PREFIX
+
+## newscaster dbtable should use unified prefix
+# NEWSCASTER_DBTABLE_USE_UNIFIED

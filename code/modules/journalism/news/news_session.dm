@@ -8,5 +8,6 @@
  *
  * if we end up doing that anyways, well, L i guess.
  */
-/datum/news_viewer
+/datum/news_session
+
 

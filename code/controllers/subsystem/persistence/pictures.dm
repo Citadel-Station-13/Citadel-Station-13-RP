@@ -7,7 +7,11 @@
  * sending format.
  */
 /datum/controller/subsystem/persistence
-	/// loaded pictures by md5
+	/// picture logging table name cache
+	var/picture_store_dbtable
+	/// picture logging enabled
+	var/picture_store_enabled
+	/// loaded pictures by hash
 	var/static/list/datum/picture/pictures_by_hash
 
 /**
@@ -34,4 +38,32 @@
  */
 /datum/controller/subsystem/persistence/proc/save_picture(datum/picture/P)
 
+/**
+ * hashes a picture
+ */
+/datum/controller/subsystem/persistence/proc/hash_picture(datum/picture/P)
+
+
+/datum/controller/subsystem/persistence/proc/picture_logging_active()
+	return CONFIG_GET(flag/picture_store)
+
+/datum/controller/subsystem/persistence/proc/picture_logging_table()
+	. = CONFIG_GET(string/picture_store_dbtable)
+	if(. == "DEFAULT")
+		#warn prefix table default + picture_store
+
+/datum/controller/subsystem/persistence/vv_edit_var(var_name, var_value)
+	switch(var_name)
+		if(NAMEOF(src, picture_store_dbtable))
+			return FALSE
+		if(NAMEOF(src, picture_store_enabled))
+			return FALSE
+	return ..()
+
+/datum/controller/subsystem/persistence/OnConfigLoad()
+	picture_store_dbtable = picture_logging_active() && picture_logging_table()
+	picture_store_enabled = !!picture_store_dbtable
+
 #warn impl all
+
+
