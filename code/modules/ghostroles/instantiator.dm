@@ -95,7 +95,7 @@
 		/datum/species/akula,
 		/datum/species/diona
 		// /datum/species/lizard,
-		// /datum/species/plasmaman,
+		// /datum/species/phoronoid,
 		// /datum/species/jelly,
 		// /datum/species/ipc
 	)
@@ -120,7 +120,7 @@
 	// 		new_name = random_unique_lizard_name()
 	// 	if(/datum/species/ethereal)
 	// 		new_name = random_unique_ethereal_name()
-	// 	if(/datum/species/plasmaman)
+	// 	if(/datum/species/phoronoid)
 	// 		new_name = random_unique_plasmaman_name()
 	// 	if(/datum/species/insect)
 	// 		new_name = random_unique_moth_name()

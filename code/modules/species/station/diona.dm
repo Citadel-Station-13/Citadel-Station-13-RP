@@ -2,38 +2,45 @@
 /datum/species/diona
 	name = SPECIES_DIONA
 	name_plural = "Dionaea"
-	icobase = 'icons/mob/human_races/r_diona.dmi'
-	deform = 'icons/mob/human_races/r_def_plant.dmi'
-	language = LANGUAGE_ROOTLOCAL
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/diona)
 	//primitive_form = "Nymph"
+
+	icobase      = 'icons/mob/species/diona/body.dmi'
+	deform       = 'icons/mob/species/diona/deformed_body.dmi'
+	preview_icon = 'icons/mob/species/diona/preview.dmi'
+
+	language = LANGUAGE_ROOTLOCAL
+	num_alternate_languages = 2
+	name_language = LANGUAGE_ROOTLOCAL
+	species_language = LANGUAGE_ROOTLOCAL
+	secondary_langs  = list(LANGUAGE_ROOTGLOBAL)
+	assisted_langs   = list(LANGUAGE_VOX)	// Diona are weird, let's just assume they can use basically any language.
+
 	slowdown = 2.5
-	snow_movement = -2 	//Ignore light snow
-	water_movement = -4	//Ignore shallow water
-	rarity_value = 3
+	snow_movement  = -2 // Ignore light snow
+	water_movement = -4 // Ignore shallow water
 	hud_type = /datum/hud_data/diona
 	siemens_coefficient = 0.3
 	show_ssd = "completely quiescent"
 	health_hud_intensity = 2.5
 	item_slowdown_mod = 0.1
 
-	num_alternate_languages = 2
-	name_language = LANGUAGE_ROOTLOCAL
-	species_language = LANGUAGE_ROOTLOCAL
-	secondary_langs = list(LANGUAGE_ROOTGLOBAL)
-	assisted_langs = list(LANGUAGE_VOX)	// Diona are weird, let's just assume they can use basically any language.
 	max_age = 300
 
 	economic_modifier = 4
 
-	blurb = "Commonly referred to (erroneously) as 'plant people', the Dionaea are a strange space-dwelling collective \
-	species hailing from Epsilon Ursae Minoris. Each 'diona' is a cluster of numerous cat-sized organisms called nymphs; \
-	there is no effective upper limit to the number that can fuse in gestalt, and reports exist	of the Epsilon Ursae \
-	Minoris primary being ringed with a cloud of singing space-station-sized entities.<br/><br/>The Dionaea coexist peacefully with \
-	all known species, especially the Skrell. Their communal mind makes them slow to react, and they have difficulty understanding \
-	even the simplest concepts of other minds. Their alien physiology allows them survive happily off a diet of nothing but light, \
-	water and other radiation."
+	blurb = {"
+	Commonly referred to (erroneously) as 'plant people', the Dionaea are a strange space-dwelling collective
+	species hailing from Epsilon Ursae Minoris. Each 'diona' is a cluster of numerous cat-sized organisms called nymphs;
+	there is no effective upper limit to the number that can fuse in gestalt, and reports exist	of the Epsilon Ursae
+	Minoris primary being ringed with a cloud of singing space-station-sized entities.
+
+	The Dionaea coexist peacefully with all known species, especially the Skrell. Their communal mind makes them
+	slow to react, and they have difficulty understanding even the simplest concepts of other minds. Their alien
+	physiology allows them survive happily off a diet of nothing but light, water and other radiation.
+	"}
+	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Dionea"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/dionaea)
+	rarity_value   = 3
 
 	has_organ = list(
 		O_NUTRIENT = /obj/item/organ/internal/diona/nutrients,
@@ -42,29 +49,35 @@
 		O_RESPONSE = /obj/item/organ/internal/diona/node,
 		O_GBLADDER = /obj/item/organ/internal/diona/bladder,
 		O_POLYP    = /obj/item/organ/internal/diona/polyp,
-		O_ANCHOR   = /obj/item/organ/internal/diona/ligament
-		)
+		O_ANCHOR   = /obj/item/organ/internal/diona/ligament,
+	)
 
 	has_limbs = list(
-		BP_TORSO =  list("path" = /obj/item/organ/external/diona/chest),
-		BP_GROIN =  list("path" = /obj/item/organ/external/diona/groin),
-		BP_HEAD  =  list("path" = /obj/item/organ/external/head/no_eyes/diona),
-		BP_L_ARM =  list("path" = /obj/item/organ/external/diona/arm),
-		BP_R_ARM =  list("path" = /obj/item/organ/external/diona/arm/right),
-		BP_L_LEG =  list("path" = /obj/item/organ/external/diona/leg),
-		BP_R_LEG =  list("path" = /obj/item/organ/external/diona/leg/right),
+		BP_TORSO  = list("path" = /obj/item/organ/external/diona/chest),
+		BP_GROIN  = list("path" = /obj/item/organ/external/diona/groin),
+		BP_HEAD   = list("path" = /obj/item/organ/external/head/no_eyes/diona),
+		BP_L_ARM  = list("path" = /obj/item/organ/external/diona/arm),
+		BP_R_ARM  = list("path" = /obj/item/organ/external/diona/arm/right),
+		BP_L_LEG  = list("path" = /obj/item/organ/external/diona/leg),
+		BP_R_LEG  = list("path" = /obj/item/organ/external/diona/leg/right),
 		BP_L_HAND = list("path" = /obj/item/organ/external/diona/hand),
 		BP_R_HAND = list("path" = /obj/item/organ/external/diona/hand/right),
 		BP_L_FOOT = list("path" = /obj/item/organ/external/diona/foot),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/diona/foot/right)
-		)
+		BP_R_FOOT = list("path" = /obj/item/organ/external/diona/foot/right),
+	)
 
 	dispersed_eyes = TRUE//Its a bunch of nymphes that means it has eyes everywhere
 
+	unarmed_types = list(
+		/datum/unarmed_attack/stomp,
+		/datum/unarmed_attack/kick,
+		/datum/unarmed_attack/diona,
+	)
+
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/diona_split_nymph,
-		/mob/living/carbon/human/proc/regenerate
-		)
+		/mob/living/carbon/human/proc/regenerate,
+	)
 
 	warning_low_pressure = 10
 	hazard_low_pressure = -1
@@ -90,21 +103,20 @@
 
 	genders = list(PLURAL)
 
-	wikilink="https://citadel-station.net/wikiRP/index.php?title=Race:_Dionea"
 
-/datum/species/diona/can_understand(var/mob/other)
+/datum/species/diona/can_understand(mob/other)
 	var/mob/living/carbon/alien/diona/D = other
 	if(istype(D))
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
-/datum/species/diona/equip_survival_gear(var/mob/living/carbon/human/H)
+/datum/species/diona/equip_survival_gear(mob/living/carbon/human/H)
 	if(H.backbag == 1)
 		H.equip_to_slot_or_del(new /obj/item/flashlight/flare(H), slot_r_hand)
 	else
 		H.equip_to_slot_or_del(new /obj/item/flashlight/flare(H.back), slot_in_backpack)
 
-/datum/species/diona/handle_death(var/mob/living/carbon/human/H)
+/datum/species/diona/handle_death(mob/living/carbon/human/H)
 
 	var/mob/living/carbon/alien/diona/S = new(get_turf(H))
 
@@ -112,7 +124,7 @@
 		H.mind.transfer_to(S)
 
 	if(H.isSynthetic())
-		H.visible_message("<span class='danger'>\The [H] collapses into parts, revealing a solitary diona nymph at the core.</span>")
+		H.visible_message(SPAN_DANGER("\The [H] collapses into parts, revealing a solitary diona nymph at the core."))
 		H.set_species(get_static_species_meta(/datum/species/human), skip = TRUE, force = TRUE)
 
 		for(var/obj/item/organ/internal/diona/Org in H.internal_organs) // Remove Nymph organs.
@@ -130,9 +142,13 @@
 		else
 			qdel(D)
 
-	H.visible_message("<span class='danger'>\The [H] splits apart with a wet slithering noise!</span>")
+	H.visible_message(
+		SPAN_DANGER("\The [H] splits apart with a wet slithering noise!"),
+		SPAN_NOTICE("You split apart with a wet slithering noise!"),
+		SPAN_HEAR("You hear a wet slithering noise!"),
+	)
 
-/datum/species/diona/handle_environment_special(var/mob/living/carbon/human/H)
+/datum/species/diona/handle_environment_special(mob/living/carbon/human/H)
 	if(H.inStasisNow())
 		return
 

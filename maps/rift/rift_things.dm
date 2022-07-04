@@ -509,3 +509,16 @@
 		if(Z.name == "Mining Outpost")
 			teleport_z = Z.z
 */
+
+///Some Spawners for Animals
+/obj/tether_away_spawner/lythios_animals
+	name = "Lythios Animal Spawner"
+	faction = "lythios"
+	atmos_comp = TRUE
+	prob_spawn = 100
+	mobs_to_pick_from = list(
+		/mob/living/simple_mob/animal/icegoat = 2,
+		/mob/living/simple_mob/animal/passive/woolie = 3,
+		/mob/living/simple_mob/animal/passive/furnacegrub
+	)
+
