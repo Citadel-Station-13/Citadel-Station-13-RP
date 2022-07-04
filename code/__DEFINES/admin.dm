@@ -94,4 +94,6 @@
 	set name = #name;								\
 	set category = #category;						\
 	Invoke(arglist(args));							\
-}
+}													\
+													\
+/datum/admin_verb/##id
