@@ -2464,6 +2464,7 @@
 #include "code\modules\journalism\news\helpers.dm"
 #include "code\modules\journalism\news\news_channel.dm"
 #include "code\modules\journalism\news\news_comment.dm"
+#include "code\modules\journalism\news\news_session.dm"
 #include "code\modules\journalism\news\news_network.dm"
 #include "code\modules\journalism\news\serializers\savefile.dm"
 #include "code\modules\jobs\job_types\station\supply\shaft_miner.dm"
