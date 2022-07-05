@@ -4627,6 +4627,9 @@
 /obj/effect/floor_decal/corner/mauve/bordercorner2{
 	dir = 4
 	},
+/obj/structure/sink/kitchen{
+	pixel_y = 28
+	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora)
 "dJS" = (
@@ -6845,6 +6848,19 @@
 /obj/machinery/reagentgrinder,
 /turf/simulated/floor/tiled/white,
 /area/rnd/chemistry_lab)
+"fFY" = (
+/obj/structure/janitorialcart,
+/obj/effect/floor_decal/corner/purple{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/purple{
+	dir = 10
+	},
+/obj/structure/sink/kitchen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled/steel,
+/area/janitor)
 "fGz" = (
 /obj/machinery/computer/area_atmos/tag,
 /obj/effect/floor_decal/borderfloor{
@@ -14774,6 +14790,21 @@
 	},
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
+"lDb" = (
+/obj/structure/mopbucket,
+/obj/item/mop,
+/obj/item/reagent_containers/glass/bucket,
+/obj/effect/floor_decal/corner/purple{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/purple{
+	dir = 10
+	},
+/obj/structure/sink/kitchen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled/steel,
+/area/janitor)
 "lDv" = (
 /turf/simulated/wall,
 /area/lawoffice)
@@ -22508,6 +22539,9 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 1
 	},
+/obj/structure/sink/kitchen{
+	pixel_y = 28
+	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology)
 "rga" = (
@@ -28520,6 +28554,9 @@
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
+	},
+/obj/structure/sink/kitchen{
+	pixel_y = 28
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora)
@@ -52054,7 +52091,7 @@ tWv
 iVB
 vbz
 cjy
-nkk
+lDb
 bsL
 fWS
 dwH
@@ -52636,7 +52673,7 @@ xZM
 nib
 dcR
 cjy
-dND
+fFY
 bsL
 eGS
 qst
