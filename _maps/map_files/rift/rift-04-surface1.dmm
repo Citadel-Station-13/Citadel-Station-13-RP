@@ -2122,6 +2122,19 @@
 /obj/structure/flora/ausbushes/brflowers,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rift/station/public_garden)
+"bTn" = (
+/obj/structure/janitorialcart,
+/obj/effect/floor_decal/corner/purple{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/purple{
+	dir = 10
+	},
+/obj/structure/sink/kitchen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled/steel,
+/area/janitor)
 "bTN" = (
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 1
@@ -6318,6 +6331,21 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
+"ffP" = (
+/obj/structure/mopbucket,
+/obj/item/mop,
+/obj/item/reagent_containers/glass/bucket,
+/obj/effect/floor_decal/corner/purple{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/purple{
+	dir = 10
+	},
+/obj/structure/sink/kitchen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled/steel,
+/area/janitor)
 "fge" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -6848,19 +6876,6 @@
 /obj/machinery/reagentgrinder,
 /turf/simulated/floor/tiled/white,
 /area/rnd/chemistry_lab)
-"fFY" = (
-/obj/structure/janitorialcart,
-/obj/effect/floor_decal/corner/purple{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/purple{
-	dir = 10
-	},
-/obj/structure/sink/kitchen{
-	pixel_y = 28
-	},
-/turf/simulated/floor/tiled/steel,
-/area/janitor)
 "fGz" = (
 /obj/machinery/computer/area_atmos/tag,
 /obj/effect/floor_decal/borderfloor{
@@ -14790,21 +14805,6 @@
 	},
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
-"lDb" = (
-/obj/structure/mopbucket,
-/obj/item/mop,
-/obj/item/reagent_containers/glass/bucket,
-/obj/effect/floor_decal/corner/purple{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/purple{
-	dir = 10
-	},
-/obj/structure/sink/kitchen{
-	pixel_y = 28
-	},
-/turf/simulated/floor/tiled/steel,
-/area/janitor)
 "lDv" = (
 /turf/simulated/wall,
 /area/lawoffice)
@@ -17717,7 +17717,7 @@
 "nEH" = (
 /obj/structure/sink/kitchen{
 	dir = 4;
-	pixel_x = -11
+	pixel_x = -14
 	},
 /turf/simulated/floor/wood,
 /area/maintenance/starboard)
@@ -22747,6 +22747,10 @@
 /area/medical/exam_room)
 "rrt" = (
 /obj/item/reagent_containers/glass/bucket/wood,
+/obj/structure/sink/kitchen{
+	dir = 8;
+	pixel_x = 14
+	},
 /turf/simulated/floor/tiled/steel,
 /area/security/prison)
 "rsj" = (
@@ -52091,7 +52095,7 @@ tWv
 iVB
 vbz
 cjy
-lDb
+ffP
 bsL
 fWS
 dwH
@@ -52673,7 +52677,7 @@ xZM
 nib
 dcR
 cjy
-fFY
+bTn
 bsL
 eGS
 qst
