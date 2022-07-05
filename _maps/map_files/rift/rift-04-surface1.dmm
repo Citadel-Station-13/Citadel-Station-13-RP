@@ -23206,6 +23206,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/trade_shop)
+"rGr" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/maintenance/starboard)
 "rGy" = (
 /obj/structure/table/standard,
 /obj/structure/frame,
@@ -53105,7 +53111,7 @@ tLG
 tLG
 tLG
 tLG
-cGn
+rGr
 kbe
 hgE
 hgE
