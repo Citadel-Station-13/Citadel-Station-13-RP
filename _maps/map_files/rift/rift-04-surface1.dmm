@@ -2122,19 +2122,6 @@
 /obj/structure/flora/ausbushes/brflowers,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rift/station/public_garden)
-"bTn" = (
-/obj/structure/janitorialcart,
-/obj/effect/floor_decal/corner/purple{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/purple{
-	dir = 10
-	},
-/obj/structure/sink/kitchen{
-	pixel_y = 28
-	},
-/turf/simulated/floor/tiled/steel,
-/area/janitor)
 "bTN" = (
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 1
@@ -6331,21 +6318,6 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
-"ffP" = (
-/obj/structure/mopbucket,
-/obj/item/mop,
-/obj/item/reagent_containers/glass/bucket,
-/obj/effect/floor_decal/corner/purple{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/purple{
-	dir = 10
-	},
-/obj/structure/sink/kitchen{
-	pixel_y = 28
-	},
-/turf/simulated/floor/tiled/steel,
-/area/janitor)
 "fge" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -17717,7 +17689,7 @@
 "nEH" = (
 /obj/structure/sink/kitchen{
 	dir = 4;
-	pixel_x = -14
+	pixel_x = -15
 	},
 /turf/simulated/floor/wood,
 /area/maintenance/starboard)
@@ -18920,6 +18892,21 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/exam_room)
+"osj" = (
+/obj/structure/mopbucket,
+/obj/item/mop,
+/obj/item/reagent_containers/glass/bucket,
+/obj/effect/floor_decal/corner/purple{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/purple{
+	dir = 10
+	},
+/obj/structure/sink/kitchen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled/steel,
+/area/janitor)
 "osC" = (
 /obj/structure/catwalk,
 /obj/structure/disposalpipe/segment{
@@ -22749,7 +22736,7 @@
 /obj/item/reagent_containers/glass/bucket/wood,
 /obj/structure/sink/kitchen{
 	dir = 8;
-	pixel_x = 14
+	pixel_x = 15
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/prison)
@@ -28033,6 +28020,19 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/security/lower)
+"vbC" = (
+/obj/structure/janitorialcart,
+/obj/effect/floor_decal/corner/purple{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/purple{
+	dir = 10
+	},
+/obj/structure/sink/kitchen{
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled/steel,
+/area/janitor)
 "vbL" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/disposalpipe/segment,
@@ -52095,7 +52095,7 @@ tWv
 iVB
 vbz
 cjy
-ffP
+osj
 bsL
 fWS
 dwH
@@ -52677,7 +52677,7 @@ xZM
 nib
 dcR
 cjy
-bTn
+vbC
 bsL
 eGS
 qst
