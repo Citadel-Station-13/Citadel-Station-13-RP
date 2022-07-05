@@ -90,6 +90,8 @@ What is the naming convention for planes or layers?
 	#define WATER_LAYER			3.0
 	///Snow and wallmounted/floormounted equipment
 	#define ABOVE_TURF_LAYER	3.1
+// todo: kill all these useless goddamn arbitrary planes and unify things to 3-5 of turf, floor, obj, mob, there is no excuse for this utter charade.
+#define DECAL_PLANE				-44
 //Obj planes
 #define OBJ_PLANE				-35
 	/// cleanable debris

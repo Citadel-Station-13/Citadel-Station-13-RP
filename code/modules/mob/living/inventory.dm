@@ -161,22 +161,6 @@
 
 
 
-/mob/living/equip_to_storage(obj/item/newitem)
-	// Try put it in their backpack
-	if(istype(src.back,/obj/item/storage))
-		var/obj/item/storage/backpack = src.back
-		if(backpack.can_be_inserted(newitem, 1))
-			newitem.forceMove(src.back)
-			return 1
-
-	// Try to place it in any item that can store stuff, on the mob.
-	for(var/obj/item/storage/S in src.contents)
-		if (S.can_be_inserted(newitem, 1))
-			newitem.forceMove(S)
-			return 1
-	return 0
-
-
 /mob/living/proc/update_held_icons()
 	if(l_hand)
 		l_hand.update_held_icon()

@@ -27,7 +27,10 @@
 			return istype(S) && S.try_insert(I, src, silent, force)
 		if(/datum/inventory_slot_meta/abstract/put_in_hands)
 			return put_in_hands(I, force = force)
-		if(/datum/inventory_slot_meta/abstract/put_in_storage)
+		if(/datum/inventory_slot_meta/abstract/put_in_storage, /datum/inventory_slot_meta/abstract/put_in_storage_try_active)
+			if(slot == /datum/inventory_slot_meta/abstract/put_in_storage_try_active)
+				if(s_active && Adjacent(s_active) && s_active.try_insert(I, src, silent, FALSE))
+					return TRUE
 			for(var/obj/item/storage/S in get_equipped_items_in_slots(list(
 				SLOT_ID_BELT,
 				SLOT_ID_BACK,
@@ -35,7 +38,7 @@
 				SLOT_ID_SUIT,
 				SLOT_ID_LEFT_POCKET,
 				SLOT_ID_RIGHT_POCKET
-			)))
+			)) + get_held_items())
 				if(S.try_insert(I, src, silent, force))
 					return TRUE
 			return FALSE

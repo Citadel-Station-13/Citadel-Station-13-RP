@@ -298,10 +298,16 @@
 			. = ""
 
 /obj/item/attack_hand(mob/living/user as mob)
-	if (!user) return
+	attempt_pickup(user)
+
+/obj/item/proc/attempt_pickup(mob/user)
+	if (!user)
+		return
+
 	if(anchored)
 		to_chat(user, SPAN_NOTICE("\The [src] won't budge, you can't pick it up!"))
 		return
+
 	if (hasorgans(user))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
@@ -315,11 +321,6 @@
 			return
 
 	var/old_loc = src.loc
-	#warn thsi should go somewhere else, probably inv procs lmfao
-	pickup(user)
-	if (istype(src.loc, /obj/item/storage))
-		var/obj/item/storage/S = src.loc
-		S.remove_from_storage(src)
 
 	throwing = 0
 	if(user.put_in_active_hand(src))
@@ -458,10 +459,8 @@
 	if(!istype(src.loc, /turf)) //Object is on a turf
 		to_chat(usr, "<span class='warning'>You can't pick that up!</span>")
 		return
-	//All checks are done, time to pick it up!
-	usr.UnarmedAttack(src)
-	return
 
+	attempt_pickup(usr)
 
 /**
  *This proc is executed when someone clicks the on-screen UI button.

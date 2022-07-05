@@ -337,6 +337,14 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	display_name = "storage"
 	display_preposition = "in"
 
+/**
+ * like put in storage, but prioritizes active, even if it's not on you.
+ */
+/datum/inventory_slot_meta/abstract/put_in_storage_try_active
+	name = "put in storage (active storage)"
+	display_name = "storage"
+	display_name = "in"
+
 /datum/inventory_slot_meta/abstract/left_hand
 	name = "put in left hand"
 	display_name = "left hand"

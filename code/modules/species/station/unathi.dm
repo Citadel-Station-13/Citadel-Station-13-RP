@@ -133,5 +133,5 @@
 	)
 
 /datum/species/unathi/equip_survival_gear(mob/living/carbon/human/H)
-	..()
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(H),slot_shoes)
+	. = ..()
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(H), SLOT_ID_SHOES)
