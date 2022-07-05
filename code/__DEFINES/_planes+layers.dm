@@ -79,7 +79,7 @@ What is the naming convention for planes or layers?
 ///Turfs themselves, most flooring
 #define TURF_PLANE				-45
 	///The 'bottom' of water tiles.
-#define WATER_FLOOR_LAYER	2.0
+	#define WATER_FLOOR_LAYER	2.0
 	///For floors that automatically add decal overlays
 	#define BUILTIN_DECAL_LAYER 2.01
 	///For intentionally placed floor decal overlays
@@ -90,8 +90,6 @@ What is the naming convention for planes or layers?
 	#define WATER_LAYER			3.0
 	///Snow and wallmounted/floormounted equipment
 	#define ABOVE_TURF_LAYER	3.1
-///Permanent decals
-#define DECAL_PLANE				-44
 //Obj planes
 #define OBJ_PLANE				-35
 	/// cleanable debris
@@ -124,6 +122,7 @@ What is the naming convention for planes or layers?
 #define MOB_PLANE				-25
 	#define BELOW_MOB_LAYER			3.9
 	#define ABOVE_MOB_LAYER			4.1
+
 //Invisible things plane
 #define CLOAKED_PLANE			-15
 

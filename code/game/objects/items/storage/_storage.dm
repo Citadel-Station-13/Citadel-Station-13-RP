@@ -291,7 +291,7 @@
 	if(!istype(W))
 		return //Not an item
 
-	if(usr && usr.isEquipped(W) && !usr.canUnEquip(W))
+	if(usr && usr.is_in_inventory(W) && !usr.can_unequip(W, usr))
 		return 0
 
 	if(src.loc == W)
@@ -340,6 +340,7 @@
 
 	W.forceMove(src)
 	W.on_enter_storage(src)
+	W.item_flags |= IN_STORAGE
 	if(user)
 		if(!prevent_warning)
 			for(var/mob/M in viewers(user))
@@ -362,7 +363,7 @@
 	return handle_item_insertion(I, user, prevent_warning)
 
 //Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target
-/obj/item/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location)
+/obj/item/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location, do_move = TRUE)
 	if(!istype(W)) return 0
 
 	if(istype(src, /obj/item/storage/fancy))
@@ -374,16 +375,22 @@
 			if (M.client)
 				M.client.screen -= W
 
-	if(new_location)
-		if(ismob(loc))
-			W.dropped(usr)
+	if(do_move)
+		if(new_location)
+			if(ismob(loc))
+				W.dropped(usr)
+			if(ismob(new_location))
+				W.hud_layerise()
+			else
+				W.hud_unlayerise()
+			W.forceMove(new_location)
+		else
+			W.forceMove(get_turf(src))
+	else
 		if(ismob(new_location))
 			W.hud_layerise()
 		else
 			W.hud_unlayerise()
-		W.forceMove(new_location)
-	else
-		W.forceMove(get_turf(src))
 
 	if(usr)
 		src.orient2hud(usr)
@@ -392,11 +399,16 @@
 	if(W.maptext)
 		W.maptext = ""
 	W.on_exit_storage(src)
+	W.item_flags &= ~IN_STORAGE
 	update_icon()
 	return 1
 
-#warn exited hook for remove from storage
-#warn split remove from storage into removal_reset and whatnot
+/obj/item/storage/Exited(atom/movable/AM, atom/newLoc)
+	if(isitem(AM))
+		var/obj/item/I = AM
+		if(I.item_flags & IN_STORAGE)
+			remove_from_storage(I, null, FALSE)
+	return ..()
 
 //This proc is called when you want to place an item into the storage item.
 /obj/item/storage/attackby(obj/item/W as obj, mob/user as mob)
