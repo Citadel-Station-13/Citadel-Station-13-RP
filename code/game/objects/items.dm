@@ -311,7 +311,7 @@
 	if (hasorgans(user))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
-		if (user.hand)
+		if (H.hand)
 			temp = H.organs_by_name["l_hand"]
 		if(temp && !temp.is_usable())
 			to_chat(user, "<span class='notice'>You try to move your [temp.name], but cannot!</span>")
@@ -433,7 +433,6 @@
 /obj/item/proc/on_found(mob/finder as mob)
 	return
 
-#warn refactor
 /obj/item/verb/verb_pickup()
 	set src in oview(1)
 	set category = "Object"

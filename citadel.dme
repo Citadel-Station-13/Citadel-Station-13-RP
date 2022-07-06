@@ -155,6 +155,7 @@
 #include "code\__DEFINES\economy\worth.dm"
 #include "code\__DEFINES\inventory\accessories.dm"
 #include "code\__DEFINES\inventory\bodytypes.dm"
+#include "code\__DEFINES\inventory\misc.dm"
 #include "code\__DEFINES\inventory\slots.dm"
 #include "code\__DEFINES\items\inducer.dm"
 #include "code\__DEFINES\items\nifs.dm"

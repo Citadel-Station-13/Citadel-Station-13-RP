@@ -17,8 +17,9 @@
 	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot, accessory, creation)
 	current_equipped_slot = slot
 	// current_equipped_slot = get_inventory_slot_datum(slot)
+	// todo: shouldn't be in here
 	hud_layerise()
-	// todo: better hud rendering
+	// todo: shouldn't be in here
 	user.position_hud_item(src,slot)
 	if(user.client)
 		user.client.screen |= src
@@ -40,6 +41,10 @@
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_UNEQUIPPED, user, slot, accessory)
 	current_equipped_slot = null
+	// todo: shouldn't be in here
+	hud_unlayerise()
+	// todo: shouldn't be in here
+	screen_loc = null
 
 /**
  * called when a mob drops an item

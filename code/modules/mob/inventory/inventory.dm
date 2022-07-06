@@ -168,12 +168,12 @@
 				I.moveToNullspace()
 			else if(newloc != FALSE)
 				I.forceMove(newloc)
-		#warn dropped return to stop this from being true
-		I.dropped(src)
+		(I.dropped(src) == ITEM_RELOCATED_BY_DROPPED)
+			. = FALSE
 		if(QDELETED(I))
 			. = FALSE
 
-	log_inventory("[key_name(src)] unequipped [I] from [slot].")
+	log_inventory("[key_name(src)] unequipped [I] from [old].")
 
 	update_action_buttons()
 
@@ -203,13 +203,51 @@
  * - I - item
  * - slot - the slot
  * - silent - don't show this mob warnings when failing
- * - update_icons - redraw slot icons?
+ * - disallow_delay - fail if we have to sleep/do_after
  * - ignore_fluff - ignore silly roleplay fluff like not being able to reach/self equip delays
+ * - update_icons - redraw slot icons?
  *
  * @return TRUE/FALSE
  */
-/mob/proc/equip_to_slot_if_possible(obj/item/I, slot, silent, update_icons, ignore_fluff)
+/mob/proc/equip_to_slot_if_possible(obj/item/I, slot, silent, disallow_delay, ignore_fluff, update_icons)
 	return _equip_item(I, FALSE, slot, null, silent, disallow_delay, ignore_fluff, update_icons)
+
+/**
+ * automatically equips to the best inventory (non storage!) slot we can find for an item, if possible
+ *
+ * @params
+ * - I - item
+ * - silent - don't show this mob warnings when failing
+ * - disallow_delay - fail if we have to sleep/do_after
+ * - ignore_fluff - ignore silly roleplay fluff like not being able to reach/self equip delays
+ * - update_icons - redraw slot icons?
+ *
+ * @return TRUE/FALSE
+ */
+/mob/proc/equip_to_appropriate_slot(obj/item/I, silent, disallow_delay, ignore_fluff, update_icons)
+	for(var/slot in GLOB.slot_equipment_priority)
+		if(equip_to_slot_if_possible(I, slot, silent, ignore_fluff, update_icons))
+			return TRUE
+	return FALSE
+
+/**
+ * automatically equips to the best inventory (non storage!) slot we can find for an item, if possible
+ *
+ * item is deleted on failure.
+ *
+ * @params
+ * - I - item
+ * - silent - don't show this mob warnings when failing
+ * - disallow_delay - fail if we have to sleep/do_after
+ * - ignore_fluff - ignore silly roleplay fluff like not being able to reach/self equip delays
+ * - update_icons - redraw slot icons?
+ *
+ * @return TRUE/FALSE
+ */
+
+/mob/proc/equip_to_appropriate_slot_or_del(obj/item/I, silent, disallow_delay, ignore_fluff, update_icons)
+	if(!equip_to_appropriate_slot(I, silent, disallow_delay, ignore_fluff, update_icons))
+		qdel(I)
 
 /**
  * forcefully equips an item to a slot
