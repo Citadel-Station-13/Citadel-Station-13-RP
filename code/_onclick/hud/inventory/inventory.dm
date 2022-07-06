@@ -16,44 +16,45 @@
 	if(!check_inventory_usage(usr))
 		return
 
-	switch(name)
-		if("r_hand")
-			if(iscarbon(usr))
-				var/mob/living/carbon/C = usr
-				C.activate_hand("r")
-		if("l_hand")
-			if(iscarbon(usr))
-				var/mob/living/carbon/C = usr
-				C.activate_hand("l")
-		if("swap")
-			usr.swap_hand()
-		if("hand")
-			usr.swap_hand()
-		else
-			if(usr.attack_ui(slot_id))
-				usr.update_inv_l_hand(0)
-				usr.update_inv_r_hand(0)
-	return 1
+	usr.attack_ui(slot_id)
 
 // Hand slots are special to handle the handcuffs overlay
 /atom/movable/screen/inventory/hand
 	/// hand index
 	var/index
+	/// are we the left hand
+	var/is_left_hand = FALSE
+	/// current handcuffed overlay
 	var/image/handcuff_overlay
 
 /atom/movable/screen/inventory/hand/Click()
-	if(!check_inventory_usage(usr))
-		return
+	usr.activate_hand_of_index(index)
 
 /atom/movable/screen/inventory/hand/update_icon()
 	..()
 	if(!hud)
 		return
 	if(!handcuff_overlay)
-		var/state = (hud.l_hand_hud_object == src) ? "l_hand_hud_handcuffs" : "r_hand_hud_handcuffs"
-		handcuff_overlay = image("icon"='icons/mob/screen_gen.dmi', "icon_state"=state)
+		handcuff_overlay = image(
+			"icon" = 'icons/mob/screen_gen.dmi',
+			"icon_state" = "[is_left_hand? "l_hand" : "r_hand"]_hud_handcuffs"
+		)
 	overlays.Cut()
-	if(hud.mymob && iscarbon(hud.mymob))
+	if(iscarbon(hud?.mymob))
 		var/mob/living/carbon/C = hud.mymob
 		if(C.handcuffed)
-			overlays |= handcuff_overlay
+			overlays += handcuff_overlay
+
+/atom/movable/screen/inventory/hand/left
+	name = "l_hand"
+	is_left_hand = TRUE
+
+/atom/movable/screen/inventory/hand/right
+	name = "r_hand"
+	is_left_hand = FALSE
+
+/atom/movable/screen/inventory/swap_hands
+	name = "swap hands"
+
+/atom/movable/screen/inventory/swap_hands/Click()
+	usr.swap_hand()

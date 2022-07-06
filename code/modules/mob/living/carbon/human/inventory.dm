@@ -181,11 +181,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 	set name = "quick-equip"
 	set hidden = 1
 
-	if(ishuman(src))
-		var/mob/living/carbon/human/H = src
-		var/obj/item/I = H.get_active_held_item()
-		if(I)
-			I.equip_to_best_slot(H)
+	attempt_smart_equip()
 
 /mob/living/carbon/human/proc/equip_in_one_of_slots(obj/item/W, list/slots, del_on_fail = 1)
 	for (var/slot in slots)

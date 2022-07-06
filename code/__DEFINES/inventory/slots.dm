@@ -91,7 +91,7 @@ GLOBAL_LIST_INIT(slot_equipment_priority, meta_slot_equipment_priority())
 		SLOT_ID_GLASSES,
 		SLOT_ID_BELT,
 		SLOT_ID_SUIT_STORAGE,
-		/datum/inventory/abstract/attach_as_accessory,
+		/datum/inventory_slot_meta/abstract/attach_as_accessory,
 		SLOT_ID_LEFT_POCKET,
 		SLOT_ID_RIGHT_POCKET
 	)

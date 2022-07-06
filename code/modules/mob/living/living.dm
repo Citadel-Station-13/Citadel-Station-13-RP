@@ -1084,6 +1084,15 @@ default behaviour is:
 	if(selhand != src.hand)
 		swap_hand()
 
+// todo: multihands
+
+/mob/living/proc/activate_hand_of_index(index)
+	switch(index)
+		if(1)
+			activate_hand("l")
+		if(2)
+			activate_hand("r")
+
 /mob/living/throw_item(atom/target)
 	// TODO: refactor to not be hardcoded active held item
 	src.throw_mode_off()

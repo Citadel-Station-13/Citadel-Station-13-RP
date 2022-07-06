@@ -168,7 +168,7 @@
 				I.moveToNullspace()
 			else if(newloc != FALSE)
 				I.forceMove(newloc)
-		(I.dropped(src) == ITEM_RELOCATED_BY_DROPPED)
+		if(I.dropped(src) == ITEM_RELOCATED_BY_DROPPED)
 			. = FALSE
 		if(QDELETED(I))
 			. = FALSE

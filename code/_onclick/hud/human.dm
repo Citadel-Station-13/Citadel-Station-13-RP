@@ -155,7 +155,9 @@
 		using.alpha = ui_alpha
 		src.adding += using
 
-		inv_box = new /atom/movable/screen/inventory/hand()
+		var/atom/movable/screen/inventory/hand/right/right_hand = new
+		right_hand.index = 2
+		inv_box = right_hand
 		inv_box.hud = src
 		inv_box.name = "r_hand"
 		inv_box.icon = ui_style
@@ -170,7 +172,9 @@
 		src.adding += inv_box
 		slot_info["[slot_r_hand]"] = inv_box.screen_loc
 
-		inv_box = new /atom/movable/screen/inventory/hand()
+		var/atom/movable/screen/inventory/hand/left/left_hand = new
+		left_hand.index = 1
+		inv_box = left_hand
 		inv_box.hud = src
 		inv_box.name = "l_hand"
 		inv_box.icon = ui_style
@@ -185,8 +189,7 @@
 		src.adding += inv_box
 		slot_info["[slot_l_hand]"] = inv_box.screen_loc
 
-		using = new /atom/movable/screen/inventory()
-		using.name = "hand"
+		using = new /atom/movable/screen/inventory/swap_hands
 		using.icon = ui_style
 		using.icon_state = "hand1"
 		using.screen_loc = ui_swaphand1
@@ -194,8 +197,7 @@
 		using.alpha = ui_alpha
 		src.adding += using
 
-		using = new /atom/movable/screen/inventory()
-		using.name = "hand"
+		using = new /atom/movable/screen/inventory/swap_hands
 		using.icon = ui_style
 		using.icon_state = "hand2"
 		using.screen_loc = ui_swaphand2
