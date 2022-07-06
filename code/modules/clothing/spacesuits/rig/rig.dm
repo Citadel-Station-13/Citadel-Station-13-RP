@@ -1054,17 +1054,13 @@
 	wearer.lay_down()
 	to_chat(user, "<span class='notice'>\The [wearer] is now [wearer.resting ? "resting" : "getting up"].</span>")
 
-/obj/item/rig/proc/forced_move(var/direction, var/mob/user, var/ai_moving = TRUE)
-
+/obj/item/rig/proc/forced_move(var/direction, var/mob/user, var/ai_moving = TRUE, protean_shitcode_moment)
 	// Why is all this shit in client/Move()? Who knows?
 	if(world.time < wearer_move_delay)
 		return
 
-
 	if(!wearer || !wearer.loc)
 		return
-
-
 
 	if(ai_moving)
 		if(!ai_can_move_suit(user, check_user_module = 1))
@@ -1138,7 +1134,8 @@
 	var/power_cost = 200
 	if(!ai_moving)
 		power_cost = 20
-	cell.use(power_cost) //Arbitrary, TODO
+	if(protean_shitcode_moment)	// fuck this kill me
+		cell.use(power_cost) //Arbitrary, TODO
 	wearer.Move(get_step(get_turf(wearer),direction),direction)
 
 // This returns the rig if you are contained inside one, but not if you are wearing it
