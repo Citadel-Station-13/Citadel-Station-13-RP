@@ -14,7 +14,8 @@
 	src.adding = list()
 	src.other = list()
 	src.hotkeybuttons = list() //These can be disabled for hotkey users
-	src.slot_info = list()
+	slot_info = list()
+	hand_info = list()
 
 	var/list/hud_elements = list()
 	var/atom/movable/screen/using
@@ -165,12 +166,11 @@
 		if(!target.hand)	//This being 0 or null means the right hand is in use
 			inv_box.icon_state = "r_hand_active"
 		inv_box.screen_loc = ui_rhand
-		inv_box.slot_id = slot_r_hand
 		inv_box.color = ui_color
 		inv_box.alpha = ui_alpha
 		src.r_hand_hud_object = inv_box
 		src.adding += inv_box
-		slot_info["[slot_r_hand]"] = inv_box.screen_loc
+		hand_info["2"] = inv_box.screen_loc
 
 		var/atom/movable/screen/inventory/hand/left/left_hand = new
 		left_hand.index = 1
@@ -182,12 +182,11 @@
 		if(target.hand)	//This being 1 means the left hand is in use
 			inv_box.icon_state = "l_hand_active"
 		inv_box.screen_loc = ui_lhand
-		inv_box.slot_id = slot_l_hand
 		inv_box.color = ui_color
 		inv_box.alpha = ui_alpha
 		src.l_hand_hud_object = inv_box
 		src.adding += inv_box
-		slot_info["[slot_l_hand]"] = inv_box.screen_loc
+		hand_info["1"] = inv_box.screen_loc
 
 		using = new /atom/movable/screen/inventory/swap_hands
 		using.icon = ui_style

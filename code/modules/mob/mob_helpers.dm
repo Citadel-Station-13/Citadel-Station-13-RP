@@ -599,6 +599,7 @@ var/list/global/organ_rel_size = list(
 		item.screen_loc = null
 		return
 
+	#warn slot info no longer has hands - make sure to check
 	var/screen_place = hud_used.slot_info["[slot]"]
 	if(!screen_place)
 		item.screen_loc = null

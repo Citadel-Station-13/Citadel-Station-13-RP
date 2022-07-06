@@ -13,6 +13,7 @@
 	var/list/other = list()
 	var/list/hotkeybuttons = list()
 	var/list/slot_info = list()
+	var/list/hand_info = list()
 
 	hud.adding = adding
 	hud.other = other
@@ -240,7 +241,9 @@
 		hud.adding += using
 
 		//Hand slots themselves
-		inv_box = new /atom/movable/screen/inventory/hand()
+		var/atom/movable/screen/inventory/hand/right/right_hand = new
+		right_hand.index = 2
+		inv_box = right_hand
 		inv_box.hud = src
 		inv_box.name = "r_hand"
 		inv_box.icon = ui_style
@@ -253,9 +256,11 @@
 		inv_box.alpha = ui_alpha
 		hud.r_hand_hud_object = inv_box
 		hud.adding += inv_box
-		slot_info["[slot_r_hand]"] = inv_box.screen_loc
+		hand_info["2"] = inv_box.screen_loc
 
-		inv_box = new /atom/movable/screen/inventory/hand()
+		var/atom/movable/screen/inventory/hand/left/left_hand = new
+		left_hand.index = 1
+		inv_box = left_hand
 		inv_box.hud = src
 		inv_box.name = "l_hand"
 		inv_box.icon = ui_style
@@ -268,10 +273,10 @@
 		inv_box.alpha = ui_alpha
 		hud.l_hand_hud_object = inv_box
 		hud.adding += inv_box
-		slot_info["[slot_l_hand]"] = inv_box.screen_loc
+		hand_info["1"] = inv_box.screen_loc
 
 		//Swaphand titlebar
-		using = new /atom/movable/screen/inventory()
+		using = new /atom/movable/screen/inventory/swap_hands
 		using.name = "hand"
 		using.icon = ui_style
 		using.icon_state = "hand1"
@@ -280,7 +285,7 @@
 		using.alpha = ui_alpha
 		hud.adding += using
 
-		using = new /atom/movable/screen/inventory()
+		using = new /atom/movable/screen/inventory/swap_hands
 		using.name = "hand"
 		using.icon = ui_style
 		using.icon_state = "hand2"
