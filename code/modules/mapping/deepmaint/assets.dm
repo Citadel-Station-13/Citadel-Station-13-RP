@@ -79,6 +79,12 @@ GLOBAL_VAR(deepmaint_current_exterior_floor)
 /atom/movable/landmark/deepmaint_marker/room
 
 /**
+ * triggered when the directive is put into practice
+ */
+/atom/movable/landmark/deepmaint_marker/room/proc/activate()
+	#warn implement for multiz
+
+/**
  * deepmaint room directive: connect entrance to this path
  */
 /atom/movable/landmark/deepmaint_marker/room/entrance
@@ -88,6 +94,26 @@ GLOBAL_VAR(deepmaint_current_exterior_floor)
  * deepmaint room directive: allow spawning of cross-level here
  */
 /atom/movable/landmark/deepmaint_marker/room/multiz
+	/// are we allowed to go multiz up or down
+	var/allowed_dirs = NONE
+
+/atom/movable/landmark/deepmaint_marker/room/multiz/up
+	allowed_dirs = UP
+
+/atom/movable/landmark/deepmaint_marker/room/multiz/up/ladder
+	icon_state = "ladder_up"
+
+/atom/movable/landmark/deepmaint_marker/room/multiz/up/stairs
+	icon_state = "stairs_up"
+
+/atom/movable/landmark/deepmaint_marker/room/multiz/down
+	allowed_dirs = DOWN
+
+/atom/movable/landmark/deepmaint_marker/room/multiz/down/ladder
+	icon_state = "ladder_down"
+
+/atom/movable/landmark/deepmaint_marker/room/multiz/down/stairs
+	icon_state = "stairs_down"
 
 /**
  * deepmaint generation directive: links to a generator and affects generation
