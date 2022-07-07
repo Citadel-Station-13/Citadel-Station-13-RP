@@ -92,7 +92,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	if(allow_random_id && !id)
 		id = "[++id_next]"
 
-/datum/inventory_slot_meta/proc/_equip_check(obj/item/I, mob/M, force)
+/datum/inventory_slot_meta/proc/_equip_check(obj/item/I, mob/wearer, mob/user, force)
 	if(slot_equip_checks & SLOT_EQUIP_CHECK_USE_FLAGS)
 		if(!CHECK_MULTIPLE_BITFIELDS(I.slot_flags, slot_flags_required))
 			return FALSE
@@ -100,7 +100,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 			return FALSE
 
 	if(slot_equip_checks & SLOT_EQUIP_CHECK_USE_PROC)
-		if(!allow_equip(I, M, force))
+		if(!allow_equip(I, wearer, user, force))
 			return FALSE
 
 	return TRUE
@@ -108,7 +108,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 /**
  * checked if slot_equip_checks specifies to use proc
  */
-/datum/inventory_slot_meta/proc/allow_equip(obj/item/I, mob/M, force)
+/datum/inventory_slot_meta/proc/allow_equip(obj/item/I, mob/wearer, mob/user, force)
 	return TRUE
 
 /datum/inventory_slot_meta/inventory
@@ -289,6 +289,10 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	id = SLOT_ID_HANDCUFFED
 	display_name = "hands"
 	display_preposition = "around"
+	slot_equip_checks = SLOT_EQUIP_CHECK_USE_PROC
+
+/datum/inventory_slot_meta/restraints/handcuffs/allow_equip(obj/item/I, mob/wearer, mob/user, force)
+	return istype(I, /obj/item/handcuffs) && !istype(I, /obj/item/handcuffs/legcuffs)
 
 /datum/inventory_slot_meta/restraints/legcuffs
 	name = "legcuffed"
@@ -296,6 +300,11 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	id = SLOT_ID_LEGCUFFED
 	display_name = "legs"
 	display_preposition = "around"
+
+	slot_equip_checks = SLOT_EQUIP_CHECK_USE_PROC
+
+/datum/inventory_slot_meta/restraints/handcuffs/allow_equip(obj/item/I, mob/wearer, mob/user, force)
+	return istype(I, /obj/item/handcuffs/legcuffs)
 
 /**
  * these have no excuse to be accessed by id

@@ -1071,7 +1071,9 @@ default behaviour is:
 			I.zoom()
 	return
 
-/mob/living/proc/activate_hand(var/selhand) //0 or "r" or "right" for right hand; 1 or "l" or "left" for left hand.
+/mob/proc/activate_hand(selhand)
+
+/mob/living/activate_hand(selhand) //0 or "r" or "right" for right hand; 1 or "l" or "left" for left hand.
 
 	if(istext(selhand))
 		selhand = lowertext(selhand)
@@ -1085,6 +1087,8 @@ default behaviour is:
 		swap_hand()
 
 // todo: multihands
+
+/mob/proc/activate_hand_of_index(index)
 
 /mob/living/proc/activate_hand_of_index(index)
 	switch(index)

@@ -137,9 +137,21 @@
 /obj/item/proc/_inv_return_attached()
 	return src
 
+/**
+ * checks if a mob can equip us to a slot
+ * mob gets final say
+ * if you return false, feedback to the user, as the main proc doesn't do this.
+ */
 /obj/item/proc/can_equip(mob/M, mob/user, slot, silent, disallow_delay)
+	return TRUE
 
+/**
+ * checks if a mob can unequip us from a slot
+ * mob gets final say
+ * if you return false, feedback to the user, as the main proc doesn't do this.
+ */
 /obj/item/proc/can_unequip(mob/M, mob/user, slot, silent, disallow_delay)
+	return TRUE
 
 
 #warn refactor
@@ -163,12 +175,6 @@
 
 	if(H.species && !(slot in mob_equip))
 		return 0
-
-	//First check if the item can be equipped to the desired slot.
-	if("[slot]" in slot_flags_enumeration)
-		var/req_flags = slot_flags_enumeration["[slot]"]
-		if(!(req_flags & slot_flags))
-			return 0
 
 	//Next check if the slot is accessible.
 	var/mob/_user = disable_warning? null : H

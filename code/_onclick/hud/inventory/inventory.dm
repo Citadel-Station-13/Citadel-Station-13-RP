@@ -1,5 +1,5 @@
-#warn refactor everything
 /atom/movable/screen/inventory
+	name = "inv box"
 
 /atom/movable/screen/inventory/proc/check_inventory_usage(mob/user)
 	if(!user.canClick())

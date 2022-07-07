@@ -140,18 +140,19 @@
 	if(!I)
 		return TRUE
 
-	if(!can_unequip(I, user, force, disallow_delay, ignore_fluff, silent))
-		return FALSE
-
 	var/hand = get_held_index(I)
 	var/old
 	if(hand)
+		if(!can_unequip(I, SLOT_ID_HANDS, user, force, disallow_delay, ignore_fluff, silent))
+			return FALSE
 		_unequip_held(I, TRUE)
 		old = SLOT_ID_HANDS
 	else
 		if(!I.current_equipped_slot)
 			stack_trace("tried to unequip an item without current equipped slot.")
 			I.current_equipped_slot = _slot_by_item(I)
+		if(!can_unequip(I, I.current_equipped_slot, user, force, disallow_delay, ignore_fluff, silent))
+			return FALSE
 		old = I.current_equipped_slot
 		_unequip_slot(I.current_equipped_slot, TRUE)
 		I.unequipped(src, I.current_equipped_slot)
@@ -184,17 +185,28 @@
  *
  * @params
  * - I - item
+ * - slot - slot we're unequipping from - can be null
  * - user - stripper - can be null
  * - force - ignore nodrops, etc
  * - dislalow_delay - fail if we'd need to do a do_after, instead of sleeping
  * - ignore_fluff - ignore equip delay, item zone checks, etc
  * - silent - do not play warning messages
  */
-/mob/proc/can_unequip(obj/item/I, mob/user, force, disallow_delay, ignore_fluff, silent)
-	#warn impl
-
+/mob/proc/can_unequip(obj/item/I, slot, mob/user, force, disallow_delay, ignore_fluff, silent)
 	if(!force && HAS_TRAIT(I, TRAIT_NODROP))
 		return FALSE
+
+	var/blocked_by
+	if((blocked_by = inventory_slot_reachability_conflict(I, slot, user)) && !force)
+		if(!silent)
+			to_chat(user, SPAN_WARNING("\the [blocked_by] is in the way!"))
+		return FALSE
+
+	// lastly, check item's opinion
+	if(!I.can_unequip(src, user, slot, silent, disallow_delay))
+		return FALSE
+
+	return TRUE
 
 /**
  * equips an item to a slot if possible
@@ -313,6 +325,13 @@
 				return force || !hands_full()
 		return TRUE
 
+	var/missing_bodypart
+
+	if((missing_bodypart = inventory_slot_bodypart_check(I, slot, user)) && !force)
+		if(!silent)
+			to_chat(user, SPAN_WARNING("[self_equip? "You" :"They"] have no [missing_bodypart] to attach that to!"))
+		return FALSE
+
 	switch(inventory_slot_conflict_check(I, slot))
 		if(CAN_EQUIP_SLOT_CONFLICT_HARD)
 			if(!silent)
@@ -329,15 +348,22 @@
 			to_chat(user, SPAN_WARNING("[I] doesn't fit there."))
 		return FALSE
 
-	if(!slot_meta._equip_check(I, src, user, force))
+	var/blocked_by
+
+	if((blocked_by = inventory_slot_reachability_conflict(I, slot, user)) && !force)
 		if(!silent)
-			to_chat(user, SPAN_WARNING("[I] doesn't fit there."))
+			to_chat(user, SPAN_WARNING("\the [blocked_by] is in the way!"))
 		return FALSE
 
-	#warn impl
+	// lastly, check item's opinion
+	if(!I.can_equip(src, user, slot, silent, disallow_delay))
+		return FALSE
+
+	return TRUE
 
 /**
- * checks if we have the bodypart for a slot
+ * checks if we are missing the bodypart for a slot
+ * return null or the missing bodypart as a string
  */
 /mob/proc/inventory_slot_bodypart_check(obj/item/I, slot)
 	#warn impl humans
@@ -369,16 +395,10 @@
  *
  * return TRUE if conflicting, otherwise FALSE
  */
-/mob/proc/inventory_slot_semantic_conflict(obj/item/I, slot, mob/user)
+/mob/proc/inventory_slot_semantic_conflict(obj/item/I, datum/inventory_slot_meta/slot, mob/user)
 	. = FALSE
-	switch(slot)
-		if(SLOT_ID_LEGCUFFED)
-			if(!istype(I, /obj/item/handcuffs/legcuffs))
-				return TRUE
-		if(SLOT_ID_HANDCUFFED)
-			// TODO: refactor handcuffs
-			if(!istype(I, /obj/item/handcuffs/legcuffs) || istype(I, /obj/item/handcuffs/legcuffs))
-				return TRUE
+	slot = resolve_inventory_slot_meta(slot)
+	return slot._equip_check(I, src, user)
 
 /**
  * handles internal logic of equipping an item

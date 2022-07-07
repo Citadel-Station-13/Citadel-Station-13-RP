@@ -170,12 +170,7 @@
 		return FALSE
 	return ..()
 
-#warn everything below this line needs evaluated
-
-/*
-Add fingerprints to items when we put them in our hands.
-This saves us from having to call add_fingerprint() any time something is put in a human's hands programmatically.
-*/
+//! old stuff below
 
 /mob/living/carbon/human/verb/quick_equip()
 	set name = "quick-equip"
@@ -183,13 +178,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 
 	attempt_smart_equip()
 
-/mob/living/carbon/human/proc/equip_in_one_of_slots(obj/item/W, list/slots, del_on_fail = 1)
-	for (var/slot in slots)
-		if (equip_to_slot_if_possible(W, slots[slot]))
-			return slot
-	if (del_on_fail)
-		qdel(W)
-	return null
+#warn refactor below
 
 /mob/living/carbon/human/proc/has_organ_for_slot(slot)
 	switch(slot)
