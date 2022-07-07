@@ -146,7 +146,7 @@
 		to_chat(usr, "<span class='warning'>The [interface_name] is damaged beyond use!</span>")
 		return 0
 
-	if(world.time < next_use)
+	if(world.time < next_use || !usr.canClick())
 		to_chat(usr, "<span class='warning'>You cannot use the [interface_name] again so soon.</span>")
 		return 0
 

@@ -123,7 +123,7 @@
 /area/bridge/bridge_hallway)
 "ak" = (
 /obj/machinery/hologram/holopad,
-/atom/movable/landmark/spawnpoint/job/cyborg,
+/obj/landmark/spawnpoint/job/cyborg,
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_server_room)
 "al" = (
@@ -273,7 +273,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hydroponics)
 "av" = (
-/atom/movable/landmark/spawnpoint/job/cyborg,
+/obj/landmark/spawnpoint/job/cyborg,
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 5
 	},
@@ -520,7 +520,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
 "aS" = (
-/atom/movable/landmark/spawnpoint/job/bartender,
+/obj/landmark/spawnpoint/job/bartender,
 /obj/structure/sink/kitchen{
 	dir = 4;
 	pixel_x = -15
@@ -1104,9 +1104,6 @@
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "bJ" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	d1 = 1;
@@ -1116,6 +1113,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfacethree)
 "bK" = (
@@ -1243,7 +1241,7 @@
 /area/exploration)
 "bS" = (
 /obj/effect/floor_decal/spline/plain,
-/atom/movable/landmark/spawnpoint/job/botanist,
+/obj/landmark/spawnpoint/job/botanist,
 /turf/simulated/floor/grass,
 /area/hydroponics)
 "bT" = (
@@ -1327,8 +1325,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/exploration)
 "cb" = (
-/obj/structure/table/standard,
-/obj/item/storage/laundry_basket,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
@@ -1343,6 +1339,7 @@
 	name = "Station Intercom (General)";
 	pixel_x = -24
 	},
+/obj/machinery/washing_machine,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker/laundry_arrival)
 "cc" = (
@@ -1503,6 +1500,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/universal,
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
 "ct" = (
@@ -1700,6 +1698,11 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/component/binary/passive_gate/on{
+	dir = 1;
+	pressure_resistance = 750;
+	target_pressure = 750
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
 "cM" = (
@@ -1833,12 +1836,10 @@
 /turf/simulated/wall,
 /area/security/checkpoint2)
 "da" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 4
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfacethree)
 "db" = (
@@ -1924,7 +1925,7 @@
 /area/hallway/primary/surfacethree)
 "dj" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
-/atom/movable/landmark/spawnpoint/job/chef,
+/obj/landmark/spawnpoint/job/chef,
 /obj/effect/decal/cleanable/flour,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
@@ -2573,7 +2574,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/exploration)
 "ei" = (
-/obj/machinery/washing_machine,
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
 	},
@@ -2589,6 +2589,8 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
+/obj/structure/table/standard,
+/obj/item/storage/laundry_basket,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker/laundry_arrival)
 "ej" = (
@@ -2642,7 +2644,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_south)
 "en" = (
-/atom/movable/landmark/map_data/lythios43c,
+/obj/landmark/map_data/lythios43c,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "eo" = (
@@ -2899,7 +2901,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "eI" = (
-/atom/movable/landmark/away,
+/obj/landmark/away,
 /obj/machinery/hologram/holopad,
 /obj/structure/cable/green{
 	d1 = 4;
@@ -3074,6 +3076,7 @@
 /turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
 "fa" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "fb" = (
@@ -3264,7 +3267,7 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 8
 	},
-/atom/movable/landmark/spawnpoint/job/field_medic,
+/obj/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/explorer_prep)
 "fs" = (
@@ -3702,7 +3705,7 @@
 /area/rift/surfacebase/outside/outside3)
 "ga" = (
 /obj/item/stool/padded,
-/atom/movable/landmark/spawnpoint/job/assistant,
+/obj/landmark/spawnpoint/job/assistant,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -4950,7 +4953,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
-/atom/movable/landmark/spawnpoint/job/head_of_personnel,
+/obj/landmark/spawnpoint/job/head_of_personnel,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hop)
 "il" = (
@@ -5850,9 +5853,15 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
+"jS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/surfacethree)
 "jT" = (
 /obj/machinery/light,
-/atom/movable/landmark/spawnpoint/job/pilot,
+/obj/landmark/spawnpoint/job/pilot,
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/explorer_prep)
 "jU" = (
@@ -5940,7 +5949,7 @@
 	pixel_y = -26
 	},
 /obj/structure/bed/chair/bay/comfy/captain,
-/atom/movable/landmark/spawnpoint/job/captain,
+/obj/landmark/spawnpoint/job/captain,
 /obj/machinery/button/remote/blast_door{
 	id = "bridge";
 	name = "Bridge Lockdown";
@@ -5961,7 +5970,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 4
 	},
-/obj/machinery/recharge_station,
+/obj/machinery/vending/loadout/gadget,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker/laundry_arrival)
 "kc" = (
@@ -6298,6 +6307,9 @@
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 8
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -30
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker/laundry_arrival)
@@ -7569,6 +7581,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/cargo)
+"mR" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/surfacethree)
 "mS" = (
 /obj/machinery/telecomms/server/presets/supply,
 /turf/simulated/floor/tiled/dark{
@@ -7632,6 +7650,13 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside3)
+"mY" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/surfacethree)
 "mZ" = (
 /obj/machinery/computer/station_alert/all,
 /obj/effect/floor_decal/corner/lightorange{
@@ -8116,7 +8141,7 @@
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
 	},
-/atom/movable/landmark/spawnpoint/job/explorer,
+/obj/landmark/spawnpoint/job/explorer,
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
 "nR" = (
@@ -8714,7 +8739,7 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner2{
 	dir = 9
 	},
-/atom/movable/landmark{
+/obj/landmark{
 	name = "JoinLateGateway"
 	},
 /obj/item/radio/intercom{
@@ -9166,7 +9191,7 @@
 /obj/effect/floor_decal/borderfloorblack/cee{
 	dir = 8
 	},
-/atom/movable/landmark/spawnpoint/job/chief_medical_officer,
+/obj/landmark/spawnpoint/job/chief_medical_officer,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "pU" = (
@@ -9265,7 +9290,7 @@
 /area/rift/surfacebase/outside/outside3)
 "qd" = (
 /obj/item/stool/padded,
-/atom/movable/landmark/spawnpoint/job/assistant,
+/obj/landmark/spawnpoint/job/assistant,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
@@ -9755,7 +9780,7 @@
 "rc" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
-/atom/movable/landmark/spawnpoint/job/explorer,
+/obj/landmark/spawnpoint/job/explorer,
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/explorer_prep)
 "rd" = (
@@ -9824,7 +9849,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "rk" = (
-/atom/movable/landmark/spawnpoint/job/pilot,
+/obj/landmark/spawnpoint/job/pilot,
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/explorer_prep)
 "rl" = (
@@ -10129,7 +10154,7 @@
 /area/crew_quarters/kitchen)
 "rM" = (
 /obj/structure/bed/chair/comfy/brown,
-/atom/movable/landmark/spawnpoint/job/explorer,
+/obj/landmark/spawnpoint/job/explorer,
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
 "rN" = (
@@ -10387,7 +10412,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "so" = (
-/atom/movable/landmark/spawnpoint/job/command_secretary,
+/obj/landmark/spawnpoint/job/command_secretary,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
@@ -11636,7 +11661,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/atom/movable/landmark/spawnpoint/job/head_of_personnel,
+/obj/landmark/spawnpoint/job/head_of_personnel,
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/hop)
 "uH" = (
@@ -11991,7 +12016,7 @@
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
 	},
-/atom/movable/landmark/spawnpoint/job/field_medic,
+/obj/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
 "vo" = (
@@ -12705,7 +12730,7 @@
 	name = "south bump";
 	pixel_y = -24
 	},
-/atom/movable/landmark/free_ai_shell,
+/obj/landmark/free_ai_shell,
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
@@ -13364,7 +13389,7 @@
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "xE" = (
-/atom/movable/landmark/spawnpoint/latejoin/station/shuttle_dock,
+/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
 	},
@@ -13565,7 +13590,7 @@
 /turf/simulated/floor,
 /area/shuttle/civvie/general)
 "xY" = (
-/atom/movable/landmark/observer_spawn,
+/obj/landmark/observer_spawn,
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
@@ -13880,7 +13905,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "yD" = (
-/atom/movable/landmark/spawnpoint/job/pathfinder,
+/obj/landmark/spawnpoint/job/pathfinder,
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
 "yF" = (
@@ -14323,7 +14348,7 @@
 /area/hallway/primary/surfacethree)
 "zz" = (
 /obj/structure/bed/chair/office/dark,
-/atom/movable/landmark/spawnpoint/job/pathfinder,
+/obj/landmark/spawnpoint/job/pathfinder,
 /turf/simulated/floor/tiled/monotile,
 /area/exploration/pathfinder_office)
 "zA" = (
@@ -14448,7 +14473,7 @@
 /area/bridge)
 "zN" = (
 /obj/structure/bed/chair/comfy/brown,
-/atom/movable/landmark/spawnpoint/job/field_medic,
+/obj/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
 "zO" = (
@@ -15206,7 +15231,6 @@
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "Bf" = (
-/obj/machinery/vending/loadout/gadget,
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
 	},
@@ -15222,6 +15246,7 @@
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
+/obj/machinery/vending/giftvendor,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/primary/surfacethree)
 "Bg" = (
@@ -15309,9 +15334,6 @@
 	},
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 10
-	},
-/obj/structure/extinguisher_cabinet{
-	pixel_y = -30
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 9
@@ -15713,7 +15735,7 @@
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "Ca" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "tripai"
 	},
 /obj/machinery/light{
@@ -15911,6 +15933,7 @@
 "Cv" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
 "Cw" = (
@@ -17421,7 +17444,7 @@
 	dir = 8
 	},
 /obj/machinery/computer/timeclock/premade/west,
-/atom/movable/landmark{
+/obj/landmark{
 	name = "JoinLateGateway"
 	},
 /turf/simulated/floor/tiled/steel,
@@ -17692,7 +17715,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/job/botanist,
+/obj/landmark/spawnpoint/job/botanist,
 /turf/simulated/floor/grass,
 /area/hydroponics)
 "FQ" = (
@@ -17718,7 +17741,7 @@
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 1
 	},
-/atom/movable/landmark/spawnpoint/job/research_director,
+/obj/landmark/spawnpoint/job/research_director,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "FT" = (
@@ -17769,7 +17792,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 10
 	},
-/atom/movable/landmark/spawnpoint/job/explorer,
+/obj/landmark/spawnpoint/job/explorer,
 /obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -24
@@ -18181,7 +18204,7 @@
 	dir = 8
 	},
 /obj/machinery/hologram/holopad,
-/atom/movable/landmark{
+/obj/landmark{
 	name = "morphspawn"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -18250,7 +18273,7 @@
 /area/rift/surfaceeva/aa/cliff_north)
 "Ha" = (
 /obj/structure/flora/ausbushes/brflowers,
-/atom/movable/landmark/spawnpoint/job/botanist,
+/obj/landmark/spawnpoint/job/botanist,
 /turf/simulated/floor/grass,
 /area/hydroponics)
 "Hb" = (
@@ -18287,7 +18310,7 @@
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/job/command_secretary,
+/obj/landmark/spawnpoint/job/command_secretary,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/carpet/blue,
@@ -19231,7 +19254,7 @@
 /area/security/nuke_storage)
 "IS" = (
 /obj/structure/bed/chair/comfy/brown,
-/atom/movable/landmark/spawnpoint/job/pilot,
+/obj/landmark/spawnpoint/job/pilot,
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
 "IT" = (
@@ -19456,7 +19479,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/atom/movable/landmark/spawnpoint/job/bartender,
+/obj/landmark/spawnpoint/job/bartender,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
@@ -20824,6 +20847,11 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/pathfinder_office)
+"LS" = (
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/plating,
+/area/maintenance/bar)
 "LT" = (
 /obj/machinery/suit_storage_unit/standard_unit,
 /obj/effect/floor_decal/borderfloorblack/full,
@@ -21390,7 +21418,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
 "MW" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "JoinLateGateway"
 	},
 /turf/simulated/floor/tiled/steel,
@@ -21829,7 +21857,7 @@
 /area/shuttle/excursion/general)
 "NQ" = (
 /obj/structure/bed/chair/wood,
-/atom/movable/landmark/spawnpoint/job/botanist,
+/obj/landmark/spawnpoint/job/botanist,
 /turf/simulated/floor/grass,
 /area/hydroponics)
 "NR" = (
@@ -21942,7 +21970,7 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "Ob" = (
-/atom/movable/landmark/spawnpoint/job/ai,
+/obj/landmark/spawnpoint/job/ai,
 /obj/machinery/requests_console{
 	department = "AI";
 	departmentType = 5;
@@ -22011,7 +22039,7 @@
 /obj/structure/bed/chair/bay/comfy/captain{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/job/captain,
+/obj/landmark/spawnpoint/job/captain,
 /obj/machinery/keycard_auth{
 	pixel_x = 10;
 	pixel_y = 37
@@ -23323,6 +23351,18 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
+"Qx" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/surfacethree)
 "Qy" = (
 /obj/machinery/door/airlock/voidcraft/vertical{
 	name = "battery hatch"
@@ -23600,7 +23640,7 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner2{
 	dir = 1
 	},
-/atom/movable/landmark{
+/obj/landmark{
 	name = "JoinLateGateway"
 	},
 /obj/item/radio/intercom{
@@ -23788,7 +23828,7 @@
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 1
 	},
-/atom/movable/landmark/spawnpoint/job/chief_engineer,
+/obj/landmark/spawnpoint/job/chief_engineer,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 8;
@@ -25155,7 +25195,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/job/field_medic,
+/obj/landmark/spawnpoint/job/field_medic,
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/explorer_prep)
 "TR" = (
@@ -25663,7 +25703,7 @@
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
 "UM" = (
-/atom/movable/landmark/spawnpoint/job/botanist,
+/obj/landmark/spawnpoint/job/botanist,
 /turf/simulated/floor/grass,
 /area/hydroponics)
 "UN" = (
@@ -25904,7 +25944,7 @@
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/emt/general)
 "Vl" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "tripai"
 	},
 /obj/machinery/light,
@@ -26161,7 +26201,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/general)
 "VK" = (
-/atom/movable/landmark/spawnpoint/latejoin/station/shuttle_dock,
+/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
 	},
@@ -26311,6 +26351,11 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/exploration/courser_dock)
+"VY" = (
+/obj/machinery/hologram/holopad,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/surfacethree)
 "VZ" = (
 /obj/machinery/conveyor{
 	dir = 1;
@@ -26349,7 +26394,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/atom/movable/landmark/spawnpoint/job/chef,
+/obj/landmark/spawnpoint/job/chef,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -26801,15 +26846,15 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "WT" = (
-/obj/structure/catwalk,
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
-	dir = 5
-	},
 /obj/structure/cable/green{
 	d1 = 2;
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
+	dir = 8
+	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
 "WU" = (
@@ -27578,7 +27623,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "Yv" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "JoinLateCyborg"
 	},
 /obj/machinery/computer/cryopod/robot{
@@ -27605,7 +27650,7 @@
 	dir = 4
 	},
 /obj/structure/bed/chair/bay/comfy/black,
-/atom/movable/landmark/spawnpoint/job/head_of_security,
+/obj/landmark/spawnpoint/job/head_of_security,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "Yy" = (
@@ -28168,7 +28213,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
 "ZF" = (
-/atom/movable/landmark/spawnpoint/overflow/station,
+/obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/secondary/docking_hallway)
 "ZG" = (
@@ -41677,14 +41722,14 @@ Rz
 WT
 cL
 cs
-Rc
-Rc
+LS
+LS
 Cv
 fa
 fa
 fa
-Wg
-aQ
+mY
+mR
 FX
 Fk
 Vc
@@ -41878,7 +41923,7 @@ Bf
 rH
 vC
 da
-fM
+VY
 Ig
 Nl
 MT
@@ -42071,8 +42116,8 @@ NS
 NS
 NS
 tH
-Ik
-aQ
+Wg
+jS
 Wg
 Rd
 Zi
@@ -42266,7 +42311,7 @@ wQ
 Tz
 tJ
 bJ
-AW
+Qx
 AQ
 Bu
 Xu

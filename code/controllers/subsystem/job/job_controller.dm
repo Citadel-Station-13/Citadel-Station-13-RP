@@ -334,7 +334,7 @@ var/global/datum/controller/occupations/job_master
 		var/list/spawn_in_storage = list()
 
 		if(!joined_late)
-			var/atom/movable/landmark/spawnpoint/S = SSjob.GetRoundstartSpawnpoint(H, H.client, job.type, job.faction)
+			var/obj/landmark/spawnpoint/S = SSjob.GetRoundstartSpawnpoint(H, H.client, job.type, job.faction)
 
 			if(istype(S))
 				H.forceMove(S.GetSpawnLoc())
@@ -634,7 +634,7 @@ var/global/datum/controller/occupations/job_master
 			spawnpos = spawntypes[C.prefs.spawnpoint]
 
 	preferred_method = spawnpos?.method
-	var/atom/movable/landmark/spawnpoint/S
+	var/obj/landmark/spawnpoint/S
 
 	. = list("spawnpoint")
 	if(spawnpos && istype(spawnpos))

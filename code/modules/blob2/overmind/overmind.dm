@@ -87,7 +87,10 @@ var/list/overminds = list()
 /mob/observer/blob/proc/add_points(points)
 	blob_points = clamp( blob_points + points, 0,  max_blob_points)
 
-/mob/observer/blob/Life()
+/mob/observer/blob/Life(seconds, times_fired)
+	if((. = ..()))
+		return
+
 	if(ai_controlled && (!client || auto_pilot))
 		if(prob(blob_type.ai_aggressiveness))
 			auto_attack()

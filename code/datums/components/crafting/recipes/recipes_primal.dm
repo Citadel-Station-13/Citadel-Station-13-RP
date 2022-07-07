@@ -124,8 +124,9 @@
 	name = "Collosal Rib"
 	//always_available = FALSE
 	reqs = list(
-            /obj/item/stack/material/bone = 10,
-            /datum/reagent/oil = 5)
+            /obj/item/stack/material/bone = 10
+            //datum/reagent/crude_oil = 5
+			)
 	result = /obj/structure/statue/bone
 	category = CAT_PRIMAL
 
@@ -133,8 +134,9 @@
 	name = "Skull Carving"
 	//always_available = FALSE
 	reqs = list(
-            /obj/item/stack/material/bone = 6,
-            /datum/reagent/oil = 5)
+            /obj/item/stack/material/bone = 6
+            //datum/reagent/crude_oil = 5
+			)
 	result = /obj/structure/statue/bone/skull
 	category = CAT_PRIMAL
 
@@ -142,8 +144,9 @@
 	name = "Cracked Skull Carving"
 	//always_available = FALSE
 	reqs = list(
-            /obj/item/stack/material/bone = 3,
-            /datum/reagent/oil = 5)
+            /obj/item/stack/material/bone = 3
+            ///datum/reagent/crude_oil = 5
+			)
 	result = /obj/structure/statue/bone/skull/half
 	category = CAT_PRIMAL
 
@@ -152,7 +155,7 @@
 	//always_available = FALSE
 	reqs = list(
             /obj/item/stack/material/bone = 4,
-            /datum/reagent/oil = 5,
+            //datum/reagent/crude_oil = 5,
             /obj/item/shovel = 1)
 	result = /obj/item/shovel/bone
 	category = CAT_PRIMAL

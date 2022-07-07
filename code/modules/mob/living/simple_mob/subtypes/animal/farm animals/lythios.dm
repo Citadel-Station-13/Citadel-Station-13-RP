@@ -3,7 +3,7 @@
 
 /datum/category_item/catalogue/fauna/livestock/icegoat
 	name = "Experimental Livestock - Glacicorn"
-	desc = "A genetically engineered lifeform distantly related to the domesitcated goat.\
+	desc = "A genetically engineered lifeform distantly related to the domesticated goat.\
 	It is currently being developed by NT as part of an independent initiative to slowly\
 	ween itself off reliance on Centauri Provisions for its food. It is capable of surviving\
 	in the harshest colds, and survives off of chemical processes only possible in extreme cold.\
@@ -24,8 +24,8 @@
 
 	faction = "goat"
 
-	minbodytemp = 100
-	maxbodytemp = 250
+	minbodytemp = 180
+	maxbodytemp = 275
 
 	health = 40
 	maxHealth = 40
@@ -55,13 +55,14 @@
 	udder = new(50)
 	udder.my_atom = src
 
-/mob/living/simple_mob/animal/icegoat/Life()
-	. = ..()
-	if(.)
-		if(stat == CONSCIOUS)
-			if(udder && prob(5))
-				udder.add_reagent("milk", rand(4,8))
-				udder.add_reagent("frostoil", rand(1, 2))
+/mob/living/simple_mob/animal/icegoat/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
+	if(stat != DEAD)
+		if(udder && prob(5))
+			udder.add_reagent("milk", rand(4,8))
+			udder.add_reagent("frostoil", rand(1, 2))
 
 		if(locate(/obj/effect/plant) in loc)
 			var/obj/effect/plant/SV = locate() in loc
@@ -109,7 +110,7 @@
 
 /mob/living/simple_mob/animal/passive/woolie
 	name = "woolie"
-	desc = "A ball of wool that hides a peculiar peaceful creature. Its thick coat protectsit from even the harshest weather."
+	desc = "A ball of wool that hides a peculiar but peaceful creature. Its thick coat protects it from even the harshest weather."
 	tt_desc = "E Lanovis absonulla"
 	icon_state = "woolie"
 	icon_living = "woolie"
@@ -118,7 +119,7 @@
 
 	faction = "goat"
 
-	minbodytemp = 100
+	minbodytemp = 180
 	maxbodytemp = 300
 
 	health = 40
@@ -146,19 +147,20 @@
 	. = ..()
 	coat_amount = 2
 
-/mob/living/simple_mob/animal/passive/woolie/Life()
-	. = ..()
-	if(.)
-		if(stat == CONSCIOUS)
-			if(prob(5))
-				if (coat_amount > 5)
-					return
-				else
-					coat_amount += 1
+/mob/living/simple_mob/animal/passive/woolie/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
+	if(stat != DEAD)
+		if(prob(5))
+			if (coat_amount > 5)
+				return
+			else
+				coat_amount += 1
 
 /mob/living/simple_mob/animal/passive/woolie/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	var/obj/item/tool/wirecutters/C = O
-	if(stat == CONSCIOUS && istype(C))
+	if(istype(C))
 		if(coat_amount == 0)
 			to_chat(user, "<font color='red'>There is not enough wool to shear from the [src].</font>")
 		else
@@ -171,20 +173,20 @@
 /datum/category_item/catalogue/fauna/livestock/furnacegrub
 	name = "Experimental Livestock - Furnace Grub"
 	desc = "After years of study by NT xenobiologists, the genes that allowed solar moths\
-	to produce heat was extracted and engineered into a docile and mostly safe living furnace.\
-	The Furnace Grub as it has been dubbed could provide passive heating even without power systems,\
+	to produce heat were extracted and engineered into a docile and mostly safe living furnace.\
+	The 'Furnace Grub' as it has been dubbed could provide passive heating even without power systems,\
 	which NT hopes can be sold to prospective colonists seeking to colonize the most icy planets."
 	value = CATALOGUER_REWARD_TRIVIAL
 
 /mob/living/simple_mob/animal/passive/furnacegrub
 	name = "furnace grub"
-	desc = "This grub glows with a powerful heat. "
+	desc = "This grub glows with a powerful heat."
 	icon_state = "furnacegrub"
 	icon_living = "furnacegrub"
 	icon_dead = "furnacegrub_dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/livestock/furnacegrub)
 
-	minbodytemp = 100
+	minbodytemp = 180
 	maxbodytemp = 350
 
 	faction = "grubs"
@@ -209,8 +211,10 @@
 	var/heating_power = 30000
 
 
-/mob/living/simple_mob/animal/passive/furnacegrub/Life()
-	. = ..()
+/mob/living/simple_mob/animal/passive/furnacegrub/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
 	if(icon_state != icon_dead) //I mean on death() Life() should disable but i guess doesnt hurt to make sure -shark
 		var/datum/gas_mixture/env = loc.return_air() //Gets all the information on the local air.
 		var/transfer_moles = 0.25 * env.total_moles //The bigger the room, the harder it is to heat the room.
@@ -230,11 +234,8 @@
 
 		env.merge(removed)
 
-
-
 	//Since I'm changing hyper mode to be variable we need to store old power
 	original_temp = heating_power //We remember our old goal, for use in non perpetual heating level increase
-
 
 /mob/living/simple_mob/animal/passive/furnacegrub/death()
 	src.anchored = 0
@@ -249,12 +250,12 @@
 
 ///Lythios Livesotck Crates
 /obj/structure/largecrate/animal/icegoat
-	name = "glacicorn crate carrier"
+	name = "glacicorn carrier"
 	desc = "Contains a pair of glacicorns, ill tempered ice goats. Warning glaicorns will die in enviroment with temperatures exceeding zero degress celcius."
 	starts_with = list(/mob/living/simple_mob/animal/icegoat = 2)
 
 /obj/structure/largecrate/animal/woolie
-	name = "woolie Crate"
+	name = "woolie carrier"
 	desc = "Contains a pair of woolies, a sheep like animal designed to live in extreme cold."
 	starts_with = list(/mob/living/simple_mob/animal/passive/woolie = 2)
 

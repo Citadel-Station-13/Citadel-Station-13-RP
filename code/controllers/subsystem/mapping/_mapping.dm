@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(mapping)
 	/// deepmainit markers by id
 	var/static/list/deepmaint_markers_by_id = list()
 	/// deepmaint loaders awaiting activations
-	var/static/list/atom/movable/landmark/deepmaint_root/deepmaint_loaders = list()
+	var/static/list/obj/landmark/deepmaint_root/deepmaint_loaders = list()
 	/// deepmaint templates
 	var/static/list/datum/map_template/submap/deepmaint/deepmaint_templates = list()
 
@@ -349,7 +349,12 @@ SUBSYSTEM_DEF(mapping)
 //
 /datum/controller/subsystem/mapping
 	var/list/map_templates = list()
-	var/atom/movable/landmark/engine_loader/engine_loader
+<<<<<<< HEAD
+	var/obj/landmark/engine_loader/engine_loader
+=======
+	var/dmm_suite/maploader = null
+	var/obj/landmark/engine_loader/engine_loader
+>>>>>>> citrp/master
 	var/list/shelter_templates = list()
 
 /datum/controller/subsystem/mapping/Recover()

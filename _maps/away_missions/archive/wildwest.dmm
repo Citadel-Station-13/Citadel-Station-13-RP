@@ -1448,7 +1448,7 @@
 	},
 /area/awaymission/wwrefine)
 "gV" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor/plating,

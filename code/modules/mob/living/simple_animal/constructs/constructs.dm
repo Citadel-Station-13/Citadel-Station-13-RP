@@ -206,7 +206,7 @@
 				"bio" = 100,
 				"rad" = 100)
 
-/mob/living/simple_animal/construct/armoured/Life()
+/mob/living/simple_animal/construct/armoured/Life(seconds, times_fired)
 	weakened = 0
 	..()
 
@@ -436,7 +436,7 @@
 
 ////////////////HUD//////////////////////
 
-/mob/living/simple_animal/construct/Life()
+/mob/living/simple_animal/construct/Life(seconds, times_fired)
 	. = ..()
 	if(.)
 		if(fire)

@@ -21,7 +21,7 @@
 
 	holder_type = /obj/item/holder/fish
 
-	meat_amount = 1
+	meat_amount = 2
 	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat/fish
 	bone_amount = 1
 
@@ -102,8 +102,10 @@
 	reagents.add_reagent("toxin", 45)
 	reagents.add_reagent("impedrezene", 15)
 
-/mob/living/simple_mob/animal/passive/fish/koi/poisonous/Life()
-	..()
+/mob/living/simple_mob/animal/passive/fish/koi/poisonous/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
 	if(isbelly(loc) && prob(10))
 		var/obj/belly/B = loc
 		sting(B.owner)

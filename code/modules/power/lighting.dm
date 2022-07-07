@@ -205,6 +205,28 @@ var/global/list/light_type_cache = list()
 		if(3)
 			icon_state = "flamp-empty"
 
+//Fairy Light Fixture
+/obj/machinery/light_construct/fairy
+	name = "fairy light fixture frame"
+	desc = "A string of cable with lots of sockets - under construction."
+	icon = 'icons/obj/lighting.dmi'
+	icon_state = "fairy-construct-stage1"
+	anchored = 0
+	plane = OBJ_PLANE
+	layer = OBJ_LAYER
+	stage = 1
+	fixture_type = /obj/machinery/light/fairy
+	sheets_refunded = 1
+
+/obj/machinery/light_construct/fairy/update_icon()
+	switch(stage)
+		if(1)
+			icon_state = "fairy-construct-stage1"
+		if(2)
+			icon_state = "fairy-construct-stage2"
+		if(3)
+			icon_state = "fairy-empty"
+
 // the standard tube light fixture
 /obj/machinery/light
 	name = "light fixture"
@@ -277,6 +299,16 @@ var/global/list/light_type_cache = list()
 
 /obj/machinery/light/small/poi
 	start_with_cell = FALSE
+
+/obj/machinery/light/fairy
+	name = "fairy lights"
+	icon = 'icons/obj/lighting.dmi'
+	icon_state = "fairy1"
+	base_state = "fairy"
+	desc = "Soft white lights that flicker and dance to and fro."
+	light_type = /obj/item/light/bulb/fairy
+	construct_type = /obj/machinery/light_construct/fairy
+	shows_alerts = FALSE
 
 /obj/machinery/light/flamp
 	icon = 'icons/obj/lighting.dmi'
@@ -1045,6 +1077,15 @@ var/global/list/light_type_cache = list()
 	base_state = "fbulb"
 	item_state = "egg4"
 	matter = list(MAT_GLASS = 100)
+
+//Fairylights
+/obj/item/light/bulb/fairy
+	name = "fairy light bulb"
+	desc = "A tiny replacement light bulb."
+	icon_state = "fbulb"
+	base_state = "fbulb"
+	matter = list(MAT_GLASS = 10)
+	brightness_range = 5
 
 // update the icon state and description of the light
 /obj/item/light/update_icon()

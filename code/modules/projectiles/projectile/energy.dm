@@ -44,7 +44,7 @@
 	sparks.start()
 
 	new /obj/effect/decal/cleanable/ash(src.loc) //always use src.loc so that ash doesn't end up inside windows
-	new /obj/effect/smoke/illumination(T, 5, brightness, brightness, light_colour)
+	new /obj/effect/particle_effect/smoke/illumination(T, 5, brightness, brightness, light_colour)
 
 //No longer blinds, and flash strength has been greatly lowered but now set's on fire.
 /obj/item/projectile/energy/flash/flare
@@ -62,7 +62,7 @@
 	..() //initial flash
 
 	//residual illumination
-	new /obj/effect/smoke/illumination(src.loc, rand(190,240) SECONDS, 8, 3, light_colour) //same lighting power as flare
+	new /obj/effect/particle_effect/smoke/illumination(src.loc, rand(190,240) SECONDS, 8, 3, light_colour) //same lighting power as flare
 
 /obj/item/projectile/energy/electrode
 	name = "electrode"

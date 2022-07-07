@@ -1,7 +1,7 @@
 /// mutex to prevent more than one from generating at once
 GLOBAL_VAR(deepmaint_generating)
 
-/atom/movable/landmark/deepmaint_root/proc/_lock_for_generation()
+/obj/landmark/deepmaint_root/proc/_lock_for_generation()
 	while(GLOB.deepmaint_generating != src)
 		if(QDELETED(src))
 			return FALSE
@@ -14,7 +14,7 @@ GLOBAL_VAR(deepmaint_generating)
 	GLOB.deepmaint_current_interior_wall = interior_wall_type
 	return TRUE
 
-/atom/movable/landmark/deepmaint_root/proc/_unlock_from_generation()
+/obj/landmark/deepmaint_root/proc/_unlock_from_generation()
 	if(GLOB.deepmaint_generating != src)
 		CRASH("wasn't even our turn")
 	GLOB.deepmaint_generating = null
@@ -25,7 +25,7 @@ GLOBAL_VAR(deepmaint_generating)
 	GLOB.deepmaint_current_interior_wall = null
 	return TRUE
 
-/atom/movable/landmark/deepmaint_root/proc/generate()
+/obj/landmark/deepmaint_root/proc/generate()
 	_lock_for_generation()
 	var/datum/deepmaint_algorithm/algorithm_instance
 	switch(algorithm)
@@ -37,14 +37,14 @@ GLOBAL_VAR(deepmaint_generating)
 		stack_trace("Couldn't find algorithm instance for algorithm [algorithm]")
 	_unlock_from_generation()
 
-/atom/movable/landmark/deepmaint_root/proc/generate_async()
+/obj/landmark/deepmaint_root/proc/generate_async()
 	set waitfor = FALSE
 	generate()
 
-/atom/movable/landmark/deepmaint_root/proc/gather_markers()
+/obj/landmark/deepmaint_root/proc/gather_markers()
 	return SSmapping.get_deepmaint_markers(id)
 
-/atom/movable/landmark/deepmaint_root/proc/gather_templates()
+/obj/landmark/deepmaint_root/proc/gather_templates()
 	. = list()
 	for(var/datum/map_template/submap/deepmaint/T in SSmapping.deepmaint_templates)
 		if(!(T.deepmaint_type & deepmaint_type))

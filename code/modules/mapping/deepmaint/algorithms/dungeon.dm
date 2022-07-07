@@ -12,7 +12,7 @@
 /datum/deepmaint_algorithm/dungeon
 	name = "dungeon"
 
-/datum/deepmaint_algorithm/dungeon/generate(atom/movable/landmark/deepmaint_root/host, turf/from, list/atom/movable/landmark/deepmaint_marker/generation/markers, list/datum/map_template/submap/deepmaint/templates)
+/datum/deepmaint_algorithm/dungeon/generate(obj/landmark/deepmaint_root/host, turf/from, list/obj/landmark/deepmaint_marker/generation/markers, list/datum/map_template/submap/deepmaint/templates)
 	host.blackboard["rooms"] = list()
 
 	// detect levels
@@ -39,7 +39,7 @@
 /**
  * spreads out at a specific centerpoint on the zlevel
  */
-/datum/deepmaint_algorithm/dungeon/proc/spread(atom/movable/landmark/deepmaint_root/host, turf/from, list/atom/movable/landmark/deepmaint_marker/generation/markers, list/datum/map_template/submap/deepmaint/templates)
+/datum/deepmaint_algorithm/dungeon/proc/spread(obj/landmark/deepmaint_root/host, turf/from, list/obj/landmark/deepmaint_marker/generation/markers, list/datum/map_template/submap/deepmaint/templates)
 	// step 0: init
 	var/turf/host_turf = get_turf(host)
 

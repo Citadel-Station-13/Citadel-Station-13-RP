@@ -7,9 +7,10 @@
 
 /mob/living/carbon/proc/breathe()
 	//if(istype(loc, /obj/machinery/atmospherics/component/unary/cryo_cell)) return
-	if(!should_have_organ(O_LUNGS)) return
+	if(!should_have_organ(O_LUNGS))
+		return
 
-	var/datum/gas_mixture/breath = null
+	var/datum/gas_mixture/breath
 
 	//First, check if we can breathe at all
 	if(health < config_legacy.health_threshold_crit && !(CE_STABLE in chem_effects)) //crit aka circulatory shock
@@ -32,7 +33,8 @@
 			breath = get_breath_from_environment() //No breath from internals so let's try to get air from our location
 		if(!breath)
 			var/static/datum/gas_mixture/vacuum //avoid having to create a new gas mixture for each breath in space
-			if(!vacuum) vacuum = new
+			if(!vacuum)
+				vacuum = new
 
 			breath = vacuum //still nothing? must be vacuum
 
@@ -79,7 +81,7 @@
 	if(wear_mask && (wear_mask.clothing_flags & BLOCK_GAS_SMOKE_EFFECT))
 		return
 
-	for(var/obj/effect/smoke/chem/smoke in view(1, src))
+	for(var/obj/effect/particle_effect/smoke/chem/smoke in view(1, src))
 		if(smoke.reagents.total_volume)
 			smoke.reagents.trans_to_mob(src, 10, CHEM_INGEST, copy = 1)
 			//maybe check air pressure here or something to see if breathing in smoke is even possible.
@@ -91,4 +93,4 @@
 
 /mob/living/carbon/proc/handle_post_breath(datum/gas_mixture/breath)
 	if(breath)
-		loc.assume_air(breath) //by default, exhale
+		loc?.assume_air(breath) //by default, exhale

@@ -6,7 +6,7 @@
 /**
  * represents the root of a deepmaint generation sequence
  */
-/atom/movable/landmark/deepmaint_root
+/obj/landmark/deepmaint_root
 	name = "deepmaint generator"
 	desc = "How can you see this?"
 
@@ -47,10 +47,10 @@
 	/// exterior wall type
 	var/exterior_wall_type
 
-/atom/movable/landmark/deepmaint_root/New()
+/obj/landmark/deepmaint_root/New()
 	SSmapping.deepmaint_loaders += src
 	return ..()
 
-/atom/movable/landmark/deepmaint_root/Destroy()
+/obj/landmark/deepmaint_root/Destroy()
 	SSmapping.deepmaint_loaders -= src
 	return ..()
