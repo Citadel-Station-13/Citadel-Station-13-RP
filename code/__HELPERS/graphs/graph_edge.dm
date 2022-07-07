@@ -13,6 +13,14 @@
 	src.b = b
 	src.weight = weight
 
+//! comparators
+
+/proc/cmp_graph_edge_weight_asc(datum/graph_edge/a, datum/graph_edge/b)
+	return a.weight - b.weight
+
+/proc/cmp_graph_edge_weight_dsc(datum/graph_edge/a, datum/graph_edge/b)
+	return b.weight - a.weight
+
 //! functions to get edge datums from graphs
 
 /datum/graph/proc/undirected_edges()
@@ -29,3 +37,7 @@
 			formed[a][b] = TRUE
 			. += new /datum/graph_edge(a, b, vertices[a][b])
 
+//! general edge helpers for graphs
+
+// edge operations - only makes sense if vertices are equal!
+#warn impl for union, intersection, difference, xor
