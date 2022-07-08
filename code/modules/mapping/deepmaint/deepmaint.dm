@@ -22,6 +22,8 @@
 	var/deepmaint_theme = DEEPMAINT_THEME_ANY
 	/// state vars for the algorithm
 	var/list/blackboard
+	/// json to load into blackboard at start - WARNING: ADVANCED FEATURE
+	var/blackboard_initial_json
 	/// number of zlevels to spread upwards
 	var/multiz_spread_up = 0
 	/// number of zlevels to spread downwars
