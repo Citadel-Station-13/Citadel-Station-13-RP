@@ -100,6 +100,15 @@ GLOBAL_VAR(deepmaint_current_exterior_floor)
 /obj/landmark/deepmaint_marker/room/multiz/up
 	allowed_dirs = UP
 
+/obj/landmark/deepmaint_marker/room/multiz/both/ladder
+	icon_state = "ladder_both"
+
+/obj/landmark/deepmaint_marker/room/multiz/both/stairs
+	icon_state = "stairs_both"
+
+/obj/landmark/deepmaint_marker/room/multiz/up
+	allowed_dirs = UP
+
 /obj/landmark/deepmaint_marker/room/multiz/up/ladder
 	icon_state = "ladder_up"
 
