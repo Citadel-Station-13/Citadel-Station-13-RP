@@ -7,7 +7,7 @@
  * represents the root of a deepmaint generation sequence
  */
 /obj/landmark/deepmaint_root
-	name = "deepmaint generator"
+	name = "invalid deepmaint generator"
 	desc = "How can you see this?"
 
 	/// generator id - used to link up with markers
@@ -17,7 +17,7 @@
 	/// state - enum, usually used for internal calculations. either not done, in progress, or done.
 	var/state = DEEPMAINT_GENERATION_STATE_NOT_STARTED
 	/// algorithm - enum, check defines, this determines the algorithm datum we'll use
-	var/algorithm = DEEPMAINT_ALGORITHM_DUNGEON
+	var/algorithm
 	/// type flags - only allows templates with matching types to spawn
 	var/deepmaint_type = DEEPMAINT_TYPE_ANY
 	/// theme flags - only allows tempaltes with matching themes to spawn

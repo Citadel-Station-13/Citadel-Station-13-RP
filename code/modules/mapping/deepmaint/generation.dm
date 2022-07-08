@@ -28,16 +28,33 @@ GLOBAL_VAR(deepmaint_generating)
 /obj/landmark/deepmaint_root/proc/generate()
 	_lock_for_generation()
 	var/datum/deepmaint_algorithm/algorithm_instance
-	switch(algorithm)
-		if(DEEPMAINT_ALGORITHM_DUNGEON)
-			algorithm_instance = new /datum/deepmaint_algorithm/dungeon
-	blackboard = blackboard_initial_json? json_decode(blackboard_initial_json) : list()
+	if(!ispath(algorithm, /datum/deepmaint_algorithm))
+		_unlock_from_generation()
+		CRASH("No algorithm")
+	algorithm_instance = new algorithm
+	init_blackboard()
 	if(algorithm_instance)
 		algorithm_instance.generate(src, get_turf(src), gather_markers(), gather_templates())
 	else
 		stack_trace("Couldn't find algorithm instance for algorithm [algorithm]")
 	log_mapping("deepmaint gen finished with algorithm '[algorithm]' and blackboard [json_encode(blackboard)].")
 	_unlock_from_generation()
+
+/obj/landmark/deepmaint_root/proc/_init_blackboard()
+	SHOULD_NOT_OVERRIDE(TRUE)
+	PRIVATE_PROC(TRUE)
+
+	blackboard = list()
+	init_blackboard()
+
+	// json has overwrite capability
+	if(blackboard_initial_json)
+		var/list/decoded = json_decode(blackboard_initial_json)
+		for(var/k in decoded)
+			var/v = decoded[k]
+			blackboard[k] = v
+
+/obj/landmark/deepmaint_root/proc/init_blackboard()
 
 /obj/landmark/deepmaint_root/proc/generate_async()
 	set waitfor = FALSE

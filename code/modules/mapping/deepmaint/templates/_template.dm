@@ -6,7 +6,7 @@
 	/**
 	 * -- MAPPERS - SET THESE VARS --
 	 * Check code/__DEFINES/mapping/deepmaint.dm for values
-	 * ID - ENSURE THIS IS SOME FORM OF deepmaint_*
+	 * ID - must be unique
 	 * Optimally, something like
 	 * - spacestation_rnd
 	 * - spacestation_medbay
