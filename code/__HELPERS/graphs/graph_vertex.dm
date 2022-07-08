@@ -31,4 +31,4 @@
 		. += a
 
 /datum/graph/proc/vertex_equality(datum/graph/other)
-	return !len(vertex_xor(other))
+	return !length(vertex_xor(other))

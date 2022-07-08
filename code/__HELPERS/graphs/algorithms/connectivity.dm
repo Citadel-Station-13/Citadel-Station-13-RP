@@ -8,7 +8,7 @@
 	var/list/found = list(start = TRUE)
 	var/list/searching = list(start)
 	while(searching.len)
-		var/list/potential = Edges(searching[1])
+		var/list/potential = vertices[searching[1]]
 		searching.Cut(1, 2)
 		for(var/b in potential)
 			if(found[b])
@@ -29,7 +29,7 @@
 		if(found[a])
 			continue
 		found[a] = TRUE
-		searching += Edges(a)
+		searching += vertices[a]
 	// flatten
 	. = list()
 	for(var/a in found)
@@ -57,7 +57,7 @@
 	for(var/list/component as anything in undirected_components())
 		var/datum/graph/subgraph = new(component)
 		for(var/a in component)
-			var/list/edges = Edges(a)
+			var/list/edges = vertices[a]
 			for(var/b in edges)
 				if(!subgraph.Has(b))
 					continue

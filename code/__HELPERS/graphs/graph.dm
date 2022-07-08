@@ -77,4 +77,5 @@
  */
 /datum/graph/proc/Edges(a)
 	ASSERT(vertices[a])
-	return vertices[a].Copy()
+	var/list/edges = vertices[a]
+	return edges.Copy()

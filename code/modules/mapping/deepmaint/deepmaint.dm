@@ -10,6 +10,8 @@
 	name = "deepmaint generator"
 	desc = "How can you see this?"
 
+	/// generator id - used to link up with markers
+	var/id
 	/// generator directives
 	var/directives = NONE
 	/// state - enum, usually used for internal calculations. either not done, in progress, or done.

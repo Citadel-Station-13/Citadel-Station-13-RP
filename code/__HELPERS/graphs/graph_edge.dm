@@ -28,7 +28,7 @@
 	. = list()
 	var/list/formed = list()
 	for(var/a in vertices)
-		for(var/b in Edges(a))
+		for(var/b in vertices[a])
 			// check for reverse
 			if(formed[b] && formed[b][a])
 				continue
@@ -63,5 +63,3 @@
 
 
 // todo: union, intersection, difference, xor, equality for directed and undirected
-
-#warn impl for union, intersection, difference, xor
