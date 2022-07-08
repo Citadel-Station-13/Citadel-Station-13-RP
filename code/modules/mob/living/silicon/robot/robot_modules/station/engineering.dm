@@ -299,6 +299,6 @@
 	if(R.client && (R.client.ckey in list("nezuli")))
 		sprites += "Alina"
 		sprites["Alina"] = "alina-eng"
-
+		. = ..()
 
 
