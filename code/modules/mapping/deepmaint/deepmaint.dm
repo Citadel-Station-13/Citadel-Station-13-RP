@@ -15,7 +15,7 @@
 	/// state - enum, usually used for internal calculations. either not done, in progress, or done.
 	var/state = DEEPMAINT_GENERATION_STATE_NOT_STARTED
 	/// algorithm - enum, check defines, this determines the algorithm datum we'll use
-	var/algorithm = DEEPMAINT_ALGORITHM_DUNGEON_SPREAD
+	var/algorithm = DEEPMAINT_ALGORITHM_DUNGEON
 	/// type flags - only allows templates with matching types to spawn
 	var/deepmaint_type = DEEPMAINT_TYPE_ANY
 	/// theme flags - only allows tempaltes with matching themes to spawn

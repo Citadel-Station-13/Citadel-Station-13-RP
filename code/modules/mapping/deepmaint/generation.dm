@@ -29,12 +29,14 @@ GLOBAL_VAR(deepmaint_generating)
 	_lock_for_generation()
 	var/datum/deepmaint_algorithm/algorithm_instance
 	switch(algorithm)
-		if(DEEPMAINT_ALGORITHM_DUNGEON_SPREAD)
+		if(DEEPMAINT_ALGORITHM_DUNGEON)
 			algorithm_instance = new /datum/deepmaint_algorithm/dungeon
+	blackboard = blackboard_initial_json? json_decode(blackboard_initial_json) : list()
 	if(algorithm_instance)
 		algorithm_instance.generate(src, get_turf(src), gather_markers(), gather_templates())
 	else
 		stack_trace("Couldn't find algorithm instance for algorithm [algorithm]")
+	log_mapping("deepmaint gen finished with algorithm '[algorithm]' and blackboard [json_encode(blackboard)].")
 	_unlock_from_generation()
 
 /obj/landmark/deepmaint_root/proc/generate_async()

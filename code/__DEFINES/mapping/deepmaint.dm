@@ -83,6 +83,5 @@
 #define DEEPMAINT_GENERATION_STATE_FINISHED				2
 
 // generation mode/algorithm
-/// generate wrooms by shotgunning them out from a number of roots, tracing paths, and repeating up/down zlevels
-#define DEEPMAINT_ALGORITHM_DUNGEON_SPREAD				"dungeon"
-
+/// complex advanced algorithm
+#define DEEPMAINT_ALGORITHM_DUNGEON					"dungeon"
