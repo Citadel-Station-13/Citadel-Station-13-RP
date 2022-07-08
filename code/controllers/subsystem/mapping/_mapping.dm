@@ -349,12 +349,7 @@ SUBSYSTEM_DEF(mapping)
 //
 /datum/controller/subsystem/mapping
 	var/list/map_templates = list()
-<<<<<<< HEAD
 	var/obj/landmark/engine_loader/engine_loader
-=======
-	var/dmm_suite/maploader = null
-	var/obj/landmark/engine_loader/engine_loader
->>>>>>> citrp/master
 	var/list/shelter_templates = list()
 
 /datum/controller/subsystem/mapping/Recover()
