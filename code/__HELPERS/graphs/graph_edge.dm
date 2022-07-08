@@ -40,4 +40,28 @@
 //! general edge helpers for graphs
 
 // edge operations - only makes sense if vertices are equal!
+// returns list of graph edges
+// for union, weights are max
+// for intersection, weights are min
+
+/datum/graph/proc/undirected_edge_difference(datum/graph/other)
+	RETURN_TYPE(/list)
+	. = list()
+	var/list/found = list()
+	for(var/a in vertices)
+		if(!found[a])
+			found[a] = list()
+		for(var/b in vertices[a])
+			// this goes above other to save some lookups
+			if(found[b][a])
+				// we already linked reverse
+				continue
+			found[a][b] = TRUE
+			if(other.vertices[a][b])
+				continue
+			. += new /datum/graph_edge(a, b, vertices[a][b])
+
+
+// todo: union, intersection, difference, xor, equality for directed and undirected
+
 #warn impl for union, intersection, difference, xor

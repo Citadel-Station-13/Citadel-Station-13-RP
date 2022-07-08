@@ -14,7 +14,7 @@
 			if(found[b])
 				continue
 			found[b] = TRUE
-			seraching += b
+			searching += b
 	return found.len == vertices.len
 
 /**
@@ -57,7 +57,7 @@
 	for(var/list/component as anything in undirected_components())
 		var/datum/graph/subgraph = new(component)
 		for(var/a in component)
-			var/list/edges = Edges(A)
+			var/list/edges = Edges(a)
 			for(var/b in edges)
 				if(!subgraph.Has(b))
 					continue

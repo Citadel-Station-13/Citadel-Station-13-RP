@@ -27,7 +27,7 @@
 					Connect(a, b, FALSE, edges[b])
 		if(/list)
 			var/list/inserting = cloning
-			for(var/a in copying)
+			for(var/a in inserting)
 				Insert(a)
 
 /datum/graph/Destroy()
