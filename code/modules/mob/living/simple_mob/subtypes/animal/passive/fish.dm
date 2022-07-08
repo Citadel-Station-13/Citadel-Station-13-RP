@@ -7,7 +7,7 @@
 
 /mob/living/simple_mob/animal/passive/fish
 	name = "fish"
-	desc = "Its a fishy.  No touchy fishy."
+	desc = "Its a fishy. No touchy fishy."
 	icon = 'icons/mob/fish.dmi'
 	item_state = "fish"
 
