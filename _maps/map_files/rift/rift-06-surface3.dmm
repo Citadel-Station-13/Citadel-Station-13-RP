@@ -2821,7 +2821,6 @@
 	opacity = 0
 	},
 /obj/machinery/door/airlock/glass_command/polarized{
-	id_tag = null;
 	id_tint = "bridge_tint";
 	name = "Bridge"
 	},
@@ -3576,7 +3575,6 @@
 "fR" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 2;
-	id_tag = null;
 	name = "Laundry"
 	},
 /obj/effect/floor_decal/borderfloor,
@@ -5941,8 +5939,7 @@
 	id = "captaindoor";
 	name = "Office Door";
 	pixel_x = -28;
-	pixel_y = -24;
-	req_one_access = null
+	pixel_y = -24
 	},
 /obj/machinery/light_switch{
 	pixel_x = -18;
@@ -8288,7 +8285,6 @@
 	opacity = 0
 	},
 /obj/machinery/door/airlock/glass_command/polarized{
-	id_tag = null;
 	id_tint = "bridge_tint";
 	name = "Bridge"
 	},
@@ -11592,10 +11588,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
-"uw" = (
-/obj/effect/spider/spiderling/virgo,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/rift/surfacebase/outside/outside3)
 "ux" = (
 /turf/simulated/floor/tiled/monotile,
 /area/rift/trade_shop/landing_pad)
@@ -13352,10 +13344,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/station/exploration)
-"xA" = (
-/mob/living/simple_mob/animal/giant_spider/nurse,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/rift/surfacebase/outside/outside3)
 "xB" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/effect/decal/cleanable/flour,
@@ -19829,7 +19817,6 @@
 	opacity = 0
 	},
 /obj/machinery/door/airlock/glass_command/polarized{
-	id_tag = null;
 	id_tint = "bridge_tint";
 	name = "Bridge"
 	},
@@ -21836,7 +21823,6 @@
 "NN" = (
 /obj/machinery/door/airlock/hatch{
 	icon_state = "door_locked";
-	id_tag = null;
 	locked = 1;
 	name = "AI Core";
 	req_access = list(16)
@@ -22501,8 +22487,7 @@
 	id = "kitchen_shutters";
 	name = "Kitchen Shutter control";
 	pixel_x = -26;
-	pixel_y = 24;
-	req_one_access = null
+	pixel_y = 24
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -27469,10 +27454,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
-"Yb" = (
-/mob/living/simple_mob/animal/giant_spider/nurse/queen,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/rift/surfacebase/outside/outside3)
 "Yc" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -54283,9 +54264,9 @@ fq
 qY
 fq
 sH
-uw
+GO
 xR
-uw
+GO
 GO
 xR
 sH
@@ -54477,12 +54458,12 @@ fq
 qY
 fq
 GO
-uw
+GO
 GO
 sH
 GO
 GO
-uw
+GO
 fq
 fq
 fq
@@ -54672,7 +54653,7 @@ qY
 fq
 sH
 ya
-xA
+GO
 GO
 xR
 sH
@@ -54868,7 +54849,7 @@ fq
 yd
 GO
 GO
-uw
+GO
 GO
 GO
 GO
@@ -55061,7 +55042,7 @@ fq
 fq
 xR
 GO
-uw
+GO
 Vb
 GO
 GO
@@ -57207,11 +57188,11 @@ Xd
 GO
 fq
 fq
-xA
-uw
 GO
 GO
-uw
+GO
+GO
+GO
 fq
 fq
 fq
@@ -57386,10 +57367,10 @@ fq
 qY
 qY
 fq
-uw
+GO
 As
 GO
-uw
+GO
 GO
 fq
 fq
@@ -57602,7 +57583,7 @@ fq
 fq
 xR
 GO
-uw
+GO
 sH
 fq
 qY
@@ -57774,8 +57755,8 @@ fq
 qY
 fq
 GO
-xA
-uw
+GO
+GO
 GO
 GO
 fq
@@ -58757,7 +58738,7 @@ GO
 GO
 fq
 GO
-uw
+GO
 XH
 GO
 fq
@@ -58944,11 +58925,11 @@ fq
 fq
 fq
 fq
-uw
+GO
 xR
 GO
 GO
-uw
+GO
 GO
 GO
 fq
@@ -59347,11 +59328,11 @@ fq
 fq
 fq
 fq
-uw
+GO
 UF
 GO
 GO
-uw
+GO
 fq
 qY
 fq
@@ -59733,7 +59714,7 @@ fq
 fq
 sH
 Up
-xA
+GO
 GO
 GO
 GO
@@ -59930,7 +59911,7 @@ sH
 JV
 GO
 UF
-Yb
+GO
 GO
 fq
 fq
