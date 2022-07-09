@@ -20437,10 +20437,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
-"KZ" = (
-/obj/effect/spider/eggcluster/small/frost,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/rift/surfacebase/outside/outside3)
 "La" = (
 /obj/structure/grille,
 /obj/structure/foamedmetal,
@@ -24476,7 +24472,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/barrestroom)
 "Sr" = (
-/obj/effect/spider/eggcluster,
 /obj/random/multiple/corp_crate,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
@@ -25420,10 +25415,6 @@
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/general)
-"Up" = (
-/obj/effect/spider/eggcluster,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/rift/surfacebase/outside/outside3)
 "Uq" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -25828,10 +25819,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hydroponics)
-"Vb" = (
-/obj/effect/spider/eggcluster/small,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/rift/surfacebase/outside/outside3)
 "Vc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -54071,7 +54058,7 @@ qY
 fq
 fq
 sH
-KZ
+GO
 sH
 GO
 fq
@@ -55043,7 +55030,7 @@ fq
 xR
 GO
 GO
-Vb
+GO
 GO
 GO
 GO
@@ -55235,7 +55222,7 @@ qY
 fq
 fq
 fq
-Vb
+GO
 As
 sH
 GO
@@ -58358,7 +58345,7 @@ fq
 fq
 fq
 sH
-Up
+GO
 fq
 fq
 fq
@@ -58943,7 +58930,7 @@ GO
 GO
 As
 GO
-Up
+GO
 fq
 fq
 qY
@@ -59713,7 +59700,7 @@ fq
 fq
 fq
 sH
-Up
+GO
 GO
 GO
 GO
@@ -60298,7 +60285,7 @@ fq
 fq
 fq
 sH
-Up
+GO
 Ub
 fq
 fq
