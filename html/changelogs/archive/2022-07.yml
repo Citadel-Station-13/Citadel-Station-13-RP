@@ -1,3 +1,14 @@
 2022-07-01:
   Zandario:
   - rscadd: Throwing subsystem.
+2022-07-09:
+  Captain277:
+  - rscdel: Removes toxin from fish meat.
+  - bugfix: Fixes incorrectly sized landing pads.
+  CharlesWedge:
+  - bugfix: Old Lore Removed, New Lore Added
+  MediHound:
+  - rscdel: Removed old Alina sprites
+  - rscadd: Added new Alina sprites
+  Zandario:
+  - bugfix: Corrects the tajaran spritesheets being used.
