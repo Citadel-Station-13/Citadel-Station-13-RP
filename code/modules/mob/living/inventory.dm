@@ -228,12 +228,15 @@
 
 	get_active_held_item()?.attack_self(src)
 
-/mob/living/abiotic(var/full_body = 0)
-	if(full_body && ((src.l_hand && !( src.l_hand.abstract )) || (src.r_hand && !( src.r_hand.abstract )) || (src.back || src.wear_mask)))
-		return 1
+/mob/living/abiotic(full_body)
+	if(full_body)
+		if(item_considered_abiotic(wear_mask))
+			return TRUE
+		if(item_considered_abiotic(back))
+			return TRUE
 
 	for(var/obj/item/I as anything in get_held_items())
-		if(!(I.flags & ABSTRACT))
-	if((src.l_hand && !( src.l_hand.abstract )) || (src.r_hand && !( src.r_hand.abstract )))
-		return 1
-	return 0
+		if(item_considered_abiotic(I))
+			return TRUE
+
+	return FALSE

@@ -131,8 +131,7 @@
 		to_chat(user, "<span class='danger'>The gibber safety guard is engaged!</span>")
 		return
 
-
-	if(victim.abiotic(1))
+	if(victim.abiotic(TRUE))
 		to_chat(user, "<span class='danger'>Subject may not have abiotic items on.</span>")
 		return
 

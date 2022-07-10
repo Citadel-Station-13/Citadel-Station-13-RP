@@ -723,7 +723,7 @@
 			this.icon_state = "vomittox_[pick(1,4)]"
 
 /atom/proc/clean_blood()
-	if(flags & AF_ABSTRACT)
+	if(flags & ATOM_ABSTRACT)
 		return
 	fluorescent = 0
 	src.germ_level = 0

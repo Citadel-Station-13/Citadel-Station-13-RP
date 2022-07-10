@@ -5,7 +5,7 @@
 	icon_state = "energynet"
 	anchored = 1
 	unacidable = 1
-	flags = AF_ABSTRACT
+	flags = ATOM_ABSTRACT
 	invisibility = 101
 	var/shuttle_landmark_flags = SLANDMARK_FLAG_AUTOSET	// We generally want to use current area/turf as base.
 

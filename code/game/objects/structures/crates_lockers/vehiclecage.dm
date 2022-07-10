@@ -18,7 +18,7 @@
 	if(my_vehicle_type)
 		my_vehicle = new my_vehicle_type(src)
 		for(var/obj/I in get_turf(src))
-			if(I.density || I.anchored || I == src || (I.flags & AF_ABSTRACT) || !istype(I, my_vehicle_type))
+			if(I.density || I.anchored || I == src || (I.flags & ATOM_ABSTRACT) || !istype(I, my_vehicle_type))
 				continue
 			load_vehicle(I)
 	update_icon()
@@ -87,7 +87,7 @@
 	new /obj/item/stack/material/steel(src.loc, 5)
 
 	for(var/atom/movable/AM in contents)
-		if(!(AM.flags & AF_ABSTRACT))
+		if(!(AM.flags & ATOM_ABSTRACT))
 			AM.forceMove(T)
 
 	my_vehicle = null

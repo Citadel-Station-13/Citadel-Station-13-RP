@@ -33,7 +33,7 @@ Contains helper procs for airflow, handled in /connection_group.
 
 /atom/movable/proc/check_airflow_movable(n)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/dense_pressure, dense_pressure)
-	if(flags & AF_ABSTRACT)
+	if(flags & ATOM_ABSTRACT)
 		return 0
 
 	if(anchored && !ismob(src))
@@ -159,6 +159,6 @@ Contains helper procs for airflow, handled in /connection_group.
 	. = list()
 	for(var/turf/T in contents)
 		for(var/atom/movable/A in T)
-			if((A.flags & AF_ABSTRACT) || A.anchored || istype(A, /obj/effect) || istype(A, /mob/observer))
+			if((A.flags & ATOM_ABSTRACT) || A.anchored || istype(A, /obj/effect) || istype(A, /mob/observer))
 				continue
 			. += A

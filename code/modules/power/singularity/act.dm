@@ -37,7 +37,7 @@
 	..()
 
 /obj/singularity_act()
-	if(flags & AF_ABSTRACT)
+	if(flags & ATOM_ABSTRACT)
 		return
 	ex_act(1)
 	if(!QDELETED(src))
@@ -45,7 +45,7 @@
 	return 2
 
 /obj/singularity_pull(S, current_size)
-	if(flags & AF_ABSTRACT)
+	if(flags & ATOM_ABSTRACT)
 		return
 	if(anchored)
 		if(current_size >= STAGE_FIVE)

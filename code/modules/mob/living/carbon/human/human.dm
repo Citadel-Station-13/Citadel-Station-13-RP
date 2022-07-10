@@ -744,18 +744,26 @@
 		to_chat(src, "<span class='warning'>You don't have the dexterity to use that!</span>")
 	return 0
 
-/mob/living/carbon/human/abiotic(var/full_body = 0)
-	if(full_body && ((src.l_hand && !( src.l_hand.abstract )) || (src.r_hand && !( src.r_hand.abstract )) || (src.back || src.wear_mask || src.head || src.shoes || src.w_uniform || src.wear_suit || src.glasses || src.l_ear || src.r_ear || src.gloves)))
-		return 1
-
-	if( (src.l_hand && !src.l_hand.abstract) || (src.r_hand && !src.r_hand.abstract) )
-		return 1
-
-	return 0
+/mob/living/carbon/human/abiotic(full_body)
+	if(full_body)
+		if(item_considered_abiotic(head))
+			return TRUE
+		if(item_considered_abiotic(w_uniform))
+			return TRUE
+		if(item_considered_abiotic(wear_suit))
+			return TRUE
+		if(item_considered_abiotic(glasses))
+			return TRUE
+		if(item_considered_abiotic(l_ear))
+			return TRUE
+		if(item_considered_abiotic(shoes))
+			return TRUE
+		if(item_considered_abiotic(gloves))
+			return TRUE
+	return ..()
 
 /mob/living/carbon/human/proc/check_dna()
 	dna.check_integrity(src)
-	return
 
 /mob/living/carbon/human/get_species_name(examine)
 	// no more species check, if we runtime, fuck you, fix your bugs.

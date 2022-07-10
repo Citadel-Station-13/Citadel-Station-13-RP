@@ -10,8 +10,7 @@
 /// Atom queued to SSoverlay for COMPILE_OVERLAYS
 #define OVERLAY_QUEUED				(1<<4)
 /// atom is absolute-abstract - should not be interactable or movable in any way shape or form
-// TODO: unify with atom ABSTRACT
-#define AF_ABSTRACT					(1<<5)
+#define ATOM_ABSTRACT					(1<<5)
 /// we are an holographic atom from a holodeck/AR system
 #define HOLOGRAM					(1<<6)
 /// Used for items if they don't want to get a blood overlay.
@@ -59,7 +58,7 @@ DEFINE_BITFIELD(flags, list(
 	BITFIELD(ADMIN_SPAWNED),
 	BITFIELD(HEAR),
 	BITFIELD(OVERLAY_QUEUED),
-	BITFIELD(AF_ABSTRACT),
+	BITFIELD(ATOM_ABSTRACT),
 	BITFIELD(HOLOGRAM),
 	BITFIELD(NOBLOODY),
 	BITFIELD(NOREACT),

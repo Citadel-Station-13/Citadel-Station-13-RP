@@ -308,7 +308,7 @@
 	for(var/thing in loc)
 		var/atom/movable/AM = thing
 		var/mob/living/L = thing
-		if(istype(AM) && !(AM.flags & AF_ABSTRACT))
+		if(istype(AM) && !(AM.flags & ATOM_ABSTRACT))
 			wash(AM)
 			if(istype(L))
 				process_heat(L)

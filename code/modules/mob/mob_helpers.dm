@@ -203,8 +203,11 @@ proc/getsensorlevel(A)
 			return 1
 	return 0
 
-/mob/proc/abiotic(var/full_body = 0)
-	return 0
+/mob/proc/abiotic(full_body)
+	return FALSE
+
+/mob/proc/item_considered_abiotic(obj/item/I)
+	return I && (I.item_flags & ITEM_ABSTRACT)
 
 //converts intent-strings into numbers and back
 var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)

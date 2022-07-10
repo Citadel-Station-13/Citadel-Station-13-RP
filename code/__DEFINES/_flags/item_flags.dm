@@ -2,27 +2,27 @@
 /*
 #define BEING_REMOVED			(1<<0)
 */
-///is this item equipped into an inventory slot or hand of a mob? used for tooltips
+/// is this item equipped into an inventory slot or hand of a mob? used for tooltips
 #define IN_INVENTORY			(1<<1)
 /*
-///used for tooltips
+/// used for tooltips
 #define FORCE_STRING_OVERRIDE	(1<<2)
-///Used by security bots to determine if this item is safe for public use.
+/// Used by security bots to determine if this item is safe for public use.
 #define NEEDS_PERMIT			(1<<3)
 #define SLOWS_WHILE_IN_HAND		(1<<4)
-///Stops you from putting things like an RCD or other items into an ORM or protolathe for materials.
+/// Stops you from putting things like an RCD or other items into an ORM or protolathe for materials.
 #define NO_MAT_REDEMPTION		(1<<5)
 */
-///When dropped, it calls qdel on itself
+/// When dropped, it calls qdel on itself
 #define DROPDEL					(1<<6)
 
-///when an item has this it produces no "X has been hit by Y with Z" message in the default attackby()
+/// when an item has this it produces no "X has been hit by Y with Z" message in the default attackby()
 #define NOBLUDGEON				(1<<7)
-///for all things that are technically items but used for various different stuff
-#define ABSTRACT				(1<<8)
-///When players should not be able to change the slowdown of the item (Speed potions, ect)
+/// for all things that are technically items but used for various different stuff
+#define ITEM_ABSTRACT				(1<<8)
+/// When players should not be able to change the slowdown of the item (Speed potions, ect)
 #define IMMUTABLE_SLOW			(1<<9)
-///Tool commonly used for surgery: won't attack targets in an active surgical operation on help intent (in case of mistakes)
+/// Tool commonly used for surgery: won't attack targets in an active surgical operation on help intent (in case of mistakes)
 #define SURGICAL_TOOL			(1<<10)
 /// is this item in a storage component?
 #define IN_STORAGE				(1<<14)
@@ -31,7 +31,7 @@ DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(IN_INVENTORY),
 	BITFIELD(DROPDEL),
 	BITFIELD(NOBLUDGEON),
-	BITFIELD(ABSTRACT),
+	BITFIELD(ITEM_ABSTRACT),
 	BITFIELD(IMMUTABLE_SLOW),
 	BITFIELD(SURGICAL_TOOL),
 	BITFIELD(IN_STORAGE),
