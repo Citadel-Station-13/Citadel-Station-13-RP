@@ -192,7 +192,7 @@
 			to_chat(M, SPAN_NOTICE("You cannot use your augments when restrained."))
 			return FALSE
 
-	if((slot == slot_l_hand && l_hand) || (slot == slot_r_hand && r_hand))
+	if((slot == /datum/inventory_slot_meta/abstract/left_hand && l_hand) || (slot == /datum/inventory_slot_meta/abstract/right_hand && r_hand))
 		to_chat(M, SPAN_WARNING("Your hand is full.  Drop something first."))
 		return FALSE
 
@@ -207,10 +207,9 @@
 			qdel(equipping)
 
 	else
-		if(slot_is_accessible(slot, equipping, src))
-			equip_to_slot(equipping, slot, 1, 1)
-		else if(destroy_on_drop || del_if_failure)
-			qdel(equipping)
+		if(!equip_to_slot_if_possible(equipping, slot, FALSE, TRUE, TRUE))
+			if(destroy_on_drop || del_if_failure)
+				qdel(equipping)
 			return FALSE
 
 	if(cling_to_organ) // Does the object automatically return to the organ?

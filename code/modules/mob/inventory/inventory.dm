@@ -327,9 +327,7 @@
 
 	var/missing_bodypart
 
-	if((missing_bodypart = inventory_slot_bodypart_check(I, slot, user)) && !force)
-		if(!silent)
-			to_chat(user, SPAN_WARNING("[self_equip? "You" :"They"] have no [missing_bodypart] to attach that to!"))
+	if(!inventory_slot_bodypart_check(I, slot, user, silent) && !force)
 		return FALSE
 
 	switch(inventory_slot_conflict_check(I, slot))
@@ -356,17 +354,18 @@
 		return FALSE
 
 	// lastly, check item's opinion
-	if(!I.can_equip(src, user, slot, silent, disallow_delay, igonre_fluff))
+	if(!I.can_equip(src, user, slot, silent, disallow_delay, ignore_fluff))
 		return FALSE
 
 	return TRUE
 
 /**
  * checks if we are missing the bodypart for a slot
- * return null or the missing bodypart as a string
+ * return FALSE if we are missing, or TRUE if we're not
+ *
+ * this proc should give the feedback of what's missing!
  */
-/mob/proc/inventory_slot_bodypart_check(obj/item/I, slot)
-	#warn impl humans
+/mob/proc/inventory_slot_bodypart_check(obj/item/I, slot, mob/user, silent)
 	return TRUE
 
 /**
@@ -387,7 +386,6 @@
  * return null or the first item blocking
  */
 /mob/proc/inventory_slot_reachability_conflict(obj/item/I, slot, mob/user)
-	#warn impl humans
 	return null
 
 /**
@@ -440,8 +438,8 @@
 		log_inventory("[key_name(src)] moved [I] from [old_slot] to [slot].")
 	else
 		I.forceMove(src)
-		I.pickup(src, silent = silent)
-		I.equipped(src, slot, silent = silent)
+		I.pickup(src, FALSE, silent)
+		I.equipped(src, slot, FALSE, silent)
 
 		log_inventory("[key_name(src)] equipped [I] to [slot].")
 

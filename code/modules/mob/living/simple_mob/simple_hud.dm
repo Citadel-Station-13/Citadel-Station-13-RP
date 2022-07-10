@@ -267,7 +267,6 @@
 		if(hand)	//This being 1 means the left hand is in use
 			using.icon_state = "l_hand_active"
 		using.screen_loc = ui_lhand
-		using.slot_id = slot_l_hand
 		using.color = ui_color
 		using.alpha = ui_alpha
 		hud.l_hand_hud_object = using

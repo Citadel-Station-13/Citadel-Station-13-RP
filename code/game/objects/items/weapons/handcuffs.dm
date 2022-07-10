@@ -67,9 +67,8 @@
 	if(!istype(H))
 		return 0
 
-	if (!H.has_organ_for_slot(SLOT_ID_HANDCUFFED))
-		to_chat(user, "<span class='danger'>\The [H] needs at least two wrists before you can cuff them together!</span>")
-		return 0
+	if(!H.can_equip(src, SLOT_ID_HANDCUFFED))
+		return FALSE
 
 	if(istype(H.gloves,/obj/item/clothing/gloves/gauntlets/rig) && !elastic) // Can't cuff someone who's in a deployed hardsuit.
 		to_chat(user, "<span class='danger'>\The [src] won't fit around \the [H.gloves]!</span>")
@@ -271,9 +270,9 @@ var/last_chew = 0
 	if(!istype(H))
 		return 0
 
-	if (!H.has_organ_for_slot(SLOT_ID_LEGCUFFED))
+	if(!H.can_equip(src, SLOT_ID_LEGCUFFED))
 		to_chat(user, "<span class='danger'>\The [H] needs at least two ankles before you can cuff them together!</span>")
-		return 0
+		return FALSE
 
 	if(istype(H.shoes,/obj/item/clothing/shoes/magboots/rig) && !elastic) // Can't cuff someone who's in a deployed hardsuit.
 		to_chat(user, "<span class='danger'>\The [src] won't fit around \the [H.shoes]!</span>")
@@ -345,26 +344,20 @@ var/last_chew = 0
 
 	var/mob/living/carbon/human/H = target
 	if(!istype(H))
-		src.dropped()
-		return 0
+		return FALSE
 
-	if(!H.has_organ_for_slot(SLOT_ID_LEGCUFFED))
+	if(!H.equip_to_slot_if_possible(src, SLOT_ID_LEGCUFFED, TRUE, TRUE, TRUE))
 		H.visible_message("<span class='notice'>\The [src] slams into [H], but slides off!</span>")
-		src.dropped()
-		return 0
+		dropped()
 
 	H.visible_message("<span class='danger'>\The [H] has been snared by \the [src]!</span>")
 
-	// Apply cuffs.
-	var/obj/item/handcuffs/legcuffs/lcuffs = src
-	lcuffs.loc = target
-	target.legcuffed = lcuffs
-	target.update_inv_legcuffed()
 	if(target.m_intent != "walk")
 		target.m_intent = "walk"
 		if(target.hud_used && user.hud_used.move_intent)
 			target.hud_used.move_intent.icon_state = "walking"
-	return 1
+
+	return TRUE
 
 /obj/item/handcuffs/legcuffs/bola/tactical
 	name = "reinforced bola"

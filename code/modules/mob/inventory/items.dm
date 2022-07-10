@@ -76,7 +76,7 @@
  *
  * picking up is defined as moving into either an equipment slot, or hand slots
  */
-/obj/item/proc/pickup(mob/user, accessory, silent)
+/obj/item/proc/pickup(mob/user, accessory, silent, creation)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
 	pixel_x = initial(pixel_x)
@@ -166,11 +166,7 @@
 	var/mob/living/carbon/human/H = M
 	var/list/mob_equip = list()
 	#warn abstract check goes before equip slots
-	if(H.species.hud && H.species.hud.equip_slots)
-		mob_equip = H.species.hud.equip_slots
 
-	if(H.species && !(slot in mob_equip))
-		return 0
 
 	//Lastly, check special rules for the desired slot.
 	switch(slot)
