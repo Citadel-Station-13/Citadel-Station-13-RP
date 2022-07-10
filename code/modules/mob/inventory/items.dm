@@ -137,12 +137,14 @@
 /obj/item/proc/_inv_return_attached()
 	return src
 
+// todo: item should get final say for "soft" aka not-literal-var-overwrite conflicts.
+
 /**
  * checks if a mob can equip us to a slot
  * mob gets final say
  * if you return false, feedback to the user, as the main proc doesn't do this.
  */
-/obj/item/proc/can_equip(mob/M, mob/user, slot, silent, disallow_delay)
+/obj/item/proc/can_equip(mob/M, mob/user, slot, silent, disallow_delay, ignore_fluff)
 	return TRUE
 
 /**
@@ -150,7 +152,7 @@
  * mob gets final say
  * if you return false, feedback to the user, as the main proc doesn't do this.
  */
-/obj/item/proc/can_unequip(mob/M, mob/user, slot, silent, disallow_delay)
+/obj/item/proc/can_unequip(mob/M, mob/user, slot, silent, disallow_delay, ignore_fluff)
 	return TRUE
 
 
@@ -160,12 +162,6 @@
 //Set disable_warning to 1 if you wish it to not give you outputs.
 //Should probably move the bulk of this into mob code some time, as most of it is related to the definition of slots and not item-specific
 /obj/item/proc/mob_can_equip(M as mob, slot, disable_warning = 0)
-	if(!slot)
-		return 0
-	if(!M)
-		return 0
-
-	if(!ishuman(M)) return 0
 
 	var/mob/living/carbon/human/H = M
 	var/list/mob_equip = list()
@@ -174,11 +170,6 @@
 		mob_equip = H.species.hud.equip_slots
 
 	if(H.species && !(slot in mob_equip))
-		return 0
-
-	//Next check if the slot is accessible.
-	var/mob/_user = disable_warning? null : H
-	if(!H.slot_is_accessible(slot, src, _user))
 		return 0
 
 	//Lastly, check special rules for the desired slot.
@@ -208,15 +199,4 @@
 				return 0
 			if( !(istype(src, /obj/item/pda) || istype(src, /obj/item/pen) || is_type_in_list(src, H.wear_suit.allowed)) )
 				return 0
-	return 1
-
-#warn refactor
-/obj/item/proc/mob_can_unequip(mob/M, slot, disable_warning = 0)
-	if(!slot) return 0
-	if(!M) return 0
-
-	if(!canremove)
-		return 0
-	if(!M.slot_is_accessible(slot, src, disable_warning? null : M))
-		return 0
 	return 1

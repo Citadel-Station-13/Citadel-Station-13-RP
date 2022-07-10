@@ -203,7 +203,7 @@
 		return FALSE
 
 	// lastly, check item's opinion
-	if(!I.can_unequip(src, user, slot, silent, disallow_delay))
+	if(!I.can_unequip(src, user, slot, silent, disallow_delay, ignore_fluff))
 		return FALSE
 
 	return TRUE
@@ -350,13 +350,13 @@
 
 	var/blocked_by
 
-	if((blocked_by = inventory_slot_reachability_conflict(I, slot, user)) && !force)
+	if((blocked_by = inventory_slot_reachability_conflict(I, slot, user)) && !ignore_fluff && !force)
 		if(!silent)
 			to_chat(user, SPAN_WARNING("\the [blocked_by] is in the way!"))
 		return FALSE
 
 	// lastly, check item's opinion
-	if(!I.can_equip(src, user, slot, silent, disallow_delay))
+	if(!I.can_equip(src, user, slot, silent, disallow_delay, igonre_fluff))
 		return FALSE
 
 	return TRUE
@@ -430,13 +430,23 @@
 	if(!can_equip(I, slot, user, force, disallow_delay, ignore_fluff, silent))
 		return FALSE
 
-	#warn this handles stuff like calling equipped/unequipped on slot swaps, etc
-	#warn make sure to shuffle around properly/call the right procs
-	#warn make sure to handle item reequip!
+	var/old_slot = slot_by_item(I)
 
-	log_inventory("[key_name(src)] equipped [I] to [slot].")
+	if(old_slot)
+		. = _handle_item_reequip(I, slot, old_slot, force)
+		if(!.)
+			return
+
+		log_inventory("[key_name(src)] moved [I] from [old_slot] to [slot].")
+	else
+		I.forceMove(src)
+		I.pickup(src, silent = silent)
+		I.equipped(src, slot, silent = silent)
+
+		log_inventory("[key_name(src)] equipped [I] to [slot].")
 
 	update_action_buttons()
+	return TRUE
 
 /**
  * checks if we already have something in our inventory

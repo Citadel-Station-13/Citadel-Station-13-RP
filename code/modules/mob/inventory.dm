@@ -14,11 +14,6 @@
 	else
 		equip_to_slot_if_possible(W, slot)
 
-#warn nuke tihs
-//Checks if a given slot can be accessed at this time, either to equip or unequip I
-/mob/proc/slot_is_accessible(var/slot, var/obj/item/I, mob/user=null)
-	return 1
-
 //! helpers below
 
 /**

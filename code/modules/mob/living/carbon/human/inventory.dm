@@ -170,6 +170,74 @@
 		return FALSE
 	return ..()
 
+// todo: this should eventually be on the datum itself probably
+/mob/living/carbon/human/inventory_slot_reachability_conflict(obj/item/I, slot, mob/user)
+	. = ..()
+	if(.)
+		return
+
+	var/obj/item/covering
+	var/extra_flags
+
+	switch(slot)
+		if(SLOT_ID_MASK)
+			covering = head
+			extra_flags = FACE
+		if(SLOT_ID_GLASSES)
+			covering = head
+			extra_flags = EYES
+		if(SLOT_ID_GLOVES, SLOT_ID_UNIFORM)
+			covering = wear_suit
+
+	if(!covering)
+		return
+
+	if(!(covering.body_parts_covered & (I.body_parts_covered | extra_flags)))
+		return
+
+	return covering
+
+/mob/living/carbon/human/inventory_slot_bodypart_check(obj/item/I, slot, mob/user, silent)
+	. = ..()
+	if(!.)
+		return
+
+	var/self_equip = user == src
+
+	// first, check species
+	if(species?.hud?.equip_slots && !(slot in species.hud.equip_slots))
+		if(!silent)
+			to_chat(user, SPAN_WARNING("[self_equip? "You" : "They"] have nowhere to put that!"))
+		return FALSE
+
+	// then, check bodyparts
+	if(I.item_flags & EQUIP_IGNORE_DELIMB)
+		return
+
+	var/has_part = TRUE
+	var/part_text
+	var/override_text
+	switch(slot)
+		if(SLOT_ID_BACK, SLOT_ID_BELT, SLOT_ID_SUIT, SLOT_ID_LEFT_POCKET, \
+			SLOT_ID_RIGHT_POCKET, SLOT_ID_SUIT_STORAGE, SLOT_ID_UNIFORM)
+			has_part = has_organ(BP_TORSO)
+			part_text = "torso. How?"
+		if(SLOT_ID_MASK, SLOT_ID_LEFT_EAR, SLOT_ID_RIGHT_EAR, \
+			SLOT_ID_GLASSES, SLOT_ID_HEAD)
+			has_part = has_organ(BP_HEAD)
+			part_text = "head"
+		if(SLOT_ID_HANDCUFFED, SLOT_ID_GLOVES)
+			has_part = has_organ(BP_L_HAND) && has_organ(BP_R_HAND)
+			override_text = SPAN_WARNING("[self_equip? "You" : "They"] are missing a hand!")
+		if(SLOT_ID_LEGCUFFED, SLOT_ID_SHOES)
+			has_part = has_organ(BP_L_FOOT) && has_organ(BP_R_FOOT)
+			override_text = SPAN_WARNING("[self_equip? "You" : "They"] are missing a foot!")
+
+	if(!has_part)
+		to_chat(user, override_text || SPAN_WARNING("[self_equip? "You" : "They"] are missing [self_equip? "your" : "their"] [part_text]!"))
+		return FALSE
+	return TRUE
+
 //! old stuff below
 
 /mob/living/carbon/human/verb/quick_equip()
@@ -180,42 +248,6 @@
 
 #warn refactor below
 
-/mob/living/carbon/human/proc/has_organ_for_slot(slot)
-	switch(slot)
-		if(SLOT_ID_BACK)
-			return has_organ(BP_TORSO)
-		if(SLOT_ID_MASK)
-			return has_organ(BP_HEAD)
-		if(SLOT_ID_HANDCUFFED)
-			return has_organ(BP_L_HAND) && has_organ(BP_R_HAND)
-		if(SLOT_ID_LEGCUFFED)
-			return has_organ(BP_L_FOOT) && has_organ(BP_R_FOOT)
-		if(SLOT_ID_BELT)
-			return has_organ(BP_TORSO)
-		if(SLOT_ID_LEFT_EAR)
-			return has_organ(BP_HEAD)
-		if(SLOT_ID_RIGHT_EAR)
-			return has_organ(BP_HEAD)
-		if(SLOT_ID_GLASSES)
-			return has_organ(BP_HEAD)
-		if(SLOT_ID_GLOVES)
-			return has_organ(BP_L_HAND) || has_organ(BP_R_HAND)
-		if(SLOT_ID_HEAD)
-			return has_organ(BP_HEAD)
-		if(SLOT_ID_SHOES)
-			return has_organ(BP_L_FOOT) || has_organ(BP_R_FOOT)
-		if(SLOT_ID_SUIT)
-			return has_organ(BP_TORSO)
-		if(SLOT_ID_UNIFORM)
-			return has_organ(BP_TORSO)
-		if(SLOT_ID_LEFT_POCKET)
-			return has_organ(BP_TORSO)
-		if(SLOT_ID_RIGHT_POCKET)
-			return has_organ(BP_TORSO)
-		if(SLOT_ID_SUIT_STORAGE)
-			return has_organ(BP_TORSO)
-
-
 
 
 
@@ -223,16 +255,6 @@
 /mob/living/carbon/human/equip_to_slot(obj/item/W as obj, slot)
 
 #warn convert remaining behaviors
-
-	if(!slot)
-		return
-	if(!istype(W))
-		return
-	if(!has_organ_for_slot(slot))
-		return
-	#warn abstract check goes before equip slots
-	if(!species || !species.hud || !(slot in species.hud.equip_slots))
-		return
 
 	W.forceMove(src)
 
@@ -246,25 +268,8 @@
 
 	return 1
 
-//Checks if a given slot can be accessed at this time, either to equip or unequip I
-/mob/living/carbon/human/slot_is_accessible(var/slot, var/obj/item/I, mob/user=null)
-	var/obj/item/covering = null
-	var/check_flags = 0
 
-	switch(slot)
-		if(SLOT_ID_MASK)
-			covering = src.head
-			check_flags = FACE
-		if(SLOT_ID_GLASSES)
-			covering = src.head
-			check_flags = EYES
-		if(SLOT_ID_GLOVES, SLOT_ID_UNIFORM)
-			covering = src.wear_suit
-
-	if(covering && (covering.body_parts_covered & (I.body_parts_covered|check_flags)))
-		to_chat(user, "<span class='warning'>\The [covering] is in the way.</span>")
-		return 0
-	return 1
+//! old behaviors that i can't be assed to rewrite for now
 
 /mob/living/carbon/human/proc/smart_equipbag() // take most recent item out of bag or place held item in bag
 	if(incapacitated())

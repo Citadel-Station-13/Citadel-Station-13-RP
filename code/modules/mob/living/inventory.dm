@@ -161,6 +161,7 @@
 
 
 
+
 /mob/living/proc/update_held_icons()
 	if(l_hand)
 		l_hand.update_held_icon()
