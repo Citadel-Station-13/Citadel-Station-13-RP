@@ -98,7 +98,7 @@
 	var/obj/item/handcuffs/cuffs = src
 	if(dispenser)
 		cuffs = new(target)
-	if(!target.force_equip_to_slot(cuffs, SLOT_ID_HANDCUFFED))
+	if(!target.force_equip_to_slot(cuffs, SLOT_ID_HANDCUFFED, user = user))
 		forceMove(user.drop_location())
 	return 1
 
@@ -302,7 +302,7 @@ var/last_chew = 0
 	var/obj/item/handcuffs/legcuffs/lcuffs = src
 	if(dispenser)
 		lcuffs = new(get_turf(user))
-	if(!target.force_equip_to_slot(lcuffs, SLOT_ID_LEGCUFFED))
+	if(!target.force_equip_to_slot(lcuffs, SLOT_ID_LEGCUFFED, user = user))
 		forceMove(user.drop_location())
 	return 1
 
@@ -346,7 +346,7 @@ var/last_chew = 0
 	if(!istype(H))
 		return FALSE
 
-	if(!H.equip_to_slot_if_possible(src, SLOT_ID_LEGCUFFED, TRUE, TRUE, TRUE))
+	if(!H.equip_to_slot_if_possible(src, SLOT_ID_LEGCUFFED, null, TRUE, TRUE, TRUE))
 		H.visible_message("<span class='notice'>\The [src] slams into [H], but slides off!</span>")
 		dropped()
 

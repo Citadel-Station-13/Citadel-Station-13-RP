@@ -246,29 +246,6 @@
 
 	attempt_smart_equip()
 
-#warn refactor below
-
-
-
-
-//This is an UNSAFE proc. Use mob_can_equip() before calling this one! Or rather use equip_to_slot_if_possible() or advanced_equip_to_slot_if_possible()
-/mob/living/carbon/human/equip_to_slot(obj/item/W as obj, slot)
-
-#warn convert remaining behaviors
-
-	W.forceMove(src)
-
-	W.hud_layerise()
-
-	if(W.action_button_name)
-		update_action_buttons()
-
-	if(W.zoom)
-		W.zoom()
-
-	return 1
-
-
 //! old behaviors that i can't be assed to rewrite for now
 
 /mob/living/carbon/human/proc/smart_equipbag() // take most recent item out of bag or place held item in bag

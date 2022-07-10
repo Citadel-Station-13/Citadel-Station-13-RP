@@ -60,7 +60,8 @@
 	if(enables_planes)
 		user.recalculate_vis()
 
-//BS12: Species-restricted clothing check.
+//BS12: Species-restricted clothing check
+#warn kill
 /obj/item/clothing/mob_can_equip(M as mob, slot)
 
 	//if we can't equip the item anyway, don't bother with species_restricted (cuts down on spam)

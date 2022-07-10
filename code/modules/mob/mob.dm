@@ -247,7 +247,7 @@
 /mob/proc/restrained()
 	return
 
-/mob/proc/show_inv(mob/user as mob)
+/mob/proc/show_inv(mob/user)
 	return
 /**
  * Examine a mob

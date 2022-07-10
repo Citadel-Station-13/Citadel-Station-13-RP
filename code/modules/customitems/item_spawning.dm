@@ -229,10 +229,10 @@
 
 	var/obj/item/newitem = citem.spawn_item(M)
 
-	if(M.equip_to_appropriate_slot(newitem))
+	if(M.equip_to_appropriate_slot(newitem, silent = TRUE))
 		return newitem
 
-	if(M.equip_to_slot_if_possible(newitem, /datum/inventory_slot_meta/abstract/put_in_storage))
+	if(M.equip_to_slot_if_possible(newitem, /datum/inventory_slot_meta/abstract/put_in_storage, silent = TRUE))
 		return newitem
 
 	newitem.forceMove(M.drop_location())

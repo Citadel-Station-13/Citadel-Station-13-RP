@@ -214,12 +214,9 @@
 /mob/living/carbon/human/var/co2overloadtime = null
 /mob/living/carbon/human/var/temperature_resistance = T0C+75
 
-
 /mob/living/carbon/human/show_inv(mob/user as mob)
 	if(user.incapacitated()  || !user.Adjacent(src))
 		return
-
-	#warn DONT USE WEIRD HARDCODING AND USE ENUMERATION, DIPSTICK
 
 	var/obj/item/clothing/under/suit = null
 	if (istype(w_uniform, /obj/item/clothing/under))
@@ -233,31 +230,31 @@
 		if((slot_ref["slot"] in list(SLOT_ID_LEFT_POCKET, SLOT_ID_RIGHT_POCKET)))
 			continue
 		var/obj/item/thing_in_slot = item_by_slot(slot_ref["slot"])
-		dat += "<BR><B>[slot_ref["name"]]:</b> <a href='?src=\ref[src];item=[slot_ref["slot"]]'>[istype(thing_in_slot) ? thing_in_slot : "nothing"]</a>"
+		dat += "<BR><B>[slot_ref["name"]]:</b> <a href='?src=\ref[src];strip_slot=[slot_ref["slot"]]'>[istype(thing_in_slot) ? thing_in_slot : "nothing"]</a>"
 
 	dat += "<BR><HR>"
 
 	if(has_hands)
-		dat += "<BR><b>Left hand:</b> <A href='?src=\ref[src];item=[slot_l_hand]'>[istype(l_hand) ? l_hand : "nothing"]</A>"
-		dat += "<BR><b>Right hand:</b> <A href='?src=\ref[src];item=[slot_r_hand]'>[istype(r_hand) ? r_hand : "nothing"]</A>"
+		dat += "<BR><b>Left hand:</b> <A href='?src=\ref[src];strip_held=[slot_l_hand]'>[istype(l_hand) ? l_hand : "nothing"]</A>"
+		dat += "<BR><b>Right hand:</b> <A href='?src=\ref[src];strip_held=[slot_r_hand]'>[istype(r_hand) ? r_hand : "nothing"]</A>"
 
 	// Do they get an option to set internals?
 	if(istype(wear_mask, /obj/item/clothing/mask) || istype(head, /obj/item/clothing/head/helmet/space))
 		if(istype(back, /obj/item/tank) || istype(belt, /obj/item/tank) || istype(s_store, /obj/item/tank))
-			dat += "<BR><A href='?src=\ref[src];item=internals'>Toggle internals.</A>"
+			dat += "<BR><A href='?src=\ref[src];strip_misc=internals'>Toggle internals.</A>"
 
 	// Other incidentals.
 	if(istype(suit) && suit.has_sensor == 1)
-		dat += "<BR><A href='?src=\ref[src];item=sensors'>Set sensors</A>"
+		dat += "<BR><A href='?src=\ref[src];strip_misc=sensors'>Set sensors</A>"
 	if(handcuffed)
-		dat += "<BR><A href='?src=\ref[src];item=[SLOT_ID_HANDCUFFED]'>Handcuffed</A>"
+		dat += "<BR><A href='?src=\ref[src];strip_slot=[SLOT_ID_HANDCUFFED]'>Handcuffed</A>"
 	if(legcuffed)
-		dat += "<BR><A href='?src=\ref[src];item=[SLOT_ID_LEGCUFFED]'>Legcuffed</A>"
+		dat += "<BR><A href='?src=\ref[src];strip_slot=[SLOT_ID_LEGCUFFED]'>Legcuffed</A>"
 
 	if(suit && LAZYLEN(suit.accessories))
-		dat += "<BR><A href='?src=\ref[src];item=tie'>Remove accessory</A>"
-	dat += "<BR><A href='?src=\ref[src];item=splints'>Remove splints</A>"
-	dat += "<BR><A href='?src=\ref[src];item=pockets'>Empty pockets</A>"
+		dat += "<BR><A href='?src=\ref[src];strip_misc=tie'>Remove accessory</A>"
+	dat += "<BR><A href='?src=\ref[src];strip_misc=splints'>Remove splints</A>"
+	dat += "<BR><A href='?src=\ref[src];strip_misc=pockets'>Empty pockets</A>"
 	dat += "<BR><A href='?src=\ref[user];refresh=1'>Refresh</A>"
 	dat += "<BR><A href='?src=\ref[user];mach_close=mob[name]'>Close</A>"
 
@@ -399,8 +396,14 @@
 		unset_machine()
 		src << browse(null, t1)
 
-	if(href_list["item"])
-		handle_strip(href_list["item"],usr)
+	if(href_list["strip_item"])
+		handle_strip_from_slot(href_list["strip_item"], usr)
+
+	if(href_list["strip_held"])
+		handle_strip_from_held(text2num(href_list["strip_held"]), usr)
+
+	if(href_list["strip_misc"])
+		handle_strip_misc(href_list["strip_misc"], usr)
 
 	if(href_list["ooc_notes"])
 		src.Examine_OOC()

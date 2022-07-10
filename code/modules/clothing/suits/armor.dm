@@ -13,16 +13,24 @@
 	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.6
 
-/obj/item/clothing/suit/mob_can_equip(var/mob/living/carbon/human/H, slot, disable_warning = 0)
-	if(..()) //This will only run if no other problems occured when equiping.
-		for(var/obj/item/clothing/I in list(H.gloves, H.shoes))
-			if(I && (src.body_parts_covered & ARMS && I.body_parts_covered & ARMS) )
-				to_chat(H, "<span class='warning'>You can't wear \the [src] with \the [I], it's in the way.</span>")
-				return 0
-			if(I && (src.body_parts_covered & LEGS && I.body_parts_covered & LEGS) )
-				to_chat(H, "<span class='warning'>You can't wear \the [src] with \the [I], it's in the way.</span>")
-				return 0
-		return 1
+/obj/item/clothing/suit/armor/can_equip(mob/M, mob/user, slot, silent, disallow_delay, ignore_fluff)
+	. = ..()
+	if(!.)
+		return
+
+	if(!ishuman(M))
+		return
+
+	var/mob/living/carbon/human/H = M
+
+	for(var/obj/item/clothing/I in list(H.gloves, H.shoes))
+		if(I && (src.body_parts_covered & ARMS && I.body_parts_covered & ARMS) )
+			to_chat(H, "<span class='warning'>You can't wear \the [src] with \the [I], it's in the way.</span>")
+			return FALSE
+		if(I && (src.body_parts_covered & LEGS && I.body_parts_covered & LEGS) )
+			to_chat(H, "<span class='warning'>You can't wear \the [src] with \the [I], it's in the way.</span>")
+			return FALSE
+	return TRUE
 
 /obj/item/clothing/suit/armor/vest
 	name = "armor"
@@ -572,22 +580,29 @@
 		|ACCESSORY_SLOT_ARMOR_M)
 	blood_overlay_type = "armor"
 
-/obj/item/clothing/suit/armor/pcarrier/mob_can_equip(var/mob/living/carbon/human/H, slot)
-	if(..()) //This will only run if no other problems occured when equiping.
-		if(H.gloves)
-			if(H.gloves.body_parts_covered & ARMS)
-				for(var/obj/item/clothing/accessory/A in src)
-					if(A.body_parts_covered & ARMS)
-						to_chat(H, "<span class='warning'>You can't wear \the [A] with \the [H.gloves], they're in the way.</span>")
-						return 0
-		if(H.shoes)
-			if(H.shoes.body_parts_covered & LEGS)
-				for(var/obj/item/clothing/accessory/A in src)
-					if(A.body_parts_covered & LEGS)
-						to_chat(H, "<span class='warning'>You can't wear \the [A] with \the [H.shoes], they're in the way.</span>")
-						return 0
-		return 1
+/obj/item/clothing/suit/armor/pcarrier/can_equip(mob/M, mob/user, slot, silent, disallow_delay, ignore_fluff)
+	. = ..()
+	if(!.)
+		return
 
+	if(!ishuman(M))
+		return
+
+	var/mob/living/carbon/human/H = M
+
+	if(H.gloves)
+		if(H.gloves.body_parts_covered & ARMS)
+			for(var/obj/item/clothing/accessory/A in src)
+				if(A.body_parts_covered & ARMS)
+					to_chat(H, "<span class='warning'>You can't wear \the [A] with \the [H.gloves], they're in the way.</span>")
+					return FALSE
+	if(H.shoes)
+		if(H.shoes.body_parts_covered & LEGS)
+			for(var/obj/item/clothing/accessory/A in src)
+				if(A.body_parts_covered & LEGS)
+					to_chat(H, "<span class='warning'>You can't wear \the [A] with \the [H.shoes], they're in the way.</span>")
+					return FALSE
+	return TRUE
 /obj/item/clothing/suit/armor/pcarrier/light
 	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate)
 

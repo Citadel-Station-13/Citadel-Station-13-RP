@@ -363,13 +363,6 @@
 	item_state = "serdy_armor"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS //It's a full body suit, minus hands and feet. Arms and legs should be protected, not just the torso. Retains normal security armor values still.
 
-/obj/item/clothing/suit/armor/vest/wolftaur/serdy/mob_can_equip(var/mob/living/carbon/human/H, slot, disable_warning = 0)
-	if(istype(H) && istype(H.tail_style, /datum/sprite_accessory/tail/taur/wolf))
-		return ..()
-	else
-		to_chat(H, "<span class='warning'>You need to have a wolf-taur half to wear this.</span>")
-		return 0
-
 /obj/item/clothing/head/helmet/serdy //SilencedMP5A5's specialty helmet. Uncomment if/when they make their custom item app and are accepted.
 	name = "KSS-8 security helmet"
 	desc = "desc = An old production model steel-ceramic lined helmet with a white stripe and a custom orange holographic visor. It has ear holes, and smells of dog. It's been heavily modified, and fitted with a metal mask to protect the jaw."
@@ -2093,14 +2086,6 @@
 
    icon_override = 'icons/vore/custom_clothes_vr.dmi'
    icon_state = "tiemgogs"
-
-/obj/item/clothing/glasses/welding/tiemgogs/mob_can_equip(var/mob/living/carbon/human/H, slot, disable_warning = 0)
-   if(..())
-      if(H.ckey != "radiantaurora")
-         to_chat(H, "<span class='warning'>These don't look like they were made to fit you...</span>")
-         return 0
-      else
-         return 1
 
 //FauxMagician
 /obj/item/faketvcamera

@@ -66,6 +66,7 @@
 	. = list()
 
 /mob/proc/get_left_held_item()
+	RETURN_TYPE(/obj/item)
 	return
 
 /mob/proc/get_left_held_items()
@@ -76,6 +77,7 @@
 	// TODO: actual variable hand count
 
 /mob/proc/get_right_held_item()
+	RETURN_TYPE(/obj/item)
 	return
 
 /mob/proc/get_right_held_items()
@@ -98,6 +100,7 @@
  * get first held item of type
  */
 /mob/proc/get_held_item_of_type(type)
+	RETURN_TYPE(/obj/item)
 	for(var/obj/item/I as anything in get_held_items())
 		if(istype(I, type))
 			return I
@@ -112,6 +115,7 @@
  * get held item item at index
  */
 /mob/proc/get_held_item_of_index(index)
+	RETURN_TYPE(/obj/item)
 	return FALSE
 
 /**
@@ -124,12 +128,14 @@
  * returns held item in active hand
  */
 /mob/proc/get_active_held_item()
+	RETURN_TYPE(/obj/item)
 	return
 
 /**
  * returns held item in inactive hand (or any inactive hand if more than 1)
  */
 /mob/proc/get_inactive_held_item()
+	RETURN_TYPE(/obj/item)
 	return
 
 /**

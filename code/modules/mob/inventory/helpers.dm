@@ -81,12 +81,13 @@
 
 /**
  * equip to slots if possible, in order
+ * silent defaults to TRUE, to avoid spam
  *
  * return slot equipped to if success, otherwise null
  */
-/mob/proc/equip_to_slots_if_possible(obj/item/I, list/slots, silent, update_icons, ignore_fluff)
+/mob/proc/equip_to_slots_if_possible(obj/item/I, list/slots, mob/user, silent = TRUE, update_icons, ignore_fluff)
 	if(!islist(slots))
-		return equip_to_slot_if_possible(I, slots, silent, update_icons, ignore_fluff)? slots : null
+		return equip_to_slot_if_possible(I, slots, user, silent, update_icons, ignore_fluff)? slots : null
 	for(var/slot in slots)
-		if(equip_to_slot_if_possible(I, slot, silent, update_icons, ignore_fluff))
+		if(equip_to_slot_if_possible(I, slot, user, silent, update_icons, ignore_fluff))
 			return slot

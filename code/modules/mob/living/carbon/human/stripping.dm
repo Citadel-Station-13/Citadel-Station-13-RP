@@ -1,15 +1,84 @@
-/mob/living/carbon/human/proc/handle_strip(var/slot_to_strip,var/mob/living/user)
-
-	if(!slot_to_strip || !istype(user))
+/mob/living/carbon/human/proc/handle_strip_from_held(index, mob/living/user)
+	if(!handle_strip_prechecks(user))
 		return
 
-	if(user.incapacitated()  || !user.Adjacent(src))
-		user << browse(null, text("window=mob[src.name]"))
+	// todo: multihand support
+	if((index < 1) || (index > 2))
 		return
 
-	var/obj/item/target_slot = item_by_slot(text2num(slot_to_strip))
+	var/obj/item/I = get_held_item_of_index(index)
+	var/obj/item/held = user.get_active_held_item()
 
-	switch(slot_to_strip)
+	if(!handle_strip_generic(I, user, index))
+		return
+
+	if(I)
+		if(drop_item_to_ground(I))
+			add_attack_logs(user, src, "Removed [I] from hand index [index]")
+		else
+			add_attack_logs(user, src, "Failed to remove [I] from hand index [index]")
+	else
+		if(put_in_hand(held, index))
+			add_attack_logs(user, src, "Put [I] in hand index [index]")
+		else
+			add_attack_logs(user, src, "Failed to put [I] in hand index [index]")
+
+/mob/living/carbon/human/proc/handle_strip_from_slot(slot, mob/living/user)
+	if(!handle_strip_prechecks(user))
+		return
+
+	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
+	if(!slot_meta)
+		return
+
+	var/obj/item/I = item_by_slot(slot)
+	var/obj/item/held = user.get_active_held_item()
+
+	if(!handle_strip_generic(I, user, slot))
+		return
+
+	if(I)
+		if(drop_item_to_ground(I))
+			add_attack_logs(user, src, "Removed [I] from slot [slot]")
+		else
+			add_attack_logs(user, src, "Failed to remove [I] from slot [slot]")
+	else
+		if(equip_to_slot_if_possible(held, slot))
+			add_attack_logs(user, src, "Put [I] in slot[slot]")
+		else
+			add_attack_logs(user, src, "Failed to put [I] in slot [slot]")
+
+/mob/living/carbon/human/proc/handle_strip_prechecks(mob/user)
+	if(user.incapacitated() || !user.Adjacent(src))
+		user << browse(null, "window=mob[name]")
+		return FALSE
+	return TRUE
+
+/mob/living/carbon/human/proc/handle_strip_generic(obj/item/I, mob/living/user, slot_id_or_index)
+	var/obj/item/held = user.get_active_held_item()
+	var/stripping = !!I
+	if(!stripping && !user.can_unequip(held))
+		return FALSE
+
+	if(stripping)
+		visible_message(SPAN_DANGER("[user] is trying to remove [src]'s [I]!"))
+	else
+		switch(slot_id_or_index)
+			if(SLOT_ID_MASK)
+				visible_message(SPAN_DANGER("[user] is trying to put \a [I] in [src]'s mouth!"))
+			else
+				visible_message(SPAN_DANGER("[user] is trying to put \a [I] on [src]!"))
+
+	if(!do_after(user, HUMAN_STRIP_DELAY, src))
+		return FALSE
+
+	if(!stripping && !user.is_holding(held))
+		return FALSE
+
+	return TRUE
+
+/mob/living/carbon/human/proc/handle_strip_misc(action, mob/living/user)
+	switch(action)
 		// Handle things that are part of this interface but not removing/replacing a given item.
 		if("pockets")
 			visible_message("<span class='danger'>\The [user] is trying to empty \the [src]'s pockets!</span>")
@@ -53,40 +122,6 @@
 			suit.accessories -= A
 			update_inv_w_uniform()
 			return
-
-	// Are we placing or stripping?
-	var/stripping
-	var/obj/item/held = user.get_active_held_item()
-	if(!istype(held) || is_robot_module(held))
-		if(!istype(target_slot))  // They aren't holding anything valid and there's nothing to remove, why are we even here?
-			return
-		if(HAS_TRAIT(target_slot, TRAIT_NODROP))
-			to_chat(user, "<span class='warning'>You cannot remove \the [src]'s [target_slot.name], it seems to be stuck!.</span>")
-			return
-		stripping = 1
-
-	if(stripping)
-		visible_message("<span class='danger'>\The [user] is trying to remove \the [src]'s [target_slot.name]!</span>")
-	else
-		if(slot_to_strip == SLOT_ID_MASK && istype(held, /obj/item/grenade))
-			visible_message("<span class='danger'>\The [user] is trying to put \a [held] in \the [src]'s mouth!</span>")
-		else
-			visible_message("<span class='danger'>\The [user] is trying to put \a [held] on \the [src]!</span>")
-
-	if(!do_after(user, HUMAN_STRIP_DELAY, src))
-		return
-
-	if(!stripping && user.get_active_held_item() != held)
-		return
-
-	if(stripping)
-		add_attack_logs(user,src,"Removed equipment from slot [target_slot]")
-		drop_item_to_ground(target_slot)
-	else if(user.temporarily_remove_from_inventory(held))
-		#warn WHAT THE FUCK IS THIS USE SLOT IDS JESUS
-		if(!equip_to_slot_if_possible(held, text2num(slot_to_strip), silent = TRUE))
-			if(!user.put_in_active_hand(held))
-				held.forceMove(user.drop_location())
 
 // Empty out everything in the target's pockets.
 /mob/living/carbon/human/proc/empty_pockets(var/mob/living/user)

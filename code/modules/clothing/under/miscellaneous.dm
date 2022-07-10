@@ -1852,7 +1852,7 @@
 		else //They chose their current size.
 			return
 
-/obj/item/clothing/under/bluespace/mob_can_unequip(mob/M, slot, disable_warning = 0)
+/obj/item/clothing/under/bluespace/unequipped(mob/user, slot, accessory, silent)
 	. = ..()
 	if(. && ishuman(M) && original_size)
 		var/mob/living/carbon/human/H = M

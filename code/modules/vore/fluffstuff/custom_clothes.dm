@@ -428,14 +428,6 @@
 	icon_state = "jessiecoat"
 	item_state = "jessiecoat"
 
-/obj/item/clothing/suit/storage/hooded/wintercoat/jessie/mob_can_equip(var/mob/living/carbon/human/H, slot, disable_warning = 0)
-	if(..())
-		if(istype(H) && istype(H.tail_style, /datum/sprite_accessory/tail/taur/wolf))
-			return ..()
-		else
-			to_chat(H, "<span class='warning'>You need to have a wolf-taur half to wear this.</span>")
-			return 0
-
 //Jackets For General Use. Sprited by Joji.
 /obj/item/clothing/suit/storage/fluff/jacket //Not the toggle version since it uses custom toggle code to update the on-mob icon.
 	name = "Field Jacket"
@@ -703,17 +695,6 @@
 	body_parts_covered = NONE
 
 	species_restricted = list("exclude", SPECIES_TESHARI)
-
-/obj/item/clothing/under/fluff/slime_skeleton/mob_can_equip(mob/target, slot)
-	if(!..())
-		return FALSE
-
-	if(istype(target, /mob/living/carbon/human))
-		var/mob/living/carbon/human/H = target
-		if(!(H.get_species_id() == SPECIES_ID_PROMETHEAN)) //Only wearable by slimes, since species_restricted actually checks bodytype, not species
-			return FALSE
-
-	return TRUE
 
 /obj/item/clothing/under/fluff/slime_skeleton/digest_act(atom/movable/item_storage = null)
 	return FALSE //Indigestible

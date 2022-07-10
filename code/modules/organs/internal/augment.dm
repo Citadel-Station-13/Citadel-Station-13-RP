@@ -37,7 +37,7 @@
 	/// Icon state for the augment's radial icon.
 	var/radial_state = null
 
-	var/aug_cooldown = 30 SECONDS
+	var/aug_cooldown = 0 SECONDS
 	var/last_activate = null
 
 /obj/item/organ/internal/augment/Initialize(mapload)
@@ -207,7 +207,7 @@
 			qdel(equipping)
 
 	else
-		if(!equip_to_slot_if_possible(equipping, slot, FALSE, TRUE, TRUE))
+		if(!equip_to_slot_if_possible(equipping, slot, null, FALSE, TRUE, TRUE))
 			if(destroy_on_drop || del_if_failure)
 				qdel(equipping)
 			return FALSE

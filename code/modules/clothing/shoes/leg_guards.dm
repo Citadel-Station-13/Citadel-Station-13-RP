@@ -10,17 +10,25 @@
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/pickup/boots.ogg'
 
-/obj/item/clothing/shoes/leg_guard/mob_can_equip(var/mob/living/carbon/human/H, slot, disable_warning = 0)
-	if(..()) //This will only run if no other problems occured when equiping.
-		if(H.wear_suit)
-			if(H.wear_suit.body_parts_covered & LEGS)
-				to_chat(H, "<span class='warning'>You can't wear \the [src] with \the [H.wear_suit], it's in the way.</span>")
-				return 0
-			for(var/obj/item/clothing/accessory/A in H.wear_suit)
-				if(A.body_parts_covered & LEGS)
-					to_chat(H, "<span class='warning'>You can't wear \the [src] with \the [H.wear_suit]'s [A], it's in the way.</span>")
-					return 0
-		return 1
+/obj/item/clothing/shoes/leg_guard/can_equip(mob/M, mob/user, slot, silent, disallow_delay, ignore_fluff)
+	. = ..()
+	if(!.)
+		return
+
+	if(!ishuman(M))
+		return
+
+	var/mob/living/carbon/human/H = M
+
+	if(H.wear_suit)
+		if(H.wear_suit.body_parts_covered & LEGS)
+			to_chat(H, "<span class='warning'>You can't wear \the [src] with \the [H.wear_suit], it's in the way.</span>")
+			return fALSE
+		for(var/obj/item/clothing/accessory/A in H.wear_suit)
+			if(A.body_parts_covered & LEGS)
+				to_chat(H, "<span class='warning'>You can't wear \the [src] with \the [H.wear_suit]'s [A], it's in the way.</span>")
+				return FALSE
+	return TRUE
 
 /obj/item/clothing/shoes/leg_guard/laserproof
 	name = "ablative leg guards"

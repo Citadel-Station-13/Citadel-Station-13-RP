@@ -215,20 +215,42 @@
  * - I - item
  * - slot - the slot
  * - silent - don't show this mob warnings when failing
+ * - user - the user doing the action, if any. defaults to ourselves.
  * - disallow_delay - fail if we have to sleep/do_after
  * - ignore_fluff - ignore silly roleplay fluff like not being able to reach/self equip delays
  * - update_icons - redraw slot icons?
  *
  * @return TRUE/FALSE
  */
-/mob/proc/equip_to_slot_if_possible(obj/item/I, slot, silent, disallow_delay, ignore_fluff, update_icons)
-	return _equip_item(I, FALSE, slot, null, silent, disallow_delay, ignore_fluff, update_icons)
+/mob/proc/equip_to_slot_if_possible(obj/item/I, slot, mob/user, silent, disallow_delay, ignore_fluff, update_icons)
+	return _equip_item(I, FALSE, slot, user, silent, disallow_delay, ignore_fluff, update_icons)
 
 /**
- * automatically equips to the best inventory (non storage!) slot we can find for an item, if possible
+ * equips an item to a slot if possible
+ * item is deleted on failure
  *
  * @params
  * - I - item
+ * - slot - the slot
+ * - silent - don't show this mob warnings when failing
+ * - user - the user doing the action, if any. defaults to ourselves.
+ * - disallow_delay - fail if we have to sleep/do_after
+ * - ignore_fluff - ignore silly roleplay fluff like not being able to reach/self equip delays
+ * - update_icons - redraw slot icons?
+ *
+ * @return TRUE/FALSE
+ */
+/mob/proc/equip_to_slot_or_del(obj/item/I, slot, mob/user, silent, update_icons, ignore_fluff)
+	. = equip_to_slot_if_possible(I, slot, user, silent, update_icons, ignore_fluff)
+	if(!.)
+		qdel(I)
+/**
+ * automatically equips to the best inventory (non storage!) slot we can find for an item, if possible
+ * this proc is silent for the sub-calls by default to prevent spam.
+ *
+ * @params
+ * - I - item
+ * - user - the user doing the action, if any. defaults to ourselves.
  * - silent - don't show this mob warnings when failing
  * - disallow_delay - fail if we have to sleep/do_after
  * - ignore_fluff - ignore silly roleplay fluff like not being able to reach/self equip delays
@@ -236,10 +258,12 @@
  *
  * @return TRUE/FALSE
  */
-/mob/proc/equip_to_appropriate_slot(obj/item/I, silent, disallow_delay, ignore_fluff, update_icons)
+/mob/proc/equip_to_appropriate_slot(obj/item/I, mob/user, silent, disallow_delay, ignore_fluff, update_icons)
 	for(var/slot in GLOB.slot_equipment_priority)
-		if(equip_to_slot_if_possible(I, slot, silent, ignore_fluff, update_icons))
+		if(equip_to_slot_if_possible(I, slot, user, TRUE, ignore_fluff, update_icons))
 			return TRUE
+	if(!silent)
+		to_chat(user, user == src? SPAN_WARNING("You can't find somewhere to equip [I] to!") : SPAN_WARNING("[src] has nowhere to equip [I] to!"))
 	return FALSE
 
 /**
@@ -270,18 +294,14 @@
  *
  * @return TRUE/FALSE
  */
-/mob/proc/force_equip_to_slot(obj/item/I, slot, silent, update_icons)
+/mob/proc/force_equip_to_slot(obj/item/I, slot, silent, mob/user, update_icons)
+	return _equip_item(I, TRUE, slot, user, silent, null, null, update_icons)
 
-/mob/proc/force_equip_to_slot_or_del(obj/item/I, slot, silent, update_icons)
-	if(!force_equip_to_slot(I, slot, silent, update_icons))
+/mob/proc/force_equip_to_slot_or_del(obj/item/I, slot, silent, mob/user, update_icons)
+	if(!force_equip_to_slot(I, slot, silent, user, update_icons))
 		qdel(I)
 		return FALSE
 	return TRUE
-
-/mob/proc/equip_to_slot_or_del(obj/item/I, slot, silent, update_icons, ignore_fluff)
-	. = equip_to_slot_if_possible(I, slot, silent, update_icons, ignore_fluff)
-	if(!.)
-		qdel(I)
 
 /**
  * checks if we can equip an item to a slot
@@ -444,6 +464,10 @@
 		log_inventory("[key_name(src)] equipped [I] to [slot].")
 
 	update_action_buttons()
+
+	if(I.zoom)
+		I.zoom()
+
 	return TRUE
 
 /**

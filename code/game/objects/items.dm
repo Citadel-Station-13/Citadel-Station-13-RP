@@ -14,7 +14,6 @@
 
 	/// This saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/image/blood_overlay = null
-	var/abstract = 0
 	var/r_speed = 1.0
 	var/health = null
 	var/burn_point = null

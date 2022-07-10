@@ -1,13 +1,17 @@
 /mob/living/get_active_held_item()
+	RETURN_TYPE(/obj/item)
 	return hand? l_hand : r_hand
 
 /mob/living/get_inactive_held_item()
+	RETURN_TYPE(/obj/item)
 	return hand? r_hand : l_hand
 
 /mob/living/get_left_held_item()
+	RETURN_TYPE(/obj/item)
 	return l_hand
 
 /mob/living/get_right_held_item()
+	RETURN_TYPE(/obj/item)
 	return r_hand
 
 /mob/living/get_held_index(obj/item/I)
@@ -17,6 +21,7 @@
 		return 2
 
 /mob/living/get_held_items()
+	RETURN_TYPE(/list)
 	. = list()
 	if(l_hand)
 		. += l_hand
@@ -33,6 +38,7 @@
 	return hand? put_in_right_hand(I, force) : put_in_left_hand(I, force)
 
 /mob/living/get_held_item_of_index(index)
+	RETURN_TYPE(/obj/item)
 	switch(index)
 		if(1)
 			return l_hand
@@ -155,30 +161,17 @@
 	if(wear_mask)
 		. += wear_mask._inv_return_attached()
 
-
-
-#warn parse below
-
-
-
-
-/mob/living/proc/update_held_icons()
-	if(l_hand)
-		l_hand.update_held_icon()
-	if(r_hand)
-		r_hand.update_held_icon()
-
-/mob/living/show_inv(mob/user as mob)
+/mob/living/show_inv(mob/user)
 	user.set_machine(src)
 	var/dat = {"
 	<B><HR><FONT size=3>[name]</FONT></B>
 	<BR><HR>
-	<BR><B>Head(Mask):</B> <A href='?src=\ref[src];item=mask'>[(wear_mask ? wear_mask : "Nothing")]</A>
-	<BR><B>Left Hand:</B> <A href='?src=\ref[src];item=l_hand'>[(l_hand ? l_hand  : "Nothing")]</A>
-	<BR><B>Right Hand:</B> <A href='?src=\ref[src];item=r_hand'>[(r_hand ? r_hand : "Nothing")]</A>
-	<BR><B>Back:</B> <A href='?src=\ref[src];item=back'>[(back ? back : "Nothing")]</A> [((istype(wear_mask, /obj/item/clothing/mask) && istype(back, /obj/item/tank) && !( internal )) ? text(" <A href='?src=\ref[];item=internal'>Set Internal</A>", src) : "")]
-	<BR>[(internal ? text("<A href='?src=\ref[src];item=internal'>Remove Internal</A>") : "")]
-	<BR><A href='?src=\ref[src];item=pockets'>Empty Pockets</A>
+	<BR><B>Head(Mask):</B> <A href='?src=\ref[src];strip_slot=[SLOT_ID_MASK]'>[(wear_mask ? wear_mask : "Nothing")]</A>
+	<BR><B>Left Hand:</B> <A href='?src=\ref[src];strip_hand=[1]'>[(l_hand ? l_hand  : "Nothing")]</A>
+	<BR><B>Right Hand:</B> <A href='?src=\ref[src];strip_hand=[2]'>[(r_hand ? r_hand : "Nothing")]</A>
+	<BR><B>Back:</B> <A href='?src=\ref[src];strip_misc=[SLOT_ID_BACK]'>[(back ? back : "Nothing")]</A> [((istype(wear_mask, /obj/item/clothing/mask) && istype(back, /obj/item/tank) && !( internal )) ? text(" <A href='?src=\ref[];item=internal'>Set Internal</A>", src) : "")]
+	<BR>[(internal ? text("<A href='?src=\ref[src];strip_misc=internal'>Remove Internal</A>") : "")]
+	<BR><A href='?src=\ref[src];strip_misc=pockets'>Empty Pockets</A>
 	<BR><A href='?src=\ref[user];refresh=1'>Refresh</A>
 	<BR><A href='?src=\ref[user];mach_close=mob[name]'>Close</A>
 	<BR>"}
@@ -230,24 +223,17 @@
 
 	next_click = world.time + 1
 
-	if(istype(loc,/obj/mecha)) return
+	if(istype(loc,/obj/mecha))
+		return
 
-	if(hand)
-		var/obj/item/W = l_hand
-		if (W)
-			W.attack_self(src)
-			update_inv_l_hand()
-	else
-		var/obj/item/W = r_hand
-		if (W)
-			W.attack_self(src)
-			update_inv_r_hand()
-	return
+	get_active_held_item()?.attack_self(src)
 
 /mob/living/abiotic(var/full_body = 0)
 	if(full_body && ((src.l_hand && !( src.l_hand.abstract )) || (src.r_hand && !( src.r_hand.abstract )) || (src.back || src.wear_mask)))
 		return 1
 
+	for(var/obj/item/I as anything in get_held_items())
+		if(!(I.flags & ABSTRACT))
 	if((src.l_hand && !( src.l_hand.abstract )) || (src.r_hand && !( src.r_hand.abstract )))
 		return 1
 	return 0
