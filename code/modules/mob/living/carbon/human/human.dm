@@ -235,8 +235,8 @@
 	dat += "<BR><HR>"
 
 	if(has_hands)
-		dat += "<BR><b>Left hand:</b> <A href='?src=\ref[src];strip_held=[slot_l_hand]'>[istype(l_hand) ? l_hand : "nothing"]</A>"
-		dat += "<BR><b>Right hand:</b> <A href='?src=\ref[src];strip_held=[slot_r_hand]'>[istype(r_hand) ? r_hand : "nothing"]</A>"
+		dat += "<BR><b>Left hand:</b> <A href='?src=\ref[src];strip_held=[1]'>[istype(l_hand) ? l_hand : "nothing"]</A>"
+		dat += "<BR><b>Right hand:</b> <A href='?src=\ref[src];strip_held=[2]'>[istype(r_hand) ? r_hand : "nothing"]</A>"
 
 	// Do they get an option to set internals?
 	if(istype(wear_mask, /obj/item/clothing/mask) || istype(head, /obj/item/clothing/head/helmet/space))

@@ -618,7 +618,7 @@
 	set category = "Object"
 
 	var/obj/item/I = get_active_held_item()
-	if(I && !I.abstract)
+	if(I && !(I.flags & ATOM_ABSTRACT))
 		I.showoff(src)
 
 /*

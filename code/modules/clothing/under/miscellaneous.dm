@@ -1854,8 +1854,8 @@
 
 /obj/item/clothing/under/bluespace/unequipped(mob/user, slot, accessory, silent)
 	. = ..()
-	if(. && ishuman(M) && original_size)
-		var/mob/living/carbon/human/H = M
+	if(. && ishuman(user) && original_size)
+		var/mob/living/carbon/human/H = user
 		H.resize(original_size)
 		original_size = null
 		H.visible_message("<span class='warning'>The space around [H] distorts as they return to their original size!</span>","<span class='notice'>The space around you distorts as you return to your original size!</span>")

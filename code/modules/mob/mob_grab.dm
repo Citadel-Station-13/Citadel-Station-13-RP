@@ -19,7 +19,9 @@
 	name = "grab"
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "reinforce"
-	flags = 0
+	item_flags = ITEM_ABSTRACT
+	flags = ATOM_ABSTRACT
+
 	var/atom/movable/screen/grab/hud = null
 	var/mob/living/affecting = null
 	var/mob/living/carbon/human/assailant = null
@@ -31,10 +33,8 @@
 	var/force_down //determines if the affecting mob will be pinned to the ground
 	var/dancing //determines if assailant and affecting keep looking at each other. Basically a wrestling position
 
-	abstract = 1
 	item_state = "nothing"
 	w_class = ITEMSIZE_HUGE
-
 
 /obj/item/grab/Initialize(mapload, mob/victim)
 	. = ..()
