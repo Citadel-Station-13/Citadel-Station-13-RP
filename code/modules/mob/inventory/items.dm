@@ -144,7 +144,7 @@
  * mob gets final say
  * if you return false, feedback to the user, as the main proc doesn't do this.
  */
-/obj/item/proc/can_equip(mob/M, mob/user, slot, silent, disallow_delay, ignore_fluff)
+/obj/item/proc/can_equip(mob/M, slot, mob/user, silent, disallow_delay, ignore_fluff)
 	return TRUE
 
 /**
@@ -152,8 +152,36 @@
  * mob gets final say
  * if you return false, feedback to the user, as the main proc doesn't do this.
  */
-/obj/item/proc/can_unequip(mob/M, mob/user, slot, silent, disallow_delay, ignore_fluff)
+/obj/item/proc/can_unequip(mob/M, slot, mob/user, silent, disallow_delay, ignore_fluff)
 	return TRUE
+
+/**
+ * allow an item in suit storage slot?
+ */
+/obj/item/proc/can_suit_storage(obj/item/I)
+	// todo: this is awful
+	return is_type_in_list(I, allowed)
+
+/**
+ * checks if we need something to attach to in a certain slot
+ */
+/obj/item/proc/equip_check_beltlink(mob/M, slot, mob/user, silent)
+	if(item_flags & EQUIP_IGNORE_BELTLINK)
+		return TRUE
+
+	if(!ishuman(M))
+		return
+
+	var/mob/living/carbon/human/H = M
+
+	switch(slot)
+		if(SLOT_ID_LEFT_POCKET, SLOT_ID_RIGHT_POCKET)
+
+		if(SLOT_ID_WORN_ID)
+
+		if(SLOT_ID_SUIT_STORAGE)
+
+
 
 #warn refactor
 //the mob M is attempting to equip this item into the slot passed through as 'slot'. Return 1 if it can do this and 0 if it can't.

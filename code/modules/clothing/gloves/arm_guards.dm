@@ -8,7 +8,7 @@
 	drop_sound = 'sound/items/drop/metalshield.ogg'
 	pickup_sound = 'sound/items/pickup/axe.ogg'
 
-/obj/item/clothing/gloves/arm_guard/can_equip(mob/M, mob/user, slot, silent, disallow_delay, ignore_fluff)
+/obj/item/clothing/gloves/arm_guard/can_equip(mob/M, slot, mob/user, silent, disallow_delay, ignore_fluff)
 	. = ..()
 	if(!.)
 		return

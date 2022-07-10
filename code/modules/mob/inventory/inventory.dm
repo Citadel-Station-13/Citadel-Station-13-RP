@@ -203,7 +203,7 @@
 		return FALSE
 
 	// lastly, check item's opinion
-	if(!I.can_unequip(src, user, slot, silent, disallow_delay, ignore_fluff))
+	if(!I.can_unequip(src, slot, user, silent, disallow_delay, ignore_fluff))
 		return FALSE
 
 	return TRUE
@@ -292,11 +292,33 @@
  * This CAN fail, so listen to return value
  * Why? YOU MIGHT EQUIP TO A MOB WITHOUT A CERTAIN SLOT!
  *
+ * @params
+ * - I - item
+ * - slot - slot to equip to
+ * - silent - don't show this mob warnings when failing
+ * - user - the user doing the action, if any. defaults to ourselves.
+ * - update_icons - redraw slot icons?
+ *
  * @return TRUE/FALSE
  */
 /mob/proc/force_equip_to_slot(obj/item/I, slot, silent, mob/user, update_icons)
 	return _equip_item(I, TRUE, slot, user, silent, null, null, update_icons)
 
+/**
+ * forcefully equips an item to a slot
+ * kicks out conflicting items if possible
+ * if still failing, item is deleted
+ *
+ * this can fail, so listen to return values.
+ * @params
+ * - I - item
+ * - slot - slot to equip to
+ * - silent - don't show this mob warnings when failing
+ * - user - the user doing the action, if any. defaults to ourselves.
+ * - update_icons - redraw slot icons?
+ *
+ * @return TRUE/FALSE
+ */
 /mob/proc/force_equip_to_slot_or_del(obj/item/I, slot, silent, mob/user, update_icons)
 	if(!force_equip_to_slot(I, slot, silent, user, update_icons))
 		qdel(I)
@@ -374,7 +396,7 @@
 		return FALSE
 
 	// lastly, check item's opinion
-	if(!I.can_equip(src, user, slot, silent, disallow_delay, ignore_fluff))
+	if(!I.can_equip(src, slot, user, silent, disallow_delay, ignore_fluff))
 		return FALSE
 
 	return TRUE

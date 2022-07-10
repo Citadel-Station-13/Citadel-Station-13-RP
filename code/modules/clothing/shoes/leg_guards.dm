@@ -10,7 +10,7 @@
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/pickup/boots.ogg'
 
-/obj/item/clothing/shoes/leg_guard/can_equip(mob/M, mob/user, slot, silent, disallow_delay, ignore_fluff)
+/obj/item/clothing/shoes/leg_guard/can_equip(mob/M, slot, mob/user, silent, disallow_delay, ignore_fluff)
 	. = ..()
 	if(!.)
 		return
