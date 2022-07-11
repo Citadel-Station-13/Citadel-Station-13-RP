@@ -764,6 +764,8 @@
 
 /obj/item/reagent_containers/food/snacks/carpmeat/fish // Removed toxin and added a bit more oomph
 	desc = "A fillet of fish meat."
+	toxin_amount = 0
+	toxin_type = null
 	nutriment_amt = 2
 
 /obj/item/reagent_containers/food/snacks/carpmeat/fish/Initialize(mapload)
