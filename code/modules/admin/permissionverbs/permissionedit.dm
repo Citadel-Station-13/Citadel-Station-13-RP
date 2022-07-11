@@ -58,7 +58,6 @@
 		to_chat(usr, "<font color='red'>You do not have permission to do this!</font>")
 		return
 
-	establish_db_connection()
 
 	if(!SSdbcore.Connect())
 		to_chat(usr, "<font color='red'>Failed to establish database connection</font>")
@@ -108,7 +107,6 @@
 		to_chat(usr, "<font color='red'>You do not have permission to do this!</font>")
 		return
 
-	establish_db_connection()
 	if(!SSdbcore.Connect())
 		to_chat(usr, "<font color='red'>Failed to establish database connection</font>")
 		return

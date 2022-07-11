@@ -338,7 +338,7 @@ var/obj/machinery/blackbox_recorder/blackbox
 	if(!feedback) return
 
 	round_end_data_gathering() //round_end time logging and some other data processing
-	establish_db_connection()
+
 	if(!SSdbcore.Connect()) return
 	var/round_id
 

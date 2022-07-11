@@ -19,7 +19,6 @@ SUBSYSTEM_DEF(persist)
 	if(!config_legacy.time_off)
 		return
 
-	establish_db_connection()
 	if(!SSdbcore.Connect())
 		src.currentrun.Cut()
 		return

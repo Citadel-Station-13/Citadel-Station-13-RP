@@ -29,7 +29,6 @@ var/inactive_keys = "None<br>"
 	if(checked_for_inactives)
 		return
 
-	establish_db_connection()
 	if(!SSdbcore.Connect())
 		return
 
