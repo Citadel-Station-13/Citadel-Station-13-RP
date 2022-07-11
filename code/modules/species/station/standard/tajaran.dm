@@ -2,12 +2,12 @@
 	name = SPECIES_TAJ
 	name_plural = "Tajaran"
 
-	icobase      = 'icons/mob/species/tajaran/body.dmi'
-	deform       = 'icons/mob/species/tajaran/deformed_body.dmi'
+	icobase      = 'icons/mob/species/tajaran/body_greyscale.dmi'
+	deform       = 'icons/mob/species/tajaran/deformed_body_greyscale.dmi'
 	preview_icon = 'icons/mob/species/tajaran/preview.dmi'
 	husk_icon    = 'icons/mob/species/tajaran/husk.dmi'
 	tail = "tajtail"
-	tail_animation = 'icons/mob/species/tajaran/tail.dmi'
+	tail_animation = 'icons/mob/species/tajaran/tail_greyscale.dmi'
 
 	num_alternate_languages = 3
 	name_language = LANGUAGE_SIIK
