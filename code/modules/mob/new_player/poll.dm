@@ -472,8 +472,10 @@
 		return
 	establish_db_connection()
 	if(dbcon.IsConnected())
-
-		var/DBQuery/select_query = dbcon.NewQuery("SELECT starttime, endtime, question, polltype FROM erro_poll_question WHERE id = [pollid] AND Now() BETWEEN starttime AND endtime")
+		var/datum/db_query/select_query = SSdbcore.NewQuery(
+			"SELECT starttime, endtime, question, polltype FROM [format_table_name("poll_question")] WHERE id = :pollid AND Now() BETWEEN starttime AND endtime",
+			list("pollid" = pollid)
+		)
 		select_query.Execute()
 
 		var/validpoll = 0
