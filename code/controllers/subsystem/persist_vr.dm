@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(persist)
 		return
 
 	establish_db_connection()
-	if(!dbcon.IsConnected())
+	if(!SSdbcore.Connect())
 		src.currentrun.Cut()
 		return
 	if(!resumed)

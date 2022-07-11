@@ -60,7 +60,7 @@
 
 	establish_db_connection()
 
-	if(!dbcon.IsConnected())
+	if(!SSdbcore.Connect())
 		to_chat(usr, "<font color='red'>Failed to establish database connection</font>")
 		return
 
@@ -109,7 +109,7 @@
 		return
 
 	establish_db_connection()
-	if(!dbcon.IsConnected())
+	if(!SSdbcore.Connect())
 		to_chat(usr, "<font color='red'>Failed to establish database connection</font>")
 		return
 

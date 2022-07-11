@@ -30,7 +30,7 @@ var/inactive_keys = "None<br>"
 		return
 
 	establish_db_connection()
-	if(!dbcon.IsConnected())
+	if(!SSdbcore.Connect())
 		return
 
 	//grab all ckeys associated with custom items

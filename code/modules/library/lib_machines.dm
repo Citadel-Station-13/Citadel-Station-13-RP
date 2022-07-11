@@ -44,7 +44,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 			<A href='?src=\ref[src];search=1'>\[Start Search\]</A><BR>"}
 		if(1)
 			establish_old_db_connection()
-			if(!dbcon_old.IsConnected())
+			if(!SSdbcore.Connect())
 				dat += "<font color=red><b>ERROR</b>: Unable to contact External Archive. Please contact your system administrator for assistance.</font><BR>"
 			else if(!SQLquery)
 				dat += "<font color=red><b>ERROR</b>: Malformed search request. Please contact your system administrator for assistance.</font><BR>"
@@ -230,7 +230,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 
 			dat += "<h3><font color=red>Warning: System Administrator has slated this archive for removal. Personal uploads should be taken to the NT board of internal literature.</font></h3>"
 
-			if(!dbcon_old.IsConnected())
+			if(!SSdbcore.Connect())
 				dat += "<font color=red><b>ERROR</b>: Unable to contact External Archive. Please contact your system administrator for assistance.</font>"
 			else
 				dat += {"<A href='?src=\ref[src];orderbyid=1'>(Order book by SS<sup>13</sup>BN)</A><BR><BR>
@@ -395,7 +395,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 						alert("This book has been rejected from the database. Aborting!")
 					else
 						establish_old_db_connection()
-						if(!dbcon_old.IsConnected())
+						if(!SSdbcore.Connect())
 							alert("Connection to Archive has been severed. Aborting.")
 						else
 							var/sqltitle = sanitizeSQL(scanner.cache.name)
@@ -412,7 +412,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 	if(href_list["targetid"])
 		var/sqlid = sanitizeSQL(href_list["targetid"])
 		establish_old_db_connection()
-		if(!dbcon_old.IsConnected())
+		if(!SSdbcore.Connect())
 			alert("Connection to Archive has been severed. Aborting.")
 		if(bibledelay)
 			for (var/mob/V in hearers(src))

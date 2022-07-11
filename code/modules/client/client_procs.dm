@@ -454,7 +454,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 /proc/get_player_age(key)
 	establish_db_connection()
-	if(!dbcon.IsConnected())
+	if(!SSdbcore.Connect())
 		return null
 
 	var/sql_ckey = sql_sanitize_text(ckey(key))
@@ -474,7 +474,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		return
 
 	establish_db_connection()
-	if(!dbcon.IsConnected())
+	if(!SSdbcore.Connect())
 		return
 
 	var/sql_ckey = sql_sanitize_text(src.ckey)
@@ -489,7 +489,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		break
 
 	account_join_date = sanitizeSQL(findJoinDate())
-	if(account_join_date && dbcon.IsConnected())
+	if(account_join_date && SSdbcore.Connect())
 		var/datum/db_query/query_datediff = dbcon.NewQuery("SELECT DATEDIFF(Now(),'[account_join_date]')")
 		if(query_datediff.Execute() && query_datediff.NextRow())
 			account_age = text2num(query_datediff.item[1])

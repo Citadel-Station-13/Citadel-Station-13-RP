@@ -47,7 +47,7 @@ datum/book_manager/proc/freeid()
 	if(BOOKS_USE_SQL && CONFIG_GET(flag/sql_enabled))
 		var/DBConnection/dbcon = new()
 		dbcon.Connect("dbi:mysql:[sqldb]:[sqladdress]:[sqlport]","[sqllogin]","[sqlpass]")
-		if(!dbcon.IsConnected())
+		if(!SSdbcore.Connect())
 			alert("Connection to Archive has been severed. Aborting.")
 		else
 			var/datum/db_query/query = dbcon.NewQuery("DELETE FROM library WHERE id=[isbn]")
