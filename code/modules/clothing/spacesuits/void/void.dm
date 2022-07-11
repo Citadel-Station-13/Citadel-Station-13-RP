@@ -129,10 +129,8 @@
 			to_chat(M, "Your suit's cooling unit deploys.")
 			ADD_TRAIT(cooler, TRAIT_NODROP, TOGGLE_CLOTHING_TRAIT)
 
-/obj/item/clothing/suit/space/void/dropped()
-	..()
-
-	var/mob/living/carbon/human/H
+/obj/item/clothing/suit/space/void/dropped(mob/user, accessory, silent)
+	. = ..()
 
 	if(helmet)
 		REMOVE_TRAIT(helmet, TRAIT_NODROP, TOGGLE_CLOTHING_TRAIT)

@@ -73,14 +73,18 @@
 /obj/item/defib_kit/attackby(obj/item/W, mob/user, params)
 	if(W == paddles)
 		reattach_paddles(user)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	else if(istype(W, /obj/item/cell))
 		if(bcell)
 			to_chat(user, "<span class='notice'>\the [src] already has a cell.</span>")
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		else
 			if(!user.attempt_insert_item_for_installation(W, src))
+				return CLICKCHAIN_DO_NOT_PROPAGATE
 			bcell = W
 			to_chat(user, "<span class='notice'>You install a cell in \the [src].</span>")
 			update_icon()
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	else if(W.is_screwdriver())
 		if(bcell)
@@ -89,6 +93,7 @@
 			bcell = null
 			to_chat(user, "<span class='notice'>You remove the cell from \the [src].</span>")
 			update_icon()
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	else
 		return ..()
 

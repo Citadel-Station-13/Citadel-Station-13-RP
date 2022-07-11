@@ -650,7 +650,7 @@
 	restricted_accessory_slots = (ACCESSORY_SLOT_ARMBAND)
 
 //taurized suit support
-/obj/item/clothing/suit/equipped(mob/user, slot)
+/obj/item/clothing/suit/equipped(mob/user, slot, accessory, silent, creation)
 	var/normalize = TRUE
 
 	//Pyramid of doom-y. Improve somehow?

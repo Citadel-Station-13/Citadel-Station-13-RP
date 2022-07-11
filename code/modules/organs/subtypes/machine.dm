@@ -98,7 +98,6 @@
 			owner.mind.transfer_to(stored_mmi.brainmob)
 	..()
 
-	var/mob/living/holder_mob = loc
 	qdel(src)
 
 /obj/item/organ/internal/mmi_holder/emp_act(severity)

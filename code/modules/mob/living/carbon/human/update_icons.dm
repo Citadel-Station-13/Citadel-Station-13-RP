@@ -512,7 +512,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	overlays_standing[HAIR_LAYER] = image(face_standing, layer = BODY_LAYER+HAIR_LAYER)
 	apply_layer(HAIR_LAYER)
 
-/mob/living/carbon/human/proc/update_eyes()
+/mob/living/carbon/human/update_eyes()
 	if(QDESTROYING(src))
 		return
 

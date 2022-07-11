@@ -206,6 +206,9 @@
 	if(!(target_zone == BP_TORSO))
 		return FALSE
 	var/obj/item/rig/R = target.get_rig(TRUE)
+	if(!R)
+		return FALSE
+	return TRUE
 
 /datum/surgery_step/hardsuit/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/rig/rig = target.get_rig(TRUE)

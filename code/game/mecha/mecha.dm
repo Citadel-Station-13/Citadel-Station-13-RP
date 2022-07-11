@@ -1579,6 +1579,7 @@
 			to_chat(user, "Beta-rhythm below acceptable level.")
 			return 0
 		if(!user.attempt_insert_item_for_installation(mmi_as_oc, src))
+			return FALSE
 		var/mob/brainmob = mmi_as_oc.brainmob
 	/*
 		brainmob.client.eye = src

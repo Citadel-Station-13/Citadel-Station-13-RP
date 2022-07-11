@@ -91,6 +91,7 @@
 
 		else if(!cell && istype(W,/obj/item/cell))
 			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 			to_chat(user, "You jack \the [W] into \the [src]'s battery mount.")
 			src.cell = W
 			return
