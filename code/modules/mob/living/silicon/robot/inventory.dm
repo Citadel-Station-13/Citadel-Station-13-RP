@@ -296,10 +296,10 @@
 	return (I in module.modules) || (I in module.emag)
 
 /mob/living/silicon/robot/proc/is_in_gripper(obj/item/I, require_active_module)
-	return (
-		I.loc == src?
-		!is_module_item(I) :
-		(istype(I.loc, /obj/item/gripper) && (require_active_module? is_holding(I.loc) : is_module_item(I.loc)))
+	return (																										\
+		I.loc == src?																								\
+		!is_module_item(I) :																						\
+		(istype(I.loc, /obj/item/gripper) && (require_active_module? is_holding(I.loc) : is_module_item(I.loc)))	\
 	)
 
 /mob/living/silicon/robot/proc/unreference_from_gripper(obj/item/I)
