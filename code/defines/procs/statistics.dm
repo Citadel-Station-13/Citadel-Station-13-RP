@@ -41,11 +41,13 @@ proc/sql_report_death(var/mob/living/carbon/human/H)
 	var/sqlpod = sanitizeSQL(podname)
 	var/sqlspecial = sanitizeSQL(H.mind.special_role)
 	var/sqljob = sanitizeSQL(H.mind.assigned_role)
+
 	var/laname
 	var/lakey
 	if(H.lastattacker)
 		laname = sanitizeSQL(H.lastattacker:real_name)
 		lakey = sanitizeSQL(H.lastattacker:key)
+
 	var/sqltime = time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")
 	var/coord = "[H.x], [H.y], [H.z]"
 	//to_chat(world, "INSERT INTO death (name, byondkey, job, special, pod, tod, laname, lakey, gender, bruteloss, fireloss, brainloss, oxyloss) VALUES ('[sqlname]', '[sqlkey]', '[sqljob]', '[sqlspecial]', '[sqlpod]', '[sqltime]', '[laname]', '[lakey]', '[H.gender]', [H.bruteloss], [H.getFireLoss()], [H.brainloss], [H.getOxyLoss()])")

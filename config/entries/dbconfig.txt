@@ -5,10 +5,13 @@ SQL_ENABLED
 SQL_ADDRESS localhost
 
 ## SQL user
-SQL_USER do_not_use_root_you_imbecile
+SQL_USER root
 
 ## SQL password
-SQL_PASSWORD make_a_good_password_idiot
+SQL_PASSWORD password
+
+## SQL database
+SQL_DATABASE ss13
 
 ## Table prefix to use for server-specific stuff
 SQL_SERVER_PREFIX citrp_

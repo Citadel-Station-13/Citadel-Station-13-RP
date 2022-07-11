@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(dbcore)
 	name = "Database"
-	flags = SS_BACKGROUND
+	subsystem_flags = SS_BACKGROUND
 	wait = 1 MINUTES
 	init_order = INIT_ORDER_DBCORE
 	var/failed_connection_timeout = 0
@@ -74,11 +74,11 @@ SUBSYSTEM_DEF(dbcore)
 	if(!CONFIG_GET(flag/sql_enabled))
 		return FALSE
 
-	var/user = CONFIG_GET(string/feedback_login)
-	var/pass = CONFIG_GET(string/feedback_password)
-	var/db = CONFIG_GET(string/feedback_database)
-	var/address = CONFIG_GET(string/address)
-	var/port = CONFIG_GET(number/port)
+	var/user = CONFIG_GET(string/sql_user)
+	var/pass = CONFIG_GET(string/sql_password)
+	var/db = CONFIG_GET(string/sql_database)
+	var/address = CONFIG_GET(string/sql_address)
+	var/port = CONFIG_GET(number/sql_port)
 	var/timeout = max(CONFIG_GET(number/async_query_timeout), CONFIG_GET(number/blocking_query_timeout))
 	var/thread_limit = CONFIG_GET(number/bsql_thread_limit)
 
@@ -276,3 +276,11 @@ Delayed insert mode was removed in mysql 7 and only works with MyISAM type table
 
 #warn make tables round, schema_revision
 #warn make schema
+
+/**
+ * WARNING: This proc currently does nothing.
+ * why??? Because rust_g already sanitizes strings.
+ * This proc simply flattens a string.
+ */
+/proc/sanitizeSQL(t)
+	return "[t]"

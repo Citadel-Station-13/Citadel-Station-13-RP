@@ -17,6 +17,9 @@
 /datum/config_entry/string/sql_password
 	protection = CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_LOCKED
 
+/datum/config_entry/string/sql_db
+	protection = CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_LOCKED
+
 /datum/config_entry/number/query_debug_log_timeout
 	config_entry_value = 70
 	min_val = 1
