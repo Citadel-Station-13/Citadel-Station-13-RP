@@ -113,7 +113,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 			load_admins()
 			return
 
-		var/datum/db_query/query = dbcon.NewQuery("SELECT ckey, rank, level, flags FROM erro_admin")
+		var/datum/db_query/query = dbcon.NewQuery("SELECT ckey, rank, level, flags FROM [format_table_name("admin")]")
 		query.Execute()
 		while(query.NextRow())
 			var/ckey = query.item[1]
