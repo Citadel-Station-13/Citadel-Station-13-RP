@@ -67,13 +67,13 @@
 	access_card = new(src)
 	if(H)
 		humanform = H
-		updatehealth()
 		refactory = locate() in humanform.internal_organs
 		verbs |= /mob/living/proc/hide
 		verbs |= /mob/living/simple_mob/protean_blob/proc/useradio
 		verbs |= /mob/living/simple_mob/protean_blob/proc/appearanceswitch
 		verbs |= /mob/living/simple_mob/protean_blob/proc/rig_transform
 		verbs |= /mob/living/proc/usehardsuit
+		INVOKE_ASYNC(src, /mob/living/proc/updatehealth)
 	else
 		update_icon()
 

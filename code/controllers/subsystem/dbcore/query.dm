@@ -1,7 +1,4 @@
 /datum/db_query
-	/// our database
-	var/datum/db_connection/db
-
 	// Inputs
 	var/connection
 	var/sql
@@ -21,7 +18,7 @@
 
 	var/list/item  //list of data values populated by NextRow()
 
-/datum/db_query/New(connection, sql, arguments, datum/db_connection/db)
+/datum/db_query/New(connection, sql, arguments)
 	SSdbcore.active_queries[src] = TRUE
 	Activity("Created")
 	item = list()
@@ -29,26 +26,11 @@
 	src.connection = connection
 	src.sql = sql
 	src.arguments = arguments
-	src.db = db
 
 /datum/db_query/Destroy()
 	Close()
 	SSdbcore.active_queries -= src
 	return ..()
-
-/datum/db_query/CanProcCall(procname)
-	// probably don't
-	return FALSE
-
-/datum/db_query/can_vv_get(var_name)
-	switch(var_name)
-		if(NAMEOF(src, connection))
-			return FALSE
-	return ..()
-
-/datum/db_query/vv_edit_var(var_name, var_value)
-	// nah
-	return FALSE
 
 /datum/db_query/proc/Activity(activity)
 	last_activity = activity
@@ -64,7 +46,7 @@
 	if(in_progress)
 		CRASH("Attempted to start a new query while waiting on the old one")
 
-	if(!db.IsConnected())
+	if(!SSdbcore.IsConnected())
 		last_error = "No connection!"
 		return FALSE
 
@@ -131,3 +113,18 @@
 /datum/db_query/proc/Close()
 	rows = null
 	item = null
+
+//! protect
+/datum/db_query/can_vv_get(var_name)
+	switch(var_name)
+		if(NAMEOF(src, connection))
+			return FALSE
+	return ..()
+
+/datum/db_query/vv_edit_var(var_name, var_value)
+	// nah
+	return FALSE
+
+/datum/db_query/CanProcCall(proc_name)
+	//fuck off kevinz
+	return FALSE
