@@ -74,8 +74,6 @@ DEFINE_BITFIELD(item_flags, list(
 /// ignores "do we have a jumpsuit" for belt
 #define EQUIP_IGNORE_BELTLINK	(1<<14)
 
-#warn impl in mob_can_equip/has limb for equip
-
 DEFINE_BITFIELD(clothing_flags, list(
 	BITFIELD(BLOCK_GAS_SMOKE_EFFECT),
 	BITFIELD(ALLOWINTERNALS),

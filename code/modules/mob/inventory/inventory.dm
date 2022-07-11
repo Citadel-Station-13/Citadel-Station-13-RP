@@ -45,6 +45,7 @@
 		if(/datum/inventory_slot_meta/abstract/attach_as_accessory)
 			for(var/obj/item/clothing/C in get_equipped_items())
 				if(C.attempt_attach_accessory(I))
+					return TRUE
 			return FALSE
 		else
 			CRASH("Invalid abstract slot [slot]")
