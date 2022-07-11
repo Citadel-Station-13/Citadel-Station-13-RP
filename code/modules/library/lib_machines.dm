@@ -52,7 +52,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 				dat += {"<table>
 				<tr><td>AUTHOR</td><td>TITLE</td><td>CATEGORY</td><td>SS<sup>13</sup>BN</td></tr>"}
 
-				var/DBQuery/query = dbcon_old.NewQuery(SQLquery)
+				var/datum/db_query/query = dbcon_old.NewQuery(SQLquery)
 				query.Execute()
 
 				while(query.NextRow())
@@ -236,7 +236,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 				dat += {"<A href='?src=\ref[src];orderbyid=1'>(Order book by SS<sup>13</sup>BN)</A><BR><BR>
 				<table>
 				<tr><td><A href='?src=\ref[src];sort=author>AUTHOR</A></td><td><A href='?src=\ref[src];sort=title>TITLE</A></td><td><A href='?src=\ref[src];sort=category>CATEGORY</A></td><td></td></tr>"}
-				var/DBQuery/query = dbcon_old.NewQuery("SELECT id, author, title, category FROM library ORDER BY [sortby]")
+				var/datum/db_query/query = dbcon_old.NewQuery("SELECT id, author, title, category FROM library ORDER BY [sortby]")
 				query.Execute()
 
 				while(query.NextRow())
@@ -402,7 +402,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 							var/sqlauthor = sanitizeSQL(scanner.cache.author)
 							var/sqlcontent = sanitizeSQL(scanner.cache.dat)
 							var/sqlcategory = sanitizeSQL(upload_category)
-							var/DBQuery/query = dbcon_old.NewQuery("INSERT INTO library (author, title, content, category) VALUES ('[sqlauthor]', '[sqltitle]', '[sqlcontent]', '[sqlcategory]')")
+							var/datum/db_query/query = dbcon_old.NewQuery("INSERT INTO library (author, title, content, category) VALUES ('[sqlauthor]', '[sqltitle]', '[sqlcontent]', '[sqlcategory]')")
 							if(!query.Execute())
 								to_chat(usr, query.ErrorMsg())
 							else
@@ -421,7 +421,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 			bibledelay = 1
 			spawn(6)
 				bibledelay = 0
-			var/DBQuery/query = dbcon_old.NewQuery("SELECT * FROM library WHERE id=[sqlid]")
+			var/datum/db_query/query = dbcon_old.NewQuery("SELECT * FROM library WHERE id=[sqlid]")
 			query.Execute()
 
 			while(query.NextRow())

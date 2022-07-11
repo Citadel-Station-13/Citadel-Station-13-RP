@@ -75,7 +75,7 @@ SUBSYSTEM_DEF(persist)
 		var/sql_ckey = sql_sanitize_text(C.ckey)
 		var/sql_dpt = sql_sanitize_text(department_earning)
 		var/sql_bal = text2num("[C.department_hours[department_earning]]")
-		var/DBQuery/query = dbcon.NewQuery("INSERT INTO vr_player_hours (ckey, department, hours) VALUES ('[sql_ckey]', '[sql_dpt]', [sql_bal]) ON DUPLICATE KEY UPDATE hours = VALUES(hours)")
+		var/datum/db_query/query = dbcon.NewQuery("INSERT INTO vr_player_hours (ckey, department, hours) VALUES ('[sql_ckey]', '[sql_dpt]', [sql_bal]) ON DUPLICATE KEY UPDATE hours = VALUES(hours)")
 		query.Execute()
 
 		if (MC_TICK_CHECK)

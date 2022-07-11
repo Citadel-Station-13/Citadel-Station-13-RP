@@ -332,13 +332,15 @@
 		return
 
 	if(href_list["privacy_poll"])
-		establish_db_connection()
-		if(!dbcon.IsConnected())
+		if(!SSdbcore.Connect())
 			return
 		var/voted = 0
 
 		//First check if the person has not voted yet.
-		var/DBQuery/query = dbcon.NewQuery("SELECT * FROM erro_privacy WHERE ckey='[src.ckey]'")
+		var/datum/db_query = SSdbcore.NewQuery(
+			"SELECT * FROM [format_table_name("privacy")] WHERE ckey = :ckey",
+			list("ckey" = ckey)
+		)
 		query.Execute()
 		while(query.NextRow())
 			voted = 1
@@ -364,7 +366,7 @@
 
 		if(!voted)
 			var/sql = "INSERT INTO erro_privacy VALUES (null, Now(), '[src.ckey]', '[option]')"
-			var/DBQuery/query_insert = dbcon.NewQuery(sql)
+			var/datum/db_query/query_insert = dbcon.NewQuery(sql)
 			query_insert.Execute()
 			to_chat(usr, "<b>Thank you for your vote!</b>")
 			usr << browse(null,"window=privacypoll")
