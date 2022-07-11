@@ -442,7 +442,7 @@
 /datum/gear/seasonal/halloween/costumes/accessory
 	name = "Costume Accessories - Cueball Man"
 	path = /obj/item/clothing/accessory/wcoat
-	slot = /datum/inventory/abstract/attach_as_accessory
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 /datum/gear/seasonal/halloween/costumes/accessory/broom
 	name = "Costume Accessories - Witch Broom"

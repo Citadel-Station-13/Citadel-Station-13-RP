@@ -1275,11 +1275,5 @@
 /mob/living/silicon/robot/is_sentient()
 	return braintype != BORG_BRAINTYPE_DRONE
 
-
-/mob/living/silicon/robot/drop_item()
-	if(module_active && istype(module_active,/obj/item/gripper))
-		var/obj/item/gripper/G = module_active
-		G.drop_item_nm()
-
 /mob/living/silicon/robot/get_cell()
 	return cell

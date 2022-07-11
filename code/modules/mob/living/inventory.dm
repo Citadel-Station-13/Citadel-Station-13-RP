@@ -31,7 +31,7 @@
 /mob/living/hands_full()
 	return l_hand && r_hand
 
-/mob/living/put_in_active_hawd(obj/item/I, force)
+/mob/living/put_in_active_hand(obj/item/I, force)
 	return hand? put_in_left_hand(I, force) : put_in_right_hand(I, force)
 
 /mob/living/put_in_inactive_hand(obj/item/I, force)

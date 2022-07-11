@@ -540,7 +540,6 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		return
 
 	//The eyes store the color themselves, funny enough.
-	var/obj/item/organ/internal/eyes/eyes = internal_organs_by_name[O_EYES]
 	if(!head_organ.eye_icon)
 		return
 

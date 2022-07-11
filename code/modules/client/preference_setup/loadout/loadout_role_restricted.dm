@@ -31,7 +31,7 @@
 	slot = SLOT_ID_SHOES
 
 /datum/gear/restricted/security/accessory
-	slot = /datum/inventory/abstract/attach_as_accessory
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 //Medical
 /datum/gear/restricted/medical
@@ -56,7 +56,7 @@
 	slot = SLOT_ID_SHOES
 
 /datum/gear/restricted/medical/accessory
-	slot = /datum/inventory/abstract/attach_as_accessory
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 //Engineering
 /datum/gear/restricted/engineering
@@ -81,7 +81,7 @@
 	slot = SLOT_ID_SHOES
 
 /datum/gear/restricted/engineering/accessory
-	slot = /datum/inventory/abstract/attach_as_accessory
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 //Command
 /datum/gear/restricted/command
@@ -103,7 +103,7 @@
 	slot = SLOT_ID_SHOES
 
 /datum/gear/restricted/command/accessory
-	slot = /datum/inventory/abstract/attach_as_accessory
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 //Science
 /datum/gear/restricted/science
@@ -128,7 +128,7 @@
 	slot = SLOT_ID_SHOES
 
 /datum/gear/restricted/science/accessory
-	slot = /datum/inventory/abstract/attach_as_accessory
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 //Supply
 /datum/gear/restricted/supply
@@ -147,14 +147,14 @@
 	slot = SLOT_ID_SHOES
 
 /datum/gear/restricted/supply/accessory
-	slot = /datum/inventory/abstract/attach_as_accessory
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 //Service
 /datum/gear/restricted/service
 	allowed_roles = list("Head of Personnel", "Bartender", "Botanist", "Janitor", "Chef", "Librarian", "Chaplain")
 
 /datum/gear/restricted/service/accessory
-	slot = /datum/inventory/abstract/attach_as_accessory
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 /datum/gear/restricted/service/suit
 	slot = SLOT_ID_SUIT
@@ -178,7 +178,7 @@
 	slot = SLOT_ID_SHOES
 
 /datum/gear/restricted/misc/accessory
-	slot = /datum/inventory/abstract/attach_as_accessory
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 //*Multi-Department Combinations (Aka Multi-Department Drifting)
 //Security + Command

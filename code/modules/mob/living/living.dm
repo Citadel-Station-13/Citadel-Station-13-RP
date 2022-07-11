@@ -1090,7 +1090,7 @@ default behaviour is:
 
 /mob/proc/activate_hand_of_index(index)
 
-/mob/living/proc/activate_hand_of_index(index)
+/mob/living/activate_hand_of_index(index)
 	switch(index)
 		if(1)
 			activate_hand("l")

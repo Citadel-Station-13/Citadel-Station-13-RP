@@ -31,7 +31,7 @@
 	var/r_hand = null
 	var/l_hand = null
 	// In the list(path=count,otherpath=count) format
-	var/list/uniform_accessories = list() // webbing, armbands etc - fits in /datum/inventory/abstract/attach_as_accessory
+	var/list/uniform_accessories = list() // webbing, armbands etc - fits in /datum/inventory_slot_meta/abstract/attach_as_accessory
 	var/list/backpack_contents = list()
 
 	var/id_type

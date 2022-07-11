@@ -11,7 +11,6 @@
 /obj/machinery/computer/curer/attackby(var/obj/I as obj, var/mob/user as mob)
 	if(istype(I,/obj/item/reagent_containers))
 		. = CLICKCHAIN_DO_NOT_PROPAGATE
-		var/mob/living/carbon/C = user
 		if(!container)
 			if(!user.attempt_insert_item_for_installation(I, src))
 				return
