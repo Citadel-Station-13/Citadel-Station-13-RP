@@ -1,22 +1,30 @@
 /datum/species/skrell
 	name = SPECIES_SKRELL
 	name_plural = SPECIES_SKRELL
-	default_bodytype = BODYTYPE_SKRELL
-	icobase = 'icons/mob/species/skrell/body_greyscale.dmi'
-	deform = 'icons/mob/species/skrell/body_deformed.dmi'
 	primitive_form = SPECIES_MONKEY_SKRELL
-	unarmed_types = list(/datum/unarmed_attack/punch)
-	blurb = "An amphibious species, Skrell come from the star system known as Qerr'Vallis, which translates to 'Star of \
-	the royals' or 'Light of the Crown'.<br/><br/>Skrell are a highly advanced and logical race who live under the rule \
-	of the Qerr'Katish, a caste within their society which keeps the empire of the Skrell running smoothly. Skrell are \
-	herbivores on the whole and tend to be co-operative with the other species of the galaxy, although they rarely reveal \
-	the secrets of their empire to their allies."
+	icobase = 'icons/mob/species/skrell/body_greyscale.dmi'
+	deform = 'icons/mob/species/skrell/deformed_body_greyscale.dmi'
+
+	blurb = {"
+	An amphibious species, Skrell come from the star system known as Qerr'Vallis, which translates
+	to 'Star of the royals' or 'Light of the Crown'.
+
+	Skrell are a highly advanced and logical race who live under the rule  of the Qerr'Katish, a
+	caste within their society which keeps the empire of the Skrell running smoothly.  Skrell are
+	herbivores on the whole and tend to be co-operative with the other species of the galaxy, although
+	they rarely reveal the secrets of their empire to their allies.
+	"}
+
+	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Skrell"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/skrell)
+
 	num_alternate_languages = 3
-	secondary_langs = list(LANGUAGE_SKRELLIAN, LANGUAGE_SCHECHI)
-	name_language = LANGUAGE_SKRELLIAN
+	name_language    = LANGUAGE_SKRELLIAN
 	species_language = LANGUAGE_SKRELLIAN
-	assisted_langs = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
+	secondary_langs  = list(LANGUAGE_SKRELLIAN, LANGUAGE_SCHECHI)
+	assisted_langs   = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
+
+	color_mult = 1
 	health_hud_intensity = 2
 
 	water_movement = -3
@@ -25,8 +33,8 @@
 
 	economic_modifier = 10
 
-	darksight = 4
-	flash_mod = 1.2
+	darksight  = 4
+	flash_mod  = 1.2
 	chemOD_mod = 0.9
 
 	bloodloss_rate = 1.5
@@ -38,42 +46,44 @@
 
 	flesh_color = "#8CD7A3"
 	blood_color = "#1D2CBF"
-	base_color = "#006666"
+	base_color  = "#006666"
 
-	cold_level_1 = 280 //Default 260 - Lower is better
-	cold_level_2 = 220 //Default 200
-	cold_level_3 = 130 //Default 120
+	cold_level_1 = 280
+	cold_level_2 = 220
+	cold_level_3 = 130
 
-	breath_cold_level_1 = 250	//Default 240 - Lower is better
-	breath_cold_level_2 = 190	//Default 180
-	breath_cold_level_3 = 120	//Default 100
+	breath_cold_level_1 = 250
+	breath_cold_level_2 = 190
+	breath_cold_level_3 = 120
 
-	heat_level_1 = 420 //Default 360 - Higher is better
-	heat_level_2 = 480 //Default 400
-	heat_level_3 = 1100 //Default 1000
+	heat_level_1 = 420
+	heat_level_2 = 480
+	heat_level_3 = 1100
 
-	breath_heat_level_1 = 400	//Default 380 - Higher is better
-	breath_heat_level_2 = 500	//Default 450
-	breath_heat_level_3 = 1350	//Default 1250
+	breath_heat_level_1 = 400
+	breath_heat_level_2 = 500
+	breath_heat_level_3 = 1350
 
 	reagent_tag = null
 
 	has_limbs = list(
-		BP_TORSO =  list("path" = /obj/item/organ/external/chest),
-		BP_GROIN =  list("path" = /obj/item/organ/external/groin),
-		BP_HEAD =   list("path" = /obj/item/organ/external/head/skrell),
-		BP_L_ARM =  list("path" = /obj/item/organ/external/arm),
-		BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right),
-		BP_L_LEG =  list("path" = /obj/item/organ/external/leg),
-		BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right),
+		BP_TORSO  = list("path" = /obj/item/organ/external/chest),
+		BP_GROIN  = list("path" = /obj/item/organ/external/groin),
+		BP_HEAD   = list("path" = /obj/item/organ/external/head/skrell),
+		BP_L_ARM  = list("path" = /obj/item/organ/external/arm),
+		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right),
+		BP_L_LEG  = list("path" = /obj/item/organ/external/leg),
+		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right),
 		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
 		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
 		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
-		)
+		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
+	)
 
-	color_mult = 1
-	wikilink="https://citadel-station.net/wikiRP/index.php?title=Skrell"
+	unarmed_types = list(
+		/datum/unarmed_attack/punch,
+	)
+
 
 /datum/species/skrell/can_breathe_water()
 	return TRUE
