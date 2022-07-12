@@ -44,6 +44,7 @@
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/sonar_ping,
 		/mob/living/carbon/human/proc/psychic_whisper,
 		//mob/living/carbon/human/proc/neurotoxin,//need the acid organ which I dont wanna just give them
 		/mob/living/carbon/human/proc/hybrid_resin,
