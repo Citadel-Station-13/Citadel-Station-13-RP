@@ -24,7 +24,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	..()
 	if(owner && owner.stat != DEAD) // So there's a lower risk of ticking twice.
 		tick_defib_timer()
-
+#warn actual death damage tick system on organ flags
 ///This is called by `process()` when the owner is alive, or brain is not in a body, and by `Life()` directly when dead.
 /obj/item/organ/internal/brain/proc/tick_defib_timer()
 	if(preserved) // In an MMI/ice box/etc.

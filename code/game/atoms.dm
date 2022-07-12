@@ -114,6 +114,10 @@
 	/// Relative layer - position this atom should be in within things of the same base layer. defaults to 0.
 	var/relative_layer = 0
 
+//! Misc
+	///Mobs that are currently do_after'ing this atom, to be cleared from on Destroy()
+	var/list/targeted_by
+
 /**
  * Called when an atom is created in byond (built in engine proc)
  *

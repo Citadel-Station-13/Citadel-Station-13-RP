@@ -199,9 +199,18 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_EMPATH			"empath"
 #define TRAIT_FRIENDLY			"friendly"
 #define TRAIT_GRABWEAKNESS		"grab_weakness"
+*/
+
+/// CPR was done already; CPR is less effective
+#define TRAIT_CPR_COOLDOWN				"cpr_cooldown"
+/// Sometihng is currently preventing brain damage while dead
+#define TRAIT_NO_BRAIN_DECAY			"no_brain_decay"
+/// Something currently preventing normal respiratory failure
+#define TRAIT_MECHANICAL_VENTILATION	"mechanical_ventilation"
 
 // common trait sources
 #define TRAIT_GENERIC "generic"
+/*
 #define EYE_DAMAGE "eye_damage"
 #define GENETIC_MUTATION "genetic"
 #define OBESITY "obesity"
@@ -283,3 +292,5 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define FROGENITE_TRAIT "frogenite"
 #define FERVEATIUM_TRAIT "ferveatium"
 */
+
+#define CPR_TRAIT "cpr"

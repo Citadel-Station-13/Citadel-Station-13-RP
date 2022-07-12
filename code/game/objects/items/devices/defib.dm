@@ -296,8 +296,9 @@
 		return bad_vital_organ
 
 	//this needs to be last since if any of the 'other conditions are met their messages take precedence
-	if(!H.client && !H.teleop)
-		return "buzzes, \"Resuscitation failed - Mental interface error. Further attempts may be successful.\""
+	// if(!H.client && !H.teleop)
+	//		return "buzzes, \"Resuscitation failed - Mental interface error. Further attempts may be successful.\""
+	//! we allow braindead revivals now ~silicons
 
 	return null
 
@@ -435,9 +436,11 @@
 
 	make_alive(H)
 
-	H.Confuse(120)
-	var/type_to_give = /datum/modifier/enfeeble/strong
-	H.add_modifier(type_to_give, 10 MINUTES)
+	// todo: this is at a low value rn ~silicons
+	H.Confuse(10)
+	// todo: removed until someone can make defib sickness that makes sense and is not ridiculously awful ~silicons
+	// var/type_to_give = /datum/modifier/enfeeble/strong
+	// H.add_modifier(type_to_give, 10 MINUTES)
 
 	log_and_message_admins("used \a [src] to revive [key_name(H)].")
 
@@ -494,36 +497,6 @@
 	M.emote("gasp")
 	M.Weaken(rand(10,25))
 	M.updatehealth()
-	apply_brain_damage(M)
-
-/obj/item/shockpaddles/proc/apply_brain_damage(mob/living/carbon/human/H)
-	if(!H.should_have_organ(O_BRAIN))
-		return // No brain.
-
-	var/obj/item/organ/internal/brain/brain = H.internal_organs_by_name[O_BRAIN]
-	if(!brain)
-		return // Still no brain.
-
-	// If the brain'd `defib_timer` var gets below this number, brain damage will happen at a linear rate.
-	// This is measures in `Life()` ticks. E.g. 10 minute defib timer = 300 `Life()` ticks.
-	//! Original math was VERY off. Life() tick occurs every ~2 seconds, not every 2 world.time ticks.
-	var/brain_damage_timer = ((CONFIG_GET(number/defib_timer) MINUTES) / 20) - ((CONFIG_GET(number/defib_braindamage_timer) MINUTES) / 20)
-
-	if(brain.defib_timer > brain_damage_timer)
-		return // They got revived before brain damage got a chance to set in.
-
-	// As the brain decays, this will be between 0 and 1, with 1 being the most fresh.
-	var/brain_death_scale = brain.defib_timer / brain_damage_timer
-
-	// This is backwards from what you might expect, since 1 = fresh and 0 = rip.
-	var/damage_calc = LERP(brain.max_damage, H.getBrainLoss(), brain_death_scale)
-
-	// A bit of sanity.
-	var/brain_damage = clamp( damage_calc, H.getBrainLoss(),  brain.max_damage)
-
-	H.setBrainLoss(brain_damage)
-	make_announcement("beeps, \"Warning. Subject neurological structure has sustained damage.\"", "notice")
-	playsound(get_turf(src), 'sound/machines/defib_failed.ogg', 50, 0)
 
 /obj/item/shockpaddles/proc/make_announcement(var/message, var/msg_class)
 	audible_message("<b>\The [src]</b> [message]", "\The [src] vibrates slightly.")
