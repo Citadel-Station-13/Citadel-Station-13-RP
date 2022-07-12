@@ -147,7 +147,6 @@
 	var/name_archive
 
 	var/timeofdeath = 0 //?Living
-	var/cpr_time = 1 //?Carbon
 
 	var/bodytemperature = 310.055 //98.7 F
 	var/drowsyness = 0 //?Carbon
