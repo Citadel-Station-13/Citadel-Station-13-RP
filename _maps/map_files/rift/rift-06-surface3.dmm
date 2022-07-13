@@ -23607,8 +23607,10 @@
 "QU" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "AI Power Reserve";
-	charge = 5000;
-	output_level = 100
+	charge = 500000;
+	output_level = 100;
+	input_level = 100;
+	cur_coils = 3
 	},
 /obj/machinery/camera/network/command{
 	dir = 8
