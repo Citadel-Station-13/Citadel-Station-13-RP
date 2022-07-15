@@ -11376,6 +11376,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/rift/station/fighter_bay/hangar)
+"uR" = (
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 8
+	},
+/obj/effect/overlay/snow/floor/pointy,
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
 "uV" = (
 /obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
@@ -13014,6 +13022,11 @@
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/drone_fabrication)
+"Eb" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/reagent_dispensers/fueltank,
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
 "Ed" = (
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
@@ -14065,6 +14078,13 @@
 	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"Ix" = (
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 4
+	},
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/plating,
+/area/rift/surfacebase/underground/under1)
 "Iz" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
@@ -14625,7 +14645,10 @@
 /turf/simulated/floor/plating,
 /area/maintenance/elevator)
 "Lw" = (
-/obj/random/trash_pile,
+/mob/living/simple_mob/animal/passive/mouse{
+	desc = "A small rodent, this one is seemingly defying gravity. Oh, wait, no, it just has tiny wings. The beauty of nature.";
+	name = "Elizondo the Flying Mouse"
+	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "LE" = (
@@ -16884,14 +16907,6 @@
 /obj/item/storage/box/glasses/shot,
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
-"WC" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor,
-/turf/simulated/floor/plating,
-/area/maintenance/engineering)
 "WD" = (
 /obj/item/flashlight{
 	pixel_x = 1;
@@ -17152,13 +17167,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/rift/station/fighter_bay/hangar)
-"XY" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
-/obj/effect/overlay/snow/floor,
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/underground/under1)
 "Ya" = (
 /turf/simulated/wall/r_wall,
 /area/tcommsat/computer)
@@ -17598,11 +17606,6 @@
 /obj/machinery/disposal,
 /turf/simulated/floor/wood,
 /area/rift/station/fighter_bay)
-"ZT" = (
-/obj/effect/floor_decal/rust,
-/obj/structure/reagent_dispensers/fueltank,
-/turf/simulated/floor/plating,
-/area/maintenance/engineering)
 
 (1,1,1) = {"
 Wj
@@ -28778,7 +28781,7 @@ zz
 zz
 zz
 zz
-WC
+uR
 sL
 hO
 sS
@@ -29360,7 +29363,7 @@ fk
 lp
 oy
 Ki
-XY
+Ix
 kt
 kt
 kt
@@ -36348,7 +36351,7 @@ my
 sN
 sT
 sU
-ZT
+Eb
 sW
 Hf
 Hf

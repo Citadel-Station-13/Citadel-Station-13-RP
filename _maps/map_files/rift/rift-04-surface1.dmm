@@ -6615,10 +6615,6 @@
 /obj/structure/closet/crate,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/warehouse)
-"fnw" = (
-/obj/structure/reagent_dispensers/watertank,
-/turf/simulated/floor/plating,
-/area/maintenance/lowmedbaymaint)
 "fnO" = (
 /obj/machinery/appliance/cooker/grill,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
@@ -10039,10 +10035,6 @@
 /obj/effect/floor_decal/industrial/halfstair,
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/outside1)
-"hNY" = (
-/obj/structure/reagent_dispensers/fueltank,
-/turf/simulated/floor/plating,
-/area/maintenance/starboard)
 "hPC" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -16757,17 +16749,9 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology/cell/three)
 "mCe" = (
-/obj/machinery/door/airlock/glass_external{
-	name = "Medical Airlock";
-	req_one_access = list(5)
-	},
-/obj/machinery/door/blast/shutters{
-	dir = 2;
-	id = "medical_ext_shutter";
-	name = "Rescue External Shutter"
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/medical/medbay_emt_bay)
+/obj/structure/reagent_dispensers/fueltank,
+/turf/simulated/floor/plating,
+/area/maintenance/lowmedbaymaint)
 "mEY" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -18745,10 +18729,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/foyer)
-"nQI" = (
-/obj/structure/reagent_dispensers/fueltank,
-/turf/simulated/floor/plating,
-/area/maintenance/lowmedbaymaint)
 "nRv" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -25738,6 +25718,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/checkpoint)
+"sRu" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/simulated/floor/plating,
+/area/maintenance/lowmedbaymaint)
 "sRR" = (
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/anomaly_lab/storage)
@@ -29985,6 +29969,10 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
+"vTb" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/simulated/floor/plating,
+/area/maintenance/starboard)
 "vTw" = (
 /obj/machinery/vending/snack,
 /obj/effect/floor_decal/borderfloor{
@@ -44667,7 +44655,7 @@ fUY
 egH
 jvY
 dMW
-mCe
+eGx
 enA
 lUE
 wnK
@@ -48141,7 +48129,7 @@ hgE
 hgE
 hgE
 gTC
-nQI
+mCe
 pOR
 pOR
 pOR
@@ -48529,7 +48517,7 @@ hgE
 hgE
 hgE
 gTC
-fnw
+sRu
 pOR
 pOR
 pOR
@@ -52858,7 +52846,7 @@ qZM
 qZM
 fBn
 ueA
-hNY
+vTb
 eLp
 kbe
 rik
