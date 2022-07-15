@@ -403,6 +403,11 @@
 	dir = 8
 	},
 /obj/random/trash_pile,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/pumpstation)
 "bf" = (
@@ -2547,16 +2552,16 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 5
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 8
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
@@ -5151,6 +5156,11 @@
 /obj/random/maintenance/clean,
 /obj/random/maintenance/engineering,
 /obj/structure/railing,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/pumpstation)
 "ju" = (
@@ -6223,9 +6233,9 @@
 "ls" = (
 /obj/structure/catwalk,
 /obj/structure/cable{
-	d1 = 4;
+	d1 = 1;
 	d2 = 8;
-	icon_state = "4-8"
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/pumpstation)
@@ -10489,11 +10499,6 @@
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 6
 	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "sp" = (
@@ -12505,6 +12510,14 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
+"AM" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/wall,
+/area/maintenance/engineering/pumpstation)
 "AO" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/hangar)
@@ -14405,9 +14418,9 @@
 /obj/effect/floor_decal/borderfloor/corner2,
 /obj/machinery/light,
 /obj/structure/cable{
-	d1 = 4;
+	d1 = 2;
 	d2 = 8;
-	icon_state = "4-8"
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
@@ -36923,7 +36936,7 @@ aG
 ea
 ff
 Kq
-am
+AM
 be
 jt
 ls
