@@ -1110,7 +1110,7 @@
 
 	var/new_spread = isnull(folded) ? !spread : folded
 	if(new_spread != spread)
-		spread = folded
+		spread = new_spread
 		update_wing_showing()
 	return 1
 
