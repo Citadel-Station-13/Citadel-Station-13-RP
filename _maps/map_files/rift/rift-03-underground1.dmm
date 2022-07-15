@@ -11201,6 +11201,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
+"ub" = (
+/obj/machinery/crystal/ice,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "uc" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
@@ -12510,14 +12514,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
-"AM" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/wall,
-/area/maintenance/engineering/pumpstation)
 "AO" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/hangar)
@@ -13106,6 +13102,14 @@
 /obj/item/clothing/suit/storage/hooded/wintercoat/durathread,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay)
+"Er" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/wall,
+/area/maintenance/engineering/pumpstation)
 "Et" = (
 /obj/effect/overlay/snow/floor,
 /obj/effect/overlay/snow/floor/edges_new{
@@ -36936,7 +36940,7 @@ aG
 ea
 ff
 Kq
-AM
+Er
 be
 jt
 ls
@@ -39084,7 +39088,7 @@ PY
 Zj
 HW
 BQ
-BQ
+ub
 Kf
 aa
 aa

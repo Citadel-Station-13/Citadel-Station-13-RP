@@ -1193,6 +1193,10 @@
 	},
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/outside1)
+"bfe" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/simulated/floor/plating,
+/area/maintenance/engineering/upper)
 "bfj" = (
 /obj/structure/table/steel,
 /obj/item/storage/box/handcuffs,
@@ -1703,6 +1707,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/cargodock)
+"byi" = (
+/obj/structure/closet/firecloset,
+/turf/simulated/floor/plating,
+/area/rift/surfacebase/outside/outside1)
 "byI" = (
 /obj/structure/table/glass,
 /obj/item/paper_bin,
@@ -4133,6 +4141,10 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
+"dqb" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/simulated/floor/plating,
+/area/rift/surfacebase/outside/outside1)
 "dru" = (
 /obj/structure/railing{
 	dir = 8
@@ -4422,6 +4434,10 @@
 /obj/item/storage/firstaid,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
+"dAB" = (
+/obj/structure/table/rack/steel,
+/turf/simulated/floor/plating,
+/area/maintenance/engineering/upper)
 "dBA" = (
 /obj/machinery/light_construct/small,
 /turf/simulated/floor/wood/broken,
@@ -5961,6 +5977,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
+"eFL" = (
+/obj/structure/closet/hydrant{
+	dir = 8;
+	pixel_x = 32
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/engineering/upper)
 "eFM" = (
 /obj/machinery/vending/fitness,
 /obj/effect/floor_decal/corner/paleblue{
@@ -7456,6 +7479,10 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
+"fXh" = (
+/obj/structure/table/rack/steel,
+/turf/simulated/floor/plating,
+/area/maintenance/research/lower)
 "fXj" = (
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
@@ -10859,6 +10886,7 @@
 /obj/item/clothing/accessory/sweater/star,
 /obj/item/clothing/accessory/sweater/uglyxmas,
 /obj/item/clothing/accessory/sweater/mint,
+/obj/item/clothing/accessory/sweater/virgin,
 /turf/simulated/floor/wood,
 /area/maintenance/engineering/upper)
 "isB" = (
@@ -11975,6 +12003,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/tankstorage)
+"jhM" = (
+/obj/structure/closet/emcloset,
+/turf/simulated/floor/plating,
+/area/rift/surfacebase/outside/outside1)
 "jhN" = (
 /obj/machinery/door/firedoor,
 /obj/structure/grille,
@@ -12597,10 +12629,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/janitor)
 "jIa" = (
-/obj/structure/table/woodentable,
-/obj/item/clothing/accessory/sweater/virgin,
-/turf/simulated/floor/carpet,
-/area/maintenance/engineering/upper)
+/obj/machinery/light/flamp,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/public_garden)
 "jIY" = (
 /obj/machinery/door/firedoor,
 /obj/structure/grille,
@@ -12980,6 +13011,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
+"jVg" = (
+/obj/structure/closet,
+/turf/simulated/floor/plating,
+/area/maintenance/engineering/upper)
 "jVC" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
@@ -13496,6 +13531,11 @@
 /obj/item/handcuffs/cable/white,
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
+"kmM" = (
+/obj/machinery/light/small,
+/obj/structure/table/rack/steel,
+/turf/simulated/floor/plating,
+/area/maintenance/engineering/upper)
 "knc" = (
 /obj/item/paper_bin,
 /obj/structure/table/standard,
@@ -18125,7 +18165,7 @@
 /area/quartermaster/office)
 "nzE" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/bar_coffee/unanchored{
+/obj/machinery/chemical_dispenser/bar_coffee/full{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
@@ -27662,6 +27702,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
+"ufa" = (
+/obj/structure/sink/puddle,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/public_garden)
 "ufp" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/cosmosdouble,
@@ -30144,7 +30188,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/tether/station/public_meeting_room)
 "waf" = (
-/obj/machinery/light/flamp,
+/obj/machinery/crystal/ice,
 /turf/simulated/floor/snow,
 /area/maintenance/engineering/upper)
 "wau" = (
@@ -30252,6 +30296,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main)
+"wdE" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/simulated/floor/plating,
+/area/maintenance/engineering/upper)
 "wdT" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 8
@@ -34793,10 +34841,10 @@ aBn
 lcN
 lcN
 lcN
-vUA
-plm
-plm
-plm
+lcN
+lcN
+lcN
+lcN
 vUA
 pqd
 cuo
@@ -44924,7 +44972,7 @@ dcS
 hgE
 hgE
 xhk
-wcl
+dAB
 fXj
 wcl
 wcl
@@ -45901,9 +45949,9 @@ xhk
 xhk
 wcl
 wcl
-snf
+kmM
 xhk
-wcl
+jVg
 wcl
 wcl
 xhk
@@ -46098,7 +46146,7 @@ wcl
 wcl
 xhk
 fXj
-wcl
+eFL
 wcl
 snf
 xhk
@@ -46487,11 +46535,11 @@ rRj
 uiY
 phU
 iFZ
-wcl
+jVg
 wcl
 xhk
 wcl
-wcl
+wdE
 xhk
 xhk
 xhk
@@ -47665,7 +47713,7 @@ xhk
 xhk
 xhk
 vWs
-waf
+vWs
 faM
 jfW
 jfW
@@ -47866,7 +47914,7 @@ jfW
 jfW
 hgE
 xhk
-jIa
+iyI
 vyc
 xft
 xhk
@@ -48052,7 +48100,7 @@ hgE
 hgE
 hgE
 hgE
-vWs
+waf
 jfW
 jfW
 jfW
@@ -48237,7 +48285,7 @@ wcl
 wcl
 wcl
 wcl
-wcl
+jVg
 xhk
 hgE
 hgE
@@ -48429,7 +48477,7 @@ paX
 wcl
 wcl
 fXj
-wcl
+bfe
 xhk
 xhk
 xhk
@@ -50938,7 +50986,7 @@ kFo
 jnd
 fLU
 tTu
-fLU
+fXh
 gQl
 woH
 oZk
@@ -51472,9 +51520,9 @@ vRV
 pbz
 jCQ
 xTe
-iNE
-iNE
 rAo
+iNE
+iNE
 iNE
 hLc
 xUv
@@ -52054,7 +52102,7 @@ vRV
 vRV
 wUt
 xTe
-iNE
+rAo
 iNE
 iNE
 iNE
@@ -52444,11 +52492,11 @@ xTe
 xTe
 bEN
 iNE
-rAo
+iNE
 iNE
 jBF
 iNE
-iNE
+rAo
 ueA
 poK
 leM
@@ -52642,7 +52690,7 @@ xUv
 xUv
 tee
 aaU
-iNE
+rAo
 ueA
 nFE
 xKD
@@ -52869,10 +52917,10 @@ fLU
 fLU
 mTF
 rZY
-qhZ
-qhZ
+jhM
+byi
 cyn
-qhZ
+dqb
 cyn
 qhZ
 qhZ
@@ -53030,7 +53078,7 @@ mXK
 lDv
 lDv
 bhz
-iNE
+rAo
 ueA
 nua
 rNV
@@ -53224,7 +53272,7 @@ kJN
 dog
 lDv
 bhz
-rAo
+iNE
 ueA
 ueA
 ueA
@@ -54002,8 +54050,8 @@ lDv
 eLp
 iNE
 iNE
-rAo
 iNE
+rAo
 hdi
 iNE
 kbe
@@ -54971,7 +55019,7 @@ msU
 fCX
 fCX
 fCX
-iNE
+rAo
 iNE
 iNE
 hdi
@@ -56523,7 +56571,7 @@ hGW
 bbD
 bbs
 bbD
-iNE
+rAo
 iNE
 iNE
 iNE
@@ -57124,7 +57172,7 @@ sLo
 sLo
 sLo
 rpP
-rpP
+ufa
 tlw
 xiB
 xiB
@@ -57314,7 +57362,7 @@ mOS
 oKO
 qDk
 rpP
-rpP
+jIa
 wZk
 sur
 rpP
@@ -57896,7 +57944,7 @@ ngE
 oPE
 rpP
 sxj
-rpP
+jIa
 rpP
 eGP
 rpP
@@ -60031,7 +60079,7 @@ gzd
 jhN
 skM
 rpP
-rpP
+jIa
 rpP
 bfY
 rpP
@@ -60230,12 +60278,12 @@ rpP
 rpP
 rpP
 rpP
-rpP
+jIa
 rpP
 eGP
 sur
 rpP
-rpP
+ufa
 tlw
 xiB
 jhN

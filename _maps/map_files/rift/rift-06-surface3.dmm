@@ -2532,6 +2532,7 @@
 "ek" = (
 /obj/structure/table/steel,
 /obj/random/maintenance/medical,
+/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "el" = (
@@ -6223,9 +6224,9 @@
 	pixel_x = -12;
 	pixel_y = 2
 	},
-/obj/structure/mirror{
-	dir = 4;
-	pixel_x = -25
+/obj/structure/mirror/long/right{
+	dir = 8;
+	pixel_x = -28
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -7951,9 +7952,9 @@
 	pixel_x = -12;
 	pixel_y = 2
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/long{
 	dir = 4;
-	pixel_x = -25
+	pixel_x = -28
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -9029,6 +9030,16 @@
 /obj/machinery/beehive,
 /turf/simulated/floor/grass,
 /area/hydroponics)
+"qb" = (
+/obj/structure/railing,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/random/trash,
+/turf/simulated/floor/plating,
+/area/maintenance/ai)
 "qc" = (
 /obj/structure/catwalk,
 /obj/structure/catwalk,
@@ -10410,6 +10421,11 @@
 /obj/machinery/computer/shuttle_control/explore/civvie,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/cockpit)
+"sQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
+/turf/simulated/floor/plating,
+/area/maintenance/commandmaint)
 "sR" = (
 /obj/machinery/porta_turret/ai_defense,
 /obj/machinery/camera/network/command,
@@ -11285,6 +11301,17 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
+"uv" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
+/obj/random/trash,
+/turf/simulated/floor/plating,
+/area/maintenance/commandmaint)
 "uw" = (
 /obj/effect/spider/spiderling/virgo,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
@@ -12728,9 +12755,9 @@
 	pixel_x = -12;
 	pixel_y = 2
 	},
-/obj/structure/mirror{
-	dir = 4;
-	pixel_x = -25
+/obj/structure/mirror/long/left{
+	dir = 8;
+	pixel_x = -28
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
@@ -12890,14 +12917,13 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/crew_quarters/bar)
 "xp" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/smartfridge,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/hydroponics)
 "xq" = (
@@ -13555,6 +13581,10 @@
 /obj/landmark/spawnpoint/job/pathfinder,
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
+"yE" = (
+/obj/random/trash,
+/turf/simulated/floor/plating,
+/area/maintenance/station/exploration)
 "yF" = (
 /obj/machinery/light{
 	dir = 1
@@ -16563,6 +16593,10 @@
 /obj/structure/table/wooden_reinforced,
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
+"Ex" = (
+/obj/random/trash,
+/turf/simulated/floor/plating,
+/area/maintenance/commandmaint)
 "Ey" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -21274,6 +21308,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
+"NJ" = (
+/obj/random/trash,
+/turf/simulated/floor/plating,
+/area/bridge/bridge_hallway)
 "NK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
@@ -25275,6 +25313,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/hydroponics)
 "Vb" = (
@@ -26020,8 +26059,10 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/smartfridge,
-/turf/simulated/floor/tiled/eris/cafe,
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
 /area/hydroponics)
 "Ww" = (
 /obj/structure/window/reinforced/tinted/frosted{
@@ -27800,6 +27841,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hydroponics)
@@ -45413,7 +45458,7 @@ CP
 Vq
 db
 WN
-aA
+Ex
 Pg
 Wn
 am
@@ -46963,12 +47008,12 @@ YF
 vu
 aA
 aA
-yK
+sQ
 yK
 aA
 yB
 Gw
-yB
+NJ
 Gw
 oa
 Ti
@@ -47930,7 +47975,7 @@ fq
 fq
 YF
 yK
-aA
+Ex
 yK
 cp
 aA
@@ -49138,10 +49183,10 @@ jo
 MP
 if
 if
+yE
 Kt
 Kt
-Kt
-Kt
+yE
 Kt
 Kt
 Kt
@@ -49878,7 +49923,7 @@ YF
 YF
 te
 yK
-yK
+sQ
 zS
 ob
 iO
@@ -50265,7 +50310,7 @@ fq
 MO
 EY
 aA
-aA
+Ex
 KT
 Eo
 ob
@@ -50657,7 +50702,7 @@ vS
 aA
 ni
 Yh
-Yh
+uv
 Yh
 Yh
 FU
@@ -50687,7 +50732,7 @@ wv
 Xe
 vo
 Kt
-Kt
+yE
 Kt
 Kt
 Kt
@@ -51235,7 +51280,7 @@ fq
 YF
 aA
 cp
-aA
+Ex
 uo
 AN
 XP
@@ -52430,7 +52475,7 @@ zk
 La
 La
 ov
-ol
+qb
 lp
 ov
 fq
@@ -52599,7 +52644,7 @@ Sa
 gF
 YF
 lg
-yK
+sQ
 aA
 YF
 Xk
@@ -52986,7 +53031,7 @@ sx
 Sa
 XP
 YF
-aA
+Ex
 yK
 zl
 YF
