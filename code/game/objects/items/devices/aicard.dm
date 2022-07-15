@@ -137,7 +137,8 @@
 
 		ai.canmove = 1
 		update_icon()
-	return 1
+		return TRUE
+	return FALSE
 
 /obj/item/aicard/proc/clear()
 	if(carded_ai && istype(carded_ai.loc, /turf))
