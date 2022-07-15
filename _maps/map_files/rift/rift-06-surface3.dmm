@@ -2143,16 +2143,6 @@
 /obj/machinery/computer/ship/engines,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/cockpit)
-"dE" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/turf/simulated/floor/plating,
-/area/crew_quarters/heads/hop)
 "dF" = (
 /obj/machinery/door/airlock/maintenance/rnd{
 	req_one_access = list(19,43,67)
@@ -10838,28 +10828,6 @@
 /obj/item/tool/crowbar,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_north)
-"tE" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/polarized/full{
-	id = "hop_office"
-	},
-/obj/structure/window/reinforced/polarized{
-	id = "hop_office"
-	},
-/obj/structure/window/reinforced/polarized{
-	dir = 1;
-	id = "hop_office"
-	},
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	icon_state = "shutter0";
-	id = "hop_office_shutters";
-	name = "HoP Office Shutters";
-	opacity = 0
-	},
-/turf/simulated/floor/plating,
-/area/crew_quarters/heads/hop)
 "tF" = (
 /obj/structure/symbol/sa,
 /turf/simulated/wall/r_wall{
@@ -45834,7 +45802,7 @@ GH
 QL
 WN
 aA
-tE
+Pg
 qQ
 pn
 rZ
@@ -46416,7 +46384,7 @@ fq
 YF
 vu
 aA
-dE
+Pg
 TE
 TE
 XF
@@ -46610,7 +46578,7 @@ cH
 YF
 tK
 aA
-dE
+Pg
 hg
 WY
 jk
