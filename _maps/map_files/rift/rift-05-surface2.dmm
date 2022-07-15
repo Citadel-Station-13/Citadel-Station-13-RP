@@ -15296,6 +15296,10 @@
 /obj/item/holowarrant,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
+"lVa" = (
+/obj/structure/trash_pile,
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "lVi" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/grey,
@@ -19638,6 +19642,10 @@
 	},
 /obj/item/multitool,
 /obj/item/multitool,
+/obj/item/flash,
+/obj/item/flash,
+/obj/item/flash,
+/obj/item/flash,
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
 "ppI" = (
@@ -51037,7 +51045,7 @@ oWE
 iCs
 cht
 aFW
-uLR
+lVa
 uLR
 uLR
 uLR
