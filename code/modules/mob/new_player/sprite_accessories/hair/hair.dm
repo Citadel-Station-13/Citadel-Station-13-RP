@@ -394,7 +394,7 @@
 	icon_state = "hair_b2"
 	flags = HAIR_TIEABLE
 */
-	longer
+/datum/sprite_accessory/hair/longer
 	name = "Long Hair"
 	icon_state = "hair_vlong"
 	flags = HAIR_TIEABLE
@@ -710,9 +710,6 @@
 	icon_state = "hair_trimflat"
 	gender = MALE
 	flags = HAIR_VERY_SHORT
-	shy
-	name = "Shy"
-	icon_state = "hair_shy"
 
 /datum/sprite_accessory/hair/jade
 	name = "Jade"
