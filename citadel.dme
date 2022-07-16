@@ -3091,6 +3091,7 @@
 #include "code\modules\mob\new_player\preferences_setup_vr.dm"
 #include "code\modules\mob\new_player\skill.dm"
 #include "code\modules\mob\new_player\sprite_accessories.dm"
+#include "code\modules\mob\new_player\sprite_accessories\facial_hair.dm"
 #include "code\modules\mob\new_player\sprite_accessories\hair.dm"
 #include "code\modules\mob\new_player\sprite_accessories\body_markings.dm"
 #include "code\modules\modular_computers\laptop_vendor.dm"
