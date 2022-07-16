@@ -887,11 +887,6 @@
 	icon_state = "heterochromia_r"
 	body_parts = list(BP_HEAD)
 
-/*/datum/sprite_accessory/marking/normal_eyes
-	name = "Normal Eyes(for eyeless species)"
-	icon_state = "normal_eyes"
-	body_parts = list(BP_HEAD)*/
-
 /datum/sprite_accessory/markering/werebeast
 	name = "empty accessory, nothing changed"
 	icon = 'icons/mob/clothing/species/werebeast/werebeast_markings.dmi'
