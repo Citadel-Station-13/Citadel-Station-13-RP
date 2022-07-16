@@ -643,6 +643,9 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	return _item_by_slot(id) != INVENTORY_SLOT_DOES_NOT_EXIST
 
+/mob/proc/semantically_has_slot(id)
+	return has_slot(id)
+
 /**
  * THESE PROCS MUST BE OVERRIDDEN FOR NEW SLOTS ON MOBS
  * yes, i managed to shove all basic behaviors that needed overriding into 4 procs

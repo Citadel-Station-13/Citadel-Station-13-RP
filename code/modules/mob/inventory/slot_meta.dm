@@ -174,6 +174,15 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	abstract_type = /datum/inventory_slot_meta/inventory/pocket
 	is_rendered = FALSE
 	display_requires_expand = FALSE
+	slot_equip_checks = SLOT_EQUIP_CHECK_USE_PROC
+
+/datum/inventory_slot_meta/inventory/pocket/allow_equip(obj/item/I, mob/wearer, mob/user, force)
+	. = ..()
+	if(I.slot_flags & SLOT_DENYPOCKET)
+		return FALSE
+	if(I.slot_flags & SLOT_POCKET)
+		return TRUE
+	return I.w_class <= WEIGHT_CLASS_SMALL
 
 /datum/inventory_slot_meta/inventory/pocket/left
 	name = "left pocket"
@@ -181,9 +190,6 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	display_name = "left pocket"
 	display_preposition = "in"
 	hud_position = ui_storage1
-	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
-	slot_flags_required = SLOT_POCKET
-	slot_flags_forbidden = SLOT_DENYPOCKET
 
 /datum/inventory_slot_meta/inventory/pocket/right
 	name = "right pocket"
@@ -191,9 +197,6 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	display_name = "right pocket"
 	display_preposition = "in"
 	hud_position = ui_storage2
-	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
-	slot_flags_required = SLOT_POCKET
-	slot_flags_forbidden = SLOT_DENYPOCKET
 
 /datum/inventory_slot_meta/inventory/id
 	name = "id"
@@ -244,6 +247,17 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	display_name = "suit"
 	display_preposition = "on"
 	hud_position = ui_sstore1
+	slot_equip_checks = SLOT_EQUIP_CHECK_USE_PROC
+
+/datum/inventory_slot_meta/inventory/suit_storage/allow_equip(obj/item/I, mob/wearer, mob/user, force)
+	. = ..()
+	var/obj/item/suit_item = wearer.item_by_slot(SLOT_ID_SUIT)
+	if(suit_item)
+		return TRUE
+	// todo: this check is ass
+	if(istype(I, /obj/item/pda) || istype(I, /obj/item/pen) || is_type_in_list(I, suit_item.allowed))
+		return TRUE
+	return FALSE
 
 /datum/inventory_slot_meta/inventory/ears
 	abstract_type = /datum/inventory_slot_meta/inventory/ears
@@ -313,7 +327,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 /datum/inventory_slot_meta/abstract
 	is_inventory = FALSE
 	always_show_on_strip_menu = FALSE
-	is_abstract = FALSE
+	is_abstract = TRUE
 	is_rendered = FALSE
 	abstract_type = /datum/inventory_slot_meta/abstract
 	allow_random_id = TRUE

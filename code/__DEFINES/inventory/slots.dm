@@ -43,25 +43,27 @@
 #define HUMAN_INTERACT_DELAY	2 SECONDS
 
 // Item inventory slot bitmasks.
-#define SLOT_OCLOTHING  0x1
-#define SLOT_ICLOTHING  0x2
-#define SLOT_GLOVES     0x4
-#define SLOT_EYES       0x8
-#define SLOT_EARS       0x10
-#define SLOT_MASK       0x20
-#define SLOT_HEAD       0x40
-#define SLOT_FEET       0x80
-#define SLOT_ID         0x100
-#define SLOT_BELT       0x200
-#define SLOT_BACK       0x400
+#define SLOT_OCLOTHING  (1<<0)
+#define SLOT_ICLOTHING  (1<<1)
+#define SLOT_GLOVES     (1<<2)
+#define SLOT_EYES       (1<<3)
+#define SLOT_EARS       (1<<4)
+#define SLOT_MASK       (1<<5)
+#define SLOT_HEAD       (1<<6)
+#define SLOT_FEET       (1<<7)
+#define SLOT_ID         (1<<8)
+#define SLOT_BELT       (1<<9)
+#define SLOT_BACK       (1<<10)
 /// This is to allow items with a w_class of 3 or 4 to fit in pockets.
-#define SLOT_POCKET     0x800
+#define SLOT_POCKET     (1<<11)
 /// This is to  deny items with a w_class of 2 or 1 from fitting in pockets.
-#define SLOT_DENYPOCKET 0x1000
-#define SLOT_TWOEARS    0x2000
-#define SLOT_TIE        0x4000
-///16th bit - higher than this will overflow
-#define SLOT_HOLSTER	0x8000
+#define SLOT_DENYPOCKET (1<<11)
+#define SLOT_TWOEARS    (1<<12)
+// todo: remove
+#define SLOT_TIE        (1<<13)
+/// items with this can fit in holster no matter what
+// todo: this shouldn't be a slot flag wtf
+#define SLOT_HOLSTER	(1<<14)
 
 // Inventory slot strings.
 // since numbers cannot be used as associative list keys.

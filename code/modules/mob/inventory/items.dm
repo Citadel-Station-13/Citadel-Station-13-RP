@@ -145,6 +145,10 @@
  * if you return false, feedback to the user, as the main proc doesn't do this.
  */
 /obj/item/proc/can_equip(mob/M, slot, mob/user, silent, disallow_delay, ignore_fluff)
+	if(!equip_check_beltlink(M, slot, user, silent))
+		return FALSE
+	if(!equip_check_snowflake(M, slot, user, silent))
+		return FALSE
 	return TRUE
 
 /**
@@ -170,56 +174,42 @@
 		return TRUE
 
 	if(!ishuman(M))
+		return TRUE
+
+	var/mob/living/carbon/human/H = M
+
+	switch(slot)
+		if(SLOT_ID_LEFT_POCKET, SLOT_ID_RIGHT_POCKET)
+			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot(SLOT_ID_UNIFORM))
+				if(!silent)
+					to_chat(H, SPAN_WARNING("You need a jumpsuit before you can attach [src]."))
+				return FALSE
+		if(SLOT_ID_WORN_ID)
+			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot(SLOT_ID_UNIFORM))
+				if(!silent)
+					to_chat(H, SPAN_WARNING("You need a jumpsuit before you can attach [src]."))
+				return FALSE
+		if(SLOT_ID_BELT)
+			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot(SLOT_ID_UNIFORM))
+				if(!silent)
+					to_chat(H, SPAN_WARNING("You need a jumpsuit before you can attach [src]."))
+				return FALSE
+		if(SLOT_ID_SUIT_STORAGE)
+			if(H.semantically_has_slot(SLOT_ID_SUIT) && !H.item_by_slot(SLOT_ID_SUIT))
+				if(!silent)
+					to_chat(H, SPAN_WARNING("You need a suit before you can attach [src]."))
+				return FALSE
+	return TRUE
+
+/**
+ * automatically uneqiup if we're missing beltlink
+ */
+/obj/item/proc/reconsider_beltlink()
+	var/mob/M = loc
+	if(!istype(M))
 		return
-
-	var/mob/living/carbon/human/H = M
-
-	switch(slot)
-		if(SLOT_ID_LEFT_POCKET, SLOT_ID_RIGHT_POCKET)
-
-		if(SLOT_ID_WORN_ID)
-
-		if(SLOT_ID_SUIT_STORAGE)
-
-
-
-#warn refactor
-//the mob M is attempting to equip this item into the slot passed through as 'slot'. Return 1 if it can do this and 0 if it can't.
-//If you are making custom procs but would like to retain partial or complete functionality of this one, include a 'return ..()' to where you want this to happen.
-//Set disable_warning to 1 if you wish it to not give you outputs.
-//Should probably move the bulk of this into mob code some time, as most of it is related to the definition of slots and not item-specific
-/obj/item/proc/mob_can_equip(M as mob, slot, disable_warning = 0)
-
-	var/mob/living/carbon/human/H = M
-	var/list/mob_equip = list()
-	#warn abstract check goes before equip slots
-
-
-	//Lastly, check special rules for the desired slot.
-	switch(slot)
-		if(SLOT_ID_WORN_ID)
-			if(!H.w_uniform && (SLOT_ID_UNIFORM in mob_equip))
-				if(!disable_warning)
-					to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [name].</span>")
-				return 0
-		if(SLOT_ID_LEFT_POCKET, SLOT_ID_RIGHT_POCKET)
-			if(!H.w_uniform && (SLOT_ID_UNIFORM in mob_equip))
-				if(!disable_warning)
-					to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [name].</span>")
-				return 0
-			if(slot_flags & SLOT_DENYPOCKET)
-				return 0
-			if( w_class > ITEMSIZE_SMALL && !(slot_flags & SLOT_POCKET) )
-				return 0
-		if(SLOT_ID_SUIT_STORAGE)
-			if(!H.wear_suit && (SLOT_ID_SUIT in mob_equip))
-				if(!disable_warning)
-					to_chat(H, "<span class='warning'>You need a suit before you can attach this [name].</span>")
-				return 0
-			if(!H.wear_suit.allowed)
-				if(!disable_warning)
-					to_chat(usr, "<span class='warning'>You somehow have a suit with no defined allowed items for suit storage, stop that.</span>")
-				return 0
-			if( !(istype(src, /obj/item/pda) || istype(src, /obj/item/pen) || is_type_in_list(src, H.wear_suit.allowed)) )
-				return 0
-	return 1
+	if(!current_equipped_slot)
+		return
+	if(!equip_check_beltlink(M, current_equipped_slot, null, TRUE))
+		M.drop_item_to_ground(src)
+		return

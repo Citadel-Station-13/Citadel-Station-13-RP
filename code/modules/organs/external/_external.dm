@@ -1151,9 +1151,9 @@ Note that amputating the affected organ does in fact remove the infection from t
 		//large items and non-item objs fall to the floor, everything else stays
 		var/obj/item/I = implant
 		if(istype(I) && I.w_class < ITEMSIZE_NORMAL)
-			implant.loc = get_turf(victim.loc)
+			implant.forceMove(victim.drop_location())
 		else
-			implant.loc = src
+			implant.forceMove(src)
 	implants.Cut()
 
 	// Attached organs also fly off.

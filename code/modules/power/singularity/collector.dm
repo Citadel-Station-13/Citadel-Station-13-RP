@@ -148,7 +148,8 @@ var/global/list/rad_collectors = list()
 	density = active
 	update_icons()
 
-/obj/machinery/power/rad_collector/MouseDrop_T(mob/living/carbon/O, mob/user as mob)
+/obj/machinery/power/rad_collector/MouseDroppedOnLegacy(mob/living/O, mob/living/user)
+	. = ..()
 	if(!istype(O))
 		return 0 //not a mob
 	if(user.incapacitated())

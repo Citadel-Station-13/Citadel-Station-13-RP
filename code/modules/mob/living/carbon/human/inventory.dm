@@ -67,22 +67,17 @@
 				update_inv_wear_suit()
 			if(logic)
 				if(!wear_suit)
-					if(s_store)
-						drop_item_to_ground(s_store, TRUE)
+					s_store?.reconsider_beltlink()
 		if(SLOT_ID_UNIFORM)
 			w_uniform = I
 			if(update_icons)
 				update_inv_w_uniform()
 			if(logic)
 				if(!w_uniform)
-					if(r_store)
-						drop_item_to_ground(r_store, TRUE)
-					if(l_store)
-						drop_item_to_ground(l_store, TRUE)
-					if(wear_id && !(wear_id.item_flags & EQUIP_IGNORE_BELTLINK))
-						drop_item_to_ground(wear_id, TRUE)
-					if(belt && !(belt.item_flags & EQUIP_IGNORE_BELTLINK))
-						drop_item_to_ground(belt, TRUE)
+					l_store?.reconsider_beltlink()
+					r_store?.reconsider_beltlink()
+					wear_id?.reconsider_beltlink()
+					belt?.reconsider_beltlink()
 		if(SLOT_ID_SHOES)
 			shoes = I
 			if(update_icons)
@@ -237,6 +232,15 @@
 		to_chat(user, override_text || SPAN_WARNING("[self_equip? "You" : "They"] are missing [self_equip? "your" : "their"] [part_text]!"))
 		return FALSE
 	return TRUE
+
+/mob/living/carbon/human/semantically_has_slot(id)
+	. = ..()
+	if(!.)
+		return
+	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(id)
+	if(!slot_meta)
+		return FALSE
+	return !slot_meta.is_inventory || !species || (id in species.hud.gear)
 
 //! old stuff below
 

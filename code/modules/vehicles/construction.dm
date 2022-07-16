@@ -176,7 +176,7 @@
 			if(W.is_screwdriver())
 				playsound(src, W.usesound, 50, 1)
 				to_chat(user, "<span class='notice'>You close up \the [src].</span>")
-				var/obj/vehicle/train/trolley/trailer/product = new(get_turf(src))
+				new /obj/vehicle/train/trolley/trailer(get_turf(src))
 				qdel(src)
 
 /*

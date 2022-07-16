@@ -93,7 +93,6 @@ var/global/photo_count = 0
 
 /obj/item/storage/photo_album/OnMouseDropLegacy(obj/over_object as obj)
 	if((istype(usr, /mob/living/carbon/human)))
-		var/mob/living/carbon/human/M = usr
 		if(!( istype(over_object, /atom/movable/screen) ))
 			return ..()
 		playsound(loc, "rustle", 50, 1, -5)
