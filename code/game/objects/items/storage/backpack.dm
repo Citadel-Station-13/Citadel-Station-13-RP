@@ -558,17 +558,20 @@
 	var/taurtype = /datum/sprite_accessory/tail/taur/horse //Acceptable taur type to be wearing this
 	var/no_message = "You aren't the appropriate taur type to wear this!"
 
-	mob_can_equip(var/mob/living/carbon/human/H, slot, disable_warning = 0)
-		if(..())
-			if(istype(H) && istype(H.tail_style, taurtype))
-				if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-					slowdown = 0
-				else
-					slowdown = initial(slowdown)
-				return 1
-			else
-				to_chat(H, "<span class='warning'>[no_message]</span>")
-				return 0
+/obj/item/storage/backpack/saddlebag/can_equip(mob/M, slot, mob/user, silent, disallow_delay, ignore_fluff)
+	. = ..()
+	if(!.)
+		return FALSE
+	var/mob/living/carbon/human/H
+	if(istype(H) && istype(H.tail_style, taurtype))
+		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
+			slowdown = 0
+		else
+			slowdown = initial(slowdown)
+		return 1
+	else
+		to_chat(H, "<span class='warning'>[no_message]</span>")
+		return 0
 
 /* If anyone wants to make some... this is how you would.
 /obj/item/storage/backpack/saddlebag/spider
@@ -590,68 +593,71 @@
 	slowdown = 1 //And are slower, too...Unless you're a macro, that is.
 	var/no_message = "You aren't the appropriate taur type to wear this!"
 
-	mob_can_equip(var/mob/living/carbon/human/H, slot, disable_warning = 0)
-		if(..())
-			var/datum/sprite_accessory/tail/taur/TT = H.tail_style
-			if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/horse))
-				item_state = "[icon_base]_Horse"
-				if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-					slowdown = 0
-				else
-					slowdown = initial(slowdown)
-				return 1
-			if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/wolf))
-				item_state = "[icon_base]_Wolf"
-				if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-					slowdown = 0
-				else
-					slowdown = initial(slowdown)
-				return 1
-			if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/cow))
-				item_state = "[icon_base]_Cow"
-				if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-					slowdown = 0
-				else
-					slowdown = initial(slowdown)
-				return 1
-			if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/lizard))
-				item_state = "[icon_base]_Lizard"
-				if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-					slowdown = 0
-				else
-					slowdown = initial(slowdown)
-				return 1
-			if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/feline))
-				item_state = "[icon_base]_Feline"
-				if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-					slowdown = 0
-				else
-					slowdown = initial(slowdown)
-				return 1
-			if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/drake))
-				item_state = "[icon_base]_Drake"
-				if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-					slowdown = 0
-				else
-					slowdown = initial(slowdown)
-				return 1
-			if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/otie))
-				item_state = "[icon_base]_Otie"
-				if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-					slowdown = 0
-				else
-					slowdown = initial(slowdown)
-				return 1
-			if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/deer))
-				item_state = "[icon_base]_Deer"
-				if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
-					slowdown = 0
-				else
-					slowdown = initial(slowdown)
-				return 1
-			else
-				to_chat(H, "<span class='warning'>[no_message]</span>")
-				return 0
+/obj/item/storage/backpack/saddlebag_common/can_equip(mob/M, slot, mob/user, silent, disallow_delay, ignore_fluff)
+	. = ..()
+	if(!.)
+		return FALSE
+	var/mob/living/carbon/human/H
+	var/datum/sprite_accessory/tail/taur/TT = H.tail_style
+	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/horse))
+		item_state = "[icon_base]_Horse"
+		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
+			slowdown = 0
+		else
+			slowdown = initial(slowdown)
+		return 1
+	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/wolf))
+		item_state = "[icon_base]_Wolf"
+		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
+			slowdown = 0
+		else
+			slowdown = initial(slowdown)
+		return 1
+	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/cow))
+		item_state = "[icon_base]_Cow"
+		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
+			slowdown = 0
+		else
+			slowdown = initial(slowdown)
+		return 1
+	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/lizard))
+		item_state = "[icon_base]_Lizard"
+		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
+			slowdown = 0
+		else
+			slowdown = initial(slowdown)
+		return 1
+	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/feline))
+		item_state = "[icon_base]_Feline"
+		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
+			slowdown = 0
+		else
+			slowdown = initial(slowdown)
+		return 1
+	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/drake))
+		item_state = "[icon_base]_Drake"
+		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
+			slowdown = 0
+		else
+			slowdown = initial(slowdown)
+		return 1
+	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/otie))
+		item_state = "[icon_base]_Otie"
+		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
+			slowdown = 0
+		else
+			slowdown = initial(slowdown)
+		return 1
+	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/deer))
+		item_state = "[icon_base]_Deer"
+		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
+			slowdown = 0
+		else
+			slowdown = initial(slowdown)
+		return 1
+	else
+		to_chat(H, "<span class='warning'>[no_message]</span>")
+		return 0
 
 /obj/item/storage/backpack/saddlebag_common/robust //Shared bag for other taurs with sturdy backs
 	name = "Robust Saddlebags"

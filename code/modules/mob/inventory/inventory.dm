@@ -368,8 +368,6 @@
 				return force || !hands_full()
 		return TRUE
 
-	var/missing_bodypart
-
 	if(!inventory_slot_bodypart_check(I, slot, user, silent) && !force)
 		return FALSE
 
@@ -410,6 +408,49 @@
  */
 /mob/proc/inventory_slot_bodypart_check(obj/item/I, slot, mob/user, silent)
 	return TRUE
+
+/**
+ * drop items if a bodypart is missing
+ */
+/mob/proc/reconsider_inventory_slot_bodypart(bodypart)
+	// todo: this and the above function should be on the slot datums.
+	var/list/obj/item/affected
+	switch(bodypart)
+		if(BP_HEAD)
+			affected = items_by_slot(
+				SLOT_ID_HEAD,
+				SLOT_ID_LEFT_EAR,
+				SLOT_ID_RIGHT_EAR,
+				SLOT_ID_MASK,
+				SLOT_ID_GLASSES
+			)
+		if(BP_GROIN, BP_TORSO)
+			affected = items_by_slot(
+				SLOT_ID_BACK,
+				SLOT_ID_BELT,
+				SLOT_ID_SUIT,
+				SLOT_ID_SUIT_STORAGE,
+				SLOT_ID_RIGHT_POCKET,
+				SLOT_ID_LEFT_POCKET,
+				SLOT_ID_UNIFORM
+			)
+		if(BP_L_ARM, BP_L_HAND, BP_R_ARM, BP_R_HAND)
+			affected = items_by_slot(
+				SLOT_ID_HANDCUFFED,
+				SLOT_ID_GLOVES
+			)
+		if(BP_L_LEG, BP_L_FOOT, BP_R_LEG, BP_R_FOOT)
+			affected = items_by_slot(
+				SLOT_ID_LEGCUFFED,
+				SLOT_ID_SHOES
+			)
+	if(!affected)
+		return
+	else if(!islist(affected))
+		affected = list(affected)
+	for(var/obj/item/I as anything in affected)
+		if(!inventory_slot_bodypart_check(I, I.current_equipped_slot, null, TRUE))
+			drop_item_to_ground(I)
 
 /**
  * checks for slot conflict

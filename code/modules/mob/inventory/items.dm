@@ -147,8 +147,6 @@
 /obj/item/proc/can_equip(mob/M, slot, mob/user, silent, disallow_delay, ignore_fluff)
 	if(!equip_check_beltlink(M, slot, user, silent))
 		return FALSE
-	if(!equip_check_snowflake(M, slot, user, silent))
-		return FALSE
 	return TRUE
 
 /**
