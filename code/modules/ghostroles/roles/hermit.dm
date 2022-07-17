@@ -21,12 +21,12 @@
 /datum/ghostrole/hermit/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
 	. = ..()
 	var/flavour_text = "Each day you barely scrape by, and between the terrible conditions of your makeshift shelter, \
-	the hostile creatures, and the ash drakes swooping down from the cloudless skies, all you can wish for is the feel of soft grass between your toes and \
-	the fresh air of Earth. These thoughts are dispelled by yet another recollection of how you got here... "
+	the hostile creatures, and the relentless yawn of the cloudless skies, all you can wish for is the feel of soft grass between your toes and \
+	the fresh air of Earth. These thoughts are dispelled by yet another recollection of how you got here..."
 	switch(params["fluff"])
 		if("proper")
 			flavour_text += "you were a [pick("arms dealer", "shipwright", "docking manager")]'s assistant on a small trading station several sectors from here. Raiders attacked, and there was \
-			only one pod left when you got to the escape bay. You took it and launched it alone, and the crowd of terrified faces crowding at the airlock door as your pod's engines burst to \
+			only one pod left when you got to the escape bay. You took it and launched it alone, and the crowd of terrified faces peering through the airlock door as your pod's engines burst to \
 			life and sent you to this hell are forever branded into your memory."
 		if("tiger")
 			flavour_text += "you're an exile from the Tiger Cooperative. Their technological fanaticism drove you to question the power and beliefs of the Exolitics, and they saw you as a \
@@ -34,11 +34,12 @@
 			scrambled its destination's coordinates, and launched it. You awoke from stasis when you landed and have been surviving - barely - ever since."
 		if("exile")
 			flavour_text += "you were a doctor on one of Nanotrasen's space stations, but you left behind that damn corporation's tyranny and everything it stood for. From a metaphorical hell \
-			to a literal one, you find yourself nonetheless missing the recycled air and warm floors of what you left behind... but you'd still rather be here than there."
+			to a literal one, you find yourself nonetheless missing the recycled air and warm floors of what you left behind...but you'd still rather be here than there."
 		if("tourist")
-			flavour_text += "you were always joked about by your friends for \"not playing with a full deck\", as they so <i>kindly</i> put it. It seems that they were right when you, on a tour \
-			at one of Nanotrasen's state-of-the-art research facilities, were in one of the escape pods alone and saw the red button. It was big and shiny, and it caught your eye. You pressed \
-			it, and after a terrifying and fast ride for days, you landed here. You've had time to wisen up since then, and you think that your old friends wouldn't be laughing now."
+			flavour_text += "you were always teased by your friends for \"not playing with a full deck\", as they so <i>kindly</i> put it. It seems that they were proven right when, on a tour \
+			at one of Nanotrasen's state-of-the-art research facilities, you got lost and wound up trapping yourself in an escape pod. One of the larger red buttons caught your eye. You pressed \
+			it, assuming it was a way to exit. You weren't entirely wrong. After a terrifying and fast ride for days, you landed here. \
+			You've had time to wisen up since then, and you think that your old friends wouldn't be laughing now."
 	to_chat(created, flavour_text)
 
 /datum/ghostrole_instantiator/human/random/hermit

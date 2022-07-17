@@ -214,6 +214,11 @@ obj/item/clothing/shoes/sandal/clogs
 	desc = "Hardy leather sandles capable of holding up for many miles."
 	icon_state = "roman"
 
+/obj/item/clothing/shoes/ashwalker
+	name = "ashen sandals"
+	desc = "Hardy leather sandles capable of withstanding harsh conditions."
+	icon_state = "roman"
+
 /obj/item/clothing/shoes/boots/bsing
 	name = "blue performer's boots"
 	desc = "Dancing in these makes you feel lighter than air."

@@ -242,6 +242,14 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 	an assumption which is at odds with their ramshackle technological level."
 	value = CATALOGUER_REWARD_MEDIUM // Since Vox are much rarer.
 
+/datum/category_item/catalogue/fauna/ashlander
+	name = "Sapients - Ashlanders"
+	desc = "The native inhabitants of Surt. Much of their history has been lost, save for artistic \
+	depictions sometimes recovered on archaeological digs. Insular and deeply xenophobic, Ashlanders \
+	were believed to have gone extinct some tens of thousands of years ago following an as yet \
+	unknown cataclysm. Dwelling deep underground in caves, or travelling across the planet's surface \
+	in nomadic caravans, Ashlanders are to be treated with caution."
+	value = CATALOGUER_REWARD_MEDIUM
 
 /datum/category_item/catalogue/technology
 
