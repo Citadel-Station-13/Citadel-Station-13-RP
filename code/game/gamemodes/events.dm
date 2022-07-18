@@ -103,7 +103,7 @@ var/hadevent    = 0
 		log_world("ERROR: Could not initate grey-tide. Unable find prison or brig area.")
 
 /proc/carp_migration() // -- Darem
-	for(var/atom/movable/landmark/C in GLOB.landmarks_list)
+	for(var/obj/landmark/C in GLOB.landmarks_list)
 		if(C.name == "carpspawn")
 			new /mob/living/simple_mob/animal/space/carp(C.loc)
 	//sleep(100)
@@ -119,7 +119,7 @@ var/hadevent    = 0
 
 		for(var/i=1,i<=lightsoutAmount,i++)
 			var/list/possibleEpicentres = list()
-			for(var/atom/movable/landmark/newEpicentre in GLOB.landmarks_list)
+			for(var/obj/landmark/newEpicentre in GLOB.landmarks_list)
 				if(newEpicentre.name == "lightsout" && !(newEpicentre in epicentreList))
 					possibleEpicentres += newEpicentre
 			if(possibleEpicentres.len)
@@ -130,7 +130,7 @@ var/hadevent    = 0
 		if(!epicentreList.len)
 			return
 
-		for(var/atom/movable/landmark/epicentre in epicentreList)
+		for(var/obj/landmark/epicentre in epicentreList)
 			for(var/obj/machinery/power/apc/apc in range(epicentre,lightsoutRange))
 				apc.overload_lighting()
 
@@ -244,53 +244,3 @@ Would like to add a law like "Law x is _______" where x = a number, and _____ is
 					to_chat(M, "<span class='danger'>THE STATION IS [who2pref] [who2]...LAWS UPDATED</span>")
 					to_chat(M, "<br>")
 					M.add_ion_law("THE STATION IS [who2pref] [who2]")
-/* //VOREStation Edit
-	if(botEmagChance)
-		for(var/mob/living/bot/bot in GLOB.machines)
-			if(prob(botEmagChance))
-				bot.emag_act(1)
-*/ //VOREStation Edit
-	/*
-
-	var/apcnum = 0
-	var/smesnum = 0
-	var/airlocknum = 0
-	var/firedoornum = 0
-
-	to_chat(world, "Ion Storm Main Started")
-
-	spawn(0)
-		to_chat(world, "Started processing APCs")
-		for (var/obj/machinery/power/apc/apc in GLOB.apcs)
-			if(APC.z in station_levels)
-				APC.ion_act()
-				apcnum++
-		to_chat(world, "Finished processing APCs. Processed: [apcnum]")
-	spawn(0)
-		to_chat(world, "Started processing SMES")
-		for (var/obj/machinery/power/smes/SMES in GLOB.smeses)
-			if(SMES.z in station_levels)
-				SMES.ion_act()
-				smesnum++
-		to_chat(world, "Finished processing SMES. Processed: [smesnum]")
-	spawn(0)
-		to_chat(world, "Started processing AIRLOCKS")
-		for (var/obj/machinery/door/airlock/D in GLOB.machines)
-			if(D.z in station_levels)
-				//if(length(D.req_access) > 0 && !(12 in D.req_access)) //not counting general access and maintenance airlocks
-				airlocknum++
-				spawn(0)
-					D.ion_act()
-		to_chat(world, "Finished processing AIRLOCKS. Processed: [airlocknum]")
-	spawn(0)
-		to_chat(world, "Started processing FIREDOORS")
-		for (var/obj/machinery/door/firedoor/D in GLOB.machines)
-			if(D.z in station_levels)
-				firedoornum++;
-				spawn(0)
-					D.ion_act()
-		to_chat(world, "Finished processing FIREDOORS. Processed: [firedoornum]")
-
-	to_chat(world, "Ion Storm Main Done")
-
-	*/

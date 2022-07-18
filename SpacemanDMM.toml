@@ -1,4 +1,4 @@
-environment = "vorestation.dme"
+environment = "citadel.dme"
 
 [langserver]
 dreamchecker = true

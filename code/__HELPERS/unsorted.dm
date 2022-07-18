@@ -219,7 +219,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 			line+=locate(px,py,M.z)
 	return line
 
-#define LOCATE_COORDS(X, Y, Z) locate(between(1, X, world.maxx), between(1, Y, world.maxy), Z)
+#define LOCATE_COORDS(X, Y, Z) locate(clamp(X, 1, world.maxx), clamp(Y, 1, world.maxy), Z)
 ///Uses a fast Bresenham rasterization algorithm to return the turfs in a thin circle.
 /proc/getcircle(turf/center, var/radius)
 	if(!radius) return list(center)
@@ -509,16 +509,6 @@ Turf and target are seperate in case you want to teleport some distance from a t
 //		GLOB.mob_list.Add(M)
 	return moblist
 
-///Format a power value in W, kW, MW, or GW.
-/proc/DisplayPower(powerused)
-	if(powerused < 1000) //Less than a kW
-		return "[powerused] W"
-	else if(powerused < 1000000) //Less than a MW
-		return "[round((powerused * 0.001),0.01)] kW"
-	else if(powerused < 1000000000) //Less than a GW
-		return "[round((powerused * 0.000001),0.001)] MW"
-	return "[round((powerused * 0.000000001),0.0001)] GW"
-
 ///Forces a variable to be positive
 /proc/modulus(var/M)
 	if(M >= 0)
@@ -740,12 +730,11 @@ proc/GaussRandRound(var/sigma,var/roundto)
 
 					//Move the air from source to dest
 					var/turf/simulated/ST = T
-					if(istype(ST) && ST.zone)
+					if(istype(ST))
 						var/turf/simulated/SX = X
 						if(!SX.air)
 							SX.make_air()
-						SX.air.copy_from(ST.zone.air)
-						ST.zone.remove(ST)
+						SX.air.copy_from(ST.copy_cell_volume())
 
 					var/z_level_change = FALSE
 					if(T.z != X.z)
@@ -918,27 +907,22 @@ proc/DuplicateObject(obj/original, var/perfectcopy = 0 , var/sameloc = 0)
 					refined_trg -= B
 					continue moving
 
-
-
-
 	if(toupdate.len)
 		for(var/turf/simulated/T1 in toupdate)
-			air_master.mark_for_update(T1)
+			T1.queue_zone_update()
 
 	return copiedobjs
 
-
-
-proc/get_cardinal_dir(atom/A, atom/B)
+/proc/get_cardinal_dir(atom/A, atom/B)
 	var/dx = abs(B.x - A.x)
 	var/dy = abs(B.y - A.y)
 	return get_dir(A, B) & (rand() * (dx+dy) < dy ? 3 : 12)
 
 ///Chances are 1:value. anyprob(1) will always return true
-proc/anyprob(value)
+/proc/anyprob(value)
 	return (rand(1,value)==value)
 
-proc/view_or_range(distance = world.view , center = usr , type)
+/proc/view_or_range(distance = world.view , center = usr , type)
 	switch(type)
 		if("view")
 			. = view(distance,center)
@@ -946,7 +930,7 @@ proc/view_or_range(distance = world.view , center = usr , type)
 			. = range(distance,center)
 	return
 
-proc/oview_or_orange(distance = world.view , center = usr , type)
+/proc/oview_or_orange(distance = world.view , center = usr , type)
 	switch(type)
 		if("view")
 			. = oview(distance,center)
@@ -954,7 +938,7 @@ proc/oview_or_orange(distance = world.view , center = usr , type)
 			. = orange(distance,center)
 	return
 
-proc/get_mob_with_client_list()
+/proc/get_mob_with_client_list()
 	var/list/mobs = list()
 	for(var/mob/M in GLOB.mob_list)
 		if (M.client)
@@ -1560,7 +1544,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 //Sender is optional
 /proc/admin_chat_message(var/message = "Debug Message", var/color = "#FFFFFF", var/sender)
 	if(message)	//Adds TGS3 integration to those fancy verbose round event messages
-		world.TgsTargetedChatBroadcast(message, TRUE)
+		send2irc("Event", message)
 	if (!config_legacy.chat_webhook_url || !message)
 		return
 	spawn(0)
@@ -1594,7 +1578,6 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	. += new /atom/movable/screen/plane_master/main{plane = MOB_PLANE}
 	// . += new /atom/movable/screen/plane_master/cloaked								//Cloaked atoms!
 
-	//VOREStation Add - Random other plane masters
+	// Random other plane masters from Virgo
 	. += new /atom/movable/screen/plane_master{plane = PLANE_AUGMENTED}				//Augmented reality
-	//VOREStation Add End
 	. += new /atom/movable/screen/plane_master/parallax{plane = PARALLAX_PLANE}

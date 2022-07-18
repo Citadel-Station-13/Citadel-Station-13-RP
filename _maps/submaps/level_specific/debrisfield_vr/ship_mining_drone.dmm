@@ -131,7 +131,7 @@
 	icon = 'icons/obj/power.dmi';
 	icon_state = "gridchecker_off";
 	name = "capacitor bank";
-	power_gen = 12000
+	power_gen = 12
 	},
 /obj/structure/cable/yellow{
 	d2 = 4;

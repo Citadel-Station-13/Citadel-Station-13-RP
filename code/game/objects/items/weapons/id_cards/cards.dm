@@ -6,8 +6,6 @@
  *		FINGERPRINT CARD
  */
 
-
-
 /*
  * DATA CARDS - Used for the teleporter
  */
@@ -17,7 +15,7 @@
 	icon = 'icons/obj/card_cit.dmi'
 	icon_state = "generic"
 	w_class = ITEMSIZE_TINY
-	slot_flags = SLOT_EARS
+	slot_flags = SLOT_ID | SLOT_EARS
 	var/associated_account_number = 0
 
 	var/list/initial_sprite_stack = list("")
@@ -110,12 +108,11 @@
 
 	uses -= used_uses
 	W.add_fingerprint(user)
-	//Vorestation Edit: Because some things (read lift doors) don't get emagged
+	//V Because some things (read lift doors) don't get emagged
 	if(used_uses)
 		log_and_message_admins("emagged \an [W].")
 	else
 		log_and_message_admins("attempted to emag \an [W].")
-	// Vorestation Edit: End of Edit
 	log_and_message_admins("emagged \an [W].")
 
 	if(uses<1)

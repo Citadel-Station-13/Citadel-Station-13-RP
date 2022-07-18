@@ -1,5 +1,0 @@
-author: "silicons"
-delete-after: True
-changes: 
-  - rscadd: "window spawners for mappers"
-  - rscadd: "power cable helpers for mappers"

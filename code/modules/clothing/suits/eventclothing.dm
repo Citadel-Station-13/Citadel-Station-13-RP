@@ -60,20 +60,20 @@
 	body_parts_covered = initial(body_parts_covered) //Resets to default coverage for this uniform - upper and lower body
 	if(kimono) //If the kimono is parted
 		if(skirt) //If the skirt is parted too
-			item_state_slots[slot_w_uniform_str] = "[worn_state]_ks" //Then we want the assosiated mob icon - denoted with _ks
+			item_state_slots[/datum/inventory_slot_meta/inventory/uniform] = "[worn_state]_ks" //Then we want the assosiated mob icon - denoted with _ks
 			icon_state = "foxmiko_ks" //This is for item icon - NOT WORN ICON
 			body_parts_covered &= ~(UPPER_TORSO|LOWER_TORSO) //If kimono is open and skirt lifted uncover both upper and lower body
 		else //But skirt is not lifted too
-			item_state_slots[slot_w_uniform_str] = "[worn_state]_k" //We use [worn_state] rather than an explicit declaration because the game appends a _s to icon states
+			item_state_slots[/datum/inventory_slot_meta/inventory/uniform] = "[worn_state]_k" //We use [worn_state] rather than an explicit declaration because the game appends a _s to icon states
 			icon_state = "foxmiko_k"
 			body_parts_covered &= ~(UPPER_TORSO)
 	else //If kimono is not parted
 		if(skirt) //If skirt is lifted
-			item_state_slots[slot_w_uniform_str] = "[worn_state]_s" //Meaning in the icon sprite files this is foxmiko_s_s
+			item_state_slots[/datum/inventory_slot_meta/inventory/uniform] = "[worn_state]_s" //Meaning in the icon sprite files this is foxmiko_s_s
 			icon_state = "foxmiko_s"
 			body_parts_covered &= ~(LOWER_TORSO)
 		else //But skirt is not lifted too - default state
-			item_state_slots[slot_w_uniform_str] = "[worn_state]"
+			item_state_slots[/datum/inventory_slot_meta/inventory/uniform] = "[worn_state]"
 			icon_state = "foxmiko"
 
 

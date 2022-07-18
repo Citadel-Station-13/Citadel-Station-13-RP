@@ -115,8 +115,7 @@
 
 	name = "hardsuit material scanner"
 	desc = "A layered, translucent visor system for a hardsuit."
-	icon_state = "material" //VOREStation Edit
-
+	icon_state = "material"
 	usable = 0
 
 	interface_name = "material scanner"

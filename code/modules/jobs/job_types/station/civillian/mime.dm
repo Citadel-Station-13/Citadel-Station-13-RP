@@ -32,10 +32,12 @@
 	uniform = /obj/item/clothing/under/mime
 	mask = /obj/item/clothing/mask/gas/mime
 	l_ear = /obj/item/radio/headset
+	r_pocket = /obj/item/pen/crayon/mime
+
 	id_slot = slot_wear_id
 	id_type = /obj/item/card/id/civilian
 	pda_slot = slot_belt
 	pda_type = /obj/item/pda/mime
-	backpack = /obj/item/storage/backpack
-	r_pocket = /obj/item/pen/crayon/mime
 	id_pda_assignment = "Mime"
+
+	backpack = /obj/item/storage/backpack/mime

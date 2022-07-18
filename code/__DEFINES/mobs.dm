@@ -128,39 +128,39 @@
 ///Default timeout for aggressive actions
 #define DEFAULT_ATTACK_COOLDOWN 8
 #define DEFAULT_QUICK_COOLDOWN  4
-
+#define DEFAULT_PULL_COODDOWN	2
 
 #define MIN_SUPPLIED_LAW_NUMBER 15
 #define MAX_SUPPLIED_LAW_NUMBER 50
 
 //default item on-mob icons
-#define INV_HEAD_DEF_ICON 'icons/mob/head.dmi'
-#define INV_BACK_DEF_ICON 'icons/mob/back.dmi'
+#define INV_HEAD_DEF_ICON 'icons/mob/clothing/head.dmi'
+#define INV_BACK_DEF_ICON 'icons/mob/clothing/back.dmi'
 #define INV_L_HAND_DEF_ICON 'icons/mob/items/lefthand.dmi'
 #define INV_R_HAND_DEF_ICON 'icons/mob/items/righthand.dmi'
-#define INV_W_UNIFORM_DEF_ICON 'icons/mob/uniform.dmi'
-#define INV_ACCESSORIES_DEF_ICON 'icons/mob/ties.dmi'
-#define INV_TIE_DEF_ICON 'icons/mob/ties.dmi'
-#define INV_SUIT_DEF_ICON 'icons/mob/suit.dmi'
-#define INV_SPACESUIT_DEF_ICON 'icons/mob/spacesuit.dmi'
+#define INV_W_UNIFORM_DEF_ICON 'icons/mob/clothing/uniform.dmi'
+#define INV_ACCESSORIES_DEF_ICON 'icons/mob/clothing/ties.dmi'
+#define INV_TIE_DEF_ICON 'icons/mob/clothing/ties.dmi'
+#define INV_SUIT_DEF_ICON 'icons/mob/clothing/suits.dmi'
+#define INV_SPACESUIT_DEF_ICON 'icons/mob/clothing/spacesuits.dmi'
 #define INV_WEAR_ID_DEF_ICON 'icons/mob/mob.dmi'
-#define INV_GLOVES_DEF_ICON 'icons/mob/hands.dmi'
-#define INV_EYES_DEF_ICON 'icons/mob/eyes.dmi'
-#define INV_EARS_DEF_ICON 'icons/mob/ears.dmi'
-#define INV_FEET_DEF_ICON 'icons/mob/feet.dmi'
-#define INV_BELT_DEF_ICON 'icons/mob/belt.dmi'
-#define INV_MASK_DEF_ICON 'icons/mob/mask.dmi'
+#define INV_GLOVES_DEF_ICON 'icons/mob/clothing/hands.dmi'
+#define INV_EYES_DEF_ICON 'icons/mob/clothing/eyes.dmi'
+#define INV_EARS_DEF_ICON 'icons/mob/clothing/ears.dmi'
+#define INV_FEET_DEF_ICON 'icons/mob/clothing/feet.dmi'
+#define INV_BELT_DEF_ICON 'icons/mob/clothing/belt.dmi'
+#define INV_MASK_DEF_ICON 'icons/mob/clothing/mask.dmi'
 #define INV_HCUFF_DEF_ICON 'icons/mob/mob.dmi'
 #define INV_LCUFF_DEF_ICON 'icons/mob/mob.dmi'
 
 // Character's economic class
-#define CLASS_UPPER 		"Wealthy"
-#define CLASS_UPMID			"Well-off"
-#define CLASS_MIDDLE 		"Average"
-#define CLASS_LOWMID		"Underpaid"
-#define CLASS_LOWER			"Poor"
+#define CLASS_UPPER  "Wealthy"
+#define CLASS_UPMID  "Well-off"
+#define CLASS_MIDDLE "Average"
+#define CLASS_LOWMID "Underpaid"
+#define CLASS_LOWER  "Poor"
 
-#define ECONOMIC_CLASS		list(CLASS_UPPER,CLASS_UPMID,CLASS_MIDDLE,CLASS_LOWMID,CLASS_LOWER)
+#define ECONOMIC_CLASS list(CLASS_UPPER,CLASS_UPMID,CLASS_MIDDLE,CLASS_LOWMID,CLASS_LOWER)
 
 
 // Defines mob sizes, used by lockers and to determine what is considered a small sized mob, etc.
@@ -286,8 +286,9 @@
 #define VIS_PARALLAX		14
 #define VIS_STATUS			15
 #define VIS_SPACE			16
+#define VIS_SONAR			17
 ///Must be highest number from above.
-#define VIS_COUNT			16
+#define VIS_COUNT			17
 //Some mob icon layering defines
 #define BODY_LAYER		-100
 
@@ -315,3 +316,9 @@
 #define EXAMINE_SKIPHANDS			0x0040
 #define EXAMINE_SKIPLEGS			0x0080
 #define EXAMINE_SKIPFEET			0x0100
+
+/// How far away you can be to make eye contact with someone while examining
+#define EYE_CONTACT_RANGE 5
+
+/// If you examine the same atom twice in this timeframe, we call examine_more() instead of examine()
+#define EXAMINE_MORE_TIME 1 SECONDS

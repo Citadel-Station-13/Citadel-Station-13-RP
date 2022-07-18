@@ -12,9 +12,6 @@ var/list/ventcrawl_machinery = list(
 	/obj/belly,
 	/atom/movable/screen
 	)
-	//VOREStation Edit : added /obj/belly, to this list, travis is complaining about this in his indentation check
-	//mob/living/simple_mob/borer, //VORESTATION AI TEMPORARY REMOVAL REPLACE BACK IN LIST WHEN RESOLVED //VOREStation Edit
-
 /mob/living/var/list/icon/pipes_shown = list()
 /mob/living/var/last_played_vent
 /mob/living/var/is_ventcrawling = 0
@@ -38,6 +35,7 @@ var/list/ventcrawl_machinery = list(
 	if(is_ventcrawling && istype(loc, /obj/machinery/atmospherics)) //attach us back into the pipes
 		remove_ventcrawl()
 		add_ventcrawl(loc)
+		update_perspective()
 		client.screen += GLOB.global_hud.centermarker
 
 /mob/living/simple_mob/slime/xenobio/can_ventcrawl()
@@ -166,6 +164,7 @@ var/list/ventcrawl_machinery = list(
 
 			forceMove(vent_found)
 			add_ventcrawl(vent_found)
+			update_perspective()
 
 		else
 			to_chat(src, "This vent is not connected to anything.")
@@ -196,5 +195,4 @@ var/list/ventcrawl_machinery = list(
 		for(var/image/current_image in pipes_shown)
 			client.images -= current_image
 		client.screen -= GLOB.global_hud.centermarker
-	update_perspective()
 	pipes_shown.len = 0

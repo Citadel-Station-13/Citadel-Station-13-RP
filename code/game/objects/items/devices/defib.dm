@@ -248,6 +248,7 @@
 		icon_state = "defibpaddles[wielded]_cooldown"
 
 /obj/item/shockpaddles/proc/can_use(mob/user, mob/M)
+	update_held_icon()
 	if(busy)
 		return 0
 	if(!check_charge(chargecost))
@@ -518,7 +519,7 @@
 	var/damage_calc = LERP(brain.max_damage, H.getBrainLoss(), brain_death_scale)
 
 	// A bit of sanity.
-	var/brain_damage = between(H.getBrainLoss(), damage_calc, brain.max_damage)
+	var/brain_damage = clamp( damage_calc, H.getBrainLoss(),  brain.max_damage)
 
 	H.setBrainLoss(brain_damage)
 	make_announcement("beeps, \"Warning. Subject neurological structure has sustained damage.\"", "notice")

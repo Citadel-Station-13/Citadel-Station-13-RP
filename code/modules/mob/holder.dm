@@ -7,8 +7,8 @@
 	show_messages = 1
 
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/head.dmi',
-		SPECIES_VOX = 'icons/mob/species/vox/head.dmi'
+		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/head.dmi',
+		SPECIES_VOX = 'icons/mob/clothing/species/vox/head.dmi'
 		)
 
 	origin_tech = null
@@ -36,6 +36,9 @@
 	..()
 	spawn(1)
 		update_state()
+
+/obj/item/holder/examine(mob/user)
+	return held_mob?.examine(user) || list("WARNING WARNING: No held_mob on examine. REPORT THIS TO A CODER.")
 
 /obj/item/holder/proc/update_state()
 	if(!(contents.len))
@@ -169,7 +172,7 @@
 
 /mob/living/MouseDrop(var/atom/over_object)
 	var/mob/living/carbon/human/H = over_object
-	if((usr == over_object || usr == src) && holder_type && issmall(src) && istype(H) && !H.lying && Adjacent(H) && (src.a_intent == INTENT_HELP && H.a_intent == INTENT_HELP)) //VOREStation Edit
+	if((usr == over_object || usr == src) && holder_type && issmall(src) && istype(H) && !H.lying && Adjacent(H) && (src.a_intent == INTENT_HELP && H.a_intent == INTENT_HELP))
 		if(!issmall(H) || !istype(src, /mob/living/carbon/human))
 			get_scooped(H, (usr == src))
 		return
@@ -203,7 +206,7 @@
 
 /obj/item/holder/human
 	icon = 'icons/mob/holder_complex.dmi'
-	var/list/generate_for_slots = list(slot_l_hand_str, slot_r_hand_str, slot_back_str)
+	var/list/generate_for_slots = list(slot_l_hand_str, slot_r_hand_str, /datum/inventory_slot_meta/inventory/back)
 	slot_flags = SLOT_BACK
 
 /obj/item/holder/human/sync(var/mob/living/M)

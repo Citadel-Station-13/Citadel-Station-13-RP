@@ -26,8 +26,6 @@
 	var/throwpass = FALSE
 	/// The higher the germ level, the more germ on the atom.
 	var/germ_level = GERM_LEVEL_AMBIENT
-	/// Filter for actions - used by lighting overlays.
-	var/simulated = TRUE
 	/// The 'action' the atom takes to speak.
 	var/atom_say_verb = "says"
 	/// What icon the atom uses for speechbubbles.
@@ -372,7 +370,7 @@
 
 	. += get_name_chaser(user)
 	if(desc)
-		. += desc
+		. += "<hr>[desc]"
 /*
 	if(custom_materials)
 		var/list/materials_list = list()
@@ -725,7 +723,7 @@
 			this.icon_state = "vomittox_[pick(1,4)]"
 
 /atom/proc/clean_blood()
-	if(!simulated)
+	if(flags & AF_ABSTRACT)
 		return
 	fluorescent = 0
 	src.germ_level = 0

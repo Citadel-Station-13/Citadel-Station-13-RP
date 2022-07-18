@@ -2,13 +2,12 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "gsensor1"
 	name = "Gas Sensor"
-
 	anchored = TRUE
-	var/on = TRUE
+
+	var/state = 0
 	var/id_tag
 	var/frequency = 1439
-	var/state = 0
-
+	var/on = TRUE
 	var/output = 3
 	//Flags:
 	// 1 for pressure
@@ -27,7 +26,7 @@
 /obj/machinery/air_sensor/process(delta_time)
 	if(on)
 		var/datum/signal/signal = new
-		signal.transmission_method = 1 //radio signal
+		signal.transmission_method = TRANSMISSION_RADIO //radio signal
 		signal.data["tag"] = id_tag
 		signal.data["timestamp"] = world.time
 
@@ -94,10 +93,12 @@ obj/machinery/computer/general_air_control/Destroy()
 	ui_interact(user)
 
 /obj/machinery/computer/general_air_control/receive_signal(datum/signal/signal)
-	if(!signal || signal.encryption) return
+	if(!signal || signal.encryption)
+		return
 
 	var/id_tag = signal.data["tag"]
-	if(!id_tag || !sensors.Find(id_tag)) return
+	if(!id_tag || !sensors.Find(id_tag))
+		return
 
 	sensor_information[id_tag] = signal.data
 
@@ -184,18 +185,18 @@ obj/machinery/computer/general_air_control/Destroy()
 	switch(action)
 		if("adj_pressure")
 			var/new_pressure = text2num(params["adj_pressure"])
-			pressure_setting = between(0, new_pressure, 50*ONE_ATMOSPHERE)
+			pressure_setting = clamp( new_pressure, 0,  50*ONE_ATMOSPHERE)
 			return TRUE
 
 		if("adj_input_flow_rate")
 			var/new_flow = text2num(params["adj_input_flow_rate"])
-			input_flow_setting = between(0, new_flow, ATMOS_DEFAULT_VOLUME_PUMP + 500) //default flow rate limit for air injectors
+			input_flow_setting = clamp( new_flow, 0,  ATMOS_DEFAULT_VOLUME_PUMP + 500) //default flow rate limit for air injectors
 			return TRUE
 
 	if(!radio_connection)
 		return FALSE
 	var/datum/signal/signal = new
-	signal.transmission_method = 1 //radio signal
+	signal.transmission_method = TRANSMISSION_RADIO //radio signal
 	signal.source = src
 	switch(action)
 		if("in_refresh_status")
@@ -285,12 +286,12 @@ obj/machinery/computer/general_air_control/Destroy()
 	switch(action)
 		if("adj_pressure")
 			var/new_pressure = text2num(params["adj_pressure"])
-			pressure_setting = between(0, new_pressure, 10*ONE_ATMOSPHERE)
+			pressure_setting = clamp( new_pressure, 0,  10*ONE_ATMOSPHERE)
 			return TRUE
 
 		if("adj_input_flow_rate")
 			var/new_flow = text2num(params["adj_input_flow_rate"])
-			input_flow_setting = between(0, new_flow, ATMOS_DEFAULT_VOLUME_PUMP + 500) //default flow rate limit for air injectors
+			input_flow_setting = clamp( new_flow, 0,  ATMOS_DEFAULT_VOLUME_PUMP + 500) //default flow rate limit for air injectors
 			return TRUE
 
 	if(!radio_connection)
@@ -358,7 +359,7 @@ obj/machinery/computer/general_air_control/Destroy()
 					injecting = 1
 
 		var/datum/signal/signal = new
-		signal.transmission_method = 1 //radio signal
+		signal.transmission_method = TRANSMISSION_RADIO //radio signal
 		signal.source = src
 
 		signal.data = list(

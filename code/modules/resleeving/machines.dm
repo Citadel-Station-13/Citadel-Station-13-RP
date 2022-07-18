@@ -106,7 +106,6 @@
 	H.sync_organ_dna()
 	H.regenerate_icons()
 
-	//Basically all the VORE stuff
 	H.ooc_notes = current_project.body_oocnotes
 	H.flavor_texts = current_project.mydna.flavor.Copy()
 	H.resize(current_project.sizemult, FALSE)
@@ -322,7 +321,6 @@
 	H.sync_organ_dna()
 	H.regenerate_icons()
 
-	//Basically all the VORE stuff
 	H.ooc_notes = current_project.body_oocnotes
 	H.flavor_texts = current_project.mydna.flavor.Copy()
 	H.resize(current_project.sizemult)
@@ -606,11 +604,12 @@
 	playsound(src, 'sound/machines/medbayscanner1.ogg', 100, 1) // Play our sound at the end of the mind injection!
 	return 1
 
-/obj/machinery/transhuman/resleever/proc/go_out(var/mob/M)
-	if(occupant)
+/obj/machinery/transhuman/resleever/proc/go_out(mob/M)
+	if(!occupant)
 		return
 	occupant.forceMove(loc)
 	occupant.update_perspective()
+	occupant = null
 	icon_state = "implantchair"
 	return
 

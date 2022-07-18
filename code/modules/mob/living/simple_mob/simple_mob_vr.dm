@@ -56,8 +56,8 @@
 
 //For all those ID-having mobs
 /mob/living/simple_mob/GetIdCard()
-	if(myid)
-		return myid
+	if(access_card)
+		return access_card
 
 // Update fullness based on size & quantity of belly contents
 /mob/living/simple_mob/proc/update_fullness()
@@ -84,28 +84,20 @@
 
 /mob/living/simple_mob/proc/will_eat(var/mob/living/M)
 	if(client) //You do this yourself, dick!
-		//ai_log("vr/wont eat [M] because we're player-controlled", 3) //VORESTATION AI TEMPORARY REMOVAL
 		return 0
 	if(!istype(M)) //Can't eat 'em if they ain't /mob/living
-		//ai_log("vr/wont eat [M] because they are not /mob/living", 3) //VORESTATION AI TEMPORARY REMOVAL
 		return 0
 	if(src == M) //Don't eat YOURSELF dork
-		//ai_log("vr/won't eat [M] because it's me!", 3) //VORESTATION AI TEMPORARY REMOVAL
 		return 0
 	if(vore_ignores_undigestable && !M.digestable) //Don't eat people with nogurgle prefs
-		//ai_log("vr/wont eat [M] because I am picky", 3) //VORESTATION AI TEMPORARY REMOVAL
 		return 0
 	if(!M.allowmobvore) // Don't eat people who don't want to be ate by mobs
-		//ai_log("vr/wont eat [M] because they don't allow mob vore", 3) //VORESTATION AI TEMPORARY REMOVAL
 		return 0
 	if(M in prey_excludes) // They're excluded
-		//ai_log("vr/wont eat [M] because they are excluded", 3) //VORESTATION AI TEMPORARY REMOVAL
 		return 0
 	if(M.size_multiplier < vore_min_size || M.size_multiplier > vore_max_size)
-		//ai_log("vr/wont eat [M] because they too small or too big", 3) //VORESTATION AI TEMPORARY REMOVAL
 		return 0
 	if(vore_capacity != 0 && (vore_fullness >= vore_capacity)) // We're too full to fit them
-		//ai_log("vr/wont eat [M] because I am too full", 3) //VORESTATION AI TEMPORARY REMOVAL
 		return 0
 	return 1
 
@@ -163,24 +155,21 @@
 // Attempt to eat target
 // TODO - Review this.  Could be some issues here
 /mob/living/simple_mob/proc/EatTarget(var/mob/living/M)
-	//ai_log("vr/EatTarget() [M]",2) //VORESTATION AI TEMPORARY REMOVAL
-	//stop_automated_movement = 1 //VORESTATION AI TEMPORARY REMOVAL
 	var/old_target = M
-	set_AI_busy(1) //VORESTATION AI TEMPORARY EDIT
+	set_AI_busy(1)
 	. = animal_nom(M)
 	playsound(src, swallowsound, 50, 1)
 	update_icon()
 
 	if(.)
 		// If we succesfully ate them, lose the target
-		set_AI_busy(0) // lose_target(M) //Unsure what to put here. Replaced with set_AI_busy(1) //VORESTATION AI TEMPORARY EDIT
+		set_AI_busy(0)
 		return old_target
 	else if(old_target == M)
 		// If we didn't but they are still our target, go back to attack.
 		// but don't run the handler immediately, wait until next tick
 		// Otherwise we'll be in a possibly infinate loop
-		set_AI_busy(0) //VORESTATION AI TEMPORARY EDIT
-	//stop_automated_movement = 0 //VORESTATION AI TEMPORARY EDIT
+		set_AI_busy(0)
 
 /mob/living/simple_mob/death()
 	release_vore_contents()
@@ -257,7 +246,7 @@
 
 // Checks to see if mob doesn't like this kind of turf
 /mob/living/simple_mob/IMove(turf/newloc, safety = TRUE)
-	if(istype(newloc,/turf/unsimulated/floor/sky))
+	if(istype(newloc,/turf/simulated/floor/sky))
 		return MOVEMENT_FAILED //Mobs aren't that stupid, probably
 	return ..() // Procede as normal.
 

@@ -39,13 +39,17 @@
 	shoes = /obj/item/clothing/shoes/boots/jackboots
 	l_hand = /obj/item/storage/firstaid/regular
 	belt = /obj/item/storage/belt/medical/emt
-	pda_slot = slot_l_store
+
 	id_type = /obj/item/card/id/medical/paramedic
 	l_ear = /obj/item/radio/headset/headset_med
 	pda_type = /obj/item/pda/medical
+	pda_slot = slot_l_store
+
 	backpack = /obj/item/storage/backpack/medic
 	satchel_one = /obj/item/storage/backpack/satchel/med
 	messenger_bag = /obj/item/storage/backpack/messenger/med
+	dufflebag = /obj/item/storage/backpack/dufflebag/emt
+
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_EXTENDED_SURVIVAL
 
 /datum/outfit/job/station/paramedic/emt

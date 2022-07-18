@@ -43,7 +43,7 @@ proc/random_hair_style(gender, species = SPECIES_HUMAN)
 			continue
 		if(gender == FEMALE && S.gender == MALE)
 			continue
-		if( !(species in S.species_allowed))
+		if(S.apply_restrictions && !(species in S.species_allowed))
 			continue
 		valid_hairstyles[hairstyle] = hair_styles_list[hairstyle]
 
@@ -62,7 +62,7 @@ proc/random_facial_hair_style(gender, species = SPECIES_HUMAN)
 			continue
 		if(gender == FEMALE && S.gender == MALE)
 			continue
-		if( !(species in S.species_allowed))
+		if(S.apply_restrictions && !(species in S.species_allowed))
 			continue
 
 		valid_facialhairstyles[facialhairstyle] = facial_hair_styles_list[facialhairstyle]
@@ -217,7 +217,7 @@ Proc for attack log creation, because really why not
 	if (progbar)
 		qdel(progbar)
 
-/proc/do_after(mob/user, delay, atom/target = null, needhand = TRUE, progress = TRUE, incapacitation_flags = INCAPACITATION_DEFAULT, ignore_movement = FALSE, max_distance = null)
+/proc/do_after(mob/user, delay, atom/target = null, needhand = TRUE, progress = TRUE, incapacitation_flags = INCAPACITATION_DEFAULT, ignore_movement = FALSE, max_distance = null, ignore_resist = FALSE)
 	if(!user)
 		return 0
 	if(!delay)
@@ -230,7 +230,7 @@ Proc for attack log creation, because really why not
 
 	var/obj/mecha/M = null
 
-	if(istype(user.loc, /obj/mecha))
+	if(ismecha(user.loc))
 		original_loc = get_turf(original_loc)
 		M = user.loc
 
@@ -305,3 +305,7 @@ Proc for attack log creation, because really why not
 	else
 		. = getCompoundIcon(desired)
 		cached_character_icons[cachekey] = .
+
+/// Gets the client of the mob, allowing for mocking of the client.
+/// You only need to use this if you know you're going to be mocking clients somewhere else.
+#define GET_CLIENT(mob) (##mob.client || ##mob.mock_client)

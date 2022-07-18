@@ -39,7 +39,8 @@
 		get_asset_datum(/datum/asset/simple/nanomaps),
 	)
 
-/datum/tgui_module/atmos_control/ui_interact(mob/user, datum/tgui/ui = null)
+/datum/tgui_module/atmos_control/ui_interact(mob/user, datum/tgui/ui)
+	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, tgui_id, name)
@@ -89,8 +90,8 @@
 	return state
 
 /datum/ui_state/air_alarm_remote
-	var/datum/tgui_module/atmos_control/atmos_control	= null
-	var/obj/machinery/alarm/air_alarm					= null
+	var/datum/tgui_module/atmos_control/atmos_control = null
+	var/obj/machinery/alarm/air_alarm = null
 
 /datum/ui_state/air_alarm_remote/can_use_topic(src_object, mob/user)
 	if(!atmos_control.ui_ref)
@@ -100,8 +101,8 @@
 		return UI_INTERACTIVE
 	return UI_UPDATE
 
-/datum/ui_state/air_alarm_remote/proc/has_access(var/mob/user)
-	return user && (isAI(user) || atmos_control.access.allowed(user) || atmos_control.emagged || air_alarm.rcon_setting == RCON_YES || (air_alarm.alarm_area.atmosalm && air_alarm.rcon_setting == RCON_AUTO) || (access_ce in user.GetAccess()))
+/datum/ui_state/air_alarm_remote/proc/has_access(mob/user)
+	return user && (isAI(user) || atmos_control.access.allowed(user) || atmos_control.emagged || air_alarm.rcon_setting == (RCON_YES || RCON_AUTO) || (air_alarm.alarm_area.atmosalm && air_alarm.rcon_setting == RCON_AUTO) || (access_atmospherics in user.GetAccess()))
 
 /datum/ui_state/air_alarm_remote/Destroy()
 	atmos_control = null

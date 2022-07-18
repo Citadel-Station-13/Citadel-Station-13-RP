@@ -7,12 +7,6 @@
 	sort_order = 1
 	category_item_type = /datum/category_item/player_setup_item/general
 
-/*
-/datum/category_group/player_setup_category/skill_preferences
-name = "Skills"
-sort_order = 2
-category_item_type = /datum/category_item/player_setup_item/skills
-*/
 /datum/category_group/player_setup_category/appearance_preferences
 	name = "Antagonism"
 	sort_order = 4
@@ -22,12 +16,7 @@ category_item_type = /datum/category_item/player_setup_item/skills
 	name = "Loadout"
 	sort_order = 5
 	category_item_type = /datum/category_item/player_setup_item/loadout
-/* //VOREStation Removal
-/datum/category_group/player_setup_category/trait_preferences
-	name = "Traits"
-	sort_order = 6
-	category_item_type = /datum/category_item/player_setup_item/traits
-*/ //VOREStation Removal End
+
 /datum/category_group/player_setup_category/global_preferences
 	name = "Global"
 	sort_order = 6

@@ -64,7 +64,11 @@
 	virtual_eye = null
 	return ..()
 
+/// ONLY CALL FROM CLIENT.SET_PERSPECTIVE
+/// I DO NOT TRUST PEOPLE TO NOT SCREW THIS UP
 /datum/perspective/proc/AddClient(client/C)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
 	if(C in clients)
 		return
 	if(C.using_perspective)
@@ -74,7 +78,11 @@
 	SEND_SIGNAL(src, COMSIG_PERSPECTIVE_CLIENT_REGISTER, C)
 	Apply(C)
 
+/// ONLY CALL FROM CLIENT.SET_PERSPECTIVE
+/// I DO NOT TRUST PEOPLE TO NOT SCREW THIS UP
 /datum/perspective/proc/RemoveClient(client/C, switching = FALSE)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
 	if(!(C in clients))
 		return
 	clients -= C
@@ -112,6 +120,7 @@
  * registers as a mob's current perspective
  */
 /datum/perspective/proc/AddMob(mob/M)
+	SHOULD_CALL_PARENT(TRUE)
 	if(M.using_perspective)
 		CRASH("mob already had perspective")
 	if(reset_on_logout && !M.client)	// nah
@@ -124,6 +133,7 @@
  * unregisters as a mob's current perspective
  */
 /datum/perspective/proc/RemoveMob(mob/M, switching = FALSE)
+	SHOULD_CALL_PARENT(TRUE)
 	mobs -= M
 	SEND_SIGNAL(src, COMSIG_PERSPECTIVE_MOB_REMOVE, M, switching)
 	if(M.using_perspective == src)
@@ -137,6 +147,7 @@
  * applys screen objs, etc, stuff that shouldn't be updated regularly
  */
 /datum/perspective/proc/Apply(client/C)
+	SHOULD_CALL_PARENT(TRUE)
 	C.screen += screens
 	C.images += images
 	Update(C)
@@ -164,7 +175,12 @@
 /datum/perspective/proc/Update(client/C)
 	SEND_SIGNAL(src, COMSIG_PERSPECTIVE_CLIENT_UPDATE, C)
 	var/changed = C.eye
-	C.eye = GetEye(C)
+	var/new_eye = GetEye(C)
+	if(!new_eye)
+		stack_trace("got null on GetEye, this shouldn't be possible")
+		C.eye = C.mob
+	else
+		C.eye = new_eye
 	if(changed != C.eye)
 		C.parallax_holder?.Reset(force = TRUE)
 	C.perspective = GetEyeMode(C)
@@ -238,7 +254,7 @@
 	src.eye = AM
 	for(var/client/C as anything in clients)
 		var/changed = C.eye
-		C.eye = GetEye()
+		C.eye = GetEye(C)
 		if(changed != C.eye)
 			C.parallax_holder?.Reset(force = TRUE)
 		C.perspective = GetEyeMode()
@@ -299,17 +315,22 @@
 /datum/perspective/self/proc/get_top_atom(atom/movable/where)
 	if(isturf(where))
 		return where		// already on turf
-	while(where && where.loc && !isturf(where.loc))
-		where = where.loc	// if we can go up, and we're not already the top atom on a turf, go up. where.loc check needed for anti-null.
+	var/turf/T = get_turf(where)
+	if(!T)
+		return where	// either the perspective owner's mob or someone fucked up royally
+	// we know we're on a turf now (assuming get_turf() didn't break but that'd be a byond thing) so
+	while(!isturf(where.loc))
+		where = where.loc
 	return where
 
 /**
- * temporary perspectives generated - automatically deletes when last client is gone
+ * temporary perspectives generated - automatically deletes when last mob is gone
  */
 /datum/perspective/self/temporary
 
-/datum/perspective/self/temporary/RemoveClient(client/C)
-	if(!clients.len)
+/datum/perspective/self/temporary/RemoveMob(mob/M, switching)
+	. = ..()
+	if(!mobs.len)
 		qdel(src)
 
 /**

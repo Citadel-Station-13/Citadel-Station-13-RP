@@ -305,7 +305,7 @@
 	for(var/thing in loc)
 		var/atom/movable/AM = thing
 		var/mob/living/L = thing
-		if(istype(AM) && AM.simulated)
+		if(istype(AM) && !(AM.flags & AF_ABSTRACT))
 			wash(AM)
 			if(istype(L))
 				process_heat(L)
@@ -489,7 +489,7 @@
 	desc = "A bubbling pool of oil.This would probably be valuable, had bluespace technology not destroyed the need for fossil fuels 200 years ago."
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "puddle-oil"
-	var/dispensedreagent = /datum/reagent/oil
+	var/dispensedreagent = /datum/reagent/crude_oil
 
 /obj/structure/sink/oil_well/Initialize(mapload)
 	.=..()

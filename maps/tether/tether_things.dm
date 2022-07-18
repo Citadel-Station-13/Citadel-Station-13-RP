@@ -1,6 +1,6 @@
 //Special map objects
 /* // Moved to map/generic/map_data.dm
-/atom/movable/landmark/map_data/virgo3b
+/obj/landmark/map_data/virgo3b
     height = 6
 */
 /*

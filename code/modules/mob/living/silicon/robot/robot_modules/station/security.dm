@@ -34,7 +34,6 @@
 	src.modules += new /obj/item/handcuffs/cyborg(src)
 	src.modules += new /obj/item/melee/baton/robot(src)
 	src.modules += new /obj/item/gun/energy/taser/mounted/cyborg(src)
-	// src.modules += new /obj/item/gun/energy/taser/xeno/sec/robot(src) // VOREStation Edit - We don't need these
 	src.modules += new /obj/item/barrier_tape_roll/police(src)
 	src.modules += new /obj/item/reagent_containers/spray/pepper(src)
 	src.modules += new /obj/item/gripper/security(src)
@@ -68,7 +67,7 @@
 /obj/item/robot_module/robot/security/combat/Initialize(mapload)
 	. = ..()
 	src.modules += new /obj/item/flash(src)
-	//src.modules += new /obj/item/borg/sight/thermal(src) // VOREStation Edit
+	//src.modules += new /obj/item/borg/sight/thermal(src)
 	src.modules += new /obj/item/gun/energy/laser/mounted(src)
 	src.modules += new /obj/item/pickaxe/plasmacutter(src)
 	src.modules += new /obj/item/borg/combat/shield(src)
@@ -133,6 +132,7 @@
 	if(R.client && (R.client.ckey in list("nezuli")))
 		sprites += "Alina"
 		sprites["Alina"] = "alina-sec"
+		. = ..()
 
 /obj/item/robot_module/robot/knine/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
 	var/obj/item/flash/F = locate() in src.modules

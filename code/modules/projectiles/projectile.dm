@@ -80,8 +80,6 @@
 	var/p_x = 16
 	var/p_y = 16			// the pixel location of the tile that the player clicked. Default is the center
 
-	//Misc/Polaris variables
-
 	var/def_zone = ""	//Aiming at
 	var/mob/firer = null//Who shot it
 	var/silenced = 0	//Attack message

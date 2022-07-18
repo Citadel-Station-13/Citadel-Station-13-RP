@@ -4,6 +4,9 @@
  * A grouping of tiles into a logical space, mostly used by map editors
  */
 /area
+	/// area flags
+	var/area_flags = NONE
+
 	var/fire = null
 	var/atmos = 1
 	var/atmosalm = 0
@@ -50,7 +53,7 @@
 
 	var/music = null
 
-	var/has_gravity = 1
+	var/has_gravity = TRUE
 	var/obj/machinery/power/apc/apc = null
 	var/no_air = null
 //	var/list/lights				// list of all lights on this area
@@ -135,13 +138,11 @@
 
 	return INITIALIZE_HINT_LATELOAD // Areas tradiationally are initialized AFTER other atoms.
 
-
 /**
  * Sets machine power levels in the area
  */
 /area/LateInitialize()
 	power_change() // all machines set to current power level, also updates lighting icon
-	return INITIALIZE_HINT_LATELOAD
 
 /**
  * Register this area as belonging to a z level
@@ -558,9 +559,9 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 			return // Being buckled to something solid keeps you in place.
 		if(istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.clothing_flags & NOSLIP))
 			return
-		if(H.flags & NO_SLIP)//diona and similar should not slip from moving onto space either.
+		if(H.species.flags & NO_SLIP)//diona and similar should not slip from moving onto space either.
 			return
-		if(H.m_intent == "run")
+		if(H.m_intent == MOVE_INTENT_RUN)
 			H.AdjustStunned(6)
 			H.AdjustWeakened(6)
 		else

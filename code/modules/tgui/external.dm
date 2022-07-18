@@ -13,9 +13,11 @@
  *
  * required user mob The mob who opened/is using the UI.
  * optional ui datum/tgui The UI to be updated, if it exists.
+ *
+ *! ## To-Be-Deprecated.
  * optional parent_ui datum/tgui A parent UI that, when closed, closes this UI as well.
  */
-/datum/proc/ui_interact(mob/user, datum/tgui/ui = null, datum/tgui/parent_ui = null)
+/datum/proc/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	return FALSE // Not implemented.
 
 /**
@@ -54,14 +56,35 @@
  * Forces an update on static data. Should be done manually whenever something
  * happens to change static data.
  *
- * required user the mob currently interacting with the ui
- * optional tgui ui to be updated
+ * If no user is provided, every user will be updated.
+ *
+ * optional user the mob currently interacting with the ui
+ * optional ui tgui to be updated
+ * optional hard_refreshion use if you need to block the ui from showing if the refresh queues
  */
-/datum/proc/update_static_data(mob/user, datum/tgui/ui)
+/datum/proc/update_static_data(mob/user, datum/tgui/ui, hard_refresh)
+	if(!user)
+		for (var/datum/tgui/window as anything in SStgui.open_uis_by_src[REF(src)])
+			window.send_full_update(hard_refresh = hard_refresh)
+		return
 	if(!ui)
 		ui = SStgui.get_open_ui(user, src)
 	if(ui)
-		ui.send_full_update()
+		ui.send_full_update(hard_refresh = hard_refresh)
+
+/**
+ * immediately shunts this data to either an user, an ui, or all users.
+ */
+/datum/proc/send_tgui_data_immediate(mob/user, datum/tgui/ui, list/data)
+	ASSERT(data)
+	if(!user)
+		for (var/datum/tgui/window as anything in SStgui.open_uis_by_src[REF(src)])
+			window.send_custom_update(data)
+		return
+	if(!ui)
+		ui = SStgui.get_open_ui(user, src)
+	if(ui)
+		ui.send_custom_update(data)
 
 /**
  * public
@@ -75,7 +98,7 @@
  * return bool If the user's input has been handled and the UI should update.
  */
 /datum/proc/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	//SHOULD_CALL_PARENT(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_UI_ACT, usr, action)
 	// If UI is not interactive or usr calling Topic is not the UI user, bail.
 	if(!ui || ui.status != UI_INTERACTIVE)
@@ -147,26 +170,7 @@
  * client/verb/uiclose(), which closes the ui window
  */
 /datum/proc/ui_close(mob/user)
-
-/**
- * verb
- *
- * Used by a client to fix broken TGUI windows caused by opening a UI window before assets load.
- * Probably not very performant and forcibly destroys a bunch of windows, so it has some warnings attached.
- * Conveniently, also allows devs to force a dev server reattach without relogging, since it yeets windows.
- */
-/client/verb/tgui_fix_white()
-	set desc = "Only use this if you have a broken TGUI window occupying your screen!"
-	set name = "Fix TGUI"
-	set category = "OOC"
-
-	if(alert(src, "Only use this verb if you have a white TGUI window stuck on your screen.", "Fix TGUI", "Continue", "Nevermind") != "Continue")
-		return
-
-	SStgui.close_user_uis(mob)
-	if(alert(src, "Did that fix the problem?", "Fix TGUI", "Yes", "No") == "No")
-		SStgui.force_close_all_windows(mob)
-		alert(src, "UIs should be fixed now. If not, please cry to your nearest coder.", "Fix TGUI")
+	SIGNAL_HANDLER
 
 /**
  * verb

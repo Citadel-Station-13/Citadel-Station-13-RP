@@ -30,8 +30,6 @@ SUBSYSTEM_DEF(ticker)
 	var/event_time = null
 	var/event = 0
 
-	// var/login_music			// music played in pregame lobby // VOREStation Edit - We do music differently
-
 	var/list/datum/mind/minds = list()//The people in the game. Used for objective tracking.
 
 	var/Bible_icon_state	// icon_state the chaplain has chosen for his bible
@@ -226,7 +224,6 @@ SUBSYSTEM_DEF(ticker)
 	create_characters() //Create player characters and transfer them.
 	collect_minds()
 	equip_characters()
-	//data_core.manifest()	//VOREStation Removal
 
 	callHook("roundstart")
 
@@ -235,7 +232,7 @@ SUBSYSTEM_DEF(ticker)
 		cb.InvokeAsync()
 	LAZYCLEARLIST(round_start_events)
 
-	for(var/atom/movable/landmark/L in GLOB.landmarks_list)
+	for(var/obj/landmark/L in GLOB.landmarks_list)
 		// type filtered, we cannot risk runtimes
 		L.OnRoundstart()
 
@@ -395,13 +392,11 @@ SUBSYSTEM_DEF(ticker)
 			else if(!player.mind.assigned_role)
 				continue
 			else
-				//VOREStation Edit Start
 				var/mob/living/carbon/human/new_char = player.create_character()
 				if(new_char)
 					qdel(player)
 				if(istype(new_char) && !(new_char.mind.assigned_role=="Cyborg"))
 					data_core.manifest_inject(new_char)
-				//VOREStation Edit End
 
 
 /datum/controller/subsystem/ticker/proc/collect_minds()
@@ -419,8 +414,6 @@ SUBSYSTEM_DEF(ticker)
 			if(!player_is_antag(player.mind, only_offstation_roles = 1))
 				job_master.EquipRank(player, player.mind.assigned_role, 0)
 				UpdateFactionList(player)
-				//equip_custom_items(player)	//VOREStation Removal
-				//player.apply_traits() //VOREStation Removal
 	if(captainless)
 		for(var/mob/M in player_list)
 			if(!istype(M,/mob/new_player))
@@ -431,7 +424,7 @@ SUBSYSTEM_DEF(ticker)
 	if(current_state != GAME_STATE_PLAYING)
 		return 0
 
-	var/dt = (flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
+	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
 	mode.process(dt)
 
 	var/game_finished = 0
@@ -462,7 +455,11 @@ SUBSYSTEM_DEF(ticker)
 			blackbox.save_all_data_to_sql()
 
 		send2irc("Server", "A round of [mode.name] just ended.")
-		world.TgsTargetedChatBroadcast("The round has ended.", FALSE)
+		if(CONFIG_GET(string/chat_roundend_notice_tag))
+			var/broadcastmessage = "The round has ended."
+			if(CONFIG_GET(string/chat_reboot_role))
+				broadcastmessage += "\n\n<@&[CONFIG_GET(string/chat_reboot_role)]>, the server will reboot shortly!"
+			send2chat(broadcastmessage, CONFIG_GET(string/chat_roundend_notice_tag))
 
 		SSpersistence.SavePersistence()
 		ready_for_reboot = TRUE

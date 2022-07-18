@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(air)
 	init_order = INIT_ORDER_AIR
 	priority = FIRE_PRIORITY_AIR
 	wait = 2 SECONDS // seconds (We probably can speed this up actually)
-	flags = SS_BACKGROUND // TODO - Should this really be background? It might be important.
+	subsystem_flags = SS_BACKGROUND // TODO - Should this really be background? It might be important.
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	var/static/list/part_names = list("turfs", "edges", "fire zones", "hotspots", "zones")
 
@@ -28,7 +28,7 @@ SUBSYSTEM_DEF(air)
 	var/current_step = null
 
 	// Updating zone tiles requires temporary storage location of self-zone-blocked turfs across resumes. Used only by process_tiles_to_update.
-	var/list/selfblock_deferred = null
+	var/list/selfblock_deferred = list()
 
 	// This is used to tell Travis WHERE the edges are.
 	var/list/startup_active_edge_log = list()
@@ -46,14 +46,16 @@ SUBSYSTEM_DEF(air)
 		S.update_air_properties()
 		CHECK_TICK
 
-	admin_notice({"<span class='danger'>Geometry initialized in [round(0.1*(REALTIMEOFDAY-timeofday),0.1)] seconds.</span>
-<span class='info'>
-Total Simulated Turfs: [simulated_turf_count]
-Total Zones: [zones.len]
-Total Edges: [edges.len]
-Total Active Edges: [active_edges.len ? "<span class='danger'>[active_edges.len]</span>" : "None"]
-Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_count]
-</span>"}, R_DEBUG)
+	var/to_send = "<blockquote class ='info'>"
+	to_send += SPAN_DEBUG("<b>Geometry initialized in [round(0.1*(REALTIMEOFDAY-timeofday),0.1)] seconds.</b><hr>")
+	to_send += SPAN_DEBUGINFO("Total Simulated Turfs: [simulated_turf_count]")
+	to_send += SPAN_DEBUGINFO("\nTotal Zones: [zones.len]")
+	to_send += SPAN_DEBUGINFO("\nTotal Edges: [edges.len]")
+	to_send += SPAN_DEBUGINFO("\nTotal Active Edges: [active_edges.len ? SPAN_DANGER("[active_edges.len]") : "None"]")
+	to_send += SPAN_DEBUGINFO("\nTotal Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_count]")
+	to_send += SPAN_DEBUGINFO("</blockquote>")
+
+	admin_notice(to_send, R_DEBUG)
 
 	// Note - Baystation settles the air by running for one tick.  We prefer to not have active edges.
 	// Maps should not have active edges on boot.  If we've got some, log it so it can get fixed.
@@ -72,10 +74,10 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 	var/timer
 	if(!resumed)
 		if(LAZYLEN(currentrun) != 0)
-			stack_trace("Currentrun not empty when it should be. [english_list(currentrun)]")
+			stack_trace("Currentrun not empty before processing cycle when it should be. [english_list(currentrun)]")
 		currentrun = list()
 		if(current_step != null)
-			stack_trace("current_step was [current_step] instead of null")
+			stack_trace("current_step before processing cycle was [current_step] instead of null")
 		current_step = SSAIR_TURFS
 		current_cycle++
 
@@ -87,10 +89,10 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 
 	// Okay, we're done! Woo! Got thru a whole air_master cycle!
 	if(LAZYLEN(currentrun) != 0)
-		stack_trace("Currentrun not empty when it should be. [english_list(currentrun)]")
+		stack_trace("Currentrun not empty after processing cycle when it should be. [english_list(currentrun.Copy(1, min(currentrun.len, 5)))]")
 	currentrun = null
 	if(current_step != SSAIR_DONE)
-		stack_trace("current_step was [current_step] instead of [SSAIR_DONE]")
+		stack_trace("current_step after processing cycle was [current_step] instead of [SSAIR_DONE]")
 	current_step = null
 
 /datum/controller/subsystem/air/proc/process_tiles_to_update(resumed = 0)
@@ -105,8 +107,8 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 		//have valid zones when the self-zone-blocked turfs update.
 		//This ensures that doorways don't form their own single-turf zones, since doorways are self-zone-blocked and
 		//can merge with an adjacent zone, whereas zones that are formed on adjacent turfs cannot merge with the doorway.
-		if(src.selfblock_deferred != null) // Sanity check to make sure it was not remaining from last cycle somehow.
-			stack_trace("WARNING: SELFBLOCK_DEFFERED WAS NOT NULL. Something went wrong.")
+		if(src.selfblock_deferred.len) // Sanity check to make sure it was not remaining from last cycle somehow.
+			stack_trace("WARNING: SELFBLOCK_DEFFERED WAS NOT EMPTY. Something went wrong.")
 		src.selfblock_deferred = list()
 
 	//cache for sanic speed (lists are references anyways)
@@ -126,16 +128,16 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 				continue
 		T.update_air_properties()
 		T.post_update_air_properties()
-		T.needs_air_update = 0
-		#ifdef ZASDBG
+		T.turf_flags &= ~TURF_ZONE_REBUILD_QUEUED
+		#ifdef ZAS_DEBUG_GRAPHICS
 		T.overlays -= mark
 		#endif
 		if(MC_TICK_CHECK)
 			return
 
 	if(LAZYLEN(currentrun) != 0)
-		stack_trace("WARNING: Currentrun was not empty when it should be.")
-	currentrun = list()
+		stack_trace("WARNING: Currentrun was not empty after tiles process when it should be.")
+		currentrun = list()
 
 	// Run thru the deferred list and processing them
 	while(selfblock_deferred.len)
@@ -143,16 +145,15 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 		selfblock_deferred.len--
 		T.update_air_properties()
 		T.post_update_air_properties()
-		T.needs_air_update = 0
-		#ifdef ZASDBG
+		T.turf_flags &= ~TURF_ZONE_REBUILD_QUEUED
+		#ifdef ZAS_DEBUG_GRAPHICS
 		T.overlays -= mark
 		#endif
 		if(MC_TICK_CHECK)
 			return
 
-	if(LAZYLEN(selfblock_deferred) != 0)
-		stack_trace("WARNING: selfblock_deffered was not empty (length [LAZYLEN(selfblock_deferred)])")
-	src.selfblock_deferred = null
+	if(selfblock_deferred.len != 0)
+		stack_trace("WARNING: selfblock_defered was not empty after selfblock tiles process (length [LAZYLEN(selfblock_deferred)])")
 
 /datum/controller/subsystem/air/proc/process_active_edges(resumed = 0)
 	if (!resumed)
@@ -185,7 +186,7 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 		src.currentrun = active_hotspots.Copy()
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
-	var/dt = (flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
+	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
 	while(currentrun.len)
 		var/atom/movable/fire/fire = currentrun[currentrun.len]
 		currentrun.len--

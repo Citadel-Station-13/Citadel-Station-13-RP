@@ -306,7 +306,6 @@ var/list/name_to_material
 	stack_type = /obj/item/stack/material/supermatter
 	shard_type = SHARD_SHARD
 	radioactivity = 20
-	stack_type = null
 	luminescence = 3
 	ignition_point = PHORON_MINIMUM_BURN_TEMPERATURE
 	icon_base = "stone"
@@ -369,7 +368,7 @@ var/list/name_to_material
 	name = "marble"
 	icon_colour = "#AAAAAA"
 	weight = 26
-	hardness = 30 //VOREStation Edit - Please.
+	hardness = 30
 	integrity = 201 //hack to stop kitchen benches being flippable, todo: refactor into weight system
 	stack_type = /obj/item/stack/material/marble
 
@@ -1212,7 +1211,7 @@ var/list/name_to_material
 	name = "silencium"
 	icon_colour = "#AAAAAA"
 	weight = 26
-	hardness = 30 //VOREStation Edit - Please.
+	hardness = 30
 	integrity = 201 //hack to stop kitchen benches being flippable, todo: refactor into weight system
 	stack_type = /obj/item/stack/material/silencium
 

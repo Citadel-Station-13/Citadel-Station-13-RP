@@ -1,4 +1,4 @@
-//VOREStation Edit - Redone a lot of airlock things:
+// Redone a lot of airlock things:
 /*
 - Specific department maintenance doors
 - Named doors properly according to type
@@ -153,7 +153,7 @@
 /obj/machinery/door/airlock/maintenance
 	name = "Maintenance Access"
 	icon = 'icons/obj/doors/Doormaint.dmi'
-	//req_one_access = list(access_maint_tunnels) //VOREStation Edit - Maintenance is open access
+	//req_one_access = list(access_maint_tunnels) // Maintenance is open access
 	assembly_type = /obj/structure/door_assembly/door_assembly_mai
 	open_sound_powered = 'sound/machines/door/door2o.ogg'
 	close_sound_powered = 'sound/machines/door/door2c.ogg'
@@ -587,7 +587,7 @@
 /obj/machinery/door/airlock/alien/public // Entry to UFO.
 	req_one_access = list()
 	normalspeed = FALSE // So it closes faster and hopefully keeps the warm air inside.
-	hackProof = TRUE //VOREStation Edit - No borgos
+	hackProof = TRUE // No borgs
 
 //"Red" Armory Door
 /obj/machinery/door/airlock/security/armory
@@ -1349,6 +1349,10 @@ About the new airlock wires panel:
 	if(locked)
 		return 0
 	return ..(M)
+
+// Airlock is passable if it is open (!density), bot has access, and is not bolted shut or powered off)
+/obj/machinery/door/airlock/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
+	return !density || (check_access(ID) && !locked && inoperable())
 
 /obj/machinery/door/airlock/Initialize(mapload, obj/structure/door_assembly/assembly)
 	//if assembly is given, create the new door from the assembly

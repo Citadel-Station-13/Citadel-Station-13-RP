@@ -82,7 +82,7 @@
 /obj/structure/reagent_dispensers/watertank
 	name = "watertank"
 	desc = "A watertank."
-	icon = 'icons/obj/objects_vr.dmi' //VOREStation Edit
+	icon = 'icons/obj/objects_vr.dmi'
 	icon_state = "watertank"
 	amount_per_transfer_from_this = 10
 
@@ -102,7 +102,7 @@
 /obj/structure/reagent_dispensers/fueltank
 	name = "fueltank"
 	desc = "A fueltank."
-	icon = 'icons/obj/objects_vr.dmi' //VOREStation Edit
+	icon = 'icons/obj/objects_vr.dmi'
 	icon_state = "weldtank"
 	amount_per_transfer_from_this = 10
 	var/modded = 0
@@ -112,7 +112,6 @@
 	. = ..()
 	reagents.add_reagent("fuel",1000)
 
-//VOREStation Add
 /obj/structure/reagent_dispensers/fueltank/high
 	name = "high-capacity fuel tank"
 	desc = "A highly-pressurized fuel tank made to hold vast amounts of fuel."
@@ -143,7 +142,6 @@
 	if (W.is_wrench()) //can't wrench it shut, it's always open
 		return
 	return ..()
-//VOREStation Add End
 
 /obj/structure/reagent_dispensers/fueltank/examine(mob/user)
 	. = ..()
@@ -247,8 +245,8 @@
 	desc = "Refills pepper spray canisters."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "peppertank"
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	amount_per_transfer_from_this = 45
 
 /obj/structure/reagent_dispensers/peppertank/Initialize(mapload)
@@ -263,7 +261,7 @@
 	icon = 'icons/obj/vending.dmi'
 	icon_state = "water_cooler"
 	possible_transfer_amounts = null
-	anchored = 1
+	anchored = TRUE
 	var/bottle = 0
 	var/cups = 0
 	var/cupholder = 0
@@ -419,7 +417,8 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "virusfoodtank"
 	amount_per_transfer_from_this = 10
-	anchored = 1
+	anchored = TRUE
+	density = FALSE
 
 /obj/structure/reagent_dispensers/virusfood/Initialize(mapload)
 	. = ..()
@@ -431,7 +430,8 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "acidtank"
 	amount_per_transfer_from_this = 10
-	anchored = 1
+	anchored = TRUE
+	density = FALSE
 
 /obj/structure/reagent_dispensers/acid/Initialize(mapload)
 	. = ..()
@@ -479,7 +479,7 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "oiltank"
 	amount_per_transfer_from_this = 10
-	anchored = 1
+	anchored = TRUE
 
 /obj/structure/reagent_dispensers/oil/Initialize(mapload)
 	. = ..()

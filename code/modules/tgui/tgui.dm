@@ -31,8 +31,12 @@
 	var/closing = FALSE
 	/// The status/visibility of the UI.
 	var/status = UI_INTERACTIVE
+	/// Timed refreshing state
+	var/refreshing = UI_NOT_REFRESHING
 	/// Topic state used to determine status/interactability.
 	var/datum/ui_state/state = null
+	/// Rate limit client refreshes to prevent DoS.
+	COOLDOWN_DECLARE(refresh_cooldown)
 	/// The map z-level to display.
 	var/map_z_level = 1
 	/// The Parent UI
@@ -50,12 +54,13 @@
  * required interface string The interface used to render the UI.
  * optional title string The title of the UI.
  * optional parent_ui datum/tgui The parent of this UI.
+ *
  * optional ui_x int Deprecated: Window width.
  * optional ui_y int Deprecated: Window height.
  *
  * return datum/tgui The requested UI.
  */
-/datum/tgui/New(mob/user, datum/src_object, interface, title, ui_x, ui_y)
+/datum/tgui/New(mob/user, datum/src_object, interface, title, datum/tgui/parent_ui, ui_x, ui_y)
 	log_tgui(user,
 		"new [interface] fancy [user?.client?.prefs.tgui_fancy]",
 		src_object = src_object)
@@ -65,13 +70,18 @@
 	src.interface = interface
 	if(title)
 		src.title = title
-	src.state = src_object.ui_state()
+	src.state = src_object.ui_state(user)
 	src.parent_ui = parent_ui
 	if(parent_ui)
 		parent_ui.children += src
 	// Deprecated
 	if(ui_x && ui_y)
 		src.window_size = list(ui_x, ui_y)
+
+/datum/tgui/Destroy()
+	user = null
+	src_object = null
+	return ..()
 
 /**
  * public
@@ -95,6 +105,7 @@
 	window.acquire_lock(src)
 	if(!window.is_ready())
 		window.initialize(
+			strict_mode = TRUE,
 			fancy = user.client.prefs.tgui_fancy,
 			assets = list(
 				get_asset_datum(/datum/asset/simple/tgui),
@@ -123,13 +134,10 @@
  *
  * optional can_be_suspended bool
  */
-/datum/tgui/proc/close(can_be_suspended = TRUE, logout = FALSE)
+/datum/tgui/proc/close(can_be_suspended = TRUE)
 	if(closing)
 		return
 	closing = TRUE
-	for(var/datum/tgui/child in children)
-		child.close(can_be_suspended, logout)
-	children.Cut()
 	// If we don't have window_id, open proc did not have the opportunity
 	// to finish, therefore it's safe to skip this whole block.
 	if(window)
@@ -137,10 +145,12 @@
 		// and we want to keep them around, to allow user to read
 		// the error message properly.
 		window.release_lock()
-		window.close(can_be_suspended, logout)
+		window.close(can_be_suspended)
 		src_object.ui_close(user)
 		SStgui.on_close(src)
 	state = null
+	if(parent_ui)
+		parent_ui.children -= src
 	parent_ui = null
 	qdel(src)
 
@@ -185,15 +195,22 @@
  *
  * optional custom_data list Custom data to send instead of ui_data.
  * optional force bool Send an update even if UI is not interactive.
+ * optional hard_refresh block the ui entirely while this is refreshing. use if you don't want users to see an ui during a queued refresh.
  */
-/datum/tgui/proc/send_full_update(custom_data, force)
-	if(!user.client || !initialized || closing)
+/datum/tgui/proc/send_full_update(custom_data, force, hard_refresh)
+	if(!initialized || closing || !user.client)
 		return
+	if(!COOLDOWN_FINISHED(src, refresh_cooldown))
+		refreshing = max(refreshing, hard_refresh? UI_HARD_REFRESHING : UI_SOFT_REFRESHING)
+		addtimer(CALLBACK(src, .proc/send_full_update), TGUI_REFRESH_FULL_UPDATE_COOLDOWN, TIMER_UNIQUE)
+		return
+	refreshing = UI_NOT_REFRESHING
 	var/should_update_data = force || status >= UI_UPDATE
 	window.send_message("update", get_payload(
 		custom_data,
 		with_data = should_update_data,
 		with_static_data = TRUE))
+	COOLDOWN_START(src, refresh_cooldown, TGUI_REFRESH_FULL_UPDATE_COOLDOWN)
 
 /**
  * public
@@ -212,6 +229,23 @@
 		with_data = should_update_data))
 
 /**
+ * public
+ *
+ * Send a partial update to the client of only the provided data lists
+ * Does not update config at all
+ * WARNING: Do not use this unless you know what you're doing
+ *
+ * required data The data to send
+ * optional force bool Send an update even if UI is not interactive.
+ */
+/datum/tgui/proc/send_custom_update(data, force)
+	if(!user.client || !initialized || closing)
+		return
+	if(!force && status < UI_UPDATE)
+		return
+	window.send_message("data", list("data" = data))
+
+/**
  * private
  *
  * Package the data to send to the UI, as JSON.
@@ -224,6 +258,7 @@
 		"title" = title,
 		"status" = status,
 		"interface" = interface,
+		"refreshing" = refreshing,
 		"window" = list(
 			"key" = window_key,
 			"size" = window_size,
@@ -261,7 +296,7 @@
 		return
 	var/datum/host = src_object.ui_host(user)
 	// If the object or user died (or something else), abort.
-	if(!src_object || !host || !user || !window)
+	if(QDELETED(src_object) || QDELETED(host) || QDELETED(user) || QDELETED(window))
 		close(can_be_suspended = FALSE)
 		return
 	// Validate ping
@@ -285,9 +320,10 @@
 
 
 /**
-	Sets the current map z level of the tgui window (so we know which Z we need to be interacting with.)
+ * public
+ *
+ * Sets the current map z level of the tgui window (so we know which Z we need to be interacting with.)
  */
-
 /datum/tgui/proc/set_map_z_level(nz)
 	map_z_level = nz
 
@@ -322,6 +358,9 @@
 		return FALSE
 	switch(type)
 		if("ready")
+			// Send a full update when the user manually refreshes the UI
+			if(initialized)
+				send_full_update()
 			initialized = TRUE
 		if("ping/reply")
 			initialized = TRUE

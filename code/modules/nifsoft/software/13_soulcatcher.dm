@@ -44,14 +44,14 @@
 	if((. = ..()))
 		//nif.set_flag(NIF_O_SCOTHERS,NIF_FLAGS_OTHER)	//Only required on install if the flag is in the default setting_flags list defined few lines above.
 		if(nif?.human)
-			nif.human.verbs |= /mob/proc/nsay
-			nif.human.verbs |= /mob/proc/nme
+			nif.human.verbs |= /mob/living/carbon/human/proc/nsay
+			nif.human.verbs |= /mob/living/carbon/human/proc/nme
 
 /datum/nifsoft/soulcatcher/uninstall()
 	QDEL_LIST_NULL(brainmobs)
 	if((. = ..()) && nif?.human) //Sometimes NIFs are deleted outside of a human
-		nif.human.verbs -= /mob/proc/nsay
-		nif.human.verbs -= /mob/proc/nme
+		nif.human.verbs -= /mob/living/carbon/human/proc/nsay
+		nif.human.verbs -= /mob/living/carbon/human/proc/nme
 
 /datum/nifsoft/soulcatcher/proc/save_settings()
 	if(!nif)
@@ -301,12 +301,13 @@
 	if(!can_reenter_corpse)
 		qdel(src)
 
-/mob/living/carbon/brain/caught_soul/Life()
+/mob/living/carbon/brain/caught_soul/Life(seconds, times_fired)
 	if(!mind || !key)
 		qdel(src)
-		return
+		return TRUE
 
-	. = ..()
+	if((. = ..()))
+		return
 
 	if(!parent_mob && !transient &&(life_tick % 150 == 0) && soulcatcher.setting_flags & NIF_SC_BACKUPS)
 		SStranscore.m_backup(mind,0) //Passed 0 means "Don't touch the nif fields on the mind record"
@@ -537,7 +538,7 @@
 
 ///////////////////
 //Verbs for humans
-/mob/proc/nsay(message as text)
+/mob/living/carbon/human/proc/nsay(message as text)
 	set name = "NSay"
 	set desc = "Speak into your NIF's Soulcatcher."
 	set category = "IC"
@@ -567,7 +568,7 @@
 		var/sane_message = sanitize(message)
 		SC.say_into(sane_message,src)
 
-/mob/proc/nme(message as message|null)
+/mob/living/carbon/human/proc/nme(message as message|null)
 	set name = "NMe"
 	set desc = "Emote into your NIF's Soulcatcher."
 	set category = "IC"
@@ -648,3 +649,25 @@
 
 	QDEL_NULL(eyeobj)
 	soulcatcher.notify_into("[src] ended AR projection.")
+
+/mob/living/carbon/brain/caught_soul/verb/nsay(message as text|null)
+	set name = "NSay"
+	set desc = "Speak into the NIF's Soulcatcher (circumventing AR speaking)."
+	set category = "Soulcatcher"
+
+	if(!message)
+		message = input("Type a message to say.","Speak into Soulcatcher") as text|null
+	message = sanitize(message)
+	if(message)
+		soulcatcher.say_into(message,src,null)
+
+/mob/living/carbon/brain/caught_soul/verb/nme(message as text|null)
+	set name = "NMe"
+	set desc = "Emote into the NIF's Soulcatcher (circumventing AR speaking)."
+	set category = "Soulcatcher"
+
+	if(!message)
+		message = input("Type an action to perform.","Emote into Soulcatcher") as message|null
+	message = sanitize(message)
+	if(message)
+		soulcatcher.emote_into(message,src,null)

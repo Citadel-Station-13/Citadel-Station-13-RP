@@ -33,32 +33,42 @@
 	/// our default perspective - if none, a temporary one will be generated when a mob requires it
 	var/datum/perspective/self_perspective
 
-	var/anchored = 0
+	var/anchored = FALSE
 	var/move_speed = 10
 	var/l_move_time = 1
 	var/m_flag = 1
-	var/throwing = 0
+	var/throwing = FALSE
 	var/thrower
 	var/turf/throw_source = null
 	var/throw_speed = 2
 	var/throw_range = 7
-	var/moved_recently = 0
+	var/moved_recently = FALSE
 	var/mob/pulledby = null
-	var/item_state = null // Used to specify the item state for the on-mob overlays.
-	var/icon_scale_x = 1 // Used to scale icons up or down horizonally in update_transform().
-	var/icon_scale_y = 1 // Used to scale icons up or down vertically in update_transform().
-	var/icon_rotation = 0 // Used to rotate icons in update_transform()
+
+	/// Used to specify the item state for the on-mob overlays.
+	var/item_state = null
+	/// Used to scale icons up or down horizonally in update_transform().
+	var/icon_scale_x = 1
+	/// Used to scale icons up or down vertically in update_transform().
+	var/icon_scale_y = 1
+	/// Used to rotate icons in update_transform()
+	var/icon_rotation = 0
 	var/icon_expected_height = 32
 	var/icon_expected_width = 32
 	var/old_x = 0
 	var/old_y = 0
-	var/datum/riding/riding_datum //VOREStation Add - Moved from /obj/vehicle
-	var/does_spin = TRUE // Does the atom spin when thrown (of course it does :P)
 
-	var/cloaked = FALSE //If we're cloaked or not
-	var/image/cloaked_selfimage //The image we use for our client to let them see where we are
+	/// Used for vehicles and other things.
+	var/datum/riding/riding_datum
+	/// Does the atom spin when thrown.
+	var/does_spin = TRUE
 
-	///Reference to atom being orbited
+	///If we're cloaked or not.
+	var/cloaked = FALSE
+	/// The image we use for our client to let them see where we are.
+	var/image/cloaked_selfimage
+
+	/// Reference to atom being orbited.
 	var/atom/orbit_target
 
 /atom/movable/Destroy(force)
@@ -93,8 +103,8 @@
 
 /////////////////////////////////////////////////////////////////
 
-//called when src is thrown into hit_atom
-/atom/movable/proc/throw_impact(atom/hit_atom, var/speed)
+/// Called when src is thrown into hit_atom
+/atom/movable/proc/throw_impact(atom/hit_atom, speed)
 	if(istype(hit_atom,/mob/living))
 		var/mob/living/M = hit_atom
 		if(M.buckled == src)
@@ -112,13 +122,15 @@
 		var/turf/T = hit_atom
 		T.hitby(src,speed)
 
-//decided whether a movable atom being thrown can pass through the turf it is in.
-/atom/movable/proc/hit_check(var/speed)
+/// Decided whether a movable atom being thrown can pass through the turf it is in.
+/atom/movable/proc/hit_check(speed)
 	if(src.throwing)
 		for(var/atom/A in get_turf(src))
-			if(A == src) continue
+			if(A == src)
+				continue
 			if(istype(A,/mob/living))
-				if(A:lying) continue
+				if(A:lying)
+					continue
 				src.throw_impact(A,speed)
 			if(isobj(A))
 				if(!A.density || A.throwpass)
@@ -133,95 +145,30 @@
 					continue
 				src.throw_impact(A,speed)
 
-/atom/movable/proc/throw_at(atom/target, range, speed, thrower)
-	if(!target || !src)
-		return 0
-	if(target.z != src.z)
-		return 0
-	//use a modified version of Bresenham's algorithm to get from the atom's current position to that of the target
-	src.throwing = 1
-	src.thrower = thrower
-	src.throw_source = get_turf(src)	//store the origin turf
-	src.pixel_z = 0
-	if(usr)
-		if(HULK in usr.mutations)
-			src.throwing = 2 // really strong throw!
+/// If this returns FALSE then callback will not be called.
+/atom/movable/proc/throw_at(atom/target, range, speed, mob/thrower, spin = TRUE, datum/callback/callback)
+	. = TRUE
+	if(!target || speed <= 0 || QDELETED(src) || (target.z != src.z))
+		return FALSE
 
-	var/dist_travelled = 0
-	var/dist_since_sleep = 0
-	var/area/a = get_area(src.loc)
+	if(pulledby)
+		pulledby.stop_pulling()
 
-	var/dist_x = abs(target.x - src.x)
-	var/dist_y = abs(target.y - src.y)
+	var/datum/thrownthing/TT = new(src, target, range, speed, thrower, callback)
+	throwing = TT
 
-	var/dx
-	if (target.x > src.x)
-		dx = EAST
-	else
-		dx = WEST
+	pixel_z = 0
+	if(spin && does_spin)
+		SpinAnimation(4,1)
 
-	var/dy
-	if (target.y > src.y)
-		dy = NORTH
-	else
-		dy = SOUTH
-
-	var/error
-	var/major_dir
-	var/major_dist
-	var/minor_dir
-	var/minor_dist
-	if(dist_x > dist_y)
-		error = dist_x/2 - dist_y
-		major_dir = dx
-		major_dist = dist_x
-		minor_dir = dy
-		minor_dist = dist_y
-	else
-		error = dist_y/2 - dist_x
-		major_dir = dy
-		major_dist = dist_y
-		minor_dir = dx
-		minor_dist = dist_x
-
-	while(src && target && src.throwing && istype(src.loc, /turf) \
-		  && ((abs(target.x - src.x)+abs(target.y - src.y) > 0 && dist_travelled < range) \
-		  	   || (a && a.has_gravity == 0) \
-			   || istype(src.loc, /turf/space)))
-		// only stop when we've gone the whole distance (or max throw range) and are on a non-space tile, or hit something, or hit the end of the map, or someone picks it up
-		var/atom/step
-		if(error >= 0)
-			step = get_step(src, major_dir)
-			error -= minor_dist
-		else
-			step = get_step(src, minor_dir)
-			error += major_dist
-		if(!step) // going off the edge of the map makes get_step return null, don't let things go off the edge
-			break
-		src.Move(step)
-		hit_check(speed)
-		dist_travelled++
-		dist_since_sleep++
-		if(dist_since_sleep >= speed)
-			dist_since_sleep = 0
-			sleep(1)
-		a = get_area(src.loc)
-		// and yet it moves
-		if(src.does_spin)
-			src.SpinAnimation(speed = 4, loops = 1)
-
-	//done throwing, either because it hit something or it finished moving
-	if(isobj(src)) src.throw_impact(get_turf(src),speed)
-	src.throwing = 0
-	src.thrower = null
-	src.throw_source = null
-	fall()
-
+	SSthrowing.processing[src] = TT
+	if(SSthrowing.state == SS_PAUSED && length(SSthrowing.currentrun))
+		SSthrowing.currentrun[src] = TT
 
 //Overlays
 /atom/movable/overlay
 	var/atom/master = null
-	anchored = 1
+	anchored = TRUE
 
 /atom/movable/overlay/attackby(a, b)
 	if (src.master)
@@ -444,13 +391,15 @@
 	G.maptext_x = -128 + (world.icon_size * 0.5)
 	G.maptext_y = 32
 	G.plane = PLANE_GHOSTS
+	G.loc = null		// lol
 	vis_contents += G
-	if(G.loc != src)
-		G.forceMove(src)
 	return G
 
 /atom/movable/ghost_tag_container
+	// no mouse opacity
+	name = ""
 	var/atom/movable/master
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /atom/movable/ghost_tag_container/Destroy()
 	if(istype(master))

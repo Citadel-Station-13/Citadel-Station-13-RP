@@ -5,7 +5,7 @@
 
 	var/motd = config.motd
 	if(motd)
-		to_chat(src, "<div class=\"motd\">[motd]</div>", handle_whitespace=FALSE)
+		to_chat(src, "<blockquote class=\"motd\">[motd]</blockquote>", handle_whitespace=FALSE)
 	else
 		to_chat(src, "<span class='notice'>The Message of the Day has not been set.</span>")
 	to_chat(src, getAlertDesc())
@@ -131,7 +131,7 @@
 						display_name = "[holder.fakekey]/([src.key])"
 					else
 						display_name = holder.fakekey
-			if(holder && !holder.fakekey && (holder.rights & R_ADMIN) && config_legacy.allow_admin_ooccolor) // keeping this for the badmins
+			if(holder && !holder.fakekey && (holder.rights & R_ADMIN) && CONFIG_GET(flag/allow_admin_ooccolor)) // keeping this for the badmins
 				to_chat(target, "<span class='prefix [ooc_style]'><span class='ooc'><font color='[prefs.ooccolor]'>" + "OOC: " + "<EM>[display_name]: </EM><span class='linkify'>[msg]</span></span></span></font>")
 			else
 				to_chat(target, "<span class='ooc'><span class='[ooc_style]'><span class='message'>OOC: <EM>[display_name]: </EM><span class='linkify'>[msg]</span></span></span></span>")
@@ -200,12 +200,11 @@
 		display_name = holder.fakekey
 	if(mob.stat != DEAD)
 		display_name = mob.name
-	//VOREStation Add - Resleeving shenanigan prevention
+	// Resleeving shenanigan prevention.
 	if(ishuman(mob))
 		var/mob/living/carbon/human/H = mob
 		if(H.original_player && H.original_player != H.ckey) //In a body not their own
 			display_name = "[H.mind.name] (as [H.name])"
-	//VOREStation Add End
 
 	// Everyone in normal viewing range of the LOOC
 	for(var/mob/viewer in m_viewers)

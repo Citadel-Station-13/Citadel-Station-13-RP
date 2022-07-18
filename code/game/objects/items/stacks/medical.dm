@@ -195,7 +195,6 @@
 					user.visible_message("<span class='notice'>\The [user] places a bandaid over \a [W.desc] on [M]'s [affecting.name].</span>", \
 					                              "<span class='notice'>You place a bandaid over \a [W.desc] on [M]'s [affecting.name].</span>" )
 				W.bandage()
-				// W.disinfect() // VOREStation - Tech1 should not disinfect
 				playsound(src, pick(apply_sounds), 25)
 				used++
 				M.bitten = 0
@@ -255,7 +254,7 @@
 	singular_name = "advanced trauma kit"
 	desc = "An advanced trauma kit for severe injuries."
 	icon_state = "traumakit"
-	heal_brute = 7 //VOREStation Edit
+	heal_brute = 7
 	origin_tech = list(TECH_BIO = 1)
 	apply_sounds = list('sound/effects/rip1.ogg','sound/effects/rip2.ogg','sound/effects/tape.ogg')
 
@@ -283,8 +282,6 @@
 					continue
 				if (W.bandaged && W.disinfected)
 					continue
-				//if(used == amount) //VOREStation Edit
-				//	break //VOREStation Edit
 				if(!do_mob(user, M, W.damage/5))
 					to_chat(user, "<span class='notice'>You must stand still to bandage wounds.</span>")
 					break
@@ -304,8 +301,8 @@
 				W.disinfect()
 				W.heal_damage(heal_brute)
 				playsound(src, pick(apply_sounds), 25)
-				used = 1 //VOREStation Edit
-				update_icon() // VOREStation Edit - Support for stack icons
+				used = 1
+				update_icon() //  Support for stack icons
 			affecting.update_damages()
 			if(used == amount)
 				if(affecting.is_bandaged())
@@ -319,7 +316,7 @@
 	singular_name = "advanced burn kit"
 	desc = "An advanced treatment kit for severe burns."
 	icon_state = "burnkit"
-	heal_burn = 7 //VOREStation Edit
+	heal_burn = 7
 	origin_tech = list(TECH_BIO = 1)
 	apply_sounds = list('sound/effects/ointment.ogg')
 
@@ -352,7 +349,7 @@
 			use(1)
 			affecting.salve()
 			playsound(src, pick(apply_sounds), 25)
-			update_icon() // VOREStation Edit - Support for stack icons
+			update_icon() // Support for stack icons
 
 /obj/item/stack/medical/splint
 	name = "medical splints"

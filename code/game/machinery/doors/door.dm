@@ -107,8 +107,8 @@
 		M.last_bumped = world.time
 		if(M.restrained() && !check_access(null))
 			return
-		else if(istype(M, /mob/living/simple_mob/animal/passive/mouse) && !(M.ckey))	//VOREStation Edit: Make wild mice
-			return																		//VOREStation Edit: unable to open doors
+		else if(istype(M, /mob/living/simple_mob/animal/passive/mouse) && !(M.ckey))
+			return
 		else
 			bumpopen(M)
 
@@ -215,8 +215,8 @@
 	src.add_fingerprint(user, 0, I)
 
 	if(istype(I))
-		if(attackby_vr(I, user))	//VOREStation begin: Fireproofing
-			return					//VOREStation begin: Fireproofing
+		if(attackby_vr(I, user))
+			return
 		if(istype(I, /obj/item/stack/material) && I.get_material_name() == src.get_material_name())
 			if(machine_stat & BROKEN)
 				to_chat(user, "<span class='notice'>It looks like \the [src] is pretty busted. It's going to need more than just patching up now.</span>")
@@ -488,7 +488,7 @@
 
 	for(var/turf/simulated/turf in locs)
 		update_heat_protection(turf)
-		air_master.mark_for_update(turf)
+		turf.queue_zone_update()
 
 	return 1
 

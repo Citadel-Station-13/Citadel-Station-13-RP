@@ -582,7 +582,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/medical/paramed)
 "aaY" = (
-/atom/movable/landmark/spawnpoint/job/paramedic,
+/obj/landmark/spawnpoint/job/paramedic,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
@@ -752,7 +752,7 @@
 /area/tether/surfacebase/surface_one_hall)
 "abi" = (
 /obj/machinery/hologram/holopad,
-/atom/movable/landmark/spawnpoint/job/paramedic,
+/obj/landmark/spawnpoint/job/paramedic,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -1068,7 +1068,7 @@
 /turf/simulated/floor/carpet/blue,
 /area/tether/surfacebase/medical/mentalhealth)
 "abV" = (
-/atom/movable/landmark/spawnpoint/job/psychiatrist,
+/obj/landmark/spawnpoint/job/psychiatrist,
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
@@ -1225,7 +1225,7 @@
 /area/maintenance/lower/mining_eva)
 "ach" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/atom/movable/landmark/spawnpoint/job/paramedic,
+/obj/landmark/spawnpoint/job/paramedic,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
@@ -1522,7 +1522,7 @@
 "acJ" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
-/atom/movable/landmark{
+/obj/landmark{
 	name = "lightsout"
 	},
 /turf/simulated/floor/tiled,
@@ -5066,7 +5066,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/job/scientist,
+/obj/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/tiled/white,
 /area/rnd/chemistry_lab)
 "aiI" = (
@@ -6206,7 +6206,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
 	},
-/atom/movable/landmark{
+/obj/landmark{
 	name = "morphspawn"
 	},
 /turf/simulated/floor/tiled,
@@ -7353,7 +7353,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
-/atom/movable/landmark{
+/obj/landmark{
 	name = "morphspawn"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
@@ -7383,7 +7383,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/tankstorage)
 "amw" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "lightsout"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -7499,12 +7499,12 @@
 /turf/simulated/floor/tiled,
 /area/storage/primary)
 "amG" = (
-/atom/movable/landmark/spawnpoint/job/assistant,
+/obj/landmark/spawnpoint/job/assistant,
 /turf/simulated/floor/tiled,
 /area/storage/primary)
 "amH" = (
 /obj/item/stool,
-/atom/movable/landmark/spawnpoint/job/assistant,
+/obj/landmark/spawnpoint/job/assistant,
 /turf/simulated/floor/tiled,
 /area/storage/primary)
 "amI" = (
@@ -9521,7 +9521,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/atom/movable/landmark{
+/obj/landmark{
 	name = "morphspawn"
 	},
 /turf/simulated/floor/tiled,
@@ -12322,7 +12322,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/job/medical_doctor,
+/obj/landmark/spawnpoint/job/medical_doctor,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
 	},
@@ -13528,7 +13528,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/solars)
 "awV" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "lightsout"
 	},
 /obj/effect/floor_decal/borderfloorwhite/corner{
@@ -13869,7 +13869,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/job/medical_doctor,
+/obj/landmark/spawnpoint/job/medical_doctor,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -14840,7 +14840,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "ayK" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "lightsout"
 	},
 /turf/simulated/floor/tiled/white,
@@ -15239,7 +15239,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/atom/movable/landmark/spawnpoint/latejoin/station/tram,
+/obj/landmark/spawnpoint/latejoin/station/tram,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "azo" = (
@@ -15249,7 +15249,7 @@
 /obj/machinery/status_display{
 	pixel_y = 30
 	},
-/atom/movable/landmark/spawnpoint/latejoin/station/tram,
+/obj/landmark/spawnpoint/latejoin/station/tram,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "azp" = (
@@ -16993,7 +16993,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
 "aCi" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "maint_pred"
 	},
 /turf/simulated/floor/plating,
@@ -18259,7 +18259,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "aEE" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "maint_pred"
 	},
 /turf/simulated/floor/plating,
@@ -18807,7 +18807,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/atom/movable/landmark/spawnpoint/job/bartender,
+/obj/landmark/spawnpoint/job/bartender,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_dining)
 "aFC" = (
@@ -19404,7 +19404,7 @@
 /area/tether/surfacebase/cargostore/office)
 "aGs" = (
 /obj/structure/bed/chair/sofa/brown/corner,
-/atom/movable/landmark/spawnpoint/job/cargo_technician,
+/obj/landmark/spawnpoint/job/cargo_technician,
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
 	},
@@ -20104,7 +20104,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/cargostore)
 "aHA" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "lightsout"
 	},
 /turf/simulated/floor/tiled,
@@ -20765,7 +20765,7 @@
 	},
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Substation - Atmospherics";
-	charge = 2e+006
+	charge = 2000
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_atmos)
@@ -21929,7 +21929,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "aKI" = (
-/atom/movable/landmark/spawnpoint/job/cargo_technician,
+/obj/landmark/spawnpoint/job/cargo_technician,
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
@@ -22059,7 +22059,7 @@
 /area/engineering/atmos)
 "aKV" = (
 /obj/item/stool,
-/atom/movable/landmark/spawnpoint/job/atmospheric_technician,
+/obj/landmark/spawnpoint/job/atmospheric_technician,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aKW" = (
@@ -23555,7 +23555,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aNI" = (
-/atom/movable/landmark/spawnpoint/job/atmospheric_technician,
+/obj/landmark/spawnpoint/job/atmospheric_technician,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aNJ" = (
@@ -30502,7 +30502,7 @@
 	dir = 4;
 	pixel_x = -23
 	},
-/atom/movable/landmark{
+/obj/landmark{
 	name = "morphspawn"
 	},
 /turf/simulated/floor/tiled,
@@ -30644,7 +30644,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/external)
 "bcV" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "droppod_landing"
 	},
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
@@ -31352,7 +31352,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 1
 	},
-/atom/movable/landmark/spawnpoint/latejoin/station/tram,
+/obj/landmark/spawnpoint/latejoin/station/tram,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "bTt" = (
@@ -31388,7 +31388,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/atom/movable/landmark{
+/obj/landmark{
 	name = "lightsout"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -31904,7 +31904,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/weaponsrange)
 "dJZ" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "lightsout"
 	},
 /obj/structure/cable/green{
@@ -32812,7 +32812,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/atom/movable/landmark{
+/obj/landmark{
 	name = "lightsout"
 	},
 /turf/simulated/floor/tiled,
@@ -33710,10 +33710,10 @@
 /turf/simulated/floor/tiled/techfloor/grid/virgo3b,
 /area/tether/surfacebase/tunnel)
 "jbU" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "maint_pred"
 	},
-/atom/movable/landmark{
+/obj/landmark{
 	name = "morphspawn"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -35299,7 +35299,7 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/atom/movable/landmark{
+/obj/landmark{
 	name = "lightsout"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -35329,7 +35329,7 @@
 	name = "asset retention console";
 	pixel_y = -30
 	},
-/atom/movable/landmark/spawnpoint/latejoin/station/tram,
+/obj/landmark/spawnpoint/latejoin/station/tram,
 /obj/structure/cable/orange{
 	d1 = 4;
 	d2 = 8;
@@ -36567,7 +36567,7 @@
 	dir = 10
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4,
-/atom/movable/landmark/spawnpoint/latejoin/station/tram,
+/obj/landmark/spawnpoint/latejoin/station/tram,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "qhk" = (
@@ -37031,7 +37031,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/latejoin/station/tram,
+/obj/landmark/spawnpoint/latejoin/station/tram,
 /obj/structure/cable/orange{
 	d1 = 4;
 	d2 = 8;
@@ -37222,7 +37222,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/weaponsrange)
 "rIU" = (
-/atom/movable/landmark/spawnpoint/job/mime,
+/obj/landmark/spawnpoint/job/mime,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/surfacebase/funny/mimeoffice)
 "rJi" = (
@@ -37859,7 +37859,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/latejoin/station/tram,
+/obj/landmark/spawnpoint/latejoin/station/tram,
 /obj/structure/cable/orange{
 	d1 = 4;
 	d2 = 8;
@@ -39326,7 +39326,7 @@
 /area/tether/surfacebase/outside/outside1)
 "xRP" = (
 /obj/effect/floor_decal/rust,
-/atom/movable/landmark/spawnpoint/job/clown,
+/obj/landmark/spawnpoint/job/clown,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -39500,7 +39500,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/job/security_officer,
+/obj/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/tiled,
 /area/security/checkpoint)
 "ylH" = (

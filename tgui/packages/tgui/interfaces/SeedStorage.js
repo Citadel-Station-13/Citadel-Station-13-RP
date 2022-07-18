@@ -45,12 +45,13 @@ export const SeedStorage = (props, context) => {
                 </Button>
               </Flex.Item>
               <Flex.Item grow={1}>
-                <Button
+                <Button.Confirm
+                  confirm
                   fluid
                   icon="trash"
                   onClick={() => act("purge", { id: seed.id })}>
                   Purge
-                </Button>
+                </Button.Confirm>
               </Flex.Item>
             </Flex>
           ))}

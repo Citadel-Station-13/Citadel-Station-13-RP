@@ -67,6 +67,8 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define SHUTTLE_IDLE		0
 #define SHUTTLE_WARMUP		1
 #define SHUTTLE_INTRANSIT	2
+/// Yup that can happen now
+#define SHUTTLE_CRASHED	3
 
 // Sound defines for shuttles.
 #define HYPERSPACE_WARMUP	0
@@ -80,13 +82,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define WAIT_ARRIVE		3
 #define WAIT_FINISH		4
 #define DO_AUTOPILOT	5
-
-// Shuttle madness!
-/// Yup that can happen now
-#define SHUTTLE_CRASHED	3
-/// Shield from bluespace teleportation (telescience)
-#define BLUE_SHIELDED	2
-
 
 // Bluespace shelter deploy checks
 #define SHELTER_DEPLOY_ALLOWED			"allowed"
@@ -121,10 +116,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define USELESS_JOB	"Visitor"
 
 #define ECO_MODIFIER 10
-
-// Area flags, possibly more to come
-/// This area is shielded from radiation, clearly.
-#define RAD_SHIELDED	1
 
 // Convoluted setup so defines can be supplied by Bay12 main server compile script.
 // Should still work fine for people jamming the icons into their repo.
@@ -293,10 +284,10 @@ var/list/economy_station_departments = list(
 	DEPARTMENT_PLANET,
 	DEPARTMENT_RESEARCH,
 	DEPARTMENT_SECURITY
-) //VOREStation Edit
+)
 
 
-// vorstation off-duty time
+// Off-duty time
 #define PTO_CARGO			"Cargo"
 #define PTO_CIVILIAN		"Civilian"
 #define PTO_COMMAND			"Command"
@@ -569,6 +560,3 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 		"purple"	= "darkslateblue",	\
 		"pink"		= "lightgrey"		\
 	)
-
-/// The amount of cell charge to use per 1 nutrition, given that synthetics are full at 450 nutrition
-#define SYNTHETIC_NUTRITION_CHARGE_RATE 20

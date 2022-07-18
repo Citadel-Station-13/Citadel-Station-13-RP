@@ -70,6 +70,12 @@
 // Management of mob view displacement. look to shift view to the ship on the overmap; unlook to shift back.
 
 /obj/machinery/computer/ship/proc/look(mob/user)
+	var/WR = WEAKREF(user)
+	if(WR in viewers)
+		return
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, /obj/machinery/computer/ship/proc/unlook)
+	// TODO GLOB.stat_set_event.register(user, src, /obj/machinery/computer/ship/proc/unlook)
+	LAZYDISTINCTADD(viewers, WR)
 	if(linked)
 		user.reset_perspective(linked)
 	user.set_machine(src)
@@ -78,16 +84,10 @@
 		L.looking_elsewhere = 1
 		L.handle_vision()
 	user.set_viewsize(world.view + extra_view)
-	var/WR = WEAKREF(user)
-	if(WR in viewers)
-		return
-	RegisterSignal(user, COMSIG_MOVABLE_MOVED, /obj/machinery/computer/ship/proc/unlook)
-	// TODO GLOB.stat_set_event.register(user, src, /obj/machinery/computer/ship/proc/unlook)
-	LAZYDISTINCTADD(viewers, WR)
 
 /obj/machinery/computer/ship/proc/unlook(mob/user)
 	user.reset_perspective()
-	user.set_viewsize()	// Reset to default
+	user.set_viewsize(world.view)
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED, /obj/machinery/computer/ship/proc/unlook)
 	if(isliving(user))
 		var/mob/living/L = user

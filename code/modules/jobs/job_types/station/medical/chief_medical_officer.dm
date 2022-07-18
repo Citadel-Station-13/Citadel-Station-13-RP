@@ -53,9 +53,12 @@
 	shoes = /obj/item/clothing/shoes/brown
 	l_hand = /obj/item/storage/firstaid/adv
 	r_pocket = /obj/item/healthanalyzer
+
 	id_type = /obj/item/card/id/medical/head
 	pda_type = /obj/item/pda/heads/cmo
 	pda_slot = slot_l_store
+
 	backpack = /obj/item/storage/backpack/medic
 	satchel_one = /obj/item/storage/backpack/satchel/med
 	messenger_bag = /obj/item/storage/backpack/messenger/med
+	dufflebag = /obj/item/storage/backpack/dufflebag/med

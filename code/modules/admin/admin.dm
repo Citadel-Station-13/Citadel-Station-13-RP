@@ -205,7 +205,7 @@ proc/admin_notice(var/message, var/rights)
 		</body></html>
 	"}
 
-	usr << browse(body, "window=adminplayeropts;size=550x515")
+	usr << browse(body, "window=[M.ckey]_playerpanel;size=550x515")
 	feedback_add_details("admin_verb","SPP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 
@@ -649,7 +649,7 @@ proc/admin_notice(var/message, var/rights)
 		log_admin("Announce: [key_name(usr)] : [message]")
 	feedback_add_details("admin_verb","A") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-//VOREStation Edit to this verb for the purpose of making it compliant with the annunciator system
+/// This verb for the purpose of making it compliant with the announcer system.
 var/datum/legacy_announcement/priority/admin_pri_announcer = new
 var/datum/legacy_announcement/minor/admin_min_announcer = new
 /datum/admins/proc/intercom()
@@ -766,10 +766,7 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 		return
 
 	config_legacy.ooc_allowed = !(config_legacy.ooc_allowed)
-	if (config_legacy.ooc_allowed)
-		to_chat(world, "<B>The OOC channel has been globally enabled!</B>")
-	else
-		to_chat(world, "<B>The OOC channel has been globally disabled!</B>")
+	to_chat(world, "<span class='oocplain'><B>The OOC channel has been globally [config_legacy.ooc_allowed ? "enabled" : "disabled"].</B></span>")
 	log_and_message_admins("toggled OOC.")
 	feedback_add_details("admin_verb","TOOC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -782,10 +779,7 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 		return
 
 	config_legacy.looc_allowed = !(config_legacy.looc_allowed)
-	if (config_legacy.looc_allowed)
-		to_chat(world, "<B>The LOOC channel has been globally enabled!</B>")
-	else
-		to_chat(world, "<B>The LOOC channel has been globally disabled!</B>")
+	to_chat(world, "<span class='oocplain'><B>The LOOC channel has been globally [config_legacy.looc_allowed ? "enabled" : "disabled"].</B></span>")
 	log_and_message_admins("toggled LOOC.")
 	feedback_add_details("admin_verb","TLOOC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -799,10 +793,7 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 		return
 
 	config_legacy.dsay_allowed = !(config_legacy.dsay_allowed)
-	if (config_legacy.dsay_allowed)
-		to_chat(world, "<B>Deadchat has been globally enabled!</B>")
-	else
-		to_chat(world, "<B>Deadchat has been globally disabled!</B>")
+	to_chat(world, "<span class='oocplain'><B>Deadchat has been globally [config_legacy.dsay_allowed ? "enabled" : "disabled"].</B></span>")
 	log_admin("[key_name(usr)] toggled deadchat.")
 	message_admins("[key_name_admin(usr)] toggled deadchat.", 1)
 	feedback_add_details("admin_verb","TDSAY") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc
@@ -828,7 +819,7 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 	if(!check_rights(R_ADMIN))
 		return
 
-	world.update_hub_visibility(!world.visibility)				//CITADEL CHANGE - Use the ported from TG proc in hub.dm instead of setting visibility
+	world.update_hub_visibility(!world.visibility)
 	log_admin("[key_name(usr)] toggled hub visibility.")
 	message_admins("[key_name_admin(usr)] toggled hub visibility.  The server is now [world.visibility ? "visible" : "invisible"] ([world.visibility]).", 1)
 	feedback_add_details("admin_verb","THUB") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc
@@ -1430,7 +1421,7 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 	set category = "Debug"
 	set name = "Set Telecrystals"
 	set desc = "Allows admins to change telecrystals of a user."
-	set popup_menu = FALSE //VOREStation Edit - Declutter.
+	set popup_menu = FALSE
 	var/crystals
 
 	if(check_rights(R_ADMIN))
@@ -1446,7 +1437,7 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 	set category = "Debug"
 	set name = "Add Telecrystals"
 	set desc = "Allows admins to change telecrystals of a user by addition."
-	set popup_menu = FALSE //VOREStation Edit - Declutter.
+	set popup_menu = FALSE
 	var/crystals
 
 	if(check_rights(R_ADMIN))

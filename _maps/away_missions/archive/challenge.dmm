@@ -32,7 +32,7 @@
 /turf/simulated/floor/airless,
 /area/awaymission/challenge/start)
 "al" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor/airless,

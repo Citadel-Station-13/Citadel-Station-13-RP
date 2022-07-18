@@ -16,7 +16,7 @@
 /// Z-levels exempt from xenoarch digsite generation.
 #define MAP_LEVEL_XENOARCH_EXEMPT 0x080
 // Misc map defines.
-///VOREStation Edit
+
 /// Automatically created submaps are forbidden from being this close to the main map's edge.
 #define SUBMAP_MAP_EDGE_PAD 8
 // TG MAP LOADING SYSTEM PENDING
@@ -165,3 +165,6 @@ require only minor tweaks.
 #define AWAY_MISSION_NAME "Away Mission"
 #define VIRT_REALITY_NAME "Virtual Reality"
 */
+
+/// Distance from edge to move to another z-level.
+#define TRANSITIONEDGE				1

@@ -1,6 +1,6 @@
 import { flow } from 'common/fp';
 import { filter, sortBy } from 'common/collections';
-import { useBackend, useSharedState } from "../backend";
+import { useBackend, useLocalState } from "../backend";
 import { Box, Button, Flex, Input, Section, Dropdown } from "../components";
 import { Window } from "../layouts";
 import { Materials } from "./ExosuitFabricator";
@@ -35,12 +35,12 @@ export const Autolathe = (props, context) => {
     categories,
   } = data;
 
-  const [category, setCategory] = useSharedState(context, "category", 0);
+  const [category, setCategory] = useLocalState(context, "category", 0);
 
   const [
     searchText,
     setSearchText,
-  ] = useSharedState(context, "search_text", "");
+  ] = useLocalState(context, "search_text", "");
 
   const testSearch = createSearch(searchText, recipe => recipe.name);
 
