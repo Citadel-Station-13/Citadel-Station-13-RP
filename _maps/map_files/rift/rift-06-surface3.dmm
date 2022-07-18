@@ -2143,6 +2143,13 @@
 /obj/machinery/computer/ship/engines,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/cockpit)
+"dE" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/ladder,
+/turf/simulated/floor/plating,
+/area/maintenance/commandmaint)
 "dF" = (
 /obj/machinery/door/airlock/maintenance/rnd{
 	req_one_access = list(19,43,67)
@@ -50698,7 +50705,7 @@ fq
 fq
 fq
 YF
-vS
+dE
 aA
 ni
 Yh
