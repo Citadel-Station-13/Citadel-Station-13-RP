@@ -4581,6 +4581,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/cryo/station)
+"jI" = (
+/obj/item/bone/skull,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "jJ" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -9742,6 +9746,10 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
+"ya" = (
+/obj/item/bone/leg,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "yb" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -9823,6 +9831,10 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
+"yI" = (
+/obj/structure/flora/ausbushes/lavendergrass,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "yT" = (
 /obj/effect/map_effect/portal/line/side_a{
 	dir = 4
@@ -10088,6 +10100,10 @@
 /obj/machinery/meter,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
+"Be" = (
+/obj/item/bone/arm,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "Bh" = (
 /obj/effect/floor_decal/industrial/warning/corner,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -10348,6 +10364,10 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
+"DD" = (
+/obj/structure/flora/grass/brown,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "DO" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin{
@@ -11182,6 +11202,10 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/refinery)
+"Kb" = (
+/obj/effect/decal/remains/ribcage,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "Kc" = (
 /obj/machinery/mineral/unloading_machine,
 /turf/simulated/floor/tiled/dark,
@@ -11206,6 +11230,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
+"Kk" = (
+/mob/living/simple_mob/animal/icegoat,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "Km" = (
 /obj/machinery/door/firedoor/glass/hidden,
 /turf/simulated/floor/tiled/monotile,
@@ -11374,6 +11402,10 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
+"Lp" = (
+/obj/structure/flora/grass/green,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "Lq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -11389,6 +11421,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
+"Lv" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "LF" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -11428,6 +11464,10 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
+"LT" = (
+/obj/item/bone/ribs,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "LY" = (
 /obj/structure/morgue/crematorium{
 	id = "chapel_crematorium"
@@ -12096,6 +12136,10 @@
 /obj/effect/zone_divider,
 /turf/simulated/mineral/icerock,
 /area/rift/surfacebase/underground/under2)
+"QX" = (
+/obj/effect/decal/remains/tajaran,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "Rb" = (
 /obj/structure/railing,
 /obj/structure/closet/crate,
@@ -12260,6 +12304,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/chapel/observation)
+"SB" = (
+/obj/effect/decal/remains/xeno,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
+"SG" = (
+/obj/item/digestion_remains/skull/teshari,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "SH" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
@@ -12295,6 +12347,10 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/observation)
+"SZ" = (
+/obj/structure/flora/tree/dead,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "Td" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -15986,7 +16042,7 @@ aa
 aa
 aa
 su
-su
+yI
 su
 su
 su
@@ -16374,13 +16430,13 @@ aa
 aa
 aa
 su
+Lv
+su
+Be
 su
 su
 su
-su
-su
-su
-su
+DD
 su
 aa
 aa
@@ -16571,7 +16627,7 @@ su
 su
 su
 su
-su
+Kk
 su
 su
 su
@@ -16763,11 +16819,11 @@ aa
 aa
 su
 su
+QX
 su
 su
 su
-su
-su
+LT
 su
 su
 aa
@@ -16957,7 +17013,7 @@ aa
 aa
 su
 su
-su
+yI
 su
 su
 su
@@ -17153,11 +17209,11 @@ su
 su
 su
 su
+Lv
+SG
 su
 su
-su
-su
-su
+yI
 aa
 aa
 aa
@@ -17344,7 +17400,7 @@ aa
 aa
 su
 su
-su
+jI
 su
 su
 su
@@ -17541,7 +17597,7 @@ su
 su
 su
 su
-su
+ya
 su
 su
 su
@@ -17924,12 +17980,12 @@ aa
 aa
 aa
 aa
+SZ
+DD
 su
 su
 su
-su
-su
-su
+LT
 su
 su
 su
@@ -18121,11 +18177,11 @@ aa
 su
 su
 su
+SB
 su
 su
 su
-su
-su
+Lp
 su
 aa
 aa
@@ -18314,10 +18370,10 @@ aa
 aa
 su
 su
+yI
 su
 su
-su
-su
+Kb
 su
 su
 su

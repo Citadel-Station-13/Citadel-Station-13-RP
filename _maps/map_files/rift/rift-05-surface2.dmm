@@ -3211,9 +3211,8 @@
 /obj/machinery/atmospherics/pipe/zpipe/up/supply,
 /obj/structure/cable/green,
 /obj/structure/cable/green{
-	d1 = 16;
-	d2 = 0;
-	icon_state = "16-0"
+	d1 = 32;
+	icon_state = "32-1"
 	},
 /obj/structure/disposalpipe/up,
 /turf/simulated/floor/tiled/dark,
@@ -6408,9 +6407,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_processing)
-"eTJ" = (
-/turf/simulated/open/lythios43c,
-/area/rnd/outpost/xenobiology/outpost_slimepens)
 "eTT" = (
 /obj/machinery/light{
 	dir = 8
@@ -40394,7 +40390,7 @@ tui
 trs
 ftd
 tui
-eTJ
+tui
 pKu
 tui
 tui
