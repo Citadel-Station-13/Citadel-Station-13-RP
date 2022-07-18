@@ -12,7 +12,7 @@
 	do_colouration = 1 //Almost all of them have it, COLOR_ADD
 	color_blend_mode = ICON_ADD
 
-///Empty list is unrestricted. Should only restrict the ones that make NO SENSE on other species,
+	///Empty list is unrestricted. Should only restrict the ones that make NO SENSE on other species,
 	//like Tajaran inner-ear coloring overlay stuff.
 	species_allowed = list()
 

@@ -44,27 +44,6 @@
 	var/color_blend_mode = ICON_MULTIPLY	// If checked.
 
 
-
-
-
-
-
-/*
-///////////////////////////////////
-/  =---------------------------=  /
-/  == Alien Style Definitions ==  /
-/  =---------------------------=  /
-///////////////////////////////////
-*/
-
-/datum/sprite_accessory/facial_hair
-
-
-
-
-
-
-
 //skin styles - WIP
 //going to have to re-integrate this with surgery
 //let the icon_state hold an icon preview for now
