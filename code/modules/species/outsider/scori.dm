@@ -42,9 +42,14 @@
 	toxins_mod = 1.25
 
 	//Adapted to Surt's hot, thin atmosphere.
-	minimum_breath_pressure = 10
+	breath_type = /datum/gas/carbon_dioxide
+	exhale_type = /datum/gas/oxygen
+	minimum_breath_pressure = 11
 	oxy_mod = 0.25
 	heat_discomfort_level = T0C+19
+	warning_low_pressure = 10
+	hazard_low_pressure  = 5
+	safe_pressure = 18
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/tie_hair)
