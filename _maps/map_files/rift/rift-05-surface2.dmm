@@ -49,7 +49,7 @@
 	dir = 4
 	},
 /obj/structure/grille,
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "aeF" = (
 /obj/structure/bed/chair/sofa/black/right{
@@ -141,7 +141,7 @@
 	opacity = 0
 	},
 /obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "akm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1676,7 +1676,7 @@
 	opacity = 0
 	},
 /obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "bgB" = (
 /obj/structure/curtain/open/bed{
@@ -3215,7 +3215,7 @@
 	icon_state = "32-1"
 	},
 /obj/structure/disposalpipe/up,
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "cwg" = (
 /obj/machinery/conveyor{
@@ -11428,7 +11428,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "iru" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -17159,7 +17159,7 @@
 	health = 1e+006
 	},
 /obj/structure/grille,
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "mFW" = (
 /obj/effect/floor_decal/borderfloorblack{

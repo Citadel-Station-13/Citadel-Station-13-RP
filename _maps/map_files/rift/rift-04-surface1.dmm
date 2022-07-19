@@ -4927,15 +4927,12 @@
 "dHs" = (
 /obj/structure/lattice,
 /obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/zpipe/down/scrubbers{
+/obj/machinery/atmospherics/pipe/zpipe/up/scrubbers{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/zpipe/down/supply{
-	dir = 1
-	},
+/obj/machinery/atmospherics/pipe/zpipe/up/supply,
 /obj/structure/cable/green{
-	d1 = 32;
-	icon_state = "32-1"
+	icon_state = "16-0"
 	},
 /obj/structure/window/basic/full,
 /obj/structure/grille,
@@ -4952,7 +4949,7 @@
 /obj/structure/disposalpipe/down{
 	dir = 1
 	},
-/turf/simulated/open,
+/turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_stairs)
 "dHw" = (
 /obj/structure/table/bench/wooden,
