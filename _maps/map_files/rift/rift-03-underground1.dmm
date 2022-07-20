@@ -12639,7 +12639,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/maintenance)
 "AB" = (
-/obj/structure/catwalk,
 /obj/structure/cable{
 	d1 = 16;
 	d2 = 0;
@@ -12651,6 +12650,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "AE" = (
@@ -16403,14 +16403,6 @@
 /obj/structure/grille,
 /turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/rift/surfacebase/underground/under1)
-"QH" = (
-/obj/structure/cable/cyan,
-/obj/machinery/camera/network/engine{
-	dir = 1
-	},
-/obj/machinery/power/rad_collector,
-/turf/simulated/floor/reinforced,
-/area/engineering/engine_core)
 "QJ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -23646,7 +23638,7 @@ Qx
 WR
 WR
 WR
-WR
+rV
 WR
 WR
 WR
@@ -24036,7 +24028,7 @@ WR
 WR
 WR
 WR
-WR
+rV
 WR
 WR
 WR
@@ -24234,7 +24226,7 @@ WR
 WR
 WR
 WR
-WR
+rV
 Zl
 WR
 WR
@@ -24429,8 +24421,8 @@ WR
 WR
 WR
 WR
-WR
-WR
+rV
+rV
 WR
 aa
 aa
@@ -24624,8 +24616,8 @@ WR
 WR
 uW
 WR
-WR
-WR
+rV
+rV
 aa
 aa
 aa
@@ -24819,7 +24811,7 @@ Gg
 wv
 WR
 WR
-WR
+rV
 aa
 aa
 aa
@@ -25595,10 +25587,10 @@ Qw
 Sg
 Qw
 JD
-WR
-WR
-aa
-aa
+sV
+sV
+sV
+sV
 aa
 aa
 aa
@@ -25790,9 +25782,9 @@ Qw
 Qw
 eo
 sV
+es
+es
 sV
-te
-te
 aa
 aa
 aa
@@ -25986,7 +25978,7 @@ xn
 sV
 es
 es
-te
+sV
 aa
 aa
 aa
@@ -26176,11 +26168,11 @@ WR
 WR
 KV
 FP
-WR
+rV
 sV
 es
 es
-te
+sV
 aa
 aa
 aa
@@ -26370,11 +26362,11 @@ WR
 WR
 WR
 To
-WR
+rV
 sV
-es
-es
-te
+sV
+sV
+sV
 aa
 aa
 aa
@@ -26563,12 +26555,12 @@ Qw
 WR
 WR
 WR
+rV
+rV
 WR
-WR
-sV
-sV
-te
-te
+aa
+aa
+aa
 aa
 aa
 aa
@@ -27143,7 +27135,7 @@ FP
 WR
 WR
 WR
-WR
+rV
 WR
 WR
 WR
@@ -27529,7 +27521,7 @@ yP
 Sm
 FP
 WR
-WR
+rV
 WR
 WR
 WR
@@ -28111,7 +28103,7 @@ Va
 Sm
 WR
 WR
-WR
+rV
 WR
 WR
 WR
@@ -34491,7 +34483,7 @@ JL
 JL
 FJ
 mS
-QH
+jN
 JL
 zh
 Um

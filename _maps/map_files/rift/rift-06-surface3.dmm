@@ -2143,6 +2143,20 @@
 /obj/machinery/computer/ship/engines,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/cockpit)
+"dE" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/bridge/bridge_hallway)
 "dF" = (
 /obj/machinery/door/airlock/maintenance/rnd{
 	req_one_access = list(19,43,67)
@@ -7111,7 +7125,6 @@
 "mv" = (
 /obj/structure/closet/emcloset,
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "mw" = (
@@ -20552,6 +20565,15 @@
 /obj/machinery/vending/cola,
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
+"Mg" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/teleporter)
 "Mh" = (
 /obj/machinery/power/apc{
 	name = "south bump";
@@ -21473,7 +21495,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
 "NZ" = (
-/obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lime/border,
 /obj/machinery/light,
@@ -21481,6 +21502,11 @@
 	dir = 1;
 	pixel_y = -24
 	},
+/obj/structure/table/standard{
+	name = "plastic table frame"
+	},
+/obj/item/packageWrap,
+/obj/item/packageWrap,
 /turf/simulated/floor/tiled/steel,
 /area/hydroponics)
 "Oa" = (
@@ -22309,8 +22335,6 @@
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lime/border,
-/obj/item/packageWrap,
-/obj/item/packageWrap,
 /obj/item/destTagger{
 	pixel_x = 4;
 	pixel_y = 3
@@ -48584,7 +48608,7 @@ sT
 DF
 BC
 LK
-bZ
+dE
 IF
 mv
 GU
@@ -49762,7 +49786,7 @@ LV
 yH
 lI
 FZ
-NO
+Mg
 NO
 NO
 hr

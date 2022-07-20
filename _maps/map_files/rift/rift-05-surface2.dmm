@@ -3194,8 +3194,6 @@
 /turf/simulated/wall,
 /area/crew_quarters/heads/hos)
 "cwe" = (
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
 /obj/structure/window/phoronreinforced{
 	dir = 8
 	},
@@ -3207,14 +3205,16 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/atmospherics/pipe/zpipe/up/scrubbers,
-/obj/machinery/atmospherics/pipe/zpipe/up/supply,
+/obj/machinery/atmospherics/pipe/zpipe/down/supply,
 /obj/structure/cable/green,
 /obj/structure/cable/green{
 	d1 = 32;
 	icon_state = "32-1"
 	},
 /obj/structure/disposalpipe/up,
+/obj/machinery/atmospherics/pipe/zpipe/down/scrubbers,
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/grille,
 /turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "cwg" = (
@@ -7840,6 +7840,9 @@
 	pixel_x = -4;
 	pixel_y = -4
 	},
+/obj/machinery/light/small{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/red,
 /area/security/security_equiptment_storage)
 "fQp" = (
@@ -10127,9 +10130,6 @@
 /obj/item/clothing/glasses/hud/security,
 /obj/item/clothing/glasses/sunglasses/sechud,
 /obj/item/clothing/glasses/sunglasses/sechud,
-/obj/machinery/light/small{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/red,
 /area/security/security_equiptment_storage)
 "hxo" = (
@@ -21510,6 +21510,9 @@
 	dir = 10
 	},
 /obj/structure/flora/pottedplant/fern,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/security/brig)
 "pRO" = (
@@ -29107,6 +29110,18 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/range)
+"vVR" = (
+/obj/structure/closet/secure_closet/security,
+/obj/structure/window/basic{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/holowarrant,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/security/security_lockerroom)
 "vWe" = (
 /obj/machinery/power/terminal{
 	dir = 8
@@ -35120,9 +35135,9 @@ uIZ
 uIZ
 uIZ
 uIZ
-uIZ
-uIZ
-uIZ
+pBj
+pBj
+pBj
 uIZ
 uIZ
 uIZ
@@ -35313,8 +35328,8 @@ uIZ
 uIZ
 uIZ
 uIZ
-uIZ
-uIZ
+pBj
+pBj
 pBj
 pBj
 pBj
@@ -35506,8 +35521,8 @@ uIZ
 uIZ
 uIZ
 uIZ
-uIZ
-uIZ
+pBj
+pBj
 pBj
 pBj
 pBj
@@ -35700,7 +35715,7 @@ uIZ
 uIZ
 uIZ
 uIZ
-uIZ
+pBj
 pBj
 pBj
 pBj
@@ -35894,7 +35909,7 @@ uIZ
 uIZ
 uIZ
 uIZ
-uIZ
+pBj
 pBj
 pBj
 pBj
@@ -42523,8 +42538,8 @@ oAD
 oAD
 oLJ
 oLJ
-pBj
-pBj
+oLJ
+oLJ
 pBj
 pBj
 pBj
@@ -42717,7 +42732,7 @@ cUW
 wGI
 oLJ
 oLJ
-pBj
+oLJ
 pBj
 pBj
 pBj
@@ -48861,7 +48876,7 @@ efi
 qvc
 fTU
 ciC
-lUK
+vVR
 iKd
 mjL
 von
