@@ -1,7 +1,6 @@
 /**
  * Small, mechanically supported physical customisation options.
  * Also allows for per-species physical information ('his neck markings are more important than yours').
- * ETA till a downstream ports this and adds boob and penis size: 2 days.
  */
 
 /mob/living/carbon/human/proc/show_descriptors_to(mob/user)
@@ -47,11 +46,11 @@
 	..()
 
 /datum/mob_descriptor/proc/get_third_person_message_start(datum/gender/my_gender)
-	return "They are"
+	return " They are"
 //	return "[my_gender.He] [my_gender.is]"	// Doesn't respect ambiguous_genders species var, can't figure out a fix at the moment
 
 /datum/mob_descriptor/proc/get_first_person_message_start()
-	return "You are"
+	return " You are"
 
 /datum/mob_descriptor/proc/get_standalone_value_descriptor(check_value)
 	if(isnull(check_value))
