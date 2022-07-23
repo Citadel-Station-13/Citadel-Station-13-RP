@@ -3212,7 +3212,7 @@
 	d2 = 2;
 	icon_state = "32-2"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/open,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "cwg" = (
 /obj/machinery/conveyor{
