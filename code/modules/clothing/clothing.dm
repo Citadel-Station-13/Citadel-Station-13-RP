@@ -60,44 +60,28 @@
 	if(enables_planes)
 		user.recalculate_vis()
 
-//BS12: Species-restricted clothing checkw
-#warn kill
-/obj/item/clothing/mob_can_equip(M as mob, slot)
-
-	//if we can't equip the item anyway, don't bother with species_restricted (cuts down on spam)
-	if (!..())
-		return 0
-
-	if(LAZYLEN(species_restricted) && istype(M,/mob/living/carbon/human))
-		var/exclusive = null
-		var/wearable = null
-		var/mob/living/carbon/human/H = M
-
-		if("exclude" in species_restricted)
-			exclusive = 1
-
-		if(H.species)
-			if(exclusive)
-				if(!(H.species.get_worn_legacy_bodytype(H) in species_restricted))
-					wearable = 1
-			else
-				if(H.species.get_worn_legacy_bodytype(H) in species_restricted)
-					wearable = 1
-
-			if(!wearable && !(slot in list(SLOT_ID_LEFT_POCKET, SLOT_ID_RIGHT_POCKET, SLOT_ID_SUIT_STORAGE)))
-				to_chat(H, "<span class='danger'>Your species cannot wear [src].</span>")
-				return 0
-	return 1
-
-/obj/item/clothing/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/clothing/can_equip(mob/M, slot, mob/user, silent, disallow_delay, ignore_fluff)
 	. = ..()
-	if((. == 0) && LAZYLEN(accessories))
-		for(var/obj/item/I in accessories)
-			var/check = I.handle_shield(user, damage, damage_source, attacker, def_zone, attack_text)
 
-			if(check != 0)	// Projectiles sometimes use negatives IIRC, 0 is only returned if something is not blocked.
-				. = check
-				break
+	if(!. || !LAZYLEN(species_restricted))
+		return
+
+	var/exclude_mode = "exclude" in species_restricted
+	var/can_wear = exclude_mode
+
+	var/mob/living/carbon/human/H = M
+
+	if(!istype(H))
+		return exclude_mode
+
+	if((H.species.get_worn_legacy_bodytype(H) in species_restricted) ^ exclude_mode)
+		if(slot in list(SLOT_ID_LEFT_POCKET, SLOT_ID_RIGHT_POCKET, SLOT_ID_SUIT_STORAGE))
+			return TRUE		// don't care, didn't ask
+		if(!silent)
+			to_chat(H, SPAN_DANGER("Your species cannot wear [src]."))
+		return FALSE
+
+	return TRUE
 
 //micros in shoes
 /obj/item/clothing/relaymove(var/mob/living/user,var/direction)
