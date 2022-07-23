@@ -66,7 +66,7 @@
 	item_flags = DROPDEL
 
 /obj/item/clothing/shoes/magboots/changeling/set_slowdown()
-	slowdown = shoes? max(SHOES_SLOWDOWN, shoes.slowdown): SHOES_SLOWDOWN	//So you can't put on magboots to make you walk faster.
+	slowdown = worn_over? max(SHOES_SLOWDOWN, worn_over.slowdown): SHOES_SLOWDOWN	//So you can't put on magboots to make you walk faster.
 	if (magpulse)
 		slowdown += 1		//It's already tied to a slowdown suit, 6 slowdown is huge.
 
