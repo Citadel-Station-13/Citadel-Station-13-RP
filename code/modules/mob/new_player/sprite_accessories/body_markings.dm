@@ -311,10 +311,7 @@
 	icon_state = "c_beast_c"
 	color_blend_mode = ICON_MULTIPLY
 	body_parts = list(BP_HEAD)
-
-/datum/sprite_accessory/marking/vr_special
-	icon = 'icons/mob/sprite_accessories/markings_vr.dmi'
-
+	
 /datum/sprite_accessory/marking/abomination
 	name = "Abomination"
 	icon_state = "abomination"
@@ -326,9 +323,6 @@
 	icon_state = "abomination2"
 	color_blend_mode = ICON_MULTIPLY
 	body_parts = list(BP_HEAD)
-
-/datum/sprite_accessory/marking/vr
-	icon = 'icons/mob/sprite_accessories/markings_vr.dmi'
 
 /datum/sprite_accessory/marking/vulp_belly
 	name = "belly fur (Vulp)"
@@ -953,7 +947,7 @@
 
 //Tesh stuff.
 /datum/sprite_accessory/marking/tesh
-	icon = "icons\mob\sprite_accessories\markings\tesh_stuff.dmi"
+	icon = "icons/mob/sprite_accessories/markings/tesh_stuff.dmi"
 
 /datum/sprite_accessory/marking/tesh/teshi_heterochromia
 	name = "Teshari Heterochromia"
