@@ -1,6 +1,12 @@
 /obj/item
 	/// currently equipped slot id
 	var/current_equipped_slot
+	/**
+	 * current item we fitted over
+	 * ! DANGER: While this is more or less bug-free for "won't lose the item when you unequip/won't get stuck", we
+	 * ! do not promise anything for functionality - this is a SNOWFLAKE SYSTEM.
+	 */
+	var/obj/item/worn_over
 
 /**
  * called when an item is equipped to inventory or picked up
@@ -211,3 +217,23 @@
 	if(!equip_check_beltlink(M, current_equipped_slot, null, TRUE))
 		M.drop_item_to_ground(src)
 		return
+
+/**
+ * checks if we can fit over something
+ */
+/obj/item/proc/equip_worn_over_check(mob/M, slot, mob/user, obj/item/I, silent, disallow_delay, igonre_fluff)
+	return FALSE
+
+/**
+ * call when we fit us over something - item should be already in us
+ */
+/obj/item/proc/equip_on_worn_over_insert(mob/M, slot, mob/user, obj/item/I, silent)
+	if(!silent)
+		to_chat(M, SPAN_NOTICE("You slip [src] over [I]."))
+
+/**
+ * call when we unfit us over something - item should already be out of us
+ */
+/obj/item/proc/equip_on_worn_over_remove(mob/M, slot, mob/user, obj/item/I, silent)
+
+#warn impl in inv procs

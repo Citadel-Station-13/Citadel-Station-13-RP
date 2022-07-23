@@ -515,7 +515,7 @@
 	var/old_slot = slot_by_item(I)
 
 	if(old_slot)
-		. = _handle_item_reequip(I, slot, old_slot, force)
+		. = _handle_item_reequip(I, slot, old_slot, user, force, disallow_delay, ignore_fluff, silent)
 		if(!.)
 			return
 
@@ -540,40 +540,44 @@
  *
  * force will allow ignoring can unequip.
  *
- * returns old slot if slot shifted, otherwise null
+ * return true/false based on if we succeeded
  */
-/mob/proc/_handle_item_reequip(obj/item/I, slot, old_slot, force)
+/mob/proc/_handle_item_reequip(obj/item/I, slot, old_slot, mob/user, force, disallow_delay, ignore_fluff, silent)
+	ASSERT(slot)
 	if(!old_slot)
 		// DO NOT USE _slot_by_item - at this point, the item has already been var-set into the new slot!
 		// slot_by_item however uses cached values still!
 		old_slot = slot_by_item(I)
 		if(!old_slot)
 			// still not there, wasn't already in inv
-			return
+			return  FALSE
 	// this IS a slot shift!
 	. = old_slot
 	if(slot == old_slot)
 		// lol we're done
-		return
+		return TRUE
 	if(slot == SLOT_ID_HANDS)
 		// if we're going into hands,
 		// just check can unequip
-		if(!force && !can_unequip(I, force))
+		if(!can_unequip(I, force, user, force, disallow_delay, ignore_fluff, silent))
 			// check can unequip
-			return null
+			return FALSE
 		// call procs
 		I.unequipped(src, old_slot)
 		I.equipped(src, slot)
 		log_inventory("[key_name(src)] moved [I] from [old_slot] to hands.")
 		// hand procs handle rest
-		return
+		return TRUE
 	else
 		// else, this gets painful
-		#warn impl
-
+		if(!can_unequip(I, old_slot, user, force, disallow_delay, ignore_fluff, silent))
+			return FALSE
+		if(!can_equip(I, slot, user, force, disallow_delay, ignore_fluff, silent))
+			return FALSE
+		I.unequipped(src, old_slot)
+		I.equipped(src, slot)
 		log_inventory("[key_name(src)] moved [I] from [old_slot] to [slot].")
-
-#warn impl and hook
+		return TRUE
 
 /**
  * handles removing an item from our hud

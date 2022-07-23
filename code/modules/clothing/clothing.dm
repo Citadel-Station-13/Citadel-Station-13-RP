@@ -174,8 +174,6 @@
 	var/wired = 0
 	var/obj/item/cell/cell = 0
 	var/fingerprint_chance = 0	//How likely the glove is to let fingerprints through
-	var/obj/item/clothing/gloves/ring = null		//Covered ring
-	var/mob/living/carbon/human/wearer = null	//Used for covered rings when dropping
 	var/glove_level = 2			//What "layer" the glove is on
 	var/overgloves = 0			//Used by gauntlets and arm_guards
 	var/punch_force = 0			//How much damage do these gloves add to a punch?
@@ -224,51 +222,41 @@
 		return
 */
 
-/obj/item/clothing/gloves/mob_can_equip(mob/user, slot, accessory)
-	var/mob/living/carbon/human/H = user
+/obj/item/clothing/gloves/equip_worn_over_check(mob/M, slot, mob/user, obj/item/I, silent, disallow_delay, igonre_fluff)
+	if(slot != SLOT_ID_GLOVES)
+		return FALSE
 
-	if(slot && slot == SLOT_ID_GLOVES)
-		var/obj/item/clothing/gloves/G = H.gloves
-		if(istype(G))
-			ring = H.gloves
-			if(ring.glove_level >= src.glove_level)
-				to_chat(user, "You are unable to wear \the [src] as \the [H.gloves] are in the way.")
-				ring = null
-				return 0
-			else
-				ring.forceMove(src)
-				to_chat(user, "You slip \the [src] on over \the [src.ring].")
-				if(!(flags & THICKMATERIAL))
-					punch_force += ring.punch_force
-		else
-			ring = null
+	var/obj/item/clothing/gloves/G = I
+	if(!istype(G))
+		return FALSE
 
-	if(!..())
-		if(ring) //Put the ring back on if the check fails.
-			if(H.equip_to_slot_if_possible(ring, SLOT_ID_GLOVES))
-				src.ring = null
-		punch_force = initial(punch_force)
-		return 0
+	return G.glove_level < glove_level
 
-	wearer = H //TODO clean this when magboots are cleaned
-	return 1
-
-/obj/item/clothing/gloves/dropped()
+/obj/item/clothing/gloves/equip_on_worn_over_insert(mob/M, slot, mob/user, obj/item/I, silent)
 	. = ..()
 
-	if(!wearer)
-		return
+	if(!istype(I, /obj/item/clothing/gloves))
+		return FALSE
 
-	if(ishuman(wearer))
-		restore_over_objects(wearer)
-	punch_force = initial(punch_force)
-	wearer = null
+	if(flags & THICKMATERIAL)
+		return FALSE
 
-/obj/item/clothing/gloves/proc/restore_over_objects(mob/living/carbon/human/wearer)
-	if(ring)
-		if(!wearer.equip_to_slot_if_possible(ring, SLOT_ID_GLOVES))
-			ring.forceMove(get_turf(src))
-		ring = null
+	var/obj/item/clothing/gloves/G = I
+
+	punch_force += G.punch_force
+
+/obj/item/clothing/gloves/equip_on_worn_over_remove(mob/M, slot, mob/user, obj/item/I, silent)
+	. = ..()
+
+	if(!istype(I, /obj/item/clothing/gloves))
+		return FALSE
+
+	if(flags & THICKMATERIAL)
+		return FALSE
+
+	var/obj/item/clothing/gloves/G = I
+
+	punch_force -= G.punch_force
 
 /obj/item/clothing/gloves
 	var/datum/unarmed_attack/special_attack = null //do the gloves have a special unarmed attack?

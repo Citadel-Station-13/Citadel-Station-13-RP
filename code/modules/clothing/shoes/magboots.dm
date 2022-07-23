@@ -13,8 +13,6 @@
 	var/slowdown_on = 3
 	var/icon_base = "magboots"
 	action_button_name = "Toggle Magboots"
-	var/obj/item/clothing/shoes/shoes = null	//Undershoes
-	var/mob/living/carbon/human/wearer = null	//For shoe procs
 	step_volume_mod = 1.3
 	drop_sound = 'sound/items/drop/metalboots.ogg'
 	pickup_sound = 'sound/items/pickup/toolbox.ogg'
@@ -42,39 +40,24 @@
 	user.update_inv_shoes()	//so our mob-overlays update
 	user.update_action_buttons()
 
-/obj/item/clothing/shoes/magboots/mob_can_equip(mob/user, slot, accessory)
-	var/mob/living/carbon/human/H = user
+/obj/item/clothing/shoes/magboots/equip_worn_over_check(mob/M, slot, mob/user, obj/item/I, silent, disallow_delay, igonre_fluff)
+	if(slot != SLOT_ID_SHOES)
+		return FALSE
 
-	if(H.shoes)
-		shoes = H.shoes
-		if(shoes.overshoes)
-			if(slot && slot == SLOT_ID_SHOES)
-				to_chat(user, "You are unable to wear \the [src] as \the [H.shoes] are in the way.")
-			shoes = null
-			return 0
-		shoes.forceMove(src)
+	if(!istype(I, /obj/item/clothing/shoes))
+		return FALSE
 
-	if(!..())
-		if(shoes) 	//Put the old shoes back on if the check fails.
-			if(H.equip_to_slot_if_possible(shoes, SLOT_ID_SHOES))
-				src.shoes = null
-		return 0
+	var/obj/item/clothing/shoes/S = I
 
-	if (shoes)
-		if(slot && slot == SLOT_ID_SHOES)
-			to_chat(user, "You slip \the [src] on over \the [shoes].")
+	return !S.overshoes
+
+/obj/item/clothing/shoes/magboots/equipped(mob/user, slot, accessory, silent, creation)
+	. = ..()
 	set_slowdown()
-	wearer = H
-	return 1
 
-/obj/item/clothing/shoes/magboots/dropped()
-	..()
-	var/mob/living/carbon/human/H = wearer
-	if(shoes)
-		if(!H.equip_to_slot_if_possible(shoes, SLOT_ID_SHOES))
-			shoes.forceMove(get_turf(src))
-		src.shoes = null
-	wearer = null
+/obj/item/clothing/shoes/magboots/unequipped(mob/user, slot, accessory, silent)
+	. = ..()
+	set_slowdown()
 
 /obj/item/clothing/shoes/magboots/examine(mob/user)
 	. = ..()
@@ -82,7 +65,6 @@
 	if(clothing_flags & NOSLIP)
 		state = "enabled"
 	. += "Its mag-pulse traction system appears to be [state]."
-
 /obj/item/clothing/shoes/magboots/vox
 
 	desc = "A pair of heavy, jagged armoured foot pieces, seemingly suitable for a velociraptor."
