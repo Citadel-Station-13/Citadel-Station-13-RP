@@ -3862,7 +3862,6 @@
 #include "code\modules\vore\hook-defs_vr.dm"
 #include "code\modules\vore\lick_wounds.dm"
 #include "code\modules\vore\trycatch_vr.dm"
-#include "code\modules\vore\appearance\leaf.dm"
 #include "code\modules\vore\appearance\spider_taur_powers_vr.dm"
 #include "code\modules\vore\appearance\sprite_accessories_taur_vr.dm"
 #include "code\modules\vore\appearance\sprite_accessories_vr.dm"
