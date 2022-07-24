@@ -47,8 +47,7 @@
 		/mob/living/carbon/human/proc/psychic_whisper,
 		//mob/living/carbon/human/proc/neurotoxin,//need the acid organ which I dont wanna just give them
 		/mob/living/carbon/human/proc/hybrid_resin,
-		/mob/living/carbon/human/proc/hybrid_plant,//replaced from the normal weed node to place a singular weed
-		/mob/living/carbon/human/proc/active_heal
+		/mob/living/carbon/human/proc/hybrid_plant//replaced from the normal weed node to place a singular weed
 		)
 
 	total_health = 110	//Exoskeleton makes you tougher than baseline
