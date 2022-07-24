@@ -29,7 +29,7 @@
 		if(L.can_feel_pain())
 			to_chat(L, "<span class='danger'>You feel a stabbing sensation in your hands as you slide \the [src] on!</span>")
 			L.custom_pain("You feel a sharp pain in your hands!",1)
-
+w
 /obj/item/clothing/gloves/regen/unequipped(mob/user, slot, accessory, silent)
 	. = ..()
 	if(slot == SLOT_ID_GLOVES)

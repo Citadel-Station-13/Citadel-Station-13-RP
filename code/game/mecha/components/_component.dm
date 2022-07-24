@@ -101,8 +101,11 @@
 			if(user)
 				to_chat(user, "<span class='notice'>\The [target] already has a [component_type] installed!</span>")
 			return FALSE
-		if(!user.attempt_insert_item_for_installation(src, target))
-			return
+		if(user)
+			if(!user.attempt_insert_item_for_installation(src, target))
+				return
+			else
+				forceMove(target)
 		chassis = target
 
 		if(internal_damage_flag)
