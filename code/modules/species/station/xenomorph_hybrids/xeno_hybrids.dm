@@ -45,7 +45,6 @@
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/carbon/human/proc/psychic_whisper,
-		//mob/living/carbon/human/proc/neurotoxin,//need the acid organ which I dont wanna just give them
 		/mob/living/carbon/human/proc/hybrid_resin,
 		/mob/living/carbon/human/proc/hybrid_plant//replaced from the normal weed node to place a singular weed
 		)
@@ -54,13 +53,13 @@
 	brute_mod = 0.95 // Chitin is somewhat hard to crack
 	burn_mod = 1.5	// Natural enemy of xenomorphs is fire. Upgraded to Major Burn Weakness. Reduce to Minor if this is too harsh.
 	blood_volume = 560	//Baseline
-	darksight = 5 //Better hunters in the dark.
+	darksight = 6 //Better hunters in the dark.
 	hunger_factor = 0.1 //In exchange, they get hungry a tad faster.
 
 	slowdown = -0.2//Speedboost Tesh have -0.5
 
-	warning_low_pressure = 30//lower than baseline, still not vacuum prove
-	hazard_low_pressure = -1
+	warning_low_pressure = 30//lower than baseline
+	hazard_low_pressure = -1//Vacuum proof
 
 	warning_high_pressure = 325//Both baseline
 	hazard_high_pressure = 550
