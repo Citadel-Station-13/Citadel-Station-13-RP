@@ -182,7 +182,7 @@
 			over.forceMove(src)
 			over.worn_inside = null
 			// put it back in the slot
-			_equip_slot(over, slot, TRUE)
+			_equip_slot(over, old, TRUE)
 			// put it back on the screen
 			position_hud_item(over)
 			client?.screen |= over
