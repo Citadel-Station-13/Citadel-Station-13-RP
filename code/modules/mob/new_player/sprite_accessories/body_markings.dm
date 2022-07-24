@@ -820,7 +820,7 @@
 
 /datum/sprite_accessory/marking/heterochromia
 	name = "Heterochromia"
-	icon_state = "heterochromia"//something is odd about these two markings, needs more investigation
+	icon_state = "heterochromia"
 	body_parts = list(BP_HEAD)
 
 /datum/sprite_accessory/marking/heterochromia_r
