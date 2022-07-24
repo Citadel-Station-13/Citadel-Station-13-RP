@@ -517,15 +517,28 @@ var/list/name_to_material
 		to_chat(user, "<span class='warning'>This task is too complex for your clumsy hands.</span>")
 		return 1
 
+	var/title = "Sheet-[used_stack.name] ([used_stack.get_amount()] sheet\s left)"
+	var/choice = input(title, "What would you like to construct?") as null|anything in window_options
+	var/build_path = /obj/structure/windoor_assembly
+	var/sheets_needed = window_options[choice]
+	if(choice == "Windoor")
+		if(is_reinforced())
+			build_path = /obj/structure/windoor_assembly/secure
+	else if(choice == "Full Window")
+		build_path = created_fulltile_window
+	else
+		build_path = created_window
+
+	if(used_stack.get_amount() < sheets_needed)
+		to_chat(user, "<span class='warning'>You need at least [sheets_needed] sheets to build this.</span>")
+		return 1
+
+	if(!choice || !used_stack || !user || used_stack.loc != user || user.stat)
+		return 1
+
 	var/turf/T = user.loc
 	if(!istype(T))
 		to_chat(user, "<span class='warning'>You must be standing on open flooring to build a window.</span>")
-		return 1
-
-	var/title = "Sheet-[used_stack.name] ([used_stack.get_amount()] sheet\s left)"
-	var/choice = input(title, "What would you like to construct?") as null|anything in window_options
-
-	if(!choice || !used_stack || !user || used_stack.loc != user || user.stat)
 		return 1
 
 	// Get data for building windows here.
@@ -558,20 +571,6 @@ var/list/name_to_material
 				failed_to_build = 1
 	if(failed_to_build)
 		to_chat(user, "<span class='warning'>There is no room in this location.</span>")
-		return 1
-
-	var/build_path = /obj/structure/windoor_assembly
-	var/sheets_needed = window_options[choice]
-	if(choice == "Windoor")
-		if(is_reinforced())
-			build_path = /obj/structure/windoor_assembly/secure
-	else if(choice == "Full Window")
-		build_path = created_fulltile_window
-	else
-		build_path = created_window
-
-	if(used_stack.get_amount() < sheets_needed)
-		to_chat(user, "<span class='warning'>You need at least [sheets_needed] sheets to build this.</span>")
 		return 1
 
 	// Build the structure and update sheet count etc.
