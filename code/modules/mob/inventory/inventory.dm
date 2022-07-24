@@ -157,6 +157,35 @@
 		old = I.current_equipped_slot
 		_unequip_slot(I.current_equipped_slot, TRUE)
 		I.unequipped(src, I.current_equipped_slot)
+		// if the item was inside something,
+		if(I.worn_inside)
+			var/obj/item/over = I.worn_over
+			var/obj/item/inside = I.worn_inside
+			// if we were inside something we WEREN'T the top level item
+			// collapse the links
+			inside.worn_over = over
+			if(over)
+				over.worn_inside = inside
+			// call procs to inform things
+			inside.equip_on_worn_over_remove(src, old, user, I, silent)
+			if(over)
+				I.equip_on_worn_over_remove(src, old, user, over, silent)
+			// now we're free to forcemove later
+		// if the item wasn't but was worn over something, there's more complicated methods required
+		else if(I.worn_over)
+			var/obj/item/over = I.worn_over
+			I.worn_over = null
+			I.equip_on_worn_over_remove(src, old, user, I.worn_over, silent)
+			// I is free to be forcemoved now, but the old object needs to be put back on
+			// snowflake worn inside to not trigger procs on forcemove
+			over.worn_inside = src
+			over.forceMove(src)
+			over.worn_inside = null
+			// put it back in the slot
+			_equip_slot(over, slot, TRUE)
+			// put it back on the screen
+			position_hud_item(over)
+			client?.screen |= over
 
 	. = TRUE
 
@@ -339,8 +368,9 @@
  * - disallow_delay - fail if we'd need to sleep
  * - ignore_fluff - ignore self equip delay, item zone checks, etc. implied by force.
  * - silent - don't display a warning message if we find an error
+ * - final_check - this is the final check before the point of no return of an actual equip
  */
-/mob/proc/can_equip(obj/item/I, slot, mob/user, force, disallow_delay, ignore_fluff, silent)
+/mob/proc/can_equip(obj/item/I, slot, mob/user, force, disallow_delay, ignore_fluff, silent, final_check)
 	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
 	var/self_equip = user == src
 	if(!slot_meta)
@@ -371,7 +401,22 @@
 	if(!inventory_slot_bodypart_check(I, slot, user, silent) && !force)
 		return FALSE
 
-	switch(inventory_slot_conflict_check(I, slot))
+	var/conflict_result = inventory_slot_conflict_check(I, slot)
+	var/obj/item/to_wear_over
+
+	if(final_check && conflict_result && (slot != SLOT_ID_HANDS))
+		// try to fit over
+		var/obj/item/conflicting = item_by_slot(slot)
+		if(conflicting)
+			// there's something there
+			var/can_fit_over = I.equip_worn_over_check(src, slot, user, conflicting, silent, disallow_delay, ignore_fluff)
+			if(can_fit_over)
+				conflict_result = CAN_EQUIP_SLOT_CONFLICT_NONE
+				to_wear_over = conflicting
+			// recheck
+			conflict_result = inventory_slot_conflict_check(I, slot)
+
+	switch(conflict_result)
 		if(CAN_EQUIP_SLOT_CONFLICT_HARD)
 			if(!silent)
 				to_chat(user, SPAN_WARNING("[self_equip? "You" : "They"] are already [slot_meta.display_plural? "holding too many things" : "wearing something"] [slot_meta.display_preposition] [self_equip? "your" : "their"] [slot_meta.display_name]."))
@@ -397,6 +442,19 @@
 	// lastly, check item's opinion
 	if(!I.can_equip(src, slot, user, silent, disallow_delay, ignore_fluff))
 		return FALSE
+
+	// we're the final check - side effects ARE allowed
+	if(final_check && to_wear_over)
+		//! Note: this means that can_unequip is NOT called for to wear over.
+		//! This is intentional, but very, very sonwflakey.
+		to_wear_over.worn_inside = I
+		// setting worn inside first disallows equip/unequip from triggering
+		to_wear_over.forceMove(I)
+		// tell it we're inserting the old item
+		I.equip_on_worn_over_insert(src, slot, user, to_wear_over, silent)
+		// take the old item off our screen
+		client?.screen -= to_wear_over
+		to_wear_over.screen_loc = null
 
 	return TRUE
 
@@ -509,9 +567,6 @@
 		// if it's abstract, we go there directly - do not use can_equip as that will just guess.
 		return handle_abstract_slot_insertion(I, slot, force, silent)
 
-	if(!can_equip(I, slot, user, force, disallow_delay, ignore_fluff, silent))
-		return FALSE
-
 	var/old_slot = slot_by_item(I)
 
 	if(old_slot)
@@ -521,6 +576,9 @@
 
 		log_inventory("[key_name(src)] moved [I] from [old_slot] to [slot].")
 	else
+		if(!can_equip(I, slot, user, force, disallow_delay, ignore_fluff, silent, TRUE))
+			return FALSE
+
 		I.forceMove(src)
 		I.pickup(src, FALSE, silent)
 		I.equipped(src, slot, FALSE, silent)
@@ -572,7 +630,7 @@
 		// else, this gets painful
 		if(!can_unequip(I, old_slot, user, force, disallow_delay, ignore_fluff, silent))
 			return FALSE
-		if(!can_equip(I, slot, user, force, disallow_delay, ignore_fluff, silent))
+		if(!can_equip(I, slot, user, force, disallow_delay, ignore_fluff, silent, TRUE))
 			return FALSE
 		I.unequipped(src, old_slot)
 		I.equipped(src, slot)
@@ -654,7 +712,7 @@
  * SLOT_ID_HANDS if in hands
  */
 /mob/proc/is_in_inventory(obj/item/I)
-	return I && (I.loc == src) && I.current_equipped_slot
+	return I?.current_equipped_slot && (I.current_equipped_mob() == src)
 	// we use entirely cached vars for speed.
 	// if this returns bad data well fuck you, don't break equipped()/unequipped().
 

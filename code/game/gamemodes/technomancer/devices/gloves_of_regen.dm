@@ -22,17 +22,23 @@
 
 /obj/item/clothing/gloves/regen/equipped(mob/user, slot, accessory, silent, creation)
 	. = ..()
-	if(slot = SLOT_ID_GLOVES)
-		if(user.can_feel_pain())
-			to_chat(user, "<span class='danger'>You feel a stabbing sensation in your hands as you slide \the [src] on!</span>")
-			user.custom_pain("You feel a sharp pain in your hands!",1)
+	if(slot == SLOT_ID_GLOVES)
+		var/mob/living/L = user
+		if(!istype(L))
+			return
+		if(L.can_feel_pain())
+			to_chat(L, "<span class='danger'>You feel a stabbing sensation in your hands as you slide \the [src] on!</span>")
+			L.custom_pain("You feel a sharp pain in your hands!",1)
 
 /obj/item/clothing/gloves/regen/unequipped(mob/user, slot, accessory, silent)
 	. = ..()
 	if(slot == SLOT_ID_GLOVES)
-		if(user.can_feel_pain())
+		var/mob/living/L = user
+		if(!istype(L))
+			return
+		if(L.can_feel_pain())
 			to_chat(user, "<span class='danger'>You feel the hypodermic needles as you slide \the [src] off!</span>")
-			user.custom_pain("Your hands hurt like hell!",1)
+			L.custom_pain("Your hands hurt like hell!",1)
 
 /obj/item/clothing/gloves/regen/Initialize(mapload)
 	. = ..()
@@ -43,7 +49,7 @@
 	return ..()
 
 /obj/item/clothing/gloves/regen/process(delta_time)
-	var/mob/wearer = current_equipped_slot && ismob(loc) && loc
+	var/mob/living/wearer = current_equipped_slot && isliving(loc) && loc
 
 	if(!wearer || wearer.isSynthetic() || wearer.stat == DEAD || wearer.nutrition <= 10)
 		return // Robots and dead people don't have a metabolism.

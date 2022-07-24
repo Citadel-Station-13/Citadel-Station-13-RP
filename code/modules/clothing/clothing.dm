@@ -66,8 +66,7 @@
 	if(!. || !LAZYLEN(species_restricted))
 		return
 
-	var/exclude_mode = "exclude" in species_restricted
-	var/can_wear = exclude_mode
+	var/exclude_mode = ("exclude" in species_restricted)
 
 	var/mob/living/carbon/human/H = M
 
@@ -188,13 +187,6 @@
 		)
 	drop_sound = 'sound/items/drop/gloves.ogg'
 	pickup_sound = 'sound/items/pickup/gloves.ogg'
-
-/obj/item/clothing/gloves/emp_act(severity)
-	if(cell)
-		cell.emp_act(severity)
-	if(ring)
-		ring.emp_act(severity)
-	..()
 
 /obj/item/clothing/gloves/get_fibers()
 	return "material from a pair of [name]."

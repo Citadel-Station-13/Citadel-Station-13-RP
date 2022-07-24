@@ -7,6 +7,17 @@
 	 * ! do not promise anything for functionality - this is a SNOWFLAKE SYSTEM.
 	 */
 	var/obj/item/worn_over
+	/// current item we're fitted in. this is an atom movable because we also set this to a mob to prevent a hook from firing in forceMove during unequip!
+	var/atom/movable/worn_inside
+
+/obj/item/Destroy()
+	if(current_equipped_slot)
+		var/mob/M = current_equipped_mob()
+		if(!ismob(M))
+			stack_trace("invalid current equipped slot [current_equipped_slot] on an item not on a mob.")
+			return ..()
+		M.temporarily_remove_from_inventory(src, TRUE)
+	return ..()
 
 /**
  * called when an item is equipped to inventory or picked up
@@ -236,4 +247,23 @@
  */
 /obj/item/proc/equip_on_worn_over_remove(mob/M, slot, mob/user, obj/item/I, silent)
 
-#warn impl in inv procs
+/**
+ * get the mob we're equipped on
+ */
+/obj/item/proc/current_equipped_mob()
+	RETURN_TYPE(/mob)
+	return current_equipped_slot? (worn_inside? worn_inside.current_equipped_mob() : loc) : null
+
+// forcemove hook to ensure proper functionality when inv procs aren't called
+/obj/item/forceMove(atom/destination)
+	if(current_equipped_slot)
+		// inventory handling
+		if(destination == loc)
+			return ..()
+		if(destination == worn_inside)
+			return ..()
+		var/mob/M = current_equipped_mob()
+		if(!ismob(M))
+			stack_trace("item forcemove inv hook called without a mob as loc??")
+		M.temporarily_remove_from_inventory(src, TRUE)
+	return ..()

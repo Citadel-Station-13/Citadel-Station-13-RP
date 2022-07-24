@@ -90,8 +90,6 @@
 
 /obj/item/organ/internal/augment/handle_organ_mod_special(var/removed = FALSE)
 	if(removed && integrated_object && integrated_object.loc != src)
-		if(isliving(integrated_object.loc))
-			var/mob/living/L = integrated_object.loc
 		integrated_object.forceMove(src)
 	..(removed)
 

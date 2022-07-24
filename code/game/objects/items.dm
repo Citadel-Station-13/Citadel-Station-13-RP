@@ -164,15 +164,6 @@
 		if(damtype == "brute")
 			hitsound = "swing_hit"
 
-/obj/item/Destroy()
-	if(current_equipped_slot)
-		if(!ismob(loc))
-			stack_trace("invalid current equipped slot [current_equipped_slot] on an item not on a mob.")
-			return ..()
-		var/mob/M = loc
-		M.temporarily_remove_from_inventory(src, TRUE)
-	return ..()
-
 /obj/item/doMove(atom/destination)
 	// if we're on a mob and we're moving somewhere else, yank us out!
 	if(ismob(loc))
