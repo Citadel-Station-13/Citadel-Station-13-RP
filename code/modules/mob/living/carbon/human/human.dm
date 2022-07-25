@@ -19,8 +19,6 @@
 	var/active_regen_delay = 300
 	var/spam_flag = FALSE	//throws byond:tm: errors if placed in human/emote, but not here
 
-	var/healing = FALSE
-
 /mob/living/carbon/human/Initialize(mapload, datum/species/new_species_or_path)
 	if(!dna)
 		dna = new /datum/dna(null)
