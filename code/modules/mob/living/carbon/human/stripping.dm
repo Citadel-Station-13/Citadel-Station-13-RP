@@ -8,6 +8,8 @@
 
 	var/obj/item/I = get_held_item_of_index(index)
 	var/obj/item/held = user.get_active_held_item()
+	if(!I && !held)
+		return
 
 	if(!handle_strip_generic(I, user, index))
 		return
@@ -33,6 +35,8 @@
 
 	var/obj/item/I = item_by_slot(slot)
 	var/obj/item/held = user.get_active_held_item()
+	if(!I && !held)
+		return
 
 	if(!handle_strip_generic(I, user, slot))
 		return
@@ -65,9 +69,9 @@
 	else
 		switch(slot_id_or_index)
 			if(SLOT_ID_MASK)
-				visible_message(SPAN_DANGER("[user] is trying to put \a [I] in [src]'s mouth!"))
+				visible_message(SPAN_DANGER("[user] is trying to put \a [held] in [src]'s mouth!"))
 			else
-				visible_message(SPAN_DANGER("[user] is trying to put \a [I] on [src]!"))
+				visible_message(SPAN_DANGER("[user] is trying to put \a [held] on [src]!"))
 
 	if(!do_after(user, HUMAN_STRIP_DELAY, src))
 		return FALSE

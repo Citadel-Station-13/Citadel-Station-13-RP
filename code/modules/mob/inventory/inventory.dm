@@ -209,6 +209,7 @@
 		// put it back in the slot
 		_equip_slot(over, old_slot, TRUE)
 		// put it back on the screen
+		over.hud_layerise()
 		position_hud_item(over, old_slot)
 		client?.screen |= over
 
@@ -472,6 +473,7 @@
 		// take the old item off our screen
 		client?.screen -= to_wear_over
 		to_wear_over.screen_loc = null
+		to_wear_over.hud_unlayerise()
 		// we don't call slot re-equips here because the equip proc does this for us
 
 	return TRUE

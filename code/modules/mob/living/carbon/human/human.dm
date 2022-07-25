@@ -27,18 +27,18 @@
 		// Species name is handled by set_species()
 
 	if(new_species_or_path)
-		set_species(new_species_or_path)
+		set_species(new_species_or_path, force = TRUE)
 	else if(!istype(species))
 		// no one set us yet
 		if(ispath(species))
-			set_species(species)
+			set_species(species, force = TRUE)
 		else
-			set_species()
+			set_species(force = TRUE)
 
 	if(!species)
 		stack_trace("Why is there no species? Resetting to human.")	// NO NO, YOU DONT GET TO CHICKEN OUT, SET_SPECIES WAS CALLED AND YOU BETTER HAVE ONE
 		// no you don't get to get away
-		set_species(/datum/species/human)
+		set_species(/datum/species/human, force = TRUE)
 
 	real_name = species.get_random_name(gender)
 	name = real_name
