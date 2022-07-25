@@ -58,7 +58,7 @@
 	RegisterSignal(I, COMSIG_MOVABLE_MOVED, .proc/on_item_moved)
 	RegisterSignal(I, COMSIG_ITEM_DROPPED, .proc/on_item_dropped)
 	if(I.loc != src)
-		I.forcEMove(src)
+		I.forceMove(src)
 
 /obj/item/organ/internal/augment/proc/unregister_item(obj/item/I)
 	UnregisterSignal(I, list(
