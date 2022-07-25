@@ -478,8 +478,12 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	var/sql_ckey = sql_sanitize_text(src.ckey)
 
-	var/datum/db_query/query = dbcon.NewQuery("SELECT id, datediff(Now(),firstseen) as age FROM [format_table_name("player")] WHERE ckey = '[sql_ckey]'")
-	query.Execute()
+	var/datum/db_query/query = SSdbcore.RunQuery(
+		"SELECT id, datediff(Now(), firstseen) as age FROM [format_table_name("player")] WHERE ckey = :ckey",
+		list(
+			"ckey" = sql_ckey
+		)
+	)
 	var/sql_id = 0
 	player_age = -1	// New players won't have an entry so knowing we have a connection we set this to zero to be updated if their is a record.
 	while(query.NextRow())
@@ -489,12 +493,21 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	account_join_date = sanitizeSQL(findJoinDate())
 	if(account_join_date && SSdbcore.Connect())
-		var/datum/db_query/query_datediff = dbcon.NewQuery("SELECT DATEDIFF(Now(),'[account_join_date]')")
-		if(query_datediff.Execute() && query_datediff.NextRow())
+		var/datum/db_query/query_datediff = SSdbcore.RunQuery(
+			"SELECT DATEDIFF(Now(), :date)",
+			list(
+				"date" = account_join_date
+			)
+		)
+		if(query_datediff.NextRow())
 			account_age = text2num(query_datediff.item[1])
 
-	var/datum/db_query/query_ip = dbcon.NewQuery("SELECT ckey FROM [format_table_name("player")] WHERE ip = '[address]'")
-	query_ip.Execute()
+	var/datum/db_query/query_ip = SSdbcore.RunQuery(
+		"SELECT ckey FROM [format_table_name("player")] WHERE ip = :addr",
+		list(
+			"addr" = address
+		)
+	)
 	related_accounts_ip = ""
 	while(query_ip.NextRow())
 		related_accounts_ip += "[query_ip.item[1]], "
