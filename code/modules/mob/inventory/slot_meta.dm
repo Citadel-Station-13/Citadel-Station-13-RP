@@ -6,7 +6,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 /proc/init_inventory_slot_meta()
 	. = list()
 	GLOB.inventory_slot_meta = .
-	GLOB.inventory_slot_Type_cache = list()
+	GLOB.inventory_slot_type_cache = list()
 	for(var/path in subtypesof(/datum/inventory_slot_meta))
 		var/datum/inventory_slot_meta/M = path
 		if(initial(M.abstract_type) == path)
