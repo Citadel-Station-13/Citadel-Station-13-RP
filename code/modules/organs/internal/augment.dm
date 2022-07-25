@@ -42,16 +42,51 @@
 
 /obj/item/organ/internal/augment/Initialize(mapload)
 	. = ..()
-
 	setup_radial_icon()
-
 	if(integrated_object_type)
-		integrated_object = new integrated_object_type(src)
-		#warn kill thsi for magnetic catch
-		ADD_TRAIT(integrated_object, TRAIT_NODROP, AUGMENT_TRAIT)
+		set_item(integrated_object_type)
 
+/obj/item/organ/internal/augment/proc/set_item(obj/item/item_or_type)
+	if(ispath(item_or_type))
+		item_or_type = new item_or_type
+	register_item(item_or_type)
+	if(integrated_object)
+		unregister_item(item_or_type)
+	integrated_object = item_or_type
 
-#warn integrate this
+/obj/item/organ/internal/augment/proc/register_item(obj/item/I)
+	RegisterSignal(I, COMSIG_MOVABLE_MOVED, .proc/on_item_moved)
+	RegisterSignal(I, COMSIG_ITEM_DROPPED, .proc/on_item_dropped)
+	if(I.loc != src)
+		I.forcEMove(src)
+
+/obj/item/organ/internal/augment/proc/unregister_item(obj/item/I)
+	UnregisterSignal(I, list(
+		COMSIG_MOVABLE_MOVED,
+		COMSIG_ITEM_DROPPED
+	))
+	if(I == integrated_object)
+		integrated_object = null
+
+/obj/item/organ/internal/augment/proc/on_item_moved(datum/source, atom/old)
+	SIGNAL_HANDLER
+
+	// gives a chance for dropped to fire
+	addtimer(CALLBACK(src, .proc/check_item_yank, source), 0)
+
+/obj/item/organ/internal/augment/proc/on_item_dropped(datum/source)
+	SIGNAL_HANDLER
+
+	var/obj/item/I = source
+	I.visible_message(SPAN_NOTICE("[I] snaps back into [src]!"))
+	I.forceMove(src)
+	. = COMPONENT_ITEM_RELOCATED_BY_DROP
+
+/obj/item/organ/internal/augment/proc/check_item_yank(obj/item/I)
+	if(I.loc != src)
+		unregister_item(I)
+
+// todo: multi-item
 /*
 /obj/item/organ/cyberimp/arm/proc/add_item(obj/item/I)
 	if(I in items_list)

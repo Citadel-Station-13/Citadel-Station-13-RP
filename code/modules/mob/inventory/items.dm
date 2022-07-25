@@ -81,12 +81,15 @@
 	hud_unlayerise()
 	item_flags &= ~IN_INVENTORY
 
-	SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user)
+	. = SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user)
+
 	if(!silent)
 		playsound(src, drop_sound, 30, ignore_walls = FALSE)
 	// user?.update_equipment_speed_mods()
 	if(zoom)
 		zoom() //binoculars, scope, etc
+
+	return ((. & COMPONENT_ITEM_RELOCATED_BY_DROP)? ITEM_RELOCATED_BY_DROPPED : NONE)
 
 /**
  * called when a mob picks up an item
