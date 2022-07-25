@@ -191,6 +191,8 @@
 		inside.worn_over = over
 		if(over)
 			over.worn_inside = inside
+		I.worn_over = null
+		I.worn_inside = null
 		// call procs to inform things
 		inside.equip_on_worn_over_remove(src, old_slot, user, I, silent)
 		if(over)
@@ -232,7 +234,7 @@
 		return FALSE
 
 	var/blocked_by
-	if((blocked_by = inventory_slot_reachability_conflict(I, slot, user)) && !force)
+	if((blocked_by = inventory_slot_reachability_conflict(I, slot, user)) && !ignore_fluff && !force)
 		if(!silent)
 			to_chat(user, SPAN_WARNING("\the [blocked_by] is in the way!"))
 		return FALSE
@@ -630,7 +632,7 @@
 		old_slot = slot_by_item(I)
 		if(!old_slot)
 			// still not there, wasn't already in inv
-			return  FALSE
+			return FALSE
 	// this IS a slot shift!
 	. = old_slot
 	if(slot == old_slot)
@@ -639,7 +641,7 @@
 	if(slot == SLOT_ID_HANDS)
 		// if we're going into hands,
 		// just check can unequip
-		if(!can_unequip(I, force, user, force, disallow_delay, ignore_fluff, silent))
+		if(!can_unequip(I, old_slot, user, force, disallow_delay, ignore_fluff, silent))
 			// check can unequip
 			return FALSE
 

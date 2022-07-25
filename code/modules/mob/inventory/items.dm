@@ -158,8 +158,8 @@
  * get_equipped_items() uses this so accessories are included
  */
 /obj/item/proc/_inv_return_attached()
-	if(worn_inside)
-		return list(src) + worn_inside._inv_return_attached()
+	if(worn_over)
+		return list(src) + worn_over._inv_return_attached()
 	else
 		return src
 
@@ -265,6 +265,7 @@
 
 // doMove hook to ensure proper functionality when inv procs aren't called
 /obj/item/doMove(atom/destination)
+
 	if(current_equipped_slot)
 		// inventory handling
 		if(destination == worn_inside)
