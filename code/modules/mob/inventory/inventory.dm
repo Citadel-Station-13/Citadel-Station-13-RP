@@ -158,35 +158,7 @@
 		old = I.current_equipped_slot
 		_unequip_slot(I.current_equipped_slot, TRUE)
 		I.unequipped(src, I.current_equipped_slot)
-		// if the item was inside something,
-		if(I.worn_inside)
-			var/obj/item/over = I.worn_over
-			var/obj/item/inside = I.worn_inside
-			// if we were inside something we WEREN'T the top level item
-			// collapse the links
-			inside.worn_over = over
-			if(over)
-				over.worn_inside = inside
-			// call procs to inform things
-			inside.equip_on_worn_over_remove(src, old, user, I, silent)
-			if(over)
-				I.equip_on_worn_over_remove(src, old, user, over, silent)
-			// now we're free to forcemove later
-		// if the item wasn't but was worn over something, there's more complicated methods required
-		else if(I.worn_over)
-			var/obj/item/over = I.worn_over
-			I.worn_over = null
-			I.equip_on_worn_over_remove(src, old, user, I.worn_over, silent)
-			// I is free to be forcemoved now, but the old object needs to be put back on
-			// snowflake worn inside to not trigger procs on forcemove
-			over.worn_inside = src
-			over.forceMove(src)
-			over.worn_inside = null
-			// put it back in the slot
-			_equip_slot(over, old, TRUE)
-			// put it back on the screen
-			position_hud_item(over)
-			client?.screen |= over
+		handle_item_denesting(I, old, user, silent)
 
 	. = TRUE
 
@@ -208,6 +180,37 @@
 	log_inventory("[key_name(src)] unequipped [I] from [old].")
 
 	update_action_buttons()
+
+/mob/proc/handle_item_denesting(obj/item/I, old_slot, mob/user, silent)
+	// if the item was inside something,
+	if(I.worn_inside)
+		var/obj/item/over = I.worn_over
+		var/obj/item/inside = I.worn_inside
+		// if we were inside something we WEREN'T the top level item
+		// collapse the links
+		inside.worn_over = over
+		if(over)
+			over.worn_inside = inside
+		// call procs to inform things
+		inside.equip_on_worn_over_remove(src, old_slot, user, I, silent)
+		if(over)
+			I.equip_on_worn_over_remove(src, old_slot, user, over, silent)
+		// now we're free to forcemove later
+	// if the item wasn't but was worn over something, there's more complicated methods required
+	else if(I.worn_over)
+		var/obj/item/over = I.worn_over
+		I.worn_over = null
+		I.equip_on_worn_over_remove(src, old_slot, user, I.worn_over, silent)
+		// I is free to be forcemoved now, but the old object needs to be put back on
+		// snowflake worn inside to not trigger procs on forcemove
+		over.worn_inside = src
+		over.forceMove(src)
+		over.worn_inside = null
+		// put it back in the slot
+		_equip_slot(over, old_slot, TRUE)
+		// put it back on the screen
+		position_hud_item(over)
+		client?.screen |= over
 
 /**
  * checks if we can unequip an item
@@ -634,9 +637,12 @@
 		if(!can_unequip(I, force, user, force, disallow_delay, ignore_fluff, silent))
 			// check can unequip
 			return FALSE
+
 		// call procs
 		_unequip_slot(old_slot, update_icons)
 		I.unequipped(src, old_slot)
+		// sigh
+		handle_item_denesting(I, old_slot, user, silent)
 		// ? we don't do this on hands, hand procs do it
 		// _equip_slot(I, slot, update_icons)
 		I.equipped(src, slot)
@@ -655,6 +661,8 @@
 		else
 			_unequip_slot(old_slot, update_icons)
 		I.unequipped(src, old_slot)
+		// sigh
+		handle_item_denesting(I, old_slot, user, silent)
 		_equip_slot(I, slot, update_icons)
 		I.equipped(src, slot)
 		log_inventory("[key_name(src)] moved [I] from [old_slot] to [slot].")
