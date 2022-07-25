@@ -463,6 +463,9 @@
 	icon_state = "cludge"
 	initial_icon = "cludge"
 
+	health = 100
+	maxhealth = 100
+
 	max_hull_equip = 0
 	max_weapon_equip = 0
 	max_utility_equip = 0
