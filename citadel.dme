@@ -19,6 +19,7 @@
 #include "_maps\submaps\level_specific\debrisfield_vr\debrisfield_things.dm"
 #include "code\___compile_options.dm"
 #include "code\__global_init.dm"
+#include "code\_debugger.dm"
 #include "code\_macros.dm"
 #include "code\global.dm"
 #include "code\names.dm"
