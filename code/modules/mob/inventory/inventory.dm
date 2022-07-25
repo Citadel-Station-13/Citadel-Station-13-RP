@@ -414,8 +414,13 @@
 			if(can_fit_over)
 				conflict_result = CAN_EQUIP_SLOT_CONFLICT_NONE
 				to_wear_over = conflicting
+			// ! DANGER: snowflake time
+			// take it out of the slot
+			_unequip_slot(slot, FALSE, FALSE)
 			// recheck
 			conflict_result = inventory_slot_conflict_check(I, slot)
+			// put it back in incase something else breaks
+			_equip_slot(conflicting, slot, TRUE, FALSE)
 
 	switch(conflict_result)
 		if(CAN_EQUIP_SLOT_CONFLICT_HARD)
@@ -456,6 +461,7 @@
 		// take the old item off our screen
 		client?.screen -= to_wear_over
 		to_wear_over.screen_loc = null
+		// we don't call slot re-equips here because the equip proc does this for us
 
 	return TRUE
 
@@ -743,13 +749,13 @@
 	return is_in_inventory(I)		// short circuited to that too
 									// if equipped/unequipped didn't set current_equipped_slot well jokes on you lmfao
 
-/mob/proc/_equip_slot(obj/item/I, slot, update_icons)
+/mob/proc/_equip_slot(obj/item/I, slot, update_icons, logic = TRUE)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	. = _set_inv_slot(slot, I, update_icons, TRUE) != INVENTORY_SLOT_DOES_NOT_EXIST
+	. = _set_inv_slot(slot, I, update_icons, logic) != INVENTORY_SLOT_DOES_NOT_EXIST
 
-/mob/proc/_unequip_slot(slot, update_icons)
+/mob/proc/_unequip_slot(slot, update_icons, logic = TRUE)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	. = _set_inv_slot(slot, null, update_icons, TRUE) != INVENTORY_SLOT_DOES_NOT_EXIST
+	. = _set_inv_slot(slot, null, update_icons, logic) != INVENTORY_SLOT_DOES_NOT_EXIST
 
 /mob/proc/_unequip_held(obj/item/I, update_icons)
 	return

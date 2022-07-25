@@ -52,7 +52,7 @@
 	QDEL_NULL(src.stored_continue)
 	QDEL_NULL(src.stored_end)
 	QDEL_NULL(closer)
-	. = ..()
+	return ..()
 
 /obj/item/storage/AltClick(mob/user)
 	if(user in is_seeing)
@@ -364,7 +364,8 @@
 
 //Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target
 /obj/item/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location, do_move = TRUE)
-	if(!istype(W)) return 0
+	if(!istype(W))
+		return 0
 
 	if(istype(src, /obj/item/storage/fancy))
 		var/obj/item/storage/fancy/F = src
@@ -392,10 +393,9 @@
 		else
 			W.hud_unlayerise()
 
-	if(usr)
-		src.orient2hud(usr)
-		if(usr.s_active)
-			usr.s_active.show_to(usr)
+	if(usr?.s_active == src)
+		orient2hud(usr)
+		show_to(usr)
 	if(W.maptext)
 		W.maptext = ""
 	W.on_exit_storage(src)

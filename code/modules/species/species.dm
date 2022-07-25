@@ -569,9 +569,9 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	box.calibrate_size()
 
 	if(H.backbag == 1)
-		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/right_hand)
+		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/right_hand, silent = TRUE)
 	else
-		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/put_in_backpack)
+		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/put_in_backpack, silent = TRUE)
 
 /**
  * called to ensure organs are consistent with our species's

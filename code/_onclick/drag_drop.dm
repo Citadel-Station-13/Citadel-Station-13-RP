@@ -41,6 +41,7 @@
 		return
 	over_object.MouseDroppedOn(src, user, params)
 
+// todo: less shit naming convenions for these
 
 /**
  * user dropped us onto an atom mouse-drag-drop

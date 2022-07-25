@@ -101,8 +101,11 @@
 	if(!istype(acc))
 		return
 	if(can_attach_accessory(acc))
-		if(!user.attempt_insert_item_for_installation(acc, src))
-			return
+		if(user)
+			if(!user.attempt_insert_item_for_installation(acc, src))
+				return
+			else
+				acc.forceMove(src)
 		attach_accessory(user, acc)
 		return TRUE
 	else

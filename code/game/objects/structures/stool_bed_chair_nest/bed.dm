@@ -311,7 +311,7 @@
 	return ..()
 
 /obj/structure/bed/roller/OnMouseDropLegacy(over_object, src_location, over_location)
-	..()
+	. = ..()
 	if((over_object == usr && (in_range(src, usr) || usr.contents.Find(src))))
 		if(!ishuman(usr))	return
 		if(has_buckled_mobs())	return 0
