@@ -27,18 +27,18 @@
 		// Species name is handled by set_species()
 
 	if(new_species_or_path)
-		set_species(new_species_or_path, force = TRUE)
+		set_species(new_species_or_path, force = TRUE, regen_icons = FALSE)
 	else if(!istype(species))
 		// no one set us yet
 		if(ispath(species))
-			set_species(species, force = TRUE)
+			set_species(species, force = TRUE, regen_icons = FALSE)
 		else
-			set_species(force = TRUE)
+			set_species(force = TRUE, regen_icons = FALSE)
 
 	if(!species)
 		stack_trace("Why is there no species? Resetting to human.")	// NO NO, YOU DONT GET TO CHICKEN OUT, SET_SPECIES WAS CALLED AND YOU BETTER HAVE ONE
 		// no you don't get to get away
-		set_species(/datum/species/human, force = TRUE)
+		set_species(/datum/species/human, force = TRUE, regen_icons = FALSE)
 
 	real_name = species.get_random_name(gender)
 	name = real_name
@@ -64,6 +64,10 @@
 		sync_organ_dna()
 
 	init_world_bender_hud()
+
+	// rebuild everything
+	regenerate_icons()
+	update_transform()
 
 /mob/living/carbon/human/Destroy()
 	human_mob_list -= src
@@ -396,8 +400,8 @@
 		unset_machine()
 		src << browse(null, t1)
 
-	if(href_list["strip_item"])
-		handle_strip_from_slot(href_list["strip_item"], usr)
+	if(href_list["strip_slot"])
+		handle_strip_from_slot(href_list["strip_slot"], usr)
 
 	if(href_list["strip_held"])
 		handle_strip_from_held(text2num(href_list["strip_held"]), usr)

@@ -65,7 +65,10 @@
 		return FALSE
 
 	if(stripping)
-		visible_message(SPAN_DANGER("[user] is trying to remove [src]'s [I]!"))
+		visible_message(
+			SPAN_DANGER("[user] is trying to remove [src]'s [I.name]!"),	// I.name to force non-auto-parsed behavior
+			SPAN_DANGER("[user] is trying to remove your [I.name]!")		// ditto
+		)
 	else
 		switch(slot_id_or_index)
 			if(SLOT_ID_MASK)

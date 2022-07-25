@@ -164,13 +164,6 @@
 		if(damtype == "brute")
 			hitsound = "swing_hit"
 
-/obj/item/doMove(atom/destination)
-	// if we're on a mob and we're moving somewhere else, yank us out!
-	if(ismob(loc))
-		var/mob/M = loc
-		M.temporarily_remove_from_inventory(src, TRUE)
-	return ..()
-
 /// Check if target is reasonable for us to operate on.
 /obj/item/proc/check_allowed_items(atom/target, not_inside, target_self)
 	if(((src in target) && !target_self) || ((!istype(target.loc, /turf)) && (!istype(target, /turf)) && (not_inside)))

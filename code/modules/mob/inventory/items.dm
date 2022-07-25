@@ -263,12 +263,10 @@
 	RETURN_TYPE(/mob)
 	return worn_inside?.current_equipped_mob() || (current_equipped_slot? loc : null)
 
-// forcemove hook to ensure proper functionality when inv procs aren't called
-/obj/item/forceMove(atom/destination)
+// doMove hook to ensure proper functionality when inv procs aren't called
+/obj/item/doMove(atom/destination)
 	if(current_equipped_slot)
 		// inventory handling
-		if(destination == loc)
-			return ..()
 		if(destination == worn_inside)
 			return ..()
 		var/mob/M = current_equipped_mob()
