@@ -150,8 +150,9 @@ GLOBAL_REAL_VAR(runtime_trap_triggered) = FALSE
 		SEND_TEXT(world.log, line)
 
 #ifdef UNIT_TESTS
-	//good day, sir
-	GLOB.current_test?.Fail("[main_line]\n[desclines.Join("\n")]")
+	if(GLOB.current_test)
+		//good day, sir
+		GLOB.current_test.Fail("[main_line]\n[desclines.Join("\n")]", file = E.file, line = E.line)
 #endif
 
 	// This writes the regular format (unwrapping newlines and inserting timestamps as needed).

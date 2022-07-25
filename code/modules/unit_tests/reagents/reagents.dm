@@ -11,4 +11,4 @@
 			continue
 		id_lookup[id] = path
 	for(var/id in colliding)
-		Fail("[id] collides on [english_list(colliding[id])]")
+		TEST_FAIL("[id] collides on [english_list(colliding[id])]")
