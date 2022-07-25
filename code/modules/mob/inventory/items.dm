@@ -7,8 +7,11 @@
 	 * ! do not promise anything for functionality - this is a SNOWFLAKE SYSTEM.
 	 */
 	var/obj/item/worn_over
-	/// current item we're fitted in. this is an atom movable because we also set this to a mob to prevent a hook from firing in forceMove during unequip!
-	var/atom/movable/worn_inside
+	/**
+	 * current item we're fitted in.
+	 * ! DANGER: Set to a mob for a forceMove call in inventory. Snowflake, but not something we can control right now.
+	 */
+	var/obj/item/worn_inside
 
 /obj/item/Destroy()
 	if(current_equipped_slot)
@@ -155,7 +158,10 @@
  * get_equipped_items() uses this so accessories are included
  */
 /obj/item/proc/_inv_return_attached()
-	return src
+	if(worn_inside)
+		return list(src) + worn_inside._inv_return_attached()
+	else
+		return src
 
 // todo: item should get final say for "soft" aka not-literal-var-overwrite conflicts.
 
@@ -255,8 +261,7 @@
  */
 /obj/item/proc/current_equipped_mob()
 	RETURN_TYPE(/mob)
-	var/obj/item/I = worn_inside
-	return I?.current_equipped_mob() || (current_equipped_slot? (I? I.current_equipped_mob() : loc) : null)
+	return worn_inside?.current_equipped_mob() || (current_equipped_slot? (worn_inside? worn_inside.current_equipped_mob() : loc) : null)
 
 // forcemove hook to ensure proper functionality when inv procs aren't called
 /obj/item/forceMove(atom/destination)
