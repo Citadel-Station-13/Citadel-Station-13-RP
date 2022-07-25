@@ -256,9 +256,7 @@
 /obj/item/proc/current_equipped_mob()
 	RETURN_TYPE(/mob)
 	var/obj/item/I = worn_inside
-	if(!istype(I))
-		CRASH("worn_inside was not an item - it should be an item outside of inventory procs/snowflaking!")
-	return current_equipped_slot? (I? I.current_equipped_mob() : loc) : null
+	return I?.current_equipped_mob() || (current_equipped_slot? (I? I.current_equipped_mob() : loc) : null)
 
 // forcemove hook to ensure proper functionality when inv procs aren't called
 /obj/item/forceMove(atom/destination)

@@ -45,7 +45,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	for(var/id in GLOB.inventory_slot_meta)
 		var/datum/inventory_slot_meta/slot = GLOB.inventory_slot_meta[id]
 		if(slot.type != type)
-			return
+			continue
 		GLOB.inventory_slot_meta[type] = . = slot
 		break
 	if(!.)
