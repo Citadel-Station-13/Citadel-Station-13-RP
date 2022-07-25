@@ -175,11 +175,33 @@ SUBSYSTEM_DEF(dbcore)
 	last_error = error
 
 /datum/controller/subsystem/dbcore/proc/NewQuery(sql_query, arguments)
+	RETURN_TYPE(/datum/db_query)
 	if(IsAdminAdvancedProcCall())
 		log_admin_private("ERROR: Advanced admin proc call led to sql query: [sql_query]. Query has been blocked")
 		message_admins("ERROR: Advanced admin proc call led to sql query. Query has been blocked")
 		return FALSE
 	return new /datum/db_query(connection, sql_query, arguments)
+
+/**
+ * immediately runs a sql query with selected arguments
+ * always uses async queries
+ * will block the caller.
+ */
+/datum/controller/subsystem/dbcore/proc/RunQuery(sql_query, arguments)
+	RETURN_TYPE(/datum/db_query)
+	var/datum/db_query/query = NewQuery(sql_query, arguments)
+	. = query
+	query.Execute(TRUE, TRUE)
+
+/**
+ * immediately runs a sql query with selected arguments
+ * always usesasync queries
+ * will not block the caller.
+ */
+/datum/controller/subsystem/dbcore/proc/RunQueryAsync(sql_query, arguments)
+	RETURN_TYPE(/datum/db_query)
+	set waitfor = FALSE
+	return RunQuery(sql_query, arguments)
 
 /datum/controller/subsystem/dbcore/proc/QuerySelect(list/querys, warn = FALSE, qdel = FALSE)
 	if (!islist(querys))

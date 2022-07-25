@@ -562,9 +562,15 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			department_hours[query_hours.item[1]] = text2num(query_hours.item[2])
 
 	if(sql_id)
-		//Player already identified previously, we need to just update the 'lastseen', 'ip' and 'computer_id' variables
-		var/datum/db_query/query_update = dbcon.NewQuery("UPDATE [format_table_name("player")] SET lastseen = Now(), ip = '[sql_ip]', computerid = '[sql_computerid]', lastadminrank = '[sql_admin_rank]' WHERE id = [sql_id]")
-		query_update.Execute()
+		SSdbcore.RunQuery(
+			"UPDATE [format_table_name("player")] SET lastseen = Now(), ip = :ip, computerid = :computerid, lastadminrank = :lastadminrank WHERE id = :id",
+			list(
+				"ip" = sql_ip,
+				"computerid" = sql_computerid,
+				"lastadminrank" = sql_admin_rank,
+				"id" = sql_id
+			)
+		)
 	else
 		//New player!! Need to insert all the stuff
 		var/datum/db_query/query_insert = dbcon.NewQuery("INSERT INTO [format_table_name("player")] (id, ckey, firstseen, lastseen, ip, computerid, lastadminrank) VALUES (null, '[sql_ckey]', Now(), Now(), '[sql_ip]', '[sql_computerid]', '[sql_admin_rank]')")
@@ -572,8 +578,15 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	//Logging player access
 	var/serverip = "[world.internet_address]:[world.port]"
-	var/datum/db_query/query_accesslog = dbcon.NewQuery("INSERT INTO `[format_table_name("connection")]_log`(`id`,`datetime`,`serverip`,`ckey`,`ip`,`computerid`) VALUES(null,Now(),'[serverip]','[sql_ckey]','[sql_ip]','[sql_computerid]');")
-	query_accesslog.Execute()
+	SSdbcore.RunQuery(
+		"INSERT INTO [format_table_name("connection_log")] (id, datetime, serverip, ckey, ip, computerid) VALUES (null, Now(), :serverip, :ckey, :ip, :computerid)",
+		list(
+			"serverip" = serverip,
+			"ckey" = sql_ckey,
+			"ip" = sql_ip,
+			"computerid" = sql_computerid
+		)
+	)
 
 #undef UPLOAD_LIMIT
 
