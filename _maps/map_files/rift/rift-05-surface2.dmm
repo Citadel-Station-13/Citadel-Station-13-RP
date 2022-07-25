@@ -3212,6 +3212,7 @@
 	d2 = 2;
 	icon_state = "32-2"
 	},
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "cwg" = (

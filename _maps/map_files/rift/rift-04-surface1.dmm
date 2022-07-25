@@ -1188,15 +1188,6 @@
 /obj/random/maintenance/research,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
-"bdq" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_y = 30
-	},
-/obj/structure/table/standard,
-/obj/item/clothing/head/beekeeper,
-/obj/item/clothing/suit/beekeeper,
-/turf/simulated/floor/tiled/monotile,
-/area/rnd/xenobiology/xenoflora)
 "bdy" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/game_room)
@@ -1379,19 +1370,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/funny/clownoffice)
-"bky" = (
-/obj/structure/closet/secure_closet/hydroponics{
-	name = "Xenobotanist's locker";
-	req_access = list();
-	req_one_access = list(30,35,47,77)
-	},
-/obj/item/radio/intercom{
-	dir = 1;
-	name = "Station Intercom (General)";
-	pixel_y = 24
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/rnd/xenobiology/xenoflora)
 "blb" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -1868,6 +1846,29 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
+"bAt" = (
+/obj/item/bee_pack,
+/obj/item/honey_frame,
+/obj/item/honey_frame,
+/obj/item/tool/crowbar,
+/obj/item/bee_smoker,
+/obj/item/beehive_assembly,
+/obj/structure/closet/crate/hydroponics{
+	desc = "All you need to start your own honey farm.";
+	name = "beekeeping crate"
+	},
+/obj/item/beehive_assembly,
+/obj/item/beehive_assembly,
+/obj/item/beehive_assembly,
+/obj/item/bee_pack,
+/obj/item/bee_pack,
+/obj/item/bee_pack,
+/obj/item/honey_frame,
+/obj/item/honey_frame,
+/obj/item/honey_frame,
+/obj/machinery/camera/network/research,
+/turf/simulated/floor/tiled/monotile,
+/area/rnd/xenobiology/xenoflora)
 "bAV" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -4932,7 +4933,6 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/tankstorage)
 "dHs" = (
-/obj/structure/lattice,
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/zpipe/up/scrubbers{
 	dir = 1
@@ -4956,6 +4956,7 @@
 /obj/structure/disposalpipe/down{
 	dir = 1
 	},
+/obj/structure/cable/green,
 /turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_stairs)
 "dHw" = (
@@ -5973,13 +5974,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/medical/recoveryrestroom)
-"emR" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_y = 30
-	},
-/obj/machinery/beehive,
-/turf/simulated/floor/tiled/monotile,
-/area/rnd/xenobiology/xenoflora)
 "enu" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -9663,6 +9657,19 @@
 /obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside1)
+"hkg" = (
+/obj/structure/closet/secure_closet/hydroponics{
+	name = "Xenobotanist's locker";
+	req_access = list();
+	req_one_access = list(30,35,47,77)
+	},
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/rnd/xenobiology/xenoflora)
 "hkp" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -10068,6 +10075,15 @@
 "hDN" = (
 /turf/simulated/wall,
 /area/maintenance/tool_storage)
+"hDS" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
+	},
+/obj/structure/table/standard,
+/obj/item/clothing/head/beekeeper,
+/obj/item/clothing/suit/beekeeper,
+/turf/simulated/floor/tiled/monotile,
+/area/rnd/xenobiology/xenoflora)
 "hDZ" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -22231,6 +22247,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
+"pAV" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
+	},
+/obj/machinery/beehive,
+/turf/simulated/floor/tiled/monotile,
+/area/rnd/xenobiology/xenoflora)
 "pBb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel,
@@ -33509,29 +33532,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/trade_shop)
-"xHb" = (
-/obj/item/bee_pack,
-/obj/item/honey_frame,
-/obj/item/honey_frame,
-/obj/item/tool/crowbar,
-/obj/item/bee_smoker,
-/obj/item/beehive_assembly,
-/obj/structure/closet/crate/hydroponics{
-	desc = "All you need to start your own honey farm.";
-	name = "beekeeping crate"
-	},
-/obj/item/beehive_assembly,
-/obj/item/beehive_assembly,
-/obj/item/beehive_assembly,
-/obj/item/bee_pack,
-/obj/item/bee_pack,
-/obj/item/bee_pack,
-/obj/item/honey_frame,
-/obj/item/honey_frame,
-/obj/item/honey_frame,
-/obj/machinery/camera/network/research,
-/turf/simulated/floor/tiled/monotile,
-/area/rnd/xenobiology/xenoflora)
 "xIm" = (
 /turf/simulated/wall,
 /area/rnd/outpost/xenobiology/outpost_stairs)
@@ -51915,7 +51915,7 @@ oWj
 kvW
 cNp
 haw
-emR
+pAV
 xfQ
 heB
 ijr
@@ -52109,7 +52109,7 @@ oWj
 bpY
 cNp
 haw
-xHb
+bAt
 xfQ
 heB
 ijr
@@ -52303,7 +52303,7 @@ oWj
 nJW
 cNp
 haw
-bdq
+hDS
 xfQ
 heB
 ijr
@@ -52497,7 +52497,7 @@ oWj
 rsj
 cNp
 haw
-bky
+hkg
 xfQ
 tim
 wCG
