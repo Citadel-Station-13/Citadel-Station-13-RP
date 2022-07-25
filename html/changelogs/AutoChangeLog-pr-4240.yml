@@ -1,8 +1,0 @@
-author: "Captain277"
-delete-after: True
-changes: 
-  - tweak: "Wing icon sheets"
-  - tweak: "Moves wing, horn, and tail icon sheets."
-  - tweak: "Adjusts wing offsets.
-feature: Lays groundwork for Wing Spreading."
-  - tweak: "Alphabetizes all wings, tails, and ears/horns."
