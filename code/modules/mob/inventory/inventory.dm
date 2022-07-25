@@ -570,7 +570,7 @@
 	var/old_slot = slot_by_item(I)
 
 	if(old_slot)
-		. = _handle_item_reequip(I, slot, old_slot, user, force, disallow_delay, ignore_fluff, silent)
+		. = _handle_item_reequip(I, slot, old_slot, user, force, disallow_delay, ignore_fluff, silent, update_icons)
 		if(!.)
 			return
 
@@ -578,6 +578,8 @@
 	else
 		if(!can_equip(I, slot, user, force, disallow_delay, ignore_fluff, silent, TRUE))
 			return FALSE
+
+		_equip_slot(I, slot, update_icons)
 
 		I.forceMove(src)
 		I.pickup(src, FALSE, silent)
@@ -600,7 +602,7 @@
  *
  * return true/false based on if we succeeded
  */
-/mob/proc/_handle_item_reequip(obj/item/I, slot, old_slot, mob/user, force, disallow_delay, ignore_fluff, silent)
+/mob/proc/_handle_item_reequip(obj/item/I, slot, old_slot, mob/user, force, disallow_delay, ignore_fluff, silent, update_icons)
 	ASSERT(slot)
 	if(!old_slot)
 		// DO NOT USE _slot_by_item - at this point, the item has already been var-set into the new slot!
@@ -621,7 +623,9 @@
 			// check can unequip
 			return FALSE
 		// call procs
+		_unequip_slot(old_slot, update_icons)
 		I.unequipped(src, old_slot)
+		_equip_slot(I, slot, update_icons)
 		I.equipped(src, slot)
 		log_inventory("[key_name(src)] moved [I] from [old_slot] to hands.")
 		// hand procs handle rest
@@ -632,7 +636,9 @@
 			return FALSE
 		if(!can_equip(I, slot, user, force, disallow_delay, ignore_fluff, silent, TRUE))
 			return FALSE
+		_unequip_slot(old_slot, update_icons)
 		I.unequipped(src, old_slot)
+		_equip_slot(I, slot, update_icons)
 		I.equipped(src, slot)
 		log_inventory("[key_name(src)] moved [I] from [old_slot] to [slot].")
 		return TRUE
