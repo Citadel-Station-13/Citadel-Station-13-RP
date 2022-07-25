@@ -624,7 +624,7 @@
  *
  * return true/false based on if we succeeded
  */
-/mob/proc/_handle_item_reequip(obj/item/I, slot, old_slot, mob/user, force, disallow_delay, ignore_fluff, silent, update_icons)
+/mob/proc/_handle_item_reequip(obj/item/I, slot, old_slot, mob/user = src, force, disallow_delay, ignore_fluff, silent, update_icons)
 	ASSERT(slot)
 	if(!old_slot)
 		// DO NOT USE _slot_by_item - at this point, the item has already been var-set into the new slot!

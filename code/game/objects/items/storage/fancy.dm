@@ -279,7 +279,7 @@
 
 		// Instead of running equip_to_slot_if_possible() we check here first,
 		// to avoid dousing cig with reagents if we're not going to equip it
-		if(!user.can_equip(cig, SLOT_ID_MASK))
+		if(!user.can_equip(cig, SLOT_ID_MASK, user = user))
 			return
 
 		// We call remove_from_storage first to manage the reagent transfer and
