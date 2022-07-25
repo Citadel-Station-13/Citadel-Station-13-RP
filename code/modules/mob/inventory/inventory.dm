@@ -209,7 +209,7 @@
 		// put it back in the slot
 		_equip_slot(over, old_slot, TRUE)
 		// put it back on the screen
-		position_hud_item(over)
+		position_hud_item(over, old_slot)
 		client?.screen |= over
 
 /**
@@ -373,8 +373,11 @@
  * - ignore_fluff - ignore self equip delay, item zone checks, etc. implied by force.
  * - silent - don't display a warning message if we find an error
  * - final_check - this is the final check before the point of no return of an actual equip
+ * - denest_to - the old slot we're leaving if called from handle_item_reequip. **extremely** snowflakey
+ *
+ * todo: refactor nesting to not require this shit
  */
-/mob/proc/can_equip(obj/item/I, slot, mob/user, force, disallow_delay, ignore_fluff, silent, final_check)
+/mob/proc/can_equip(obj/item/I, slot, mob/user, force, disallow_delay, ignore_fluff, silent, final_check, denest_to)
 	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
 	var/self_equip = user == src
 	if(!slot_meta)
@@ -461,7 +464,7 @@
 		to_wear_over.forceMove(I)
 		// check we don't have something already (wtf)
 		if(I.worn_over)
-			stack_trace("already had worn over - how?")
+			handle_item_denesting(I, denest_to, user, silent)
 		// set the other way around
 		I.worn_over = to_wear_over
 		// tell it we're inserting the old item
@@ -653,7 +656,7 @@
 		// else, this gets painful
 		if(!can_unequip(I, old_slot, user, force, disallow_delay, ignore_fluff, silent))
 			return FALSE
-		if(!can_equip(I, slot, user, force, disallow_delay, ignore_fluff, silent, TRUE))
+		if(!can_equip(I, slot, user, force, disallow_delay, ignore_fluff, silent, TRUE, old_slot))
 			return FALSE
 		// ?if it's from hands, hands aren't a slot.
 		if(old_slot == SLOT_ID_HANDS)
@@ -662,7 +665,6 @@
 			_unequip_slot(old_slot, update_icons)
 		I.unequipped(src, old_slot)
 		// sigh
-		handle_item_denesting(I, old_slot, user, silent)
 		_equip_slot(I, slot, update_icons)
 		I.equipped(src, slot)
 		log_inventory("[key_name(src)] moved [I] from [old_slot] to [slot].")
