@@ -625,7 +625,8 @@
 		// call procs
 		_unequip_slot(old_slot, update_icons)
 		I.unequipped(src, old_slot)
-		_equip_slot(I, slot, update_icons)
+		// ? we don't do this on hands, hand procs do it
+		// _equip_slot(I, slot, update_icons)
 		I.equipped(src, slot)
 		log_inventory("[key_name(src)] moved [I] from [old_slot] to hands.")
 		// hand procs handle rest
@@ -636,7 +637,11 @@
 			return FALSE
 		if(!can_equip(I, slot, user, force, disallow_delay, ignore_fluff, silent, TRUE))
 			return FALSE
-		_unequip_slot(old_slot, update_icons)
+		// ?if it's from hands, hands aren't a slot.
+		if(old_slot == SLOT_ID_HANDS)
+			_unequip_held(I, TRUE)
+		else
+			_unequip_slot(old_slot, update_icons)
 		I.unequipped(src, old_slot)
 		_equip_slot(I, slot, update_icons)
 		I.equipped(src, slot)
