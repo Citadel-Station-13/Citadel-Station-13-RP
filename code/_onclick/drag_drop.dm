@@ -31,7 +31,7 @@
 	var/proximity = Adjacent(usr) && over_object.Adjacent(usr)
 	if(proximity)
 		// this one only runs if the above pass. legacy behavior.
-		MouseDroppedOnLegacy(src, user, params)
+		over_object.MouseDroppedOnLegacy(src, user, params)
 
 	if(SEND_SIGNAL(src, COMSIG_MOUSEDROP_ONTO, over_object, user, proximity, params) & COMPONENT_NO_MOUSEDROP)
 		return

@@ -311,15 +311,15 @@
 	return ..()
 
 /obj/structure/bed/roller/OnMouseDropLegacy(over_object, src_location, over_location)
-	. = ..()
 	if((over_object == usr && (in_range(src, usr) || usr.contents.Find(src))))
-		if(!ishuman(usr))	return
+		if(!ishuman(usr))	return 0
 		if(has_buckled_mobs())	return 0
 		visible_message("[usr] collapses \the [src.name].")
 		new rollertype(get_turf(src))
 		spawn(0)
 			qdel(src)
-		return
+		return 0
+	return ..()
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_bed
 	name = "Precursor Alpha Object - Resting Contraption"

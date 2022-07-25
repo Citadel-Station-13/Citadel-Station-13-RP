@@ -456,6 +456,11 @@
 		to_wear_over.worn_inside = I
 		// setting worn inside first disallows equip/unequip from triggering
 		to_wear_over.forceMove(I)
+		// check we don't have something already (wtf)
+		if(I.worn_over)
+			stack_trace("already had worn over - how?")
+		// set the other way around
+		I.worn_over = to_wear_over
 		// tell it we're inserting the old item
 		I.equip_on_worn_over_insert(src, slot, user, to_wear_over, silent)
 		// take the old item off our screen
