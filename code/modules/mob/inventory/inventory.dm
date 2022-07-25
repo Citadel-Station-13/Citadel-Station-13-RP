@@ -724,7 +724,7 @@
  * SLOT_ID_HANDS if in hands
  */
 /mob/proc/is_in_inventory(obj/item/I)
-	return I?.current_equipped_slot && (I.current_equipped_mob() == src)
+	return (I?.current_equipped_mob() == src) && I.current_equipped_slot
 	// we use entirely cached vars for speed.
 	// if this returns bad data well fuck you, don't break equipped()/unequipped().
 

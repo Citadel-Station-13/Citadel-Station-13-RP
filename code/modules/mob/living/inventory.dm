@@ -63,6 +63,8 @@
 	l_hand = I
 	l_hand.update_twohanding()
 	l_hand.update_held_icon()
+	// ! WARNING: snowflake - at time of equipped, vars aren't set yet.
+	position_hud_item(l_hand, SLOT_ID_HANDS)
 	update_inv_l_hand()
 	return TRUE
 
@@ -81,6 +83,8 @@
 	r_hand = I
 	r_hand.update_twohanding()
 	r_hand.update_held_icon()
+	// ! WARNING: snowflake - at time of equipped, vars aren't set yet.
+	position_hud_item(r_hand, SLOT_ID_HANDS)
 	update_inv_r_hand()
 	return TRUE
 
@@ -92,7 +96,7 @@
 	var/existing_slot = is_in_inventory(I)
 	if(existing_slot)
 		// handle item reequip can fail.
-		return _handle_item_reequip(I, SLOT_ID_HANDS, existing_slot, force = force)
+		return _handle_item_reequip(I, SLOT_ID_HANDS, existing_slot, force = force, update_icons = TRUE)
 	// newly equipped
 	I.forceMove(src)
 	I.pickup(src)

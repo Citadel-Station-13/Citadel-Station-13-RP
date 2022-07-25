@@ -33,7 +33,6 @@
     M.update_inv_w_uniform()
     update_worn_icon()
 
-
 /obj/item/clothing/under/event_reward/foxmiko/verb/liftskirt() //Verb for parting skirt - lewd. User reporting, flips state, and updates icon
     set name = "Adjust Skirt"
     set category = "Object"

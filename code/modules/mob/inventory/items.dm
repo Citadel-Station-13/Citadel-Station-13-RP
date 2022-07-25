@@ -40,7 +40,7 @@
 	// todo: shouldn't be in here
 	hud_layerise()
 	// todo: shouldn't be in here
-	user.position_hud_item(src,slot)
+	user.position_hud_item(src, slot)
 	if(user.client)
 		user.client.screen |= src
 	if(slot != SLOT_ID_HANDS)
@@ -261,7 +261,7 @@
  */
 /obj/item/proc/current_equipped_mob()
 	RETURN_TYPE(/mob)
-	return worn_inside?.current_equipped_mob() || (current_equipped_slot? (worn_inside? worn_inside.current_equipped_mob() : loc) : null)
+	return worn_inside?.current_equipped_mob() || (current_equipped_slot? loc : null)
 
 // forcemove hook to ensure proper functionality when inv procs aren't called
 /obj/item/forceMove(atom/destination)
