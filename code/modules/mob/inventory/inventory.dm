@@ -423,13 +423,13 @@
 			if(can_fit_over)
 				conflict_result = CAN_EQUIP_SLOT_CONFLICT_NONE
 				to_wear_over = conflicting
-			// ! DANGER: snowflake time
-			// take it out of the slot
-			_unequip_slot(slot, FALSE, FALSE)
-			// recheck
-			conflict_result = inventory_slot_conflict_check(I, slot)
-			// put it back in incase something else breaks
-			_equip_slot(conflicting, slot, TRUE, FALSE)
+				// ! DANGER: snowflake time
+				// take it out of the slot
+				_unequip_slot(slot, FALSE, FALSE)
+				// recheck
+				conflict_result = inventory_slot_conflict_check(I, slot)
+				// put it back in incase something else breaks
+				_equip_slot(conflicting, slot, TRUE, FALSE)
 
 	switch(conflict_result)
 		if(CAN_EQUIP_SLOT_CONFLICT_HARD)
