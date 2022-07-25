@@ -147,6 +147,7 @@
 		if(!can_unequip(I, SLOT_ID_HANDS, user, force, disallow_delay, ignore_fluff, silent))
 			return FALSE
 		_unequip_held(I, TRUE)
+		I.unequipped(src, SLOT_ID_HANDS, FALSE, silent)
 		old = SLOT_ID_HANDS
 	else
 		if(!I.current_equipped_slot)
