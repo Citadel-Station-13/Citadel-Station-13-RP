@@ -3688,6 +3688,7 @@
 #include "code\modules\species\station\station_special_abilities.dm"
 #include "code\modules\species\station\vasilissan.dm"
 #include "code\modules\species\station\werebeast.dm"
+#include "code\modules\species\station\promethean\promethean.dm"
 #include "code\modules\species\station\promethean\promethean_blob.dm"
 #include "code\modules\species\station\protean\protean_blob.dm"
 #include "code\modules\species\station\protean\protean_powers.dm"
