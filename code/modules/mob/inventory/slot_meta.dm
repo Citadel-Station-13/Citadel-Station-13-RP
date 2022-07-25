@@ -1,8 +1,12 @@
 /// global slot meta cache - all ids must be string!
 GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
+/// global slot meta cache by type - only works for hardcoded
+GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 
 /proc/init_inventory_slot_meta()
 	. = list()
+	GLOB.inventory_slot_meta = .
+	GLOB.inventory_slot_Type_cache = list()
 	for(var/path in subtypesof(/datum/inventory_slot_meta))
 		var/datum/inventory_slot_meta/M = path
 		if(initial(M.abstract_type) == path)
@@ -11,7 +15,7 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 		if(!M.id)
 			stack_trace("no ID on [path], skipping")
 			continue
-		.[M.id] = M
+		.[M.id || M.type] = M
 
 /proc/all_inventory_slot_ids()
 	. = list()
@@ -28,15 +32,24 @@ GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
 	if(istype(id))
 		return id
 	else if(ispath(id))
-		id = inventory_slot_type_to_id(id)
+		return inventory_slot_type_lookup(id)
 	return GLOB.inventory_slot_meta[id]
 
 /**
- * get inventory slot meta id of a typepath
+ * get inventory slot meta of a typepath
  */
-/proc/inventory_slot_type_to_id(type)
-	var/datum/inventory_slot_meta/M = type
-	return initial(M.id)
+/proc/inventory_slot_type_lookup(type)
+	. = GLOB.inventory_slot_type_cache[type]
+	if(.)
+		return
+	for(var/id in GLOB.inventory_slot_meta)
+		var/datum/inventory_slot_meta/slot = GLOB.inventory_slot_meta[id]
+		if(slot.type !+ type)
+			return
+		GLOB.inventory_slot_meta[type] = . = slot
+		break
+	if(!.)
+		CRASH("Failed to do type lookup for [type].")
 
 /**
  * inventory slot meta

@@ -25,7 +25,7 @@
 	var/has_hidden_gear
 	for(var/gear_slot in hud_data.gear)
 
-		inv_box = new /atom/movable/screen/inventory()
+		inv_box = new /atom/movable/screen/inventory/slot()
 		inv_box.icon = ui_style
 		inv_box.color = ui_color
 		inv_box.alpha = ui_alpha
