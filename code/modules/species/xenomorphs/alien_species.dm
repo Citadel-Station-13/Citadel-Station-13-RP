@@ -336,8 +336,8 @@
 	has_internals = 0
 
 	gear = list(
-		"o_clothing" =   list("loc" = ui_belt,      "name" = "Suit",         "slot" = SLOT_ID_SUIT, "state" = "equip",  "dir" = SOUTH),
-		"head" =         list("loc" = ui_id,        "name" = "Hat",          "slot" = SLOT_ID_HEAD,      "state" = "hair"),
-		"storage1" =     list("loc" = ui_storage1,  "name" = "Left Pocket",  "slot" = SLOT_ID_LEFT_POCKET,   "state" = "pocket"),
-		"storage2" =     list("loc" = ui_storage2,  "name" = "Right Pocket", "slot" = SLOT_ID_RIGHT_POCKET,   "state" = "pocket"),
+		SLOT_ID_SUIT =   list("loc" = ui_belt,      "name" = "Suit",         "slot" = SLOT_ID_SUIT, "state" = "equip",  "dir" = SOUTH),
+		SLOT_ID_HEAD =         list("loc" = ui_id,        "name" = "Hat",          "slot" = SLOT_ID_HEAD,      "state" = "hair"),
+		SLOT_ID_LEFT_POCKET =     list("loc" = ui_storage1,  "name" = "Left Pocket",  "slot" = SLOT_ID_LEFT_POCKET,   "state" = "pocket"),
+		SLOT_ID_RIGHT_POCKET =     list("loc" = ui_storage2,  "name" = "Right Pocket", "slot" = SLOT_ID_RIGHT_POCKET,   "state" = "pocket"),
 		)

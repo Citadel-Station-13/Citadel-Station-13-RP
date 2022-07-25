@@ -268,7 +268,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	if(suit_item)
 		return TRUE
 	// todo: this check is ass
-	if(istype(I, /obj/item/pda) || istype(I, /obj/item/pen) || is_type_in_list(I, suit_item.allowed))
+	if(istype(I, /obj/item/pda) || istype(I, /obj/item/pen) || (suit_item && is_type_in_list(I, suit_item.allowed)))
 		return TRUE
 	return FALSE
 

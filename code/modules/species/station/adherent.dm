@@ -179,11 +179,11 @@
 /datum/hud_data/adherent
 	has_internals = FALSE
 	gear = list(
-		"l_ear" = list("loc" = ui_iclothing, "name" = "Aux Port", "slot" = SLOT_ID_LEFT_EAR,   "state" = "ears", "toggle" = 1),
-		"head" =  list("loc" = ui_glasses,   "name" = "Hat",      "slot" = SLOT_ID_HEAD,    "state" = "hair", "toggle" = 1),
-		"back" =  list("loc" = ui_back,      "name" = "Back",     "slot" = SLOT_ID_BACK,    "state" = "back"),
-		"id" =    list("loc" = ui_id,        "name" = "ID",       "slot" = SLOT_ID_WORN_ID, "state" = "id"),
-		"belt" =  list("loc" = ui_belt,      "name" = "Belt",     "slot" = SLOT_ID_BELT,    "state" = "belt")
+		SLOT_ID_LEFT_EAR = list("loc" = ui_iclothing, "name" = "Aux Port", "slot" = SLOT_ID_LEFT_EAR,   "state" = "ears", "toggle" = 1),
+		SLOT_ID_HEAD =  list("loc" = ui_glasses,   "name" = "Hat",      "slot" = SLOT_ID_HEAD,    "state" = "hair", "toggle" = 1),
+		SLOT_ID_BACK =  list("loc" = ui_back,      "name" = "Back",     "slot" = SLOT_ID_BACK,    "state" = "back"),
+		SLOT_ID_WORN_ID =    list("loc" = ui_id,        "name" = "ID",       "slot" = SLOT_ID_WORN_ID, "state" = "id"),
+		SLOT_ID_BELT =  list("loc" = ui_belt,      "name" = "Belt",     "slot" = SLOT_ID_BELT,    "state" = "belt")
 	)
 
 /datum/species/adherent/post_organ_rejuvenate(obj/item/organ/org, mob/living/carbon/human/H)
