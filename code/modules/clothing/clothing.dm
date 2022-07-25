@@ -73,7 +73,7 @@
 	if(!istype(H))
 		return exclude_mode
 
-	if((H.species.get_worn_legacy_bodytype(H) in species_restricted) ^ exclude_mode)
+	if((H.species.get_worn_legacy_bodytype(H) in species_restricted) == exclude_mode)
 		if(slot in list(SLOT_ID_LEFT_POCKET, SLOT_ID_RIGHT_POCKET, SLOT_ID_SUIT_STORAGE))
 			return TRUE		// don't care, didn't ask
 		if(!silent)
