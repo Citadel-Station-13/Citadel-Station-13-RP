@@ -209,15 +209,16 @@ What is the naming convention for planes or layers?
 ///Purely for shenanigans (above HUD)
 #define PLANE_ADMIN3			99
 //////////////////////////
+
 /atom/proc/hud_layerise()
 	plane = PLANE_PLAYER_HUD_ITEMS
 	set_base_layer(LAYER_HUD_ITEM)
-	appearance_flags |= NO_CLIENT_COLOR
+	// appearance_flags |= NO_CLIENT_COLOR
 
 /atom/proc/hud_unlayerise()
 	plane = initial(plane)
 	set_base_layer(initial(layer))
-	appearance_flags &= ~(NO_CLIENT_COLOR)
+	// appearance_flags &= ~(NO_CLIENT_COLOR)
 
 /atom/proc/reset_plane_and_layer()
 	plane = initial(plane)

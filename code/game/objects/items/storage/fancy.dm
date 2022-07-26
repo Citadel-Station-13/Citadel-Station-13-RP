@@ -14,7 +14,7 @@
  *		Box of Chocolates
  */
 
-/obj/item/storage/fancy/
+/obj/item/storage/fancy
 	icon = 'icons/obj/food.dmi'
 	icon_state = "donutbox6"
 	name = "donut box"
@@ -22,10 +22,9 @@
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 
-/obj/item/storage/fancy/update_icon(var/itemremoved = 0)
-	var/total_contents = contents.len - itemremoved
-	icon_state = "[icon_type]box[total_contents]"
-	return
+/obj/item/storage/fancy/update_icon_state()
+	. = ..()
+	icon_state = "[icon_type]box[contents.len]"
 
 /obj/item/storage/fancy/examine(mob/user)
 	. = ..()
