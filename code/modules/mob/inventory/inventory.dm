@@ -644,9 +644,11 @@
 		if(!can_unequip(I, old_slot, user, force, disallow_delay, ignore_fluff, silent))
 			// check can unequip
 			return FALSE
-
 		// call procs
-		_unequip_slot(old_slot, update_icons)
+		if(old_slot == SLOT_ID_HANDS)
+			_unequip_held(I, TRUE)
+		else
+			_unequip_slot(old_slot, update_icons)
 		I.unequipped(src, old_slot)
 		// sigh
 		handle_item_denesting(I, old_slot, user, silent)
