@@ -1181,7 +1181,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		var/icon/wing_s = new/icon("icon" = wing_style.icon, "icon_state" = flapping && wing_style.ani_state ? wing_style.ani_state : (wing_style.front_behind_system? (wing_style.icon_state + (front? "_FRONT" : "_BEHIND")) : wing_style.icon_state))
 		if(wing_style.do_colouration)
 			if(grad_wingstyle)
-				grad_swing = new/icon("icon" = 'icons/mob/hair_gradients.dmi', "icon_state" = GLOB.hair_gradients[grad_wingstyle])
+				grad_swing = new/icon("icon" = 'icons/mob/wing_gradients.dmi', "icon_state" = GLOB.hair_gradients[grad_wingstyle])
 				grad_swing.Blend(wing_s, ICON_AND)
 				grad_swing.Blend(rgb(r_gradwing, g_gradwing, b_gradwing), ICON_MULTIPLY)
 			wing_s.Blend(rgb(src.r_wing, src.g_wing, src.b_wing), wing_style.color_blend_mode)
@@ -1207,7 +1207,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 		if(wing_style.center)
 			center_image(wing_style, wing_style.dimension_x, wing_style.dimension_y)
-		return image(wing_s)
+		return image(wing_s, "pixel_x" = -16)
 
 // TODO - Move this to where it should go ~Leshana
 /mob/proc/stop_flying()

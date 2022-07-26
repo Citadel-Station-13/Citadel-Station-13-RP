@@ -37,6 +37,9 @@
 	spawn(1)
 		update_state()
 
+/obj/item/holder/examine(mob/user)
+	return held_mob?.examine(user) || list("WARNING WARNING: No held_mob on examine. REPORT THIS TO A CODER.")
+
 /obj/item/holder/proc/update_state()
 	if(!(contents.len))
 		qdel(src)

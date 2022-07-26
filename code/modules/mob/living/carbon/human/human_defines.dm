@@ -83,6 +83,7 @@
 
 	var/wagging = 0 //UGH.
 	var/flapping = 0
+	var/spread = 0
 	///What's my status?
 	var/vantag_pref = VANTAG_NONE
 	///For impersonating a bodytype

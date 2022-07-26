@@ -12,3 +12,17 @@
   - rscadd: Added new Alina sprites
   Zandario:
   - bugfix: Corrects the tajaran spritesheets being used.
+2022-07-16:
+  Captain277:
+  - rscadd: Adds the Thrumbo.
+2022-07-25:
+  Captain277:
+  - tweak: Wing icon sheets
+  - tweak: Moves wing, horn, and tail icon sheets.
+  - tweak: 'Adjusts wing offsets. feature: Lays groundwork for Wing Spreading.'
+  - tweak: Alphabetizes all wings, tails, and ears/horns.
+2022-07-26:
+  TheLordME:
+  - tweak: Tweaked Xenohybrids lose the healing verb, because its passive now
+  Zandario:
+  - tweak: Tweaked chat blockquote formatting.
