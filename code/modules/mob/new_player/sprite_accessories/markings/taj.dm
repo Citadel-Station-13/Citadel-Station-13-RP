@@ -40,8 +40,6 @@
 	species_allowed = list(SPECIES_TAJ)
 	apply_restrictions = TRUE
 
-
-
 /datum/sprite_accessory/marking/patches
 	name = "Color Patches"
 	icon_state = "patches"

@@ -3108,7 +3108,7 @@
 #include "code\modules\mob\new_player\sprite_accessories\hair\vox_hair.dm"
 #include "code\modules\mob\new_player\sprite_accessories\hair\vulpakin_hair.dm"
 #include "code\modules\mob\new_player\sprite_accessories\hair\xenomorph_hybrid_domes.dm"
-#include "code\modules\mob\new_player\sprite_accessories\markings\naramad.dm"
+#include "code\modules\mob\new_player\sprite_accessories\markings\sergal.dm"
 #include "code\modules\mob\new_player\sprite_accessories\markings\synth_stuff.dm"
 #include "code\modules\mob\new_player\sprite_accessories\markings\taj.dm"
 #include "code\modules\mob\new_player\sprite_accessories\markings\tanlines.dm"
