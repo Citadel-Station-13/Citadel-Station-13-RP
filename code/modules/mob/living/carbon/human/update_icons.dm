@@ -149,9 +149,6 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 /mob/living/carbon/human/update_icons_layers()
 	stack_trace("CANARY: Old human update_icons_layers was called.")
 
-/mob/living/carbon/human/update_icons_all()
-	stack_trace("CANARY: Old human update_icons_all was called.")
-
 /mob/living/carbon/human/update_icons_huds()
 	stack_trace("CANARY: Old human update_icons_huds was called.")
 

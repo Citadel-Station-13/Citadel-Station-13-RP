@@ -90,6 +90,8 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	var/render_key
 	/// do we render on mob?
 	var/is_rendered = TRUE
+	/// are we considered worn?
+	var/is_considered_worn = FALSE
 	/// allow random id?
 	var/allow_random_id = FALSE
 	/// our screen loc
@@ -139,6 +141,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	hud_position = ui_back
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_BACK
+	is_considered_worn = TRUE
 
 /datum/inventory_slot_meta/inventory/uniform
 	name = "uniform"
@@ -149,6 +152,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	hud_position = ui_iclothing
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_ICLOTHING
+	is_considered_worn = TRUE
 
 /datum/inventory_slot_meta/inventory/head
 	name = "head"
@@ -161,6 +165,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	hud_position = ui_head
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_HEAD
+	is_considered_worn = TRUE
 
 /datum/inventory_slot_meta/inventory/suit
 	name = "outerwear"
@@ -171,6 +176,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	hud_position = ui_oclothing
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_OCLOTHING
+	is_considered_worn = TRUE
 
 /datum/inventory_slot_meta/inventory/belt
 	name = "belt"
@@ -182,6 +188,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	hud_position = ui_belt
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_BELT
+	is_considered_worn = TRUE
 
 /datum/inventory_slot_meta/inventory/pocket
 	abstract_type = /datum/inventory_slot_meta/inventory/pocket
@@ -221,6 +228,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	hud_position = ui_id
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_ID
+	is_considered_worn = TRUE
 
 /datum/inventory_slot_meta/inventory/shoes
 	name = "shoes"
@@ -231,6 +239,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	hud_position = ui_shoes
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_FEET
+	is_considered_worn = TRUE
 
 /datum/inventory_slot_meta/inventory/gloves
 	name = "gloves"
@@ -241,6 +250,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	hud_position = ui_gloves
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_GLOVES
+	is_considered_worn = TRUE
 
 /datum/inventory_slot_meta/inventory/glasses
 	name = "glasses"
@@ -251,6 +261,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	hud_position = ui_glasses
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_EYES
+	is_considered_worn = TRUE
 
 /datum/inventory_slot_meta/inventory/suit_storage
 	name = "suit storage"
@@ -265,15 +276,16 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 /datum/inventory_slot_meta/inventory/suit_storage/allow_equip(obj/item/I, mob/wearer, mob/user, force)
 	. = ..()
 	var/obj/item/suit_item = wearer.item_by_slot(SLOT_ID_SUIT)
-	if(suit_item)
-		return TRUE
+	if(!suit_item)
+		return FALSE
 	// todo: this check is ass
-	if(istype(I, /obj/item/pda) || istype(I, /obj/item/pen) || (suit_item && is_type_in_list(I, suit_item.allowed)))
+	if(istype(I, /obj/item/pda) || istype(I, /obj/item/pen) || is_type_in_list(I, suit_item.allowed))
 		return TRUE
 	return FALSE
 
 /datum/inventory_slot_meta/inventory/ears
 	abstract_type = /datum/inventory_slot_meta/inventory/ears
+	is_considered_worn = TRUE
 
 /datum/inventory_slot_meta/inventory/ears/left
 	name = "left ear"

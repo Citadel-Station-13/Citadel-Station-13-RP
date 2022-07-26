@@ -262,7 +262,7 @@
 	if(istype(W,/obj/item/clothing/accessory) || istype(W, /obj/item/hand_labeler))
 		return ..()
 
-	if(user.is_in_inventory(src) != SLOT_ID_HANDS)
+	if(is_being_worn())
 		to_chat(user, "<span class='warning'>You cannot modify \the [src] while it is being worn.</span>")
 		return
 
@@ -303,8 +303,8 @@
 			to_chat(user, "\The [src] already has a helmet installed.")
 		else if(user.attempt_insert_item_for_installation(W, src))
 			to_chat(user, "You attach \the [W] to \the [src]'s helmet mount.")
+			helmet = W
 			helmet.clothing_flags |= EQUIP_IGNORE_DELIMB
-			src.helmet = W
 		return
 	else if(istype(W,/obj/item/clothing/shoes/magboots))
 		if(boots)

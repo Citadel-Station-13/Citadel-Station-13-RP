@@ -274,3 +274,21 @@
 			stack_trace("item forcemove inv hook called without a mob as loc??")
 		M.temporarily_remove_from_inventory(src, TRUE)
 	return ..()
+
+/**
+ * checks if we're in inventory. if so, returns mob we're in
+ * **hands count**
+ */
+/obj/item/proc/is_in_inventory(include_hands)
+	return (current_equipped_slot && ((current_equipped_slot != SLOT_ID_HANDS) || include_hands)) && current_equipped_mob()
+
+/**
+ * checks if we're worn. if so, return mob we're in
+ *
+ * note: this is not the same as is_in_inventory, we check if it's a clothing/worn slot in this case!
+ */
+/obj/item/proc/is_being_worn()
+	if(!current_equipped_slot)
+		return FALSE
+	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(current_equipped_slot)
+	return slot_meta.is_considered_worn

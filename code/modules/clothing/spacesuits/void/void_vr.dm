@@ -180,7 +180,7 @@
 	if(istype(W, /obj/item/clothing/accessory) || istype(W, /obj/item/hand_labeler))
 		return ..()
 
-	if(user.is_wearing(src) && (current_equipped_slot != SLOT_ID_HANDS))
+	if(is_being_worn())
 		to_chat(user, SPAN_WARNING("You cannot modify \the [src] while it is being worn."))
 		return
 

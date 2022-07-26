@@ -18,8 +18,6 @@
 /mob/proc/update_icons_body()
 	return
 
-/mob/proc/update_icons_all()
-	return
 // End obsolete
 
 /mob/proc/update_hud()
