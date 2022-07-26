@@ -1344,23 +1344,18 @@
 	skr_tentacle_veryshort
 		name = "Skrell Very Short Tentacles"
 		icon_state = "skrell_hair_veryshort"
-		apply_restrictions = TRUE
 		gender = MALE
 
 	skr_tentacle_short
 		name = "Skrell Short Tentacles"
 		icon_state = "skrell_hair_short"
-		apply_restrictions = TRUE
-
 	skr_tentacle_average
 		name = "Skrell Average Tentacles"
 		icon_state = "skrell_hair_average"
-		apply_restrictions = TRUE
 
 	skr_tentacle_verylong
 		name = "Skrell Long Tentacles"
 		icon_state = "skrell_hair_verylong"
-		apply_restrictions = TRUE
 		gender = FEMALE
 
 //Tajaran hairstyles
