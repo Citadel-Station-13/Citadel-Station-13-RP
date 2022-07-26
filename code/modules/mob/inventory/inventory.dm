@@ -635,8 +635,8 @@
 			return FALSE
 	// this IS a slot shift!
 	. = old_slot
-	if(slot == old_slot)
-		// lol we're done
+	if((slot == old_slot) && (slot != SLOT_ID_HANDS))
+		// lol we're done (unless it was hands)
 		return TRUE
 	if(slot == SLOT_ID_HANDS)
 		// if we're going into hands,
