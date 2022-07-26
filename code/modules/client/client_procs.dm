@@ -453,14 +453,17 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 // Returns null if no DB connection can be established, or -1 if the requested key was not found in the database
 
 /proc/get_player_age(key)
-
 	if(!SSdbcore.Connect())
 		return null
 
 	var/sql_ckey = sql_sanitize_text(ckey(key))
 
-	var/datum/db_query/query = dbcon.NewQuery("SELECT datediff(Now(),firstseen) as age FROM [format_table_name("player")] WHERE ckey = '[sql_ckey]'")
-	query.Execute()
+	var/datum/db_query/query = SSdbcore.RunQuery(
+		"SELECT datediff(Now(), firstseen) as age FROM [format_table_name("player")] WHERE ckey = :ckey",
+		list(
+			"ckey" = sql_ckey
+		)
+	)
 
 	if(query.NextRow())
 		return text2num(query.item[1])

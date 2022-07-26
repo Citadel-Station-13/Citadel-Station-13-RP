@@ -339,11 +339,16 @@ var/obj/machinery/blackbox_recorder/blackbox
 
 	round_end_data_gathering() //round_end time logging and some other data processing
 
-	if(!SSdbcore.Connect()) return
+	if(!SSdbcore.Connect())
+		return
+
 	var/round_id
 
-	var/datum/db_query/query = dbcon.NewQuery("SELECT MAX(round_id) AS round_id FROM [format_table_name("feedback")]")
-	query.Execute()
+	var/datum/db_query/query = SSdbcore.RunQuery(
+		"SELECT MAX(ronud_id) AS round_id FROM [format_table_name("feedback")]",
+		list()
+	)
+
 	while(query.NextRow())
 		round_id = query.item[1]
 
@@ -352,9 +357,15 @@ var/obj/machinery/blackbox_recorder/blackbox
 	round_id++
 
 	for(var/datum/feedback_variable/FV in feedback)
-		var/sql = "INSERT INTO [format_table_name("feedback")] VALUES (null, Now(), [round_id], \"[FV.get_variable()]\", [FV.get_value()], \"[FV.get_details()]\")"
-		var/datum/db_query/query_insert = dbcon.NewQuery(sql)
-		query_insert.Execute()
+		SSdbcore.RunQuery(
+			"INSERT INTO [format_table_name("feedback")] VALUES (null, Now(), :round_id, :variable, :value, :details)",
+			list(
+				"round_id" = "[round_id]",
+				"variable" = "[FV.get_variable()]",
+				"value" = "[FV.get_value()]",
+				"details" = "[FV.get_details()]"
+			)
+		)
 
 // Sanitize inputs to avoid SQL injection attacks
 proc/sql_sanitize_text(var/text)

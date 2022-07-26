@@ -1,12 +1,17 @@
 
 /mob/new_player/proc/handle_privacy_poll()
-
 	if(!SSdbcore.Connect())
 		return
+
 	var/voted = 0
 
-	var/datum/db_query/query = dbcon.NewQuery("SELECT * FROM [format_table_name("privacy")] WHERE ckey='[src.ckey]'")
-	query.Execute()
+	var/datum/db_query/query = SSdbcore.RunQuery(
+		"SELECT * FROM [format_table_name("privacy")] WHERE ckey = :ckey",
+		list(
+			"ckey" = ckey
+		)
+	)
+
 	while(query.NextRow())
 		voted = 1
 		break
@@ -53,8 +58,10 @@
 		if(src.client && src.client.holder)
 			isadmin = 1
 
-		var/datum/db_query/select_query = dbcon.NewQuery("SELECT id, question FROM [format_table_name("poll")]_question WHERE [(isadmin ? "" : "adminonly = false AND")] Now() BETWEEN starttime AND endtime")
-		select_query.Execute()
+		var/datum/db_query/select_query = SSdbcore.RunQuery(
+			"SELECT id, question FROM [format_table_name("poll_question")] WHERE [(isadmin? "" : "adminonly = false AND")] Now() BETWEEN starttime AND endtime",
+			list()
+		)
 
 		var/output = "<div align='center'><B>Player polls</B>"
 		output +="<hr>"
@@ -84,8 +91,12 @@
 
 	if(SSdbcore.Connect())
 
-		var/datum/db_query/select_query = dbcon.NewQuery("SELECT starttime, endtime, question, polltype, multiplechoiceoptions FROM [format_table_name("poll")]_question WHERE id = [pollid]")
-		select_query.Execute()
+		var/datum/db_query/select_query = SSdbcore.RunQuery(
+			"SELECT starttime, endtime, question, pollytype, multiplechoiceoptions FROM [format_table_name("poll_question")] WHERE id = :id",
+			list(
+				"id" = "[pollid]"
+			)
+		)
 
 		var/pollstarttime = ""
 		var/pollendtime = ""
@@ -109,8 +120,13 @@
 		switch(polltype)
 			//Polls that have enumerated options
 			if("OPTION")
-				var/datum/db_query/voted_query = dbcon.NewQuery("SELECT optionid FROM [format_table_name("poll")]_vote WHERE pollid = [pollid] AND ckey = '[usr.ckey]'")
-				voted_query.Execute()
+				var/datum/db_query/voted_query = SSdbcore.RunQuery(
+					"SELECT optionid FROM [format_table_name("poll_vote")] WHERE pollid = :id AND ckey = :ckey",
+					list(
+						"id" = "[pollid]",
+						"ckey" = usr.ckey
+					)
+				)
 
 				var/voted = 0
 				var/votedoptionid = 0
