@@ -21,3 +21,8 @@
   - tweak: Moves wing, horn, and tail icon sheets.
   - tweak: 'Adjusts wing offsets. feature: Lays groundwork for Wing Spreading.'
   - tweak: Alphabetizes all wings, tails, and ears/horns.
+2022-07-26:
+  TheLordME:
+  - tweak: Tweaked Xenohybrids lose the healing verb, because its passive now
+  Zandario:
+  - tweak: Tweaked chat blockquote formatting.
