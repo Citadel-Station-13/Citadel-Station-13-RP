@@ -88,13 +88,13 @@
 		to_chat(user, "<span class='notice'>You attach \the [src] to \the [has_suit].</span>")
 		add_fingerprint(user)
 
-/obj/item/clothing/accessory/proc/on_removed(var/mob/user)
+/obj/item/clothing/accessory/proc/on_removed(mob/user)
 	if(!has_suit)
 		return
 	has_suit.cut_overlay(get_inv_overlay())
 	has_suit = null
 	if(user)
-		usr.put_in_hands(src)
+		user.put_in_hands_or_drop(src)
 		add_fingerprint(user)
 	else if(get_turf(src))		//We actually exist in space
 		forceMove(get_turf(src))
