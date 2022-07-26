@@ -65,7 +65,16 @@
 
 	init_world_bender_hud()
 
+	if(mapload)
+		return INITIALIZE_HINT_LATELOAD
+
 	// rebuild everything
+	regenerate_icons()
+	update_transform()
+
+//! WARNING SHITCODE REMOVE LATER
+/mob/living/carbon/human/LateInitialize()
+	. = ..()
 	regenerate_icons()
 	update_transform()
 

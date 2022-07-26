@@ -265,7 +265,6 @@
 
 // doMove hook to ensure proper functionality when inv procs aren't called
 /obj/item/doMove(atom/destination)
-
 	if(current_equipped_slot)
 		// inventory handling
 		if(destination == worn_inside)

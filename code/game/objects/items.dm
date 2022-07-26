@@ -318,7 +318,7 @@
 		if(!isturf(loc))	// yea nah
 			return ..()
 		// if not adjacent don't bother
-		if(!user.Adjacent(over))
+		if(!user.Adjacent(over) || !user.Adjacent(src))
 			return ..()
 		// check for equip
 		if(istype(over, /atom/movable/screen/inventory/hand))

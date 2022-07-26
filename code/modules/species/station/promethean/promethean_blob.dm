@@ -460,8 +460,9 @@
 	var/obj/item/hat = blob.hat
 	blob.drop_hat()
 
-	if(!equip_to_slot_if_possible(hat, SLOT_ID_HEAD))
-		hat.forceMove(drop_location())
+	if(hat)
+		if(!equip_to_slot_if_possible(hat, SLOT_ID_HEAD))
+			hat.forceMove(drop_location())
 	nutrition = blob.nutrition // food good
 
 
