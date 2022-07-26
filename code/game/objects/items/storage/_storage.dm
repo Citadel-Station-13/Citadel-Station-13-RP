@@ -64,6 +64,16 @@
 	else
 		return ..()
 
+/obj/item/storage/OnMouseDrop(atom/over, mob/user, proximity, params)
+	if(user != over)
+		return ..()
+	if(user in is_seeing)
+		close(user)
+	else if(isliving(user) && Adjacent(user))
+		open(user)
+	else
+		return ..()
+
 /obj/item/storage/proc/return_inv()
 
 	var/list/L = list(  )
