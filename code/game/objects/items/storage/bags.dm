@@ -129,23 +129,8 @@
 	var/stored_ore = list()
 	var/last_update = 0
 
-/obj/item/storage/bag/ore/remove_from_storage(obj/item/W as obj, atom/new_location)
-	if(!istype(W)) return 0
-
-	if(new_location)
-		if(ismob(loc))
-			W.dropped(usr)
-		if(ismob(new_location))
-			W.hud_layerise()
-		else
-			W.hud_unlayerise()
-		W.forceMove(new_location)
-	else
-		W.forceMove(get_turf(src))
-
-	W.on_exit_storage(src)
-	update_icon()
-	return 1
+/obj/item/storage/bag/ore/update_w_class()
+	return
 
 /obj/item/storage/bag/ore/gather_all(turf/T as turf, mob/user as mob, var/silent = 0)
 	var/success = 0

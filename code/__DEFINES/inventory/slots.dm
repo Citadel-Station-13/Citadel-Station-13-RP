@@ -57,13 +57,13 @@
 /// This is to allow items with a w_class of 3 or 4 to fit in pockets.
 #define SLOT_POCKET     (1<<11)
 /// This is to  deny items with a w_class of 2 or 1 from fitting in pockets.
-#define SLOT_DENYPOCKET (1<<11)
-#define SLOT_TWOEARS    (1<<12)
+#define SLOT_DENYPOCKET (1<<12)
+#define SLOT_TWOEARS    (1<<13)
 // todo: remove
-#define SLOT_TIE        (1<<13)
+#define SLOT_TIE        (1<<14)
 /// items with this can fit in holster no matter what
 // todo: this shouldn't be a slot flag wtf
-#define SLOT_HOLSTER	(1<<14)
+#define SLOT_HOLSTER	(1<<15)
 
 // Inventory slot strings.
 // since numbers cannot be used as associative list keys.

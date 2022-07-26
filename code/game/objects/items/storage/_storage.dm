@@ -378,20 +378,9 @@
 
 	if(do_move)
 		if(new_location)
-			if(ismob(loc))
-				W.dropped(usr)
-			if(ismob(new_location))
-				W.hud_layerise()
-			else
-				W.hud_unlayerise()
 			W.forceMove(new_location)
 		else
 			W.forceMove(get_turf(src))
-	else
-		if(ismob(new_location))
-			W.hud_layerise()
-		else
-			W.hud_unlayerise()
 
 	if(usr?.s_active == src)
 		orient2hud(usr)
