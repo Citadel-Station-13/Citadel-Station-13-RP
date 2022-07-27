@@ -71,8 +71,7 @@
 		else if ((istype(W, /obj/item/stock_parts/capacitor) && (capacitors_amount < 5)) || (istype(W, /obj/item/cell) && (cells_amount < 5)))
 			if (charge < (capacity / 100))
 				if (!output_attempt && !input_attempt)
-					if(!user.transfer_item_to_loc(W, src))
-						to_chat(user, SPAN_WARNING("[W] is stuck to your hand!"))
+					if(!user.attempt_insert_item_for_installation(W, src))
 						return
 					component_parts += W
 					RefreshParts()

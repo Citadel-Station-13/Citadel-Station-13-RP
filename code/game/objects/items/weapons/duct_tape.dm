@@ -142,8 +142,7 @@
 	if(!istype(W, /obj/item/paper))
 		return
 	if(W.loc == user)
-		if(!user.temporarily_remove_from_inventory(W))
-			to_chat(user, SPAN_WARNING("[W] is stuck to your hand!"))
+		if(!user.attempt_void_item_for_installation(W))
 			return
 	var/obj/item/duct_tape_piece/tape = new(get_turf(src))
 	tape.attach(W)

@@ -33,8 +33,7 @@
 			if(blocked)
 				to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
 				return
-			if(!user.temporarily_remove_from_inventory(src))
-				to_chat(user, SPAN_WARNING("[src] is stuck to your hand!"))
+			if(!user.attempt_void_item_for_installation(src))
 				return
 
 			to_chat(M, "<span class='notice'>You swallow \the [src].</span>")
@@ -59,8 +58,7 @@
 		user.setClickCooldown(user.get_attack_speed(src))
 		if(!do_mob(user, M))
 			return
-		if(!user.temporarily_remove_from_inventory(src))
-			to_chat(user, SPAN_WARNING("[src] is stuck to your hand!"))
+		if(!user.attempt_void_item_for_installation(src))
 			return
 		user.visible_message("<span class='warning'>[user] forces [M] to swallow \the [src].</span>")
 		var/contained = reagentlist()

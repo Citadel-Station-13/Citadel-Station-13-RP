@@ -241,11 +241,9 @@ Protectiveness | Armor %
 		if(second_plate.material != src.material)
 			to_chat(user, "<span class='warning'>Both plates need to be the same type of material.</span>")
 			return
-		if(!user.temporarily_remove_from_inventory(src))
-			to_chat(user, SPAN_WARNING("[src] is stuck to your hand!"))
+		if(!user.attempt_void_item_for_installation(src))
 			return
-		if(!user.temporarily_remove_from_inventory(second_plate))
-			to_chat(user, SPAN_WARNING("[src] is stuck to your hand!"))
+		if(!user.attempt_void_item_for_installation(second_plate))
 			return
 		var/obj/item/clothing/suit/armor/material/makeshift/new_armor = new(null, material.name)
 		user.put_in_hands(new_armor)

@@ -61,8 +61,7 @@ var/global/list/rad_collectors = list()
 		if(src.P)
 			to_chat(user, "<font color='red'>There's already a phoron tank loaded.</font>")
 			return 1
-		if(!user.transfer_item_to_loc(W, src))
-			to_chat(user, SPAN_WARNING("[W] is stuck to your hand!"))
+		if(!user.attempt_insert_item_for_installation(W, src))
 			return
 		src.P = W
 		update_icons()

@@ -1127,7 +1127,7 @@ default behaviour is:
 			return		// wild
 	else
 		if(!drop_item_to_ground(item))
-			to_chat(src, SPAN_WARNING("[item] is stuck to your hand!"))
+			throw_mode_off()
 			return
 
 	if(!item || !isturf(item.loc))

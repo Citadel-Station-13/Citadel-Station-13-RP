@@ -201,8 +201,7 @@
 	if(istype(W, /obj/item/cell))
 		if(!istype(W, /obj/item/cell/device))
 			if(!bcell)
-				if(!user.transfer_item_to_loc(W, src))
-					to_chat(user, WARNING("[W] is stuck to your hand!"))
+				if(!user.attempt_insert_item_for_installation(W, src))
 					return
 				bcell = W
 				to_chat(user, "<span class='notice'>You install a cell in [src].</span>")

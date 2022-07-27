@@ -164,8 +164,7 @@
 			to_chat(user, "<span class='notice'>There is already something in \the [src].</span>")
 	else if(istype(O, /obj/item/toner))
 		if(toner <= 10) //allow replacing when low toner is affecting the print darkness
-			if(!user.temporarily_remove_from_inventory(O))
-				to_chat(user, SPAN_WARNING("[O] is stuck to your hand!"))
+			if(!user.attempt_consume_item_for_construction(O))
 				return
 			to_chat(user, "<span class='notice'>You insert the toner cartridge into \the [src].</span>")
 			var/obj/item/toner/T = O

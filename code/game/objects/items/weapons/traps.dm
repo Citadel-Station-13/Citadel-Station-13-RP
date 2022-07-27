@@ -48,7 +48,6 @@
 
 		if (do_after(user, 60))
 			if(!user.drop_item_to_ground(src))
-				to_chat(user, SPAN_WARNING("[src] is stuck to your hand!"))
 				return
 			user.visible_message(
 				"<span class='danger'>[user] has deployed \the [src].</span>",
@@ -75,7 +74,7 @@
 	else
 		user.visible_message(SPAN_WARNING("[user] frees [buckled_mob] from [src]!"))
 	return ..()
-	
+
 /obj/item/beartrap/unbuckle_mob()
 	. = ..()
 	if(!LAZYLEN(buckled_mobs))

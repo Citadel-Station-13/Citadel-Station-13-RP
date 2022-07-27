@@ -432,8 +432,7 @@
 				add_fingerprint(user)
 				return
 		var/old_slot = current_equipped_slot
-		if(!user.temporarily_remove_from_inventory(P))
-			to_chat(user, SPAN_WARNING("[P] is stuck to your hand!"))
+		if(!user.attempt_void_item_for_installation(P))
 			return
 		var/obj/item/paper_bundle/B = new(loc)
 		if (name != "paper")

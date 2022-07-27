@@ -202,11 +202,9 @@
 				to_chat(user, "<span class='error'>You need a remote signaller!</span>")
 				return
 
-			if(user.temporarily_remove_from_inventory(I))
+			if(user.attempt_void_item_for_installation(I))
 				attach_assembly(color, I)
 				return TRUE
-			else
-				to_chat(user, "<span class='warning'>[I] is stuck to your hand!</span>")
 
 /**
  * Proc called to determine if the user can see wire define information, such as "Contraband", "Door Bolts", etc.

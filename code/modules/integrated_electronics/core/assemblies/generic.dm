@@ -237,8 +237,7 @@
 		return
 	if(istype(user, /mob/living/silicon/robot)) //Robots cannot unequip/drop items, for Safety Reasons.
 		forceMove(T)
-	else if(!user.transfer_item_to_loc(src, T))
-		to_chat(user, SPAN_WARNING("[src] is stuck to your hand!"))
+	else if(!user.attempt_insert_item_for_installation(src, T))
 		return
 	playsound(src, 'sound/machines/click.ogg', 75, 1)
 	user.visible_message("\The [user] attaches \the [src] to the wall.",

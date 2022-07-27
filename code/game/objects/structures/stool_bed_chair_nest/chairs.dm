@@ -24,8 +24,7 @@
 		if(!SK.status)
 			to_chat(user, SPAN_NOTICE("\The [SK] is not ready to be attached!"))
 			return
-		if(!user.temporarily_remove_from_inventory(SK))
-			to_chat(user, SPAN_WARNING("[SK] is stuck to your hand!"))
+		if(!user.attempt_void_item_for_installation(SK))
 			return
 		var/obj/structure/bed/chair/e_chair/E = new (loc, material.name)
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)

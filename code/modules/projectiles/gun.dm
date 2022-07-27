@@ -265,8 +265,7 @@
 		if(dna_lock)
 			to_chat(user, "<span class='notice'>\The [src] already has a [attached_lock].</span>")
 			return
-		if(!user.transfer_item_to_loc(A, src))
-			to_chat(user, SPAN_WARNING("[A] is stuck to your hand!"))
+		if(!user.attempt_insert_item_for_installation(A, src))
 			return
 		to_chat(user, "<span class='notice'>You insert \the [A] into \the [src].</span>")
 		attached_lock = A

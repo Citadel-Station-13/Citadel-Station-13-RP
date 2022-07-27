@@ -21,7 +21,6 @@ LINEN BINS
 
 /obj/item/bedsheet/attack_self(mob/user)
 	if(!user.drop_item_to_ground(src))
-		to_chat(user, SPAN_WARNING("[src] is stuck to your hand!"))
 		return
 	if(layer == initial(layer))
 		layer = ABOVE_MOB_LAYER

@@ -499,8 +499,7 @@
 		for(var/V in components)
 			var/datum/robot_component/C = components[V]
 			if(!C.installed && istype(W, C.external_type))
-				if(!user.transfer_item_to_nullspace(W))
-					to_chat(user, SPAN_WARNING("[W] is stuck to your hand!"))
+				if(!user.attempt_void_item_for_installation(W))
 					return
 				C.installed = 1
 				C.wrapped = W
@@ -520,8 +519,7 @@
 				to_chat(user, SPAN_NOTICE("There is already a restraining bolt installed in this cyborg."))
 				return
 			else
-				if(!user.transfer_item_to_loc(W, src))
-					to_chat(user, SPAN_WARNING("[W] is stuck to your hand!"))
+				if(!user.attempt_insert_item_for_installation(W, src))
 					return
 				bolt = W
 				to_chat(user, SPAN_NOTICE("You install \the [W]."))

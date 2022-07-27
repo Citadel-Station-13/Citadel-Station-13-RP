@@ -82,8 +82,7 @@
 	if(!can_place(target, user)) //victim may have resisted out of the grab in the meantime
 		return 0
 
-	if(!user.temporarily_remove_from_inventory(src))
-		to_chat(user, SPAN_WARNING("[src] is stuck to your hand!"))
+	if(!user.attempt_void_item_for_installation(src))
 		return
 
 	add_attack_logs(user,H,"Handcuffed (attempt)")
@@ -285,8 +284,7 @@ var/last_chew = 0
 	if(!can_place(target, user)) //victim may have resisted out of the grab in the meantime
 		return 0
 
-	if(!user.temporarily_remove_from_inventory(src))
-		to_chat(user, SPAN_WARNING("[src] is stuck to your hand!"))
+	if(!user.attempt_void_item_for_installation(src))
 		return
 
 	add_attack_logs(user,H,"Legcuffed (attempt)")

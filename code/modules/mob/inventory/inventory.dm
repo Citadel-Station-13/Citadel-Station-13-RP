@@ -69,10 +69,10 @@
  * if the item is null, this returns true
  * if an item is not in us, this returns true
  */
-/mob/proc/drop_item_to_ground(obj/item/I, force)
+/mob/proc/drop_item_to_ground(obj/item/I, force, silent)
 	if(!is_in_inventory(I))
 		return TRUE
-	return _unequip_item(I, force, drop_location())
+	return _unequip_item(I, force, drop_location(), silent = silent)
 
 /**
  * transfers an item somewhere
@@ -83,13 +83,13 @@
  * if the item is null, this returns true
  * if an item is not in us, this crashes
  */
-/mob/proc/transfer_item_to_loc(obj/item/I, newloc, force)
+/mob/proc/transfer_item_to_loc(obj/item/I, newloc, force, silent)
 	if(!I)
 		return TRUE
 	ASSERT(newloc)
 	if(!is_in_inventory(I))
 		return FALSE
-	return _unequip_item(I, force, newloc)
+	return _unequip_item(I, force, newloc, silent = silent)
 
 /**
  * transfers an item into nullspace
@@ -99,12 +99,12 @@
  * if the item is null, this returns true
  * if an item is not in us, this crashes
  */
-/mob/proc/transfer_item_to_nullspace(obj/item/I, force)
+/mob/proc/transfer_item_to_nullspace(obj/item/I, force, silent)
 	if(!I)
 		return TRUE
 	if(!is_in_inventory(I))
 		return FALSE
-	return _unequip_item(I, force, null)
+	return _unequip_item(I, force, null, silent = silent)
 
 /**
  * removes an item from inventory. does NOT move it.
@@ -115,10 +115,10 @@
  * if the item is null, ths returns true
  * if an item is not in us, this returns true
  */
-/mob/proc/temporarily_remove_from_inventory(obj/item/I, force)
+/mob/proc/temporarily_remove_from_inventory(obj/item/I, force, silent)
 	if(!is_in_inventory(I))
 		return TRUE
-	return _unequip_item(I, force, FALSE)
+	return _unequip_item(I, force, FALSE, silent = silent)
 
 /**
  * handles internal logic of unequipping an item
@@ -231,6 +231,8 @@
  */
 /mob/proc/can_unequip(obj/item/I, slot, mob/user, force, disallow_delay, ignore_fluff, silent)
 	if(!force && HAS_TRAIT(I, TRAIT_NODROP))
+		if(!silent)
+			to_chat(user, SPAN_WARNING("[I] is stuck to your hand!"))
 		return FALSE
 
 	var/blocked_by
