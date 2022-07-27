@@ -339,12 +339,6 @@
 	color_blend_mode = ICON_MULTIPLY
 	body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_GROIN,BP_TORSO,BP_HEAD)
 
-/datum/sprite_accessory/marking/eboop_panels
-	name = "Eggnerd FBP panels"
-	icon_state = "eboop"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_GROIN,BP_TORSO,BP_HEAD)
-
 /datum/sprite_accessory/marking/osocks_rarm
 	name = "Modular Longsock (right arm)"
 	icon_state = "osocks"

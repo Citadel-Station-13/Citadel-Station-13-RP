@@ -1,3 +1,6 @@
+/datum/sprite_accessory/marking/sergal
+	icon = "icons/mob/sprite_accessories/markings/sergal.dmi"
+
 /datum/sprite_accessory/marking/sergal_full
 	name = "Sergal Markings"
 	icon_state = "sergal_full"
