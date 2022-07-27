@@ -89,6 +89,9 @@
 	return L
 
 /obj/item/storage/proc/show_to(mob/user as mob)
+	// todo: datum storage
+	if(!user.client)
+		return
 	if(user.s_active != src)
 		for(var/obj/item/I in src)
 			if(I.on_found(user))
