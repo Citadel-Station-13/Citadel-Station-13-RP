@@ -172,7 +172,7 @@
 				I.moveToNullspace()
 			else if(newloc != FALSE)
 				I.forceMove(newloc)
-		if(I.dropped(src) == ITEM_RELOCATED_BY_DROPPED)
+		if(I.dropped(src, null, silent, nweloc) == ITEM_RELOCATED_BY_DROPPED)
 			. = FALSE
 		if(QDELETED(I))
 			. = FALSE
@@ -605,8 +605,10 @@
 
 		_equip_slot(I, slot, update_icons)
 
+		var/atom/oldLoc = I.loc
+
 		I.forceMove(src)
-		I.pickup(src, FALSE, silent)
+		I.pickup(src, FALSE, silent, null, oldLoc)
 		I.equipped(src, slot, FALSE, silent)
 
 		log_inventory("[key_name(src)] equipped [I] to [slot].")

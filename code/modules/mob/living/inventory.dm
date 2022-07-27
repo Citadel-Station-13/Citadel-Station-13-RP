@@ -98,8 +98,9 @@
 		// handle item reequip can fail.
 		return _handle_item_reequip(I, SLOT_ID_HANDS, existing_slot, force = force, update_icons = TRUE)
 	// newly equipped
+	var/atom/oldLoc = I.loc
 	I.forceMove(src)
-	I.pickup(src)
+	I.pickup(src, FALSE, null, null, oldLoc)
 	I.equipped(src, SLOT_ID_HANDS)
 	return TRUE
 

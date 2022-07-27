@@ -137,9 +137,9 @@
 	var/mob_throw_hit_sound
 	/// Sound used when equipping the items into a valid slot.
 	var/equip_sound
-	/// Pickup sound - this is the default.
+	/// Pickup sound - played when picking something up off the floor.
 	var/pickup_sound = 'sound/items/pickup/device.ogg'
-	/// Drop sound - this is the default.
+	/// Drop sound - played when dropping something onto the floor.
 	var/drop_sound = 'sound/items/drop/device.ogg'
 
 	/// Deploytype for switchtools. Only really used on switchtool subtype items, but this is on a general item level

@@ -161,7 +161,7 @@
 	/// Used to reference the object's host organ.
 	var/obj/item/organ/my_augment = null
 
-/obj/item/dropped(mob/user, accessory, silent)
+/obj/item/dropped(mob/user, accessory, silent, atom/newLoc)
 	. = ..()
 	if(my_augment)
 		forceMove(my_augment)
@@ -250,8 +250,5 @@
 
 	if(make_sound)
 		playsound(src, 'sound/items/change_jaws.ogg', 30, TRUE)
-
-	if(equipping.loc != src)
-		equipping.dropped()
 
 	return TRUE

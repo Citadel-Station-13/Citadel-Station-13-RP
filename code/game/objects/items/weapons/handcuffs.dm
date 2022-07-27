@@ -345,7 +345,6 @@ var/last_chew = 0
 
 	if(!H.equip_to_slot_if_possible(src, SLOT_ID_LEGCUFFED, null, TRUE, TRUE, TRUE))
 		H.visible_message("<span class='notice'>\The [src] slams into [H], but slides off!</span>")
-		dropped()
 
 	H.visible_message("<span class='danger'>\The [H] has been snared by \the [src]!</span>")
 

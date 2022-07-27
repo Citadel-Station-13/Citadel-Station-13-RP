@@ -290,7 +290,7 @@
 			return
 		if(W.loc != user) // This should stop mounted modules ending up outside the module.
 			return
-		if(!user.attempt_insert_item_for_installation(W, src))
+		if(!user.attempt_insert_item_for_installation(W, open? loc : src))
 			return
 	else if(istype(W, /obj/item/packageWrap))
 		return

@@ -71,7 +71,7 @@
  *
  * dropping is defined as moving out of both equipment slots and hand slots
  */
-/obj/item/proc/dropped(mob/user, accessory, silent)
+/obj/item/proc/dropped(mob/user, accessory, silent, atom/newLoc)
 	SHOULD_CALL_PARENT(TRUE)
 /*
 	for(var/X in actions)
@@ -86,7 +86,7 @@
 
 	. = SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user)
 
-	if(!silent)
+	if(!silent && isturf(newLoc))
 		playsound(src, drop_sound, 30, ignore_walls = FALSE)
 	// user?.update_equipment_speed_mods()
 	if(zoom)
@@ -99,14 +99,14 @@
  *
  * picking up is defined as moving into either an equipment slot, or hand slots
  */
-/obj/item/proc/pickup(mob/user, accessory, silent, creation)
+/obj/item/proc/pickup(mob/user, accessory, silent, creation, atom/oldLoc)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
 	pixel_x = initial(pixel_x)
 	pixel_y = initial(pixel_y)
 	hud_layerise()
 	item_flags |= IN_INVENTORY
-	if(!silent)
+	if(!silent && isturf(oldLoc))
 		playsound(src, pickup_sound, 20, ignore_walls = FALSE)
 
 /**

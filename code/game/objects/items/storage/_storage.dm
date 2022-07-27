@@ -445,9 +445,6 @@
 				return
 			else
 				W.forceMove(get_turf(user))
-				if ((user.client && user.s_active != src))
-					user.client.screen -= W
-				W.dropped(user)
 				to_chat(user, "<span class='warning'>God damn it!</span>")
 
 	W.add_fingerprint(user)

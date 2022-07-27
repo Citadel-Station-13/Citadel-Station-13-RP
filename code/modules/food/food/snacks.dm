@@ -4793,7 +4793,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/chipplate/OnMouseDropLegacy(mob/user) //Dropping the chip onto the user
 	if(istype(user) && user == usr)
 		user.put_in_active_hand(src)
-		src.pickup(user)
 		return
 	. = ..()
 

@@ -14,21 +14,21 @@
 		for(var/obj/item/I as anything in accessories)
 			I.unequipped(user, slot, TRUE, silent)
 
-/obj/item/clothing/pickup(mob/user, accessory, silent)
+/obj/item/clothing/pickup(mob/user, accessory, silent, creation, atom/oldLoc)
 	. = ..()
 	// propagate through accessories
 	// DO NOT ALLOW NESTED ACCESSORIES
 	if(!accessory && LAZYLEN(accessories))
 		for(var/obj/item/I as anything in accessories)
-			I.pickup(user, TRUE, silent)
+			I.pickup(user, TRUE, silent, creation, oldLoc)
 
-/obj/item/clothing/dropped(mob/user, accessory, silent)
+/obj/item/clothing/dropped(mob/user, accessory, silent, atom/newLoc)
 	. = ..()
 	// propagate through accessories
 	// DO NOT ALLOW NESTED ACCESSORIES
 	if(!accessory && LAZYLEN(accessories))
 		for(var/obj/item/I as anything in accessories)
-			I.unequipped(user, TRUE, silent)
+			I.unequipped(user, TRUE, silent, atom/newLoc)
 
 /obj/item/clothing/proc/can_attach_accessory(obj/item/clothing/accessory/A)
 	//Just no, okay
