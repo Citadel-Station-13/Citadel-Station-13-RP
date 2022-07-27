@@ -477,7 +477,7 @@
 	return
 
 /obj/structure/closet/AllowDrop()
-	return TRUE
+	return !open
 
 /obj/structure/closet/return_air_for_internal_lifeform(var/mob/living/L)
 	if(src.loc)
