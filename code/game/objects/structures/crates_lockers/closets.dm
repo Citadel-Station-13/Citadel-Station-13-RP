@@ -290,7 +290,7 @@
 			return
 		if(W.loc != user) // This should stop mounted modules ending up outside the module.
 			return
-		if(!user.attempt_insert_item_for_installation(W, open? loc : src))
+		if(!user.attempt_insert_item_for_installation(W, opened? loc : src))
 			return
 	else if(istype(W, /obj/item/packageWrap))
 		return
@@ -477,7 +477,7 @@
 	return
 
 /obj/structure/closet/AllowDrop()
-	return !open
+	return !opened
 
 /obj/structure/closet/return_air_for_internal_lifeform(var/mob/living/L)
 	if(src.loc)

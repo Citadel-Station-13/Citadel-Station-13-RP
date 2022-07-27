@@ -28,7 +28,7 @@
 	// DO NOT ALLOW NESTED ACCESSORIES
 	if(!accessory && LAZYLEN(accessories))
 		for(var/obj/item/I as anything in accessories)
-			I.unequipped(user, TRUE, silent, atom/newLoc)
+			I.dropped(user, TRUE, silent, newLoc)
 
 /obj/item/clothing/proc/can_attach_accessory(obj/item/clothing/accessory/A)
 	//Just no, okay
