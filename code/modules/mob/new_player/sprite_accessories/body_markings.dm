@@ -54,22 +54,6 @@
 	color_blend_mode = ICON_MULTIPLY
 	body_parts = list(BP_HEAD)
 
-/datum/sprite_accessory/marking/monoeye
-	name = "Monoeye"
-	icon_state = "monoeye"
-	body_parts = list(BP_HEAD)
-
-/datum/sprite_accessory/marking/spidereyes
-	name = "Spider Eyes"
-	icon_state = "spidereyes"
-	body_parts = list(BP_HEAD)
-
-/datum/sprite_accessory/marking/brows
-	name = "Eyebrows"
-	icon_state = "brows"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_HEAD)
-
 /datum/sprite_accessory/marking/nevrean_female
 	name = "Female Nevrean beak"
 	icon_state = "nevrean_f"
@@ -192,12 +176,6 @@
 	color_blend_mode = ICON_MULTIPLY
 	body_parts = list(BP_HEAD)
 
-/datum/sprite_accessory/marking/zmask
-	name = "Eye mask"
-	icon_state = "zmask"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_HEAD)
-
 /datum/sprite_accessory/marking/zbody
 	name = "Thick jagged stripes"
 	icon_state = "zbody"
@@ -245,65 +223,6 @@
 	icon_state = "shepback"
 	color_blend_mode = ICON_MULTIPLY
 	body_parts = list(BP_TORSO,BP_GROIN)
-
-/datum/sprite_accessory/marking/zorren_belly_male
-	name = "Zorren Male Torso"
-	icon_state = "zorren_belly"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_TORSO,BP_GROIN)
-
-/datum/sprite_accessory/marking/zorren_belly_female
-	name = "Zorren Female Torso"
-	icon_state = "zorren_belly_female"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_TORSO,BP_GROIN)
-
-/datum/sprite_accessory/marking/zorren_back_patch
-	name = "Zorren Back Patch"
-	icon_state = "zorren_backpatch"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_TORSO)
-
-/datum/sprite_accessory/marking/zorren_face_male
-	name = "Zorren Male Face"
-	icon_state = "zorren_face"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_HEAD)
-	gender = MALE
-
-/datum/sprite_accessory/marking/zorren_face_female
-	name = "Zorren Female Face"
-	icon_state = "zorren_face_female"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_HEAD)
-	gender = FEMALE
-
-/datum/sprite_accessory/marking/zorren_muzzle_male
-	name = "Zorren Male Muzzle"
-	icon_state = "zorren_muzzle"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_HEAD)
-	gender = MALE
-
-/datum/sprite_accessory/marking/zorren_muzzle_female
-	name = "Zorren Female Muzzle"
-	icon_state = "zorren_muzzle_female"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_HEAD)
-	gender = FEMALE
-
-/datum/sprite_accessory/marking/zorren_socks
-	name = "Zorren Socks"
-	icon_state = "zorren_socks"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND)
-
-/datum/sprite_accessory/marking/zorren_longsocks
-	name = "Zorren Longsocks"
-	icon_state = "zorren_longsocks"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND)
-
 
 /datum/sprite_accessory/marking/harpy_feathers
 	name = "Rapala leg Feather"
@@ -363,27 +282,6 @@
 	color_blend_mode = ICON_MULTIPLY
 	body_parts = list(BP_L_FOOT,BP_L_LEG)
 
-/datum/sprite_accessory/marking/motheyes
-	name = "Moth Eyes"
-	icon_state = "motheyes"
-	body_parts = list(BP_HEAD)
-
-/datum/sprite_accessory/marking/animeeyesinner
-	name = "Anime Eyes Inner"
-	icon_state = "animeeyesinner"
-	body_parts = list(BP_HEAD)
-
-/datum/sprite_accessory/marking/animeeyesouter
-	name = "Anime Eyes Outer"
-	icon_state = "animeeyesouter"
-	body_parts = list(BP_HEAD)
-
-/datum/sprite_accessory/marking/panda_eye_marks
-	name = "Panda Eye Markings"
-	icon_state = "eyes_panda"
-	body_parts = list(BP_HEAD)
-	species_allowed = list(SPECIES_HUMAN)
-
 /datum/sprite_accessory/marking/catwomantorso
 	name = "Catwoman chest stripes"
 	icon_state = "catwomanchest"
@@ -425,17 +323,6 @@
 	icon_state = "rosette"
 	body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_GROIN,BP_TORSO,BP_HEAD)
 
-/datum/sprite_accessory/marking/heterochromia
-	name = "Heterochromia"
-	icon_state = "heterochromia"
-	body_parts = list(BP_HEAD)
-
-/datum/sprite_accessory/marking/heterochromia_r
-	name = "Heterochromia (right eye)"
-	icon_state = "heterochromia_r"
-	body_parts = list(BP_HEAD)
-
-
 /datum/sprite_accessory/marking/shadekin_snoot
 	name = "Shadekin Snoot"
 	icon_state = "shadekin-snoot"
@@ -443,7 +330,6 @@
 	body_parts = list(BP_HEAD)
 	species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
 	apply_restrictions = TRUE
-
 
 /datum/sprite_accessory/marking/talons
 	name = "Talons"
@@ -481,21 +367,10 @@
 	color_blend_mode = ICON_MULTIPLY
 	body_parts = list(BP_HEAD)
 
-/datum/sprite_accessory/marking/thirdeye
-	name = "Third Eye"
-	icon_state = "thirdeye"
-	body_parts = list(BP_HEAD)
-
 /datum/sprite_accessory/marking/fullhead
 	name = "Full Head Color"
 	icon_state = "fullhead"
 	body_parts = list(BP_HEAD)
-
-/datum/sprite_accessory/marking/panda_full
-	name = "Panda Limbs"
-	icon_state = "panda"
-	body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND)
-	color_blend_mode = ICON_ADD
 
 /datum/sprite_accessory/marking/jackal_backpattern
 	name = "Jackal Backpattern"
@@ -508,4 +383,3 @@
 	icon_state = "jackal_bareback"
 	color_blend_mode = ICON_MULTIPLY
 	body_parts = list(BP_L_ARM,BP_R_ARM,BP_GROIN,BP_TORSO)
-
