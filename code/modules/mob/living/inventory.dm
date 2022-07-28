@@ -100,7 +100,7 @@
 	// newly equipped
 	var/atom/oldLoc = I.loc
 	I.forceMove(src)
-	I.pickup(src, FALSE, null, null, oldLoc)
+	I.pickup(src, flags, oldLoc)
 	I.equipped(src, SLOT_ID_HANDS, flags)
 	return TRUE
 

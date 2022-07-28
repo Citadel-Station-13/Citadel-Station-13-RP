@@ -34,28 +34,28 @@
 		return FALSE
 	return TRUE
 
-/mob/proc/put_in_right_hand(obj/item/I, force)
+/mob/proc/put_in_right_hand(obj/item/I, flags)
 	return FALSE
 
-/mob/proc/put_in_left_hand(obj/item/I, force)
+/mob/proc/put_in_left_hand(obj/item/I, flags)
 	return FALSE
 
-/mob/proc/put_in_active_hand(obj/item/I, force)
+/mob/proc/put_in_active_hand(obj/item/I, flags)
 	return FALSE
 
-/mob/proc/put_in_inactive_hand(obj/item/I, force)
+/mob/proc/put_in_inactive_hand(obj/item/I, flags)
 	return FALSE
 
-/mob/proc/put_in_hand(obj/item/I, index, force)
-	return index == 1? put_in_left_hand(I, force) : put_in_right_hand(I, force)
+/mob/proc/put_in_hand(obj/item/I, index, flags)
+	return index == 1? put_in_left_hand(I, flags) : put_in_right_hand(I, flags)
 
-/mob/proc/put_in_hand_or_del(obj/item/I, index, force)
-	. = index == 1? put_in_left_hand(I, force) : put_in_right_hand(I, force)
+/mob/proc/put_in_hand_or_del(obj/item/I, index, flags)
+	. = index == 1? put_in_left_hand(I, flags) : put_in_right_hand(I, flags)
 	if(!.)
 		qdel(I)
 
-/mob/proc/put_in_hand_or_drop(obj/item/I, index, force, atom/drop_loc = drop_location())
-	. = index == 1? put_in_left_hand(I, force) : put_in_right_hand(I, force)
+/mob/proc/put_in_hand_or_drop(obj/item/I, index, flags, atom/drop_loc = drop_location())
+	. = index == 1? put_in_left_hand(I, flags) : put_in_right_hand(I, flags)
 	if(!.)
 		I.forceMove(drop_loc)
 
@@ -169,18 +169,18 @@
  * @params
  * force - even if nodrop
  */
-/mob/proc/drop_all_held_items(force)
+/mob/proc/drop_all_held_items(flags)
 	for(var/obj/item/I as anything in get_held_items())
-		drop_item_to_ground(I, force = force)
+		drop_item_to_ground(I, flags)
 
-/mob/proc/drop_active_held_item(force)
-	return drop_item_to_ground(get_active_held_item(), force = force)
+/mob/proc/drop_active_held_item(flags)
+	return drop_item_to_ground(get_active_held_item(), flags)
 
-/mob/proc/drop_inactive_held_item(force)
-	return drop_item_to_ground(get_inactive_held_item(), force = force)
+/mob/proc/drop_inactive_held_item(flags)
+	return drop_item_to_ground(get_inactive_held_item(), flags)
 
 /mob/proc/drop_held_item_of_index(index, force)
-	return drop_item_to_ground(get_held_item_of_index(index), force = force)
+	return drop_item_to_ground(get_held_item_of_index(index), force)
 
 // these two will need rewritten when we get support for arbitrary hand numbers.
 

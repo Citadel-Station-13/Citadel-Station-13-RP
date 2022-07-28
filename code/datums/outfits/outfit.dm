@@ -131,9 +131,9 @@
 		H.equip_to_slot_or_del(new suit_store(H),SLOT_ID_SUIT_STORAGE, ignore_fluff = TRUE, silent = TRUE)
 
 	if(l_hand)
-		H.put_in_left_hand(new l_hand(H), force = TRUE)
+		H.put_in_left_hand(new l_hand(H), INV_OP_FORCE)
 	if(r_hand)
-		H.put_in_right_hand(new r_hand(H), force = TRUE)
+		H.put_in_right_hand(new r_hand(H), INV_OP_FORCE)
 
 	for(var/path in uniform_accessories)
 		var/number = uniform_accessories[path]
