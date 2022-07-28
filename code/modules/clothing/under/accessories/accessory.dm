@@ -76,15 +76,21 @@
 	mob_overlay.appearance_flags = appearance_flags	// Stops has_suit's color from being multiplied onto the accessory
 	return mob_overlay
 
-#warn proper hooks + not unnecessarily calling pickups/drops
 //when user attached an accessory to S
 /obj/item/clothing/accessory/proc/on_attached(var/obj/item/clothing/S, var/mob/user)
 	if(!istype(S))
 		return
 	has_suit = S
-	forceMove(S)
+
+	// inventory handling start
+
+	// todo: don't call dropped/pickup if going to same person
 	if(S.worn_slot)
+		pickup(S.worn_mob(), INV_OP_IS_ACCESSORY)
 		equipped(S.worn_mob(), S.worn_slot, INV_OP_IS_ACCESSORY)
+
+	// inventory handling end
+
 	has_suit.add_overlay(get_inv_overlay())
 
 	if(user)
@@ -96,8 +102,16 @@
 		return
 	has_suit.cut_overlay(get_inv_overlay())
 	has_suit = null
+
+	// inventory handling start
+
+	// todo: don't call dropped/pickup if going to same person
 	if(has_suit.worn_slot)
 		unequipped(has_suit.worn_mob(), has_suit.worn_slot, INV_OP_IS_ACCESSORY)
+		dropped(S.worn_mob(), INV_OP_IS_ACCESSORY)
+
+	// inventory handling stop
+
 	if(user)
 		user.put_in_hands_or_drop(src)
 		add_fingerprint(user)
