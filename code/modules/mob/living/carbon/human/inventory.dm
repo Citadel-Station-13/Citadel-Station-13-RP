@@ -59,7 +59,7 @@
 		else
 			return ..()
 
-/mob/living/carbon/human/_set_inv_slot(slot, obj/item/I, update_icons, logic)
+/mob/living/carbon/human/_set_inv_slot(slot, obj/item/I, flags)
 	switch(slot)
 		if(SLOT_ID_SUIT)
 			wear_suit = I
@@ -192,7 +192,7 @@
 
 	return covering
 
-/mob/living/carbon/human/inventory_slot_bodypart_check(obj/item/I, slot, mob/user, silent)
+/mob/living/carbon/human/inventory_slot_bodypart_check(obj/item/I, slot, mob/user, flags)
 	. = ..()
 	if(!.)
 		return

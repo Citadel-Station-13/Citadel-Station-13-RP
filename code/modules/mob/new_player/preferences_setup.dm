@@ -243,7 +243,7 @@
 					if(G.slot == "implant")
 						// todo: remove fucking snowflake
 						continue
-					if(mannequin.force_equip_to_slot_or_del(G.spawn_item(mannequin, metadata), G.slot, silent = TRUE))
+					if(mannequin.force_equip_to_slot_or_del(G.spawn_item(mannequin, metadata), G.slot, INV_OP_SILENT))
 						if(G.slot != /datum/inventory_slot_meta/abstract/attach_as_accessory)
 							equipped_slots += G.slot
 

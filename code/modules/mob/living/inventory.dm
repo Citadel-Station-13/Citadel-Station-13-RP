@@ -96,7 +96,7 @@
 	var/existing_slot = is_in_inventory(I)
 	if(existing_slot)
 		// handle item reequip can fail.
-		return _handle_item_reequip(I, SLOT_ID_HANDS, existing_slot, flags))
+		return _handle_item_reequip(I, SLOT_ID_HANDS, existing_slot, flags)
 	// newly equipped
 	var/atom/oldLoc = I.loc
 	I.forceMove(src)

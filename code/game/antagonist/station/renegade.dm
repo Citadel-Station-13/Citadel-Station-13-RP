@@ -90,7 +90,7 @@ var/datum/antagonist/renegade/renegades
 		return
 
 	// If that failed, attempt to put into any valid non-handslot
-	if(player.equip_to_appropriate_slot(gun, silent = TRUE))
+	if(player.equip_to_appropriate_slot(gun, INV_OP_SILENT | INV_OP_FLUFFLESS))
 		return
 
 	// If that failed, then finally attempt to at least let the player carry the weapon

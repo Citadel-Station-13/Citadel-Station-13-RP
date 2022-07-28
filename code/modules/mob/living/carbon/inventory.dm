@@ -14,7 +14,7 @@
 		else
 			return ..()
 
-/mob/living/carbon/_set_inv_slot(slot, obj/item/I, update_icons, logic)
+/mob/living/carbon/_set_inv_slot(slot, obj/item/I, flags)
 	switch(slot)
 		if(SLOT_ID_HANDCUFFED)
 			handcuffed = I

@@ -27,6 +27,8 @@
 #define INV_OP_IGNORE_DELAY			(1<<12)
 /// do not merge stacks if possible
 #define INV_OP_NO_MERGE_STACKS		(1<<13)
+/// used on can equip/unequip - this is the final check before point of no return, therefore side effects are permissible
+#define INV_OP_IS_FINAL_CHECK		(1<<14)
 /// no delays and reachability checks entirely
 #define INV_OP_FLUFFLESS			(INV_OP_IGNORE_REACHABILITY | INV_OP_IGNORE_DELAY)
 /// no sound, warnings, etc, entirely
