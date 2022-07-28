@@ -3123,8 +3123,6 @@
 #include "code\modules\mob\new_player\sprite_accessories\markings\werebeast.dm"
 #include "code\modules\mob\new_player\sprite_accessories\markings\zorren.dm"
 #include "code\modules\modular_computers\laptop_vendor.dm"
-#include "code\modules\modular_computers\computers\modular_computer\core.dm"
-#include "code\modules\modular_computers\computers\modular_computer\damage.dm"
 #include "code\modules\modular_computers\computers\modular_computer\hardware.dm"
 #include "code\modules\modular_computers\computers\modular_computer\interaction.dm"
 #include "code\modules\modular_computers\computers\modular_computer\power.dm"
