@@ -26,8 +26,8 @@
 
 
 	if(user)
-		user.temporarily_remove_from_inventory(D, TRUE)
-		user.temporarily_remove_from_inventory(D2, TRUE)
+		user.temporarily_remove_from_inventory(D, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
+		user.temporarily_remove_from_inventory(D2, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 
 	D.holder = src
 	D2.holder = src

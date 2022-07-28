@@ -99,7 +99,7 @@
 		if( (!in_range(src, user)) || user.stat || user.restrained() )
 			return
 		to_chat(user, "<span class='notice'>You fold [src] into the shape of a plane!</span>")
-		user.temporarily_remove_from_inventory(src, TRUE)
+		user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 		I = new /obj/item/paperplane(user, src)
 		user.put_in_hands(I)
 	else

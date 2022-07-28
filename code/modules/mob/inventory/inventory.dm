@@ -69,10 +69,10 @@
  * if the item is null, this returns true
  * if an item is not in us, this returns true
  */
-/mob/proc/drop_item_to_ground(obj/item/I, flags)
+/mob/proc/drop_item_to_ground(obj/item/I, flags, mob/user)
 	if(!is_in_inventory(I))
 		return TRUE
-	return _unequip_item(I, force, drop_location(), silent = silent)
+	return _unequip_item(I, flags, drop_location(), user)
 
 /**
  * transfers an item somewhere
@@ -83,13 +83,13 @@
  * if the item is null, this returns true
  * if an item is not in us, this crashes
  */
-/mob/proc/transfer_item_to_loc(obj/item/I, newloc, force, silent)
+/mob/proc/transfer_item_to_loc(obj/item/I, newloc, flags, mob/user)
 	if(!I)
 		return TRUE
 	ASSERT(newloc)
 	if(!is_in_inventory(I))
 		return FALSE
-	return _unequip_item(I, force, newloc, silent = silent)
+	return _unequip_item(I, flags, newloc, user)
 
 /**
  * transfers an item into nullspace
@@ -99,12 +99,12 @@
  * if the item is null, this returns true
  * if an item is not in us, this crashes
  */
-/mob/proc/transfer_item_to_nullspace(obj/item/I, force, silent)
+/mob/proc/transfer_item_to_nullspace(obj/item/I, flags, mob/user)
 	if(!I)
 		return TRUE
 	if(!is_in_inventory(I))
 		return FALSE
-	return _unequip_item(I, force, null, silent = silent)
+	return _unequip_item(I, flags, null, user)
 
 /**
  * removes an item from inventory. does NOT move it.
@@ -115,28 +115,23 @@
  * if the item is null, ths returns true
  * if an item is not in us, this returns true
  */
-/mob/proc/temporarily_remove_from_inventory(obj/item/I, force, silent)
+/mob/proc/temporarily_remove_from_inventory(obj/item/I, flags, mob/user)
 	if(!is_in_inventory(I))
 		return TRUE
-	return _unequip_item(I, force, FALSE, silent = silent)
+	return _unequip_item(I, flags, FALSE, user)
 
 /**
  * handles internal logic of unequipping an item
  *
  * @params
  * - I - item
- * - force - ignore nodrop/other restrictions
+ * - flags - inventory operation hint bitfield, see defines
  * - newloc - where to transfer to. null for nullspace, FALSE for don't transfer
- * - user - can be null - person doing the removal
- * - swapping - swapping clothes, don't drop pockets/whatnot
- * - silent - don't display warnings
- * - ignore_fluff - ignore stuff like reachability checks
- * - update_icons - update mob icons?
- * - disallow_delay - fail if there'd be an equip delay
+ * - user - can be null - person doing the removals
  *
  * @return TRUE/FALSE for success
  */
-/mob/proc/_unequip_item(obj/item/I, force, newloc, mob/user = src, disallow_delay, ignore_fluff, silent, update_icons = TRUE, swapping)
+/mob/proc/_unequip_item(obj/item/I, flags, newloc, mob/user = src)
 	PROTECTED_PROC(TRUE)
 	if(!I)
 		return TRUE
@@ -144,7 +139,7 @@
 	var/hand = get_held_index(I)
 	var/old
 	if(hand)
-		if(!can_unequip(I, SLOT_ID_HANDS, user, force, disallow_delay, ignore_fluff, silent))
+		if(!can_unequip(I, SLOT_ID_HANDS, flags, user))
 			return FALSE
 		_unequip_held(I, TRUE)
 		I.unequipped(src, SLOT_ID_HANDS, flags)
@@ -153,12 +148,12 @@
 		if(!I.worn_slot)
 			stack_trace("tried to unequip an item without current equipped slot.")
 			I.worn_slot = _slot_by_item(I)
-		if(!can_unequip(I, I.worn_slot, user, force, disallow_delay, ignore_fluff, silent))
+		if(!can_unequip(I, I.worn_slot, flags, user))
 			return FALSE
 		old = I.worn_slot
 		_unequip_slot(I.worn_slot, TRUE)
 		I.unequipped(src, I.worn_slot, flags)
-		handle_item_denesting(I, old, user, silent)
+		handle_item_denesting(I, old, flags, user)
 
 	. = TRUE
 
@@ -181,7 +176,7 @@
 
 	update_action_buttons()
 
-/mob/proc/handle_item_denesting(obj/item/I, old_slot, mob/user, flags)
+/mob/proc/handle_item_denesting(obj/item/I, old_slot, flags, mob/user)
 	// if the item was inside something,
 	if(I.worn_inside)
 		var/obj/item/over = I.worn_over
@@ -223,14 +218,11 @@
  * @params
  * - I - item
  * - slot - slot we're unequipping from - can be null
+ * - flags - inventory operation hint bitfield, see defines
  * - user - stripper - can be null
- * - force - ignore nodrops, etc
- * - dislalow_delay - fail if we'd need to do a do_after, instead of sleeping
- * - ignore_fluff - ignore equip delay, item zone checks, etc
- * - silent - do not play warning messages
  */
-/mob/proc/can_unequip(obj/item/I, slot, mob/user, force, disallow_delay, ignore_fluff, silent)
-	if(!force && HAS_TRAIT(I, TRAIT_NODROP))
+/mob/proc/can_unequip(obj/item/I, slot, flags, mob/user)
+	if(!(flags & INV_OP_FORCE) && HAS_TRAIT(I, TRAIT_NODROP))
 		if(!silent)
 			to_chat(user, SPAN_WARNING("[I] is stuck to your hand!"))
 		return FALSE
@@ -253,16 +245,13 @@
  * @params
  * - I - item
  * - slot - the slot
- * - silent - don't show this mob warnings when failing
+ * - flags - inventory operation hint bitfield, see defines
  * - user - the user doing the action, if any. defaults to ourselves.
- * - disallow_delay - fail if we have to sleep/do_after
- * - ignore_fluff - ignore silly roleplay fluff like not being able to reach/self equip delays
- * - update_icons - redraw slot icons?
  *
  * @return TRUE/FALSE
  */
-/mob/proc/equip_to_slot_if_possible(obj/item/I, slot, mob/user, silent, disallow_delay, ignore_fluff, update_icons)
-	return _equip_item(I, FALSE, slot, user, silent, disallow_delay, ignore_fluff, update_icons)
+/mob/proc/equip_to_slot_if_possible(obj/item/I, slot, flags, mob/user)
+	return _equip_item(I, flags, slot, user)
 
 /**
  * equips an item to a slot if possible
@@ -271,16 +260,13 @@
  * @params
  * - I - item
  * - slot - the slot
- * - silent - don't show this mob warnings when failing
+ * - flags - inventory operation hint bitfield, see defines
  * - user - the user doing the action, if any. defaults to ourselves.
- * - disallow_delay - fail if we have to sleep/do_after
- * - ignore_fluff - ignore silly roleplay fluff like not being able to reach/self equip delays
- * - update_icons - redraw slot icons?
  *
  * @return TRUE/FALSE
  */
-/mob/proc/equip_to_slot_or_del(obj/item/I, slot, mob/user, silent, update_icons, ignore_fluff)
-	. = equip_to_slot_if_possible(I, slot, user, silent, update_icons, ignore_fluff)
+/mob/proc/equip_to_slot_or_del(obj/item/I, slot, flags, mob/user)
+	. = equip_to_slot_if_possible(I, slot, flags, user)
 	if(!.)
 		qdel(I)
 /**
@@ -297,9 +283,9 @@
  *
  * @return TRUE/FALSE
  */
-/mob/proc/equip_to_appropriate_slot(obj/item/I, mob/user, silent, disallow_delay, ignore_fluff, update_icons)
+/mob/proc/equip_to_appropriate_slot(obj/item/I, flags, mob/user)
 	for(var/slot in GLOB.slot_equipment_priority)
-		if(equip_to_slot_if_possible(I, slot, user, TRUE, ignore_fluff, update_icons))
+		if(equip_to_slot_if_possible(I, slot, flags | INV_OP_SUPPRESS_WARNING, user))
 			return TRUE
 	if(!silent)
 		to_chat(user, user == src? SPAN_WARNING("You can't find somewhere to equip [I] to!") : SPAN_WARNING("[src] has nowhere to equip [I] to!"))
@@ -469,7 +455,7 @@
 		to_wear_over.forceMove(I)
 		// check we don't have something already (wtf)
 		if(I.worn_over)
-			handle_item_denesting(I, denest_to, user, silent)
+			handle_item_denesting(I, denest_to, flags, user)
 		// set the other way around
 		I.worn_over = to_wear_over
 		// tell it we're inserting the old item
@@ -579,7 +565,7 @@
  *
  * @return TRUE/FALSE on success
  */
-/mob/proc/_equip_item(obj/item/I, force, slot, mob/user = src, silent, disallow_delay, ignore_fluff, update_icons = TRUE)
+/mob/proc/_equip_item(obj/item/I, flags, slot, mob/user = src)
 	PROTECTED_PROC(TRUE)
 
 	if(!I)		// how tf would we put on "null"?
@@ -645,7 +631,7 @@
 	if(slot == SLOT_ID_HANDS)
 		// if we're going into hands,
 		// just check can unequip
-		if(!can_unequip(I, old_slot, user, force, disallow_delay, ignore_fluff, silent))
+		if(!can_unequip(I, old_slot, flags, user))
 			// check can unequip
 			return FALSE
 		// call procs
@@ -655,7 +641,7 @@
 			_unequip_slot(old_slot, update_icons)
 		I.unequipped(src, old_slot, flags)
 		// sigh
-		handle_item_denesting(I, old_slot, user, silent)
+		handle_item_denesting(I, old_slot, flags, user)
 		// ? we don't do this on hands, hand procs do it
 		// _equip_slot(I, slot, update_icons)
 		I.equipped(src, slot, flags)
@@ -664,7 +650,7 @@
 		return TRUE
 	else
 		// else, this gets painful
-		if(!can_unequip(I, old_slot, user, force, disallow_delay, ignore_fluff, silent))
+		if(!can_unequip(I, old_slot, flags, user))
 			return FALSE
 		if(!can_equip(I, slot, user, force, disallow_delay, ignore_fluff, silent, TRUE, old_slot))
 			return FALSE
@@ -731,6 +717,17 @@
 /mob/proc/drop_inventory(include_inhands = TRUE, include_restraints = TRUE, force = TRUE)
 	for(var/obj/item/I as anything in get_equipped_items(include_inhands, include_restraints))
 		drop_item_to_ground(I, INV_OP_SILENT | INV_OP_FLUFFLESS | (force? INV_OP_FORCE : NONE))
+
+	// todo: handle what happens if dropping something requires a logic thing
+	// e.g. dropping jumpsuit makes it impossible to transfer a belt since it
+	// de-equipped from the jumpsuit
+
+/mob/proc/transfer_inventory_to_loc(atom/newLoc, include_inhands = TRUE, include_restraints = TRUE, force = TRUE)
+	for(var/obj/item/I as anything in get_equipped_items(include_inhands, include_restraints))
+		transfer_item_to_loc(I, newLoc, INV_OP_SILENT | INV_OP_FLUFFLESS | (force? INV_OP_FORCE : NONE))
+	// todo: handle what happens if dropping something requires a logic thing
+	// e.g. dropping jumpsuit makes it impossible to transfer a belt since it
+	// de-equipped from the jumpsuit
 
 /**
  * gets the primary item in a slot

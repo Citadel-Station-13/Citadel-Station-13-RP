@@ -334,7 +334,7 @@
 	"<span class='notice'>You have transplanted \the [tool] into [target]'s [affected.name].</span>")
 	var/obj/item/organ/O = tool
 	if(istype(O))
-		user.temporarily_remove_from_inventory(O, TRUE)
+		user.temporarily_remove_from_inventory(O, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 		O.replaced(target,affected)
 
 /datum/surgery_step/internal/replace_organ/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)

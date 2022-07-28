@@ -304,7 +304,7 @@
 	if(!istype(W))
 		return //Not an item
 
-	if(usr && usr.is_in_inventory(W) && !usr.can_unequip(W, usr))
+	if(usr && usr.is_in_inventory(W) && !usr.can_unequip(W, user = usr))
 		return 0
 
 	if(src.loc == W)

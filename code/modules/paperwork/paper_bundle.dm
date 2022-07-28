@@ -169,7 +169,7 @@
 
 			if(pages.len <= 1)
 				var/obj/item/paper/P = src[1]
-				usr.temporarily_remove_from_inventory(src, TRUE)
+				usr.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 				usr.put_in_hands(P)
 				qdel(src)
 				return

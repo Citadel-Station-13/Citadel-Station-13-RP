@@ -120,7 +120,7 @@
 					for(var/slot in slots)
 						var/obj/item/I = H.item_by_slot(slot)
 						if(I)
-							H.transfer_item_to_loc(I, src, TRUE)
+							H.transfer_item_to_loc(I, src, INV_OP_FORCE)
 							if(contaminates || istype(I,/obj/item/card/id))
 								I.gurgle_contaminate(contents, contamination_flavor, contamination_color)
 							if(item_digest_mode == IM_HOLD)
@@ -143,7 +143,7 @@
 							to_update = TRUE
 							break
 					for(var/obj/item/I as anything in H.get_held_items())
-						H.transfer_item_to_loc(I, src, TRUE)
+						H.transfer_item_to_loc(I, src, INV_OP_FORCE)
 						if(contaminates || istype(I,/obj/item/card/id))
 							I.gurgle_contaminate(contents, contamination_flavor, contamination_color)
 						if(item_digest_mode == IM_HOLD)

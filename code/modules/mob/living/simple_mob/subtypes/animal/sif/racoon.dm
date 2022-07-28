@@ -113,7 +113,7 @@
 		if(user == src)
 			if(istype(get_active_held_item(), /obj/item/clothing/head))
 				hat = get_active_held_item()
-				transfer_item_to_loc(hat, src, TRUE)
+				transfer_item_to_loc(hat, src, INV_OP_FORCE)
 				to_chat(src, "<span class='notice'>You put on the hat.</span>")
 				update_icon()
 			return

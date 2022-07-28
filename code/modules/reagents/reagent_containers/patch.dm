@@ -43,7 +43,7 @@
 
 
 			to_chat(H, "<span class='notice'>\The [src] is placed on your [affecting].</span>")
-			M.temporarily_remove_from_inventory(src, TRUE)
+			M.temporarily_remove_from_inventory(src, INV_OP_FORCE)
 			if(reagents.total_volume)
 				reagents.trans_to_mob(M, reagents.total_volume, CHEM_TOUCH)
 			qdel(src)
@@ -82,14 +82,14 @@
 		if(!do_mob(user, M))
 			return
 
-		user.temporarily_remove_from_inventory(src, TRUE)
+		user.temporarily_remove_from_inventory(src, INV_OP_FORCE)
 		user.visible_message("<span class='warning'>[user] applies \the [src] to [H].</span>")
 
 		var/contained = reagentlist()
 		add_attack_logs(user,M,"Applied a patch containing [contained]")
 
 		to_chat(H, "<span class='notice'>\The [src] is placed on your [affecting].</span>")
-		M.temporarily_remove_from_inventory(src, TRUE)
+		M.temporarily_remove_from_inventory(src, INV_OP_FORCE)
 
 		if(reagents.total_volume)
 			reagents.trans_to_mob(M, reagents.total_volume, CHEM_TOUCH)

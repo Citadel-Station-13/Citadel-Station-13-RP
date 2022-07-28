@@ -26,7 +26,7 @@
 /obj/item/reagent_containers/hard_candy/proc/On_Consume(mob/M, mob/user)
 	if(!reagents.total_volume)
 		M.visible_message("<span class='notice'>[M] finishes eating \the [src].</span>","<span class='notice'>You finish eating \the [src].</span>")
-		M.temporarily_remove_from_inventory(src, TRUE)
+		M.temporarily_remove_from_inventory(src, INV_OP_FORCE)
 		if(trash)
 			if(ispath(trash,/obj/item))
 				var/obj/item/TrashItem = new trash(user)

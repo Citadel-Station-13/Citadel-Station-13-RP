@@ -148,7 +148,7 @@
 
 /obj/item/tool/wrench/power/attack_self(mob/user)
 	playsound(get_turf(user),'sound/items/change_drill.ogg',50,1)
-	user.temporarily_remove_from_inventory(src, TRUE)
+	user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 	if(!user.put_in_active_hand(counterpart))
 		counterpart.forceMove(get_turf(user))
 	forceMove(counterpart)

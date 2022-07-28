@@ -1359,7 +1359,7 @@
 	if(istype(W, /obj/item/mecha_parts/component) && state == MECHA_CELL_OUT)
 		var/obj/item/mecha_parts/component/MC = W
 		if(MC.attach(src))
-			user.transfer_item_to_loc(W, src, TRUE)
+			user.transfer_item_to_loc(W, src, INV_OP_FORCE)
 			user.visible_message("[user] installs \the [W] in \the [src]", "You install \the [W] in \the [src].")
 		return
 

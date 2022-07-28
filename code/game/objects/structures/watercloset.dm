@@ -544,7 +544,7 @@
 	if(iscarbon(hit_atom))
 		var/mob/living/carbon/H = hit_atom
 		if(!H.wear_mask)
-			H.equip_to_slot_if_possible(src, SLOT_MASK, silent = TRUE)
+			H.equip_to_slot_if_possible(src, SLOT_MASK, INV_OP_SUPPRESS_WARNING)
 			H.visible_message("<span class='warning'>The plunger slams into [H]'s face!</span>", "<span class='warning'>The plunger suctions to your face!</span>")
 
 /obj/item/plunger/reinforced

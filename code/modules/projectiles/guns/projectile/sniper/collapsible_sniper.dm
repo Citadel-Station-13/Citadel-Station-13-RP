@@ -164,7 +164,7 @@
 			var/obj/item/gun/projectile/heavysniper/collapsible/gun = new (get_turf(src), 0)
 			if(usr && istype(usr, /mob/living/carbon/human))
 				var/mob/living/carbon/human/user = usr
-				user.temporarily_remove_from_inventory(src, TRUE)
+				user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 				user.put_in_hands_or_drop(gun)
 			qdel(src)
 

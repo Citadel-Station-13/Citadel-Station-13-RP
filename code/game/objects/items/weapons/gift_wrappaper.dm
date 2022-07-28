@@ -26,7 +26,7 @@
 		icon_state = "gift[pick(1, 2, 3)]"
 
 /obj/item/gift/attack_self(mob/user as mob)
-	user.temporarily_remove_from_inventory(src, TRUE)
+	user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 	if(src.gift)
 		user.put_in_active_hand(gift)
 		src.gift.add_fingerprint(user)
@@ -103,7 +103,7 @@
 
 	if(!ispath(gift_type,/obj/item))
 		return
-	M.temporarily_remove_from_inventory(src, TRUE)
+	M.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 	var/obj/item/I = new gift_type(M)
 	M.put_in_hands(I)
 	I.add_fingerprint(M)
@@ -123,7 +123,7 @@
 	pixel_y = rand(-10,10)
 
 /obj/item/gift/attack_self(mob/user as mob)
-	user.temporarily_remove_from_inventory(src, TRUE)
+	user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 	if(gift)
 		user.put_in_active_hand(gift)
 		gift.add_fingerprint(user)
@@ -187,7 +187,7 @@
 	if(!ispath(gift_type,/obj/item))	return
 
 	var/obj/item/I = new gift_type(M)
-	M.temporarily_remove_from_inventory(src, TRUE)
+	M.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 	M.put_in_hands(I)
 	I.add_fingerprint(M)
 	qdel(src)

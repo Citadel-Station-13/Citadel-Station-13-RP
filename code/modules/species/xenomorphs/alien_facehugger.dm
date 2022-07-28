@@ -170,7 +170,7 @@ var/const/MAX_ACTIVE_TIME = 400
 			target.apply_damage(10, BRUTE, BP_TORSO)
 			return		// atleast you don't get gibbed
 
-		target.equip_to_slot_if_possible(src, SLOT_ID_MASK, ignore_fluff = TRUE)
+		target.equip_to_slot_if_possible(src, SLOT_ID_MASK, INV_OP_FLUFFLESS)
 
 	if(!sterile)
 		L.Paralyse(MAX_IMPREGNATION_TIME/6) //something like 25 ticks = 20 seconds with the default settings

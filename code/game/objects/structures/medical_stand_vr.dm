@@ -119,7 +119,7 @@
 					if(tank)
 						tank.forceMove(src)
 					if (breather.wear_mask == contained)
-						breather.transfer_item_to_loc(contained, src, TRUE)
+						breather.transfer_item_to_loc(contained, src, INV_OP_FORCE)
 						contained.forceMove(src)
 					else
 						qdel(contained)
@@ -242,7 +242,7 @@
 
 /obj/structure/medical_stand/proc/attach_mask(var/mob/living/carbon/C)
 	if(C && istype(C))
-		if(C.equip_to_slot_if_possible(contained, SLOT_ID_MASK, silent = TRUE))
+		if(C.equip_to_slot_if_possible(contained, SLOT_ID_MASK, INV_OP_SUPPRESS_WARNING))
 			if(tank)
 				tank.forceMove(C)
 			breather = C
@@ -364,7 +364,7 @@
 			if(tank)
 				tank.forceMove(src)
 			if (breather.wear_mask == contained)
-				breather.transfer_item_to_loc(contained, src, TRUE)
+				breather.transfer_item_to_loc(contained, src, INV_OP_FORCE)
 				contained.forceMove(src)
 			else
 				qdel(contained)

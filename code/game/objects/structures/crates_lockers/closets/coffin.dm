@@ -108,7 +108,8 @@
 			return
 		if(W.loc != user) // This should stop mounted modules ending up outside the module.
 			return
-		user.transfer_item_to_loc(W, src, TRUE)
+		user.transfer_item_to_loc(W, src, 			user.transfer_item_to_loc(W, src, INV_OP_FORCE)
+)
 	else
 		if(istype(W, /obj/item/shovel))
 			if(user.a_intent == INTENT_HARM)	// Hurt intent means you're trying to kill someone, or just get rid of the grave

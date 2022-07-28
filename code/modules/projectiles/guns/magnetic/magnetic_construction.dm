@@ -74,7 +74,7 @@
 		var/mob/M = loc
 		if(istype(M))
 			put_in_hands = M == user
-			M.temporarily_remove_from_inventory(src, TRUE)
+			M.temporarily_remove_from_inventory(src, INV_OP_FORCE)
 		if(put_in_hands)
 			user.put_in_active_hand(coilgun)
 		qdel(src)

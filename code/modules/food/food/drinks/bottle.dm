@@ -51,7 +51,7 @@
 /obj/item/reagent_containers/food/drinks/bottle/proc/smash(var/newloc, atom/against = null)
 	if(ismob(loc))
 		var/mob/M = loc
-		M.temporarily_remove_from_inventory(src, TRUE)
+		M.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 
 	//Creates a shattering noise and replaces the bottle with a broken_bottle
 	var/obj/item/broken_bottle/B = new /obj/item/broken_bottle(newloc)

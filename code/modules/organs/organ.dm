@@ -410,7 +410,7 @@
 	var/datum/reagent/blood/B = locate(/datum/reagent/blood) in reagents.reagent_list
 	blood_splatter(src,B,1)
 
-	user.temporarily_remove_from_inventory(src, TRUE)
+	user.temporarily_remove_from_inventory(src, INV_OP_FORCE)
 
 	var/obj/item/reagent_containers/food/snacks/organ/O = new(get_turf(src))
 	O.name = name

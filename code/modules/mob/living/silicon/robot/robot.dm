@@ -709,7 +709,7 @@
 			to_chat(usr, "The upgrade is locked and cannot be used yet!")
 		else
 			if(U.action(src))
-				user.transfer_item_to_loc(U, src, TRUE)
+				user.transfer_item_to_loc(U, src, INV_OP_FORCE)
 				to_chat(usr, "You apply the upgrade to [src]!")
 			else
 				to_chat(usr, "Upgrade error!")

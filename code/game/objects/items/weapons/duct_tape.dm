@@ -179,7 +179,7 @@
 		return
 
 	to_chat(user, "You remove \the [initial(name)] from [stuck].")
-	user.temporarily_remove_from_inventory(src, TRUE)
+	user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 	if(!user.put_in_hands(stuck))
 		stuck.forceMove(user.drop_location())
 	stuck = null

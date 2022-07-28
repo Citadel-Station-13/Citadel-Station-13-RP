@@ -329,7 +329,7 @@
 
 	if(wearing_rig)
 		for(var/obj/item/I in list(wearing_rig.helmet, wearing_rig.chest, wearing_rig.gloves, wearing_rig.boots))
-			transfer_item_to_loc(I, wearing_rig, TRUE)
+			transfer_item_to_loc(I, wearing_rig, INV_OP_FORCE)
 
 	for(var/obj/item/radio/headset/HS in things_to_not_drop)
 		if(HS.keyslot1)

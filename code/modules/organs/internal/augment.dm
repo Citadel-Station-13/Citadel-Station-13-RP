@@ -240,7 +240,7 @@
 			qdel(equipping)
 
 	else
-		if(!equip_to_slot_if_possible(equipping, slot, null, FALSE, TRUE, TRUE))
+		if(!equip_to_slot_if_possible(equipping, slot, INV_OP_FLUFFLESS))
 			if(destroy_on_drop || del_if_failure)
 				qdel(equipping)
 			return FALSE

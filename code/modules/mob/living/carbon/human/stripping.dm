@@ -15,7 +15,7 @@
 		return
 
 	if(I)
-		if(drop_item_to_ground(I))
+		if(drop_item_to_ground(I, user = user))
 			add_attack_logs(user, src, "Removed [I] from hand index [index]")
 		else
 			add_attack_logs(user, src, "Failed to remove [I] from hand index [index]")
@@ -42,7 +42,7 @@
 		return
 
 	if(I)
-		if(drop_item_to_ground(I))
+		if(drop_item_to_ground(I, user = user))
 			add_attack_logs(user, src, "Removed [I] from slot [slot]")
 		else
 			add_attack_logs(user, src, "Failed to remove [I] from slot [slot]")

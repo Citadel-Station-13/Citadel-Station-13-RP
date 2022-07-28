@@ -357,7 +357,7 @@
 		if(H)
 			new_hat = H
 			has_hat = TRUE
-			temporarily_remove_from_inventory(H, TRUE)
+			temporarily_remove_from_inventory(H, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 			things_to_drop -= H
 			break
 

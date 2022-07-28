@@ -53,6 +53,9 @@
 		cb?.Invoke(I, .)
 
 /mob/proc/transfer_slots_to_loc(list/slots, atom/A, flags, datum/callback/cb)
+	// todo: handle what happens if dropping something requires a logic thing
+	// e.g. dropping jumpsuit makes it impossible to transfer a belt since it
+	// de-equipped from the jumpsuit
 	if(islist(slots))
 		for(var/slot in slots)
 			var/obj/item/I = item_by_slot(slot)

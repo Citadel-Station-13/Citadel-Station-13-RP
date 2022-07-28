@@ -867,13 +867,13 @@
 				if(istype(holder))
 					if(use_obj && check_slot == use_obj)
 						to_chat(H, "<font color=#4F49AF><b>Your [use_obj.name] [use_obj.gender == PLURAL ? "retract" : "retracts"] swiftly.</b></font>")
-						if(!holder.transfer_item_to_loc(use_obj, src, TRUE))
+						if(!holder.transfer_item_to_loc(use_obj, src, INV_OP_FORCE))
 							use_obj.forceMove(src)
 
 		else if (deploy_mode != ONLY_RETRACT)
 			if(check_slot && check_slot == use_obj)
 				return
-			if(!H.equip_to_slot_if_possible(use_obj, equip_to, silent = TRUE))
+			if(!H.equip_to_slot_if_possible(use_obj, equip_to, null, INV_OP_FORCE))
 				if(check_slot && warn == 1)
 					to_chat(H, "<span class='danger'>You are unable to deploy \the [piece] as \the [check_slot] [check_slot.gender == PLURAL ? "are" : "is"] in the way.</span>")
 					return

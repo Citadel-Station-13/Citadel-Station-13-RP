@@ -273,7 +273,7 @@
 		if (M.use(1))
 			var/obj/item/secbot_assembly/edCLN_assembly/B = new /obj/item/secbot_assembly/edCLN_assembly(get_turf(src))
 			to_chat(user, "<span class='notice'>You armed the robot frame.</span>")
-			user.temporarily_remove_from_inventory(src, TRUE)
+			user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 			user.put_in_active_hand(B)
 			qdel(src)
 		else

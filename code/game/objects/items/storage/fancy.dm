@@ -284,7 +284,7 @@
 		// We call remove_from_storage first to manage the reagent transfer and
 		// UI updates.
 		remove_from_storage(cig, null)
-		if(!user.equip_to_slot_if_possible(cig, SLOT_ID_MASK, silent = TRUE))
+		if(!user.equip_to_slot_if_possible(cig, SLOT_ID_MASK, INV_OP_SUPPRESS_WARNING))
 			cig.forceMove(user.drop_location())
 
 		reagents.maximum_volume = 15 * contents.len

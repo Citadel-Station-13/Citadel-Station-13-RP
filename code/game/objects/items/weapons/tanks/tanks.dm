@@ -624,7 +624,7 @@ var/list/global/tank_gauge_cache = list()
 	if(isigniter(S.a_left) == isigniter(S.a_right))		//Check if either part of the assembly has an igniter, but if both parts are igniters, then fuck it
 		return
 
-	M.temporarily_remove_from_inventory(S, TRUE)
+	M.temporarily_remove_from_inventory(S, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 	if(!M.put_in_active_hand(src))		//Equips the bomb if possible, or puts it on the floor.
 		forceMove(M.drop_location())
 

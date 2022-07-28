@@ -1043,7 +1043,7 @@
 
 		//strip their stuff and stick it in the crate
 		for(var/obj/item/I in M.get_equipped_items(TRUE, TRUE))
-			M.transfer_item_to_loc(I, locker, TRUE)
+			M.transfer_item_to_loc(I, locker, INV_OP_FORCE)
 
 		//so they black out before warping
 		M.Paralyse(5)
