@@ -24,7 +24,7 @@
 		return TRUE
 	if(equip_to_slot_if_possible(I, /datum/inventory_slot_meta/abstract/put_in_storage_try_active, silent = TRUE))
 		return TRUE
-	to_chat(src, SPAN_WARNING("You have nowhere to put put [I]!"))
+	to_chat(src, SPAN_WARNING("You have nowhere to put [I]!"))
 	return FALSE
 
 /**

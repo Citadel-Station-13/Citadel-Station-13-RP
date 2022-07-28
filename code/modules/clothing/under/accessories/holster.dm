@@ -27,7 +27,7 @@
 	if(istype(user))
 		user.stop_aiming(no_message=1)
 
-	if(!user.attempt_insert_item_for_installation(holstered, src))
+	if(!user.attempt_insert_item_for_installation(I, src))
 		return
 
 	holstered = I
