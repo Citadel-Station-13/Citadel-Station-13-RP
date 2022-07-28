@@ -84,10 +84,21 @@
 		admin_id = text2num(select_query.item[1])
 
 	if(new_admin)
-		var/datum/db_query/insert_query = dbcon.NewQuery("INSERT INTO `[format_table_name("admin")]` (`id`, `ckey`, `rank`, `level`, `flags`) VALUES (null, '[adm_ckey]', '[new_rank]', -1, 0)")
-		insert_query.Execute()
-		var/datum/db_query/log_query = dbcon.NewQuery("INSERT INTO `test`.`[format_table_name("admin")]_log` (`id` ,`datetime` ,`adminckey` ,`adminip` ,`log` ) VALUES (NULL , NOW( ) , '[usr.ckey]', '[usr.client.address]', 'Added new admin [adm_ckey] to rank [new_rank]');")
-		log_query.Execute()
+		SSdbcore.RunQuery(
+			"INSERT INTO [format_table_name("admin")] (id, ckey, rank, level, flags) VALUES (null, :ckey, :rank, -1, 0)",
+			list(
+				"ckey" = adm_ckey,
+				"rank" = new_rank
+			)
+		)
+		SSdbcore.RunQuery(
+			"INSERT INTO [format_table_name("admin_log")] (id, datetime, adminckey, adminip, log) VALUES (NULL, NOW(), :ckey, :ip, :logstr)",
+			list(
+				"ckey" = sanitizeSQL(usr.ckey),
+				"ip" = sanitizeSQL(usr.client.address),
+				"Added new admin [adm_ckey] to rank [new_rank]"
+			)
+		)
 		to_chat(usr, "<font color=#4F49AF>New admin added.</font>")
 	else
 		if(!isnull(admin_id) && isnum(admin_id))
