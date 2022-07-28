@@ -34,14 +34,13 @@
 /obj/item/proc/equipped(mob/user, slot, flags)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot, flags)
-	worn_slot = slot
-	// worn_slot = get_inventory_slot_datum(slot)
-	// todo: shouldn't be in here
-	hud_layerise()
-	// todo: shouldn't be in here
-	user.position_hud_item(src, slot)
-	if(user.client)
-		user.client.screen |= src
+	if(!(flags & INV_OP_IS_ACCESSORY))
+		// todo: shouldn't be in here
+		hud_layerise()
+		// todo: shouldn't be in here
+		if(user)
+			user.position_hud_item(src, slot)
+			user.client?.screen |= src
 	if((slot != SLOT_ID_HANDS) && equip_sound)
 		playsound(src, equip_sound, 30, ignore_walls = FALSE)
 	user.update_inv_hands()
@@ -58,10 +57,12 @@
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_UNEQUIPPED, user, slot, flags)
 	worn_slot = null
-	// todo: shouldn't be in here
-	hud_unlayerise()
-	// todo: shouldn't be in here
-	screen_loc = null
+	if(!(flags & INV_OP_IS_ACCESSORY))
+		// todo: shouldn't be in here
+		hud_unlayerise()
+		// todo: shouldn't be in here
+		screen_loc = null
+		user?.client?.screen -= src
 	if(!(flags & INV_OP_DIRECTLY_DROPPING) && (slot != SLOT_ID_HANDS) && unequip_sound)
 		playsound(src, unequip_sound, 30, ignore_walls = FALSE)
 

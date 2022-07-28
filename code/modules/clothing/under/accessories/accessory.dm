@@ -100,17 +100,18 @@
 /obj/item/clothing/accessory/proc/on_removed(mob/user)
 	if(!has_suit)
 		return
-	has_suit.cut_overlay(get_inv_overlay())
-	has_suit = null
 
 	// inventory handling start
 
 	// todo: don't call dropped/pickup if going to same person
-	if(has_suit.worn_slot)
+s	if(has_suit.worn_slot)
 		unequipped(has_suit.worn_mob(), has_suit.worn_slot, INV_OP_IS_ACCESSORY)
 		dropped(has_suit.worn_mob(), INV_OP_IS_ACCESSORY)
 
 	// inventory handling stop
+
+	has_suit.cut_overlay(get_inv_overlay())
+	has_suit = null
 
 	if(user)
 		user.put_in_hands_or_drop(src)
