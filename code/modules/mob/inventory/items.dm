@@ -34,7 +34,7 @@
  */
 /obj/item/proc/equipped(mob/user, slot, accessory, silent, creation)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot, accessory, creation)
+	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot, accessory, silent, creation)
 	current_equipped_slot = slot
 	// current_equipped_slot = get_inventory_slot_datum(slot)
 	// todo: shouldn't be in here
@@ -59,7 +59,7 @@
  */
 /obj/item/proc/unequipped(mob/user, slot, accessory, silent)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_ITEM_UNEQUIPPED, user, slot, accessory)
+	SEND_SIGNAL(src, COMSIG_ITEM_UNEQUIPPED, user, slot, accessory, silent)
 	current_equipped_slot = null
 	// todo: shouldn't be in here
 	hud_unlayerise()
@@ -84,7 +84,7 @@
 	hud_unlayerise()
 	item_flags &= ~IN_INVENTORY
 
-	. = SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user)
+	. = SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user, accessory, silent, newLoc)
 
 	if(!silent && isturf(newLoc))
 		playsound(src, drop_sound, 30, ignore_walls = FALSE)
@@ -101,7 +101,7 @@
  */
 /obj/item/proc/pickup(mob/user, accessory, silent, creation, atom/oldLoc)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
+	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user, accessory, silent, creation, oldLoc)
 	pixel_x = initial(pixel_x)
 	pixel_y = initial(pixel_y)
 	hud_layerise()
