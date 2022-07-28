@@ -383,7 +383,7 @@
 /obj/item/spellbook/oneuse/forcewall/recoil(mob/user)
 	..()
 	to_chat(user, "<span class='warning'>You suddenly feel very solid!</span>")
-	user.drop_item_to_ground(src, TRUE)
+	user.drop_item_to_ground(src, INV_OP_FORCE)
 	var/obj/structure/closet/statue/S = new /obj/structure/closet/statue(user.loc, user)
 	S.timer = 30
 
@@ -411,7 +411,7 @@
 		ADD_TRAIT(magichead, TRAIT_NODROP, MAGIC_TRAIT)
 		magichead.flags_inv = null	//so you can still see their face
 		magichead.voicechange = 1	//NEEEEIIGHH
-		user.drop_item_to_ground(user.wear_mask, TRUE)
+		user.drop_item_to_ground(user.wear_mask, INV_OP_FORCE)
 		user.equip_to_slot_or_del(magichead, SLOT_ID_MASK)
 		qdel(src)
 	else

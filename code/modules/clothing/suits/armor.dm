@@ -13,7 +13,7 @@
 	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.6
 
-/obj/item/clothing/suit/armor/can_equip(mob/M, slot, mob/user, silent, disallow_delay, ignore_fluff)
+/obj/item/clothing/suit/armor/can_equip(mob/M, slot, mob/user, flags)
 	. = ..()
 	if(!.)
 		return
@@ -580,7 +580,7 @@
 		|ACCESSORY_SLOT_ARMOR_M)
 	blood_overlay_type = "armor"
 
-/obj/item/clothing/suit/armor/pcarrier/can_equip(mob/M, slot, mob/user, silent, disallow_delay, ignore_fluff)
+/obj/item/clothing/suit/armor/pcarrier/can_equip(mob/M, slot, mob/user, flags)
 	. = ..()
 	if(!.)
 		return
@@ -751,7 +751,7 @@
 	item_state = "heavy_wolf_armor"
 	valid_accessory_slots = null
 
-/obj/item/clothing/suit/armor/vest/wolftaur/can_equip(mob/M, slot, mob/user, silent, disallow_delay, ignore_fluff)
+/obj/item/clothing/suit/armor/vest/wolftaur/can_equip(mob/M, slot, mob/user, flags)
 	. = ..()
 	if(!.)
 		return FALSE

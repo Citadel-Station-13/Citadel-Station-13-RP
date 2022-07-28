@@ -20,7 +20,7 @@
 		if(!ismob(M))
 			stack_trace("invalid current equipped slot [worn_slot] on an item not on a mob.")
 			return ..()
-		M.temporarily_remove_from_inventory(src, TRUE)
+		M.temporarily_remove_from_inventory(src, INV_OP_FORCE)
 	return ..()
 
 /**
@@ -168,8 +168,8 @@
  * mob gets final say
  * if you return false, feedback to the user, as the main proc doesn't do this.
  */
-/obj/item/proc/can_equip(mob/M, slot, mob/user, silent, disallow_delay, ignore_fluff)
-	if(!equip_check_beltlink(M, slot, user, silent))
+/obj/item/proc/can_equip(mob/M, slot, mob/user, flags)
+	if(!equip_check_beltlink(M, slot, user, flags))
 		return FALSE
 	return TRUE
 
@@ -178,7 +178,7 @@
  * mob gets final say
  * if you return false, feedback to the user, as the main proc doesn't do this.
  */
-/obj/item/proc/can_unequip(mob/M, slot, mob/user, silent, disallow_delay, ignore_fluff)
+/obj/item/proc/can_unequip(mob/M, slot, mob/user, flags)
 	return TRUE
 
 /**
@@ -191,7 +191,7 @@
 /**
  * checks if we need something to attach to in a certain slot
  */
-/obj/item/proc/equip_check_beltlink(mob/M, slot, mob/user, silent)
+/obj/item/proc/equip_check_beltlink(mob/M, slot, mob/user, flags)
 	if(item_flags & EQUIP_IGNORE_BELTLINK)
 		return TRUE
 
@@ -232,27 +232,27 @@
 		return
 	if(!worn_slot)
 		return
-	if(!equip_check_beltlink(M, worn_slot, null, TRUE))
+	if(!equip_check_beltlink(M, worn_slot, null, INV_OP_SILENT))
 		M.drop_item_to_ground(src)
 		return
 
 /**
  * checks if we can fit over something
  */
-/obj/item/proc/equip_worn_over_check(mob/M, slot, mob/user, obj/item/I, silent, disallow_delay, igonre_fluff)
+/obj/item/proc/equip_worn_over_check(mob/M, slot, mob/user, obj/item/I, flags)
 	return FALSE
 
 /**
  * call when we fit us over something - item should be already in us
  */
-/obj/item/proc/equip_on_worn_over_insert(mob/M, slot, mob/user, obj/item/I, silent)
+/obj/item/proc/equip_on_worn_over_insert(mob/M, slot, mob/user, obj/item/I, flags)
 	if(!silent)
 		to_chat(M, SPAN_NOTICE("You slip [src] over [I]."))
 
 /**
  * call when we unfit us over something - item should already be out of us
  */
-/obj/item/proc/equip_on_worn_over_remove(mob/M, slot, mob/user, obj/item/I, silent)
+/obj/item/proc/equip_on_worn_over_remove(mob/M, slot, mob/user, obj/item/I, flags)
 
 /**
  * get the mob we're equipped on

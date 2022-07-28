@@ -14,7 +14,7 @@
 	punch_force = 5
 	var/obj/item/clothing/gloves/gloves = null	//Undergloves
 
-/obj/item/clothing/gloves/gauntlets/equip_worn_over_check(mob/M, slot, mob/user, obj/item/I, silent, disallow_delay, igonre_fluff)
+/obj/item/clothing/gloves/gauntlets/equip_worn_over_check(mob/M, slot, mob/user, obj/item/I, flags)
 	if(slot != SLOT_ID_GLOVES)
 		return FALSE
 

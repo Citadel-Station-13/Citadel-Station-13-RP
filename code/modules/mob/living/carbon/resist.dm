@@ -76,7 +76,7 @@
 		visible_message(
 			SPAN_DANGER("[src] manages to remove [I]!"),
 			SPAN_NOTICE("You successfully remove [I]."))
-		drop_item_to_ground(I, TRUE)
+		drop_item_to_ground(I, INV_OP_FORCE)
 
 /mob/living/carbon/resist_buckle()
 	if(!buckled)

@@ -4689,7 +4689,7 @@ END CITADEL CHANGE */
 
 		//If the bun was in your hands, the result will be too
 		if (loc == user)
-			user.drop_item_to_ground(src, TRUE)
+			user.drop_item_to_ground(src, INV_OP_FORCE)
 			user.put_in_hands(result)
 
 

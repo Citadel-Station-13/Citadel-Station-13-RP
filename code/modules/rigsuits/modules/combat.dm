@@ -339,4 +339,4 @@
 		return
 
 	for(var/obj/item/material/knife/machete/armblade/stabby in M.contents)
-		M.drop_item_to_ground(stabby, TRUE)
+		M.drop_item_to_ground(stabby, INV_OP_FORCE)

@@ -855,10 +855,10 @@ var/list/sacrificed = list()
 					to_chat(user, "<span class='warning'>The [cultist] is already free.</span>")
 					return
 				cultist.buckled = null
-				cultist.drop_item_to_ground(cultist.handcuffed, TRUE)
-				cultist.drop_item_to_ground(cultist.legcuffed, TRUE)
+				cultist.drop_item_to_ground(cultist.handcuffed, INV_OP_FORCE)
+				cultist.drop_item_to_ground(cultist.legcuffed, INV_OP_FORCE)
 				if (istype(cultist.wear_mask, /obj/item/clothing/mask/muzzle))
-					cultist.drop_item_to_ground(cultist.wear_mask, TRUE)
+					cultist.drop_item_to_ground(cultist.wear_mask, INV_OP_FORCE)
 				if(istype(cultist.loc, /obj/structure/closet))
 					var/obj/structure/closet/C = cultist.loc
 					C.sealed = FALSE

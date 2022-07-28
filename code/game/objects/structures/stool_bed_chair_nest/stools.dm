@@ -74,7 +74,7 @@ var/global/list/stool_cache = list() //haha stool
 		user.visible_message("<span class='danger'>[user] breaks [src] over [M]'s back!</span>")
 		user.setClickCooldown(user.get_attack_speed())
 		user.do_attack_animation(M)
-		user.drop_item_to_ground(src, TRUE)
+		user.drop_item_to_ground(src, INV_OP_FORCE)
 		dismantle()
 		qdel(src)
 		var/mob/living/T = M
@@ -126,7 +126,7 @@ var/global/list/stool_cache = list() //haha stool
 			return
 		C.use(1)
 		if(!istype(loc, /turf))
-			user.drop_item_to_ground(src, TRUE)
+			user.drop_item_to_ground(src, INV_OP_FORCE)
 		to_chat(user, "You add padding to \the [src].")
 		add_padding(padding_type)
 		return

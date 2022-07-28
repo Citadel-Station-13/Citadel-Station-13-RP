@@ -641,7 +641,7 @@ default behaviour is:
 
 	if(iscarbon(src))
 		var/mob/living/carbon/C = src
-		C.drop_slots_to_ground(list(SLOT_ID_HANDCUFFED, SLOT_ID_LEGCUFFED), TRUE)
+		C.drop_slots_to_ground(list(SLOT_ID_HANDCUFFED, SLOT_ID_LEGCUFFED), INV_OP_FORCE)
 
 	ExtinguishMob()
 	fire_stacks = 0
@@ -1122,7 +1122,7 @@ default behaviour is:
 			var/turf/end_T = get_turf(target)
 			if(end_T)
 				add_attack_logs(src,M,"Thrown via grab to [end_T.x],[end_T.y],[end_T.z]")
-			drop_item_to_ground(G, TRUE)
+			drop_item_to_ground(G, INV_OP_FORCE)
 		else
 			return		// wild
 	else

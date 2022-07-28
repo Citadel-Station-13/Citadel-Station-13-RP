@@ -179,13 +179,13 @@
 /mob/proc/drop_inactive_held_item(flags)
 	return drop_item_to_ground(get_inactive_held_item(), flags)
 
-/mob/proc/drop_held_item_of_index(index, force)
-	return drop_item_to_ground(get_held_item_of_index(index), force)
+/mob/proc/drop_held_item_of_index(index, flags)
+	return drop_item_to_ground(get_held_item_of_index(index), flags)
 
 // these two will need rewritten when we get support for arbitrary hand numbers.
 
-/mob/proc/drop_left_held_item(force)
-	return drop_held_item_of_index(1, force)
+/mob/proc/drop_left_held_item(flags)
+	return drop_held_item_of_index(1, flags)
 
-/mob/proc/drop_right_held_item(force)
-	return drop_held_item_of_index(2, force)
+/mob/proc/drop_right_held_item(flags)
+	return drop_held_item_of_index(2, flags)

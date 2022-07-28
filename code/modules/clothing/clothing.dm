@@ -60,7 +60,7 @@
 	if(enables_planes)
 		user.recalculate_vis()
 
-/obj/item/clothing/can_equip(mob/M, slot, mob/user, silent, disallow_delay, ignore_fluff)
+/obj/item/clothing/can_equip(mob/M, slot, mob/user, flags)
 	. = ..()
 
 	if(!. || !LAZYLEN(species_restricted))
@@ -214,7 +214,7 @@
 		return
 */
 
-/obj/item/clothing/gloves/equip_worn_over_check(mob/M, slot, mob/user, obj/item/I, silent, disallow_delay, igonre_fluff)
+/obj/item/clothing/gloves/equip_worn_over_check(mob/M, slot, mob/user, obj/item/I, flags)
 	if(slot != SLOT_ID_GLOVES)
 		return FALSE
 

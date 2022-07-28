@@ -284,7 +284,7 @@
 	. = ..()
 	if(slot == SLOT_ID_SUIT)
 		user.drop_all_held_items()
-		user.drop_item_to_ground(user.item_by_slot(SLOT_ID_HANDCUFFED), TRUE)
+		user.drop_item_to_ground(user.item_by_slot(SLOT_ID_HANDCUFFED), INV_OP_FORCE)
 
 /obj/item/clothing/suit/ianshirt
 	name = "worn shirt"

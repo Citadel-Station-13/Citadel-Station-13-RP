@@ -542,7 +542,7 @@
 	var/obj/item/organ/internal/brain/cephalon/cephalon = new(target, 1)
 	target.internal_organs_by_name["brain"] = cephalon
 	var/mob/living/carbon/alien/diona/D = N.held_mob
-	user.drop_item_to_ground(tool, TRUE)
+	user.drop_item_to_ground(tool, TRUINV_OP_FORCEE)
 
 	if(D && D.mind)
 		D.mind.transfer_to(target)

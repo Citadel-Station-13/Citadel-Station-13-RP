@@ -69,7 +69,7 @@
  * if the item is null, this returns true
  * if an item is not in us, this returns true
  */
-/mob/proc/drop_item_to_ground(obj/item/I, force, silent)
+/mob/proc/drop_item_to_ground(obj/item/I, flags)
 	if(!is_in_inventory(I))
 		return TRUE
 	return _unequip_item(I, force, drop_location(), silent = silent)
@@ -729,7 +729,7 @@
  */
 /mob/proc/drop_inventory(include_inhands = TRUE, include_restraints = TRUE, force = TRUE)
 	for(var/obj/item/I as anything in get_equipped_items(include_inhands, include_restraints))
-		drop_item_to_ground(I, force)
+		drop_item_to_ground(I, INV_OP_SILENT | INV_OP_FLUFFLESS | (force? INV_OP_FORCE : NONE))
 
 /**
  * gets the primary item in a slot

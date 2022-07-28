@@ -312,7 +312,7 @@
 		return
 	G.wrapped = null
 
-/mob/living/silicon/robot/temporarily_remove_from_inventory(obj/item/I, force)
+/mob/living/silicon/robot/temporarily_remove_from_inventory(obj/item/I, flags)
 	if(!is_in_inventory(I))
 		return TRUE
 	. = considered_removable(I)
@@ -322,21 +322,21 @@
 		var/obj/item/gripper/G = I.loc
 		G.wrapped = null
 
-/mob/living/silicon/robot/transfer_item_to_loc(obj/item/I, newloc, force)
+/mob/living/silicon/robot/transfer_item_to_loc(obj/item/I, newloc, flags)
 	if(is_in_inventory(I) && considered_removable(I))
 		unreference_from_gripper(I)
 		I.forceMove(newloc)
 		return TRUE
 	return FALSE
 
-/mob/living/silicon/robot/transfer_item_to_nullspace(obj/item/I, force)
+/mob/living/silicon/robot/transfer_item_to_nullspace(obj/item/I, flags)
 	if(is_in_inventory(I) && considered_removable(I))
 		unreference_from_gripper(I)
 		I.moveToNullspace()
 		return TRUE
 	return FALSE
 
-/mob/living/silicon/robot/drop_item_to_ground(obj/item/I, force)
+/mob/living/silicon/robot/drop_item_to_ground(obj/item/I, flags)
 	if(is_in_inventory(I) && considered_removable(I))
 		unreference_from_gripper(I)
 		I.forceMove(drop_location())

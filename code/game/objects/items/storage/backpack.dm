@@ -558,7 +558,7 @@
 	var/taurtype = /datum/sprite_accessory/tail/taur/horse //Acceptable taur type to be wearing this
 	var/no_message = "You aren't the appropriate taur type to wear this!"
 
-/obj/item/storage/backpack/saddlebag/can_equip(mob/M, slot, mob/user, silent, disallow_delay, ignore_fluff)
+/obj/item/storage/backpack/saddlebag/can_equip(mob/M, slot, mob/user, flags)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -593,7 +593,7 @@
 	slowdown = 1 //And are slower, too...Unless you're a macro, that is.
 	var/no_message = "You aren't the appropriate taur type to wear this!"
 
-/obj/item/storage/backpack/saddlebag_common/can_equip(mob/M, slot, mob/user, silent, disallow_delay, ignore_fluff)
+/obj/item/storage/backpack/saddlebag_common/can_equip(mob/M, slot, mob/user, flags)
 	. = ..()
 	if(!.)
 		return FALSE

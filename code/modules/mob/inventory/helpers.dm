@@ -4,8 +4,8 @@
  * WARNING: DELS THINGS AFTER CURRENT PROC. DO NOT USE IF YOU NEED IMMEDIATE QDEL!
  * This is so procs can still access data.
  */
-/mob/proc/attempt_consume_item_for_construction(obj/item/I, silent)
-	. = temporarily_remove_from_inventory(I, FALSE, silent)
+/mob/proc/attempt_consume_item_for_construction(obj/item/I, flags)
+	. = temporarily_remove_from_inventory(I, flags)
 	if(!.)
 		return FALSE
 	. = TRUE
@@ -14,8 +14,8 @@
 /**
  * standard helper for put something into something else
  */
-/mob/proc/attempt_insert_item_for_installation(obj/item/I, atom/newloc, silent)
-	. = transfer_item_to_loc(I, newloc, FALSE, silent)
+/mob/proc/attempt_insert_item_for_installation(obj/item/I, atom/newloc, flags)
+	. = transfer_item_to_loc(I, newloc, flags)
 	if(!.)
 		return FALSE
 	return TRUE
@@ -23,8 +23,8 @@
 /**
  * standard helper for put something into something else but it actually nullspaces lmao
  */
-/mob/proc/attempt_void_item_for_installation(obj/item/I, silent)
-	. = transfer_item_to_nullspace(I, FALSE, silent)
+/mob/proc/attempt_void_item_for_installation(obj/item/I, flags)
+	. = transfer_item_to_nullspace(I, flags)
 	if(!.)
 		return FALSE
 	return TRUE
@@ -41,26 +41,26 @@
 		return
 	put_in_hands_or_drop(I)
 
-/mob/proc/drop_slots_to_ground(list/slots, force, datum/callback/cb)
+/mob/proc/drop_slots_to_ground(list/slots, flags, datum/callback/cb)
 	if(islist(slots))
 		for(var/slot in slots)
 			var/obj/item/I = item_by_slot(slot)
-			. = drop_item_to_ground(I, force)
+			. = drop_item_to_ground(I, flags)
 			cb?.Invoke(I, .)
 	else
 		var/obj/item/I = item_by_slot(slots)
-		. = drop_item_to_ground(I, force)
+		. = drop_item_to_ground(I, flags)
 		cb?.Invoke(I, .)
 
-/mob/proc/transfer_slots_to_loc(list/slots, atom/A, force, datum/callback/cb)
+/mob/proc/transfer_slots_to_loc(list/slots, atom/A, flags, datum/callback/cb)
 	if(islist(slots))
 		for(var/slot in slots)
 			var/obj/item/I = item_by_slot(slot)
-			. = transfer_item_to_loc(I, A, force)
+			. = transfer_item_to_loc(I, A, flags)
 			cb?.Invoke(I, .)
 	else
 		var/obj/item/I = item_by_slot(slots)
-		. = transfer_item_to_loc(I, A, force)
+		. = transfer_item_to_loc(I, A, flags)
 		cb?.Invoke(I, .)
 
 /mob/proc/get_equipped_items_in_slots(list/slots)
@@ -82,9 +82,9 @@
  *
  * return slot equipped to if success, otherwise null
  */
-/mob/proc/equip_to_slots_if_possible(obj/item/I, list/slots, mob/user, silent = TRUE, update_icons, ignore_fluff)
+/mob/proc/equip_to_slots_if_possible(obj/item/I, list/slots, mob/user, flags)
 	if(!islist(slots))
-		return equip_to_slot_if_possible(I, slots, user, silent, update_icons, ignore_fluff)? slots : null
+		return equip_to_slot_if_possible(I, slots, user, flags)? slots : null
 	for(var/slot in slots)
-		if(equip_to_slot_if_possible(I, slot, user, silent, update_icons, ignore_fluff))
+		if(equip_to_slot_if_possible(I, slot, user, flags))
 			return slot

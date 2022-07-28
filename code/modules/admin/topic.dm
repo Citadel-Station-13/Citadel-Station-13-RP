@@ -1075,7 +1075,7 @@
 			return
 
 		for(var/obj/item/I in M.get_equipped_items(TRUE, TRUE))
-			M.drop_item_to_ground(I, TRUE)
+			M.drop_item_to_ground(I, INV_OP_FORCE)
 
 		M.Paralyse(5)
 		sleep(5)
@@ -1100,7 +1100,7 @@
 			return
 
 		for(var/obj/item/I in M.get_equipped_items(TRUE, TRUE))
-			M.drop_item_to_ground(I, TRUE)
+			M.drop_item_to_ground(I, INV_OP_FORCE)
 
 		M.Paralyse(5)
 		sleep(5)
@@ -1147,7 +1147,7 @@
 			return
 
 		for(var/obj/item/I in M.get_equipped_items(TRUE, TRUE))
-			M.drop_item_to_ground(I, TRUE)
+			M.drop_item_to_ground(I, INV_OP_FORCE)
 
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/observer = M

@@ -33,7 +33,7 @@
 	sleep(1)
 
 	for(var/obj/item/I in get_equipped_items(TRUE, TRUE))
-		drop_item_to_ground(I, TRUE)
+		drop_item_to_ground(I, INV_OP_FORCE)
 		I.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)), rand(1,3), round(30/I.w_class))
 
 	..(species.gibbed_anim) // uses the default mob.dmi file for these, so we only need to specify the first argument

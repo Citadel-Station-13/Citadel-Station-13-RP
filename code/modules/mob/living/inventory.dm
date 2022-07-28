@@ -31,11 +31,11 @@
 /mob/living/hands_full()
 	return l_hand && r_hand
 
-/mob/living/put_in_active_hand(obj/item/I, force)
-	return hand? put_in_left_hand(I, force) : put_in_right_hand(I, force)
+/mob/living/put_in_active_hand(obj/item/I, flags)
+	return hand? put_in_left_hand(I, flags) : put_in_right_hand(I, flags)
 
-/mob/living/put_in_inactive_hand(obj/item/I, force)
-	return hand? put_in_right_hand(I, force) : put_in_left_hand(I, force)
+/mob/living/put_in_inactive_hand(obj/item/I, flags)
+	return hand? put_in_right_hand(I, flags) : put_in_left_hand(I, flags)
 
 /mob/living/get_held_item_of_index(index)
 	RETURN_TYPE(/obj/item)
@@ -48,17 +48,17 @@
 /mob/living/get_number_of_hands()
 	return 2
 
-/mob/living/put_in_left_hand(obj/item/I, force)
+/mob/living/put_in_left_hand(obj/item/I, flags)
 	if(!I)
 		return TRUE
 	if(!has_hands)
 		return FALSE
 	if(l_hand)
-		if(force)
-			drop_item_to_ground(l_hand, TRUE)
+		if(flags & INV_OP_FORCE)
+			drop_item_to_ground(l_hand, flags)
 		if(l_hand)	// incase drop item fails which is potentially possible
 			return FALSE
-	if(!_common_handle_put_in_hand(I, force))
+	if(!_common_handle_put_in_hand(I, flags))
 		return FALSE
 	l_hand = I
 	l_hand.update_twohanding()
@@ -68,17 +68,17 @@
 	update_inv_l_hand()
 	return TRUE
 
-/mob/living/put_in_right_hand(obj/item/I, force)
+/mob/living/put_in_right_hand(obj/item/I, fkags)
 	if(!I)
 		return TRUE
 	if(!has_hands)
 		return FALSE
 	if(r_hand)
 		if(force)
-			drop_item_to_ground(r_hand, TRUE)
+			drop_item_to_ground(r_hand, flags)
 		if(r_hand)	// incase drop item fails which is potentially possible
 			return FALSE
-	if(!_common_handle_put_in_hand(I, force))
+	if(!_common_handle_put_in_hand(I, flags))
 		return FALSE
 	r_hand = I
 	r_hand.update_twohanding()
@@ -88,7 +88,7 @@
 	update_inv_r_hand()
 	return TRUE
 
-/mob/living/proc/_common_handle_put_in_hand(obj/item/I, force)
+/mob/living/proc/_common_handle_put_in_hand(obj/item/I, flags)
 	if(!(I.interaction_flags_atom & INTERACT_ATOM_NO_FINGERPRINT_ON_TOUCH))
 		I.add_fingerprint(src)
 	else
@@ -96,7 +96,7 @@
 	var/existing_slot = is_in_inventory(I)
 	if(existing_slot)
 		// handle item reequip can fail.
-		return _handle_item_reequip(I, SLOT_ID_HANDS, existing_slot, force = force, update_icons = TRUE)
+		return _handle_item_reequip(I, SLOT_ID_HANDS, existing_slot, flags))
 	// newly equipped
 	var/atom/oldLoc = I.loc
 	I.forceMove(src)
@@ -104,20 +104,20 @@
 	I.equipped(src, SLOT_ID_HANDS, flags)
 	return TRUE
 
-/mob/living/put_in_hand(obj/item/I, index, force)
+/mob/living/put_in_hand(obj/item/I, index, flgas)
 	// TODO: WHEN MULTIHAND IS DONE, BESURE TO MAKE THIS HAVE THE LOGIC I PUT INI PUT IN L/R HANDS!!
 	switch(index)
 		if(1)
-			return put_in_left_hand(I, force)
+			return put_in_left_hand(I, flgas)
 		if(2)
-			return put_in_right_hand(I, force)
+			return put_in_right_hand(I, flags)
 
-/mob/living/_unequip_held(obj/item/I, update_icons)
+/mob/living/_unequip_held(obj/item/I, flags)
 	if(l_hand == I)
 		l_hand = null
 	else if(r_hand == I)
 		r_hand = null
-	if(update_icons)
+	if(!(flags & INV_OP_NO_UPDATE_ICONS))
 		update_inv_hands()
 
 /mob/living/_slot_by_item(obj/item/I)
@@ -136,7 +136,7 @@
 		else
 			return ..()
 
-/mob/living/_set_inv_slot(slot, obj/item/I, update_icons, logic)
+/mob/living/_set_inv_slot(slot, obj/item/I, flags)
 	switch(slot)
 		if(SLOT_ID_BACK)
 			back = I
@@ -144,12 +144,12 @@
 				update_inv_back()
 		if(SLOT_ID_MASK)
 			wear_mask = I
-			if(update_icons)
+			if(!iflags ids & INV_OP_NO_LOGIC))
 				update_inv_wear_mask()
 				// todo: only rebuild when needed for BLOCKHAIR|BLOCKHEADHAIR
 				update_hair(0)
 				update_inv_ears()
-			if(logic)
+			if(!(flags & INV_OP_NO_LOGIC))
 				if(!wear_mask)
 					// todo: why are internals code shit
 					if(internal)
