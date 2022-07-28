@@ -135,8 +135,10 @@
 	//* Pickup/Drop/Equip/Throw Sounds
 	/// Used when thrown into a mob.
 	var/mob_throw_hit_sound
-	/// Sound used when equipping the items into a valid slot.
+	/// Sound used when equipping the item into a valid slot from hands or ground
 	var/equip_sound
+	/// Sound used when uneqiupping the item from a valid slot to hands or ground
+	var/unequip_sound
 	/// Pickup sound - played when picking something up off the floor.
 	var/pickup_sound = 'sound/items/pickup/device.ogg'
 	/// Drop sound - played when dropping something onto the floor.
