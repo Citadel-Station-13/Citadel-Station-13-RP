@@ -431,7 +431,7 @@
 				to_chat(user, "<span class='notice'>Take off the carbon copy first.</span>")
 				add_fingerprint(user)
 				return
-		var/old_slot = current_equipped_slot
+		var/old_slot = worn_slot
 		if(!user.attempt_void_item_for_installation(P))
 			return
 		var/obj/item/paper_bundle/B = new(loc)

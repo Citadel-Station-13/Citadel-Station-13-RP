@@ -1852,7 +1852,7 @@
 		else //They chose their current size.
 			return
 
-/obj/item/clothing/under/bluespace/unequipped(mob/user, slot, accessory, silent)
+/obj/item/clothing/under/bluespace/unequipped(mob/user, slot, flags)
 	. = ..()
 	if(. && ishuman(user) && original_size)
 		var/mob/living/carbon/human/H = user

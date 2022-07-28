@@ -305,7 +305,7 @@
 				return
 	*/
 
-/obj/item/reagent_containers/food/snacks/grown/pickup(mob/user)
+/obj/item/reagent_containers/food/snacks/grown/pickup(mob/user, flags, atom/oldLoc)
 	..()
 	if(!seed)
 		return

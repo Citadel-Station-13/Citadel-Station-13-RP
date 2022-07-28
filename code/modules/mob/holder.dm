@@ -32,7 +32,7 @@
 	update_state()
 	drop_items()
 
-/obj/item/holder/dropped(mob/user, accessory, silent)
+/obj/item/holder/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	update_state()
 

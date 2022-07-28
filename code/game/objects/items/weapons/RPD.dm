@@ -92,14 +92,14 @@
 	. = ..()
 	. += "You can scroll your mouse wheel to change the piping layer."
 
-/obj/item/pipe_dispenser/equipped(mob/user, slot, initial)
+/obj/item/pipe_dispenser/equipped(mob/user, slot, flags)
 	. = ..()
 	if(slot == SLOT_ID_HANDS)
 		RegisterSignal(user, COMSIG_MOUSE_SCROLL_ON, .proc/mouse_wheeled)
 	else
 		UnregisterSignal(user, COMSIG_MOUSE_SCROLL_ON)
 
-/obj/item/pipe_dispenser/unequipped(mob/user, slot, accessory)
+/obj/item/pipe_dispenser/unequipped(mob/user, slot, flags)
 	UnregisterSignal(user, COMSIG_MOUSE_SCROLL_ON)
 	return ..()
 

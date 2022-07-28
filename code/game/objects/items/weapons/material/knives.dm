@@ -184,7 +184,7 @@
 	default_material = MAT_STEEL
 	var/obj/item/rig_module/armblade/storing_module
 
-/obj/item/material/knife/machete/armblade/rig/dropped(mob/user)
+/obj/item/material/knife/machete/armblade/rig/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	if(storing_module)
 		src.forceMove(storing_module)

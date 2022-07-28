@@ -138,7 +138,7 @@
 
 	return 0
 
-/obj/item/defib_kit/unequipped(mob/user, slot, accessory)
+/obj/item/defib_kit/unequipped(mob/user, slot, flags)
 	. = ..()
 	reattach_paddles(user) //paddles attached to a base unit should never exist outside of their base unit or the mob equipping the base unit
 
@@ -587,7 +587,7 @@
 		base_unit = null
 	return ..()
 
-/obj/item/shockpaddles/linked/dropped(mob/user, accessory, silent)
+/obj/item/shockpaddles/linked/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	if(base_unit)
 		base_unit.reattach_paddles(user) //paddles attached to a base unit should never exist outside of their base unit or the mob equipping the base unit

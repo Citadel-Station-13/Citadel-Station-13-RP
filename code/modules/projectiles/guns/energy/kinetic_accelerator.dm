@@ -146,12 +146,12 @@
 		empty()
 	AddElement(/datum/element/conflict_checking, CONFLICT_ELEMENT_KA)
 
-/obj/item/gun/energy/kinetic_accelerator/equipped(mob/user, slot, accessory)
+/obj/item/gun/energy/kinetic_accelerator/equipped(mob/user, slot, flags)
 	. = ..()
 	if(power_supply.charge < charge_cost)
 		attempt_reload()
 
-/obj/item/gun/energy/kinetic_accelerator/dropped(mob/user)
+/obj/item/gun/energy/kinetic_accelerator/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	if(!QDELING(src) && !holds_charge)
 		// Put it on a delay because moving item from slot to hand

@@ -83,8 +83,8 @@
 		return
 	has_suit = S
 	forceMove(S)
-	if(S.current_equipped_slot)
-		equipped(S.current_equipped_mob(), S.current_equipped_slot, TRUE)
+	if(S.worn_slot)
+		equipped(S.worn_mob(), S.worn_slot, INV_OP_IS_ACCESSORY)
 	has_suit.add_overlay(get_inv_overlay())
 
 	if(user)
@@ -96,8 +96,8 @@
 		return
 	has_suit.cut_overlay(get_inv_overlay())
 	has_suit = null
-	if(has_suit.current_equipped_slot)
-		unequipped(has_suit.current_equipped_mob(), has_suit.current_equipped_slot, TRUE)
+	if(has_suit.worn_slot)
+		unequipped(has_suit.worn_mob(), has_suit.worn_slot, INV_OP_IS_ACCESSORY)
 	if(user)
 		user.put_in_hands_or_drop(src)
 		add_fingerprint(user)
@@ -546,7 +546,7 @@
 
 // Solution for race-specific sprites for an accessory which is also a suit.
 // Suit icons break if you don't use icon override which then also overrides race-specific sprites.
-/obj/item/clothing/accessory/collar/equipped(mob/user, slot, accessory)
+/obj/item/clothing/accessory/collar/equipped(mob/user, slot, flags)
 	..()
 	setUniqueSpeciesSprite()
 
@@ -567,7 +567,7 @@
 	setUniqueSpeciesSprite()
 	..(S, user)
 
-/obj/item/clothing/accessory/collar/dropped()
+/obj/item/clothing/accessory/collar/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	icon_override = icon_previous_override
 

@@ -44,11 +44,11 @@
 	base_name = name
 	base_desc = desc
 
-/obj/item/reagent_containers/organic/pickup(mob/user)
+/obj/item/reagent_containers/organic/pickup(mob/user, flags, atom/oldLoc)
 	..()
 	update_icon()
 
-/obj/item/reagent_containers/organic/dropped()
+/obj/item/reagent_containers/organic/dropped(mob/user, flags, atom/newLoc)
 	..()
 	update_icon()
 

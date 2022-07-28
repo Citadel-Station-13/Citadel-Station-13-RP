@@ -19,7 +19,7 @@
 		SLOT_ID_MASK = 'icons/mob/clothing/mask.dmi'
 		)
 
-/obj/item/beartrap/equipped(mob/user, slot, accessory)
+/obj/item/beartrap/equipped(mob/user, slot, flags)
 	if(ishuman(src.loc))
 		var/mob/living/carbon/human/H = src.loc
 		if(H.wear_mask == src)
@@ -28,7 +28,7 @@
 			H.verbs -= /mob/living/proc/shred_limb_temp
 	..()
 
-/obj/item/beartrap/dropped(var/mob/user)
+/obj/item/beartrap/dropped(mob/user, flags, atom/newLoc)
 	user.verbs -= /mob/living/proc/shred_limb_temp
 	..()
 

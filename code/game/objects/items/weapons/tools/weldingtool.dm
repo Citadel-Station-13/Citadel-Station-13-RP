@@ -476,7 +476,7 @@
 
 	..()
 
-/obj/item/weldingtool/tubefed/dropped(mob/user)
+/obj/item/weldingtool/tubefed/dropped(mob/user, flags, atom/newLoc)
 	..()
 	if(src.loc != user)
 		mounted_pack.return_nozzle()

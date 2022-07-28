@@ -288,7 +288,7 @@
 
 // End TGUI
 /* TBI	diag hud
-/obj/item/electronic_assembly/pickup(mob/living/user)
+/obj/item/electronic_assembly/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()
 	//update diagnostic hud when picked up, true is used to force the hud to be hidden
 	diag_hud_set_circuithealth(TRUE)
@@ -296,7 +296,7 @@
 	diag_hud_set_circuitstat(TRUE)
 	diag_hud_set_circuittracking(TRUE)
 
-/obj/item/electronic_assembly/dropped(mob/user)
+/obj/item/electronic_assembly/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	//update diagnostic hud when dropped
 	diag_hud_set_circuithealth()

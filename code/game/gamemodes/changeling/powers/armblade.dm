@@ -74,7 +74,7 @@
 		"<span class='italics'>You hear organic matter ripping and tearing!</span>")
 		src.creator = loc
 
-/obj/item/melee/changeling/dropped(mob/user)
+/obj/item/melee/changeling/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	visible_message("<span class='warning'>With a sickening crunch, [creator] reforms their arm!</span>",
 	"<span class='notice'>We assimilate the weapon back into our body.</span>",

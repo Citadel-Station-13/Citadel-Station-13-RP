@@ -55,7 +55,7 @@
 /obj/item/mop_deploy/attack_self(mob/user as mob)
 	qdel(src)
 
-/obj/item/mop_deploy/dropped()
+/obj/item/mop_deploy/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	qdel(src)
 

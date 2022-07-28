@@ -337,7 +337,7 @@
 	if(M == assailant && state >= GRAB_AGGRESSIVE)
 		devour(affecting, assailant)
 
-/obj/item/grab/dropped()
+/obj/item/grab/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	qdel(src)
 

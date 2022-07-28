@@ -46,14 +46,14 @@
 	return ..()
 
 // Add the spell buttons to the HUD.
-/obj/item/technomancer_core/equipped(mob/user, slot, accessory)
+/obj/item/technomancer_core/equipped(mob/user, slot, flags)
 	wearer = user
 	for(var/obj/spellbutton/spell in spells)
 		wearer.ability_master.add_technomancer_ability(spell, spell.ability_icon_state)
 	..()
 
 // Removes the spell buttons from the HUD.
-/obj/item/technomancer_core/dropped(mob/user)
+/obj/item/technomancer_core/dropped(mob/user, flags, atom/newLoc)
 	for(var/atom/movable/screen/ability/obj_based/technomancer/A in wearer.ability_master.ability_objects)
 		wearer.ability_master.remove_ability(A)
 	wearer = null

@@ -41,7 +41,7 @@
 		scan_item_price(AM)
 
 // Reset dir when picked back up
-/obj/item/retail_scanner/pickup(mob/user)
+/obj/item/retail_scanner/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()
 	setDir(SOUTH)
 	pixel_y = 0

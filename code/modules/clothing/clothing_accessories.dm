@@ -1,28 +1,28 @@
-/obj/item/clothing/equipped(mob/user, slot, accessory, silent, creation)
+/obj/item/clothing/equipped(mob/user, slot, flags)
 	. = ..()
 	// propagate through accessories
 	// DO NOT ALLOW NESTED ACCESSORIES
 	if(!accessory && LAZYLEN(accessories))
 		for(var/obj/item/I as anything in accessories)
-			I.equipped(user, slot, TRUE, silent, creation)
+			I.equipped(user, slot, flags | INV_OP_IS_ACCESSORY)
 
-/obj/item/clothing/unequipped(mob/user, slot, accessory, silent)
+/obj/item/clothing/unequipped(mob/user, slot, flags)
 	. = ..()
 	// propagate through accessories
 	// DO NOT ALLOW NESTED ACCESSORIES
 	if(!accessory && LAZYLEN(accessories))
 		for(var/obj/item/I as anything in accessories)
-			I.unequipped(user, slot, TRUE, silent)
+			I.unequipped(user, slot, flags | INV_OP_IS_ACCESSORY)
 
-/obj/item/clothing/pickup(mob/user, accessory, silent, creation, atom/oldLoc)
+/obj/item/clothing/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()
 	// propagate through accessories
 	// DO NOT ALLOW NESTED ACCESSORIES
 	if(!accessory && LAZYLEN(accessories))
 		for(var/obj/item/I as anything in accessories)
-			I.pickup(user, TRUE, silent, creation, oldLoc)
+			I.pickup(user, flags, oldLoc)
 
-/obj/item/clothing/dropped(mob/user, accessory, silent, atom/newLoc)
+/obj/item/clothing/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	// propagate through accessories
 	// DO NOT ALLOW NESTED ACCESSORIES

@@ -101,7 +101,7 @@
 	var/atom/oldLoc = I.loc
 	I.forceMove(src)
 	I.pickup(src, FALSE, null, null, oldLoc)
-	I.equipped(src, SLOT_ID_HANDS)
+	I.equipped(src, SLOT_ID_HANDS, flags)
 	return TRUE
 
 /mob/living/put_in_hand(obj/item/I, index, force)

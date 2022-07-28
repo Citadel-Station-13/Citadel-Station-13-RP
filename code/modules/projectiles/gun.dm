@@ -227,11 +227,11 @@
 	for(var/obj/O in contents)
 		O.emp_act(severity)
 
-/obj/item/gun/dropped(mob/living/user)
+/obj/item/gun/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	update_appearance()
 
-/obj/item/gun/equipped(mob/user, slot, accessory)
+/obj/item/gun/equipped(mob/user, slot, flags)
 	. = ..()
 	update_appearance()
 

@@ -166,7 +166,7 @@
 
 	return val
 
-/obj/item/tray/pickup(mob/user)
+/obj/item/tray/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()
 
 	if(!isturf(loc))
@@ -195,7 +195,7 @@
 					Img.color = O.color
 			overlays += Img
 
-/obj/item/tray/dropped(mob/user)
+/obj/item/tray/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	var/noTable = null
 

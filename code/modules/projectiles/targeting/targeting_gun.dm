@@ -1,5 +1,5 @@
 //Removing the lock and the buttons.
-/obj/item/gun/dropped(var/mob/living/user)
+/obj/item/gun/dropped(mob/user, flags, atom/newLoc)
 	if(istype(user))
 		user.stop_aiming(src)
 	return ..()

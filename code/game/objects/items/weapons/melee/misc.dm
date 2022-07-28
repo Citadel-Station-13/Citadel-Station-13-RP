@@ -115,7 +115,7 @@
 	throwforce = 7
 	var/board_item_type = null
 
-/obj/item/melee/skateboard/dropped(mob/user)
+/obj/item/melee/skateboard/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	var/turf/T = get_turf(src)
 	new board_item_type(T)

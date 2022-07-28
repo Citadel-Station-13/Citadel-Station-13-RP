@@ -1,6 +1,6 @@
 /obj/item
 	/// currently equipped slot id
-	var/current_equipped_slot
+	var/worn_slot
 	/**
 	 * current item we fitted over
 	 * ! DANGER: While this is more or less bug-free for "won't lose the item when you unequip/won't get stuck", we
@@ -9,15 +9,16 @@
 	var/obj/item/worn_over
 	/**
 	 * current item we're fitted in.
-	 * ! DANGER: Set to a mob for a forceMove call in inventory. Snowflake, but not something we can control right now.
 	 */
 	var/obj/item/worn_inside
+	/// suppress auto inventory hooks in forceMove
+	var/worn_hook_suppressed = FALSE
 
 /obj/item/Destroy()
-	if(current_equipped_slot)
-		var/mob/M = current_equipped_mob()
+	if(worn_slot && !worn_hook_suppressed)
+		var/mob/M = worn_mob()
 		if(!ismob(M))
-			stack_trace("invalid current equipped slot [current_equipped_slot] on an item not on a mob.")
+			stack_trace("invalid current equipped slot [worn_slot] on an item not on a mob.")
 			return ..()
 		M.temporarily_remove_from_inventory(src, TRUE)
 	return ..()
@@ -28,15 +29,13 @@
  * @params
  * user - person equipping us
  * slot - slot id we're equipped to
- * accessory - TRUE/FALSE, are we equipped as an accessory?
- * silent - suppress sounds
- * creation - being equipped by a job datum/outfit/etc
+ * flags - inventory operation flags, see defines
  */
-/obj/item/proc/equipped(mob/user, slot, accessory, silent, creation)
+/obj/item/proc/equipped(mob/user, slot, flags)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot, accessory, silent, creation)
-	current_equipped_slot = slot
-	// current_equipped_slot = get_inventory_slot_datum(slot)
+	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot, flags)
+	worn_slot = slot
+	// worn_slot = get_inventory_slot_datum(slot)
 	// todo: shouldn't be in here
 	hud_layerise()
 	// todo: shouldn't be in here
@@ -54,13 +53,12 @@
  * @params
  * user - person unequipping us
  * slot - slot id we're unequipping from
- * accessory - TRUE/FALSE, are we unequipping from being an accessory or due to our accessory unequipping?
- * silent - suppress sounds
+ * flags - inventory operation flags, see defines
  */
-/obj/item/proc/unequipped(mob/user, slot, accessory, silent)
+/obj/item/proc/unequipped(mob/user, slot, flags)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_ITEM_UNEQUIPPED, user, slot, accessory, silent)
-	current_equipped_slot = null
+	SEND_SIGNAL(src, COMSIG_ITEM_UNEQUIPPED, user, slot, flags)
+	worn_slot = null
 	// todo: shouldn't be in here
 	hud_unlayerise()
 	// todo: shouldn't be in here
@@ -71,7 +69,7 @@
  *
  * dropping is defined as moving out of both equipment slots and hand slots
  */
-/obj/item/proc/dropped(mob/user, accessory, silent, atom/newLoc)
+/obj/item/proc/dropped(mob/user, flags, atom/newLoc)
 	SHOULD_CALL_PARENT(TRUE)
 /*
 	for(var/X in actions)
@@ -84,7 +82,7 @@
 	hud_unlayerise()
 	item_flags &= ~IN_INVENTORY
 
-	. = SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user, accessory, silent, newLoc)
+	. = SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user, flags, newLoc)
 
 	if(!silent && isturf(newLoc))
 		playsound(src, drop_sound, 30, ignore_walls = FALSE)
@@ -99,9 +97,9 @@
  *
  * picking up is defined as moving into either an equipment slot, or hand slots
  */
-/obj/item/proc/pickup(mob/user, accessory, silent, creation, atom/oldLoc)
+/obj/item/proc/pickup(mob/user, flags, atom/oldLoc)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user, accessory, silent, creation, oldLoc)
+	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user, flags, oldLoc)
 	pixel_x = initial(pixel_x)
 	pixel_y = initial(pixel_y)
 	hud_layerise()
@@ -119,11 +117,11 @@
  * update our worn icon if we can
  */
 /obj/item/proc/update_worn_icon()
-	if(!current_equipped_slot)
+	if(!worn_slot)
 		return	// acceptable
 	ASSERT(ismob(loc))	 // not acceptable
 	var/mob/M = loc
-	switch(current_equipped_slot)
+	switch(worn_slot)
 		if(SLOT_ID_BACK)
 			M.update_inv_back()
 		if(SLOT_ID_BELT)
@@ -232,9 +230,9 @@
 	var/mob/M = loc
 	if(!istype(M))
 		return
-	if(!current_equipped_slot)
+	if(!worn_slot)
 		return
-	if(!equip_check_beltlink(M, current_equipped_slot, null, TRUE))
+	if(!equip_check_beltlink(M, worn_slot, null, TRUE))
 		M.drop_item_to_ground(src)
 		return
 
@@ -259,17 +257,17 @@
 /**
  * get the mob we're equipped on
  */
-/obj/item/proc/current_equipped_mob()
+/obj/item/proc/worn_mob()
 	RETURN_TYPE(/mob)
-	return worn_inside?.current_equipped_mob() || (current_equipped_slot? loc : null)
+	return worn_inside?.worn_mob() || (worn_slot? loc : null)
 
 // doMove hook to ensure proper functionality when inv procs aren't called
 /obj/item/doMove(atom/destination)
-	if(current_equipped_slot)
+	if(worn_slot && !worn_hook_suppressed)
 		// inventory handling
 		if(destination == worn_inside)
 			return ..()
-		var/mob/M = current_equipped_mob()
+		var/mob/M = worn_mob()
 		if(!ismob(M))
 			stack_trace("item forcemove inv hook called without a mob as loc??")
 		M.temporarily_remove_from_inventory(src, TRUE)
@@ -280,7 +278,7 @@
  * **hands count**
  */
 /obj/item/proc/is_in_inventory(include_hands)
-	return (current_equipped_slot && ((current_equipped_slot != SLOT_ID_HANDS) || include_hands)) && current_equipped_mob()
+	return (worn_slot && ((worn_slot != SLOT_ID_HANDS) || include_hands)) && worn_mob()
 
 /**
  * checks if we're worn. if so, return mob we're in
@@ -288,7 +286,7 @@
  * note: this is not the same as is_in_inventory, we check if it's a clothing/worn slot in this case!
  */
 /obj/item/proc/is_being_worn()
-	if(!current_equipped_slot)
+	if(!worn_slot)
 		return FALSE
-	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(current_equipped_slot)
+	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(worn_slot)
 	return slot_meta.is_considered_worn

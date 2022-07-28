@@ -81,7 +81,7 @@
 	QDEL_NULL(tgarscreen)
 	. = ..()
 
-/obj/item/clothing/glasses/omnihud/dropped()
+/obj/item/clothing/glasses/omnihud/dropped(mob/user, flags, atom/newLoc)
 	if(arscreen)
 		SSnanoui.close_uis(src)
 	if(tgarscreen)

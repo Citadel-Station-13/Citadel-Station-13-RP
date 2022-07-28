@@ -50,12 +50,12 @@
 			var/obj/item/clothing/accessory/tie = new T(src)
 			src.attach_accessory(null, tie)
 
-/obj/item/clothing/equipped(mob/user, slot, accessory, silent, creation)
+/obj/item/clothing/equipped(mob/user, slot, flags)
 	. = ..()
 	if(enables_planes)
 		user.recalculate_vis()
 
-/obj/item/clothing/dropped(mob/user, slot, accessory, silent, creation)
+/obj/item/clothing/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	if(enables_planes)
 		user.recalculate_vis()
@@ -614,7 +614,7 @@
 	restricted_accessory_slots = (ACCESSORY_SLOT_ARMBAND)
 
 //taurized suit support
-/obj/item/clothing/suit/equipped(mob/user, slot, accessory, silent, creation)
+/obj/item/clothing/suit/equipped(mob/user, slot, flags)
 	var/normalize = TRUE
 
 	//Pyramid of doom-y. Improve somehow?

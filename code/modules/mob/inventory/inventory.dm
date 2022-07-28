@@ -147,17 +147,17 @@
 		if(!can_unequip(I, SLOT_ID_HANDS, user, force, disallow_delay, ignore_fluff, silent))
 			return FALSE
 		_unequip_held(I, TRUE)
-		I.unequipped(src, SLOT_ID_HANDS, FALSE, silent)
+		I.unequipped(src, SLOT_ID_HANDS, flags)
 		old = SLOT_ID_HANDS
 	else
-		if(!I.current_equipped_slot)
+		if(!I.worn_slot)
 			stack_trace("tried to unequip an item without current equipped slot.")
-			I.current_equipped_slot = _slot_by_item(I)
-		if(!can_unequip(I, I.current_equipped_slot, user, force, disallow_delay, ignore_fluff, silent))
+			I.worn_slot = _slot_by_item(I)
+		if(!can_unequip(I, I.worn_slot, user, force, disallow_delay, ignore_fluff, silent))
 			return FALSE
-		old = I.current_equipped_slot
-		_unequip_slot(I.current_equipped_slot, TRUE)
-		I.unequipped(src, I.current_equipped_slot)
+		old = I.worn_slot
+		_unequip_slot(I.worn_slot, TRUE)
+		I.unequipped(src, I.worn_slot, flags)
 		handle_item_denesting(I, old, user, silent)
 
 	. = TRUE
@@ -204,10 +204,9 @@
 		I.worn_over = null
 		I.equip_on_worn_over_remove(src, old_slot, user, I.worn_over, silent)
 		// I is free to be forcemoved now, but the old object needs to be put back on
-		// snowflake worn inside to not trigger procs on forcemove
-		over.worn_inside = src
+		over.worn_hook_suppressed = TRUE
 		over.forceMove(src)
-		over.worn_inside = null
+		over.worn_hook_suppressed = FALSE
 		// put it back in the slot
 		_equip_slot(over, old_slot, TRUE)
 		// put it back on the screen
@@ -531,7 +530,7 @@
 	else if(!islist(affected))
 		affected = list(affected)
 	for(var/obj/item/I as anything in affected)
-		if(!inventory_slot_bodypart_check(I, I.current_equipped_slot, null, TRUE))
+		if(!inventory_slot_bodypart_check(I, I.worn_slot, null, TRUE))
 			drop_item_to_ground(I)
 
 /**
@@ -609,7 +608,7 @@
 
 		I.forceMove(src)
 		I.pickup(src, FALSE, silent, null, oldLoc)
-		I.equipped(src, slot, FALSE, silent)
+		I.equipped(src, slot, flags)
 
 		log_inventory("[key_name(src)] equipped [I] to [slot].")
 
@@ -653,12 +652,12 @@
 			_unequip_held(I, TRUE)
 		else
 			_unequip_slot(old_slot, update_icons)
-		I.unequipped(src, old_slot)
+		I.unequipped(src, old_slot, flags)
 		// sigh
 		handle_item_denesting(I, old_slot, user, silent)
 		// ? we don't do this on hands, hand procs do it
 		// _equip_slot(I, slot, update_icons)
-		I.equipped(src, slot)
+		I.equipped(src, slot, flags)
 		log_inventory("[key_name(src)] moved [I] from [old_slot] to hands.")
 		// hand procs handle rest
 		return TRUE
@@ -673,10 +672,10 @@
 			_unequip_held(I, TRUE)
 		else
 			_unequip_slot(old_slot, update_icons)
-		I.unequipped(src, old_slot)
+		I.unequipped(src, old_slot, flags)
 		// sigh
 		_equip_slot(I, slot, update_icons)
-		I.equipped(src, slot)
+		I.equipped(src, slot, flags)
 		log_inventory("[key_name(src)] moved [I] from [old_slot] to [slot].")
 		return TRUE
 
@@ -755,7 +754,7 @@
  * SLOT_ID_HANDS if in hands
  */
 /mob/proc/is_in_inventory(obj/item/I)
-	return (I?.current_equipped_mob() == src) && I.current_equipped_slot
+	return (I?.worn_mob() == src) && I.worn_slot
 	// we use entirely cached vars for speed.
 	// if this returns bad data well fuck you, don't break equipped()/unequipped().
 
@@ -772,7 +771,7 @@
  */
 /mob/proc/slot_by_item(obj/item/I)
 	return is_in_inventory(I)		// short circuited to that too
-									// if equipped/unequipped didn't set current_equipped_slot well jokes on you lmfao
+									// if equipped/unequipped didn't set worn_slot well jokes on you lmfao
 
 /mob/proc/_equip_slot(obj/item/I, slot, update_icons, logic = TRUE)
 	SHOULD_NOT_OVERRIDE(TRUE)

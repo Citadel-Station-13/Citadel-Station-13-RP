@@ -122,7 +122,7 @@
 		var/T = get_turf(src)
 		new /obj/effect/particle_effect/sparks(T)
 
-/obj/item/electric_hand/dropped(mob/user)
+/obj/item/electric_hand/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	qdel(src)
 

@@ -161,7 +161,7 @@
 	/// Used to reference the object's host organ.
 	var/obj/item/organ/my_augment = null
 
-/obj/item/dropped(mob/user, accessory, silent, atom/newLoc)
+/obj/item/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	if(my_augment)
 		forceMove(my_augment)

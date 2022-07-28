@@ -31,7 +31,7 @@
 	..(user, slot)
 
 /*
-/obj/item/storage/backpack/dropped(mob/user as mob)
+/obj/item/storage/backpack/dropped(mob/user, flags, atom/newLoc)
 	if (loc == user && src.use_sound)
 		playsound(src.loc, src.use_sound, 50, 1, -5)
 	..(user)

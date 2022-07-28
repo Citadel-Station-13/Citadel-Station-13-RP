@@ -20,7 +20,7 @@
 	heat_protection = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 
-/obj/item/clothing/gloves/regen/equipped(mob/user, slot, accessory, silent, creation)
+/obj/item/clothing/gloves/regen/equipped(mob/user, slot, flags)
 	. = ..()
 	if(slot == SLOT_ID_GLOVES)
 		var/mob/living/L = user
@@ -29,8 +29,8 @@
 		if(L.can_feel_pain())
 			to_chat(L, "<span class='danger'>You feel a stabbing sensation in your hands as you slide \the [src] on!</span>")
 			L.custom_pain("You feel a sharp pain in your hands!",1)
-w
-/obj/item/clothing/gloves/regen/unequipped(mob/user, slot, accessory, silent)
+
+/obj/item/clothing/gloves/regen/unequipped(mob/user, slot, flags)
 	. = ..()
 	if(slot == SLOT_ID_GLOVES)
 		var/mob/living/L = user
@@ -49,7 +49,7 @@ w
 	return ..()
 
 /obj/item/clothing/gloves/regen/process(delta_time)
-	var/mob/living/wearer = current_equipped_slot && isliving(loc) && loc
+	var/mob/living/wearer = worn_slot && isliving(loc) && loc
 
 	if(!wearer || wearer.isSynthetic() || wearer.stat == DEAD || wearer.nutrition <= 10)
 		return // Robots and dead people don't have a metabolism.

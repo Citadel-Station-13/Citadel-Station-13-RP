@@ -91,7 +91,7 @@
 	check_limb_support(M)
 	return ..()
 
-/obj/item/clothing/suit/space/dropped(mob/user, accessory, silent)
+/obj/item/clothing/suit/space/dropped(mob/user, flags, atom/newLoc)
 	check_limb_support(user)
 	return ..()
 

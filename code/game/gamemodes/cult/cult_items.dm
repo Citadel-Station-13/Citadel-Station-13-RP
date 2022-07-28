@@ -41,7 +41,7 @@
 
 	return 1
 
-/obj/item/melee/cultblade/pickup(mob/user)
+/obj/item/melee/cultblade/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()
 	if(!iscultist(user) && !istype(user, /mob/living/simple_mob/construct))
 		to_chat(user, "<span class='warning'>An overwhelming feeling of dread comes over you as you pick up the cultist's sword. It would be wise to be rid of this blade quickly.</span>")

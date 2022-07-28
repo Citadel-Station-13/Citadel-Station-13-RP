@@ -22,7 +22,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/deadringer/dropped()
+/obj/item/deadringer/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	if(timer > 20)
 		reveal()

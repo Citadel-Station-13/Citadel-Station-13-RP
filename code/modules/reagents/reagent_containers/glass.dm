@@ -158,11 +158,11 @@
 /obj/item/reagent_containers/glass/beaker/on_reagent_change()
 	update_icon()
 
-/obj/item/reagent_containers/glass/beaker/pickup(mob/user)
+/obj/item/reagent_containers/glass/beaker/pickup(mob/user, flags, atom/oldLoc)
 	..()
 	update_icon()
 
-/obj/item/reagent_containers/glass/beaker/dropped(mob/user)
+/obj/item/reagent_containers/glass/beaker/dropped(mob/user, flags, atom/newLoc)
 	..()
 	update_icon()
 

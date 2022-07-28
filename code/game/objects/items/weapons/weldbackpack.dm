@@ -26,7 +26,7 @@
 		QDEL_NULL(nozzle)
 	return ..()
 
-/obj/item/weldpack/dropped(mob/user)
+/obj/item/weldpack/dropped(mob/user, flags, atom/newLoc)
 	..()
 	if(nozzle)
 		return_nozzle()

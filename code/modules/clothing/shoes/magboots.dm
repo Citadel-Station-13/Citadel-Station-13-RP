@@ -51,11 +51,11 @@
 
 	return !S.overshoes
 
-/obj/item/clothing/shoes/magboots/equipped(mob/user, slot, accessory, silent, creation)
+/obj/item/clothing/shoes/magboots/equipped(mob/user, slot, flags)
 	. = ..()
 	set_slowdown()
 
-/obj/item/clothing/shoes/magboots/unequipped(mob/user, slot, accessory, silent)
+/obj/item/clothing/shoes/magboots/unequipped(mob/user, slot, flags)
 	. = ..()
 	set_slowdown()
 
@@ -98,7 +98,7 @@
 	user.update_action_buttons()
 
 //In case they somehow come off while enabled.
-/obj/item/clothing/shoes/magboots/vox/dropped(mob/user as mob)
+/obj/item/clothing/shoes/magboots/vox/dropped(mob/user, flags, atom/newLoc)
 	..()
 	if(src.magpulse)
 		user.visible_message("The [src] go limp as they are removed from [usr]'s feet.", "The [src] go limp as they are removed from your feet.")

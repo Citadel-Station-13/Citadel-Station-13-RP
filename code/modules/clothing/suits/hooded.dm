@@ -29,7 +29,7 @@
 /obj/item/clothing/suit/storage/hooded/ui_action_click()
 	ToggleHood()
 
-/obj/item/clothing/suit/storage/hooded/equipped(mob/user, slot, accessory)
+/obj/item/clothing/suit/storage/hooded/equipped(mob/user, slot, flags)
 	if(slot != SLOT_ID_SUIT)
 		RemoveHood()
 	..()
@@ -40,7 +40,7 @@
 	REMOVE_TRAIT(hood, TRAIT_NODROP, CLOTHING_TRAIT)
 	hood.forceMove(src)
 
-/obj/item/clothing/suit/storage/hooded/dropped()
+/obj/item/clothing/suit/storage/hooded/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	RemoveHood()
 

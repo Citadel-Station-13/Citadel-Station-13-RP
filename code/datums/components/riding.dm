@@ -352,11 +352,11 @@
 	var/mob/living/parent
 	var/selfdeleting = FALSE
 
-/obj/item/riding_offhand/dropped()
+/obj/item/riding_offhand/dropped(mob/user, flags, atom/newLoc)
 	selfdeleting = TRUE
 	. = ..()
 
-/obj/item/riding_offhand/equipped(mob/user, slot, accessory)
+/obj/item/riding_offhand/equipped(mob/user, slot, flags)
 	if(loc != rider && loc != parent)
 		selfdeleting = TRUE
 		qdel(src)

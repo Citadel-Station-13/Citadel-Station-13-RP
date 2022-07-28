@@ -367,7 +367,7 @@ var/last_chew = 0
 	icon_state = "bola_cult"
 	breakouttime = 60
 
-/obj/item/handcuffs/legcuffs/bola/cult/pickup(mob/living/user)
+/obj/item/handcuffs/legcuffs/bola/cult/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()
 	if(!iscultist(user))
 		to_chat(user, "<span class='warning'>The bola seems to take on a life of its own!</span>")
