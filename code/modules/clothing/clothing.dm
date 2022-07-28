@@ -1,3 +1,4 @@
+#warn unfuck unequip sounds somehow
 /obj/item/clothing
 	name = "clothing"
 	siemens_coefficient = 0.9

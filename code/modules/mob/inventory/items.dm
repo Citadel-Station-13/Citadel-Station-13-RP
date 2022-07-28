@@ -42,9 +42,8 @@
 	user.position_hud_item(src, slot)
 	if(user.client)
 		user.client.screen |= src
-	if(slot != SLOT_ID_HANDS)
-		if(equip_sound)
-			playsound(src, equip_sound, 30, ignore_walls = FALSE)
+	if((slot != SLOT_ID_HANDS) && equip_sound)
+		playsound(src, equip_sound, 30, ignore_walls = FALSE)
 	user.update_inv_hands()
 
 /**
@@ -63,6 +62,8 @@
 	hud_unlayerise()
 	// todo: shouldn't be in here
 	screen_loc = null
+	if(!(flags & INV_OP_DIRECTLY_DROPPING) && (slot != SLOT_ID_HANDS) && unequip_sound)
+		playsound(src, unequip_sound, 30, ignore_walls = FALSE)
 
 /**
  * called when a mob drops an item
@@ -84,7 +85,7 @@
 
 	. = SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user, flags, newLoc)
 
-	if(!silent && isturf(newLoc))
+	if(!(flags & INV_OP_SUPPRESS_SOUND) && isturf(newLoc))
 		playsound(src, drop_sound, 30, ignore_walls = FALSE)
 	// user?.update_equipment_speed_mods()
 	if(zoom)
@@ -104,7 +105,7 @@
 	pixel_y = initial(pixel_y)
 	hud_layerise()
 	item_flags |= IN_INVENTORY
-	if(!silent && isturf(oldLoc))
+	if(isturf(oldLoc) && !(flags & (INV_OP_SILENT | INV_OP_DIRECTLY_EQUIPPING)))
 		playsound(src, pickup_sound, 20, ignore_walls = FALSE)
 
 /**

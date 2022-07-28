@@ -72,7 +72,7 @@
 /mob/proc/drop_item_to_ground(obj/item/I, flags, mob/user)
 	if(!is_in_inventory(I))
 		return TRUE
-	return _unequip_item(I, flags, drop_location(), user)
+	return _unequip_item(I, flags | INV_OP_DIRECTLY_DROPPING, drop_location(), user)
 
 /**
  * transfers an item somewhere
@@ -89,7 +89,7 @@
 	ASSERT(newloc)
 	if(!is_in_inventory(I))
 		return FALSE
-	return _unequip_item(I, flags, newloc, user)
+	return _unequip_item(I, flags | INV_OP_DIRECTLY_DROPPING, newloc, user)
 
 /**
  * transfers an item into nullspace
@@ -104,7 +104,7 @@
 		return TRUE
 	if(!is_in_inventory(I))
 		return FALSE
-	return _unequip_item(I, flags, null, user)
+	return _unequip_item(I, flags | INV_OP_DIRECTLY_DROPPING, null, user)
 
 /**
  * removes an item from inventory. does NOT move it.
@@ -118,7 +118,7 @@
 /mob/proc/temporarily_remove_from_inventory(obj/item/I, flags, mob/user)
 	if(!is_in_inventory(I))
 		return TRUE
-	return _unequip_item(I, flags, FALSE, user)
+	return _unequip_item(I, flags | INV_OP_DIRECTLY_DROPPING, FALSE, user)
 
 /**
  * handles internal logic of unequipping an item
@@ -436,7 +436,7 @@
 		return FALSE
 
 	// we're the final check - side effects ARE allowed
-	if((flgas & INV_OP_IS_FINAL_CHECK) && to_wear_over)
+	if((flags & INV_OP_IS_FINAL_CHECK) && to_wear_over)
 		//! Note: this means that can_unequip is NOT called for to wear over.
 		//! This is intentional, but very, very sonwflakey.
 		to_wear_over.worn_inside = I
@@ -646,7 +646,7 @@
 			_unequip_slot(old_slot, flags)
 		I.unequipped(src, old_slot, flags)
 		// sigh
-		_equip_slot(I, slot, update_icons)
+		_equip_slot(I, slot, flags)
 		I.equipped(src, slot, flags)
 		log_inventory("[key_name(src)] moved [I] from [old_slot] to [slot].")
 		return TRUE

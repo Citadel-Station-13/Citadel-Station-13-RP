@@ -68,13 +68,13 @@
 	update_inv_l_hand()
 	return TRUE
 
-/mob/living/put_in_right_hand(obj/item/I, fkags)
+/mob/living/put_in_right_hand(obj/item/I, flags)
 	if(!I)
 		return TRUE
 	if(!has_hands)
 		return FALSE
 	if(r_hand)
-		if(force)
+		if(flags & INV_OP_FORCE)
 			drop_item_to_ground(r_hand, flags)
 		if(r_hand)	// incase drop item fails which is potentially possible
 			return FALSE
@@ -144,7 +144,7 @@
 				update_inv_back()
 		if(SLOT_ID_MASK)
 			wear_mask = I
-			if(!iflags ids & INV_OP_NO_LOGIC))
+			if(!(flags & INV_OP_NO_UPDATE_ICONS))
 				update_inv_wear_mask()
 				// todo: only rebuild when needed for BLOCKHAIR|BLOCKHEADHAIR
 				update_hair(0)
