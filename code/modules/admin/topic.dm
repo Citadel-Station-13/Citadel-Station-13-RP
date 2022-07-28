@@ -1367,7 +1367,7 @@
 			return
 
 		var/obj/item/reagent_containers/food/snacks/cookie/C = new(H)
-		if(!H.put_in_hands_or_del(C, SLOT_ID_HANDS))
+		if(!H.put_in_hands_or_del(C))
 			log_admin("[key_name(H)] has their hands full, so they did not receive their cookie, spawned by [key_name(src.owner)].")
 			message_admins("[key_name(H)] has their hands full, so they did not receive their cookie, spawned by [key_name(src.owner)].")
 			return

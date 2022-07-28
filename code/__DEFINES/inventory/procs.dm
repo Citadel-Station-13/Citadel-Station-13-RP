@@ -19,5 +19,15 @@
 #define INV_OP_CREATION				(1<<8)
 /// hint: we are chained through by an accessory's parent
 #define INV_OP_IS_ACCESSORY			(1<<9)
+/// do not allow delays when checking - if we need to sleep, immediately fail
+#define INV_OP_DISALLOW_DELAY		(1<<10)
+/// ignore reachability checks
+#define INV_OP_IGNORE_REACHABILITY	(1<<11)
+/// ignore equip/unequip delay
+#define INV_OP_IGNORE_DELAY			(1<<12)
+/// do not merge stacks if possible
+#define INV_OP_NO_MERGE_STACKS		(1<<13)
+/// no delays and reachability checks entirely
+#define INV_OP_FLUFFLESS			(INV_OP_IGNORE_REACHABILITY | INV_OP_IGNORE_DELAY)
 /// no sound, warnings, etc, entirely
 #define INV_OP_SILENT				(INV_OP_SUPPRESS_SOUND | INV_OP_SUPPRESS_WARNING)

@@ -6,7 +6,7 @@
  *
  * @return true/false based on if it worked
  */
-/mob/proc/handle_abstract_slot_insertion(obj/item/I, slot, force, silent)
+/mob/proc/handle_abstract_slot_insertion(obj/item/I, slot, flags)
 	if(!ispath(slot, /datum/inventory_slot_meta/abstract))
 		slot = resolve_inventory_slot_meta(slot)?.type
 		if(!ispath(slot, /datum/inventory_slot_meta/abstract))
@@ -16,20 +16,20 @@
 	. = FALSE
 	switch(slot)
 		if(/datum/inventory_slot_meta/abstract/left_hand)
-			return put_in_left_hand(I, force)
+			return put_in_left_hand(I, flags)
 		if(/datum/inventory_slot_meta/abstract/right_hand)
-			return put_in_right_hand(I, force)
+			return put_in_right_hand(I, flags)
 		if(/datum/inventory_slot_meta/abstract/put_in_belt)
 			var/obj/item/storage/S = item_by_slot(SLOT_ID_BELT)
-			return istype(S) && S.try_insert(I, src, silent, force)
+			return istype(S) && S.try_insert(I, src, flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_FORCE)
 		if(/datum/inventory_slot_meta/abstract/put_in_backpack)
 			var/obj/item/storage/S = item_by_slot(SLOT_ID_BACK)
-			return istype(S) && S.try_insert(I, src, silent, force)
+			return istype(S) && S.try_insert(I, src, flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_FORCE)
 		if(/datum/inventory_slot_meta/abstract/put_in_hands)
-			return put_in_hands(I, force = force)
+			return put_in_hands(I, flags)
 		if(/datum/inventory_slot_meta/abstract/put_in_storage, /datum/inventory_slot_meta/abstract/put_in_storage_try_active)
 			if(slot == /datum/inventory_slot_meta/abstract/put_in_storage_try_active)
-				if(s_active && Adjacent(s_active) && s_active.try_insert(I, src, silent, FALSE))
+				if(s_active && Adjacent(s_active) && s_active.try_insert(I, src, flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_FORCE))
 					return TRUE
 			for(var/obj/item/storage/S in get_equipped_items_in_slots(list(
 				SLOT_ID_BELT,
@@ -39,7 +39,7 @@
 				SLOT_ID_LEFT_POCKET,
 				SLOT_ID_RIGHT_POCKET
 			)) + get_held_items())
-				if(S.try_insert(I, src, silent, force))
+				if(S.try_insert(I, src, INV_OP_SUPPRESS_WARNING, flags & INV_OP_FORCE))
 					return TRUE
 			return FALSE
 		if(/datum/inventory_slot_meta/abstract/attach_as_accessory)
@@ -588,7 +588,7 @@
 	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
 	if(slot_meta.is_abstract)
 		// if it's abstract, we go there directly - do not use can_equip as that will just guess.
-		return handle_abstract_slot_insertion(I, slot, force, silent)
+		return handle_abstract_slot_insertion(I, slot, flags)
 
 	var/old_slot = slot_by_item(I)
 
@@ -607,7 +607,7 @@
 		var/atom/oldLoc = I.loc
 
 		I.forceMove(src)
-		I.pickup(src, FALSE, silent, null, oldLoc)
+		I.pickup(src, flags, oldLoc)
 		I.equipped(src, slot, flags)
 
 		log_inventory("[key_name(src)] equipped [I] to [slot].")

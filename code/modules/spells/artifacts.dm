@@ -226,8 +226,8 @@
 	H.equip_to_slot_or_del(new hat(H), SLOT_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/roman(H), SLOT_ID_UNIFORM)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/roman(H), SLOT_FEET)
-	H.put_in_hands(new /obj/item/shield/riot/roman(H), TRUE)
-	H.put_in_hands(new /obj/item/material/sword(H), TRUE)
+	H.put_in_hands(new /obj/item/shield/riot/roman(H), INV_OP_FORCE)
+	H.put_in_hands(new /obj/item/material/sword(H), INV_OP_FORCE)
 	H.equip_to_slot_or_del(new /obj/item/material/twohanded/spear(H), SLOT_BACK)
 
 /*
