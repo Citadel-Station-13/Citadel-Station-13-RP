@@ -415,7 +415,7 @@
 	. = F
 	F.copy_evidences(src)
 	if(user)
-		if(!user.put_in_hands(F, INV_OP_NO_MERGE_STAKCS))
+		if(!user.put_in_hands(F, INV_OP_NO_MERGE_STACKS))
 			F.forceMove(user.drop_location())
 		add_fingerprint(user)
 		F.add_fingerprint(user)

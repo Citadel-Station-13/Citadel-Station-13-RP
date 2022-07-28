@@ -140,7 +140,7 @@
 	switch(slot)
 		if(SLOT_ID_BACK)
 			back = I
-			if(update_icons)
+			if(!(flags & INV_OP_NO_UPDATE_ICONS))
 				update_inv_back()
 		if(SLOT_ID_MASK)
 			wear_mask = I

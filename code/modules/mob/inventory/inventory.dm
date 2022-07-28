@@ -167,7 +167,7 @@
 				I.moveToNullspace()
 			else if(newloc != FALSE)
 				I.forceMove(newloc)
-		if(I.dropped(src, null, silent, newloc) == ITEM_RELOCATED_BY_DROPPED)
+		if(I.dropped(src, flags, newloc) == ITEM_RELOCATED_BY_DROPPED)
 			. = FALSE
 		if(QDELETED(I))
 			. = FALSE
@@ -223,13 +223,13 @@
  */
 /mob/proc/can_unequip(obj/item/I, slot, flags, mob/user)
 	if(!(flags & INV_OP_FORCE) && HAS_TRAIT(I, TRAIT_NODROP))
-		if(!silent)
+		if(!(flags & INV_OP_SUPPRESS_WARNING))
 			to_chat(user, SPAN_WARNING("[I] is stuck to your hand!"))
 		return FALSE
 
 	var/blocked_by
-	if((blocked_by = inventory_slot_reachability_conflict(I, slot, user)) && !ignore_fluff && !force)
-		if(!silent)
+	if((blocked_by = inventory_slot_reachability_conflict(I, slot, user)) && !(flags & (INV_OP_FORCE | INV_OP_IGNORE_REACHABILITY)))
+		if(!(flags & INV_OP_SUPPRESS_WARNING))
 			to_chat(user, SPAN_WARNING("\the [blocked_by] is in the way!"))
 		return FALSE
 
@@ -284,7 +284,7 @@
 	for(var/slot in GLOB.slot_equipment_priority)
 		if(equip_to_slot_if_possible(I, slot, flags | INV_OP_SUPPRESS_WARNING, user))
 			return TRUE
-	if(!silent)
+	if(!(flags & INV_OP_SUPPRESS_WARNING))
 		to_chat(user, user == src? SPAN_WARNING("You can't find somewhere to equip [I] to!") : SPAN_WARNING("[src] has nowhere to equip [I] to!"))
 	return FALSE
 
@@ -368,9 +368,9 @@
 		// special handling: make educated guess, defaulting to yes
 		switch(slot_meta.type)
 			if(/datum/inventory_slot_meta/abstract/left_hand)
-				return force || !get_left_held_item()
+				return (flags & INV_OP_FORCE) || !get_left_held_item()
 			if(/datum/inventory_slot_meta/abstract/right_hand)
-				return force || !get_right_held_item()
+				return (flags & INV_OP_FORCE) || !get_right_held_item()
 			if(/datum/inventory_slot_meta/abstract/put_in_backpack)
 				var/obj/item/storage/S = item_by_slot(SLOT_ID_BACK)
 				if(!istype(S))
@@ -382,16 +382,16 @@
 					return FALSE
 				return S.can_be_inserted(I, TRUE)
 			if(/datum/inventory_slot_meta/abstract/put_in_hands)
-				return force || !hands_full()
+				return (flags & INV_OP_FORCE) || !hands_full()
 		return TRUE
 
-	if(!inventory_slot_bodypart_check(I, slot, user, flags) && !force)
+	if(!inventory_slot_bodypart_check(I, slot, user, flags) && !(flags & INV_OP_FORCE))
 		return FALSE
 
 	var/conflict_result = inventory_slot_conflict_check(I, slot)
 	var/obj/item/to_wear_over
 
-	if(final_check && conflict_result && (slot != SLOT_ID_HANDS))
+	if((flags & INV_OP_IS_FINAL_CHECK) && conflict_result && (slot != SLOT_ID_HANDS))
 		// try to fit over
 		var/obj/item/conflicting = item_by_slot(slot)
 		if(conflicting)
@@ -410,24 +410,24 @@
 
 	switch(conflict_result)
 		if(CAN_EQUIP_SLOT_CONFLICT_HARD)
-			if(!silent)
+			if(!(flags & INV_OP_SUPPRESS_WARNING))
 				to_chat(user, SPAN_WARNING("[self_equip? "You" : "They"] are already [slot_meta.display_plural? "holding too many things" : "wearing something"] [slot_meta.display_preposition] [self_equip? "your" : "their"] [slot_meta.display_name]."))
 			return FALSE
 		if(CAN_EQUIP_SLOT_CONFLICT_SOFT)
-			if(!force)
-				if(!silent)
+			if(!(flags & INV_OP_FORCE))
+				if(!(flags & INV_OP_SUPPRESS_WARNING))
 					to_chat(user, SPAN_WARNING("[self_equip? "You" : "They"] are already [slot_meta.display_plural? "holding too many things" : "wearing something"] [slot_meta.display_preposition] [self_equip? "your" : "their"] [slot_meta.display_name]."))
 				return FALSE
 
-	if(!inventory_slot_semantic_conflict(I, slot, user) && !force)
-		if(!silent)
+	if(!inventory_slot_semantic_conflict(I, slot, user) && !(flags & INV_OP_FORCE))
+		if(!(flags & INV_OP_SUPPRESS_WARNING))
 			to_chat(user, SPAN_WARNING("[I] doesn't fit there."))
 		return FALSE
 
 	var/blocked_by
 
-	if((blocked_by = inventory_slot_reachability_conflict(I, slot, user)) && !ignore_fluff && !force)
-		if(!silent)
+	if((blocked_by = inventory_slot_reachability_conflict(I, slot, user)) && !(flags & (INV_OP_FORCE | INV_OP_IGNORE_REACHABILITY)))
+		if(!(flags & INV_OP_SUPPRESS_WARNING))
 			to_chat(user, SPAN_WARNING("\the [blocked_by] is in the way!"))
 		return FALSE
 
@@ -436,7 +436,7 @@
 		return FALSE
 
 	// we're the final check - side effects ARE allowed
-	if(final_check && to_wear_over)
+	if((flgas & INV_OP_IS_FINAL_CHECK) && to_wear_over)
 		//! Note: this means that can_unequip is NOT called for to wear over.
 		//! This is intentional, but very, very sonwflakey.
 		to_wear_over.worn_inside = I
@@ -544,13 +544,9 @@
  *
  * @params
  * - I - item to equip
- * - force - knock out current items, ignore softer checks
+ * - flags - inventory operation hint flags, see defines
  * - slot - slot to equip it to
  * - user - user trying to put it on us
- * - silent - suppress error messages going to the user
- * - disallow_delay - fail if we need to do_after or similar
- * - ignore_fluff - ignore stuff like reachability checks. implied by force.
- * - update_icons - update mob icons
  *
  * @return TRUE/FALSE on success
  */
@@ -599,7 +595,7 @@
  * checks if we already have something in our inventory
  * if so, this will try to shift the slots over, calling equipped/unequipped automatically
  *
- * force will allow ignoring can unequip.
+ * INV_OP_FORCE will allow ignoring can unequip.
  *
  * return true/false based on if we succeeded
  */

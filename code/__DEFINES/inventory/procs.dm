@@ -1,5 +1,5 @@
 // flags for inventory ops
-/// force
+/// force; implies INV_OP_IGNORE_DELAY and INV_OP_IGNORE_REACHABILITY
 #define INV_OP_FORCE				(1<<0)
 /// components that intercept to relocate should refrain - usually used with force
 #define INV_OP_SHOULD_NOT_INTERCEPT	(1<<1)

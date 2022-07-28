@@ -163,7 +163,7 @@
 					H.forceMove(get_turf(L))
 					abduct(M)
 					continue
-				L.drop_item_to_ground(I, TRUEINV_OP_FORCE)
+				L.drop_item_to_ground(I, INV_OP_FORCE)
 			// second pass - NO HIDING, M*CROS
 			for(var/obj/item/holder/H in L.GetAllContents())
 				H.forceMove(get_turf(L))

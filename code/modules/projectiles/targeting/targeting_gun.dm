@@ -1,12 +1,14 @@
 //Removing the lock and the buttons.
 /obj/item/gun/dropped(mob/user, flags, atom/newLoc)
-	if(istype(user))
-		user.stop_aiming(src)
+	var/mob/living/L = user
+	if(istype(L))
+		L.stop_aiming(src)
 	return ..()
 
-/obj/item/gun/equipped(var/mob/living/user, var/slot)
-	if(istype(user) && (slot != SLOT_ID_HANDS))
-		user.stop_aiming(src)
+/obj/item/gun/equipped(mob/user, var/slot)
+	var/mob/living/L = user
+	if(istype(L) && (slot != SLOT_ID_HANDS))
+		L.stop_aiming(src)
 	return ..()
 
 //Compute how to fire.....

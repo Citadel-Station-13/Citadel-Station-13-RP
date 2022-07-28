@@ -248,6 +248,9 @@
 /obj/item/clothing/head/psy_crown/dropped(mob/user, flags, atom/newLoc)
 	..()
 	STOP_PROCESSING(SSobj, src)
+	var/mob/living/carbon/human/H = user
+	if(!ishuman(H))
+		return
 	if(H.is_sentient())
 		if(loc == H) // Still inhand.
 			to_chat(H, flavor_unequip)

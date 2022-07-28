@@ -63,16 +63,16 @@
 	switch(slot)
 		if(SLOT_ID_SUIT)
 			wear_suit = I
-			if(update_icons)
+			if(!(flags & INV_OP_NO_UPDATE_ICONS))
 				update_inv_wear_suit()
-			if(logic)
+			if(!(flags & INV_OP_NO_LOGIC))
 				if(!wear_suit)
 					s_store?.reconsider_beltlink()
 		if(SLOT_ID_UNIFORM)
 			w_uniform = I
-			if(update_icons)
+			if(!(flags & INV_OP_NO_UPDATE_ICONS))
 				update_inv_w_uniform()
-			if(logic)
+			if(!(flags & INV_OP_NO_LOGIC))
 				if(!w_uniform)
 					l_store?.reconsider_beltlink()
 					r_store?.reconsider_beltlink()
@@ -80,23 +80,23 @@
 					belt?.reconsider_beltlink()
 		if(SLOT_ID_SHOES)
 			shoes = I
-			if(update_icons)
+			if(!(flags & INV_OP_NO_UPDATE_ICONS))
 				update_inv_shoes()
 		if(SLOT_ID_BELT)
 			belt = I
-			if(update_icons)
+			if(!(flags & INV_OP_NO_UPDATE_ICONS))
 				update_inv_belt()
 		if(SLOT_ID_GLOVES)
 			gloves = I
-			if(update_icons)
+			if(!(flags & INV_OP_NO_UPDATE_ICONS))
 				update_inv_gloves()
 		if(SLOT_ID_GLASSES)
 			glasses = I
-			if(update_icons)
+			if(!(flags & INV_OP_NO_UPDATE_ICONS))
 				update_inv_glasses()
 		if(SLOT_ID_HEAD)
 			head = I
-			if(update_icons)
+			if(!(flags & INV_OP_NO_UPDATE_ICONS))
 				update_inv_head()
 				// todo: only rebuild when needed for HIDEMASK|BLOCKHAIR|BLOCKHEADHAIR
 				update_hair(0)
@@ -104,15 +104,15 @@
 				update_inv_wear_mask()
 		if(SLOT_ID_LEFT_EAR)
 			l_ear = I
-			if(update_icons)
+			if(!(flags & INV_OP_NO_UPDATE_ICONS))
 				update_inv_ears()
 		if(SLOT_ID_RIGHT_EAR)
 			r_ear = I
-			if(update_icons)
+			if(!(flags & INV_OP_NO_UPDATE_ICONS))
 				update_inv_ears()
 		if(SLOT_ID_WORN_ID)
 			wear_id = I
-			if(update_icons)
+			if(!(flags & INV_OP_NO_UPDATE_ICONS))
 				update_inv_wear_id()
 			update_hud_sec_job()
 			update_hud_sec_status()
@@ -201,7 +201,7 @@
 
 	// first, check species
 	if(species?.hud?.equip_slots && !(slot in species.hud.equip_slots))
-		if(!silent)
+		if(!(flags & INV_OP_SUPPRESS_WARNING))
 			to_chat(user, SPAN_WARNING("[self_equip? "You" : "They"] have nowhere to put that!"))
 		return FALSE
 

@@ -32,12 +32,12 @@
  */
 /mob/proc/attempt_smart_equip(obj/item/I = get_active_held_item(), silent = FALSE)
 	if(!I)
-		if(!silent)
+		if(!(flags & INV_OP_SUPPRESS_WARNING))
 			to_chat(src, SPAN_WARNING("You are not holding anything to equip!"))
 		return FALSE
 
 	if(!is_holding(I))
-		if(!silent)
+		if(!(flags & INV_OP_SUPPRESS_WARNING))
 			to_chat(src, SPAN_WARNING("You must be holding [I] to equip it!"))
 		return FALSE
 

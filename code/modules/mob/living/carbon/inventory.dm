@@ -18,14 +18,14 @@
 	switch(slot)
 		if(SLOT_ID_HANDCUFFED)
 			handcuffed = I
-			if(logic)
+			if(!(flags & INV_OP_NO_LOGIC))
 				if(!handcuffed && buckled && buckled.buckle_require_restraints)
 					buckled.unbuckle_mob()
-			if(update_icons)
+			if(!(flags & INV_OP_NO_UPDATE_ICONS))
 				update_inv_handcuffed()
 		if(SLOT_ID_LEGCUFFED)
 			legcuffed = I
-			if(update_icons)
+			if(!(flags & INV_OP_NO_UPDATE_ICONS))
 				update_inv_legcuffed()
 		else
 			return ..()

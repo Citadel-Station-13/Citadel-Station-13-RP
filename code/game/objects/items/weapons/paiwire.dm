@@ -8,7 +8,7 @@
 				return
 		user.visible_message("[user] inserts [src] into a data port on [M].", "You insert [src] into a data port on [M].", "You hear the satisfying click of a wire jack fastening into place.")
 		playsound(user, 'sound/machines/click.ogg', 50, 1)
-			user.transfer_item_to_loc(W, src, INV_OP_FORCE)
+		user.transfer_item_to_loc(W, src, INV_OP_FORCE)
 		user.transfer_item_to_loc(src, M, TRUE)
 		machine = M
 	else

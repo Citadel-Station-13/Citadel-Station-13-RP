@@ -203,22 +203,22 @@
 	switch(slot)
 		if(SLOT_ID_LEFT_POCKET, SLOT_ID_RIGHT_POCKET)
 			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot(SLOT_ID_UNIFORM))
-				if(!silent)
+				if(!(flags & INV_OP_SUPPRESS_WARNING))
 					to_chat(H, SPAN_WARNING("You need a jumpsuit before you can attach [src]."))
 				return FALSE
 		if(SLOT_ID_WORN_ID)
 			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot(SLOT_ID_UNIFORM))
-				if(!silent)
+				if(!(flags & INV_OP_SUPPRESS_WARNING))
 					to_chat(H, SPAN_WARNING("You need a jumpsuit before you can attach [src]."))
 				return FALSE
 		if(SLOT_ID_BELT)
 			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot(SLOT_ID_UNIFORM))
-				if(!silent)
+				if(!(flags & INV_OP_SUPPRESS_WARNING))
 					to_chat(H, SPAN_WARNING("You need a jumpsuit before you can attach [src]."))
 				return FALSE
 		if(SLOT_ID_SUIT_STORAGE)
 			if(H.semantically_has_slot(SLOT_ID_SUIT) && !H.item_by_slot(SLOT_ID_SUIT))
-				if(!silent)
+				if(!(flags & INV_OP_SUPPRESS_WARNING))
 					to_chat(H, SPAN_WARNING("You need a suit before you can attach [src]."))
 				return FALSE
 	return TRUE
@@ -246,7 +246,7 @@
  * call when we fit us over something - item should be already in us
  */
 /obj/item/proc/equip_on_worn_over_insert(mob/M, slot, mob/user, obj/item/I, flags)
-	if(!silent)
+	if(!(flags & INV_OP_SUPPRESS_WARNING))
 		to_chat(M, SPAN_NOTICE("You slip [src] over [I]."))
 
 /**
