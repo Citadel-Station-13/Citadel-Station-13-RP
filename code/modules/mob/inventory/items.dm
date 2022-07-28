@@ -34,6 +34,7 @@
 /obj/item/proc/equipped(mob/user, slot, flags)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot, flags)
+	worn_slot = slot
 	if(!(flags & INV_OP_IS_ACCESSORY))
 		// todo: shouldn't be in here
 		hud_layerise()
