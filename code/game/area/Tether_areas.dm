@@ -909,6 +909,11 @@
 	icon_state = "research"
 	ambience = AMBIENCE_SUBSTATION
 
+/area/rnd/outpost/xenobiology/outpost_archive
+	name = "\improper Xenobiology Science Archives"
+	icon_state = "research"
+	ambience = AMBIENCE_MAINTENANCE
+
 // Misc
 /area/hallway/lower/third_south
 	name = "\improper Hallway Third Floor South"

@@ -37,12 +37,12 @@
 	// If the randomize is true, we need to generate a new set of wires and ignore any wire color directories.
 	if(randomize)
 		randomize()
-
-	if(!GLOB.wire_color_directory[holder_type])
-		randomize()
-		GLOB.wire_color_directory[holder_type] = colors
 	else
-		colors = GLOB.wire_color_directory[holder_type]
+		if(!GLOB.wire_color_directory[holder_type])
+			randomize()
+			GLOB.wire_color_directory[holder_type] = colors
+		else
+			colors = GLOB.wire_color_directory[holder_type]
 
 /datum/wires/Destroy()
 	holder = null
