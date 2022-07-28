@@ -178,7 +178,3 @@ GLOBAL_LIST_EMPTY(unit_test_mapping_logs)
 	SSticker.force_ending = TRUE
 	//We have to call this manually because del_text can preceed us, and SSticker doesn't fire in the post game
 	SSticker.standard_reboot()
-
-/datum/map_template/unit_tests
-	name = "Unit Tests Zone"
-	mappath = "_maps/templates/unit_tests.dmm"
