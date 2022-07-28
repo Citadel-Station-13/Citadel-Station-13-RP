@@ -108,7 +108,7 @@
 	// todo: don't call dropped/pickup if going to same person
 	if(has_suit.worn_slot)
 		unequipped(has_suit.worn_mob(), has_suit.worn_slot, INV_OP_IS_ACCESSORY)
-		dropped(S.worn_mob(), INV_OP_IS_ACCESSORY)
+		dropped(has_suit.worn_mob(), INV_OP_IS_ACCESSORY)
 
 	// inventory handling stop
 
