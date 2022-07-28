@@ -1,9 +1,10 @@
-#warn unfuck unequip sounds somehow
 /obj/item/clothing
 	name = "clothing"
 	siemens_coefficient = 0.9
 	drop_sound = 'sound/items/drop/clothing.ogg'
-	pickup_sound = 'sound/items/pickup/cloth.ogg'
+// todo: this is an awful way to do it but it works
+	unequip_sound = 'sound/items/drop/clothing.ogg'
+	pickup_sound = 'sound/items/pickup/cloth.ogg
 	var/list/species_restricted = null //Only these species can wear this kit.
 	var/gunshot_residue //Used by forensics.
 
@@ -187,6 +188,8 @@
 		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/hands.dmi'
 		)
 	drop_sound = 'sound/items/drop/gloves.ogg'
+// todo: this is an awful way to do it but it works
+	unequip_sound = 'sound/items/drop/gloves.ogg'
 	pickup_sound = 'sound/items/pickup/gloves.ogg'
 
 /obj/item/clothing/gloves/get_fibers()
@@ -302,6 +305,8 @@
 		)
 
 	drop_sound = 'sound/items/drop/hat.ogg'
+// todo: this is an awful way to do it but it works
+	unequip_sound = 'sound/items/drop/hat.ogg'
 	pickup_sound = 'sound/items/pickup/hat.ogg'
 
 /obj/item/clothing/head/attack_self(mob/user)
@@ -461,6 +466,8 @@
 		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/feet.dmi'
 		)
 	drop_sound = 'sound/items/drop/shoes.ogg'
+// todo: this is an awful way to do it but it works
+	unequip_sound = 'sound/items/drop/shoes.ogg'
 	pickup_sound = 'sound/items/pickup/shoes.ogg'
 
 	//there's a snake in my boot
