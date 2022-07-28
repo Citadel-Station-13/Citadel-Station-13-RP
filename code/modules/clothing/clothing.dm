@@ -224,7 +224,7 @@
 
 	return G.glove_level < glove_level
 
-/obj/item/clothing/gloves/equip_on_worn_over_insert(mob/M, slot, mob/user, obj/item/I, silent)
+/obj/item/clothing/gloves/equip_on_worn_over_insert(mob/M, slot, mob/user, obj/item/I, flags)
 	. = ..()
 
 	if(!istype(I, /obj/item/clothing/gloves))
@@ -237,7 +237,7 @@
 
 	punch_force += G.punch_force
 
-/obj/item/clothing/gloves/equip_on_worn_over_remove(mob/M, slot, mob/user, obj/item/I, silent)
+/obj/item/clothing/gloves/equip_on_worn_over_remove(mob/M, slot, mob/user, obj/item/I, flags)
 	. = ..()
 
 	if(!istype(I, /obj/item/clothing/gloves))

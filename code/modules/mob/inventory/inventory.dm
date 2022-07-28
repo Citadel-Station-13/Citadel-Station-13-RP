@@ -181,7 +181,7 @@
 
 	update_action_buttons()
 
-/mob/proc/handle_item_denesting(obj/item/I, old_slot, mob/user, silent)
+/mob/proc/handle_item_denesting(obj/item/I, old_slot, mob/user, flags)
 	// if the item was inside something,
 	if(I.worn_inside)
 		var/obj/item/over = I.worn_over
@@ -194,15 +194,16 @@
 		I.worn_over = null
 		I.worn_inside = null
 		// call procs to inform things
-		inside.equip_on_worn_over_remove(src, old_slot, user, I, silent)
+		inside.equip_on_worn_over_remove(src, old_slot, user, I, flags)
 		if(over)
-			I.equip_on_worn_over_remove(src, old_slot, user, over, silent)
+			I.equip_on_worn_over_remove(src, old_slot, user, over, flags)
+
 		// now we're free to forcemove later
 	// if the item wasn't but was worn over something, there's more complicated methods required
 	else if(I.worn_over)
 		var/obj/item/over = I.worn_over
 		I.worn_over = null
-		I.equip_on_worn_over_remove(src, old_slot, user, I.worn_over, silent)
+		I.equip_on_worn_over_remove(src, old_slot, user, I.worn_over, flags)
 		// I is free to be forcemoved now, but the old object needs to be put back on
 		over.worn_hook_suppressed = TRUE
 		over.forceMove(src)
@@ -241,7 +242,7 @@
 		return FALSE
 
 	// lastly, check item's opinion
-	if(!I.can_unequip(src, slot, user, silent, disallow_delay, ignore_fluff))
+	if(!I.can_unequip(src, slot, user, flags))
 		return FALSE
 
 	return TRUE
@@ -420,7 +421,7 @@
 		var/obj/item/conflicting = item_by_slot(slot)
 		if(conflicting)
 			// there's something there
-			var/can_fit_over = I.equip_worn_over_check(src, slot, user, conflicting, silent, disallow_delay, ignore_fluff)
+			var/can_fit_over = I.equip_worn_over_check(src, slot, user, conflicting, flags)
 			if(can_fit_over)
 				conflict_result = CAN_EQUIP_SLOT_CONFLICT_NONE
 				to_wear_over = conflicting
@@ -456,7 +457,7 @@
 		return FALSE
 
 	// lastly, check item's opinion
-	if(!I.can_equip(src, slot, user, silent, disallow_delay, ignore_fluff))
+	if(!I.can_equip(src, slot, user, flags))
 		return FALSE
 
 	// we're the final check - side effects ARE allowed
@@ -472,7 +473,7 @@
 		// set the other way around
 		I.worn_over = to_wear_over
 		// tell it we're inserting the old item
-		I.equip_on_worn_over_insert(src, slot, user, to_wear_over, silent)
+		I.equip_on_worn_over_insert(src, slot, user, to_wear_over, flags)
 		// take the old item off our screen
 		client?.screen -= to_wear_over
 		to_wear_over.screen_loc = null
