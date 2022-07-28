@@ -4,7 +4,7 @@
 	drop_sound = 'sound/items/drop/clothing.ogg'
 // todo: this is an awful way to do it but it works
 	unequip_sound = 'sound/items/drop/clothing.ogg'
-	pickup_sound = 'sound/items/pickup/cloth.ogg
+	pickup_sound = 'sound/items/pickup/cloth.ogg'
 	var/list/species_restricted = null //Only these species can wear this kit.
 	var/gunshot_residue //Used by forensics.
 
