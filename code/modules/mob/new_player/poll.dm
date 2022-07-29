@@ -448,8 +448,13 @@
 
 		var/alreadyvoted = 0
 
-		var/datum/db_query/voted_query = dbcon.NewQuery("SELECT id FROM [format_table_name("poll")]_textreply WHERE pollid = [pollid] AND ckey = '[usr.ckey]'")
-		voted_query.Execute()
+		var/datum/db_query/voted_query = SSdbcore.RunQuery(
+			"SELECT id FROM [format_table_name("poll_textreply")] WHERE pollid = :id AND ckey = :ckey",
+			list(
+				"id" = pollid,
+				"ckey" = usr.ckey
+			)
+		)
 
 		while(voted_query.NextRow())
 			alreadyvoted = 1

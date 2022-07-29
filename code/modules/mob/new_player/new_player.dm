@@ -337,7 +337,7 @@
 		var/voted = 0
 
 		//First check if the person has not voted yet.
-		var/datum/db_query = SSdbcore.NewQuery(
+		var/datum/db_query/query = SSdbcore.NewQuery(
 			"SELECT * FROM [format_table_name("privacy")] WHERE ckey = :ckey",
 			list("ckey" = ckey)
 		)
@@ -365,9 +365,13 @@
 			return
 
 		if(!voted)
-			var/sql = "INSERT INTO [format_table_name("privacy")] VALUES (null, Now(), '[src.ckey]', '[option]')"
-			var/datum/db_query/query_insert = dbcon.NewQuery(sql)
-			query_insert.Execute()
+			SSdbcore.RunQuery(
+				"INSERT INTO [format_table_name("privacy")] VALUES (null, NOW(), :ckey, :option)",
+				list(
+					"ckey" = ckey,
+					"option" = option
+				)
+			)
 			to_chat(usr, "<b>Thank you for your vote!</b>")
 			usr << browse(null,"window=privacypoll")
 
