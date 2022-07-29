@@ -149,14 +149,36 @@
 		return
 
 	if(admin_rights & new_permission) //This admin already has this permission, so we are removing it.
-		var/datum/db_query/insert_query = dbcon.NewQuery("UPDATE `[format_table_name("admin")]` SET flags = [admin_rights & ~new_permission] WHERE id = [admin_id]")
-		insert_query.Execute()
-		var/datum/db_query/log_query = dbcon.NewQuery("INSERT INTO `test`.`[format_table_name("admin")]_log` (`id` ,`datetime` ,`adminckey` ,`adminip` ,`log` ) VALUES (NULL , NOW( ) , '[usr.ckey]', '[usr.client.address]', 'Removed permission [rights2text(new_permission)] (flag = [new_permission]) to admin [adm_ckey]');")
-		log_query.Execute()
+		SSdbcore.RunQuery(
+			"UPDATE [format_table_name("admin")] SET flags = :flags WHERE id = :id",
+			list(
+				"flags" = admin_rights & ~new_permission,
+				"id" = admin_id
+			)
+		)
+		SSdbcore.RunQuery(
+			"INSERT INTO [format_table_name("admin_log")] (id, datetime, adminckey, adminip, log) VALUES (NULL, Now(), :ckey, :addr, :log)",
+			list(
+				"ckey" = usr.ckey,
+				"addr" = usr.client.address,
+				"log" = "Removed permission [rights2text(new_permission)] (flag = [new_permission]) to admin [adm_ckey]"
+			)
+		)
 		to_chat(usr, "<font color=#4F49AF>Permission removed.</font>")
 	else //This admin doesn't have this permission, so we are adding it.
-		var/datum/db_query/insert_query = dbcon.NewQuery("UPDATE `[format_table_name("admin")]` SET flags = '[admin_rights | new_permission]' WHERE id = [admin_id]")
-		insert_query.Execute()
-		var/datum/db_query/log_query = dbcon.NewQuery("INSERT INTO `test`.`[format_table_name("admin")]_log` (`id` ,`datetime` ,`adminckey` ,`adminip` ,`log` ) VALUES (NULL , NOW( ) , '[usr.ckey]', '[usr.client.address]', 'Added permission [rights2text(new_permission)] (flag = [new_permission]) to admin [adm_ckey]')")
-		log_query.Execute()
+		SSdbcore.RunQuery(
+			"UPDATE [format_table_name("admin")] SET flags = :flags WHERE id = :id",
+			list(
+				"flags" = admin_rights | new_permission,
+				"id" = admin_id
+			)
+		)
+		SSdbcore.RunQuery(
+			"INSERT INTO [format_table_name("admin_log")] (id, datetime, adminckey, adminip, log) VALUES (NULL, Now(), :ckey, :addr, :log)",
+			list(
+				"ckey" = usr.ckey,
+				"addr" = usr.client.address,
+				"log" = "Added permission [rights2text(new_permission)] (flag = [new_permission]) to admin [adm_ckey]"
+			)
+		)
 		to_chat(usr, "<font color=#4F49AF>Permission added.</font>")
