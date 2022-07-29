@@ -260,12 +260,12 @@
 	if(isprox(D))
 		to_chat(user, "You add [D] to [src].")
 		qdel(D)
-		user.put_in_hands(new /obj/item/bucket_sensor)
+		user.put_in_hands_or_drop(new /obj/item/bucket_sensor)
 		qdel(src)
 		return
 	else if(D.is_wirecutter())
 		to_chat(user, "<span class='notice'>You cut a big hole in \the [src] with \the [D].  It's kinda useless as a bucket now.</span>")
-		user.put_in_hands(new /obj/item/clothing/head/helmet/bucket)
+		user.put_in_hands_or_drop(new /obj/item/clothing/head/helmet/bucket)
 		qdel(src)
 		return
 	else if(istype(D, /obj/item/stack/material) && D.get_material_name() == MAT_STEEL)
