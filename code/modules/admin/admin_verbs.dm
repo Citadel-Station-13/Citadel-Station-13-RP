@@ -741,7 +741,7 @@ var/list/admin_verbs_event_manager = list(
 	if(istype(T,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = T
 		if (H.species)
-			D.affected_species = list(H.species.get_bodytype())
+			D.affected_species = list(H.species.get_bodytype_legacy())
 			if(H.species.primitive_form)
 				D.affected_species |= H.species.primitive_form
 			if(H.species.greater_form)

@@ -84,8 +84,8 @@
 				to_chat(user, "\The [G] does not have a magazine installed..")
 				return
 
-		user.drop_item()
-		G.forceMove(src)
+		if(!user.attempt_insert_item_for_installation(G, src))
+			return
 		charging = G
 		update_icon()
 		user.visible_message("[user] inserts [charging] into [src].", "You insert [charging] into [src].")

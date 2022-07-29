@@ -1,6 +1,0 @@
-author: "TheLordME"
-delete-after: True
-changes: 
-  - rscadd: "Adds diona bodymarkings we already had sprites for"
-  - bugfix: "Second heterochromia works now"
-  - refactor: "Refactors parts of the body marking code"

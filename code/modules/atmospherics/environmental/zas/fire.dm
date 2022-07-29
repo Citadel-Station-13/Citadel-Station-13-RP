@@ -246,7 +246,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 	//Get heat transfer coefficients for clothing.
 
 	for(var/obj/item/clothing/C in src)
-		if(item_is_in_hands(C))
+		if(is_holding(C))
 			continue
 
 		if( C.max_heat_protection_temperature >= last_temperature )

@@ -67,14 +67,14 @@
 		if(user.disabilities & CLUMSY && prob(10))
 			user.visible_message("<span class='warning'>[user] accidentally ignites themselves!</span>", \
 				"<span class='userdanger'>You miss the [src] and accidentally light yourself on fire!</span>")
-			user.unEquip(P)
+			user.drop_item_to_ground(P)
 			user.adjust_fire_stacks(1)
 			user.IgniteMob()
 			return
 
 		if(!(in_range(user, src))) //to prevent issues as a result of telepathically lighting a paper
 			return
-		user.unEquip(src)
+		user.drop_item_to_ground(src)
 		user.visible_message("<span class='danger'>[user] lights [src] ablaze with [P]!</span>", "<span class='danger'>You light [src] on fire!</span>")
 		fire_act()
 
@@ -99,7 +99,7 @@
 		if( (!in_range(src, user)) || user.stat || user.restrained() )
 			return
 		to_chat(user, "<span class='notice'>You fold [src] into the shape of a plane!</span>")
-		user.unEquip(src)
+		user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 		I = new /obj/item/paperplane(user, src)
 		user.put_in_hands(I)
 	else

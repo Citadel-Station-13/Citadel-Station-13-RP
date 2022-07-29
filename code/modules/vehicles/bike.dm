@@ -113,7 +113,7 @@
 		return 0
 	return ..(M, user)
 
-/obj/vehicle/bike/MouseDrop_T(var/atom/movable/C, var/mob/user as mob)
+/obj/vehicle/bike/MouseDroppedOnLegacy(var/atom/movable/C, var/mob/user as mob)
 	if(!load(C, user))
 		to_chat(user, "<span class='warning'> You were unable to load \the [C] onto \the [src].</span>")
 		return

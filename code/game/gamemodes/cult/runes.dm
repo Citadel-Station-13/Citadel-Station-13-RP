@@ -855,18 +855,21 @@ var/list/sacrificed = list()
 					to_chat(user, "<span class='warning'>The [cultist] is already free.</span>")
 					return
 				cultist.buckled = null
-				if (cultist.handcuffed)
-					cultist.drop_from_inventory(cultist.handcuffed)
-				if (cultist.legcuffed)
-					cultist.drop_from_inventory(cultist.legcuffed)
+				cultist.drop_item_to_ground(cultist.handcuffed, INV_OP_FORCE)
+				cultist.drop_item_to_ground(cultist.legcuffed, INV_OP_FORCE)
 				if (istype(cultist.wear_mask, /obj/item/clothing/mask/muzzle))
-					cultist.drop_from_inventory(cultist.wear_mask)
-				if(istype(cultist.loc, /obj/structure/closet)&&cultist.loc:welded)
-					cultist.loc:welded = 0
-				if(istype(cultist.loc, /obj/structure/closet/secure_closet)&&cultist.loc:locked)
-					cultist.loc:locked = 0
-				if(istype(cultist.loc, /obj/machinery/dna_scannernew)&&cultist.loc:locked)
-					cultist.loc:locked = 0
+					cultist.drop_item_to_ground(cultist.wear_mask, INV_OP_FORCE)
+				if(istype(cultist.loc, /obj/structure/closet))
+					var/obj/structure/closet/C = cultist.loc
+					C.sealed = FALSE
+					if(istype(C, /obj/structure/closet/secure_closet))
+						var/obj/structure/closet/secure_closet/SC = cultist.loc
+						SC.locked = FALSE
+					C.update_appearance()
+				if(istype(cultist.loc, /obj/machinery/dna_scannernew))
+					var/obj/machinery/dna_scannernew/S = cultist.loc
+					S.locked = FALSE
+					S.update_appearance()
 				for(var/mob/living/carbon/C in users)
 					user.take_overall_damage(dam, 0)
 					C.say("Khari[pick("'","`")]d! Gual'te nikka!")
@@ -1125,10 +1128,10 @@ var/list/sacrificed = list()
 			usr.visible_message("<span class='warning'>The rune disappears with a flash of red light, and a set of armor appears on [usr]...</span>", \
 			"<span class='warning'>You are blinded by the flash of red light! After you're able to see again, you see that you are now wearing a set of armor.</span>")
 
-			user.equip_to_slot_or_del(new /obj/item/clothing/head/culthood/alt(user), slot_head)
-			user.equip_to_slot_or_del(new /obj/item/clothing/suit/cultrobes/alt(user), slot_wear_suit)
-			user.equip_to_slot_or_del(new /obj/item/clothing/shoes/cult(user), slot_shoes)
-			user.equip_to_slot_or_del(new /obj/item/storage/backpack/cultpack(user), slot_back)
+			user.equip_to_slot_or_del(new /obj/item/clothing/head/culthood/alt(user), SLOT_ID_HEAD)
+			user.equip_to_slot_or_del(new /obj/item/clothing/suit/cultrobes/alt(user), SLOT_ID_SUIT)
+			user.equip_to_slot_or_del(new /obj/item/clothing/shoes/cult(user), SLOT_ID_SHOES)
+			user.equip_to_slot_or_del(new /obj/item/storage/backpack/cultpack(user), SLOT_ID_BACK)
 			//the above update their overlay icons cache but do not call update_icons()
 			//the below calls update_icons() at the end, which will update overlay icons by using the (now updated) cache
 			user.put_in_hands(new /obj/item/melee/cultblade(user))	//put in hands or on floor

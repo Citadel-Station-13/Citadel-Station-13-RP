@@ -244,7 +244,7 @@
 	if(.)
 		buckled_mobs[M] = "riding"
 
-/mob/living/silicon/robot/MouseDrop_T(mob/living/M, mob/living/user) //Prevention for forced relocation caused by can_buckle. Base proc has no other use.
+/mob/living/silicon/robot/MouseDroppedOnLegacy(mob/living/M, mob/living/user) //Prevention for forced relocation caused by can_buckle. Base proc has no other use.
 	return
 
 /mob/living/silicon/robot/attack_hand(mob/user as mob)

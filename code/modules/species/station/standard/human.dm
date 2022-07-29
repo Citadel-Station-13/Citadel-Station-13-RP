@@ -57,9 +57,6 @@
 	base_color = "#EECEB3"
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Humanity"
 
-/datum/species/human/get_bodytype(mob/living/carbon/human/H)
-	return SPECIES_HUMAN
-
 /datum/category_item/catalogue/fauna/humans
 	name = "Sapients - Humans"
 	desc = {"

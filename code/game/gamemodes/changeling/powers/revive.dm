@@ -43,33 +43,10 @@
 
 		H.update_hud_med_all()
 
-		if(H.handcuffed)
-			var/obj/item/W = H.handcuffed
-			H.handcuffed = null
-			if(H.buckled && H.buckled.buckle_require_restraints)
-				H.buckled.unbuckle_mob()
-			H.update_handcuffed()
-			if (H.client)
-				H.client.screen -= W
-			W.forceMove(H.loc)
-			W.dropped(H)
-			if(W)
-				W.layer = initial(W.layer)
-		if(H.legcuffed)
-			var/obj/item/W = H.legcuffed
-			H.legcuffed = null
-			H.update_inv_legcuffed()
-			if(H.client)
-				H.client.screen -= W
-			W.forceMove(H.loc)
-			W.dropped(H)
-			if(W)
-				W.layer = initial(W.layer)
+		H.handcuffed?.forceMove(drop_location())
+		H.legcuffed?.forceMove(drop_location())
 		if(istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket))
-			var/obj/item/clothing/suit/straight_jacket/SJ = H.wear_suit
-			SJ.forceMove(H.loc)
-			SJ.dropped(H)
-			H.wear_suit = null
+			H.wear_suit.forceMove(drop_location())
 
 	C.halloss = 0
 	C.shock_stage = 0 //Pain

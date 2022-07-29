@@ -304,7 +304,7 @@
 			H.visible_message("<span class='danger'>\The [src] flashes as it scorches [H]'s hands!</span>")
 			H.apply_damage(amount / 2 + 5, BURN, "r_hand", used_weapon="Supermatter Chunk")
 			H.apply_damage(amount / 2 + 5, BURN, "l_hand", used_weapon="Supermatter Chunk")
-			H.drop_from_inventory(src, get_turf(H))
+			H.drop_item_to_ground(src)
 			return
 
 	if(istype(user, /mob/living/silicon/robot))

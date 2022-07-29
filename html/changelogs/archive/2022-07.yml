@@ -36,3 +36,8 @@
 2022-07-28:
   FreeStylaLT:
   - tweak: every species can now wear skrelltacles
+2022-07-29:
+  TheLordME:
+  - rscadd: Adds diona bodymarkings we already had sprites for
+  - bugfix: Second heterochromia works now
+  - refactor: Refactors parts of the body marking code

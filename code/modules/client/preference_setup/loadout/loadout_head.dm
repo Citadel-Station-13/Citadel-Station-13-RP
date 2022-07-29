@@ -2,7 +2,7 @@
 /datum/gear/head
 	name = "Bandana - Pirate-Red"
 	path = /obj/item/clothing/head/bandana
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 	sort_category = "Hats and Headwear"
 
 /datum/gear/head/bandana_green

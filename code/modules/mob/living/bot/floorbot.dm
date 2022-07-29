@@ -398,7 +398,6 @@
 		user.put_in_hands(B)
 		to_chat(user, SPAN_NOTICE("You add the tiles into the empty toolbox. They protrude from the top."))
 		B.toolbox = type
-		user.drop_from_inventory(src)
 		qdel(src)
 	else
 		to_chat(user, SPAN_WARNING("You need 10 floor tiles for a floorbot."))
@@ -430,9 +429,9 @@
 	switch(build_step)
 		if(ASSEMBLY_FIRST_STEP)
 			if(isprox(W))
-				user.drop_item()
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				to_chat(user, SPAN_NOTICE("You add the proximity sensor to [src]."))
-				qdel(W)
 				name = "incomplete floorbot assembly"
 				desc = "It's a toolbox with tiles sticking out the top and a sensor attached."
 				add_overlay("[base_icon_state]-prox-[skin]")
@@ -448,5 +447,4 @@
 				S.name = created_name
 				S.toolbox = toolbox
 				S.robot_arm = robot_arm
-				user.drop_from_inventory(src)
 				qdel(src)

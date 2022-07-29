@@ -17,11 +17,11 @@
 /obj/item/reagent_containers/glass/bottle/on_reagent_change()
 	update_icon()
 
-/obj/item/reagent_containers/glass/bottle/pickup(mob/user)
+/obj/item/reagent_containers/glass/bottle/pickup(mob/user, flags, atom/oldLoc)
 	..()
 	update_icon()
 
-/obj/item/reagent_containers/glass/bottle/dropped(mob/user)
+/obj/item/reagent_containers/glass/bottle/dropped(mob/user, flags, atom/newLoc)
 	..()
 	update_icon()
 

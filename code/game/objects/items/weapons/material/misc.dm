@@ -53,7 +53,7 @@
 /obj/item/material/knife/machete/hatchet/unathiknife/attack(mob/M as mob, mob/user as mob)
 	if(hits > 0)
 		return
-	var/obj/item/I = user.get_inactive_hand()
+	var/obj/item/I = user.get_inactive_held_item()
 	if(istype(I, /obj/item/material/knife/machete/hatchet/unathiknife))
 		hits ++
 		var/obj/item/W = I

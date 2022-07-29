@@ -49,16 +49,13 @@
 			return
 		// Air tank.
 		if(istype(W,/obj/item/tank)) //Todo, some kind of check for suits without integrated air supplies.
-
 			if(air_supply)
 				to_chat(user, "\The [src] already has a tank installed.")
 				return
-
-			if(!user.unEquip(W))
+			if(!user.attempt_insert_item_for_installation(W, src))
 				return
 
 			air_supply = W
-			W.forceMove(src)
 			to_chat(user, "You slot [W] into [src] and tighten the connecting valve.")
 			return
 
@@ -84,21 +81,18 @@
 				return
 			if(!user || !W)
 				return
-			if(!user.unEquip(mod))
+			if(!user.attempt_insert_item_for_installation(mod, src))
 				return
 			to_chat(user, "You install \the [mod] into \the [src].")
 			installed_modules |= mod
-			mod.forceMove(src)
 			mod.installed(src)
 			update_icon()
 			return 1
 
 		else if(!cell && istype(W,/obj/item/cell))
-
-			if(!user.unEquip(W))
+			if(!user.attempt_insert_item_for_installation(W, src))
 				return
 			to_chat(user, "You jack \the [W] into \the [src]'s battery mount.")
-			W.forceMove(src)
 			src.cell = W
 			return
 

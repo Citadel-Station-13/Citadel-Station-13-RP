@@ -15,7 +15,8 @@
 
 /obj/structure/ore_box/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/ore))
-		user.remove_from_mob(W)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		take(W)
 
 	else if (istype(W, /obj/item/storage))
@@ -83,7 +84,7 @@
 	if(isEmpty())
 		to_chat(usr,"<span class='warning'>The ore box is empty.</span>")
 		return
-	
+
 	var/mob/living/user = usr
 	to_chat(user, "<span class='notice'>You begin emptying the ore box.</span>")
 

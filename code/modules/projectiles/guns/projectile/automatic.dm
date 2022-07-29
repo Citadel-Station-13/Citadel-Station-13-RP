@@ -171,7 +171,7 @@
 		..()
 
 /obj/item/gun/projectile/automatic/z8/attack_hand(mob/user)
-	if(user.get_inactive_hand() == src && use_launcher)
+	if(user.get_inactive_held_item() == src && use_launcher)
 		launcher.unload(user)
 	else
 		..()
@@ -260,7 +260,7 @@
 		return ..() //once closed, behave like normal
 
 /obj/item/gun/projectile/automatic/l6_saw/attack_hand(mob/user as mob)
-	if(!cover_open && user.get_inactive_hand() == src)
+	if(!cover_open && user.get_inactive_held_item() == src)
 		toggle_cover(user) //open the cover
 	else
 		return ..() //once open, behave like normal

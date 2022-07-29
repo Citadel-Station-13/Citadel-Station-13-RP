@@ -205,8 +205,8 @@ var/list/table_icon_cache = list()
 	visible_message("<span class='notice'>\The [user] scratches at \the [src]!</span>")
 	return ..()
 
-/obj/structure/table/MouseDrop_T(obj/item/stack/material/what)
-	if(can_reinforce && isliving(usr) && (!usr.stat) && istype(what) && usr.get_active_hand() == what && Adjacent(usr))
+/obj/structure/table/MouseDroppedOnLegacy(obj/item/stack/material/what)
+	if(can_reinforce && isliving(usr) && (!usr.stat) && istype(what) && usr.get_active_held_item() == what && Adjacent(usr))
 		reinforce_table(what, usr)
 	else
 		return ..()
@@ -529,6 +529,8 @@ var/list/table_icon_cache = list()
 			return ((smoothing_junction & NORTHEAST_JUNCTION)? CORNER_DIAGONAL : NONE) | ((smoothing_junction & EAST_JUNCTION)? CORNER_CLOCKWISE : NONE) | ((smoothing_junction & NORTH_JUNCTION)? CORNER_COUNTERCLOCKWISE : NONE)
 		if(3)
 			return ((smoothing_junction & SOUTHWEST_JUNCTION)? CORNER_DIAGONAL : NONE) | ((smoothing_junction & WEST_JUNCTION)? CORNER_CLOCKWISE : NONE) | ((smoothing_junction & SOUTH_JUNCTION)? CORNER_COUNTERCLOCKWISE : NONE)
+
+/datum/silly_datum_to_block_byond_bug_2072419
 
 #undef CORNER_NONE
 #undef CORNER_COUNTERCLOCKWISE

@@ -184,7 +184,8 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 					hit(50)
 			return
 
-	if(W.flags & NOBLUDGEON) return
+	if(W.item_flags & NOBLUDGEON)
+		return
 
 	if(W.is_screwdriver())
 		to_chat(user, "<span class='notice'>It's a holowindow, you can't unfasten it!</span>")
@@ -356,7 +357,7 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 	density = 1
 	throwpass = 1
 
-/obj/structure/holohoop/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/holohoop/attackby(obj/item/W, mob/user)
 	if (istype(W, /obj/item/grab) && get_dist(src,user)<2)
 		var/obj/item/grab/G = W
 		if(G.state<2)
@@ -368,7 +369,8 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 		qdel(W)
 		return
 	else if (istype(W, /obj/item) && get_dist(src,user)<2)
-		user.drop_item(src.loc)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		visible_message("<span class='notice'>[user] dunks [W] into the [src]!</span>", 3)
 		return
 

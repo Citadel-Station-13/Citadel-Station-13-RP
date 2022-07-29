@@ -99,14 +99,15 @@
 	if(H.head)
 		qdel(H.head)
 
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/zaddat/(H), slot_wear_mask) // mask has to come first or Shroud helmet will get in the way
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/space/void/zaddat/(H), slot_wear_suit)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/zaddat/(H), SLOT_ID_MASK) // mask has to come first or Shroud helmet will get in the way
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/space/void/zaddat/(H), SLOT_ID_SUIT)
 
-	var/obj/item/storage/toolbox/lunchbox/survival/zaddat/L = new(get_turf(H))
+	var/obj/item/storage/toolbox/lunchbox/survival/zaddat/L = new(H)
+
 	if(H.backbag == 1)
-		H.equip_to_slot_or_del(L, slot_r_hand)
+		H.put_in_hands_or_del(L)
 	else
-		H.equip_to_slot_or_del(L, slot_in_backpack)
+		H.equip_to_slot_or_del(L, /datum/inventory_slot_meta/abstract/put_in_backpack)
 
 /datum/species/zaddat/handle_environment_special(mob/living/carbon/human/H)
 

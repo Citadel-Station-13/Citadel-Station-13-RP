@@ -499,11 +499,11 @@
 		for(var/V in components)
 			var/datum/robot_component/C = components[V]
 			if(!C.installed && istype(W, C.external_type))
+				if(!user.attempt_void_item_for_installation(W))
+					return
 				C.installed = 1
 				C.wrapped = W
 				C.install()
-				user.drop_item()
-				W.loc = null
 
 				var/obj/item/robot_parts/robot_component/WC = W
 				if(istype(WC))
@@ -518,12 +518,10 @@
 			if(bolt)
 				to_chat(user, SPAN_NOTICE("There is already a restraining bolt installed in this cyborg."))
 				return
-
 			else
-				user.drop_from_inventory(W)
-				W.forceMove(src)
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				bolt = W
-
 				to_chat(user, SPAN_NOTICE("You install \the [W]."))
 				return
 
@@ -637,8 +635,8 @@
 		else if(W.w_class != ITEMSIZE_NORMAL)
 			to_chat(user, "\The [W] is too [W.w_class < ITEMSIZE_NORMAL ? "small" : "large"] to fit here.")
 		else
-			user.drop_item()
-			W.loc = src
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 			cell = W
 			to_chat(user, "You insert the power cell.")
 
@@ -711,9 +709,8 @@
 			to_chat(usr, "The upgrade is locked and cannot be used yet!")
 		else
 			if(U.action(src))
+				user.transfer_item_to_loc(U, src, INV_OP_FORCE)
 				to_chat(usr, "You apply the upgrade to [src]!")
-				usr.drop_item()
-				U.loc = src
 			else
 				to_chat(usr, "Upgrade error!")
 
@@ -820,11 +817,11 @@
 	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
 		//if they are holding or wearing a card that has access, that works
-		if(check_access(H.get_active_hand()) || check_access(H.wear_id))
+		if(check_access(H.get_active_held_item()) || check_access(H.wear_id))
 			return 1
 	else if(istype(M, /mob/living/silicon/robot))
 		var/mob/living/silicon/robot/R = M
-		if(check_access(R.get_active_hand()) || istype(R.get_active_hand(), /obj/item/card/robot))
+		if(check_access(R.get_active_held_item()) || istype(R.get_active_held_item(), /obj/item/card/robot))
 			return 1
 	return 0
 
@@ -1081,7 +1078,7 @@
 
 	next_click = world.time + 1
 
-	var/obj/item/W = get_active_hand()
+	var/obj/item/W = get_active_held_item()
 	if (W)
 		W.attack_self(src)
 
@@ -1275,12 +1272,6 @@
 
 /mob/living/silicon/robot/is_sentient()
 	return braintype != BORG_BRAINTYPE_DRONE
-
-
-/mob/living/silicon/robot/drop_item()
-	if(module_active && istype(module_active,/obj/item/gripper))
-		var/obj/item/gripper/G = module_active
-		G.drop_item_nm()
 
 /mob/living/silicon/robot/get_cell()
 	return cell

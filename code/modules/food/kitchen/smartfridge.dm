@@ -187,7 +187,8 @@
 			to_chat("<span class='notice'>The rack can only fit one sheet at a time!</span>")
 			return 1
 		else
-			user.remove_from_mob(WL)
+			if(!user.attempt_insert_item_for_installation(WL, src))
+				return
 			stock(WL)
 			user.visible_message("<span class='notice'>[user] has added \the [WL] to \the [src].</span>", "<span class='notice'>You add \the [WL] to \the [src].</span>")
 
@@ -261,7 +262,8 @@
 		return
 
 	if(accept_check(O))
-		user.remove_from_mob(O)
+		if(!user.attempt_insert_item_for_installation(O, src))
+			return
 		stock(O)
 		user.visible_message("<span class='notice'>[user] has added \the [O] to \the [src].</span>", "<span class='notice'>You add \the [O] to \the [src].</span>")
 

@@ -117,8 +117,7 @@
 	setBrainLoss(braindamage)
 
 	//Drop everything
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+	drop_inventory(TRUE, TRUE, TRUE)
 
 	//Unfreeze some things
 	does_not_breathe = FALSE
@@ -423,7 +422,7 @@
 	if(!ishuman(src))
 		return //If you're not a human you don't have permission to do this.
 	var/mob/living/carbon/human/C = src
-	var/obj/item/grab/G = src.get_active_hand()
+	var/obj/item/grab/G = src.get_active_held_item()
 	if(!istype(G))
 		to_chat(C, "<span class='warning'>You must be grabbing a creature in your active hand to absorb them.</span>")
 		return
@@ -500,7 +499,7 @@
 	if(!ishuman(src))
 		return //If you're not a human you don't have permission to do this.
 
-	var/obj/item/grab/G = src.get_active_hand()
+	var/obj/item/grab/G = src.get_active_held_item()
 	if(!istype(G))
 		to_chat(src, "<span class='warning'>You must be grabbing a creature in your active hand to drain them.</span>")
 		return
@@ -618,7 +617,7 @@
 	if(!ishuman(src))
 		return //If you're not a human you don't have permission to do this.
 	var/mob/living/carbon/human/C = src
-	var/obj/item/grab/G = src.get_active_hand()
+	var/obj/item/grab/G = src.get_active_held_item()
 	if(!istype(G))
 		to_chat(C, "<span class='warning'>You must be grabbing a creature in your active hand to feed them.</span>")
 		return
@@ -708,7 +707,7 @@
 /mob/living/carbon/human/vore_shred_time = 10 SECONDS
 /mob/living/carbon/human/can_shred()
 	//Humans need a grab
-	var/obj/item/grab/G = get_active_hand()
+	var/obj/item/grab/G = get_active_held_item()
 	if(!istype(G))
 		to_chat(src,"<span class='warning'>You have to have a very strong grip on someone first!</span>")
 		return FALSE
