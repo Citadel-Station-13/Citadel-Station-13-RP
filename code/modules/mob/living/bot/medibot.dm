@@ -586,7 +586,7 @@
 		A.desc = "International Medibot of mystery. Though after a closer look, it looks like a fraud."
 		A.skin = "bezerk"
 
-	user.put_in_hands(A)
+	user.put_in_hands_or_drop(A)
 	to_chat(user, SPAN_NOTICE("You add [I] to [src]."))
 	A.robot_arm = I.type
 	A.firstaid = type
