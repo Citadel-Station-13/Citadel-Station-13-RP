@@ -6,3 +6,5 @@
 ######################################################################
 
 # not_a_user - Admin
+lordpapalus - Host
+Lord_Papalus - Host
