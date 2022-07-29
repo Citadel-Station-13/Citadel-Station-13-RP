@@ -11,13 +11,17 @@
 	protection = CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_LOCKED
 	config_entry_value = "localhost"
 
+/datum/config_entry/number/sql_port
+	protection = CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_LOCKED
+	config_entry_value = 3306
+
 /datum/config_entry/string/sql_user
 	protection = CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_LOCKED
 
 /datum/config_entry/string/sql_password
 	protection = CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_LOCKED
 
-/datum/config_entry/string/sql_db
+/datum/config_entry/string/sql_database
 	protection = CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_LOCKED
 
 /datum/config_entry/number/query_debug_log_timeout

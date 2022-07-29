@@ -44,7 +44,7 @@ SUBSYSTEM_DEF(dbcore)
 	if(SSdbcore.Connect())
 		var/datum/db_query/query_round_shutdown = SSdbcore.NewQuery(
 			"UPDATE [format_table_name("round")] SET shutdown_datetime = Now(), end_state = :end_state WHERE id = :round_id",
-			list("end_state" = SSticker.end_state, "round_id" = GLOB.round_id)
+			list("end_state" = "Unknown", "round_id" = GLOB.round_id)
 		)
 		query_round_shutdown.Execute()
 		qdel(query_round_shutdown)

@@ -65,7 +65,7 @@ DEBUG
 			jobban_keylist=list()
 			log_admin("jobban_keylist was empty")
 	else
-		if(!establish_db_connection())
+		if(!SSdbcore.Connect())
 			log_world("Database connection failed. Reverting to the legacy ban system.")
 			log_misc("Database connection failed. Reverting to the legacy ban system.")
 			config_legacy.ban_legacy_system = 1
