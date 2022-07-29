@@ -473,8 +473,16 @@
 			to_chat(usr, "The text you entered was blank, contained illegal characters or was too long. Please correct the text and submit again.")
 			return
 
-		var/datum/db_query/insert_query = dbcon.NewQuery("INSERT INTO [format_table_name("poll")]_textreply (id ,datetime ,pollid ,ckey ,ip ,replytext ,adminrank) VALUES (null, Now(), [pollid], '[usr.ckey]', '[usr.client.address]', '[replytext]', '[adminrank]')")
-		insert_query.Execute()
+		var/datum/db_query/insert_query = SSdbcore.RunQuery(
+			"INSERT INTO [format_table_name("poll_textreply")] (id, datetime, pollid, ckey, ip, replytext, adminrank) VALUES (null, Now(), :pollid, :ckey, :addr, :reply, :rank)",
+			list(
+				"pollid" = pollid,
+				"ckey" = usr.ckey,
+				"addr" = usr.client.address,
+				"reply" = replytext,
+				"rank" = adminrank
+			)
+		)
 
 		to_chat(usr, "<font color=#4F49AF>Feedback logging successful.</font>")
 		usr << browse(null,"window=playerpoll")
@@ -506,8 +514,13 @@
 			to_chat(usr, "<font color='red'>Poll is not valid.</font>")
 			return
 
-		var/datum/db_query/select_query2 = dbcon.NewQuery("SELECT id FROM [format_table_name("poll")]_option WHERE id = [optionid] AND pollid = [pollid]")
-		select_query2.Execute()
+		var/datum/db_query/select_query2 = SSdbcore.RunQuery(
+			"SELECT id FROM [format_table_name("poll_option")] WHERE id = :optionid AND pollid = :pollid",
+			list(
+				"optionid" = optionid,
+				"pollid" = pollid
+			)
+		)
 
 		var/validoption = 0
 
@@ -521,8 +534,13 @@
 
 		var/alreadyvoted = 0
 
-		var/datum/db_query/voted_query = dbcon.NewQuery("SELECT id FROM [format_table_name("poll")]_vote WHERE optionid = [optionid] AND ckey = '[usr.ckey]'")
-		voted_query.Execute()
+		var/datum/db_query/voted_query = SSdbcore.RunQuery(
+			"SELECT id FROM [format_table_name("poll_vote")] WHERE optionid = :optionid AND ckey = :ckey",
+			list(
+				"optionid" = sanitizeSQL(optionid),
+				"ckey" = usr.ckey
+			)
+		)
 
 		while(voted_query.NextRow())
 			alreadyvoted = 1
@@ -536,9 +554,17 @@
 		if(usr && usr.client && usr.client.holder)
 			adminrank = usr.client.holder.rank
 
-
-		var/datum/db_query/insert_query = dbcon.NewQuery("INSERT INTO [format_table_name("poll")]_vote (id ,datetime ,pollid ,optionid ,ckey ,ip ,adminrank, rating) VALUES (null, Now(), [pollid], [optionid], '[usr.ckey]', '[usr.client.address]', '[adminrank]', [(isnull(rating)) ? "null" : rating])")
-		insert_query.Execute()
+		SSdbcore.RunQuery(
+			"INSERT INTO [format_table_name("poll_vote")] (id, datetime, pollid, optionid, ckey, ip, adminrank, rating) VALUES (null, Now(), :pollid, :optionid, :ckey, :address, :rank, :rating)",
+			list(
+				"pollid" = sanitizeSQL(pollid),
+				"optionid" = sanitizeSQL(optionid),
+				"ckey" = usr.ckey,
+				"address" = usr.client.address,
+				"rank" = adminrank,
+				"rating" = isnull(rating)? "null" : sanitizeSQL(rating)
+			)
+		)
 
 		to_chat(usr, "<font color=#4F49AF>Vote successful.</font>")
 		usr << browse(null,"window=playerpoll")
