@@ -74,8 +74,12 @@
 	if(!istext(adm_ckey) || !istext(new_rank))
 		return
 
-	var/datum/db_query/select_query = dbcon.NewQuery("SELECT id FROM [format_table_name("admin")] WHERE ckey = '[adm_ckey]'")
-	select_query.Execute()
+	var/datum/db_query/select_query = SSdbcore.RunQuery(
+		"SELECT id FROM [format_table_name("admin")] WHERE ckey = :ckey",
+		list(
+			"ckey" = adm_ckey
+		)
+	)
 
 	var/new_admin = 1
 	var/admin_id
@@ -102,10 +106,21 @@
 		to_chat(usr, "<font color=#4F49AF>New admin added.</font>")
 	else
 		if(!isnull(admin_id) && isnum(admin_id))
-			var/datum/db_query/insert_query = dbcon.NewQuery("UPDATE `[format_table_name("admin")]` SET rank = '[new_rank]' WHERE id = [admin_id]")
-			insert_query.Execute()
-			var/datum/db_query/log_query = dbcon.NewQuery("INSERT INTO `test`.`[format_table_name("admin")]_log` (`id` ,`datetime` ,`adminckey` ,`adminip` ,`log` ) VALUES (NULL , NOW( ) , '[usr.ckey]', '[usr.client.address]', 'Edited the rank of [adm_ckey] to [new_rank]');")
-			log_query.Execute()
+			SSdbcore.RunQuery(
+				"UPDATE [format_table_name("admin")] SET rank = :rank WHERE id = :id",
+				list(
+					"rank" = new_rank,
+					"id" = admin_id
+				)
+			)
+			SSdbcore.RunQuery(
+				"INSERT INTO [format_table_name("admin_log")] (id, datetime, adminckey, adminip, log) VALUES (NULL, Now(), :ckey, :addr, :log)",
+				list(
+					"ckey" = usr.ckey,
+					"addr" = usr.client.address,
+					"log" = "Edited the rank of [adm_ckey] to [new_rank]"
+				)
+			)
 			to_chat(usr, "<font color=#4F49AF>Admin rank changed.</font>")
 
 /datum/admins/proc/log_admin_permission_modification(var/adm_ckey, var/new_permission)
@@ -136,8 +151,12 @@
 	if(!istext(adm_ckey) || !isnum(new_permission))
 		return
 
-	var/datum/db_query/select_query = dbcon.NewQuery("SELECT id, flags FROM [format_table_name("admin")] WHERE ckey = '[adm_ckey]'")
-	select_query.Execute()
+	var/datum/db_query/select_query = SSdbcore.RunQuery(
+		"SELECT id, flags FROM [format_table_name("admin")] WHERE ckey = :ckey",
+		list(
+			"ckey" = adm_ckey
+		)
+	)
 
 	var/admin_id
 	var/admin_rights

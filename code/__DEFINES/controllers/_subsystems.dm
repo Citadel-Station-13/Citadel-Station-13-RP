@@ -119,7 +119,8 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 // Subsystems shutdown in the reverse of the order they initialize in
 // The numbers just define the ordering, they are meaningless otherwise.
 
-#define INIT_ORDER_FAIL2TOPIC		101
+#define INIT_ORDER_FAIL2TOPIC		102
+#define INIT_ORDER_DBCORE			101
 #define INIT_ORDER_INPUT			100
 #define INIT_ORDER_SOUNDS			95
 #define INIT_ORDER_JOBS				85
