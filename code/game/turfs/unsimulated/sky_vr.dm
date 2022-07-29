@@ -101,8 +101,8 @@
 	var/attempts = 100
 	var/turf/simulated/floor/outdoors/snow/lythios43c/T
 	while(attempts && !T)
-		var/turf/simulated/candidate = locate(rand(5,world.maxx-5),rand(5,world.maxy-5),pick(skyfall_levels))
-		if(candidate.density)
+		var/turf/simulated/candidate = locate(rand(5,-5),rand(5,world.maxy-5),pick(skyfall_levels))
+		if(candidate.density && T)
 			attempts--
 			continue
 
