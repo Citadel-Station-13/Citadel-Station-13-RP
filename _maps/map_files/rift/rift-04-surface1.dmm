@@ -7370,6 +7370,12 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
+"fCz" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/barricade,
+/obj/structure/barricade/cutout/swarmer,
+/turf/simulated/floor/plating,
+/area/maintenance/central_heating/surface_one)
 "fCH" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -21953,8 +21959,8 @@
 /area/rift/surfaceeva/aa/surface_south)
 "prt" = (
 /obj/machinery/door/firedoor/glass,
-/obj/structure/lattice,
-/turf/simulated/open,
+/obj/structure/barricade,
+/turf/simulated/floor/plating,
 /area/maintenance/central_heating/surface_one)
 "prD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -50749,7 +50755,7 @@ bQA
 whO
 yeH
 bQA
-prt
+fCz
 kDP
 kDP
 kDP
