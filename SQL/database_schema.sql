@@ -3,6 +3,7 @@
  *
  * default prefix is citrp_
  * find replace case sensitive __GAME_DB_PREFIX__
+ * PRESERVE ANY vr_'s! We need to replace those tables and features at some point, that's how we konw.
  **/
 
 DROP TABLE IF EXISTS `__GAME_DB_PREFIX__admin`;

@@ -516,8 +516,12 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		related_accounts_ip += "[query_ip.item[1]], "
 		break
 
-	var/datum/db_query/query_cid = dbcon.NewQuery("SELECT ckey FROM [format_table_name("player")] WHERE computerid = '[computer_id]'")
-	query_cid.Execute()
+	var/datum/db_query/query_cid = SSdbcore.RunQuery(
+		"SELECT ckey FROM [format_table_name("player")] WHERE computerid = :cid",
+		list(
+			"cid" = sanitizeSQL(computer_id)
+		)
+	)
 	related_accounts_cid = ""
 	while(query_cid.NextRow())
 		related_accounts_cid += "[query_cid.item[1]], "
@@ -571,8 +575,12 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	// Department Hours
 	if(config_legacy.time_off)
-		var/datum/db_query/query_hours = dbcon.NewQuery("SELECT department, hours FROM vr_player_hours WHERE ckey = '[sql_ckey]'")
-		query_hours.Execute()
+		var/datum/db_query/query_hours = SSdbcore.RunQuery(
+			"SELECT department, hours FROM [format_table_name("vr_player_hours")] WHERE ckey = :ckey",
+			list(
+				"ckey" = sql_ckey
+			)
+		)
 		while(query_hours.NextRow())
 			LAZYINITLIST(department_hours)
 			department_hours[query_hours.item[1]] = text2num(query_hours.item[2])
@@ -589,8 +597,15 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		)
 	else
 		//New player!! Need to insert all the stuff
-		var/datum/db_query/query_insert = dbcon.NewQuery("INSERT INTO [format_table_name("player")] (id, ckey, firstseen, lastseen, ip, computerid, lastadminrank) VALUES (null, '[sql_ckey]', Now(), Now(), '[sql_ip]', '[sql_computerid]', '[sql_admin_rank]')")
-		query_insert.Execute()
+		SSdbcore.RunQuery(
+			"INSERT INTO [format_table_name("player")] (id, ckey, firstseen, lastseen, ip, computerid, lastadminrank) VALUES (null, :ckey, Now(), Now(), :ip, :cid, :rank)",
+			list(
+				"ckey" = sql_ckey,
+				"ip" = sql_ip,
+				"cid" = sql_computerid,
+				"rank" = sql_admin_rank
+			)
+		)
 
 	//Logging player access
 	var/serverip = "[world.internet_address]:[world.port]"
