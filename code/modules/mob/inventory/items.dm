@@ -122,8 +122,8 @@
 /obj/item/proc/update_worn_icon()
 	if(!worn_slot)
 		return	// acceptable
-	ASSERT(ismob(loc))	 // not acceptable
-	var/mob/M = loc
+	var/mob/M = worn_mob()
+	ASSERT(M)	 // not acceptable
 	switch(worn_slot)
 		if(SLOT_ID_BACK)
 			M.update_inv_back()
