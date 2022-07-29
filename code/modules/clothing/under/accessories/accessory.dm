@@ -25,6 +25,9 @@
 	on_removed()
 	return ..()
 
+/obj/item/clothing/accessory/worn_mob()
+	return has_suit? has_suit.worn_mob() : ..()
+
 /obj/item/clothing/accessory/proc/get_inv_overlay()
 	if(!inv_overlay)
 		var/tmp_icon_state = "[overlay_state? "[overlay_state]" : "[icon_state]"]"
