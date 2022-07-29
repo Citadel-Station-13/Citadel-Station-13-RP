@@ -81,6 +81,7 @@
 	if(!istype(S))
 		return
 	has_suit = S
+	forceMove(S)
 
 	// inventory handling start
 
