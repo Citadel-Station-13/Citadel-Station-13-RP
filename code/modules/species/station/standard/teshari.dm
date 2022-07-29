@@ -1,5 +1,6 @@
 /datum/species/teshari
 	name = SPECIES_TESHARI
+	default_bodytype = BODYTYPE_TESHARI
 	name_plural = "Tesharii"
 	id = SPECIES_ID_TESHARI
 
@@ -163,7 +164,7 @@
 
 /datum/species/teshari/equip_survival_gear(mob/living/carbon/human/H)
 	..()
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(H),slot_shoes)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(H),SLOT_ID_SHOES)
 
 /datum/species/teshari/handle_falling(mob/living/carbon/human/H, atom/hit_atom, damage_min, damage_max, silent, planetary)
 

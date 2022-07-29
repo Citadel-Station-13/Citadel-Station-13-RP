@@ -5,7 +5,7 @@
 			continue
 		if(!(A.z in GLOB.using_map.station_levels))
 			continue
-		if(A.area_flags & AF_RAD_SHIELDED)
+		if(A.area_flags & AREA_RAD_SHIELDED)
 			continue
 		if(H.client && H.appendicitis())
 			break

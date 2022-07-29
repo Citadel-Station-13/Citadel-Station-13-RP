@@ -52,43 +52,7 @@
 	QDEL_NULL(src.stored_continue)
 	QDEL_NULL(src.stored_end)
 	QDEL_NULL(closer)
-	. = ..()
-
-/obj/item/storage/MouseDrop(obj/over_object as obj)
-	if(!canremove)
-		return
-
-	if (isliving(usr) || isobserver(usr))
-
-		if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech. why?
-			return
-
-		if(over_object == usr && Adjacent(usr)) // this must come before the screen objects only block
-			src.open(usr)
-			return
-
-		if (!( istype(over_object, /atom/movable/screen) ))
-			return ..()
-
-		// Makes sure that the storage is equipped, so that we can't drag it into our hand from miles away.
-		// There's got to be a better way of doing this.
-		if (!(src.loc == usr) || (src.loc && src.loc.loc == usr))
-			return
-
-		if (( usr.restrained() ) || ( usr.stat ))
-			return
-
-		if ((src.loc == usr) && !(istype(over_object, /atom/movable/screen)) && !usr.unEquip(src))
-			return
-
-		switch(over_object.name)
-			if("r_hand")
-				usr.unEquip(src)
-				usr.put_in_r_hand(src)
-			if("l_hand")
-				usr.unEquip(src)
-				usr.put_in_l_hand(src)
-		src.add_fingerprint(usr)
+	return ..()
 
 /obj/item/storage/AltClick(mob/user)
 	if(user in is_seeing)
@@ -97,6 +61,16 @@
 	// But MouseDrop doesn't use one (as of this writing), so...
 	else if(isliving(user) && Adjacent(user))
 		src.open(user)
+	else
+		return ..()
+
+/obj/item/storage/OnMouseDrop(atom/over, mob/user, proximity, params)
+	if(user != over)
+		return ..()
+	if(user in is_seeing)
+		close(user)
+	else if(isliving(user) && Adjacent(user))
+		open(user)
 	else
 		return ..()
 
@@ -115,6 +89,9 @@
 	return L
 
 /obj/item/storage/proc/show_to(mob/user as mob)
+	// todo: datum storage
+	if(!user.client)
+		return
 	if(user.s_active != src)
 		for(var/obj/item/I in src)
 			if(I.on_found(user))
@@ -324,13 +301,15 @@
 //This proc return 1 if the item can be picked up and 0 if it can't.
 //Set the stop_messages to stop it from printing messages
 /obj/item/storage/proc/can_be_inserted(obj/item/W as obj, stop_messages = 0)
-	if(!istype(W)) return //Not an item
+	if(!istype(W))
+		return //Not an item
 
-	if(usr && usr.isEquipped(W) && !usr.canUnEquip(W))
+	if(usr && usr.is_in_inventory(W) && !usr.can_unequip(W, user = usr))
 		return 0
 
 	if(src.loc == W)
 		return 0 //Means the item is already in the storage item
+
 	if(storage_slots != null && contents.len >= storage_slots)
 		if(!stop_messages)
 			to_chat(usr, "<span class='notice'>[src] is full, make some space.</span>")
@@ -368,39 +347,38 @@
 //This proc handles items being inserted. It does not perform any checks of whether an item can or can't be inserted. That's done by can_be_inserted()
 //The stop_warning parameter will stop the insertion message from being displayed. It is intended for cases where you are inserting multiple items at once,
 //such as when picking up all the items on a tile with one click.
-/obj/item/storage/proc/handle_item_insertion(obj/item/W as obj, prevent_warning = 0)
-	if(!istype(W)) return 0
+/obj/item/storage/proc/handle_item_insertion(obj/item/W as obj, mob/user, prevent_warning = 0)
+	if(!istype(W))
+		return 0
 
-	if(usr)
-		usr.remove_from_mob(W,target = src) //If given a target, handles forceMove()
-		W.on_enter_storage(src)
-		if (usr.client && usr.s_active != src)
-			usr.client.screen -= W
-		W.dropped(usr)
-		add_fingerprint(usr)
-
+	W.forceMove(src)
+	W.on_enter_storage(src)
+	W.item_flags |= IN_STORAGE
+	if(user)
 		if(!prevent_warning)
-			for(var/mob/M in viewers(usr, null))
+			for(var/mob/M in viewers(user))
 				if (M == usr)
 					to_chat(usr, "<span class='notice'>You put \the [W] into [src].</span>")
 				else if (M in range(1)) //If someone is standing close enough, they can tell what it is...
 					M.show_message("<span class='notice'>\The [usr] puts [W] into [src].</span>")
 				else if (W && W.w_class >= 3) //Otherwise they can only see large or normal items from a distance...
 					M.show_message("<span class='notice'>\The [usr] puts [W] into [src].</span>")
-
-		src.orient2hud(usr)
-		if(usr.s_active)
-			usr.s_active.show_to(usr)
-	else
-		W.forceMove(src)
-		W.on_enter_storage(src)
+		if(user.s_active == src)
+			orient2hud(user)
+			show_to(user)
 
 	update_icon()
 	return 1
 
+/obj/item/storage/proc/try_insert(obj/item/I, mob/user, prevent_warning = FALSE, force)
+	if(!force && !can_be_inserted(I, prevent_warning))
+		return FALSE
+	return handle_item_insertion(I, user, prevent_warning)
+
 //Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target
-/obj/item/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location)
-	if(!istype(W)) return 0
+/obj/item/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location, do_move = TRUE)
+	if(!istype(W))
+		return 0
 
 	if(istype(src, /obj/item/storage/fancy))
 		var/obj/item/storage/fancy/F = src
@@ -411,26 +389,28 @@
 			if (M.client)
 				M.client.screen -= W
 
-	if(new_location)
-		if(ismob(loc))
-			W.dropped(usr)
-		if(ismob(new_location))
-			W.hud_layerise()
+	if(do_move)
+		if(new_location)
+			W.forceMove(new_location)
 		else
-			W.reset_plane_and_layer()
-		W.forceMove(new_location)
-	else
-		W.forceMove(get_turf(src))
+			W.forceMove(get_turf(src))
 
-	if(usr)
-		src.orient2hud(usr)
-		if(usr.s_active)
-			usr.s_active.show_to(usr)
+	if(usr?.s_active == src)
+		orient2hud(usr)
+		show_to(usr)
 	if(W.maptext)
 		W.maptext = ""
 	W.on_exit_storage(src)
+	W.item_flags &= ~IN_STORAGE
 	update_icon()
 	return 1
+
+/obj/item/storage/Exited(atom/movable/AM, atom/newLoc)
+	if(isitem(AM))
+		var/obj/item/I = AM
+		if(I.item_flags & IN_STORAGE)
+			remove_from_storage(I, null, FALSE)
+	return ..()
 
 //This proc is called when you want to place an item into the storage item.
 /obj/item/storage/attackby(obj/item/W as obj, mob/user as mob)
@@ -465,22 +445,19 @@
 				return
 			else
 				W.forceMove(get_turf(user))
-				if ((user.client && user.s_active != src))
-					user.client.screen -= W
-				W.dropped(user)
 				to_chat(user, "<span class='warning'>God damn it!</span>")
 
 	W.add_fingerprint(user)
-	return handle_item_insertion(W)
+	return handle_item_insertion(W, user)
 
 /obj/item/storage/attack_hand(mob/user as mob)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(H.l_store == src && !H.get_active_hand())	//Prevents opening if it's in a pocket.
+		if(H.l_store == src && !H.get_active_held_item())	//Prevents opening if it's in a pocket.
 			H.put_in_hands(src)
 			H.l_store = null
 			return
-		if(H.r_store == src && !H.get_active_hand())
+		if(H.r_store == src && !H.get_active_held_item())
 			H.put_in_hands(src)
 			H.r_store = null
 			return
@@ -508,7 +485,7 @@
 			failure = 1
 			continue
 		success = 1
-		handle_item_insertion(I, 1)	//The 1 stops the "You put the [src] into [S]" insertion message from being displayed.
+		handle_item_insertion(I, user, TRUE)	//The 1 stops the "You put the [src] into [S]" insertion message from being displayed.
 	if(success && !failure)
 		to_chat(user, "<span class='notice'>You put everything in [src].</span>")
 	else if(success)
@@ -528,7 +505,6 @@
 			to_chat(usr, "[src] now picks up all items on a tile at once.")
 		if(0)
 			to_chat(usr, "[src] now picks up one item at a time.")
-
 
 /obj/item/storage/verb/quick_empty()
 	set name = "Empty Contents"
@@ -625,7 +601,7 @@
 	..()
 
 /obj/item/storage/attack_self(mob/user as mob)
-	if((user.get_active_hand() == src) || (isrobot(user)) && allow_quick_empty)
+	if((user.get_active_held_item() == src) || (isrobot(user)) && allow_quick_empty)
 		if(src.verbs.Find(/obj/item/storage/verb/quick_empty))
 			src.quick_empty()
 			return 1

@@ -238,10 +238,9 @@
 		playsound(src, W.usesound, 100, 1)
 		user.visible_message("[user] installs the electronics into the airlock assembly.", "You start to install electronics into the airlock assembly.")
 
-		if(do_after(user, 40))
-			if(!src) return
-			user.drop_item()
-			W.loc = src
+		if(do_after(user, 40, src))
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 			to_chat(user, "<span class='notice'>You installed the airlock electronics!</span>")
 			src.state = 2
 			src.electronics = W
@@ -257,10 +256,11 @@
 		user.visible_message("\The [user] starts removing the electronics from the airlock assembly.", "You start removing the electronics from the airlock assembly.")
 
 		if(do_after(user, 40 * W.toolspeed))
-			if(!src) return
+			if(!src)
+				return
 			to_chat(user, "<span class='notice'>You removed the airlock electronics!</span>")
 			src.state = 1
-			electronics.loc = src.loc
+			user.put_in_hands_or_drop(electronics)
 			electronics = null
 
 	else if(istype(W, /obj/item/stack/material) && !glass)

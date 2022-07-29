@@ -102,8 +102,8 @@
 /mob/living/bullet_act(var/obj/item/projectile/P, var/def_zone)
 
 	//Being hit while using a deadman switch
-	if(istype(get_active_hand(),/obj/item/assembly/signaler))
-		var/obj/item/assembly/signaler/signaler = get_active_hand()
+	if(istype(get_active_held_item(),/obj/item/assembly/signaler))
+		var/obj/item/assembly/signaler/signaler = get_active_held_item()
 		if(signaler.deadman && prob(80))
 			log_and_message_admins("has triggered a signaler deadman's switch")
 			src.visible_message("<font color='red'>[src] triggers their deadman's switch!</font>")
@@ -492,8 +492,10 @@
 	return
 
 /mob/living/update_action_buttons()
-	if(!hud_used) return
-	if(!client) return
+	if(!hud_used)
+		return
+	if(!client)
+		return
 
 	if(hud_used.hud_shown != 1)	//Hud toggled to minimal
 		return

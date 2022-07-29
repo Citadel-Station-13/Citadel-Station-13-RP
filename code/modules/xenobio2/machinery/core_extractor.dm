@@ -54,7 +54,7 @@
 
 	move_into_extractor(user,G.affecting)
 
-/obj/machinery/slime/extractor/MouseDrop_T(mob/target, mob/user)
+/obj/machinery/slime/extractor/MouseDroppedOnLegacy(mob/target, mob/user)
 	if(user.stat || user.restrained())
 		return
 	move_into_extractor(user,target)

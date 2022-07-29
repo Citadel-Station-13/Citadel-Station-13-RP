@@ -114,8 +114,5 @@
 		/datum/unarmed_attack/bite/sharp,
 	)
 
-/datum/species/shadekin/get_bodytype()
-	return SPECIES_SHADEKIN
-
 /datum/species/shadekin/can_breathe_water()
 	return TRUE	//they dont quite breathe

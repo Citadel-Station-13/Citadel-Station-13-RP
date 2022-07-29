@@ -7,7 +7,7 @@
 	siemens_coefficient = 0.9
 	body_parts_covered = 0
 
-/obj/item/clothing/head/soft/dropped()
+/obj/item/clothing/head/soft/dropped(mob/user, flags, atom/newLoc)
 	icon_state = initial(icon_state)
 	flipped=0
 	..()
@@ -20,7 +20,7 @@
 	else
 		icon_state = initial(icon_state)
 		to_chat(user, "You flip the hat back in normal position.")
-	update_clothing_icon()	//so our mob-overlays update
+	update_worn_icon()	//so our mob-overlays update
 
 /obj/item/clothing/head/soft/red
 	name = "red cap"

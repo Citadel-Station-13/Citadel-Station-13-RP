@@ -56,7 +56,6 @@
 			cashmoney.worth -= gameprice
 
 			if(cashmoney.worth <= 0)
-				usr.drop_from_inventory(cashmoney)
 				qdel(cashmoney)
 			else
 				cashmoney.update_icon()

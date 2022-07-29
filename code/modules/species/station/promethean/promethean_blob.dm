@@ -357,11 +357,12 @@
 		if(H)
 			new_hat = H
 			has_hat = TRUE
-			drop_from_inventory(H)
+			temporarily_remove_from_inventory(H, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 			things_to_drop -= H
+			break
 
 	for(var/obj/item/I in things_to_drop) //rip hoarders
-		drop_from_inventory(I)
+		drop_item_to_ground(I)
 
 	if(w_uniform && istype(w_uniform,/obj/item/clothing)) //No webbings tho. We do this after in case a suit was in the way
 		var/obj/item/clothing/uniform = w_uniform
@@ -458,8 +459,10 @@
 	blob.name = "Promethean Blob"
 	var/obj/item/hat = blob.hat
 	blob.drop_hat()
-	drop_from_inventory(hat) // Hat me baby
-	equip_to_slot_if_possible(hat, slot_head)
+
+	if(hat)
+		if(!equip_to_slot_if_possible(hat, SLOT_ID_HEAD))
+			hat.forceMove(drop_location())
 	nutrition = blob.nutrition // food good
 
 
@@ -480,8 +483,8 @@
 		B.owner = src
 
 	//vore_organs.Cut()
-	if(blob.prev_left_hand) put_in_l_hand(blob.prev_left_hand) //The restore for when reforming.
-	if(blob.prev_right_hand) put_in_r_hand(blob.prev_right_hand)
+	if(blob.prev_left_hand) put_in_left_hand(blob.prev_left_hand) //The restore for when reforming.
+	if(blob.prev_right_hand) put_in_right_hand(blob.prev_right_hand)
 
 	Life(1, SSmobs.times_fired)
 

@@ -94,7 +94,7 @@
 
 /obj/singularity/energy_ball/proc/handle_energy()
 	if (energy <= 0)
-		investigate_log("collapsed.", I_SINGULO)
+		investigate_log("collapsed.", INVESTIGATE_SINGULO)
 		qdel(src)
 		return TRUE
 	if(energy >= energy_to_raise)

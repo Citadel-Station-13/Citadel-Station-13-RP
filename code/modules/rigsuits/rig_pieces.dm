@@ -5,7 +5,7 @@
 /obj/item/clothing/head/helmet/space/rig
 	name = "helmet"
 	flags = PHORONGUARD
-	clothing_flags = THICKMATERIAL|ALLOW_SURVIVALFOOD
+	clothing_flags = THICKMATERIAL | ALLOW_SURVIVALFOOD | EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB | ALLOWINTERNALS
 	flags_inv      = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 	body_parts_covered = HEAD|FACE|EYES
 	heat_protection    = HEAD|FACE|EYES
@@ -62,7 +62,7 @@
 
 /obj/item/clothing/gloves/gauntlets/rig
 	name = "gauntlets"
-	clothing_flags = THICKMATERIAL
+	clothing_flags = THICKMATERIAL | EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
 	flags = PHORONGUARD
 	body_parts_covered = HANDS
 	heat_protection    = HANDS
@@ -98,6 +98,7 @@
 /obj/item/clothing/shoes/magboots/rig
 	name = "boots"
 	flags = PHORONGUARD
+	clothing_flags = EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
 	body_parts_covered = FEET
 	cold_protection    = FEET
 	heat_protection    = FEET
@@ -145,7 +146,7 @@
 
 	//Flags
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	clothing_flags     = THICKMATERIAL|ALLOWINTERNALS
+	clothing_flags     = THICKMATERIAL | EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
 	cold_protection    = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	flags              = PHORONGUARD
 	flags_inv          = HIDEJUMPSUIT|HIDETAIL
@@ -224,10 +225,10 @@
 	if(istype(I, /obj/item/material/knife/tacknife))
 		if(tacknife)
 			return
-		M.drop_item()
+		if(!M.attempt_insert_item_for_installation(I, src))
+			return
 		tacknife = I
-		I.loc = src
-		to_chat(M, SPAN_NOTICE("You slide the [I] into [src]."))
+		to_chat(M, "<span class='notice'>You slide the [I] into [src].</span>")
 		playsound(M, 'sound/weapons/flipblade.ogg', 40, TRUE)
 		update_icon()
 	..()
@@ -260,7 +261,8 @@
 
 /obj/item/clothing/head/lightrig
 	name = "mask"
-	flags = THICKMATERIAL|ALLOWINTERNALS|PHORONGUARD
+	clothing_flags = THICKMATERIAL | ALLOWINTERNALS | EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
+	flags = PHORONGUARD
 	body_parts_covered = HEAD|FACE|EYES
 	heat_protection    = HEAD|FACE|EYES
 	cold_protection    = HEAD|FACE|EYES
@@ -269,7 +271,8 @@
 	name = "suit"
 	allowed = list(/obj/item/flashlight)
 	flags_inv = HIDEJUMPSUIT
-	flags = THICKMATERIAL|PHORONGUARD
+	clothing_flags = THICKMATERIAL | EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
+	flags = PHORONGUARD
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	heat_protection    = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	cold_protection    = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
@@ -277,6 +280,7 @@
 /obj/item/clothing/shoes/lightrig
 	name = "boots"
 	flags = PHORONGUARD
+	clothing_flags = EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
 	species_restricted = null
 	body_parts_covered = FEET
 	cold_protection    = FEET
@@ -284,7 +288,7 @@
 
 /obj/item/clothing/gloves/gauntlets/lightrig
 	name = "gloves"
-	flags = THICKMATERIAL
+	clothing_flags = THICKMATERIAL | EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
 	flags = PHORONGUARD
 	species_restricted = null
 	body_parts_covered = HANDS

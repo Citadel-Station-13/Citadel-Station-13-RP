@@ -53,15 +53,14 @@
 	. = ..()
 
 /obj/item/mop_deploy/attack_self(mob/user as mob)
-	user.drop_from_inventory(src)
 	qdel(src)
 
-/obj/item/mop_deploy/dropped()
+/obj/item/mop_deploy/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	qdel(src)
 
 /obj/item/mop_deploy/process(delta_time)
-	if(!creator || loc != creator || !creator.item_is_in_hands(src))
+	if(!creator || loc != creator || !creator.is_holding(src))
 		// Tidy up a bit.
 		if(istype(loc,/mob/living))
 			var/mob/living/carbon/human/host = loc
@@ -72,5 +71,6 @@
 							organ.implants -= src
 			host.pinned -= src
 			host.embedded -= src
-			host.drop_from_inventory(src)
+			host._handle_inventory_hud_remove(src)
+		qdel(src)
 		spawn(1) if(!QDELETED(src)) qdel(src)

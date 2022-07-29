@@ -12,33 +12,6 @@
 /mob/living
 	var/list/status_indicators = null // Will become a list as needed.
 
-// Adds an icon_state, or image overlay, to the list of indicators to be managed automatically.
-// Also initializes the list if one doesn't exist.
-/mob/living/proc/add_status_indicator(image/thing)
-	if(get_status_indicator(thing)) // No duplicates, please.
-		return
-
-	if(!istype(thing, /image))
-		thing = image(icon = 'icons/mob/status_indicators.dmi', icon_state = thing)
-
-	LAZYADD(status_indicators, thing)
-	handle_status_indicators()
-
-// Similar to above but removes it instead, and nulls the list if it becomes empty as a result.
-/mob/living/proc/remove_status_indicator(image/thing)
-	thing = get_status_indicator(thing)
-
-	cut_overlay(thing)
-	LAZYREMOVE(status_indicators, thing)
-	handle_status_indicators()
-
-/mob/living/proc/get_status_indicator(image/thing)
-	if(!istype(thing, /image))
-		for(var/image/I in status_indicators)
-			if(I.icon_state == thing)
-				return I
-	return LAZYACCESS(status_indicators, LAZYFIND(status_indicators, thing))
-
 // Refreshes the indicators over a mob's head. Should only be called when adding or removing a status indicator with the above procs,
 // or when the mob changes size visually for some reason.
 /mob/living/proc/handle_status_indicators()
@@ -84,6 +57,32 @@
 		// and it won't cause any issues since no more icons will be added, and the var is not used for anything else.
 		current_x_position += STATUS_INDICATOR_ICON_X_SIZE + STATUS_INDICATOR_ICON_MARGIN
 
+// Adds an icon_state, or image overlay, to the list of indicators to be managed automatically.
+// Also initializes the list if one doesn't exist.
+/mob/living/proc/add_status_indicator(image/thing)
+	if(get_status_indicator(thing)) // No duplicates, please.
+		return
+
+	if(!istype(thing, /image))
+		thing = image(icon = 'icons/mob/status_indicators.dmi', icon_state = thing)
+
+	LAZYADD(status_indicators, thing)
+	handle_status_indicators()
+
+// Similar to above but removes it instead, and nulls the list if it becomes empty as a result.
+/mob/living/proc/remove_status_indicator(image/thing)
+	thing = get_status_indicator(thing)
+
+	cut_overlay(thing)
+	LAZYREMOVE(status_indicators, thing)
+	handle_status_indicators()
+
+/mob/living/proc/get_status_indicator(image/thing)
+	if(!istype(thing, /image))
+		for(var/image/I in status_indicators)
+			if(I.icon_state == thing)
+				return I
+	return LAZYACCESS(status_indicators, LAZYFIND(status_indicators, thing))
 
 #undef STATUS_INDICATOR_Y_OFFSET
 #undef STATUS_INDICATOR_ICON_X_SIZE

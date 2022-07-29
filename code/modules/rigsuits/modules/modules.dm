@@ -150,7 +150,7 @@
 		to_chat(usr, "<span class='warning'>You cannot use the [interface_name] again so soon.</span>")
 		return 0
 
-	if(!holder || holder.canremove)
+	if(!holder?.is_activated())
 		to_chat(usr, "<span class='warning'>The suit is not initialized.</span>")
 		return 0
 
@@ -238,7 +238,7 @@
 		SetupStat(R)
 
 /mob/proc/SetupStat(var/obj/item/rig/R)
-	if(R && !R.canremove && R.installed_modules.len && statpanel("Hardsuit Modules"))
+	if(R?.is_activated() && R.installed_modules.len && statpanel("Hardsuit Modules"))
 		var/cell_status = R.cell ? "[R.cell.charge]/[R.cell.maxcharge]" : "ERROR"
 		stat("Suit charge", cell_status)
 		for(var/obj/item/rig_module/module in R.installed_modules)

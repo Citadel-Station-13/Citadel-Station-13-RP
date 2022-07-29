@@ -78,7 +78,7 @@
 	if(beep && victim && victim.pulse)
 		playsound(src, 'sound/machines/quiet_beep.ogg')
 
-/obj/machinery/vitals_monitor/MouseDrop(over_object, src_location, over_location)
+/obj/machinery/vitals_monitor/OnMouseDropLegacy(over_object, src_location, over_location)
 	if(!CanMouseDrop(over_object))
 		return
 	if(victim)

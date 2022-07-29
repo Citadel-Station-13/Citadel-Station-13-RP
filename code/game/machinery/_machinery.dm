@@ -371,7 +371,7 @@
 				if(istype(B, P) && istype(A, P))
 					if(B.rating > A.rating)
 						R.remove_from_storage(B, src)
-						R.handle_item_insertion(A, 1)
+						R.handle_item_insertion(A, null, TRUE)
 						component_parts -= A
 						component_parts += B
 						B.loc = null

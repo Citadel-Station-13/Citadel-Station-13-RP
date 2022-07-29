@@ -55,9 +55,10 @@
 		to_chat(user, "<span class='danger'>Another grenade of that type will not fit into the module.</span>")
 		return 0
 
+	if(!user.attempt_consume_item_for_construction(input_device))
+		return
+
 	to_chat(user, "<font color=#4F49AF><b>You slot \the [input_device] into the suit module.</b></font>")
-	user.drop_from_inventory(input_device)
-	qdel(input_device)
 	accepted_item.charges++
 	return 1
 
@@ -231,7 +232,6 @@
 		return
 
 	for(var/obj/item/melee/energy/blade/blade in M.contents)
-		M.drop_from_inventory(blade)
 		qdel(blade)
 
 /obj/item/rig_module/fabricator
@@ -339,4 +339,4 @@
 		return
 
 	for(var/obj/item/material/knife/machete/armblade/stabby in M.contents)
-		M.drop_from_inventory(stabby)
+		M.drop_item_to_ground(stabby, INV_OP_FORCE)

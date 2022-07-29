@@ -13,7 +13,7 @@
 	for(var/mob/living/M in contents)
 		M.examine(user)
 
-/obj/item/holder/MouseDrop(mob/M as mob)
+/obj/item/holder/OnMouseDropLegacy(mob/M as mob)
 	..()
 	if(M != usr) return
 	if(usr == src) return

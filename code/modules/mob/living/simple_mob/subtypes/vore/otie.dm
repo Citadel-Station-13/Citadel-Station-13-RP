@@ -273,7 +273,7 @@
 		riding_datum = new /datum/riding/simple_mob(src)
 	verbs |= /mob/living/simple_mob/proc/animal_mount
 
-/mob/living/simple_mob/otie/MouseDrop_T(mob/living/M, mob/living/user)
+/mob/living/simple_mob/otie/MouseDroppedOnLegacy(mob/living/M, mob/living/user)
 	return
 
 /datum/say_list/otie

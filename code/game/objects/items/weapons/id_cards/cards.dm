@@ -101,7 +101,7 @@
 	origin_tech = list(TECH_MAGNET = 2, TECH_ILLEGAL = 2)
 	var/uses = 10
 
-/obj/item/card/emag/resolve_attackby(obj/item/W, mob/user, params, attack_modifier)
+/obj/item/card/emag/resolve_attackby(atom/W, mob/user, params, attack_modifier = 1)
 	var/used_uses = W.emag_act(uses, user, src)
 	if(used_uses < 0)
 		return ..(W, user)
@@ -116,8 +116,7 @@
 	log_and_message_admins("emagged \an [W].")
 
 	if(uses<1)
-		user.visible_message("<span class='warning'>\The [src] fizzles and sparks - it seems it's been used once too often, and is now spent.</span>")
-		user.drop_item()
+		to_chat(user, "<span class='warning'>\The [src] fizzles and sparks - it seems it's been used once too often, and is now spent.</span>")
 		var/obj/item/card/emag_broken/junk = new(user.loc)
 		junk.add_fingerprint(user)
 		qdel(src)

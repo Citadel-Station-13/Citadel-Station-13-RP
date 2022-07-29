@@ -446,9 +446,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 				icon = 'icons/obj/pda_wrist.dmi'
 				item_state = icon_state
 				item_icons = list(
-					/datum/inventory_slot_meta/inventory/belt = 'icons/mob/clothing/pda_wrist.dmi',
-					/datum/inventory_slot_meta/inventory/id = 'icons/mob/clothing/pda_wrist.dmi',
-					/datum/inventory_slot_meta/inventory/gloves = 'icons/mob/clothing/pda_wrist.dmi'
+					SLOT_ID_BELT = 'icons/mob/clothing/pda_wrist.dmi',
+					SLOT_ID_WORN_ID = 'icons/mob/clothing/pda_wrist.dmi',
+					SLOT_ID_GLOVES = 'icons/mob/clothing/pda_wrist.dmi'
 				)
 				desc = "A portable microcomputer by Thinktronic Systems, LTD. This model is a wrist-bound version."
 				slot_flags = SLOT_ID | SLOT_BELT | SLOT_GLOVES
@@ -483,7 +483,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 /obj/item/pda/GetID()
 	return id
 
-/obj/item/pda/MouseDrop(obj/over_object as obj, src_location, over_location)
+/obj/item/pda/OnMouseDropLegacy(obj/over_object as obj, src_location, over_location)
 	var/mob/M = usr
 	if((!istype(over_object, /atom/movable/screen)) && can_use())
 		return attack_self(M)
@@ -1057,10 +1057,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if (id)
 		if (ismob(loc))
 			var/mob/M = loc
-			M.put_in_hands(id)
+			M.put_in_hands_or_drop(id)
 			to_chat(usr, "<span class='notice'>You remove the ID from the [name].</span>")
 		else
-			id.loc = get_turf(src)
+			id.forceMove(drop_location())
 		id = null
 
 /obj/item/pda/proc/remove_pen()
@@ -1068,7 +1068,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if(O)
 		if(istype(loc, /mob))
 			var/mob/M = loc
-			if(M.get_active_hand() == null)
+			if(M.get_active_held_item() == null)
 				M.put_in_hands(O)
 				to_chat(usr, "<span class='notice'>You remove \the [O] from \the [src].</span>")
 				return
@@ -1275,18 +1275,21 @@ GLOBAL_LIST_EMPTY(PDAs)
 			remove_id()
 			return 1
 		else
-			var/obj/item/I = user.get_active_hand()
-			if (istype(I, /obj/item/card/id) && user.unEquip(I))
-				I.loc = src
+			var/obj/item/I = user.get_active_held_item()
+			if (istype(I, /obj/item/card/id))
+				if(!user.attempt_insert_item_for_installation(I, src))
+					return
 				id = I
 			return 1
 	else
-		var/obj/item/card/I = user.get_active_hand()
-		if (istype(I, /obj/item/card/id) && I:registered_name && user.unEquip(I))
+		var/obj/item/card/I = user.get_active_held_item()
+		if (istype(I, /obj/item/card/id) && I:registered_name)
 			var/obj/old_id = id
-			I.loc = src
+			if(!user.attempt_insert_item_for_installation(I, src))
+				return
 			id = I
-			user.put_in_hands(old_id)
+			if(old_id && !user.put_in_hands(old_id))
+				return
 			return 1
 	return 0
 
@@ -1294,9 +1297,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 /obj/item/pda/attackby(obj/item/C as obj, mob/user as mob)
 	..()
 	if(istype(C, /obj/item/cartridge) && !cartridge)
+		if(!user.attempt_insert_item_for_installation(C, src))
+			return
 		cartridge = C
-		user.drop_item()
-		cartridge.loc = src
 		to_chat(usr, "<span class='notice'>You insert [cartridge] into [src].</span>")
 		SSnanoui.update_uis(src) // update all UIs attached to src
 		if(cartridge.radio)
@@ -1321,9 +1324,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 					updateSelfDialog()//Update self dialog on success.
 			return	//Return in case of failed check or when successful.
 		updateSelfDialog()//For the non-input related code.
-	else if(istype(C, /obj/item/paicard) && !src.pai)
-		user.drop_item()
-		C.loc = src
+	else if(istype(C, /obj/item/paicard) && !pai)
+		if(!user.attempt_insert_item_for_installation(C, src))
+			return
 		pai = C
 		to_chat(user, "<span class='notice'>You slot \the [C] into \the [src].</span>")
 		SSnanoui.update_uis(src) // update all UIs attached to src
@@ -1332,10 +1335,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 		if(O)
 			to_chat(user, "<span class='notice'>There is already a pen in \the [src].</span>")
 		else
-			user.drop_item()
-			C.loc = src
+			if(!user.attempt_insert_item_for_installation(C, src))
+				return
 			to_chat(user, "<span class='notice'>You slot \the [C] into \the [src].</span>")
-	return
 
 /obj/item/pda/attack(mob/living/C as mob, mob/living/user as mob)
 	if (istype(C, /mob/living/carbon))

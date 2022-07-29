@@ -42,9 +42,8 @@
 		if(mytape)
 			to_chat(user, "<span class='notice'>There's already a tape inside.</span>")
 			return
-		if(!user.unEquip(I))
+		if(!user.attempt_insert_item_for_installation(I, src))
 			return
-		I.forceMove(src)
 		mytape = I
 		to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
 		update_icon()
@@ -59,7 +58,7 @@
 
 
 /obj/item/tape_recorder/attack_hand(mob/user)
-	if(user.get_inactive_hand() == src)
+	if(user.get_inactive_held_item() == src)
 		if(mytape)
 			eject()
 			return

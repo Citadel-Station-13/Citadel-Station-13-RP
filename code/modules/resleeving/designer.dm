@@ -34,14 +34,13 @@
 
 /obj/machinery/computer/transhuman/designer/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/disk/body_record))
-		user.unEquip(W)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		disk = W
-		disk.forceMove(src)
 		to_chat(user, "<span class='notice'>You insert \the [W] into \the [src].</span>")
 		updateUsrDialog()
 	else
 		..()
-	return
 
 /obj/machinery/computer/transhuman/designer/attack_ai(mob/user as mob)
 	return attack_hand(user)
