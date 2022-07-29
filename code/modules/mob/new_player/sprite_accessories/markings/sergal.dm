@@ -1,7 +1,7 @@
 /datum/sprite_accessory/marking/sergal
 	icon = "icons/mob/sprite_accessories/markings/sergal.dmi"
 
-/datum/sprite_accessory/marking/sergal_full
+/datum/sprite_accessory/marking/sergal/sergal_full
 	name = "Sergal Markings"
 	icon_state = "sergal_full"
 	color_blend_mode = ICON_MULTIPLY
@@ -9,7 +9,7 @@
 	species_allowed = list(SPECIES_SERGAL)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/marking/sergal_full_female
+/datum/sprite_accessory/marking/sergal/sergal_full_female
 	name = "Sergal Markings (Female)"
 	icon_state = "sergal_full_female"
 	color_blend_mode = ICON_MULTIPLY
@@ -17,7 +17,7 @@
 	species_allowed = list(SPECIES_SERGAL)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/marking/sergaleyes
+/datum/sprite_accessory/marking/sergal/sergaleyes
 	name = "Sergal Eyes"
 	icon_state = "eyes_sergal"
 	body_parts = list(BP_HEAD)

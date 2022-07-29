@@ -3100,6 +3100,7 @@
 #include "code\modules\mob\new_player\sprite_accessories\facial_hair\vox_facial_hair.dm"
 #include "code\modules\mob\new_player\sprite_accessories\facial_hair\vulpakin_facial_hair.dm"
 #include "code\modules\mob\new_player\sprite_accessories\hair\hair.dm"
+#include "code\modules\mob\new_player\sprite_accessories\hair\sergal_hair.dm"
 #include "code\modules\mob\new_player\sprite_accessories\hair\shadekin.dm"
 #include "code\modules\mob\new_player\sprite_accessories\hair\skrell_hair.dm"
 #include "code\modules\mob\new_player\sprite_accessories\hair\tajaran_hair.dm"
