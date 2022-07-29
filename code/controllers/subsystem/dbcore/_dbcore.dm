@@ -306,3 +306,18 @@ Delayed insert mode was removed in mysql 7 and only works with MyISAM type table
  */
 /proc/sanitizeSQL(t)
 	return "[t]"
+
+/**
+ * LISTEN UP MOTHERFUCKERS
+ * This is NOT LIKE THAT PROC ABOVE THAT.
+ *
+ * DO NOT REPLACE THIS BLINDLY, LEST YOU OPEN US UP TO SQL INJECTION ATTACKS
+ * We'll phase both of these out eventually(tm)
+ * DON'T BLINDLY TOUCH IT.
+ */
+// Sanitize inputs to avoid SQL injection attacks
+/proc/sql_sanitize_text(var/text)
+	text = replacetext(text, "'", "''")
+	text = replacetext(text, ";", "")
+	text = replacetext(text, "&", "")
+	return text

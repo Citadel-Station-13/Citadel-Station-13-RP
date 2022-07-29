@@ -81,16 +81,18 @@ world/IsBanned(key,address,computer_id,type,real_bans_only=FALSE)
 		var/cidquery = ""
 		if(address)
 			failedip = 0
-			ipquery = " OR ip = '[address]' "
+			ipquery = " OR ip = ':ip' "
 
 		if(computer_id)
 			failedcid = 0
-			cidquery = " OR computerid = '[computer_id]' "
+			cidquery = " OR computerid = ':cid' "
 
 		var/datum/db_query/query = SSdbcore.RunQuery(
 			"SELECT ckey, ip, computerid, a_ckey, reason, expiration_time, duration, bantime, bantype FROM [format_table_name("ban")] WHERE (ckey = :ckey [ipquery] [cidquery]) AND (bantype = 'PERMABAN' OR (bantype = 'TEMPBAN' AND expiration_time > Now())) AND isnull(unbanned)",
 			list(
-				"ckey" = ckeytext
+				"ckey" = ckeytext,
+				"ip" = address,
+				"cid" = computer_id
 			)
 		)
 
