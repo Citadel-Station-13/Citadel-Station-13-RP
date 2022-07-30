@@ -4,6 +4,9 @@ SQL_ENABLED
 ## SQL address
 SQL_ADDRESS localhost
 
+## SQL port
+SQL_PORT 3306
+
 ## SQL user
 SQL_USER root
 

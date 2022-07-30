@@ -137,8 +137,13 @@
 
 				var/list/datum/polloption/options = list()
 
-				var/datum/db_query/options_query = dbcon.NewQuery("SELECT id, text FROM [format_table_name("poll")]_option WHERE pollid = [pollid]")
-				options_query.Execute()
+				var/datum/db_query/options_query = SSdbcore.RunQuery(
+					"SELECT id, text FROM [format_table_name("poll_option")] WHERE pollid = :id",
+					list(
+						"id" = pollid
+					)
+				)
+
 				while(options_query.NextRow())
 					var/datum/polloption/PO = new()
 					PO.optionid = text2num(options_query.item[1])
@@ -178,8 +183,13 @@
 
 			//Polls with a text input
 			if("TEXT")
-				var/datum/db_query/voted_query = dbcon.NewQuery("SELECT replytext FROM [format_table_name("poll")]_textreply WHERE pollid = [pollid] AND ckey = '[usr.ckey]'")
-				voted_query.Execute()
+				var/datum/db_query/voted_query = SSdbcore.RunQuery(
+					"SELECT replytext FROM [format_table_name("poll_textreply")] WHERE pollid = :id AND ckey = :ckey",
+					list(
+						"id" = pollid,
+						"ckey" = usr.ckey
+					)
+				)
 
 				var/voted = 0
 				var/vote_text = ""
@@ -220,8 +230,13 @@
 
 			//Polls with a text input
 			if("NUMVAL")
-				var/datum/db_query/voted_query = dbcon.NewQuery("SELECT o.text, v.rating FROM [format_table_name("poll")]_option o, [format_table_name("poll")]_vote v WHERE o.pollid = [pollid] AND v.ckey = '[usr.ckey]' AND o.id = v.optionid")
-				voted_query.Execute()
+				var/datum/db_query/voted_query = SSdbcore.RunQuery(
+					"SELECT o.text, v.rating FROM [format_table_name("poll_option")] o, [format_table_name("poll_vote")] v WHERE o.pollid = :pid AND v.ckey = :ckey AND o.id = v.optionid",
+					list(
+						"pid" = pollid,
+						"ckey" = usr.ckey
+					)
+				)
 
 				var/output = "<div align='center'><B>Player poll</B>"
 				output +="<hr>"
@@ -246,8 +261,12 @@
 					var/minid = 999999
 					var/maxid = 0
 
-					var/datum/db_query/option_query = dbcon.NewQuery("SELECT id, text, minval, maxval, descmin, descmid, descmax FROM [format_table_name("poll")]_option WHERE pollid = [pollid]")
-					option_query.Execute()
+					var/datum/db_query/option_query = SSdbcore.RunQuery(
+						"SELECT id, text, minval, maxval, descmin, descmid, descmax FROM [format_table_name("poll_option")] WHERE pollid = :id",
+						list(
+							"id" = pollid
+						)
+					)
 					while(option_query.NextRow())
 						var/optionid = text2num(option_query.item[1])
 						var/optiontext = option_query.item[2]
@@ -289,8 +308,13 @@
 
 				src << browse(output,"window=playerpoll;size=500x500")
 			if("MULTICHOICE")
-				var/datum/db_query/voted_query = dbcon.NewQuery("SELECT optionid FROM [format_table_name("poll")]_vote WHERE pollid = [pollid] AND ckey = '[usr.ckey]'")
-				voted_query.Execute()
+				var/datum/db_query/voted_query = SSdbcore.RunQuery(
+					"SELECT optionid FROM [format_table_name("poll_vote")] WHERE pollid = :id AND ckey = :ckey",
+					list(
+						"id" = pollid,
+						"ckey" = usr.ckey
+					)
+				)
 
 				var/list/votedfor = list()
 				var/voted = 0
@@ -302,8 +326,13 @@
 				var/maxoptionid = 0
 				var/minoptionid = 0
 
-				var/datum/db_query/options_query = dbcon.NewQuery("SELECT id, text FROM [format_table_name("poll")]_option WHERE pollid = [pollid]")
-				options_query.Execute()
+				var/datum/db_query/options_query = SSdbcore.RunQuery(
+					"SELECT id, text FROM [format_table_name("poll_option")] WHERE pollid = :id",
+					list(
+						"id" = pollid
+					)
+				)
+
 				while(options_query.NextRow())
 					var/datum/polloption/PO = new()
 					PO.optionid = text2num(options_query.item[1])
@@ -361,8 +390,12 @@
 
 	if(SSdbcore.Connect())
 
-		var/datum/db_query/select_query = dbcon.NewQuery("SELECT starttime, endtime, question, polltype, multiplechoiceoptions FROM [format_table_name("poll")]_question WHERE id = [pollid] AND Now() BETWEEN starttime AND endtime")
-		select_query.Execute()
+		var/datum/db_query/select_query = SSdbcore.RunQuery(
+			"SELECT starttime, endtime, question, polltype, multiplechoiceoptions FROM [format_table_name("poll_question")] WHERE id = :id AND Now() BETWEEN starttime AND endtime",
+			list(
+				"id" = pollid
+			)
+		)
 
 		var/validpoll = 0
 		var/multiplechoiceoptions = 0
@@ -379,8 +412,13 @@
 			to_chat(usr, "<font color='red'>Poll is not valid.</font>")
 			return
 
-		var/datum/db_query/select_query2 = dbcon.NewQuery("SELECT id FROM [format_table_name("poll")]_option WHERE id = [optionid] AND pollid = [pollid]")
-		select_query2.Execute()
+		var/datum/db_query/select_query2 = SSdbcore.RunQuery(
+			"SELECT id FROM [format_table_name("poll_option")] WHERE id = :id AND pollid = :pollid",
+			list(
+				"id" = optionid,
+				"pollid" = pollid
+			)
+		)
 
 		var/validoption = 0
 
@@ -394,8 +432,13 @@
 
 		var/alreadyvoted = 0
 
-		var/datum/db_query/voted_query = dbcon.NewQuery("SELECT id FROM [format_table_name("poll")]_vote WHERE pollid = [pollid] AND ckey = '[usr.ckey]'")
-		voted_query.Execute()
+		var/datum/db_query/voted_query = SSdbcore.RunQuery(
+			"SELECT id FROM [format_table_name("poll_vote")] WHERE pollid = :id AND ckey = :ckey",
+			list(
+				"id" = pollid,
+				"ckey" = usr.ckey
+			)
+		)
 
 		while(voted_query.NextRow())
 			alreadyvoted += 1
@@ -415,8 +458,16 @@
 			adminrank = usr.client.holder.rank
 
 
-		var/datum/db_query/insert_query = dbcon.NewQuery("INSERT INTO [format_table_name("poll")]_vote (id ,datetime ,pollid ,optionid ,ckey ,ip ,adminrank) VALUES (null, Now(), [pollid], [optionid], '[usr.ckey]', '[usr.client.address]', '[adminrank]')")
-		insert_query.Execute()
+		var/datum/db_query/insert_query = SSdbcore.RunQuery(
+			"INSERT INTO [format_table_name("poll_vote")] (id, datetime, pollid, optionid, ckey, ip, adminrank) VALUES (null, Now(), :poll, :option, :ckey, :addr, :rank)",
+			list(
+				"poll" = pollid,
+				"option" = optionid,
+				"ckey" = usr.ckey,
+				"addr" = usr.client.address,
+				"rank" = adminrank
+			)
+		)
 
 		to_chat(usr, "<font color=#4F49AF>Vote successful.</font>")
 		usr << browse(null,"window=playerpoll")
