@@ -41,3 +41,7 @@
   - rscadd: Adds diona bodymarkings we already had sprites for
   - bugfix: Second heterochromia works now
   - refactor: Refactors parts of the body marking code
+2022-07-30:
+  TheLordME:
+  - bugfix: fixed a few of my mistakes
+  - bugfix: fixed Distress signals being way to loud
