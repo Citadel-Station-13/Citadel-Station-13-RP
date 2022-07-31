@@ -1,3 +1,8 @@
+/obj/item/clothing/_inv_return_attached()
+	if(!accessories)
+		return ..()
+	return ..() + accessories
+
 /obj/item/clothing/equipped(mob/user, slot, flags)
 	. = ..()
 	// propagate through accessories
