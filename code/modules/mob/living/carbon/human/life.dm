@@ -640,6 +640,9 @@
 		var/mob/living/carbon/human/H = src
 		if(H.species.name == SPECIES_PROTEAN)
 			return // dont modify protean heat levels
+		//! I hate this, fuck you. Don't override shit in human life(). @Zandario
+		if(H.species.name == SPECIES_ADHERENT)
+			return // Don't modify Adherent heat levels ffs
 
 		else
 			species.heat_level_1 = 400
@@ -672,6 +675,7 @@
 						add_modifier(/datum/modifier/synthcooling, 15 SECONDS) // enable cooling systems at cost of energy
 						src.nutrition -= 50
 					last_synthcooling_message = world.time + 60 SECONDS
+
 	//Moved pressure calculations here for use in skip-processing check.
 	var/pressure = environment.return_pressure()
 	var/adjusted_pressure = calculate_affecting_pressure(pressure)
