@@ -1,5 +1,5 @@
 /datum/sprite_accessory/marking/eye_stuff
-    icon = "icons/mob/sprite_accessories/markings/eye_stuff.dmi"
+	icon = 'icons/mob/sprite_accessories/markings/eye_stuff.dmi'
 
 /datum/sprite_accessory/marking/eye_stuff/monoeye
 	name = "Monoeye"
