@@ -51,7 +51,7 @@
 /obj/item/reagent_containers/food/drinks/bottle/proc/smash(var/newloc, atom/against = null)
 	if(ismob(loc))
 		var/mob/M = loc
-		M.drop_from_inventory(src)
+		M.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 
 	//Creates a shattering noise and replaces the bottle with a broken_bottle
 	var/obj/item/broken_bottle/B = new /obj/item/broken_bottle(newloc)
@@ -111,17 +111,18 @@
 		..()
 
 /obj/item/reagent_containers/food/drinks/bottle/proc/insert_rag(obj/item/reagent_containers/glass/rag/R, mob/user)
-	if(!isGlass || rag) return
-	if(user.unEquip(R))
+	if(!isGlass || rag)
+		return
+	if(user.attempt_insert_item_for_installation(R, src))
 		to_chat(user, "<span class='notice'>You stuff [R] into [src].</span>")
 		rag = R
-		rag.forceMove(src)
 		flags &= ~OPENCONTAINER
 		update_icon()
 
 /obj/item/reagent_containers/food/drinks/bottle/proc/remove_rag(mob/user)
-	if(!rag) return
-	user.put_in_hands(rag)
+	if(!rag)
+		return
+	user.put_in_hands_or_drop(rag)
 	rag = null
 	flags |= (initial(flags) & OPENCONTAINER)
 	update_icon()

@@ -42,7 +42,7 @@
 			filling.icon += reagents.get_color()
 			overlays += filling
 
-/obj/machinery/iv_drip/MouseDrop(over_object, src_location, over_location)
+/obj/machinery/iv_drip/OnMouseDropLegacy(over_object, src_location, over_location)
 	..()
 	if(!isliving(usr))
 		return
@@ -64,9 +64,8 @@
 		if(!isnull(beaker))
 			to_chat(user, SPAN_WARNING("There is already a reagent container loaded!"))
 			return
-
-		user.drop_item()
-		W.loc = src
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		beaker = W
 		to_chat(user, SPAN_NOTICE("You attach \the [W] to \the [src]."))
 		update_icon()

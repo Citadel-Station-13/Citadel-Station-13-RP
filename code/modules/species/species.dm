@@ -58,6 +58,9 @@
 	/// override for bodytype
 	var/override_worn_legacy_bodytype
 
+	/// default bodytype to use for clothing rendering
+	var/default_bodytype = BODYTYPE_DEFAULT
+
 //! ## Damage overlay and masks.
 	var/damage_overlays = 'icons/mob/species/human/damage_overlay.dmi'
 	var/damage_mask     = 'icons/mob/species/human/damage_mask.dmi'
@@ -566,9 +569,9 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	box.calibrate_size()
 
 	if(H.backbag == 1)
-		H.equip_to_slot_or_del(box, slot_r_hand)
+		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/right_hand, INV_OP_SILENT | INV_OP_FLUFFLESS)
 	else
-		H.equip_to_slot_or_del(box, slot_in_backpack)
+		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/put_in_backpack, INV_OP_FORCE | INV_OP_SILENT)
 
 /**
  * called to ensure organs are consistent with our species's
@@ -887,7 +890,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			T.remove(src, H)
 		src.traits = traits
 
-		H.icon_state = lowertext(get_worn_legacy_bodytype())
+		H.icon_state = lowertext(get_bodytype_legacy())
 
 		if(holder_type)
 			H.holder_type = holder_type

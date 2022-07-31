@@ -138,9 +138,9 @@
 		if(safetycatch)
 			to_chat(user, "<span class='notice'>\The [src] already has a [attached_safety].</span>")
 			return
+		if(!user.attempt_insert_item_for_installation(A, src))
+			return
 		to_chat(user, "<span class='notice'>You insert \the [A] into \the [src].</span>")
-		user.drop_item()
-		A.loc = src
 		attached_safety = A
 		safetycatch = 1
 		return
@@ -150,7 +150,7 @@
 			to_chat(user, "<span class='notice'>You begin removing \the [attached_safety] from \the [src].</span>")
 			if(do_after(user, 25))
 				to_chat(user, "<span class='notice'>You remove \the [attached_safety] from \the [src].</span>")
-				user.put_in_hands(attached_safety)
+				user.put_in_hands_or_drop(attached_safety)
 				safetycatch = 0
 				attached_safety = null
 			return

@@ -47,12 +47,11 @@
 		if(user)
 			to_chat(user, "<span class='warning'>\The [src] already contains a cartridge with that label!</span>")
 		return
-
-	if(user)
-		user.drop_from_inventory(C)
+	if(user && user.is_in_inventory(C))
+		if(!user.attempt_insert_item_for_installation(C, src))
+			return
 		to_chat(user, "<span class='notice'>You add \the [C] to \the [src].</span>")
 
-	C.forceMove(src)
 	cartridges[C.label] = C
 	cartridges = sortTim(cartridges, /proc/cmp_text_asc)
 	SStgui.update_uis(src)
@@ -97,14 +96,12 @@
 		if(!accept_drinking && istype(RC,/obj/item/reagent_containers/food))
 			to_chat(user, "<span class='warning'>This machine only accepts beakers!</span>")
 			return
-
 		if(!RC.is_open_container())
 			to_chat(user, "<span class='warning'>You don't see how \the [src] could dispense reagents into \the [RC].</span>")
 			return
-
+		if(!user.attempt_insert_item_for_installation(RC, src))
+			return
 		container =  RC
-		user.drop_from_inventory(RC)
-		RC.forceMove(src)
 		to_chat(user, "<span class='notice'>You set \the [RC] on \the [src].</span>")
 		SStgui.update_uis(src) // update all UIs attached to src
 

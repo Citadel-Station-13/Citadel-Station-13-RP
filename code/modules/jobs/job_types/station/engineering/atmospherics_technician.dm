@@ -46,13 +46,12 @@
 	shoes = /obj/item/clothing/shoes/boots/workboots
 	r_pocket = /obj/item/t_scanner
 
-	pda_slot = slot_l_store
 	id_type = /obj/item/card/id/engineering/atmos
 	pda_type = /obj/item/pda/atmos
 
 	backpack = /obj/item/storage/backpack/industrial
 	satchel_one = /obj/item/storage/backpack/satchel/eng
 	messenger_bag = /obj/item/storage/backpack/messenger/engi
+	pda_slot = SLOT_ID_LEFT_POCKET
 	dufflebag = /obj/item/storage/backpack/dufflebag/eng
-
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_EXTENDED_SURVIVAL

@@ -31,6 +31,7 @@ var/global/list/map_count = list()
 	// Test to see if rand_seed() can be used reliably.
 	var/priority_process
 
+// SEED DOES NOTHING
 /datum/random_map/New(var/seed, var/tx, var/ty, var/tz, var/tlx, var/tly, var/do_not_apply, var/do_not_announce)
 
 	// Store this for debugging.
@@ -57,9 +58,11 @@ var/global/list/map_count = list()
 	sleep(-1)
 
 	// Testing needed to see how reliable this is (asynchronous calls, called during worldgen), DM ref is not optimistic
-	if(seed)
-		rand_seed(seed)
-		priority_process = 1
+	// if(seed)
+	//	rand_seed(seed)
+	//	priority_process = 1
+	
+	// removed. the problem is that nothing but the master controller should ever be fucking with random seeding ~silicons
 
 	for(var/i = 0;i<max_attempts;i++)
 		if(generate())

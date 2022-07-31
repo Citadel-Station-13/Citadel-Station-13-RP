@@ -85,17 +85,15 @@
 			if(stack.use(max(1, round(num)))) // We don't want to create stacks that aren't whole numbers
 				to_chat(user, SPAN_NOTICE("You add [num] sheet\s to \the [src]."))
 				cur_metal += num * metal_per_sheet
-				attack_self(user)
 				return TRUE
 
 	if(istype(O,/obj/item/integrated_circuit))
+		if(!user.attempt_consume_item_for_construction(O))
+			return
 		var/obj/item/integrated_circuit/IC = O
 		to_chat(user, SPAN_NOTICE("You insert the circuit into \the [src]."))
-		user.unEquip(IC)
 		check_max_metal(IC.cost)
 		cur_metal += IC.cost
-		qdel(IC)
-		attack_self(user)
 		return TRUE
 
 	if(istype(O,/obj/item/disk/integrated_circuit/upgrade/advanced))
@@ -105,7 +103,6 @@
 		to_chat(user, SPAN_NOTICE("You install \the [O] into  \the [src]."))
 		upgraded = TRUE
 		dirty_items = TRUE
-		attack_self(user)
 		return TRUE
 
 	if(istype(O,/obj/item/disk/integrated_circuit/upgrade/clone))
@@ -115,7 +112,6 @@
 		to_chat(user, SPAN_NOTICE("You install \the [O] into  \the [src]."))
 		can_clone = TRUE
 		fast_clone = TRUE
-		attack_self(user)
 		return TRUE
 
 	if(istype(O, /obj/item/electronic_assembly))
@@ -160,11 +156,11 @@
 			if(!do_after(user, 10, target = user))
 				recycling = FALSE
 				return
+			if(!user.attempt_consume_item_for_construction(EA))
+				return
 			to_chat(user, SPAN_NOTICE("You recycle the [EA]!"))
 			check_max_metal(EA.cost)
 			cur_metal += EA.cost
-			user.remove_from_mob(EA)
-			qdel(EA)
 			return TRUE
 	return ..()
 

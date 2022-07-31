@@ -11,7 +11,7 @@ var/global/repository/radiation/radiation_repository = new()
 	var/turf/source_turf		// Location of the radiation source.
 	var/rad_power				// Strength of the radiation being emitted.
 	var/decay = TRUE			// True for automatic decay.  False if owner promises to handle it (i.e. supermatter)
-	var/respect_maint = FALSE	// True for not affecting AF_RAD_SHIELDED areas.
+	var/respect_maint = FALSE	// True for not affecting AREA_RAD_SHIELDED areas.
 	var/flat = FALSE			// True for power falloff with distance.
 	var/range					// Cached maximum range, used for quick checks against mobs.
 
@@ -48,7 +48,7 @@ var/global/repository/radiation/radiation_repository = new()
 			continue // Too far to possibly affect
 		if(source.respect_maint)
 			var/atom/A = T.loc
-			if(A.area_flags & AF_RAD_SHIELDED)
+			if(A.area_flags & AREA_RAD_SHIELDED)
 				continue // In shielded area
 		if(source.flat)
 			. = max(., source.rad_power)

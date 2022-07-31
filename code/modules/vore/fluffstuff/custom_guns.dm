@@ -151,7 +151,7 @@
 		update_icon()
 
 /obj/item/gun/projectile/revolver/mateba/fluff/tasald_corlethian/attack_hand(mob/user as mob)
-	if(user.get_inactive_hand() == src)
+	if(user.get_inactive_held_item() == src)
 		unload_ammo(user, allow_dump = 1)
 	else
 		..()
@@ -710,7 +710,7 @@ END OF CITADEL CHANGES */
 	desc = "An extraordinarily rugged laser weapon, built to last and requiring effectively no maintenance. Includes a built-in crank charger for recharging away from civilization."
 	icon_state = "phaser"
 	item_state = "phaser"
-	item_state_slots = list(slot_r_hand_str = "phaser", slot_l_hand_str = "phaser", "slot_belt" = "phaser")
+	item_state_slots = list(slot_r_hand_str = "phaser", slot_l_hand_str = "phaser", "SLOT_ID_BELT" = "phaser")
 	fire_sound = 'sound/weapons/laser_rifle_1.wav'
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2, TECH_POWER = 4)
 	charge_cost = 300

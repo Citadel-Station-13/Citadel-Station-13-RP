@@ -4,7 +4,7 @@
 	name = "pilot helmet"
 	desc = "Standard pilot gear. Protects the head from impacts."
 	icon_state = "pilot_helmet1"
-	item_icons = list(/datum/inventory_slot_meta/inventory/head = 'icons/mob/clothing/pilot_helmet.dmi')
+	item_icons = list(SLOT_ID_HEAD = 'icons/mob/clothing/pilot_helmet.dmi')
 	sprite_sheets = list(
 		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/pilot_helmet.dmi'
 		)
@@ -175,11 +175,11 @@
 
 /obj/item/clothing/head/pilot/equipped(var/mob/user,var/slot)
 	. = ..()
-	if(slot == slot_head && user.client)
+	if(slot == SLOT_ID_HEAD && user.client)
 		user.client.screen |= pilot_hud
 		user.client.images |= raw_images
 
-/obj/item/clothing/head/pilot/dropped(var/mob/user)
+/obj/item/clothing/head/pilot/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	if(user.client)
 		user.client.screen -= pilot_hud
@@ -198,4 +198,4 @@
 	else
 		src.icon_state = initial(icon_state)
 		to_chat(user, "You lower the visor on the pilot helmet.")
-	update_clothing_icon() //so our mob-overlays update
+	update_worn_icon() //so our mob-overlays update

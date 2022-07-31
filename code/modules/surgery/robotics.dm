@@ -454,8 +454,7 @@
 	var/obj/item/mmi/M = tool
 	var/obj/item/organ/internal/mmi_holder/holder = new(target, 1)
 	target.internal_organs_by_name["brain"] = holder
-	user.drop_from_inventory(tool)
-	tool.loc = holder
+	user.transfer_item_to_loc(tool, src, INV_OP_FORCE)
 	holder.stored_mmi = tool
 	holder.update_from_mmi()
 
@@ -543,7 +542,7 @@
 	var/obj/item/organ/internal/brain/cephalon/cephalon = new(target, 1)
 	target.internal_organs_by_name["brain"] = cephalon
 	var/mob/living/carbon/alien/diona/D = N.held_mob
-	user.drop_from_inventory(tool)
+	user.drop_item_to_ground(tool, INV_OP_FORCE)
 
 	if(D && D.mind)
 		D.mind.transfer_to(target)

@@ -29,22 +29,18 @@
 /obj/item/clothing/suit/storage/hooded/ui_action_click()
 	ToggleHood()
 
-/obj/item/clothing/suit/storage/hooded/equipped(mob/user, slot)
-	if(slot != slot_wear_suit)
+/obj/item/clothing/suit/storage/hooded/equipped(mob/user, slot, flags)
+	if(slot != SLOT_ID_SUIT)
 		RemoveHood()
 	..()
 
 /obj/item/clothing/suit/storage/hooded/proc/RemoveHood()
 	icon_state = toggleicon
 	hood_up = FALSE
-	hood.canremove = TRUE // This shouldn't matter anyways but just incase.
-	if(ishuman(hood.loc))
-		var/mob/living/carbon/H = hood.loc
-		H.unEquip(hood, 1)
-		H.update_inv_wear_suit()
+	REMOVE_TRAIT(hood, TRAIT_NODROP, CLOTHING_TRAIT)
 	hood.forceMove(src)
 
-/obj/item/clothing/suit/storage/hooded/dropped()
+/obj/item/clothing/suit/storage/hooded/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	RemoveHood()
 
@@ -63,11 +59,11 @@
 					hood.flags |= PHORONGUARD
 				else
 					hood.flags &= ~PHORONGUARD
-				H.equip_to_slot_if_possible(hood,slot_head,0,0,1)
+				H.equip_to_slot_if_possible(hood, SLOT_ID_HEAD)
 				if(armor)
 					hood.armor = armor.Copy()
 				hood_up = TRUE
-				hood.canremove = FALSE
+				ADD_TRAIT(hood, TRAIT_NODROP, CLOTHING_TRAIT)
 				icon_state = "[toggleicon]_t"
 				H.update_inv_wear_suit()
 	else

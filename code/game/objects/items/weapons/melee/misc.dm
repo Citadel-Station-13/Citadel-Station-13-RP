@@ -115,12 +115,10 @@
 	throwforce = 7
 	var/board_item_type = null
 
-/obj/item/melee/skateboard/dropped(mob/user as mob)
-	..()
-	..()
+/obj/item/melee/skateboard/dropped(mob/user, flags, atom/newLoc)
+	. = ..()
 	var/turf/T = get_turf(src)
 	new board_item_type(T)
-	user.drop_item(src)
 	qdel(src)
 
 /obj/item/melee/skateboard/improv
@@ -275,7 +273,7 @@
 			var/turf/location = src.loc
 			if(istype(location, /mob/living))
 				var/mob/living/M = location
-				if(M.item_is_in_hands(src))
+				if(M.is_holding(src))
 					location = get_turf(M)
 			if (istype(location, /turf))
 				location.hotspot_expose(700, 5)

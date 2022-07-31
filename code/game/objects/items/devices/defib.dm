@@ -70,30 +70,21 @@
 	else
 		..()
 
-/obj/item/defib_kit/MouseDrop()
-	if(ismob(src.loc))
-		if(!CanMouseDrop(src))
-			return
-		var/mob/M = src.loc
-		if(!M.unEquip(src))
-			return
-		src.add_fingerprint(usr)
-		M.put_in_any_hand_if_possible(src)
-
-
 /obj/item/defib_kit/attackby(obj/item/W, mob/user, params)
 	if(W == paddles)
 		reattach_paddles(user)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	else if(istype(W, /obj/item/cell))
 		if(bcell)
 			to_chat(user, "<span class='notice'>\the [src] already has a cell.</span>")
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		else
-			if(!user.unEquip(W))
-				return
-			W.forceMove(src)
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return CLICKCHAIN_DO_NOT_PROPAGATE
 			bcell = W
 			to_chat(user, "<span class='notice'>You install a cell in \the [src].</span>")
 			update_icon()
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	else if(W.is_screwdriver())
 		if(bcell)
@@ -102,6 +93,7 @@
 			bcell = null
 			to_chat(user, "<span class='notice'>You remove the cell from \the [src].</span>")
 			update_icon()
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	else
 		return ..()
 
@@ -139,27 +131,24 @@
 	if(!istype(M))
 		return 0 //not equipped
 
-	if((slot_flags & SLOT_BACK) && M.get_equipped_item(slot_back) == src)
+	if((slot_flags & SLOT_BACK) && M.item_by_slot(SLOT_ID_BACK) == src)
 		return 1
-	if((slot_flags & SLOT_BELT) && M.get_equipped_item(slot_belt) == src)
+	if((slot_flags & SLOT_BELT) && M.item_by_slot(SLOT_ID_BELT) == src)
 		return 1
 
 	return 0
 
-/obj/item/defib_kit/dropped(mob/user)
-	..()
+/obj/item/defib_kit/unequipped(mob/user, slot, flags)
+	. = ..()
 	reattach_paddles(user) //paddles attached to a base unit should never exist outside of their base unit or the mob equipping the base unit
 
 /obj/item/defib_kit/proc/reattach_paddles(mob/user)
-	if(!paddles) return
+	if(!paddles)
+		return
 
 	if(ismob(paddles.loc))
-		var/mob/M = paddles.loc
-		if(M.drop_from_inventory(paddles, src))
-			to_chat(user, "<span class='notice'>\The [paddles] snap back into the main unit.</span>")
-	else
-		paddles.forceMove(src)
-
+		to_chat(paddles.loc, "<span class='notice'>\The [paddles] snap back into the main unit.</span>")
+	paddles.forceMove(src)
 	update_icon()
 
 /*
@@ -232,7 +221,7 @@
 
 /obj/item/shockpaddles/update_held_icon()
 	var/mob/living/M = loc
-	if(istype(M) && M.item_is_in_hands(src) && !M.hands_are_full())
+	if(istype(M) && M.is_holding(src) && !M.hands_full())
 		wielded = 1
 		name = "[initial(name)] (wielded)"
 	else
@@ -598,8 +587,8 @@
 		base_unit = null
 	return ..()
 
-/obj/item/shockpaddles/linked/dropped(mob/user)
-	..() //update twohanding
+/obj/item/shockpaddles/linked/dropped(mob/user, flags, atom/newLoc)
+	. = ..()
 	if(base_unit)
 		base_unit.reattach_paddles(user) //paddles attached to a base unit should never exist outside of their base unit or the mob equipping the base unit
 

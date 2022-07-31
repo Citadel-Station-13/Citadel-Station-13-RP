@@ -896,12 +896,12 @@ Note that amputating the affected organ does in fact remove the infection from t
 		holder.visible_message(\
 			"\The [holder.handcuffed.name] falls off of [holder.name].",\
 			"\The [holder.handcuffed.name] falls off you.")
-		holder.drop_from_inventory(holder.handcuffed)
+		holder.drop_item_to_ground(holder.handcuffed, INV_OP_FORCE)
 	if (holder.legcuffed && (body_part in list(FOOT_LEFT, FOOT_RIGHT, LEG_LEFT, LEG_RIGHT)))
 		holder.visible_message(\
 			"\The [holder.legcuffed.name] falls off of [holder.name].",\
 			"\The [holder.legcuffed.name] falls off you.")
-		holder.drop_from_inventory(holder.legcuffed)
+		holder.drop_item_to_ground(holder.legcuffed, INV_OP_FORCE)
 
 // checks if all wounds on the organ are bandaged
 /obj/item/organ/external/proc/is_bandaged()
@@ -1124,20 +1124,22 @@ Note that amputating the affected organ does in fact remove the infection from t
 		src.visible_message("<font color='red'>[owner] has been seriously wounded by [W]!</font>")
 		W.add_blood(owner)
 		return 0
+	if(ismob(W.loc))
+		var/mob/M = W.loc
+		if(!M.can_unequip(W))
+			return
 	if(!silent)
 		owner.visible_message("<span class='danger'>\The [W] sticks in the wound!</span>")
 	implants += W
 	owner.embedded_flag = 1
 	owner.verbs += /mob/proc/yank_out_object
 	W.add_blood(owner)
-	if(ismob(W.loc))
-		var/mob/living/H = W.loc
-		H.drop_from_inventory(W)
-	W.loc = owner
+	W.forceMove(owner)
 
 /obj/item/organ/external/removed(var/mob/living/user, var/ignore_children = 0)
 	if(!owner)
 		return
+	owner.reconsider_inventory_slot_bodypart(organ_tag)
 	var/is_robotic = robotic >= ORGAN_ROBOT
 	var/mob/living/carbon/human/victim = owner
 
@@ -1149,9 +1151,9 @@ Note that amputating the affected organ does in fact remove the infection from t
 		//large items and non-item objs fall to the floor, everything else stays
 		var/obj/item/I = implant
 		if(istype(I) && I.w_class < ITEMSIZE_NORMAL)
-			implant.loc = get_turf(victim.loc)
+			implant.forceMove(victim.drop_location())
 		else
-			implant.loc = src
+			implant.forceMove(src)
 	implants.Cut()
 
 	// Attached organs also fly off.

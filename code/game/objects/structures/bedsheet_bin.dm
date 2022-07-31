@@ -19,14 +19,14 @@ LINEN BINS
 	drop_sound = 'sound/items/drop/backpack.ogg'
 	pickup_sound = 'sound/items/pickup/backpack.ogg'
 
-/obj/item/bedsheet/attack_self(mob/user as mob)
-	user.drop_item()
+/obj/item/bedsheet/attack_self(mob/user)
+	if(!user.drop_item_to_ground(src))
+		return
 	if(layer == initial(layer))
 		layer = ABOVE_MOB_LAYER
 	else
-		reset_plane_and_layer()
+		set_base_layer(initial(layer))
 	add_fingerprint(user)
-	return
 
 /obj/item/bedsheet/attackby(obj/item/I, mob/user)
 	if(is_sharp(I))
@@ -199,14 +199,14 @@ LINEN BINS
 
 /obj/structure/bedsheetbin/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/bedsheet))
-		user.drop_item()
-		I.loc = src
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		sheets.Add(I)
 		amount++
 		to_chat(user, "<span class='notice'>You put [I] in [src].</span>")
 	else if(amount && !hidden && I.w_class < ITEMSIZE_LARGE)	//make sure there's sheets to hide it among, make sure nothing else is hidden in there.
-		user.drop_item()
-		I.loc = src
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		hidden = I
 		to_chat(user, "<span class='notice'>You hide [I] among the sheets.</span>")
 

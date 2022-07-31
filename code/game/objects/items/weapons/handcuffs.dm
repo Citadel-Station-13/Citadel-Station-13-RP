@@ -22,7 +22,7 @@
 	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/handcuffs.dmi')
 
 /obj/item/handcuffs/get_worn_icon_state(var/slot_id)
-	if(slot_id == /datum/inventory_slot_meta/restraints/handcuffs)
+	if(slot_id == SLOT_ID_HANDCUFFED)
 		return "handcuff1" //Simple
 
 	return ..()
@@ -67,9 +67,8 @@
 	if(!istype(H))
 		return 0
 
-	if (!H.has_organ_for_slot(slot_handcuffed))
-		to_chat(user, "<span class='danger'>\The [H] needs at least two wrists before you can cuff them together!</span>")
-		return 0
+	if(!H.can_equip(src, SLOT_ID_HANDCUFFED, user = user))
+		return FALSE
 
 	if(istype(H.gloves,/obj/item/clothing/gloves/gauntlets/rig) && !elastic) // Can't cuff someone who's in a deployed hardsuit.
 		to_chat(user, "<span class='danger'>\The [src] won't fit around \the [H.gloves]!</span>")
@@ -83,6 +82,9 @@
 	if(!can_place(target, user)) //victim may have resisted out of the grab in the meantime
 		return 0
 
+	if(!user.attempt_void_item_for_installation(src))
+		return
+
 	add_attack_logs(user,H,"Handcuffed (attempt)")
 	feedback_add_details("handcuffs","H")
 
@@ -94,22 +96,15 @@
 	// Apply cuffs.
 	var/obj/item/handcuffs/cuffs = src
 	if(dispenser)
-		cuffs = new(get_turf(user))
-	else
-		user.drop_from_inventory(cuffs)
-	cuffs.loc = target
-	target.handcuffed = cuffs
-	target.update_handcuffed()
-	target.drop_r_hand()
-	target.drop_l_hand()
-	target.stop_pulling()
+		cuffs = new(target)
+	if(!target.force_equip_to_slot(cuffs, SLOT_ID_HANDCUFFED, user = user))
+		forceMove(user.drop_location())
 	return 1
 
-/obj/item/handcuffs/equipped(var/mob/living/user,var/slot)
+/obj/item/handcuffs/equipped(mob/living/user, slot, accessory)
 	. = ..()
-	if(slot == slot_handcuffed)
-		user.drop_r_hand()
-		user.drop_l_hand()
+	if(slot == SLOT_ID_HANDCUFFED)
+		user.drop_all_held_items()
 		user.stop_pulling()
 
 var/last_chew = 0
@@ -215,17 +210,14 @@ var/last_chew = 0
 	desc = "These cutting edge handcuffs were originally designed by the PMD. Commonly deployed to restrain anomalous lifeforms, disruptor cuffs employ a form of acuasal logic engine disruption, in tandem with morphogenic resonance, to neutralize the abilities of technological and biological threats."
 
 /obj/item/handcuffs/disruptor/get_worn_icon_state(var/slot_id)
-	if(slot_id == /datum/inventory_slot_meta/restraints/handcuffs)
+	if(slot_id == SLOT_ID_HANDCUFFED)
 		return "disruptorcuff1" //Simple
 
 	return ..()
 
 /obj/item/handcuffs/disruptor/equipped(var/mob/living/user,var/slot)
 	. = ..()
-	if(slot == slot_handcuffed)
-		user.drop_r_hand()
-		user.drop_l_hand()
-		user.stop_pulling()
+	if(slot == SLOT_ID_HANDCUFFED)
 		ADD_TRAIT(user, TRAIT_DISRUPTED, CLOTHING_TRAIT)
 
 //Legcuffs. Not /really/ handcuffs, but its close enough.
@@ -245,7 +237,7 @@ var/last_chew = 0
 	cuff_sound = 'sound/weapons/handcuffs.ogg' //This shold work for now.
 
 /obj/item/handcuffs/legcuffs/get_worn_icon_state(var/slot_id)
-	if(slot_id == /datum/inventory_slot_meta/restraints/legcuffs)
+	if(slot_id == SLOT_ID_LEGCUFFED)
 		return "legcuff1"
 
 	return ..()
@@ -277,9 +269,8 @@ var/last_chew = 0
 	if(!istype(H))
 		return 0
 
-	if (!H.has_organ_for_slot(slot_legcuffed))
-		to_chat(user, "<span class='danger'>\The [H] needs at least two ankles before you can cuff them together!</span>")
-		return 0
+	if(!H.can_equip(src, SLOT_ID_LEGCUFFED, user = user))
+		return FALSE
 
 	if(istype(H.shoes,/obj/item/clothing/shoes/magboots/rig) && !elastic) // Can't cuff someone who's in a deployed hardsuit.
 		to_chat(user, "<span class='danger'>\The [src] won't fit around \the [H.shoes]!</span>")
@@ -293,6 +284,9 @@ var/last_chew = 0
 	if(!can_place(target, user)) //victim may have resisted out of the grab in the meantime
 		return 0
 
+	if(!user.attempt_void_item_for_installation(src))
+		return
+
 	add_attack_logs(user,H,"Legcuffed (attempt)")
 	feedback_add_details("legcuffs","H")
 
@@ -305,20 +299,13 @@ var/last_chew = 0
 	var/obj/item/handcuffs/legcuffs/lcuffs = src
 	if(dispenser)
 		lcuffs = new(get_turf(user))
-	else
-		user.drop_from_inventory(lcuffs)
-	lcuffs.loc = target
-	target.legcuffed = lcuffs
-	target.update_inv_legcuffed()
-	if(target.m_intent != "walk")
-		target.m_intent = "walk"
-		if(target.hud_used && user.hud_used.move_intent)
-			target.hud_used.move_intent.icon_state = "walking"
+	if(!target.force_equip_to_slot(lcuffs, SLOT_ID_LEGCUFFED, user = user))
+		forceMove(user.drop_location())
 	return 1
 
 /obj/item/handcuffs/legcuffs/equipped(var/mob/living/user,var/slot)
 	. = ..()
-	if(slot == slot_legcuffed)
+	if(slot == SLOT_ID_LEGCUFFED)
 		if(user.m_intent != "walk")
 			user.m_intent = "walk"
 			if(user.hud_used && user.hud_used.move_intent)
@@ -354,26 +341,19 @@ var/last_chew = 0
 
 	var/mob/living/carbon/human/H = target
 	if(!istype(H))
-		src.dropped()
-		return 0
+		return FALSE
 
-	if(!H.has_organ_for_slot(slot_legcuffed))
+	if(!H.equip_to_slot_if_possible(src, SLOT_ID_LEGCUFFED, INV_OP_FLUFFLESS | INV_OP_SUPPRESS_WARNING))
 		H.visible_message("<span class='notice'>\The [src] slams into [H], but slides off!</span>")
-		src.dropped()
-		return 0
 
 	H.visible_message("<span class='danger'>\The [H] has been snared by \the [src]!</span>")
 
-	// Apply cuffs.
-	var/obj/item/handcuffs/legcuffs/lcuffs = src
-	lcuffs.loc = target
-	target.legcuffed = lcuffs
-	target.update_inv_legcuffed()
 	if(target.m_intent != "walk")
 		target.m_intent = "walk"
 		if(target.hud_used && user.hud_used.move_intent)
 			target.hud_used.move_intent.icon_state = "walking"
-	return 1
+
+	return TRUE
 
 /obj/item/handcuffs/legcuffs/bola/tactical
 	name = "reinforced bola"
@@ -387,7 +367,7 @@ var/last_chew = 0
 	icon_state = "bola_cult"
 	breakouttime = 60
 
-/obj/item/handcuffs/legcuffs/bola/cult/pickup(mob/living/user)
+/obj/item/handcuffs/legcuffs/bola/cult/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()
 	if(!iscultist(user))
 		to_chat(user, "<span class='warning'>The bola seems to take on a life of its own!</span>")

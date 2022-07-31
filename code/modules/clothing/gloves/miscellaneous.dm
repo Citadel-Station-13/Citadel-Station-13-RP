@@ -224,7 +224,7 @@
 	///Secondary trait added by the gloves to the user on wear.
 	var/secondary_trait = TRAIT_FEARLESS //what are you, a coward?
 
-/obj/item/clothing/gloves/fingerless/pugilist/equipped(mob/user, slot)
+/obj/item/clothing/gloves/fingerless/pugilist/equipped(mob/user, slot, flags)
 	. = ..()
 	if(slot == SLOT_GLOVES)
 		wornonce = TRUE
@@ -233,7 +233,7 @@
 			return
 		use_buffs(user, TRUE)
 
-/obj/item/clothing/gloves/fingerless/pugilist/dropped(mob/user)
+/obj/item/clothing/gloves/fingerless/pugilist/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	if(wornonce)
 		wornonce = FALSE
@@ -383,13 +383,13 @@
 		return
 	override[src] = ITEM_PARRY
 
-/obj/item/clothing/gloves/fingerless/ablative/equipped(mob/user, slot)
+/obj/item/clothing/gloves/fingerless/ablative/equipped(mob/user, slot, flags)
 	. = ..()
-	if(current_equipped_slot == SLOT_GLOVES)
+	if(worn_slot == SLOT_GLOVES)
 		RegisterSignal(user, COMSIG_LIVING_ACTIVE_PARRY_START, .proc/get_component_parry_data)
 		wornonce = TRUE
 
-/obj/item/clothing/gloves/fingerless/ablative/dropped(mob/user)
+/obj/item/clothing/gloves/fingerless/ablative/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	if(wornonce)
 		UnregisterSignal(user, COMSIG_LIVING_ACTIVE_PARRY_START)
@@ -450,7 +450,7 @@
 	inherited_trait = TRAIT_CHUNKYFINGERS // your fingers are fat because the gloves are
 	secondary_trait = TRAIT_MAULER // commit table slam
 
-/obj/item/clothing/gloves/fingerless/pugilist/mauler/equipped(mob/user, slot)
+/obj/item/clothing/gloves/fingerless/pugilist/mauler/equipped(mob/user, slot, flags)
 	. = ..()
 	if(slot == SLOT_GLOVES)
 		wornonce = TRUE
@@ -458,7 +458,7 @@
 			return
 		use_mauls(user, TRUE)
 
-/obj/item/clothing/gloves/fingerless/pugilist/mauler/dropped(mob/user)
+/obj/item/clothing/gloves/fingerless/pugilist/mauler/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	if(wornonce)
 		wornonce = FALSE
@@ -499,7 +499,7 @@
 	/// See: [/datum/component/tackler/var/skill_mod]
 	var/skill_mod = 1
 
-/obj/item/clothing/gloves/tackler/equipped(mob/user, slot)
+/obj/item/clothing/gloves/tackler/equipped(mob/user, slot, flags)
 	. = ..()
 	if(!ishuman(user))
 		return
@@ -510,7 +510,7 @@
 		else
 			qdel(tackler) // Only wearing it!
 
-/obj/item/clothing/gloves/tackler/dropped(mob/user)
+/obj/item/clothing/gloves/tackler/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	if(tackler)
 		qdel(tackler)
@@ -577,12 +577,12 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	var/carrytrait = TRAIT_QUICKER_CARRY
 
-/obj/item/clothing/gloves/tackler/combat/insulated/infiltrator/equipped(mob/user, slot)
+/obj/item/clothing/gloves/tackler/combat/insulated/infiltrator/equipped(mob/user, slot, flags)
 	. = ..()
 	if(slot == SLOT_GLOVES)
 		ADD_TRAIT(user, carrytrait, GLOVE_TRAIT)
 
-/obj/item/clothing/gloves/tackler/combat/insulated/infiltrator/dropped(mob/user)
+/obj/item/clothing/gloves/tackler/combat/insulated/infiltrator/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	REMOVE_TRAIT(user, carrytrait, GLOVE_TRAIT)
 

@@ -203,9 +203,9 @@
 
 /mob/living/carbon/human/proc/generate_valid_hairstyles(var/check_gender = 1)
 
-	var/use_species = species.get_bodytype(src)
+	var/use_species = species.get_bodytype_legacy(src)
 	var/obj/item/organ/external/head/H = get_organ(BP_HEAD)
-	if(H) use_species = H.species.get_bodytype(src)
+	if(H) use_species = H.species.get_bodytype_legacy(src)
 
 	var/list/valid_hairstyles = new()
 	for(var/hairstyle in hair_styles_list)
@@ -225,9 +225,9 @@
 
 /mob/living/carbon/human/proc/generate_valid_facial_hairstyles()
 
-	var/use_species = species.get_bodytype(src)
+	var/use_species = species.get_bodytype_legacy(src)
 	var/obj/item/organ/external/head/H = get_organ(BP_HEAD)
-	if(H) use_species = H.species.get_bodytype(src)
+	if(H) use_species = H.species.get_bodytype_legacy(src)
 
 	var/list/valid_facial_hairstyles = new()
 	for(var/facialhairstyle in facial_hair_styles_list)

@@ -90,7 +90,7 @@
 
 	id_type = /obj/item/card/id/science/scientist
 	pda_type = /obj/item/pda/science
-	pda_slot = slot_l_store
+	pda_slot = SLOT_ID_LEFT_POCKET
 
 	backpack = /obj/item/storage/backpack/toxins
 	satchel_one = /obj/item/storage/backpack/satchel/tox

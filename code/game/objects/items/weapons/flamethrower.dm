@@ -38,12 +38,10 @@
 	var/turf/location = loc
 	if(istype(location, /mob/))
 		var/mob/living/M = location
-		if(M.item_is_in_hands(src))
+		if(M.is_holding(src))
 			location = M.loc
 	if(isturf(location)) //start a fire if possible
 		location.hotspot_expose(700, 2)
-	return
-
 
 /obj/item/flamethrower/update_icon()
 	overlays.Cut()
@@ -61,7 +59,7 @@
 /obj/item/flamethrower/afterattack(atom/target, mob/user, proximity)
 	if(!proximity) return
 	// Make sure our user is still holding us
-	if(user && user.get_active_hand() == src)
+	if(user && user.get_active_held_item() == src)
 		var/turf/target_turf = get_turf(target)
 		if(target_turf)
 			var/turflist = getline(user, target_turf)
@@ -92,10 +90,12 @@
 
 	if(isigniter(W))
 		var/obj/item/assembly/igniter/I = W
-		if(I.secured)	return
-		if(igniter)		return
-		user.drop_item()
-		I.loc = src
+		if(I.secured)
+			return
+		if(igniter)
+			return
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		igniter = I
 		update_icon()
 		return
@@ -104,9 +104,9 @@
 		if(ptank)
 			to_chat(user, "<span class='notice'>There appears to already be a phoron tank loaded in [src]!</span>")
 			return
-		user.drop_item()
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		ptank = W
-		W.loc = src
 		update_icon()
 		return
 

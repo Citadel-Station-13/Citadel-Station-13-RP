@@ -83,14 +83,12 @@
 		var/obj/item/implanter/implanter = I
 		if(implanter.imp)
 			return // It's full.
-		user.drop_from_inventory(src)
-		forceMove(implanter)
+		if(!user.attempt_insert_item_for_installation(src, implanter))
+			return
 		implanter.imp = src
 		implanter.update()
 	else
 		..()
-
-
 
 //////////////////////////////
 //	Tracking Implant

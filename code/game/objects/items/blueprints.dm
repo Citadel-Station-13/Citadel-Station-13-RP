@@ -55,7 +55,7 @@
 
 /obj/item/blueprints/Topic(href, href_list)
 	..()
-	if ((usr.restrained() || usr.stat || usr.get_active_hand() != src))
+	if ((usr.restrained() || usr.stat || usr.get_active_held_item() != src))
 		return
 	if (!href_list["action"])
 		return
@@ -337,7 +337,7 @@
 				usr.client.images.Remove(i)
 
 // Make sure to turn off the colors when we drop the blueprints.
-/obj/item/blueprints/dropped(mob/user as mob)
+/obj/item/blueprints/dropped(mob/user, flags, atom/newLoc)
 	if(areaColor_turfs.len)
 		seeAreaColors_remove()
 	return ..()

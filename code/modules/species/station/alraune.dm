@@ -407,9 +407,10 @@
 
 //End of fruit gland code.
 
-/datum/species/alraune/get_bodytype()
+/datum/species/alraune/get_bodytype_legacy()
 	return base_species
 
+//! WARNING SHITCODE
 /datum/species/alraune/get_race_key(mob/living/carbon/human/H)
-	var/datum/species/real = name_static_species_meta(base_species)
+	var/datum/species/real = name_static_species_meta(base_species || SPECIES_HUMAN)
 	return real.real_race_key(H)

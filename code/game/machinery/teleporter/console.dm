@@ -40,7 +40,7 @@
 		to_chat(user, SPAN_NOTICE("The console is locked on to \[[T.loc.name]\]."))
 
 /obj/machinery/computer/teleporter/attackby(I as obj, mob/living/user as mob)
-	if(istype(I, /obj/item/card/data/))
+	if(istype(I, /obj/item/card/data))
 		var/obj/item/card/data/C = I
 		if(machine_stat & (NOPOWER|BROKEN) & (C.function != "teleporter"))
 			attack_hand()
@@ -56,11 +56,11 @@
 		if(!L)
 			L = locate("landmark*[C.data]") // use old stype
 
-		if(istype(L, /obj/landmark/) && istype(L.loc, /turf))
+		if(istype(L, /obj/landmark) && istype(L.loc, /turf))
+			if(!user.attempt_consume_item_for_construction(I))
+				return
 			to_chat(usr, "You insert the coordinates into the machine.")
 			to_chat(usr, "A message flashes across the screen, reminding the user that the nuclear authentication disk is not transportable via insecure means.")
-			user.drop_item()
-			qdel(I)
 
 			if(C.data == "Clown Land")
 				//whoops

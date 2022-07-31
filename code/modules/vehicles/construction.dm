@@ -58,16 +58,16 @@
 
 		if(1)
 			if(istype(W, /obj/item/stock_parts/console_screen))
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_consume_item_for_construction(W))
+					return
 				to_chat(user, "<span class='notice'>You add the lights to \the [src].</span>")
 				increase_step()
 				return
 
 		if(2)
 			if(istype(W, /obj/item/stock_parts/spring))
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_consume_item_for_construction(W))
+					return
 				to_chat(user, "<span class='notice'>You add the control system to \the [src].</span>")
 				increase_step()
 				return
@@ -81,7 +81,6 @@
 						Trailer.forceMove(get_turf(src))
 						Trailer.increase_step("framed [initial(Trailer.name)]")
 						to_chat(user, "<span class='notice'>You convert \the [src] into \the [Trailer].</span>")
-						user.drop_from_inventory(src)
 						qdel(src)
 				return
 
@@ -100,8 +99,8 @@
 
 		if(4)
 			if(istype(W, /obj/item/cell))
-				user.drop_item()
-				W.forceMove(src)
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				cell = W
 				to_chat(user, "<span class='notice'>You add the power supply to \the [src].</span>")
 				increase_step("powered [initial(name)]")
@@ -109,8 +108,8 @@
 
 		if(5)
 			if(istype(W, /obj/item/stock_parts/motor))
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_consume_item_for_construction(W))
+					return
 				to_chat(user, "<span class='notice'>You add the motor to \the [src].</span>")
 				increase_step()
 				return
@@ -134,15 +133,12 @@
 				to_chat(user, "<span class='notice'>You begin your finishing touches on \the [src].</span>")
 				if(do_after(user, 20) && build_stage == 7)
 					playsound(loc, W.usesound, 30, 1)
-					var/obj/vehicle/train/engine/quadbike/built/product = new(src)
+					var/obj/vehicle/train/engine/quadbike/built/product = new(get_turf(src))
 					to_chat(user, "<span class='notice'>You finish \the [product]</span>")
-					product.loc = get_turf(src)
 					product.cell = cell
 					cell.forceMove(product)
 					cell = null
-					user.drop_from_inventory(src)
 					qdel(src)
-				return
 
 /obj/item/vehicle_assembly/quadtrailer
 	name = "all terrain trailer"
@@ -159,8 +155,8 @@
 				if(Q.build_stage > 2)
 					to_chat(user, "<span class='notice'>\The [Q] is too advanced to be of use with \the [src]</span>")
 					return
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_consume_item_for_construction(W))
+					return
 				increase_step("framed [initial(name)]")
 
 		if(1)
@@ -178,13 +174,10 @@
 
 		if(2)
 			if(W.is_screwdriver())
-				playsound(loc, W.usesound, 50, 1)
+				playsound(src, W.usesound, 50, 1)
 				to_chat(user, "<span class='notice'>You close up \the [src].</span>")
-				var/obj/vehicle/train/trolley/trailer/product = new(src)
-				product.loc = get_turf(src)
-				user.drop_from_inventory(src)
+				new /obj/vehicle/train/trolley/trailer(get_turf(src))
 				qdel(src)
-				return
 
 /*
  * Space bike.
@@ -202,8 +195,8 @@
 	switch(build_stage)
 		if(0)
 			if(istype(W, /obj/item/tank/jetpack) || istype(W, /obj/item/borg/upgrade/jetpack))
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_consume_item_for_construction(W))
+					return
 				increase_step()
 
 		if(1)
@@ -234,24 +227,24 @@
 
 		if(3)
 			if(istype(W, /obj/item/stock_parts/console_screen))
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_consume_item_for_construction(W))
+					return
 				to_chat(user, "<span class='notice'>You add the lights to \the [src].</span>")
 				increase_step()
 				return
 
 		if(4)
 			if(istype(W, /obj/item/stock_parts/spring))
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_consume_item_for_construction(W))
+					return
 				to_chat(user, "<span class='notice'>You add the control system to \the [src].</span>")
 				increase_step()
 				return
 
 		if(5)
 			if(istype(W, /obj/item/cell))
-				user.drop_item()
-				W.forceMove(src)
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				cell = W
 				to_chat(user, "<span class='notice'>You add the power supply to \the [src].</span>")
 				increase_step("powered [initial(name)]")
@@ -263,12 +256,9 @@
 				to_chat(user, "<span class='notice'>You begin your finishing touches on \the [src].</span>")
 				if(do_after(user, 20) && build_stage == 6)
 					playsound(loc, W.usesound, 30, 1)
-					var/obj/vehicle/bike/built/product = new(src)
+					var/obj/vehicle/bike/built/product = new(get_turf(src))
 					to_chat(user, "<span class='notice'>You finish \the [product]</span>")
-					product.loc = get_turf(src)
 					product.cell = cell
 					cell.forceMove(product)
 					cell = null
-					user.drop_from_inventory(src)
 					qdel(src)
-				return
