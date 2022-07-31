@@ -2,12 +2,12 @@
  * make sure to bump schema version and mark changes in database_changelog.md!
  *
  * default prefix is citrp_
- * find replace case sensitive __GAME_DB_PREFIX__
+ * find replace case sensitive %_PREFIX_%
  * PRESERVE ANY vr_'s! We need to replace those tables and features at some point, that's how we konw.
  **/
 
-DROP TABLE IF EXISTS `__GAME_DB_PREFIX__admin`;
-CREATE TABLE `erro_admin` (
+DROP TABLE IF EXISTS `%_PREFIX_%admin`;
+CREATE TABLE `%_PREFIX_%admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ckey` varchar(32) NOT NULL,
   `rank` varchar(32) NOT NULL DEFAULT 'Administrator',
@@ -16,7 +16,7 @@ CREATE TABLE `erro_admin` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `erro_admin_log` (
+CREATE TABLE `%_PREFIX_%admin_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `datetime` datetime NOT NULL,
   `adminckey` varchar(32) NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE `erro_admin_log` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `erro_ban` (
+CREATE TABLE `%_PREFIX_%ban` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `bantime` datetime NOT NULL,
   `serverip` varchar(32) NOT NULL,
@@ -52,7 +52,7 @@ CREATE TABLE `erro_ban` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `erro_feedback` (
+CREATE TABLE `%_PREFIX_%feedback` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `time` datetime NOT NULL,
   `round_id` int(8) NOT NULL,
@@ -62,7 +62,7 @@ CREATE TABLE `erro_feedback` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 ;
 
-CREATE TABLE `erro_player` (
+CREATE TABLE `%_PREFIX_%player` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ckey` varchar(32) NOT NULL,
   `firstseen` datetime NOT NULL,
@@ -74,7 +74,7 @@ CREATE TABLE `erro_player` (
   UNIQUE KEY `ckey` (`ckey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `erro_poll_option` (
+CREATE TABLE `%_PREFIX_%poll_option` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `pollid` int(11) NOT NULL,
   `text` varchar(255) NOT NULL,
@@ -87,7 +87,7 @@ CREATE TABLE `erro_poll_option` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `erro_poll_question` (
+CREATE TABLE `%_PREFIX_%poll_question` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `polltype` varchar(16) NOT NULL DEFAULT 'OPTION',
   `starttime` datetime NOT NULL,
@@ -97,7 +97,7 @@ CREATE TABLE `erro_poll_question` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `erro_poll_textreply` (
+CREATE TABLE `%_PREFIX_%poll_textreply` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `datetime` datetime NOT NULL,
   `pollid` int(11) NOT NULL,
@@ -108,7 +108,7 @@ CREATE TABLE `erro_poll_textreply` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `erro_poll_vote` (
+CREATE TABLE `%_PREFIX_%poll_vote` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `datetime` datetime NOT NULL,
   `pollid` int(11) NOT NULL,
@@ -120,7 +120,7 @@ CREATE TABLE `erro_poll_vote` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `erro_privacy` (
+CREATE TABLE `%_PREFIX_%privacy` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `datetime` datetime NOT NULL,
   `ckey` varchar(32) NOT NULL,
@@ -128,26 +128,14 @@ CREATE TABLE `erro_privacy` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `vr_player_hours` (
+CREATE TABLE `%_PREFIX_%vr_player_hours` (
   `ckey` varchar(32) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `department` varchar(64) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `hours` double NOT NULL,
   PRIMARY KEY (`ckey`,`department`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
-
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
-CREATE SCHEMA IF NOT EXISTS `tgstation` DEFAULT CHARACTER SET latin1 ;
-USE `mydb` ;
-USE `tgstation` ;
-
--- -----------------------------------------------------
--- Table `tgstation`.`death`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `tgstation`.`death` (
+CREATE  TABLE IF NOT EXISTS `%_PREFIX_%death` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `pod` TEXT NOT NULL COMMENT 'Place of death' ,
   `coord` TEXT NOT NULL COMMENT 'X, Y, Z POD' ,
@@ -163,16 +151,10 @@ CREATE  TABLE IF NOT EXISTS `tgstation`.`death` (
   `brainloss` INT(11) NOT NULL ,
   `fireloss` INT(11) NOT NULL ,
   `oxyloss` INT(11) NOT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = MyISAM
-AUTO_INCREMENT = 3409
-DEFAULT CHARACTER SET = latin1;
+  PRIMARY KEY (`id`)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-
--- -----------------------------------------------------
--- Table `tgstation`.`karma`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `tgstation`.`karma` (
+CREATE  TABLE IF NOT EXISTS `%_PREFIX_%karma` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `spendername` TEXT NOT NULL ,
   `spenderkey` TEXT NOT NULL ,
@@ -183,55 +165,29 @@ CREATE  TABLE IF NOT EXISTS `tgstation`.`karma` (
   `isnegative` TINYINT(1) NOT NULL ,
   `spenderip` TEXT NOT NULL ,
   `time` DATETIME NOT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = MyISAM
-AUTO_INCREMENT = 943
-DEFAULT CHARACTER SET = latin1;
+  PRIMARY KEY (`id`)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-
--- -----------------------------------------------------
--- Table `tgstation`.`karmatotals`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `tgstation`.`karmatotals` (
+CREATE  TABLE IF NOT EXISTS `%_PREFIX_%karmatotals` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `byondkey` TEXT NOT NULL ,
   `karma` INT(11) NOT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = MyISAM
-AUTO_INCREMENT = 244
-DEFAULT CHARACTER SET = latin1;
+  PRIMARY KEY (`id`)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-
--- -----------------------------------------------------
--- Table `tgstation`.`library`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `tgstation`.`library` (
+CREATE  TABLE IF NOT EXISTS `%_PREFIX_%library` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `author` TEXT NOT NULL ,
   `title` TEXT NOT NULL ,
   `content` TEXT NOT NULL ,
   `category` TEXT NOT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = MyISAM
-AUTO_INCREMENT = 184
-DEFAULT CHARACTER SET = latin1;
+  PRIMARY KEY (`id`)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-
--- -----------------------------------------------------
--- Table `tgstation`.`population`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `tgstation`.`population` (
+CREATE  TABLE IF NOT EXISTS `%_PREFIX_%population` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `playercount` INT(11) NULL DEFAULT NULL ,
   `admincount` INT(11) NULL DEFAULT NULL ,
   `time` DATETIME NOT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = MyISAM
-AUTO_INCREMENT = 2544
-DEFAULT CHARACTER SET = latin1;
-
-
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+  PRIMARY KEY (`id`)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
