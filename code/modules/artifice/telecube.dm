@@ -144,8 +144,7 @@
 	var/mob/living/L = src.loc
 
 	if(istype(L))
-		L.drop_from_inventory(src)
-		forceMove(get_turf(src))
+		L.drop_item_to_ground(src, INV_OP_FORCE)
 
 	if(world.time < (last_teleport + cooldown_time))
 		return .

@@ -60,6 +60,16 @@
 ///Delete the timer on parent datum Destroy() and when deltimer'd
 #define TIMER_DELETE_ME			(1<<6)
 
+DEFINE_BITFIELD(timer_flags, list(
+	BITFIELD(TIMER_UNIQUE),
+	BITFIELD(TIMER_OVERRIDE),
+	BITFIELD(TIMER_CLIENT_TIME),
+	BITFIELD(TIMER_STOPPABLE),
+	BITFIELD(TIMER_NO_HASH_WAIT),
+	BITFIELD(TIMER_LOOP),
+	BITFIELD(TIMER_DELETE_ME),
+))
+
 ///Empty ID define
 #define TIMER_ID_NULL -1
 
@@ -115,6 +125,15 @@
 var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_GAME, RUNLEVEL_POSTGAME)
 /// Convert from the runlevel bitfield constants to index in runlevel_flags list
 #define RUNLEVEL_FLAG_TO_INDEX(flag) (log(2, flag) + 1)
+
+DEFINE_BITFIELD(runlevels, list(
+	BITFIELD(RUNLEVEL_INIT),
+	BITFIELD(RUNLEVEL_LOBBY),
+	BITFIELD(RUNLEVEL_SETUP),
+	BITFIELD(RUNLEVEL_GAME),
+	BITFIELD(RUNLEVEL_POSTGAME),
+))
+
 // Subsystem init_order, from highest priority to lowest priority
 // Subsystems shutdown in the reverse of the order they initialize in
 // The numbers just define the ordering, they are meaningless otherwise.

@@ -1,7 +1,7 @@
 
 /datum/gear/accessory
 	name = "Blue Silk Tie"
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 	sort_category = "Accessories"
 	abstract_type = /datum/gear/accessory
 	path = /obj/item/clothing/accessory
@@ -267,7 +267,7 @@
 /datum/gear/choker	// A colorable choker
 	name = "Choker"
 	path = /obj/item/clothing/accessory/choker
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 	sort_category = "Accessories"
 
 /datum/gear/choker/New()
@@ -277,7 +277,7 @@
 /datum/gear/collar
 	name = "Collar - Silver"
 	path = /obj/item/clothing/accessory/collar/silver
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 	sort_category = "Accessories"
 
 /datum/gear/collar/New()
@@ -364,7 +364,7 @@
 /datum/gear/accessory/buttonup
 	name = "Button Up Shirt"
 	path = /obj/item/clothing/accessory/buttonup
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 	sort_category = "Accessories"
 
 /datum/gear/accessory/buttonup/New()
@@ -374,7 +374,7 @@
 /datum/gear/accessory/buttonup/untucked
 	name = "Button Up Shirt - Untucked"
 	path = /obj/item/clothing/accessory/buttonup/untucked
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 	sort_category = "Accessories"
 
 /datum/gear/accessory/antediluvian

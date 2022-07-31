@@ -315,13 +315,13 @@
 			to_chat(user, SPAN_WARNING("\The [src] already has a container loaded!"))
 			return
 		else if(do_after(user, 1 SECOND))
+			if(!user.attempt_insert_item_for_installation(G, src))
+				return
 			user.visible_message("[user] has loaded \the [G] into \the [src].", "You load \the [G] into \the [src].")
 			container = G
-			user.drop_item()
-			G.forceMove(src)
 		return
-
 	return ..()
+
 // END FLESH ORGAN PRINTER
 
 

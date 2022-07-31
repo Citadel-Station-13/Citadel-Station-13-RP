@@ -1,6 +1,7 @@
 /datum/species/adherent
 	name = SPECIES_ADHERENT
 	name_plural = "Adherents"
+	default_bodytype = BODYTYPE_ADHERENT
 
 	blurb = "The Vigil is a relatively loose association of machine-servitors, Adherents, \
 	built by an extinct culture. They are devoted to the memory of their long-dead creators, \
@@ -119,11 +120,11 @@
 	/*equip_adjust = list(
 		"[slot_l_hand_str]" = list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
 		"[slot_r_hand_str]" = list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
-		"[/datum/inventory_slot_meta/inventory/back]" =   list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
-		"[/datum/inventory_slot_meta/inventory/belt]" =   list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
-		"[/datum/inventory_slot_meta/inventory/head]" =   list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 3, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = -3, "y" = 14)),
-		"[/datum/inventory_slot_meta/inventory/ears/left]" =  list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
-		"[/datum/inventory_slot_meta/inventory/ears/right]" =  list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14))
+		"[SLOT_ID_BACK]" =   list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
+		"[SLOT_ID_BELT]" =   list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
+		"[SLOT_ID_HEAD]" =   list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 3, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = -3, "y" = 14)),
+		"[SLOT_ID_LEFT_EAR]" =  list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
+		"[SLOT_ID_RIGHT_EAR]" =  list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14))
 	)*/
 	..()
 
@@ -178,11 +179,11 @@
 /datum/hud_data/adherent
 	has_internals = FALSE
 	gear = list(
-		"l_ear" = list("loc" = ui_iclothing, "name" = "Aux Port", "slot" = slot_l_ear,   "state" = "ears", "toggle" = 1),
-		"head"  = list("loc" = ui_glasses,   "name" = "Hat",      "slot" = slot_head,    "state" = "hair", "toggle" = 1),
-		"back"  = list("loc" = ui_back,      "name" = "Back",     "slot" = slot_back,    "state" = "back"),
-		"id"    = list("loc" = ui_id,        "name" = "ID",       "slot" = slot_wear_id, "state" = "id"),
-		"belt"  = list("loc" = ui_belt,      "name" = "Belt",     "slot" = slot_belt,    "state" = "belt")
+		SLOT_ID_LEFT_EAR = list("loc" = ui_iclothing, "name" = "Aux Port", "slot" = SLOT_ID_LEFT_EAR,   "state" = "ears", "toggle" = 1),
+		SLOT_ID_HEAD =  list("loc" = ui_glasses,   "name" = "Hat",      "slot" = SLOT_ID_HEAD,    "state" = "hair", "toggle" = 1),
+		SLOT_ID_BACK =  list("loc" = ui_back,      "name" = "Back",     "slot" = SLOT_ID_BACK,    "state" = "back"),
+		SLOT_ID_WORN_ID =    list("loc" = ui_id,        "name" = "ID",       "slot" = SLOT_ID_WORN_ID, "state" = "id"),
+		SLOT_ID_BELT =  list("loc" = ui_belt,      "name" = "Belt",     "slot" = SLOT_ID_BELT,    "state" = "belt")
 	)
 
 /datum/species/adherent/post_organ_rejuvenate(obj/item/organ/org, mob/living/carbon/human/H)

@@ -144,24 +144,22 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 
 /obj/machinery/message_server/attackby(obj/item/O as obj, mob/living/user as mob)
 	if (active && !(machine_stat & (BROKEN|NOPOWER)) && (spamfilter_limit < MESSAGE_SERVER_DEFAULT_SPAM_LIMIT*2) && \
-		istype(O,/obj/item/circuitboard/message_monitor))
+		istype(O, /obj/item/circuitboard/message_monitor))
+		if(!user.attempt_consume_item_for_construction(O))
+			return
 		spamfilter_limit += round(MESSAGE_SERVER_DEFAULT_SPAM_LIMIT / 2)
-		user.drop_item()
-		qdel(O)
 		to_chat(user, "You install additional memory and processors into message server. Its filtering capabilities been enhanced.")
 	else
-		..(O, user)
+		return ..(O, user)
 
-/obj/machinery/message_server/update_icon()
+/obj/machinery/message_server/update_icon_state()
+	. = ..()
 	if((machine_stat & (BROKEN|NOPOWER)))
 		icon_state = "server-nopower"
 	else if (!active)
 		icon_state = "server-off"
 	else
 		icon_state = "server-on"
-
-	return
-
 
 /datum/feedback_variable
 	var/variable

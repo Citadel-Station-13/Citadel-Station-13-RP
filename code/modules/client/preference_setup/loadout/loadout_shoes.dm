@@ -2,7 +2,7 @@
 /datum/gear/shoes
 	name = "Sandals"
 	path = /obj/item/clothing/shoes/sandal
-	slot = slot_shoes
+	slot = SLOT_ID_SHOES
 	sort_category = "Shoes and Footwear"
 
 /datum/gear/shoes/jackboots

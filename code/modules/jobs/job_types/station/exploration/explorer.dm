@@ -44,8 +44,9 @@
 	uniform = /obj/item/clothing/under/explorer
 	l_ear = /obj/item/radio/headset/explorer
 
-	id_slot = slot_wear_id
-	pda_slot = slot_l_store
+	id_slot = SLOT_ID_WORN_ID
+	pda_slot = SLOT_ID_LEFT_POCKET
+
 	pda_type = /obj/item/pda/explorer
 	id_type = /obj/item/card/id/explorer/explorer
 
@@ -64,11 +65,11 @@
 /datum/outfit/job/station/explorer/technician
 	name = OUTFIT_JOB_NAME("Explorer Technician")
 	belt = /obj/item/storage/belt/utility/full
-	pda_slot = slot_l_store
+	pda_slot = SLOT_ID_LEFT_POCKET
 	id_pda_assignment = "Explorer Technician"
 
 /datum/outfit/job/station/explorer/medic
 	name = OUTFIT_JOB_NAME("Explorer Medic")
 	l_hand = /obj/item/storage/firstaid/regular
-	pda_slot = slot_l_store
+	pda_slot = SLOT_ID_LEFT_POCKET
 	id_pda_assignment = "Explorer Medic"

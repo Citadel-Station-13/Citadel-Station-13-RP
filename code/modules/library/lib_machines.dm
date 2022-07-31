@@ -474,10 +474,10 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 	density = 1
 	var/obj/item/book/cache		// Last scanned book
 
-/obj/machinery/libraryscanner/attackby(var/obj/O as obj, var/mob/user as mob)
-	if(istype(O, /obj/item/book))
-		user.drop_item()
-		O.loc = src
+/obj/machinery/libraryscanner/attackby(obj/item/I, mob/living/user, params, attackchain_flags, damage_multiplier)
+	if(istype(I, /obj/item/book))
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 
 /obj/machinery/libraryscanner/attack_hand(var/mob/user as mob)
 	usr.set_machine(src)
@@ -538,20 +538,20 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 	if(panel_open)
 		add_overlay("[base_icon_state]-panel")
 
-/obj/machinery/bookbinder/attackby(var/obj/O as obj, var/mob/user as mob)
-	if(istype(O, /obj/item/paper))
-		user.drop_item()
-		O.loc = src
+/obj/machinery/bookbinder/attackby(obj/item/I, mob/living/user, params, attackchain_flags, damage_multiplier)
+	if(istype(I, /obj/item/paper))
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		user.visible_message("[user] loads some paper into [src].", "You load some paper into [src].")
 		flick_overlay_view("[base_icon_state]-load-paper", src, 10)
 		flick_overlay_view("[base_icon_state]-active", src, 12)
-		src.visible_message("[src] begins to hum as it warms up its printing drums.")
+		visible_message("[src] begins to hum as it warms up its printing drums.")
 		sleep(rand(200,400))
-		src.visible_message("[src] whirs as it prints and binds a new book.")
-		var/obj/item/book/b = new(src.loc)
-		b.dat = O:info
+		visible_message("[src] whirs as it prints and binds a new book.")
+		var/obj/item/book/b = new(loc)
+		b.dat = I:info
 		b.name = "Print Job #" + "[rand(100, 999)]"
 		b.icon_state = "book[rand(1,7)]"
-		qdel(O)
+		qdel(I)
 	else
 		..()

@@ -240,8 +240,11 @@
 
 				if(G.slot && !(G.slot in equipped_slots))
 					var/metadata = gear[G.display_name]
-					if(mannequin.equip_to_slot_or_del(G.spawn_item(mannequin, metadata), G.slot))
-						if(G.slot != slot_tie)
+					if(G.slot == "implant")
+						// todo: remove fucking snowflake
+						continue
+					if(mannequin.force_equip_to_slot_or_del(G.spawn_item(mannequin, metadata), G.slot, INV_OP_SILENT))
+						if(G.slot != /datum/inventory_slot_meta/abstract/attach_as_accessory)
 							equipped_slots += G.slot
 
 	if((equip_preview_mob & EQUIP_PREVIEW_JOB) && previewJob)

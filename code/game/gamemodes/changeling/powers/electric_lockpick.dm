@@ -15,7 +15,7 @@
 
 	var/datum/changeling/changeling = changeling_power(5,0,100,CONSCIOUS)
 
-	var/obj/held_item = get_active_hand()
+	var/obj/held_item = get_active_held_item()
 
 	if(!changeling)
 		return 0
@@ -37,7 +37,7 @@
 	if(ismob(loc))
 		to_chat(loc, "<span class='notice'>We shape our finger to fit inside electronics, and are ready to force them open.</span>")
 
-/obj/item/finger_lockpick/dropped(mob/user)
+/obj/item/finger_lockpick/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	to_chat(user, "<span class='notice'>We discreetly shape our finger back to a less suspicious form.</span>")
 	qdel(src)

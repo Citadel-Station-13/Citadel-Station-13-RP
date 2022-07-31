@@ -111,12 +111,10 @@
 
 /obj/item/material/proc/shatter(var/consumed)
 	var/turf/T = get_turf(src)
-	T.visible_message("<span class='danger'>\The [src] [material.destruction_desc]!</span>")
-	if(istype(loc, /mob/living))
-		var/mob/living/M = loc
-		M.drop_from_inventory(src)
+	visible_message("<span class='danger'>\The [src] [material.destruction_desc]!</span>")
 	playsound(src, "shatter", 70, 1)
-	if(!consumed && drops_debris) material.place_shard(T)
+	if(!consumed && drops_debris)
+		material.place_shard(T)
 	qdel(src)
 
 /obj/item/material/proc/dull()

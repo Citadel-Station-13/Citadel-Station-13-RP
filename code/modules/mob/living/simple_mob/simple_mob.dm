@@ -20,8 +20,6 @@
 	//* Settings for played mobs *//
 	/// Does the percentage health show in the stat panel for the mob
 	var/show_stat_health = TRUE
-	/// Set to TRUE to enable the use of hands and the hands hud
-	var/has_hands = FALSE
 	/// Can a player in this mob use things like guns or AI cards?
 	var/humanoid_hands = FALSE
 	/// Used in IsHumanoidToolUser. 'Your X are not fit-'.

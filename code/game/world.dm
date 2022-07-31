@@ -159,6 +159,7 @@ GLOBAL_LIST(topic_status_cache)
 	GLOB.test_log = file("[GLOB.log_directory]/tests.log")
 	start_log(GLOB.test_log)
 #endif
+	_setup_logs_boilerplate()
 	start_log(GLOB.world_game_log)
 	start_log(GLOB.world_attack_log)
 	start_log(GLOB.world_href_log)
@@ -182,6 +183,8 @@ GLOBAL_LIST(topic_status_cache)
 	// but those are both private, so let's put the commit info in the runtime
 	// log which is ultimately public.
 	log_runtime(GLOB.revdata.get_log_message())
+
+/world/proc/_setup_logs_boilerplate()
 
 /world/Topic(T, addr, master, key)
 	TGS_TOPIC	//redirect to server tools if necessary

@@ -31,7 +31,7 @@
 		if(!(S.z in affecting_z))
 			continue
 		var/area/A = get_area(S)
-		if(!A || A.area_flags & AF_RAD_SHIELDED)	// Rad shielding will protect from ions too
+		if(!A || A.area_flags & AREA_RAD_SHIELDED)	// Rad shielding will protect from ions too
 			continue
 		to_chat(S, "<span class='warning'>Your integrated sensors detect an ionospheric anomaly. Your systems will be impacted as you begin a partial restart.</span>")
 		var/ionbug = rand(3, 9)

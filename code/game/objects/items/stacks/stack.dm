@@ -181,7 +181,7 @@
 
 /obj/item/stack/Topic(href, href_list)
 	..()
-	if ((usr.restrained() || usr.stat || usr.get_active_hand() != src))
+	if ((usr.restrained() || usr.stat || usr.get_active_held_item() != src))
 		return
 
 	if (href_list["sublist"] && !href_list["make"])
@@ -232,9 +232,6 @@
 		amount -= used
 		if (amount <= 0)
 			mid_delete = TRUE
-			if(ismob(loc))
-				var/mob/M = loc
-				M.remove_from_mob(src, null)
 			qdel(src) //should be safe to qdel immediately since if someone is still using this stack it will persist for a little while longer
 		update_icon()
 		return 1
@@ -348,15 +345,16 @@
 			break
 
 /obj/item/stack/attack_hand(mob/user as mob)
-	if(user.get_inactive_hand() == src)
+	if(user.get_inactive_held_item() == src)
 		change_stack(user, 1)
 	else
 		return ..()
 
-/obj/item/stack/Crossed(obj/o)
-	if(can_merge(o) && !o.throwing)
-		merge(o)
+/obj/item/stack/Crossed(atom/movable/AM)
 	. = ..()
+	// if we're in a mob, do not automerge
+	if(!ismob(loc) && !AM.throwing && can_merge(AM))
+		merge(AM)
 
 /obj/item/stack/proc/merge(obj/item/stack/S) //Merge src into S, as much as possible
 	if(QDELETED(S) || QDELETED(src) || (S == src)) //amusingly this can cause a stack to consume itself, let's not allow that.
@@ -417,7 +415,7 @@
 	. = F
 	F.copy_evidences(src)
 	if(user)
-		if(!user.put_in_hands(F, merge_stacks = FALSE))
+		if(!user.put_in_hands(F, INV_OP_NO_MERGE_STACKS))
 			F.forceMove(user.drop_location())
 		add_fingerprint(user)
 		F.add_fingerprint(user)

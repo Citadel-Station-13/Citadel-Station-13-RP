@@ -59,7 +59,7 @@
 	to_chat(user, "It is [enabled ? "enabled" : "disabled"].")
 
 /obj/item/shield_diffuser/attack_hand(mob/user as mob)
-	if(user.get_inactive_hand() == src)
+	if(user.get_inactive_held_item() == src)
 		if(cell)
 			cell.update_icon()
 			user.put_in_hands(cell)
@@ -77,8 +77,8 @@
 	if(istype(W, /obj/item/cell))
 		if(istype(W, /obj/item/cell/device))
 			if(!cell)
-				user.drop_item()
-				W.loc = src
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				cell = W
 				to_chat(user, "<span class='notice'>You install a cell in \the [src].</span>")
 				playsound(src, 'sound/machines/button.ogg', 30, 1, 0)

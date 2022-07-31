@@ -20,7 +20,6 @@
 	s.set_up(5, 1, get_turf(src))
 	s.start()
 	blink_mob(user)
-	user.unEquip(src)
 	qdel(src)
 
 /obj/item/ore/bluespace_crystal/proc/blink_mob(mob/living/L)

@@ -147,7 +147,7 @@
 	name = OUTFIT_JOB_NAME("Talon Captain")
 
 	id_type = /obj/item/card/id/gold
-	id_slot = slot_wear_id
+	id_slot = SLOT_ID_WORN_ID
 	pda_type = null
 
 	l_ear = /obj/item/radio/headset/talon
@@ -161,7 +161,7 @@
 /datum/outfit/job/talon_pilot
 	name = OUTFIT_JOB_NAME("Talon Pilot")
 
-	id_slot = slot_wear_id
+	id_slot = SLOT_ID_WORN_ID
 	pda_type = null
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_COMPREHENSIVE_SURVIVAL
 
@@ -177,7 +177,7 @@
 	abstract_type = /datum/outfit/job
 
 	id_type = /obj/item/card/id/medical
-	id_slot = slot_wear_id
+	id_slot = SLOT_ID_WORN_ID
 	pda_type = null
 
 	l_ear = /obj/item/radio/headset/talon
@@ -195,7 +195,7 @@
 	abstract_type = /datum/outfit/job
 
 	id_type = /obj/item/card/id/security
-	id_slot = slot_wear_id
+	id_slot = SLOT_ID_WORN_ID
 	pda_type = null
 	backpack_contents = list(/obj/item/handcuffs = 1)
 
@@ -213,7 +213,7 @@
 	abstract_type = /datum/outfit/job
 
 	id_type = /obj/item/card/id/engineering
-	id_slot = slot_wear_id
+	id_slot = SLOT_ID_WORN_ID
 	pda_type = null
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_EXTENDED_SURVIVAL
 
