@@ -6,8 +6,7 @@
  * PRESERVE ANY vr_'s! We need to replace those tables and features at some point, that's how we konw.
  **/
 
-DROP TABLE IF EXISTS `%_PREFIX_%admin`;
-CREATE TABLE `%_PREFIX_%admin` (
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ckey` varchar(32) NOT NULL,
   `rank` varchar(32) NOT NULL DEFAULT 'Administrator',
@@ -16,7 +15,7 @@ CREATE TABLE `%_PREFIX_%admin` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `%_PREFIX_%admin_log` (
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%admin_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `datetime` datetime NOT NULL,
   `adminckey` varchar(32) NOT NULL,
@@ -25,7 +24,7 @@ CREATE TABLE `%_PREFIX_%admin_log` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `%_PREFIX_%ban` (
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%ban` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `bantime` datetime NOT NULL,
   `serverip` varchar(32) NOT NULL,
@@ -52,7 +51,7 @@ CREATE TABLE `%_PREFIX_%ban` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `%_PREFIX_%feedback` (
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%feedback` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `time` datetime NOT NULL,
   `round_id` int(8) NOT NULL,
@@ -62,7 +61,7 @@ CREATE TABLE `%_PREFIX_%feedback` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 ;
 
-CREATE TABLE `%_PREFIX_%player` (
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%player` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ckey` varchar(32) NOT NULL,
   `firstseen` datetime NOT NULL,
@@ -74,7 +73,7 @@ CREATE TABLE `%_PREFIX_%player` (
   UNIQUE KEY `ckey` (`ckey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `%_PREFIX_%poll_option` (
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%poll_option` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `pollid` int(11) NOT NULL,
   `text` varchar(255) NOT NULL,
@@ -87,7 +86,7 @@ CREATE TABLE `%_PREFIX_%poll_option` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `%_PREFIX_%poll_question` (
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%poll_question` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `polltype` varchar(16) NOT NULL DEFAULT 'OPTION',
   `starttime` datetime NOT NULL,
@@ -97,7 +96,7 @@ CREATE TABLE `%_PREFIX_%poll_question` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `%_PREFIX_%poll_textreply` (
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%poll_textreply` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `datetime` datetime NOT NULL,
   `pollid` int(11) NOT NULL,
@@ -108,7 +107,7 @@ CREATE TABLE `%_PREFIX_%poll_textreply` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `%_PREFIX_%poll_vote` (
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%poll_vote` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `datetime` datetime NOT NULL,
   `pollid` int(11) NOT NULL,
@@ -120,7 +119,7 @@ CREATE TABLE `%_PREFIX_%poll_vote` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `%_PREFIX_%privacy` (
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%privacy` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `datetime` datetime NOT NULL,
   `ckey` varchar(32) NOT NULL,
@@ -128,14 +127,14 @@ CREATE TABLE `%_PREFIX_%privacy` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `%_PREFIX_%vr_player_hours` (
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%vr_player_hours` (
   `ckey` varchar(32) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `department` varchar(64) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `hours` double NOT NULL,
   PRIMARY KEY (`ckey`,`department`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE  TABLE IF NOT EXISTS `%_PREFIX_%death` (
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%death` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `pod` TEXT NOT NULL COMMENT 'Place of death' ,
   `coord` TEXT NOT NULL COMMENT 'X, Y, Z POD' ,
@@ -154,7 +153,7 @@ CREATE  TABLE IF NOT EXISTS `%_PREFIX_%death` (
   PRIMARY KEY (`id`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE  TABLE IF NOT EXISTS `%_PREFIX_%karma` (
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%karma` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `spendername` TEXT NOT NULL ,
   `spenderkey` TEXT NOT NULL ,
@@ -168,14 +167,14 @@ CREATE  TABLE IF NOT EXISTS `%_PREFIX_%karma` (
   PRIMARY KEY (`id`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE  TABLE IF NOT EXISTS `%_PREFIX_%karmatotals` (
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%karmatotals` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `byondkey` TEXT NOT NULL ,
   `karma` INT(11) NOT NULL ,
   PRIMARY KEY (`id`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE  TABLE IF NOT EXISTS `%_PREFIX_%library` (
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%library` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `author` TEXT NOT NULL ,
   `title` TEXT NOT NULL ,
@@ -184,7 +183,7 @@ CREATE  TABLE IF NOT EXISTS `%_PREFIX_%library` (
   PRIMARY KEY (`id`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE  TABLE IF NOT EXISTS `%_PREFIX_%population` (
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%population` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `playercount` INT(11) NULL DEFAULT NULL ,
   `admincount` INT(11) NULL DEFAULT NULL ,
