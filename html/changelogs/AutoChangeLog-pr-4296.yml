@@ -1,0 +1,5 @@
+author: "Zandario"
+delete-after: True
+changes: 
+  - bugfix: "Fixed some Teshari markings that were using the incorrect blending method and bodypart targets."
+  - bugfix: "Teshari Heterochromia also works properly now."
