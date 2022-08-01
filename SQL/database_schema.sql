@@ -1,7 +1,7 @@
 /**
  * make sure to bump schema version and mark changes in database_changelog.md!
  *
- * default prefix is citrp_
+ * default prefix is rp_
  * find replace case sensitive %_PREFIX_%
  * PRESERVE ANY vr_'s! We need to replace those tables and features at some point, that's how we konw.
  **/

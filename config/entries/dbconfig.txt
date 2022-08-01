@@ -17,7 +17,7 @@ SQL_PASSWORD password
 SQL_DATABASE ss13
 
 ## Table prefix to use for server-specific stuff
-SQL_SERVER_PREFIX citrp_
+SQL_SERVER_PREFIX rp_
 
 ## Table prefix to use for unified tables
 SQL_UNIFIED_PREFIX citadel_

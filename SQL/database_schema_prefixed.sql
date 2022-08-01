@@ -1,7 +1,7 @@
 /**
  * make sure to bump schema version and mark changes in database_changelog.md!
  *
- * default prefix is citrp_
+ * default prefix is rp_
  * find replace case sensitive %_PREFIX_%
  * PRESERVE ANY vr_'s! We need to replace those tables and features at some point, that's how we konw.
  **/
@@ -9,7 +9,7 @@
 --
 -- Table structure for table `schema_revision`
 --
-CREATE TABLE IF NOT EXISTS `citrp_schema_revision` (
+CREATE TABLE IF NOT EXISTS `rp_schema_revision` (
   `major` TINYINT(3) unsigned NOT NULL,
   `minor` TINYINT(3) unsigned NOT NULL,
   `date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `citrp_schema_revision` (
 --
 -- Table structure for table `round`
 --
-CREATE TABLE IF NOT EXISTS `citrp_round` (
+CREATE TABLE IF NOT EXISTS `rp_round` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `initialize_datetime` DATETIME NOT NULL,
   `start_datetime` DATETIME NULL,
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `citrp_round` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `citrp_admin` (
+CREATE TABLE IF NOT EXISTS `rp_admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ckey` varchar(32) NOT NULL,
   `rank` varchar(32) NOT NULL DEFAULT 'Administrator',
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `citrp_admin` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `citrp_admin_log` (
+CREATE TABLE IF NOT EXISTS `rp_admin_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `datetime` datetime NOT NULL,
   `adminckey` varchar(32) NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `citrp_admin_log` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `citrp_ban` (
+CREATE TABLE IF NOT EXISTS `rp_ban` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `bantime` datetime NOT NULL,
   `serverip` varchar(32) NOT NULL,
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `citrp_ban` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `citrp_feedback` (
+CREATE TABLE IF NOT EXISTS `rp_feedback` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `time` datetime NOT NULL,
   `round_id` int(8) NOT NULL,
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `citrp_feedback` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 ;
 
-CREATE TABLE IF NOT EXISTS `citrp_player` (
+CREATE TABLE IF NOT EXISTS `rp_player` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ckey` varchar(32) NOT NULL,
   `firstseen` datetime NOT NULL,
@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `citrp_player` (
   UNIQUE KEY `ckey` (`ckey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `citrp_poll_option` (
+CREATE TABLE IF NOT EXISTS `rp_poll_option` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `pollid` int(11) NOT NULL,
   `text` varchar(255) NOT NULL,
@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `citrp_poll_option` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `citrp_poll_question` (
+CREATE TABLE IF NOT EXISTS `rp_poll_question` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `polltype` varchar(16) NOT NULL DEFAULT 'OPTION',
   `starttime` datetime NOT NULL,
@@ -121,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `citrp_poll_question` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `citrp_poll_textreply` (
+CREATE TABLE IF NOT EXISTS `rp_poll_textreply` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `datetime` datetime NOT NULL,
   `pollid` int(11) NOT NULL,
@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `citrp_poll_textreply` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `citrp_poll_vote` (
+CREATE TABLE IF NOT EXISTS `rp_poll_vote` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `datetime` datetime NOT NULL,
   `pollid` int(11) NOT NULL,
@@ -144,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `citrp_poll_vote` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `citrp_privacy` (
+CREATE TABLE IF NOT EXISTS `rp_privacy` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `datetime` datetime NOT NULL,
   `ckey` varchar(32) NOT NULL,
@@ -152,14 +152,14 @@ CREATE TABLE IF NOT EXISTS `citrp_privacy` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `citrp_vr_player_hours` (
+CREATE TABLE IF NOT EXISTS `rp_vr_player_hours` (
   `ckey` varchar(32) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `department` varchar(64) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `hours` double NOT NULL,
   PRIMARY KEY (`ckey`,`department`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `citrp_death` (
+CREATE TABLE IF NOT EXISTS `rp_death` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `pod` TEXT NOT NULL COMMENT 'Place of death' ,
   `coord` TEXT NOT NULL COMMENT 'X, Y, Z POD' ,
@@ -178,7 +178,7 @@ CREATE TABLE IF NOT EXISTS `citrp_death` (
   PRIMARY KEY (`id`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `citrp_karma` (
+CREATE TABLE IF NOT EXISTS `rp_karma` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `spendername` TEXT NOT NULL ,
   `spenderkey` TEXT NOT NULL ,
@@ -192,14 +192,14 @@ CREATE TABLE IF NOT EXISTS `citrp_karma` (
   PRIMARY KEY (`id`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `citrp_karmatotals` (
+CREATE TABLE IF NOT EXISTS `rp_karmatotals` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `byondkey` TEXT NOT NULL ,
   `karma` INT(11) NOT NULL ,
   PRIMARY KEY (`id`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `citrp_library` (
+CREATE TABLE IF NOT EXISTS `rp_library` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `author` TEXT NOT NULL ,
   `title` TEXT NOT NULL ,
@@ -208,7 +208,7 @@ CREATE TABLE IF NOT EXISTS `citrp_library` (
   PRIMARY KEY (`id`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `citrp_population` (
+CREATE TABLE IF NOT EXISTS `rp_population` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `playercount` INT(11) NULL DEFAULT NULL ,
   `admincount` INT(11) NULL DEFAULT NULL ,
@@ -216,7 +216,7 @@ CREATE TABLE IF NOT EXISTS `citrp_population` (
   PRIMARY KEY (`id`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `citrp_connection_log` (
+CREATE TABLE IF NOT EXISTS `rp_connection_log` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `datetime` datetime NOT NULL,
   `serverip` varchar(16) NOT NULL,
