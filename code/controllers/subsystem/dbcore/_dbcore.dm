@@ -296,9 +296,6 @@ Delayed insert mode was removed in mysql 7 and only works with MyISAM type table
 		. = Query.Execute(async)
 	qdel(Query)
 
-#warn make tables round, schema_revision
-#warn make schema
-
 /**
  * WARNING: This proc currently does nothing.
  * why??? Because rust_g already sanitizes strings.
