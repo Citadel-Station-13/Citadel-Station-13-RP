@@ -108,7 +108,7 @@
 	// TODO: WHEN MULTIHAND IS DONE, BESURE TO MAKE THIS HAVE THE LOGIC I PUT INI PUT IN L/R HANDS!!
 	switch(index)
 		if(1)
-			return put_in_left_hand(I, flgas)
+			return put_in_left_hand(I, flags)
 		if(2)
 			return put_in_right_hand(I, flags)
 
