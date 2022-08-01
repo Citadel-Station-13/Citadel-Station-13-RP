@@ -50,15 +50,15 @@
 			var/isadmin = 0
 			if(src.client && src.client.holder)
 				isadmin = 1
-			var/datum/db_query/query = SSdbcore.NewQuery(
+			var/datum/db_query/query = SSdbcore.ExecuteQuery(
 				"SELECT id FROM [format_table_name("poll_question")] WHERE [isadmin? "" : "adminonly = false AND"] Now() BETWEEN starttime AND endtime AND id NOT IN (SELECT pollid FROM [format_table_name("poll_vote")] WHERE ckey = :ckey) AND id NOT IN (SELECT pollid FROM [format_table_name("poll_textreply")] WHERE ckey = :ckey)",
 				list("ckey" = ckey)
 			)
-			query.Execute()
 			var/newpoll = 0
 			while(query.NextRow())
 				newpoll = 1
 				break
+			qdel(query)
 
 			if(newpoll)
 				output += "<p><b><a href='byond://?src=\ref[src];showpoll=1'>Show Player Polls</A> (NEW!)</b></p>"

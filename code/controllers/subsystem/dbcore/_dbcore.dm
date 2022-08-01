@@ -174,6 +174,13 @@ SUBSYSTEM_DEF(dbcore)
 /datum/controller/subsystem/dbcore/proc/ReportError(error)
 	last_error = error
 
+/**
+ * makes a query
+ *
+ * @params
+ * - sql_query - the query. use :arg for arguments
+ * - arguments - keyed list
+ */
 /datum/controller/subsystem/dbcore/proc/NewQuery(sql_query, arguments)
 	RETURN_TYPE(/datum/db_query)
 	if(IsAdminAdvancedProcCall())
@@ -183,9 +190,24 @@ SUBSYSTEM_DEF(dbcore)
 	return new /datum/db_query(connection, sql_query, arguments)
 
 /**
+ * makes, and runs a query
+ *
+ * @params
+ * - sql_query - the query. use :arg for arguments
+ * - arguments - keyed list
+ */
+/datum/controller/subsystem/dbcore/proc/ExecuteQuery(sql_query, arguments)
+	RETURN_TYPE(/datum/db_query)
+	var/datum/db_query/query = NewQuery(sql_query, arguments)
+	. = query
+	query.Execute()
+
+/**
  * immediately runs a sql query with selected arguments
  * always uses async queries
  * will block the caller.
+ *
+ * ! do not use this proc for new things, this proc is bad practice.
  *
  * **warning**: will delete the query right after the current set of procs run. USE NewQuery IF YOU WANT TO MANAGE THIS YOURSELF.
  */
@@ -195,16 +217,6 @@ SUBSYSTEM_DEF(dbcore)
 	. = query
 	query.Execute(TRUE, TRUE)
 	QDEL_IN(query, 0)
-
-/**
- * immediately runs a sql query with selected arguments
- * always usesasync queries
- * will not block the caller.
- */
-/datum/controller/subsystem/dbcore/proc/RunQueryAsync(sql_query, arguments)
-	RETURN_TYPE(/datum/db_query)
-	set waitfor = FALSE
-	return RunQuery(sql_query, arguments)
 
 /datum/controller/subsystem/dbcore/proc/QuerySelect(list/querys, warn = FALSE, qdel = FALSE)
 	if (!islist(querys))
