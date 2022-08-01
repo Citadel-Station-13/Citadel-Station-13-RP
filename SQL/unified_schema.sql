@@ -15,5 +15,3 @@ CREATE TABLE IF NOT EXISTS `unified_schema_revision` (
   `date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`major`, `minor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---- currently empty
