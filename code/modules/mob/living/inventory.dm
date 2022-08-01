@@ -104,7 +104,7 @@
 	I.equipped(src, SLOT_ID_HANDS, flags)
 	return TRUE
 
-/mob/living/put_in_hand(obj/item/I, index, flgas)
+/mob/living/put_in_hand(obj/item/I, index, flags)
 	// TODO: WHEN MULTIHAND IS DONE, BESURE TO MAKE THIS HAVE THE LOGIC I PUT INI PUT IN L/R HANDS!!
 	switch(index)
 		if(1)
