@@ -136,6 +136,15 @@
 			message = "gives a short, quieter shriek!"
 			m_type = 1
 
+		// SQUID GAMES
+		if ("achime")
+			if(src.species.name != SPECIES_ADHERENT)
+				to_chat(src, "<span class='warning'>You aren't floaty enough!</span>")
+				return
+			playsound(src.loc, 'sound/machines/achime.ogg', 50, 0)
+			message = "chimes!"
+			m_type = 1
+
 
 		if ("blink")
 			message = "blinks."
