@@ -147,8 +147,8 @@ SUBSYSTEM_DEF(dbcore)
 	if(!Connect())
 		return
 	var/datum/db_query/query_round_end = SSdbcore.NewQuery(
-		"UPDATE [format_table_name("round")] SET end_datetime = Now(), game_mode_result = :game_mode_result, station_name = :station_name WHERE id = :round_id",
-		list("game_mode_result" = "Unknown", "station_name" = station_name(), "round_id" = GLOB.round_id)
+		"UPDATE [format_table_name("round")] SET end_datetime = Now() WHERE id = :round_id",
+		list("round_id" = GLOB.round_id)
 	)
 	query_round_end.Execute()
 	qdel(query_round_end)
