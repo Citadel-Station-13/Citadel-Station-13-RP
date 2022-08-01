@@ -570,6 +570,8 @@
 			validpoll = 1
 			break
 
+		qdel(select_query)
+
 		if(!validpoll)
 			to_chat(usr, "<font color='red'>Poll is not valid.</font>")
 			return
@@ -587,6 +589,8 @@
 		while(select_query2.NextRow())
 			validoption = 1
 			break
+
+		qdel(select_query2)
 
 		if(!validoption)
 			to_chat(usr, "<font color='red'>Poll option is not valid.</font>")

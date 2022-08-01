@@ -20,6 +20,7 @@ proc/sql_poll_population()
 		if(!query.Execute())
 			var/err = query.ErrorMsg()
 			log_game("SQL ERROR during population polling. Error : \[[err]\]\n")
+		qdel(query)
 
 proc/sql_report_round_start()
 	// TODO
@@ -83,7 +84,7 @@ proc/sql_report_death(var/mob/living/carbon/human/H)
 		if(!query.Execute())
 			var/err = query.ErrorMsg()
 			log_game("SQL ERROR during death reporting. Error : \[[err]\]\n")
-
+		qdel(query)
 
 proc/sql_report_cyborg_death(var/mob/living/silicon/robot/H)
 	if(!sqllogging)
@@ -136,6 +137,7 @@ proc/sql_report_cyborg_death(var/mob/living/silicon/robot/H)
 		if(!query.Execute())
 			var/err = query.ErrorMsg()
 			log_game("SQL ERROR during death reporting. Error : \[[err]\]\n")
+		qdel(query)
 
 
 proc/statistic_cycle()
@@ -195,3 +197,4 @@ proc/sql_commit_feedback()
 			if(!query.Execute())
 				var/err = query.ErrorMsg()
 				log_game("SQL ERROR during death reporting. Error : \[[err]\]\n")
+			qdel(query)

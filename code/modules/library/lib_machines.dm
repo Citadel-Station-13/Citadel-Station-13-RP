@@ -415,6 +415,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 							else
 								log_game("[usr.name]/[usr.key] has uploaded the book titled [scanner.cache.name], [length(scanner.cache.dat)] signs")
 								alert("Upload Complete.")
+							qdel(query)
 
 	if(href_list["targetid"])
 		var/sqlid = sanitizeSQL(href_list["targetid"])

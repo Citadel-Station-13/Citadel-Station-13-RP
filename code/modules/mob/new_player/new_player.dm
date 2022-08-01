@@ -345,6 +345,7 @@
 		while(query.NextRow())
 			voted = 1
 			break
+		qdel(query)
 
 		//This is a safety switch, so only valid options pass through
 		var/option = "UNKNOWN"

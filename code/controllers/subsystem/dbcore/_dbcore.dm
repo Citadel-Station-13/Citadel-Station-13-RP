@@ -186,12 +186,15 @@ SUBSYSTEM_DEF(dbcore)
  * immediately runs a sql query with selected arguments
  * always uses async queries
  * will block the caller.
+ *
+ * **warning**: will delete the query right after the current set of procs run. USE NewQuery IF YOU WANT TO MANAGE THIS YOURSELF.
  */
 /datum/controller/subsystem/dbcore/proc/RunQuery(sql_query, arguments)
 	RETURN_TYPE(/datum/db_query)
 	var/datum/db_query/query = NewQuery(sql_query, arguments)
 	. = query
 	query.Execute(TRUE, TRUE)
+	QDEL_IN(query, 0)
 
 /**
  * immediately runs a sql query with selected arguments
