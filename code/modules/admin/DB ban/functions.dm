@@ -71,7 +71,7 @@ datum/admins/proc/DB_ban_record(var/bantype, var/mob/banned_mob, var/duration = 
 	var/sql = "INSERT INTO [format_table_name("ban")] \
 	(`id`,`bantime`,`serverip`,`bantype`,`reason`,`job`,`duration`,`rounds`,`expiration_time`,`ckey`,`computerid`,`ip`,`a_ckey`,`a_computerid`,`a_ip`,`who`,`adminwho`,`edits`,`unbanned`,`unbanned_datetime`,`unbanned_ckey`,`unbanned_computerid`,`unbanned_ip`) \
 	VALUES (null, Now(), :ip, :type, :reason, :job, :duration, :rounds, Now() + INTERVAL :duration MINUTE, :ckey, :cid, :ip, :a_ckey, :a_cid, :a_ip, :who, :adminwho, '', null, null, null, null, null)"
-	var/datum/db_query/query_insert = SSdbcore.RunQuery(
+	SSdbcore.RunQuery(
 		sql,
 		list(
 			"ip" = serverip,

@@ -458,7 +458,7 @@
 			adminrank = usr.client.holder.rank
 
 
-		var/datum/db_query/insert_query = SSdbcore.RunQuery(
+		SSdbcore.RunQuery(
 			"INSERT INTO [format_table_name("poll_vote")] (id, datetime, pollid, optionid, ckey, ip, adminrank) VALUES (null, Now(), :poll, :option, :ckey, :addr, :rank)",
 			list(
 				"poll" = pollid,
@@ -533,7 +533,7 @@
 			to_chat(usr, "The text you entered was blank, contained illegal characters or was too long. Please correct the text and submit again.")
 			return
 
-		var/datum/db_query/insert_query = SSdbcore.RunQuery(
+		SSdbcore.RunQuery(
 			"INSERT INTO [format_table_name("poll_textreply")] (id, datetime, pollid, ckey, ip, replytext, adminrank) VALUES (null, Now(), :pollid, :ckey, :addr, :reply, :rank)",
 			list(
 				"pollid" = pollid,
