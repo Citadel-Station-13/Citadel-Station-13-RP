@@ -1,0 +1,5 @@
+author: "LordPapalus"
+delete-after: True
+changes: 
+  - rscadd: "*achime"
+  - rscadd: "achime.ogg"
