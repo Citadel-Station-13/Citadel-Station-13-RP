@@ -19,7 +19,7 @@ var/global/list/limb_icon_cache = list()
 			if(human.synth_color)
 				s_col = list(human.r_synth, human.g_synth, human.b_synth)
 			return
-	if(robotic && !(human.species.species_appearance_flags & BASE_SKIN_COLOR))
+	if(robotic && !(human.species.species_appearance_flags & HAS_BASE_SKIN_COLOR))
 		var/datum/robolimb/franchise = GLOB.all_robolimbs[model]
 		if(!(franchise && franchise.skin_tone))
 			return

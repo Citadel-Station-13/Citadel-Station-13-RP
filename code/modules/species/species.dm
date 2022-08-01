@@ -310,21 +310,22 @@
 
 //! ## Flags
 	/// Various specific features.
-	var/flags = 0
+	var/flags = NONE
 	/// Appearance/display related features.
-	var/species_appearance_flags = 0
+	var/species_appearance_flags = NONE
 	/// Flags that specify who can spawn as this species
-	var/spawn_flags = 0
+	var/spawn_flags = NONE
 
-	/// Passive movement speed malus (or boost, if negative)
-	var/slowdown = 0
 	/// What marks are left when walking
 	var/obj/effect/decal/cleanable/blood/tracks/move_trail = /obj/effect/decal/cleanable/blood/tracks/footprints
 	var/list/skin_overlays = list()
 	/// Whether the eyes can be shown above other icons
-	var/has_floating_eyes = 0
+	var/has_floating_eyes = FALSE
 	/// Whether the eyes are shown above all lighting
-	var/has_glowing_eyes = 0
+	var/has_glowing_eyes = FALSE
+
+	/// Passive movement speed malus (or boost, if negative)
+	var/slowdown = 0
 	/// How much faster or slower the species is in water
 	var/water_movement = 0
 	/// How much faster or slower the species is on snow
@@ -359,8 +360,9 @@
 		O_APPENDIX  = /obj/item/organ/internal/appendix,
 		O_EYES      = /obj/item/organ/internal/eyes,
 		O_STOMACH   = /obj/item/organ/internal/stomach,
-		O_INTESTINE = /obj/item/organ/internal/intestine
+		O_INTESTINE = /obj/item/organ/internal/intestine,
 	)
+
 	/// If set, this organ is required for vision. Defaults to "eyes" if the species has them.
 	var/vision_organ
 	/// If set, the species will be affected by flashbangs regardless if they have eyes or not, as they see in large areas.
