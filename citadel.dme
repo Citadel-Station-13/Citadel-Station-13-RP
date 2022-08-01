@@ -82,7 +82,6 @@
 #include "code\__DEFINES\spaceman_dmm.dm"
 #include "code\__DEFINES\spans.dm"
 #include "code\__DEFINES\spells.dm"
-#include "code\__DEFINES\sql.dm"
 #include "code\__DEFINES\stat_tracking.dm"
 #include "code\__DEFINES\status_effects.dm"
 #include "code\__DEFINES\storage.dm"
