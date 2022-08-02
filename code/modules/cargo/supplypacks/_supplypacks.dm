@@ -121,7 +121,7 @@ var/list/all_supply_groups = list("Atmospherics",
 			if(islist(path))
 				for(var/t as anything in path)
 					var/amt = path[t]
-					for(var/i in 1 to amt)
+					for(var/j in 1 to amt)
 						if(!--safety)
 							// ditto
 							CRASH("ran out of safety during SpawnContents in secondary interior loop")
