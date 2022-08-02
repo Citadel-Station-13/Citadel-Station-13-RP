@@ -126,7 +126,7 @@
 	if(href_list["choice"])
 		if(istype(inserted_id))
 			if(href_list["choice"] == "eject")
-				usr.put_in_hands(inserted_id)
+				usr.put_in_hands_or_drop(inserted_id)
 				inserted_id = null
 			if(href_list["choice"] == "claim")
 				inserted_id.mining_points += machine.points
