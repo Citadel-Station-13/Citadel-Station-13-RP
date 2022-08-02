@@ -52,3 +52,8 @@
 	name = "Third Eye"
 	icon_state = "thirdeye"
 	body_parts = list(BP_HEAD)
+
+/datum/sprite_accessory/marking/eye_stuff/closedeye
+	name = "Closed Eyes"
+	icon_state = "closedeyes"
+	body_parts = list(BP_HEAD)
