@@ -4,15 +4,31 @@ SUBSYSTEM_DEF(persistence)
 	subsystem_flags = SS_NO_FIRE
 	/// The directory to write to for per-map persistence. If null, the current map shouldn't be persisted to/from.
 	var/current_map_directory
+	/// current map id - used for database
+	var/current_map_id
 
 /datum/controller/subsystem/persistence/Initialize()
 	SetMapDirectory()
+	InitPersistence()
 	LoadPersistence()
 	return ..()
 
 /datum/controller/subsystem/persistence/Shutdown()
 	SavePersistence()
 	return ..()
+
+/datum/controller/subsystem/persistence/Recover()
+	. = ..()
+	SetMapDirectory()
+	InitPersistence()
+
+/**
+ * first pass: create all singletons necessary for operation
+ *
+ * called on initialization **and** recovery. make sure everything is recreated if necessary.
+ */
+/datum/controller/subsystem/persistence/proc/InitPersistence()
+	return
 
 /**
   * Loads all persistent information from disk.
@@ -31,5 +47,8 @@ SUBSYSTEM_DEF(persistence)
   */
 /datum/controller/subsystem/persistence/proc/SetMapDirectory()
 	if(!SSmapping.config.persistence_id)
+		current_map_id = null
+		current_map_directory = null
 		return			// map doesn't support persistence.
+	current_map_id = SSmapping.config.persistence_id
 	current_map_directory = "[PERSISTENCE_MAP_ROOT_DIRECTORY]/[SSmapping.config.persistence_id]"

@@ -114,6 +114,12 @@
 	/// Relative layer - position this atom should be in within things of the same base layer. defaults to 0.
 	var/relative_layer = 0
 
+//! ## Persistence
+	/// persistence flags
+	var/persistence_flags = NONE
+	///
+	#warn ids?
+
 /**
  * Called when an atom is created in byond (built in engine proc)
  *
