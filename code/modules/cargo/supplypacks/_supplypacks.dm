@@ -46,6 +46,7 @@ var/list/all_supply_groups = list("Atmospherics",
 
 	// the contained
 	/// what we contain - list of typepaths associated to count. if no count is associated, it's assumed to be one.
+	// lists are allowed instead of typepaths too if you're into that kinda thing
 	var/list/contains
 
 	var/access
@@ -117,7 +118,11 @@ var/list/all_supply_groups = list("Atmospherics",
 				// hence, self-proofing
 				// ~silicons
 				CRASH("Ran out of safety during SpawnContents")
-			InstanceObject(path, loc)
+			if(islist(path))
+				for(var/t as anything in path)
+					InstanceObject(t, loc)
+			else
+				InstanceObject(path, loc)
 
 /**
  * used to preprocess the contained list for spawning
