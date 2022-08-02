@@ -122,12 +122,13 @@
 	else
 		if(istype(I,/obj/item/gripper)) //Behold, Grippers and their horribleness. If ..() is called by any computers' attackby() now or in the future, this should let grippers work with them appropriately.
 			var/obj/item/gripper/B = I	//B, for Borg.
-			if(!B.wrapped)
+			if(!B.get_item())
 				to_chat(user, "\The [B] is not holding anything.")
 				return
 			else
 				var/B_held = B.wrapped
 				to_chat(user, "You use \the [B] to use \the [B_held] with \the [src].")
 				playsound(src, "keyboard", 100, 1, 0)
+				attackby(B.get_item(), user, params, attackchain_flags, damage_multiplier)
 			return
 		return ..()

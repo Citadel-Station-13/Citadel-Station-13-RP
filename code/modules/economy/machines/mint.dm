@@ -445,8 +445,9 @@
 			to_chat(user, "\The [B] is not holding anything.")
 			return
 		else
-			var/B_held = B.wrapped
+			var/B_held = B.get_item()
 			to_chat(user, "You use \the [B] to put \the [B_held] into \the [src] slot.")
+			attackby(B_held, user)
 		return
 
 	else

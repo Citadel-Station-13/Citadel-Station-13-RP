@@ -25,7 +25,8 @@
 		/obj/item/fuel_assembly/
 		)
 
-	var/obj/item/wrapped = null // Item currently being held.
+	/// currently held item
+	VAR_PRIVATE/obj/item/wrapped
 
 	var/force_holder = null //
 
@@ -34,6 +35,19 @@
 	if(wrapped)
 		. += "<span class='notice'>\The [src] is holding \the [wrapped].</span>"
 		wrapped.examine(user)
+
+/obj/item/gripper/Destroy()
+	remove_item()
+	return ..()
+
+/obj/item/gripper/proc/insert_item(obj/item/I)
+
+/obj/item/gripper/proc/remove_item(atom/newloc = FALSE)
+	if(newloc == FALSE)
+		newloc = drop_location()	// this is a stupid check but it lets us do nullspace moves properly
+
+/obj/item/gripper/proc/get_item()
+	return wrapped
 
 /obj/item/gripper/CtrlClick(mob/user)
 	drop_item()
