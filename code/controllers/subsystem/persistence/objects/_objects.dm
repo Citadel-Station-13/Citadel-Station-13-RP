@@ -20,9 +20,26 @@
  * Yes, you can add more use cases, if you know what you're doing.
  * Considering I don't, you probably don't either.
  */
+/datum/controller/subsystem/persistence
 
 /**
  * Checks if the object storage module is online
  */
 /datum/controller/subsystem/persistence/proc/ObjectStoreEnabled()
 	return SSdbcore.Connect()
+
+//! ATOM HELPERS
+
+/**
+ *
+ */
+/atom/proc/load_mapped_persistence(uid_override)
+
+/**
+ *
+ */
+/atom/proc/save_mapped_persistence(uid_override)
+
+//! ATOM INSTANTIATION
+
+/datum/controller/subsystem/persistence/proc/_generic_atom_instantiate(type, x, y, z, persistent_data)

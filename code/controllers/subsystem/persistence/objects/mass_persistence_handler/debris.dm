@@ -5,3 +5,4 @@
 
 /datum/mass_persistence_handler/debris/dirt
 
+/datum/mass_persistence_handler/debris/graffiti
