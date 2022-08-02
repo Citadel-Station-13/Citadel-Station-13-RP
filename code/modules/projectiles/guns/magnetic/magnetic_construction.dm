@@ -27,8 +27,8 @@
 		return
 
 	if(istype(thing, /obj/item/pipe) && construction_stage == 3)
-		user.drop_from_inventory(thing)
-		qdel(thing)
+		if(!user.attempt_consume_item_for_construction(thing))
+			return
 		user.visible_message("<span class='notice'>\The [user] jams \the [thing] into \the [src].</span>")
 		increment_construction_stage()
 		return
@@ -60,23 +60,23 @@
 		return
 
 	if(istype(thing, /obj/item/smes_coil) && construction_stage >= 6 && construction_stage <= 8)
+		if(!user.attempt_consume_item_for_construction(thing))
+			return
 		user.visible_message("<span class='notice'>\The [user] installs \a [thing] into \the [src].</span>")
-		user.drop_from_inventory(thing)
-		qdel(thing)
 		increment_construction_stage()
 		return
 
 	if(thing.is_screwdriver() && construction_stage >= 9)
 		user.visible_message("<span class='notice'>\The [user] secures \the [src] and finishes it off.</span>")
 		playsound(loc, 'sound/items/Screwdriver.ogg', 50, 1)
-		var/obj/item/gun/magnetic/coilgun = new(loc)
+		var/obj/item/gun/magnetic/coilgun = new(drop_location())
 		var/put_in_hands
-		var/mob/M = src.loc
+		var/mob/M = loc
 		if(istype(M))
 			put_in_hands = M == user
-			M.drop_from_inventory(src)
+			M.temporarily_remove_from_inventory(src, INV_OP_FORCE)
 		if(put_in_hands)
-			user.put_in_hands(coilgun)
+			user.put_in_active_hand(coilgun)
 		qdel(src)
 		return
 

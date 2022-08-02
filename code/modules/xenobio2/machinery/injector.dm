@@ -41,7 +41,7 @@
 	else
 		icon_state = "biogen-empty"
 
-/obj/machinery/xenobio2/manualinjector/MouseDrop_T(mob/target, mob/user)
+/obj/machinery/xenobio2/manualinjector/MouseDroppedOnLegacy(mob/target, mob/user)
 	if(user.stat || user.restrained())
 		return
 	move_into_injector(user,target)

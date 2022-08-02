@@ -124,8 +124,8 @@
 	if(use_cell)
 		if(istype(W, cell_type))
 			if(!bcell)
-				user.drop_item()
-				W.loc = src
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				bcell = W
 				to_chat(user, "<span class='notice'>You install a cell in [src].</span>")
 				update_icon()
@@ -261,7 +261,7 @@
 
 	projectile_parry_chance = 65
 
-/obj/item/melee/energy/sword/dropped(var/mob/user)
+/obj/item/melee/energy/sword/dropped(mob/user, flags, atom/newLoc)
 	..()
 	if(!istype(loc,/mob))
 		deactivate(user)
@@ -514,15 +514,14 @@
 	return ..()
 
 /obj/item/melee/energy/blade/attack_self(mob/user as mob)
-	user.drop_from_inventory(src)
 	qdel(src)
 
-/obj/item/melee/energy/blade/dropped()
+/obj/item/melee/energy/blade/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	qdel(src)
 
 /obj/item/melee/energy/blade/process(delta_time)
-	if(!creator || loc != creator || !creator.item_is_in_hands(src))
+	if(!creator || loc != creator || !creator.is_holding(src))
 		// Tidy up a bit.
 		if(istype(loc,/mob/living))
 			var/mob/living/carbon/human/host = loc
@@ -533,8 +532,8 @@
 							organ.implants -= src
 			host.pinned -= src
 			host.embedded -= src
-			host.drop_from_inventory(src)
-		spawn(1) if(src) qdel(src)
+			host._handle_inventory_hud_remove(src)
+		qdel(src)
 
 /obj/item/melee/energy/blade/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(default_parry_check(user, attacker, damage_source) && prob(60))
@@ -682,7 +681,7 @@
 			P.die_off()
 
 /*
-/obj/item/melee/energy/hfmachete/dropped(mob/user)
+/obj/item/melee/energy/hfmachete/dropped(mob/user, flags, atom/newLoc)
 	user.lazy_unregister_event(/lazy_event/on_moved, src, .proc/mob_moved)
 
 /obj/item/melee/energy/hfmachete/throw_at(atom/target, range, speed, thrower) // todo: get silicons to interpret this because >sleeps

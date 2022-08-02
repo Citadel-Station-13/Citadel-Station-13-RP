@@ -199,9 +199,11 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_EMPATH			"empath"
 #define TRAIT_FRIENDLY			"friendly"
 #define TRAIT_GRABWEAKNESS		"grab_weakness"
+*/
 
 // common trait sources
-#define TRAIT_GENERIC "generic"
+#define GENERIC_TRAIT "generic"
+/*
 #define EYE_DAMAGE "eye_damage"
 #define GENETIC_MUTATION "genetic"
 #define OBESITY "obesity"
@@ -215,6 +217,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 */
 ///cannot be removed without admin intervention
 #define ROUNDSTART_TRAIT "roundstart"
+#define HOLOGRAM_TRAIT "hologram"
 #define GHOSTROLE_TRAIT "ghostrole"
 #define JOB_TRAIT "job"
 ///Mime trait.
@@ -233,6 +236,11 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define STATUS_EFFECT_TRAIT "status-effect"
 */
 #define CLOTHING_TRAIT "clothing"
+#define RIG_TRAIT "rig"
+#define MAGBOOT_TRAIT "magboot"
+#define TOGGLE_CLOTHING_TRAIT "toggle_clothing"
+#define AUGMENT_TRAIT "trait"
+#define CYBORG_MODULE_TRAIT "cyborg_module"
 /*
 #define GLASSES_TRAIT "glasses"
 /// inherited from riding vehicles
@@ -283,3 +291,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define FROGENITE_TRAIT "frogenite"
 #define FERVEATIUM_TRAIT "ferveatium"
 */
+
+#define CHANGELING_TRAIT "changeling"
+#define TECHNOMANCER_TRAIT "technomancer"

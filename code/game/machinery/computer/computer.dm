@@ -116,7 +116,7 @@
 	text = replacetext(text, "\n", "<BR>")
 	return text
 
-/obj/machinery/computer/attackby(obj/item/I, mob/user)
+/obj/machinery/computer/attackby(obj/item/I, mob/living/user, params, attackchain_flags, damage_multiplier)
 	if(computer_deconstruction_screwdriver(user, I))
 		return
 	else
@@ -130,5 +130,4 @@
 				to_chat(user, "You use \the [B] to use \the [B_held] with \the [src].")
 				playsound(src, "keyboard", 100, 1, 0)
 			return
-		attack_hand(user)
-		return
+		return ..()

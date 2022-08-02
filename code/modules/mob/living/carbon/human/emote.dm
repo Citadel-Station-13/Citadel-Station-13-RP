@@ -136,6 +136,15 @@
 			message = "gives a short, quieter shriek!"
 			m_type = 1
 
+		// SQUID GAMES
+		if ("achime")
+			if(src.species.name != SPECIES_ADHERENT)
+				to_chat(src, "<span class='warning'>You aren't floaty enough!</span>")
+				return
+			playsound(src.loc, 'sound/machines/achime.ogg', 50, 0)
+			message = "chimes!"
+			m_type = 1
+
 
 		if ("blink")
 			message = "blinks."
@@ -745,11 +754,11 @@
 							break
 				if(M)
 					message = "<span class='danger'>slaps [M] across the face. Ouch!</span>"
-					playsound(loc, 'sound/effects/snap.ogg', 50, 1)
+					playsound(src, 'sound/effects/snap.ogg', 50, 1)
 					if(ishuman(M)) //Snowflakey!
 						var/mob/living/carbon/human/H = M
 						if(istype(H.wear_mask,/obj/item/clothing/mask/smokable))
-							H.drop_from_inventory(H.wear_mask)
+							H.drop_item_to_ground(H.wear_mask)
 				else
 					message = "<span class='danger'>slaps [T.himself]!</span>"
 					playsound(loc, 'sound/effects/snap.ogg', 50, 1)

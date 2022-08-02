@@ -35,7 +35,8 @@
 	return res
 
 /datum/event/infestation/setup()
-	announceWhen = rand(announceWhen, announceWhen + 3)
+	// make sure startWhen doesn't go to 0 or below!
+	announceWhen = rand(2, 5)
 	startWhen = announceWhen - 1
 	endWhen = 30
 

@@ -45,7 +45,7 @@
 /obj/structure/closet/body_bag/attackby(var/obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/pen))
 		var/t = input(user, "What would you like the label to be?", text("[]", src.name), null)  as text
-		if (user.get_active_hand() != W)
+		if (user.get_active_held_item() != W)
 			return
 		if (!in_range(src, user) && src.loc != user)
 			return
@@ -74,7 +74,7 @@
 		return 1
 	return 0
 
-/obj/structure/closet/body_bag/MouseDrop(over_object, src_location, over_location)
+/obj/structure/closet/body_bag/OnMouseDropLegacy(over_object, src_location, over_location)
 	..()
 	if((over_object == usr && (in_range(src, usr) || usr.contents.Find(src))))
 		if(!ishuman(usr))	return 0
@@ -172,7 +172,7 @@
 		O.desc = "Pretty useless now..."
 		qdel(src)
 
-/obj/structure/closet/body_bag/cryobag/MouseDrop(over_object, src_location, over_location)
+/obj/structure/closet/body_bag/cryobag/OnMouseDropLegacy(over_object, src_location, over_location)
 	. = ..()
 	if(. && syringe)
 		var/obj/item/bodybag/cryobag/folded = .
@@ -240,9 +240,10 @@
 				to_chat(user,"<span class='warning'>\The [src] already has an injector! Remove it first.</span>")
 			else
 				var/obj/item/reagent_containers/syringe/syringe = W
+				if(!user.attempt_insert_item_for_installation(syringe, src))
+					return
 				to_chat(user,"<span class='info'>You insert \the [syringe] into \the [src], and it locks into place.</span>")
-				user.unEquip(syringe)
-				src.syringe = syringe
+				syringe = syringe
 				syringe.loc = null
 				for(var/mob/living/carbon/human/H in contents)
 					inject_occupant(H)

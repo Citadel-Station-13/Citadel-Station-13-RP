@@ -14,41 +14,12 @@
 	punch_force = 5
 	var/obj/item/clothing/gloves/gloves = null	//Undergloves
 
-/obj/item/clothing/gloves/gauntlets/mob_can_equip(mob/user)
-	var/mob/living/carbon/human/H = user
-	if(H.gloves)
-		gloves = H.gloves
-		if(!istype(gloves))
-			to_chat(user, "You are unable to wear \the [src] as \the [H.gloves] are in the way.")
-			gloves = null
-			return 0
-		if(gloves.overgloves)
-			to_chat(user, "You are unable to wear \the [src] as \the [H.gloves] are in the way.")
-			gloves = null
-			return 0
-		H.drop_from_inventory(gloves)
-		gloves.forceMove(src)
+/obj/item/clothing/gloves/gauntlets/equip_worn_over_check(mob/M, slot, mob/user, obj/item/I, flags)
+	if(slot != SLOT_ID_GLOVES)
+		return FALSE
 
-	if(!..())
-		if(gloves)
-			if(H.equip_to_slot_if_possible(gloves, slot_gloves))
-				gloves = null
-			return 0
-	if(gloves)
-		to_chat(user, "You slip \the [src] on over \the [gloves].")
-	wearer = H
-	return 1
+	var/obj/item/clothing/gloves/G = I
+	if(!istype(G))
+		return FALSE
 
-/obj/item/clothing/gloves/gauntlets/restore_over_objects(mob/living/carbon/human/wearer)
-	if(ring)
-		if(gloves && !gloves.ring)
-			gloves.ring = ring
-			ring.forceMove(gloves)
-		else
-			ring.forceMove(get_turf(src))
-		ring = null
-	. = ..()
-	if(gloves)
-		if(!wearer.equip_to_slot_if_possible(gloves, slot_gloves))
-			gloves.forceMove(get_turf(src))
-		gloves = null
+	return !G.overgloves

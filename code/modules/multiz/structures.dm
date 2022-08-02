@@ -304,7 +304,7 @@
 	src.dir = T.dir
 	return TRUE
 
-/obj/structure/stairs/middle/MouseDrop_T(mob/target, mob/user)
+/obj/structure/stairs/middle/MouseDroppedOnLegacy(mob/target, mob/user)
 	. = ..()
 	if(check_integrity())
 		do_climb(user)

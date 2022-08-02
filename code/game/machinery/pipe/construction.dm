@@ -65,7 +65,7 @@ Buildable meters
 	if(make_from.mirrored)
 		do_a_flip()
 
-/obj/item/pipe/dropped()
+/obj/item/pipe/dropped(mob/user, flags, atom/newLoc)
 	if(loc)
 		setPipingLayer(piping_layer)
 	return ..()
@@ -165,9 +165,10 @@ Buildable meters
 
 //called when a turf is attacked with a pipe item
 /obj/item/pipe/afterattack(turf/simulated/floor/target, mob/user, proximity)
-	if(!proximity) return
-	if(istype(target) && user.canUnEquip(src))
-		user.drop_from_inventory(src, target)
+	if(!proximity)
+		return
+	if(istype(target))
+		user.transfer_item_to_loc(src, target)
 	else
 		return ..()
 
@@ -279,7 +280,7 @@ Buildable meters
 	to_chat(user, "<span class='notice'>You fasten the meter to the pipe.</span>")
 	qdel(src)
 
-/obj/item/pipe_meter/dropped()
+/obj/item/pipe_meter/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	if(loc)
 		setAttachLayer(piping_layer)

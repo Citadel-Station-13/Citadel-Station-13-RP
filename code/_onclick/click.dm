@@ -104,7 +104,7 @@
 			return 1
 		throw_mode_off()
 
-	var/obj/item/W = get_active_hand()
+	var/obj/item/W = get_active_held_item()
 
 	if(W == A) // Handle attack_self
 		W.attack_self(src)

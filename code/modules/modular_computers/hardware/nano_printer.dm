@@ -77,9 +77,9 @@
 		if(B.pages.len == 0) //if all its papers have been put into the printer, delete bundle
 			qdel(W)
 		else if(B.pages.len == 1) //if only one item left, extract item and delete the one-item bundle
-			user.drop_from_inventory(B)
+			if(!user.attempt_consume_item_for_construction(B))
+				return
 			user.put_in_hands(B[1])
-			qdel(B)
 		else //if at least two items remain, just update the bundle icon
 			B.update_icon()
 		to_chat(user, "You add [num_of_pages_added] papers from \the [W] into \the [src].")

@@ -143,13 +143,13 @@
 	var/healthpercent = health/maxHealth
 	switch(healthpercent)
 		if(0.25 to 0)
-			icon_living = "horing-25"
+			icon_living = "thrumbo-25"
 		if(0.50 to 0.26)
-			icon_living = "horing-50"
+			icon_living = "thrumbo-50"
 		if(0.75 to 0.51)
-			icon_living = "horing-75"
+			icon_living = "thrumbo-75"
 		if(0.76 to INFINITY)
-			icon_living = "horing-100"
+			icon_living = "thrumbo-100"
 	if(beforehealth != icon_living)
 		update_icon()
 

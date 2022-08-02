@@ -12,7 +12,7 @@ export const IMPL_INDEXED_DB = 2;
 
 const INDEXED_DB_VERSION = 1;
 const INDEXED_DB_NAME = 'tgui-citadel-rp';
-const INDEXED_DB_STORE_NAME = 'storage-v1';
+const INDEXED_DB_STORE_NAME = 'tgui-store-citadel-rp';
 
 const READ_ONLY = 'readonly';
 const READ_WRITE = 'readwrite';

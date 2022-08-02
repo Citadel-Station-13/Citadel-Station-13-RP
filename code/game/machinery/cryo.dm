@@ -186,10 +186,9 @@
 		if(beaker)
 			to_chat(user, SPAN_WARNING("A beaker is already loaded into the machine."))
 			return
-
+		if(!user.attempt_insert_item_for_installation(G, src))
+			return
 		beaker =  G
-		user.drop_item()
-		G.loc = src
 		user.visible_message("[user] adds \a [G] to \the [src]!", "You add \a [G] to \the [src]!")
 		update_icon()
 
@@ -208,7 +207,7 @@
 
 	return
 
-/obj/machinery/atmospherics/component/unary/cryo_cell/MouseDrop_T(mob/target, mob/user) //Allows borgs to put people into cryo without external assistance
+/obj/machinery/atmospherics/component/unary/cryo_cell/MouseDroppedOnLegacy(mob/target, mob/user) //Allows borgs to put people into cryo without external assistance
 	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user)|| !ishuman(target))
 		return
 	put_mob(target)

@@ -1,9 +1,9 @@
-/mob/living/carbon/human/proc/update_eyes()
-	var/obj/item/organ/internal/eyes/eyes = internal_organs_by_name[O_EYES]
-	if(eyes)
-		eyes.update_colour()
-		update_icons_body() //Body handles eyes
-		update_eyes() //For floating eyes only
+/**
+ * returns if we semantically have a certain organ
+ */
+/mob/living/carbon/human/proc/has_organ(name)
+	var/obj/item/organ/external/O = organs_by_name[name]
+	return (O && !O.is_stump())
 
 /mob/living/carbon/human/proc/recheck_bad_external_organs()
 	var/damage_this_tick = getToxLoss()
@@ -51,7 +51,7 @@
 			//Moving around with fractured ribs won't do you any good
 				if (prob(10) && !stat && can_feel_pain() && chem_effects[CE_PAINKILLER] < 50 && E.is_broken() && E.internal_organs.len)
 					custom_pain("Pain jolts through your broken [E.encased ? E.encased : E.name], staggering you!", 50)
-					drop_item(loc)
+					drop_active_held_item()
 					Stun(2)
 
 				//Moving makes open wounds get infected much faster
@@ -121,7 +121,7 @@
 			var/obj/item/organ/external/E = get_organ(limb_tag)
 			if(!E)
 				visible_message("<span class='danger'>Lacking a functioning left hand, \the [src] drops \the [l_hand].</span>")
-				drop_from_inventory(l_hand)
+				drop_left_held_item(INV_OP_FORCE)
 				break
 
 	if(r_hand)
@@ -129,7 +129,7 @@
 			var/obj/item/organ/external/E = get_organ(limb_tag)
 			if(!E)
 				visible_message("<span class='danger'>Lacking a functioning right hand, \the [src] drops \the [r_hand].</span>")
-				drop_from_inventory(r_hand)
+				drop_right_held_item(INV_OP_FORCE)
 				break
 
 	// Check again...
@@ -145,11 +145,11 @@
 				if(HAND_LEFT, ARM_LEFT)
 					if(!l_hand)
 						continue
-					drop_from_inventory(l_hand)
+					drop_left_held_item()
 				if(HAND_RIGHT, ARM_RIGHT)
 					if(!r_hand)
 						continue
-					drop_from_inventory(r_hand)
+					drop_right_held_item()
 
 			var/emote_scream = pick("screams in pain and ", "lets out a sharp cry and ", "cries out and ")
 			emote("me", 1, "[(can_feel_pain()) ? "" : emote_scream ]drops what they were holding in their [E.name]!")
@@ -159,11 +159,11 @@
 				if(HAND_LEFT, ARM_LEFT)
 					if(!l_hand)
 						continue
-					drop_from_inventory(l_hand)
+					drop_left_held_item()
 				if(HAND_RIGHT, ARM_RIGHT)
 					if(!r_hand)
 						continue
-					drop_from_inventory(r_hand)
+					drop_right_held_item()
 
 			emote("me", 1, "drops what they were holding, their [E.name] malfunctioning!")
 

@@ -1,7 +1,7 @@
 //Here you find the wonderfull code for suitcyclers
 //I did not write this, I just copied it to this page to take it from suit_storage_unit.dm
 
-
+// TODO: UNIFY WITH SUIT STORAGE UNITS WHY ARE THESE SEPARATE
 /obj/machinery/suit_cycler
 
 	name = "suit cycler"
@@ -205,9 +205,9 @@
 			to_chat(user, "You cannot refit a customised voidsuit.")
 			return
 
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		to_chat(user, "You fit \the [I] into the suit cycler.")
-		user.drop_item()
-		I.loc = src
 		helmet = I
 
 		update_icon()
@@ -228,9 +228,9 @@
 			to_chat(user, "You cannot refit a customised voidsuit.")
 			return
 
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		to_chat(user, "You fit \the [I] into the suit cycler.")
-		user.drop_item()
-		I.loc = src
 		suit = I
 
 		update_icon()

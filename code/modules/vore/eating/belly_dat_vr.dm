@@ -36,8 +36,7 @@
 	var/tmp/list/internal_contents = list()		// People/Things you've eaten into this belly!
 	var/tmp/emotePend = FALSE					// If there's already a spawned thing counting for the next emote
 	var/tmp/list/items_preserved = list()		// Stuff that wont digest.
-	var/list/slots = list(slot_back,slot_handcuffed,slot_l_store,slot_r_store,slot_wear_mask,slot_l_hand,slot_r_hand,slot_wear_id,slot_glasses,slot_gloves,slot_head,slot_shoes,slot_belt,slot_wear_suit,slot_w_uniform,slot_s_store,slot_l_ear,slot_r_ear)
-
+	var/list/slots = list(SLOT_ID_BACK,SLOT_ID_HANDCUFFED,SLOT_ID_LEFT_POCKET,SLOT_ID_RIGHT_POCKET,SLOT_ID_MASK,SLOT_ID_WORN_ID,SLOT_ID_GLASSES,SLOT_ID_GLOVES,SLOT_ID_HEAD,SLOT_ID_SHOES,SLOT_ID_BELT,SLOT_ID_SUIT,SLOT_ID_UNIFORM,SLOT_ID_SUIT_STORAGE,SLOT_ID_LEFT_EAR,SLOT_ID_RIGHT_EAR)
 
 	// Don't forget to watch your commas at the end of each line if you change these.
 	var/list/struggle_messages_outside = list(

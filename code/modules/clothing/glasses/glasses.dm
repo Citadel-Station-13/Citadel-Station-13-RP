@@ -16,7 +16,7 @@ BLIND     // can't see anything
 	icon = 'icons/obj/clothing/glasses.dmi'
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_EYES
-	plane_slots = list(slot_glasses)
+	plane_slots = list(SLOT_ID_GLASSES)
 	var/vision_flags = 0
 	var/darkness_view = 0//Base human is 2
 	var/see_invisible = -1
@@ -34,11 +34,6 @@ BLIND     // can't see anything
 		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/eyes.dmi',
 		SPECIES_VOX = 'icons/mob/clothing/species/vox/eyes.dmi'
 		)
-
-/obj/item/clothing/glasses/update_clothing_icon()
-	if (ismob(src.loc))
-		var/mob/M = src.loc
-		M.update_inv_glasses()
 
 /obj/item/clothing/glasses/attack_self(mob/user)
 	if(toggleable)
@@ -165,7 +160,6 @@ BLIND     // can't see anything
 	origin_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2)
 	toggleable = 1
 	vision_flags = SEE_TURFS
-	clothing_flags = ALLOWINTERNALS //cit change
 	body_parts_covered = EYES //cit change
 	enables_planes = list(VIS_FULLBRIGHT, VIS_MESONS)
 
@@ -212,7 +206,6 @@ BLIND     // can't see anything
 	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
-	clothing_flags = ALLOWINTERNALS
 	body_parts_covered = EYES
 	clothing_flags = SCAN_REAGENTS
 
@@ -225,7 +218,6 @@ BLIND     // can't see anything
 	desc = "Just some plain old goggles."
 	icon_state = "plaingoggles"
 	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
-	clothing_flags = ALLOWINTERNALS
 	body_parts_covered = EYES
 
 /obj/item/clothing/glasses/night
@@ -237,7 +229,6 @@ BLIND     // can't see anything
 	darkness_view = 7
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
-	clothing_flags = ALLOWINTERNALS //  Cit change
 	body_parts_covered = EYES // Cit change
 	off_state = "denight"
 	flash_protection = FLASH_PROTECTION_REDUCED
@@ -283,7 +274,7 @@ BLIND     // can't see anything
 		icon_state = "[icon_state]_1"
 	else
 		icon_state = initial(icon_state)
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/glasses/eyepatch/verb/switcheye()
 	set name = "Switch Eyepatch"
@@ -297,7 +288,7 @@ BLIND     // can't see anything
 		icon_state = "[icon_state]_1"
 	else
 		icon_state = initial(icon_state)
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/glasses/monocle
 	name = "monocle"
@@ -315,7 +306,6 @@ BLIND     // can't see anything
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
 	vision_flags = SEE_OBJS
-	clothing_flags = ALLOWINTERNALS //cit change
 	body_parts_covered = EYES //cit change
 	enables_planes = list(VIS_FULLBRIGHT)
 
@@ -338,7 +328,6 @@ BLIND     // can't see anything
 	action_button_name = "Toggle Goggles"
 	off_state = "denight"
 	vision_flags = SEE_OBJS | SEE_TURFS
-	clothing_flags = ALLOWINTERNALS //  Cit change
 	body_parts_covered = EYES // Cit change
 	flash_protection = FLASH_PROTECTION_REDUCED
 	enables_planes = list(VIS_FULLBRIGHT, VIS_MESONS)
@@ -458,7 +447,6 @@ BLIND     // can't see anything
 	item_state_slots = list(slot_r_hand_str = "welding-g", slot_l_hand_str = "welding-g")
 	action_button_name = "Flip Welding Goggles"
 	matter = list(MAT_STEEL = 1500, MAT_GLASS = 1000)
-	clothing_flags = ALLOWINTERNALS
 	var/up = 0
 	flash_protection = FLASH_PROTECTION_MAJOR
 	tint = TINT_HEAVY
@@ -488,7 +476,7 @@ BLIND     // can't see anything
 			flash_protection = FLASH_PROTECTION_NONE
 			tint = TINT_NONE
 			to_chat(usr, "You push \the [src] up out of your face.")
-		update_clothing_icon()
+		update_worn_icon()
 		usr.update_action_buttons()
 
 /obj/item/clothing/glasses/welding/prescription
@@ -546,13 +534,12 @@ BLIND     // can't see anything
 
 /obj/item/clothing/glasses/sunglasses/sechud/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED), list(slot_glasses))
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/sunglasses/sechud/tactical
 	name = "tactical HUD"
 	desc = "Flash-resistant goggles with inbuilt combat and security information."
 	icon_state = "swatgoggles"
-	clothing_flags = ALLOWINTERNALS
 	body_parts_covered = EYES
 
 /obj/item/clothing/glasses/sunglasses/sechud/aviator
@@ -602,7 +589,7 @@ BLIND     // can't see anything
 
 /obj/item/clothing/glasses/sunglasses/medhud/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_MEDICAL), list(slot_glasses))
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_MEDICAL), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/thermal
 	name = "optical thermal scanner"
@@ -679,7 +666,6 @@ BLIND     // can't see anything
 	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
 	action_button_name = "Adjust Orange Goggles"
 	var/up = 0
-	clothing_flags = ALLOWINTERNALS
 	body_parts_covered = EYES
 	species_restricted = list(SPECIES_TESHARI)
 
@@ -704,7 +690,7 @@ BLIND     // can't see anything
 			body_parts_covered &= ~EYES
 			icon_state = "[initial(icon_state)]up"
 			to_chat(usr, "You push \the [src] up from in front of your eyes.")
-		update_clothing_icon()
+		update_worn_icon()
 		usr.update_action_buttons()
 
 /obj/item/clothing/glasses/jamjar

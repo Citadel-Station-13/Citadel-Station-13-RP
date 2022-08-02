@@ -727,7 +727,7 @@
 			this.icon_state = "vomittox_[pick(1,4)]"
 
 /atom/proc/clean_blood()
-	if(flags & AF_ABSTRACT)
+	if(flags & ATOM_ABSTRACT)
 		return
 	fluorescent = 0
 	src.germ_level = 0
@@ -1039,11 +1039,7 @@
 			reagents.conditional_update()
 		else if(ismovable(A))
 			var/atom/movable/M = A
-			if(isliving(M.loc))
-				var/mob/living/L = M.loc
-				L.transferItemToLoc(M, src)
-			else
-				M.forceMove(src)
+			M.forceMove(src)
 
 /atom/proc/is_drainable()
 	return reagents && (reagents.reagents_holder_flags & DRAINABLE)

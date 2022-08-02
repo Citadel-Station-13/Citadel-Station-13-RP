@@ -5,6 +5,7 @@
 #$include antag_rep.txt
 $include resources.txt
 $include logging.txt
+$include entries/dbconfig.txt
 $include entries/fail2topic.txt
 $include entries/game_options.txt
 $include entries/lobby.txt

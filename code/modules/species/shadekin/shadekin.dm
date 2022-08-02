@@ -132,14 +132,13 @@
 		var/datum/power/shadekin/SKP = new power(src)
 		shadekin_ability_datums.Add(SKP)
 
+/datum/species/shadekin/get_bodytype_legacy()
+	return SPECIES_SHADEKIN
+
 /datum/species/shadekin/handle_death(mob/living/carbon/human/H)
 	spawn(1)
-		for(var/obj/item/W in H)
-			H.drop_from_inventory(W)
+		H.drop_inventory(TRUE, TRUE, TRUE)
 		qdel(H)
-
-/datum/species/shadekin/get_bodytype()
-	return SPECIES_SHADEKIN
 
 /datum/species/shadekin/get_random_name()
 	return "shadekin"
