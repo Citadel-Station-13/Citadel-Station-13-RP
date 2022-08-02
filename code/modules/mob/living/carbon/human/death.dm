@@ -107,7 +107,7 @@
 		playsound(loc, species.death_sound, 80, 1, 1)
 
 	if(SSticker && SSticker.mode)
-		sql_report_death(src)
+		INVOKE_ASYNC(GLOBAL_PROC, /proc/sql_report_death, src)
 		SSticker.mode.check_win()
 
 	if(wearing_rig)
