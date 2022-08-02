@@ -16,6 +16,6 @@ In any query remember to add a prefix to the table names if you use one.
 
 ## Changelog
 
-### 6/16/22 - 1.0 - silicons
+### 6/16/22 - 1.1 - silicons
 
-Database migrated to DBCore. Schema will start at MAJOR 1, MINOR 0.
+Database migrated to DBCore. Schema will start at MAJOR 1, MINOR 1.
