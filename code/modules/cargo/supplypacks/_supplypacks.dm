@@ -120,7 +120,12 @@ var/list/all_supply_groups = list("Atmospherics",
 				CRASH("Ran out of safety during SpawnContents")
 			if(islist(path))
 				for(var/t as anything in path)
-					InstanceObject(t, loc)
+					var/amt = path[t]
+					for(var/i in 1 to amt)
+						if(!--safety)
+							// ditto
+							CRASH("ran out of safety during SpawnContents in secondary interior loop")
+						InstanceObject(t, loc)
 			else
 				InstanceObject(path, loc)
 
