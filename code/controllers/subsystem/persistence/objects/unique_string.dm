@@ -59,7 +59,7 @@
 /datum/controller/subsystem/persistence/proc/LoadString(group, key)
 	if(!SSdbcore.Connect())
 		return
-	var/old = usr
+	var/oldusr = usr
 	usr = null
 	var/datum/db_query/query = SSdbcore.NewQuery(
 		"SELECT value FROM [format_table_name("persist_keyed_strings")] WHERE group = :group, key = :key",
@@ -69,7 +69,7 @@
 		)
 	)
 	query.Execute()
-	usr = old
+	usr = oldusr
 	if(!query.NextRow())
 		return
 	return query.item[1]
@@ -77,7 +77,7 @@
 /datum/controller/subsystem/persistence/proc/SaveString(group, key, value)
 	if(!SSdbcore.Connect())
 		return
-	var/old = usr
+	var/oldusr = usr
 	usr = null
 	var/datum/db_query/query = SSdbcore.NewQuery(
 		"INSERT INTO [format_table_name("persist_keyed_strings")] (group, key, value) VALUES (:group, :key, :value) ON DUPLICATE KEY UPDATE value = VALUES(value), modified = Now()",
@@ -88,7 +88,7 @@
 		)
 	)
 	query.Execute()
-	usr = old
+	usr = oldusr
 	qdel(query)
 
 /datum/controller/subsystem/persistence/proc/benchmark_strings()
@@ -100,8 +100,9 @@
 		SaveString("benchmark", "foo", "bar")
 	var/end = REALTIMEOFDAY
 	message_admins("SSpersist: saving 10000 strings took [end - start] ds")
-	var/start = REALTIMEOFDAY
+	start = REALTIMEOFDAY
 	for(var/i in 1 to 10000)
 		LoadString("benchmark", "foo")
-	var/end = REALTIMEOFDAY
+	end = REALTIMEOFDAY
 	message_admins("SSpersist: loading 10000 strings took [end - start] ds")
+	usr = oldusr
