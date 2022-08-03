@@ -107,15 +107,16 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	if(allow_random_id && !id)
 		id = "[++id_next]"
 
-/datum/inventory_slot_meta/proc/_equip_check(obj/item/I, mob/wearer, mob/user, force)
+/datum/inventory_slot_meta/proc/_equip_check(obj/item/I, mob/wearer, mob/user, flags)
 	if(slot_equip_checks & SLOT_EQUIP_CHECK_USE_FLAGS)
-		if(!CHECK_MULTIPLE_BITFIELDS(I.slot_flags, slot_flags_required))
-			return FALSE
-		if(I.slot_flags & slot_flags_forbidden)
-			return FALSE
+		if(!(flags & INV_OP_FORCE))
+			if(!CHECK_MULTIPLE_BITFIELDS(I.slot_flags, slot_flags_required))
+				return FALSE
+			if(I.slot_flags & slot_flags_forbidden)
+				return FALSE
 
 	if(slot_equip_checks & SLOT_EQUIP_CHECK_USE_PROC)
-		if(!allow_equip(I, wearer, user, force))
+		if(!allow_equip(I, wearer, user, flags))
 			return FALSE
 
 	return TRUE
@@ -342,7 +343,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_PROC
 
-/datum/inventory_slot_meta/restraints/handcuffs/allow_equip(obj/item/I, mob/wearer, mob/user, force)
+/datum/inventory_slot_meta/restraints/legcuffs/allow_equip(obj/item/I, mob/wearer, mob/user, force)
 	return istype(I, /obj/item/handcuffs/legcuffs)
 
 /**

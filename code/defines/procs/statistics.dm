@@ -6,15 +6,21 @@ proc/sql_poll_population()
 	for(var/mob/M in player_list)
 		if(M.client)
 			playercount += 1
-	establish_db_connection()
-	if(!dbcon.IsConnected())
+
+	if(!SSdbcore.Connect())
 		log_game("SQL ERROR during population polling. Failed to connect.")
 	else
-		var/sqltime = time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")
-		var/DBQuery/query = dbcon_old.NewQuery("INSERT INTO `tgstation`.`population` (`playercount`, `admincount`, `time`) VALUES ([playercount], [admincount], '[sqltime]')")
+		var/datum/db_query/query = SSdbcore.NewQuery(
+			"INSERT INTO [format_table_name("population")] (playercount, admincount, time) VALUES (:pc, :ac, NOW())",
+			list(
+				"pc" = sanitizeSQL(playercount),
+				"ac" = sanitizeSQL(admincount)
+			)
+		)
 		if(!query.Execute())
 			var/err = query.ErrorMsg()
 			log_game("SQL ERROR during population polling. Error : \[[err]\]\n")
+		qdel(query)
 
 proc/sql_report_round_start()
 	// TODO
@@ -41,23 +47,43 @@ proc/sql_report_death(var/mob/living/carbon/human/H)
 	var/sqlpod = sanitizeSQL(podname)
 	var/sqlspecial = sanitizeSQL(H.mind.special_role)
 	var/sqljob = sanitizeSQL(H.mind.assigned_role)
+
 	var/laname
 	var/lakey
 	if(H.lastattacker)
 		laname = sanitizeSQL(H.lastattacker:real_name)
 		lakey = sanitizeSQL(H.lastattacker:key)
+
 	var/sqltime = time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")
 	var/coord = "[H.x], [H.y], [H.z]"
-	//to_chat(world, "INSERT INTO death (name, byondkey, job, special, pod, tod, laname, lakey, gender, bruteloss, fireloss, brainloss, oxyloss) VALUES ('[sqlname]', '[sqlkey]', '[sqljob]', '[sqlspecial]', '[sqlpod]', '[sqltime]', '[laname]', '[lakey]', '[H.gender]', [H.bruteloss], [H.getFireLoss()], [H.brainloss], [H.getOxyLoss()])")
-	establish_db_connection()
-	if(!dbcon.IsConnected())
+
+	if(!SSdbcore.Connect())
 		log_game("SQL ERROR during death reporting. Failed to connect.")
 	else
-		var/DBQuery/query = dbcon.NewQuery("INSERT INTO death (name, byondkey, job, special, pod, tod, laname, lakey, gender, bruteloss, fireloss, brainloss, oxyloss, coord) VALUES ('[sqlname]', '[sqlkey]', '[sqljob]', '[sqlspecial]', '[sqlpod]', '[sqltime]', '[laname]', '[lakey]', '[H.gender]', [H.getBruteLoss()], [H.getFireLoss()], [H.brainloss], [H.getOxyLoss()], '[coord]')")
+		var/datum/db_query/query = SSdbcore.NewQuery(
+			"INSERT INTO [format_table_name("death")] (name, byondkey, job, special, pod, tod, laname, lakey, gender, bruteloss, fireloss, brainloss, oxyloss, coord) VALUES \
+			(:name, :key, :job, :special, :pod, :time, :laname, :lakey, :geender, :bruteloss, :fireloss, :brainloss, :oxyloss, :coord)",
+			list(
+				"name" = sqlname,
+				"key" = sqlkey,
+				"job" = sqljob,
+				"special" = sqlspecial,
+				"pod" = sqlpod,
+				"time" = sqltime,
+				"laname" = laname,
+				"lakey" = lakey,,
+				"gender" = H.gender,
+				"bruteloss" = H.getBruteLoss(),
+				"fireloss" = H.getFireLoss(),
+				"brainloss" = H.getBrainLoss(),
+				"oxyloss" = H.getOxyLoss(),
+				"coord" = coord
+			)
+		)
 		if(!query.Execute())
 			var/err = query.ErrorMsg()
 			log_game("SQL ERROR during death reporting. Error : \[[err]\]\n")
-
+		qdel(query)
 
 proc/sql_report_cyborg_death(var/mob/living/silicon/robot/H)
 	if(!sqllogging)
@@ -82,15 +108,34 @@ proc/sql_report_cyborg_death(var/mob/living/silicon/robot/H)
 		lakey = sanitizeSQL(H.lastattacker:key)
 	var/sqltime = time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")
 	var/coord = "[H.x], [H.y], [H.z]"
-	//to_chat(world, "INSERT INTO death (name, byondkey, job, special, pod, tod, laname, lakey, gender, bruteloss, fireloss, brainloss, oxyloss) VALUES ('[sqlname]', '[sqlkey]', '[sqljob]', '[sqlspecial]', '[sqlpod]', '[sqltime]', '[laname]', '[lakey]', '[H.gender]', [H.bruteloss], [H.getFireLoss()], [H.brainloss], [H.getOxyLoss()])")
-	establish_db_connection()
-	if(!dbcon.IsConnected())
+
+	if(!SSdbcore.Connect())
 		log_game("SQL ERROR during death reporting. Failed to connect.")
 	else
-		var/DBQuery/query = dbcon.NewQuery("INSERT INTO death (name, byondkey, job, special, pod, tod, laname, lakey, gender, bruteloss, fireloss, brainloss, oxyloss, coord) VALUES ('[sqlname]', '[sqlkey]', '[sqljob]', '[sqlspecial]', '[sqlpod]', '[sqltime]', '[laname]', '[lakey]', '[H.gender]', [H.getBruteLoss()], [H.getFireLoss()], [H.brainloss], [H.getOxyLoss()], '[coord]')")
+		var/datum/db_query/query = SSdbcore.NewQuery(
+			"INSERT INTO [format_table_name("death")] (name, byondkey, job, special, pod, tod, laname, lakey, gender, bruteloss, fireloss, brainloss, oxyloss, coord) VALUES \
+			(:name, :key, :job, :special, :pod, :time, :laname, :lakey, :geender, :bruteloss, :fireloss, :brainloss, :oxyloss, :coord)",
+			list(
+				"name" = sqlname,
+				"key" = sqlkey,
+				"job" = sqljob,
+				"special" = sqlspecial,
+				"pod" = sqlpod,
+				"time" = sqltime,
+				"laname" = laname,
+				"lakey" = lakey,,
+				"gender" = H.gender,
+				"bruteloss" = H.getBruteLoss(),
+				"fireloss" = H.getFireLoss(),
+				"brainloss" = H.getBrainLoss(),
+				"oxyloss" = H.getOxyLoss(),
+				"coord" = coord
+			)
+		)
 		if(!query.Execute())
 			var/err = query.ErrorMsg()
 			log_game("SQL ERROR during death reporting. Error : \[[err]\]\n")
+		qdel(query)
 
 
 proc/statistic_cycle()
@@ -113,13 +158,14 @@ proc/sql_commit_feedback()
 		log_game("Round ended without any feedback being generated. No feedback was sent to the database.")
 		return
 
-	establish_db_connection()
-	if(!dbcon.IsConnected())
+	if(!SSdbcore.Connect())
 		log_game("SQL ERROR during feedback reporting. Failed to connect.")
 	else
 
-		var/DBQuery/max_query = dbcon.NewQuery("SELECT MAX(roundid) AS max_round_id FROM erro_feedback")
-		max_query.Execute()
+		var/datum/db_query/max_query = SSdbcore.RunQuery(
+			"SELECT MAX(roundid) AS max_round_id FROM [format_table_name("feedback")]",
+			list()
+		)
 
 		var/newroundid
 
@@ -138,7 +184,15 @@ proc/sql_commit_feedback()
 			var/variable = item.get_variable()
 			var/value = item.get_value()
 
-			var/DBQuery/query = dbcon.NewQuery("INSERT INTO erro_feedback (id, roundid, time, variable, value) VALUES (null, [newroundid], Now(), '[variable]', '[value]')")
+			var/datum/db_query/query = SSdbcore.NewQuery(
+				"INSERT INTO [format_table_name("feedback")] (id, roundid, time, variable, value) VALUES (null, :rid, Now(), :var, :val)",
+				list(
+					"rid" = newroundid,
+					"var" = sanitizeSQL(variable),
+					"val" = sanitizeSQL(value)
+				)
+			)
 			if(!query.Execute())
 				var/err = query.ErrorMsg()
 				log_game("SQL ERROR during death reporting. Error : \[[err]\]\n")
+			qdel(query)

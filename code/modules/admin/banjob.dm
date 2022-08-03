@@ -65,7 +65,7 @@ DEBUG
 			jobban_keylist=list()
 			log_admin("jobban_keylist was empty")
 	else
-		if(!establish_db_connection())
+		if(!SSdbcore.Connect())
 			log_world("Database connection failed. Reverting to the legacy ban system.")
 			log_misc("Database connection failed. Reverting to the legacy ban system.")
 			config_legacy.ban_legacy_system = 1
@@ -73,8 +73,10 @@ DEBUG
 			return
 
 		//Job permabans
-		var/DBQuery/query = dbcon.NewQuery("SELECT ckey, job FROM erro_ban WHERE bantype = 'JOB_PERMABAN' AND isnull(unbanned)")
-		query.Execute()
+		var/datum/db_query/query = SSdbcore.RunQuery(
+			"SELECT ckey, job FROM [format_table_name("ban")] WHERE bantype = 'JOB_PERMABAN' AND isnull(unbanned)",
+			list()
+		)
 
 		while(query.NextRow())
 			var/ckey = query.item[1]
@@ -83,8 +85,10 @@ DEBUG
 			jobban_keylist.Add("[ckey] - [job]")
 
 		//Job tempbans
-		var/DBQuery/query1 = dbcon.NewQuery("SELECT ckey, job FROM erro_ban WHERE bantype = 'JOB_TEMPBAN' AND isnull(unbanned) AND expiration_time > Now()")
-		query1.Execute()
+		var/datum/db_query/query1 = SSdbcore.RunQuery(
+			"SELECT ckey, job FROM [format_table_name("ban")] WHERE bantype = 'JOB_TEMPBAN' AND isnull(unbanned) AND expiration_time > Now()",
+			list()
+		)
 
 		while(query1.NextRow())
 			var/ckey = query1.item[1]

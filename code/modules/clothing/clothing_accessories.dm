@@ -1,3 +1,9 @@
+/obj/item/clothing/_inv_return_attached()
+	if(!accessories)
+		return ..()
+	. = ..()
+	return islist(.)? (. + accessories) : (list(.) + accessories)
+
 /obj/item/clothing/equipped(mob/user, slot, flags)
 	. = ..()
 	// propagate through accessories

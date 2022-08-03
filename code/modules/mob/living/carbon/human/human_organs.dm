@@ -121,7 +121,7 @@
 			var/obj/item/organ/external/E = get_organ(limb_tag)
 			if(!E)
 				visible_message("<span class='danger'>Lacking a functioning left hand, \the [src] drops \the [l_hand].</span>")
-				drop_left_held_item()
+				drop_left_held_item(INV_OP_FORCE)
 				break
 
 	if(r_hand)
@@ -129,7 +129,7 @@
 			var/obj/item/organ/external/E = get_organ(limb_tag)
 			if(!E)
 				visible_message("<span class='danger'>Lacking a functioning right hand, \the [src] drops \the [r_hand].</span>")
-				drop_right_held_item()
+				drop_right_held_item(INV_OP_FORCE)
 				break
 
 	// Check again...

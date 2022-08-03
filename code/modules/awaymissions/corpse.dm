@@ -33,7 +33,6 @@
 	. = M
 	M.set_species(species)
 	M.real_name = src.name
-	M.death(1) //Kills the new mob
 	if(src.corpseuniform)
 		M.equip_to_slot_or_del(new src.corpseuniform(M), SLOT_ID_UNIFORM)
 	if(src.corpsesuit)
@@ -77,6 +76,7 @@
 			W.assignment = corpseidjob
 		M.set_id_info(W)
 		M.equip_to_slot_or_del(W, SLOT_ID_WORN_ID)
+	INVOKE_ASYNC(M, /mob/proc/death)
 
 /atom/movable/spawner/corpse/syndicatesoldier
 	name = "Mercenary"
