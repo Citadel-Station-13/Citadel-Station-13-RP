@@ -8,6 +8,6 @@
  */
 /datum/controller/subsystem/persistence
 
-/datum/controller/subsystem/persistence/proc/FetchObjectData(uid, bucket)
+/datum/controller/subsystem/persistence/proc/FetchObjectData(uid, map)
 
-/datum/controller/subsystem/persistence/proc/StoreObjectData(uid, bucket, data)
+/datum/controller/subsystem/persistence/proc/StoreObjectData(uid, map, data)

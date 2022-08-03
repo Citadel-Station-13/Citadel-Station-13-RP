@@ -12,7 +12,7 @@
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%schema_revision` (
   `major` TINYINT(3) unsigned NOT NULL,
   `minor` TINYINT(3) unsigned NOT NULL,
-  `date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`major`, `minor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -228,7 +228,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%connection_log` (
 
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_keyed_strings` (
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `key` varchar(64) NOT NULL,
   `value` TEXT NULL,
   `group` varchar(64) NULL,
@@ -237,7 +237,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_keyed_strings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_mass_atoms` (
-  `saved` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `saved` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `handler_id` varchar(64) NOT NULL,
   `level_id` varchar(64) NOT NULL,
   `fragment` INT(3) NOT NULL,
@@ -245,7 +245,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_mass_atoms` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_dynamic_atoms` (
-  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `x` INT(8) NOT NULL,
@@ -259,7 +259,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_dynamic_atoms` (
 
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_keyed_atoms` (
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `map` varchar(64) NULL,
   `key` varchar(64) NOT NULL,
   `json` TEXT NOT NULL,
