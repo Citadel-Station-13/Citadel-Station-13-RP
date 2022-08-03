@@ -492,21 +492,16 @@
 	if(usr.stat || usr.restrained() || usr.incapacitated())
 		return
 
-	holding.forceMove(get_turf(usr))
-
 	if(usr.put_in_hands(holding))
-		usr.visible_message("<span class='danger'>\The [usr] pulls a knife out of their boot!</span>")
+		visible_message("<span class='danger'>\The [usr] pulls a knife out of their boot!</span>")
 		holding = null
 		overlays -= image(icon, "[icon_state]_knife")
 	else
 		to_chat(usr, "<span class='warning'>Your need an empty, unbroken hand to do that.</span>")
-		holding.forceMove(src)
-
 	if(!holding)
 		verbs -= /obj/item/clothing/shoes/proc/draw_knife
 
 	update_icon()
-	return
 
 /obj/item/clothing/shoes/attack_hand(var/mob/living/M)
 	if(can_hold_knife == 1 && holding && src.loc == M)

@@ -91,6 +91,8 @@
 	var/last_revive_notification = null // world.time of last notification, used to avoid spamming players from defibs or cloners.
 	/// stealthmin vars
 	var/original_name
+	/// are we a poltergeist and get to do stupid things like move items, throw things, and move chairs?
+	var/is_spooky = FALSE
 
 /mob/observer/dead/Initialize(mapload)
 	var/mob/body = loc
