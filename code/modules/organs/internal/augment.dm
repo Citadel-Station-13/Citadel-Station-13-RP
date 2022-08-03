@@ -23,6 +23,7 @@
 	var/obj/item/integrated_object
 	/// Object type the organ will spawn.
 	var/integrated_object_type
+
 	var/target_slot = null
 
 	var/silent_deploy = FALSE
@@ -152,21 +153,6 @@
 		owner.equip_augment_item(target_slot, item_to_equip, silent_deploy, FALSE, src)
 
 /*
- * The delicate handling of augment-controlled items.
- */
-
-// Attaches to the end of dropped items' code.
-
-/obj/item
-	/// Used to reference the object's host organ.
-	var/obj/item/organ/my_augment = null
-
-/obj/item/dropped(mob/user, flags, atom/newLoc)
-	. = ..()
-	if(my_augment)
-		forceMove(my_augment)
-
-/*
  * Human-specific mob procs.
  */
 
@@ -244,9 +230,6 @@
 			if(destroy_on_drop || del_if_failure)
 				qdel(equipping)
 			return FALSE
-
-	if(cling_to_organ) // Does the object automatically return to the organ?
-		equipping.my_augment = cling_to_organ
 
 	if(make_sound)
 		playsound(src, 'sound/items/change_jaws.ogg', 30, TRUE)
