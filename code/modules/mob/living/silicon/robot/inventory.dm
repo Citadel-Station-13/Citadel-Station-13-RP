@@ -304,13 +304,14 @@
 
 /mob/living/silicon/robot/proc/unreference_from_gripper(obj/item/I, newloc)
 	if(!istype(I.loc, /obj/item/gripper))
-		return
+		return FALSE
 	var/obj/item/gripper/G = I.loc
 	if(!is_module_item(G))
-		return
+		return FALSE
 	if(G.get_item() != I)
-		return
-	G.drop_item(newloc)
+		return FALSE
+	G.remove_item(newloc)
+	return TRUE
 
 /mob/living/silicon/robot/temporarily_remove_from_inventory(obj/item/I, flags)
 	if(!is_in_inventory(I))
@@ -319,7 +320,7 @@
 	if(!.)
 		return
 	if(is_in_gripper(I))
-		return unreference_from_gripper(I)
+		return unreference_from_gripper(I, null)
 
 /mob/living/silicon/robot/transfer_item_to_loc(obj/item/I, newloc, flags)
 	if(is_in_inventory(I) && considered_removable(I))
