@@ -62,7 +62,7 @@
 	var/oldusr = usr
 	usr = null
 	var/datum/db_query/query = SSdbcore.NewQuery(
-		"SELECT value FROM [format_table_name("persist_keyed_strings")] WHERE group = :group, key = :key",
+		"SELECT `value` FROM [format_table_name("persist_keyed_strings")] WHERE `group` = :group, `key` = :key",
 		list(
 			"group" = group,
 			"key" = key
@@ -80,7 +80,7 @@
 	var/oldusr = usr
 	usr = null
 	var/datum/db_query/query = SSdbcore.NewQuery(
-		"INSERT INTO [format_table_name("persist_keyed_strings")] (group, key, value) VALUES (:group, :key, :value) ON DUPLICATE KEY UPDATE value = VALUES(value), modified = Now()",
+		"INSERT INTO [format_table_name("persist_keyed_strings")] (`group`, `key`, `value`) VALUES (:group, :key, :value) ON DUPLICATE KEY UPDATE `value` = VALUES(`value`), `modified` = Now(), `revision` = `revision` + 1",
 		list(
 			"group" = group,
 			"key" = key,
@@ -95,14 +95,39 @@
 	var/oldusr = usr
 	usr = null
 	message_admins("SSpersist: benchmarking string storage")
+	var/amt = 1000
+	var/list/pointer = list(amt)
+	var/list/keys = list()
+	var/list/values = list()
+	for(var/i in 1 to 1000)
+		keys += "[rand(1, 10000000)]"
+		values += "[rand(1, 100000000000000)]"
 	var/start = REALTIMEOFDAY
-	for(var/i in 1 to 10000)
-		SaveString("benchmark", "foo", "bar")
+	string_save_benchmark(pointer, keys, values, amt)
+	UNTIL(pointer[1] == 0)
 	var/end = REALTIMEOFDAY
-	message_admins("SSpersist: saving 10000 strings took [end - start] ds")
+	message_admins("SSpersist: saving 1000 strings took [end - start] ds")
+	pointer = list(amt)
 	start = REALTIMEOFDAY
-	for(var/i in 1 to 10000)
-		LoadString("benchmark", "foo")
+	string_load_benchmark(pointer, keys, amt)
+	UNTIL(pointer[1] == 0)
 	end = REALTIMEOFDAY
-	message_admins("SSpersist: loading 10000 strings took [end - start] ds")
+	message_admins("SSpersist: loading 1000 strings took [end - start] ds")
 	usr = oldusr
+
+/datum/controller/subsystem/persistence/proc/string_save_benchmark(list/pointer, list/keys, list/values, amt)
+	set waitfor = FALSE
+	for(var/i in 1 to amt)
+		_string_save_benchmark(pointer, keys[i], values[i])
+
+
+/datum/controller/subsystem/persistence/proc/string_load_benchmark(list/pointer, list/keys, amt)
+	set waitfor = FALSE
+	for(var/i in 1 to amt)
+		_string_load_benchmark(pointer, keys[i])
+
+/datum/controller/subsystem/persistence/proc/_string_save_benchmark(list/pointer, key, value)
+	SaveString("benchmark", key, value)
+
+/datum/controller/subsystem/persistence/proc/_string_load_benchmark(list/pointer, key)
+	LoadString("benchmark", key)
