@@ -546,7 +546,10 @@ var/list/name_to_material
 	var/window_count = 0
 	for (var/obj/structure/window/check_window in user.loc)
 		window_count++
-		possible_directions  -= check_window.dir
+		if(check_window.is_fulltile())
+			possible_directions -= GLOB.cardinal
+		else
+			possible_directions -= check_window.dir
 	for (var/obj/structure/windoor_assembly/check_assembly in user.loc)
 		window_count++
 		possible_directions -= check_assembly.dir
