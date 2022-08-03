@@ -1,0 +1,5 @@
+author: "lectronyx"
+delete-after: True
+changes: 
+  - rscadd: "closed eyes pattern to eye_stuff.dm"
+  - imageadd: "closed eyes state to eye_stuff.dmi"
