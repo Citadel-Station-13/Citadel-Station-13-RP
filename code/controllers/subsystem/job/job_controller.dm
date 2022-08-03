@@ -341,7 +341,8 @@ var/global/datum/controller/occupations/job_master
 				S.OnSpawn(H, H.client)
 			else
 				var/list/spawn_props = LateSpawn(H.client, rank)
-				S = spawn_props["spawnpoint"]
+				var/list/temporaryS = spawn_props["spawnpoint"]
+				S = pick(temporaryS)
 				if(!S)
 					to_chat(H, "<span class='critical'>You were unable to be spawned at your chosen late-join spawnpoint. Please verify your job/spawn point combination makes sense, and try another one.</span>")
 					return
