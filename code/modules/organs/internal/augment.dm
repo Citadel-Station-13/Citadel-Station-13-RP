@@ -56,10 +56,15 @@
 	integrated_object = item_or_type
 
 /obj/item/organ/internal/augment/proc/register_item(obj/item/I)
+	if(!I)
+		return
+	if(integrated_object)
+		unregister_item(integrated_object)
 	RegisterSignal(I, COMSIG_MOVABLE_MOVED, .proc/on_item_moved)
 	RegisterSignal(I, COMSIG_ITEM_DROPPED, .proc/on_item_dropped)
 	if(I.loc != src)
 		I.forceMove(src)
+	integrated_object = I
 
 /obj/item/organ/internal/augment/proc/unregister_item(obj/item/I)
 	UnregisterSignal(I, list(
@@ -84,7 +89,7 @@
 	. = COMPONENT_ITEM_RELOCATED_BY_DROP
 
 /obj/item/organ/internal/augment/proc/check_item_yank(obj/item/I)
-	if(I.loc != src)
+	if(I.loc != src && I.loc != owner)
 		unregister_item(I)
 
 // todo: multi-item
@@ -168,7 +173,7 @@
 
 	var/list/present_augs = list()
 
-	for(var/obj/item/organ/internal/augment/Aug in internal_organs)
+	for(var/obj/item/organ/internal/augment/Aug in organs)
 		if(Aug.my_radial_icon && !Aug.is_broken() && Aug.check_verb_compatability())
 			present_augs[Aug.radial_name] = Aug
 
