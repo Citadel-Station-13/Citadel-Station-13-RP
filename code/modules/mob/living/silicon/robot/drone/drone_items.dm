@@ -34,7 +34,7 @@
 	. = ..()
 	if(wrapped)
 		. += "<span class='notice'>\The [src] is holding \the [wrapped].</span>"
-		wrapped.examine(user)
+		. += wrapped.examine(user)
 
 /obj/item/gripper/Destroy()
 	remove_item(drop_location())
