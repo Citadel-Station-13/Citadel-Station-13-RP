@@ -155,7 +155,8 @@
 		I.unequipped(src, I.worn_slot, flags)
 		handle_item_denesting(I, old, flags, user)
 
-	. = TRUE
+	// this qdeleted catches unequipped() deleting the item.
+	. = QDELETED(I)? FALSE : TRUE
 
 	if(I)
 		// todo: better rendering that takes observers into account
@@ -165,14 +166,17 @@
 		//! at some point we should have /pre_dropped and /pre_pickup, because dropped should logically come after move.
 		if(I.dropped(src, flags, newloc) == ITEM_RELOCATED_BY_DROPPED)
 			. = FALSE
+		else if(QDELETED(I))
+			// this check RELIES on dropped() being the first if
+			// make sure you don't blindly move it!!
+			// this is meant to catch any potential deletions dropped can cause.
+			. = FALSE
 		else
 			if(!(I.flags & DROPDEL))
 				if(newloc == null)
 					I.moveToNullspace()
 				else if(newloc != FALSE)
 					I.forceMove(newloc)
-		if(QDELETED(I))
-			. = FALSE
 
 	log_inventory("[key_name(src)] unequipped [I] from [old].")
 
