@@ -665,6 +665,7 @@ BLIND     // can't see anything
 	icon_state = "orange-g"
 	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
 	action_button_name = "Adjust Orange Goggles"
+	flags = PHORONGUARD
 	var/up = 0
 	body_parts_covered = EYES
 	species_restricted = list(SPECIES_TESHARI)

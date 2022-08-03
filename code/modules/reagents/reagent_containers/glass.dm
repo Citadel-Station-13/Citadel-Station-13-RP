@@ -159,11 +159,11 @@
 	update_icon()
 
 /obj/item/reagent_containers/glass/beaker/pickup(mob/user, flags, atom/oldLoc)
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/reagent_containers/glass/beaker/dropped(mob/user, flags, atom/newLoc)
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/reagent_containers/glass/beaker/attack_hand()

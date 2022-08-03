@@ -51,9 +51,6 @@
 	if(ispath(item_or_type))
 		item_or_type = new item_or_type
 	register_item(item_or_type)
-	if(integrated_object)
-		unregister_item(item_or_type)
-	integrated_object = item_or_type
 
 /obj/item/organ/internal/augment/proc/register_item(obj/item/I)
 	if(!I)
@@ -148,12 +145,18 @@
 		to_chat(owner, SPAN_WARNING("\The [src] doesn't respond."))
 		return
 
-	var/item_to_equip = integrated_object
+	//! todo: re fucking factor.
 
+	if(owner.is_in_inventory(integrated_object))
+		// retracting
+		integrated_object.forceMove(srC)
+		return
+
+	// extending
 	if(ispath(item_to_equip))
-		owner.equip_augment_item(target_slot, item_to_equip, silent_deploy, FALSE)
+		owner.equip_augment_item(target_slot, integrated_object, silent_deploy, FALSE)
 	else if(item_to_equip)
-		owner.equip_augment_item(target_slot, item_to_equip, silent_deploy, FALSE, src)
+		owner.equip_augment_item(target_slot, integrated_object, silent_deploy, FALSE, src)
 
 /*
  * Human-specific mob procs.

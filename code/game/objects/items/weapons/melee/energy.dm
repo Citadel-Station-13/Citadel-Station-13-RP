@@ -257,15 +257,12 @@
 	colorable = TRUE
 	drop_sound = 'sound/items/drop/sword.ogg'
 	pickup_sound = 'sound/items/pickup/sword.ogg'
-
-
 	projectile_parry_chance = 65
 
 /obj/item/melee/energy/sword/dropped(mob/user, flags, atom/newLoc)
-	..()
+	. = ..()
 	if(!istype(loc,/mob))
 		deactivate(user)
-
 
 /obj/item/melee/energy/sword/activate(mob/living/user)
 	if(!active)
@@ -273,7 +270,6 @@
 
 	..()
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-
 
 /obj/item/melee/energy/sword/deactivate(mob/living/user)
 	if(active)

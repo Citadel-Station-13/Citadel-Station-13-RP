@@ -31,6 +31,9 @@
 	var/update_icon_define = null	// Only needed if you've got multiple files for the same type of clothing
 	var/recent_struggle = 0
 
+	/// is considered wizard garb?
+	var/wizard_garb = FALSE
+
 // Aurora forensics port.
 /obj/item/clothing/clean_blood()
 	..()
