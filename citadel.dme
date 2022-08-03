@@ -1153,6 +1153,7 @@
 #include "code\game\objects\effects\decals\remains.dm"
 #include "code\game\objects\effects\decals\warning_stripes.dm"
 #include "code\game\objects\effects\decals\cleanable\aliens.dm"
+#include "code\game\objects\effects\decals\cleanable\dirt.dm"
 #include "code\game\objects\effects\decals\cleanable\fuel.dm"
 #include "code\game\objects\effects\decals\cleanable\humans.dm"
 #include "code\game\objects\effects\decals\cleanable\misc.dm"
