@@ -68,7 +68,7 @@
 			"key" = key
 		)
 	)
-	query.Execute()
+	query.Execute(FALSE)
 	usr = oldusr
 	if(!query.NextRow())
 		return
@@ -87,7 +87,7 @@
 			"value" = value
 		)
 	)
-	query.Execute()
+	query.Execute(FALSE)
 	usr = oldusr
 	qdel(query)
 
@@ -120,7 +120,6 @@
 	for(var/i in 1 to amt)
 		_string_save_benchmark(pointer, keys[i], values[i])
 
-
 /datum/controller/subsystem/persistence/proc/string_load_benchmark(list/pointer, list/keys, amt)
 	set waitfor = FALSE
 	for(var/i in 1 to amt)
@@ -128,6 +127,8 @@
 
 /datum/controller/subsystem/persistence/proc/_string_save_benchmark(list/pointer, key, value)
 	SaveString("benchmark", key, value)
+	pointer[1]--
 
 /datum/controller/subsystem/persistence/proc/_string_load_benchmark(list/pointer, key)
 	LoadString("benchmark", key)
+	pointer[1]--
