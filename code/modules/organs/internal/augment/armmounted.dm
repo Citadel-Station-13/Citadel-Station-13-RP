@@ -179,7 +179,6 @@
 			var/obj/item/I = integrated_tools[path]
 			ADD_TRAIT(I, TRAIT_NODROP, AUGMENT_TRAIT)
 			I.toolspeed = toolspeed
-			I.my_augment = src
 			I.name = "integrated [I.name]"
 
 		for(var/tool in integrated_tools)

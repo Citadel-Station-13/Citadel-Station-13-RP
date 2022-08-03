@@ -162,13 +162,15 @@
 		if(client)
 			client.screen -= I
 			I.screen_loc = null
-		if(!(I.flags & DROPDEL))
-			if(newloc == null)
-				I.moveToNullspace()
-			else if(newloc != FALSE)
-				I.forceMove(newloc)
+		//! at some point we should have /pre_dropped and /pre_pickup, because dropped should logically come after move.
 		if(I.dropped(src, flags, newloc) == ITEM_RELOCATED_BY_DROPPED)
 			. = FALSE
+		else
+			if(!(I.flags & DROPDEL))
+				if(newloc == null)
+					I.moveToNullspace()
+				else if(newloc != FALSE)
+					I.forceMove(newloc)
 		if(QDELETED(I))
 			. = FALSE
 
