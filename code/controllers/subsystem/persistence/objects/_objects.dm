@@ -3,6 +3,12 @@
  *
  * ? SQL is required. Savefiles are too unperformant for us to do generic object storage.
  *
+ * ! Warning: Your SQL server should be the same box as your game server.
+ * ! Due to threaded SQL being comically slow, we use non-async queries here,
+ * ! which WILL slow your server to a crawl if your database is not localhost.
+ *
+ * ? Todo: RW caching to not require non-async calls.
+ *
  * This folder contains most generic non-feature-specific storages
  *
  * If you want to do something regarding either
@@ -43,3 +49,6 @@
 //! ATOM INSTANTIATION
 
 /datum/controller/subsystem/persistence/proc/_generic_atom_instantiate(type, x, y, z, persistent_data)
+
+//! ATOM PROCS
+/atom/proc/persistence_store()
