@@ -144,8 +144,6 @@
 		return
 
 	var/item_to_equip = integrated_object
-	if(!item_to_equip && integrated_object_type)
-		item_to_equip = integrated_object_type
 
 	if(ispath(item_to_equip))
 		owner.equip_augment_item(target_slot, item_to_equip, silent_deploy, FALSE)
