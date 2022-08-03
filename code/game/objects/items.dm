@@ -336,7 +336,11 @@
 			var/turf/old = get_turf(src)
 			if(!Move(get_turf(over)))
 				return CLICKCHAIN_DO_NOT_PROPAGATE
-			user.visible_message(SPAN_NOTICE("[user] slides [src] over."), SPAN_NOTICE("You slide [src] over."), range = MESSAGE_RANGE_COMBAT_SUBTLE)
+			//! todo: i want to strangle the mofo who did planes instead of invisibility, which makes it computationally infeasible to check ghost invisibility in get hearers in view
+			//! :) FUCK YOU.
+			//! this if check is all for you. FUCK YOU.
+			if(!isobserver(user))
+				user.visible_message(SPAN_NOTICE("[user] slides [src] over."), SPAN_NOTICE("You slide [src] over."), range = MESSAGE_RANGE_COMBAT_SUBTLE)
 			log_inventory("[user] slid [src] from [COORD(old)] to [COORD(over)]")
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		return ..()
