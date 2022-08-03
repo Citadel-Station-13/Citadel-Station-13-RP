@@ -79,56 +79,56 @@
 /obj/item/storage/box/cargo_null_entry_kit/ops/PopulateContents()
 	new /obj/item/gun/projectile/shotgun/pump/combat(src)
 	new /obj/item/clothing/suit/storage/vest/heavy/merc(src)
-					new obj/item/clothing/glasses/night(src)
-					new obj/item/storage/box/anti_photons(src)
-					new obj/item/ammo_magazine/clip/c12g/pellet(src)
-					new obj/item/ammo_magazine/clip/c12g(src)
+	new /obj/item/clothing/glasses/night(src)
+	new /obj/item/storage/box/anti_photons(src)
+	new /obj/item/ammo_magazine/clip/c12g/pellet(src)
+	new /obj/item/ammo_magazine/clip/c12g(src)
 
 /obj/item/storage/box/cargo_null_entry_kit/doctor
 	name = "doctor's kit"
 
 /obj/item/storage/box/cargo_null_entry_kit/doctor/PopulateContents()
-	new obj/item/storage/firstaid/combat(src)
-	new obj/item/gun/projectile/dartgun(src)
-	new obj/item/reagent_containers/hypospray(src)
-	new obj/item/reagent_containers/glass/bottle/chloralhydrate(src)
-	new obj/item/reagent_containers/glass/bottle/cyanide(src)
-	new obj/item/ammo_magazine/chemdart(src)
+	new /obj/item/storage/firstaid/combat(src)
+	new /obj/item/gun/projectile/dartgun(src)
+	new /obj/item/reagent_containers/hypospray(src)
+	new /obj/item/reagent_containers/glass/bottle/chloralhydrate(src)
+	new /obj/item/reagent_containers/glass/bottle/cyanide(src)
+	new /obj/item/ammo_magazine/chemdart(src)
 
 /obj/item/storage/box/cargo_null_entry_kit/sapper
 	name = "sapper's kit"
 
 /obj/item/storage/box/cargo_null_entry_kit/sapper/PopulateContents()
-	new obj/item/melee/energy/sword/ionic_rapier(src)
-	new obj/item/storage/box/syndie_kit/space(src)
-	new obj/item/storage/box/syndie_kit/demolitions(src)
-	new obj/item/multitool/ai_detector(src)
-	new obj/item/plastique(src)
-	new obj/item/storage/toolbox/syndicate/powertools(src)
+	new /obj/item/melee/energy/sword/ionic_rapier(src)
+	new /obj/item/storage/box/syndie_kit/space(src)
+	new /obj/item/storage/box/syndie_kit/demolitions(src)
+	new /obj/item/multitool/ai_detector(src)
+	new /obj/item/plastique(src)
+	new /obj/item/storage/toolbox/syndicate/powertools(src)
 
 /obj/item/storage/box/cargo_null_entry_kit/spy
 	name = "spy's kit"
 
 /obj/item/storage/box/cargo_null_entry_kit/spy/PopulateContents()
-	new obj/item/gun/projectile/silenced(src)
-	new obj/item/chameleon(src)
-	new obj/item/storage/box/syndie_kit/chameleon(src)
-	new obj/item/encryptionkey/syndicate(src)
-	new obj/item/card/id/syndicate(src)
-	new obj/item/clothing/mask/gas/voice(src)
-	new obj/item/makeover(src)
+	new /obj/item/gun/projectile/silenced(src)
+	new /obj/item/chameleon(src)
+	new /obj/item/storage/box/syndie_kit/chameleon(src)
+	new /obj/item/encryptionkey/syndicate(src)
+	new /obj/item/card/id/syndicate(src)
+	new /obj/item/clothing/mask/gas/voice(src)
+	new /obj/item/makeover(src)
 
 /obj/item/storage/box/cargo_null_entry_kit/pro
 	name = "professional's kit"
 
 /obj/item/storage/box/cargo_null_entry_kit/pro/PopulateContents()
-	new obj/item/gun/projectile/silenced(src)
-	new obj/item/gun/energy/ionrifle/pistol(src)
-	new obj/item/clothing/glasses/thermal/syndi(src)
-	new obj/item/card/emag(src)
-	new obj/item/ammo_magazine/m45/ap(src)
-	new obj/item/material/knife/tacknife/combatknife(src)
-	new obj/item/clothing/mask/balaclava(src)
+	new /obj/item/gun/projectile/silenced(src)
+	new /obj/item/gun/energy/ionrifle/pistol(src)
+	new /obj/item/clothing/glasses/thermal/syndi(src)
+	new /obj/item/card/emag(src)
+	new /obj/item/ammo_magazine/m45/ap(src)
+	new /obj/item/material/knife/tacknife/combatknife(src)
+	new /obj/item/clothing/mask/balaclava(src)
 
 /datum/supply_pack/supply/stolen
 	name = "Stolen Supply Crate"
