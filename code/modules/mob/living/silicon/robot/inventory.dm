@@ -308,7 +308,7 @@
 	var/obj/item/gripper/G = I.loc
 	if(!is_module_item(G))
 		return
-	if(G.wrapped != I)
+	if(G.get_item() != I)
 		return
 	G.drop_item(newloc)
 

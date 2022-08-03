@@ -126,7 +126,7 @@
 				to_chat(user, "\The [B] is not holding anything.")
 				return
 			else
-				var/B_held = B.wrapped
+				var/B_held = B.get_item()
 				to_chat(user, "You use \the [B] to use \the [B_held] with \the [src].")
 				playsound(src, "keyboard", 100, 1, 0)
 				attackby(B.get_item(), user, params, attackchain_flags, damage_multiplier)
