@@ -1,9 +1,5 @@
 /**
- * make sure to bump schema version and mark changes in database_changelog.md!
- *
- * default prefix is rp_
- * find replace case sensitive %_PREFIX_%
- * PRESERVE ANY vr_'s! We need to replace those tables and features at some point, that's how we konw.
+ * prefixed schema generated from database_schema.sql
  **/
 
 --
@@ -224,4 +220,45 @@ CREATE TABLE IF NOT EXISTS `rp_connection_log` (
   `ip` varchar(16) NOT NULL,
   `computerid` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS `rp_persist_keyed_strings` (
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `key` varchar(64) NOT NULL,
+  `value` TEXT NULL,
+  `group` varchar(64) NULL,
+  `revision` INT(11) NOT NULL,
+  PRIMARY KEY(`key`, `group`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS `rp_persist_mass_atoms` (
+  `saved` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `handler_id` varchar(64) NOT NULL,
+  `level_id` varchar(64) NOT NULL,
+  `fragment` INT(3) NOT NULL,
+  `data` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS `rp_persist_dynamic_atoms` (
+  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `x` INT(8) NOT NULL,
+  `y` INT(8) NOT NULL,
+  `level_id` varchar(64) NOT NULL,
+  `type` varchar(64) NOT NULL,
+  `json` TEXT NOT NULL,
+  `revision` INT(11) NOT NULL,
+  PRIMARY KEY(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS `rp_persist_keyed_atoms` (
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `map` varchar(64) NULL,
+  `key` varchar(64) NOT NULL,
+  `json` TEXT NOT NULL,
+  `revision` INT(11) NOT NULL,
+  PRIMARY KEY(`key`, `map`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

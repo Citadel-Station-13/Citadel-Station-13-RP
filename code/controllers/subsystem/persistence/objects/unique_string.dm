@@ -7,10 +7,15 @@
  * use if none of the others can work
  * or if you're somehow too lazy to optimize your persistence system by making a new persistence type
  * but somehow not lazy enough to optimize it into a string??
+ *
+ * notice how we can't delete strings?
+ * that's intentional, and for optimization.
  */
 /datum/controller/subsystem/persistence
 	/// persistent string cache
 	var/static/list/persistent_string_cache
+
+#warn rename map to group
 
 /datum/controller/subsystem/persistence/InitPersistence()
 	if(islist(persistent_string_cache))
@@ -36,6 +41,8 @@
 	specific[key] = value
 	if(flush)
 		FlushStrings(map, key = value)
+
+#warn GetMapString, SetMapString, _map_string_group
 
 /datum/controller/subsystem/persistence/proc/FlushStrings(map, ...)
 	if(!SSdbcore.Connect())
