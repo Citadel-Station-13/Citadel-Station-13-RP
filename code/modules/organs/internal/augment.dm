@@ -149,13 +149,14 @@
 
 	if(owner.is_in_inventory(integrated_object))
 		// retracting
-		integrated_object.forceMove(srC)
+		integrated_object.forceMove(src)
+		owner.visible_message(SPAN_NOTICE("[integrated_object] snaps back into [src]."))
 		return
 
 	// extending
-	if(ispath(item_to_equip))
+	if(ispath(integrated_object))
 		owner.equip_augment_item(target_slot, integrated_object, silent_deploy, FALSE)
-	else if(item_to_equip)
+	else if(integrated_object)
 		owner.equip_augment_item(target_slot, integrated_object, silent_deploy, FALSE, src)
 
 /*

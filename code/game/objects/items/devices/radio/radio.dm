@@ -859,7 +859,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	return 0
 
 /obj/item/bluespace_radio/dropped(mob/user, flags, atom/newLoc)
-	..()
+	. = ..()
 	reattach_handset(user) //handset attached to a base unit should never exist outside of their base unit or the mob equipping the base unit
 
 /obj/item/bluespace_radio/proc/reattach_handset(mob/user)
@@ -897,7 +897,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	return ..()
 
 /obj/item/radio/bluespace_handset/linked/dropped(mob/user, flags, atom/newLoc)
-	..() //update twohanding
+	. = ..() //update twohanding
 	if(base_unit)
 		base_unit.reattach_handset(user) //handset attached to a base unit should never exist outside of their base unit or the mob equipping the base unit
 
