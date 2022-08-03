@@ -593,6 +593,11 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 10
 	},
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "bs" = (
@@ -813,6 +818,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
 	dir = 4
 	},
+/obj/machinery/meter,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "cd" = (
@@ -928,7 +934,10 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "cu" = (
-/obj/machinery/atmospherics/component/binary/circulator,
+/obj/machinery/atmospherics/component/binary/circulator{
+	anchored = 1;
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "cv" = (
@@ -1191,6 +1200,11 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 6
 	},
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "cZ" = (
@@ -1339,6 +1353,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/red,
+/obj/machinery/meter,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "ds" = (
@@ -1395,6 +1410,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow{
 	dir = 4
 	},
+/obj/machinery/meter,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "dy" = (
@@ -1405,9 +1421,17 @@
 /obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
+"dz" = (
+/obj/machinery/atmospherics/pipe/manifold/visible/blue{
+	dir = 8
+	},
+/obj/machinery/meter,
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "dA" = (
 /obj/machinery/atmospherics/component/binary/circulator{
-	dir = 1
+	dir = 1;
+	anchored = 1
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
@@ -1612,6 +1636,11 @@
 /obj/machinery/atmospherics/valve/digital{
 	dir = 4
 	},
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "dV" = (
@@ -1634,6 +1663,7 @@
 /obj/machinery/power/generator{
 	dir = 4
 	},
+/obj/structure/cable/cyan,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "dX" = (
@@ -6588,7 +6618,9 @@
 	name = "Turbine One Blast Door"
 	},
 /obj/effect/zone_divider,
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced/lythios43c{
+	outdoors = 0
+	},
 /area/engineering/turbine_room)
 "nN" = (
 /obj/effect/floor_decal/industrial/danger{
@@ -8369,7 +8401,9 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "rB" = (
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced/lythios43c{
+	outdoors = 0
+	},
 /area/engineering/turbine_room)
 "rC" = (
 /obj/structure/catwalk,
@@ -8720,6 +8754,19 @@
 "sX" = (
 /obj/effect/zone_divider,
 /turf/simulated/wall/r_wall,
+/area/engineering/engine_room)
+"sY" = (
+/obj/machinery/power/generator{
+	dir = 4;
+	anchored = 1
+	},
+/obj/structure/cable/cyan,
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "sZ" = (
 /obj/structure/cable/yellow{
@@ -9091,12 +9138,16 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/refinery)
 "wj" = (
-/obj/structure/railing{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 4
 	},
-/obj/structure/railing,
-/turf/simulated/open,
-/area/quartermaster/miningdock)
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "wm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -9188,12 +9239,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "wL" = (
-/obj/structure/railing{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/visible/black,
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
-/obj/structure/railing,
-/turf/simulated/open,
-/area/quartermaster/miningdock)
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "wV" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
@@ -9354,7 +9407,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/chapel/chapel_morgue)
 "xI" = (
-/turf/simulated/open,
+/turf/simulated/mineral/icerock,
 /area/quartermaster/miningdock)
 "xK" = (
 /obj/machinery/door/firedoor/glass/hidden{
@@ -9584,6 +9637,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
+"zv" = (
+/obj/structure/cable/cyan{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "zy" = (
 /turf/simulated/wall,
 /area/maintenance/atmos)
@@ -10332,13 +10392,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "FK" = (
-/obj/structure/railing{
-	dir = 8
-	},
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/open,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
 "FM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -10413,6 +10471,12 @@
 /obj/random/maintenance/engineering,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
+"Gb" = (
+/obj/machinery/atmospherics/component/binary/circulator{
+	anchored = 1
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "Gd" = (
 /obj/effect/floor_decal/chapel{
 	dir = 8
@@ -10533,6 +10597,14 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
+"Hf" = (
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "Hg" = (
 /obj/structure/stairs/spawner/south,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -10615,13 +10687,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "Ig" = (
-/obj/structure/railing{
-	dir = 4
-	},
 /obj/structure/sign/mining{
 	pixel_y = 32
 	},
-/turf/simulated/open,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
 "Iq" = (
 /obj/structure/railing{
@@ -11754,6 +11824,11 @@
 /obj/effect/zone_divider,
 /turf/simulated/floor/sky/depths/lythios43c,
 /area/rift/surfacebase/underground/under2)
+"Qz" = (
+/obj/machinery/atmospherics/pipe/manifold4w/visible/cyan,
+/obj/machinery/meter,
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "QD" = (
 /obj/structure/table/woodentable,
 /obj/item/camera,
@@ -12586,6 +12661,14 @@
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/quartermaster/belterdock/refinery)
+"Xp" = (
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "Xq" = (
 /turf/simulated/floor/lino,
 /area/chapel/office)
@@ -12856,6 +12939,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/cryo/station)
+"ZG" = (
+/obj/structure/cable/cyan{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "ZH" = (
 /obj/random/trash_pile,
 /obj/structure/railing,
@@ -26217,9 +26308,9 @@ aB
 bT
 dA
 bJ
-cn
+dz
 cQ
-dA
+Gb
 di
 aB
 hc
@@ -26407,12 +26498,12 @@ cs
 cI
 Hx
 zG
-aB
+ZG
 dU
-dW
-aB
+sY
+Xp
 dU
-aB
+Xp
 dW
 aB
 aB
@@ -26603,9 +26694,9 @@ zG
 zG
 cY
 cc
-cu
+Gb
 cJ
-dC
+Qz
 cJ
 cu
 dr
@@ -26795,7 +26886,7 @@ cs
 jD
 zG
 zG
-cb
+wj
 aA
 iP
 aB
@@ -27183,7 +27274,7 @@ cs
 jD
 cF
 if
-bN
+wL
 cg
 bN
 bN
@@ -27377,7 +27468,7 @@ cs
 jD
 cF
 bn
-aB
+Hf
 cb
 aB
 aB
@@ -27571,7 +27662,7 @@ cs
 jD
 cF
 bn
-aB
+Hf
 gl
 cm
 cm
@@ -27765,7 +27856,7 @@ hF
 bM
 cF
 bn
-aB
+zv
 bQ
 Kv
 cw
@@ -31804,7 +31895,7 @@ EC
 EC
 GG
 Ig
-wL
+AM
 Xz
 CC
 CC
@@ -32192,7 +32283,7 @@ EC
 EC
 GG
 FK
-wj
+AM
 Xz
 Mc
 CC
@@ -32578,7 +32669,7 @@ JP
 tR
 tR
 tR
-tR
+JP
 xI
 xI
 Mj
