@@ -50,5 +50,5 @@ SUBSYSTEM_DEF(persistence)
 		current_map_id = null
 		current_map_directory = null
 		return			// map doesn't support persistence.
-	current_map_id = SSmapping.config.persistence_id
-	current_map_directory = "[PERSISTENCE_MAP_ROOT_DIRECTORY]/[SSmapping.config.persistence_id]"
+	current_map_id = ckey(SSmapping.config.persistence_id)
+	current_map_directory = "[PERSISTENCE_MAP_ROOT_DIRECTORY]/[current_map_id]"

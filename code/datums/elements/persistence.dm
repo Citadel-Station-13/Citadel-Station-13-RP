@@ -11,6 +11,8 @@
 	/// List of persistent atoms. Associated list to their GUID
 	var/list/atom/objects = list()
 
+#warn move to new system
+
 /**
  * Serializes all objects into a list for json encode or anything else needed.
  * Includes data the datum includes in serialize_list(), the GUID of the datum's entry, and its turf location.

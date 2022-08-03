@@ -117,8 +117,10 @@
 //! ## Persistence
 	/// persistence flags
 	var/persistence_flags = NONE
-	///
-	#warn ids?
+	/// persistence id for dynamic persistence
+	var/persistence_dynamic_uid
+	/// persitsence id for hardmapped/preset persistence
+	var/persistence_static_uid
 
 /**
  * Called when an atom is created in byond (built in engine proc)
