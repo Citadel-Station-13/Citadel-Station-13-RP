@@ -151,6 +151,7 @@
 /datum/map_z_level/rift_lateload/away_d_world
 	name = "Away Mission - Rogue Planet"
 	z = Z_LEVEL_UNKNOWN_PLANET
+	base_turf = /turf/simulated/mineral/floor/classd
 
 // Class H Desert Planet Exploration Zone.
 /datum/map_template/rift_lateload/away_h_world
