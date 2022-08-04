@@ -437,15 +437,8 @@
 	if(!can_be_inserted(W))
 		return
 
-	if(istype(W, /obj/item/tray))
-		var/obj/item/tray/T = W
-		if(T.calc_carry() > 0)
-			if(prob(85))
-				to_chat(user, "<span class='warning'>The tray won't fit in [src].</span>")
-				return
-			else
-				W.forceMove(get_turf(user))
-				to_chat(user, "<span class='warning'>God damn it!</span>")
+	if(!user.transfer_item_to_loc(W, src))
+		return
 
 	W.add_fingerprint(user)
 	return handle_item_insertion(W, user)

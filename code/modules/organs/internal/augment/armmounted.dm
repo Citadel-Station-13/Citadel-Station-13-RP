@@ -5,19 +5,12 @@
 /obj/item/organ/internal/augment/armmounted
 	name = "laser rifle implant"
 	desc = "A large implant that fits into a subject's arm. It deploys a laser-emitting array by some painful means."
-
 	icon_state = "augment_laser"
-
 	w_class = ITEMSIZE_LARGE
-
 	organ_tag = O_AUG_L_FOREARM
-
 	parent_organ = BP_L_ARM
-
 	target_slot = /datum/inventory_slot_meta/abstract/left_hand
-
 	target_parent_classes = list(ORGAN_FLESH, ORGAN_ASSISTED)
-
 	integrated_object_type = /obj/item/gun/energy/laser/mounted/augment
 
 
@@ -40,19 +33,14 @@
 /obj/item/organ/internal/augment/armmounted/taser
 	name = "taser implant"
 	desc = "A large implant that fits into a subject's arm. It deploys a taser-emitting array by some painful means."
-
 	icon_state = "augment_taser"
-
 	integrated_object_type = /obj/item/gun/energy/taser/mounted/augment
 
 /obj/item/organ/internal/augment/armmounted/dartbow
 	name = "crossbow implant"
 	desc = "A small implant that fits into a subject's arm. It deploys a dart launching mechanism through the flesh through unknown means."
-
 	icon_state = "augment_dart"
-
 	w_class = ITEMSIZE_SMALL
-
 	integrated_object_type = /obj/item/gun/energy/crossbow
 
 // Wrist-or-hand-mounted implant
@@ -61,9 +49,7 @@
 	name = "resonant analyzer implant"
 	desc = "An augment that fits neatly into the hand, useful for determining the usefulness of an object for research."
 	icon_state = "augment_box"
-
 	w_class = ITEMSIZE_SMALL
-
 	integrated_object_type = /obj/item/portable_scanner
 
 /obj/item/organ/internal/augment/armmounted/hand/attackby(obj/item/I as obj, mob/user as mob)
@@ -84,7 +70,6 @@
 
 /obj/item/organ/internal/augment/armmounted/hand/sword
 	name = "energy blade implant"
-
 	integrated_object_type = /obj/item/melee/energy/sword
 
 /*
@@ -94,13 +79,9 @@
 /obj/item/organ/internal/augment/armmounted/shoulder
 	name = "shoulder augment"
 	desc = "A large implant that fits into a subject's arm. It looks kind of like a skeleton."
-
 	icon_state = "augment_armframe"
-
 	organ_tag = O_AUG_R_UPPERARM
-
 	w_class = ITEMSIZE_HUGE
-
 	integrated_object_type = null
 
 /obj/item/organ/internal/augment/armmounted/shoulder/attackby(obj/item/I as obj, mob/user as mob)
@@ -198,7 +179,6 @@
 			var/obj/item/I = integrated_tools[path]
 			ADD_TRAIT(I, TRAIT_NODROP, AUGMENT_TRAIT)
 			I.toolspeed = toolspeed
-			I.my_augment = src
 			I.name = "integrated [I.name]"
 
 		for(var/tool in integrated_tools)

@@ -23,6 +23,7 @@
 	var/obj/item/integrated_object
 	/// Object type the organ will spawn.
 	var/integrated_object_type
+
 	var/target_slot = null
 
 	var/silent_deploy = FALSE
@@ -50,15 +51,17 @@
 	if(ispath(item_or_type))
 		item_or_type = new item_or_type
 	register_item(item_or_type)
-	if(integrated_object)
-		unregister_item(item_or_type)
-	integrated_object = item_or_type
 
 /obj/item/organ/internal/augment/proc/register_item(obj/item/I)
+	if(!I)
+		return
+	if(integrated_object)
+		unregister_item(integrated_object)
 	RegisterSignal(I, COMSIG_MOVABLE_MOVED, .proc/on_item_moved)
 	RegisterSignal(I, COMSIG_ITEM_DROPPED, .proc/on_item_dropped)
 	if(I.loc != src)
 		I.forceMove(src)
+	integrated_object = I
 
 /obj/item/organ/internal/augment/proc/unregister_item(obj/item/I)
 	UnregisterSignal(I, list(
@@ -83,7 +86,7 @@
 	. = COMPONENT_ITEM_RELOCATED_BY_DROP
 
 /obj/item/organ/internal/augment/proc/check_item_yank(obj/item/I)
-	if(I.loc != src)
+	if(I.loc != src && I.loc != owner)
 		unregister_item(I)
 
 // todo: multi-item
@@ -142,29 +145,19 @@
 		to_chat(owner, SPAN_WARNING("\The [src] doesn't respond."))
 		return
 
-	var/item_to_equip = integrated_object
-	if(!item_to_equip && integrated_object_type)
-		item_to_equip = integrated_object_type
+	//! todo: re fucking factor.
 
-	if(ispath(item_to_equip))
-		owner.equip_augment_item(target_slot, item_to_equip, silent_deploy, FALSE)
-	else if(item_to_equip)
-		owner.equip_augment_item(target_slot, item_to_equip, silent_deploy, FALSE, src)
+	if(owner.is_in_inventory(integrated_object))
+		// retracting
+		integrated_object.forceMove(src)
+		owner.visible_message(SPAN_NOTICE("[integrated_object] snaps back into [src]."))
+		return
 
-/*
- * The delicate handling of augment-controlled items.
- */
-
-// Attaches to the end of dropped items' code.
-
-/obj/item
-	/// Used to reference the object's host organ.
-	var/obj/item/organ/my_augment = null
-
-/obj/item/dropped(mob/user, flags, atom/newLoc)
-	. = ..()
-	if(my_augment)
-		forceMove(my_augment)
+	// extending
+	if(ispath(integrated_object))
+		owner.equip_augment_item(target_slot, integrated_object, silent_deploy, FALSE)
+	else if(integrated_object)
+		owner.equip_augment_item(target_slot, integrated_object, silent_deploy, FALSE, src)
 
 /*
  * Human-specific mob procs.
@@ -184,7 +177,7 @@
 
 	var/list/present_augs = list()
 
-	for(var/obj/item/organ/internal/augment/Aug in internal_organs)
+	for(var/obj/item/organ/internal/augment/Aug in organs)
 		if(Aug.my_radial_icon && !Aug.is_broken() && Aug.check_verb_compatability())
 			present_augs[Aug.radial_name] = Aug
 
@@ -244,9 +237,6 @@
 			if(destroy_on_drop || del_if_failure)
 				qdel(equipping)
 			return FALSE
-
-	if(cling_to_organ) // Does the object automatically return to the organ?
-		equipping.my_augment = cling_to_organ
 
 	if(make_sound)
 		playsound(src, 'sound/items/change_jaws.ogg', 30, TRUE)
