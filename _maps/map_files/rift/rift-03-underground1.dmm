@@ -8,7 +8,9 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced{
+	initial_gas_mix = "n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "ac" = (
 /obj/structure/table/rack/steel,
@@ -2179,7 +2181,9 @@
 	},
 /obj/machinery/power/rad_collector,
 /obj/structure/cable/cyan,
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced{
+	initial_gas_mix = "n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "ec" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -3855,7 +3859,9 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/open,
+/turf/simulated/open{
+	initial_gas_mix = n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "gN" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -3924,7 +3930,9 @@
 	anchored = 1
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced{
+	initial_gas_mix = "n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "gU" = (
 /obj/structure/cable{
@@ -5518,7 +5526,9 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced{
+	initial_gas_mix = "n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "jO" = (
 /obj/structure/railing{
@@ -6566,7 +6576,9 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/open,
+/turf/simulated/open{
+	initial_gas_mix = n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "lV" = (
 /obj/machinery/portable_atmospherics/powered/pump,
@@ -7005,7 +7017,9 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced{
+	initial_gas_mix = "n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "mM" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -7097,7 +7111,9 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced{
+	initial_gas_mix = "n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "mT" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -7150,7 +7166,9 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced{
+	initial_gas_mix = "n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "mX" = (
 /obj/item/storage/firstaid/toxin,
@@ -7238,7 +7256,9 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/open,
+/turf/simulated/open{
+	initial_gas_mix = n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "ni" = (
 /obj/structure/disposalpipe/segment,
@@ -7467,7 +7487,9 @@
 	icon_state = "0-2"
 	},
 /obj/structure/cable/cyan,
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced{
+	initial_gas_mix = "n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "nH" = (
 /obj/structure/closet/radiation,
@@ -8636,7 +8658,9 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced{
+	initial_gas_mix = "n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "pQ" = (
 /obj/structure/railing{
@@ -9226,7 +9250,9 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced{
+	initial_gas_mix = "n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "rz" = (
 /obj/effect/alien/egg,
@@ -10748,7 +10774,9 @@
 /area/hallway/primary/underone)
 "wk" = (
 /obj/machinery/camera/network/engine,
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced{
+	initial_gas_mix = "n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "wn" = (
 /turf/simulated/mineral/icerock,
@@ -11475,7 +11503,9 @@
 /obj/machinery/camera/network/engine{
 	dir = 1
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced{
+	initial_gas_mix = "n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "zi" = (
 /turf/simulated/floor/tiled/dark,
@@ -12879,7 +12909,9 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced{
+	initial_gas_mix = "n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "EX" = (
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -12933,7 +12965,9 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced{
+	initial_gas_mix = "n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "Fj" = (
 /obj/machinery/suit_cycler/engineering{
@@ -13067,7 +13101,9 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced{
+	initial_gas_mix = "n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "FK" = (
 /obj/effect/overlay/snow/floor/edges_new,
@@ -13618,7 +13654,9 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced{
+	initial_gas_mix = "n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "Hw" = (
 /obj/structure/table/rack/steel,
@@ -13900,7 +13938,9 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced{
+	initial_gas_mix = "n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "Ix" = (
 /obj/structure/railing{
@@ -14194,7 +14234,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
 "JL" = (
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced{
+	initial_gas_mix = "n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "JQ" = (
 /obj/machinery/light,
@@ -15251,7 +15293,9 @@
 	dir = 8
 	},
 /obj/structure/railing,
-/turf/simulated/open,
+/turf/simulated/open{
+	initial_gas_mix = n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "NV" = (
 /obj/machinery/drone_fabricator{
@@ -15530,7 +15574,9 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/open,
+/turf/simulated/open{
+	initial_gas_mix = n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "Pb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -15791,7 +15837,9 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/open,
+/turf/simulated/open{
+	initial_gas_mix = n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "Qc" = (
 /obj/effect/map_effect/portal/line/side_a{
@@ -16713,7 +16761,9 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced{
+	initial_gas_mix = "n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "Ub" = (
 /obj/effect/floor_decal/rust,
@@ -16830,7 +16880,9 @@
 "UD" = (
 /obj/structure/catwalk,
 /obj/structure/railing,
-/turf/simulated/open,
+/turf/simulated/open{
+	initial_gas_mix = n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "UE" = (
 /obj/random/junk,
@@ -17311,7 +17363,9 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced{
+	initial_gas_mix = "n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "Wq" = (
 /obj/structure/disposalpipe/segment{
@@ -18113,7 +18167,9 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/open,
+/turf/simulated/open{
+	initial_gas_mix = n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "ZA" = (
 /obj/machinery/light/small,

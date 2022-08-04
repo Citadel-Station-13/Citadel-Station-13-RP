@@ -985,14 +985,18 @@
 	pump_direction = 0;
 	use_power = 1
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced{
+	initial_gas_mix = "n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "cz" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1;
 	scrubbing_gas = list(/datum/gas/carbon_dioxide)
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced{
+	initial_gas_mix = "n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "cA" = (
 /obj/machinery/atmospherics/component/unary/outlet_injector{
@@ -1004,7 +1008,9 @@
 	use_power = 1;
 	volume_rate = 700
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced{
+	initial_gas_mix = "n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "cB" = (
 /obj/structure/grille,
@@ -1129,7 +1135,9 @@
 	id_tag = "engine_sensor";
 	output = 63
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced{
+	initial_gas_mix = "n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "cQ" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/blue{
@@ -1188,7 +1196,9 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	scrubbing_gas = list(/datum/gas/carbon_dioxide)
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/reinforced{
+	initial_gas_mix = "n2=100;TEMP=293.15"
+	},
 /area/engineering/engine_core)
 "cX" = (
 /obj/structure/railing{
