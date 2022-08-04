@@ -31,6 +31,7 @@
 #define INV_OP_IS_FINAL_CHECK		(1<<14)
 /// hint: we are directly equipping to on-mob instead of semantically just being put in hands
 #define INV_OP_DIRECTLY_EQUIPPING	(1<<15)
+
 /// no delays and reachability checks entirely
 #define INV_OP_FLUFFLESS			(INV_OP_IGNORE_REACHABILITY | INV_OP_IGNORE_DELAY)
 /// no sound, warnings, etc, entirely

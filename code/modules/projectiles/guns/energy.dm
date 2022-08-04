@@ -196,7 +196,7 @@
 			icon_state = "[initial(icon_state)]_open"
 		return
 	else if(charge_meter)
-		var/ratio = power_supply.charge / power_supply.maxcharge
+		var/ratio = power_supply.percent() * 0.01
 
 		//make sure that rounding down will not give us the empty state even if we have charge for a shot left.
 		if(power_supply.charge < charge_cost)
