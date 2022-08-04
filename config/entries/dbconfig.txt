@@ -1,5 +1,6 @@
 ## Enables SQL/database usage
-SQL_ENABLED
+## WARNING: A lot of the codebase requires SQL. Not using this is a terrible idea.
+#SQL_ENABLED
 
 ## SQL address
 SQL_ADDRESS localhost

@@ -25,7 +25,8 @@
 		/obj/item/fuel_assembly/
 		)
 
-	var/obj/item/wrapped = null // Item currently being held.
+	/// currently held item
+	VAR_PRIVATE/obj/item/wrapped
 
 	var/force_holder = null //
 
@@ -33,10 +34,47 @@
 	. = ..()
 	if(wrapped)
 		. += "<span class='notice'>\The [src] is holding \the [wrapped].</span>"
-		wrapped.examine(user)
+		. += wrapped.examine(user)
+
+/obj/item/gripper/Destroy()
+	remove_item(drop_location())
+	return ..()
+
+/obj/item/gripper/proc/insert_item(obj/item/I)
+	if(QDELETED(I))
+		return
+	if(wrapped)
+		remove_item(drop_location())
+	wrapped = I
+	I.forceMove(src)
+	RegisterSignal(I, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED), .proc/unwrap_hook)
+
+/**
+ * newloc false to not move
+ */
+/obj/item/gripper/proc/remove_item(atom/newloc = FALSE)
+	if(!wrapped)
+		return
+	var/obj/item/old = wrapped
+	UnregisterSignal(wrapped, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED))
+	wrapped = null
+	switch(newloc)
+		if(null)
+			old.moveToNullspace()
+		if(FALSE)
+		else
+			old.forceMove(newloc)
+
+/obj/item/gripper/proc/unwrap_hook(datum/source)
+	ASSERT(isitem(source))
+	ASSERT(source == wrapped)
+	remove_item(FALSE)
+
+/obj/item/gripper/proc/get_item()
+	return wrapped
 
 /obj/item/gripper/CtrlClick(mob/user)
-	drop_item()
+	remove_item()
 	return
 
 /obj/item/gripper/omni
@@ -246,102 +284,46 @@
 
 /obj/item/gripper/attackby(var/obj/item/O, var/mob/user)
 	if(wrapped) // We're interacting with the item inside. If you can hold a cup with 2 fingers and stick a straw in it, you could do that with a gripper and another robotic arm.
-		wrapped.loc = src.loc
 		var/resolved = wrapped.attackby(O, user)
-		if(QDELETED(wrapped) || wrapped.loc != src.loc)	 //Juuuust in case.
-			wrapped = null
 		if(!resolved && wrapped && O)
 			O.afterattack(wrapped,user,1)
-			if(QDELETED(wrapped) || wrapped.loc != src.loc)	 // I don't know of a nicer way to do this.
-				wrapped = null
-		if(wrapped)
-			wrapped.loc = src
 		return resolved
 	return ..()
 
 /obj/item/gripper/verb/drop_item()
-
 	set name = "Drop Item"
 	set desc = "Release an item from your magnetic gripper."
 	set category = "Robot Commands"
 
 	if(!wrapped)
-		//There's some weirdness with items being lost inside the arm. Trying to fix all cases. ~Z
-		for(var/obj/item/thing in src.contents)
-			thing.loc = get_turf(src)
-		return
-
-	if(wrapped.loc != src)
-		wrapped = null
 		return
 
 	to_chat(src.loc, "<span class='danger'>You drop \the [wrapped].</span>")
-	wrapped.forceMove(get_turf(src))
-	wrapped = null
-	//update_icon()
-
-/obj/item/gripper/proc/drop_item_nm()
-
-	if(!wrapped)
-		for(var/obj/item/thing in src.contents)
-			thing.loc = get_turf(src)
-		return
-
-	if(wrapped.loc != src)
-		wrapped = null
-		return
-
-	wrapped.forceMove(get_turf(src))
-	wrapped = null
-	//update_icon()
+	remove_item(drop_location())
 
 /obj/item/gripper/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(wrapped) 	//The force of the wrapped obj gets set to zero during the attack() and afterattack().
 		force_holder = wrapped.force
-		wrapped.force = 0.0
-		if(QDELETED(wrapped) || wrapped.loc != src.loc)	 //qdel check here so it doesn't duplicate/spawn ghost items
-			wrapped = null
-		else
-			wrapped.loc = src.loc //To ensure checks pass.
-			wrapped.attack(M,user)
-			M.attackby(wrapped, user)	//attackby reportedly gets procced by being clicked on, at least according to Anewbe.
-			if(QDELETED(wrapped) || wrapped.loc != src.loc)
-				wrapped = null
-			if(wrapped) //In the event nothing happened to wrapped, go back into the gripper.
-				wrapped.loc = src
-			return 1
+		wrapped.force = 0
+		wrapped.attack(M,user)
+		M.attackby(wrapped, user)	//attackby reportedly gets procced by being clicked on, at least according to Anewbe.
+		return 1
 	return 0
 
 /obj/item/gripper/afterattack(var/atom/target, var/mob/living/user, proximity, params)
-
 	if(!proximity)
 		return // This will prevent them using guns at range but adminbuse can add them directly to modules, so eh.
 
-	//There's some weirdness with items being lost inside the arm. Trying to fix all cases. ~Z
-	if(!wrapped)
-		for(var/obj/item/thing in src.contents)
-			wrapped = thing
-			break
 
 	if(wrapped) //Already have an item.
-		//Temporary put wrapped into user so target's attackby() checks pass.
-		wrapped.loc = user
-
 		//Pass the attack on to the target. This might delete/relocate wrapped.
-		var/resolved = target.attackby(wrapped,user)
+		var/resolved = target.attackby(wrapped, user)
 		if(!resolved && wrapped && target)
 			wrapped.afterattack(target,user,1)
-
 		//wrapped's force was set to zero.  This resets it to the value it had before.
 		if(wrapped)
 			wrapped.force = force_holder
 		force_holder = null
-		//If wrapped was neither deleted nor put into target, put it back into the gripper.
-		if(wrapped && user && (wrapped.loc == user))
-			wrapped.loc = src
-		else
-			wrapped = null
-			return
 
 	else if(istype(target,/obj/item)) //Check that we're not pocketing a mob.
 
@@ -365,8 +347,7 @@
 		//We can grab the item, finally.
 		if(grab)
 			to_chat(user, "You collect \the [I].")
-			I.forceMove(src)
-			wrapped = I
+			insert_item(I)
 			return
 		else
 			to_chat(user, "<span class='danger'>Your gripper cannot hold \the [target].</span>")
@@ -376,11 +357,9 @@
 		if(A.opened)
 			if(A.cell)
 
-				wrapped = A.cell
-
+				insert_item(A.cell)
 				A.cell.add_fingerprint(user)
 				A.cell.update_icon()
-				A.cell.forceMove(src)
 				A.cell = null
 
 				A.charging = 0
@@ -392,13 +371,10 @@
 		var/mob/living/silicon/robot/A = target
 		if(A.opened)
 			if(A.cell)
-
-				wrapped = A.cell
-
+				insert_item(A.cell)
 				A.cell.add_fingerprint(user)
 				A.cell.update_icon()
 				A.updateicon()
-				A.cell.forceMove(src)
 				A.cell = null
 
 				user.visible_message("<span class='danger'>[user] removes the power cell from [A]!</span>", "You remove the power cell.")

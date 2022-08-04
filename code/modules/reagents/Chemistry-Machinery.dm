@@ -127,12 +127,13 @@
 
 	if(istype(O,/obj/item/gripper))
 		var/obj/item/gripper/B = O	//B, for Borg.
-		if(!B.wrapped)
+		if(!B.get_item())
 			to_chat(user, "\The [B] is not holding anything.")
 			return 0
 		else
-			var/B_held = B.wrapped
+			var/B_held = B.get_item()
 			to_chat(user, "You use \the [B] to load \the [src] with \the [B_held].")
+			attackby(B_held, user)
 
 		return 0
 
