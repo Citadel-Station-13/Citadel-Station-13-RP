@@ -54,13 +54,10 @@
 	icon_state = "nose"
 	desc = "The BOOP module, a simple reagent and atmosphere sniffer."
 	force = 0
+	item_flags = NOBLUDGEON
 	throwforce = 0
 	attack_verb = list("nuzzled", "nosed", "booped")
 	w_class = ITEMSIZE_TINY
-
-/obj/item/dogborg/boop_module/Initialize(mapload)
-	. = ..()
-	flags |= NOBLUDGEON //No more attack messages
 
 /obj/item/dogborg/boop_module/attack_self(mob/user)
 	if (!( istype(user.loc, /turf) ))
@@ -178,12 +175,9 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "synthtongue"
 	hitsound = 'sound/effects/attackblob.ogg'
+	item_flags = NOBLUDGEON
 	var/emagged = 0
 	var/datum/matter_synth/water = null
-
-/obj/item/dogborg/tongue/Initialize(mapload)
-	. = ..()
-	flags |= NOBLUDGEON //No more attack messages
 
 /obj/item/dogborg/tongue/examine(user)
 	. = ..()
@@ -297,11 +291,8 @@
 	desc = "Toggles floor scrubbing."
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "scrub0"
+	item_flags = NOBLUDGEON
 	var/enabled = FALSE
-
-/obj/item/pupscrubber/Initialize(mapload)
-	. = ..()
-	flags |= NOBLUDGEON
 
 /obj/item/pupscrubber/attack_self(mob/user)
 	var/mob/living/silicon/robot/R = user
@@ -374,10 +365,7 @@
 	desc = "Leap at your target to momentarily stun them."
 	force = 0
 	throwforce = 0
-
-/obj/item/dogborg/pounce/Initialize(mapload)
-	. = ..()
-	flags |= NOBLUDGEON
+	item_flags = NOBLUDGEON
 
 /obj/item/dogborg/pounce/attack_self(mob/user)
 	var/mob/living/silicon/robot/R = user

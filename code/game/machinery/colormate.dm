@@ -74,8 +74,7 @@
 	if(allow_mobs && istype(I, /obj/item/holder))
 		var/obj/item/holder/H = I
 		var/mob/victim = H.held_mob
-		if(!user.transferItemToLoc(I, src))
-			to_chat(user, SPAN_WARNING("[I] is stuck to your hand!"))
+		if(!user.attempt_insert_item_for_installation(I, src))
 			return
 		if(!QDELETED(H))
 			H.drop_items()
@@ -84,8 +83,7 @@
 		SStgui.update_uis(src)
 
 	if(is_type_in_list(I, allowed_types) && !inoperable())
-		if(!user.transferItemToLoc(I, src))
-			to_chat(user, SPAN_WARNING("[I] is stuck to your hand!"))
+		if(!user.attempt_insert_item_for_installation(I, src))
 			return
 		if(QDELETED(I))
 			return

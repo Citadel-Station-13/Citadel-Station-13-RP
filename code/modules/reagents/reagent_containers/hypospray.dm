@@ -97,7 +97,7 @@
 	reagents.maximum_volume = loaded_vial.reagents.maximum_volume
 
 /obj/item/reagent_containers/hypospray/vial/attack_hand(mob/user as mob)
-	if(user.get_inactive_hand() == src)
+	if(user.get_inactive_held_item() == src)
 		if(loaded_vial)
 			reagents.trans_to_holder(loaded_vial.reagents,volume)
 			reagents.maximum_volume = 0
@@ -118,11 +118,11 @@
 			user.visible_message("<span class='notice'>[user] begins loading [W] into \the [src].</span>","<span class='notice'>You start loading [W] into \the [src].</span>")
 			if(!do_after(user,30) || loaded_vial || !(W in user))
 				return 0
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 			if(W.is_open_container())
 				W.flags ^= OPENCONTAINER
 				W.update_icon()
-			user.drop_item()
-			W.loc = src
 			loaded_vial = W
 			reagents.maximum_volume = loaded_vial.reagents.maximum_volume
 			loaded_vial.reagents.trans_to_holder(reagents,volume)

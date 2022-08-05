@@ -129,6 +129,7 @@
 
 
 //* GENERIC EXTERAL ORGANS *//
+// Also used as target zones.
 #define BP_GROIN  "groin"
 #define BP_HEAD   "head"
 #define BP_L_ARM  "l_arm"
@@ -158,12 +159,12 @@
 //* ADHERENT EXTERNAL ORGANS *//
 #define O_COOLING_FINS "cooling fins"
 #define O_FLOAT "floatation disc"
-#define BP_JETS "maneuvering jets"
+#define O_JETS "maneuvering jets"
 /// List of all Adherent body parts.
-#define BP_ALL_ADHERENT list( \
+#define O_ALL_ADHERENT list( \
 		O_COOLING_FINS, \
 		O_FLOAT, \
-		BP_JETS)
+		O_JETS)
 
 
 //* SYNTH INTERNAL COLORS *//

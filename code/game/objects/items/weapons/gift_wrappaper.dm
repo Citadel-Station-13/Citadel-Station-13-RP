@@ -26,18 +26,15 @@
 		icon_state = "gift[pick(1, 2, 3)]"
 
 /obj/item/gift/attack_self(mob/user as mob)
-	user.drop_item()
+	user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 	if(src.gift)
 		user.put_in_active_hand(gift)
 		src.gift.add_fingerprint(user)
 	else
 		to_chat(user, "<span class='warning'>The gift was empty!</span>")
-	qdel(src)
-	return
 
 /obj/item/a_gift/ex_act()
 	qdel(src)
-	return
 
 /obj/effect/spresent/relaymove(mob/user as mob)
 	if (user.stat)
@@ -104,14 +101,13 @@
 		/obj/item/storage/belt/utility/full,
 		/obj/item/clothing/accessory/tie/horrible)
 
-	if(!ispath(gift_type,/obj/item))	return
-
+	if(!ispath(gift_type,/obj/item))
+		return
+	M.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 	var/obj/item/I = new gift_type(M)
-	M.remove_from_mob(src)
 	M.put_in_hands(I)
 	I.add_fingerprint(M)
 	qdel(src)
-	return
 
 /obj/item/b_gift
 	name = "gift"
@@ -127,18 +123,16 @@
 	pixel_y = rand(-10,10)
 
 /obj/item/gift/attack_self(mob/user as mob)
-	user.drop_item()
-	if(src.gift)
+	user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
+	if(gift)
 		user.put_in_active_hand(gift)
-		src.gift.add_fingerprint(user)
+		gift.add_fingerprint(user)
 	else
 		to_chat(user, "<span class='warning'>The pumpkin was empty!</span>")
 	qdel(src)
-	return
 
 /obj/item/b_gift/ex_act()
 	qdel(src)
-	return
 
 /obj/item/b_gift/attack_self(mob/M as mob)
 	var/gift_type = pick(
@@ -193,11 +187,10 @@
 	if(!ispath(gift_type,/obj/item))	return
 
 	var/obj/item/I = new gift_type(M)
-	M.remove_from_mob(src)
+	M.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 	M.put_in_hands(I)
 	I.add_fingerprint(M)
 	qdel(src)
-	return
 
 /*
  * Wrapping Paper
@@ -213,10 +206,10 @@
 
 /obj/item/wrapping_paper/attackby(obj/item/W as obj, mob/living/user as mob)
 	..()
-	if (!( locate(/obj/structure/table, src.loc) ))
-		to_chat(user, "<span class='warning'>You MUST put the paper on a table!</span>")
+	if (!( locate(/obj/structure/table, loc) ))
+		to_chat(user, "<span class='warning'>You must put the paper on a table first!</span>")
 	if (W.w_class < ITEMSIZE_LARGE)
-		var/obj/item/I = user.get_inactive_hand()
+		var/obj/item/I = user.get_inactive_held_item()
 		if(I.is_wirecutter())
 			var/a_used = 2 ** (src.w_class - 1)
 			if (src.amount < a_used)
@@ -225,15 +218,16 @@
 			else
 				if(istype(W, /obj/item/smallDelivery) || istype(W, /obj/item/gift)) //No gift wrapping gifts!
 					return
+				if(!user.attempt_void_item_for_installation(W))
+					return
 
-				src.amount -= a_used
-				user.drop_item()
+				amount -= a_used
 				var/obj/item/gift/G = new /obj/item/gift( src.loc )
 				G.size = W.w_class
 				G.w_class = G.size + 1
 				G.icon_state = text("gift[]", G.size)
 				G.gift = W
-				W.loc = G
+				W.forceMove(G)
 				G.add_fingerprint(user)
 				W.add_fingerprint(user)
 			if (src.amount <= 0)

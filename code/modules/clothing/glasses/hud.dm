@@ -13,7 +13,7 @@
 
 /obj/item/clothing/glasses/hud/health/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_MEDICAL), list(slot_glasses))
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_MEDICAL), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/hud/health/prescription
 	name = "Prescription Health Scanner HUD"
@@ -31,7 +31,7 @@
 
 /obj/item/clothing/glasses/hud/security/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED), list(slot_glasses))
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/hud/security/prescription
 	name = "Prescription Security HUD"
@@ -63,11 +63,11 @@
 	var/tgarscreen_path
 	var/flash_prot = 0 //0 for none, 1 for flash weapon protection, 2 for welder protection
 	enables_planes = list(VIS_AUGMENTED)
-	plane_slots = list(slot_glasses)
+	plane_slots = list(SLOT_ID_GLASSES)
 
 /obj/item/clothing/glasses/omnihud/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_ID_JOB), list(slot_glasses))
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_ID_JOB), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/omnihud/Initialize(mapload)
 	. = ..()
@@ -81,7 +81,7 @@
 	QDEL_NULL(tgarscreen)
 	. = ..()
 
-/obj/item/clothing/glasses/omnihud/dropped()
+/obj/item/clothing/glasses/omnihud/dropped(mob/user, flags, atom/newLoc)
 	if(arscreen)
 		SSnanoui.close_uis(src)
 	if(tgarscreen)
@@ -142,7 +142,7 @@
 
 /obj/item/clothing/glasses/omnihud/med/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_ID_JOB, DATA_HUD_MEDICAL), list(slot_glasses))
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_ID_JOB, DATA_HUD_MEDICAL), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/omnihud/med/ar_interact(var/mob/living/carbon/human/user)
 	if(tgarscreen)
@@ -162,7 +162,7 @@
 
 /obj/item/clothing/glasses/omnihud/sec/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED), list(slot_glasses))
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/omnihud/sec/ar_interact(var/mob/living/carbon/human/user)
 	if(arscreen)
@@ -245,7 +245,7 @@
 	enables_planes = list(VIS_AUGMENTED)
 
 /obj/item/clothing/glasses/omnihud/exp/ui_action_click()
-	zoom(wornslot = slot_glasses)
+	zoom(wornslot = SLOT_ID_GLASSES)
 
 /obj/item/clothing/glasses/omnihud/all
 	name = "\improper AR-B glasses"
@@ -258,7 +258,7 @@
 
 /obj/item/clothing/glasses/omnihud/all/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED, DATA_HUD_MEDICAL), list(slot_glasses))
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED, DATA_HUD_MEDICAL), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/hud/security/eyepatch
     name = "Security Hudpatch"
@@ -281,7 +281,7 @@
 		icon_state = "[icon_state]_1"
 	else
 		icon_state = initial(icon_state)
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/glasses/hud/engi/eyepatch
 	name = "meson eyeHUD"

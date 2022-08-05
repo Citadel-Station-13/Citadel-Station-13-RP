@@ -226,8 +226,8 @@
 			attack_hand(user)
 		return
 	else if(istype(W, /obj/item/coin) && premium.len > 0)
-		user.drop_item()
-		W.forceMove(src)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		coin = W
 		categories |= CAT_COIN
 		to_chat(user, "<span class='notice'>You insert \the [W] into \the [src].</span>")
@@ -353,7 +353,7 @@
 			return
 
 		coin.forceMove(src.loc)
-		if(!usr.get_active_hand())
+		if(!usr.get_active_held_item())
 			usr.put_in_hands(coin)
 		to_chat(usr, "<span class='notice'>You remove \the [coin] from \the [src]</span>")
 		coin = null
@@ -495,7 +495,7 @@
  * calling. W is the item being inserted, R is the associated vending_product entry.
  */
 /obj/machinery/vending/proc/stock(obj/item/W, var/datum/stored_item/vending_product/R, var/mob/user)
-	if(!user.unEquip(W))
+	if(!user.attempt_insert_item_for_installation(W, src))
 		return
 
 	to_chat(user, "<span class='notice'>You insert \the [W] in the product receptor.</span>")

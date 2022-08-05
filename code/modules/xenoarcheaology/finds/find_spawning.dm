@@ -627,5 +627,6 @@
 
 	else if(talkative)
 		src.talking_atom = new(src)
-		LAZYSET(new_item.origin_tech, TECH_ARCANE, 1)
-		LAZYSET(new_item.origin_tech, TECH_PRECURSOR, 1)
+		if(new_item)
+			LAZYSET(new_item.origin_tech, TECH_ARCANE, 1)
+			LAZYSET(new_item.origin_tech, TECH_PRECURSOR, 1)

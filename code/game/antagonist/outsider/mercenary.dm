@@ -35,14 +35,14 @@ var/datum/antagonist/mercenary/mercs
 	if(!..())
 		return 0
 
-	player.equip_to_slot_or_del(new /obj/item/clothing/under/syndicate(player), slot_w_uniform)
-	player.equip_to_slot_or_del(new /obj/item/clothing/shoes/boots/swat(player), slot_shoes)
-	player.equip_to_slot_or_del(new /obj/item/clothing/gloves/swat(player), slot_gloves)
-	if(player.backbag == 2) player.equip_to_slot_or_del(new /obj/item/storage/backpack(player), slot_back)
-	if(player.backbag == 3) player.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(player), slot_back)
-	if(player.backbag == 4) player.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(player), slot_back)
-	if(player.backbag == 5) player.equip_to_slot_or_del(new /obj/item/storage/backpack/messenger(player), slot_back)
-	player.equip_to_slot_or_del(new /obj/item/reagent_containers/pill/cyanide(player), slot_in_backpack)
+	player.equip_to_slot_or_del(new /obj/item/clothing/under/syndicate(player), SLOT_ID_UNIFORM)
+	player.equip_to_slot_or_del(new /obj/item/clothing/shoes/boots/swat(player), SLOT_ID_SHOES)
+	player.equip_to_slot_or_del(new /obj/item/clothing/gloves/swat(player), SLOT_ID_GLOVES)
+	if(player.backbag == 2) player.equip_to_slot_or_del(new /obj/item/storage/backpack(player), SLOT_ID_BACK)
+	if(player.backbag == 3) player.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(player), SLOT_ID_BACK)
+	if(player.backbag == 4) player.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(player), SLOT_ID_BACK)
+	if(player.backbag == 5) player.equip_to_slot_or_del(new /obj/item/storage/backpack/messenger(player), SLOT_ID_BACK)
+	player.equip_to_slot_or_del(new /obj/item/reagent_containers/pill/cyanide(player), /datum/inventory_slot_meta/abstract/put_in_backpack)
 
 	player.mind.tcrystals = DEFAULT_TELECRYSTAL_AMOUNT
 	player.mind.accept_tcrystals = 1

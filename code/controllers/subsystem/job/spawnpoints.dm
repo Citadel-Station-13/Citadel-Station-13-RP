@@ -139,8 +139,11 @@
 				. += S
 			else
 				return S
-	if(random && length(.))
-		return pick(.)
+	if(random)
+		if(length(.))
+			return pick(.)
+		else
+			. = null
 	if(!harder)
 		subsystem_log("GetLatejoinSpawnpoint() failed to get a spawnpoint, trying against with harder = TRUE")
 		return GetRoundstartSpawnpoint(C, job_path, faction, method, random, TRUE)

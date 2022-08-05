@@ -119,8 +119,7 @@
 		to_chat(U, "<span class='danger'>Capture failed!</span>: The soul stone is full! Use or free an existing soul to make room.")
 		return
 
-	for(var/obj/item/W in T)
-		T.drop_from_inventory(W)
+	T.drop_inventory(TRUE, TRUE, TRUE)
 
 	new /obj/effect/decal/remains/human(T.loc) //Spawns a skeleton
 	T.invisibility = 101

@@ -282,12 +282,9 @@
 
 /obj/item/clothing/suit/straight_jacket/equipped(var/mob/living/user,var/slot)
 	. = ..()
-	if(slot == slot_wear_suit)
-		user.drop_l_hand()
-		user.drop_r_hand()
-		if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			H.drop_from_inventory(H.handcuffed)
+	if(slot == SLOT_ID_SUIT)
+		user.drop_all_held_items()
+		user.drop_item_to_ground(user.item_by_slot(SLOT_ID_HANDCUFFED), INV_OP_FORCE)
 
 /obj/item/clothing/suit/ianshirt
 	name = "worn shirt"
@@ -921,7 +918,7 @@ obj/item/clothing/suit/kamishimo
 		icon_state += "t"
 	if(buttoned)
 		icon_state += "b"
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/suit/storage/flannel/red
 	desc = "A comfy, red flannel shirt.  Unleash your inner hipster."

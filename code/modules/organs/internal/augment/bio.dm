@@ -50,7 +50,6 @@
 
 	if(glasses)
 		if(aug && aug.integrated_object == glasses)
-			drop_from_inventory(glasses)
 			aug.integrated_object.forceMove(aug)
 			if(!glasses)
 				to_chat(src, "<span class='alien'>Your [aug.integrated_object] retract into your skull.</span>")
@@ -58,22 +57,21 @@
 			to_chat(src, "<span class='notice'>\The [glasses] block your shades from deploying.</span>")
 		else if(istype(glasses, /obj/item/clothing/glasses/hud/security/jensenshades))
 			var/obj/item/G = glasses
-			if(G.canremove)
+			if(!HAS_TRAIT_FROM(G, TRAIT_NODROP, AUGMENT_TRAIT))
 				to_chat(src, "<span class='notice'>\The [G] are not your integrated shades.</span>")
 			else
-				drop_from_inventory(G)
 				to_chat(src, "<span class='notice'>\The [G] retract into your skull.</span>")
 				qdel(G)
 
 	else
 		if(aug && aug.integrated_object)
 			to_chat(src, "<span class='alien'>Your [aug.integrated_object] deploy.</span>")
-			equip_to_slot(aug.integrated_object, slot_glasses, 0, 1)
+			force_equip_to_slot(aug.integrated_object, SLOT_ID_GLASSES)
 			if(!glasses || glasses != aug.integrated_object)
 				aug.integrated_object.forceMove(aug)
 		else
 			var/obj/item/clothing/glasses/hud/security/jensenshades/J = new(get_turf(src))
-			equip_to_slot(J, slot_glasses, 1, 1)
+			force_equip_to_slot(J, SLOT_ID_GLASSES)
 			to_chat(src, "<span class='notice'>Your [aug.integrated_object] deploy.</span>")
 
 /obj/item/organ/internal/augment/bioaugment/sprint_enhance

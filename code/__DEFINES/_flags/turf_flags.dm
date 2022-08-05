@@ -23,6 +23,11 @@
 #define NO_RUINS					(1<<6)
 */
 
+DEFINE_BITFIELD(turf_flags, list(
+	BITFIELD(NO_JAUNT),
+	BITFIELD(UNUSED_RESERVATION_TURF),
+))
+
 // /turf/z_flags
 /// Allow air passage through top
 #define Z_AIR_UP			(1<<0)

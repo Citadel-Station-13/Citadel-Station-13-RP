@@ -19,7 +19,7 @@
 //HELMET: May have a lighting overlay
 /obj/item/clothing/head/make_worn_icon(var/body_type,var/slot_id,var/inhands,var/default_icon,var/default_layer,var/icon/clip_mask = null)
 	var/image/standing = ..()
-	if(on && slot_id == /datum/inventory_slot_meta/inventory/head)
+	if(on && slot_id == SLOT_ID_HEAD)
 		var/cache_key = "[light_overlay][LAZYACCESS(sprite_sheets,body_type) ? "_[body_type]" : ""]"
 		if(standing && GLOB.light_overlay_cache[cache_key])
 			standing.add_overlay(GLOB.light_overlay_cache[cache_key])

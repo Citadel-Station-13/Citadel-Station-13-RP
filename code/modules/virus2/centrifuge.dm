@@ -11,34 +11,30 @@
 
 /obj/machinery/computer/centrifuge/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(O.is_screwdriver())
-		return ..(O,user)
+		return ..()
 
 	if(default_unfasten_wrench(user, O, 20))
-		return
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	if(istype(O,/obj/item/reagent_containers/glass/beaker/vial))
 		if(sample)
 			to_chat(user, "\The [src] is already loaded.")
 			return
-
+		if(!user.attempt_insert_item_for_installation(O, src))
+			return
 		sample = O
-		user.drop_item()
-		O.loc = src
 
 		user.visible_message("[user] adds \a [O] to \the [src]!", "You add \a [O] to \the [src]!")
 		SStgui.update_uis(src)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
-	src.attack_hand(user)
+	return ..()
 
-/obj/machinery/computer/centrifuge/update_icon()
-	..()
+/obj/machinery/computer/centrifuge/update_icon_state()
+	. = ..()
 	if(! (machine_stat & (BROKEN|NOPOWER)) && (isolating || curing))
 		icon_state = "centrifuge_moving"
 
-/obj/machinery/computer/centrifuge/attack_hand(var/mob/user as mob)
-	if(..())
-		return
-	ui_interact(user)
 
 /obj/machinery/computer/centrifuge/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)

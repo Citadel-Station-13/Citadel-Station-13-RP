@@ -25,7 +25,7 @@
 	var/mob/living/user = null
 	if(isliving(usr))
 		user = usr
-		I = user.get_active_hand()
+		I = user.get_active_held_item()
 		if(!I || !istype(I))
 			to_chat(user, "<span class='warning'>You need to have something in your active hand, to use this verb.</span>")
 			return
@@ -327,7 +327,7 @@
 			id.registered_name = H.real_name
 			id.assignment = "Facility Director"
 			id.name = "[id.registered_name]'s ID Card ([id.assignment])"
-			H.equip_to_slot_or_del(id, slot_wear_id)
+			H.equip_to_slot_or_del(id, SLOT_ID_WORN_ID)
 			H.update_inv_wear_id()
 	else
 		alert("Invalid mob")

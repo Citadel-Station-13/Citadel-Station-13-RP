@@ -27,7 +27,7 @@
 			clothing_flags = initial(clothing_flags)
 			icon_state = initial(icon_state)
 			to_chat(user, "You pull the mask up to cover your face.")
-		update_clothing_icon()
+		update_worn_icon()
 
 /obj/item/clothing/mask/breath/attack_self(mob/user)
 	adjust_mask(user)

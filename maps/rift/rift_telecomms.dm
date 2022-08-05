@@ -103,7 +103,7 @@
 /area/tether/surfacebase/tcomms/chamber
 	name = "\improper Telecomms Central Compartment"
 	icon_state = "tcomsatcham"
-	area_flags = AF_BLUE_SHIELDED
+	area_flags = AREA_BLUE_SHIELDED
 
 /area/maintenance/substation/tcomms
 	name = "\improper Telecomms Substation"

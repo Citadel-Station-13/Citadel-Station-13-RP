@@ -200,9 +200,9 @@
 		to_chat(user, SPAN_WARNING( "\The [src] is already wearing \a [hat]."))
 		return
 	else
-		user.drop_item(new_hat)
+		if(!user.attempt_insert_item_for_installation(new_hat, src))
+			return
 		hat = new_hat
-		new_hat.forceMove(src)
 		to_chat(user, SPAN_NOTICE("You place \a [new_hat] on \the [src].  How adorable!"))
 		update_icon()
 		return

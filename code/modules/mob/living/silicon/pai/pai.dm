@@ -298,7 +298,7 @@
 					affecting.implants -= card
 					H.visible_message("<span class='danger'>\The [src] explodes out of \the [H]'s [affecting.name] in shower of gore!</span>")
 					break
-		holder.drop_from_inventory(card)
+		holder.drop_item_to_ground(card, INV_OP_FORCE)
 	else if(istype(card.loc,/obj/item/pda))
 		var/obj/item/pda/holder = card.loc
 		holder.pai = null
@@ -420,18 +420,15 @@
 	// If we are being held, handle removing our holder from their inv.
 	var/obj/item/holder/H = loc
 	if(istype(H))
-		var/mob/living/M = H.loc
-		if(istype(M))
-			M.drop_from_inventory(H)
-		H.loc = get_turf(src)
-		src.loc = get_turf(H)
+		H.forceMove(get_turf(src))
+		forceMove(get_turf(src))
 
 	// Move us into the card and move the card to the ground.
 	card.forceMove(loc)
 	forceMove(card)
 	update_perspective()
-	canmove = 1
-	resting = 0
+	canmove = TRUE
+	resting = FALSE
 	icon_state = "[chassis]"
 	verbs -= /mob/living/silicon/pai/proc/pai_nom
 

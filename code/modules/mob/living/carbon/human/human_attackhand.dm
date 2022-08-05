@@ -244,7 +244,7 @@
 				w_uniform.add_fingerprint(M)
 			var/obj/item/organ/external/affecting = get_organ(ran_zone(M.zone_sel.selecting))
 
-			var/list/holding = list(get_active_hand() = 40, get_inactive_hand = 20)
+			var/list/holding = list(get_active_held_item() = 40, get_inactive_held_item = 20)
 
 			//See if they have any guns that might go off
 			for(var/obj/item/gun/W in holding)
@@ -266,7 +266,7 @@
 			if(!(species.flags & NO_SLIP) && randn <= 25)
 				var/armor_check = run_armor_check(affecting, "melee")
 				apply_effect(3, WEAKEN, armor_check)
-				playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
+				playsound(src, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 				if(armor_check < 60)
 					if(M.zone_sel.selecting == BP_L_LEG || M.zone_sel.selecting == BP_R_LEG || M.zone_sel.selecting == BP_L_FOOT || M.zone_sel.selecting == BP_R_FOOT)
 						visible_message("<span class='danger'>[M] has leg swept [src]!</span>")
@@ -279,18 +279,17 @@
 			if(randn <= 60)
 				//See about breaking grips or pulls
 				if(break_all_grabs(M))
-					playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
+					playsound(src, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 					return
 
 				//Actually disarm them
-				for(var/obj/item/I in holding)
-					if(I)
-						drop_from_inventory(I)
-						visible_message("<span class='danger'>[M] has disarmed [src]!</span>")
-						playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
-						return
+				drop_all_held_items()
 
-			playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
+				visible_message("<span class='danger'>[M] has disarmed [src]!</span>")
+				playsound(src, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
+				return
+
+			playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 			visible_message("<font color='red'> <B>[M] attempted to disarm [src]!</B></font>")
 	return
 

@@ -2,3 +2,5 @@
 	flags = ##f; \
 	variable = #v; \
 }
+
+#define BITFIELD(thing) #thing = thing

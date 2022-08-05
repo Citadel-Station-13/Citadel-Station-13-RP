@@ -81,9 +81,7 @@
 			return
 		if(W.loc != user) // This should stop mounted modules ending up outside the module.
 			return
-		user.drop_item()
-		if(W)
-			W.forceMove(src.loc)
+		user.transfer_item_to_loc(W, loc)
 	else if(istype(W, /obj/item/packageWrap))
 		return
 	else if(istype(W, /obj/item/stack/cable_coil))
@@ -97,9 +95,9 @@
 			return
 	else if(istype(W, /obj/item/radio/electropack))
 		if(rigged)
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 			to_chat(user, "<span class='notice'>You attach [W] to [src].</span>")
-			user.drop_item()
-			W.forceMove(src)
 			return
 	else if(W.is_wirecutter())
 		if(rigged)
