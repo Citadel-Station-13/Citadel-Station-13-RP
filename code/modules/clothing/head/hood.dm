@@ -147,7 +147,7 @@
 	name = "eldritch hood"
 	desc = "A baggy hood smeared with some kind of waxy substance. Up close, what appeared to be burlap is revealed to actually be tanned skin."
 	icon_state = "eldritch"
-	clothing_flags =  = THICKMATERIAL
+	clothing_flags = THICKMATERIAL
 	siemens_coefficient = 0.9
 	armor = list(melee = 20, bullet = 0, laser = 40, energy = 40, bomb = 20, bio = 30, rad = 20)
 
