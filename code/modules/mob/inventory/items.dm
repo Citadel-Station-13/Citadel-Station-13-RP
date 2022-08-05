@@ -123,7 +123,7 @@
 	if(!worn_slot)
 		return	// acceptable
 	var/mob/M = worn_mob()
-	ASSERT(M)	 // not acceptable
+	ASSERT(M)	// not acceptable
 	switch(worn_slot)
 		if(SLOT_ID_BACK)
 			M.update_inv_back()

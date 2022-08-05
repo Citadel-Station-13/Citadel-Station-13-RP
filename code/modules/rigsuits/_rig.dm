@@ -357,19 +357,16 @@
 						failed_to_seal = 1
 
 					piece.icon_state = "[suit_state][is_sealing ? "_sealed" : ""]"
+					piece.update_worn_icon()
 					switch(msg_type)
 						if("boots")
 							to_chat(M, "<font color=#4F49AF>\The [piece] [is_sealing ? "seal around your feet" : "relax their grip on your legs"].</font>")
-							M.update_inv_shoes()
 						if("gloves")
 							to_chat(M, "<font color=#4F49AF>\The [piece] [is_sealing ? "tighten around your fingers and wrists" : "become loose around your fingers"].</font>")
-							M.update_inv_gloves()
 						if("chest")
 							to_chat(M, "<font color=#4F49AF>\The [piece] [is_sealing ? "cinches tight again your chest" : "releases your chest"].</font>")
-							M.update_inv_wear_suit()
 						if("helmet")
 							to_chat(M, "<font color=#4F49AF>\The [piece] hisses [is_sealing ? "closed" : "open"].</font>")
-							M.update_inv_head()
 							if(helmet)
 								helmet.update_light(wearer)
 
@@ -395,6 +392,8 @@
 			if(!piece)
 				continue
 			piece.icon_state = "[suit_state][is_activated() ? "" : "_sealed"]"
+			piece.update_worn_icon()
+
 		if(is_activated())
 			ADD_TRAIT(src, TRAIT_NODROP, RIG_TRAIT)
 		else
