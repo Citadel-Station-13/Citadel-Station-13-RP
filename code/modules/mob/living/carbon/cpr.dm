@@ -13,9 +13,40 @@
 
 /mob/living/carbon/proc/attempt_cpr(atom/actor, delay = 1)
 
+/mob/living/carbon/proc/__cpr_ventilation_end()
+	REMOVE_TRAIT(src, TRAIT_MECHANICAL_VENTILATION, CPR_TRAIT)
+
+/mob/living/carbon/proc/__cpr_organ_stasis_end()
+	REMOVE_TRAIT(src, TRAIT_NO_BRAIN_DECAY, CPR_TRAIT)
+
 /mob/living/carbon/proc/__cpr_off_cooldown()
+	REMOVE_TRAIT(src, TRAIT_CPR_COOLDOWN, CPR_TRAIT)
+
+
+/mob/living/carbon/proc/__cpr_forced_metabolism(strength = 1)
+	if(stat != DEAD)
+		// nah we're still breathin'
+		return
+
+	bloodstr?.metabolize(strength, TRUE)
+	ingested?.metabolize(strength, TRUE)
+	touching?.metabolize(strength, TRUE)
+
 
 /mob/living/carbon/proc/cpr_act(atom/actor)
+	var/clipping = HAS_TRAIT(src, TRAIT_CPR_COOLDOWN)
+
+	ADD_TRAIT(src, TRAIT_CPR_COOLDOWN, CPR_TRAIT)
+	ADD_TRAIT(src, TRAIT_NO_BRAIN_DECAY, CPR_TRAIT)
+	ADD_TRAIT(src, TRAIT_MECHANICAL_VENTILATION, CPR_TRAIT)
+
+	addtimer(CALLBACK(src, .proc/__cpr_ventilation_end), CPR_VENTILATION_TIME, TIMER_OVERRIDE | TIMER_UNIQUE)
+	addtimer(CALLBACK(src, .proc/__cpr_off_cooldown), CPR_NOMINAL_COOLDOWN, TIMER_OVERRIDE | TIMER_UNIQUE)
+	addtimer(CALLBACK(src, .proc/__cpr_organ_stasis_end), CPR_BRAIN_STASIS_TIME, TIMER_OVERRIDE | TIMER_UNIQUE)
+
+#warn hook brain decay
+#warn hook mechanical ventilation
+#warn cpr probably needs to do something about bloodloss/lung/heart damage oxyloss or it'll be useless
 
 /*
 

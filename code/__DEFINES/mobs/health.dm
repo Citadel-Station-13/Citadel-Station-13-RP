@@ -9,10 +9,6 @@
 #define CPR_ACTION_TIME							(3 SECONDS)
 /// how long CPR is on nominal cooldown (doing it faster is less effective)
 #define CPR_NOMINAL_COOLDOWN					(7 SECONDS)
-/// how long CPR is on hard cooldown
-#define CPR_HARD_COOLDOWN						(3 SECONDS)
-/// how long CPR hard cooldown is extended if you do it while clipping
-#define CPR_COOLDOWN_PENALTY					(3 SECONDS)
 /// nominal CPR reagent tick strength (as multiplier of normal living)
 #define CPR_FORCED_METABOLISM_STRENGTH_NOMINAL	(2/3 * 7)				// 66% as effective as living
 /// on-cooldown reagent tick strength (as multiplier of normal living)
