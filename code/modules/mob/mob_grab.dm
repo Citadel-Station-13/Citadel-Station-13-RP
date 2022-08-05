@@ -19,8 +19,12 @@
 	name = "grab"
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "reinforce"
-	item_flags = ITEM_ABSTRACT
+	item_flags = ITEM_ABSTRACT | DROPDEL
 	flags = ATOM_ABSTRACT
+	drop_sound = null
+	pickup_sound = null
+	equip_sound = null
+	unequip_sound = null
 
 	var/atom/movable/screen/grab/hud = null
 	var/mob/living/affecting = null
@@ -336,10 +340,6 @@
 	//clicking on yourself while grabbing them
 	if(M == assailant && state >= GRAB_AGGRESSIVE)
 		devour(affecting, assailant)
-
-/obj/item/grab/dropped(mob/user, flags, atom/newLoc)
-	. = ..()
-	qdel(src)
 
 /obj/item/grab/proc/reset_kill_state()
 	if(state == GRAB_KILL)

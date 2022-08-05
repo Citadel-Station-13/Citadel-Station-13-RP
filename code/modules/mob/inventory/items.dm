@@ -20,7 +20,7 @@
 		if(!ismob(M))
 			stack_trace("invalid current equipped slot [worn_slot] on an item not on a mob.")
 			return ..()
-		M.temporarily_remove_from_inventory(src, INV_OP_FORCE)
+		M.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_DELETING)
 	return ..()
 
 /**
@@ -79,7 +79,7 @@
 		var/datum/action/A = X
 		A.Remove(user)
 */
-	if(item_flags & DROPDEL)
+	if((item_flags & DROPDEL) && !(flags & INV_OP_DELETING))
 		qdel(src)
 
 	hud_unlayerise()
@@ -87,13 +87,13 @@
 
 	. = SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user, flags, newLoc)
 
-	if(!(flags & INV_OP_SUPPRESS_SOUND) && isturf(newLoc))
+	if(!(flags & INV_OP_SUPPRESS_SOUND) && isturf(newLoc) && !(. & COMPONENT_ITEM_DROPPED_SUPPRESS_SOUND))
 		playsound(src, drop_sound, 30, ignore_walls = FALSE)
 	// user?.update_equipment_speed_mods()
 	if(zoom)
 		zoom() //binoculars, scope, etc
 
-	return ((. & COMPONENT_ITEM_RELOCATED_BY_DROP)? ITEM_RELOCATED_BY_DROPPED : NONE)
+	return ((. & COMPONENT_ITEM_DROPPED_RELOCATE)? ITEM_RELOCATED_BY_DROPPED : NONE)
 
 /**
  * called when a mob picks up an item
