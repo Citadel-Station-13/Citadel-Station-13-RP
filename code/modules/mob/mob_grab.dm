@@ -207,13 +207,13 @@
 		if(GRAB_NECK, GRAB_UPGRADING)
 			shift = -10
 			adir = assailant.dir
+			affecting.forceMove(assailant.loc)
 			affecting.setDir(assailant.dir)
-			affecting.loc = assailant.loc
 		if(GRAB_KILL)
 			shift = 0
 			adir = 1
+			affecting.forceMove(assailant.loc)
 			affecting.setDir(SOUTH) //face up
-			affecting.loc = assailant.loc
 
 	switch(adir)
 		if(NORTH)
