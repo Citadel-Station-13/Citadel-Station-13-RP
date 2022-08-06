@@ -18,23 +18,20 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	var/clone_source = FALSE
 	var/mob/living/carbon/brain/brainmob = null
 	var/can_assist = TRUE
-	var/defib_timer = -1
 
 /obj/item/organ/internal/brain/process(delta_time)
 	..()
-	if(owner && owner.stat != DEAD) // So there's a lower risk of ticking twice.
-		tick_defib_timer()
-#warn actual death damage tick system on organ flags
-///This is called by `process()` when the owner is alive, or brain is not in a body, and by `Life()` directly when dead.
-/obj/item/organ/internal/brain/proc/tick_defib_timer()
-	if(preserved) // In an MMI/ice box/etc.
+
+	if(preserved)
 		return
 
-	if(!owner || owner.stat == DEAD)
-		defib_timer = max(--defib_timer, 0)
-	else
-		//! Time vars measure things in ticks. Life tick happens every ~2 seconds, therefore dividing by 20
-		defib_timer = min(++defib_timer, (CONFIG_GET(number/defib_timer) MINUTES) / 20)
+	if(owner && HAS_TRAIT(owner, TRAIT_NO_BRAIN_DECAY))
+		return
+
+	if(!owner || IS_DEAD(owner))
+		take_damage(delta_time * ORGAN_DECAY_PER_SECOND_BRAIN)
+
+	heal_damage_a()
 
 /obj/item/organ/internal/brain/proc/can_assist()
 	return can_assist
@@ -82,8 +79,6 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 /obj/item/organ/internal/brain/Initialize(mapload, ...)
 	. = ..()
 	health = config_legacy.default_brain_health
-	//! Time vars measure things in ticks. Life tick happens every ~2 seconds, therefore dividing by 20
-	defib_timer = ((CONFIG_GET(number/defib_timer) MINUTES) / 20)
 	addtimer(CALLBACK(src, .proc/clear_brainmob_hud), 15)
 
 /obj/item/organ/internal/brain/proc/clear_brainmob_hud()

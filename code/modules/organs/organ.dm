@@ -555,6 +555,5 @@
 /obj/item/organ/proc/can_recover()
 	return (max_damage > 0) && !(status & ORGAN_DEAD)
 
-/obj/item/organ/proc/heal_damage_a(amount)
-	if (can_recover())
-		damage = between(0, damage - round(amount, 0.1), max_damage)
+/obj/item/organ/proc/heal_damage_a(amount, force)
+	damage = clamp(damage - round(amount, DAMAGE_PRECISION), 0, max_damage)

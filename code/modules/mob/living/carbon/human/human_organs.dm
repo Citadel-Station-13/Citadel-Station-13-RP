@@ -17,7 +17,7 @@
 	last_dam = damage_this_tick
 
 // Takes care of organ related updates, such as broken and missing limbs
-/mob/living/carbon/human/proc/handle_organs()
+/mob/living/carbon/human/proc/handle_organs(seconds)
 
 	var/force_process = recheck_bad_external_organs()
 
@@ -28,7 +28,7 @@
 
 	//processing internal organs is pretty cheap, do that first.
 	for(var/obj/item/organ/I in internal_organs)
-		I.process(2)
+		I.process(seconds)
 
 	handle_stance()
 	handle_grasp()
@@ -44,7 +44,7 @@
 			bad_external_organs -= E
 			continue
 		else
-			E.process(2)
+			E.process(seconds)
 			number_wounds += E.number_wounds
 
 			if (!lying && !buckled && world.time - l_move_time < 15)

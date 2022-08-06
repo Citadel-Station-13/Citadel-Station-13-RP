@@ -344,7 +344,6 @@
 #include "code\controllers\configuration\entries\general.dm"
 #include "code\controllers\configuration\entries\lobby.dm"
 #include "code\controllers\configuration\entries\logging.dm"
-#include "code\controllers\configuration\entries\med_options.dm"
 #include "code\controllers\configuration\entries\resources.dm"
 #include "code\controllers\configuration\entries\urls.dm"
 #include "code\controllers\configuration_old\configuration.dm"

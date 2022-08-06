@@ -25,3 +25,8 @@
 #define CPR_FORCED_METABOLISM_STRENGTH_NOMINAL	(2/3 * 7)				// 66% as effective as living
 /// on-cooldown reagent tick strength (as multiplier of normal living)
 #define CPR_FORCED_METABOLISM_STRENGTH_CLIPPED	(1)						// 33% as effective as living
+
+//! Organs - General
+
+//! Organs - Decaying while dead
+#define ORGAN_DECAY_PER_SECOND_BRAIN			(60 / (5 MINUTES) * 10)		// 0 to 60 damage in 5 minutes when unmitigated
