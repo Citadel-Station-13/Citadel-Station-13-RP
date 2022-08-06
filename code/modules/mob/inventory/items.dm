@@ -70,6 +70,9 @@
 /**
  * called when a mob drops an item
  *
+ * ! WARNING: You CANNOT assume we are post or pre-move on dropped.
+ * ! If unequipped() deletes the item, loc will be null. Sometimes, loc won't change at all!
+ *
  * dropping is defined as moving out of both equipment slots and hand slots
  */
 /obj/item/proc/dropped(mob/user, flags, atom/newLoc)
