@@ -698,3 +698,16 @@
 
 /obj/item/clothing/under/fluff/slime_skeleton/digest_act(atom/movable/item_storage = null)
 	return FALSE //Indigestible
+
+//General use
+/obj/item/clothing/suit/storage/fluff/lectronyx
+	name = "「The Mind Electric」"
+	desc = "A set of cybernetic upgrades of alien origin, this peculiar jacket reads the user's nerves to control a set of drones as if they were an additional set of less dexterous hands. Attached terminals buzz with bizarre symbols that seem to form some sort of incomprehensibly complex pattern."
+
+	icon = 'icons/vore/custom_clothes_vr.dmi'
+	icon_override = 'icons/vore/custom_clothes_vr.dmi'
+	icon_state = "lectronyx"
+	item_state = "lectronyx_mob"
+
+	/obj/item/clothing/suit/storage/fluff/lectronyx/digest_act(atom/movable/item_storage = null)
+	return FALSE //Indigestible
