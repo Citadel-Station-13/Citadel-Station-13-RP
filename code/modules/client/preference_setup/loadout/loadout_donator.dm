@@ -95,7 +95,6 @@
 	path = /obj/item/toy/tennis/rainbow/izzy
 	ckeywhitelist = list("izzyinbox")
 
-
 /datum/gear/donator/pduni
 	name = "Olympius PD Service Uniform"
 	path = /obj/item/clothing/under/donator/opd
@@ -266,3 +265,8 @@
 	name = "springtime pariah moto jacket"
 	path = /obj/item/clothing/suit/storage/toggle/pariah
 	ckeywhitelist = list("rezbit")
+
+/datum/gear/suit/mindelectric
+	name = "「 The Mind Electric 」"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/donator/mindelectric
+	ckeywhitelist = list("lectronyx")
