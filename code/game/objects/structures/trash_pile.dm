@@ -53,9 +53,9 @@
 /obj/structure/trash_pile/attackby(obj/item/W as obj, mob/user as mob)
 	var/w_type = W.type
 	if(w_type in allocated_gamma)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		to_chat(user,"<span class='notice'>You feel \the [W] slip from your hand, and disappear into the trash pile.</span>")
-		user.unEquip(W)
-		W.forceMove(src)
 		allocated_gamma -= w_type
 		unique_gamma += w_type
 		qdel(W)

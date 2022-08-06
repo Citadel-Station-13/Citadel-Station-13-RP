@@ -49,7 +49,7 @@
 	var/tmp/static/list/item_digest_modes = list(IM_HOLD,IM_DIGEST_FOOD,IM_DIGEST)
 
 	//List of slots that stripping handles strips
-	var/tmp/static/list/slots = list(slot_back,slot_handcuffed,slot_l_store,slot_r_store,slot_wear_mask,slot_l_hand,slot_r_hand,slot_wear_id,slot_glasses,slot_gloves,slot_head,slot_shoes,slot_belt,slot_wear_suit,slot_w_uniform,slot_s_store,slot_l_ear,slot_r_ear)
+	var/tmp/static/list/slots = list(SLOT_ID_BACK,SLOT_ID_HANDCUFFED,SLOT_ID_LEFT_POCKET,SLOT_ID_RIGHT_POCKET,SLOT_ID_MASK,SLOT_ID_WORN_ID,SLOT_ID_GLASSES,SLOT_ID_GLOVES,SLOT_ID_HEAD,SLOT_ID_SHOES,SLOT_ID_BELT,SLOT_ID_SUIT,SLOT_ID_UNIFORM,SLOT_ID_SUIT_STORAGE,SLOT_ID_LEFT_EAR,SLOT_ID_RIGHT_EAR)
 
 	var/tmp/mob/living/owner					// The mob whose belly this is.
 	var/tmp/digest_mode = DM_HOLD				// Current mode the belly is set to from digest_modes (+transform_modes if human)
@@ -404,7 +404,6 @@
 				var/obj/item/organ/internal/mmi_holder/MMI = W
 				var/atom/movable/brain = MMI.removed()
 				if(brain)
-					M.remove_from_mob(brain,owner)
 					brain.forceMove(src)
 					items_preserved += brain
 			if(istype(W,/obj/item/organ/external/chest))
@@ -414,15 +413,23 @@
 						I.forceMove(src)
 						items_preserved += I // these are undigestable anyway so just add them regardless
 			for(var/slot in slots)
-				var/obj/item/I = M.get_equipped_item(slot = slot)
+				var/obj/item/I = M.item_by_slot(slot)
 				if(I)
-					M.unEquip(I,force = TRUE)
+					M.transfer_item_to_loc(I, src, INV_OP_FORCE)
 					if(contaminates || istype(I,/obj/item/card/id))
 						I.gurgle_contaminate(contents, contamination_flavor, contamination_color) //We do an initial contamination pass to get stuff like IDs wet.
 					if(item_digest_mode == IM_HOLD)
 						items_preserved |= I
 					else if(item_digest_mode == IM_DIGEST_FOOD && !(istype(I,/obj/item/reagent_containers/food) || istype(I,/obj/item/organ)))
 						items_preserved |= I
+			for(var/obj/item/I as anything in M.get_held_items())
+				M.transfer_item_to_loc(I, src, INV_OP_FORCE)
+				if(contaminates || istype(I,/obj/item/card/id))
+					I.gurgle_contaminate(contents, contamination_flavor, contamination_color) //We do an initial contamination pass to get stuff like IDs wet.
+				if(item_digest_mode == IM_HOLD)
+					items_preserved |= I
+				else if(item_digest_mode == IM_DIGEST_FOOD && !(istype(I,/obj/item/reagent_containers/food) || istype(I,/obj/item/organ)))
+					items_preserved |= I
 
 	//Reagent transfer
 	if(ishuman(owner))

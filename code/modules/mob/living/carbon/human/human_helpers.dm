@@ -34,9 +34,7 @@
 
 /mob/living/carbon/human/proc/get_coverage()
 	var/list/coverage = list()
-	for(var/obj/item/clothing/C in src)
-		if(item_is_in_hands(C))
-			continue
+	for(var/obj/item/clothing/C in get_equipped_items())
 		if(C.body_parts_covered & HEAD)
 			coverage += list(organs_by_name[BP_HEAD])
 		if(C.body_parts_covered & UPPER_TORSO)
@@ -154,11 +152,11 @@
 
 	//These things are allowed to add vision flags.
 	//If you code some crazy item that goes on your feet that lets you see ghosts, you need to add a slot here.
-	var/list/slots = list(slot_glasses,slot_head)
+	var/list/slots = list(SLOT_ID_GLASSES,SLOT_ID_HEAD)
 	var/list/compiled_vis = list()
 
 	for(var/slot in slots)
-		var/obj/item/clothing/O = get_equipped_item(slot) //Change this type if you move the vision stuff to item or something.
+		var/obj/item/clothing/O = item_by_slot(slot) //Change this type if you move the vision stuff to item or something.
 		if(istype(O) && O.enables_planes && (slot in O.plane_slots))
 			compiled_vis |= O.enables_planes
 

@@ -299,7 +299,8 @@
 /mob/living/carbon/brain/caught_soul/ghostize(can_reenter_corpse)
 	. = ..()
 	if(!can_reenter_corpse)
-		qdel(src)
+		if(nif)
+			qdel(src)
 
 /mob/living/carbon/brain/caught_soul/Life(seconds, times_fired)
 	if(!mind || !key)

@@ -161,7 +161,10 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 
 	var/atom/movable/screen/movable/action_button/hide_toggle/hide_actions_toggle
 	var/action_buttons_hidden = 0
-	var/list/slot_info
+	/// screen_loc's of slots, by slot id. hands are not slots.
+	var/list/slot_info = list()
+	/// screen_loc's of hands, by index - index is associative NUMBER AS TEXT.
+	var/list/hand_info = list()
 
 	// pending hardsync
 	var/icon/ui_style
@@ -208,43 +211,43 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 			var/list/hud_data = H.species.hud.gear[gear_slot]
 			if(inventory_shown && hud_shown)
 				switch(hud_data["slot"])
-					if(slot_head)
+					if(SLOT_ID_HEAD)
 						if(H.head)      H.head.screen_loc =      hud_data["loc"]
-					if(slot_shoes)
+					if(SLOT_ID_SHOES)
 						if(H.shoes)     H.shoes.screen_loc =     hud_data["loc"]
-					if(slot_l_ear)
+					if(SLOT_ID_LEFT_EAR)
 						if(H.l_ear)     H.l_ear.screen_loc =     hud_data["loc"]
-					if(slot_r_ear)
+					if(SLOT_ID_RIGHT_EAR)
 						if(H.r_ear)     H.r_ear.screen_loc =     hud_data["loc"]
-					if(slot_gloves)
+					if(SLOT_ID_GLOVES)
 						if(H.gloves)    H.gloves.screen_loc =    hud_data["loc"]
-					if(slot_glasses)
+					if(SLOT_ID_GLASSES)
 						if(H.glasses)   H.glasses.screen_loc =   hud_data["loc"]
-					if(slot_w_uniform)
+					if(SLOT_ID_UNIFORM)
 						if(H.w_uniform) H.w_uniform.screen_loc = hud_data["loc"]
-					if(slot_wear_suit)
+					if(SLOT_ID_SUIT)
 						if(H.wear_suit) H.wear_suit.screen_loc = hud_data["loc"]
-					if(slot_wear_mask)
+					if(SLOT_ID_MASK)
 						if(H.wear_mask) H.wear_mask.screen_loc = hud_data["loc"]
 			else
 				switch(hud_data["slot"])
-					if(slot_head)
+					if(SLOT_ID_HEAD)
 						if(H.head)      H.head.screen_loc =      null
-					if(slot_shoes)
+					if(SLOT_ID_SHOES)
 						if(H.shoes)     H.shoes.screen_loc =     null
-					if(slot_l_ear)
+					if(SLOT_ID_LEFT_EAR)
 						if(H.l_ear)     H.l_ear.screen_loc =     null
-					if(slot_r_ear)
+					if(SLOT_ID_RIGHT_EAR)
 						if(H.r_ear)     H.r_ear.screen_loc =     null
-					if(slot_gloves)
+					if(SLOT_ID_GLOVES)
 						if(H.gloves)    H.gloves.screen_loc =    null
-					if(slot_glasses)
+					if(SLOT_ID_GLASSES)
 						if(H.glasses)   H.glasses.screen_loc =   null
-					if(slot_w_uniform)
+					if(SLOT_ID_UNIFORM)
 						if(H.w_uniform) H.w_uniform.screen_loc = null
-					if(slot_wear_suit)
+					if(SLOT_ID_SUIT)
 						if(H.wear_suit) H.wear_suit.screen_loc = null
-					if(slot_wear_mask)
+					if(SLOT_ID_MASK)
 						if(H.wear_mask) H.wear_mask.screen_loc = null
 
 
@@ -258,31 +261,31 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 			var/list/hud_data = H.species.hud.gear[gear_slot]
 			if(hud_shown)
 				switch(hud_data["slot"])
-					if(slot_s_store)
+					if(SLOT_ID_SUIT_STORAGE)
 						if(H.s_store) H.s_store.screen_loc = hud_data["loc"]
-					if(slot_wear_id)
+					if(SLOT_ID_WORN_ID)
 						if(H.wear_id) H.wear_id.screen_loc = hud_data["loc"]
-					if(slot_belt)
+					if(SLOT_ID_BELT)
 						if(H.belt)    H.belt.screen_loc =    hud_data["loc"]
-					if(slot_back)
+					if(SLOT_ID_BACK)
 						if(H.back)    H.back.screen_loc =    hud_data["loc"]
-					if(slot_l_store)
+					if(SLOT_ID_LEFT_POCKET)
 						if(H.l_store) H.l_store.screen_loc = hud_data["loc"]
-					if(slot_r_store)
+					if(SLOT_ID_RIGHT_POCKET)
 						if(H.r_store) H.r_store.screen_loc = hud_data["loc"]
 			else
 				switch(hud_data["slot"])
-					if(slot_s_store)
+					if(SLOT_ID_SUIT_STORAGE)
 						if(H.s_store) H.s_store.screen_loc = null
-					if(slot_wear_id)
+					if(SLOT_ID_WORN_ID)
 						if(H.wear_id) H.wear_id.screen_loc = null
-					if(slot_belt)
+					if(SLOT_ID_BELT)
 						if(H.belt)    H.belt.screen_loc =    null
-					if(slot_back)
+					if(SLOT_ID_BACK)
 						if(H.back)    H.back.screen_loc =    null
-					if(slot_l_store)
+					if(SLOT_ID_LEFT_POCKET)
 						if(H.l_store) H.l_store.screen_loc = null
-					if(slot_r_store)
+					if(SLOT_ID_RIGHT_POCKET)
 						if(H.r_store) H.r_store.screen_loc = null
 
 

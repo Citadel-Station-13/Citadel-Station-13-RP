@@ -264,7 +264,7 @@
 
 //Called when touching a blood pool.
 /atom/movable/proc/blood_act()
-	blood_act(null, 500, 50)
+	// blood_act(null, 500, 50)
 
 /**
   * Sets our movement type.

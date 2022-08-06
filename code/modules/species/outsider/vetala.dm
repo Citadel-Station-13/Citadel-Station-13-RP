@@ -41,7 +41,7 @@
 	darksight = 7
 	flash_mod = 3.0
 	flash_burn = 5
-	has_glowing_eyes = 1
+	has_glowing_eyes = TRUE
 
 	//Physical resistances and weaknesses.
 	total_health = 75
@@ -114,7 +114,7 @@
 	darksight = 7
 	flash_mod = 3.0
 	flash_burn = 5
-	has_glowing_eyes = 1
+	has_glowing_eyes = TRUE
 
 	//Physical resistances and weaknesses.
 	total_health = 110

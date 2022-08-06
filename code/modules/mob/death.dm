@@ -82,9 +82,6 @@
 	see_in_dark = 8
 	see_invisible = SEE_INVISIBLE_LEVEL_TWO
 
-	drop_r_hand()
-	drop_l_hand()
-
 	if(healths)
 		healths.overlays = null // This is specific to humans but the relevant code is here; shouldn't mess with other mobs.
 		healths.icon_state = "health6"

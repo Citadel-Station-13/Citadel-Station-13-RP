@@ -92,18 +92,19 @@
 	var/obj/item/handcuffs/chained = null
 
 /obj/item/clothing/shoes/orange/proc/attach_cuffs(var/obj/item/handcuffs/cuffs, mob/user as mob)
-	if (chained) return
-
-	user.drop_item()
-	cuffs.loc = src
+	if (chained)
+		return
+	if(!user.attempt_insert_item_for_installation(cuffs, src))
+		return
 	chained = cuffs
 	slowdown = 15
 	icon_state = "orange1"
 
 /obj/item/clothing/shoes/orange/proc/remove_cuffs(mob/user as mob)
-	if (!chained) return
+	if (!chained)
+		return
 
-	user.put_in_hands(chained)
+	user.put_in_hands_or_drop(chained)
 	chained.add_fingerprint(user)
 
 	slowdown = initial(slowdown)

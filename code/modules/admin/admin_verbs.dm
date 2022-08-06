@@ -191,7 +191,8 @@ var/list/admin_verbs_server = list(
 	/client/proc/recipe_dump,
 	/client/proc/panicbunker,
 	/client/proc/ip_reputation,
-	/client/proc/paranoia_logging
+	/client/proc/paranoia_logging,
+	/client/proc/reestablish_db_connection
 	)
 
 var/list/admin_verbs_debug = list(
@@ -741,7 +742,7 @@ var/list/admin_verbs_event_manager = list(
 	if(istype(T,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = T
 		if (H.species)
-			D.affected_species = list(H.species.get_bodytype())
+			D.affected_species = list(H.species.get_bodytype_legacy())
 			if(H.species.primitive_form)
 				D.affected_species |= H.species.primitive_form
 			if(H.species.greater_form)

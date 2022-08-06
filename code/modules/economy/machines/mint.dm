@@ -421,10 +421,10 @@
 		return
 
 	if(accept_check(O))
-		user.remove_from_mob(O)
+		if(!user.attempt_insert_item_for_installation(O, src))
+			return
 		stock(O)
 		user.visible_message("<span class='notice'>[user] has added \the [O] to \the [src].</span>", "<span class='notice'>You add \the [O] to \the [src].</span>")
-
 
 	else if(istype(O, /obj/item/storage/bag))
 		var/obj/item/storage/bag/P = O
@@ -441,12 +441,13 @@
 
 	else if(istype(O, /obj/item/gripper)) // Grippers. ~Mechoid.
 		var/obj/item/gripper/B = O	//B, for Borg.
-		if(!B.wrapped)
+		if(!B.get_item())
 			to_chat(user, "\The [B] is not holding anything.")
 			return
 		else
-			var/B_held = B.wrapped
+			var/B_held = B.get_item()
 			to_chat(user, "You use \the [B] to put \the [B_held] into \the [src] slot.")
+			attackby(B_held, user)
 		return
 
 	else

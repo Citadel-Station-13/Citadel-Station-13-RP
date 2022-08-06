@@ -1144,7 +1144,7 @@
 		return FALSE
 	var/pu = get_pin_data(IC_INPUT, 1)
 	if(pu)
-		user.transferItemToLoc(I,drop_location())
+		user.transfer_item_to_loc(I, drop_location())
 	set_pin_data(IC_OUTPUT, 1, WEAKREF(I))
 	push_data()
 	to_chat(user, "<span class='notice'>You let [assembly] scan [I].</span>")

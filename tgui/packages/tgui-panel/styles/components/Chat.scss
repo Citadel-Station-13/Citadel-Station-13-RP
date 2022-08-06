@@ -101,21 +101,18 @@ $color-bg-section: base.$color-bg-section !default;
 
 blockquote {
   background-color: rgba($text-color, 0.05);
-  border-left: 0.15em solid;
+  border: 1px solid;
   border-color: $text-color;
-  padding-left: 0.3em;
-  padding-right: 0.3em;
-  margin-bottom: 0.15em;
-  margin-left: 0.3em;
-  margin-right: 0em;
+  margin: 0.5em;
+  padding: 0.5em 0.5em;
 }
 
 hr {
   background-color: rgba($text-color, 0.25);
   height: 0.15em;
   border-style: none;
-  margin-left: 1em;
-  margin-right: 2em;
-  margin-bottom: 0.3em;
-  margin-top: 0.3em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
 }
