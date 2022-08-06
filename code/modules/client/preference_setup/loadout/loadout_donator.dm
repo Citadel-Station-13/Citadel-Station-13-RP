@@ -266,3 +266,8 @@
 	name = "springtime pariah moto jacket"
 	path = /obj/item/clothing/suit/storage/toggle/pariah
 	ckeywhitelist = list("rezbit")
+
+/datum/gear/suit/mindelectric
+	name = "「 The Mind Electric 」"
+	path = /obj/item/clothing/suit/storage/mindelectric
+	ckeywhitelist = list("fukeronipasta")
