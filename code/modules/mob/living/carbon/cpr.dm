@@ -37,7 +37,7 @@
 			continue
 		to_chat(user, SPAN_WARNING("Your [in_the_way] is in the way!"))
 		return
-	if(HAS_TRAIT(src, CPR_IN_PROGRESS))
+	if(HAS_TRAIT(src, TRAIT_CPR_IN_PROGRESS))
 		to_chat(user, SPAN_WARNING("Someone is already doing CPR on [src]!"))
 		return
 	INVOKE_ASYNC(src, .proc/attempt_cpr, user)
@@ -45,10 +45,10 @@
 /mob/living/carbon/proc/attempt_cpr(atom/actor, delay_mod = 1)
 	actor.visible_message(SPAN_NOTICE("[actor] is trying to perform CPR on [src]!"))
 
-	ADD_TRAIT(src, CPR_IN_PROGRESS, GENERIC_TRAIT)
+	ADD_TRAIT(src, TRAIT_CPR_IN_PROGRESS, GENERIC_TRAIT)
 	if(!do_after(actor, CPR_ACTION_TIME, src))
 		return
-	REMOVE_TRAIT(src, CPR_IN_PROGRESS, GENERIC_TRAIT)
+	REMOVE_TRAIT(src, TRAIT_CPR_IN_PROGRESS, GENERIC_TRAIT)
 
 	actor.visible_message(SPAN_NOTICE("[actor] performs CPR on [src]!"))
 	to_chat(actor, SPAN_WARNING("Repeat at least every [CPR_NOMINAL_COOLDOWN] seconds."))
@@ -90,7 +90,3 @@
 	addtimer(CALLBACK(src, .proc/__cpr_ventilation_end), CPR_VENTILATION_TIME, TIMER_OVERRIDE | TIMER_UNIQUE)
 	addtimer(CALLBACK(src, .proc/__cpr_off_cooldown), CPR_NOMINAL_COOLDOWN, TIMER_OVERRIDE | TIMER_UNIQUE)
 	addtimer(CALLBACK(src, .proc/__cpr_organ_stasis_end), CPR_BRAIN_STASIS_TIME, TIMER_OVERRIDE | TIMER_UNIQUE)
-
-#warn hook brain decay
-#warn hook mechanical ventilation
-#warn cpr probably needs to do something about bloodloss/lung/heart damage oxyloss or it'll be useless

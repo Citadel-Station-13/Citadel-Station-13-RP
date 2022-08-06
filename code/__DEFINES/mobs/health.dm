@@ -1,5 +1,9 @@
 //? Medical system defines go in here
 
+//! Health - Core
+/// Round damage values to this value
+#define DAMAGE_PRECISION			0.01
+
 //! Stat var - lets us get the most basic of mob health status from one var
 /// we're conscious
 #define CONSCIOUS   0
@@ -9,8 +13,8 @@
 #define DEAD        2
 
 //! stat helpers - since most semantic checks are going to be compound checks
-#define IS_CONSCIOUS(M)			(M.stat == STAT_CONSCIOUS)
-#define IS_DEAD(M)				(M.stat == STAT_DEAD)
+#define IS_CONSCIOUS(M)			(M.stat == CONSCIOUS)
+#define IS_DEAD(M)				(M.stat == DEAD)
 
 //! CPR
 /// how long CPR suppresses brain decay
@@ -29,4 +33,5 @@
 //! Organs - General
 
 //! Organs - Decaying while dead
+/// how much damage the brain takes per second when the user is dead and it is not preserved
 #define ORGAN_DECAY_PER_SECOND_BRAIN			(60 / (5 MINUTES) * 10)		// 0 to 60 damage in 5 minutes when unmitigated
