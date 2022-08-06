@@ -203,6 +203,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 /// CPR was done already; CPR is less effective
 #define TRAIT_CPR_COOLDOWN				"cpr_cooldown"
+/// someone is already doing CPR on us
+#define TRAIT_CPR_IN_PROGRESS			"cpr_in_progress"
 /// Sometihng is currently preventing brain damage while dead
 #define TRAIT_NO_BRAIN_DECAY			"no_brain_decay"
 /// Something currently preventing normal respiratory failure
@@ -299,9 +301,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define FERVEATIUM_TRAIT "ferveatium"
 */
 
-<<<<<<< HEAD
-#define CPR_TRAIT "cpr"
-=======
 #define CHANGELING_TRAIT "changeling"
 #define TECHNOMANCER_TRAIT "technomancer"
->>>>>>> citrp/master
+
+#define CPR_TRAIT "cpr"

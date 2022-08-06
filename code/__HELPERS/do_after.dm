@@ -7,7 +7,7 @@
 	LAZYADD(user.do_afters, target)
 	LAZYADD(target.targeted_by, user)
 
-	var/holding = user.get_active_hand()
+	var/holding = user.get_active_held_item()
 	var/datum/progressbar/progbar
 	if (progress)
 		progbar = new(user, time, target)
@@ -45,7 +45,7 @@
 			. = FALSE
 			break
 
-		if(user.get_active_hand() != holding)
+		if(user.get_active_held_item() != holding)
 			. = FALSE
 			break
 
@@ -81,7 +81,7 @@
 		original_loc = get_turf(original_loc)
 		M = user.loc
 
-	var/holding = user.get_active_hand()
+	var/holding = user.get_active_held_item()
 
 	var/datum/progressbar/progbar
 	if (progress)
@@ -121,7 +121,7 @@
 			break
 
 		if(needhand)
-			if(user.get_active_hand() != holding)
+			if(user.get_active_held_item() != holding)
 				. = FALSE
 				break
 

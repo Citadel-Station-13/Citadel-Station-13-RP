@@ -10,8 +10,50 @@
  * return true to break the rest of the interaction chain (aka don't try to hug, etc)
  */
 /mob/living/carbon/proc/attempt_cpr_interaction(mob/user)
+	. = TRUE
+	if(!is_in_critical())
+		return FALSE
+	if(!check_has_mouth())
+		to_chat(user, SPAN_WARNING("[src] has no mouth."))
+		return
+	var/mob/living/carbon/human/H = user
+	if(!istype(H) || !H.check_has_mouth())
+		to_chat(user, SPAN_WARNING("You are either not human, or have no mouth."))
+		return
+	var/obj/item/in_the_way
+	for(in_the_way as anything in get_equipped_items_in_slots(
+		SLOT_ID_HEAD,
+		SLOT_ID_MASK
+	))
+		if(!(in_the_way.body_parts_covered & FACE))
+			continue
+		to_chat(user, SPAN_WARNING("[src]'s [in_the_way] is in the way!"))
+		return
+	for(in_the_way as anything in user.get_equipped_items_in_slots(
+		SLOT_ID_HEAD,
+		SLOT_ID_MASK
+	))
+		if(!(in_the_way.body_parts_covered & FACE))
+			continue
+		to_chat(user, SPAN_WARNING("Your [in_the_way] is in the way!"))
+		return
+	if(HAS_TRAIT(src, CPR_IN_PROGRESS))
+		to_chat(user, SPAN_WARNING("Someone is already doing CPR on [src]!"))
+		return
+	INVOKE_ASYNC(src, .proc/attempt_cpr, user)
 
-/mob/living/carbon/proc/attempt_cpr(atom/actor, delay = 1)
+/mob/living/carbon/proc/attempt_cpr(atom/actor, delay_mod = 1)
+	actor.visible_message(SPAN_NOTICE("[actor] is trying to perform CPR on [src]!"))
+
+	ADD_TRAIT(src, CPR_IN_PROGRESS, GENERIC_TRAIT)
+	if(!do_after(actor, CPR_ACTION_TIME, src))
+		return
+	REMOVE_TRAIT(src, CPR_IN_PROGRESS, GENERIC_TRAIT)
+
+	actor.visible_message(SPAN_NOTICE("[actor] performs CPR on [src]!"))
+	to_chat(actor, SPAN_WARNING("Repeat at least every [CPR_NOMINAL_COOLDOWN] seconds."))
+
+	cpr_act(actor)
 
 /mob/living/carbon/proc/__cpr_ventilation_end()
 	REMOVE_TRAIT(src, TRAIT_MECHANICAL_VENTILATION, CPR_TRAIT)
@@ -40,6 +82,11 @@
 	ADD_TRAIT(src, TRAIT_NO_BRAIN_DECAY, CPR_TRAIT)
 	ADD_TRAIT(src, TRAIT_MECHANICAL_VENTILATION, CPR_TRAIT)
 
+	__cpr_forced_metabolism(clipping? CPR_FORCED_METABOLISM_STRENGTH_CLIPPED : CPR_FORCED_METABOLISM_STRENGTH_NOMINAL)
+
+	if(!IS_DEAD(src))
+		to_chat(src, SPAN_NOTICE("You feel a breath of fresh air enter your lungs. It feels good."))
+
 	addtimer(CALLBACK(src, .proc/__cpr_ventilation_end), CPR_VENTILATION_TIME, TIMER_OVERRIDE | TIMER_UNIQUE)
 	addtimer(CALLBACK(src, .proc/__cpr_off_cooldown), CPR_NOMINAL_COOLDOWN, TIMER_OVERRIDE | TIMER_UNIQUE)
 	addtimer(CALLBACK(src, .proc/__cpr_organ_stasis_end), CPR_BRAIN_STASIS_TIME, TIMER_OVERRIDE | TIMER_UNIQUE)
@@ -47,41 +94,3 @@
 #warn hook brain decay
 #warn hook mechanical ventilation
 #warn cpr probably needs to do something about bloodloss/lung/heart damage oxyloss or it'll be useless
-
-/*
-
-			if(istype(H) && health < config_legacy.health_threshold_crit)
-				if(!H.check_has_mouth())
-					to_chat(H, "<span class='danger'>You don't have a mouth, you cannot perform CPR!</span>")
-					return
-				if(!check_has_mouth())
-					to_chat(H, "<span class='danger'>They don't have a mouth, you cannot perform CPR!</span>")
-					return
-				if((H.head && (H.head.body_parts_covered & FACE)) || (H.wear_mask && (H.wear_mask.body_parts_covered & FACE)))
-					to_chat(H, "<span class='notice'>Remove your mask!</span>")
-					return 0
-				if((head && (head.body_parts_covered & FACE)) || (wear_mask && (wear_mask.body_parts_covered & FACE)))
-					to_chat(H, "<span class='notice'>Remove [src]'s mask!</span>")
-					return 0
-
-				if (!cpr_time)
-					return 0
-
-				cpr_time = 0
-				spawn(30)
-					cpr_time = 1
-
-				H.visible_message("<span class='danger'>\The [H] is trying to perform CPR on \the [src]!</span>")
-
-				if(!do_after(H, 30))
-					return
-
-				H.visible_message("<span class='danger'>\The [H] performs CPR on \the [src]!</span>")
-				to_chat(H, "<span class='warning'>Repeat at least every 7 seconds.</span>")
-
-				if(istype(H) && health > config_legacy.health_threshold_dead)
-					adjustOxyLoss(-(min(getOxyLoss(), 5)))
-					updatehealth()
-					to_chat(src, "<span class='notice'>You feel a breath of fresh air enter your lungs. It feels good.</span>")
-*/
-

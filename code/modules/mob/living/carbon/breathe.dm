@@ -16,6 +16,7 @@
 	if(health < config_legacy.health_threshold_crit && !(CE_STABLE in chem_effects)) //crit aka circulatory shock
 		AdjustLosebreath(1)
 
+	#warn cpr hook
 	if(losebreath>0) //Suffocating so do not take a breath
 		AdjustLosebreath(-1)
 		if (prob(10)) //Gasp per 10 ticks? Sounds about right.

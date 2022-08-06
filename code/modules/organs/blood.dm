@@ -53,6 +53,8 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 	if(!should_have_organ(O_HEART))
 		return
 
+	#warn cpr hook
+
 	if(stat != DEAD && bodytemperature >= 170)	//Dead or cryosleep people do not pump the blood.
 
 		var/blood_volume_raw = vessel.get_reagent_amount("blood")

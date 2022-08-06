@@ -65,10 +65,10 @@
 	return
 
 /// Currently, on_mob_life is called on carbons. Any interaction with non-carbon mobs (lube) will need to be done in touch_mob.
-/datum/reagent/proc/on_mob_life(var/mob/living/carbon/M, var/alien, var/datum/reagents/metabolism/location)
+/datum/reagent/proc/on_mob_life(var/mob/living/carbon/M, var/alien, var/datum/reagents/metabolism/location, speed_mult = 1, force_allow_dead)
 	if(!istype(M))
 		return
-	if(!affects_dead && M.stat == DEAD)
+	if(!affects_dead && M.stat == DEAD && !force_allow_dead)
 		return
 	if(!affects_robots && M.isSynthetic())
 		return
@@ -93,6 +93,9 @@
 		// Metabolism
 		removed *= active_metab.metabolism_speed
 		ingest_rem_mult *= active_metab.metabolism_speed
+		// hard mult
+		removed *= speed_mult
+		ingest_rem_mult *= speed_mult
 
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
