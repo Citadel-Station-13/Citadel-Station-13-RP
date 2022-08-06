@@ -1,7 +1,9 @@
 //? Medical system defines go in here
 
 //! Health - Core
-/// Round damage values to this value
+/** Round damage values to this value
+ * Atom damage uses this too!
+ */
 #define DAMAGE_PRECISION			0.01
 
 //! Stat var - lets us get the most basic of mob health status from one var

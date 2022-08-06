@@ -54,6 +54,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 		return
 
 	#warn cpr hook
+	var/stabilization = HAS_TRAIT(src, TRAIT_MECHANICAL_VENTILATION)
 
 	if(stat != DEAD && bodytemperature >= 170)	//Dead or cryosleep people do not pump the blood.
 
@@ -92,9 +93,10 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 		var/dmg_coef = 1				//Lower means less damage taken
 		var/threshold_coef = 1			//Lower means the damage caps off lower
 
-		if(CE_STABLE in chem_effects)
-			dmg_coef = 0.5
-			threshold_coef = 0.75
+		if((CE_STABLE in chem_effects) || stabilization)
+			dmg_coef *= 0.5
+			threshold_coef *= 0.75
+
 //	These are Bay bits, do some sort of calculation.
 //			dmg_coef = min(1, 10/chem_effects[CE_STABLE]) //TODO: add effect for increased damage
 //			threshold_coef = min(dmg_coef / CE_STABLE_THRESHOLD, 1)
