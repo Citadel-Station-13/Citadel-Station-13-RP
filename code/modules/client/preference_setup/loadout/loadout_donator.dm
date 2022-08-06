@@ -270,4 +270,4 @@
 /datum/gear/suit/mindelectric
 	name = "「 The Mind Electric 」"
 	path = /obj/item/clothing/suit/storage/mindelectric
-	ckeywhitelist = list("fukeronipasta")
+	ckeywhitelist = list("lectronyx")
