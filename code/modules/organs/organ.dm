@@ -103,6 +103,7 @@
 /obj/item/organ/proc/die()
 	if(!can_die() || is_dead())
 		return
+	status |= ORGAN_DEAD
 	damage = max_damage
 	STOP_PROCESSING(SSobj, src)
 	handle_organ_mod_special(TRUE)
