@@ -205,7 +205,7 @@
 		var/obj/item/organ/internal/O = H.organs_by_name[organ]
 		if (O.robotic != ORGAN_ROBOT)
 			if(prob(15))
-				O.damage += (5*multiplier)
+				O.take_damage(5 * multiplier)
 				to_chat(H, "<span class='notice'>You feel a cramp in your guts.</span>")
 			else
 				to_chat(H, "<span class='warning'>You feel like doom is coming.. you should head to medical!</span>")

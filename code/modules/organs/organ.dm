@@ -109,14 +109,19 @@
 	if(owner && vital)
 		owner.death()
 
-/obj/item/organ/proc/revive()
+/obj/item/organ/proc/revive(full_heal = FALSE)
 	if(!is_dead())
-		return
+		return FALSE
+	if(full_heal)
+		damage = 0
+	else if(damage >= max_damage)
+		return FALSE
 	status &= ~ORGAN_DEAD
 	if(owner)
 		handle_organ_mod_special(FALSE)
 	else
 		START_PROCESSING(SSobj, src)
+	return TRUE
 
 /obj/item/organ/proc/adjust_germ_level(var/amount)		// Unless you're setting germ level directly to 0, use this proc instead
 	germ_level = clamp(germ_level + amount, 0, INFECTION_LEVEL_MAX)
