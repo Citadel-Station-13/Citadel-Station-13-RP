@@ -77,6 +77,7 @@
 
 	var/datum/reagents/metabolism/active_metab = location
 	var/removed = metabolism
+	var/mechanical_circulation = HAS_TRAIT(H, TRAIT_MECHANICAL_CIRCULATION)
 
 	var/ingest_rem_mult = 1
 	var/ingest_abs_mult = 1
@@ -102,7 +103,10 @@
 			if(!H.isSynthetic())
 				if(H.species.has_organ[O_HEART] && (active_metab.metabolism_class == CHEM_BLOOD))
 					var/obj/item/organ/internal/heart/Pump = H.internal_organs_by_name[O_HEART]
-					if(!Pump)
+					// todo: completely optimize + refactor metabolism, none of these checks should be in here
+					if(mechanical_circulation)
+						// no bad heart penalties
+					else if(!Pump)
 						removed *= 0.1
 					else if(Pump.standard_pulse_level == PULSE_NONE) // No pulse normally means chemicals process a little bit slower than normal.
 						removed *= 0.8
@@ -149,7 +153,7 @@
 				else if(active_metab.metabolism_class == CHEM_TOUCH) // Machines don't exactly absorb chemicals.
 					removed *= 0.5
 
-			if(filtered_organs && filtered_organs.len)
+			if(filtered_organs && filtered_organs.len && !mechanical_circulation)
 				for(var/organ_tag in filtered_organs)
 					var/obj/item/organ/internal/O = H.internal_organs_by_name[organ_tag]
 					if(O && !O.is_broken() && prob(max(0, O.max_damage - O.damage)))

@@ -54,6 +54,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 		return
 
 	var/stabilization = HAS_TRAIT(src, TRAIT_MECHANICAL_VENTILATION)
+	var/mechanical_circulation = HAS_TRAIT(src, TRAIT_MECHANICAL_CIRCULATION)
 
 	if(stat != DEAD && bodytemperature >= 170)	//Dead or cryosleep people do not pump the blood.
 
@@ -76,7 +77,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 
 		// Damaged heart virtually reduces the blood volume, as the blood isn't
 		// being pumped properly anymore.
-		if(species && should_have_organ(O_HEART))
+		if(species && should_have_organ(O_HEART) && !mechanical_circulation)
 			var/obj/item/organ/internal/heart/heart = internal_organs_by_name[O_HEART]
 
 			if(!heart)

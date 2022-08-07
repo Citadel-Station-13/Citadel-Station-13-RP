@@ -207,8 +207,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_CPR_IN_PROGRESS			"cpr_in_progress"
 /// Sometihng is currently preventing brain damage while dead
 #define TRAIT_NO_BRAIN_DECAY			"no_brain_decay"
-/// Something currently preventing normal respiratory failure
+/// Something is currently preventing normal respiratory failure
 #define TRAIT_MECHANICAL_VENTILATION	"mechanical_ventilation"
+/// Something currently preventing normal circulatory failure
+#define TRAIT_MECHANICAL_CIRCULATION	"mechanical_circulation"
 
 // common trait sources
 #define GENERIC_TRAIT "generic"
