@@ -51,8 +51,10 @@
 		return
 	REMOVE_TRAIT(src, TRAIT_CPR_IN_PROGRESS, GENERIC_TRAIT)
 
-	actor.visible_message(SPAN_NOTICE("[actor] performs CPR on [src]!"))
-	to_chat(actor, SPAN_WARNING("Repeat at least every [CPR_NOMINAL_COOLDOWN * 0.1] seconds."))
+	actor.visible_message(
+		SPAN_BOLDNOTICE("[actor] performs CPR on [src]!"),
+		SPAN_BOLDNOTICE("You perform CPR on [src]. Repeat at least every [CPR_NOMINAL_COOLDOWN * 0.1] seconds.")
+	)
 
 	cpr_act(actor)
 
@@ -79,19 +81,20 @@
 
 
 /mob/living/carbon/proc/cpr_act(atom/actor)
-	// var/clipping = HAS_TRAIT(src, TRAIT_CPR_COOLDOWN)
+	var/clipping = HAS_TRAIT(src, TRAIT_CPR_COOLDOWN)
 
 	ADD_TRAIT(src, TRAIT_CPR_COOLDOWN, CPR_TRAIT)
 	ADD_TRAIT(src, TRAIT_NO_BRAIN_DECAY, CPR_TRAIT)
 	ADD_TRAIT(src, TRAIT_MECHANICAL_VENTILATION, CPR_TRAIT)
 	ADD_TRAIT(src, TRAIT_MECHANICAL_CIRCULATION, CPR_TRAIT)
 
-	// __cpr_forced_metabolism(clipping? CPR_FORCED_METABOLISM_STRENGTH_CLIPPED : CPR_FORCED_METABOLISM_STRENGTH_NOMINAL)
-
-	__cpr_forced_metabolism(CPR_FORCED_METABOLISM_STRENGTH_NOMINAL)
+	__cpr_forced_metabolism(clipping? CPR_FORCED_METABOLISM_STRENGTH_CLIPPED : CPR_FORCED_METABOLISM_STRENGTH_NOMINAL)
 
 	if(!IS_DEAD(src))
 		to_chat(src, SPAN_NOTICE("You feel a breath of fresh air enter your lungs. It feels good."))
+
+	if(clipping)
+		to_chat(actor, SPAN_WARNING("Too fast! Wait [(CPR_NOMINAL_COOLDOWN - CPR_ACTION_TIME) * 0.1] seconds after finishing a set of compressions to start another!"))
 
 	addtimer(CALLBACK(src, .proc/__cpr_ventilation_end), CPR_VENTILATION_TIME, TIMER_OVERRIDE | TIMER_UNIQUE)
 	addtimer(CALLBACK(src, .proc/__cpr_off_cooldown), CPR_NOMINAL_COOLDOWN, TIMER_OVERRIDE | TIMER_UNIQUE)

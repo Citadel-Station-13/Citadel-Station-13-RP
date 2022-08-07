@@ -77,7 +77,7 @@
 
 	var/datum/reagents/metabolism/active_metab = location
 	var/removed = metabolism
-	var/mechanical_circulation = HAS_TRAIT(H, TRAIT_MECHANICAL_CIRCULATION)
+	var/mechanical_circulation = HAS_TRAIT(M, TRAIT_MECHANICAL_CIRCULATION)
 
 	var/ingest_rem_mult = 1
 	var/ingest_abs_mult = 1

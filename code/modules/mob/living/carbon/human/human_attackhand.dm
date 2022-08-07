@@ -64,7 +64,6 @@
 			if (istype(H) && attempt_to_scoop(H))
 				return 0;
 			if(iscarbon(M))
-				var/mob/living/carbon/C = M
 				if(attempt_cpr_interaction(M))
 					return
 
