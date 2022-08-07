@@ -48,18 +48,20 @@
 			to_chat(user, "<span class='notice'>You try to move your [temp.name], but cannot!</span>")
 			return
 	var/response = ""
-	if(!papers.len > 0)
+	if(!papers.len)
 		response = alert(user, "Do you take regular paper, or Carbon copy paper?", "Paper type request", "Regular", "Carbon-Copy", "Cancel")
+		if(!user.Adjacent(src))
+			return
 		if (response != "Regular" && response != "Carbon-Copy")
 			add_fingerprint(user)
 			return
 	if(amount >= 1)
 		amount--
-		if(amount==0)
+		if(!amount)
 			update_icon()
 
 		var/obj/item/paper/P
-		if(papers.len > 0)	//If there's any custom paper on the stack, use that instead of creating a new paper.
+		if(papers.len)	//If there's any custom paper on the stack, use that instead of creating a new paper.
 			P = papers[papers.len]
 			papers.Remove(P)
 		else
@@ -72,9 +74,7 @@
 						P.updateinfolinks()
 			else if (response == "Carbon-Copy")
 				P = new /obj/item/paper/carbon
-
-		P.loc = user.loc
-		user.put_in_hands(P)
+		user.put_in_hands_or_drop(P)
 		to_chat(user, "<span class='notice'>You take [P] out of the [src].</span>")
 	else
 		to_chat(user, "<span class='notice'>[src] is empty!</span>")
