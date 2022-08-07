@@ -48,7 +48,18 @@
 
 //! ATOM INSTANTIATION
 
-/datum/controller/subsystem/persistence/proc/_generic_atom_instantiate(type, x, y, z, persistent_data)
+/datum/controller/subsystem/persistence/proc/_generic_atom_instantiate(type, x, y, z, list/data, flags)
 
 //! ATOM PROCS
-/atom/proc/persistence_store()
+/atom/proc/persistence_store(flags)
+	RETURN_TYPE(/list)
+	return list()
+
+/atom/proc/persistence_load(list/data, flags)
+
+/**
+ * checks if we should persist
+ * see __DEFINES/controllers/persistence.dm for flags
+ */
+/atom/proc/should_persist(flags)
+

@@ -23,12 +23,18 @@
 		for(var/datum/mass_persistence_handler/handler in mass_persistence_handlers)
 			qdel(handler)
 	mass_persistence_handlers = list()
+	var/list/id_unique = list()
 	for(var/path in subtypesof(/datum/mass_persistence_handler))
 		var/datum/mass_persistence_handler/handler = path
 		if(initial(handler.abstract_type) == path)
 			continue
 		handler = new path
 		mass_persistence_handlers += handler
+		if(id_unique[handler.id])
+			var/datum/mass_persistence_handler/other = id_unique[handler.id]
+			stack_trace("id collision on [path] and [other.type]")
+		else
+			id_unique[handler.id] = handler
 
 /datum/controller/subsystem/persistence/proc/load_location_mapped_objects()
 	if(!SSdbcore.Connect())
@@ -41,6 +47,13 @@
 /**
  * singleton datum that handles save/loading of "mass persisted" objects
  * see [code/controllers/subssyetm/persistence/objects/location_mapped.dm] for more info
+ *
+ * table stores:
+ * saved time
+ * handler id (so we know what handler to use)
+ * level id (we can't rely on z indexes)
+ * fragment (so we don't save/load everything in one go which might be detrimental to performance)
+ * data (just the data the handler uses)
  */
 /datum/mass_persistence_handler
 	/// name
@@ -49,6 +62,8 @@
 	var/desc = "You shouldn't see this description."
 	/// abstract type
 	var/abstract_type = /datum/mass_persistence_handler
+	/// id - **must** be unique
+	var/id
 
 /**
  * grabs everything we need to serialize
@@ -58,10 +73,5 @@
 	return list()
 
 /**
- * loads a coordinate
- */
-/datum/mass_persistence_handler/proc/load_coordinate(x, y, z, data)
-
-/**
- *
+ * grabs data for a
  */
