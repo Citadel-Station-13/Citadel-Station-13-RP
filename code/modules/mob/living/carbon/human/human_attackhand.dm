@@ -65,7 +65,7 @@
 				return 0;
 			if(iscarbon(M))
 				var/mob/living/carbon/C = M
-				if(C.attempt_cpr_interaction())
+				if(attempt_cpr_interaction(M))
 					return
 
 			else if(!(M == src && apply_pressure(M, M.zone_sel.selecting)))

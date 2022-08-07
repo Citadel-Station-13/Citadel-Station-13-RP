@@ -734,6 +734,8 @@
  */
 /mob/proc/items_by_slot(slot)
 	var/obj/item/I = _item_by_slot(slot)
+	if(!I)
+		return list()
 	I = I._inv_return_attached()
 	return islist(I)? I : list(I)
 
