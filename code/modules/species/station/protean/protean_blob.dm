@@ -571,4 +571,4 @@
 		var/obj/item/organ/O = organ
 		// Fix internal damage
 		if(O.damage > 0)
-			O.heal_damage_a(3, can_revive = TRUE)
+			O.heal_damage_i(3, can_revive = TRUE)

@@ -25,7 +25,7 @@
 
 		//Detox can heal small amounts of damage
 		if (src.damage && src.damage < src.min_bruised_damage && owner.reagents.has_reagent("anti_toxin"))
-			heal_damage_a(0.2 * (delta_time * 5))
+			heal_damage_i(0.2 * (delta_time * 5))
 
 		if(src.damage < 0)
 			src.damage = 0

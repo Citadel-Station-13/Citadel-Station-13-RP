@@ -572,7 +572,9 @@
 /obj/item/organ/proc/refresh_action_button()
 	return action
 
-/obj/item/organ/proc/heal_damage_a(amount, force, can_revive)
+// todo: unified organ damage system
+// for now, this is how to heal internal organs
+/obj/item/organ/proc/heal_damage_i(amount, force, can_revive)
 	var/dead = !!(status & ORGAN_DEAD)
 	if(dead && !force && !can_revive)
 		return FALSE

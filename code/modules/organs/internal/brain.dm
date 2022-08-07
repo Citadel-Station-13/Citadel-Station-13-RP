@@ -31,7 +31,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	if(!owner || IS_DEAD(owner))
 		take_damage(delta_time * ORGAN_DECAY_PER_SECOND_BRAIN)
 
-	heal_damage_a()
+	heal_damage_i()
 
 /obj/item/organ/internal/brain/proc/can_assist()
 	return can_assist

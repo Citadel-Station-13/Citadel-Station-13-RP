@@ -36,7 +36,7 @@
 
 		//Detox can heal small amounts of damage
 		if (src.damage && src.damage < src.min_bruised_damage && owner.reagents.has_reagent("anti_toxin"))
-			heal_damage_a(0.2 * spleen_tick * spleen_efficiency)
+			heal_damage_i(0.2 * spleen_tick * spleen_efficiency)
 
 		if(src.damage < 0)
 			src.damage = 0
