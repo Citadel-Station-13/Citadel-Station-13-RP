@@ -32,7 +32,7 @@
 /// nominal CPR reagent tick strength (as multiplier of normal living)
 #define CPR_FORCED_METABOLISM_STRENGTH_NOMINAL	(7)								// 100% as effective as living
 /// on-cooldown reagent tick strength (as multiplier of normal living)
-#define CPR_FORCED_METABOLISM_STRENGTH_CLIPPED	(3 * 0.5)						// 50% as effective as living
+#define CPR_FORCED_METABOLISM_STRENGTH_CLIPPED	(3 * 0.5)								// 50% as effective as living at best
 
 //! Organs - General
 
