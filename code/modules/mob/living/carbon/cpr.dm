@@ -11,7 +11,9 @@
  */
 /mob/living/carbon/proc/attempt_cpr_interaction(mob/user)
 	. = TRUE
-	if(!is_in_critical())
+	// must be in crit or dead
+	// crit isn't a stat value so..
+	if(!is_in_critical() && !IS_DEAD(src))
 		return FALSE
 	if(!check_has_mouth())
 		to_chat(user, SPAN_WARNING("[src] has no mouth."))
