@@ -677,7 +677,7 @@
 			if(I.robotic >= ORGAN_ROBOT)
 				continue
 			if(I.damage > 0) //Peridaxon heals only non-robotic organs
-				I.damage = max(I.damage - removed, 0)
+				I.heal_damage_a(removed, can_revive = TRUE)
 				H.Confuse(5)
 			if(I.damage <= 5 && I.organ_tag == O_EYES)
 				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something

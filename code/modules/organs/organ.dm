@@ -94,14 +94,29 @@
 
 	s_base = new_dna.s_base
 
+/obj/item/organ/proc/is_dead()
+	return (status & ORGAN_DEAD)
+
+/obj/item/organ/proc/can_die()
+	return (robotic < ORGAN_ROBOT)
+
 /obj/item/organ/proc/die()
-	if(robotic < ORGAN_ROBOT)
-		status |= ORGAN_DEAD
+	if(!can_die() || is_dead())
+		return
 	damage = max_damage
 	STOP_PROCESSING(SSobj, src)
 	handle_organ_mod_special(TRUE)
 	if(owner && vital)
 		owner.death()
+
+/obj/item/organ/proc/revive()
+	if(!is_dead())
+		return
+	status &= ~ORGAN_DEAD
+	if(owner)
+		handle_organ_mod_special(FALSE)
+	else
+		START_PROCESSING(SSobj, src)
 
 /obj/item/organ/proc/adjust_germ_level(var/amount)		// Unless you're setting germ level directly to 0, use this proc instead
 	germ_level = clamp(germ_level + amount, 0, INFECTION_LEVEL_MAX)
@@ -552,8 +567,11 @@
 /obj/item/organ/proc/refresh_action_button()
 	return action
 
-/obj/item/organ/proc/can_recover()
-	return (max_damage > 0) && !(status & ORGAN_DEAD)
-
-/obj/item/organ/proc/heal_damage_a(amount, force)
+/obj/item/organ/proc/heal_damage_a(amount, force, can_revive)
+	var/dead = !!(status & ORGAN_DEAD)
+	if(dead && !force && !can_revive)
+		return FALSE
 	damage = clamp(damage - round(amount, DAMAGE_PRECISION), 0, max_damage)
+	if(dead && (damage < max_damage))
+		revive()
+

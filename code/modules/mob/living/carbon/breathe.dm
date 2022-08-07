@@ -20,7 +20,7 @@
 		AdjustLosebreath(1)
 
 	if(losebreath>0) //Suffocating so do not take a breath
-		AdjustLosebreath(-1)
+		AdjustLosebreath(stabilization? -5 : -1)
 		if (prob(10)) //Gasp per 10 ticks? Sounds about right.
 			spawn emote("gasp")
 	else
