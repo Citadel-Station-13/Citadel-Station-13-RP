@@ -11335,10 +11335,6 @@
 /obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
-"uw" = (
-/obj/effect/spider/spiderling/virgo,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/rift/surfacebase/outside/outside3)
 "ux" = (
 /turf/simulated/floor/tiled/monotile,
 /area/rift/trade_shop/landing_pad)
@@ -13061,10 +13057,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/station/exploration)
-"xA" = (
-/mob/living/simple_mob/animal/giant_spider/nurse,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/rift/surfacebase/outside/outside3)
 "xB" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/effect/decal/cleanable/flour,
@@ -14493,7 +14485,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar_backroom)
 "As" = (
-/mob/living/simple_mob/animal/giant_spider/carrier,
+/obj/structure/inflatable/door,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "At" = (
@@ -19995,8 +19987,8 @@
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
 "KZ" = (
-/obj/effect/spider/eggcluster/small/frost,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/mob/living/simple_mob/animal/giant_spider/frost,
+/turf/simulated/mineral/icerock,
 /area/rift/surfacebase/outside/outside3)
 "La" = (
 /obj/structure/grille,
@@ -23979,7 +23971,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/barrestroom)
 "Sr" = (
-/obj/effect/spider/eggcluster,
 /obj/random/multiple/corp_crate,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
@@ -25353,7 +25344,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hydroponics)
 "Vb" = (
-/obj/effect/spider/eggcluster/small,
+/mob/living/simple_mob/animal/giant_spider/lurker,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "Vc" = (
@@ -26970,10 +26961,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
-"Yb" = (
-/mob/living/simple_mob/animal/giant_spider/nurse/queen,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/rift/surfacebase/outside/outside3)
 "Yc" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -50707,7 +50694,7 @@ fq
 fq
 fq
 fq
-sH
+GO
 GO
 GO
 GO
@@ -51485,11 +51472,11 @@ fq
 fq
 GO
 GO
-sH
+GO
 fq
 fq
 GO
-sH
+GO
 fq
 fq
 fq
@@ -52458,7 +52445,7 @@ GO
 GO
 GO
 fq
-sH
+GO
 fq
 fq
 GO
@@ -53423,8 +53410,8 @@ fq
 fq
 fq
 fq
-GO
-GO
+As
+As
 GO
 GO
 fq
@@ -53605,7 +53592,7 @@ qY
 fq
 fq
 sH
-KZ
+GO
 sH
 GO
 fq
@@ -53614,11 +53601,11 @@ fq
 qY
 fq
 fq
-sH
 GO
 GO
 GO
 GO
+As
 fq
 GO
 GO
@@ -53798,9 +53785,9 @@ fq
 qY
 fq
 sH
-uw
+GO
 xR
-uw
+GO
 GO
 xR
 sH
@@ -53992,12 +53979,12 @@ fq
 qY
 fq
 GO
-uw
+GO
 GO
 sH
 GO
 GO
-uw
+GO
 fq
 fq
 fq
@@ -54187,7 +54174,7 @@ qY
 fq
 sH
 ya
-xA
+GO
 GO
 xR
 sH
@@ -54383,7 +54370,7 @@ fq
 yd
 GO
 GO
-uw
+GO
 GO
 GO
 GO
@@ -54576,8 +54563,8 @@ fq
 fq
 xR
 GO
-uw
-Vb
+GO
+GO
 GO
 GO
 GO
@@ -54769,8 +54756,8 @@ qY
 fq
 fq
 fq
-Vb
-As
+GO
+GO
 sH
 GO
 fq
@@ -55546,7 +55533,7 @@ fq
 fq
 fq
 fq
-fq
+KZ
 GO
 fq
 fq
@@ -55747,7 +55734,7 @@ fq
 GO
 Xd
 GO
-GO
+xR
 GO
 Xd
 GO
@@ -55937,7 +55924,7 @@ fq
 fq
 GO
 GO
-GO
+Vb
 GO
 GO
 Xh
@@ -56526,7 +56513,7 @@ GO
 GO
 GO
 GO
-GO
+Vb
 fq
 GO
 sH
@@ -56722,11 +56709,11 @@ Xd
 GO
 fq
 fq
-xA
-uw
 GO
 GO
-uw
+GO
+GO
+GO
 fq
 fq
 fq
@@ -56901,10 +56888,10 @@ fq
 qY
 qY
 fq
-uw
-As
 GO
-uw
+xR
+GO
+GO
 GO
 fq
 fq
@@ -57103,7 +57090,7 @@ GO
 fq
 fq
 GO
-GO
+xR
 fq
 GO
 fq
@@ -57117,7 +57104,7 @@ fq
 fq
 xR
 GO
-uw
+GO
 sH
 fq
 qY
@@ -57289,8 +57276,8 @@ fq
 qY
 fq
 GO
-xA
-uw
+GO
+GO
 GO
 GO
 fq
@@ -57892,7 +57879,7 @@ fq
 fq
 fq
 sH
-Up
+GO
 fq
 fq
 fq
@@ -58272,7 +58259,7 @@ GO
 GO
 fq
 GO
-uw
+GO
 XH
 GO
 fq
@@ -58459,25 +58446,25 @@ fq
 fq
 fq
 fq
-uw
+GO
 xR
 GO
 GO
-uw
-GO
-GO
-fq
-fq
-GO
 GO
 GO
 GO
 fq
+fq
 GO
 GO
-As
 GO
-Up
+xR
+fq
+GO
+GO
+GO
+GO
+GO
 fq
 fq
 qY
@@ -58862,11 +58849,11 @@ fq
 fq
 fq
 fq
-uw
+GO
 UF
 GO
 GO
-uw
+GO
 fq
 qY
 fq
@@ -59247,8 +59234,8 @@ fq
 fq
 fq
 sH
-Up
-xA
+GO
+GO
 GO
 GO
 GO
@@ -59445,7 +59432,7 @@ sH
 JV
 GO
 UF
-Yb
+GO
 GO
 fq
 fq
