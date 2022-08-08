@@ -323,6 +323,7 @@
 
 //Note: external organs have their own version of this proc
 /obj/item/organ/take_damage(amount, var/silent=0)
+	ASSERT(amount > 0)
 	if(src.robotic >= ORGAN_ROBOT)
 		src.damage = between(0, src.damage + (amount * 0.8), max_damage)
 	else
@@ -578,6 +579,7 @@
 // todo: unified organ damage system
 // for now, this is how to heal internal organs
 /obj/item/organ/proc/heal_damage_i(amount, force, can_revive)
+	ASSERT(amount > 0)
 	var/dead = !!(status & ORGAN_DEAD)
 	if(dead && !force && !can_revive)
 		return FALSE
