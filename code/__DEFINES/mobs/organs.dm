@@ -210,4 +210,4 @@
 /// organ is in a dead mob
 #define ORGAN_LOCALITY_IN_DEAD_MOB				1
 /// organ is outside of a mob
-#define ORGNA_LOCALITY_REMOVED					2
+#define ORGAN_LOCALITY_REMOVED					2

@@ -505,6 +505,7 @@ This function completely restores a damaged organ to perfect condition.
 		return 1
 	return 0
 
+#warn WOO
 /obj/item/organ/external/process(delta_time)
 	if(owner)
 		//Dismemberment

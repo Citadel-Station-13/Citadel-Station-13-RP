@@ -6,6 +6,7 @@
 	organ_tag = O_KIDNEYS
 	parent_organ = BP_GROIN
 
+#warn WOO
 /obj/item/organ/internal/kidneys/process(delta_time)
 	..()
 

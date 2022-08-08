@@ -28,6 +28,7 @@
 
 	//processing internal organs is pretty cheap, do that first.
 	for(var/obj/item/organ/I in internal_organs)
+		#warn no process
 		I.process(seconds)
 
 	handle_stance()
@@ -44,6 +45,7 @@
 			bad_external_organs -= E
 			continue
 		else
+			#warn no process
 			E.process(seconds)
 			number_wounds += E.number_wounds
 

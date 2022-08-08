@@ -68,7 +68,7 @@
 
 /obj/item/organ/Destroy()
 	handle_organ_mod_special(TRUE)
-	STOP_RPOCESSING(SSobj, src)
+	STOP_PROCESSING(SSobj, src)
 	if(owner)
 		owner = null
 	if(transplant_data)

@@ -6,6 +6,7 @@
 	organ_tag = O_LUNGS
 	parent_organ = BP_TORSO
 
+#warn WOO
 /obj/item/organ/internal/lungs/process(delta_time)
 	..()
 

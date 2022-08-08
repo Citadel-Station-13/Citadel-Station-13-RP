@@ -5,6 +5,7 @@
 	organ_tag = "liver"
 	parent_organ = BP_GROIN
 
+#warn WOO
 /obj/item/organ/internal/liver/process(delta_time)
 	..()
 	if(!iscarbon(owner))
