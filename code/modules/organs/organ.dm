@@ -426,6 +426,8 @@
 						adjust_germ_level(rand(3,5))
 						owner.reagents.add_reagent("toxin", rand(1,2))
 
+#warn upside_down_smile
+
 /**
  * called while alive
  */
