@@ -155,7 +155,7 @@
 	if(s_store)
 		. += s_store._inv_return_attached()
 
-/mob/living/carbon/human/get_inventory_slot_ids()
+/mob/living/carbon/human/_get_inventory_slot_ids()
 	return ..() + list(
 		SLOT_ID_SUIT,
 		SLOT_ID_UNIFORM,
@@ -250,7 +250,7 @@
 		return FALSE
 	return TRUE
 
-/mob/living/carbon/human/semantically_has_slot(id)
+/mob/living/carbon/human/_semantic_slot_id_check(id)
 	. = ..()
 	if(!.)
 		return

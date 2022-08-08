@@ -84,7 +84,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	var/abstract_type = /datum/inventory_slot_meta
 	/// flags
 	var/inventory_slot_flags = INV_SLOT_IS_RENDERED
-	/// display order - higher is upper
+	/// display order - higher is upper. a <hr> is applied on 0.
 	var/sort_order = 0
 	/// always show on strip/force equip menu, or only show when full
 	var/always_show_on_strip_menu = TRUE
@@ -327,7 +327,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	slot_flags_required = SLOT_MASK
 
 /datum/inventory_slot_meta/restraints
-	sort_order = 250
+	sort_order = -250
 	is_inventory = FALSE
 	always_show_on_strip_menu = FALSE
 	abstract_type = /datum/inventory_slot_meta/restraints

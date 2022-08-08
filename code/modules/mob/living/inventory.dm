@@ -166,7 +166,7 @@
 	if(wear_mask)
 		. += wear_mask._inv_return_attached()
 
-/mob/living/get_inventory_slot_ids()
+/mob/living/_get_inventory_slot_ids()
 	return ..() + list(
 		SLOT_ID_BACK,
 		SLOT_ID_MASK
