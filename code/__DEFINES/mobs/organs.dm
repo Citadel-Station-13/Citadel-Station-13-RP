@@ -203,3 +203,11 @@
 #define BP_IS_BRITTLE(org)  ((org) && ((org).status == ORGAN_BRITTLE))
 #define BP_IS_CRYSTAL(org)  ((org) && ((org).robotic == ORGAN_CRYSTAL))
 #define BP_IS_ROBOTIC(org)  ((org) && ((org).robotic == ORGAN_ROBOT))
+
+//! organ locality
+/// organ is in a living mob
+#define ORGAN_LOCALITY_IN_LIVING_MOB			0
+/// organ is in a dead mob
+#define ORGAN_LOCALITY_IN_DEAD_MOB				1
+/// organ is outside of a mob
+#define ORGNA_LOCALITY_REMOVED					2

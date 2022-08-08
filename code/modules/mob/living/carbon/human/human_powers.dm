@@ -379,7 +379,7 @@
 
 				Int.rejuvenate(TRUE)
 
-		handle_organs() // Update everything
+		handle_organs(2) // Update everything
 
 		update_icons_body()
 		active_regen = FALSE

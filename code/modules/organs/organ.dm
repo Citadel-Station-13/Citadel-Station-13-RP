@@ -67,8 +67,8 @@
 	handle_organ_mod_special()
 
 /obj/item/organ/Destroy()
-
 	handle_organ_mod_special(TRUE)
+	STOP_RPOCESSING(SSobj, src)
 	if(owner)
 		owner = null
 	if(transplant_data)
@@ -79,7 +79,6 @@
 		trace_chemicals.Cut()
 	dna = null
 	species = null
-
 	return ..()
 
 /obj/item/organ/proc/update_health()
@@ -105,158 +104,37 @@
 		return
 	status |= ORGAN_DEAD
 	damage = max_damage
-	STOP_PROCESSING(SSobj, src)
-	handle_organ_mod_special(TRUE)
-	if(owner && vital)
-		owner.death()
+	if(owner)
+		handle_organ_mod_special(TRUE)
+		if(vital)
+			owner.death()
+	reconsider_processing()
 
 /obj/item/organ/proc/revive(full_heal = FALSE)
 	if(!is_dead())
 		if(full_heal)
+			germ_level = 0
 			heal_damage_i(damage, TRUE, FALSE)
 		return FALSE
 	if(full_heal)
 		damage = 0
+		germ_level = 0
 	else if(damage >= max_damage)
 		return FALSE
 	status &= ~ORGAN_DEAD
 	if(owner)
 		handle_organ_mod_special(FALSE)
-	else
-		START_PROCESSING(SSobj, src)
+	reconsider_processing()
 	return TRUE
 
 /obj/item/organ/proc/adjust_germ_level(var/amount)		// Unless you're setting germ level directly to 0, use this proc instead
 	germ_level = clamp(germ_level + amount, 0, INFECTION_LEVEL_MAX)
-
-/obj/item/organ/process(delta_time)
-
-	if(loc != owner)
-		owner = null
-
-	//dead already, no need for more processing
-	if(status & ORGAN_DEAD)
-		return
-	// Don't process if we're in a freezer, an MMI or a stasis bag.or a freezer or something I dunno
-	if(istype(loc,/obj/item/mmi))
-		return
-	if(preserved)
-		return
-
-	//check if we've hit max_damage
-	if(damage >= max_damage)
-		die()
-
-	handle_organ_proc_special()
-
-	//Process infections
-	if(robotic >= ORGAN_ROBOT || (istype(owner) && (owner.species && (owner.species.flags & (IS_PLANT | NO_INFECT)))))
-		germ_level = 0
-		return
-
-	if(!owner && reagents)
-		var/datum/reagent/blood/B = locate(/datum/reagent/blood) in reagents.reagent_list
-		if(B && prob(40))
-			reagents.remove_reagent("blood",0.1)
-			blood_splatter(src,B,1)
-		if(config_legacy.organs_decay && decays)
-			damage += rand(1,3)
-		if(damage >= max_damage)
-			damage = max_damage
-		adjust_germ_level(rand(2,6))
-		if(germ_level >= INFECTION_LEVEL_TWO)
-			adjust_germ_level(rand(2,6))
-		if(germ_level >= INFECTION_LEVEL_THREE)
-			die()
-
-	else if(owner && owner?.bodytemperature >= 170)	//cryo stops germs from moving and doing their bad stuffs
-		//** Handle antibiotics and curing infections
-		handle_antibiotics()
-		handle_rejection()
-		handle_germ_effects()
 
 /obj/item/organ/examine(mob/user)
 	. = ..()
 	if(status & ORGAN_DEAD)
 		. += "<span class='notice'>The decay has set in.</span>"
 
-///A little wonky: internal organs stop calling this (they return early in process) when dead, but external ones cause further damage when dead
-/obj/item/organ/proc/handle_germ_effects()
-	//* Handle the effects of infections
-	if(robotic >= ORGAN_ROBOT) //Just in case!
-		germ_level = 0
-		return 0
-
-	var/antibiotics = iscarbon(owner) ? owner.chem_effects[CE_ANTIBIOTIC] || 0 : 0
-
-	var/infection_damage = 0
-
-	//* Infection damage *//
-
-	//If the organ is dead, for the sake of organs that may have died due to non-infection, we'll only do damage if they have at least L1 infection (built up below)
-	if((status & ORGAN_DEAD) && antibiotics < ANTIBIO_OD && germ_level >= INFECTION_LEVEL_ONE)
-		infection_damage = max(1, 1 + round((germ_level - INFECTION_LEVEL_THREE)/200,0.25)) //1 Tox plus a little based on germ level
-
-	else if(germ_level > INFECTION_LEVEL_TWO && antibiotics < ANTIBIO_OD)
-		infection_damage = max(0.25, 0.25 + round((germ_level - INFECTION_LEVEL_TWO)/200,0.25))
-
-	if(infection_damage)
-		owner.adjustToxLoss(infection_damage)
-
-	if (germ_level > 0 && germ_level < INFECTION_LEVEL_ONE/2 && prob(30))
-		adjust_germ_level(-antibiotics)
-
-	//* Germ Accumulation
-
-	//Dead organs accumulate germs indefinitely
-	if(status & ORGAN_DEAD)
-		adjust_germ_level(1)
-
-	//Half of level 1 is growing but harmless
-	if (germ_level >= INFECTION_LEVEL_ONE/2)
-		//aiming for germ level to go from ambient to INFECTION_LEVEL_TWO in an average of 15 minutes
-		if(!antibiotics && prob(round(germ_level/6)))
-			adjust_germ_level(1)
-
-	//Level 1 qualifies for specific organ processing effects
-	if(germ_level >= INFECTION_LEVEL_ONE)
-		. = 1 //Organ qualifies for effect-specific processing
-		//var/fever_temperature = (owner.species.heat_level_1 - owner.species.body_temperature - 5)* min(germ_level/INFECTION_LEVEL_TWO, 1) + owner.species.body_temperature
-		//owner.bodytemperature += between(0, (fever_temperature - T20C)/BODYTEMP_COLD_DIVISOR + 1, fever_temperature - owner.bodytemperature)
-		var/fever_temperature = owner?.species.heat_discomfort_level * 1.10 //Heat discomfort level plus 10%
-		if(owner?.bodytemperature < fever_temperature)
-			owner?.bodytemperature += min(0.2,(fever_temperature - owner?.bodytemperature) / 10) //Will usually climb by 0.2, else 10% of the difference if less
-
-	//Level two qualifies for further processing effects
-	if (germ_level >= INFECTION_LEVEL_TWO)
-		. = 2 //Organ qualifies for effect-specific processing
-		//No particular effect on the general 'organ' at 3
-
-	//Level three qualifies for significant growth and further effects
-	if (germ_level >= INFECTION_LEVEL_THREE && antibiotics < ANTIBIO_OD)
-		. = 3 //Organ qualifies for effect-specific processing
-		adjust_germ_level(rand(5,10)) //Germ_level increases without overdose of antibiotics
-
-/obj/item/organ/proc/handle_rejection()
-	// Process unsuitable transplants. TODO: consider some kind of
-	// immunosuppressant that changes transplant data to make it match.
-	if(dna && can_reject)
-		if(!rejecting)
-			if(blood_incompatible(dna.b_type, owner.dna.b_type, species.name, owner.species.name)) // Process species by name.
-				rejecting = 1
-		else
-			rejecting++ //Rejection severity increases over time.
-			if(rejecting % 10 == 0) //Only fire every ten rejection ticks.
-				switch(rejecting)
-					if(1 to 50)
-						adjust_germ_level(1)
-					if(51 to 200)
-						adjust_germ_level(rand(1,2))
-					if(201 to 500)
-						adjust_germ_level(rand(2,3))
-					if(501 to INFINITY)
-						adjust_germ_level(rand(3,5))
-						owner.reagents.add_reagent("toxin", rand(1,2))
 
 /obj/item/organ/proc/receive_chem(chemical as obj)
 	return 0
@@ -383,7 +261,6 @@
 		if(affected) affected.internal_organs -= src
 
 		forceMove(owner.drop_location())
-		START_PROCESSING(SSobj, src)
 		rejecting = null
 
 	if(istype(owner))
@@ -399,8 +276,8 @@
 				owner.death()
 
 	handle_organ_mod_special(TRUE)
-
 	owner = null
+	reconsider_processing()
 
 /obj/item/organ/proc/replaced(var/mob/living/carbon/human/target,var/obj/item/organ/external/affected)
 
@@ -419,12 +296,175 @@
 
 	owner = target
 	loc = owner
-	STOP_PROCESSING(SSobj, src)
 	target.internal_organs |= src
 	affected.internal_organs |= src
 	target.internal_organs_by_name[organ_tag] = src
-
 	handle_organ_mod_special()
+	reconsider_processing()
+
+/obj/item/organ/process(delta_time)
+
+	if(loc != owner)
+		owner = null
+
+	//dead already, no need for more processing
+	if(status & ORGAN_DEAD)
+		return
+	// Don't process if we're in a freezer, an MMI or a stasis bag.or a freezer or something I dunno
+	if(istype(loc,/obj/item/mmi))
+		return
+	if(preserved)
+		return
+
+	//check if we've hit max_damage
+	if(damage >= max_damage)
+		die()
+
+	handle_organ_proc_special()
+
+	//Process infections
+	if(robotic >= ORGAN_ROBOT || (istype(owner) && (owner.species && (owner.species.flags & (IS_PLANT | NO_INFECT)))))
+		germ_level = 0
+		return
+
+	if(!owner && reagents)
+		var/datum/reagent/blood/B = locate(/datum/reagent/blood) in reagents.reagent_list
+		if(B && prob(40))
+			reagents.remove_reagent("blood",0.1)
+			blood_splatter(src,B,1)
+		if(config_legacy.organs_decay && decays)
+			damage += rand(1,3)
+		if(damage >= max_damage)
+			damage = max_damage
+		adjust_germ_level(rand(2,6))
+		if(germ_level >= INFECTION_LEVEL_TWO)
+			adjust_germ_level(rand(2,6))
+		if(germ_level >= INFECTION_LEVEL_THREE)
+			die()
+
+	else if(owner && owner?.bodytemperature >= 170)	//cryo stops germs from moving and doing their bad stuffs
+		//** Handle antibiotics and curing infections
+		handle_antibiotics()
+		handle_rejection()
+		handle_germ_effects()
+
+///A little wonky: internal organs stop calling this (they return early in process) when dead, but external ones cause further damage when dead
+/obj/item/organ/proc/handle_germ_effects()
+	//* Handle the effects of infections
+	if(robotic >= ORGAN_ROBOT) //Just in case!
+		germ_level = 0
+		return 0
+
+	var/antibiotics = iscarbon(owner) ? owner.chem_effects[CE_ANTIBIOTIC] || 0 : 0
+
+	var/infection_damage = 0
+
+	//* Infection damage *//
+
+	//If the organ is dead, for the sake of organs that may have died due to non-infection, we'll only do damage if they have at least L1 infection (built up below)
+	if((status & ORGAN_DEAD) && antibiotics < ANTIBIO_OD && germ_level >= INFECTION_LEVEL_ONE)
+		infection_damage = max(1, 1 + round((germ_level - INFECTION_LEVEL_THREE)/200,0.25)) //1 Tox plus a little based on germ level
+
+	else if(germ_level > INFECTION_LEVEL_TWO && antibiotics < ANTIBIO_OD)
+		infection_damage = max(0.25, 0.25 + round((germ_level - INFECTION_LEVEL_TWO)/200,0.25))
+
+	if(infection_damage)
+		owner.adjustToxLoss(infection_damage)
+
+	if (germ_level > 0 && germ_level < INFECTION_LEVEL_ONE/2 && prob(30))
+		adjust_germ_level(-antibiotics)
+
+	//* Germ Accumulation
+
+	//Dead organs accumulate germs indefinitely
+	if(status & ORGAN_DEAD)
+		adjust_germ_level(1)
+
+	//Half of level 1 is growing but harmless
+	if (germ_level >= INFECTION_LEVEL_ONE/2)
+		//aiming for germ level to go from ambient to INFECTION_LEVEL_TWO in an average of 15 minutes
+		if(!antibiotics && prob(round(germ_level/6)))
+			adjust_germ_level(1)
+
+	//Level 1 qualifies for specific organ processing effects
+	if(germ_level >= INFECTION_LEVEL_ONE)
+		. = 1 //Organ qualifies for effect-specific processing
+		//var/fever_temperature = (owner.species.heat_level_1 - owner.species.body_temperature - 5)* min(germ_level/INFECTION_LEVEL_TWO, 1) + owner.species.body_temperature
+		//owner.bodytemperature += between(0, (fever_temperature - T20C)/BODYTEMP_COLD_DIVISOR + 1, fever_temperature - owner.bodytemperature)
+		var/fever_temperature = owner?.species.heat_discomfort_level * 1.10 //Heat discomfort level plus 10%
+		if(owner?.bodytemperature < fever_temperature)
+			owner?.bodytemperature += min(0.2,(fever_temperature - owner?.bodytemperature) / 10) //Will usually climb by 0.2, else 10% of the difference if less
+
+	//Level two qualifies for further processing effects
+	if (germ_level >= INFECTION_LEVEL_TWO)
+		. = 2 //Organ qualifies for effect-specific processing
+		//No particular effect on the general 'organ' at 3
+
+	//Level three qualifies for significant growth and further effects
+	if (germ_level >= INFECTION_LEVEL_THREE && antibiotics < ANTIBIO_OD)
+		. = 3 //Organ qualifies for effect-specific processing
+		adjust_germ_level(rand(5,10)) //Germ_level increases without overdose of antibiotics
+
+/obj/item/organ/proc/handle_rejection()
+	// Process unsuitable transplants. TODO: consider some kind of
+	// immunosuppressant that changes transplant data to make it match.
+	if(dna && can_reject)
+		if(!rejecting)
+			if(blood_incompatible(dna.b_type, owner.dna.b_type, species.name, owner.species.name)) // Process species by name.
+				rejecting = 1
+		else
+			rejecting++ //Rejection severity increases over time.
+			if(rejecting % 10 == 0) //Only fire every ten rejection ticks.
+				switch(rejecting)
+					if(1 to 50)
+						adjust_germ_level(1)
+					if(51 to 200)
+						adjust_germ_level(rand(1,2))
+					if(201 to 500)
+						adjust_germ_level(rand(2,3))
+					if(501 to INFINITY)
+						adjust_germ_level(rand(3,5))
+						owner.reagents.add_reagent("toxin", rand(1,2))
+
+/**
+ * called while alive
+ */
+/obj/item/organ/proc/tick_life(dt)
+
+/**
+ * called while dead
+ */
+/obj/item/organ/proc/tick_death(dt)
+
+/**
+ * called while removed from a mob
+ */
+/obj/item/organ/proc/tick_removed(dt)
+
+/**
+ * do we need to process?
+ * do NOT check owner for removed, listen to the params!
+ * do NOT check owner for life/dead, listen to the params!
+ *
+ * ! DO NOT RELY ON THIS TO STOP PROCESSING.
+ * Define your tick_life, tick_death, tick_removed properly!
+ *
+ * @params
+ * - locality - check [code/__DEFINES/mobs/organs.dm]
+ */
+/obj/item/organ/proc/should_process(locality)
+
+/**
+ * reconsider if we need to process
+ */
+/obj/item/organ/proc/reconsider_processing()
+	if(owner)
+		// we're in someone we'll always tick from their handle_organs so don't process externally
+		STOP_PROCESSING(SSobj, src)
+		return
+	// we're not in someone
+	if(should_process(ORGAN_LOCALITY_REMOVED))
+		START_PROCESSING(SSobj, src)
 
 /obj/item/organ/proc/bitten(mob/user)
 
