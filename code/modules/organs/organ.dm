@@ -112,6 +112,8 @@
 
 /obj/item/organ/proc/revive(full_heal = FALSE)
 	if(!is_dead())
+		if(full_heal)
+			heal_damage_i(damage, TRUE, FALSE)
 		return FALSE
 	if(full_heal)
 		damage = 0
@@ -580,6 +582,6 @@
 	if(dead && !force && !can_revive)
 		return FALSE
 	damage = clamp(damage - round(amount, DAMAGE_PRECISION), 0, max_damage)
-	if(dead && (damage < max_damage))
+	if(dead && can_revive)
 		revive()
 
