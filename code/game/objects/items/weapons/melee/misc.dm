@@ -117,8 +117,9 @@
 
 /obj/item/melee/skateboard/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
-	var/turf/T = get_turf(src)
-	new board_item_type(T)
+	if(!isturf(newLoc))
+		return
+	new board_item_type(newLoc)
 	qdel(src)
 
 /obj/item/melee/skateboard/improv
