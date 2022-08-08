@@ -12768,6 +12768,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
+"jlw" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/overlay/snow/floor,
+/obj/structure/simple_door/iron,
+/turf/simulated/floor/plating,
+/area/rift/surfacebase/outside/outside2)
 "jlL" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
@@ -44193,7 +44199,7 @@ enB
 enB
 enB
 dsi
-goH
+jlw
 isw
 vUE
 enB
