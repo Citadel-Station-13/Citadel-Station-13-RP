@@ -78,22 +78,15 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	var/static/id_next = 0
 	/// abstract type
 	var/abstract_type = /datum/inventory_slot_meta
-	/// is inventory? if not, this won't be rendered as part of the hud's inventory
-	var/is_inventory = FALSE
-	/// hide unless inventory is expanded
-	var/display_requires_expand = TRUE
+	/// flags
+	var/inventory_slot_flags = INV_SLOT_IS_RENDERED
+	/// display order
+	var/sort_order = 0
+	#warn sort order standardization + sort cmp proc
 	/// always show on strip/force equip menu, or only show when full
 	var/always_show_on_strip_menu = TRUE
-	/// fully abstract - represents "put into something"
-	var/is_abstract = FALSE
 	/// rendering slot key
 	var/render_key
-	/// do we render on mob?
-	var/is_rendered = TRUE
-	/// are we considered worn?
-	var/is_considered_worn = FALSE
-	/// allow random id?
-	var/allow_random_id = FALSE
 	/// our screen loc
 	var/hud_position
 	/// equip checks to use

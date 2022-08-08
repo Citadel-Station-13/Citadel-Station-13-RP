@@ -1,4 +1,4 @@
-// flags for inventory ops
+//! flags for inventory ops
 /// force; implies INV_OP_IGNORE_DELAY and INV_OP_IGNORE_REACHABILITY
 #define INV_OP_FORCE				(1<<0)
 /// components that intercept to relocate should refrain - usually used with force
@@ -38,3 +38,15 @@
 #define INV_OP_SILENT				(INV_OP_SUPPRESS_SOUND | INV_OP_SUPPRESS_WARNING)
 
 // todo: INV_OP_RECRUSE
+
+//! return values from can_equip_conflict_check
+/// yes
+#define CAN_EQUIP_SLOT_CONFLICT_NONE		0
+/// slot has another item, hell no
+#define CAN_EQUIP_SLOT_CONFLICT_HARD		1
+/// slot is semantically blocked by something else the user is wearing but you can force it on anyways
+#define CAN_EQUIP_SLOT_CONFLICT_SOFT		2
+
+//! return values for _item_by_slot, _set_inv_slot
+/// this slot doesn't exist
+#define INVENTORY_SLOT_DOES_NOT_EXIST			-1

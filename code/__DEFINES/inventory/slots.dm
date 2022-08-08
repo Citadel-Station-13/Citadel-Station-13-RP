@@ -19,23 +19,37 @@
 // this is an id because SLOT_ID_HANDS is used for worn_slot when something is being held :/
 #define SLOT_ID_HANDS			"hands"
 
-// slot meta slot_equip_checks flags
+//! slot meta slot_equip_checks flags
 /// check slot flags - must match
 #define SLOT_EQUIP_CHECK_USE_FLAGS			(1<<0)
 /// use proc
 #define SLOT_EQUIP_CHECK_USE_PROC			(1<<1)
 
-// return values from can_equip_conflict_check
-/// yes
-#define CAN_EQUIP_SLOT_CONFLICT_NONE		0
-/// slot has another item, hell no
-#define CAN_EQUIP_SLOT_CONFLICT_HARD		1
-/// slot is semantically blocked by something else the user is wearing but you can force it on anyways
-#define CAN_EQUIP_SLOT_CONFLICT_SOFT		2
+//! slot meta inventory_slot_flags flags
+/// render on mob
+#define INV_SLOT_IS_RENDERED				(1<<0)
+/// considered worn equipment
+#define INV_SLOT_CONSIDERED_WORN			(1<<1)
+/// allow random uid
+#define INV_SLOT_ALLOW_RANDOM_ID			(1<<2)
+/// considered inventory? mob can access normally from hud if so
+#define INV_SLOT_IS_INVENTORY				(1<<3)
+/// hide unless inv is expanded
+#define INV_SLOT_HUD_REQUIRES_EXPAND		(1<<4)
+/// considered abstract - represents a logical action, isn't actually an item holding slot
+#define INV_SLOT_IS_ABSTRACT				(1<<5)
+/// show on strip menu?
+#define INV_SLOT_IS_STRIPPABLE				(1<<6)
 
-// return values for _item_by_slot, _set_inv_slot
-/// this slot doesn't exist
-#define INVENTORY_SLOT_DOES_NOT_EXIST			-1
+#warn finish
+#warn strip mode for normal
+#warn strip mode for show slot name + link only, no item
+#warn strip obfuscation
+//! slot meta strip_mode
+/// normal strip mode: show slot + item (or obscured if slot is obscured)
+#define INV_SLOT_STRIP_MODE_NORMAL				0
+/// one way strip mode: only show when full, don't show item name
+#define INV_SLOT_STRIP_REMOVE_ONLY				1
 
 /// Takes 40ds = 4s to strip someone.
 #define HUMAN_STRIP_DELAY		4 SECONDS
