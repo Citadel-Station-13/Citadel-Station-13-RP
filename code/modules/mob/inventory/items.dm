@@ -301,7 +301,8 @@
  * get strip menu options associated to href key
  */
 /obj/item/proc/get_strip_menu_options(mob/user)
-	return list()
+	RETURN_TYPE(/list)
+	return
 
 /**
  * strip menu act

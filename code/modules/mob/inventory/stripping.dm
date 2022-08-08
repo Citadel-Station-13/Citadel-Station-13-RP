@@ -5,11 +5,13 @@
 		return FALSE
 	if(!ignore_adjacency && !user.Adjacent(src))
 		return FALSE
+	return open_strip_menu(user)
 
 /mob/proc/open_strip_menu(mob/user)
 	var/datum/browser/B = new(user, "strip_window_[REF(src)]", "[name] (stripping)", 340, 540)
 	B.set_content(render_strip_menu(user).Join(""))
 	B.open()
+	return TRUE
 
 /mob/proc/render_strip_menu(mob/user)
 	RETURN_TYPE(/list)
@@ -37,10 +39,33 @@
 		else
 
 			var/list/options =
-			// generate hrefs for the options
+			if(LAZYLEN(options))
+				// generate hrefs for the options
 
 	// now for hands
 	. += "<hr>"
 
+	// now for options
+	var/list/options =
+	if(LAZYLEN(options))
+		// generate hrefs for the options
+
+		. += "<hr>"
+
+	// now for misc
+	. += "<a href='?src=\ref[src];strip=refresh'>Refresh</a><br>"
+
 
 /mob/proc/handle_strip_topic(mob/user, list/href_list)
+
+/**
+ * return key-href values
+ */
+/mob/proc/get_strip_menu_options(mob/user)
+	return
+
+/**
+ * use for strip menu options
+ * adjacency/can act is checked already
+ */
+/mob/proc/strip_menu_topic(mob/user, list/href_list)
