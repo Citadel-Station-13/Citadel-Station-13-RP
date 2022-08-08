@@ -21,9 +21,9 @@
 			add_attack_logs(user, src, "Failed to remove [I] from hand index [index]")
 	else
 		if(put_in_hand(held, index))
-			add_attack_logs(user, src, "Put [I] in hand index [index]")
+			add_attack_logs(user, src, "Put [held] in hand index [index]")
 		else
-			add_attack_logs(user, src, "Failed to put [I] in hand index [index]")
+			add_attack_logs(user, src, "Failed to put [held] in hand index [index]")
 
 /mob/living/carbon/human/proc/handle_strip_from_slot(slot, mob/living/user)
 	if(!handle_strip_prechecks(user))
@@ -48,9 +48,9 @@
 			add_attack_logs(user, src, "Failed to remove [I] from slot [slot]")
 	else
 		if(equip_to_slot_if_possible(held, slot))
-			add_attack_logs(user, src, "Put [I] in slot[slot]")
+			add_attack_logs(user, src, "Put [held] in slot [slot]")
 		else
-			add_attack_logs(user, src, "Failed to put [I] in slot [slot]")
+			add_attack_logs(user, src, "Failed to put [held] in slot [slot]")
 
 /mob/living/carbon/human/proc/handle_strip_prechecks(mob/user)
 	if(user.incapacitated() || !user.Adjacent(src))

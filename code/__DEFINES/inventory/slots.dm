@@ -10,7 +10,7 @@
 #define SLOT_ID_SHOES			"shoes"
 #define SLOT_ID_GLASSES			"glasses"
 #define SLOT_ID_GLOVES			"gloves"
-#define SLOT_ID_SUIT_STORAGE	"suitstore"
+#define SLOT_ID_SUIT_STORAGE	"suitstore"T
 #define SLOT_ID_MASK			"mask"
 #define SLOT_ID_LEFT_EAR		"lear"
 #define SLOT_ID_RIGHT_EAR		"rear"
@@ -40,11 +40,12 @@
 #define INV_SLOT_IS_ABSTRACT				(1<<5)
 /// show on strip menu?
 #define INV_SLOT_IS_STRIPPABLE				(1<<6)
+/// simple stripping - show slot + link, do not show item regardless of obfuscation. handles obfuscation differently.
+#define INV_SLOT_SIMPLE_STRIP				(1<<7)
+/// do not show on strip panel unless it's occupied by an item
+#define INV_SLOT_STRIP_ONLY_REMOVES			(1<<8)
+#warn impl strip modes
 
-#warn finish
-#warn strip mode for normal
-#warn strip mode for show slot name + link only, no item
-#warn strip obfuscation
 //! slot meta strip_mode
 /// normal strip mode: show slot + item (or obscured if slot is obscured)
 #define INV_SLOT_STRIP_MODE_NORMAL				0

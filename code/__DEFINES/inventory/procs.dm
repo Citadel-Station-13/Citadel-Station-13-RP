@@ -50,3 +50,14 @@
 //! return values for _item_by_slot, _set_inv_slot
 /// this slot doesn't exist
 #define INVENTORY_SLOT_DOES_NOT_EXIST			-1
+
+//! return values for procs:
+//? /datum/inventory_slot_meta/proc/check_strip_conceal()
+/// do not show slot
+#define INV_VIEW_OBFUSCATE_HIDE_SLOT			(1<<0)
+/// do not allow operations
+#define INV_VIEW_OBFUSCATE_DISALLOW_INTERACT	(1<<1)
+/// do not allow viewing item name
+#define INV_VIEW_OBFUSCATE_HIDE_ITEM_NAME		(1<<2)
+/// do not allow viewing if an item is there
+#define INV_VIEW_OBFUSCATE_HIDE_ITEM_EXISTENCE	(1<<3)

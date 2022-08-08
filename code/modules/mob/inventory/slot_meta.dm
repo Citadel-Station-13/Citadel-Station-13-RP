@@ -16,11 +16,15 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 			stack_trace("no ID on [path], skipping")
 			continue
 		.[M.id || M.type] = M
+	sortTim(., /proc/cmp_inventory_slot_meta_dsc)
 
 /proc/all_inventory_slot_ids()
 	. = list()
 	for(var/id in GLOB.inventory_slot_meta)
 		. += id
+
+/proc/cmp_inventory_slot_meta_dsc(datum/inventory_slot_meta/a, datum/inventory_slot_meta/b)
+	return b.sort_order - a.sort_order
 
 /**
  * returns inventory slot meta for an id
@@ -80,9 +84,8 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	var/abstract_type = /datum/inventory_slot_meta
 	/// flags
 	var/inventory_slot_flags = INV_SLOT_IS_RENDERED
-	/// display order
+	/// display order - higher is upper
 	var/sort_order = 0
-	#warn sort order standardization + sort cmp proc
 	/// always show on strip/force equip menu, or only show when full
 	var/always_show_on_strip_menu = TRUE
 	/// rendering slot key
@@ -120,6 +123,12 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 /datum/inventory_slot_meta/proc/allow_equip(obj/item/I, mob/wearer, mob/user, force)
 	return TRUE
 
+/**
+ * checks for obfuscation when making the strip menu
+ */
+/datum/inventory_slot_meta/proc/strip_obfuscation_check
+	#warn impl + args
+
 /datum/inventory_slot_meta/inventory
 	abstract_type = /datum/inventory_slot_meta/inventory
 	is_inventory = TRUE
@@ -129,6 +138,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "back"
 	render_key = "back"
 	id = SLOT_ID_BACK
+	sort_order = 2000
 	display_requires_expand = FALSE
 	display_name = "back"
 	display_preposition = "on"
@@ -141,6 +151,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "uniform"
 	render_key = "under"
 	id = SLOT_ID_UNIFORM
+	sort_order = 5000
 	display_name = "body"
 	display_preposition = "on"
 	hud_position = ui_iclothing
@@ -152,6 +163,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "head"
 	render_key = "head"
 	id = SLOT_ID_HEAD
+	sort_order = 10000
 	display_name = "back"
 	display_preposition = "on"
 	display_name = "head"
@@ -165,6 +177,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "outerwear"
 	render_key = "suit"
 	id = SLOT_ID_SUIT
+	sort_order = 7000
 	display_name = "clohtes"
 	display_preposition = "over"
 	hud_position = ui_oclothing
@@ -176,6 +189,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "belt"
 	render_key = "belt"
 	id = SLOT_ID_BELT
+	sort_order = 6000
 	display_requires_expand = FALSE
 	display_name = "waist"
 	display_preposition = "on"
@@ -186,6 +200,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 
 /datum/inventory_slot_meta/inventory/pocket
 	abstract_type = /datum/inventory_slot_meta/inventory/pocket
+	sort_order = 2000
 	is_rendered = FALSE
 	display_requires_expand = FALSE
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_PROC
@@ -216,6 +231,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "id"
 	render_key = "id"
 	id = SLOT_ID_WORN_ID
+	sort_order = 3000
 	display_requires_expand = FALSE
 	display_name = "badge"
 	display_preposition = "as"
@@ -228,6 +244,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "shoes"
 	render_key = "shoes"
 	id = SLOT_ID_SHOES
+	sort_order = 4000
 	display_name = "feet"
 	display_preposition = "on"
 	hud_position = ui_shoes
@@ -239,6 +256,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "gloves"
 	render_key = "gloves"
 	id = SLOT_ID_GLOVES
+	sort_order = 6500
 	display_name = "hands"
 	display_preposition = "on"
 	hud_position = ui_gloves
@@ -250,6 +268,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "glasses"
 	render_key = "glasses"
 	id = SLOT_ID_GLASSES
+	sort_order = 7500
 	display_name = "eyes"
 	display_preposition = "over"
 	hud_position = ui_glasses
@@ -261,6 +280,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "suit storage"
 	render_key = "suit-store"
 	id = SLOT_ID_SUIT_STORAGE
+	sort_order = 500
 	display_requires_expand = FALSE
 	display_name = "suit"
 	display_preposition = "on"
@@ -278,6 +298,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	return FALSE
 
 /datum/inventory_slot_meta/inventory/ears
+	sort_order = 9500
 	abstract_type = /datum/inventory_slot_meta/inventory/ears
 	is_considered_worn = TRUE
 
@@ -305,6 +326,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "mask"
 	render_key = "mask"
 	id = SLOT_ID_MASK
+	sort_order = 9250
 	display_name = "face"
 	display_preposition = "on"
 	hud_position = ui_mask
@@ -312,6 +334,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	slot_flags_required = SLOT_MASK
 
 /datum/inventory_slot_meta/restraints
+	sort_order = 250
 	is_inventory = FALSE
 	always_show_on_strip_menu = FALSE
 	abstract_type = /datum/inventory_slot_meta/restraints

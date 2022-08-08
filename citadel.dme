@@ -2693,6 +2693,7 @@
 #include "code\modules\mob\inventory\inventory.dm"
 #include "code\modules\mob\inventory\items.dm"
 #include "code\modules\mob\inventory\slot_meta.dm"
+#include "code\modules\mob\inventory\stripping.dm"
 #include "code\modules\mob\living\autohiss.dm"
 #include "code\modules\mob\living\butchering.dm"
 #include "code\modules\mob\living\damage_procs.dm"
