@@ -63,10 +63,8 @@
 		if(INTENT_HELP)
 			if (istype(H) && attempt_to_scoop(H))
 				return 0;
-			if(iscarbon(M))
-				if(attempt_cpr_interaction(M))
-					return
-
+			if(iscarbon(M) && attempt_cpr_interaction(M))
+				return TRUE
 			else if(!(M == src && apply_pressure(M, M.zone_sel.selecting)))
 				help_shake_act(M)
 			return TRUE
