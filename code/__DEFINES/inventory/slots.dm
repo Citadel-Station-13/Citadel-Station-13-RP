@@ -41,16 +41,9 @@
 /// show on strip menu?
 #define INV_SLOT_IS_STRIPPABLE				(1<<6)
 /// simple stripping - show slot + link, do not show item regardless of obfuscation. handles obfuscation differently.
-#define INV_SLOT_SIMPLE_STRIP				(1<<7)
+#define INV_SLOT_STRIP_SIMPLE_LINK			(1<<7)
 /// do not show on strip panel unless it's occupied by an item
 #define INV_SLOT_STRIP_ONLY_REMOVES			(1<<8)
-#warn impl strip modes
-
-//! slot meta strip_mode
-/// normal strip mode: show slot + item (or obscured if slot is obscured)
-#define INV_SLOT_STRIP_MODE_NORMAL				0
-/// one way strip mode: only show when full, don't show item name
-#define INV_SLOT_STRIP_REMOVE_ONLY				1
 
 /// Takes 40ds = 4s to strip someone.
 #define HUMAN_STRIP_DELAY		4 SECONDS

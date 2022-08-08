@@ -166,6 +166,12 @@
 	if(wear_mask)
 		. += wear_mask._inv_return_attached()
 
+/mob/living/get_inventory_slot_ids()
+	return ..() + list(
+		SLOT_ID_BACK,
+		SLOT_ID_MASK
+	)
+
 /mob/living/show_inv(mob/user)
 	user.set_machine(src)
 	var/dat = {"

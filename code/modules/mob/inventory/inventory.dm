@@ -370,7 +370,7 @@
 		. = FALSE
 		CRASH("Failed to resolve to slot datm.")
 
-	if(slot_meta.is_abstract)
+	if(slot_meta.inventory_slot_flags & INV_SLOT_IS_ABSTRACT)
 		// special handling: make educated guess, defaulting to yes
 		switch(slot_meta.type)
 			if(/datum/inventory_slot_meta/abstract/left_hand)
@@ -564,7 +564,7 @@
 
 	// resolve slot
 	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
-	if(slot_meta.is_abstract)
+	if(slot_meta.inventory_slot_flags & INV_SLOT_IS_ABSTRACT)
 		// if it's abstract, we go there directly - do not use can_equip as that will just guess.
 		return handle_abstract_slot_insertion(I, slot, flags)
 
@@ -782,7 +782,7 @@
 
 /**
  * THESE PROCS MUST BE OVERRIDDEN FOR NEW SLOTS ON MOBS
- * yes, i managed to shove all basic behaviors that needed overriding into 4 procs
+ * yes, i managed to shove all basic behaviors that needed overriding into 5 procs
  * you're
  * welcome.
  *
@@ -825,4 +825,10 @@
 	return INVENTORY_SLOT_DOES_NOT_EXIST
 
 /mob/proc/_get_all_slots(include_restraints)
+	return list()
+
+/**
+ * return all slot ids we implement
+ */
+/mob/proc/get_inventory_slot_ids()
 	return list()

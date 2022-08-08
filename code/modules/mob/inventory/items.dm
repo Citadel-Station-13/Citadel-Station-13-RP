@@ -295,4 +295,18 @@
 	if(!worn_slot)
 		return FALSE
 	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(worn_slot)
-	return slot_meta.is_considered_worn
+	return slot_meta.inventory_slot_flags & INV_SLOT_CONSIDERED_WORN
+
+/**
+ * get strip menu options associated to href key
+ */
+/obj/item/proc/get_strip_menu_options(mob/user)
+	return list()
+
+/**
+ * strip menu act
+ *
+ * adjacency is pre-checked.
+ */
+/obj/item/proc/strip_menu_topic(mob/user, list/href_list)
+	return
