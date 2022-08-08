@@ -35,7 +35,7 @@
 /datum/map_z_level/rift_lateload/away_debrisfield
 	name = "Away Mission - Debris Field"
 	z = Z_LEVEL_DEBRISFIELD
-
+	base_turf = /turf/space
 
 /datum/map_template/rift_lateload/away_debrisfield/on_map_loaded(z)
 	. = ..()
@@ -54,6 +54,7 @@
 /datum/map_z_level/rift_lateload/away_piratebase
 	name = "Away Mission - Pirate Base"
 	z = Z_LEVEL_PIRATEBASE
+	base_turf = /turf/space
 
 // lavaland start
 #include "lavaland/_lavaland.dm"
@@ -67,6 +68,7 @@
 /datum/map_z_level/rift_lateload/lavaland
 	name = "Away Mission - Lava Land"
 	z = Z_LEVEL_LAVALAND
+	base_turf = /turf/simulated/mineral/floor/lavaland
 
 /datum/map_template/rift_lateload/lavaland/on_map_loaded(z)
 	. = ..()
@@ -106,6 +108,7 @@
 /datum/map_z_level/rift_lateload/lavaland_east
 	name = "Away Mission - Lava Land (East)"
 	z = Z_LEVEL_LAVALAND_EAST
+	base_turf = /turf/simulated/mineral/floor/lavaland
 
 /datum/map_template/rift_lateload/lavaland_east/on_map_loaded(z)
 	. = ..()
@@ -127,6 +130,7 @@
 /datum/map_z_level/rift_lateload/away_g_world
 	name = "Away Mission - Mining Planet"
 	z = Z_LEVEL_MININGPLANET
+	base_turf = /turf/simulated/mineral/floor/classg
 
 /datum/map_template/rift_lateload/away_g_world/on_map_loaded(z)
 	. = ..()
@@ -171,6 +175,7 @@
 /datum/map_z_level/rift_lateload/away_h_world
 	name = "Away Mission - Desert Planet"
 	z = Z_LEVEL_DESERT_PLANET
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/lowdesert
 
 // Gaia Planet Zone.
 /datum/map_template/rift_lateload/away_m_world
@@ -190,6 +195,7 @@
 /datum/map_z_level/rift_lateload/away_m_world
 	name = "Away Mission - Gaia Planet"
 	z = Z_LEVEL_GAIA_PLANET
+	base_turf = /turf/simulated/floor/outdoors/dirt/classm
 
 // Frozen Planet Zone.
 /datum/map_template/rift_lateload/away_p_world
@@ -207,6 +213,7 @@
 /datum/map_z_level/rift_lateload/away_p_world
 	name = "Away Mission - Frozen Planet"
 	z = Z_LEVEL_FROZEN_PLANET
+	base_turf = /turf/simulated/floor/outdoors/ice/classp
 
 // Trade post
 #include "space/trade_port/_tradeport.dm"
@@ -221,6 +228,7 @@
 /datum/map_z_level/rift_lateload/away_tradeport
 	name = "Away Mission - Trade Port"
 	z = Z_LEVEL_TRADEPORT
+	base_turf = /turf/space
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Code Shenanigans for rift lateload maps
