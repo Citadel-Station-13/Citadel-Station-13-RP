@@ -229,7 +229,7 @@
 /obj/machinery/crypod/Initialize(mapload)
 	. = ..()
 	if(type == /obj/machinery/cryopod) // sue me
-		AddComponent(/datum/component/slaved_atom_to_loc, /atom/movable/landmark/spawnpoint/latejoin/station/cryogenics, TRUE)
+		AddComponent(/datum/component/slaved_atom_to_loc, /obj/landmark/spawnpoint/latejoin/station/cryogenics, TRUE)
 
 /obj/machinery/cryopod/robot
 	name = "robotic storage unit"
@@ -406,8 +406,7 @@
 						despawn_occupant(bm, TRUE)
 
 	//Drop all items into the pod.
-	for(var/obj/item/W in to_despawn)
-		to_despawn.drop_from_inventory(W)
+	for(var/obj/item/W in to_despawn.get_equipped_items(TRUE, FALSE))
 		W.forceMove(src)
 
 		if(W.contents.len) //Make sure we catch anything not handled by qdel() on the items.
@@ -624,7 +623,7 @@
 	if(occupant)
 		name = "[name] ([occupant])"
 
-/obj/machinery/cryopod/MouseDrop_T(mob/target, mob/user)
+/obj/machinery/cryopod/MouseDroppedOnLegacy(mob/target, mob/user)
 	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user))
 		return
 	go_in(target, user)

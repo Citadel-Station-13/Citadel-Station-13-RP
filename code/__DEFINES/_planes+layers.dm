@@ -40,6 +40,8 @@ What is the naming convention for planes or layers?
 
 */
 
+// TODO: UNFUCK PLANES. HALF OF THESE HAVE NO REASON TO EXIST. WHOEVER ADDED THEM IS AN IDIOT!
+
 #define CLICKCATCHER_PLANE		-99
 /// Reserved for use in space/parallax
 #define SPACE_PLANE				-95
@@ -77,67 +79,64 @@ What is the naming convention for planes or layers?
 ///Plating
 #define PLATING_PLANE			-44
 	///Under objects, even when planeswapped
-#define DISPOSAL_LAYER		2.1
+	#define DISPOSAL_LAYER		2.1
 	///Under objects, even when planeswapped
-#define PIPES_LAYER			2.2
+	#define PIPES_LAYER			2.2
 	///Under objects, even when planeswapped
-#define WIRES_LAYER			2.3
+	#define WIRES_LAYER			2.3
 	///Pipe-like atmos machinery that goes on the floor, like filters.
-#define ATMOS_LAYER			2.4
+	#define ATMOS_LAYER			2.4
 	///Above stuff like pipes and wires
-#define ABOVE_UTILITY		2.5
+	#define ABOVE_UTILITY		2.5
 ///Turfs themselves, most flooring
 #define TURF_PLANE				-45
 	///The 'bottom' of water tiles.
-#define WATER_FLOOR_LAYER	2.0
+	#define WATER_FLOOR_LAYER	2.0
 	///For floors that automatically add decal overlays
-#define BUILTIN_DECAL_LAYER 2.01
+	#define BUILTIN_DECAL_LAYER 2.01
 	///For intentionally placed floor decal overlays
-#define MAPPER_DECAL_LAYER	2.02
+	#define MAPPER_DECAL_LAYER	2.02
 	///Anything on this layer will render under the water layer.
-#define UNDERWATER_LAYER	2.5
+	#define UNDERWATER_LAYER	2.5
 	///Layer for water overlays.
-#define WATER_LAYER			3.0
+	#define WATER_LAYER			3.0
 	///Snow and wallmounted/floormounted equipment
-#define ABOVE_TURF_LAYER	3.1
-///Permanent decals
+	#define ABOVE_TURF_LAYER	3.1
+// todo: kill all these useless goddamn arbitrary planes and unify things to 3-5 of turf, floor, obj, mob, there is no excuse for this utter charade.
 #define DECAL_PLANE				-44
-///Nonpermanent decals
-#define DIRTY_PLANE				-43
-///Blood is really dirty, but we can do special stuff if we separate it
-#define BLOOD_PLANE				-42
 //Obj planes
 #define OBJ_PLANE				-35
+	/// cleanable debris
+	#define DEBRIS_LAYER			2.4
 	///Layer for stairs
-#define STAIRS_LAYER			2.5
+	#define STAIRS_LAYER			2.5
 	///Layer at which mobs hide to be under things like tables
-#define HIDING_LAYER			2.6
+	#define HIDING_LAYER			2.6
 	///Under all objects if opened. 2.7 due to tables being at 2.6
-#define DOOR_OPEN_LAYER			2.7
+	#define DOOR_OPEN_LAYER			2.7
 	///Just under stuff that wants to be slightly below common objects.
-#define TABLE_LAYER				2.8
+	#define TABLE_LAYER				2.8
 	#define PROJECTILE_HIT_THRESHOLD_LAYER 2.8
 	///Things that want to be slightly below common objects
-#define UNDER_JUNK_LAYER		2.9
+	#define UNDER_JUNK_LAYER		2.9
 	//Turf/Obj layer boundary
 	///Things that want to be slightly above common objects
-#define ABOVE_JUNK_LAYER		3.1
+	#define ABOVE_JUNK_LAYER		3.1
 	///Doors when closed
-#define DOOR_CLOSED_LAYER		3.1
+	#define DOOR_CLOSED_LAYER		3.1
 	///Windows
-#define WINDOW_LAYER			3.2
+	#define WINDOW_LAYER			3.2
 	///Ontop of a window
-#define ON_WINDOW_LAYER			3.3
+	#define ON_WINDOW_LAYER			3.3
 	///Above full tile windows so wall items are clickable
-#define ABOVE_WINDOW_LAYER		3.4
+	#define ABOVE_WINDOW_LAYER		3.4
 	#define MID_LANDMARK_LAYER		3.5
 
 //Mob planes
 #define MOB_PLANE				-25
-	///Should be converted to plane swaps
-#define BELOW_MOB_LAYER			3.9
-	///Should be converted to plane swaps
-#define ABOVE_MOB_LAYER			4.1
+	#define BELOW_MOB_LAYER			3.9
+	#define ABOVE_MOB_LAYER			4.1
+
 //Invisible things plane
 #define CLOAKED_PLANE			-15
 
@@ -222,9 +221,16 @@ What is the naming convention for planes or layers?
 ///Purely for shenanigans (above HUD)
 #define PLANE_ADMIN3			99
 //////////////////////////
+
 /atom/proc/hud_layerise()
 	plane = PLANE_PLAYER_HUD_ITEMS
-	layer = LAYER_HUD_ITEM
+	set_base_layer(LAYER_HUD_ITEM)
+	// appearance_flags |= NO_CLIENT_COLOR
+
+/atom/proc/hud_unlayerise()
+	plane = initial(plane)
+	set_base_layer(initial(layer))
+	// appearance_flags &= ~(NO_CLIENT_COLOR)
 
 /atom/proc/reset_plane_and_layer()
 	plane = initial(plane)

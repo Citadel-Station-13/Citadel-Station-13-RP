@@ -36,9 +36,9 @@
 
 /obj/structure/filingcabinet/attackby(obj/item/P as obj, mob/user as mob)
 	if(istype(P, /obj/item/paper) || istype(P, /obj/item/folder) || istype(P, /obj/item/photo) || istype(P, /obj/item/paper_bundle))
+		if(!user.attempt_insert_item_for_installation(P, src))
+			return
 		to_chat(user, SPAN_NOTICE("You put [P] in [src]."))
-		user.drop_item()
-		P.loc = src
 		open_animation()
 		SStgui.update_uis(src)
 

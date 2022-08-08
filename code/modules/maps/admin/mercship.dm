@@ -133,7 +133,7 @@
 	initial_generic_waypoints = list("manta_ship_near_fore", "manta_ship_near_aft", "manta_ship_near_port", "manta_ship_near_star", "manta_ship_port", "manta_ship_star", "manta_ship_base_dock", "omship_spawn_manta_lander")
 //	initial_restricted_waypoints = list("Mercenary Cruiser's Bay" = list("omship_spawn_manta_lander"))
 
-/atom/movable/landmark/map_data/manta_ship
+/obj/landmark/map_data/manta_ship
 	height = 1
 
 /obj/effect/shuttle_landmark/premade/manta_ship_port

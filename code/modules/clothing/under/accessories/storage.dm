@@ -27,7 +27,7 @@
 	if (hold.handle_attack_hand(user))	//otherwise interact as a regular storage item
 		..(user)
 
-/obj/item/clothing/accessory/storage/MouseDrop(obj/over_object as obj)
+/obj/item/clothing/accessory/storage/OnMouseDropLegacy(obj/over_object as obj)
 	if (has_suit)
 		return
 

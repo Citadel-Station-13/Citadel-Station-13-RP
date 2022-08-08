@@ -203,8 +203,11 @@ proc/getsensorlevel(A)
 			return 1
 	return 0
 
-/mob/proc/abiotic(var/full_body = 0)
-	return 0
+/mob/proc/abiotic(full_body)
+	return FALSE
+
+/mob/proc/item_considered_abiotic(obj/item/I)
+	return I && (I.item_flags & ITEM_ABSTRACT)
 
 //converts intent-strings into numbers and back
 var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
@@ -585,20 +588,21 @@ var/list/global/organ_rel_size = list(
 		return A.sound_env
 
 /mob/proc/position_hud_item(var/obj/item/item, var/slot)
+	var/held = is_holding(item)
 	if(!istype(hud_used) || !slot || !LAZYLEN(hud_used.slot_info))
 		return
 
 	//They may have hidden their entire hud but the hands
-	if(!hud_used.hud_shown && slot > slot_r_hand)
+	if(!hud_used.hud_shown && held)
 		item.screen_loc = null
 		return
 
 	//They may have hidden the icons in the bottom left with the hide button
-	if(!hud_used.inventory_shown && slot > slot_r_store)
+	if(!hud_used.inventory_shown && !held && resolve_inventory_slot_meta(slot)?.display_requires_expand)
 		item.screen_loc = null
 		return
 
-	var/screen_place = hud_used.slot_info["[slot]"]
+	var/screen_place = held? hud_used.hand_info["[get_held_index(item)]"] : hud_used.slot_info["[slot]"]
 	if(!screen_place)
 		item.screen_loc = null
 		return

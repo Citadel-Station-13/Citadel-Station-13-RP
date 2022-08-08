@@ -8,8 +8,9 @@
 	if (!default_language && species_language)
 		default_language = GLOB.all_languages[species_language]
 
-/mob/living/carbon/Life()
-	..()
+/mob/living/carbon/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
 
 	handle_viruses()
 
@@ -216,23 +217,6 @@
 		return 1
 	return
 
-/mob/living/carbon/u_equip(obj/item/W as obj)
-	if(!W)	return 0
-
-	else if (W == handcuffed)
-		handcuffed = null
-		update_handcuffed()
-		if(buckled && buckled.buckle_require_restraints)
-			buckled.unbuckle_mob()
-
-	else if (W == legcuffed)
-		legcuffed = null
-		update_inv_legcuffed()
-	else
-	 ..()
-
-	return
-
 //generates realistic-ish pulse output based on preset levels
 /mob/living/carbon/proc/get_pulse(var/method)	//method 0 is for hands, 1 is for machines, more accurate
 	var/temp = 0								//see setup.dm:694
@@ -329,8 +313,7 @@
 
 /mob/living/carbon/proc/update_handcuffed()
 	if(handcuffed)
-		drop_l_hand()
-		drop_r_hand()
+		drop_all_held_items()
 		stop_pulling()
 	update_action_buttons() //some of our action buttons might be unusable when we're handcuffed.
 	update_inv_handcuffed()

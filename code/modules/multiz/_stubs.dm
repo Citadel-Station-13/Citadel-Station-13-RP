@@ -1,4 +1,4 @@
-/atom/movable/landmark/map_data
+/obj/landmark/map_data
 	name = "Unknown"
 	desc = "An unknown location."
 	invisibility = 101

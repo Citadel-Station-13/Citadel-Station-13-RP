@@ -65,8 +65,7 @@ emp_act
 
 			if(c_hand && (stun_amount || agony_amount > 10))
 				msg_admin_attack("[key_name(src)] was disarmed by a stun effect")
-
-				drop_from_inventory(c_hand)
+				drop_active_held_item()
 				if (affected.robotic >= ORGAN_ROBOT)
 					INVOKE_ASYNC(src, /mob/proc/custom_emote, 1, "drops what they were holding, their [affected.name] malfunctioning!")
 				else
@@ -469,7 +468,7 @@ emp_act
 
 // This does a prob check to catch the thing flying at you, with a minimum of 1%
 /mob/living/carbon/human/proc/can_catch(var/obj/O)
-	if(!get_active_hand())	// If active hand is empty
+	if(!get_active_held_item())	// If active hand is empty
 		var/obj/item/organ/external/temp = organs_by_name["r_hand"]
 		if (hand)
 			temp = organs_by_name["l_hand"]

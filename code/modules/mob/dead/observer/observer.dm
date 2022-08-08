@@ -91,6 +91,8 @@
 	var/last_revive_notification = null // world.time of last notification, used to avoid spamming players from defibs or cloners.
 	/// stealthmin vars
 	var/original_name
+	/// are we a poltergeist and get to do stupid things like move items, throw things, and move chairs?
+	var/is_spooky = FALSE
 
 /mob/observer/dead/Initialize(mapload)
 	var/mob/body = loc
@@ -179,10 +181,15 @@ Transfer_mind is there to check if mob is being deleted/not going to have a body
 Works together with spawning an observer, noted above.
 */
 
-/mob/observer/dead/Life()
-	..()
-	if(!loc) return
-	if(!client) return 0
+/mob/observer/dead/Life(seconds, times_fired)
+	if((. = ..()))
+		return
+
+	if(!client)
+		return
+
+	if(!loc)
+		return
 
 	handle_regular_hud_updates()
 	handle_vision()
@@ -531,7 +538,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	src << browse(dat, "window=manifest;size=370x420;can_close=1")
 
 //This is called when a ghost is drag clicked to something.
-/mob/observer/dead/MouseDrop(atom/over)
+/mob/observer/dead/OnMouseDropLegacy(atom/over)
 	if(!usr || !over) return
 	if (isobserver(usr) && usr.client && usr.client.holder && isliving(over))
 		if (usr.client.holder.cmd_ghost_drag(src,over))

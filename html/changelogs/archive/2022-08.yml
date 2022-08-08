@@ -1,0 +1,17 @@
+2022-08-02:
+  Captain277:
+  - bugfix: Fixes Skyfall.
+  LordPapalus:
+  - rscadd: '*achime'
+  - rscadd: achime.ogg
+  Zandario:
+  - bugfix: Adherent work as they should.
+  - bugfix: Fixed some Teshari markings that were using the incorrect blending method
+      and bodypart targets.
+  - bugfix: Teshari Heterochromia also works properly now.
+2022-08-04:
+  TheLordME:
+  - bugfix: fixed spawning issues from local
+  lectronyx:
+  - rscadd: closed eyes pattern to eye_stuff.dm
+  - imageadd: closed eyes state to eye_stuff.dmi

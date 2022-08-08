@@ -198,7 +198,7 @@
  * optional hard_refresh block the ui entirely while this is refreshing. use if you don't want users to see an ui during a queued refresh.
  */
 /datum/tgui/proc/send_full_update(custom_data, force, hard_refresh)
-	if(!user.client || !initialized || closing)
+	if(!initialized || closing || !user.client)
 		return
 	if(!COOLDOWN_FINISHED(src, refresh_cooldown))
 		refreshing = max(refreshing, hard_refresh? UI_HARD_REFRESHING : UI_SOFT_REFRESHING)

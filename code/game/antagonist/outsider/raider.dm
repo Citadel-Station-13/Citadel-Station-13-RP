@@ -205,7 +205,7 @@ var/datum/antagonist/raider/raiders
 	if(!..())
 		return 0
 
-	if(player.species && player.species.get_bodytype() == SPECIES_VOX)
+	if(player.species && player.species.get_bodytype_legacy() == SPECIES_VOX)
 		equip_vox(player)
 	else
 		var/new_shoes =   pick(raider_shoes)
@@ -214,16 +214,16 @@ var/datum/antagonist/raider/raiders
 		var/new_helmet =  pick(raider_helmets)
 		var/new_suit =    pick(raider_suits)
 
-		player.equip_to_slot_or_del(new new_shoes(player),slot_shoes)
+		player.equip_to_slot_or_del(new new_shoes(player),SLOT_ID_SHOES)
 		if(!player.shoes)
 			//If equipping shoes failed, fall back to equipping sandals
 			var/fallback_type = pick(/obj/item/clothing/shoes/sandal, /obj/item/clothing/shoes/boots/jackboots/toeless)
-			player.equip_to_slot_or_del(new fallback_type(player), slot_shoes)
+			player.equip_to_slot_or_del(new fallback_type(player), SLOT_ID_SHOES)
 
-		player.equip_to_slot_or_del(new new_uniform(player),slot_w_uniform)
-		player.equip_to_slot_or_del(new new_glasses(player),slot_glasses)
-		player.equip_to_slot_or_del(new new_helmet(player),slot_head)
-		player.equip_to_slot_or_del(new new_suit(player),slot_wear_suit)
+		player.equip_to_slot_or_del(new new_uniform(player),SLOT_ID_UNIFORM)
+		player.equip_to_slot_or_del(new new_glasses(player),SLOT_ID_GLASSES)
+		player.equip_to_slot_or_del(new new_helmet(player),SLOT_ID_HEAD)
+		player.equip_to_slot_or_del(new new_suit(player),SLOT_ID_SUIT)
 		equip_weapons(player)
 
 	var/obj/item/card/id/id = create_id("Visitor", player, equip = 0)
@@ -231,7 +231,7 @@ var/datum/antagonist/raider/raiders
 	id.assignment = "Visitor"
 	var/obj/item/storage/wallet/W = new(player)
 	W.handle_item_insertion(id)
-	player.equip_to_slot_or_del(W, slot_wear_id)
+	player.equip_to_slot_or_del(W, SLOT_ID_WORN_ID)
 	spawn_money(rand(50,150)*10,W)
 	create_radio(RAID_FREQ, player)
 
@@ -253,18 +253,18 @@ var/datum/antagonist/raider/raiders
 			holster.holstered = secondary
 			secondary.loc = holster
 		else
-			player.equip_to_slot_or_del(secondary, slot_belt)
+			player.equip_to_slot_or_del(secondary, SLOT_ID_BELT)
 
 	if(primary.slot_flags & SLOT_HOLSTER)
 		holster = new new_holster(T)
 		holster.holstered = primary
 		primary.loc = holster
 	else if(!player.belt && (primary.slot_flags & SLOT_BELT))
-		player.equip_to_slot_or_del(primary, slot_belt)
+		player.equip_to_slot_or_del(primary, SLOT_ID_BELT)
 	else if(!player.back && (primary.slot_flags & SLOT_BACK))
-		player.equip_to_slot_or_del(primary, slot_back)
+		player.equip_to_slot_or_del(primary, SLOT_ID_BACK)
 	else
-		player.put_in_any_hand_if_possible(primary)
+		player.put_in_hands(primary)
 
 	//If they got a projectile gun, give them a little bit of spare ammo
 	equip_ammo(player, primary)
@@ -274,20 +274,20 @@ var/datum/antagonist/raider/raiders
 		if(istype(uniform) && uniform.can_attach_accessory(holster))
 			uniform.attackby(holster, player)
 		else
-			player.put_in_any_hand_if_possible(holster)
+			player.put_in_hands(holster)
 
 /datum/antagonist/raider/proc/equip_ammo(var/mob/living/carbon/human/player, var/obj/item/gun/gun)
 	if(istype(gun, /obj/item/gun/projectile))
 		var/obj/item/gun/projectile/bullet_thrower = gun
 		if(bullet_thrower.magazine_type)
-			player.equip_to_slot_or_del(new bullet_thrower.magazine_type(player), slot_l_store)
+			player.equip_to_slot_or_del(new bullet_thrower.magazine_type(player), SLOT_ID_LEFT_POCKET)
 			if(prob(20)) //don't want to give them too much
-				player.equip_to_slot_or_del(new bullet_thrower.magazine_type(player), slot_r_store)
+				player.equip_to_slot_or_del(new bullet_thrower.magazine_type(player), SLOT_ID_RIGHT_POCKET)
 		else if(bullet_thrower.ammo_type)
 			var/obj/item/storage/box/ammobox = new(get_turf(player.loc))
 			for(var/i in 1 to rand(3,5) + rand(0,2))
 				new bullet_thrower.ammo_type(ammobox)
-			player.put_in_any_hand_if_possible(ammobox)
+			player.put_in_hands(ammobox)
 		return
 	if(istype(gun, /obj/item/gun/launcher/grenade))
 		var/list/grenades = list(
@@ -299,18 +299,18 @@ var/datum/antagonist/raider/raiders
 		for(var/i in 1 to 7)
 			var/grenade_type = pick(grenades)
 			new grenade_type(ammobox)
-		player.put_in_any_hand_if_possible(ammobox)
+		player.put_in_hands(ammobox)
 
 /datum/antagonist/raider/proc/equip_vox(var/mob/living/carbon/human/player)
 
 	var/uniform_type = pick(list(/obj/item/clothing/under/vox/vox_robes,/obj/item/clothing/under/vox/vox_casual))
 
-	player.equip_to_slot_or_del(new uniform_type(player), slot_w_uniform)
-	player.equip_to_slot_or_del(new /obj/item/clothing/shoes/magboots/vox(player), slot_shoes) // REPLACE THESE WITH CODED VOX ALTERNATIVES.
-	player.equip_to_slot_or_del(new /obj/item/clothing/gloves/vox(player), slot_gloves) // AS ABOVE.
-	player.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/swat/vox(player), slot_wear_mask)
-	player.equip_to_slot_or_del(new /obj/item/tank/vox(player), slot_back)
-	player.equip_to_slot_or_del(new /obj/item/flashlight(player), slot_r_store)
+	player.equip_to_slot_or_del(new uniform_type(player), SLOT_ID_UNIFORM)
+	player.equip_to_slot_or_del(new /obj/item/clothing/shoes/magboots/vox(player), SLOT_ID_SHOES) // REPLACE THESE WITH CODED VOX ALTERNATIVES.
+	player.equip_to_slot_or_del(new /obj/item/clothing/gloves/vox(player), SLOT_ID_GLOVES) // AS ABOVE.
+	player.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/swat/vox(player), SLOT_ID_MASK)
+	player.equip_to_slot_or_del(new /obj/item/tank/vox(player), SLOT_ID_BACK)
+	player.equip_to_slot_or_del(new /obj/item/flashlight(player), SLOT_ID_RIGHT_POCKET)
 
 	player.internal = locate(/obj/item/tank) in player.contents
 	if(istype(player.internal,/obj/item/tank) && player.internals)

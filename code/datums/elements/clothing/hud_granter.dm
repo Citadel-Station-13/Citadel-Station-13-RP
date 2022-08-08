@@ -13,7 +13,7 @@
 	src.slots = slots
 	src.huds = huds
 	RegisterSignal(target, COMSIG_ITEM_EQUIPPED, .proc/on_equip)
-	RegisterSignal(target, COMSIG_ITEM_DROPPED, .proc/on_drop)
+	RegisterSignal(target, COMSIG_ITEM_UNEQUIPPED, .proc/on_unequip)
 
 /datum/element/clothing/hud_granter/Detach(datum/source)
 	. = ..()
@@ -29,7 +29,7 @@
 		var/datum/atom_hud/H = GLOB.huds[hud]
 		H.add_hud_to(M)
 
-/datum/element/clothing/hud_granter/proc/on_drop(datum/source, mob/M, slot)
+/datum/element/clothing/hud_granter/proc/on_unequip(datum/source, mob/M, slot)
 	if(!(slot in slots))
 		return
 	for(var/hud in huds)

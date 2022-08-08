@@ -62,20 +62,20 @@
 
 	//This is what hides what
 	var/list/hidden = list(
-		BP_GROIN = skip_body & EXAMINE_SKIPGROIN,
-		BP_TORSO = skip_body & EXAMINE_SKIPBODY,
-		BP_HEAD  = skip_body & EXAMINE_SKIPHEAD,
-		BP_L_ARM = skip_body & EXAMINE_SKIPARMS,
-		BP_R_ARM = skip_body & EXAMINE_SKIPARMS,
-		BP_L_HAND= skip_body & EXAMINE_SKIPHANDS,
-		BP_R_HAND= skip_body & EXAMINE_SKIPHANDS,
-		BP_L_FOOT= skip_body & EXAMINE_SKIPFEET,
-		BP_R_FOOT= skip_body & EXAMINE_SKIPFEET,
-		BP_L_LEG = skip_body & EXAMINE_SKIPLEGS,
-		BP_R_LEG = skip_body & EXAMINE_SKIPLEGS,
+		BP_GROIN  = skip_body & EXAMINE_SKIPGROIN,
+		BP_TORSO  = skip_body & EXAMINE_SKIPBODY,
+		BP_HEAD   = skip_body & EXAMINE_SKIPHEAD,
+		BP_L_ARM  = skip_body & EXAMINE_SKIPARMS,
+		BP_R_ARM  = skip_body & EXAMINE_SKIPARMS,
+		BP_L_HAND = skip_body & EXAMINE_SKIPHANDS,
+		BP_R_HAND = skip_body & EXAMINE_SKIPHANDS,
+		BP_L_FOOT = skip_body & EXAMINE_SKIPFEET,
+		BP_R_FOOT = skip_body & EXAMINE_SKIPFEET,
+		BP_L_LEG  = skip_body & EXAMINE_SKIPLEGS,
+		BP_R_LEG  = skip_body & EXAMINE_SKIPLEGS,
 	)
 
-	. = list("<span class='info'>[icon2html(src, user)] This is <EM>[src.name]</EM>")
+	. = list()
 
 	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
 
@@ -106,16 +106,16 @@
 			synth_gender = "an android"
 		else if(gender == FEMALE)
 			synth_gender = "a gynoid"
-		speciesblurb += "<font color='#555555'>[synth_gender]!</font>"
+		speciesblurb += "a <font color='#555555'>[synth_gender]!</font>"
 	else
-		speciesblurb += "<font color='[species.get_flesh_colour(src)]'>[dna.custom_species ? dna.custom_species : species.get_examine_name()]</font>"
+		speciesblurb += "a <font color='[species.get_flesh_colour(src)]'>[dna.custom_species ? dna.custom_species : species.get_examine_name()]</font>"
 
-	. += "[T.He] [T.is] a [speciesblurb]!"
+	// The first line of the examine block.
+	. += SPAN_INFO("[icon2html(src, user)] This is <EM>[src.name]</EM>, [T.he] [T.is] [speciesblurb]!")
 
 	var/extra_species_text = species.get_additional_examine_text(src)
 	if(extra_species_text)
 		. += "[extra_species_text]"
-
 
 	//uniform
 	if(w_uniform && !(skip_gear & EXAMINE_SKIPJUMPSUIT) && w_uniform.show_examine)
@@ -128,26 +128,26 @@
 				if(skip_gear & EXAMINE_SKIPHOLSTER)
 					for(var/obj/item/clothing/accessory/A in U.accessories)
 						if(A.show_examine && !istype(A, /obj/item/clothing/accessory/holster)) // If we're supposed to skip holsters, actually skip them
-							accessories_visible.Add("[FORMAT_TEXT_LOOKITEM(A)]")
+							accessories_visible.Add(FORMAT_TEXT_LOOKITEM(A))
 				else
 					for(var/obj/item/clothing/accessory/A in U.accessories)
-						if(A.concealed_holster == 0 && A.show_examine)
-							accessories_visible.Add("[FORMAT_TEXT_LOOKITEM(A)]")
+						if(A.concealed_holster == FALSE && A.show_examine)
+							accessories_visible.Add(FORMAT_TEXT_LOOKITEM(A))
 
 				if(accessories_visible.len)
-					tie_msg += " Attached to it is [english_list(accessories_visible)]."
+					tie_msg += SPAN_INFO(" Attached to it is [english_list(accessories_visible)].")
 
 		if(w_uniform.blood_DNA)
-			. += SPAN_WARNING("[icon2html(w_uniform, user)] [T.He] [T.is] wearing [w_uniform.gender==PLURAL?"some":"a"] [(w_uniform.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(w_uniform)]![tie_msg]")
+			. += SPAN_WARNING("<hr>[icon2html(w_uniform, user)] [T.He] [T.is] wearing [w_uniform.gender == PLURAL ? "some" : "a"] [(w_uniform.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(w_uniform)]![tie_msg]")
 		else
-			. += "[icon2html(w_uniform, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(w_uniform)].[tie_msg]"
+			. += SPAN_INFO("<hr>[icon2html(w_uniform, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(w_uniform)].[tie_msg]")
 
 	//head
 	if(head && !(skip_gear & EXAMINE_SKIPHELMET) && head.show_examine)
 		if(head.blood_DNA)
-			. += SPAN_WARNING("[icon2html(head, user)] [T.He] [T.is] wearing [head.gender==PLURAL?"some":"a"] [(head.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(head)] on [T.his] head!")
+			. += SPAN_WARNING("[icon2html(head, user)] [T.He] [T.is] wearing [head.gender == PLURAL ? "some" : "a"] [(head.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(head)] on [T.his] head!")
 		else
-			. += "[icon2html(head, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(head)] on [T.his] head."
+			. += SPAN_INFO("[icon2html(head, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(head)] on [T.his] head.")
 
 	//suit/armour
 	if(wear_suit)
@@ -155,47 +155,51 @@
 		if(istype(wear_suit,/obj/item/clothing/suit))
 			var/obj/item/clothing/suit/U = wear_suit
 			if(LAZYLEN(U.accessories))
-				tie_msg += " Attached to it is [english_list(FORMAT_TEXT_LOOKITEM(U.accessories))]."
+				var/list/assembled = list()
+				for(var/obj/item/clothing/accessory/A in U.accessories)
+					assembled += FORMAT_TEXT_LOOKITEM(A)
+				tie_msg += SPAN_INFO(" Attached to it is [english_list(assembled)].")
 
 		if(wear_suit.blood_DNA)
-			. += SPAN_WARNING("[T.He] [T.is] wearing [icon2html(thing = wear_suit, target = user)] [wear_suit.gender==PLURAL?"some":"a"] [(wear_suit.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(wear_suit)][tie_msg]!")
+			. += SPAN_WARNING("[T.He] [T.is] wearing [icon2html(thing = wear_suit, target = user)] [wear_suit.gender == PLURAL ? "some" : "a"] [(wear_suit.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(wear_suit)][tie_msg]!")
 		else
-			. += "[icon2html(wear_suit, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(wear_suit)].[tie_msg]"
+			. += SPAN_INFO("[icon2html(wear_suit, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(wear_suit)].[tie_msg]")
 
 		//suit/armour storage
 		if(s_store && !(skip_gear & EXAMINE_SKIPSUITSTORAGE) && s_store.show_examine)
 			if(s_store.blood_DNA)
-				. += SPAN_WARNING("[icon2html(s_store, user)] [T.He] [T.is] carrying [s_store.gender==PLURAL?"some":"a"] [(s_store.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(s_store)] on [T.his] [FORMAT_TEXT_LOOKITEM(wear_suit)]!")
+				. += SPAN_WARNING("[icon2html(s_store, user)] [T.He] [T.is] carrying [s_store.gender == PLURAL ? "some" : "a"] [(s_store.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(s_store)] on [T.his] [FORMAT_TEXT_LOOKITEM(wear_suit)]!")
 			else
-				. += "[icon2html(s_store, user)] [T.He] [T.is] carrying \a [FORMAT_TEXT_LOOKITEM(s_store)] on [T.his] [FORMAT_TEXT_LOOKITEM(wear_suit)]."
+				. += SPAN_INFO("[icon2html(s_store, user)] [T.He] [T.is] carrying \a [FORMAT_TEXT_LOOKITEM(s_store)] on [T.his] [FORMAT_TEXT_LOOKITEM(wear_suit)].")
 
 	//back
 	if(back && !(skip_gear & EXAMINE_SKIPBACKPACK) && back.show_examine)
 		if(back.blood_DNA)
-			. += SPAN_WARNING("[icon2html(back, user)] [T.He] [T.has] [back.gender==PLURAL?"some":"a"] [(back.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(back)] on [T.his] back.")
+			. += SPAN_WARNING("[icon2html(back, user)] [T.He] [T.has] [back.gender == PLURAL ? "some" : "a"] [(back.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(back)] on [T.his] back.")
 		else
-			. += "[icon2html(back, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(back)] on [T.his] back."
+			. += SPAN_INFO("[icon2html(back, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(back)] on [T.his] back.")
 
 	//left hand
 	if(l_hand && l_hand.show_examine)
 		if(l_hand.blood_DNA)
-			. += SPAN_WARNING("[icon2html(l_hand, user)] [T.He] [T.is] holding [l_hand.gender==PLURAL?"some":"a"] [(l_hand.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(l_hand)] in [T.his] left hand!")
+			. += SPAN_WARNING("[icon2html(l_hand, user)] [T.He] [T.is] holding [l_hand.gender == PLURAL ? "some" : "a"] [(l_hand.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(l_hand)] in [T.his] left hand!")
 		else
-			. += "[icon2html(l_hand, user)] [T.He] [T.is] holding \a [FORMAT_TEXT_LOOKITEM(l_hand)] in [T.his] left hand."
+			. += SPAN_INFO("[icon2html(l_hand, user)] [T.He] [T.is] holding \a [FORMAT_TEXT_LOOKITEM(l_hand)] in [T.his] left hand.")
 
 	//right hand
 	if(r_hand && r_hand.show_examine)
 		if(r_hand.blood_DNA)
-			. += SPAN_WARNING("[icon2html(r_hand, user)] [T.He] [T.is] holding [r_hand.gender==PLURAL?"some":"a"] [(r_hand.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(r_hand)] in [T.his] right hand!")
+			. += SPAN_WARNING("[icon2html(r_hand, user)] [T.He] [T.is] holding [r_hand.gender == PLURAL ? "some" : "a"] [(r_hand.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(r_hand)] in [T.his] right hand!")
 		else
-			. += "[icon2html(r_hand, user)] [T.He] [T.is] holding \a [FORMAT_TEXT_LOOKITEM(r_hand)] in [T.his] right hand."
+			. += SPAN_INFO("[icon2html(r_hand, user)] [T.He] [T.is] holding \a [FORMAT_TEXT_LOOKITEM(r_hand)] in [T.his] right hand.")
 
 	//gloves
 	if(gloves && !(skip_gear & EXAMINE_SKIPGLOVES) && gloves.show_examine)
 		if(gloves.blood_DNA)
-			. += SPAN_WARNING("[icon2html(gloves, user)] [T.He] [T.has] [gloves.gender==PLURAL?"some":"a"] [(gloves.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(gloves)] on [T.his] hands!")
+			. += SPAN_WARNING("[icon2html(gloves, user)] [T.He] [T.has] [gloves.gender == PLURAL ? "some" : "a"] [(gloves.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(gloves)] on [T.his] hands!")
 		else
-			. += "[icon2html(gloves, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(gloves)] on [T.his] hands."
+			. += SPAN_INFO("[icon2html(gloves, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(gloves)] on [T.his] hands.")
+
 	else if(blood_DNA && !(skip_body & EXAMINE_SKIPHANDS))
 		. += SPAN_WARNING("[T.He] [T.has] [(hand_blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained hands!")
 
@@ -213,16 +217,17 @@
 	//belt
 	if(belt && !(skip_gear & EXAMINE_SKIPBELT) && belt.show_examine)
 		if(belt.blood_DNA)
-			. += SPAN_WARNING("[icon2html(belt, user)] [T.He] [T.has] [belt.gender==PLURAL?"some":"a"] [(belt.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(belt)] about [T.his] waist!")
+			. += SPAN_WARNING("[icon2html(belt, user)] [T.He] [T.has] [belt.gender == PLURAL ? "some" : "a"] [(belt.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(belt)] about [T.his] waist!")
 		else
-			. += "[icon2html(belt, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(belt)] about [T.his] waist."
+			. += SPAN_INFO("[icon2html(belt, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(belt)] about [T.his] waist.")
 
 	//shoes
 	if(shoes && !(skip_gear & EXAMINE_SKIPSHOES) && shoes.show_examine)
 		if(shoes.blood_DNA)
-			. += SPAN_WARNING("[icon2html(shoes, user)] [T.He] [T.is] wearing [shoes.gender==PLURAL?"some":"a"] [(shoes.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(shoes)] on [T.his] feet!")
+			. += SPAN_WARNING("[icon2html(shoes, user)] [T.He] [T.is] wearing [shoes.gender == PLURAL ? "some" : "a"] [(shoes.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(shoes)] on [T.his] feet!")
 		else
-			. += "[icon2html(shoes, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(shoes)] on [T.his] feet."
+			. += SPAN_INFO("[icon2html(shoes, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(shoes)] on [T.his] feet.")
+
 	else if(feet_blood_DNA && !(skip_body & EXAMINE_SKIPHANDS))
 		. += SPAN_WARNING("[T.He] [T.has] [(feet_blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained feet!")
 
@@ -233,24 +238,24 @@
 			descriptor = "in [T.his] mouth"
 
 		if(wear_mask.blood_DNA)
-			. += SPAN_WARNING("[icon2html(wear_mask, user)] [T.He] [T.has] [wear_mask.gender==PLURAL?"some":"a"] [(wear_mask.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(wear_mask)] [descriptor]!")
+			. += SPAN_WARNING("[icon2html(wear_mask, user)] [T.He] [T.has] [wear_mask.gender == PLURAL ? "some" : "a"] [(wear_mask.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(wear_mask)] [descriptor]!")
 		else
-			. += "[icon2html(wear_mask, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(wear_mask)] [descriptor]."
+			. += SPAN_INFO("[icon2html(wear_mask, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(wear_mask)] [descriptor].")
 
 	//eyes
 	if(glasses && !(skip_gear & EXAMINE_SKIPEYEWEAR) && glasses.show_examine)
 		if(glasses.blood_DNA)
-			. += SPAN_WARNING("[icon2html(glasses, user)] [T.He] [T.has] [glasses.gender==PLURAL?"some":"a"] [(glasses.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(glasses)] covering [T.his] eyes!")
+			. += SPAN_WARNING("[icon2html(glasses, user)] [T.He] [T.has] [glasses.gender == PLURAL ? "some" : "a"] [(glasses.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(glasses)] covering [T.his] eyes!")
 		else
-			. += "[icon2html(glasses, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(glasses)] covering [T.his] eyes."
+			. += SPAN_INFO("[icon2html(glasses, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(glasses)] covering [T.his] eyes.")
 
 	//left ear
 	if(l_ear && !(skip_gear & EXAMINE_SKIPEARS) && l_ear.show_examine)
-		. += "[icon2html(l_ear, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(l_ear)] on [T.his] left ear."
+		. += SPAN_INFO("[icon2html(l_ear, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(l_ear)] on [T.his] left ear.")
 
 	//right ear
 	if(r_ear && !(skip_gear & EXAMINE_SKIPEARS) && r_ear.show_examine)
-		. += "[icon2html(r_ear, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(r_ear)] on [T.his] right ear."
+		. += SPAN_INFO("[icon2html(r_ear, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(r_ear)] on [T.his] right ear.")
 
 	//ID
 	if(wear_id && wear_id.show_examine)
@@ -264,10 +269,10 @@
 		if(id && (id != real_name) && (get_dist(src, usr) <= 1) && prob(10))
 			. += "<span class='warning'>[T.He] [T.is] wearing [icon2html(thing = wear_id, target = user)] \a [wear_id] yet something doesn't seem right...</span>"
 		else*/
-		. += "[icon2html(wear_id, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(wear_id)]."
+		. += SPAN_INFO("[icon2html(wear_id, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(wear_id)].")
 
 	if(istype(src, /mob/living/carbon/human/dummy))
-		. += "[T.He] [T.is] strangely life like. You feel uneasy staring at [T.him] for too long."
+		. += SPAN_INFO("[T.He] [T.is] strangely life like. You feel uneasy staring at [T.him] for too long.")
 
 	//Jitters
 	if(is_jittery)
@@ -285,10 +290,10 @@
 			. += SPAN_WARNING("[T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(o.splinted)] on [T.his] [o.name]!")
 
 	if(suiciding)
-		. += SPAN_WARNING("[T.He] appears to have commited suicide... there is no hope of recovery.")
+		. += SPAN_WARNING("[T.He] appears to have commited suicide...  There is no hope of recovery.")
 
 
-//! I hate this. Thought it's better than what it was before. -Zandario
+//! I hate this. Though it's better than what it was before. -Zandario
 	var/message = FALSE
 	var/weight_examine = round(weight)
 	if(show_pudge()) //Some clothing or equipment can hide this.
@@ -302,19 +307,19 @@
 			if(0 to 74)
 				message = SPAN_WARNING("[T.He] [T.is] terribly lithe and frail!")
 			if(75 to 99)
-				message = "[T.He] [T.has] a very slender frame."
+				message = SPAN_INFO("[T.He] [T.has] a very slender frame.")
 			if(100 to 124)
-				message = "[T.He] [T.has] a lightweight, athletic build."
+				message = SPAN_INFO("[T.He] [T.has] a lightweight, athletic build.")
 			if(125 to 174)
-				message = "[T.He] [T.has] a healthy, average body."
+				message = SPAN_INFO("[T.He] [T.has] a healthy, average body.")
 			if(175 to 224)
-				message = "[T.He] [T.has] a thick, [t_heavy] physique."
+				message = SPAN_INFO("[T.He] [T.has] a thick, [t_heavy] physique.")
 			if(225 to 274)
-				message = "[T.He] [T.has] a plush, chubby figure."
+				message = SPAN_INFO("[T.He] [T.has] a plush, chubby figure.")
 			if(275 to 325)
-				message = "[T.He] [T.has] an especially plump body with a round potbelly and large hips."
+				message = SPAN_INFO("[T.He] [T.has] an especially plump body with a round potbelly and large hips.")
 			if(325 to 374)
-				message = "[T.He] [T.has] a very fat frame with a bulging potbelly, squishy rolls of pudge, very wide hips, and plump set of jiggling thighs."
+				message = SPAN_INFO("[T.He] [T.has] a very fat frame with a bulging potbelly, squishy rolls of pudge, very wide hips, and plump set of jiggling thighs.")
 			if(375 to 474)
 				message = SPAN_WARNING("[T.He] [T.is] incredibly obese. [T.His] massive potbelly sags over [T.his] waistline while [T.his] fat ass would probably require two chairs to sit down comfortably!")
 			else
@@ -334,11 +339,12 @@
 		. += attempt_vr(src,"examine_chimera",args)
 
 	if(mSmallsize in mutations)
-		. += "[T.He] [T.is] very short!"
+		. += SPAN_WARNING("[T.He] [T.is] very short!")
 
+	// Pulse Checking.
 	if(src.stat)
 		. += SPAN_WARNING("[T.He] [T.is]n't responding to anything around [T.him] and seems to be asleep.")
-		if((stat == 2 || src.losebreath) && get_dist(user, src) <= 3)
+		if((stat == DEAD || src.losebreath) && get_dist(user, src) <= 3)
 			. += SPAN_WARNING("[T.He] [T.does] not appear to be breathing.")
 		if(istype(user, /mob/living/carbon/human) && !user.stat && Adjacent(user))
 			user.visible_message("<b>[usr]</b> checks [src]'s pulse.", "You check [src]'s pulse.")
@@ -350,7 +356,7 @@
 					to_chat(user, SPAN_DEADSAY("[T.He] [T.has] a pulse!"))
 
 	if(fire_stacks)
-		. += "[T.He] [T.is] soaking wet."
+		. += SPAN_WARNING("[T.He] [T.is] soaking wet.")
 	if(on_fire)
 		. += SPAN_DANGER("[T.He] [T.is] on fire!.")
 
@@ -363,9 +369,9 @@
 		else if(!client)
 			. += SPAN_DEADSAY("[T.He] [T.is] [ssd_msg].")
 		if(client && ((client.inactivity / 10) / 60 > 10)) //10 Minutes
-			. += "\[Inactive for [round((client.inactivity/10)/60)] minutes\]"
+			. += SPAN_INFO("\[Inactive for [round((client.inactivity/10)/60)] minutes\]")
 		else if(disconnect_time)
-			. += "\[Disconnected/ghosted [round(((world.realtime - disconnect_time)/10)/60)] minutes ago\]"
+			. += SPAN_INFO("\[Disconnected/ghosted [round(((world.realtime - disconnect_time)/10)/60)] minutes ago\]")
 
 	var/list/wound_flavor_text = list()
 	var/list/is_bleeding = list()
@@ -395,7 +401,7 @@
 
 			if(!looks_synth && temp.robotic == ORGAN_ROBOT)
 				if(!(temp.brute_dam + temp.burn_dam))
-					built = "[T.He] [T.has] a [temp.name]."
+					built = SPAN_INFO("[T.He] [T.has] a [temp.name].")
 				else
 					built = SPAN_WARNING("[T.He] [T.has] a [temp.name] with [temp.get_wounds_desc()]!")
 				continue
@@ -430,7 +436,7 @@
 	for(var/implant in get_visible_implants(0))
 		. += SPAN_DANGER("[src] [T.has] \a [FORMAT_TEXT_LOOKITEM(implant)] sticking out of [T.his] flesh!")
 	if(digitalcamo)
-		. += "[T.He] [T.is] repulsively uncanny!"
+		. += SPAN_WARNING("[T.He] [T.is] repulsively uncanny!")
 
 	if(hasHUD(user,"security"))
 		var/perpname = name
@@ -481,19 +487,17 @@
 
 	. += applying_pressure
 
-	. += "<hr>"
-
 	var/show_descs = show_descriptors_to(user)
 	if(show_descs)
-		. += SPAN_NOTICE("[jointext(show_descs, "")]")
+		. += SPAN_NOTICE("[jointext(show_descs, "\n")]")
 
 	if(pose)
 		if(!findtext(pose, regex("\[.?!]$"))) // Will be zero if the last character is not a member of [.?!]
 			pose = addtext(pose,".") //Makes sure all emotes end with a period.
-		. += "[T.He] [pose]"
+		. += SPAN_INFO("[T.He] [pose]")
 
-	if(LAZYLEN(.) > 2) //Want this to appear after species text
-		.[3] = "<hr>[.[3]]"
+	// if(LAZYLEN(.) > 1) //Want this to appear after species text, aka the second line
+	// 	.[2] = "<hr>[.[2]]"
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .) //This also handles flavor texts now
 

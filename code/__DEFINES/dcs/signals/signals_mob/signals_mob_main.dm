@@ -155,3 +155,8 @@
 ////#define COMSIG_MOB_AUTOMUTE_CHECK "client_automute_check" // The check is performed by the client.
 	///? Prevents the automute system checking this client for repeated messages.
 	////#define WAIVE_AUTOMUTE_CHECK (1<<0)
+
+/// From base of mob/Life(): (seconds, times_fired)
+#define COMSIG_MOB_ON_LIFE			"biological_life"
+	#define COMPONENT_INTERRUPT_PHYSICAL_LIFE			(1<<0)
+	#define COMPONENT_INTERRUPT_BIOLOGICAL_LIFE			(1<<1)

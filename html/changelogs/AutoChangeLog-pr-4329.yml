@@ -1,0 +1,14 @@
+author: "silicons"
+delete-after: True
+changes: 
+  - bugfix: "flags"
+  - bugfix: "clothing disappearing"
+  - bugfix: "rigs not rendering properly"
+  - bugfix: "grabs not forcemoving"
+  - bugfix: "orbiting ai eyes"
+  - bugfix: "qdel loops in grab/holder, dropped grabs"
+  - bugfix: "ai eye examine runtime"
+  - bugfix: "grabs making sounds on drop"
+  - bugfix: "DROPDEL flag works properly now"
+  - bugfix: "augment items making sounds when unequipping"
+  - bugfix: "augmented shades"

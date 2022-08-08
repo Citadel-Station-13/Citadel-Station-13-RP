@@ -70,7 +70,7 @@
 		color = initial(color)//looks better.
 		overlays += blob_head_overlay
 
-/mob/living/simple_mob/hostile/blob/spore/Life()
+/mob/living/simple_mob/hostile/blob/spore/Life(seconds, times_fired)
 	if(can_infest && !is_infesting && isturf(src.loc))
 		for(var/mob/living/carbon/human/H in view(src,1))
 			if(H.stat != DEAD) // We want zombies.

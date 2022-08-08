@@ -5,7 +5,7 @@
 	icon = 'icons/obj/assemblies.dmi'
 	icon_state = "plastic-explosive0"
 	item_state = "plasticx"
-	flags = NOBLUDGEON
+	item_flags = NOBLUDGEON
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_ILLEGAL = 2)
 	var/datum/wires/explosive/c4/wires = null
@@ -40,7 +40,7 @@
 
 /obj/item/plastique/attack_self(mob/user as mob)
 	var/newtime = input(usr, "Please set the timer.", "Timer", 10) as num
-	if(user.get_active_hand() == src)
+	if(user.get_active_held_item() == src)
 		newtime = clamp(newtime, 10, 60000)
 		timer = newtime
 		to_chat(user, "Timer set for [timer] seconds.")
@@ -54,9 +54,9 @@
 	user.do_attack_animation(target)
 
 	if(do_after(user, 50) && in_range(user, target))
-		user.drop_item()
+		if(!user.attempt_void_item_for_installation(src))
+			return
 		src.target = target
-		loc = null
 
 		if (ismob(target))
 			add_attack_logs(user, target, "planted [name] on with [timer] second fuse")
@@ -108,9 +108,9 @@
 			var/obj/item/stock_parts/SP = I
 			var/new_blast_power = max(1, round(SP.rating / 2) + 1)
 			if(new_blast_power > blast_heavy)
+				if(!user.attempt_consume_item_for_construction(I))
+					return
 				to_chat(user, "<span class='notice'>You install \the [I] into \the [src].</span>")
-				user.drop_from_inventory(I)
-				qdel(I)
 				blast_heavy = new_blast_power
 				blast_light = blast_heavy + round(new_blast_power * 0.5)
 				blast_flash = blast_light + round(new_blast_power * 0.75)

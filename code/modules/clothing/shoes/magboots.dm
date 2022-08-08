@@ -13,14 +13,12 @@
 	var/slowdown_on = 3
 	var/icon_base = "magboots"
 	action_button_name = "Toggle Magboots"
-	var/obj/item/clothing/shoes/shoes = null	//Undershoes
-	var/mob/living/carbon/human/wearer = null	//For shoe procs
 	step_volume_mod = 1.3
 	drop_sound = 'sound/items/drop/metalboots.ogg'
 	pickup_sound = 'sound/items/pickup/toolbox.ogg'
 
 /obj/item/clothing/shoes/magboots/proc/set_slowdown()
-	slowdown = shoes? max(SHOES_SLOWDOWN, shoes.slowdown): SHOES_SLOWDOWN	//So you can't put on magboots to make you walk faster.
+	slowdown = worn_over? max(SHOES_SLOWDOWN, worn_over.slowdown): SHOES_SLOWDOWN	//So you can't put on magboots to make you walk faster.
 	if (magpulse)
 		slowdown += slowdown_on
 
@@ -42,40 +40,24 @@
 	user.update_inv_shoes()	//so our mob-overlays update
 	user.update_action_buttons()
 
-/obj/item/clothing/shoes/magboots/mob_can_equip(mob/user, slot)
-	var/mob/living/carbon/human/H = user
+/obj/item/clothing/shoes/magboots/equip_worn_over_check(mob/M, slot, mob/user, obj/item/I, flags)
+	if(slot != SLOT_ID_SHOES)
+		return FALSE
 
-	if(H.shoes)
-		shoes = H.shoes
-		if(shoes.overshoes)
-			if(slot && slot == slot_shoes)
-				to_chat(user, "You are unable to wear \the [src] as \the [H.shoes] are in the way.")
-			shoes = null
-			return 0
-		H.drop_from_inventory(shoes)	//Remove the old shoes so you can put on the magboots.
-		shoes.forceMove(src)
+	if(!istype(I, /obj/item/clothing/shoes))
+		return FALSE
 
-	if(!..())
-		if(shoes) 	//Put the old shoes back on if the check fails.
-			if(H.equip_to_slot_if_possible(shoes, slot_shoes))
-				src.shoes = null
-		return 0
+	var/obj/item/clothing/shoes/S = I
 
-	if (shoes)
-		if(slot && slot == slot_shoes)
-			to_chat(user, "You slip \the [src] on over \the [shoes].")
+	return !S.overshoes
+
+/obj/item/clothing/shoes/magboots/equipped(mob/user, slot, flags)
+	. = ..()
 	set_slowdown()
-	wearer = H
-	return 1
 
-/obj/item/clothing/shoes/magboots/dropped()
-	..()
-	var/mob/living/carbon/human/H = wearer
-	if(shoes)
-		if(!H.equip_to_slot_if_possible(shoes, slot_shoes))
-			shoes.forceMove(get_turf(src))
-		src.shoes = null
-	wearer = null
+/obj/item/clothing/shoes/magboots/unequipped(mob/user, slot, flags)
+	. = ..()
+	set_slowdown()
 
 /obj/item/clothing/shoes/magboots/examine(mob/user)
 	. = ..()
@@ -83,7 +65,6 @@
 	if(clothing_flags & NOSLIP)
 		state = "enabled"
 	. += "Its mag-pulse traction system appears to be [state]."
-
 /obj/item/clothing/shoes/magboots/vox
 
 	desc = "A pair of heavy, jagged armoured foot pieces, seemingly suitable for a velociraptor."
@@ -99,7 +80,7 @@
 	if(src.magpulse)
 		clothing_flags &= ~NOSLIP
 		magpulse = 0
-		canremove = 1
+		REMOVE_TRAIT(src, TRAIT_NODROP, MAGBOOT_TRAIT)
 		to_chat(user, "You relax your deathgrip on the flooring.")
 	else
 		//make sure these can only be used when equipped.
@@ -112,23 +93,24 @@
 
 		clothing_flags |= NOSLIP
 		magpulse = 1
-		canremove = 0	//kinda hard to take off magclaws when you are gripping them tightly.
+		ADD_TRAIT(src, TRAIT_NODROP, MAGBOOT_TRAIT)
 		to_chat(user, "You dig your claws deeply into the flooring, bracing yourself.")
 	user.update_action_buttons()
 
 //In case they somehow come off while enabled.
-/obj/item/clothing/shoes/magboots/vox/dropped(mob/user as mob)
+/obj/item/clothing/shoes/magboots/vox/dropped(mob/user, flags, atom/newLoc)
 	..()
 	if(src.magpulse)
 		user.visible_message("The [src] go limp as they are removed from [usr]'s feet.", "The [src] go limp as they are removed from your feet.")
 		clothing_flags &= ~NOSLIP
 		magpulse = 0
-		canremove = 1
+		REMOVE_TRAIT(src, TRAIT_NODROP, MAGBOOT_TRAIT)
 
 /obj/item/clothing/shoes/magboots/vox/examine(mob/user)
-	..(user)
-	if (magpulse)
-		to_chat(user, "It would be hard to take these off without relaxing your grip first.")//theoretically this message should only be seen by the wearer when the claws are equipped.
+	. = ..()
+	if(magpulse)
+		. += "It would be hard to take these off without relaxing your grip first."
+		//theoretically this message should only be seen by the wearer when the claws are equipped.
 
 /obj/item/clothing/shoes/magboots/advanced
 	name = "advanced magboots"

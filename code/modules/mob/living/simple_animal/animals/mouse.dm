@@ -43,7 +43,7 @@
 
 	var/body_color //brown, gray and white, leave blank for random
 
-/mob/living/simple_mob/mouse/Life()
+/mob/living/simple_mob/mouse/Life(seconds, times_fired)
 	. = ..()
 	if(!. || ai_inactive) return
 

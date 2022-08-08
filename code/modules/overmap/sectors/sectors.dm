@@ -34,8 +34,8 @@
 	var/has_distress_beacon
 	var/list/levels_for_distress
 	var/list/unowned_areas // areas we don't own despite them being present on our z
-	
-	
+
+
 
 /atom/movable/overmap_object/entity/visitable/Initialize(mapload)
 	. = ..()
@@ -198,10 +198,9 @@
 	Per the Interplanetary Convention on Space SAR, those receiving this message must attempt rescue, \
 	or relay the message to those who can. This message will repeat one time in 5 minutes. Thank you for your urgent assistance."
 
-	if(!levels_for_distress)
-		levels_for_distress = list(1)
-	for(var/zlevel in levels_for_distress)
-		priority_announcement.Announce(message, new_title = "Automated Distress Signal", new_sound = 'sound/AI/sos.ogg', zlevel = zlevel)
+	priority_announcement.Announce(message, new_title = "Automated Distress Signal", zlevel = -1)//announce now tells every z-level once if -1 is passed
+
+	priority_announcement.Sound('sound/AI/sos.ogg', GLOB.using_map.zlevels)//play the sound once
 
 	var/image/I = image(icon, icon_state = "distress")
 	I.plane = ABOVE_LIGHTING_PLANE
@@ -218,5 +217,4 @@
 	var/message = "This is the final message from the distress beacon launched from '[initial(name)]'. I can provide this additional information to rescuers: [get_distress_info()]. \
 	Please render assistance under your obligations per the Interplanetary Convention on Space SAR, or relay this message to a party who can. Thank you for your urgent assistance."
 
-	for(var/zlevel in levels_for_distress)
-		priority_announcement.Announce(message, new_title = "Automated Distress Signal", new_sound = 'sound/AI/sos.ogg', zlevel = zlevel)
+	priority_announcement.Announce(message, new_title = "Automated Distress Signal", new_sound = 'sound/AI/sos.ogg', zlevel = -1)

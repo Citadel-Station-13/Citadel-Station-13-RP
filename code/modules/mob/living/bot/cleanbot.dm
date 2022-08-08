@@ -237,13 +237,12 @@
 /obj/item/bucket_sensor/attackby(var/obj/item/W, var/mob/user)
 	..()
 	if(istype(W, /obj/item/robot_parts/l_arm) || istype(W, /obj/item/robot_parts/r_arm) || (istype(W, /obj/item/organ/external/arm) && ((W.name == "robotic left arm") || (W.name == "robotic right arm"))))
-		user.drop_item()
-		qdel(W)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		var/turf/T = get_turf(loc)
 		var/mob/living/bot/cleanbot/A = new /mob/living/bot/cleanbot(T)
 		A.name = created_name
 		to_chat(user, "<span class='notice'>You add the robot arm to the bucket and sensor assembly. Beep boop!</span>")
-		user.drop_from_inventory(src)
 		qdel(src)
 
 	else if(istype(W, /obj/item/stack/material/steel))
@@ -254,7 +253,6 @@
 			var/mob/living/bot/cleanbot/roomba/A = new /mob/living/bot/cleanbot/roomba(T)
 			A.name = created_name
 			to_chat(user, "<span class='notice'>You add the metal sheets onto and around the bucket and sensor assembly. Beep boop!</span>")
-			user.drop_from_inventory(src)
 			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need five sheets of metal to encase the sensor.</span>")

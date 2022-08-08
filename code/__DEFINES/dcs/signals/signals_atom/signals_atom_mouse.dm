@@ -22,10 +22,11 @@
 	////#define COMPONENT_CANCEL_CLICK_ALT_SECONDARY (1<<0)
 /// From base of atom/CtrlShiftClick(/mob)
 ////#define COMSIG_CLICK_CTRL_SHIFT "ctrl_shift_click"
-/// From base of atom/MouseDrop(): (/atom/over, /mob/user)
+/// From base of atom/OnMouseDrop(): (/atom/over, /mob/user, proximity, params)
 #define COMSIG_MOUSEDROP_ONTO "mousedrop_onto"
-	#define COMPONENT_NO_MOUSEDROP (1<<0)
-/// From base of atom/MouseDrop_T: (/atom/from, /mob/user)
+/// From base of atom/MouseDroppedOn(): (/atom/from, /mob/user, proximity, params)
 #define COMSIG_MOUSEDROPPED_ONTO "mousedropped_onto"
+	/// blocks standard mousedrop procs from running, works on both, will terminate remainder of mousedrop proc chain
+	#define COMPONENT_NO_MOUSEDROP (1<<0)
 /// From base of mob/MouseWheelOn(): (/atom, delta_x, delta_y, params)
 #define COMSIG_MOUSE_SCROLL_ON "mousescroll_on"

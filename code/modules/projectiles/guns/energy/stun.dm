@@ -23,7 +23,6 @@
 	self_recharge = 1
 	use_external_power = 0
 	use_organic_power = TRUE
-	canremove = FALSE
 
 /obj/item/gun/energy/taser/mounted/cyborg
 	name = "taser gun"

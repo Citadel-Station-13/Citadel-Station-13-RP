@@ -19,7 +19,13 @@
 	name = "grab"
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "reinforce"
-	flags = 0
+	item_flags = ITEM_ABSTRACT | DROPDEL
+	flags = ATOM_ABSTRACT
+	drop_sound = null
+	pickup_sound = null
+	equip_sound = null
+	unequip_sound = null
+
 	var/atom/movable/screen/grab/hud = null
 	var/mob/living/affecting = null
 	var/mob/living/carbon/human/assailant = null
@@ -31,15 +37,12 @@
 	var/force_down //determines if the affecting mob will be pinned to the ground
 	var/dancing //determines if assailant and affecting keep looking at each other. Basically a wrestling position
 
-	abstract = 1
 	item_state = "nothing"
 	w_class = ITEMSIZE_HUGE
-
 
 /obj/item/grab/Initialize(mapload, mob/victim)
 	. = ..()
 	var/mob/user = loc
-	loc = user
 	assailant = user
 	affecting = victim
 
@@ -134,8 +137,7 @@
 			hud.icon_state = "!reinforce"
 
 	if(state >= GRAB_AGGRESSIVE)
-		affecting.drop_l_hand()
-		affecting.drop_r_hand()
+		affecting.drop_all_held_items()
 
 		if(iscarbon(affecting))
 			handle_eye_mouth_covering(affecting, assailant, assailant.zone_sel.selecting)
@@ -205,13 +207,13 @@
 		if(GRAB_NECK, GRAB_UPGRADING)
 			shift = -10
 			adir = assailant.dir
+			affecting.forceMove(assailant.loc)
 			affecting.setDir(assailant.dir)
-			affecting.loc = assailant.loc
 		if(GRAB_KILL)
 			shift = 0
 			adir = 1
+			affecting.forceMove(assailant.loc)
 			affecting.setDir(SOUTH) //face up
-			affecting.loc = assailant.loc
 
 	switch(adir)
 		if(NORTH)
@@ -338,10 +340,6 @@
 	//clicking on yourself while grabbing them
 	if(M == assailant && state >= GRAB_AGGRESSIVE)
 		devour(affecting, assailant)
-
-/obj/item/grab/dropped()
-	. = ..()
-	qdel(src)
 
 /obj/item/grab/proc/reset_kill_state()
 	if(state == GRAB_KILL)

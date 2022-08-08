@@ -67,7 +67,7 @@
 	if(scan)
 		to_chat(usr, "You remove \the [scan] from \the [src].")
 		scan.loc = get_turf(src)
-		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
+		if(!usr.get_active_held_item() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(scan)
 		scan = null
 	else
@@ -75,8 +75,9 @@
 	return
 
 /obj/machinery/computer/secure_data/attackby(var/obj/item/O, var/mob/user)
-	if(istype(O, /obj/item/card/id) && !scan && user.unEquip(O))
-		O.loc = src
+	if(istype(O, /obj/item/card/id) && !scan)
+		if(!user.attempt_insert_item_for_installation(O, src))
+			return
 		scan = O
 		to_chat(user, "You insert \the [O].")
 		ui_interact(user)
@@ -203,14 +204,14 @@
 		if("scan")
 			if(scan)
 				scan.forceMove(loc)
-				if(ishuman(usr) && !usr.get_active_hand())
+				if(ishuman(usr) && !usr.get_active_held_item())
 					usr.put_in_hands(scan)
 				scan = null
 			else
-				var/obj/item/I = usr.get_active_hand()
+				var/obj/item/I = usr.get_active_held_item()
 				if(istype(I, /obj/item/card/id))
-					usr.drop_item()
-					I.forceMove(src)
+					if(!usr.attempt_insert_item_for_installation(I, src))
+						return
 					scan = I
 		if("login")
 			var/login_type = text2num(params["login_type"])
@@ -241,7 +242,7 @@
 			if("logout")
 				if(scan)
 					scan.forceMove(loc)
-					if(ishuman(usr) && !usr.get_active_hand())
+					if(ishuman(usr) && !usr.get_active_held_item())
 						usr.put_in_hands(scan)
 					scan = null
 				authenticated = null
@@ -470,8 +471,8 @@
 	return !src.authenticated || user.stat || user.restrained() || (!in_range(src, user) && (!istype(user, /mob/living/silicon)))
 
 /obj/machinery/computer/secure_data/proc/get_photo(var/mob/user)
-	if(istype(user.get_active_hand(), /obj/item/photo))
-		var/obj/item/photo/photo = user.get_active_hand()
+	if(istype(user.get_active_held_item(), /obj/item/photo))
+		var/obj/item/photo/photo = user.get_active_held_item()
 		return photo.img
 	if(istype(user, /mob/living/silicon))
 		var/mob/living/silicon/tempAI = usr

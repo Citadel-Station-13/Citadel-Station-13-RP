@@ -36,8 +36,6 @@
 ////#define COMSIG_LIVING_SET_BODY_POSITION  "living_set_body_position"
 /// From post-can inject check of syringe after attack (mob/user)
 ////#define COMSIG_LIVING_TRY_SYRINGE "living_try_syringe"
-/// From living/Life(). (deltatime, times_fired)
-////#define COMSIG_LIVING_LIFE "living_life"
 
 /// From base of element/bane/activate(): (item/weapon, mob/user)
 ////#define COMSIG_LIVING_BANED "living_baned"

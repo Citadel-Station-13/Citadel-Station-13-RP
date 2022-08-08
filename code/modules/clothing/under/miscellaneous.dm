@@ -843,6 +843,11 @@
 	desc = "This fits a bit too snug in all the right places. Comes with a collar, for inscrutable reasons."
 	icon_state = "swim_risque"
 
+/obj/item/clothing/under/swimsuit/streamlined
+	name = "streamlined swimsuit"
+	desc = "An all white one-piece that maintains modesty without sacrificing class."
+	icon_state = "swim_stream"
+
 /*
  * pyjamas
  */
@@ -1847,10 +1852,10 @@
 		else //They chose their current size.
 			return
 
-/obj/item/clothing/under/bluespace/mob_can_unequip(mob/M, slot, disable_warning = 0)
+/obj/item/clothing/under/bluespace/unequipped(mob/user, slot, flags)
 	. = ..()
-	if(. && ishuman(M) && original_size)
-		var/mob/living/carbon/human/H = M
+	if(. && ishuman(user) && original_size)
+		var/mob/living/carbon/human/H = user
 		H.resize(original_size)
 		original_size = null
 		H.visible_message("<span class='warning'>The space around [H] distorts as they return to their original size!</span>","<span class='notice'>The space around you distorts as you return to your original size!</span>")
@@ -1926,3 +1931,8 @@
 	name = "Utility Fur Pants"
 	desc = "A pair of pants designed to match the Utility Fur coat."
 	icon_state = "furup"
+
+/obj/item/clothing/under/sitri
+	name = "Sitri striped sweater"
+	desc = "A comfortable, fashionable pair of high waisted shorts paired with a striped grey and white turtleneck. The Goetic seal of Sitri is embroidered on the left breast pocket in soft grey thread. A tag on the inside of the sweater bears the name 'Lindenoak' in both Common and Daemonic."
+	icon_state = "sitri"

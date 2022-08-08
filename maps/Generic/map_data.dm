@@ -1,20 +1,20 @@
 // These specify how many z levels are in a map. Consoladating them here for map compiling ease - Bloop
 
 // Tether
-/atom/movable/landmark/map_data/virgo3b
+/obj/landmark/map_data/virgo3b
     height = 6
 
 /atom/movable/overmap_object/entity/visitable/sector/virgo3b // Just a placeholder for when the map isnt loaded
 
 // Triumph
-/atom/movable/landmark/map_data/triumph
+/obj/landmark/map_data/triumph
 	height = 4
 
 // Lythios
-/atom/movable/landmark/map_data/lythios43c
+/obj/landmark/map_data/lythios43c
     height = 6
 
-/atom/movable/landmark/map_data/west_plains
+/obj/landmark/map_data/west_plains
     height = 4
 
 // See beach.dm for more details on this. Placeholder for now to stop compiling issues -Bloop

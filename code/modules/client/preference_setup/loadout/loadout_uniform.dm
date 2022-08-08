@@ -2,7 +2,7 @@
 /datum/gear/uniform/
 	name = "Blazer - Blue"
 	path = /obj/item/clothing/under/blazer
-	slot = slot_w_uniform
+	slot = SLOT_ID_UNIFORM
 	sort_category = "Uniforms and Casual Dress"
 
 /datum/gear/uniform/blazer_skirt
@@ -752,3 +752,7 @@ Swimsuits
 /datum/gear/uniform/utility_fur_pants
 	name = "Utility Fur Pants"
 	path = /obj/item/clothing/under/utility_fur_pants
+
+/datum/gear/uniform/sitri
+	name = "Sitri Striped Sweater"
+	path = /obj/item/clothing/under/sitri

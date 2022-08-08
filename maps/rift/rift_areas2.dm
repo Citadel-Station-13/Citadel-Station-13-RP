@@ -360,6 +360,8 @@
 	name = "\improper Xenobiology Cell 5"
 /area/rnd/xenobiology/cell/six
 	name = "\improper Xenobiology Cell 6"
+/area/rnd/xenobiology/cell/seven
+	name = "\improper Xenobiology Cell 7"
 /area/rnd/xenobiology/xenoflora/lab_atmos
 	name = "\improper Xenoflora Atmospherics Lab"
 /area/rnd/breakroom
@@ -648,6 +650,19 @@
 /area/rift/station/fighter_bay/maintenance
 	name = "\improper Fighter Bay Maintenance"
 
+//Civilian Garden
+
+/area/rift/station/public_garden
+	icon_state = "green"
+	name = "\improper Public Garden"
+
+/area/rift/station/public_garden/stairwell
+	name = "\improper Public Garden Stairwell"
+
+/area/rift/station/public_garden/gantry
+	name = "\improper Public Garden Gantry"
+
+
 //////////////////////////////////
 
 /*
@@ -777,3 +792,28 @@ Do this eventually. */
 
 /area/rift/facility/interior/core
 	name = "\improper Lythios Facility -  Reactor Core"
+
+//Other Lythios outdoor areas
+/area/rift/exterior/nuketown
+	name = "\improper High Yield Explosives Test Site"
+
+/area/rift/exterior/nuketown/interior
+	name = "\improper Mock Townhouse"
+
+/area/rift/exterior/nuketown/bunker
+	name = "\improper Mock Bomb Shelter"
+
+/area/rift/exterior/bunker
+	name = "\improper Bunker Buster Explosives Test Site - Surface"
+
+/area/rift/exterior/bunker/lower
+	name = "\improper Bunker Buster Explosives Test Site - Lower Level"
+
+/area/rift/exterior/bunker/bottom
+	name = "\improper Bunker Buster Explosives Test Site - Blast Site"
+
+/area/rift/exterior/checkpoint/south
+	name = "\improper Southern Abandoned Checkpoint"
+
+/area/rift/exterior/mineshaft
+	name = "\improper Abandoned Mineshaft"

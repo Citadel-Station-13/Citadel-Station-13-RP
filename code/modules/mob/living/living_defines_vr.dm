@@ -10,3 +10,4 @@
 	var/custom_ask = null
 	var/custom_exclaim = null
 	var/custom_whisper = null
+

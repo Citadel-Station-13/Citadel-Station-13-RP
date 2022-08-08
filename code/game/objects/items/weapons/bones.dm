@@ -19,7 +19,6 @@
 /obj/item/bone/skull/attackby(var/obj/item/material/knife/D, mob/user as mob)
 	to_chat(user, "<span class='notice'>You hack chunks out of \the [src] with \the [D].  It might fit on top of your head.</span>")
 	user.put_in_hands(new /obj/item/clothing/head/skull)
-	user.drop_from_inventory(src)
 	qdel(src)
 	return ..()
 
