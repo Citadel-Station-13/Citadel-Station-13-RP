@@ -300,7 +300,7 @@
 /**
  * get strip menu options associated to href key
  */
-/obj/item/proc/get_strip_menu_options(mob/user)
+/obj/item/proc/strip_menu_options(mob/user)
 	RETURN_TYPE(/list)
 	return
 
@@ -310,4 +310,4 @@
  * adjacency is pre-checked.
  */
 /obj/item/proc/strip_menu_act(mob/user, action)
-	return
+	return FALSE

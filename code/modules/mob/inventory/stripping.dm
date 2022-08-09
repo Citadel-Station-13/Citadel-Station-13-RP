@@ -103,7 +103,7 @@
 /**
  * return key-href values
  */
-/mob/proc/get_strip_menu_options(mob/user)
+/mob/proc/strip_menu_options(mob/user)
 	return
 
 /**
@@ -111,3 +111,4 @@
  * adjacency/can act is checked already
  */
 /mob/proc/strip_menu_act(mob/user, action)
+	return FALSE

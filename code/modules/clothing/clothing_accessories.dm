@@ -170,3 +170,19 @@
 			if(check != 0)	// Projectiles sometimes use negatives IIRC, 0 is only returned if something is not blocked.
 				. = check
 				break
+
+#warn impl
+
+/obj/item/clothing/strip_menu_options(mob/user)
+	. = ..()
+	if(!length(accessories))
+		return
+
+
+
+/obj/item/clothing/strip_menu_act(mob/user, action)
+	. = ..()
+	if(.)
+		return
+	if()
+
