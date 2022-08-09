@@ -309,5 +309,5 @@
  *
  * adjacency is pre-checked.
  */
-/obj/item/proc/strip_menu_topic(mob/user, list/href_list)
+/obj/item/proc/strip_menu_act(mob/user, action)
 	return

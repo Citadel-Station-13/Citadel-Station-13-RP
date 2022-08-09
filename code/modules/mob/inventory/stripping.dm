@@ -1,9 +1,7 @@
-#warn impl oh god oh fuck
-
-/mob/proc/request_strip_menu(mob/user, ignore_adjacency = FALSE, ignore_incapacitation = FALSE)
-	if(!ignore_incapacitation && user.incapacitated())
-		return FALSE
-	if(!ignore_adjacency && !user.Adjacent(src))
+// todo: tgui
+// todo: ui state handles prechecks? interesting to deal with.
+/mob/proc/request_strip_menu(mob/user)
+	if(!strip_interaction_prechecks(user, FALSE))
 		return FALSE
 	return open_strip_menu(user)
 
@@ -12,6 +10,9 @@
 	B.set_content(render_strip_menu(user).Join(""))
 	B.open()
 	return TRUE
+
+/mob/proc/close_strip_menu(mob/user)
+	user << browse(null, "window=strip_window_[REF(src)]")
 
 /mob/proc/render_strip_menu(mob/user)
 	RETURN_TYPE(/list)
@@ -55,8 +56,49 @@
 	// now for misc
 	. += "<a href='?src=\ref[src];strip=refresh'>Refresh</a><br>"
 
+#warn finish above
 
-/mob/proc/handle_strip_topic(mob/user, list/href_list)
+/mob/proc/attempt_slot_strip(mob/user, slot_id, delay_mod = 1)
+	#warn finish
+
+/mob/proc/attempt_hand_strip(mob/user, index, delay_mod = 1)
+	#warn finish
+
+/mob/proc/attempt_strip_common(mob/user, delay_mod = 1, obj/item/I, removing)
+	#warn finish
+
+/mob/proc/handle_strip_topic(mob/user, list/href_list, operation)
+	// do checks
+	if(!strip_interaction_prechecks(user))
+		return
+	// act
+	switch(operation)
+		if("slot")
+			var/slot = href_list["id"]
+			attempt_slot_strip(user, slot)
+		if("hand")
+			var/index = href_list["index"]
+			attempt_hand_strip(user, slot)
+		// option mob
+		if("optm")
+			var/action = href_list["action"]
+			strip_menu_topic(user, action)
+		// option item
+		if("opti")
+			var/obj/item/I = locate(href_list["item"])
+			if(!istype(I) || !is_in_inventory(I))
+				return
+			var/action = href_list["action"]
+			I.strip_menu_act(user, action)
+
+/mob/proc/strip_interaction_prechecks(mob/user, autoclose = TRUE)
+	if(user.incapacitated())
+		close_strip_menu(user)
+		return FALSE
+	if(!user.Adjacent(src))
+		close_strip_menu(user)
+		return FALSE
+	return TRUE
 
 /**
  * return key-href values
@@ -68,4 +110,4 @@
  * use for strip menu options
  * adjacency/can act is checked already
  */
-/mob/proc/strip_menu_topic(mob/user, list/href_list)
+/mob/proc/strip_menu_act(mob/user, action)
