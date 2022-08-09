@@ -94,29 +94,29 @@ const SupermatterMonitorActive = (props, context) => {
           />
         </LabeledList.Item>
         <LabeledList.Item label="Relative EER">
-          <Box color={(SM_power > 300 && 'bad') || 
-            (SM_power > 150 && 'average') || 'good'}>
+          <Box color={(SM_power > 300 && 'bad') 
+            || (SM_power > 150 && 'average') || 'good'}>
             <AnimatedNumber format={(val) => round(val, 2) + ' MeV/cm³'} 
               value={SM_power} />
           </Box>
         </LabeledList.Item>
         <LabeledList.Item label="Temperature">
-          <Box color={(SM_ambienttemp > 5000 && 'bad') ||
-            (SM_ambienttemp > 4000 && 'average') || 'good'}>
+          <Box color={(SM_ambienttemp > 5000 && 'bad') 
+            || (SM_ambienttemp > 4000 && 'average') || 'good'}>
             <AnimatedNumber format={(val) => round(val, 2) + ' K'} 
               value={SM_ambienttemp} />
           </Box>
         </LabeledList.Item>
         <LabeledList.Item label="Pressure">
-          <Box color={(SM_ambientpressure > 10000 && 'bad') || 
-            (SM_ambientpressure > 5000 && 'average') || 'good'}>
+          <Box color={(SM_ambientpressure > 10000 && 'bad') 
+            || (SM_ambientpressure > 5000 && 'average') || 'good'}>
             <AnimatedNumber format={(val) => round(val, 2) + ' kPa'} 
               value={SM_ambientpressure} />
           </Box>
         </LabeledList.Item>
         <LabeledList.Item label="Chamber EPR">
-          <Box color={(SM_EPR > 4 && 'bad') || 
-            (SM_EPR > 1 && 'average') || 'good'}>
+          <Box color={(SM_EPR > 4 && 'bad') 
+            ||(SM_EPR > 1 && 'average') || 'good'}>
             <AnimatedNumber format={(val) => round(val, 2)} 
               value={SM_EPR} />
           </Box>
