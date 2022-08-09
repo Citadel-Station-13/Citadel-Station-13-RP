@@ -233,3 +233,9 @@
 			return TRUE
 
 	return FALSE
+
+/mob/living/get_number_of_hands()
+	return has_hands? 2 : 0
+
+/mob/living/proc/has_hands()
+	return has_hands

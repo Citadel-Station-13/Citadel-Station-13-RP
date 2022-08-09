@@ -298,7 +298,7 @@
 	return slot_meta.inventory_slot_flags & INV_SLOT_CONSIDERED_WORN
 
 /**
- * get strip menu options associated to href key
+ * get strip menu options by name associated to href key
  */
 /obj/item/proc/strip_menu_options(mob/user)
 	RETURN_TYPE(/list)

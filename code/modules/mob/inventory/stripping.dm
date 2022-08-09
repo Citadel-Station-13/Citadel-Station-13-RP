@@ -34,27 +34,39 @@
 			continue
 		var/simple = meta.inventory_slot_flags & INV_SLOT_STRIP_SIMPLE_LINK
 		var/obfuscations = NONE
+		if(obfuscations & INV_VIEW_OBFUSCATE_HIDE_SLOT)
+			continue
 		#warn impl obfuscation
 		if(simple)
-
+			. += "<a href='?src=[REF(src)];strip=slot;id=[id]'>[capitalize(meta.display_name)]</a>"
 		else
-
-			var/list/options =
-			if(LAZYLEN(options))
-				// generate hrefs for the options
+			var/item_known = obfuscations & (INV_VIEW_OBFUSCATE_HIDE_ITEM_EXISTENCE | INV_VIEW_OBFUSCATE_HIDE_ITEM_NAME)
+			#warn finish + better way of rendering since 4x nbsp tabs to expensive
+			if(item_known)
+				var/list/options = I.strip_menu_options(user)
+				if(LAZYLEN(options))
+					// generate hrefs for the options
+					for(var/name in options)
+						var/key = options[name]
+						. += "<a href='?src=[REF(src)];strip=opti;item=[REF(I)];act=[key]'>[name]</a>"
 
 	// now for hands
-	. += "<hr>"
+	if(has_hands())
+		. += "<hr>"
 
 	// now for options
-	var/list/options =
+	var/list/options = strip_menu_options(user)
 	if(LAZYLEN(options))
+		#warn see no problem yet but when we start using it.
 		// generate hrefs for the options
-
+		for(var/name in options)
+			var/key = options[name]
+			. += "<a href='?src=[REF(src)];strip=optm;act=[key]'>[name]</a>"
 		. += "<hr>"
 
 	// now for misc
-	. += "<a href='?src=\ref[src];strip=refresh'>Refresh</a><br>"
+	. += "<hr>"
+	. += "<a href='?src=[REF(src)];strip=refresh'>Refresh</a><br>"
 
 #warn finish above
 
@@ -77,19 +89,21 @@
 			var/slot = href_list["id"]
 			attempt_slot_strip(user, slot)
 		if("hand")
-			var/index = href_list["index"]
+			var/index = href_list["id"]
 			attempt_hand_strip(user, slot)
 		// option mob
 		if("optm")
-			var/action = href_list["action"]
+			var/action = href_list["act"]
 			strip_menu_topic(user, action)
 		// option item
 		if("opti")
 			var/obj/item/I = locate(href_list["item"])
 			if(!istype(I) || !is_in_inventory(I))
 				return
-			var/action = href_list["action"]
+			var/action = href_list["act"]
 			I.strip_menu_act(user, action)
+		if("refresh")
+			open_strip_menu(user)
 
 /mob/proc/strip_interaction_prechecks(mob/user, autoclose = TRUE)
 	if(user.incapacitated())
@@ -101,7 +115,7 @@
 	return TRUE
 
 /**
- * return key-href values
+ * return a list of name = action. action should be short, for hrefs! same for name!
  */
 /mob/proc/strip_menu_options(mob/user)
 	return
