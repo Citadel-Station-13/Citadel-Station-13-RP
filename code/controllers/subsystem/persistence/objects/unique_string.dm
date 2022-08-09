@@ -72,7 +72,8 @@
 	usr = oldusr
 	if(!query.NextRow())
 		return
-	return query.item[1]
+	. = query.item[1]
+	qdel(query)
 
 /datum/controller/subsystem/persistence/proc/SaveString(group, key, value)
 	if(!SSdbcore.Connect())

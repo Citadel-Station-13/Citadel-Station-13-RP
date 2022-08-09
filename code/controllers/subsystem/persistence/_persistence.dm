@@ -52,3 +52,18 @@ SUBSYSTEM_DEF(persistence)
 		return			// map doesn't support persistence.
 	current_map_id = ckey(SSmapping.config.persistence_id)
 	current_map_directory = "[PERSISTENCE_MAP_ROOT_DIRECTORY]/[current_map_id]"
+
+
+//! map ID shims, so we can replace these with less snowflake when SSmapping is done
+
+#warn impl
+
+/datum/controller/subsystem/persistence/proc/_map_id_of_z(z)
+
+/datum/controller/subsystem/persistence/proc/_z_of_map_id(id)
+
+/datum/controller/subsystem/persistence/proc/_is_map_id_loaded(id)
+	return !!_z_of_map_id(id)
+
+/datum/controller/subsystem/persistence/proc/_all_loaded_map_ids()
+	RETURN_TYPE(/list)

@@ -20,6 +20,10 @@
 /// this is the first round we're persisting from
 #define ATOM_PERSIST_FIRST_GENERATION				(1<<2)
 
+//! Object Storage System - Location Mapped - SQL flags
+/// we deleted this level, pretend it's gone
+#define MASS_PERSISTENCE_LEVEL_IS_DELETED										(1<<0)
+
 //! Misc/Legacy/Unrelated/Don't care/Didn't ask/Ratio'd
 
 // Direct filename paths
