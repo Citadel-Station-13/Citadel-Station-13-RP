@@ -285,7 +285,13 @@
 			set_light(0)
 	else
 		if(species.species_appearance_flags & RADIATION_GLOWS)
-			set_light(max(1,min(5,radiation/15)), max(1,min(10,radiation/25)), species.get_flesh_colour(src))
+			var/rad_glow_range = max(1,min(5,radiation/15))
+			var/rad_glow_intensity = max(1,min(10,radiation/25))
+			if(glow_toggle)//if body glow is larger or brighter than rad glow, it wins
+				if(glow_range > rad_glow_range || glow_intensity > rad_glow_intensity)
+					set_light(glow_range, glow_intensity, glow_color)
+			else
+				set_light(rad_glow_range, rad_glow_intensity, species.get_flesh_colour(src))
 		// END DOGSHIT SNOWFLAKE
 
 		var/obj/item/organ/internal/diona/nutrients/rad_organ = locate() in internal_organs
