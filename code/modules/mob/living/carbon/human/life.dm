@@ -54,17 +54,19 @@
 	blinded = 0
 	fire_alert = 0 //Reset this here, because both breathe() and handle_environment() have a chance to set it.
 
+	// update the current life tick, can be used to e.g. only do something every 4 ticks
+	life_tick++
+
 	if((. = ..()))
 		return
 
 	//TODO: seperate this out
-	// update the current life tick, can be used to e.g. only do something every 4 ticks
-	life_tick++
 	//Update our name based on whether our face is obscured/disfigured
 	name = get_visible_name()
 	// This is not an ideal place for this but it will do for now.
 	if(wearing_rig && !wearing_rig.is_activated())
 		wearing_rig = null
+
 	voice = GetVoice()
 
 /mob/living/carbon/human/PhysicalLife(seconds, times_fired)

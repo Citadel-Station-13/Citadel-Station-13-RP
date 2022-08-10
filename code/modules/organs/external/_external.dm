@@ -505,8 +505,9 @@ This function completely restores a damaged organ to perfect condition.
 		return 1
 	return 0
 
-#warn WOO
-/obj/item/organ/external/process(delta_time)
+/obj/item/organ/external/tick_life(dt)
+	. = ..()
+
 	if(owner)
 		//Dismemberment
 		//if(parent && parent.is_stump()) //should never happen
@@ -527,8 +528,6 @@ This function completely restores a damaged organ to perfect condition.
 
 		//Infections
 		update_germs()
-	else
-		..()
 
 //Updating germ levels. Handles organ germ levels and necrosis.
 /*
