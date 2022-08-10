@@ -16,7 +16,7 @@
 
 /obj/machinery/computer/area_atmos/Initialize(mapload)
 	. = ..()
-	scanscrubbers()
+	INVOKE_ASYNC(src, .proc/scanscrubbers)
 
 /obj/machinery/computer/area_atmos/attack_ai(mob/user)
 	return src.attack_hand(user)

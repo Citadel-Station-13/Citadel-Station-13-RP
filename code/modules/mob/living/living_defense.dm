@@ -302,7 +302,7 @@
 			var/dir = get_dir(O.throw_source, src)
 
 			visible_message("<font color='red'>[src] staggers under the impact!</font>","<font color='red'>You stagger under the impact!</font>")
-			src.throw_at(get_edge_target_turf(src,dir), 1, momentum)
+			addtimer(CALLBACK(src, /atom/movable/proc/throw_at, get_edge_target_turf(src, dir), 1, momentum), 0)
 
 			if(!O || !src)
 				return

@@ -5,11 +5,11 @@ SUBSYSTEM_DEF(overmaps)
 	priority = FIRE_PRIORITY_OVERMAPS
 	init_order = INIT_ORDER_OVERMAPS
 
-	// overmaps
+	//! overmaps
 	/// all overmaps in world
 	var/static/list/datum/overmap/overmaps = list()
 
-	// hard simulation config
+	//! hard simulation config
 	/// max entity sim speed in overmaps dist units/second
 	var/static/max_entity_speed = 80 * OVERMAP_DISTANCE_PIXEL
 	/// desired movement accuracy in pixels/tick
@@ -19,17 +19,38 @@ SUBSYSTEM_DEF(overmaps)
 	/// tick normal processes every this many physics ticks
 	var/normal_ticks_every = 20
 
-	// hazards
+	//! hazards
 	/// hazard cache by id
 	var/static/list/hazards_by_id = list()
+
+	//! initialization
+	/// overmap sector initializers awaiting activation
+	var/static/list/obj/landmark/overmap_entity_instantiator/maploaded_entities_awaiting_creation = list()
 
 /datum/controller/subsystem/overmaps/Initialize()
 	recalculate_physics_limits()
 	instantiate_hazards()
+	instantiate_world()
+	instantiate_entities()
+	#warn stage for postload linking for stuff like FTL?
+	return ..()
+
+/*
 	if(GLOB.using_map.use_overmap)
 		GLOB.overmap_event_handler.create_events(GLOB.using_map.overmap_z, GLOB.using_map.overmap_size, GLOB.using_map.overmap_event_areas)
 	rebuild_helm_computers()
 	return ..()
+*/
+
+/datum/controller/subsystem/overmaps/proc/run_hardmapped_entity_creator(obj/landmark/overmap_entity_instantiator/instantiator)
+	if(initialized)
+		instantiator.Run()
+		return
+	entity_instantiators += instantiator
+
+/datum/controller/subsystem/overmaps/proc/instantiate_entities()
+	for(var/obj/landmark/overmap_entity_instantiator/instantiator in maploaded_entities_awaiting_creation)
+		instantiator.Run()
 
 /datum/controller/subsystem/overmaps/proc/rebuild_helm_computers()
 	for(var/obj/machinery/computer/ship/helm/H in GLOB.machines)
@@ -40,6 +61,7 @@ SUBSYSTEM_DEF(overmaps)
 		return
 	addtimer(CALLBACK(src, .proc/rebuild_helm_computers), 0, TIMER_UNIQUE)
 
+/*
 /proc/build_overmap()
 	if(!GLOB.using_map.use_overmap)
 		return 1
@@ -62,6 +84,7 @@ SUBSYSTEM_DEF(overmaps)
 
 	testing("Overmap build complete.")
 	return 1
+*/
 
 /datum/controller/subsystem/overmaps/fire(resumed)
 	// physics tick every single tick
