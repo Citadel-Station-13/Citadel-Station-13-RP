@@ -77,6 +77,7 @@ export const ComplexModal = (props, context) => {
     id,
     text,
     type,
+    uid,
   } = data.modal;
 
   let modalOnEnter;
