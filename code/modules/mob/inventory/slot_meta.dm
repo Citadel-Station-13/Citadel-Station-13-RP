@@ -331,7 +331,6 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 
 /datum/inventory_slot_meta/restraints
 	sort_order = -250
-	is_inventory = FALSE
 	always_show_on_strip_menu = FALSE
 	abstract_type = /datum/inventory_slot_meta/restraints
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_STRIPPABLE | INV_SLOT_STRIP_ONLY_REMOVES | INV_SLOT_STRIP_SIMPLE_LINK

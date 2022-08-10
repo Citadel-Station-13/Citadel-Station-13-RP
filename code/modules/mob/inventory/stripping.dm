@@ -7,7 +7,8 @@
 
 /mob/proc/open_strip_menu(mob/user)
 	var/datum/browser/B = new(user, "strip_window_[REF(src)]", "[name] (stripping)", 340, 540)
-	B.set_content(render_strip_menu(user).Join(""))
+	var/list/content = render_strip_menu(user)
+	B.set_content(content.Join(""))
 	B.open()
 	return TRUE
 
