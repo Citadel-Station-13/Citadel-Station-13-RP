@@ -79,30 +79,30 @@
 	if(!strip_interaction_prechecks(user))
 		return FALSE
 
-	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
+	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot_id)
 	if(!slot_meta)
 		return FALSE
 
-	var/obj/item/ours = item_by_slot(slot)
+	var/obj/item/ours = item_by_slot(slot_id)
 	var/obj/item/theirs = user.get_active_held_item()
 	if(!ours && !theirs)
 		to_chat(user, SPAN_WARNING("There's nothing [slot_meta.display_preposition] their [slot_meta.display_name]."))
 		return FALSE
 
-	if(!attempt_strip_common(ours, theirs, user, slot))
+	if(!attempt_strip_common(ours, theirs, user, slot_id))
 		return FALSE
 
 	if(ours)
 		if(temporarily_remove_from_inventory(ours, user = user))
-			add_attack_logs(user, src, "Removed [I] from slot [slot]")
+			add_attack_logs(user, src, "Removed [ours] from slot [slot_id]")
 			user.put_in_hands_or_drop(ours)
 		else
-			add_attack_logs(user, src, "Failed to remove [I] from slot [slot]")
+			add_attack_logs(user, src, "Failed to remove [ours] from slot [slot_id]")
 	else
-		if(equip_to_slot_if_possible(theirs, slot))
-			add_attack_logs(user, src, "Put [theirs] in slot [slot]")
+		if(equip_to_slot_if_possible(theirs, slot_id))
+			add_attack_logs(user, src, "Put [theirs] in slot [slot_id]")
 		else
-			add_attack_logs(user, src, "Failed to put [theirs] in slot [slot]")
+			add_attack_logs(user, src, "Failed to put [theirs] in slot [slot_id]")
 	return TRUE
 
 /mob/proc/attempt_hand_strip(mob/user, index, delay_mod = 1)
@@ -122,9 +122,10 @@
 	if(!attempt_strip_common(ours, theirs, user, index))
 		return FALSE
 
-	if(I)
-		if(drop_item_to_ground(ours, user = user))
+	if(ours)
+		if(temporarily_remove_from_inventory(ours, user = user))
 			add_attack_logs(user, src, "Removed [ours] from hand index [index]")
+			user.put_in_hands_or_drop(ours)
 		else
 			add_attack_logs(user, src, "Failed to remove [ours] from hand index [index]")
 	else
@@ -145,13 +146,14 @@
 			return FALSE
 
 		visible_message(
-			SPAN_DANGER("[user] is trying to remove [src]'s [I]!"),
-			SPAN_DANGER("[user] is trying to remove your [I]!")
+			SPAN_DANGER("[user] is trying to remove [src]'s [ours]!"),
+			SPAN_DANGER("[user] is trying to remove your [ours]!")
 		)
 	else
 		if(!user.can_unequip(theirs))
 			to_chat(user, SPAN_WARNING("[theirs] is stuck to your hand!"))
 			return FALSE
+
 
 		if(SLOT_ID_MASK)
 			visible_message(

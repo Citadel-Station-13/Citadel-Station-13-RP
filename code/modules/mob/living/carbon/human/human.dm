@@ -341,22 +341,11 @@
 
 	return ..(shock_damage, source, siemens_coeff, def_zone)
 
-
 /mob/living/carbon/human/Topic(href, href_list)
-
 	if (href_list["mach_close"])
 		var/t1 = text("window=[]", href_list["mach_close"])
 		unset_machine()
 		src << browse(null, t1)
-
-	if(href_list["strip_slot"])
-		handle_strip_from_slot(href_list["strip_slot"], usr)
-
-	if(href_list["strip_held"])
-		handle_strip_from_held(text2num(href_list["strip_held"]), usr)
-
-	if(href_list["strip_misc"])
-		handle_strip_misc(href_list["strip_misc"], usr)
 
 	if(href_list["ooc_notes"])
 		src.Examine_OOC()

@@ -6,7 +6,7 @@
 			visible_message("<span class='danger'>\The [user] is trying to set \the [src]'s sensors!</span>")
 			if(do_after(user,HUMAN_STRIP_DELAY,src))
 				toggle_sensors(user)
-			returnw
+			return
 
 // Modify the current target sensor level.
 /mob/living/carbon/human/proc/toggle_sensors(var/mob/living/user)
