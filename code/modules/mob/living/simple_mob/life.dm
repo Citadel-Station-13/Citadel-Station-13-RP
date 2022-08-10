@@ -19,7 +19,7 @@
 
 		handle_special()
 
-	handle_guts()
+	handle_guts(seconds)
 
 //Should we be dead?
 /mob/living/simple_mob/updatehealth()
@@ -145,7 +145,7 @@
 			oxygen.icon_state = "oxy0"
 		adjustOxyLoss(-unsuitable_atoms_damage)
 
-/mob/living/simple_mob/proc/handle_guts()
+/mob/living/simple_mob/proc/handle_guts(dt)
 	switch(stat)
 		if(DEAD)
 			for(var/obj/item/organ/O in organs)
