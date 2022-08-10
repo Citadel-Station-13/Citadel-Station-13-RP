@@ -124,8 +124,8 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 /**
  * checks for obfuscation when making the strip menu
  */
-/datum/inventory_slot_meta/proc/strip_obfuscation_check
-	#warn impl + args + pockets
+/datum/inventory_slot_meta/proc/strip_obfuscation_check(obj/item/equipped, mob/wearer, mob/user)
+	return NONE
 
 /datum/inventory_slot_meta/inventory
 	abstract_type = /datum/inventory_slot_meta/inventory
@@ -206,6 +206,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	if(I.slot_flags & SLOT_POCKET)
 		return TRUE
 	return I.w_class <= WEIGHT_CLASS_SMALL
+
+/datum/inventory_slot_meta/inventory/pocket/strip_obfuscation_check(obj/item/equipped, mob/wearer, mob/user)
+	return INV_VIEW_OBFUSCATE_HIDE_ITEM_NAME
 
 /datum/inventory_slot_meta/inventory/pocket/left
 	name = "left pocket"

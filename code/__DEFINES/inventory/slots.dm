@@ -10,7 +10,7 @@
 #define SLOT_ID_SHOES			"shoes"
 #define SLOT_ID_GLASSES			"glasses"
 #define SLOT_ID_GLOVES			"gloves"
-#define SLOT_ID_SUIT_STORAGE	"suitstore"T
+#define SLOT_ID_SUIT_STORAGE	"suitstore"
 #define SLOT_ID_MASK			"mask"
 #define SLOT_ID_LEFT_EAR		"lear"
 #define SLOT_ID_RIGHT_EAR		"rear"

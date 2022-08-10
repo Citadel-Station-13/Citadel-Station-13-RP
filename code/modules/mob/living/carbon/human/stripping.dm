@@ -1,62 +1,3 @@
-/mob/living/carbon/human/proc/handle_strip_from_held(index, mob/living/user)
-	if(!handle_strip_prechecks(user))
-		return
-
-	// todo: multihand support
-	if((index < 1) || (index > 2))
-		return
-
-	var/obj/item/I = get_held_item_of_index(index)
-	var/obj/item/held = user.get_active_held_item()
-	if(!I && !held)
-		return
-
-	if(!handle_strip_generic(I, user, index))
-		return
-
-	if(I)
-		if(drop_item_to_ground(I, user = user))
-			add_attack_logs(user, src, "Removed [I] from hand index [index]")
-		else
-			add_attack_logs(user, src, "Failed to remove [I] from hand index [index]")
-	else
-		if(put_in_hand(held, index))
-			add_attack_logs(user, src, "Put [held] in hand index [index]")
-		else
-			add_attack_logs(user, src, "Failed to put [held] in hand index [index]")
-
-/mob/living/carbon/human/proc/handle_strip_from_slot(slot, mob/living/user)
-	if(!handle_strip_prechecks(user))
-		return
-
-	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
-	if(!slot_meta)
-		return
-
-	var/obj/item/I = item_by_slot(slot)
-	var/obj/item/held = user.get_active_held_item()
-	if(!I && !held)
-		return
-
-	if(!handle_strip_generic(I, user, slot))
-		return
-
-	if(I)
-		if(drop_item_to_ground(I, user = user))
-			add_attack_logs(user, src, "Removed [I] from slot [slot]")
-		else
-			add_attack_logs(user, src, "Failed to remove [I] from slot [slot]")
-	else
-		if(equip_to_slot_if_possible(held, slot))
-			add_attack_logs(user, src, "Put [held] in slot [slot]")
-		else
-			add_attack_logs(user, src, "Failed to put [held] in slot [slot]")
-
-/mob/living/carbon/human/proc/handle_strip_prechecks(mob/user)
-	if(user.incapacitated() || !user.Adjacent(src))
-		user << browse(null, "window=mob[name]")
-		return FALSE
-	return TRUE
 
 /mob/living/carbon/human/proc/handle_strip_generic(obj/item/I, mob/living/user, slot_id_or_index)
 	var/obj/item/held = user.get_active_held_item()
@@ -130,17 +71,6 @@
 			update_inv_w_uniform()
 			return
 
-// Empty out everything in the target's pockets.
-/mob/living/carbon/human/proc/empty_pockets(var/mob/living/user)
-	if(!r_store && !l_store)
-		to_chat(user, "<span class='warning'>\The [src] has nothing in their pockets.</span>")
-		return
-	if(r_store)
-		drop_item_to_ground(r_store)
-	if(l_store)
-		drop_item_to_ground(l_store)
-	visible_message("<span class='danger'>\The [user] empties \the [src]'s pockets!</span>")
-
 // Modify the current target sensor level.
 /mob/living/carbon/human/proc/toggle_sensors(var/mob/living/user)
 	var/obj/item/clothing/under/suit = w_uniform
@@ -152,6 +82,19 @@
 		return
 	add_attack_logs(user,src,"Adjusted suit sensor level")
 	suit.set_sensors(user)
+
+/mob/living/carbon/human/strip_menu_options(mob/user)
+	. = ..()
+	.["splints"] = "Remove Splints"
+	.["internals"] = "Toggle Internals"
+
+/mob/living/carbon/human/strip_menu_act(mob/user, action)
+	. = ..()
+	switch(action)
+		if("splints")
+			remove_splints(user)
+		if("internals")
+			toggle_internals(user)
 
 // Remove all splints.
 /mob/living/carbon/human/proc/remove_splints(var/mob/living/user)
@@ -175,6 +118,7 @@
 						removed_splint = 1
 		if(removed_splint)
 			visible_message("<span class='danger'>\The [user] removes \the [src]'s splints!</span>")
+			add_attack_logs(user, src, "removed splints")
 		else
 			to_chat(user, "<span class='warning'>\The [src] has no splints to remove.</span>")
 
@@ -202,72 +146,7 @@
 		internal.add_fingerprint(user)
 		if (internals)
 			internals.icon_state = "internal1"
+		add_attack_logs(user, src, "turned on internals")
 	else
 		visible_message("<span class='danger'>\The [user] disables \the [src]'s internals!</span>")
-
-#warn put in inventory, slot enumeration, etc
-/mob/living/carbon/human/show_inv(mob/user as mob)
-	if(user.incapacitated()  || !user.Adjacent(src))
-		return
-
-	var/obj/item/clothing/under/suit = null
-	if (istype(w_uniform, /obj/item/clothing/under))
-		suit = w_uniform
-
-	user.set_machine(src)
-	var/dat = "<B><HR><FONT size=3>[name]</FONT></B><BR><HR>"
-
-	for(var/entry in species.hud.gear)
-		var/list/slot_ref = species.hud.gear[entry]
-		if((slot_ref["slot"] in list(SLOT_ID_LEFT_POCKET, SLOT_ID_RIGHT_POCKET)))
-			continue
-		var/obj/item/thing_in_slot = item_by_slot(slot_ref["slot"])
-		dat += "<BR><B>[slot_ref["name"]]:</b> <a href='?src=\ref[src];strip_slot=[slot_ref["slot"]]'>[istype(thing_in_slot) ? thing_in_slot : "nothing"]</a>"
-
-	dat += "<BR><HR>"
-
-	if(has_hands)
-		dat += "<BR><b>Left hand:</b> <A href='?src=\ref[src];strip_held=[1]'>[istype(l_hand) ? l_hand : "nothing"]</A>"
-		dat += "<BR><b>Right hand:</b> <A href='?src=\ref[src];strip_held=[2]'>[istype(r_hand) ? r_hand : "nothing"]</A>"
-
-	// Do they get an option to set internals?
-	if(istype(wear_mask, /obj/item/clothing/mask) || istype(head, /obj/item/clothing/head/helmet/space))
-		if(istype(back, /obj/item/tank) || istype(belt, /obj/item/tank) || istype(s_store, /obj/item/tank))
-			dat += "<BR><A href='?src=\ref[src];strip_misc=internals'>Toggle internals.</A>"
-
-	// Other incidentals.
-	if(istype(suit) && suit.has_sensor == 1)
-		dat += "<BR><A href='?src=\ref[src];strip_misc=sensors'>Set sensors</A>"
-	if(handcuffed)
-		dat += "<BR><A href='?src=\ref[src];strip_slot=[SLOT_ID_HANDCUFFED]'>Handcuffed</A>"
-	if(legcuffed)
-		dat += "<BR><A href='?src=\ref[src];strip_slot=[SLOT_ID_LEGCUFFED]'>Legcuffed</A>"
-
-	if(suit && LAZYLEN(suit.accessories))
-		dat += "<BR><A href='?src=\ref[src];strip_misc=tie'>Remove accessory</A>"
-	dat += "<BR><A href='?src=\ref[src];strip_misc=splints'>Remove splints</A>"
-	dat += "<BR><A href='?src=\ref[src];strip_misc=pockets'>Empty pockets</A>"
-	dat += "<BR><A href='?src=\ref[user];refresh=1'>Refresh</A>"
-	dat += "<BR><A href='?src=\ref[user];mach_close=mob[name]'>Close</A>"
-
-	user << browse(dat, text("window=mob[name];size=340x540"))
-	onclose(user, "mob[name]")
-	return
-
-/mob/living/show_inv(mob/user)
-	user.set_machine(src)
-	var/dat = {"
-	<B><HR><FONT size=3>[name]</FONT></B>
-	<BR><HR>
-	<BR><B>Head(Mask):</B> <A href='?src=\ref[src];strip_slot=[SLOT_ID_MASK]'>[(wear_mask ? wear_mask : "Nothing")]</A>
-	<BR><B>Left Hand:</B> <A href='?src=\ref[src];strip_hand=[1]'>[(l_hand ? l_hand  : "Nothing")]</A>
-	<BR><B>Right Hand:</B> <A href='?src=\ref[src];strip_hand=[2]'>[(r_hand ? r_hand : "Nothing")]</A>
-	<BR><B>Back:</B> <A href='?src=\ref[src];strip_misc=[SLOT_ID_BACK]'>[(back ? back : "Nothing")]</A> [((istype(wear_mask, /obj/item/clothing/mask) && istype(back, /obj/item/tank) && !( internal )) ? text(" <A href='?src=\ref[];item=internal'>Set Internal</A>", src) : "")]
-	<BR>[(internal ? text("<A href='?src=\ref[src];strip_misc=internal'>Remove Internal</A>") : "")]
-	<BR><A href='?src=\ref[src];strip_misc=pockets'>Empty Pockets</A>
-	<BR><A href='?src=\ref[user];refresh=1'>Refresh</A>
-	<BR><A href='?src=\ref[user];mach_close=mob[name]'>Close</A>
-	<BR>"}
-	user << browse(dat, text("window=mob[];size=325x500", name))
-	onclose(user, "mob[name]")
-	return
+		add_attack_logs(uesr, src, "turned off internals")

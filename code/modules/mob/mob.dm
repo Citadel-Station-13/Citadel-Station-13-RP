@@ -664,7 +664,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	if(!Adjacent(usr)) return
 	if(usr.incapacitated(INCAPACITATION_STUNNED | INCAPACITATION_FORCELYING | INCAPACITATION_KNOCKOUT | INCAPACITATION_RESTRAINED)) return //Incapacitated.
 	if(istype(M,/mob/living/silicon/ai)) return
-	show_inv(usr)
+	request_strip_menu(usr)
 	return 0
 
 /mob/proc/can_use_hands()

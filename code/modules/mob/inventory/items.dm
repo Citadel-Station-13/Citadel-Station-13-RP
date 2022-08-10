@@ -298,7 +298,7 @@
 	return slot_meta.inventory_slot_flags & INV_SLOT_CONSIDERED_WORN
 
 /**
- * get strip menu options by name associated to href key
+ * get strip menu options by  href key associated to name.
  */
 /obj/item/proc/strip_menu_options(mob/user)
 	RETURN_TYPE(/list)
@@ -308,6 +308,7 @@
  * strip menu act
  *
  * adjacency is pre-checked.
+ * return TRUE to refresh
  */
 /obj/item/proc/strip_menu_act(mob/user, action)
 	return FALSE
