@@ -11,6 +11,8 @@
  * it'll be stored by coordinates.
  *
  * ? Saving is far faster when done for all levels at once, as opposed to one at a time.
+ * ! Location mapped persistence only supports things on turfs.
+ * ! There's no reason to do otherwise, and this speeds up things considerably.
  */
 /datum/controller/subsystem/persistence
 	/// location mapped serializers/deserializers - these are ephemeral and WILL reset on crashes because they shouldn't really be runtime modified in the first place!
@@ -125,8 +127,9 @@
 	var/id
 
 //! Mass Persistence Handlers - Loading- do not override unless you know what you are doing!
+//! Blackboard is null if not a mass load operation, otherwise it'll be shared by all. Use to collate stuff like for(x in world).
 
-/datum/mass_persistence_handler/proc/Load(level_id, z, force)
+/datum/mass_persistence_handler/proc/Load(level_id, z, force, list/blackboard)
 	// process arguments
 	if(!level_id && !z)
 		CRASH("no level id or z")
@@ -147,13 +150,14 @@
 
 	#warn finish
 
-/datum/mass_persistence_handler/proc/_Unpack(data)
+/datum/mass_persistence_handler/proc/_Unpack(data, list/blackboard)
 
-/datum/mass_persistence_handler/proc/_InstantiateAndDeserialize(list/data)
+/datum/mass_persistence_handler/proc/_InstantiateAndDeserialize(list/data, list/blackboard)
 
 //! Mass Persistence Handlers - Saving - do not override unless you know what you are doing!
+//! Blackboard is null if not a mass save operation, otherwise it'll be shared by all. Use to collate stuff like for(x in world).
 
-/datum/mass_persistence_handler/proc/SaveSpecific(level_id, z)
+/datum/mass_persistence_handler/proc/SaveSpecific(level_id, z, list/blackboard)
 	// process arguments
 	if(!level_id && !z)
 		CRASH("no level id or z")
@@ -168,31 +172,31 @@
 
 	#warn finish
 
-/datum/mass_persistence_handler/proc/SaveAll()
+/datum/mass_persistence_handler/proc/SaveAll(list/blackboard)
 
 /**
  * gets all atoms
  */
-/datum/mass_persistence_handler/proc/_Collect(z_filter)
+/datum/mass_persistence_handler/proc/_Collect(z_filter, list/blackboard)
 
 /**
  * filters out atoms not in a zlevel
  */
-/datum/mass_persistence_handler/proc/_LevelFilter(list/atom/entities, z_filter)
+/datum/mass_persistence_handler/proc/_LevelFilter(list/atom/entities, z_filter, list/blackboard)
 	RETURN_TYPE(/list)
 	. = list()
 
 /**
  * groups atoms by zlevels, filtering out any zlevels without level ids
  */
-/datum/mass_persistence_handler/proc/_MassFilter(list/atom/entities)
+/datum/mass_persistence_handler/proc/_MassFilter(list/atom/entities, list/blackboard)
 	RETURN_TYPE(/list)
 	. = list()
 
 /**
  * splits atoms from a specific level into fragments
  */
-/datum/mass_persistence_handler/proc/_Split(list/atom/entities, fragment_size)
+/datum/mass_persistence_handler/proc/_Split(list/atom/entities, fragment_size, list/blackboard)
 	if(!fragment_size)
 		fragment_size = CONFIG_GET(number/persistence_mass_fragment_size)
 		if(!fragment_size)
@@ -201,19 +205,25 @@
 /**
  * gather data of atoms in fragment
  */
-/datum/mass_persistence_handler/proc/_Serialize(list/atom/entities)
+/datum/mass_persistence_handler/proc/_Serialize(list/atom/entities, list/blackboard)
 	RETURN_TYPE(/list)
 
 /**
  * packs everything into a string for SQL
  */
-/datum/mass_persistence_handler/proc/_Pack(list/data)
+/datum/mass_persistence_handler/proc/_Pack(list/data, list/blackboard)
 
 //! this is the stuff you should actually override
+//! once again, blackboard is not null during mass operations, so use it to stage for(atom type in world)!
 
-/datum/mass_persistence_handler/proc/GetObjects()
+/datum/mass_persistence_handler/proc/GetObjects(list/blackboard)
 
-/datum/mass_persistence_handler/proc/GetObjectsOnLevel(z)
+/**
+ * faster way to get objects
+ * usually NOT_IMPLEMENTED because z checks are genuinely awful
+ * and there's no way to make a generic method to do this.
+ */
+/datum/mass_persistence_handler/proc/GetObjectsOnLevel(z, list/blackboard)
 	return NOT_IMPLEMENTED
 
 /datum/mass_persistence_handler/proc/Serialize(atom/A)

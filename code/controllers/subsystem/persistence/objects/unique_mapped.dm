@@ -10,4 +10,4 @@
 
 /datum/controller/subsystem/persistence/proc/FetchObjectData(uid, map)
 
-/datum/controller/subsystem/persistence/proc/StoreObjectData(uid, map, data)
+/datum/controller/subsystem/persistence/proc/StoreObjectData(uid, data, map)
