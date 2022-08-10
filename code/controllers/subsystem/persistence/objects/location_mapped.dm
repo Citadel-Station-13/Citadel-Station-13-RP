@@ -124,7 +124,7 @@
 	/// id - **must** be unique
 	var/id
 
-//! Mass Persistence Handlers - Loading
+//! Mass Persistence Handlers - Loading- do not override unless you know what you are doing!
 
 /datum/mass_persistence_handler/proc/Load(level_id, z, force)
 	// process arguments
@@ -147,11 +147,11 @@
 
 	#warn finish
 
-/datum/mass_persistence_handler/proc/Unpack(data)
+/datum/mass_persistence_handler/proc/_Unpack(data)
 
-/datum/mass_persistence_handler/proc/InstantiateAndDeserialize(list/data)
+/datum/mass_persistence_handler/proc/_InstantiateAndDeserialize(list/data)
 
-//! Mass Persistence Handlers - Saving
+//! Mass Persistence Handlers - Saving - do not override unless you know what you are doing!
 
 /datum/mass_persistence_handler/proc/SaveSpecific(level_id, z)
 	// process arguments
@@ -170,26 +170,29 @@
 
 /datum/mass_persistence_handler/proc/SaveAll()
 
-/datum/mass_persistence_handler/proc/Collect()
+/**
+ * gets all atoms
+ */
+/datum/mass_persistence_handler/proc/_Collect(z_filter)
 
 /**
  * filters out atoms not in a zlevel
  */
-/datum/mass_persistence_handler/proc/LevelFilter(list/atom/entities, z_filter)
+/datum/mass_persistence_handler/proc/_LevelFilter(list/atom/entities, z_filter)
 	RETURN_TYPE(/list)
 	. = list()
 
 /**
  * groups atoms by zlevels, filtering out any zlevels without level ids
  */
-/datum/mass_persistence_handler/proc/MassFilter(list/atom/entities)
+/datum/mass_persistence_handler/proc/_MassFilter(list/atom/entities)
 	RETURN_TYPE(/list)
 	. = list()
 
 /**
  * splits atoms from a specific level into fragments
  */
-/datum/mass_persistence_handler/proc/Split(list/atom/entities, fragment_size)
+/datum/mass_persistence_handler/proc/_Split(list/atom/entities, fragment_size)
 	if(!fragment_size)
 		fragment_size = CONFIG_GET(number/persistence_mass_fragment_size)
 		if(!fragment_size)
@@ -198,11 +201,22 @@
 /**
  * gather data of atoms in fragment
  */
-/datum/mass_persistence_handler/proc/Serialize(list/atom/entities)
+/datum/mass_persistence_handler/proc/_Serialize(list/atom/entities)
 	RETURN_TYPE(/list)
 
 /**
  * packs everything into a string for SQL
  */
-/datum/mass_persistence_handler/proc/Pack(list/data)
+/datum/mass_persistence_handler/proc/_Pack(list/data)
 
+//! this is the stuff you should actually override
+
+/datum/mass_persistence_handler/proc/GetObjects()
+
+/datum/mass_persistence_handler/proc/GetObjectsOnLevel(z)
+	return NOT_IMPLEMENTED
+
+/datum/mass_persistence_handler/proc/Serialize(atom/A)
+	RETURN_TYPE(/list)
+
+/datum/mass_persistence_handler/proc/Instantiate(type, x, y, z, list/data)
