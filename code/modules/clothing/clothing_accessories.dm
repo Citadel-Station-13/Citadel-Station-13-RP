@@ -177,12 +177,37 @@
 	. = ..()
 	if(!length(accessories))
 		return
-
-
+	.["accessory"] = "Remove Accessory"
 
 /obj/item/clothing/strip_menu_act(mob/user, action)
 	. = ..()
 	if(.)
 		return
-	if()
+	switch(action)
+		if("accessory")
+			#warn impl
 
+/*
+		if("tie")
+			var/obj/item/clothing/under/suit = w_uniform
+			if(!istype(suit) || !LAZYLEN(suit.accessories))
+				return
+			var/obj/item/clothing/accessory/A = suit.accessories[1]
+			if(!istype(A))
+				return
+			visible_message("<span class='danger'>\The [usr] is trying to remove \the [src]'s [A.name]!</span>")
+
+			if(!do_after(user,HUMAN_STRIP_DELAY,src))
+				return
+
+			if(!A || suit.loc != src || !(A in suit.accessories))
+				return
+
+			if(istype(A, /obj/item/clothing/accessory/badge) || istype(A, /obj/item/clothing/accessory/medal))
+				user.visible_message("<span class='danger'>\The [user] tears off \the [A] from [src]'s [suit.name]!</span>")
+			add_attack_logs(user,src,"Stripped [A.name] off [suit.name]")
+			A.on_removed(user)
+			suit.accessories -= A
+			update_inv_w_uniform()
+			return
+*/

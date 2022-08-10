@@ -136,7 +136,47 @@
 /mob/proc/attempt_strip_common(obj/item/ours, obj/item/theirs, mob/user, slot_id_or_index)
 	var/removing = !!ours
 
-	#warn finish
+	#warn check strip obfuscations
+
+	if(removing)
+		if(!can_unequip(ours))
+			to_chat(user, SPAN_WARNING("[ours] is stuck!"))
+			return FALSE
+
+		visible_message(
+			SPAN_DANGER("[user] is trying to remove [src]'s [I]!"),
+			SPAN_DANGER("[user] is trying to remove your [I]!")
+		)
+	else
+		if(!user.can_unequip(theirs))
+			to_chat(user, SPAN_WARNING("[theirs] is stuck to your hand!"))
+			return FALSE
+
+		if(SLOT_ID_MASK)
+			visible_message(
+				SPAN_DANGER("[user] is trying to put \a [theirs] in [src]'s mouth!"),
+				SPAN_DANGER("[user] is trying to put \a [theirs] in your mouth!")
+			)
+		else
+			visible_message(
+				SPAN_DANGER("[user] is trying to put \a [theirs] on [src]!"),
+				SPAN_DANGER("[user] is trying to put \a [theirs] on you!")
+			)
+
+	if(!do_after(user, HUMAN_STRIP_DELAY, src, FALSE))
+		return FALSE
+
+	if(removing)
+		if(isnum(slot_id_or_index))
+			if(get_held_index(ours) != slot_id_or_index)
+				return FALSE
+		else
+			if(slot_by_item(ours) != slot_id_or_index)
+				return FALSE
+	else
+		if(!user.is_holding(theirs))
+			return FALSE
+	return TRUE
 
 /mob/proc/handle_strip_topic(mob/user, list/href_list, operation)
 	// do checks
@@ -170,6 +210,9 @@
 		open_strip_menu(user)
 
 /mob/proc/strip_interaction_prechecks(mob/user, autoclose = TRUE)
+	if(!isliving(user))
+		// no ghost fuckery
+		return FALSE
 	if(user.incapacitated())
 		close_strip_menu(user)
 		return FALSE

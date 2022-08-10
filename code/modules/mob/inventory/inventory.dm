@@ -228,6 +228,9 @@
  * - user - stripper - can be null
  */
 /mob/proc/can_unequip(obj/item/I, slot, flags, mob/user)
+	if(!slot)
+		slot = slot_by_item(I)
+
 	if(!(flags & INV_OP_FORCE) && HAS_TRAIT(I, TRAIT_NODROP))
 		if(!(flags & INV_OP_SUPPRESS_WARNING))
 			to_chat(user, SPAN_WARNING("[I] is stuck to your hand!"))
@@ -759,7 +762,7 @@
  * null if not in inventory. SLOT_HANDS if held.
  */
 /mob/proc/slot_by_item(obj/item/I)
-	return is_in_inventory(I)		// short circuited to that too
+	return is_in_inventory(I) || null		// short circuited to that too
 									// if equipped/unequipped didn't set worn_slot well jokes on you lmfao
 
 /mob/proc/_equip_slot(obj/item/I, slot, flags)
