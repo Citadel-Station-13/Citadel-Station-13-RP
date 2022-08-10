@@ -275,6 +275,8 @@
 			return ..()
 		var/mob/M = worn_mob()
 		if(!ismob(M))
+			worn_slot = null
+			worn_hook_suppressed = FALSE
 			stack_trace("item forcemove inv hook called without a mob as loc??")
 		M.temporarily_remove_from_inventory(src, INV_OP_FORCE)
 	return ..()
