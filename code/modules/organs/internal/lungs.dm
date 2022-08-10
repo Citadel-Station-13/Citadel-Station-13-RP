@@ -6,12 +6,8 @@
 	organ_tag = O_LUNGS
 	parent_organ = BP_TORSO
 
-#warn WOO
-/obj/item/organ/internal/lungs/process(delta_time)
-	..()
-
-	if(!owner)
-		return
+/obj/item/organ/internal/lungs/tick_life(dt)
+	. = ..()
 
 	var/stabilization = HAS_TRAIT(owner, TRAIT_MECHANICAL_VENTILATION)? 1 : 0
 

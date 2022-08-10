@@ -146,6 +146,7 @@
 		adjustOxyLoss(-unsuitable_atoms_damage)
 
 /mob/living/simple_mob/proc/handle_guts()
+	#warn seriously
 	for(var/obj/item/organ/OR in internal_organs)
 		OR.process()
 

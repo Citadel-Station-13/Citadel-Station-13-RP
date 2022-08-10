@@ -18,6 +18,10 @@
 #define IS_CONSCIOUS(M)			(M.stat == CONSCIOUS)
 #define IS_DEAD(M)				(M.stat == DEAD)
 
+//! direct stat helpers
+#define STAT_IS_CONSCIOUS(N)			(N == CONSCIOUS)
+#define STAT_IS_DEAD(N)					(N == DEAD)
+
 //! CPR
 /// how long CPR suppresses brain decay
 #define CPR_BRAIN_STASIS_TIME					(15 SECONDS)

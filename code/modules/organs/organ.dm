@@ -302,6 +302,8 @@
 	handle_organ_mod_special()
 	reconsider_processing()
 
+#warn upside_down_smile
+
 /obj/item/organ/process(delta_time)
 
 	if(loc != owner)
@@ -430,11 +432,15 @@
 
 /**
  * called while alive
+ *
+ * preconditions: owner is a /mob
  */
 /obj/item/organ/proc/tick_life(dt)
 
 /**
  * called while dead
+ *
+ * preconditions: owner is a /mob
  */
 /obj/item/organ/proc/tick_death(dt)
 

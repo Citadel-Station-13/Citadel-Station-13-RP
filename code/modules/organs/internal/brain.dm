@@ -19,9 +19,8 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	var/mob/living/carbon/brain/brainmob = null
 	var/can_assist = TRUE
 
-#warn WOO
-/obj/item/organ/internal/brain/process(delta_time)
-	..()
+/obj/item/organ/internal/brain/tick_removed(dt)
+	. = ..()
 
 	if(preserved)
 		return
@@ -30,7 +29,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 		return
 
 	if(!owner || IS_DEAD(owner))
-		take_damage(delta_time * ORGAN_DECAY_PER_SECOND_BRAIN)
+		take_damage(dt * ORGAN_DECAY_PER_SECOND_BRAIN)
 
 /obj/item/organ/internal/brain/proc/can_assist()
 	return can_assist

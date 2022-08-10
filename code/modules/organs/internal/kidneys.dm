@@ -6,12 +6,8 @@
 	organ_tag = O_KIDNEYS
 	parent_organ = BP_GROIN
 
-#warn WOO
-/obj/item/organ/internal/kidneys/process(delta_time)
-	..()
-
-	if(!owner)
-		return
+/obj/item/organ/internal/kidneys/tick_life(dt)
+	. = ..()
 
 	// Coffee is really bad for you with busted kidneys.
 	// This should probably be expanded in some way, but fucked if I know
