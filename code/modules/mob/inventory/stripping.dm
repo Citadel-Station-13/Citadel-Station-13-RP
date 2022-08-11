@@ -161,7 +161,7 @@
 					SPAN_DANGER("[user] is trying to put \a [theirs] in your mouth!")
 				)
 			else
-					visible_message(
+				visible_message(
 					SPAN_DANGER("[user] is trying to put \a [theirs] on [src]!"),
 					SPAN_DANGER("[user] is trying to put \a [theirs] on you!")
 				)
@@ -186,6 +186,7 @@
 	if(!strip_interaction_prechecks(user))
 		return
 	// act
+	#warn check obfuscation for options
 	switch(operation)
 		if("slot")
 			var/slot = href_list["id"]
