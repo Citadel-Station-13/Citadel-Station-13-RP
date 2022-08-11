@@ -83,13 +83,13 @@
 	if(getStasis() > 2)
 		Sleeping(20)
 
+	handle_changeling()
+
+	if(!stasis)
+		handle_organs(seconds)
+
 	//No need to update all of these procs if the guy is dead.
 	if(stat != DEAD && !stasis)
-		//Updates the number of stored chemicals for powers
-		handle_changeling()
-
-		//Organs and blood
-		handle_organs(seconds)
 		stabilize_body_temperature() //Body temperature adjusts itself (self-regulation)
 		weightgain()
 		process_weaver_silk()

@@ -135,7 +135,6 @@
 	if(status & ORGAN_DEAD)
 		. += "<span class='notice'>The decay has set in.</span>"
 
-
 /obj/item/organ/proc/receive_chem(chemical as obj)
 	return 0
 
@@ -302,6 +301,8 @@
 	handle_organ_mod_special()
 	reconsider_processing()
 
+
+
 #warn upside_down_smile
 
 /obj/item/organ/process(delta_time)
@@ -311,9 +312,6 @@
 
 	//dead already, no need for more processing
 	if(status & ORGAN_DEAD)
-		return
-	// Don't process if we're in a freezer, an MMI or a stasis bag.or a freezer or something I dunno
-	if(istype(loc,/obj/item/mmi))
 		return
 	if(preserved)
 		return
@@ -461,6 +459,13 @@
  * - locality - check [code/__DEFINES/mobs/organs.dm]
  */
 /obj/item/organ/proc/should_process(locality)
+	switch(locality)
+		if(ORGAN_LOCALITY_REMOVED)
+			return is_dead() || HAS_TRAIT(src, TRAIT_ORGAN_PRESERVED)
+		if(ORGAN_LOCALITY_IN_LIVING_MOB)
+
+		if(ORGAN_LOCALITY_IN_DEAD_MOB)
+
 
 /**
  * reconsider if we need to process
@@ -473,6 +478,99 @@
 	// we're not in someone
 	if(should_process(ORGAN_LOCALITY_REMOVED))
 		START_PROCESSING(SSobj, src)
+
+/**
+ * can we decay?
+ */
+/obj/item/organ/proc/can_decay()
+	return config_legacy.organs_decay && !HAS_TRAIT(src, TRAIT_ORGAN_PRESERVED) && !HAS_TRAIT(src, TRAIT_ORGAN_RECURSIVELY_PRESERVED) && decays
+
+//! helpers
+//? recursion happens from "root" nodes, so only the ones with "real" preservation
+//? if you note that reconsider_processing() is sometimes unnecessarily called because it doesn't take into account recursive preservation,
+//? you'd be right, and I don't care.
+//? if I didn't do this mess we would be SOL if some insane idiot decided to do 3 nested organs instead of 2 nested, the latter of which feasily can just use a loc check instead of
+//? this hot mess
+/**
+ * recursively add trait to prevent decay
+ */
+/obj/item/organ/proc/recursive_prevent_decay(source)
+	ASSERT(source)
+	var/had = HAS_TRAIT(src, TRAIT_ORGAN_PRESERVED)
+	ADD_TRAIT(src, TRAIT_ORGAN_PRESERVED, source)
+	if(!had)
+		return
+	// didn't have it prior, we know we newly gained it now
+	reconsider_processing()
+	_recursive_nest_preservation("recurse_[REF(src)]")
+
+/**
+ * recursively remove trait to prevent decay
+ */
+/obj/item/organ/proc/recursive_allow_decay(source)
+	ASSERT(source)
+	var/had = HAS_TRAIT(src, TRAIT_ORGAN_PRESERVED)
+	REMOVE_TRAIT(src, TRAIT_ORGAN_PRESERVED, source)
+	if(had && !HAS_TRAIT(src, TRAIT_ORGAN_PRESERVED))
+		return
+	// had it before, but not anymore, we know we newly lost it onw
+	reconsider_processing()
+	_recursive_unnest_preservation("recurse_[REF(src)]")
+
+/obj/item/organ/proc/_recursive_nest_preservation(source)
+	//! DANGER SHITCODE WARNING
+	for(var/obj/item/organ/O in src)
+		ADD_TRAIT(O, TRAIT_ORGAN_RECURSIVELY_PRESERVED, source)
+		O._recursive_nest_preservation(source)
+		O.reconsider_processing()
+
+/obj/item/organ/proc/_recursive_unnest_preservation(source)
+	//! DANGER SHITCODE WARNING
+	for(var/obj/item/organ/O in src)
+		REMOVE_TRAIT(O, TRAIT_ORGAN_RECURSIVELY_PRESERVED, source)
+		O._recursive_unnest_preservation(source)
+		O.reconsider_processing()
+
+/obj/item/organ/Exited(atom/movable/AM, atom/newLoc)
+	. = ..()
+	if(istype(AM, /obj/item/organ))
+		var/obj/item/organ/O = AM
+		var/changed = FALSE
+		if(HAS_TRAIT(src, TRAIT_ORGAN_PRESERVED))
+			// we are a root node
+			REMOVE_TRAIT(O, TRAIT_ORGAN_RECURSIVELY_PRESERVED, "recurse_[REF(src)]")
+			changed = TRUE
+			O._recursive_unnest_preservation("recurse_[REF(src)]")
+		if(HAS_TRAIT(src, TRAIT_ORGAN_RECURSIVELY_PRESERVED))
+			// we are part of another node's tree,
+			// remove our sources from theirs
+			//! DANGER SHITCODE WARNING
+			var/list/sources = status_traits[TRAIT_ORGAN_RECURSIVELY_PRESERVED]
+			for(var/source in sources)
+				REMOVE_TRAIT(O, source)
+			changed = TRUE
+		if(changed)
+			O.reconsider_processing()
+
+/obj/item/organ/Entered(atom/movable/AM, atom/oldLoc)
+	. = ..()
+	if(istype(AM, /obj/item/organ))
+		var/obj/item/organ/O = AM
+		if(HAS_TRIAT(src, TRAIT_ORGAN_PRESERVED))
+			// we are a root node
+			ADD_TRAIT(O, TRAIT_ORGAN_RECURSIVELY_PRESERVED, "recurse_[REF(src)]]")
+			O.reconsider_processing()
+			O._recursive_nest_preservation("recurse_[REF(src)]")
+		if(HAS_TRAIT(src, TRAIT_ORGAN_RECURSIVELY_PRESERVED))
+			// we are part of another node's tree,
+			// add our sources to  theirs
+			//! DANGER SHITCODE WARNING
+			var/list/sources = status_traits[TRAIT_ORGAN_RECURSIVELY_PRESERVED]
+			for(var/source in sources)
+				ADD_TRAIT(O, source)
+			changed = TRUE
+		if(changed)
+			O.reconsider_processing()
 
 /obj/item/organ/proc/bitten(mob/user)
 

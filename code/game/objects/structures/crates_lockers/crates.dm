@@ -371,17 +371,13 @@
 /obj/structure/closet/crate/freezer/Entered(var/atom/movable/AM)
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
-		O.preserved = 1
-		for(var/obj/item/organ/organ in O)
-			organ.preserved = 1
+		O.recursive_prevent_decay(CRATE_FREEZER_TRAIT)
 	..()
 
 /obj/structure/closet/crate/freezer/Exited(var/atom/movable/AM)
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
-		O.preserved = 0
-		for(var/obj/item/organ/organ in O)
-			organ.preserved = 0
+		O.recursive_allow_decay(CRATE_FREEZER_TRAIT)
 	..()
 
 /obj/structure/closet/crate/freezer/rations //Fpr use in the escape shuttle

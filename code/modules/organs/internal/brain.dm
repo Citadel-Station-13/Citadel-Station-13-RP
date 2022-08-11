@@ -19,6 +19,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	var/mob/living/carbon/brain/brainmob = null
 	var/can_assist = TRUE
 
+#warn wrap into organs
 /obj/item/organ/internal/brain/tick_removed(dt)
 	. = ..()
 
