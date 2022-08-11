@@ -1,25 +1,3 @@
-
-#warn the attack visible_messages and do afters weren't ported below, make sure they are.
-/mob/living/carbon/human/proc/handle_strip_misc(action, mob/living/user)
-	switch(action)
-		if("sensors")
-			visible_message("<span class='danger'>\The [user] is trying to set \the [src]'s sensors!</span>")
-			if(do_after(user,HUMAN_STRIP_DELAY,src))
-				toggle_sensors(user)
-			return
-
-// Modify the current target sensor level.
-/mob/living/carbon/human/proc/toggle_sensors(var/mob/living/user)
-	var/obj/item/clothing/under/suit = w_uniform
-	if(!suit)
-		to_chat(user, "<span class='warning'>\The [src] is not wearing a suit with sensors.</span>")
-		return
-	if (suit.has_sensor >= 2)
-		to_chat(user, "<span class='warning'>\The [src]'s suit sensor controls are locked.</span>")
-		return
-	add_attack_logs(user,src,"Adjusted suit sensor level")
-	suit.set_sensors(user)
-
 /mob/living/carbon/human/strip_menu_options(mob/user)
 	. = ..()
 	.["splints"] = "Remove Splints"
@@ -29,11 +7,15 @@
 	. = ..()
 	switch(action)
 		if("splints")
-			try_remove_splints(user)
+			return try_remove_splints(user)
 		if("internals")
-			try_toggle_internals(user)
+			return try_toggle_internals(user)
 
 /mob/living/carbon/human/proc/try_remove_splints(mob/user)
+	visible_message(
+		SPAN_WARNING("[user] is trying to remove [src]'s splints!"),
+		SPAN_WARNING("[user] is trying to remove your splints!")
+	)
 	if(!do_after(user, HUMAN_STRIP_DELAY, src))
 		return FALSE
 	remove_splints(user)
@@ -66,6 +48,10 @@
 			to_chat(user, "<span class='warning'>\The [src] has no splints to remove.</span>")
 
 /mob/living/carbon/human/proc/try_toggle_internals(mob/user)
+	visible_message(
+		SPAN_WARNING("[user] is trying to toggle [src]'s internals!"),
+		SPAN_WARNING("[user] is trying to toggle your internals!")
+	)
 	if(!do_after(user, HUMAN_STRIP_DELAY, src))
 		return FALSE
 	toggle_internals(user)

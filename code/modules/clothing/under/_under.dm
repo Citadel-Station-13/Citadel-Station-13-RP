@@ -258,6 +258,28 @@
 		to_chat(usr, "<span class='notice'>You roll down your [src]'s sleeves.</span>")
 	update_worn_icon()
 
+/obj/item/clothing/under/strip_menu_options(mob/user)
+	. = ..()
+	.["sensors"] = "Set Suit Sensors"
+
+/obj/item/clothing/under/strip_menu_act(mob/user, action)
+	. = ..()
+	switch(action)
+		if("sensors")
+			visible_message(
+				SPAN_WARNING("[user] is trying to set \the [src]'s sensors!"),
+				SPAN_WARNING("[user] is trying to set your sensors!")
+			)
+			var/mob/M = worn_mob()
+			if(do_after(user, HUMAN_STRIP_DELAY, M, FALSE))
+				. = strip_menu_sensor_interact(user, M)
+
+/obj/item/clothing/under/proc/strip_menu_sensor_interact(mob/user, mob/wearer = worn_mob())
+	if(has_sensor >= 2)
+		to_chat(user, SPAN_WARNING("\the [src]'s suit sensor controls are locked."))
+		return FALSE
+	add_attack_logs(user, M, "Adjustsuit sensor level")
+
 /obj/item/clothing/under/rank/Initialize(mapload)
 	. = ..()
 	sensor_mode = pick(0,1,2,3)
