@@ -84,4 +84,4 @@
 		add_attack_logs(user, src, "turned on internals")
 	else
 		visible_message("<span class='danger'>\The [user] disables \the [src]'s internals!</span>")
-		add_attack_logs(uesr, src, "turned off internals")
+		add_attack_logs(user, src, "turned off internals")

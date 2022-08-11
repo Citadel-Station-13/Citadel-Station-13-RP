@@ -154,7 +154,7 @@
 			to_chat(user, SPAN_WARNING("[theirs] is stuck to your hand!"))
 			return FALSE
 
-		switch
+		switch(slot_id_or_index)
 			if(SLOT_ID_MASK)
 				visible_message(
 					SPAN_DANGER("[user] is trying to put \a [theirs] in [src]'s mouth!"),

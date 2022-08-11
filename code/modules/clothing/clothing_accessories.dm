@@ -171,16 +171,11 @@
 				. = check
 				break
 
-
-
-#warn impl
-
 /obj/item/clothing/strip_menu_options(mob/user)
 	. = ..()
 	if(!length(accessories))
 		return
 	.["accessory"] = "Remove Accessory"
-
 
 /obj/item/clothing/strip_menu_act(mob/user, action)
 	. = ..()
