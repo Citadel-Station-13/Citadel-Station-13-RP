@@ -1,8 +1,0 @@
-author: "CharlesWedge"
-delete-after: True
-changes: 
-  - rscadd: "Adds Holodeck on Surface 2 At Last"
-  - rscadd: "Adds new friendly friend in Xenobio cave."
-  - bugfix: "The Cabin outside the station now has a roof"
-  - tweak: "firelocks added in addition spots on Surface 2 near dorms"
-  - tweak: "maint around the gantry has been adjusted to make gantry more interconnected."

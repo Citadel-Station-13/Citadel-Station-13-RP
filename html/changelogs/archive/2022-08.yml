@@ -32,3 +32,15 @@
   - bugfix: DROPDEL flag works properly now
   - bugfix: augment items making sounds when unequipping
   - bugfix: augmented shades
+2022-08-11:
+  CharlesWedge:
+  - rscadd: Adds Holodeck on Surface 2 At Last
+  - rscadd: Adds new friendly friend in Xenobio cave.
+  - bugfix: The Cabin outside the station now has a roof
+  - tweak: firelocks added in addition spots on Surface 2 near dorms
+  - tweak: maint around the gantry has been adjusted to make gantry more interconnected.
+  Funkeronipasta:
+  - rscadd: Added LectroNyx's donator fluffitem
+  - imageadd: Added icons for LectroNyx's donator fluffitem
+  TheLordME:
+  - bugfix: fixed radiation glow on creatures
