@@ -215,7 +215,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Sometihng is currently preventing brain damage while dead
 #define TRAIT_NO_BRAIN_DECAY "no_brain_decay"
 /// Something is currently preventing normal respiratory failure
-#define TRAIT_MECHANICAL_VENTILATION "mechanical_ventilation"
+#define TRAIT_MECHANICAL_VENTILATION "mechanical_ventilatin"
 /// Something currently preventing normal circulatory failure
 #define TRAIT_MECHANICAL_CIRCULATION "mechanical_circulation"
 /// this organ is preserved

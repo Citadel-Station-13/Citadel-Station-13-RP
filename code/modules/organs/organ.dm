@@ -313,6 +313,7 @@
 	//dead already, no need for more processing
 	if(status & ORGAN_DEAD)
 		return
+
 	if(preserved)
 		return
 
@@ -478,6 +479,8 @@
 	// we're not in someone
 	if(should_process(ORGAN_LOCALITY_REMOVED))
 		START_PROCESSING(SSobj, src)
+	else
+		STOP_PROCESSING(SSobj, src)
 
 /**
  * can we decay?
@@ -547,7 +550,7 @@
 			//! DANGER SHITCODE WARNING
 			var/list/sources = status_traits[TRAIT_ORGAN_RECURSIVELY_PRESERVED]
 			for(var/source in sources)
-				REMOVE_TRAIT(O, source)
+				REMOVE_TRAIT(O, TRAIT_ORGAN_RECURSIVELY_PRESERVED, source)
 			changed = TRUE
 		if(changed)
 			O.reconsider_processing()
@@ -556,10 +559,11 @@
 	. = ..()
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
-		if(HAS_TRIAT(src, TRAIT_ORGAN_PRESERVED))
+		var/changed = FALSE
+		if(HAS_TRAIT(src, TRAIT_ORGAN_PRESERVED))
 			// we are a root node
 			ADD_TRAIT(O, TRAIT_ORGAN_RECURSIVELY_PRESERVED, "recurse_[REF(src)]]")
-			O.reconsider_processing()
+			changed = TRUE
 			O._recursive_nest_preservation("recurse_[REF(src)]")
 		if(HAS_TRAIT(src, TRAIT_ORGAN_RECURSIVELY_PRESERVED))
 			// we are part of another node's tree,
@@ -567,7 +571,7 @@
 			//! DANGER SHITCODE WARNING
 			var/list/sources = status_traits[TRAIT_ORGAN_RECURSIVELY_PRESERVED]
 			for(var/source in sources)
-				ADD_TRAIT(O, source)
+				ADD_TRAIT(O, TRAIT_ORGAN_RECURSIVELY_PRESERVED, source)
 			changed = TRUE
 		if(changed)
 			O.reconsider_processing()
