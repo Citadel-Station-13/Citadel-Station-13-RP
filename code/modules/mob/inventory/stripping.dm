@@ -154,17 +154,17 @@
 			to_chat(user, SPAN_WARNING("[theirs] is stuck to your hand!"))
 			return FALSE
 
-
-		if(SLOT_ID_MASK)
-			visible_message(
-				SPAN_DANGER("[user] is trying to put \a [theirs] in [src]'s mouth!"),
-				SPAN_DANGER("[user] is trying to put \a [theirs] in your mouth!")
-			)
-		else
-			visible_message(
-				SPAN_DANGER("[user] is trying to put \a [theirs] on [src]!"),
-				SPAN_DANGER("[user] is trying to put \a [theirs] on you!")
-			)
+		switch
+			if(SLOT_ID_MASK)
+				visible_message(
+					SPAN_DANGER("[user] is trying to put \a [theirs] in [src]'s mouth!"),
+					SPAN_DANGER("[user] is trying to put \a [theirs] in your mouth!")
+				)
+			else
+					visible_message(
+					SPAN_DANGER("[user] is trying to put \a [theirs] on [src]!"),
+					SPAN_DANGER("[user] is trying to put \a [theirs] on you!")
+				)
 
 	if(!do_after(user, HUMAN_STRIP_DELAY, src, FALSE))
 		return FALSE

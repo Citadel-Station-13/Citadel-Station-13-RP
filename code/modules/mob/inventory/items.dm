@@ -324,6 +324,8 @@
 	var/mob/M = worn_mob()
 	if(!M)
 		CRASH("no worn mob")
+	if(!M.strip_interaction_prechecks(user))
+		return
 	if(!do_after(user, delay, M, FALSE))
 		return
 	if(slot != worn_slot || M != worn_mob())

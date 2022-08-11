@@ -171,6 +171,8 @@
 				. = check
 				break
 
+
+
 #warn impl
 
 /obj/item/clothing/strip_menu_options(mob/user)
@@ -179,35 +181,43 @@
 		return
 	.["accessory"] = "Remove Accessory"
 
+
 /obj/item/clothing/strip_menu_act(mob/user, action)
 	. = ..()
 	if(.)
 		return
 	switch(action)
 		if("accessory")
-			#warn impl
-
-/*
-		if("tie")
-			var/obj/item/clothing/under/suit = w_uniform
-			if(!istype(suit) || !LAZYLEN(suit.accessories))
+			var/list/choices = unique_list_atoms_by_name(accessories)
+			var/choice = input(user, "What to take off?", "Strip Accessory") as null|anything in choices
+			if(!choice)
 				return
-			var/obj/item/clothing/accessory/A = suit.accessories[1]
-			if(!istype(A))
+			var/mob/M = worn_mob()
+			if(!M)
 				return
-			visible_message("<span class='danger'>\The [usr] is trying to remove \the [src]'s [A.name]!</span>")
-
-			if(!do_after(user,HUMAN_STRIP_DELAY,src))
+			var/obj/item/clothing/accessory/A = choices[choice]
+			if(!(A in accessories))
 				return
-
-			if(!A || suit.loc != src || !(A in suit.accessories))
+			add_attack_logs(user, M,  "Started to detach [choice] from [src]")
+			M.visible_message(
+				SPAN_WARNING("[user] starts to deatch \the [A] from [M]'s [src]!"),
+				SPAN_WARNING("[user] starts to detach \the [A] from your [src]!")
+			)
+			if(!strip_menu_standard_do_after(user, HUMAN_STRIP_DELAY))
 				return
-
+			if(!(A in accessories))
+				return
+			add_attack_logs(user, worn_mob(),  "Detached [choice] from [src]")
 			if(istype(A, /obj/item/clothing/accessory/badge) || istype(A, /obj/item/clothing/accessory/medal))
-				user.visible_message("<span class='danger'>\The [user] tears off \the [A] from [src]'s [suit.name]!</span>")
-			add_attack_logs(user,src,"Stripped [A.name] off [suit.name]")
+				M.visible_message(
+					SPAN_WARNING("[user] tears \the [A] off of [M]'s [src]!"),
+					SPAN_WARNING("[user] tears \the [A] off of your [src]!")
+				)
+			else
+				M.visible_message(
+					SPAN_WARNING("[user] detaches \the [A] from [M]'s [src]!"),
+					SPAN_WARNING("[user] detaches \the [A] from your [src]!")
+				)
 			A.on_removed(user)
-			suit.accessories -= A
-			update_inv_w_uniform()
-			return
-*/
+			accessories -= A
+			update_worn_icon()
