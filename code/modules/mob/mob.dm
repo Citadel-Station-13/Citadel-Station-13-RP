@@ -302,21 +302,21 @@
 
 	if(!src || !isturf(src.loc) || !(A in view(14, src)))
 		return 0
-	if(istype(A, /obj/effect/decal/point))
+
+	if(istype(A, /obj/effect/temp_visual/point))
 		return 0
 
 	var/tile = get_turf(A)
 	if (!tile)
 		return 0
 
-	var/obj/P = new /obj/effect/decal/point(tile)
+	var/obj/P = new /obj/effect/temp_visual/point(tile)
 	P.invisibility = invisibility
 	P.plane = ABOVE_PLANE
 	P.layer = FLY_LAYER
 	P.pixel_x = A.pixel_x + world.icon_size * (x - A.x)
 	P.pixel_y = A.pixel_y + world.icon_size * (y - A.y)
 	animate(P, pixel_x = A.pixel_x, pixel_y = A.pixel_y, time = 0.5 SECONDS, easing = QUAD_EASING)
-	QDEL_IN(P, 2 SECONDS)
 	face_atom(A)
 	log_emote("POINTED --> at [A] ([COORD(A)]).", src)
 	return 1
