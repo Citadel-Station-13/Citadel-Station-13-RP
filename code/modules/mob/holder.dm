@@ -34,7 +34,8 @@
 
 /obj/item/holder/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
-	update_state()
+	if(!(flags & INV_OP_DELETING))
+		update_state()
 
 /obj/item/holder/examine(mob/user)
 	return held_mob?.examine(user) || list("WARNING WARNING: No held_mob on examine. REPORT THIS TO A CODER.")

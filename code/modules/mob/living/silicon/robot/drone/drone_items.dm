@@ -74,8 +74,7 @@
 	return wrapped
 
 /obj/item/gripper/CtrlClick(mob/user)
-	remove_item()
-	return
+	drop_item()
 
 /obj/item/gripper/omni
 	name = "omni gripper"
@@ -298,7 +297,7 @@
 	if(!wrapped)
 		return
 
-	to_chat(src.loc, "<span class='danger'>You drop \the [wrapped].</span>")
+	to_chat(usr, "<span class='danger'>You drop \the [wrapped].</span>")
 	remove_item(drop_location())
 
 /obj/item/gripper/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)

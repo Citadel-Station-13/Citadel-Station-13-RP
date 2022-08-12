@@ -172,7 +172,7 @@
 			// this is meant to catch any potential deletions dropped can cause.
 			. = FALSE
 		else
-			if(!(I.flags & DROPDEL))
+			if(!(I.item_flags & DROPDEL))
 				if(newloc == null)
 					I.moveToNullspace()
 				else if(newloc != FALSE)

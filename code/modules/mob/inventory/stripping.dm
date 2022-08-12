@@ -55,7 +55,7 @@
 				if(LAZYLEN(options))
 					// generate hrefs for the options
 					for(var/key in options)
-						var/name= options[name]
+						var/name = options[key]
 						. += "    <a href='?src=[REF(src)];strip=opti;item=[REF(I)];act=[key]'>[name]</a><br>"
 
 	// now for hands
@@ -67,7 +67,7 @@
 	if(LAZYLEN(options))
 		// generate hrefs for the options
 		for(var/key in options)
-			var/name = options[name]
+			var/name = options[key]
 			. += "<a href='?src=[REF(src)];strip=optm;act=[key]'>[name]</a><br>"
 		. += "<hr>"
 

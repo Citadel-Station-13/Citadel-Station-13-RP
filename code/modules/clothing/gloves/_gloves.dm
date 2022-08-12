@@ -73,7 +73,7 @@
 	if(!istype(I, /obj/item/clothing/gloves))
 		return FALSE
 
-	if(flags & THICKMATERIAL)
+	if(clothing_flags & THICKMATERIAL)
 		return FALSE
 
 	var/obj/item/clothing/gloves/G = I
@@ -86,7 +86,7 @@
 	if(!istype(I, /obj/item/clothing/gloves))
 		return FALSE
 
-	if(flags & THICKMATERIAL)
+	if(clothing_flags & THICKMATERIAL)
 		return FALSE
 
 	var/obj/item/clothing/gloves/G = I

@@ -19,8 +19,12 @@
 	name = "grab"
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "reinforce"
-	item_flags = ITEM_ABSTRACT
+	item_flags = ITEM_ABSTRACT | DROPDEL
 	flags = ATOM_ABSTRACT
+	drop_sound = null
+	pickup_sound = null
+	equip_sound = null
+	unequip_sound = null
 
 	var/atom/movable/screen/grab/hud = null
 	var/mob/living/affecting = null
@@ -203,13 +207,13 @@
 		if(GRAB_NECK, GRAB_UPGRADING)
 			shift = -10
 			adir = assailant.dir
+			affecting.forceMove(assailant.loc)
 			affecting.setDir(assailant.dir)
-			affecting.loc = assailant.loc
 		if(GRAB_KILL)
 			shift = 0
 			adir = 1
+			affecting.forceMove(assailant.loc)
 			affecting.setDir(SOUTH) //face up
-			affecting.loc = assailant.loc
 
 	switch(adir)
 		if(NORTH)
@@ -336,10 +340,6 @@
 	//clicking on yourself while grabbing them
 	if(M == assailant && state >= GRAB_AGGRESSIVE)
 		devour(affecting, assailant)
-
-/obj/item/grab/dropped(mob/user, flags, atom/newLoc)
-	. = ..()
-	qdel(src)
 
 /obj/item/grab/proc/reset_kill_state()
 	if(state == GRAB_KILL)
