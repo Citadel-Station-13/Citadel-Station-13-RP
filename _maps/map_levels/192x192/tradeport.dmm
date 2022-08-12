@@ -396,11 +396,14 @@
 /turf/simulated/floor/wood,
 /area/shuttle/trade_ship/general)
 "bC" = (
-/obj/machinery/camera{
-	dir = 8
+/obj/effect/shuttle_landmark{
+	base_area = /area/tradeport/pads;
+	base_turf = /turf/simulated/floor/reinforced;
+	docking_controller = "nebula_pump3a";
+	landmark_tag = "nebula_pad_3a";
+	name = "Nebula Pad 3"
 	},
-/obj/structure/catwalk,
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "bD" = (
 /obj/structure/table/glass,
@@ -451,14 +454,8 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/tradeport)
 "bO" = (
-/obj/machinery/door/firedoor{
-	req_one_access = list(160)
-	},
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced/full,
+/obj/machinery/light,
+/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/tradeport/pads)
 "bP" = (
@@ -523,14 +520,8 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/tradeport/cyndishow)
 "cd" = (
-/obj/machinery/door/firedoor{
-	req_one_access = list(160)
-	},
-/obj/structure/grille,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor/plating,
-/area/tradeport/pads)
+/turf/space/basic,
+/area/space)
 "cf" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -888,10 +879,14 @@
 /turf/space,
 /area/space)
 "dn" = (
-/obj/structure/catwalk,
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/tradeport/pads)
 "do" = (
@@ -1019,7 +1014,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/beach/sand,
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/tradeport/safarizoo)
 "dM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1256,16 +1251,11 @@
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
 "eJ" = (
-/obj/machinery/door/firedoor{
-	req_one_access = list(160)
+/obj/structure/sign/atmos_plasma{
+	desc = "WARNING! Plasma flow tube nearby.";
+	name = "Pump Six"
 	},
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor,
+/turf/simulated/wall/r_wall,
 /area/tradeport/pads)
 "eK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1624,7 +1614,7 @@
 /obj/machinery/door/window/westleft{
 	dir = 2
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tradeport/safarizoo)
 "fZ" = (
 /obj/structure/closet/emcloset,
@@ -1731,13 +1721,16 @@
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "gs" = (
-/obj/effect/shuttle_landmark{
-	base_area = /area/tradeport/pads;
-	base_turf = /turf/simulated/floor/reinforced;
-	docking_controller = "nebula_pump4a";
-	landmark_tag = "nebula_pad_4a";
-	name = "Nebula Pad 4a"
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "nebula_pump3a";
+	name = "Nebula Pump Controller";
+	pixel_x = 25
 	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/atmospherics/portables_connector,
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "gv" = (
@@ -1957,16 +1950,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "hm" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "nebula_pump6";
-	name = "Nebula Pump Controller";
-	pixel_x = -25
-	},
-/obj/machinery/light{
+/obj/machinery/camera{
 	dir = 8
 	},
-/turf/simulated/floor/reinforced,
+/obj/structure/catwalk,
+/turf/simulated/floor,
 /area/tradeport/pads)
 "hn" = (
 /obj/effect/shuttle_landmark{
@@ -2003,13 +1991,17 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "ht" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	dir = 1;
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
-	id_tag = "trade_docks"
+	id_tag = "nebula_pump4a";
+	name = "Nebula Pump Controller";
+	pixel_x = -25
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
-/turf/simulated/floor,
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/atmospherics/portables_connector,
+/turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "hu" = (
 /obj/structure/undies_wardrobe,
@@ -2462,7 +2454,7 @@
 	dir = 1
 	},
 /obj/structure/lightpost,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tradeport/safarizoo)
 "iX" = (
 /obj/structure/sink{
@@ -2804,15 +2796,14 @@
 /turf/simulated/wall,
 /area/tradeport/atmospherics)
 "kk" = (
-/obj/machinery/atmospherics/component/binary/pump/high_power/on{
-	dir = 8;
-	frequency = 8018;
-	id = "pumpthree";
-	name = "Pump Three";
-	target_pressure = 15000
+/obj/effect/shuttle_landmark{
+	base_area = /area/tradeport/pads;
+	base_turf = /turf/simulated/floor/reinforced;
+	docking_controller = "nebula_pump4a";
+	landmark_tag = "nebula_pad_4a";
+	name = "Nebula Pad 4a"
 	},
-/obj/structure/catwalk,
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "kl" = (
 /obj/structure/bed/chair/office/dark,
@@ -3120,7 +3111,7 @@
 	},
 /obj/structure/railing,
 /obj/structure/lightpost,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tradeport/safarizoo)
 "lo" = (
 /obj/structure/cable/green{
@@ -3251,11 +3242,18 @@
 /turf/simulated/floor/tiled/steel,
 /area/tradeport)
 "lJ" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
+/obj/machinery/door/airlock/glass_external{
+	name = "Nebula Gas - External Access"
 	},
-/turf/simulated/floor/airless,
-/area/space)
+/atom/movable/map_helper/airlock/door/ext_door,
+/obj/machinery/access_button/airlock_exterior{
+	frequency = 1380;
+	master_tag = "trade_docks";
+	name = "external access button";
+	pixel_y = -24
+	},
+/turf/simulated/floor,
+/area/tradeport/pads)
 "lM" = (
 /obj/machinery/alarm/alarms_hidden{
 	dir = 4;
@@ -3680,21 +3678,18 @@
 /turf/simulated/shuttle/plating,
 /area/shuttle/trade_ship/general)
 "np" = (
-/obj/effect/shuttle_landmark{
-	base_area = /area/tradeport/pads;
-	base_turf = /turf/simulated/floor/reinforced;
-	docking_controller = "nebula_pump4c";
-	landmark_tag = "nebula_pad_4c";
-	name = "Nebula Pad 4c"
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
 	},
-/turf/simulated/floor/reinforced,
+/obj/structure/catwalk,
+/turf/simulated/floor,
 /area/tradeport/pads)
 "nq" = (
 /turf/simulated/wall/r_wall,
 /area/tradeport/commons)
 "nr" = (
 /obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tradeport/safarizoo)
 "nt" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -3774,15 +3769,16 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/trade_ship/general)
-"nN" = (
-/turf/simulated/floor/water/shoreline,
-/area/tradeport/safarizoo)
 "nO" = (
-/obj/machinery/light/small{
-	dir = 4
+/obj/machinery/atmospherics/component/binary/pump/high_power/on{
+	dir = 8;
+	frequency = 8018;
+	id = "pumpthree";
+	name = "Pump Three";
+	target_pressure = 15000
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/airless,
+/turf/simulated/floor,
 /area/tradeport/pads)
 "nP" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -4262,7 +4258,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tradeport/safarizoo)
 "pX" = (
 /obj/structure/bed/chair,
@@ -4306,15 +4302,16 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndishow)
 "qf" = (
-/obj/structure/railing{
-	dir = 4
+/obj/machinery/atmospherics/component/binary/pump/high_power/on{
+	dir = 4;
+	frequency = 8018;
+	id = "pumpfour";
+	name = "Pump Four";
+	target_pressure = 15000
 	},
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/lattice,
-/turf/space,
-/area/space)
+/obj/structure/catwalk,
+/turf/simulated/floor,
+/area/tradeport/pads)
 "qg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -4538,14 +4535,11 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/engineering)
 "qU" = (
-/obj/effect/shuttle_landmark{
-	base_area = /area/tradeport/pads;
-	base_turf = /turf/simulated/floor/reinforced;
-	docking_controller = "nebula_pump6";
-	landmark_tag = "nebula_pad6";
-	name = "Nebula Pad 6"
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
 	},
-/turf/simulated/floor/reinforced,
+/obj/structure/catwalk,
+/turf/simulated/floor,
 /area/tradeport/pads)
 "qV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -4609,18 +4603,14 @@
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/tradeport/pads)
 "rh" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+/obj/effect/shuttle_landmark{
+	base_area = /area/tradeport/pads;
+	base_turf = /turf/simulated/floor/reinforced;
+	docking_controller = "nebula_pump4c";
+	landmark_tag = "nebula_pad_4c";
+	name = "Nebula Pad 4c"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
-/obj/structure/catwalk,
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "ri" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -4680,22 +4670,28 @@
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport)
 "ro" = (
-/obj/structure/sign/atmos_plasma{
-	desc = "WARNING! Plasma flow tube nearby.";
-	name = "Pump Five"
-	},
-/turf/simulated/wall/r_wall,
-/area/tradeport/pads)
-"rp" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/catwalk,
 /turf/simulated/floor,
+/area/tradeport/pads)
+"rp" = (
+/obj/effect/shuttle_landmark{
+	base_area = /area/tradeport/pads;
+	base_turf = /turf/simulated/floor/reinforced;
+	docking_controller = "nebula_pump3c";
+	landmark_tag = "nebula_pad_3c";
+	name = "Nebula Pad 3b"
+	},
+/turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "rq" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -4825,23 +4821,20 @@
 "sa" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
-	id_tag = "nebula_pump3a";
+	id_tag = "nebula_pump3c";
 	name = "Nebula Pump Controller";
 	pixel_x = 25
 	},
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/machinery/atmospherics/portables_connector,
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "sb" = (
-/obj/machinery/atmospherics/portables_connector{
-	dir = 1
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "nebula_pump4c";
+	name = "Nebula Pump Controller";
+	pixel_x = -25
 	},
-/obj/machinery/portable_atmospherics/canister/air,
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "sd" = (
 /obj/structure/window/reinforced{
@@ -4870,15 +4863,9 @@
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/tradeport/pads)
 "sf" = (
-/obj/effect/shuttle_landmark{
-	base_area = /area/tradeport/pads;
-	base_turf = /turf/simulated/floor/reinforced;
-	docking_controller = "nebula_pump3c";
-	landmark_tag = "nebula_pad_3c";
-	name = "Nebula Pad 3b"
-	},
-/turf/simulated/floor/reinforced,
-/area/tradeport/pads)
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/airless,
+/area/space)
 "sh" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 9
@@ -5041,13 +5028,10 @@
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport)
 "sX" = (
-/obj/effect/shuttle_landmark{
-	base_area = /area/space;
-	base_turf = /turf/space;
-	landmark_tag = "nebula_space_SE";
-	name = "Near Nebulous Gas (SE)"
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
 	},
-/turf/space,
+/turf/simulated/floor/airless,
 /area/space)
 "sY" = (
 /obj/machinery/light{
@@ -5145,21 +5129,11 @@
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
 "to" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	dir = 1;
-	frequency = 1380;
-	id_tag = "trade_docks"
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
-	frequency = 1380;
-	id_tag = "trade_docks";
-	pixel_x = -25;
-	pixel_y = -26
-	},
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor,
-/area/tradeport/pads)
+/turf/simulated/floor/airless,
+/area/space)
 "tp" = (
 /obj/structure/bed/chair,
 /turf/simulated/floor/wood,
@@ -5299,7 +5273,7 @@
 /area/tradeport/commons)
 "tS" = (
 /obj/structure/flora/tree/jungle,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tradeport/safarizoo)
 "tU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -5527,7 +5501,7 @@
 /area/tradeport/expansion)
 "uN" = (
 /obj/structure/railing,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tradeport/safarizoo)
 "uP" = (
 /obj/machinery/light{
@@ -5901,7 +5875,7 @@
 /area/tradeport/pads)
 "vR" = (
 /mob/living/simple_mob/vore/redpanda,
-/turf/simulated/floor/beach/sand,
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/tradeport/safarizoo)
 "vU" = (
 /obj/machinery/light{
@@ -5915,18 +5889,15 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
 "vV" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 9
-	},
 /obj/structure/catwalk,
-/turf/simulated/floor,
-/area/tradeport/pads)
+/turf/simulated/floor/airless,
+/area/space)
 "vW" = (
 /turf/simulated/mineral/floor/vacuum,
 /area/space)
 "vX" = (
 /obj/structure/lightpost,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tradeport/safarizoo)
 "vY" = (
 /obj/machinery/door/firedoor{
@@ -6104,7 +6075,18 @@
 /turf/simulated/floor/carpet/blue,
 /area/tradeport/commons)
 "wB" = (
-/obj/effect/floor_decal/rust,
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 1
+	},
+/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/tradeport/pads)
 "wD" = (
@@ -6311,12 +6293,12 @@
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport)
 "xm" = (
-/obj/structure/lattice,
-/obj/structure/railing{
+/obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 1
 	},
-/turf/space,
-/area/space)
+/obj/structure/catwalk,
+/turf/simulated/floor,
+/area/tradeport/pads)
 "xn" = (
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
@@ -6400,14 +6382,12 @@
 /turf/simulated/floor/tiled/steel,
 /area/tradeport)
 "xA" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "nebula_pump4c";
-	name = "Nebula Pump Controller";
-	pixel_x = -25
+/obj/structure/lattice,
+/obj/structure/railing{
+	dir = 1
 	},
-/turf/simulated/floor/reinforced,
-/area/tradeport/pads)
+/turf/space,
+/area/space)
 "xB" = (
 /obj/machinery/light,
 /obj/machinery/atmospherics/component/binary/pump/high_power/on{
@@ -6698,15 +6678,11 @@
 /turf/simulated/wall,
 /area/tradeport/medical)
 "yD" = (
-/obj/machinery/atmospherics/component/binary/pump/high_power/on{
-	dir = 4;
-	frequency = 8018;
-	id = "pumpfour";
-	name = "Pump Four";
-	target_pressure = 15000
+/obj/machinery/light{
+	dir = 4
 	},
-/obj/structure/catwalk,
-/turf/simulated/floor,
+/obj/machinery/atmospherics/portables_connector,
+/turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "yH" = (
 /obj/structure/mirror{
@@ -6827,7 +6803,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/beach/sand,
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/tradeport/safarizoo)
 "yZ" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
@@ -6897,18 +6873,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
 "zr" = (
-/obj/machinery/light{
-	dir = 1
+/obj/structure/sign/atmos_plasma{
+	desc = "WARNING! Plasma flow tube nearby.";
+	name = "Pump Five"
 	},
-/obj/machinery/atmospherics/component/binary/pump/high_power/on{
-	dir = 4;
-	frequency = 8018;
-	id = "pumpsix";
-	name = "Pump Six";
-	target_pressure = 15000
-	},
-/obj/structure/catwalk,
-/turf/simulated/floor,
+/turf/simulated/wall/r_wall,
 /area/tradeport/pads)
 "zt" = (
 /obj/effect/floor_decal/industrial/outline/grey,
@@ -7496,7 +7465,7 @@
 	dir = 8
 	},
 /obj/structure/lightpost,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tradeport/safarizoo)
 "BA" = (
 /obj/structure/table/standard,
@@ -7855,17 +7824,18 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
 "CI" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "nebula_pump4a";
-	name = "Nebula Pump Controller";
-	pixel_x = -25
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/obj/machinery/light{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
 	},
-/obj/machinery/atmospherics/portables_connector,
-/turf/simulated/floor/reinforced,
+/obj/structure/catwalk,
+/turf/simulated/floor,
 /area/tradeport/pads)
 "CK" = (
 /obj/machinery/power/apc/alarms_hidden{
@@ -8134,7 +8104,7 @@
 /area/tradeport/dock)
 "DN" = (
 /mob/living/simple_mob/vore/redpanda,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tradeport/safarizoo)
 "DO" = (
 /obj/machinery/light{
@@ -8153,6 +8123,12 @@
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport/spine)
+"DU" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/airless,
+/area/space)
 "DV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
@@ -8276,13 +8252,11 @@
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/tradeport/spine)
 "Em" = (
-/obj/machinery/door/firedoor{
-	req_one_access = list(160)
+/obj/machinery/light{
+	dir = 8
 	},
-/obj/structure/grille,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor,
+/obj/machinery/atmospherics/portables_connector,
+/turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "Eo" = (
 /obj/machinery/vending/loadout/gadget,
@@ -8431,10 +8405,14 @@
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport)
 "ER" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10
+/obj/effect/shuttle_landmark{
+	base_area = /area/tradeport/pads;
+	base_turf = /turf/simulated/floor/reinforced;
+	docking_controller = "nebula_pump5";
+	landmark_tag = "nebula_pad5";
+	name = "Nebula Pad 5"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "ES" = (
 /obj/structure/table/woodentable,
@@ -8598,9 +8576,17 @@
 /turf/simulated/wall/sandstonediamond,
 /area/tradeport/cyndishow)
 "Fu" = (
-/obj/machinery/atmospherics/pipe/tank/air{
+/obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/atmospherics/component/binary/pump/high_power/on{
+	dir = 8;
+	frequency = 8018;
+	id = "pumpfive";
+	name = "Pump Five";
+	target_pressure = 15000
+	},
+/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/tradeport/pads)
 "Fv" = (
@@ -9029,16 +9015,14 @@
 /turf/simulated/floor/wood,
 /area/tradeport/cyndi)
 "GS" = (
-/obj/machinery/door/airlock/glass_external{
-	name = "Nebula Gas - External Access"
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
-/obj/machinery/access_button/airlock_exterior{
-	frequency = 1380;
-	master_tag = "trade_docks";
-	name = "external access button";
-	pixel_y = -24
-	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/tradeport/pads)
 "GT" = (
@@ -9370,7 +9354,7 @@
 	dir = 8
 	},
 /obj/structure/railing,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tradeport/safarizoo)
 "In" = (
 /obj/machinery/light{
@@ -9580,10 +9564,17 @@
 /area/tradeport/commons)
 "Jg" = (
 /obj/machinery/light{
-	dir = 4
+	dir = 1
 	},
-/obj/machinery/atmospherics/portables_connector,
-/turf/simulated/floor/reinforced,
+/obj/machinery/atmospherics/component/binary/pump/high_power/on{
+	dir = 4;
+	frequency = 8018;
+	id = "pumpsix";
+	name = "Pump Six";
+	target_pressure = 15000
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor,
 /area/tradeport/pads)
 "Jh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -9643,19 +9634,14 @@
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport)
 "Jn" = (
-/obj/machinery/door/airlock/glass_external{
-	name = "Nebula Gas - External Access"
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/atom/movable/map_helper/airlock/door/int_door,
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/obj/machinery/access_button/airlock_interior{
-	frequency = 1380;
-	master_tag = "trade_docks";
-	name = "internal access button";
-	pixel_y = -24
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/tradeport/pads)
 "Jo" = (
@@ -9678,9 +9664,9 @@
 /obj/effect/shuttle_landmark{
 	base_area = /area/tradeport/pads;
 	base_turf = /turf/simulated/floor/reinforced;
-	docking_controller = "nebula_pump3a";
-	landmark_tag = "nebula_pad_3a";
-	name = "Nebula Pad 3"
+	docking_controller = "nebula_pump6";
+	landmark_tag = "nebula_pad6";
+	name = "Nebula Pad 6"
 	},
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
@@ -9745,11 +9731,16 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/dock)
 "JJ" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 8
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "nebula_pump5";
+	name = "Nebula Pump Controller";
+	pixel_x = 25
 	},
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "JM" = (
 /obj/structure/cable/yellow{
@@ -9826,6 +9817,14 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft,
 /area/shuttle/trade_ship/general)
+"Kb" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor,
+/area/tradeport/pads)
 "Kc" = (
 /obj/machinery/smartfridge/chemistry,
 /obj/effect/floor_decal/corner/blue/border,
@@ -9936,9 +9935,23 @@
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
 "KJ" = (
-/obj/effect/floor_decal/industrial/warning,
-/turf/simulated/floor/airless,
-/area/space)
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/camera{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/cap/hidden{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor,
+/area/tradeport/pads)
 "KK" = (
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
@@ -9976,7 +9989,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/shuttle/trade_ship/general)
 "KP" = (
-/turf/simulated/floor/water,
+/turf/simulated/floor/water/indoors,
 /area/tradeport/safarizoo)
 "KQ" = (
 /obj/structure/closet/wardrobe/pjs,
@@ -10022,7 +10035,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
 "Lb" = (
-/turf/simulated/floor/beach/sand,
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/tradeport/safarizoo)
 "Lc" = (
 /obj/structure/sink{
@@ -10415,16 +10428,16 @@
 /turf/simulated/floor/plating,
 /area/tradeport/facility)
 "Mz" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 6
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "nebula_pump6";
+	name = "Nebula Pump Controller";
+	pixel_x = -25
 	},
-/obj/machinery/airlock_sensor{
-	pixel_x = -25;
-	pixel_y = 25
+/obj/machinery/light{
+	dir = 8
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor,
+/turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "MA" = (
 /turf/simulated/wall/r_wall,
@@ -10552,18 +10565,14 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/tradeport/cyndishow)
 "MR" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+/obj/machinery/door/firedoor{
+	req_one_access = list(160)
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/glass/hidden/steel{
-	dir = 1
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 4
 	},
-/obj/structure/catwalk,
+/obj/structure/window/reinforced/full,
 /turf/simulated/floor,
 /area/tradeport/pads)
 "MS" = (
@@ -10653,16 +10662,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
 "Nf" = (
-/obj/structure/cable/yellow,
-/obj/structure/catwalk,
-/obj/machinery/power/apc/alarms_hidden{
-	cell_type = /obj/item/cell/super;
-	name = "south bump";
-	pixel_y = -28;
-	req_access = list(160)
+/obj/structure/railing{
+	dir = 4
 	},
-/turf/simulated/floor,
-/area/tradeport/pads)
+/obj/structure/lattice,
+/turf/space,
+/area/space)
 "Ng" = (
 /obj/structure/closet/syndicate/personal{
 	name = "Cyndi & Kate's Spare Uniforms"
@@ -10670,11 +10675,16 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndi)
 "Ni" = (
-/obj/structure/sign/atmos_plasma{
-	desc = "WARNING! Plasma flow tube nearby.";
-	name = "Pump Six"
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
 	},
-/turf/simulated/wall/r_wall,
+/obj/machinery/airlock_sensor{
+	pixel_x = -25;
+	pixel_y = 25
+	},
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor,
 /area/tradeport/pads)
 "Nk" = (
 /obj/structure/lattice,
@@ -10731,10 +10741,12 @@
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport)
 "Nt" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
 	},
-/obj/structure/catwalk,
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/simulated/floor,
 /area/tradeport/pads)
 "Nv" = (
@@ -10759,34 +10771,38 @@
 /turf/simulated/floor/tiled/old_cargo/red,
 /area/shuttle/trade_ship/general)
 "NE" = (
+/obj/machinery/door/airlock/glass_external{
+	name = "Nebula Gas - External Access"
+	},
+/atom/movable/map_helper/airlock/door/int_door,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/access_button/airlock_interior{
+	frequency = 1380;
+	master_tag = "trade_docks";
+	name = "internal access button";
+	pixel_y = -24
+	},
+/turf/simulated/floor,
+/area/tradeport/pads)
+"NG" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/catwalk,
-/turf/simulated/floor,
-/area/tradeport/pads)
-"NG" = (
-/obj/effect/shuttle_landmark{
-	base_area = /area/tradeport/pads;
-	base_turf = /turf/simulated/floor/reinforced;
-	docking_controller = "nebula_pump5";
-	landmark_tag = "nebula_pad5";
-	name = "Nebula Pad 5"
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor,
 /area/tradeport/pads)
 "NH" = (
 /obj/machinery/door/window/westright{
 	dir = 2
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tradeport/safarizoo)
 "NJ" = (
 /obj/machinery/door/blast/shutters{
@@ -10906,11 +10922,6 @@
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/tradeport)
 "Oc" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -11024,7 +11035,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport)
 "OA" = (
-/turf/simulated/floor/grass,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tradeport/safarizoo)
 "OB" = (
 /obj/effect/floor_decal/rust,
@@ -11522,7 +11533,7 @@
 	},
 /obj/structure/railing,
 /obj/structure/lightpost,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tradeport/safarizoo)
 "Qv" = (
 /obj/structure/railing,
@@ -11548,7 +11559,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/beach/sand,
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/tradeport/safarizoo)
 "QB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -11869,7 +11880,7 @@
 	dir = 1
 	},
 /obj/structure/lightpost,
-/turf/simulated/floor/beach/sand,
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/tradeport/safarizoo)
 "RB" = (
 /obj/machinery/seed_storage/xenobotany,
@@ -11964,7 +11975,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tradeport/safarizoo)
 "RS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -11998,10 +12009,13 @@
 /turf/simulated/floor/wood,
 /area/tradeport/safarizoo)
 "RZ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
+/obj/machinery/door/airlock/maintenance_hatch{
+	req_access = list(160);
+	req_one_access = null
 	},
-/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
 /turf/simulated/floor,
 /area/tradeport/pads)
 "Sa" = (
@@ -12117,13 +12131,15 @@
 /turf/simulated/floor/airless,
 /area/space)
 "Sr" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	req_access = list(160);
-	req_one_access = null
+/obj/machinery/door/firedoor{
+	req_one_access = list(160)
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 1e+006
 	},
+/obj/structure/window/reinforced/full,
 /turf/simulated/floor,
 /area/tradeport/pads)
 "Ss" = (
@@ -12304,12 +12320,7 @@
 /turf/simulated/floor,
 /area/tradeport/pads)
 "Tg" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 1
-	},
-/obj/machinery/light/small{
-	dir = 1
-	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor,
 /area/tradeport/pads)
 "Th" = (
@@ -12363,9 +12374,8 @@
 /turf/space,
 /area/tradeport/spine)
 "Tr" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/airless,
-/area/space)
+/turf/simulated/floor,
+/area/tradeport/pads)
 "Tw" = (
 /obj/machinery/light,
 /obj/machinery/atmospherics/component/binary/pump/high_power/on{
@@ -12385,10 +12395,15 @@
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/tradeport/spine)
 "Ty" = (
-/obj/machinery/light,
-/obj/structure/catwalk,
-/turf/simulated/floor,
-/area/tradeport/pads)
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/lattice,
+/turf/space,
+/area/space)
 "Tz" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -12469,13 +12484,6 @@
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
-"TN" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/lattice,
-/turf/space,
-/area/space)
 "TP" = (
 /obj/structure/inflatable/door,
 /turf/simulated/floor/airless,
@@ -12885,7 +12893,11 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
 "Vl" = (
-/turf/simulated/floor,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/airless,
 /area/tradeport/pads)
 "Vs" = (
 /obj/machinery/light_switch{
@@ -12928,24 +12940,28 @@
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport/spine)
 "VA" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 1;
 	frequency = 1380;
-	id_tag = "nebula_pump3c";
-	name = "Nebula Pump Controller";
-	pixel_x = 25
+	id_tag = "trade_docks"
 	},
-/turf/simulated/floor/reinforced,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
+	frequency = 1380;
+	id_tag = "trade_docks";
+	pixel_x = -25;
+	pixel_y = -26
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor,
 /area/tradeport/pads)
 "VB" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
-	pixel_y = -22;
-	req_one_access = list(160)
+	frequency = 1380;
+	id_tag = "trade_docks"
 	},
-/obj/structure/catwalk,
-/obj/machinery/light/small{
-	dir = 4
-	},
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor,
 /area/tradeport/pads)
 "VF" = (
@@ -12968,8 +12984,13 @@
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/safari)
 "VI" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/airless,
+/obj/machinery/door/firedoor{
+	req_one_access = list(160)
+	},
+/obj/structure/grille,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
 /area/tradeport/pads)
 "VJ" = (
 /turf/simulated/floor/wood,
@@ -13105,16 +13126,11 @@
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport)
 "Wk" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "nebula_pump5";
-	name = "Nebula Pump Controller";
-	pixel_x = 25
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
 	},
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/reinforced,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor,
 /area/tradeport/pads)
 "Wl" = (
 /obj/machinery/light{
@@ -13265,21 +13281,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "WU" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
 	},
-/obj/machinery/camera{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/cap/hidden{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
-/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/tradeport/pads)
 "WV" = (
@@ -13377,7 +13381,7 @@
 	dir = 4
 	},
 /obj/structure/lightpost,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tradeport/safarizoo)
 "Xt" = (
 /obj/structure/janitorialcart,
@@ -13504,7 +13508,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tradeport/safarizoo)
 "XV" = (
 /obj/structure/bed/chair{
@@ -13571,6 +13575,15 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/engineering)
+"Yj" = (
+/obj/effect/shuttle_landmark{
+	base_area = /area/space;
+	base_turf = /turf/space;
+	landmark_tag = "nebula_space_SE";
+	name = "Near Nebulous Gas (SE)"
+	},
+/turf/space,
+/area/space)
 "Yk" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
@@ -13589,17 +13602,12 @@
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/tradeport/pads)
 "Yn" = (
-/obj/machinery/light{
-	dir = 1
+/obj/machinery/door/firedoor{
+	req_one_access = list(160)
 	},
-/obj/machinery/atmospherics/component/binary/pump/high_power/on{
-	dir = 8;
-	frequency = 8018;
-	id = "pumpfive";
-	name = "Pump Five";
-	target_pressure = 15000
-	},
-/obj/structure/catwalk,
+/obj/structure/grille,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced/full,
 /turf/simulated/floor,
 /area/tradeport/pads)
 "Yo" = (
@@ -13627,11 +13635,16 @@
 /turf/simulated/floor/plating,
 /area/tradeport/engineering)
 "Yu" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 4
+/obj/structure/cable/yellow,
+/obj/structure/catwalk,
+/obj/machinery/power/apc/alarms_hidden{
+	cell_type = /obj/item/cell/super;
+	name = "south bump";
+	pixel_y = -28;
+	req_access = list(160)
 	},
-/turf/simulated/floor/airless,
-/area/space)
+/turf/simulated/floor,
+/area/tradeport/pads)
 "Yv" = (
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
@@ -13733,7 +13746,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tradeport/safarizoo)
 "YK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -13801,7 +13814,7 @@
 	},
 /obj/structure/railing,
 /obj/structure/lightpost,
-/turf/simulated/floor/beach/sand,
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/tradeport/safarizoo)
 "YT" = (
 /obj/machinery/atmospherics/component/binary/pump/on{
@@ -13857,11 +13870,16 @@
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/safari)
 "Zb" = (
-/obj/machinery/light{
-	dir = 8
+/obj/machinery/alarm/alarms_hidden{
+	dir = 1;
+	pixel_y = -22;
+	req_one_access = list(160)
 	},
-/obj/machinery/atmospherics/portables_connector,
-/turf/simulated/floor/reinforced,
+/obj/structure/catwalk,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor,
 /area/tradeport/pads)
 "Zd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -13994,14 +14012,9 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/cafeteria)
 "Zz" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/manifold4w/hidden,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/tradeport/pads)
 "ZA" = (
@@ -14130,11 +14143,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "ZZ" = (
-/obj/structure/railing{
-	dir = 1
-	},
+/obj/structure/catwalk,
 /turf/simulated/floor/airless,
-/area/space)
+/area/tradeport/pads)
 
 (1,1,1) = {"
 Dh
@@ -29517,7 +29528,7 @@ VJ
 dK
 Lb
 Lb
-nN
+KP
 KP
 KP
 KP
@@ -29713,7 +29724,7 @@ Lb
 Lb
 Lb
 Lb
-nN
+KP
 KP
 OA
 OA
@@ -31321,9 +31332,9 @@ Dh
 Dh
 Dh
 Dh
-Dh
-Dh
-Dh
+cd
+cd
+cd
 Dh
 Dh
 Dh
@@ -31515,16 +31526,16 @@ Dh
 Dh
 Dh
 Dh
+cd
+cd
+cd
+cd
 Dh
 Dh
 Dh
 Dh
 Dh
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -31709,16 +31720,16 @@ Dh
 Dh
 Dh
 Dh
+cd
+cd
+cd
+cd
 Dh
 Dh
 Dh
 Dh
 Dh
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -31903,16 +31914,16 @@ Dh
 Dh
 Dh
 Dh
+cd
+cd
+cd
+cd
 Dh
 Dh
 Dh
 Dh
 Dh
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -32097,16 +32108,16 @@ Dh
 Dh
 Dh
 Dh
+cd
+cd
+cd
+cd
 Dh
 Dh
 Dh
 Dh
 Dh
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -32291,16 +32302,16 @@ Dh
 Dh
 Dh
 Dh
+cd
+cd
+cd
+cd
 Dh
 Dh
 Dh
 Dh
 Dh
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -32485,16 +32496,16 @@ Dh
 Dh
 Dh
 Dh
+cd
+cd
+cd
+cd
 Dh
 Dh
 Dh
 Dh
 Dh
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -32679,16 +32690,16 @@ Dh
 Dh
 Dh
 Dh
+cd
+cd
+cd
+cd
 Dh
 Dh
 Dh
 Dh
 Dh
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -32870,19 +32881,19 @@ Dh
 Dh
 Dh
 Dh
+cd
+cd
 Dh
 Dh
 Dh
+cd
+cd
 Dh
 Dh
 Dh
 Dh
 Nk
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -33064,9 +33075,13 @@ Dh
 Dh
 Dh
 Dh
+cd
+cd
 Dh
 Dh
 Dh
+cd
+cd
 Dh
 Dh
 Dh
@@ -33074,10 +33089,6 @@ Dh
 Nk
 Nk
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -33258,9 +33269,13 @@ Dh
 Dh
 Dh
 Dh
+cd
+cd
 Dh
 Dh
 Dh
+cd
+cd
 Dh
 Dh
 Dh
@@ -33269,10 +33284,6 @@ Nk
 Nk
 Nk
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -33452,9 +33463,13 @@ Dh
 Dh
 Dh
 Dh
+cd
+cd
 Dh
 Dh
 Dh
+cd
+cd
 Dh
 Dh
 Dh
@@ -33463,10 +33478,6 @@ Nk
 Nk
 Sq
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -33646,9 +33657,13 @@ Dh
 Dh
 Dh
 Dh
+cd
+cd
 Dh
 Dh
 Dh
+cd
+cd
 Dh
 Dh
 Dh
@@ -33658,10 +33673,6 @@ Nk
 Sq
 Nk
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -33840,9 +33851,13 @@ Dh
 Dh
 Dh
 Dh
+cd
+cd
 Dh
 Dh
 Dh
+cd
+cd
 Dh
 Dh
 Dh
@@ -33852,10 +33867,6 @@ Nk
 Sq
 Sq
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -34034,22 +34045,22 @@ Nk
 Nk
 Nk
 Nk
+cd
+cd
+Nk
+Nk
+Nk
+cd
+cd
 Nk
 Nk
 Nk
 Nk
 Nk
 Nk
+to
+to
 Nk
-Nk
-Nk
-Yu
-Yu
-Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -34228,22 +34239,22 @@ Sq
 Sq
 Sq
 Sq
+cd
+cd
+Sq
+Sq
+Sq
+cd
+cd
 Sq
 Sq
 Sq
 Sq
 Sq
-Sq
-Sq
-Sq
-KJ
-Tr
-Tr
+sf
+vV
+vV
 Cn
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -34422,22 +34433,22 @@ Sq
 Sq
 Sq
 Sq
+cd
+cd
+Sq
+Sq
+Sq
+cd
+cd
 Sq
 Sq
 Sq
 Sq
 Sq
-Sq
-Sq
-Sq
-KJ
-Tr
-Tr
+sf
+vV
+vV
 Cn
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -34624,14 +34635,14 @@ jD
 jD
 jD
 jD
+jD
+jD
+jD
+jD
 ia
 ia
-Tr
+vV
 Cn
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -34818,14 +34829,14 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 de
 ia
-Tr
+vV
 Cn
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -35013,13 +35024,13 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 ia
-Tr
+vV
 Cn
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -35207,13 +35218,13 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 ia
-Tr
+vV
 Cn
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -35401,13 +35412,13 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 ia
-Tr
+vV
 Cn
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -35595,13 +35606,13 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 ia
-Tr
+vV
 Cn
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -35789,9 +35800,13 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 ia
-Tr
-xm
+vV
+xA
 Nk
 Nk
 Nk
@@ -35803,13 +35818,9 @@ Nk
 Nk
 Nk
 Nk
-TN
-TN
+Nf
+Nf
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -35982,10 +35993,14 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 Zl
 ia
-Tr
-lJ
+vV
+sX
 Sq
 Sq
 Sq
@@ -35996,14 +36011,10 @@ Sq
 Sq
 Sq
 Sq
-KJ
-Tr
-Tr
+sf
+vV
+vV
 Cn
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -36177,9 +36188,13 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 ia
-Tr
-lJ
+vV
+sX
 Sq
 Sq
 Sq
@@ -36190,14 +36205,10 @@ Sq
 Sq
 Sq
 Sq
-KJ
-Tr
-Tr
+sf
+vV
+vV
 Cn
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -36371,6 +36382,10 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 ia
 ia
 jD
@@ -36386,12 +36401,8 @@ jD
 jD
 ia
 ia
-Tr
+vV
 Cn
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -36565,6 +36576,10 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 ia
 LX
 kf
@@ -36580,12 +36595,8 @@ kf
 kf
 de
 ia
-Tr
+vV
 Cn
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -36756,7 +36767,11 @@ kf
 kf
 kf
 kf
-sf
+kf
+kf
+kf
+kf
+rp
 kf
 kf
 ia
@@ -36774,12 +36789,8 @@ kf
 kf
 kf
 ia
-Tr
+vV
 Cn
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -36953,27 +36964,27 @@ kf
 kf
 kf
 kf
-ia
-kf
-kf
-kf
-kf
-kf
-kf
-kf
-kf
-kf
 kf
 kf
 kf
 kf
 ia
-Tr
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+ia
+vV
 Cn
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -37147,6 +37158,10 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 ia
 qd
 kf
@@ -37162,12 +37177,8 @@ kf
 kf
 kf
 ia
-Tr
+vV
 Cn
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -37341,27 +37352,27 @@ kf
 kf
 kf
 kf
-ia
-kf
-kf
-kf
-kf
-kf
-kf
-kf
-kf
-kf
 kf
 kf
 kf
 kf
 ia
-Tr
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+ia
+vV
 Cn
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -37534,6 +37545,10 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 Zl
 ia
 gp
@@ -37550,12 +37565,8 @@ kf
 kf
 Zl
 ia
-Tr
+vV
 Cn
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -37729,6 +37740,10 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 nc
 kf
 kf
@@ -37743,13 +37758,9 @@ kf
 kf
 kf
 kf
-cd
-Tr
+VI
+vV
 Cn
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -37923,6 +37934,10 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 nc
 kf
 kf
@@ -37937,13 +37952,9 @@ kf
 kf
 kf
 kf
-cd
-Tr
+VI
+vV
 Cn
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -38117,6 +38128,10 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 nc
 kf
 kf
@@ -38131,13 +38146,9 @@ kf
 kf
 kf
 kf
-cd
-Tr
+VI
+vV
 Cn
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -38311,6 +38322,10 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 nc
 kf
 kf
@@ -38325,13 +38340,9 @@ kf
 kf
 kf
 kf
-cd
-Tr
+VI
+vV
 Cn
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -38505,6 +38516,10 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 nc
 kf
 kf
@@ -38519,13 +38534,9 @@ kf
 kf
 kf
 kf
-cd
-Tr
+VI
+vV
 Cn
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -38688,6 +38699,10 @@ kf
 kf
 kf
 kf
+bC
+kf
+kf
+kf
 kf
 kf
 kf
@@ -38713,13 +38728,9 @@ kf
 kf
 kf
 kf
-cd
-Tr
+VI
+vV
 Cn
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -38893,6 +38904,10 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 nc
 kf
 kf
@@ -38907,17 +38922,13 @@ kf
 kf
 kf
 kf
-cd
-Tr
-qf
-TN
-TN
+VI
+vV
+Ty
+Nf
+Nf
 Nk
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -39087,6 +39098,10 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 nc
 kf
 kf
@@ -39101,17 +39116,13 @@ kf
 kf
 kf
 kf
-cd
-VI
-VI
-VI
 VI
 ZZ
+ZZ
+ZZ
+ZZ
+DU
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -39280,6 +39291,10 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 Zl
 ia
 gp
@@ -39296,16 +39311,12 @@ kf
 kf
 Zl
 ia
-VI
-nO
-VI
-VI
 ZZ
+Vl
+ZZ
+ZZ
+DU
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -39467,22 +39478,12 @@ kf
 kf
 kf
 kf
-Jw
 kf
 kf
 kf
 kf
 kf
 kf
-kf
-ia
-kf
-kf
-kf
-kf
-kf
-kf
-NG
 kf
 kf
 kf
@@ -39490,19 +39491,29 @@ kf
 kf
 kf
 ia
-GS
+kf
+kf
+kf
+kf
+kf
+kf
+ER
+kf
+kf
+kf
+kf
+kf
+kf
 ia
-ia
-VI
 lJ
+ia
+ia
+ZZ
+sX
 Nk
 Dh
 Dh
-sX
-Dh
-Dh
-Dh
-Dh
+Yj
 Dh
 Dh
 Dh
@@ -39669,31 +39680,31 @@ kf
 kf
 kf
 kf
-ia
-kf
-kf
-kf
-kf
-kf
-kf
-kf
-kf
-kf
 kf
 kf
 kf
 kf
 ia
-Mz
-to
-Em
-VI
-lJ
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+ia
+Ni
+VA
+Yn
+ZZ
+sX
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -39854,13 +39865,17 @@ MJ
 kf
 Ef
 ur
+kf
+kf
 ur
-sa
-RZ
+gs
+np
+kf
+kf
 ur
 Ef
 kf
-VA
+sa
 kf
 kf
 ia
@@ -39869,25 +39884,21 @@ kf
 kf
 kf
 kf
-Jg
-RZ
+yD
+np
 ur
-Wk
+JJ
 kf
 kf
 kf
 kf
 ia
-Tg
-ht
-Em
-VI
+Nt
+VB
+Yn
 ZZ
+DU
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -40048,10 +40059,14 @@ ia
 jU
 Cx
 AI
+kf
+kf
 ur
 ia
-kk
-Ty
+nO
+kf
+kf
+bO
 Cx
 jU
 ia
@@ -40063,25 +40078,21 @@ jU
 jU
 jU
 jU
-ro
-Yn
-Ty
+zr
+Fu
+bO
 ia
 jU
 jU
-bO
-bO
+MR
+MR
 ia
-Jn
+NE
 ia
 ia
 ia
 Nk
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -40242,39 +40253,39 @@ Rm
 Rm
 sL
 Rm
+dn
+dn
 Rm
 Rm
 le
+dn
+dn
 Rm
-NE
-Rm
-Rm
-Rm
-Rm
-MR
+ro
 Rm
 Rm
 Rm
 Rm
+wB
 Rm
-rh
-Zz
-rp
-WU
+Rm
+Rm
+Rm
+Rm
+CI
+GS
+Jn
+KJ
 Vt
 Vt
 Vt
 Vt
 Vt
-Oc
+NG
 Vt
-Nf
+Yu
 ia
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -40437,15 +40448,19 @@ ur
 wQ
 ur
 ur
-bC
+ur
+ur
+hm
 en
+ur
+ur
 ur
 Hr
 ur
 ur
 ur
 ur
-Nt
+xm
 ur
 ur
 ur
@@ -40460,15 +40475,11 @@ ur
 ur
 ur
 ur
-dn
+Oc
 ur
-VB
+Zb
 ia
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -40630,10 +40641,14 @@ ia
 xn
 Jt
 AI
+kf
+kf
 ur
 ia
-yD
-Ty
+qf
+kf
+kf
+bO
 Jt
 xn
 ia
@@ -40645,24 +40660,20 @@ xn
 xn
 xn
 xn
-Ni
-zr
-Ty
-ia
 eJ
-eJ
-eJ
-eJ
+Jg
+bO
 ia
 Sr
+Sr
+Sr
+Sr
+ia
+RZ
 ia
 ia
 ia
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -40824,13 +40835,17 @@ Pr
 kf
 LX
 ur
+kf
+kf
 ur
-CI
-vV
+ht
+qU
+kf
+kf
 ur
 LX
 kf
-xA
+sb
 kf
 kf
 ia
@@ -40839,24 +40854,20 @@ kf
 kf
 kf
 kf
-Zb
-vV
+Em
+qU
 ur
-hm
+Mz
 kf
 kf
 kf
 kf
 ia
 Tf
-JJ
-Fu
+Wk
+Zz
 ia
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -41027,30 +41038,30 @@ kf
 kf
 kf
 kf
-ia
-kf
-kf
-kf
-kf
-kf
-kf
-kf
-kf
-kf
 kf
 kf
 kf
 kf
 ia
-wB
-ER
-sb
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+ia
+Tg
+WU
+Kb
 ia
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -41213,38 +41224,38 @@ kf
 kf
 kf
 kf
-gs
+kf
+kf
+kk
 kf
 kf
 kf
 kf
-kf
-kf
-kf
-ia
-kf
-kf
-kf
-kf
-kf
-kf
-kf
-qU
 kf
 kf
 kf
 kf
 kf
 ia
-Vl
-Vl
-wB
+kf
+kf
+kf
+kf
+kf
+kf
+kf
+Jw
+kf
+kf
+kf
+kf
+kf
+ia
+Tr
+Tr
+Tg
 ia
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -41414,6 +41425,10 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 Zl
 ia
 gp
@@ -41435,10 +41450,6 @@ ia
 ia
 ia
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -41609,6 +41620,10 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 nc
 kf
 kf
@@ -41623,16 +41638,12 @@ kf
 kf
 kf
 kf
-cd
+VI
 Sq
 Sq
 Nk
 Nk
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -41803,6 +41814,10 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 nc
 kf
 kf
@@ -41817,15 +41832,11 @@ kf
 kf
 kf
 kf
-cd
+VI
 Sq
 Sq
 Nk
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -41997,6 +42008,10 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 nc
 kf
 kf
@@ -42011,15 +42026,11 @@ kf
 kf
 kf
 kf
-cd
+VI
 Sq
 Sq
 Nk
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -42191,6 +42202,10 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 nc
 kf
 kf
@@ -42205,14 +42220,10 @@ kf
 kf
 kf
 kf
-cd
+VI
 Nk
 Nk
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -42385,6 +42396,10 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 nc
 kf
 kf
@@ -42399,14 +42414,10 @@ kf
 kf
 kf
 kf
-cd
+VI
 Nk
 Nk
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -42579,6 +42590,10 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 nc
 kf
 kf
@@ -42593,14 +42608,10 @@ kf
 kf
 kf
 kf
-cd
+VI
 Nk
 Nk
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -42773,6 +42784,10 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 nc
 kf
 kf
@@ -42787,14 +42802,10 @@ kf
 kf
 kf
 kf
-cd
+VI
 Nk
 Nk
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -42964,7 +42975,11 @@ kf
 kf
 kf
 kf
-np
+kf
+rh
+kf
+kf
+kf
 kf
 kf
 nc
@@ -42981,14 +42996,10 @@ kf
 kf
 kf
 kf
-cd
+VI
 Nk
 Nk
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -43161,6 +43172,10 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 nc
 kf
 kf
@@ -43175,14 +43190,10 @@ kf
 kf
 kf
 kf
-cd
+VI
 Nk
 Nk
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -43354,6 +43365,10 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 Zl
 ia
 gp
@@ -43373,10 +43388,6 @@ ia
 Nk
 Nk
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -43549,6 +43560,10 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 ia
 kf
 kf
@@ -43565,10 +43580,6 @@ kf
 kf
 ia
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -43743,6 +43754,10 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 ia
 qd
 kf
@@ -43759,10 +43774,6 @@ kf
 kf
 ia
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -43937,6 +43948,10 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 ia
 kf
 kf
@@ -43953,10 +43968,6 @@ kf
 kf
 ia
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -44131,6 +44142,10 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 ia
 Ef
 kf
@@ -44147,10 +44162,6 @@ kf
 Nc
 ia
 Nk
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -44325,6 +44336,10 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 ia
 ia
 jD
@@ -44340,10 +44355,6 @@ jD
 jD
 ia
 ia
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -44519,11 +44530,11 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 ia
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -44713,11 +44724,11 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 ia
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -44907,11 +44918,11 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 ia
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -45101,11 +45112,11 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 ia
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -45294,12 +45305,12 @@ kf
 kf
 kf
 kf
+kf
+kf
+kf
+kf
 Nc
 ia
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -45488,12 +45499,12 @@ jD
 jD
 jD
 jD
+jD
+jD
+jD
+jD
 ia
 ia
-Dh
-Dh
-Dh
-Dh
 Dh
 Dh
 Dh
@@ -45677,10 +45688,10 @@ Dh
 Dh
 Dh
 Dh
-Dh
-Dh
-Dh
-Dh
+cd
+cd
+cd
+cd
 Dh
 Dh
 Dh
@@ -45871,10 +45882,10 @@ Dh
 Dh
 Dh
 Dh
-Dh
-Dh
-Dh
-Dh
+cd
+cd
+cd
+cd
 Dh
 Dh
 Dh
@@ -46065,10 +46076,10 @@ Dh
 Dh
 Dh
 Dh
-Dh
-Dh
-Dh
-Dh
+cd
+cd
+cd
+cd
 Dh
 Dh
 Dh
@@ -46259,10 +46270,10 @@ Dh
 Dh
 Dh
 Dh
-Dh
-Dh
-Dh
-Dh
+cd
+cd
+cd
+cd
 Dh
 Dh
 Dh
@@ -46453,10 +46464,10 @@ Dh
 Dh
 Dh
 Dh
-Dh
-Dh
-Dh
-Dh
+cd
+cd
+cd
+cd
 Dh
 Dh
 Dh

@@ -88,7 +88,7 @@
 /obj/item/flash/proc/clown_check(var/mob/user)
 	if(user && (CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<span class='warning'>\The [src] slips out of your hand.</span>")
-		user.drop_item()
+		user.drop_active_held_item()
 		return 0
 	return 1
 
@@ -191,7 +191,7 @@
 						H.eye_blurry = max(H.eye_blurry, flash_strength + 5)
 						H.flash_eyes()
 						H.adjustHalLoss(halloss_per_flash * (flash_strength / 5)) // Should take four flashes to stun.
-						H.apply_damage(flash_strength * H.species.flash_burn/5, BURN, BP_HEAD, 0, 0, "Photon burns")
+						H.apply_damage(10 * (H.species.flash_burn / 5), BURN, BP_HEAD, 0, 0, "Photon burns")
 
 			else
 				flashfail = 1

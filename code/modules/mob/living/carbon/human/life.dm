@@ -63,7 +63,7 @@
 	//Update our name based on whether our face is obscured/disfigured
 	name = get_visible_name()
 	// This is not an ideal place for this but it will do for now.
-	if(wearing_rig && wearing_rig.offline)
+	if(wearing_rig && !wearing_rig.is_activated())
 		wearing_rig = null
 	voice = GetVoice()
 
@@ -221,7 +221,7 @@
 			make_jittery(1000)
 	if (disabilities & COUGHING)
 		if ((prob(5) && paralysis <= 1))
-			drop_item()
+			drop_active_held_item()
 			spawn( 0 )
 				emote("cough")
 				return
@@ -249,9 +249,9 @@
 			to_chat(src, "<span class='warning'>It becomes hard to see for some reason.</span>")
 			eye_blurry = 10
 	if(getBrainLoss() >= 35)
-		if(7 <= rn && rn <= 9) if(get_active_hand())
+		if(7 <= rn && rn <= 9) if(get_active_held_item())
 			to_chat(src, "<span class='danger'>Your hand won't respond properly, you drop what you're holding!</span>")
-			drop_item()
+			drop_active_held_item()
 	if(getBrainLoss() >= 45)
 		if(10 <= rn && rn <= 12)
 			if(prob(50))
@@ -260,8 +260,6 @@
 			else if(!lying)
 				to_chat(src, "<span class='danger'>Your legs won't respond properly, you fall down!</span>")
 				Weaken(10)
-
-
 
 /mob/living/carbon/human/handle_mutations_and_radiation()
 	if(inStasisNow())
@@ -287,7 +285,13 @@
 			set_light(0)
 	else
 		if(species.species_appearance_flags & RADIATION_GLOWS)
-			set_light(max(1,min(5,radiation/15)), max(1,min(10,radiation/25)), species.get_flesh_colour(src))
+			var/rad_glow_range = max(1,min(5,radiation/15))
+			var/rad_glow_intensity = max(1,min(10,radiation/25))
+			if(glow_toggle)//if body glow is larger or brighter than rad glow, it wins
+				if(glow_range > rad_glow_range || glow_intensity > rad_glow_intensity)
+					set_light(glow_range, glow_intensity, glow_color)
+			else
+				set_light(rad_glow_range, rad_glow_intensity, species.get_flesh_colour(src))
 		// END DOGSHIT SNOWFLAKE
 
 		var/obj/item/organ/internal/diona/nutrients/rad_organ = locate() in internal_organs
@@ -321,7 +325,7 @@
 					Weaken(3)
 					if(!lying)
 						emote("collapse")
-				if(prob(5) && prob(100 * RADIATION_SPEED_COEFFICIENT) && species.get_bodytype() == SPECIES_HUMAN) //apes go bald
+				if(prob(5) && prob(100 * RADIATION_SPEED_COEFFICIENT) && species.get_bodytype_legacy() == SPECIES_HUMAN) //apes go bald
 					if((h_style != "Bald" || f_style != "Shaved" ))
 						to_chat(src, "<span class='warning'>Your hair falls out.</span>")
 						h_style = "Bald"
@@ -377,7 +381,7 @@
 		var/obj/item/tank/rig_supply
 		if(istype(back,/obj/item/rig))
 			var/obj/item/rig/rig = back
-			if(!rig.offline && (rig.air_supply && internal == rig.air_supply))
+			if(rig.is_activated() && (rig.air_supply && internal == rig.air_supply))
 				rig_supply = rig.air_supply
 
 		if ((!rig_supply && !contents.Find(internal)) || !((wear_mask && (wear_mask.clothing_flags & ALLOWINTERNALS)) || (head && (head.clothing_flags & ALLOWINTERNALS))))
@@ -642,6 +646,9 @@
 		var/mob/living/carbon/human/H = src
 		if(H.species.name == SPECIES_PROTEAN)
 			return // dont modify protean heat levels
+		//! I hate this, fuck you. Don't override shit in human life(). @Zandario
+		if(H.species.name == SPECIES_ADHERENT)
+			return // Don't modify Adherent heat levels ffs
 
 		else
 			species.heat_level_1 = 400
@@ -674,6 +681,7 @@
 						add_modifier(/datum/modifier/synthcooling, 15 SECONDS) // enable cooling systems at cost of energy
 						src.nutrition -= 50
 					last_synthcooling_message = world.time + 60 SECONDS
+
 	//Moved pressure calculations here for use in skip-processing check.
 	var/pressure = environment.return_pressure()
 	var/adjusted_pressure = calculate_affecting_pressure(pressure)
@@ -1097,7 +1105,7 @@
 		if(istype(back,/obj/item/rig))
 			var/obj/item/rig/O = back
 			if(O.helmet && O.helmet == head && (O.helmet.body_parts_covered & EYES))
-				if((O.offline && O.offline_vision_restriction == 2) || (!O.offline && O.vision_restriction == 2))
+				if((!O.is_online() && O.offline_vision_restriction == 2) || (O.is_online() && O.vision_restriction == 2))
 					blinded = 1
 
 		// Check everything else.
@@ -1414,7 +1422,7 @@
 				if(!found_welder && istype(back, /obj/item/rig))
 					var/obj/item/rig/O = back
 					if(O.helmet && O.helmet == head && (O.helmet.body_parts_covered & EYES))
-						if((O.offline && O.offline_vision_restriction == 1) || (!O.offline && O.vision_restriction == 1))
+						if((!O.is_online() && O.offline_vision_restriction == 1) || (O.is_online() && O.vision_restriction == 1))
 							found_welder = 1
 				if(absorbed) found_welder = 1
 			if(found_welder)

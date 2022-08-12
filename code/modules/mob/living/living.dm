@@ -641,14 +641,7 @@ default behaviour is:
 
 	if(iscarbon(src))
 		var/mob/living/carbon/C = src
-
-		if (C.handcuffed && !initial(C.handcuffed))
-			C.drop_from_inventory(C.handcuffed)
-		C.handcuffed = initial(C.handcuffed)
-
-		if (C.legcuffed && !initial(C.legcuffed))
-			C.drop_from_inventory(C.legcuffed)
-		C.legcuffed = initial(C.legcuffed)
+		C.drop_slots_to_ground(list(SLOT_ID_HANDCUFFED, SLOT_ID_LEGCUFFED), INV_OP_FORCE)
 
 	ExtinguishMob()
 	fire_stacks = 0
@@ -826,11 +819,6 @@ default behaviour is:
 /mob/living/proc/slip(var/slipped_on,stun_duration=8)
 	return 0
 
-/mob/living/carbon/drop_from_inventory(var/obj/item/W, var/atom/Target = null)
-	if(W in internal_organs)
-		return
-	..()
-
 //damage/heal the mob ears and adjust the deaf amount
 /mob/living/adjustEarDamage(var/damage, var/deaf)
 	ear_damage = max(0, ear_damage + damage)
@@ -940,12 +928,9 @@ default behaviour is:
 
 	if(lying)
 		density = 0
-		if(l_hand)
-			unEquip(l_hand)
-		if(r_hand)
-			unEquip(r_hand)
+		drop_all_held_items()
 		for(var/obj/item/holder/H in get_mob_riding_slots())
-			unEquip(H)
+			drop_item_to_ground(H)
 		update_water() // Submerges the mob.
 	else
 		density = initial(density)
@@ -1080,14 +1065,15 @@ default behaviour is:
 			hud_used.r_hand_hud_object.icon_state = "r_hand_active"
 
 	// We just swapped hands, so the thing in our inactive hand will notice it's not the focus
-	var/obj/item/I = get_inactive_hand()
+	var/obj/item/I = get_inactive_held_item()
 	if(I)
 		if(I.zoom)
 			I.zoom()
-		I.in_inactive_hand(src)	//This'll do specific things, determined by the item
 	return
 
-/mob/living/proc/activate_hand(var/selhand) //0 or "r" or "right" for right hand; 1 or "l" or "left" for left hand.
+/mob/proc/activate_hand(selhand)
+
+/mob/living/activate_hand(selhand) //0 or "r" or "right" for right hand; 1 or "l" or "left" for left hand.
 
 	if(istext(selhand))
 		selhand = lowertext(selhand)
@@ -1100,16 +1086,29 @@ default behaviour is:
 	if(selhand != src.hand)
 		swap_hand()
 
+// todo: multihands
+
+/mob/proc/activate_hand_of_index(index)
+
+/mob/living/activate_hand_of_index(index)
+	switch(index)
+		if(1)
+			activate_hand("l")
+		if(2)
+			activate_hand("r")
+
 /mob/living/throw_item(atom/target)
+	// TODO: refactor to not be hardcoded active held item
 	src.throw_mode_off()
 	if(usr.stat || !target)
 		return
-	if(target.type == /atom/movable/screen) return
+	if(target.type == /atom/movable/screen)
+		return
 
-	var/atom/movable/item = src.get_active_hand()
+	var/atom/movable/item = src.get_active_held_item()
 
-	if(!item) return
-
+	if(!item)
+		return
 	var/throw_range = item.throw_range
 	if (istype(item, /obj/item/grab))
 		var/obj/item/grab/G = item
@@ -1123,9 +1122,14 @@ default behaviour is:
 			var/turf/end_T = get_turf(target)
 			if(end_T)
 				add_attack_logs(src,M,"Thrown via grab to [end_T.x],[end_T.y],[end_T.z]")
-			src.drop_from_inventory(G)
+			drop_item_to_ground(G, INV_OP_FORCE)
+		else
+			return		// wild
+	else
+		if(!drop_item_to_ground(item))
+			throw_mode_off()
+			return
 
-	src.drop_from_inventory(item)
 	if(!item || !isturf(item.loc))
 		return
 

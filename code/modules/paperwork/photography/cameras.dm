@@ -43,9 +43,9 @@
 		if(pictures_left)
 			to_chat(user, "<span class='notice'>[src] still has some film in it!</span>")
 			return
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
-		user.drop_item()
-		qdel(I)
 		pictures_left = pictures_max
 		return
 	..()
@@ -189,7 +189,7 @@
 
 /obj/item/camera/proc/printpicture(mob/user, obj/item/photo/p)
 	p.loc = user.loc
-	if(!user.get_inactive_hand())
+	if(!user.get_inactive_held_item())
 		user.put_in_inactive_hand(p)
 
 /obj/item/photo/proc/copy(var/copy_id = 0)

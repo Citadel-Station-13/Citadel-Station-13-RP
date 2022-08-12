@@ -1,192 +1,146 @@
-import { sortBy } from 'common/collections';
-import { flow } from 'common/fp';
-import { toFixed } from 'common/math';
 import { useBackend } from '../backend';
-import { Button, LabeledList, ProgressBar, Section, Stack, Table } from '../components';
-import { getGasColor, getGasLabel } from '../constants';
+import { Box, Button, LabeledList, ProgressBar, Section, Flex, AnimatedNumber } 
+  from '../components';
 import { Window } from '../layouts';
+import { round } from 'common/math';
+import { toTitleCase } from 'common/string';
 
-const logScale = (value) => Math.log2(16 + Math.max(0, value)) - 4;
-
-export const SupermatterMonitor = () => {
-  return (
-    <Window width={600} height={350} theme="ntos" title="Supermatter Monitor">
-      <Window.Content scrollable>
-        <SupermatterMonitorContent />
-      </Window.Content>
-    </Window>
-  );
-};
+//  As of 2020-08-06 this isn't actually ever used, but it needs to exist 
+//  because that's what tgui_modules expect
+export const SupermatterMonitor = (props, context) => (
+  <Window width={600} height={400} resizable>
+    <Window.Content scrollable>
+      <SupermatterMonitorContent />
+    </Window.Content>
+  </Window>
+);
 
 export const SupermatterMonitorContent = (props, context) => {
   const { act, data } = useBackend(context);
-  const {
-    active,
-    singlecrystal,
-    SM_uid,
-    SM_area_name,
-    SM_integrity,
-    SM_power,
-    SM_ambienttemp,
-    SM_ambientpressure,
-    SM_moles,
-    SM_bad_moles_amount,
-  } = data;
-  if (!active) {
-    return <SupermatterList />;
+
+  const { active } = data;
+
+  if (active) {
+    return <SupermatterMonitorActive />;
+  } else {
+    return <SupermatterMonitorList />;
   }
-  const gases = flow([
-    (gases) => gases.filter((gas) => gas.amount >= 0.01),
-    sortBy((gas) => -gas.amount),
-  ])(data.gases || []);
-  const gasMaxAmount = Math.max(1, ...gases.map((gas) => gas.amount));
+};
+
+const SupermatterMonitorList = (props, context) => {
+  const { act, data } = useBackend(context);
+
+  const { supermatters } = data;
+
   return (
     <Section
-      title={SM_uid + '. ' + SM_area_name}
-      buttons={!singlecrystal && (
-        <Button
-          icon="arrow-left"
-          content="Back"
-          onClick={() => act('PRG_clear')}
-        />
-      )}>
-      <Stack>
-        <Stack.Item width="270px">
-          <Section title="Metrics">
-            <LabeledList>
-              <LabeledList.Item label="Integrity">
-                <ProgressBar
-                  value={SM_integrity / 100}
-                  ranges={{
-                    good: [0.9, Infinity],
-                    average: [0.5, 0.9],
-                    bad: [-Infinity, 0.5],
-                  }}
-                />
-              </LabeledList.Item>
-              <LabeledList.Item label="Relative EER">
-                <ProgressBar
-                  value={SM_power}
-                  minValue={0}
-                  maxValue={5000}
-                  ranges={{
-                    good: [-Infinity, 5000],
-                    average: [5000, 7000],
-                    bad: [7000, Infinity],
-                  }}>
-                  {toFixed(SM_power) + ' MeV/cm3'}
-                </ProgressBar>
-              </LabeledList.Item>
-              <LabeledList.Item label="Temperature">
-                <ProgressBar
-                  value={logScale(SM_ambienttemp)}
-                  minValue={0}
-                  maxValue={logScale(10000)}
-                  ranges={{
-                    teal: [-Infinity, logScale(80)],
-                    good: [logScale(80), logScale(373)],
-                    average: [logScale(373), logScale(1000)],
-                    bad: [logScale(1000), Infinity],
-                  }}>
-                  {toFixed(SM_ambienttemp) + ' K'}
-                </ProgressBar>
-              </LabeledList.Item>
-              <LabeledList.Item label="Total Moles">
-                <ProgressBar
-                  value={logScale(SM_moles)}
-                  minValue={0}
-                  maxValue={logScale(50000)}
-                  ranges={{
-                    good: [-Infinity, logScale(SM_bad_moles_amount * 0.75)],
-                    average: [
-                      logScale(SM_bad_moles_amount * 0.75),
-                      logScale(SM_bad_moles_amount),
-                    ],
-                    bad: [logScale(SM_bad_moles_amount), Infinity],
-                  }}>
-                  {toFixed(SM_moles) + ' moles'}
-                </ProgressBar>
-              </LabeledList.Item>
-              <LabeledList.Item label="Pressure">
-                <ProgressBar
-                  value={logScale(SM_ambientpressure)}
-                  minValue={0}
-                  maxValue={logScale(50000)}
-                  ranges={{
-                    good: [logScale(1), logScale(300)],
-                    average: [-Infinity, logScale(1000)],
-                    bad: [logScale(1000), +Infinity],
-                  }}>
-                  {toFixed(SM_ambientpressure) + ' kPa'}
-                </ProgressBar>
-              </LabeledList.Item>
-            </LabeledList>
-          </Section>
-        </Stack.Item>
-        <Stack.Item grow={1} basis={0}>
-          <Section title="Gases">
-            <LabeledList>
-              {gases.map((gas) => (
-                <LabeledList.Item key={gas.name} label={getGasLabel(gas.name)}>
-                  <ProgressBar
-                    color={getGasColor(gas.name)}
-                    value={gas.amount}
-                    minValue={0}
-                    maxValue={gasMaxAmount}>
-                    {toFixed(gas.amount, 2) + '%'}
-                  </ProgressBar>
+      title="Supermatters Detected"
+      buttons={<Button content="Refresh" icon="sync" 
+        onClick={() => act('refresh')} />}>
+      <Flex wrap="wrap">
+        {supermatters.map((sm, i) => (
+          <Flex.Item basis="49%" grow={i % 2} key={i}>
+            <Section title={sm.area_name + ' (#' + sm.uid + ')'}>
+              <LabeledList>
+                <LabeledList.Item label="Integrity">{sm.integrity} %
                 </LabeledList.Item>
-              ))}
-            </LabeledList>
-          </Section>
-        </Stack.Item>
-      </Stack>
+                <LabeledList.Item label="Options">
+                  <Button icon="eye" content="View Details" 
+                    onClick={() => act('set', { set: sm.uid })} />
+                </LabeledList.Item>
+              </LabeledList>
+            </Section>
+          </Flex.Item>
+        ))}
+      </Flex>
     </Section>
   );
 };
 
-const SupermatterList = (props, context) => {
+const SupermatterMonitorActive = (props, context) => {
   const { act, data } = useBackend(context);
-  const { supermatters = [] } = data;
+
+  const {
+    SM_area,
+    SM_integrity,
+    SM_power,
+    SM_ambienttemp,
+    SM_ambientpressure,
+    SM_EPR,
+    SM_gas_O2,
+    SM_gas_CO2,
+    SM_gas_N2,
+    SM_gas_PH,
+    SM_gas_N2O,
+  } = data;
+
   return (
     <Section
-      title="Detected Supermatters"
-      buttons={
-        <Button
-          icon="sync"
-          content="Refresh"
-          onClick={() => act('PRG_refresh')}
-        />
-      }>
-      <Table>
-        {supermatters.map((sm) => (
-          <Table.Row key={sm.uid}>
-            <Table.Cell>{sm.uid + '. ' + sm.area_name}</Table.Cell>
-            <Table.Cell collapsing color="label">
-              Integrity:
-            </Table.Cell>
-            <Table.Cell collapsing width="120px">
-              <ProgressBar
-                value={sm.integrity / 100}
-                ranges={{
-                  good: [0.9, Infinity],
-                  average: [0.5, 0.9],
-                  bad: [-Infinity, 0.5],
-                }}
-              />
-            </Table.Cell>
-            <Table.Cell collapsing>
-              <Button
-                content="Details"
-                onClick={() =>
-                  act('PRG_set', {
-                    target: sm.uid,
-                  })}
-              />
-            </Table.Cell>
-          </Table.Row>
-        ))}
-      </Table>
+      title={toTitleCase(SM_area)}
+      buttons={<Button icon="arrow-left" content="Return to Menu" 
+        onClick={() => act('clear')} />}>
+      <LabeledList>
+        <LabeledList.Item label="Core Integrity">
+          <ProgressBar
+            animated
+            value={SM_integrity}
+            minValue={0}
+            maxValue={100}
+            ranges={{
+              good: [100, 100],
+              average: [50, 100],
+              bad: [-Infinity, 50],
+            }}
+          />
+        </LabeledList.Item>
+        <LabeledList.Item label="Relative EER">
+          <Box color={(SM_power > 300 && 'bad') 
+            || (SM_power > 150 && 'average') || 'good'}>
+            <AnimatedNumber format={(val) => round(val, 2) + ' MeV/cm³'} 
+              value={SM_power} />
+          </Box>
+        </LabeledList.Item>
+        <LabeledList.Item label="Temperature">
+          <Box color={(SM_ambienttemp > 5000 && 'bad') 
+            || (SM_ambienttemp > 4000 && 'average') || 'good'}>
+            <AnimatedNumber format={(val) => round(val, 2) + ' K'} 
+              value={SM_ambienttemp} />
+          </Box>
+        </LabeledList.Item>
+        <LabeledList.Item label="Pressure">
+          <Box color={(SM_ambientpressure > 10000 && 'bad') 
+            || (SM_ambientpressure > 5000 && 'average') || 'good'}>
+            <AnimatedNumber format={(val) => round(val, 2) + ' kPa'} 
+              value={SM_ambientpressure} />
+          </Box>
+        </LabeledList.Item>
+        <LabeledList.Item label="Chamber EPR">
+          <Box color={(SM_EPR > 4 && 'bad') 
+            ||(SM_EPR > 1 && 'average') || 'good'}>
+            <AnimatedNumber format={(val) => round(val, 2)} 
+              value={SM_EPR} />
+          </Box>
+        </LabeledList.Item>
+        <LabeledList.Item label="Gas Composition">
+          <LabeledList>
+            <LabeledList.Item label="O²">
+              <AnimatedNumber value={SM_gas_O2} />%
+            </LabeledList.Item>
+            <LabeledList.Item label="CO²">
+              <AnimatedNumber value={SM_gas_CO2} />%
+            </LabeledList.Item>
+            <LabeledList.Item label="N²">
+              <AnimatedNumber value={SM_gas_N2} />%
+            </LabeledList.Item>
+            <LabeledList.Item label="PH">
+              <AnimatedNumber value={SM_gas_PH} />%
+            </LabeledList.Item>
+            <LabeledList.Item label="N²O">
+              <AnimatedNumber value={SM_gas_N2O} />%
+            </LabeledList.Item>
+          </LabeledList>
+        </LabeledList.Item>
+      </LabeledList>
     </Section>
   );
 };

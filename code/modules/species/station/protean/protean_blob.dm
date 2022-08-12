@@ -67,13 +67,13 @@
 	access_card = new(src)
 	if(H)
 		humanform = H
-		updatehealth()
 		refactory = locate() in humanform.internal_organs
 		verbs |= /mob/living/proc/hide
 		verbs |= /mob/living/simple_mob/protean_blob/proc/useradio
 		verbs |= /mob/living/simple_mob/protean_blob/proc/appearanceswitch
 		verbs |= /mob/living/simple_mob/protean_blob/proc/rig_transform
 		verbs |= /mob/living/proc/usehardsuit
+		INVOKE_ASYNC(src, /mob/living/proc/updatehealth)
 	else
 		update_icon()
 
@@ -268,7 +268,7 @@
 	else
 		..()
 
-/mob/living/simple_mob/protean_blob/MouseDrop(var/atom/over_object)
+/mob/living/simple_mob/protean_blob/OnMouseDropLegacy(var/atom/over_object)
 	if(ishuman(over_object) && usr == src && src.Adjacent(over_object))
 		var/mob/living/carbon/human/H = over_object
 		get_scooped(H, TRUE)
@@ -320,18 +320,16 @@
 	things_to_drop -= things_to_not_drop //Crunch the lists
 	things_to_drop -= organs //Mah armbs
 	things_to_drop -= internal_organs //Mah sqeedily spooch
+
 	for(var/obj/item/rig/protean/O in things_to_drop)
 		things_to_drop -= O
 
 	for(var/obj/item/I in things_to_drop) //rip hoarders
-		drop_from_inventory(I)
+		drop_item_to_ground(I)
 
-
-	if(istype(slot_gloves, /obj/item/clothing/gloves/gauntlets/rig)) //drop RIGsuit gauntlets to avoid fucky wucky-ness.
-		drop_from_inventory(slot_gloves)
-
-	if(istype(slot_shoes, /obj/item/clothing/shoes/magboots)) //drop magboots because they're super heavy. also drops RIGsuit boots because they're magboot subtypes.
-		drop_from_inventory(slot_shoes)
+	if(wearing_rig)
+		for(var/obj/item/I in list(wearing_rig.helmet, wearing_rig.chest, wearing_rig.gloves, wearing_rig.boots))
+			transfer_item_to_loc(I, wearing_rig, INV_OP_FORCE)
 
 	for(var/obj/item/radio/headset/HS in things_to_not_drop)
 		if(HS.keyslot1)
@@ -412,7 +410,7 @@
 	for(var/obj/item/I in src)
 		remove_micros(I, root) //Recursion. I'm honestly depending on there being no containment loop, but at the cost of performance that can be fixed too.
 		if(istype(I, /obj/item/holder))
-			root.remove_from_mob(I)
+			I.forceMove(root.drop_location())
 
 /mob/living/simple_mob/protean_blob/proc/useradio()
 	set name = "Utilize Radio"
@@ -507,8 +505,8 @@
 		B.forceMove(src)
 		B.owner = src
 
-	if(blob.prev_left_hand) put_in_l_hand(blob.prev_left_hand) //The restore for when reforming.
-	if(blob.prev_right_hand) put_in_r_hand(blob.prev_right_hand)
+	if(blob.prev_left_hand) put_in_left_hand(blob.prev_left_hand) //The restore for when reforming.
+	if(blob.prev_right_hand) put_in_right_hand(blob.prev_right_hand)
 
 	Life(1, SSmobs.times_fired)
 

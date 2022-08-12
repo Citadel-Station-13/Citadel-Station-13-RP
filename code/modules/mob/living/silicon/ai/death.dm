@@ -5,7 +5,6 @@
 
 	if(deployed_shell)
 		disconnect_shell("Disconnecting from remote shell due to critical system failure.")
-	. = ..(gibbed)
 
 	if(src.eyeobj)
 		src.eyeobj.setLoc(get_turf(src))

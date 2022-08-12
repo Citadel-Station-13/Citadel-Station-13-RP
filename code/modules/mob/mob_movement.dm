@@ -34,11 +34,14 @@
 
 /client/verb/drop_item()
 	set hidden = 1
-	if(!isrobot(mob) && mob.stat == CONSCIOUS && (isturf(mob.loc) || isbelly(mob.loc)))	// Dropping in bellies
-		return mob.drop_item()
-	return
 
-
+	if(isrobot(mob))
+		return
+	if(mob.stat != CONSCIOUS)
+		return
+	if(!isturf(mob.loc) && !isbelly(mob.loc))
+		return
+	mob.drop_active_held_item()
 
 /client/proc/Move_object(direct)
 	if(mob && mob.control_object)

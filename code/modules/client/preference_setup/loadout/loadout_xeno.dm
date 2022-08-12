@@ -9,31 +9,31 @@
 	sort_category = "Xenowear"
 
 /datum/gear/xeno/accessories
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 /datum/gear/xeno/shoes
-	slot = slot_shoes
+	slot = SLOT_ID_SHOES
 
 /datum/gear/xeno/uniform
-	slot = slot_w_uniform
+	slot = SLOT_ID_UNIFORM
 
 /datum/gear/xeno/suit
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 
 /datum/gear/xeno/head
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 
 /datum/gear/xeno/eyes
-	slot = slot_glasses
+	slot = SLOT_ID_GLASSES
 
 /datum/gear/xeno/back
-	slot = slot_back
+	slot = SLOT_ID_BACK
 
 /datum/gear/xeno/mask
-	slot = slot_wear_mask
+	slot = SLOT_ID_MASK
 
 /datum/gear/xeno/gloves
-	slot = slot_gloves
+	slot = SLOT_ID_GLOVES
 /******************************************************************************/
 //**Species-Specific Datum Declarations
 //*Tajaran
@@ -41,81 +41,81 @@
 	whitelisted = SPECIES_TAJ
 
 /datum/gear/xeno/tajaran/accessories
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 /datum/gear/xeno/tajaran/shoes
-	slot = slot_shoes
+	slot = SLOT_ID_SHOES
 
 /datum/gear/xeno/tajaran/uniform
-	slot = slot_w_uniform
+	slot = SLOT_ID_UNIFORM
 
 /datum/gear/xeno/tajaran/suit
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 
 /datum/gear/xeno/tajaran/head
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 
 /datum/gear/xeno/tajaran/eyes
-	slot = slot_glasses
+	slot = SLOT_ID_GLASSES
 
 /datum/gear/xeno/tajaran/back
-	slot = slot_back
+	slot = SLOT_ID_BACK
 
 //*Promethean
 /datum/gear/xeno/promethean
 	whitelisted = SPECIES_PROMETHEAN
 
 /datum/gear/xeno/promethean/accessories
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 /datum/gear/xeno/promethean/shoes
-	slot = slot_shoes
+	slot = SLOT_ID_SHOES
 
 /datum/gear/xeno/promethean/uniform
-	slot = slot_w_uniform
+	slot = SLOT_ID_UNIFORM
 
 /datum/gear/xeno/promethean/suit
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 
 /datum/gear/xeno/promethean/head
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 
 /datum/gear/xeno/promethean/eyes
-	slot = slot_glasses
+	slot = SLOT_ID_GLASSES
 
 /datum/gear/xeno/promethean/back
-	slot = slot_back
+	slot = SLOT_ID_BACK
 
 //*Teshari
 /datum/gear/xeno/teshari
 	whitelisted = SPECIES_TESHARI
 
 /datum/gear/xeno/teshari/accessories
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 /datum/gear/xeno/teshari/shoes
-	slot = slot_shoes
+	slot = SLOT_ID_SHOES
 
 /datum/gear/xeno/teshari/uniform
-	slot = slot_w_uniform
+	slot = SLOT_ID_UNIFORM
 
 /datum/gear/xeno/teshari/suit
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 
 /datum/gear/xeno/teshari/head
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 
 /datum/gear/xeno/teshari/eyes
-	slot = slot_glasses
+	slot = SLOT_ID_GLASSES
 
 /datum/gear/xeno/teshari/back
-	slot = slot_back
+	slot = SLOT_ID_BACK
 
 /datum/gear/xeno/teshari/mask
-	slot = slot_wear_mask
+	slot = SLOT_ID_MASK
 
 /datum/gear/xeno/teshari/gloves
-	slot = slot_gloves
+	slot = SLOT_ID_GLOVES
 
 
 //*Phoronoid
@@ -123,31 +123,31 @@
 	whitelisted = SPECIES_PHORONOID
 
 /datum/gear/xeno/phoronoid/accessories
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 /datum/gear/xeno/phoronoid/shoes
-	slot = slot_shoes
+	slot = SLOT_ID_SHOES
 
 /datum/gear/xeno/phoronoid/uniform
-	slot = slot_w_uniform
+	slot = SLOT_ID_UNIFORM
 
 /datum/gear/xeno/phoronoid/suit
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 
 /datum/gear/xeno/phoronoid/head
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 
 /datum/gear/xeno/phoronoid/eyes
-	slot = slot_glasses
+	slot = SLOT_ID_GLASSES
 
 /datum/gear/xeno/phoronoid/back
-	slot = slot_back
+	slot = SLOT_ID_BACK
 
 /datum/gear/xeno/phoronoid/mask
-	slot = slot_wear_mask
+	slot = SLOT_ID_MASK
 
 /datum/gear/xeno/phoronoid/gloves
-	slot = slot_gloves
+	slot = SLOT_ID_GLOVES
 
 
 
@@ -156,31 +156,31 @@
 	whitelisted = SPECIES_SKRELL
 
 /datum/gear/xeno/skrell/accessories
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 /datum/gear/xeno/skrell/shoes
-	slot = slot_shoes
+	slot = SLOT_ID_SHOES
 
 /datum/gear/xeno/skrell/uniform
-	slot = slot_w_uniform
+	slot = SLOT_ID_UNIFORM
 
 /datum/gear/xeno/skrell/suit
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 
 /datum/gear/xeno/skrell/head
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 
 /datum/gear/xeno/skrell/eyes
-	slot = slot_glasses
+	slot = SLOT_ID_GLASSES
 
 /datum/gear/xeno/skrell/back
-	slot = slot_back
+	slot = SLOT_ID_BACK
 
 /datum/gear/xeno/skrell/mask
-	slot = slot_wear_mask
+	slot = SLOT_ID_MASK
 
 /datum/gear/xeno/skrell/gloves
-	slot = slot_gloves
+	slot = SLOT_ID_GLOVES
 
 
 
@@ -189,31 +189,31 @@
 	whitelisted = SPECIES_UNATHI
 
 /datum/gear/xeno/unathi/accessories
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 /datum/gear/xeno/unathi/shoes
-	slot = slot_shoes
+	slot = SLOT_ID_SHOES
 
 /datum/gear/xeno/unathi/uniform
-	slot = slot_w_uniform
+	slot = SLOT_ID_UNIFORM
 
 /datum/gear/xeno/unathi/suit
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 
 /datum/gear/xeno/unathi/head
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 
 /datum/gear/xeno/unathi/eyes
-	slot = slot_glasses
+	slot = SLOT_ID_GLASSES
 
 /datum/gear/xeno/unathi/back
-	slot = slot_back
+	slot = SLOT_ID_BACK
 
 /datum/gear/xeno/unathi/mask
-	slot = slot_wear_mask
+	slot = SLOT_ID_MASK
 
 /datum/gear/xeno/unathi/gloves
-	slot = slot_gloves
+	slot = SLOT_ID_GLOVES
 
 
 
@@ -222,31 +222,31 @@
 	whitelisted = SPECIES_VOX
 
 /datum/gear/xeno/vox/accessories
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 /datum/gear/xeno/vox/shoes
-	slot = slot_shoes
+	slot = SLOT_ID_SHOES
 
 /datum/gear/xeno/vox/uniform
-	slot = slot_w_uniform
+	slot = SLOT_ID_UNIFORM
 
 /datum/gear/xeno/vox/suit
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 
 /datum/gear/xeno/vox/head
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 
 /datum/gear/xeno/vox/eyes
-	slot = slot_glasses
+	slot = SLOT_ID_GLASSES
 
 /datum/gear/xeno/vox/back
-	slot = slot_back
+	slot = SLOT_ID_BACK
 
 /datum/gear/xeno/vox/mask
-	slot = slot_wear_mask
+	slot = SLOT_ID_MASK
 
 /datum/gear/xeno/vox/gloves
-	slot = slot_gloves
+	slot = SLOT_ID_GLOVES
 /******************************************************************************/
 //**Actual Item Declarations
 //*Tajaran

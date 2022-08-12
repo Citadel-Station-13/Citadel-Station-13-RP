@@ -23,7 +23,8 @@
 	possible_transfer_amounts = list(3)
 	volume = 4
 	can_be_placed_into = null
-	flags = OPENCONTAINER | NOBLUDGEON
+	item_flags = NOBLUDGEON
+	flags = OPENCONTAINER
 	unacidable = 0
 	drop_sound = 'sound/items/drop/cloth.ogg'
 	pickup_sound = 'sound/items/pickup/cloth.ogg'
@@ -43,7 +44,7 @@
 /obj/item/reagent_containers/glass/rag/attack_self(mob/user as mob)
 	if(on_fire)
 		user.visible_message("<span class='warning'>\The [user] stamps out [src].</span>", "<span class='warning'>You stamp out [src].</span>")
-		user.unEquip(src)
+		user.drop_item_to_ground(src)
 		extinguish()
 	else
 		remove_contents(user)

@@ -7,10 +7,13 @@
 	var/item_flags = NONE
 	/// Miscellaneous flags pertaining to equippable objects. - see [code/__DEFINES/_flags/item_flags.dm]
 	var/clothing_flags = NONE
+	/// flags for items hidden by this item when worn. as of right now, some flags only work in some slots.
+	var/flags_inv = 0
+	/// flags for the bodyparts this item covers when worn.
+	var/body_parts_covered = 0
 
 	/// This saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/image/blood_overlay = null
-	var/abstract = 0
 	var/r_speed = 1.0
 	var/health = null
 	var/burn_point = null
@@ -54,12 +57,6 @@
 	/// If 1, bypass the restrained, lying, and stunned checks action buttons normally test for
 	var/action_button_is_hands_free = 0
 
-	//This flag is used to determine when items in someone's inventory cover others. IE helmets making it so you can't see glasses, etc.
-	//It should be used purely for appearance. For gameplay effects caused by items covering body parts, use body_parts_covered.
-	var/flags_inv = 0
-	/// See setup.dm for appropriate bit flags
-	var/body_parts_covered = 0
-
 	var/tool_behaviour = NONE
 
 	/// 0 prevents all transfers, 1 is invisible
@@ -72,8 +69,6 @@
 	var/siemens_coefficient = 1
 	/// How much clothing is slowing you down. Negative values speeds you up
 	var/slowdown = 0
-	///Mostly for Ninja code at this point but basically will not allow the item to be removed if set to FALSE.
-	var/canremove = TRUE
 	var/list/armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	var/list/armorsoak = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	/// Suit storage stuff.
@@ -140,11 +135,13 @@
 	//* Pickup/Drop/Equip/Throw Sounds
 	/// Used when thrown into a mob.
 	var/mob_throw_hit_sound
-	/// Sound used when equipping the items into a valid slot.
+	/// Sound used when equipping the item into a valid slot from hands or ground
 	var/equip_sound
-	/// Pickup sound - this is the default.
+	/// Sound used when uneqiupping the item from a valid slot to hands or ground
+	var/unequip_sound
+	/// Pickup sound - played when picking something up off the floor.
 	var/pickup_sound = 'sound/items/pickup/device.ogg'
-	/// Drop sound - this is the default.
+	/// Drop sound - played when dropping something onto the floor.
 	var/drop_sound = 'sound/items/drop/device.ogg'
 
 	/// Deploytype for switchtools. Only really used on switchtool subtype items, but this is on a general item level
@@ -157,6 +154,8 @@
 	. = ..()
 	if(islist(origin_tech))
 		origin_tech = typelist(NAMEOF(src, origin_tech), origin_tech)
+	if(istype(loc, /obj/item/storage))
+		item_flags |= IN_STORAGE
 	//Potential memory optimization: Making embed chance a getter if unset.
 	if(embed_chance == EMBED_CHANCE_UNSET)
 		if(sharp)
@@ -168,15 +167,6 @@
 			hitsound = 'sound/items/welder.ogg'
 		if(damtype == "brute")
 			hitsound = "swing_hit"
-
-/obj/item/Destroy()
-	if(ismob(loc))
-		var/mob/m = loc
-		m.drop_from_inventory(src)
-		m.update_inv_r_hand()
-		m.update_inv_l_hand()
-		src.loc = null
-	return ..()
 
 /// Check if target is reasonable for us to operate on.
 /obj/item/proc/check_allowed_items(atom/target, not_inside, target_self)
@@ -295,14 +285,20 @@
 			. = ""
 
 /obj/item/attack_hand(mob/living/user as mob)
-	if (!user) return
+	attempt_pickup(user)
+
+/obj/item/proc/attempt_pickup(mob/user)
+	if (!user)
+		return
+
 	if(anchored)
 		to_chat(user, SPAN_NOTICE("\The [src] won't budge, you can't pick it up!"))
 		return
+
 	if (hasorgans(user))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
-		if (user.hand)
+		if (H.hand)
 			temp = H.organs_by_name["l_hand"]
 		if(temp && !temp.is_usable())
 			to_chat(user, "<span class='notice'>You try to move your [temp.name], but cannot!</span>")
@@ -312,24 +308,66 @@
 			return
 
 	var/old_loc = src.loc
-	src.pickup(user)
-	if (istype(src.loc, /obj/item/storage))
-		var/obj/item/storage/S = src.loc
-		S.remove_from_storage(src)
 
-	src.throwing = 0
-	if (src.loc == user)
-		if(!user.unEquip(src))
-			return
-	else
-		if(isliving(src.loc))
-			return
+	throwing = 0
 	if(user.put_in_active_hand(src))
 		if(isturf(old_loc))
 			var/obj/effect/temporary_effect/item_pickup_ghost/ghost = new(old_loc)
 			ghost.assumeform(src)
 			ghost.animate_towards(user)
-	return
+
+/obj/item/OnMouseDrop(atom/over, mob/user, proximity, params)
+	if(!user.is_in_inventory(src))
+		// not being held
+		if(!isturf(loc))	// yea nah
+			return ..()
+		if(user.Adjacent(src))
+			// check for equip
+			if(istype(over, /atom/movable/screen/inventory/hand))
+				var/atom/movable/screen/inventory/hand/H = over
+				user.put_in_hand(src, H.index)
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			else if(istype(over, /atom/movable/screen/inventory/slot))
+				var/atom/movable/screen/inventory/slot/S = over
+				user.equip_to_slot_if_possible(src, S.slot_id)
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+		// check for slide
+		if(Adjacent(over) && user.CanSlideItem(src, over) && (istype(over, /obj/structure/rack) || istype(over, /obj/structure/table) || istype(over, /turf)))
+			var/turf/old = get_turf(src)
+			if(!Move(get_turf(over)))
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			//! todo: i want to strangle the mofo who did planes instead of invisibility, which makes it computationally infeasible to check ghost invisibility in get hearers in view
+			//! :) FUCK YOU.
+			//! this if check is all for you. FUCK YOU.
+			if(!isobserver(user))
+				user.visible_message(SPAN_NOTICE("[user] slides [src] over."), SPAN_NOTICE("You slide [src] over."), range = MESSAGE_RANGE_COMBAT_SUBTLE)
+			log_inventory("[user] slid [src] from [COORD(old)] to [COORD(over)]")
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		return ..()
+	else
+		// being held, check for attempt unequip
+		if(istype(over, /atom/movable/screen/inventory/hand))
+			var/atom/movable/screen/inventory/hand/H = over
+			user.put_in_hand(src, H.index)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		else if(istype(over, /atom/movable/screen/inventory/slot))
+			var/atom/movable/screen/inventory/slot/S = over
+			user.equip_to_slot_if_possible(src, S.slot_id)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		else if(istype(over, /turf))
+			user.drop_item_to_ground(src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		return ..()
+
+// funny!
+/mob/proc/CanSlideItem(obj/item/I, turf/over)
+	return FALSE
+
+/mob/living/CanSlideItem(obj/item/I, turf/over)
+	return Adjacent(I) && !incapacitated() && !stat && !restrained()
+
+/mob/observer/dead/CanSlideItem(obj/item/I, turf/over)
+	return is_spooky
 
 /obj/item/attack_ai(mob/user as mob)
 	if (istype(src.loc, /obj/item/robot_module))
@@ -349,7 +387,7 @@
 					S.gather_all(src.loc, user)
 
 			else if(S.can_be_inserted(src))
-				S.handle_item_insertion(src)
+				S.handle_item_insertion(src, user)
 	return
 
 /obj/item/proc/talk_into(mob/M as mob, text)
@@ -394,108 +432,6 @@
 /obj/item/proc/on_found(mob/finder as mob)
 	return
 
-//the mob M is attempting to equip this item into the slot passed through as 'slot'. Return 1 if it can do this and 0 if it can't.
-//If you are making custom procs but would like to retain partial or complete functionality of this one, include a 'return ..()' to where you want this to happen.
-//Set disable_warning to 1 if you wish it to not give you outputs.
-//Should probably move the bulk of this into mob code some time, as most of it is related to the definition of slots and not item-specific
-/obj/item/proc/mob_can_equip(M as mob, slot, disable_warning = 0)
-	if(!slot) return 0
-	if(!M) return 0
-
-	if(!ishuman(M)) return 0
-
-	var/mob/living/carbon/human/H = M
-	var/list/mob_equip = list()
-	if(H.species.hud && H.species.hud.equip_slots)
-		mob_equip = H.species.hud.equip_slots
-
-	if(H.species && !(slot in mob_equip))
-		return 0
-
-	//First check if the item can be equipped to the desired slot.
-	if("[slot]" in slot_flags_enumeration)
-		var/req_flags = slot_flags_enumeration["[slot]"]
-		if(!(req_flags & slot_flags))
-			return 0
-
-	//Next check that the slot is free
-	if(H.get_equipped_item(slot))
-		return 0
-
-	//Next check if the slot is accessible.
-	var/mob/_user = disable_warning? null : H
-	if(!H.slot_is_accessible(slot, src, _user))
-		return 0
-
-	//Lastly, check special rules for the desired slot.
-	switch(slot)
-		if(slot_l_ear, slot_r_ear)
-			var/slot_other_ear = (slot == slot_l_ear)? slot_r_ear : slot_l_ear
-			if( (w_class > ITEMSIZE_TINY) && !(slot_flags & SLOT_EARS) )
-				return 0
-			if( (slot_flags & SLOT_TWOEARS) && H.get_equipped_item(slot_other_ear) )
-				return 0
-		if(slot_wear_id)
-			if(!H.w_uniform && (slot_w_uniform in mob_equip))
-				if(!disable_warning)
-					to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [name].</span>")
-				return 0
-		if(slot_l_store, slot_r_store)
-			if(!H.w_uniform && (slot_w_uniform in mob_equip))
-				if(!disable_warning)
-					to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [name].</span>")
-				return 0
-			if(slot_flags & SLOT_DENYPOCKET)
-				return 0
-			if( w_class > ITEMSIZE_SMALL && !(slot_flags & SLOT_POCKET) )
-				return 0
-		if(slot_s_store)
-			if(!H.wear_suit && (slot_wear_suit in mob_equip))
-				if(!disable_warning)
-					to_chat(H, "<span class='warning'>You need a suit before you can attach this [name].</span>")
-				return 0
-			if(!H.wear_suit.allowed)
-				if(!disable_warning)
-					to_chat(usr, "<span class='warning'>You somehow have a suit with no defined allowed items for suit storage, stop that.</span>")
-				return 0
-			if( !(istype(src, /obj/item/pda) || istype(src, /obj/item/pen) || is_type_in_list(src, H.wear_suit.allowed)) )
-				return 0
-		if(slot_legcuffed) //Going to put this check above the handcuff check because the survival of the universe depends on it.
-			if(!istype(src, /obj/item/handcuffs/legcuffs)) //Putting it here might actually do nothing.
-				return 0
-		if(slot_handcuffed)
-			if(!istype(src, /obj/item/handcuffs) || istype(src, /obj/item/handcuffs/legcuffs)) //Legcuffs are a child of handcuffs, but we don't want to use legcuffs as handcuffs...
-				return 0 //In theory, this would never happen, but let's just do the legcuff check anyways.
-		if(slot_in_backpack) //used entirely for equipping spawned mobs or at round start
-			var/allow = 0
-			if(H.back && istype(H.back, /obj/item/storage/backpack))
-				var/obj/item/storage/backpack/B = H.back
-				if(B.can_be_inserted(src,1))
-					allow = 1
-			if(!allow)
-				return 0
-		if(slot_tie)
-			var/allow = 0
-			for(var/obj/item/clothing/C in H.worn_clothing)	//Runs through everything you're wearing, returns if you can't attach the thing
-				if(C.can_attach_accessory(src))
-					allow = 1
-					break
-			if(!allow)
-				if(!disable_warning)
-					to_chat(H, "<span class='warning'>You're not wearing anything you can attach this [name] to.</span>")
-				return 0
-	return 1
-
-/obj/item/proc/mob_can_unequip(mob/M, slot, disable_warning = 0)
-	if(!slot) return 0
-	if(!M) return 0
-
-	if(!canremove)
-		return 0
-	if(!M.slot_is_accessible(slot, src, disable_warning? null : M))
-		return 0
-	return 1
-
 /obj/item/verb/verb_pickup()
 	set src in oview(1)
 	set category = "Object"
@@ -515,16 +451,14 @@
 	if(src.anchored) //Object isn't anchored
 		to_chat(usr, "<span class='warning'>You can't pick that up!</span>")
 		return
-	if(C.get_active_hand()) //Hand is not full
+	if(C.get_active_held_item()) //Hand is not full
 		to_chat(usr, "<span class='warning'>Your hand is full.</span>")
 		return
 	if(!istype(src.loc, /turf)) //Object is on a turf
 		to_chat(usr, "<span class='warning'>You can't pick that up!</span>")
 		return
-	//All checks are done, time to pick it up!
-	usr.UnarmedAttack(src)
-	return
 
+	attempt_pickup(usr)
 
 /**
  *This proc is executed when someone clicks the on-screen UI button.
@@ -610,7 +544,7 @@
 			if(prob(50))
 				if(M.stat != 2)
 					to_chat(M, "<span class='warning'>You drop what you're holding and clutch at your eyes!</span>")
-					M.drop_item()
+					M.drop_active_held_item()
 				M.eye_blurry += 10
 				M.Paralyse(1)
 				M.Weaken(4)
@@ -662,7 +596,6 @@
 		blood_DNA[M.dna.unique_enzymes] = M.dna.b_type
 	return 1 //we applied blood to the item
 
-
 /obj/item/proc/generate_blood_overlay()
 	if(blood_overlay)
 		return
@@ -684,8 +617,8 @@
 	set name = "Show Held Item"
 	set category = "Object"
 
-	var/obj/item/I = get_active_hand()
-	if(I && !I.abstract)
+	var/obj/item/I = get_active_held_item()
+	if(I && !(I.flags & ATOM_ABSTRACT))
 		I.showoff(src)
 
 /*
@@ -713,10 +646,10 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	else if(!zoom && (GLOB.global_hud.darkMask[1] in user.client.screen))
 		to_chat(user, "Your visor gets in the way of looking through the [devicename]")
 		cannotzoom = 1
-	else if(!zoom && user.get_active_hand() != src && wornslot == FALSE)
+	else if(!zoom && user.get_active_held_item() != src && wornslot == FALSE)
 		to_chat(user, "You are too distracted to look through the [devicename], perhaps if it was in your active hand this might work better")
 		cannotzoom = 1
-	else if(!zoom && user.get_equipped_item(wornslot) != src && wornslot != FALSE)
+	else if(!zoom && user.item_by_slot(wornslot) != src && wornslot != FALSE)
 		to_chat(user, "You need to wear the [devicename] to look through it properly")
 		cannotzoom = 1
 
@@ -781,10 +714,6 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /// Check if an object should ignite others, like a lit lighter or candle.
 /obj/item/proc/is_hot()
 	return FALSE
-
-/// Called when you swap hands away from the item
-/obj/item/proc/in_inactive_hand(mob/user)
-	return
 
 /// Worn icon generation for on-mob sprites
 /obj/item/proc/make_worn_icon(var/body_type,var/slot_id,var/inhands,var/default_icon,var/default_layer,var/icon/clip_mask = null)

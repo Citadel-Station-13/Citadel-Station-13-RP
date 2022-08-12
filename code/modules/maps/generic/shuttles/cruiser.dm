@@ -2,7 +2,7 @@
 //////// Mothership areas ////////
 /area/mothership
 	requires_power = 1
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	icon_state = "blue2"
 
 /area/mothership/breakroom
@@ -49,7 +49,7 @@
 
 /area/mothership/vault
 	name = "Daedalus - Vault"
-	area_flags = AF_RAD_SHIELDED | AF_BLUE_SHIELDED
+	area_flags = AREA_RAD_SHIELDED | AREA_BLUE_SHIELDED
 
 /area/mothership/teleporter
 	name = "Daedalus - Teleporter Room"
@@ -86,7 +86,7 @@
 
 /area/mothership/armory
 	name = "Daedalus - Armory"
-	area_flags = AF_RAD_SHIELDED | AF_BLUE_SHIELDED
+	area_flags = AREA_RAD_SHIELDED | AREA_BLUE_SHIELDED
 
 /area/mothership/bridge
 	name = "Daedalus - Bridge"

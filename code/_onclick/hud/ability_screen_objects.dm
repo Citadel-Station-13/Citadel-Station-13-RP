@@ -34,7 +34,7 @@
 			my_mob.client.screen -= src
 		my_mob = null
 
-/atom/movable/screen/movable/ability_master/MouseDrop()
+/atom/movable/screen/movable/ability_master/OnMouseDropLegacy()
 	if(showing)
 		return
 
@@ -260,7 +260,7 @@
 //	spell.perform(usr)
 	activate()
 
-/atom/movable/screen/ability/MouseDrop(var/atom/A)
+/atom/movable/screen/ability/OnMouseDropLegacy(var/atom/A)
 	if(!A || A == src)
 		return
 	if(istype(A, /atom/movable/screen/ability))

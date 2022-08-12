@@ -335,11 +335,11 @@
 			var/obj/item/circuitboard/B = P
 			var/datum/frame/frame_types/board_type = B.board_type
 			if(board_type.name == frame_type.name)
+				if(!user.attempt_insert_item_for_installation(P, src))
+					return
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You place the circuit board inside the frame."))
 				circuit = P
-				user.drop_item()
-				P.loc = src
 				state = FRAME_UNFASTENED
 				if(frame_type.frame_class == FRAME_CLASS_MACHINE)
 					check_components()
@@ -498,6 +498,8 @@
 			if(frame_type.frame_class == FRAME_CLASS_MACHINE)
 				for(var/I in req_components)
 					if(istype(P, I) && (req_components[I] > 0))
+						if(!user.attempt_insert_item_for_installation(P, src))
+							return
 						playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, TRUE)
 						if(istype(P, /obj/item/stack/cable_coil))
 							var/obj/item/stack/cable_coil/CP = P
@@ -511,9 +513,6 @@
 								req_components[I] -= camt
 								update_desc()
 								break
-
-						user.drop_item()
-						P.forceMove(src)
 						components += P
 						req_components[I]--
 						update_desc()
@@ -577,6 +576,8 @@
 			if(frame_type.frame_class == FRAME_CLASS_MACHINE)
 				for(var/I in req_components)
 					if(istype(P, I) && (req_components[I] > 0))
+						if(!user.attempt_insert_item_for_installation(P, src))
+							return
 						playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, TRUE)
 						if(istype(P, /obj/item/stack))
 							var/obj/item/stack/ST = P
@@ -591,8 +592,6 @@
 								update_desc()
 								break
 
-						user.drop_item()
-						P.forceMove(src)
 						components += P
 						req_components[I]--
 						update_desc()

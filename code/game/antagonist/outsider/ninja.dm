@@ -104,15 +104,15 @@ var/datum/antagonist/ninja/ninjas
 		return 0
 
 	var/obj/item/radio/R = new /obj/item/radio/headset(player)
-	player.equip_to_slot_or_del(R, slot_l_ear)
-	player.equip_to_slot_or_del(new /obj/item/clothing/under/color/black(player), slot_w_uniform)
-	player.equip_to_slot_or_del(new /obj/item/flashlight(player), slot_belt)
+	player.equip_to_slot_or_del(R, SLOT_ID_LEFT_EAR)
+	player.equip_to_slot_or_del(new /obj/item/clothing/under/color/black(player), SLOT_ID_UNIFORM)
+	player.equip_to_slot_or_del(new /obj/item/flashlight(player), SLOT_ID_BELT)
 	create_id("Infiltrator", player)
 
 	var/obj/item/rig/light/ninja/ninjasuit = new(get_turf(player))
 	ninjasuit.seal_delay = 0
 	player.put_in_hands(ninjasuit)
-	player.equip_to_slot_or_del(ninjasuit,slot_back)
+	player.equip_to_slot_or_del(ninjasuit,SLOT_ID_BACK)
 	if(ninjasuit)
 		ninjasuit.toggle_seals(src,1)
 		ninjasuit.seal_delay = initial(ninjasuit.seal_delay)

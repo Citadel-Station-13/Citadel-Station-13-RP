@@ -2,7 +2,6 @@
 	name = "rune"
 	desc = "A rune drawn in crayon."
 	icon = 'icons/obj/rune.dmi'
-	plane = DIRTY_PLANE
 	anchored = 1
 
 	New(location,main = "#FFFFFF",shade = "#000000",var/type = "rune")
@@ -33,7 +32,6 @@
 	name = "arcane rune"
 	desc = "A rune drawn in chalk."
 	icon = 'icons/obj/rune.dmi'
-	plane = DIRTY_PLANE
 	anchored = 1
 
 	New(location,main = "#FFFFFF",shade = "#000000",var/type = "rune")

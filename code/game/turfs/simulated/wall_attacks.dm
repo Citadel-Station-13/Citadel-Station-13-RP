@@ -449,7 +449,7 @@
 					playsound(src, W.usesound, 100, 1)
 					if(!do_after(user,100 * W.toolspeed) || !istype(src, /turf/simulated/wall) || !user || !W || !T )
 						return
-					if(user.loc == T && user.get_active_hand() == W )
+					if(user.loc == T && user.get_active_held_item() == W )
 						to_chat(user, "<span class='notice'>You pry off the outer sheath.</span>")
 						dismantle_wall()
 					return

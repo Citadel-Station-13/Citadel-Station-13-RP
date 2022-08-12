@@ -452,6 +452,14 @@
 "co" = (
 /turf/simulated/wall,
 /area/rift/exterior/checkpoint/south)
+"cq" = (
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
+	frequency = 1379;
+	scrub_id = "sci_outpost_scrubber"
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor,
+/area/rnd/outpost/atmospherics)
 "cy" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -751,11 +759,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "dH" = (
-/obj/effect/floor_decal/spline/fancy{
-	dir = 2
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/rift/exterior/mineshaft)
+/turf/simulated/wall,
+/area/rnd/outpost/atmospherics)
 "dM" = (
 /obj/structure/table/standard,
 /obj/item/tool/screwdriver,
@@ -943,9 +948,9 @@
 /area/rnd/outpost)
 "eF" = (
 /obj/structure/sign/signnew/explosives{
-	pixel_y = -32;
+	desc = "Warning: Remain Clear of Test Site Until All Clear is Received From Command.";
 	name = "TUNGSTEN WARHEAD TESTING";
-	desc = "Warning: Remain Clear of Test Site Until All Clear is Received From Command."
+	pixel_y = -32
 	},
 /obj/effect/overlay/snow/floor/grav_edges{
 	dir = 4
@@ -1039,9 +1044,9 @@
 /area/rift/surfacebase/outside/west)
 "fj" = (
 /obj/machinery/power/apc/alarms_hidden{
-	dir = 1;
+	cell_type = null;
 	chargelevel = 0;
-	cell_type = null
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/elevator)
@@ -2186,6 +2191,10 @@
 /obj/structure/sandbag,
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/exterior/nuketown)
+"kF" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/simulated/floor,
+/area/rnd/outpost/atmospherics)
 "kG" = (
 /obj/effect/overlay/snow/floor/grav_surround{
 	dir = 8
@@ -2305,6 +2314,15 @@
 /obj/machinery/space_heater,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/exterior/checkpoint/south)
+"li" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 9
+	},
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "ll" = (
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -2519,6 +2537,9 @@
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
+"mq" = (
+/turf/simulated/wall,
+/area/rift/surfacebase/outside/west)
 "mv" = (
 /obj/machinery/vending/fitness{
 	dir = 8
@@ -2670,6 +2691,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
+"nf" = (
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = list(10,47)
+	},
+/turf/simulated/floor,
+/area/rnd/outpost/atmospherics)
 "ng" = (
 /turf/simulated/wall,
 /area/maintenance/substation/outpost)
@@ -3013,8 +3040,8 @@
 /obj/random/contraband,
 /obj/random/contraband,
 /obj/item/paper{
-	name = "old note";
-	info = "Sorry Nahk'ma this was the most I could sneak past requistions. You pay good but I can't risk being caught smuggling especially out here. I doubt they would just put me to work in the mines on Miaphus'irra. Good luck I hope this stuff can help. - X"
+	info = "Sorry Nahk'ma this was the most I could sneak past requistions. You pay good but I can't risk being caught smuggling especially out here. I doubt they would just put me to work in the mines on Miaphus'irra. Good luck I hope this stuff can help. - X";
+	name = "old note"
 	},
 /obj/random/ammo_all,
 /obj/random/ammo_all,
@@ -3041,9 +3068,9 @@
 /area/rnd/outpost/anomaly_lab)
 "oW" = (
 /obj/structure/sign/signnew/danger{
-	pixel_y = 32;
+	desc = "What is here was dangerous and replusive to us.";
 	name = "THIS IS NOT A PLACE OF HONOR";
-	desc = "What is here was dangerous and replusive to us."
+	pixel_y = 32
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/facility/exterior)
@@ -3330,6 +3357,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenoarch_storage)
+"pY" = (
+/obj/item/storage/toolbox/emergency,
+/obj/structure/table/rack,
+/turf/simulated/floor,
+/area/rnd/outpost/atmospherics)
 "pZ" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 10
@@ -3578,6 +3610,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/rift/exterior/nuketown/interior)
+"rp" = (
+/obj/machinery/space_heater,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/light/small,
+/turf/simulated/floor,
+/area/rnd/outpost/atmospherics)
 "rq" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -3744,6 +3782,10 @@
 "sl" = (
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/facility/interior/surface)
+"sn" = (
+/obj/structure/showcase/sign,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "so" = (
 /obj/effect/floor_decal/rust/mono_rusted3,
 /obj/structure/closet/lasertag/blue,
@@ -4407,9 +4449,9 @@
 "uQ" = (
 /obj/structure/catwalk,
 /obj/structure/sign/signnew/danger{
-	pixel_y = 32;
+	desc = "What is here was dangerous and replusive to us.";
 	name = "THIS IS NOT A PLACE OF HONOR";
-	desc = "What is here was dangerous and replusive to us."
+	pixel_y = 32
 	},
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/facility/exterior)
@@ -4430,9 +4472,9 @@
 /area/rift/exterior/mineshaft)
 "uU" = (
 /obj/machinery/power/apc/alarms_hidden{
-	dir = 1;
+	cell_type = null;
 	chargelevel = 0;
-	cell_type = null
+	dir = 1
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/facility/interior/surface)
@@ -4746,9 +4788,9 @@
 /area/rift/surfacebase/outside/west)
 "wo" = (
 /obj/structure/sign/signnew/explosives{
-	pixel_y = -32;
+	desc = "Warning: Remain Clear of Test Site Until All Clear is Received From Command.";
 	name = "TUNGSTEN WARHEAD TESTING";
-	desc = "Warning: Remain Clear of Test Site Until All Clear is Received From Command."
+	pixel_y = -32
 	},
 /obj/effect/overlay/snow/floor/grav_edges{
 	dir = 8
@@ -5683,12 +5725,13 @@
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
 "Bo" = (
-/obj/effect/floor_decal/rust/mono_rusted3,
-/obj/machinery/door/blast/shutters{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/rift/exterior/nuketown/interior)
+/obj/structure/table/rack,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/suit/storage/hooded/wintercoat/science,
+/obj/item/tank/emergency/oxygen/engi,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor,
+/area/rnd/outpost/atmospherics)
 "Bp" = (
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary{
 	scrub_id = "science_outpost"
@@ -5809,6 +5852,10 @@
 /obj/structure/barricade/cutout,
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/exterior/nuketown)
+"Ca" = (
+/obj/structure/ladder,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "Cb" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -6192,9 +6239,9 @@
 /area/rnd/outpost/anomaly_lab/airlock)
 "DU" = (
 /obj/machinery/power/apc/alarms_hidden{
-	dir = 1;
+	cell_type = null;
 	chargelevel = 0;
-	cell_type = null
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/exterior/shuttle)
@@ -7048,6 +7095,12 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
+"Ix" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor,
+/area/rnd/outpost/atmospherics)
 "Iy" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -7791,8 +7844,8 @@
 /obj/structure/table/standard,
 /obj/structure/salvageable/personal,
 /obj/item/paper{
-	name = "screen taped note";
-	info = "This for whoever is replacing me, if anyone comes. We are not alone here, there is someone or something out there with us. My superiors don't believe my they say no one else is here but us. I see them in the snow, watching observing. Keep an eye out for them, don't let them take you by surprise."
+	info = "This for whoever is replacing me, if anyone comes. We are not alone here, there is someone or something out there with us. My superiors don't believe my they say no one else is here but us. I see them in the snow, watching observing. Keep an eye out for them, don't let them take you by surprise.";
+	name = "screen taped note"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/exterior/checkpoint/south)
@@ -8310,6 +8363,11 @@
 /obj/effect/floor_decal/rust/mono_rusted3,
 /turf/simulated/floor/tiled/monotile,
 /area/rift/exterior/nuketown/interior)
+"Or" = (
+/obj/machinery/space_heater,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor,
+/area/rnd/outpost/atmospherics)
 "Os" = (
 /obj/machinery/vending/cola{
 	dir = 8;
@@ -9327,6 +9385,10 @@
 /obj/structure/fence/door,
 /turf/simulated/floor/lythios43c,
 /area/rift/facility/exterior)
+"SX" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/simulated/floor,
+/area/rnd/outpost/atmospherics)
 "SZ" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
@@ -9602,11 +9664,11 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "Ue" = (
-/obj/structure/grille,
-/obj/structure/window/basic/full,
-/obj/structure/window/basic,
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled,
+/obj/machinery/door/airlock/maintenance/rnd{
+	name = "Science Outpost Atmospherics";
+	req_one_access = list(10,47)
+	},
+/turf/simulated/floor,
 /area/rnd/outpost/breakroom)
 "Ug" = (
 /obj/structure/window/reinforced{
@@ -10148,12 +10210,8 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
 "Xl" = (
-/obj/structure/window/basic/full,
-/obj/structure/window/basic,
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled,
-/area/rnd/outpost/breakroom)
+/turf/simulated/floor,
+/area/rnd/outpost/atmospherics)
 "Xn" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -10619,6 +10677,11 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
+"ZH" = (
+/obj/structure/table/rack,
+/obj/item/storage/box/monkeycubes,
+/turf/simulated/floor,
+/area/rnd/outpost/atmospherics)
 "ZI" = (
 /obj/structure/closet/crate/radiation,
 /obj/item/fuel_assembly/tritium,
@@ -13192,7 +13255,7 @@ Is
 Is
 jz
 uT
-dH
+aM
 su
 jz
 su
@@ -23830,7 +23893,7 @@ sS
 sS
 sS
 sS
-Bo
+In
 Oq
 Oq
 Oq
@@ -24024,7 +24087,7 @@ sS
 sS
 sS
 sS
-Bo
+In
 Oq
 Oq
 Oq
@@ -24218,7 +24281,7 @@ sS
 sS
 sS
 sS
-Bo
+In
 Oq
 Oq
 Oq
@@ -40189,9 +40252,9 @@ hw
 hw
 hw
 hw
-sv
-sv
-sv
+dH
+dH
+dH
 sv
 sv
 sv
@@ -40382,11 +40445,11 @@ KP
 TP
 yh
 IN
-Ue
-sv
-sv
-sv
-sv
+CA
+Bo
+Bo
+dH
+dH
 sv
 sv
 sv
@@ -40577,10 +40640,10 @@ Gb
 sX
 rF
 CA
-sv
-sv
-sv
-sv
+Xl
+Xl
+kF
+dH
 sv
 sv
 sv
@@ -40770,11 +40833,11 @@ iu
 gI
 Nz
 TO
+CA
+Ix
 Xl
-sv
-sv
-sv
-sv
+SX
+dH
 sv
 sv
 sv
@@ -40928,7 +40991,7 @@ sv
 sv
 sv
 sv
-sv
+dQ
 sv
 sv
 cR
@@ -40965,10 +41028,10 @@ DH
 rJ
 PL
 Ue
-sv
-sv
-sv
-sv
+Xl
+Xl
+ZH
+dH
 sv
 sv
 sv
@@ -41121,8 +41184,8 @@ sv
 sv
 sv
 sv
-sv
-sv
+dQ
+dQ
 sv
 sv
 cR
@@ -41159,10 +41222,10 @@ CA
 YK
 CA
 CA
-sv
-sv
-sv
-sv
+Xl
+Xl
+pY
+dH
 sv
 sv
 sv
@@ -41315,8 +41378,8 @@ sv
 sv
 sv
 sv
-sv
-sv
+dQ
+dQ
 sv
 sv
 cR
@@ -41353,10 +41416,10 @@ CA
 YL
 tf
 CA
-sv
-sv
-sv
-sv
+dH
+nf
+dH
+dH
 sv
 sv
 sv
@@ -41510,7 +41573,7 @@ sv
 sv
 sv
 sv
-sv
+dQ
 sv
 sv
 cR
@@ -41547,10 +41610,10 @@ CA
 TC
 Yh
 CA
-sv
-sv
-sv
-sv
+cq
+Xl
+rp
+dH
 sv
 sv
 sv
@@ -41704,7 +41767,7 @@ sv
 sv
 sv
 sv
-sv
+dQ
 sv
 sv
 hR
@@ -41741,10 +41804,10 @@ CA
 GH
 ky
 CA
-sv
-sv
-sv
-sv
+cq
+Xl
+Or
+dH
 sv
 sv
 sv
@@ -41898,7 +41961,7 @@ sv
 sv
 sv
 sv
-sv
+dQ
 sv
 sv
 sv
@@ -41935,10 +41998,10 @@ CA
 PR
 PR
 CA
-sv
-sv
-sv
-sv
+dH
+nf
+dH
+dH
 sv
 sv
 sv
@@ -42092,7 +42155,7 @@ sv
 sv
 sv
 sv
-sv
+dQ
 sv
 sv
 sv
@@ -42130,7 +42193,7 @@ sv
 sv
 sv
 sv
-sv
+dQ
 sv
 sv
 sv
@@ -42286,7 +42349,7 @@ sv
 sv
 sv
 sv
-sv
+dQ
 sv
 sv
 sv
@@ -42324,7 +42387,7 @@ sv
 sv
 sv
 sv
-sv
+dQ
 sv
 sv
 sv
@@ -42480,7 +42543,7 @@ sv
 sv
 sv
 sv
-sv
+dQ
 sv
 sv
 sv
@@ -42518,11 +42581,11 @@ sv
 sv
 sv
 sv
+dQ
 sv
+dQ
 sv
-sv
-sv
-sv
+dQ
 sv
 sv
 sv
@@ -42714,9 +42777,9 @@ sv
 sv
 sv
 sv
+dQ
 sv
-sv
-sv
+dQ
 sv
 sv
 sv
@@ -42913,7 +42976,7 @@ sv
 sv
 sv
 sv
-sv
+dQ
 sv
 sv
 sv
@@ -43103,13 +43166,13 @@ sv
 sv
 sv
 sv
+dQ
+sv
+dQ
 sv
 sv
 sv
-sv
-sv
-sv
-sv
+dQ
 sv
 sv
 sv
@@ -43303,7 +43366,7 @@ sv
 sv
 sv
 sv
-sv
+dQ
 sv
 sv
 sv
@@ -43495,7 +43558,7 @@ sv
 sv
 sv
 sv
-sv
+dQ
 sv
 sv
 sv
@@ -43693,10 +43756,10 @@ sv
 sv
 sv
 sv
+dQ
 sv
 sv
-sv
-sv
+dQ
 sv
 sv
 sv
@@ -43885,12 +43948,12 @@ sv
 sv
 sv
 sv
+dQ
 sv
 sv
-sv
-sv
-sv
-sv
+dQ
+sn
+li
 sv
 sv
 sv
@@ -44083,10 +44146,10 @@ sv
 sv
 sv
 sv
+mq
 sv
-sv
-sv
-sv
+rc
+mq
 sv
 sv
 sv
@@ -44277,10 +44340,10 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
+mq
+Yx
+Ca
+mq
 sv
 sv
 sv
@@ -44471,10 +44534,10 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
+mq
+mq
+mq
+mq
 sv
 sv
 sv
@@ -44670,7 +44733,7 @@ sv
 sv
 sv
 sv
-Yd
+sv
 Yd
 Yd
 Yd
