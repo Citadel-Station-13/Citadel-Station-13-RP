@@ -138,35 +138,47 @@
 /mob/proc/attempt_strip_common(obj/item/ours, obj/item/theirs, mob/user, slot_id_or_index)
 	var/removing = !!ours
 
+	var/view_flags = NONE
+
+	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot_id_or_index)
+	if(!isnum(slot_id_or_index))
+		slot_meta = resolve_inventory_slot_meta(slot_id_or_index)
+		view_flags = slot_meta.strip_obfuscation_check(ours, src, user)
+		if(view_flags & (INV_VIEW_OBFUSCATE_HIDE_SLOT))
+			return FALSE	// how are you seeing this
 	#warn check strip obfuscations
 
 	if(removing)
 		if(!can_unequip(ours))
 			to_chat(user, SPAN_WARNING("[ours] is stuck!"))
 			return FALSE
-
-		visible_message(
-			SPAN_DANGER("[user] is trying to remove [src]'s [ours]!"),
-			SPAN_DANGER("[user] is trying to remove your [ours]!")
-		)
+		if(!(view_flags & INV_VIEW_STRIP_IS_SILENT))
+			visible_message(
+				SPAN_DANGER("[user] is trying to remove [src]'s [ours]!"),
+				SPAN_DANGER("[user] is trying to remove your [ours]!")
+			)
 	else
 		if(!user.can_unequip(theirs))
 			to_chat(user, SPAN_WARNING("[theirs] is stuck to your hand!"))
 			return FALSE
 
-		switch(slot_id_or_index)
-			if(SLOT_ID_MASK)
-				visible_message(
-					SPAN_DANGER("[user] is trying to put \a [theirs] in [src]'s mouth!"),
-					SPAN_DANGER("[user] is trying to put \a [theirs] in your mouth!")
-				)
-			else
-				visible_message(
-					SPAN_DANGER("[user] is trying to put \a [theirs] on [src]!"),
-					SPAN_DANGER("[user] is trying to put \a [theirs] on you!")
-				)
+		if(!(view_flags & INV_VIEW_STRIP_IS_SILENT))
+			switch(slot_id_or_index)
+				if(SLOT_ID_MASK)
+					visible_message(
+						SPAN_DANGER("[user] is trying to put \a [theirs] in [src]'s mouth!"),
+						SPAN_DANGER("[user] is trying to put \a [theirs] in your mouth!")
+					)
+				else
+					visible_message(
+						SPAN_DANGER("[user] is trying to put \a [theirs] on [src]!"),
+						SPAN_DANGER("[user] is trying to put \a [theirs] on you!")
+					)
 
 	if(!do_after(user, HUMAN_STRIP_DELAY, src, FALSE))
+		if(view_flags & INV_VIEW_STRIP_FUMBLE_ON_FAILURE)
+			// slot_meta must not be null if view_flags isn't NONE, so.
+			to_chat(src, SPAN_WARNING("You feel something being fumbled with near your [slot_meta.display_name]!"))
 		return FALSE
 
 	if(removing)
@@ -203,6 +215,12 @@
 			var/obj/item/I = locate(href_list["item"])
 			if(!istype(I) || !is_in_inventory(I))
 				return
+			var/slot = I.worn_slot
+			if(slot != SLOT_ID_HANDS)
+				var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
+				var/view_flags = slot_meta.strip_obfuscation_check(I, src, user)
+				if(view_flags & (INV_VIEW_OBFUSCATE_DISALLOW_INTERACT | INV_VIEW_OBFUSCATE_HIDE_ITEM_EXISTENCE | INV_VIEW_OBFUSCATE_HIDE_SLOT))
+					return	// how tf are you gonna interact with it huh
 			var/action = href_list["act"]
 			. = I.strip_menu_act(user, action)
 		if("refresh")

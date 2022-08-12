@@ -98,6 +98,8 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	var/slot_flags_required = NONE
 	/// slot flags forbidden to have if checking
 	var/slot_flags_forbidden = NONE
+	/// default INV_VIEW flags for stripping
+	var/default_strip_inv_view_flags = NONE
 
 /datum/inventory_slot_meta/New()
 	if(!id && (inventory_slot_flags & INV_SLOT_ALLOW_RANDOM_ID))
@@ -125,7 +127,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
  * checks for obfuscation when making the strip menu
  */
 /datum/inventory_slot_meta/proc/strip_obfuscation_check(obj/item/equipped, mob/wearer, mob/user)
-	return NONE
+	return default_strip_inv_view_flags
 
 /datum/inventory_slot_meta/inventory
 	abstract_type = /datum/inventory_slot_meta/inventory
@@ -198,6 +200,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	sort_order = 2000
 	inventory_slot_flags = INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_PROC
+	default_strip_inv_view_flags = INV_VIEW_OBFUSCATE_HIDE_ITEM_NAME | INV_VIEW_STRIP_FUMBLE_ON_FAILURE | INV_VIEW_STRIP_IS_SILENT
 
 /datum/inventory_slot_meta/inventory/pocket/allow_equip(obj/item/I, mob/wearer, mob/user, force)
 	. = ..()
@@ -206,9 +209,6 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	if(I.slot_flags & SLOT_POCKET)
 		return TRUE
 	return I.w_class <= WEIGHT_CLASS_SMALL
-
-/datum/inventory_slot_meta/inventory/pocket/strip_obfuscation_check(obj/item/equipped, mob/wearer, mob/user)
-	return INV_VIEW_OBFUSCATE_HIDE_ITEM_NAME
 
 /datum/inventory_slot_meta/inventory/pocket/left
 	name = "left pocket"

@@ -51,7 +51,7 @@
 /// this slot doesn't exist
 #define INVENTORY_SLOT_DOES_NOT_EXIST			-1
 
-//! return values for procs:
+//! return values for inv view/strip/access/panel procs:
 //? /datum/inventory_slot_meta/proc/check_strip_conceal()
 /// do not show slot
 #define INV_VIEW_OBFUSCATE_HIDE_SLOT			(1<<0)
@@ -61,3 +61,7 @@
 #define INV_VIEW_OBFUSCATE_HIDE_ITEM_NAME		(1<<2)
 /// do not allow viewing if an item is there
 #define INV_VIEW_OBFUSCATE_HIDE_ITEM_EXISTENCE	(1<<3)
+/// don't display messages when stripping
+#define INV_VIEW_STRIP_IS_SILENT				(1<<4)
+/// display fumbling message on failure
+#define INV_VIEW_STRIP_FUMBLE_ON_FAILURE		(1<<5)
