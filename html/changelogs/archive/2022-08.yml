@@ -44,3 +44,9 @@
   - imageadd: Added icons for LectroNyx's donator fluffitem
   TheLordME:
   - bugfix: fixed radiation glow on creatures
+2022-08-12:
+  Captain277:
+  - bugfix: Fixes ash storm timers.
+  TheLordME:
+  - rscadd: Added Supermatter monitor console
+  - bugfix: fixed Engineers having to have/by modular computers for SM monitoring

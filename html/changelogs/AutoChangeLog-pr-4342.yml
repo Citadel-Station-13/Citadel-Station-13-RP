@@ -1,5 +1,0 @@
-author: "TheLordME"
-delete-after: True
-changes: 
-  - rscadd: "Added Supermatter monitor console"
-  - bugfix: "fixed Engineers having to have/by modular computers for SM monitoring"
