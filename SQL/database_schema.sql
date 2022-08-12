@@ -246,15 +246,15 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_mass_atoms` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_mass_levels` (
-	`saved` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	`handler_id` varchar(64) NOT NULL,
-	`level_id` varchar(64) NOT NULL,
-	`revision` INT(11) NOT NULL,
-	`flags` INT(24) NOT NULL,
-	`width` INT(4) NOT NULL,
-	`height` INT(4) NOT NULL,
-	`fragments` INT(4) NOT NULL,
-	PRIMARY KEY(`handler_id`, `level_id`)
+  `saved` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `handler_id` varchar(64) NOT NULL,
+  `level_id` varchar(64) NOT NULL,
+  `revision` INT(11) NOT NULL,
+  `flags` INT(24) NOT NULL,
+  `width` INT(4) NOT NULL,
+  `height` INT(4) NOT NULL,
+  `fragments` INT(4) NOT NULL,
+PRIMARY KEY(`handler_id`, `level_id`)
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_dynamic_atoms` (
