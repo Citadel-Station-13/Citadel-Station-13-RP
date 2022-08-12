@@ -146,7 +146,6 @@
 		view_flags = slot_meta.strip_obfuscation_check(ours, src, user)
 		if(view_flags & (INV_VIEW_OBFUSCATE_HIDE_SLOT))
 			return FALSE	// how are you seeing this
-	#warn check strip obfuscations
 
 	if(removing)
 		if(!can_unequip(ours))
@@ -198,7 +197,6 @@
 	if(!strip_interaction_prechecks(user))
 		return
 	// act
-	#warn check obfuscation for options
 	switch(operation)
 		if("slot")
 			var/slot = href_list["id"]
