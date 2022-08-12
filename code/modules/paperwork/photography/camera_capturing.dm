@@ -84,3 +84,5 @@ GLOBAL_LIST_INIT(camera_default_ignore_planes, list(
  */
 /proc/__capture_picture(list/turfs, turf/center, psize_x, psize_y)
 	RETURN_TYPE(/icon)
+
+#warn finish

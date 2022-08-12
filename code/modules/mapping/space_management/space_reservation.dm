@@ -11,11 +11,22 @@
 	var/turf_type = /turf/space
 	var/borderturf
 
-/*
-/datum/turf_reservation/transit
-	turf_type = /turf/space/transit
-	borderturf = /turf/space/transit/border
-*/
+// todo: rotations
+/**
+ * grab our block() in BYOND standard ordering
+ */
+/datum/turf_reservation/proc/UnorderedTurfs()
+	RETURN_TYPE(/list)
+	return block(locate(bottom_left_coords[1], bottom_left_coords[2], bottom_left_coords[3]),
+	locate(top_right_coords[1], top_right_coords[2], top_right_coords[3]))
+
+/**
+ * gets our center turf
+ * will bias towards bottomleft in cases of even numbers
+ */
+/datum/turf_reservation/proc/ApproximateCenterTurf()
+	RETURN_TYPE(/turf)
+	#warn impl
 
 /datum/turf_reservation/proc/Release()
 	var/v = reserved_turfs.Copy()
@@ -23,14 +34,6 @@
 		reserved_turfs -= i
 		SSmapping.used_turfs -= i
 	SSmapping.reserve_turfs(v)
-
-/*
-/datum/turf_reservation/transit/Release()
-	for(var/turf/space/transit/T in reserved_turfs)
-		for(var/atom/movable/AM in T)
-			T.throw_atom(AM)
-	. = ..()
-*/
 
 /datum/turf_reservation/proc/Reserve(width, height, zlevel)
 	if(width > world.maxx || height > world.maxy || width < 1 || height < 1)

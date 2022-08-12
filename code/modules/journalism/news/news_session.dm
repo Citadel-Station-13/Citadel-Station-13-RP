@@ -1,5 +1,5 @@
 /**
- * news sessions datum encapsulates tgui state
+ * news cursor datum encapsulates access
  *
  * reason: news now needs unironic reference counting to know what can/can't be loaded in memory, as opposed
  * to being in sql.
@@ -8,6 +8,6 @@
  *
  * if we end up doing that anyways, well, L i guess.
  */
-/datum/news_session
+/datum/news_cursor
 
 

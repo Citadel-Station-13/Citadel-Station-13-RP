@@ -1,16 +1,5 @@
 //? WARNING: DO NOT FUCK WITH THIS FILE UNNECESSARILY. These values are serialized DIRECTLY, if you screw with them bad stuff happens.
 
-//!# Persist
-// /datum/news_persist_serializer/var/news_serializer_flags
-/// supports random access aka lazyloading
-#define NEWS_SERIALIZER_RANDOM_ACCESS				(1<<0)
-/// supports incremental updates
-#define NEWS_SERIALIZER_INCREMENTAL					(1<<1)
-/// always load completely at server boot
-#define NEWS_SERIALIZER_DO_NOT_LAZYLOAD				(1<<2)
-/// always save immediately, do not cache
-#define NEWS_SERIALIZER_DO_NOT_BUFFER				(1<<3)
-
 //!# News - General
 
 //!# News - Networks
@@ -21,9 +10,17 @@
 
 // channel flags
 
+/// news channel name max length in characters
+#define NEWS_CHANNEL_NAME_MAX_LENGTH		64
+/// news channel desc max length in characters
+#define NEWS_CHANNEL_DESC_MAX_LENGTH		2048
+
 //!# News - Posts
 
 // post flags
+
+/// news post max length in characters
+#define NEWS_POST_MAX_LENGTH 4096
 
 //!# News - Comments
 
@@ -38,5 +35,5 @@
 #define NEWS_COMMENT_FLAG_HIDDEN					(1<<3)
 
 /// news comment max length in characters
-#define NEWS_COMMENT_MAX_LENGTH 4096
+#define NEWS_COMMENT_MAX_LENGTH 512
 
