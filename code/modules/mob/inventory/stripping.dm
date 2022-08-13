@@ -26,9 +26,6 @@
 	for(var/id in slot_ids)
 		// todo: optimize
 		var/datum/inventory_slot_meta/meta = resolve_inventory_slot_meta(id)
-		if(last_order > 0 && meta.sort_order < 0)
-			. += "<hr>"
-		last_order = meta.sort_order
 		var/remove_only = meta.inventory_slot_flags & INV_SLOT_STRIP_ONLY_REMOVES
 		var/obj/item/I = _item_by_slot(id)
 		if(remove_only && !I)
@@ -37,6 +34,9 @@
 		var/obfuscations = meta.strip_obfuscation_check(I, src, user)
 		if(obfuscations & INV_VIEW_OBFUSCATE_HIDE_SLOT)
 			continue
+		if(last_order > 0 && meta.sort_order < 0)
+			. += "<hr>"
+		last_order = meta.sort_order
 		if(simple)
 			. += "<a href='?src=[REF(src)];strip=slot;id=[id]'>[capitalize(meta.name)]</a><br>"
 		else
