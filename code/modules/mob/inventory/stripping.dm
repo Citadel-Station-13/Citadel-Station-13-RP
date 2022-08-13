@@ -45,7 +45,7 @@
 			if(obfuscations & INV_VIEW_OBFUSCATE_HIDE_ITEM_EXISTENCE)
 				slot_text = "<a href='?src=[REF(src)];strip=slot;id=[id]'>obscured</a><br>"
 			else if(obfuscations & INV_VIEW_OBFUSCATE_HIDE_ITEM_NAME)
-				slot_text = "<a href='?src=[REF(src)];strip=slot;id=[id]'>([I? "something" : "nothing"])</a><br>"
+				slot_text = "<a href='?src=[REF(src)];strip=slot;id=[id]'>[I? "something" : "nothing"]</a><br>"
 			else
 				slot_text = "<a href='?src=[REF(src)];strip=slot;id=[id]'>[(I && I.name) || "nothing"]</a><br>"
 			. += "[capitalize(meta.name)]: "
@@ -181,7 +181,8 @@
 			to_chat(user, SPAN_WARNING("[theirs] is stuck to your hand!"))
 			return FALSE
 
-		if(!inventory_slot_semantic_conflict(theirs, slot_meta, user))
+		// if it isn't a hand index, check semantic conflicts first so they don't waste time.
+		if(!isnum(slot_id_or_index) && !inventory_slot_semantic_conflict(theirs, slot_meta, user))
 			to_chat(user, SPAN_WARNING("[theirs] doesn't go there!"))
 			return FALSE
 
