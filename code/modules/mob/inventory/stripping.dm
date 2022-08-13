@@ -157,15 +157,25 @@
 		if(view_flags & (INV_VIEW_OBFUSCATE_HIDE_SLOT))
 			return FALSE	// how are you seeing this
 
+	var/hide_item = view_flags & (INV_VIEW_OBFUSCATE_HIDE_ITEM_NAME | INV_VIEW_OBFUSCATE_HIDE_ITEM_EXISTENCE)
+
 	if(removing)
 		if(!can_unequip(ours))
 			to_chat(user, SPAN_WARNING("[ours] is stuck!"))
 			return FALSE
 		if(!(view_flags & INV_VIEW_STRIP_IS_SILENT))
-			visible_message(
-				SPAN_DANGER("[user] is trying to remove [ours] from [src]!"),
-				SPAN_DANGER("[user] is trying to remove your [ours.name]!")
-			)
+			if(hide_item)
+				visible_message(
+					SPAN_DANGER("[user] is trying to remove something from [src]!"),
+					SPAN_DANGER("[user] is trying to remove your [ours.name]!")
+				)
+			else
+				visible_message(
+					SPAN_DANGER("[user] is trying to remove [src]'s [ours.name]!"),
+					SPAN_DANGER("[user] is trying to remove your [ours.name]!")
+				)
+		else
+			to_chat(user, SPAN_WARNING("You start trying to sneakily remove [hide_item? "something" : ours.name] from [src]!"))
 	else
 		if(!user.can_unequip(theirs))
 			to_chat(user, SPAN_WARNING("[theirs] is stuck to your hand!"))
@@ -179,14 +189,16 @@
 			switch(slot_id_or_index)
 				if(SLOT_ID_MASK)
 					visible_message(
-						SPAN_DANGER("[user] is trying to put [theirs] in [src]'s mouth!"),
-						SPAN_DANGER("[user] is trying to put [theirs] in your mouth!")
+						SPAN_DANGER("[user] is trying to put \a [theirs] in [src]'s mouth!"),
+						SPAN_DANGER("[user] is trying to put \a [theirs] in your mouth!")
 					)
 				else
 					visible_message(
-						SPAN_DANGER("[user] is trying to put [theirs] on [src]!"),
-						SPAN_DANGER("[user] is trying to put [theirs] on you!")
+						SPAN_DANGER("[user] is trying to put \a [theirs] on [src]!"),
+						SPAN_DANGER("[user] is trying to put \a [theirs] on you!")
 					)
+		else
+			to_chat(user, SPAN_WARNING("You start trying to sneakily put \a [theirs] on [src]!"))
 
 	if(!do_after(user, HUMAN_STRIP_DELAY, src, FALSE))
 		if(view_flags & INV_VIEW_STRIP_FUMBLE_ON_FAILURE)
