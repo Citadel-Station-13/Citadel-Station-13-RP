@@ -793,6 +793,7 @@
 			if(!semantically_has_slot(id))
 				continue
 			. += id
+		return
 	else
 		. = _get_inventory_slot_ids()
 	// check if we should filter
