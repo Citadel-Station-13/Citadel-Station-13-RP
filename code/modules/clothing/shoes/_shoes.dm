@@ -62,7 +62,7 @@
 		return
 
 	if(usr.put_in_hands(holding))
-		visible_message("<span class='danger'>\The [usr] pulls a knife out of their boot!</span>")
+		usr.visible_message("<span class='danger'>\The [usr] pulls a knife out of their boot!</span>")
 		holding = null
 		overlays -= image(icon, "[icon_state]_knife")
 	else

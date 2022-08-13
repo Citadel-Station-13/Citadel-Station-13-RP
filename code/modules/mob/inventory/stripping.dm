@@ -192,7 +192,7 @@
 			return FALSE
 	return TRUE
 
-/mob/proc/handle_strip_topic(mob/user, list/href_list, operation)
+/mob/proc/handle_strip_topic(mob/user, list/href_list, operation = href_list["strip"])
 	// do checks
 	if(!strip_interaction_prechecks(user))
 		return
