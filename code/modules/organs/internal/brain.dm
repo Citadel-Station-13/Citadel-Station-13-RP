@@ -7,6 +7,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	organ_tag = "brain"
 	parent_organ = BP_HEAD
 	vital = 1
+	decay_rate = ORGAN_DECAY_PER_SECOND_BRAIN
 	icon_state = "brain2"
 	force = 1.0
 	w_class = ITEMSIZE_SMALL
@@ -18,19 +19,6 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	var/clone_source = FALSE
 	var/mob/living/carbon/brain/brainmob = null
 	var/can_assist = TRUE
-
-#warn wrap into organs
-/obj/item/organ/internal/brain/tick_removed(dt)
-	. = ..()
-
-	if(preserved)
-		return
-
-	if(owner && HAS_TRAIT(owner, TRAIT_NO_BRAIN_DECAY))
-		return
-
-	if(!owner || IS_DEAD(owner))
-		take_damage(dt * ORGAN_DECAY_PER_SECOND_BRAIN)
 
 /obj/item/organ/internal/brain/proc/can_assist()
 	return can_assist

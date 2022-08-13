@@ -212,8 +212,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_CPR_COOLDOWN "cpr_cooldown"
 /// someone is already doing CPR on us
 #define TRAIT_CPR_IN_PROGRESS "cpr_in_progress"
-/// Sometihng is currently preventing brain damage while dead
-#define TRAIT_NO_BRAIN_DECAY "no_brain_decay"
 /// Something is currently preventing normal respiratory failure
 #define TRAIT_MECHANICAL_VENTILATION "mechanical_ventilatin"
 /// Something currently preventing normal circulatory failure
@@ -222,6 +220,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_ORGAN_PRESERVED "organ_preserved"
 /// this organ is preserved by a containing organ
 #define TRAIT_ORGAN_RECURSIVELY_PRESERVED "organ_recursively_preserved"
+/// preserve all top level organs in us
+#define TRAIT_PRESERVE_ALL_ORGANS "preserve_organs"
 
 // common trait sources
 #define GENERIC_TRAIT "generic"
