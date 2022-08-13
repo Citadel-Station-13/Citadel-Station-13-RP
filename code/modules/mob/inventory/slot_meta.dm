@@ -179,7 +179,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_key = "suit"
 	id = SLOT_ID_SUIT
 	sort_order = 7000
-	display_name = "clohtes"
+	display_name = "suit"
 	display_preposition = "over"
 	hud_position = ui_oclothing
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
@@ -315,7 +315,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "right ear"
 	render_key = "ear-r"
 	id = SLOT_ID_RIGHT_EAR
-	display_name = "left ear"
+	display_name = "right ear"
 	display_preposition = "on"
 	hud_position = ui_r_ear
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS

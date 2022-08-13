@@ -38,17 +38,17 @@
 		if(obfuscations & INV_VIEW_OBFUSCATE_HIDE_SLOT)
 			continue
 		if(simple)
-			. += "<a href='?src=[REF(src)];strip=slot;id=[id]'>[capitalize(meta.display_name)]</a><br>"
+			. += "<a href='?src=[REF(src)];strip=slot;id=[id]'>[capitalize(meta.name)]</a><br>"
 		else
-			var/item_known = obfuscations & (INV_VIEW_OBFUSCATE_HIDE_ITEM_EXISTENCE | INV_VIEW_OBFUSCATE_HIDE_ITEM_NAME)
+			var/item_known = !(obfuscations & (INV_VIEW_OBFUSCATE_HIDE_ITEM_EXISTENCE | INV_VIEW_OBFUSCATE_HIDE_ITEM_NAME))
 			var/slot_text
 			if(obfuscations & INV_VIEW_OBFUSCATE_HIDE_ITEM_EXISTENCE)
-				slot_text = "<a href='?src=[REF(src)];strip=slot;id=[id]'> (Obscured) </a><br>"
+				slot_text = "<a href='?src=[REF(src)];strip=slot;id=[id]'>(Obscured)</a><br>"
 			else if(obfuscations & INV_VIEW_OBFUSCATE_HIDE_ITEM_NAME)
-				slot_text = "<a href='?src=[REF(src)];strip=slot;id=[id]'> ([I? "Full" : "Empty"]) </a><br>"
+				slot_text = "<a href='?src=[REF(src)];strip=slot;id=[id]'>([I? "Full" : "Empty"])</a><br>"
 			else
-				slot_text = "<a href='?src=[REF(src)];strip=slot;id=[id]'> [(I && I.name) || "(unoccupied)"] </a><br>"
-			. += "[capitalize(meta.display_name)]: "
+				slot_text = "<a href='?src=[REF(src)];strip=slot;id=[id]'>[(I && I.name) || "(unoccupied)"]</a><br>"
+			. += "[capitalize(meta.name)]: "
 			. += slot_text
 			if(I && item_known)
 				var/list/options = I.strip_menu_options(user)
@@ -57,9 +57,20 @@
 					for(var/key in options)
 						var/name = options[key]
 						. += "    <a href='?src=[REF(src)];strip=opti;item=[REF(I)];act=[key]'>[name]</a><br>"
+	. += "<hr>"
 
 	// now for hands
 	if(has_hands())
+		for(var/i in 1 to get_number_of_hands())
+			switch(i)
+				if(1)
+					. += "Left hand: "
+				if(2)
+					. += "Right hand: "
+				else
+					. += "Hand [i]: "
+			var/obj/item/holding = get_held_item_of_index(i)
+			. += "<a href='?src=[REF(src)];strip=hand;index=[i]'>[holding? holding.name : "(Empty)"]</a><br>"
 		. += "<hr>"
 
 	// now for options
@@ -72,7 +83,6 @@
 		. += "<hr>"
 
 	// now for misc
-	. += "<hr>"
 	. += "<a href='?src=[REF(src)];strip=refresh'>Refresh</a><br>"
 
 /mob/proc/attempt_slot_strip(mob/user, slot_id, delay_mod = 1)
@@ -86,7 +96,7 @@
 	var/obj/item/ours = item_by_slot(slot_id)
 	var/obj/item/theirs = user.get_active_held_item()
 	if(!ours && !theirs)
-		to_chat(user, SPAN_WARNING("There's nothing [slot_meta.display_preposition] their [slot_meta.display_name]."))
+		to_chat(user, SPAN_WARNING("They're not wearing anything in that slot!"))
 		return FALSE
 
 	if(!attempt_strip_common(ours, theirs, user, slot_id))
@@ -161,6 +171,10 @@
 			to_chat(user, SPAN_WARNING("[theirs] is stuck to your hand!"))
 			return FALSE
 
+		if(!inventory_slot_semantic_conflict(theirs, slot_meta, user))
+			to_chat(user, SPAN_WARNING("[theirs] doesn't go there!"))
+			return FALSE
+
 		if(!(view_flags & INV_VIEW_STRIP_IS_SILENT))
 			switch(slot_id_or_index)
 				if(SLOT_ID_MASK)
@@ -177,7 +191,7 @@
 	if(!do_after(user, HUMAN_STRIP_DELAY, src, FALSE))
 		if(view_flags & INV_VIEW_STRIP_FUMBLE_ON_FAILURE)
 			// slot_meta must not be null if view_flags isn't NONE, so.
-			to_chat(src, SPAN_WARNING("You feel something being fumbled with near your [slot_meta.display_name]!"))
+			to_chat(src, SPAN_WARNING("You feel something being fumbled with near your [slot_meta.name]!"))
 		return FALSE
 
 	if(removing)
@@ -202,7 +216,9 @@
 			var/slot = href_list["id"]
 			. = attempt_slot_strip(user, slot)
 		if("hand")
-			var/index = href_list["id"]
+			var/index = text2num(href_list["id"])
+			if(!index || (index < 1) || (index > get_number_of_hands()))
+				return
 			. = attempt_hand_strip(user, index)
 		// option mob
 		if("optm")
