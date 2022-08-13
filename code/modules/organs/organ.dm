@@ -358,6 +358,7 @@
 			die()
 
 /obj/item/organ/proc/handle_decay(dt)
+	var/multiplier = CONFIG_GET(number/organ_decay_multiplier)
 	take_damage(dt * decay_rate, TRUE)
 
 /**
@@ -398,7 +399,7 @@
  * can we decay?
  */
 /obj/item/organ/proc/can_decay()
-	return config_legacy.organs_decay && !HAS_TRAIT(src, TRAIT_ORGAN_PRESERVED) && (!loc || !HAS_TRAIT(loc, TRAIT_ORGAN_PRESERVED)) && (!owner || !HAS_TRAIT(owner, TRAIT_PRESERVE_ALL_ORGANS)) && decays
+	return CONFIG_GET(flag/organ_decay) && !HAS_TRAIT(src, TRAIT_ORGAN_PRESERVED) && (!loc || !HAS_TRAIT(loc, TRAIT_ORGAN_PRESERVED)) && (!owner || !HAS_TRAIT(owner, TRAIT_PRESERVE_ALL_ORGANS)) && decays
 
 /**
  * preserved trait wrapper

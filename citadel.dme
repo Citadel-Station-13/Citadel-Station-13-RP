@@ -342,6 +342,7 @@
 #include "code\controllers\configuration\entries\fail2topic.dm"
 #include "code\controllers\configuration\entries\game_options.dm"
 #include "code\controllers\configuration\entries\general.dm"
+#include "code\controllers\configuration\entries\health.dm"
 #include "code\controllers\configuration\entries\lobby.dm"
 #include "code\controllers\configuration\entries\logging.dm"
 #include "code\controllers\configuration\entries\resources.dm"

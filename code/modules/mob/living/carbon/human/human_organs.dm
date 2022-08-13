@@ -29,10 +29,10 @@
 	//processing internal organs is pretty cheap, do that first.
 	if(STAT_IS_DEAD(stat))
 		//todo: internal organs list when zandario fixes it lmao
-		for(var/obj/item/organ/internal/I in organs)
+		for(var/obj/item/organ/internal/I in internal_organs)
 			I.tick_death(dt)
 	else
-		for(var/obj/item/organ/internal/I in organs)
+		for(var/obj/item/organ/internal/I in internal_organs)
 			I.tick_life(dt)
 
 	handle_stance()
