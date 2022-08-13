@@ -227,13 +227,13 @@
 	..()
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
-		O.recursive_prevent_decay(GRIPPER_TRAIT)
+		O.preserve(GRIPPER_TRAIT)
 
 /obj/item/gripper/no_use/organ/Exited(var/atom/movable/AM)
 	..()
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
-		O.recursive_allow_decay(GRIPPER_TRAIT)
+		O.unpreserve(GRIPPER_TRAIT)
 
 /obj/item/gripper/no_use/organ/robotics
 	name = "robotics organ gripper"

@@ -188,7 +188,7 @@
 
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
-		O.recursive_prevent_decay(STASIS_BAG_TRAIT)
+		O.preserve(STASIS_BAG_TRAIT)
 	..()
 
 /obj/structure/closet/body_bag/cryobag/Exited(atom/movable/AM)
@@ -198,7 +198,7 @@
 
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
-		O.recursive_allow_decay(STASIS_BAG_TRAIT)
+		O.unpreserve(STASIS_BAG_TRAIT)
 	..()
 
 /obj/structure/closet/body_bag/cryobag/return_air() //Used to make stasis bags protect from vacuum.

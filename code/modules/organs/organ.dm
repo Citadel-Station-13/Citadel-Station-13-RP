@@ -400,6 +400,22 @@
 /obj/item/organ/proc/can_decay()
 	return config_legacy.organs_decay && !HAS_TRAIT(src, TRAIT_ORGAN_PRESERVED) && (!loc || !HAS_TRAIT(loc, TRAIT_ORGAN_PRESERVED)) && (!owner || !HAS_TRAIT(owner, TRAIT_PRESERVE_ALL_ORGANS)) && decays
 
+/**
+ * preserved trait wrapper
+ */
+/obj/item/organ/proc/preserve(source)
+	ASSERT(source)
+	ADD_TRAIT(src, TRAIT_ORGAN_PRESERVED, source)
+	reconsider_processing()
+
+/**
+ * preserved trait wrapper
+ */
+/obj/item/organ/proc/unpreserve(source)
+	ASSERT(source)
+	REMOVE_TRAIT(src, TRAIT_ORGAN_PRESERVED, source)
+	reconsider_processing()
+
 //Germs
 /obj/item/organ/proc/handle_antibiotics()
 	if(istype(owner))

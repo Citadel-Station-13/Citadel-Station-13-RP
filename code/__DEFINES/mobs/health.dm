@@ -42,7 +42,7 @@
 
 //! Organs - Decaying while dead/removed
 /// how much damage most organs take per second when the user is dead and it is not preserved
-#define ORGNA_DECAY_PER_SECOND_DEFAULT			(30 / (30 MINUTES) * 10)	// 0 to 30 damage in 30 minutes when unmitigated
+#define ORGAN_DECAY_PER_SECOND_DEFAULT			(30 / (30 MINUTES) * 10)	// 0 to 30 damage in 30 minutes when unmitigated
 /// how much damage the brain takes per second when the user is dead and it is not preserved
 #define ORGAN_DECAY_PER_SECOND_BRAIN			(60 / (10 MINUTES) * 10)		// 0 to 60 damage in 10 minutes when unmitigated
 
