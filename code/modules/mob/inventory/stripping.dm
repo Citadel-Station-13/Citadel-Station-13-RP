@@ -43,11 +43,11 @@
 			var/item_known = !(obfuscations & (INV_VIEW_OBFUSCATE_HIDE_ITEM_EXISTENCE | INV_VIEW_OBFUSCATE_HIDE_ITEM_NAME))
 			var/slot_text
 			if(obfuscations & INV_VIEW_OBFUSCATE_HIDE_ITEM_EXISTENCE)
-				slot_text = "<a href='?src=[REF(src)];strip=slot;id=[id]'>(Obscured)</a><br>"
+				slot_text = "<a href='?src=[REF(src)];strip=slot;id=[id]'>obscured</a><br>"
 			else if(obfuscations & INV_VIEW_OBFUSCATE_HIDE_ITEM_NAME)
-				slot_text = "<a href='?src=[REF(src)];strip=slot;id=[id]'>([I? "Full" : "Empty"])</a><br>"
+				slot_text = "<a href='?src=[REF(src)];strip=slot;id=[id]'>([I? "something" : "nothing"])</a><br>"
 			else
-				slot_text = "<a href='?src=[REF(src)];strip=slot;id=[id]'>[(I && I.name) || "(unoccupied)"]</a><br>"
+				slot_text = "<a href='?src=[REF(src)];strip=slot;id=[id]'>[(I && I.name) || "nothing"]</a><br>"
 			. += "[capitalize(meta.name)]: "
 			. += slot_text
 			if(I && item_known)
@@ -70,7 +70,7 @@
 				else
 					. += "Hand [i]: "
 			var/obj/item/holding = get_held_item_of_index(i)
-			. += "<a href='?src=[REF(src)];strip=hand;index=[i]'>[holding? holding.name : "(Empty)"]</a><br>"
+			. += "<a href='?src=[REF(src)];strip=hand;id=[i]'>[holding? holding.name : "nothing"]</a><br>"
 		. += "<hr>"
 
 	// now for options
@@ -163,8 +163,8 @@
 			return FALSE
 		if(!(view_flags & INV_VIEW_STRIP_IS_SILENT))
 			visible_message(
-				SPAN_DANGER("[user] is trying to remove [src]'s [ours]!"),
-				SPAN_DANGER("[user] is trying to remove your [ours]!")
+				SPAN_DANGER("[user] is trying to remove [ours] from [src]!"),
+				SPAN_DANGER("[user] is trying to remove your [ours.name]!")
 			)
 	else
 		if(!user.can_unequip(theirs))
@@ -179,13 +179,13 @@
 			switch(slot_id_or_index)
 				if(SLOT_ID_MASK)
 					visible_message(
-						SPAN_DANGER("[user] is trying to put \a [theirs] in [src]'s mouth!"),
-						SPAN_DANGER("[user] is trying to put \a [theirs] in your mouth!")
+						SPAN_DANGER("[user] is trying to put [theirs] in [src]'s mouth!"),
+						SPAN_DANGER("[user] is trying to put [theirs] in your mouth!")
 					)
 				else
 					visible_message(
-						SPAN_DANGER("[user] is trying to put \a [theirs] on [src]!"),
-						SPAN_DANGER("[user] is trying to put \a [theirs] on you!")
+						SPAN_DANGER("[user] is trying to put [theirs] on [src]!"),
+						SPAN_DANGER("[user] is trying to put [theirs] on you!")
 					)
 
 	if(!do_after(user, HUMAN_STRIP_DELAY, src, FALSE))

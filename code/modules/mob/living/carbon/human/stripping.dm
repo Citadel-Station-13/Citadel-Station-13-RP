@@ -1,7 +1,8 @@
 /mob/living/carbon/human/strip_menu_options(mob/user)
 	. = ..()
 	.["splints"] = "Remove Splints"
-	.["internals"] = "Toggle Internals"
+	if(strip_menu_check_valid_internals_items())
+		.["internals"] = "Toggle Internals"
 
 /mob/living/carbon/human/strip_menu_act(mob/user, action)
 	. = ..()
@@ -85,3 +86,10 @@
 	else
 		visible_message("<span class='danger'>\The [user] disables \the [src]'s internals!</span>")
 		add_attack_logs(user, src, "turned off internals")
+
+/mob/living/carbon/human/proc/strip_menu_check_valid_internals_items()
+	// todo: proper CLOTHING_ALLOW_INTERNALS flag checks lmao
+	if(istype(wear_mask, /obj/item/clothing/mask) || istype(head, /obj/item/clothing/head/helmet/space))
+		if(istype(back, /obj/item/tank) || istype(belt, /obj/item/tank) || istype(s_store, /obj/item/tank))
+			return TRUE
+	return FALSE

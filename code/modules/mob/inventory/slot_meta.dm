@@ -181,6 +181,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	sort_order = 7000
 	display_name = "suit"
 	display_preposition = "over"
+
 	hud_position = ui_oclothing
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_OCLOTHING
