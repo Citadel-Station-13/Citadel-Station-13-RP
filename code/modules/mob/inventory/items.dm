@@ -304,7 +304,7 @@
  */
 /obj/item/proc/strip_menu_options(mob/user)
 	RETURN_TYPE(/list)
-	return
+	return list()
 
 /**
  * strip menu act

@@ -47,10 +47,10 @@
 			else if(obfuscations & INV_VIEW_OBFUSCATE_HIDE_ITEM_NAME)
 				slot_text = "<a href='?src=[REF(src)];strip=slot;id=[id]'> ([I? "Full" : "Empty"]) </a><br>"
 			else
-				slot_text = "<a href='?src=[REF(src)];strip=slot;id=[id]'> [I.name] </a><br>"
+				slot_text = "<a href='?src=[REF(src)];strip=slot;id=[id]'> [(I && I.name) || "(unoccupied)"] </a><br>"
 			. += "[capitalize(meta.display_name)]: "
 			. += slot_text
-			if(item_known)
+			if(I && item_known)
 				var/list/options = I.strip_menu_options(user)
 				if(LAZYLEN(options))
 					// generate hrefs for the options
@@ -245,7 +245,8 @@
  * return a list of action = name. action should be short, for hrefs! same for name!
  */
 /mob/proc/strip_menu_options(mob/user)
-	return
+	RETURN_TYPE(/list)
+	return list()
 
 /**
  * use for strip menu options
