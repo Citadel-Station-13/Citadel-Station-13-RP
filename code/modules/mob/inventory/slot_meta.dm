@@ -16,7 +16,10 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 			stack_trace("no ID on [path], skipping")
 			continue
 		.[M.id || M.type] = M
-	sortTim(., /proc/cmp_inventory_slot_meta_dsc)
+		if(!(M.inventory_slot_flags & INV_SLOT_ALLOW_RANDOM_ID))
+			GLOB.inventory_slot_type_cache[M.type] = M
+	sortTim(., /proc/cmp_inventory_slot_meta_dsc, TRUE)
+	sortTim(GLOB.inventory_slot_type_cache, /proc/cmp_inventory_slot_meta_dsc, TRUE)
 
 /proc/all_inventory_slot_ids()
 	. = list()
