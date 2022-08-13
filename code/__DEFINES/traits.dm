@@ -216,11 +216,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_MECHANICAL_VENTILATION "mechanical_ventilatin"
 /// Something currently preventing normal circulatory failure
 #define TRAIT_MECHANICAL_CIRCULATION "mechanical_circulation"
-/// this organ is preserved
+/// this organ (and all organs in it if applied on an external organ) is preserved
 #define TRAIT_ORGAN_PRESERVED "organ_preserved"
-/// this organ is preserved by a containing organ
-#define TRAIT_ORGAN_RECURSIVELY_PRESERVED "organ_recursively_preserved"
-/// preserve all top level organs in us
+/// preserve all organs in us
 #define TRAIT_PRESERVE_ALL_ORGANS "preserve_organs"
 
 // common trait sources
