@@ -783,7 +783,7 @@
 // todo: both of these below procs needs optimization for when we need the datum anyways, to avoid two lookups
 
 /mob/proc/semantically_has_slot(id)
-	return has_slot(id)
+	return has_slot(id) && _semantic_slot_id_check(id)
 
 /mob/proc/get_inventory_slot_ids(semantic, sorted)
 	// get all
@@ -863,7 +863,8 @@
 	return list()
 
 /**
- * override this if you need to semantically filter slots for get_inventory_slot_ids
+ * override this if you need to make a slot not semantically exist
+ * useful for other species that don't have a slot so you don't have jumpsuit requirements apply
  */
 /mob/proc/_semantic_slot_id_check(id)
 	PROTECTED_PROC(TRUE)
