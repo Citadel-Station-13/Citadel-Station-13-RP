@@ -219,6 +219,8 @@
 /**
  * checks if we can unequip an item
  *
+ * Preconditions: The item is either equipped already, or isn't equipped.
+ *
  * @return TRUE/FALSE
  *
  * @params
@@ -235,7 +237,7 @@
 			L += usr
 		if(user)
 			L += user
-		to_chat(L, SPAN_DANGER("A deleted item [I] was found in a slot. Report this entire line to coders immediately. Debug data: [I] ([REF(I)]) slot [slot] flags [flags] user [user]"))
+		to_chat(L, SPAN_DANGER("A deleted [I] was checked in can_unequip(). Report this entire line to coders immediately. Debug data: [I] ([REF(I)]) slot [slot] flags [flags] user [user]"))
 		to_chat(L, SPAN_DANGER("can_unequip will return TRUE to allow you to drop the item, but expect potential glitches!"))
 		return TRUE
 		
@@ -362,6 +364,8 @@
 
 /**
  * checks if we can equip an item to a slot
+ *
+ * Preconditions: The item will either be equipped on us already, or not yet equipped.
  *
  * @return TRUE/FALSE
  *
