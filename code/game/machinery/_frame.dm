@@ -320,7 +320,7 @@
 				if(do_after(user, 20 * P.toolspeed))
 					if(src && WT.isOn())
 						to_chat(user, SPAN_NOTICE("You deconstruct the frame."))
-						new /obj/item/stack/material/steel(src, frame_type.frame_size)
+						new /obj/item/stack/material/steel(loc, frame_type.frame_size)
 						qdel(src)
 						return
 			else if(!WT.remove_fuel(0, user))
@@ -372,7 +372,7 @@
 						break
 				if(component_check)
 					playsound(src, P.usesound, 50, TRUE)
-					var/obj/machinery/new_machine = new circuit.build_path(src, dir)
+					var/obj/machinery/new_machine = new circuit.build_path(loc, dir)
 					// Handle machines that have allocated default parts in thier constructor.
 					if(new_machine.component_parts)
 						for(var/CP in new_machine.component_parts)
@@ -403,7 +403,7 @@
 			else if(frame_type.frame_class == FRAME_CLASS_ALARM)
 				playsound(src, P.usesound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You fasten the cover."))
-				var/obj/machinery/B = new circuit.build_path(src)
+				var/obj/machinery/B = new circuit.build_path(loc)
 				B.pixel_x = pixel_x
 				B.pixel_y = pixel_y
 				B.setDir(dir)
@@ -417,7 +417,7 @@
 			if(frame_type.frame_class == FRAME_CLASS_COMPUTER)
 				playsound(src, P.usesound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You connect the monitor."))
-				var/obj/machinery/B = new circuit.build_path(src)
+				var/obj/machinery/B = new circuit.build_path(loc)
 				B.pixel_x = pixel_x
 				B.pixel_y = pixel_y
 				B.setDir(dir)
@@ -430,7 +430,7 @@
 			else if(frame_type.frame_class == FRAME_CLASS_DISPLAY)
 				playsound(src, P.usesound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You connect the monitor."))
-				var/obj/machinery/B = new circuit.build_path(src)
+				var/obj/machinery/B = new circuit.build_path(loc)
 				B.pixel_x = pixel_x
 				B.pixel_y = pixel_y
 				B.setDir(dir)
@@ -446,7 +446,7 @@
 				playsound(src, P.usesound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You remove the circuit board."))
 				state = FRAME_PLACED
-				circuit.forceMove(src)
+				circuit.forceMove(loc)
 				circuit = null
 				if(frame_type.frame_class == FRAME_CLASS_MACHINE)
 					req_components = null
@@ -459,7 +459,7 @@
 				else
 					to_chat(user, SPAN_NOTICE("You remove the components."))
 					for(var/obj/item/W in components)
-						W.forceMove(src)
+						W.forceMove(loc)
 					check_components()
 					update_desc()
 					to_chat(user, desc)
