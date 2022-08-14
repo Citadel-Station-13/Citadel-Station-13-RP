@@ -469,13 +469,13 @@
 				playsound(src, P.usesound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You remove the glass panel."))
 				state = FRAME_WIRED
-				new /obj/item/stack/material/glass(src, 2)
+				new /obj/item/stack/material/glass(loc, 2)
 
 			else if(frame_type.frame_class == FRAME_CLASS_DISPLAY)
 				playsound(src, P.usesound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You remove the glass panel."))
 				state = FRAME_WIRED
-				new /obj/item/stack/material/glass(src, 2)
+				new /obj/item/stack/material/glass(loc, 2)
 
 	else if(istype(P, /obj/item/stack/cable_coil))
 		if(state == FRAME_FASTENED)
@@ -523,25 +523,25 @@
 				playsound(src, P.usesound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You remove the cables."))
 				state = FRAME_FASTENED
-				new /obj/item/stack/cable_coil(src, 5)
+				new /obj/item/stack/cable_coil(loc, 5)
 
 			else if(frame_type.frame_class == FRAME_CLASS_DISPLAY)
 				playsound(src, P.usesound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You remove the cables."))
 				state = FRAME_FASTENED
-				new /obj/item/stack/cable_coil(src, 5)
+				new /obj/item/stack/cable_coil(loc, 5)
 
 			else if(frame_type.frame_class == FRAME_CLASS_ALARM)
 				playsound(src, P.usesound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You remove the cables."))
 				state = FRAME_FASTENED
-				new /obj/item/stack/cable_coil(src, 5)
+				new /obj/item/stack/cable_coil(loc, 5)
 
 			else if(frame_type.frame_class == FRAME_CLASS_MACHINE)
 				playsound(src, P.usesound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You remove the cables."))
 				state = FRAME_FASTENED
-				new /obj/item/stack/cable_coil(src, 5)
+				new /obj/item/stack/cable_coil(loc, 5)
 
 	else if(istype(P, /obj/item/stack/material) && P.get_material_name() == "glass")
 		if(state == FRAME_WIRED)
