@@ -228,6 +228,17 @@
  * - user - stripper - can be null
  */
 /mob/proc/can_unequip(obj/item/I, slot, flags, mob/user)
+	if(I && QDELETED(I))
+		// intentional usr
+		var/list/L = list(src)
+		if(usr)
+			L += usr
+		if(user)
+			L += user
+		to_chat(L, SPAN_DANGER("A deleted item [I] was found in a slot. Report this entire line to coders immediately. Debug data: [I] ([REF(I)]) slot [slot] flags [flags] user [user]"))
+		to_chat(L, SPAN_DANGER("can_unequip will return TRUE to allow you to drop the item, but expect potential glitches!"))
+		return TRUE
+		
 	if(!(flags & INV_OP_FORCE) && HAS_TRAIT(I, TRAIT_NODROP))
 		if(!(flags & INV_OP_SUPPRESS_WARNING))
 			to_chat(user, SPAN_WARNING("[I] is stuck to your hand!"))
@@ -585,6 +596,7 @@
 		var/atom/oldLoc = I.loc
 
 		I.forceMove(src)
+		// TODO: HANDLE DELETIONS IN PICKUP AND EQUIPPED PROPERLY
 		I.pickup(src, flags, oldLoc)
 		I.equipped(src, slot, flags)
 
@@ -633,6 +645,7 @@
 		I.unequipped(src, old_slot, flags)
 		// sigh
 		handle_item_denesting(I, old_slot, flags, user)
+		// TODO: HANDLE DELETIONS ON EQUIPPED PROPERLY, INCLUDING ON HANDS
 		// ? we don't do this on hands, hand procs do it
 		// _equip_slot(I, slot, update_icons)
 		I.equipped(src, slot, flags)
@@ -651,6 +664,7 @@
 		else
 			_unequip_slot(old_slot, flags)
 		I.unequipped(src, old_slot, flags)
+		// TODO: HANDLE DELETIONS ON EQUIPPED PROPERLY
 		// sigh
 		_equip_slot(I, slot, flags)
 		I.equipped(src, slot, flags)
