@@ -59,9 +59,8 @@
 	cur_coils = 3
 
 /obj/machinery/power/smes/buildable/Destroy()
-	qdel(wires)
-	wires = null
-	for(var/datum/nano_module/rcon/R in world)
+	QDEL_NULL(wires)
+	for(var/datum/nano_module/rcon/R in GLOB.rcon_nano_modules)
 		R.FindDevices()
 	return ..()
 
