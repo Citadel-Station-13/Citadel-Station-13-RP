@@ -56,7 +56,7 @@
 					// generate hrefs for the options
 					for(var/key in options)
 						var/name = options[key]
-						. += "    <a href='?src=[REF(src)];strip=opti;item=[REF(I)];act=[key]'>[name]</a><br>"
+						. += "&nbsp;&nbsp;&nbsp;&nbsp;<a href='?src=[REF(src)];strip=opti;item=[REF(I)];act=[key]'>[name]</a><br>"
 	. += "<hr>"
 
 	// now for hands

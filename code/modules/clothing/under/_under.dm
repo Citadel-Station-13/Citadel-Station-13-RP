@@ -278,7 +278,8 @@
 	if(has_sensor >= 2)
 		to_chat(user, SPAN_WARNING("\the [src]'s suit sensor controls are locked."))
 		return FALSE
-	add_attack_logs(user, wearer, "Adjustsuit sensor level")
+	add_attack_logs(user, wearer, "Adjusted suit sensor level")
+	set_sensors(user)
 
 /obj/item/clothing/under/rank/Initialize(mapload)
 	. = ..()
