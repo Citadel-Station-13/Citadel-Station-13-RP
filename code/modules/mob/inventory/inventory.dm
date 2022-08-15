@@ -70,7 +70,8 @@
  * if an item is not in us, this returns true
  */
 /mob/proc/drop_item_to_ground(obj/item/I, flags, mob/user = src)
-	if(I && QDELETED(I))
+	// destroyed IS allowed to call these procs
+	if(I && QDELETED(I) && !QDESTROYING(I))
 		to_chat(user, SPAN_DANGER("A deleted item [I] was used in drop_item_to_ground(). Report the entire line to coders. Debugging information: [I] ([REF(I)]) flags [flags] user [user]"))
 		to_chat(user, SPAN_DANGER("Drop item to ground will now proceed, ignoring the bugged state. Errors may ensue."))
 	else if(!is_in_inventory(I))
@@ -233,7 +234,8 @@
  * - user - stripper - can be null
  */
 /mob/proc/can_unequip(obj/item/I, slot, flags, mob/user = src)
-	if(I && QDELETED(I))
+	// destroyed IS allowed to call these procs
+	if(I && QDELETED(I) && !QDESTROYING(I))
 		to_chat(user, SPAN_DANGER("A deleted [I] was checked in can_unequip(). Report this entire line to coders immediately. Debug data: [I] ([REF(I)]) slot [slot] flags [flags] user [user]"))
 		to_chat(user, SPAN_DANGER("can_unequip will return TRUE to allow you to drop the item, but expect potential glitches!"))
 		return TRUE
