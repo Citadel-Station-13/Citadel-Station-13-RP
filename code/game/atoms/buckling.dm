@@ -199,5 +199,26 @@ d */atom/movable
 	return TRUE
 
 #warn parse above
+#warn impl below
+#warn signals
+
+/**
+ * try to buckle to something
+ */
+/mob/proc/buckle(atom/movable/AM, flags, mob/user)
+
+/**
+ * try to unbuckle from whatever we're buckled to
+ */
+
+/**
+ * called when we're buckled to something.
+ */
+/mob/proc/buckled_to(atom/movable/AM, flags, mob/user)
+
+/**
+ * called when we're unbuckled from something
+ */
+/mob/proc/unbuckled_from(atom/movable/AM, flags, mob/user)
 
 
