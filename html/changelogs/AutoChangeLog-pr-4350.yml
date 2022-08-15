@@ -1,4 +1,0 @@
-author: "TheLordME"
-delete-after: True
-changes: 
-  - bugfix: "fixed people in mechs not loading the z they are on"

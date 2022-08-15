@@ -1,6 +1,0 @@
-author: "silicons"
-delete-after: True
-changes: 
-  - bugfix: "long running loop in smes decon"
-  - bugfix: "vore smite breaking the game"
-  - code_imp: "removed useless code in structs"

@@ -1,8 +1,0 @@
-author: "silicons"
-delete-after: True
-changes: 
-  - refactor: "most inv slot booleans are now flags instead of vars"
-  - refactor: "stripping is now a loop/enumeration instead of snowflaking"
-  - rscadd: "pocket slots are now able to be interacted with other than empty! plant a grenade on someone you don't like. be warned, however, you won't know what's in their pocket until you take it out, since you only see if it's full or not!"
-  - tweak: "pickpocketing! pocket slot stripping no longer makes messages unless you move."
-  - tweak: "stripping now puts stripped items directly into your hands."

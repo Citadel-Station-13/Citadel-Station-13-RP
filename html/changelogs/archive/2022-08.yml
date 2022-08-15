@@ -50,3 +50,28 @@
   TheLordME:
   - rscadd: Added Supermatter monitor console
   - bugfix: fixed Engineers having to have/by modular computers for SM monitoring
+2022-08-15:
+  Captain277:
+  - rscdel: Removes Vetala race options.
+  TheLordME:
+  - bugfix: fixed people in mechs not loading the z they are on
+  silicons:
+  - bugfix: admins can unban people again
+  - admin: oops
+  - rscadd: CPR now has a use! It will stabilize people who are in crit properly and
+      prevent brain decay while dead. Furthermore, people being CPR'd slowly metabolize
+      reagents, even when dead.
+  - rscdel: Defib sickness removed until rework
+  - refactor: organs have been refactored a bit
+  - balance: organs now decay while dead
+  - refactor: most inv slot booleans are now flags instead of vars
+  - refactor: stripping is now a loop/enumeration instead of snowflaking
+  - rscadd: pocket slots are now able to be interacted with other than empty! plant
+      a grenade on someone you don't like. be warned, however, you won't know what's
+      in their pocket until you take it out, since you only see if it's full or not!
+  - tweak: pickpocketing! pocket slot stripping no longer makes messages unless you
+      move.
+  - tweak: stripping now puts stripped items directly into your hands.
+  - bugfix: long running loop in smes decon
+  - bugfix: vore smite breaking the game
+  - code_imp: removed useless code in structs
