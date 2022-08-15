@@ -1,4 +1,4 @@
-/obj/vehicle/bike
+/obj/vehicle/legacy/bike
 	name = "space-bike"
 	desc = "Space wheelies! Woo!"
 	icon = 'icons/obj/bike.dmi'
@@ -28,7 +28,7 @@
 	var/datum/effect_system/ion_trail_follow/ion
 	var/kickstand = 1
 
-/obj/vehicle/bike/Initialize(mapload)
+/obj/vehicle/legacy/bike/Initialize(mapload)
 	. = ..()
 	if(ispath(cell))
 		cell = new cell(src)
@@ -38,14 +38,14 @@
 	icon_state = "[bike_icon]_off"
 	update_icon()
 
-/obj/vehicle/bike/built
+/obj/vehicle/legacy/bike/built
 	cell = null
 
-/obj/vehicle/bike/random/Initialize(mapload)
+/obj/vehicle/legacy/bike/random/Initialize(mapload)
 	. = ..()
 	paint_color = rgb(rand(1,255),rand(1,255),rand(1,255))
 
-/obj/vehicle/bike/attackby(obj/item/W as obj, mob/user as mob)
+/obj/vehicle/legacy/bike/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/multitool) && open)
 		var/new_paint = input("Please select paint color.", "Paint Color", paint_color) as color|null
 		if(new_paint)
@@ -54,13 +54,13 @@
 			return
 	..()
 
-/obj/vehicle/bike/CtrlClick(var/mob/user)
+/obj/vehicle/legacy/bike/CtrlClick(var/mob/user)
 	if(Adjacent(user) && anchored)
 		toggle()
 	else
 		return ..()
 
-/obj/vehicle/bike/verb/toggle()
+/obj/vehicle/legacy/bike/verb/toggle()
 	set name = "Toggle Engine"
 	set category = "Vehicle"
 	set src in view(0)
@@ -77,13 +77,13 @@
 		turn_off()
 		src.visible_message("\The [src] putters before turning off.", "You hear something putter slowly.")
 
-/obj/vehicle/bike/AltClick(var/mob/user)
+/obj/vehicle/legacy/bike/AltClick(var/mob/user)
 	if(Adjacent(user))
 		kickstand(user)
 	else
 		return ..()
 
-/obj/vehicle/bike/verb/kickstand(var/mob/user as mob)
+/obj/vehicle/legacy/bike/verb/kickstand(var/mob/user as mob)
 	set name = "Toggle Kickstand"
 	set category = "Vehicle"
 	set src in view(0)
@@ -106,33 +106,33 @@
 	kickstand = !kickstand
 	anchored = (kickstand || on)
 
-/obj/vehicle/bike/load(var/atom/movable/C, var/mob/user as mob)
+/obj/vehicle/legacy/bike/load(var/atom/movable/C, var/mob/user as mob)
 	var/mob/living/M = C
 	if(!istype(C)) return 0
 	if(M.buckled || M.restrained() || !Adjacent(M) || !M.Adjacent(src))
 		return 0
 	return ..(M, user)
 
-/obj/vehicle/bike/MouseDroppedOnLegacy(var/atom/movable/C, var/mob/user as mob)
+/obj/vehicle/legacy/bike/MouseDroppedOnLegacy(var/atom/movable/C, var/mob/user as mob)
 	if(!load(C, user))
 		to_chat(user, "<span class='warning'> You were unable to load \the [C] onto \the [src].</span>")
 		return
 
-/obj/vehicle/bike/attack_hand(var/mob/user as mob)
+/obj/vehicle/legacy/bike/attack_hand(var/mob/user as mob)
 	if(user == load)
 		unload(load, user)
 		to_chat(user, "You unbuckle yourself from \the [src].")
 	else if(!load && load(user, user))
 		to_chat(user, "You buckle yourself to \the [src].")
 
-/obj/vehicle/bike/relaymove(mob/user, direction)
+/obj/vehicle/legacy/bike/relaymove(mob/user, direction)
 	if(user != load || !on)
 		return 0
 	if(Move(get_step(src, direction)))
 		return 1
 	return 0
 
-/obj/vehicle/bike/Move(var/turf/destination)
+/obj/vehicle/legacy/bike/Move(var/turf/destination)
 	if(kickstand) return 0
 
 	if(on && (!cell || cell.charge < charge_use))
@@ -154,7 +154,7 @@
 		move_delay = land_speed
 	return ..()
 
-/obj/vehicle/bike/turn_on()
+/obj/vehicle/legacy/bike/turn_on()
 	ion.start()
 	anchored = 1
 
@@ -164,7 +164,7 @@
 		pulledby.stop_pulling()
 	..()
 
-/obj/vehicle/bike/turn_off()
+/obj/vehicle/legacy/bike/turn_off()
 	ion.stop()
 	anchored = kickstand
 
@@ -172,14 +172,14 @@
 
 	..()
 
-/obj/vehicle/bike/bullet_act(var/obj/item/projectile/Proj)
+/obj/vehicle/legacy/bike/bullet_act(var/obj/item/projectile/Proj)
 	if(has_buckled_mobs() && prob(protection_percent))
 		var/mob/living/L = pick(buckled_mobs)
 		L.bullet_act(Proj)
 		return
 	..()
 
-/obj/vehicle/bike/update_icon()
+/obj/vehicle/legacy/bike/update_icon()
 	overlays.Cut()
 
 	if(custom_icon)
@@ -254,7 +254,7 @@
 	..()
 
 
-/obj/vehicle/bike/Destroy()
+/obj/vehicle/legacy/bike/Destroy()
 	qdel(ion)
 
 	..()

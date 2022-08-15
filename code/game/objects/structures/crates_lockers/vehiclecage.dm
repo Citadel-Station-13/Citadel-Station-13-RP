@@ -4,7 +4,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "vehicle_cage"
 	density = 1
-	var/obj/vehicle/my_vehicle
+	var/obj/vehicle/legacy/my_vehicle
 	var/my_vehicle_type
 	var/paint_color = "#666666"
 
@@ -52,7 +52,7 @@
 	framepaint.color = paint_color
 	overlays += framepaint
 
-	for(var/obj/vehicle/V in src.contents)
+	for(var/obj/vehicle/legacy/V in src.contents)
 		var/image/showcase = new(V)
 		showcase.layer = src.layer - 0.1
 		underlays += showcase
@@ -61,8 +61,8 @@
 	if(user && (user.buckled || user.stat || user.restrained() || !Adjacent(user) || !user.Adjacent(C)))
 		return
 
-	var/obj/vehicle/V
-	if(istype(C, /obj/vehicle))
+	var/obj/vehicle/legacy/V
+	if(istype(C, /obj/vehicle/legacy))
 		V = C
 	if(!V)
 		return
@@ -70,7 +70,7 @@
 	if(!my_vehicle)
 		load_vehicle(V, user)
 
-/obj/structure/vehiclecage/proc/load_vehicle(var/obj/vehicle/V, mob/user as mob)
+/obj/structure/vehiclecage/proc/load_vehicle(var/obj/vehicle/legacy/V, mob/user as mob)
 	if(user)
 		user.visible_message("<span class='notice'>[user] loads \the [V] into \the [src].</span>", \
 							 "<span class='notice'>You load \the [V] into \the [src].</span>", \
@@ -97,10 +97,10 @@
 	qdel(src)
 
 /obj/structure/vehiclecage/spacebike
-	my_vehicle_type = /obj/vehicle/bike/random
+	my_vehicle_type = /obj/vehicle/legacy/bike/random
 
 /obj/structure/vehiclecage/quadbike
-	my_vehicle_type = /obj/vehicle/train/engine/quadbike/random
+	my_vehicle_type = /obj/vehicle/legacy/train/engine/quadbike/random
 
 /obj/structure/vehiclecage/quadtrailer
-	my_vehicle_type = /obj/vehicle/train/trolley/trailer/random
+	my_vehicle_type = /obj/vehicle/legacy/train/trolley/trailer/random

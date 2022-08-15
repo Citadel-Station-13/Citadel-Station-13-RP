@@ -34,7 +34,7 @@
 				if(S.occupant != null)
 					return 0
 
-	return istype(O, /obj/mecha) || istype(O, /obj/vehicle)
+	return istype(O, /obj/mecha) || istype(O, /obj/vehicle/legacy)
 
 /obj/machinery/mech_sensor/proc/give_feedback(O as obj)
 	var/block_message = "<span class='warning'>Movement control overridden. Area denial active.</span>"
@@ -46,8 +46,8 @@
 		var/obj/mecha/R = O
 		if(R && R.occupant)
 			to_chat(R.occupant,block_message)
-	else if(istype(O, /obj/vehicle/train/engine))
-		var/obj/vehicle/train/engine/E = O
+	else if(istype(O, /obj/vehicle/legacy/train/engine))
+		var/obj/vehicle/legacy/train/engine/E = O
 		if(E && E.load && E.is_train_head())
 			to_chat(E.load,block_message)
 

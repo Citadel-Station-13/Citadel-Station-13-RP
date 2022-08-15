@@ -1,4 +1,4 @@
-/obj/vehicle/train
+/obj/vehicle/legacy/train
 	name = "train"
 	dir = 4
 
@@ -14,20 +14,20 @@
 	var/active_engines = 0
 	var/train_length = 0
 
-	var/obj/vehicle/train/lead
-	var/obj/vehicle/train/tow
+	var/obj/vehicle/legacy/train/lead
+	var/obj/vehicle/legacy/train/tow
 
 	var/open_top = TRUE
 
 //-------------------------------------------
 // Standard procs
 //-------------------------------------------
-/obj/vehicle/train/Initialize(mapload)
+/obj/vehicle/legacy/train/Initialize(mapload)
 	. = ..()
-	for(var/obj/vehicle/train/T in orange(1, src))
+	for(var/obj/vehicle/legacy/train/T in orange(1, src))
 		latch(T)
 
-/obj/vehicle/train/Move()
+/obj/vehicle/legacy/train/Move()
 	var/old_loc = get_turf(src)
 	if(..())
 		if(tow)
@@ -38,7 +38,7 @@
 			unattach()
 		return 0
 
-/obj/vehicle/train/Bump(atom/Obstacle)
+/obj/vehicle/legacy/train/Bump(atom/Obstacle)
 	if(!istype(Obstacle, /atom/movable))
 		return
 	var/atom/movable/A = Obstacle
@@ -60,14 +60,14 @@
 				add_attack_logs(D,M,"Ran over with [src.name]")
 
 //trains are commonly open topped, so there is a chance the projectile will hit the mob riding the train instead
-/obj/vehicle/train/bullet_act(var/obj/item/projectile/Proj)
+/obj/vehicle/legacy/train/bullet_act(var/obj/item/projectile/Proj)
 	if(has_buckled_mobs() && prob(70))
 		var/mob/living/L = pick(buckled_mobs)
 		L.bullet_act(Proj)
 		return
 	..()
 
-/obj/vehicle/train/update_icon()
+/obj/vehicle/legacy/train/update_icon()
 	if(open)
 		icon_state = initial(icon_state) + "_open"
 	else
@@ -76,7 +76,7 @@
 //-------------------------------------------
 // Vehicle procs
 //-------------------------------------------
-/obj/vehicle/train/explode()
+/obj/vehicle/legacy/train/explode()
 	if (tow)
 		tow.unattach()
 	unattach()
@@ -86,7 +86,7 @@
 //-------------------------------------------
 // Interaction procs
 //-------------------------------------------
-/obj/vehicle/train/relaymove(mob/user, direction)
+/obj/vehicle/legacy/train/relaymove(mob/user, direction)
 	var/turf/T = get_step_to(src, get_step(src, direction))
 	if(!T)
 		to_chat(user, "You can't find a clear area to step onto.")
@@ -104,16 +104,16 @@
 
 	return 1
 
-/obj/vehicle/train/MouseDroppedOnLegacy(var/atom/movable/C, mob/user as mob)
+/obj/vehicle/legacy/train/MouseDroppedOnLegacy(var/atom/movable/C, mob/user as mob)
 	if(user.buckled || user.stat || user.restrained() || !Adjacent(user) || !user.Adjacent(C) || !istype(C) || (user == C && !user.canmove))
 		return
-	if(istype(C,/obj/vehicle/train))
+	if(istype(C,/obj/vehicle/legacy/train))
 		latch(C, user)
 	else
 		if(!load(C, user))
 			to_chat(user, "<font color='red'>You were unable to load [C] on [src].</font>")
 
-/obj/vehicle/train/attack_hand(mob/user as mob)
+/obj/vehicle/legacy/train/attack_hand(mob/user as mob)
 	if(user.stat || user.restrained() || !Adjacent(user))
 		return 0
 
@@ -126,7 +126,7 @@
 	else
 		return 0
 
-/obj/vehicle/train/verb/unlatch_v()
+/obj/vehicle/legacy/train/verb/unlatch_v()
 	set name = "Unlatch"
 	set desc = "Unhitches this train from the one in front of it."
 	set category = "Vehicle"
@@ -147,7 +147,7 @@
 
 //attempts to attach src as a follower of the train T
 //Note: there is a modified version of this in code\modules\vehicles\cargo_train.dm specifically for cargo train engines
-/obj/vehicle/train/proc/attach_to(obj/vehicle/train/T, mob/user)
+/obj/vehicle/legacy/train/proc/attach_to(obj/vehicle/legacy/train/T, mob/user)
 	if (get_dist(src, T) > 1)
 		to_chat(user, "<font color='red'>[src] is too far away from [T] to hitch them together.</font>")
 		return
@@ -161,7 +161,7 @@
 		return
 
 	//check for cycles.
-	var/obj/vehicle/train/next_car = T
+	var/obj/vehicle/legacy/train/next_car = T
 	while (next_car)
 		if (next_car == src)
 			to_chat(user, "<font color='red'>That seems very silly.</font>")
@@ -180,7 +180,7 @@
 
 
 //detaches the train from whatever is towing it
-/obj/vehicle/train/proc/unattach(mob/user)
+/obj/vehicle/legacy/train/proc/unattach(mob/user)
 	if (!lead)
 		to_chat(user, "<font color='red'>[src] is not hitched to anything.</font>")
 		return
@@ -193,7 +193,7 @@
 
 	update_stats()
 
-/obj/vehicle/train/proc/latch(obj/vehicle/train/T, mob/user)
+/obj/vehicle/legacy/train/proc/latch(obj/vehicle/legacy/train/T, mob/user)
 	if(!istype(T) || !Adjacent(T))
 		return 0
 
@@ -205,7 +205,7 @@
 		T.attach_to(src, user)
 
 //returns 1 if this is the lead car of the train
-/obj/vehicle/train/proc/is_train_head()
+/obj/vehicle/legacy/train/proc/is_train_head()
 	if (lead)
 		return 0
 	return 1
@@ -217,9 +217,9 @@
 // These are useful for calculating speed based on the
 // size of the train, to limit super long trains.
 //-------------------------------------------------------
-/obj/vehicle/train/update_stats()
+/obj/vehicle/legacy/train/update_stats()
 	//first, seek to the end of the train
-	var/obj/vehicle/train/T = src
+	var/obj/vehicle/legacy/train/T = src
 	while(T.tow)
 		//check for cyclic train.
 		if (T.tow == src)
@@ -241,5 +241,5 @@
 		T.update_car(train_length, active_engines)
 		T = T.lead
 
-/obj/vehicle/train/proc/update_car(var/train_length, var/active_engines)
+/obj/vehicle/legacy/train/proc/update_car(var/train_length, var/active_engines)
 	return

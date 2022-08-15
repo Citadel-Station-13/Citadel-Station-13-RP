@@ -7945,7 +7945,7 @@
 /turf/space,
 /area/space)
 "Di" = (
-/obj/vehicle/train/engine,
+/obj/vehicle/legacy/train/engine,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
@@ -8844,7 +8844,7 @@
 /turf/simulated/mineral/floor/vacuum,
 /area/space)
 "Gr" = (
-/obj/vehicle/train/trolley,
+/obj/vehicle/legacy/train/trolley,
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
 "Gs" = (

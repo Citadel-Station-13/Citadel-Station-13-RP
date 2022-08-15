@@ -127,14 +127,14 @@
 
 /datum/supply_pack/supply/cargotrain
 	name = "Cargo Train Tug"
-	contains = list(/obj/vehicle/train/engine)
+	contains = list(/obj/vehicle/legacy/train/engine)
 	cost = 35
 	container_type = /obj/structure/largecrate
 	container_name = "Cargo Train Tug Crate"
 
 /datum/supply_pack/supply/cargotrailer
 	name = "Cargo Train Trolley"
-	contains = list(/obj/vehicle/train/trolley)
+	contains = list(/obj/vehicle/legacy/train/trolley)
 	cost = 15
 	container_type = /obj/structure/largecrate
 	container_name = "Cargo Train Trolley Crate"

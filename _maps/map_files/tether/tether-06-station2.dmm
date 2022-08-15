@@ -17394,7 +17394,7 @@
 /area/quartermaster/belterdock)
 "gQg" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/vehicle/train/trolley{
+/obj/vehicle/legacy/train/trolley{
 	dir = 8
 	},
 /obj/structure/extinguisher_cabinet{
@@ -19750,7 +19750,7 @@
 /area/tether/station/visitorhallway/office)
 "kPE" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/vehicle/train/engine{
+/obj/vehicle/legacy/train/engine{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -20087,7 +20087,7 @@
 /area/tether/station/visitorhallway/lounge)
 "lMb" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/vehicle/train/trolley{
+/obj/vehicle/legacy/train/trolley{
 	dir = 8
 	},
 /obj/machinery/alarm{
@@ -23858,7 +23858,7 @@
 /area/space)
 "sdL" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/vehicle/train/trolley{
+/obj/vehicle/legacy/train/trolley{
 	dir = 8
 	},
 /obj/machinery/light{

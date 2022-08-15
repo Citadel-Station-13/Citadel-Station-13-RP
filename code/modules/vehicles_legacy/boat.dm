@@ -1,7 +1,7 @@
-/obj/vehicle/boat
+/obj/vehicle/legacy/boat
 	name = "boat"
 	desc = "It's a wooden boat. Looks like it'll hold two people. Oars not included."
-	icon = 'icons/obj/vehicles_36x32.dmi'
+	icon = 'icons/obj/vehicle/legacys_36x32.dmi'
 	icon_state = "boat"
 	health = 100
 	maxhealth = 100
@@ -13,10 +13,10 @@
 	var/datum/material/material = null
 	var/riding_datum_type = /datum/riding/boat/small
 
-/obj/vehicle/boat/sifwood/Initialize(mapload, material_name)
+/obj/vehicle/legacy/boat/sifwood/Initialize(mapload, material_name)
 	return ..(mapload, MAT_SIFWOOD)
 
-/obj/vehicle/boat/dragon
+/obj/vehicle/legacy/boat/dragon
 	name = "dragon boat"
 	desc = "It's a large wooden boat, carved to have a nordic-looking dragon on the front. Looks like it'll hold five people. Oars not included."
 	icon = 'icons/obj/64x32.dmi'
@@ -27,18 +27,18 @@
 	max_buckled_mobs = 5
 	riding_datum_type = /datum/riding/boat/big
 
-/obj/vehicle/boat/dragon/Initialize(mapload, material_name)
+/obj/vehicle/legacy/boat/dragon/Initialize(mapload, material_name)
 	. = ..(mapload, material_name)
 	var/image/I = image(icon, src, "dragon_boat_underlay", BELOW_MOB_LAYER)
 	underlays += I
 
-/obj/vehicle/boat/dragon/sifwood/Initialize(mapload, material_name)
+/obj/vehicle/legacy/boat/dragon/sifwood/Initialize(mapload, material_name)
 	return ..(mapload, MAT_SIFWOOD)
 
 // Oars, which must be held inhand while in a boat to move it.
 /obj/item/oar
 	name = "oar"
-	icon = 'icons/obj/vehicles.dmi'
+	icon = 'icons/obj/vehicle/legacys.dmi'
 	desc = "Used to provide propulsion to a boat."
 	icon_state = "oar"
 	item_state = "oar"
@@ -58,7 +58,7 @@
 		return
 	add_atom_colour(material.icon_colour, FIXED_COLOUR_PRIORITY)
 
-/obj/vehicle/boat/Initialize(mapload, material_name)
+/obj/vehicle/legacy/boat/Initialize(mapload, material_name)
 	. = ..()
 	if(!material_name)
 		material_name = "wood"
@@ -70,13 +70,13 @@
 	riding_datum = new riding_datum_type(src)
 
 // Boarding.
-/obj/vehicle/boat/MouseDroppedOnLegacy(var/atom/movable/C, mob/user)
+/obj/vehicle/legacy/boat/MouseDroppedOnLegacy(var/atom/movable/C, mob/user)
 	if(ismob(C))
 		user_buckle_mob(C, user)
 	else
 		..(C, user)
 
-/obj/vehicle/boat/load(mob/living/L, mob/living/user)
+/obj/vehicle/legacy/boat/load(mob/living/L, mob/living/user)
 	if(!istype(L)) // Only mobs on boats.
 		return FALSE
 	..(L, user)

@@ -100,7 +100,7 @@
 	if(!istype(H))
 		return .
 
-	if(istype(L.buckled, /obj/vehicle) || L.hovering) // Ignore people hovering or on boats.
+	if(istype(L.buckled, /obj/vehicle/legacy) || L.hovering) // Ignore people hovering or on boats.
 		return TRUE
 
 	if(!.)

@@ -45,7 +45,7 @@
 /turf/simulated/floor/classp,
 /area/class_p/unexplored)
 "bQ" = (
-/obj/vehicle/train/rover/engine/dunebuggy,
+/obj/vehicle/legacy/train/rover/engine/dunebuggy,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
 	icon = 'icons/turf/flooring/tiles_vr.dmi';

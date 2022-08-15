@@ -4352,7 +4352,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
 "py" = (
-/obj/vehicle/train/engine,
+/obj/vehicle/legacy/train/engine,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
@@ -7399,7 +7399,7 @@
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport)
 "Ah" = (
-/obj/vehicle/train/trolley,
+/obj/vehicle/legacy/train/trolley,
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
 "Ai" = (

@@ -494,8 +494,8 @@
 				MAT_SUPERMATTER = 1
 				))
 			var/list/alien_stuff = list(
-				/obj/vehicle/boat,
-				/obj/vehicle/boat/dragon
+				/obj/vehicle/legacy/boat,
+				/obj/vehicle/legacy/boat/dragon
 				)
 			if(prob(30))
 				new /obj/item/oar(src.loc, new_boat_mat)

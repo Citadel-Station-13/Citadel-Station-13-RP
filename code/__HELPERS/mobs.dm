@@ -4,7 +4,7 @@
 /obj/mecha/get_mob()
 	return occupant
 
-/obj/vehicle/train/get_mob()
+/obj/vehicle/legacy/train/get_mob()
 	return buckled_mobs
 
 /mob/get_mob()
