@@ -17,7 +17,7 @@
 	last_dam = damage_this_tick
 
 // Takes care of organ related updates, such as broken and missing limbs
-/mob/living/carbon/human/proc/handle_organs()
+/mob/living/carbon/human/proc/handle_organs(dt)
 
 	var/force_process = recheck_bad_external_organs()
 
@@ -27,8 +27,13 @@
 			bad_external_organs += Ex
 
 	//processing internal organs is pretty cheap, do that first.
-	for(var/obj/item/organ/I in internal_organs)
-		I.process(2)
+	if(STAT_IS_DEAD(stat))
+		//todo: internal organs list when zandario fixes it lmao
+		for(var/obj/item/organ/internal/I in internal_organs)
+			I.tick_death(dt)
+	else
+		for(var/obj/item/organ/internal/I in internal_organs)
+			I.tick_life(dt)
 
 	handle_stance()
 	handle_grasp()
@@ -44,7 +49,10 @@
 			bad_external_organs -= E
 			continue
 		else
-			E.process(2)
+			if(STAT_IS_DEAD(stat))
+				E.tick_death(dt)
+			else
+				E.tick_life(dt)
 			number_wounds += E.number_wounds
 
 			if (!lying && !buckled && world.time - l_move_time < 15)
@@ -121,7 +129,7 @@
 			var/obj/item/organ/external/E = get_organ(limb_tag)
 			if(!E)
 				visible_message("<span class='danger'>Lacking a functioning left hand, \the [src] drops \the [l_hand].</span>")
-				drop_left_held_item()
+				drop_left_held_item(INV_OP_FORCE)
 				break
 
 	if(r_hand)
@@ -129,7 +137,7 @@
 			var/obj/item/organ/external/E = get_organ(limb_tag)
 			if(!E)
 				visible_message("<span class='danger'>Lacking a functioning right hand, \the [src] drops \the [r_hand].</span>")
-				drop_right_held_item()
+				drop_right_held_item(INV_OP_FORCE)
 				break
 
 	// Check again...

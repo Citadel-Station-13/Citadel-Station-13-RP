@@ -395,7 +395,7 @@
 			B.skin = "syndicate"
 		else if(istype(src, /obj/item/storage/firstaid/surgery))
 			B.skin = "surgerykit"
-		user.put_in_hands(B)
+		user.put_in_hands_or_drop(B)
 		to_chat(user, SPAN_NOTICE("You add the tiles into the empty toolbox. They protrude from the top."))
 		B.toolbox = type
 		qdel(src)

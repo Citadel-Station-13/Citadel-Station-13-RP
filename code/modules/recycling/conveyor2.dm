@@ -145,7 +145,7 @@
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	if(user.a_intent == INTENT_HELP)
-		user.transfer_item_to_loc(I, src)
+		user.transfer_item_to_loc(I, loc)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 

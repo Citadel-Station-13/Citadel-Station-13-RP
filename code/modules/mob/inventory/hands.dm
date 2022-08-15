@@ -158,6 +158,12 @@
 	return 0
 
 /**
+ * do we have hands?
+ */
+/mob/proc/has_hands()
+	return FALSE
+
+/**
  * returns if we are holding something
  */
 /mob/proc/is_holding(obj/item/I)

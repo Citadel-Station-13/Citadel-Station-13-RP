@@ -54,17 +54,19 @@
 	blinded = 0
 	fire_alert = 0 //Reset this here, because both breathe() and handle_environment() have a chance to set it.
 
+	// update the current life tick, can be used to e.g. only do something every 4 ticks
+	life_tick++
+
 	if((. = ..()))
 		return
 
 	//TODO: seperate this out
-	// update the current life tick, can be used to e.g. only do something every 4 ticks
-	life_tick++
 	//Update our name based on whether our face is obscured/disfigured
 	name = get_visible_name()
 	// This is not an ideal place for this but it will do for now.
 	if(wearing_rig && !wearing_rig.is_activated())
 		wearing_rig = null
+
 	voice = GetVoice()
 
 /mob/living/carbon/human/PhysicalLife(seconds, times_fired)
@@ -81,13 +83,13 @@
 	if(getStasis() > 2)
 		Sleeping(20)
 
+	handle_changeling()
+
+	if(!stasis)
+		handle_organs(seconds)
+
 	//No need to update all of these procs if the guy is dead.
 	if(stat != DEAD && !stasis)
-		//Updates the number of stored chemicals for powers
-		handle_changeling()
-
-		//Organs and blood
-		handle_organs()
 		stabilize_body_temperature() //Body temperature adjusts itself (self-regulation)
 		weightgain()
 		process_weaver_silk()
@@ -98,9 +100,6 @@
 		handle_nif()
 		if(!client)
 			species.handle_npc(src)
-
-	else if(stat == DEAD && !stasis)
-		handle_defib_timer()
 
 	if(skip_some_updates())
 		return											//We go ahead and process them 5 times for HUD images and other stuff though.
@@ -285,7 +284,13 @@
 			set_light(0)
 	else
 		if(species.species_appearance_flags & RADIATION_GLOWS)
-			set_light(max(1,min(5,radiation/15)), max(1,min(10,radiation/25)), species.get_flesh_colour(src))
+			var/rad_glow_range = max(1,min(5,radiation/15))
+			var/rad_glow_intensity = max(1,min(10,radiation/25))
+			if(glow_toggle)//if body glow is larger or brighter than rad glow, it wins
+				if(glow_range > rad_glow_range || glow_intensity > rad_glow_intensity)
+					set_light(glow_range, glow_intensity, glow_color)
+			else
+				set_light(rad_glow_range, rad_glow_intensity, species.get_flesh_colour(src))
 		// END DOGSHIT SNOWFLAKE
 
 		var/obj/item/organ/internal/diona/nutrients/rad_organ = locate() in internal_organs
@@ -640,6 +645,9 @@
 		var/mob/living/carbon/human/H = src
 		if(H.species.name == SPECIES_PROTEAN)
 			return // dont modify protean heat levels
+		//! I hate this, fuck you. Don't override shit in human life(). @Zandario
+		if(H.species.name == SPECIES_ADHERENT)
+			return // Don't modify Adherent heat levels ffs
 
 		else
 			species.heat_level_1 = 400
@@ -672,6 +680,7 @@
 						add_modifier(/datum/modifier/synthcooling, 15 SECONDS) // enable cooling systems at cost of energy
 						src.nutrition -= 50
 					last_synthcooling_message = world.time + 60 SECONDS
+
 	//Moved pressure calculations here for use in skip-processing check.
 	var/pressure = environment.return_pressure()
 	var/adjusted_pressure = calculate_affecting_pressure(pressure)
@@ -1824,16 +1833,6 @@
 
 	//Process regular life stuff
 	nif.on_life()
-
-/mob/living/carbon/human/proc/handle_defib_timer()
-	if(!should_have_organ(O_BRAIN))
-		return // No brain.
-
-	var/obj/item/organ/internal/brain/brain = internal_organs_by_name[O_BRAIN]
-	if(!brain)
-		return // Still no brain.
-
-	brain.tick_defib_timer()
 
 #undef HUMAN_MAX_OXYLOSS
 #undef HUMAN_CRIT_MAX_OXYLOSS

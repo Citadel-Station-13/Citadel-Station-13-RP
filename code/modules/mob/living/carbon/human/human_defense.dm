@@ -607,13 +607,13 @@ emp_act
 	user.visible_message("<span class='danger'>\The x[user] twists \the [W] around inside [src]'s [chest]!</span>")
 	var/obj/item/organ/internal/selected_organ = pick(chest.internal_organs)
 	if(istype(W,/obj/item/material/knife/stiletto))
-		selected_organ.damage = max(selected_organ.damage, damage * 5)
+		selected_organ.take_damage(damage * 5)
 		G.last_action = world.time
 		flick(G.hud.icon_state, G.hud)
 		add_attack_logs(user,src,"stiletto stabbed")
 	else
 		if(prob(organ_chance))
-			selected_organ.damage = max(selected_organ.damage, damage * 0.5)
+			selected_organ.take_damage(damage * 0.5)
 			G.last_action = world.time
 			flick(G.hud.icon_state, G.hud)
 			add_attack_logs(user,src,"shanked")

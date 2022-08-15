@@ -53,7 +53,7 @@
 	desc = "Gas jets from a Adherent chassis."
 	action_button_name = "Toggle Maneuvering Pack"
 	use_descriptor = "adjust your vector"
-	organ_tag = BP_JETS
+	organ_tag = O_JETS
 	parent_organ = BP_TORSO
 	robotic = ORGAN_CRYSTAL
 	gender = PLURAL

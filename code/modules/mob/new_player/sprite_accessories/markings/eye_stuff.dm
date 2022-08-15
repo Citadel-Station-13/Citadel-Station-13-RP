@@ -1,5 +1,5 @@
 /datum/sprite_accessory/marking/eye_stuff
-    icon = "icons/mob/sprite_accessories/markings/eye_stuff.dmi"
+	icon = 'icons/mob/sprite_accessories/markings/eye_stuff.dmi'
 
 /datum/sprite_accessory/marking/eye_stuff/monoeye
 	name = "Monoeye"
@@ -52,3 +52,9 @@
 	name = "Third Eye"
 	icon_state = "thirdeye"
 	body_parts = list(BP_HEAD)
+
+/datum/sprite_accessory/marking/eye_stuff/closedeye
+	name = "Closed Eyes"
+	icon_state = "closedeyes"
+	body_parts = list(BP_HEAD)
+

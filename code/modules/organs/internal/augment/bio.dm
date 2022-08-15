@@ -46,7 +46,7 @@
 	set desc = "Toggle your flash-proof, thermal-integrated sunglasses."
 	set category = "Augments"
 
-	var/obj/item/organ/internal/augment/aug = internal_organs_by_name[O_AUG_EYES]
+	var/obj/item/organ/internal/augment/aug = organs_by_name[O_AUG_EYES]
 
 	if(glasses)
 		if(aug && aug.integrated_object == glasses)
@@ -64,15 +64,11 @@
 				qdel(G)
 
 	else
-		if(aug && aug.integrated_object)
+		if(aug)
 			to_chat(src, "<span class='alien'>Your [aug.integrated_object] deploy.</span>")
 			force_equip_to_slot(aug.integrated_object, SLOT_ID_GLASSES)
 			if(!glasses || glasses != aug.integrated_object)
 				aug.integrated_object.forceMove(aug)
-		else
-			var/obj/item/clothing/glasses/hud/security/jensenshades/J = new(get_turf(src))
-			force_equip_to_slot(J, SLOT_ID_GLASSES)
-			to_chat(src, "<span class='notice'>Your [aug.integrated_object] deploy.</span>")
 
 /obj/item/organ/internal/augment/bioaugment/sprint_enhance
 	name = "locomotive optimization implant"

@@ -666,7 +666,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/bluegrid{
-	initial_gas_mix = "nitrogen=500;TEMP=80";
+	initial_gas_mix = "n2=500;TEMP=80";
 	name = "Server Base"
 	},
 /area/server)
@@ -2486,7 +2486,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/bluegrid{
-	initial_gas_mix = "nitrogen=500;TEMP=80";
+	initial_gas_mix = "n2=500;TEMP=80";
 	name = "Server Base"
 	},
 /area/server)
@@ -20664,7 +20664,7 @@
 "oCE" = (
 /obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/bluegrid{
-	initial_gas_mix = "nitrogen=500;TEMP=80";
+	initial_gas_mix = "n2=500;TEMP=80";
 	name = "Server Base"
 	},
 /area/server)
@@ -22666,7 +22666,7 @@
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/bluegrid{
-	initial_gas_mix = "nitrogen=500;TEMP=80";
+	initial_gas_mix = "n2=500;TEMP=80";
 	name = "Server Base"
 	},
 /area/server)
@@ -23046,7 +23046,7 @@
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/bluegrid{
-	initial_gas_mix = "nitrogen=500;TEMP=80";
+	initial_gas_mix = "n2=500;TEMP=80";
 	name = "Server Base"
 	},
 /area/server)
@@ -26523,7 +26523,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/bluegrid{
-	initial_gas_mix = "nitrogen=500;TEMP=80";
+	initial_gas_mix = "n2=500;TEMP=80";
 	name = "Server Base"
 	},
 /area/server)
@@ -32091,7 +32091,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/bluegrid{
-	initial_gas_mix = "nitrogen=500;TEMP=80";
+	initial_gas_mix = "n2=500;TEMP=80";
 	name = "Server Base"
 	},
 /area/server)

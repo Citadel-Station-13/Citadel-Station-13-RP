@@ -20,7 +20,7 @@
 		if(!ismob(M))
 			stack_trace("invalid current equipped slot [worn_slot] on an item not on a mob.")
 			return ..()
-		M.temporarily_remove_from_inventory(src, INV_OP_FORCE)
+		M.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_DELETING)
 	return ..()
 
 /**
@@ -70,6 +70,9 @@
 /**
  * called when a mob drops an item
  *
+ * ! WARNING: You CANNOT assume we are post or pre-move on dropped.
+ * ! If unequipped() deletes the item, loc will be null. Sometimes, loc won't change at all!
+ *
  * dropping is defined as moving out of both equipment slots and hand slots
  */
 /obj/item/proc/dropped(mob/user, flags, atom/newLoc)
@@ -79,7 +82,7 @@
 		var/datum/action/A = X
 		A.Remove(user)
 */
-	if(item_flags & DROPDEL)
+	if((item_flags & DROPDEL) && !(flags & INV_OP_DELETING))
 		qdel(src)
 
 	hud_unlayerise()
@@ -87,13 +90,13 @@
 
 	. = SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user, flags, newLoc)
 
-	if(!(flags & INV_OP_SUPPRESS_SOUND) && isturf(newLoc))
+	if(!(flags & INV_OP_SUPPRESS_SOUND) && isturf(newLoc) && !(. & COMPONENT_ITEM_DROPPED_SUPPRESS_SOUND))
 		playsound(src, drop_sound, 30, ignore_walls = FALSE)
 	// user?.update_equipment_speed_mods()
 	if(zoom)
 		zoom() //binoculars, scope, etc
 
-	return ((. & COMPONENT_ITEM_RELOCATED_BY_DROP)? ITEM_RELOCATED_BY_DROPPED : NONE)
+	return ((. & COMPONENT_ITEM_DROPPED_RELOCATE)? ITEM_RELOCATED_BY_DROPPED : NONE)
 
 /**
  * called when a mob picks up an item
@@ -123,7 +126,7 @@
 	if(!worn_slot)
 		return	// acceptable
 	var/mob/M = worn_mob()
-	ASSERT(M)	 // not acceptable
+	ASSERT(M)	// not acceptable
 	switch(worn_slot)
 		if(SLOT_ID_BACK)
 			M.update_inv_back()
@@ -272,6 +275,8 @@
 			return ..()
 		var/mob/M = worn_mob()
 		if(!ismob(M))
+			worn_slot = null
+			worn_hook_suppressed = FALSE
 			stack_trace("item forcemove inv hook called without a mob as loc??")
 		M.temporarily_remove_from_inventory(src, INV_OP_FORCE)
 	return ..()
@@ -292,4 +297,39 @@
 	if(!worn_slot)
 		return FALSE
 	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(worn_slot)
-	return slot_meta.is_considered_worn
+	return slot_meta.inventory_slot_flags & INV_SLOT_CONSIDERED_WORN
+
+/**
+ * get strip menu options by  href key associated to name.
+ */
+/obj/item/proc/strip_menu_options(mob/user)
+	RETURN_TYPE(/list)
+	return list()
+
+/**
+ * strip menu act
+ *
+ * adjacency is pre-checked.
+ * return TRUE to refresh
+ */
+/obj/item/proc/strip_menu_act(mob/user, action)
+	return FALSE
+
+/**
+ * standard do after for interacting from strip menu
+ */
+/obj/item/proc/strip_menu_standard_do_after(mob/user, delay)
+	. = FALSE
+	var/slot = worn_slot
+	if(!slot)
+		CRASH("no worn slot")
+	var/mob/M = worn_mob()
+	if(!M)
+		CRASH("no worn mob")
+	if(!M.strip_interaction_prechecks(user))
+		return
+	if(!do_after(user, delay, M, FALSE))
+		return
+	if(slot != worn_slot || M != worn_mob())
+		return
+	return TRUE

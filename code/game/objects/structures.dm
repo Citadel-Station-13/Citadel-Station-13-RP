@@ -5,18 +5,12 @@
 	var/climbable
 	var/climb_delay = 3.5 SECONDS
 	var/breakable
-	var/parts
 	var/list/climbers = list()
 
 	var/list/connections
 	var/list/other_connections
 	var/list/blend_objects = newlist() // Objects which to blend with
 	var/list/noblend_objects = newlist() //Objects to avoid blending with (such as children of listed blend objects.
-
-/obj/structure/Destroy()
-	if(parts)
-		new parts(loc)
-	. = ..()
 
 /obj/structure/attack_hand(mob/user)
 	if(breakable)

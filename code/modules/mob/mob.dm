@@ -247,8 +247,6 @@
 /mob/proc/restrained()
 	return
 
-/mob/proc/show_inv(mob/user)
-	return
 /**
  * Examine a mob
  *
@@ -631,6 +629,10 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
  * * handles the strip panel equip and unequip as well if "item" sent
  */
 /mob/Topic(href, href_list)
+	if(href_list["strip"])
+		var/op = href_list["strip"]
+		handle_strip_topic(usr, href_list, op)
+		return
 	if(href_list["mach_close"])
 		var/t1 = text("window=[href_list["mach_close"]]")
 		unset_machine()
@@ -666,7 +668,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	if(!Adjacent(usr)) return
 	if(usr.incapacitated(INCAPACITATION_STUNNED | INCAPACITATION_FORCELYING | INCAPACITATION_KNOCKOUT | INCAPACITATION_RESTRAINED)) return //Incapacitated.
 	if(istype(M,/mob/living/silicon/ai)) return
-	show_inv(usr)
+	request_strip_menu(usr)
 	return 0
 
 /mob/proc/can_use_hands()

@@ -20,7 +20,7 @@
 	if(!Adjacent(usr)) return
 	if(istype(M,/mob/living/silicon/ai)) return
 	for(var/mob/living/carbon/human/O in contents)
-		O.show_inv(usr)
+		O.request_strip_menu(usr)
 
 /obj/item/holder/micro/attack_self(var/mob/living/user)
 	for(var/mob/living/carbon/human/M in contents)

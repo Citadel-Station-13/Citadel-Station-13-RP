@@ -133,7 +133,7 @@
 	icon_state = "knuckledusters"
 	matter = list("brass" = 500)
 	attack_verb = list("punched", "beaten", "struck")
-	flags = THICKMATERIAL	// Stops rings from increasing hit strength
+	clothing_flags = THICKMATERIAL
 	siemens_coefficient = 1
 	fingerprint_chance = 100
 	overgloves = 1

@@ -61,7 +61,6 @@
 	return 0
 
 /obj/item/handcuffs/proc/place_handcuffs(var/mob/living/carbon/target, var/mob/user)
-	playsound(src.loc, cuff_sound, 30, 1, -2)
 
 	var/mob/living/carbon/human/H = target
 	if(!istype(H))
@@ -69,6 +68,8 @@
 
 	if(!H.can_equip(src, SLOT_ID_HANDCUFFED, user = user))
 		return FALSE
+
+	playsound(src.loc, cuff_sound, 30, 1, -2)
 
 	if(istype(H.gloves,/obj/item/clothing/gloves/gauntlets/rig) && !elastic) // Can't cuff someone who's in a deployed hardsuit.
 		to_chat(user, "<span class='danger'>\The [src] won't fit around \the [H.gloves]!</span>")

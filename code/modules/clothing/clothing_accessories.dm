@@ -1,3 +1,9 @@
+/obj/item/clothing/_inv_return_attached()
+	if(!accessories)
+		return ..()
+	. = ..()
+	return islist(.)? (. + accessories) : (list(.) + accessories)
+
 /obj/item/clothing/equipped(mob/user, slot, flags)
 	. = ..()
 	// propagate through accessories
@@ -164,3 +170,49 @@
 			if(check != 0)	// Projectiles sometimes use negatives IIRC, 0 is only returned if something is not blocked.
 				. = check
 				break
+
+/obj/item/clothing/strip_menu_options(mob/user)
+	. = ..()
+	if(!length(accessories))
+		return
+	.["accessory"] = "Remove Accessory"
+
+/obj/item/clothing/strip_menu_act(mob/user, action)
+	. = ..()
+	if(.)
+		return
+	switch(action)
+		if("accessory")
+			var/list/choices = unique_list_atoms_by_name(accessories)
+			var/choice = input(user, "What to take off?", "Strip Accessory") as null|anything in choices
+			if(!choice)
+				return
+			var/mob/M = worn_mob()
+			if(!M)
+				return
+			var/obj/item/clothing/accessory/A = choices[choice]
+			if(!(A in accessories))
+				return
+			add_attack_logs(user, M,  "Started to detach [choice] from [src]")
+			M.visible_message(
+				SPAN_WARNING("[user] starts to deatch \the [A] from [M]'s [src]!"),
+				SPAN_WARNING("[user] starts to detach \the [A] from your [src]!")
+			)
+			if(!strip_menu_standard_do_after(user, HUMAN_STRIP_DELAY))
+				return
+			if(!(A in accessories))
+				return
+			add_attack_logs(user, worn_mob(),  "Detached [choice] from [src]")
+			if(istype(A, /obj/item/clothing/accessory/badge) || istype(A, /obj/item/clothing/accessory/medal))
+				M.visible_message(
+					SPAN_WARNING("[user] tears \the [A] off of [M]'s [src]!"),
+					SPAN_WARNING("[user] tears \the [A] off of your [src]!")
+				)
+			else
+				M.visible_message(
+					SPAN_WARNING("[user] detaches \the [A] from [M]'s [src]!"),
+					SPAN_WARNING("[user] detaches \the [A] from your [src]!")
+				)
+			A.on_removed(user)
+			accessories -= A
+			update_worn_icon()
