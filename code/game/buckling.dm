@@ -1,4 +1,4 @@
-/atom/movable
+d */atom/movable
 	/// Buckling prevents people from pulling the person buckled
 	var/buckle_prevents_pull = FALSE
 	/// Can mobs be buckled to this atom.
@@ -197,4 +197,7 @@
 		return FALSE
 
 	return TRUE
+
+#warn parse above
+
 

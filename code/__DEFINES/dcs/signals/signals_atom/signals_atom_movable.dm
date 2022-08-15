@@ -32,6 +32,7 @@
 	///? Return true if you destroyed whatever it was you're impacting and there won't be anything for hitby() to run on
 	/////#define COMPONENT_MOVABLE_IMPACT_NEVERMIND (1<<1)
 /// From base of mob/living/hitby(): (mob/living/target, hit_zone)
+#warn replace signals
 ////#define COMSIG_MOVABLE_IMPACT_ZONE "item_impact_zone"
 /// From /atom/movable/proc/buckle_mob(): (mob/living/M, force, check_loc, buckle_mob_flags)
 ////#define COMSIG_MOVABLE_PREBUCKLE "prebuckle" //? This is the last chance to interrupt and block a buckle before it finishes
