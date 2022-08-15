@@ -2014,7 +2014,7 @@
 /area/rift/surfacebase/outside/outside1)
 "bHn" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/vehicle/legacy/train/trolley,
+/obj/vehicle_old/train/trolley,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/cargo_hallway)
 "bHz" = (
@@ -5005,7 +5005,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/prison)
 "dIP" = (
-/obj/vehicle/legacy/train/trolley/trailer/random{
+/obj/vehicle_old/train/trolley/trailer/random{
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/loading{
@@ -8091,7 +8091,7 @@
 /turf/simulated/floor/wood,
 /area/lawoffice)
 "gkY" = (
-/obj/vehicle/legacy/train/engine/quadbike/random{
+/obj/vehicle_old/train/engine/quadbike/random{
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -14320,7 +14320,7 @@
 /area/rift/surfaceeva/aa/surface_south)
 "ktI" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/vehicle/legacy/train/trolley,
+/obj/vehicle_old/train/trolley,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/cargo_hallway)
@@ -16795,7 +16795,7 @@
 /area/rift/surfacebase/outside/outside1)
 "miQ" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/vehicle/legacy/train/trolley,
+/obj/vehicle_old/train/trolley,
 /obj/machinery/camera/network/cargo{
 	dir = 1
 	},
@@ -30583,7 +30583,7 @@
 /area/maintenance/starboard)
 "vAX" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/vehicle/legacy/train/engine,
+/obj/vehicle_old/train/engine,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/cargo_hallway)
 "vBl" = (
@@ -32808,7 +32808,7 @@
 /area/rnd/xenoarch_storage)
 "xdR" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/vehicle/legacy/train/trolley,
+/obj/vehicle_old/train/trolley,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/warehouse)
 "xex" = (

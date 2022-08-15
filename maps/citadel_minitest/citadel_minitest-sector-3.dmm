@@ -151,7 +151,7 @@
 /turf/simulated/floor/water,
 /area/awaymission/wwmines)
 "aE" = (
-/obj/vehicle/legacy/boat/sifwood,
+/obj/vehicle_old/boat/sifwood,
 /turf/simulated/floor/water,
 /area/awaymission/wwmines)
 "aF" = (

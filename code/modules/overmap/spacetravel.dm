@@ -68,7 +68,7 @@ proc/get_deepspace(x,y)
 /obj/singularity/lost_in_space()
 	return FALSE
 
-/obj/vehicle/legacy/lost_in_space()
+/obj/vehicle_old/lost_in_space()
 	if(load && !load.lost_in_space())
 		return FALSE
 	return ..()

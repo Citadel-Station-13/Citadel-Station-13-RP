@@ -1,3 +1,8 @@
+/**
+ * generic, multiseat-capable vehicles system
+ *
+ * ! Port of old vehicles underway. Maintain typepath if possible.
+ */
 /obj/vehicle
 	name = "generic vehicle"
 	desc = "Yell at coderbus."

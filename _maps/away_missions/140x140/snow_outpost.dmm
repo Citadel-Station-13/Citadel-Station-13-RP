@@ -2590,7 +2590,7 @@
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "iL" = (
-/obj/vehicle/legacy/bike,
+/obj/vehicle_old/bike,
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/outside/nospawn)
 "iM" = (

@@ -5,7 +5,7 @@
 /obj/item/vehicle_assembly
 	name = "vehicle assembly"
 	desc = "The frame of some vehicle."
-	icon = 'icons/obj/vehicle/legacys_64x64.dmi'
+	icon = 'icons/obj/vehicle_olds_64x64.dmi'
 	icon_state = "quad-frame"
 	item_state = "buildpipe"
 
@@ -133,7 +133,7 @@
 				to_chat(user, "<span class='notice'>You begin your finishing touches on \the [src].</span>")
 				if(do_after(user, 20) && build_stage == 7)
 					playsound(loc, W.usesound, 30, 1)
-					var/obj/vehicle/legacy/train/engine/quadbike/built/product = new(get_turf(src))
+					var/obj/vehicle_old/train/engine/quadbike/built/product = new(get_turf(src))
 					to_chat(user, "<span class='notice'>You finish \the [product]</span>")
 					product.cell = cell
 					cell.forceMove(product)
@@ -176,7 +176,7 @@
 			if(W.is_screwdriver())
 				playsound(src, W.usesound, 50, 1)
 				to_chat(user, "<span class='notice'>You close up \the [src].</span>")
-				new /obj/vehicle/legacy/train/trolley/trailer(get_turf(src))
+				new /obj/vehicle_old/train/trolley/trailer(get_turf(src))
 				qdel(src)
 
 /*
@@ -256,7 +256,7 @@
 				to_chat(user, "<span class='notice'>You begin your finishing touches on \the [src].</span>")
 				if(do_after(user, 20) && build_stage == 6)
 					playsound(loc, W.usesound, 30, 1)
-					var/obj/vehicle/legacy/bike/built/product = new(get_turf(src))
+					var/obj/vehicle_old/bike/built/product = new(get_turf(src))
 					to_chat(user, "<span class='notice'>You finish \the [product]</span>")
 					product.cell = cell
 					cell.forceMove(product)

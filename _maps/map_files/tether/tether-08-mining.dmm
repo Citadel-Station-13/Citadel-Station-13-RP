@@ -394,7 +394,7 @@
 /area/outpost/mining_main/break_room)
 "aX" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/vehicle/legacy/train/engine{
+/obj/vehicle_old/train/engine{
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -406,7 +406,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
 "aY" = (
-/obj/vehicle/legacy/train/trolley{
+/obj/vehicle_old/train/trolley{
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -1114,7 +1114,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/secondary_gear_storage)
 "cw" = (
-/obj/vehicle/legacy/train/trolley{
+/obj/vehicle_old/train/trolley{
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,

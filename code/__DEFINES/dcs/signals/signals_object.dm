@@ -314,7 +314,7 @@
 /// Sent to targets during the process_hit proc of projectiles
 ////#define COMSIG_PELLET_CLOUD_INIT "pellet_cloud_init"
 
-//! /obj/vehicle/legacy/sealed/mecha signals
+//! /obj/vehicle/sealed/mecha signals
 /// Sent from mecha action buttons to the mecha they're linked to
 ////#define COMSIG_MECHA_ACTION_TRIGGER "mecha_action_activate"
 

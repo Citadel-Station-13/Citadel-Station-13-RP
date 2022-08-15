@@ -88,7 +88,7 @@
 		I.deflate(1)
 		return
 
-	var/obj/vehicle/legacy/V = locate() in T
+	var/obj/vehicle_old/V = locate() in T
 	if(V)
 		V.ex_act(2)
 		return

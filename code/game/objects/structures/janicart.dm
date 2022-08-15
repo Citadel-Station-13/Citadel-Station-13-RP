@@ -167,7 +167,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 //old style stupido-cart
 /obj/structure/bed/chair/janicart
 	name = "janicart"
-	icon = 'icons/obj/vehicle/legacys.dmi'
+	icon = 'icons/obj/vehicle_olds.dmi'
 	icon_state = "pussywagon"
 	anchored = 1
 	density = 1
@@ -296,6 +296,6 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 /obj/item/key
 	name = "key"
 	desc = "A keyring with a small steel key, and a pink fob reading \"Pussy Wagon\"."
-	icon = 'icons/obj/vehicle/legacys.dmi'
+	icon = 'icons/obj/vehicle_olds.dmi'
 	icon_state = "keys"
 	w_class = ITEMSIZE_TINY

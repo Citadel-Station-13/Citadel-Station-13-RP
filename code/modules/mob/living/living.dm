@@ -117,8 +117,8 @@ default behaviour is:
 		var/mob/living/bot/mulebot/MB = AM
 		MB.runOver(src)
 
-	if(istype(AM, /obj/vehicle/legacy))
-		var/obj/vehicle/legacy/V = AM
+	if(istype(AM, /obj/vehicle_old))
+		var/obj/vehicle_old/V = AM
 		V.RunOver(src)
 	return ..()
 
@@ -760,8 +760,8 @@ default behaviour is:
 
 /mob/living/proc/resist_buckle()
 	if(buckled)
-		if(istype(buckled, /obj/vehicle/legacy))
-			var/obj/vehicle/legacy/vehicle = buckled
+		if(istype(buckled, /obj/vehicle_old))
+			var/obj/vehicle_old/vehicle = buckled
 			vehicle.unload()
 		else
 			buckled.user_unbuckle_mob(src, src)
@@ -900,8 +900,8 @@ default behaviour is:
 		lying = 0
 		canmove = 1
 	else
-		if(istype(buckled, /obj/vehicle/legacy))
-			var/obj/vehicle/legacy/V = buckled
+		if(istype(buckled, /obj/vehicle_old))
+			var/obj/vehicle_old/V = buckled
 			if(is_physically_disabled())
 				lying = 0
 				canmove = 1

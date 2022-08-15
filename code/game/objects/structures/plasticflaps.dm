@@ -50,7 +50,7 @@
 	if (istype(A, /obj/structure/bed) && B.has_buckled_mobs())//if it's a bed/chair and someone is buckled, it will not pass
 		return 0
 
-	if(istype(A, /obj/vehicle/legacy) || istype (A, /obj/mecha)) //no vehicles
+	if(istype(A, /obj/vehicle_old) || istype (A, /obj/mecha)) //no vehicles
 		return 0
 
 	var/mob/living/M = A

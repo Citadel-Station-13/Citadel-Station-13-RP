@@ -6586,7 +6586,7 @@
 /area/engineering/engine_monitoring)
 "wv" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/vehicle/legacy/train/trolley,
+/obj/vehicle_old/train/trolley,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/storage)
 "wx" = (
@@ -12370,7 +12370,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/vehicle/legacy/train/engine{
+/obj/vehicle_old/train/engine{
 	dir = 8;
 	key_type = /obj/item/key
 	},
