@@ -1,0 +1,5 @@
+author: "silicons"
+delete-after: True
+changes: 
+  - bugfix: "admins can unban people again"
+  - admin: "oops"
