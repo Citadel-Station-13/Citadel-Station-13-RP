@@ -58,8 +58,6 @@
 #define SPECIES_TESHARI "Teshari"
 #define SPECIES_UNATHI "Unathi"
 #define SPECIES_VASILISSAN "Vasilissan"
-#define SPECIES_VETALA_PALE "Pale Vetalan"
-#define SPECIES_VETALA_RUDDY "Ruddy Vetalan"
 #define SPECIES_VOX "Vox"
 #define SPECIES_VR "Virtual Reality Avatar"
 #define SPECIES_VR_DIONA "Virtual Reality Diona"

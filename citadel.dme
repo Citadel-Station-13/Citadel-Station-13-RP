@@ -3704,7 +3704,6 @@
 #include "code\modules\species\outsider\replicant.dm"
 #include "code\modules\species\outsider\shadow.dm"
 #include "code\modules\species\outsider\skeleton.dm"
-#include "code\modules\species\outsider\vetala.dm"
 #include "code\modules\species\outsider\vox.dm"
 #include "code\modules\species\shadekin\shadekin.dm"
 #include "code\modules\species\shadekin\shadekin_abilities.dm"
