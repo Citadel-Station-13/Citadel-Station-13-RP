@@ -69,10 +69,10 @@
  * if the item is null, this returns true
  * if an item is not in us, this returns true
  */
-/mob/proc/drop_item_to_ground(obj/item/I, flags, mob/user)
+/mob/proc/drop_item_to_ground(obj/item/I, flags, mob/user = src)
 	if(I && QDELETED(I))
-		to_chat(src, SPAN_DANGER("A deleted item [I] was used in drop_item_to_ground(). Report the entire line to coders. Debugging information: [I] ([REF(I)]) flags [flags] user [user]"))
-		to_chat(src, SPAN_DANGER("Drop item to ground will now proceed, ignoring the bugged state. Errors may ensue."))
+		to_chat(user, SPAN_DANGER("A deleted item [I] was used in drop_item_to_ground(). Report the entire line to coders. Debugging information: [I] ([REF(I)]) flags [flags] user [user]"))
+		to_chat(user, SPAN_DANGER("Drop item to ground will now proceed, ignoring the bugged state. Errors may ensue."))
 	else if(!is_in_inventory(I))
 		return TRUE
 	return _unequip_item(I, flags | INV_OP_DIRECTLY_DROPPING, drop_location(), user)
@@ -232,16 +232,10 @@
  * - flags - inventory operation hint bitfield, see defines
  * - user - stripper - can be null
  */
-/mob/proc/can_unequip(obj/item/I, slot, flags, mob/user)
+/mob/proc/can_unequip(obj/item/I, slot, flags, mob/user = src)
 	if(I && QDELETED(I))
-		// intentional usr
-		var/list/L = list(src)
-		if(usr)
-			L += usr
-		if(user)
-			L += user
-		to_chat(L, SPAN_DANGER("A deleted [I] was checked in can_unequip(). Report this entire line to coders immediately. Debug data: [I] ([REF(I)]) slot [slot] flags [flags] user [user]"))
-		to_chat(L, SPAN_DANGER("can_unequip will return TRUE to allow you to drop the item, but expect potential glitches!"))
+		to_chat(user, SPAN_DANGER("A deleted [I] was checked in can_unequip(). Report this entire line to coders immediately. Debug data: [I] ([REF(I)]) slot [slot] flags [flags] user [user]"))
+		to_chat(user, SPAN_DANGER("can_unequip will return TRUE to allow you to drop the item, but expect potential glitches!"))
 		return TRUE
 		
 	if(!(flags & INV_OP_FORCE) && HAS_TRAIT(I, TRAIT_NODROP))
