@@ -542,11 +542,6 @@
 /atom/proc/melt()
 	return
 
-/atom/proc/hitby(atom/movable/hitting_atom as mob|obj)
-	if(density)
-		hitting_atom.throwing = 0
-	return
-
 /atom/proc/add_hiddenprint(mob/living/M as mob)
 	if(isnull(M)) return
 	if(isnull(M.key)) return
