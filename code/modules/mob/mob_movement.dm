@@ -1,6 +1,7 @@
 //DO NOT USE THIS UNLESS YOU ABSOLUTELY HAVE TO. THIS IS BEING PHASED OUT FOR THE MOVESPEED MODIFICATION SYSTEM.
 //See code/modules/movespeed/movespeed_modifier.dm
 /mob/proc/movement_delay()	//update /living/movement_delay() if you change this
+	SHOULD_CALL_PARENT(TRUE)
 	return cached_multiplicative_slowdown
 
 /mob/proc/applyMoveCooldown(amount)

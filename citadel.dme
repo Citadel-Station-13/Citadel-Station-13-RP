@@ -128,6 +128,7 @@
 #include "code\__DEFINES\combat\clickcode.dm"
 #include "code\__DEFINES\controllers\_subsystems.dm"
 #include "code\__DEFINES\controllers\dbcore.dm"
+#include "code\__DEFINES\controllers\throwing.dm"
 #include "code\__DEFINES\controllers\ticker.dm"
 #include "code\__DEFINES\controllers\timer.dm"
 #include "code\__DEFINES\dcs\flags.dm"

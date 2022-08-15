@@ -1,3 +1,16 @@
+/**
+ * hitby()
+ *
+ * called when we're hit by something
+ * @params
+ * - AM - thrown atom that hit us
+ * - TT - thrownthing datum. This **can be null**.
+ * - flags - throwing flags. See [__DEFINES/controllers/thr nowing.dm] for details on throw_flags
+ *
+ */
+#warn impl - speed? how to implement that?
+
+#warn replace all procs for this
 /atom/proc/hitby(atom/movable/hitting_atom as mob|obj)
 	if(density)
 		hitting_atom.throwing = 0

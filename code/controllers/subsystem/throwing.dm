@@ -3,8 +3,10 @@
 
 SUBSYSTEM_DEF(throwing)
 	name = "Throwing"
+	priority = FIRE_PRIORITY_THROWING
 	wait = 1
-	subsystem_flags = SS_NO_INIT|SS_KEEP_TIMING
+	subsystem_flags = SS_NO_INIT | SS_KEEP_TIMING | SS_TICKER
+	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
 	var/list/currentrun
 	var/list/processing = list()
@@ -45,6 +47,7 @@ SUBSYSTEM_DEF(throwing)
 	var/maxrange
 	var/speed
 	var/mob/thrower
+
 	var/start_time
 	var/dist_travelled = 0
 	var/dist_x

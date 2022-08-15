@@ -50,6 +50,7 @@ SUBSYSTEM_DEF(throwing)
 	var/speed
 	var/mob/thrower
 	var/diagonals_first
+
 	var/dist_travelled = 0
 	var/start_time
 	var/dist_x
