@@ -1,7 +1,8 @@
+// TODO: port to modern vehicles. If you're in this file, STOP FUCKING WITH IT AND PORT IT OVER.
 /obj/vehicle_old/train/engine
 	name = "cargo train tug"
 	desc = "A ridable electric car designed for pulling cargo trolleys."
-	icon = 'icons/obj/vehicle_olds.dmi'
+	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "cargo_engine"
 	on = 0
 	powered = 1
@@ -21,13 +22,13 @@
 /obj/item/key/cargo_train
 	name = "key"
 	desc = "A keyring with a small steel key, and a yellow fob reading \"Choo Choo!\"."
-	icon = 'icons/obj/vehicle_olds.dmi'
+	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "train_keys"
 	w_class = ITEMSIZE_TINY
 
 /obj/vehicle_old/train/trolley
 	name = "cargo train trolley"
-	icon = 'icons/obj/vehicle_olds.dmi'
+	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "cargo_trailer"
 	anchored = 0
 	passenger_allowed = 0
@@ -46,7 +47,7 @@
 	if(cell)
 		cell = new cell(src)
 	key = new key_type(src)
-	var/image/I = new(icon = 'icons/obj/vehicle_olds.dmi', icon_state = "cargo_engine_overlay", layer = src.layer + 0.2) //over mobs
+	var/image/I = new(icon = 'icons/obj/vehicles.dmi', icon_state = "cargo_engine_overlay", layer = src.layer + 0.2) //over mobs
 	overlays += I
 	turn_off()	//so engine verbs are correctly set
 

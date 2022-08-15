@@ -1,7 +1,8 @@
+// TODO: port to modern vehicles. If you're in this file, STOP FUCKING WITH IT AND PORT IT OVER.
 /obj/vehicle_old/skateboard
 	name = "skaetbord"
 	desc = "You shouldn't be seeing this. Contact an Admin."
-	icon = 'icons/obj/vehicle_olds.dmi'
+	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "skateboard"
 
 	mechanical = FALSE // If false, doesn't care for things like cells, engines, EMP, keys, etc.
@@ -517,7 +518,7 @@
 /obj/item/scooter_frame
 	name = "scooter frame"
 	desc = "A metal frame for building a scooter. Looks like you'll need to add some metal to make wheels."
-	icon = 'icons/obj/vehicle_olds.dmi'
+	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "scooter_frame"
 	w_class = WEIGHT_CLASS_NORMAL
 	var/build_step = 0

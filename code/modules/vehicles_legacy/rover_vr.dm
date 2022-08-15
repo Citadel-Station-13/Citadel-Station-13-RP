@@ -1,3 +1,4 @@
+// TODO: port to modern vehicles. If you're in this file, STOP FUCKING WITH IT AND PORT IT OVER.
 //This is the initial set up for the new carts. Feel free to improve and/or rewrite everything here.
 //I don't know what the hell I'm doing right now. Please help. Especially with the update_icons stuff. -Joan Risu
 
@@ -39,14 +40,14 @@
 /obj/item/key/rover
 	name = "The Rover key"
 	desc = "The Rover key used to start it."
-	icon = 'icons/obj/vehicle_olds.dmi'
+	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "securikey"
 	w_class = ITEMSIZE_TINY
 
 /obj/vehicle_old/train/rover/trolley
 	name = "Train trolley"
 	desc = "A trolley designed to transport security equipment to a scene."
-	icon = 'icons/obj/vehicle_olds.dmi'
+	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "secitemcarrierbot"
 	anchored = 0
 	passenger_allowed = 0

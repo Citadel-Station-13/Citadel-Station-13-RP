@@ -1,3 +1,4 @@
+// TODO: port to modern vehicles. If you're in this file, STOP FUCKING WITH IT AND PORT IT OVER.
 //Dummy object for holding items in vehicles.
 //Prevents items from being interacted with.
 /datum/vehicle_dummy_load
@@ -6,7 +7,7 @@
 
 /obj/vehicle_old
 	name = "vehicle"
-	icon = 'icons/obj/vehicle_olds.dmi'
+	icon = 'icons/obj/vehicles.dmi'
 	layer = MOB_LAYER + 0.1 //so it sits above objects including mobs
 	density = 1
 	anchored = 1

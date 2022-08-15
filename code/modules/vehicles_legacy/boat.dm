@@ -1,7 +1,8 @@
+// TODO: port to modern vehicles. If you're in this file, STOP FUCKING WITH IT AND PORT IT OVER.
 /obj/vehicle_old/boat
 	name = "boat"
 	desc = "It's a wooden boat. Looks like it'll hold two people. Oars not included."
-	icon = 'icons/obj/vehicle_olds_36x32.dmi'
+	icon = 'icons/obj/vehicles_36x32.dmi'
 	icon_state = "boat"
 	health = 100
 	maxhealth = 100
@@ -38,7 +39,7 @@
 // Oars, which must be held inhand while in a boat to move it.
 /obj/item/oar
 	name = "oar"
-	icon = 'icons/obj/vehicle_olds.dmi'
+	icon = 'icons/obj/vehicles.dmi'
 	desc = "Used to provide propulsion to a boat."
 	icon_state = "oar"
 	item_state = "oar"

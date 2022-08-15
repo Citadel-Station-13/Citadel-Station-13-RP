@@ -1,3 +1,4 @@
+// TODO: port to modern vehicles. If you're in this file, STOP FUCKING WITH IT AND PORT IT OVER.
 /*
  * Construction!
  */
@@ -5,7 +6,7 @@
 /obj/item/vehicle_assembly
 	name = "vehicle assembly"
 	desc = "The frame of some vehicle."
-	icon = 'icons/obj/vehicle_olds_64x64.dmi'
+	icon = 'icons/obj/vehicles_64x64.dmi'
 	icon_state = "quad-frame"
 	item_state = "buildpipe"
 

@@ -159,7 +159,7 @@
 /obj/item/melee/skateboard/scooter
 	name = "scooter"
 	desc = "A fun way to get around."
-	icon = 'icons/obj/vehicle_olds.dmi'
+	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "scooter_frame"
 	board_item_type = /obj/vehicle_old/skateboard/scooter
 

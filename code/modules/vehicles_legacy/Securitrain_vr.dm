@@ -1,10 +1,11 @@
+// TODO: port to modern vehicles. If you're in this file, STOP FUCKING WITH IT AND PORT IT OVER.
 //This is the initial set up for the new carts. Feel free to improve and/or rewrite everything here.
 //I don't know what the hell I'm doing right now. Please help. Especially with the update_icons stuff. -Joan Risu
 
 /obj/vehicle_old/train/security/engine
 	name = "Security Cart"
 	desc = "A ridable electric car designed for pulling trolleys as well as personal transport."
-	icon = 'icons/obj/vehicle_olds.dmi'
+	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "paddywagon"
 	on = 0
 	powered = 1
@@ -29,14 +30,14 @@
 /obj/item/key/security
 	name = "The Security Cart key"
 	desc = "The Security Cart Key used to start it."
-	icon = 'icons/obj/vehicle_olds.dmi'
+	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "securikey"
 	w_class = ITEMSIZE_TINY
 
 /obj/vehicle_old/train/security/trolley
 	name = "Train trolley"
 	desc = "A trolly designed to transport security personnel or prisoners."
-	icon = 'icons/obj/vehicle_olds.dmi'
+	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "paddy_trailer"
 	anchored = 0
 	passenger_allowed = 1
@@ -50,7 +51,7 @@
 /obj/vehicle_old/train/security/trolley/cargo
 	name = "Train trolley"
 	desc = "A trolley designed to transport security equipment to a scene."
-	icon = 'icons/obj/vehicle_olds.dmi'
+	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "secitemcarrierbot"
 	passenger_allowed = 0 //Stick a man inside the box. :v
 	load_item_visible = 0 //The load is supposed to be invisible.
@@ -62,7 +63,7 @@
 	. = ..()
 	cell = new /obj/item/cell/high(src)
 	key = new(src)
-	var/image/I = new(icon = 'icons/obj/vehicle_olds.dmi', icon_state = "cargo_engine_overlay", layer = src.layer + 0.2) //over mobs
+	var/image/I = new(icon = 'icons/obj/vehicles.dmi', icon_state = "cargo_engine_overlay", layer = src.layer + 0.2) //over mobs
 	overlays += I
 	turn_off()	//so engine verbs are correctly set
 
