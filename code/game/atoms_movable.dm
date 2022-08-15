@@ -29,11 +29,18 @@
 	var/can_be_unanchored = FALSE
 	/// Our default glide_size.
 	var/default_glide_size = 0
-
 	/// our default perspective - if none, a temporary one will be generated when a mob requires it
 	var/datum/perspective/self_perspective
-
+	/// anchored to ground? prevent movement absolutely if so
 	var/anchored = FALSE
+	/// movement force to resist
+	var/move_resist = MOVE_RESIST_DEFAULT
+	/// our movement force
+	var/move_force = MOVE_FORCE_DEFAULT
+	/// our pulling force
+	var/pull_force = PULL_FORCE_DEFAULT
+
+
 	var/move_speed = 10
 	var/l_move_time = 1
 	var/m_flag = 1

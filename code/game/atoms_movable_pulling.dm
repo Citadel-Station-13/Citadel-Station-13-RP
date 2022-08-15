@@ -4,7 +4,7 @@
 /atom/movable/proc/move_pulled_towards(atom/A)
 	if(!pulling)
 		return
-	if(pulling.anchored || !pulling.Adjacent(src))
+	if(pulling.anchored || ((pulling.move_resist * MOVE_FORCE_PULL_RATIO) > pull_force) || !pulling.Adjacent(src))
 		stop_pulling()
 		return
 	if(isliving(pulling))
@@ -22,10 +22,10 @@
 /**
   * Attempts to start pulling an object.
   */
-/atom/movable/proc/start_pulling(atom/movable/AM, suppress_message = FALSE)
+/atom/movable/proc/start_pulling(atom/movable/AM, force = pull_force, suppress_message = FALSE)
 	if(QDELETED(AM))
 		return FALSE
-	if(!AM.can_be_pulled(src))
+	if(!AM.can_be_pulled(src, force))
 		return FALSE
 	if(AM == pulling)
 		return FALSE
@@ -76,22 +76,20 @@
 			stack_trace("[src]'s pull on [pullee] wasn't broken despite [pullee] being in [pullee.loc]. Pull stopped manually.")
 			stop_pulling()
 			return
-		if(pulling.anchored)// || pulling.move_resist > move_force)
+		if(pulling.anchored || pulling.move_resist > move_force)
 			stop_pulling()
 			return
 
 /**
   * Checks if we can be pulled by something/someone.
   */
-/atom/movable/proc/can_be_pulled(atom/movable/user)	//, force)
+/atom/movable/proc/can_be_pulled(atom/movable/user, force = MOVE_FORCE_DEFAULT)
 	if(src == user || !isturf(loc))
 		return FALSE
 	if(anchored || throwing)
 		return FALSE
-/*
 	if(force < (move_resist * MOVE_FORCE_PULL_RATIO))
 		return FALSE
-*/
 	return TRUE
 
 /**

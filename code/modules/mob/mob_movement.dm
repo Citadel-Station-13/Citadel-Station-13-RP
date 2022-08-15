@@ -1,3 +1,8 @@
+//DO NOT USE THIS UNLESS YOU ABSOLUTELY HAVE TO. THIS IS BEING PHASED OUT FOR THE MOVESPEED MODIFICATION SYSTEM.
+//See code/modules/movespeed/movespeed_modifier.dm
+/mob/proc/movement_delay()	//update /living/movement_delay() if you change this
+	return cached_multiplicative_slowdown
+
 /mob/proc/applyMoveCooldown(amount)
 	move_delay = max(move_delay, world.time + amount)
 
@@ -51,11 +56,6 @@
 			mob.control_object.dir = direct
 		else
 			mob.control_object.forceMove(get_step(mob.control_object,direct))
-	return
-
-/// until movespeed modifiers are done - silicons
-/mob/proc/movement_delay()
-	return 0
 
 /mob/CanAllowThrough(atom/movable/mover, turf/target)
 	if(ismob(mover))
