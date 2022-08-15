@@ -59,7 +59,7 @@
 	dir = 8
 	},
 /obj/effect/decal/remains,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /obj/item/ammo_casing/spent,
 /obj/item/clothing/under/suit_jacket/really_black,
 /obj/item/clothing/shoes/dress,

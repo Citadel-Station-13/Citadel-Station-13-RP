@@ -542,7 +542,7 @@
 /obj/item/bone/arm,
 /obj/item/bone/ribs,
 /obj/item/bone/skull/tajaran,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/elevator)
 "RI" = (

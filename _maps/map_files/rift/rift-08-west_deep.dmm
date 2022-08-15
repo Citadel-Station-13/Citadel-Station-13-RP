@@ -137,7 +137,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/exterior/bunker/bottom)
 "hZ" = (
-/obj/effect/decal/cleanable/blood/writing{
+/obj/effect/debris/cleanable/blood/writing{
 	dir = 8;
 	message = "THEY KILLED US";
 	name = "bloody message"
@@ -174,7 +174,7 @@
 /obj/item/bone/arm,
 /obj/item/bone/skull/tajaran,
 /obj/item/bedsheet,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/prison)
 "iQ" = (
@@ -431,7 +431,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/undergound2)
 "uO" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/prison)
 "vm" = (
@@ -773,7 +773,7 @@
 /obj/item/bone/arm,
 /obj/item/bone/ribs,
 /obj/item/bone/skull/tajaran,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/prison)
 "UD" = (

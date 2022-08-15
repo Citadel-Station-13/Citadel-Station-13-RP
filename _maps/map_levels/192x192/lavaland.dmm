@@ -311,7 +311,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "hp" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/mineral/triumph/lavaland,
 /area/lavaland/central/explored)
 "hr" = (
@@ -1175,7 +1175,7 @@
 "ui" = (
 /obj/structure/table/marble,
 /obj/machinery/chemical_dispenser/bar_alc/full,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
 "uk" = (
@@ -1727,7 +1727,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "GT" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/firealarm{
 	pixel_y = 24
 	},
@@ -1760,7 +1760,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "If" = (
@@ -2588,7 +2588,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Xi" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Xz" = (

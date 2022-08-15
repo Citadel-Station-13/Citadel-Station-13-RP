@@ -9,12 +9,12 @@
 	pixel_x = -28;
 	req_one_access = null
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume,
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled,
 /area/class_d/POIs/landing_pad)
 "d" = (
@@ -53,7 +53,7 @@
 /turf/simulated/floor/plating,
 /area/class_d/POIs/landing_pad)
 "h" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/table/standard{
 	name = "plastic table frame"
 	},
@@ -63,7 +63,7 @@
 /turf/simulated/floor/tiled,
 /area/class_d/POIs/landing_pad)
 "i" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/loot_pile/surface/medicine_cabinet/fresh{
 	pixel_y = -35
 	},
@@ -91,7 +91,7 @@
 /turf/template_noop,
 /area/template_noop)
 "o" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/bed/chair/comfy/black,
 /turf/simulated/floor/tiled,
 /area/class_d/POIs/landing_pad)
@@ -111,12 +111,12 @@
 /turf/simulated/floor/tiled/classd,
 /area/class_d/POIs/landing_pad)
 "s" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/door/airlock/multi_tile,
 /turf/simulated/floor/wood,
 /area/class_d/POIs/landing_pad)
 "t" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/table/rack,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
@@ -125,7 +125,7 @@
 /turf/simulated/floor/tiled,
 /area/class_d/POIs/landing_pad)
 "u" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/closet/cabinet,
 /obj/item/clothing/under/color/grey,
 /obj/item/clothing/under/color/grey,
@@ -140,7 +140,7 @@
 /turf/simulated/floor/wood,
 /area/class_d/POIs/landing_pad)
 "v" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/door/airlock/multi_tile,
 /turf/simulated/floor/tiled/kafel_full,
 /area/class_d/POIs/landing_pad)
@@ -161,7 +161,7 @@
 /turf/simulated/floor/tiled/classd,
 /area/class_d/POIs/landing_pad)
 "z" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/wood,
 /area/class_d/POIs/landing_pad)
 "A" = (
@@ -171,21 +171,21 @@
 	pixel_x = -30;
 	pixel_y = 8
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled,
 /area/class_d/POIs/landing_pad)
 "B" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1379;
 	id_tag = "rnd_s_airlock_pump"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled,
 /area/class_d/POIs/landing_pad)
 "C" = (
@@ -194,15 +194,15 @@
 /turf/simulated/floor/plating,
 /area/class_d/POIs/landing_pad)
 "D" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/class_d/POIs/landing_pad)
 "E" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled,
 /area/class_d/POIs/landing_pad)
 "F" = (
@@ -210,7 +210,7 @@
 /turf/simulated/wall,
 /area/class_d/POIs/landing_pad)
 "H" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/closet/crate/freezer/rations,
 /obj/item/storage/box/donkpockets,
 /obj/item/storage/box/donkpockets,
@@ -227,19 +227,19 @@
 /turf/simulated/floor/tiled,
 /area/class_d/POIs/landing_pad)
 "I" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/suit_storage_unit/standard_unit,
 /turf/simulated/floor/tiled,
 /area/class_d/POIs/landing_pad)
 "J" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/class_d/POIs/landing_pad)
 "K" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/curtain/open/shower,
 /obj/machinery/shower{
 	dir = 1
@@ -250,7 +250,7 @@
 /turf/simulated/floor/tiled/kafel_full,
 /area/class_d/POIs/landing_pad)
 "L" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled,
 /area/class_d/POIs/landing_pad)
@@ -274,7 +274,7 @@
 /turf/simulated/floor/outdoors/classd,
 /area/class_d/POIs/landing_pad)
 "Q" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled,
 /area/class_d/POIs/landing_pad)
 "R" = (
@@ -288,7 +288,7 @@
 /turf/simulated/floor/plating,
 /area/class_d/POIs/landing_pad)
 "T" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -315,7 +315,7 @@
 /turf/simulated/floor/plating,
 /area/class_d/POIs/landing_pad)
 "X" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/table/standard{
 	name = "plastic table frame"
 	},
@@ -326,7 +326,7 @@
 /turf/simulated/floor/tiled,
 /area/class_d/POIs/landing_pad)
 "Y" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/table/rack,
 /obj/item/clothing/suit/space,
 /obj/item/clothing/head/helmet/space,
@@ -335,7 +335,7 @@
 /turf/simulated/floor/tiled,
 /area/class_d/POIs/landing_pad)
 "Z" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/bed/double,
 /obj/item/bedsheet/bluedouble,
 /obj/machinery/light/small{

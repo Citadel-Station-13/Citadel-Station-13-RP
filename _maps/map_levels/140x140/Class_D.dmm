@@ -40,7 +40,7 @@
 	amount = 10
 	},
 /obj/item/beartrap,
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/refueling_outbuilding)
 "bH" = (
@@ -48,7 +48,7 @@
 /obj/item/ammo_casing/spent,
 /obj/item/ammo_casing/spent,
 /obj/item/ammo_casing/spent,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bunk_room)
 "bQ" = (
@@ -117,7 +117,7 @@
 /area/class_d/unexplored)
 "ex" = (
 /obj/item/beartrap,
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "eT" = (
@@ -772,7 +772,7 @@
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "uH" = (
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/floor/classd/indoors,
 /area/class_d/wildcat_mining_base/refueling_outbuilding)
 "vo" = (
@@ -784,7 +784,7 @@
 "vy" = (
 /obj/item/beartrap,
 /obj/effect/floor_decal/rust,
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "vD" = (
@@ -983,7 +983,7 @@
 /turf/simulated/floor/outdoors/rocks/classd,
 /area/class_d/explored)
 "zT" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor/outdoors/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "Af" = (
@@ -1025,7 +1025,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /obj/item/ammo_casing/spent,
 /obj/item/ammo_casing/spent,
 /obj/item/ammo_casing/spent,
@@ -1255,7 +1255,7 @@
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bunk_room)
 "HB" = (
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "HD" = (
@@ -1284,7 +1284,7 @@
 /area/class_d/wildcat_mining_base/interior/main_room)
 "Ik" = (
 /obj/effect/floor_decal/corner_kafel/yellow/diagonal,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "Im" = (
@@ -1452,7 +1452,7 @@
 /turf/simulated/floor/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/utility_room)
 "Mf" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /obj/item/ammo_casing/spent,
 /obj/item/ammo_casing/spent,
 /obj/item/ammo_casing/spent,
@@ -1467,7 +1467,7 @@
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "MG" = (
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/floor/outdoors/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "MP" = (
@@ -1513,7 +1513,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/floor_decal/corner_kafel/yellow/diagonal,
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bunk_room)
 "Oy" = (
@@ -1651,7 +1651,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/floor_decal/corner_kafel/yellow/diagonal,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bunk_room)
 "Sk" = (
@@ -1693,7 +1693,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "Tg" = (

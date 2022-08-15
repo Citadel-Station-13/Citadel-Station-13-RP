@@ -9,7 +9,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/MilitaryCamp1)
 "e" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/MilitaryCamp1)
 "f" = (
@@ -69,7 +69,7 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/MilitaryCamp1)
 "w" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/MilitaryCamp1)
 "x" = (
