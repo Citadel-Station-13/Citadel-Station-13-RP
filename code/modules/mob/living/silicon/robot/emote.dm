@@ -1,3 +1,4 @@
+#warn *spin, associated throw + damage nulled on throw
 /mob/living/silicon/robot/emote(var/act,var/m_type=1,var/message = null)
 	var/param = null
 	if (findtext(act, "-", 1, null))

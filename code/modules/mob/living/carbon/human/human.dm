@@ -1,3 +1,4 @@
+#warn piggybacking, firemanning, probably block strip menu from appearing on grab-clickdrops to avoid collisions
 /mob/living/carbon/human
 	name = "unknown"
 	real_name = "unknown"
