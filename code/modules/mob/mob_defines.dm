@@ -6,19 +6,28 @@
 	animate_movement = 2
 	flags = PROXMOVE | HEAR
 
-//! ## Rendering
+//! Core
+	/// mobs use ids as ref tags instead of actual refs.
+	var/static/next_mob_id = 0
+
+//! Rendering
 	/// Fullscreen objects
 	var/list/fullscreens = list()
 
-//! ## Intents
+//! Intents
 	/// How are we intending to move? Walk/run/etc.
 	var/m_intent = MOVE_INTENT_RUN
 
-//! ## Perspectives
+//! Perspectives
 	/// using perspective - if none, it'll be self - when client logs out, if using_perspective has reset_on_logout, this'll be unset.
 	var/datum/perspective/using_perspective
 
-	var/static/next_mob_id = 0
+//! Buckling
+	/// Atom we're buckled to
+	var/atom/movable/buckled
+	/// Atom we're buckl**ing** to. Used to stop stuff like lava from incinerating those who are mid buckle.
+	var/atom/movable/buckling
+
 
 	var/datum/mind/mind
 	/// Whether a mob is alive or dead. TODO: Move this to living - Nodrak
@@ -167,7 +176,6 @@
 	var/a_intent = INTENT_HELP //?Living
 	var/m_int = null //?Living
 	var/lastKnownIP = null
-	var/obj/buckled = null //?Living
 
 	var/seer = 0 //for cult//Carbon, probably Human
 

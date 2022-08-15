@@ -1,17 +1,3 @@
-d */atom/movable
-	/// Buckling prevents people from pulling the person buckled
-	var/buckle_prevents_pull = FALSE
-	/// Can mobs be buckled to this atom.
-	var/can_buckle = FALSE
-	/// Can only buckle restrained people to this, like pipes.
-	var/buckle_require_restraints = FALSE
-	/// How many people can be buckled to us at once.
-	var/max_buckled_mobs = 1
-
-	var/buckle_movable = 0
-	var/buckle_dir = 0
-	var/buckle_lying = -1 //bed-like behavior, forces mob.lying = buckle_lying if != -1
-	var/list/mob/living/buckled_mobs
 
 
 /atom/movable/attack_hand(mob/living/user)
@@ -201,6 +187,15 @@ d */atom/movable
 #warn parse above
 #warn impl below
 #warn signals
+//! movable stuff
+/**
+ *
+ */
+
+//! mob stuff
+/**
+ * try to
+ */
 
 /**
  * try to buckle to something
@@ -210,15 +205,26 @@ d */atom/movable
 /**
  * try to unbuckle from whatever we're buckled to
  */
+/mob/proc/unbuckle(flags, mob/user)
+
 
 /**
  * called when we're buckled to something.
  */
-/mob/proc/buckled_to(atom/movable/AM, flags, mob/user)
+/mob/proc/buckled(atom/movable/AM, flags, mob/user)
 
 /**
  * called when we're unbuckled from something
  */
-/mob/proc/unbuckled_from(atom/movable/AM, flags, mob/user)
+/mob/proc/unbuckled(atom/movable/AM, flags, mob/user)
 
+/**
+ * can we buckle to something?
+ */
+/mob/proc/can_buckle(atom/movable/AM, flags, mob/user)
+	return TRUE
 
+/**
+ * can we unbuckle from something?
+ */
+/mob/proc/can_unbuckle(atom/movable/AM, flags, mob/user)

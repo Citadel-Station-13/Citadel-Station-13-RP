@@ -33,6 +33,20 @@
 	/// our default perspective - if none, a temporary one will be generated when a mob requires it
 	var/datum/perspective/self_perspective
 
+//! Buckling
+	/// Buckling prevents people from pulling the person buckled
+	var/buckle_prevents_pull = FALSE
+	/// Can mobs be buckled to this atom. False = hard, non-overridable prevention.
+	var/buckle_allowed = FALSE
+	/// Can only buckle restrained people to this, like pipes.
+	var/buckle_require_restraints = FALSE
+	/// How many people can be buckled to us at once.
+	var/buckle_max = 1
+	/// if non-null, forces mob.lying to this
+	var/buckle_lying
+	/// buckled mobs
+	var/list/mob/buckled_mobs
+
 	var/anchored = FALSE
 	var/move_speed = 10
 	var/l_move_time = 1
