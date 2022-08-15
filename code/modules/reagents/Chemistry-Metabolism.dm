@@ -11,7 +11,7 @@
 	if(istype(parent_mob))
 		parent = parent_mob
 
-/datum/reagents/metabolism/proc/metabolize()
+/datum/reagents/metabolism/proc/metabolize(speed_mult = 1, force_allow_dead)
 
 	var/metabolism_type = 0 //non-human mobs
 	if(ishuman(parent))
@@ -19,7 +19,7 @@
 		metabolism_type = H.species.reagent_tag
 
 	for(var/datum/reagent/current in reagent_list)
-		current.on_mob_life(parent, metabolism_type, src)
+		current.on_mob_life(parent, metabolism_type, src, speed_mult, force_allow_dead)
 	update_total()
 
 // "Specialized" metabolism datums

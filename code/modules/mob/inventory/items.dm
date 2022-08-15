@@ -297,4 +297,39 @@
 	if(!worn_slot)
 		return FALSE
 	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(worn_slot)
-	return slot_meta.is_considered_worn
+	return slot_meta.inventory_slot_flags & INV_SLOT_CONSIDERED_WORN
+
+/**
+ * get strip menu options by  href key associated to name.
+ */
+/obj/item/proc/strip_menu_options(mob/user)
+	RETURN_TYPE(/list)
+	return list()
+
+/**
+ * strip menu act
+ *
+ * adjacency is pre-checked.
+ * return TRUE to refresh
+ */
+/obj/item/proc/strip_menu_act(mob/user, action)
+	return FALSE
+
+/**
+ * standard do after for interacting from strip menu
+ */
+/obj/item/proc/strip_menu_standard_do_after(mob/user, delay)
+	. = FALSE
+	var/slot = worn_slot
+	if(!slot)
+		CRASH("no worn slot")
+	var/mob/M = worn_mob()
+	if(!M)
+		CRASH("no worn mob")
+	if(!M.strip_interaction_prechecks(user))
+		return
+	if(!do_after(user, delay, M, FALSE))
+		return
+	if(slot != worn_slot || M != worn_mob())
+		return
+	return TRUE

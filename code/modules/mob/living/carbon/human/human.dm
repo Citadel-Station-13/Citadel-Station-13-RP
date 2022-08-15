@@ -225,54 +225,6 @@
 /mob/living/carbon/human/var/co2overloadtime = null
 /mob/living/carbon/human/var/temperature_resistance = T0C+75
 
-/mob/living/carbon/human/show_inv(mob/user as mob)
-	if(user.incapacitated()  || !user.Adjacent(src))
-		return
-
-	var/obj/item/clothing/under/suit = null
-	if (istype(w_uniform, /obj/item/clothing/under))
-		suit = w_uniform
-
-	user.set_machine(src)
-	var/dat = "<B><HR><FONT size=3>[name]</FONT></B><BR><HR>"
-
-	for(var/entry in species.hud.gear)
-		var/list/slot_ref = species.hud.gear[entry]
-		if((slot_ref["slot"] in list(SLOT_ID_LEFT_POCKET, SLOT_ID_RIGHT_POCKET)))
-			continue
-		var/obj/item/thing_in_slot = item_by_slot(slot_ref["slot"])
-		dat += "<BR><B>[slot_ref["name"]]:</b> <a href='?src=\ref[src];strip_slot=[slot_ref["slot"]]'>[istype(thing_in_slot) ? thing_in_slot : "nothing"]</a>"
-
-	dat += "<BR><HR>"
-
-	if(has_hands)
-		dat += "<BR><b>Left hand:</b> <A href='?src=\ref[src];strip_held=[1]'>[istype(l_hand) ? l_hand : "nothing"]</A>"
-		dat += "<BR><b>Right hand:</b> <A href='?src=\ref[src];strip_held=[2]'>[istype(r_hand) ? r_hand : "nothing"]</A>"
-
-	// Do they get an option to set internals?
-	if(istype(wear_mask, /obj/item/clothing/mask) || istype(head, /obj/item/clothing/head/helmet/space))
-		if(istype(back, /obj/item/tank) || istype(belt, /obj/item/tank) || istype(s_store, /obj/item/tank))
-			dat += "<BR><A href='?src=\ref[src];strip_misc=internals'>Toggle internals.</A>"
-
-	// Other incidentals.
-	if(istype(suit) && suit.has_sensor == 1)
-		dat += "<BR><A href='?src=\ref[src];strip_misc=sensors'>Set sensors</A>"
-	if(handcuffed)
-		dat += "<BR><A href='?src=\ref[src];strip_slot=[SLOT_ID_HANDCUFFED]'>Handcuffed</A>"
-	if(legcuffed)
-		dat += "<BR><A href='?src=\ref[src];strip_slot=[SLOT_ID_LEGCUFFED]'>Legcuffed</A>"
-
-	if(suit && LAZYLEN(suit.accessories))
-		dat += "<BR><A href='?src=\ref[src];strip_misc=tie'>Remove accessory</A>"
-	dat += "<BR><A href='?src=\ref[src];strip_misc=splints'>Remove splints</A>"
-	dat += "<BR><A href='?src=\ref[src];strip_misc=pockets'>Empty pockets</A>"
-	dat += "<BR><A href='?src=\ref[user];refresh=1'>Refresh</A>"
-	dat += "<BR><A href='?src=\ref[user];mach_close=mob[name]'>Close</A>"
-
-	user << browse(dat, text("window=mob[name];size=340x540"))
-	onclose(user, "mob[name]")
-	return
-
 // called when something steps onto a human
 // this handles mobs on fire - mulebot and vehicle code has been relocated to /mob/living/Crossed()
 /mob/living/carbon/human/Crossed(var/atom/movable/AM)
@@ -389,32 +341,11 @@
 
 	return ..(shock_damage, source, siemens_coeff, def_zone)
 
-
 /mob/living/carbon/human/Topic(href, href_list)
-
-	if (href_list["refresh"])
-		if(ismob(machine) && in_range(src, usr))
-			// hi, if you see me on git blame, trust me, this code is dumb
-			// but what came before was dumber
-			// whoever wrote this initially can go to hell, who the fuck in their right mind uses
-			// "machine"  for a mob?
-			// it makes no sense, fuck you, get bent.
-			var/mob/M = machine
-			M.show_inv(usr)
-
 	if (href_list["mach_close"])
 		var/t1 = text("window=[]", href_list["mach_close"])
 		unset_machine()
 		src << browse(null, t1)
-
-	if(href_list["strip_slot"])
-		handle_strip_from_slot(href_list["strip_slot"], usr)
-
-	if(href_list["strip_held"])
-		handle_strip_from_held(text2num(href_list["strip_held"]), usr)
-
-	if(href_list["strip_misc"])
-		handle_strip_misc(href_list["strip_misc"], usr)
 
 	if(href_list["ooc_notes"])
 		src.Examine_OOC()

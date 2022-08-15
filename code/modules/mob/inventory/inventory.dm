@@ -238,6 +238,9 @@
 		to_chat(user, SPAN_DANGER("can_unequip will return TRUE to allow you to drop the item, but expect potential glitches!"))
 		return TRUE
 		
+	if(!slot)
+		slot = slot_by_item(I)
+
 	if(!(flags & INV_OP_FORCE) && HAS_TRAIT(I, TRAIT_NODROP))
 		if(!(flags & INV_OP_SUPPRESS_WARNING))
 			to_chat(user, SPAN_WARNING("[I] is stuck to your hand!"))
@@ -382,7 +385,7 @@
 		. = FALSE
 		CRASH("Failed to resolve to slot datm.")
 
-	if(slot_meta.is_abstract)
+	if(slot_meta.inventory_slot_flags & INV_SLOT_IS_ABSTRACT)
 		// special handling: make educated guess, defaulting to yes
 		switch(slot_meta.type)
 			if(/datum/inventory_slot_meta/abstract/left_hand)
@@ -576,7 +579,7 @@
 
 	// resolve slot
 	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
-	if(slot_meta.is_abstract)
+	if(slot_meta.inventory_slot_flags & INV_SLOT_IS_ABSTRACT)
 		// if it's abstract, we go there directly - do not use can_equip as that will just guess.
 		return handle_abstract_slot_insertion(I, slot, flags)
 
@@ -749,6 +752,8 @@
  */
 /mob/proc/items_by_slot(slot)
 	var/obj/item/I = _item_by_slot(slot)
+	if(!I)
+		return list()
 	I = I._inv_return_attached()
 	return islist(I)? I : list(I)
 
@@ -774,7 +779,7 @@
  * null if not in inventory. SLOT_HANDS if held.
  */
 /mob/proc/slot_by_item(obj/item/I)
-	return is_in_inventory(I)		// short circuited to that too
+	return is_in_inventory(I) || null		// short circuited to that too
 									// if equipped/unequipped didn't set worn_slot well jokes on you lmfao
 
 /mob/proc/_equip_slot(obj/item/I, slot, flags)
@@ -792,12 +797,33 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	return _item_by_slot(id) != INVENTORY_SLOT_DOES_NOT_EXIST
 
+// todo: both of these below procs needs optimization for when we need the datum anyways, to avoid two lookups
+
 /mob/proc/semantically_has_slot(id)
-	return has_slot(id)
+	return has_slot(id) && _semantic_slot_id_check(id)
+
+/mob/proc/get_inventory_slot_ids(semantic, sorted)
+	// get all
+	if(sorted)
+		. = list()
+		for(var/id as anything in GLOB.inventory_slot_meta)
+			if(!semantically_has_slot(id))
+				continue
+			. += id
+		return
+	else
+		. = _get_inventory_slot_ids()
+	// check if we should filter
+	if(!semantic)
+		return
+	. = _get_inventory_slot_ids()
+	for(var/id in .)
+		if(!_semantic_slot_id_check(id))
+			. -= id
 
 /**
  * THESE PROCS MUST BE OVERRIDDEN FOR NEW SLOTS ON MOBS
- * yes, i managed to shove all basic behaviors that needed overriding into 4 procs
+ * yes, i managed to shove all basic behaviors that needed overriding into 5-6 procs
  * you're
  * welcome.
  *
@@ -822,6 +848,7 @@
  * logic - apply logic like dropping stuff from pockets when unequippiing a jumpsuit imemdiately?
  */
 /mob/proc/_set_inv_slot(slot, obj/item/I, flags)
+	PROTECTED_PROC(TRUE)
 	. = INVENTORY_SLOT_DOES_NOT_EXIST
 	CRASH("Attempting to set inv slot of [slot] to [I] went to base /mob. You probably had someone assigning to a nonexistant slot!")
 
@@ -830,6 +857,7 @@
  * usually used when safety checks detect something is amiss
  */
 /mob/proc/_slot_by_item(obj/item/I)
+	PROTECTED_PROC(TRUE)
 
 /**
  * doubles as slot detection
@@ -837,7 +865,24 @@
  * YES, MAGIC VALUE BUT SOLE USER IS 20 LINES ABOVE, SUE ME.
  */
 /mob/proc/_item_by_slot(slot)
+	PROTECTED_PROC(TRUE)
 	return INVENTORY_SLOT_DOES_NOT_EXIST
 
 /mob/proc/_get_all_slots(include_restraints)
+	PROTECTED_PROC(TRUE)
 	return list()
+
+/**
+ * return all slot ids we implement
+ */
+/mob/proc/_get_inventory_slot_ids()
+	PROTECTED_PROC(TRUE)
+	return list()
+
+/**
+ * override this if you need to make a slot not semantically exist
+ * useful for other species that don't have a slot so you don't have jumpsuit requirements apply
+ */
+/mob/proc/_semantic_slot_id_check(id)
+	PROTECTED_PROC(TRUE)
+	return TRUE

@@ -226,17 +226,13 @@
 	..()
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
-		O.preserved = 1
-		for(var/obj/item/organ/organ in O)
-			organ.preserved = 1
+		O.preserve(GRIPPER_TRAIT)
 
 /obj/item/gripper/no_use/organ/Exited(var/atom/movable/AM)
 	..()
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
-		O.preserved = 0
-		for(var/obj/item/organ/organ in O)
-			organ.preserved = 0
+		O.unpreserve(GRIPPER_TRAIT)
 
 /obj/item/gripper/no_use/organ/robotics
 	name = "robotics organ gripper"

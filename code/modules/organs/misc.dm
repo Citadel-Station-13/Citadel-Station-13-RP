@@ -8,8 +8,8 @@
 	parent_organ = BP_HEAD
 	vital = 1
 
-/obj/item/organ/internal/borer/process(delta_time)
-
+/obj/item/organ/internal/borer/tick_life(dt)
+	. = ..()
 	// Borer husks regenerate health, feel no pain, and are resistant to stuns and brainloss.
 	for(var/chem in list("tricordrazine","tramadol","hyperzine","alkysine"))
 		if(owner.reagents.get_reagent_amount(chem) < 3)
@@ -52,7 +52,8 @@
 	var/backup_time = 0
 	var/datum/mind/backup
 
-/obj/item/organ/internal/stack/process(delta_time)
+/obj/item/organ/internal/stack/tick_life(dt)
+	. = ..()
 	if(owner && owner.stat != DEAD && !is_broken())
 		backup_time = world.time
 		if(owner.mind) backup = owner.mind
