@@ -1,3 +1,4 @@
+// todo: this system needs reworked
 //Defaults
 #define MOVE_FORCE_DEFAULT 1000
 #define MOVE_RESIST_DEFAULT 1000
