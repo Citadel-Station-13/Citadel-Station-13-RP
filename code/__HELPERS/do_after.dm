@@ -1,3 +1,5 @@
+// TODO: Refactor everything, add actionspeed support.
+
 /proc/do_mob(mob/user , mob/target, time = 30, target_zone = 0, uninterruptible = FALSE, progress = TRUE, ignore_movement = FALSE)
 	if(!user || !target)
 		return 0
