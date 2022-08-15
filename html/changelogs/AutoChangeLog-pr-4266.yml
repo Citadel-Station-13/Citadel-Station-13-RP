@@ -1,0 +1,7 @@
+author: "silicons"
+delete-after: True
+changes: 
+  - rscadd: "CPR now has a use! It will stabilize people who are in crit properly and prevent brain decay while dead. Furthermore, people being CPR'd slowly metabolize reagents, even when dead."
+  - rscdel: "Defib sickness removed until rework"
+  - refactor: "organs have been refactored a bit"
+  - balance: "organs now decay while dead"
