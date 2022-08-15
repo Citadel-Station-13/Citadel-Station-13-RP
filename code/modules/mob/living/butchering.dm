@@ -36,7 +36,7 @@
 		while(meat_amount > 0 && do_after(user, 0.5 SECONDS * (mob_size / 10), src))
 			var/obj/item/meat = new meat_type(get_turf(src))
 			meat.name = "[src.name] [meat.name]"
-			new /obj/effect/decal/cleanable/blood/splatter(get_turf(src))
+			new /obj/effect/debris/cleanable/blood/splatter(get_turf(src))
 			meat_amount--
 
 	if(!meat_amount)
@@ -103,7 +103,7 @@
 		if(!ckey)
 			if(issmall(src))
 				user?.visible_message(SPAN_DANGER("[user] chops up \the [src]!"))
-				new /obj/effect/decal/cleanable/blood/splatter(get_turf(src))
+				new /obj/effect/debris/cleanable/blood/splatter(get_turf(src))
 				if(gib_on_butchery)
 					qdel(src)
 			else

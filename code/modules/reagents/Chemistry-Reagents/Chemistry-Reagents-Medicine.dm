@@ -1270,7 +1270,7 @@
 	T.germ_level -= min(volume*20, T.germ_level)
 	for(var/obj/item/I in T.contents)
 		I.was_bloodied = null
-	for(var/obj/effect/decal/cleanable/blood/B in T)
+	for(var/obj/effect/debris/cleanable/blood/B in T)
 		qdel(B)
 
 /datum/reagent/sterilizine/touch_mob(var/mob/living/L, var/amount)

@@ -316,7 +316,7 @@
 	s.set_up(3, 1, src)
 	s.start()
 
-	new /obj/effect/decal/cleanable/blood/oil(src.loc)
+	new /obj/effect/debris/cleanable/blood/oil(src.loc)
 	qdel(src)
 
 /obj/machinery/media/jukebox/attackby(obj/item/W, mob/user)

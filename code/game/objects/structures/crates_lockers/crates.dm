@@ -266,7 +266,7 @@
 			if(2 to 4)
 				visible_message("<font color='red'><b>The anti-tamper mechanism of [src] causes a small fire!</b></font>")
 				for(var/atom/movable/A as mob|obj in src) // For every item in the box, we spawn a pile of ash.
-					new /obj/effect/decal/cleanable/ash(src.loc)
+					new /obj/effect/debris/cleanable/ash(src.loc)
 				new /atom/movable/fire(src.loc)
 				qdel(src)
 			if(5)

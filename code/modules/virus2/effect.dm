@@ -636,7 +636,7 @@
 			for(var/mob/living/carbon/M in get_step(mob,mob.dir))
 				mob.spread_disease_to(M)
 			if (prob(50))
-				var/obj/effect/decal/cleanable/mucus/M = new(get_turf(mob))
+				var/obj/effect/debris/cleanable/mucus/M = new(get_turf(mob))
 				M.virus2 = virus_copylist(mob.virus2)
 
 /datum/disease2/effect/gunck
@@ -654,7 +654,7 @@
 /datum/disease2/effect/drool/activate(var/mob/living/carbon/mob,var/multiplier)
 	mob.say("*drool")
 	if (prob(30))
-		var/obj/effect/decal/cleanable/mucus/M = new(get_turf(mob))
+		var/obj/effect/debris/cleanable/mucus/M = new(get_turf(mob))
 		M.virus2 = virus_copylist(mob.virus2)
 
 /datum/disease2/effect/twitch

@@ -71,7 +71,7 @@
 
 	reagent_tag = IS_TAJARA
 
-	move_trail = /obj/effect/decal/cleanable/blood/tracks/paw
+	move_trail = /obj/effect/debris/cleanable/blood/tracks/paw
 
 	heat_discomfort_level   = 295 //Prevents heat discomfort spam at 20c
 	heat_discomfort_strings = list(
