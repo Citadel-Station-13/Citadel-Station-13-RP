@@ -16,17 +16,17 @@
 		return 1
 	return 0
 
-/obj/item/organ/internal/appendix/process(delta_time)
-	..()
+/obj/item/organ/internal/appendix/tick_life(dt)
+	. = ..()
 
-	if(!inflamed || !owner)
+	if(!inflamed)
 		return
 
 	if(++inflame_progress > 200)
 		++inflamed
 		inflame_progress = 0
 
-	if(inflamed == 1)
+	if(inflamed)
 		if(prob(5))
 			to_chat(owner, "<span class='warning'>You feel a stinging pain in your abdomen!</span>")
 			owner.emote("me", 1, "winces slightly.")

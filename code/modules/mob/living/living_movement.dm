@@ -6,34 +6,6 @@
 		pixel_x = get_standard_pixel_x_offset(lying)
 		pixel_y = get_standard_pixel_y_offset(lying)
 
-/mob/CanAllowThrough(atom/movable/mover, turf/target)
-	if(ismob(mover))
-		var/mob/moving_mob = mover
-		if ((other_mobs && moving_mob.other_mobs))
-			return TRUE
-	if(istype(mover, /obj/item/projectile))
-		var/obj/item/projectile/P = mover
-		return !P.can_hit_target(src, P.permutated, src == P.original, TRUE)
-	return (!mover.density || !density || lying)
-
-/**
-  * Toggle the move intent of the mob
-  *
-  * triggers an update the move intent hud as well
-  */
-/mob/proc/toggle_move_intent(mob/user)
-	if(m_intent == MOVE_INTENT_RUN)
-		m_intent = MOVE_INTENT_WALK
-	else
-		m_intent = MOVE_INTENT_RUN
-/*
-	if(hud_used && hud_used.static_inventory)
-		for(var/atom/movable/screen/mov_intent/selector in hud_used.static_inventory)
-			selector.update_icon()
-*/
-	// nah, vorecode bad.
-	hud_used?.move_intent?.icon_state = (m_intent == MOVE_INTENT_RUN)? "running" : "walking"
-
 /mob/living/movement_delay()
 	. = ..()
 	switch(m_intent)
@@ -212,3 +184,22 @@
 				step(G:assailant, get_dir(G:assailant, AM))
 				G.adjust_position()
 		now_pushing = 0
+
+/mob/living/CanAllowThrough(atom/movable/mover, turf/target)
+	if(istype(mover, /obj/structure/blob) && faction == "blob") //Blobs should ignore things on their faction.
+		return TRUE
+	return ..()
+
+//Called when something steps onto us. This allows for mulebots and vehicles to run things over. <3
+/mob/living/Crossed(var/atom/movable/AM) // Transplanting this from /mob/living/carbon/human/Crossed()
+	if(AM == src || AM.is_incorporeal()) // We're not going to run over ourselves or ghosts
+		return
+
+	if(istype(AM, /mob/living/bot/mulebot))
+		var/mob/living/bot/mulebot/MB = AM
+		MB.runOver(src)
+
+	if(istype(AM, /obj/vehicle))
+		var/obj/vehicle/V = AM
+		V.RunOver(src)
+	return ..()

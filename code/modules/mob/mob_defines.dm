@@ -156,7 +156,6 @@
 	var/name_archive
 
 	var/timeofdeath = 0 //?Living
-	var/cpr_time = 1 //?Carbon
 
 	var/bodytemperature = 310.055 //98.7 F
 	var/drowsyness = 0 //?Carbon
@@ -271,6 +270,9 @@
 	var/turf/listed_turf = null
 	/// List of objects that this mob shouldn't see in the stat panel. this silliness is needed because of AI alt+click and cult blood runes.
 	var/list/shouldnt_see = list()
+
+	///For storing what do_after's someone has, in case we want to restrict them to only one of a certain do_after at a time
+	var/list/do_afters
 
 	var/list/active_genes=list()
 	var/mob_size = MOB_MEDIUM

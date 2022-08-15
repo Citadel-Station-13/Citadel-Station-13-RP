@@ -102,26 +102,6 @@ default behaviour is:
 			return 1
 		return 0
 
-
-/mob/living/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover, /obj/structure/blob) && faction == "blob") //Blobs should ignore things on their faction.
-		return TRUE
-	return ..()
-
-//Called when something steps onto us. This allows for mulebots and vehicles to run things over. <3
-/mob/living/Crossed(var/atom/movable/AM) // Transplanting this from /mob/living/carbon/human/Crossed()
-	if(AM == src || AM.is_incorporeal()) // We're not going to run over ourselves or ghosts
-		return
-
-	if(istype(AM, /mob/living/bot/mulebot))
-		var/mob/living/bot/mulebot/MB = AM
-		MB.runOver(src)
-
-	if(istype(AM, /obj/vehicle_old))
-		var/obj/vehicle_old/V = AM
-		V.RunOver(src)
-	return ..()
-
 /mob/living/verb/succumb()
 	set hidden = 1
 	if ((src.health < 0 && src.health > (5-src.getMaxHealth()))) // Health below Zero but above 5-away-from-death, as before, but variable
@@ -141,7 +121,6 @@ default behaviour is:
 //affects them once clothing is factored in. ~Errorage
 /mob/living/proc/calculate_affecting_pressure(var/pressure)
 	return
-
 
 //sort of a legacy burn method for /electrocute, /shock, and the e_chair
 /mob/living/proc/burn_skin(burn_amount)

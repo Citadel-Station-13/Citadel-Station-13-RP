@@ -70,12 +70,6 @@
 /mob/living/carbon/human/apidaen
 	species = /datum/species/apidaen
 
-/mob/living/carbon/human/vetala_ruddy
-	species = /datum/species/vetala_ruddy
-
-/mob/living/carbon/human/vetala_pale
-	species = /datum/species/vetala_pale
-
 /mob/living/carbon/human/auril
 	species = /datum/species/auril
 
