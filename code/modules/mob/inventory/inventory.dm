@@ -70,7 +70,10 @@
  * if an item is not in us, this returns true
  */
 /mob/proc/drop_item_to_ground(obj/item/I, flags, mob/user)
-	if(!is_in_inventory(I))
+	if(I && QDELETED(I))
+		to_chat(src, SPAN_DANGER("A deleted item [I] was used in drop_item_to_ground(). Report the entire line to coders. Debugging information: [I] ([REF(I)]) flags [flags] user [user]"))
+		to_chat(src, SPAN_DANGER("Drop item to ground will now proceed, ignoring the bugged state. Errors may ensue."))
+	else if(!is_in_inventory(I))
 		return TRUE
 	return _unequip_item(I, flags | INV_OP_DIRECTLY_DROPPING, drop_location(), user)
 
