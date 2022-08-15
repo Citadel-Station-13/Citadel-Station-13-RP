@@ -12,12 +12,15 @@
 
 	var/datum/gas_mixture/breath
 
+	var/stabilization = HAS_TRAIT(src, TRAIT_MECHANICAL_VENTILATION)
+
 	//First, check if we can breathe at all
-	if(health < config_legacy.health_threshold_crit && !(CE_STABLE in chem_effects)) //crit aka circulatory shock
+	// cpr completely nullifies brainstem requirement
+	if(health < config_legacy.health_threshold_crit && !(CE_STABLE in chem_effects) && !stabilization) //crit aka circulatory shock
 		AdjustLosebreath(1)
 
 	if(losebreath>0) //Suffocating so do not take a breath
-		AdjustLosebreath(-1)
+		AdjustLosebreath(stabilization? -5 : -1)
 		if (prob(10)) //Gasp per 10 ticks? Sounds about right.
 			spawn emote("gasp")
 	else
