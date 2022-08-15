@@ -4,17 +4,29 @@
  * called when we're hit by something
  * @params
  * - AM - thrown atom that hit us
- * - TT - thrownthing datum. This **can be null**.
- * - flags - throwing flags. See [__DEFINES/controllers/thr nowing.dm] for details on throw_flags
+ * - TT - thrownthing datum. This **can be null**, because we want to make manually proccing throw hits possible.
+ * - flags - throwing flags. See [__DEFINES/controllers/throwing.dm] for details on throw_flags
  *
  */
-#warn impl - speed? how to implement that?
+#warn impl - speed? how to implement that for damage balancing?
 
 #warn replace all procs for this
 /atom/proc/hitby(atom/movable/hitting_atom as mob|obj)
 	if(density)
 		hitting_atom.throwing = 0
 	return
+
+/**
+ * called when **we** hit something.
+ *
+ * usually, calls hitby() on the object.
+ *
+ * @params
+ * - A - thing we just hit
+ * - TT - thrownthing datum. This **can be null**, because we want to make manually proccing throw hits possible.
+ * - flags - throwing flags. See [__DEFINES/controllers/throwing.dm] for details on throw_flags
+ *
+ */
 
 /// Called when src is thrown into hit_atom
 /atom/movable/proc/throw_impact(atom/hit_atom, speed)
