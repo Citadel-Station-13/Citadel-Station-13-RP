@@ -34,9 +34,9 @@ GLOBAL_VAR_INIT(default_glide_size, 0)
 
 /// set glide size of atom based on if smooth movement is on or not
 #ifdef SMOOTH_MOVEMENT
-	#define SET_GLIDE_SIZE(AM, size, args...)	AM.set_glide_size(size, args)
+	#define SMOOTH_GLIDE_SIZE(AM, size, args...)	AM.set_glide_size(size, args)
 #else
-	#define SET_GLIDE_SIZE(AM, size, args...)	AM.set_glide_size(GLOB.default_glide_size, args)
+	#define SMOOTH_GLIDE_SIZE(AM, size, args...)	AM.set_glide_size(GLOB.default_glide_size, args)
 #endif
 
 //? Don't even think about smooth movement until movespeed modification is done ~silicons

@@ -191,11 +191,15 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 
 /// Get the global config movespeed of a mob by type
 /mob/proc/get_config_multiplicative_speed(floating = FALSE)
+// todo: refactor mobs to use movespeed mods
+/*
 	var/list/read = floating? GLOB.mob_config_movespeed_type_lookup_floating : GLOB.mob_config_movespeed_type_lookup
 	if(!islist(read) || !read[type])
 		return 0
 	else
 		return read[type]
+*/
+	return 0
 
 /// Go through the list of movespeed modifiers and calculate a final movespeed. ANY ADD/REMOVE DONE IN UPDATE_MOVESPEED MUST HAVE THE UPDATE ARGUMENT SET AS FALSE!
 /mob/proc/update_movespeed()
