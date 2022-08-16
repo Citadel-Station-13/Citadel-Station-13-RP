@@ -2,6 +2,8 @@
 // Base type of pipes
 //
 /obj/machinery/atmospherics/pipe
+	buckle_allowed = TRUE
+	buckle_require_restraints = TRUE
 
 	var/datum/gas_mixture/air_temporary // used when reconstructing a pipeline that broke
 	var/datum/pipeline/parent
@@ -14,10 +16,6 @@
 
 	var/alert_pressure = 80*ONE_ATMOSPHERE
 		//minimum pressure before check_pressure(...) should be called
-
-	can_buckle = 1
-	buckle_require_restraints = 1
-	buckle_lying = -1
 
 /obj/machinery/atmospherics/pipe/Initialize(mapload, newdir)
 	if(istype(get_turf(src), /turf/simulated/wall) || istype(get_turf(src), /turf/simulated/shuttle/wall) || istype(get_turf(src), /turf/unsimulated/wall))

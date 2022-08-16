@@ -43,7 +43,7 @@
 	hide_amount = 4
 	exotic_amount = 2
 
-	max_buckled_mobs = 1 //Yeehaw
+	buckle_max_mobs = 1 //Yeehaw
 	can_buckle = TRUE
 	buckle_movable = TRUE
 	buckle_lying = FALSE

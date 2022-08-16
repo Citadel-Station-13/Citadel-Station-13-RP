@@ -8,8 +8,8 @@
 	desc = "Yell at coderbus."
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "fuckyou"
-	max_integrity = 300
-	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 0, BOMB = 30, BIO = 0, RAD = 0, FIRE = 60, ACID = 60)
+	// max_integrity = 300
+	// armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 0, BOMB = 30, BIO = 0, RAD = 0, FIRE = 60, ACID = 60)
 	density = TRUE
 	anchored = FALSE
 	COOLDOWN_DECLARE(cooldown_vehicle_move)
@@ -41,6 +41,7 @@
 
 /obj/vehicle/examine(mob/user)
 	. = ..()
+	/*
 	if(resistance_flags & ON_FIRE)
 		. += "<span class='warning'>It's on fire!</span>"
 	var/healthpercent = obj_integrity/max_integrity * 100
@@ -51,6 +52,7 @@
 			. += "It appears heavily damaged."
 		if(0 to 25)
 			. += "<span class='warning'>It's falling apart!</span>"
+	*/
 
 /obj/vehicle/proc/is_key(obj/item/I)
 	return I? (key_type_exact? (I.type == key_type) : istype(I, key_type)) : FALSE

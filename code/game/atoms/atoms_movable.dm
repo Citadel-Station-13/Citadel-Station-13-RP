@@ -41,11 +41,13 @@
 	/// Can only buckle restrained people to this, like pipes.
 	var/buckle_require_restraints = FALSE
 	/// How many people can be buckled to us at once.
-	var/buckle_max = 1
+	var/buckle_max_mobs = 1
 	/// if non-null, forces mob.lying to this
 	var/buckle_lying
 	/// buckled mobs
 	var/list/mob/buckled_mobs
+	/// direction to set buckled mobs to. null to not do that.
+	var/buckle_dir
 
 	var/anchored = FALSE
 	var/move_speed = 10

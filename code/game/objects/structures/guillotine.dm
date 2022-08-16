@@ -26,7 +26,7 @@
 	can_buckle = TRUE
 	anchored = TRUE
 	density = TRUE
-	max_buckled_mobs = 1
+	buckle_max_mobs = 1
 	buckle_lying = FALSE
 	buckle_prevents_pull = TRUE
 	layer = ABOVE_MOB_LAYER

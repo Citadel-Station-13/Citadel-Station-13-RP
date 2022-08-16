@@ -34,7 +34,7 @@
 	pixel_x = -16
 	pixel_y = 0
 
-	max_buckled_mobs = 1 //Yeehaw
+	buckle_max_mobs = 1 //Yeehaw
 	can_buckle = TRUE
 	buckle_movable = TRUE
 	buckle_lying = FALSE

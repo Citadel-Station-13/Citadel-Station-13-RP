@@ -9,7 +9,7 @@
 	charge_use = 0 // Boats use oars.
 	pixel_x = -2
 	move_delay = 3 // Rather slow, but still faster than swimming, and won't get you wet.
-	max_buckled_mobs = 2
+	buckle_max_mobs = 2
 	anchored = FALSE
 	var/datum/material/material = null
 	var/riding_datum_type = /datum/riding/boat/small
@@ -25,7 +25,7 @@
 	health = 250
 	maxhealth = 250
 	pixel_x = -16
-	max_buckled_mobs = 5
+	buckle_max_mobs = 5
 	riding_datum_type = /datum/riding/boat/big
 
 /obj/vehicle_old/boat/dragon/Initialize(mapload, material_name)

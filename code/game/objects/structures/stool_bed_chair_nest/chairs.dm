@@ -129,8 +129,8 @@
 	return ..(mapload, "steel", "orange")
 
 /obj/structure/bed/chair/office
-	anchored = 0
-	buckle_movable = 1
+	anchored = FALSE
+	buckle_prevents_pull = FALSE
 
 /obj/structure/bed/chair/office/update_icon()
 	return

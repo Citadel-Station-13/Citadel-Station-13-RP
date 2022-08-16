@@ -2,8 +2,8 @@
 	name = "wheelchair"
 	desc = "You sit in this. Either by will or force."
 	icon_state = "wheelchair"
-	anchored = 0
-	buckle_movable = 1
+	anchored = FALSE
+	buckle_prevents_pull = FALSE
 
 	var/last_active_move = 0
 	var/driving = 0

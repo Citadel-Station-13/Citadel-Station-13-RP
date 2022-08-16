@@ -207,7 +207,7 @@
 
 //Human overrides for taur riding
 /mob/living/silicon/robot
-	max_buckled_mobs = 1 //Yeehaw
+	buckle_max_mobs = 1 //Yeehaw
 	can_buckle = TRUE
 	buckle_movable = TRUE
 	buckle_lying = FALSE

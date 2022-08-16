@@ -175,10 +175,10 @@
 	if(!istype(M))
 		return FALSE
 
-	if((!can_buckle && !forced) || M.buckled || M.pinned.len || (buckled_mobs.len >= max_buckled_mobs) || (buckle_require_restraints && !M.restrained()))
+	if((!can_buckle && !forced) || M.buckled || M.pinned.len || (buckled_mobs.len >= buckle_max_mobs) || (buckle_require_restraints && !M.restrained()))
 		return FALSE
 
-	if(has_buckled_mobs() && buckled_mobs.len >= max_buckled_mobs) //Handles trying to buckle yourself to the chair when someone is on it
+	if(has_buckled_mobs() && buckled_mobs.len >= buckle_max_mobs) //Handles trying to buckle yourself to the chair when someone is on it
 		to_chat(M, "<span class='notice'>\The [src] can't buckle anymore people.</span>")
 		return FALSE
 

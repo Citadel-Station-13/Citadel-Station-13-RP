@@ -199,7 +199,7 @@
 		var/mob/living/bot/mulebot/MB = AM
 		MB.runOver(src)
 
-	if(istype(AM, /obj/vehicle))
-		var/obj/vehicle/V = AM
+	if(istype(AM, /obj/vehicle_old))
+		var/obj/vehicle_old/V = AM
 		V.RunOver(src)
 	return ..()

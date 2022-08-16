@@ -53,7 +53,8 @@
 
 	player_msg = "In this form, you can move a little faster and your health will regenerate as long as you have metal in you!"
 	holder_type = /obj/item/holder/protoblob
-	can_buckle = TRUE //Blobsurfing
+
+	#warn riding datum
 
 /datum/say_list/protean_blob
 	speak = list("Blrb?","Sqrsh.","Glrsh!")

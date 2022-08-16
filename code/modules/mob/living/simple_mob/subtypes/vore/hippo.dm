@@ -54,7 +54,7 @@
 	hide_amount = 6
 	hide_type = /obj/item/stack/hairlesshide
 
-	max_buckled_mobs = 1 //Yeehaw
+	buckle_max_mobs = 1 //Yeehaw
 	can_buckle = TRUE
 	buckle_movable = TRUE
 	buckle_lying = FALSE

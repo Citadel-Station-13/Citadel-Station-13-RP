@@ -3897,6 +3897,8 @@
 #include "code\modules\variable_settings\variable_setting_entry.dm"
 #include "code\modules\vehicles\_vehicle.dm"
 #include "code\modules\vehicles\actions.dm"
+#include "code\modules\vehicles\ridden.dm"
+#include "code\modules\vehicles\sealed.dm"
 #include "code\modules\vehicles_legacy\bike.dm"
 #include "code\modules\vehicles_legacy\boat.dm"
 #include "code\modules\vehicles_legacy\cargo_train.dm"
