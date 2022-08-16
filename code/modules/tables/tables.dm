@@ -214,7 +214,7 @@ var/list/table_icon_cache = list()
 /obj/structure/table/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
 	. = !density
 	if(istype(caller))
-		. = . || (caller.pass_flags & PASSTABLE)
+		. = . || (caller.pass_flags & ATOM_PASS_TABLE)
 
 /obj/structure/table/proc/reinforce_table(obj/item/stack/material/S, mob/user)
 	if(reinforced)

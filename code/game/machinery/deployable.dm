@@ -10,7 +10,7 @@ Barricades
 	desc = "This space is blocked off by a barricade."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "barricade"
-	pass_flags_self = PASSTABLE
+	pass_flags_self = ATOM_PASS_TABLE
 	anchored = TRUE
 	density = TRUE
 	var/health = 100
@@ -116,7 +116,7 @@ Barricades
 	anchored = FALSE
 	density = TRUE
 	icon_state = "barrier0"
-	pass_flags_self = PASSTABLE
+	pass_flags_self = ATOM_PASS_TABLE
 	var/health = 100
 	var/maxhealth = 100
 	var/locked = FALSE

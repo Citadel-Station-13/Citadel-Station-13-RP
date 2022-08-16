@@ -49,7 +49,7 @@
 
 	density = FALSE	// Non-dense, so things can walk through their groups unhindered.
 
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 
 	attacktext = list("bit", "buffeted", "slashed")
 

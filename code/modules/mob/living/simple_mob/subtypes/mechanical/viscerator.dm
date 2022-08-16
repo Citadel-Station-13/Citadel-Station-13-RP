@@ -32,7 +32,7 @@
 	health = 15
 	movement_cooldown = 0
 
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	mob_swap_flags = 0
 	mob_push_flags = 0
 

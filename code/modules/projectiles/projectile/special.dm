@@ -51,7 +51,7 @@
 	fire_sound = 'sound/weapons/pulse3.ogg'
 	damage = 0
 	damage_type = BURN
-	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
+	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
 	nodamage = 1
 	check_armour = "energy" // It actually checks heat/cold protection.
 	var/target_temperature = 50
@@ -268,7 +268,7 @@
 	name = "core of molten tungsten"
 	icon_state = "energy"
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
-	pass_flags = PASSTABLE | PASSGRILLE
+	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GRILLE
 	damage = 70
 	damage_type = BURN
 	check_armour = "laser"

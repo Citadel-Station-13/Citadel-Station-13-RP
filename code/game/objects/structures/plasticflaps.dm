@@ -43,7 +43,7 @@
 	return TRUE //diseases, stings, etc can pass
 
 /obj/structure/plasticflaps/CanAllowThrough(atom/A, turf/T)
-	if(istype(A) && A.checkpass(PASSGLASS))
+	if(istype(A) && A.checkpass(ATOM_PASS_GLASS))
 		return prob(60)
 
 	var/obj/structure/bed/B = A

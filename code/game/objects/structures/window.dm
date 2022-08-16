@@ -141,7 +141,7 @@
 	take_damage(50)
 
 /obj/structure/window/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSGLASS))
+	if(istype(mover) && mover.checkpass(ATOM_PASS_GLASS))
 		return TRUE
 	if(is_fulltile())
 		return FALSE	//full tile window, you can't move into it!
@@ -158,7 +158,7 @@
 /obj/structure/window/CheckExit(atom/movable/AM, turf/target)
 	if(is_fulltile())
 		return TRUE
-	if(AM.checkpass(PASSGLASS))
+	if(AM.checkpass(ATOM_PASS_GLASS))
 		return TRUE
 	if(get_dir(AM.loc, target) == dir)
 		return FALSE

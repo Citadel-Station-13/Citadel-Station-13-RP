@@ -3,7 +3,7 @@
 	desc = "Used for advanced medical procedures."
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "table2-idle"
-	pass_flags_self = PASSTABLE
+	pass_flags_self = ATOM_PASS_TABLE
 	density = TRUE
 	anchored = TRUE
 	circuit = /obj/item/circuitboard/operating_table

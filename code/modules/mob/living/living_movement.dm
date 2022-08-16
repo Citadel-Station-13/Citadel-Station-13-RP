@@ -284,11 +284,11 @@
 				if(!do_after(src, CRAWLUNDER_DELAY, target = src) || CHECK_MOBILITY(src, MOBILITY_STAND))
 					combat_flags &= ~(COMBAT_FLAG_ATTEMPTING_CRAWL)
 					return TRUE
-			var/src_passmob = (pass_flags & PASSMOB)
-			pass_flags |= PASSMOB
+			var/src_ATOM_PASS_mob = (pass_flags & ATOM_PASS_MOB)
+			pass_flags |= ATOM_PASS_MOB
 			Move(origtargetloc)
-			if(!src_passmob)
-				pass_flags &= ~PASSMOB
+			if(!src_ATOM_PASS_mob)
+				pass_flags &= ~ATOM_PASS_MOB
 			combat_flags &= ~(COMBAT_FLAG_ATTEMPTING_CRAWL)
 			return TRUE
 	//END OF CIT CHANGES
@@ -318,20 +318,20 @@
 			var/oldMloc = M.loc
 
 
-			var/M_passmob = (M.pass_flags & PASSMOB) // we give PASSMOB to both mobs to avoid bumping other mobs during swap.
-			var/src_passmob = (pass_flags & PASSMOB)
-			M.pass_flags |= PASSMOB
-			pass_flags |= PASSMOB
+			var/M_ATOM_PASS_mob = (M.pass_flags & ATOM_PASS_MOB) // we give ATOM_PASS_MOB to both mobs to avoid bumping other mobs during swap.
+			var/src_ATOM_PASS_mob = (pass_flags & ATOM_PASS_MOB)
+			M.pass_flags |= ATOM_PASS_MOB
+			pass_flags |= ATOM_PASS_MOB
 
 			var/move_failed = FALSE
 			if(!M.Move(oldloc) || !Move(oldMloc))
 				M.forceMove(oldMloc)
 				forceMove(oldloc)
 				move_failed = TRUE
-			if(!src_passmob)
-				pass_flags &= ~PASSMOB
-			if(!M_passmob)
-				M.pass_flags &= ~PASSMOB
+			if(!src_ATOM_PASS_mob)
+				pass_flags &= ~ATOM_PASS_MOB
+			if(!M_ATOM_PASS_mob)
+				M.pass_flags &= ~ATOM_PASS_MOB
 
 			now_pushing = FALSE
 

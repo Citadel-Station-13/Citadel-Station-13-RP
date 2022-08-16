@@ -3,7 +3,7 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "extinguish"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	pass_flags = PASSTABLE | PASSGRILLE | PASSBLOB
+	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GRILLE | ATOM_PASS_BLOB
 	var/list/touched
 
 /obj/effect/water/Initialize(mapload)

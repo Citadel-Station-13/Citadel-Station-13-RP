@@ -41,14 +41,14 @@
 
 /obj/structure/railing/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
-	if(mover.checkpass(PASSTABLE) || mover.throwing)
+	if(mover.checkpass(ATOM_PASS_TABLE) || mover.throwing)
 		return TRUE
 	if(get_dir(mover, target) & turn(dir, 180))
 		return !density
 	return TRUE
 
 /obj/structure/railing/CheckExit(atom/movable/mover, atom/newLoc)
-	if(mover.checkpass(PASSTABLE) || mover.throwing)
+	if(mover.checkpass(ATOM_PASS_TABLE) || mover.throwing)
 		return TRUE
 	if(mover.loc == get_turf(src))	//moving out of us
 		if(get_dir(mover, newLoc) & dir)
@@ -201,7 +201,7 @@
 	return
 
 /obj/structure/railing/CheckExit(atom/movable/O as mob|obj, target as turf)
-	if(istype(O) && O.checkpass(PASSTABLE))
+	if(istype(O) && O.checkpass(ATOM_PASS_TABLE))
 		return 1
 	if(get_dir(O.loc, target) == dir)
 		return 0

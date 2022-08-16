@@ -57,7 +57,7 @@
 	burn_mod     = 1.1
 
 	mob_size     = MOB_SMALL
-	pass_flags   = PASSTABLE
+	pass_flags   = ATOM_PASS_TABLE
 	holder_type  = /obj/item/holder/human
 //	short_sighted = 1
 	gluttonous    = 1

@@ -6,7 +6,7 @@
 			return !density
 		else
 			return TRUE
-	if(istype(mover) && mover.checkpass(PASSTABLE))
+	if(istype(mover) && mover.checkpass(ATOM_PASS_TABLE))
 		return TRUE
 	if(locate(/obj/structure/table/bench) in get_turf(mover))
 		return FALSE
@@ -49,7 +49,7 @@
 	return 1
 
 /obj/structure/table/CheckExit(atom/movable/O as mob|obj, target as turf)
-	if(istype(O) && O.checkpass(PASSTABLE))
+	if(istype(O) && O.checkpass(ATOM_PASS_TABLE))
 		return 1
 	if (flipped==1)
 		if (get_dir(loc, target) == dir)

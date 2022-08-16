@@ -9,7 +9,7 @@
 	density = FALSE
 	anchored = TRUE
 	unacidable = TRUE
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	mouse_opacity = 0
 
 	////TG PROJECTILE SYTSEM
@@ -237,7 +237,7 @@
 	if(AM.is_incorporeal())
 		return
 	..()
-	if(isliving(AM) && !(pass_flags & PASSMOB))
+	if(isliving(AM) && !(pass_flags & ATOM_PASS_MOB))
 		var/mob/living/L = AM
 		if(can_hit_target(L, permutated, (AM == original)))
 			Bump(AM)

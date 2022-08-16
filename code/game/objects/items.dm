@@ -27,7 +27,7 @@
 	var/slot_flags = 0
 	/// If it's an item we don't want to log attack_logs with, set this to TRUE
 	var/no_attack_log = FALSE
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	pressure_resistance = 5
 	var/obj/item/master = null
 	/// Used by R&D to determine what research bonuses it grants.

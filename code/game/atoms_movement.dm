@@ -50,6 +50,6 @@
 	SHOULD_BE_PURE(TRUE)
 	if(mover.pass_flags & pass_flags_self)
 		return TRUE
-	if(mover.throwing && (pass_flags_self & PASS_FLAG_LET_THROWN_PASS))
+	if(mover.throwing && (pass_flags_self & ATOM_PASS_THROWN))
 		return TRUE
 	return !density

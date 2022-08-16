@@ -31,4 +31,4 @@
 /obj/structure/rack/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
 	. = !density
 	if(istype(caller))
-		. = . || (caller.pass_flags & PASSTABLE)
+		. = . || (caller.pass_flags & ATOM_PASS_TABLE)

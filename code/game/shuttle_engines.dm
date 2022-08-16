@@ -10,7 +10,7 @@
 	opacity = 0
 	anchored = 1
 	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
-	pass_flags_self = PASSGLASS
+	pass_flags_self = ATOM_PASS_GLASS
 
 	var/window_flags = 0 // Bitflags to indicate connected windows
 	var/wall_flags = 0 // Bitflags to indicate connected walls

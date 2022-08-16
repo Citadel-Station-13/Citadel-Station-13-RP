@@ -5,9 +5,9 @@
 	icon = 'icons/mob/slime2.dmi'
 	icon_state = "grey baby slime"
 	intelligence_level = SA_ANIMAL
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	makes_dirt = FALSE	// Goop
 	speak_emote = list("chirps")
 

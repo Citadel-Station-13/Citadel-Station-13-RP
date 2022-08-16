@@ -222,7 +222,7 @@
 
 /obj/machinery/portable_atmospherics/hydroponics/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
-	if(istype(mover) && mover.checkpass(PASSTABLE))
+	if(istype(mover) && mover.checkpass(ATOM_PASS_TABLE))
 		return TRUE
 
 /obj/machinery/portable_atmospherics/hydroponics/proc/check_health()

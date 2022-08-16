@@ -50,7 +50,7 @@
 
 /obj/structure/grille/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
-	if(istype(mover) && mover.checkpass(PASSGRILLE))
+	if(istype(mover) && mover.checkpass(ATOM_PASS_GRILLE))
 		return TRUE
 	if(istype(mover, /obj/item/projectile))
 		return prob(30)

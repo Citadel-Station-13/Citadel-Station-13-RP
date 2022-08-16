@@ -144,7 +144,7 @@
 
 /obj/effect/alien/resin/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
-	if(istype(mover) && mover.checkpass(PASSGLASS))
+	if(istype(mover) && mover.checkpass(ATOM_PASS_GLASS))
 		return !opacity
 	return !density
 

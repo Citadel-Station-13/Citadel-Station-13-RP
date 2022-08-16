@@ -3,7 +3,7 @@
 	icon = 'icons/obj/iv_drip.dmi'
 	anchored = FALSE
 	density = FALSE
-	pass_flags_self = PASSTABLE
+	pass_flags_self = ATOM_PASS_TABLE
 
 	var/mob/living/carbon/human/attached = null
 	var/mode = 1 // 1 is injecting, 0 is taking blood.

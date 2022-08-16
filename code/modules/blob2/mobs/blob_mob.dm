@@ -5,7 +5,7 @@
 //Do not spawn
 /mob/living/simple_mob/hostile/blob
 	icon = 'icons/mob/blob.dmi'
-	pass_flags = PASSBLOB | PASSTABLE
+	pass_flags = ATOM_PASS_BLOB | ATOM_PASS_TABLE
 	faction = "blob"
 //	bubble_icon = "blob"
 //	speak_emote = null //so we use verb_yell/verb_say/etc

@@ -32,7 +32,7 @@
 	density = FALSE	// Non-dense, so things can pass over them.
 
 	status_flags = CANPUSH
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 
 	maxHealth = 100
 	health = 100

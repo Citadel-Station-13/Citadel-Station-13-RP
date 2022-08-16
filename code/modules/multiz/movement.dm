@@ -303,11 +303,11 @@
 	return falling_atom.fall_impact(src)
 
 /obj/structure/lattice/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
-	return mover.checkpass(PASSGRILLE)
+	return mover.checkpass(ATOM_PASS_GRILLE)
 
 // So you'll slam when falling onto a grille
 /obj/structure/lattice/CheckFall(var/atom/movable/falling_atom)
-	if(istype(falling_atom) && falling_atom.checkpass(PASSGRILLE))
+	if(istype(falling_atom) && falling_atom.checkpass(ATOM_PASS_GRILLE))
 		return FALSE
 	return falling_atom.fall_impact(src)
 

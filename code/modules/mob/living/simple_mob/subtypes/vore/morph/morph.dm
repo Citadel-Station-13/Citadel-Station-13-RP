@@ -11,7 +11,7 @@
 	icon_dead = "morph_dead"
 	movement_cooldown = 1
 	status_flags = CANPUSH
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	mob_bump_flag = SLIME
 
 	min_oxy = 0

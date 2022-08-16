@@ -31,7 +31,7 @@
 	unacidable = 1//Just to be sure.
 	var/def_zone
 	flags = PROXMOVE
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 
 
 /obj/effect/begin

@@ -75,7 +75,7 @@ Protectiveness | Armor %
 
 	if(istype(source, /obj/item/projectile))
 		var/obj/item/projectile/P = source
-		if(P.pass_flags & PASSGLASS)
+		if(P.pass_flags & ATOM_PASS_GLASS)
 			if(material.opacity - 0.3 <= 0)
 				return // Lasers ignore 'fully' transparent material.
 

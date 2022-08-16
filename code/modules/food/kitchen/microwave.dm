@@ -449,7 +449,7 @@
 /obj/machinery/microwave/CanAllowThrough(atom/movable/mover, turf/target, height=0, air_group=0)
 	if (!mover)
 		return 1
-	if(mover.checkpass(PASSTABLE))
+	if(mover.checkpass(ATOM_PASS_TABLE))
 	//Animals can run under them, lots of empty space
 		return 1
 	return ..()

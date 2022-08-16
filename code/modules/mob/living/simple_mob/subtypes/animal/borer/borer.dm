@@ -31,7 +31,7 @@
 	friendly = list("prods")
 
 	status_flags = CANPUSH
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	movement_cooldown = 5
 
 	universal_understand = TRUE

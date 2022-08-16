@@ -38,14 +38,14 @@
 
 /obj/structure/ledge/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
-	if(istype(mover) && mover.checkpass(PASSTABLE))
+	if(istype(mover) && mover.checkpass(ATOM_PASS_TABLE))
 		return TRUE
 	if(solidledge && get_dir(mover, target) == turn(dir, 180))
 		return !density
 	return TRUE
 
 /obj/structure/ledge/CheckExit(atom/movable/O as mob|obj, target as turf)
-	if(istype(O) && O.checkpass(PASSTABLE))
+	if(istype(O) && O.checkpass(ATOM_PASS_TABLE))
 		return 1
 	if(solidledge && get_dir(O.loc, target) == dir)
 		return 0

@@ -39,14 +39,14 @@
 			. += epitaph
 
 /obj/structure/gravemarker/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSTABLE))
+	if(istype(mover) && mover.checkpass(ATOM_PASS_TABLE))
 		return TRUE
 	if(get_dir(loc, target) & dir)
 		return !density
 	return TRUE
 
 /obj/structure/gravemarker/CheckExit(atom/movable/O as mob|obj, target as turf)
-	if(istype(O) && O.checkpass(PASSTABLE))
+	if(istype(O) && O.checkpass(ATOM_PASS_TABLE))
 		return 1
 	if(get_dir(O.loc, target) == dir)
 		return 0

@@ -95,7 +95,7 @@
 	var/hits = 4
 	var/hitpwr = 2 //Level of ex_act to be called on hit.
 	var/dest
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	var/heavy = 0
 	var/z_original
 
@@ -214,7 +214,7 @@
 /obj/effect/meteor/dust
 	name = "space dust"
 	icon_state = "dust"
-	pass_flags = PASSTABLE | PASSGRILLE
+	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GRILLE
 	hits = 1
 	hitpwr = 3
 	meteordrop = /obj/item/ore/glass

@@ -1,6 +1,6 @@
 // Helper proc to check if you can hit them or not.
 // Will return a list of hit mobs/objects.
-/proc/check_trajectory(atom/target as mob|obj, atom/firer as mob|obj, var/pass_flags=PASSTABLE|PASSGLASS|PASSGRILLE, flags=null)
+/proc/check_trajectory(atom/target as mob|obj, atom/firer as mob|obj, var/pass_flags=ATOM_PASS_TABLE|ATOM_PASS_GLASS|ATOM_PASS_GRILLE, flags=null)
 	if(!istype(target) || !istype(firer))
 		return 0
 

@@ -317,7 +317,7 @@
 
 
 /obj/machinery/shieldwall/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSGLASS))
+	if(istype(mover) && mover.checkpass(ATOM_PASS_GLASS))
 		return prob(20)
 	if(istype(mover, /obj/item/projectile))
 		return prob(10)

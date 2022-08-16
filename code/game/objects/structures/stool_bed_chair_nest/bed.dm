@@ -69,7 +69,7 @@
 		desc += " It's made of [material.use_name]."
 
 /obj/structure/bed/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSTABLE))
+	if(istype(mover) && mover.checkpass(ATOM_PASS_TABLE))
 		return TRUE
 	return ..()
 
