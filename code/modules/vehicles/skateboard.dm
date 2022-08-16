@@ -185,10 +185,10 @@
 			animate(L, pixel_y = -6, time = 4)
 			animate(V, pixel_y = -6, time = 3)
 			playsound(V, 'sound/vehicles/skateboard_ollie.ogg', 50, TRUE)
-			ATOM_PASS_table_on(L, VEHICLE_TRAIT)
+			pass_table_on(L, VEHICLE_TRAIT)
 			V.pass_flags |= ATOM_PASS_TABLE
 			L.Move(landing_turf, vehicle_target.dir)
-			ATOM_PASS_table_off(L, VEHICLE_TRAIT)
+			pass_table_off(L, VEHICLE_TRAIT)
 			V.pass_flags &= ~ATOM_PASS_TABLE
 		if(locate(/obj/structure/table) in V.loc.contents)
 			V.grinding = TRUE

@@ -35,8 +35,9 @@
 
 ///Can the mover object pass this atom, while heading for the target turf
 /atom/proc/CanPass(atom/movable/mover, turf/target)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	SHOULD_BE_PURE(TRUE)
+	// SHOULD_NOT_OVERRIDE(TRUE)
+	// SHOULD_BE_PURE(TRUE)
+	// SHOULD_CALL_PARENT(TRUE)
 	if(mover.movement_type & UNSTOPPABLE)
 		return TRUE
 	. = CanAllowThrough(mover, target)
@@ -46,8 +47,8 @@
 
 /// Returns true or false to allow the mover to move through src
 /atom/proc/CanAllowThrough(atom/movable/mover, turf/target)
-	SHOULD_CALL_PARENT(TRUE)
-	SHOULD_BE_PURE(TRUE)
+	// SHOULD_CALL_PARENT(TRUE)
+	// SHOULD_BE_PURE(TRUE)
 	if(mover.pass_flags & pass_flags_self)
 		return TRUE
 	if(mover.throwing && (pass_flags_self & ATOM_PASS_THROWN))

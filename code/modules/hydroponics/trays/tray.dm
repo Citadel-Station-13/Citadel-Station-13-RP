@@ -2,8 +2,9 @@
 	name = "hydroponics tray"
 	icon = 'icons/obj/hydroponics_machines.dmi'
 	icon_state = "hydrotray3"
-	density = 1
-	anchored = 1
+	density = TRUE
+	pass_flags_self = ATOM_PASS_TABLE
+	anchored = TRUE
 	flags = OPENCONTAINER
 	volume = 100
 
@@ -219,11 +220,6 @@
 		return
 
 	..()
-
-/obj/machinery/portable_atmospherics/hydroponics/CanAllowThrough(atom/movable/mover, turf/target)
-	. = ..()
-	if(istype(mover) && mover.checkpass(ATOM_PASS_TABLE))
-		return TRUE
 
 /obj/machinery/portable_atmospherics/hydroponics/proc/check_health()
 	if(seed && !dead && health <= 0)

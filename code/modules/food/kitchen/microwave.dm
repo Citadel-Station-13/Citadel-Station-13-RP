@@ -4,8 +4,9 @@
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "mw"
 	layer = 2.9
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
+	pass_flags_self = ATOM_PASS_TABLE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 2000
@@ -446,10 +447,3 @@
 	)
 	dispose()
 
-/obj/machinery/microwave/CanAllowThrough(atom/movable/mover, turf/target, height=0, air_group=0)
-	if (!mover)
-		return 1
-	if(mover.checkpass(ATOM_PASS_TABLE))
-	//Animals can run under them, lots of empty space
-		return 1
-	return ..()
