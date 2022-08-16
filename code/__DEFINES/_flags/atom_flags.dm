@@ -68,7 +68,7 @@ DEFINE_BITFIELD(flags, list(
 	BITFIELD(NOPRINT),
 ))
 
-// Flags for pass_flags. - Used in /atom/var/pass_flags
+// Flags for pass_flags. - Used in /atom/movable/var/pass_flags, and /atom/var/pass_flags_self
 #define PASSTABLE				(1<<0)
 #define PASSGLASS				(1<<1)
 #define PASSGRILLE				(1<<2)
@@ -76,6 +76,14 @@ DEFINE_BITFIELD(flags, list(
 #define PASSMOB					(1<<4)
 
 DEFINE_BITFIELD(pass_flags, list(
+	BITFIELD(PASSTABLE),
+	BITFIELD(PASSGLASS),
+	BITFIELD(PASSGRILLE),
+	BITFIELD(PASSBLOB),
+	BITFIELD(PASSMOB),
+))
+
+DEFINE_BITFIELD(pass_flags_self, list(
 	BITFIELD(PASSTABLE),
 	BITFIELD(PASSGLASS),
 	BITFIELD(PASSGRILLE),

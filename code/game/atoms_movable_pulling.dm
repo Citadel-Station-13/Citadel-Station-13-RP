@@ -40,7 +40,7 @@
 		AM.pulledby.stop_pulling() //an object can't be pulled by two mobs at once.
 	pulling = AM
 	AM.pulledby = src
-	AM.set_glide_size(glide_size)
+	recursive_pulled_glidesize_update()
 
 	if(ismob(AM))
 		var/mob/M = AM
@@ -141,3 +141,16 @@
 						if(bloodtrail)
 							if(istype(location, /turf/simulated))
 								location.add_blood(M)
+
+/**
+ * Recursively set glide size for atom's pulled things
+ */
+/atom/movable/proc/recursive_pulled_glidesize_update()
+	var/list/ran = list()
+	var/atom/movable/updating = pulling
+	while(updating)
+		if(ran[updating])
+			return
+		updating.set_glide_size(glide_size, FALSE)
+		ran[updating] = TRUE
+		updating = updating.pulling

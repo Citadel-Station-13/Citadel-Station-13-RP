@@ -309,6 +309,7 @@
 	if((direct & (direct - 1)) && mob.loc == n) //moved diagonally successfully
 		add_delay *= SQRT_2
 	mob.move_delay += add_delay
+	mob.last_move = world.time
 /*
 	if(.) // If mob is null here, we deserve the runtime
 		if(mob.throwing)

@@ -185,9 +185,9 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 	return LAZYACCESS(movespeed_modification, key)
 
 /// Set or update the global movespeed config on a mob
-/mob/proc/update_config_movespeed()
+// /mob/proc/update_config_movespeed()
 	add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/mob_config_speedmod, multiplicative_slowdown = get_config_multiplicative_speed())
-	add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/mob_config_speedmod_floating, multiplicative_slowdown = get_config_multiplicative_speed(TRUE))
+	// add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/mob_config_speedmod_floating, multiplicative_slowdown = get_config_multiplicative_speed(TRUE))
 
 /// Get the global config movespeed of a mob by type
 /mob/proc/get_config_multiplicative_speed(floating = FALSE)
@@ -221,24 +221,32 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 	cached_multiplicative_slowdown = .
 	if(!client)
 		return
-	var/diff = (client.last_move - client.move_delay) - cached_multiplicative_slowdown
+	var/diff = (last_move - move_delay) - cached_multiplicative_slowdown
 	if(diff > 0)
-		if(client.move_delay > world.time + 1.5)
-			client.move_delay -= diff
-		var/timeleft = world.time - client.move_delay
-		var/elapsed = world.time - client.last_move
+		if(move_delay > world.time + 1.5)
+			move_delay -= diff
+		var/timeleft = world.time - move_delay
+		var/elapsed = world.time - last_move
 		var/glide_size_current = glide_size
 		if((timeleft <= 0) || (elapsed > 20))
-			set_glide_size(16, TRUE)
+			SMOOTH_GLIDE_SIZE(src, 16, TRUE)
 			return
 		var/pixels_moved = glide_size_current * elapsed * (1 / world.tick_lag)
 		// calculate glidesize needed to move to the next tile within timeleft deciseconds
 		var/ticks_allowed = timeleft / world.tick_lag
 		var/pixels_per_tick = pixels_moved / ticks_allowed
-		set_glide_size(pixels_per_tick * GLOB.glide_size_multiplier, TRUE)
+		SMOOTH_GLIDE_SIZE(src, pixels_per_tick * GLOB.glide_size_multiplier, TRUE)
 
-/// Get the move speed modifiers list of the mob
+/// Get the move speed modifier datums of this mob
 /mob/proc/get_movespeed_modifiers()
+	RETURN_TYPE(/list)
+	for(var/id in movespeed_modification)
+		if(id in movespeed_mod_immunities)
+			continue
+		. += movespeed_modification[id]
+
+/// Get the movespeed modifier ids on this mob
+/mob/proc/get_movespeed_modifier_ids()
 	. = LAZYCOPY(movespeed_modification)
 	for(var/id in movespeed_mod_immunities)
 		. -= id

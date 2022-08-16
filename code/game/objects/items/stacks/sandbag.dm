@@ -106,6 +106,7 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 	base_icon_state = "sandbags"
 	anchored = TRUE
 	density = TRUE
+	pass_flags_self = PASSTALBE | PASS_FLAG_LET_THROWN_PASS
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = list(SMOOTH_GROUP_SANDBAGS)
 	canSmoothWith = list(SMOOTH_GROUP_SANDBAGS)
@@ -204,12 +205,6 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 			health -= 25
 			CheckHealth()
 
-/obj/structure/sandbag/CanAllowThrough(atom/movable/mover, turf/target)//So bullets will fly over and stuff.
-	. = ..()
-	if(istype(mover) && mover.checkpass(PASSTABLE))
-		return TRUE
-	return FALSE
-
 /obj/structure/sandbag/proc/break_to_parts(full_return = 0)
 	if(full_return || prob(20))
 		new /obj/item/stack/sandbags(src.loc)
@@ -217,4 +212,3 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 		new /obj/item/stack/material/cloth(src.loc)
 		new /obj/item/ore/glass(src.loc)
 	qdel(src)
-	return

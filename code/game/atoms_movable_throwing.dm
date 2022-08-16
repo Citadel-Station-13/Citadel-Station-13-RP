@@ -1,5 +1,5 @@
 /**
- * hitby()
+ * throw_impacted()
  *
  * called when we're hit by something
  * @params

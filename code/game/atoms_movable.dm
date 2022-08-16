@@ -5,6 +5,8 @@
 	var/atom/movable/pulling
 	/// If false makes [CanPass][/atom/proc/CanPass] call [CanPassThrough][/atom/movable/proc/CanPassThrough] on this type instead of using default behaviour
 	var/generic_canpass = TRUE
+	/// Pass flags.
+	var/pass_flags = NONE
 	/// 0: not doing a diagonal move. 1 and 2: doing the first/second step of the diagonal move
 	var/moving_diagonally = 0
 	/// attempt to resume grab after moving instead of before. This is what atom/movable is pulling us during move-from-pulling.
@@ -27,8 +29,8 @@
 	var/datum/component/orbiter/orbiting
 	///Used for the calculate_adjacencies proc for icon smoothing.
 	var/can_be_unanchored = FALSE
-	/// Our default glide_size.
-	var/default_glide_size = 0
+	/// Our default glide_size. Null to use global default.
+	var/default_glide_sizes
 	/// our default perspective - if none, a temporary one will be generated when a mob requires it
 	var/datum/perspective/self_perspective
 	/// anchored to ground? prevent movement absolutely if so

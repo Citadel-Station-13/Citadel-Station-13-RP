@@ -3,6 +3,7 @@
 	desc = "Used for advanced medical procedures."
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "table2-idle"
+	pass_flags_self = PASSTABLE
 	density = TRUE
 	anchored = TRUE
 	circuit = /obj/item/circuitboard/operating_table
@@ -44,20 +45,12 @@
 		if(3.0)
 			if(prob(25))
 				density = 0
-		else
-	return
 
 /obj/machinery/optable/attack_hand(mob/user)
 	if(HULK in usr.mutations)
 		visible_message(SPAN_DANGER("\The [usr] destroys \the [src]!"))
 		density = FALSE
 		qdel(src)
-	return
-
-/obj/machinery/optable/CanAllowThrough(atom/movable/mover, turf/target)
-	. = ..()
-	if(istype(mover) && mover.checkpass(PASSTABLE))
-		return TRUE
 
 /obj/machinery/optable/proc/check_victim()
 	if(locate(/mob/living/carbon/human, src.loc))

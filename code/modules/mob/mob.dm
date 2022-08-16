@@ -29,7 +29,10 @@
 	init_rendering()
 	hook_vr("mob_new",list(src))
 	update_transform() // Some mobs may start bigger or smaller than normal.
-	return ..()
+	. = ..()
+	update_config_movespeed()
+	update_movespeed(TRUE)
+	initialize_actionspeed()
 
 /**
  * Delete a mob
@@ -58,9 +61,10 @@
 	dead_mob_list -= src
 	living_mob_list -= src
 	unset_machine()
-	if(hud_used)
-		QDEL_NULL(hud_used)
-	dispose_rendering()
+	movespeed_modification = null
+	actionspeed_modification = null
+	for(var/alert in alerts)
+		clear_alert(alert)
 	if(client)
 		for(var/atom/movable/screen/movable/spell_master/spell_master in spell_masters)
 			qdel(spell_master)
@@ -70,6 +74,9 @@
 		spellremove(src)
 	// this kicks out client
 	ghostize()
+	if(hud_used)
+		QDEL_NULL(hud_used)
+	dispose_rendering()
 	if(plane_holder)
 		QDEL_NULL(plane_holder)
 	// with no client, we can safely remove perspective this way snow-flakily

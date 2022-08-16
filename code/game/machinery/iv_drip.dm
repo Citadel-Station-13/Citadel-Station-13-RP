@@ -3,11 +3,11 @@
 	icon = 'icons/obj/iv_drip.dmi'
 	anchored = FALSE
 	density = FALSE
+	pass_flags_self = PASSTABLE
 
-
-/obj/machinery/iv_drip/var/mob/living/carbon/human/attached = null
-/obj/machinery/iv_drip/var/mode = 1 // 1 is injecting, 0 is taking blood.
-/obj/machinery/iv_drip/var/obj/item/reagent_containers/beaker = null
+	var/mob/living/carbon/human/attached = null
+	var/mode = 1 // 1 is injecting, 0 is taking blood.
+	var/obj/item/reagent_containers/beaker = null
 
 /obj/machinery/iv_drip/update_icon()
 	if(attached)
@@ -184,8 +184,3 @@
 		. += SPAN_NOTICE("No chemicals are attached.")
 
 	. += SPAN_NOTICE("[attached ? attached : "No one"] is attached.")
-
-/obj/machinery/iv_drip/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSTABLE)) //allow bullets, beams, thrown objects, mice, drones, and the like through.
-		return TRUE
-	return ..()

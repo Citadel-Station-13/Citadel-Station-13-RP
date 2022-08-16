@@ -399,16 +399,23 @@
 /**
   * Sets our glide size
   */
-/atom/movable/proc/set_glide_size(new_glide_size)
+/atom/movable/proc/set_glide_size(new_glide_size, recursive = TRUE)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE, new_glide_size, glide_size)
 	glide_size = new_glide_size
+
+	for(var/m in buckled_mobs)
+		var/mob/buckled_mob = m
+		buckled_mob.set_glide_size(target)
+
+	if(recursive)
+		recursive_pulled_glidesize_update()
 
 /**
   * Sets our glide size back to our standard glide size.
   */
 
 /atom/movable/proc/reset_glide_size()
-	set_glide_size(default_glide_size)
+	set_glide_size(isnull(defualt_glide_size)? GLOB.default_glide_size : default_glide_size)
 
 ///Sets the anchored var and returns if it was sucessfully changed or not.
 /atom/movable/proc/set_anchored(anchorvalue)

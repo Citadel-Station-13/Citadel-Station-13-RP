@@ -20,8 +20,8 @@
 	var/interaction_flags_atom = NONE
 	/// Holder for the last time we have been bumped.
 	var/last_bumped = 0
-	/// Pass flags.
-	var/pass_flags = NONE
+	/// pass_flags that we are. If any of this matches a pass_flag on a moving thing, by default, we let them through.
+	var/pass_flags_self = NONE
 	/// If true, you can throw things past this atom.
 	var/throwpass = FALSE
 	/// The higher the germ level, the more germ on the atom.

@@ -404,6 +404,8 @@
 	else
 		return 0
 
+#warn below
+
 /obj/item/throw_impact(atom/hit_atom)
 	..()
 	if(isliving(hit_atom)) //Living mobs handle hit sounds differently.
@@ -419,6 +421,52 @@
 			playsound(hit_atom, 'sound/weapons/throwtap.ogg', 1, volume, -1)
 	else
 		playsound(src, drop_sound, 30, preference = /datum/client_preference/drop_sounds)
+
+#warn above old below new figure it out
+
+/obj/item/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+	if(hit_atom && !QDELETED(hit_atom))
+		SEND_SIGNAL(src, COMSIG_MOVABLE_IMPACT, hit_atom, throwingdatum)
+		if(get_temperature() && isliving(hit_atom))
+			var/mob/living/L = hit_atom
+			L.IgniteMob()
+		var/itempush = 1
+		if(w_class < 4)
+			itempush = 0 //too light to push anything
+		if(isliving(hit_atom)) //Living mobs handle hit sounds differently.
+			var/volume = get_volume_by_throwforce_and_or_w_class()
+			if (throwforce > 0)
+				if (mob_throw_hit_sound)
+					playsound(hit_atom, mob_throw_hit_sound, volume, TRUE, -1)
+				else if(hitsound)
+					playsound(hit_atom, hitsound, volume, TRUE, -1)
+				else
+					playsound(hit_atom, 'sound/weapons/genhit.ogg',volume, TRUE, -1)
+			else
+				playsound(hit_atom, 'sound/weapons/throwtap.ogg', 1, volume, -1)
+
+		else if (drop_sound)
+			playsound(src, drop_sound, YEET_SOUND_VOLUME, ignore_walls = FALSE)
+		return hit_atom.hitby(src, 0, itempush, throwingdatum=throwingdatum)
+
+/obj/item/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, force, messy_throw = TRUE)
+	thrownby = thrower
+	callback = CALLBACK(src, .proc/after_throw, callback, (spin && messy_throw)) //replace their callback with our own
+	. = ..(target, range, speed, thrower, spin, diagonals_first, callback, force)
+
+/obj/item/proc/after_throw(datum/callback/callback, messy_throw)
+	if (callback) //call the original callback
+		. = callback.Invoke()
+	throw_speed = initial(throw_speed) //explosions change this.
+	item_flags &= ~IN_INVENTORY
+	if(messy_throw)
+		var/matrix/M = matrix(transform)
+		M.Turn(rand(-170, 170))
+		transform = M
+		pixel_x = rand(-8, 8)
+		pixel_y = rand(-8, 8)
+
+#warn above
 
 // called when this item is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.
 /obj/item/proc/on_exit_storage(obj/item/storage/S as obj)
