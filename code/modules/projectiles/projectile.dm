@@ -237,7 +237,7 @@
 	if(AM.is_incorporeal())
 		return
 	..()
-	if(isliving(AM) && !(pass_flags & ATOM_PASS_MOB))
+	if(isliving(AM) && !check_pass_flags(ATOM_PASS_MOB))
 		var/mob/living/L = AM
 		if(can_hit_target(L, permutated, (AM == original)))
 			Bump(AM)

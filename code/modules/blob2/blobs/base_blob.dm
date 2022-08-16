@@ -6,6 +6,7 @@ var/list/blobs = list()
 	desc = "A thick wall of writhing tendrils."
 	light_range = 2
 	density = FALSE // This is false because blob mob AI's walk_to() proc appears to never attempt to move onto dense objects even if allowed by CanPass().
+	pass_flags_self = ATOM_PASS_BLOB
 	opacity = FALSE
 	anchored = TRUE
 	layer = MOB_LAYER + 0.1
@@ -47,10 +48,10 @@ var/list/blobs = list()
 
 // Blob tiles are not actually dense so we need Special Code(tm).
 /obj/structure/blob/CanAllowThrough(atom/movable/mover, turf/target)
-	. = ..()
-	if(istype(mover) && mover.checkpass(ATOM_PASS_BLOB))
+	// density is false, can't trust parent procs
+	if(check_standard_flag_pass(mover))
 		return TRUE
-	else if(istype(mover, /mob/living))
+	else iff(istype(mover, /mob/living))
 		var/mob/living/L = mover
 		if(L.faction == "blob")
 			return TRUE

@@ -315,10 +315,11 @@
 				G.storedpower -= 12000
 	return
 
-
 /obj/machinery/shieldwall/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(ATOM_PASS_GLASS))
+	. = ..()
+	if(.)
+		return
+	if(istype(mover) && mover.check_pass_flags(ATOM_PASS_GLASS))
 		return prob(20)
 	if(istype(mover, /obj/item/projectile))
 		return prob(10)
-	return !density

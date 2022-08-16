@@ -5,11 +5,11 @@ var/list/table_icon_cache = list()
 	icon = 'icons/obj/tables.dmi'
 	icon_state = "frame"
 	desc = "It's a table, for putting things on. Or standing on, if you really want to."
-	density = 1
-	anchored = 1
-	climbable = 1
+	density = TRUE
+	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_TABLE
+	anchored = TRUE
+	climbable = TRUE
 	layer = TABLE_LAYER
-	throwpass = 1
 	surgery_odds = 66
 	var/flipped = 0
 	var/maxhealth = 10
@@ -210,11 +210,6 @@ var/list/table_icon_cache = list()
 		reinforce_table(what, usr)
 	else
 		return ..()
-
-/obj/structure/table/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
-	. = !density
-	if(istype(caller))
-		. = . || (caller.pass_flags & ATOM_PASS_TABLE)
 
 /obj/structure/table/proc/reinforce_table(obj/item/stack/material/S, mob/user)
 	if(reinforced)

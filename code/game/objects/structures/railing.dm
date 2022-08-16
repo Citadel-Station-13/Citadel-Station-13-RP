@@ -3,11 +3,11 @@
 	name = "railing"
 	desc = "A standard steel railing.  Play stupid games, win stupid prizes."
 	icon = 'icons/obj/railing.dmi'
-	density = 1
-	throwpass = 1
-	climbable = 1
+	density = TRUE
+	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_TABLE
+	climbable = TRUE
 	layer = WINDOW_LAYER
-	anchored = 1
+	anchored = TRUE
 	flags = ON_BORDER
 	icon_state = "railing0"
 	var/broken = FALSE
@@ -27,9 +27,6 @@
 		anchored = 0
 	if(climbable)
 		verbs += /obj/structure/proc/climb_on
-
-/obj/structure/railing/Initialize(mapload)
-	. = ..()
 	if(src.anchored)
 		update_icon(0)
 
@@ -40,20 +37,16 @@
 		R.update_icon()
 
 /obj/structure/railing/CanAllowThrough(atom/movable/mover, turf/target)
-	. = ..()
-	if(mover.checkpass(ATOM_PASS_TABLE) || mover.throwing)
+	if(!(get_dir(mover, target) & turn(dir, 180)))
 		return TRUE
-	if(get_dir(mover, target) & turn(dir, 180))
-		return !density
-	return TRUE
+	return ..()
 
 /obj/structure/railing/CheckExit(atom/movable/mover, atom/newLoc)
-	if(mover.checkpass(ATOM_PASS_TABLE) || mover.throwing)
+	if(check_standard_flag_pass(mover))
 		return TRUE
-	if(mover.loc == get_turf(src))	//moving out of us
-		if(get_dir(mover, newLoc) & dir)
-			return !density
-	return TRUE
+	if(!(get_dir(mover, newLoc) & dir))
+		return TRUE
+	return density
 
 /obj/structure/railing/examine(mob/user)
 	. = ..()
@@ -199,13 +192,6 @@
 	setDir(turn(dir, 180))
 	update_icon()
 	return
-
-/obj/structure/railing/CheckExit(atom/movable/O as mob|obj, target as turf)
-	if(istype(O) && O.checkpass(ATOM_PASS_TABLE))
-		return 1
-	if(get_dir(O.loc, target) == dir)
-		return 0
-	return 1
 
 /obj/structure/railing/attackby(obj/item/W as obj, mob/user as mob)
 	// Dismantle

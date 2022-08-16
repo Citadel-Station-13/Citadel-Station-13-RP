@@ -13,8 +13,9 @@ obj/structure/windoor_assembly
 	name = "windoor assembly"
 	icon = 'icons/obj/doors/windoor.dmi'
 	icon_state = "l_windoor_assembly01"
-	anchored = 0
-	density = 0
+	anchored = FALSE
+	density = FALSE
+	pass_flags_self = ATOM_PASS_GLASS
 	dir = NORTH
 	w_class = ITEMSIZE_NORMAL
 
@@ -55,19 +56,18 @@ obj/structure/windoor_assembly/Destroy()
 	icon_state = "[facing]_[secure]windoor_assembly[state]"
 
 /obj/structure/windoor_assembly/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(ATOM_PASS_GLASS))
+	if(!(get_dir(loc, target) & dir))
+		// if it isn't our side we don't care
 		return TRUE
-	if(get_dir(loc, target) == dir) //Make sure looking at appropriate border
-		return !density
-	return TRUE
+	return ..()
 
-/obj/structure/windoor_assembly/CheckExit(atom/movable/mover as mob|obj, turf/target as turf)
-	if(istype(mover) && mover.checkpass(ATOM_PASS_GLASS))
-		return 1
-	if(get_dir(loc, target) == dir)
-		return !density
-	else
-		return 1
+/obj/structure/windoor_assembly/CheckExit(atom/movable/AM, atom/newLoc)
+	if(!(get_dir(loc, target) & dir))
+		// ditto
+		return TRUE
+	if(check_standard_flag_pass(AM))
+		return TRUE
+	return !density
 
 /obj/structure/windoor_assembly/proc/rename_door(mob/living/user)
 	var/t = sanitizeSafe(input(user, "Enter the name for the windoor.", src.name, src.created_name), MAX_NAME_LEN)

@@ -2,7 +2,8 @@
 	name = "window"
 	desc = "A window."
 	icon = 'icons/obj/structures_vr.dmi'
-	density = 1
+	density = TRUE
+	pass_flags_self = ATOM_PASS_GLASS
 	CanAtmosPass = ATMOS_PASS_PROC
 	w_class = ITEMSIZE_NORMAL
 
@@ -141,14 +142,10 @@
 	take_damage(50)
 
 /obj/structure/window/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(ATOM_PASS_GLASS))
+	if(!is_fulltile() && !(get_dir(mover, target) & turn(dir, 180)))
+		// we don't care about them if we're not fulltile and they're not moving into us
 		return TRUE
-	if(is_fulltile())
-		return FALSE	//full tile window, you can't move into it!
-	if((get_dir(loc, target) & dir) || (get_dir(mover, target) == turn(dir, 180)))
-		return !density
-	else
-		return TRUE
+	return ..()
 
 /obj/structure/window/CanAtmosPass(turf/T, d)
 	if(is_fulltile() || (d == dir))
@@ -158,9 +155,9 @@
 /obj/structure/window/CheckExit(atom/movable/AM, turf/target)
 	if(is_fulltile())
 		return TRUE
-	if(AM.checkpass(ATOM_PASS_GLASS))
+	if(check_standard_flag_pass(AM))
 		return TRUE
-	if(get_dir(AM.loc, target) == dir)
+	if(get_dir(AM, target) == dir)
 		return FALSE
 	return TRUE
 

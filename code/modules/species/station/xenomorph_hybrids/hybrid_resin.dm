@@ -279,11 +279,9 @@
 	return
 
 /obj/effect/alien/hybrid_resin/CanAllowThrough(atom/movable/mover, turf/target)
-	. = ..()
-	if(istype(mover) && mover.checkpass(ATOM_PASS_GLASS))
-		return !opacity
-	return !density
-
+	if(check_standard_flag_pass(mover))
+		return TRUE
+	return ..()
 
 #define WEED_NORTH_EDGING "north"
 #define WEED_SOUTH_EDGING "south"

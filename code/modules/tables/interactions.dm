@@ -1,19 +1,19 @@
 /obj/structure/table/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
+	if(.)
+		return
 	if(istype(mover,/obj/item/projectile))
-		return (check_cover(mover,target))
-	if (flipped == 1)
-		if (get_dir(loc, target) == dir)
-			return !density
-		else
-			return TRUE
-	if(istype(mover) && mover.checkpass(ATOM_PASS_TABLE))
+		return check_cover(mover,target)
+	if(flipped)
+		if(get_dir(loc, target) == dir)
+			return FALSE
 		return TRUE
-	if(locate(/obj/structure/table/bench) in get_turf(mover))
-		return FALSE
-	var/obj/structure/table/table = locate(/obj/structure/table) in get_turf(mover)
-	if(table && !table.flipped)
+	for(var/obj/structure/table/T in get_turf(mover))
+		if(istype(T, /obj/structure/table/bench))
+			continue
+		if(T.flipped)
+			continue
 		return TRUE
-	return FALSE
 
 //checks if projectile 'P' from turf 'from' can hit whatever is behind the table. Returns 1 if it can, 0 if bullet stops.
 /obj/structure/table/proc/check_cover(obj/item/projectile/P, turf/from)
@@ -48,15 +48,12 @@
 				return 1
 	return 1
 
-/obj/structure/table/CheckExit(atom/movable/O as mob|obj, target as turf)
-	if(istype(O) && O.checkpass(ATOM_PASS_TABLE))
-		return 1
-	if (flipped==1)
-		if (get_dir(loc, target) == dir)
-			return !density
-		else
-			return 1
-	return 1
+/obj/structure/table/CheckExit(atom/movable/AM, atom/newLoc)
+	if(check_standard_flag_pass(AM))
+		return TRUE
+	if(!flipped)
+		return TRUE
+	return !density || (get_dir(loc, target) == dir)
 
 /obj/structure/table/attackby(obj/item/W, mob/user, params)
 	// Handle harm intent grabbing/tabling.
