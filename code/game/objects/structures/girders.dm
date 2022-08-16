@@ -292,11 +292,6 @@
 	girder_material.place_dismantled_product(get_turf(src), 2)
 	qdel(src)
 
-/obj/structure/girder/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
-	. = !density
-	if(istype(caller))
-		. = . || (caller.pass_flags & ATOM_PASS_GRILLE)
-
 /obj/structure/girder/attack_hand(mob/user as mob)
 	if (HULK in user.mutations)
 		visible_message("<span class='danger'>[user] smashes [src] apart!</span>")

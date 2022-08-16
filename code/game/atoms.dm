@@ -22,8 +22,6 @@
 	var/last_bumped = 0
 	/// pass_flags that we are. If any of this matches a pass_flag on a moving thing, by default, we let them through.
 	var/pass_flags_self = NONE
-	/// If true, you can throw things past this atom.
-	var/throwpass = FALSE
 	/// The higher the germ level, the more germ on the atom.
 	var/germ_level = GERM_LEVEL_AMBIENT
 	/// The 'action' the atom takes to speak.
@@ -749,9 +747,6 @@
 		return list("x"=cur_x,"y"=cur_y)
 	else
 		return 0
-
-/atom/proc/checkpass(passflag)
-	return (pass_flags&passflag)
 
 /atom/proc/isinspace()
 	if(istype(get_turf(src), /turf/space))

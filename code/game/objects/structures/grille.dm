@@ -3,8 +3,9 @@
 	desc = "A flimsy lattice of metal rods, with screws to secure it to the floor."
 	icon = 'icons/obj/structures_vr.dmi'
 	icon_state = "grille"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
+	pass_flags_self = ATOM_PASS_GRILLE
 	pressure_resistance = 5*ONE_ATMOSPHERE
 	layer = TABLE_LAYER
 	explosion_resistance = 1
@@ -49,12 +50,9 @@
 	attack_generic(user,damage_dealt,attack_message)
 
 /obj/structure/grille/CanAllowThrough(atom/movable/mover, turf/target)
-	. = ..()
-	if(istype(mover) && mover.checkpass(ATOM_PASS_GRILLE))
+	if(istype(mover, /obj/item/projectile) && prob(30))
 		return TRUE
-	if(istype(mover, /obj/item/projectile))
-		return prob(30)
-	return !density
+	return ..()
 
 /obj/structure/grille/bullet_act(var/obj/item/projectile/Proj)
 	if(!Proj)	return

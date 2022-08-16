@@ -53,3 +53,19 @@
 	if(mover.throwing && (pass_flags_self & ATOM_PASS_THROWN))
 		return TRUE
 	return !density
+
+/**
+ * for regexing
+ */
+/atom/proc/check_pass_flags_self(flags)
+	return pass_flags_self & flags
+
+/**
+ * checks if a movable atom should ignore us because of a pass flag match
+ */
+/atom/proc/check_standard_flag_pass(atom/movable/AM)
+	if(pass_flags_self & AM.pass_flags)
+		return TRUE
+	if(AM.throwing && (pass_flags_self & ATOM_PASS_THRONW))
+		return TRUE
+	return FALSE

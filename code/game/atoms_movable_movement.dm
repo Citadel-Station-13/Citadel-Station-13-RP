@@ -441,3 +441,9 @@
 
 /atom/movable/proc/move_crushed(atom/movable/pusher, force = MOVE_FORCE_DEFAULT, direction)
 	return FALSE
+
+/**
+ * for regexing
+ */
+/atom/movable/proc/check_pass_flags(flags)
+	return pass_flags & flags

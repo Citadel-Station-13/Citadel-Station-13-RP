@@ -139,7 +139,7 @@
 /obj/proc/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
 	if(ismovable(caller))
 		var/atom/movable/AM = caller
-		if(AM.checkpass(pass_flags))
+		if(AM.pass_flags & pass_flags_self)
 			return TRUE
 	. = !density
 

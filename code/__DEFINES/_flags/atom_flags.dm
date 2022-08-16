@@ -71,9 +71,11 @@ DEFINE_BITFIELD(flags, list(
 // Flags for pass_flags. - Used in /atom/movable/var/pass_flags, and /atom/var/pass_flags_self
 #define ATOM_PASS_TABLE				(1<<0)
 #define ATOM_PASS_GLASS				(1<<1)
-#define ATOM_PASS_GRILLE				(1<<2)
+#define ATOM_PASS_GRILLE			(1<<2)
 #define ATOM_PASS_BLOB				(1<<3)
-#define ATOM_PASS_MOB					(1<<4)
+#define ATOM_PASS_MOB				(1<<4)
+/// let thrown objects pass; only makes sense on pass_flags_self
+#define ATOM_PASS_THROWN			(1<<5)
 
 DEFINE_BITFIELD(pass_flags, list(
 	BITFIELD(ATOM_PASS_TABLE),
@@ -81,6 +83,7 @@ DEFINE_BITFIELD(pass_flags, list(
 	BITFIELD(ATOM_PASS_GRILLE),
 	BITFIELD(ATOM_PASS_BLOB),
 	BITFIELD(ATOM_PASS_MOB),
+	BITFIELD(ATOM_PASS_THROWN),
 ))
 
 DEFINE_BITFIELD(pass_flags_self, list(
@@ -89,6 +92,7 @@ DEFINE_BITFIELD(pass_flags_self, list(
 	BITFIELD(ATOM_PASS_GRILLE),
 	BITFIELD(ATOM_PASS_BLOB),
 	BITFIELD(ATOM_PASS_MOB),
+	BITFIELD(ATOM_PASS_THROWN),
 ))
 
 // /atom/movable movement_type

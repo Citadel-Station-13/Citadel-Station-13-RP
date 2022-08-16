@@ -6,7 +6,8 @@
 	layer = ABOVE_UTILITY
 	icon = 'icons/turf/catwalks.dmi'
 	icon_state = "catwalk"
-	density = 0
+	density = FALSE
+	anchored = TRUE
 	var/health = 100
 	var/maxhealth = 100
 	var/obj/item/stack/tile/plated_tile = null
@@ -14,7 +15,6 @@
 		/obj/item/stack/tile/floor = "#858a8f",
 		/obj/item/stack/tile/floor/dark = "#4f4f4f",
 		/obj/item/stack/tile/floor/white = "#e8e8e8")
-	anchored = 1.0
 
 /obj/structure/catwalk/Initialize(mapload)
 	. = ..()
@@ -97,11 +97,11 @@
 		playsound(src, pick('sound/effects/footstep/catwalk1.ogg', 'sound/effects/footstep/catwalk2.ogg', 'sound/effects/footstep/catwalk3.ogg', 'sound/effects/footstep/catwalk4.ogg', 'sound/effects/footstep/catwalk5.ogg'), 25, 1)
 
 /obj/structure/catwalk/CheckExit(atom/movable/O, turf/target)
-	if(O.checkpass(ATOM_PASS_GRILLE))
-		return 1
+	if(O.check_pass_flags(ATOM_PASS_GRILLE))
+		return TRUE
 	if(target && target.z < src.z)
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /obj/structure/catwalk/take_damage(amount)
 	health -= amount
