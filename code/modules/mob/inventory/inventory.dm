@@ -381,6 +381,12 @@
  * todo: refactor nesting to not require this shit
  */
 /mob/proc/can_equip(obj/item/I, slot, flags, mob/user, denest_to)
+	// let's NOT.
+	if(I && QDELETED(I))
+		to_chat(user, SPAN_DANGER("A deleted [I] was checked in can_equip(). Report this entire line to coders immediately. Debug data: [I] ([REF(I)]) slot [slot] flags [flags] user [user]"))
+		to_chat(user, SPAN_DANGER("can_equip will now attempt to prevent the deleted item from being equipped. There should be no glitches."))
+		return TRUE
+		
 	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
 	var/self_equip = user == src
 	if(!slot_meta)
