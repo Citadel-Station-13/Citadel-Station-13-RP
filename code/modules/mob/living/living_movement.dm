@@ -269,6 +269,8 @@
 					return TRUE
 
 	//CIT CHANGES START HERE - makes it so resting stops you from moving through standing folks or over prone bodies without a short delay
+	#warn this is a dumpster fire
+	/*
 		if(!CHECK_MOBILITY(src, MOBILITY_STAND))
 			var/origtargetloc = L.loc
 			if(!pulledby)
@@ -291,6 +293,7 @@
 				pass_flags &= ~ATOM_PASS_MOB
 			combat_flags &= ~(COMBAT_FLAG_ATTEMPTING_CRAWL)
 			return TRUE
+	*/
 	//END OF CIT CHANGES
 
 	if(moving_diagonally)//no mob swap during diagonal moves.
