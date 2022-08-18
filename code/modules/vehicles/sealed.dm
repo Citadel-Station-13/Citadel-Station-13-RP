@@ -2,7 +2,8 @@
 	enclosed = TRUE // you're in a sealed vehicle dont get dinked idiot
 	var/enter_delay = 20
 	var/explode_on_death = TRUE
-	flags_1 = BLOCK_FACE_ATOM_1
+	//? ??? what was this for ???
+	// flags = BLOCK_FACE_ATOM
 
 /obj/vehicle/sealed/generate_actions()
 	. = ..()
@@ -14,8 +15,9 @@
 	if(istype(E))
 		E.vehicle_entered_target = src
 
-/obj/vehicle/sealed/MouseDrop_T(atom/dropping, mob/M)
-	if(!istype(dropping) || !istype(M))
+/obj/vehicle/sealed/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
+	. = ..()
+	if(!istype(dropping) || !isliving(user))
 		return ..()
 	if(M == dropping)
 		mob_try_enter(M)
@@ -54,7 +56,7 @@
 	if(!isAI(M))//This is the ONE mob we dont want to be moved to the vehicle that should be handeled when used
 		M.forceMove(exit_location(M))
 	if(randomstep)
-		var/turf/target_turf = get_step(exit_location(M), pick(GLOB.cardinals))
+		var/turf/target_turf = get_step(exit_location(M), pick(GLOB.cardinal))
 		M.throw_at(target_turf, 5, 10)
 
 	if(!silent)
@@ -66,13 +68,13 @@
 
 /obj/vehicle/sealed/attackby(obj/item/I, mob/user, params)
 	if(key_type && !is_key(inserted_key) && is_key(I))
-		if(user.transferItemToLoc(I, src))
-			to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
-			if(inserted_key)	//just in case there's an invalid key
-				inserted_key.forceMove(drop_location())
-			inserted_key = I
-		else
-			to_chat(user, "<span class='notice'>[I] seems to be stuck to your hand!</span>")
+		. = CLICKCHAIN_DO_NOT_PROPAGATE
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
+		to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
+		if(inserted_key)	//just in case there's an invalid key
+			inserted_key.forceMove(drop_location())
+		inserted_key = I
 		return
 	return ..()
 

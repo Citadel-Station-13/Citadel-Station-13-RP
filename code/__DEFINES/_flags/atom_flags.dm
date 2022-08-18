@@ -105,3 +105,12 @@ DEFINE_BITFIELD(movement_type, list(
 	BITFIELD(FLOATING),
 	BITFIELD(VENTCRAWLING),
 ))
+
+//! /atom/movable buckle_flags
+/// requires restrained() (usually handcuffs) to work
+#define BUCKLING_REQUIRES_RESTRAINTS					(1<<0)
+/// buckling doesn't allow you to pull the person to try to move the object (assuming the object otherwise can be pulled). This does NOT stop them from pulling the buckled object!
+#define BUCKLING_PREVENTS_PULLING						(1<<1)
+/// automatically pass projectiles hitting us up
+// todo: implement
+#define BUCKLING_PASS_PROJECTILES_UPWARDS				(1<<2)

@@ -46,6 +46,7 @@
 	buckle_movable = TRUE
 	buckle_lying = FALSE
 
+#warn nuke this fetish shit from orbit
 /mob/living/carbon/human/buckle_mob(mob/living/M, forced = FALSE, check_loc = TRUE)
 	if(forced)
 		return ..() // Skip our checks

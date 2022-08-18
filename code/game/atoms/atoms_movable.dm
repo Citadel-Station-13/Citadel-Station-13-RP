@@ -34,20 +34,19 @@
 	var/datum/perspective/self_perspective
 
 //! Buckling
-	/// Buckling prevents people from pulling the person buckled
-	var/buckle_prevents_pull = FALSE
-	/// Can mobs be buckled to this atom. False = hard, non-overridable prevention.
+#warn flags so we can have BUCKLE_AUTO_PASS_PROJECTILES_UP
+	/// do we support the buckling system
 	var/buckle_allowed = FALSE
-	/// Can only buckle restrained people to this, like pipes.
-	var/buckle_require_restraints = FALSE
+	/// buckle flags, see [code/__DEFINES/_flags/atom_flags.dm]
+	var/buckle_flags = NONE
 	/// How many people can be buckled to us at once.
 	var/buckle_max_mobs = 1
-	/// if non-null, forces mob.lying to this
+	/// if non-null, forces mob.lying to this. this is NOT a boolean.
 	var/buckle_lying
-	/// buckled mobs
-	var/list/mob/buckled_mobs
 	/// direction to set buckled mobs to. null to not do that.
 	var/buckle_dir
+	/// buckled mobs
+	var/list/mob/buckled_mobs
 
 	var/anchored = FALSE
 	var/move_speed = 10

@@ -180,6 +180,7 @@
 
 	if(has_buckled_mobs() && buckled_mobs.len >= buckle_max_mobs) //Handles trying to buckle yourself to the chair when someone is on it
 		to_chat(M, "<span class='notice'>\The [src] can't buckle anymore people.</span>")
+
 		return FALSE
 
 	return TRUE
