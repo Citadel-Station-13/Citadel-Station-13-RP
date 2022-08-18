@@ -1916,7 +1916,7 @@
 "dj" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/landmark/spawnpoint/job/chef,
-/obj/effect/decal/cleanable/flour,
+/obj/effect/debris/cleanable/flour,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "dk" = (
@@ -6434,7 +6434,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/effect/decal/cleanable/egg_smudge,
+/obj/effect/debris/cleanable/egg_smudge,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "le" = (
@@ -7119,7 +7119,7 @@
 /area/bridge)
 "mu" = (
 /obj/random/maintenance/clean,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "mv" = (
@@ -7338,9 +7338,9 @@
 /area/shuttle/excursion/cargo)
 "mN" = (
 /obj/item/trash/chips,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "mO" = (
@@ -8141,7 +8141,7 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/random/maintenance/medical,
 /obj/random/maintenance/medical,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "ol" = (
@@ -9279,7 +9279,7 @@
 "qy" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/machinery/light,
-/obj/effect/decal/cleanable/egg_smudge,
+/obj/effect/debris/cleanable/egg_smudge,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "qz" = (
@@ -10257,7 +10257,7 @@
 /area/shuttle/excursion/general)
 "sx" = (
 /obj/structure/railing/grey,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "sy" = (
@@ -10445,7 +10445,7 @@
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/cockpit)
 "sQ" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
@@ -11086,7 +11086,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/bridge/bridge_hallway)
 "tZ" = (
@@ -11205,8 +11205,8 @@
 /area/bridge/bunker)
 "uj" = (
 /obj/machinery/vending/cola,
-/obj/effect/decal/cleanable/cobweb,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/cobweb,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "uk" = (
@@ -11485,7 +11485,7 @@
 /area/shuttle/excursion/general)
 "uP" = (
 /obj/machinery/vending/snack,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "uQ" = (
@@ -12145,7 +12145,7 @@
 /area/ai)
 "wb" = (
 /obj/random/trash_pile,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "wc" = (
@@ -12446,10 +12446,10 @@
 /area/exploration)
 "wA" = (
 /obj/item/reagent_containers/food/drinks/cans/space_mountain_wind,
-/obj/effect/decal/cleanable/flour,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/flour,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "wB" = (
@@ -13067,7 +13067,7 @@
 /area/rift/surfacebase/outside/outside3)
 "xB" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
-/obj/effect/decal/cleanable/flour,
+/obj/effect/debris/cleanable/flour,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -13187,7 +13187,7 @@
 /area/maintenance/bar)
 "xO" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
-/obj/effect/decal/cleanable/egg_smudge,
+/obj/effect/debris/cleanable/egg_smudge,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "xP" = (
@@ -13241,9 +13241,9 @@
 /area/shuttle/civvie/cockpit)
 "xU" = (
 /obj/item/trash/cheesie,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "xV" = (
@@ -13667,7 +13667,7 @@
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "yK" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "yL" = (
@@ -13749,7 +13749,7 @@
 /area/exploration)
 "yV" = (
 /obj/machinery/light/small/emergency,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "yW" = (
@@ -13900,7 +13900,7 @@
 /turf/simulated/wall/r_wall,
 /area/security/nuke_storage)
 "zl" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
@@ -14164,9 +14164,9 @@
 /area/ai_upload)
 "zP" = (
 /obj/item/trash/unajerky,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "zQ" = (
@@ -14194,7 +14194,7 @@
 /area/crew_quarters/kitchen)
 "zS" = (
 /obj/structure/catwalk,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "zT" = (
@@ -14282,9 +14282,9 @@
 /obj/item/storage/daki{
 	icon_state = "daki_Holo"
 	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "zZ" = (
@@ -14782,7 +14782,7 @@
 /obj/machinery/light/small/emergency{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "AW" = (
@@ -16179,11 +16179,11 @@
 /area/maintenance/commandmaint)
 "DE" = (
 /obj/structure/bed/padded,
-/obj/effect/decal/cleanable/fruit_smudge,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/fruit_smudge,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "DF" = (
@@ -16198,9 +16198,9 @@
 "DG" = (
 /obj/structure/table/steel,
 /obj/item/modular_computer/laptop/preset/custom_loadout/elite,
-/obj/effect/decal/cleanable/cobweb2,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/cobweb2,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "DH" = (
@@ -17357,13 +17357,13 @@
 /area/bridge)
 "FT" = (
 /obj/item/trash/cheesie,
-/obj/effect/decal/cleanable/flour,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/flour,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "FU" = (
@@ -18157,9 +18157,9 @@
 "HA" = (
 /obj/machinery/light/small,
 /obj/random/maintenance/clean,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "HB" = (
@@ -18233,9 +18233,9 @@
 /area/bridge)
 "HI" = (
 /obj/item/reagent_containers/food/drinks/bottle/space_mountain_wind,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "HJ" = (
@@ -18289,10 +18289,10 @@
 "HP" = (
 /obj/machinery/light/small,
 /obj/random/trash_pile,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "HQ" = (
@@ -20095,9 +20095,9 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cockpit)
 "Ll" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "Lm" = (
@@ -20356,9 +20356,9 @@
 /area/security/nuke_storage)
 "LO" = (
 /obj/item/reagent_containers/food/drinks/cans/space_mountain_wind,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "LP" = (
@@ -22158,12 +22158,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/office)
 "Pf" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "Pg" = (
@@ -22432,7 +22432,7 @@
 "PI" = (
 /obj/structure/railing/grey,
 /obj/random/trash_pile,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "PJ" = (
@@ -23184,7 +23184,7 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "Rb" = (
@@ -23781,7 +23781,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "Sb" = (
@@ -24180,7 +24180,7 @@
 	dir = 1
 	},
 /obj/structure/railing/grey,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "SN" = (
@@ -24486,7 +24486,7 @@
 /area/bridge)
 "Ts" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
-/obj/effect/decal/cleanable/flour,
+/obj/effect/debris/cleanable/flour,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "Tt" = (
@@ -25209,11 +25209,11 @@
 /area/exploration/meeting)
 "UM" = (
 /obj/item/trash/cheesie,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "UN" = (
@@ -25590,8 +25590,8 @@
 	pixel_y = 15
 	},
 /obj/random/medical/pillbottle,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "Vy" = (
@@ -25899,11 +25899,11 @@
 /area/maintenance/bar/lower)
 "Wc" = (
 /obj/item/bedsheet/reddouble,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "Wd" = (
@@ -26813,8 +26813,8 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "XJ" = (

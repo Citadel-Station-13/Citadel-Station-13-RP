@@ -530,7 +530,7 @@
 /area/maintenance/library)
 "axD" = (
 /obj/effect/floor_decal/rust,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
 "axE" = (
@@ -758,7 +758,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
 "aIk" = (
-/obj/effect/decal/cleanable/spiderling_remains,
+/obj/effect/debris/cleanable/spiderling_remains,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "aIo" = (
@@ -1643,10 +1643,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/cargo_hallway)
 "brW" = (
-/obj/effect/decal/cleanable/blood/drip{
+/obj/effect/debris/cleanable/blood/drip{
 	icon_state = "3"
 	},
-/obj/effect/decal/cleanable/blood/drip{
+/obj/effect/debris/cleanable/blood/drip{
 	icon_state = "5"
 	},
 /turf/simulated/floor/wood/broken,
@@ -1769,7 +1769,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
 "bxj" = (
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/floor/wood,
 /area/maintenance/lowmedbaymaint)
 "bxK" = (
@@ -3627,7 +3627,7 @@
 /area/lawoffice)
 "cTd" = (
 /obj/item/tool/screwdriver,
-/obj/effect/decal/cleanable/ash,
+/obj/effect/debris/cleanable/ash,
 /obj/item/cigbutt,
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
@@ -5898,7 +5898,7 @@
 /turf/simulated/floor/carpet/blucarpet,
 /area/lawoffice)
 "eir" = (
-/obj/effect/decal/cleanable/greenglow,
+/obj/effect/debris/cleanable/greenglow,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "ejc" = (
@@ -6729,7 +6729,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
 "eXK" = (
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "eXL" = (
@@ -7578,7 +7578,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "fMu" = (
-/obj/effect/decal/cleanable/molten_item,
+/obj/effect/debris/cleanable/molten_item,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "fMy" = (
@@ -8386,7 +8386,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/prison)
 "gvX" = (
-/obj/effect/decal/cleanable/egg_smudge,
+/obj/effect/debris/cleanable/egg_smudge,
 /obj/item/stool/padded,
 /obj/machinery/camera/network/civilian,
 /turf/simulated/floor/lino,
@@ -14150,17 +14150,17 @@
 /area/hallway/primary/surfaceone)
 "kmk" = (
 /obj/effect/floor_decal/rust,
-/obj/effect/decal/cleanable/blood/drip{
+/obj/effect/debris/cleanable/blood/drip{
 	icon_state = "5"
 	},
-/obj/effect/decal/cleanable/blood/drip,
-/obj/effect/decal/cleanable/blood/drip{
+/obj/effect/debris/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip{
 	icon_state = "2"
 	},
-/obj/effect/decal/cleanable/blood/drip{
+/obj/effect/debris/cleanable/blood/drip{
 	icon_state = "3"
 	},
-/obj/effect/decal/cleanable/blood/drip{
+/obj/effect/debris/cleanable/blood/drip{
 	icon_state = "4"
 	},
 /obj/item/handcuffs/cable/white,
@@ -17453,7 +17453,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
 "mBD" = (
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
 "mCe" = (
@@ -22941,8 +22941,8 @@
 /turf/simulated/shuttle/wall/voidcraft,
 /area/turbolift/rmine/surface)
 "qih" = (
-/obj/effect/decal/cleanable/blood/drip,
-/obj/effect/decal/cleanable/blood/drip{
+/obj/effect/debris/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip{
 	icon_state = "3"
 	},
 /turf/simulated/floor/plating,
@@ -22993,7 +22993,7 @@
 /area/quartermaster/delivery)
 "qjA" = (
 /obj/item/tool/wirecutters,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
 "qkF" = (
@@ -25882,7 +25882,7 @@
 /area/security/checkpoint)
 "snf" = (
 /obj/machinery/light/small,
-/obj/effect/decal/cleanable/spiderling_remains,
+/obj/effect/debris/cleanable/spiderling_remains,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "snR" = (
@@ -27006,7 +27006,7 @@
 "sZR" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/bed,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
 "taf" = (
@@ -27764,7 +27764,7 @@
 /area/maintenance/lowmedbaymaint)
 "tBB" = (
 /obj/effect/floor_decal/spline/plain,
-/obj/effect/decal/cleanable/pie_smudge,
+/obj/effect/debris/cleanable/pie_smudge,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -29051,7 +29051,7 @@
 /obj/item/tank/anesthetic,
 /obj/item/clothing/mask/breath/anesthetic,
 /obj/item/clothing/glasses/sunglasses/blindfold,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
 "upi" = (
@@ -29426,7 +29426,7 @@
 /turf/simulated/wall/r_wall,
 /area/rnd/xenoarch_storage)
 "uBT" = (
-/obj/effect/decal/cleanable/mucus,
+/obj/effect/debris/cleanable/mucus,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "uBV" = (
@@ -30817,7 +30817,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/tomato_smudge,
+/obj/effect/debris/cleanable/tomato_smudge,
 /turf/simulated/floor/lino,
 /area/tether/surfacebase/entertainment)
 "vNx" = (
@@ -32383,7 +32383,7 @@
 /area/maintenance/evahallway)
 "wNE" = (
 /obj/structure/catwalk,
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "wOm" = (
@@ -33604,11 +33604,11 @@
 /turf/simulated/floor/plating,
 /area/security/prison)
 "xMw" = (
-/obj/effect/decal/cleanable/vomit{
+/obj/effect/debris/cleanable/vomit{
 	icon_state = "vomit_3";
 	pixel_x = 11
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/wood,
 /area/maintenance/lowmedbaymaint)
 "xNk" = (

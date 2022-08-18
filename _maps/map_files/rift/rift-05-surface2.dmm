@@ -13697,10 +13697,10 @@
 	dir = 1;
 	pixel_y = 1
 	},
-/obj/effect/decal/cleanable/blood/drip{
+/obj/effect/debris/cleanable/blood/drip{
 	icon_state = "4"
 	},
-/obj/effect/decal/cleanable/blood/drip{
+/obj/effect/debris/cleanable/blood/drip{
 	icon_state = "3"
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -19100,7 +19100,7 @@
 /obj/structure/toilet{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/vomit{
+/obj/effect/debris/cleanable/vomit{
 	icon_state = "vomit_3"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -29911,13 +29911,13 @@
 	dir = 1;
 	pixel_y = 1
 	},
-/obj/effect/decal/cleanable/blood/drip{
+/obj/effect/debris/cleanable/blood/drip{
 	icon_state = "2"
 	},
-/obj/effect/decal/cleanable/blood/drip{
+/obj/effect/debris/cleanable/blood/drip{
 	icon_state = "3"
 	},
-/obj/effect/decal/cleanable/blood/drip{
+/obj/effect/debris/cleanable/blood/drip{
 	icon_state = "5"
 	},
 /turf/simulated/floor/tiled/monotile,

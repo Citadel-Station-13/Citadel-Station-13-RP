@@ -1937,7 +1937,7 @@
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/emt/general)
 "bFO" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
@@ -15026,7 +15026,7 @@
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "moW" = (
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
 "mpd" = (
@@ -23817,7 +23817,7 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
 "sIP" = (
@@ -28707,7 +28707,7 @@
 /turf/simulated/floor/grass,
 /area/medical/psych_ward)
 "wwY" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
 "wxf" = (

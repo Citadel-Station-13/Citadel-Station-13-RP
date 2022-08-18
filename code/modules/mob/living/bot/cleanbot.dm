@@ -40,7 +40,7 @@
 
 	if(spray_blood && prob(5)) // Make a big mess
 		visible_message("Something flies out of [src]. It seems to be acting oddly.")
-		var/obj/effect/decal/cleanable/blood/gibs/gib = new /obj/effect/decal/cleanable/blood/gibs(loc)
+		var/obj/effect/debris/cleanable/blood/gibs/gib = new /obj/effect/debris/cleanable/blood/gibs(loc)
 		// TODO - I have a feeling weakrefs will not work in ignore_list, verify this ~Leshana
 		var/datum/weakref/g = WEAKREF(gib)
 		ignore_list += g
@@ -74,12 +74,12 @@
 	return .
 
 /mob/living/bot/cleanbot/lookForTargets()
-	for(var/obj/effect/decal/cleanable/D in view(world.view, src)) // There was some odd code to make it start with nearest decals, it's unnecessary, this works
+	for(var/obj/effect/debris/cleanable/D in view(world.view, src)) // There was some odd code to make it start with nearest decals, it's unnecessary, this works
 		if(confirmTarget(D))
 			target = D
 			return
 
-/mob/living/bot/cleanbot/confirmTarget(var/obj/effect/decal/cleanable/D)
+/mob/living/bot/cleanbot/confirmTarget(var/obj/effect/debris/cleanable/D)
 	if(!..())
 		return FALSE
 	for(var/T in target_types)
@@ -91,7 +91,7 @@
 	if(get_turf(target) == src.loc)
 		UnarmedAttack(target)
 
-/mob/living/bot/cleanbot/UnarmedAttack(var/obj/effect/decal/cleanable/D, var/proximity)
+/mob/living/bot/cleanbot/UnarmedAttack(var/obj/effect/debris/cleanable/D, var/proximity)
 	if(!..())
 		return
 
@@ -105,7 +105,7 @@
 	if(prob(20))
 		custom_emote(2, "begins to clean up \the [D]")
 	update_icons()
-	var/cleantime = istype(D, /obj/effect/decal/cleanable/dirt) ? 10 : 50
+	var/cleantime = istype(D, /obj/effect/debris/cleanable/dirt) ? 10 : 50
 	if(do_after(src, cleantime))
 		if(istype(loc, /turf/simulated))
 			var/turf/simulated/f = loc
@@ -210,15 +210,15 @@
 /mob/living/bot/cleanbot/proc/get_targets()
 	target_types = list()
 
-	target_types += /obj/effect/decal/cleanable/blood/oil
-	target_types += /obj/effect/decal/cleanable/vomit
-	target_types += /obj/effect/decal/cleanable/crayon
-	target_types += /obj/effect/decal/cleanable/liquid_fuel
-	target_types += /obj/effect/decal/cleanable/mucus
-	target_types += /obj/effect/decal/cleanable/dirt
+	target_types += /obj/effect/debris/cleanable/blood/oil
+	target_types += /obj/effect/debris/cleanable/vomit
+	target_types += /obj/effect/debris/cleanable/crayon
+	target_types += /obj/effect/debris/cleanable/liquid_fuel
+	target_types += /obj/effect/debris/cleanable/mucus
+	target_types += /obj/effect/debris/cleanable/dirt
 
 	if(blood)
-		target_types += /obj/effect/decal/cleanable/blood
+		target_types += /obj/effect/debris/cleanable/blood
 
 /* Assembly */
 

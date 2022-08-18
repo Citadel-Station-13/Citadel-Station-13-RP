@@ -107,7 +107,7 @@
 		if(do_after(user,30))
 			user.visible_message("\The [user] finishes wiping off the [A]!")
 			A.clean_blood()
-			if(istype(A, /turf) || istype(A, /obj/effect/decal/cleanable) || istype(A, /obj/effect/overlay) || istype(A, /obj/effect/rune)) //Allows rags to clean dirt from turfs
+			if(istype(A, /turf) || istype(A, /obj/effect/debris/cleanable) || istype(A, /obj/effect/overlay) || istype(A, /obj/effect/rune)) //Allows rags to clean dirt from turfs
 				var/turf/T = get_turf(A)
 				if(T)
 					T.clean(src, user)
@@ -170,7 +170,7 @@
 	if(exposed_temperature >= 50 + T0C)
 		src.ignite()
 	if(exposed_temperature >= 900 + T0C)
-		new /obj/effect/decal/cleanable/ash(get_turf(src))
+		new /obj/effect/debris/cleanable/ash(get_turf(src))
 		qdel(src)
 
 //rag must have a minimum of 2 units welder fuel or ehtanol based reagents and at least 80% of the reagents must so.
@@ -215,7 +215,7 @@
 	//ensures players always have a few seconds of burn time left when they light their rag
 	if(burn_time <= 5)
 		visible_message("<span class='warning'>\The [src] falls apart!</span>")
-		new /obj/effect/decal/cleanable/ash(get_turf(src))
+		new /obj/effect/debris/cleanable/ash(get_turf(src))
 		qdel(src)
 	update_name()
 	update_icon()
@@ -235,7 +235,7 @@
 
 	if(burn_time <= 0)
 		STOP_PROCESSING(SSobj, src)
-		new /obj/effect/decal/cleanable/ash(location)
+		new /obj/effect/debris/cleanable/ash(location)
 		qdel(src)
 		return
 

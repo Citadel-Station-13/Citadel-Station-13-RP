@@ -30,7 +30,7 @@
 			destroy_hits -= (burndamage / destroytime)
 			if (destroy_hits <= 0)
 				visible_message("<span class='danger'>\The [src.name] disintegrates!</span>")
-				new /obj/effect/decal/cleanable/ash(src.loc) // Turn it to ashes!
+				new /obj/effect/debris/cleanable/ash(src.loc) // Turn it to ashes!
 				qdel(src)
 		take_damage(burndamage)
 

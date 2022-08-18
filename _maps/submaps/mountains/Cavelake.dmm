@@ -12,7 +12,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/Cavelake)
 "e" = (
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/Cavelake)
 "f" = (
@@ -38,7 +38,7 @@
 /turf/simulated/floor/water,
 /area/submap/Cavelake)
 "l" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/Cavelake)
 "m" = (

@@ -192,12 +192,12 @@
 				qdel(src)
 			else
 				if(toner > 0)
-					new /obj/effect/decal/cleanable/blood/oil(get_turf(src))
+					new /obj/effect/debris/cleanable/blood/oil(get_turf(src))
 					toner = 0
 		else
 			if(prob(50))
 				if(toner > 0)
-					new /obj/effect/decal/cleanable/blood/oil(get_turf(src))
+					new /obj/effect/debris/cleanable/blood/oil(get_turf(src))
 					toner = 0
 	return
 
