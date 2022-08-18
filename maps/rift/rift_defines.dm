@@ -39,7 +39,7 @@
 	zlevel_datum_type = /datum/map_z_level/rift
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
-	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6")
+	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6", "title7", "title8", "bnny")
 
 	admin_levels = list()
 	sealed_levels = list()
