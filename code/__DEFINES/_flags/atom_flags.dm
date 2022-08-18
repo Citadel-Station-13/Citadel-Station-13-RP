@@ -76,6 +76,8 @@ DEFINE_BITFIELD(flags, list(
 #define ATOM_PASS_MOB				(1<<4)
 /// let thrown objects pass; only makes sense on pass_flags_self
 #define ATOM_PASS_THROWN			(1<<5)
+/// Let clicks pass through even if dense
+#define ATOM_PASS_CLICK				(1<<6)
 
 DEFINE_BITFIELD(pass_flags, list(
 	BITFIELD(ATOM_PASS_TABLE),
@@ -84,6 +86,7 @@ DEFINE_BITFIELD(pass_flags, list(
 	BITFIELD(ATOM_PASS_BLOB),
 	BITFIELD(ATOM_PASS_MOB),
 	BITFIELD(ATOM_PASS_THROWN),
+	BITFIELD(ATOM_PASS_CLICK),
 ))
 
 DEFINE_BITFIELD(pass_flags_self, list(
@@ -93,6 +96,7 @@ DEFINE_BITFIELD(pass_flags_self, list(
 	BITFIELD(ATOM_PASS_BLOB),
 	BITFIELD(ATOM_PASS_MOB),
 	BITFIELD(ATOM_PASS_THROWN),
+	BITFIELD(ATOM_PASS_CLICK),
 ))
 
 // /atom/movable movement_type

@@ -185,9 +185,12 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 	return LAZYACCESS(movespeed_modification, key)
 
 /// Set or update the global movespeed config on a mob
-// /mob/proc/update_config_movespeed()
+/mob/proc/update_config_movespeed()
+// todo: this
+/*
 	add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/mob_config_speedmod, multiplicative_slowdown = get_config_multiplicative_speed())
-	// add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/mob_config_speedmod_floating, multiplicative_slowdown = get_config_multiplicative_speed(TRUE))
+	add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/mob_config_speedmod_floating, multiplicative_slowdown = get_config_multiplicative_speed(TRUE))
+*/
 
 /// Get the global config movespeed of a mob by type
 /mob/proc/get_config_multiplicative_speed(floating = FALSE)

@@ -42,16 +42,15 @@
 	/// our pulling force
 	var/pull_force = PULL_FORCE_DEFAULT
 
-#warn add pass_flags_self and modern stuff
-
 	var/move_speed = 10
 	var/l_move_time = 1
 	var/m_flag = 1
-	var/throwing = FALSE
-	var/thrower
-	var/turf/throw_source = null
+	// todo: trace "throwing" usages
+	var/datum/thrownthing/throwing
 	var/throw_speed = 2
 	var/throw_range = 7
+
+	// todo: kill this (only used for elcetropacks)
 	var/moved_recently = FALSE
 	var/mob/pulledby = null
 

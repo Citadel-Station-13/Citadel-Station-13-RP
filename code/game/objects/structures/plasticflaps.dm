@@ -42,9 +42,9 @@
 		return CanAStarPass(ID, to_dir, caller.pulling)
 	return TRUE //diseases, stings, etc can pass
 
-/obj/structure/plasticflaps/CanAllowThrough(atom/A, turf/T)
-	if(istype(A) && A.checkpass(ATOM_PASS_GLASS))
-		return prob(60)
+/obj/structure/plasticflaps/CanAllowThrough(atom/movable/mover, turf/target)
+	if(mover.check_pass_flags(ATOM_PASS_GLASS) && prob(60))
+		return TRUE
 
 	var/obj/structure/bed/B = A
 	if (istype(A, /obj/structure/bed) && B.has_buckled_mobs())//if it's a bed/chair and someone is buckled, it will not pass

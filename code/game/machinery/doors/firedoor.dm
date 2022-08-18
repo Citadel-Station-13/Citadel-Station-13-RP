@@ -503,7 +503,7 @@
 
 // For prosperity, in case border doors get reimplemented.
 /obj/machinery/door/firedoor/border_only/CanAStarPass(obj/item/card/id/ID, to_dir)
-	return !density || (dir != to_dir)
+	return ..() || (dir != to_dir)
 
 /obj/machinery/door/firedoor/multi_tile
 	icon = 'icons/obj/doors/DoorHazard2x1.dmi'

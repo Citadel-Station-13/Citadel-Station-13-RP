@@ -343,7 +343,7 @@
 	icon = 'icons/obj/structures_64x.dmi'
 	icon_state = "memorial"
 
-	density = 1
-	anchored = 1
-	throwpass = 0
-	climbable = 1
+	density = TRUE
+	anchored = TRUE
+	pass_flags_self = ATOM_PASS_THROWN
+	climbable = TRUE

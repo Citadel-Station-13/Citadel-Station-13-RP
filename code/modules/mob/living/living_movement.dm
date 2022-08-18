@@ -354,7 +354,7 @@
 		if(ishuman(M))
 			return TRUE
 		//if they are a cyborg, and they're alive and not in help intent, block pushing
-		if(iscyborg(M) && M.stat != DEAD)
+		if(isrobot(M) && M.stat != DEAD)
 			return TRUE
 	//anti-riot equipment is also anti-push
 	for(var/obj/item/I in M.held_items)

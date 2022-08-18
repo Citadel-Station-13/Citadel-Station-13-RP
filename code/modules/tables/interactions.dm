@@ -15,6 +15,13 @@
 			continue
 		return TRUE
 
+/obj/structure/table/CheckExit(atom/movable/AM, atom/newLoc)
+	if(check_standard_flag_pass(AM))
+		return TRUE
+	if(!flipped)
+		return TRUE
+	return !density || (get_dir(loc, newLoc) == dir)
+
 //checks if projectile 'P' from turf 'from' can hit whatever is behind the table. Returns 1 if it can, 0 if bullet stops.
 /obj/structure/table/proc/check_cover(obj/item/projectile/P, turf/from)
 	var/turf/cover
@@ -47,13 +54,6 @@
 				break_to_parts()
 				return 1
 	return 1
-
-/obj/structure/table/CheckExit(atom/movable/AM, atom/newLoc)
-	if(check_standard_flag_pass(AM))
-		return TRUE
-	if(!flipped)
-		return TRUE
-	return !density || (get_dir(loc, target) == dir)
 
 /obj/structure/table/attackby(obj/item/W, mob/user, params)
 	// Handle harm intent grabbing/tabling.

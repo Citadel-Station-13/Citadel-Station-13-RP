@@ -3,7 +3,7 @@
 	desc = "Used for advanced medical procedures."
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "table2-idle"
-	pass_flags_self = ATOM_PASS_TABLE
+	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_THROWN | ATOM_PASS_CLICK
 	density = TRUE
 	anchored = TRUE
 	circuit = /obj/item/circuitboard/operating_table
@@ -11,7 +11,6 @@
 	idle_power_usage = 1
 	active_power_usage = 5
 	surgery_odds = 100
-	throwpass = TRUE
 	var/mob/living/carbon/human/victim = null
 	var/strapped = FALSE
 	var/obj/machinery/computer/operating/computer = null

@@ -4,7 +4,7 @@
 	icon_state = "gravemarker"
 
 	density = TRUE
-	pass_flags = ATOM_PASS_THROWN | ATOM_PASS_TABLE
+	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_TABLE
 	climbable = TRUE
 	anchored = TRUE
 

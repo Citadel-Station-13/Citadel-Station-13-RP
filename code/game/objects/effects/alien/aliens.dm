@@ -23,9 +23,9 @@
 	desc = "Looks like some kind of slimy growth."
 	icon_state = "resin"
 
-	density = 1
-	opacity = 1
-	anchored = 1
+	density = TRUE
+	opacity = TRUE
+	anchored = TRUE
 	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	var/health = 200
 	//var/mob/living/affecting = null
@@ -39,7 +39,7 @@
 	name = "resin membrane"
 	desc = "Purple slime just thin enough to let light pass through."
 	icon_state = "resinmembrane"
-	opacity = 0
+	opacity = FALSE
 	health = 120
 
 /obj/effect/alien/resin/Initialize(mapload)
@@ -143,11 +143,9 @@
 	return
 
 /obj/effect/alien/resin/CanAllowThrough(atom/movable/mover, turf/target)
-	. = ..()
-	if(istype(mover) && mover.checkpass(ATOM_PASS_GLASS))
-		return !opacity
-	return !density
-
+	if(!opacity && mover.check_pass_flags(ATOM_PASS_GLASS))
+		return TRUE
+	return ..()
 
 /*
  * Weeds

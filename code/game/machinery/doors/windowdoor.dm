@@ -3,6 +3,7 @@
 	desc = "A strong door."
 	icon = 'icons/obj/doors/windoor.dmi'
 	icon_state = "left"
+	pass_flags_self = ATOM_PASS_GLASS
 	var/base_state = "left"
 	min_force = 4
 	hitsound = 'sound/effects/Glasshit.ogg'
@@ -87,12 +88,9 @@
 		addtimer(CALLBACK(src, .proc/close), check_access(null)? 50 : 20)
 
 /obj/machinery/door/window/CanAllowThrough(atom/movable/mover, turf/target)
-	. = ..()
-	if(istype(mover) && mover.checkpass(ATOM_PASS_GLASS))
+	if(!(get_dir(mover, loc) & turn(dir, 180)))
 		return TRUE
-	if(get_dir(mover, loc) == turn(dir, 180)) //Make sure looking at appropriate border
-		return !density
-	return TRUE
+	return ..()
 
 /obj/machinery/door/window/CanAtmosPass(turf/T, d)
 	if(d != dir)
@@ -100,21 +98,19 @@
 	return density? ATMOS_PASS_AIR_BLOCKED : ATMOS_PASS_ZONE_BLOCKED
 
 //used in the AStar algorithm to determinate if the turf the door is on is passable
+// todo: astar sucks
 /obj/machinery/door/window/CanAStarPass(obj/item/card/id/ID, to_dir)
-	return !density || (dir != to_dir) || (check_access(ID) && inoperable())
+	return ..() || (check_access(ID) && inoperable()) || (dir != to_dir)
 
-/obj/machinery/door/window/CheckExit(atom/movable/mover as mob|obj, turf/target as turf)
-	if(istype(mover) && mover.checkpass(ATOM_PASS_GLASS))
-		return 1
-	if(get_dir(loc, target) == dir)
-		return !density
-	else
-		return 1
+/obj/machinery/door/window/CheckExit(atom/movable/AM, atom/newLoc)
+	if(!(get_dir(loc, target) & dir))
+		return TRUE
+	if(check_standard_flag_pass(mover))
+		return TRUE
+	return !density
 
 /obj/machinery/door/window/open()
 	if (operating == 1 || !density) //doors can still open when emag-disabled
-		return 0
-	if (!SSticker)
 		return 0
 	if (!operating) //in case of emag
 		operating = 1

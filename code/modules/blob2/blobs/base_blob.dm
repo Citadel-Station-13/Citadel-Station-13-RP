@@ -51,7 +51,7 @@ var/list/blobs = list()
 	// density is false, can't trust parent procs
 	if(check_standard_flag_pass(mover))
 		return TRUE
-	else iff(istype(mover, /mob/living))
+	else if(istype(mover, /mob/living))
 		var/mob/living/L = mover
 		if(L.faction == "blob")
 			return TRUE
