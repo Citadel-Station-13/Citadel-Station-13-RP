@@ -264,7 +264,7 @@
 /turf/simulated/floor/outdoors/grass/lavaland/interior,
 /area/lavaland/east/colony)
 "gm" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/colony)
 "gF" = (
@@ -306,7 +306,7 @@
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/colony)
 "hk" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /mob/living/simple_mob/mechanical/cyber_horror/surt,
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/colony)
@@ -449,7 +449,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/east/colony)
 "jK" = (
@@ -493,7 +493,7 @@
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/colony)
 "lf" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/trap/delayed/wood/lavaland{
 	id = "temple_trap"
 	},
@@ -534,7 +534,7 @@
 /turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/east/colony)
 "lt" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /mob/living/simple_mob/mechanical/cyber_horror/plasma_cyber_horror/surt,
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/colony)
@@ -1489,7 +1489,7 @@
 "DT" = (
 /obj/effect/decal/remains/human,
 /obj/item/pickaxe/plasmacutter,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
@@ -1980,7 +1980,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "NF" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/effect/decal/remains/human,
 /obj/structure/boulder,
 /obj/effect/gibspawner/human,
@@ -2393,7 +2393,7 @@
 	dir = 4
 	},
 /obj/effect/decal/remains/human,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/effect/gibspawner/generic,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)

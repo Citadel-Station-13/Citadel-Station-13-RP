@@ -13,7 +13,7 @@
 /turf/simulated/mineral/ignore_mapgen,
 /area/submap/Blackshuttledown)
 "ae" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/template_noop,
 /area/submap/Blackshuttledown)
 "af" = (
@@ -187,7 +187,7 @@
 /turf/simulated/floor/tiled/white,
 /area/submap/Blackshuttledown)
 "aD" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/white,
 /area/submap/Blackshuttledown)
 "aE" = (
@@ -248,7 +248,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "aN" = (
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/tiled/white,
 /area/submap/Blackshuttledown)
 "aO" = (

@@ -87,7 +87,7 @@
 	vision_flags = SEE_SELF|SEE_MOBS
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_UNDERWEAR
 
-	move_trail = /obj/effect/decal/cleanable/blood/tracks/paw
+	move_trail = /obj/effect/debris/cleanable/blood/tracks/paw
 
 	has_organ = list(
 		O_HEART     = /obj/item/organ/internal/heart,

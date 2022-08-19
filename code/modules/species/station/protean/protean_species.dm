@@ -10,7 +10,7 @@
 	show_ssd = "totally quiescent"
 	death_message = "rapidly loses cohesion, dissolving into a cloud of gray dust..."
 	knockout_message = "collapses inwards, forming a disordered puddle of gray goo."
-	remains_type = /obj/effect/decal/cleanable/ash
+	remains_type = /obj/effect/debris/cleanable/ash
 
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite) // Regular human attack verbs are enough.
 

@@ -257,7 +257,7 @@
 		new /obj/item/stack/rods(Tsec)
 		new /obj/item/stack/cable_coil/cut(Tsec)
 		new /obj/effect/gibspawner/robot(Tsec)
-		new /obj/effect/decal/cleanable/blood/oil(src.loc)
+		new /obj/effect/debris/cleanable/blood/oil(src.loc)
 
 		if(cell)
 			cell.forceMove(Tsec)
@@ -416,7 +416,7 @@
 	user.do_attack_animation(src)
 	src.health -= damage
 	if(mechanical && prob(10))
-		new /obj/effect/decal/cleanable/blood/oil(src.loc)
+		new /obj/effect/debris/cleanable/blood/oil(src.loc)
 	spawn(1) healthcheck()
 	return 1
 
@@ -425,6 +425,6 @@
 		return
 	src.health -= damage
 	if(mechanical && prob(10))
-		new /obj/effect/decal/cleanable/blood/oil(src.loc)
+		new /obj/effect/debris/cleanable/blood/oil(src.loc)
 	spawn(1) healthcheck()
 	return 1

@@ -450,7 +450,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/bearcat/dock_port)
 "aZ" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 4;
@@ -538,7 +538,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/dock_starboard)
 "bj" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/dock_starboard)
 "bk" = (
@@ -639,7 +639,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/dock_central)
@@ -759,7 +759,7 @@
 /turf/simulated/wall/rshull,
 /area/shuttle/bearcat/dock_starboard)
 "bM" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 6
 	},
@@ -941,7 +941,7 @@
 	dir = 8;
 	icon_state = "twindow"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -962,7 +962,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/cobweb{
+/obj/effect/debris/cleanable/cobweb{
 	icon_state = "cobweb2"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1016,7 +1016,7 @@
 /area/shuttle/bearcat/crew_saloon)
 "ct" = (
 /obj/machinery/vending/coffee,
-/obj/effect/decal/cleanable/cobweb{
+/obj/effect/debris/cleanable/cobweb{
 	icon_state = "cobweb2"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1205,12 +1205,12 @@
 	dir = 8;
 	icon_state = "twindow"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/crew_toilets)
 "cO" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/cable,
 /obj/machinery/light_switch{
 	pixel_y = -25
@@ -1245,7 +1245,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/dock_starboard)
 "cT" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -1305,7 +1305,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/crew_saloon)
 "da" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "conpipe-c"
@@ -1317,7 +1317,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/crew_corridors)
 "db" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/item/radio/intercom{
 	pixel_x = -32
 	},
@@ -1337,7 +1337,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/crew_dorms)
 "dd" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/machinery/light{
 	dir = 4
@@ -1364,7 +1364,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/crew_corridors)
 "dg" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/cable,
 /obj/machinery/light_switch{
 	pixel_x = -25
@@ -1441,7 +1441,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/crew_corridors)
 "ds" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /obj/random/multiple/corp_crate,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/cargo)
@@ -1466,7 +1466,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/cargo)
 "dv" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -1474,8 +1474,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/cargo)
 "dw" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/cobweb{
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/cobweb{
 	icon_state = "cobweb2"
 	},
 /obj/random/multiple/corp_crate,
@@ -1535,7 +1535,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/crew_corridors)
 "dD" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/alarm/alarms_hidden{
 	dir = 4;
 	icon_state = "alarm0";
@@ -1550,7 +1550,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/cargo)
 "dF" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -1560,7 +1560,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/cargo)
 "dG" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -1591,7 +1591,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/crew_medbay)
 "dJ" = (
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /obj/machinery/sleeper{
 	dir = 4
 	},
@@ -1600,7 +1600,7 @@
 "dK" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/structure/closet/walllocker/emerglocker/east,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/crew_medbay)
@@ -1609,7 +1609,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/crew_kitchen)
 "dM" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 4;
@@ -1750,7 +1750,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/cargo)
 "dX" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -1929,7 +1929,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/crew_corridors)
 "es" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/cargo)
 "et" = (
@@ -1939,7 +1939,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/unused2)
 "eu" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/cable,
 /obj/machinery/power/apc/alarms_hidden{
 	dir = 4;
@@ -1984,7 +1984,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/crew_corridors)
 "eB" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/light,
 /obj/random/multiple/corp_crate,
 /turf/simulated/floor/tiled/techfloor,
@@ -2006,8 +2006,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/cargo)
 "eF" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
 	dir = 8;
 	icon_state = "map"
@@ -2144,7 +2144,7 @@
 /area/shuttle/bearcat/unused1)
 "eU" = (
 /obj/structure/closet/walllocker/emerglocker/west,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/machinery/light{
 	dir = 4
@@ -2228,7 +2228,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/crew_medbay)
 "fc" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /obj/structure/closet/crate,
 /obj/item/clothing/suit/space/void/refurb/medical,
 /obj/item/clothing/head/helmet/space/void/refurb/medical/alt,
@@ -2248,7 +2248,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/unused1)
 "fg" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/structure/handrail{
 	dir = 8
@@ -2353,7 +2353,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/crew_corridors)
 "fq" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
 	d1 = 1;
@@ -2391,7 +2391,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/maintenance_storage)
 "ft" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -2425,7 +2425,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/maintenance_storage)
 "fw" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /obj/structure/closet/wardrobe/engineering_yellow,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/crew_wash)
@@ -2440,7 +2440,7 @@
 /area/shuttle/bearcat/crew_wash)
 "fy" = (
 /obj/structure/closet/walllocker/emerglocker/east,
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /obj/machinery/washing_machine,
 /obj/item/radio/intercom{
 	dir = 1;
@@ -2488,7 +2488,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/dispenser/oxygen,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor,
@@ -2584,7 +2584,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/crew_wash)
 "fM" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4;
 	icon_state = "intact"
@@ -2843,8 +2843,8 @@
 /turf/simulated/floor/plating,
 /area/shuttle/bearcat/maintenance_atmos)
 "gp" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -2869,7 +2869,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/maintenance_enginecontrol)
 "gr" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/light_switch{
 	pixel_y = 25
 	},
@@ -3001,7 +3001,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/bearcat/maintenance_atmos)
 "gD" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -3020,7 +3020,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/cyan,
 /obj/structure/cable{
 	d1 = 1;
@@ -3041,7 +3041,7 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
@@ -3176,7 +3176,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/bearcat/maintenance_engine)
 "gR" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -3342,7 +3342,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/bearcat/maintenance_engine)
 "hh" = (
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /obj/machinery/atmospherics/pipe/tank/phoron{
 	dir = 8;
 	start_pressure = 1215.9

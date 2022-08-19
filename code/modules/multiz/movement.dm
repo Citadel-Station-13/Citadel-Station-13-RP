@@ -258,7 +258,7 @@
 /obj/effect/can_fall()
 	return FALSE
 
-/obj/effect/decal/cleanable/can_fall()
+/obj/effect/debris/cleanable/can_fall()
 	return TRUE
 
 // These didn't fall anyways but better to nip this now just incase.

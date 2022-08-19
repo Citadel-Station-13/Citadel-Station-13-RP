@@ -89,6 +89,11 @@
 	return TRUE
 
 /mob/living/proc/_common_handle_put_in_hand(obj/item/I, flags)
+	// let's not do that if it's deleted!
+	if(I && QDELETED(I))
+		to_chat(src, SPAN_DANGER("A deleted item [I] ([REF(I)]) was sent into inventory hand procs with flags [flags]. Report this line to coders immediately."))
+		to_chat(src, SPAN_DANGER("The inventory system will attempt to reject the bad equip. Glitches may occur."))
+		return FALSE
 	if(!(I.interaction_flags_atom & INTERACT_ATOM_NO_FINGERPRINT_ON_TOUCH))
 		I.add_fingerprint(src)
 	else

@@ -2979,7 +2979,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 5
 	},
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/generic,
 /turf/simulated/floor/plating,
 /area/shuttle/mercenary)
 "eZ" = (
@@ -3144,7 +3144,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood{
+/obj/effect/debris/cleanable/blood{
 	icon_state = "mfloor5"
 	},
 /obj/machinery/light/small{

@@ -2764,7 +2764,7 @@
 /obj/random/maintenance/cargo,
 /obj/random/maintenance/clean,
 /obj/random/tool,
-/obj/effect/decal/cleanable/cobweb{
+/obj/effect/debris/cleanable/cobweb{
 	icon_state = "cobweb2"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -18228,7 +18228,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "aEy" = (
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "aEz" = (
@@ -19884,7 +19884,7 @@
 /turf/simulated/floor/wood,
 /area/vacant/vacant_bar)
 "aHe" = (
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/maintenance/lower/atmos)
 "aHf" = (
@@ -20897,7 +20897,7 @@
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
 "aIZ" = (
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
 "aJa" = (
@@ -28831,7 +28831,7 @@
 /area/maintenance/lower/atmos)
 "aXS" = (
 /obj/machinery/door/window/southleft,
-/obj/effect/decal/cleanable/vomit,
+/obj/effect/debris/cleanable/vomit,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "aXX" = (
@@ -28940,7 +28940,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/crew_quarters/sleep/maintDorm1)
 "aYk" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "aYm" = (
@@ -29245,7 +29245,7 @@
 /turf/simulated/floor/plating,
 /area/crew_quarters/sleep/maintDorm1)
 "aZw" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
 "aZz" = (
@@ -29613,7 +29613,7 @@
 /obj/random/contraband,
 /obj/random/mre,
 /obj/structure/closet/crate,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining_eva)
 "bbe" = (
@@ -30322,7 +30322,7 @@
 /obj/random/cigarettes,
 /obj/random/coin,
 /obj/random/drinkbottle,
-/obj/effect/decal/cleanable/cobweb{
+/obj/effect/debris/cleanable/cobweb{
 	icon_state = "cobweb2"
 	},
 /turf/simulated/floor/plating,
@@ -36278,7 +36278,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "oRz" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tether/surfacebase/public_garden_one)
 "oSL" = (
@@ -36550,7 +36550,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "qdr" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/random/trash,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tether/surfacebase/public_garden_one)
@@ -37558,7 +37558,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "sIO" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/random/junk,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tether/surfacebase/public_garden_one)

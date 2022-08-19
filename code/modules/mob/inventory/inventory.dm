@@ -69,8 +69,12 @@
  * if the item is null, this returns true
  * if an item is not in us, this returns true
  */
-/mob/proc/drop_item_to_ground(obj/item/I, flags, mob/user)
-	if(!is_in_inventory(I))
+/mob/proc/drop_item_to_ground(obj/item/I, flags, mob/user = src)
+	// destroyed IS allowed to call these procs
+	if(I && QDELETED(I) && !QDESTROYING(I))
+		to_chat(user, SPAN_DANGER("A deleted item [I] was used in drop_item_to_ground(). Report the entire line to coders. Debugging information: [I] ([REF(I)]) flags [flags] user [user]"))
+		to_chat(user, SPAN_DANGER("Drop item to ground will now proceed, ignoring the bugged state. Errors may ensue."))
+	else if(!is_in_inventory(I))
 		return TRUE
 	return _unequip_item(I, flags | INV_OP_DIRECTLY_DROPPING, drop_location(), user)
 
@@ -219,6 +223,8 @@
 /**
  * checks if we can unequip an item
  *
+ * Preconditions: The item is either equipped already, or isn't equipped.
+ *
  * @return TRUE/FALSE
  *
  * @params
@@ -227,7 +233,13 @@
  * - flags - inventory operation hint bitfield, see defines
  * - user - stripper - can be null
  */
-/mob/proc/can_unequip(obj/item/I, slot, flags, mob/user)
+/mob/proc/can_unequip(obj/item/I, slot, flags, mob/user = src)
+	// destroyed IS allowed to call these procs
+	if(I && QDELETED(I) && !QDESTROYING(I))
+		to_chat(user, SPAN_DANGER("A deleted [I] was checked in can_unequip(). Report this entire line to coders immediately. Debug data: [I] ([REF(I)]) slot [slot] flags [flags] user [user]"))
+		to_chat(user, SPAN_DANGER("can_unequip will return TRUE to allow you to drop the item, but expect potential glitches!"))
+		return TRUE
+		
 	if(!slot)
 		slot = slot_by_item(I)
 
@@ -355,6 +367,8 @@
 /**
  * checks if we can equip an item to a slot
  *
+ * Preconditions: The item will either be equipped on us already, or not yet equipped.
+ *
  * @return TRUE/FALSE
  *
  * @params
@@ -367,6 +381,12 @@
  * todo: refactor nesting to not require this shit
  */
 /mob/proc/can_equip(obj/item/I, slot, flags, mob/user, denest_to)
+	// let's NOT.
+	if(I && QDELETED(I))
+		to_chat(user, SPAN_DANGER("A deleted [I] was checked in can_equip(). Report this entire line to coders immediately. Debug data: [I] ([REF(I)]) slot [slot] flags [flags] user [user]"))
+		to_chat(user, SPAN_DANGER("can_equip will now attempt to prevent the deleted item from being equipped. There should be no glitches."))
+		return FALSE
+		
 	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
 	var/self_equip = user == src
 	if(!slot_meta)
@@ -588,6 +608,7 @@
 		var/atom/oldLoc = I.loc
 
 		I.forceMove(src)
+		// TODO: HANDLE DELETIONS IN PICKUP AND EQUIPPED PROPERLY
 		I.pickup(src, flags, oldLoc)
 		I.equipped(src, slot, flags)
 
@@ -636,6 +657,7 @@
 		I.unequipped(src, old_slot, flags)
 		// sigh
 		handle_item_denesting(I, old_slot, flags, user)
+		// TODO: HANDLE DELETIONS ON EQUIPPED PROPERLY, INCLUDING ON HANDS
 		// ? we don't do this on hands, hand procs do it
 		// _equip_slot(I, slot, update_icons)
 		I.equipped(src, slot, flags)
@@ -654,6 +676,7 @@
 		else
 			_unequip_slot(old_slot, flags)
 		I.unequipped(src, old_slot, flags)
+		// TODO: HANDLE DELETIONS ON EQUIPPED PROPERLY
 		// sigh
 		_equip_slot(I, slot, flags)
 		I.equipped(src, slot, flags)

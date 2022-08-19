@@ -6,7 +6,7 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/reinforced/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "i" = (
@@ -15,7 +15,7 @@
 /area/submap/debrisfield_vr/misc_debris)
 "m" = (
 /obj/structure/bed/chair/bay/shuttle,
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /obj/effect/gibspawner/robot,
 /turf/simulated/floor/reinforced/airless,
 /area/submap/debrisfield_vr/misc_debris)
@@ -30,16 +30,16 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /obj/effect/gibspawner/robot,
 /turf/simulated/floor/reinforced/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "y" = (
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/wall/rshull,
 /area/submap/debrisfield_vr/misc_debris)
 "B" = (
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /obj/item/paper/robo_escape_pod,
 /turf/simulated/floor/reinforced/airless,
 /area/submap/debrisfield_vr/misc_debris)
@@ -47,7 +47,7 @@
 /obj/machinery/door/airlock/external{
 	name = "Escape Pod Door"
 	},
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/reinforced/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "E" = (
@@ -63,11 +63,11 @@
 /area/submap/debrisfield_vr/misc_debris)
 "Q" = (
 /obj/structure/bed/chair/bay/shuttle,
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/reinforced/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "S" = (
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/reinforced/airless,
 /area/submap/debrisfield_vr/misc_debris)
 

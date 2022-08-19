@@ -860,7 +860,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
 "afT" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/item/paperplane,
 /obj/random/maintenance/engineering,
 /turf/simulated/floor,
@@ -6998,14 +6998,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "axy" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/item/paper,
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
 "axz" = (
 /obj/item/paper,
 /obj/effect/rune,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/random/maintenance/engineering,
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
@@ -8190,7 +8190,7 @@
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
 "aEg" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/item/reagent_containers/blood,
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
@@ -9637,7 +9637,7 @@
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/rust,
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /obj/structure/table/bench/steel,
 /turf/simulated/floor,
 /area/tether/exploration)

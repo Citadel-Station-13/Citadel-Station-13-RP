@@ -306,7 +306,7 @@
 /turf/simulated/floor/tiled/white,
 /area/submap/Diner)
 "ba" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled,
 /area/submap/Diner)
 "bb" = (

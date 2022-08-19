@@ -52,7 +52,7 @@
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/bosses)
 "X" = (
-/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/debris/cleanable/blood/gibs,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/bosses)
 "Z" = (

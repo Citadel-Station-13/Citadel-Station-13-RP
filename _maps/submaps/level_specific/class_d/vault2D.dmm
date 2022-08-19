@@ -4,7 +4,7 @@
 /area/class_d/explored)
 "c" = (
 /obj/structure/closet/crate/mimic/dangerous,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/random/maintenance/security,
 /obj/random/maintenance/security,
 /obj/random/roguemineloot,
@@ -13,12 +13,12 @@
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/explored)
 "d" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/explored)
 "e" = (
 /obj/structure/closet/crate/mimic,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/random/roguemineloot,
 /obj/random/roguemineloot,
 /obj/random/roguemineloot,
@@ -26,11 +26,11 @@
 /area/class_d/explored)
 "f" = (
 /obj/structure/simple_door/silver,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/explored)
 "h" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/random/junk,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/explored)
