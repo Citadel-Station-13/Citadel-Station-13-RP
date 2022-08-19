@@ -17,7 +17,7 @@
 /// we already quickstarted
 #define THROW_AT_QUICKSTARTED				(1<<7)
 
-DEFINE_BITFIELD("throw_flags", list(
+DEFINE_BITFIELD(throw_flags, list(
 	BITFIELD(THROW_AT_DO_NOT_SPIN),
 	BITFIELD(THROW_AT_DIAGONALS_FIRST),
 	BITFIELD(THROW_AT_IS_NEAT),
