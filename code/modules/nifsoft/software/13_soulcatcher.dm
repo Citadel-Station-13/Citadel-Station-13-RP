@@ -24,7 +24,7 @@
 	var/inside_flavor = "A small completely white room with a couch, and a window to what seems to be the outside world. A small sign in the corner says 'Configure Me'."
 	var/visibility = TRUE
 	var/list/visibility_exceptions = list()
-	var/list/blacklist = list()
+	var/list/visibility_blacklist = list()
 
 /datum/nifsoft/soulcatcher/New()
 	..()
@@ -63,7 +63,7 @@
 	var/list/save_data = list()
 	save_data["vis"] = visibility
 	save_data["vis_exceptions"] = visibility_exceptions
-	save_data["vis_blacklist"] = blacklist
+	save_data["vis_blacklist"] = visibility_blacklist
 	nif.save_data["[list_pos]_actual"] = save_data
 	return TRUE
 
