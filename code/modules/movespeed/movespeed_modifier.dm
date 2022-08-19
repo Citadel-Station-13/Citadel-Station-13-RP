@@ -228,12 +228,12 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 	cached_multiplicative_slowdown = .
 	if(!client)
 		return
-	var/diff = (last_move - move_delay) - cached_multiplicative_slowdown
+	var/diff = (last_move_time - move_delay) - cached_multiplicative_slowdown
 	if(diff > 0)
 		if(move_delay > world.time + 1.5)
 			move_delay -= diff
 		var/timeleft = world.time - move_delay
-		var/elapsed = world.time - last_move
+		var/elapsed = world.time - last_move_time
 		var/glide_size_current = glide_size
 		if((timeleft <= 0) || (elapsed > 20))
 			SMOOTH_GLIDE_SIZE(src, 16, TRUE)

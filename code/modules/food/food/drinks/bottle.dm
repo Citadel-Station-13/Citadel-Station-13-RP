@@ -176,7 +176,7 @@
 	icon = 'icons/obj/drinks.dmi'
 	icon_state = "broken_bottle"
 	force = 10
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 3
 	throw_range = 5
 	item_state = "beer"

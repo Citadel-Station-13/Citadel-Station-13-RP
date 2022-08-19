@@ -12,7 +12,7 @@
 	/// attempt to resume grab after moving instead of before. This is what atom/movable is pulling us during move-from-pulling.
 	var/atom/movable/moving_from_pull
 	/// Direction of our last move.
-	var/last_move = NONE
+	var/last_move_dir = NONE
 	/// Which direction we're drifting
 	var/inertia_dir = NONE
 	/// Only set while drifting, last location we were while drifting
@@ -47,8 +47,12 @@
 	var/m_flag = 1
 	// todo: trace "throwing" usages
 	var/datum/thrownthing/throwing
+	/// default throw speed
 	var/throw_speed = 2
+	/// default throw range
 	var/throw_range = 7
+	/// default throw damage at a "standard" speed
+	var/throw_force = 0
 
 	// todo: kill this (only used for elcetropacks)
 	var/moved_recently = FALSE

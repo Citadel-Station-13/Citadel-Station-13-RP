@@ -6,7 +6,7 @@
 	icon_state = "paperplane"
 	throw_range = 7
 	throw_speed = 1
-	throwforce = 0
+	throw_force = 0
 	w_class = ITEMSIZE_TINY
 
 	var/obj/item/paper/internalPaper

@@ -44,7 +44,7 @@
 	return ..()
 
 /obj/structure/gravemarker/CheckExit(atom/movable/AM, atom/newLoc)
-	if(!(get_dir(O.loc, newLoc) & dir))
+	if(!(get_dir(AM.loc, newLoc) & dir))
 		return TRUE
 	if(check_standard_flag_pass(AM))
 		return TRUE

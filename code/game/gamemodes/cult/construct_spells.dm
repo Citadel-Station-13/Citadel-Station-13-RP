@@ -430,7 +430,7 @@ proc/findNullRod(var/atom/target)
 		slot_l_hand_str = 'icons/mob/items/lefthand_spells.dmi',
 		slot_r_hand_str = 'icons/mob/items/righthand_spells.dmi',
 		)
-	throwforce = 0
+	throw_force = 0
 	force = 0
 	show_examine = FALSE
 	owner = null

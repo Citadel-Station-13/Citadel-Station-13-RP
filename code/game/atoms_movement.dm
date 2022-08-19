@@ -51,7 +51,8 @@
 	// SHOULD_BE_PURE(TRUE)
 	if(mover.pass_flags & pass_flags_self)
 		return TRUE
-	if(mover.throwing && (pass_flags_self & ATOM_PASS_THROWN))
+	// the && makes sure the expensive checks don't run most of the time
+	if(mover.throwing && ((pass_flags_self & ATOM_PASS_THROWN) || (mover.throwing.impacted && mover.throwing.impacted[src])))
 		return TRUE
 	return !density
 
@@ -67,6 +68,6 @@
 /atom/proc/check_standard_flag_pass(atom/movable/AM)
 	if(pass_flags_self & AM.pass_flags)
 		return TRUE
-	if(AM.throwing && (pass_flags_self & ATOM_PASS_THRONW))
+	if(AM.throwing && (pass_flags_self & ATOM_PASS_THROWN))
 		return TRUE
 	return FALSE

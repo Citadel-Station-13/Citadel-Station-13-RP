@@ -91,7 +91,8 @@
 				qdel(src)
 
 
-/obj/machinery/shield/hitby(AM as mob|obj)
+/obj/machinery/shield/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	//Let everyone know we've been hit!
 	visible_message("<span class='notice'><B>\[src] was hit by [AM].</B></span>")
 
@@ -100,7 +101,7 @@
 	if(ismob(AM))
 		tforce = 40
 	else
-		tforce = AM:throwforce
+		tforce = AM.throw_force
 
 	src.health -= tforce
 
@@ -111,10 +112,10 @@
 
 	//The shield becomes dense to absorb the blow.. purely asthetic.
 	set_opacity(1)
-	spawn(20) if(!QDELETED(src)) set_opacity(0)
+	spawn(20)
+		if(!QDELETED(src))
+			set_opacity(0)
 
-	..()
-	return
 /obj/machinery/shieldgen
 	name = "Emergency shield projector"
 	desc = "Used to seal minor hull breaches."

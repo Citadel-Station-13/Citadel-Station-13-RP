@@ -227,20 +227,18 @@
 	healthcheck()
 	return
 
-/obj/effect/alien/hybrid_resin/hitby(AM as mob|obj)
-	..()
+/obj/effect/alien/hybrid_resin/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	for(var/mob/O in viewers(src, null))
 		O.show_message("<span class='danger'>[src] was hit by [AM].</span>", 1)
 	var/tforce = 0
 	if(ismob(AM))
 		tforce = 10
 	else
-		tforce = AM:throwforce
+		tforce = AM.throw_force
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
 	health = max(0, health - tforce)
 	healthcheck()
-	..()
-	return
 
 /obj/effect/alien/hybrid_resin/attack_hand()
 	usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)

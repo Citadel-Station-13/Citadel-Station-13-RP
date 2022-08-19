@@ -5,7 +5,7 @@
 	origin_tech = list(TECH_COMBAT = 1, TECH_ARCANE = 1)
 	w_class = ITEMSIZE_LARGE
 	force = 30
-	throwforce = 10
+	throw_force = 10
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	drop_sound = 'sound/items/drop/sword.ogg'
 	pickup_sound = 'sound/items/pickup/sword.ogg'

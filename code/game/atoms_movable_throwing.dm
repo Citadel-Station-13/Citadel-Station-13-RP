@@ -1,51 +1,93 @@
+//! Welcome to unoptimized hell. Enjoy your comsigs.
+
 /**
  * throw_impacted()
+ *
+ * @return see [code/__DEFINES/dcs/signals/signals_atom/signals_atom_throwing.dm]; This returns COMPONENT_THROW_HIT flags!
  *
  * called when we're hit by something
  * @params
  * - AM - thrown atom that hit us
- * - TT - thrownthing datum. This **can be null**, because we want to make manually proccing throw hits possible.
- * - flags - throwing flags. See [__DEFINES/controllers/throwing.dm] for details on throw_flags
- *
+ * - TT - thrownthing datum.
  */
-#warn impl - speed? how to implement that for damage balancing?
-
-#warn replace all procs for this
-/atom/proc/hitby(atom/movable/hitting_atom as mob|obj)
-	if(density)
-		hitting_atom.throwing = 0
-	return
+/atom/proc/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	return NONE
 
 /**
- * called when **we** hit something.
+ * throw_impact()
  *
- * usually, calls hitby() on the object.
+ * @return see [code/__DEFINES/dcs/signals/signals_atom/signals_atom_throwing.dm]; This returns COMPONENT_THROW_HIT flags!
  *
+ * called when we hit something
  * @params
- * - A - thing we just hit
- * - TT - thrownthing datum. This **can be null**, because we want to make manually proccing throw hits possible.
- * - flags - throwing flags. See [__DEFINES/controllers/throwing.dm] for details on throw_flags
- *
+ * - A - atom we hit
+ * - TT - thrownthing datum
  */
+/atom/movable/proc/throw_impact(atom/A, datum/thrownthing/TT)
+	return NONE
 
-/// Called when src is thrown into hit_atom
-/atom/movable/proc/throw_impact(atom/hit_atom, speed)
-	if(istype(hit_atom,/mob/living))
-		var/mob/living/M = hit_atom
-		if(M.buckled == src)
-			return // Don't hit the thing we're buckled to.
-		M.hitby(src,speed)
+/**
+ * throw_landed()
+ *
+ * called when something lands on us
+ * @params
+ * - AM - atom that landed on us
+ * - TT - thrownthing datum
+ */
+/atom/proc/throw_landed(atom/movable/AM, datum/thrownthing/TT)
+	return NONE
 
-	else if(isobj(hit_atom))
-		var/obj/O = hit_atom
-		if(!O.anchored)
-			step(O, src.last_move)
-		O.hitby(src,speed)
+/**
+ * throw_land()
+ *
+ * called when we land on something
+ * @params
+ * - A - atom that we landed on
+ * - TT - thrownthing datum
+ */
+/atom/proc/throw_land(atom/A, datum/thrownthing/TT)
+	return NONE
 
-	else if(isturf(hit_atom))
-		src.throwing = 0
-		var/turf/T = hit_atom
-		T.hitby(src,speed)
+/**
+ * called when we are impacting something
+ *
+ * returns FALSE to signify not ending the throw.
+ */
+/atom/movable/proc/_throw_do_hit(atom/A, datum/thrownthing/TT)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	set waitfor = FALSE
+
+	. = SEND_SIGNAL(src, COMSIG_MOVABLE_THROW_IMPACT, A, TT)
+	if(. & (COMPONENT_THROW_HIT_TERMINATE | COMPONENT_THROW_HIT_NEVERMIND))
+		return
+	. |= throw_impact(A, TT)
+	if(. & (COMPONENT_THROW_HIT_TERMINATE | COMPONENT_THROW_HIT_NEVERMIND))
+		return
+	. |= SEND_SIGNAL(src, COMSIG_ATOM_THROW_IMPACTED, AM, TT)
+	if(. & (COMPONENT_THROW_HIT_TERMINATE | COMPONENT_THROW_HIT_NEVERMIND))
+		return
+	. |= A.throw_impacted(src, TT)
+
+/**
+ * called on throw finalization
+ */
+/atom/movable/proc/_throw_finalize(atom/landed_on, datum/thrownthing/TT)
+	if(!landed_on)		// if we somehow got nullspaced
+		return
+
+	. = SEND_SIGNAL(src, COMSIG_MOVABLE_THROW_LAND, landed_on, TT)
+	if(. & (COMPONENT_THROW_LANDING_NEVERMIND | COMPONENT_THROW_LANDING_TERMINATE))
+		return
+	. |= throw_land(landed_on, TT)
+	if(. & (COMPONENT_THROW_LANDING_NEVERMIND | COMPONENT_THROW_LANDING_TERMINATE))
+		return
+	. |= SEND_SIGNAL(src, COMSIG_MOVABLE_THROW_LANDED, landed_on, TT)
+	if(. & (COMPONENT_THROW_LANDING_NEVERMIND | COMPONENT_THROW_LANDING_TERMINATE))
+		return
+	. |= landed_on.throw_landed(src, TT)
+
+#warn impl - speed? how to implement that for damage balancing?
+#warn impl - hitpush
 
 /// Decided whether a movable atom being thrown can pass through the turf it is in.
 /atom/movable/proc/hit_check(speed)
@@ -63,12 +105,36 @@
 				// Special handling of windows, which are dense but block only from some directions
 				if(istype(A, /obj/structure/window))
 					var/obj/structure/window/W = A
-					if (!W.is_fulltile() && !(turn(src.last_move, 180) & A.dir))
+					if (!W.is_fulltile() && !(turn(src.last_move_dir, 180) & A.dir))
 						continue
 				// Same thing for (closed) windoors, which have the same problem
-				else if(istype(A, /obj/machinery/door/window) && !(turn(src.last_move, 180) & A.dir))
+				else if(istype(A, /obj/machinery/door/window) && !(turn(src.last_move_dir, 180) & A.dir))
 					continue
 				src.throw_impact(A,speed)
+
+/**
+ * initiates a full subsystem-ticked throw sequence
+ * components can cancel this.
+ *
+ * @return a datum on success, null on failure.
+ */
+/atom/movable/proc/subsystem_throw(atom/target, range, speed, flags)
+	SHOULD_CALL_PARENT(TRUE)
+	RETURN_TYPE(/datum/thrownthing)
+	#warn uh oh
+
+/**
+ * emulates an immediate throw impact
+ * must quickstart() either automatically or manually for this to work!
+ * components can cancel this.
+ *
+ * @return a datum on success, null on failure.
+ */
+/atom/movable/proc/emulated_throw(atom/target, range, speed, flags)
+	SHOULD_CALL_PARENT(TRUE)
+	RETURN_TYPE(/datum/thrownthing)
+	#warn impl
+
 
 /// If this returns FALSE then callback will not be called.
 /atom/movable/proc/throw_at(atom/target, range, speed, mob/thrower, spin = TRUE, datum/callback/callback)
@@ -92,22 +158,12 @@
 
 #warn old above, new below, figure it out
 
-/atom/movable/proc/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
-	set waitfor = FALSE
-	var/hitpush = TRUE
-	var/impact_signal = SEND_SIGNAL(src, COMSIG_MOVABLE_IMPACT, hit_atom, throwingdatum)
-	if(impact_signal & COMPONENT_MOVABLE_IMPACT_FLIP_HITPUSH)
-		hitpush = FALSE // hacky, tie this to something else or a proper workaround later
-
-	if(!(impact_signal && (impact_signal & COMPONENT_MOVABLE_IMPACT_NEVERMIND))) // in case a signal interceptor broke or deleted the thing before we could process our hit
-		return hit_atom.hitby(src, throwingdatum=throwingdatum, hitpush=hitpush)
-
 /atom/movable/hitby(atom/movable/AM, skipcatch, hitpush = TRUE, blocked, datum/thrownthing/throwingdatum)
 	if(!anchored && hitpush && (!throwingdatum || (throwingdatum.force >= (move_resist * MOVE_FORCE_PUSH_RATIO))))
 		step(src, AM.dir)
 	..()
 
-/atom/movable/proc/safe_throw_at(atom/target, range, speed, mob/thrower, spin = TRUE, diagonals_first = FALSE, datum/callback/callback, force = MOVE_FORCE_STRONG, gentle = FALSE)
+/atom/movable/proc/safe_throw_at(, mob/thrower, , datum/callback/callback, force = MOVE_FORCE_STRONG)
 	if((force < (move_resist * MOVE_FORCE_THROW_RATIO)) || (move_resist == INFINITY))
 		return
 	return throw_at(target, range, speed, thrower, spin, diagonals_first, callback, force, gentle)
@@ -129,16 +185,16 @@
 		pulledby.stop_pulling()
 
 	//They are moving! Wouldn't it be cool if we calculated their momentum and added it to the throw?
-	if (thrower && thrower.last_move && thrower.client && thrower.client.move_delay >= world.time + world.tick_lag*2)
+	if (thrower && thrower.last_move_dir && thrower.client && thrower.client.move_delay >= world.time + world.tick_lag*2)
 		var/user_momentum = thrower.movement_delay() //cached_multiplicative_slowdown
 		if (!user_momentum) //no movement_delay, this means they move once per byond tick, lets calculate from that instead.
 			user_momentum = world.tick_lag
 
 		user_momentum = 1 / user_momentum // convert from ds to the tiles per ds that throw_at uses.
 
-		if (get_dir(thrower, target) & last_move)
+		if (get_dir(thrower, target) & last_move_dir)
 			user_momentum = user_momentum //basically a noop, but needed
-		else if (get_dir(target, thrower) & last_move)
+		else if (get_dir(target, thrower) & last_move_dir)
 			user_momentum = -user_momentum //we are moving away from the target, lets slowdown the throw accordingly
 		else
 			user_momentum = 0

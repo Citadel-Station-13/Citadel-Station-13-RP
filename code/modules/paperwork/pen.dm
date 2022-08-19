@@ -16,7 +16,7 @@
 	icon_state = "pen"
 	item_state = "pen"
 	slot_flags = SLOT_BELT | SLOT_EARS
-	throwforce = 0
+	throw_force = 0
 	w_class = ITEMSIZE_TINY
 	throw_speed = 7
 	throw_range = 15
@@ -130,7 +130,7 @@
 	icon_state = "pen"
 	item_state = "pen"
 	slot_flags = SLOT_BELT | SLOT_EARS
-	throwforce = 3
+	throw_force = 3
 	w_class = ITEMSIZE_TINY
 	throw_speed = 7
 	throw_range = 15
@@ -165,7 +165,7 @@
 	icon_state = active_icon_state
 	embed_chance = active_embed_chance
 	force = active_force
-	throwforce = active_throwforce
+	throw_force = active_throwforce
 	sharp = 1
 	edge = 1
 	w_class = active_w_class
@@ -188,7 +188,7 @@
 	icon_state = default_icon_state
 	embed_chance = initial(embed_chance)
 	force = initial(force)
-	throwforce = initial(throwforce)
+	throw_force = initial(throw_force)
 	sharp = initial(sharp)
 	edge = initial(edge)
 	w_class = initial(w_class)

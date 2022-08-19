@@ -1038,11 +1038,10 @@
 		src.log_append_to_last("Armor saved.")
 	return
 
-/obj/mecha/hitby(atom/movable/A as mob|obj) //wrapper
-	..()
+/obj/mecha/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	src.log_message("Hit by [A].",1)
 	call((proc_res["dynhitby"]||src), "dynhitby")(A)
-	return
 
 //I think this is relative to throws.
 /obj/mecha/proc/dynhitby(atom/movable/A)
@@ -1078,9 +1077,9 @@
 			M.take_organ_damage(10)
 	else if(istype(A, /obj))
 		var/obj/O = A
-		if(O.throwforce)
+		if(O.throw_force)
 
-			var/pass_damage = O.throwforce
+			var/pass_damage = O.throw_force
 			var/pass_damage_reduc_mod
 			if(pass_damage <= temp_damage_minimum)//Too little to go through.
 				src.occupant_message("<span class='notice'>\The [A] bounces off the armor.</span>")

@@ -27,7 +27,7 @@
 	desc = "Part of a rocky ledge."
 	icon_state = "ledge-nub"
 	density = FALSE
-	solidledge = fALSE
+	solidledge = FALSE
 
 /obj/structure/ledge/ledge_stairs
 	name = "rock stairs"
@@ -48,7 +48,7 @@
 		return TRUE
 	if(!solidledge)
 		return TRUE
-	if(get_dir(mover, target) != turn(dir, 180))
+	if(get_dir(AM, target) != turn(dir, 180))
 		return TRUE
 	return FALSE
 

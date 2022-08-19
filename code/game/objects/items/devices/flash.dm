@@ -4,7 +4,7 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "flash"
 	item_state = "flashtool"
-	throwforce = 5
+	throw_force = 5
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 4
 	throw_range = 10

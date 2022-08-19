@@ -11,7 +11,7 @@
 	item_state = "defibunit"
 	slot_flags = SLOT_BACK
 	force = 5
-	throwforce = 6
+	throw_force = 6
 	preserve_item = 1
 	w_class = ITEMSIZE_LARGE
 	origin_tech = list(TECH_BIO = 4, TECH_POWER = 2)
@@ -192,7 +192,7 @@
 	item_state = "defibpaddles"
 	gender = PLURAL
 	force = 2
-	throwforce = 6
+	throw_force = 6
 	w_class = ITEMSIZE_LARGE
 
 	var/safety = 1 //if you can zap people with the paddles on harm mode

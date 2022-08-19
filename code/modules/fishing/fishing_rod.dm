@@ -13,7 +13,7 @@
 	icon_state = "fishing_rod"
 	item_state = "fishing_rod"
 	force_divisor = 0.02
-	throwforce = 1
+	throw_force = 1
 	sharp = TRUE
 	attack_verb = list("whipped", "battered", "slapped", "fished", "hooked")
 	hitsound = 'sound/weapons/punchmiss.ogg'

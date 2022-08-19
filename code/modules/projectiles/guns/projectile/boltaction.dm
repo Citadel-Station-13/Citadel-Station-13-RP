@@ -44,7 +44,7 @@
 	icon_state = "vox_hunting"
 	item_state = "vox_hunting"
 	ammo_type = /obj/item/ammo_casing/a762
-	throwforce = 10
+	throw_force = 10
 	force = 20
 
 // Stole hacky terrible code from doublebarrel shotgun. -Spades

@@ -46,19 +46,19 @@
 	if(mover.check_pass_flags(ATOM_PASS_GLASS) && prob(60))
 		return TRUE
 
-	var/obj/structure/bed/B = A
-	if (istype(A, /obj/structure/bed) && B.has_buckled_mobs())//if it's a bed/chair and someone is buckled, it will not pass
+	var/obj/structure/bed/B = mover
+	if (istype(mover, /obj/structure/bed) && B.has_buckled_mobs())//if it's a bed/chair and someone is buckled, it will not pass
 		return 0
 
-	if(istype(A, /obj/vehicle) || istype (A, /obj/mecha)) //no vehicles
-		return 0
+	if(isvehicle(mover))
+		return FALSE
 
-	var/mob/living/M = A
+	var/mob/living/M = mover
 	if(istype(M))
 		if(M.lying && can_pass_lying)
 			return ..()
 		for(var/mob_type in mobs_can_pass)
-			if(istype(A, mob_type))
+			if(istype(mover, mob_type))
 				return ..()
 		return issmall(M)
 

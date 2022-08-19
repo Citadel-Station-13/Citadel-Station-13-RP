@@ -77,7 +77,7 @@
 	icon = 'icons/obj/bones_vr.dmi'
 	icon_state = "generic"
 	force = 0
-	throwforce = 0
+	throw_force = 0
 	item_state = "bone"
 	w_class = ITEMSIZE_SMALL
 	var/pred_ckey

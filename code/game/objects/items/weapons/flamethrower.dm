@@ -9,7 +9,7 @@
 			)
 	item_state = "flamethrower_0"
 	force = 3.0
-	throwforce = 10.0
+	throw_force = 10.0
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL

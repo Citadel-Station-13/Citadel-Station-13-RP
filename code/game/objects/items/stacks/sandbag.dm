@@ -6,7 +6,7 @@
 	icon_state = "sandbag_empty"
 	w_class = ITEMSIZE_NORMAL
 	force = 1
-	throwforce = 1
+	throw_force = 1
 	throw_speed = 5
 	throw_range = 20
 	drop_sound = 'sound/items/drop/backpack.ogg'
@@ -53,7 +53,7 @@
 	icon_state = "sandbags"
 	w_class = ITEMSIZE_NORMAL
 	force = 10
-	throwforce = 15
+	throw_force = 15
 	throw_speed = 3
 	throw_range = 10
 	drop_sound = 'sound/items/drop/backpack.ogg'

@@ -4,7 +4,7 @@
 	icon_state = "jaws"
 	desc = "The jaws of the law."
 	force = 10
-	throwforce = 0
+	throw_force = 0
 	hitsound = 'sound/weapons/bite.ogg'
 	attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
 	w_class = ITEMSIZE_NORMAL
@@ -15,7 +15,7 @@
 	icon_state = "smalljaws"
 	desc = "The jaws of a small dog."
 	force = 5
-	throwforce = 0
+	throw_force = 0
 	hitsound = 'sound/weapons/bite.ogg'
 	attack_verb = list("nibbled", "bit", "gnawed", "chomped", "nommed")
 	w_class = ITEMSIZE_NORMAL
@@ -31,7 +31,7 @@
 			icon_state = "jaws"
 			desc = "The jaws of the law."
 			force = 10
-			throwforce = 0
+			throw_force = 0
 			hitsound = 'sound/weapons/bite.ogg'
 			attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
 			w_class = ITEMSIZE_NORMAL
@@ -41,7 +41,7 @@
 			icon_state = "smalljaws"
 			desc = "The jaws of a small dog."
 			force = 5
-			throwforce = 0
+			throw_force = 0
 			hitsound = 'sound/weapons/bite.ogg'
 			attack_verb = list("nibbled", "bit", "gnawed", "chomped", "nommed")
 			w_class = ITEMSIZE_NORMAL
@@ -55,7 +55,7 @@
 	desc = "The BOOP module, a simple reagent and atmosphere sniffer."
 	force = 0
 	item_flags = NOBLUDGEON
-	throwforce = 0
+	throw_force = 0
 	attack_verb = list("nuzzled", "nosed", "booped")
 	w_class = ITEMSIZE_TINY
 
@@ -324,7 +324,7 @@
 	force = 20 //Takes 5 hits to 100-0
 	sharp = 1
 	edge = 1
-	throwforce = 0 //This shouldn't be thrown in the first place.
+	throw_force = 0 //This shouldn't be thrown in the first place.
 	hitsound = 'sound/weapons/blade1.ogg'
 	attack_verb = list("slashed", "stabbed", "jabbed", "mauled", "sliced")
 	w_class = ITEMSIZE_NORMAL
@@ -364,7 +364,7 @@
 	icon_state = "pounce"
 	desc = "Leap at your target to momentarily stun them."
 	force = 0
-	throwforce = 0
+	throw_force = 0
 	item_flags = NOBLUDGEON
 
 /obj/item/dogborg/pounce/attack_self(mob/user)

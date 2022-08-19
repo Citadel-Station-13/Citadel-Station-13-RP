@@ -5,7 +5,7 @@
 	icon_state = "rods"
 	w_class = ITEMSIZE_NORMAL
 	force = 9.0
-	throwforce = 15.0
+	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
 	drop_sound = 'sound/items/drop/metalweapon.ogg'

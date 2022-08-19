@@ -15,7 +15,7 @@
 	var/obj/item/cassette_tape/mytape = /obj/item/cassette_tape/random
 	var/canprint = 1
 	slot_flags = SLOT_BELT
-	throwforce = 2
+	throw_force = 2
 	throw_speed = 4
 	throw_range = 20
 
@@ -369,7 +369,7 @@
 	w_class = ITEMSIZE_TINY
 	matter = list(MAT_STEEL=20, "glass"=5)
 	force = 1
-	throwforce = 0
+	throw_force = 0
 	var/max_capacity = 1800
 	var/used_capacity = 0
 	var/list/storedinfo = new/list()

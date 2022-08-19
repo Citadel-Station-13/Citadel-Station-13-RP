@@ -7,7 +7,7 @@
 	icon_state = "bluespace"
 	throw_speed = 3
 	throw_range = 7
-	throwforce = 10
+	throw_force = 10
 	damtype = BURN
 	force = 10
 	hitsound = 'sound/items/welder2.ogg'
@@ -35,7 +35,7 @@
 	lefthand_file = 'icons/mob/inhands/equipment/kitchen_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/kitchen_righthand.dmi'
 	force = 15
-	throwforce = 10
+	throw_force = 10
 	w_class = WEIGHT_CLASS_NORMAL
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	var/charges = 1

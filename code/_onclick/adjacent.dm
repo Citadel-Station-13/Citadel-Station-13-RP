@@ -105,10 +105,10 @@ Quick adjacency (to turf):
 */
 /obj/machinery/door/Adjacent(var/atom/neighbor)
 	var/obj/machinery/door/firedoor/border_only/BOD = locate() in loc
-	if(BOD)
-		BOD.throwpass = 1 // allow click to pass
+	if(BOD && !(BOD.pass_flags_self & ATOM_PASS_CLICK))
+		BOD.pass_flags_self |= ATOM_PASS_CLICK // allow click to pass
 		. = ..()
-		BOD.throwpass = 0
+		BOD.pass_flags_self &= ATOM_PASS_CLICK
 		return .
 	return ..()
 
@@ -120,7 +120,7 @@ Quick adjacency (to turf):
 */
 /turf/proc/ClickCross(var/target_dir, var/border_only, var/target_atom = null)
 	for(var/obj/O in src)
-		if( !O.density || O == target_atom || O.throwpass) continue // throwpass is used for anything you can click through
+		if( !O.density || O == target_atom || (O.pass_flags_self & ATOM_PASS_CLICK)) continue // throwpass is used for anything you can click through
 
 		if( O.flags&ON_BORDER) // windows have throwpass but are on border, check them first
 			if( O.dir & target_dir || O.dir&(O.dir-1) ) // full tile windows are just diagonals mechanically

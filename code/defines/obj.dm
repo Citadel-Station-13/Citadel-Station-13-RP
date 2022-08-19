@@ -87,7 +87,7 @@
 	anchored = 0
 	w_class = ITEMSIZE_LARGE
 	force = 0.0
-	throwforce = 0.0
+	throw_force = 0.0
 	throw_speed = 1
 	throw_range = 20
 	drop_sound = 'sound/items/drop/rubber.ogg'

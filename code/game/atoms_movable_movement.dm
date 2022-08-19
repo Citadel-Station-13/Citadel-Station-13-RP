@@ -65,7 +65,7 @@
 //
 ////////////////////////////////////////
 
-/atom/movable/Move(atom/newloc, direct)
+/atom/movable/Move(atom/newloc, direct, glide_size_override)
 	var/atom/movable/pullee = pulling
 	var/turf/T = loc
 	if(!moving_from_pull)
@@ -73,6 +73,9 @@
 	if(!loc || !newloc)
 		return FALSE
 	var/atom/oldloc = loc
+	//Early override for some cases like diagonal movement
+	if(glide_size_override)
+		set_glide_size(glide_size_override, FALSE)
 
 	if(loc != newloc)
 		if (!(direct & (direct - 1))) //Cardinal move
@@ -132,7 +135,7 @@
 			return
 
 	if(!loc || (loc == oldloc && oldloc != newloc))
-		last_move = NONE
+		last_move_dir = NONE
 		return
 
 	if(.)
@@ -145,7 +148,7 @@
 			//puller and pullee more than one tile away or in diagonal position
 			if(get_dist(src, pulling) > 1 || (moving_diagonally != SECOND_DIAG_STEP && ((pull_dir - 1) & pull_dir)))
 				pulling.moving_from_pull = src
-				var/success = pulling.Move(T, get_dir(pulling, T)) //the pullee tries to reach our previous position
+				var/success = pulling.Move(T, get_dir(pulling, T), glide_size) //the pullee tries to reach our previous position
 				pulling.moving_from_pull = null
 				if(success)
 					// hook for baystation stuff
@@ -153,9 +156,15 @@
 					// end
 			check_pulling()
 
-	last_move = direct
+	last_move_dir = direct
 	setDir(direct)
-	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc,direct)) //movement failed due to buckled mob(s)
+
+	//glide_size strangely enough can change mid movement animation and update correctly while the animation is playing
+	//This means that if you don't override it late like this, it will just be set back by the movement update that's called when you move turfs.
+	if(glide_size_override)
+		set_glide_size(glide_size_override, FALSE)
+
+	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc, direct, glide_size_override)) //movement failed due to buckled mob(s)
 		return FALSE
 
 	move_speed = world.time - l_move_time

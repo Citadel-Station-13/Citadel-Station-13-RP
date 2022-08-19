@@ -8,7 +8,7 @@
 	density = 0
 	anchored = 0.0
 	force = 1.0
-	throwforce = 1.0
+	throw_force = 1.0
 	throw_speed = 1
 	throw_range = 2
 	w_class = ITEMSIZE_SMALL

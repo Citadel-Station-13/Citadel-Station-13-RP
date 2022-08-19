@@ -4,7 +4,7 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "red_phone"
 	force = 3.0
-	throwforce = 2.0
+	throw_force = 2.0
 	throw_speed = 1
 	throw_range = 4
 	w_class = ITEMSIZE_SMALL
@@ -32,7 +32,7 @@
 	flags = NOCONDUCT
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_HOLSTER
-	throwforce = 0
+	throw_force = 0
 	throw_speed = 4
 	throw_range = 20
 
@@ -57,7 +57,7 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "bike_horn"
 	item_state = "bike_horn"
-	throwforce = 3
+	throw_force = 3
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_HOLSTER
 	throw_speed = 3
@@ -99,7 +99,7 @@
 	desc = "A tube... of cardboard."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "c_tube"
-	throwforce = 1
+	throw_force = 1
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_HOLSTER
 	throw_speed = 4
@@ -115,7 +115,7 @@
 			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
 			)
 	force = 5.0
-	throwforce = 7.0
+	throw_force = 7.0
 	w_class = ITEMSIZE_NORMAL
 	matter = list(MAT_STEEL = 50)
 	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
@@ -268,7 +268,7 @@
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "caution"
 	force = 1.0
-	throwforce = 3.0
+	throw_force = 3.0
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
@@ -323,7 +323,7 @@
 	var/obj/item/radio/origradio = null
 	slot_flags = SLOT_BELT
 	item_state = "radio"
-	throwforce = 5
+	throw_force = 5
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 4
 	throw_range = 20
@@ -340,7 +340,7 @@
 			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
 			)
 	force = 3.0
-	throwforce = 5.0
+	throw_force = 5.0
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
@@ -365,7 +365,7 @@
 	icon_state = "stick"
 	item_state = "cane"
 	force = 3.0
-	throwforce = 5.0
+	throw_force = 5.0
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
@@ -422,7 +422,7 @@
 	icon_state = "cigarpacket"
 	item_state = "cigarpacket"
 	w_class = ITEMSIZE_TINY
-	throwforce = 2
+	throw_force = 2
 	var/cigarcount = 6
 	flags = ONBELT
 	*/

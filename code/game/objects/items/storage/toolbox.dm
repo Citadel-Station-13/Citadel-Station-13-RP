@@ -5,7 +5,7 @@
 	icon_state = "red"
 	item_state_slots = list(slot_r_hand_str = "toolbox_red", slot_l_hand_str = "toolbox_red")
 	force = 10
-	throwforce = 10
+	throw_force = 10
 	throw_speed = 1
 	throw_range = 7
 	w_class = ITEMSIZE_LARGE
@@ -97,7 +97,7 @@
 	desc = "A gold plated toolbox, fancy and harmless due to the gold plating being on cardboard!"
 	icon_state = "gold"
 	force = 0
-	throwforce = 0
+	throw_force = 0
 
 /obj/item/storage/toolbox/lunchbox
 	max_storage_space = ITEMSIZE_COST_SMALL * 4 //slightly smaller than a toolbox

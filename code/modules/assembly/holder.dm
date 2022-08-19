@@ -4,7 +4,7 @@
 	icon_state = "holder"
 	item_state = "assembly"
 	flags = PROXMOVE
-	throwforce = 5
+	throw_force = 5
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 3
 	throw_range = 10

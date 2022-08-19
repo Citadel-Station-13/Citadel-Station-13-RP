@@ -6,7 +6,7 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "powersink0"
 	w_class = ITEMSIZE_LARGE
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 1
 	throw_range = 2
 

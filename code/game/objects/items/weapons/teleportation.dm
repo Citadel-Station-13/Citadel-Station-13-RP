@@ -122,7 +122,7 @@ Frequency:
 	icon = 'icons/obj/device.dmi'
 	icon_state = "hand_tele"
 	item_state = "electronic"
-	throwforce = 5
+	throw_force = 5
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 3
 	throw_range = 5

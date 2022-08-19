@@ -165,15 +165,15 @@
 	. = ..()
 	update_nearby_tiles(need_rebuild = TRUE)
 
-/obj/structure/window/hitby(AM as mob|obj)
-	..()
+/obj/structure/window/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	visible_message("<span class='danger'>[src] was hit by [AM].</span>")
 	var/tforce = 0
 	if(ismob(AM))
 		tforce = 40
 	else if(isobj(AM))
 		var/obj/item/I = AM
-		tforce = I.throwforce
+		tforce = I.throw_force
 	if(reinf) tforce *= 0.25
 	if(health - tforce <= 7 && !reinf)
 		anchored = 0

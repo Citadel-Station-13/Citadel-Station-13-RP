@@ -41,7 +41,7 @@
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	matter = list(MAT_STEEL = 2000)
 	w_class = ITEMSIZE_NORMAL
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 4
 	throw_range = 5
 	force = 5

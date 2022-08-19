@@ -6,7 +6,7 @@
 	icon_state = "hydro"
 	item_state = "gun"
 	slot_flags = SLOT_BELT
-	throwforce = 3
+	throw_force = 3
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 5
 	throw_range = 10

@@ -65,7 +65,7 @@
 	icon_state = "candlebox5"
 	icon_type = "candle"
 	item_state = "candlebox5"
-	throwforce = 2
+	throw_force = 2
 	slot_flags = SLOT_BELT
 	max_storage_space = ITEMSIZE_COST_SMALL * 5
 	starts_with = list(/obj/item/flame/candle = 5)
@@ -77,7 +77,7 @@
 	icon_state = "whitecandlebox5"
 	icon_type = "whitecandle"
 	item_state = "whitecandlebox5"
-	throwforce = 2
+	throw_force = 2
 	slot_flags = SLOT_BELT
 	max_storage_space = ITEMSIZE_COST_SMALL * 5
 	starts_with = list(/obj/item/flame/candle/white = 5)
@@ -89,7 +89,7 @@
 	icon_state = "blackcandlebox5"
 	icon_type = "blackcandle"
 	item_state = "blackcandlebox5"
-	throwforce = 2
+	throw_force = 2
 	slot_flags = SLOT_BELT
 	max_storage_space = ITEMSIZE_COST_SMALL * 5
 	starts_with = list(/obj/item/flame/candle/black = 5)
@@ -235,7 +235,7 @@
 	icon_state = "cigpacket"
 	item_state_slots = list(slot_r_hand_str = "cigpacket", slot_l_hand_str = "cigpacket")
 	w_class = ITEMSIZE_TINY
-	throwforce = 2
+	throw_force = 2
 	slot_flags = SLOT_BELT | SLOT_EARS
 	storage_slots = 6
 	can_hold = list(/obj/item/clothing/mask/smokable/cigarette, /obj/item/flame/lighter, /obj/item/cigbutt)
@@ -350,7 +350,7 @@
 	icon_state = "cigarcase"
 	icon = 'icons/obj/cigarettes.dmi'
 	w_class = ITEMSIZE_TINY
-	throwforce = 2
+	throw_force = 2
 	slot_flags = SLOT_BELT
 	storage_slots = 7
 	can_hold = list(/obj/item/clothing/mask/smokable/cigarette/cigar, /obj/item/cigbutt/cigarbutt)
@@ -379,7 +379,7 @@
 	icon_state = "paperbox"
 	icon = 'icons/obj/cigarettes.dmi'
 	w_class = ITEMSIZE_TINY
-	throwforce = 2
+	throw_force = 2
 	slot_flags = SLOT_BELT
 	storage_slots = 14
 	can_hold = list(/obj/item/rollingpaper)
@@ -391,7 +391,7 @@
 	icon_state = "bluntbox"
 	icon = 'icons/obj/cigarettes.dmi'
 	w_class = ITEMSIZE_TINY
-	throwforce = 2
+	throw_force = 2
 	slot_flags = SLOT_BELT
 	storage_slots = 7
 	can_hold = list(/obj/item/rollingblunt)

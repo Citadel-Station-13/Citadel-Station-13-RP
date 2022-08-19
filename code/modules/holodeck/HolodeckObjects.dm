@@ -274,7 +274,7 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 	force = 3.0
 	throw_speed = 1
 	throw_range = 5
-	throwforce = 0
+	throw_force = 0
 	w_class = ITEMSIZE_SMALL
 	flags = NOBLOODY
 	var/active = 0

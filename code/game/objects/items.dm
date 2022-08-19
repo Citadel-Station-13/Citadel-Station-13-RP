@@ -397,8 +397,8 @@
 	return
 
 /obj/item/proc/get_volume_by_throwforce_and_or_w_class() // This is used for figuring out how loud our sounds are for throwing.
-	if(throwforce && w_class)
-		return clamp((throwforce + w_class) * 5, 30, 100)// Add the item's throwforce to its weight class and multiply by 5, then clamp the value between 30 and 100
+	if(throw_force && w_class)
+		return clamp((throw_force + w_class) * 5, 30, 100)// Add the item's throw_force to its weight class and multiply by 5, then clamp the value between 30 and 100
 	else if(w_class)
 		return clamp(w_class * 8, 20, 100) // Multiply the item's weight class by 8, then clamp the value between 20 and 100
 	else
@@ -410,7 +410,7 @@
 	..()
 	if(isliving(hit_atom)) //Living mobs handle hit sounds differently.
 		var/volume = get_volume_by_throwforce_and_or_w_class()
-		if (throwforce > 0)
+		if (throw_force > 0)
 			if (mob_throw_hit_sound)
 				playsound(hit_atom, mob_throw_hit_sound, volume, TRUE, -1)
 			else if(hitsound)
@@ -435,7 +435,7 @@
 			itempush = 0 //too light to push anything
 		if(isliving(hit_atom)) //Living mobs handle hit sounds differently.
 			var/volume = get_volume_by_throwforce_and_or_w_class()
-			if (throwforce > 0)
+			if (throw_force > 0)
 				if (mob_throw_hit_sound)
 					playsound(hit_atom, mob_throw_hit_sound, volume, TRUE, -1)
 				else if(hitsound)

@@ -39,7 +39,12 @@ SUBSYSTEM_DEF(throwing)
 	currentrun = null
 
 /datum/thrownthing
+	/// thing we threw
 	var/atom/movable/thrownthing
+	/// flags
+	var/throw_flags = NONE
+	/// things we impacted already. associative list for speed.
+	var/list/impacted
 	var/atom/target
 	var/turf/target_turf
 	var/target_zone

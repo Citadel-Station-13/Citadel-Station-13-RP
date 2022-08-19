@@ -4,7 +4,7 @@
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "s-casing"
 	slot_flags = SLOT_BELT | SLOT_EARS
-	throwforce = 1
+	throw_force = 1
 	w_class = ITEMSIZE_TINY
 	preserve_item = 1
 	drop_sound = 'sound/items/drop/ring.ogg'
@@ -66,7 +66,7 @@
 	slot_flags = SLOT_BELT
 	item_state = "syringe_kit"
 	matter = list(MAT_STEEL = 500)
-	throwforce = 5
+	throw_force = 5
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 4
 	throw_range = 10

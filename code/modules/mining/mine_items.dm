@@ -15,7 +15,7 @@
 	icon = 'icons/obj/items.dmi'
 	slot_flags = SLOT_BELT
 	force = 15.0
-	throwforce = 4.0
+	throw_force = 4.0
 	icon_state = "pickaxe"
 	item_state = "jackhammer"
 	w_class = ITEMSIZE_LARGE
@@ -115,7 +115,7 @@
 	desc = "A simple icepick, for all your digging, climbing, and lobotomizing needs."
 	slot_flags = SLOT_BELT
 	force = 12
-	throwforce = 15 //Discount shuriken.
+	throw_force = 15 //Discount shuriken.
 	icon_state = "icepick"
 	item_state = "spickaxe" //im lazy fuck u
 	w_class = ITEMSIZE_SMALL
@@ -257,7 +257,7 @@ obj/item/pickaxe/tyrmalin/proc/turnOn(mob/user as mob)
 	icon_state = "shovel"
 	slot_flags = SLOT_BELT
 	force = 8.0
-	throwforce = 4.0
+	throw_force = 4.0
 	item_state = "shovel"
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
@@ -273,7 +273,7 @@ obj/item/pickaxe/tyrmalin/proc/turnOn(mob/user as mob)
 	icon_state = "spade"
 	item_state = "spade"
 	force = 5.0
-	throwforce = 7.0
+	throw_force = 7.0
 	w_class = ITEMSIZE_SMALL
 
 /obj/item/shovel/bone
@@ -281,7 +281,7 @@ obj/item/pickaxe/tyrmalin/proc/turnOn(mob/user as mob)
 	desc = "A wicked tool that cleaves through dirt just as easily as it does flesh. The design was styled after ancient tribal designs."
 	icon_state = "shovel_bone"
 	force = 15
-	throwforce = 12
+	throw_force = 12
 	toolspeed = 0.7
 	attack_verb = list("slashed", "impaled", "stabbed", "sliced")
 	sharp = 1

@@ -100,8 +100,8 @@
 			M.take_organ_damage(10)
 	else if(istype(A, /obj))
 		var/obj/O = A
-		if(O.throwforce)
-			chassis.take_damage(round(O.throwforce*damage_coeff))
+		if(O.throw_force)
+			chassis.take_damage(round(O.throw_force*damage_coeff))
 			chassis.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 	set_ready_state(0)
 	chassis.use_power(energy_drain)

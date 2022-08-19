@@ -9,7 +9,7 @@
 	desc = "A handheld device that creates small fields of energy that resonate until they detonate, crushing rock. It can also be activated without a target to create a field at the user's location, to act as a delayed time trap. It's more effective in low temperature."
 	w_class = ITEMSIZE_NORMAL
 	force = 8
-	throwforce = 10
+	throw_force = 10
 	var/cooldown = 0
 	var/fieldsactive = 0
 	var/burst_time = 50

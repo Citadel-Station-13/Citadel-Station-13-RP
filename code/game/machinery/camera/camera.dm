@@ -116,13 +116,13 @@
 		return
 	destroy()
 
-/obj/machinery/camera/hitby(AM as mob|obj)
-	..()
+/obj/machinery/camera/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	if (istype(AM, /obj))
 		var/obj/O = AM
-		if (O.throwforce >= src.toughness)
+		if (O.throw_force >= src.toughness)
 			visible_message("<span class='warning'><B>[src] was hit by [O].</B></span>")
-		take_damage(O.throwforce)
+		take_damage(O.throw_force)
 
 /obj/machinery/camera/proc/setViewRange(var/num = 7)
 	src.view_range = num

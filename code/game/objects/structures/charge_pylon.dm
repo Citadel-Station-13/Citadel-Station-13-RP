@@ -37,13 +37,8 @@
 		visible_message("<span class='danger'>\The [user] has been shocked by \the [src]!</span>")
 	user.throw_at(get_step(user,get_dir(src,user)), 5, 10)
 
-
 /obj/structure/adherent_pylon/Bumped(atom/AM)
-	if(ishuman(AM))
-		charge_user(AM)
-
-/obj/structure/adherent_pylon/hitby(atom/AM)
-	. =..()
+	. = ..()
 	if(ishuman(AM))
 		charge_user(AM)
 

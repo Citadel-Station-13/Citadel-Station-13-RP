@@ -325,10 +325,11 @@
 	return
 
 // Called when turf is hit by a thrown object
-/turf/hitby(atom/movable/AM as mob|obj, var/speed)
+/turf/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	if(src.density)
 		spawn(2)
-			step(AM, turn(AM.last_move, 180))
+			step(AM, turn(AM.last_move_dir, 180))
 		if(isliving(AM))
 			var/mob/living/M = AM
 			M.turf_collision(src, speed)

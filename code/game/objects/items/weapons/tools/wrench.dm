@@ -10,7 +10,7 @@
 	slot_flags = SLOT_BELT
 	tool_behaviour = TOOL_WRENCH
 	force = 6
-	throwforce = 7
+	throw_force = 7
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	matter = list(MAT_STEEL = 150)
@@ -82,7 +82,7 @@
 	icon_state = "hybwrench"
 	slot_flags = SLOT_BELT
 	force = 8
-	throwforce = 10
+	throw_force = 10
 	w_class = ITEMSIZE_NORMAL
 	slowdown = 0.1
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ENGINEERING = 3, TECH_PHORON = 2)
@@ -128,7 +128,7 @@
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	force = 8
 	w_class = ITEMSIZE_SMALL
-	throwforce = 8
+	throw_force = 8
 	attack_verb = list("drilled", "screwed", "jabbed")
 	toolspeed = 0.25
 	var/obj/item/tool/screwdriver/power/counterpart = null

@@ -7,7 +7,7 @@ var/global/list/stool_cache = list() //haha stool
 	icon = 'icons/obj/furniture_vr.dmi'
 	icon_state = "stool_preview" //set for the map
 	force = 10
-	throwforce = 10
+	throw_force = 10
 	w_class = ITEMSIZE_HUGE
 	var/base_icon = "stool_base"
 	var/datum/material/material

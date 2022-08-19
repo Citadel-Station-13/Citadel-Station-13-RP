@@ -3,7 +3,7 @@
 	desc = "It's a net made of green energy."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "energynet"
-	throwforce = 0
+	throw_force = 0
 	force = 0
 	var/net_type = /obj/effect/energy_net
 

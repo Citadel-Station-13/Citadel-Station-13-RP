@@ -57,15 +57,15 @@
 	force = round(force*force_divisor)
 	if(dulled)
 		force = round(force*dulled_divisor)
-	throwforce = round(material.get_blunt_damage()*thrown_force_divisor)
+	throw_force = round(material.get_blunt_damage()*thrown_force_divisor)
 	if(material.name == "supermatter")
 		damtype = BURN //its hot
 		force = 150 //double the force of a durasteel claymore.
 		armor_penetration = 100 //regardless of armor
-		throwforce = 150
+		throw_force = 150
 
 	//spawn(1)
-	//	to_chat(world, "[src] has force [force] and throwforce [throwforce] when made from default material [material.name]")
+	//	to_chat(world, "[src] has force [force] and throw_force [throw_force] when made from default material [material.name]")
 
 /obj/item/material/proc/set_material(var/new_material)
 	material = get_material_by_name(new_material)

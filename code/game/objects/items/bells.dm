@@ -4,7 +4,7 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "deskbell"
 	force = 2
-	throwforce = 2
+	throw_force = 2
 	w_class = 2.0
 	var/broken
 	attack_verb = list("annoyed")

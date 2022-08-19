@@ -10,7 +10,7 @@
 	var/w_class // Size of the object.
 	var/unacidable = 0 //universal "unacidabliness" var, here so you can use it in any obj.
 	animate_movement = 2
-	var/throwforce = 1
+	var/throw_force = 1
 	var/catchable = 1	// can it be caught on throws/flying?
 	var/sharp = 0		// whether this object cuts
 	var/edge = 0		// whether this object is more likely to dismember

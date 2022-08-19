@@ -5,7 +5,7 @@
 	name = "Money bag"
 	icon_state = "moneybag"
 	force = 10.0
-	throwforce = 2.0
+	throw_force = 2.0
 	w_class = ITEMSIZE_LARGE
 
 /obj/item/moneybag/attack_hand(user as mob)

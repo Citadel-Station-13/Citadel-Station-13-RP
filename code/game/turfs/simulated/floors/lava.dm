@@ -32,11 +32,12 @@
 	name = "magma"
 
 /turf/simulated/floor/outdoors/lava/Entered(atom/movable/AM)
-	..()
+	. = ..()
 	if(burn_stuff(AM))
 		START_PROCESSING(SSobj, src)
 
-/turf/simulated/floor/outdoors/lava/hitby(atom/movable/AM)
+/turf/simulated/floor/outdoors/lava/throw_landed(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	if(burn_stuff(AM))
 		START_PROCESSING(SSobj, src)
 

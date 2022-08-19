@@ -11,7 +11,7 @@
 	slot_flags = SLOT_BELT
 	tool_behaviour = TOOL_CROWBAR
 	force = 6
-	throwforce = 7
+	throw_force = 7
 	pry = 1
 	item_state = "crowbar"
 	w_class = ITEMSIZE_SMALL
@@ -135,7 +135,7 @@
 	icon_state = "prybar"
 	slot_flags = SLOT_BELT
 	force = 4
-	throwforce = 5
+	throw_force = 5
 	pry = 1
 	item_state = "crowbar"
 	w_class = ITEMSIZE_SMALL
