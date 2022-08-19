@@ -43,7 +43,6 @@
 	var/t_sl_gas = null
 	var/t_n2 = null
 
-	var/now_pushing = null
 	var/mob_bump_flag = 0
 	var/mob_swap_flags = 0
 	var/mob_push_flags = 0
@@ -111,3 +110,6 @@
 	/// Set to TRUE to enable the use of hands and the hands hud
 	var/has_hands = FALSE
 
+	//! movement
+	/// are we currently pushing (or trying to push) (or otherwise inside Bump() handling that deals with this crap) another atom?
+	var/_pushing_bumped_atom = FALSE

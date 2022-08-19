@@ -51,7 +51,7 @@ SUBSYSTEM_DEF(throwing)
 	var/init_dir
 	var/maxrange
 	var/speed
-	var/mob/thrower
+	var/atom/thrower
 
 	var/start_time
 	var/dist_travelled = 0

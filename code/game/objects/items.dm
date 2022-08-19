@@ -424,7 +424,7 @@
 
 #warn above old below new figure it out
 
-/obj/item/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+/obj/item/throw_impact(atom/A, datum/thrownthing/TT)
 	if(hit_atom && !QDELETED(hit_atom))
 		SEND_SIGNAL(src, COMSIG_MOVABLE_IMPACT, hit_atom, throwingdatum)
 		if(get_temperature() && isliving(hit_atom))

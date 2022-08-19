@@ -209,24 +209,45 @@
 
 #warn old above, new below, sort it out
 
-//Generic Bump(). Override MobBump() and ObjBump() instead of this.
 /mob/living/Bump(atom/A)
-	if(..()) //we are thrown onto something
+	var/skip_atom_bump_handling
+	if(throwing)
+		skip_atom_bump_handling = TRUE
+	. = ..()
+	if(!skip_atom_bump_handling)
+		_handle_atom_bumping(A)
+
+/mob/living/proc/_handle_atom_bumping(atom/A)
+	set waitfor = FALSE
+	if(_pushing_bumped_atom)
 		return
-	if(buckled || now_pushing)
+	if(buckled)		// nope!
 		return
-	if(ismob(A))
-		var/mob/M = A
-		if(MobBump(M))
-			return
-	if(isobj(A))
-		var/obj/O = A
-		if(ObjBump(O))
-			return
-	if(ismovable(A))
-		var/atom/movable/AM = A
-		if(PushAM(AM, move_force))
-			return
+	_pushing_bumped_atom = TRUE
+	if(ismob(A) && handle_mob_bump(A))
+		return
+	if(isobj(A) && handle_obj_bump(A))
+		return
+	if(ismovable(A) && handle_movable_bump(A))
+		return
+	_pushing_bumped_atom = FALSE
+
+#warn impl
+
+/**
+ * handles mob bumping/fire spread/pushing/etc
+ */
+/mob/living/proc/handle_mob_bump(mob/M)
+
+/**
+ * handles obj bumping/fire spread/pushing/etc
+ */
+/mob/living/proc/handle_obj_bump(obj/O)
+
+/**
+ * handles generic movable bumping/fire spread/pushing/etc
+ */
+/mob/living/proc/handle_movable_bump(atom/movable/AM)
 
 
 //Called when we bump onto a mob
@@ -361,12 +382,6 @@
 		if(!istype(M, /obj/item/clothing))
 			if(prob(I.block_chance*2))
 				return TRUE
-
-
-//Called when we bump onto an obj
-/mob/living/proc/ObjBump(obj/O)
-	return
-
 
 //Called when we want to push an atom/movable
 /mob/living/proc/PushAM(atom/movable/AM, force = move_force)

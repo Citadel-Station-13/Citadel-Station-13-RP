@@ -103,9 +103,9 @@
 	return ..() || (check_access(ID) && inoperable()) || (dir != to_dir)
 
 /obj/machinery/door/window/CheckExit(atom/movable/AM, atom/newLoc)
-	if(!(get_dir(loc, target) & dir))
+	if(!(get_dir(loc, mover) & dir))
 		return TRUE
-	if(check_standard_flag_pass(mover))
+	if(check_standard_flag_pass(AM))
 		return TRUE
 	return !density
 

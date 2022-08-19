@@ -14,13 +14,13 @@
 	expert_job = "Bartender"
 
 // Allow thrown items into smartfridges
-/obj/machinery/smartfridge/throw_impact(var/atom/movable/A)
+/obj/machinery/smartfridge/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
-	if(accept_check(A) && A.thrower)
+	if(accept_check(AM) && TT.thrower)
 		//Try to find what job they are via ID
 		var/obj/item/card/id/thrower_id
-		if(ismob(A.thrower))
-			var/mob/T = A.thrower
+		if(ismob(TT.thrower))
+			var/mob/T = TT.thrower
 			thrower_id = T.GetIdCard()
 
 		//98% chance the expert makes it

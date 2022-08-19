@@ -1040,8 +1040,8 @@
 
 /obj/mecha/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
-	src.log_message("Hit by [A].",1)
-	call((proc_res["dynhitby"]||src), "dynhitby")(A)
+	log_message("Hit by [AM].",1)
+	call((proc_res["dynhitby"]||src), "dynhitby")(AM)
 
 //I think this is relative to throws.
 /obj/mecha/proc/dynhitby(atom/movable/A)
