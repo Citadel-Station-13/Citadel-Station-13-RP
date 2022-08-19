@@ -9,8 +9,6 @@ GLOBAL_VAR_INIT(glide_size_multiplier, 1.0)
 /// Default world glide size
 GLOBAL_VAR_INIT(default_glide_size, 0)
 
-/*
-
 ///Broken down, here's what this does:
 /// divides the world icon_size (32) by delay divided by ticklag to get the number of pixels something should be moving each tick.
 /// The division result is given a min value of 1 to prevent obscenely slow glide sizes from being set
@@ -26,11 +24,8 @@ GLOBAL_VAR_INIT(default_glide_size, 0)
 #ifdef SMOOTH_MOVEMENT
 	#define SET_APPEARANCE_FLAGS(_flags) appearance_flags = (_flags | LONG_GLIDE)
 #else
-*/
 	#define SET_APPEARANCE_FLAGS(_flags) appearance_flags = _flags
-/*
 #endif
-*/
 
 /// set glide size of atom based on if smooth movement is on or not
 #ifdef SMOOTH_MOVEMENT

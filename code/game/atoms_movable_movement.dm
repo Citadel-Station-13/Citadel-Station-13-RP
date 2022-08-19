@@ -424,7 +424,7 @@
   */
 
 /atom/movable/proc/reset_glide_size()
-	set_glide_size(isnull(defualt_glide_size)? GLOB.default_glide_size : default_glide_size)
+	set_glide_size(isnull(default_glide_size)? GLOB.default_glide_size : default_glide_size)
 
 ///Sets the anchored var and returns if it was sucessfully changed or not.
 /atom/movable/proc/set_anchored(anchorvalue)

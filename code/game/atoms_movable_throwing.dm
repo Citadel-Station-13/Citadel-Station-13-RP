@@ -81,7 +81,7 @@
 	. |= throw_land(landed_on, TT)
 	if(. & (COMPONENT_THROW_LANDING_NEVERMIND | COMPONENT_THROW_LANDING_TERMINATE))
 		return
-	. |= SEND_SIGNAL(src, COMSIG_MOVABLE_THROW_LANDED, landed_on, TT)
+	. |= SEND_SIGNAL(src, COMSIG_ATOM_THROW_LANDED, landed_on, TT)
 	if(. & (COMPONENT_THROW_LANDING_NEVERMIND | COMPONENT_THROW_LANDING_TERMINATE))
 		return
 	. |= landed_on.throw_landed(src, TT)

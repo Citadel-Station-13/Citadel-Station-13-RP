@@ -30,7 +30,7 @@
 	///Used for the calculate_adjacencies proc for icon smoothing.
 	var/can_be_unanchored = FALSE
 	/// Our default glide_size. Null to use global default.
-	var/default_glide_sizes
+	var/default_glide_size
 	/// our default perspective - if none, a temporary one will be generated when a mob requires it
 	var/datum/perspective/self_perspective
 	/// anchored to ground? prevent movement absolutely if so
