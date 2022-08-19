@@ -255,10 +255,6 @@
 	else
 		return ..()
 
-/obj/item/modular_computer/relaymove(mob/user, direction)
-	if(active_program)
-		return active_program.relaymove(user, direction)
-
 /obj/item/modular_computer/proc/set_autorun(program)
 	if(!hard_drive)
 		return

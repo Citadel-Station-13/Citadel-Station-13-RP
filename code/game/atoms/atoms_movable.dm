@@ -73,8 +73,6 @@
 	var/old_x = 0
 	var/old_y = 0
 
-	/// Used for vehicles and other things.
-	var/datum/riding/riding_datum
 	/// Does the atom spin when thrown.
 	var/does_spin = TRUE
 
@@ -106,8 +104,6 @@
 		pulledby.stop_pulling()
 	if(pulling)
 		stop_pulling()
-	if(riding_datum)
-		QDEL_NULL(riding_datum)
 
 /atom/movable/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
@@ -289,16 +285,6 @@
 
 /atom/movable/proc/Bump_vr(var/atom/A, yes)
 	return
-
-/atom/movable/setDir(newdir)
-	. = ..(newdir)
-	if(riding_datum)
-		riding_datum.handle_vehicle_offsets()
-
-/atom/movable/relaymove(mob/user, direction)
-	. = ..()
-	if(riding_datum)
-		riding_datum.handle_ride(user, direction)
 
 // Procs to cloak/uncloak
 /atom/movable/proc/cloak()

@@ -278,6 +278,7 @@
 	. =..()
 	ridden.visible_message("<span class='notice'>[M] stops riding [ridden]!</span>")
 
+#warn nuke from orbit
 /datum/riding/simple_mob/get_offsets(pass_index) // list(dir = x, y, layer)
 	var/mob/living/simple_mob/L = ridden
 	var/scale = L.size_multiplier

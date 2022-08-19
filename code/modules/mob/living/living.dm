@@ -922,6 +922,7 @@ default behaviour is:
 	if(lying != lying_prev)
 		lying_prev = lying
 		update_transform()
+		#warn what the fuck
 		if(lying && LAZYLEN(buckled_mobs))
 			for(var/rider in buckled_mobs)
 				var/mob/living/L = rider

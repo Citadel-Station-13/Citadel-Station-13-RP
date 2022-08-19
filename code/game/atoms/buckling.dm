@@ -42,9 +42,6 @@
 	M.update_floating( M.Check_Dense_Object() )
 	buckled_mobs |= M
 
-	if(riding_datum)
-		riding_datum.ridden = src
-		riding_datum.handle_vehicle_offsets()
 	M.update_water()
 
 	post_buckle_mob(M)
@@ -66,9 +63,6 @@
 		buckled_mobs -= buckled_mob
 
 		buckled_mob.update_water()
-		if(riding_datum)
-			riding_datum.restore_position(buckled_mob)
-			riding_datum.handle_vehicle_offsets() // So the person in back goes to the front.
 		post_buckle_mob(.)
 
 //Handle any extras after buckling/unbuckling

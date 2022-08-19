@@ -11,7 +11,8 @@
 	active_power_usage = 200
 	power_channel = EQUIP
 	circuit = /obj/item/circuitboard/photocopier
-	can_buckle = TRUE
+	buckle_allowed = TRUE
+	buckle_max_mobs = 1
 	var/obj/item/copyitem = null	//what's in the copier!
 	var/copies = 1	//how many copies to print!
 	var/toner = 30 //how much toner is left! woooooo~
