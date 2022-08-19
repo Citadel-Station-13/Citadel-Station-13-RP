@@ -22,11 +22,11 @@
 		if(ismob(A.thrower))
 			var/mob/T = A.thrower
 			thrower_id = T.GetIdCard()
-		
+
 		//98% chance the expert makes it
 		if(expert_job && thrower_id && thrower_id.rank == expert_job && prob(98))
 			stock(A)
-		
+
 		//20% chance a non-expert makes it
 		else if(prob(20))
 			stock(A)
