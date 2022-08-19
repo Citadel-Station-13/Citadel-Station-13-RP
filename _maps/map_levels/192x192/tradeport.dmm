@@ -1459,7 +1459,7 @@
 /area/tradeport/commons)
 "ft" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/random/cutout,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport)
@@ -1534,7 +1534,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tradeport)
 "fN" = (
@@ -2168,7 +2168,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tradeport/medical)
 "ii" = (
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/generic,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport)
 "ik" = (
@@ -2374,7 +2374,7 @@
 /turf/simulated/floor/tiled/old_cargo/red,
 /area/shuttle/trade_ship/general)
 "iL" = (
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/tiled/hydro,
 /area/tradeport/cyndishow)
 "iM" = (
@@ -3406,7 +3406,7 @@
 /turf/simulated/floor/airless,
 /area/space)
 "mn" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport)
 "mp" = (
@@ -3556,7 +3556,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/landmark/spawnpoint/job/trader,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport)
@@ -4016,7 +4016,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/cyndi)
 "oU" = (
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/generic,
 /turf/simulated/floor/tiled/steel,
 /area/tradeport)
 "oV" = (
@@ -5221,7 +5221,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/flour,
+/obj/effect/debris/cleanable/flour,
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport)
 "tL" = (
@@ -5479,7 +5479,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
 "uL" = (
@@ -5716,7 +5716,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/vomit,
+/obj/effect/debris/cleanable/vomit,
 /obj/structure/closet/medical_wall{
 	pixel_x = -32
 	},
@@ -7193,7 +7193,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
 "AK" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/item/bone/skull,
 /turf/simulated/floor/outdoors/ice,
 /area/tradeport/cyndishow)
@@ -8177,7 +8177,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/steel,
 /area/tradeport)
 "Ee" = (
@@ -9398,7 +9398,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/shuttle/trade_ship/general)
 "Iv" = (
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/outdoors/ice,
 /area/tradeport/cyndishow)
 "Iw" = (
@@ -9772,7 +9772,7 @@
 /turf/simulated/floor/tiled/old_cargo/red,
 /area/shuttle/trade_ship/general)
 "JT" = (
-/obj/effect/decal/cleanable/molten_item,
+/obj/effect/debris/cleanable/molten_item,
 /turf/simulated/floor/plating,
 /area/tradeport)
 "JU" = (
@@ -10046,7 +10046,7 @@
 	dir = 8;
 	pixel_x = -29
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/hydro,
 /area/tradeport/cyndishow)
 "Le" = (
@@ -10060,7 +10060,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cafeteria)
 "Lg" = (
-/obj/effect/decal/cleanable/spiderling_remains,
+/obj/effect/debris/cleanable/spiderling_remains,
 /turf/simulated/floor/tiled/steel,
 /area/tradeport)
 "Lk" = (
@@ -10576,7 +10576,7 @@
 /turf/simulated/floor,
 /area/tradeport/pads)
 "MS" = (
-/obj/effect/decal/cleanable/spiderling_remains,
+/obj/effect/debris/cleanable/spiderling_remains,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport)
@@ -10835,7 +10835,7 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/hydro,
 /area/tradeport/cyndishow)
 "NM" = (
@@ -10987,7 +10987,7 @@
 /turf/simulated/floor/snow,
 /area/tradeport/cyndishow)
 "Op" = (
-/obj/effect/decal/cleanable/blood/writing{
+/obj/effect/debris/cleanable/blood/writing{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/hydro,
@@ -11000,7 +11000,7 @@
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
-/obj/effect/decal/cleanable/vomit{
+/obj/effect/debris/cleanable/vomit{
 	pixel_x = 8;
 	pixel_y = -4
 	},
@@ -11986,7 +11986,7 @@
 "RW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/meter,
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport)
@@ -12157,8 +12157,8 @@
 /turf/simulated/mineral/floor/vacuum,
 /area/tradeport/pads)
 "SB" = (
-/obj/effect/decal/cleanable/blood/drip,
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport)
 "SC" = (
@@ -13990,7 +13990,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/blood/gibs/robot/limb,
+/obj/effect/debris/cleanable/blood/gibs/robot/limb,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)

@@ -216,7 +216,7 @@
 	else if(water.energy < 5)
 		to_chat(user, "<span class='notice'>Your mouth feels dry. You should drink some water.</span>") //fixed annoying grammar and needless space
 		return
-	else if(istype(target,/obj/effect/decal/cleanable))
+	else if(istype(target,/obj/effect/debris/cleanable))
 		user.visible_message("[user] begins to lick off \the [target.name].", "<span class='notice'>You begin to lick off \the [target.name]...</span>")
 		if(do_after (user, 50))
 			to_chat(user, "<span class='notice'>You finish licking off \the [target.name].</span>")
@@ -250,7 +250,7 @@
 		if(do_after (user, 50))
 			to_chat(user, "<span class='notice'>You clean \the [target.name].</span>")
 			water.use_charge(5)
-			var/obj/effect/decal/cleanable/C = locate() in target
+			var/obj/effect/debris/cleanable/C = locate() in target
 			qdel(C)
 			target.clean_blood()
 	else if(ishuman(target))
@@ -277,7 +277,7 @@
 		user.visible_message("[user] begins to lick \the [target.name] clean...", "<span class='notice'>You begin to lick \the [target.name] clean...</span>")
 		if(do_after (user, 50))
 			to_chat(user, "<span class='notice'>You clean \the [target.name].</span>")
-			var/obj/effect/decal/cleanable/C = locate() in target
+			var/obj/effect/debris/cleanable/C = locate() in target
 			qdel(C)
 			target.clean_blood()
 			water.use_charge(5)

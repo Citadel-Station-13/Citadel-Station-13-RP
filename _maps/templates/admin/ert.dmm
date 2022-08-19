@@ -6658,7 +6658,7 @@
 /obj/machinery/power/port_gen/pacman/super,
 /obj/structure/cable/green,
 /obj/machinery/light,
-/obj/effect/decal/cleanable/greenglow,
+/obj/effect/debris/cleanable/greenglow,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/engineering)
 "VJ" = (

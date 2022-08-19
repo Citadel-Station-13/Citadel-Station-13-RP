@@ -112,7 +112,7 @@
 /turf/simulated/floor/holofloor/grass,
 /area/houseboat/holodeck/picnic)
 "fU" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/holofloor/desert,
 /area/houseboat/holodeck/picnic)
 "fV" = (
@@ -140,7 +140,7 @@
 /turf/simulated/floor/holofloor/grass,
 /area/houseboat/holodeck/picnic)
 "ga" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/holostool,
 /turf/simulated/floor/holofloor/desert,
 /area/houseboat/holodeck/picnic)

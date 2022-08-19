@@ -90,7 +90,7 @@
 /area/submap/DJOutpost1)
 "aq" = (
 /obj/effect/decal/remains,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/item/clothing/under/frontier,
 /obj/random_multi/single_item/sfr_headset,
 /turf/simulated/floor/tiled/techfloor,

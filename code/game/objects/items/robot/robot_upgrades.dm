@@ -221,5 +221,6 @@
 	R.add_language(LANGUAGE_TERMINUS, 1)
 	R.add_language(LANGUAGE_ZADDAT, 1)
 	R.add_language(LANGUAGE_AKULA, 1)
+	R.add_language(LANGUAGE_ADHERENT, 1)               //Cephalopod Activity language, Omni Translators have it so borgs should too
 
 	return TRUE

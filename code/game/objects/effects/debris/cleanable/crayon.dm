@@ -1,4 +1,4 @@
-/obj/effect/decal/cleanable/crayon
+/obj/effect/debris/cleanable/crayon
 	name = "rune"
 	desc = "A rune drawn in crayon."
 	icon = 'icons/obj/rune.dmi'
@@ -28,7 +28,7 @@
 
 		add_hiddenprint(usr)
 
-/obj/effect/decal/cleanable/crayon/chalk
+/obj/effect/debris/cleanable/crayon/chalk
 	name = "arcane rune"
 	desc = "A rune drawn in chalk."
 	icon = 'icons/obj/rune.dmi'

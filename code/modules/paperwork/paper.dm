@@ -327,7 +327,7 @@
 				user.visible_message("<span class='[class]'>[user] burns right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>", \
 				"<span class='[class]'>You burn right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>")
 				forceMove(drop_location())
-				new /obj/effect/decal/cleanable/ash(src.loc)
+				new /obj/effect/debris/cleanable/ash(src.loc)
 				qdel(src)
 
 			else

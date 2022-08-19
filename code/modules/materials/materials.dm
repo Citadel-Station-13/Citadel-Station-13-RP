@@ -1009,7 +1009,7 @@ var/list/name_to_material
 	new /obj/structure/girder/cult(target, "cult")
 
 /datum/material/cult/place_dismantled_product(var/turf/target)
-	new /obj/effect/decal/cleanable/blood(target)
+	new /obj/effect/debris/cleanable/blood(target)
 
 /datum/material/cult/reinf
 	name = "cult2"

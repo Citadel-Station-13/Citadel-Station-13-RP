@@ -193,7 +193,7 @@
 			occupant.visible_message("<span class='danger'>[occupant] crashed into \the [A]!</span>")
 
 /obj/structure/bed/chair/wheelchair/proc/create_track()
-	var/obj/effect/decal/cleanable/blood/tracks/B = new(loc)
+	var/obj/effect/debris/cleanable/blood/tracks/B = new(loc)
 	var/newdir = get_dir(get_step(loc, dir), loc)
 	if(newdir == dir)
 		B.setDir(newdir)

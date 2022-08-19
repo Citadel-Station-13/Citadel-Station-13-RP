@@ -108,7 +108,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 
 	reagent_tag = IS_MOTH
 
-	move_trail = /obj/effect/decal/cleanable/blood/tracks/claw
+	move_trail = /obj/effect/debris/cleanable/blood/tracks/claw
 
 	spawn_flags = SPECIES_CAN_JOIN
 	primitive_form = null
