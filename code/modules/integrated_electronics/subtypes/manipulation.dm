@@ -431,7 +431,7 @@
 		assembly.visible_message("<span class='danger'>[assembly] has thrown [A]!</span>")
 		log_attack("[assembly] [REF(assembly)] has thrown [A] with non-lethal force.")
 		A.forceMove(drop_location())
-		A.throw_at(locate(x_abs, y_abs, T.z), range, 3, src)
+		A.throw_at_old(locate(x_abs, y_abs, T.z), range, 3, src)
 
 		// If the item came from a grabber now we can update the outputs since we've thrown it.
 		if(istype(G))

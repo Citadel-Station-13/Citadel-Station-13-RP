@@ -32,4 +32,4 @@
 				continue
 			throwing += AM
 	for(var/atom/movable/AM as anything in throwing)
-		AM.throw_at(get_step(AM, dir), 5, 1)
+		AM.throw_at_old(get_step(AM, dir), 5, 1)

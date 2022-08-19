@@ -294,7 +294,7 @@
 
 			if(target_armor >= 60)
 				var/turf/T = get_step(H, pick(GLOB.alldirs - src.dir))
-				H.throw_at(T, 1, 1, src)
+				H.throw_at_old(T, 1, 1, src)
 				H.apply_damage(20, BURN, def_zone)
 				if(target_limb)
 					armor_special = 2

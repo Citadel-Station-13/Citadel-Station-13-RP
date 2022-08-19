@@ -221,7 +221,7 @@
 			winscreen = "You won...?"
 			var/obj/item/grenade/G = new /obj/item/grenade/explosive(get_turf(src)) /// YEAAAAAAAAAAAAAAAAAAH!!!!!!!!!!
 			G.activate()
-			G.throw_at(get_turf(usr),10,10) /// Play stupid games, win stupid prizes.
+			G.throw_at_old(get_turf(usr),10,10) /// Play stupid games, win stupid prizes.
 
 		playsound(src, 'sound/arcade/Ori_win.ogg', 50, 1, extrarange = -3, falloff = 0.1, ignore_walls = FALSE)
 		winprob = 0

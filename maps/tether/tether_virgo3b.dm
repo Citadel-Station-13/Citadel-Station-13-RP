@@ -389,7 +389,7 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 						playsound(L, 'sound/effects/rustle1.ogg', 100, 1)
 						L.drop_from_inventory(U)
 						U.toggle_umbrella()
-						U.throw_at(get_edge_target_turf(U, pick(GLOB.alldirs)), 8, 1, L)
+						U.throw_at_old(get_edge_target_turf(U, pick(GLOB.alldirs)), 8, 1, L)
 
 			// If they have an open umbrella, it'll guard from rain
 			if(istype(L.get_active_held_item(), /obj/item/melee/umbrella))

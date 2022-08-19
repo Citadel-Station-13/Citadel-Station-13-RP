@@ -118,7 +118,7 @@
  *
  * @return a datum on success, null on failure.
  */
-/atom/movable/proc/subsystem_throw(atom/target, range, speed, flags)
+/atom/movable/proc/subsystem_throw(atom/target, range, speed, flags, atom/thrower, datum/callback/on_hit, datum/callback/on_land)
 	SHOULD_CALL_PARENT(TRUE)
 	RETURN_TYPE(/datum/thrownthing)
 	#warn uh oh
@@ -130,14 +130,14 @@
  *
  * @return a datum on success, null on failure.
  */
-/atom/movable/proc/emulated_throw(atom/target, range, speed, flags)
+/atom/movable/proc/emulated_throw(atom/target, range, speed, flags, atom/thrower, datum/callback/on_hit, datum/callback/on_land)
 	SHOULD_CALL_PARENT(TRUE)
 	RETURN_TYPE(/datum/thrownthing)
 	#warn impl
 
 
 /// If this returns FALSE then callback will not be called.
-/atom/movable/proc/throw_at(atom/target, range, speed, mob/thrower, spin = TRUE, datum/callback/callback)
+/atom/movable/proc/throw_at_old(atom/target, range, speed, mob/thrower, spin = TRUE, datum/callback/callback)
 	. = TRUE
 	if(!target || speed <= 0 || QDELETED(src) || (target.z != src.z))
 		return FALSE
@@ -166,10 +166,10 @@
 /atom/movable/proc/safe_throw_at(, mob/thrower, , datum/callback/callback, force = MOVE_FORCE_STRONG)
 	if((force < (move_resist * MOVE_FORCE_THROW_RATIO)) || (move_resist == INFINITY))
 		return
-	return throw_at(target, range, speed, thrower, spin, diagonals_first, callback, force, gentle)
+	return throw_at_old(target, range, speed, thrower, spin, diagonals_first, callback, force, gentle)
 
 ///If this returns FALSE then callback will not be called.
-/atom/movable/proc/throw_at(atom/target, range, speed, mob/thrower, spin = TRUE, diagonals_first = FALSE, datum/callback/callback, force = MOVE_FORCE_STRONG, gentle = FALSE, quickstart = TRUE)
+/atom/movable/proc/throw_at_old(atom/target, range, speed, mob/thrower, spin = TRUE, diagonals_first = FALSE, datum/callback/callback, force = MOVE_FORCE_STRONG, gentle = FALSE, quickstart = TRUE)
 	. = FALSE
 
 	if(QDELETED(src))
@@ -190,7 +190,7 @@
 		if (!user_momentum) //no movement_delay, this means they move once per byond tick, lets calculate from that instead.
 			user_momentum = world.tick_lag
 
-		user_momentum = 1 / user_momentum // convert from ds to the tiles per ds that throw_at uses.
+		user_momentum = 1 / user_momentum // convert from ds to the tiles per ds that throw_at_old uses.
 
 		if (get_dir(thrower, target) & last_move_dir)
 			user_momentum = user_momentum //basically a noop, but needed

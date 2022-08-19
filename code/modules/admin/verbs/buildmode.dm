@@ -300,7 +300,7 @@
 	if(!holder)
 		return
 	var/list/pa = params2list(params)
-	
+
 	if(!get_turf(object))
 		return
 
@@ -386,7 +386,7 @@
 					holder.throw_atom = object
 			if(pa.Find("right"))
 				if(holder.throw_atom)
-					holder.throw_atom.throw_at(object, 10, 1)
+					holder.throw_atom.throw_at_old(object, 10, 1)
 					log_admin("[key_name(usr)] threw [holder.throw_atom] at [object]")
 		if(5) // Room build
 			if(pa.Find("left"))

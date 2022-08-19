@@ -119,7 +119,7 @@ var/const/tk_maxrange = 15
 			I.afterattack(target,user,1) // for splashing with beakers
 	else
 		apply_focus_overlay()
-		focus.throw_at(target, 10, 1, user)
+		focus.throw_at_old(target, 10, 1, user)
 		last_throw = world.time
 	return
 

@@ -85,7 +85,7 @@
 			var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
 			var/turf/T2 = get_step(A, pick(throw_dirs))
 			unload(H)
-			H.throw_at(T2, 1, 1, src)
+			H.throw_at_old(T2, 1, 1, src)
 			var/head_slot = SLOT_HEAD
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
@@ -96,7 +96,7 @@
 			var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
 			var/turf/T2 = get_step(A, pick(throw_dirs))
 			unload(H)
-			H.throw_at(T2, 1, 1, src)
+			H.throw_at_old(T2, 1, 1, src)
 			var/head_slot = SLOT_HEAD
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
@@ -128,7 +128,7 @@
 			playsound(src, 'sound/effects/bang.ogg', 20, TRUE)
 			unbuckle_mob(L)
 			var/atom/throw_target = get_edge_target_turf(src)
-			L.throw_at(throw_target, 2, 2)
+			L.throw_at_old(throw_target, 2, 2)
 			visible_message("<span class='danger'>[L] loses their footing and slams on the ground!</span>")
 			L.Weaken(40)
 			grinding = FALSE
@@ -177,7 +177,7 @@
 		if (L.getStaminaLoss() >= 100)
 			playsound(src, 'sound/effects/bang.ogg', 20, TRUE)
 			V.unbuckle_mob(L)
-			L.throw_at(landing_turf, 2, 2)
+			L.throw_at_old(landing_turf, 2, 2)
 			L.Knockdown(40)
 			V.visible_message("<span class='danger'>[L] misses the landing and falls on [L.p_their()] face!</span>")
 		else
@@ -229,7 +229,7 @@
 			var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
 			var/turf/T2 = get_step(A, pick(throw_dirs))
 			unload(H)
-			H.throw_at(T2, 1, 1, src)
+			H.throw_at_old(T2, 1, 1, src)
 			var/head_slot = SLOT_HEAD
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
@@ -240,7 +240,7 @@
 			var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
 			var/turf/T2 = get_step(A, pick(throw_dirs))
 			unload(H)
-			H.throw_at(T2, 1, 1, src)
+			H.throw_at_old(T2, 1, 1, src)
 			var/head_slot = SLOT_HEAD
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
@@ -288,7 +288,7 @@
 			var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
 			var/turf/T2 = get_step(A, pick(throw_dirs))
 			unload(H)
-			H.throw_at(T2, 1, 1, src)
+			H.throw_at_old(T2, 1, 1, src)
 			var/head_slot = SLOT_HEAD
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
@@ -317,7 +317,7 @@
 			var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
 			var/turf/T2 = get_step(A, pick(throw_dirs))
 			unload(H)
-			H.throw_at(T2, 1, 1, src)
+			H.throw_at_old(T2, 1, 1, src)
 			var/head_slot = SLOT_HEAD
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
@@ -611,7 +611,7 @@
 		var/mob/living/H = buckled_mobs[1]
 		var/atom/throw_target = get_edge_target_turf(H, pick(GLOB.cardinals))
 		unbuckle_mob(H)
-		H.throw_at(throw_target, 4, 3)
+		H.throw_at_old(throw_target, 4, 3)
 		H.DefaultCombatKnockdown(30)
 		H.adjustStaminaLoss(30)
 		var/head_slot = H.get_item_by_slot(SLOT_HEAD)

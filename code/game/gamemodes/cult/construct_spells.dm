@@ -661,7 +661,7 @@ proc/findNullRod(var/atom/target)
 		L.Weaken(2)
 		L.adjustBruteLoss(rand(30, 50))
 		var/throwdir = get_dir(src, L)
-		L.throw_at(get_edge_target_turf(L, throwdir), 3, 1, src)
+		L.throw_at_old(get_edge_target_turf(L, throwdir), 3, 1, src)
 	if(istype(hit_atom, /turf/simulated/wall))
 		var/turf/simulated/wall/W = hit_atom
 		user.visible_message("<span class='warning'>\The [user] rears its fist, preparing to hit \the [W]!</span>")

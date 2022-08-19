@@ -1120,7 +1120,7 @@ default behaviour is:
 
 	newtonian_move(get_dir(target, src))
 
-	item.throw_at(target, throw_range, item.throw_speed, src)
+	item.throw_at_old(target, throw_range, item.throw_speed, src)
 
 /mob/living/get_sound_env(var/pressure_factor)
 	if (hallucination)

@@ -55,7 +55,7 @@
 			s2.set_up(2, 1, L)
 			s1.start()
 			s2.start()
-			L.throw_at(get_step(get_turf(src),get_turf(L)), 4, 1, src)
+			L.throw_at_old(get_step(get_turf(src),get_turf(L)), 4, 1, src)
 			user.transfer_item_to_nullspace(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 
 			spawn(1 SECOND)

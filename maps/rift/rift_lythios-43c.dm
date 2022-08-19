@@ -323,7 +323,7 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 							to_chat(L, "<span class='danger'>A gust of wind yanks the umbrella from your hand!</span>")
 							playsound(L, 'sound/effects/rustle1.ogg', 100, 1)
 							U.toggle_umbrella()
-							U.throw_at(get_edge_target_turf(U, pick(GLOB.alldirs)), 8, 1, L)
+							U.throw_at_old(get_edge_target_turf(U, pick(GLOB.alldirs)), 8, 1, L)
 						else
 							to_chat(L, "<span class='notice'>A gust of wind nearly yanks the umbrella from your hand.</span>")
 							playsound(L, 'sound/effects/rustle1.ogg', 100, 1)

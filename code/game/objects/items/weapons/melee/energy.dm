@@ -680,7 +680,7 @@
 /obj/item/melee/energy/hfmachete/dropped(mob/user, flags, atom/newLoc)
 	user.lazy_unregister_event(/lazy_event/on_moved, src, .proc/mob_moved)
 
-/obj/item/melee/energy/hfmachete/throw_at(atom/target, range, speed, thrower) // todo: get silicons to interpret this because >sleeps
+/obj/item/melee/energy/hfmachete/throw_at_old(atom/target, range, speed, thrower) // todo: get silicons to interpret this because >sleeps
 	if(!usr)
 		return ..()
 	spawn()
@@ -699,7 +699,7 @@
 
 // none of these are working properly in testing which is something you absolutely hate to see
 /*
-/obj/item/melee/energy/hfmachete/throw_at(atom/target, range, speed, thrower)
+/obj/item/melee/energy/hfmachete/throw_at_old(atom/target, range, speed, thrower)
 	playsound(src, get_sfx("machete_throw"), 30, 0)
 	. = ..()
 

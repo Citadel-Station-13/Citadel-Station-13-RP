@@ -96,7 +96,7 @@ var/const/MAX_ACTIVE_TIME = 400
 	if(CanHug(AM))
 		Attach(AM)
 
-/obj/item/clothing/mask/facehugger/throw_at(atom/target, range, speed)
+/obj/item/clothing/mask/facehugger/throw_at_old(atom/target, range, speed)
 	..()
 	if(stat == CONSCIOUS)
 		icon_state = "[initial(icon_state)]_thrown"
@@ -378,7 +378,7 @@ var/const/MAX_ACTIVE_TIME = 400
 	if(CanHug(AM))
 		Attach(AM)
 
-/obj/item/clothing/mask/facehugger/throw_at(atom/target, range, speed)
+/obj/item/clothing/mask/facehugger/throw_at_old(atom/target, range, speed)
 	..()
 	if(stat == CONSCIOUS)
 		icon_state = "[initial(icon_state)]_thrown"

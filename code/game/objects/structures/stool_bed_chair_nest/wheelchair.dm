@@ -163,14 +163,14 @@
 		var/mob/living/occupant = unbuckle_mob()
 
 		if (pulling_along && (pulling_along.a_intent == INTENT_HARM))
-			occupant.throw_at(A, 3, 3, pulling_along)
+			occupant.throw_at_old(A, 3, 3, pulling_along)
 		else if (propelled)
-			occupant.throw_at(A, 3, propelled)
+			occupant.throw_at_old(A, 3, propelled)
 
 		var/def_zone = ran_zone()
 		var/blocked = occupant.run_armor_check(def_zone, "melee")
 		var/soaked = occupant.get_armor_soak(def_zone, "melee")
-		occupant.throw_at(A, 3, propelled)
+		occupant.throw_at_old(A, 3, propelled)
 		occupant.apply_effect(6, STUN, blocked)
 		occupant.apply_effect(6, WEAKEN, blocked)
 		occupant.apply_effect(6, STUTTER, blocked)

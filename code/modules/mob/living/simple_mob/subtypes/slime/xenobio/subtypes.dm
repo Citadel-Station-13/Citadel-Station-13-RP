@@ -417,7 +417,7 @@
 			playsound(src, "punch", 50, 1)
 			L.Weaken(1)
 			var/throwdir = get_dir(src, L)
-			L.throw_at(get_edge_target_turf(L, throwdir), 3, 1, src)
+			L.throw_at_old(get_edge_target_turf(L, throwdir), 3, 1, src)
 		else
 			to_chat(L, SPAN_WARNING( "\The [src] hits you with incredible force, but you remain in place."))
 

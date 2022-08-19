@@ -63,7 +63,7 @@
 				continue
 			if(!L.buckled && !issilicon(L))
 				if(!L.Check_Shoegrip())
-					L.throw_at(get_step_rand(L),1,5)
+					L.throw_at_old(get_step_rand(L),1,5)
 				L.Weaken(5)
 			if(L.client)
 				to_chat(L, "<span class='danger'>The ground lurches beneath you!</span>")
