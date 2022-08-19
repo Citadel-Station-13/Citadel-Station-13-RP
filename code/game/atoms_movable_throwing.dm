@@ -163,10 +163,12 @@
 		step(src, AM.dir)
 	..()
 
+/*
 /atom/movable/proc/safe_throw_at(, mob/thrower, , datum/callback/callback, force = MOVE_FORCE_STRONG)
 	if((force < (move_resist * MOVE_FORCE_THROW_RATIO)) || (move_resist == INFINITY))
 		return
 	return throw_at_old(target, range, speed, thrower, spin, diagonals_first, callback, force, gentle)
+*/
 
 ///If this returns FALSE then callback will not be called.
 /atom/movable/proc/throw_at_old(atom/target, range, speed, mob/thrower, spin = TRUE, diagonals_first = FALSE, datum/callback/callback, force = MOVE_FORCE_STRONG, gentle = FALSE, quickstart = TRUE)
