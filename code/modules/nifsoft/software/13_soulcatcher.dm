@@ -82,6 +82,18 @@
 	visibility_blacklist = save_data["vis_blacklist"]
 	return TRUE
 
+/datum/nifsoft/soulcatcher/proc/visibility_check(ckey)
+	ckey = ckey(ckey)
+	if(islist(visibility_blacklist))
+		if(ckey in visibility_blacklist)
+			return FALSE
+	if(visibility)
+		return TRUE
+	if(islist(visibility_exceptions))
+		if(ckey in visibility_exceptions)
+			return TRUE
+	return FALSE
+
 /datum/nifsoft/soulcatcher/proc/notify_into(var/message)
 	var/sound = nif.good_sound
 
