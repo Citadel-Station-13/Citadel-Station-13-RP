@@ -1,18 +1,12 @@
-
+/atom/movable/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
+	if(drag_drop_buckle_interaction(dropping, user))
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 /atom/movable/attack_hand(mob/living/user)
-	. = ..()
-//	if(can_buckle && buckled_mob)
-//		user_unbuckle_mob(user)
-
-	if(can_buckle && has_buckled_mobs())
-		if(buckled_mobs.len > 1)
-			var/unbuckled = input(user, "Who do you wish to unbuckle?","Unbuckle Who?") as null|mob in buckled_mobs
-			if(user_unbuckle_mob(unbuckled, user))
-				return TRUE
-		else
-			if(user_unbuckle_mob(buckled_mobs[1], user))
-				return TRUE
+	if(click_unbuckle_interaction(user))
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 /obj/proc/attack_alien(mob/user as mob) //For calling in the event of Xenomorph or other alien checks.
 	return
@@ -33,11 +27,6 @@
 		return FALSE
 	if(buckled_mobs.len)
 		return TRUE
-
-/atom/movable/Destroy()
-	unbuckle_all_mobs()
-	return ..()
-
 
 /atom/movable/proc/buckle_mob(mob/living/M, forced = FALSE, check_loc = TRUE)
 	if(check_loc && M.loc != loc)
@@ -81,12 +70,6 @@
 			riding_datum.restore_position(buckled_mob)
 			riding_datum.handle_vehicle_offsets() // So the person in back goes to the front.
 		post_buckle_mob(.)
-
-/atom/movable/proc/unbuckle_all_mobs(force = FALSE)
-	if(!has_buckled_mobs())
-		return
-	for(var/m in buckled_mobs)
-		unbuckle_mob(m, force)
 
 //Handle any extras after buckling/unbuckling
 //Called on buckle_mob() and unbuckle_mob()
@@ -190,8 +173,80 @@
 #warn signals
 //! movable stuff
 /**
+ * use this hook for processing attempted drag/drop buckles
  *
+ * @return TRUE if the calling proc should consider it as an interaction (aka don't do other click stuff)
  */
+/atom/movable/proc/drag_drop_buckle_interaction(atom/A, mob/user)
+	if(!ismob(A))
+		return
+	var/mob/buckling = A
+
+/**
+ * use this hook for processing attempted click unbuckles
+ *
+ * @return TRUE if the calling proc should consider it as an interaction (aka don't do other click stuff)
+ */
+/atom/movable/proc/click_unbuckle_interaction(mob/user)
+
+/**
+ * called when someone tries to unbuckle something from us, whether by click or otherwise
+ */
+/atom/movable/proc/user_unbuckle_mob(mob/M, flags, mob/user)
+
+/**
+ * called when someone tries to buckle something to us, whether by drag/drop interaction or otherwise
+ */
+/atom/movable/proc/user_buckle_mob(mob/M, flags, mob/user)
+
+/**
+ * called to buckle something to us
+ *
+ * buckle_allowed will stop this unless you use the FORCE opflag.
+ * components can always stop this
+ */
+/atom/movable/proc/buckle_mob(mob/M, flags, mob/user)
+
+/**
+ * called to unbuckle something from us
+ *
+ * components can always stop this
+ */
+/atom/movable/proc/unbuckle_mob(mob/M, flags, mob/user)
+
+/**
+ * called when something is buckled to us
+ */
+/atom/movable/proc/mob_buckled(mob/M, flags, mob/user)
+
+/**
+ * called when something is unbuckled from us
+ */
+/atom/movable/proc/mob_unbuckled(mob/M, flags, mob/user)
+
+/**
+ * called when a mob tries to resist out of being buckled to us
+ */
+/atom/movable/proc/mob_resist_buckle(mob/M)
+
+/**
+ * if we have buckled mobs
+ */
+/atom/movable/proc/has_buckled_mobs()
+	return length(buckled_mobs)
+
+/**
+ * unbuckle all mobs
+ */
+/atom/movable/proc/unbuckle_all_mobs(flags, mob/user)
+	for(var/mob/M in buckled_mobs)
+		unbuckle_mob(M, flags, user)
+
+/**
+ * called when a buckled mob tries to move
+ */
+/atom/movable/proc/relaymove_from_buckled(mob/user, direction)
+	return relaymove(user, direction)
 
 //! mob stuff
 /**
@@ -229,3 +284,10 @@
  * can we unbuckle from something?
  */
 /mob/proc/can_unbuckle(atom/movable/AM, flags, mob/user)
+	return TRUE
+
+/**
+ * call to try to resist out of a buckle
+ */
+/mob/proc/resist_buckle()
+	#warn impl

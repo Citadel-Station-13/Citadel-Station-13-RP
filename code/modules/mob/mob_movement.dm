@@ -186,7 +186,7 @@
 		return
 
 	if(mob.buckled)							//if we're buckled to something, tell it we moved.
-		return mob.buckled.relaymove(mob, direct)
+		return mob.buckled.relaymove_from_buckled(mob, direct)
 
 	if(!mob.canmove)
 		return
@@ -202,9 +202,9 @@
 		if(result)
 			return result
 
-	if(isobj(mob.loc) || ismob(mob.loc))	//Inside an object, tell it we moved
-		var/atom/O = mob.loc
-		return O.relaymove(mob, direct)
+	if(!isturf(mob.loc))		// inside an object
+		var/atom/A = mob.loc
+		return A.relaymove_from_contents(mob, direct)
 
 	if(!mob.Process_Spacemove(direct))
 		return FALSE

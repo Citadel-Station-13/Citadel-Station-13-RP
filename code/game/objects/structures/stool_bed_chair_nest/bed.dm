@@ -13,10 +13,11 @@
 	icon = 'icons/obj/furniture.dmi'
 	icon_state = "bed"
 	pressure_resistance = 15
-	anchored = 1
-	can_buckle = 1
+	anchored = TRUE
+	buckle_allowed = TRUE
+	can_buckle = TRUE
 	buckle_dir = SOUTH
-	buckle_lying = 1
+	buckle_lying = 90
 	var/datum/material/material
 	var/datum/material/padding_material
 	var/base_icon = "bed"

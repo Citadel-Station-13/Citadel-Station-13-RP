@@ -114,3 +114,18 @@ DEFINE_BITFIELD(movement_type, list(
 /// automatically pass projectiles hitting us up
 // todo: implement
 #define BUCKLING_PASS_PROJECTILES_UPWARDS				(1<<2)
+#warn impl below
+/// do not allow players to do drag/drop buckling
+#define BUCKLING_NO_USER_BUCKLE							(1<<3)
+/// do not allow players to perform default click interaction unbuckling
+#define BUCKLING_NO_USER_UNBUCKLE						(1<<4)
+/// do not allow players to resist out of buckling by default
+#define BUCKLING_NO_USER_RESIST							(1<<5)
+
+DEFINE_BITFIELD(buckle_flags, list(
+	BITFIELD(BUCKLING_REQUIRES_RESTRAINTS),
+	BITFIELD(BUCKLING_PREVENTS_PULLING),
+	BITFIELD(BUCKLING_PASS_PROJECTILES_UPWARDS),
+	BITFIELD(BUCKLING_NO_USER_BUCKLE),
+	BITFIELD(BUCKLING_NO_USER_UNBUCKLE),
+))

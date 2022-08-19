@@ -65,6 +65,7 @@
 	SSshuttle.ships -= src
 	. = ..()
 
+//? todo why tf is this relaymove
 /obj/effect/overmap/visitable/ship/relaymove(mob/user, direction, accel_limit)
 	accelerate(direction, accel_limit)
 	operator_skill = user.get_skill_value(/datum/skill/pilot)

@@ -90,7 +90,7 @@
 	. = ..()
 	if(reagents)
 		QDEL_NULL(reagents)
-	unbuckle_all_mobs(force = TRUE)
+	unbuckle_all_mobs(BUCKLE_OP_FORCE)
 	for(var/atom/movable/AM in contents)
 		qdel(AM)
 	var/turf/un_opaque

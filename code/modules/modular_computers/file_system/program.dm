@@ -257,7 +257,3 @@
  */
 /datum/topic_manager/program/Topic(href, href_list)
 	return program && program.Topic(href, href_list)
-
-/datum/computer_file/program/proc/relaymove(mob/M, direction)
-	if(NM)
-		return NM.relaymove(M, direction)

@@ -500,6 +500,9 @@
 /atom/proc/relaymove()
 	return
 
+/atom/proc/relaymove_from_contents(mob/user, direction)
+	return relaymove(user, direction)
+
 // Called to set the atom's density and used to add behavior to density changes.
 /atom/proc/set_density(var/new_density)
 	if(density == new_density)
