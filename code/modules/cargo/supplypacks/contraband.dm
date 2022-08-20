@@ -55,7 +55,7 @@
  	container_type = /obj/structure/closet/crate/secure/weapon
  	container_name = "Ballistic weapons crate"
 	access = access_armory
-
+	
 /datum/supply_pack/randomised/misc/telecrate //you get something awesome, a couple of decent things, and a few weak/filler things
 	name = "ERR_NULL_ENTRY" //null crate! also dream maker is hell,
 	num_contained = 1
