@@ -75,3 +75,6 @@
   - bugfix: long running loop in smes decon
   - bugfix: vore smite breaking the game
   - code_imp: removed useless code in structs
+2022-08-20:
+  TheLordME:
+  - rscadd: Added new title screen
