@@ -75,6 +75,8 @@
 	// why the fuck was it not a list in the first place?
 	// jfc get out.
 	var/list/save_data = nif.save_data["[list_pos]_actual"]
+	if(!islist(save_data))
+		save_data = list()
 	if(load)
 		inside_flavor = load
 	visibility = save_data["vis"]
