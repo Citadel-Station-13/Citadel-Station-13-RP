@@ -2,6 +2,14 @@
 
 //!# News - General
 
+
+//!# News - Storage
+
+// storage backend flags
+/// capable of search
+#define NEWS_STORAGE_BACKEND_SEARCH_CAPABLE					(1<<0)
+
+
 //!# News - Networks
 
 // network flags
