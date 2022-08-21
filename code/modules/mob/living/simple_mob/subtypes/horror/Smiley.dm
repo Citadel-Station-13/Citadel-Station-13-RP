@@ -46,20 +46,20 @@
 	..()
 
 /mob/living/simple_mob/horror/Helix/bullet_act()
-    playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-    ..()
+	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
+	..()
 
 /mob/living/simple_mob/horror/Helix/attack_hand()
-    playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-    ..()
+	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
+	..()
 
 /mob/living/simple_mob/horror/Helix/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
-    playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
+	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 
 /mob/living/simple_mob/horror/Helix/attackby()
-    playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-    ..()
+	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
+	..()
 
 /datum/say_list/Smiley
 	speak = list("Uuurrgh?","Aauuugghh...", "AAARRRGH!")

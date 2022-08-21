@@ -556,7 +556,7 @@
 /obj/item/cane/wand/attack_self(mob/user)
     if(last_use + cooldown >= world.time)
         return
-    playsound(loc, 'sound/weapons/sparkle.ogg', 50, 1)
+	playsound(loc, 'sound/weapons/sparkle.ogg', 50, 1)
     user.visible_message("<span class='warning'> [user] swings their wand.</span>")
     var/datum/effect_system/spark_spread/s = new
     s.set_up(3, 1, src)

@@ -47,20 +47,20 @@
 	..()
 
 /mob/living/simple_mob/horror/Rickey/bullet_act()
-    playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-    ..()
+	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
+	..()
 
 /mob/living/simple_mob/horror/Rickey/attack_hand()
-    playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-    ..()
+	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
+	..()
 
 /mob/living/simple_mob/horror/Rickey/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
-    playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
+	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 
 /mob/living/simple_mob/horror/Rickey/attackby()
-    playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-    ..()
+	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
+	..()
 
 /datum/say_list/Rickey
 	speak = list("Uuurrgh?","Aauuugghh...", "AAARRRGH!")
