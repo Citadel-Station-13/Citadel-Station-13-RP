@@ -169,7 +169,6 @@
 
 	move_speed = world.time - l_move_time
 	l_move_time = world.time
-	m_flag = 1
 
 	if(. && riding_datum)
 		riding_datum.handle_vehicle_layer()

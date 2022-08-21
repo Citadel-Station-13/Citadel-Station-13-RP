@@ -1,6 +1,8 @@
 /atom/movable
 	layer = OBJ_LAYER
 	appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
+	/// movable flags - see [code/__DEFINES/_flags/atoms.dm]
+	var/movable_flags = NONE
 	/// Whatever we're pulling.
 	var/atom/movable/pulling
 	/// If false makes [CanPass][/atom/proc/CanPass] call [CanPassThrough][/atom/movable/proc/CanPassThrough] on this type instead of using default behaviour
@@ -44,7 +46,8 @@
 
 	var/move_speed = 10
 	var/l_move_time = 1
-	var/m_flag = 1
+
+	//! throwing
 	// todo: trace "throwing" usages
 	var/datum/thrownthing/throwing
 	/// default throw speed
@@ -53,6 +56,21 @@
 	var/throw_range = 7
 	/// default throw damage at a "standard" speed
 	var/throw_force = 0
+	/// default throw move force resist
+	var/throw_resist = THROW_RESIST_DEFAULT
+	/**
+	 * throw damage scaling exponent
+	 * see defines for information
+	 * BE CAREFUL WITH THIS
+	 * if you set this to 2 and make floor tiles that do 100+ damage a hit or something insane i warned you
+	 */
+	var/throw_damage_scaling_exponent = THROW_DAMAGE_SCALING_EXPONENT_DEFAULT
+	/**
+	 * throw speed scaling exponent
+	 * see defines for information
+	 * BE CAREFUL WITH THIS
+	 */
+	var/throw_speed_scaling_exponent = THROW_SPEED_SCALING_EXPONENT_DEFAULT
 
 	// todo: kill this (only used for elcetropacks)
 	var/moved_recently = FALSE
@@ -73,8 +91,6 @@
 
 	/// Used for vehicles and other things.
 	var/datum/riding/riding_datum
-	/// Does the atom spin when thrown.
-	var/does_spin = TRUE
 
 	///If we're cloaked or not.
 	var/cloaked = FALSE

@@ -13,9 +13,12 @@
 #define THROW_AT_NEVER_HIT_PUSH				(1<<5)
 /// forcefully always push the impacted atom, ignoring regular checks.
 #define THROW_AT_ALWAYS_HIT_PUSH			(1<<6)
-
 /// we already quickstarted
 #define THROW_AT_QUICKSTARTED				(1<<7)
+/// do not scale hit damage to standard speed at all
+#define THROW_AT_NO_SCALE_DAMAGE			(1<<8)
+
+#warn systme for scaling damage by speed, opt out enabled, defualt throw force, etc
 
 DEFINE_BITFIELD(throw_flags, list(
 	BITFIELD(THROW_AT_DO_NOT_SPIN),
@@ -25,5 +28,5 @@ DEFINE_BITFIELD(throw_flags, list(
 	BITFIELD(THROW_AT_NO_AUTO_QUICKSTART),
 	BITFIELD(THROW_AT_NEVER_HIT_PUSH),
 	BITFIELD(THROW_AT_ALWAYS_HIT_PUSH),
-	BITFIELD(THROW_AT_DO_NOT_QUICKSTART),
+	BITFIELD(THROW_AT_QUICKSTARTED),
 ))

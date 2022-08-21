@@ -3,6 +3,13 @@
 #define MOVE_FORCE_DEFAULT 1000
 #define MOVE_RESIST_DEFAULT 1000
 #define PULL_FORCE_DEFAULT 1000
+#warn impl
+#define THROW_FORCE_DEFAULT 1000
+#define THROW_RESIST_DEFAULT 1000
+/// speed = default speed * ((throw force / throw resist) ** exponent)
+#define THROW_SPEED_SCALING_EXPONENT_DEFAULT 1
+/// damage = default damage * ((throw speed / default throw speed) ** exponent)
+#define THROW_DAMAGE_SCALING_EXPONENT_DEFAULT 1
 
 //Factors/modifiers
 #define MOVE_FORCE_PULL_RATIO 1				//Same move force to pull objects

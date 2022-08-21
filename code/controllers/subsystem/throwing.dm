@@ -106,7 +106,7 @@ SUBSYSTEM_DEF(throwing)
 
 	#warn finish
 
-/datum/thrownthing/New
+/datum/thrownthing/New()
 	src.init_dir = get_dir(thrownthing, target)
 	if(!QDELETED(thrower) && ismob(thrower))
 		src.target_zone = thrower.zone_sel ? thrower.zone_sel.selecting : null
@@ -251,6 +251,18 @@ SUBSYSTEM_DEF(throwing)
 		return TRUE
 
 /**
+ * quickstart - immediately tick the first tick
+ */
+/datum/thrownthing/proc/quickstart()
+	#warn impl
+
+/**
+ * start - register to subsystem
+ */
+/datum/thrownthing/proc/start()
+	#warn impl
+
+/**
  * handle impacting an atom
  * return TRUE if we should end the throw, FALSE to pierce
  */
@@ -266,3 +278,32 @@ SUBSYSTEM_DEF(throwing)
  * when called, immediately erases the throw from the atom and stops it.
  */
 /datum/thrownthing/proc/terminate()
+
+#warn impl above
+
+/**
+ * should we skip damage entirely?
+ */
+/datum/thrownthing/proc/is_pacifistic()
+	return throw_flags & THROW_AT_IS_GENTLE
+
+/**
+ * get damage scaling - default handling
+ */
+/datum/thrownthing/proc/get_damage_multiplier()
+	if(thrownthing.movable_flags & MOVABLE_NO_THROW_DAMAGE_SCALING)
+		return 1
+	return (speed / thrownthing.throw_speed) ** thrownthing.throw_damage_scaling_exponent
+
+/**
+ * simulated thrownthing datums
+ * doesn't register to subsystem
+ * immediately hits and deletes on start
+ */
+/datum/thrownthing/emulated
+
+#warn impl
+
+/datum/thrownthing/emulated/start()
+
+/datum/thrownthing/emulated/quickstart()

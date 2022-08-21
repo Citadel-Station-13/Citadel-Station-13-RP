@@ -116,12 +116,16 @@
  * initiates a full subsystem-ticked throw sequence
  * components can cancel this.
  *
+ * range, speed defaults to sane defaults if not specified, usually calculated from throw force.
+ *
  * @return a datum on success, null on failure.
  */
-/atom/movable/proc/subsystem_throw(atom/target, range, speed, flags, atom/thrower, datum/callback/on_hit, datum/callback/on_land)
+/atom/movable/proc/subsystem_throw(atom/target, range, speed, flags, atom/thrower, datum/callback/on_hit, datum/callback/on_land, force = THROW_FORCE_DEFAULT)
 	SHOULD_CALL_PARENT(TRUE)
 	RETURN_TYPE(/datum/thrownthing)
 	#warn uh oh
+
+	var/datum/thrownthing/TT = _init_throw_datum(target, range, speed, flags, thrower, on_hit, on_land, force)
 
 /**
  * emulates an immediate throw impact
@@ -130,11 +134,24 @@
  *
  * @return a datum on success, null on failure.
  */
-/atom/movable/proc/emulated_throw(atom/target, range, speed, flags, atom/thrower, datum/callback/on_hit, datum/callback/on_land)
+/atom/movable/proc/emulated_throw(atom/target, range, speed, flags, atom/thrower, datum/callback/on_hit, datum/callback/on_land, force = THROW_FORCE_DEFAULT)
 	SHOULD_CALL_PARENT(TRUE)
 	RETURN_TYPE(/datum/thrownthing)
 	#warn impl
 
+	var/datum/thrownthing/TT = _init_throw_datum(target, range, speed, flags, thrower, on_hit, on_land, force)
+
+/atom/movable/proc/_init_throw_datum(atom/target, range, speed, flags, atom/thrower, datum/callback/on_hit, datum/callback/on_land, force)
+	if(throwing)
+		CRASH("already throwing")
+	var/calculated_speed = speed || ((movable_flags & MOVABLE_NO_THROW_FORCE_SCALING)? (throw_speed) : (((force / throw_resist) ** throw_speed_scaling_exponent) * throw_speed))
+	if(!calculated_speed)
+		CRASH("bad speed: [calculated_speed]")
+	var/datum/thrownthing/TT = new(src, target, range, calculated_speed, flags, thrower, on_hit, on_land)
+	. = throwing = TT
+
+
+#warn finish
 
 /// If this returns FALSE then callback will not be called.
 /atom/movable/proc/throw_at_old(atom/target, range, speed, mob/thrower, spin = TRUE, datum/callback/callback)
