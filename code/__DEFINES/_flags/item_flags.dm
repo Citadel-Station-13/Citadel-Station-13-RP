@@ -19,13 +19,15 @@
 /// when an item has this it produces no "X has been hit by Y with Z" message in the default attackby()
 #define NOBLUDGEON				(1<<7)
 /// for all things that are technically items but used for various different stuff
-#define ITEM_ABSTRACT				(1<<8)
+#define ITEM_ABSTRACT			(1<<8)
 /// When players should not be able to change the slowdown of the item (Speed potions, ect)
 #define IMMUTABLE_SLOW			(1<<9)
 /// Tool commonly used for surgery: won't attack targets in an active surgical operation on help intent (in case of mistakes)
 #define SURGICAL_TOOL			(1<<10)
 /// is this item in a storage component?
 #define IN_STORAGE				(1<<14)
+/// we can't be caught when hitting a mob on throw
+#define ITEM_THROW_UNCATCHABLE	(1<<15)
 
 DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(IN_INVENTORY),
@@ -35,6 +37,7 @@ DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(IMMUTABLE_SLOW),
 	BITFIELD(SURGICAL_TOOL),
 	BITFIELD(IN_STORAGE),
+	BITFIELD(ITEM_THROW_UNCATCHABLE),
 ))
 
 //! Flags for the clothing_flags var on /obj/item
