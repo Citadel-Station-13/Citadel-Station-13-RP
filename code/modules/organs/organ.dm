@@ -677,7 +677,9 @@
 	var/dead = !!(status & ORGAN_DEAD)
 	if(dead && !force && !can_revive)
 		return FALSE
-	damage = clamp(damage - round(amount, DAMAGE_PRECISION), 0, max_damage)
+	//? which is better again..?
+	// damage = clamp(damage - round(amount, DAMAGE_PRECISION), 0, max_damage)
+	damage = clamp(round(damage - amount, DAMAGE_PRECISION), 0, max_damage)
 	if(dead && can_revive)
 		revive()
 
