@@ -7,5 +7,7 @@
 #define BUCKLE_OP_SUPPRESS_WARNING				(1<<2)
 /// don't make sounds
 #define BUCKLE_OP_SUPPRESS_SOUND				(1<<3)
+/// is from a default (drag drop, click, etc) interaction
+#define BUCKLE_OP_DEFAULT_INTERACTION			(1<<4)
 /// don't make ANY feedback
 #define BUCKLE_OP_SILENT						(BUCKLE_OP_SUPPRESS_WARNING | BUCKLE_OP_SUPPRESS_SOUND)

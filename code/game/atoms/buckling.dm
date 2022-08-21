@@ -172,9 +172,14 @@
  * @return TRUE if the calling proc should consider it as an interaction (aka don't do other click stuff)
  */
 /atom/movable/proc/drag_drop_buckle_interaction(atom/A, mob/user)
+	set waitfor = FALSE
 	if(!ismob(A))
-		return
+		return FALSE
 	var/mob/buckling = A
+	if(!buckle_allowed || (buckle_flags & BUCKLING_NO_USER_BUCKLE))
+		return FALSE
+	. = TRUE
+	user_buckle_mob(A, BUCKLE_OP_DEFAULT_INTERACTION, user)
 
 /**
  * use this hook for processing attempted click unbuckles
@@ -187,11 +192,13 @@
  * called when someone tries to unbuckle something from us, whether by click or otherwise
  */
 /atom/movable/proc/user_unbuckle_mob(mob/M, flags, mob/user)
+	#warn impl and check overrides
 
 /**
  * called when someone tries to buckle something to us, whether by drag/drop interaction or otherwise
  */
 /atom/movable/proc/user_buckle_mob(mob/M, flags, mob/user)
+	#warn impl and check overrides
 
 /**
  * called to buckle something to us
@@ -200,6 +207,7 @@
  * components can always stop this
  */
 /atom/movable/proc/buckle_mob(mob/M, flags, mob/user)
+	#warn impl and check overrides
 
 /**
  * called to unbuckle something from us
@@ -207,6 +215,7 @@
  * components can always stop this
  */
 /atom/movable/proc/unbuckle_mob(mob/M, flags, mob/user)
+	#warn impl and check overrides
 
 /**
  * called when something is buckled to us

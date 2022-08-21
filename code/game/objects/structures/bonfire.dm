@@ -5,7 +5,7 @@
 	icon_state = "bonfire"
 	density = FALSE
 	anchored = TRUE
-	buckle_lying = FALSE
+	buckle_lying = 0
 	var/burning = FALSE
 	var/next_fuel_consumption = 0 // world.time of when next item in fuel list gets eatten to sustain the fire.
 	var/grill = FALSE
@@ -41,8 +41,8 @@
 		switch(choice)
 			if("Stake")
 				R.use(1)
-				can_buckle = TRUE
-				buckle_require_restraints = TRUE
+				buckle_allowed = TRUE
+				buckle_flags |= BUCKLING_REQUIRES_RESTRAINTS
 				to_chat(user, "<span class='notice'>You add a rod to \the [src].</span>")
 				var/mutable_appearance/rod_underlay = mutable_appearance('icons/obj/structures.dmi', "bonfire_rod")
 				rod_underlay.pixel_y = 16

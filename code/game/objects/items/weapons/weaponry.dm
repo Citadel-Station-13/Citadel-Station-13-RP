@@ -37,16 +37,15 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "energynet"
 
-	density = 1
-	opacity = 0
-	mouse_opacity = 1
-	anchored = 0
+	density = TRUE
+	opacity = FALSE
+	mouse_opacity = MOUSE_OPACITY_ICON
+	anchored = FALSE
 
-	can_buckle = 1
-	buckle_movable = 1
-	buckle_lying = 0
-	buckle_dir = SOUTH
+	buckle_allowed = TRUE
+	buckle_flags = BUCKLING_NO_USER_BUCKLE // maybe when these aren't bullshit op i'll feel the need to """fix""" the fact that they're perfect projectile blockers half the time
 
+	#warn hook escape time
 	var/escape_time = 8 SECONDS
 
 /obj/effect/energy_net/Initialize(mapload)

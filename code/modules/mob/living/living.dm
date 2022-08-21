@@ -1179,6 +1179,13 @@ default behaviour is:
 /mob/living/proc/get_standard_pixel_y_offset(lying = 0)
 	return default_pixel_y
 
+/**
+ * resets our pixel offsets to default
+ */
+/mob/living/proc/reset_pixel_offsets()
+	pixel_X = get_standard_pixel_x_offset(lying)
+	pixel_y = get_standard_pixel_y_offset(lying)
+
 /mob/living/proc/OpenCraftingMenu()
 	return
 

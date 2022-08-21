@@ -3,8 +3,7 @@
 	//update_turf_movespeed(loc)
 	if(is_shifted)
 		is_shifted = FALSE
-		pixel_x = get_standard_pixel_x_offset(lying)
-		pixel_y = get_standard_pixel_y_offset(lying)
+		reset_pixel_offsets()
 
 /mob/living/movement_delay()
 	. = ..()
