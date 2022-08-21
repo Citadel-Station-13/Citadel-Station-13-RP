@@ -21,5 +21,29 @@
 	/// the path of the riding handler component we're going to make
 	var/handler_typepath = /datum/component/riding_handler
 
+/datum/component/riding_filter/Initialize()
+
+/datum/component/riding_filter/RegisterWithParent()
+	. = ..()
+
+
+/datum/component/riding_filter/UnregisterFromParent()
+	. = ..()
+
+#warn impl
+
+/datum/component/riding_filter/proc/signal_hook_pre_buckle(datum/source, mob/M, flags, mob/user)
+	SIGNAL_HANDLER
+
+/datum/component/riding_filter/proc/signal_hook_post_buckle(datum/source, mob/M, flags, mob/user)
+	SIGNAL_HANDLER
+
+/datum/component/riding_filter/proc/on_mount_attempt(mob/M, buckle_flags, mob/user)
+
+/datum/component/riding_filter/proc/create_riding_handler(mob/M, buckle_flags, mob/user, ...)
+
+/datum/component/riding_filter/proc/pre_buckle_handler_tweak(datum/component/riding_handler/handler, mob/M, flags, mob/user, ...)
+
+/datum/component/riding_filter/proc/post_buckle_handler_tweak(datum/component/riding_handler/handler, mob/M, flags, mob/user, ...)
 
 #warn COMSIG_
