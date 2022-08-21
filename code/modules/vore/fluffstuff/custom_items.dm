@@ -554,15 +554,14 @@
     var/cooldown = 30
 
 /obj/item/cane/wand/attack_self(mob/user)
-    if(last_use + cooldown >= world.time)
-        return
-	playsound(loc, 'sound/weapons/sparkle.ogg', 50, 1)
-    user.visible_message("<span class='warning'> [user] swings their wand.</span>")
-    var/datum/effect_system/spark_spread/s = new
-    s.set_up(3, 1, src)
-    s.start()
-    last_use = world.time
-    qdel ()
+	if(last_use + cooldown >= world.time)
+		return
+	playsound(src, 'sound/weapons/sparkle.ogg', 50, 1)
+	user.visible_message("<span class='warning'> [user] swings their wand.</span>")
+	var/datum/effect_system/spark_spread/s = new
+	s.set_up(3, 1, src)
+	s.start()
+	last_use = world.time
 
 /obj/item/fluff/id_kit_ivy
 	name = "Holo-ID reprinter"

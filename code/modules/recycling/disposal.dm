@@ -460,7 +460,7 @@
 		qdel(H)
 
 /obj/machinery/disposal/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
-	. = ..()`
+	. = ..()
 	if(istype(AM, /obj/item) && !istype(AM, /obj/item/projectile))
 		if(prob(75))
 			AM.forceMove(src)
