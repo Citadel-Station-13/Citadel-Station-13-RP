@@ -23,14 +23,15 @@
 	var/list/directional_vehicle_offsets = list()	//same as above but instead of layer you have a list(px, py)
 	var/list/allowed_turf_typecache
 	var/list/forbid_turf_typecache					//allow typecache for only certain turfs, forbid to allow all but those. allow only certain turfs will take precedence.
-	var/allow_one_away_from_valid_turf = TRUE		//allow moving one tile away from a valid turf but not more.
-	var/override_allow_spacemove = FALSE
 	var/drive_verb = "drive"
-	var/ride_check_rider_incapacitated = FALSE
-	var/ride_check_rider_restrained = FALSE
-	var/ride_check_ridden_incapacitated = FALSE
-
 	var/del_on_unbuckle_all = FALSE
+
+	/// rider check flags : kicks people off if they don't meet these requirements.
+	var/rider_check_flags = NONE
+	/// ridden check flags : kicks people off if the parent atom doesn't meet these requirements.
+	var/ridden_check_flags = NONE
+	/// handler flags : determines some of our behavior
+	var/riding_handler_flags = CF_RIDING_HANDLER_ALLOW_BORDER
 
 /datum/component/riding_handler/Initialize()
 	if(!ismovable(parent))

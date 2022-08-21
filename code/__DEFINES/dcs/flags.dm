@@ -62,3 +62,43 @@
 // Conflict element IDs
 #define CONFLICT_ELEMENT_CRUSHER "crusher"
 #define CONFLICT_ELEMENT_KA "kinetic_accelerator"
+
+//! riding handler flags
+/// ephemeral - delete on last mob unbuckled
+#define CF_RIDING_HANDLER_EPHEMERAL					(1<<0)
+/// allow us to be one away from valid turfs
+#define CF_RIDING_HANDLER_ALLOW_BORDER				(1<<1)
+/// always allow spacemove
+#define CF_RIDING_HANDLER_FORCED_SPACEMOVE			(1<<2)
+/// allow "piloting" of the thing we're riding at all
+#define CF_RIDING_HANDLER_IS_CONTROLLABLE			(1<<3)
+
+DEFINE_BITFIELD(riding_handler_flags, list(
+	BITFIELD(CF_RIDING_HANDLER_EPHEMERAL),
+	BITFIELD(CF_RIDING_HANDLER_ALLOW_BORDER),
+	BITFIELD(CF_RIDING_HANDLER_FORCED_SPACEMOVE),
+	BITFIELD(CF_RIDING_HANDLER_IS_CONTROLLABLE),
+))
+
+//! riding check flags
+/// if unconscious
+#define CF_RIDING_CHECK_UNCONSCIOUS					(1<<0)
+/// if restrained
+#define CF_RIDING_CHECK_RESTRAINED					(1<<1)
+/// if no arms - behavior depends on component
+#define CF_RIDING_CHECK_ARMS						(1<<2)
+/// if no legs - behavior depends on component
+#define CF_RIDING_CHECK_LEGS						(1<<3)
+
+DEFINE_BITFIELD(rider_check_flags, list(
+	BITFIELD(CF_RIDING_CHECK_UNCONSCIOUS),
+	BITFIELD(CF_RIDING_CHECK_RESTRAINED),
+	BITFIELD(CF_RIDING_CHECK_ARMS),
+	BITFIELD(CF_RIDING_CHECK_LEGS),
+))
+DEFINE_BITFIELD(ridden_check_flags, list(
+	BITFIELD(CF_RIDING_CHECK_UNCONSCIOUS),
+	BITFIELD(CF_RIDING_CHECK_RESTRAINED),
+	BITFIELD(CF_RIDING_CHECK_ARMS),
+	BITFIELD(CF_RIDING_CHECK_LEGS),
+))
