@@ -51,9 +51,9 @@
     playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
     ..()
 
-/mob/living/simple_mob/horror/Sally/hitby()
+/mob/living/simple_mob/horror/Sally/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
     playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-    ..()
 
 /mob/living/simple_mob/horror/Sally/attackby()
     playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)

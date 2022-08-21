@@ -52,9 +52,9 @@
     playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
     ..()
 
-/mob/living/simple_mob/horror/BigTim/hitby()
+/mob/living/simple_mob/horror/BigTim/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
     playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-    ..()
 
 /mob/living/simple_mob/horror/BigTim/attackby()
     playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)

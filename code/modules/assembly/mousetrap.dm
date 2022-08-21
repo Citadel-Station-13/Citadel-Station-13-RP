@@ -105,9 +105,10 @@
 	return 0
 
 
-/obj/item/assembly/mousetrap/hitby(var/atom/movable/A)
+/obj/item/assembly/mousetrap/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	if(!armed)
-		return ..()
+		return
 	visible_message("<span class='warning'>[src] is triggered by [A].</span>")
 	triggered(null)
 

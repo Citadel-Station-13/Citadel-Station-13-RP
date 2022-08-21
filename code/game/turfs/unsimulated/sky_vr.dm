@@ -41,12 +41,10 @@
 
 	do_fall(AM)
 
-/turf/simulated/floor/sky/hitby(var/atom/movable/AM, var/speed)
+/turf/simulated/floor/sky/throw_landed(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
-
 	if(!does_skyfall)
 		return //We don't do that
-
 	do_fall(AM)
 
 /turf/simulated/floor/sky/proc/do_fall(atom/movable/AM)

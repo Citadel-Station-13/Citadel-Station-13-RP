@@ -459,8 +459,8 @@
 		H.vent_gas(loc)
 		qdel(H)
 
-/obj/machinery/disposal/hitby(atom/movable/yeeted_atom)
-	. = ..()
+/obj/machinery/disposal/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()`
 	if(istype(yeeted_atom, /obj/item) && !istype(yeeted_atom, /obj/item/projectile))
 		if(prob(75))
 			yeeted_atom.forceMove(src)

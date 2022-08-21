@@ -251,7 +251,8 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 	if(burn_stuff(AM))
 		START_PROCESSING(SSobj, src)
 
-/turf/simulated/floor/water/acid/hitby(atom/movable/AM)
+/turf/simulated/floor/water/acid/throw_landed(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	if(burn_stuff(AM))
 		START_PROCESSING(SSobj, src)
 

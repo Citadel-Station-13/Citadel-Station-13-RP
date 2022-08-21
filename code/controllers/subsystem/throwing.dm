@@ -45,15 +45,25 @@ SUBSYSTEM_DEF(throwing)
 	var/throw_flags = NONE
 	/// things we impacted already. associative list for speed.
 	var/list/impacted
+	/// thing we originally were thrown at
 	var/atom/target
+	/// turf our original target was on at original time of throw
 	var/turf/target_turf
-	var/target_zone
-	var/init_dir
-	var/maxrange
-	var/speed
-	var/atom/thrower
+	/// turf we initially started from
+	var/turf/initial_turf
 
+	var/target_zone
+	/// initial byond get_dir from thrown thing to target
+	var/init_dir
+
+	var/maxrange
+
+	var/speed
+	/// what threw us
+	var/atom/thrower
+	/// world.time we started
 	var/start_time
+	/// tiles we travelled
 	var/dist_travelled = 0
 	var/dist_x
 	var/dist_y
@@ -61,20 +71,43 @@ SUBSYSTEM_DEF(throwing)
 	var/dy
 	var/diagonal_error
 	var/pure_diagonal
-	var/datum/callback/callback
+	/// callback to call when we hit something. called with (hit atom, thrownthing datum)
+	var/datum/callback/on_hit
+	/// callback to call when we land. will not be called if we do not land on anything. called with (landed atom, thrownthing datum)
+	var/datum/callback/on_land
+	/// paused?
 	var/paused = FALSE
+	/// how long we've been paused for
 	var/delayed_time = 0
+	/// last world.time we moved
 	var/last_move = 0
 
-/datum/thrownthing/New(var/atom/movable/thrownthing, var/atom/target, var/range, var/speed, var/mob/thrower, var/datum/callback/callback)
-	src.thrownthing = thrownthing
+/datum/thrownthing/New(atom/movable/AM, atom/target, range, speed, flags, atom/thrower, datum/callback/on_hit, datum/callback/on_land)
+	src.thrownthing = AM
 	src.target = target
-	src.target_turf = get_turf(target)
-	src.init_dir = get_dir(thrownthing, target)
+	var/turf/T = get_turf(target)
+	if(!T)
+		qdel(src)
+		CRASH("tried to throw something at something that wasn't in the game world.")
+	src.target_turf = T
+	T = get_turf(AM)
+	if(!T)
+		qdel(src)
+		CRASH("tried to throw something that wasn't in the game world at something")
+	src.initial_turf = T
+	// todo: multiz throws
 	src.maxrange = range
 	src.speed = speed
+	src.throw_flags = flags
 	src.thrower = thrower
-	src.callback = callback
+	src.on_hit = on_hit
+	src.on_land = on_land
+	src.init_dir = get_dir(thrownthing, target)
+
+	#warn finish
+
+/datum/thrownthing/New
+	src.init_dir = get_dir(thrownthing, target)
 	if(!QDELETED(thrower) && ismob(thrower))
 		src.target_zone = thrower.zone_sel ? thrower.zone_sel.selecting : null
 
@@ -216,3 +249,20 @@ SUBSYSTEM_DEF(throwing)
 	if(hit_thing)
 		finalize(hit=TRUE, t_target=hit_thing)
 		return TRUE
+
+/**
+ * handle impacting an atom
+ * return TRUE if we should end the throw, FALSE to pierce
+ */
+/datum/thrownthing/proc/impact(atom/movable/AM)
+
+/**
+ * land on something and terminate the throw
+ */
+/datum/thrownthing/proc/land(atom/A)
+
+/**
+ * terminate the throw.
+ * when called, immediately erases the throw from the atom and stops it.
+ */
+/datum/thrownthing/proc/terminate()
