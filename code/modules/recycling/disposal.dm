@@ -461,12 +461,12 @@
 
 /obj/machinery/disposal/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()`
-	if(istype(yeeted_atom, /obj/item) && !istype(yeeted_atom, /obj/item/projectile))
+	if(istype(AM, /obj/item) && !istype(AM, /obj/item/projectile))
 		if(prob(75))
-			yeeted_atom.forceMove(src)
-			visible_message("\The [yeeted_atom] lands in \the [src].")
+			AM.forceMove(src)
+			visible_message("\The [AM] lands in \the [src].")
 		else
-			visible_message("\The [yeeted_atom] bounces off of \the [src]'s rim!")
+			visible_message("\The [AM] bounces off of \the [src]'s rim!")
 
 /obj/machinery/disposal/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover, /obj/item/projectile))
