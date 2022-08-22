@@ -145,27 +145,48 @@
 			message = "chimes!"
 			m_type = 1
 
+		//Xenomorph Hybrid
 		if("xhiss")
 			if(src.species.name != SPECIES_XENOHYBRID)
 				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
 				return
 			playsound(src.loc, 'sound/voice/xenos/alien_hiss3.ogg', 50, 0)
 			message = "hisses!"
-			m_type = 1
+			m_type = 2
+
 		if("xroar")
 			if(src.species.name != SPECIES_XENOHYBRID)
 				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
 				return
 			playsound(src.loc, 'sound/voice/xenos/alien_roar1.ogg', 50, 0)
 			message = "roars!"
-			m_type = 1
+			m_type = 2
+
 		if("xgrowl")
 			if(src.species.name != SPECIES_XENOHYBRID)
 				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
 				return
 			playsound(src.loc, 'sound/voice/xenos/alien_growl1.ogg', 50, 0)
 			message = "growls!"
+			m_type = 2
+
+		if("xkiss")
+			if(src.species.name != SPECIES_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			var/M = null
+			if (param)
+				for (var/mob/A in view(null, null))
+					if (param == A.name)
+						M = A
+						break
+			if (!M)
+				param = null
+
+			if (param)
+				message = "extends their inner jaw outwards giving [param] a kiss."
 			m_type = 1
+	
 		if("kiss")
 			var/next_to_target = FALSE
 			var/M = null
