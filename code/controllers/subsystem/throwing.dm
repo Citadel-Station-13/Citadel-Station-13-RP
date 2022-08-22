@@ -250,6 +250,30 @@ SUBSYSTEM_DEF(throwing)
 		finalize(hit=TRUE, t_target=hit_thing)
 		return TRUE
 
+/datum/thrownthing/proc/bump_into(atom/A)
+	#warn impl
+
+/datum/thrownthing/proc/scan_for_impact(turf/T)
+	RETURN_TYPE(/atom)
+	var/atom/highest
+	for(var/atom/thing as anything in T)
+		if(!can_hit(thing))
+			continue
+		if(!highest || highest.layer < thing.layer)
+			highest = thing
+	return highest
+
+/datum/thrownthing/proc/can_hit(atom/A, bumping)
+	if(A == thrownthing)
+		return FALSE
+	if(A == thrower)
+		return FALSE
+	if(impacted[A])
+		return FALSE
+	if(!bumping && A.CanPass(src))
+		return FALSE
+	return TRUE
+
 /**
  * quickstart - immediately tick the first tick
  */

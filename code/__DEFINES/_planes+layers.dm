@@ -42,6 +42,8 @@ What is the naming convention for planes or layers?
 
 // TODO: UNFUCK PLANES. HALF OF THESE HAVE NO REASON TO EXIST. WHOEVER ADDED THEM IS AN IDIOT!
 
+//! todo: layers still need to be linear regardless of plane. stuff like projectiles DO CARE.
+
 #define CLICKCATCHER_PLANE		-99
 /// Reserved for use in space/parallax
 #define SPACE_PLANE				-95

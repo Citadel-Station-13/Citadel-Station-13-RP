@@ -62,7 +62,7 @@ obj/structure/windoor_assembly/Destroy()
 	return ..()
 
 /obj/structure/windoor_assembly/CheckExit(atom/movable/AM, atom/newLoc)
-	if(!(get_dir(loc, target) & dir))
+	if(!(get_dir(loc, AM) & dir))
 		// ditto
 		return TRUE
 	if(check_standard_flag_pass(AM))

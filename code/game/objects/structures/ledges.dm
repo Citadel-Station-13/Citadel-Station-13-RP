@@ -48,7 +48,7 @@
 		return TRUE
 	if(!solidledge)
 		return TRUE
-	if(get_dir(AM, target) != turn(dir, 180))
+	if(get_dir(AM, AM) != turn(dir, 180))
 		return TRUE
 	return FALSE
 

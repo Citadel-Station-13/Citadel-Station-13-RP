@@ -398,3 +398,15 @@
 // We were the the B-side in a turf translation
 /turf/proc/post_translate_B(var/turf/A)
 	return
+
+/turf/has_gravity()
+	if(loc.has_gravity(src))
+		return TRUE
+/*
+	else
+		// There's a gravity generator on our z level
+		if(GLOB.gravity_generators["[z]"])
+			//? length check
+			return TRUE
+*/
+	return SSmapping.level_trait(z, ZTRAIT_GRAVITY)

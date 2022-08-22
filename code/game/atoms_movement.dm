@@ -52,7 +52,7 @@
 	if(mover.pass_flags & pass_flags_self)
 		return TRUE
 	// the && makes sure the expensive checks don't run most of the time
-	if(mover.throwing && ((pass_flags_self & ATOM_PASS_THROWN) || (mover.throwing.impacted && mover.throwing.impacted[src])))
+	if(mover.throwing && ((pass_flags_self & ATOM_PASS_THROWN) || !mover.throwing.can_hit(src, TRUE)))
 		return TRUE
 	return !density
 

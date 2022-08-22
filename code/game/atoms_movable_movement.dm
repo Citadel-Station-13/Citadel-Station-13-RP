@@ -215,20 +215,15 @@
 	if(!A)
 		CRASH("Bump was called with no argument.")
 	SEND_SIGNAL(src, COMSIG_MOVABLE_BUMP, A)
+
 	. = ..()
+
 	if(throwing)
-		throw_impact(A)
-		throwing = 0
-		if(QDELETED(A))
-			return
+		throwing.bump_into(A)
+		if(QDELETED(src) || QDELETED(A))
+			return TRUE
+
 	A.last_bumped = world.time
-/*
-	if(!QDELETED(throwing))
-		throwing.hit_atom(A)
-		. = TRUE
-		if(QDELETED(A))
-			return
-*/
 	A.Bumped(src)
 
 /**
