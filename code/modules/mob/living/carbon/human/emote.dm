@@ -166,6 +166,25 @@
 			playsound(src.loc, 'sound/voice/xenos/alien_growl1.ogg', 50, 0)
 			message = "growls!"
 			m_type = 1
+		if("kiss")
+			var/next_to_target = FALSE
+			var/M = null
+			if (param)
+				for (var/mob/A in view(null, null))
+					if (param == A.name)
+						M = A
+						if(src.Adjacent(A))
+							next_to_target = TRUE
+						break
+				if (!M)
+					param = null
+
+				if (param)
+					var/distance_verb = next_to_target ? "kisses" : "blows a kiss at"
+					message = "[distance_verb] [param]."
+			else
+				message = "makes a kissing mouth."
+			m_type = 1
 		if ("blink")
 			message = "blinks."
 			m_type = 1
