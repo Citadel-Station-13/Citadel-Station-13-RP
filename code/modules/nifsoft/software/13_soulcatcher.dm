@@ -79,7 +79,8 @@
 		save_data = list()
 	if(load)
 		inside_flavor = load
-	visibility = save_data["vis"]
+	if(!isnull(save_data["vis"]))
+		visibility = save_data["vis"]
 	visibility_exceptions = save_data["vis_exceptions"]
 	visibility_blacklist = save_data["vis_blacklist"]
 	return TRUE
