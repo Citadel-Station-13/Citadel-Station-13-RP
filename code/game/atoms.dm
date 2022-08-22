@@ -116,11 +116,15 @@
 
 //! ## Persistence
 	/// persistence flags
-	var/persist_flags = NONE
-	/// persistence id for dynamic persistence
+	var/persist_flags = ATOM_PERSIST_SURVIVE_STATIC_OFFMAP
+	/// dynamic persistence flags, carried to/from database. do not modify in hardmapped objects!
+	var/persist_flags_dynamic = NONE
+	/// persistence id for dynamic persistence. having this implies we're persistent.
 	var/persist_dynamic_uid
-	/// persitsence id for hardmapped/preset persistence
+	/// persitsence id for hardmapped/preset persistence. having this implies we're persistent.
 	var/persist_static_uid
+	/// map id on load for static, incase there's dupes on another map and someone moves us to it. do not manually modify.
+	var/persist_static_map_id
 
 //! Misc
 	///Mobs that are currently do_after'ing this atom, to be cleared from on Destroy()
@@ -259,7 +263,7 @@
 
 	orbiters = null // The component is attached to us normaly and will be deleted elsewhere
 
-	if(persist_flags & (ATOM_PERSIST_LOADED | ATOM_PERSIST_SAVED))
+	if(persist_flags & ATOM_PERSIST_ACTIVE)
 		if(persist_static_uid)
 			qdestroying_static_persistence()
 		else if(persist_dynamic_uid)

@@ -41,11 +41,38 @@
  * automatically called at time of writing from SSatoms initialization.
  */
 /atom/proc/load_static_persistence(uid = persist_static_uid)
+	if(!uid)
+		return
+
+	var/map_id = persist_static_loaded_map_id || SSpersistence._map_id_of_z(persist_flags & ATOM_PERSIST_UNWRAPS_ONTO_TURF? get_z(src) : z)
+	if(!map_id)
+		return
+
+	persist_static_loaded_map_id = map_id
+	var/list/data = SSpersistence.FetchStaticObjectData(uid, map_id)
+	if(!data)
+		return
+
+	persistence_load(data, PERSIST_OP_STATIC_LOAD)
+	persist_flags |= ATOM_PERSIST_LOADED
 
 /**
  * saves static data to the map
  */
 /atom/proc/save_static_persistence(uid = persist_static_uid)
+	if(!uid)
+		return
+
+	var/map_id = SSpersistence._map_id_of_z(persist_flgas & ATOM_PERSIST_UNWRAPS_ONTO_TURF? get_z(src) : z)
+
+	if(map_id && persist_static_loaded_map_id)
+		if(map_id != persist_static_loaded_map_id)
+			if(!(persist_flags & ATOM_PERSIST_SURVIVE_STATIC_OFFMAP))
+				SSpersistence.WipeStaticObjectData(uid, persist_static_loaded_map_id)
+				return
+
+	if((persist_flags & ATOM_PERSIST_LOADED) && persist_static_loaded_map_id)
+		if(map_id)
 
 /**
  * called in Destroy if we have static uid
@@ -54,6 +81,16 @@
 
 
 #warn impl + have checks to make sure dynamic/static persistence can't both fire on an atom
+
+/**
+ * initializes or re-asserts dynamic persistence
+ */
+/atom/proc/persist(flags = (PERSIST_OP_CHECK_SEMANTIC_SURVIVAL | PERSIST_OP_AGGRESSIVE_SURVIVAL_CHECK))
+	if(persist_static_uid)
+		// static already handles it so
+		save_static_persistence()
+		return
+	#warn impl
 
 /**
  * saves dynamic data to the map
@@ -65,9 +102,19 @@
  */
 /atom/proc/qdestroying_dynamic_persistence(uid = persist_dynamic_uid)
 
-//! ATOM INSTANTIATION
+//! ATOM INSTANTIATION, LOADING, SAVING
 
 /datum/controller/subsystem/persistence/proc/_generic_atom_instantiate(type, x, y, z, list/data, flags)
+
+/**
+ * call from containers that want to save their data
+ */
+/datum/controller/subsystem/persistence/proc/serialize_nested_movable(atom/A, flags)
+
+/**
+ * call from containers that want to then load their data
+ */
+/datum/controller/subsystem/persistence/proc/deserialize_nested_movable(list/data, flags)
 
 //! ATOM PROCS
 //? These procs give us the ability to do dynamic persistence with a generic API for the subsystem to use into

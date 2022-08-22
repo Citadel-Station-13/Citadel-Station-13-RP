@@ -266,6 +266,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_dynamic_atoms` (
   `level_id` varchar(64) NOT NULL,
   `type` varchar(64) NOT NULL,
   `json` MEDIUMTEXT NOT NULL,
+  `flags` INT(24) NOT NULL,
   `revision` INT(11) NOT NULL,
   PRIMARY KEY(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

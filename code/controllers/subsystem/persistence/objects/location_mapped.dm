@@ -125,6 +125,10 @@
 	var/abstract_type = /datum/mass_persistence_handler
 	/// id - **must** be unique
 	var/id
+	/// atoms to store per fragment
+	var/fragment_size = 512
+	/// uni-type - set to expected type to skip type serialization. for most use cases, you want to set this.
+	var/object_type
 
 //! Mass Persistence Handlers - Loading- do not override unless you know what you are doing!
 //! Blackboard is null if not a mass load operation, otherwise it'll be shared by all. Use to collate stuff like for(x in world).
@@ -152,6 +156,8 @@
 
 /datum/mass_persistence_handler/proc/_Unpack(data, list/blackboard)
 
+/datum/mass_persistence_handler/proc/_InstantiateFragment(list/fragment, list/blackboard)
+
 /datum/mass_persistence_handler/proc/_InstantiateAndDeserialize(list/data, list/blackboard)
 
 //! Mass Persistence Handlers - Saving - do not override unless you know what you are doing!
@@ -162,11 +168,11 @@
 	if(!level_id && !z)
 		CRASH("no level id or z")
 	if(!level_id)
-		level_id = _map_id_of_z(z)
+		level_id = SSpersistence._map_id_of_z(z)
 		if(!level_id)
 			CRASH("no level ID")
 	if(!z)
-		z = _z_of_map_id(level_id)
+		z = SSpersistence._z_of_map_id(level_id)
 		if(!z)
 			CRASH("no z")
 
@@ -198,7 +204,7 @@
 	for(var/i in 1 to world.maxz)
 		assembled[++assembled.len] = list()
 	// get levels we care about
-	var/list/relevant = _full_z_to_map_id_lookup()
+	var/list/relevant = SSpersistence._full_z_to_map_id_lookup()
 	// inject atoms we care about
 	for(var/atom/A as anything in entities)
 		if(!relevant[A.z])
@@ -216,26 +222,42 @@
  * splits atoms from a specific level into fragments
  */
 /datum/mass_persistence_handler/proc/_Split(list/atom/entities, fragment_size, list/blackboard)
+	var/list/fragments = list()
+	. = fragments
 	if(!fragment_size)
-		fragment_size = CONFIG_GET(number/persistence_mass_fragment_size)
-		if(!fragment_size)
-			CRASH("couldn't get fragment size")
+		CRASH("couldn't get fragment size")
+	if(fragment_size < 4)
+		CRASH("cancelling split ; fragment size < 4")
+	if(fragment_size > 8192)
+		CRASH("cancelling split ; fragment size > 8192")
+	for(var/fragment_index in 1 to CEILING(entities.len / fragment_size, 1))
+		fragments[++fragments.len] = entities.Copy((fragment_index - 1) * fragment_size + 1, min(entities.len + 1, fragment_index * fragment_size + 1))
 
 /**
  * gather data of atoms in fragment
  */
 /datum/mass_persistence_handler/proc/_Serialize(list/atom/entities, list/blackboard)
 	RETURN_TYPE(/list)
+	var/list/fragment = list()
+	. = fragment
+	if(object_type)
+		for(var/atom/A as anything in entities)
+			fragment[++fragment.len] = list("x" = A.x, "y" = A.y, "d" = Serialize(A))
+	else
+		for(var/atom/A as anything in entities)
+			fragment[++fragment.len] = list("x" = A.x, "y" = A.y, "d" = Serialize(a), "t" = A.type)
 
 /**
  * packs everything into a string for SQL
  */
 /datum/mass_persistence_handler/proc/_Pack(list/data, list/blackboard)
+	return json_encode(data)
 
 //! this is the stuff you should actually override
 //! once again, blackboard is not null during mass operations, so use it to stage for(atom type in world)!
 
 /datum/mass_persistence_handler/proc/GetObjects(list/blackboard)
+	return
 
 /**
  * faster way to get objects
@@ -247,5 +269,10 @@
 
 /datum/mass_persistence_handler/proc/Serialize(atom/A)
 	RETURN_TYPE(/list)
+	return list()
 
 /datum/mass_persistence_handler/proc/Instantiate(type, x, y, z, list/data)
+	return
+
+#warn mass persistence needs rethinking, it shouldn't be only modular to atoms/whatnot
+#warn fragments should be generic data holders, maybe a mass persistence handler for specifically atoms?

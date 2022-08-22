@@ -59,8 +59,12 @@ SUBSYSTEM_DEF(persistence)
 #warn impl
 
 /datum/controller/subsystem/persistence/proc/_map_id_of_z(z)
+	if(!z)
+		return
 
 /datum/controller/subsystem/persistence/proc/_z_of_map_id(id)
+	if(!id)
+		return
 
 /datum/controller/subsystem/persistence/proc/_is_map_id_loaded(id)
 	return !!_z_of_map_id(id)

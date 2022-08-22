@@ -22,7 +22,7 @@
 		F.dirt += 4
 	qdel(src)
 
-/obj/effect/decal/cleanable/flour
+/obj/effect/debris/cleanable/flour
 	name = "flour"
 	desc = "It's still good. Four second rule!"
 	gender = PLURAL

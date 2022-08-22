@@ -37,13 +37,7 @@
 			M.ingested.remove_reagent(R.id, removed * effect)
 
 /datum/reagent/carbon/touch_turf(var/turf/T)
-	if(!istype(T, /turf/space))
-		var/obj/effect/debris/cleanable/dirt/dirtoverlay = locate(/obj/effect/debris/cleanable/dirt, T)
-		if (!dirtoverlay)
-			dirtoverlay = new/obj/effect/debris/cleanable/dirt(T)
-			dirtoverlay.alpha = volume * 30
-		else
-			dirtoverlay.alpha = min(dirtoverlay.alpha + volume * 30, 255)
+	T.add_dirt_object(volume * 30, volume * 30, 255)
 
 /datum/reagent/chlorine
 	name = "Chlorine"

@@ -9,6 +9,8 @@
 #define TURF_PLANET_REGISTERED		(1<<4)
 /// queued for ZAS rebuild
 #define TURF_ZONE_REBUILD_QUEUED	(1<<5)
+/// no making dirt overlays or similar overlays on this
+#define TURF_SEMANTICALLY_BOTOMLESS	(1<<6)
 
 
 ///CITMAIN TURF FLAGS - Completely unused

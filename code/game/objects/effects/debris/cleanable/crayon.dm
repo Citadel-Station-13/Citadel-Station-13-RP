@@ -2,9 +2,9 @@
 	name = "rune"
 	desc = "A rune drawn in crayon."
 	icon = 'icons/obj/rune.dmi'
-	anchored = 1
+	anchored = TRUE
 
-	New(location,main = "#FFFFFF",shade = "#000000",var/type = "rune")
+/obj/effect/debris/cleanable/crayon/New(location,main = "#FFFFFF",shade = "#000000",var/type = "rune")
 		..()
 		loc = location
 

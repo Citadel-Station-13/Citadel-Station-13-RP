@@ -75,12 +75,8 @@
 
 /turf/simulated/proc/update_dirt()
 	if(can_dirty)
-		dirt = min(dirt+1, 101)
-		var/obj/effect/debris/cleanable/dirt/dirtoverlay = locate(/obj/effect/debris/cleanable/dirt, src)
-		if (dirt > 50)
-			if (!dirtoverlay)
-				dirtoverlay = new/obj/effect/debris/cleanable/dirt(src)
-			dirtoverlay.alpha = min((dirt - 50) * 5, 255)
+		dirt = min(dirt + 1, 101)
+		set_dirt_object((dirt - 50) * 5
 
 /turf/simulated/Entered(atom/A, atom/OL)
 	..()

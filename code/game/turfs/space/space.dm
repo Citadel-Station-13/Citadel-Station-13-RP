@@ -3,6 +3,7 @@
 	name = "\proper space"
 	icon_state = "0"
 	plane = SPACE_PLANE
+	turf_flags = TURF_SEMANTICALLY_BOTOMLESS
 
 	light_power = 0.25
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
