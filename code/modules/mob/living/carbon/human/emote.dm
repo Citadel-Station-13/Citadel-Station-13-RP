@@ -206,6 +206,21 @@
 			else
 				message = "makes a kissing mouth."
 			m_type = 1
+
+		if("smooch")
+			if (param)
+				var/M = null
+				for (var/mob/A in view(1,src.loc))
+					if (param == A.name)
+						M = A
+						break
+				if (!M)
+					param = null
+
+				if (param)
+					message = "smooches [param]."
+			m_type = 1
+		
 		if ("blink")
 			message = "blinks."
 			m_type = 1
