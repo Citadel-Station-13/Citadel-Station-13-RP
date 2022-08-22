@@ -188,10 +188,29 @@
 
 /**
  * groups atoms by zlevels, filtering out any zlevels without level ids
+ *
+ * returns list of lists associated to map ids
  */
 /datum/mass_persistence_handler/proc/_MassFilter(list/atom/entities, list/blackboard)
 	RETURN_TYPE(/list)
+	// prep lists
+	var/list/assembled = list()
+	for(var/i in 1 to world.maxz)
+		assembled[++assembled.len] = list()
+	// get levels we care about
+	var/list/relevant = _full_z_to_map_id_lookup()
+	// inject atoms we care about
+	for(var/atom/A as anything in entities)
+		if(!relevant[A.z])
+			continue
+		assembled[A.z] += A
+	// prep final list
 	. = list()
+	// inject assembled, associating to map id
+	for(var/i in 1 to world.maxz)
+		if(!length(assembled[i]))
+			continue
+		.[relevant[i]] = assembled[i]
 
 /**
  * splits atoms from a specific level into fragments

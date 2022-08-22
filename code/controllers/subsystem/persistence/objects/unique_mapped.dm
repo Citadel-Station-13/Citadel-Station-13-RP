@@ -7,6 +7,8 @@
  * use this for mapped in objects and loadout objects
  */
 /datum/controller/subsystem/persistence
+	/// objects we need to track
+	var/static/list/unique_mapped_objects = list()
 
 /datum/controller/subsystem/persistence/proc/FetchObjectData(uid, map)
 

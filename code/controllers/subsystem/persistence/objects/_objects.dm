@@ -35,16 +35,35 @@
 	return SSdbcore.Connect()
 
 //! ATOM HELPERS
+/**
+ * loads static data from the map
+ *
+ * automatically called at time of writing from SSatoms initialization.
+ */
+/atom/proc/load_static_persistence(uid = persist_static_uid)
 
 /**
- *
+ * saves static data to the map
  */
-/atom/proc/load_mapped_persistence(uid_override)
+/atom/proc/save_static_persistence(uid = persist_static_uid)
 
 /**
- *
+ * called in Destroy if we have static uid
  */
-/atom/proc/save_mapped_persistence(uid_override)
+/atom/proc/qdestroying_static_persistence(uid = persist_static_uid)
+
+
+#warn impl + have checks to make sure dynamic/static persistence can't both fire on an atom
+
+/**
+ * saves dynamic data to the map
+ */
+/atom/proc/save_dynamic_persistence(uid = persist_dynamic_uid)
+
+/**
+ * called in Destroy if we have dynamic uid
+ */
+/atom/proc/qdestroying_dynamic_persistence(uid = persist_dynamic_uid)
 
 //! ATOM INSTANTIATION
 
@@ -56,10 +75,18 @@
 //? still mostly a round based game (for now).
 //? Therefore, we can't sacrifice performance in /New().
 
+/**
+ * stores data in a list
+ * will be automatically packed with other data by the persistence system.
+ */
 /atom/proc/persistence_store(flags)
 	RETURN_TYPE(/list)
 	return list()
 
+/**
+ * loads data from a list.
+ * some data will already be automatically loaded by the persistence system (like position/type, duh).
+ */
 /atom/proc/persistence_load(list/data, flags)
 
 /**
@@ -67,3 +94,4 @@
  * see __DEFINES/controllers/persistence.dm for flags
  */
 /atom/proc/should_persist(flags)
+	return !QDELETED(src)

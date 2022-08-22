@@ -116,11 +116,11 @@
 
 //! ## Persistence
 	/// persistence flags
-	var/persistence_flags = NONE
+	var/persist_flags = NONE
 	/// persistence id for dynamic persistence
-	var/persistence_dynamic_uid
+	var/persist_dynamic_uid
 	/// persitsence id for hardmapped/preset persistence
-	var/persistence_static_uid
+	var/persist_static_uid
 
 /**
  * Called when an atom is created in byond (built in engine proc)
@@ -215,6 +215,9 @@
 		var/turf/T = loc
 		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guranteed to be on afterwards anyways.
 
+	if(persist_static_uid)
+		load_static_persistence()
+
 	return INITIALIZE_HINT_NORMAL
 
 /**
@@ -251,6 +254,12 @@
 		QDEL_NULL(reagents)
 
 	orbiters = null // The component is attached to us normaly and will be deleted elsewhere
+
+	if(persist_flags & (ATOM_PERSIST_LOADED | ATOM_PERSIST_SAVED))
+		if(persist_static_uid)
+			qdestroying_static_persistence()
+		else if(persist_dynamic_uid)
+			qdestroying_dynamic_persistence()
 
 	LAZYCLEARLIST(overlays)
 	LAZYNULL(managed_overlays)

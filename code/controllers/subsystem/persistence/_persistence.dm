@@ -67,3 +67,17 @@ SUBSYSTEM_DEF(persistence)
 
 /datum/controller/subsystem/persistence/proc/_all_loaded_map_ids()
 	RETURN_TYPE(/list)
+
+/datum/controller/subsystem/persistence/proc/_all_persisting_zs()
+	RETURN_TYPE(/list)
+
+/datum/controller/subsystem/persistence/proc/_z_to_map_id_lookup()
+	RETURN_TYPE(/list)
+
+/**
+ * includes nulls, so quick if(list[z]) index checks work.
+ */
+/datum/controller/subsystem/persistence/proc/_full_z_to_map_id_lookup()
+	RETURN_TYPE(/list)
+
+#warn impl above
