@@ -145,7 +145,27 @@
 			message = "chimes!"
 			m_type = 1
 
-
+		if("xhiss")
+			if(src.species.name != SPECIES_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/alien_hiss3.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 1
+		if("xroar")
+			if(src.species.name != SPECIES_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/alien_roar1.ogg', 50, 0)
+			message = "roars!"
+			m_type = 1
+		if("xgrowl")
+			if(src.species.name != SPECIES_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/alien_growl1.ogg', 50, 0)
+			message = "growls!"
+			m_type = 1
 		if ("blink")
 			message = "blinks."
 			m_type = 1
