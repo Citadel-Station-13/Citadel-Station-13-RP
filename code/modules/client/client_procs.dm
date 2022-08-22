@@ -264,10 +264,13 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		GLOB.player_details[ckey] = player_details
 	*/
 
+	//! WARNING: mob.login is always called async, aka immediately returns on sleep.
+	//! we cannot enforce nosleep due to SDMM limitations.
+	//! therefore, DO NOT PUT ANYTHING YOU WILL RELY ON LATER IN THIS PROC IN LOGIN!
 	. = ..()	//calls mob.Login()
 
-	if(!using_perspective)
-		stack_trace("mob login didn't put in perspective")
+	// if(!using_perspective)
+	// 	stack_trace("mob login didn't put in perspective")
 
 	if(log_client_to_db() == "BUNKER_DROPPED")
 		disconnect_with_message("Disconnected by bunker: [config_legacy.panic_bunker_message]")

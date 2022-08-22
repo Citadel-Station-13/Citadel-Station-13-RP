@@ -746,7 +746,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/spiderling_remains,
+/obj/effect/debris/cleanable/spiderling_remains,
 /obj/structure/table/rack,
 /obj/item/pickaxe/drill{
 	desc = "Go get it.";
@@ -992,7 +992,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/spiderling_remains,
+/obj/effect/debris/cleanable/spiderling_remains,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "ck" = (
@@ -2142,14 +2142,12 @@
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engineering_monitoring)
 "dX" = (
-/obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/item/storage/box/nifsofts_engineering,
 /obj/structure/cable/yellow{
 	d2 = 2;
 	icon_state = "0-2"
@@ -2158,6 +2156,11 @@
 	dir = 1;
 	name = "north bump";
 	pixel_y = 24
+	},
+/obj/machinery/computer/sm_monitor,
+/obj/item/paper{
+	info = "To set up the Supermatter Agitation engine, first start by placing the radiation collectors into the SME chamber, then add phoron tanks to each radiation collector and turn them on. After that, ensure the SME chamber is clear, and adjust the air alarm to SCRUB nitrogen and oxygen. Once the scrubbers are set, add phoron into the SME chamber via the provided canisters and the supply line. Once phoron has been added to the loop, go upstairs again, lock down the SME chamber, open the emitter blast door, and fire it at the Supermatter Crystal, how many shots is not important and can even be left firing continuously with limited supervision. Finally, set the SMES and output power to the station. Congratulations, you've managed to set up the Supermatter Agitation engine at a basic level.";
+	name = "Supermatter Agitation engine guide"
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engineering_monitoring)
@@ -2174,6 +2177,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
 	},
+/obj/item/storage/box/nifsofts_engineering,
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engineering_monitoring)
 "ea" = (
@@ -2336,10 +2340,6 @@
 	pixel_x = 6;
 	pixel_y = -4;
 	req_one_access = null
-	},
-/obj/item/paper{
-	info = "To set up the Supermatter Agitation engine, first start by placing the radiation collectors into the SME chamber, then add phoron tanks to each radiation collector and turn them on. After that, ensure the SME chamber is clear, and adjust the air alarm to SCRUB nitrogen and oxygen. Once the scrubbers are set, add phoron into the SME chamber via the provided canisters and the supply line. Once phoron has been added to the loop, go upstairs again, lock down the SME chamber, open the emitter blast door, and fire it at the Supermatter Crystal, how many shots is not important and can even be left firing continuously with limited supervision. Finally, set the SMES and output power to the station. Congratulations, you've managed to set up the Supermatter Agitation engine at a basic level.";
-	name = "Supermatter Agitation engine guide"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engineering_monitoring)
@@ -17659,7 +17659,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "VY" = (
-/obj/effect/decal/cleanable/blood/gibs/robot/up,
+/obj/effect/debris/cleanable/blood/gibs/robot/up,
 /turf/simulated/floor/plating,
 /area/maintenance/elevator)
 "Wa" = (

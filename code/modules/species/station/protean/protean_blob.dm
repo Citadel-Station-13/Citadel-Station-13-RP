@@ -571,7 +571,4 @@
 		var/obj/item/organ/O = organ
 		// Fix internal damage
 		if(O.damage > 0)
-			O.damage = max(0,O.damage-3) // The major part of blob regen. The quick organ repair, compared to non-blob regen
-		// If not damaged, but dead, fix it
-		else if(O.status & ORGAN_DEAD)
-			O.status &= ~ORGAN_DEAD //Unset dead if we repaired it entirely
+			O.heal_damage_i(3, can_revive = TRUE)

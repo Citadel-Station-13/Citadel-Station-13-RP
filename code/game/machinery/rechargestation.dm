@@ -233,8 +233,9 @@
 	go_in(L)
 
 /obj/machinery/recharge_station/proc/go_in(mob/living/L)
-
-	if(occupant)
+	if(!istype(L))
+		return
+	if(occupant || L.buckled)
 		return
 
 	if(istype(L, /mob/living/silicon/robot))

@@ -70,7 +70,7 @@
 	},
 /area/submap/CaveS)
 "p" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
@@ -88,7 +88,7 @@
 	},
 /area/submap/CaveS)
 "s" = (
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
@@ -100,7 +100,7 @@
 	},
 /area/submap/CaveS)
 "u" = (
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /mob/living/simple_mob/animal/giant_spider/lurker,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0

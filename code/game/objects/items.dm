@@ -321,24 +321,26 @@
 		// not being held
 		if(!isturf(loc))	// yea nah
 			return ..()
-		// if not adjacent don't bother
-		if(!user.Adjacent(over) || !user.Adjacent(src))
-			return ..()
-		// check for equip
-		if(istype(over, /atom/movable/screen/inventory/hand))
-			var/atom/movable/screen/inventory/hand/H = over
-			user.put_in_hand(src, H.index)
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-		else if(istype(over, /atom/movable/screen/inventory/slot))
-			var/atom/movable/screen/inventory/slot/S = over
-			user.equip_to_slot_if_possible(src, S.slot_id)
-			return CLICKCHAIN_DO_NOT_PROPAGATE
+		if(user.Adjacent(src))
+			// check for equip
+			if(istype(over, /atom/movable/screen/inventory/hand))
+				var/atom/movable/screen/inventory/hand/H = over
+				user.put_in_hand(src, H.index)
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			else if(istype(over, /atom/movable/screen/inventory/slot))
+				var/atom/movable/screen/inventory/slot/S = over
+				user.equip_to_slot_if_possible(src, S.slot_id)
+				return CLICKCHAIN_DO_NOT_PROPAGATE
 		// check for slide
-		if(Adjacent(over) && (istype(over, /obj/structure/rack) || istype(over, /obj/structure/table) || istype(over, /turf)))
+		if(Adjacent(over) && user.CanSlideItem(src, over) && (istype(over, /obj/structure/rack) || istype(over, /obj/structure/table) || istype(over, /turf)))
 			var/turf/old = get_turf(src)
 			if(!Move(get_turf(over)))
 				return CLICKCHAIN_DO_NOT_PROPAGATE
-			user.visible_message(SPAN_NOTICE("[user] slides [src] over."), SPAN_NOTICE("You slide [src] over."), range = MESSAGE_RANGE_COMBAT_SUBTLE)
+			//! todo: i want to strangle the mofo who did planes instead of invisibility, which makes it computationally infeasible to check ghost invisibility in get hearers in view
+			//! :) FUCK YOU.
+			//! this if check is all for you. FUCK YOU.
+			if(!isobserver(user))
+				user.visible_message(SPAN_NOTICE("[user] slides [src] over."), SPAN_NOTICE("You slide [src] over."), range = MESSAGE_RANGE_COMBAT_SUBTLE)
 			log_inventory("[user] slid [src] from [COORD(old)] to [COORD(over)]")
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		return ..()
@@ -356,6 +358,16 @@
 			user.drop_item_to_ground(src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		return ..()
+
+// funny!
+/mob/proc/CanSlideItem(obj/item/I, turf/over)
+	return FALSE
+
+/mob/living/CanSlideItem(obj/item/I, turf/over)
+	return Adjacent(I) && !incapacitated() && !stat && !restrained()
+
+/mob/observer/dead/CanSlideItem(obj/item/I, turf/over)
+	return is_spooky
 
 /obj/item/attack_ai(mob/user as mob)
 	if (istype(src.loc, /obj/item/robot_module))

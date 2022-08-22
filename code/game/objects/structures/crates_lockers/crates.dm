@@ -266,7 +266,7 @@
 			if(2 to 4)
 				visible_message("<font color='red'><b>The anti-tamper mechanism of [src] causes a small fire!</b></font>")
 				for(var/atom/movable/A as mob|obj in src) // For every item in the box, we spawn a pile of ash.
-					new /obj/effect/decal/cleanable/ash(src.loc)
+					new /obj/effect/debris/cleanable/ash(src.loc)
 				new /atom/movable/fire(src.loc)
 				qdel(src)
 			if(5)
@@ -371,17 +371,13 @@
 /obj/structure/closet/crate/freezer/Entered(var/atom/movable/AM)
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
-		O.preserved = 1
-		for(var/obj/item/organ/organ in O)
-			organ.preserved = 1
+		O.preserve(CRATE_FREEZER_TRAIT)
 	..()
 
 /obj/structure/closet/crate/freezer/Exited(var/atom/movable/AM)
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
-		O.preserved = 0
-		for(var/obj/item/organ/organ in O)
-			organ.preserved = 0
+		O.unpreserve(CRATE_FREEZER_TRAIT)
 	..()
 
 /obj/structure/closet/crate/freezer/rations //Fpr use in the escape shuttle

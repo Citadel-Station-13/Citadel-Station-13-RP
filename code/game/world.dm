@@ -407,15 +407,17 @@ GLOBAL_LIST(topic_status_cache)
 
 // Things to do when a new z-level was just made.
 /world/proc/max_z_changed()
-	if(!istype(GLOB.players_by_zlevel, /list))
-		GLOB.players_by_zlevel = new /list(world.maxz, 0)
+	assert_players_by_zlevel_list()
+
+/proc/assert_players_by_zlevel_list()
+	if(!islist(GLOB.players_by_zlevel))
+		GLOB.players_by_zlevel = list()
 	while(GLOB.players_by_zlevel.len < world.maxz)
-		GLOB.players_by_zlevel.len++
-		GLOB.players_by_zlevel[GLOB.players_by_zlevel.len] = list()
+		GLOB.players_by_zlevel[++GLOB.players_by_zlevel.len] = list()
 
 // Call this to make a new blank z-level, don't modify maxz directly.
 /world/proc/increment_max_z()
-	maxz++
+	. = ++maxz
 	max_z_changed()
 
 //! LOG SHUNTER STUFF, LEAVE THIS ALONE

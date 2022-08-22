@@ -94,7 +94,7 @@
 	},
 /area/submap/DJOutpost1)
 "u" = (
-/obj/effect/decal/cleanable/ash,
+/obj/effect/debris/cleanable/ash,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/DJOutpost1)
 "w" = (
@@ -197,7 +197,7 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/DJOutpost1)
 "P" = (
-/obj/effect/decal/cleanable/ash,
+/obj/effect/debris/cleanable/ash,
 /turf/simulated/floor/wood/broken,
 /area/submap/DJOutpost1)
 "S" = (

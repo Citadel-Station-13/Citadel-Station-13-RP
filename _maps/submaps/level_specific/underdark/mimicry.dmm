@@ -26,12 +26,12 @@
 /area/mine/explored/underdark)
 "i" = (
 /obj/effect/decal/remains/deer,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
 /area/mine/explored/underdark)
 "j" = (
 /obj/effect/decal/remains/tajaran,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
 /area/mine/explored/underdark)
 

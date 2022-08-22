@@ -1,6 +1,7 @@
 /// From base of obj/item/dropped(mob/user, flags, atom/newLoc): (mob/user)
 #define COMSIG_ITEM_DROPPED "item_drop"
-	#define COMPONENT_ITEM_RELOCATED_BY_DROP		(1<<0)
+	#define COMPONENT_ITEM_DROPPED_RELOCATE				(1<<0)
+	#define COMPONENT_ITEM_DROPPED_SUPPRESS_SOUND		(1<<1)
 /// From base of obj/item/pickup(mob/user, flags, atom/oldLoc): (/mob/taker)
 #define COMSIG_ITEM_PICKUP "item_pickup"
 /// From base of obj/item/equipped(): (/mob/equipper, slot, accessory)

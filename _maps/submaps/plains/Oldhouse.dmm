@@ -18,16 +18,16 @@
 /area/submap/Oldhouse)
 "f" = (
 /obj/structure/table/woodentable,
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "g" = (
 /obj/item/stack/material/wood,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "h" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "i" = (
@@ -39,8 +39,8 @@
 	},
 /area/submap/Oldhouse)
 "k" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/spiderling_remains,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/spiderling_remains,
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "l" = (
@@ -52,11 +52,11 @@
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "n" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/Oldhouse)
 "o" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/wood{
 	icon_state = "wood_broken4"
 	},
@@ -81,7 +81,7 @@
 "t" = (
 /obj/structure/table/woodentable,
 /obj/item/paper,
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "u" = (
@@ -97,11 +97,11 @@
 /area/submap/Oldhouse)
 "w" = (
 /obj/item/stack/material/wood,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "x" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/wood{
 	icon_state = "wood_broken6"
 	},
@@ -194,8 +194,8 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/Oldhouse)
 "O" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/Oldhouse)
 "P" = (
@@ -208,7 +208,7 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/Oldhouse)
 "R" = (
-/obj/effect/decal/cleanable/spiderling_remains,
+/obj/effect/debris/cleanable/spiderling_remains,
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "S" = (

@@ -22,7 +22,7 @@
 /turf/simulated/floor/greengrid/lavaland,
 /area/lavaland/bosses)
 "m" = (
-/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/debris/cleanable/blood/gibs,
 /turf/simulated/floor/greengrid/lavaland,
 /area/lavaland/bosses)
 "r" = (
@@ -84,7 +84,7 @@
 /turf/simulated/floor/greengrid/lavaland,
 /area/lavaland/bosses)
 "S" = (
-/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/debris/cleanable/blood/gibs,
 /turf/simulated/floor/bluegrid/lavaland,
 /area/lavaland/bosses)
 "U" = (

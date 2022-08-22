@@ -105,7 +105,8 @@
 		H = new(get_turf(src))
 		user.put_in_hands(H)
 
-	if(!H || !user) return
+	if(!H || !user)
+		return
 
 	var/datum/playingcard/P = cards[1]
 	H.cards += P
@@ -392,11 +393,7 @@
 	return
 
 /obj/item/hand/update_icon(var/direction = 0)
-
-	if(!cards.len)
-		qdel(src)
-		return
-	else if(cards.len > 1)
+	if(cards.len > 1)
 		name = "hand of cards"
 		desc = "Some playing cards."
 	else

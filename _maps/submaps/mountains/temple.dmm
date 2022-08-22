@@ -12,7 +12,7 @@
 /turf/simulated/wall/sandstone,
 /area/submap/AbandonedTemple)
 "e" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/AbandonedTemple)
 "f" = (
@@ -41,7 +41,7 @@
 /obj/item/coin/iron,
 /obj/item/coin/phoron,
 /obj/item/coin/platinum,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/submap/AbandonedTemple)
 "k" = (
@@ -65,7 +65,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/submap/AbandonedTemple)
 "m" = (
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/submap/AbandonedTemple)
 "n" = (
@@ -74,7 +74,7 @@
 /area/submap/AbandonedTemple)
 "o" = (
 /obj/structure/loot_pile/maint/technical,
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/submap/AbandonedTemple)
 "p" = (
@@ -92,7 +92,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/submap/AbandonedTemple)
 "s" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/submap/AbandonedTemple)
 "t" = (
@@ -103,7 +103,7 @@
 /obj/structure/bed/chair/comfy/brown{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/AbandonedTemple)
 "v" = (
@@ -113,11 +113,11 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/AbandonedTemple)
 "w" = (
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/submap/AbandonedTemple)
 "x" = (
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /obj/effect/decal/remains/posi,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/submap/AbandonedTemple)
@@ -140,7 +140,7 @@
 	light_color = "#f44256";
 	light_power = 3
 	},
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/submap/cave/crystal1)
 "C" = (
@@ -160,7 +160,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/submap/AbandonedTemple)
 "F" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/effect/decal/remains/human,
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/AbandonedTemple)
@@ -174,7 +174,7 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/AbandonedTemple)
 "H" = (
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/floor/carpet/turcarpet,
 /area/submap/AbandonedTemple)
 "I" = (
@@ -182,7 +182,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/submap/AbandonedTemple)
 "J" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/submap/AbandonedTemple)
 "K" = (
@@ -195,17 +195,17 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/submap/AbandonedTemple)
 "M" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /obj/item/flame/candle/candelabra/everburn,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/submap/AbandonedTemple)
 "N" = (
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /obj/item/flame/candle/candelabra/everburn,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/submap/AbandonedTemple)
 "O" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/mineral/floor,
 /area/submap/AbandonedTemple)
 

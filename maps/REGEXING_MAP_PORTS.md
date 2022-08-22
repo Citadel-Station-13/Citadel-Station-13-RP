@@ -13,6 +13,9 @@ Apply regexes in this order:
 // TODO: tape roll
 // todo: devices/weapons
 
+// Effect decals
+`/obj/effect/decal/cleanable` - `/obj/effect/debris/cleanable`
+
 // Landmarks
 `/obj/effect/landmark`-`/obj/landmark`
 // Specific landmarks

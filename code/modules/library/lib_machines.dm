@@ -50,11 +50,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 
 				var/datum/db_query/query = SSdbcore.RunQuery(
 					"SELECT author, title, category, id FROM [format_table_name("library")] WHERE author LIKE '%:author%' AND title LIKE '%:title%'[category == "Any"? "" : " AND category = :category"]",
-					list(
-						"author" = author,
-						"title" = title,
-						"category" = category
-					)
+					category == "Any"? list("author" = author, "title" = title) : list("author" = author, "title" = title, "category" = category)
 				)
 
 				while(query.NextRow())
@@ -233,7 +229,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 				<table>
 				<tr><td><A href='?src=\ref[src];sort=author>AUTHOR</A></td><td><A href='?src=\ref[src];sort=title>TITLE</A></td><td><A href='?src=\ref[src];sort=category>CATEGORY</A></td><td></td></tr>"}
 				var/datum/db_query/query = SSdbcore.RunQuery(
-					"SELECT id, author, title, category FROM library ORDER BY :sortby",
+					"SELECT id, author, title, category FROM [format_table_name("library")] ORDER BY :sortby",
 					list(
 						"sortby" = sortby
 					)

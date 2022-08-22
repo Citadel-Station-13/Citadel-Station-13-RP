@@ -28,11 +28,11 @@
 	update_icon()
 
 /obj/item/reagent_containers/syringe/pickup(mob/user, flags, atom/oldLoc)
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/reagent_containers/syringe/dropped(mob/user, flags, atom/newLoc)
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/reagent_containers/syringe/attack_self(mob/user as mob)

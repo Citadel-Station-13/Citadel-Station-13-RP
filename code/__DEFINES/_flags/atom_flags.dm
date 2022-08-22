@@ -10,7 +10,7 @@
 /// Atom queued to SSoverlay for COMPILE_OVERLAYS
 #define OVERLAY_QUEUED				(1<<4)
 /// atom is absolute-abstract - should not be interactable or movable in any way shape or form
-#define ATOM_ABSTRACT					(1<<5)
+#define ATOM_ABSTRACT				(1<<5)
 /// we are an holographic atom from a holodeck/AR system
 #define HOLOGRAM					(1<<6)
 /// Used for items if they don't want to get a blood overlay.
@@ -46,7 +46,6 @@
 #define NODECONSTRUCT				(1<<19)
 /// Prevent clicking things below it on the same turf eg. doors/ fulltile windows.
 #define PREVENT_CLICK_UNDER			(1<<20)
-#define HOLOGRAM					(1<<21)
 /// should not get harmed if this gets caught by an explosion?
 #define PREVENT_CONTENTS_EXPLOSION	(1<<22)
 */

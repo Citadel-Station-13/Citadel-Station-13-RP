@@ -512,7 +512,7 @@
 
 	//Find our spawning point.
 	var/list/join_props = job_master.LateSpawn(client, rank)
-	var/obj/landmark/spawnpoint/SP = join_props["spawnpoint"]
+	var/obj/landmark/spawnpoint/SP = pick(join_props["spawnpoint"])
 	var/announce_channel = join_props["channel"] || "Common"
 
 	if(!SP)

@@ -13,7 +13,7 @@
 /turf/simulated/mineral/ignore_mapgen,
 /area/submap/Blackshuttledown)
 "ae" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/template_noop,
 /area/submap/Blackshuttledown)
 "af" = (

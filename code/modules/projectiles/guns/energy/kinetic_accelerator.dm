@@ -326,8 +326,11 @@
 				break
 	if(KA.get_remaining_mod_capacity() >= cost)
 		if(.)
-			if(!user.attempt_insert_item_for_installation(src, KA))
-				return
+			if(user.is_in_inventory(src))
+				if(!user.attempt_insert_item_for_installation(src, KA))
+					return FALSE
+			else
+				forceMove(KA)
 			to_chat(user, "<span class='notice'>You install the modkit.</span>")
 			playsound(loc, 'sound/items/screwdriver.ogg', 100, 1)
 			KA.modkits += src

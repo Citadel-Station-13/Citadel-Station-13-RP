@@ -104,7 +104,7 @@
 		O_JETS         = /obj/item/organ/internal/powered/jets,
 	)
 
-	move_trail = /obj/effect/decal/cleanable/blood/tracks/snake
+	move_trail = /obj/effect/debris/cleanable/blood/tracks/snake
 
 	base_skin_colours = list(
 		"Turquoise"   = "", // First so it's default.

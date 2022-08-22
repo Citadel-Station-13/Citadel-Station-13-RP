@@ -122,6 +122,10 @@
 	/// persitsence id for hardmapped/preset persistence
 	var/persist_static_uid
 
+//! Misc
+	///Mobs that are currently do_after'ing this atom, to be cleared from on Destroy()
+	var/list/targeted_by
+
 /**
  * Called when an atom is created in byond (built in engine proc)
  *
@@ -736,7 +740,7 @@
 
 /atom/proc/add_vomit_floor(mob/living/carbon/M as mob, var/toxvomit = 0)
 	if( istype(src, /turf/simulated) )
-		var/obj/effect/decal/cleanable/vomit/this = new /obj/effect/decal/cleanable/vomit(src)
+		var/obj/effect/debris/cleanable/vomit/this = new /obj/effect/debris/cleanable/vomit(src)
 		this.virus2 = virus_copylist(M.virus2)
 
 		// Make toxins vomit look different

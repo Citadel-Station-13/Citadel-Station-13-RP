@@ -45,11 +45,11 @@
 	base_desc = desc
 
 /obj/item/reagent_containers/organic/pickup(mob/user, flags, atom/oldLoc)
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/reagent_containers/organic/dropped(mob/user, flags, atom/newLoc)
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/reagent_containers/organic/attack_hand()

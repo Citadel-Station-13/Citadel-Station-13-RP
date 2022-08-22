@@ -293,6 +293,13 @@
 	. = ..()
 	held_blade = new /obj/item/material/knife/machete/armblade/rig
 	held_blade.storing_module = src
+	RegisterSignal(held_blade, COMSIG_ITEM_DROPPED, .proc/magnetic_catch)
+
+/obj/item/rig_module/armblade/proc/magnetic_catch(datum/source)
+	var/obj/item/I = source
+	if(I != held_blade)
+		return
+	deactivate()
 
 /obj/item/rig_module/armblade/process(delta_time)
 
@@ -306,11 +313,10 @@
 /obj/item/rig_module/armblade/activate()
 
 	..()
-
 	var/mob/living/M = holder.wearer
 	var/datum/gender/TU = gender_datums[M.get_visible_gender()]
 
-	if(M.l_hand && M.r_hand)
+	if(!M.put_in_hands(held_blade))
 		to_chat(M, "<span class='danger'>Your hands are full.</span>")
 		deactivate()
 		return
@@ -327,16 +333,7 @@
 			"<span class='notice'>You hear a hiss and a click.</span>")
 
 	playsound(src, 'sound/items/helmetdeploy.ogg', 40, 1)
-	M.put_in_hands(held_blade)
 
 /obj/item/rig_module/armblade/deactivate()
-
 	..()
-
-	var/mob/living/M = holder.wearer
-
-	if(!M)
-		return
-
-	for(var/obj/item/material/knife/machete/armblade/stabby in M.contents)
-		M.drop_item_to_ground(stabby, INV_OP_FORCE)
+	held_blade?.forceMove(src)

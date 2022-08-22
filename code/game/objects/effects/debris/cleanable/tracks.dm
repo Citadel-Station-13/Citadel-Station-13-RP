@@ -29,7 +29,7 @@ var/global/list/image/fluidtrack_cache=list()
 		src.basecolor=_color
 		src.wet=_wet
 
-/obj/effect/decal/cleanable/blood/tracks/reveal_blood()
+/obj/effect/debris/cleanable/blood/tracks/reveal_blood()
 	if(!fluorescent)
 		if(stack && stack.len)
 			for(var/datum/fluidtrack/track in stack)
@@ -37,7 +37,7 @@ var/global/list/image/fluidtrack_cache=list()
 		..()
 
 // Footprints, tire trails...
-/obj/effect/decal/cleanable/blood/tracks
+/obj/effect/debris/cleanable/blood/tracks
 	amount = 0
 	random_icon_states = null
 	var/dirs=0
@@ -151,7 +151,7 @@ var/global/list/image/fluidtrack_cache=list()
 			overlays += I
 		updatedtracks=0 // Clear our memory of updated tracks.
 
-/obj/effect/decal/cleanable/blood/tracks/footprints
+/obj/effect/debris/cleanable/blood/tracks/footprints
 	name = "wet footprints"
 	dryname = "dried footprints"
 	desc = "They look like still wet tracks left by footwear."
@@ -160,7 +160,7 @@ var/global/list/image/fluidtrack_cache=list()
 	going_state  = "human2"
 	amount = 0
 
-/obj/effect/decal/cleanable/blood/tracks/snake
+/obj/effect/debris/cleanable/blood/tracks/snake
 	name = "wet tracks"
 	dryname = "dried tracks"
 	desc = "They look like still wet tracks left by a giant snake."
@@ -170,7 +170,7 @@ var/global/list/image/fluidtrack_cache=list()
 	random_icon_states = null
 	amount = 0
 
-/obj/effect/decal/cleanable/blood/tracks/paw
+/obj/effect/debris/cleanable/blood/tracks/paw
 	name = "wet tracks"
 	dryname = "dried tracks"
 	desc = "They look like still wet tracks left by a mammal."
@@ -180,7 +180,7 @@ var/global/list/image/fluidtrack_cache=list()
 	random_icon_states = null
 	amount = 0
 
-/obj/effect/decal/cleanable/blood/tracks/claw
+/obj/effect/debris/cleanable/blood/tracks/claw
 	name = "wet tracks"
 	dryname = "dried tracks"
 	desc = "They look like still wet tracks left by a reptile."
@@ -190,7 +190,7 @@ var/global/list/image/fluidtrack_cache=list()
 	random_icon_states = null
 	amount = 0
 
-/obj/effect/decal/cleanable/blood/tracks/wheels
+/obj/effect/debris/cleanable/blood/tracks/wheels
 	name = "wet tracks"
 	dryname = "dried tracks"
 	desc = "They look like still wet tracks left by wheels."

@@ -293,12 +293,12 @@
 /turf/simulated/floor/holofloor/desert,
 /area/holodeck/source_picnicarea)
 "bC" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/holostool,
 /turf/simulated/floor/holofloor/desert,
 /area/holodeck/source_picnicarea)
 "bD" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/holofloor/desert,
 /area/holodeck/source_picnicarea)
 "bE" = (

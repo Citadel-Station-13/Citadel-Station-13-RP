@@ -4,7 +4,7 @@
 	min_broken_damage = 30
 	dir = SOUTH
 	organ_tag = "limb"
-
+	decays = FALSE
 
 //! ## STRINGS
 	/// Fracture description if any.

@@ -196,7 +196,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				to_chat(M, "<span class='notice'>Your [name] goes out.</span>")
 		qdel(src)
 	else
-		new /obj/effect/decal/cleanable/ash(T)
+		new /obj/effect/debris/cleanable/ash(T)
 		if(ismob(loc))
 			var/mob/living/M = loc
 			if (!nomessage)

@@ -196,6 +196,9 @@
 		return
 	setDir(turn(dir, 270))
 
+/obj/machinery/suspension_gen/powered(channel)
+	return TRUE		// we use snowflake cell power
+
 /obj/effect/suspension_field
 	name = "energy field"
 	icon = 'icons/effects/effects.dmi'

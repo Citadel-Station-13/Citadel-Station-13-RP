@@ -142,7 +142,6 @@
 
 	var/organ_health_multiplier = 1
 	var/organ_regeneration_multiplier = 1
-	var/organs_decay
 	var/default_brain_health = 400
 	var/allow_headgibs = FALSE
 
@@ -852,8 +851,6 @@
 					config_legacy.organ_regeneration_multiplier = value / 100
 				if("organ_damage_spillover_multiplier")
 					config_legacy.organ_damage_spillover_multiplier = value / 100
-				if("organs_can_decay")
-					config_legacy.organs_decay = 1
 				if("default_brain_health")
 					config_legacy.default_brain_health = text2num(value)
 					if(!config_legacy.default_brain_health || config_legacy.default_brain_health < 1)
