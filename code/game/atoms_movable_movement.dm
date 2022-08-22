@@ -408,7 +408,7 @@
 
 	for(var/m in buckled_mobs)
 		var/mob/buckled_mob = m
-		buckled_mob.set_glide_size(target)
+		buckled_mob.set_glide_size(glide_size)
 
 	if(recursive)
 		recursive_pulled_glidesize_update()

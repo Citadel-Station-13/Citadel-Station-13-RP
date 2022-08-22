@@ -89,29 +89,6 @@
 #warn impl - speed? how to implement that for damage balancing?
 #warn impl - hitpush
 
-/// Decided whether a movable atom being thrown can pass through the turf it is in.
-/atom/movable/proc/hit_check(speed)
-	if(src.throwing)
-		for(var/atom/A in get_turf(src))
-			if(A == src)
-				continue
-			if(istype(A,/mob/living))
-				if(A:lying)
-					continue
-				src.throw_impact(A,speed)
-			if(isobj(A))
-				if(!A.density || A.throwpass)
-					continue
-				// Special handling of windows, which are dense but block only from some directions
-				if(istype(A, /obj/structure/window))
-					var/obj/structure/window/W = A
-					if (!W.is_fulltile() && !(turn(src.last_move_dir, 180) & A.dir))
-						continue
-				// Same thing for (closed) windoors, which have the same problem
-				else if(istype(A, /obj/machinery/door/window) && !(turn(src.last_move_dir, 180) & A.dir))
-					continue
-				src.throw_impact(A,speed)
-
 /**
  * initiates a full subsystem-ticked throw sequence
  * components can cancel this.
@@ -126,6 +103,8 @@
 	#warn uh oh
 
 	var/datum/thrownthing/TT = _init_throw_datum(target, range, speed, flags, thrower, on_hit, on_land, force)
+	if(!TT)
+		return FALSE
 
 /**
  * emulates an immediate throw impact
@@ -140,52 +119,39 @@
 	#warn impl
 
 	var/datum/thrownthing/TT = _init_throw_datum(target, range, speed, flags, thrower, on_hit, on_land, force)
+	if(!TT)
+		return FALSE
 
-/atom/movable/proc/_init_throw_datum(atom/target, range, speed, flags, atom/thrower, datum/callback/on_hit, datum/callback/on_land, force)
+/atom/movable/proc/_init_throw_datum(atom/target, range, speed, flags, atom/thrower, datum/callback/on_hit, datum/callback/on_land, force, emulated)
 	if(throwing)
 		CRASH("already throwing")
 	var/calculated_speed = speed || ((movable_flags & MOVABLE_NO_THROW_FORCE_SCALING)? (throw_speed) : (((force / throw_resist) ** throw_speed_scaling_exponent) * throw_speed))
 	if(!calculated_speed)
 		CRASH("bad speed: [calculated_speed]")
-	var/datum/thrownthing/TT = new(src, target, range, calculated_speed, flags, thrower, on_hit, on_land)
+	var/datum/thrownthing/TT
+	if(emulated)
+		TT = new /datum/thrownthing/emulated(src, target, range, calculated_speed, flags, thrower, on_hit, on_land)
+	else
+		TT = new /datum/thrownthing(src, target, range, calculated_speed, flags, thrower, on_hit, on_land)
 	. = throwing = TT
 
-
-#warn finish
-
-/// If this returns FALSE then callback will not be called.
-/atom/movable/proc/throw_at_old(atom/target, range, speed, mob/thrower, spin = TRUE, datum/callback/callback)
-	. = TRUE
-	if(!target || speed <= 0 || QDELETED(src) || (target.z != src.z))
+/atom/movable/proc/throw_at(atom/target, range, speed, flags, atom/thrower, datum/callback/on_hit, datum/callback/on_land, force = THROW_FORCE_DEFAULT)
+	if(!(flags & THROW_AT_FORCE) && !can_throw_at(target, range, speed, flags, thrower, force))
 		return FALSE
 
-	if(pulledby)
-		pulledby.stop_pulling()
+	if(QDELETED(src))
+		CRASH("qdeleted thing being thrown around.")
 
-	var/datum/thrownthing/TT = new(src, target, range, speed, thrower, callback)
-	throwing = TT
-
-	pixel_z = 0
-	if(spin && does_spin)
-		SpinAnimation(4,1)
-
-	SSthrowing.processing[src] = TT
-	if(SSthrowing.state == SS_PAUSED && length(SSthrowing.currentrun))
-		SSthrowing.currentrun[src] = TT
-
-#warn old above, new below, figure it out
-
-/atom/movable/hitby(atom/movable/AM, skipcatch, hitpush = TRUE, blocked, datum/thrownthing/throwingdatum)
-	if(!anchored && hitpush && (!throwingdatum || (throwingdatum.force >= (move_resist * MOVE_FORCE_PUSH_RATIO))))
-		step(src, AM.dir)
-	..()
-
-/*
-/atom/movable/proc/safe_throw_at(, mob/thrower, , datum/callback/callback, force = MOVE_FORCE_STRONG)
-	if((force < (move_resist * MOVE_FORCE_THROW_RATIO)) || (move_resist == INFINITY))
+	if(!target)
 		return
-	return throw_at_old(target, range, speed, thrower, spin, diagonals_first, callback, force, gentle)
-*/
+
+
+/atom/movable/proc/can_throw_at(atom/target, range, speed, flags, atom/thrower, force = THROW_FORCE_DEFAULT)
+	if(move_resist >= MOVE_RESIST_ABSOLUTE)
+		return FALSE
+	if(force < move_resist * MOVE_FORCE_THROW_RATIO)
+		return FALSE
+	return TRUE
 
 ///If this returns FALSE then callback will not be called.
 /atom/movable/proc/throw_at_old(atom/target, range, speed, mob/thrower, spin = TRUE, diagonals_first = FALSE, datum/callback/callback, force = MOVE_FORCE_STRONG, gentle = FALSE, quickstart = TRUE)
@@ -272,3 +238,55 @@
 		SSthrowing.currentrun[src] = TT
 	if (quickstart)
 		TT.tick()
+
+#warn finish
+
+/// If this returns FALSE then callback will not be called.
+/atom/movable/proc/throw_at_old(atom/target, range, speed, mob/thrower, spin = TRUE, datum/callback/callback)
+	. = TRUE
+	if(!target || speed <= 0 || QDELETED(src) || (target.z != src.z))
+		return FALSE
+
+	if(pulledby)
+		pulledby.stop_pulling()
+
+	var/datum/thrownthing/TT = new(src, target, range, speed, thrower, callback)
+	throwing = TT
+
+	pixel_z = 0
+	if(spin && does_spin)
+		SpinAnimation(4,1)
+
+	SSthrowing.processing[src] = TT
+	if(SSthrowing.state == SS_PAUSED && length(SSthrowing.currentrun))
+		SSthrowing.currentrun[src] = TT
+
+#warn old above, new below, figure it out
+
+/atom/movable/hitby(atom/movable/AM, skipcatch, hitpush = TRUE, blocked, datum/thrownthing/throwingdatum)
+	if(!anchored && hitpush && (!throwingdatum || (throwingdatum.force >= (move_resist * MOVE_FORCE_PUSH_RATIO))))
+		step(src, AM.dir)
+	..()
+
+/// Decided whether a movable atom being thrown can pass through the turf it is in.
+/atom/movable/proc/hit_check(speed)
+	if(src.throwing)
+		for(var/atom/A in get_turf(src))
+			if(A == src)
+				continue
+			if(istype(A,/mob/living))
+				if(A:lying)
+					continue
+				src.throw_impact(A,speed)
+			if(isobj(A))
+				if(!A.density || A.throwpass)
+					continue
+				// Special handling of windows, which are dense but block only from some directions
+				if(istype(A, /obj/structure/window))
+					var/obj/structure/window/W = A
+					if (!W.is_fulltile() && !(turn(src.last_move_dir, 180) & A.dir))
+						continue
+				// Same thing for (closed) windoors, which have the same problem
+				else if(istype(A, /obj/machinery/door/window) && !(turn(src.last_move_dir, 180) & A.dir))
+					continue
+				src.throw_impact(A,speed)

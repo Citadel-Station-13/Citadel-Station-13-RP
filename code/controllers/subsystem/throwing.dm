@@ -39,6 +39,7 @@ SUBSYSTEM_DEF(throwing)
 	currentrun = null
 
 /datum/thrownthing
+	//! important stuff
 	/// thing we threw
 	var/atom/movable/thrownthing
 	/// flags
@@ -51,13 +52,11 @@ SUBSYSTEM_DEF(throwing)
 	var/turf/target_turf
 	/// turf we initially started from
 	var/turf/initial_turf
-
-	var/target_zone
 	/// initial byond get_dir from thrown thing to target
 	var/init_dir
-
+	/// max tiles we can travel
 	var/maxrange
-
+	/// tiles to move per decisecond
 	var/speed
 	/// what threw us
 	var/atom/thrower
@@ -65,12 +64,6 @@ SUBSYSTEM_DEF(throwing)
 	var/start_time
 	/// tiles we travelled
 	var/dist_travelled = 0
-	var/dist_x
-	var/dist_y
-	var/dx
-	var/dy
-	var/diagonal_error
-	var/pure_diagonal
 	/// callback to call when we hit something. called with (hit atom, thrownthing datum)
 	var/datum/callback/on_hit
 	/// callback to call when we land. will not be called if we do not land on anything. called with (landed atom, thrownthing datum)
@@ -81,6 +74,16 @@ SUBSYSTEM_DEF(throwing)
 	var/delayed_time = 0
 	/// last world.time we moved
 	var/last_move = 0
+
+	var/dist_x
+	var/dist_y
+	var/dx
+	var/dy
+	var/diagonal_error
+	var/pure_diagonal
+
+	//! fluff shit players use to kill each other
+	var/target_zone
 
 /datum/thrownthing/New(atom/movable/AM, atom/target, range, speed, flags, atom/thrower, datum/callback/on_hit, datum/callback/on_land)
 	src.thrownthing = AM
@@ -142,6 +145,12 @@ SUBSYSTEM_DEF(throwing)
 
 /datum/thrownthing/proc/tick()
 	var/atom/movable/AM = thrownthing
+	// if throwing got cancelled maybe like, don't
+	if(!isturf(AM.loc) || !AM.throwing)
+		terminate()
+		return
+
+
 	if (!isturf(AM.loc) || !AM.throwing)
 		finalize()
 		return
@@ -177,7 +186,8 @@ SUBSYSTEM_DEF(throwing)
 			diagonal_error += (diagonal_error < 0) ? dist_x/2 : -dist_y
 
 		if (!step) // going off the edge of the map makes get_step return null, don't let things go off the edge
-			finalize()
+			var/turf/T = loc
+
 			return
 
 		if (hitcheck(step))
@@ -270,7 +280,7 @@ SUBSYSTEM_DEF(throwing)
 		return FALSE
 	if(impacted[A])
 		return FALSE
-	if(!bumping && A.CanPass(src))
+	if(!bumping && A.CanPass(src, get_turf(A)))
 		return FALSE
 	return TRUE
 
