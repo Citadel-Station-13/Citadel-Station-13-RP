@@ -176,7 +176,7 @@
 				return
 			var/M = null
 			if (param)
-				for (var/mob/A in view(null, null))
+				for (var/mob/A in view(1,src.loc))
 					if (param == A.name)
 						M = A
 						break
