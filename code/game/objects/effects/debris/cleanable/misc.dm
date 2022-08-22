@@ -22,28 +22,7 @@
 		F.dirt += 4
 	qdel(src)
 
-<<<<<<<< HEAD:code/game/objects/effects/decals/cleanable/misc.dm
 /obj/effect/decal/cleanable/flour
-========
-/obj/effect/debris/cleanable/greenglow
-
-	New()
-		..()
-		spawn(1200)// 2 minutes
-			qdel(src)
-
-/obj/effect/debris/cleanable/dirt
-	name = "dirt"
-	desc = "Someone should clean that up."
-	gender = PLURAL
-	density = 0
-	anchored = 1
-	icon = 'icons/effects/effects.dmi'
-	icon_state = "dirt"
-	mouse_opacity = 0
-
-/obj/effect/debris/cleanable/flour
->>>>>>>> citrp/master:code/game/objects/effects/debris/cleanable/misc.dm
 	name = "flour"
 	desc = "It's still good. Four second rule!"
 	gender = PLURAL
@@ -62,15 +41,11 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "greenglow"
 
-<<<<<<<< HEAD:code/game/objects/effects/decals/cleanable/misc.dm
 /obj/effect/decal/cleanable/greenglow/Initialize(mapload)
 	. = ..()
 	QDEL_IN(src, 2 MINUTES)
 
-/obj/effect/decal/cleanable/cobweb
-========
 /obj/effect/debris/cleanable/cobweb
->>>>>>>> citrp/master:code/game/objects/effects/debris/cleanable/misc.dm
 	name = "cobweb"
 	desc = "Somebody should remove that."
 	density = 0
