@@ -180,11 +180,11 @@
 					if (param == A.name)
 						M = A
 						break
-			if (!M)
-				param = null
+				if (!M)
+					param = null
 
-			if (param)
-				message = "extends their inner jaw outwards giving [param] a kiss."
+				if (param)
+					message = "extends their inner jaw outwards giving [param] a kiss."
 			m_type = 1
 	
 		if("kiss")
