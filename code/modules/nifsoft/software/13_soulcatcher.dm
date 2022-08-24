@@ -81,8 +81,10 @@
 		inside_flavor = load
 	if(!isnull(save_data["vis"]))
 		visibility = save_data["vis"]
-	visibility_exceptions = save_data["vis_exceptions"]
-	visibility_blacklist = save_data["vis_blacklist"]
+	if(islist(save_data["vis_exceptions"]))
+		visibility_exceptions = save_data["vis_exceptions"]
+	if(islist(save_data["vis_blacklist"]))
+		visibility_blacklist = save_data["vis_blacklist"]
 	return TRUE
 
 /datum/nifsoft/soulcatcher/proc/visibility_check(ckey)
