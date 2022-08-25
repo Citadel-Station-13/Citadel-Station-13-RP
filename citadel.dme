@@ -399,7 +399,6 @@
 #include "code\controllers\subsystem\supply.dm"
 #include "code\controllers\subsystem\tgui.dm"
 #include "code\controllers\subsystem\throwing.dm"
-#include "code\controllers\subsystem\throwing_copy.dm"
 #include "code\controllers\subsystem\ticker.dm"
 #include "code\controllers\subsystem\time_track.dm"
 #include "code\controllers\subsystem\timer.dm"
