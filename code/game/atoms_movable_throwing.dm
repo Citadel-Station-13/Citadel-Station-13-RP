@@ -13,6 +13,11 @@
 /atom/proc/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	return NONE
 
+/atom/movable/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	if(!anchored && (TT?.force >= (move_resist * MOVE_FORCE_PUSH_RATIO)))
+		step(src, AM.dir)
+	return ..()
+
 /**
  * throw_impact()
  *
@@ -29,6 +34,8 @@
 /**
  * throw_landed()
  *
+ * usually defined on turfs but this might change in the future
+ *
  * called when something lands on us
  * @params
  * - AM - atom that landed on us
@@ -39,6 +46,8 @@
 
 /**
  * throw_land()
+ *
+ * usually called with turfs but this might change in the future
  *
  * called when we land on something
  * @params
@@ -63,7 +72,7 @@
 	. |= throw_impact(A, TT)
 	if(. & (COMPONENT_THROW_HIT_TERMINATE | COMPONENT_THROW_HIT_NEVERMIND))
 		return
-	. |= SEND_SIGNAL(src, COMSIG_ATOM_THROW_IMPACTED, AM, TT)
+	. |= SEND_SIGNAL(A, COMSIG_ATOM_THROW_IMPACTED, src, TT)
 	if(. & (COMPONENT_THROW_HIT_TERMINATE | COMPONENT_THROW_HIT_NEVERMIND))
 		return
 	. |= A.throw_impacted(src, TT)
@@ -72,22 +81,16 @@
  * called on throw finalization
  */
 /atom/movable/proc/_throw_finalize(atom/landed_on, datum/thrownthing/TT)
-	if(!landed_on)		// if we somehow got nullspaced
-		return
-
 	. = SEND_SIGNAL(src, COMSIG_MOVABLE_THROW_LAND, landed_on, TT)
 	if(. & (COMPONENT_THROW_LANDING_NEVERMIND | COMPONENT_THROW_LANDING_TERMINATE))
 		return
 	. |= throw_land(landed_on, TT)
 	if(. & (COMPONENT_THROW_LANDING_NEVERMIND | COMPONENT_THROW_LANDING_TERMINATE))
 		return
-	. |= SEND_SIGNAL(src, COMSIG_ATOM_THROW_LANDED, landed_on, TT)
+	. |= SEND_SIGNAL(landed_on, COMSIG_ATOM_THROW_LANDED, src, TT)
 	if(. & (COMPONENT_THROW_LANDING_NEVERMIND | COMPONENT_THROW_LANDING_TERMINATE))
 		return
 	. |= landed_on.throw_landed(src, TT)
-
-#warn impl - speed? how to implement that for damage balancing?
-#warn impl - hitpush
 
 /**
  * initiates a full subsystem-ticked throw sequence
@@ -100,11 +103,29 @@
 /atom/movable/proc/subsystem_throw(atom/target, range, speed, flags, atom/thrower, datum/callback/on_hit, datum/callback/on_land, force = THROW_FORCE_DEFAULT)
 	SHOULD_CALL_PARENT(TRUE)
 	RETURN_TYPE(/datum/thrownthing)
-	#warn uh oh
+
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_THROW, target, range, speed, flags, thrower, on_hit, on_land, FALSE) & COMPONENT_CANCEL_PRE_THROW)
+		return FALSE
 
 	var/datum/thrownthing/TT = _init_throw_datum(target, range, speed, flags, thrower, on_hit, on_land, force)
 	if(!TT)
 		return FALSE
+
+	SEND_SIGNAL(src, COMSIG_MOVABLE_POST_THROW, target, range, speed, flags, thrower, on_hit, on_land, FALSE)
+
+	pulling?.stop_pulling()
+	stop_pulling()
+
+	TT.start()
+
+	if(!(flags & THROW_AT_DO_NOT_SPIN) && !(movable_flags & MOVABLE_NO_THROW_SPIN))
+		SpinAnimation(5, 1)
+
+	// virgocode shit here
+	pixel_x = 0
+	// end
+
+	return TRUE
 
 /**
  * emulates an immediate throw impact
@@ -116,11 +137,23 @@
 /atom/movable/proc/emulated_throw(atom/target, range, speed, flags, atom/thrower, datum/callback/on_hit, datum/callback/on_land, force = THROW_FORCE_DEFAULT)
 	SHOULD_CALL_PARENT(TRUE)
 	RETURN_TYPE(/datum/thrownthing)
-	#warn impl
+
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_THROW, target, range, speed, flags, thrower, on_hit, on_land, TRUE) & COMPONENT_CANCEL_PRE_THROW)
+		return FALSE
 
 	var/datum/thrownthing/TT = _init_throw_datum(target, range, speed, flags, thrower, on_hit, on_land, force)
 	if(!TT)
 		return FALSE
+
+	SEND_SIGNAL(src, COMSIG_MOVABLE_POST_THROW, target, range, speed, flags, thrower, on_hit, on_land, TRUE)
+
+	pulledby?.stop_pulling()
+	stop_pulling()
+
+	if(!(flags & THROW_AT_NO_AUTO_QUICKSTART))
+		TT.quickstart()
+
+	return TRUE
 
 /atom/movable/proc/_init_throw_datum(atom/target, range, speed, flags, atom/thrower, datum/callback/on_hit, datum/callback/on_land, force, emulated)
 	if(throwing)
@@ -128,14 +161,63 @@
 	var/calculated_speed = speed || ((movable_flags & MOVABLE_NO_THROW_FORCE_SCALING)? (throw_speed) : (((force / throw_resist) ** throw_speed_scaling_exponent) * throw_speed))
 	if(!calculated_speed)
 		CRASH("bad speed: [calculated_speed]")
+
+	var/zone
+	if(!(flags & THROW_AT_NO_USER_MODIFIERS) && !emulated && isliving(thrower))
+		var/mob/living/L = thrower
+		// user momentum
+		var/user_speed = L.movement_delay()
+		// 1 decisecond of margin
+		if(L.last_move_dir && (L.last_move_time >= (world.time - user_speed + 1)))
+			user_speed = max(user_speed, world.tick_lag)
+			// convert to tiles per **decisecond**
+			user_speed = 1/user_speed
+			//? todo: better estimation?
+			var/d = get_dir(src, target)
+			if(L.last_move_dir & d)
+			else if(L.last_move_dir & turn(d, 180))
+				user_speed = -user_speed
+			else
+				user_speed = 0
+			if(user_speed)
+				range *= (user_speed / speed) + 1
+				speed += user_speed
+			if(speed <= 0)
+				return
+		// user zones
+		zone = L.zone_sel
+
 	var/datum/thrownthing/TT
 	if(emulated)
 		TT = new /datum/thrownthing/emulated(src, target, range, calculated_speed, flags, thrower, on_hit, on_land)
 	else
 		TT = new /datum/thrownthing(src, target, range, calculated_speed, flags, thrower, on_hit, on_land)
+		TT.start()
 	. = throwing = TT
 
+	if(zone)
+		TT.target_zone = zone
+
+	SEND_SIGNAL(src, COMSIG_MOVBALE_INIT_THROW, target, range, speed, flags, thrower, on_hit, on_land, emulated)
+
+/**
+ * throws us at something
+ * we must be on a turf
+ *
+ * @params
+ * - target - target atom
+ * - range - how far to throw (not absolute)
+ * - speed - throw speed overriding throw force
+ * - flags - throw flags
+ * - thrower - who threw us
+ * - on_hit - callback to call on hit. doesn't go off if we don't hit.
+ * - on_land - callback to call on land. doesn't go off if we don't land.
+ * - force - throw movement force, scales speed to this if not overridden
+ */
 /atom/movable/proc/throw_at(atom/target, range, speed, flags, atom/thrower, datum/callback/on_hit, datum/callback/on_land, force = THROW_FORCE_DEFAULT)
+	if(!isturf(loc))
+		return FALSE
+
 	if(!(flags & THROW_AT_FORCE) && !can_throw_at(target, range, speed, flags, thrower, force))
 		return FALSE
 
@@ -145,6 +227,8 @@
 	if(!target)
 		return
 
+	return subsystem_throw(target, range, speed, flags, thrower, on_hit, on_land, force)
+
 
 /atom/movable/proc/can_throw_at(atom/target, range, speed, flags, atom/thrower, force = THROW_FORCE_DEFAULT)
 	if(move_resist >= MOVE_RESIST_ABSOLUTE)
@@ -152,141 +236,3 @@
 	if(force < move_resist * MOVE_FORCE_THROW_RATIO)
 		return FALSE
 	return TRUE
-
-///If this returns FALSE then callback will not be called.
-/atom/movable/proc/throw_at_old(atom/target, range, speed, mob/thrower, spin = TRUE, diagonals_first = FALSE, datum/callback/callback, force = MOVE_FORCE_STRONG, gentle = FALSE, quickstart = TRUE)
-	. = FALSE
-
-	if(QDELETED(src))
-		CRASH("Qdeleted thing being thrown around.")
-
-	if (!target || speed <= 0)
-		return
-
-	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_THROW, args) & COMPONENT_CANCEL_THROW)
-		return
-
-	if (pulledby)
-		pulledby.stop_pulling()
-
-	//They are moving! Wouldn't it be cool if we calculated their momentum and added it to the throw?
-	if (thrower && thrower.last_move_dir && thrower.client && thrower.client.move_delay >= world.time + world.tick_lag*2)
-		var/user_momentum = thrower.movement_delay() //cached_multiplicative_slowdown
-		if (!user_momentum) //no movement_delay, this means they move once per byond tick, lets calculate from that instead.
-			user_momentum = world.tick_lag
-
-		user_momentum = 1 / user_momentum // convert from ds to the tiles per ds that throw_at_old uses.
-
-		if (get_dir(thrower, target) & last_move_dir)
-			user_momentum = user_momentum //basically a noop, but needed
-		else if (get_dir(target, thrower) & last_move_dir)
-			user_momentum = -user_momentum //we are moving away from the target, lets slowdown the throw accordingly
-		else
-			user_momentum = 0
-
-
-		if (user_momentum)
-			//first lets add that momentum to range.
-			range *= (user_momentum / speed) + 1
-			//then lets add it to speed
-			speed += user_momentum
-			if (speed <= 0)
-				return//no throw speed, the user was moving too fast.
-
-	. = TRUE // No failure conditions past this point.
-
-	var/target_zone
-	if(QDELETED(thrower))
-		thrower = null //Let's not pass a qdeleting reference if any.
-	else
-		target_zone = thrower.zone_selected
-
-	var/datum/thrownthing/TT = new(src, target, get_turf(target), get_dir(src, target), range, speed, thrower, diagonals_first, force, gentle, callback, target_zone)
-
-	var/dist_x = abs(target.x - src.x)
-	var/dist_y = abs(target.y - src.y)
-	var/dx = (target.x > src.x) ? EAST : WEST
-	var/dy = (target.y > src.y) ? NORTH : SOUTH
-
-	if (dist_x == dist_y)
-		TT.pure_diagonal = 1
-
-	else if(dist_x <= dist_y)
-		var/olddist_x = dist_x
-		var/olddx = dx
-		dist_x = dist_y
-		dist_y = olddist_x
-		dx = dy
-		dy = olddx
-	TT.dist_x = dist_x
-	TT.dist_y = dist_y
-	TT.dx = dx
-	TT.dy = dy
-	TT.diagonal_error = dist_x/2 - dist_y
-	TT.start_time = world.time
-
-	if(pulledby)
-		pulledby.stop_pulling()
-
-	throwing = TT
-	if(spin)
-		SpinAnimation(5, 1)
-
-	SEND_SIGNAL(src, COMSIG_MOVABLE_POST_THROW, TT, spin)
-	SSthrowing.processing[src] = TT
-	if (SSthrowing.state == SS_PAUSED && length(SSthrowing.currentrun))
-		SSthrowing.currentrun[src] = TT
-	if (quickstart)
-		TT.tick()
-
-#warn finish
-
-/// If this returns FALSE then callback will not be called.
-/atom/movable/proc/throw_at_old(atom/target, range, speed, mob/thrower, spin = TRUE, datum/callback/callback)
-	. = TRUE
-	if(!target || speed <= 0 || QDELETED(src) || (target.z != src.z))
-		return FALSE
-
-	if(pulledby)
-		pulledby.stop_pulling()
-
-	var/datum/thrownthing/TT = new(src, target, range, speed, thrower, callback)
-	throwing = TT
-
-	pixel_z = 0
-	if(spin && does_spin)
-		SpinAnimation(4,1)
-
-	SSthrowing.processing[src] = TT
-	if(SSthrowing.state == SS_PAUSED && length(SSthrowing.currentrun))
-		SSthrowing.currentrun[src] = TT
-
-#warn old above, new below, figure it out
-
-/atom/movable/hitby(atom/movable/AM, skipcatch, hitpush = TRUE, blocked, datum/thrownthing/throwingdatum)
-	if(!anchored && hitpush && (!throwingdatum || (throwingdatum.force >= (move_resist * MOVE_FORCE_PUSH_RATIO))))
-		step(src, AM.dir)
-	..()
-
-/// Decided whether a movable atom being thrown can pass through the turf it is in.
-/atom/movable/proc/hit_check(speed)
-	if(src.throwing)
-		for(var/atom/A in get_turf(src))
-			if(A == src)
-				continue
-			if(istype(A,/mob/living))
-				if(A:lying)
-					continue
-				src.throw_impact(A,speed)
-			if(isobj(A))
-				if(!A.density || A.throwpass)
-					continue
-				// Special handling of windows, which are dense but block only from some directions
-				if(istype(A, /obj/structure/window))
-					var/obj/structure/window/W = A
-					if (!W.is_fulltile() && !(turn(src.last_move_dir, 180) & A.dir))
-						continue
-				// Same thing for (closed) windoors, which have the same problem
-				else if(istype(A, /obj/machinery/door/window) && !(turn(src.last_move_dir, 180) & A.dir))
-					continue
-				src.throw_impact(A,speed)

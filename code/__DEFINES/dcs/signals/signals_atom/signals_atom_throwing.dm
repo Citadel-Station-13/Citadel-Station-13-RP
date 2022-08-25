@@ -4,7 +4,7 @@
 #define COMSIG_ATOM_THROW_IMPACTED				"throw_impacted"
 /// from base of /atom/movable/proc/throw_impact: (AM, thrownthing)
 #define COMSIG_MOVABLE_THROW_IMPACT				"throw_impact"
-// This set of returns can be for both of the above!
+// This set of returns can sbe for both of the above!
 	/// cancel further actions in this hit
 	#define COMPONENT_THROW_HIT_NEVERMIND				(1<<0)
 	/// pierce through.
@@ -23,10 +23,12 @@
 	#define COMPONENT_THROW_LANDING_TERMINATE			(1<<2)
 
 #warn needs more synchronization so we can hook specifically mob originating throws.
-/// called in subsystem_throw and emulated_throw before the datum is created with (target, range, speed, flags, thrower, cb_on_hit, cb_on_land); you can stop the throw at this point.
+/// called in subsystem_throw and emulated_throw before the datum is created with (target, range, speed, flags, thrower, cb_on_hit, cb_on_land, emulated); you can stop the throw at this point.
 #define COMSIG_MOVABLE_PRE_THROW				"pre_throw"
 	/// cancel the throw
 	#define COMPONENT_CANCEL_PRE_THROW					(1<<0)
-/// called in subsystem_throw and emulated_throw after the datum is created with (target, range, speed, flags, thrower, cb_on_hit, cb_on_land); it is now too late to cancel the throw.
+/// called in subsystem_throw and emulated_throw after the datum is created with (target, range, speed, flags, thrower, cb_on_hit, cb_on_land, emulated); it is now too late to cancel the throw.
 #define COMSIG_MOVABLE_POST_THROW				"post_throw"
-/// called
+/// called in _init_throw_datum  during both subsystem and emulated throw with (target, range, speed, flags, thrower, cb_on_hit, cb_on_land, emulated)
+#define COMSIG_MOVABLE_INIT_THROW				"init_throw"
+

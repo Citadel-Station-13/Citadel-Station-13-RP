@@ -17,6 +17,10 @@
 #define THROW_AT_QUICKSTARTED				(1<<7)
 /// do not scale hit damage to standard speed at all
 #define THROW_AT_NO_SCALE_DAMAGE			(1<<8)
+/// force throw, ignoring resistances
+#define THROW_AT_FORCE						(1<<9)
+/// don't do stuff like damage target zones/detecting user momentums
+#define THROW_AT_NO_USER_MODIFIERS			(1<<10)
 
 #warn systme for scaling damage by speed, opt out enabled, defualt throw force, etc
 

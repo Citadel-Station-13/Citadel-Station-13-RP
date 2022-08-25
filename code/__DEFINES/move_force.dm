@@ -6,10 +6,7 @@
 #warn impl
 #define THROW_FORCE_DEFAULT 1000
 #define THROW_RESIST_DEFAULT 1000
-/// speed = default speed * ((throw force / throw resist) ** exponent)
-#define THROW_SPEED_SCALING_EXPONENT_DEFAULT 0.9
-/// damage = default damage * ((throw speed / default throw speed) ** exponent)
-#define THROW_DAMAGE_SCALING_EXPONENT_DEFAULT 0.6
+
 
 //Factors/modifiers
 #define MOVE_FORCE_PULL_RATIO 1				//Same move force to pull objects
@@ -26,3 +23,10 @@
 #define MOVE_FORCE_WEAK (MOVE_FORCE_DEFAULT / 2)
 #define MOVE_FORCE_VERY_WEAK ((MOVE_FORCE_DEFAULT / MOVE_FORCE_CRUSH_RATIO) + 1)
 #define MOVE_FORCE_EXTREMELY_WEAK (MOVE_FORCE_DEFAULT / (MOVE_FORCE_CRUSH_RATIO * 3))
+
+#define MOVE_RESIST_ABSOLUTE				INFINITY
+
+/// speed = default speed * ((throw force / throw resist) ** exponent)
+#define THROW_SPEED_SCALING_EXPONENT_DEFAULT 0.9
+/// damage = default damage * ((throw speed / default throw speed) ** exponent)
+#define THROW_DAMAGE_SCALING_EXPONENT_DEFAULT 0.6

@@ -44,8 +44,11 @@ SUBSYSTEM_DEF(throwing)
 	var/atom/movable/thrownthing
 	/// flags
 	var/throw_flags = NONE
+	/// are we started?
+	var/started = FALSE
+	/// are we finished? this should be true if we're qdeling in general
 	/// things we impacted already. associative list for speed.
-	var/list/impacted
+	var/list/impacted = list()
 	/// thing we originally were thrown at
 	var/atom/target
 	/// turf our original target was on at original time of throw
@@ -87,17 +90,9 @@ SUBSYSTEM_DEF(throwing)
 
 /datum/thrownthing/New(atom/movable/AM, atom/target, range, speed, flags, atom/thrower, datum/callback/on_hit, datum/callback/on_land)
 	src.thrownthing = AM
-	src.target = target
-	var/turf/T = get_turf(target)
-	if(!T)
+	if(!target_atom(target))
 		qdel(src)
-		CRASH("tried to throw something at something that wasn't in the game world.")
-	src.target_turf = T
-	T = get_turf(AM)
-	if(!T)
-		qdel(src)
-		CRASH("tried to throw something that wasn't in the game world at something")
-	src.initial_turf = T
+		return
 	// todo: multiz throws
 	src.maxrange = range
 	src.speed = speed
@@ -105,15 +100,27 @@ SUBSYSTEM_DEF(throwing)
 	src.thrower = thrower
 	src.on_hit = on_hit
 	src.on_land = on_land
-	src.init_dir = get_dir(thrownthing, target)
+
+
+
 
 	#warn finish
 
-/datum/thrownthing/New()
-	src.init_dir = get_dir(thrownthing, target)
-	if(!QDELETED(thrower) && ismob(thrower))
-		src.target_zone = thrower.zone_sel ? thrower.zone_sel.selecting : null
+/datum/thrownthing/proc/target_atom(atom/target)
+	src.target = target
+	var/turf/T = get_turf(target)
+	if(!T)
+		CRASH("tried to throw something at something that wasn't in the game world.")
+	target_turf = T
+	T = get_turf(AM)
+	if(!T)
+		CRASH("tried to throw something that wasn't in the game world at something")
+	if(!initial_turf)
+		initial_turf = T
+	init_dir = get_dir(thrownthing, target)
+	return TRUE
 
+/datum/thrownthing/New()
 	dist_x = abs(target.x - thrownthing.x)
 	dist_y = abs(target.y - thrownthing.y)
 	dx = (target.x > thrownthing.x) ? EAST : WEST
@@ -135,6 +142,8 @@ SUBSYSTEM_DEF(throwing)
 	start_time = world.time
 
 /datum/thrownthing/Destroy()
+	if(!finished)
+		terminate(TRUE)
 	SSthrowing.processing -= thrownthing
 	thrownthing.throwing = null
 	thrownthing = null
@@ -144,12 +153,14 @@ SUBSYSTEM_DEF(throwing)
 	return ..()
 
 /datum/thrownthing/proc/tick()
+	SHOULD_NOT_SLEEP(TRUE)
 	var/atom/movable/AM = thrownthing
 	// if throwing got cancelled maybe like, don't
 	if(!isturf(AM.loc) || !AM.throwing)
 		terminate()
 		return
 
+#warn impl
 
 	if (!isturf(AM.loc) || !AM.throwing)
 		finalize()
@@ -211,36 +222,6 @@ SUBSYSTEM_DEF(throwing)
 
 		A = get_area(AM.loc)
 
-/datum/thrownthing/proc/finalize(hit = FALSE, t_target=null)
-	set waitfor = FALSE
-	//done throwing, either because it hit something or it finished moving
-	if(QDELETED(thrownthing))
-		return
-	thrownthing.throwing = null
-	if (!hit)
-		for (var/thing in get_turf(thrownthing)) //looking for our target on the turf we land on.
-			var/atom/A = thing
-			if (A == target)
-				hit = TRUE
-				thrownthing.throw_impact(A, speed)
-				break
-		if (!hit)
-			thrownthing.throw_impact(get_turf(thrownthing), speed)  // we haven't hit something yet and we still must, let's hit the ground.
-
-	if(ismob(thrownthing))
-		var/mob/M = thrownthing
-		M.inertia_dir = init_dir
-
-	if(t_target && !QDELETED(thrownthing))
-		thrownthing.throw_impact(t_target, speed)
-
-	if (callback)
-		callback.Invoke()
-
-	if (!QDELETED(thrownthing))
-		thrownthing.fall()
-
-	qdel(src)
 
 /datum/thrownthing/proc/hit_atom(atom/A)
 	finalize(hit=TRUE, t_target=A)
@@ -261,7 +242,9 @@ SUBSYSTEM_DEF(throwing)
 		return TRUE
 
 /datum/thrownthing/proc/bump_into(atom/A)
-	#warn impl
+	if(!can_hit(A, TRUE))
+		return
+	impact(A)
 
 /datum/thrownthing/proc/scan_for_impact(turf/T)
 	RETURN_TYPE(/atom)
@@ -288,32 +271,79 @@ SUBSYSTEM_DEF(throwing)
  * quickstart - immediately tick the first tick
  */
 /datum/thrownthing/proc/quickstart()
-	#warn impl
+	if(throw_flags & THROW_AT_QUICKSTARTED)
+		return
+	throw_flags |= THROW_AT_QUICKSTARTED
+
+	tick(1)
 
 /**
  * start - register to subsystem
  */
 /datum/thrownthing/proc/start()
-	#warn impl
+	if(started)
+		CRASH("double start")
+	start_time = world.time
+	started = TRUE
+
+	SSthrowing.processing[thrownthing] = src
+	if(SSthrowing.state == SS_PAUSED && length(SSthrowing.currentrun))
+		SSthrowing.currentrun[thrownthing] = src
+
+	if(!(throw_flags & THROW_AT_NO_AUTO_QUICKSTART))
+		quickstart()
 
 /**
  * handle impacting an atom
  * return TRUE if we should end the throw, FALSE to pierce
  */
-/datum/thrownthing/proc/impact(atom/movable/AM)
+/datum/thrownthing/proc/impact(atom/A, in_land)
+	impacted[AM] = TRUE
+
+	var/op_return = throwntihng._throw_do_hit(A)
+	if(op_return & COMPONENT_THROW_HIT_TERMINATE)
+		terminate()
+		return
+
+	on_hit?.Invoke(A, src)
+
+	if(!(op_return & COMPONENT_THROW_HIT_PIERCE) && !in_land)
+		land(get_turf(thrownthing))
+		return
+
+	// we are piercing. move again.
+	tick(1)
 
 /**
  * land on something and terminate the throw
  */
 /datum/thrownthing/proc/land(atom/A)
+	// hit our target if we haven't already
+	if(!impacted[target] && (target in get_turf(A)))
+		impact(target, TRUE)
+
+	// land
+	thrownthing._throw_finalize(A, src)
+	on_land?.Invoke(A, src)
+
+	// halt
+	terminate()
 
 /**
  * terminate the throw.
  * when called, immediately erases the throw from the atom and stops it.
  */
-/datum/thrownthing/proc/terminate()
+/datum/thrownthing/proc/terminate(in_qdel)
+	finished = TRUE
+	thrownthing.throwing = null
+	if(!QDELETED(thrownthing))
+		// move
+		addtimer(CALLBACK(thrownthing, /atom/movable/proc/newtonian_move, init_dir), 1)
+		addtimer(CALLBACK(thrownthing, /atom/movable/proc/fall), 1)
+	if(in_qdel)
+		return
+	qdel(src)
 
-#warn impl above
 
 /**
  * should we skip damage entirely?
@@ -336,8 +366,17 @@ SUBSYSTEM_DEF(throwing)
  */
 /datum/thrownthing/emulated
 
-#warn impl
-
 /datum/thrownthing/emulated/start()
+	return		// you must manually quickstart
 
 /datum/thrownthing/emulated/quickstart()
+	if(throw_flags & THROW_AT_QUICKSTARTED)
+		return
+	throw_flags |= THROW_AT_QUICKSTARTED
+	process_hit()
+
+/datum/thrownthing/emulated/proc/process_hit()
+	// hit without landing
+	hit(target, TRUE)
+	// gtfo
+	terminate()
