@@ -81,6 +81,8 @@
  * called on throw finalization
  */
 /atom/movable/proc/_throw_finalize(atom/landed_on, datum/thrownthing/TT)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	set waitfor = FALSE
 	. = SEND_SIGNAL(src, COMSIG_MOVABLE_THROW_LAND, landed_on, TT)
 	if(. & (COMPONENT_THROW_LANDING_NEVERMIND | COMPONENT_THROW_LANDING_TERMINATE))
 		return
@@ -198,7 +200,7 @@
 	if(zone)
 		TT.target_zone = zone
 
-	SEND_SIGNAL(src, COMSIG_MOVBALE_INIT_THROW, target, range, speed, flags, thrower, on_hit, on_land, emulated)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_INIT_THROW, target, range, speed, flags, thrower, on_hit, on_land, emulated)
 
 /**
  * throws us at something
@@ -229,10 +231,13 @@
 
 	return subsystem_throw(target, range, speed, flags, thrower, on_hit, on_land, force)
 
-
 /atom/movable/proc/can_throw_at(atom/target, range, speed, flags, atom/thrower, force = THROW_FORCE_DEFAULT)
 	if(move_resist >= MOVE_RESIST_ABSOLUTE)
 		return FALSE
 	if(force < move_resist * MOVE_FORCE_THROW_RATIO)
 		return FALSE
 	return TRUE
+
+// wrapper to be replaced
+/atom/movable/proc/throw_at_old(atom/target, range, speed, mob/thrower, spin = TRUE, datum/callback/callback)
+	return throw_at(target, range, speed, flags, thrower, on_hit, null, null)
