@@ -230,7 +230,7 @@ proc/get_radio_key_from_channel(var/channel)
 		message = autocorrect(message)
 
 	//Whisper vars
-	var/w_scramble_range = 5	//The range at which you get ***as*th**wi****
+	var/w_scramble_range = 3	//The range at which you get ***as*th**wi****
 	var/w_adverb				//An adverb prepended to the verb in whispers
 	var/w_not_heard				//The message for people in watching range
 
@@ -394,7 +394,7 @@ proc/get_radio_key_from_channel(var/channel)
 						images_to_clients[I1] |= M.client
 						SEND_IMAGE(M, I1)
 					M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
-				if(whispering) //Don't even bother with these unless whispering
+				else if(whispering) //Don't even bother with these unless whispering
 					if(dst > message_range && dst <= w_scramble_range) //Inside whisper scramble range
 						if(M.client)
 							var/image/I2 = listening[M] || speech_bubble

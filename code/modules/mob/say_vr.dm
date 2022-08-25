@@ -108,7 +108,9 @@
 
 		for(var/vismob in vis_mobs)
 			if(istype(vismob, /mob/observer))
-				continue
+				var/mob/observer/O = vismob
+				if(O.client && !check_rights(R_ADMIN, FALSE, O.client))
+					continue
 			var/mob/M = vismob
 			spawn(0)
 				M.show_message(message, 2)
