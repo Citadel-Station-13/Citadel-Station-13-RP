@@ -200,6 +200,7 @@
 	SHOULD_CALL_PARENT(TRUE)
 	. = ..()
 	SEND_SIGNAL(src, COMSIG_MOVABLE_CROSSED, AM)
+	throwing?.crossed_by(AM)
 
 /atom/movable/Uncross(atom/movable/AM, atom/newloc)
 	. = ..()

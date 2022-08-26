@@ -109,6 +109,7 @@ SUBSYSTEM_DEF(throwing)
 /datum/thrownthing/proc/target_atom(atom/target)
 	src.target = target
 	var/turf/T = get_turf(target)
+	var/atom/movable/AM = thrownthing
 	if(!T)
 		CRASH("tried to throw something at something that wasn't in the game world.")
 	target_turf = T
@@ -118,6 +119,9 @@ SUBSYSTEM_DEF(throwing)
 	if(!initial_turf)
 		initial_turf = T
 	init_dir = get_dir(thrownthing, target)
+
+	dist_x = abs(T.x - AM.x))
+
 	return TRUE
 
 /datum/thrownthing/New()
@@ -160,24 +164,41 @@ SUBSYSTEM_DEF(throwing)
 		terminate()
 		return
 
-#warn impl
+	var/tilestomove = CEILING(min(, speed * MAX_TICKS_TO_MAKE_UP), 1)
+	 CEILING(
 
-	if (!isturf(AM.loc) || !AM.throwing)
-		finalize()
-		return
+		, 1
+	)
+
+	// catch anything in our tile
+	//? experimental: removed in favor for cross/bump hooks
+	/*
+	if(dist_travelled)
+		var/atom/to_hit = scan_for_impact(get_turf(AM))
+		while(to_hit)
+			impact(to_hit)
+			if(finished)
+				return
+			to_hit = scan_for_impact(get_turf(AM))
+	*/
+
+	var/atom/stepping
+	last_move = world.time
+	while(tilestomove-- > 0)
+		// if we have gravity we can end, else keep going
+		if(AM.has_gravity())
+			if(dist_travelled >= maxrange || AM.loc == target_turf)
+				terminate()
+				return
+		else if(dist_travelled >= MAX_THROWING_DIST)
+			terminate()
+			return
+
+#warn impl - go in dir of throw, not generic dir.
 
 	if(paused)
 		delayed_time += world.time - last_move
 		return
-
-	if (dist_travelled && hitcheck(get_turf(thrownthing))) //to catch sneaky things moving on our tile while we slept
-		finalize()
-		return
-
-	var/area/A = get_area(AM.loc)
-	var/atom/step
-
-	last_move = world.time
 
 	//calculate how many tiles to move, making up for any missed ticks.
 	var/tilestomove = CEILING(min(((((world.time+world.tick_lag) - start_time + delayed_time) * speed) - (dist_travelled ? dist_travelled : -1)), speed*MAX_TICKS_TO_MAKE_UP) * (world.tick_lag * SSthrowing.wait), 1)
@@ -202,55 +223,61 @@ SUBSYSTEM_DEF(throwing)
 			diagonal_error += (diagonal_error < 0) ? dist_x/2 : -dist_y
 */
 
+		// let's not go off the map
+		if(!stepping)
+			terminate()
+			return
+
 		if (!step) // going off the edge of the map makes get_step return null, don't let things go off the edge
 			var/turf/T = loc
 
 			return
 
-		if (hitcheck(step))
-			finalize()
-			return
+#warn impl/convert above
+
+	//? Experimental: Do not try to hit before movement, instead let cross/whatnot hooks handle it
+/*
+		var/atom/to_hit = scan_for_impact(stepping)
+		while(to_hit)
+			impact(to_hit)
+			if(finished)
+				return
+			to_hit = scan_for_impact(stepping)
+*/
 
 		AM.Move(step, get_dir(AM, step))
 
-		if (!AM)		// Us moving somehow destroyed us?
+		// atom somehow got deleted
+		if(QDELETED(AM))
+			terminate()
 			return
 
-		if (!AM.throwing) // we hit something during our move
-			finalize(hit = TRUE)
+		// we hit something during move
+		if(finished)
 			return
 
-		dist_travelled++
+		// tick up dist moved
+		++dist_travelled
 
-		if (dist_travelled > MAX_THROWING_DIST)
-			finalize()
-			return
-
-		A = get_area(AM.loc)
-
-
-/datum/thrownthing/proc/hit_atom(atom/A)
-	finalize(hit=TRUE, t_target=A)
-
-/datum/thrownthing/proc/hitcheck(var/turf/T)
-	var/atom/movable/hit_thing
-	for (var/thing in T)
-		var/atom/movable/AM = thing
-		if (AM == thrownthing || (AM == thrower && !ismob(thrownthing)))
-			continue
-		if (!AM.density || AM.throwpass)//check if ATOM_FLAG_CHECKS_BORDER as an atom_flag is needed
-			continue
-		if (!hit_thing || AM.layer > hit_thing.layer)
-			hit_thing = AM
-
-	if(hit_thing)
-		finalize(hit=TRUE, t_target=hit_thing)
-		return TRUE
-
+/**
+ * hook for making us impact things on bump (we cross them)
+ */
 /datum/thrownthing/proc/bump_into(atom/A)
+	// if you sleep, eat shit
+	set waitfor = FALSE
 	if(!can_hit(A, TRUE))
 		return
 	impact(A)
+
+/**
+ * hook for making us impact thing on cross (they cross us)
+ */
+/datum/thrownthing/proc/crossed_by(atom/movable/AM)
+	// if you sleep, eat shit
+	set waitfor = FALSE
+	if(!can_hit(AM))
+		return
+	impact(AM)
 
 /datum/thrownthing/proc/scan_for_impact(turf/T)
 	RETURN_TYPE(/atom)
@@ -269,7 +296,7 @@ SUBSYSTEM_DEF(throwing)
 		return FALSE
 	if(impacted[A])
 		return FALSE
-	if(!bumping && A.CanPass(src, get_turf(A)))
+	if(!bumping && thrownthing.CanPass(A, get_turf(thrownthing)))
 		return FALSE
 	return TRUE
 
