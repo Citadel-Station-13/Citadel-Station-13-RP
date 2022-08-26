@@ -142,6 +142,17 @@
 	take_damage(50)
 
 /obj/structure/window/CanAllowThrough(atom/movable/mover, turf/target)
+	if(istype(mover, /obj/strucutre/window))
+		// if they're a window we have special handling
+		var/obj/structure/window/them = mover
+		if(is_fulltile() || them.is_fulltile())
+			// OUT.
+			return FALSE
+		// we're both single-way
+		if(them.dir == dir)
+			// OUT
+			return FALSE
+		return TRUE
 	if(!is_fulltile() && !(get_dir(mover, target) & turn(dir, 180)))
 		// we don't care about them if we're not fulltile and they're not moving into us
 		return TRUE

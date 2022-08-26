@@ -234,8 +234,14 @@
   */
 
 /atom/movable/proc/locationTransitForceMove(atom/destination, recurse_levels = 0)
+	// store pulling, buckled
+	var/atom/movable/oldpulling = pulling
 	var/list/mob/oldbuckled = buckled_mobs?.Copy()
+
+	// move
 	doLocationTransitForceMove(destination)
+
+	// buckled
 	if(length(oldbuckled))
 		for(var/mob/M in oldbuckled)
 			if(recurse_levels)
@@ -244,10 +250,7 @@
 				M.doLocationTransitForceMove(destination)
 			buckle_mob(M, forced = TRUE)
 
-// until movement rework
-/mob/locationTransitForceMove(atom/destination, recurse_levels = 0)
-	var/atom/movable/oldpulling = pulling
-	. = ..()
+	// move pulling, pull
 	if(oldpulling)
 		if(recurse_levels)
 			oldpulling.locationTransitForceMove(destination, recurse_levels - 1)
@@ -280,6 +283,9 @@
   * Wrapper for forceMove when we're called by a recursing locationTransitForceMove().
   */
 /atom/movable/proc/doLocationTransitForceMove(atom/destination)
+	// move buckled mobs first
+	for(var/mob/M in buckled_mobs)
+		M.forceMove(destination)
 	forceMove(destination)
 
 /atom/movable/proc/forceMove(atom/destination)
@@ -430,21 +436,28 @@
 	anchored = anchorvalue
 	SEND_SIGNAL(src, COMSIG_MOVABLE_SET_ANCHORED, anchorvalue)
 
+//? todo: this system is shit
+/**
+ * return true to let something push through us
+ */
 /atom/movable/proc/force_pushed(atom/movable/pusher, force = MOVE_FORCE_DEFAULT, direction)
 	return FALSE
 
-/atom/movable/proc/force_push(atom/movable/AM, force = move_force, direction, silent = FALSE)
+/**
+ * return true to let something crush through us
+ */
+/atom/movable/proc/move_crushed(atom/movable/pusher, force = MOVE_FORCE_DEFAULT, direction)
+	return FALSE
+
+/atom/movable/proc/force_push(atom/movable/AM, force = move_force, direction, silent)
 	. = AM.force_pushed(src, force, direction)
 	if(!silent && .)
 		visible_message("<span class='warning'>[src] forcefully pushes against [AM]!</span>", "<span class='warning'>You forcefully push against [AM]!</span>")
 
-/atom/movable/proc/move_crush(atom/movable/AM, force = move_force, direction, silent = FALSE)
+/atom/movable/proc/move_crush(atom/movable/AM, force = move_force, direction, silent)
 	. = AM.move_crushed(src, force, direction)
 	if(!silent && .)
 		visible_message("<span class='danger'>[src] crushes past [AM]!</span>", "<span class='danger'>You crush [AM]!</span>")
-
-/atom/movable/proc/move_crushed(atom/movable/pusher, force = MOVE_FORCE_DEFAULT, direction)
-	return FALSE
 
 /**
  * for regexing
