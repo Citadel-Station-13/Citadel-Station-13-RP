@@ -54,7 +54,7 @@
 /mob/living/simple_mob/OnMouseDropLegacy(var/obj/structure/stasis_cage/over_object)
 	if(istype(over_object) && Adjacent(over_object) && CanMouseDrop(over_object, usr))
 
-		if(!can_be_involuntarily_caged())
+		if(!can_be_involuntarily_caged(over_object, usr))
 			to_chat(usr, "It's going to be difficult to convince \the [src] to move into \the [over_object] without capturing it in a net or otherwise restraining it.")
 			return
 
