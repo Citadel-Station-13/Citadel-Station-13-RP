@@ -34,7 +34,6 @@
 	var/datum/perspective/self_perspective
 
 //! Buckling
-#warn flags so we can have BUCKLE_AUTO_PASS_PROJECTILES_UP
 	/// do we support the buckling system
 	var/buckle_allowed = FALSE
 	/// buckle flags, see [code/__DEFINES/_flags/atom_flags.dm]
@@ -47,6 +46,8 @@
 	var/buckle_dir
 	/// buckled mobs
 	var/list/mob/buckled_mobs
+	/// restrained default unbuckle time (NOT TIME TO UN-RESTRAIN, this is time to UNBUCKLE from us)
+	var/buckle_restrained_resist_time = 2 MINUTES
 
 	var/anchored = FALSE
 	var/move_speed = 10

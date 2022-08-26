@@ -90,6 +90,8 @@
 		SPAN_DANGER("[src] attempts to unbuckle themself!"),
 		SPAN_WARNING("You attempt to unbuckle yourself. (This will take around 2 minutes and you need to stand still)"))
 
+#warn kick this to unbuckle interaction
+
 	if(do_after(src, 2 MINUTES, incapacitation_flags = INCAPACITATION_DEFAULT & ~(INCAPACITATION_RESTRAINED | INCAPACITATION_BUCKLED_FULLY)))
 		if(!buckled)
 			return

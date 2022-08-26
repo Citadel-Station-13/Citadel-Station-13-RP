@@ -190,12 +190,18 @@
 
 /**
  * called when someone tries to unbuckle something from us, whether by click or otherwise
+ *
+ * ? SLEEPS ARE ALLOWED
+ * ? Put user interaction in here.
  */
 /atom/movable/proc/user_unbuckle_mob(mob/M, flags, mob/user)
 	#warn impl and check overrides
 
 /**
  * called when someone tries to buckle something to us, whether by drag/drop interaction or otherwise
+ *
+ * ? SLEEPS ARE ALLOWED
+ * ? Put user interaction in here.
  */
 /atom/movable/proc/user_buckle_mob(mob/M, flags, mob/user)
 	#warn impl and check overrides
@@ -218,6 +224,22 @@
 	#warn impl and check overrides
 
 /**
+ * can something buckle to us?
+ * SLEEPS ARE ALLOWED
+ *
+ * ? Put user behavior in user buckle mob, not here. This however, WILL be rechecked.
+ */
+/atom/movable/proc/can_buckle_mob(mob/M, flags, mob/user)
+
+/**
+ * can something unbuckle from us?
+ * SLEEPS ARE ALLOWED
+ *
+ * ? Put user behavior in user unbuckle mob, not here. This however, WILL be rechecked.
+ */
+/atom/movable/proc/can_unbuckle_mob(mob/M, flags, mob/user)
+
+/**
  * called when something is buckled to us
  */
 /atom/movable/proc/mob_buckled(mob/M, flags, mob/user)
@@ -229,8 +251,18 @@
 
 /**
  * called when a mob tries to resist out of being buckled to us
+ *
+ * ? SLEEPS ARE ALLOWED
+ * ? Put user interaction in here.
  */
 /atom/movable/proc/mob_resist_buckle(mob/M)
+
+/**
+ * called to initiate buckle resist
+ */
+/atom/movable/proc/resist_unbuckle_interaction(mob/M)
+	set waitfor = FALSE
+	mob_resist_buckle(M)
 
 /**
  * if we have buckled mobs
@@ -249,23 +281,12 @@
  * called when a buckled mob tries to move
  */
 /atom/movable/proc/relaymove_from_buckled(mob/user, direction)
+	. = SEND_SIGNAL(src, COMSIG_ATOM_RELAYMOVE_FROM_BUCKLED, user, direction)
+	if(. & COMPONENT_RELAYMOVE_HANDLED)
+		return TRUE
 	return relaymove(user, direction)
 
 //! mob stuff
-/**
- * try to
- */
-
-/**
- * try to buckle to something
- */
-/mob/proc/buckle(atom/movable/AM, flags, mob/user)
-
-/**
- * try to unbuckle from whatever we're buckled to
- */
-/mob/proc/unbuckle(flags, mob/user)
-
 
 /**
  * called when we're buckled to something.

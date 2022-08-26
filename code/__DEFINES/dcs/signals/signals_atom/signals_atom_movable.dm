@@ -32,18 +32,7 @@
 	///? Return true if you destroyed whatever it was you're impacting and there won't be anything for hitby() to run on
 	/////#define COMPONENT_MOVABLE_IMPACT_NEVERMIND (1<<1)
 /// From base of mob/living/hitby(): (mob/living/target, hit_zone)
-#warn replace signals
 ////#define COMSIG_MOVABLE_IMPACT_ZONE "item_impact_zone"
-/// From /atom/movable/proc/buckle_mob(): (mob/living/M, force, check_loc, buckle_mob_flags)
-////#define COMSIG_MOVABLE_PREBUCKLE "prebuckle" //? This is the last chance to interrupt and block a buckle before it finishes
-	////#define COMPONENT_BLOCK_BUCKLE (1<<0)
-/// From base of atom/movable/buckle_mob(): (mob, force)
-////#define COMSIG_MOVABLE_BUCKLE "buckle"
-/// From base of atom/movable/unbuckle_mob(): (mob, force)
-////#define COMSIG_MOVABLE_UNBUCKLE "unbuckle"
-/// From /obj/vehicle/proc/driver_move, caught by the riding component to check and execute the driver trying to drive the vehicle
-////#define COMSIG_RIDDEN_DRIVER_MOVE "driver_move"
-	////#define COMPONENT_DRIVER_BLOCK_MOVE (1<<0)
 /// From base of atom/movable/throw_at(): (list/args)
 ////#define COMSIG_MOVABLE_PRE_THROW "movable_pre_throw"
 	////#define COMPONENT_CANCEL_THROW (1<<0)
@@ -87,10 +76,6 @@
 ////#define COMSIG_MOVABLE_CHANGE_DUCT_LAYER "movable_change_duct_layer"
 /// Called when a movable is teleported from `do_teleport()`: (destination, channel)
 ////#define COMSIG_MOVABLE_TELEPORTED "movable_teleported"
-/// From /mob/living/can_z_move, sent to whatever the mob is buckled to. Only ridable movables should be ridden up or down btw.
-////#define COMSIG_BUCKLED_CAN_Z_MOVE "ridden_pre_can_z_move"
-	////#define COMPONENT_RIDDEN_STOP_Z_MOVE 1
-	////#define COMPONENT_RIDDEN_ALLOW_Z_MOVE 2
 /// From base of atom/movable/Process_Spacemove(): (movement_dir)
 ////#define COMSIG_MOVABLE_SPACEMOVE "spacemove"
 	////#define COMSIG_MOVABLE_STOP_SPACEMOVE (1<<0)

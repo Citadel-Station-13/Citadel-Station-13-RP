@@ -743,7 +743,7 @@ default behaviour is:
 			var/obj/vehicle_old/vehicle = buckled
 			vehicle.unload()
 		else
-			buckled.user_unbuckle_mob(src, src)
+			buckled.resist_unbuckle_interaction(src)
 
 /mob/living/proc/resist_grab()
 	var/resisting = 0
