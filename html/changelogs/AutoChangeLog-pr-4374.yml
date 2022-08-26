@@ -1,0 +1,5 @@
+author: "TheLordME"
+delete-after: True
+changes: 
+  - rscadd: "Added xhiss, xgrowl and xroar emotes, with sounds from TGMC"
+  - rscadd: "Added soundless Kiss emote"
