@@ -173,32 +173,6 @@
 				H.visible_message("<span class='warning'>[src] bumps into [H], knocking them off balance!</span>")
 				H.Weaken(5)
 				now_pushing = 0
-				return
-		// Handle grabbing, stomping, and such of micros!
-		if(handle_micro_bump_other(tmob)) return
-
-		if(istype(tmob, /mob/living/carbon/human) && (FAT in tmob.mutations))
-			if(prob(40) && !(FAT in src.mutations))
-				to_chat(src, "<span class='danger'>You fail to push [tmob]'s fat ass out of the way.</span>")
-				now_pushing = 0
-				return
-		if(tmob.r_hand && istype(tmob.r_hand, /obj/item/shield/riot))
-			if(prob(99))
-				now_pushing = 0
-				return
-
-		if(tmob.l_hand && istype(tmob.l_hand, /obj/item/shield/riot))
-			if(prob(99))
-				now_pushing = 0
-				return
-		if(!(tmob.status_flags & CANPUSH))
-			now_pushing = 0
-			return
-
-		tmob.LAssailant = src
-
-	now_pushing = 0
-	. = ..()
 
 #warn old above, new below, sort it out
 
@@ -237,22 +211,72 @@
 	// then comes the signal
 	// SEND_SIGNAL(src, COMSIG_LIVING_PUSHING_MOB, L)
 
-	//
+	// handcuffed check - can't bump past, or even force-move psat (yeah sorry bad design) cuffed people
+
+	// main checks
+	var/can_swap = FALSE
+
+
+
+	// handcuffs:
+
+	//! stupid fetish shit
+	#warn we have to use pass flags swapping
+	if(fetish_hook_for_help_intent_swapping(other))
+	if(a_intent == INTENT_HELP && L.a_intent == INTENT_HELP && )
+
 
 	//
 
-	//
+	//! if we can't swap, do stupid fetish checks
+	if(handle_micro_bump_other(L))
+		return
 
-	//
-
-	//
-
-	//
+	// if we can't push, skip other bump stuff
+	if(!can_bump_push_mob(L))
+		return TRUE
+	else
+		// provoke (tm) (it doesn't really, unfortnuately...)
+		L.LAssailant = src
 
 	#warn let handle movable bump handle pushing
 	#warn do not push if on help intent, ever
 
+/**
+ * swaps us with another mob. assumes they're next to us.
+ */
+/mob/living/proc/bump_position_swap(mob/living/them)
 
+
+/**
+ * checks if we can swap with another mob
+ */
+/mob/living/proc/can_bump_position_swap(mob/living/them)
+	// we must both be on help
+	if(a_intent != INTENT_HELP || them.a_intent != INTENT_HELP)
+		return FALSE
+
+	return TRUE
+
+/**
+ * checks if we can push another mob
+ */
+/mob/living/proc/can_bump_push_mob(mob/living/them)
+	// check status flags
+	if(!(them.status_flags & CANPUSH))
+		return FALSE
+	//? TRAIT_PUSHIMMUNE checked in movable bump
+	//! this isn't active until we get mobility flags, right click, and shoving
+	// check intent if not help do not allow push unless they're dead
+	// if(them.a_intent != INTENT_HELP && !STAT_IS_DEAD(them.stat))
+	//	return TRUE
+	// if our intent is help, do not push
+	if(a_intent == INTENT_HELP)
+		return FALSE
+	//! snowflake bullshit from upstream
+	if(them.get_held_item_of_type(/obj/item/shield) && prob(99))
+		return FALSE
+	return TRUE
 
 /**
  * handles obj bumping/fire spread/pushing/etc
@@ -295,6 +319,9 @@
 
 	// are we strong enough to push at all?
 	if((resist * MOVE_FORCE_PUSH_RATIO) > force)
+		return
+
+	if(HAS_TRAIT(AM, TRAIT_PUSHIMMUNE))
 		return
 
 	// break pulls on pushing. if AM was pulled, they'd break from the move.
@@ -450,25 +477,4 @@
 			now_pushing = FALSE
 
 			if(!move_failed)
-				return TRUE
-
-	//okay, so we didn't switch. but should we push?
-	//not if he's not CANPUSH of course
-	if(!(M.status_flags & CANPUSH))
-		return TRUE
-	if(isliving(M))
-		var/mob/living/L = M
-		if(HAS_TRAIT(L, TRAIT_PUSHIMMUNE))
-			return TRUE
-	if(M.a_intent != INTENT_HELP)
-		//If they're a human, and they're not in help intent, block pushing
-		if(ishuman(M))
-			return TRUE
-		//if they are a cyborg, and they're alive and not in help intent, block pushing
-		if(isrobot(M) && M.stat != DEAD)
-			return TRUE
-	//anti-riot equipment is also anti-push
-	for(var/obj/item/I in M.held_items)
-		if(!istype(M, /obj/item/clothing))
-			if(prob(I.block_chance*2))
 				return TRUE
