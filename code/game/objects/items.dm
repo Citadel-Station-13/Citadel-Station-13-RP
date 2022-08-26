@@ -317,6 +317,8 @@
 			ghost.animate_towards(user)
 
 /obj/item/OnMouseDrop(atom/over, mob/user, proximity, params)
+	if(anchored)	// Don't.
+		return ..()
 	if(!user.is_in_inventory(src))
 		// not being held
 		if(!isturf(loc))	// yea nah
