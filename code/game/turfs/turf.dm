@@ -332,7 +332,7 @@
 			step(AM, turn(AM.last_move_dir, 180))
 		if(isliving(AM))
 			var/mob/living/M = AM
-			M.turf_collision(src, speed)
+			M.turf_collision(src, TT.speed)
 
 /turf/AllowDrop()
 	return TRUE

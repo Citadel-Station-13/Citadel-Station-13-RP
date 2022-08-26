@@ -109,10 +109,8 @@
 
 /turf/simulated/wall/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
-	if(ismob(AM))
-		return
 
-	var/tforce = AM:throw_force * (speed/THROWFORCE_SPEED_DIVISOR)
+	var/tforce = AM.throw_force * TT.get_damage_multiplier()
 	if (tforce < 15)
 		return
 

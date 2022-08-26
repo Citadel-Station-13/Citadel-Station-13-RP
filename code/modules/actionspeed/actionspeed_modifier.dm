@@ -183,10 +183,10 @@ GLOBAL_LIST_EMPTY(actionspeed_modification_cache)
 /// Get the action speed modifier datums on the mob
 /mob/proc/get_actionspeed_modifiers()
 	. = ..()
-	for(var/id in actionspeed_modifiers)
+	for(var/id in actionspeed_modification)
 		if(id in actionspeed_mod_immunities)
 			continue
-		. += actionspeed_modifiers[id]
+		. += actionspeed_modification[id]
 
 /// Get the action speed modifier datum ids on the mob
 /mob/proc/get_actionspeed_modifier_ids()

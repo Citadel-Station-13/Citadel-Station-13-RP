@@ -199,13 +199,13 @@
 				C.total_damage += detonation_damage + thrown_bonus
 			L.apply_damage(detonation_damage + thrown_bonus, BRUTE, blocked = def_check)
 
-/obj/item/kinetic_crusher/throw_impact(atom/hit_atom, speed)
+/obj/item/kinetic_crusher/throw_impact(atom/A, datum/thrownthing/TT)
 	. = ..()
 	if(!isliving(hit_atom))
 		return
 	var/mob/living/L = hit_atom
 	if(!L.has_status_effect(STATUS_EFFECT_CRUSHERMARK))
-		detonate(L, thrower, TRUE)
+		detonate(L, TT.thrower, TRUE)
 
 /obj/item/kinetic_crusher/proc/Recharge()
 	if(!charged)

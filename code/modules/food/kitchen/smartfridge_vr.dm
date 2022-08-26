@@ -25,8 +25,8 @@
 
 		//98% chance the expert makes it
 		if(expert_job && thrower_id && thrower_id.rank == expert_job && prob(98))
-			stock(A)
+			stock(AM)
 
 		//20% chance a non-expert makes it
 		else if(prob(20))
-			stock(A)
+			stock(AM)

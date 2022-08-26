@@ -26,13 +26,13 @@
 	return ..()
 
 //when thrown on impact, bottles smash and spill their contents
-/obj/item/reagent_containers/food/drinks/bottle/throw_impact(atom/hit_atom, var/speed)
+/obj/item/reagent_containers/food/drinks/bottle/throw_impact(atom/hit_atom, datum/thrownthing/TT)
 	..()
 
 	var/mob/M = thrower
 	if(isGlass && istype(M) && M.a_intent == INTENT_HARM)
-		var/throw_dist = get_dist(throw_source, loc)
-		if(speed >= throw_speed && smash_check(throw_dist)) //not as reliable as smashing directly
+		var/throw_dist = get_dist(TT.initial_turf, loc)
+		if(TT.speed >= throw_speed && smash_check(throw_dist)) //not as reliable as smashing directly
 			if(reagents)
 				hit_atom.visible_message("<span class='notice'>The contents of \the [src] splash all over [hit_atom]!</span>")
 				reagents.splash(hit_atom, reagents.total_volume)
