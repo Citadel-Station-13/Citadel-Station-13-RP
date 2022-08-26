@@ -19,6 +19,8 @@
 	if(step(pulling, get_dir(pulling.loc, A)))
 		on_move_pulled(pulling)
 
+#warn test pulling dense across corners not breaking pulls
+
 /**
   * Attempts to start pulling an object.
   */

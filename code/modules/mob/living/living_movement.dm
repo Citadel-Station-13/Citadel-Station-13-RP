@@ -60,12 +60,28 @@
 		V.RunOver(src)
 	return ..()
 
+/mob/living/proc/handle_stumbling(obj/O)
+	if(!can_stumble_into(O))
+		return FALSE
+	O.stumble_into(src)
+	return TRUE
+
+/mob/living/proc/can_stumble_into(obj/O)
+	if(!O.anchored)
+		return FALSE
+	if(!(confused || is_blind()))
+		return FALSE
+	if(!STAT_IS_CONSCIOUS(stat))
+		return FALSE
+	if(m_intent != MOVE_INTENT_RUN)
+		return FALSE
+	if(!prob(50))
+		return FALSE
+	return TRUE
+
 #warn old below
 
 /mob/living/Bump(atom/movable/AM)
-	if(now_pushing || !loc)
-		return
-	now_pushing = 1
 	var/old_pulling = pulling
 	if (istype(AM, /mob/living))
 		var/mob/living/tmob = AM
@@ -183,29 +199,6 @@
 
 	now_pushing = 0
 	. = ..()
-	if (!istype(AM, /atom/movable) || AM.anchored)
-		// Object-specific proc for running into things
-		if(((confused || is_blind()) && stat == CONSCIOUS && prob(50) && m_intent=="run") || flying && !SPECIES_ADHERENT)
-			AM.stumble_into(src)
-		return
-	if (!now_pushing)
-		if(isobj(AM))
-			var/obj/I = AM
-			if(!can_pull_size || can_pull_size < I.w_class)
-				return
-		now_pushing = 1
-
-		var/t = get_dir(src, AM)
-		if (istype(AM, /obj/structure/window))
-			for(var/obj/structure/window/win in get_step(AM,t))
-				now_pushing = 0
-				return
-		step(AM, t)
-		if(ishuman(AM) && AM:grabbed_by)
-			for(var/obj/item/grab/G in AM:grabbed_by)
-				step(G:assailant, get_dir(G:assailant, AM))
-				G.adjust_position()
-		now_pushing = 0
 
 #warn old above, new below, sort it out
 
@@ -268,7 +261,9 @@
 	// this proc is there for people to hook but we don't care in general
 	// signal sent regardless of success
 	// SEND_SIGNAL(src, COMSIG_LIVING_PUSHING_OBJ, O)
-	return
+	if(handle_stumbling(O))
+		return TRUE
+	return FALSE
 
 //? todo: this system of force move/move crush is shit
 
