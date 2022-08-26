@@ -173,6 +173,7 @@
 				else
 					visibility = TRUE
 					notify_into("Network visibility enabled.")
+				save_settings()
 				return
 				
 			if("Exceptions")
@@ -189,6 +190,7 @@
 				else
 					visibility_exceptions += toggle
 					to_chat(nif.human, SPAN_BOLDNOTICE("[toggle] added to exceptions."))
+				save_settings()
 				return
 				
 			if("Blacklist")
@@ -205,6 +207,7 @@
 				else
 					visibility_blacklist += toggle
 					to_chat(nif.human, SPAN_BOLDNOTICE("[toggle] added to blacklist."))
+				save_settings()
 				return
 				
 		switch(choice)
