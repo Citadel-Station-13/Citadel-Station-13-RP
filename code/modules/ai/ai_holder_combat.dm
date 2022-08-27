@@ -12,16 +12,16 @@
 
 
 // This does the actual attacking.
-/datum/ai_holder/proc/engage_target()
+/datum/ai_holder/proc/engage_target(retaliating)
 	ai_log("engage_target() : Entering.", AI_LOG_DEBUG)
 
 	// Can we still see them?
 //	if(!target || !can_attack(target) || (!(target in list_targets())) )
 	if(QDELETED(target) || !can_attack(target))
 		ai_log("engage_target() : Lost sight of target.", AI_LOG_TRACE)
-		if(!ranged || QDELETED(target))
+		if(QDELETED(target))
 			lose_target() // We lost them.
-		else
+		else if(retaliating)
 			follow_target(target, 100)
 			return
 
