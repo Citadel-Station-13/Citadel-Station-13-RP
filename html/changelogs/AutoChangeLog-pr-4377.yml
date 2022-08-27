@@ -1,4 +1,0 @@
-author: "CharlesWedge"
-delete-after: True
-changes: 
-  - bugfix: "Vents on the civ shuttle cycle air rather than phoron."
