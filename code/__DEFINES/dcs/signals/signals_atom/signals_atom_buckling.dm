@@ -17,6 +17,17 @@
 #define COMSIG_MOVABLE_USER_BUCKLE_MOB		"user_buckle_mob"
 /// called during user unbuckle mob: (mob, flags, user)
 #define COMSIG_MOVABLE_USER_UNBUCKLE_MOB	"user_unbuckle_mob"
-/// called during can buckle
+/// called on mob resist buckle: (mob, flags, user). Can't force, can only block.
+#define COMSIG_MOVABLE_MOB_RESIST_BUCKLE	"mob_resist_buckle"
+/// called during can buckle on mob: (mob, flags, user, movable_opinion)
+#define COMSIG_MOB_CAN_BUCKLE				"mob_can_buckle"
+/// called during can unbuckle on mob: (mob, flags, user, movable_opinion)
+#define COMSIG_MOB_CAN_UNBUCKLE				"mob_can_unbuckle"
+/// called buckled on mob: (mob, flags, user, movable_opinion)
+#define COMSIG_MOB_BUCKLED					"mob_buckled"
+/// called on unbuckled on mob: (mob, flags, user, movable_opinion)
+#define COMSIG_MOB_UNBUCKLED				"mob_can_unbuckle"
 	/// block mob buckle/unbuckle **silently**
 	#define COMPONENT_BLOCK_BUCKLE_OPERATION		(1<<0)
+	/// force allow buckle/unbuckled **silently**
+	#define COMPONENT_FORCE_BUCKLE_OPERATION		(1<<1)

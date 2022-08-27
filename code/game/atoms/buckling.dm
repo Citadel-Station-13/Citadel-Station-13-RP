@@ -195,6 +195,7 @@
  * ? Put user interaction in here.
  */
 /atom/movable/proc/user_unbuckle_mob(mob/M, flags, mob/user)
+	SHOULD_CALL_PARENT(TRUE)
 	#warn impl and check overrides
 
 /**
@@ -204,6 +205,7 @@
  * ? Put user interaction in here.
  */
 /atom/movable/proc/user_buckle_mob(mob/M, flags, mob/user)
+	SHOULD_CALL_PARENT(TRUE)
 	#warn impl and check overrides
 
 /**
@@ -213,6 +215,7 @@
  * components can always stop this
  */
 /atom/movable/proc/buckle_mob(mob/M, flags, mob/user)
+	SHOULD_CALL_PARENT(TRUE)
 	#warn impl and check overrides
 
 /**
@@ -221,6 +224,7 @@
  * components can always stop this
  */
 /atom/movable/proc/unbuckle_mob(mob/M, flags, mob/user)
+	SHOULD_CALL_PARENT(TRUE)
 	#warn impl and check overrides
 
 /**
@@ -230,6 +234,7 @@
  * ? Put user behavior in user buckle mob, not here. This however, WILL be rechecked.
  */
 /atom/movable/proc/can_buckle_mob(mob/M, flags, mob/user)
+	SHOULD_CALL_PARENT(TRUE)
 
 /**
  * can something unbuckle from us?
@@ -238,16 +243,19 @@
  * ? Put user behavior in user unbuckle mob, not here. This however, WILL be rechecked.
  */
 /atom/movable/proc/can_unbuckle_mob(mob/M, flags, mob/user)
+	SHOULD_CALL_PARENT(TRUE)
 
 /**
  * called when something is buckled to us
  */
 /atom/movable/proc/mob_buckled(mob/M, flags, mob/user)
+	SHOULD_CALL_PARENT(TRUE)
 
 /**
  * called when something is unbuckled from us
  */
 /atom/movable/proc/mob_unbuckled(mob/M, flags, mob/user)
+	SHOULD_CALL_PARENT(TRUE)
 
 /**
  * called when a mob tries to resist out of being buckled to us
@@ -256,6 +264,7 @@
  * ? Put user interaction in here.
  */
 /atom/movable/proc/mob_resist_buckle(mob/M)
+	SHOULD_CALL_PARENT(TRUE)
 
 /**
  * called to initiate buckle resist
@@ -292,23 +301,31 @@
  * called when we're buckled to something.
  */
 /mob/proc/buckled(atom/movable/AM, flags, mob/user)
+	SHOULD_CALL_PARENT(TRUE)
 
 /**
  * called when we're unbuckled from something
  */
 /mob/proc/unbuckled(atom/movable/AM, flags, mob/user)
+	SHOULD_CALL_PARENT(TRUE)
 
 /**
  * can we buckle to something?
+ *
+ * we get final say
  */
-/mob/proc/can_buckle(atom/movable/AM, flags, mob/user)
-	return TRUE
+/mob/proc/can_buckle(atom/movable/AM, flags, mob/user, movable_opinion)
+	SHOULD_CALL_PARENT(TRUE)
+	return movable_opinion
 
 /**
  * can we unbuckle from something?
+ *
+ * we get final say
  */
-/mob/proc/can_unbuckle(atom/movable/AM, flags, mob/user)
-	return TRUE
+/mob/proc/can_unbuckle(atom/movable/AM, flags, mob/user, movable_opinion)
+	SHOULD_CALL_PARENT(TRUE)
+	return movable_opinion
 
 /**
  * call to try to resist out of a buckle
