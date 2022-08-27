@@ -184,7 +184,7 @@
 				if(!toggle)
 					return
 				toggle = ckey(toggle)
-				if(toggle in assembled)
+				if(toggle in visibility_exceptions)
 					visibility_exceptions -= toggle
 					to_chat(nif.human, SPAN_BOLDNOTICE("[toggle] removed from exceptions."))
 				else
