@@ -19,7 +19,11 @@
 //	if(!target || !can_attack(target) || (!(target in list_targets())) )
 	if(QDELETED(target) || !can_attack(target))
 		ai_log("engage_target() : Lost sight of target.", AI_LOG_TRACE)
-		lose_target() // We lost them.
+		if(!ranged || QDELETED(target))
+			lose_target() // We lost them.
+		else
+			follow_target(target, 100)
+			return
 
 		if(!find_target()) // If we can't get a new one, then wait for a bit and then time out.
 			set_stance(STANCE_IDLE)
