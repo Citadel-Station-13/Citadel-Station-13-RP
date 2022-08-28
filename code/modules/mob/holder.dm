@@ -105,6 +105,10 @@
 		to_chat(held, SPAN_WARNING("You struggle free of [loc]."))
 		held.forceMove(get_turf(held))
 
+/obj/item/holder/can_equip(mob/M, slot, mob/user, flags)
+	if(M == held_mob)
+		return FALSE
+	return ..()
 
 //Mob specific holders.
 /obj/item/holder/diona
