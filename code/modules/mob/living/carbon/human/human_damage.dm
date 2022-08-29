@@ -33,7 +33,7 @@
 			if(amount > 0)
 				sponge.take_damage(amount)
 			else
-				sponge.heal_damage_i(amount, can_revive = TRUE)
+				sponge.heal_damage_i(-amount, can_revive = TRUE)
 			brainloss = sponge.damage
 		else
 			brainloss = 200
