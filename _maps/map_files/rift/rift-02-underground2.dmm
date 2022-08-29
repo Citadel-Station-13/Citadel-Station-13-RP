@@ -9057,9 +9057,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
-"tR" = (
-/turf/simulated/open,
-/area/maintenance/lower/mining)
 "tT" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -9351,7 +9348,7 @@
 	dir = 8
 	},
 /obj/structure/railing,
-/turf/simulated/open,
+/turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
 "wm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -9448,7 +9445,7 @@
 	dir = 4
 	},
 /obj/structure/railing,
-/turf/simulated/open,
+/turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
 "wV" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
@@ -9612,7 +9609,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/chapel/chapel_morgue)
 "xI" = (
-/turf/simulated/open,
+/turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
 "xK" = (
 /obj/machinery/door/firedoor/glass/hidden{
@@ -10607,7 +10604,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/open,
+/turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
 "FM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -10900,7 +10897,7 @@
 /obj/structure/sign/mining{
 	pixel_y = 32
 	},
-/turf/simulated/open,
+/turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
 "Iq" = (
 /obj/structure/railing{
@@ -32825,10 +32822,10 @@ vO
 Tg
 XS
 JP
-tR
-tR
-tR
-tR
+Ze
+Ze
+Ze
+Ze
 xI
 xI
 Mj
