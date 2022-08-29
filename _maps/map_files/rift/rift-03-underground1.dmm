@@ -3828,7 +3828,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
 "gL" = (
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/open,
 /area/engineering/engine_balcony)
 "gM" = (
 /obj/structure/catwalk,
@@ -4697,6 +4697,15 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/rift/surfacebase/underground/under1)
+"iv" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/engineering/engine_balcony)
 "iw" = (
 /obj/structure/closet/crate,
 /obj/item/circuitboard/smes,
@@ -6215,10 +6224,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/engineering/locker_room)
 "ll" = (
-/obj/structure/railing,
 /obj/structure/railing{
-	dir = 4
+	dir = 8
 	},
+/obj/structure/railing,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_balcony)
 "lo" = (
@@ -6794,6 +6803,9 @@
 	dir = 4
 	},
 /obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_balcony)
 "mu" = (
@@ -6887,12 +6899,6 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/primary/underone)
 "mD" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/railing{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_balcony)
 "mF" = (
@@ -9728,6 +9734,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/chief)
+"qU" = (
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/engineering/engine_balcony)
 "qV" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -12772,6 +12784,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
+"Br" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/engineering/engine_balcony)
 "Bu" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
@@ -13953,15 +13972,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/drone_fabrication)
-"GG" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
-/area/engineering/engine_balcony)
 "GM" = (
 /obj/machinery/door/airlock/maintenance/engi,
 /turf/simulated/floor/plating,
@@ -14519,6 +14529,15 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
+"IP" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/engineering/engine_balcony)
 "IR" = (
 /obj/structure/table/steel,
 /obj/item/reagent_containers/spray/squirt,
@@ -15195,6 +15214,13 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
+"LM" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/engineering/engine_balcony)
 "LN" = (
 /turf/simulated/floor/plating,
 /area/security/prison)
@@ -15880,7 +15906,7 @@
 /area/turbolift/rmine/under1)
 "OG" = (
 /obj/structure/railing{
-	dir = 8
+	dir = 4
 	},
 /obj/structure/railing,
 /turf/simulated/floor/tiled/dark,
@@ -32860,7 +32886,7 @@ lY
 lY
 lY
 lY
-OG
+ll
 mi
 lI
 lY
@@ -33050,17 +33076,17 @@ fC
 jw
 kF
 lO
-gL
-gL
-gL
-gL
+mD
+mD
+mD
+mD
 mn
 mi
 lO
-gL
-gL
-gL
-gL
+mD
+mD
+mD
+mD
 mn
 nn
 jw
@@ -33244,8 +33270,8 @@ fE
 jw
 kF
 lO
-gL
-gL
+mD
+mD
 zW
 Bv
 zW
@@ -33253,8 +33279,8 @@ QD
 zW
 Bv
 zW
-gL
-gL
+mD
+mD
 mn
 nn
 jw
@@ -33438,7 +33464,7 @@ jV
 jw
 kF
 lO
-gL
+mD
 zW
 zW
 wk
@@ -33448,7 +33474,7 @@ JL
 JL
 zW
 zW
-gL
+mD
 mn
 nn
 jw
@@ -33642,7 +33668,7 @@ jN
 JL
 JL
 Um
-gL
+mD
 mn
 nn
 jw
@@ -33837,7 +33863,7 @@ nb
 JL
 zW
 lZ
-ll
+LM
 nn
 jw
 oo
@@ -34407,7 +34433,7 @@ fn
 hQ
 kp
 Td
-GG
+IP
 lY
 zW
 JL
@@ -34418,7 +34444,7 @@ jN
 JL
 zh
 Um
-gL
+mD
 mn
 nn
 jw
@@ -34602,7 +34628,7 @@ gF
 jw
 Td
 lO
-gL
+mD
 zW
 zW
 JL
@@ -34612,7 +34638,7 @@ JL
 JL
 zW
 zW
-gL
+mD
 mn
 nn
 jw
@@ -34796,8 +34822,8 @@ gG
 jw
 kF
 lO
-gL
-gL
+mD
+mD
 zW
 Bv
 zW
@@ -34805,8 +34831,8 @@ Fp
 zW
 Bv
 zW
-gL
-gL
+mD
+lZ
 mn
 nn
 jw
@@ -34990,18 +35016,18 @@ iz
 jw
 kF
 lO
-gL
-gL
-gL
-gL
+mD
+mD
+mD
+mD
 mn
 mi
 lO
-gL
-gL
-gL
-gL
+mD
+mD
 mn
+gL
+Br
 nn
 jw
 nE
@@ -35188,13 +35214,13 @@ lZ
 lZ
 lZ
 lZ
-mt
+OG
 mi
-mD
+iv
 lZ
 lZ
-lZ
-lZ
+OG
+gL
 mt
 nn
 jw
@@ -35388,7 +35414,7 @@ lV
 lV
 lV
 lV
-lV
+qU
 lV
 nc
 jw
