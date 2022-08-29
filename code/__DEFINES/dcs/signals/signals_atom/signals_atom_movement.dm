@@ -48,7 +48,6 @@
 //! Relaymoves
 /// Called from relaymove from buckled: (mob/M, dir)
 #define COMSIG_ATOM_RELAYMOVE_FROM_BUCKLED		"relaymove_buckled"
-
 //! Relaymoves - Returns
 	/// handled - skip other logic
 	#define COMPONENT_RELAYMOVE_HANDLED			(1<<0)

@@ -49,6 +49,7 @@
 	RegisterSignal(parent, COMSIG_MOVABLE_PRE_MOB_BUCKLED, .proc/signal_hook_pre_buckle)
 	RegisterSignal(parent, COMSIG_MOVABLE_MOB_BUCKLED, .proc/signal_hook_post_buckle)
 	RegisterSignal(parent, COMSIG_MOVABLE_USER_BUCKLE_MOB, .proc/signal_hook_user_buckle)
+	RegisterSignal(parent, COMSIG_MOVABLE_MOB_UNBUCKLED, .proc/signal_hook_mob_unbuckle)
 	if(implements_can_buckle_hints)
 		RegisterSignal(parent, COMSIG_MOVABLE_CAN_BUCKLE_MOB, .proc/signal_hook_can_buckle)
 
@@ -58,7 +59,8 @@
 		COMSIG_MOVABLE_PRE_MOB_BUCKLED,
 		COMSIG_MOVABLE_MOB_BUCKLED,
 		COMSIG_MOVABLE_CAN_BUCKLE_MOB,
-		COMSIG_MOVABLE_USER_BUCKLE_MOB
+		COMSIG_MOVABLE_USER_BUCKLE_MOB,
+		COMSIG_MOVABLE_MOB_UNBUCKLED
 	))
 
 /datum/component/riding_filter/proc/signal_hook_user_buckle(atom/movable/source, mob/M, flags, mob/user)
@@ -76,6 +78,10 @@
 		// don't care
 		return
 	post_buckle_handler_tweak(handler, M, flags, user)
+
+/datum/component/riding_filter/proc/signal_hook_mob_unbuckle(atom/movable/source, mob/M, flags, mob/user)
+	SIGNAL_HANDLER
+	cleanup_rider(user)
 
 /**
  * if implemented (set `implements_can_buckle_hints` to TRUE), allows us to hint early
@@ -138,47 +144,81 @@
 /datum/component/riding_filter/proc/post_buckle_handler_tweak(datum/component/riding_handler/handler, mob/M, flags, mob/user, ...)
 	return
 
+/datum/component/riding_filter/proc/cleanup_rider(mob/rider)
+	cleanup_rider_offhands(rider)
+	check_offhands(rider, unbuckling)
+
 /**
  * ensures offhands required are equipped
  * pass in a rider to only check them, else we check all.
+ * pass in unbuckling if checking after unbuckling, so we can destroy offhands without triggering a loop.
+ *
+ * ! This proc is shitcode, don't fuck with this without knowing what you're doing.
  */
-/datum/component/riding_filter/proc/check_offhands(mob/rider)
+/datum/component/riding_filter/proc/check_offhands(mob/rider, unbuckling)
 	if(!offhands_needed_rider)
 		return
-	if(rider)
-
-	else
-
-		#warn impl above
+	if(unbuckling)
+		return		// base level don't care as of now
 	var/atom/movable/AM = parent
-	var/list/buckled = AM.buckled_mobs.Copy()
-	for(var/obj/item/offhand/riding/R as anything in our_offhands)
-		buckled -= R.worn_mob()
-	for(var/mob/rider in buckled)
-		rider.visible_message(
-			SPAN_WARNING("[rider] falls off [AM]."),
-			SPAN_WARNING("You slide off [AM].")
-		)
-		AM.unbuckle_mob(rider, BUCKLE_OP_FORCE)
+	if(rider)
+		// verify their offhands are there
+		var/buckled = rider in AM.buckled_mobs
+		// if buckled and not enough
+		if(buckled && (length(get_offhands_of_rider(rider)) < offhands_needed_rider))
+			// kick off
+			AM.unbuckle_mob(rider, BUCKLE_OP_FORCE)
+	else
+		// verify all offhands are there
+		for(var/mob/rider in AM.buckled_mobs)
+			if(length(get_offhands_of_rider(rider)) < offhands_needed_rider)
+				// kick off if not enough
+				rider.visible_message(
+					SPAN_NOTICE("[rider] slides off [AM]."),
+					SPAN_NOTICE("You slide off [AM].")
+				)
+				AM.unbuckle_mob(rider, BUCKLE_OP_FORCE)
 
-/datum/component/riding_filter/proc/offhand_destroyed(obj/item/offhand/riding/offhand)
-	our_offhands -= offhand
+/datum/component/riding_filter/proc/get_offhands_of_rider(mob/rider)
+	RETURN_TYPE(/list)
+	. = list()
+	for(var/obj/item/offhand/riding/R as anything in rider.get_held_items_of_type(/obj/item/offhand/riding))
+		if(R.filter == src)
+			. += R
+
+/datum/component/riding_filter/proc/offhand_destroyed(obj/item/offhand/riding/offhand, mob/rider)
+	LAZYREMOVE(our_offhands, offhand)
 	check_offhands(rider)
 
 /datum/component/riding_filter/proc/try_equip_offhand_to_rider(mob/rider)
 	var/obj/item/offhand/riding/R = new(rider)
 	if(rider.put_in_hands(R))
 		R.filter = src
+		LAZYADD(our_offhands, R)
 		return TRUE
 	qdel(R)
 	return FALSE
+
+/datum/component/riding_filter/proc/cleanup_rider_offhands(mob/rider)
+	for(var/obj/item/offhand/riding/R as anything in rider.get_held_items_of_type(/obj/item/offhand/riding))
+		LAZYREMOVE(our_offhands, R)
+		R._silently_erase()
 
 /obj/item/offhand/riding
 	name = "riding offhand"
 	desc = "Your hand is full carrying someone on you!"
 	/// riding handler component
 	var/datum/component/riding_filter/mob/filter
+	/// rider
+	var/mob/rider
 
 /obj/item/offhand/riding/Destroy()
-	filter?.offhand_destroyed(src)
+	filter?.offhand_destroyed(src, rider)
+	filter = null
+	rider = null
 	return ..()
+
+/obj/item/offhand/riding/proc/_silently_erase()
+	filter = null
+	rider = null
+	qdel(src)
