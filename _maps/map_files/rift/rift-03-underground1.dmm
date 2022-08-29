@@ -4622,18 +4622,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
 "in" = (
-/obj/structure/catwalk,
-/obj/structure/cable/cyan{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/door/airlock/glass_external{
-	name = "SME Access";
-	req_one_access = list()
-	},
-/turf/simulated/floor/tiled/dark,
-/area/engineering/engine_balcony)
+/obj/effect/floor_decal/techfloor/orange,
+/turf/simulated/mineral/icerock,
+/area/rift/surfacebase/underground/under1)
 "io" = (
 /obj/random/junk,
 /obj/random/maintenance/clean,
@@ -4881,7 +4872,7 @@
 /obj/effect/floor_decal/borderfloorblack/corner,
 /obj/effect/floor_decal/techfloor/orange/corner,
 /turf/simulated/floor/tiled/dark,
-/area/engineering/break_room)
+/area/hallway/secondary/engineering_hallway)
 "iO" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/portable_atmospherics/powered/scrubber,
@@ -4901,7 +4892,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/break_room)
 "iS" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/closet/crate,
@@ -5148,20 +5139,14 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "jp" = (
-/obj/structure/sign/warning/secure_area{
-	pixel_y = -32
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 8
 	},
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/transit/orange,
-/obj/machinery/button/remote/blast_door{
-	icon_rotation = 180;
-	id = "sme_core_access";
-	name = "Supermatter core access control";
-	pixel_x = 5;
-	pixel_y = -28
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
-/area/engineering/engine_balcony)
+/area/hallway/secondary/engineering_hallway)
 "jq" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/cable/cyan{
@@ -5275,6 +5260,21 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/engineering/engine_balcony)
+"jA" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/orange/border,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/button/remote/blast_door{
+	icon_rotation = 180;
+	id = "sme_core_access";
+	name = "Supermatter core access control";
+	pixel_x = 5;
+	pixel_y = -28
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_balcony)
@@ -6128,6 +6128,27 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
+"lb" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/transit/orange{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "sme_core_access";
+	name = "Supermatter core access control";
+	pixel_y = 8;
+	pixel_x = 28
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/engineering_hallway)
 "lc" = (
 /turf/simulated/floor/plating,
 /area/storage/tech)
@@ -6501,15 +6522,6 @@
 	},
 /turf/simulated/open,
 /area/engineering/engine_balcony)
-"lP" = (
-/obj/structure/catwalk,
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/engineering/engine_balcony)
 "lQ" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -6703,26 +6715,18 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/primary/underone)
 "mi" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 4
+/obj/structure/catwalk,
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/transit/orange{
-	dir = 4
-	},
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/button/remote/blast_door{
-	dir = 4;
-	id = "sme_core_access";
-	name = "Supermatter core access control";
-	pixel_y = 8;
-	pixel_x = 28
+/obj/machinery/door/airlock/glass_external{
+	name = "SME Access";
+	req_one_access = list()
 	},
 /turf/simulated/floor/tiled/dark,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/engine_balcony)
 "mj" = (
 /obj/structure/foamedmetal,
 /turf/simulated/floor/plating,
@@ -7227,10 +7231,6 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/glass_external{
-	name = "SME Access";
-	req_one_access = list()
-	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_balcony)
 "nh" = (
@@ -7258,11 +7258,6 @@
 /obj/structure/table/rack/shelf,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/locker_room)
-"nj" = (
-/obj/effect/floor_decal/borderfloorblack/corner,
-/obj/effect/floor_decal/techfloor/orange/corner,
-/turf/simulated/floor/tiled/dark,
-/area/hallway/secondary/engineering_hallway)
 "nk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -8327,15 +8322,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
-"oR" = (
-/obj/effect/floor_decal/borderfloorblack/corner{
-	dir = 8
-	},
-/obj/effect/floor_decal/techfloor/orange/corner{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
-/area/engineering/break_room)
 "oS" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -8554,6 +8540,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
+"pi" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/orange/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/hallway/secondary/engineering_hallway)
 "pj" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -8649,6 +8644,29 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/storage)
+"pq" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/transit/orange{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "sme_core_access";
+	name = "Supermatter core access control";
+	pixel_y = 8;
+	pixel_x = -28
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/engineering_hallway)
 "pr" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -8754,10 +8772,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/storage)
-"px" = (
-/obj/effect/floor_decal/techfloor/orange,
-/turf/simulated/mineral/icerock,
-/area/rift/surfacebase/underground/under1)
 "pz" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -9164,14 +9178,10 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "pU" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/orange/border{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/hallway/secondary/engineering_hallway)
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/transit/orange,
+/turf/simulated/floor/tiled/dark,
+/area/engineering/break_room)
 "pV" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -9203,28 +9213,20 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
 "pX" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
+/obj/structure/sign/warning/secure_area{
+	pixel_y = -32
 	},
-/obj/effect/floor_decal/transit/orange{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/transit/orange,
 /obj/machinery/button/remote/blast_door{
-	dir = 4;
+	icon_rotation = 180;
 	id = "sme_core_access";
 	name = "Supermatter core access control";
-	pixel_y = 8;
-	pixel_x = -28
+	pixel_x = 5;
+	pixel_y = -28
 	},
 /turf/simulated/floor/tiled/dark,
-/area/hallway/secondary/engineering_hallway)
+/area/engineering/engine_balcony)
 "pY" = (
 /obj/machinery/door/airlock/glass_engineeringatmos,
 /obj/effect/floor_decal/borderfloorblack{
@@ -12238,6 +12240,11 @@
 /obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
+"za" = (
+/obj/effect/floor_decal/borderfloorblack/corner,
+/obj/effect/floor_decal/techfloor/orange/corner,
+/turf/simulated/floor/tiled/dark,
+/area/engineering/break_room)
 "zb" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -14867,21 +14874,6 @@
 /obj/item/reagent_containers/food/snacks/crayonburger_grn,
 /turf/simulated/floor/plating,
 /area/rift/surfacebase/underground/under1)
-"Kt" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/corner/orange/border,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/button/remote/blast_door{
-	icon_rotation = 180;
-	id = "sme_core_access";
-	name = "Supermatter core access control";
-	pixel_x = 5;
-	pixel_y = -28
-	},
-/turf/simulated/floor/tiled/dark,
-/area/engineering/engine_balcony)
 "Kv" = (
 /obj/effect/overlay/snow/floor,
 /obj/item/towel/random,
@@ -15893,11 +15885,17 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/turbolift/rmine/under1)
 "OG" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+/obj/structure/catwalk,
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/techfloor/orange,
-/turf/simulated/floor/tiled/techfloor,
+/obj/machinery/door/airlock/glass_external{
+	name = "SME Access";
+	req_one_access = list()
+	},
+/turf/simulated/floor/tiled/dark,
 /area/engineering/engine_balcony)
 "OI" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -16905,10 +16903,12 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "Td" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/transit/orange,
-/turf/simulated/floor/tiled/dark,
-/area/engineering/break_room)
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/floor_decal/techfloor/orange,
+/turf/simulated/floor/tiled/techfloor,
+/area/engineering/engine_balcony)
 "Tf" = (
 /obj/machinery/mech_recharger,
 /obj/machinery/camera/network/civilian,
@@ -31515,7 +31515,7 @@ GT
 TI
 gH
 gH
-pU
+pi
 gH
 gH
 pg
@@ -32873,7 +32873,7 @@ lY
 lY
 lY
 vI
-in
+mi
 vI
 lY
 lY
@@ -32882,7 +32882,7 @@ lY
 mk
 nn
 jw
-Kt
+jA
 fj
 lN
 im
@@ -33250,7 +33250,7 @@ dU
 ej
 Cr
 MF
-mi
+lb
 fz
 fE
 jw
@@ -33275,7 +33275,7 @@ ie
 hV
 nO
 dd
-nj
+iN
 iX
 jk
 po
@@ -33469,7 +33469,7 @@ hI
 hW
 nP
 jQ
-Td
+pU
 hI
 hI
 pu
@@ -33663,7 +33663,7 @@ hI
 nL
 oc
 jQ
-oR
+iR
 iY
 hI
 pv
@@ -34042,8 +34042,8 @@ UD
 nd
 EV
 EZ
-lP
 ng
+OG
 ns
 nw
 oo
@@ -34439,7 +34439,7 @@ hI
 nJ
 pb
 jQ
-iN
+za
 jb
 hI
 pF
@@ -34612,7 +34612,7 @@ eV
 fm
 gF
 jw
-OG
+Td
 lO
 gL
 zW
@@ -34628,12 +34628,12 @@ gL
 mn
 nn
 jw
-jp
+pX
 hI
 hW
 pc
 jQ
-Td
+pU
 hI
 hI
 pG
@@ -34802,7 +34802,7 @@ kZ
 la
 lG
 Ru
-pX
+pq
 hr
 gG
 jw
@@ -34827,7 +34827,7 @@ lv
 ic
 pd
 dd
-iR
+jp
 jc
 jm
 pH
@@ -35201,7 +35201,7 @@ lZ
 lZ
 lZ
 vI
-in
+mi
 vI
 lZ
 lZ
@@ -36945,7 +36945,7 @@ bG
 bG
 bG
 bG
-bG
+dd
 bG
 bG
 bG
@@ -38104,7 +38104,7 @@ GU
 sR
 sR
 sa
-px
+in
 sa
 sa
 sa

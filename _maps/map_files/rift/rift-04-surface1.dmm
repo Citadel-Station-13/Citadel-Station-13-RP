@@ -452,16 +452,6 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/exam_room)
-"auo" = (
-/obj/structure/grille,
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 5
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/central_heating/surface_one)
 "avr" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 8
@@ -650,12 +640,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/storage/tools)
-"aCf" = (
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/central_heating/surface_one)
 "aCm" = (
 /obj/effect/floor_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled/white,
@@ -4070,12 +4054,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/civilian_hallway_mid)
-"dhb" = (
-/obj/machinery/atmospherics/portables_connector{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/central_heating/surface_one)
 "dhB" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -5513,16 +5491,6 @@
 /obj/structure/railing,
 /turf/simulated/open/lythios43c,
 /area/space)
-"dXn" = (
-/obj/structure/grille,
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 6
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/central_heating/surface_one)
 "dXo" = (
 /obj/structure/grille,
 /obj/structure/window/basic/full,
@@ -7804,12 +7772,6 @@
 	},
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfaceeva/aa/surface_south)
-"fWR" = (
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 9
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/central_heating/surface_one)
 "fWS" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/monotile,
@@ -9075,16 +9037,6 @@
 	},
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
-"gUd" = (
-/obj/structure/grille,
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 9
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/central_heating/surface_one)
 "gUg" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/steel,
@@ -9899,10 +9851,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)
-"hwW" = (
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging,
-/turf/simulated/floor/plating,
-/area/maintenance/central_heating/surface_one)
 "hyp" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -13439,10 +13387,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
-"jRp" = (
-/obj/machinery/atmospherics/pipe/manifold/visible,
-/turf/simulated/floor/plating,
-/area/maintenance/central_heating/surface_one)
 "jRr" = (
 /obj/structure/railing,
 /obj/structure/railing{
@@ -18428,9 +18372,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
 "nmC" = (
-/obj/machinery/atmospherics/component/binary/pump{
-	dir = 4
-	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
@@ -20116,12 +20057,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/server)
-"oiu" = (
-/obj/machinery/atmospherics/pipe/manifold/visible{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/central_heating/surface_one)
 "oiw" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -21172,10 +21107,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/evahallway)
 "oSe" = (
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 4
-	},
-/obj/machinery/portable_atmospherics/canister/empty,
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
 /area/maintenance/central_heating/surface_one)
@@ -21249,12 +21180,6 @@
 /obj/item/storage/fancy/cigar/taj,
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/outside1)
-"oUs" = (
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/central_heating/surface_one)
 "oUP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -23509,9 +23434,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "qBE" = (
-/obj/machinery/atmospherics/component/unary/heater{
-	dir = 1
-	},
+/obj/machinery/door/firedoor/glass,
+/obj/structure/lattice,
 /turf/simulated/floor/plating,
 /area/maintenance/central_heating/surface_one)
 "qCk" = (
@@ -25443,12 +25367,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/game_room)
-"sdI" = (
-/obj/machinery/atmospherics/portables_connector{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/central_heating/surface_one)
 "sdN" = (
 /obj/machinery/door/airlock/maintenance/int{
 	name = "Emergency Storage"
@@ -25885,12 +25803,6 @@
 /obj/effect/debris/cleanable/spiderling_remains,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
-"snR" = (
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 10
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/central_heating/surface_one)
 "snT" = (
 /turf/simulated/wall,
 /area/maintenance/library)
@@ -27261,12 +27173,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)
-"tjy" = (
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 6
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/central_heating/surface_one)
 "tjR" = (
 /turf/simulated/floor/wood,
 /area/library)
@@ -28209,16 +28115,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
-"tRK" = (
-/obj/structure/grille,
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 10
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/central_heating/surface_one)
 "tSj" = (
 /turf/simulated/floor/wood,
 /area/rnd/outpost/xenobiology/outpost_office)
@@ -28690,13 +28586,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
-"uhS" = (
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 4
-	},
-/obj/machinery/light/small,
-/turf/simulated/floor/plating,
-/area/maintenance/central_heating/surface_one)
 "uii" = (
 /obj/machinery/door/airlock/multi_tile/glass,
 /obj/machinery/door/firedoor/glass,
@@ -29119,12 +29008,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/hallway)
-"ure" = (
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 5
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/central_heating/surface_one)
 "urz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -29328,9 +29211,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_emt_bay)
 "uyH" = (
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 4
-	},
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -33065,12 +32945,6 @@
 /obj/machinery/mineral/output,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
-"xnI" = (
-/obj/machinery/atmospherics/portables_connector{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/central_heating/surface_one)
 "xoa" = (
 /obj/machinery/atmospherics/pipe/manifold/visible{
 	dir = 4
@@ -48998,7 +48872,7 @@ otM
 tKy
 mMZ
 kyU
-prt
+qBE
 bQA
 bQA
 oNE
@@ -49006,8 +48880,8 @@ bQA
 gQt
 gQt
 gQt
-dXn
-auo
+gQt
+gQt
 bQA
 loB
 mAx
@@ -49201,7 +49075,7 @@ hdO
 hdO
 hdO
 nmC
-uhS
+oSe
 bQA
 nTS
 bjG
@@ -49386,16 +49260,16 @@ otM
 smf
 bMj
 bQA
-tjy
-ure
-tjy
-ure
-tjy
-ure
-tjy
-oUs
-jRp
-xnI
+kDP
+kDP
+kDP
+kDP
+kDP
+kDP
+kDP
+kDP
+kDP
+kDP
 bQA
 bTa
 wMe
@@ -49580,16 +49454,16 @@ otM
 smf
 hiW
 bQA
-aCf
-aCf
-aCf
-aCf
-aCf
-aCf
-aCf
 kDP
-oiu
-qBE
+kDP
+kDP
+kDP
+kDP
+kDP
+kDP
+kDP
+kDP
+kDP
 bQA
 ptS
 uaM
@@ -49775,15 +49649,15 @@ smf
 hVL
 bQA
 uyH
-aCf
-aCf
-aCf
-aCf
-aCf
-aCf
 kDP
-oiu
-dhb
+kDP
+kDP
+kDP
+kDP
+kDP
+kDP
+kDP
+kDP
 bQA
 paX
 paX
@@ -49968,16 +49842,16 @@ otM
 smf
 obS
 bQA
-aCf
-snR
-fWR
-snR
-fWR
-snR
-fWR
 kDP
-oiu
-qBE
+kDP
+kDP
+kDP
+kDP
+kDP
+kDP
+kDP
+kDP
+kDP
 bQA
 guq
 cxu
@@ -50162,16 +50036,16 @@ otM
 smf
 vbM
 bQA
-snR
-hwW
-hwW
-hwW
-hwW
-hwW
-hwW
-oUs
-jRp
-sdI
+kDP
+kDP
+kDP
+kDP
+kDP
+kDP
+kDP
+kDP
+kDP
+kDP
 bQA
 svl
 aca
@@ -50550,7 +50424,7 @@ otM
 tKy
 mMZ
 vwn
-prt
+qBE
 bQA
 bQA
 cIW
@@ -50558,8 +50432,8 @@ bQA
 deD
 deD
 deD
-tRK
-gUd
+deD
+deD
 bQA
 pik
 lNO
