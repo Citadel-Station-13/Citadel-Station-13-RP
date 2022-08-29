@@ -216,6 +216,7 @@
 	. = ..()
 	riding_datum = new /datum/riding/dogborg(src)
 
+#warn murderize
 /mob/living/silicon/robot/buckle_mob(mob/living/M, forced = FALSE, check_loc = TRUE)
 	if(forced)
 		return ..() // Skip our checks

@@ -500,6 +500,7 @@
 #include "code\datums\components\crafting\recipes\recipes_robot.dm"
 #include "code\datums\components\crafting\recipes\recipes_weapon_and_ammo.dm"
 #include "code\datums\components\riding\riding_filter.dm"
+#include "code\datums\components\riding\riding_handler.dm"
 #include "code\datums\components\riding\mob\_mob.dm"
 #include "code\datums\components\riding\mob\animal.dm"
 #include "code\datums\components\riding\mob\human.dm"

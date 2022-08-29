@@ -130,7 +130,6 @@
 
 /obj/structure/bed/chair/office
 	anchored = FALSE
-	buckle_prevents_pull = FALSE
 
 /obj/structure/bed/chair/office/update_icon()
 	return

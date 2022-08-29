@@ -293,6 +293,19 @@
 		return TRUE
 	return relaymove(user, direction)
 
+/**
+ * call when you uncuff/whatever someone
+ */
+/atom/movable/proc/buckled_reconsider_restraints(mob/user)
+	if(!(user in buckled_mobs))
+		return
+	if(!(buckle_flags & BUCKLING_REQUIRES_RESTRAINTS))
+		return
+	if(user.restrained())
+		return
+	to_chat(user, SPAN_NOTICE("You are unbuckled from [src] as your restraints are removed."))
+	unbuckle_mob(user, BUCKLE_OP_FORCE)
+
 //! mob stuff
 
 /**

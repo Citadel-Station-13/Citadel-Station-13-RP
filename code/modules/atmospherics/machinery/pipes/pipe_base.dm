@@ -3,7 +3,7 @@
 //
 /obj/machinery/atmospherics/pipe
 	buckle_allowed = TRUE
-	buckle_require_restraints = TRUE
+	buckle_flags = BUCKLING_REQUIRES_RESTRAINTS
 
 	var/datum/gas_mixture/air_temporary // used when reconstructing a pipeline that broke
 	var/datum/pipeline/parent

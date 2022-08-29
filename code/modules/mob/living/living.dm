@@ -922,17 +922,7 @@ default behaviour is:
 	if(lying != lying_prev)
 		lying_prev = lying
 		update_transform()
-		#warn what the fuck
-		if(lying && LAZYLEN(buckled_mobs))
-			for(var/rider in buckled_mobs)
-				var/mob/living/L = rider
-				if(buckled_mobs[rider] != "riding")
-					continue // Only boot off riders
-				if(riding_datum)
-					riding_datum.force_dismount(L)
-				else
-					unbuckle_mob(L)
-				L.Stun(5)
+		SEND_SIGNAL(src, COMSIG_MOB_UPDATE_LYING, lying)
 
 	return canmove
 

@@ -9,19 +9,35 @@
 /datum/component/riding_handler
 	//? disabled as we don't have dupe handling
 	can_transfer = FALSE
+	//! main
 	/// expected typepath of what we're handling for
 	var/expected_typepath = /atom/movable
 	/// del after last person unbuckles
 	var/ephemeral = FALSE
 
+	//! check flags
 	/// rider check flags : kicks people off if they don't meet these requirements.
 	var/rider_check_flags = NONE
 	/// ridden check flags : kicks people off if the parent atom doesn't meet these requirements.
 	var/ridden_check_flags = NONE
 	/// handler flags : determines some of our behavior
 	var/riding_handler_flags = CF_RIDING_HANDLER_ALLOW_BORDER
+
+	//! offsets
+	/**
+	 * layer to set mobs to. 3 formats:
+	 * 1: bare number; used for all.
+	 * 2: list("[direction]" = layer); used for dir. 3: list(any of those) for specifying which index uses which.
+	 */
+
+	/// x offset to set mobs to. list or single number. if list, NESW =
+	#warn impl
+
+	//! component-controlled movemnet
+
+	//! operational
 	/// last dir. used to avoid redoing expensive setdir stuff
-	var/_last_dir
+	var/tmp/_last_dir
 
 
 	var/last_vehicle_move = 0 //used for move delays
@@ -38,7 +54,6 @@
 	var/list/allowed_turf_typecache
 	var/list/forbid_turf_typecache					//allow typecache for only certain turfs, forbid to allow all but those. allow only certain turfs will take precedence.
 	var/drive_verb = "drive"
-	var/del_on_unbuckle_all = FALSE
 
 /datum/component/riding_handler/Initialize()
 	. = ..()

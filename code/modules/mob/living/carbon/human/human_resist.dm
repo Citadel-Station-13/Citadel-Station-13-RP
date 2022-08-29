@@ -88,8 +88,7 @@
 
 		qdel(wear_suit)
 		wear_suit = null
-		if(buckled && buckled.buckle_require_restraints)
-			buckled.unbuckle_mob()
+		buckled?.buckled_reconsider_restraints(src)
 
 /mob/living/carbon/human/can_break_cuffs()
 	if(species.can_shred(src,1))

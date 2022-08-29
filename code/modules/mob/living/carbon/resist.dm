@@ -61,8 +61,7 @@
 				legcuffed = null
 				update_inv_legcuffed()
 
-			if(buckled && buckled.buckle_require_restraints)
-				buckled.unbuckle_mob()
+			buckled?.buckled_reconsider_restraints()
 
 			qdel(I)
 		else
