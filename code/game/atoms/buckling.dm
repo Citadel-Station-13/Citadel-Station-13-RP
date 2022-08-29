@@ -161,6 +161,7 @@
 
 #warn parse above
 #warn impl below
+#warn all of the below requires duplicate re-buckle checks.
 #warn signals
 //! movable stuff
 /**
@@ -170,7 +171,7 @@
  */
 /atom/movable/proc/drag_drop_buckle_interaction(atom/A, mob/user)
 	set waitfor = FALSE
-	if(!ismob(A))
+	if(!ismob(A) || (A in buckled_mobs))
 		return FALSE
 	var/mob/buckling = A
 	if(!buckle_allowed || (buckle_flags & BUCKLING_NO_USER_BUCKLE))

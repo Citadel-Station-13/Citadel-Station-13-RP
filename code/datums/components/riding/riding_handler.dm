@@ -378,23 +378,3 @@
 			qdel(O)
 	return TRUE
 
-/obj/item/offhand/riding
-	name = "riding offhand"
-	desc = "Your hand is full carrying someone on you!"
-	/// riding handler component
-	var/datum/component/riding_handler/mob/handler
-
-	#warn impl
-
-#warn parse below
-	var/mob/living/carbon/rider
-	var/mob/living/parent
-	var/selfdeleting = FALSE
-
-
-/obj/item/riding_offhand/Destroy()
-	var/atom/movable/AM = parent
-	if(selfdeleting)
-		if(rider in AM.buckled_mobs)
-			AM.unbuckle_mob(rider)
-	. = ..()
