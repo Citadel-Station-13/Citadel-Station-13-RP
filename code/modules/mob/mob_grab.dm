@@ -19,7 +19,7 @@
 	name = "grab"
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "reinforce"
-	item_flags = ITEM_ABSTRACT | DROPDEL
+	item_flags = ITEM_ABSTRACT | ITEM_DROPDEL
 	flags = ATOM_ABSTRACT
 	drop_sound = null
 	pickup_sound = null

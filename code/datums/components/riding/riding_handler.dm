@@ -7,8 +7,22 @@
  * Before that, riding_filter handles it.
  */
 /datum/component/riding_handler
+	//? disabled as we don't have dupe handling
+	can_transfer = FALSE
 	/// expected typepath of what we're handling for
 	var/expected_typepath = /atom/movable
+	/// del after last person unbuckles
+	var/ephemeral = FALSE
+
+	/// rider check flags : kicks people off if they don't meet these requirements.
+	var/rider_check_flags = NONE
+	/// ridden check flags : kicks people off if the parent atom doesn't meet these requirements.
+	var/ridden_check_flags = NONE
+	/// handler flags : determines some of our behavior
+	var/riding_handler_flags = CF_RIDING_HANDLER_ALLOW_BORDER
+	/// last dir. used to avoid redoing expensive setdir stuff
+	var/_last_dir
+
 
 	var/last_vehicle_move = 0 //used for move delays
 	var/last_move_diagonal = FALSE
@@ -26,19 +40,30 @@
 	var/drive_verb = "drive"
 	var/del_on_unbuckle_all = FALSE
 
-	/// rider check flags : kicks people off if they don't meet these requirements.
-	var/rider_check_flags = NONE
-	/// ridden check flags : kicks people off if the parent atom doesn't meet these requirements.
-	var/ridden_check_flags = NONE
-	/// handler flags : determines some of our behavior
-	var/riding_handler_flags = CF_RIDING_HANDLER_ALLOW_BORDER
-
 /datum/component/riding_handler/Initialize()
-	if(!ismovable(parent))
+	. = ..()
+	if(. & COMPONENT_INCOMPATIBLE)
+		return
+	if(!istype(parent, expected_typepath))
 		return COMPONENT_INCOMPATIBLE
-	RegisterSignal(parent, COMSIG_MOVABLE_BUCKLE, .proc/vehicle_mob_buckle)
-	RegisterSignal(parent, COMSIG_MOVABLE_UNBUCKLE, .proc/vehicle_mob_unbuckle)
-	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, .proc/vehicle_moved)
+
+/datum/component/riding_handler/RegisterWithParent()
+	. = ..()
+	RegisterSignal(parent, COMSIG_MOVABLE_MOB_BUCKLED, .proc/signal_hook_mob_buckled)
+	RegisterSignal(parent, COMSIG_MOVABLE_MOB_UNBUCKLED, .proc/signal_hook_mob_unbuckled)
+	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, .proc/signal_hook_handle_move)
+	RegisterSignal(parent, COMSIG_ATOM_DIR_CHANGE, .proc/signal_hook_handle_turn)
+
+/datum/component/riding_handler/UnregisterFromParent()
+	. = ..()
+	UnregisterSignal(parent, list(
+		COMSIG_MOVABLE_MOB_BUCKLED,
+		COMSIG_MOVABLE_MOB_UNBUCKLED,
+		COMSIG_MOVABLE_MOVED,
+		COMSIG_ATOM_DIR_CHANGE
+	))
+
+#warn parse below
 
 /datum/component/riding_handler/proc/vehicle_mob_unbuckle(datum/source, mob/living/M, force = FALSE)
 	var/atom/movable/AM = parent
@@ -353,26 +378,19 @@
 			qdel(O)
 	return TRUE
 
-/obj/item/riding_offhand
-	name = "offhand"
-	icon = 'icons/obj/items_and_weapons.dmi'
-	icon_state = "offhand"
-	w_class = WEIGHT_CLASS_HUGE
-	item_flags = ITEM_ABSTRACT | DROPDEL | NOBLUDGEON
-	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+/obj/item/offhand/riding
+	name = "riding offhand"
+	desc = "Your hand is full carrying someone on you!"
+	/// riding handler component
+	var/datum/component/riding_handler/mob/handler
+
+	#warn impl
+
+#warn parse below
 	var/mob/living/carbon/rider
 	var/mob/living/parent
 	var/selfdeleting = FALSE
 
-/obj/item/riding_offhand/dropped(mob/user, flags, atom/newLoc)
-	selfdeleting = TRUE
-	. = ..()
-
-/obj/item/riding_offhand/equipped(mob/user, slot, flags)
-	if(loc != rider && loc != parent)
-		selfdeleting = TRUE
-		qdel(src)
-	. = ..()
 
 /obj/item/riding_offhand/Destroy()
 	var/atom/movable/AM = parent

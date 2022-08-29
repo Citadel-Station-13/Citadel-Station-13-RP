@@ -82,7 +82,7 @@
 		var/datum/action/A = X
 		A.Remove(user)
 */
-	if((item_flags & DROPDEL) && !(flags & INV_OP_DELETING))
+	if((item_flags & ITEM_DROPDEL) && !(flags & INV_OP_DELETING))
 		qdel(src)
 
 	hud_unlayerise()

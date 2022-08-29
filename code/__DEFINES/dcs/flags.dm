@@ -1,12 +1,12 @@
 /// Return this from `/datum/component/Initialize` or `datum/component/OnTransfer` to have the component be deleted if it's applied to an incorrect type.
 /// `parent` must not be modified if this is to be returned.
 /// This will be noted in the runtime logs
-#define COMPONENT_INCOMPATIBLE 1
+#define COMPONENT_INCOMPATIBLE (1<<0)
 /// Returned in PostTransfer to prevent transfer, similar to `COMPONENT_INCOMPATIBLE`
-#define COMPONENT_NOTRANSFER 2
+#define COMPONENT_NOTRANSFER (1<<1)
 
 /// Return value to cancel attaching
-#define ELEMENT_INCOMPATIBLE 1
+#define ELEMENT_INCOMPATIBLE (1<<0)
 
 // /datum/element flags
 /// Causes the detach proc to be called when the host object is being deleted

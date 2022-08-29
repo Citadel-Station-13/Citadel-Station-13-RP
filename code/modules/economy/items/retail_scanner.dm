@@ -3,7 +3,7 @@
 	desc = "Swipe your ID card to make purchases electronically."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "retail_idle"
-	item_flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 	slot_flags = SLOT_BELT
 	req_access = list(access_heads)
 	w_class = ITEMSIZE_SMALL

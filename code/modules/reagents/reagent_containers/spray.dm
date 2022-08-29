@@ -4,7 +4,7 @@
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "cleaner"
 	item_state = "cleaner"
-	item_flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 	flags = OPENCONTAINER
 	slot_flags = SLOT_BELT | SLOT_HOLSTER
 	throwforce = 3

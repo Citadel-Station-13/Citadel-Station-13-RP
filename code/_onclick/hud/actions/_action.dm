@@ -9,7 +9,8 @@
 #define AB_CHECK_ALIVE 8
 #define AB_CHECK_INSIDE 16
 
-
+// todo: multiple owners
+// todo: ability datums? cooldown needs more checking
 /datum/action
 	var/name = "Generic Action"
 	var/action_type = AB_ITEM

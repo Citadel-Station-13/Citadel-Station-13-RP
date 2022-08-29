@@ -8,8 +8,10 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
-/obj/proc/attack_alien(mob/user as mob) //For calling in the event of Xenomorph or other alien checks.
-	return
+/atom/movable/attack_robot(mob/user)
+	if(click_unbuckle_interaction(user))
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 /obj/attack_robot(mob/living/user)
 	if(Adjacent(user) && has_buckled_mobs()) //Checks if what we're touching is adjacent to us and has someone buckled to it. This should prevent interacting with anti-robot manual valves among other things.
@@ -22,11 +24,6 @@
 		if(user_buckle_mob(M, user))
 			return TRUE
 
-/atom/movable/proc/has_buckled_mobs()
-	if(!buckled_mobs)
-		return FALSE
-	if(buckled_mobs.len)
-		return TRUE
 
 /atom/movable/proc/buckle_mob(mob/living/M, forced = FALSE, check_loc = TRUE)
 	if(check_loc && M.loc != loc)

@@ -156,7 +156,7 @@
 	icon_state = "tape"
 	w_class = ITEMSIZE_TINY
 	plane = MOB_PLANE
-	item_flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 	anchored = FALSE
 
 	var/obj/item/stuck = null

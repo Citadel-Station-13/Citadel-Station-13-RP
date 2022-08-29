@@ -14,10 +14,10 @@
 #define NO_MAT_REDEMPTION		(1<<5)
 */
 /// When dropped, it calls qdel on itself
-#define DROPDEL					(1<<6)
+#define ITEM_DROPDEL					(1<<6)
 
 /// when an item has this it produces no "X has been hit by Y with Z" message in the default attackby()
-#define NOBLUDGEON				(1<<7)
+#define ITEM_NOBLUDGEON				(1<<7)
 /// for all things that are technically items but used for various different stuff
 #define ITEM_ABSTRACT				(1<<8)
 /// When players should not be able to change the slowdown of the item (Speed potions, ect)
@@ -29,8 +29,8 @@
 
 DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(IN_INVENTORY),
-	BITFIELD(DROPDEL),
-	BITFIELD(NOBLUDGEON),
+	BITFIELD(ITEM_DROPDEL),
+	BITFIELD(ITEM_NOBLUDGEON),
 	BITFIELD(ITEM_ABSTRACT),
 	BITFIELD(IMMUTABLE_SLOW),
 	BITFIELD(SURGICAL_TOOL),

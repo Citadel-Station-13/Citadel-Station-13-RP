@@ -4,11 +4,14 @@
 #define COMSIG_MOVABLE_MOB_BUCKLED			"mob_buckled"
 /// called on mob unbuckled: (mob, flags, user)
 #define COMSIG_MOVABLE_MOB_UNBUCKLED		"mob_unbuckled"
+//! weird names to be more distinct from movable signals
 /// called on the mob that just got buckled: (mob, flags, user)
-#define COMSIG_MOB_BUCKLED					"buckled"
+#define COMSIG_MOB_BUCKLED_TO				"buckled"
 /// called on the mob that just got unbuckled: (mob, flags, user)
-#define COMSIG_MOB_UNBUCKLED				"unbuckled"
+#define COMSIG_MOB_UNBUCKLED_TO				"unbuckled"
 
+/// called during mob buckling: (mob, flags, user)
+#define COMSIG_MOVABLE_PRE_BUCKLE_MOB		"pre_buckle_mob"
 /// called during can buckle mob: (mob, flags, user)
 #define COMSIG_MOVABLE_CAN_BUCKLE_MOB		"can_buckle_mob"
 /// called during can unbuckle mob: (mob, flags, user)
@@ -23,10 +26,6 @@
 #define COMSIG_MOB_CAN_BUCKLE				"mob_can_buckle"
 /// called during can unbuckle on mob: (mob, flags, user, movable_opinion)
 #define COMSIG_MOB_CAN_UNBUCKLE				"mob_can_unbuckle"
-/// called buckled on mob: (mob, flags, user, movable_opinion)
-#define COMSIG_MOB_BUCKLED					"mob_buckled"
-/// called on unbuckled on mob: (mob, flags, user, movable_opinion)
-#define COMSIG_MOB_UNBUCKLED				"mob_can_unbuckle"
 	/// block mob buckle/unbuckle **silently**
 	#define COMPONENT_BLOCK_BUCKLE_OPERATION		(1<<0)
 	/// force allow buckle/unbuckled **silently**

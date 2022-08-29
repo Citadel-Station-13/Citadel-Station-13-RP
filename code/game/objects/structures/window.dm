@@ -275,7 +275,7 @@
 					hit(50)
 			return
 
-	if(W.item_flags & NOBLUDGEON)
+	if(W.item_flags & ITEM_NOBLUDGEON)
 		return
 
 	if(W.is_screwdriver())

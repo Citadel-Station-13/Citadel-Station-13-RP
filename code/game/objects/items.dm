@@ -50,7 +50,7 @@
 	/// Set this variable if the item protects its wearer against low pressures above a lower bound. Keep at null to disable protection. 0 represents protection against hard vacuum.
 	var/min_pressure_protection
 
-
+	//? todo: more advanced handling, multi actions, etc
 	var/datum/action/item_action/action = null
 	/// It is also the text which gets displayed on the action button. If not set it defaults to 'Use [name]'. If it's not set, there'll be no button.
 	var/action_button_name

@@ -11,7 +11,7 @@
 		slot_l_hand_str = 'icons/mob/items/lefthand.dmi',
 		slot_r_hand_str = 'icons/mob/items/righthand.dmi',
 	)
-	item_flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 	force = 10
 	throwforce = 10
 	throw_speed = 1
