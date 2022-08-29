@@ -21106,10 +21106,6 @@
 /obj/structure/reagent_dispensers/fueltank,
 /turf/simulated/floor/plating,
 /area/maintenance/evahallway)
-"oSe" = (
-/obj/machinery/light/small,
-/turf/simulated/floor/plating,
-/area/maintenance/central_heating/surface_one)
 "oSM" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
@@ -21879,7 +21875,7 @@
 "prt" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/lattice,
-/turf/simulated/open,
+/turf/simulated/floor/plating,
 /area/maintenance/central_heating/surface_one)
 "prD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -23433,11 +23429,6 @@
 /obj/random/tool,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
-"qBE" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/lattice,
-/turf/simulated/floor/plating,
-/area/maintenance/central_heating/surface_one)
 "qCk" = (
 /obj/item/storage/pill_bottle/dice_nerd{
 	pixel_x = 2;
@@ -28586,6 +28577,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
+"uhS" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/plating,
+/area/maintenance/central_heating/surface_one)
 "uii" = (
 /obj/machinery/door/airlock/multi_tile/glass,
 /obj/machinery/door/firedoor/glass,
@@ -48872,7 +48867,7 @@ otM
 tKy
 mMZ
 kyU
-qBE
+prt
 bQA
 bQA
 oNE
@@ -49075,7 +49070,7 @@ hdO
 hdO
 hdO
 nmC
-oSe
+uhS
 bQA
 nTS
 bjG
@@ -50239,7 +50234,7 @@ pKL
 pKL
 pKL
 nmC
-oSe
+uhS
 bQA
 aJk
 dYA
@@ -50424,7 +50419,7 @@ otM
 tKy
 mMZ
 vwn
-qBE
+prt
 bQA
 bQA
 cIW
