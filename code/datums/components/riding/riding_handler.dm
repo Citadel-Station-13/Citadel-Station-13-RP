@@ -12,8 +12,6 @@
 	//! main
 	/// expected typepath of what we're handling for
 	var/expected_typepath = /atom/movable
-	/// del after last person unbuckles
-	var/ephemeral = FALSE
 
 	//! check flags
 	/// rider check flags : kicks people off if they don't meet these requirements.
@@ -23,21 +21,20 @@
 	/// handler flags : determines some of our behavior
 	var/riding_handler_flags = CF_RIDING_HANDLER_ALLOW_BORDER
 
-	//! offsets
-	/**
-	 * layer to set mobs to. 3 formats:
-	 * 1: bare number; used for all.
-	 * 2: list("[direction]" = layer); used for dir. 3: list(any of those) for specifying which index uses which.
-	 */
-
-	/// x offset to set mobs to. list or single number. if list, NESW =
-	#warn impl
+	//! offsets - highly optimized, eat my ass if you can't handle it, we need high performance for /Move()s.
+	/// layer offset to set mobs to. list or single number. plane will always be set to vehicle's plane. if list, format is (north, east, south, west). lists can be nested to provide different offsets based on index.
+	var/list/offset_layer = 0
+	/// pixel offsets to set mobs to. list (x, y) OR list((x, y), (x, y), (x, y), (x, y)) for NESW OR list(list(list(NESW offsets))) for positionals.
+	var/list/offset_pixel = list(0, 0)
+	/// same as offset pixel, but without the third option. set to null to not modify.
+	var/list/offset_vehicle
 
 	//! component-controlled movemnet
 
 	//! operational
 	/// last dir. used to avoid redoing expensive setdir stuff
 	var/tmp/_last_dir
+
 
 
 	var/last_vehicle_move = 0 //used for move delays
@@ -78,17 +75,134 @@
 		COMSIG_ATOM_DIR_CHANGE
 	))
 
-#warn parse below
+/datum/component/riding_handler/proc/signal_hook_mob_buckled(atom/movable/source, mob/M, buckle_flags, mob/user)
+	SIGNAL_HANDLER
 
-/datum/component/riding_handler/proc/vehicle_mob_unbuckle(datum/source, mob/living/M, force = FALSE)
-	var/atom/movable/AM = parent
-	restore_position(M)
-	unequip_buckle_inhands(M)
-	if(del_on_unbuckle_all && !AM.has_buckled_mobs())
+/datum/component/riding_handler/proc/signal_hook_mob_unbuckled(atom/movable/source, mob/M, buckle_flags, mob/user)
+	SIGNAL_HANDLER
+
+	if(!source.has_buckled_mobs() && (riding_handler_flags & CF_RIDING_HANDLER_EPHEMERAL))
 		qdel(src)
 
-/datum/component/riding_handler/proc/vehicle_mob_buckle(datum/source, mob/living/M, force = FALSE)
-	handle_vehicle_offsets()
+/datum/component/riding_handler/proc/signal_hook_handle_move(atom/movable/source, atom/old_loc, dir)
+	SIGNAL_HANDLER
+
+/datum/component/riding_handler/proc/signal_hook_handle_turn(atom/movable/source, old_dir, new_dir)
+	SIGNAL_HANDLER
+	update_vehicle_on_turn(new_dir)
+	update_riders_on_turn(new_dir)
+
+/datum/component/riding_handler/proc/update_vehicle_on_turn(dir)
+	if(!offset_vehicle)
+		return
+	var/atom/movable/AM = parent
+	if(islist(offset_vehicle[1]))
+		// NESW format
+		switch(dir)
+			if(NORTH)
+				AM.pixel_x = offset_vehicle[1][1]
+				AM.pixel_y = offset_vehicle[1][2]
+			if(EAST)
+				AM.pixel_x = offset_vehicle[2][1]
+				AM.pixel_y = offset_vehicle[2][2]
+			if(SOUTH)
+				AM.pixel_x = offset_vehicle[3][1]
+				AM.pixel_y = offset_vehicle[3][2]
+			if(WEST)
+				AM.pixel_x = offset_vehicle[4][1]
+				AM.pixel_y = offset_vehicle[4][2]
+	else
+		AM.pixel_x = offset_vehicle[1]
+		AM.pixel_y = offset_vehicle[2]
+
+/datum/component/riding_handler/proc/reset_rider(mob/rider)
+	rider.reset_plane_and_layer()
+	rider.reset_pixel_offsets()
+
+/datum/component/riding_handler/proc/apply_rider(mob/rider)
+	var/atom/movable/AM = parent
+	var/position = AM.buckled_mobs.Find(rider)
+	apply_rider_layer(rider, M.dir, position)
+	apply_rider_offsets(rider, M.dir, position)
+
+/datum/component/riding_handler/proc/update_riders_on_turn(dir)
+	if(_last_dir == dir)
+		return
+	_last_dir = dir
+	for(var/i in 1 to length(AM.buckled_mobs))
+		var/mob/M = AM.buckled_mobs[i]
+		apply_rider_layer(M, dir, i)
+		apply_rider_offsets(M, dir, i, AM.pixel_x, AM.pixel_y)
+		M.setDir(rider_dir_offset(dir, i))
+
+/datum/component/riding_handler/proc/apply_rider_offsets(mob/rider, dir, pos, opx, opy)
+	var/list/offsets = rider_layer_offset(dir, pos)
+	rider.pixel_x = offsets[1] + opx
+	rider.pixel_y = offsets[2] + opy
+
+/datum/component/riding_handler/proc/apply_rider_layer(mob/rider, dir, pos)
+	var/atom/movable/AM = parent
+	rider.plane = AM.plane
+	rider.layer = AM.layer + rider_layer_offset(dir, pos)
+
+/datum/component/riding_handler/proc/rider_layer_offset(dir, index = 1)
+	if(isnum(offset_layer))
+		return offset_layer
+	var/indexed = islist(offset_layer[1])
+	if(indexed)
+		var/list/relevant = offset_layer[min(offset_layer.len, index)]
+		switch(dir)
+			if(NORTH)
+				return relevant[1]
+			if(EAST)
+				return relevant[2]
+			if(SOUTH)
+				return relevant[3]
+			if(WEST)
+				return relevant[4]
+	else
+		switch(dir)
+			if(NORTH)
+				return offset_layer[1]
+			if(EAST)
+				return offset_layer[2]
+			if(SOUTH)
+				return offset_layer[3]
+			if(WEST)
+				return offset_layer[4]
+
+/datum/component/riding_handler/proc/rider_pixel_offsets(dir, index = 1)
+	RETURN_TYPE(/list)
+	// format: x, y
+	if(!islist(offset_pixel[1]))
+		return offset_pixel
+	// format: list(list(x, y), ...) for NESW
+	if(!islist(offset_pixel[1][1]))
+		switch(dir)
+			if(NORTH)
+				return offset_pixel[1]
+			if(EAST)
+				return offset_pixel[2]
+			if(SOUTH)
+				return offset_pixel[3]
+			if(WEST)
+				return offset_pixel[4]
+	// format: list(list(x, y), ...) for NESW), ...) for indexes
+	var/list/relevant = offset_pixel[min(offset_pixel.len, index)]
+	switch(dir)
+		if(NORTH)
+			return relevant[1]
+		if(EAST)
+			return relevant[2]
+		if(SOUTH)
+			return relevant[3]
+		if(WEST)
+			return relevant[4]
+
+/datum/component/riding_handler/proc/rider_dir_offset(dir, index = 1)
+	return dir
+
+#warn parse below
 
 /datum/component/riding_handler/proc/handle_vehicle_layer()
 	var/atom/movable/AM = parent
@@ -119,77 +233,13 @@
 		AM.unbuckle_mob(M)
 	return TRUE
 
-/datum/component/riding_handler/proc/force_dismount(mob/living/M)
+/datum/component/riding_handler/proc/force_dismount(mob/rider)
 	var/atom/movable/AM = parent
-	AM.unbuckle_mob(M)
-
-/datum/component/riding_handler/proc/handle_vehicle_offsets()
-	var/atom/movable/AM = parent
-	var/AM_dir = "[AM.dir]"
-	var/passindex = 0
-	if(AM.has_buckled_mobs())
-		for(var/m in AM.buckled_mobs)
-			passindex++
-			var/mob/living/buckled_mob = m
-			var/list/offsets = get_offsets(passindex)
-			var/rider_dir = get_rider_dir(passindex)
-			buckled_mob.setDir(rider_dir)
-			dir_loop:
-				for(var/offsetdir in offsets)
-					if(offsetdir == AM_dir)
-						var/list/diroffsets = offsets[offsetdir]
-						buckled_mob.pixel_x = diroffsets[1]
-						if(diroffsets.len >= 2)
-							buckled_mob.pixel_y = diroffsets[2]
-						if(diroffsets.len == 3)
-							buckled_mob.layer = diroffsets[3]
-						break dir_loop
-	var/list/static/default_vehicle_pixel_offsets = list(TEXT_NORTH = list(0, 0), TEXT_SOUTH = list(0, 0), TEXT_EAST = list(0, 0), TEXT_WEST = list(0, 0))
-	var/px = default_vehicle_pixel_offsets[AM_dir]
-	var/py = default_vehicle_pixel_offsets[AM_dir]
-	if(directional_vehicle_offsets[AM_dir])
-		if(isnull(directional_vehicle_offsets[AM_dir]))
-			px = AM.pixel_x
-			py = AM.pixel_y
-		else
-			px = directional_vehicle_offsets[AM_dir][1]
-			py = directional_vehicle_offsets[AM_dir][2]
-	AM.pixel_x = px
-	AM.pixel_y = py
-
-/datum/component/riding_handler/proc/set_vehicle_dir_offsets(dir, x, y)
-	directional_vehicle_offsets["[dir]"] = list(x, y)
-
-//Override this to set your vehicle's various pixel offsets
-/datum/component/riding_handler/proc/get_offsets(pass_index) // list(dir = x, y, layer)
-	. = list(TEXT_NORTH = list(0, 0), TEXT_SOUTH = list(0, 0), TEXT_EAST = list(0, 0), TEXT_WEST = list(0, 0))
-	if(riding_offsets["[pass_index]"])
-		. = riding_offsets["[pass_index]"]
-	else if(riding_offsets["[RIDING_OFFSET_ALL]"])
-		. = riding_offsets["[RIDING_OFFSET_ALL]"]
-
-/datum/component/riding_handler/proc/set_riding_offsets(index, list/offsets)
-	if(!islist(offsets))
-		return FALSE
-	riding_offsets["[index]"] = offsets
-
-//Override this to set the passengers/riders dir based on which passenger they are.
-//ie: rider facing the vehicle's dir, but passenger 2 facing backwards, etc.
-/datum/component/riding_handler/proc/get_rider_dir(pass_index)
-	var/atom/movable/AM = parent
-	return AM.dir
+	AM.unbuckle_mob(M, BUCKLE_OP_FORCE)
 
 //KEYS
 /datum/component/riding_handler/proc/keycheck(mob/user)
 	return !keytype || user.is_holding_item_of_type(keytype)
-
-//BUCKLE HOOKS
-/datum/component/riding_handler/proc/restore_position(mob/living/buckled_mob)
-	if(buckled_mob)
-		buckled_mob.pixel_x = 0
-		buckled_mob.pixel_y = 0
-		if(buckled_mob.client)
-			buckled_mob.client.change_view(CONFIG_GET(string/default_view))
 
 //MOVEMENT
 /datum/component/riding_handler/proc/turf_check(turf/next, turf/current)
@@ -254,16 +304,6 @@
 	. = ..()
 	RegisterSignal(parent, COMSIG_HUMAN_MELEE_UNARMED_ATTACK, .proc/on_host_unarmed_melee)
 
-/datum/component/riding_handler/human/vehicle_mob_unbuckle(datum/source, mob/living/M, force = FALSE)
-	var/mob/living/carbon/human/H = parent
-	H.remove_movespeed_modifier(MOVESPEED_ID_HUMAN_CARRYING)
-	. = ..()
-
-/datum/component/riding_handler/human/vehicle_mob_buckle(datum/source, mob/living/M, force = FALSE)
-	. = ..()
-	var/mob/living/carbon/human/H = parent
-	H.add_movespeed_modifier(MOVESPEED_ID_HUMAN_CARRYING, multiplicative_slowdown = HUMAN_CARRY_SLOWDOWN)
-
 /datum/component/riding_handler/human/proc/on_host_unarmed_melee(atom/target)
 	var/mob/living/carbon/human/H = parent
 	if(H.a_intent == INTENT_DISARM && (target in H.buckled_mobs))
@@ -286,14 +326,6 @@
 				AM.layer = ABOVE_MOB_LAYER
 	else
 		AM.layer = MOB_LAYER
-
-/datum/component/riding_handler/human/get_offsets(pass_index)
-	var/mob/living/carbon/human/H = parent
-	if(H.buckle_lying)
-		return list(TEXT_NORTH = list(0, 6), TEXT_SOUTH = list(0, 6), TEXT_EAST = list(0, 6), TEXT_WEST = list(0, 6))
-	else
-		return list(TEXT_NORTH = list(0, 6), TEXT_SOUTH = list(0, 6), TEXT_EAST = list(-6, 4), TEXT_WEST = list( 6, 4))
-
 
 /datum/component/riding_handler/human/force_dismount(mob/living/user)
 	var/atom/movable/AM = parent
@@ -360,36 +392,3 @@
 					"<span class='warning'>You're thrown clear of [AM]!</span>")
 	M.throw_at(target, 14, 5, AM)
 	M.Paralyze(60)
-
-/datum/component/riding_handler/proc/equip_buckle_inhands(mob/living/carbon/human/user, amount_required = 1, riding_target_override = null)
-	var/atom/movable/AM = parent
-	var/amount_equipped = 0
-	for(var/amount_needed = amount_required, amount_needed > 0, amount_needed--)
-		var/obj/item/riding_offhand/inhand = new /obj/item/riding_offhand(user)
-		if(!riding_target_override)
-			inhand.rider = user
-		else
-			inhand.rider = riding_target_override
-		inhand.parent = AM
-		if(user.put_in_hands(inhand, TRUE))
-			amount_equipped++
-		else
-			break
-	if(amount_equipped >= amount_required)
-		return TRUE
-	else
-		unequip_buckle_inhands(user)
-		return FALSE
-
-/datum/component/riding_handler/proc/unequip_buckle_inhands(mob/living/carbon/user)
-	var/atom/movable/AM = parent
-	for(var/obj/item/riding_offhand/O in user.contents)
-		if(O.parent != AM)
-			CRASH("RIDING OFFHAND ON WRONG MOB")
-			continue
-		if(O.selfdeleting)
-			continue
-		else
-			qdel(O)
-	return TRUE
-
