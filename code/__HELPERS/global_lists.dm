@@ -65,7 +65,7 @@ var/global/list/tail_styles_list = list()
 var/global/list/wing_styles_list = list()
 //!Underwear
 var/datum/category_collection/underwear/global_underwear = new()
-//!Backpacks
+//!Backpacks - The load order here is important to maintain. Don't go swapping these around.
 var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel", "Satchel Alt", "Messenger Bag", "RIG", "Duffle Bag")
 var/global/list/pdachoicelist = list("Default", "Slim", "Old", "Rugged","Minimalist", "Holographic", "Wrist-Bound")
 var/global/list/exclude_jobs = list(/datum/job/station/ai,/datum/job/station/cyborg)
