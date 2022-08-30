@@ -304,10 +304,10 @@
 
 	if(check_rights(R_ADMIN|R_DEBUG))
 		toggle_preference(pref_path)
-		to_chat(src,"You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] receive debug logs.")
+		to_chat(src,"You will [ (is_preference_enabled(pref_path)) ? "now : "no longer"] receive debug logs.")
 		SScharacter_setup.queue_preferences_save(prefs)
 
-	feedback_add_details("admin_verb","TBeSpecial") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	feedback_add_details("admin_verb","TBeSpecial") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!"
 
 //Mods
 /client/proc/toggle_attack_logs()
@@ -352,6 +352,15 @@
 	to_chat(src,"You will [ (painmsg) ? "now" : "no longer"] see your own pain messages.")
 	feedback_add_details("admin_verb","painmsg") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+/mob/living/carbon/human/verb/toggle_subtle_emotes()
+	set name = "Toggle Subtle Emotes"
+	set category = "Preferences"
+	set desc = "Toggles subtle emote messages."
+	var/pref_path = /datum/client_preference/subtle_see
+
+	toggle_preference(pref_path)
+	to_chat(src,"You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] see subtle emotes.")
+	feedback_add_details("admin_verb","subtlesee") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /mob/living/carbon/human/verb/acting()
 	set name = "Feign Impairment"
