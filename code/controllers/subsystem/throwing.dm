@@ -63,26 +63,33 @@ SUBSYSTEM_DEF(throwing)
 	var/speed
 	/// what threw us
 	var/atom/thrower
-	/// world.time we started
-	var/start_time
-	/// tiles we travelled
-	var/dist_travelled = 0
 	/// callback to call when we hit something. called with (hit atom, thrownthing datum)
 	var/datum/callback/on_hit
 	/// callback to call when we land. will not be called if we do not land on anything. called with (landed atom, thrownthing datum)
 	var/datum/callback/on_land
 	/// paused?
 	var/paused = FALSE
+
+	//! processing vars
+	/// world.time we started
+	var/start_time
+	/// tiles we travelled
+	var/dist_travelled = 0
 	/// how long we've been paused for
 	var/delayed_time = 0
 	/// last world.time we moved
 	var/last_move = 0
-
+	/// dx of original throw target
 	var/dist_x
+	/// dy of original throw target
 	var/dist_y
+	/// x dir
 	var/dx
+	/// y dir
 	var/dy
+	/// tracks diagonal error so we move in a relatively "raycasted" (shittily) path
 	var/diagonal_error
+	/// are we purely diagonal?
 	var/pure_diagonal
 
 	//! fluff shit players use to kill each other
@@ -101,11 +108,6 @@ SUBSYSTEM_DEF(throwing)
 	src.on_hit = on_hit
 	src.on_land = on_land
 
-
-
-
-	#warn finish
-
 /datum/thrownthing/proc/target_atom(atom/target)
 	src.target = target
 	var/turf/T = get_turf(target)
@@ -120,30 +122,22 @@ SUBSYSTEM_DEF(throwing)
 		initial_turf = T
 	init_dir = get_dir(thrownthing, target)
 
-	dist_x = abs(T.x - AM.x))
+	dist_x = abs(T.x - AM.x)
+	dist_y = abs(T.y AM.y)
+	dx = (T.x > AM.x)? EAST : WEST
+	dy = (T.y > AM.y)? NORTH : SOUTH
 
-	return TRUE
-
-/datum/thrownthing/New()
-	dist_x = abs(target.x - thrownthing.x)
-	dist_y = abs(target.y - thrownthing.y)
-	dx = (target.x > thrownthing.x) ? EAST : WEST
-	dy = (target.y > thrownthing.y) ? NORTH : SOUTH//same up to here
-
-	if (dist_x == dist_y)
+	if(dist_x == dist_y)
 		pure_diagonal = TRUE
-
 	else if(dist_x <= dist_y)
+		// standardization: i honestly don't understand why we do this but we do this, thanks MSO
 		var/olddist_x = dist_x
 		var/olddx = dx
 		dist_x = dist_y
 		dist_y = olddist_x
 		dx = dy
 		dy = olddx
-
-	diagonal_error = dist_x/2 - dist_y
-
-	start_time = world.time
+	diagonal_error = dist_x / 2 - dist_y
 
 /datum/thrownthing/Destroy()
 	if(!finished)
@@ -164,11 +158,12 @@ SUBSYSTEM_DEF(throwing)
 		terminate()
 		return
 
-	var/tilestomove = CEILING(min(, speed * MAX_TICKS_TO_MAKE_UP), 1)
-	 CEILING(
+	if(paused)
+		delayed_time += world.time - last_move
+		return
 
-		, 1
-	)
+	//calculate how many tiles to move, making up for any missed ticks.
+	var/tilestomove = CEILING(min(((((world.time+world.tick_lag) - start_time + delayed_time) * speed) - (dist_travelled ? dist_travelled : -1)), speed*MAX_TICKS_TO_MAKE_UP) * (world.tick_lag * SSthrowing.wait), 1)
 
 	// catch anything in our tile
 	//? experimental: removed in favor for cross/bump hooks
@@ -194,46 +189,25 @@ SUBSYSTEM_DEF(throwing)
 			terminate()
 			return
 
-#warn impl - go in dir of throw, not generic dir.
-
-	if(paused)
-		delayed_time += world.time - last_move
-		return
-
-	//calculate how many tiles to move, making up for any missed ticks.
-	var/tilestomove = CEILING(min(((((world.time+world.tick_lag) - start_time + delayed_time) * speed) - (dist_travelled ? dist_travelled : -1)), speed*MAX_TICKS_TO_MAKE_UP) * (world.tick_lag * SSthrowing.wait), 1)
-	while (tilestomove-- > 0)
-		if ((dist_travelled >= maxrange || AM.loc == target_turf) && (A && A.has_gravity()))
-			finalize()
-			return
-
-		if (dist_travelled <= max(dist_x, dist_y)) //if we haven't reached the target yet we home in on it, otherwise we use the initial direction
-			step = get_step(AM, get_dir(AM, target_turf))
+		// if we havne't reached target yet
+		if(dist_travelled <= max(dist_x, dist-y))
+			// home in
+			stepping = get_step(AM, get_dir(AM, target_turf))
 		else
+			// just go init dir, diagonal error solves the rest
 			step = get_step(AM, init_dir)
 
-		if (!pure_diagonal) // not a purely diagonal trajectory and we don't want all diagonal moves to be done first
-			if (diagonal_error >= 0 && max(dist_x,dist_y) - dist_travelled != 1) //we do a step forward unless we're right before the target
+		// solve diagonal error
+		if(!pure_diagonal)
+			// checks for tile before so we don't raycast past it
+			if(diagonal_error >= 0 && (max(dist_x, dist_y) - dis_travelled != 1))
 				step = get_step(AM, dx)
-			diagonal_error += (diagonal_error < 0) ? dist_x/2 : -dist_y
-/*
-		if (!pure_diagonal && !diagonals_first) // not a purely diagonal trajectory and we don't want all diagonal moves to be done first
-			if (diagonal_error >= 0 && max(dist_x,dist_y) - dist_travelled != 1) //we do a step forward unless we're right before the target
-				step = get_step(AM, dx)
-			diagonal_error += (diagonal_error < 0) ? dist_x/2 : -dist_y
-*/
+			diagonal_error += (diagonal_error < 0)? (dist_x / 2) : -dist_y
 
-		// let's not go off the map
+		// if we're out of tiles.. don't run out of the map
 		if(!stepping)
-			terminate()
+			land()
 			return
-
-		if (!step) // going off the edge of the map makes get_step return null, don't let things go off the edge
-			var/turf/T = loc
-
-			return
-
-#warn impl/convert above
 
 	//? Experimental: Do not try to hit before movement, instead let cross/whatnot hooks handle it
 /*
@@ -350,7 +324,12 @@ SUBSYSTEM_DEF(throwing)
 /**
  * land on something and terminate the throw
  */
-/datum/thrownthing/proc/land(atom/A)
+/datum/thrownthing/proc/land(atom/A = get_turf(thrownthing))
+	// nothing to land on
+	if(!A)
+		terminate()
+		return
+
 	// hit our target if we haven't already
 	if(!impacted[target] && (target in get_turf(A)))
 		impact(target, TRUE)
