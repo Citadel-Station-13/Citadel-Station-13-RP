@@ -1,0 +1,4 @@
+author: "Captain277"
+delete-after: True
+changes: 
+  - bugfix: "Fixes bad naming on RIG and Duffle Bag selections."
