@@ -372,3 +372,9 @@ datum/client_preference/debug/age_verified
 	key = "EXAMINE_LOOK"
 	enabled_description = "Show"
 	disabled_description = "Hide"
+
+/datum/client_preference/subtle_see
+	description = "Subtle Emotes"
+	key = "SUBTLE_SEE"
+	enabled_description = "Show"
+	disabled_description = "Hide"

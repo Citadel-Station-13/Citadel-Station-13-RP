@@ -51,6 +51,8 @@
 
 		for(var/vismob in vis_mobs)
 			var/mob/M = vismob
+			if(M.client && !M.client.is_preference_enabled(/datum/client_preference/subtle_see))
+				continue
 			spawn(0)
 				M.show_message(message, 2)
 
@@ -109,7 +111,7 @@
 		for(var/vismob in vis_mobs)
 			if(istype(vismob, /mob/observer))
 				var/mob/observer/O = vismob
-				if(O.client && !check_rights(R_ADMIN, FALSE, O.client))
+				if(O.client && !check_rights(R_ADMIN, FALSE, O.client) && !O.client.is_preference_enabled(/datum/client_preference/subtle_see))
 					continue
 			var/mob/M = vismob
 			spawn(0)
