@@ -304,7 +304,7 @@
 
 	if(check_rights(R_ADMIN|R_DEBUG))
 		toggle_preference(pref_path)
-		to_chat(src,"You will [ (is_preference_enabled(pref_path)) ? "now : "no longer"] receive debug logs.")
+		to_chat(src,"You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] receive debug logs.")
 		SScharacter_setup.queue_preferences_save(prefs)
 
 	feedback_add_details("admin_verb","TBeSpecial") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!"
@@ -360,6 +360,7 @@
 
 	toggle_preference(pref_path)
 	to_chat(src,"You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] see subtle emotes.")
+	SScharacter_setup.queue_preferences_save(prefs)
 	feedback_add_details("admin_verb","subtlesee") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /mob/living/carbon/human/verb/acting()
