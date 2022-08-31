@@ -172,6 +172,12 @@ var/list/_client_preferences_by_type
 	disabled_description = "Disabled"
 	enabled_by_default = FALSE // Backwards compatibility
 
+/datum/client_preference/subtle_see
+	description = "Subtle Emotes"
+	key = "SUBTLE_SEE"
+	enabled_description = "Show"
+	disabled_description = "Hide"
+
 /datum/client_preference/show_typing_indicator
 	description ="Typing indicator"
 	key = "SHOW_TYPING"
@@ -370,11 +376,5 @@ datum/client_preference/debug/age_verified
 /datum/client_preference/examine_look
 	description = "Examine Messages"
 	key = "EXAMINE_LOOK"
-	enabled_description = "Show"
-	disabled_description = "Hide"
-
-/datum/client_preference/subtle_see
-	description = "Subtle Emotes"
-	key = "SUBTLE_SEE"
 	enabled_description = "Show"
 	disabled_description = "Hide"

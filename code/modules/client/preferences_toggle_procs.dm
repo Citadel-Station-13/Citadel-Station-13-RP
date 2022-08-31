@@ -292,6 +292,19 @@
 	to_chat(src, "You will now [(is_preference_enabled(/datum/client_preference/status_indicators)) ? "see" : "not see"] status indicators.")
 
 	feedback_add_details("admin_verb","TStatusIndicators")
+
+/client/verb/toggle_subtle_emotes()
+	set name = "Toggle Subtle Emotes"
+	set category = "Preferences"
+	set desc = "Toggle seeing subtle emotes as a ghost."
+
+	var/pref_path = /datum/client_preference/subtle_see
+	toggle_preference(pref_path)
+	SScharacter_setup.queue_preferences_save(prefs)
+
+	to_chat(src, "You will now [(is_preference_enabled(/datum/client_preference/subtle_see)) ? "see" : "not see"] status indicators.")
+
+	feedback_add_details("admin_verb","TSubtleEmote")
 //Toggles for Staff
 //Developers
 
@@ -351,17 +364,6 @@
 		src.painmsg = 1
 	to_chat(src,"You will [ (painmsg) ? "now" : "no longer"] see your own pain messages.")
 	feedback_add_details("admin_verb","painmsg") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/mob/living/carbon/human/verb/toggle_subtle_emotes()
-	set name = "Toggle Subtle Emotes"
-	set category = "Preferences"
-	set desc = "Toggles subtle emote messages."
-	var/pref_path = /datum/client_preference/subtle_see
-
-	toggle_preference(pref_path)
-	to_chat(src,"You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] see subtle emotes.")
-	SScharacter_setup.queue_preferences_save(prefs)
-	feedback_add_details("admin_verb","subtlesee") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /mob/living/carbon/human/verb/acting()
 	set name = "Feign Impairment"
