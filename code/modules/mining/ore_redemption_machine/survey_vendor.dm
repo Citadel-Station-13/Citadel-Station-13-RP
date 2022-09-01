@@ -35,6 +35,7 @@
 		new /datum/data/mining_equipment("Nanopaste Tube",				/obj/item/stack/nanopaste,									100),
 		new /datum/data/mining_equipment("Mini-Translocator",			/obj/item/perfect_tele/one_beacon,							120),
 		//new /datum/data/mining_equipment("UAV - Recon Skimmer",			/obj/item/uav,												400),
+		new /datum/data/mining_equipment("Binoculars",					/obj/item/binoculars,										100),
 		new /datum/data/mining_equipment("Space Cash",					/obj/item/spacecash/c100,									100),
 		new /datum/data/mining_equipment("Jump Boots",					/obj/item/clothing/shoes/bhop,								250),
 		new /datum/data/mining_equipment("Luxury Shelter Capsule",		/obj/item/survivalcapsule/luxury,							310),
