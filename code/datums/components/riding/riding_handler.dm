@@ -33,9 +33,9 @@
 	/// default allowed turf handling - set to off if you override the var!!
 	var/default_turf_checks = TRUE
 	/// allowed turf types - turned into typecache.
-	PRIVATE_VAR/list/allowed_turf_types
+	VAR_PRIVATE/list/allowed_turf_types
 	/// forbidden turf types - turned into typecache.
-	PRIVATE_VAR/list/forbid_turf_types
+	VAR_PRIVATE/list/forbid_turf_types
 	/// tick delay between movements
 	var/vehicle_move_delay = 2
 	/// key type needed, if it is needed
@@ -140,6 +140,7 @@
 /datum/component/riding_handler/proc/update_riders_on_turn(dir)
 	if(_last_dir == dir)
 		return
+	var/atom/movable/AM = parent
 	_last_dir = dir
 	for(var/i in 1 to length(AM.buckled_mobs))
 		var/mob/M = AM.buckled_mobs[i]

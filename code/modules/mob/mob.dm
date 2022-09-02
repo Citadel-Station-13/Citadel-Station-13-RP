@@ -1311,3 +1311,28 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /// Checks for slots that are currently obscured by other garments.
 /mob/proc/check_obscured_slots()
 	return
+
+/**
+  * Gets our standard pixel x offset.
+  *
+  * @params
+  * * lying : The degrees we're turned to while lying down or resting for any reason.
+  */
+/mob/living/proc/get_standard_pixel_x_offset(lying = 0)
+	return default_pixel_x
+
+/**
+  * Gets our standard pixel y offset.
+  *
+  * @params
+  * * lying : The degrees we're turned to while lying down or resting for any reason.
+  */
+/mob/living/proc/get_standard_pixel_y_offset(lying = 0)
+	return default_pixel_y
+
+/**
+ * resets our pixel offsets to default
+ */
+/mob/living/proc/reset_pixel_offsets()
+	pixel_X = get_standard_pixel_x_offset(lying)
+	pixel_y = get_standard_pixel_y_offset(lying)
