@@ -66,16 +66,18 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	set waitfor = FALSE
 
-	. = SEND_SIGNAL(src, COMSIG_MOVABLE_THROW_IMPACT, A, TT)
-	if(. & (COMPONENT_THROW_HIT_TERMINATE | COMPONENT_THROW_HIT_NEVERMIND))
-		return
-	. |= throw_impact(A, TT)
-	if(. & (COMPONENT_THROW_HIT_TERMINATE | COMPONENT_THROW_HIT_NEVERMIND))
-		return
+	// their opinion is checked first
 	. |= SEND_SIGNAL(A, COMSIG_ATOM_THROW_IMPACTED, src, TT)
 	if(. & (COMPONENT_THROW_HIT_TERMINATE | COMPONENT_THROW_HIT_NEVERMIND))
 		return
 	. |= A.throw_impacted(src, TT)
+	if(. & (COMPONENT_THROW_HIT_TERMINATE | COMPONENT_THROW_HIT_NEVERMIND))
+		return
+	// then ours
+	. = SEND_SIGNAL(src, COMSIG_MOVABLE_THROW_IMPACT, A, TT)
+	if(. & (COMPONENT_THROW_HIT_TERMINATE | COMPONENT_THROW_HIT_NEVERMIND))
+		return
+	. |= throw_impact(A, TT)
 
 /**
  * called on throw finalization
@@ -83,16 +85,18 @@
 /atom/movable/proc/_throw_finalize(atom/landed_on, datum/thrownthing/TT)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	set waitfor = FALSE
-	. = SEND_SIGNAL(src, COMSIG_MOVABLE_THROW_LAND, landed_on, TT)
-	if(. & (COMPONENT_THROW_LANDING_NEVERMIND | COMPONENT_THROW_LANDING_TERMINATE))
-		return
-	. |= throw_land(landed_on, TT)
-	if(. & (COMPONENT_THROW_LANDING_NEVERMIND | COMPONENT_THROW_LANDING_TERMINATE))
-		return
+	// their opinion is checked first
 	. |= SEND_SIGNAL(landed_on, COMSIG_ATOM_THROW_LANDED, src, TT)
 	if(. & (COMPONENT_THROW_LANDING_NEVERMIND | COMPONENT_THROW_LANDING_TERMINATE))
 		return
 	. |= landed_on.throw_landed(src, TT)
+	if(. & (COMPONENT_THROW_LANDING_NEVERMIND | COMPONENT_THROW_LANDING_TERMINATE))
+		return
+	// then ours
+	. = SEND_SIGNAL(src, COMSIG_MOVABLE_THROW_LAND, landed_on, TT)
+	if(. & (COMPONENT_THROW_LANDING_NEVERMIND | COMPONENT_THROW_LANDING_TERMINATE))
+		return
+	. |= throw_land(landed_on, TT)
 
 /**
  * initiates a full subsystem-ticked throw sequence
@@ -191,9 +195,9 @@
 
 	var/datum/thrownthing/TT
 	if(emulated)
-		TT = new /datum/thrownthing/emulated(src, target, range, calculated_speed, flags, thrower, on_hit, on_land)
+		TT = new /datum/thrownthing/emulated(src, target, range, calculated_speed, flags, thrower, on_hit, on_land, force)
 	else
-		TT = new /datum/thrownthing(src, target, range, calculated_speed, flags, thrower, on_hit, on_land)
+		TT = new /datum/thrownthing(src, target, range, calculated_speed, flags, thrower, on_hit, on_land, force)
 		TT.start()
 	. = throwing = TT
 

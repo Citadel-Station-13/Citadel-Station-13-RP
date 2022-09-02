@@ -60,6 +60,8 @@ SUBSYSTEM_DEF(throwing)
 	var/speed
 	/// what threw us
 	var/atom/thrower
+	/// how hard were we thrown?
+	var/force
 	/// callback to call when we hit something. called with (hit atom, thrownthing datum)
 	var/datum/callback/on_hit
 	/// callback to call when we land. will not be called if we do not land on anything. called with (landed atom, thrownthing datum)
@@ -96,7 +98,7 @@ SUBSYSTEM_DEF(throwing)
 	//! fluff shit players use to kill each other
 	var/target_zone
 
-/datum/thrownthing/New(atom/movable/AM, atom/target, range, speed, flags, atom/thrower, datum/callback/on_hit, datum/callback/on_land)
+/datum/thrownthing/New(atom/movable/AM, atom/target, range, speed, flags, atom/thrower, datum/callback/on_hit, datum/callback/on_land, force)
 	src.thrownthing = AM
 	if(!target_atom(target))
 		qdel(src)
@@ -108,6 +110,7 @@ SUBSYSTEM_DEF(throwing)
 	src.thrower = thrower
 	src.on_hit = on_hit
 	src.on_land = on_land
+	src.force = force
 	impacted = list()
 
 /datum/thrownthing/proc/target_atom(atom/target)
@@ -196,7 +199,7 @@ SUBSYSTEM_DEF(throwing)
 			return
 
 		// if we havne't reached target yet
-		if(dist_travelled <= max(dist_x, dist-y))
+		if(dist_travelled <= max(dist_x, dist_y))
 			// home in
 			stepping = get_step(AM, get_dir(AM, target_turf))
 		else
@@ -311,7 +314,7 @@ SUBSYSTEM_DEF(throwing)
  * return TRUE if we should end the throw, FALSE to pierce
  */
 /datum/thrownthing/proc/impact(atom/A, in_land)
-	impacted[AM] = TRUE
+	impacted[A] = TRUE
 
 	var/op_return = thrownthing._throw_do_hit(A)
 	if(op_return & COMPONENT_THROW_HIT_TERMINATE)

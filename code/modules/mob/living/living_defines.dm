@@ -99,7 +99,7 @@
 	// TODO: execute iamcrystalclear for making this var
 	var/last_blood_warn = -INFINITY
 
-	// inventory
+	//! inventory
 	var/hand = null
 	var/obj/item/l_hand = null
 	var/obj/item/r_hand = null
@@ -115,3 +115,6 @@
 	/// are we currently pushing (or trying to push) (or otherwise inside Bump() handling that deals with this crap) another atom?
 	var/_pushing_bumped_atom = FALSE
 
+	//! throwing
+	/// the force we use when we throw things
+	var/throw_impulse = THROW_FORCE_DEFAULT

@@ -374,7 +374,7 @@ emp_act
 						return
 
 		var/dtype = O.damtype
-		var/throw_damage = O.throw_force*(speed/THROWFORCE_SPEED_DIVISOR)
+		var/throw_damage = O.throw_force * TT.get_damage_multiplier()
 
 		var/zone
 		if (istype(O.thrower, /mob/living))

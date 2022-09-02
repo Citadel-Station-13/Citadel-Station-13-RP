@@ -34,3 +34,15 @@ DEFINE_BITFIELD(throw_flags, list(
 	BITFIELD(THROW_AT_ALWAYS_HIT_PUSH),
 	BITFIELD(THROW_AT_QUICKSTARTED),
 ))
+
+/// the throwing speed at which people can catch things on impact
+#define THROW_SPEED_CATCHABLE			5
+
+#warn aaa
+
+/// The throwing speed value at which the throw_force multiplier is exactly 1.
+#define THROWFORCE_SPEED_DIVISOR    5
+/// The minumum speed of a w_class 2 thrown object that will cause living mobs it hits to be knocked back. Heavier objects can cause knockback at lower speeds.
+#define THROWNOBJ_KNOCKBACK_SPEED   15
+/// Affects how much speed the mob is knocked back with.
+#define THROWNOBJ_KNOCKBACK_DIVISOR 2

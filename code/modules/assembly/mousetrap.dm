@@ -109,7 +109,7 @@
 	. = ..()
 	if(!armed)
 		return
-	visible_message("<span class='warning'>[src] is triggered by [A].</span>")
+	visible_message("<span class='warning'>[src] is triggered by [AM].</span>")
 	triggered(null)
 
 /obj/item/assembly/mousetrap/armed

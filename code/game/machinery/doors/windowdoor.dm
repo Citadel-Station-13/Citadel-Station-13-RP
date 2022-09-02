@@ -103,7 +103,7 @@
 	return ..() || (check_access(ID) && inoperable()) || (dir != to_dir)
 
 /obj/machinery/door/window/CheckExit(atom/movable/AM, atom/newLoc)
-	if(!(get_dir(loc, mover) & dir))
+	if(!(get_dir(loc, AM) & dir))
 		return TRUE
 	if(check_standard_flag_pass(AM))
 		return TRUE
