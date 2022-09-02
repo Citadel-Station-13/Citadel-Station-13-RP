@@ -6892,7 +6892,7 @@
 	name = "north bump";
 	pixel_y = 24
 	},
-/obj/structure/bed/chair/modern_chair{
+/obj/structure/bed/chair/wood{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -8123,10 +8123,10 @@
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
 "fOO" = (
-/obj/machinery/light/small/emergency,
 /obj/structure/toilet{
 	dir = 1
 	},
+/obj/machinery/light/small,
 /turf/simulated/floor/tiled,
 /area/medical/virology)
 "fOW" = (
@@ -24105,7 +24105,7 @@
 	automatic_launch_time = 40
 	},
 /obj/structure/transit_tube_pod{
-	dir = 8;
+	dir = 4;
 	move_speed = 40
 	},
 /turf/simulated/floor/tiled/white,
@@ -24871,7 +24871,7 @@
 /turf/simulated/wall/r_wall,
 /area/engineering/engine_eva)
 "qvM" = (
-/obj/structure/bed/chair/modern_chair{
+/obj/structure/bed/chair/wood{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
