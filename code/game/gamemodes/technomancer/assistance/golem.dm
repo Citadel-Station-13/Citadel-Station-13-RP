@@ -103,7 +103,7 @@
 /mob/living/simple_animal/hostile/hivebot/death()
 	..()
 	visible_message("\The [src] disintegrates!")
-	new /obj/effect/decal/cleanable/blood/gibs/robot(src.loc)
+	new /obj/effect/debris/cleanable/blood/gibs/robot(src.loc)
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(3, 1, src)
 	s.start()
@@ -213,7 +213,7 @@
 		. += "Your pride and joy.  It's a very special synthetic robot, capable of using functions similar to you, and you built it \
 		yourself!  It'll always stand by your side, ready to help you out.  You have no idea what GOLEM stands for, however..."
 
-/mob/living/simple_animal/technomancer_golem/Life()
+/mob/living/simple_animal/technomancer_golem/Life(seconds, times_fired)
 	..()
 	handle_ai()
 

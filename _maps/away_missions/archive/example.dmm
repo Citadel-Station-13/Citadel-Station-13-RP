@@ -227,7 +227,7 @@
 /turf/simulated/floor,
 /area/awaymission/example)
 "aG" = (
-/obj/effect/decal/cleanable/vomit,
+/obj/effect/debris/cleanable/vomit,
 /turf/simulated/floor,
 /area/awaymission/example)
 "aH" = (
@@ -388,7 +388,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/example)
 "bv" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "awaystart"
 	},
 /turf/space,
@@ -612,13 +612,13 @@
 /turf/simulated/floor,
 /area/awaymission/example)
 "cq" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor,
 /area/awaymission/example)
 "cr" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "awaystart"
 	},
 /obj/item/assembly/mousetrap/armed,
@@ -629,7 +629,7 @@
 /turf/simulated/floor,
 /area/awaymission/example)
 "ct" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "awaystart"
 	},
 /obj/machinery/light_construct/small{
@@ -638,7 +638,7 @@
 /turf/simulated/floor,
 /area/awaymission/example)
 "cu" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "awaystart"
 	},
 /obj/item/mop,

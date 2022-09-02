@@ -2,7 +2,7 @@
 /datum/gear/mask
 	name = "Bandana - Blue"
 	path = /obj/item/clothing/mask/bandana/blue
-	slot = slot_wear_mask
+	slot = SLOT_ID_MASK
 	sort_category = "Masks and Facewear"
 
 /datum/gear/mask/gold
@@ -53,3 +53,7 @@
 /datum/gear/mask/samurai_colorable/New()
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
+
+/datum/gear/mask/fox
+	name = "Fox mask" //capitalisation because everything else here is capitalised
+	path = /obj/item/clothing/mask/gas/fox

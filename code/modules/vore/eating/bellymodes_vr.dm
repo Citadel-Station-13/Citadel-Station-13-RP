@@ -118,9 +118,9 @@
 				//Stripping flag
 				if(mode_flags & DM_FLAG_STRIPPING)
 					for(var/slot in slots)
-						var/obj/item/I = H.get_equipped_item(slot = slot)
+						var/obj/item/I = H.item_by_slot(slot)
 						if(I)
-							H.unEquip(I,force = TRUE)
+							H.transfer_item_to_loc(I, src, INV_OP_FORCE)
 							if(contaminates || istype(I,/obj/item/card/id))
 								I.gurgle_contaminate(contents, contamination_flavor, contamination_color)
 							if(item_digest_mode == IM_HOLD)
@@ -142,8 +142,31 @@
 									play_sound = pick(pred_digest)
 							to_update = TRUE
 							break
+					for(var/obj/item/I as anything in H.get_held_items())
+						H.transfer_item_to_loc(I, src, INV_OP_FORCE)
+						if(contaminates || istype(I,/obj/item/card/id))
+							I.gurgle_contaminate(contents, contamination_flavor, contamination_color)
+						if(item_digest_mode == IM_HOLD)
+							items_preserved |= I
+						else if(item_digest_mode == IM_DIGEST_FOOD)
+							if(istype(I,/obj/item/reagent_containers/food) || istype(I,/obj/item/organ))
+								digest_item(I)
+							else
+								items_preserved |= I
+							if(prob(25)) //Less often than with normal digestion
+								if(L && L.client && L.is_preference_enabled(/datum/client_preference/digestion_noises))
+									SEND_SOUND(L,prey_digest)
+								play_sound = pick(pred_digest)
+						else if(item_digest_mode == IM_DIGEST)
+							digest_item(I)
+							if(prob(25)) //Less often than with normal digestion
+								if(L && L.client && L.is_preference_enabled(/datum/client_preference/digestion_noises))
+									SEND_SOUND(L,prey_digest)
+								play_sound = pick(pred_digest)
+						to_update = TRUE
+						break
 		//get rid of things like blood drops and gibs that end up in there
-		else if(istype(A,/obj/effect/decal/cleanable/))
+		else if(istype(A,/obj/effect/debris/cleanable/))
 			qdel(A)
 
 ///////////////////////////// DM_HOLD /////////////////////////////

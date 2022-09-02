@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ao" = (
+/obj/structure/fence,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/interior/undergound2)
 "ap" = (
 /obj/structure/bed/chair/wood{
 	dir = 1
@@ -20,6 +24,10 @@
 "bh" = (
 /turf/simulated/floor/sky/depths/west/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
+"bl" = (
+/obj/structure/girder,
+/turf/simulated/floor/plating,
+/area/rift/exterior/bunker/bottom)
 "bY" = (
 /obj/machinery/door/window/brigdoor/southleft,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -88,6 +96,9 @@
 /obj/machinery/door/window/brigdoor/northleft,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/prison)
+"gI" = (
+/turf/simulated/floor/plating,
+/area/rift/exterior/bunker/bottom)
 "gU" = (
 /obj/machinery/light/small{
 	dir = 1;
@@ -95,6 +106,10 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/prison)
+"hi" = (
+/obj/structure/barricade/cutout/fluke,
+/turf/simulated/floor/plating,
+/area/rift/exterior/bunker/bottom)
 "hC" = (
 /obj/effect/trap/pop_up/thrower{
 	id = "LF_DL_PS"
@@ -122,8 +137,11 @@
 "hS" = (
 /turf/simulated/open,
 /area/rift/facility/interior/elevator)
+"hW" = (
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/exterior/bunker/bottom)
 "hZ" = (
-/obj/effect/decal/cleanable/blood/writing{
+/obj/effect/debris/cleanable/blood/writing{
 	dir = 8;
 	message = "THEY KILLED US";
 	name = "bloody message"
@@ -160,7 +178,7 @@
 /obj/item/bone/arm,
 /obj/item/bone/skull/tajaran,
 /obj/item/bedsheet,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/prison)
 "iQ" = (
@@ -180,6 +198,9 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/structure/fence{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/undergound2)
 "jr" = (
@@ -193,13 +214,17 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/undergound2)
 "ju" = (
-/turf/simulated/floor/sky/depths/west/lythios43c,
+/turf/simulated/open/lythios43c,
 /area/rift/facility/interior/undergound2)
 "jw" = (
 /obj/structure/table/marble,
 /obj/item/flame/candle,
 /turf/simulated/floor/wmarble,
 /area/rift/facility/interior/temple)
+"jz" = (
+/obj/structure/barricade/cutout/fluke,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/exterior/bunker/bottom)
 "kq" = (
 /obj/effect/floor_decal/corner/white/full{
 	dir = 8
@@ -277,6 +302,9 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/prison)
+"nC" = (
+/turf/simulated/wall,
+/area/rift/exterior/bunker/bottom)
 "nN" = (
 /turf/simulated/wall,
 /area/rift/facility/interior/undergound2)
@@ -289,6 +317,9 @@
 "oh" = (
 /turf/simulated/wall,
 /area/rift/facility/interior/prison)
+"oz" = (
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/rift/exterior/mineshaft)
 "oI" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
@@ -345,6 +376,11 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
+"qd" = (
+/obj/effect/overlay/snow/floor,
+/obj/random/landmine,
+/turf/simulated/floor/lythios43c,
+/area/rift/facility/interior/undergound2)
 "qN" = (
 /obj/effect/floor_decal/corner/white,
 /turf/simulated/floor/tiled/dark,
@@ -407,7 +443,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/undergound2)
 "uO" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/prison)
 "vm" = (
@@ -425,6 +461,12 @@
 "vJ" = (
 /turf/simulated/wall,
 /area/rift/facility/interior/janitorial)
+"wb" = (
+/turf/simulated/floor/outdoors/safeice/lythios43c,
+/area/rift/exterior/bunker/bottom)
+"wx" = (
+/turf/simulated/open,
+/area/rift/exterior/mineshaft)
 "xa" = (
 /obj/structure/girder,
 /obj/effect/map_effect/radiation_emitter,
@@ -547,6 +589,10 @@
 /obj/item/material/knife/tacknife,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/prison)
+"EX" = (
+/obj/structure/ladder/up,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/exterior/bunker/bottom)
 "Fh" = (
 /turf/simulated/floor/trap{
 	id = "LF_DL_S"
@@ -570,6 +616,10 @@
 /obj/random/obstruction,
 /turf/simulated/floor,
 /area/rift/facility/interior/prison)
+"Hp" = (
+/obj/structure/lattice,
+/turf/simulated/open,
+/area/rift/exterior/mineshaft)
 "Hs" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -579,9 +629,20 @@
 /obj/effect/floor_decal/corner/white,
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
+"HW" = (
+/obj/random/trash,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/exterior/bunker/bottom)
 "Ie" = (
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/janitorial)
+"Jd" = (
+/obj/random/outcrop,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/rift/exterior/mineshaft)
+"JS" = (
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/rift/exterior/mineshaft)
 "Kd" = (
 /obj/structure/bed/chair/wood{
 	dir = 4
@@ -598,9 +659,18 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/janitorial)
 "KD" = (
-/obj/effect/overlay/snow/floor,
-/obj/random/landmine,
-/turf/simulated/floor/lythios43c,
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/simulated/floor/trap{
+	id = "LF_DL_S"
+	},
+/area/rift/facility/interior/undergound2)
+"KF" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/undergound2)
 "Lo" = (
 /obj/effect/overlay/snow/floor,
@@ -610,6 +680,10 @@
 "Ls" = (
 /turf/simulated/shuttle/wall/voidcraft,
 /area/rift/facility/interior/elevator)
+"LQ" = (
+/obj/structure/ladder/updown,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/rift/exterior/mineshaft)
 "Mc" = (
 /obj/machinery/power/apc/alarms_hidden{
 	cell_type = null;
@@ -628,6 +702,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
+"MM" = (
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/rift/exterior/bunker/bottom)
+"MN" = (
+/obj/random/trash,
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/interior/undergound2)
 "NQ" = (
 /obj/machinery/door/airlock{
 	name = "Custodial Closet";
@@ -676,7 +760,7 @@
 /area/rift/facility/interior/undergound2)
 "Sw" = (
 /obj/effect/map_effect/radiation_emitter/chernobyl,
-/turf/simulated/floor/sky/depths/west/lythios43c,
+/turf/simulated/open/lythios43c,
 /area/rift/facility/interior/undergound2)
 "Sy" = (
 /obj/effect/floor_decal/corner/black{
@@ -717,7 +801,7 @@
 /obj/item/bone/arm,
 /obj/item/bone/ribs,
 /obj/item/bone/skull/tajaran,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/prison)
 "UD" = (
@@ -738,6 +822,10 @@
 /obj/structure/closet/cabinet,
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
+"Vu" = (
+/obj/structure/barricade/cutout,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/exterior/bunker/bottom)
 "VC" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/carpet/bcarpet,
@@ -745,6 +833,9 @@
 "VD" = (
 /turf/simulated/open,
 /area/rift/facility/interior/undergound2)
+"VZ" = (
+/turf/simulated/wall/wood,
+/area/rift/exterior/mineshaft)
 "Wb" = (
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor,
@@ -753,6 +844,9 @@
 /obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/undergound2)
+"WW" = (
+/turf/simulated/mineral/icerock,
+/area/rift/surfacebase/outside/west_deep)
 "Xe" = (
 /obj/effect/floor_decal/corner/white{
 	dir = 8
@@ -768,6 +862,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
+"XF" = (
+/obj/structure/barricade/cutout,
+/turf/simulated/floor/plating,
+/area/rift/exterior/bunker/bottom)
 "XO" = (
 /obj/structure/table/marble,
 /obj/effect/map_effect/interval/effect_emitter/smoke{
@@ -2671,16 +2769,16 @@ so
 so
 so
 so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
+WW
+WW
+oz
+oz
+oz
+oz
+oz
+Jd
+WW
+WW
 so
 so
 so
@@ -2865,16 +2963,16 @@ so
 so
 so
 so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
+WW
+oz
+JS
+JS
+JS
+JS
+JS
+JS
+oz
+WW
 so
 so
 so
@@ -3059,16 +3157,16 @@ so
 so
 so
 so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
+Jd
+JS
+JS
+JS
+JS
+JS
+JS
+JS
+JS
+oz
 so
 so
 so
@@ -3250,19 +3348,19 @@ so
 so
 so
 so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
+VZ
+oz
+VZ
+oz
+JS
+JS
+VZ
+Hp
+Hp
+VZ
+JS
+JS
+oz
 so
 so
 so
@@ -3444,19 +3542,19 @@ so
 so
 so
 so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
+LQ
+JS
+JS
+JS
+JS
+JS
+Hp
+wx
+wx
+Hp
+JS
+JS
+Jd
 so
 so
 so
@@ -3638,19 +3736,19 @@ so
 so
 so
 so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
+LQ
+JS
+JS
+JS
+JS
+JS
+Hp
+wx
+wx
+Hp
+JS
+JS
+oz
 so
 so
 so
@@ -3727,14 +3825,14 @@ so
 nN
 PJ
 PJ
-Fh
-hD
+KD
 PJ
 PJ
+KF
 Bg
 Bg
+KF
 PJ
-hD
 PJ
 yz
 lc
@@ -3832,19 +3930,19 @@ so
 so
 so
 so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
+VZ
+oz
+VZ
+oz
+JS
+JS
+VZ
+Hp
+Hp
+VZ
+JS
+JS
+oz
 so
 so
 so
@@ -3919,9 +4017,9 @@ so
 so
 so
 nN
-hD
 PJ
-Fh
+PJ
+KD
 PJ
 BI
 je
@@ -4029,16 +4127,16 @@ so
 so
 so
 so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
+oz
+JS
+JS
+JS
+JS
+JS
+JS
+JS
+JS
+oz
 so
 so
 so
@@ -4116,14 +4214,14 @@ nN
 PJ
 PJ
 nN
-PJ
-PJ
+ao
+ao
 nN
 VD
 VD
 nN
 yq
-PJ
+hD
 yz
 YK
 YK
@@ -4223,16 +4321,16 @@ so
 so
 so
 so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
+WW
+oz
+JS
+JS
+JS
+JS
+JS
+JS
+oz
+WW
 so
 so
 so
@@ -4311,7 +4409,7 @@ iJ
 iJ
 nN
 Mc
-hD
+PJ
 nN
 VD
 VD
@@ -4417,16 +4515,16 @@ so
 so
 so
 so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
+WW
+WW
+oz
+Jd
+oz
+oz
+oz
+oz
+WW
+WW
 so
 so
 so
@@ -4696,8 +4794,8 @@ hS
 hS
 SN
 PJ
-hD
 PJ
+KF
 PJ
 PJ
 vJ
@@ -4891,7 +4989,7 @@ hS
 SN
 PJ
 PJ
-BI
+MN
 PJ
 PJ
 NQ
@@ -5087,7 +5185,7 @@ nN
 nN
 nN
 Eh
-hD
+PJ
 vJ
 Ky
 Ie
@@ -5668,7 +5766,7 @@ Oy
 pX
 lL
 lL
-hD
+PJ
 PJ
 vJ
 xN
@@ -6252,9 +6350,9 @@ Oy
 Ub
 PJ
 PJ
-PJ
+KF
 Wr
-hD
+PJ
 PJ
 PJ
 yq
@@ -6446,19 +6544,19 @@ iq
 lL
 PJ
 PJ
-PJ
+KF
 nN
 PJ
 BI
 PJ
-hD
 PJ
 PJ
-hD
+PJ
+PJ
+Wb
 Wb
 Wb
 So
-Wb
 nN
 so
 so
@@ -6640,7 +6738,7 @@ Oy
 Ub
 PJ
 BI
-hD
+KF
 Wr
 Fh
 PJ
@@ -8391,8 +8489,8 @@ nN
 PJ
 PJ
 PJ
+qd
 vm
-KD
 PJ
 PJ
 hD
@@ -13554,18 +13652,18 @@ so
 so
 so
 so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
+nC
+nC
+nC
+nC
+nC
+bl
+bl
+bl
+nC
+nC
+nC
+nC
 so
 so
 so
@@ -13748,18 +13846,18 @@ so
 so
 so
 so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
+bl
+hW
+hW
+hW
+hW
+hW
+hW
+hW
+hW
+HW
+HW
+nC
 so
 so
 so
@@ -13942,18 +14040,18 @@ so
 so
 so
 so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
+bl
+hW
+gI
+XF
+gI
+gI
+gI
+hi
+gI
+gI
+hW
+bl
 so
 so
 so
@@ -14136,18 +14234,18 @@ so
 so
 so
 so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
+nC
+Vu
+gI
+bl
+bl
+gI
+MM
+gI
+gI
+gI
+hW
+bl
 so
 so
 so
@@ -14330,20 +14428,20 @@ so
 so
 so
 so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
+nC
+gI
+gI
+bl
+gI
+MM
+MM
+MM
+gI
+gI
+jz
+nC
+nC
+nC
 so
 so
 so
@@ -14524,20 +14622,20 @@ so
 so
 so
 so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
+nC
+hW
+gI
+gI
+MM
+wb
+wb
+MM
+gI
+gI
+HW
+hW
+EX
+nC
 so
 so
 so
@@ -14718,20 +14816,20 @@ so
 so
 so
 so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
+nC
+hW
+gI
+gI
+gI
+wb
+wb
+MM
+gI
+gI
+hW
+hW
+EX
+nC
 so
 so
 so
@@ -14912,20 +15010,20 @@ so
 so
 so
 so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
+nC
+hW
+hW
+gI
+MM
+MM
+MM
+gI
+bl
+gI
+hW
+nC
+nC
+nC
 so
 so
 so
@@ -15106,18 +15204,18 @@ so
 so
 so
 so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
+nC
+hW
+jz
+bl
+gI
+gI
+MM
+bl
+bl
+gI
+Vu
+nC
 so
 so
 so
@@ -15300,18 +15398,18 @@ so
 so
 so
 so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
+bl
+hW
+hW
+HW
+gI
+gI
+gI
+gI
+gI
+gI
+hW
+nC
 so
 so
 so
@@ -15494,18 +15592,18 @@ so
 so
 so
 so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
+bl
+hW
+hW
+jz
+hW
+hW
+gI
+hW
+Vu
+hW
+hW
+nC
 so
 so
 so
@@ -15688,18 +15786,18 @@ so
 so
 so
 so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
+nC
+nC
+nC
+nC
+nC
+bl
+bl
+nC
+nC
+nC
+nC
+nC
 so
 so
 so

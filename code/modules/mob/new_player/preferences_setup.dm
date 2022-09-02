@@ -240,8 +240,11 @@
 
 				if(G.slot && !(G.slot in equipped_slots))
 					var/metadata = gear[G.display_name]
-					if(mannequin.equip_to_slot_or_del(G.spawn_item(mannequin, metadata), G.slot))
-						if(G.slot != slot_tie)
+					if(G.slot == "implant")
+						// todo: remove fucking snowflake
+						continue
+					if(mannequin.force_equip_to_slot_or_del(G.spawn_item(mannequin, metadata), G.slot, INV_OP_SILENT))
+						if(G.slot != /datum/inventory_slot_meta/abstract/attach_as_accessory)
 							equipped_slots += G.slot
 
 	if((equip_preview_mob & EQUIP_PREVIEW_JOB) && previewJob)
@@ -269,7 +272,7 @@
 	var/list/valid_hairstyles = list()
 	for(var/hairstyle in hair_styles_list)
 		var/datum/sprite_accessory/S = hair_styles_list[hairstyle]
-		if(!(species in S.species_allowed) && (!custom_base || !(custom_base in S.species_allowed))) //Custom species base species allowance
+		if(S.apply_restrictions && !(species in S.species_allowed) && (!custom_base || !(custom_base in S.species_allowed))) //Custom species base species allowance
 			continue
 
 		valid_hairstyles[hairstyle] = hair_styles_list[hairstyle]
@@ -284,7 +287,7 @@
 			continue
 		if(biological_gender == FEMALE && S.gender == MALE)
 			continue
-		if(!(species in S.species_allowed) && (!custom_base || !(custom_base in S.species_allowed))) //Custom species base species allowance
+		if(S.apply_restrictions && !(species in S.species_allowed) && (!custom_base || !(custom_base in S.species_allowed))) //Custom species base species allowance
 			continue
 
 		valid_facialhairstyles[facialhairstyle] = facial_hair_styles_list[facialhairstyle]

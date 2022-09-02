@@ -194,11 +194,6 @@
 			return M
 	return 0
 
-/mob/proc/Life()
-//	if(organStructure)
-//		organStructure.ProcessOrgans()
-	return
-
 #define UNBUCKLED 0
 #define PARTIALLY_BUCKLED 1
 #define FULLY_BUCKLED 2
@@ -252,8 +247,6 @@
 /mob/proc/restrained()
 	return
 
-/mob/proc/show_inv(mob/user as mob)
-	return
 /**
  * Examine a mob
  *
@@ -274,13 +267,12 @@
 		return
 
 	face_atom(A)
-	if(!isobserver(src) && !isturf(A) && A != src)
-		if(A.loc != src)
-			for(var/mob/M in viewers(4, src))
-				if(M == src || M.is_blind())
-					continue
-				if(M.client && M.client.is_preference_enabled(/datum/client_preference/examine_look))
-					to_chat(M, SPAN_TINYNOTICE("<b>\The [src]</b> looks at \the [A]."))
+	if(!isobserver(src) && !isturf(A) && (get_top_level_atom(A) != src) && get_turf(A))
+		for(var/mob/M in viewers(4, src))
+			if(M == src || M.is_blind())
+				continue
+			if(M.client && M.client.is_preference_enabled(/datum/client_preference/examine_look))
+				to_chat(M, SPAN_TINYNOTICE("<b>\The [src]</b> looks at \the [A]."))
 
 	var/list/result
 	if(client)
@@ -637,6 +629,10 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
  * * handles the strip panel equip and unequip as well if "item" sent
  */
 /mob/Topic(href, href_list)
+	if(href_list["strip"])
+		var/op = href_list["strip"]
+		handle_strip_topic(usr, href_list, op)
+		return
 	if(href_list["mach_close"])
 		var/t1 = text("window=[href_list["mach_close"]]")
 		unset_machine()
@@ -665,14 +661,15 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /**
  * Controls if a mouse drop succeeds (return null if it doesnt)
  */
-/mob/MouseDrop(mob/M as mob)
-	..()
+/mob/OnMouseDropLegacy(mob/M as mob)
+	. = ..()
 	if(M != usr) return
 	if(usr == src) return
 	if(!Adjacent(usr)) return
 	if(usr.incapacitated(INCAPACITATION_STUNNED | INCAPACITATION_FORCELYING | INCAPACITATION_KNOCKOUT | INCAPACITATION_RESTRAINED)) return //Incapacitated.
 	if(istype(M,/mob/living/silicon/ai)) return
-	show_inv(usr)
+	request_strip_menu(usr)
+	return 0
 
 /mob/proc/can_use_hands()
 	return
@@ -923,6 +920,17 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 /mob/proc/get_species_name()
 	return ""
+
+/**
+ * DO NOT USE THIS
+ *
+ * this should be phased out for get_species_id().
+ */
+/mob/proc/get_true_species_name()
+	return ""
+
+/mob/proc/get_species_id()
+	return
 
 /mob/proc/flash_weak_pain()
 	flick("weak_pain",pain)

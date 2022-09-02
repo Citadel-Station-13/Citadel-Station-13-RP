@@ -122,7 +122,7 @@
 /obj/structure/morgue/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/pen))
 		var/t = input(user, "What would you like the label to be?", text("[]", src.name), null)  as text
-		if (user.get_active_hand() != W)
+		if (user.get_active_held_item() != W)
 			return
 		if ((!in_range(src, usr) && src.loc != user))
 			return
@@ -187,7 +187,7 @@
 		return
 	return
 
-/obj/structure/m_tray/MouseDrop_T(atom/movable/O as mob|obj, mob/user as mob)
+/obj/structure/m_tray/MouseDroppedOnLegacy(atom/movable/O as mob|obj, mob/user as mob)
 	if ((!( istype(O, /atom/movable) ) || O.anchored || get_dist(user, src) > 1 || get_dist(user, O) > 1 || user.contents.Find(src) || user.contents.Find(O)))
 		return
 	if (!ismob(O) && !istype(O, /obj/structure/closet/body_bag))
@@ -259,7 +259,7 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 /obj/structure/morgue/crematorium/attackby(P as obj, mob/user as mob)
 	if (istype(P, /obj/item/pen))
 		var/t = input(user, "What would you like the label to be?", text("[]", src.name), null)  as text
-		if (user.get_active_hand() != P)
+		if (user.get_active_held_item() != P)
 			return
 		if ((!in_range(src, usr) > 1 && src.loc != user))
 			return
@@ -325,7 +325,7 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 		for(var/obj/O in contents) //obj instead of obj/item so that bodybags and ashes get destroyed. We dont want tons and tons of ash piling up
 			qdel(O)
 
-		new /obj/effect/decal/cleanable/ash(src)
+		new /obj/effect/debris/cleanable/ash(src)
 		sleep(30)
 		cremating = 0
 		locked = 0
@@ -416,7 +416,7 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 		for(var/obj/O in contents) //obj instead of obj/item so that bodybags and ashes get destroyed. We dont want tons and tons of ash piling up
 			qdel(O)
 
-		new /obj/effect/decal/cleanable/ash(src)
+		new /obj/effect/debris/cleanable/ash(src)
 		sleep(30)
 		cremating = 0
 		locked = 0

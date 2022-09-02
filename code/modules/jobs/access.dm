@@ -220,8 +220,8 @@
 	return botcard
 
 /mob/living/carbon/human/GetIdCard()
-	if(get_active_hand())
-		var/obj/item/I = get_active_hand()
+	if(get_active_held_item())
+		var/obj/item/I = get_active_held_item()
 		var/id = I.GetID()
 		if(id)
 			return id

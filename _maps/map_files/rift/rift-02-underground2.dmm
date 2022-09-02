@@ -3892,7 +3892,7 @@
 /area/engineering/atmos)
 "io" = (
 /obj/structure/railing,
-/obj/structure/loot_pile/maint/trash,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "ip" = (
@@ -4581,6 +4581,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/cryo/station)
+"jI" = (
+/obj/item/bone/skull,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "jJ" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -4986,7 +4990,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
 "kk" = (
-/obj/structure/loot_pile/maint/trash,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
 "kl" = (
@@ -4994,7 +4998,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
 "km" = (
-/obj/structure/loot_pile/maint/trash,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "kn" = (
@@ -5052,7 +5056,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/loot_pile/maint/trash,
+/obj/random/trash_pile,
 /obj/effect/floor_decal/rust,
 /obj/structure/railing{
 	dir = 1
@@ -6221,7 +6225,7 @@
 /area/maintenance/lower/atmos)
 "mw" = (
 /obj/structure/railing,
-/obj/structure/loot_pile/maint/trash,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "mx" = (
@@ -6480,7 +6484,7 @@
 	dir = 8
 	},
 /obj/structure/railing,
-/obj/structure/loot_pile/maint/trash,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "mY" = (
@@ -6631,7 +6635,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/loot_pile/maint/trash,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "nl" = (
@@ -7109,7 +7113,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/structure/loot_pile/maint/trash,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/atmos)
 "oo" = (
@@ -7285,7 +7289,7 @@
 /area/maintenance/atmos)
 "oL" = (
 /obj/structure/railing,
-/obj/structure/loot_pile/maint/trash,
+/obj/random/trash_pile,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
@@ -7573,7 +7577,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 10
 	},
-/atom/movable/landmark{
+/obj/landmark{
 	name = "JoinLateCryo"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7684,7 +7688,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/structure/loot_pile/maint/trash,
+/obj/random/trash_pile,
 /obj/structure/sign/directions/cryo{
 	dir = 1;
 	pixel_y = 32
@@ -8977,6 +8981,9 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rift/turbolift/maint)
+"su" = (
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "sG" = (
 /obj/structure/bed/chair/pew/right{
 	dir = 8
@@ -9179,7 +9186,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/loot_pile/maint/trash,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "ux" = (
@@ -9258,7 +9265,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/structure/loot_pile/maint/trash,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "uR" = (
@@ -9298,7 +9305,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/structure/loot_pile/maint/trash,
+/obj/random/trash_pile,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
@@ -9535,7 +9542,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/job/shaft_miner,
+/obj/landmark/spawnpoint/job/shaft_miner,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "xb" = (
@@ -9722,7 +9729,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/structure/loot_pile/maint/trash,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "xV" = (
@@ -9739,6 +9746,10 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
+"ya" = (
+/obj/item/bone/leg,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "yb" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -9817,9 +9828,13 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/structure/loot_pile/maint/trash,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
+"yI" = (
+/obj/structure/flora/ausbushes/lavendergrass,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "yT" = (
 /obj/effect/map_effect/portal/line/side_a{
 	dir = 4
@@ -9913,11 +9928,6 @@
 "zS" = (
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
-"zX" = (
-/obj/structure/loot_pile/maint/trash,
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/plating,
-/area/maintenance/atmos)
 "zY" = (
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
@@ -9994,7 +10004,7 @@
 /turf/simulated/wall,
 /area/chapel/chapel_morgue)
 "Ay" = (
-/obj/structure/loot_pile/maint/trash,
+/obj/random/trash_pile,
 /obj/structure/railing{
 	dir = 8
 	},
@@ -10090,6 +10100,10 @@
 /obj/machinery/meter,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
+"Be" = (
+/obj/item/bone/arm,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "Bh" = (
 /obj/effect/floor_decal/industrial/warning/corner,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -10148,7 +10162,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/atom/movable/landmark/spawnpoint/job/assistant,
+/obj/landmark/spawnpoint/job/assistant,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "BG" = (
@@ -10156,7 +10170,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
 "BP" = (
-/atom/movable/landmark/spawnpoint/job/shaft_miner,
+/obj/landmark/spawnpoint/job/shaft_miner,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	d1 = 1;
@@ -10350,6 +10364,10 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
+"DD" = (
+/obj/structure/flora/grass/brown,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "DO" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin{
@@ -10494,7 +10512,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
 "EP" = (
-/atom/movable/landmark/spawnpoint/job/shaft_miner,
+/obj/landmark/spawnpoint/job/shaft_miner,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/refinery)
 "EQ" = (
@@ -10606,7 +10624,7 @@
 /area/chapel/observation)
 "Fq" = (
 /obj/structure/bed/chair/backed_red,
-/atom/movable/landmark/spawnpoint/job/chaplain,
+/obj/landmark/spawnpoint/job/chaplain,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/lino,
@@ -10775,6 +10793,7 @@
 /area/maintenance/lower/atmos)
 "Gw" = (
 /obj/structure/closet/secure_closet/miner,
+/obj/item/gun/energy/kinetic_accelerator,
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/belterdock/gear)
 "Gx" = (
@@ -10827,7 +10846,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/atom/movable/landmark{
+/obj/landmark{
 	name = "JoinLateCryo"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -10852,7 +10871,7 @@
 /area/quartermaster/miningdock)
 "GX" = (
 /obj/structure/railing,
-/obj/structure/loot_pile/maint/trash,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "Hg" = (
@@ -11183,6 +11202,10 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/refinery)
+"Kb" = (
+/obj/effect/decal/remains/ribcage,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "Kc" = (
 /obj/machinery/mineral/unloading_machine,
 /turf/simulated/floor/tiled/dark,
@@ -11207,6 +11230,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
+"Kk" = (
+/mob/living/simple_mob/animal/icegoat,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "Km" = (
 /obj/machinery/door/firedoor/glass/hidden,
 /turf/simulated/floor/tiled/monotile,
@@ -11375,6 +11402,10 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
+"Lp" = (
+/obj/structure/flora/grass/green,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "Lq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -11390,6 +11421,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
+"Lv" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "LF" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -11429,6 +11464,10 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
+"LT" = (
+/obj/item/bone/ribs,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "LY" = (
 /obj/structure/morgue/crematorium{
 	id = "chapel_crematorium"
@@ -11577,7 +11616,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "MR" = (
-/atom/movable/landmark/spawnpoint/job/chaplain,
+/obj/landmark/spawnpoint/job/chaplain,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
@@ -11658,7 +11697,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/main)
 "Nt" = (
-/obj/structure/loot_pile/maint/trash,
+/obj/random/trash_pile,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
@@ -11939,7 +11978,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/loot_pile/maint/trash,
+/obj/random/trash_pile,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
@@ -12026,7 +12065,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_gas)
 "Qe" = (
-/obj/structure/loot_pile/maint/trash,
+/obj/random/trash_pile,
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
@@ -12097,6 +12136,10 @@
 /obj/effect/zone_divider,
 /turf/simulated/mineral/icerock,
 /area/rift/surfacebase/underground/under2)
+"QX" = (
+/obj/effect/decal/remains/tajaran,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "Rb" = (
 /obj/structure/railing,
 /obj/structure/closet/crate,
@@ -12152,7 +12195,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/loot_pile/maint/trash,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "RP" = (
@@ -12232,7 +12275,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/chapel/chapel_morgue)
 "Sm" = (
-/atom/movable/landmark/spawnpoint/job/shaft_miner,
+/obj/landmark/spawnpoint/job/shaft_miner,
 /obj/machinery/power/apc{
 	dir = 1;
 	pixel_y = 24
@@ -12261,6 +12304,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/chapel/observation)
+"SB" = (
+/obj/effect/decal/remains/xeno,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
+"SG" = (
+/obj/item/digestion_remains/skull/teshari,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "SH" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
@@ -12296,6 +12347,10 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/observation)
+"SZ" = (
+/obj/structure/flora/tree/dead,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "Td" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -12441,7 +12496,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/main)
 "Uf" = (
-/obj/structure/loot_pile/maint/trash,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "Un" = (
@@ -12782,9 +12837,17 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
+"WQ" = (
+/obj/effect/zone_divider,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "WT" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/observation)
+"WV" = (
+/obj/effect/zone_divider,
+/turf/simulated/wall/r_wall,
+/area/rift/surfacebase/underground/under2)
 "WX" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -12887,7 +12950,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "XC" = (
-/obj/structure/loot_pile/maint/trash,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "XG" = (
@@ -13103,7 +13166,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/job/assistant,
+/obj/landmark/spawnpoint/job/assistant,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "ZB" = (
@@ -13124,7 +13187,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/atom/movable/landmark{
+/obj/landmark{
 	name = "JoinLateCryo"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -14633,7 +14696,7 @@ ML
 ML
 ML
 ML
-ML
+WV
 WA
 WA
 WA
@@ -14827,7 +14890,7 @@ ML
 ML
 ML
 ML
-ML
+WV
 WA
 WA
 WA
@@ -15021,7 +15084,7 @@ ML
 aa
 aa
 aa
-ML
+WV
 WA
 WA
 WA
@@ -15201,16 +15264,16 @@ WA
 WA
 WA
 WA
-WA
-aa
-TF
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+su
+su
+WQ
+su
+su
+su
+su
+su
+su
+su
 aa
 aa
 aa
@@ -15395,16 +15458,16 @@ TF
 TF
 TF
 TF
-TF
-TF
-Cv
-TF
-TF
-TF
-TF
-TF
-TF
-TF
+WQ
+WQ
+WQ
+WQ
+WQ
+WQ
+WQ
+WQ
+WQ
+WQ
 TF
 TF
 TF
@@ -15589,16 +15652,16 @@ aa
 aa
 aa
 aa
-aa
-aa
-TF
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+su
+su
+su
+su
+su
+su
+su
+su
+su
+su
 aa
 aa
 aa
@@ -15783,16 +15846,16 @@ aa
 aa
 aa
 aa
-aa
-aa
-TF
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+su
+su
+su
+su
+su
+su
+su
+su
+su
+su
 aa
 aa
 aa
@@ -15978,15 +16041,15 @@ aa
 aa
 aa
 aa
-aa
-TF
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+su
+yI
+su
+su
+su
+su
+su
+su
+su
 aa
 aa
 aa
@@ -16172,15 +16235,15 @@ aa
 aa
 aa
 aa
-aa
-TF
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+su
+su
+su
+su
+su
+su
+su
+su
+su
 aa
 aa
 aa
@@ -16366,15 +16429,15 @@ aa
 aa
 aa
 aa
-aa
-TF
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+su
+Lv
+su
+Be
+su
+su
+su
+DD
+su
 aa
 aa
 aa
@@ -16560,15 +16623,15 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+su
+su
+su
+su
+Kk
+su
+su
+su
+su
 aa
 aa
 aa
@@ -16754,15 +16817,15 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+su
+su
+QX
+su
+su
+su
+LT
+su
+su
 aa
 aa
 aa
@@ -16948,15 +17011,15 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+su
+su
+yI
+su
+su
+su
+su
+su
+su
 aa
 aa
 aa
@@ -17142,15 +17205,15 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+su
+su
+su
+su
+Lv
+SG
+su
+su
+yI
 aa
 aa
 aa
@@ -17335,16 +17398,16 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+su
+su
+jI
+su
+su
+su
+su
+su
+su
+su
 aa
 aa
 aa
@@ -17529,16 +17592,16 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+su
+su
+su
+su
+su
+ya
+su
+su
+su
+su
 aa
 aa
 aa
@@ -17723,15 +17786,15 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+su
+su
+su
+su
+su
+su
+su
+su
+su
 aa
 aa
 aa
@@ -17917,15 +17980,15 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+SZ
+DD
+su
+su
+su
+LT
+su
+su
+su
 aa
 aa
 aa
@@ -18111,15 +18174,15 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+su
+su
+su
+SB
+su
+su
+su
+Lp
+su
 aa
 aa
 aa
@@ -18305,15 +18368,15 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+su
+su
+yI
+su
+su
+Kb
+su
+su
+su
 aa
 aa
 aa
@@ -18500,15 +18563,15 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+su
+su
+su
+su
+su
+su
+su
+su
+su
 aa
 aa
 aa
@@ -18695,12 +18758,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+su
+su
+su
+su
+su
+su
 aa
 aa
 aa
@@ -23763,7 +23826,7 @@ aa
 aa
 aa
 zy
-zX
+Rp
 kf
 kA
 Yu
@@ -25316,7 +25379,7 @@ cs
 cs
 cs
 kz
-zX
+Rp
 Gz
 sX
 aq

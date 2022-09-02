@@ -226,8 +226,8 @@
 			attack_hand(user)
 		return
 	else if(istype(W, /obj/item/coin) && premium.len > 0)
-		user.drop_item()
-		W.forceMove(src)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		coin = W
 		categories |= CAT_COIN
 		to_chat(user, "<span class='notice'>You insert \the [W] into \the [src].</span>")
@@ -353,7 +353,7 @@
 			return
 
 		coin.forceMove(src.loc)
-		if(!usr.get_active_hand())
+		if(!usr.get_active_held_item())
 			usr.put_in_hands(coin)
 		to_chat(usr, "<span class='notice'>You remove \the [coin] from \the [src]</span>")
 		coin = null
@@ -495,7 +495,7 @@
  * calling. W is the item being inserted, R is the associated vending_product entry.
  */
 /obj/machinery/vending/proc/stock(obj/item/W, var/datum/stored_item/vending_product/R, var/mob/user)
-	if(!user.unEquip(W))
+	if(!user.attempt_insert_item_for_installation(W, src))
 		return
 
 	to_chat(user, "<span class='notice'>You insert \the [W] in the product receptor.</span>")
@@ -635,7 +635,7 @@
 					/obj/item/reagent_containers/food/drinks/bottle/whiterum = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/sake = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/specialwhiskey = 5,
-					/obj/item/reagent_containers/food/drinks/bottle/tequilla = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/tequila = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/vermouth = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/vodka = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/whiskey = 5,
@@ -906,7 +906,7 @@
 	products = list(/obj/item/handcuffs = 8,/obj/item/grenade/flashbang = 4,/obj/item/flash = 5,
 					/obj/item/reagent_containers/food/snacks/donut/normal = 12,/obj/item/storage/box/evidence = 6,
 					/obj/item/gun/projectile/sec = 2, /obj/item/ammo_magazine/m45/rubber = 6, /obj/item/clothing/mask/gas/half = 6,
-					/obj/item/hailer = 6, /obj/item/flashlight/glowstick = 6)
+					/obj/item/hailer = 6, /obj/item/flashlight/glowstick = 6, /obj/item/gun/energy/phasegun/pistol = 4)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/storage/box/donut = 2)
 	req_log_access = access_armory
 	has_logs = 1

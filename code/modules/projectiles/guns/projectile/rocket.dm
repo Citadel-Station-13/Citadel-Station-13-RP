@@ -46,7 +46,7 @@
 		..()
 
 /obj/item/gun/projectile/rocket/attack_hand(mob/user)
-	if(user.get_inactive_hand() == src)
+	if(user.get_inactive_held_item() == src)
 		unload(user)
 	else
 		..()

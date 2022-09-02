@@ -96,11 +96,13 @@
 	if(on)
 		turn_on() // Update lights and other stuff
 
-/mob/living/bot/Life()
-	..()
+/mob/living/bot/Life(seconds, times_fired)
+	if((. = ..()))
+		return
 	if(health <= 0)
 		death()
-		return
+		return TRUE
+
 	SetWeakened(0)
 	SetStunned(0)
 	SetParalysis(0)

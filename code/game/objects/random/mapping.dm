@@ -21,17 +21,17 @@
 
 /obj/random/trash/item_to_spawn()
 	return pick(/obj/effect/decal/remains/lizard,
-				/obj/effect/decal/cleanable/blood/gibs/robot,
-				/obj/effect/decal/cleanable/blood/oil,
-				/obj/effect/decal/cleanable/blood/oil/streak,
-				/obj/effect/decal/cleanable/spiderling_remains,
+				/obj/effect/debris/cleanable/blood/gibs/robot,
+				/obj/effect/debris/cleanable/blood/oil,
+				/obj/effect/debris/cleanable/blood/oil/streak,
+				/obj/effect/debris/cleanable/spiderling_remains,
 				/obj/effect/decal/remains/mouse,
-				/obj/effect/decal/cleanable/vomit,
-				/obj/effect/decal/cleanable/blood/splatter,
-				/obj/effect/decal/cleanable/ash,
-				/obj/effect/decal/cleanable/generic,
-				/obj/effect/decal/cleanable/flour,
-				/obj/effect/decal/cleanable/dirt,
+				/obj/effect/debris/cleanable/vomit,
+				/obj/effect/debris/cleanable/blood/splatter,
+				/obj/effect/debris/cleanable/ash,
+				/obj/effect/debris/cleanable/generic,
+				/obj/effect/debris/cleanable/flour,
+				/obj/effect/debris/cleanable/dirt,
 				/obj/effect/decal/remains/robot)
 
 /obj/random/crate //Random 'standard' crates for variety in maintenance spawns.

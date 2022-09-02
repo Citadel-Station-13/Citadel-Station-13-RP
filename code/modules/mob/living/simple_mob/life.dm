@@ -1,22 +1,25 @@
-/mob/living/simple_mob/Life()
-	..()
+/mob/living/simple_mob/Life(seconds, times_fired)
+	if((. = ..()))
+		return
 
 	//Health
 	updatehealth()
-	if(stat >= DEAD)
-		return FALSE
 
-	handle_stunned()
-	handle_weakened()
-	handle_paralysed()
-	handle_supernatural()
-	handle_atmos()
+/mob/living/simple_mob/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
 
-	handle_special()
-	handle_guts()
+	if(!IS_DEAD(src))
 
-	return TRUE
+		handle_stunned()
+		handle_weakened()
+		handle_paralysed()
+		handle_supernatural()
+		handle_atmos()
 
+		handle_special()
+
+	handle_guts(seconds)
 
 //Should we be dead?
 /mob/living/simple_mob/updatehealth()
@@ -142,12 +145,14 @@
 			oxygen.icon_state = "oxy0"
 		adjustOxyLoss(-unsuitable_atoms_damage)
 
-/mob/living/simple_mob/proc/handle_guts()
-	for(var/obj/item/organ/OR in internal_organs)
-		OR.process()
-
-	for(var/obj/item/organ/OR in organs)
-		OR.process()
+/mob/living/simple_mob/proc/handle_guts(dt)
+	switch(stat)
+		if(DEAD)
+			for(var/obj/item/organ/O in organs)
+				O.tick_death(dt)
+		else
+			for(var/obj/item/organ/O in organs)
+				O.tick_life(dt)
 
 /mob/living/simple_mob/proc/handle_supernatural()
 	if(purge)

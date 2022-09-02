@@ -208,7 +208,8 @@
 	if(..())
 		return TRUE
 
-	var/obj/held_item = usr.get_active_hand()
+	var/obj/held_item = usr.get_active_held_item()
+
 	switch(action)
 		//Actual assembly actions
 		if("rename")
@@ -287,7 +288,7 @@
 
 // End TGUI
 /* TBI	diag hud
-/obj/item/electronic_assembly/pickup(mob/living/user)
+/obj/item/electronic_assembly/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()
 	//update diagnostic hud when picked up, true is used to force the hud to be hidden
 	diag_hud_set_circuithealth(TRUE)
@@ -295,7 +296,7 @@
 	diag_hud_set_circuitstat(TRUE)
 	diag_hud_set_circuittracking(TRUE)
 
-/obj/item/electronic_assembly/dropped(mob/user)
+/obj/item/electronic_assembly/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	//update diagnostic hud when dropped
 	diag_hud_set_circuithealth()
@@ -419,7 +420,7 @@
 /obj/item/electronic_assembly/attackby(var/obj/item/I, var/mob/user, intent)
 	if(can_anchor && I.is_wrench())
 		if(anchored_by)
-			to_chat(user, SPAN_WARNING(pick("You fail to get purchase on [anchored_by]'s bolts.","[src]'s [anchored_by] protests!","The bolts defeat your paltry [user.get_species_name()] attempts to loosen them.")))
+			to_chat(user, SPAN_WARNING(pick("You fail to get purchase on [anchored_by]'s bolts.","[src]'s [anchored_by] protests!","The bolts defeat your paltry attempts to loosen them.")))
 			return
 		anchored = !anchored
 		to_chat(user, SPAN_NOTICE("You've [anchored ? "" : "un"]secured \the [src] to \the [get_turf(src)]."))
@@ -431,11 +432,13 @@
 		return TRUE
 
 	else if(istype(I, /obj/item/integrated_circuit))
-		if(!user.unEquip(I) && !istype(user, /mob/living/silicon/robot)) //Robots cannot de-equip items in grippers.
-			return FALSE
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		if(try_add_component(I, user))
 			ui_interact(user)
 			return TRUE
+		else
+			I.forceMove(drop_location())
 
 	else if(I.is_crowbar())
 		if(!opened)
@@ -484,8 +487,8 @@
 				S.attackby_react(I,user,user.a_intent)
 			return FALSE
 		var/obj/item/cell/device/cell = I
-		user.drop_item(cell)
-		cell.forceMove(src)
+		if(!user.attempt_insert_item_for_installation(cell, src))
+			return
 		battery = cell
 		// TBI diag_hud_set_circuitstat() //update diagnostic hud
 		playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)

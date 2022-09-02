@@ -9,31 +9,31 @@
 	sort_category = "Xenowear"
 
 /datum/gear/xeno/accessories
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 /datum/gear/xeno/shoes
-	slot = slot_shoes
+	slot = SLOT_ID_SHOES
 
 /datum/gear/xeno/uniform
-	slot = slot_w_uniform
+	slot = SLOT_ID_UNIFORM
 
 /datum/gear/xeno/suit
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 
 /datum/gear/xeno/head
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 
 /datum/gear/xeno/eyes
-	slot = slot_glasses
+	slot = SLOT_ID_GLASSES
 
 /datum/gear/xeno/back
-	slot = slot_back
+	slot = SLOT_ID_BACK
 
 /datum/gear/xeno/mask
-	slot = slot_wear_mask
+	slot = SLOT_ID_MASK
 
 /datum/gear/xeno/gloves
-	slot = slot_gloves
+	slot = SLOT_ID_GLOVES
 /******************************************************************************/
 //**Species-Specific Datum Declarations
 //*Tajaran
@@ -41,113 +41,113 @@
 	whitelisted = SPECIES_TAJ
 
 /datum/gear/xeno/tajaran/accessories
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 /datum/gear/xeno/tajaran/shoes
-	slot = slot_shoes
+	slot = SLOT_ID_SHOES
 
 /datum/gear/xeno/tajaran/uniform
-	slot = slot_w_uniform
+	slot = SLOT_ID_UNIFORM
 
 /datum/gear/xeno/tajaran/suit
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 
 /datum/gear/xeno/tajaran/head
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 
 /datum/gear/xeno/tajaran/eyes
-	slot = slot_glasses
+	slot = SLOT_ID_GLASSES
 
 /datum/gear/xeno/tajaran/back
-	slot = slot_back
+	slot = SLOT_ID_BACK
 
 //*Promethean
 /datum/gear/xeno/promethean
 	whitelisted = SPECIES_PROMETHEAN
 
 /datum/gear/xeno/promethean/accessories
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 /datum/gear/xeno/promethean/shoes
-	slot = slot_shoes
+	slot = SLOT_ID_SHOES
 
 /datum/gear/xeno/promethean/uniform
-	slot = slot_w_uniform
+	slot = SLOT_ID_UNIFORM
 
 /datum/gear/xeno/promethean/suit
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 
 /datum/gear/xeno/promethean/head
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 
 /datum/gear/xeno/promethean/eyes
-	slot = slot_glasses
+	slot = SLOT_ID_GLASSES
 
 /datum/gear/xeno/promethean/back
-	slot = slot_back
+	slot = SLOT_ID_BACK
 
 //*Teshari
 /datum/gear/xeno/teshari
 	whitelisted = SPECIES_TESHARI
 
 /datum/gear/xeno/teshari/accessories
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 /datum/gear/xeno/teshari/shoes
-	slot = slot_shoes
+	slot = SLOT_ID_SHOES
 
 /datum/gear/xeno/teshari/uniform
-	slot = slot_w_uniform
+	slot = SLOT_ID_UNIFORM
 
 /datum/gear/xeno/teshari/suit
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 
 /datum/gear/xeno/teshari/head
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 
 /datum/gear/xeno/teshari/eyes
-	slot = slot_glasses
+	slot = SLOT_ID_GLASSES
 
 /datum/gear/xeno/teshari/back
-	slot = slot_back
+	slot = SLOT_ID_BACK
 
 /datum/gear/xeno/teshari/mask
-	slot = slot_wear_mask
+	slot = SLOT_ID_MASK
 
 /datum/gear/xeno/teshari/gloves
-	slot = slot_gloves
+	slot = SLOT_ID_GLOVES
 
 
 //*Phoronoid
 /datum/gear/xeno/phoronoid
-	whitelisted = SPECIES_PLASMAMAN
+	whitelisted = SPECIES_PHORONOID
 
 /datum/gear/xeno/phoronoid/accessories
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 /datum/gear/xeno/phoronoid/shoes
-	slot = slot_shoes
+	slot = SLOT_ID_SHOES
 
 /datum/gear/xeno/phoronoid/uniform
-	slot = slot_w_uniform
+	slot = SLOT_ID_UNIFORM
 
 /datum/gear/xeno/phoronoid/suit
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 
 /datum/gear/xeno/phoronoid/head
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 
 /datum/gear/xeno/phoronoid/eyes
-	slot = slot_glasses
+	slot = SLOT_ID_GLASSES
 
 /datum/gear/xeno/phoronoid/back
-	slot = slot_back
+	slot = SLOT_ID_BACK
 
 /datum/gear/xeno/phoronoid/mask
-	slot = slot_wear_mask
+	slot = SLOT_ID_MASK
 
 /datum/gear/xeno/phoronoid/gloves
-	slot = slot_gloves
+	slot = SLOT_ID_GLOVES
 
 
 
@@ -156,31 +156,31 @@
 	whitelisted = SPECIES_SKRELL
 
 /datum/gear/xeno/skrell/accessories
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 /datum/gear/xeno/skrell/shoes
-	slot = slot_shoes
+	slot = SLOT_ID_SHOES
 
 /datum/gear/xeno/skrell/uniform
-	slot = slot_w_uniform
+	slot = SLOT_ID_UNIFORM
 
 /datum/gear/xeno/skrell/suit
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 
 /datum/gear/xeno/skrell/head
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 
 /datum/gear/xeno/skrell/eyes
-	slot = slot_glasses
+	slot = SLOT_ID_GLASSES
 
 /datum/gear/xeno/skrell/back
-	slot = slot_back
+	slot = SLOT_ID_BACK
 
 /datum/gear/xeno/skrell/mask
-	slot = slot_wear_mask
+	slot = SLOT_ID_MASK
 
 /datum/gear/xeno/skrell/gloves
-	slot = slot_gloves
+	slot = SLOT_ID_GLOVES
 
 
 
@@ -189,31 +189,31 @@
 	whitelisted = SPECIES_UNATHI
 
 /datum/gear/xeno/unathi/accessories
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 /datum/gear/xeno/unathi/shoes
-	slot = slot_shoes
+	slot = SLOT_ID_SHOES
 
 /datum/gear/xeno/unathi/uniform
-	slot = slot_w_uniform
+	slot = SLOT_ID_UNIFORM
 
 /datum/gear/xeno/unathi/suit
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 
 /datum/gear/xeno/unathi/head
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 
 /datum/gear/xeno/unathi/eyes
-	slot = slot_glasses
+	slot = SLOT_ID_GLASSES
 
 /datum/gear/xeno/unathi/back
-	slot = slot_back
+	slot = SLOT_ID_BACK
 
 /datum/gear/xeno/unathi/mask
-	slot = slot_wear_mask
+	slot = SLOT_ID_MASK
 
 /datum/gear/xeno/unathi/gloves
-	slot = slot_gloves
+	slot = SLOT_ID_GLOVES
 
 
 
@@ -222,31 +222,31 @@
 	whitelisted = SPECIES_VOX
 
 /datum/gear/xeno/vox/accessories
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 /datum/gear/xeno/vox/shoes
-	slot = slot_shoes
+	slot = SLOT_ID_SHOES
 
 /datum/gear/xeno/vox/uniform
-	slot = slot_w_uniform
+	slot = SLOT_ID_UNIFORM
 
 /datum/gear/xeno/vox/suit
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 
 /datum/gear/xeno/vox/head
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 
 /datum/gear/xeno/vox/eyes
-	slot = slot_glasses
+	slot = SLOT_ID_GLASSES
 
 /datum/gear/xeno/vox/back
-	slot = slot_back
+	slot = SLOT_ID_BACK
 
 /datum/gear/xeno/vox/mask
-	slot = slot_wear_mask
+	slot = SLOT_ID_MASK
 
 /datum/gear/xeno/vox/gloves
-	slot = slot_gloves
+	slot = SLOT_ID_GLOVES
 /******************************************************************************/
 //**Actual Item Declarations
 //*Tajaran
@@ -862,8 +862,8 @@
 /datum/gear/xeno/teshari/accessories/neckscarf_colorable/New()
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
-	
-	
+
+
 //*Moth
 // Will be restricted in the future, when moths have a separate species. For now, rely on the sprites looking goofy as fuck on anything other than moths to keep people away. - WrongEnd
 
@@ -878,11 +878,11 @@
 		var/obj/item/clothing/under/moth/puffy_pants/puffy_pant_type = puffy_pant
 		puffy_pants[initial(puffy_pant_type.name)] = puffy_pant_type
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(puffy_pants, /proc/cmp_text_asc))
-	
+
 /datum/gear/xeno/uniform/tight_pants
 	name = "Moth - Pants Selection"
 	description = "Selection of Moth Pants."
-	
+
 /datum/gear/xeno/uniform/tight_pants/New()
 	..()
 	var/list/tight_pants = list()
@@ -890,11 +890,11 @@
 		var/obj/item/clothing/under/moth/tight_pants/tight_pant_type = tight_pant
 		tight_pants[initial(tight_pant_type.name)] = tight_pant_type
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(tight_pants, /proc/cmp_text_asc))
-	
+
 /datum/gear/xeno/uniform/moth_skirt
 	name = "Moth - Skirt Selection"
 	description = "Selection of Moth Skirts."
-	
+
 /datum/gear/xeno/uniform/moth_skirt/New()
 	..()
 	var/list/moth_skirt = list()
@@ -902,7 +902,7 @@
 		var/obj/item/clothing/under/moth/moth_skirt/moth_skirts_type = moth_skirts
 		moth_skirt[initial(moth_skirts_type.name)] = moth_skirts_type
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(moth_skirt, /proc/cmp_text_asc))
-	
+
 /datum/gear/xeno/accessories/abdomen_guard
 	name = "Moth - Abdomen Guards Selection"
 	description = "Selection of Abdomen Guards."
@@ -914,11 +914,11 @@
 		var/obj/item/clothing/accessory/vest/moth/abdomen_guard/abdomen_guards_type = abdomen_guards
 		abdomen_guard[initial(abdomen_guards_type.name)] = abdomen_guards_type
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(abdomen_guard, /proc/cmp_text_asc))
-	
+
 /datum/gear/xeno/accessories/tunic_top
 	name = "Moth - Tunic Tops Selection"
 	description = "Selection of Moth Tunic Tops."
-	
+
 /datum/gear/xeno/accessories/tunic_top/New()
 	..()
 	var/list/tunic_top = list()
@@ -926,11 +926,11 @@
 		var/obj/item/clothing/accessory/vest/moth/tunic_top/tunic_tops_type = tunic_tops
 		tunic_top[initial(tunic_tops_type.name)] = tunic_tops_type
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(tunic_top, /proc/cmp_text_asc))
-	
+
 /datum/gear/xeno/accessories/cloth_strap_top
 	name = "Moth - Cloth Strap Tops Selection"
 	description = "Selection of Moth Cloth Strap Tops."
-	
+
 /datum/gear/xeno/accessories/cloth_strap_top/New()
 	..()
 	var/list/cloth_strap_top = list()
@@ -938,11 +938,11 @@
 		var/obj/item/clothing/accessory/vest/moth/cloth_strap_top/cloth_strap_tops_type = cloth_strap_tops
 		cloth_strap_top[initial(cloth_strap_tops_type.name)] = cloth_strap_tops_type
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(cloth_strap_top, /proc/cmp_text_asc))
-	
+
 /datum/gear/xeno/accessories/shoulder_pad_right
 	name = "Moth - Right Shoulder Pads Selection"
 	description = "Selection of Moth Right Shoulder Pads."
-	
+
 /datum/gear/xeno/accessories/shoulder_pad_right/New()
 	..()
 	var/list/shoulder_pad_right = list()
@@ -950,11 +950,11 @@
 		var/obj/item/clothing/accessory/vest/moth/shoulder_pad_right/shoulder_pad_rights_type = shoulder_pad_rights
 		shoulder_pad_right[initial(shoulder_pad_rights_type.name)] = shoulder_pad_rights_type
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(shoulder_pad_right, /proc/cmp_text_asc))
-	
+
 /datum/gear/xeno/accessories/shoulder_pad_left
 	name = "Moth - Left Shoulder Pads Selection"
 	description = "Selection of Moth Left Shoulder Pads."
-	
+
 /datum/gear/xeno/accessories/shoulder_pad_left/New()
 	..()
 	var/list/shoulder_pad_left = list()
@@ -962,7 +962,7 @@
 		var/obj/item/clothing/accessory/vest/moth/shoulder_pad_left/shoulder_pad_lefts_type = shoulder_pad_lefts
 		shoulder_pad_left[initial(shoulder_pad_lefts_type.name)] = shoulder_pad_lefts_type
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(shoulder_pad_left, /proc/cmp_text_asc))
-	
+
 /datum/gear/xeno/accessories/front_tunic
 	name = "Moth - Front Tunics Selection"
 	description = "Selection of Moth Front Tunics."
@@ -974,11 +974,11 @@
 		var/obj/item/clothing/accessory/vest/moth/front_tunic/front_tunics_type = front_tunics
 		front_tunic[initial(front_tunics_type.name)] = front_tunics_type
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(front_tunic, /proc/cmp_text_asc))
-	
+
 /datum/gear/xeno/accessories/gaiter
 	name = "Moth - Gaiters Selection"
 	description = "Selection of Moth Gaiters."
-	
+
 /datum/gear/xeno/accessories/gaiter/New()
 	..()
 	var/list/gaiter = list()
@@ -986,11 +986,11 @@
 		var/obj/item/clothing/accessory/vest/moth/gaiter/gaiters_type = gaiters
 		gaiter[initial(gaiters_type.name)] = gaiters_type
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(gaiter, /proc/cmp_text_asc))
-	
+
 /datum/gear/xeno/shoes/legwrap
 	name = "Moth - Legwraps Selection"
 	description = "Selection of Moth Legwraps."
-	
+
 /datum/gear/xeno/shoes/legwrap/New()
 	..()
 	var/list/legwrap = list()
@@ -998,7 +998,7 @@
 		var/obj/item/clothing/shoes/moth/legwrap/legwraps_type = legwraps
 		legwrap[initial(legwraps_type.name)] = legwraps_type
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(legwrap, /proc/cmp_text_asc))
-	
+
 /datum/gear/xeno/shoes/moth/jackboots
 	name = "Moth - Jackboots"
 	path = /obj/item/clothing/shoes/boots/jackboots/moth
@@ -1008,7 +1008,7 @@
 	name = "Moth - Workboots"
 	path = /obj/item/clothing/shoes/boots/moth
 	allowed_roles = list("Station Engineer", "Chief Engineer", "Atmospheric Technician", "Research Director", "Scientist", "Roboticist", "Xenobiologist", "Explorer", "Pathfinder")
-	
+
 
 
 //*Non-Restricted Items (THIS SHOULD BE KEPT MINIMAL. IF IT HAS A SPECIFIC SPECIES, PLACE IT THERE.)
@@ -1032,4 +1032,3 @@
 /datum/gear/xeno/uniform
 	name = "Generic - Gear Harness"
 	path = /obj/item/clothing/under/harness
-

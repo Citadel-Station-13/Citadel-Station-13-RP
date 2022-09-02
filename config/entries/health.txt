@@ -1,0 +1,5 @@
+## Enable to have organs decay when someone's dead
+ORGAN_DECAY
+
+## Organ decay multiplier
+ORGAN_DECAY_MULTIPLIER 1

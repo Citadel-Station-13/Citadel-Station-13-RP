@@ -299,7 +299,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/atom/movable/landmark/loot_spawn{
+/obj/landmark/loot_spawn{
 	live_cargo = 0
 	},
 /turf/simulated/floor/plating,
@@ -384,7 +384,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
 	},
-/atom/movable/landmark/loot_spawn{
+/obj/landmark/loot_spawn{
 	live_cargo = 0
 	},
 /turf/simulated/floor/plating,
@@ -396,7 +396,7 @@
 /area/awaymission/zoo/pirateship)
 "bl" = (
 /obj/effect/floor_decal/industrial/warning,
-/atom/movable/landmark/loot_spawn{
+/obj/landmark/loot_spawn{
 	live_cargo = 0
 	},
 /turf/simulated/floor/plating,
@@ -530,7 +530,7 @@
 /area/awaymission/zoo/pirateship)
 "bE" = (
 /obj/structure/table/reinforced,
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /obj/effect/floor_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
@@ -756,7 +756,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo/pirateship)
 "cs" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo/pirateship)
 "ct" = (
@@ -1336,16 +1336,16 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/zoo/pirateship)
 "dW" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "dX" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "dY" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/item/reagent_containers/food/snacks/xenomeat,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
@@ -1404,7 +1404,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "eg" = (
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "eh" = (
@@ -1557,7 +1557,7 @@
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "eA" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/light/small{
 	dir = 8
 	},
@@ -3861,7 +3861,7 @@
 /area/awaymission/zoo)
 "km" = (
 /obj/structure/table/rack,
-/atom/movable/landmark/costume/random,
+/obj/landmark/costume/random,
 /turf/simulated/floor/holofloor/carpet,
 /area/awaymission/zoo)
 "kn" = (
@@ -4173,7 +4173,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/zoo)
 "ln" = (
-/atom/movable/landmark/away,
+/obj/landmark/away,
 /turf/simulated/floor/wood,
 /area/awaymission/zoo)
 "lo" = (
@@ -4269,7 +4269,7 @@
 /obj/structure/toilet{
 	dir = 8
 	},
-/atom/movable/landmark/away,
+/obj/landmark/away,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo)
 "lC" = (
@@ -5748,7 +5748,7 @@
 	},
 /area/awaymission/zoo)
 "pv" = (
-/atom/movable/landmark/away,
+/obj/landmark/away,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass4"
 	},
@@ -6234,7 +6234,7 @@
 /area/awaymission/zoo)
 "qI" = (
 /obj/effect/floor_decal/industrial/warning,
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/generic,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "qJ" = (
@@ -6273,7 +6273,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "qQ" = (
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/generic,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "qR" = (
@@ -6283,7 +6283,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "qS" = (
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "qT" = (
@@ -7117,7 +7117,7 @@
 	},
 /area/awaymission/zoo)
 "sG" = (
-/atom/movable/landmark/away,
+/obj/landmark/away,
 /turf/simulated/floor/tiled/neutral,
 /area/awaymission/zoo)
 "sH" = (
@@ -7142,7 +7142,7 @@
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "sK" = (
-/atom/movable/landmark/away,
+/obj/landmark/away,
 /turf/simulated/floor/outdoors/beach,
 /area/awaymission/zoo)
 "sL" = (
@@ -7542,7 +7542,7 @@
 /area/awaymission/zoo)
 "tL" = (
 /obj/effect/floor_decal/asteroid,
-/obj/effect/decal/cleanable/greenglow,
+/obj/effect/debris/cleanable/greenglow,
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "tM" = (
@@ -7561,7 +7561,7 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "tP" = (
-/obj/effect/decal/cleanable/greenglow,
+/obj/effect/debris/cleanable/greenglow,
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "tQ" = (
@@ -7781,7 +7781,7 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "um" = (
-/atom/movable/landmark/away,
+/obj/landmark/away,
 /mob/living/simple_mob/animal/space/goose{
 	faction = "zoo"
 	},
@@ -8156,7 +8156,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "vi" = (
-/atom/movable/landmark/away,
+/obj/landmark/away,
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "vj" = (
@@ -8272,7 +8272,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "vw" = (
-/atom/movable/landmark/loot_spawn,
+/obj/landmark/loot_spawn,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "vx" = (
@@ -8298,7 +8298,7 @@
 /turf/simulated/floor/outdoors/beach,
 /area/awaymission/zoo)
 "vA" = (
-/atom/movable/landmark/away,
+/obj/landmark/away,
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "vB" = (
@@ -8505,7 +8505,7 @@
 /area/awaymission/zoo)
 "we" = (
 /obj/machinery/shieldgen,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor,
 /area/awaymission/zoo)
@@ -8515,7 +8515,7 @@
 /area/awaymission/zoo)
 "wg" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/atom/movable/landmark/loot_spawn,
+/obj/landmark/loot_spawn,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "wh" = (
@@ -8656,7 +8656,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/zoo)
 "wC" = (
-/atom/movable/landmark/away,
+/obj/landmark/away,
 /turf/simulated/floor/tiled/red,
 /area/awaymission/zoo)
 "wD" = (
@@ -8670,7 +8670,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/zoo)
 "wF" = (
-/atom/movable/landmark/away,
+/obj/landmark/away,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/zoo)
 "wG" = (
@@ -8715,13 +8715,13 @@
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo)
 "wN" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/floodlight,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor,
 /area/awaymission/zoo)
 "wO" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/power/emitter,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor,
@@ -8750,7 +8750,7 @@
 /area/awaymission/zoo)
 "wT" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/atom/movable/landmark/loot_spawn,
+/obj/landmark/loot_spawn,
 /obj/structure/symbol/da{
 	pixel_x = -32
 	},
@@ -8876,7 +8876,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/zoo)
 "xj" = (
-/atom/movable/landmark/loot_spawn{
+/obj/landmark/loot_spawn{
 	live_cargo = 0
 	},
 /turf/simulated/floor/tiled/dark,

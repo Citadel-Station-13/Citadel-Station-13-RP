@@ -102,8 +102,8 @@
 /mob/living/bullet_act(var/obj/item/projectile/P, var/def_zone)
 
 	//Being hit while using a deadman switch
-	if(istype(get_active_hand(),/obj/item/assembly/signaler))
-		var/obj/item/assembly/signaler/signaler = get_active_hand()
+	if(istype(get_active_held_item(),/obj/item/assembly/signaler))
+		var/obj/item/assembly/signaler/signaler = get_active_held_item()
 		if(signaler.deadman && prob(80))
 			log_and_message_admins("has triggered a signaler deadman's switch")
 			src.visible_message("<font color='red'>[src] triggers their deadman's switch!</font>")
@@ -302,9 +302,10 @@
 			var/dir = get_dir(O.throw_source, src)
 
 			visible_message("<font color='red'>[src] staggers under the impact!</font>","<font color='red'>You stagger under the impact!</font>")
-			src.throw_at(get_edge_target_turf(src,dir),1,momentum)
+			src.throw_at(get_edge_target_turf(src,dir), 1, momentum)
 
-			if(!O || !src) return
+			if(!O || !src)
+				return
 
 			if(O.sharp) //Projectile is suitable for pinning.
 				if(soaked >= round(throw_damage*0.8))
@@ -391,8 +392,8 @@
 		ExtinguishMob() //Fire's been put out.
 		return 1
 
-	var/datum/gas_mixture/G = loc.return_air() // Check if we're standing in an oxygenless environment
-	if(G.gas[/datum/gas/oxygen] < 1)
+	var/datum/gas_mixture/G = loc?.return_air() // Check if we're standing in an oxygenless environment
+	if(!G || (G.gas[/datum/gas/oxygen] < 1))
 		ExtinguishMob() //If there's no oxygen in the tile we're on, put out the fire
 		return 1
 
@@ -491,8 +492,10 @@
 	return
 
 /mob/living/update_action_buttons()
-	if(!hud_used) return
-	if(!client) return
+	if(!hud_used)
+		return
+	if(!client)
+		return
 
 	if(hud_used.hud_shown != 1)	//Hud toggled to minimal
 		return

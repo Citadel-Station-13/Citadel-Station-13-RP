@@ -1,6 +1,6 @@
 /obj/effect/gibspawner
 	generic
-		gibtypes = list(/obj/effect/decal/cleanable/blood/gibs,/obj/effect/decal/cleanable/blood/gibs,/obj/effect/decal/cleanable/blood/gibs/core)
+		gibtypes = list(/obj/effect/debris/cleanable/blood/gibs,/obj/effect/debris/cleanable/blood/gibs,/obj/effect/debris/cleanable/blood/gibs/core)
 		gibamounts = list(2,2,1)
 
 		New()
@@ -8,7 +8,7 @@
 			..()
 
 	human
-		gibtypes = list(/obj/effect/decal/cleanable/blood/gibs,/obj/effect/decal/cleanable/blood/gibs/down,/obj/effect/decal/cleanable/blood/gibs,/obj/effect/decal/cleanable/blood/gibs,/obj/effect/decal/cleanable/blood/gibs,/obj/effect/decal/cleanable/blood/gibs,/obj/effect/decal/cleanable/blood/gibs/core)
+		gibtypes = list(/obj/effect/debris/cleanable/blood/gibs,/obj/effect/debris/cleanable/blood/gibs/down,/obj/effect/debris/cleanable/blood/gibs,/obj/effect/debris/cleanable/blood/gibs,/obj/effect/debris/cleanable/blood/gibs,/obj/effect/debris/cleanable/blood/gibs,/obj/effect/debris/cleanable/blood/gibs/core)
 		gibamounts = list(1,1,1,1,1,1,1)
 
 		New()
@@ -18,7 +18,7 @@
 
 	robot
 		sparks = 1
-		gibtypes = list(/obj/effect/decal/cleanable/blood/gibs/robot/up,/obj/effect/decal/cleanable/blood/gibs/robot/down,/obj/effect/decal/cleanable/blood/gibs/robot,/obj/effect/decal/cleanable/blood/gibs/robot,/obj/effect/decal/cleanable/blood/gibs/robot,/obj/effect/decal/cleanable/blood/gibs/robot/limb)
+		gibtypes = list(/obj/effect/debris/cleanable/blood/gibs/robot/up,/obj/effect/debris/cleanable/blood/gibs/robot/down,/obj/effect/debris/cleanable/blood/gibs/robot,/obj/effect/debris/cleanable/blood/gibs/robot,/obj/effect/debris/cleanable/blood/gibs/robot,/obj/effect/debris/cleanable/blood/gibs/robot/limb)
 		gibamounts = list(1,1,1,1,1,1)
 
 		New()

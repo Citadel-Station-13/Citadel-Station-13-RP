@@ -96,11 +96,9 @@
 			to_chat(user, "<span class='warning'>\The [W] doesn't contain enough [MAT_STEEL] to recycle.</span>")
 		else if(metal + pipe_cost > max_metal)
 			to_chat(user, "<span class='notice'>\The [src] is full.</span>")
-		else
-			user.drop_from_inventory(W)
+		else if(user.attempt_consume_item_for_construction(W))
 			metal += pipe_cost
 			to_chat(user, "<span class='notice'>You recycle \the [W].</span>")
-			qdel(W)
 		return
 	if(istype(W, /obj/item/stack/material) && W.get_material_name() == MAT_STEEL)
 		var/result = load_metal(W)

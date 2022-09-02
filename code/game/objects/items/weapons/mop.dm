@@ -37,7 +37,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 
 /obj/item/mop/afterattack(atom/A, mob/user, proximity)
 	if(!proximity) return
-	if(istype(A, /turf) || istype(A, /obj/effect/decal/cleanable) || istype(A, /obj/effect/overlay))
+	if(istype(A, /turf) || istype(A, /obj/effect/debris/cleanable) || istype(A, /obj/effect/overlay))
 		if(reagents.total_volume < 1)
 			to_chat(user, "<span class='warning'>Your mop is dry!</span>")
 			return
@@ -73,7 +73,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	//Lets do a fancy animation of the mop sweeping over the tiles. Code copied from attack animation
 	var/turf/start = turfs[2]
 	var/turf/end = turfs[3]
-	var/obj/effect/mopimage = new /obj/effect/effect(start)
+	var/obj/effect/mopimage = new /obj/effect(start)
 	mopimage.appearance = appearance
 	mopimage.alpha = 200
 	// Who can see the attack?

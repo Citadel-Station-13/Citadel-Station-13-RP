@@ -81,7 +81,7 @@ var/list/gurgled_overlays = list(
 
 		if(user.loc != location) return				//User has moved
 		if(!I) return 								//Item's been destroyed while washing
-		if(user.get_active_hand() != I) return		//Person has switched hands or the item in their hands
+		if(user.get_active_held_item() != I) return		//Person has switched hands or the item in their hands
 
 		O.clean_blood()
 		user.visible_message( \
@@ -99,7 +99,7 @@ var/list/gurgled_overlays = list(
 		var/turf/T = get_turf(src)
 		for(var/obj/item/I in contents)
 			remove_from_storage(I, T)
-		new/obj/effect/decal/cleanable/molten_item(T)
+		new/obj/effect/debris/cleanable/molten_item(T)
 		qdel(src)
 		return
 	..()

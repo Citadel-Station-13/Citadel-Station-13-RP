@@ -294,7 +294,7 @@
 				/obj/item/reagent_containers/food/drinks/bottle/gin,
 				/obj/item/reagent_containers/food/drinks/bottle/specialwhiskey,
 				/obj/item/reagent_containers/food/drinks/bottle/vodka,
-				/obj/item/reagent_containers/food/drinks/bottle/tequilla,
+				/obj/item/reagent_containers/food/drinks/bottle/tequila,
 				/obj/item/reagent_containers/food/drinks/bottle/absinthe,
 				/obj/item/reagent_containers/food/drinks/bottle/wine,
 				/obj/item/reagent_containers/food/drinks/bottle/cognac,
@@ -526,8 +526,8 @@
 /obj/random/mouseremains/item_to_spawn()
 	return pick(/obj/item/assembly/mousetrap,
 				/obj/item/assembly/mousetrap/armed,
-				/obj/effect/decal/cleanable/spiderling_remains,
-				/obj/effect/decal/cleanable/ash,
+				/obj/effect/debris/cleanable/spiderling_remains,
+				/obj/effect/debris/cleanable/ash,
 				/obj/item/cigbutt,
 				/obj/item/cigbutt/cigarbutt,
 				/obj/effect/decal/remains/mouse)

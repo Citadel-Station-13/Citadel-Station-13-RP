@@ -314,7 +314,7 @@
 				//if(AM.movable_flags & MOVABLE_FLAG_DEL_SHUTTLE)
 				//	qdel(AM)
 				//	continue
-				if((AM.flags & AF_ABSTRACT))
+				if((AM.flags & ATOM_ABSTRACT))
 					continue
 				if(isliving(AM))
 					var/mob/living/bug = AM

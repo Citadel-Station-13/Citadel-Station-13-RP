@@ -31,21 +31,18 @@
 		reagents.add_reagent("nutriment",nutriment_amt,nutriment_desc)
 
 	//Placeholder for effect that trigger on eating that aren't tied to reagents.
-/obj/item/reagent_containers/food/snacks/proc/On_Consume(var/mob/M)
-	if(!usr)
-		usr = M
+/obj/item/reagent_containers/food/snacks/proc/On_Consume(mob/M)
 	if(!reagents.total_volume)
 		M.visible_message("<span class='notice'>[M] finishes eating \the [src].</span>","<span class='notice'>You finish eating \the [src].</span>")
-		usr.drop_from_inventory(src)	//so icons update :[
-
+		M.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 		if(trash)
 			if(ispath(trash,/obj/item))
-				var/obj/item/TrashItem = new trash(usr)
-				usr.put_in_hands(TrashItem)
+				var/obj/item/TrashItem = new trash(M)
+				if(!M.put_in_hands(TrashItem))
+					TrashItem.forceMove(M.drop_location())
 			else if(istype(trash,/obj/item))
-				usr.put_in_hands(trash)
+				M.put_in_hands(trash)
 		qdel(src)
-	return
 
 /obj/item/reagent_containers/food/snacks/attack_self(mob/user as mob)
 	return
@@ -53,7 +50,6 @@
 /obj/item/reagent_containers/food/snacks/attack(mob/M as mob, mob/user as mob, def_zone)
 	if(reagents && !reagents.total_volume)
 		to_chat(user, "<span class='danger'>None of [src] left!</span>")
-		user.drop_from_inventory(src)
 		qdel(src)
 		return 0
 
@@ -197,11 +193,11 @@
 		if (hide_item)
 			if (W.w_class >= src.w_class || is_robot_module(W))
 				return
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 
 			to_chat(user, "<span class='warning'>You slip \the [W] inside \the [src].</span>")
-			user.drop_from_inventory(W, src)
 			add_fingerprint(user)
-			contents += W
 			return
 
 		if (has_edge(W))
@@ -614,12 +610,11 @@
 		return
 	to_chat(user, "You crack \the [src] into \the [O].")
 	reagents.trans_to(O, reagents.total_volume)
-	user.drop_from_inventory(src)
 	qdel(src)
 
 /obj/item/reagent_containers/food/snacks/egg/throw_impact(atom/hit_atom)
 	. = ..()
-	new/obj/effect/decal/cleanable/egg_smudge(src.loc)
+	new/obj/effect/debris/cleanable/egg_smudge(src.loc)
 	src.reagents.splash(hit_atom, reagents.total_volume)
 	src.visible_message("<font color='red'>[src.name] has been squashed.</font>","<font color='red'>You hear a smack.</font>")
 	qdel(src)
@@ -764,6 +759,8 @@
 
 /obj/item/reagent_containers/food/snacks/carpmeat/fish // Removed toxin and added a bit more oomph
 	desc = "A fillet of fish meat."
+	toxin_amount = 0
+	toxin_type = null
 	nutriment_amt = 2
 
 /obj/item/reagent_containers/food/snacks/carpmeat/fish/Initialize(mapload)
@@ -1116,7 +1113,7 @@
 
 /obj/item/reagent_containers/food/snacks/pie/throw_impact(atom/hit_atom)
 	. = ..()
-	new/obj/effect/decal/cleanable/pie_smudge(src.loc)
+	new/obj/effect/debris/cleanable/pie_smudge(src.loc)
 	src.visible_message("<span class='danger'>\The [src.name] splats.</span>","<span class='danger'>You hear a splat.</span>")
 	qdel(src)
 
@@ -1829,9 +1826,6 @@
 	H.set_species(species_type_by_name(monkey_type))
 	H.real_name = H.species.get_random_name()
 	H.name = H.real_name
-	if(ismob(loc))
-		var/mob/M = loc
-		M.unEquip(src)
 	qdel(src)
 	return 1
 
@@ -3227,7 +3221,7 @@
 		return
 
 	if( boxes.len > 0 )
-		if( user.get_inactive_hand() != src )
+		if( user.get_inactive_held_item() != src )
 			. = ..()
 			return
 
@@ -3265,9 +3259,8 @@
 				boxestoadd += i
 
 			if( (boxes.len+1) + boxestoadd.len <= 5 )
-				user.drop_item()
-
-				box.loc = src
+				if(!user.attempt_insert_item_for_installation(box, src))
+					return
 				box.boxes = list() // Clear the box boxes so we don't have boxes inside boxes. - Xzibit
 				src.boxes.Add( boxestoadd )
 
@@ -3285,9 +3278,9 @@
 	if( istype(I, /obj/item/reagent_containers/food/snacks/sliceable/pizza/) ) // Long ass fucking object name
 
 		if( src.open )
-			user.drop_item()
-			I.loc = src
-			src.pizza = I
+			if(!user.attempt_insert_item_for_installation(I, src))
+				return
+			pizza = I
 
 			update_icon()
 
@@ -4066,9 +4059,7 @@ END CITADEL CHANGE */
 
 		if (!feeder)
 			feeder = eater
-
-		feeder.drop_from_inventory(src)	//so icons update :[ //what the fuck is this????
-
+		feeder.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 		if(trash)
 			if(ispath(trash,/obj/item))
 				var/obj/item/TrashItem = new trash(feeder)
@@ -4076,7 +4067,7 @@ END CITADEL CHANGE */
 			else if(istype(trash,/obj/item))
 				feeder.put_in_hands(trash)
 		qdel(src)
-	return
+
 ////////////////////////////////////////////////////////////////////////////////
 /// FOOD END
 ////////////////////////////////////////////////////////////////////////////////
@@ -4120,7 +4111,7 @@ END CITADEL CHANGE */
 		. = ..()
 		reagents.add_reagent("protein", 6)
 		reagents.add_reagent("batter", 1.7)
-		reagents.add_reagent("oil", 1.5)
+		reagents.add_reagent("cooking_oil", 1.5)
 		bitesize = 2
 
 /obj/item/reagent_containers/food/snacks/jalapeno_poppers
@@ -4136,7 +4127,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/jalapeno_poppers/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("batter", 2)
-	reagents.add_reagent("oil", 2)
+	reagents.add_reagent("cooking_oil", 2)
 
 /obj/item/reagent_containers/food/snacks/mouseburger
 	name = "mouse burger"
@@ -4170,7 +4161,7 @@ END CITADEL CHANGE */
 	. = ..()
 	reagents.add_reagent("protein", 6)
 	reagents.add_reagent("beerbatter", 2)
-	reagents.add_reagent("oil", 1)
+	reagents.add_reagent("cooking_oil", 1)
 	bitesize = 1.5
 
 /obj/item/reagent_containers/food/snacks/fries
@@ -4179,7 +4170,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/fries/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("oil", 1.2)//This is mainly for the benefit of adminspawning
+	reagents.add_reagent("cooking_oil", 1.2)//This is mainly for the benefit of adminspawning
 	bitesize = 2
 
 /obj/item/reagent_containers/food/snacks/microchips
@@ -4229,7 +4220,7 @@ END CITADEL CHANGE */
 	. = ..()
 	reagents.add_reagent("batter", 6.5)
 	coating = reagents.get_reagent("batter")
-	reagents.add_reagent("oil", 4)
+	reagents.add_reagent("cooking_oil", 4)
 	bitesize = 2
 
 /obj/item/reagent_containers/food/snacks/pizzacrunchslice
@@ -4678,14 +4669,16 @@ END CITADEL CHANGE */
 		var/obj/item/reagent_containers/food/snacks/variable/mob/MF = W
 
 		switch (MF.kitchen_tag)
+			// if you see me on git blame, i wasn't the one who made this shiticode, i'm just passing through  ~silicons
 			if ("rodent")
 				result = new /obj/item/reagent_containers/food/snacks/mouseburger(src)
 				to_chat(user, "You make a mouse burger!")
+				qdel(src)
 
-		switch (MF.kitchen_tag)
 			if ("lizard")
 				result = new /obj/item/reagent_containers/food/snacks/mouseburger(src)
 				to_chat(user, "You make a lizard burger!")
+				qdel(src)
 	if (result)
 		if (W.reagents)
 			//Reagents of reuslt objects will be the sum total of both.  Except in special cases where nonfood items are used
@@ -4696,8 +4689,9 @@ END CITADEL CHANGE */
 
 		//If the bun was in your hands, the result will be too
 		if (loc == user)
-			user.drop_from_inventory(src)
+			user.drop_item_to_ground(src, INV_OP_FORCE)
 			user.put_in_hands(result)
+
 
 // Chip update.
 /obj/item/reagent_containers/food/snacks/tortilla
@@ -4796,10 +4790,9 @@ END CITADEL CHANGE */
 			user.put_in_hands(waste)
 		qdel(src)
 
-/obj/item/reagent_containers/food/snacks/chipplate/MouseDrop(mob/user) //Dropping the chip onto the user
+/obj/item/reagent_containers/food/snacks/chipplate/OnMouseDropLegacy(mob/user) //Dropping the chip onto the user
 	if(istype(user) && user == usr)
 		user.put_in_active_hand(src)
-		src.pickup(user)
 		return
 	. = ..()
 
@@ -5564,7 +5557,6 @@ END CITADEL CHANGE */
 		return
 	to_chat(user, "<span class='notice'>You tear \the [src]'s sac open, pouring it into \the [O].</span>")
 	reagents.trans_to(O, reagents.total_volume)
-	user.drop_from_inventory(src)
 	qdel(src)
 
 /obj/item/reagent_containers/food/snacks/baschbeans

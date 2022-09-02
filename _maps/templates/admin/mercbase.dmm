@@ -12,7 +12,7 @@
 	icon_state = "frame";
 	pixel_y = 32
 	},
-/atom/movable/landmark{
+/obj/landmark{
 	name = "Syndicate-Spawn"
 	},
 /turf/unsimulated/floor{
@@ -456,7 +456,7 @@
 /area/antag/antag_base)
 "aN" = (
 /obj/structure/bed/padded,
-/atom/movable/landmark{
+/obj/landmark{
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/red,
@@ -613,7 +613,7 @@
 	icon_state = "frame";
 	pixel_x = 32
 	},
-/atom/movable/landmark{
+/obj/landmark{
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/red,
@@ -972,7 +972,7 @@
 	},
 /area/antag/antag_base)
 "bB" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "Syndicate-Uplink"
 	},
 /turf/unsimulated/floor{
@@ -2979,7 +2979,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 5
 	},
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/generic,
 /turf/simulated/floor/plating,
 /area/shuttle/mercenary)
 "eZ" = (
@@ -3144,7 +3144,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood{
+/obj/effect/debris/cleanable/blood{
 	icon_state = "mfloor5"
 	},
 /obj/machinery/light/small{

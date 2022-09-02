@@ -77,14 +77,14 @@
 	if(is_broken() && !oldbroken && owner && !owner.stat)
 		to_chat(owner, "<span class='danger'>You go blind!</span>")
 
-/obj/item/organ/internal/eyes/process(delta_time) //Eye damage replaces the old eye_stat var.
-	..()
-	if(!owner) return
+/obj/item/organ/internal/eyes/tick_life(dt)
+	. = ..()
 
 	if(is_bruised())
-		owner.eye_blurry = 20
+		owner.eye_blurry = 4
+
 	if(is_broken())
-		owner.Blind(20)
+		owner.Blind(4)
 
 /obj/item/organ/internal/eyes/handle_germ_effects()
 	. = ..() //Up should return an infection level as an integer

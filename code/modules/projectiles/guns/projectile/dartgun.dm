@@ -120,14 +120,14 @@
 		if(beakers.len >= max_beakers)
 			to_chat(user, "<font color=#4F49AF>[src] already has [max_beakers] beakers in it - another one isn't going to fit!</font>")
 			return
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		var/obj/item/reagent_containers/glass/beaker/B = I
-		user.drop_item()
-		B.loc = src
 		beakers += B
 		to_chat(user, "<font color=#4F49AF>You slot [B] into [src].</font>")
-		src.updateUsrDialog()
-		return 1
-	..()
+		updateUsrDialog()
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 //fills the given dart with reagents
 /obj/item/gun/projectile/dartgun/proc/fill_dart(var/obj/item/projectile/bullet/chemdart/dart)

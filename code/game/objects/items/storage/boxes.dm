@@ -480,6 +480,12 @@
 		/obj/item/light/bulb = 8
 		)
 
+/obj/item/storage/box/lights/fairy
+	name = "box of replacement fairy bulbs"
+	icon_state = "lightfairy"
+	can_hold = list(/obj/item/light/bulb/fairy)
+	starts_with = list(/obj/item/light/bulb/fairy = 24)
+
 //Colored Lights
 /obj/item/storage/box/lights/bulbs_colored
 	name = "box of colored bulbs"
@@ -579,17 +585,13 @@
 /obj/item/storage/box/freezer/Entered(var/atom/movable/AM)
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
-		O.preserved = 1
-		for(var/obj/item/organ/organ in O)
-			organ.preserved = 1
+		O.preserve(PORTABLE_FREEZER_TRAIT)
 	..()
 
 /obj/item/storage/box/freezer/Exited(var/atom/movable/AM)
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
-		O.preserved = 0
-		for(var/obj/item/organ/organ in O)
-			organ.preserved = 0
+		O.unpreserve(PORTABLE_FREEZER_TRAIT)
 	..()
 
 /obj/item/storage/box/ambrosia

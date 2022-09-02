@@ -32,10 +32,13 @@
 	update_state()
 	drop_items()
 
-/obj/item/holder/dropped()
-	..()
-	spawn(1)
+/obj/item/holder/dropped(mob/user, flags, atom/newLoc)
+	. = ..()
+	if(!(flags & INV_OP_DELETING))
 		update_state()
+
+/obj/item/holder/examine(mob/user)
+	return held_mob?.examine(user) || list("WARNING WARNING: No held_mob on examine. REPORT THIS TO A CODER.")
 
 /obj/item/holder/proc/update_state()
 	if(!(contents.len))
@@ -89,7 +92,7 @@
 /obj/item/holder/container_resist(mob/living/held)
 	var/mob/M = loc
 	if(istype(M))
-		M.drop_from_inventory(src)
+		M.drop_item_to_ground(src, INV_OP_FORCE)
 		to_chat(M, SPAN_WARNING("\The [held] wriggles out of your grip!"))
 		to_chat(held, SPAN_WARNING("You wiggle out of [M]'s grip!"))
 	else if(istype(loc, /obj/item/clothing/accessory/holster))
@@ -102,6 +105,10 @@
 		to_chat(held, SPAN_WARNING("You struggle free of [loc]."))
 		held.forceMove(get_turf(held))
 
+/obj/item/holder/can_equip(mob/M, slot, mob/user, flags)
+	if(M == held_mob)
+		return FALSE
+	return ..()
 
 //Mob specific holders.
 /obj/item/holder/diona
@@ -167,7 +174,7 @@
 //Mob procs and vars for scooping up
 /mob/living/var/holder_type
 
-/mob/living/MouseDrop(var/atom/over_object)
+/mob/living/OnMouseDropLegacy(var/atom/over_object)
 	var/mob/living/carbon/human/H = over_object
 	if((usr == over_object || usr == src) && holder_type && issmall(src) && istype(H) && !H.lying && Adjacent(H) && (src.a_intent == INTENT_HELP && H.a_intent == INTENT_HELP))
 		if(!issmall(H) || !istype(src, /mob/living/carbon/human))
@@ -193,7 +200,7 @@
 	if(self_grab)
 		to_chat(grabber, "<span class='notice'>\The [src] clambers onto you!</span>")
 		to_chat(src, "<span class='notice'>You climb up onto \the [grabber]!</span>")
-		grabber.equip_to_slot_if_possible(H, slot_back, 0, 1)
+		grabber.equip_to_slot_if_possible(H, SLOT_ID_BACK, INV_OP_SILENT)
 	else
 		to_chat(grabber, "<span class='notice'>You scoop up \the [src]!</span>")
 		to_chat(src, "<span class='notice'>\The [grabber] scoops you up!</span>")
@@ -203,7 +210,7 @@
 
 /obj/item/holder/human
 	icon = 'icons/mob/holder_complex.dmi'
-	var/list/generate_for_slots = list(slot_l_hand_str, slot_r_hand_str, /datum/inventory_slot_meta/inventory/back)
+	var/list/generate_for_slots = list(slot_l_hand_str, slot_r_hand_str, SLOT_ID_BACK)
 	slot_flags = SLOT_BACK
 
 /obj/item/holder/human/sync(var/mob/living/M)
@@ -215,7 +222,7 @@
 		var/skin_colour = rgb(owner.r_skin, owner.g_skin, owner.b_skin)
 		var/hair_colour = rgb(owner.r_hair, owner.g_hair, owner.b_hair)
 		var/eye_colour =  rgb(owner.r_eyes, owner.g_eyes, owner.b_eyes)
-		var/species_name = lowertext(owner.species.get_bodytype(owner))
+		var/species_name = lowertext(owner.species.get_bodytype_legacy(owner))
 
 		for(var/cache_entry in generate_for_slots)
 			var/cache_key = "[owner.species]-[cache_entry]-[skin_colour]-[hair_colour]"

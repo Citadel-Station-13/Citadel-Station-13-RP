@@ -860,7 +860,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
 "afT" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/item/paperplane,
 /obj/random/maintenance/engineering,
 /turf/simulated/floor,
@@ -1722,7 +1722,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/starboard)
 "ajt" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "morphspawn"
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -5056,7 +5056,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/atom/movable/landmark{
+/obj/landmark{
 	name = "morphspawn"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -6712,7 +6712,7 @@
 /area/tether/station/burial)
 "avU" = (
 /obj/structure/bed/chair/wood,
-/atom/movable/landmark/spawnpoint/job/chaplain,
+/obj/landmark/spawnpoint/job/chaplain,
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/office)
 "awa" = (
@@ -6998,14 +6998,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "axy" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/item/paper,
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
 "axz" = (
 /obj/item/paper,
 /obj/effect/rune,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/random/maintenance/engineering,
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
@@ -7073,7 +7073,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/chapel/chapel_morgue)
 "axL" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "maint_pred"
 	},
 /turf/simulated/floor,
@@ -7199,7 +7199,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
 "ayn" = (
-/atom/movable/landmark/spawnpoint/job/pathfinder,
+/obj/landmark/spawnpoint/job/pathfinder,
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
@@ -7673,7 +7673,7 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/chapel/main)
 "aAI" = (
-/atom/movable/landmark/spawnpoint/job/chaplain,
+/obj/landmark/spawnpoint/job/chaplain,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/burial)
 "aAL" = (
@@ -8190,7 +8190,7 @@
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
 "aEg" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/item/reagent_containers/blood,
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
@@ -8582,7 +8582,7 @@
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
 "aFS" = (
-/atom/movable/landmark/spawnpoint/job/ai/secondary,
+/obj/landmark/spawnpoint/job/ai/secondary,
 /obj/machinery/camera/network/command{
 	dir = 4
 	},
@@ -9637,7 +9637,7 @@
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/rust,
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /obj/structure/table/bench/steel,
 /turf/simulated/floor,
 /area/tether/exploration)
@@ -9678,7 +9678,7 @@
 /area/tether/station/burial)
 "aJF" = (
 /obj/machinery/light/small,
-/atom/movable/landmark/spawnpoint/job/chaplain,
+/obj/landmark/spawnpoint/job/chaplain,
 /obj/structure/bed/chair{
 	dir = 1
 	},
@@ -9710,7 +9710,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_upper)
 "aJI" = (
-/atom/movable/landmark/spawnpoint/job/shaft_miner,
+/obj/landmark/spawnpoint/job/shaft_miner,
 /obj/item/stool/padded,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -12145,7 +12145,7 @@
 /turf/simulated/floor,
 /area/maintenance/station/eng_upper)
 "aSJ" = (
-/atom/movable/landmark/spawnpoint/job/ai/secondary,
+/obj/landmark/spawnpoint/job/ai/secondary,
 /obj/machinery/camera/network/command{
 	dir = 9
 	},
@@ -12838,7 +12838,7 @@
 /turf/simulated/shuttle/floor,
 /area/shuttle/large_escape_pod1)
 "aVd" = (
-/atom/movable/landmark/spawnpoint/job/ai,
+/obj/landmark/spawnpoint/job/ai,
 /obj/machinery/requests_console{
 	department = "AI";
 	departmentType = 5;
@@ -13454,7 +13454,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/atom/movable/landmark/spawnpoint/job/shaft_miner,
+/obj/landmark/spawnpoint/job/shaft_miner,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/gear)
 "aXt" = (
@@ -18605,7 +18605,7 @@
 "iSs" = (
 /obj/structure/disposalpipe/segment,
 /obj/item/stool/padded,
-/atom/movable/landmark/spawnpoint/job/cargo_technician,
+/obj/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/storage)
 "iSP" = (
@@ -20911,7 +20911,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/quartermaster/belterdock)
 "nlg" = (
-/atom/movable/landmark{
+/obj/landmark{
 	name = "morphspawn"
 	},
 /turf/space,
@@ -21002,7 +21002,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/job/quartermaster,
+/obj/landmark/spawnpoint/job/quartermaster,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -22770,7 +22770,7 @@
 /area/shuttle/excursion/cargo)
 "qlt" = (
 /obj/item/stool/padded,
-/atom/movable/landmark/spawnpoint/job/cargo_technician,
+/obj/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/storage)
 "qms" = (
@@ -24099,7 +24099,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
 "sEN" = (
-/atom/movable/landmark/map_data/virgo3b,
+/obj/landmark/map_data/virgo3b,
 /turf/space,
 /area/space)
 "sEX" = (
@@ -24256,7 +24256,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/atom/movable/landmark/spawnpoint/job/cargo_technician,
+/obj/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "taT" = (
@@ -25234,7 +25234,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/atom/movable/landmark/spawnpoint/job/pilot,
+/obj/landmark/spawnpoint/job/pilot,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
@@ -26367,7 +26367,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/warehouse)
 "wQz" = (
-/atom/movable/landmark/spawnpoint/job/shaft_miner,
+/obj/landmark/spawnpoint/job/shaft_miner,
 /obj/item/stool/padded,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/gear)
@@ -26695,7 +26695,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/atom/movable/landmark/spawnpoint/job/pilot,
+/obj/landmark/spawnpoint/job/pilot,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -27127,7 +27127,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/spacedorm1)
 "yfO" = (
-/atom/movable/landmark/spawnpoint/job/pilot,
+/obj/landmark/spawnpoint/job/pilot,
 /turf/simulated/floor/wood,
 /area/tether/exploration/pilot_office)
 "ygo" = (

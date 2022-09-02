@@ -67,7 +67,7 @@
 		toggle_scan()
 		time = initial(time)
 
-/obj/item/assembly/prox_sensor/dropped()
+/obj/item/assembly/prox_sensor/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	INVOKE_ASYNC(src, .proc/sense)
 

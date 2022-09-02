@@ -1,5 +1,7 @@
 #define ARMORID "armor-[melee]-[bullet]-[laser]-[energy]-[bomb]-[bio]-[rad]-[fire]-[acid]-[magic]-[wound]"
 
+#warn this system sucks make a better one that doesn't use locate()
+
 #define MELEE "melee"
 #define BULLET "bullet"
 #define LASER "laser"

@@ -6,12 +6,12 @@
 /turf/simulated/wall/r_wall,
 /area/class_d/explored)
 "d" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/explored)
 "e" = (
 /obj/structure/closet/crate/mimic/cointoss,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/fiftyspawner/mhydrogen,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/explored)

@@ -8,7 +8,7 @@
 /datum/gear/event_reward/imperium       <------   Example Item
 	name = "Imperium"
 	path = /obj/item/clothing/suit/armor/combat/imperial/centurion
-	slot = slot_wear_suit               <------   Important to change to whichever slot the item should be worn on. If it's not a piece of clothing/equipment, leaving it blank should put it into their backpack.
+	slot = SLOT_ID_SUIT               <------   Important to change to whichever slot the item should be worn on. If it's not a piece of clothing/equipment, leaving it blank should put it into their backpack.
 	ckeywhitelist = list("drofoljaelisglis")
 */
 /datum/gear/event_reward/gameboy
@@ -23,5 +23,5 @@
 	cost = 0
 	name = "Miko Garb"
 	path = /obj/item/clothing/under/event_reward/foxmiko
-	slot = slot_w_uniform
+	slot = SLOT_ID_UNIFORM
 	ckeywhitelist = list("knouli")

@@ -102,26 +102,6 @@ default behaviour is:
 			return 1
 		return 0
 
-
-/mob/living/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover, /obj/structure/blob) && faction == "blob") //Blobs should ignore things on their faction.
-		return TRUE
-	return ..()
-
-//Called when something steps onto us. This allows for mulebots and vehicles to run things over. <3
-/mob/living/Crossed(var/atom/movable/AM) // Transplanting this from /mob/living/carbon/human/Crossed()
-	if(AM == src || AM.is_incorporeal()) // We're not going to run over ourselves or ghosts
-		return
-
-	if(istype(AM, /mob/living/bot/mulebot))
-		var/mob/living/bot/mulebot/MB = AM
-		MB.runOver(src)
-
-	if(istype(AM, /obj/vehicle))
-		var/obj/vehicle/V = AM
-		V.RunOver(src)
-	return ..()
-
 /mob/living/verb/succumb()
 	set hidden = 1
 	if ((src.health < 0 && src.health > (5-src.getMaxHealth()))) // Health below Zero but above 5-away-from-death, as before, but variable
@@ -141,7 +121,6 @@ default behaviour is:
 //affects them once clothing is factored in. ~Errorage
 /mob/living/proc/calculate_affecting_pressure(var/pressure)
 	return
-
 
 //sort of a legacy burn method for /electrocute, /shock, and the e_chair
 /mob/living/proc/burn_skin(burn_amount)
@@ -641,14 +620,7 @@ default behaviour is:
 
 	if(iscarbon(src))
 		var/mob/living/carbon/C = src
-
-		if (C.handcuffed && !initial(C.handcuffed))
-			C.drop_from_inventory(C.handcuffed)
-		C.handcuffed = initial(C.handcuffed)
-
-		if (C.legcuffed && !initial(C.legcuffed))
-			C.drop_from_inventory(C.legcuffed)
-		C.legcuffed = initial(C.legcuffed)
+		C.drop_slots_to_ground(list(SLOT_ID_HANDCUFFED, SLOT_ID_LEGCUFFED), INV_OP_FORCE)
 
 	ExtinguishMob()
 	fire_stacks = 0
@@ -825,11 +797,6 @@ default behaviour is:
 
 /mob/living/proc/slip(var/slipped_on,stun_duration=8)
 	return 0
-
-/mob/living/carbon/drop_from_inventory(var/obj/item/W, var/atom/Target = null)
-	if(W in internal_organs)
-		return
-	..()
 
 //damage/heal the mob ears and adjust the deaf amount
 /mob/living/adjustEarDamage(var/damage, var/deaf)
@@ -1012,14 +979,15 @@ default behaviour is:
 			hud_used.r_hand_hud_object.icon_state = "r_hand_active"
 
 	// We just swapped hands, so the thing in our inactive hand will notice it's not the focus
-	var/obj/item/I = get_inactive_hand()
+	var/obj/item/I = get_inactive_held_item()
 	if(I)
 		if(I.zoom)
 			I.zoom()
-		I.in_inactive_hand(src)	//This'll do specific things, determined by the item
 	return
 
-/mob/living/proc/activate_hand(var/selhand) //0 or "r" or "right" for right hand; 1 or "l" or "left" for left hand.
+/mob/proc/activate_hand(selhand)
+
+/mob/living/activate_hand(selhand) //0 or "r" or "right" for right hand; 1 or "l" or "left" for left hand.
 
 	if(istext(selhand))
 		selhand = lowertext(selhand)
@@ -1032,16 +1000,29 @@ default behaviour is:
 	if(selhand != src.hand)
 		swap_hand()
 
+// todo: multihands
+
+/mob/proc/activate_hand_of_index(index)
+
+/mob/living/activate_hand_of_index(index)
+	switch(index)
+		if(1)
+			activate_hand("l")
+		if(2)
+			activate_hand("r")
+
 /mob/living/throw_item(atom/target)
+	// TODO: refactor to not be hardcoded active held item
 	src.throw_mode_off()
 	if(usr.stat || !target)
 		return
-	if(target.type == /atom/movable/screen) return
+	if(target.type == /atom/movable/screen)
+		return
 
-	var/atom/movable/item = src.get_active_hand()
+	var/atom/movable/item = src.get_active_held_item()
 
-	if(!item) return
-
+	if(!item)
+		return
 	var/throw_range = item.throw_range
 	if (istype(item, /obj/item/grab))
 		var/obj/item/grab/G = item
@@ -1055,9 +1036,14 @@ default behaviour is:
 			var/turf/end_T = get_turf(target)
 			if(end_T)
 				add_attack_logs(src,M,"Thrown via grab to [end_T.x],[end_T.y],[end_T.z]")
-			src.drop_from_inventory(G)
+			drop_item_to_ground(G, INV_OP_FORCE)
+		else
+			return		// wild
+	else
+		if(!drop_item_to_ground(item))
+			throw_mode_off()
+			return
 
-	src.drop_from_inventory(item)
 	if(!item || !isturf(item.loc))
 		return
 

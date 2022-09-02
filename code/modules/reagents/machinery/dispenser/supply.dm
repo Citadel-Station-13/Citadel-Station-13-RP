@@ -235,5 +235,7 @@ PACK(hot_coco,   /obj/item/reagent_containers/chem_disp_cartridge/hot_coco,   "R
 PACK(milk,       /obj/item/reagent_containers/chem_disp_cartridge/milk,       "Reagent refill - Milk",                "milk reagent cartridge crate",                          15)
 PACK(cream,      /obj/item/reagent_containers/chem_disp_cartridge/cream,      "Reagent refill - Cream",               "cream reagent cartridge crate",                         15)
 
+/datum/silly_datum_to_block_byond_bug_2072419
+
 #undef SEC_PACK
 #undef PACK

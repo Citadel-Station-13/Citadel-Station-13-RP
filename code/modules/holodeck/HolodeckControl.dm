@@ -240,26 +240,21 @@
 				T.hotspot_expose(1000,500,1)
 
 /obj/machinery/computer/HolodeckControl/proc/derez(var/obj/obj , var/silent = 1)
-	holographic_objs.Remove(obj)
-
-	if(obj == null)
+	if(!obj)
 		return
 
-	if(isobj(obj))
-		var/mob/M = obj.loc
-		if(ismob(M))
-			M.remove_from_mob(obj)
+	holographic_objs -=obj
 
 	if(!silent)
 		var/obj/oldobj = obj
 		visible_message("The [oldobj.name] fades away!")
+
 	qdel(obj)
 
 /obj/machinery/computer/HolodeckControl/proc/checkInteg(var/area/A)
 	for(var/turf/T in A)
 		if(istype(T, /turf/space))
 			return 0
-
 	return 1
 
 //Why is it called toggle if it doesn't toggle?
@@ -312,7 +307,7 @@
 		holographic_mobs -= C
 		C.derez()
 
-	for(var/obj/effect/decal/cleanable/blood/B in linkedholodeck)
+	for(var/obj/effect/debris/cleanable/blood/B in linkedholodeck)
 		qdel(B)
 
 	holographic_objs = A.copy_contents_to(linkedholodeck , 1)
@@ -331,7 +326,7 @@
 	linkedholodeck.sound_env = A.sound_env
 
 	spawn(30)
-		for(var/atom/movable/landmark/L in linkedholodeck)
+		for(var/obj/landmark/L in linkedholodeck)
 			if(L.name=="Atmospheric Test Start")
 				spawn(20)
 					var/turf/T = get_turf(L)

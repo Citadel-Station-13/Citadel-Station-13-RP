@@ -116,13 +116,13 @@
 	/// Relative layer - position this atom should be in within things of the same base layer. defaults to 0.
 	var/relative_layer = 0
 
-
+//! Atom Damage
 	///any atom that uses integrity and can be damaged must set this to true, otherwise the integrity procs will throw an error
 	var/uses_integrity = FALSE
 	/// our armor
-	var/datum/armor/armor
-	/// flat armor soak reductions
-	var/datum/armor/armorsoak
+	var/datum/armor/armor_rating
+	/// armor tier - modulates effective armor rating.
+	var/datum/armor/armor_tier
 	/// health, defaults to max_integrity
 	VAR_PRIVATE/atom_integrity //defaults to max_integrity
 	/// max health
@@ -133,6 +133,11 @@
 	var/damage_deflection = 0
 	/// resistance flags
 	var/resistance_flags = NONE // INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ON_FIRE | UNACIDABLE | ACID_PROOF
+
+//! Misc
+	///Mobs that are currently do_after'ing this atom, to be cleared from on Destroy()
+	var/list/targeted_by
+
 
 /**
  * Called when an atom is created in byond (built in engine proc)
@@ -352,7 +357,7 @@
 	return found
 
 /atom/proc/get_examine_name(mob/user)
-	. = "\a [src]"
+	. = "\a <b>[src]</b>"
 	var/list/override = list(gender == PLURAL ? "some" : "a", " ", "[name]")
 
 	var/should_override = FALSE
@@ -395,7 +400,11 @@
  * Produces a signal [COMSIG_PARENT_EXAMINE]
  */
 /atom/proc/examine(mob/user)
-	. = list("[get_examine_string(user, TRUE)].")
+	var/examine_string = get_examine_string(user, thats = TRUE)
+	if(examine_string)
+		. = list("[examine_string].")
+	else
+		. = list()
 
 	. += get_name_chaser(user)
 	if(desc)
@@ -413,7 +422,7 @@
 			if(length(reagents.reagent_list))
 				if(user.can_see_reagents()) //Show each individual reagent
 					for(var/datum/reagent/current_reagent as anything in reagents.reagent_list)
-						. += "[round(current_reagent.volume, 0.01)] units of [current_reagent.name]"
+						. += "&bull; [round(current_reagent.volume, 0.01)] units of [current_reagent.name]"
 				else //Otherwise, just show the total volume
 					var/total_volume = 0
 					for(var/datum/reagent/current_reagent as anything in reagents.reagent_list)
@@ -744,7 +753,7 @@
 
 /atom/proc/add_vomit_floor(mob/living/carbon/M as mob, var/toxvomit = 0)
 	if( istype(src, /turf/simulated) )
-		var/obj/effect/decal/cleanable/vomit/this = new /obj/effect/decal/cleanable/vomit(src)
+		var/obj/effect/debris/cleanable/vomit/this = new /obj/effect/debris/cleanable/vomit(src)
 		this.virus2 = virus_copylist(M.virus2)
 
 		// Make toxins vomit look different
@@ -752,7 +761,7 @@
 			this.icon_state = "vomittox_[pick(1,4)]"
 
 /atom/proc/clean_blood()
-	if(flags & AF_ABSTRACT)
+	if(flags & ATOM_ABSTRACT)
 		return
 	fluorescent = 0
 	src.germ_level = 0
@@ -1059,11 +1068,7 @@
 			reagents.conditional_update()
 		else if(ismovable(A))
 			var/atom/movable/M = A
-			if(isliving(M.loc))
-				var/mob/living/L = M.loc
-				L.transferItemToLoc(M, src)
-			else
-				M.forceMove(src)
+			M.forceMove(src)
 
 /atom/proc/is_drainable()
 	return reagents && (reagents.reagents_holder_flags & DRAINABLE)

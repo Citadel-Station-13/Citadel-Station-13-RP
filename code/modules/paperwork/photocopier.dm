@@ -154,9 +154,9 @@
 /obj/machinery/photocopier/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/paper) || istype(O, /obj/item/photo) || istype(O, /obj/item/paper_bundle))
 		if(!copyitem)
-			user.drop_item()
+			if(!user.attempt_insert_item_for_installation(O, src))
+				return
 			copyitem = O
-			O.loc = src
 			to_chat(user, "<span class='notice'>You insert \the [O] into \the [src].</span>")
 			playsound(loc, "sound/machines/click.ogg", 100, 1)
 			flick(insert_anim, src)
@@ -164,11 +164,12 @@
 			to_chat(user, "<span class='notice'>There is already something in \the [src].</span>")
 	else if(istype(O, /obj/item/toner))
 		if(toner <= 10) //allow replacing when low toner is affecting the print darkness
-			user.drop_item()
+			if(!user.attempt_consume_item_for_construction(O))
+				return
 			to_chat(user, "<span class='notice'>You insert the toner cartridge into \the [src].</span>")
 			var/obj/item/toner/T = O
 			toner += T.toner_amount
-			qdel(O)
+			qdel(T)
 		else
 			to_chat(user, "<span class='notice'>This cartridge is not yet ready for replacement! Use up the rest of the toner.</span>")
 	else if(O.is_wrench())
@@ -191,12 +192,12 @@
 				qdel(src)
 			else
 				if(toner > 0)
-					new /obj/effect/decal/cleanable/blood/oil(get_turf(src))
+					new /obj/effect/debris/cleanable/blood/oil(get_turf(src))
 					toner = 0
 		else
 			if(prob(50))
 				if(toner > 0)
-					new /obj/effect/decal/cleanable/blood/oil(get_turf(src))
+					new /obj/effect/debris/cleanable/blood/oil(get_turf(src))
 					toner = 0
 	return
 
@@ -269,7 +270,7 @@
 	var/mob/sitter = buckled_mobs[1] // You have to be sitting on the copier/buckled to it and either be a xeno or a human without clothes on that cover your ass.
 	if(ishuman(sitter)) // Suit checks are in can_buckle_mobs at the bottom of the file.
 		var/mob/living/carbon/human/H = sitter // All human subtypes.
-		var/species_to_check = H.get_species_name()
+		var/species_to_check = H.species.get_true_name()
 		if(species_to_check == SPECIES_CUSTOM || species_to_check == SPECIES_XENOCHIMERA) // Are we a custom species, or Xenochimera? If so, what is the base icon sprite for our species?
 			species_to_check = H.species.base_species // Grab the base species and use that as the 'species' for the purpose of printing off your asscheeks.
 		switch(species_to_check)
@@ -373,7 +374,7 @@
 	if(!..())
 		return FALSE
 	for(var/obj/item/clothing/C in M)
-		if(M.item_is_in_hands(C))
+		if(M.is_holding(C))
 			continue
 		if((C.body_parts_covered & LOWER_TORSO) && !istype(C,/obj/item/clothing/under/permit))
 			to_chat(usr, "<span class='warning'>One needs to not be wearing pants to photocopy one's ass...</span>")

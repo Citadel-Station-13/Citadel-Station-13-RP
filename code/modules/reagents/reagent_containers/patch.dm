@@ -36,13 +36,14 @@
 			if(!H.can_inject(user, FALSE, L.zone_sel.selecting, pierce_material))
 				to_chat(user, "<span class='notice'>\The [src] can't be applied through such a thick material!</span>")
 				return
-			
+
 			if(affecting.open)// you cant place Bandaids on open surgeries, why chemical patches.
 				to_chat(user, "<span class='notice'>The [affecting.name] is cut open, you'll need more than a bandage!</span>")
 				return
 
+
 			to_chat(H, "<span class='notice'>\The [src] is placed on your [affecting].</span>")
-			M.drop_from_inventory(src) //icon update
+			M.temporarily_remove_from_inventory(src, INV_OP_FORCE)
 			if(reagents.total_volume)
 				reagents.trans_to_mob(M, reagents.total_volume, CHEM_TOUCH)
 			qdel(src)
@@ -81,14 +82,14 @@
 		if(!do_mob(user, M))
 			return
 
-		user.drop_from_inventory(src) //icon update
+		user.temporarily_remove_from_inventory(src, INV_OP_FORCE)
 		user.visible_message("<span class='warning'>[user] applies \the [src] to [H].</span>")
 
 		var/contained = reagentlist()
 		add_attack_logs(user,M,"Applied a patch containing [contained]")
 
 		to_chat(H, "<span class='notice'>\The [src] is placed on your [affecting].</span>")
-		M.drop_from_inventory(src) //icon update
+		M.temporarily_remove_from_inventory(src, INV_OP_FORCE)
 
 		if(reagents.total_volume)
 			reagents.trans_to_mob(M, reagents.total_volume, CHEM_TOUCH)

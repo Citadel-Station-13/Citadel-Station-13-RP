@@ -55,6 +55,11 @@
 
 // attack by item places it in to disposal
 /obj/machinery/disposal/attackby(var/obj/item/I, var/mob/user)
+	if(user.a_intent != INTENT_HELP)
+		return ..()
+
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+
 	if(machine_stat & BROKEN || !I || !user)
 		return
 
@@ -98,10 +103,6 @@
 				to_chat(user, "You need more welding fuel to complete this task.")
 				return
 
-	if(istype(I, /obj/item/melee/energy/blade))
-		to_chat(user, "You can't place that item inside the disposal unit.")
-		return
-
 	if(istype(I, /obj/item/storage/bag/trash))
 		var/obj/item/storage/bag/trash/T = I
 		to_chat(user, "<font color=#4F49AF>You empty the bag.</font>")
@@ -137,14 +138,8 @@
 				add_attack_logs(user,GM,"Disposals dunked")
 		return
 
-	if(isrobot(user))
+	if(!user.attempt_insert_item_for_installation(I, src))
 		return
-	if(!I || I.anchored || !I.canremove)
-		return
-
-	user.drop_item()
-	if(I)
-		I.forceMove(src)
 
 	to_chat(user, "You place \the [I] into the [src].")
 	for(var/mob/M in viewers(src))
@@ -156,7 +151,7 @@
 
 // mouse drop another mob or self
 //
-/obj/machinery/disposal/MouseDrop_T(mob/target, mob/user)
+/obj/machinery/disposal/MouseDroppedOnLegacy(mob/target, mob/user)
 	if(user.stat || !user.canmove || !istype(target))
 		return
 	if(target.buckled || get_dist(user, src) > 1 || get_dist(user, target) > 1)
@@ -444,9 +439,9 @@
 	return
 
 
-// called when holder is expelled from a disposal
-// should usually only occur if the pipe network is modified
-/obj/machinery/disposal/proc/expel(var/obj/structure/disposalholder/H)
+/// Called when holder is expelled from a disposal.
+/// Should usually only occur if the pipe network is modified.
+/obj/machinery/disposal/proc/expel(obj/structure/disposalholder/H)
 
 	var/turf/target
 	playsound(src, 'sound/machines/hiss.ogg', 50, 0, 0)
@@ -463,6 +458,15 @@
 
 		H.vent_gas(loc)
 		qdel(H)
+
+/obj/machinery/disposal/hitby(atom/movable/yeeted_atom)
+	. = ..()
+	if(istype(yeeted_atom, /obj/item) && !istype(yeeted_atom, /obj/item/projectile))
+		if(prob(75))
+			yeeted_atom.forceMove(src)
+			visible_message("\The [yeeted_atom] lands in \the [src].")
+		else
+			visible_message("\The [yeeted_atom] bounces off of \the [src]'s rim!")
 
 /obj/machinery/disposal/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover, /obj/item/projectile))
@@ -1515,7 +1519,7 @@
 /mob/pipe_eject(var/direction)
 	update_perspective()
 
-/obj/effect/decal/cleanable/blood/gibs/pipe_eject(var/direction)
+/obj/effect/debris/cleanable/blood/gibs/pipe_eject(var/direction)
 	var/list/dirs
 	if(direction)
 		dirs = list( direction, turn(direction, -45), turn(direction, 45))
@@ -1524,7 +1528,7 @@
 
 	src.streak(dirs)
 
-/obj/effect/decal/cleanable/blood/gibs/robot/pipe_eject(var/direction)
+/obj/effect/debris/cleanable/blood/gibs/robot/pipe_eject(var/direction)
 	var/list/dirs
 	if(direction)
 		dirs = list( direction, turn(direction, -45), turn(direction, 45))

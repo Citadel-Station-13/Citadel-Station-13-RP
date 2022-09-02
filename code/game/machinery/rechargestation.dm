@@ -113,18 +113,17 @@
 			// And clear up radiation
 			if(H.radiation > 0)
 				H.radiation = max(H.radiation - rand(5, 15), 0)
-		if(H.wearing_rig) // stepping into a borg charger to charge your rig and fix your shit
-			var/obj/item/rig/wornrig = H.get_rig()
-			if(wornrig) // just to make sure
-				for(var/obj/item/rig_module/storedmod in wornrig)
-					if(weld_rate && storedmod.damage != 0 && cell.checked_use(DYNAMIC_W_TO_CELL_UNITS(weld_power_use * weld_rate, 1)))
-						to_chat(H, "<span class='notice'>\The [storedmod] is repaired!</span>")
-						storedmod.damage = 0
-				var/obj/item/cell/rigcell = wornrig.get_cell()
-				if(rigcell)
-					var/diff = min(rigcell.maxcharge - rigcell.charge, DYNAMIC_W_TO_CELL_UNITS(charging_power, 1)) // Capped by charging_power / tick
-					var/charge_used = cell.use(diff)
-					rigcell.give(charge_used)
+		var/obj/item/rig/wornrig = H.get_rig()
+		if(wornrig) // just to make sure
+			for(var/obj/item/rig_module/storedmod in wornrig)
+				if(weld_rate && storedmod.damage != 0 && cell.checked_use(DYNAMIC_W_TO_CELL_UNITS(weld_power_use * weld_rate, 1)))
+					to_chat(H, "<span class='notice'>\The [storedmod] is repaired!</span>")
+					storedmod.damage = 0
+			var/obj/item/cell/rigcell = wornrig.get_cell()
+			if(rigcell)
+				var/diff = min(rigcell.maxcharge - rigcell.charge, DYNAMIC_W_TO_CELL_UNITS(charging_power, 1)) // Capped by charging_power / tick
+				var/charge_used = cell.use(diff)
+				rigcell.give(charge_used)
 
 /obj/machinery/recharge_station/examine(mob/user)
 	. = ..()
@@ -166,7 +165,7 @@
 
 	..()
 
-/obj/machinery/recharge_station/MouseDrop_T(mob/target, mob/user)
+/obj/machinery/recharge_station/MouseDroppedOnLegacy(mob/target, mob/user)
 	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user))
 		return
 
@@ -234,8 +233,9 @@
 	go_in(L)
 
 /obj/machinery/recharge_station/proc/go_in(mob/living/L)
-
-	if(occupant)
+	if(!istype(L))
+		return
+	if(occupant || L.buckled)
 		return
 
 	if(istype(L, /mob/living/silicon/robot))

@@ -97,14 +97,10 @@
 			to_chat(user, "\The [src] is already padded.")
 			return
 		var/obj/item/stack/C = W
-		if(C.get_amount() < 1) // How??
-			user.drop_from_inventory(C)
-			qdel(C)
-			return
 		var/padding_type //This is awful but it needs to be like this until tiles are given a material var.
-		if(istype(W,/obj/item/stack/tile/carpet))
+		if(istype(W, /obj/item/stack/tile/carpet))
 			padding_type = "carpet"
-		else if(istype(W,/obj/item/stack/material))
+		else if(istype(W, /obj/item/stack/material))
 			var/obj/item/stack/material/M = W
 			if(M.material && (M.material.flags & MATERIAL_PADDING))
 				padding_type = "[M.material.name]"
@@ -112,9 +108,6 @@
 			to_chat(user, "You cannot pad \the [src] with that.")
 			return
 		C.use(1)
-		if(!istype(loc, /turf))
-			user.drop_from_inventory(src)
-			forceMove(get_turf(src))
 		to_chat(user, "You add padding to \the [src].")
 		add_padding(padding_type)
 		return
@@ -317,16 +310,16 @@
 	update_icon()
 	return ..()
 
-/obj/structure/bed/roller/MouseDrop(over_object, src_location, over_location)
-	..()
+/obj/structure/bed/roller/OnMouseDropLegacy(over_object, src_location, over_location)
 	if((over_object == usr && (in_range(src, usr) || usr.contents.Find(src))))
-		if(!ishuman(usr))	return
+		if(!ishuman(usr))	return 0
 		if(has_buckled_mobs())	return 0
 		visible_message("[usr] collapses \the [src.name].")
 		new rollertype(get_turf(src))
 		spawn(0)
 			qdel(src)
-		return
+		return 0
+	return ..()
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_bed
 	name = "Precursor Alpha Object - Resting Contraption"
