@@ -22,7 +22,6 @@
 	/// completely terminate throw silently immediately. Use if you're deleting the atom.
 	#define COMPONENT_THROW_LANDING_TERMINATE			(1<<2)
 
-#warn needs more synchronization so we can hook specifically mob originating throws.
 /// called in subsystem_throw and emulated_throw before the datum is created with (target, range, speed, flags, thrower, cb_on_hit, cb_on_land, emulated); you can stop the throw at this point.
 #define COMSIG_MOVABLE_PRE_THROW				"pre_throw"
 	/// cancel the throw

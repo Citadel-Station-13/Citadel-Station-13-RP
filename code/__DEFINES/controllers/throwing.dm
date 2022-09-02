@@ -22,8 +22,6 @@
 /// don't do stuff like damage target zones/detecting user momentums
 #define THROW_AT_NO_USER_MODIFIERS			(1<<10)
 
-#warn systme for scaling damage by speed, opt out enabled, defualt throw force, etc
-
 DEFINE_BITFIELD(throw_flags, list(
 	BITFIELD(THROW_AT_DO_NOT_SPIN),
 	BITFIELD(THROW_AT_DIAGONALS_FIRST),
@@ -33,15 +31,14 @@ DEFINE_BITFIELD(throw_flags, list(
 	BITFIELD(THROW_AT_NEVER_HIT_PUSH),
 	BITFIELD(THROW_AT_ALWAYS_HIT_PUSH),
 	BITFIELD(THROW_AT_QUICKSTARTED),
+	BITFIELD(THROW_AT_NO_SCALE_DAMAGE),
+	BITFIELD(THROW_AT_FORCE),
+	BITFIELD(THROW_AT_NO_USER_MODIFIERS),
 ))
 
+// todo: rework
 /// the throwing speed at which people can catch things on impact
 #define THROW_SPEED_CATCHABLE			5
-
-#warn aaa
-
-/// The throwing speed value at which the throw_force multiplier is exactly 1.
-#define THROWFORCE_SPEED_DIVISOR    5
 /// The minumum speed of a w_class 2 thrown object that will cause living mobs it hits to be knocked back. Heavier objects can cause knockback at lower speeds.
 #define THROWNOBJ_KNOCKBACK_SPEED   15
 /// Affects how much speed the mob is knocked back with.

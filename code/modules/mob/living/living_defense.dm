@@ -282,7 +282,9 @@
 
 		if(ismob(TT.thrower))
 			var/mob/M = TT.thrower
-			add_attack_logs(M,src,"Hit by thrown [O.name]")
+			// we log only if one party is a player
+			if(!!client || !!M.client)
+				add_attack_logs(M,src,"Hit by thrown [O.name]")
 			if(ai_holder)
 				ai_holder.react_to_attack(TT.thrower)
 
