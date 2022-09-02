@@ -1959,6 +1959,9 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/camera/network/medbay{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
 "bBD" = (
@@ -2725,6 +2728,9 @@
 	},
 /obj/effect/floor_decal/corner/green/border{
 	dir = 4
+	},
+/obj/machinery/camera/network/medbay{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyisolation)
@@ -9683,6 +9689,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rift/turbolift/maint)
+"gYE" = (
+/obj/machinery/camera/network/medbay,
+/turf/simulated/floor/tiled/dark,
+/area/medical/recoveryrestroom)
 "gZb" = (
 /obj/structure/flora/pottedplant/stoutbush,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -10860,6 +10870,9 @@
 	},
 /obj/effect/floor_decal/corner/green/border{
 	dir = 10
+	},
+/obj/machinery/camera/network/medbay{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virology)
@@ -13987,6 +14000,12 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/tool_storage)
+"jNQ" = (
+/obj/machinery/camera/network/medbay{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/medbay/virology)
 "jNR" = (
 /obj/machinery/disposal,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -17238,6 +17257,7 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 5
 	},
+/obj/machinery/camera/network/medbay,
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
 "lTV" = (
@@ -20763,6 +20783,19 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/quartermaster/office)
+"nXO" = (
+/obj/structure/closet/secure_closet/personal/patient,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 4
+	},
+/obj/machinery/camera/network/medbay{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/virologyisolation)
 "nXP" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -28754,6 +28787,9 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 10
 	},
+/obj/machinery/camera/network/medbay{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/medical/virologyaccess)
 "tkO" = (
@@ -29904,6 +29940,9 @@
 	},
 /obj/effect/floor_decal/corner/green/border{
 	dir = 9
+	},
+/obj/machinery/camera/network/medbay{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virology)
@@ -49315,7 +49354,7 @@ myl
 ess
 iaR
 tbi
-nOt
+jNQ
 vbR
 myl
 lVC
@@ -49325,7 +49364,7 @@ nOt
 nOt
 lrW
 isB
-ofx
+gYE
 ofx
 cTy
 ofI
@@ -52425,7 +52464,7 @@ oVa
 oVa
 nMa
 sSN
-bcP
+nXO
 bcP
 bcP
 cnw
