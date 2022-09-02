@@ -142,7 +142,7 @@
 	take_damage(50)
 
 /obj/structure/window/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover, /obj/strucutre/window))
+	if(istype(mover, /obj/structure/window))
 		// if they're a window we have special handling
 		var/obj/structure/window/them = mover
 		if(is_fulltile() || them.is_fulltile())

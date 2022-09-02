@@ -201,9 +201,9 @@
 
 /obj/item/kinetic_crusher/throw_impact(atom/A, datum/thrownthing/TT)
 	. = ..()
-	if(!isliving(hit_atom))
+	if(!isliving(A))
 		return
-	var/mob/living/L = hit_atom
+	var/mob/living/L = A
 	if(!L.has_status_effect(STATUS_EFFECT_CRUSHERMARK))
 		detonate(L, TT.thrower, TRUE)
 

@@ -163,6 +163,8 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 //! call this from the bumping side aka the mob that ran into other, not the other way around
 /mob/living/proc/fetish_hook_for_help_intent_swapping(mob/living/other)
+	if(a_intent != INTENT_HELP(other))
+		return FALSE
 	switch(stupid_fucking_micro_canpass_fetish_check(other))
 		if(WE_ARE_BOTH_MICROS)
 			return TRUE
@@ -247,6 +249,10 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
  * we bumped into other
  */
 /mob/living/proc/fetish_hook_for_non_help_intent_bumps(mob/living/other)
+	if(a_intent == INTENT_HELP)
+		return FALSE
+	// flatten to true/false
+	return !!handle_micro_bump_other(other)
 
 /**
  * Handle bumping into someone without mutual help intent.
@@ -301,8 +307,6 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 		if(INTENT_DISARM)
 			// If bigger than them by at least 0.75, move onto them and print message.
 			if((get_effective_size() - tmob.get_effective_size()) >= 0.75)
-				now_pushing = 0
-				forceMove(tmob.loc)
 
 				//Running on INTENT_DISARM
 				if(m_intent == "run")
@@ -355,7 +359,6 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 		if(INTENT_HARM)
 			// If bigger than them by at least 0.75, move onto them and print message.
 			if((get_effective_size() - tmob.get_effective_size()) >= 0.75)
-				now_pushing = 0
 				forceMove(tmob.loc)
 
 				//Precalculate base damage
@@ -418,7 +421,6 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 		if(INTENT_GRAB)
 			// If bigger than them by at least 0.50, move onto them and print message.
 			if((get_effective_size() - tmob.get_effective_size()) >= 0.50)
-				now_pushing = 0
 				tmob.resting = 1
 				forceMove(tmob.loc)
 

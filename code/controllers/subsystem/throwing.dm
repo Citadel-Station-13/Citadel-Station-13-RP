@@ -44,9 +44,8 @@ SUBSYSTEM_DEF(throwing)
 	var/atom/movable/thrownthing
 	/// flags
 	var/throw_flags = NONE
-	/// are we finished? this should be true if we're qdeling in general
 	/// things we impacted already. associative list for speed.
-	var/list/impacted = list()
+	var/list/impacted
 	/// thing we originally were thrown at
 	var/atom/target
 	/// turf our original target was on at original time of throw
@@ -71,7 +70,7 @@ SUBSYSTEM_DEF(throwing)
 	//! processing vars
 	/// have we started yet
 	var/started = FALSE
-	/// are ew done
+	/// are we done
 	var/finished = FALSE
 	/// world.time we started
 	var/start_time
@@ -109,6 +108,7 @@ SUBSYSTEM_DEF(throwing)
 	src.thrower = thrower
 	src.on_hit = on_hit
 	src.on_land = on_land
+	impacted = list()
 
 /datum/thrownthing/proc/target_atom(atom/target)
 	src.target = target
@@ -142,14 +142,18 @@ SUBSYSTEM_DEF(throwing)
 	diagonal_error = dist_x / 2 - dist_y
 
 /datum/thrownthing/Destroy()
-	if(!finishedi)
+	if(!finished)
 		terminate(TRUE)
 	SSthrowing.processing -= thrownthing
 	thrownthing.throwing = null
 	thrownthing = null
 	target = null
 	thrower = null
-	callback = null
+	on_hit = null
+	on_land = null
+	initial_turf = null
+	target_turf = null
+	impacted = null
 	return ..()
 
 /datum/thrownthing/proc/tick()
@@ -197,13 +201,13 @@ SUBSYSTEM_DEF(throwing)
 			stepping = get_step(AM, get_dir(AM, target_turf))
 		else
 			// just go init dir, diagonal error solves the rest
-			step = get_step(AM, init_dir)
+			stepping = get_step(AM, init_dir)
 
 		// solve diagonal error
 		if(!pure_diagonal)
 			// checks for tile before so we don't raycast past it
-			if(diagonal_error >= 0 && (max(dist_x, dist_y) - dis_travelled != 1))
-				step = get_step(AM, dx)
+			if(diagonal_error >= 0 && (max(dist_x, dist_y) - dist_travelled != 1))
+				stepping = get_step(AM, dx)
 			diagonal_error += (diagonal_error < 0)? (dist_x / 2) : -dist_y
 
 		// if we're out of tiles.. don't run out of the map
@@ -391,6 +395,6 @@ SUBSYSTEM_DEF(throwing)
 
 /datum/thrownthing/emulated/proc/process_hit()
 	// hit without landing
-	hit(target, TRUE)
+	impact(target, TRUE)
 	// gtfo
 	terminate()

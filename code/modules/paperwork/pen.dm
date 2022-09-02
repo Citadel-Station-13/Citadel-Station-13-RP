@@ -167,6 +167,8 @@
 	force = active_force
 	throw_force = active_throwforce
 
+
+
 	sharp = 1
 	edge = 1
 	w_class = active_w_class

@@ -103,24 +103,15 @@
 
 /obj/item/projectile/meteor/Bump(atom/A as mob|obj|turf|area)
 	if(A == firer)
-		loc = A.loc
 		return
 
-	sleep(-1) //Might not be important enough for a sleep(-1) but the sleep/spawn itself is necessary thanks to explosions and metoerhits
+	A.ex_act(2)
+	playsound(src.loc, 'sound/effects/meteorimpact.ogg', 40, 1)
 
-	if(src)//Do not add to this if() statement, otherwise the meteor won't delete them
-		if(A)
-
-			A.ex_act(2)
-			playsound(src.loc, 'sound/effects/meteorimpact.ogg', 40, 1)
-
-			for(var/mob/M in range(10, src))
-				if(!M.stat && !istype(M, /mob/living/silicon/ai))\
-					shake_camera(M, 3, 1)
-			qdel(src)
-			return 1
-	else
-		return 0
+	for(var/mob/M in range(10, src))
+		if(!M.stat && !istype(M, /mob/living/silicon/ai))\
+			shake_camera(M, 3, 1)
+	qdel(src)
 
 /obj/item/projectile/meteor/slug
 	name = "meteor"

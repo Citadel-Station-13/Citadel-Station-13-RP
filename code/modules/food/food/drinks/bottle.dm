@@ -29,7 +29,7 @@
 /obj/item/reagent_containers/food/drinks/bottle/throw_impact(atom/hit_atom, datum/thrownthing/TT)
 	..()
 
-	var/mob/M = thrower
+	var/mob/M = TT.thrower
 	if(isGlass && istype(M) && M.a_intent == INTENT_HARM)
 		var/throw_dist = get_dist(TT.initial_turf, loc)
 		if(TT.speed >= throw_speed && smash_check(throw_dist)) //not as reliable as smashing directly
