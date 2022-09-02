@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ao" = (
+/obj/structure/fence,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/interior/undergound2)
 "ap" = (
 /obj/structure/bed/chair/wood{
 	dir = 1
@@ -137,7 +141,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/exterior/bunker/bottom)
 "hZ" = (
-/obj/effect/decal/cleanable/blood/writing{
+/obj/effect/debris/cleanable/blood/writing{
 	dir = 8;
 	message = "THEY KILLED US";
 	name = "bloody message"
@@ -174,7 +178,7 @@
 /obj/item/bone/arm,
 /obj/item/bone/skull/tajaran,
 /obj/item/bedsheet,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/prison)
 "iQ" = (
@@ -192,6 +196,9 @@
 /area/rift/facility/interior/temple)
 "je" = (
 /obj/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/fence{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty,
@@ -369,6 +376,11 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
+"qd" = (
+/obj/effect/overlay/snow/floor,
+/obj/random/landmine,
+/turf/simulated/floor/lythios43c,
+/area/rift/facility/interior/undergound2)
 "qN" = (
 /obj/effect/floor_decal/corner/white,
 /turf/simulated/floor/tiled/dark,
@@ -431,7 +443,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/undergound2)
 "uO" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/prison)
 "vm" = (
@@ -647,9 +659,18 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/janitorial)
 "KD" = (
-/obj/effect/overlay/snow/floor,
-/obj/random/landmine,
-/turf/simulated/floor/lythios43c,
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/simulated/floor/trap{
+	id = "LF_DL_S"
+	},
+/area/rift/facility/interior/undergound2)
+"KF" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/undergound2)
 "Lo" = (
 /obj/effect/overlay/snow/floor,
@@ -684,6 +705,13 @@
 "MM" = (
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/exterior/bunker/bottom)
+"MN" = (
+/obj/random/trash,
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/rift/facility/interior/undergound2)
 "NQ" = (
 /obj/machinery/door/airlock{
 	name = "Custodial Closet";
@@ -773,7 +801,7 @@
 /obj/item/bone/arm,
 /obj/item/bone/ribs,
 /obj/item/bone/skull/tajaran,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/prison)
 "UD" = (
@@ -3797,14 +3825,14 @@ so
 nN
 PJ
 PJ
-Fh
-hD
+KD
 PJ
 PJ
+KF
 Bg
 Bg
+KF
 PJ
-hD
 PJ
 yz
 lc
@@ -3989,9 +4017,9 @@ so
 so
 so
 nN
-hD
 PJ
-Fh
+PJ
+KD
 PJ
 BI
 je
@@ -4186,14 +4214,14 @@ nN
 PJ
 PJ
 nN
-PJ
-PJ
+ao
+ao
 nN
 VD
 VD
 nN
 yq
-PJ
+hD
 yz
 YK
 YK
@@ -4381,7 +4409,7 @@ iJ
 iJ
 nN
 Mc
-hD
+PJ
 nN
 VD
 VD
@@ -4766,8 +4794,8 @@ hS
 hS
 SN
 PJ
-hD
 PJ
+KF
 PJ
 PJ
 vJ
@@ -4961,7 +4989,7 @@ hS
 SN
 PJ
 PJ
-BI
+MN
 PJ
 PJ
 NQ
@@ -5157,7 +5185,7 @@ nN
 nN
 nN
 Eh
-hD
+PJ
 vJ
 Ky
 Ie
@@ -5738,7 +5766,7 @@ Oy
 pX
 lL
 lL
-hD
+PJ
 PJ
 vJ
 xN
@@ -6322,9 +6350,9 @@ Oy
 Ub
 PJ
 PJ
-PJ
+KF
 Wr
-hD
+PJ
 PJ
 PJ
 yq
@@ -6516,19 +6544,19 @@ iq
 lL
 PJ
 PJ
-PJ
+KF
 nN
 PJ
 BI
 PJ
-hD
 PJ
 PJ
-hD
+PJ
+PJ
+Wb
 Wb
 Wb
 So
-Wb
 nN
 so
 so
@@ -6710,7 +6738,7 @@ Oy
 Ub
 PJ
 BI
-hD
+KF
 Wr
 Fh
 PJ
@@ -8461,8 +8489,8 @@ nN
 PJ
 PJ
 PJ
+qd
 vm
-KD
 PJ
 PJ
 hD

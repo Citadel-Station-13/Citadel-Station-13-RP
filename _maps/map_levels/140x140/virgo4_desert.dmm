@@ -64,7 +64,7 @@
 /turf/simulated/floor/water,
 /area/tether_away/beach/desert/explored)
 "pc" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt";
 	outdoors = 1
@@ -94,7 +94,7 @@
 /area/tether_away/beach/desert/explored)
 "vr" = (
 /obj/random/humanoidremains,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/external,
 /area/tether_away/beach/desert/explored)
 "wb" = (
@@ -269,7 +269,7 @@
 /area/tether_away/beach/desert/explored)
 "OI" = (
 /obj/random/humanoidremains,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating/external,
 /area/tether_away/beach/desert/explored)
 "OO" = (
@@ -300,7 +300,7 @@
 /turf/simulated/floor/wood/classh,
 /area/tether_away/beach/desert/explored)
 "ST" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/mineral/floor/classh,
 /area/tether_away/beach/desert/explored)
 "UP" = (

@@ -365,7 +365,7 @@
 	usr.set_machine(src)
 	src.add_fingerprint(usr)
 
-/obj/machinery/xenobio/editor/MouseDrop_T(mob/target, mob/user)
+/obj/machinery/xenobio/editor/MouseDroppedOnLegacy(mob/target, mob/user)
 	if(user.stat || user.restrained())
 		return
 	move_into_editor(user,target)

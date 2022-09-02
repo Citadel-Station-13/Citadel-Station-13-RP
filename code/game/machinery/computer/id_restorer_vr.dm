@@ -18,8 +18,9 @@
 
 /obj/machinery/computer/id_restorer/attackby(obj/I, mob/user)
 	if(istype(I, /obj/item/card/id) && !(istype(I,/obj/item/card/id/guest)))
-		if(!inserted && user.unEquip(I))
-			I.forceMove(src)
+		if(!inserted)
+			if(!user.attempt_insert_item_for_installation(I, src))
+				return
 			inserted = I
 		else if(inserted)
 			to_chat(user, "<span class='warning'>There is already ID card inside.</span>")
@@ -73,7 +74,7 @@
 				return
 			if(ishuman(user))
 				inserted.forceMove(get_turf(src))
-				if(!user.get_active_hand())
+				if(!user.get_active_held_item())
 					user.put_in_hands(inserted)
 				inserted = null
 			else

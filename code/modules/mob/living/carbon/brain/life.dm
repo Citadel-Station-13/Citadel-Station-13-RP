@@ -178,7 +178,7 @@
 	if (stat == 2 || (XRAY in src.mutations))
 		AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
 		SetSeeInDarkSelf(8)
-		SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
+		SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_ONE)
 	else if (stat != 2)
 		RemoveSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
 		SetSeeInDarkSelf(2)

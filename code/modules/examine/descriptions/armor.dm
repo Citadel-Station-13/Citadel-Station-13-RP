@@ -54,7 +54,7 @@
 	if(max_pressure_protection != null)
 		armor_stats += "Wearing this will protect you from high pressures. \n"
 
-	if(flags & THICKMATERIAL)
+	if(clothing_flags & THICKMATERIAL)
 		armor_stats += "The material is exceptionally thick. \n"
 
 	if(max_heat_protection_temperature == FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE)

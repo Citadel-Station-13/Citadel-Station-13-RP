@@ -108,7 +108,7 @@
 
 	// Do the dig!
 	visible_message(SPAN_DANGER("\The [src] sinks into a puddle of blood \the [A]!"))
-	new /obj/effect/decal/cleanable/blood (src.loc)
+	new /obj/effect/debris/cleanable/blood (src.loc)
 	flick("blood_out",A)
 	icon_state = "bloodout"
 
@@ -133,7 +133,7 @@
 			continue
 
 		visible_message(SPAN_DANGER("\The [src] suddenly rises from a pool of blood \the [L]!"))
-		new /obj/effect/decal/cleanable/blood (src.loc)
+		new /obj/effect/debris/cleanable/blood (src.loc)
 		playsound(L, 'sound/weapons/heavysmash.ogg', 75, 1)
 		L.Weaken(3)
 		overshoot = FALSE
@@ -244,7 +244,7 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 
 /mob/living/simple_mob/humanoid/cultist/tesh/death()
-	new /obj/effect/decal/cleanable/ash (src.loc)
+	new /obj/effect/debris/cleanable/ash (src.loc)
 	..(null,"let's out a shrill chirp as his body turns to dust.")
 	ghostize()
 	qdel(src)
@@ -348,7 +348,7 @@
 
 /mob/living/simple_mob/humanoid/cultist/caster/death()
 	new /obj/effect/decal/remains/human (src.loc)
-	new /obj/effect/decal/cleanable/blood/gibs (src.loc)
+	new /obj/effect/debris/cleanable/blood/gibs (src.loc)
 	..(null,"melts into a pile of blood and bones.")
 	ghostize()
 	qdel(src)
@@ -447,7 +447,7 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
 
 /mob/living/simple_mob/humanoid/cultist/castertesh/death()
-	new /obj/effect/decal/cleanable/ash (src.loc)
+	new /obj/effect/debris/cleanable/ash (src.loc)
 	..(null,"burns away into nothing.")
 	ghostize()
 	qdel(src)
@@ -518,7 +518,7 @@
 
 /mob/living/simple_mob/humanoid/cultist/elite/death()
 	new /obj/effect/decal/remains/human (src.loc)
-	new /obj/effect/decal/cleanable/blood/gibs (src.loc)
+	new /obj/effect/debris/cleanable/blood/gibs (src.loc)
 	new /obj/item/material/shard (src.loc)
 	..(null,"shatters into bone and blood like pieces like the now shattered mirror.")
 	playsound(src, 'sound/effects/Glassbr2.ogg', 100, 1)
@@ -574,7 +574,7 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
 
 /mob/living/simple_mob/humanoid/cultist/magus/death()
-	new /obj/effect/decal/cleanable/blood/gibs (src.loc)
+	new /obj/effect/debris/cleanable/blood/gibs (src.loc)
 	..(null,"let's out a dark laugh as it collapses into a puddle of blood.")
 	ghostize()
 	qdel(src)
@@ -652,7 +652,7 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive/blood_hunter
 
 /mob/living/simple_mob/humanoid/cultist/hunter/death()
-	new /obj/effect/decal/cleanable/blood/gibs (src.loc)
+	new /obj/effect/debris/cleanable/blood/gibs (src.loc)
 	..(null,"laughs as he melts away. His laughs echo through the air even after only a dense red goo remains.")
 	ghostize()
 	qdel(src)

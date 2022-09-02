@@ -91,7 +91,7 @@
 				return
 		if(istype(W, /obj/item/grab))
 			var/obj/item/grab/G = W
-			src.MouseDrop_T(G.affecting, user)      //act like they were dragged onto the closet
+			src.MouseDroppedOn(G.affecting, user)      //act like they were dragged onto the closet
 			return 0
 		if(istype(W,/obj/item/tk_grab))
 			return 0
@@ -108,9 +108,8 @@
 			return
 		if(W.loc != user) // This should stop mounted modules ending up outside the module.
 			return
-		usr.drop_item()
-		if(W)
-			W.forceMove(src.loc)
+		user.transfer_item_to_loc(W, src, 			user.transfer_item_to_loc(W, src, INV_OP_FORCE)
+)
 	else
 		if(istype(W, /obj/item/shovel))
 			if(user.a_intent == INTENT_HARM)	// Hurt intent means you're trying to kill someone, or just get rid of the grave

@@ -19,9 +19,10 @@
 		if(istype(W,T))
 			can_hang = 1
 	if (can_hang && !coat)
+		if(!user.attempt_insert_item_for_installation(coat, src))
+			return
 		user.visible_message("[user] hangs [W] on \the [src].", "You hang [W] on the \the [src]")
 		coat = W
-		user.drop_from_inventory(coat, src)
 		update_icon()
 	else
 		to_chat(user, "<span class='notice'>You cannot hang [W] on [src]</span>")

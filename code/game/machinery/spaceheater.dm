@@ -53,17 +53,12 @@
 			if(cell)
 				to_chat(user, "There is already a power cell inside.")
 				return
-			else
-				// insert cell
-				var/obj/item/cell/C = usr.get_active_hand()
-				if(istype(C))
-					user.drop_item()
-					cell = C
-					C.loc = src
-					C.add_fingerprint(usr)
-
-					user.visible_message("<span class='notice'>[user] inserts a power cell into [src].</span>", "<span class='notice'>You insert the power cell into [src].</span>")
-					power_change()
+			if(!user.attempt_insert_item_for_installation(I, src))
+				return
+			cell = I
+			I.add_fingerprint(usr)
+			user.visible_message("<span class='notice'>[user] inserts a power cell into [src].</span>", "<span class='notice'>You insert the power cell into [src].</span>")
+			power_change()
 		else
 			to_chat(user, "The hatch must be open to insert a power cell.")
 			return
@@ -125,7 +120,7 @@
 				set_temperature = clamp(set_temperature + value, T0C, T0C + 90)
 
 			if("cellremove")
-				if(panel_open && cell && !usr.get_active_hand())
+				if(panel_open && cell && !usr.get_active_held_item())
 					usr.visible_message("<span class='notice'>\The [usr] removes \the [cell] from \the [src].</span>", "<span class='notice'>You remove \the [cell] from \the [src].</span>")
 					cell.update_icon()
 					usr.put_in_hands(cell)
@@ -136,11 +131,11 @@
 
 			if("cellinstall")
 				if(panel_open && !cell)
-					var/obj/item/cell/C = usr.get_active_hand()
+					var/obj/item/cell/C = usr.get_active_held_item()
 					if(istype(C))
-						usr.drop_item()
+						if(!usr.attempt_insert_item_for_installation(C, src))
+							return
 						cell = C
-						C.loc = src
 						C.add_fingerprint(usr)
 						power_change()
 						usr.visible_message("<span class='notice'>[usr] inserts \the [C] into \the [src].</span>", "<span class='notice'>You insert \the [C] into \the [src].</span>")
@@ -149,7 +144,6 @@
 	else
 		usr << browse(null, "window=spaceheater")
 		usr.unset_machine()
-	return
 
 /obj/machinery/space_heater/process(delta_time)
 	if(on)
@@ -334,7 +328,7 @@
 			removed.add_thermal_energy(power_avail * 1000 * THERMOREGULATOR_CHEAT_FACTOR)
 			env.merge(removed)
 	var/turf/T = get_turf(src)
-	new /obj/effect/decal/cleanable/liquid_fuel(T, 5)
+	new /obj/effect/debris/cleanable/liquid_fuel(T, 5)
 	T.assume_gas(/datum/gas/volatile_fuel, 5, T20C)
 	T.hotspot_expose(700,400)
 	var/datum/effect_system/spark_spread/s = new

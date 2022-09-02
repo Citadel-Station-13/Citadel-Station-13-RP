@@ -93,7 +93,7 @@
 	else
 		..()
 
-/mob/living/simple_mob/animal/passive/fox/MouseDrop(atom/over_object)
+/mob/living/simple_mob/animal/passive/fox/OnMouseDropLegacy(atom/over_object)
 	var/mob/living/carbon/H = over_object
 	if(!istype(H) || !Adjacent(H)) return ..()
 

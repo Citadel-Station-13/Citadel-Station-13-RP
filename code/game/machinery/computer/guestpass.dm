@@ -100,8 +100,9 @@
 
 /obj/machinery/computer/guestpass/attackby(obj/I, mob/user)
 	if(istype(I, /obj/item/card/id))
-		if(!giver && user.unEquip(I))
-			I.forceMove(src)
+		if(!giver)
+			if(!user.attempt_insert_item_for_installation(I, src))
+				return
 			giver = I
 			SSnanoui.update_uis(src)
 		else if(giver)
@@ -196,7 +197,7 @@
 				if (giver)
 					if(ishuman(usr))
 						giver.loc = usr.loc
-						if(!usr.get_active_hand())
+						if(!usr.get_active_held_item())
 							usr.put_in_hands(giver)
 						giver = null
 					else
@@ -204,9 +205,10 @@
 						giver = null
 					accesses.Cut()
 				else
-					var/obj/item/I = usr.get_active_hand()
-					if (istype(I, /obj/item/card/id) && usr.unEquip(I))
-						I.loc = src
+					var/obj/item/I = usr.get_active_held_item()
+					if (istype(I, /obj/item/card/id))
+						if(!usr.attempt_insert_item_for_installation(I, src))
+							return
 						giver = I
 
 			if ("print")

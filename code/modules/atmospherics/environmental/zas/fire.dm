@@ -29,7 +29,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 		return 0
 
 	var/igniting = 0
-	var/obj/effect/decal/cleanable/liquid_fuel/liquid = locate() in src
+	var/obj/effect/debris/cleanable/liquid_fuel/liquid = locate() in src
 
 	if(air_contents.check_combustability(liquid))
 		igniting = 1
@@ -50,7 +50,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 			if(T.fire)
 				T.fire.firelevel = firelevel
 			else
-				var/obj/effect/decal/cleanable/liquid_fuel/fuel = locate() in T
+				var/obj/effect/debris/cleanable/liquid_fuel/fuel = locate() in T
 				fire_tiles -= T
 				fuel_objs -= fuel
 	else
@@ -73,7 +73,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 	var/fuel_to_remove = used_liquid_fuel/(fuel_objs.len*LIQUIDFUEL_AMOUNT_TO_MOL) //convert back to liquid volume units
 
 	for(var/O in fuel_objs)
-		var/obj/effect/decal/cleanable/liquid_fuel/fuel = O
+		var/obj/effect/debris/cleanable/liquid_fuel/fuel = O
 		if(!istype(fuel))
 			fuel_objs -= fuel
 			continue
@@ -101,7 +101,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 	fire = new(src, fl)
 	air_master.active_fire_zones |= zone
 
-	var/obj/effect/decal/cleanable/liquid_fuel/fuel = locate() in src
+	var/obj/effect/debris/cleanable/liquid_fuel/fuel = locate() in src
 	zone.fire_tiles |= src
 	if(fuel)
 		zone.fuel_objs += fuel
@@ -192,7 +192,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 
 				//if(!enemy_tile.zone.fire_tiles.len) TODO - optimize
 				var/datum/gas_mixture/acs = enemy_tile.return_air()
-				var/obj/effect/decal/cleanable/liquid_fuel/liquid = locate() in enemy_tile
+				var/obj/effect/debris/cleanable/liquid_fuel/liquid = locate() in enemy_tile
 				if(!acs || !acs.check_combustability(liquid))
 					continue
 
@@ -246,7 +246,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 	//Get heat transfer coefficients for clothing.
 
 	for(var/obj/item/clothing/C in src)
-		if(item_is_in_hands(C))
+		if(is_holding(C))
 			continue
 
 		if( C.max_heat_protection_temperature >= last_temperature )

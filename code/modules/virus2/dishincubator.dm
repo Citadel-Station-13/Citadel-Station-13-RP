@@ -19,30 +19,26 @@
 		return
 
 	if(istype(O, /obj/item/reagent_containers/glass) || istype(O,/obj/item/reagent_containers/syringe))
-
 		if(beaker)
 			to_chat(user, "\The [src] is already loaded.")
 			return
+		if(!user.attempt_insert_item_for_installation(O, src))
+			return
 
 		beaker = O
-		user.drop_item()
-		O.loc = src
 
 		user.visible_message("[user] adds \a [O] to \the [src]!", "You add \a [O] to \the [src]!")
 		SSnanoui.update_uis(src)
 
 		src.attack_hand(user)
 		return
-
 	if(istype(O, /obj/item/virusdish))
-
 		if(dish)
 			to_chat(user, "The dish tray is aleady full!")
 			return
-
+		if(!user.attempt_insert_item_for_installation(O, src))
+			return
 		dish = O
-		user.drop_item()
-		O.loc = src
 
 		user.visible_message("[user] adds \a [O] to \the [src]!", "You add \a [O] to \the [src]!")
 		SSnanoui.update_uis(src)

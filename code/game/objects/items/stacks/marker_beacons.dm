@@ -109,7 +109,7 @@ var/list/marker_beacon_colors = list(
 		M.picked_color = picked_color
 		M.update_icon()
 		transfer_fingerprints_to(M)
-		if(user.put_in_hands(M, TRUE)) //delete the beacon if it fails
+		if(user.put_in_hands(M, INV_OP_FORCE)) //delete the beacon if it fails
 			playsound(src, 'sound/items/deconstruct.ogg', 50, 1)
 			qdel(src) //otherwise delete us
 

@@ -3,7 +3,7 @@
 /turf/template_noop,
 /area/template_noop)
 "b" = (
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Mudpit)
 "c" = (
@@ -13,14 +13,14 @@
 /turf/simulated/floor/outdoors/mud,
 /area/submap/Mudpit)
 "e" = (
-/obj/effect/decal/cleanable/liquid_fuel,
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Mudpit)
 "f" = (
-/obj/effect/decal/cleanable/liquid_fuel,
-/obj/effect/decal/cleanable/liquid_fuel,
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Mudpit)
 "g" = (
@@ -29,12 +29,12 @@
 /area/submap/Mudpit)
 "h" = (
 /obj/effect/decal/remains/mouse,
-/obj/effect/decal/cleanable/liquid_fuel,
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Mudpit)
 "i" = (
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /turf/template_noop,
 /area/template_noop)
 "j" = (

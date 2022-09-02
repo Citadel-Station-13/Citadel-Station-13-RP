@@ -146,10 +146,12 @@
 		var/datum/wound/internal_bleeding/I = new (10)
 		affected.wounds += I
 		affected.owner.custom_pain("You feel something rip in your [affected.name]!", 1)
-	user.drop_item()
+	if(!user.transfer_item_to_loc(tool, affected))
+		return
 	affected.implants += tool
-	tool.loc = affected
-	if(istype(tool,/obj/item/nif)){var/obj/item/nif/N = tool;N.implant(target)}
+	if(istype(tool,/obj/item/nif))
+		var/obj/item/nif/N = tool
+		N.implant(target)
 	affected.cavity = 0
 
 //////////////////////////////////////////////////////////////////

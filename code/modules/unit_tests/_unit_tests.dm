@@ -34,6 +34,7 @@
 
 #include "core/_core.dm"
 #include "human/_human.dm"
+#include "mob/_mob.dm"
 #include "reagents/_reagents.dm"
 
 // #include "anchored_mobs.dm"

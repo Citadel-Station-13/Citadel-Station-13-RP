@@ -203,24 +203,21 @@
 		var/obj/item/weldingtool/welder = tool
 		if(!welder.isOn() || !welder.remove_fuel(1,user))
 			return 0
-	return (target_zone == BP_TORSO) && ((istype(target.back, /obj/item/rig) && !(target.back.canremove)) || (istype(target.belt, /obj/item/rig) && !(target.belt.canremove)))
+	if(!(target_zone == BP_TORSO))
+		return FALSE
+	var/obj/item/rig/R = target.get_rig(TRUE)
+	if(!R)
+		return FALSE
+	return TRUE
 
 /datum/surgery_step/hardsuit/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/rig/rig = target.back
-	if(!istype(rig))
-		rig = target.belt
-		if(!istype(rig))
-			return
+	var/obj/item/rig/rig = target.get_rig(TRUE)
 	user.visible_message("[user] starts cutting through the support systems of \the [rig] on [target] with \the [tool]." , \
 	"You start cutting through the support systems of \the [rig] on [target] with \the [tool].")
 	..()
 
 /datum/surgery_step/hardsuit/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/rig/rig = target.back
-	if(!istype(rig))
-		rig = target.belt
-		if(!istype(rig))
-			return
+	var/obj/item/rig/rig = target.get_rig(TRUE)
 	rig.reset()
 	user.visible_message("<span class='notice'>[user] has cut through the support systems of \the [rig] on [target] with \the [tool].</span>", \
 		"<span class='notice'>You have cut through the support systems of \the [rig] on [target] with \the [tool].</span>")

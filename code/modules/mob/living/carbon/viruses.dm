@@ -8,23 +8,23 @@
 			V.cure(src)
 
 	if(life_tick % 3) //don't spam checks over all objects in view every tick.
-		for(var/obj/effect/decal/cleanable/O in view(1,src))
-			if(istype(O,/obj/effect/decal/cleanable/blood))
-				var/obj/effect/decal/cleanable/blood/B = O
+		for(var/obj/effect/debris/cleanable/O in view(1,src))
+			if(istype(O,/obj/effect/debris/cleanable/blood))
+				var/obj/effect/debris/cleanable/blood/B = O
 				if(B.virus2.len)
 					for (var/ID in B.virus2)
 						var/datum/disease2/disease/V = B.virus2[ID]
 						infect_virus2(src,V)
 
-			else if(istype(O,/obj/effect/decal/cleanable/mucus))
-				var/obj/effect/decal/cleanable/mucus/M = O
+			else if(istype(O,/obj/effect/debris/cleanable/mucus))
+				var/obj/effect/debris/cleanable/mucus/M = O
 				if(M.virus2.len)
 					for (var/ID in M.virus2)
 						var/datum/disease2/disease/V = M.virus2[ID]
 						infect_virus2(src,V)
 
-			else if(istype(O,/obj/effect/decal/cleanable/vomit))
-				var/obj/effect/decal/cleanable/vomit/Vom = O
+			else if(istype(O,/obj/effect/debris/cleanable/vomit))
+				var/obj/effect/debris/cleanable/vomit/Vom = O
 				if(Vom.virus2.len)
 					for (var/ID in Vom.virus2)
 						var/datum/disease2/disease/V = Vom.virus2[ID]

@@ -193,7 +193,7 @@
 			occupant.visible_message("<span class='danger'>[occupant] crashed into \the [A]!</span>")
 
 /obj/structure/bed/chair/wheelchair/proc/create_track()
-	var/obj/effect/decal/cleanable/blood/tracks/B = new(loc)
+	var/obj/effect/debris/cleanable/blood/tracks/B = new(loc)
 	var/newdir = get_dir(get_step(loc, dir), loc)
 	if(newdir == dir)
 		B.setDir(newdir)
@@ -231,7 +231,7 @@
 		R.color = src.color
 		qdel(src)
 
-/obj/structure/bed/chair/wheelchair/MouseDrop(over_object, src_location, over_location)
+/obj/structure/bed/chair/wheelchair/OnMouseDropLegacy(over_object, src_location, over_location)
 	..()
 	if((over_object == usr && (in_range(src, usr) || usr.contents.Find(src))))
 		if(!ishuman(usr))	return

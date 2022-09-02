@@ -40,7 +40,7 @@
 /area/submap/virgo2/DJOutpost1)
 "j" = (
 /obj/effect/decal/remains,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/item/clothing/under/frontier,
 /obj/item/material/knife/tacknife/combatknife,
 /obj/random_multi/single_item/sfr_headset,
@@ -97,7 +97,7 @@
 "q" = (
 /obj/effect/decal/remains,
 /obj/item/clothing/under/dress/blacktango,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/item/universal_translator/ear,
 /turf/simulated/floor/wood,
 /area/submap/virgo2/DJOutpost1)

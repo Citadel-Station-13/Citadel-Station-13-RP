@@ -53,6 +53,9 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 	if(!should_have_organ(O_HEART))
 		return
 
+	var/stabilization = HAS_TRAIT(src, TRAIT_MECHANICAL_VENTILATION)
+	var/mechanical_circulation = HAS_TRAIT(src, TRAIT_MECHANICAL_CIRCULATION)
+
 	if(stat != DEAD && bodytemperature >= 170)	//Dead or cryosleep people do not pump the blood.
 
 		var/blood_volume_raw = vessel.get_reagent_amount("blood")
@@ -74,7 +77,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 
 		// Damaged heart virtually reduces the blood volume, as the blood isn't
 		// being pumped properly anymore.
-		if(species && should_have_organ(O_HEART))
+		if(species && should_have_organ(O_HEART) && !mechanical_circulation)
 			var/obj/item/organ/internal/heart/heart = internal_organs_by_name[O_HEART]
 
 			if(!heart)
@@ -90,9 +93,10 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 		var/dmg_coef = 1				//Lower means less damage taken
 		var/threshold_coef = 1			//Lower means the damage caps off lower
 
-		if(CE_STABLE in chem_effects)
-			dmg_coef = 0.5
-			threshold_coef = 0.75
+		if((CE_STABLE in chem_effects) || stabilization)
+			dmg_coef *= 0.5
+			threshold_coef *= 0.75
+
 //	These are Bay bits, do some sort of calculation.
 //			dmg_coef = min(1, 10/chem_effects[CE_STABLE]) //TODO: add effect for increased damage
 //			threshold_coef = min(dmg_coef / CE_STABLE_THRESHOLD, 1)
@@ -336,8 +340,8 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large)
 		if(!isturf(A.loc))
 			return
 
-	var/obj/effect/decal/cleanable/blood/B
-	var/decal_type = /obj/effect/decal/cleanable/blood/splatter
+	var/obj/effect/debris/cleanable/blood/B
+	var/decal_type = /obj/effect/debris/cleanable/blood/splatter
 	var/turf/T = get_turf(target)
 	var/synth = 0
 
@@ -349,18 +353,18 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large)
 	// Are we dripping or splattering?
 	var/list/drips = list()
 	// Only a certain number of drips (or one large splatter) can be on a given turf.
-	for(var/obj/effect/decal/cleanable/blood/drip/drop in T)
+	for(var/obj/effect/debris/cleanable/blood/drip/drop in T)
 		drips |= drop.drips
 		qdel(drop)
 	if(!large && drips.len < 3)
-		decal_type = /obj/effect/decal/cleanable/blood/drip
+		decal_type = /obj/effect/debris/cleanable/blood/drip
 
 	// Find a blood decal or create a new one.
 	B = locate(decal_type) in T
 	if(!B)
 		B = new decal_type(T)
 
-	var/obj/effect/decal/cleanable/blood/drip/drop = B
+	var/obj/effect/debris/cleanable/blood/drip/drop = B
 	if(istype(drop) && drips && drips.len && !large)
 		drop.overlays |= drips
 		drop.drips |= drips

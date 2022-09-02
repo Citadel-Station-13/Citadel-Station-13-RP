@@ -30,8 +30,8 @@
 		else if(G.seed.kitchen_tag == "deathnettle")
 			to_chat(user, "You weave the death nettles to the circlet and create a horrifying crown of spines.")
 			complete = new /obj/item/clothing/head/nettle_crown(get_turf(user))
-		user.drop_from_inventory(W)
-		user.drop_from_inventory(src)
+		if(!complete)
+			return
 		qdel(W)
 		qdel(src)
 		user.put_in_hands(complete)

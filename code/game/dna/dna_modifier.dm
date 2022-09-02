@@ -95,7 +95,7 @@
 		for(var/mob/M in src)//Failsafe so you can get mobs out
 			M.loc = get_turf(src)
 
-/obj/machinery/dna_scannernew/MouseDrop_T(var/mob/target, var/mob/user) //Allows borgs to clone people without external assistance
+/obj/machinery/dna_scannernew/MouseDroppedOnLegacy(var/mob/target, var/mob/user) //Allows borgs to clone people without external assistance
 	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user)|| !ishuman(target))
 		return
 	put_in(target)
@@ -129,10 +129,9 @@
 		if(beaker)
 			to_chat(user, "<span class='warning'>A beaker is already loaded into the machine.</span>")
 			return
-
+		if(!user.attempt_insert_item_for_installation(item, src))
+			return
 		beaker = item
-		user.drop_item()
-		item.loc = src
 		user.visible_message("\The [user] adds \a [item] to \the [src]!", "You add \a [item] to \the [src]!")
 		return
 
@@ -142,8 +141,8 @@
 			return
 		var/obj/item/organ/internal/brain/brain = item
 		if(brain.clone_source)
-			user.drop_item()
-			brain.loc = src
+			if(!user.attempt_insert_item_for_installation(brain, src))
+				return
 			put_in(brain.brainmob)
 			src.add_fingerprint(user)
 			user.visible_message("\The [user] adds \a [item] to \the [src]!", "You add \a [item] to \the [src]!")
@@ -262,8 +261,8 @@
 /obj/machinery/computer/scan_consolenew/attackby(obj/item/I as obj, mob/user as mob)
 	if (istype(I, /obj/item/disk/data)) //INSERT SOME diskS
 		if (!src.disk)
-			user.drop_item()
-			I.loc = src
+			if(!user.attempt_insert_item_for_installation(I, src))
+				return
 			src.disk = I
 			to_chat(user, "You insert [I].")
 			SSnanoui.update_uis(src) // update all UIs attached to src

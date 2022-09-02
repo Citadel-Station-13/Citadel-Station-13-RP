@@ -16,14 +16,13 @@
 	var/saved_icon_state = "cigbutt"
 	var/saved_overlays
 
-/obj/item/chameleon/dropped()
+/obj/item/chameleon/dropped(mob/user, flags, atom/newLoc)
+	. = ..()
 	disrupt()
-	..()
 
-/obj/item/chameleon/equipped(mob/user, slot)
-	..()
+/obj/item/chameleon/equipped(mob/user, slot, flags)
+	. = ..()
 	disrupt()
-	..()
 
 /obj/item/chameleon/attack_self()
 	toggle()

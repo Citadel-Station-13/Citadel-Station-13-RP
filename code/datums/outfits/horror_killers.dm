@@ -11,7 +11,7 @@
 	r_pocket = /obj/item/bikehorn
 	r_hand = /obj/item/material/twohanded/fireaxe
 
-	id_slot = slot_wear_id
+	id_slot = SLOT_ID_WORN_ID
 	id_type = /obj/item/card/id/syndicate/station_access
 	id_pda_assignment = "Tunnel Clown!"
 
@@ -44,9 +44,9 @@
 	l_pocket = /obj/item/melee/energy/sword
 	mask = /obj/item/clothing/mask/gas/clown_hat
 
-	id_slot = slot_wear_id
+	id_slot = SLOT_ID_WORN_ID
 	id_type = /obj/item/card/id/syndicate/station_access
-	pda_slot = slot_belt
+	pda_slot = SLOT_ID_BELT
 	pda_type = /obj/item/pda/heads
 
 /datum/outfit/professional/post_equip(var/mob/living/carbon/human/H)
@@ -59,7 +59,7 @@
 	sec_briefcase.contents += new /obj/item/gun/projectile/revolver/mateba
 	sec_briefcase.contents += new /obj/item/ammo_magazine/s357
 	sec_briefcase.contents += new /obj/item/plastique
-	H.equip_to_slot_or_del(sec_briefcase, slot_l_hand)
+	H.equip_to_slot_or_del(sec_briefcase, /datum/inventory_slot_meta/abstract/left_hand)
 
 /datum/outfit/samurai
 	name = "Vengeful Samurai"

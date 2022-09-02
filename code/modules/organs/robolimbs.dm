@@ -803,9 +803,9 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	company = "Antares Robotics"
 
 /datum/robolimb/adherent
-	company = "NULL DATA."
-	desc = "NULL DATA."
-	icon = 'icons/mob/species/adherent/body.dmi'
+	company = "Unbranded - Adherent"
+	desc    = "A simple robotic limb with retro design. Seems rather stiff."
+	icon    = 'icons/mob/species/adherent/body.dmi'
 	unavailable_to_build = TRUE
 	suggested_species = SPECIES_ADHERENT
 
