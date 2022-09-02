@@ -5,6 +5,7 @@
 	plane = MOB_PLANE
 	animate_movement = 2
 	flags = PROXMOVE | HEAR
+	pass_flags_self = ATOM_PASS_MOB
 
 //! ## Rendering
 	/// Fullscreen objects

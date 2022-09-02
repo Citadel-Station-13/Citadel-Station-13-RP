@@ -242,6 +242,12 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 #define STEP_TEXT_OWNER(x) "[replacetext(x,"%prey",tmob)]"
 #define STEP_TEXT_PREY(x) "[replacetext(x,"%owner",src)]"
 
+#warn impl
+/**
+ * we bumped into other
+ */
+/mob/living/proc/fetish_hook_for_non_help_intent_bumps(mob/living/other)
+
 /**
  * Handle bumping into someone without mutual help intent.
  * Called from /mob/living/Bump()

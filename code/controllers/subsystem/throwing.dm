@@ -44,8 +44,6 @@ SUBSYSTEM_DEF(throwing)
 	var/atom/movable/thrownthing
 	/// flags
 	var/throw_flags = NONE
-	/// are we started?
-	var/started = FALSE
 	/// are we finished? this should be true if we're qdeling in general
 	/// things we impacted already. associative list for speed.
 	var/list/impacted = list()
@@ -71,6 +69,10 @@ SUBSYSTEM_DEF(throwing)
 	var/paused = FALSE
 
 	//! processing vars
+	/// have we started yet
+	var/started = FALSE
+	/// are ew done
+	var/finished = FALSE
 	/// world.time we started
 	var/start_time
 	/// tiles we travelled
@@ -123,7 +125,7 @@ SUBSYSTEM_DEF(throwing)
 	init_dir = get_dir(thrownthing, target)
 
 	dist_x = abs(T.x - AM.x)
-	dist_y = abs(T.y AM.y)
+	dist_y = abs(T.y - AM.y)
 	dx = (T.x > AM.x)? EAST : WEST
 	dy = (T.y > AM.y)? NORTH : SOUTH
 
@@ -140,7 +142,7 @@ SUBSYSTEM_DEF(throwing)
 	diagonal_error = dist_x / 2 - dist_y
 
 /datum/thrownthing/Destroy()
-	if(!finished)
+	if(!finishedi)
 		terminate(TRUE)
 	SSthrowing.processing -= thrownthing
 	thrownthing.throwing = null
@@ -307,12 +309,12 @@ SUBSYSTEM_DEF(throwing)
 /datum/thrownthing/proc/impact(atom/A, in_land)
 	impacted[AM] = TRUE
 
-	var/op_return = throwntihng._throw_do_hit(A)
+	var/op_return = thrownthing._throw_do_hit(A)
 	if(op_return & COMPONENT_THROW_HIT_TERMINATE)
 		terminate()
 		return
 
-	on_hit?.Invoke(A, src)
+	on_hit?.InvokeAsync(A, src)
 
 	if(!(op_return & COMPONENT_THROW_HIT_PIERCE) && !in_land)
 		land(get_turf(thrownthing))
@@ -336,7 +338,7 @@ SUBSYSTEM_DEF(throwing)
 
 	// land
 	thrownthing._throw_finalize(A, src)
-	on_land?.Invoke(A, src)
+	on_land?.InvokeAsync(A, src)
 
 	// halt
 	terminate()
