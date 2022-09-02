@@ -53,37 +53,6 @@
 
 //BUCKLE HOOKS
 
-/obj/vehicle_old/buckle_mob(mob/living/M, forced = FALSE, check_loc = TRUE)
-	. = ..()
-	M.update_water()
-	if(riding_datum)
-		riding_datum.ridden = src
-		riding_datum.handle_vehicle_offsets()
-
-/obj/vehicle_old/unbuckle_mob(mob/living/buckled_mob, force = FALSE)
-	. = ..(buckled_mob, force)
-	buckled_mob.update_water()
-	if(riding_datum)
-		riding_datum.restore_position(buckled_mob)
-		riding_datum.handle_vehicle_offsets() // So the person in back goes to the front.
-
-/obj/vehicle_old/setDir(newdir)
-	..(newdir)
-	if(riding_datum)
-		riding_datum.handle_vehicle_offsets()
-
-//MOVEMENT
-/obj/vehicle_old/relaymove(mob/user, direction)
-	if(riding_datum)
-		riding_datum.handle_ride(user, direction)
-
-
-/obj/vehicle_old/Moved()
-	. = ..()
-	if(riding_datum)
-		riding_datum.handle_vehicle_layer()
-		riding_datum.handle_vehicle_offsets()
-
 /obj/vehicle_old/Move()
 	if(world.time > l_move_time + move_delay)
 		var/old_loc = get_turf(src)

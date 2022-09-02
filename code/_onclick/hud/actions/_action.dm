@@ -12,7 +12,10 @@
 // todo: multiple owners
 // todo: ability datums? cooldown needs more checking
 /datum/action
+	/// action name
 	var/name = "Generic Action"
+	/// description
+	var/desc = "An action."
 	var/action_type = AB_ITEM
 	var/procname = null
 	var/atom/movable/target = null

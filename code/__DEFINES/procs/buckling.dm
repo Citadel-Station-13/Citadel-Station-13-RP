@@ -11,3 +11,7 @@
 #define BUCKLE_OP_DEFAULT_INTERACTION			(1<<4)
 /// don't make ANY feedback
 #define BUCKLE_OP_SILENT						(BUCKLE_OP_SUPPRESS_WARNING | BUCKLE_OP_SUPPRESS_SOUND)
+
+//! just defines used for piggybacking vs firemanning
+#define HUMAN_CARRY_FIREMAN						1
+#define HUMAN_CARRY_PIGGYBACK

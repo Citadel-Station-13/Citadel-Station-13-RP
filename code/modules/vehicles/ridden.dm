@@ -39,7 +39,7 @@
 
 /obj/vehicle/ridden/attackby(obj/item/I, mob/user, params)
 	if(key_type && !is_key(inserted_key) && is_key(I))
-		if(user.transferItemToLoc(I, src))
+		if(user.transfer_item_to_loc(I, src))
 			to_chat(user, "<span class='notice'>You insert \the [I] into \the [src].</span>")
 			if(inserted_key)	//just in case there's an invalid key
 				inserted_key.forceMove(drop_location())
@@ -51,7 +51,7 @@
 
 /obj/vehicle/ridden/AltClick(mob/user)
 	. = ..()
-	if(inserted_key && user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
+	if(inserted_key && user.canusetop(src, BE_CLOSE, ismonkey(user)))
 		if(!is_occupant(user))
 			to_chat(user, "<span class='notice'>You must be riding the [src] to remove [src]'s key!</span>")
 			return

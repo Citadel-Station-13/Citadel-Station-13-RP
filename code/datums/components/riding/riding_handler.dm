@@ -87,11 +87,11 @@
 
 /datum/component/riding_handler/proc/signal_hook_mob_buckled(atom/movable/source, mob/M, buckle_flags, mob/user)
 	SIGNAL_HANDLER
-	apply_rider(M)
+	on_rider_buckled(M)
 
 /datum/component/riding_handler/proc/signal_hook_mob_unbuckled(atom/movable/source, mob/M, buckle_flags, mob/user)
 	SIGNAL_HANDLER
-	reset_rider(M)
+	on_rider_unbuckled(M)
 	if(!source.has_buckled_mobs() && (riding_handler_flags & CF_RIDING_HANDLER_EPHEMERAL))
 		qdel(src)
 
@@ -126,6 +126,12 @@
 	else
 		AM.pixel_x = offset_vehicle[1]
 		AM.pixel_y = offset_vehicle[2]
+
+/datum/component/riding_handler/proc/on_rider_buckled(mob/rider)
+	apply_rider(rider)
+
+/datum/component/riding_handler/proc/on_rider_unbuckled(mob/rider)
+	reset_rider(rider)
 
 /datum/component/riding_handler/proc/reset_rider(mob/rider)
 	rider.reset_plane_and_layer()
