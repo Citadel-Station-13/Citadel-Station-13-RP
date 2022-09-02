@@ -616,3 +616,18 @@
 	duration = 75
 */
 
+//Crusher Glaives
+/obj/item/kinetic_crusher/glaive
+	name = "kinetic crusher glaive"
+	desc = "A refinement on the original Crusher's design, this high-tech glaive was modeled after observed weaponry carried by Scori hunters. \
+	Still an effective mining tool, it provides marginally better support as a defensive weapon."
+	icon_state = "crusher-glaive"
+	item_state = "crusher0-glaive"
+	throwforce = 10
+
+/obj/item/kinetic_crusher/glaive/bone
+	name = "bone crusher glaive"
+	desc = "Crusher glaives were utilized by the Scori long before the colonization of Surt. However, through rare cultural exchanges and trades, \
+	the Scori peoples have learned how to enhance the basic bone glaive with their own curious technology - effectively mimicking the kinetic crusher's utility."
+	icon_state = "crusher-bone"
+	throwforce = 10

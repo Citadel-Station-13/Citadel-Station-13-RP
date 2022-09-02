@@ -279,6 +279,7 @@ obj/item/pickaxe/tyrmalin/proc/turnOn(mob/user as mob)
 /obj/item/shovel/bone
 	name = "serrated bone shovel"
 	desc = "A wicked tool that cleaves through dirt just as easily as it does flesh. The design was styled after ancient tribal designs."
+	icon = 'icons/obj/mining.dmi'
 	icon_state = "shovel_bone"
 	force = 15
 	throwforce = 12

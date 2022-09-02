@@ -16,16 +16,16 @@
 	Harmony have since confirmed the presence of a nearby Scori tribe."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/ashlander)
 
-	spawn_flags = SPECIES_CAN_JOIN
-	//spawn_flags = SPECIES_IS_RESTRICTED
-	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
-
-	color_mult = 1
+	spawn_flags = SPECIES_IS_RESTRICTED
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_BASE_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 	icobase = 'icons/mob/species/human/body_greyscale.dmi'
 	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
-	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
+
+	color_mult = 1
+	flesh_color = "#5a5979"
+	base_color = "#373652"
 	blood_color = "#3c6d45"
-	base_color = "#4a496b"
+
 	flags = NO_MINOR_CUT
 	siemens_coefficient = 1.5
 
@@ -37,7 +37,7 @@
 
 	//Physical resistances and weaknesses.
 	brute_mod = 0.75
-	burn_mod = 0
+	burn_mod = 0.15
 	radiation_mod = 1.25
 	toxins_mod = 1.25
 
@@ -46,7 +46,7 @@
 	exhale_type = /datum/gas/oxygen
 	minimum_breath_pressure = 11
 	oxy_mod = 0.25
-	heat_discomfort_level = T0C+19
+	heat_discomfort_level = T0C+10
 	warning_low_pressure = 10
 	hazard_low_pressure  = 5
 	safe_pressure = 18

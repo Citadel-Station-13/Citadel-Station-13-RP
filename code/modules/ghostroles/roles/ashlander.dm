@@ -49,7 +49,7 @@
 	var/datum/outfit/outfit = ..()
 	switch(params["fluff"])
 		if("nomad")
-			outfit.uniform = /datum/gear/uniform/tribal_tunic
+			outfit.uniform = /obj/item/clothing/under/tribal_tunic
 			outfit.shoes = /obj/item/clothing/shoes/footwraps
 			outfit.belt = /obj/item/material/knife/tacknife/combatknife/bone
 			outfit.back = /obj/item/material/twohanded/spear/bone
@@ -61,9 +61,9 @@
 			outfit.belt = /obj/item/storage/belt/quiver/full/ash
 			outfit.r_hand = /obj/item/material/knife/tacknife/combatknife/bone
 		if("exile")
-			outfit.uniform = /datum/gear/uniform/tribal_tunic
+			outfit.uniform = /obj/item/clothing/under/tribal_tunic
 			outfit.belt = /obj/item/material/knife/tacknife/combatknife/bone
-			outfit.back = /obj/item/material/twohanded/fireaxe/bone
+			outfit.back = /obj/item/kinetic_crusher/glaive/bone
 	return outfit
 
 /obj/structure/ghost_role_spawner/ashlander

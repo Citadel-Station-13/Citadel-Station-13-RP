@@ -324,7 +324,7 @@
 /obj/item/storage/backpack/satchel/bone
 	name = "bone satchel"
 	desc = "A grotesque satchel made of sinew and bone."
-	icon_state = "satchel_bone"
+	icon_state = "satchel-bone"
 
 
 //ERT backpacks.
