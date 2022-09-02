@@ -165,12 +165,9 @@
 #include "code\__DEFINES\jobs\spawnpoints.dm"
 #include "code\__DEFINES\misc\message_ranges.dm"
 #include "code\__DEFINES\mobs\intent.dm"
-<<<<<<< HEAD:vorestation.dme
-#include "code\__DEFINES\mobs\movespeed_modification.dm"
-=======
 #include "code\__DEFINES\mobs\mobility.dm"
+#include "code\__DEFINES\mobs\movespeed_modification.dm"
 #include "code\__DEFINES\mobs\silicon_privileges.dm"
->>>>>>> citrp/master:citadel.dme
 #include "code\__DEFINES\mobs\stat.dm"
 #include "code\__DEFINES\power\power.dm"
 #include "code\__DEFINES\preferences\event_antag.dm"
@@ -614,11 +611,8 @@
 #include "code\game\atoms_movable.dm"
 #include "code\game\atoms_movable_movement.dm"
 #include "code\game\atoms_movable_pulling.dm"
-<<<<<<< HEAD:vorestation.dme
 #include "code\game\atoms_movable_throwing.dm"
 #include "code\game\base_turf.dm"
-=======
->>>>>>> citrp/master:citadel.dme
 #include "code\game\periodic_news.dm"
 #include "code\game\response_team.dm"
 #include "code\game\shuttle_engines.dm"
