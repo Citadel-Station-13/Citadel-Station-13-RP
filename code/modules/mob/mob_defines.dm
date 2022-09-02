@@ -197,6 +197,7 @@
 
 	var/list/mapobjs = list()
 
+	#warn impl
 	var/in_throw_mode = 0
 
 	var/music_lastplayed = "null"

@@ -43,3 +43,10 @@ DEFINE_BITFIELD(throw_flags, list(
 #define THROWNOBJ_KNOCKBACK_SPEED   15
 /// Affects how much speed the mob is knocked back with.
 #define THROWNOBJ_KNOCKBACK_DIVISOR 2
+
+#warn mob holders lmao
+// should probably be in mob define files
+/// time it takes to prep an overhand throw for items, multiplied by weight class
+#define OVERHAND_THROW_ITEM_DELAY				(0.75 SECONDS)
+/// time to takes to prep an overhand throw for mobs
+#define OVERHAND_THROW_MOB_DELAY				(4 SECONDS)
