@@ -24,33 +24,40 @@
 	//! offsets - highly optimized, eat my ass if you can't handle it, we need high performance for /Move()s.
 	/// layer offset to set mobs to. list or single number. plane will always be set to vehicle's plane. if list, format is (north, east, south, west). lists can be nested to provide different offsets based on index.
 	var/list/offset_layer = 0
-	/// pixel offsets to set mobs to. list (x, y) OR list((x, y), (x, y), (x, y), (x, y)) for NESW OR list(list(list(NESW offsets))) for positionals.
+	/// pixel offsets to set mobs to. list (x, y) OR list((x, y), (x, y), (x, y), (x, y)) for NESW OR list(list(NESW offsets of lists(x, y))) for positionals.
 	var/list/offset_pixel = list(0, 0)
 	/// same as offset pixel, but without the third option. set to null to not modify.
 	var/list/offset_vehicle
 
 	//! component-controlled movemnet
+	/// default allowed turf handling - set to off if you override the var!!
+	var/default_turf_checks = TRUE
+	/// allowed turf types - turned into typecache.
+	PRIVATE_VAR/list/allowed_turf_types
+	/// forbidden turf types - turned into typecache.
+	PRIVATE_VAR/list/forbid_turf_types
+	/// tick delay between movements
+	var/vehicle_move_delay = 2
+	/// key type needed, if it is needed
+	var/keytype
+	/// verb for controlling this
+	var/drive_verb = "drive"
 
-	//! operational
+	//! operational - general
 	/// last dir. used to avoid redoing expensive setdir stuff
 	var/tmp/_last_dir
 
-
-
-	var/last_vehicle_move = 0 //used for move delays
+	//! operational - driving
+	/// typecache of allowed turfs
+	VAR_PRIVATE/tmp/list/allowed_turf_typecache
+	/// typecache of forbidden turfs
+	VAR_PRIVATE/tmp/list/forbid_turf_typecache
+	/// last time we moved via driving
+	var/last_move_time = 0
+	/// was the last move diagonal?
 	var/last_move_diagonal = FALSE
-	var/vehicle_move_delay = 2 //tick delay between movements, lower = faster, higher = slower
-	var/keytype
-
-	var/slowed = FALSE
-	var/slowvalue = 1
-
-	var/list/riding_offsets = list()	//position_of_user = list(dir = list(px, py)), or RIDING_OFFSET_ALL for a generic one.
-	var/list/directional_vehicle_layers = list()	//["[DIRECTION]"] = layer. Don't set it for a direction for default, set a direction to null for no change.
-	var/list/directional_vehicle_offsets = list()	//same as above but instead of layer you have a list(px, py)
-	var/list/allowed_turf_typecache
-	var/list/forbid_turf_typecache					//allow typecache for only certain turfs, forbid to allow all but those. allow only certain turfs will take precedence.
-	var/drive_verb = "drive"
+	/// last turf we were on
+	var/turf/last_turf
 
 /datum/component/riding_handler/Initialize()
 	. = ..()
@@ -58,6 +65,7 @@
 		return
 	if(!istype(parent, expected_typepath))
 		return COMPONENT_INCOMPATIBLE
+	build_turf_typecaches()
 
 /datum/component/riding_handler/RegisterWithParent()
 	. = ..()
@@ -65,6 +73,7 @@
 	RegisterSignal(parent, COMSIG_MOVABLE_MOB_UNBUCKLED, .proc/signal_hook_mob_unbuckled)
 	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, .proc/signal_hook_handle_move)
 	RegisterSignal(parent, COMSIG_ATOM_DIR_CHANGE, .proc/signal_hook_handle_turn)
+	RegisterSignal(parent, COMSIG_ATOM_RELAYMOVE_FROM_BUCKLED, .proc/signal_hook_handle_relaymove)
 
 /datum/component/riding_handler/UnregisterFromParent()
 	. = ..()
@@ -72,20 +81,23 @@
 		COMSIG_MOVABLE_MOB_BUCKLED,
 		COMSIG_MOVABLE_MOB_UNBUCKLED,
 		COMSIG_MOVABLE_MOVED,
-		COMSIG_ATOM_DIR_CHANGE
+		COMSIG_ATOM_DIR_CHANGE,
+		COMSIG_ATOM_RELAYMOVE_FROM_BUCKLED
 	))
 
 /datum/component/riding_handler/proc/signal_hook_mob_buckled(atom/movable/source, mob/M, buckle_flags, mob/user)
 	SIGNAL_HANDLER
+	apply_rider(M)
 
 /datum/component/riding_handler/proc/signal_hook_mob_unbuckled(atom/movable/source, mob/M, buckle_flags, mob/user)
 	SIGNAL_HANDLER
-
+	reset_rider(M)
 	if(!source.has_buckled_mobs() && (riding_handler_flags & CF_RIDING_HANDLER_EPHEMERAL))
 		qdel(src)
 
 /datum/component/riding_handler/proc/signal_hook_handle_move(atom/movable/source, atom/old_loc, dir)
 	SIGNAL_HANDLER
+	update_riders_on_move(old_loc, dir)
 
 /datum/component/riding_handler/proc/signal_hook_handle_turn(atom/movable/source, old_dir, new_dir)
 	SIGNAL_HANDLER
@@ -145,6 +157,10 @@
 	rider.plane = AM.plane
 	rider.layer = AM.layer + rider_layer_offset(dir, pos)
 
+/**
+ * returns a layer **offset** for a rider to be set to.
+ * riders will default to our plane and layer. this is added onto layer.
+ */
 /datum/component/riding_handler/proc/rider_layer_offset(dir, index = 1)
 	if(isnum(offset_layer))
 		return offset_layer
@@ -171,6 +187,9 @@
 			if(WEST)
 				return offset_layer[4]
 
+/**
+ * returns list(x, y) of pixel offsets for a rider
+ */
 /datum/component/riding_handler/proc/rider_pixel_offsets(dir, index = 1)
 	RETURN_TYPE(/list)
 	// format: x, y
@@ -199,30 +218,97 @@
 		if(WEST)
 			return relevant[4]
 
+/**
+ * returns what dir riders should be set to
+ */
 /datum/component/riding_handler/proc/rider_dir_offset(dir, index = 1)
 	return dir
 
+/datum/component/riding_handler/proc/signal_hook_handle_relaymove(datum/source, mob/M, dir)
+	attempt_drive(M, dir)
+	return COMPONENT_RELAYMOVE_HANDLED
+
+/**
+ * called to check if a mob has keys to us
+ */
+/datum/component/riding_handler/proc/keycheck(mob/M)
+	return !keytype || M.is_holding_item_of_type(keytype)
+
+/**
+ * handles building our typecaches
+ */
+/datum/component/riding_handler/proc/build_turf_typecaches()
+	allowed_turf_types = typelist(NAMEOF(allowed_turf_types), allowed_turf_types)
+	forbid_turf_types = typelist(NAMEOF(src, forbid_turf_types), forbid_turf_types)
+	if(!default_turf_checks)
+		return
+	if(has_typelist(NAMEOF(src, allowed_turf_typecache)))
+		allowed_turf_typecache = get_typelist(NAMEOF(src, allowed_turf_typecache))
+	else
+		allowed_turf_typecache = typelist(NAMEOF(src, allowed_turf_typecache), typecacheof(allowed_turf_types))
+	if(has_typelist(NAMEOF(src, forbid_turf_typecache)))
+		forbid_turf_typecache = get_typelist(NAMEOF(src, forbid_turf_typecache))
+	else
+		forbid_turf_typecache = typelist(NAMEOF(src, forbid_turf_typecache), typecacheof(forbid_turf_types))
+
+/**
+ * checks if we can move onto a turf
+ */
+/datum/component/riding_handler/proc/turfcheck(turf/next)
+	if(!default_turf_checks)
+		stack_trace("default turf checks was off even though we use them")
+		default_turf_checks = TRUE
+	return (!allowed_turf_typecache || allowed_turf_typecache[next.type]) && (!forbid_turf_typecache || !forbid_turf_typecache[next.type])
+
+/**
+ * handles checking if we can go on a turf
+ * don't override this, override turfcheck().
+ */
+/datum/component/riding_handler/proc/_check_turf(turf/next)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	if(riding_handler_flags & CF_RIDING_HANDLER_ALLOW_BORDER)
+		// allow one off
+		if(riding_handler_flags & CF_RIDING_HANDLER_FORBID_BORDER_CROSS)
+			// allow if next isn't fine but current is fine,
+			#warn impl
+		else
+			// allow either if next or current is fine, which lets us cross 1-wide borders
+			return turfcheck(next) || turfcheck(get_turf(parent))
+	else
+		// don't
+		return turfcheck(next)
+
+/**
+ * called when a mob wants to drive us
+ */
+/datum/component/riding_handler/proc/attempt_drive(mob/M, dir)
+	if(!loc)
+		return FALSE
+	if(!keycheck(M))
+		if(CHATSPAM_THROTTLE_DEFAULT)
+			to_chat(M, SPAN_WARNING("You must have one of the keys in your hand to drive [parent]!"))
+		return FALSE
+	var/turf/next = get_step(src, dir)
+	if(!_check_turf(next))
+		if(CHATSPAM_THROTTLE_DEFAULT)
+			to_chat(M, SPAN_WARNING("[parent] cannot drive onto [next]!"))
+			#warn impl border cross message
+		return FALSE
+
+
+
+/**
+ * handles checks/updates when we move
+ */
+/datum/component/riding_handler/proc/update_riders_on_move(atom/old_loc, dir)
+
 #warn parse below
 
-/datum/component/riding_handler/proc/handle_vehicle_layer()
-	var/atom/movable/AM = parent
-	var/static/list/defaults = list(TEXT_NORTH = OBJ_LAYER, TEXT_SOUTH = ABOVE_MOB_LAYER, TEXT_EAST = ABOVE_MOB_LAYER, TEXT_WEST = ABOVE_MOB_LAYER)
-	. = defaults["[AM.dir]"]
-	if(directional_vehicle_layers["[AM.dir]"])
-		. = directional_vehicle_layers["[AM.dir]"]
-	if(isnull(.))	//you can set it to null to not change it.
-		. = AM.layer
-	AM.layer = .
-
-/datum/component/riding_handler/proc/set_vehicle_dir_layer(dir, layer)
-	directional_vehicle_layers["[dir]"] = layer
 
 /datum/component/riding_handler/proc/vehicle_moved(datum/source)
 	var/atom/movable/AM = parent
 	for(var/i in AM.buckled_mobs)
 		ride_check(i)
-	handle_vehicle_offsets()
-	handle_vehicle_layer()
 
 /datum/component/riding_handler/proc/ride_check(mob/living/M)
 	var/atom/movable/AM = parent
@@ -236,6 +322,7 @@
 /datum/component/riding_handler/proc/force_dismount(mob/rider)
 	var/atom/movable/AM = parent
 	AM.unbuckle_mob(M, BUCKLE_OP_FORCE)
+
 
 //KEYS
 /datum/component/riding_handler/proc/keycheck(mob/user)

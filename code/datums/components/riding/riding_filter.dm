@@ -26,7 +26,7 @@
 	can_transfer = FALSE
 	/// expected typepath of what we're to be filtering for
 	var/expected_typepath = /atom/movable
-	/// the path of the riding handler component we're going to make
+	/// the path of the riding handler component we're going to make.
 	var/handler_typepath = /datum/component/riding_handler
 	/// implements smart can_buckle checks rather than just pre_buckle
 	var/implements_can_buckle_hints = FALSE
@@ -37,12 +37,17 @@
 	/// ~~our overlays~~ e-er, I mean our_offhands.
 	var/list/our_offhands
 
-/datum/component/riding_filter/Initialize()
+/datum/component/riding_filter/Initialize(handler_typepath)
 	. = ..()
 	if(. & COMPONENT_INCOMPATIBLE)
 		return
 	if(!istype(parent, expected_typepath))
 		return COMPONENT_INCOMPATIBLE
+	if(handler_typepath)
+		if(!ispath(handler_typepath, /datum/component/riding_handler))
+			. = COMPONENT_INCOMPATIBLE
+			CRASH("bad handler typepath passed in")
+		src.handler_typepath = handler_typepath
 
 /datum/component/riding_filter/RegisterWithParent()
 	. = ..()

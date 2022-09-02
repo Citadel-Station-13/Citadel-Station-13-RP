@@ -40,7 +40,8 @@
 ////#define COMSIG_MOVABLE_POST_THROW "movable_post_throw"
 /// From base of datum/thrownthing/finalize(): (obj/thrown_object, datum/thrownthing) used for when a throw is finished
 ////#define COMSIG_MOVABLE_THROW_LANDED "movable_throw_landed"
-/// From base of atom/movable/on_changed_z_level(): (turf/old_turf, turf/new_turf)
+/// Fr
+om base of atom/movable/on_changed_z_level(): (turf/old_turf, turf/new_turf)
 #define COMSIG_MOVABLE_Z_CHANGED "movable_ztransit"
 /// Called when the movable is placed in an unaccessible area, used for stationloving: ()
 ////#define COMSIG_MOVABLE_SECLUDED_LOCATION "movable_secluded"
