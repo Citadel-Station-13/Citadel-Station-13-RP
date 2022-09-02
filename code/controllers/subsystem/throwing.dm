@@ -225,7 +225,7 @@ SUBSYSTEM_DEF(throwing)
 			to_hit = scan_for_impact(stepping)
 */
 
-		AM.Move(step, get_dir(AM, step))
+		AM.Move(stepping, get_dir(AM, stepping))
 
 		// atom somehow got deleted
 		if(QDELETED(AM))

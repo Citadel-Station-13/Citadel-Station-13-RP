@@ -190,11 +190,7 @@
 /obj/machinery/door/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
 	visible_message("<span class='danger'>[src.name] was hit by [AM].</span>")
-	var/tforce = 0
-	if(ismob(AM))
-		tforce = 15 * (speed/5)
-	else
-		tforce = AM.throw_force * (speed/5)
+	var/tforce = AM.throw_force * TT.get_damage_multiplier()
 	playsound(src, hitsound, 100, 1)
 	take_damage(tforce)
 

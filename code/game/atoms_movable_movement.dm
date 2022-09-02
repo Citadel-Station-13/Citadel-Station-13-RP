@@ -4,9 +4,12 @@
   * Not recommended to use, listen for the [COMSIG_ATOM_DIR_CHANGE] signal instead (sent by this proc)
   */
 /atom/proc/setDir(newdir)
+	if(dir == newdir)
+		return FALSE
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, newdir)
 	dir = newdir
+	return TRUE
 
 ////////////////////////////////////////
 // Here's where we rewrite how byond handles movement except slightly different

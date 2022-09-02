@@ -240,6 +240,6 @@
 
 // wrapper to be replaced
 /atom/movable/proc/throw_at_old(atom/target, range, speed, mob/thrower, spin = TRUE, datum/callback/callback)
-	return throw_at(target, range, speed, flags, thrower, on_hit, null, null)
+	return throw_at(target, range, speed, flags, thrower, callback, null, null)
 
 #warn test throw force/speeds for mobs, pneumatic cannons, syringe guns

@@ -174,7 +174,7 @@
 	w_class = active_w_class
 	playsound(src, 'sound/weapons/saberon.ogg', 15, 1)
 	damtype = SEARING
-	catchable = FALSE
+	item_flags |= ITEM_THROW_UNCATCHABLE
 
 	attack_verb |= list(\
 		"slashed",\
@@ -196,7 +196,7 @@
 	edge = initial(edge)
 	w_class = initial(w_class)
 	damtype = BRUTE
-	catchable = TRUE
+	item_flags &= ~ITEM_THROW_UNCATCHABLE
 
 /obj/item/pen/blade/blue
 	desc = "It's a normal blue ink pen."

@@ -250,9 +250,7 @@
 		usr.AdjustSleeping(20)
 
 /mob/living/carbon/Bump(atom/A)
-	if(now_pushing)
-		return
-	..()
+	. = ..()
 	if(istype(A, /mob/living/carbon) && prob(10))
 		spread_disease_to(A, "Contact")
 

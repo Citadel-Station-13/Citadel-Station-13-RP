@@ -163,7 +163,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 //! call this from the bumping side aka the mob that ran into other, not the other way around
 /mob/living/proc/fetish_hook_for_help_intent_swapping(mob/living/other)
-	if(a_intent != INTENT_HELP(other))
+	if(a_intent != INTENT_HELP)
 		return FALSE
 	switch(stupid_fucking_micro_canpass_fetish_check(other))
 		if(WE_ARE_BOTH_MICROS)
