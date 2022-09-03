@@ -79,17 +79,11 @@
 
 /datum/ghostrole_instantiator/human/random/Create(client/C, atom/location, list/params)
 	var/mob/living/carbon/human/H = ..()
-	//Customize(H, params)
 	Randomize(H, params)
 	return H
 
 /datum/ghostrole_instantiator/human/random/proc/Randomize(mob/living/carbon/human/H, list/params)
 	return			// tgcode does this automatically
-
-/*
-/datum/ghostrole_instantiator/human/random/proc/Customize(mob/living/carbon/human/H, list/params)
-	return			// tgcode does this automatically
-*/
 
 /datum/ghostrole_instantiator/human/random/species
 	var/can_change_appearance = TRUE
@@ -118,17 +112,6 @@
 /datum/ghostrole_instantiator/human/random/species/proc/SetAppearance(mob/living/carbon/human/H, list/params)
 	return
 
-/*
-/datum/ghostrole_instantiator/human/random/species/Customize(mob/living/carbon/human/H, list/params)
-	. = ..()
-	var/species = pick(GetSpeciesPath(H, params))
-	H.set_species(species)
-	var/new_name = input(H, "Your mind feels foggy, and you recall your name might be [H.real_name]. Would you like to change your name?")
-	H.fully_replace_character_name(H.real_name, new_name)
-	if(can_change_appearance)
-		H.change_appearance(APPEARANCE_ALL, H.loc, check_species_whitelist = 1)
-*/
-
 /datum/ghostrole_instantiator/human/random/species/Randomize(mob/living/carbon/human/H, list/params)
 	. = ..()
 	var/species = pick(GetSpeciesPath(H, params))
@@ -150,6 +133,11 @@
 	// 	else
 	// 		new_name = random_unique_name()
 	H.fully_replace_character_name(H.real_name, new_name)
+
+/**
+ * called after the mob is instantiated and the player is transferred in
+ */
+/datum/ghostrole_instantiator/proc/AfterSpawn(mob/created, list/params)
 
 /datum/ghostrole_instantiator/human/player_static
 	/// equip loadout

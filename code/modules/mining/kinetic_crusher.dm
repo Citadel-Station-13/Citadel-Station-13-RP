@@ -1,27 +1,32 @@
 /*********************Mining Hammer****************/
 /obj/item/kinetic_crusher
+	name = "proto-kinetic crusher"
+	desc = "An early design of the proto-kinetic accelerator, it is little more than an combination of various mining tools cobbled together, forming a high-tech club. \
+	While it is an effective mining tool, it did little to aid any but the most skilled and/or suicidal miners against local fauna."
 	icon = 'icons/obj/mining.dmi'
-	icon_state = "crusher0"
+	icon_state = "crusher"
 	item_state = "crusher0"
 	item_icons = list(
 		slot_l_hand_str = 'icons/mob/inhands/weapons/hammers_lefthand.dmi',
 		slot_r_hand_str = 'icons/mob/inhands/weapons/hammers_righthand.dmi'
 		)
-	name = "proto-kinetic crusher"
-	desc = "An early design of the proto-kinetic accelerator, it is little more than an combination of various mining tools cobbled together, forming a high-tech club. \
-	While it is an effective mining tool, it did little to aid any but the most skilled and/or suicidal miners against local fauna."
-	w_class = WEIGHT_CLASS_BULKY
+	w_class = ITEMSIZE_HUGE
 	slot_flags = SLOT_BACK
 	throwforce = 5
 	throw_speed = 4
 	hitsound = 'sound/weapons/bladeslice.ogg'
+	drop_sound = 'sound/items/drop/sword.ogg'
+	pickup_sound = 'sound/items/pickup/sword.ogg'
 	attack_verb = list("smashed", "crushed", "cleaved", "chopped", "pulped")
 	sharp = TRUE
 	edge = TRUE
 	action_button_name = "Toggle Light"
+	var/requires_wield = TRUE
 	var/wielded = 0
 	var/force_wielded = 30
-	var/force_unwielded = 10
+	var/force_unwielded
+	var/base_icon = "crusher"
+	var/base_name = "proto-kinetic crusher"
 	var/charged = TRUE
 	var/charge_time = 15
 	var/detonation_damage = 50
@@ -34,37 +39,22 @@
 	var/human_backstab_nerf = 0.25
 	/// damage buff for throw impacts
 	var/thrown_bonus = 35
-	/// do we need to be wielded?
-	var/requires_wield = TRUE
 	/// do we have a charge overlay?
 	var/charge_overlay = TRUE
 	/// do we update item state?
 	var/update_item_state = FALSE
-
-/obj/item/kinetic_crusher/update_icon()
-	if(wielded)
-		src.icon_state = "[icon_state]1"
-		item_state = icon_state
-	else
-		src.icon_state = initial(icon_state)
-
-/obj/item/kinetic_crusher/dropped(mob/user, flags, atom/newLoc)
-	..()
-	if(wielded)
-		spawn(0)
-			update_held_icon()
 
 /obj/item/kinetic_crusher/update_held_icon()
 	var/mob/living/M = loc
 	if(istype(M) && M.can_wield_item(src) && is_held_twohanded(M))
 		wielded = 1
 		force = force_wielded
-		name = "[name] (wielded)"
+		name = "[base_name] (wielded)"
 		update_icon()
 	else
 		wielded = 0
 		force = force_unwielded
-		name = "[name]"
+		name = "[base_name]"
 	update_icon()
 	..()
 
@@ -79,6 +69,20 @@
 		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
 		return 1
 	return 0
+
+/obj/item/material/twohanded/update_icon()
+	if(wielded)
+		icon_state = "[base_icon]1"
+		item_state = icon_state
+	else
+		icon_state = "[base_icon]"
+		item_state = icon_state
+
+/obj/item/kinetic_crusher/dropped(mob/user, flags, atom/newLoc)
+	..()
+	if(wielded)
+		spawn(0)
+			update_held_icon()
 
 /obj/item/kinetic_crusher/cyborg //probably give this a unique sprite later
 	desc = "An integrated version of the standard kinetic crusher with a grinded down axe head to dissuade mis-use against crewmen. Deals damage equal to the standard crusher against creatures, however."
@@ -652,15 +656,19 @@
 //Crusher Glaives
 /obj/item/kinetic_crusher/glaive
 	name = "kinetic crusher glaive"
-	desc = "A refinement on the original Crusher's design, this high-tech glaive was modeled after observed weaponry carried by Scori hunters. \
+	desc = "A refinement on the original Crusher's design, this high-tech glaive was modeled after observed weaponry carried by Ashlander hunters. \
 	Still an effective mining tool, it provides marginally better support as a defensive weapon."
 	icon_state = "crusher-glaive"
 	item_state = "crusher0-glaive"
+	base_icon = "crusher-glaive"
+	base_name = "kinetic crusher glaive"
 	throwforce = 10
 
 /obj/item/kinetic_crusher/glaive/bone
 	name = "bone crusher glaive"
-	desc = "Crusher glaives were utilized by the Scori long before the colonization of Surt. However, through rare cultural exchanges and trades, \
-	the Scori peoples have learned how to enhance the basic bone glaive with their own curious technology - effectively mimicking the kinetic crusher's utility."
+	desc = "Crusher glaives were utilized by the Ashlanders long before the colonization of Surt. However, through rare cultural exchanges and trades, \
+	the tribes have learned how to enhance the basic bone glaive with their own curious technology - effectively mimicking the kinetic crusher's utility."
 	icon_state = "crusher-bone"
+	base_icon = "crusher-bone"
+	base_name = "bone crusher glaive"
 	throwforce = 10

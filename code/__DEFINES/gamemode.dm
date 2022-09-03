@@ -23,7 +23,6 @@
 #define BE_MUTINEER   (1<<13)
 #define BE_PAI        (1<<14)
 #define BE_LOYALIST   (1<<15)
-#define BE_ASHLANDER  (1<<16)
 
 var/list/be_special_flags = list(
 	"Traitor"          = BE_TRAITOR,
@@ -41,8 +40,7 @@ var/list/be_special_flags = list(
 	"Raider"           = BE_RAIDER,
 	"Diona"            = BE_PLANT,
 	"Mutineer"         = BE_MUTINEER,
-	"pAI"              = BE_PAI,
-	"Ashlander"		   = BE_ASHLANDER
+	"pAI"              = BE_PAI
 )
 
 
@@ -95,7 +93,6 @@ var/list/be_special_flags = list(
 #define MODE_INFILTRATOR "infiltrator"
 #define MODE_THUG "thug"
 #define MODE_STOWAWAY "stowaway"
-#define MODE_ASHLANDER "ashlander"
 
 #define DEFAULT_TELECRYSTAL_AMOUNT 120
 

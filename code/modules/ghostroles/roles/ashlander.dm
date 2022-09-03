@@ -1,8 +1,8 @@
 /datum/ghostrole/ashlander
 	name = "Ashlander"
 	assigned_role = "Ashlander"
-	desc = "You are an ashlander. Your tribe still worships the Buried Ones."
-	spawntext = "The wastes are sacred ground, its monsters a blessed bounty. You would never willingly leave your homeland behind. You have seen lights in the distance - falling from the heavens, and returning. They foreshadow the arrival of outsiders to your domain. Ensure your tribe remains protected at all costs."
+	desc = "You are an Ashlander. Select 'Scorian' from the race options. Ashlanders are all permadeath characters. They have gray skin of varying hues, red eyes, and - typically - white, black, or brown hair."
+	spawntext = "<span class='warning'>The nomadic Ashlanders are a <b>neutral</b> party.</span> Your tribe still worships the Buried Ones. The wastes are sacred ground, its monsters a blessed bounty. You would never willingly leave your homeland behind.	You have seen lights in the distance - falling from the heavens, and returning. They foreshadow the arrival of outsiders to your domain. Ensure your tribe remains protected at all costs."
 	instantiator = /datum/ghostrole_instantiator/human/random/species/ashlander
 
 /datum/ghostrole/ashlander/Instantiate(client/C, atom/loc, list/params)
@@ -18,32 +18,37 @@
 
 /datum/ghostrole/ashlander/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
 	. = ..()
-	var/flavour_text = "Fine particles of ash slip past the fluttering Goliath hide covering your doorway to settle on the floor of the yurt. \
+	var/flavour_text = "<i>Fine particles of ash slip past the fluttering Goliath hide covering your doorway to settle on the floor of the yurt. \
 	The hide is patched, and worn from years of use - it was gifted to you many Storms ago. Outside, the baking heat of the planet's surface \
 	sends howling winds across your threshold. Leaning back against a pile of tanned hide, you peer upwards through the roof at the ever-scarlet \
-	sky. Your mind drifts to how you came to be here..."
+	sky. Your mind drifts to how you came to be here...</i>"
 	switch(params["fluff"])
 		if("nomad")
-			flavour_text += "you served the caravan as a [pick("trader", "butcher", "shaman")], and much was the joy to be found in crossing the Mother's plains. \
+			flavour_text += "<i>You served the caravan as a [pick("trader", "butcher", "shaman")], and much was the joy to be found in crossing the Mother's plains. \
 			The caravan moved ever onwards, settling only when the skies were right and the omens favorable. You trekked across the deceptive Ash Dunes, and \
 			paddled across the Sunlight Sea in a blessed vessel. There was great comfort in the caravan. Until one day, when a great ash storm rose up and drove \
-			you from their warm embrace. Lost and alone, you set up this yurt and resolved to wait until your tribesmen could find you."
+			you from their warm embrace. Lost and alone, you set up this yurt and resolved to wait until your tribesmen could find you.</i>"
 		if("hunter")
-			flavour_text += "you have long bemoaned life in the Deep Veins. These ancient caverns have been home to your people since the beginning of time. \
+			flavour_text += "<i>You have long bemoaned life in the Deep Veins. These ancient caverns have been home to your people since the beginning of time. \
 			The farms have not been doing well these last few Storms. The Mother heaves and vomits her firey blood into passages which have been untouched \
 			for centuries. The priests foretell an impending cataclysm, but such concerns are beyond you. With the farms failing, you and many others have been \
-			sent to the surface, to find whatever game you may. So it is that you shelter in this yurt and rest before the next hunt."
+			sent to the surface, to find whatever game you may. So it is that you shelter in this yurt and rest before the next hunt.</i>"
 		if("exile")
-			flavour_text += "you had always imagined yourself a good steward. Loyal to the [pick("tribe", "caravan")], it came as a great shock to you and your \
+			flavour_text += "<i>You had always imagined yourself a good steward. Loyal to the [pick("tribe", "caravan")], it came as a great shock to you and your \
 			kinsmen when the priests declared you a sinner. For the crime of [pick("murder", "theft", "blasphemy")] you were cast out. Left with nothing but your \
 			wits and your strength, you have long traversed this world alone. The brand on your chest marks you among all who may find you - Exile. This simple \
-			yurt has become your latest haven. Rarely do others come across you here, a blessing, and a curse."
+			yurt has become your latest haven. Rarely do others come across you here, a blessing, and a curse.</i>"
 	to_chat(created, flavour_text)
 
 /datum/ghostrole_instantiator/human/random/species/ashlander
 	possible_species = list(
 		/datum/species/scori
 	)
+
+/datum/ghostrole_instantiator/human/random/species/ashlander/AfterSpawn(mob/living/carbon/human/H)
+	var/new_name = input(H, "Your mind feels foggy, and you recall your name might be [H.real_name]. Would you like to change your name?")
+	H.fully_replace_character_name(H.real_name, new_name)
+	H.change_appearance(APPEARANCE_ALL, H.loc, check_species_whitelist = 1)
 
 /datum/ghostrole_instantiator/human/random/species/ashlander/GetOutfit(client/C, mob/M, list/params)
 	var/datum/outfit/outfit = ..()
