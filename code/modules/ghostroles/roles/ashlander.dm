@@ -6,6 +6,7 @@
 	instantiator = /datum/ghostrole_instantiator/human/random/species/ashlander
 
 /datum/ghostrole/ashlander/Instantiate(client/C, atom/loc, list/params)
+	var/rp = rand(1, 3)
 	switch(rp)
 		if(1)
 			params["fluff"] = "nomad"

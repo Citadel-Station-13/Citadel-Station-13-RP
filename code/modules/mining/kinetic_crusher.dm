@@ -1,7 +1,7 @@
 /*********************Mining Hammer****************/
 /obj/item/kinetic_crusher
 	icon = 'icons/obj/mining.dmi'
-	icon_state = "crusher"
+	icon_state = "crusher0"
 	item_state = "crusher0"
 	item_icons = list(
 		slot_l_hand_str = 'icons/mob/inhands/weapons/hammers_lefthand.dmi',
@@ -41,6 +41,19 @@
 	/// do we update item state?
 	var/update_item_state = FALSE
 
+/obj/item/kinetic_crusher/update_icon()
+	if(wielded)
+		src.icon_state = "[icon_state]1"
+		item_state = icon_state
+	else
+		src.icon_state = initial(icon_state)
+
+/obj/item/kinetic_crusher/dropped(mob/user, flags, atom/newLoc)
+	..()
+	if(wielded)
+		spawn(0)
+			update_held_icon()
+
 /obj/item/kinetic_crusher/update_held_icon()
 	var/mob/living/M = loc
 	if(istype(M) && M.can_wield_item(src) && is_held_twohanded(M))
@@ -66,16 +79,6 @@
 		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
 		return 1
 	return 0
-
-/obj/item/kinetic_crusher/update_icon()
-	icon_state = "[icon][wielded]"
-	item_state = icon_state
-
-/obj/item/kinetic_crusher/dropped(mob/user, flags, atom/newLoc)
-	..()
-	if(wielded)
-		spawn(0)
-			update_held_icon()
 
 /obj/item/kinetic_crusher/cyborg //probably give this a unique sprite later
 	desc = "An integrated version of the standard kinetic crusher with a grinded down axe head to dissuade mis-use against crewmen. Deals damage equal to the standard crusher against creatures, however."
