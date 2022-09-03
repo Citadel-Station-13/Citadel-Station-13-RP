@@ -377,9 +377,9 @@ emp_act
 		var/throw_damage = O.throw_force * TT.get_damage_multiplier()
 
 		var/zone
-		if (istype(O.thrower, /mob/living))
-			var/mob/living/L = O.thrower
-			zone = check_zone(L.zone_sel.selecting)
+		if (istype(TT.thrower, /mob/living))
+			var/mob/living/L = TT.thrower
+			zone = check_zone(TT.target_zone)
 		else
 			zone = ran_zone(BP_TORSO,75)	//Hits a random part of the body, geared towards the chest
 
@@ -389,7 +389,7 @@ emp_act
 		miss_chance = max(5 * (distance - 2), 0)
 		zone = get_zone_with_miss_chance(zone, src, miss_chance, ranged_attack=1)
 
-		if(zone && O.thrower != src)
+		if(zone && TT.thrower != src)
 			var/shield_check = check_shields(throw_damage, O, TT.thrower, zone, "[O]")
 			if(shield_check == PROJECTILE_FORCE_MISS)
 				zone = null
@@ -448,8 +448,8 @@ emp_act
 			mass = I.w_class/THROWNOBJ_KNOCKBACK_DIVISOR
 		var/momentum = TT.speed*mass
 
-		if(O.throw_source && momentum >= THROWNOBJ_KNOCKBACK_SPEED)
-			var/dir = get_dir(O.throw_source, src)
+		if(TT.initial_turf && momentum >= THROWNOBJ_KNOCKBACK_SPEED)
+			var/dir = get_dir(TT.initial_turf, src)
 
 			visible_message("<font color='red'>[src] staggers under the impact!</font>","<font color='red'>You stagger under the impact!</font>")
 			src.throw_at_old(get_edge_target_turf(src,dir),1,momentum)

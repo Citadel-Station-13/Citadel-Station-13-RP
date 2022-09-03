@@ -14,7 +14,12 @@
 
 /datum/keybinding/carbon/toggle_throw_mode/down(client/user)
 	var/mob/living/carbon/C = user.mob
-	C.toggle_throw_mode()
+	C.throw_mode_toggle()
+	return TRUE
+
+/datum/keybinding/carbon/overhand_throw_mode/down(client/user)
+	var/mob/living/carbon/C = user.mob
+	C.throw_mode_overhand()
 	return TRUE
 
 /datum/keybinding/carbon/select_help_intent

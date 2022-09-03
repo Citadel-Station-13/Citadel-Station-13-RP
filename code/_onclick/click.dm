@@ -97,9 +97,9 @@
 		RestrainedClickOn(A)
 		return 1
 
-	if(in_throw_mode)
+	if(throw_mode_check())
 		if(isturf(A) || isturf(A.loc))
-			throw_item(A)
+			throw_active_held_item(A)
 			trigger_aiming(TARGET_CAN_CLICK)
 			return 1
 		throw_mode_off()

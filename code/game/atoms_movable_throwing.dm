@@ -191,7 +191,7 @@
 			if(speed <= 0)
 				return
 		// user zones
-		zone = L.zone_sel
+		zone = L.zone_sel.selecting
 
 	var/datum/thrownthing/TT
 	if(emulated)

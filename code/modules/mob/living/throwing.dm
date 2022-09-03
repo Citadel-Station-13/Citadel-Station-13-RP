@@ -1,3 +1,4 @@
+
 #warn impl overhand
 /mob/living/throw_item(atom/target)
 	// TODO: refactor to not be hardcoded active held item
@@ -45,3 +46,6 @@
 	newtonian_move(get_dir(target, src))
 
 	item.throw_at(target, throw_range, null, a_intent == INTENT_HELP? THROW_AT_IS_NEAT : NONE, src, force = throw_impulse)
+
+/mob/living/proc/throw_item(obj/item/I, atom/target, overhand, neat = a_intent == INTENT_HELP, force = throw_impulse)
+

@@ -334,6 +334,7 @@
 
 		if("pull")
 			usr.stop_pulling()
+		#warn sigh
 		if("throw")
 			if(!usr.stat && isturf(usr.loc) && !usr.restrained())
 				usr:toggle_throw_mode()

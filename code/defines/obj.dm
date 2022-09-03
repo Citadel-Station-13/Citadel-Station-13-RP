@@ -94,7 +94,7 @@
 	pickup_sound = 'sound/items/pickup/rubber.ogg'
 
 /obj/item/beach_ball/afterattack(atom/target as mob|obj|turf|area, mob/user as mob)
-	user.throw_item(target)
+	user.throw_item(src, target)
 
 /obj/effect/stop
 	icon_state = "empty"

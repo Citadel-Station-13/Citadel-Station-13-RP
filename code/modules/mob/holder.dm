@@ -17,6 +17,9 @@
 		slot_r_hand_str = 'icons/mob/items/righthand_holder.dmi',
 		)
 	pixel_y = 8
+	throw_range = 14
+	throw_force = 10
+	throw_speed = 3
 	var/static/list/holder_mob_icon_cache = list()
 	var/mob/living/held_mob
 
@@ -105,6 +108,15 @@
 		to_chat(held, SPAN_WARNING("You struggle free of [loc]."))
 		held.forceMove(get_turf(held))
 
+//? throws completely pass to the mob
+
+/obj/item/holder/emulated_throw(...)
+	held_mob?.forceMove(get_turf(src))
+	return held_mob?.emulated_throw(arglist(args))
+
+/obj/item/holder/subsystem_throw(...)
+	held_mob?.forceMove(get_turf(src))
+	return held_mob?.emulated_throw(arglist(args))
 
 //Mob specific holders.
 /obj/item/holder/diona
