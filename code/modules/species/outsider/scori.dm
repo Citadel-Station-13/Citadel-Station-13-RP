@@ -17,7 +17,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/ashlander)
 
 	spawn_flags = SPECIES_IS_RESTRICTED
-	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_BASE_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 	icobase = 'icons/mob/species/human/body_greyscale.dmi'
 	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
 

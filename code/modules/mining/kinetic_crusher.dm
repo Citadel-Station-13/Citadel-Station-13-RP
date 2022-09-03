@@ -10,30 +10,24 @@
 	name = "proto-kinetic crusher"
 	desc = "An early design of the proto-kinetic accelerator, it is little more than an combination of various mining tools cobbled together, forming a high-tech club. \
 	While it is an effective mining tool, it did little to aid any but the most skilled and/or suicidal miners against local fauna."
-	force = 0 //You can't hit stuff unless wielded
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
 	throwforce = 5
 	throw_speed = 4
-/*
-	armour_penetration = 10
-	custom_materials = list(/datum/material/iron=1150, /datum/material/glass=2075)
-*/
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("smashed", "crushed", "cleaved", "chopped", "pulped")
 	sharp = TRUE
 	edge = TRUE
-	// sharpness = SHARP_EDGED
 	action_button_name = "Toggle Light"
-	// actions_types = list(/datum/action/item_action/toggle_light)
-	// var/list/trophies = list()
+	var/wielded = 0
+	var/force_wielded = 30
+	var/force_unwielded = 10
 	var/charged = TRUE
 	var/charge_time = 15
 	var/detonation_damage = 50
 	var/backstab_bonus = 30
 	var/light_on = FALSE
 	var/brightness_on = 7
-	var/wielded = FALSE // track wielded status on item
 	/// Damage penalty factor to detonation damage to non simple mobs
 	var/human_damage_nerf = 0.25
 	/// Damage penalty factor to backstab bonus damage to non simple mobs
@@ -46,6 +40,42 @@
 	var/charge_overlay = TRUE
 	/// do we update item state?
 	var/update_item_state = FALSE
+
+/obj/item/kinetic_crusher/update_held_icon()
+	var/mob/living/M = loc
+	if(istype(M) && M.can_wield_item(src) && is_held_twohanded(M))
+		wielded = 1
+		force = force_wielded
+		name = "[name] (wielded)"
+		update_icon()
+	else
+		wielded = 0
+		force = force_unwielded
+		name = "[name]"
+	update_icon()
+	..()
+
+/obj/item/kinetic_crusher/Initialize(mapload)
+	. = ..()
+	update_icon()
+
+//Allow a small chance of parrying melee attacks when wielded - maybe generalize this to other weapons someday
+/obj/item/kinetic_crusher/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+	if(wielded && default_parry_check(user, attacker, damage_source) && prob(15))
+		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
+		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
+		return 1
+	return 0
+
+/obj/item/kinetic_crusher/update_icon()
+	icon_state = "[icon][wielded]"
+	item_state = icon_state
+
+/obj/item/kinetic_crusher/dropped(mob/user, flags, atom/newLoc)
+	..()
+	if(wielded)
+		spawn(0)
+			update_held_icon()
 
 /obj/item/kinetic_crusher/cyborg //probably give this a unique sprite later
 	desc = "An integrated version of the standard kinetic crusher with a grinded down axe head to dissuade mis-use against crewmen. Deals damage equal to the standard crusher against creatures, however."
