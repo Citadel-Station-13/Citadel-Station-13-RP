@@ -1208,6 +1208,7 @@
 #include "code\game\objects\items\shooting_range.dm"
 #include "code\game\objects\items\signs.dm"
 #include "code\game\objects\items\spritechanger.dm"
+#include "code\game\objects\items\throwing.dm"
 #include "code\game\objects\items\toys.dm"
 #include "code\game\objects\items\trash.dm"
 #include "code\game\objects\items\upgradekit.dm"

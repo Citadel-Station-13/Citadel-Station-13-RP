@@ -74,19 +74,6 @@
 
 	adjust_position()
 
-
-//Used by throw code to hand over the mob, instead of throwing the grab. The grab is then deleted by the throw code.
-/obj/item/grab/proc/throw_held()
-	if(affecting)
-		if(affecting.buckled)
-			return null
-		if(state >= GRAB_AGGRESSIVE)
-			animate(affecting, pixel_x = initial(affecting.pixel_x), pixel_y = initial(affecting.pixel_y), 4, 1)
-			return affecting
-
-	return null
-
-
 //This makes sure that the grab screen object is displayed in the correct hand.
 /obj/item/grab/proc/synch() //why is this needed?
 	if(QDELETED(src))
@@ -178,6 +165,13 @@
 /obj/item/grab/attack_self()
 	return s_click(hud)
 
+/obj/item/grab/throw_resolve_actual()
+	if(affecting.buckled)
+		return
+	if(state < GRAB_AGGRESSIVE)
+		return
+	animate(affecting, pixel_x = initial(affecting.pixel_x), pixel_y = initial(affecting.pixel_y), 4, 1)
+	return affecting
 
 //Updating pixelshift, position and direction
 //Gets called on process, when the grab gets upgraded or the assailant moves

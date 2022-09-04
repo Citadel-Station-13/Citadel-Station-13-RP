@@ -109,14 +109,8 @@
 		held.forceMove(get_turf(held))
 
 //? throws completely pass to the mob
-
-/obj/item/holder/emulated_throw(...)
-	held_mob?.forceMove(get_turf(src))
-	return held_mob?.emulated_throw(arglist(args))
-
-/obj/item/holder/subsystem_throw(...)
-	held_mob?.forceMove(get_turf(src))
-	return held_mob?.emulated_throw(arglist(args))
+/obj/item/holder/throw_resolve_actual()
+	return held_mob
 
 //Mob specific holders.
 /obj/item/holder/diona

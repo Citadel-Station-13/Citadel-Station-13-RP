@@ -1,51 +1,49 @@
+//! shitcode in this file oop
+/mob/living/proc/throw_item(obj/item/I, atom/target, overhand, neat = a_intent == INTENT_HELP, force = throw_impulse, overhand = in_throw_mode == THROW_MODE_OVERHAND)
+	if(!I)
+		return FALSE
+	throw_mode_off()
+	if(!can_throw_item(I, target))
+		return FALSE
+	if(is_in_inventory(I))
+		if(!drop_item_to_ground(I))
+			to_chat(src, SPAN_WARNING("You try and fail to throw [I] at [target]."))
+		return FALSE
+	var/atom/movable/throwing = I.throw_resolve_actual()
 
-#warn impl overhand
-/mob/living/throw_item(atom/target)
-	// TODO: refactor to not be hardcoded active held item
-	// todo: overhand throws
-	src.throw_mode_off()
-	if(usr.stat || !target)
-		return
-	if(target.type == /atom/movable/screen)
-		return
+	// overhand stuff
+	if(overhand)
+		var/delay = throwing.overhand_throw_delay(src)
+		visible_message(SPAN_WARNING("[src] starts preparing an overhand throw!"))
+		if(!do_after(src, delay, throwing))
+			return FALSE
 
-	var/atom/movable/item = src.get_active_held_item()
+	I.forceMove(drop_location())
+	if(QDELETED(throwing))
+		return FALSE
+	throwing.forceMove(get_turf(src))
+	if(!isturf(target) && !isturf(target.loc))
+		return FALSE
+	if(!isturf(loc) || !isturf(throwing.loc))
+		return FALSE
 
-	if(!item)
-		return
-	var/throw_range = item.throw_range
-	if (istype(item, /obj/item/grab))
-		var/obj/item/grab/G = item
-		item = G.throw_held() //throw the person instead of the grab
-		if(ismob(item))
-			var/mob/M = item
+	//! stupid shit
+	var/the_range = throwing.throw_range
+	if(ismob(throwing))
+		the_range = round(M.throw_range * min(mob_size / M.mob_size, 1))
+	//! stupid shit end, refactor grabs when?
 
-			//limit throw range by relative mob size
-			throw_range = round(M.throw_range * min(src.mob_size/M.mob_size, 1))
-
-			var/turf/end_T = get_turf(target)
-			if(end_T)
-				add_attack_logs(src,M,"Thrown via grab to [end_T.x],[end_T.y],[end_T.z]")
-			drop_item_to_ground(G, INV_OP_FORCE)
-		else
-			return		// wild
+	if(overhand)
+		visible_message(SPAN_WARNING("[src] throws [throwing] overhand."))
 	else
-		if(!drop_item_to_ground(item))
-			throw_mode_off()
-			return
-
-	if(!item || !isturf(item.loc))
-		return
-
-	//actually throw it!
-	src.visible_message("<span class='warning'>[src] has thrown [item].</span>")
-
-	if(!src.lastarea)
-		src.lastarea = get_area(src.loc)
-
+		visible_message(SPAN_WARNING("[src] has thrown [throwing]."))
 	newtonian_move(get_dir(target, src))
 
-	item.throw_at(target, throw_range, null, a_intent == INTENT_HELP? THROW_AT_IS_NEAT : NONE, src, force = throw_impulse)
+	throwing.throw_at(target, the_range, null, (a_intent == INTENT_HELP? THROW_AT_IS_NEAT : NONE) | (overhand? THROW_AT_OVERHAND : NONE), src, force = throw_impulse)
 
-/mob/living/proc/throw_item(obj/item/I, atom/target, overhand, neat = a_intent == INTENT_HELP, force = throw_impulse)
-
+/mob/living/throw_at(atom/target, range, speed, flags, atom/thrower, datum/callback/on_hit, datum/callback/on_land, force)
+	. = ..()
+	if(!.)
+		return
+	var/turf/T = get_turf(target)
+	add_attack_logs(thrower, src, "Thrown via grab to [COORD(T)]")

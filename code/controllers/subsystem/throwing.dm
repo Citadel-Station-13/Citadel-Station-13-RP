@@ -273,6 +273,8 @@ SUBSYSTEM_DEF(throwing)
 	return highest
 
 /datum/thrownthing/proc/can_hit(atom/A, bumping)
+	if((throw_flags & THROW_AT_OVERHAND) && (A != target))
+		return FALSE
 	if(A == thrownthing)
 		return FALSE
 	if(A == thrower)

@@ -228,10 +228,11 @@
 		return FALSE
 
 	if(QDELETED(src))
+		. = FALSE
 		CRASH("qdeleted thing being thrown around.")
 
 	if(!target)
-		return
+		return FALSE
 
 	return subsystem_throw(target, range, speed, flags, thrower, on_hit, on_land, force)
 
@@ -245,5 +246,8 @@
 // wrapper to be replaced
 /atom/movable/proc/throw_at_old(atom/target, range, speed, mob/thrower, spin = TRUE, datum/callback/callback)
 	return throw_at(target, range, speed, flags, thrower, callback, null, null)
+
+/atom/movable/proc/overhand_throw_delay(mob/user)
+	return 1 SECONDS
 
 #warn test throw force/speeds for mobs, pneumatic cannons, syringe guns

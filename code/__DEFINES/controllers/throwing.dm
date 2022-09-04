@@ -21,6 +21,8 @@
 #define THROW_AT_FORCE						(1<<9)
 /// don't do stuff like damage target zones/detecting user momentums
 #define THROW_AT_NO_USER_MODIFIERS			(1<<10)
+/// overhand - travel over stuff, don't hit anything unless we directly click on it
+#define THROW_AT_OVERHAND					(1<<11)
 
 DEFINE_BITFIELD(throw_flags, list(
 	BITFIELD(THROW_AT_DO_NOT_SPIN),
@@ -44,7 +46,6 @@ DEFINE_BITFIELD(throw_flags, list(
 /// Affects how much speed the mob is knocked back with.
 #define THROWNOBJ_KNOCKBACK_DIVISOR 2
 
-#warn mob holders lmao
 // should probably be in mob define files
 /// time it takes to prep an overhand throw for items, multiplied by weight class
 #define OVERHAND_THROW_ITEM_DELAY				(0.75 SECONDS)

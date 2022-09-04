@@ -1,4 +1,4 @@
-/mob/proc/throw_item(atom/target)
+/mob/proc/throw_item(obj/item/I, atom/target, overhand, neat = a_intent == INTENT_HELP, force = throw_impulse)
 	return
 
 /mob/proc/toggle_throw_mode()
@@ -21,3 +21,18 @@
 
 /mob/proc/throw_mode_check()
 	return in_throw_mode != THROW_MODE_OFF
+
+/mob/proc/throw_active_held_item(atom/target)
+	var/obj/item/held = get_active_held_item()
+	if(!held)
+		return
+	return throw_item(held, target)
+
+/mob/proc/can_throw_item(obj/item/I, atom/target)
+	if(incapacitated())
+		to_chat(src, SPAN_WARNING("You can't throw things right now!"))
+		return FALSE
+	return TRUE
+
+/mob/overhand_throw_delay(mob/user)
+	return OVERHAND_THROW_MOB_DELAY
