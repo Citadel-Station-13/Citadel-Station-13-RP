@@ -359,7 +359,7 @@
 
 /obj/item/organ/proc/handle_decay(dt)
 	var/multiplier = CONFIG_GET(number/organ_decay_multiplier)
-	take_damage(dt * decay_rate, TRUE)
+	take_damage(dt * decay_rate * multiplier, TRUE)
 
 /**
  * do we need to process?
