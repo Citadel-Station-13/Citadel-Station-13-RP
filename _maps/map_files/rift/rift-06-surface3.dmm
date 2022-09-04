@@ -3901,13 +3901,11 @@
 	charge = 15000;
 	cur_coils = 3
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
-	dir = 8
-	},
 /obj/structure/cable/cyan{
 	d2 = 4;
 	icon_state = "0-4"
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
 /turf/simulated/floor,
 /area/shuttle/civvie/general)
 "gz" = (
@@ -5962,7 +5960,9 @@
 /obj/structure/handrail{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
 /turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
 "ko" = (
@@ -7388,6 +7388,12 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfacethree)
+"mS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/shuttle/wall/voidcraft/green,
+/area/shuttle/civvie/general)
 "mT" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
@@ -8354,6 +8360,12 @@
 	},
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
+"oJ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/simulated/mineral/icerock,
+/area/rift/surfacebase/outside/outside3)
 "oK" = (
 /obj/machinery/door/airlock/maintenance/command,
 /obj/machinery/door/blast/shutters{
@@ -10774,9 +10786,6 @@
 	dir = 8
 	},
 /obj/machinery/power/terminal,
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
-	dir = 6
-	},
 /obj/structure/cable/cyan{
 	d1 = 1;
 	d2 = 4;
@@ -10785,6 +10794,9 @@
 /obj/structure/cable/green{
 	d2 = 8;
 	icon_state = "0-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
+	dir = 8
 	},
 /turf/simulated/floor,
 /area/shuttle/civvie/general)
@@ -15337,9 +15349,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "BW" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10
-	},
 /obj/structure/cable/cyan{
 	d1 = 2;
 	d2 = 8;
@@ -15354,6 +15363,10 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
 "BX" = (
@@ -15938,9 +15951,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/cargo)
 "Dg" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
-	},
 /obj/structure/cable/cyan{
 	d1 = 1;
 	d2 = 2;
@@ -15949,6 +15959,7 @@
 /obj/machinery/door/airlock/voidcraft{
 	name = "battery hatch"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor,
 /area/shuttle/civvie/general)
 "Dh" = (
@@ -16864,7 +16875,9 @@
 /obj/structure/handrail{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
 /turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
 "EV" = (
@@ -20496,7 +20509,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
 /turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
 "Mc" = (
@@ -20962,6 +20975,15 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/crew_quarters/cafeteria)
+"MU" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/simulated/floor/carpet/tealcarpet,
+/area/shuttle/civvie/general)
 "MV" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/light{
@@ -21027,6 +21049,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
+"Ne" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/shuttle/civvie/general)
 "Nf" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/structure/cable/green{
@@ -22913,7 +22941,9 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 5
+	},
 /turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
 "QC" = (
@@ -23248,6 +23278,17 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/cargo)
+"Rh" = (
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_tile/green,
+/area/shuttle/civvie/general)
 "Ri" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -26258,6 +26299,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/captain)
+"WK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_tile/green,
+/area/shuttle/civvie/general)
 "WL" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -40236,7 +40283,7 @@ lQ
 XZ
 oM
 kP
-oM
+WK
 Or
 oI
 Qk
@@ -40430,7 +40477,7 @@ jt
 Be
 Be
 XN
-Be
+Rh
 Jt
 Pq
 zd
@@ -40818,7 +40865,7 @@ Qs
 sh
 Gt
 rb
-Gt
+MU
 BW
 Dg
 tw
@@ -41013,8 +41060,8 @@ Mk
 mp
 Mk
 mp
-Mk
-Tx
+Ne
+mS
 UY
 VR
 tU
@@ -53290,7 +53337,7 @@ ct
 ct
 oh
 ov
-fq
+oJ
 fq
 fq
 fq

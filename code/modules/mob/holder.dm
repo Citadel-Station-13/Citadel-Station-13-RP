@@ -108,6 +108,11 @@
 		to_chat(held, SPAN_WARNING("You struggle free of [loc]."))
 		held.forceMove(get_turf(held))
 
+/obj/item/holder/can_equip(mob/M, slot, mob/user, flags)
+	if(M == held_mob)
+		return FALSE
+	return ..()
+
 //? throws completely pass to the mob
 /obj/item/holder/throw_resolve_actual()
 	return held_mob

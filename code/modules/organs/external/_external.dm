@@ -503,6 +503,8 @@ This function completely restores a damaged organ to perfect condition.
 		last_dam = brute_dam + burn_dam
 	if(germ_level)
 		return 1
+	if(length(wounds))
+		return TRUE
 	return 0
 
 /obj/item/organ/external/tick_life(dt)

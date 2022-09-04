@@ -393,6 +393,8 @@
 	return
 
 /obj/item/hand/update_icon(var/direction = 0)
+	if(!cards.len)
+		return		// about to be deleted
 	if(cards.len > 1)
 		name = "hand of cards"
 		desc = "Some playing cards."

@@ -84,7 +84,7 @@
 // Parameters: None
 // Description: AI requires the RCON wire to be intact to operate the SMES.
 /obj/machinery/power/smes/buildable/attack_ai()
-	if(RCon)
+	if(RCon || IsAdminGhost(usr))
 		..()
 	else // RCON wire cut
 		to_chat(usr, "<span class='warning'>Connection error: Destination Unreachable.</span>")
