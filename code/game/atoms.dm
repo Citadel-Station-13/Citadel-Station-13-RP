@@ -1005,12 +1005,13 @@
 /atom/proc/is_drainable()
 	return reagents && (reagents.reagents_holder_flags & DRAINABLE)
 
-/atom/proc/add_filter(name,priority,list/params)
+/atom/proc/add_filter(name, priority, list/params, update = TRUE)
 	LAZYINITLIST(filter_data)
 	var/list/copied_parameters = params.Copy()
 	copied_parameters["priority"] = priority
 	filter_data[name] = copied_parameters
-	update_filters()
+	if(update)
+		update_filters()
 
 /atom/proc/update_filters()
 	filters = null
@@ -1052,7 +1053,7 @@
 	if(filter_data && filter_data[name])
 		return filters[filter_data.Find(name)]
 
-/atom/proc/remove_filter(name_or_names)
+/atom/proc/remove_filter(name_or_names, update = TRUE)
 	if(!filter_data)
 		return
 
@@ -1061,7 +1062,8 @@
 	for(var/name in names)
 		if(filter_data[name])
 			filter_data -= name
-	update_filters()
+	if(update)
+		update_filters()
 
 /atom/proc/clear_filters()
 	filter_data = null

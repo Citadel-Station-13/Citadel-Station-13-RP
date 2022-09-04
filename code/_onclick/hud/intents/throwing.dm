@@ -11,6 +11,7 @@
 
 /atom/movable/screen/hud/update_icon_state()
 	. = ..()
+	remove_filter("overhand", FALSE)
 	switch(hud?.mymob?.in_throw_mode)
 		if(THROW_MODE_ON)
 			icon_state = "act_throw_on"
@@ -18,4 +19,9 @@
 			icon_state = "act_throw_off"
 		if(THROW_MODE_OVERHAND)
 			icon_state = "act_throw_on"
-			#warn filter
+			add_filter("overhand", 1, outline_filter(
+				1,
+				"#00cc00",
+				NONE
+			), FALSE)
+	update_filters()

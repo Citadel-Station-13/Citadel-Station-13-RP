@@ -197,8 +197,8 @@
 
 	var/list/mapobjs = list()
 
-	#warn impl
-	var/in_throw_mode = 0
+	/// whether or not we're prepared to throw stuff.
+	var/in_throw_mode = THROW_MODE_OFF
 
 	var/music_lastplayed = "null"
 

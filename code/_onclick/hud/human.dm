@@ -214,7 +214,6 @@
 		using.alpha = ui_alpha
 		src.hotkeybuttons += using
 
-	#warn oh fuck off why is this not a subtype
 	if(hud_data.has_throw)
 		mymob.throw_icon = new /atom/movable/screen/hud/throwmode(null, src)
 		src.hotkeybuttons += mymob.throw_icon
