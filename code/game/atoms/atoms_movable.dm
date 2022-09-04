@@ -44,7 +44,7 @@
 	var/buckle_lying
 	/// direction to set buckled mobs to. null to not do that.
 	var/buckle_dir
-	/// buckled mobs
+	/// buckled mobs, associated to their semantic mode if necessary
 	var/list/mob/buckled_mobs
 	/// restrained default unbuckle time (NOT TIME TO UN-RESTRAIN, this is time to UNBUCKLE from us)
 	var/buckle_restrained_resist_time = 2 MINUTES

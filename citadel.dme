@@ -2676,6 +2676,7 @@
 #include "code\modules\mob\mob_planes.dm"
 #include "code\modules\mob\mob_pull.dm"
 #include "code\modules\mob\mob_transformation_simple.dm"
+#include "code\modules\mob\mobility.dm"
 #include "code\modules\mob\perspective.dm"
 #include "code\modules\mob\say.dm"
 #include "code\modules\mob\say_vr.dm"

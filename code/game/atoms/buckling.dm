@@ -171,12 +171,19 @@
  */
 /atom/movable/proc/drag_drop_buckle_interaction(atom/A, mob/user)
 	set waitfor = FALSE
-	if(!ismob(A) || (A in buckled_mobs))
+	. = TRUE
+	if(!user.Adjacent(src))
 		return FALSE
 	var/mob/buckling = A
 	if(!buckle_allowed || (buckle_flags & BUCKLING_NO_USER_BUCKLE))
 		return FALSE
-	. = TRUE
+	// todo: refactor below
+	if(user.incapacitated())
+		return TRUE
+	// end
+	if(!ismob(A) || (A in buckled_mobs))
+		to_chat(user, SPAN_WARNING("[A] is already buckled to [src]!"))
+		return TRUE
 	user_buckle_mob(A, BUCKLE_OP_DEFAULT_INTERACTION, user)
 
 /**
@@ -185,6 +192,18 @@
  * @return TRUE if the calling proc should consider it as an interaction (aka don't do other click stuff)
  */
 /atom/movable/proc/click_unbuckle_interaction(mob/user)
+	set waitfor = FALSE
+	. = TRUE
+	if(!has_buckled_mobs())
+		return FALSE
+	// todo: refactor below
+	if(user.incapacitated())
+		return TRUE
+	// end
+	var/mob/unbuckling = buckled_mobs[1]
+	if(buckled_mobs.len > 1)
+		unbuckling = input(user, "Who to unbuckle?", "Unbuckle", unbuckling) as anything|null in buckled_mobs
+	user_unbuckle_mob(unbuckling, BUCKLE_OP_DEFAULT_INTERACTION, user, buckled_mobs[unbuckling])
 
 /**
  * called when someone tries to unbuckle something from us, whether by click or otherwise
@@ -192,9 +211,12 @@
  * ? SLEEPS ARE ALLOWED
  * ? Put user interaction in here.
  */
-/atom/movable/proc/user_unbuckle_mob(mob/M, flags, mob/user)
+/atom/movable/proc/user_unbuckle_mob(mob/M, flags, mob/user, semantic)
 	SHOULD_CALL_PARENT(TRUE)
-	#warn impl and check overrides
+	. = SEND_SIGNAL(src, COMSIG_MOVABLE_USER_UNBUCKLE_MOB, M, flags, user, semantic)
+	if(. & COMPONENT_BLOCK_BUCKLE_OPERATION)
+		return FALSE
+	return unbuckle_mob(M, flags, user, semantic)
 
 /**
  * called when someone tries to buckle something to us, whether by drag/drop interaction or otherwise
@@ -202,28 +224,57 @@
  * ? SLEEPS ARE ALLOWED
  * ? Put user interaction in here.
  */
-/atom/movable/proc/user_buckle_mob(mob/M, flags, mob/user)
+/atom/movable/proc/user_buckle_mob(mob/M, flags, mob/user, semantic)
 	SHOULD_CALL_PARENT(TRUE)
-	#warn impl and check overrides
+	. = SEND_SIGNAL(src, COMSIG_MOVABLE_USER_BUCKLE_MOB, M, flags, user, semantic)
+	if(. & COMPONENT_BLOCK_BUCKLE_OPERATION)
+		return FALSE
+	return buckle_mob(M, flags, user, semantic)
 
 /**
  * called to buckle something to us
  *
- * buckle_allowed will stop this unless you use the FORCE opflag.
+ * can_buckle_mob can stop this unless you use the FORCE opflag.
  * components can always stop this
  */
-/atom/movable/proc/buckle_mob(mob/M, flags, mob/user)
+/atom/movable/proc/buckle_mob(mob/M, flags, mob/user, semantic)
 	SHOULD_CALL_PARENT(TRUE)
 	#warn impl and check overrides
+
+/atom/movable/proc/_buckle_mob(mob/M, flags, mob/user, semantic)
+	PRIVATE_PROC(TRUE)
+	if(M.loc != loc)
+		M.forceMove(loc)
+	if(M.buckled)
+		CRASH("M already buckled?")
+	M.buckled = src
+	buckled_mobs[M] = semantic
+	M.setDir(dir)
+	M.update_canmove()
+	// todo: refactor the below
+	M.update_floating(M.Check_Dense_Object())
+	M.update_water()
 
 /**
  * called to unbuckle something from us
  *
  * components can always stop this
  */
-/atom/movable/proc/unbuckle_mob(mob/M, flags, mob/user)
+/atom/movable/proc/unbuckle_mob(mob/M, flags, mob/user, semantic)
 	SHOULD_CALL_PARENT(TRUE)
 	#warn impl and check overrides
+
+/atom/movable/proc/_unbuckle_mob(mob/M, flags, mob/user, semantic)
+	PRIVATE_PROC(TRUE)
+	if(M.buckled != src)
+		stack_trace("M buckled was not src.")
+	else
+		M.buckled = null
+	buckled_mobs -= M
+	M.update_canmove()
+	// todo: refactor the below
+	M.update_floating(M.Check_Dense_Object())
+	M.update_water()
 
 /**
  * can something buckle to us?
@@ -231,7 +282,7 @@
  *
  * ? Put user behavior in user buckle mob, not here. This however, WILL be rechecked.
  */
-/atom/movable/proc/can_buckle_mob(mob/M, flags, mob/user)
+/atom/movable/proc/can_buckle_mob(mob/M, flags, mob/user, semantic)
 	SHOULD_CALL_PARENT(TRUE)
 
 /**
@@ -240,19 +291,19 @@
  *
  * ? Put user behavior in user unbuckle mob, not here. This however, WILL be rechecked.
  */
-/atom/movable/proc/can_unbuckle_mob(mob/M, flags, mob/user)
+/atom/movable/proc/can_unbuckle_mob(mob/M, flags, mob/user, semantic)
 	SHOULD_CALL_PARENT(TRUE)
 
 /**
  * called when something is buckled to us
  */
-/atom/movable/proc/mob_buckled(mob/M, flags, mob/user)
+/atom/movable/proc/mob_buckled(mob/M, flags, mob/user, semantic)
 	SHOULD_CALL_PARENT(TRUE)
 
 /**
  * called when something is unbuckled from us
  */
-/atom/movable/proc/mob_unbuckled(mob/M, flags, mob/user)
+/atom/movable/proc/mob_unbuckled(mob/M, flags, mob/user, semantic)
 	SHOULD_CALL_PARENT(TRUE)
 
 /**
@@ -261,15 +312,18 @@
  * ? SLEEPS ARE ALLOWED
  * ? Put user interaction in here.
  */
-/atom/movable/proc/mob_resist_buckle(mob/M)
+/atom/movable/proc/mob_resist_buckle(mob/M, semantic)
 	SHOULD_CALL_PARENT(TRUE)
+
+#warn impl above
 
 /**
  * called to initiate buckle resist
  */
 /atom/movable/proc/resist_unbuckle_interaction(mob/M)
 	set waitfor = FALSE
-	mob_resist_buckle(M)
+	ASSERT(M in buckled_mobs)
+	mob_resist_buckle(M, buckled_mobs[M])
 
 /**
  * if we have buckled mobs
@@ -278,11 +332,17 @@
 	return length(buckled_mobs)
 
 /**
+ * get the semantic mode of a mob
+ */
+/atom/movable/proc/get_buckle_semantic(mob/M)
+	return buckled_mobs && buckled_mobs[M]
+
+/**
  * unbuckle all mobs
  */
 /atom/movable/proc/unbuckle_all_mobs(flags, mob/user)
 	for(var/mob/M in buckled_mobs)
-		unbuckle_mob(M, flags, user)
+		unbuckle_mob(M, flags, user, buckled_mobs[M])
 
 /**
  * called when a buckled mob tries to move
@@ -303,30 +363,37 @@
 		return
 	if(user.restrained())
 		return
-	to_chat(user, SPAN_NOTICE("You are unbuckled from [src] as your restraints are removed."))
 	unbuckle_mob(user, BUCKLE_OP_FORCE)
+	visible_message(SPAN_WARNING("[user] is freed from [src]!"))
 
 //! mob stuff
 
 /**
  * called when we're buckled to something.
  */
-/mob/proc/buckled(atom/movable/AM, flags, mob/user)
+/mob/proc/buckled(atom/movable/AM, flags, mob/user, semantic)
 	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_MOB_BUCKLED, AM, flags, user, semantic)
 
 /**
  * called when we're unbuckled from something
  */
-/mob/proc/unbuckled(atom/movable/AM, flags, mob/user)
+/mob/proc/unbuckled(atom/movable/AM, flags, mob/user, esmantic)
 	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_MOB_UNBUCKLED, AM, flags, user, semantic)
 
 /**
  * can we buckle to something?
  *
  * we get final say
  */
-/mob/proc/can_buckle(atom/movable/AM, flags, mob/user, movable_opinion)
+/mob/proc/can_buckle(atom/movable/AM, flags, mob/user, semantic, movable_opinion)
 	SHOULD_CALL_PARENT(TRUE)
+	. = SEND_SIGNAL(src, COMSIG_MOB_CAN_BUCKLE, AM, flags, user, semantic, movable_opinion)
+	if(. & COMPONENT_BLOCK_BUCKLE_OPERATION)
+		return FALSE
+	else if(. & COMPONENT_FORCE_BUCKLE_OPERATION)
+		return TRUE
 	return movable_opinion
 
 /**
@@ -334,12 +401,19 @@
  *
  * we get final say
  */
-/mob/proc/can_unbuckle(atom/movable/AM, flags, mob/user, movable_opinion)
+/mob/proc/can_unbuckle(atom/movable/AM, flags, mob/user, semantic, movable_opinion)
 	SHOULD_CALL_PARENT(TRUE)
+	. = SEND_SIGNAL(src, COMSIG_MOB_CAN_UNBUCKLE, AM, flags, user, semantic, movable_opinion)
+	if(. & COMPONENT_BLOCK_BUCKLE_OPERATION)
+		return FALSE
+	else if(. & COMPONENT_FORCE_BUCKLE_OPERATION)
+		return TRUE
 	return movable_opinion
 
 /**
  * call to try to resist out of a buckle
  */
 /mob/proc/resist_buckle()
-	#warn impl
+	set waitfor = FALSE
+	. = !!buckled
+	buckled.resist_unbuckle_interaction(src)

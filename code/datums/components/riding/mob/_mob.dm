@@ -11,6 +11,11 @@
 	var/offhands_needed_base = 0
 	/// offhands required on us per mob buckled
 	var/offhands_needed_per = 0
+	/// check ridden offhands the complicated way by tallying max per semantic
+	var/complex_ridden_offhands_calculation = FALSE
+
+/datum/component/riding_filter/mob/proc/ridden_offhands_needed(semantic)
+	return offhands_needed_per
 
 /datum/component/riding_filter/mob/check_offhands(mob/rider, unbuckling)
 	// we do our checks first, as they're cheaper in cases of riders > 1
@@ -20,6 +25,7 @@
 	var/list/obj/item/offhand/riding/offhands = get_offhands_of_rider(M)
 	var/has = length(offhands)
 	var/needed = offhands_needed_base + offhands_needed_per * length(M.buckled_mobs)
+	#warn add complex ridden offhands calculation
 	if(!needed)	// none needed
 		for(var/i in 1 to has)
 			var/obj/item/offhand/riding/offhand = offhands[i]

@@ -68,25 +68,25 @@
 		COMSIG_MOVABLE_MOB_UNBUCKLED
 	))
 
-/datum/component/riding_filter/proc/signal_hook_user_buckle(atom/movable/source, mob/M, flags, mob/user)
+/datum/component/riding_filter/proc/signal_hook_user_buckle(atom/movable/source, mob/M, flags, mob/user, semantic)
 	SIGNAL_HANDLER_DOES_SLEEP
-	return check_user_mount(M, flags, user)? COMPONENT_FORCE_BUCKLE_OPERATION : COMPONENT_BLOCK_BUCKLE_OPERATION
+	return check_user_mount(M, flags, user, semantic)? COMPONENT_FORCE_BUCKLE_OPERATION : COMPONENT_BLOCK_BUCKLE_OPERATION
 
-/datum/component/riding_filter/proc/signal_hook_pre_buckle(atom/movable/source, mob/M, flags, mob/user)
+/datum/component/riding_filter/proc/signal_hook_pre_buckle(atom/movable/source, mob/M, flags, mob/user, semantic)
 	SIGNAL_HANDLER
-	return on_mount_attempt(M, flags, user)? COMPONENT_FORCE_BUCKLE_OPERATION : COMPONENT_BLOCK_BUCKLE_OPERATION
+	return on_mount_attempt(M, flags, user, semantic)? COMPONENT_FORCE_BUCKLE_OPERATION : COMPONENT_BLOCK_BUCKLE_OPERATION
 
-/datum/component/riding_filter/proc/signal_hook_post_buckle(atom/movable/source, mob/M, flags, mob/user)
+/datum/component/riding_filter/proc/signal_hook_post_buckle(atom/movable/source, mob/M, flags, mob/user, semantic)
 	SIGNAL_HANDLER
 	var/datum/component/riding_handler/handler = handler_instantiated()
 	if(!handler)
 		// don't care
 		return
-	post_buckle_handler_tweak(handler, M, flags, user)
+	post_buckle_handler_tweak(handler, M, flags, user, semantic)
 
-/datum/component/riding_filter/proc/signal_hook_mob_unbuckle(atom/movable/source, mob/M, flags, mob/user)
+/datum/component/riding_filter/proc/signal_hook_mob_unbuckle(atom/movable/source, mob/M, flags, mob/user, semantic)
 	SIGNAL_HANDLER
-	cleanup_rider(user)
+	cleanup_rider(user, semantic)
 
 /**
  * if implemented (set `implements_can_buckle_hints` to TRUE), allows us to hint early
@@ -94,26 +94,26 @@
  *
  * it is good practice, but not required, to do this.
  */
-/datum/component/riding_filter/proc/signal_hook_can_buckle(atom/movable/source, mob/M, flags, mob/user)
+/datum/component/riding_filter/proc/signal_hook_can_buckle(atom/movable/source, mob/M, flags, mob/user, semantic)
 	SIGNAL_HANDLER
-	return check_mount_attempt(M, flags, user)? COMPONENT_FORCE_BUCKLE_OPERATION : COMPONENT_BLOCK_BUCKLE_OPERATION
+	return check_mount_attempt(M, flags, user, semantic)? COMPONENT_FORCE_BUCKLE_OPERATION : COMPONENT_BLOCK_BUCKLE_OPERATION
 
 /**
  * called on buckling process right before point of no return
  * overrides atom opinion.
  */
-/datum/component/riding_filter/proc/on_mount_attempt(mob/M, buckle_flags, mob/user)
-	if(!check_mount_attempt(M, buckle_flags, user))
+/datum/component/riding_filter/proc/on_mount_attempt(mob/M, buckle_flags, mob/user, semantic)
+	if(!check_mount_attempt(M, buckle_flags, user, semantic))
 		return FALSE
 	. = TRUE
-	var/datum/component/riding_handler/handler = create_riding_handler(M, buckle_flags, user)
-	pre_buckle_handler_tweak(handler, M, buckle_flags, user)
+	var/datum/component/riding_handler/handler = create_riding_handler(M, buckle_flags, user, semantic)
+	pre_buckle_handler_tweak(handler, M, buckle_flags, user, semantic)
 
 /**
  * checks if we should allow someone to mount.
  * overrides atom opinion.
  */
-/datum/component/riding_filter/proc/check_mount_attempt(mob/M, buckle_flags, mob/user)
+/datum/component/riding_filter/proc/check_mount_attempt(mob/M, buckle_flags, mob/user, semantic)
 	if(offhands_needed_rider)
 		var/list/obj/item/offhand/riding/created = list()
 		for(var/i in (offhand_requirements_are_rigid? offhands_needed_rider : (min(M.get_number_of_hands(), offhands_needed_rider))))
@@ -133,25 +133,25 @@
  * checks if we should allow an entity to buckle another entity to us
  * overrides atom opinion
  */
-/datum/componnet/riding_filter/proc/check_user_mount(mob/M, buckle_flags, mob/user)
+/datum/componnet/riding_filter/proc/check_user_mount(mob/M, buckle_flags, mob/user, semantic)
 	return TRUE
 
-/datum/component/riding_filter/proc/create_riding_handler(mob/M, buckle_flags, mob/user, ...)
+/datum/component/riding_filter/proc/create_riding_handler(mob/M, buckle_flags, mob/user, semantic, ...)
 	return handler_instantiated() || parent.LoadComponent(handler_typepath)
 
 /datum/component/riding_filter/proc/handler_instantiated()
 	RETURN_TYPE(/datum/component/riding_handler)
 	return LoadComponent(/datum/component/riding_handler)
 
-/datum/component/riding_filter/proc/pre_buckle_handler_tweak(datum/component/riding_handler/handler, mob/M, flags, mob/user, ...)
+/datum/component/riding_filter/proc/pre_buckle_handler_tweak(datum/component/riding_handler/handler, mob/M, flags, mob/user, semantic, ...)
 	return
 
-/datum/component/riding_filter/proc/post_buckle_handler_tweak(datum/component/riding_handler/handler, mob/M, flags, mob/user, ...)
+/datum/component/riding_filter/proc/post_buckle_handler_tweak(datum/component/riding_handler/handler, mob/M, flags, mob/user, semantic, ...)
 	return
 
-/datum/component/riding_filter/proc/cleanup_rider(mob/rider)
+/datum/component/riding_filter/proc/cleanup_rider(mob/rider, semantic)
 	cleanup_rider_offhands(rider)
-	check_offhands(rider, unbuckling)
+	check_offhands(rider, TRUE)
 
 /**
  * ensures offhands required are equipped
@@ -170,19 +170,22 @@
 		// verify their offhands are there
 		var/buckled = rider in AM.buckled_mobs
 		// if buckled and not enough
-		if(buckled && (length(get_offhands_of_rider(rider)) < offhands_needed_rider))
+		if(buckled && (length(get_offhands_of_rider(rider)) < rider_offhands_needed(AM.buckled_mobs[rider])))
 			// kick off
 			AM.unbuckle_mob(rider, BUCKLE_OP_FORCE)
 	else
 		// verify all offhands are there
 		for(var/mob/rider in AM.buckled_mobs)
-			if(length(get_offhands_of_rider(rider)) < offhands_needed_rider)
+			if(length(get_offhands_of_rider(rider)) < rider_offhands_needed(AM.buckled_mobs[rider]))
 				// kick off if not enough
 				rider.visible_message(
 					SPAN_NOTICE("[rider] slides off [AM]."),
 					SPAN_NOTICE("You slide off [AM].")
 				)
 				AM.unbuckle_mob(rider, BUCKLE_OP_FORCE)
+
+/datum/component/riding_filter/proc/rider_offhands_needed(semantic)
+	return offhands_needed_rider
 
 /datum/component/riding_filter/proc/get_offhands_of_rider(mob/rider)
 	RETURN_TYPE(/list)

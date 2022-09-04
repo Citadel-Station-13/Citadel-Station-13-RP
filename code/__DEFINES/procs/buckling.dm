@@ -12,6 +12,11 @@
 /// don't make ANY feedback
 #define BUCKLE_OP_SILENT						(BUCKLE_OP_SUPPRESS_WARNING | BUCKLE_OP_SUPPRESS_SOUND)
 
-//! just defines used for piggybacking vs firemanning
-#define HUMAN_CARRY_FIREMAN						1
-#define HUMAN_CARRY_PIGGYBACK
+//! semantic argument passed into buckling procs
+//! these are often specific to a use case.
+//! if provided, it'll be stored in buckle_mobs.
+
+/// attempt to carry piggyback someone
+#define BUCKLE_SEMANTIC_HUMAN_PIGGYBACK				"piggyback"
+/// attempt to carry fireman someone
+#define BUCKLE_SEMANTIC_HUMAN_FIREMAN				"fireman"

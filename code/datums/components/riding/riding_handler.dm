@@ -85,13 +85,13 @@
 		COMSIG_ATOM_RELAYMOVE_FROM_BUCKLED
 	))
 
-/datum/component/riding_handler/proc/signal_hook_mob_buckled(atom/movable/source, mob/M, buckle_flags, mob/user)
+/datum/component/riding_handler/proc/signal_hook_mob_buckled(atom/movable/source, mob/M, buckle_flags, mob/user, semantic)
 	SIGNAL_HANDLER
-	on_rider_buckled(M)
+	on_rider_buckled(M, semantic)
 
-/datum/component/riding_handler/proc/signal_hook_mob_unbuckled(atom/movable/source, mob/M, buckle_flags, mob/user)
+/datum/component/riding_handler/proc/signal_hook_mob_unbuckled(atom/movable/source, mob/M, buckle_flags, mob/user, semantic)
 	SIGNAL_HANDLER
-	on_rider_unbuckled(M)
+	on_rider_unbuckled(M, semantic)
 	if(!source.has_buckled_mobs() && (riding_handler_flags & CF_RIDING_HANDLER_EPHEMERAL))
 		qdel(src)
 
@@ -127,17 +127,17 @@
 		AM.pixel_x = offset_vehicle[1]
 		AM.pixel_y = offset_vehicle[2]
 
-/datum/component/riding_handler/proc/on_rider_buckled(mob/rider)
-	apply_rider(rider)
+/datum/component/riding_handler/proc/on_rider_buckled(mob/rider, semantic)
+	apply_rider(rider, semantic)
 
-/datum/component/riding_handler/proc/on_rider_unbuckled(mob/rider)
-	reset_rider(rider)
+/datum/component/riding_handler/proc/on_rider_unbuckled(mob/rider, semantic)
+	reset_rider(rider, semantic)
 
-/datum/component/riding_handler/proc/reset_rider(mob/rider)
+/datum/component/riding_handler/proc/reset_rider(mob/rider, semantic)
 	rider.reset_plane_and_layer()
 	rider.reset_pixel_offsets()
 
-/datum/component/riding_handler/proc/apply_rider(mob/rider)
+/datum/component/riding_handler/proc/apply_rider(mob/rider, semantic)
 	var/atom/movable/AM = parent
 	var/position = AM.buckled_mobs.Find(rider)
 	apply_rider_layer(rider, M.dir, position)
@@ -168,7 +168,7 @@
  * returns a layer **offset** for a rider to be set to.
  * riders will default to our plane and layer. this is added onto layer.
  */
-/datum/component/riding_handler/proc/rider_layer_offset(dir, index = 1)
+/datum/component/riding_handler/proc/rider_layer_offset(dir, index = 1, semantic)
 	if(isnum(offset_layer))
 		return offset_layer
 	var/indexed = islist(offset_layer[1])
@@ -197,7 +197,7 @@
 /**
  * returns list(x, y) of pixel offsets for a rider
  */
-/datum/component/riding_handler/proc/rider_pixel_offsets(dir, index = 1)
+/datum/component/riding_handler/proc/rider_pixel_offsets(dir, index = 1, semantic)
 	RETURN_TYPE(/list)
 	// format: x, y
 	if(!islist(offset_pixel[1]))
@@ -228,7 +228,7 @@
 /**
  * returns what dir riders should be set to
  */
-/datum/component/riding_handler/proc/rider_dir_offset(dir, index = 1)
+/datum/component/riding_handler/proc/rider_dir_offset(dir, index = 1, semantic)
 	return dir
 
 /datum/component/riding_handler/proc/signal_hook_handle_relaymove(datum/source, mob/M, dir)
@@ -319,6 +319,7 @@
  * handles checks/updates when we move
  */
 /datum/component/riding_handler/proc/update_riders_on_move(atom/old_loc, dir)
+	var/atom/movable/AM = parent
 	// first check ridden mob
 	if(!check_ridden(parent))
 		// kick everyone off
@@ -326,14 +327,14 @@
 			force_dismount(M)
 		return
 	for(var/mob/M as anything in AM.buckled_mobs)
-		if(!ride_check(M))
+		if(!ride_check(M, AM.buckled_mobs[M]))
 			continue	// don't do rest of logic
 
 /**
  * checks if a person can stay on us. if not, they'll be kicked off by ride_check()
  */
-/datum/component/riding_handler/proc/check_rider(mob/M)
-	return check_entity(M, rider_check_flags)
+/datum/component/riding_handler/proc/check_rider(mob/M, semantic)
+	return check_entity(M, rider_check_flags, semantic)
 
 /**
  * checks if the vehicle is usable right now.
@@ -345,9 +346,9 @@
 /**
  * checks an atom of riding flags
  */
-/datum/component/riding_handler/proc/check_entity(atom/movable/AM, flags)
+/datum/component/riding_handler/proc/check_entity(atom/movable/AM, flags, semantic)
 	var/mob/M = ismob(AM) && AM
-	if(M && flags & CF_RIDING_CHECK_ARMS))
+	if(M && flags & CF_RIDING_CHECK_ARMS)
 		// unimplemented
 		pass()
 		// unimplemented
@@ -365,15 +366,15 @@
  */
 /datum/component/riding_handler/proc/ride_check(mob/M)
 	var/atom/movable/AM = parent
-	if(!check_rider(M))
-		force_dismonut(M)
+	if(!check_rider(M, AM.buckled_mobs[M]))
+		force_dismount(M, AM.buclked_mobs[M])
 		return FALSE
 	return TRUE
 
 /**
  * kicks off a rider
  */
-/datum/component/riding_handler/proc/force_dismount(mob/M)
+/datum/component/riding_handler/proc/force_dismount(mob/M, semantic)
 	var/atom/movable/AM = parent
 	AM.visible_message(
 		SPAN_WARNING("[M] falls off of [AM]!"),

@@ -2,30 +2,16 @@
 	expected_typepath = /mob/living/carbon/human
 	handler_typepath = /datum/component/riding_handler/mob/human
 
-	#warn how to differentiate modes on filter?
+
 
 /datum/component/riding_handler/mob/human
 	expected_typepath = /mob/living/carbon/human
 	riding_handler_flags = CF_RIDING_HANDLER_EPHEMERAL
 
-	/// carry mode
-	var/list/modes = list()
 
-/datum/component/riding_handler/mob/human/on_rider_unbuckled(mob/rider)
-	. = ..()
-	// unref
-	modes -= rider
+#warn finish
 
-/datum/component/riding_handler/mob/human/on_rider_buckled(mob/rider)
-	. = ..()
-	#warn impl
-
-/datum/component/riding_handler/mob/human/proc/initiate_piggyback(mob/living/carbon/human/H)
-
-/datum/component/riding_handler/mob/human/proc/initiate_fireman(mob/living/carbon/human/H)
-
-
-
+#warn we can't perfectly do this yet so add a hook that changes buckle_lying on the mob
 
 
 

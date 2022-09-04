@@ -248,34 +248,6 @@
 /mob/living/silicon/robot/MouseDroppedOnLegacy(mob/living/M, mob/living/user) //Prevention for forced relocation caused by can_buckle. Base proc has no other use.
 	return
 
-/mob/living/silicon/robot/attack_hand(mob/user as mob)
-	if(LAZYLEN(buckled_mobs))
-		//We're getting off!
-		if(user in buckled_mobs)
-			riding_datum.force_dismount(user)
-		//We're kicking everyone off!
-		if(user == src)
-			for(var/rider in buckled_mobs)
-				riding_datum.force_dismount(rider)
-	else
-		. = ..()
-
-/mob/living/silicon/robot/proc/robot_mount(var/mob/living/M in living_mobs(1))
-	set name = "Robot Mount/Dismount"
-	set category = "Abilities"
-	set desc = "Let people ride on you."
-
-	if(LAZYLEN(buckled_mobs))
-		for(var/rider in buckled_mobs)
-			riding_datum.force_dismount(rider)
-		return
-	if (stat != CONSCIOUS)
-		return
-	if(!can_buckle || !istype(M) || !M.Adjacent(src) || M.buckled)
-		return
-	if(buckle_mob(M))
-		visible_message("<span class='notice'>[M] starts riding [name]!</span>")
-
 /mob/living/silicon/robot/onTransitZ(old_z, new_z)
 	if(shell)
 		if(deployed && GLOB.using_map.ai_shell_restricted && !(new_z in GLOB.using_map.ai_shell_allowed_levels))
