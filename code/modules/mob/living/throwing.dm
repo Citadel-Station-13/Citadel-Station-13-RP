@@ -30,6 +30,7 @@
 	//! stupid shit
 	var/the_range = throwing.throw_range
 	if(ismob(throwing))
+		var/mob/M = throwing
 		the_range = round(M.throw_range * min(mob_size / M.mob_size, 1))
 	//! stupid shit end, refactor grabs when?
 
