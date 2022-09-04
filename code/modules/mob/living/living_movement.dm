@@ -300,7 +300,7 @@
 	// get effective force/resists
 	var/resist = AM.move_resist
 	var/atom/movable/pushing = AM
-	var/mob/M = ismob(AM) && AM
+	var/mob/M = ismob(AM)? AM : null
 
 	// redirect forces to buckled if it prevents move
 	if(M?.buckled && !M.buckled.buckle_movable)
