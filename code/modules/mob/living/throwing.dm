@@ -1,5 +1,5 @@
 //! shitcode in this file oop
-/mob/living/proc/throw_item(obj/item/I, atom/target, overhand, neat = a_intent == INTENT_HELP, force = throw_impulse, overhand = in_throw_mode == THROW_MODE_OVERHAND)
+/mob/living/throw_item(obj/item/I, atom/target, overhand, neat = a_intent == INTENT_HELP, force = throw_impulse, overhand = in_throw_mode == THROW_MODE_OVERHAND)
 	if(!I)
 		return FALSE
 	throw_mode_off()

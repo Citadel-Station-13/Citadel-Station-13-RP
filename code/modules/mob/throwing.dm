@@ -1,4 +1,4 @@
-/mob/proc/throw_item(obj/item/I, atom/target, overhand, neat = a_intent == INTENT_HELP, force = throw_impulse)
+/mob/proc/throw_item(obj/item/I, atom/target, overhand, neat = a_intent == INTENT_HELP, force = THROW_FORCE_DEFAULT)
 	return
 
 /mob/proc/toggle_throw_mode()

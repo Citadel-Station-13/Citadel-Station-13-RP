@@ -407,7 +407,8 @@
 
 /obj/item/throw_impact(atom/A, datum/thrownthing/TT)
 	. = ..()
-	if(!QDELETED(A))
+	if(QDELETED(A))
+		return
 /*
 		if(get_temperature() && isliving(hit_atom))
 			var/mob/living/L = hit_atom

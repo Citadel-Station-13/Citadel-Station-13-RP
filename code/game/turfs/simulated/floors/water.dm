@@ -358,12 +358,14 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 			return water_breath
 	return return_air() // Otherwise their head is above the water, so get the air from the atmosphere instead.
 
+//! this entire file needs refactored, jesus christ
 /turf/simulated/floor/water/blood/Entered(atom/movable/AM)
 	..()
 	if(blood_wade(AM))
 		START_PROCESSING(SSobj, src)
 
-/turf/simulated/floor/water/blood/hitby(atom/movable/AM)
+/turf/simulated/floor/water/blood/throw_landed(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	if(blood_wade(AM))
 		START_PROCESSING(SSobj, src)
 

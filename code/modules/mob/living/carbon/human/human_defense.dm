@@ -378,7 +378,6 @@ emp_act
 
 		var/zone
 		if (istype(TT.thrower, /mob/living))
-			var/mob/living/L = TT.thrower
 			zone = check_zone(TT.target_zone)
 		else
 			zone = ran_zone(BP_TORSO,75)	//Hits a random part of the body, geared towards the chest
