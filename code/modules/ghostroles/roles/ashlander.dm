@@ -1,8 +1,8 @@
 /datum/ghostrole/ashlander
 	name = "Ashlander"
 	assigned_role = "Ashlander"
-	desc = "You are an Ashlander. Select 'Scorian' from the race options. Ashlanders are all permadeath characters. They have gray skin of varying hues, red eyes, and - typically - white, black, or brown hair."
-	spawntext = "<span class='warning'>The nomadic Ashlanders are a <b>neutral</b> party.</span> Your tribe still worships the Buried Ones. The wastes are sacred ground, its monsters a blessed bounty. You would never willingly leave your homeland behind.	You have seen lights in the distance - falling from the heavens, and returning. They foreshadow the arrival of outsiders to your domain. Ensure your tribe remains protected at all costs."
+	desc = "You are an Ashlander! An old and storied race of subterranean xenos."
+	spawntext = "<span class='warning'>The nomadic Ashlanders are a <b>neutral</b> party. The Ashlander race (Scorian), is selected by default. If you accidentally swap, make sure to change it back. <b>Ashlanders are all permadeath characters.</b> They have gray skin of varying hues, red eyes, and - typically - white, black, or brown hair. These options are selectable through the appearance menu, directly below the race block, and above hairstyles.</span> Your tribe still worships the Buried Ones. The wastes are sacred ground, its monsters a blessed bounty. You would never willingly leave your homeland behind.	You have seen lights in the distance - falling from the heavens, and returning. They foreshadow the arrival of outsiders to your domain. Ensure your tribe remains protected at all costs."
 	instantiator = /datum/ghostrole_instantiator/human/random/species/ashlander
 
 /datum/ghostrole/ashlander/Instantiate(client/C, atom/loc, list/params)
@@ -68,7 +68,7 @@
 		if("exile")
 			outfit.uniform = /obj/item/clothing/under/tribal_tunic
 			outfit.belt = /obj/item/material/knife/tacknife/combatknife/bone
-			outfit.back = /obj/item/kinetic_crusher/glaive/bone
+			outfit.back = /obj/item/bo_staff
 	return outfit
 
 /obj/structure/ghost_role_spawner/ashlander

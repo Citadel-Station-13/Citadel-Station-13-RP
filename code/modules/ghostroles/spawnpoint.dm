@@ -102,7 +102,12 @@ GLOBAL_LIST_EMPTY(ghostrole_spawnpoints)
 			stack_trace("Couldn't find role. Deleting self.")
 			qdel(src)
 		return
-	role.AttemptSpawn(user.client, src)
+	else
+		var/choice = input(user, "Are you certain you wish to activate this pod?", "Control Pod") as null|anything in list("Yes", "No")
+		if(!choice || choice == "No")
+			return
+		else
+			role.AttemptSpawn(user.client, src)
 
 /datum/component/ghostrole_spawnpoint/vv_edit_var(var_name, var_value, massedit)
 	. = ..()
