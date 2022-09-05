@@ -242,10 +242,10 @@
 	. = fragment
 	if(object_type)
 		for(var/atom/A as anything in entities)
-			fragment[++fragment.len] = list("x" = A.x, "y" = A.y, "d" = Serialize(A))
+			fragment[++fragment.len] = list("x" = A.x, "y" = A.y, "d" = SerializeAtom(A))
 	else
 		for(var/atom/A as anything in entities)
-			fragment[++fragment.len] = list("x" = A.x, "y" = A.y, "d" = Serialize(a), "t" = A.type)
+			fragment[++fragment.len] = list("x" = A.x, "y" = A.y, "d" = SerializeAtom(A), "t" = A.type)
 
 /**
  * packs everything into a string for SQL
@@ -267,7 +267,7 @@
 /datum/mass_persistence_handler/proc/GetObjectsOnLevel(z, list/blackboard)
 	return NOT_IMPLEMENTED
 
-/datum/mass_persistence_handler/proc/Serialize(atom/A)
+/datum/mass_persistence_handler/proc/SerializeAtom(atom/A)
 	RETURN_TYPE(/list)
 	return list()
 
