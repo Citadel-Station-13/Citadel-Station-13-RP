@@ -228,7 +228,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%connection_log` (
 
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_keyed_strings` (
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified` datetime NOT NULL,
   `key` varchar(64) NOT NULL,
   `value` MEDIUMTEXT NULL,
   `group` varchar(64) NULL,
@@ -259,7 +259,7 @@ PRIMARY KEY(`handler_id`, `level_id`)
 
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_dynamic_atoms` (
   `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created` datetime NOT NULL,
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `x` INT(8) NOT NULL,
   `y` INT(8) NOT NULL,
@@ -273,10 +273,20 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_dynamic_atoms` (
 
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_keyed_atoms` (
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified` datetime NOT NULL,
   `map` varchar(64) NULL,
   `key` varchar(64) NOT NULL,
   `json` MEDIUMTEXT NOT NULL,
   `revision` INT(11) NOT NULL,
   PRIMARY KEY(`key`, `map`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_datums` (
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified` datetime NOT NULL,
+  `datum_key` varchar(64) NOT NULL,
+  `json` MEDIUMTEXT NOT NULL,
+  `revision` INT(11) NOT NULL,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY(`datum_key`, `id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATe=utf8mb4_general_ci;

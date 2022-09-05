@@ -35,6 +35,8 @@
 #define ATOM_PERSIST_SURVIVE_STATIC_OFFMAP			(1<<5)
 /// for all persisting objects, get_turf(src) for z detection. can get really weird, use sparingly.
 #define ATOM_PERSIST_UNWRAPS_ONTO_TURF				(1<<6)
+/// for static persisting objects, we use a global ID, and are therefore map agnostic. make sure you know what you are doing.
+#define ATOM_PERSIST_STATIC_IS_MAP_AGNOSTIC			(1<<7)
 
 
 #warn define bitfields
@@ -48,6 +50,12 @@
 //! Object Storage System - Location Mapped - SQL flags
 /// we deleted this level, pretend it's gone
 #define MASS_PERSISTENCE_LEVEL_IS_DELETED										(1<<0)
+
+//! datum persistence datum types.
+//! changing these results in data loss.
+//! don't do it unless you're intentionally throwing out old data from the design schemas of your objects.
+
+// currently none
 
 //! Misc/Legacy/Unrelated/Don't care/Didn't ask/Ratio'd
 

@@ -63,6 +63,8 @@
 	if(!uid)
 		return
 
+	#warn ATOM_PERSIST_STATIC_IS_MAP_AGNOSTIC check
+
 	var/map_id = SSpersistence._map_id_of_z(persist_flgas & ATOM_PERSIST_UNWRAPS_ONTO_TURF? get_z(src) : z)
 
 	if(map_id && persist_static_loaded_map_id)

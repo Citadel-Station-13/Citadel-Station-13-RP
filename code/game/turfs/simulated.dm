@@ -76,7 +76,7 @@
 /turf/simulated/proc/update_dirt()
 	if(can_dirty)
 		dirt = min(dirt + 1, 101)
-		set_dirt_object((dirt - 50) * 5
+		set_dirt_object((dirt - 50) * 5)
 
 /turf/simulated/Entered(atom/A, atom/OL)
 	..()

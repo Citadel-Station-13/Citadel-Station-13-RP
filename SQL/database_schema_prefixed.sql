@@ -224,9 +224,9 @@ CREATE TABLE IF NOT EXISTS `rp_connection_log` (
 
 CREATE TABLE IF NOT EXISTS `rp_persist_keyed_strings` (
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified` datetime NOT NULL,
   `key` varchar(64) NOT NULL,
-  `value` TEXT NULL,
+  `value` MEDIUMTEXT NULL,
   `group` varchar(64) NULL,
   `revision` INT(11) NOT NULL,
   PRIMARY KEY(`key`, `group`)
@@ -237,28 +237,52 @@ CREATE TABLE IF NOT EXISTS `rp_persist_mass_atoms` (
   `handler_id` varchar(64) NOT NULL,
   `level_id` varchar(64) NOT NULL,
   `fragment` INT(3) NOT NULL,
-  `data` TEXT NOT NULL
+  `data` MEDIUMTEXT NOT NULL,
+  `version` INT(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS `rp_persist_mass_levels` (
+  `saved` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `handler_id` varchar(64) NOT NULL,
+  `level_id` varchar(64) NOT NULL,
+  `revision` INT(11) NOT NULL,
+  `flags` INT(24) NOT NULL,
+  `width` INT(4) NOT NULL,
+  `height` INT(4) NOT NULL,
+  `fragments` INT(4) NOT NULL,
+PRIMARY KEY(`handler_id`, `level_id`)
+) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS `rp_persist_dynamic_atoms` (
   `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created` datetime NOT NULL,
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `x` INT(8) NOT NULL,
   `y` INT(8) NOT NULL,
   `level_id` varchar(64) NOT NULL,
   `type` varchar(64) NOT NULL,
-  `json` TEXT NOT NULL,
+  `json` MEDIUMTEXT NOT NULL,
+  `flags` INT(24) NOT NULL,
   `revision` INT(11) NOT NULL,
   PRIMARY KEY(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS `rp_persist_keyed_atoms` (
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified` datetime NOT NULL,
   `map` varchar(64) NULL,
   `key` varchar(64) NOT NULL,
-  `json` TEXT NOT NULL,
+  `json` MEDIUMTEXT NOT NULL,
   `revision` INT(11) NOT NULL,
   PRIMARY KEY(`key`, `map`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS `rp_persist_datums` (
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified` datetime NOT NULL,
+  `datum_key` varchar(64) NOT NULL,
+  `json` MEDIUMTEXT NOT NULL,
+  `revision` INT(11) NOT NULL,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY(`datum_key`, `id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATe=utf8mb4_general_ci;
