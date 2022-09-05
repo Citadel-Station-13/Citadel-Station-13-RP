@@ -68,20 +68,23 @@
 
 	to_chat(user, "[icon2html(thing = src, target = user)] <span class='notice'>The scanner beeps and displays a readout.</span>")
 	var/list/results = list()
-	for(var/ore_type in metals)
-		var/result = "no sign"
-
-		if(exact_amount)
-			result = "- [metals[ore_type]] of [ore_type]"
-		else
-			switch(metals[ore_type])
-				if(1 to 25)
-					result = "trace amounts of [ore_type]"
-				if(26 to 75)
-					result = "significant amounts of [ore_type]"
-				if(76 to INFINITY)
-					result = "huge quantities of [ore_type]"
-		results += result
+	if(length(metals))
+		for(var/ore_type in metals)
+			var/result = "no sign"
+	
+			if(exact_amount)
+				result = "- [metals[ore_type]] of [ore_type]"
+			else
+				switch(metals[ore_type])
+					if(1 to 25)
+						result = "trace amounts of [ore_type]"
+					if(26 to 75)
+						result = "significant amounts of [ore_type]"
+					if(76 to INFINITY)
+						result = "huge quantities of [ore_type]"
+			results += result
+	else
+		results += "No underground ores detected in specified scan range."
 	to_chat(user, results.Join("<br>"))
 
 
