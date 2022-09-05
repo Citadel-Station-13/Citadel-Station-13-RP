@@ -21,10 +21,15 @@
 	throw_speed = 7
 	throw_range = 15
 	matter = list(MAT_STEEL = 10)
-	var/colour = "black"	//what colour the ink is!
 	pressure_resistance = 2
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
+	#warn name to pen_color because this is confusion-prone
+	var/colour = "black"	//what colour the ink is!
+	/// can we write with this?
+	var/pen_capable = TRUE
+	/// spans to force when writing - either text or list
+	var/pen_spans
 
 /obj/item/pen/attack_self(var/mob/user)
 	if(user.next_move > world.time)

@@ -9,11 +9,11 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	collate = TRUE
 
-/obj/effect/debris/cleanable/Initialize(mapload, alpha)
+/obj/effect/debris/cleanable/dirt/Initialize(mapload, alpha)
 	src.alpha = clamp(alpha, 0, 255)
 	return ..()
 
-/obj/effect/debris/cleanable/Collate()
+/obj/effect/debris/cleanable/dirt/Collate()
 	var/obj/effect/debris/cleanable/dirt/D = locate() in src
 	if(D)
 		D.alpha = max(alpha, D.alpha)

@@ -264,6 +264,7 @@
 	t = replacetext(t, "\[/h3\]", "</H3>")
 	t = replacetext(t, "\[tab\]", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")
 
+#warn sigh
 	if(!iscrayon)
 		t = replacetext(t, "\[*\]", "<li>")
 		t = replacetext(t, "\[hr\]", "<HR>")
