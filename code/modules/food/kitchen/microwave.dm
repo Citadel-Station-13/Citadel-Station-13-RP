@@ -6,7 +6,7 @@
 	layer = 2.9
 	density = TRUE
 	anchored = TRUE
-	pass_flags_self = ATOM_PASS_TABLE
+	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 2000

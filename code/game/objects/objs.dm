@@ -1,6 +1,8 @@
 /obj
 	layer = OBJ_LAYER
 	plane = OBJ_PLANE
+	pass_flags_self = ATOM_PASS_OVERHEAD_THROW
+	animate_movement = SLIDE_STEPS
 
 	var/obj_flags = CAN_BE_HIT
 	var/set_obj_flags // ONLY FOR MAPPING: Sets flags from a string list, handled in Initialize. Usage: set_obj_flags = "EMAGGED;!CAN_BE_HIT" to set EMAGGED and clear CAN_BE_HIT.
@@ -9,7 +11,6 @@
 	var/list/matter
 	var/w_class // Size of the object.
 	var/unacidable = 0 //universal "unacidabliness" var, here so you can use it in any obj.
-	animate_movement = 2
 	var/sharp = 0		// whether this object cuts
 	var/edge = 0		// whether this object is more likely to dismember
 	var/pry = 0			//Used in attackby() to open doors

@@ -143,6 +143,7 @@ SUBSYSTEM_DEF(throwing)
 		dx = dy
 		dy = olddx
 	diagonal_error = dist_x / 2 - dist_y
+	return TRUE
 
 /datum/thrownthing/Destroy()
 	if(!finished)
@@ -273,7 +274,7 @@ SUBSYSTEM_DEF(throwing)
 	return highest
 
 /datum/thrownthing/proc/can_hit(atom/A, bumping)
-	if((throw_flags & THROW_AT_OVERHAND) && (A != target))
+	if((throw_flags & THROW_AT_OVERHAND) && (A != target) && A.check_pass_flags_self(ATOM_PASS_OVERHEAD_THROW))
 		return FALSE
 	if(A == thrownthing)
 		return FALSE

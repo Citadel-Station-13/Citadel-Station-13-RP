@@ -355,7 +355,7 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 	icon_state = "hoop"
 	anchored = TRUE
 	density = TRUE
-	pass_flags_self = ATOM_PASS_THROWN
+	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_OVERHEAD_THROW
 
 /obj/structure/holohoop/attackby(obj/item/W, mob/user)
 	if (istype(W, /obj/item/grab) && get_dist(src,user)<2)

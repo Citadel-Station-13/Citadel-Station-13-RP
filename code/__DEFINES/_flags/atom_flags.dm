@@ -92,6 +92,8 @@ DEFINE_BITFIELD(movable_flags, list(
 #define ATOM_PASS_THROWN			(1<<5)
 /// Let clicks pass through even if dense
 #define ATOM_PASS_CLICK				(1<<6)
+/// let overhand thrown objects pass, unless it's directly targeting us
+#define ATOM_PASS_OVERHEAD_THROW	(1<<7)
 
 DEFINE_BITFIELD(pass_flags, list(
 	BITFIELD(ATOM_PASS_TABLE),
@@ -101,6 +103,7 @@ DEFINE_BITFIELD(pass_flags, list(
 	BITFIELD(ATOM_PASS_MOB),
 	BITFIELD(ATOM_PASS_THROWN),
 	BITFIELD(ATOM_PASS_CLICK),
+	BITFIELD(ATOM_PASS_OVERHEAD_THROW),
 ))
 
 DEFINE_BITFIELD(pass_flags_self, list(

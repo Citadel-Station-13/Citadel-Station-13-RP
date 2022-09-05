@@ -198,7 +198,6 @@
 		TT = new /datum/thrownthing/emulated(src, target, range, calculated_speed, flags, thrower, on_hit, on_land, force)
 	else
 		TT = new /datum/thrownthing(src, target, range, calculated_speed, flags, thrower, on_hit, on_land, force)
-		TT.start()
 	. = throwing = TT
 
 	if(zone)
