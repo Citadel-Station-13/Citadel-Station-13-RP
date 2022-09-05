@@ -11,7 +11,7 @@
 		Attach(parent)
 	return ..()
 
-/datum/proxfield/bsaic/proc/Turfs()
+/datum/proxfield/basic/proc/Turfs()
 	return list()
 
 /datum/proxfield/basic/Build()
@@ -27,7 +27,7 @@
 		sensor.forceMove(creating[i])
 	if(has < needed)
 		for(var/i in has + 1 to needed)
-			checkers += new /atom/mvoable/proximity_checker/basic(creating[i], src)
+			checkers += new /atom/movable/proximity_checker/basic(creating[i], src)
 	else if(has > needed)
 		for(var/i in needed + 1 to has)
 			qdel(checkers[i])
