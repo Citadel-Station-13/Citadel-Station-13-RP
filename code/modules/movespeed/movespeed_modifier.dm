@@ -238,12 +238,11 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 		if((timeleft <= 0) || (elapsed > 20))
 			SMOOTH_GLIDE_SIZE(src, 16, TRUE)
 			return
+// this is so pixels_per_tick isn't unused
+#ifdef SMOOTH_MOVEMENT
 		var/pixels_moved = glide_size_current * elapsed * (1 / world.tick_lag)
 		// calculate glidesize needed to move to the next tile within timeleft deciseconds
 		var/ticks_allowed = timeleft / world.tick_lag
-
-// this is so pixels_per_tick isn't unused
-#ifdef SMOOTH_MOVEMENT
 		var/pixels_per_tick = pixels_moved / ticks_allowed
 		SMOOTH_GLIDE_SIZE(src, pixels_per_tick * GLOB.glide_size_multiplier, TRUE)
 #endif
