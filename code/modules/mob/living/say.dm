@@ -150,7 +150,7 @@ proc/get_radio_key_from_channel(var/channel)
 	if(client)
 		if(message)
 			client.handle_spam_prevention(MUTE_IC)
-			if((client.prefs.muted & MUTE_IC) || say_disabled)
+			if((client.prefs.muted & MUTE_IC))
 				to_chat(src, "<span class='warning'>You cannot speak in IC (Muted).</span>")
 				return
 

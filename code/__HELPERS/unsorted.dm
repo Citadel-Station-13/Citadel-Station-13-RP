@@ -13,6 +13,12 @@
     locate(min(CENTER.x+(RADIUS),world.maxx), min(CENTER.y+(RADIUS),world.maxy), CENTER.z) \
   )
 
+#define RANGE_TURFS_OR_EMPTY(RADIUS, CENTER) \
+  (CENTER? block( \
+    locate(max(CENTER.x-(RADIUS),1),          max(CENTER.y-(RADIUS),1),          CENTER.z), \
+    locate(min(CENTER.x+(RADIUS),world.maxx), min(CENTER.y+(RADIUS),world.maxy), CENTER.z) \
+  ) : list())
+
 ///Inverts the colour of an HTML string
 /proc/invertHTML(HTMLstring)
 	if (!( istext(HTMLstring) ))

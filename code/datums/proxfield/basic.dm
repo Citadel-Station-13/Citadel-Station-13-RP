@@ -18,7 +18,20 @@
 	checkers = list()
 
 /datum/proxfield/basic/Update()
-	#warn impl
+	var/list/turf/creating = Turfs()
+	var/needed = length(creating)
+	var/has = length(checkers)
+	var/atom/movable/proximity_checker/sensor
+	for(var/i in 1 to min(has, needed))
+		sensor = checkers[i]
+		sensor.forceMove(creating[i])
+	if(has < needed)
+		for(var/i in has + 1 to needed)
+			checkers += new /atom/mvoable/proximity_checker/basic(creating[i], src)
+	else if(has > needed)
+		for(var/i in needed + 1 to has)
+			qdel(checkers[i])
+		checkers.Cut(needed + 1)
 
 /datum/proxfield/basic/Teardown()
 	QDEL_LIST(checkers)
@@ -42,7 +55,7 @@
 
 /datum/proxfield/basic/square/Turfs()
 	var/turf/center = Anchor()
-	return RANGE_TURFS(radius, center)
+	return RANGE_TURFS_OR_EMPTY(radius, center)
 
 /atom/movable/proximity_checker/basic
 

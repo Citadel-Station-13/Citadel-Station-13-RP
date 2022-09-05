@@ -25,7 +25,7 @@
 
 /obj/machinery/flasher/portable/Initialize(mapload)
 	. = ..()
-	new /datum/proxfield/bsaic/square(src, 1)
+	new /datum/proxfield/basic/square(src, 1)
 
 /obj/machinery/flasher/power_change()
 	..()

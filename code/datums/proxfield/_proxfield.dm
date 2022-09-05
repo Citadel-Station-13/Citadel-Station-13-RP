@@ -51,7 +51,7 @@
 		attached = A
 	if(attached != parent)
 		RegisterSignal(attached, COMSIG_PARENT_QDELETING, .proc/on_attached_qdel)
-	RegisterSignal(attached, COMSIG_MOVABE_MOVED, .proc/on_move)
+	RegisterSignal(attached, COMSIG_MOVABLE_MOVED, .proc/on_move)
 	RegisterSignal(attached, COMSIG_MOVABLE_Z_CHANGED, .proc/on_z_transit)
 
 /datum/proxfield/proc/on_move(datum/source, atom/movable/oldLoc, dir, forced)

@@ -44,7 +44,7 @@
 		visible_message(SPAN_WARNING("[src] throws [throwing] overhand."))
 	else
 		visible_message(SPAN_WARNING("[src] has thrown [throwing]."))
-	throw_resolve_finalize(throwing)
+	I.throw_resolve_finalize(throwing)
 	// if the thing deleted itself, we didn't fail, it disappeared
 	if(QDELETED(throwing))
 		return TRUE
