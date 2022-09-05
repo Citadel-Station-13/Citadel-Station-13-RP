@@ -7,7 +7,7 @@
 	user.toggle_throw_mode()
 
 /atom/movable/screen/hud/throwmode/shift_clicked(mob/user)
-	user.throw_mode_overhand()
+	user.toggle_throw_mode(TRUE)
 
 /atom/movable/screen/hud/update_icon_state()
 	. = ..()

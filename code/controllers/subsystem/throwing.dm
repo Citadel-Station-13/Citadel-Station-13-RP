@@ -129,8 +129,8 @@ SUBSYSTEM_DEF(throwing)
 
 	dist_x = abs(target_turf.x - AM.x)
 	dist_y = abs(target_turf.y - AM.y)
-	dx = (T.x > AM.x)? EAST : WEST
-	dy = (T.y > AM.y)? NORTH : SOUTH
+	dx = (target_turf.x > AM.x)? EAST : WEST
+	dy = (target_turf.y > AM.y)? NORTH : SOUTH
 
 	if(dist_x == dist_y)
 		pure_diagonal = TRUE

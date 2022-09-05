@@ -3,30 +3,51 @@
 	if(!I)
 		return FALSE
 	throw_mode_off()
+	// if we're not on a turf just don't
+	if(!isturf(loc) || !(isturf(target) || isturf(target.loc)) || QDELETED(I))
+		return FALSE
 	if(!can_throw_item(I, target))
 		return FALSE
-	if(is_in_inventory(I))
-		if(!drop_item_to_ground(I))
-			to_chat(src, SPAN_WARNING("You try and fail to throw [I] at [target]."))
+	if(is_in_inventory(I) && !can_unequip(I))
+		to_chat(src, SPAN_WARNING("You fail to throw [I] at [target]."))
 		return FALSE
 	var/atom/movable/throwing = I.throw_resolve_actual()
-
 	// overhand stuff
 	if(overhand)
 		var/delay = throwing.overhand_throw_delay(src)
 		visible_message(SPAN_WARNING("[src] starts preparing an overhand throw!"))
 		if(!do_after(src, delay, throwing))
 			return FALSE
-
-	I.forceMove(drop_location())
+	// make sure they didn't bamboozle us.
 	if(QDELETED(throwing))
+		to_chat(src, SPAN_WARNING("You fail to throw [I] at [target]."))
 		return FALSE
-	throwing.forceMove(get_turf(src))
-	if(!isturf(target) && !isturf(target.loc))
+	// make sure there's no special behavior
+	if(!I.throw_resolve_override())
+		// drop item
+		if(is_in_inventory(I))
+			if(!drop_item_to_ground(I))
+				to_chat(src, SPAN_WARNING("You fail to throw [I] at [target]."))
+				return FALSE
+		else
+			// just move it to our loc
+			I.forceMove(get_turf(src))
+	else
+		// else move the throwing thing to the ground
+		throwing.forceMove(get_turf(src))
+	// but also make sure it's on the ground
+	if(!isturf(loc) || !(isturf(target) || isturf(target.loc)))
 		return FALSE
-	if(!isturf(loc) || !isturf(throwing.loc))
-		return FALSE
-
+	// point of no return
+	// special: make message first
+	if(overhand)
+		visible_message(SPAN_WARNING("[src] throws [throwing] overhand."))
+	else
+		visible_message(SPAN_WARNING("[src] has thrown [throwing]."))
+	// if the thing deleted itself, we didn't fail, it disappeared
+	if(QDELETED(throwing))
+		return TRUE
+	// point of no return but actually
 	//! stupid shit
 	var/the_range = throwing.throw_range
 	if(ismob(throwing))
@@ -34,10 +55,6 @@
 		the_range = round(M.throw_range * min(mob_size / M.mob_size, 1))
 	//! stupid shit end, refactor grabs when?
 
-	if(overhand)
-		visible_message(SPAN_WARNING("[src] throws [throwing] overhand."))
-	else
-		visible_message(SPAN_WARNING("[src] has thrown [throwing]."))
 	newtonian_move(get_dir(target, src))
 
 	throwing.throw_at(target, the_range, null, (a_intent == INTENT_HELP? THROW_AT_IS_NEAT : NONE) | (overhand? THROW_AT_OVERHAND : NONE), src, force = throw_impulse)

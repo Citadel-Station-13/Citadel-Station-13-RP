@@ -1,11 +1,14 @@
 /mob/proc/throw_item(obj/item/I, atom/target, overhand, neat = a_intent == INTENT_HELP, force = THROW_FORCE_DEFAULT)
 	return
 
-/mob/proc/toggle_throw_mode()
+/mob/proc/toggle_throw_mode(overhand)
 	if(throw_mode_check())
 		throw_mode_off()
 	else
-		throw_mode_on()
+		if(overhand)
+			throw_mode_overhand()
+		else
+			throw_mode_on()
 
 /mob/proc/throw_mode_off()
 	in_throw_mode = THROW_MODE_OFF
