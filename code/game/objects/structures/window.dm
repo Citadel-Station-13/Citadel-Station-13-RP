@@ -184,7 +184,7 @@
 		tforce = 40
 	else if(isobj(AM))
 		var/obj/item/I = AM
-		tforce = I.throw_force
+		tforce = I.throw_force * TT.get_damage_multiplier()
 	if(reinf) tforce *= 0.25
 	if(health - tforce <= 7 && !reinf)
 		anchored = 0

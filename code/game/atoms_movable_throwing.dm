@@ -203,7 +203,7 @@
 	if(zone)
 		TT.target_zone = zone
 
-	SEND_SIGNAL(src, COMSIG_MOVABLE_INIT_THROW, target, range, speed, flags, thrower, on_hit, on_land, emulated)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_INIT_THROW, target, range, calculated_speed, flags, thrower, on_hit, on_land, emulated)
 
 /**
  * throws us at something
