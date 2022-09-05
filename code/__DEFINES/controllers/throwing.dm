@@ -38,13 +38,22 @@ DEFINE_BITFIELD(throw_flags, list(
 	BITFIELD(THROW_AT_NO_USER_MODIFIERS),
 ))
 
-// todo: rework
+#define MAX_THROWING_DIST 1280 // 5 z-levels on default width
+#define MAX_TICKS_TO_MAKE_UP 3 //how many missed ticks will we attempt to make up for this run.
+
+// todo: rework?
 /// the throwing speed at which people can catch things on impact
 #define THROW_SPEED_CATCHABLE			5
 /// The minumum speed of a w_class 2 thrown object that will cause living mobs it hits to be knocked back. Heavier objects can cause knockback at lower speeds.
 #define THROWNOBJ_KNOCKBACK_SPEED   15
 /// Affects how much speed the mob is knocked back with.
 #define THROWNOBJ_KNOCKBACK_DIVISOR 2
+/// speed = default speed * ((throw force / throw resist) ** exponent)
+#define THROW_SPEED_SCALING_EXPONENT_DEFAULT 0.9
+/// damage = default damage * ((throw speed / default throw speed) ** exponent)
+#define THROW_DAMAGE_SCALING_EXPONENT_DEFAULT 0.6
+/// max damage multiplier incase someone fucks up math and we get a toolbox doing 1 million damage
+#define MAX_THROWING_DAMAGE_MULTIPLIER 10
 
 // should probably be in mob define files
 /// time it takes to prep an overhand throw for items, multiplied by weight class

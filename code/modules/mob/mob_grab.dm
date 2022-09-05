@@ -173,6 +173,12 @@
 	animate(affecting, pixel_x = initial(affecting.pixel_x), pixel_y = initial(affecting.pixel_y), 4, 1)
 	return affecting
 
+/obj/item/grab/throw_resolve_finalize()
+	qdel(src)
+
+/obj/item/grab/throw_resolve_override()
+	return TRUE
+
 //Updating pixelshift, position and direction
 //Gets called on process, when the grab gets upgraded or the assailant moves
 /obj/item/grab/proc/adjust_position()

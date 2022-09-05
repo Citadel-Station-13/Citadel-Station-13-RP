@@ -9,6 +9,8 @@
 
 /**
  * return TRUE to not drop us and instead just throw whatever throw_resolve_actual hopefully returned
+ *
+ * you should move the thing they're going to throw to a turf, otherwise the throw will fail.
  */
 /obj/item/proc/throw_resolve_override()
 	return FALSE

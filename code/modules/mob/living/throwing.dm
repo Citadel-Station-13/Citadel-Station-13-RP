@@ -33,8 +33,8 @@
 			// just move it to our loc
 			I.forceMove(get_turf(src))
 	else
-		// else move the throwing thing to the ground
-		throwing.forceMove(get_turf(src))
+		if(!isturf(throwing.loc))
+			CRASH("throw resolve override called but didn't move what we should throw to turf. this is bad practice.")
 	// but also make sure it's on the ground
 	if(!isturf(loc) || !(isturf(target) || isturf(target.loc)))
 		return FALSE

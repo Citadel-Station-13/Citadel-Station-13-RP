@@ -25,8 +25,3 @@
 
 #define MOVE_RESIST_ABSOLUTE				INFINITY
 #define MOVE_FORCE_ABSOLUTE					INFINITY
-
-/// speed = default speed * ((throw force / throw resist) ** exponent)
-#define THROW_SPEED_SCALING_EXPONENT_DEFAULT 0.9
-/// damage = default damage * ((throw speed / default throw speed) ** exponent)
-#define THROW_DAMAGE_SCALING_EXPONENT_DEFAULT 0.6

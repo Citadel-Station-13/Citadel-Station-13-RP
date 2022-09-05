@@ -1,6 +1,3 @@
-#define MAX_THROWING_DIST 1280 // 5 z-levels on default width
-#define MAX_TICKS_TO_MAKE_UP 3 //how many missed ticks will we attempt to make up for this run.
-
 SUBSYSTEM_DEF(throwing)
 	name = "Throwing"
 	priority = FIRE_PRIORITY_THROWING
@@ -381,7 +378,7 @@ SUBSYSTEM_DEF(throwing)
 /datum/thrownthing/proc/get_damage_multiplier()
 	if(thrownthing.movable_flags & MOVABLE_NO_THROW_DAMAGE_SCALING)
 		return 1
-	return (speed / thrownthing.throw_speed) ** thrownthing.throw_damage_scaling_exponent
+	return clamp((speed / max(thrownthing.throw_speed, 0.01)) ** thrownthing.throw_damage_scaling_exponent, 0, MAX_THROWING_DAMAGE_MULTIPLIER)
 
 /**
  * simulated thrownthing datums
