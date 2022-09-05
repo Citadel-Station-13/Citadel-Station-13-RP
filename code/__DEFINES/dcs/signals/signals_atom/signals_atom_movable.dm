@@ -35,7 +35,7 @@
 /// From /obj/vehicle/proc/driver_move, caught by the riding component to check and execute the driver trying to drive the vehicle
 ////#define COMSIG_RIDDEN_DRIVER_MOVE "driver_move"
 	////#define COMPONENT_DRIVER_BLOCK_MOVE (1<<0)
-/// From base of atom/movable/on_changed_z_level(): (turf/old_turf, turf/new_turf)
+/// From base of atom/movable/on_changed_z_level(): (old_z, new_z)
 #define COMSIG_MOVABLE_Z_CHANGED "movable_ztransit"
 /// Called when the movable is placed in an unaccessible area, used for stationloving: ()
 ////#define COMSIG_MOVABLE_SECLUDED_LOCATION "movable_secluded"

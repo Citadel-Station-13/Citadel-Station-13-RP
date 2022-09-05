@@ -1,4 +1,30 @@
+/**
+ * basic proxfields, automatically attaches to parent if it's a datum
+ * safe to juggle around with Attach() so we don't provide init param for attach.
+ */
 /datum/proxfield/basic
+	/// our objects
+	VAR_PRIVATE/list/atom/movable/proximity_checker/checkers
+
+/datum/proxfield/basic/Init()
+	if(isatom(parent))
+		Attach(parent)
+	return ..()
+
+/datum/proxfield/bsaic/proc/Turfs()
+	return list()
+
+/datum/proxfield/basic/Build()
+	checkers = list()
+
+/datum/proxfield/basic/Update()
+	#warn impl
+
+/datum/proxfield/basic/Teardown()
+	QDEL_LIST(checkers)
+
+/datum/proxfield/basic/Detect(atom/movable/AM)
+	parent.Proximity(src, AM)
 
 /datum/proxfield/basic/square
 	/// radius
@@ -15,4 +41,11 @@
 	return ..()
 
 /datum/proxfield/basic/square/Turfs()
-	#warn impl
+	var/turf/center = Anchor()
+	return RANGE_TURFS(radius, center)
+
+/atom/movable/proximity_checker/basic
+
+/atom/movable/proximity_checker/basic/Crossed(atom/movable/AM)
+	. = ..()
+	field.Detect(AM)

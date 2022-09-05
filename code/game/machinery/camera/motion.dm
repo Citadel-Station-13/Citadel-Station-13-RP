@@ -3,7 +3,10 @@
 	var/detectTime = 0
 	var/area/ai_monitored/area_motion = null
 	var/alarm_delay = 100 // Don't forget, there's another 10 seconds in queueAlarm()
-	flags = PROXMOVE
+
+/obj/machinery/camera/Initialize(mapload)
+	. = ..()
+	new /datum/proxfield/basic/square(src, 1)
 
 /obj/machinery/camera/internal_process()
 	// motion camera event loop
@@ -58,8 +61,10 @@
 	detectTime = -1
 	return TRUE
 
-/obj/machinery/camera/HasProximity(atom/movable/AM as mob|obj)
+/obj/machinery/camera/Proximity(datum/proxfield/field, atom/movable/AM)
 	// Motion cameras outside of an "ai monitored" area will use this to detect stuff.
+	if(!isMotion())
+		return
 	if (!area_motion)
 		if(isliving(AM))
 			newTarget(AM)

@@ -446,11 +446,10 @@ Alien plants should do something if theres a lot of poison
 
 	var/health = 100
 	var/status = GROWING //can be GROWING, GROWN or BURST; all mutually exclusive
-	flags = PROXMOVE
-
 /obj/effect/alien/egg/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
+	new /datum/proxfield/basic/square(src, 1)
 	spawn(rand(MIN_GROWTH_TIME,MAX_GROWTH_TIME))
 		if((status == GROWING) && (BURST == 0))
 			Grow()
@@ -554,6 +553,7 @@ Alien plants should do something if theres a lot of poison
 		healthcheck()
 
 /*/obj/effect/alien/egg/HasProximity(atom/movable/AM as mob|obj)
+
 	if(status == GROWN)
 		if(!CanHug(AM))
 			return

@@ -22,7 +22,6 @@ var/const/MAX_ACTIVE_TIME = 400
 	icon_state = "facehugger"
 	item_state = "facehugger"
 	w_class = 3 //note: can be picked up by aliens unlike most other items of w_class below 4
-	flags = PROXMOVE
 	body_parts_covered = FACE|EYES
 	throw_range = 5
 
@@ -83,16 +82,16 @@ var/const/MAX_ACTIVE_TIME = 400
 
 /obj/item/clothing/mask/facehugger/Crossed(atom/target)
 	..()
-	HasProximity(target)
+	Proximity(null, target)
 	return
 
 /obj/item/clothing/mask/facehugger/on_found(mob/finder as mob)
 	if(stat == CONSCIOUS)
-		HasProximity(finder)
+		Proximity(null, finder)
 		return 1
 	return
 
-/obj/item/clothing/mask/facehugger/HasProximity(atom/movable/AM as mob|obj)
+/obj/item/clothing/mask/facehugger/Proximity(datum/proxfield/field, atom/movable/AM)
 	if(CanHug(AM))
 		Attach(AM)
 

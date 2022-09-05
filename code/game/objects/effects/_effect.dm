@@ -10,3 +10,6 @@
  * however, at a certain point, do consider using /structure or /machinery instead.
  */
 /obj/effect
+	unacidable = TRUE
+	density = FALSE
+	opacity = FALSE

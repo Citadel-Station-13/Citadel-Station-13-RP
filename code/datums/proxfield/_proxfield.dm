@@ -12,61 +12,93 @@
 	VAR_PRIVATE/datum/parent
 	/// are we built?
 	VAR_PRIVATE/active = FALSE
-	/// our objects
-	VAR_PRIVATE/list/atom/movable/proximity_checker/checkers
-	#warn impl
 	/// do we work when attached isn't on a turf? if so, we use get_turf
 	var/scan_from_turf = TRUE
 
-/datum/proxfield/New(datum/parent, atom/attach_to, ...)
-	checkers = list()
+/datum/proxfield/New(datum/parent, ...)
+	ASSERT(parent)
 	src.parent = parent
-	if(attach_to)
-		src.attached = attach_to
-	else
-		src.attached = parent
-	Init(args.Copy(2))
-	#warn signals
+	RegisterSignal(parent, COMSIG_PARENT_QDELETING, .proc/on_parent_qdel)
+	Init(args.Copy(1))
 
 /datum/proxfield/Destroy()
-	Teardown()
-	UnregisterSignal(attached, list(
-		COMSIG_PARENT_QDELETING,
-		COMSIG_MOVABLE_MOVED,
-		COMSIG_MOVABLE_Z_CHANGED
-	))
+	Stop()
 	UnregisterSignal(parent, list(
 		COMSIG_PARENT_QDELETING
 	))
-	attached = null
+	Attach(null)
 	parent = null
 	return ..()
 
 /datum/proxfield/proc/Init()
-	Build()
+	SHOULD_CALL_PARENT(TRUE)
+	Start()
 
-/datum/proxfield/proc/Build()
+/datum/proxfield/proc/Attach(atom/A)
+	if(attached == A)
+		return
+	UnregisterSignal(attached, list(
+		COMSIG_MOVABLE_MOVED,
+		COMSIG_MOVABLE_Z_CHANGED
+	))
+	if(attached != parent)
+		UnregisterSignal(attached, COMSIG_PARENT_QDELETING)
 	if(active)
-		Teardown()
+		Stop()
+		attached = A
+		Start()
+	else
+		attached = A
+	if(attached != parent)
+		RegisterSignal(attached, COMSIG_PARENT_QDELETING, .proc/on_attached_qdel)
+	RegisterSignal(attached, COMSIG_MOVABE_MOVED, .proc/on_move)
+	RegisterSignal(attached, COMSIG_MOVABLE_Z_CHANGED, .proc/on_z_transit)
+
+/datum/proxfield/proc/on_move(datum/source, atom/movable/oldLoc, dir, forced)
+	SIGNAL_HANDLER
+
+/datum/proxfield/proc/on_z_transit(datum/source, old_z, new_z)
+	SIGNAL_HANDLER
+
+/datum/proxfield/proc/on_parent_qdel(datum/source)
+	SIGNAL_HANDLER
+	if(QDELING(src) || QDELETED(src))
+		return
+	qdel(src)
+
+/datum/proxfield/proc/on_attached_qdel(datum/source)
+	SIGNAL_HANDLER
+	Attach(null)
+
+/datum/proxfield/proc/Start()
+	SHOULD_NOT_OVERRIDE(TRUE)
+	if(active)
+		Stop()
+	active = TRUE
+	Build()
 	Update()
 
-/datum/proxfield/proc/Teardown()
+/datum/proxfield/proc/Stop()
 	if(!active)
 		return
-	QDEL_LIST(checkers)
 	active = FALSE
+	Teardown()
+
+/datum/proxfield/proc/Build()
+	return
+
+/datum/proxfield/proc/Teardown()
+	return
 
 /datum/proxfield/proc/Update()
-	var/existing = checkers.len
+	return
 
+/datum/proxfield/proc/Anchor()
+	return scan_from_turf? get_turf(attached) : attached
 
-/datum/proxfield/proc/Turfs()
-	return list()
+/datum/proxfield/proc/Detect(...)
 
-/datum/proxfield/proc/Detect(atom/movable/AM)
-	parent?.Proximity(src, AM)
-
-/datum/proc/Proximity(datum/proxfield/field, atom/movable/AM)
+/datum/proc/Proximity(datum/proxfield/field, ...)
 
 /atom/movable/proximity_checker
 	name = ""
@@ -96,6 +128,3 @@
 
 /atom/movable/proximity_checker/CanAtmosPass(turf/T, d)
 	return TRUE
-
-/atom/movable/proximity_checker/Crossed(atom/movable/AM)
-	field.Detect(AM)

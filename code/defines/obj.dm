@@ -17,20 +17,18 @@
 				return
 
 /obj/effect/mark
-		var/mark = ""
-		icon = 'icons/misc/mark.dmi'
-		icon_state = "blank"
-		anchored = 1
-		layer = 99
-		mouse_opacity = 0
-		unacidable = 1//Just to be sure.
+	var/mark = ""
+	icon = 'icons/misc/mark.dmi'
+	icon_state = "blank"
+	anchored = 1
+	layer = 99
+	mouse_opacity = 0
+	unacidable = 1//Just to be sure.
 
 /obj/effect/beam
 	name = "beam"
-	density = 0
-	unacidable = 1//Just to be sure.
+	density = FALSE
 	var/def_zone
-	flags = PROXMOVE
 	pass_flags = ATOM_PASS_TABLE
 
 
@@ -38,8 +36,7 @@
 	name = "begin"
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "begin"
-	anchored = 1.0
-	unacidable = 1
+	anchored = TRUE
 
 /*
  * This item is completely unused, but removing it will break something in R&D and Radio code causing PDA and Ninja code to fail on compile
