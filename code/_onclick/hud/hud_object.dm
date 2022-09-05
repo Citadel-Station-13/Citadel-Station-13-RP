@@ -13,7 +13,7 @@
 	alpha = hud.ui_alpha
 
 /atom/movable/screen/hud/Click(location, control, params)
-	SEND_SIGNAL(src, COMSIG_CLICK, location, control params)
+	SEND_SIGNAL(src, COMSIG_CLICK, location, control, params)
 	clicked(usr)
 
 /atom/movable/screen/hud/ShiftClick(mob/user)
