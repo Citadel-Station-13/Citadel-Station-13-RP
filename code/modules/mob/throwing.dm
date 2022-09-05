@@ -2,13 +2,22 @@
 	return
 
 /mob/proc/toggle_throw_mode(overhand)
-	if(throw_mode_check())
-		throw_mode_off()
+	if(overhand)
+		switch(in_throw_mode)
+			if(THROW_MODE_ON)
+				throw_mode_overhand()
+			if(THROW_MODE_OVERHAND)
+				throw_mode_off()
+			if(THROW_MODE_OFF)
+				throw_mode_overhand()
 	else
-		if(overhand)
-			throw_mode_overhand()
-		else
-			throw_mode_on()
+		switch(in_throw_mode)
+			if(THROW_MODE_ON)
+				throw_mode_off()
+			if(THROW_MODE_OVERHAND)
+				throw_mode_on()
+			if(THROW_MODE_OFF)
+				throw_mode_on()
 
 /mob/proc/throw_mode_off()
 	in_throw_mode = THROW_MODE_OFF

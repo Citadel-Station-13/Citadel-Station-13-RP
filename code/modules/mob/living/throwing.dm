@@ -23,7 +23,7 @@
 		to_chat(src, SPAN_WARNING("You fail to throw [I] at [target]."))
 		return FALSE
 	// make sure there's no special behavior
-	if(!I.throw_resolve_override())
+	if(!I.throw_resolve_override(throwing))
 		// drop item
 		if(is_in_inventory(I))
 			if(!drop_item_to_ground(I))
@@ -44,6 +44,7 @@
 		visible_message(SPAN_WARNING("[src] throws [throwing] overhand."))
 	else
 		visible_message(SPAN_WARNING("[src] has thrown [throwing]."))
+	throw_resolve_finalize(throwing)
 	// if the thing deleted itself, we didn't fail, it disappeared
 	if(QDELETED(throwing))
 		return TRUE

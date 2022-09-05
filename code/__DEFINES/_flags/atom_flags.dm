@@ -28,9 +28,6 @@
 /// Does not get contaminated by phoron.
 // TODO: item flag
 #define PHORONGUARD					(1<<13)
-/// Does this object require proximity checking in Enter()?
-// TODO: kill with fire
-#define PROXMOVE					(1<<14)
 /// Does not leave user's fingerprints/fibers when used on things?
 // TODO: item flag
 #define NOPRINT						(1<<15)

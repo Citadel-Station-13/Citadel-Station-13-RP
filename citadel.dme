@@ -553,6 +553,8 @@
 #include "code\datums\outfits\military\marines.dm"
 #include "code\datums\outfits\military\military.dm"
 #include "code\datums\outfits\military\sysguard.dm"
+#include "code\datums\proxfield\_proxfield.dm"
+#include "code\datums\proxfield\basic.dm"
 #include "code\datums\repositories\ammomaterial.dm"
 #include "code\datums\repositories\cameras.dm"
 #include "code\datums\repositories\crew.dm"
