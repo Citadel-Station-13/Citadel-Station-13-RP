@@ -91,7 +91,7 @@
  */
 /obj/item/material/twohanded/fireaxe  // DEM AXES MAN, marker -Agouri
 	icon_state = "fireaxe0"
-	base_icon = "fireaxe"
+	base_icon = "fireaxe0"
 	name = "fire axe"
 	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
 	description_info = "This weapon can cleave, striking nearby lesser, hostile enemies close to the primary target.  It must be held in both hands to do this."
@@ -145,7 +145,7 @@
 	force_divisor = 0
 	force = 0
 	applies_material_colour = 1
-	base_icon = "fireaxe_mask"
+	base_icon = "fireaxe_mask0"
 	icon_state = "fireaxe_mask0"
 	unbreakable = 1
 	sharp = 0
@@ -163,6 +163,9 @@
 /obj/item/material/twohanded/fireaxe/bone
 	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
 	default_material = "bone"
+	base_icon = "fireaxe_mask0"
+	icon_state = "fireaxe_mask0"
+	applies_material_colour = 1
 
 /obj/item/material/twohanded/fireaxe/bone/Initialize(mapload, material_key)
 	return ..(mapload,"bone")
@@ -172,9 +175,6 @@
 
 /obj/item/material/twohanded/fireaxe/durasteel
 	default_material = "durasteel"
-
-/obj/item/material/twohanded/fireaxe/foam
-	default_material = "foam"
 
 /obj/item/material/twohanded/fireaxe/scythe/plasteel
 	default_material = "plasteel"
@@ -194,7 +194,7 @@
 //spears, bay edition
 /obj/item/material/twohanded/spear
 	icon_state = "spearglass0"
-	base_icon = "spearglass"
+	base_icon = "spearglass0"
 	name = "spear"
 	desc = "A haphazardly-constructed yet still deadly weapon of ancient design."
 	description_info = "This weapon can strike from two tiles away, and over certain objects such as tables, or other people."
@@ -269,6 +269,12 @@
 	name = "spear"
 	desc = "A primitive yet deadly weapon of ancient design."
 	default_material = "bone"
+	icon_state = "spear_mask0"
+	base_icon = "spear_mask0"
+	applies_material_colour = 1
+
+/obj/item/material/twohanded/spear/bone/Initialize(mapload, material_key)
+	..(mapload,"bone")
 
 /obj/item/material/twohanded/spear/plasteel
 	default_material = "plasteel"
@@ -333,7 +339,7 @@
 
 /obj/item/material/twohanded/sledgehammer/mjollnir
 	icon_state = "mjollnir0"
-	base_icon = "mjollnir"
+	base_icon = "mjollnir0"
 	name = "Mjollnir"
 	desc = "A long, heavy hammer. This weapons crackles with barely contained energy."
 	force_divisor = 2

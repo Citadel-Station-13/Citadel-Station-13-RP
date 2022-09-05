@@ -157,6 +157,11 @@
 	siemens_coefficient = 1
 	valid_accessory_slots = null
 
+/obj/item/clothing/head/helmet/gladiator/ashlander
+	name = "ashlander kranos"
+	desc = "This weathered helmet bears a collection of acidic pits and claw marks."
+	armor = list(melee = 5, bullet = 5, laser = 5,energy = 0, bomb = 0, bio = 0, rad = 0)
+
 /obj/item/clothing/head/helmet/tactical
 	name = "tactical helmet"
 	desc = "An armored helmet capable of being fitted with a multitude of attachments."

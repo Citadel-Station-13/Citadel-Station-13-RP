@@ -303,6 +303,12 @@
 	item_state_slots = list(slot_r_hand_str = "yellow", slot_l_hand_str = "yellow")
 	body_parts_covered = LOWER_TORSO
 
+/obj/item/clothing/under/gladiator/ashlander
+	name = "ashlander panoply"
+	desc = "Hardy metal plates and firm red sinew comprise this scuffed and marred armor."
+	has_sensor = 0
+	armor = list(melee = 5, bullet = 0, laser = 5,energy = 5, bomb = 0, bio = 0, rad = 0)
+
 /obj/item/clothing/under/moderncoat
 	name = "modern wrapped coat"
 	desc = "The cutting edge of fashion."
@@ -1749,10 +1755,22 @@
 	desc = "A simple linen tunic. Smells faintly of earth and flowers"
 	icon_state = "tribal_tunic"
 
+/obj/item/clothing/under/tribal_tunic/ashlander
+	name = "coarse tunic"
+	desc = "A simple, coarse tunic. Smells faintly of ash and charred wood."
+	icon_state = "tribal_tunic"
+	has_sensor = 0
+
 /obj/item/clothing/under/tribal_tunic_fem
 	name = "simple tunic"
 	desc = "A simple linen tunic. Smells faintly of earth and flowers."
 	icon_state = "tribal_tunic_fem"
+
+/obj/item/clothing/under/tribal_tunic_fem/ashlander
+	name = "coarse tunic"
+	desc = "A simple, coarse tunic. Smells faintly of ash and charred wood."
+	icon_state = "tribal_tunic"
+	has_sensor = 0
 
 /obj/item/clothing/under/skirt/pleated
 	name = "pleated skirt"

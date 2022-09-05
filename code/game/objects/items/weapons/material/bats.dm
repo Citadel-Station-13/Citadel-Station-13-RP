@@ -2,7 +2,7 @@
 	name = "bat"
 	desc = "HOME RUN!"
 	icon_state = "metalbat0"
-	base_icon = "metalbat"
+	base_icon = "metalbat0"
 	throwforce = 7
 	attack_verb = list("smashed", "beaten", "slammed", "smacked", "struck", "battered", "bonked")
 	hitsound = 'sound/weapons/genhit3.ogg'
@@ -38,7 +38,7 @@
 	name = "penetrator"
 	desc = "The letter E has been lovingly engraved into the handle. When this wobbles, it sounds exactly like shame."
 	icon_state = "penbat0"
-	base_icon = "penbat"
+	base_icon = "penbat0"
 	force = 0
 	throwforce = 0
 	attack_verb = list("smacked", "slapped", "thwapped", "struck", "bapped", "bonked")

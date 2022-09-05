@@ -54,19 +54,19 @@
 	var/datum/outfit/outfit = ..()
 	switch(params["fluff"])
 		if("nomad")
-			outfit.uniform = /obj/item/clothing/under/tribal_tunic
+			outfit.uniform = /obj/item/clothing/under/tribal_tunic/ashlander
 			outfit.shoes = /obj/item/clothing/shoes/footwraps
 			outfit.belt = /obj/item/material/knife/tacknife/combatknife/bone
 			outfit.back = /obj/item/material/twohanded/spear/bone
 		if("hunter")
-			outfit.uniform = /obj/item/clothing/under/gladiator
-			outfit.head = /obj/item/clothing/head/helmet/gladiator
+			outfit.uniform = /obj/item/clothing/under/gladiator/ashlander
+			outfit.head = /obj/item/clothing/head/helmet/gladiator/ashlander
 			outfit.shoes = /obj/item/clothing/shoes/ashwalker
 			outfit.back = /obj/item/gun/projectile/bow/ashen
 			outfit.belt = /obj/item/storage/belt/quiver/full/ash
 			outfit.r_hand = /obj/item/material/knife/tacknife/combatknife/bone
 		if("exile")
-			outfit.uniform = /obj/item/clothing/under/tribal_tunic
+			outfit.uniform = /obj/item/clothing/under/tribal_tunic/ashlander
 			outfit.belt = /obj/item/material/knife/tacknife/combatknife/bone
 			outfit.back = /obj/item/bo_staff
 	return outfit
