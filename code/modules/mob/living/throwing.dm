@@ -16,7 +16,7 @@
 	if(overhand)
 		var/delay = throwing.overhand_throw_delay(src)
 		visible_message(SPAN_WARNING("[src] starts preparing an overhand throw!"))
-		if(!do_after(src, delay, throwing))
+		if(!do_after(src, delay))
 			return FALSE
 	// make sure they didn't bamboozle us.
 	if(QDELETED(throwing))

@@ -319,7 +319,7 @@ SUBSYSTEM_DEF(throwing)
 /datum/thrownthing/proc/impact(atom/A, in_land)
 	impacted[A] = TRUE
 
-	var/op_return = thrownthing._throw_do_hit(A)
+	var/op_return = thrownthing._throw_do_hit(A, src)
 	if(op_return & COMPONENT_THROW_HIT_TERMINATE)
 		terminate()
 		return

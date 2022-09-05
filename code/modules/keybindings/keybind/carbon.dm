@@ -18,7 +18,7 @@
 	return TRUE
 
 /datum/keybinding/carbon/overhand_throw_mode
-	hotkey_keys = list("Ctrl+R", "Ctrl+Southwest")
+	hotkey_keys = list("CtrlR", "CtrlSouthwest")
 	name = "overhand_throw_mode"
 	full_name = "Throw item overhand"
 	description = "Toggle throwing the current item overhand or not"
