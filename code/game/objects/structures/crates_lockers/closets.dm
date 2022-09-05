@@ -457,6 +457,7 @@
 		visible_message(SPAN_DANGER("\The [escapee] successfully broke out of \the [src]!"))
 		playsound(src.loc, breakout_sound, 100, 1)
 		animate_shake()
+		break_open()
 
 /obj/structure/closet/proc/break_open()
 	sealed = 0
