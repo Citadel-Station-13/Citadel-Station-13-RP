@@ -36,10 +36,10 @@
 	flash_mod = 2.0
 
 	//Physical resistances and weaknesses.
-	brute_mod = 0.75
+	brute_mod = 0.85
 	burn_mod = 0.15
-	radiation_mod = 1.25
-	toxins_mod = 1.25
+	radiation_mod = 0.5
+	toxins_mod = 0.5
 
 	//Adapted to Surt's hot, thin atmosphere.
 	breath_type = /datum/gas/carbon_dioxide
