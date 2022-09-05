@@ -345,5 +345,5 @@
 
 	density = TRUE
 	anchored = TRUE
-	pass_flags_self = ATOM_PASS_THROWN
+	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_OVERHEAD_THROW
 	climbable = TRUE

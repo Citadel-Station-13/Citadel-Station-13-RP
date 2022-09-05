@@ -44,6 +44,7 @@
 			mob.control_object.forceMove(get_step(mob.control_object,direct))
 
 /mob/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
 	if(ismob(mover))
 		var/mob/moving_mob = mover
 		if ((other_mobs && moving_mob.other_mobs))
@@ -51,7 +52,9 @@
 	if(istype(mover, /obj/item/projectile))
 		var/obj/item/projectile/P = mover
 		return !P.can_hit_target(src, P.permutated, src == P.original, TRUE)
-	return (!mover.density || !density || lying)
+	// thrown things still hit us even when nondense
+	if(!mover.density && !mover.throwing)
+		return TRUE
 
 /**
   * Toggle the move intent of the mob

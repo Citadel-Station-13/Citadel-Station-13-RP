@@ -127,8 +127,8 @@ SUBSYSTEM_DEF(throwing)
 		initial_turf = T
 	init_dir = get_dir(thrownthing, target)
 
-	dist_x = abs(T.x - AM.x)
-	dist_y = abs(T.y - AM.y)
+	dist_x = abs(target_turf.x - AM.x)
+	dist_y = abs(target_turf.y - AM.y)
 	dx = (T.x > AM.x)? EAST : WEST
 	dy = (T.y > AM.y)? NORTH : SOUTH
 

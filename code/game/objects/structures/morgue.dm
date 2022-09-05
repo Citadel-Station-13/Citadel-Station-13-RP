@@ -158,7 +158,7 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "morguet"
 	density = TRUE
-	pass_flags_self = ATOM_PASS_THROWN
+	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_OVERHEAD_THROW
 	anchored = TRUE
 	plane = TURF_PLANE
 	var/obj/structure/morgue/connected = null

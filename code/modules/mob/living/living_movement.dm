@@ -42,7 +42,8 @@
 
 
 /mob/living/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover, /obj/structure/blob) && faction == "blob") //Blobs should ignore things on their faction.
+	// can't throw blob stuff through blob stuff
+	if(istype(mover, /obj/structure/blob) && faction == "blob" && !mover.throwing) //Blobs should ignore things on their faction.
 		return TRUE
 	return ..()
 

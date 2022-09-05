@@ -14,7 +14,7 @@
 	icon_state = "bed"
 	pressure_resistance = 15
 	anchored = TRUE
-	pass_flags_self = ATOM_PASS_TABLE
+	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
 	can_buckle = 1
 	buckle_dir = SOUTH
 	buckle_lying = 1

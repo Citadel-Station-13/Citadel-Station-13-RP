@@ -3,7 +3,7 @@
 	icon = 'icons/obj/hydroponics_machines.dmi'
 	icon_state = "hydrotray3"
 	density = TRUE
-	pass_flags_self = ATOM_PASS_TABLE
+	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
 	anchored = TRUE
 	flags = OPENCONTAINER
 	volume = 100
