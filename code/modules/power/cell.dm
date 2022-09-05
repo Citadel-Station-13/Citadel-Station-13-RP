@@ -96,6 +96,8 @@
 #undef OVERLAY_EMPTY
 
 /obj/item/cell/proc/percent()		// return % charge of cell
+	if(!maxcharge)
+		return 0
 	return 100.0*charge/maxcharge
 
 /obj/item/cell/proc/fully_charged()
