@@ -2247,6 +2247,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Virology Isolation"
 	icon_state = "virology"
 
+/area/medical/virologypurge
+	name = "\improper Virology Purge"
+	icon_state = "virology"
+
 /area/medical/virologytransitwest
 	name = "\improper Virology Transit Hub - West"
 	icon_state = "virology"
