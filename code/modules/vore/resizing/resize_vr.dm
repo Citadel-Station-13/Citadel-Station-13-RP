@@ -194,15 +194,15 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 	var/mob/living/carbon/human/H
 	var/datum/sprite_accessory/tail/taur/tail
 	tail = ishuman(src)? ((H = src) && isTaurTail(H.tail_style) && H.tail_style) : null
-	to_chat(src, STEP_TEXT_OWNER_NON_SHITCODE(tail?.msg_owner_help_run, micro) || "You carefully step over [micro].")
-	to_chat(micro, STEP_TEXT_PREY_NON_SHITCODE(tail?.msg_prey_help_run, src) || "[src] carefully steps over you.")
+	to_chat(src, tail? STEP_TEXT_OWNER_NON_SHITCODE(tail.msg_owner_help_run, micro) : "You carefully step over [micro].")
+	to_chat(micro, tail? STEP_TEXT_PREY_NON_SHITCODE(tail.msg_prey_help_run, src) : "[src] carefully steps over you.")
 
 /mob/living/proc/inform_someone_they_just_ran_under_you(mob/living/micro)
 	var/mob/living/carbon/human/H
 	var/datum/sprite_accessory/tail/taur/tail
 	tail = ishuman(src)? ((H = src) && isTaurTail(H.tail_style) && H.tail_style) : null
-	to_chat(micro, STEP_TEXT_PREY_NON_SHITCODE(tail?.msg_prey_stepunder, src)  || "You run between [src]'s legs.")
-	to_chat(src, STEP_TEXT_OWNER_NON_SHITCODE(tail?.msg_owner_stepunder, micro) || "[micro] runs between your legs.")
+	to_chat(micro, tail? STEP_TEXT_PREY_NON_SHITCODE(tail.msg_prey_stepunder, src) : "You run between [src]'s legs.")
+	to_chat(src, tail? STEP_TEXT_OWNER_NON_SHITCODE(tail.msg_owner_stepunder, micro) : "[micro] runs between your legs.")
 
 //! sigh, we can't do this yet
 /*
