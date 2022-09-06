@@ -1,0 +1,5 @@
+author: "Knightfall5"
+delete-after: True
+changes: 
+  - rscdel: "Removed unused, duplicate sprites"
+  - bugfix: "fixed clothing circuit cloning, teleporting through walls with railings"
