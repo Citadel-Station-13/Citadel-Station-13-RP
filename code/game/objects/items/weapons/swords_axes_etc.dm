@@ -314,7 +314,7 @@
 
 /obj/item/bo_staff/attack(mob/target, mob/living/user)
 	add_fingerprint(user)
-	if(!issilicon(target))
+	if(issilicon(target))
 		return ..()
 	if(!isliving(target))
 		return ..()

@@ -103,8 +103,9 @@ GLOBAL_LIST_EMPTY(ghostrole_spawnpoints)
 			qdel(src)
 		return
 	else
-		var/choice = input(user, "Are you certain you wish to activate this pod?", "Control Pod") as null|anything in list("Yes", "No")
-		if(!choice || choice == "No")
+		var/choice
+		tgui_alert(user, "Are you certain you wish to spawn as [role_type]?", "[role]")
+		if(choice == "No")
 			return
 		else
 			role.AttemptSpawn(user.client, src)

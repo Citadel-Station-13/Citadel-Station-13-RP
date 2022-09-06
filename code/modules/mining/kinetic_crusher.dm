@@ -1,8 +1,5 @@
 /*********************Mining Hammer****************/
 /obj/item/kinetic_crusher
-	name = "proto-kinetic crusher"
-	desc = "An early design of the proto-kinetic accelerator, it is little more than an combination of various mining tools cobbled together, forming a high-tech club. \
-	While it is an effective mining tool, it did little to aid any but the most skilled and/or suicidal miners against local fauna."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "crusher"
 	item_state = "crusher0"
@@ -10,79 +7,45 @@
 		slot_l_hand_str = 'icons/mob/inhands/weapons/hammers_lefthand.dmi',
 		slot_r_hand_str = 'icons/mob/inhands/weapons/hammers_righthand.dmi'
 		)
-	w_class = ITEMSIZE_HUGE
+	name = "proto-kinetic crusher"
+	desc = "An early design of the proto-kinetic accelerator, it is little more than an combination of various mining tools cobbled together, forming a high-tech club. \
+	While it is an effective mining tool, it did little to aid any but the most skilled and/or suicidal miners against local fauna."
+	force = 0 //You can't hit stuff unless wielded
+	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
 	throwforce = 5
 	throw_speed = 4
+/*
+	armour_penetration = 10
+	custom_materials = list(/datum/material/iron=1150, /datum/material/glass=2075)
+*/
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	drop_sound = 'sound/items/drop/sword.ogg'
-	pickup_sound = 'sound/items/pickup/sword.ogg'
 	attack_verb = list("smashed", "crushed", "cleaved", "chopped", "pulped")
 	sharp = TRUE
 	edge = TRUE
+	// sharpness = SHARP_EDGED
 	action_button_name = "Toggle Light"
-	var/requires_wield = TRUE
-	var/wielded = 0
-	var/force_wielded = 30
-	var/force_unwielded
-	var/base_icon = "crusher"
-	var/base_name = "proto-kinetic crusher"
+	// actions_types = list(/datum/action/item_action/toggle_light)
+	// var/list/trophies = list()
 	var/charged = TRUE
 	var/charge_time = 15
 	var/detonation_damage = 50
 	var/backstab_bonus = 30
 	var/light_on = FALSE
 	var/brightness_on = 7
+	var/wielded = FALSE // track wielded status on item
 	/// Damage penalty factor to detonation damage to non simple mobs
 	var/human_damage_nerf = 0.25
 	/// Damage penalty factor to backstab bonus damage to non simple mobs
 	var/human_backstab_nerf = 0.25
 	/// damage buff for throw impacts
 	var/thrown_bonus = 35
+	/// do we need to be wielded?
+	var/requires_wield = TRUE
 	/// do we have a charge overlay?
 	var/charge_overlay = TRUE
 	/// do we update item state?
 	var/update_item_state = FALSE
-
-/obj/item/kinetic_crusher/update_held_icon()
-	var/mob/living/M = loc
-	if(istype(M) && M.can_wield_item(src) && is_held_twohanded(M))
-		wielded = 1
-		force = force_wielded
-		name = "[base_name] (wielded)"
-		update_icon()
-	else
-		wielded = 0
-		force = force_unwielded
-		name = "[base_name]"
-	update_icon()
-	..()
-
-/obj/item/kinetic_crusher/Initialize(mapload)
-	. = ..()
-	update_icon()
-
-//Allow a small chance of parrying melee attacks when wielded - maybe generalize this to other weapons someday
-/obj/item/kinetic_crusher/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(wielded && default_parry_check(user, attacker, damage_source) && prob(15))
-		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
-		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
-		return 1
-	return 0
-
-/obj/item/material/twohanded/update_icon()
-	if(wielded)
-		icon_state = "[base_icon]1"
-		item_state = icon_state
-	else
-		icon_state = "[base_icon]"
-		item_state = icon_state
-
-/obj/item/kinetic_crusher/dropped(mob/user, flags, atom/newLoc)
-	..()
-	if(wielded)
-		spawn(0)
-			update_held_icon()
 
 /obj/item/kinetic_crusher/cyborg //probably give this a unique sprite later
 	desc = "An integrated version of the standard kinetic crusher with a grinded down axe head to dissuade mis-use against crewmen. Deals damage equal to the standard crusher against creatures, however."
@@ -100,7 +63,6 @@
 	if(requires_Wield)
 		RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/on_wield)
 		RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/on_unwield)
-
 /obj/item/kinetic_crusher/ComponentInitialize()
 	. = ..()
 	if(requires_wield)
@@ -286,7 +248,6 @@
 	block_parry_data = /datum/block_parry_data/crusherglaive
 	//ideas: altclick that lets you pummel people with the handguard/handle?
 	//parrying functionality?
-
 /datum/block_parry_data/crusherglaive // small perfect window, active for a fair while, time it right or use the Forbidden Technique
 	parry_time_windup = 0
 	parry_time_active = 8
@@ -297,7 +258,6 @@
 	parry_efficiency_to_counterattack = 100 // perfect parry or you're cringe
 	parry_failed_stagger_duration = 1.5 SECONDS // a good time to reconsider your actions...
 	parry_failed_clickcd_duration = 1.5 SECONDS // or your failures
-
 /obj/item/kinetic_crusher/glaive/on_active_parry(mob/living/owner, atom/object, damage, attack_text, attack_type, armour_penetration, mob/attacker, def_zone, list/block_return, parry_efficiency, parry_time) // if you're dumb enough to go for a parry...
 	var/turf/proj_turf = owner.loc // destabilizer bolt, ignoring cooldown
 	if(!isturf(proj_turf))
@@ -311,21 +271,17 @@
 	D.hammer_synced = src
 	playsound(owner, 'sound/weapons/plasma_cutter.ogg', 100, 1)
 	D.fire()
-
 /obj/item/kinetic_crusher/glaive/active_parry_reflex_counter(mob/living/owner, atom/object, damage, attack_text, attack_type, armour_penetration, mob/attacker, def_zone, list/return_list, parry_efficiency, list/effect_text)
 	if(owner.Adjacent(attacker) && (!attacker.anchored || ismegafauna(attacker))) // free backstab, if you perfect parry
 		attacker.dir = get_dir(owner,attacker)
-
 /// triggered on wield of two handed item
 /obj/item/kinetic_crusher/glaive/on_wield(obj/item/source, mob/user)
 	wielded = TRUE
 	item_flags |= (ITEM_CAN_PARRY)
-
 /// triggered on unwield of two handed item
 /obj/item/kinetic_crusher/glaive/on_unwield(obj/item/source, mob/user)
 	wielded = FALSE
 	item_flags &= ~(ITEM_CAN_PARRY)
-
 /obj/item/kinetic_crusher/glaive/update_icon_state()
 	item_state = "crusher[wielded]-glaive" // this is not icon_state and not supported by 2hcomponent
 */
@@ -395,20 +351,16 @@
 	icon_state = "tail_spike"
 	var/bonus_value = 10 //if it has a bonus effect, this is how much that effect is
 	var/denied_type = /obj/item/crusher_trophy
-
 /obj/item/crusher_trophy/examine(mob/living/user)
 	. = ..()
 	. += "<span class='notice'>Causes [effect_desc()] when attached to a kinetic crusher.</span>"
-
 /obj/item/crusher_trophy/proc/effect_desc()
 	return "errors"
-
 /obj/item/crusher_trophy/attackby(obj/item/A, mob/living/user)
 	if(istype(A, /obj/item/kinetic_crusher))
 		add_to(A, user)
 	else
 		..()
-
 /obj/item/crusher_trophy/proc/add_to(obj/item/kinetic_crusher/H, mob/living/user)
 	for(var/t in H.trophies)
 		var/obj/item/crusher_trophy/T = t
@@ -420,17 +372,14 @@
 	H.trophies += src
 	to_chat(user, "<span class='notice'>You attach [src] to [H].</span>")
 	return TRUE
-
 /obj/item/crusher_trophy/proc/remove_from(obj/item/kinetic_crusher/H, mob/living/user)
 	forceMove(get_turf(H))
 	H.trophies -= src
 	return TRUE
-
 /obj/item/crusher_trophy/proc/on_melee_hit(mob/living/target, mob/living/user) //the target and the user
 /obj/item/crusher_trophy/proc/on_projectile_fire(obj/item/projectile/destabilizer/marker, mob/living/user) //the projectile fired and the user
 /obj/item/crusher_trophy/proc/on_mark_application(mob/living/target, datum/status_effect/crusher_mark/mark, had_mark) //the target, the mark applied, and if the target had a mark before
 /obj/item/crusher_trophy/proc/on_mark_detonation(mob/living/target, mob/living/user) //the target and the user
-
 //goliath
 /obj/item/crusher_trophy/goliath_tentacle
 	name = "goliath tentacle"
@@ -440,17 +389,14 @@
 	bonus_value = 2
 	var/missing_health_ratio = 0.1
 	var/missing_health_desc = 10
-
 /obj/item/crusher_trophy/goliath_tentacle/effect_desc()
 	return "mark detonation to do <b>[bonus_value]</b> more damage for every <b>[missing_health_desc]</b> health you are missing"
-
 /obj/item/crusher_trophy/goliath_tentacle/on_mark_detonation(mob/living/target, mob/living/user)
 	var/missing_health = user.health - user.maxHealth
 	missing_health *= missing_health_ratio //bonus is active at all times, even if you're above 90 health
 	missing_health *= bonus_value //multiply the remaining amount by bonus_value
 	if(missing_health > 0)
 		target.adjustBruteLoss(missing_health) //and do that much damage
-
 /*
 //watcher
 /obj/item/crusher_trophy/watcher_wing
@@ -459,10 +405,8 @@
 	icon_state = "watcher_wing"
 	denied_type = /obj/item/crusher_trophy/watcher_wing
 	bonus_value = 10
-
 /obj/item/crusher_trophy/watcher_wing/effect_desc()
 	return "mark detonation to prevent certain creatures from using certain attacks for <b>[bonus_value*0.1]</b> second\s"
-
 /obj/item/crusher_trophy/watcher_wing/on_mark_detonation(mob/living/target, mob/living/user)
 	if(ishostile(target))
 		var/mob/living/simple_animal/hostile/H = target
@@ -471,7 +415,6 @@
 				H.ranged_cooldown += bonus_value
 			else
 				H.ranged_cooldown = bonus_value + world.time
-
 //magmawing watcher
 /obj/item/crusher_trophy/blaster_tubes/magma_wing
 	name = "magmawing watcher wing"
@@ -479,10 +422,8 @@
 	icon_state = "magma_wing"
 	gender = NEUTER
 	bonus_value = 5
-
 /obj/item/crusher_trophy/blaster_tubes/magma_wing/effect_desc()
 	return "mark detonation to make the next destabilizer shot deal <b>[bonus_value]</b> damage"
-
 /obj/item/crusher_trophy/blaster_tubes/magma_wing/on_projectile_fire(obj/item/projectile/destabilizer/marker, mob/living/user)
 	if(deadly_shot)
 		marker.name = "heated [marker.name]"
@@ -490,7 +431,6 @@
 		marker.damage = bonus_value
 		marker.nodamage = FALSE
 		deadly_shot = FALSE
-
 //icewing watcher
 /obj/item/crusher_trophy/watcher_wing/ice_wing
 	name = "icewing watcher wing"
@@ -498,7 +438,6 @@
 	icon_state = "ice_wing"
 	bonus_value = 8
 */
-
 //legion
 /obj/item/crusher_trophy/legion_skull
 	name = "legion skull"
@@ -506,20 +445,16 @@
 	icon_state = "legion_skull"
 	denied_type = /obj/item/crusher_trophy/legion_skull
 	bonus_value = 3
-
 /obj/item/crusher_trophy/legion_skull/effect_desc()
 	return "a kinetic crusher to recharge <b>[bonus_value*0.1]</b> second\s faster"
-
 /obj/item/crusher_trophy/legion_skull/add_to(obj/item/kinetic_crusher/H, mob/living/user)
 	. = ..()
 	if(.)
 		H.charge_time -= bonus_value
-
 /obj/item/crusher_trophy/legion_skull/remove_from(obj/item/kinetic_crusher/H, mob/living/user)
 	. = ..()
 	if(.)
 		H.charge_time += bonus_value
-
 /*
 //blood-drunk hunter
 /obj/item/crusher_trophy/miner_eye
@@ -527,24 +462,19 @@
 	desc = "Its pupil is collapsed and turned to mush. Suitable as a trophy for a kinetic crusher."
 	icon_state = "hunter_eye"
 	denied_type = /obj/item/crusher_trophy/miner_eye
-
 /obj/item/crusher_trophy/miner_eye/effect_desc()
 	return "mark detonation to grant stun immunity and <b>90%</b> damage reduction for <b>1</b> second"
-
 /obj/item/crusher_trophy/miner_eye/on_mark_detonation(mob/living/target, mob/living/user)
 	user.apply_status_effect(STATUS_EFFECT_BLOODDRUNK)
 */
-
 /*
 //ash drake
 /obj/item/crusher_trophy/tail_spike
 	desc = "A spike taken from an ash drake's tail. Suitable as a trophy for a kinetic crusher."
 	denied_type = /obj/item/crusher_trophy/tail_spike
 	bonus_value = 5
-
 /obj/item/crusher_trophy/tail_spike/effect_desc()
 	return "mark detonation to do <b>[bonus_value]</b> damage to nearby creatures and push them back"
-
 /obj/item/crusher_trophy/tail_spike/on_mark_detonation(mob/living/target, mob/living/user)
 	for(var/mob/living/L in oview(2, user))
 		if(L.stat == DEAD)
@@ -553,12 +483,10 @@
 		new /obj/effect/temp_visual/fire(L.loc)
 		addtimer(CALLBACK(src, .proc/pushback, L, user), 1) //no free backstabs, we push AFTER module stuff is done
 		L.adjustFireLoss(bonus_value, forced = TRUE)
-
 /obj/item/crusher_trophy/tail_spike/proc/pushback(mob/living/target, mob/living/user)
 	if(!QDELETED(target) && !QDELETED(user) && (!target.anchored || ismegafauna(target))) //megafauna will always be pushed
 		step(target, get_dir(user, target))
 */
-
 //bubblegum
 /obj/item/crusher_trophy/demon_claws
 	name = "demon claws"
@@ -568,10 +496,8 @@
 	denied_type = /obj/item/crusher_trophy/demon_claws
 	bonus_value = 10
 	var/static/list/damage_heal_order = list(BRUTE, BURN, OXY)
-
 /obj/item/crusher_trophy/demon_claws/effect_desc()
 	return "melee hits to do <b>[bonus_value * 0.2]</b> more damage and heal you for <b>[bonus_value * 0.1]</b>, with <b>5X</b> effect on mark detonation"
-
 /obj/item/crusher_trophy/demon_claws/add_to(obj/item/kinetic_crusher/H, mob/living/user)
 	. = ..()
 	if(.)
@@ -579,7 +505,6 @@
 		H.detonation_damage += bonus_value * 0.8
 		if(requires_wield)
 			AddComponent(/datum/component/two_handed, force_wielded=(20 + bonus_value * 0.2))
-
 /obj/item/crusher_trophy/demon_claws/remove_from(obj/item/kinetic_crusher/H, mob/living/user)
 	. = ..()
 	if(.)
@@ -587,15 +512,12 @@
 		H.detonation_damage -= bonus_value * 0.8
 		if(requires_wield)
 			AddComponent(/datum/component/two_handed, force_wielded=20)
-
 /*
 /obj/item/crusher_trophy/demon_claws/on_melee_hit(mob/living/target, mob/living/user)
 	user.heal_ordered_damage(bonus_value * 0.1, damage_heal_order)
-
 /obj/item/crusher_trophy/demon_claws/on_mark_detonation(mob/living/target, mob/living/user)
 	user.heal_ordered_damage(bonus_value * 0.4, damage_heal_order)
 */
-
 //colossus
 /obj/item/crusher_trophy/blaster_tubes
 	name = "blaster tubes"
@@ -605,10 +527,8 @@
 	denied_type = /obj/item/crusher_trophy/blaster_tubes
 	bonus_value = 15
 	var/deadly_shot = FALSE
-
 /obj/item/crusher_trophy/blaster_tubes/effect_desc()
 	return "mark detonation to make the next destabilizer shot deal <b>[bonus_value]</b> damage but move slower"
-
 /obj/item/crusher_trophy/blaster_tubes/on_projectile_fire(obj/item/projectile/destabilizer/marker, mob/living/user)
 	if(deadly_shot)
 		marker.name = "deadly [marker.name]"
@@ -617,14 +537,11 @@
 		marker.nodamage = FALSE
 		marker.speed = 2
 		deadly_shot = FALSE
-
 /obj/item/crusher_trophy/blaster_tubes/on_mark_detonation(mob/living/target, mob/living/user)
 	deadly_shot = TRUE
 	addtimer(CALLBACK(src, .proc/reset_deadly_shot), 300, TIMER_UNIQUE|TIMER_OVERRIDE)
-
 /obj/item/crusher_trophy/blaster_tubes/proc/reset_deadly_shot()
 	deadly_shot = FALSE
-
 //hierophant
 /obj/item/crusher_trophy/vortex_talisman
 	name = "vortex talisman"
@@ -632,10 +549,8 @@
 	icon_state = "vortex_talisman"
 	denied_type = /obj/item/crusher_trophy/vortex_talisman
 	var/vortex_cd
-
 /obj/item/crusher_trophy/vortex_talisman/effect_desc()
 	return "mark detonation to create a barrier you can pass that lasts for <b>7.5 seconds</b>, with a cooldown of <b>9 seconds</b> after creation."
-
 /obj/item/crusher_trophy/vortex_talisman/on_mark_detonation(mob/living/target, mob/living/user)
 	if(vortex_cd >= world.time)
 		return
@@ -648,7 +563,6 @@
 	if(otherT)
 		new /obj/effect/temp_visual/hierophant/wall/crusher(otherT, user)
 	vortex_cd = world.time + W.duration * 1.2
-
 /obj/effect/temp_visual/hierophant/wall/crusher
 	duration = 75
 */
@@ -660,8 +574,6 @@
 	Still an effective mining tool, it provides marginally better support as a defensive weapon."
 	icon_state = "crusher-glaive"
 	item_state = "crusher0-glaive"
-	base_icon = "crusher-glaive"
-	base_name = "kinetic crusher glaive"
 	throwforce = 10
 
 /obj/item/kinetic_crusher/glaive/bone
@@ -669,6 +581,4 @@
 	desc = "Crusher glaives were utilized by the Ashlanders long before the colonization of Surt. However, through rare cultural exchanges and trades, \
 	the tribes have learned how to enhance the basic bone glaive with their own curious technology - effectively mimicking the kinetic crusher's utility."
 	icon_state = "crusher-bone"
-	base_icon = "crusher-bone"
-	base_name = "bone crusher glaive"
 	throwforce = 10

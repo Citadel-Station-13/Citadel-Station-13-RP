@@ -55,11 +55,6 @@
 /datum/ghostrole_instantiator/human/random/species/ashlander/AfterSpawn(mob/living/carbon/human/H)
 	PickAppearance(H)
 
-/datum/ghostrole_instantiator/human/random/species/ashlander/proc/PickAppearance(mob/living/carbon/human/H)
-	var/new_name = input(H, "Your mind feels foggy, and you recall your name might be [H.real_name]. Would you like to change your name?")
-	H.fully_replace_character_name(H.real_name, new_name)
-	H.change_appearance(APPEARANCE_ALL, H.loc, check_species_whitelist = 1)
-
 /datum/ghostrole_instantiator/human/random/species/ashlander/GetOutfit(client/C, mob/M, list/params)
 	var/datum/outfit/outfit = ..()
 	switch(params["fluff"])
