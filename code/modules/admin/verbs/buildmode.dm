@@ -310,25 +310,34 @@
 				var/turf/T = object
 				if(istype(object,/turf/space) || istype(object, /turf/simulated/open))
 					T.ChangeTurf(/turf/simulated/floor/plating)
+					log_admin("[key_name(usr)] created 1 plating at [COORD(T)]")
 					return
 				else if(istype(object, /turf/simulated/floor/outdoors))
+					log_admin("[key_name(usr)] created 1 plating at [COORD(T)]")
 					T.PlaceOnTop(/turf/simulated/floor/plating)
 					return
 				else if(istype(object,/turf/simulated/floor))
+					log_admin("[key_name(usr)] created 1 wall at [COORD(T)]")
 					T.PlaceOnTop(/turf/simulated/wall)
 					return
 				else if(istype(object,/turf/simulated/wall))
+					log_admin("[key_name(usr)] created 1 rwall at [COORD(T)]")
 					T.ChangeTurf(/turf/simulated/wall/r_wall)
 					return
 			else if(pa.Find("right"))
 				if(istype(object, /turf))
 					var/turf/T = object
+					log_admin("[key_name(usr)] tore away 1 [T] at [COORD(T)]")
 					T.ScrapeAway()
 					return
 				else if(istype(object,/obj))
+					var/TC = get_turf(object)
+					log_admin("[key_name(usr)] deleted [object] at [COORD(TC)]")
 					qdel(object)
 					return
 			else if(istype(object,/turf) && pa.Find("alt") && pa.Find("left"))
+				var/turf/TC = get_turf(object)
+				log_admin("[key_name(usr)] made an airlock at [COORD(TC)]")
 				new/obj/machinery/door/airlock(get_turf(object))
 			else if(istype(object,/turf) && pa.Find("ctrl") && pa.Find("left"))
 				switch(holder.builddir.dir)
@@ -347,14 +356,18 @@
 					if(NORTHWEST)
 						var/obj/structure/window/reinforced/WIN = new/obj/structure/window/reinforced(get_turf(object))
 						WIN.setDir(NORTHWEST)
+				var/turf/TC = get_turf(object)
+				log_admin("[key_name(usr)] made a window at [COORD(TC)]")
 		if(2) // Adv. Build
 			if(pa.Find("left") && !pa.Find("ctrl"))
+				var/turf/TC = get_turf(object)
 				if(ispath(holder.buildmode.objholder,/turf))
 					var/turf/T = get_turf(object)
 					T.ChangeTurf(holder.buildmode.objholder)
 				else
 					var/obj/A = new holder.buildmode.objholder (get_turf(object))
 					A.setDir(holder.builddir.dir)
+				log_admin("[key_name(usr)] made 1 [holder.buildmode.objholder] at [COORD(TC)]")
 			else if(pa.Find("right"))
 				if(isobj(object))
 					qdel(object)
@@ -406,6 +419,7 @@
 					holder.buildmode.floor_holder
 					)
 				holder.buildmode.coordA = null
+				log_admin("[key_name(usr)] mass-built [AREACOORD(coordA)] to [AREACOORD(coordB)] with [wall_holder] [floor_holder]")
 				holder.buildmode.coordB = null
 		if(6) // Ladders
 			if(pa.Find("left"))
@@ -426,6 +440,7 @@
 				B.update_icon()
 				holder.buildmode.coordA = null
 				holder.buildmode.coordB = null
+				log_admin("[key_name(usr)] built ladders at [AREACOORD(coordA)], [AREACOORD(coordB)]")
 		if(7) // Move into contents
 			if(pa.Find("left"))
 				if(istype(object, /atom))
@@ -438,9 +453,11 @@
 			if(pa.Find("left"))
 				if(object)
 					object.set_light(holder.buildmode.new_light_range, holder.buildmode.new_light_intensity, holder.buildmode.new_light_color)
+					log_admin("[key_name(usr)] set light [object] at [AREACOORD(object)] to [new_light_range]/[new_light_intensity]/[new_light_color]")
 			if(pa.Find("right"))
 				if(object)
 					object.set_light(0, 0, "#FFFFFF")
+					log_admin("[key_name(usr)] reset light [object] at [AREACOORD(object)]")
 		if(9) // AI control
 			if(pa.Find("left"))
 				if(isliving(object))
@@ -487,6 +504,7 @@
 							AI.give_target(A)
 							i++
 						to_chat(user, SPAN_NOTICE("Commanded [i] mob\s to attack \the [A]."))
+						log_admin("[key_name(usr)] buildmode AI: Commanded [i] mob\s to attack \the [A].")
 						return
 
 				if(isliving(object)) // Follow or attack.
@@ -511,6 +529,7 @@
 					if(j)
 						message += "[j] mob\s to follow \the [L]."
 					to_chat(user, SPAN_NOTICE(message))
+					log_admin("[key_name(usr)] buildmode AI: [message]")
 
 				if(isturf(object)) // Move or reposition.
 					var/turf/T = object
@@ -520,7 +539,7 @@
 						AI.give_destination(T, 1, pa.Find("shift")) // If shift is held, the mobs will not stop moving to attack a visible enemy.
 						i++
 					to_chat(user, SPAN_NOTICE("Commanded [i] mob\s to move to \the [T]."))
-
+					log_admin("[key_name(usr)] buildmode AI: Commanded [i] mob\s to move to \the [T].")
 
 /obj/effect/bmode/buildmode/proc/get_path_from_partial_text(default_path)
 	var/desired_path = input("Enter full or partial typepath.","Typepath","[default_path]")
