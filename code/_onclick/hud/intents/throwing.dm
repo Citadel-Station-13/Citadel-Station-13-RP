@@ -1,6 +1,7 @@
 /atom/movable/screen/hud/throwmode
 	name = "throw"
 	desc = "Toggles throwmode. Shift + click to overhand throw."
+	icon_state = "act_throw_off"
 	screen_loc = ui_drop_throw
 
 /atom/movable/screen/hud/throwmode/clicked(mob/user)
