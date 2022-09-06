@@ -103,8 +103,7 @@ GLOBAL_LIST_EMPTY(ghostrole_spawnpoints)
 			qdel(src)
 		return
 	else
-		var/choice
-		tgui_alert(user, "Are you certain you wish to spawn as [role_type]?", "[role]")
+		var/choice = tgui_alert(user, "Are you certain you wish to spawn as [role_type]?", "Ghost Role Selection", list("Yes", "No"))
 		if(choice == "No")
 			return
 		else
