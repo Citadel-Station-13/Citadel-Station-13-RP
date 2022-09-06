@@ -378,7 +378,8 @@ SUBSYSTEM_DEF(throwing)
 /datum/thrownthing/proc/get_damage_multiplier()
 	if(thrownthing.movable_flags & MOVABLE_NO_THROW_DAMAGE_SCALING)
 		return 1
-	return clamp((speed / max(thrownthing.throw_speed, 0.01)) ** thrownthing.throw_damage_scaling_exponent, 0, MAX_THROWING_DAMAGE_MULTIPLIER)
+	. = clamp((speed / max(thrownthing.throw_speed, 0.01)) ** thrownthing.throw_damage_scaling_exponent, 0, MAX_THROWING_DAMAGE_MULTIPLIER)
+	if(. )
 
 /**
  * simulated thrownthing datums
