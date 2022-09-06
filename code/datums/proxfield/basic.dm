@@ -28,6 +28,7 @@
 	if(has < needed)
 		for(var/i in has + 1 to needed)
 			checkers += new /atom/movable/proximity_checker/basic(creating[i], src)
+
 	else if(has > needed)
 		for(var/i in needed + 1 to has)
 			qdel(checkers[i])

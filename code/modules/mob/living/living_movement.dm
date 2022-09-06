@@ -96,10 +96,13 @@
 		return
 	_pushing_bumped_atom = TRUE
 	if(isliving(A) && handle_living_bump(A))
+		_pushing_bumped_atom = FALSE
 		return
 	if(isobj(A) && handle_obj_bump(A))
+		_pushing_bumped_atom = FALSE
 		return
 	if(ismovable(A) && handle_movable_bump(A))
+		_pushing_bumped_atom = FALSE
 		return
 	_pushing_bumped_atom = FALSE
 
@@ -203,10 +206,13 @@
 	var/atom/movable/old_pulling = pulling
 
 	if(move_onto)
+		pass_flags |= ATOM_PASS_MOB
 		if(!Move(their_old_loc))
 			forceMove(src_old_loc)
 			move_failed = TRUE
 	else
+		pass_flags |= ATOM_PASS_MOB
+		them.pass_flags |= ATOM_PASS_MOB
 		if(!them.Move(src_old_loc) || !Move(their_old_loc))
 			forceMove(src_old_loc)
 			them.forceMove(their_old_loc)
