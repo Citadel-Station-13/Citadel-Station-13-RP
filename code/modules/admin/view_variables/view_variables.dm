@@ -37,8 +37,8 @@
 	else if(islist(D))
 		vtype = VVING_A_LIST
 		type = /list
-		header = list("<b>/list</b>")
-		title = "/list"
+		header = list("<b>/list [ref]</b>")
+		title = "/list [ref]"
 		dropdownoptions = list(
 			"---",
 			"Add Item" = VV_HREF_TARGETREF_INTERNAL(refid, VV_HK_LIST_ADD),
@@ -56,8 +56,8 @@
 	else if(IS_APPEARANCE(D))
 		vtype = VVING_A_APPEARANCE
 		type = /appearance
-		header = list("<b>virtual appearance")
-		title = "virtual appearance"
+		header = list("<b>(virtual) appearance [ref]</b>")
+		title = "virtual appearance [ref]"
 		dropdownoptions = list()
 	else
 		to_chat(usr, "Invalid vtype.")
