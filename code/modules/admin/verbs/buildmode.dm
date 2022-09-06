@@ -331,7 +331,7 @@
 					T.ScrapeAway()
 					return
 				else if(istype(object,/obj))
-					var/TC = get_turf(object)
+					var/turf/TC = get_turf(object)
 					log_admin("[key_name(usr)] deleted [object] at [COORD(TC)]")
 					qdel(object)
 					return
@@ -419,7 +419,7 @@
 					holder.buildmode.floor_holder
 					)
 				holder.buildmode.coordA = null
-				log_admin("[key_name(usr)] mass-built [AREACOORD(coordA)] to [AREACOORD(coordB)] with [wall_holder] [floor_holder]")
+				log_admin("[key_name(usr)] mass-built [AREACOORD(holder.buildmode.coordA)] to [AREACOORD(holder.buildmode.coordB)] with [holder.buildmode.wall_holder] [holder.buildmode.floor_holder]")
 				holder.buildmode.coordB = null
 		if(6) // Ladders
 			if(pa.Find("left"))
@@ -440,7 +440,7 @@
 				B.update_icon()
 				holder.buildmode.coordA = null
 				holder.buildmode.coordB = null
-				log_admin("[key_name(usr)] built ladders at [AREACOORD(coordA)], [AREACOORD(coordB)]")
+				log_admin("[key_name(usr)] built ladders at [AREACOORD(holder.buildmode.coordA)], [AREACOORD(holder.buildmode.coordB)]")
 		if(7) // Move into contents
 			if(pa.Find("left"))
 				if(istype(object, /atom))
@@ -453,7 +453,7 @@
 			if(pa.Find("left"))
 				if(object)
 					object.set_light(holder.buildmode.new_light_range, holder.buildmode.new_light_intensity, holder.buildmode.new_light_color)
-					log_admin("[key_name(usr)] set light [object] at [AREACOORD(object)] to [new_light_range]/[new_light_intensity]/[new_light_color]")
+					log_admin("[key_name(usr)] set light [object] at [AREACOORD(object)] to [holder.buildmode.new_light_range]/[holder.buildmode.new_light_intensity]/[holder.buildmode.new_light_color]")
 			if(pa.Find("right"))
 				if(object)
 					object.set_light(0, 0, "#FFFFFF")
