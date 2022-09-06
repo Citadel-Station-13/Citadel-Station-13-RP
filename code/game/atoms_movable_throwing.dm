@@ -14,7 +14,7 @@
 	return NONE
 
 /atom/movable/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
-	if(!anchored && (TT?.force >= (move_resist * MOVE_FORCE_PUSH_RATIO)))
+	if(!anchored && (TT?.force >= (move_resist * MOVE_FORCE_PUSH_RATIO)) && !(TT.throw_flags & THROW_AT_OVERHAND))
 		step(src, AM.dir)
 	return ..()
 
