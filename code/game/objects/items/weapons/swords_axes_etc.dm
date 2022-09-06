@@ -314,13 +314,11 @@
 
 /obj/item/bo_staff/attack(mob/target, mob/living/user)
 	add_fingerprint(user)
-	if(issilicon(target))
-		return ..()
-	if(!isliving(target))
-		return ..()
-	if(user.a_intent == INTENT_DISARM)
-		if(!ishuman(target))
-			return ..()
+	if(!ishuman(target))
+		return
+	if(user.a_intent != INTENT_DISARM)
+		return
+	else
 		var/mob/living/carbon/human/H = target
 		var/list/fluffmessages = list("[user] clubs [H] with [src]!", \
 									  "[user] smacks [H] with the butt of [src]!", \
@@ -333,5 +331,4 @@
 		playsound(get_turf(user), 'sound/effects/woodhit.ogg', 75, 1, -1)
 		if(prob(25))
 			(INVOKE_ASYNC(src, .proc/jedi_spin, user))
-	else
-		return ..()
+			return ..()

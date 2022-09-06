@@ -52,9 +52,6 @@
 		/datum/species/scori
 	)
 
-/datum/ghostrole_instantiator/human/random/species/ashlander/AfterSpawn(mob/living/carbon/human/H)
-	PickAppearance(H)
-
 /datum/ghostrole_instantiator/human/random/species/ashlander/GetOutfit(client/C, mob/M, list/params)
 	var/datum/outfit/outfit = ..()
 	switch(params["fluff"])
