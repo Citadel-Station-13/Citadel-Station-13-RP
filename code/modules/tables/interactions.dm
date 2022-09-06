@@ -4,21 +4,21 @@
 		return
 	if(istype(mover,/obj/item/projectile))
 		return check_cover(mover,target)
-	if(flipped)
+	if(flipped == 1)
 		if(get_dir(loc, target) == dir)
 			return FALSE
 		return TRUE
 	for(var/obj/structure/table/T in get_turf(mover))
 		if(istype(T, /obj/structure/table/bench))
 			continue
-		if(T.flipped)
+		if(T.flipped == 1)
 			continue
 		return TRUE
 
 /obj/structure/table/CheckExit(atom/movable/AM, atom/newLoc)
 	if(check_standard_flag_pass(AM))
 		return TRUE
-	if(!flipped)
+	if(flipped != 1)
 		return TRUE
 	return !density || (get_dir(loc, newLoc) == dir)
 
