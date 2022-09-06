@@ -267,15 +267,6 @@ obj/item/pickaxe/tyrmalin/proc/turnOn(mob/user as mob)
 	edge = 1
 	var/digspeed = 40
 
-/obj/item/shovel/spade
-	name = "spade"
-	desc = "A small tool for digging and moving dirt."
-	icon_state = "spade"
-	item_state = "spade"
-	force = 5.0
-	throwforce = 7.0
-	w_class = ITEMSIZE_SMALL
-
 /obj/item/shovel/bone
 	name = "serrated bone shovel"
 	desc = "A wicked tool that cleaves through dirt just as easily as it does flesh. The design was styled after ancient tribal designs."
@@ -287,6 +278,20 @@ obj/item/pickaxe/tyrmalin/proc/turnOn(mob/user as mob)
 	attack_verb = list("slashed", "impaled", "stabbed", "sliced")
 	sharp = 1
 
+/obj/item/shovel/spade
+	name = "spade"
+	desc = "A small tool for digging and moving dirt."
+	icon_state = "spade"
+	item_state = "spade"
+	force = 5.0
+	throwforce = 7.0
+	w_class = ITEMSIZE_SMALL
+
+/obj/item/shovel/spade/bone
+	name = "primitive spade"
+	desc = "A small shove cruedly fashioned out of some beast's scapula."
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "spade_bone"
 
 /**********************Mining car (Crate like thing, not the rail car)**************************/
 

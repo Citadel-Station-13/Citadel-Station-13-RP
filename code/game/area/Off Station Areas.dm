@@ -634,6 +634,9 @@
 /area/lavaland/idleruins
 	name = "Lava Land - Idle Ruins"
 
+/area/lavaland/ashlander_camp
+	name = "Lava Land - Ashlander Camp"
+
 /area/lavaland/bosses
 	name = "Lava Land - Boss"
 	requires_power = 0
