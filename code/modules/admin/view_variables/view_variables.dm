@@ -56,7 +56,7 @@
 	else if(IS_APPEARANCE(D))
 		vtype = VVING_A_APPEARANCE
 		type = /appearance
-		header = list("<b>(virtual) appearance [ref]</b>")
+		header = list("<b>virtual appearance [ref]</b>")
 		title = "virtual appearance [ref]"
 		dropdownoptions = list()
 	else
