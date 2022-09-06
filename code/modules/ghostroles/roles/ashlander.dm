@@ -6,7 +6,7 @@
 	instantiator = /datum/ghostrole_instantiator/human/random/species/ashlander
 
 /datum/ghostrole/ashlander/Instantiate(client/C, atom/loc, list/params)
-	var/rp = rand(1, 3)
+	var/rp = rand(1, 4)
 	switch(rp)
 		if(1)
 			params["fluff"] = "nomad"
@@ -14,6 +14,8 @@
 			params["fluff"] = "hunter"
 		if(3)
 			params["fluff"] = "exile"
+		if(4)
+			params["fluff"] = "guardian"
 	return ..()
 
 /datum/ghostrole/ashlander/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
@@ -37,7 +39,12 @@
 			flavour_text += "<i>You had always imagined yourself a good steward. Loyal to the [pick("tribe", "caravan")], it came as a great shock to you and your \
 			kinsmen when the priests declared you a sinner. For the crime of [pick("murder", "theft", "blasphemy")] you were cast out. Left with nothing but your \
 			wits and your strength, you have long traversed this world alone. The brand on your chest marks you among all who may find you - Exile. This simple \
-			yurt has become your latest haven. Rarely do others come across you here, a blessing, and a curse.</i>"
+			yurt has become your latest haven. Rarely do others come across you here - a blessing, and a curse.</i>"
+		if("guardian") //Credit to YourDoom for writing this one! <3
+			flavour_text += "<i>You were one of the [pick("tribe", "caravan")]'s most reliable guards. It was your sacred duty to keep the Mother's \
+			more dangerous children away from those you called family. However, the new threat of the Corrupted has thrown daily life into disarray. The priests \
+			believe these abominations are the harbingers of an impending cataclysm - they were right. A twisted horde of Corrupted overwhelmed your post as \
+			you slept. In the ensuing battle, a tunnel collapse separated you from your charges. Alone, you shelter in this yurt and wait for your kin to return.</i>"
 	to_chat(created, flavour_text)
 
 /datum/ghostrole_instantiator/human/random/species/ashlander
@@ -46,6 +53,9 @@
 	)
 
 /datum/ghostrole_instantiator/human/random/species/ashlander/AfterSpawn(mob/living/carbon/human/H)
+	PickAppearance(H)
+
+/datum/ghostrole_instantiator/human/random/species/ashlander/proc/PickAppearance(mob/living/carbon/human/H)
 	var/new_name = input(H, "Your mind feels foggy, and you recall your name might be [H.real_name]. Would you like to change your name?")
 	H.fully_replace_character_name(H.real_name, new_name)
 	H.change_appearance(APPEARANCE_ALL, H.loc, check_species_whitelist = 1)
@@ -57,7 +67,8 @@
 			outfit.uniform = /obj/item/clothing/under/tribal_tunic/ashlander
 			outfit.shoes = /obj/item/clothing/shoes/footwraps
 			outfit.belt = /obj/item/material/knife/tacknife/combatknife/bone
-			outfit.back = /obj/item/material/twohanded/spear/bone
+			outfit.back = /obj/item/storage/backpack/satchel/bone
+			outfit.r_hand = /obj/item/material/twohanded/spear/bone
 		if("hunter")
 			outfit.uniform = /obj/item/clothing/under/gladiator/ashlander
 			outfit.head = /obj/item/clothing/head/helmet/gladiator/ashlander
@@ -69,6 +80,11 @@
 			outfit.uniform = /obj/item/clothing/under/tribal_tunic/ashlander
 			outfit.belt = /obj/item/material/knife/tacknife/combatknife/bone
 			outfit.back = /obj/item/bo_staff
+		if("guardian") //This is the role that might get the musket, for future reference. Loadout is smaller for now.
+			outfit.uniform = /obj/item/clothing/under/gladiator/ashlander
+			outfit.shoes = /obj/item/clothing/shoes/ashwalker
+			outfit.back = /obj/item/storage/backpack/satchel/bone
+			outfit.r_hand = /obj/item/material/knife/tacknife/combatknife/bone
 	return outfit
 
 /obj/structure/ghost_role_spawner/ashlander
@@ -82,11 +98,12 @@
 	role_spawns = 1
 	//var/datum/team/ashlanders/team
 
+/*
 /obj/structure/ghost_role_spawner/ashlander/Destroy()
-	// new /obj/structure/fluff/empty_cryostasis_sleeper(get_turf(src))
+	new /obj/structure/fluff/empty_cryostasis_sleeper(get_turf(src))
 	return ..()
 
-/* This all appears to be /tg/ flavored stuff. Retaining in case we want to use it later.
+//This all appears to be /tg/ flavored stuff. Retaining in case we want to use it later.
 	var/turf/T = get_turf(created)
 	if(is_mining_level(T.z))
 		to_chat(created, "<b>Drag the corpses of men and beasts to your yurt. The bounty may attract more of your tribe. Glory to the Buried Ones!</b>")
