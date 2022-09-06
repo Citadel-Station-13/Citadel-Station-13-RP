@@ -94,7 +94,7 @@
  */
 /datum/ghostrole_instantiator/human/random/AfterSpawn(mob/created, mob/living/carbon/human/H, list/params)
 	. = ..()
-	if(can_change_appearance)
+	if(can_change_appearance) //I think it's either this or the line above.
 		INVOKE_ASYNC(src, /datum/ghostrole_instantiator/human/random/proc/PickAppearance, H, params)
 
 /datum/ghostrole_instantiator/human/random/proc/PickAppearance(mob/living/carbon/human/H)
