@@ -105,16 +105,18 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 	else
 		//The current admin system uses SQL
 
-		establish_db_connection()
-		if(!dbcon.IsConnected())
+		if(!SSdbcore.Connect())
 			log_world("Failed to connect to database in load_admins(). Reverting to legacy system.")
 			log_misc("Failed to connect to database in load_admins(). Reverting to legacy system.")
 			config_legacy.admin_legacy_system = 1
 			load_admins()
 			return
 
-		var/DBQuery/query = dbcon.NewQuery("SELECT ckey, rank, level, flags FROM erro_admin")
-		query.Execute()
+		var/datum/db_query/query = SSdbcore.RunQuery(
+			"SELECT ckey, rank, level, flags FROM [format_table_name("admin")]",
+			list()
+		)
+
 		while(query.NextRow())
 			var/ckey = query.item[1]
 			var/rank = query.item[2]

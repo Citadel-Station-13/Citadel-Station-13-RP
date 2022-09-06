@@ -9,7 +9,7 @@
 	w_class = ITEMSIZE_SMALL
 	var/obj/item/stored_item = null
 
-/obj/item/evidencebag/MouseDrop(var/obj/item/I as obj)
+/obj/item/evidencebag/OnMouseDropLegacy(var/obj/item/I as obj)
 	if (!ishuman(usr))
 		return
 	if(!istype(I) || I.anchored)
@@ -30,8 +30,8 @@
 			var/obj/item/storage/U = I.loc
 			user.client.screen -= I
 			U.contents.Remove(I)
-		else if(user.item_is_in_hands(I))
-			user.drop_from_inventory(I)
+		else if(user.is_holding(I))
+			user.transfer_item_to_loc(I, src)
 		else
 			return
 

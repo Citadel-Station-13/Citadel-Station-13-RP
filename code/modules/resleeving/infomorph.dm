@@ -240,13 +240,12 @@ var/list/infomorph_emotions = list(
 					affecting.implants -= card
 					H.visible_message("<span class='danger'>\The [src] explodes out of \the [H]'s [affecting.name] in shower of gore!</span>")
 					break
-		holder.drop_from_inventory(card)
 	/*
 	if(src.client)
 		src.client.perspective = EYE_PERSPECTIVE
 		src.client.eye = src
 	*/
-	src.forceMove(get_turf(card))
+	forceMove(get_turf(card))
 	card.forceMove(src)
 	card.screen_loc = null
 
@@ -289,17 +288,12 @@ var/list/infomorph_emotions = list(
 	// If we are being held, handle removing our holder from their inv.
 	var/obj/item/holder/H = loc
 	if(istype(H))
-		var/mob/living/M = H.loc
-		if(istype(M))
-			M.drop_from_inventory(H)
-		H.loc = get_turf(src)
-		src.loc = get_turf(H)
+		H.forceMove(get_turf(src))
+		forceMove(H.loc)
 
 	// Move us into the card and move the card to the ground.
-	src.loc = card
-	card.loc = get_turf(card)
-	src.forceMove(card)
-	card.forceMove(card.loc)
+	card.forceMove(get_turf(src))
+	forceMove(card)
 	canmove = 1
 	resting = 0
 	icon_state = "[chassis]"

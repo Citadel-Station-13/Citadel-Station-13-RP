@@ -10,39 +10,6 @@
 			hud_used.r_hand_hud_object.icon_state = "r_hand_active"
 	return
 
-/mob/living/simple_mob/put_in_hands(obj/item/I, del_on_fail = FALSE, merge_stacks = TRUE, forced = FALSE) // No hands.
-	if(has_hands)
-		put_in_active_hand(I)
-		return 1
-	I.forceMove(get_turf(src))
-	return 1
-
-//Puts the item into our active hand if possible. returns 1 on success.
-/mob/living/simple_mob/put_in_active_hand(var/obj/item/W)
-	if(!has_hands)
-		return FALSE
-	return (hand ? put_in_l_hand(W) : put_in_r_hand(W))
-
-/mob/living/simple_mob/put_in_l_hand(var/obj/item/W)
-	if(!..() || l_hand)
-		return 0
-	W.forceMove(src)
-	l_hand = W
-	W.equipped(src,slot_l_hand)
-	W.add_fingerprint(src)
-	update_inv_l_hand()
-	return TRUE
-
-/mob/living/simple_mob/put_in_r_hand(var/obj/item/W)
-	if(!..() || r_hand)
-		return 0
-	W.forceMove(src)
-	r_hand = W
-	W.equipped(src,slot_r_hand)
-	W.add_fingerprint(src)
-	update_inv_r_hand()
-	return TRUE
-
 /mob/living/simple_mob/update_inv_r_hand()
 	if(QDESTROYING(src))
 		return
@@ -134,10 +101,3 @@
 			display_name = "object"
 		to_chat(src, "<span class='danger'>Your [hand_form] are not fit for use of \the [display_name].</span>")
 	return humanoid_hands
-
-/mob/living/simple_mob/drop_from_inventory(var/obj/item/W, var/atom/target = null)
-	. = ..(W, target)
-	if(!target)
-		target = src.loc
-	if(.)
-		W.forceMove(src.loc)

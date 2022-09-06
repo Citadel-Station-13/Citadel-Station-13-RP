@@ -28,7 +28,6 @@
 /obj/item/gun/energy/laser/mounted/augment
 	use_external_power = FALSE
 	use_organic_power = TRUE
-	canremove = FALSE
 
 /obj/item/gun/energy/laser/practice
 	name = "practice laser carbine"

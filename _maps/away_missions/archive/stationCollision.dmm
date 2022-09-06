@@ -1345,7 +1345,7 @@
 	name = "Syndicate agent remains"
 	},
 /obj/item/clothing/shoes/syndigaloshes,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /obj/item/gun/projectile/silenced,
 /turf/simulated/floor/airless,
 /area/awaymission/northblock)
@@ -1502,7 +1502,7 @@
 /obj/item/bedsheet/captain,
 /obj/item/clothing/under/rank/captain,
 /obj/effect/decal/remains/human,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /obj/item/gun/energy/retro,
 /turf/simulated/floor/airless,
 /area/awaymission/northblock)
@@ -1673,7 +1673,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /obj/item/gun/projectile/shotgun/pump,
 /turf/simulated/floor,
 /area/awaymission/midblock)
@@ -2035,7 +2035,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "hT" = (
@@ -2043,11 +2043,11 @@
 /obj/item/material/knife/butch,
 /obj/item/material/knife,
 /obj/item/clothing/head/chefhat,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "hU" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "hW" = (
@@ -2083,7 +2083,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/arrivalblock)
 "ia" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /obj/item/ammo_casing/a10mm,
 /obj/item/ammo_casing/a10mm,
 /turf/simulated/floor,
@@ -2166,7 +2166,7 @@
 "ik" = (
 /obj/item/ammo_casing/a10mm,
 /obj/item/ammo_casing/a10mm,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "il" = (
@@ -2189,7 +2189,7 @@
 	dir = 4
 	},
 /obj/item/ammo_casing/a10mm,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "in" = (
@@ -2247,7 +2247,7 @@
 /obj/item/ammo_casing/a10mm,
 /obj/item/ammo_casing/a10mm,
 /obj/item/clothing/under/syndicate,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /obj/item/gun/projectile/automatic/c20r,
 /turf/simulated/floor,
 /area/awaymission/midblock)
@@ -2258,7 +2258,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "iD" = (
@@ -2268,7 +2268,7 @@
 	},
 /obj/item/ammo_casing/a10mm,
 /obj/item/clothing/under/syndicate,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /obj/item/gun/projectile/automatic/c20r,
 /turf/simulated/floor,
 /area/awaymission/midblock)
@@ -2354,7 +2354,7 @@
 /area/awaymission/arrivalblock)
 "iQ" = (
 /obj/effect/decal/remains/human,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "iR" = (
@@ -2590,7 +2590,7 @@
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "jE" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "jF" = (
@@ -2710,7 +2710,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/arrivalblock)
 "kb" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /obj/item/ammo_casing/a10mm,
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
@@ -3060,7 +3060,7 @@
 /obj/item/clothing/shoes/brown,
 /obj/item/clothing/under/rank/hydroponics,
 /obj/effect/decal/remains/human,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "lr" = (
@@ -3134,8 +3134,8 @@
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "lF" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "lG" = (

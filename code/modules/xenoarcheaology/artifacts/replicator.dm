@@ -173,10 +173,7 @@
 					visible_message(fail_message)
 
 /obj/machinery/replicator/attackby(obj/item/W as obj, mob/living/user as mob)
-	if(!W.canremove || !user.canUnEquip(W)) //No armblades, no grabs. No other-thing-I-didn't-think-of.
-		to_chat(user, SPAN_NOTICE("You cannot put \the [W] into the machine."))
+	if(!user.attempt_insert_item_for_installation(W, src))
 		return
-	user.drop_item()
-	W.loc = src
 	stored_materials.Add(W)
 	visible_message(SPAN_NOTICE("\The [user] inserts \the [W] into \the [src]."))

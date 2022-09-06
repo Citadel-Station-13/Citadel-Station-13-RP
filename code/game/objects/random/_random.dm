@@ -48,17 +48,17 @@ var/list/random_useful_
 
 /proc/get_random_junk_type()
 	if(prob(20)) // Misc. clutter
-		return /obj/effect/decal/cleanable/generic
+		return /obj/effect/debris/cleanable/generic
 	if(prob(70)) // Misc. junk
 		if(!random_junk_)
 			random_junk_ = subtypesof(/obj/item/trash)
 			random_junk_ += typesof(/obj/item/cigbutt)
-			random_junk_ += /obj/effect/decal/cleanable/spiderling_remains
+			random_junk_ += /obj/effect/debris/cleanable/spiderling_remains
 			random_junk_ += /obj/effect/decal/remains/mouse
 			random_junk_ += /obj/effect/decal/remains/robot
 			random_junk_ += /obj/item/paper/crumpled
 			random_junk_ += /obj/item/inflatable/torn
-			random_junk_ += /obj/effect/decal/cleanable/molten_item
+			random_junk_ += /obj/effect/debris/cleanable/molten_item
 			random_junk_ += /obj/item/material/shard
 
 			random_junk_ -= /obj/item/trash/plate

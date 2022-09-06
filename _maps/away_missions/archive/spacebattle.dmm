@@ -404,11 +404,11 @@
 	mobname = "Rosen Miller";
 	name = "Rosen Miller"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "ct" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "cu" = (
@@ -521,7 +521,7 @@
 	mobname = "Bill Sanchez";
 	name = "Bill Sanchez"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "cW" = (
@@ -585,7 +585,7 @@
 	mobname = "John Locke";
 	name = "John Locke"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "dk" = (
@@ -609,11 +609,11 @@
 	mobname = "Daniel Kalla";
 	name = "Daniel Kalla"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "dw" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/shuttle/wall{
 	dir = 4
 	},
@@ -623,7 +623,7 @@
 	mobname = "Nathaniel Waters";
 	name = "Nathaniel Waters"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "dE" = (
@@ -631,7 +631,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "dG" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /area/awaymission/spacebattle/cruiser)
 "dH" = (
 /obj/structure/grille,
@@ -709,7 +709,7 @@
 	mobname = "Andrew Thorn";
 	name = "Andrew Thorn"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /area/awaymission/spacebattle/cruiser)
 "eb" = (
 /obj/structure/grille,
@@ -869,7 +869,7 @@
 	mobname = "Peter West";
 	name = "Peter West"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /area/awaymission/spacebattle/cruiser)
 "eM" = (
 /turf/simulated/shuttle/wall{
@@ -931,7 +931,7 @@
 "fa" = (
 /atom/movable/spawner/corpse/syndicatesoldier,
 /obj/item/melee/energy/sword,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "fb" = (
@@ -945,7 +945,7 @@
 /area/awaymission/spacebattle/cruiser)
 "fc" = (
 /obj/item/ammo_casing/a12g/pellet,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "fd" = (
@@ -958,7 +958,7 @@
 	mobname = "Eric Abnett";
 	name = "Eric Abnett"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /area/awaymission/spacebattle/cruiser)
 "ff" = (
 /obj/structure/closet/crate,
@@ -999,7 +999,7 @@
 /obj/item/gun/projectile/automatic/c20r,
 /obj/item/ammo_casing/a10mm,
 /obj/item/ammo_casing/a10mm,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "fv" = (
@@ -1010,7 +1010,7 @@
 /obj/item/gun/projectile/shotgun/pump/combat,
 /obj/item/ammo_casing/a10mm,
 /obj/item/ammo_casing/a10mm,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "fx" = (
@@ -1021,7 +1021,7 @@
 	mobname = "Aaron Bowden";
 	name = "Aaron Bowden"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "fz" = (
@@ -1058,7 +1058,7 @@
 	name = "Robert Faver"
 	},
 /obj/item/ammo_casing/a12g/pellet,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "gi" = (
@@ -1140,7 +1140,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "gJ" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/shuttle/wall{
 	dir = 1
 	},
@@ -1150,7 +1150,7 @@
 	mobname = "Adam Smith";
 	name = "Adam Smith"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "gL" = (
@@ -1187,7 +1187,7 @@
 	corpseidjob = "Gunner";
 	name = "Jeremy Tailor"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /area/awaymission/spacebattle/cruiser)
 "gU" = (
 /obj/machinery/porta_turret{
@@ -1215,7 +1215,7 @@
 	mobname = "Allan Yoshimaru";
 	name = "Allan Yoshimaru"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "hf" = (
@@ -1257,8 +1257,8 @@
 	mobname = "Dan Hedricks";
 	name = "Dan Hedricks"
 	},
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /area/awaymission/spacebattle/cruiser)
 "hn" = (
 /obj/structure/grille,
@@ -1502,7 +1502,7 @@
 	mobname = "Herbert West";
 	name = "Herbert West"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "in" = (
@@ -1510,7 +1510,7 @@
 	mobname = "Carth Robinson";
 	name = "Carth Robinson"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "ip" = (
@@ -1534,7 +1534,7 @@
 	name = "Cyrion"
 	},
 /obj/item/flamethrower/full,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "iy" = (
@@ -1547,7 +1547,7 @@
 	mobname = "Mercutio";
 	name = "Mercutio"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "iB" = (

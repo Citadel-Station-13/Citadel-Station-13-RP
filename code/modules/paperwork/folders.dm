@@ -64,17 +64,21 @@
 
 /obj/item/folder/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/paper) || istype(W, /obj/item/photo) || istype(W, /obj/item/paper_bundle))
-		user.drop_item()
-		W.loc = src
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		to_chat(user, "<span class='notice'>You put the [W] into \the [src].</span>")
 		update_icon()
 	else if(istype(W, /obj/item/pen))
 		var/n_name = sanitizeSafe(input(usr, "What would you like to label the folder?", "Folder Labelling", null)  as text, MAX_NAME_LEN)
 		if((loc == usr && usr.stat == 0))
 			name = "folder[(n_name ? text("- '[n_name]'") : null)]"
-	return
+	else
+		return ..()
 
-/obj/item/folder/attack_self(mob/user as mob)
+/obj/item/folder/attack_self(mob/user)
+	ui_interact(user)
+
+/obj/item/folder/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	var/dat = "<title>[name]</title>"
 
 	for(var/obj/item/paper/P in src)
@@ -86,7 +90,6 @@
 	user << browse(dat, "window=folder")
 	onclose(user, "folder")
 	add_fingerprint(usr)
-	return
 
 /obj/item/folder/Topic(href, href_list)
 	..()
@@ -98,8 +101,7 @@
 		if(href_list["remove"])
 			var/obj/item/P = locate(href_list["remove"])
 			if(P && (P.loc == src) && istype(P))
-				P.loc = usr.loc
-				usr.put_in_hands(P)
+				usr.put_in_hands_or_drop(P)
 
 		else if(href_list["read"])
 			var/obj/item/paper/P = locate(href_list["read"])

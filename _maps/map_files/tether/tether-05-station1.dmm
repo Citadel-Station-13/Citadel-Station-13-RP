@@ -6311,7 +6311,7 @@
 	dir = 1
 	},
 /obj/structure/bookcase,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /obj/item/book/manual/engineering_hacking,
 /turf/simulated/floor/wood,
 /area/maintenance/abandonedlibrary)
@@ -6381,7 +6381,7 @@
 /area/maintenance/abandonedlibrary)
 "ank" = (
 /obj/structure/bookcase,
-/obj/effect/decal/cleanable/cobweb{
+/obj/effect/debris/cleanable/cobweb{
 	icon_state = "cobweb2"
 	},
 /obj/machinery/light_construct{
@@ -6395,7 +6395,7 @@
 /area/engineering/hallway)
 "anm" = (
 /obj/structure/bookcase,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/wood,
 /area/maintenance/abandonedlibrary)
 "ann" = (
@@ -6652,7 +6652,7 @@
 /area/engineering/hallway)
 "anG" = (
 /obj/structure/bookcase,
-/obj/effect/decal/cleanable/cobweb{
+/obj/effect/debris/cleanable/cobweb{
 	icon_state = "cobweb2"
 	},
 /turf/simulated/floor/wood,
@@ -6793,7 +6793,7 @@
 /obj/machinery/light_construct/small{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/cobweb{
+/obj/effect/debris/cleanable/cobweb{
 	icon_state = "cobweb2"
 	},
 /obj/item/book/manual/nuclear,
@@ -6831,7 +6831,7 @@
 	dir = 4
 	},
 /obj/structure/bookcase,
-/obj/effect/decal/cleanable/cobweb{
+/obj/effect/debris/cleanable/cobweb{
 	icon_state = "cobweb2"
 	},
 /obj/item/book/manual/rust_engine,
@@ -7078,7 +7078,7 @@
 /area/vacant/vacant_restaurant_lower)
 "aoE" = (
 /obj/random/junk,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/plating,
 /area/maintenance/abandonedlibrary)
 "aoF" = (
@@ -7825,7 +7825,7 @@
 "apY" = (
 /obj/machinery/light_construct/small,
 /obj/structure/bookcase,
-/obj/effect/decal/cleanable/cobweb{
+/obj/effect/debris/cleanable/cobweb{
 	icon_state = "cobweb2"
 	},
 /turf/simulated/floor/carpet,
@@ -8129,7 +8129,7 @@
 /area/constructionsite)
 "aqy" = (
 /obj/structure/table,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/wood,
 /area/maintenance/abandonedlibraryconference)
 "aqz" = (
@@ -8367,7 +8367,7 @@
 	pixel_x = 1;
 	pixel_y = 5
 	},
-/obj/effect/decal/cleanable/cobweb{
+/obj/effect/debris/cleanable/cobweb{
 	icon_state = "cobweb2"
 	},
 /turf/simulated/floor/wood,
@@ -8438,7 +8438,7 @@
 /obj/machinery/light_construct/small{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/cobweb{
+/obj/effect/debris/cleanable/cobweb{
 	icon_state = "cobweb2"
 	},
 /turf/simulated/floor/plating,
@@ -9581,7 +9581,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
 "atN" = (
-/obj/effect/decal/cleanable/blood/oil/streak{
+/obj/effect/debris/cleanable/blood/oil/streak{
 	amount = 0
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -10314,7 +10314,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/decal/cleanable/blood/oil/streak{
+/obj/effect/debris/cleanable/blood/oil/streak{
 	amount = 0
 	},
 /turf/simulated/floor/tiled,

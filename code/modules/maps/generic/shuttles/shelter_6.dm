@@ -11,7 +11,7 @@
 /area/shuttle/tabiranth
 	name = "\improper Tabiranth"
 	icon_state = "blue-red2"
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	requires_power = 1
 
 // The shuttle's 'shuttle' computer

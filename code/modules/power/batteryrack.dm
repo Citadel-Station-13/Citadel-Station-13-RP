@@ -71,9 +71,9 @@
 		else if ((istype(W, /obj/item/stock_parts/capacitor) && (capacitors_amount < 5)) || (istype(W, /obj/item/cell) && (cells_amount < 5)))
 			if (charge < (capacity / 100))
 				if (!output_attempt && !input_attempt)
-					user.drop_item()
+					if(!user.attempt_insert_item_for_installation(W, src))
+						return
 					component_parts += W
-					W.forceMove(src)
 					RefreshParts()
 					to_chat(user, "<span class='notice'>You upgrade the [src] with [W.name].</span>")
 				else

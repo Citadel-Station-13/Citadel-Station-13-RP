@@ -1,6 +1,7 @@
 /datum/species/adherent
 	name = SPECIES_ADHERENT
 	name_plural = "Adherents"
+	default_bodytype = BODYTYPE_ADHERENT
 
 	blurb = "The Vigil is a relatively loose association of machine-servitors, Adherents, \
 	built by an extinct culture. They are devoted to the memory of their long-dead creators, \
@@ -33,7 +34,7 @@
 	hazard_low_pressure  = -1
 	mob_size             = MOB_LARGE
 	// strength             = STR_HIGH
-	has_glowing_eyes     = 1
+	has_glowing_eyes     = TRUE
 
 	speech_sounds = list('sound/voice/chime.ogg')
 	speech_chance = 25
@@ -48,7 +49,7 @@
 
 	flags       = NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN
 	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_NO_FBP_CONSTRUCTION | SPECIES_NO_FBP_CHARGEN | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
-	species_appearance_flags = HAS_EYE_COLOR | HAS_SKIN_COLOR //| BASE_SKIN_COLOR
+	species_appearance_flags = HAS_EYE_COLOR | HAS_BASE_SKIN_COLOR
 
 	language         = LANGUAGE_ADHERENT
 	species_language = LANGUAGE_ADHERENT
@@ -91,39 +92,42 @@
 		BP_L_LEG  = list("path" = /obj/item/organ/external/leg/tendril),
 		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right/tendril/),
 		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/tendril/),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/tendril)
+		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/tendril),
 	)
 
 	has_organ = list(
 		O_BRAIN        = /obj/item/organ/internal/brain/adherent,
-		O_EYES         = /obj/item/organ/internal/eyes/adherent,
-		O_JETS         = /obj/item/organ/internal/powered/jets,
-		O_FLOAT        = /obj/item/organ/internal/powered/float,
 		O_CELL         = /obj/item/organ/internal/cell/adherent,
-		O_COOLING_FINS = /obj/item/organ/internal/powered/cooling_fins
-		)
-	move_trail = /obj/effect/decal/cleanable/blood/tracks/snake
-	//If you wanna copy this for your mob, dont
-	base_skin_colours = list(
-		"",
-		"_green",
-		"_purple",
-		"_blue",
-		"_red",
-		"_yellow",
-		"_white",
-		"_black"
+		O_COOLING_FINS = /obj/item/organ/internal/powered/cooling_fins,
+		O_EYES         = /obj/item/organ/internal/eyes/adherent,
+		O_FLOAT        = /obj/item/organ/internal/powered/float,
+		O_JETS         = /obj/item/organ/internal/powered/jets,
 	)
+
+	move_trail = /obj/effect/debris/cleanable/blood/tracks/snake
+
+	base_skin_colours = list(
+		"Turquoise"   = "", // First so it's default.
+		"Amethyst"    = "_purple",
+		"Emerald"     = "_green",
+		"Jet"         = "_black",
+		"Quartz"      = "_white",
+		"Ruby"        = "_red",
+		"Sapphire"    = "_blue",
+		"Topaz"       = "_yellow",
+	)
+
+	wikilink = "N/A"
 
 /datum/species/adherent/New()
 	/*equip_adjust = list(
 		"[slot_l_hand_str]" = list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
 		"[slot_r_hand_str]" = list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
-		"[/datum/inventory_slot_meta/inventory/back]" =   list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
-		"[/datum/inventory_slot_meta/inventory/belt]" =   list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
-		"[/datum/inventory_slot_meta/inventory/head]" =   list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 3, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = -3, "y" = 14)),
-		"[/datum/inventory_slot_meta/inventory/ears/left]" =  list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
-		"[/datum/inventory_slot_meta/inventory/ears/right]" =  list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14))
+		"[SLOT_ID_BACK]" =   list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
+		"[SLOT_ID_BELT]" =   list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
+		"[SLOT_ID_HEAD]" =   list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 3, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = -3, "y" = 14)),
+		"[SLOT_ID_LEFT_EAR]" =  list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
+		"[SLOT_ID_RIGHT_EAR]" =  list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14))
 	)*/
 	..()
 
@@ -178,11 +182,11 @@
 /datum/hud_data/adherent
 	has_internals = FALSE
 	gear = list(
-		"l_ear" = list("loc" = ui_iclothing, "name" = "Aux Port", "slot" = slot_l_ear,   "state" = "ears", "toggle" = 1),
-		"head"  = list("loc" = ui_glasses,   "name" = "Hat",      "slot" = slot_head,    "state" = "hair", "toggle" = 1),
-		"back"  = list("loc" = ui_back,      "name" = "Back",     "slot" = slot_back,    "state" = "back"),
-		"id"    = list("loc" = ui_id,        "name" = "ID",       "slot" = slot_wear_id, "state" = "id"),
-		"belt"  = list("loc" = ui_belt,      "name" = "Belt",     "slot" = slot_belt,    "state" = "belt")
+		SLOT_ID_LEFT_EAR = list("loc" = ui_iclothing, "name" = "Aux Port", "slot" = SLOT_ID_LEFT_EAR, "state" = "ears", "toggle" = 1),
+		SLOT_ID_HEAD     = list("loc" = ui_glasses,   "name" = "Hat",      "slot" = SLOT_ID_HEAD,     "state" = "hair", "toggle" = 1),
+		SLOT_ID_BACK     = list("loc" = ui_back,      "name" = "Back",     "slot" = SLOT_ID_BACK,     "state" = "back"),
+		SLOT_ID_WORN_ID  = list("loc" = ui_id,        "name" = "ID",       "slot" = SLOT_ID_WORN_ID,  "state" = "id"),
+		SLOT_ID_BELT     = list("loc" = ui_belt,      "name" = "Belt",     "slot" = SLOT_ID_BELT,     "state" = "belt"),
 	)
 
 /datum/species/adherent/post_organ_rejuvenate(obj/item/organ/org, mob/living/carbon/human/H)

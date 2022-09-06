@@ -314,7 +314,7 @@
 /turf/simulated/floor/tiled/white,
 /area/submap/Diner)
 "bc" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled,
 /area/submap/Diner)
 "bd" = (
@@ -467,7 +467,7 @@
 /turf/simulated/floor/tiled/hydro,
 /area/submap/Diner)
 "gw" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/simulated/floor/tiled,
 /area/submap/Diner)

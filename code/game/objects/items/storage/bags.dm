@@ -129,23 +129,8 @@
 	var/stored_ore = list()
 	var/last_update = 0
 
-/obj/item/storage/bag/ore/remove_from_storage(obj/item/W as obj, atom/new_location)
-	if(!istype(W)) return 0
-
-	if(new_location)
-		if(ismob(loc))
-			W.dropped(usr)
-		if(ismob(new_location))
-			W.hud_layerise()
-		else
-			W.reset_plane_and_layer()
-		W.forceMove(new_location)
-	else
-		W.forceMove(get_turf(src))
-
-	W.on_exit_storage(src)
-	update_icon()
-	return 1
+/obj/item/storage/bag/ore/update_w_class()
+	return
 
 /obj/item/storage/bag/ore/gather_all(turf/T as turf, mob/user as mob, var/silent = 0)
 	var/success = 0
@@ -171,11 +156,11 @@
 		var/obj/structure/ore_box/O = user.pulling
 		O.attackby(src, user)
 
-/obj/item/storage/bag/ore/equipped(mob/user, slot)
+/obj/item/storage/bag/ore/equipped(mob/user, slot, flags)
 	. = ..()
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/autoload, override = TRUE)
 
-/obj/item/storage/bag/ore/dropped(mob/user)
+/obj/item/storage/bag/ore/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 
@@ -293,15 +278,10 @@
 			break
 
 	if(!inserted || !S.amount)
-		usr.remove_from_mob(S)
-		usr.update_icons()	//update our overlays
-		if (usr.client && usr.s_active != src)
-			usr.client.screen -= S
-		S.dropped(usr)
 		if(!S.amount)
 			qdel(S)
 		else
-			S.loc = src
+			S.forceMove(src)
 
 	orient2hud(usr)
 	if(usr.s_active)

@@ -15,24 +15,6 @@
 	. = ..()
 	update_icon()
 
-/obj/item/clipboard/MouseDrop(obj/over_object as obj) //Quick clipboard fix. -Agouri
-	if(ishuman(usr))
-		var/mob/M = usr
-		if(!(istype(over_object, /atom/movable/screen) ))
-			return ..()
-
-		if(!M.restrained() && !M.stat)
-			switch(over_object.name)
-				if("r_hand")
-					M.unEquip(src)
-					M.put_in_r_hand(src)
-				if("l_hand")
-					M.unEquip(src)
-					M.put_in_l_hand(src)
-
-			add_fingerprint(usr)
-			return
-
 /obj/item/clipboard/update_icon()
 	overlays.Cut()
 	if(toppaper)
@@ -44,10 +26,9 @@
 	return
 
 /obj/item/clipboard/attackby(obj/item/W as obj, mob/user as mob)
-
 	if(istype(W, /obj/item/paper) || istype(W, /obj/item/photo))
-		user.drop_item()
-		W.loc = src
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		if(istype(W, /obj/item/paper))
 			toppaper = W
 		to_chat(user, "<span class='notice'>You clip the [W] onto \the [src].</span>")
@@ -56,8 +37,9 @@
 	else if(istype(toppaper) && istype(W, /obj/item/pen))
 		toppaper.attackby(W, usr)
 		update_icon()
+		return
 
-	return
+	return ..()
 
 /obj/item/clipboard/attack_self(mob/user as mob)
 	var/dat = "<title>Clipboard</title>"
@@ -98,10 +80,10 @@
 
 		else if(href_list["addpen"])
 			if(!haspen)
-				var/obj/item/pen/W = usr.get_active_hand()
+				var/obj/item/pen/W = usr.get_active_held_item()
 				if(istype(W, /obj/item/pen))
-					usr.drop_item()
-					W.loc = src
+					if(!usr.attempt_insert_item_for_installation(W, src))
+						return
 					haspen = W
 					to_chat(usr, "<span class='notice'>You slot the pen into \the [src].</span>")
 
@@ -110,7 +92,7 @@
 
 			if(P && (P.loc == src) && istype(P, /obj/item/paper) && (P == toppaper) )
 
-				var/obj/item/I = usr.get_active_hand()
+				var/obj/item/I = usr.get_active_held_item()
 
 				if(istype(I, /obj/item/pen))
 

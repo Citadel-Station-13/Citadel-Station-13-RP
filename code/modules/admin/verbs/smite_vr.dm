@@ -145,7 +145,7 @@ var/redspace_abduction_z
 	if(!redspace_abduction_z)
 		redspace_abduction_z = -1
 		to_chat(user,"<span class='warning'>This is the first use of the verb this shift, it will take a minute to configure the abduction z-level. It will be z[world.maxz+1].</span>")
-		var/z = ++world.maxz
+		var/z = world.increment_max_z()
 		var/area/areaInstance = new /area/redspace_abduction(null)
 		areaInstance.addSorted()
 		for(var/x = 1 to world.maxx)

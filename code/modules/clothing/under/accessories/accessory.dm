@@ -22,19 +22,12 @@
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 
 /obj/item/clothing/accessory/Destroy()
+	has_suit?.accessories -= src
 	on_removed()
 	return ..()
 
-/obj/item/clothing/accessory/MouseDrop(mob/user as mob)
-	if(ismob(src.loc))
-		if(!CanMouseDrop(src))
-			return
-		var/mob/M = src.loc
-		if(!M.unEquip(src))
-			return
-		src.add_fingerprint(usr)
-		M.put_in_active_hand(src)
-
+/obj/item/clothing/accessory/worn_mob()
+	return has_suit? has_suit.worn_mob() : ..()
 
 /obj/item/clothing/accessory/proc/get_inv_overlay()
 	if(!inv_overlay)
@@ -92,20 +85,41 @@
 	if(!istype(S))
 		return
 	has_suit = S
-	src.forceMove(S)
+	forceMove(S)
+
+	// inventory handling start
+
+	// todo: don't call dropped/pickup if going to same person
+	if(S.worn_slot)
+		pickup(S.worn_mob(), INV_OP_IS_ACCESSORY)
+		equipped(S.worn_mob(), S.worn_slot, INV_OP_IS_ACCESSORY)
+
+	// inventory handling end
+
 	has_suit.add_overlay(get_inv_overlay())
 
 	if(user)
 		to_chat(user, "<span class='notice'>You attach \the [src] to \the [has_suit].</span>")
 		add_fingerprint(user)
 
-/obj/item/clothing/accessory/proc/on_removed(var/mob/user)
+/obj/item/clothing/accessory/proc/on_removed(mob/user)
 	if(!has_suit)
 		return
+
+	// inventory handling start
+
+	// todo: don't call dropped/pickup if going to same person
+	if(has_suit.worn_slot)
+		unequipped(has_suit.worn_mob(), has_suit.worn_slot, INV_OP_IS_ACCESSORY)
+		dropped(has_suit.worn_mob(), INV_OP_IS_ACCESSORY)
+
+	// inventory handling stop
+
 	has_suit.cut_overlay(get_inv_overlay())
 	has_suit = null
+
 	if(user)
-		usr.put_in_hands(src)
+		user.put_in_hands_or_drop(src)
 		add_fingerprint(user)
 	else if(get_turf(src))		//We actually exist in space
 		forceMove(get_turf(src))
@@ -373,7 +387,7 @@
 	else
 		src.icon_state = initial(icon_state)
 		to_chat(user, "You tug the gaiter down around your neck.")
-	update_clothing_icon()	//so our mob-overlays update
+	update_worn_icon()	//so our mob-overlays update
 
 /obj/item/clothing/accessory/gaiter/tan
 	name = "neck gaiter (tan)"
@@ -552,7 +566,7 @@
 
 // Solution for race-specific sprites for an accessory which is also a suit.
 // Suit icons break if you don't use icon override which then also overrides race-specific sprites.
-/obj/item/clothing/accessory/collar/equipped(mob/user, slot)
+/obj/item/clothing/accessory/collar/equipped(mob/user, slot, flags)
 	..()
 	setUniqueSpeciesSprite()
 
@@ -564,7 +578,7 @@
 	if(istype(H))
 		if(H.species.name == SPECIES_TESHARI)
 			icon_override = 'icons/mob/clothing/species/teshari/ties.dmi'
-		update_clothing_icon()
+		update_worn_icon()
 
 /obj/item/clothing/accessory/collar/on_attached(var/obj/item/clothing/S, var/mob/user)
 	if(!istype(S))
@@ -573,7 +587,7 @@
 	setUniqueSpeciesSprite()
 	..(S, user)
 
-/obj/item/clothing/accessory/collar/dropped()
+/obj/item/clothing/accessory/collar/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	icon_override = icon_previous_override
 
@@ -820,7 +834,7 @@
 	to_chat(user,"<span class='notice'>You need a pen or a screwdriver to edit the tag on this collar.</span>")
 
 /obj/item/clothing/accessory/collar/proc/update_collartag(mob/user, obj/item/I, var/erasemethod, var/erasing, var/writemethod)
-	if(!(istype(user.get_active_hand(),I)) || !(istype(user.get_inactive_hand(),src)) || (user.stat))
+	if(!(istype(user.get_active_held_item(),I)) || !(istype(user.get_inactive_held_item(),src)) || (user.stat))
 		return
 
 	var/str = copytext(reject_bad_text(input(user,"Tag text?","Set tag","")),1,MAX_NAME_LEN)

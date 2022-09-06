@@ -7,7 +7,7 @@
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "bp" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/trap/delayed/wmarble/classp{
 	id = "west_hall_4"
 	},
@@ -25,7 +25,7 @@
 /turf/simulated/floor/gold/classp,
 /area/class_p/POIs/archaic_temple)
 "ct" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/trap/delayed/bmarble/classp{
 	id = "east_hall_2"
 	},
@@ -47,7 +47,7 @@
 /obj/effect/trap/pop_up/flame{
 	id = "entry_corridor"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/crystal/classp,
 /area/class_p/POIs/archaic_temple)
 "ef" = (
@@ -129,7 +129,7 @@
 /area/class_p/POIs/archaic_temple)
 "jS" = (
 /obj/structure/table/hardwoodtable,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "ky" = (
@@ -166,7 +166,7 @@
 /area/class_p/POIs/archaic_temple)
 "kV" = (
 /obj/structure/table/hardwoodtable,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/artifact,
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
@@ -210,7 +210,7 @@
 /obj/effect/trap/pop_up/spear{
 	id = "west_hall_3"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/wmarble/classp,
 /area/class_p/POIs/archaic_temple)
 "mx" = (
@@ -299,7 +299,7 @@
 /obj/effect/trap/pit/punji{
 	id = "west_hall_2"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/wmarble/classp,
 /area/class_p/POIs/archaic_temple)
 "pe" = (
@@ -319,14 +319,14 @@
 /turf/simulated/floor/silver/classp,
 /area/class_p/POIs/archaic_temple)
 "rq" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/trap/delayed/wood/classp{
 	id = "library_2"
 	},
 /area/class_p/POIs/archaic_temple)
 "rt" = (
 /obj/structure/table/hardwoodtable,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/window/phoronbasic{
 	dir = 4
 	},
@@ -546,7 +546,7 @@
 /area/class_p/POIs/archaic_temple)
 "Ak" = (
 /obj/structure/table/bench/wooden,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "Ar" = (
@@ -557,7 +557,7 @@
 /turf/simulated/wall/dungeon,
 /area/class_p/POIs/archaic_temple)
 "At" = (
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "Au" = (
@@ -615,7 +615,7 @@
 /turf/simulated/floor/gold/classp,
 /area/class_p/POIs/archaic_temple)
 "Dl" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/crystal/classp,
 /area/class_p/POIs/archaic_temple)
 "Dy" = (
@@ -633,7 +633,7 @@
 /turf/simulated/floor/gold/classp,
 /area/class_p/POIs/archaic_temple)
 "DA" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/wmarble/classp,
 /area/class_p/POIs/archaic_temple)
 "DI" = (
@@ -673,11 +673,11 @@
 /obj/structure/bed/chair/wood/wings{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "Fq" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/effect/trap/pop_up/pillar{
 	id = "display_room"
 	},
@@ -706,7 +706,7 @@
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "GF" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/gold/classp,
 /area/class_p/POIs/archaic_temple)
 "GP" = (
@@ -760,7 +760,7 @@
 /obj/effect/trap/pop_up/pillar{
 	id = "display_room"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/crystal/classp,
 /area/class_p/POIs/archaic_temple)
 "Ia" = (
@@ -826,7 +826,7 @@
 /obj/effect/trap/pop_up/spear{
 	id = "west_hall_3"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/bmarble/classp,
 /area/class_p/POIs/archaic_temple)
 "Kl" = (
@@ -843,7 +843,7 @@
 /turf/simulated/floor/crystal/classp,
 /area/class_p/POIs/archaic_temple)
 "Kv" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/bmarble/classp,
 /area/class_p/POIs/archaic_temple)
 "KP" = (
@@ -933,11 +933,11 @@
 /turf/simulated/floor/silver/classp,
 /area/class_p/POIs/archaic_temple)
 "Ol" = (
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/generic,
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "Oo" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/phoron/classp,
 /area/class_p/POIs/archaic_temple)
 "OG" = (
@@ -971,7 +971,7 @@
 /area/class_p/POIs/archaic_temple)
 "OM" = (
 /obj/structure/table/hardwoodtable,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/item/book,
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
@@ -1003,11 +1003,11 @@
 /turf/simulated/floor/phoron/classp,
 /area/class_p/POIs/archaic_temple)
 "Py" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/silver/classp,
 /area/class_p/POIs/archaic_temple)
 "PM" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
 "PU" = (
@@ -1021,7 +1021,7 @@
 /obj/structure/bed{
 	material = "wood"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/item/bedsheet/purple,
 /turf/simulated/floor/wood/classp,
 /area/class_p/POIs/archaic_temple)
@@ -1062,7 +1062,7 @@
 /obj/effect/trap/pop_up/flame{
 	id = "entry_corridor"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/phoron/classp,
 /area/class_p/POIs/archaic_temple)
 "Ug" = (
@@ -1133,7 +1133,7 @@
 /turf/simulated/floor/silver/classp,
 /area/class_p/POIs/archaic_temple)
 "VM" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/trap/delayed/crystal/classp{
 	id = "display_room"
 	},
@@ -1179,11 +1179,11 @@
 	desc = "A towering menhir of bone, perhaps the colossal fang of some fallen beast.";
 	name = "The Fang of Agrim'Maw"
 	},
-/obj/effect/decal/cleanable/greenglow,
+/obj/effect/debris/cleanable/greenglow,
 /turf/simulated/floor/outdoors/grass/heavy/interior/classp,
 /area/class_p/POIs/archaic_temple)
 "Yd" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/effect/trap/pit/blood/deep{
 	id = "library_1"
 	},

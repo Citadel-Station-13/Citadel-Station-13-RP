@@ -242,7 +242,7 @@
 			if(L.robotic >= ORGAN_ROBOT)
 				return
 			if(L.damage > 0)
-				L.damage = max(L.damage - 2 * removed, 0)//Heals the liver
+				L.heal_damage_i(2 * removed, can_revive = TRUE)
 		if(alien == IS_SLIME)
 			H.druggy = max(M.druggy, 5)
 
@@ -656,7 +656,7 @@
 			if(E.robotic >= ORGAN_ROBOT)
 				return
 			if(E.damage > 0)
-				E.damage = max(E.damage - 5 * removed, 0)
+				E.heal_damage_i(5 * removed, can_revive = TRUE)
 			if(E.damage <= 5 && E.organ_tag == O_EYES)
 				H.sdisabilities &= ~BLIND
 
@@ -677,7 +677,7 @@
 			if(I.robotic >= ORGAN_ROBOT)
 				continue
 			if(I.damage > 0) //Peridaxon heals only non-robotic organs
-				I.damage = max(I.damage - removed, 0)
+				I.heal_damage_i(removed, can_revive = TRUE)
 				H.Confuse(5)
 			if(I.damage <= 5 && I.organ_tag == O_EYES)
 				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something
@@ -702,7 +702,7 @@
 		var/mob/living/carbon/human/H = M
 		for(var/obj/item/organ/I in H.internal_organs)
 			if(I.damage > 0)
-				I.damage = max(I.damage - removed, 0)
+				I.heal_damage_i(removed, can_revive = TRUE)
 				H.Confuse(5)
 			if(I.damage <= 5 && I.organ_tag == O_EYES)
 				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something
@@ -784,7 +784,7 @@
 			if(I.robotic >= ORGAN_ROBOT || !(I.organ_tag in list(O_LUNGS, O_VOICE, O_GBLADDER)))
 				continue
 			if(I.damage > 0)
-				I.damage = max(I.damage - 4 * removed * repair_strength, 0)
+				I.heal_damage_i(4 * removed * repair_strength, can_revive = TRUE)
 				H.Confuse(2)
 		if(M.reagents.has_reagent("gastirodaxon") || M.reagents.has_reagent("peridaxon"))
 			if(H.losebreath >= 15 && prob(H.losebreath))
@@ -815,7 +815,7 @@
 			if(I.robotic >= ORGAN_ROBOT || !(I.organ_tag in list(O_APPENDIX, O_STOMACH, O_INTESTINE, O_NUTRIENT, O_PLASMA, O_POLYP)))
 				continue
 			if(I.damage > 0)
-				I.damage = max(I.damage - 4 * removed * repair_strength, 0)
+				I.heal_damage_i(4 * removed * repair_strength, can_revive = TRUE)
 				H.Confuse(2)
 		if(M.reagents.has_reagent("hepanephrodaxon") || M.reagents.has_reagent("peridaxon"))
 			if(prob(10))
@@ -846,7 +846,7 @@
 			if(I.robotic >= ORGAN_ROBOT || !(I.organ_tag in list(O_LIVER, O_KIDNEYS, O_APPENDIX, O_ACID, O_HIVE)))
 				continue
 			if(I.damage > 0)
-				I.damage = max(I.damage - 4 * removed * repair_strength, 0)
+				I.heal_damage_i(4 * removed * repair_strength, can_revive = TRUE)
 				H.Confuse(2)
 		if(M.reagents.has_reagent("cordradaxon") || M.reagents.has_reagent("peridaxon"))
 			if(prob(5))
@@ -879,7 +879,7 @@
 			if(I.robotic >= ORGAN_ROBOT || !(I.organ_tag in list(O_HEART, O_SPLEEN, O_RESPONSE, O_ANCHOR, O_EGG)))
 				continue
 			if(I.damage > 0)
-				I.damage = max(I.damage - 4 * removed * repair_strength, 0)
+				I.heal_damage_i(4 * removed * repair_strength, can_revive = TRUE)
 				H.Confuse(2)
 		if(M.reagents.has_reagent("respirodaxon") || M.reagents.has_reagent("peridaxon"))
 			H.losebreath = clamp(H.losebreath + 1, 0, 10)
@@ -1270,7 +1270,7 @@
 	T.germ_level -= min(volume*20, T.germ_level)
 	for(var/obj/item/I in T.contents)
 		I.was_bloodied = null
-	for(var/obj/effect/decal/cleanable/blood/B in T)
+	for(var/obj/effect/debris/cleanable/blood/B in T)
 		qdel(B)
 
 /datum/reagent/sterilizine/touch_mob(var/mob/living/L, var/amount)

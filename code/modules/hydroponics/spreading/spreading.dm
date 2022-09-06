@@ -179,7 +179,8 @@
 		if(!isnull(seed.chems["woodpulp"]))
 			density = 1
 	else
-		reset_plane_and_layer()
+		plane = initial(plane)
+		set_base_layer(initial(layer))
 		density = 0
 
 /obj/effect/plant/proc/calc_dir()

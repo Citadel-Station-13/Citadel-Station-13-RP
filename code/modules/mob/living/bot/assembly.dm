@@ -27,7 +27,6 @@
 	if(contents.len >= 1)
 		to_chat(user, SPAN_WARNING("You need to empty [src] out first."))
 		return FALSE
-	user.drop_item()
 	return TRUE
 
 /obj/item/bot_assembly/proc/is_valid_arm(obj/item/I, mob/user)

@@ -38,8 +38,7 @@
 /turf/simulated/floor/outdoors/snow/attack_hand(mob/user as mob)
 	visible_message("[user] starts scooping up some snow.", "You start scooping up some snow.")
 	if(do_after(user, 1 SECOND))
-		var/obj/S = new /obj/item/stack/material/snow(user.loc)
-		user.put_in_hands(S)
+		user.put_in_hands_or_drop(new /obj/item/stack/material/snow)
 		visible_message("[user] scoops up a pile of snow.", "You scoop up a pile of snow.")
 	return
 

@@ -61,9 +61,9 @@ var/global/list/rad_collectors = list()
 		if(src.P)
 			to_chat(user, "<font color='red'>There's already a phoron tank loaded.</font>")
 			return 1
-		user.drop_item()
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		src.P = W
-		W.loc = src
 		update_icons()
 		return 1
 	else if(W.is_crowbar())
@@ -147,7 +147,8 @@ var/global/list/rad_collectors = list()
 	density = active
 	update_icons()
 
-/obj/machinery/power/rad_collector/MouseDrop_T(mob/living/carbon/O, mob/user as mob)
+/obj/machinery/power/rad_collector/MouseDroppedOnLegacy(mob/living/O, mob/living/user)
+	. = ..()
 	if(!istype(O))
 		return 0 //not a mob
 	if(user.incapacitated())

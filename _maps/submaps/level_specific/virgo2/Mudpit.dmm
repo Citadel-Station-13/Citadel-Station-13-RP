@@ -3,7 +3,7 @@
 /turf/template_noop,
 /area/template_noop)
 "b" = (
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/Mudpit)
 "c" = (
@@ -14,14 +14,14 @@
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/Mudpit)
 "e" = (
-/obj/effect/decal/cleanable/liquid_fuel,
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/Mudpit)
 "f" = (
-/obj/effect/decal/cleanable/liquid_fuel,
-/obj/effect/decal/cleanable/liquid_fuel,
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/Mudpit)
 "g" = (
@@ -30,12 +30,12 @@
 /area/submap/virgo2/Mudpit)
 "h" = (
 /obj/effect/decal/remains/mouse,
-/obj/effect/decal/cleanable/liquid_fuel,
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/Mudpit)
 "i" = (
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /turf/template_noop,
 /area/template_noop)
 "j" = (

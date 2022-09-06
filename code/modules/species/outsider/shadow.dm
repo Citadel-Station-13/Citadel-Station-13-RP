@@ -23,7 +23,7 @@
 
 	virus_immune = TRUE
 
-	remains_type = /obj/effect/decal/cleanable/ash
+	remains_type = /obj/effect/debris/cleanable/ash
 	death_message = "dissolves into ash..."
 
 	flags = NO_SCAN | NO_SLIP | NO_POISON | NO_MINOR_CUT
@@ -38,5 +38,5 @@
 
 /datum/species/shadow/handle_death(var/mob/living/carbon/human/H)
 	spawn(1)
-		new /obj/effect/decal/cleanable/ash(H.loc)
+		new /obj/effect/debris/cleanable/ash(H.loc)
 		qdel(H)

@@ -215,7 +215,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	if(params["link"])
 		linked = locate(params["link"]) in pin.linked
 
-	var/obj/held_item = usr.get_active_hand()
+	var/obj/held_item = usr.get_active_held_item()
 
 	. = TRUE
 	switch(action)
