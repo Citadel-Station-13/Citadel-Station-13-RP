@@ -18,7 +18,7 @@
 	var/refid = REF(D)
 	var/ref = ref(D)
 	var/list/header
-	var/title
+	var/title = "#unkw"
 	var/list/dropdownoptions
 	// welcome to yanderedev
 	// but i assure you this is necessary unless we switch(typeid).
@@ -62,7 +62,6 @@
 		to_chat(usr, "Invalid vtype.")
 		return
 
-	var/title = ""
 	var/icon/sprite
 	var/hash
 
