@@ -56,7 +56,7 @@ obj/structure/windoor_assembly/Destroy()
 	icon_state = "[facing]_[secure]windoor_assembly[state]"
 
 /obj/structure/windoor_assembly/CanAllowThrough(atom/movable/mover, turf/target)
-	if(!(get_dir(loc, target) & dir))
+	if(!(get_dir(loc, mover) & dir))
 		// if it isn't our side we don't care
 		return TRUE
 	return ..()
