@@ -19,7 +19,7 @@
 	ASSERT(parent)
 	src.parent = parent
 	RegisterSignal(parent, COMSIG_PARENT_QDELETING, .proc/on_parent_qdel)
-	Init(args.Copy(1))
+	Init(args.Copy(2))
 
 /datum/proxfield/Destroy()
 	Stop()
@@ -37,12 +37,13 @@
 /datum/proxfield/proc/Attach(atom/A)
 	if(attached == A)
 		return
-	UnregisterSignal(attached, list(
-		COMSIG_MOVABLE_MOVED,
-		COMSIG_MOVABLE_Z_CHANGED
-	))
-	if(attached != parent)
-		UnregisterSignal(attached, COMSIG_PARENT_QDELETING)
+	if(attached)
+		UnregisterSignal(attached, list(
+			COMSIG_MOVABLE_MOVED,
+			COMSIG_MOVABLE_Z_CHANGED
+		))
+		if(attached != parent)
+			UnregisterSignal(attached, COMSIG_PARENT_QDELETING)
 	if(active)
 		Stop()
 		attached = A
