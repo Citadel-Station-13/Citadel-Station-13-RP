@@ -104,7 +104,7 @@ GLOBAL_LIST_EMPTY(ghostrole_spawnpoints)
 		return
 	else
 		var/choice = tgui_alert(user, "Are you certain you wish to spawn as [role_type]?", "Ghost Role Selection", list("Yes", "No"))
-		if(choice == "No")
+		if(choice != "Yes")
 			return
 		else
 			role.AttemptSpawn(user.client, src)
