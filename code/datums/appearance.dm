@@ -48,7 +48,9 @@
 	var/text
 	var/transform
 	var/list/underlays
-	var/vis_flags
+	// var/vis_flags
+
+//! vis_flags missing even though byond ref says it's there, fuck off why is this possible
 
 GLOBAL_REAL_VAR(_appearance_var_list) = list(
 	"alpha",
@@ -88,8 +90,8 @@ GLOBAL_REAL_VAR(_appearance_var_list) = list(
 	"suffix",
 	"text",
 	"transform",
-	"underlays",
-	"vis_flags"
+	"underlays"
+	// "vis_flags"
 )
 
 /proc/__appearance_v_debug(appearance/A, name)
@@ -133,5 +135,5 @@ GLOBAL_REAL_VAR(_appearance_var_list) = list(
 		DEBUG_APPEARANCE_VAR(text)
 		DEBUG_APPEARANCE_VAR(transform)
 		DEBUG_APPEARANCE_VAR(underlays)
-		DEBUG_APPEARANCE_VAR(vis_flags)
+		// DEBUG_APPEARANCE_VAR(vis_flags)
 #undef DEBUG_APPEARANCE_VAR

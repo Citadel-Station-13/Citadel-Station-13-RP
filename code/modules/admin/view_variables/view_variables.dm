@@ -58,6 +58,7 @@
 		type = /appearance
 		header = list("<b>virtual appearance")
 		title = "virtual appearance"
+		dropdownoptions = list()
 	else
 		to_chat(usr, "Invalid vtype.")
 		return
