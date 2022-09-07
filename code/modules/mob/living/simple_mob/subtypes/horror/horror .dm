@@ -57,3 +57,7 @@
 	max_n2 = 0
 	minbodytemp = 0
 	maxbodytemp = 700
+
+/mob/living/simple_mob/horror/process(delta_time)
+	.=..()
+	new /obj/effect/horror_aura(src)
