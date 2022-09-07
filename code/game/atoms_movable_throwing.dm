@@ -186,9 +186,9 @@
 			else
 				user_speed = 0
 			if(user_speed)
-				range *= (user_speed / speed) + 1
-				speed += user_speed
-			if(speed <= 0)
+				range *= (user_speed / calculated_speed) + 1
+				calculated_speed += user_speed
+			if(calculated_speed <= 0)
 				return
 		// user zones
 		zone = L.zone_sel.selecting
