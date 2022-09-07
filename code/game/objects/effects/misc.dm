@@ -95,22 +95,3 @@
 	. = ..()
 	if(!ismob(loc))
 		return INITIALIZE_HINT_QDEL
-
-//Passive Horror Aura for Horrors and Abominations
-/obj/effect/horror_aura
-	name = "horror aura"
-	desc = "An intrinsic aura emitted by all paranatural entities. Theorized to be some manner of bleed effect from the strain of existing in the material world."
-	icon_state = "nothing"
-	light_range = 0
-	light_power = 0
-	light_color = "#ff0000"
-
-/obj/effect/horror_aura/process()
-	for(var/mob/living/carbon/human/H in view(7,src))
-		if(!iscultist(H) && !istype(H.head, /obj/item/clothing/head/helmet/para))
-			H.hallucination = max(10 SECONDS)
-		var/range_red //Utilizes the same EMP process as Cult EMP spells.
-		var/turf/T = get_turf(src)
-		if(T)
-			T.hotspot_expose(700,125)
-			empulse(src, (range_red - 3), (range_red - 2), (range_red - 1), range_red)
