@@ -168,6 +168,9 @@
 	if(!calculated_speed)
 		CRASH("bad speed: [calculated_speed]")
 
+	if(isnull(range))
+		range = isnull(force)? (force / throw_resist) * throw_range : throw_range
+
 	var/zone
 	if(!(flags & THROW_AT_NO_USER_MODIFIERS) && !emulated && isliving(thrower))
 		var/mob/living/L = thrower
