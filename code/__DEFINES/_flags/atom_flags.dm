@@ -66,7 +66,7 @@ DEFINE_BITFIELD(flags, list(
 
 //! /atom/movable/var/movable_flags
 /// throwing does not scale damage at all regardless of force
-#define MOVABLE_NO_THROW_DAMAGE_SCALING			(1<<0)
+#define MOVABLE_NO_THROW_SPEED_SCALING			(1<<0)
 /// throwing should ignore move force scaling entirely
 #define MOVABLE_NO_THROW_SPEED_SCALING			(1<<1)
 /// do not spin when thrown
