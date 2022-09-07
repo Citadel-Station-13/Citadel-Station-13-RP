@@ -53,7 +53,7 @@
 	var/impulse = throw_impulse
 	// overhand throws are weak
 	if(overhand)
-		impulse *= (1 / 4)
+		impulse *= (1 / OVERHAND_THROW_FORCE_REDUCTION_FACTOR)
 
 	//! stupid shit
 	var/the_range = throwing.throw_range

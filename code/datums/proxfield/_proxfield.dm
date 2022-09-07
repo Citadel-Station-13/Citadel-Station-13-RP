@@ -19,7 +19,7 @@
 	ASSERT(parent)
 	src.parent = parent
 	RegisterSignal(parent, COMSIG_PARENT_QDELETING, .proc/on_parent_qdel)
-	Init(args.Copy(2))
+	Init(arglist(args.Copy(2)))
 
 /datum/proxfield/Destroy()
 	Stop()

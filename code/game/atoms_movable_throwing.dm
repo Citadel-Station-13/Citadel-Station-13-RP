@@ -164,7 +164,7 @@
 /atom/movable/proc/_init_throw_datum(atom/target, range, speed, flags, atom/thrower, datum/callback/on_hit, datum/callback/on_land, force, emulated)
 	if(throwing)
 		CRASH("already throwing")
-	var/calculated_speed = isnull(speed)? ((movable_flags & MOVABLE_NO_THROW_SPEED_SCALING)? (throw_speed) : (throw_speed * (force > throw_resist? (force / throw_resist) ** (throw_speed_scaling_exponential * 0.1) : 1 / (force / throw_resist) ** (throw_speed_scaling_exponential * 0.1)))) : speed
+	var/calculated_speed = isnull(speed)? ((movable_flags & MOVABLE_NO_THROW_SPEED_SCALING)? (throw_speed) : (throw_speed * (force > throw_resist? (force / throw_resist) ** (throw_speed_scaling_exponential * 0.1) : 1 / (throw_resist / force) ** (throw_speed_scaling_exponential * 0.1)))) : speed
 	if(!calculated_speed)
 		CRASH("bad speed: [calculated_speed]")
 
@@ -236,9 +236,12 @@
 	return subsystem_throw(target, range, speed, flags, thrower, on_hit, on_land, force)
 
 /atom/movable/proc/can_throw_at(atom/target, range, speed, flags, atom/thrower, force = THROW_FORCE_DEFAULT)
-	if(move_resist >= MOVE_RESIST_ABSOLUTE)
+	if(throw_resist >= MOVE_RESIST_ABSOLUTE)
 		return FALSE
-	if(force < move_resist * MOVE_FORCE_THROW_RATIO)
+	var/effective_force = force
+	if(flags & THROW_AT_OVERHAND)
+		effective_force * OVERHAND_THROW_FORCE_REDUCTION_FACTOR
+	if(effective_force < throw_force * MOVE_FORCE_THROW_RATIO)
 		return FALSE
 	return TRUE
 

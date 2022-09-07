@@ -60,3 +60,5 @@ DEFINE_BITFIELD(throw_flags, list(
 #define OVERHAND_THROW_ITEM_DELAY				(0.75 SECONDS)
 /// time to takes to prep an overhand throw for mobs
 #define OVERHAND_THROW_MOB_DELAY				(4 SECONDS)
+/// factor of 1/x for force of overhand throws
+#define OVERHAND_THROW_FORCE_REDUCTION_FACTOR
