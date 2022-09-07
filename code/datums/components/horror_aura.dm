@@ -1,5 +1,6 @@
 /datum/component/horror_aura/Initialize()
-	RegisterSignal(parent, .proc/aura_effect)
+	if(ismob(parent))
+		RegisterSignal(parent, .proc/aura_effect)
 
 /datum/component/horror_aura/proc/aura_effect()
 	var/atom/movable/AM = parent
