@@ -100,7 +100,7 @@ GLOBAL_LIST(topic_status_cache)
 	//! resulting in tracked-overlay systems like overlays_standing on humans breaking
 	//! if you don't understand what that means, don't touch this
 	//! if you need to touch it and do understand what that means, just remove it and refactor overlays.
-	qdel(new /obj/structure/ghost_role_spawner/ashlander(null))
+	qdel(new /obj/structure/ghost_role_spawner/hermit(null))
 
 	Master.Initialize(10, FALSE)
 
