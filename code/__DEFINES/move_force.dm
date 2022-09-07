@@ -12,7 +12,7 @@
 #define MOVE_FORCE_PUSH_RATIO 0.9				//Same move force to normally push
 #define MOVE_FORCE_FORCEPUSH_RATIO 2		//2x move force to forcefully push
 #define MOVE_FORCE_CRUSH_RATIO 3			//3x move force to do things like crush objects
-#define MOVE_FORCE_THROW_RATIO 0.9			//Same force throw as resist to throw objects
+#define MOVE_FORCE_THROW_RATIO 0.25			// 0.25x minimum to move
 
 #define MOVE_FORCE_OVERPOWERING (MOVE_FORCE_DEFAULT * MOVE_FORCE_CRUSH_RATIO * 10)
 #define MOVE_FORCE_EXTREMELY_STRONG (MOVE_FORCE_DEFAULT * MOVE_FORCE_CRUSH_RATIO * 3)
