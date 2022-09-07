@@ -241,7 +241,7 @@
 	var/effective_force = force
 	if(flags & THROW_AT_OVERHAND)
 		effective_force * OVERHAND_THROW_FORCE_REDUCTION_FACTOR
-	if(effective_force < throw_force * MOVE_FORCE_THROW_RATIO)
+	if(effective_force < throw_resist * MOVE_FORCE_THROW_RATIO)
 		return FALSE
 	return TRUE
 
