@@ -59,6 +59,8 @@ SUBSYSTEM_DEF(throwing)
 	var/atom/thrower
 	/// how hard were we thrown?
 	var/force
+	/// original throw resist
+	var/resist
 	/// callback to call when we hit something. called with (hit atom, thrownthing datum)
 	var/datum/callback/on_hit
 	/// callback to call when we land. will not be called if we do not land on anything. called with (landed atom, thrownthing datum)
@@ -93,7 +95,10 @@ SUBSYSTEM_DEF(throwing)
 	var/pure_diagonal
 
 	//! fluff shit players use to kill each other
+	/// zone selected by user at time of throw
 	var/target_zone
+	/// damage multiplier
+	var/damage_multiplier = 1
 
 /datum/thrownthing/New(atom/movable/AM, atom/target, range, speed, flags, atom/thrower, datum/callback/on_hit, datum/callback/on_land, force)
 	src.thrownthing = AM
@@ -108,6 +113,7 @@ SUBSYSTEM_DEF(throwing)
 	src.on_hit = on_hit
 	src.on_land = on_land
 	src.force = force
+	src.resist = AM.throw_resist
 	impacted = list()
 
 /datum/thrownthing/proc/target_atom(atom/target)
@@ -290,7 +296,6 @@ SUBSYSTEM_DEF(throwing)
 	if(throw_flags & THROW_AT_QUICKSTARTED)
 		return
 	throw_flags |= THROW_AT_QUICKSTARTED
-
 	tick(1)
 
 /**
@@ -376,9 +381,15 @@ SUBSYSTEM_DEF(throwing)
  * get damage scaling - default handling
  */
 /datum/thrownthing/proc/get_damage_multiplier()
+	if(!resist)
+		return MAX_THROWING_DAMAGE_MULTIPLIER
+	. = damage_multiplier
 	if(thrownthing.movable_flags & MOVABLE_NO_THROW_DAMAGE_SCALING)
-		return 1
-	. = clamp((speed / max(thrownthing.throw_speed, 0.01)) ** thrownthing.throw_damage_scaling_exponent, 0, MAX_THROWING_DAMAGE_MULTIPLIER)
+		return
+	if(throw_flags & THROW_AT_NO_SCALE_DAMAGE)
+		return
+	// multiplier = force > resist? (force / resist) ** (p * 0.1) : 1 / (force / resist) ** (p * 0.1)
+	. *= force > resist? (force / resist) ** (thrownthing.throw_damage_scaling_exponential * 0.1) : 1 / (force / resist) ** (thrownthing.throw_damage_scaling_exponential * 0.1)
 
 /**
  * simulated thrownthing datums

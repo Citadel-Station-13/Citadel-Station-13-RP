@@ -49,6 +49,12 @@
 	if(QDELETED(throwing))
 		return TRUE
 	// point of no return but actually
+
+	var/impulse = throw_impulse
+	// overhand throws are weak
+	if(overhand)
+		impulse *= (1 / 4)
+
 	//! stupid shit
 	var/the_range = throwing.throw_range
 	if(ismob(throwing))
@@ -58,7 +64,7 @@
 
 	newtonian_move(get_dir(target, src))
 
-	throwing.throw_at(target, the_range, null, (a_intent == INTENT_HELP? THROW_AT_IS_NEAT : NONE) | (overhand? THROW_AT_OVERHAND : NONE), src, force = throw_impulse)
+	throwing.throw_at(target, the_range, null, (a_intent == INTENT_HELP? THROW_AT_IS_NEAT : NONE) | (overhand? THROW_AT_OVERHAND : NONE), src, force = impulse)
 
 /mob/living/throw_at(atom/target, range, speed, flags, atom/thrower, datum/callback/on_hit, datum/callback/on_land, force)
 	. = ..()

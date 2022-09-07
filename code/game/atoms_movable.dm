@@ -64,13 +64,13 @@
 	 * BE CAREFUL WITH THIS
 	 * if you set this to 2 and make floor tiles that do 100+ damage a hit or something insane i warned you
 	 */
-	var/throw_damage_scaling_exponent = THROW_DAMAGE_SCALING_EXPONENT_DEFAULT
+	var/throw_damage_scaling_exponential = THROW_DAMAGE_SCALING_CONSTANT_DEFAULT
 	/**
 	 * throw speed scaling exponent
 	 * see defines for information
 	 * BE CAREFUL WITH THIS
 	 */
-	var/throw_speed_scaling_exponent = THROW_SPEED_SCALING_EXPONENT_DEFAULT
+	var/throw_speed_scaling_exponential = THROW_SPEED_SCALING_CONSTANT_DEFAULT
 
 	// todo: kill this (only used for elcetropacks)
 	var/moved_recently = FALSE

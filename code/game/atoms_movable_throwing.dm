@@ -164,7 +164,8 @@
 /atom/movable/proc/_init_throw_datum(atom/target, range, speed, flags, atom/thrower, datum/callback/on_hit, datum/callback/on_land, force, emulated)
 	if(throwing)
 		CRASH("already throwing")
-	var/calculated_speed = speed || ((movable_flags & MOVABLE_NO_THROW_FORCE_SCALING)? (throw_speed) : (((force / max(throw_resist, 1)) ** throw_speed_scaling_exponent) * throw_speed))
+	var/calculated_speed = isnull(speed)? ((movable_flags & MOVABLE_NO_THROW_SPEED_SCALING)? (throw_speed) : (throw_speed * (force > throw_resist? (force / throw_resist) ** (throw_speed_scaling_exponential * 0.1) : 1 / (force / throw_resist) ** (thrownthing.throw_speed_scaling_exponential * 0.1)))) : speed
+	 || ((movable_flags & MOVABLE_NO_THROW_FORCE_SCALING)? (throw_speed) : (((force / max(throw_resist, 1)) ** throw_speed_scaling_exponent) * throw_speed))
 	if(!calculated_speed)
 		CRASH("bad speed: [calculated_speed]")
 

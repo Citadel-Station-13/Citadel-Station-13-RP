@@ -15,7 +15,7 @@
 #define THROW_AT_ALWAYS_HIT_PUSH			(1<<6)
 /// we already quickstarted
 #define THROW_AT_QUICKSTARTED				(1<<7)
-/// do not scale hit damage to standard speed at all
+/// do not scale hit damage to standard speed at all; damage multiplier will still be obeyed.
 #define THROW_AT_NO_SCALE_DAMAGE			(1<<8)
 /// force throw, ignoring resistances
 #define THROW_AT_FORCE						(1<<9)
@@ -48,11 +48,11 @@ DEFINE_BITFIELD(throw_flags, list(
 #define THROWNOBJ_KNOCKBACK_SPEED   15
 /// Affects how much speed the mob is knocked back with.
 #define THROWNOBJ_KNOCKBACK_DIVISOR 2
-/// speed = default speed * ((throw force / throw resist) ** exponent)
-#define THROW_SPEED_SCALING_EXPONENT_DEFAULT 0.9
-/// damage = default damage * ((throw speed / default throw speed) ** exponent)
-#define THROW_DAMAGE_SCALING_EXPONENT_DEFAULT 0.6
-/// max damage multiplier incase someone fucks up math and we get a toolbox doing 1 million damage
+/// multiplier = force > resist? (force / resist) ** (p * 0.1) : 1 / (force / resist) ** (p * 0.1)
+#define THROW_SPEED_SCALING_CONSTANT_DEFAULT 6
+/// multiplier = force > resist? (force / resist) ** (p * 0.1) : 1 / (force / resist) ** (p * 0.1)
+#define THROW_DAMAGE_SCALING_CONSTANT_DEFAULT 6
+/// used as a placeholder
 #define MAX_THROWING_DAMAGE_MULTIPLIER 10
 
 // should probably be in mob define files
