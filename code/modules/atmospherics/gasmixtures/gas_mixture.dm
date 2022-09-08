@@ -356,57 +356,6 @@
 		if(gas_overlays && moles > GLOB.meta_gas_visibility[id])
 			. += gas_overlays[min(FACTOR_GAS_VISIBLE_MAX, CEILING(moles / MOLES_GAS_VISIBLE_STEP, 1))]
 
-//Shares gas with another gas_mixture based on the amount of connecting tiles and a fixed lookup table.
-/datum/gas_mixture/proc/share_ratio(datum/gas_mixture/other, connecting_tiles, share_size = null, one_way = 0)
-	var/static/list/sharing_lookup_table = list(0.30, 0.40, 0.48, 0.54, 0.60, 0.66)
-	//Shares a specific ratio of gas between mixtures using simple weighted averages.
-	var/ratio = sharing_lookup_table[6]
-
-	var/size = max(1, group_multiplier)
-	if(isnull(share_size))
-		share_size = max(1, other.group_multiplier)
-
-	var/full_heat_capacity = heat_capacity()
-	var/s_full_heat_capacity = other.heat_capacity()
-
-	var/list/avg_gas = list()
-
-	for(var/g in gas)
-		avg_gas[g] += gas[g] * size
-
-	for(var/g in other.gas)
-		avg_gas[g] += other.gas[g] * share_size
-
-	for(var/g in avg_gas)
-		avg_gas[g] /= (size + share_size)
-
-	var/temp_avg = 0
-	if(full_heat_capacity + s_full_heat_capacity)
-		temp_avg = (temperature * full_heat_capacity + other.temperature * s_full_heat_capacity) / (full_heat_capacity + s_full_heat_capacity)
-
-	//WOOT WOOT TOUCH THIS AND YOU ARE AN IDIOT.
-	if(sharing_lookup_table.len >= connecting_tiles) //6 or more interconnecting tiles will max at 42% of air moved per tick.
-		ratio = sharing_lookup_table[connecting_tiles]
-	//WOOT WOOT TOUCH THIS AND YOU ARE AN IDIOT
-
-	for(var/g in avg_gas)
-		gas[g] = max(0, (gas[g] - avg_gas[g]) * (1 - ratio) + avg_gas[g])
-		if(!one_way)
-			other.gas[g] = max(0, (other.gas[g] - avg_gas[g]) * (1 - ratio) + avg_gas[g])
-
-	temperature = max(0, (temperature - temp_avg) * (1-ratio) + temp_avg)
-	if(!one_way)
-		other.temperature = max(0, (other.temperature - temp_avg) * (1-ratio) + temp_avg)
-
-	update_values()
-	other.update_values()
-
-	return compare(other)
-
-//A wrapper around share_ratio for spacing gas at the same rate as if it were going into a large airless room.
-/datum/gas_mixture/proc/share_space(datum/gas_mixture/unsim_air)
-	return share_ratio(unsim_air, unsim_air.group_multiplier, max(1, max(group_multiplier + 3, 1) + unsim_air.group_multiplier), one_way = 1)
-
 //Equalizes a list of gas mixtures.  Used for pipe networks.
 /proc/equalize_gases(list/datum/gas_mixture/gases)
 	//Calculate totals from individual components
@@ -540,3 +489,101 @@
 	GM.copy_from(src)
 	GM.group_multiplier = 1
 	return GM
+
+//! Sharing; usually used for environmental systems.
+/**
+ * Default share gas implementation - shares with another gas_mixture non-canonically
+ * based on connecting tiles. Is just a wrapper to use a lookup table.
+ */
+/datum/gas_mixture/proc/default_share_ratio(datum/gas_mixture/other, tiles)
+	var/static/list/lookup_table = lisT(
+		0.3,
+		0.4,
+		0.48,
+		0.54,
+		0.6,
+		0.66
+	)
+	if(tiles <= 0)
+		CRASH("sharing with tiles < 0 is a waste of time")
+	return share_ratio(other, lookup_table[min(tiles, 6)])
+
+/**
+ * Shares a ratio of the combined gas of two gas mixtures
+ *
+ * non canonical, e.g. A shares with B --> A shares with C != A shares with C --> A shares with B
+ */
+/datum/gas_mixture/proc/share_ratio(datum/gas_mixture/other, ratio)
+
+
+
+
+//Shares gas with another gas_mixture based on the amount of connecting tiles and a fixed lookup table.
+/datum/gas_mixture/proc/share_ratio(datum/gas_mixture/other, connecting_tiles, share_size = null, one_way = 0)
+	var/static/list/sharing_lookup_table = list(0.30, 0.40, 0.48, 0.54, 0.60, 0.66)
+	//Shares a specific ratio of gas between mixtures using simple weighted averages.
+	var/ratio = sharing_lookup_table[6]
+
+	var/size = max(1, group_multiplier)
+	if(isnull(share_size))
+		share_size = max(1, other.group_multiplier)
+
+	var/full_heat_capacity = heat_capacity()
+	var/s_full_heat_capacity = other.heat_capacity()
+
+	var/list/avg_gas = list()
+
+	for(var/g in gas)
+		avg_gas[g] += gas[g] * size
+
+	for(var/g in other.gas)
+		avg_gas[g] += other.gas[g] * share_size
+
+	for(var/g in avg_gas)
+		avg_gas[g] /= (size + share_size)
+
+	var/temp_avg = 0
+	if(full_heat_capacity + s_full_heat_capacity)
+		temp_avg = (temperature * full_heat_capacity + other.temperature * s_full_heat_capacity) / (full_heat_capacity + s_full_heat_capacity)
+
+	//WOOT WOOT TOUCH THIS AND YOU ARE AN IDIOT.
+	if(sharing_lookup_table.len >= connecting_tiles) //6 or more interconnecting tiles will max at 42% of air moved per tick.
+		ratio = sharing_lookup_table[connecting_tiles]
+	//WOOT WOOT TOUCH THIS AND YOU ARE AN IDIOT
+
+	for(var/g in avg_gas)
+		gas[g] = max(0, (gas[g] - avg_gas[g]) * (1 - ratio) + avg_gas[g])
+		if(!one_way)
+			other.gas[g] = max(0, (other.gas[g] - avg_gas[g]) * (1 - ratio) + avg_gas[g])
+
+	temperature = max(0, (temperature - temp_avg) * (1-ratio) + temp_avg)
+	if(!one_way)
+		other.temperature = max(0, (other.temperature - temp_avg) * (1-ratio) + temp_avg)
+
+	update_values()
+	other.update_values()
+
+	return compare(other)
+
+//A wrapper around share_ratio for spacing gas at the same rate as if it were going into a large airless room.
+/datum/gas_mixture/proc/share_space(datum/gas_mixture/unsim_air)
+	return share_ratio(unsim_air, unsim_air.group_multiplier, max(1, max(group_multiplier + 3, 1) + unsim_air.group_multiplier), one_way = 1)
+
+/**
+ * default implementation to equalize with an unsimulated space
+ * by default, this will ramp up equalization to match our room, so we can't
+ * overpower say, 1 tile of unsimulated with a massive room.
+ */
+/datum/gas_mixture/proc/default_share_unsimulated(datum/gas_mixture/unsimulated)
+
+/**
+ * equalizes x% of our gas with an unsimulated mixture.
+ *
+ * @params
+ * - gases - gases of the other mixture
+ * - group_multiplier - how big the other mixture is pretended to be
+ * - temperature - how hot the other mixture is
+ * - ratio - how much of the **total** mixture will be equalized
+ */
+b/datum/gas_mixture/proc/share_virtual(list/gases, group_multiplier, temperature)
+
