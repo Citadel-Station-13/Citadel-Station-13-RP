@@ -311,20 +311,43 @@
 	if(!sample)
 		return FALSE
 
+	// check vacuum exception bullshit
 	if(vacuum_exception && ((!total_moles) ^ (!sample.total_moles)))
 		return FALSE
 
-	if(abs(temperature - sample.temperature) > MINIMUM_MEANINGFUL_TEMPERATURE_DELTA)
+	// check temperature
+	if(abs(temperature - sample.temperature) >= MINIMUM_MEANINGFUL_TEMPERATURE_DELTA)
 		return FALSE
 
-	var/list/us = list()
-	// man.
+	// check moles
 	for(var/id in gas)
-		us[id] = gas[id]
-	for(var/id in sample.gas)
-		if(abs(sample.gas[id] - us[id]) > MINIMUM_MEANINGFUL_MOLES_DELTA)
+		if(abs(gas[id] - sample.gas[id]) >= MINIMUM_MEANINGFUL_MOLES_DELTA)
 			return FALSE
-	return TRUE
+
+	// check pressure
+	return abs(return_pressure() - sample.return_pressure()) < MINIMUM_MEANINGFUL_PRESSURE_DELTA
+
+/**
+ * checks if we are within acceptable like-ness of a virtual gas data struct to suspend processing or merge
+ *
+ * @return TRUE if we are equal enough, otherwise FALSE
+ */
+/datum/gas_mixture/proc/compare_virtual(list/gases, volume, temperature)
+	// check temperature
+	if(abs(src.temperature - temperature) > MINIMUM_MEANINGFUL_TEMPERATURE_DELTA)
+		return FALSE
+
+	// check moles
+	for(var/id in gas)
+		if(abs(gases[id] - gas[id]) > MINIMUM_MEANINGFUL_MOLES_DELTA)
+			return FALSE
+
+	// check pressure
+	var/their_pressure = 0
+	for(var/id in gases)
+		their_pressure += gases[id]
+	their_pressure = (their_pressure * R_IDEAL_GAS_EQUATION * temperature) / volume
+	return abs(return_pressure() - their_pressure) < MINIMUM_MEANINGFUL_PRESSURE_DELTA
 
 /*
 	// this is the old code
@@ -531,82 +554,56 @@
  * Shares a ratio of the combined gas of two gas mixtures
  *
  * non canonical, e.g. A shares with B --> A shares with C != A shares with C --> A shares with B
+ *
+ * this also assumes equal
  */
 /datum/gas_mixture/proc/share_ratio(datum/gas_mixture/other, ratio)
 #ifdef GASMIXTURE_ASSERTIONS
 	ASSERT(ratio > 0 && ratio <= 1)
+	// todo: volume based, not group multiplier based. is it worth it?
+	ASSERT(volume == other.volume)
 #endif
 	// collect
-	var/our_thermal_energy = thermal_energy()
-	var/their_thermal_energy = other.thermal_energy()
-
-	// equalize
-
-
-	var/our_heat_capacity = heat_capacity()
-	var/their_heat_capacity = other.heat_capacity()
-
-	var/our_size = max(1, group_multiplier)
-	var/their_size = max(1, other.group_multiplier)
-
-	var/list/total_gas = list()
 	var/list/their_gas = other.gas
 	var/list/our_gas = gas
 
+	var/our_capacity = heat_capacity()
+	var/their_capacity = heat_capacity()
+
+	// compute
+	var/list/avg_gas = list()
 	for(var/id in our_gas)
-		total_gas[id] += our_gas[id] * our_size
+		avg_gas[id] += our_gas[id] * group_multiplier
 
 	for(var/id in their_gas)
-		total_gas[id] += their_gas[id] * their_size
+		avg_gas[id] += their_gas[id] * other.group_multiplier
 
-	// spread
+	for(var/id in avg_gas)
+		avg_gas[id] /= (group_multiplier + other.group_multiplier)
 
+	var/avg_temperature = (temperature * our_capacity + other.temperature * their_capacity) / (our_capacity + their_capacity)
 
-//Shares gas with another gas_mixture based on the amount of connecting tiles and a fixed lookup table.
-/datum/gas_mixture/proc/share_ratio(datum/gas_mixture/other, connecting_tiles, share_size = null, one_way = 0)
-	var/static/list/sharing_lookup_table = list(0.30, 0.40, 0.48, 0.54, 0.60, 0.66)
-	//Shares a specific ratio of gas between mixtures using simple weighted averages.
-	var/ratio = sharing_lookup_table[6]
+	// equalize
+	var/intact_ratio = 1 - ratio
+	var/avg_amt
+	for(var/id in avg_gas)
+		// set moles by ratio
+		// lists are cached, so directly set
+		avg_amt = avg_gas[id]
+		// i don't know what these do but they work (probably)
+		our_gsa[id] = (our_gas[id] - avg_amt) * intact_ratio + avg_amt
+		their_gas[id] = (their_gas[id] - avg_amt) * intact_ratio + avg_amt
 
-	var/size = max(1, group_multiplier)
-	if(isnull(share_size))
-		share_size = max(1, other.group_multiplier)
+	// thermodynamics:
+	// i don't know what these do but they work (probably)
+	temperature = (temperature - avg_temperature) * intact_ratio + avg_temperature
+	other.temperature = (other.temperature - avg_temperature) * intact_ratio + avg_temperature
 
-	var/full_heat_capacity = heat_capacity()
-	var/s_full_heat_capacity = other.heat_capacity()
-
-	var/list/avg_gas = list()
-
-	for(var/g in gas)
-		avg_gas[g] += gas[g] * size
-
-	for(var/g in other.gas)
-		avg_gas[g] += other.gas[g] * share_size
-
-	for(var/g in avg_gas)
-		avg_gas[g] /= (size + share_size)
-
-	var/temp_avg = 0
-	if(full_heat_capacity + s_full_heat_capacity)
-		temp_avg = (temperature * full_heat_capacity + other.temperature * s_full_heat_capacity) / (full_heat_capacity + s_full_heat_capacity)
-
-	//WOOT WOOT TOUCH THIS AND YOU ARE AN IDIOT.
-	if(sharing_lookup_table.len >= connecting_tiles) //6 or more interconnecting tiles will max at 42% of air moved per tick.
-		ratio = sharing_lookup_table[connecting_tiles]
-	//WOOT WOOT TOUCH THIS AND YOU ARE AN IDIOT
-
-	for(var/g in avg_gas)
-		gas[g] = max(0, (gas[g] - avg_gas[g]) * (1 - ratio) + avg_gas[g])
-		if(!one_way)
-			other.gas[g] = max(0, (other.gas[g] - avg_gas[g]) * (1 - ratio) + avg_gas[g])
-
-	temperature = max(0, (temperature - temp_avg) * (1-ratio) + temp_avg)
-	if(!one_way)
-		other.temperature = max(0, (other.temperature - temp_avg) * (1-ratio) + temp_avg)
-
+	// update
 	update_values()
 	other.update_values()
 
+	// return if we equalized fully
 	return compare(other)
 
 /**
@@ -622,12 +619,61 @@
 /**
  * equalizes x% of our gas with an unsimulated mixture.
  *
+ * ! warning: this assumes the virtual mixture is the same volume as us, for optimization
+ *
  * @params
  * - gases - gases of the other mixture
- * - group_multiplier - how big the other mixture is pretended to be
+ * - group_multiplier - how big the other mixture is pretending to be
  * - temperature - how hot the other mixture is
  * - ratio - how much of the **total** mixture will be equalized
  */
 /datum/gas_mixture/proc/share_virtual(list/gases, group_multiplier, temperature, ratio)
+#ifdef GASMIXTURE_ASSERTIONS
+	ASSERT(ratio > 0 && ratio <= 1)
+	ASSERT(temperature > TCMB)
+	ASSERT(group_multiplier >= 1)
+#endif
+	// let's not break the input list
+	//! IF YOU DO NOT KNOW WHY WE ARE COPYING, DO NOT TAKE THIS OUT.
+	gases = gases.Copy()
+	// collect
+	var/list/our_gas = gas
+	var/our_capacity = heat_capacity()
 
-	return compare(other)
+	// compute
+	var/their_capacity = 0
+	for(var/id in gases)
+		// in the same loop, we'll calculate their total capacity, at the same time expanding their moles to the true value
+		their_capacity += GLOB.meta_gas_specific_heats[id] * gases[id] * group_multiplier
+		gases[id] *= group_multiplier
+
+	for(var/id in our_gas)
+		// now add ours
+		gases[id] += our_gas[id]
+
+	for(var/id in gases)
+		// now shrink to the average
+		gases[id] /= (src.group_multiplier + group_multiplier)
+
+	// calculate avg temperature
+	var/avg_temperature = (src.temperature * our_capacity + temperature * their_capacity) / (our_capacity + their_capacity)
+
+	// equalize
+	var/intact_ratio = 1 - ratio
+	var/avg_amt
+	for(var/id in avg_gas)
+		// set moles by ratio
+		// lists are cached, so directly set
+		avg_amt = avg_gas[id]
+		// i don't know what these do but they work (probably)
+		our_gsa[id] = (our_gas[id] - avg_amt) * intact_ratio + avg_amt
+
+	// thermodynamics:
+	// i don't know what these do but they work (probably)
+	temperature = (temperature - avg_temperature) * intact_ratio + avg_temperature
+
+	// update
+	update_values()
+
+	// return if we equalized fully
+	return compare_virtual(gases, src.volume, temperature)
