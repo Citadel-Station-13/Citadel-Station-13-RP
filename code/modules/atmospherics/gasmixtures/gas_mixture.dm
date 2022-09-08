@@ -212,11 +212,10 @@
 
 //Returns the pressure of the gas mix.  Only accurate if there have been no gas modifications since update_values() has been called.
 /datum/gas_mixture/proc/return_pressure()
-	if(volume)
-		var/total
-		TOTAL_MOLES(gas, total)
-		return (total * R_IDEAL_GAS_EQUATION * temperature) / volume
-	return 0
+#ifdef GASMIXTURE_ASSERTIONS
+	ASSERT(volume > 0)
+#endif
+	return (total_moles * R_IDEAL_GAS_EQUATION * temperature) / volume
 
 //Removes moles from the gas mixture and returns a gas_mixture containing the removed air.
 /datum/gas_mixture/proc/remove(amount)
@@ -348,32 +347,6 @@
 		their_pressure += gases[id]
 	their_pressure = (their_pressure * R_IDEAL_GAS_EQUATION * temperature) / volume
 	return abs(return_pressure() - their_pressure) < MINIMUM_MEANINGFUL_PRESSURE_DELTA
-
-/*
-	// this is the old code
-	var/list/marked = list()
-	for(var/g in gas)
-		if((abs(gas[g] - sample.gas[g]) > MINIMUM_AIR_TO_SUSPEND) && \
-		((gas[g] < (1 - MINIMUM_AIR_RATIO_TO_SUSPEND) * sample.gas[g]) || \
-		(gas[g] > (1 + MINIMUM_AIR_RATIO_TO_SUSPEND) * sample.gas[g])))
-			return 0
-		marked[g] = 1
-
-	for(var/g in sample.gas)
-		if(!marked[g])
-			if((abs(gas[g] - sample.gas[g]) > MINIMUM_AIR_TO_SUSPEND) && \
-			((gas[g] < (1 - MINIMUM_AIR_RATIO_TO_SUSPEND) * sample.gas[g]) || \
-			(gas[g] > (1 + MINIMUM_AIR_RATIO_TO_SUSPEND) * sample.gas[g])))
-				return 0
-
-	if(total_moles > MINIMUM_AIR_TO_SUSPEND)
-		if((abs(temperature - sample.temperature) > MINIMUM_TEMPERATURE_DELTA_TO_SUSPEND) && \
-		((temperature < (1 - MINIMUM_TEMPERATURE_RATIO_TO_SUSPEND)*sample.temperature) || \
-		(temperature > (1 + MINIMUM_TEMPERATURE_RATIO_TO_SUSPEND)*sample.temperature)))
-			return 0
-
-	return 1
-*/
 
 /datum/gas_mixture/proc/react()
 	zburn(null, force_burn=0, no_check=0) //could probably just call zburn() here with no args but I like being explicit.
