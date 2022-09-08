@@ -963,9 +963,7 @@
 /turf/simulated/floor/plating,
 /area/tcommsat/entrance)
 "ds" = (
-/obj/machinery/computer/power_monitor{
-	throwpass = 1
-	},
+/obj/machinery/computer/power_monitor,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_monitoring)
 "dv" = (
@@ -4349,8 +4347,7 @@
 	input_tag = "cooling_in";
 	name = "Engine Cooling Control";
 	output_tag = "cooling_out";
-	sensors = list("engine_sensor" = "Engine Core");
-	throwpass = 1
+	sensors = list("engine_sensor" = "Engine Core")
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_monitoring)

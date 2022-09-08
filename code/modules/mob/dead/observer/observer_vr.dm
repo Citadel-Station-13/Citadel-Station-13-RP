@@ -7,6 +7,9 @@
 	for(var/mob/living/carbon/human/H in player_list)
 		if(!H.nif?.imp_check(NIF_SOULCATCHER))
 			continue
+		var/datum/nifsoft/soulcatcher/SC = H.nif.imp_check(NIF_SOULCATCHER)
+		if(!SC.visibility_check(ckey))
+			continue
 		filtered += H
 
 	var/picked = tgui_input_list(usr, "Pick a friend with NIF and Soulcatcher to join into. Harrass strangers, get banned. Not everyone has a NIF w/ Soulcatcher.","Select a player", filtered)
@@ -31,7 +34,7 @@
 		return
 
 	var/datum/nifsoft/soulcatcher/SC = H.nif.imp_check(NIF_SOULCATCHER)
-	if(!SC)
+	if(!SC?.visibility_check(ckey))
 		to_chat(src,"<span class='warning'>[H] doesn't have the Soulcatcher NIFSoft installed, or their NIF is unpowered.</span>")
 		return
 

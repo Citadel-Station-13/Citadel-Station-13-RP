@@ -558,7 +558,7 @@
 	var/obj/item/grenade/new_grenade = new charge.product_type(get_turf(H))
 	H.visible_message("<span class='danger'>[H] launches \a [new_grenade]!</span>")
 	new_grenade.activate(H)
-	new_grenade.throw_at(target,fire_force,fire_distance)
+	new_grenade.throw_at_old(target,fire_force,fire_distance)
 
 /obj/item/rig_module/device/paperdispenser
 	name = "hardsuit paper dispenser"

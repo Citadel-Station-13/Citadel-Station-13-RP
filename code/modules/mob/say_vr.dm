@@ -7,10 +7,6 @@
 	set category = "IC"
 	set desc = "Emote to nearby people (and your pred/prey)"
 
-	if(say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "Speech is currently admin-disabled.")
-		return
-
 	message = sanitize_or_reflect(message,src) // Reflect too-long messages (within reason)
 	if(!message)
 		return
@@ -69,10 +65,6 @@
 	set name = "Subtler Anti Ghost"
 	set category = "IC"
 	set desc = "Emote to nearby people (and your pred/prey), but ghosts can't see it."
-
-	if(say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "Speech is currently admin-disabled.")
-		return
 
 	message = sanitize_or_reflect(message,src) // Reflect too-long messages (within reason)
 	if(!message)

@@ -635,7 +635,7 @@
 			I.forceMove(get_turf(B)) // Disarmed entirely.
 			B.visible_message("<span class='danger'>The [name] heaves, \the [attacker]'s weapon becoming stuck in the churning mass!</span>")
 		else
-			I.throw_at(B, 2, 4) // Just yoinked.
+			I.throw_at_old(B, 2, 4) // Just yoinked.
 			B.visible_message("<span class='danger'>The [name] heaves, pulling \the [attacker]'s weapon from their hands!</span>")
 	return ..()
 
