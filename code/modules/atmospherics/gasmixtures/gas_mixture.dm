@@ -11,7 +11,6 @@
 	//Volume of this mix.
 	var/volume = CELL_VOLUME
 	//Size of the group this gas_mixture is representing.  1 for singletons.
-	// ATMOS_TODO : this needs to be removed for auxmos
 	var/group_multiplier = 1
 
 	//List of active tile overlays for this gas_mixture.  Updated by check_tile_graphic()
@@ -123,37 +122,52 @@
 
 	return 1
 
+// todo: check above
 
-//Returns the heat capacity of the gas mix based on the specific heat of the gases.
+//! Thermodynamics
+/**
+ * Returns the heat capacity of the gas mix based on the specific heat of the gases and their moles.
+ *
+ * takes group_multiplier into account.
+ */
 /datum/gas_mixture/proc/heat_capacity()
 	. = 0
 	for(var/g in gas)
 		. += GLOB.meta_gas_specific_heats[g] * gas[g]
 	. *= group_multiplier
 
+/**
+ * gets total thermal energy, taking into account group multiplier
+ */
+/datum/gas_mixture/proc/thermal_energy()
+	return heat_capacity() * temperature
 
-//Adds or removes thermal energy. Returns the actual thermal energy change, as in the case of removing energy we can't go below TCMB.
-/datum/gas_mixture/proc/add_thermal_energy(var/thermal_energy)
-	if (total_moles == 0)
+/**
+ * adjusts thermal energy in joules
+ *
+ * returns amount changed, so we can't go below TCMB; **amount changed is not absolute value**, e.g. inputting -10 will net you returned -10.
+ */
+/datum/gas_mixture/proc/adjust_thermal_energy(joules)
+	if(!total_moles)
 		return 0
+	var/capacity = heat_capacity()
+	if(joules < 0)
+		joules = max(joules, -(temperature - TCMB) * capacity)
+	temperature += joules / capacity
+	return joules
 
-	var/heat_capacity = heat_capacity()
-	if (thermal_energy < 0)
-		if (temperature < TCMB)
-			return 0
-		var/thermal_energy_limit = -(temperature - TCMB)*heat_capacity	//ensure temperature does not go below TCMB
-		thermal_energy = max( thermal_energy, thermal_energy_limit )	//thermal_energy and thermal_energy_limit are negative here.
-	temperature += thermal_energy/heat_capacity
-	return thermal_energy
+/**
+ * returns thermal energy change in joules to get to a certain temperature
+ */
+/datum/gas_mixture/proc/get_thermal_energy_change(target)
+	return heat_capacity() * (max(target, 0) - temperature)
 
-//Returns the thermal energy change required to get to a new temperature
-/datum/gas_mixture/proc/get_thermal_energy_change(var/new_temperature)
-	return heat_capacity()*(max(new_temperature, 0) - temperature)
+// todo: check below
+
 
 
 //Technically vacuum doesn't have a specific entropy. Just use a really big number (infinity would be ideal) here so that it's easy to add gas to vacuum and hard to take gas out.
 #define SPECIFIC_ENTROPY_VACUUM		150000
-
 
 //Returns the ideal gas specific entropy of the whole mix. This is the entropy per mole of /mixed/ gas.
 /datum/gas_mixture/proc/specific_entropy()
@@ -444,6 +458,14 @@
 	update_values()
 	return 1
 
+/datum/gas_mixture/proc/get_mass()
+	for(var/g in gas)
+		. += gas[g] * GLOB.meta_gas_molar_mass[g] * group_multiplier
+
+// todo: sort above
+
+//! Gas Strings
+
 /**
   * Copies from a specially formatted gas string, taking on its gas values as our own as well as their temperature.
   */
@@ -474,10 +496,7 @@
 	qdel(temp)
 	return TRUE
 
-/datum/gas_mixture/proc/get_mass()
-	for(var/g in gas)
-		. += gas[g] * GLOB.meta_gas_molar_mass[g] * group_multiplier
-
+//! Tile Operations
 /**
  * get the equivalent of a single tile of this gas mixture
  *
@@ -514,8 +533,33 @@
  * non canonical, e.g. A shares with B --> A shares with C != A shares with C --> A shares with B
  */
 /datum/gas_mixture/proc/share_ratio(datum/gas_mixture/other, ratio)
+#ifdef GASMIXTURE_ASSERTIONS
+	ASSERT(ratio > 0 && ratio <= 1)
+#endif
+	// collect
+	var/our_thermal_energy = thermal_energy()
+	var/their_thermal_energy = other.thermal_energy()
+
+	// equalize
 
 
+	var/our_heat_capacity = heat_capacity()
+	var/their_heat_capacity = other.heat_capacity()
+
+	var/our_size = max(1, group_multiplier)
+	var/their_size = max(1, other.group_multiplier)
+
+	var/list/total_gas = list()
+	var/list/their_gas = other.gas
+	var/list/our_gas = gas
+
+	for(var/id in our_gas)
+		total_gas[id] += our_gas[id] * our_size
+
+	for(var/id in their_gas)
+		total_gas[id] += their_gas[id] * their_size
+
+	// spread
 
 
 //Shares gas with another gas_mixture based on the amount of connecting tiles and a fixed lookup table.
@@ -565,16 +609,15 @@
 
 	return compare(other)
 
-//A wrapper around share_ratio for spacing gas at the same rate as if it were going into a large airless room.
-/datum/gas_mixture/proc/share_space(datum/gas_mixture/unsim_air)
-	return share_ratio(unsim_air, unsim_air.group_multiplier, max(1, max(group_multiplier + 3, 1) + unsim_air.group_multiplier), one_way = 1)
-
 /**
  * default implementation to equalize with an unsimulated space
  * by default, this will ramp up equalization to match our room, so we can't
  * overpower say, 1 tile of unsimulated with a massive room.
  */
 /datum/gas_mixture/proc/default_share_unsimulated(datum/gas_mixture/unsimulated)
+	var/static/list/sharing_lookup_table = list(0.30, 0.40, 0.48, 0.54, 0.60, 0.66)
+	var/computed_multiplier = max(group_multiplier, unsimulated.group_multiplier)
+	return share_virtual(unsimulated.gases, computed_multiplier, unsimulated.temperature, sharing_lookup_table[max(unsimulated.group_multiplier, 1)])
 
 /**
  * equalizes x% of our gas with an unsimulated mixture.
@@ -585,5 +628,6 @@
  * - temperature - how hot the other mixture is
  * - ratio - how much of the **total** mixture will be equalized
  */
-b/datum/gas_mixture/proc/share_virtual(list/gases, group_multiplier, temperature)
+/datum/gas_mixture/proc/share_virtual(list/gases, group_multiplier, temperature, ratio)
 
+	return compare(other)

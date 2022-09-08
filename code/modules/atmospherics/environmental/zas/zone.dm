@@ -58,7 +58,7 @@ Class Procs:
 	air.volume = CELL_VOLUME
 
 /datum/zas_zone/proc/add(turf/simulated/T)
-#ifdef ZAS_DEBUG
+#ifdef ZAS_ASSERTIONS
 	ASSERT(!invalid)
 	ASSERT(istype(T))
 	ASSERT(!T.has_valid_zone())
@@ -77,12 +77,12 @@ Class Procs:
 		T.vis_contents += turf_graphics
 
 /datum/zas_zone/proc/remove(turf/simulated/T)
-#ifdef ZAS_DEBUG
+#ifdef ZAS_ASSERTIONS
 	ASSERT(!invalid)
 	ASSERT(istype(T))
 	ASSERT(T.zone == src)
 #endif
-#ifdef ZAS_DEBUG_EXPENSIVE
+#ifdef ZAS_ASSERTIONS_EXPENSIVE
 	if(!(T in contents))
 		stack_trace("Turf was not in contents.")
 #endif
@@ -99,7 +99,7 @@ Class Procs:
 		c_invalidate()
 
 /datum/zas_zone/proc/c_merge(datum/zas_zone/into)
-#ifdef ZAS_DEBUG
+#ifdef ZAS_ASSERTIONS
 	ASSERT(!invalid)
 	ASSERT(istype(into))
 	ASSERT(into != src)
