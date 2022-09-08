@@ -21,7 +21,7 @@
 
 	wander = 0
 	speed = -1                    //Spiderbots gotta go fast.
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	mob_size = MOB_SMALL
 
 	response_help  = "pets"

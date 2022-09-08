@@ -46,7 +46,7 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 
 	randomized = TRUE
 
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	mob_size = MOB_SMALL
 
 	response_help  = "pets"
@@ -141,7 +141,7 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 	health = 1
 	maxHealth = 1
 
-	pass_flags = PASSTABLE | PASSGRILLE
+	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GRILLE
 	mob_size = MOB_MINISCULE
 
 	response_help  = "pets"

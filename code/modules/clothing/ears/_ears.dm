@@ -2,7 +2,7 @@
 /obj/item/clothing/ears
 	name = "ears"
 	w_class = ITEMSIZE_TINY
-	throwforce = 2
+	throw_force = 2
 	slot_flags = SLOT_EARS
 	sprite_sheets = list(
 		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/ears.dmi',

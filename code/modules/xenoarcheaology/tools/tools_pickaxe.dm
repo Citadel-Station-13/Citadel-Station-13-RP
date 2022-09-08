@@ -6,7 +6,7 @@
 	slot_flags = SLOT_EARS
 	digspeed = 20
 	force = 0
-	throwforce = 0
+	throw_force = 0
 	desc = "Thick metallic wires for clearing away dust and loose scree (1 centimetre excavation depth)."
 	excavation_amount = 1
 	drill_sound = 'sound/weapons/thudswoosh.ogg'

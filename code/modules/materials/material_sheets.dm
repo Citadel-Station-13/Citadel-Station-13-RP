@@ -1,8 +1,8 @@
 // Stacked resources. They use a material datum for a lot of inherited values.
 // If you're adding something here, make sure to add it to fifty_spawner_mats.dm as well
 /obj/item/stack/material
-	force = 5.0
-	throwforce = 5
+	force = 5
+	throw_force = 5
 	w_class = ITEMSIZE_NORMAL
 	throw_speed = 3
 	throw_range = 3

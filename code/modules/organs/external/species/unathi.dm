@@ -13,4 +13,4 @@
 	min_broken_damage = 35
 	eye_icon = "eyes_s"
 	force = 5
-	throwforce = 10
+	throw_force = 10

@@ -17,6 +17,9 @@
 		slot_r_hand_str = 'icons/mob/items/righthand_holder.dmi',
 		)
 	pixel_y = 8
+	throw_range = 14
+	throw_force = 10
+	throw_speed = 3
 	var/static/list/holder_mob_icon_cache = list()
 	var/mob/living/held_mob
 
@@ -109,6 +112,10 @@
 	if(M == held_mob)
 		return FALSE
 	return ..()
+
+//? throws completely pass to the mob
+/obj/item/holder/throw_resolve_actual()
+	return held_mob
 
 //Mob specific holders.
 /obj/item/holder/diona

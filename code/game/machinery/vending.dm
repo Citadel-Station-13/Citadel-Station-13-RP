@@ -574,7 +574,7 @@
 	if(!throw_item)
 		return 0
 	spawn(0)
-		throw_item.throw_at(target, 16, 3, src)
+		throw_item.throw_at_old(target, 16, 3, src)
 	visible_message("<span class='warning'>\The [src] launches \a [throw_item] at \the [target]!</span>")
 	return 1
 

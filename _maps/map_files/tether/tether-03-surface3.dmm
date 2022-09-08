@@ -28252,8 +28252,7 @@
 /area/tether/surfacebase/entertainment)
 "aYD" = (
 /obj/machinery/computer/power_monitor{
-	dir = 8;
-	throwpass = 1
+	dir = 8
 	},
 /obj/machinery/light{
 	dir = 4

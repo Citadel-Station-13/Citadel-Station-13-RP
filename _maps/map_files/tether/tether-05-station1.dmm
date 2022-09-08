@@ -1797,8 +1797,7 @@
 /area/tether/exploration/crew)
 "adQ" = (
 /obj/machinery/computer/power_monitor{
-	dir = 4;
-	throwpass = 1
+	dir = 4
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8

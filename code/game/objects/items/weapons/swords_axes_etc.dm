@@ -180,7 +180,7 @@
 	icon = 'icons/obj/furniture.dmi'
 	icon_state = "cn_stool_c"
 	force = 10
-	throwforce = 10
+	throw_force = 10
 	w_class = ITEMSIZE_SMALL
 	var/on =  0
 	slot_flags = null
@@ -209,7 +209,7 @@
 	slot_flags = SLOT_BELT | SLOT_BACK
 	damtype = HALLOSS
 	force = 5
-	throwforce = 5
+	throw_force = 5
 	attack_verb = list("whacked", "smacked", "struck")
 	hitsound = 'sound/weapons/genhit3.ogg'
 	var/reinforced = FALSE

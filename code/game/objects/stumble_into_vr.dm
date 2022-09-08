@@ -63,7 +63,6 @@
 	visible_message("<span class='warning'>[M] [pick("ran", "slammed")] into \the [src]!</span>")
 	M.apply_damage(5, BRUTE)
 	M.Weaken(2)
-	hitby(M)
 	M.stop_flying()
 
 /obj/structure/railing/stumble_into(mob/living/M)
