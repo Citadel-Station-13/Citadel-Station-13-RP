@@ -11,7 +11,7 @@
 	tool_behaviour = TOOL_SCREWDRIVER
 	force = 6
 	w_class = ITEMSIZE_TINY
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 3
 	throw_range = 5
 	hitsound = 'sound/weapons/bladeslice.ogg'
@@ -148,7 +148,7 @@
 	slot_flags = SLOT_BELT
 	force = 8
 	w_class = ITEMSIZE_SMALL
-	throwforce = 8
+	throw_force = 8
 	throw_speed = 2
 	throw_range = 3//it's heavier than a screw driver/wrench, so it does more damage, but can't be thrown as far
 	attack_verb = list("drilled", "screwed", "jabbed", "whacked")

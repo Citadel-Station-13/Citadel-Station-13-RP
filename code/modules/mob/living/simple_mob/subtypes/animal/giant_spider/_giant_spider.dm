@@ -73,7 +73,7 @@
 	maxHealth = 200
 	health = 200
 	randomized = TRUE
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	movement_cooldown = 10
 	movement_sound = 'sound/effects/spider_loop.ogg'
 	poison_resist = 0.5

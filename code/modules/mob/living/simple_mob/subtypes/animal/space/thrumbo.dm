@@ -89,7 +89,7 @@
 			M.Stun(5)
 			M.Weaken(3)
 			var/throwdir = pick(turn(dir, 45), turn(dir, -45))
-			M.throw_at(get_step(src.loc, throwdir), 1, 1, src)
+			M.throw_at_old(get_step(src.loc, throwdir), 1, 1, src)
 			runOver(M) // Actually should not use this, placeholder
 		if(istype(AM, /obj/structure))
 			if(istype(AM, /obj/structure/window))

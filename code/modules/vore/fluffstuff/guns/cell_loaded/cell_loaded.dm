@@ -208,7 +208,7 @@
 	icon = 'icons/obj/ammo_vr.dmi'
 	icon_state = "nsfw_batt"
 	slot_flags = SLOT_BELT | SLOT_EARS
-	throwforce = 1
+	throw_force = 1
 	w_class = ITEMSIZE_TINY
 	var/shots_left = 4
 

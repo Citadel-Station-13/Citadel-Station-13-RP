@@ -8,7 +8,7 @@
 
 	//copied from tank.dm
 	force = 5.0
-	throwforce = 10.0
+	throw_force = 10.0
 	throw_speed = 1
 	throw_range = 4
 	action_button_name = "Toggle Heatsink"

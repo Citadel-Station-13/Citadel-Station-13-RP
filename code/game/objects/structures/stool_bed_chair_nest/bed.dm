@@ -13,7 +13,8 @@
 	icon = 'icons/obj/furniture.dmi'
 	icon_state = "bed"
 	pressure_resistance = 15
-	anchored = 1
+	anchored = TRUE
+	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
 	can_buckle = 1
 	buckle_dir = SOUTH
 	buckle_lying = 1
@@ -67,11 +68,6 @@
 	else
 		name = "[material.display_name] [initial(name)]"
 		desc += " It's made of [material.use_name]."
-
-/obj/structure/bed/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSTABLE))
-		return TRUE
-	return ..()
 
 /obj/structure/bed/ex_act(severity)
 	switch(severity)

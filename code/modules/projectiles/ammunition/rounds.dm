@@ -572,7 +572,7 @@
 	projectile_type = /obj/item/projectile/bullet/reusable/arrow
 	caliber = "arrow"
 	icon_state = "arrow"
-	throwforce = 3 //good luck hitting someone with the pointy end of the arrow
+	throw_force = 3 //good luck hitting someone with the pointy end of the arrow
 	throw_speed = 3
 	caseless = 1
 
@@ -612,7 +612,7 @@
 	projectile_type = /obj/item/projectile/bullet/reusable/foam
 	caliber = "foamdart"
 	icon_state = "foamdart"
-	throwforce = 0 //good luck hitting someone with the pointy end of the arrow
+	throw_force = 0 //good luck hitting someone with the pointy end of the arrow
 	throw_speed = 3
 	caseless = 1
 	drop_sound = 'sound/items/drop/accessory.ogg'
