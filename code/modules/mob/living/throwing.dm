@@ -74,4 +74,5 @@
 	if(!.)
 		return
 	var/turf/T = get_turf(target)
-	add_attack_logs(thrower, src, "Thrown via grab to [COORD(T)]")
+	if(ismob(thrower))
+		add_attack_logs(thrower, src, "Thrown via grab to [COORD(T)]")
