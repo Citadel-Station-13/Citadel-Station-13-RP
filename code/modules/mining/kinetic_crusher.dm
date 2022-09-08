@@ -574,11 +574,11 @@
 	Still an effective mining tool, it provides marginally better support as a defensive weapon."
 	icon_state = "crusher-glaive"
 	item_state = "crusher0-glaive"
-	throwforce = 10
+	throw_force = 10
 
 /obj/item/kinetic_crusher/glaive/bone
 	name = "bone crusher glaive"
 	desc = "Crusher glaives were utilized by the Ashlanders long before the colonization of Surt. However, through rare cultural exchanges and trades, \
 	the tribes have learned how to enhance the basic bone glaive with their own curious technology - effectively mimicking the kinetic crusher's utility."
 	icon_state = "crusher-bone"
-	throwforce = 10
+	throw_force = 10

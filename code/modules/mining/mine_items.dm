@@ -284,7 +284,7 @@ obj/item/pickaxe/tyrmalin/proc/turnOn(mob/user as mob)
 	icon_state = "spade"
 	item_state = "spade"
 	force = 5.0
-	throwforce = 7.0
+	throw_force = 7.0
 	w_class = ITEMSIZE_SMALL
 
 /obj/item/shovel/spade/bone
