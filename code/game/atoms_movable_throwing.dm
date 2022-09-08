@@ -254,5 +254,3 @@
 
 /atom/movable/proc/overhand_throw_delay(mob/user)
 	return 1 SECONDS
-
-#warn test throw force/speeds for mobs, pneumatic cannons, syringe guns
