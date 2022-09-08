@@ -102,7 +102,6 @@
 			throw_active_held_item(A)
 			// todo: pass in overhand arg so we aren't stuck using throw mode off AFTER the call
 			throw_mode_off()
-			trigger_aiming(TARGET_CAN_CLICK)
 			return 1
 		throw_mode_off()
 
