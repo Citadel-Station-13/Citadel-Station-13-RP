@@ -389,6 +389,8 @@ SUBSYSTEM_DEF(throwing)
 	if(throw_flags & THROW_AT_NO_SCALE_DAMAGE)
 		return
 	// multiplier = force > resist? (force / resist) ** (p * 0.1) : 1 / (force / resist) ** (p * 0.1)
+	if(isnull(force))
+		. *= speed > resist? (speed / resist) ** (thrownthing.throw_damage_scaling_exponential * 0.1) : 1 / (speed / resist) ** (thrownthing.throw_damage_scaling_exponential * 0.1)
 	. *= force > resist? (force / resist) ** (thrownthing.throw_damage_scaling_exponential * 0.1) : 1 / (force / resist) ** (thrownthing.throw_damage_scaling_exponential * 0.1)
 
 /**
