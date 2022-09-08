@@ -18,6 +18,9 @@
 	if (isnull(value))
 		item = "[VV_HTML_ENCODE(name)] = <span class='value'>null</span>"
 
+	else if(IS_APPEARANCE(value))
+		item = "<a href='?_src_=vars;[HrefToken()];[VV_HK_VIEW_APPEARANCE]=[ref(value)]'>[VV_HTML_ENCODE(name)] [ref(value)]</a> = <span class='value'>/appearance</span>"
+
 	else if (istext(value))
 		item = "[VV_HTML_ENCODE(name)] = <span class='value'>\"[VV_HTML_ENCODE(value)]\"</span>"
 
