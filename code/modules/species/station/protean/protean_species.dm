@@ -175,6 +175,16 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	H.synth_color = TRUE
 	. = ..()
 
+	spawn(0) //Let their real nif load if they have one
+		if(!H.nif)
+			var/obj/item/nif/bioadap/new_nif = new()
+			new_nif.quick_implant(H)
+		else
+			H.nif.durability = rand(21,25)
+
+	var/obj/item/rig/protean/prig = new /obj/item/rig/protean(H)
+	prig.myprotean = H
+
 /datum/species/protean/equip_survival_gear(var/mob/living/carbon/human/H)
 	var/obj/item/storage/box/box = new /obj/item/storage/box/survival/synth(H)
 	var/obj/item/stack/material/steel/metal_stack = new(box)
@@ -187,17 +197,6 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/left_hand)
 	else
 		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/put_in_backpack)
-
-
-	spawn(0) //Let their real nif load if they have one
-		if(!H.nif)
-			var/obj/item/nif/bioadap/new_nif = new()
-			new_nif.quick_implant(H)
-		else
-			H.nif.durability = rand(21,25)
-
-	var/obj/item/rig/protean/prig = new /obj/item/rig/protean(H)
-	prig.myprotean = H
 
 /datum/species/protean/hug(var/mob/living/carbon/human/H, var/mob/living/target)
 	return ..() //Wut
@@ -408,10 +407,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 		return
 
 	if(isturf(loc))
-		var/obj/item/rig/protean/prig
-		for(var/obj/item/rig/protean/O in contents)
-			prig = O
-			break
+		var/obj/item/rig/protean/prig = locate() in contents
 		if(prig)
 			prig.forceMove(get_turf(src))
 			src.forceMove(prig)
