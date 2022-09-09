@@ -3434,12 +3434,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
 "fJ" = (
-/obj/structure/lattice,
-/obj/machinery/door/firedoor/glass,
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/open,
+/turf/simulated/floor/plating,
 /area/maintenance/bar)
 "fK" = (
 /obj/effect/floor_decal/spline/plain,
@@ -16121,6 +16119,13 @@
 /atom/movable/map_helper/airlock/sensor/int_sensor,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
+"Dy" = (
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -22
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/bar)
 "Dz" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -18370,7 +18375,8 @@
 /area/ai_upload)
 "HX" = (
 /obj/machinery/door/airlock/highsecurity{
-	name = "Ground Defence Access"
+	name = "Ground Defence Access";
+	req_one_access = list(1,10,15)
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_south)
@@ -20321,7 +20327,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/white,
-/area/rift/surfacebase/outside/outside3)
+/area/bridge/bunker)
 "LI" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/material/ashtray/glass,
@@ -21337,7 +21343,8 @@
 /area/shuttle/courser/cockpit)
 "NE" = (
 /obj/machinery/door/airlock/highsecurity{
-	name = "Ground Defence Access"
+	name = "Ground Defence Access";
+	req_one_access = list(1,10,15)
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_north)
@@ -40306,7 +40313,7 @@ WU
 cH
 vz
 Rc
-aF
+Dy
 Zx
 su
 RF
