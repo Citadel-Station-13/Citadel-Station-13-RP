@@ -606,7 +606,7 @@
 /datum/gas_mixture/proc/share_virtual(list/gases, group_multiplier, temperature, ratio)
 #ifdef GASMIXTURE_ASSERTIONS
 	ASSERT(ratio > 0 && ratio <= 1)
-	ASSERT(temperature > TCMB)
+	ASSERT(temperature >= TCMB)
 	ASSERT(group_multiplier >= 1)
 #endif
 	// let's not break the input list
