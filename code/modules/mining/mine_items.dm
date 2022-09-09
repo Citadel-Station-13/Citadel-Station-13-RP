@@ -32,6 +32,14 @@
 	var/excavation_amount = 200
 	var/destroy_artefacts = FALSE // some mining tools will destroy artefacts completely while avoiding side-effects.
 
+/obj/item/pickaxe/bone
+	name = "bone pickaxe"
+	icon_state = "bpickaxe"
+	item_state = "bpickaxe"
+	digspeed = 30
+	origin_tech = list(TECH_MATERIAL = 1)
+	desc = "A sturdy pick fashioned from some animal's bone, wound with powerful sinew."
+
 /obj/item/pickaxe/silver
 	name = "silver pickaxe"
 	icon_state = "spickaxe"

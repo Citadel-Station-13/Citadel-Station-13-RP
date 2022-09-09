@@ -25,6 +25,7 @@
 /obj/fiftyspawner/wood,
 /obj/fiftyspawner/wood,
 /obj/fiftyspawner/bone,
+/obj/item/pickaxe/bone,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/ashlander_camp)
 "Q" = (
@@ -39,6 +40,7 @@
 	pixel_x = 2;
 	pixel_y = 2
 	},
+/obj/item/tool/wirecutters/clippers/bone,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/ashlander_camp)
 "R" = (

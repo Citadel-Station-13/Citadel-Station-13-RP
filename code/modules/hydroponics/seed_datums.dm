@@ -1631,6 +1631,7 @@
 
 /datum/seed/flower/pyrrhlea/New()
 	..()
+	set_trait(TRAIT_HARVEST_REPEAT,1)
 	set_trait(TRAIT_MATURATION,10)
 	set_trait(TRAIT_PRODUCTION,3)
 	set_trait(TRAIT_YIELD,5)
