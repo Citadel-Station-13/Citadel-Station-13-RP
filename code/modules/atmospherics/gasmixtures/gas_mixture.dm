@@ -543,19 +543,23 @@
 	var/list/their_gas = other.gas
 	var/list/our_gas = gas
 
+	var/our_size = src.group_multiplier
+	var/their_size = other.group_multiplier
+	var/total_size = our_size + their_size
+
 	var/our_capacity = heat_capacity()
 	var/their_capacity = heat_capacity()
 
 	// compute
 	var/list/avg_gas = list()
 	for(var/id in our_gas)
-		avg_gas[id] += our_gas[id] * group_multiplier
+		avg_gas[id] += our_gas[id] * our_size
 
 	for(var/id in their_gas)
-		avg_gas[id] += their_gas[id] * other.group_multiplier
+		avg_gas[id] += their_gas[id] * their_size
 
 	for(var/id in avg_gas)
-		avg_gas[id] /= (group_multiplier + other.group_multiplier)
+		avg_gas[id] /= total_size
 
 	var/avg_temperature = (temperature * our_capacity + other.temperature * their_capacity) / (our_capacity + their_capacity)
 
