@@ -141,28 +141,6 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_TIMER			700
 ///never drop input
 #define FIRE_PRIORITY_INPUT			1000
-///Compile all the overlays for an atom from the cache lists
-// |= on overlays is not actually guaranteed to not add same appearances but we're optimistically using it anyway.
-#define COMPILE_OVERLAYS(A)\
-	do {\
-		var/list/oo = A.our_overlays;\
-		var/list/po = A.priority_overlays;\
-		if(LAZYLEN(po)){\
-			if(LAZYLEN(oo)){\
-				A.overlays = oo + po;\
-			}\
-			else{\
-				A.overlays = po;\
-			}\
-		}\
-		else if(LAZYLEN(oo)){\
-			A.overlays = oo;\
-		}\
-		else{\
-			A.overlays.Cut();\
-		}\
-		A.flags &= ~OVERLAY_QUEUED;\
-	} while(FALSE)
 
 /**
 	Create a new timer and add it to the queue.
