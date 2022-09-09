@@ -96,6 +96,8 @@ SUBSYSTEM_DEF(overlays)
 		if(!overlay)
 			continue
 		if (istext(overlay))
+// todo: enable
+/*
 #ifdef UNIT_TESTS
 			// This is too expensive to run normally but running it during CI is a good test
 			var/list/icon_states_available = icon_states(icon)
@@ -104,6 +106,7 @@ SUBSYSTEM_DEF(overlays)
 				stack_trace("Invalid overlay: Icon object '[icon_file]' [REF(icon)] used in '[src]' [type] is missing icon state [overlay].")
 				continue
 #endif
+*/
 			new_overlays += iconstate2appearance(icon, overlay)
 		else if(isicon(overlay))
 			new_overlays += icon2appearance(overlay)
