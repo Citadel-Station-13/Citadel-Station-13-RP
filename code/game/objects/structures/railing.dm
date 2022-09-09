@@ -46,7 +46,7 @@
 		return TRUE
 	if(!(get_dir(mover, newLoc) & dir))
 		return TRUE
-	return density
+	return !density
 
 /obj/structure/railing/examine(mob/user)
 	. = ..()
