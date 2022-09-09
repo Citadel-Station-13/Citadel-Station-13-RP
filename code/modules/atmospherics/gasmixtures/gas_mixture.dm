@@ -511,6 +511,9 @@
  * based on connecting tiles. Is just a wrapper to use a lookup table.
  */
 /datum/gas_mixture/proc/default_share_ratio(datum/gas_mixture/other, tiles)
+#ifdef GASMIXTURE_ASSERTIONS
+	ASSERT(tiles > 0)
+#endif
 	var/static/list/lookup_table = list(
 		0.3,
 		0.4,
@@ -587,7 +590,7 @@
 /datum/gas_mixture/proc/default_share_unsimulated(datum/gas_mixture/unsimulated)
 	var/static/list/sharing_lookup_table = list(0.30, 0.40, 0.48, 0.54, 0.60, 0.66)
 	var/computed_multiplier = max(group_multiplier, unsimulated.group_multiplier)
-	return share_virtual(unsimulated.gas, computed_multiplier, unsimulated.temperature, sharing_lookup_table[max(unsimulated.group_multiplier, 1)])
+	return share_virtual(unsimulated.gas, computed_multiplier, unsimulated.temperature, sharing_lookup_table[min(unsimulated.group_multiplier, 6)])
 
 /**
  * equalizes x% of our gas with an unsimulated mixture.
