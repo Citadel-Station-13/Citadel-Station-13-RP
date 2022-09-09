@@ -12,7 +12,7 @@ LINEN BINS
 	slot_flags = SLOT_BACK
 	plane = MOB_PLANE
 	layer = BELOW_MOB_LAYER
-	throwforce = 1
+	throw_force = 1
 	throw_speed = 1
 	throw_range = 2
 	w_class = ITEMSIZE_SMALL

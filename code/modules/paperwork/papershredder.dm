@@ -72,7 +72,7 @@
 				for(var/i=(paperamount-max_paper);i>0;i--)
 					var/obj/item/shreddedp/SP = get_shredded_paper()
 					SP.loc = get_turf(src)
-					SP.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),1,5)
+					SP.throw_at_old(get_edge_target_turf(src,pick(GLOB.alldirs)),1,5)
 				paperamount = max_paper
 			update_icon()
 			return
@@ -149,7 +149,7 @@
 	name = "shredded paper"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "shredp"
-	throwforce = 0
+	throw_force = 0
 	w_class = ITEMSIZE_TINY
 	throw_range = 3
 	throw_speed = 1

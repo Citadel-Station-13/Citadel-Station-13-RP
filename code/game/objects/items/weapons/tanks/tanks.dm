@@ -24,7 +24,7 @@ var/list/global/tank_gauge_cache = list()
 	w_class = ITEMSIZE_NORMAL
 
 	force = 5.0
-	throwforce = 10.0
+	throw_force = 10.0
 	throw_speed = 1
 	throw_range = 4
 

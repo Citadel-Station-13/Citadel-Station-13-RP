@@ -9,7 +9,7 @@ Buildable meters
 	var/pipe_type
 	var/pipename
 	force = 7
-	throwforce = 7
+	throw_force = 7
 	icon = 'icons/obj/pipe-item.dmi'
 	icon_state = "simple"
 	item_state = "buildpipe"

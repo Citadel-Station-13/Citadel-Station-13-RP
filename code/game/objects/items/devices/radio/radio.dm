@@ -787,7 +787,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	item_state = "radiopack"
 	slot_flags = SLOT_BACK
 	force = 5
-	throwforce = 6
+	throw_force = 6
 	preserve_item = 1
 	w_class = ITEMSIZE_LARGE
 	action_button_name = "Remove/Replace Handset"

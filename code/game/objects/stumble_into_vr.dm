@@ -63,11 +63,10 @@
 	visible_message("<span class='warning'>[M] [pick("ran", "slammed")] into \the [src]!</span>")
 	M.apply_damage(5, BRUTE)
 	M.Weaken(2)
-	hitby(M)
 	M.stop_flying()
 
 /obj/structure/railing/stumble_into(mob/living/M)
-	var/obj/occupied = turf_is_crowded()
+	var/obj/occupied = neighbor_turf_impassable()
 	if(occupied)
 		return ..()
 	playsound(get_turf(src), 'sound/misc/slip.ogg', 25, 1, -1)

@@ -13,7 +13,6 @@
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
-	flags = PROXMOVE
 
 /obj/machinery/flasher/portable //Portable version of the flasher. Only flashes when anchored
 	name = "portable flasher"
@@ -23,6 +22,10 @@
 	anchored = FALSE
 	density = TRUE
 	base_state = "pflash"
+
+/obj/machinery/flasher/portable/Initialize(mapload)
+	. = ..()
+	new /datum/proxfield/basic/square(src, 2)
 
 /obj/machinery/flasher/power_change()
 	..()
@@ -98,7 +101,7 @@
 		flash()
 	..(severity)
 
-/obj/machinery/flasher/portable/HasProximity(atom/movable/AM as mob|obj)
+/obj/machinery/flasher/portable/Proximity(datum/proxfield/field, atom/movable/AM)
 	if((disable) || (last_flash && world.time < last_flash + 150))
 		return
 
