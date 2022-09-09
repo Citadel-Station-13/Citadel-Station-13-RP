@@ -95,7 +95,7 @@ GLOBAL_LIST_EMPTY(active_alternate_appearances)
 		qdel(src)
 
 /datum/atom_hud/alternate_appearance/basic/copy_overlays(atom/other, cut_old)
-	image.copy_overlays(other, cut_old)
+	theImage.copy_overlays(other, cut_old)
 
 /datum/atom_hud/alternate_appearance/basic/everyone
 	add_ghost_version = TRUE
