@@ -13,7 +13,7 @@
 	)
 	item_flags = NOBLUDGEON
 	force = 10
-	throwforce = 10
+	throw_force = 10
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL

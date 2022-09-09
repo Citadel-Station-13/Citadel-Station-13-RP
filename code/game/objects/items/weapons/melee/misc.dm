@@ -5,7 +5,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	slot_flags = SLOT_BELT
 	force = 10
-	throwforce = 7
+	throw_force = 7
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 4)
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined")
@@ -22,7 +22,7 @@
 	icon_state = "sabre"
 	hitsound = 'sound/weapons/rapierhit.ogg'
 	force = 35
-	throwforce = 15
+	throw_force = 15
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 4)
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -40,7 +40,7 @@
 	addblends = "umbrella_closed_a"
 	slot_flags = SLOT_BELT
 	force = 5
-	throwforce = 5
+	throw_force = 5
 	w_class = ITEMSIZE_NORMAL
 	var/open = FALSE
 
@@ -73,7 +73,7 @@
 	icon_state = "soulblade"
 	slot_flags = SLOT_BELT | SLOT_BACK
 	force = 30
-	throwforce = 10
+	throw_force = 10
 	w_class = ITEMSIZE_NORMAL
 	sharp = 1
 	edge = 1
@@ -112,7 +112,7 @@
 	w_class = ITEMSIZE_HUGE
 	slot_flags = SLOT_BELT
 	force = 10
-	throwforce = 7
+	throw_force = 7
 	var/board_item_type = null
 
 /obj/item/melee/skateboard/dropped(mob/user, flags, atom/newLoc)
@@ -129,7 +129,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	slot_flags = SLOT_BELT
 	force = 10
-	throwforce = 7
+	throw_force = 7
 	board_item_type = /obj/vehicle/skateboard/improv
 
 /obj/item/melee/skateboard/beginner
@@ -170,7 +170,7 @@
 	icon_state = "clownstaff"
 	slot_flags = SLOT_BELT | SLOT_BACK
 	force = 30
-	throwforce = 10
+	throw_force = 10
 	w_class = ITEMSIZE_NORMAL
 	sharp = 1
 	edge = 1
@@ -192,7 +192,7 @@
 	item_state = "knife"
 	slot_flags = SLOT_BELT
 	force = 30
-	throwforce = 10
+	throw_force = 10
 	w_class = ITEMSIZE_NORMAL
 	sharp = 1
 	edge = 1

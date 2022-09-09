@@ -1,3 +1,20 @@
 2022-09-05:
   Captain277:
   - rscdel: Removes AR-V vectors for Explo.
+2022-09-07:
+  Knightfall5:
+  - rscdel: Removed unused, duplicate sprites
+  - bugfix: fixed clothing circuit cloning, teleporting through walls with railings
+  silicons:
+  - tweak: advanced vis toggles for soulcatchers
+2022-09-09:
+  silicons:
+  - bugfix: pulling things around corners should work now
+  - rscadd: advanced throwing
+  - rscadd: overhand throwing. default bind is ctrl + R
+  - refactor: movespeed, actionspeed shimmed in. no implementation yet.
+  - tweak: pushing things now "pushes through", which means 2x speed for those of
+      you who haul two things at once.
+  - tweak: pushing mobs no longer changes their direction if they're faced the right
+      way so it looks less janky
+  - refactor: pass_flags_self

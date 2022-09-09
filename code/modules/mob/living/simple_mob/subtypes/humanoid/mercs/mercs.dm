@@ -112,7 +112,7 @@
 
 	var/obj/item/grenade/G = new grenade_type(get_turf(src))
 	if(istype(G))
-		G.throw_at(A, G.throw_range, G.throw_speed, src)
+		G.throw_at_old(A, G.throw_range, G.throw_speed, src)
 		G.det_time = grenade_timer
 		G.activate(src)
 		special_attack_charges = max(special_attack_charges-1, 0)
@@ -501,7 +501,7 @@
 	// you thought killing him would be the least of your worries?
 	// think again
 	var/obj/item/grenade/banger = new deathnade_path(get_turf(src))
-	banger.throw_at(ai_holder.target, 9, 9, null)
+	banger.throw_at_old(ai_holder.target, 9, 9, null)
 	banger.det_time = 25
 	banger.activate(null)
 	..()

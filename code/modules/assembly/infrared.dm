@@ -206,7 +206,7 @@
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "ibeam"
 	anchored = TRUE
-	pass_flags = PASSTABLE|PASSGLASS|PASSGRILLE
+	pass_flags = ATOM_PASS_TABLE|ATOM_PASS_GLASS|ATOM_PASS_GRILLE
 	/// the next beam
 	var/obj/effect/beam/i_beam/next
 	/// the previous beam

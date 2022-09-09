@@ -46,7 +46,6 @@
 	var/mount_offset_y = 8				// Vertical riding offset
 
 	var/obj/item/radio/headset/mob_headset/mob_radio		//Adminbus headset for simplemob shenanigans.
-	does_spin = FALSE
 
 // Release belly contents before being gc'd!
 /mob/living/simple_mob/Destroy()
@@ -398,7 +397,7 @@
 	pixel_y = pixel_y + 10
 
 	src.visible_message("<span class='danger'>\The [src] leaps at [T]!</span>")
-	src.throw_at(get_step(get_turf(T),get_turf(src)), 4, 1, src)
+	src.throw_at_old(get_step(get_turf(T),get_turf(src)), 4, 1, src)
 	playsound(src.loc, 'sound/effects/bodyfall1.ogg', 50, 1)
 	pixel_y = default_pixel_y
 

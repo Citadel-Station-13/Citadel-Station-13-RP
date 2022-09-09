@@ -9,7 +9,7 @@
 	force = 15
 	sharp = 0
 	edge = 0
-	throwforce = 7
+	throw_force = 7
 	flags = NOCONDUCT
 	w_class = ITEMSIZE_NORMAL
 	drop_sound = 'sound/items/drop/metalweapon.ogg'
@@ -190,7 +190,7 @@
 	icon_state = "stunprod_nocell"
 	item_state = "prod"
 	force = 3
-	throwforce = 5
+	throw_force = 5
 	stunforce = 0
 	agonyforce = 60	//same force as a stunbaton, but uses way more charge.
 	hitcost = 2500
@@ -241,7 +241,7 @@
 	icon_state = "stunprod_nocell"
 	item_state = "prod"
 	force = 3
-	throwforce = 5
+	throw_force = 5
 	stunforce = 0
 	agonyforce = 60	//same force as a stunbaton, but uses way more charge.
 	hitcost = 2500
@@ -265,7 +265,7 @@
 	it works like a regular stun baton, just less effectively."
 	icon_state = "shocker"
 	force = 10
-	throwforce = 5
+	throw_force = 5
 	agonyforce = 25 // Less efficent than a regular baton.
 	attack_verb = list("poked")
 
@@ -292,7 +292,7 @@
 	w_class = ITEMSIZE_SMALL
 	force = 5
 	stunforce = 5
-	throwforce = 2
+	throw_force = 2
 	agonyforce = 120	//one-hit
 	integrated_cell = TRUE
 	hitcost = 1150

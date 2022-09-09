@@ -32,7 +32,7 @@
 
 /mob/living/simple_mob/blob
 	icon = 'icons/mob/blob.dmi'
-	pass_flags = PASSBLOB | PASSTABLE
+	pass_flags = ATOM_PASS_BLOB | ATOM_PASS_TABLE
 	faction = "blob"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/blob)
 

@@ -259,20 +259,19 @@
 	return 1
 
 //this proc handles being hit by a thrown atom
-/mob/living/hitby(atom/movable/AM as mob|obj,var/speed = THROWFORCE_SPEED_DIVISOR)//Standardization and logging -Sieve
-	if(istype(AM,/obj/))
+/mob/living/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	if(istype(AM, /obj))
 		var/obj/O = AM
 		var/dtype = O.damtype
-		var/throw_damage = O.throwforce*(speed/THROWFORCE_SPEED_DIVISOR)
+		var/throw_damage = O.throw_force * TT.get_damage_multiplier()
 
 		var/miss_chance = 15
-		if (O.throw_source)
-			var/distance = get_dist(O.throw_source, loc)
-			miss_chance = max(15*(distance-2), 0)
+		var/distance = get_dist(TT.initial_turf, loc)
+		miss_chance = max(5 * (distance - 2), 0)
 
 		if (prob(miss_chance))
 			visible_message("<font color=#4F49AF>\The [O] misses [src] narrowly!</font>")
-			return
+			return COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND
 
 		src.visible_message("<font color='red'>[src] has been hit by [O].</font>")
 		var/armor = run_armor_check(null, "melee")
@@ -281,28 +280,26 @@
 
 		apply_damage(throw_damage, dtype, null, armor, soaked, is_sharp(O), has_edge(O), O)
 
-		O.throwing = 0		//it hit, so stop moving
-
-		if(ismob(O.thrower))
-			var/mob/M = O.thrower
-			var/client/assailant = M.client
-			if(assailant)
+		if(ismob(TT.thrower))
+			var/mob/M = TT.thrower
+			// we log only if one party is a player
+			if(!!client || !!M.client)
 				add_attack_logs(M,src,"Hit by thrown [O.name]")
 			if(ai_holder)
-				ai_holder.react_to_attack(O.thrower)
+				ai_holder.react_to_attack(TT.thrower)
 
 		// Begin BS12 momentum-transfer code.
 		var/mass = 1.5
 		if(istype(O, /obj/item))
 			var/obj/item/I = O
 			mass = I.w_class/THROWNOBJ_KNOCKBACK_DIVISOR
-		var/momentum = speed*mass
+		var/momentum = TT.speed * mass
 
-		if(O.throw_source && momentum >= THROWNOBJ_KNOCKBACK_SPEED)
-			var/dir = get_dir(O.throw_source, src)
+		if(TT.initial_turf && momentum >= THROWNOBJ_KNOCKBACK_SPEED)
+			var/dir = get_dir(TT.initial_turf, src)
 
 			visible_message("<font color='red'>[src] staggers under the impact!</font>","<font color='red'>You stagger under the impact!</font>")
-			src.throw_at(get_edge_target_turf(src,dir), 1, momentum)
+			src.throw_at_old(get_edge_target_turf(src,dir), 1, momentum)
 
 			if(!O || !src)
 				return

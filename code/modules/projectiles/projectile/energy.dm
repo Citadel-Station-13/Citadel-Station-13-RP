@@ -212,7 +212,7 @@
 	fire_sound = 'sound/weapons/Laser.ogg'
 	damage = 5
 	armor_penetration = 75
-	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
+	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
 	damage_type = BURN
 	check_armour = "energy"
 	light_color = "#0000FF"

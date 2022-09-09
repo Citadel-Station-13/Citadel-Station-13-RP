@@ -18,7 +18,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	icon_state = "health"
 	item_state = "healthanalyzer"
 	slot_flags = SLOT_BELT
-	throwforce = 3
+	throw_force = 3
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 5
 	throw_range = 10
@@ -342,7 +342,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	item_state = "analyzer"
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 4
 	throw_range = 20
 
@@ -363,7 +363,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	item_state = "analyzer"
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 4
 	throw_range = 20
 	matter = list(MAT_STEEL = 30, MAT_GLASS = 20)
@@ -407,7 +407,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	w_class = ITEMSIZE_SMALL
 	flags = OPENCONTAINER
 	slot_flags = SLOT_BELT
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 4
 	throw_range = 20
 
@@ -469,7 +469,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	item_state = "analyzer"
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 4
 	throw_range = 20
 	matter = list(MAT_STEEL = 30, MAT_GLASS = 20)
@@ -521,7 +521,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	icon = 'icons/obj/device.dmi'
 	origin_tech = list(TECH_BIO = 1)
 	w_class = ITEMSIZE_SMALL
-	throwforce = 0
+	throw_force = 0
 	throw_speed = 3
 	throw_range = 7
 	matter = list(MAT_STEEL = 30, MAT_GLASS = 20)
@@ -565,7 +565,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	desc = "A hand-held halogen counter, used to detect the level of irradiation of living beings."
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MAGNET = 1, TECH_BIO = 2)
-	throwforce = 0
+	throw_force = 0
 	throw_speed = 3
 	throw_range = 7
 

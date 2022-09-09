@@ -90,7 +90,7 @@
 	var/obj/item/master = parent
 
 	master.force = max(0, master.force + quality)
-	master.throwforce = max(0, master.throwforce + quality)
+	master.throw_force = max(0, master.throw_force + quality)
 	master.armor = master.armor.modifyAllRatings(quality)
 
 	var/newName = originalName
@@ -121,7 +121,7 @@
 		qdel(i)
 
 	master.force = max(0, master.force - quality)
-	master.throwforce = max(0, master.throwforce - quality)
+	master.throw_force = max(0, master.throw_force - quality)
 	master.armor = master.armor.modifyAllRatings(-quality)
 
 	master.name = originalName

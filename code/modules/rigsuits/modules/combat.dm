@@ -89,7 +89,7 @@
 	var/obj/item/grenade/new_grenade = new charge.product_type(get_turf(H))
 	H.visible_message("<span class='danger'>[H] launches \a [new_grenade]!</span>")
 	new_grenade.activate(H)
-	new_grenade.throw_at(target,fire_force,fire_distance)
+	new_grenade.throw_at_old(target,fire_force,fire_distance)
 
 /obj/item/rig_module/grenade_launcher/smoke
 	name = "mounted smoke-bomb launcher"
@@ -263,7 +263,7 @@
 		var/obj/item/firing = new fabrication_type()
 		firing.forceMove(get_turf(src))
 		H.visible_message("<span class='danger'>[H] launches \a [firing]!</span>")
-		firing.throw_at(target,fire_force,fire_distance)
+		firing.throw_at_old(target,fire_force,fire_distance)
 	else
 		if(H.l_hand && H.r_hand)
 			to_chat(H, "<span class='danger'>Your hands are full.</span>")

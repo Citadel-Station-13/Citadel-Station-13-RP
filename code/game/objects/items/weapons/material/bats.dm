@@ -3,7 +3,7 @@
 	desc = "HOME RUN!"
 	icon_state = "metalbat0"
 	base_icon = "metalbat"
-	throwforce = 7
+	throw_force = 7
 	attack_verb = list("smashed", "beaten", "slammed", "smacked", "struck", "battered", "bonked")
 	hitsound = 'sound/weapons/genhit3.ogg'
 	default_material = "wood"
@@ -40,7 +40,7 @@
 	icon_state = "penbat0"
 	base_icon = "penbat"
 	force = 0
-	throwforce = 0
+	throw_force = 0
 	attack_verb = list("smacked", "slapped", "thwapped", "struck", "bapped", "bonked")
 	default_material = "plastic"
 	force_divisor = 0

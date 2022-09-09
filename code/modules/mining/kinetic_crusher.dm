@@ -13,7 +13,7 @@
 	force = 0 //You can't hit stuff unless wielded
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 4
 /*
 	armour_penetration = 10
@@ -199,13 +199,13 @@
 				C.total_damage += detonation_damage + thrown_bonus
 			L.apply_damage(detonation_damage + thrown_bonus, BRUTE, blocked = def_check)
 
-/obj/item/kinetic_crusher/throw_impact(atom/hit_atom, speed)
+/obj/item/kinetic_crusher/throw_impact(atom/A, datum/thrownthing/TT)
 	. = ..()
-	if(!isliving(hit_atom))
+	if(!isliving(A))
 		return
-	var/mob/living/L = hit_atom
+	var/mob/living/L = A
 	if(!L.has_status_effect(STATUS_EFFECT_CRUSHERMARK))
-		detonate(L, thrower, TRUE)
+		detonate(L, TT.thrower, TRUE)
 
 /obj/item/kinetic_crusher/proc/Recharge()
 	if(!charged)

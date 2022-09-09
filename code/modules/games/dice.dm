@@ -62,7 +62,7 @@
 	if (Adjacent(user))
 		rollDice(user,0)
 
-/obj/item/dice/throw_at()
+/obj/item/dice/throw_at_old()
 	currently_throwing = TRUE
 
 /obj/item/dice/throw_impact(atom/hit_atom)
