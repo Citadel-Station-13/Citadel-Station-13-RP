@@ -52,4 +52,8 @@
 	safe_pressure = 18
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/tie_hair)
+		/mob/living/carbon/human/proc/tie_hair
+		)
+
+/datum/species/scori/equip_survival_gear()
+	return

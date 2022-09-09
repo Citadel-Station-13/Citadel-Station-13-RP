@@ -7,18 +7,18 @@
 /area/lavaland/ashlander_camp)
 "c" = (
 /obj/structure/ghost_role_spawner/ashlander,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/ashlander_camp)
 "m" = (
 /obj/item/reagent_containers/glass/bucket/wood,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/ashlander_camp)
 "v" = (
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/ashlander_camp)
 "x" = (
 /obj/effect/floor_decal/asteroid,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/ashlander_camp)
 "y" = (
 /obj/structure/table/hardwoodtable,
@@ -26,7 +26,7 @@
 /obj/fiftyspawner/wood,
 /obj/fiftyspawner/bone,
 /obj/item/pickaxe/bone,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/ashlander_camp)
 "Q" = (
 /obj/structure/table/hardwoodtable,
@@ -41,15 +41,15 @@
 	pixel_y = 2
 	},
 /obj/item/tool/wirecutters/clippers/bone,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/ashlander_camp)
 "R" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/ashlander_camp)
 "Y" = (
 /obj/structure/sink/puddle,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/ashlander_camp)
 
 (1,1,1) = {"
