@@ -175,7 +175,8 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	H.synth_color = TRUE
 	. = ..()
 
-	spawn(0) //Let their real nif load if they have one
+	// todo: this is utter shitcode and will break if we CHECK_TICK in SSticker, and should probably be part of postspawn or something
+	spawn(5) //Let their real nif load if they have one
 		if(!H.nif)
 			var/obj/item/nif/bioadap/new_nif = new()
 			new_nif.quick_implant(H)
