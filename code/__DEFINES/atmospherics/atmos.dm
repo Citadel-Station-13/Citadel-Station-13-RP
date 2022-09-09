@@ -71,7 +71,7 @@
 /// minimum temperature difference before we can stop ticking/just equalize
 #define MINIMUM_MEANINGFUL_TEMPERATURE_DELTA		0.5
 /// minimum pressure difference before we can stop ticking/just equalize
-#define MINIMUM_MEANINGFUL_PRESSURE_DIFFERENCE		0.5
+#define MINIMUM_MEANINGFUL_PRESSURE_DELTA			0.5
 /// when checking for vacuum we're fine with pressure as long as it's below this
 #define MINIMUM_MEANINGFUL_PRESSURE_VACUUM			5
 /// ZAS: if a sharer and our moles are below this, we nuke both to 0 because we consider it a vacuum

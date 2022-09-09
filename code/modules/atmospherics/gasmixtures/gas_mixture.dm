@@ -511,7 +511,7 @@
  * based on connecting tiles. Is just a wrapper to use a lookup table.
  */
 /datum/gas_mixture/proc/default_share_ratio(datum/gas_mixture/other, tiles)
-	var/static/list/lookup_table = lisT(
+	var/static/list/lookup_table = list(
 		0.3,
 		0.4,
 		0.48,
@@ -564,7 +564,7 @@
 		// lists are cached, so directly set
 		avg_amt = avg_gas[id]
 		// i don't know what these do but they work (probably)
-		our_gsa[id] = (our_gas[id] - avg_amt) * intact_ratio + avg_amt
+		our_gas[id] = (our_gas[id] - avg_amt) * intact_ratio + avg_amt
 		their_gas[id] = (their_gas[id] - avg_amt) * intact_ratio + avg_amt
 
 	// thermodynamics:
@@ -634,12 +634,12 @@
 	// equalize
 	var/intact_ratio = 1 - ratio
 	var/avg_amt
-	for(var/id in avg_gas)
+	for(var/id in gases)
 		// set moles by ratio
 		// lists are cached, so directly set
-		avg_amt = avg_gas[id]
+		avg_amt = gases[id]
 		// i don't know what these do but they work (probably)
-		our_gsa[id] = (our_gas[id] - avg_amt) * intact_ratio + avg_amt
+		our_gas[id] = (our_gas[id] - avg_amt) * intact_ratio + avg_amt
 
 	// thermodynamics:
 	// i don't know what these do but they work (probably)
