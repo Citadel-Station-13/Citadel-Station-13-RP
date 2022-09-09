@@ -587,7 +587,7 @@
 /datum/gas_mixture/proc/default_share_unsimulated(datum/gas_mixture/unsimulated)
 	var/static/list/sharing_lookup_table = list(0.30, 0.40, 0.48, 0.54, 0.60, 0.66)
 	var/computed_multiplier = max(group_multiplier, unsimulated.group_multiplier)
-	return share_virtual(unsimulated.gases, computed_multiplier, unsimulated.temperature, sharing_lookup_table[max(unsimulated.group_multiplier, 1)])
+	return share_virtual(unsimulated.gas, computed_multiplier, unsimulated.temperature, sharing_lookup_table[max(unsimulated.group_multiplier, 1)])
 
 /**
  * equalizes x% of our gas with an unsimulated mixture.
