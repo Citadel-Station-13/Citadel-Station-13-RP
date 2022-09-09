@@ -166,7 +166,7 @@
 		return
 	var/datum/gas_mixture/env = T.return_air()
 	if(env)
-		env.add_thermal_energy(10 * 1000)
+		env.adjust_thermal_energy(10 * 1000)
 
 
 // Mostly a classic blob.  No nodes, no other blob types.
@@ -440,7 +440,7 @@
 	T.freeze_floor()
 	var/datum/gas_mixture/env = T.return_air()
 	if(env)
-		env.add_thermal_energy(-10 * 1000)
+		env.adjust_thermal_energy(-10 * 1000)
 
 // Electric blob that stuns.
 /datum/blob_type/energized_jelly

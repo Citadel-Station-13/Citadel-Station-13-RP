@@ -34,8 +34,6 @@
 	var/const/OPEN_DURATION = 6
 	var/const/CLOSE_DURATION = 6
 
-
-
 /obj/structure/transit_tube_pod
 	icon = 'icons/obj/pipes/transit_tube_pod.dmi'
 	icon_state = "pod"
@@ -43,8 +41,7 @@
 	anchored = 1.0
 	density = 1
 	var/moving = 0
-	var/datum/gas_mixture/air_contents = new()
-
+	var/datum/gas_mixture/air_contents = new(CELL_VOLUME)
 
 
 /obj/structure/transit_tube_pod/Destroy()
