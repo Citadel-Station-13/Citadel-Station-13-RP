@@ -65,10 +65,14 @@
 	newtonian_move(get_dir(target, src))
 
 	throwing.throw_at(target, the_range, null, (a_intent == INTENT_HELP? THROW_AT_IS_NEAT : NONE) | (overhand? THROW_AT_OVERHAND : NONE), src, force = impulse)
+	
+	trigger_aiming(TARGET_CAN_CLICK)
+	return TRUE
 
 /mob/living/throw_at(atom/target, range, speed, flags, atom/thrower, datum/callback/on_hit, datum/callback/on_land, force)
 	. = ..()
 	if(!.)
 		return
 	var/turf/T = get_turf(target)
-	add_attack_logs(thrower, src, "Thrown via grab to [COORD(T)]")
+	if(ismob(thrower))
+		add_attack_logs(thrower, src, "Thrown via grab to [COORD(T)]")
