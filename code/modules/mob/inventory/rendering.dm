@@ -60,11 +60,10 @@
 	// testing("[src] (\ref[src]) - Slot: [slot_id], Inhands: [inhands], Worn Icon:[icon2use], Worn State:[state2use], Worn Layer:[layer2use]")
 
 	//Generate the base onmob icon
-
-	var/mutable_appearance/worn = new(icon2use, state2use)
+	var/icon/standing_icon = icon(icon = icon2use, icon_state = state2use)
 
 	if(!inhands)
-		worn = apply_custom(worn)		//Pre-image overridable proc to customize the thing
+		apply_custom(standing_icon)		//Pre-image overridable proc to customize the thing
 		apply_addblends(icon2use,standing_icon)		//Some items have ICON_ADD blend shaders
 
 	var/image/standing = image(standing_icon)
@@ -152,9 +151,8 @@
 		standing_icon.Blend(addblend_icon, ICON_ADD)
 
 //STUB
-/obj/item/proc/apply_custom(mutable_appearance/worn)
-	RETURN_TYPE(/mutable_appearance)
-	return worn
+/obj/item/proc/apply_custom(var/icon/standing_icon)
+	return standing_icon
 
 //STUB
 /obj/item/proc/apply_blood(var/image/standing)
