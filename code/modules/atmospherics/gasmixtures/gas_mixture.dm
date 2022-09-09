@@ -625,7 +625,7 @@
 
 	for(var/id in our_gas)
 		// now add ours
-		gases[id] += our_gas[id]
+		gases[id] += our_gas[id] * src.group_multiplier
 
 	for(var/id in gases)
 		// now shrink to the average
