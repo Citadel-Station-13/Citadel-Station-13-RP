@@ -112,13 +112,14 @@
 * Update icon and overlays of open space to be that of the turf below, plus any visible objects on that turf.
 */
 /turf/simulated/open/update_icon()
-	cut_overlays()
+	overlays.len = 0
 	var/turf/below = GetBelow(src)
 	if(below)
 		var/below_is_open = isopenturf(below)
 
 		if(below_is_open)
 			underlays = below.underlays
+			overlays = below.overlays
 		else
 			var/image/bottom_turf = image(icon = below.icon, icon_state = below.icon_state, dir=below.dir, layer=below.layer)
 			bottom_turf.plane = src.plane
@@ -138,8 +139,8 @@
 			temp2.overlays += O.overlays
 			// TODO Is pixelx/y needed?
 			o_img += temp2
-		add_overlay(o_img)
-		add_overlay(/obj/effect/abstract/over_openspace_darkness)
+		overlays += o_img
+		overlays += /obj/effect/abstract/over_openspace_darkness
 		return
 	return PROCESS_KILL
 

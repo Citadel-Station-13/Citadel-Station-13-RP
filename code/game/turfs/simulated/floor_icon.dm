@@ -107,7 +107,8 @@ var/list/flooring_cache = list()
 		return		// not us
 	for(var/d in GLOB.cardinal)
 		var/turf/simulated/F = get_step(src, d)
-		if(!istype(F))
+		// todo: BETTER ICON SYSTEM BUT HEY I GUESS WE'LL CHECK DENSITY
+		if(!istype(F) || F.density)
 			continue
 		// check that their priority is lower than ours, and we don't have the same icon state
 		if(F.edge_blending_priority < edge_blending_priority && icon_state != F.icon_state)
