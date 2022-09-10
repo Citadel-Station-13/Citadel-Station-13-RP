@@ -117,6 +117,12 @@
 /obj/item/holder/throw_resolve_actual()
 	return held_mob
 
+/obj/item/holder/throw_resolve_finalize()
+	qdel(src)
+
+/obj/item/holder/throw_resolve_override()
+	return TRUE
+
 //Mob specific holders.
 /obj/item/holder/diona
 	origin_tech = list(TECH_MAGNET = 3, TECH_BIO = 5)
