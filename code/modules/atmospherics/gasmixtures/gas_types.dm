@@ -53,9 +53,10 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 		if(initial(gas.moles_visible) != null)
 			.[gas_path] = new /list(FACTOR_GAS_VISIBLE_MAX)
 			for(var/i in 1 to FACTOR_GAS_VISIBLE_MAX)
-				var/mutable_appearance/MA = mutable_appearance('icons/effects/atmospherics.dmi', initial(gas.gas_overlay), FLY_LAYER, MOB_PLANE)
-				MA.alpha = i * 255 / FACTOR_GAS_VISIBLE_MAX
-				.[gas_path][i] = MA
+				var/image/I = image('icons/effects/atmospherics.dmi', icon_state = initial(gas.gas_overlay), layer = FLY_LAYER)
+				I.plane = MOB_PLANE
+				I.alpha = i * 255 / FACTOR_GAS_VISIBLE_MAX
+				.[gas_path][i] = I
 
 /proc/meta_gas_danger_list()
 	. = subtypesof(/datum/gas)

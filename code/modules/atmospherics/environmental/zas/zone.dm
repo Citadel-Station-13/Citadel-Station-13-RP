@@ -156,14 +156,26 @@ Class Procs:
 			T.create_fire(firelevel_multiplier)
 
 	var/list/returned = air.get_turf_graphics()
-	if(!(returned ~= turf_graphics))
-		var/list/removed = turf_graphics - returned
-		var/list/added = returned - turf_graphics
-		for(var/turf/simulated/T in contents)
-			if(T.allow_gas_overlays && !T.outdoors)
-				T.add_overlay(added)
-			T.cut_overlay(removed)
-		turf_graphics = returned
+	if(returned)
+		if(turf_graphics)
+			if(!(returned ~= turf_graphics))
+				var/list/removed = turf_graphics - returned
+				var/list/added = returned - turf_graphics
+				for(var/turf/simulated/T in contents)
+					if(T.allow_gas_overlays && !T.outdoors)
+						T.add_overlay(added)
+					T.cut_overlay(removed)
+				turf_graphics = returned
+		else
+			turf_graphics = returned
+			for(var/turf/simulated/T in contents)
+				if(T.allow_gas_overlays && !T.outdoors)
+					T.add_overlay(turf_graphics)
+	else
+		if(turf_graphics)
+			for(var/turf/simulated/T in contents)
+				T.cut_overlay(turf_graphics)
+			turf_graphics = null
 
 	for(var/datum/zas_edge/E in edges)
 		if(E.sleeping)
