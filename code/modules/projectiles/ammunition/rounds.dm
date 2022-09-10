@@ -565,6 +565,38 @@
 	projectile_type = /obj/item/projectile/bullet/organic/wax
 	matter = list("wax" = 100)
 
+/obj/item/ammo_casing/musket
+	name = "musket ball"
+	desc = "A solid ball made of lead."
+	icon_state = "musketball"
+	caliber = "musket"
+	projectile_type = /obj/item/projectile/bullet/musket
+	matter = list("lead" = 100)
+	caseless = 1
+
+/obj/item/ammo_casing/musket/silver
+	name = "silver musket ball"
+	desc = "A solid ball made of a lead-silver alloy."
+	icon_state = "silverball"
+	projectile_type = /obj/item/projectile/bullet/musket/silver
+	matter = list("lead" = 100, "silver" = 100)
+
+/obj/item/ammo_casing/musket/blunderbuss
+	name = "shot"
+	desc = "A bundle of lead balls and other assorted shrapnel."
+	icon_state = "blunderbuss"
+	caliber = "blunderbuss"
+	projectile_type = /obj/item/projectile/bullet/pellet/blunderbuss
+	matter = list("lead" = 500)
+
+/obj/item/ammo_casing/musket/blunderbuss/silver
+	name = "sliver shot"
+	desc = "A bundle of silver lead allow balls and other assorted bits of silver."
+	icon_state = "silverbuss"
+	projectile_type = /obj/item/projectile/bullet/pellet/blunderbuss/silver
+	matter = list("lead" = 500, "silver" = 500)
+
+
 //Arrows
 /obj/item/ammo_casing/arrow
 	name = "arrow of questionable material"
