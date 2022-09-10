@@ -2,7 +2,7 @@
 	name = "musket"
 	desc = "The precursor to the modern cased ammuntion firearms, muskets use simple hammer mechanism to produce a spark to ignite black \
 	powder which then propels a ball out the barrel of the gun. Though over a half millenium outdated muskets and other black powder weapons \
-	are still used by both hunters seeking more challenge, along with rebels and frontier's men who don't have access to cased ammo."
+	are still used by hunters seeking more challenge, along with rebels and frontiersmen who don't have access to cased ammo."
 
 	icon_state = "musket"
 	item_state = "musket"
@@ -98,7 +98,7 @@
 
 /obj/item/gun/projectile/musket/pistol
 	name = "flintlock pistol"
-	desc = "A pistol sized black powder weapon used primarily by reenactors, criminals who can't get bullets and collectors."
+	desc = "A pistol sized black powder weapon used primarily by reenactors, criminals who can't get bullets, and collectors."
 	icon_state = "flintlock"
 	item_state = "sawnshotgun"
 	wielded_item_state = null
@@ -107,7 +107,7 @@
 	w_class = ITEMSIZE_NORMAL
 	one_handed_penalty = 0
 
-/obj/item/gun/projectile/musket/pistol/brass //Note to Silicons: Reuse this to be a clocky Laser pistol of shorts when you work on adding them
+/obj/item/gun/projectile/musket/pistol/brass 
 	name = "brass wheelock"
 	desc = "A brass black powder pistol with a strange gear like firing mechanism. You are not quite certain how it actually works though."
 	icon_state = "flintlock-brass"
@@ -116,7 +116,7 @@
 
 /obj/item/gun/projectile/musket/pistol/tribal
 	name = "tribal flintlock"
-	desc = "A flintlock pistol cased in bone and sinew. It uses an obsidian striking mechanism, pehaps it should be called an obsidian-lock"
+	desc = "A flintlock pistol cased in bone and sinew. It uses an obsidian striking mechanism, perhaps it should be called an obsidian-lock?"
 	icon_state = "flintlock-scor"
 
 
