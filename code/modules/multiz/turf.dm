@@ -140,7 +140,7 @@
 			// TODO Is pixelx/y needed?
 			o_img += temp2
 		overlays += o_img
-		overlays += /obj/effect/abstract/over_openspace_darkness
+		overlays |= /obj/effect/abstract/over_openspace_darkness
 		return
 	return PROCESS_KILL
 
