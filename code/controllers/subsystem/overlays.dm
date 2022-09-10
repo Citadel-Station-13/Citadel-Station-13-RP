@@ -167,7 +167,7 @@ SUBSYSTEM_DEF(overlays)
 		return
 
 	// so it's up to date
-	if(other.flags & OVERLAY_QUEUD)
+	if(other.flags & OVERLAY_QUEUED)
 		COMPILE_OVERLAYS(other)
 	var/list/cached_other = other.overlays.Copy()
 	if(cut_old || !length(overlays))
