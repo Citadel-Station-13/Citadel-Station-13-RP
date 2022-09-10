@@ -117,10 +117,8 @@
 /obj/item/holder/throw_resolve_actual()
 	return held_mob
 
-/obj/item/holder/throw_resolve_finalize()
-	qdel(src)
-
 /obj/item/holder/throw_resolve_override()
+	forceMove(get_turf(src))
 	return TRUE
 
 //Mob specific holders.
