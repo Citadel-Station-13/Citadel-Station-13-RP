@@ -15,7 +15,7 @@
 		if(3)
 			params["fluff"] = "exile"
 		if(4)
-			params["fluff"] = "guardian"
+			params["fluff"] = "sentry"
 	return ..()
 
 /datum/ghostrole/ashlander/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
@@ -40,7 +40,7 @@
 			kinsmen when the priests declared you a sinner. For the crime of [pick("murder", "theft", "blasphemy")] you were cast out. Left with nothing but your \
 			wits and your strength, you have long traversed this world alone. The brand on your chest marks you among all who may find you - Exile. This simple \
 			yurt has become your latest haven. Rarely do others come across you here - a blessing, and a curse.</i>"
-		if("guardian") //Credit to YourDoom for writing this one! <3
+		if("sentry") //Credit to YourDoom for writing this one! <3
 			flavour_text += "<i>You were one of the [pick("tribe", "caravan")]'s most reliable guards. It was your sacred duty to keep the Mother's \
 			more dangerous children away from those you called family. However, the new threat of the Corrupted has thrown daily life into disarray. The priests \
 			believe these abominations are the harbingers of an impending cataclysm - they were right. A twisted horde of Corrupted overwhelmed your post as \
@@ -72,11 +72,14 @@
 			outfit.uniform = /obj/item/clothing/under/tribal_tunic/ashlander
 			outfit.belt = /obj/item/material/knife/tacknife/combatknife/bone
 			outfit.back = /obj/item/bo_staff
-		if("guardian") //This is the role that might get the musket, for future reference. Loadout is smaller for now.
+		if("sentry") //Paths for muskets are commented out, awaiting fullmerge.
 			outfit.uniform = /obj/item/clothing/under/gladiator/ashlander
 			outfit.shoes = /obj/item/clothing/shoes/ashwalker
+			//outfit.belt = /obj/item/reagent_containers/glass/powder_horn/tribal
 			outfit.back = /obj/item/storage/backpack/satchel/bone
-			outfit.r_hand = /obj/item/material/knife/tacknife/combatknife/bone
+			//outfit.r_pocket = /obj/item/ - Musket ball pouch, ideally.
+			//outfit.r_hand = /obj/item/gun/projectile/musket/tribal
+			outfit.l_hand = /obj/item/material/knife/tacknife/combatknife/bone
 	return outfit
 
 /obj/structure/ghost_role_spawner/ashlander
