@@ -25,7 +25,10 @@
 
 /turf/smooth_icon()
 	. = ..()
-	update_vertical_turf_graphics()
+	if(SSopenspace.initialized)
+		var/turf/simulated/open/above = GetAbove(src)
+		if(istype(above))
+			above.queue()
 
 /**
  * called during AfterChange() to request the turfs above and below us update their graphics.
