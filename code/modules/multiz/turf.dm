@@ -119,8 +119,8 @@
 			var/image/bottom_turf = image(icon = below.icon, icon_state = below.icon_state, dir=below.dir, layer=below.layer)
 			bottom_turf.plane = src.plane
 			bottom_turf.color = below.color
+			bottom_turf.copy_overlays(below)
 			underlays = list(bottom_turf)
-		copy_overlays(below, TRUE)
 
 		// Get objects (not mobs, they are handled by /obj/zshadow)
 		var/list/o_img = list()
@@ -147,7 +147,7 @@
 	icon = 'icons/turf/open_space.dmi'
 	icon_state = "black_open"
 	plane = OVER_OPENSPACE_PLANE
-	layer = MOB_LAYER
+	layer = ABOVE_MOB_LAYER
 
 // Straight copy from space.
 /turf/simulated/open/attackby(obj/item/C as obj, mob/user as mob)
