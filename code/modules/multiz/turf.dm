@@ -23,17 +23,21 @@
 /turf/proc/multiz_turf_new(turf/T, dir)
 	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_NEW, T, dir)
 
+/turf/smooth_icon()
+	. = ..()
+	update_vertical_turf_graphics()
+
 /**
  * called during AfterChange() to request the turfs above and below us update their graphics.
  */
 /turf/proc/update_vertical_turf_graphics()
 	var/turf/simulated/open/above = GetAbove(src)
 	if(istype(above))
-		above.update_icon()
+		above.queue()
 
 	var/turf/simulated/below = GetBelow(src)
 	if(istype(below))
-		below.update_icon() // To add or remove the 'ceiling-less' overlay.
+		below.queue() // To add or remove the 'ceiling-less' overlay.
 
 
 //
@@ -69,6 +73,16 @@
 	. = ..()
 	if(AM.movement_type & GROUND)
 		AM.fall()
+
+/turf/simulated/open/proc/queue()
+	if(smoothing_flags & SMOOTH_QUEUED)
+		return
+	smoothing_flags |= SMOOTH_QUEUED
+	SSopenspace.add_turf(src)
+
+//! we hijack smoothing flags.
+/turf/simulated/open/smooth_icon()
+	return		// nope
 
 /turf/simulated/open/proc/update()
 	plane = OPENSPACE_PLANE + src.z
