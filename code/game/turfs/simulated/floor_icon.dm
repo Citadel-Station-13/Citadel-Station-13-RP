@@ -105,7 +105,7 @@ var/list/flooring_cache = list()
 	if(!edge_blending_priority)
 		return		// not us
 	for(var/d in GLOB.cardinal)
-		var/turf/simulated/F = get_step(src, d)
+		var/turf/simulated/floor/F = get_step(src, d)
 		if(!istype(F))
 			continue
 		// check that their priority is lower than ours, and we don't have the same icon state
