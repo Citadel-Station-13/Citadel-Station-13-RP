@@ -64,6 +64,7 @@
 /turf/simulated/open/Initialize(mapload)
 	. = ..()
 	ASSERT(HasBelow(z))
+	plane = min(OPENSPACE_PLANE_END, OPENSPACE_PLANE + src.z)
 	queue()
 
 /turf/simulated/open/Entered(var/atom/movable/mover)
@@ -88,7 +89,6 @@
 	return		// nope
 
 /turf/simulated/open/proc/update()
-	plane = OPENSPACE_PLANE + src.z
 	below = GetBelow(src)
 	below.update_icon()	// So the 'ceiling-less' overlay gets added.
 	for(var/atom/movable/A in src)
@@ -123,6 +123,7 @@
 			bottom_turf.plane = src.plane
 			bottom_turf.color = below.color
 			bottom_turf.copy_overlays(below)
+			bottom_turf.appearance_flags = KEEP_TOGETHER
 			underlays = list(bottom_turf)
 
 		// Get objects (not mobs, they are handled by /obj/zshadow)
@@ -146,7 +147,7 @@
 /obj/effect/abstract/over_openspace_darkness
 	icon = 'icons/turf/open_space.dmi'
 	icon_state = "black_open"
-	plane = TURF_PLANE
+	plane = OVER_OPENSPACE_PLANE
 	layer = TURF_LAYER
 
 // Straight copy from space.

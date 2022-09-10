@@ -124,7 +124,7 @@ var/list/flooring_cache = list()
 	else if("[state]-edge" in states)
 		actual = "[state]-edge"
 	var/image/I = image('icons/turf/outdoors_edge.dmi', icon_state = actual, layer = ABOVE_TURF_LAYER, dir = turn(dir, 180))
-	I.plane = TURF_PLANE
+	I.plane = FLOAT_PLANE
 	switch(dir)
 		if(NORTH)
 			I.pixel_y = 32
