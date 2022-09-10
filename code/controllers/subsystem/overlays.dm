@@ -189,11 +189,10 @@ SUBSYSTEM_DEF(overlays)
 			cut_overlays()
 		return
 
+	if(other.flags & OVERLAY_QUEUED)
+		COMPILE_OVERLAYS(other)
 	var/list/cached_other = other.overlays.Copy()
-	if(cached_other)
-		if(cut_old || !overlays.len)
-			overlays = cached_other
-		else
-			overlays |= cached_other
-	else if(cut_old)
-		cut_overlays()
+	if(cut_old || !overlays.len)
+		overlays = cached_other
+	else
+		overlays |= cached_other

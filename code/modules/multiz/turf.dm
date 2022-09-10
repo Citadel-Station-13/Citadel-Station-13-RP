@@ -143,8 +143,8 @@
 /obj/effect/abstract/over_openspace_darkness
 	icon = 'icons/turf/open_space.dmi'
 	icon_state = "black_open"
-	plane = PLATING_PLANE
-	layer = ABOVE_MOB_LAYER
+	plane = TURF_PLANE
+	layer = TURF_LAYER
 
 // Straight copy from space.
 /turf/simulated/open/attackby(obj/item/C as obj, mob/user as mob)
