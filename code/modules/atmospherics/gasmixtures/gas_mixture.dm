@@ -355,6 +355,7 @@
 		var/list/gas_overlays = GLOB.meta_gas_overlays[id]
 		if(gas_overlays && moles > GLOB.meta_gas_visibility[id])
 			. += gas_overlays[min(FACTOR_GAS_VISIBLE_MAX, CEILING(moles / MOLES_GAS_VISIBLE_STEP, 1))]
+	return length(.)? . : null
 
 //Shares gas with another gas_mixture based on the amount of connecting tiles and a fixed lookup table.
 /datum/gas_mixture/proc/share_ratio(datum/gas_mixture/other, connecting_tiles, share_size = null, one_way = 0)

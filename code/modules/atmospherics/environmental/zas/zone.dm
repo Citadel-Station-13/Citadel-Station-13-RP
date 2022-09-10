@@ -49,7 +49,7 @@ Class Procs:
 	var/list/edges = list()
 	var/datum/gas_mixture/air = new
 
-	var/list/turf_graphics = list()
+	var/list/turf_graphics
 
 /datum/zas_zone/New()
 	air_master.add_zone(src)
@@ -67,14 +67,15 @@ Class Procs:
 	var/datum/gas_mixture/turf_air = T.return_air()
 	add_tile_air(turf_air)
 	T.zone = src
-	contents.Add(T)
+	contents += T
 	if(T.fire)
 		var/obj/effect/debris/cleanable/liquid_fuel/fuel = locate() in T
-		fire_tiles.Add(T)
+		fire_tiles += T
 		air_master.active_fire_zones |= src
-		if(fuel) fuel_objs += fuel
+		if(fuel)
+			fuel_objs += fuel
 	if(T.allow_gas_overlays && !T.outdoors)
-		T.vis_contents += turf_graphics
+		T.add_overlay(turf_graphics)
 
 /datum/zas_zone/proc/remove(turf/simulated/T)
 #ifdef ZAS_DEBUG
@@ -86,13 +87,14 @@ Class Procs:
 	if(!(T in contents))
 		stack_trace("Turf was not in contents.")
 #endif
-	contents.Remove(T)
-	fire_tiles.Remove(T)
+	contents -= T
 	if(T.fire)
 		var/obj/effect/debris/cleanable/liquid_fuel/fuel = locate() in T
-		fuel_objs -= fuel
+		fire_tiles -= T
+		if(fuel)
+			fuel_objs -= fuel
 	T.zone = null
-	T.vis_contents -= turf_graphics
+	T.cut_overlay(turf_graphics)
 	if(contents.len)
 		air.group_multiplier = contents.len
 	else
@@ -158,9 +160,9 @@ Class Procs:
 		var/list/removed = turf_graphics - returned
 		var/list/added = returned - turf_graphics
 		for(var/turf/simulated/T in contents)
-			T.vis_contents -= removed
 			if(T.allow_gas_overlays && !T.outdoors)
-				T.vis_contents += added
+				T.add_overlay(added)
+			T.cut_overlay(removed)
 		turf_graphics = returned
 
 	for(var/datum/zas_edge/E in edges)
