@@ -113,13 +113,16 @@ var/list/flooring_cache = list()
 			var/key = "[F.icon_state || F.edge_icon_state]-[d]"
 			add_overlay(GLOB.turf_edge_cache[key] || generate_border_cache_for(F.icon_state || F.edge_icon_state, d))
 
+// todo: better system
 /proc/generate_border_cache_for(state, dir)
 	// make it
 	var/static/list/states = icon_states('icons/turf/outdoors_edge.dmi')
+	var/actual
 	if(state in states)
+		actual = state
 	else if("[state]-edge" in states)
-		state = "[state]-edge"
-	var/mutable_appearance/I = mutable_appearance('icons/turf/outdoors_edge.dmi', state, ABOVE_TURF_LAYER, TURF_PLANE)
+		actual = "[state]-edge"
+	var/mutable_appearance/I = mutable_appearance('icons/turf/outdoors_edge.dmi', actual, ABOVE_TURF_LAYER, TURF_PLANE)
 	I.dir = turn(dir, 180)
 	switch(dir)
 		if(NORTH)

@@ -136,28 +136,22 @@ SUBSYSTEM_DEF(overlays)
 	if(!overlays)
 		return
 	overlays = build_appearance_list(overlays)
-	LAZYINITLIST(add_overlays)
 	LAZYINITLIST(remove_overlays)
-	var/a_len = add_overlays.len
-	var/r_len = remove_overlays.len
 	remove_overlays += overlays
-	add_overlays -= overlays
-	var/fa_len = add_overlays.len
-	var/fr_len = remove_overlays.len
-	//If not already queued and there is work to be done
-	if(NOT_QUEUED_ALREADY && (fa_len != a_len || fr_len != r_len ))
+	if(add_overlays)
+		add_overlays -= overlays
+	if(NOT_QUEUED_ALREADY)
 		QUEUE_FOR_COMPILE
-	UNSETEMPTY(add_overlays)
 
 /atom/proc/add_overlay(list/overlays)
 	if(!overlays)
 		return
 	overlays = build_appearance_list(overlays)
 	LAZYINITLIST(add_overlays) //always initialized after this point
-	var/a_len = add_overlays.len
 	add_overlays += overlays
-	var/fa_len = add_overlays.len
-	if(NOT_QUEUED_ALREADY && fa_len != a_len)
+	if(remove_overlays)
+		remove_overlays -= overlays
+	if(NOT_QUEUED_ALREADY)
 		QUEUE_FOR_COMPILE
 
 /atom/proc/copy_overlays(atom/other, cut_old) //copys our_overlays from another atom
