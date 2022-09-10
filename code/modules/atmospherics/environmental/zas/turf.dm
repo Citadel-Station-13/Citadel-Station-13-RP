@@ -129,7 +129,7 @@
 
 			continue
 
-		var/us_to_them = CanAtmosPass(potential, d)
+		var/us_to_them = CanAtmosPass(potential, d)w
 		if(us_to_them == ATMOS_PASS_AIR_BLOCKED)
 
 			#ifdef ZAS_DEBUG_GRAPHICS

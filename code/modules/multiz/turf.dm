@@ -120,7 +120,7 @@
 			bottom_turf.plane = src.plane
 			bottom_turf.color = below.color
 			underlays = list(bottom_turf)
-		copy_overlays(below)
+		copy_overlays(below, TRUE)
 
 		// Get objects (not mobs, they are handled by /obj/zshadow)
 		var/list/o_img = list()
