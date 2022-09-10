@@ -120,7 +120,7 @@ var/list/flooring_cache = list()
 	else if("[state]-edge" in states)
 		state = "[state]-edge"
 	var/mutable_appearance/I = mutable_appearance('icons/turf/outdoors_edge.dmi', state, ABOVE_TURF_LAYER, TURF_PLANE)
-	I.dir = turn(Dir, 180)
+	I.dir = turn(dir, 180)
 	switch(dir)
 		if(NORTH)
 			I.pixel_y = 32
