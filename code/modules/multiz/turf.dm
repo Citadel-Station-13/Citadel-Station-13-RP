@@ -112,6 +112,7 @@
 * Update icon and overlays of open space to be that of the turf below, plus any visible objects on that turf.
 */
 /turf/simulated/open/update_icon()
+	cut_overlays()
 	var/turf/below = GetBelow(src)
 	if(below)
 		var/below_is_open = isopenturf(below)
@@ -139,9 +140,7 @@
 			o_img += temp2
 		add_overlay(o_img)
 		add_overlay(/obj/effect/abstract/over_openspace_darkness)
-		return 0
-	else
-		cut_overlays()
+		return
 	return PROCESS_KILL
 
 /obj/effect/abstract/over_openspace_darkness

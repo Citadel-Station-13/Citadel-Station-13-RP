@@ -75,5 +75,6 @@
 	icon = 'icons/turf/snow_new.dmi'
 	icon_state = "gravsnow"
 	desc = "A layer of coarse ice pebbles and assorted gravel."
+	edge_blending_priority = 0
 	initial_flooring = /decl/flooring/snow/gravsnow
 	baseturfs = /turf/simulated/floor/outdoors/dirt
