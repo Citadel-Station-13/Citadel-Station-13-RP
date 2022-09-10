@@ -35,10 +35,10 @@
 	if(istype(above))
 		above.queue()
 
-	var/turf/simulated/below = GetBelow(src)
-	if(istype(below))
-		below.queue() // To add or remove the 'ceiling-less' overlay.
-
+	var/turf/below = GetBelow(src)
+	if(below)
+		// To add or remove the 'ceiling-less' overlay.
+		below.update_icon()
 
 //
 // Open Space - "empty" turf that lets stuff fall thru it to the layer below
