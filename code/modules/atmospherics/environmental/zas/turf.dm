@@ -91,7 +91,7 @@
 		c_copy_air()
 		zone = null //Easier than iterating through the list at the zone.
 
-	var/self_block = CanAtmosPass(src, NONE)
+	var/self_block = blocks_air || CanAtmosPass(src, NONE)
 	if(self_block == ATMOS_PASS_AIR_BLOCKED)
 		#ifdef ZAS_DEBUG_GRAPHICS
 		if(verbose)
