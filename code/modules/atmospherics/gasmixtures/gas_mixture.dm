@@ -651,7 +651,7 @@
 
 	// thermodynamics:
 	// i don't know what these do but they work (probably)
-	temperature = (temperature - avg_temperature) * intact_ratio + avg_temperature
+	src.temperature = (src.temperature - avg_temperature) * intact_ratio + avg_temperature
 
 	// update
 	update_values()
