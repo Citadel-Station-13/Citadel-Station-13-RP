@@ -12,6 +12,28 @@
 			return CanAtmosPass
 
 /**
+ * call when we ourselves need to update our air pass
+ */
+/atom/proc/air_update_turf()
+
+/turf/air_update_turf()
+	queue_zone_update()
+
+/atom/movable/air_update_turf()
+	update_nearby_tiles()
+
+/**
+ * call when we move to update our air pass
+ */
+/atom/proc/air_update_turf_moved(turf/oldLoc)
+
+/turf/air_update_turf_moved()
+	queue_zone_update()
+
+/atom/movable/air_update_turf_moved()
+	update_nearby_tiles()
+
+/**
  * superconduction - not yet implemented
  */
 
@@ -19,7 +41,7 @@
 
 /**
  * do we block thermal conduction?
- * 
+ *
  * @params
  * a - temperature of one side
  * b - temperature of other side
