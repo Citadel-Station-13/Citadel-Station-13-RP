@@ -113,7 +113,7 @@
 		/obj/item/clothing/suit/colonial_redcoat = 4,
 		/obj/item/clothing/head/redcoat = 4,
 		/obj/item/gun/projectile/musket/pistol = 1,
-		/obj/item/projectile/bullet/musket  = 12,
+		/obj/item/ammo_casing/musket  = 12,
 		/obj/item/storage/belt/sheath = 1,
 		/obj/item/gun/projectile/musket = 3,
 		/obj/item/reagent_containers/glass/powder_horn = 4,
