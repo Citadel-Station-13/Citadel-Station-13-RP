@@ -134,10 +134,7 @@
 			// TODO Is pixelx/y needed?
 			o_img += temp2
 		add_overlay(o_img)
-
-		if(!below_is_open)
-			add_overlay(/obj/effect/abstract/over_openspace_darkness)
-
+		add_overlay(/obj/effect/abstract/over_openspace_darkness)
 		return 0
 	else
 		cut_overlays()
@@ -146,7 +143,7 @@
 /obj/effect/abstract/over_openspace_darkness
 	icon = 'icons/turf/open_space.dmi'
 	icon_state = "black_open"
-	plane = OVER_OPENSPACE_PLANE
+	plane = PLATING_PLANE
 	layer = ABOVE_MOB_LAYER
 
 // Straight copy from space.
