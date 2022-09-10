@@ -51,7 +51,7 @@
 	fire_sound = 'sound/weapons/pulse3.ogg'
 	damage = 0
 	damage_type = BURN
-	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
+	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
 	nodamage = 1
 	check_armour = "energy" // It actually checks heat/cold protection.
 	var/target_temperature = 50
@@ -103,24 +103,15 @@
 
 /obj/item/projectile/meteor/Bump(atom/A as mob|obj|turf|area)
 	if(A == firer)
-		loc = A.loc
 		return
 
-	sleep(-1) //Might not be important enough for a sleep(-1) but the sleep/spawn itself is necessary thanks to explosions and metoerhits
+	A.ex_act(2)
+	playsound(src.loc, 'sound/effects/meteorimpact.ogg', 40, 1)
 
-	if(src)//Do not add to this if() statement, otherwise the meteor won't delete them
-		if(A)
-
-			A.ex_act(2)
-			playsound(src.loc, 'sound/effects/meteorimpact.ogg', 40, 1)
-
-			for(var/mob/M in range(10, src))
-				if(!M.stat && !istype(M, /mob/living/silicon/ai))\
-					shake_camera(M, 3, 1)
-			qdel(src)
-			return 1
-	else
-		return 0
+	for(var/mob/M in range(10, src))
+		if(!M.stat && !istype(M, /mob/living/silicon/ai))\
+			shake_camera(M, 3, 1)
+	qdel(src)
 
 /obj/item/projectile/meteor/slug
 	name = "meteor"
@@ -268,7 +259,7 @@
 	name = "core of molten tungsten"
 	icon_state = "energy"
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
-	pass_flags = PASSTABLE | PASSGRILLE
+	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GRILLE
 	damage = 70
 	damage_type = BURN
 	check_armour = "laser"
@@ -294,7 +285,7 @@
 
 			if(target_armor >= 60)
 				var/turf/T = get_step(H, pick(GLOB.alldirs - src.dir))
-				H.throw_at(T, 1, 1, src)
+				H.throw_at_old(T, 1, 1, src)
 				H.apply_damage(20, BURN, def_zone)
 				if(target_limb)
 					armor_special = 2

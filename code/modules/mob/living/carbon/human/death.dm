@@ -4,7 +4,7 @@
 		var/obj/item/nif/deadnif = nif //Unimplant removes the reference on the mob
 		deadnif.unimplant(src)
 		deadnif.forceMove(drop_location())
-		deadnif.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)), rand(1,3), round(30/deadnif.w_class))
+		deadnif.throw_at_old(get_edge_target_turf(src,pick(GLOB.alldirs)), rand(1,3), round(30/deadnif.w_class))
 		deadnif.wear(10) //Presumably it's gone through some shit if they got gibbed?
 
 	if(vr_holder)
@@ -20,12 +20,12 @@
 	for(var/obj/item/organ/I in internal_organs)
 		I.removed()
 		if(istype(loc,/turf))
-			I.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),30)
+			I.throw_at_old(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),30)
 
 	//mirror should drop on gib
 	if(mirror)
 		mirror.forceMove(drop_location())
-		mirror.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)), rand(1,3), round(30/mirror.w_class))
+		mirror.throw_at_old(get_edge_target_turf(src,pick(GLOB.alldirs)), rand(1,3), round(30/mirror.w_class))
 
 	for(var/obj/item/organ/external/E in src.organs)
 		E.droplimb(0,DROPLIMB_EDGE,1)
@@ -34,7 +34,7 @@
 
 	for(var/obj/item/I in get_equipped_items(TRUE, TRUE))
 		drop_item_to_ground(I, INV_OP_FORCE)
-		I.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)), rand(1,3), round(30/I.w_class))
+		I.throw_at_old(get_edge_target_turf(src,pick(GLOB.alldirs)), rand(1,3), round(30/I.w_class))
 
 	..(species.gibbed_anim) // uses the default mob.dmi file for these, so we only need to specify the first argument
 	gibs(loc, dna, null, species.get_flesh_colour(src), species.get_blood_colour(src))

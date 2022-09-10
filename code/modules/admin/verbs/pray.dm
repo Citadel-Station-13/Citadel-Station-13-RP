@@ -2,10 +2,6 @@
 	set category = "IC"
 	set name = "Pray"
 
-	if(say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<font color='red'>Speech is currently admin-disabled.</font>")
-		return
-
 	msg = sanitize(msg)
 	if(!msg)	return
 

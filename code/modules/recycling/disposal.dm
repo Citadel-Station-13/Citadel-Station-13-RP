@@ -454,19 +454,19 @@
 			if(!istype(AM,/mob/living/silicon/robot/drone)) //Poor drones kept smashing windows and taking system damage being fired out of disposals. ~Z
 				spawn(1)
 					if(AM)
-						AM.throw_at(target, 5, 1)
+						AM.throw_at_old(target, 5, 1)
 
 		H.vent_gas(loc)
 		qdel(H)
 
-/obj/machinery/disposal/hitby(atom/movable/yeeted_atom)
+/obj/machinery/disposal/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
-	if(istype(yeeted_atom, /obj/item) && !istype(yeeted_atom, /obj/item/projectile))
+	if(istype(AM, /obj/item) && !istype(AM, /obj/item/projectile))
 		if(prob(75))
-			yeeted_atom.forceMove(src)
-			visible_message("\The [yeeted_atom] lands in \the [src].")
+			AM.forceMove(src)
+			visible_message("\The [AM] lands in \the [src].")
 		else
-			visible_message("\The [yeeted_atom] bounces off of \the [src]'s rim!")
+			visible_message("\The [AM] bounces off of \the [src]'s rim!")
 
 /obj/machinery/disposal/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover, /obj/item/projectile))
@@ -786,7 +786,7 @@
 					AM.pipe_eject(direction)
 					spawn(1)
 						if(AM)
-							AM.throw_at(target, 100, 1)
+							AM.throw_at_old(target, 100, 1)
 				H.vent_gas(T)
 				qdel(H)
 
@@ -801,7 +801,7 @@
 					AM.pipe_eject(0)
 					spawn(1)
 						if(AM)
-							AM.throw_at(target, 5, 1)
+							AM.throw_at_old(target, 5, 1)
 
 				H.vent_gas(T)	// all gas vent to turf
 				qdel(H)
@@ -1468,7 +1468,7 @@
 				AM.pipe_eject(dir)
 				if(!istype(AM,/mob/living/silicon/robot/drone)) //Drones keep smashing windows from being fired out of chutes. Bad for the station. ~Z
 					spawn(5)
-						AM.throw_at(target, 3, 1)
+						AM.throw_at_old(target, 3, 1)
 			H.vent_gas(src.loc)
 			qdel(H)
 

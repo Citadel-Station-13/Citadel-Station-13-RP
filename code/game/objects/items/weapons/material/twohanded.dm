@@ -51,7 +51,7 @@
 		force_wielded = 150 //double the force of a durasteel claymore.
 		force_unwielded = 150 //double the force of a durasteel claymore.
 		armor_penetration = 100 //regardless of armor
-		throwforce = 150
+		throw_force = 150
 		force = force_unwielded
 		return
 	if(sharp || edge)
@@ -61,8 +61,8 @@
 	force_wielded = round(force_wielded*force_divisor)
 	force_unwielded = round(force_wielded*unwielded_force_divisor)
 	force = force_unwielded
-	throwforce = round(force*thrown_force_divisor)
-	//to_chat(world, "[src] has unwielded force [force_unwielded], wielded force [force_wielded] and throwforce [throwforce] when made from default material [material.name]")
+	throw_force = round(force*thrown_force_divisor)
+	//to_chat(world, "[src] has unwielded force [force_unwielded], wielded force [force_wielded] and throw_force [throw_force] when made from default material [material.name]")
 
 /obj/item/material/twohanded/Initialize(mapload, material_key)
 	. = ..()
@@ -339,7 +339,7 @@
 	force_divisor = 2
 	hitsound = 'sound/effects/lightningbolt.ogg'
 	force = 50
-	throwforce = 15
+	throw_force = 15
 	force_wielded = 75
 	slowdown = 0
 

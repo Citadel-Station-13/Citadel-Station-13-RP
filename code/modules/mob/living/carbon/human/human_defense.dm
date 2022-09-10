@@ -357,14 +357,14 @@ emp_act
 	return 1
 
 //this proc handles being hit by a thrown atom
-/mob/living/carbon/human/hitby(atom/movable/AM as mob|obj,var/speed = THROWFORCE_SPEED_DIVISOR)
+/mob/living/carbon/human/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 //	if(buckled && buckled == AM)
 //		return // Don't get hit by the thing we're buckled to.
 
-	if(istype(AM,/obj/))
+	if(istype(AM, /obj))
 		var/obj/O = AM
 
-		if(in_throw_mode && speed <= THROWFORCE_SPEED_DIVISOR)	//empty active hand and we're in throw mode
+		if(in_throw_mode && TT.speed <= THROW_SPEED_CATCHABLE)	//empty active hand and we're in throw mode
 			if(canmove && !restrained())
 				if(isturf(O.loc))
 					if(can_catch(O))
@@ -374,24 +374,22 @@ emp_act
 						return
 
 		var/dtype = O.damtype
-		var/throw_damage = O.throwforce*(speed/THROWFORCE_SPEED_DIVISOR)
+		var/throw_damage = O.throw_force * TT.get_damage_multiplier()
 
 		var/zone
-		if (istype(O.thrower, /mob/living))
-			var/mob/living/L = O.thrower
-			zone = check_zone(L.zone_sel.selecting)
+		if (istype(TT.thrower, /mob/living))
+			zone = check_zone(TT.target_zone)
 		else
 			zone = ran_zone(BP_TORSO,75)	//Hits a random part of the body, geared towards the chest
 
 		//check if we hit
 		var/miss_chance = 15
-		if (O.throw_source)
-			var/distance = get_dist(O.throw_source, loc)
-			miss_chance = max(15*(distance-2), 0)
+		var/distance = get_dist(TT.initial_turf, loc)
+		miss_chance = max(5 * (distance - 2), 0)
 		zone = get_zone_with_miss_chance(zone, src, miss_chance, ranged_attack=1)
 
-		if(zone && O.thrower != src)
-			var/shield_check = check_shields(throw_damage, O, thrower, zone, "[O]")
+		if(zone && TT.thrower != src)
+			var/shield_check = check_shields(throw_damage, O, TT.thrower, zone, "[O]")
 			if(shield_check == PROJECTILE_FORCE_MISS)
 				zone = null
 			else if(shield_check)
@@ -408,8 +406,8 @@ emp_act
 
 		src.visible_message("<font color='red'>[src] has been hit in the [hit_area] by [O].</font>")
 
-		if(ismob(O.thrower))
-			add_attack_logs(O.thrower,src,"Hit with thrown [O.name]")
+		if(ismob(TT.thrower))
+			add_attack_logs(TT.thrower,src,"Hit with thrown [O.name]")
 
 		//If the armor absorbs all of the damage, skip the rest of the calculations
 		var/soaked = get_armor_soak(affecting, "melee", O.armor_penetration)
@@ -447,24 +445,23 @@ emp_act
 		if(istype(O, /obj/item))
 			var/obj/item/I = O
 			mass = I.w_class/THROWNOBJ_KNOCKBACK_DIVISOR
-		var/momentum = speed*mass
+		var/momentum = TT.speed*mass
 
-		if(O.throw_source && momentum >= THROWNOBJ_KNOCKBACK_SPEED)
-			var/dir = get_dir(O.throw_source, src)
+		if(TT.initial_turf && momentum >= THROWNOBJ_KNOCKBACK_SPEED)
+			var/dir = get_dir(TT.initial_turf, src)
 
 			visible_message("<font color='red'>[src] staggers under the impact!</font>","<font color='red'>You stagger under the impact!</font>")
-			src.throw_at(get_edge_target_turf(src,dir),1,momentum)
+			src.throw_at_old(get_edge_target_turf(src,dir),1,momentum)
 
 			if(!O || !src) return
 
 			if(O.loc == src && O.sharp) //Projectile is embedded and suitable for pinning.
 				var/turf/T = near_wall(dir,2)
-
 				if(T)
-					src.loc = T
+					forceMove(T)
 					visible_message("<span class='warning'>[src] is pinned to the wall by [O]!</span>","<span class='warning'>You are pinned to the wall by [O]!</span>")
-					src.anchored = 1
-					src.pinned += O
+					anchored = TRUE
+					pinned += O
 
 // This does a prob check to catch the thing flying at you, with a minimum of 1%
 /mob/living/carbon/human/proc/can_catch(var/obj/O)
@@ -475,8 +472,10 @@ emp_act
 		if(temp && !temp.is_usable())
 			return FALSE	// The hand isn't working in the first place
 
-	if(!O.catchable)
-		return FALSE
+	if(isitem(O))
+		var/obj/item/I = O
+		if(I.item_flags & ITEM_THROW_UNCATCHABLE)
+			return FALSE
 
 	// Alright, our hand works? Time to try the catching.
 	var/catch_chance = 90	// Default 90% catch rate
