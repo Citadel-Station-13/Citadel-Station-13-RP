@@ -91,7 +91,7 @@
  */
 /obj/item/material/twohanded/fireaxe  // DEM AXES MAN, marker -Agouri
 	icon_state = "fireaxe0"
-	base_icon = "fireaxe0"
+	base_icon = "fireaxe"
 	name = "fire axe"
 	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
 	description_info = "This weapon can cleave, striking nearby lesser, hostile enemies close to the primary target.  It must be held in both hands to do this."
@@ -145,8 +145,8 @@
 	force_divisor = 0
 	force = 0
 	applies_material_colour = 1
-	base_icon = "fireaxe_mask0"
 	icon_state = "fireaxe_mask0"
+	base_icon = "fireaxe_mask"
 	unbreakable = 1
 	sharp = 0
 	edge = 0
@@ -163,8 +163,8 @@
 /obj/item/material/twohanded/fireaxe/bone
 	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
 	default_material = "bone"
-	base_icon = "fireaxe_mask0"
 	icon_state = "fireaxe_mask0"
+	base_icon = "fireaxe_mask"
 	applies_material_colour = 1
 
 /obj/item/material/twohanded/fireaxe/bone/Initialize(mapload, material_key)
@@ -194,7 +194,7 @@
 //spears, bay edition
 /obj/item/material/twohanded/spear
 	icon_state = "spearglass0"
-	base_icon = "spearglass0"
+	base_icon = "spearglass"
 	name = "spear"
 	desc = "A haphazardly-constructed yet still deadly weapon of ancient design."
 	description_info = "This weapon can strike from two tiles away, and over certain objects such as tables, or other people."
@@ -270,7 +270,7 @@
 	desc = "A primitive yet deadly weapon of ancient design."
 	default_material = "bone"
 	icon_state = "spear_mask0"
-	base_icon = "spear_mask0"
+	base_icon = "spear_mask"
 	applies_material_colour = 1
 
 /obj/item/material/twohanded/spear/bone/Initialize(mapload, material_key)
