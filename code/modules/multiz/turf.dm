@@ -108,6 +108,8 @@
 		depth += 1
 	. += "It is about [depth] levels deep."
 
+// todo: we either need vis conetents rendering or zmimic overlays; this is a fucked system and is really just unsalvagable.
+
 /**
 * Update icon and overlays of open space to be that of the turf below, plus any visible objects on that turf.
 */
