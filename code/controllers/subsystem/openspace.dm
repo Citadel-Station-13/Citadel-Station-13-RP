@@ -11,10 +11,15 @@ SUBSYSTEM_DEF(openspace)
 	return ..()
 
 /datum/controller/subsystem/openspace/fire(resumed)
-	while(length(turfs_to_process))
-		var/turf/T = turfs_to_process[1]
-		turfs_to_process.Cut(1,2)
+	var/i = 0
+	for(i in 1 to length(turfs_to_process))
+		var/turf/T = turfs_to_process[i]
 		update_turf(T)
+		if(MC_TICK_CHECK)
+			break
+	if(!i)
+		return
+	turfs_to_process.Cut(1, i)
 
 /datum/controller/subsystem/openspace/proc/update_turf(var/turf/T)
 	for(var/atom/movable/A in T)
@@ -34,4 +39,6 @@ SUBSYSTEM_DEF(openspace)
 	// Do initial setup from bottom to top.
 	for(var/zlevel = 1 to world.maxz)
 		for(var/turf/simulated/open/T in block(locate(1, 1, zlevel), locate(world.maxx, world.maxy, zlevel)))
-			add_turf(T)
+			update_turf(T)
+			T.smoothing_flags &= ~SMOOTH_QUEUED
+	turfs_to_process.Cut()

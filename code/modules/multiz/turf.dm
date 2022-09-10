@@ -61,7 +61,7 @@
 /turf/simulated/open/Initialize(mapload)
 	. = ..()
 	ASSERT(HasBelow(z))
-	update()
+	queue()
 
 /turf/simulated/open/Entered(var/atom/movable/mover)
 	..()
