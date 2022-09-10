@@ -149,8 +149,6 @@ SUBSYSTEM_DEF(overlays)
 	overlays = build_appearance_list(overlays)
 	LAZYINITLIST(add_overlays) //always initialized after this point
 	add_overlays += overlays
-	if(remove_overlays)
-		remove_overlays -= overlays
 	if(NOT_QUEUED_ALREADY)
 		QUEUE_FOR_COMPILE
 
