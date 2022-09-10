@@ -12,6 +12,9 @@
 /turf/CanAtmosPass(turf/T, d)
 	if(blocks_air)
 		return ATMOS_PASS_AIR_BLOCKED
+	if(T == src)
+		//! warning: this does break some ZAS functionality but honestly blocking self to self is a stupid and expensive concept to maintain.
+		return ATMOS_PASS_NOT_BLOCKED
 	var/v = d & (UP|DOWN)
 	if(v)
 		switch(d)
@@ -21,14 +24,14 @@
 			if(DOWN)
 				if(!(z_flags & Z_AIR_DOWN))
 					return ATMOS_PASS_AIR_BLOCKED
-	. = ATMOS_PASS_NOT_BLOCKED
-	if(v)
+		. = ATMOS_PASS_NOT_BLOCKED
 		for(var/atom/movable/AM as anything in contents)
 			. = min(., CANVERTICALATMOSPASS(AM, T, d))
 			if(. == ATMOS_PASS_AIR_BLOCKED)
 				// can't go lower than this
 				return
 	else
+		. = ATMOS_PASS_NOT_BLOCKED
 		for(var/atom/movable/AM as anything in contents)
 			. = min(., CANATMOSPASS(AM, T, d))
 			if(. == ATMOS_PASS_AIR_BLOCKED)
