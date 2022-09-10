@@ -41,6 +41,7 @@
 	suffix = "ashlandercamp.dmm"
 	cost = 5
 	discard_prob = 50
+	allow_duplicates = TRUE
 
 /datum/map_template/submap/level_specific/lavaland/shelter
 	name = "Lava Land - Shelter"
