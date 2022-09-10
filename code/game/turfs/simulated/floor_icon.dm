@@ -6,8 +6,7 @@ GLOBAL_DATUM_INIT(no_ceiling_image, /image, generate_no_ceiling_image())
 	return I
 
 /turf/simulated/floor/custom_smooth()
-	update_icon()
-	update_border_spillover()
+	return		// we'll update_icon().
 
 /turf/simulated/floor/calculate_adjacencies()
 	return NONE
@@ -90,6 +89,8 @@ var/list/flooring_cache = list()
 	if(isopenturf(above) && !istype(src, /turf/simulated/floor/outdoors)) // This won't apply to outdoor turfs since its assumed they don't have a ceiling anyways.
 		add_overlay(GLOB.no_ceiling_image)
 
+	update_border_spillover()	// sigh
+
 	// ..() has to be last to prevent trampling managed overlays
 	. = ..()
 
@@ -110,8 +111,8 @@ var/list/flooring_cache = list()
 			continue
 		// check that their priority is lower than ours, and we don't have the same icon state
 		if(F.edge_blending_priority < edge_blending_priority && icon_state != F.icon_state)
-			var/key = "[F.icon_state || F.edge_icon_state]-[d]"
-			add_overlay(GLOB.turf_edge_cache[key] || generate_border_cache_for(F.icon_state || F.edge_icon_state, d))
+			var/key = "[icon_state || edge_icon_state]-[d]"
+			add_overlay(GLOB.turf_edge_cache[key] || generate_border_cache_for(icon_state || edge_icon_state, d))
 
 // todo: better system
 /proc/generate_border_cache_for(state, dir)
