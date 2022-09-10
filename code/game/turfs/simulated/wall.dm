@@ -16,6 +16,7 @@
 	heat_capacity = 312500 //a little over 5 cm thick , 312500 for 1 m by 2.5 m by 0.25 m plasteel wall
 	baseturfs = /turf/simulated/floor/plating
 	smoothing_flags = SMOOTH_CUSTOM
+	edge_blending_priority = INFINITY		// let's not have floors render onto us mmkay?
 
 	var/icon/wall_masks = 'icons/turf/wall_masks.dmi'
 	var/damage = 0
