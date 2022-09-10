@@ -115,8 +115,12 @@ var/list/flooring_cache = list()
 
 /proc/generate_border_cache_for(state, dir)
 	// make it
-	var/image/I = image(icon = 'icons/turf/outdoors_edge.dmi', icon_state = state, dir = turn(dir, 180), layer = ABOVE_TURF_LAYER)
-	I.plane = TURF_PLANE
+	var/static/list/states = icon_states('icons/turf/outdoors_edge.dmi')
+	if(state in states)
+	else if("[state]-edge" in states)
+		state = "[state]-edge"
+	var/mutable_appearance/I = mutable_appearance('icons/turf/outdoors_edge.dmi', state, ABOVE_TURF_LAYER, TURF_PLANE)
+	I.dir = turn(Dir, 180)
 	switch(dir)
 		if(NORTH)
 			I.pixel_y = 32
