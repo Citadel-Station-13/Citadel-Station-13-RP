@@ -63,7 +63,7 @@
 	icon_state = "riot"
 	slot_flags = SLOT_BACK
 	force = 5.0
-	throwforce = 5.0
+	throw_force = 5.0
 	throw_speed = 1
 	throw_range = 4
 	w_class = ITEMSIZE_LARGE
@@ -180,7 +180,7 @@
 	item_state = "metal"
 	slot_flags = null
 	force = 10
-	throwforce = 7
+	throw_force = 7
 
 /obj/item/shield/riot/tower
 	name = "tower shield"
@@ -190,7 +190,7 @@
 	icon_state = "metal"
 	force = 16
 	slowdown = 2
-	throwforce = 15 //Massive piece of metal
+	throw_force = 15 //Massive piece of metal
 	w_class = ITEMSIZE_HUGE
 
 /obj/item/shield/riot/tower/swat
@@ -291,7 +291,7 @@
 	slot_flags = SLOT_EARS
 	flags = NOCONDUCT
 	force = 3.0
-	throwforce = 5.0
+	throw_force = 5.0
 	throw_speed = 1
 	throw_range = 4
 	w_class = ITEMSIZE_SMALL
@@ -389,7 +389,7 @@
 	icon_state = "teleriot0"
 	slot_flags = null
 	force = 3
-	throwforce = 3
+	throw_force = 3
 	throw_speed = 3
 	throw_range = 4
 	w_class = ITEMSIZE_NORMAL
@@ -408,14 +408,14 @@
 
 	if(active)
 		force = 8
-		throwforce = 5
+		throw_force = 5
 		throw_speed = 2
 		w_class = ITEMSIZE_LARGE
 		slot_flags = SLOT_BACK
 		to_chat(user, "<span class='notice'>You extend \the [src].</span>")
 	else
 		force = 3
-		throwforce = 3
+		throw_force = 3
 		throw_speed = 3
 		w_class = ITEMSIZE_NORMAL
 		slot_flags = null
@@ -443,7 +443,7 @@
 	icon_state = "wolfgirlshield"
 	slot_flags = SLOT_BACK | SLOT_OCLOTHING
 	force = 5.0
-	throwforce = 5.0
+	throw_force = 5.0
 	throw_speed = 2
 	throw_range = 6
 	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_melee_vr.dmi', slot_r_hand_str = 'icons/mob/items/righthand_melee_vr.dmi', SLOT_ID_BACK = 'icons/vore/custom_items_vr.dmi', SLOT_ID_SUIT = 'icons/vore/custom_items_vr.dmi')
@@ -462,7 +462,7 @@
 			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
 			)
 	force = 5.0
-	throwforce = 5.0
+	throw_force = 5.0
 	throw_speed = 2
 	throw_range = 6
 
@@ -475,7 +475,7 @@
 	slot_flags = SLOT_BACK
 	base_block_chance = 5
 	force = 0
-	throwforce = 0
+	throw_force = 0
 	throw_speed = 2
 	throw_range = 6
 	matter = list(MAT_PLASTIC = 7500, "foam" = 1000)

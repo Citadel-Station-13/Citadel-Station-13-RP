@@ -1,16 +1,20 @@
 /atom/movable
 	layer = OBJ_LAYER
 	appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
+	/// movable flags - see [code/__DEFINES/_flags/atoms.dm]
+	var/movable_flags = NONE
 	/// Whatever we're pulling.
 	var/atom/movable/pulling
 	/// If false makes [CanPass][/atom/proc/CanPass] call [CanPassThrough][/atom/movable/proc/CanPassThrough] on this type instead of using default behaviour
 	var/generic_canpass = TRUE
+	/// Pass flags.
+	var/pass_flags = NONE
 	/// 0: not doing a diagonal move. 1 and 2: doing the first/second step of the diagonal move
 	var/moving_diagonally = 0
 	/// attempt to resume grab after moving instead of before. This is what atom/movable is pulling us during move-from-pulling.
 	var/atom/movable/moving_from_pull
 	/// Direction of our last move.
-	var/last_move = NONE
+	var/last_move_dir = NONE
 	/// Which direction we're drifting
 	var/inertia_dir = NONE
 	/// Only set while drifting, last location we were while drifting
@@ -27,21 +31,48 @@
 	var/datum/component/orbiter/orbiting
 	///Used for the calculate_adjacencies proc for icon smoothing.
 	var/can_be_unanchored = FALSE
-	/// Our default glide_size.
-	var/default_glide_size = 0
-
+	/// Our default glide_size. Null to use global default.
+	var/default_glide_size
 	/// our default perspective - if none, a temporary one will be generated when a mob requires it
 	var/datum/perspective/self_perspective
-
+	/// anchored to ground? prevent movement absolutely if so
 	var/anchored = FALSE
+	/// movement force to resist
+	var/move_resist = MOVE_RESIST_DEFAULT
+	/// our movement force
+	var/move_force = MOVE_FORCE_DEFAULT
+	/// our pulling force
+	var/pull_force = PULL_FORCE_DEFAULT
+
 	var/move_speed = 10
 	var/l_move_time = 1
-	var/m_flag = 1
-	var/throwing = FALSE
-	var/thrower
-	var/turf/throw_source = null
+
+	//! throwing
+	// todo: trace "throwing" usages
+	var/datum/thrownthing/throwing
+	/// default throw speed
 	var/throw_speed = 2
+	/// default throw range
 	var/throw_range = 7
+	/// default throw damage at a "standard" speed
+	var/throw_force = 0
+	/// default throw move force resist
+	var/throw_resist = THROW_RESIST_DEFAULT
+	/**
+	 * throw damage scaling exponent
+	 * see defines for information
+	 * BE CAREFUL WITH THIS
+	 * if you set this to 2 and make floor tiles that do 100+ damage a hit or something insane i warned you
+	 */
+	var/throw_damage_scaling_exponential = THROW_DAMAGE_SCALING_CONSTANT_DEFAULT
+	/**
+	 * throw speed scaling exponent
+	 * see defines for information
+	 * BE CAREFUL WITH THIS
+	 */
+	var/throw_speed_scaling_exponential = THROW_SPEED_SCALING_CONSTANT_DEFAULT
+
+	// todo: kill this (only used for elcetropacks)
 	var/moved_recently = FALSE
 	var/mob/pulledby = null
 
@@ -60,8 +91,6 @@
 
 	/// Used for vehicles and other things.
 	var/datum/riding/riding_datum
-	/// Does the atom spin when thrown.
-	var/does_spin = TRUE
 
 	///If we're cloaked or not.
 	var/cloaked = FALSE
@@ -84,6 +113,7 @@
 	// kick perspectives before moving
 	if(self_perspective)
 		QDEL_NULL(self_perspective)
+	throwing?.terminate()
 	moveToNullspace()
 	if(un_opaque)
 		un_opaque.recalc_atom_opacity()
@@ -100,70 +130,6 @@
 		if(mover.loc in locs)
 			. = TRUE
 	return .
-
-/////////////////////////////////////////////////////////////////
-
-/// Called when src is thrown into hit_atom
-/atom/movable/proc/throw_impact(atom/hit_atom, speed)
-	if(istype(hit_atom,/mob/living))
-		var/mob/living/M = hit_atom
-		if(M.buckled == src)
-			return // Don't hit the thing we're buckled to.
-		M.hitby(src,speed)
-
-	else if(isobj(hit_atom))
-		var/obj/O = hit_atom
-		if(!O.anchored)
-			step(O, src.last_move)
-		O.hitby(src,speed)
-
-	else if(isturf(hit_atom))
-		src.throwing = 0
-		var/turf/T = hit_atom
-		T.hitby(src,speed)
-
-/// Decided whether a movable atom being thrown can pass through the turf it is in.
-/atom/movable/proc/hit_check(speed)
-	if(src.throwing)
-		for(var/atom/A in get_turf(src))
-			if(A == src)
-				continue
-			if(istype(A,/mob/living))
-				if(A:lying)
-					continue
-				src.throw_impact(A,speed)
-			if(isobj(A))
-				if(!A.density || A.throwpass)
-					continue
-				// Special handling of windows, which are dense but block only from some directions
-				if(istype(A, /obj/structure/window))
-					var/obj/structure/window/W = A
-					if (!W.is_fulltile() && !(turn(src.last_move, 180) & A.dir))
-						continue
-				// Same thing for (closed) windoors, which have the same problem
-				else if(istype(A, /obj/machinery/door/window) && !(turn(src.last_move, 180) & A.dir))
-					continue
-				src.throw_impact(A,speed)
-
-/// If this returns FALSE then callback will not be called.
-/atom/movable/proc/throw_at(atom/target, range, speed, mob/thrower, spin = TRUE, datum/callback/callback)
-	. = TRUE
-	if(!target || speed <= 0 || QDELETED(src) || (target.z != src.z))
-		return FALSE
-
-	if(pulledby)
-		pulledby.stop_pulling()
-
-	var/datum/thrownthing/TT = new(src, target, range, speed, thrower, callback)
-	throwing = TT
-
-	pixel_z = 0
-	if(spin && does_spin)
-		SpinAnimation(4,1)
-
-	SSthrowing.processing[src] = TT
-	if(SSthrowing.state == SS_PAUSED && length(SSthrowing.currentrun))
-		SSthrowing.currentrun[src] = TT
 
 //Overlays
 /atom/movable/overlay

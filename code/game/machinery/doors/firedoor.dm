@@ -472,7 +472,7 @@
 	air_properties_vary_with_direction = 1
 
 	CanPass(atom/movable/mover, turf/target)
-		if(istype(mover) && mover.checkpass(PASSGLASS))
+		if(istype(mover) && mover.checkpass(ATOM_PASS_GLASS))
 			return 1
 		if(get_dir(loc, target) == dir) //Make sure looking at appropriate border
 			return !density
@@ -480,7 +480,7 @@
 			return 1
 
 	CheckExit(atom/movable/mover as mob|obj, turf/target as turf)
-		if(istype(mover) && mover.checkpass(PASSGLASS))
+		if(istype(mover) && mover.checkpass(ATOM_PASS_GLASS))
 			return 1
 		if(get_dir(loc, target) == dir)
 			return !density
@@ -503,7 +503,7 @@
 
 // For prosperity, in case border doors get reimplemented.
 /obj/machinery/door/firedoor/border_only/CanAStarPass(obj/item/card/id/ID, to_dir)
-	return !density || (dir != to_dir)
+	return ..() || (dir != to_dir)
 
 /obj/machinery/door/firedoor/multi_tile
 	icon = 'icons/obj/doors/DoorHazard2x1.dmi'

@@ -2,7 +2,7 @@
 	name = "laser"
 	icon_state = "laser"
 	fire_sound = 'sound/weapons/weaponsounds_laserstrong.ogg'
-	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
+	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
 	damage = 40
 	damage_type = BURN
 	check_armour = "laser"

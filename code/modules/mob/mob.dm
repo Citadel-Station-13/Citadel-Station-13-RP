@@ -29,7 +29,10 @@
 	init_rendering()
 	hook_vr("mob_new",list(src))
 	update_transform() // Some mobs may start bigger or smaller than normal.
-	return ..()
+	. = ..()
+	update_config_movespeed()
+	update_movespeed(TRUE)
+	initialize_actionspeed()
 
 /**
  * Delete a mob
@@ -58,9 +61,10 @@
 	dead_mob_list -= src
 	living_mob_list -= src
 	unset_machine()
-	if(hud_used)
-		QDEL_NULL(hud_used)
-	dispose_rendering()
+	movespeed_modification = null
+	actionspeed_modification = null
+	for(var/alert in alerts)
+		clear_alert(alert)
 	if(client)
 		for(var/atom/movable/screen/movable/spell_master/spell_master in spell_masters)
 			qdel(spell_master)
@@ -70,6 +74,9 @@
 		spellremove(src)
 	// this kicks out client
 	ghostize()
+	if(hud_used)
+		QDEL_NULL(hud_used)
+	dispose_rendering()
 	if(plane_holder)
 		QDEL_NULL(plane_holder)
 	// with no client, we can safely remove perspective this way snow-flakily
@@ -1134,24 +1141,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/setEarDamage()
 	return
 
-//! ## Throwing stuff
-
-/mob/proc/toggle_throw_mode()
-	if (src.in_throw_mode)
-		throw_mode_off()
-	else
-		throw_mode_on()
-
-/mob/proc/throw_mode_off()
-	src.in_throw_mode = 0
-	if(src.throw_icon) //in case we don't have the HUD and we use the hotkey
-		src.throw_icon.icon_state = "act_throw_off"
-
-/mob/proc/throw_mode_on()
-	src.in_throw_mode = 1
-	if(src.throw_icon)
-		src.throw_icon.icon_state = "act_throw_on"
-
 /mob/proc/isSynthetic()
 	return 0
 
@@ -1219,10 +1208,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	return
 
 /mob/proc/swap_hand()
-	return
-
-//Throwing stuff
-/mob/proc/throw_item(atom/target)
 	return
 
 /mob/proc/will_show_tooltip()

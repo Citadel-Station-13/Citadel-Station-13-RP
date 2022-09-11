@@ -3395,8 +3395,7 @@
 	dir = 8
 	},
 /obj/machinery/computer/ship/engines{
-	dir = 8;
-	throwpass = 1
+	dir = 8
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	icon_state = "bordercolor";

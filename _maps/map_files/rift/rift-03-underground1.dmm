@@ -18489,7 +18489,6 @@
 	name = "Engine Cooling Control";
 	output_tag = "cooling_out";
 	sensors = list("engine_sensor"="Engine Core");
-	throwpass = 1
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engineering_monitoring)

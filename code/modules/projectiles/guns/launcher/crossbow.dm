@@ -8,7 +8,7 @@
 	item_state = "bolt"
 	drop_sound = 'sound/items/drop/sword.ogg'
 	pickup_sound = 'sound/items/pickup/sword.ogg'
-	throwforce = 8
+	throw_force = 8
 	w_class = ITEMSIZE_NORMAL
 	sharp = 1
 	edge = 0
@@ -21,7 +21,7 @@
 	desc = "It's about a foot of weird silver metal with a wicked point."
 	sharp = 1
 	edge = 0
-	throwforce = 5
+	throw_force = 5
 	w_class = ITEMSIZE_SMALL
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "metal-rod"
@@ -35,7 +35,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "quill"
 	item_state = "quill"
-	throwforce = 5
+	throw_force = 5
 
 /obj/item/arrow/rod
 	name = "metal rod"
@@ -43,7 +43,7 @@
 	icon_state = "metal-rod"
 
 /obj/item/arrow/rod/removed(mob/user)
-	if(throwforce == 15) // The rod has been superheated - we don't want it to be useable when removed from the bow.
+	if(throw_force == 15) // The rod has been superheated - we don't want it to be useable when removed from the bow.
 		to_chat(user, "[src] shatters into a scattering of overstressed metal shards as it leaves the crossbow.")
 		var/obj/item/material/shard/shrapnel/S = new()
 		S.loc = get_turf(src)
@@ -185,11 +185,11 @@
 /obj/item/gun/launcher/crossbow/proc/superheat_rod(var/mob/user)
 	if(!user || !cell || !bolt) return
 	if(cell.charge < 500) return
-	if(bolt.throwforce >= 15) return
+	if(bolt.throw_force >= 15) return
 	if(!istype(bolt,/obj/item/arrow/rod)) return
 
 	to_chat(user, "<span class='notice'>[bolt] plinks and crackles as it begins to glow red-hot.</span>")
-	bolt.throwforce = 15
+	bolt.throw_force = 15
 	bolt.icon_state = "metal-rod-superheated"
 	cell.use(500)
 

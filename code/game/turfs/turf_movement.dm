@@ -9,7 +9,6 @@ var/const/enterloopsanity = 100
 	/**
 	 * everything below this is legacy and deserves to burn in fire
 	 * ESPECIALLY vore flying overrides
-	 * ESPECIALLY proxmove.
 	 */
 
 	if(ismob(AM))
@@ -24,23 +23,8 @@ var/const/enterloopsanity = 100
 			var/mob/living/L = M
 			L.handle_footstep(src)
 
-	var/objects = 0
-	if(AM.flags & PROXMOVE)
-		for(var/atom/movable/thing in range(1))
-			if(objects++ > enterloopsanity)
-				break
-			spawn(0)
-				if(AM) //Runtime prevention
-					AM.HasProximity(thing, 1)
-					if ((thing && AM) && (thing.flags & PROXMOVE))
-						thing.HasProximity(AM, 1)
-
-
 //There's a lot of QDELETED() calls here if someone can figure out how to optimize this but not runtime when something gets deleted by a Bump/CanAllowThrough/Cross call, lemme know or go ahead and fix this mess - kevinz000
 /turf/Enter(atom/movable/mover, atom/oldloc)
-	if(movement_disabled && usr.ckey != movement_disabled_exception)
-		to_chat(usr, "<span class='warning'>Movement is admin-disabled.</span>") //This is to identify lag problems
-		return
 	// Do not call ..()
 	// Byond's default turf/Enter() doesn't have the behaviour we want with Bump()
 	// By default byond will call Bump() on the first dense object in contents

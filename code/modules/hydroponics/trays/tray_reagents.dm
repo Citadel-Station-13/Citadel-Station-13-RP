@@ -3,7 +3,7 @@
 	item_state = "spraycan"
 	item_flags = NOBLUDGEON
 	slot_flags = SLOT_BELT
-	throwforce = 4
+	throw_force = 4
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 2
 	throw_range = 10

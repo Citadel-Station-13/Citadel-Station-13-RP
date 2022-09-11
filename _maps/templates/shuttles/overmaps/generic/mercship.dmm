@@ -1217,8 +1217,7 @@
 /area/ship/mercenary/bridge)
 "cn" = (
 /obj/machinery/computer/ship/engines{
-	dir = 8;
-	throwpass = 1
+	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 5

@@ -65,7 +65,7 @@
 		mover.fall()
 
 // Called when thrown object lands on this turf.
-/turf/simulated/open/hitby(var/atom/movable/AM, var/speed)
+/turf/simulated/open/throw_landed(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
 	if(AM.movement_type & GROUND)
 		AM.fall()

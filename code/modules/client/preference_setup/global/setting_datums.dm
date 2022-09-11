@@ -156,6 +156,7 @@ var/list/_client_preferences_by_type
 /datum/client_preference/pickup_sounds
 	description = "Picked Up Item Sounds"
 	key = "SOUND_PICKED"
+
 	enabled_description = "Enabled"
 	disabled_description = "Disabled"
 

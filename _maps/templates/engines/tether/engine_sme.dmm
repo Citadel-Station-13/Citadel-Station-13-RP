@@ -687,8 +687,7 @@
 	input_tag = "cooling_in";
 	name = "Engine Cooling Control";
 	output_tag = "cooling_out";
-	sensors = list("engine_sensor" = "Engine Core");
-	throwpass = 1
+	sensors = list("engine_sensor" = "Engine Core")
 	},
 /turf/template_noop,
 /area/template_noop)

@@ -79,7 +79,7 @@
 	sharp = 1
 	edge = 1
 	force = 15
-	throwforce = 15
+	throw_force = 15
 	attack_verb = list("stabbed", "chopped", "cut")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	can_hold = list(
