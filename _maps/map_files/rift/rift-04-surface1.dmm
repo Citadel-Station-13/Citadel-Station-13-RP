@@ -6868,7 +6868,7 @@
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "eMR" = (
-/obj/machinery/atmospherics/component/binary/pump/on{
+/obj/machinery/atmospherics/component/binary/pump/high_power/on{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -14242,15 +14242,6 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/tool_storage)
-"jNE" = (
-/obj/machinery/portable_atmospherics/canister/chlorine,
-/obj/effect/floor_decal/industrial/warning/full,
-/obj/machinery/door/window/northright,
-/obj/machinery/atmospherics/portables_connector{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/medical/virologymaint)
 "jNR" = (
 /obj/machinery/disposal,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -31928,10 +31919,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/lower)
 "uKI" = (
-/obj/machinery/portable_atmospherics/canister/chlorine,
 /obj/effect/floor_decal/industrial/warning/full,
-/obj/machinery/door/window/northleft,
-/obj/machinery/atmospherics/portables_connector{
+/obj/machinery/atmospherics/pipe/tank/chlorine{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -33131,7 +33120,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
-/obj/machinery/atmospherics/component/binary/pump/on,
+/obj/machinery/atmospherics/component/binary/pump/high_power/on,
 /turf/simulated/floor/plating,
 /area/medical/virologypurge)
 "vDR" = (
@@ -34676,7 +34665,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyisolation)
 "wCv" = (
-/obj/machinery/atmospherics/valve,
+/obj/machinery/atmospherics/valve/open,
 /turf/simulated/floor/tiled,
 /area/medical/virologypurge)
 "wCw" = (
@@ -55676,7 +55665,7 @@ lRd
 aIs
 ydq
 eMR
-jNE
+uKI
 vUA
 gzd
 xxI
