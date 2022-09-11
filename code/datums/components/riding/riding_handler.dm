@@ -245,7 +245,7 @@
  * handles building our typecaches
  */
 /datum/component/riding_handler/proc/build_turf_typecaches()
-	allowed_turf_types = typelist(NAMEOF(allowed_turf_types), allowed_turf_types)
+	allowed_turf_types = typelist(NAMEOF(src, allowed_turf_types), allowed_turf_types)
 	forbid_turf_types = typelist(NAMEOF(src, forbid_turf_types), forbid_turf_types)
 	if(!default_turf_checks)
 		return
