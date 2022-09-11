@@ -3,10 +3,10 @@
 	desc = "An object used in marking graves."
 	icon_state = "gravemarker"
 
-	density = 1
-	anchored = 1
-	throwpass = 1
-	climbable = 1
+	density = TRUE
+	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
+	climbable = TRUE
+	anchored = TRUE
 
 	layer = ABOVE_JUNK_LAYER
 
@@ -39,18 +39,16 @@
 			. += epitaph
 
 /obj/structure/gravemarker/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSTABLE))
+	if(!(get_dir(loc, target) & dir))
 		return TRUE
-	if(get_dir(loc, target) & dir)
-		return !density
-	return TRUE
+	return ..()
 
-/obj/structure/gravemarker/CheckExit(atom/movable/O as mob|obj, target as turf)
-	if(istype(O) && O.checkpass(PASSTABLE))
-		return 1
-	if(get_dir(O.loc, target) == dir)
-		return 0
-	return 1
+/obj/structure/gravemarker/CheckExit(atom/movable/AM, atom/newLoc)
+	if(!(get_dir(AM.loc, newLoc) & dir))
+		return TRUE
+	if(check_standard_flag_pass(AM))
+		return TRUE
+	return FALSE
 
 /obj/structure/gravemarker/attackby(obj/item/W, mob/user as mob)
 	if(W.is_screwdriver())

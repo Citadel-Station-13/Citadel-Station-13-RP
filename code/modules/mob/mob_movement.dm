@@ -1,3 +1,9 @@
+//DO NOT USE THIS UNLESS YOU ABSOLUTELY HAVE TO. THIS IS BEING PHASED OUT FOR THE MOVESPEED MODIFICATION SYSTEM.
+//See code/modules/movespeed/movespeed_modifier.dm
+/mob/proc/movement_delay()	//update /living/movement_delay() if you change this
+	SHOULD_CALL_PARENT(TRUE)
+	return cached_multiplicative_slowdown
+
 /mob/proc/applyMoveCooldown(amount)
 	move_delay = max(move_delay, world.time + amount)
 
@@ -16,21 +22,6 @@
 		var/mob/living/silicon/robot/R = mob
 		R.cycle_modules()
 	return
-
-/client/verb/attack_self()
-	set hidden = 1
-	if(mob)
-		mob.mode()
-	return
-
-
-/client/verb/toggle_throw_mode()
-	set hidden = 1
-	if(!istype(mob, /mob/living/carbon))
-		return
-	var/mob/living/carbon/C = mob
-	C.toggle_throw_mode()
-
 
 /client/verb/drop_item()
 	set hidden = 1
@@ -51,13 +42,9 @@
 			mob.control_object.dir = direct
 		else
 			mob.control_object.forceMove(get_step(mob.control_object,direct))
-	return
-
-/// until movespeed modifiers are done - silicons
-/mob/proc/movement_delay()
-	return 0
 
 /mob/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
 	if(ismob(mover))
 		var/mob/moving_mob = mover
 		if ((other_mobs && moving_mob.other_mobs))
@@ -65,7 +52,9 @@
 	if(istype(mover, /obj/item/projectile))
 		var/obj/item/projectile/P = mover
 		return !P.can_hit_target(src, P.permutated, src == P.original, TRUE)
-	return (!mover.density || !density || lying)
+	// thrown things still hit us even when nondense
+	if(!mover.density && !mover.throwing)
+		return TRUE
 
 /**
   * Toggle the move intent of the mob
@@ -308,6 +297,7 @@
 	if((direct & (direct - 1)) && mob.loc == n) //moved diagonally successfully
 		add_delay *= SQRT_2
 	mob.move_delay += add_delay
+	mob.last_move_time = world.time
 /*
 	if(.) // If mob is null here, we deserve the runtime
 		if(mob.throwing)

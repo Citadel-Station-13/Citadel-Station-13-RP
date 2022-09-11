@@ -8,7 +8,7 @@
 	force = 15
 	throw_speed = 1
 	throw_range = 4
-	throwforce = 10
+	throw_force = 10
 	w_class = ITEMSIZE_SMALL
 	drop_sound = 'sound/items/drop/sword.ogg'
 	pickup_sound = 'sound/items/pickup/sword.ogg'
@@ -211,7 +211,7 @@
 	item_state = "sord"
 	slot_flags = SLOT_BELT
 	force = 4.13
-	throwforce = 1
+	throw_force = 1
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
@@ -279,7 +279,7 @@
 	name = "Pride-struck Hammer"
 	desc = "It resonates an aura of Pride."
 	force = 16
-	throwforce = 15
+	throw_force = 15
 	w_class = 4
 	slot_flags = SLOT_BACK
 	attack_verb = list("attacked", "smashed", "crushed", "splattered", "cracked")
@@ -316,7 +316,7 @@
 	force = 0
 	throw_speed = 4
 	throw_range = 7
-	throwforce = 30
+	throw_force = 30
 	sharp = 1
 	attack_verb = list("enlightened", "redpilled")
 
@@ -430,7 +430,7 @@
 	name = "prayer beads"
 	desc = "A set of prayer beads used by many of the more traditional religions in space"
 	force = 4
-	throwforce = 0
+	throw_force = 0
 	attack_verb = list("whipped", "repented", "lashed", "flagellated")
 	drop_sound = 'sound/items/drop/card.ogg'
 	pickup_sound = 'sound/items/pickup/card.ogg'

@@ -3210,8 +3210,7 @@
 /area/shuttle/multidemo)
 "vP" = (
 /obj/machinery/computer/ship/engines{
-	dir = 8;
-	throwpass = 1
+	dir = 8
 	},
 /turf/simulated/shuttle/floor/voidcraft/light,
 /area/shuttle/overmapdemo)

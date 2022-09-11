@@ -5,7 +5,7 @@
 	armor_penetration = 40
 	damage_type = BRUTE
 	check_armour = "melee"
-	pass_flags = PASSTABLE | PASSBLOB
+	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_BLOB
 	fire_sound = 'sound/effects/slime_squish.ogg'
 	var/splatter = FALSE			// Will this make a cloud of reagents?
 	var/splatter_volume = 5			// The volume of its chemical container, for said cloud of reagents.

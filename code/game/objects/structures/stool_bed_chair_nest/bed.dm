@@ -15,7 +15,7 @@
 	pressure_resistance = 15
 	anchored = TRUE
 	buckle_allowed = TRUE
-	can_buckle = TRUE
+	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
 	buckle_dir = SOUTH
 	buckle_lying = 90
 	var/datum/material/material
@@ -68,11 +68,6 @@
 	else
 		name = "[material.display_name] [initial(name)]"
 		desc += " It's made of [material.use_name]."
-
-/obj/structure/bed/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSTABLE))
-		return TRUE
-	return ..()
 
 /obj/structure/bed/ex_act(severity)
 	switch(severity)

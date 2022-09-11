@@ -106,7 +106,7 @@
 	item_state = "" //nope :(
 	w_class = ITEMSIZE_LARGE
 	force = 14
-	throwforce = 10
+	throw_force = 10
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = null
 	volume = 150

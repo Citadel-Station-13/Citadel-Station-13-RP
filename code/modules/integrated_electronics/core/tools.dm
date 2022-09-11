@@ -192,24 +192,6 @@
 	icon_state = "analyzer"
 	w_class = WEIGHT_CLASS_SMALL
 
-/obj/item/integrated_electronics/analyzer/afterattack(var/atom/A, var/mob/living/user)
-	. = ..()
-	if(istype(A, /obj/item/electronic_assembly))
-		var/obj/item/electronic_assembly/EA = A
-		if(!EA.opened)
-			to_chat(usr, SPAN_WARNING("You need to open the [A] to analyze the contents!"))
-			return
-		var/save = SScircuit.save_electronic_assembly(A)
-		var/saved = "[A.name] analyzed! On circuit printers with cloning enabled, you may use the code below to clone the circuit:<br><br><code>[save]</code>"
-		if(save)
-			to_chat(usr, SPAN_WARNING("You scan [A]."))
-			user << browse(saved, "window=circuit_scan;size=500x600;border=1;can_resize=1;can_close=1;can_minimize=1")
-		else
-			to_chat(usr, SPAN_WARNING("[A] is not complete enough to be encoded!"))
-
-
-
-
 /obj/item/multitool
 	var/accepting_refs
 	var/datum/integrated_io/selected_io = null

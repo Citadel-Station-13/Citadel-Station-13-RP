@@ -14,7 +14,7 @@
 		slot_r_hand_str = 'icons/mob/items/righthand_switchtool.dmi')
 	var/deploy_sound = "sound/weapons/switchblade.ogg"
 	var/undeploy_sound = "sound/weapons/switchblade.ogg"
-	throwforce = 6.0
+	throw_force = 6.0
 	throw_speed = 3
 	throw_range = 6
 

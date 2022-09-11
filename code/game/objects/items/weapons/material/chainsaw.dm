@@ -132,7 +132,7 @@ obj/item/chainsaw/proc/turnOn(mob/user as mob)
 	item_state = "chainsword0"
 	slot_flags = SLOT_BELT
 	force = 30
-	throwforce = 10
+	throw_force = 10
 	w_class = ITEMSIZE_NORMAL
 	sharp = 1
 	edge = 1

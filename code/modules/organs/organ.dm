@@ -359,7 +359,7 @@
 
 /obj/item/organ/proc/handle_decay(dt)
 	var/multiplier = CONFIG_GET(number/organ_decay_multiplier)
-	take_damage(dt * decay_rate, TRUE)
+	take_damage(dt * decay_rate * multiplier, TRUE)
 
 /**
  * do we need to process?
@@ -677,7 +677,9 @@
 	var/dead = !!(status & ORGAN_DEAD)
 	if(dead && !force && !can_revive)
 		return FALSE
-	damage = clamp(damage - round(amount, DAMAGE_PRECISION), 0, max_damage)
+	//? which is better again..?
+	// damage = clamp(damage - round(amount, DAMAGE_PRECISION), 0, max_damage)
+	damage = clamp(round(damage - amount, DAMAGE_PRECISION), 0, max_damage)
 	if(dead && can_revive)
 		revive()
 

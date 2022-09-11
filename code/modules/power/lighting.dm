@@ -905,7 +905,7 @@ var/global/list/light_type_cache = list()
 /obj/item/light
 	icon = 'icons/obj/lighting.dmi'
 	force = 2
-	throwforce = 5
+	throw_force = 5
 	w_class = ITEMSIZE_TINY
 	var/status = 0		// LIGHT_OK, LIGHT_BURNED or LIGHT_BROKEN
 	var/base_state

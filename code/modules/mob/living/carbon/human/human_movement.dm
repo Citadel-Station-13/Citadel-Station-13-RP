@@ -263,3 +263,11 @@
 		return // Far less likely to make noise in no gravity
 
 	playsound(T, S, volume, FALSE)
+
+/mob/living/carbon/human/can_stumble_into(obj/O)
+	//? nah this was fun for no one.
+	/*
+	if(flying && species.id != SPECIES_ADHERENT)
+		return TRUE
+	*/
+	return ..()

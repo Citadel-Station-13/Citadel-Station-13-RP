@@ -17,7 +17,7 @@
 		edge = 1
 		sharp = 1
 		..() //Updates force.
-		throwforce = max(3,force-3)
+		throw_force = max(3,force-3)
 		hitsound = 'sound/weapons/bladeslice.ogg'
 		icon_state += "_open"
 		w_class = ITEMSIZE_NORMAL

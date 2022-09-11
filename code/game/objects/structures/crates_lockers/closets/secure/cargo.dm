@@ -22,6 +22,7 @@
 		/obj/item/clothing/gloves/black,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/cargo,
 		/obj/item/clothing/gloves/fingerless,
+		/obj/item/stamp/cargo,
 		/obj/item/clothing/head/soft)
 
 /obj/structure/closet/secure_closet/cargotech/Initialize(mapload)

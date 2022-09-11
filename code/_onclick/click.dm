@@ -97,10 +97,11 @@
 		RestrainedClickOn(A)
 		return 1
 
-	if(in_throw_mode)
+	if(throw_mode_check())
 		if(isturf(A) || isturf(A.loc))
-			throw_item(A)
-			trigger_aiming(TARGET_CAN_CLICK)
+			throw_active_held_item(A)
+			// todo: pass in overhand arg so we aren't stuck using throw mode off AFTER the call
+			throw_mode_off()
 			return 1
 		throw_mode_off()
 
@@ -194,12 +195,7 @@
 	return
 
 /mob/living/UnarmedAttack(var/atom/A, var/proximity_flag)
-
 	if(is_incorporeal())
-		return 0
-
-	if(!SSticker)
-		to_chat(src, "You cannot attack people before the game has started.")
 		return 0
 
 	if(stat)

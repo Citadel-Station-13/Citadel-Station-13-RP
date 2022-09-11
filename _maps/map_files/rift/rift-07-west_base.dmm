@@ -41,9 +41,9 @@
 /area/rift/facility/interior/vault)
 "cE" = (
 /obj/machinery/power/apc/alarms_hidden{
-	dir = 1;
+	cell_type = null;
 	chargelevel = 0;
-	cell_type = null
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/undergound3)
@@ -182,14 +182,6 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/vault)
 "oG" = (
-/obj/machinery/nuclearbomb{
-	desc = "Several explosed components are visible on the bomb, making it appear unfinished. Attached to it is a paper that reads '59/27 Co + n -> 60/27 Co -> 60/28 Ni + e- + <i>y</i>'";
-	name = "\improper Unknown Nuclear Explosive"
-	},
-/obj/effect/map_effect/radiation_emitter/chernobyl,
-/obj/effect/trap/pop_up/flame{
-	id = "LF_V"
-	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/vault)
 "py" = (
@@ -213,30 +205,23 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/undergound3)
 "rq" = (
-/obj/random/landmine,
-/obj/machinery/light/small{
+/obj/structure/fence{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/undergound3)
 "rB" = (
 /obj/effect/map_effect/radiation_emitter/strong,
-/obj/effect/trap/pop_up/buzzsaw{
-	dir = 4;
-	id = "LF_BH_2"
-	},
-/turf/simulated/floor/trap{
-	id = "LF_BH_2"
-	},
+/turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/undergound3)
 "rM" = (
-/obj/effect/trap/pop_up/buzzsaw{
-	dir = 4;
-	id = "LF_BH_3"
+/obj/machinery/light/small{
+	dir = 8
 	},
-/turf/simulated/floor/trap{
-	id = "LF_BH_1"
+/obj/structure/fence{
+	dir = 4
 	},
+/turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/undergound3)
 "sk" = (
 /obj/effect/map_effect/radiation_emitter/chernobyl,
@@ -295,10 +280,7 @@
 /turf/simulated/shuttle/wall/voidcraft,
 /area/rift/facility/interior/elevator)
 "yR" = (
-/obj/effect/trap/pop_up/buzzsaw{
-	dir = 4;
-	id = "LF_BH_2"
-	},
+/obj/random/landmine,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/undergound3)
 "yY" = (
@@ -372,7 +354,6 @@
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 1
 	},
-/obj/random/landmine,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/undergound3)
 "FZ" = (
@@ -380,9 +361,9 @@
 	id = "LF_V"
 	},
 /obj/machinery/power/apc/alarms_hidden{
-	dir = 1;
+	cell_type = null;
 	chargelevel = 0;
-	cell_type = null
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/vault)
@@ -397,7 +378,6 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/core)
 "It" = (
-/obj/random/landmine,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -410,14 +390,13 @@
 /obj/structure/bed,
 /obj/item/bedsheet,
 /obj/machinery/power/apc/alarms_hidden{
-	dir = 1;
+	cell_type = null;
 	chargelevel = 0;
-	cell_type = null
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/barracks)
 "JZ" = (
-/obj/random/landmine,
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/undergound3)
@@ -489,15 +468,6 @@
 	id = "LF_VE"
 	},
 /area/rift/facility/interior/undergound3)
-"Nv" = (
-/obj/effect/trap/pop_up/buzzsaw{
-	dir = 4;
-	id = "LF_BH_2"
-	},
-/turf/simulated/floor/trap{
-	id = "LF_BH_1"
-	},
-/area/rift/facility/interior/undergound3)
 "NV" = (
 /obj/effect/overlay/snow/floor/edges{
 	dir = 4
@@ -545,24 +515,17 @@
 /obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/elevator)
-"RI" = (
-/obj/effect/trap/pop_up/buzzsaw{
-	dir = 4;
-	id = "LF_BH_3"
-	},
-/turf/simulated/floor/tiled/steel_dirty,
-/area/rift/facility/interior/undergound3)
 "Sk" = (
 /obj/effect/overlay/snow/floor,
 /obj/machinery/power/apc/alarms_hidden{
-	dir = 1;
+	cell_type = null;
 	chargelevel = 0;
-	cell_type = null
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/core)
 "So" = (
-/obj/random/landmine,
+/obj/structure/fence,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/undergound3)
 "Su" = (
@@ -577,15 +540,6 @@
 "SZ" = (
 /turf/simulated/wall/dungeon,
 /area/rift/facility/interior/core)
-"Uf" = (
-/obj/effect/trap/pop_up/buzzsaw{
-	dir = 4;
-	id = "LF_BH_2"
-	},
-/turf/simulated/floor/trap{
-	id = "LF_BH_2"
-	},
-/area/rift/facility/interior/undergound3)
 "Up" = (
 /obj/machinery/fusion_fuel_injector/mapped,
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -608,15 +562,6 @@
 /obj/item/fuelrod/plutonium,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/vault)
-"WX" = (
-/obj/effect/trap/pop_up/buzzsaw{
-	dir = 4;
-	id = "LF_BH_1"
-	},
-/turf/simulated/floor/trap{
-	id = "LF_BH_1"
-	},
-/area/rift/facility/interior/undergound3)
 "Xw" = (
 /obj/machinery/power/fusion_core/mapped,
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -4363,7 +4308,7 @@ AH
 AH
 AH
 AH
-So
+Su
 Su
 SW
 SW
@@ -4553,17 +4498,17 @@ Pb
 LA
 Su
 qd
-So
 Su
+rq
 Su
 qS
 Su
 Su
-qd
+rM
 Su
 Su
 Su
-So
+Su
 Su
 Su
 Su
@@ -4748,13 +4693,13 @@ LA
 Su
 Su
 Su
+rq
 Su
 Su
 Su
 Su
+rq
 Su
-Su
-So
 Su
 Su
 uB
@@ -4944,8 +4889,8 @@ AH
 AH
 AH
 So
-Su
-Su
+So
+So
 AH
 AH
 AH
@@ -5137,9 +5082,9 @@ fd
 fd
 fd
 AH
-RI
-RI
-rM
+Su
+Su
+Su
 AH
 fd
 fd
@@ -5331,9 +5276,9 @@ fd
 fd
 fd
 AH
-rM
-rM
-rM
+Su
+Su
+Su
 AH
 fd
 fd
@@ -5719,9 +5664,9 @@ fd
 fd
 fd
 AH
-Nv
-yR
-yR
+Su
+Su
+Su
 AH
 fd
 fd
@@ -5729,7 +5674,7 @@ fd
 fd
 AH
 Zb
-Su
+yR
 kH
 AH
 fd
@@ -5913,9 +5858,9 @@ fd
 fd
 fd
 AH
-Uf
+Su
 rB
-Uf
+Su
 AH
 fd
 fd
@@ -6301,9 +6246,9 @@ fd
 fd
 fd
 AH
-WX
-WX
-WX
+Su
+Su
+Su
 AH
 fd
 SZ
@@ -6495,9 +6440,9 @@ fd
 fd
 fd
 AH
-WX
-WX
-WX
+kH
+kH
+kH
 AH
 SZ
 SZ
@@ -6691,7 +6636,7 @@ tI
 AH
 uB
 Su
-rq
+uB
 SZ
 SZ
 dj

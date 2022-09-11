@@ -27,7 +27,7 @@
 	var/slot_flags = 0
 	/// If it's an item we don't want to log attack_logs with, set this to TRUE
 	var/no_attack_log = FALSE
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	pressure_resistance = 5
 	var/obj/item/master = null
 	/// Used by R&D to determine what research bonuses it grants.
@@ -309,7 +309,7 @@
 
 	var/old_loc = src.loc
 
-	throwing = 0
+	throwing?.terminate()
 	if(user.put_in_active_hand(src))
 		if(isturf(old_loc))
 			var/obj/effect/temporary_effect/item_pickup_ghost/ghost = new(old_loc)
@@ -317,6 +317,8 @@
 			ghost.animate_towards(user)
 
 /obj/item/OnMouseDrop(atom/over, mob/user, proximity, params)
+	if(anchored)	// Don't.
+		return ..()
 	if(!user.is_in_inventory(src))
 		// not being held
 		if(!isturf(loc))	// yea nah
@@ -332,7 +334,7 @@
 				user.equip_to_slot_if_possible(src, S.slot_id)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 		// check for slide
-		if(Adjacent(over) && user.CanSlideItem(src, over) && (istype(over, /obj/structure/rack) || istype(over, /obj/structure/table) || istype(over, /turf)))
+		if(Adjacent(over) && user.CanSlideItem(src, over) && (istype(over, /obj/structure/table/rack) || istype(over, /obj/structure/table) || istype(over, /turf)))
 			var/turf/old = get_turf(src)
 			if(!Move(get_turf(over)))
 				return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -397,28 +399,46 @@
 	return
 
 /obj/item/proc/get_volume_by_throwforce_and_or_w_class() // This is used for figuring out how loud our sounds are for throwing.
-	if(throwforce && w_class)
-		return clamp((throwforce + w_class) * 5, 30, 100)// Add the item's throwforce to its weight class and multiply by 5, then clamp the value between 30 and 100
+	if(throw_force && w_class)
+		return clamp((throw_force + w_class) * 5, 30, 100)// Add the item's throw_force to its weight class and multiply by 5, then clamp the value between 30 and 100
 	else if(w_class)
 		return clamp(w_class * 8, 20, 100) // Multiply the item's weight class by 8, then clamp the value between 20 and 100
 	else
 		return 0
 
-/obj/item/throw_impact(atom/hit_atom)
-	..()
-	if(isliving(hit_atom)) //Living mobs handle hit sounds differently.
+
+/obj/item/throw_impact(atom/A, datum/thrownthing/TT)
+	. = ..()
+	if(QDELETED(A))
+		return
+/*
+		if(get_temperature() && isliving(hit_atom))
+			var/mob/living/L = hit_atom
+			L.IgniteMob()
+*/
+	if(isliving(A)) //Living mobs handle hit sounds differently.
 		var/volume = get_volume_by_throwforce_and_or_w_class()
-		if (throwforce > 0)
+		if (throw_force > 0)
 			if (mob_throw_hit_sound)
-				playsound(hit_atom, mob_throw_hit_sound, volume, TRUE, -1)
+				playsound(A, mob_throw_hit_sound, volume, TRUE, -1)
 			else if(hitsound)
-				playsound(hit_atom, hitsound, volume, TRUE, -1)
+				playsound(A, hitsound, volume, TRUE, -1)
 			else
-				playsound(hit_atom, 'sound/weapons/genhit.ogg', volume, TRUE, -1)
+				playsound(A, 'sound/weapons/genhit.ogg', volume, TRUE, -1)
 		else
-			playsound(hit_atom, 'sound/weapons/throwtap.ogg', 1, volume, -1)
+			playsound(A, 'sound/weapons/throwtap.ogg', 1, volume, -1)
 	else
 		playsound(src, drop_sound, 30, preference = /datum/client_preference/drop_sounds)
+
+/obj/item/throw_landed(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
+	if(TT.throw_flags & THROW_AT_IS_NEAT)
+		return
+	var/matrix/M = matrix(transform)
+	M.Turn(rand(-170, 170))
+	transform = M
+	pixel_x = rand(-8, 8)
+	pixel_y = rand(-8, 8)
 
 // called when this item is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.
 /obj/item/proc/on_exit_storage(obj/item/storage/S as obj)

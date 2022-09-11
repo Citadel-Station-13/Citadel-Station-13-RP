@@ -411,7 +411,7 @@
 	base_icon_state = "toolbox"
 	skin = "blue"
 	force = 3
-	throwforce = 10
+	throw_force = 10
 	throw_speed = 2
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
