@@ -146,18 +146,6 @@
 	/// Whether or not we are heavy. Used for some species to determine if they can two-hand it.
 	var/heavy = FALSE
 
-	//! Tool System
-	/// static tool behavior
-	var/tool_behaviour = NONE
-	/// static tool speed - multiplies delay (e.g. 0.5 for twixe as fast)
-	var/tool_speed = 1
-	/// static tool quality
-	var/tool_quality = TOOL_QUALITY_DEFAULT
-	#warn switch system?
-	/// override for dynamic tool support - varedit only
-	VAR_PRIVATE/list/dynamic_tool_override
-
-
 /obj/item/Initialize(mapload)
 	. = ..()
 	if(islist(origin_tech))
@@ -875,29 +863,3 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/interact(mob/user)
 	add_fingerprint(user)
 	ui_interact(user)
-
-//! Tool System
-
-/*
- *	Assorted tool procs, so any item can emulate any tool, if coded
-*/
-/obj/item/proc/is_screwdriver()
-	return FALSE
-
-/obj/item/proc/is_wrench()
-	return FALSE
-
-/obj/item/proc/is_crowbar()
-	return FALSE
-
-/obj/item/proc/is_wirecutter()
-	return FALSE
-
-/obj/item/proc/is_cable_coil()
-	return FALSE
-
-/obj/item/proc/is_multitool()
-	return FALSE
-
-/obj/item/proc/is_welder()
-	return FALSE
