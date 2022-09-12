@@ -22,3 +22,6 @@
   CharlesWedge:
   - tweak: Removed Open space in Bar Maint
   - bugfix: Access on Surface 3 Bunkers
+2022-09-12:
+  Captain277:
+  - bugfix: Fixes an Unsimulated turf's erroneous placement.
