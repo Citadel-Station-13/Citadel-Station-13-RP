@@ -386,31 +386,31 @@
 	name = "hardlight screwdriver"
 	desc = "This should not exist."
 	deploytype = "screwdriver"
-	toolspeed = 0.9
+	tool_speed = 0.9
 
 /obj/item/tool/wrench/holoswitch
 	name = "hardlight bolt driver"
 	desc = "This should not exist."
 	deploytype = "wrench"
-	toolspeed = 0.9
+	tool_speed = 0.9
 
 /obj/item/tool/crowbar/holoswitch
 	name = "hardlight pry bar"
 	desc = "This should not exist."
 	deploytype = "crowbar"
-	toolspeed = 0.9
+	tool_speed = 0.9
 
 /obj/item/tool/wirecutters/holoswitch
 	name = "hardlight wire cutting tool"
 	desc = "This should not exist."
 	deploytype = "wirecutters"
-	toolspeed = 0.9
+	tool_speed = 0.9
 
 /obj/item/weldingtool/holoswitch
 	name = "laser welding tool"
 	desc = "This should not exist."
 	deploytype = "welder"
-	toolspeed = 0.9
+	tool_speed = 0.9
 	var/nextrefueltick = 0
 
 /obj/item/multitool/holoswitch
@@ -428,43 +428,43 @@
 	name = "hybrid hardlight-laser scalpel"
 	desc = "This should not exist."
 	deploytype = "scalpel"
-	toolspeed = 0.9
+	tool_speed = 0.9
 
 /obj/item/surgical/retractor/holoswitch
 	name = "hardlight retractor"
 	desc = "This should not exist."
 	deploytype = "retractor"
-	toolspeed = 0.9
+	tool_speed = 0.9
 
 /obj/item/surgical/hemostat/holoswitch
 	name = "hardlight haemostat"
 	desc = "This should not exist."
 	deploytype = "hemostat"
-	toolspeed = 0.9
+	tool_speed = 0.9
 
 /obj/item/surgical/cautery/holoswitch
 	name = "laser cautery"
 	desc = "This should not exist."
 	deploytype = "cautery"
-	toolspeed = 0.9
+	tool_speed = 0.9
 
 /obj/item/surgical/circular_saw/holoswitch
 	name = "hardlight saw"
 	desc = "This should not exist."
 	deploytype = "saw"
-	toolspeed = 0.9
+	tool_speed = 0.9
 
 /obj/item/surgical/surgicaldrill/holoswitch
 	name = "hardlight surgical drill"
 	desc = "This should not exist."
 	deploytype = "drill"
-	toolspeed = 0.9
+	tool_speed = 0.9
 
 /obj/item/surgical/bone_clamp/holoswitch
 	name = "hardlight bone rectifier"
 	desc = "This should not exist."
 	deploytype = "boneclamp"
-	toolspeed = 0.9
+	tool_speed = 0.9
 
 /obj/item/melee/energy/sword/holoswitch
 	name = "hardlight blade"
@@ -484,25 +484,25 @@
 	name = "switchtool screwdriver"
 	desc = "This should not exist."
 	deploytype = "screwdriver"
-	toolspeed = 1.2
+	tool_speed = 1.2
 
 /obj/item/tool/wrench/switchy
 	name = "switchtool wrench"
 	desc = "This should not exist."
 	deploytype = "wrench"
-	toolspeed = 1.2
+	tool_speed = 1.2
 
 /obj/item/tool/crowbar/switchy
 	name = "switchtool crowbar"
 	desc = "This should not exist."
 	deploytype = "crowbar"
-	toolspeed = 1.2
+	tool_speed = 1.2
 
 /obj/item/tool/wirecutters/switchy
 	name = "switchtool cutters"
 	desc = "This should not exist."
 	deploytype = "wirecutters"
-	toolspeed = 1.2
+	tool_speed = 1.2
 
 /obj/item/multitool/switchy
 	name = "switchtool micro-multitool"
@@ -513,22 +513,22 @@
 	name = "switchtool scalpel"
 	desc = "This should not exist."
 	deploytype = "scalpel"
-	toolspeed = 1.2
+	tool_speed = 1.2
 
 /obj/item/surgical/hemostat/switchy
 	name = "switchtool hemostat"
 	desc = "This should not exist."
 	deploytype = "hemostat"
-	toolspeed = 1.2
+	tool_speed = 1.2
 
 /obj/item/surgical/retractor/switchy
 	name = "switchtool retractor"
 	desc = "This should not exist."
 	deploytype = "retractor"
-	toolspeed = 1.2
+	tool_speed = 1.2
 
 /obj/item/surgical/bonesetter/switchy
 	name = "switchtool bone setter"
 	desc = "This should not exist."
 	deploytype = "boneclamp"
-	toolspeed = 1.2
+	tool_speed = 1.2

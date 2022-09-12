@@ -1,4 +1,5 @@
-// Tool types
+//! Tool Behaviours
+//? Engineering
 #define TOOL_CROWBAR 		"crowbar"
 #define TOOL_MULTITOOL 		"multitool"
 #define TOOL_SCREWDRIVER 	"screwdriver"
@@ -6,19 +7,26 @@
 #define TOOL_WRENCH 		"wrench"
 #define TOOL_WELDER 		"welder"
 #define TOOL_ANALYZER		"analyzer"
+//? Mining
 #define TOOL_MINING			"mining"
 #define TOOL_SHOVEL			"shovel"
+//? Surgery
 #define TOOL_RETRACTOR	 	"retractor"
 #define TOOL_HEMOSTAT 		"hemostat"
 #define TOOL_CAUTERY 		"cautery"
 #define TOOL_DRILL			"drill"
 #define TOOL_SCALPEL		"scalpel"
 #define TOOL_SAW			"saw"
-//Glasswork Tools
+//? Glassworking
 #define TOOL_BLOW			"blowing_rod"
 #define TOOL_GLASS_CUT		"glasskit"
 #define TOOL_BONESET		"bonesetter"
 
+//! Tool qualities
+/// Default
+#define TOOL_QUALITY_DEFAULT			20
+
+//! Misc
 // If delay between the start and the end of tool operation is less than MIN_TOOL_SOUND_DELAY,
 // tool sound is only played when op is started. If not, it's played twice.
 #define MIN_TOOL_SOUND_DELAY 20

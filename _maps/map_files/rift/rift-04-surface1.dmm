@@ -110,7 +110,7 @@
 /obj/item/weldingtool/mini{
 	desc = "It says 'keychain welder' on the side, but there's no bail to hook it on.";
 	name = "keychain welder";
-	toolspeed = 5
+	tool_speed = 5
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/library)

@@ -57,8 +57,6 @@
 	/// If 1, bypass the restrained, lying, and stunned checks action buttons normally test for
 	var/action_button_is_hands_free = 0
 
-	var/tool_behaviour = NONE
-
 	/// 0 prevents all transfers, 1 is invisible
 	//var/heat_transfer_coefficient = 1
 	/// For leaking gas from turf to mask and vice-versa (for masks right now, but at some point, i'd like to include space helmets)
@@ -118,8 +116,6 @@
 	/// Works similarly to worn sprite_sheets, except the alternate sprites are used when the clothing/refit_for_species() proc is called.
 	var/list/sprite_sheets_obj = list()
 
-	/// This is a multipler on how 'fast' a tool works.  e.g. setting this to 0.5 will make the tool work twice as fast.
-	var/toolspeed = 1.0
 	/// How long click delay will be when using this, in 1/10ths of a second. Checked in the user's get_attack_speed().
 	var/attackspeed = DEFAULT_ATTACK_COOLDOWN
 	/// Length of tiles it can reach, 1 is adjacent.
@@ -149,6 +145,18 @@
 	var/deploytype = null
 	/// Whether or not we are heavy. Used for some species to determine if they can two-hand it.
 	var/heavy = FALSE
+
+	//! Tool System
+	/// static tool behavior
+	var/tool_behaviour = NONE
+	/// static tool speed - multiplies delay (e.g. 0.5 for twixe as fast)
+	var/tool_speed = 1
+	/// static tool quality
+	var/tool_quality = TOOL_QUALITY_DEFAULT
+	#warn switch system?
+	/// override for dynamic tool support - varedit only
+	VAR_PRIVATE/list/dynamic_tool_override
+
 
 /obj/item/Initialize(mapload)
 	. = ..()
@@ -855,6 +863,21 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/apply_accessories(var/image/standing)
 	return standing
 
+// These procs are for RPEDs and part ratings. The concept for this was borrowed from /vg/station.
+// Gets the rating of the item, used in stuff like machine construction.
+/obj/item/proc/get_rating()
+	return FALSE
+
+// Like the above, but used for RPED sorting of parts.
+/obj/item/proc/rped_rating()
+	return get_rating()
+
+/obj/item/interact(mob/user)
+	add_fingerprint(user)
+	ui_interact(user)
+
+//! Tool System
+
 /*
  *	Assorted tool procs, so any item can emulate any tool, if coded
 */
@@ -878,16 +901,3 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 /obj/item/proc/is_welder()
 	return FALSE
-
-// These procs are for RPEDs and part ratings. The concept for this was borrowed from /vg/station.
-// Gets the rating of the item, used in stuff like machine construction.
-/obj/item/proc/get_rating()
-	return FALSE
-
-// Like the above, but used for RPED sorting of parts.
-/obj/item/proc/rped_rating()
-	return get_rating()
-
-/obj/item/interact(mob/user)
-	add_fingerprint(user)
-	ui_interact(user)
