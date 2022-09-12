@@ -27,6 +27,16 @@ avoid code duplication. This includes items that may sometimes act as a standard
 /obj/item/proc/pre_attack(atom/a, mob/user)
 	return
 
+#warn impl
+
+/obj/item/proc/melee_attack_chain(atom/target, mob/user, attackchain_flags, params)
+	. = attackchain_flags
+
+	if((. |= tool_attack_chain(target, user, ., params)) & CLICKCHAIN_DO_NOT_PROPAGATE)
+		return
+
+/obj/item/proc/tool_attack_chain(atom/target, mob/user, attackchain_flags, params)
+
 //I would prefer to rename this to attack(), but that would involve touching hundreds of files.
 /obj/item/proc/resolve_attackby(atom/A, mob/user, params, attack_modifier = 1)
 	pre_attack(A, user)
