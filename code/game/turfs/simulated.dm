@@ -28,6 +28,13 @@
 	. = ..()
 	if(mapload)
 		levelupdate()
+	if(outdoors)
+		SSplanets.addTurf(src)
+
+/turf/simulated/Destroy()
+	if(outdoors)
+		SSplanets.removeTurf(src)
+	return ..()
 
 // This is not great.
 /turf/simulated/proc/wet_floor(var/wet_val = 1)
