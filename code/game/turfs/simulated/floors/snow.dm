@@ -46,6 +46,7 @@
 	name = "ice"
 	icon_state = "ice"
 	desc = "Looks slippery."
+	edge_blending_priority = 0
 
 /turf/simulated/floor/outdoors/ice/Entered(var/mob/living/M)
 	. = ..()
@@ -61,6 +62,7 @@
 	icon_state = "ice"
 	desc = "Looks slippery."
 	movement_cost = 4
+	edge_blending_priority = 0
 
 // Ice that is safe to walk on.
 /turf/simulated/floor/outdoors/safeice
@@ -68,6 +70,7 @@
 	icon_state = "ice"
 	desc = "Seems safe enough to walk on."
 	movement_cost = 2
+	edge_blending_priority = 0
 
 // Snowy gravel
 /turf/simulated/floor/outdoors/gravsnow
@@ -75,5 +78,6 @@
 	icon = 'icons/turf/snow_new.dmi'
 	icon_state = "gravsnow"
 	desc = "A layer of coarse ice pebbles and assorted gravel."
+	edge_blending_priority = 0
 	initial_flooring = /decl/flooring/snow/gravsnow
 	baseturfs = /turf/simulated/floor/outdoors/dirt

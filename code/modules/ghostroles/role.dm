@@ -67,8 +67,8 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
 
 /datum/ghostrole/proc/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
 	if(show_standard_greeting)
-		to_chat(created, {"<center><b><font size='16px'>You have spawned as a ghostrole.</font></b></center>
-		These roles are usually more roleplay oriented than standard hard-defined antagonist roles - besure to follow spawntext (if any), as well as server rules.
+		to_chat(created, {"<b><font size='5px'>You have spawned as a ghostrole.</font></b>
+		These roles should be taken seriously. Be sure to follow the directives in your spawntext (if any), as well as the server rules. Beyond that, roleplay your character however you see fit!
 		Spawntext as follows;"})
 	if(spawntext)
 		to_chat(created, spawntext)
@@ -185,6 +185,7 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
 		GiveCustomObjective(created, automatic_objective)
 	spawns++
 	spawnpoint?.OnSpawn(created, src)
+	instantiator.AfterSpawn(created, params)
 
 /**
  * Ban check.

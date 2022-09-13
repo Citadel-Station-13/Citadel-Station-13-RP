@@ -4,6 +4,11 @@
 	name = "plant clippers"
 	desc = "A tool used to take samples from plants."
 
+/obj/item/tool/wirecutters/clippers/bone
+	name = "bone plant clippers"
+	desc = "A tool used to take samples from plants."
+	icon_state = "clippers_bone"
+
 /obj/item/tool/wirecutters/clippers/trimmers
 	name = "hedgetrimmers"
 	desc = "An old pair of trimmers with a pretty dull blade. You would probably have a hard time cutting anything but plants with it."

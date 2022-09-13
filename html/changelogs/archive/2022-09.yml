@@ -22,3 +22,11 @@
   CharlesWedge:
   - tweak: Removed Open space in Bar Maint
   - bugfix: Access on Surface 3 Bunkers
+2022-09-12:
+  Captain277:
+  - bugfix: Fixes an Unsimulated turf's erroneous placement.
+2022-09-13:
+  CharlesWedge:
+  - rscadd: Muskets by Ruskit, their unique rounds, sprites, projectiles
+  - tweak: Colonial Lockbox has period appropiate weaponry
+  - bugfix: inhand sprites for the Tajaran guns facing the wrong way

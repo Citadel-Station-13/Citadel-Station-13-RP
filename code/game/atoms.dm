@@ -89,23 +89,16 @@
 	var/fluorescent
 
 //! ## Overlays
-	/// vis overlays managed by SSvis_overlays to automaticaly turn them like other overlays.
-	var/list/managed_vis_overlays
-	/// Overlays managed by [update_overlays][/atom/proc/update_overlays] to prevent removing overlays that weren't added by the same proc.
-	/// Single items are stored on their own, not in a list.
-	var/list/managed_overlays
-
-	/// Our local copy of (non-priority) overlays without byond magic. Use procs in SSoverlays to manipulate.
-	var/list/our_overlays
-	/// Overlays that should remain on top and not normally removed when using cut_overlay functions, like c4.
-	var/list/priority_overlays
-
-/*		new overlay system
 	/// a very temporary list of overlays to remove
 	var/list/remove_overlays
 	/// a very temporary list of overlays to add
 	var/list/add_overlays
-*/
+
+	///vis overlays managed by SSvis_overlays to automaticaly turn them like other overlays.
+	var/list/managed_vis_overlays
+	///overlays managed by [update_overlays][/atom/proc/update_overlays] to prevent removing overlays that weren't added by the same proc. Single items are stored on their own, not in a list.
+	var/list/managed_overlays
+
 //! ## Layers
 	/// Base layer - defaults to layer.
 	var/base_layer
@@ -852,6 +845,11 @@
 		var/image/I = generate_speech_bubble(src, "[bubble_icon][say_test(message)]", FLY_LAYER)
 		I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
 		INVOKE_ASYNC(GLOBAL_PROC, /.proc/flick_overlay, I, speech_bubble_hearers, 30)
+
+/proc/generate_speech_bubble(var/bubble_loc, var/speech_state, var/set_layer = FLOAT_LAYER)
+	var/image/I = image('icons/mob/talk_vr.dmi', bubble_loc, speech_state, set_layer)
+	I.appearance_flags |= (RESET_COLOR|PIXEL_SCALE)
+	return I
 
 /atom/proc/speech_bubble(bubble_state = "", bubble_loc = src, list/bubble_recipients = list())
 	return
