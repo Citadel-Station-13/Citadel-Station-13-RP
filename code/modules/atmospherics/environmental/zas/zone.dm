@@ -158,19 +158,16 @@ Class Procs:
 	var/list/returned = air.get_turf_graphics()
 	if(returned)
 		if(turf_graphics)
-			if(!(returned ~= turf_graphics))
-				var/list/removed = turf_graphics - returned
-				var/list/added = returned - turf_graphics
-				for(var/turf/simulated/T in contents)
-					if(T.allow_gas_overlays && !T.outdoors)
-						T.add_overlay(added)
-					T.cut_overlay(removed)
-				turf_graphics = returned
-		else
+			for(var/turf/simulated/T in contents)
+				T.cut_overlay(turf_graphics)
+				if(T.allow_gas_overlays && !T.outdoors)
+					T.add_overlay(returned)
 			turf_graphics = returned
+		else
 			for(var/turf/simulated/T in contents)
 				if(T.allow_gas_overlays && !T.outdoors)
-					T.add_overlay(turf_graphics)
+					T.add_overlay(returned)
+			turf_graphics = returned
 	else
 		if(turf_graphics)
 			for(var/turf/simulated/T in contents)
