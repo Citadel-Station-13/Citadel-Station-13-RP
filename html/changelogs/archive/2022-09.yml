@@ -18,3 +18,10 @@
   - tweak: pushing mobs no longer changes their direction if they're faced the right
       way so it looks less janky
   - refactor: pass_flags_self
+2022-09-10:
+  CharlesWedge:
+  - tweak: Removed Open space in Bar Maint
+  - bugfix: Access on Surface 3 Bunkers
+2022-09-12:
+  Captain277:
+  - bugfix: Fixes an Unsimulated turf's erroneous placement.

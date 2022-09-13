@@ -6751,7 +6751,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/unsimulated/floor/transit,
+/turf/simulated/open,
 /area/engineering/engine_balcony)
 "mm" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -18488,7 +18488,7 @@
 	input_tag = "cooling_in";
 	name = "Engine Cooling Control";
 	output_tag = "cooling_out";
-	sensors = list("engine_sensor"="Engine Core");
+	sensors = list("engine_sensor"="Engine Core")
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engineering_monitoring)

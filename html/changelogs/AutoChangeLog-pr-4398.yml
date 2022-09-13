@@ -1,5 +1,0 @@
-author: "CharlesWedge"
-delete-after: True
-changes: 
-  - tweak: "Removed Open space in Bar Maint"
-  - bugfix: "Access on Surface 3 Bunkers"

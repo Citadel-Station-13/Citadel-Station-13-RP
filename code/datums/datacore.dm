@@ -345,7 +345,6 @@ GLOBAL_LIST_EMPTY(PDA_Manifest)
 		* take a picture of them, we want all the overlays.
 		*/
 		COMPILE_OVERLAYS(H)
-		SSoverlays.queue -= H
 
 		var/id = generate_record_id()
 		//General Record
