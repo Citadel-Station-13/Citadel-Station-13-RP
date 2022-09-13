@@ -72,14 +72,13 @@
 			outfit.uniform = /obj/item/clothing/under/tribal_tunic/ashlander
 			outfit.belt = /obj/item/material/knife/tacknife/combatknife/bone
 			outfit.back = /obj/item/bo_staff
-		if("sentry") //Paths for muskets are commented out, awaiting fullmerge.
+		if("sentry")
 			outfit.uniform = /obj/item/clothing/under/gladiator/ashlander
 			outfit.shoes = /obj/item/clothing/shoes/ashwalker
-			//outfit.belt = /obj/item/reagent_containers/glass/powder_horn/tribal
+			outfit.belt = /obj/item/reagent_containers/glass/powder_horn/tribal
 			outfit.back = /obj/item/storage/backpack/satchel/bone
-			//outfit.r_pocket = /obj/item/ - Musket ball pouch, ideally.
-			//outfit.r_hand = /obj/item/gun/projectile/musket/tribal
-			outfit.l_hand = /obj/item/material/knife/tacknife/combatknife/bone
+			outfit.r_hand = /obj/item/gun/projectile/musket/tribal
+			outfit.l_hand = /obj/item/storage/box/munition_box
 	return outfit
 
 /obj/structure/ghost_role_spawner/ashlander
