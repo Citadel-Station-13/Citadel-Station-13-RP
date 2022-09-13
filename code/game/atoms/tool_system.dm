@@ -1,5 +1,29 @@
+/**
+ * atom tool API: allows unfiied handling of tool usage
+ *
+ * further, adds support for "tool usage chains" allowing for automated actions when an
+ * user has the requisite tools.
+ *
+ * intended api for static tool usage:
+ *
+ * if(usable_tool(I, user, TOOL_SCREWDRIVER))
+ *     if(use_tool(I, user, TOOL_SCREWDRIVER))
+ *         # code on success
+ *     else
+ *         # code on failure
+ *     return CLICKCHAIN_DO_NOT_PROPAGATE
+ *
+ * intended api for dynamic tool usage:
+ * - override requested_tool_functions to return the functions and minimal qualities for a user
+ * - override requested_tool_act if needed, otherwise it will simply go into tool_act
+ * - override requested_tool_image to return the image to render for a specific tool function for radials
+ *
+ * .../requested_tool_act(...)
+ *     switch(function)
+ *
+ */
 
-
+#warn bad tool api, rework
 
 /// Tool behavior procedure. Redirects to tool-specific procs by default.
 /// You can override it to catch all tool interactions, for use in complex deconstruction procs.

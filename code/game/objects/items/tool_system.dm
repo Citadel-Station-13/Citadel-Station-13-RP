@@ -1,13 +1,141 @@
+/**
+ * item tool API: allows items to be one or more types of generic tool-functionalities
+ * with arbitrary tool speeds and qualities, while allowing the item to hook usages.
+ *
+ * ! Warning: Unlike other things, the standard API for this only promises to return specific types
+ * ! 	of values; not to obey original variables like tool_behaviour and tool_override.
+ * ! 	This is a necessary drawback of optimizaiton.
+ */
 /obj/item
 	/// static tool behavior
-	var/tool_behaviour = NONE
-	/// static tool speed - multiplies delay (e.g. 0.5 for twixe as fast)
-	var/tool_speed = 1
+	var/tool_behaviour
 	/// static tool quality
 	var/tool_quality = TOOL_QUALITY_DEFAULT
-	#warn switch system?
-	/// override for dynamic tool support - varedit only
-	VAR_PRIVATE/list/dynamic_tool_override
+	/// tool speed - multiplies delay (e.g. 0.5 for twixe as fast). also the default for dynamic tools.
+	var/tool_speed = TOOL_SPEED_DEFAULT
+	/// override for dynamic tool support - varedit only, and not always supported.
+	VAR_PRIVATE/list/tool_override
+
+/**
+ * queries for tool functions
+ * returns a list of functions associated to their qualities, or null.
+ *
+ * @params
+ * - user - person using tool, can be null
+ * - target - atom being used on, can be null
+ */
+/obj/item/proc/tool_query(mob/user, atom/target)
+	RETURN_TYPE(/list)
+	. = list()
+	// if normal tool behavior
+	if(tool_behaviour)
+		.[tool_behaviour] = tool_quality
+	// if overriding, overwrite
+	if(tool_override)
+		. |= tool_override
+
+/**
+ * checks for a tool function
+ * returns quality of function, or null if not found
+ *
+ * @params
+ * - function - tool function enum
+ * - user - person using tool, if any
+ * - target - atom tool being used on, if any
+ */
+/obj/item/proc/tool_check(function, mob/user, atom/target)
+	ASSERT(function)
+	if(tool_override && tool_override[function])
+		return tool_override[function]
+	return (function == tool_behaviour)? tool_quality : null
+
+/**
+ * gets our tool speed
+ * returns float in (0, infinity]
+ *
+ * @params
+ * - function - tool function enum
+ * - user - person using tool, if any
+ * - target - atom tool being used on, if any
+ */
+/obj/item/proc/tool_speed(function, mob/user, atom/target)
+	return tool_speed
+
+/**
+ * gets the static functionality of this tool.
+ *
+ * some dynamic tools will return null even if it supports it.
+ */
+/obj/item/proc/tool_behaviour()
+	return tool_behaviour
+
+/**
+ * gets the quality of this tool
+ * returns number, or null if non existant.
+ *
+ * @params
+ * - function - tool function enum; if null, defaults to static tool behaviour.
+ * - user - person using tool, if any
+ * - target - atom tool being used on, if any
+ */
+/obj/item/proc/tool_quality(function = tool_behaviour(), mob/user, atom/target)
+	// this is just a wrapper, the only difference is function is automatically provided.
+	return tool_check(function, user, target)
+
+/**
+ * called when we start being used as a tool
+ * return FALSE to cancel
+ *
+ * @params
+ * - function - tool function enum; if null, defaults to static tool behaviour
+ * - flags - tool operation flags
+ * - user - person using tool, if any
+ * - target - atom tool being used on, if any
+ * - time - approximated duration of the action in deciseconds
+ */
+/obj/item/proc/using_as_tool(function, flags, mob/user, atom/target, time)
+	SHOULD_CALL_PARENT(TRUE)
+
+/**
+ * called when we stop being used as a tool (aka finish of say, a window unfasten)
+ * return FALSE to cancel
+ *
+ * @params
+ * - function - tool function enum; if null, defaults to static tool behavior
+ * - flags - tool operation flags
+ * - user - person using tool, if any
+ * - target - atom tool being used on, if any
+ * - time - duration of the action in deciseconds
+ */
+/obj/item/proc/used_as_tool(function, flags, mob/user, atom/target, time)
+	SHOULD_CALL_PARENT(TRUE)
+
+/**
+ * standard feedback for starting a tool usage
+ *
+ * @params
+ * - function - tool function enum; if null, defaults to static tool behavior
+ * - flags - tool operation flags
+ * - user - person using tool, if any
+ * - target - atom tool being used on, if any
+ * - time - estimated duration of the action in deciseconds
+ */
+/obj/item/proc/standard_tool_feedback_start(function, flags, mob/user, atom/target, time, )
+
+/**
+ * standard feedback for ending a tool usage
+ *
+ * @params
+ * - function - tool function enum; if null, defaults to static tool behavior
+ * - flags - tool operation flags
+ * - user - person using tool, if any
+ * - target - atom tool being used on, if any
+ * - time - duration of the action in deciseconds
+ * - success - did we finish successfully?
+ */
+/obj/item/proc/standard_tool_feedback_start(function, flags, mob/user, atom/target, time, success, )
+
+#warn ughh
 
 /*
  *	Assorted tool procs, so any item can emulate any tool, if coded
@@ -35,40 +163,10 @@
 
 #warn impl
 
-/**
- * queries for tool functions
- * returns a list of functions associated to their qualities
- * returns null if there are no functions
- *
- * @params
- * - user - person using tool, can be null
- * - target - atom being used on, can be null
- */
-/obj/item/proc/dynamic_tool_query(mob/user, atom/target)
-	SHOULD_CALL_PARENT(TRUE)
-	. = list()
-	// if normal tool behavior
-	if(tool_behaviour)
-		.[tool_behaviour] = tool_quality
-	// if overriding, overwrite
-	if(dynamic_tool_override)
-		. |= dynamic_tool_override
-
-
 /* draft notes
-/obj/item
-  var/tool_behavior
-  var/tool_quality
-  var/tool_speed
 
 /obj/item/proc/tool_attack_chain(mob/user, atom/target, flags, params)
 /obj/item/proc/standard_use_tool(mob/user, atom/target, flags, params)
-/obj/item/proc/dynamic_tool_query(mob/user optional, atom/target optional, flags optional, params optional)
-  <return list of tool behaviors>
-/obj/item/proc/dynamic_tool_check(requested_function, mob/user optional, atom/target optional, flags optional, params optional)
-  return true/false
-/obj/item/proc/dynamic_tool_speed(requested_function, mob/user optional, atom/target optional, flags optional, params optional)
-/obj/item/proc/dynamic_tool_quality(requested_function, mob/user optional, atom/target optional, flags optional, params optional)
 /obj/item/proc/dynamic_tool_radial(list/functions, mob/user, atom/target)
   // do radial menu
   return function
