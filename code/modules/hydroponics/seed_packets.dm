@@ -333,3 +333,12 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 
 /obj/item/seeds/rose/blood
 	seed_type = "bloodrose"
+
+/obj/item/seeds/ashlander
+	seed_type = "pyrrhlea"
+
+/obj/item/seeds/ashlander/bentars
+	seed_type = "bentars"
+
+/obj/item/seeds/ashlander/juhtak
+	seed_type = "juhtak"
