@@ -29,13 +29,14 @@ avoid code duplication. This includes items that may sometimes act as a standard
 
 #warn impl
 
-/obj/item/proc/melee_attack_chain(atom/target, mob/user, attackchain_flags, params)
-	. = attackchain_flags
+/obj/item/proc/melee_attack_chain(atom/target, mob/user, clickchain_flags, params)
+	. = clickchain_flags
 
 	if((. |= tool_attack_chain(target, user, ., params)) & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
 
-/obj/item/proc/tool_attack_chain(atom/target, mob/user, attackchain_flags, params)
+/obj/item/proc/tool_attack_chain(atom/target, mob/user, clickchain_flags, params)
+
 
 //I would prefer to rename this to attack(), but that would involve touching hundreds of files.
 /obj/item/proc/resolve_attackby(atom/A, mob/user, params, attack_modifier = 1)
@@ -45,14 +46,14 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	return A.attackby(src, user, params, NONE, attack_modifier)
 
 // No comment
-/atom/proc/attackby(obj/item/I, mob/living/user, params, attackchain_flags, damage_multiplier)
+/atom/proc/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	return
 
-/atom/movable/attackby(obj/item/I, mob/living/user, params, attackchain_flags, damage_multiplier)
+/atom/movable/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	if(!(I.item_flags & NOBLUDGEON))
 		visible_message("<span class='danger'>[src] has been hit by [user] with [I].</span>")
 
-/mob/living/attackby(obj/item/I, mob/living/user, params, attackchain_flags, damage_multiplier)
+/mob/living/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	if(!ismob(user))
 		return 0
 	if(can_operate(src) && I.do_surgery(src,user))

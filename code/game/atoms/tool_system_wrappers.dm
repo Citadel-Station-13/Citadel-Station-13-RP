@@ -5,8 +5,9 @@
  * - I - tool
  * - user - user, can be null
  * - flags - tool operation flags
+ * - hint - operation hint, if using dynamic tool system
  */
-/atom/proc/crowbar_act(obj/item/I, mob/user, flags)
+/atom/proc/crowbar_act(obj/item/I, mob/user, flags, hint)
 	return FALSE
 
 /**
@@ -19,9 +20,10 @@
  * - delay - how long this should take
  * - msg - standard feedback message shown to everyone around the user
  * - self_msg - standard feedback message shown to the user
+ * - cost - cost multiplier for standard usage like welding fuel/power cost and similar resources
  */
-/atom/proc/use_crowbar(obj/item/I, mob/user, flags, delay = 0, msg, self_msg)
-	return use_tool(I, user, TOOL_CROWBAR, flags, delay, msg, self_msg)
+/atom/proc/use_crowbar(obj/item/I, mob/user, flags, delay = 0, msg, self_msg, cost)
+	return use_tool(I, user, TOOL_CROWBAR, flags, delay, msg, self_msg, cost)
 
 /**
  * Called when a wrench is used on us.
@@ -30,8 +32,9 @@
  * - I - tool
  * - user - user, can be null
  * - flags - tool operation flags
+ * - hint - operation hint, if using dynamic tool system
  */
-/atom/proc/wrench_act(obj/item/I, mob/user, flags)
+/atom/proc/wrench_act(obj/item/I, mob/user, flags, hint)
 	return FALSE
 
 /**
@@ -44,9 +47,10 @@
  * - delay - how long this should take
  * - msg - standard feedback message shown to everyone around the user
  * - self_msg - standard feedback message shown to the user
+ * - cost - cost multiplier for standard usage like welding fuel/power cost and similar resources
  */
-/atom/proc/use_wrecn(obj/item/I, mob/user, flags, delay = 0, msg, self_msg)
-	return use_tool(I, user, TOOL_WRENCH, flags, delay, msg, self_msg)
+/atom/proc/use_wrecn(obj/item/I, mob/user, flags, delay = 0, msg, self_msg, cost)
+	return use_tool(I, user, TOOL_WRENCH, flags, delay, msg, self_msg, cost)
 
 /**
  * Called when a welder is used on us.
@@ -55,8 +59,9 @@
  * - I - tool
  * - user - user, can be null
  * - flags - tool operation flags
+ * - hint - operation hint, if using dynamic tool system
  */
-/atom/proc/welder_act(obj/item/I, mob/user, flags)
+/atom/proc/welder_act(obj/item/I, mob/user, flags, hint)
 	return FALSE
 
 /**
@@ -69,9 +74,10 @@
  * - delay - how long this should take
  * - msg - standard feedback message shown to everyone around the user
  * - self_msg - standard feedback message shown to the user
+ * - cost - cost multiplier for standard usage like welding fuel/power cost and similar resources
  */
-/atom/proc/use_welder(obj/item/I, mob/user, flags, delay = 0, msg, self_msg)
-	return use_tool(I, user, TOOL_WELDER, flags, delay, msg, self_msg)
+/atom/proc/use_welder(obj/item/I, mob/user, flags, delay = 0, msg, self_msg, cost)
+	return use_tool(I, user, TOOL_WELDER, flags, delay, msg, self_msg, cost)
 
 /**
  * Called when a pair of wirecutters is used on us.
@@ -80,8 +86,9 @@
  * - I - tool
  * - user - user, can be null
  * - flags - tool operation flags
+ * - hint - operation hint, if using dynamic tool system
  */
-/atom/proc/wirecutter_act(obj/item/I, mob/user, flags)
+/atom/proc/wirecutter_act(obj/item/I, mob/user, flags, hint)
 	return FALSE
 
 /**
@@ -94,9 +101,10 @@
  * - delay - how long this should take
  * - msg - standard feedback message shown to everyone around the user
  * - self_msg - standard feedback message shown to the user
+ * - cost - cost multiplier for standard usage like welding fuel/power cost and similar resources
  */
-/atom/proc/use_wirecutter(obj/item/I, mob/user, flags, delay = 0, msg, self_msg)
-	return use_tool(I, user, TOOL_WIRECUTTER, flags, delay, msg, self_msg)
+/atom/proc/use_wirecutter(obj/item/I, mob/user, flags, delay = 0, msg, self_msg, cost)
+	return use_tool(I, user, TOOL_WIRECUTTER, flags, delay, msg, self_msg, cost)
 
 /**
  * Called when a screwdriver is used on us.
@@ -105,8 +113,9 @@
  * - I - tool
  * - user - user, can be null
  * - flags - tool operation flags
+ * - hint - operation hint, if using dynamic tool system
  */
-/atom/proc/screwdriver_act(obj/item/I, mob/user, flags)
+/atom/proc/screwdriver_act(obj/item/I, mob/user, flags, hint)
 	return FALSE
 
 /**
@@ -119,9 +128,10 @@
  * - delay - how long this should take
  * - msg - standard feedback message shown to everyone around the user
  * - self_msg - standard feedback message shown to the user
+ * - cost - cost multiplier for standard usage like welding fuel/power cost and similar resources
  */
-/atom/proc/use_screwdriver(obj/item/I, mob/user, flags, delay = 0, msg, self_msg)
-	return use_tool(I, user, TOOL_SCREWDRIVER, flags, delay, msg, self_msg)
+/atom/proc/use_screwdriver(obj/item/I, mob/user, flags, delay = 0, msg, self_msg, cost)
+	return use_tool(I, user, TOOL_SCREWDRIVER, flags, delay, msg, self_msg, cost)
 
 /**
  * Called when a analyzer is used on us.
@@ -130,8 +140,9 @@
  * - I - tool
  * - user - user, can be null
  * - flags - tool operation flags
+ * - hint - operation hint, if using dynamic tool system
  */
-/atom/proc/analyzer_act(obj/item/I, mob/user, flags)
+/atom/proc/analyzer_act(obj/item/I, mob/user, flags, hint)
 	return FALSE
 
 /**
@@ -144,9 +155,10 @@
  * - delay - how long this should take
  * - msg - standard feedback message shown to everyone around the user
  * - self_msg - standard feedback message shown to the user
+ * - cost - cost multiplier for standard usage like welding fuel/power cost and similar resources
  */
-/atom/proc/use_analyzer(obj/item/I, mob/user, flags, delay = 0, msg, self_msg)
-	return use_tool(I, user, TOOL_ANALYZER, flags, delay, msg, self_msg)
+/atom/proc/use_analyzer(obj/item/I, mob/user, flags, delay = 0, msg, self_msg, cost)
+	return use_tool(I, user, TOOL_ANALYZER, flags, delay, msg, self_msg, cost)
 
 
 /**
@@ -156,8 +168,9 @@
  * - I - tool
  * - user - user, can be null
  * - flags - tool operation flags
+ * - hint - operation hint, if using dynamic tool system
  */
-/atom/proc/multitool_act(obj/item/I, mob/user, flags)
+/atom/proc/multitool_act(obj/item/I, mob/user, flags, hint)
 	return FALSE
 
 /**
@@ -170,7 +183,8 @@
  * - delay - how long this should take
  * - msg - standard feedback message shown to everyone around the user
  * - self_msg - standard feedback message shown to the user
+ * - cost - cost multiplier for standard usage like welding fuel/power cost and similar resources
  */
-/atom/proc/use_multitool(obj/item/I, mob/user, flags, delay = 0, msg, self_msg)
-	return use_tool(I, user, TOOL_MULTITOOL, flags, delay, msg, self_msg)
+/atom/proc/use_multitool(obj/item/I, mob/user, flags, delay = 0, msg, self_msg, cost)
+	return use_tool(I, user, TOOL_MULTITOOL, flags, delay, msg, self_msg, cost)
 

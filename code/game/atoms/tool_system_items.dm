@@ -13,7 +13,7 @@
 	var/tool_quality = TOOL_QUALITY_DEFAULT
 	/// tool speed - multiplies delay (e.g. 0.5 for twixe as fast). also the default for dynamic tools.
 	var/tool_speed = TOOL_SPEED_DEFAULT
-	/// dynamic tool locking - if set, dynamic tool usages default to the locked behaviour instead of querying the user every time.
+	/// dynamic tool locking - if set, dynamic tool behaviour is entirely disregarded to use tool_behaviour() return as the only possible function.
 	var/tool_locked = FALSE
 	/// override for dynamic tool support - varedit only, and not always supported.
 	VAR_PRIVATE/list/tool_override
@@ -127,9 +127,11 @@
  * - user - person using tool, if any
  * - target - atom tool being used on, if any
  * - time - approximated duration of the action in deciseconds
+ * - cost - cost multiplier
  */
-/obj/item/proc/using_as_tool(function, flags, mob/user, atom/target, time)
+/obj/item/proc/using_as_tool(function, flags, mob/user, atom/target, time, cost)
 	SHOULD_CALL_PARENT(TRUE)
+	return TRUE
 
 /**
  * called when we stop being used as a tool (aka finish of say, a window unfasten)
@@ -141,9 +143,12 @@
  * - user - person using tool, if any
  * - target - atom tool being used on, if any
  * - time - duration of the action in deciseconds
+ * - cost - cost multiplier
+ * - success - was it successful?
  */
-/obj/item/proc/used_as_tool(function, flags, mob/user, atom/target, time)
+/obj/item/proc/used_as_tool(function, flags, mob/user, atom/target, time, cost, success)
 	SHOULD_CALL_PARENT(TRUE)
+	return TRUE
 
 /**
  * standard feedback for starting a tool usage
@@ -157,7 +162,7 @@
  * - msg - what to show to everyone around target
  * - self_msg - what to show to user
  */
-/obj/item/proc/standard_tool_feedback_start(function, flags, mob/user, atom/target, time, msg, self_msg)
+/obj/item/proc/standard_tool_feedback_start(function, flags, mob/user, atom/target, time, msg, self_msg, cost)
 
 /**
  * standard feedback for ending a tool usage

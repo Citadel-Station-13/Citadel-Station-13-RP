@@ -148,6 +148,7 @@
 			L.IgniteMob()
 		if (istype(location, /turf))
 			location.hotspot_expose(700, 50, 1)
+
 /obj/item/weldingtool/attack_self(mob/user)
 	setWelding(!welding, user)
 

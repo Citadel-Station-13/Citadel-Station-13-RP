@@ -28,6 +28,8 @@
 #define IN_STORAGE				(1<<14)
 /// we can't be caught when hitting a mob on throw
 #define ITEM_THROW_UNCATCHABLE	(1<<15)
+/// we cannot be used a tool on click, no matter what
+#define ITEM_NO_TOOL_ATTACK		(1<<16)
 
 DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(IN_INVENTORY),

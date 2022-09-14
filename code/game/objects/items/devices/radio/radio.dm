@@ -664,7 +664,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		var/datum/robot_component/C = R.components["radio"]
 		R.cell_use_power(C.active_usage)
 
-/obj/item/radio/borg/attackby(obj/item/I, mob/living/user, params, attackchain_flags, damage_multiplier)
+/obj/item/radio/borg/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	user.set_machine(src)
 	if (!(I.is_screwdriver() || istype(I, /obj/item/encryptionkey)))
 		return ..()
