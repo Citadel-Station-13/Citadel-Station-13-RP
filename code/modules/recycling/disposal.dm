@@ -88,7 +88,7 @@
 				playsound(src, W.usesound, 100, 1)
 				to_chat(user, "You start slicing the floorweld off the disposal unit.")
 
-				if(do_after(user,20 * W.toolspeed))
+				if(do_after(user,20 * W.tool_speed))
 					if(!src || !W.isOn()) return
 					to_chat(user, "You sliced the floorweld off the disposal unit.")
 					var/obj/structure/disposalconstruct/C = new (src.loc)
@@ -1494,7 +1494,7 @@
 			if(W.remove_fuel(0,user))
 				playsound(src, W.usesound, 100, 1)
 				to_chat(user, "You start slicing the floorweld off the disposal outlet.")
-				if(do_after(user,20 * W.toolspeed))
+				if(do_after(user,20 * W.tool_speed))
 					if(!src || !W.isOn()) return
 					to_chat(user, "You sliced the floorweld off the disposal outlet.")
 					var/obj/structure/disposalconstruct/C = new (src.loc)

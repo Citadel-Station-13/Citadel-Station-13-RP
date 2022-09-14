@@ -91,10 +91,10 @@
 			if(re.id == "nutriment" || re.id == "protein" || re.id == "glucose" || re.id == "fishbait")
 				foodvolume += re.volume
 
-		toolspeed = initial(toolspeed) * min(0.75, (0.5 / max(0.5, (foodvolume / Bait.reagents.maximum_volume))))
+		tool_speed = initial(tool_speed) * min(0.75, (0.5 / max(0.5, (foodvolume / Bait.reagents.maximum_volume))))
 
 	else
-		toolspeed = initial(toolspeed)
+		tool_speed = initial(tool_speed)
 
 /obj/item/material/fishing_rod/proc/consume_bait()
 	if(Bait)
@@ -119,7 +119,7 @@
 	attackspeed = 2 SECONDS
 	default_material = "titanium"
 
-	toolspeed = 0.75
+	tool_speed = 0.75
 
 /obj/item/material/fishing_rod/modern/built
 	strung = FALSE
@@ -129,10 +129,10 @@
 	desc = "Mass produced, but somewhat reliable."
 	default_material = "plastic"
 
-	toolspeed = 0.9
+	tool_speed = 0.9
 
 /obj/item/material/fishing_rod/modern/strong
 	desc = "A extremely refined rod for catching fish."
 	default_material = "durasteel"
 
-	toolspeed = 0.5
+	tool_speed = 0.5

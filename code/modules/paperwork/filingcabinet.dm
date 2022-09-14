@@ -50,7 +50,7 @@
 	else if(P.is_screwdriver())
 		to_chat(user, SPAN_NOTICE("You begin taking the [name] apart."))
 		playsound(src, P.usesound, 50, 1)
-		if(do_after(user, 10 * P.toolspeed))
+		if(do_after(user, 10 * P.tool_speed))
 			playsound(loc, P.usesound, 50, 1)
 			to_chat(user, SPAN_NOTICE("You take the [name] apart."))
 			new /obj/item/stack/material/steel( src.loc, 4 )

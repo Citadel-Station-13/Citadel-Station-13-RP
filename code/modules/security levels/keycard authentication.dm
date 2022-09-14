@@ -44,7 +44,7 @@
 	if(W.is_screwdriver())
 		to_chat(user, "You begin removing the faceplate from the [src]")
 		playsound(src, W.usesound, 50, 1)
-		if(do_after(user, 10 * W.toolspeed))
+		if(do_after(user, 10 * W.tool_speed))
 			to_chat(user, "You remove the faceplate from the [src]")
 			var/obj/structure/frame/A = new /obj/structure/frame(loc)
 			var/obj/item/circuitboard/M = new circuit(A)

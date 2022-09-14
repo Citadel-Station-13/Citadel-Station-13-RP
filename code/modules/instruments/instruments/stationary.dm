@@ -39,7 +39,7 @@
 	if(I.is_wrench())
 		playsound(src, I.usesound, 50, 1)
 		to_chat(user, "<span class='notice'>You begin to [anchored? "loosen" : "tighten"] [src]'s casters...</span>")
-		if(do_after(user, 40 * I.toolspeed))
+		if(do_after(user, 40 * I.tool_speed))
 			user.visible_message("<span class='notice'>[user] [anchored? "loosens" : "tightens"] [src]'s casters.</span>")
 			anchored = !anchored
 	else

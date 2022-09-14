@@ -92,7 +92,7 @@
 			user.visible_message( \
 				"<span class='warning'>\The [user] begins deconstructing \the [src].</span>", \
 				"<span class='notice'>You start deconstructing \the [src].</span>")
-			if(do_after(user, 20 * WT.toolspeed, target = src) && WT.isOn())
+			if(do_after(user, 20 * WT.tool_speed, target = src) && WT.isOn())
 				new /obj/item/stack/material/steel(get_turf(src), 2)
 				user.visible_message( \
 					"<span class='warning'>\The [user] has deconstructed \the [src].</span>", \

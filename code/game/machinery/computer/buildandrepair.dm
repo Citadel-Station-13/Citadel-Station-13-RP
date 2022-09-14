@@ -14,7 +14,7 @@
 		if(0)
 			if(P.is_wrench())
 				playsound(src.loc, P.usesound, 50, 1)
-				if(do_after(user, 20 * P.toolspeed))
+				if(do_after(user, 20 * P.tool_speed))
 					to_chat(user, "<span class='notice'>You wrench the frame into place.</span>")
 					src.anchored = 1
 					src.state = 1
@@ -24,7 +24,7 @@
 					to_chat(user, "The welding tool must be on to complete this task.")
 					return
 				playsound(src.loc, WT.usesound, 50, 1)
-				if(do_after(user, 20 * WT.toolspeed))
+				if(do_after(user, 20 * WT.tool_speed))
 					if(!src || !WT.isOn()) return
 					to_chat(user, "<span class='notice'>You deconstruct the frame.</span>")
 					new /obj/item/stack/material/steel( src.loc, 5 )
@@ -32,7 +32,7 @@
 		if(1)
 			if(P.is_wrench())
 				playsound(src.loc, P.usesound, 50, 1)
-				if(do_after(user, 20 * P.toolspeed))
+				if(do_after(user, 20 * P.tool_speed))
 					to_chat(user, "<span class='notice'>You unfasten the frame.</span>")
 					src.anchored = 0
 					src.state = 0

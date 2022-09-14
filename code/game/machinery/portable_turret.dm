@@ -580,7 +580,7 @@
 			)
 
 		wrenching = TRUE
-		if(do_after(user, 50 * I.toolspeed))
+		if(do_after(user, 50 * I.tool_speed))
 			//This code handles moving the turret around. After all, it's a portable turret!
 			if(!anchored)
 				playsound(loc, I.usesound, 100, 1)
@@ -1040,7 +1040,7 @@
 					return
 
 				playsound(loc, I.usesound, 50, 1)
-				if(do_after(user, 20 * I.toolspeed))
+				if(do_after(user, 20 * I.tool_speed))
 					if(!src || !WT.remove_fuel(5, user)) return
 					build_step = 1
 					to_chat(user, "You remove the turret's interior metal armor.")
@@ -1110,7 +1110,7 @@
 					to_chat(user, "<span class='notice'>You need more fuel to complete this task.</span>")
 
 				playsound(loc, WT.usesound, 50, 1)
-				if(do_after(user, 30 * WT.toolspeed))
+				if(do_after(user, 30 * WT.tool_speed))
 					if(!src || !WT.remove_fuel(5, user))
 						return
 					build_step = 8

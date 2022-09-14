@@ -445,7 +445,7 @@
 		if(W.remove_fuel(0,user))
 			playsound(src.loc, W.usesound, 50, 1)
 			to_chat(user, "You start slicing the floorweld off the delivery chute.")
-			if(do_after(user,20 * W.toolspeed))
+			if(do_after(user,20 * W.tool_speed))
 				if(!src || !W.isOn()) return
 				to_chat(user, "You sliced the floorweld off the delivery chute.")
 				var/obj/structure/disposalconstruct/C = new (src.loc)

@@ -283,7 +283,7 @@ GLOBAL_LIST_EMPTY(smeses)
 			else
 				to_chat(user, "<span class='notice'>You begin to cut the cables...</span>")
 				playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
-				if(do_after(user, 50 * W.toolspeed))
+				if(do_after(user, 50 * W.tool_speed))
 					if (prob(50) && electrocute_mob(usr, terminal.powernet, terminal))
 						var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 						s.set_up(5, 1, src)

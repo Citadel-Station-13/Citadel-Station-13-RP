@@ -291,7 +291,7 @@
 				to_chat(user, "The welding tool must be on to complete this task.")
 				return
 			playsound(src, WT.usesound, 50, 1)
-			if(do_after(user, 20 * WT.toolspeed))
+			if(do_after(user, 20 * WT.tool_speed))
 				if(!src || !WT.isOn()) return
 				to_chat(user, "<span class='notice'>You deconstruct the frame.</span>")
 				new /obj/item/stack/material/steel( src.loc, 2 )

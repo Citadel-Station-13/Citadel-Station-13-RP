@@ -249,7 +249,7 @@
 			if(WT.remove_fuel(1 ,user))
 				to_chat(user, "<span class='notice'>You begin repairing [src]...</span>")
 				playsound(src, WT.usesound, 50, 1)
-				if(do_after(user, 40 * WT.toolspeed, target = src))
+				if(do_after(user, 40 * WT.tool_speed, target = src))
 					health = maxhealth
 			//		playsound(src, 'sound/items/Welder.ogg', 50, 1)
 					update_icon()
@@ -326,7 +326,7 @@
 				"<span class='notice'>\The [user] begins to wire \the [src] for electrochromic tinting.</span>", \
 				"<span class='notice'>You begin to wire \the [src] for electrochromic tinting.</span>", \
 				"You hear sparks.")
-			if(do_after(user, 20 * C.toolspeed, src) && state == 0)
+			if(do_after(user, 20 * C.tool_speed, src) && state == 0)
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 				var/obj/structure/window/reinforced/polarized/P = new(loc, dir)
 				if(is_fulltile())

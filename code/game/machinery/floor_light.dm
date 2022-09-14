@@ -33,7 +33,7 @@ var/list/floor_light_cache = list()
 			to_chat(user, SPAN_WARNING("\The [src] must be on to complete this task."))
 			return
 		playsound(src.loc, WT.usesound, 50, TRUE)
-		if(!do_after(user, 20 * WT.toolspeed))
+		if(!do_after(user, 20 * WT.tool_speed))
 			return
 		if(!src || !WT.isOn())
 			return

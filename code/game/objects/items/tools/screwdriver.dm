@@ -21,7 +21,7 @@
 	matter = list(MAT_STEEL = 75)
 	attack_verb = list("stabbed")
 	sharp  = 1
-	toolspeed = 1
+	tool_speed = 1
 	var/random_color = TRUE
 
 /obj/item/tool/screwdriver/suicide_act(mob/user)
@@ -77,13 +77,13 @@
 	desc = "A whittled bone with a tapered point, used to remove screws, or stab."
 	icon_state = "screwdriver_bone"
 	random_color = FALSE
-	toolspeed = 1.25
+	tool_speed = 1.25
 
 /obj/item/tool/screwdriver/brass
 	name = "brass screwdriver"
 	desc = "A screwdriver with a very sharp tip, that ensures fine deliberate adjustments."
 	icon_state = "screwdriver_brass"
-	toolspeed = 0.75
+	tool_speed = 0.75
 	random_color = FALSE
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_screwdriver
@@ -107,7 +107,7 @@
 	icon_state = "screwdriver_a"
 	item_state = "screwdriver_black"
 	usesound = 'sound/items/pshoom.ogg'
-	toolspeed = 0.1
+	tool_speed = 0.1
 	random_color = FALSE
 
 /obj/item/tool/screwdriver/hybrid
@@ -120,7 +120,7 @@
 	slowdown = 0.1
 	w_class = ITEMSIZE_NORMAL
 	usesound = 'sound/effects/uncloak.ogg'
-	toolspeed = 0.4
+	tool_speed = 0.4
 	random_color = FALSE
 	reach = 2
 
@@ -130,13 +130,13 @@
 	name = "powered screwdriver"
 	desc = "An electrical screwdriver, designed to be both precise and quick."
 	usesound = 'sound/items/drill_use.ogg'
-	toolspeed = 0.5
+	tool_speed = 0.5
 
 /obj/item/tool/screwdriver/RIGset
 	name = "integrated screwdriver"
 	desc = "If you're seeing this, someone did a dum-dum."
 	usesound = 'sound/items/drill_use.ogg'
-	toolspeed = 0.7
+	tool_speed = 0.7
 
 /obj/item/tool/screwdriver/power
 	name = "hand drill"
@@ -154,7 +154,7 @@
 	attack_verb = list("drilled", "screwed", "jabbed", "whacked")
 	hitsound = 'sound/items/drill_hit.ogg'
 	usesound = 'sound/items/drill_use.ogg'
-	toolspeed = 0.25
+	tool_speed = 0.25
 	random_color = FALSE
 	var/obj/item/tool/wrench/power/counterpart = null
 

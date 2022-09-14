@@ -1117,7 +1117,7 @@ About the new airlock wires panel:
 		if(can_remove_electronics())
 			playsound(src, C.usesound, 75, 1)
 			user.visible_message("[user] removes the electronics from the airlock assembly.", "You start to remove electronics from the airlock assembly.")
-			if(do_after(user,40 * C.toolspeed))
+			if(do_after(user,40 * C.tool_speed))
 				to_chat(user, "<span class='notice'>You removed the airlock electronics!</span>")
 
 				var/obj/structure/door_assembly/da = new assembly_type(src.loc)

@@ -52,7 +52,7 @@
 	if(I.is_wrench())
 		if(!glass)
 			playsound(src.loc, I.usesound, 50, 1)
-			if(do_after(user, 20 * I.toolspeed))
+			if(do_after(user, 20 * I.tool_speed))
 				to_chat(user, "<span class='notice'>You unfasten the frame.</span>")
 				new /obj/item/frame/mirror( src.loc )
 				qdel(src)

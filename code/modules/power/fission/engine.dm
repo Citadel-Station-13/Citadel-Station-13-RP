@@ -256,7 +256,7 @@
 		playsound(src.loc, WT.usesound, 50, 1)
 		user.visible_message("<span class='warning'>\The [user.name] begins repairing \the [src].</span>", \
 			"<span class='notice'>You start repairing \the [src].</span>")
-		if(do_after(user, 20 * WT.toolspeed, target = src) && WT.isOn())
+		if(do_after(user, 20 * WT.tool_speed, target = src) && WT.isOn())
 			health = clamp( health + 10, 1,  max_health)
 		repairing = 0
 		return
@@ -269,7 +269,7 @@
 		return 1
 
 	playsound(src, W.usesound, 75, 1)
-	if(!anchored || do_after(user, 40 * W.toolspeed))
+	if(!anchored || do_after(user, 40 * W.tool_speed))
 		anchor()
 		user.visible_message("\The [user.name] [anchored ? "secures" : "unsecures"] the bolts holding \the [src.name] to the floor.", \
 				"You [anchored ? "secure" : "unsecure"] the bolts holding [src] to the floor.", \

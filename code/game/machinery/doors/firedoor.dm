@@ -322,7 +322,7 @@
 		prying = 1
 		update_icon()
 		playsound(src, C.usesound, 100, 1)
-		if(do_after(user,30 * C.toolspeed))
+		if(do_after(user,30 * C.tool_speed))
 			if(C.is_crowbar())
 				if(machine_stat & (BROKEN|NOPOWER) || !density)
 					user.visible_message("<span class='danger'>\The [user] forces \the [src] [density ? "open" : "closed"] with \a [C]!</span>",\

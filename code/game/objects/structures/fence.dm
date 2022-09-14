@@ -88,7 +88,7 @@
 		SPAN_DANGER("You start cutting through \the [src] with \the [W]."))
 		playsound(src, W.usesound, 50, 1)
 
-		if(do_after(user, CUT_TIME * W.toolspeed, target = src))
+		if(do_after(user, CUT_TIME * W.tool_speed, target = src))
 			if(current_stage == hole_size)
 				switch(++hole_size)
 					if(MEDIUM_HOLE)

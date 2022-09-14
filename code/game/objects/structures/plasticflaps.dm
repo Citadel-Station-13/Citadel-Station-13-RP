@@ -20,7 +20,7 @@
 	if(P.is_wirecutter())
 		playsound(src, P.usesound, 50, 1)
 		to_chat(user, "<span class='notice'>You start to cut the plastic flaps.</span>")
-		if(do_after(user, 10 * P.toolspeed))
+		if(do_after(user, 10 * P.tool_speed))
 			to_chat(user, "<span class='notice'>You cut the plastic flaps.</span>")
 			var/obj/item/stack/material/plastic/A = new /obj/item/stack/material/plastic( src.loc )
 			A.amount = 4

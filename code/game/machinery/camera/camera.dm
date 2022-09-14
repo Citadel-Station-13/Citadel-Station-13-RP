@@ -366,7 +366,7 @@
 	playsound(src.loc, WT.usesound, 50, 1)
 	WT.eyecheck(user)
 	busy = 1
-	if(do_after(user, 100 * WT.toolspeed))
+	if(do_after(user, 100 * WT.tool_speed))
 		busy = 0
 		if(!WT.isOn())
 			return 0

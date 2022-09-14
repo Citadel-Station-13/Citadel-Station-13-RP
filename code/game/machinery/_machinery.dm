@@ -388,7 +388,7 @@
 	if(panel_open)
 		return FALSE // Close panel first!
 	playsound(loc, W.usesound, 50, 1)
-	var/actual_time = W.toolspeed * time
+	var/actual_time = W.tool_speed * time
 	if(actual_time != 0)
 		user.visible_message( \
 			"<span class='warning'>\The [user] begins [anchored ? "un" : ""]securing \the [src].</span>", \
@@ -425,7 +425,7 @@
 		return 0
 	to_chat(user, "<span class='notice'>You start disconnecting the monitor.</span>")
 	playsound(src, S.usesound, 50, 1)
-	if(do_after(user, 20 * S.toolspeed))
+	if(do_after(user, 20 * S.tool_speed))
 		if(machine_stat & BROKEN)
 			to_chat(user, "<span class='notice'>The broken glass falls out.</span>")
 			new /obj/item/material/shard(src.loc)

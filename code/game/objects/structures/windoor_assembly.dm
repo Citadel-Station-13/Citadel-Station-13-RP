@@ -93,7 +93,7 @@ obj/structure/windoor_assembly/Destroy()
 					user.visible_message("[user] disassembles the windoor assembly.", "You start to disassemble the windoor assembly.")
 					playsound(src.loc, WT.usesound, 50, 1)
 
-					if(do_after(user, 40 * WT.toolspeed))
+					if(do_after(user, 40 * WT.tool_speed))
 						if(!src || !WT.isOn()) return
 						to_chat(user,"<span class='notice'>You disassembled the windoor assembly!</span>")
 						if(secure)
@@ -110,7 +110,7 @@ obj/structure/windoor_assembly/Destroy()
 				playsound(src, W.usesound, 100, 1)
 				user.visible_message("[user] secures the windoor assembly to the floor.", "You start to secure the windoor assembly to the floor.")
 
-				if(do_after(user, 40 * W.toolspeed))
+				if(do_after(user, 40 * W.tool_speed))
 					if(!src) return
 					to_chat(user,"<span class='notice'>You've secured the windoor assembly!</span>")
 					src.anchored = 1
@@ -121,7 +121,7 @@ obj/structure/windoor_assembly/Destroy()
 				playsound(src, W.usesound, 100, 1)
 				user.visible_message("[user] unsecures the windoor assembly to the floor.", "You start to unsecure the windoor assembly to the floor.")
 
-				if(do_after(user, 40 * W.toolspeed))
+				if(do_after(user, 40 * W.tool_speed))
 					if(!src) return
 					to_chat(user,"<span class='notice'>You've unsecured the windoor assembly!</span>")
 					src.anchored = 0
@@ -147,7 +147,7 @@ obj/structure/windoor_assembly/Destroy()
 				playsound(src, W.usesound, 100, 1)
 				user.visible_message("[user] cuts the wires from the airlock assembly.", "You start to cut the wires from airlock assembly.")
 
-				if(do_after(user, 40 * W.toolspeed))
+				if(do_after(user, 40 * W.tool_speed))
 					if(!src) return
 
 					to_chat(user,"<span class='notice'>You cut the windoor wires.!</span>")
@@ -176,7 +176,7 @@ obj/structure/windoor_assembly/Destroy()
 				playsound(src, W.usesound, 100, 1)
 				user.visible_message("[user] removes the electronics from the airlock assembly.", "You start to uninstall electronics from the airlock assembly.")
 
-				if(do_after(user, 40 * W.toolspeed))
+				if(do_after(user, 40 * W.tool_speed))
 					if(!src || !src.electronics) return
 					to_chat(user,"<span class='notice'>You've removed the airlock electronics!</span>")
 					step = 1
@@ -196,7 +196,7 @@ obj/structure/windoor_assembly/Destroy()
 				playsound(src, W.usesound, 100, 1)
 				user.visible_message("[user] pries the windoor into the frame.", "You start prying the windoor into the frame.")
 
-				if(do_after(user, 40 * W.toolspeed))
+				if(do_after(user, 40 * W.tool_speed))
 
 					if(!src) return
 

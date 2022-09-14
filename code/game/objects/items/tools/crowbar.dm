@@ -21,7 +21,7 @@
 	usesound = 'sound/items/crowbar.ogg'
 	drop_sound = 'sound/items/drop/crowbar.ogg'
 	pickup_sound = 'sound/items/pickup/crowbar.ogg'
-	toolspeed = 1
+	tool_speed = 1
 
 
 /obj/item/tool/crowbar/is_crowbar()
@@ -37,14 +37,14 @@
 	desc = "A sturdy, carved bone used to remove floors and to pry open doors."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "crowbar_bone"
-	toolspeed = 1.25
+	tool_speed = 1.25
 
 /obj/item/tool/crowbar/brass
 	name = "brass crowbar"
 	desc = "An etched piece of brass plated metal, used to remove floors and to pry open doors."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "crowbar_brass"
-	toolspeed = 0.75
+	tool_speed = 0.75
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_crowbar
 	name = "Precursor Alpha Object - Hard Light Pry Tool"
@@ -66,7 +66,7 @@
 	icon = 'icons/obj/abductor.dmi'
 	usesound = 'sound/weapons/sonic_jackhammer.ogg'
 	icon_state = "crowbar"
-	toolspeed = 0.1
+	tool_speed = 0.1
 	origin_tech = list(TECH_COMBAT = 4, TECH_ENGINEERING = 4)
 
 /obj/item/tool/crowbar/hybrid
@@ -75,7 +75,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_crowbar)
 	icon_state = "hybcrowbar"
 	usesound = 'sound/weapons/sonic_jackhammer.ogg'
-	toolspeed = 0.4
+	tool_speed = 0.4
 	origin_tech = list(TECH_COMBAT = 4, TECH_ENGINEERING = 3)
 	reach = 2
 
@@ -84,13 +84,13 @@
 	desc = "A hydraulic prying tool, compact but powerful. Designed to replace crowbars in industrial synthetics."
 	usesound = 'sound/items/jaws_pry.ogg'
 	force = 10
-	toolspeed = 0.5
+	tool_speed = 0.5
 
 /obj/item/tool/crowbar/RIGset
 	name = "integrated prybar"
 	desc = "If you're seeing this, someone did a dum-dum."
 	usesound = 'sound/items/jaws_pry.ogg'
-	toolspeed = 0.7
+	tool_speed = 0.7
 
 /obj/item/tool/crowbar/power
 	name = "jaws of life"
@@ -101,7 +101,7 @@
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	usesound = 'sound/items/jaws_pry.ogg'
 	force = 15
-	toolspeed = 0.25
+	tool_speed = 0.25
 	var/obj/item/tool/wirecutters/power/counterpart = null
 
 /obj/item/tool/crowbar/power/Initialize(mapload, no_counterpart = TRUE)
@@ -143,7 +143,7 @@
 	matter = list(MAT_STEEL = 30)
 	attack_verb = list("whapped", "smacked", "swatted", "thwacked", "hit")
 	usesound = 'sound/items/crowbar.ogg'
-	toolspeed = 1
+	tool_speed = 1
 	var/random_color = TRUE
 
 /obj/item/tool/prybar/red

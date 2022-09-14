@@ -308,7 +308,7 @@
 					else
 						to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 						return
-			if(do_after(user, 20 * S.toolspeed))
+			if(do_after(user, 20 * S.tool_speed))
 				if(opened)
 					return
 				playsound(src, S.usesound, 50)
@@ -323,7 +323,7 @@
 			else
 				user.visible_message("\The [user] begins securing \the [src] to the floor.", "You start securing \the [src] to the floor.")
 			playsound(src, W.usesound, 50)
-			if(do_after(user, 20 * W.toolspeed))
+			if(do_after(user, 20 * W.tool_speed))
 				if(!src) return
 				to_chat(user, "<span class='notice'>You [anchored? "un" : ""]secured \the [src]!</span>")
 				anchored = !anchored

@@ -394,7 +394,7 @@
 		var/obj/item/weldingtool/WT = W
 		if (WT.remove_fuel(0,user))
 			to_chat(user, "<span class='notice'>Now welding the vent.</span>")
-			if(do_after(user, 20 * WT.toolspeed))
+			if(do_after(user, 20 * WT.tool_speed))
 				if(!src || !WT.isOn()) return
 				playsound(src.loc, WT.usesound, 50, 1)
 				if(!welded)
@@ -440,7 +440,7 @@
 	add_fingerprint(user)
 	playsound(src, W.usesound, 50, 1)
 	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
-	if (do_after(user, 40 * W.toolspeed))
+	if (do_after(user, 40 * W.tool_speed))
 		user.visible_message( \
 			"<span class='notice'>\The [user] unfastens \the [src].</span>", \
 			"<span class='notice'>You have unfastened \the [src].</span>", \
