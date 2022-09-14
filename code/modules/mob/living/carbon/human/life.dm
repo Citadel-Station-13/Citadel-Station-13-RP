@@ -460,13 +460,13 @@
 	if(species.breath_type)
 		breath_type = species.breath_type
 	else
-		breath_type = /datum/gas/oxygen
+		breath_type = /datum/reagent/gas/oxygen
 	inhaling = breath.gas[breath_type]
 
 	if(species.poison_type)
 		poison_type = species.poison_type
 	else
-		poison_type = /datum/gas/phoron
+		poison_type = /datum/reagent/gas/phoron
 	poison = breath.gas[poison_type]
 
 	if(species.exhale_type)
@@ -544,8 +544,8 @@
 		phoron_alert = 0
 
 	// If there's some other shit in the air lets deal with it here.
-	if(breath.gas[/datum/gas/nitrous_oxide])
-		var/SA_pp = (breath.gas[/datum/gas/nitrous_oxide] / breath.total_moles) * breath_pressure
+	if(breath.gas[/datum/reagent/gas/nitrous_oxide])
+		var/SA_pp = (breath.gas[/datum/reagent/gas/nitrous_oxide] / breath.total_moles) * breath_pressure
 
 		// Enough to make us paralysed for a bit
 		if(SA_pp > SA_para_min)
@@ -561,7 +561,7 @@
 		else if(SA_pp > 0.15)
 			if(prob(20))
 				spawn(0) emote(pick("giggle", "laugh"))
-		breath.adjust_gas(/datum/gas/nitrous_oxide, -breath.gas[/datum/gas/nitrous_oxide]/6, update = 0) //update after
+		breath.adjust_gas(/datum/reagent/gas/nitrous_oxide, -breath.gas[/datum/reagent/gas/nitrous_oxide]/6, update = 0) //update after
 
 	// Were we able to breathe?
 	if (failed_inhale || failed_exhale)

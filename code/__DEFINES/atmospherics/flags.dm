@@ -1,4 +1,4 @@
-// /datum/gas/gas_flags flags
+// /datum/reagent/gas/gas_flags flags
 /// Is this gas a viable combustion fuel? Ported from XGM variable oxidizer-oxidant combustion system.
 #define GAS_FLAG_FUEL				(1<<0)
 /// Is this gas a viable combustion oxidizer? Ported from XGM variable oxidizer-oxidant combustion system.

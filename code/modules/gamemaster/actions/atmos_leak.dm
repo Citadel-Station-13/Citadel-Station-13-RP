@@ -22,11 +22,11 @@
 	EVENT_LEVEL_MAJOR = 3
 	)
 
-	var/gas_choices = list(/datum/gas/carbon_dioxide, /datum/gas/nitrous_oxide) // Annoying
+	var/gas_choices = list(/datum/reagent/gas/carbon_dioxide, /datum/reagent/gas/nitrous_oxide) // Annoying
 	if(severity >= EVENT_LEVEL_MODERATE)
-		gas_choices += /datum/gas/phoron // Dangerous
+		gas_choices += /datum/reagent/gas/phoron // Dangerous
 	if(severity >= EVENT_LEVEL_MAJOR)
-		gas_choices += /datum/gas/volatile_fuel // Dangerous and no default atmos setup!
+		gas_choices += /datum/reagent/gas/volatile_fuel // Dangerous and no default atmos setup!
 	gas_type = pick(gas_choices)
 
 	var/list/area/grand_list_of_areas = get_station_areas(excluded)

@@ -1458,10 +1458,10 @@
 		var/total_moles = environment.total_moles
 
 		if (total_moles)
-			var/o2_level = environment.gas[/datum/gas/oxygen]/total_moles
-			var/n2_level = environment.gas[/datum/gas/nitrogen]/total_moles
-			var/co2_level = environment.gas[/datum/gas/carbon_dioxide]/total_moles
-			var/phoron_level = environment.gas[/datum/gas/phoron]/total_moles
+			var/o2_level = environment.gas[/datum/reagent/gas/oxygen]/total_moles
+			var/n2_level = environment.gas[/datum/reagent/gas/nitrogen]/total_moles
+			var/co2_level = environment.gas[/datum/reagent/gas/carbon_dioxide]/total_moles
+			var/phoron_level = environment.gas[/datum/reagent/gas/phoron]/total_moles
 			var/unknown_level =  1-(o2_level+n2_level+co2_level+phoron_level)
 			set_pin_data(IC_OUTPUT, 1, pressure)
 			set_pin_data(IC_OUTPUT, 2, round(environment.temperature-T0C,0.1))
@@ -1566,7 +1566,7 @@
 		var/total_moles = environment.total_moles
 
 		if (total_moles)
-			var/o2_level = environment.gas[/datum/gas/oxygen]/total_moles
+			var/o2_level = environment.gas[/datum/reagent/gas/oxygen]/total_moles
 			set_pin_data(IC_OUTPUT, 1, round(o2_level*100,0.1))
 		else
 			set_pin_data(IC_OUTPUT, 1, 0)
@@ -1597,7 +1597,7 @@
 		var/total_moles = environment.total_moles
 
 		if (total_moles)
-			var/co2_level = environment.gas[/datum/gas/carbon_dioxide]/total_moles
+			var/co2_level = environment.gas[/datum/reagent/gas/carbon_dioxide]/total_moles
 			set_pin_data(IC_OUTPUT, 1, round(co2_level*100,0.1))
 		else
 			set_pin_data(IC_OUTPUT, 1, 0)
@@ -1628,7 +1628,7 @@
 		var/total_moles = environment.total_moles
 
 		if (total_moles)
-			var/n2_level = environment.gas[/datum/gas/nitrogen]/total_moles
+			var/n2_level = environment.gas[/datum/reagent/gas/nitrogen]/total_moles
 			set_pin_data(IC_OUTPUT, 1, round(n2_level*100,0.1))
 		else
 			set_pin_data(IC_OUTPUT, 1, 0)
@@ -1659,7 +1659,7 @@
 		var/total_moles = environment.total_moles
 
 		if (total_moles)
-			var/phoron_level = environment.gas[/datum/gas/phoron]/total_moles
+			var/phoron_level = environment.gas[/datum/reagent/gas/phoron]/total_moles
 			set_pin_data(IC_OUTPUT, 1, round(phoron_level*100,0.1))
 		else
 			set_pin_data(IC_OUTPUT, 1, 0)

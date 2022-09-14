@@ -1081,7 +1081,7 @@
 "cz" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1;
-	scrubbing_gas = list(/datum/gas/carbon_dioxide)
+	scrubbing_gas = list(/datum/reagent/gas/carbon_dioxide)
 	},
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
@@ -1283,7 +1283,7 @@
 /area/crew_quarters/public_bunker)
 "cW" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	scrubbing_gas = list(/datum/gas/carbon_dioxide)
+	scrubbing_gas = list(/datum/reagent/gas/carbon_dioxide)
 	},
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_core)

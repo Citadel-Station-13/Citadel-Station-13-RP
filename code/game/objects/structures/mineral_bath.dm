@@ -14,7 +14,7 @@
 
 /obj/structure/adherent_bath/return_air()
 	var/datum/gas_mixture/venus = new(CELL_VOLUME)
-	venus.adjust_multi(/datum/gas/nitrogen, MOLES_N2STANDARD, /datum/gas/oxygen, MOLES_O2STANDARD)
+	venus.adjust_multi(/datum/reagent/gas/nitrogen, MOLES_N2STANDARD, /datum/reagent/gas/oxygen, MOLES_O2STANDARD)
 	venus.temperature = 490
 	return venus
 

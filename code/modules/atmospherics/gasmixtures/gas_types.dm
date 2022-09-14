@@ -1,5 +1,5 @@
 /// List of gases that can't react amongst themselves. KEEP THIS UP TO DATE!
-GLOBAL_LIST_INIT(nonreactive_gases, typecacheof(list(/datum/gas/oxygen, /datum/gas/nitrogen, /datum/gas/carbon_dioxide)))
+GLOBAL_LIST_INIT(nonreactive_gases, typecacheof(list(/datum/reagent/gas/oxygen, /datum/reagent/gas/nitrogen, /datum/reagent/gas/carbon_dioxide)))
 
 /**
   * Converts a gas ID to typepath
@@ -28,27 +28,27 @@ GLOBAL_LIST_INIT(meta_gas_molar_mass, meta_gas_molar_mass_list())
 GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_list())
 
 /proc/meta_gas_heat_list()
-	. = subtypesof(/datum/gas)
+	. = subtypesof(/datum/reagent/gas)
 	for(var/gas_path in .)
-		var/datum/gas/gas = gas_path
+		var/datum/reagent/gas/gas = gas_path
 		.[gas_path] = initial(gas.specific_heat)
 
 /proc/meta_gas_name_list()
-	. = subtypesof(/datum/gas)
+	. = subtypesof(/datum/reagent/gas)
 	for(var/gas_path in .)
-		var/datum/gas/gas = gas_path
+		var/datum/reagent/gas/gas = gas_path
 		.[gas_path] = initial(gas.name)
 
 /proc/meta_gas_visibility_list()
-	. = subtypesof(/datum/gas)
+	. = subtypesof(/datum/reagent/gas)
 	for(var/gas_path in .)
-		var/datum/gas/gas = gas_path
+		var/datum/reagent/gas/gas = gas_path
 		.[gas_path] = initial(gas.moles_visible)
 
 /proc/meta_gas_overlay_list()
-	. = subtypesof(/datum/gas)
+	. = subtypesof(/datum/reagent/gas)
 	for(var/gas_path in .)
-		var/datum/gas/gas = gas_path
+		var/datum/reagent/gas/gas = gas_path
 		.[gas_path] = 0 //gotta make sure if(GLOB.meta_gas_overlays[gaspath]) doesn't break
 		if(initial(gas.moles_visible) != null)
 			.[gas_path] = new /list(FACTOR_GAS_VISIBLE_MAX)
@@ -56,43 +56,43 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 				.[gas_path][i] = new /obj/effect/overlay/gas(initial(gas.gas_overlay), i * 255 / FACTOR_GAS_VISIBLE_MAX)
 
 /proc/meta_gas_danger_list()
-	. = subtypesof(/datum/gas)
+	. = subtypesof(/datum/reagent/gas)
 	for(var/gas_path in .)
-		var/datum/gas/gas = gas_path
+		var/datum/reagent/gas/gas = gas_path
 		.[gas_path] = initial(gas.dangerous)
 
 /proc/meta_gas_id_list()
-	. = subtypesof(/datum/gas)
+	. = subtypesof(/datum/reagent/gas)
 	for(var/gas_path in .)
-		var/datum/gas/gas = gas_path
+		var/datum/reagent/gas/gas = gas_path
 		.[gas_path] = initial(gas.id)
 
 /proc/meta_gas_fusion_list()
-	. = subtypesof(/datum/gas)
+	. = subtypesof(/datum/reagent/gas)
 	for(var/gas_path in .)
-		var/datum/gas/gas = gas_path
+		var/datum/reagent/gas/gas = gas_path
 		.[gas_path] = initial(gas.fusion_power)
 
 /proc/meta_gas_id_lookup_list()
-	var/list/gases = subtypesof(/datum/gas)
+	var/list/gases = subtypesof(/datum/reagent/gas)
 	. = list()
 	for(var/gas_path in gases)
-		var/datum/gas/gas = gas_path
+		var/datum/reagent/gas/gas = gas_path
 		.[initial(gas.id)] = gas_path
 
 /proc/meta_gas_flag_list()
-	. = subtypesof(/datum/gas)
+	. = subtypesof(/datum/reagent/gas)
 	for(var/gas_path in .)
-		var/datum/gas/gas = gas_path
+		var/datum/reagent/gas/gas = gas_path
 		.[gas_path] = initial(gas.gas_flags)
 
 /proc/meta_gas_by_flag_list()
 	. = list()
 	// slightly more tricky
-	var/list/gases = subtypesof(/datum/gas)
+	var/list/gases = subtypesof(/datum/reagent/gas)
 	// for each gas
 	for(var/gas_path in gases)
-		var/datum/gas/gas = gas_path
+		var/datum/reagent/gas/gas = gas_path
 		// cache flags
 		var/gas_flags = initial(gas.gas_flags)
 		// for each bitfield
@@ -104,15 +104,15 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 
 /proc/meta_gas_molar_mass_list()
 	. = list()
-	var/list/gases = subtypesof(/datum/gas)
+	var/list/gases = subtypesof(/datum/reagent/gas)
 	for(var/gas_path in gases)
-		var/datum/gas/G = gas_path
+		var/datum/reagent/gas/G = gas_path
 		.[gas_path] = initial(G.molar_mass)
 
 /proc/meta_gas_typecache_no_overlays_list()
 	. = list()
-	for(var/gastype in subtypesof(/datum/gas))
-		var/datum/gas/gasvar = gastype
+	for(var/gastype in subtypesof(/datum/reagent/gas))
+		var/datum/reagent/gas/gasvar = gastype
 		if (!initial(gasvar.gas_overlay))
 			.[gastype] = TRUE
 
@@ -138,13 +138,13 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 ||||to add a new gas. They are accessed ||||
 ||||only by meta_gas_list().            ||||
 \*||||||||||||||||||||||||||||||||||||||||*/
-/datum/gas
+/datum/reagent/gas
 	/// Text ID for things like gas strings. THIS SHOULD NEVER, EVER, BE CHANGED! Pick one and stick with it. Change this and EVERYTHING breaks. The typepath, infact, is more mutable than this!
-	var/id = ""
+	//var/id = ""
 	/// Specific heat in J/(mol*K)
 	var/specific_heat = 0
 	/// Textual name
-	var/name = "Unnamed Gas"
+	//var/name = "Unnamed Gas"
 	/// icon_state in icons/effects/atmospherics.dmi
 	var/gas_overlay = ""
 	/// How many moles is required to make this gas visible
@@ -160,26 +160,26 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	/// Gas flags. See [code/__DEFINES/atmospherics/flags.dm]
 	var/gas_flags
 
-/datum/gas/oxygen
+/datum/reagent/gas/oxygen
 	id = "o2"
 	name = "Oxygen"
 	specific_heat = 20
 	molar_mass = 0.032
 	gas_flags = GAS_FLAG_OXIDIZER
 
-/datum/gas/nitrogen
+/datum/reagent/gas/nitrogen
 	id = "n2"
 	name = "Nitrogen"
 	specific_heat = 20
 	molar_mass = 0.028
 
-/datum/gas/carbon_dioxide
+/datum/reagent/gas/carbon_dioxide
 	id = "co2"
 	name = "Carbon Dioxide"
 	specific_heat = 30
 	molar_mass = 0.044
 
-/datum/gas/phoron
+/datum/reagent/gas/phoron
 	id = "phoron"
 	name = "Phoron"
 	//Note that this has a significant impact on TTV yield.
@@ -197,7 +197,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 
 	gas_flags = GAS_FLAG_FUEL | GAS_FLAG_FUSION_FUEL | GAS_FLAG_CONTAMINANT
 
-/datum/gas/volatile_fuel
+/datum/reagent/gas/volatile_fuel
 	id = "volatile_fuel"
 	name = "Volatile Fuel"
 	specific_heat = 253	// J/(mol*K)	C8H18 gasoline. Isobaric, but good enough.
@@ -205,7 +205,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 
 	gas_flags = GAS_FLAG_FUEL
 
-/datum/gas/nitrous_oxide
+/datum/reagent/gas/nitrous_oxide
 	id = "n2o"
 	name = "Nitrous Oxide"
 	specific_heat = 40
@@ -218,7 +218,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 
 //The following is partially stolen from Nebula
 //I am not rewriting our handling of air for this, at least for now.
-/datum/gas/helium
+/datum/reagent/gas/helium
 	id = "helium"
 	name = "Helium"
 	specific_heat = 80
@@ -226,7 +226,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 
 	gas_flags = GAS_FLAG_FUSION_FUEL
 
-/datum/gas/carbon_monoxide
+/datum/reagent/gas/carbon_monoxide
 	id = "carbon monoxide"
 	name = "Carbon Monoxide"
 	//lore_text = "A highly poisonous gas."
@@ -238,7 +238,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	//taste_description = "stale air"
 	//metabolism = 0.05 // As with helium.
 
-/datum/gas/methyl_bromide
+/datum/reagent/gas/methyl_bromide
 	id = "methyl bromide"
 	name = "Methyl Bromide"
 	//lore_text = "A once-popular fumigant and weedkiller."
@@ -252,7 +252,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	)
 	value = 0.25*/
 
-/datum/gas/nitrodioxide
+/datum/reagent/gas/nitrodioxide
 	id = "nitrogen dioxide"
 	name = "Nitrogen Dioxide"
 	//color = "#ca6409"
@@ -262,7 +262,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	//gas_symbol_html = "NO<sub>2</sub>"
 	//gas_symbol = "NO2"
 
-/datum/gas/nitricoxide
+/datum/reagent/gas/nitricoxide
 	id = "nitric oxide"
 	name = "Nitric Oxide"
 	specific_heat = 10
@@ -271,7 +271,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	//gas_symbol_html = "NO"
 	//gas_symbol = "NO"
 
-/datum/gas/methane
+/datum/reagent/gas/methane
 	id = "methane"
 	name = "Methane"
 	specific_heat = 30
@@ -280,7 +280,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	//gas_symbol_html = "CH<sub>4</sub>"
 	//gas_symbol = "CH4"
 
-/datum/gas/argon
+/datum/reagent/gas/argon
 	id = "argon"
 	name = "Argon"
 	//lore_text = "Just when you need it, all of your supplies argon."
@@ -291,7 +291,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	//value = 0.25
 
 // If narcosis is ever simulated, krypton has a narcotic potency seven times greater than regular airmix.
-/datum/gas/krypton
+/datum/reagent/gas/krypton
 	id = "krypton"
 	name = "Krypton"
 	specific_heat = 5
@@ -300,7 +300,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	//gas_symbol = "Kr"
 	//value = 0.25
 
-/datum/gas/neon
+/datum/reagent/gas/neon
 	id = "neon"
 	name = "Neon"
 	specific_heat = 20
@@ -309,7 +309,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	//gas_symbol = "Ne"
 	//value = 0.25
 
-/datum/gas/ammonia
+/datum/reagent/gas/ammonia
 	id = "Ammonia"
 	name = "ammonia"
 	specific_heat = 20
@@ -324,7 +324,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	//metabolism = REM * 0.5
 	//overdose = 5
 
-/datum/gas/xenon
+/datum/reagent/gas/xenon
 	id = "Xenon"
 	name = "xenon"
 	specific_heat = 3
@@ -333,7 +333,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	//gas_symbol = "Xe"
 	//value = 0.25
 
-/datum/gas/chlorine
+/datum/reagent/gas/chlorine
 	id = "chlorine"
 	name = "Chlorine"
 	//color = "#c5f72d"
@@ -349,7 +349,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	heating_products = null
 	toxicity = 15*/
 
-/datum/gas/sulfur_dioxide
+/datum/reagent/gas/sulfur_dioxide
 	id = "sulfur dioxide"
 	name = "Sulfur Dioxide"
 	specific_heat = 30
@@ -361,7 +361,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 		/decl/material/gas/oxygen = 0.5
 	)*/
 
-/datum/gas/hydrogen
+/datum/reagent/gas/hydrogen
 	id = "hydrogen"
 	name = "Hydrogen"
 	//lore_text = "A colorless, flammable gas."
@@ -379,7 +379,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	)
 	value = 0.4*/
 
-/datum/gas/hydrogen/tritium
+/datum/reagent/gas/hydrogen/tritium
 	id = "tritium"
 	name = "Tritium"
 	/*lore_text = "A radioactive isotope of hydrogen. Useful as a fusion reactor fuel material."
@@ -390,7 +390,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	gas_symbol_html = "T"
 	gas_symbol = "T"*/
 
-/datum/gas/hydrogen/deuterium
+/datum/reagent/gas/hydrogen/deuterium
 	id = "Deuterium"
 	name = "Deuterium"
 	/*lore_text = "One of the two stable isotopes of hydrogen; also known as heavy hydrogen. Useful as a chemically synthesised fusion reactor fuel material."
@@ -412,7 +412,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	neutron_cross_section = 3*/
 
 //Special gas type that are very powerful and shouldnt be avaiable in large portions
-/datum/gas/vimur
+/datum/reagent/gas/vimur
 	id = "vimur"
 	name = "Vimur"
 	specific_heat = 500	// J/(mol*K) //250% the heat capacity of phoron

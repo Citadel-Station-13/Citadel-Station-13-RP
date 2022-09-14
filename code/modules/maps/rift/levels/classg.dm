@@ -1,8 +1,8 @@
 /datum/atmosphere/planet/classg
 	base_gases = list(
-	/datum/gas/oxygen = 10,
-	/datum/gas/nitrogen = 10,
-	/datum/gas/phoron = 80
+	/datum/reagent/gas/oxygen = 10,
+	/datum/reagent/gas/nitrogen = 10,
+	/datum/reagent/gas/phoron = 80
 	)
 	base_target_pressure = 110.1
 	minimum_pressure = 110.1

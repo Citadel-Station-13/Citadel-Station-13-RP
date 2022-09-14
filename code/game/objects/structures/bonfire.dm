@@ -150,7 +150,7 @@
 
 /obj/structure/bonfire/proc/check_oxygen()
 	var/datum/gas_mixture/G = loc.return_air()
-	if(G.gas[/datum/gas/oxygen] < 1)
+	if(G.gas[/datum/reagent/gas/oxygen] < 1)
 		return FALSE
 	return TRUE
 
@@ -333,7 +333,7 @@
 
 /obj/structure/fireplace/proc/check_oxygen()
 	var/datum/gas_mixture/G = loc.return_air()
-	if(G.gas[/datum/gas/oxygen] < 1)
+	if(G.gas[/datum/reagent/gas/oxygen] < 1)
 		return FALSE
 	return TRUE
 

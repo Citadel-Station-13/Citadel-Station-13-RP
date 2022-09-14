@@ -138,7 +138,7 @@
 
 /obj/item/tank/vimur/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/vimur, (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
+	src.air_contents.adjust_gas(/datum/reagent/gas/vimur, (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 	return .
 
 /obj/item/engineering_voucher

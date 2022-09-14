@@ -41,9 +41,9 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/xenochimera)
 	rarity_value = 4
 
-	breath_type = /datum/gas/oxygen
-	poison_type = /datum/gas/phoron
-	exhale_type = /datum/gas/carbon_dioxide
+	breath_type = /datum/reagent/gas/oxygen
+	poison_type = /datum/reagent/gas/phoron
+	exhale_type = /datum/reagent/gas/carbon_dioxide
 
 	hazard_high_pressure  = HAZARD_HIGH_PRESSURE
 	warning_high_pressure = WARNING_HIGH_PRESSURE
@@ -461,10 +461,10 @@
 	set category = "Chimera"
 
 	var/list/gas_choices = list(
-		"oxygen" = /datum/gas/oxygen,
-		"phoron" = /datum/gas/phoron,
-		"nitrogen" = /datum/gas/nitrogen,
-		"carbon dioxide" = /datum/gas/carbon_dioxide
+		"oxygen" = /datum/reagent/gas/oxygen,
+		"phoron" = /datum/reagent/gas/phoron,
+		"nitrogen" = /datum/reagent/gas/nitrogen,
+		"carbon dioxide" = /datum/reagent/gas/carbon_dioxide
 	)
 	var/choice
 	if(target && target != src)
@@ -483,20 +483,20 @@
 		target.visible_message("<span class = 'danger'>[src] begins to burrow their digits into [target], slithering down their throat!</span>", "<span class = 'warning'>You feel an extremely uncomfortable slithering sensation going through your throat and into your chest...</span>")
 	if(do_after(src,15 SECONDS))
 		switch(resp_biomorph)
-			if(/datum/gas/oxygen)
-				target.species.breath_type = /datum/gas/oxygen
-				target.species.poison_type = /datum/gas/phoron
-				target.species.exhale_type = /datum/gas/carbon_dioxide
-			if(/datum/gas/phoron)
-				target.species.breath_type = /datum/gas/phoron
+			if(/datum/reagent/gas/oxygen)
+				target.species.breath_type = /datum/reagent/gas/oxygen
+				target.species.poison_type = /datum/reagent/gas/phoron
+				target.species.exhale_type = /datum/reagent/gas/carbon_dioxide
+			if(/datum/reagent/gas/phoron)
+				target.species.breath_type = /datum/reagent/gas/phoron
 				target.species.poison_type = null
-				target.species.exhale_type = /datum/gas/nitrogen
-			if(/datum/gas/nitrogen)
-				target.species.breath_type = /datum/gas/nitrogen
+				target.species.exhale_type = /datum/reagent/gas/nitrogen
+			if(/datum/reagent/gas/nitrogen)
+				target.species.breath_type = /datum/reagent/gas/nitrogen
 				target.species.poison_type = null
-			if(/datum/gas/carbon_dioxide)
-				target.species.breath_type = /datum/gas/carbon_dioxide
-				target.species.exhale_type = /datum/gas/oxygen
+			if(/datum/reagent/gas/carbon_dioxide)
+				target.species.breath_type = /datum/reagent/gas/carbon_dioxide
+				target.species.exhale_type = /datum/reagent/gas/oxygen
 		if(target == src)
 			to_chat("<span class = 'Notice'>It is done.</span>")
 		else
