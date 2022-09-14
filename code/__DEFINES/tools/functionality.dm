@@ -21,3 +21,7 @@
 #define TOOL_BLOW			"blowing_rod"
 #define TOOL_GLASS_CUT		"glasskit"
 #define TOOL_BONESET		"bonesetter"
+
+//! Tool usage flags
+
+//? None yet! Waiting on skill-system design.

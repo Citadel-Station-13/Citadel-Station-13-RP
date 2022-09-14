@@ -9,6 +9,10 @@
 #define TOOL_OP_NO_STANDARD_AUDIO		(1<<3)
 /// bypass delay
 #define TOOL_OP_INSTANT					(1<<4)
+/// initiated through dynamic tool system
+#define TOOL_OP_DYNAMIC					(1<<5)
+/// initiated through auto-use-tool system
+#define TOOL_OP_AUTOPILOT				(1<<6)
 /// silent - do not give audible or visual feedbcak
 #define TOOL_OP_SILENT					(TOOL_OP_NO_AUDIO | TOOL_OP_NO_MESSAGE)
 /// do not do standard feedback
