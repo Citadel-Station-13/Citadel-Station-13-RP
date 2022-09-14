@@ -75,7 +75,15 @@
 					continue
 				possibliities -= i
 		// everything in possibilities is valid for the tool
-		#warn radial
+		#warn radial to determine function
+		// determine hint
+		var/list/hints = possibilities[function]
+		if(!length(hints))
+			// none, just go
+			return _dynamic_tool_act(I, user, function)
+		#warn radial to determine hint
+		// use hint
+		return _dynamic_tool_act(I, user, function, hint = hint)
 	else
 		// in the future, we might have situations where clicking something with an empty hand
 		// yet having organs that server as built-in tools can do something with
@@ -159,6 +167,13 @@
 /atom/proc/dynamic_tool_functions(obj/item/I, mob/user)
 	return list()
 
+/atom/proc/_dynamic_tool_act(obj/item/I, mob/user, function, flags, hint)
+	PRIVATE_PROC(TRUE)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	flags |= TOOL_OP_DYNAMIC
+	SEND_SIGNAL(src, COMSIG_ATOM_TOOL_ACT, I, user, function, flags, hint)
+	return dynamic_tool_act(I, uesr, function, flags, hint)
+
 /**
  * called when we are acted on by the dynamic tool system
  * defualt behaviour: just call tool_act
@@ -170,9 +185,10 @@
  * - user - the user, if any
  * - function - the tool behaviour used
  * - flags - tool operation flags
+ * - hint - the hint of what operation to do
  */
-/atom/proc/dynamic_tool_act(obj/item/I, mob/user, function, flags)
-	return tool_act(I, user, function, flags)
+/atom/proc/dynamic_tool_act(obj/item/I, mob/user, function, flags, hint)
+	return tool_act(I, user, function, flags, hint)
 
 /**
  * builds the image used for the radial icon
