@@ -379,6 +379,48 @@
 			pref.b_ears3 = hex2num(copytext(new_earc3, 6, 8))
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
+	else if(href_list["horn_style"])
+		// Construct the list of names allowed for this user.
+		var/list/pretty_horn_styles = list("Normal" = null)
+		for(var/path in horn_styles_list)
+			var/datum/sprite_accessory/horns/instance = horn_styles_list[path]
+			if(((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (pref.species in instance.species_allowed)))
+				pretty_horn_styles[instance.name] = path
+
+		// Present choice to user
+		var/new_horn_style = input(user, "Pick horns", "Character Preference", pref.horn_style) as null|anything in pretty_horn_styles
+		if(new_horn_style)
+			pref.horn_style = pretty_horn_styles[new_horn_style]
+
+		return TOPIC_REFRESH_UPDATE_PREVIEW
+
+	else if(href_list["horn_color"])
+		var/new_hornc = input(user, "Choose your character's horn colour:", "Character Preference",
+			rgb(pref.r_horn, pref.g_horn, pref.b_horn)) as color|null
+		if(new_hornc)
+			pref.r_horn = hex2num(copytext(new_hornc, 2, 4))
+			pref.g_horn = hex2num(copytext(new_hornc, 4, 6))
+			pref.b_horn = hex2num(copytext(new_hornc, 6, 8))
+			return TOPIC_REFRESH_UPDATE_PREVIEW
+
+	else if(href_list["horn_color2"])
+		var/new_hornc2 = input(user, "Choose your character's secondary horn colour:", "Character Preference",
+			rgb(pref.r_horn2, pref.g_horn2, pref.b_horn2)) as color|null
+		if(new_hornc2)
+			pref.r_horn2 = hex2num(copytext(new_hornc2, 2, 4))
+			pref.g_horn2 = hex2num(copytext(new_hornc2, 4, 6))
+			pref.b_horn2 = hex2num(copytext(new_hornc2, 6, 8))
+			return TOPIC_REFRESH_UPDATE_PREVIEW
+
+	else if(href_list["horn_color3"])
+		var/new_hornc3 = input(user, "Choose your character's tertiary horn colour:", "Character Preference",
+			rgb(pref.r_horn3, pref.g_horn3, pref.b_horn3)) as color|null
+		if(new_hornc3)
+			pref.r_horn3 = hex2num(copytext(new_hornc3, 2, 4))
+			pref.g_horn3 = hex2num(copytext(new_hornc3, 4, 6))
+			pref.b_horn3 = hex2num(copytext(new_hornc3, 6, 8))
+			return TOPIC_REFRESH_UPDATE_PREVIEW
+
 	else if(href_list["tail_style"])
 		// Construct the list of names allowed for this user.
 		var/list/pretty_tail_styles = list("Normal" = null)

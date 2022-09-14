@@ -359,6 +359,7 @@
 	if(data["change_hair"])
 		data["hair_style"] = target.h_style
 		data["ear_style"] = target.ear_style
+		data["horn_style"] = target.horn_style
 		data["tail_style"] = target.tail_style
 		data["wing_style"] = target.wing_style
 

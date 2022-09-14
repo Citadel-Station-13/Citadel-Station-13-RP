@@ -263,7 +263,7 @@ GLOBAL_LIST_EMPTY(mannequins)
 	paths = typesof(/datum/sprite_accessory/horns) - /datum/sprite_accessory/horns
 	for(var/path in paths)
 		var/datum/sprite_accessory/horns/instance = new path()
-		ear_styles_list[path] = instance
+		horn_styles_list[path] = instance
 
 	// Custom species traits
 	paths = typesof(/datum/trait) - /datum/trait - /datum/trait/negative - /datum/trait/neutral - /datum/trait/positive
