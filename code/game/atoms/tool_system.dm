@@ -96,7 +96,7 @@
 	PRIVATE_PROC(TRUE)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_TOOL_ACT, I, user, function, flags, hint)
-	return tool_act(I, uesr, function, flags, hint)
+	return tool_act(I, user, function, flags, hint)
 
 /**
  * primary proc to be used when calling an interaction with a tool with an atom
@@ -172,7 +172,7 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	flags |= TOOL_OP_DYNAMIC
 	SEND_SIGNAL(src, COMSIG_ATOM_TOOL_ACT, I, user, function, flags, hint)
-	return dynamic_tool_act(I, uesr, function, flags, hint)
+	return dynamic_tool_act(I, user, function, flags, hint)
 
 /**
  * called when we are acted on by the dynamic tool system
