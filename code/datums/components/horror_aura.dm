@@ -31,9 +31,9 @@ It also serves the purposes of portraying the Lore accurate effect of "Acausal L
 	return ..()
 
 /datum/component/horror_aura/weak
-	var/radius = 2
-	var/emp_radius = 2
+	radius = 2
+	emp_radius = 2
 
 /datum/component/horror_aura/strong
-	var/radius = 7
-	var/emp_radius = 4
+	radius = 7
+	emp_radius = 4
