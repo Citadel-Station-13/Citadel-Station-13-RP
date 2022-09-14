@@ -4,14 +4,15 @@ It also serves the purposes of portraying the Lore accurate effect of "Acausal L
 */
 
 /datum/component/horror_aura
-	var/radius = 7
-	var/emp_radius = 4
+	var/radius = 5
+	var/emp_radius = 3
 
-/datum/component/horror_aura/Initialize(var/atom/movable/AM, radius)
-	src.radius = radius
+/datum/component/horror_aura/Initialize(radius)
+	if(radius)
+		src.radius = radius
 	if(. & COMPONENT_INCOMPATIBLE)
 		return
-	else if(!istype(AM))
+	else if(!istype(parent))
 		return COMPONENT_INCOMPATIBLE
 	else
 		START_PROCESSING(SSobj, src)
@@ -20,8 +21,19 @@ It also serves the purposes of portraying the Lore accurate effect of "Acausal L
 	aura_effect()
 
 /datum/component/horror_aura/proc/aura_effect()
-	var/atom/movable/AM = parent
-	for(var/mob/living/carbon/human/H in view(radius))
+	for(var/mob/living/carbon/human/H in range(radius, parent))
 		if(!iscultist(H) && !istype(H.head, /obj/item/clothing/head/helmet/para))
-			H.hallucination = max(10 SECONDS)
-		AM.emp_act(emp_radius)
+			H.hallucination += rand(25,50)
+	empulse(src, 0, 0, 3, 0)
+
+/datum/component/horror_aura/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+
+/datum/component/horror_aura/weak
+	var/radius = 2
+	var/emp_radius = 2
+
+/datum/component/horror_aura/strong
+	var/radius = 7
+	var/emp_radius = 4
