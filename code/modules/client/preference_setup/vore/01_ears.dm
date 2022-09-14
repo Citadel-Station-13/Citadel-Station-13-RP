@@ -16,6 +16,16 @@
 	var/r_ears3 = 30 // Ear tertiary color.
 	var/g_ears3 = 30 // Ear tertiary color
 	var/b_ears3 = 30 // Ear tertiary color
+	var/horn_style    // Type of selected horn style
+	var/r_horn = 30  // Horn color.
+	var/g_horn = 30  // Horn color
+	var/b_horn = 30  // Horn color
+	var/r_horn2 = 30 // Horn extra color.
+	var/g_horn2 = 30 // Horn extra color
+	var/b_horn2 = 30 // Horn extra color
+	var/r_horn3 = 30 // Horn tertiary color.
+	var/g_horn3 = 30 // Horn tertiary color
+	var/b_horn3 = 30 // Horn tertiary color
 	var/tail_style   // Type of selected tail style
 	var/r_tail = 30  // Tail/Taur color
 	var/g_tail = 30  // Tail/Taur color
@@ -56,6 +66,16 @@
 	S["r_ears3"]		>> pref.r_ears3
 	S["g_ears3"]		>> pref.g_ears3
 	S["b_ears3"]		>> pref.b_ears3
+	S["horn_style"]		>> pref.horn_style
+	S["r_horn"]			>> pref.r_horn
+	S["g_horn"]			>> pref.g_horn
+	S["b_horn"]			>> pref.b_horn
+	S["r_horn2"]		>> pref.r_horn2
+	S["g_horn2"]		>> pref.g_horn2
+	S["b_horn2"]		>> pref.b_horn2
+	S["r_horn3"]		>> pref.r_horn3
+	S["g_horn3"]		>> pref.g_horn3
+	S["b_horn3"]		>> pref.b_horn3
 	S["tail_style"]		>> pref.tail_style
 	S["r_tail"]			>> pref.r_tail
 	S["g_tail"]			>> pref.g_tail
@@ -91,6 +111,16 @@
 	S["r_ears3"]		<< pref.r_ears3
 	S["g_ears3"]		<< pref.g_ears3
 	S["b_ears3"]		<< pref.b_ears3
+	S["horn_style"]		<< pref.horn_style
+	S["r_horn"]			<< pref.r_horn
+	S["g_horn"]			<< pref.g_horn
+	S["b_horn"]			<< pref.b_horn
+	S["r_horn2"]		<< pref.r_horn2
+	S["g_horn2"]		<< pref.g_horn2
+	S["b_horn2"]		<< pref.b_horn2
+	S["r_horn3"]		<< pref.r_horn3
+	S["g_horn3"]		<< pref.g_horn3
+	S["b_horn3"]		<< pref.b_horn3
 	S["tail_style"]		<< pref.tail_style
 	S["r_tail"]			<< pref.r_tail
 	S["g_tail"]			<< pref.g_tail
@@ -125,6 +155,15 @@
 	pref.r_ears3	= sanitize_integer(pref.r_ears3, 0, 255, initial(pref.r_ears3))
 	pref.g_ears3	= sanitize_integer(pref.g_ears3, 0, 255, initial(pref.g_ears3))
 	pref.b_ears3	= sanitize_integer(pref.b_ears3, 0, 255, initial(pref.b_ears3))
+	pref.r_horn		= sanitize_integer(pref.r_horn, 0, 255, initial(pref.r_horn))
+	pref.g_horn		= sanitize_integer(pref.g_horn, 0, 255, initial(pref.g_horn))
+	pref.b_horn		= sanitize_integer(pref.b_horn, 0, 255, initial(pref.b_horn))
+	pref.r_horn2	= sanitize_integer(pref.r_horn2, 0, 255, initial(pref.r_horn2))
+	pref.g_horn2	= sanitize_integer(pref.g_horn2, 0, 255, initial(pref.g_horn2))
+	pref.b_horn2	= sanitize_integer(pref.b_horn2, 0, 255, initial(pref.b_horn2))
+	pref.r_horn3	= sanitize_integer(pref.r_horn3, 0, 255, initial(pref.r_horn3))
+	pref.g_horn3	= sanitize_integer(pref.g_horn3, 0, 255, initial(pref.g_horn3))
+	pref.b_horn3	= sanitize_integer(pref.b_horn3, 0, 255, initial(pref.b_horn3))
 	pref.r_tail		= sanitize_integer(pref.r_tail, 0, 255, initial(pref.r_tail))
 	pref.g_tail		= sanitize_integer(pref.g_tail, 0, 255, initial(pref.g_tail))
 	pref.b_tail		= sanitize_integer(pref.b_tail, 0, 255, initial(pref.b_tail))
@@ -152,6 +191,11 @@
 		var/datum/sprite_accessory/temp_ear_style = ear_styles_list[pref.ear_style]
 		if(temp_ear_style.apply_restrictions && (!(pref.species in temp_ear_style.species_allowed)))
 			pref.ear_style = initial(pref.ear_style)
+	if(pref.horn_style)
+		pref.horn_style	= sanitize_inlist(pref.horn_style, horn_styles_list, initial(pref.horn_style))
+		var/datum/sprite_accessory/temp_horn_style = horn_styles_list[pref.horn_style]
+		if(temp_horn_style.apply_restrictions && (!(pref.species in temp_horn_style.species_allowed)))
+			pref.horn_style = initial(pref.horn_style)
 	if(pref.tail_style)
 		pref.tail_style	= sanitize_inlist(pref.tail_style, tail_styles_list, initial(pref.tail_style))
 		var/datum/sprite_accessory/temp_tail_style = tail_styles_list[pref.tail_style]
@@ -174,6 +218,16 @@
 	character.r_ears3			= pref.r_ears3
 	character.b_ears3			= pref.b_ears3
 	character.g_ears3			= pref.g_ears3
+	character.horn_style		= horn_styles_list[pref.horn_style]
+	character.r_horn			= pref.r_horn
+	character.b_horn			= pref.b_horn
+	character.g_horn			= pref.g_horn
+	character.r_horn2			= pref.r_horn2
+	character.b_horn2			= pref.b_horn2
+	character.g_horn2			= pref.g_horn2
+	character.r_horn3			= pref.r_horn3
+	character.b_horn3			= pref.b_horn3
+	character.g_horn3			= pref.g_horn3
 	character.tail_style		= tail_styles_list[pref.tail_style]
 	character.r_tail			= pref.r_tail
 	character.b_tail			= pref.b_tail
@@ -220,6 +274,24 @@
 			. += "<a href='?src=\ref[src];ear_color2=1'>Change Secondary Color</a> <font face='fixedsys' size='3' color='#[num2hex(pref.r_ears2, 2)][num2hex(pref.g_ears2, 2)][num2hex(pref.b_ears2, 2)]'><table style='display:inline;' bgcolor='#[num2hex(pref.r_ears2, 2)][num2hex(pref.g_ears2, 2)][num2hex(pref.b_ears2, 2)]'><tr><td>__</td></tr></table> </font><br>"
 		if(ear.extra_overlay2)
 			. += "<a href='?src=\ref[src];ear_color3=1'>Change Tertiary Color</a> [color_square(pref.r_ears3, pref.g_ears3, pref.b_ears3)]<br>"
+
+	var/horn_display = "Normal"
+	if(pref.horn_style && (pref.horn_style in horn_styles_list))
+		var/datum/sprite_accessory/horns/instance = horn_styles_list[pref.horn_style]
+		horn_display = instance.name
+
+	else if(pref.horn_style)
+		horn_display = "REQUIRES UPDATE"
+	. += "<b>Horns</b><br>"
+	. += " Style: <a href='?src=\ref[src];horn_style=1'>[horn_display]</a><br>"
+	if(horn_styles_list[pref.horn_style])
+		var/datum/sprite_accessory/horns/horn = horn_styles_list[pref.horn_style]
+		if(horn.do_colouration)
+			. += "<a href='?src=\ref[src];horn_color=1'>Change Color</a> <font face='fixedsys' size='3' color='#[num2hex(pref.r_horn, 2)][num2hex(pref.g_horn, 2)][num2hex(pref.b_horn, 2)]'><table style='display:inline;' bgcolor='#[num2hex(pref.r_horn, 2)][num2hex(pref.g_horn, 2)][num2hex(pref.b_horn, 2)]'><tr><td>__</td></tr></table> </font><br>"
+		if(horn.extra_overlay)
+			. += "<a href='?src=\ref[src];horn_color2=1'>Change Secondary Color</a> <font face='fixedsys' size='3' color='#[num2hex(pref.r_horn2, 2)][num2hex(pref.g_horn2, 2)][num2hex(pref.b_horn2, 2)]'><table style='display:inline;' bgcolor='#[num2hex(pref.r_horn2, 2)][num2hex(pref.g_horn2, 2)][num2hex(pref.b_horn, 2)]'><tr><td>__</td></tr></table> </font><br>"
+		if(horn.extra_overlay2)
+			. += "<a href='?src=\ref[src];horn_color3=1'>Change Tertiary Color</a> [color_square(pref.r_horn3, pref.g_horn3, pref.b_horn3)]<br>"
 
 	var/tail_display = "Normal"
 	if(pref.tail_style && (pref.tail_style in tail_styles_list))
