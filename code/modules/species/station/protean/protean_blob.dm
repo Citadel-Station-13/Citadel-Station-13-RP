@@ -54,8 +54,6 @@
 	player_msg = "In this form, you can move a little faster and your health will regenerate as long as you have metal in you!"
 	holder_type = /obj/item/holder/protoblob
 
-	#warn riding datum
-
 /datum/say_list/protean_blob
 	speak = list("Blrb?","Sqrsh.","Glrsh!")
 	emote_hear = list("squishes softly","spluts quietly","makes wet noises")
@@ -459,13 +457,10 @@
 		return
 	if(blob.loc == /obj/item/rig/protean)
 		return
-	if(buckled)
-		buckled.unbuckle_mob()
-	if(LAZYLEN(buckled_mobs))
-		for(var/buckledmob in buckled_mobs)
-			riding_datum.force_dismount(buckledmob)
-	if(pulledby)
-		pulledby.stop_pulling()
+
+	buckled?.unbuckle_mob(src, BUCKLE_OP_FORCE)
+	unbuckle_all_mobs(BUCKLE_OP_FORCE)
+	pulledby?.stop_pulling()
 	stop_pulling()
 
 	var/panel_selected = blob.client?.statpanel == SPECIES_PROTEAN

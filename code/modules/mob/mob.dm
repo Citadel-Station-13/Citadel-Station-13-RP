@@ -28,7 +28,10 @@
 		AA.onNewMob(src)
 	init_rendering()
 	hook_vr("mob_new",list(src))
-	update_transform() // Some mobs may start bigger or smaller than normal.
+	// resize
+	update_transform()
+	// offset
+	reset_pixel_offsets()
 	. = ..()
 	update_config_movespeed()
 	update_movespeed(TRUE)
@@ -1194,7 +1197,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
   * @params
   * * lying : The degrees we're turned to while lying down or resting for any reason.
   */
-/mob/living/proc/get_standard_pixel_x_offset(lying = 0)
+/mob/proc/get_standard_pixel_x_offset(lying = 0)
 	return default_pixel_x
 
 /**
@@ -1203,12 +1206,12 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
   * @params
   * * lying : The degrees we're turned to while lying down or resting for any reason.
   */
-/mob/living/proc/get_standard_pixel_y_offset(lying = 0)
+/mob/proc/get_standard_pixel_y_offset(lying = 0)
 	return default_pixel_y
 
 /**
  * resets our pixel offsets to default
  */
-/mob/living/proc/reset_pixel_offsets()
+/mob/proc/reset_pixel_offsets()
 	pixel_X = get_standard_pixel_x_offset(lying)
 	pixel_y = get_standard_pixel_y_offset(lying)

@@ -13,7 +13,9 @@
 
 #warn we can't perfectly do this yet so add a hook that changes buckle_lying on the mob
 
+#warn let anyone climb onto taurs with a delay
 
+#warn how to push peopl eoff?
 
 ///////Yes, I said humans. No, this won't end well...//////////
 /datum/component/riding_handler/human

@@ -44,7 +44,6 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 	ASSERT(!ishuman(src))
 	var/matrix/M = matrix()
 	M.Scale(size_multiplier * icon_scale_x, size_multiplier * icon_scale_y)
-	M.Translate(0, 16*(size_multiplier-1))
 	src.transform = M
 
 /**
@@ -460,3 +459,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 #undef STEP_TEXT_OWNER
 #undef STEP_TEXT_PREY
+
+/mob/living/get_standard_pixel_y_offset(lying)
+	. = ..()
+	. += (size_multiplier - 1) * 16

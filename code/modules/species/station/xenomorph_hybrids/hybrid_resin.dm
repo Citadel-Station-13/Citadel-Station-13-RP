@@ -82,7 +82,7 @@
 /obj/structure/bed/hybrid_nest/update_icon()
 	return
 
-/obj/structure/bed/hybrid_nest/user_unbuckle_mob(mob/living/buckled_mob, mob/user)
+/obj/structure/bed/hybrid_nest/_user_unbuckle_mob(mob/living/buckled_mob, mob/user)
 	if(buckled_mob)
 		if(buckled_mob.buckled == src)
 			if(buckled_mob != user)

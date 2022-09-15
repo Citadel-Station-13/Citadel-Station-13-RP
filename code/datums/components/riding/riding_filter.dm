@@ -114,6 +114,7 @@
  * overrides atom opinion.
  */
 /datum/component/riding_filter/proc/check_mount_attempt(mob/M, buckle_flags, mob/user, semantic)
+	#warn ridden offhand creation in mob? how to deal with that?
 	if(offhands_needed_rider)
 		var/list/obj/item/offhand/riding/created = list()
 		for(var/i in (offhand_requirements_are_rigid? offhands_needed_rider : (min(M.get_number_of_hands(), offhands_needed_rider))))
