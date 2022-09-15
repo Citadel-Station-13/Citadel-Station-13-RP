@@ -157,6 +157,7 @@
  *
  * @params
  * - function - tool function enum; if null, defaults to static tool behavior
+ * - hint - hint of what we're doing
  * - flags - tool operation flags
  * - user - person using tool, if any
  * - target - atom tool being used on, if any
@@ -164,13 +165,14 @@
  * - msg - what to show to everyone around target
  * - self_msg - what to show to user
  */
-/obj/item/proc/standard_tool_feedback_start(function, flags, mob/user, atom/target, time, msg, self_msg, cost)
+/obj/item/proc/standard_tool_feedback_start(function, hint, flags, mob/user, atom/target, time, msg, self_msg)
 
 /**
  * standard feedback for ending a tool usage
  *
  * @params
  * - function - tool function enum; if null, defaults to static tool behavior
+ * - hint - hint of what we're doing
  * - flags - tool operation flags
  * - user - person using tool, if any
  * - target - atom tool being used on, if any
@@ -179,20 +181,21 @@
  * - msg - what to show to everyone around target
  * - self_msg - what to show to user
  */
-/obj/item/proc/standard_tool_feedback_end(function, flags, mob/user, atom/target, time, success, msg, self_msg)
+/obj/item/proc/standard_tool_feedback_end(function, hint, flags, mob/user, atom/target, time, success, msg, self_msg)
 
 /**
  * gets sound to play on tool usage
  *
  * @params
  * - function - tool function enum; if null, defaults to static tool behavior
+ * - hint - hint of what we're doing
  * - flags - tool operation flags
  * - user - person using tool, if any
  * - target - atom tool being used on, if any
  * - time - duration of the action in deciseconds
  * - success - did we finish successfully?
  */
-/obj/item/proc/tool_sound(function, flags, mob/user, atom/target, time, success)
+/obj/item/proc/tool_sound(function, hint, flags, mob/user, atom/target, time, success)
 	if((function == tool_behaviour) && tool_sound)
 		return tool_sound
 	// return default
@@ -207,6 +210,7 @@
 			return 'sound/items/Welder2.ogg'
 		if(TOOL_WRENCH)
 			return 'sound/items/ratchet.ogg'
+
 #warn ughh
 
 
