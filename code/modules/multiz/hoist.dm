@@ -80,6 +80,7 @@
 	source_hoist.release_hoistee()
 
 // This will handle mobs unbuckling themselves.
+#warn a
 /obj/effect/hoist_hook/unbuckle_mob()
 	. = ..()
 	if (. && !QDELETED(source_hoist))

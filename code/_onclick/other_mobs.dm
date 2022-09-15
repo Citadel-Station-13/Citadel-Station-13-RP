@@ -2,6 +2,8 @@
 /atom/proc/attack_generic(mob/user as mob)
 	return 0
 
+/atom/proc/attack_alien(mob/user)
+
 /atom/proc/take_damage(var/damage)
 	return 0
 

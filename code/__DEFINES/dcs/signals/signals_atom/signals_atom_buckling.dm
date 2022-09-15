@@ -10,6 +10,7 @@
 /// called on the mob that just got unbuckled: (mob, flags, user, semantic)
 #define COMSIG_MOB_UNBUCKLED				"unbuckled"
 
+//! For the below, component_block/force_buckle_operation works to varying degrees on varying procs.
 /// called during mob buckling: (mob, flags, user, semantic)
 #define COMSIG_MOVABLE_PRE_BUCKLE_MOB		"pre_buckle_mob"
 /// called during can buckle mob: (mob, flags, user, semantic)

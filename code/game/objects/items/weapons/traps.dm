@@ -62,6 +62,7 @@
 	anchored = TRUE
 	update_icon()
 
+#warn a
 /obj/item/beartrap/user_unbuckle_mob(mob/living/buckled_mob, mob/user)
 	if(user == buckled_mob)
 		user.visible_message(SPAN_WARNING("[user] begins carefully pulling themselves free of [src]!"))
@@ -75,6 +76,7 @@
 		user.visible_message(SPAN_WARNING("[user] frees [buckled_mob] from [src]!"))
 	return ..()
 
+#warn a
 /obj/item/beartrap/unbuckle_mob()
 	. = ..()
 	if(!LAZYLEN(buckled_mobs))

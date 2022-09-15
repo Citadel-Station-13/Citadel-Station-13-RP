@@ -229,6 +229,8 @@
 	. = SEND_SIGNAL(src, COMSIG_MOVABLE_USER_BUCKLE_MOB, M, flags, user, semantic)
 	if(. & COMPONENT_BLOCK_BUCKLE_OPERATION)
 		return FALSE
+	if((buckle_flags & BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF) && (user == M))
+		return FALSE
 	return buckle_mob(M, flags, user, semantic)
 
 /**
@@ -239,13 +241,23 @@
  */
 /atom/movable/proc/buckle_mob(mob/M, flags, mob/user, semantic)
 	SHOULD_CALL_PARENT(TRUE)
-	#warn impl and check overrides
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_BUCKLE_MOB, M, flags, user, semantic) & COMPONENT_BLOCK_BUCKLE_OPERATION)
+		return FALSE
+
+	if(!can_buckle_mob(M, flags, user, semantic) && !(flags & BUCKLE_OP_FORCE))
+		return FALSE
+
+	if(M.buckled)
+		M.buckled.unbuckle_mob(M, BUCKLE_OP_FORCE)
+
+	return _buckle_mob(M, flags, user, semantic)
 
 /atom/movable/proc/_buckle_mob(mob/M, flags, mob/user, semantic)
 	PRIVATE_PROC(TRUE)
 	if(M.loc != loc)
 		M.forceMove(loc)
 	if(M.buckled)
+		. = FALSE
 		CRASH("M already buckled?")
 	M.buckled = src
 	buckled_mobs[M] = semantic
@@ -254,6 +266,7 @@
 	// todo: refactor the below
 	M.update_floating(M.Check_Dense_Object())
 	M.update_water()
+	return TRUE
 
 /**
  * called to unbuckle something from us
@@ -275,6 +288,7 @@
 	// todo: refactor the below
 	M.update_floating(M.Check_Dense_Object())
 	M.update_water()
+	return TRUE
 
 /**
  * can something buckle to us?
@@ -284,6 +298,11 @@
  */
 /atom/movable/proc/can_buckle_mob(mob/M, flags, mob/user, semantic)
 	SHOULD_CALL_PARENT(TRUE)
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_CAN_BUCKLE_MOB, M, flags, user, semantic) & COMPONENT_BLOCK_BUCKLE_OPERATION)
+		return FALSE
+	if(!(flags & BUCKLE_OP_IGNORE_LOC) && !M.Adjacent(src))
+		return FALSE
+	return TRUE
 
 /**
  * can something unbuckle from us?
@@ -293,18 +312,23 @@
  */
 /atom/movable/proc/can_unbuckle_mob(mob/M, flags, mob/user, semantic)
 	SHOULD_CALL_PARENT(TRUE)
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_CAN_UNBUCKLE_MOB, M, flags, user, semantic) & COMPONENT_BLOCK_BUCKLE_OPERATION)
+		return FALSE
+	return TRUE
 
 /**
  * called when something is buckled to us
  */
 /atom/movable/proc/mob_buckled(mob/M, flags, mob/user, semantic)
 	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_MOB_BUCKLED, M, flags, user, semantic)
 
 /**
  * called when something is unbuckled from us
  */
 /atom/movable/proc/mob_unbuckled(mob/M, flags, mob/user, semantic)
 	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_MOB_UNBUCKLED, M, flags, user, semantic)
 
 /**
  * called when a mob tries to resist out of being buckled to us
@@ -314,6 +338,8 @@
  */
 /atom/movable/proc/mob_resist_buckle(mob/M, semantic)
 	SHOULD_CALL_PARENT(TRUE)
+
+	#warn comsig
 
 #warn impl above
 

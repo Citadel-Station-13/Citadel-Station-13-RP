@@ -69,11 +69,13 @@
 	R.handle_ride(user, direction)
 	return ..()
 
+#warn a
 /obj/vehicle/ridden/user_buckle_mob(mob/living/M, mob/user, check_loc = TRUE)
 	if(!in_range(user, src) || !in_range(M, src))
 		return FALSE
 	. = ..(M, user, FALSE)
 
+#warn a
 /obj/vehicle/ridden/buckle_mob(mob/living/M, force = FALSE, check_loc = TRUE)
 	if(!force && occupant_amount() >= max_occupants)
 		return FALSE

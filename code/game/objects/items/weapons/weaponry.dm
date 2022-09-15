@@ -77,6 +77,7 @@
 				unbuckle_mob(occupant)
 				qdel(src)
 
+#warn a
 /obj/effect/energy_net/user_unbuckle_mob(mob/living/buckled_mob, mob/user)
 	user.setClickCooldown(user.get_attack_speed())
 	visible_message("<span class='danger'>[user] begins to tear at \the [src]!</span>")
