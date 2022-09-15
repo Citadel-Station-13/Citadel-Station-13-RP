@@ -66,6 +66,7 @@ What is the naming convention for planes or layers?
 #define OVER_OPENSPACE_PLANE	-57
 
 //Turf Planes
+// todo: kill these too because frankly, fuck off.
 ///Plating
 #define PLATING_PLANE			-44
 	///Under objects, even when planeswapped

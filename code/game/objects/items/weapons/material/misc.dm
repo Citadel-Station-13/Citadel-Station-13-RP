@@ -82,6 +82,12 @@
 /obj/item/material/minihoe/durasteel
 	default_material = "durasteel"
 
+/obj/item/material/minihoe/bone
+	name = "primitive mini hoe"
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "cultivator_bone"
+	default_material = "bone"
+
 /obj/item/material/snow/snowball
 	name = "loose packed snowball"
 	desc = "A fun snowball. Throw it at your friends!"

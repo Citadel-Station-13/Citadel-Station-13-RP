@@ -18,7 +18,7 @@ after the sprite has been set you can use it again to remove overlays that may h
 		if(path && state)
 			user.icon = icon(path)
 			user.icon_state = state
-			user.our_overlays = list()
+			user.cut_overlays()
 			if (state == "Queen Walking")
 				user.base_pixel_x = -16
 		else
