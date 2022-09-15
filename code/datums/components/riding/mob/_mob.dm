@@ -6,6 +6,12 @@
 /datum/component/riding_filter/mob
 	expected_typepath = /mob
 	handler_typepath = /datum/component/riding_handler/mob
+	offset_layer = list(	// by default, we're above only when facing south
+		0.01,
+		0.01,
+		-0.01,
+		0.01
+	)
 
 	/// base number of offhands required on us
 	var/offhands_needed_base = 0

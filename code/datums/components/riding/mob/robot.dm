@@ -4,6 +4,11 @@
 
 /datum/component/riding_handler/mob/robot
 	expected_typepath = /mob/living/silicon/robot
+	riding_handler_flags = CF_RIDING_HANDLER_EPHEMERAL
+	rider_check_flags = CF_RIDING_CHECK_INCAPACITATED
+
+/datum/component/riding_handler/mob/robot/ride_check(mob/M)
+	. = ..()
 
 
 

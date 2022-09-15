@@ -22,7 +22,12 @@
 	var/riding_handler_flags = CF_RIDING_HANDLER_ALLOW_BORDER
 
 	//! offsets - highly optimized, eat my ass if you can't handle it, we need high performance for /Move()s.
-	/// layer offset to set mobs to. list or single number. plane will always be set to vehicle's plane. if list, format is (north, east, south, west). lists can be nested to provide different offsets based on index.
+	/**
+	 * layer offset to set mobs to. list or single number. plane will always be set to vehicle's plane.
+	 * if list, format is (north, east, south, west).
+	 * lists can be nested to provide different offsets based on index.
+	 * it's recommended to use small, fractional numbers like 0.01 increments.
+	 */
 	var/list/offset_layer = 0
 	/// pixel offsets to set mobs to. list (x, y) OR list((x, y), (x, y), (x, y), (x, y)) for NESW OR list(list(NESW offsets of lists(x, y))) for positionals.
 	var/list/offset_pixel = list(0, 0)
@@ -74,6 +79,7 @@
 	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, .proc/signal_hook_handle_move)
 	RegisterSignal(parent, COMSIG_ATOM_DIR_CHANGE, .proc/signal_hook_handle_turn)
 	RegisterSignal(parent, COMSIG_ATOM_RELAYMOVE_FROM_BUCKLED, .proc/signal_hook_handle_relaymove)
+	RegisterSignal(parent, COMSIG_MOVABLE_PRE_BUCKLE_MOB, .proc/signal_hook_pre_buckle_mob)
 
 /datum/component/riding_handler/UnregisterFromParent()
 	. = ..()
@@ -82,7 +88,8 @@
 		COMSIG_MOVABLE_MOB_UNBUCKLED,
 		COMSIG_MOVABLE_MOVED,
 		COMSIG_ATOM_DIR_CHANGE,
-		COMSIG_ATOM_RELAYMOVE_FROM_BUCKLED
+		COMSIG_ATOM_RELAYMOVE_FROM_BUCKLED,
+		COMSIG_MOVABLE_PRE_BUCKLE_MOB
 	))
 
 /datum/component/riding_handler/proc/signal_hook_mob_buckled(atom/movable/source, mob/M, buckle_flags, mob/user, semantic)
@@ -103,6 +110,11 @@
 	SIGNAL_HANDLER
 	update_vehicle_on_turn(new_dir)
 	update_riders_on_turn(new_dir)
+
+/datum/component/riding_handler/proc/signal_hook_pre_buckle_mob(atom/movable/source, mob/M, flags, mob/user, semantic)
+	SIGNAL_HANDLER
+	if(!check_rider(M, semantic, TRUE, user = user))
+		return COMPONENT_BLOCK_BUCKLE_OPERATION
 
 /datum/component/riding_handler/proc/update_vehicle_on_turn(dir)
 	if(!offset_vehicle)
@@ -162,7 +174,7 @@
 /datum/component/riding_handler/proc/apply_rider_layer(mob/rider, dir, pos)
 	var/atom/movable/AM = parent
 	rider.plane = AM.plane
-	rider.layer = AM.layer + rider_layer_offset(dir, pos)
+	rider.set_base_layer(AM.layer + rider_layer_offset(dir, pos))
 
 /**
  * returns a layer **offset** for a rider to be set to.
@@ -321,41 +333,49 @@
 /datum/component/riding_handler/proc/update_riders_on_move(atom/old_loc, dir)
 	var/atom/movable/AM = parent
 	// first check ridden mob
-	if(!check_ridden(parent))
+	if(!check_ridden(parent, TRUE))
 		// kick everyone off
 		for(var/mob/M as anything in AM.buckled_mobs)
 			force_dismount(M)
 		return
 	for(var/mob/M as anything in AM.buckled_mobs)
-		if(!ride_check(M, AM.buckled_mobs[M]))
+		if(!ride_check(M, AM.buckled_mobs[M], TRUE))
+			force_dismount(M)
 			continue	// don't do rest of logic
 
 /**
  * checks if a person can stay on us. if not, they'll be kicked off by ride_check()
  */
-/datum/component/riding_handler/proc/check_rider(mob/M, semantic)
-	return check_entity(M, rider_check_flags, semantic)
+/datum/component/riding_handler/proc/check_rider(mob/M, semantic, notify)
+	return check_entity(M, rider_check_flags, semantic, notify)
 
 /**
  * checks if the vehicle is usable right now.
  * if not, kicks everyone off.
  */
-/datum/component/riding_handler/proc/check_ridden(atom/movable/AM)
-	return check_entity(M, ridden_check_flags)
+/datum/component/riding_handler/proc/check_ridden(atom/movable/AM, notify)
+	return check_entity(M, ridden_check_flags, BUCKLE_SEMANTIC_WE_ARE_THE_VEHICLE, notify)
 
 /**
  * checks an atom of riding flags
  */
-/datum/component/riding_handler/proc/check_entity(atom/movable/AM, flags, semantic)
-	var/mob/M = ismob(AM) && AM
+/datum/component/riding_handler/proc/check_entity(atom/movable/AM, flags, semantic, notify, mob/user)
+	var/mob/M = ismob(AM)? AM : null
+	if(!user)
+		user = M
+	var/we_are_the_vehicle = semantic == BUCKLE_SEMANTIC_WE_ARE_THE_VEHICLE
 	if(M && flags & CF_RIDING_CHECK_ARMS)
 		// unimplemented
 		pass()
-		// unimplemented
 	if(M && (flags & CF_RIDING_CHECK_LEGS))
 		// unimplemented
 		pass()
 	if(M && (flags & CF_RIDING_CHECK_RESTRAINED) && M.restrained())
+		if(notify && user)
+			if(we_are_the_vehicle)
+				to_chat(user, SPAN_WARNING(""))
+			else
+
 		return FALSE
 	if(M && (flags & CF_RIDING_CHECK_UNCONSCIOUS) && !STAT_IS_CONSCIOUS(M))
 		return FALES

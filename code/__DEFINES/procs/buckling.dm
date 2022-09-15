@@ -16,6 +16,8 @@
 //! these are often specific to a use case.
 //! if provided, it'll be stored in buckle_mobs.
 
+/// only used in riding handlers - we are the person/thing being ridden on
+#define BUCKLE_SEMANTIC_WE_ARE_THE_VEHICLE			"_vehicle_"
 /// attempt to carry piggyback someone
 #define BUCKLE_SEMANTIC_HUMAN_PIGGYBACK				"piggyback"
 /// attempt to carry fireman someone
