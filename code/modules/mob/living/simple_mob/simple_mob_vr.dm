@@ -42,9 +42,6 @@
 	var/vore_icons = 0					// Bitfield for which fields we have vore icons for.
 	var/life_disabled = 0				// For performance reasons
 
-	var/mount_offset_x = 5				// Horizontal riding offset.
-	var/mount_offset_y = 8				// Vertical riding offset
-
 	var/obj/item/radio/headset/mob_headset/mob_radio		//Adminbus headset for simplemob shenanigans.
 
 // Release belly contents before being gc'd!
