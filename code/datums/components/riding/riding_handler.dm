@@ -172,8 +172,8 @@
 		return
 	var/atom/movable/AM = parent
 	_last_dir = dir
-	var/opx = AM.get_managed_pixel_x()
-	var/opy = AM.get_managed_pixel_y()
+	var/opx = AM.pixel_x + AM.get_centering_pixel_x_offset()
+	var/opy = AM.pixel_y + AM.get_centering_pixel_y_offset()
 	for(var/i in 1 to length(AM.buckled_mobs))
 		var/mob/M = AM.buckled_mobs[i]
 		apply_rider_layer(M, dir, i)
@@ -182,8 +182,9 @@
 
 /datum/component/riding_handler/proc/apply_rider_offsets(mob/rider, dir, pos, opx, opy)
 	var/list/offsets = rider_pixel_offsets(dir, pos)
-	rider.pixel_x = offsets[1] + opx
-	rider.pixel_y = offsets[2] + opy
+	rider.reset_pixel_shifting()
+	rider.pixel_x = offsets[1] + opx + rider.get_standard_pixel_x_offset() - rider.get_centering_pixel_x_offset()
+	rider.pixel_y = offsets[2] + opy + rider.get_standard_pixel_y_offset() - rider.get_centering_pixel_y_offset()
 
 /datum/component/riding_handler/proc/apply_rider_layer(mob/rider, dir, pos)
 	var/atom/movable/AM = parent
