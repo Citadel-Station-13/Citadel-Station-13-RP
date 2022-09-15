@@ -26,3 +26,13 @@
 //! Tool usage flags
 
 //? None yet! Waiting on skill-system design.
+
+//! Tool hints - while not needing to be defined, this lets us easily display messages
+//! if the item in question is doing a specific thing by overriding feedback builder procs!
+
+#define TOOL_HINT_UNSCREWING_WINDOW_FRAME "Unfasten Frame"
+#define TOOL_HINT_SCREWING_WINDOW_FRAME "Fasten Frame"
+#define TOOL_HINT_UNSCREWING_WINDOW_PANE "Unfasten Window"
+#define TOOL_HINT_SCREWING_WINDOW_FRAME "Unfasten Frame"
+#define TOOL_HINT_CROWBAR_WINDOW_IN "Pry In Window"
+#define TOOL_HINT_CROWBRA_WINDOW_OUT "Pry Out Window"

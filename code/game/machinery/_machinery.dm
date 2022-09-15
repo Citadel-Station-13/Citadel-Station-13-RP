@@ -403,6 +403,7 @@
 	return TRUE
 
 /obj/machinery/proc/default_deconstruction_crowbar(var/mob/user, var/obj/item/C)
+
 	if(!C.is_crowbar())
 		return 0
 	if(!panel_open)

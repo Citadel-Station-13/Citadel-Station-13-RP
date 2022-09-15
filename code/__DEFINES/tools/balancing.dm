@@ -8,4 +8,4 @@
 
 //! Tool costs
 /// default cost of welding fuel per decisecond welded
-#define TOOL_WELDING_FUEL_PER_DS		0.05
+#define TOOL_WELDING_FUEL_PER_DS		0.5

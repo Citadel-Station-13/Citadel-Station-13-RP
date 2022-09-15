@@ -25,7 +25,7 @@
  * - override dynamic_tool_act() if needed, otherwise it will simply go into tool_act
  * - override dynamic_tool_image() to return the image to render for a specific tool function for radials
  * - realistically, you just need to override dynamic_tool_functions.
- * - if you don't override dynamic_tool_image you are a lemming and it'll probably be ugly.
+ * - if you don't override dynamic_tool_image you are a lemming and it'll probabl be ugly.
  *
  * It's That Simple (tm)!
  */
@@ -157,9 +157,50 @@
 		//? Add more tool_acts as necessary.
 
 /**
+ * lazy proc called by wrappers to minimize coder burnout
+ *
+ * ! READ THE BELOW. DO NOT USE THIS PROC DIRECTLY. IT IS CALLED BY WRAPPERS.
+ * ? If you are developing wrappers, just copypaste an existing wrapper.
+ *
+ * ! SO YOU WANT TO DO A TOOL ACTION?
+ * ! FEAR NOT! You don't need to understand the system entirely (you won't bother).
+ * ! Instead, just type this when in a x_act() proc, replacing the <>'s:
+ *
+ * ? success = use_tool_<x>(I, user, flags, hint, <delay>, <infinitive>, <present>, <object>, <target>, <prepositional>, <append>, <cost>, <usage>)
+ *
+ * ! Mandatory arguments:
+ * x = the <x>_act you're calling from, e.g. do use_wirecutter when you're in wirecutter_act.
+ * Success = you can assign this into a variable or put the entire use_tool_standard in an if block.
+ * delay - how long to take in deciseconds (use SECONDS macro!)
+ *
+ * ! If you want to do your own feedback, do it.
+ * ! If you don't, add these arguments. Not having them simply makes the system skip standard feedback.
+ * infinitive - infinitive verb, e.g. "pry"
+ * present - present ver, e.g. "pries"
+ * object - object of attention, can be atom or text, e.g. "window"
+ * target - what you're acting on/where the object is going/coming from, e.g. "frame"
+ * prepositional - what you're doing with it, null this out to be `object's target` instead of `object preposition \the target`, e.g. "into the"
+ * append - if TRUE, will include "with the bonecutters" or whatever phrase is describing the tool.
+ *
+ * ! Finally, if you want to modify cost/usage:
+ * cost - multiplier for cost, standard tool "cost" is 1 per second of usage.
+ * usage - usage flags for skill system checks.
+ *
+ * Examples
+ * ? use_crowbar(I, user, flags, hint, 5 SECONDS, "pry", "pries", "window", "frame", "into", usage = TOOL_USAGE_CONSTRUCTION)
+ * ? use_hemostat(I, user, flags, hint, 10 SECONDS, "pull", "pulls", "brain", src, "free of", usage = TOOL_USAGE_SURGERY)
+ * ? use_bonesaw(I, user, flags, hint, 7.5 SECONDS, "amputate", "amputates", src, "head", append = TRUE, usage = TOOL_USAGE_SURGERY)
+ * ? Wanna use your own feedback? Just use_<x>(I, user, flags, hint, 5 SECONDS, usage = TOOL_USAGE_WHATEVER) without specifying the other arguments!
+ */
+/atom/proc/use_tool_standard(obj/item/I, mob/user, flags, function, hint, delay, infinitive, present, object, target, prepositional, append, cost, usage)
+	return use_tool(I, user, flags, function, hint, delay, infinitive, present, object, target, prepositional, append, cost, usage)
+
+#warn this still sucks rework it lol
+
+/**
  * primary proc called by wrappers to use a tool on us
  */
-/atom/proc/use_tool(obj/item/I, mob/user, function, flags, delay, msg, self_msg, cost = 1)
+/atom/proc/use_tool(obj/item/I, mob/user, function, hint, flags, delay, msg, self_msg, cost = 1)
 	var/quality = I.tool_check(function, user, src)
 	if(!quality)
 		return FALSE

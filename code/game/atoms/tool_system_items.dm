@@ -125,13 +125,15 @@
  *
  * @params
  * - function - tool function enum; if null, defaults to static tool behaviour
+ * - hint - hint of what we're doing, if any
  * - flags - tool operation flags
  * - user - person using tool, if any
  * - target - atom tool being used on, if any
  * - time - approximated duration of the action in deciseconds
  * - cost - cost multiplier
+ * - usage - usage flags, if any
  */
-/obj/item/proc/using_as_tool(function, flags, mob/user, atom/target, time, cost)
+/obj/item/proc/using_as_tool(function, hint, flags, mob/user, atom/target, time, cost, usage)
 	SHOULD_CALL_PARENT(TRUE)
 	return TRUE
 
@@ -141,14 +143,16 @@
  *
  * @params
  * - function - tool function enum; if null, defaults to static tool behavior
+ * - hint - hint of what we're doing, if any
  * - flags - tool operation flags
  * - user - person using tool, if any
  * - target - atom tool being used on, if any
  * - time - duration of the action in deciseconds
  * - cost - cost multiplier
  * - success - was it successful?
+ * - usage - usage flags, if any
  */
-/obj/item/proc/used_as_tool(function, flags, mob/user, atom/target, time, cost, success)
+/obj/item/proc/used_as_tool(function, hint, flags, mob/user, atom/target, time, cost, usage, success)
 	SHOULD_CALL_PARENT(TRUE)
 	return TRUE
 
@@ -187,15 +191,16 @@
  * gets sound to play on tool usage
  *
  * @params
- * - function - tool function enum; if null, defaults to static tool behavior
+ * - function - tool function enum
  * - hint - hint of what we're doing
  * - flags - tool operation flags
  * - user - person using tool, if any
  * - target - atom tool being used on, if any
- * - time - duration of the action in deciseconds
- * - success - did we finish successfully?
+ * - usage - usage flags, if any
+ * - time - duration of the action in deciseconds, either estimated or actual for start/finish.
+ * - success - did we finish successfully? null if we're starting - this is for optimization
  */
-/obj/item/proc/tool_sound(function, hint, flags, mob/user, atom/target, time, success)
+/obj/item/proc/tool_sound(function, hint, flags, mob/user, atom/target, usage, time, success)
 	if((function == tool_behaviour) && tool_sound)
 		return tool_sound
 	// return default
@@ -210,6 +215,25 @@
 			return 'sound/items/Welder2.ogg'
 		if(TOOL_WRENCH)
 			return 'sound/items/ratchet.ogg'
+
+/**
+ * constructs message to display on tool usage
+ *
+ * @params
+ * - function - tool function enum
+ * - hint - hint of what we're doing
+ *
+ *
+ *
+ * - flags - tool operation flags
+ * - user - person using tool, if any
+ * - target - atom tool is being used on, if any
+ * - usage - usage flags, if any
+ * - time - duration of the action in deciseconds, either estimated or actual for start/finish.
+ * - success - did we finish successfully? null if we're starting - this is for optimization
+ */
+/obj/item/proc/tool_message(function, hint, flags, mob/user, atom/target, usage, time, success)
+
 
 #warn ughh
 
