@@ -56,7 +56,7 @@ var/bomb_set
 
 /obj/machinery/nuclearbomb/attackby(obj/item/O, mob/user)
 	if(O.is_screwdriver())
-		playsound(src, O.usesound, 50, TRUE)
+		playsound(src, O.tool_sound, 50, TRUE)
 		add_fingerprint(user)
 		if(auth)
 			if(opened == FALSE)
@@ -114,7 +114,7 @@ var/bomb_set
 				if(O.is_crowbar())
 					user.visible_message("[user] starts forcing open the bolt covers on [src].", "You start forcing open the anchoring bolt covers with [O]...")
 
-					playsound(src, O.usesound, 50, 1)
+					playsound(src, O.tool_sound, 50, 1)
 					if(do_after(user,15 * O.tool_speed))
 						if(!src || !user) return
 						user.visible_message("[user] forces open the bolt covers on [src].", "You force open the bolt covers.")
@@ -131,7 +131,7 @@ var/bomb_set
 						return
 
 					user.visible_message("[user] starts cutting apart the anchoring system sealant on [src].", "You start cutting apart the anchoring system's sealant with [O]...")
-					playsound(src, WT.usesound, 50, 1)
+					playsound(src, WT.tool_sound, 50, 1)
 					if(do_after(user,40 * WT.tool_speed))
 						if(!src || !user || !WT.remove_fuel(5, user)) return
 						user.visible_message("[user] cuts apart the anchoring system sealant on [src].", "You cut apart the anchoring system's sealant.")
@@ -142,7 +142,7 @@ var/bomb_set
 				if(O.is_wrench())
 
 					user.visible_message("[user] begins unwrenching the anchoring bolts on [src].", "You begin unwrenching the anchoring bolts...")
-					playsound(src, O.usesound, 50, 1)
+					playsound(src, O.tool_sound, 50, 1)
 					if(do_after(user,50 * O.tool_speed))
 						if(!src || !user) return
 						user.visible_message("[user] unwrenches the anchoring bolts on [src].", "You unwrench the anchoring bolts.")
@@ -153,7 +153,7 @@ var/bomb_set
 				if(O.is_crowbar())
 
 					user.visible_message("[user] begins lifting [src] off of the anchors.", "You begin lifting the device off the anchors...")
-					playsound(src, O.usesound, 50, 1)
+					playsound(src, O.tool_sound, 50, 1)
 					if(do_after(user,80 * O.tool_speed))
 						if(!src || !user) return
 						user.visible_message("[user] crowbars [src] off of the anchors. It can now be moved.", "You jam the crowbar under the nuclear device and lift it off its anchors. You can now move it!")

@@ -20,8 +20,6 @@
 	var/burning = null
 	/// Sound to play on hit. Set to [HITSOUND_UNSET] to have it automatically set on init.
 	var/hitsound = HITSOUND_UNSET
-	/// Like hitsound, but for when used properly and not to kill someone.
-	var/usesound = null
 	var/storage_cost = null
 	/// This is used to determine on which slots an item can fit.
 	var/slot_flags = 0
@@ -676,15 +674,6 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 /obj/item/proc/pwr_drain()
 	return 0 // Process Kill
-
-/// Used for non-adjacent melee attacks with specific weapons capable of reaching more than one tile.
-/// This uses changeling range string A* but for this purpose its also applicable.
-/obj/item/proc/attack_can_reach(var/atom/us, var/atom/them, var/range)
-	if(us.Adjacent(them))
-		return TRUE // Already adjacent.
-	if(AStar(get_turf(us), get_turf(them), /turf/proc/AdjacentTurfsRangedSting, /turf/proc/Distance, max_nodes=25, max_node_depth=range))
-		return TRUE
-	return FALSE
 
 /// Check if an object should ignite others, like a lit lighter or candle.
 /obj/item/proc/is_hot()

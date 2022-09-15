@@ -17,7 +17,7 @@
 	matter = list(MAT_STEEL = 80)
 	attack_verb = list("pinched", "nipped")
 	hitsound = 'sound/items/wirecutter.ogg'
-	usesound = 'sound/items/wirecutter.ogg'
+	tool_sound = 'sound/items/wirecutter.ogg'
 	drop_sound = 'sound/items/drop/wirecutter.ogg'
 	pickup_sound = 'sound/items/pickup/wirecutter.ogg'
 	sharp = 1
@@ -98,13 +98,13 @@
 /obj/item/tool/wirecutters/cyborg
 	name = "wirecutters"
 	desc = "This cuts wires.  With science."
-	usesound = 'sound/items/jaws_cut.ogg'
+	tool_sound = 'sound/items/jaws_cut.ogg'
 	tool_speed = 0.5
 
 /obj/item/tool/wirecutters/RIGset
 	name = "integrated wirecutters"
 	desc = "If you're seeing this, someone did a dum-dum."
-	usesound = 'sound/items/jaws_cut.ogg'
+	tool_sound = 'sound/items/jaws_cut.ogg'
 	tool_speed = 0.7
 
 /obj/item/tool/wirecutters/hybrid
@@ -116,7 +116,7 @@
 	slowdown = 0.1
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ENGINEERING = 3, TECH_PHORON = 2)
 	attack_verb = list("pinched", "nipped", "warped", "blasted")
-	usesound = 'sound/effects/stealthoff.ogg'
+	tool_sound = 'sound/effects/stealthoff.ogg'
 	tool_speed = 0.4
 	reach = 2
 
@@ -128,7 +128,7 @@
 	item_state = "jawsoflife"
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	matter = list(MAT_METAL=150, MAT_SILVER=50)
-	usesound = 'sound/items/jaws_cut.ogg'
+	tool_sound = 'sound/items/jaws_cut.ogg'
 	force = 15
 	tool_speed = 0.25
 	random_color = FALSE

@@ -43,7 +43,7 @@
 		if (W.is_screwdriver())
 			if (do_after(user, 20 * W.tool_speed))
 				src.open =! src.open
-				playsound(src, W.usesound, 50, 1)
+				playsound(src, W.tool_sound, 50, 1)
 				user.show_message(text("<span class='notice'>You [] the service panel.</span>", (src.open ? "open" : "close")))
 			return
 		if (istype(W, /obj/item/multitool) && (src.open == 1)&& (!src.l_hacking))

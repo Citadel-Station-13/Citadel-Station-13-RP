@@ -42,15 +42,28 @@
  * - I - the item
  * - user - the user
  * - clickchain_flags - the clickchain flags given
+ * - function - forced function - used in automation
+ * - hint - forced hint - used in automation
+ * - reachability_check - a callback used for reachability checks. if none, defaults to item.attack_can_reach when in clickcode, can always reach otherwise.
  */
-/atom/proc/tool_interaction(obj/item/I, mob/user, clickchain_flags)
+/atom/proc/tool_interaction(obj/item/I, mob/user, clickchain_flags, function, hint, datum/callback/reachability_check)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	return _tool_interaction_entrypoint(I, user, clickchain_flags)
+	return _tool_interaction_entrypoint(I, user, clickchain_flags, function, hint, reachability_check)
 
-/atom/proc/_tool_interaction_entrypoint(obj/item/provided_item, mob/user, clickchain_flags)
+/atom/proc/_tool_interaction_entrypoint(obj/item/provided_item, mob/user, clickchain_flags, function, hint, datum/callback/reachability_check)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	PRIVATE_PROC(TRUE)
+	if(isnull(reachability_check))
+		if(clickchain_flags & CLICKCHAIN_TOOL_ACT)
+			// provided_item should never be null
+			reachability_check = CALLBACK(provided_item, /obj/item/proc/attack_can_reach)
+	if(reachability_check && !reachability_check.Invoke())
+		return NONE
+	// from click chain
 	if(provided_item)
+		if(function)
+			// automation, just go
+			return _dynamic_tool_act(I, user, function, TOOL_OP_AUTOPILOT, hint)
 		// used in clickchain
 		var/list/possibilities = dynamic_tool_functions(provided_item, user)
 		var/function
@@ -73,15 +86,25 @@
 			for(var/i in possibilities)
 				if(functions[i])
 					continue
-				possibliities -= i
+				possibilities -= i
 		// everything in possibilities is valid for the tool
-		#warn radial to determine function
+		var/list/transformed = list()
+		for(var/i in possibilities)
+			transformed[i] = dynamic_tool_image(i)
+		var/function = show_radial_menu(user, src, transformed, require_near = provided_item.reach)
+		if(reachability_check && !reachability_check.Invoke())
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		// determine hint
 		var/list/hints = possibilities[function]
 		if(!length(hints))
 			// none, just go
 			return _dynamic_tool_act(I, user, function)
-		#warn radial to determine hint
+		transformed.len = 0
+		for(var/i in hints)
+			transformed[i] = dynamic_tool_image(function, i)
+		var/hint = show_radial_menu(user, src, transformed, require_near = provided_item.reach)
+		if(reachability_check && !reachability_check.Invoke())
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		// use hint
 		return _dynamic_tool_act(I, user, function, hint = hint)
 	else
@@ -89,7 +112,6 @@
 		// yet having organs that server as built-in tools can do something with
 		// the dynamic tool system. for now, this does nothing.
 		return NONE
-
 
 //! Primary Tool API
 /atom/proc/_tool_act(obj/item/I, mob/user, function, flags, hint)
@@ -159,6 +181,7 @@
 /**
  * returns a list of behaviours that can be used on us in our current state
  * the behaviour may be associated to a list of "hints" for multiple possible actions per behaviour.
+ * the hint should be human readable.
  *
  * @params
  * - I - the tool used, if any
@@ -192,6 +215,8 @@
 
 /**
  * builds the image used for the radial icon
+ *
+ * WARNING: If you use tool **and** hint, you need to implement a hintless, or return to base to use the default.
  *
  * @params
  * - function - the tool behaviour

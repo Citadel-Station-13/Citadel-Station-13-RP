@@ -91,7 +91,7 @@ obj/structure/windoor_assembly/Destroy()
 				var/obj/item/weldingtool/WT = W
 				if (WT.remove_fuel(0,user))
 					user.visible_message("[user] disassembles the windoor assembly.", "You start to disassemble the windoor assembly.")
-					playsound(src.loc, WT.usesound, 50, 1)
+					playsound(src.loc, WT.tool_sound, 50, 1)
 
 					if(do_after(user, 40 * WT.tool_speed))
 						if(!src || !WT.isOn()) return
@@ -107,7 +107,7 @@ obj/structure/windoor_assembly/Destroy()
 
 			//Wrenching an unsecure assembly anchors it in place. Step 4 complete
 			if(W.is_wrench() && !anchored)
-				playsound(src, W.usesound, 100, 1)
+				playsound(src, W.tool_sound, 100, 1)
 				user.visible_message("[user] secures the windoor assembly to the floor.", "You start to secure the windoor assembly to the floor.")
 
 				if(do_after(user, 40 * W.tool_speed))
@@ -118,7 +118,7 @@ obj/structure/windoor_assembly/Destroy()
 
 			//Unwrenching an unsecure assembly un-anchors it. Step 4 undone
 			else if(W.is_wrench() && anchored)
-				playsound(src, W.usesound, 100, 1)
+				playsound(src, W.tool_sound, 100, 1)
 				user.visible_message("[user] unsecures the windoor assembly to the floor.", "You start to unsecure the windoor assembly to the floor.")
 
 				if(do_after(user, 40 * W.tool_speed))
@@ -144,7 +144,7 @@ obj/structure/windoor_assembly/Destroy()
 
 			//Removing wire from the assembly. Step 5 undone.
 			if(W.is_wirecutter() && !src.electronics)
-				playsound(src, W.usesound, 100, 1)
+				playsound(src, W.tool_sound, 100, 1)
 				user.visible_message("[user] cuts the wires from the airlock assembly.", "You start to cut the wires from airlock assembly.")
 
 				if(do_after(user, 40 * W.tool_speed))
@@ -173,7 +173,7 @@ obj/structure/windoor_assembly/Destroy()
 
 			//Screwdriver to remove airlock electronics. Step 6 undone.
 			else if(W.is_screwdriver() && src.electronics)
-				playsound(src, W.usesound, 100, 1)
+				playsound(src, W.tool_sound, 100, 1)
 				user.visible_message("[user] removes the electronics from the airlock assembly.", "You start to uninstall electronics from the airlock assembly.")
 
 				if(do_after(user, 40 * W.tool_speed))
@@ -193,7 +193,7 @@ obj/structure/windoor_assembly/Destroy()
 					to_chat(usr,"<span class='warning'>The assembly has broken airlock electronics.</span>")
 					return
 				user << browse(null, "window=windoor_access") //Not sure what this actually does... -Ner
-				playsound(src, W.usesound, 100, 1)
+				playsound(src, W.tool_sound, 100, 1)
 				user.visible_message("[user] pries the windoor into the frame.", "You start prying the windoor into the frame.")
 
 				if(do_after(user, 40 * W.tool_speed))

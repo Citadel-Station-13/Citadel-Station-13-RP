@@ -432,18 +432,18 @@
 	if(I.is_screwdriver())
 		if(c_mode==0)
 			c_mode=1
-			playsound(src.loc, I.usesound, 50, 1)
+			playsound(src.loc, I.tool_sound, 50, 1)
 			to_chat(user, "You remove the screws around the power connection.")
 			return
 		else if(c_mode==1)
 			c_mode=0
-			playsound(src.loc, I.usesound, 50, 1)
+			playsound(src.loc, I.tool_sound, 50, 1)
 			to_chat(user, "You attach the screws around the power connection.")
 			return
 	else if(istype(I, /obj/item/weldingtool) && c_mode==1)
 		var/obj/item/weldingtool/W = I
 		if(W.remove_fuel(0,user))
-			playsound(src.loc, W.usesound, 50, 1)
+			playsound(src.loc, W.tool_sound, 50, 1)
 			to_chat(user, "You start slicing the floorweld off the delivery chute.")
 			if(do_after(user,20 * W.tool_speed))
 				if(!src || !W.isOn()) return

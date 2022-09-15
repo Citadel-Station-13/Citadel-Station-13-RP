@@ -9,7 +9,7 @@
 /obj/item/material/butterflyconstruction/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_screwdriver())
 		to_chat(user, "You finish the concealed blade weapon.")
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		new /obj/item/material/butterfly(user.loc, material.name)
 		qdel(src)
 		return

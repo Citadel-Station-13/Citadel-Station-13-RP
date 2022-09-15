@@ -193,7 +193,7 @@
 	if(I.is_screwdriver())
 		to_chat(user, "<span class='notice'>You [assembled ? "disassemble" : "assemble"] the gun.</span>")
 		assembled = !assembled
-		playsound(src, I.usesound, 50, 1)
+		playsound(src, I.tool_sound, 50, 1)
 		generatefiremodes()
 		return
 	if(I.is_crowbar())

@@ -69,7 +69,7 @@
 	if(W.is_screwdriver())
 		add_fingerprint(user)
 		disable = !disable
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		if(disable)
 			user.visible_message( \
 				SPAN_WARNING("[user] has disabled \the [src]!"), \

@@ -253,7 +253,7 @@
 			to_chat(user, "<span class='warning'>\The [WT] must be on to complete this task.</span>")
 			return
 		repairing = 1
-		playsound(src.loc, WT.usesound, 50, 1)
+		playsound(src.loc, WT.tool_sound, 50, 1)
 		user.visible_message("<span class='warning'>\The [user.name] begins repairing \the [src].</span>", \
 			"<span class='notice'>You start repairing \the [src].</span>")
 		if(do_after(user, 20 * WT.tool_speed, target = src) && WT.isOn())
@@ -268,7 +268,7 @@
 		to_chat(user, "<span class='warning'>You cannot unwrench \the [src], while it contains fuel rods.</span>")
 		return 1
 
-	playsound(src, W.usesound, 75, 1)
+	playsound(src, W.tool_sound, 75, 1)
 	if(!anchored || do_after(user, 40 * W.tool_speed))
 		anchor()
 		user.visible_message("\The [user.name] [anchored ? "secures" : "unsecures"] the bolts holding \the [src.name] to the floor.", \

@@ -16,3 +16,5 @@
 #define CLICKCHAIN_DO_NOT_PROPAGATE			(1<<0)
 /// person can reach us normally
 #define CLICKCHAIN_HAS_PROXIMITY			(1<<1)
+/// in tool act - used to check if we should do default proximity checks when none are specified
+#define CLICKCHAIN_TOOL_ACT					(1<<2)

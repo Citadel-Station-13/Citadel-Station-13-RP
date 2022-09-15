@@ -15,7 +15,7 @@
 	throw_speed = 3
 	throw_range = 5
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	usesound = 'sound/items/screwdriver.ogg'
+	tool_sound = 'sound/items/screwdriver.ogg'
 	drop_sound = 'sound/items/drop/screwdriver.ogg'
 	pickup_sound = 'sound/items/pickup/screwdriver.ogg'
 	matter = list(MAT_STEEL = 75)
@@ -106,7 +106,7 @@
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "screwdriver_a"
 	item_state = "screwdriver_black"
-	usesound = 'sound/items/pshoom.ogg'
+	tool_sound = 'sound/items/pshoom.ogg'
 	tool_speed = 0.1
 	random_color = FALSE
 
@@ -119,7 +119,7 @@
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ENGINEERING = 3)
 	slowdown = 0.1
 	w_class = ITEMSIZE_NORMAL
-	usesound = 'sound/effects/uncloak.ogg'
+	tool_sound = 'sound/effects/uncloak.ogg'
 	tool_speed = 0.4
 	random_color = FALSE
 	reach = 2
@@ -129,13 +129,13 @@
 /obj/item/tool/screwdriver/cyborg
 	name = "powered screwdriver"
 	desc = "An electrical screwdriver, designed to be both precise and quick."
-	usesound = 'sound/items/drill_use.ogg'
+	tool_sound = 'sound/items/drill_use.ogg'
 	tool_speed = 0.5
 
 /obj/item/tool/screwdriver/RIGset
 	name = "integrated screwdriver"
 	desc = "If you're seeing this, someone did a dum-dum."
-	usesound = 'sound/items/drill_use.ogg'
+	tool_sound = 'sound/items/drill_use.ogg'
 	tool_speed = 0.7
 
 /obj/item/tool/screwdriver/power
@@ -153,7 +153,7 @@
 	throw_range = 3//it's heavier than a screw driver/wrench, so it does more damage, but can't be thrown as far
 	attack_verb = list("drilled", "screwed", "jabbed", "whacked")
 	hitsound = 'sound/items/drill_hit.ogg'
-	usesound = 'sound/items/drill_use.ogg'
+	tool_sound = 'sound/items/drill_use.ogg'
 	tool_speed = 0.25
 	random_color = FALSE
 	var/obj/item/tool/wrench/power/counterpart = null

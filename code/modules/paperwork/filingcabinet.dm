@@ -43,15 +43,15 @@
 		SStgui.update_uis(src)
 
 	else if(P.is_wrench())
-		playsound(loc, P.usesound, 50, 1)
+		playsound(loc, P.tool_sound, 50, 1)
 		anchored = !anchored
 		to_chat(user, SPAN_NOTICE("You [anchored ? "wrench" : "unwrench"] \the [src]."))
 
 	else if(P.is_screwdriver())
 		to_chat(user, SPAN_NOTICE("You begin taking the [name] apart."))
-		playsound(src, P.usesound, 50, 1)
+		playsound(src, P.tool_sound, 50, 1)
 		if(do_after(user, 10 * P.tool_speed))
-			playsound(loc, P.usesound, 50, 1)
+			playsound(loc, P.tool_sound, 50, 1)
 			to_chat(user, SPAN_NOTICE("You take the [name] apart."))
 			new /obj/item/stack/material/steel( src.loc, 4 )
 			for(var/obj/item/I in contents)

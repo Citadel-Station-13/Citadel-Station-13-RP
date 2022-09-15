@@ -15,6 +15,8 @@
 	var/tool_speed = TOOL_SPEED_DEFAULT
 	/// dynamic tool locking - if set, dynamic tool behaviour is entirely disregarded to use tool_behaviour() return as the only possible function.
 	var/tool_locked = FALSE
+	/// the sound to play (compatible with getsfx()) when we are used as a tool, if the function is the same as tool_behaviour.
+	var/tool_sound
 	/// override for dynamic tool support - varedit only, and not always supported.
 	VAR_PRIVATE/list/tool_override
 
@@ -179,31 +181,34 @@
  */
 /obj/item/proc/standard_tool_feedback_end(function, flags, mob/user, atom/target, time, success, msg, self_msg)
 
-
-
+/**
+ * gets sound to play on tool usage
+ *
+ * @params
+ * - function - tool function enum; if null, defaults to static tool behavior
+ * - flags - tool operation flags
+ * - user - person using tool, if any
+ * - target - atom tool being used on, if any
+ * - time - duration of the action in deciseconds
+ * - success - did we finish successfully?
+ */
+/obj/item/proc/tool_sound(function, flags, mob/user, atom/target, time, success)
+	if((function == tool_behaviour) && tool_sound)
+		return tool_sound
+	// return default
+	switch(function)
+		if(TOOL_SCREWDRIVER)
+			return 'sound/items/screwdriver.ogg'
+		if(TOOL_WIRECUTTER)
+			return 'sound/items/wirecutter.ogg'
+		if(TOOL_CROWBAR)
+			return 'sound/items/crowbar.ogg'
+		if(TOOL_WELDER)
+			return 'sound/items/Welder2.ogg'
+		if(TOOL_WRENCH)
+			return 'sound/items/ratchet.ogg'
 #warn ughh
 
 
 
 #warn impl
-
-/* draft notes
-
-/obj/item/proc/tool_attack_chain(mob/user, atom/target, flags, params)
-/obj/item/proc/dynamic_tool_radial(list/functions, mob/user, atom/target)
-  // do radial menu
-  return function
-/obj/item/proc/dynamic_use_tool(function, mob/user, atom/target, flags, params)
-
-
-/atom/proc/attempt_dynamic_tool(mob/user, obj/item/I, flags, params)
-  var/list/functions = requested_tool_functions()
-  if(istext(functions))
-    return I.dynamic_use_tool with function
-  else
-    functions = I.dynamic_tool_radial(functions, user, src)
-    return I.dynamic use tool with function
-
-/atom/proc/requested_tool_functions()
-  return usable tool functions
-  */

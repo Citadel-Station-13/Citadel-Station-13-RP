@@ -685,7 +685,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 			recalculateChannels()
 			to_chat(user, "You pop out the encryption key in the radio!")
-			playsound(src, I.usesound, 50, 1)
+			playsound(src, I.tool_sound, 50, 1)
 
 		else
 			to_chat(user, "This radio doesn't have any encryption keys!")

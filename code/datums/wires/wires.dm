@@ -170,7 +170,7 @@
 				to_chat(user, "<span class='error'>You need wirecutters!</span>")
 				return
 
-			playsound(holder, I.usesound, 20, 1)
+			playsound(holder, I.tool_sound, 20, 1)
 			cut_color(color)
 			return TRUE
 

@@ -36,6 +36,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 		return
 
 /obj/item/proc/tool_attack_chain(atom/target, mob/user, clickchain_flags, params)
+	return target.tool_interaction(src, user, clickchain_flags | CLICKCHAIN_TOOL_ACT, reachability_check = CALLBACK(src, .proc/attack_can_reach))
 
 
 //I would prefer to rename this to attack(), but that would involve touching hundreds of files.
@@ -127,3 +128,13 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	power *= attack_modifier
 
 	return target.hit_with_weapon(src, user, power, hit_zone)
+
+/// Used for non-adjacent melee attacks with specific weapons capable of reaching more than one tile.
+/// This uses changeling range string A* but for this purpose its also applicable.
+// TODO: REFACTOR
+/obj/item/proc/attack_can_reach(var/atom/us, var/atom/them, var/range)
+	if(us.Adjacent(them))
+		return TRUE // Already adjacent.
+	if(AStar(get_turf(us), get_turf(them), /turf/proc/AdjacentTurfsRangedSting, /turf/proc/Distance, max_nodes=25, max_node_depth=range))
+		return TRUE
+	return FALSE

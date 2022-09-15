@@ -30,7 +30,7 @@
 
 	var/acti_sound = 'sound/items/welderactivate.ogg'
 	var/deac_sound = 'sound/items/welderdeactivate.ogg'
-	usesound = 'sound/items/Welder2.ogg'
+	tool_sound = 'sound/items/Welder2.ogg'
 	var/change_icons = TRUE
 	var/flame_intensity = 2 //how powerful the emitted light is when used.
 	var/flame_color = "#FF9933" // What color the welder light emits when its on.  Default is an orange-ish color.

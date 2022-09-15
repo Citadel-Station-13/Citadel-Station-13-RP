@@ -19,7 +19,7 @@
 	if(istype(O, /obj/item/weldingtool))
 		var/obj/item/weldingtool/WT = O
 		if(WT.remove_fuel(0, user))
-			playsound(src, WT.usesound, 25, 1)
+			playsound(src, WT.tool_sound, 25, 1)
 			for (var/mob/M in viewers(src))
 				M.show_message("<span class='notice'>[user.name] deconstructed \the [src].</span>", 3, "<span class='notice'>You hear welding.</span>", 2)
 			new /obj/item/stack/material/steel(loc)

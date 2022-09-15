@@ -174,7 +174,7 @@
 	if(istype(W, /obj/item/weldingtool) && ( (istext(glass)) || (glass == 1) || (!anchored) ))
 		var/obj/item/weldingtool/WT = W
 		if (WT.remove_fuel(0, user))
-			playsound(src, WT.usesound, 50, 1)
+			playsound(src, WT.tool_sound, 50, 1)
 			if(istext(glass))
 				user.visible_message("[user] welds the [glass] plating off the airlock assembly.", "You start to weld the [glass] plating off the airlock assembly.")
 				if(do_after(user, 40 * WT.tool_speed))
@@ -202,7 +202,7 @@
 			return
 
 	else if(W.is_wrench() && state == 0)
-		playsound(src, W.usesound, 100, 1)
+		playsound(src, W.tool_sound, 100, 1)
 		if(anchored)
 			user.visible_message("[user] begins unsecuring the airlock assembly from the floor.", "You starts unsecuring the airlock assembly from the floor.")
 		else
@@ -225,7 +225,7 @@
 				to_chat(user, "<span class='notice'>You wire the airlock.</span>")
 
 	else if(W.is_wirecutter() && state == 1 )
-		playsound(src, W.usesound, 100, 1)
+		playsound(src, W.tool_sound, 100, 1)
 		user.visible_message("[user] cuts the wires from the airlock assembly.", "You start to cut the wires from airlock assembly.")
 
 		if(do_after(user, 40 * W.tool_speed))
@@ -235,7 +235,7 @@
 			src.state = 0
 
 	else if(istype(W, /obj/item/airlock_electronics) && state == 1)
-		playsound(src, W.usesound, 100, 1)
+		playsound(src, W.tool_sound, 100, 1)
 		user.visible_message("[user] installs the electronics into the airlock assembly.", "You start to install electronics into the airlock assembly.")
 
 		if(do_after(user, 40, src))
@@ -252,7 +252,7 @@
 			src.state = 1
 			return
 
-		playsound(src, W.usesound, 100, 1)
+		playsound(src, W.tool_sound, 100, 1)
 		user.visible_message("\The [user] starts removing the electronics from the airlock assembly.", "You start removing the electronics from the airlock assembly.")
 
 		if(do_after(user, 40 * W.tool_speed))
@@ -289,7 +289,7 @@
 								glass = material_name
 
 	else if(W.is_screwdriver() && state == 2 )
-		playsound(src, W.usesound, 100, 1)
+		playsound(src, W.tool_sound, 100, 1)
 		to_chat(user, "<span class='notice'>Now finishing the airlock.</span>")
 
 		if(do_after(user, 40 * W.tool_speed))

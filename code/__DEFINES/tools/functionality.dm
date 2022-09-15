@@ -1,4 +1,5 @@
-//! Tool Behaviours
+//! Tool Behaviours - these should be human readable!
+
 //? Engineering
 #define TOOL_CROWBAR 		"crowbar"
 #define TOOL_MULTITOOL 		"multitool"

@@ -15,7 +15,7 @@
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	matter = list(MAT_STEEL = 150)
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
-	usesound = 'sound/items/ratchet.ogg'
+	tool_sound = 'sound/items/ratchet.ogg'
 	tool_speed = 1
 	drop_sound = 'sound/items/drop/wrench.ogg'
 	pickup_sound = 'sound/items/pickup/wrench.ogg'
@@ -65,14 +65,14 @@
 /obj/item/tool/wrench/cyborg
 	name = "automatic wrench"
 	desc = "An advanced robotic wrench. Can be found in industrial synthetic shells."
-	usesound = 'sound/items/drill_use.ogg'
+	tool_sound = 'sound/items/drill_use.ogg'
 	tool_speed = 0.5
 	random_color = FALSE
 
 /obj/item/tool/wrench/RIGset
 	name = "integrated wrench"
 	desc = "If you're seeing this, someone did a dum-dum."
-	usesound = 'sound/items/drill_use.ogg'
+	tool_sound = 'sound/items/drill_use.ogg'
 	tool_speed = 0.7
 
 /obj/item/tool/wrench/hybrid	// Slower and bulkier than normal power tools, but it has the power of reach.
@@ -87,7 +87,7 @@
 	slowdown = 0.1
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ENGINEERING = 3, TECH_PHORON = 2)
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked", "warped", "blasted")
-	usesound = 'sound/effects/stealthoff.ogg'
+	tool_sound = 'sound/effects/stealthoff.ogg'
 	tool_speed = 0.5
 	reach = 2
 	random_color = FALSE
@@ -113,7 +113,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_wrench)
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "wrench"
-	usesound = 'sound/effects/empulse.ogg'
+	tool_sound = 'sound/effects/empulse.ogg'
 	tool_speed = 0.1
 	origin_tech = list(TECH_MATERIAL = 5, TECH_ENGINEERING = 5)
 	random_color = FALSE
@@ -123,7 +123,7 @@
 	desc = "A simple powered hand drill. It's fitted with a bolt bit."
 	icon_state = "drill_bolt"
 	item_state = "drill"
-	usesound = 'sound/items/drill_use.ogg'
+	tool_sound = 'sound/items/drill_use.ogg'
 	matter = list(MAT_STEEL = 150, MAT_SILVER = 50)
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	force = 8

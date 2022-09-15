@@ -146,14 +146,14 @@
 /obj/structure/girder/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench() && state == 0)
 		if(anchored && !reinf_material)
-			playsound(src, W.usesound, 100, 1)
+			playsound(src, W.tool_sound, 100, 1)
 			to_chat(user, "<span class='notice'>Now disassembling the girder...</span>")
 			if(do_after(user,(35 + round(max_health/50)) * W.tool_speed))
 				if(!src) return
 				to_chat(user, "<span class='notice'>You dissasembled the girder!</span>")
 				dismantle()
 		else if(!anchored)
-			playsound(src, W.usesound, 100, 1)
+			playsound(src, W.tool_sound, 100, 1)
 			to_chat(user, "<span class='notice'>Now securing the girder...</span>")
 			if(do_after(user, 40 * W.tool_speed, src))
 				to_chat(user, "<span class='notice'>You secured the girder!</span>")
@@ -172,19 +172,19 @@
 
 	else if(W.is_screwdriver())
 		if(state == 2)
-			playsound(src, W.usesound, 100, 1)
+			playsound(src, W.tool_sound, 100, 1)
 			to_chat(user, "<span class='notice'>Now unsecuring support struts...</span>")
 			if(do_after(user,40 * W.tool_speed))
 				if(!src) return
 				to_chat(user, "<span class='notice'>You unsecured the support struts!</span>")
 				state = 1
 		else if(anchored && !reinf_material)
-			playsound(src, W.usesound, 100, 1)
+			playsound(src, W.tool_sound, 100, 1)
 			reinforcing = !reinforcing
 			to_chat(user, "<span class='notice'>\The [src] can now be [reinforcing? "reinforced" : "constructed"]!</span>")
 
 	else if(W.is_wirecutter() && state == 1)
-		playsound(src, W.usesound, 100, 1)
+		playsound(src, W.tool_sound, 100, 1)
 		to_chat(user, "<span class='notice'>Now removing support struts...</span>")
 		if(do_after(user,40 * W.tool_speed))
 			if(!src) return
@@ -194,7 +194,7 @@
 			reset_girder()
 
 	else if(W.is_crowbar() && state == 0 && anchored)
-		playsound(src, W.usesound, 100, 1)
+		playsound(src, W.tool_sound, 100, 1)
 		to_chat(user, "<span class='notice'>Now dislodging the girder...</span>")
 		if(do_after(user, 40 * W.tool_speed))
 			if(!src) return
@@ -338,7 +338,7 @@
 
 /obj/structure/girder/cult/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
-		playsound(src, W.usesound, 100, 1)
+		playsound(src, W.tool_sound, 100, 1)
 		to_chat(user, "<span class='notice'>Now disassembling the girder...</span>")
 		if(do_after(user,40 * W.tool_speed))
 			to_chat(user, "<span class='notice'>You dissasembled the girder!</span>")

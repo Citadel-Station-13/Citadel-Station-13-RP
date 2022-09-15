@@ -252,7 +252,7 @@
 			var/obj/item/weldingtool/welder = I
 			if(welder.remove_fuel(0,user))
 				to_chat(user, "<span class='notice'>You start to fix dents and weld \the [get_material_name()] into place.</span>")
-				playsound(src, welder.usesound, 50, 1)
+				playsound(src, welder.tool_sound, 50, 1)
 				if(do_after(user, (5 * repairing) * welder.tool_speed) && welder && welder.isOn())
 					to_chat(user, "<span class='notice'>You finish repairing the damage to \the [src].</span>")
 					health = between(health, health + repairing*DOOR_REPAIR_AMOUNT, maxhealth)
@@ -266,7 +266,7 @@
 			repairing_sheet.amount += repairing-1
 			repairing = 0
 			to_chat(user, "<span class='notice'>You remove \the [repairing_sheet].</span>")
-			playsound(src, I.usesound, 100, 1)
+			playsound(src, I.tool_sound, 100, 1)
 			return
 
 		//psa to whoever coded this, there are plenty of objects that need to call attack() on doors without bludgeoning them.

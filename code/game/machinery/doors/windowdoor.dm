@@ -197,7 +197,7 @@
 			if(health < maxhealth)
 				if(WT.remove_fuel(1 ,user))
 					to_chat(user, "<span class='notice'>You begin repairing [src]...</span>")
-					playsound(src, WT.usesound, 50, 1)
+					playsound(src, WT.tool_sound, 50, 1)
 					if(do_after(user, 40 * WT.tool_speed, target = src))
 						health = maxhealth
 						update_icon()
@@ -219,7 +219,7 @@
 
 		//If it's opened/emagged, crowbar can pry it out of its frame.
 		if (!density && I.is_crowbar())
-			playsound(src, I.usesound, 50, 1)
+			playsound(src, I.tool_sound, 50, 1)
 			user.visible_message("[user] begins prying the windoor out of the frame.", "You start to pry the windoor out of the frame.")
 			if (do_after(user,40 * I.tool_speed))
 				to_chat(user,"<span class='notice'>You pried the windoor out of the frame!</span>")

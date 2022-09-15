@@ -49,7 +49,7 @@
 				user.visible_message("<span class='notice'>\The [user] successfully repairs \the [src]!</span>")
 				broken = FALSE
 				update_icon()
-			playsound(src.loc, W.usesound, 50, 1)
+			playsound(src.loc, W.tool_sound, 50, 1)
 		else
 			user.visible_message("<span class='notice'>\The [user] fails to repair \the [src].</span>")
 		repairing = FALSE

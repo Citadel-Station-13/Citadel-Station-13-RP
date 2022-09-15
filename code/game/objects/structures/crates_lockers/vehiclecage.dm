@@ -32,11 +32,11 @@
 	if(!T)
 		to_chat(user, "<span class='notice'>You can't open this here!</span>")
 	if(W.is_wrench() && do_after(user, 60 * W.tool_speed, src))
-		playsound(loc, W.usesound, 50, 1)
+		playsound(loc, W.tool_sound, 50, 1)
 		disassemble(W, user)
 		user.visible_message("<span class='notice'>[user] begins loosening \the [src]'s bolts.</span>")
 	if(W.is_wirecutter() && do_after(user, 70 * W.tool_speed, src))
-		playsound(loc, W.usesound, 50, 1)
+		playsound(loc, W.tool_sound, 50, 1)
 		disassemble(W, user)
 		user.visible_message("<span class='notice'>[user] begins cutting \the [src]'s bolts.</span>")
 	else
