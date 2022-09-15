@@ -346,7 +346,7 @@
 /**
  * called when we're unbuckled from something
  */
-/mob/proc/unbuckled(atom/movable/AM, flags, mob/user, esmantic)
+/mob/proc/unbuckled(atom/movable/AM, flags, mob/user, semantic)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_MOB_UNBUCKLED, AM, flags, user, semantic)
 
