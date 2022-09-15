@@ -150,6 +150,10 @@ DEFINE_BITFIELD(movement_type, list(
 #define BUCKLING_NO_USER_UNBUCKLE						(1<<4)
 /// do not allow players to resist out of buckling by default
 #define BUCKLING_NO_USER_RESIST							(1<<5)
+/// don't let us buckle people to ourselves
+#define BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF			(1<<6)
+
+#warn impl no other to self
 
 DEFINE_BITFIELD(buckle_flags, list(
 	BITFIELD(BUCKLING_REQUIRES_RESTRAINTS),
@@ -157,4 +161,5 @@ DEFINE_BITFIELD(buckle_flags, list(
 	BITFIELD(BUCKLING_PASS_PROJECTILES_UPWARDS),
 	BITFIELD(BUCKLING_NO_USER_BUCKLE),
 	BITFIELD(BUCKLING_NO_USER_UNBUCKLE),
+	BITFIELD(BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF),
 ))

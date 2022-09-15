@@ -59,6 +59,8 @@
 	VAR_PRIVATE/tmp/list/forbid_turf_typecache
 	/// last time we moved via driving
 	var/last_move_time = 0
+	/// next time we can move via driving
+	var/next_move_time
 	/// was the last move diagonal?
 	var/last_move_diagonal = FALSE
 	/// last turf we were on
@@ -152,8 +154,8 @@
 /datum/component/riding_handler/proc/apply_rider(mob/rider, semantic)
 	var/atom/movable/AM = parent
 	var/position = AM.buckled_mobs.Find(rider)
-	apply_rider_layer(rider, M.dir, position)
-	apply_rider_offsets(rider, M.dir, position)
+	apply_rider_layer(rider, AM.dir, position)
+	apply_rider_offsets(rider, AM.dir, position)
 
 /datum/component/riding_handler/proc/update_riders_on_turn(dir)
 	if(_last_dir == dir)
@@ -251,7 +253,7 @@
  * called to check if a mob has keys to us
  */
 /datum/component/riding_handler/proc/keycheck(mob/M)
-	return !keytype || M.is_holding_item_of_type(keytype)
+	return !keytype || M.get_held_item_of_type(keytype)
 
 /**
  * handles building our typecaches
@@ -304,7 +306,7 @@
 	if(!loc)
 		return FALSE
 	// cheap checks first
-	if(world.time < next_vehicle_move)
+	if(world.time < next_move_time)
 		return
 	// then expensive
 	if(!keycheck(M))
@@ -320,8 +322,8 @@
 	if(!process_spacemove(dir))
 		return FALSE
 	// move
-	last_vehicle_move = world.time
-	next_vehicle_move = world.time + (last_move_diagonal? SQRT_2 : 1) * vehicle_move_delay
+	last_move_time = world.time
+	next_move_time = world.time + (last_move_diagonal? SQRT_2 : 1) * vehicle_move_delay
 	var/atom/movable/AM = parent
 	step(AM, dir)
 	last_move_diagonal = (AM.loc == next) && (ISDIAGONALDIR(dir))
@@ -354,7 +356,7 @@
  * if not, kicks everyone off.
  */
 /datum/component/riding_handler/proc/check_ridden(atom/movable/AM, notify)
-	return check_entity(M, ridden_check_flags, BUCKLE_SEMANTIC_WE_ARE_THE_VEHICLE, notify)
+	return check_entity(AM, ridden_check_flags, BUCKLE_SEMANTIC_WE_ARE_THE_VEHICLE, notify)
 
 /**
  * checks an atom of riding flags
@@ -373,12 +375,39 @@
 	if(M && (flags & CF_RIDING_CHECK_RESTRAINED) && M.restrained())
 		if(notify && user)
 			if(we_are_the_vehicle)
-				to_chat(user, SPAN_WARNING(""))
+				to_chat(user, SPAN_WARNING("You cannot carry people while restrained!"))
+			else if(user == AM)
+				to_chat(user, SPAN_WARNING("You cannot ride on [parent] while restrained!"))
 			else
-
+				to_chat(user, SPAN_WARNING("[AM] cannot ride on [parent] whlie restrained!"))
 		return FALSE
 	if(M && (flags & CF_RIDING_CHECK_UNCONSCIOUS) && !STAT_IS_CONSCIOUS(M))
-		return FALES
+		if(notify && user)
+			if(we_are_the_vehicle)
+				to_chat(user, SPAN_WARNING("You cannot carry people while unconscious!"))
+			else if(user == AM)
+				to_chat(user, SPAN_WARNING("You cannot ride on [parent] while unconscious!"))
+			else
+				to_chat(user, SPAN_WARNING("[AM] cannot ride on [parent] whlie unconscious!"))
+		return FALSE
+	if(M && (flags & CF_RIDING_CHECK_RESTRAINED) && M.restrained())
+		if(notify && user)
+			if(we_are_the_vehicle)
+				to_chat(user, SPAN_WARNING("You cannot carry people while restrained!"))
+			else if(user == AM)
+				to_chat(user, SPAN_WARNING("You cannot ride on [parent] while restrained!"))
+			else
+				to_chat(user, SPAN_WARNING("[AM] cannot ride on [parent] whlie restrained!"))
+		return FALSE
+	if(M && (flags & CF_RIDING_CHECK_INCAPACITATED) && M.incapacitated())
+		if(notify && user)
+			if(we_are_the_vehicle)
+				to_chat(user, SPAN_WARNING("You cannot carry people while incapacitated!"))
+			else if(user == AM)
+				to_chat(user, SPAN_WARNING("You cannot ride on [parent] while incapacitated!"))
+			else
+				to_chat(user, SPAN_WARNING("[AM] cannot ride on [parent] whlie incapacitated!"))
+		return FALSE
 	return TRUE
 
 /**

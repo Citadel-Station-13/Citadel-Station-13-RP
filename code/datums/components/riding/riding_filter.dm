@@ -51,7 +51,7 @@
 
 /datum/component/riding_filter/RegisterWithParent()
 	. = ..()
-	RegisterSignal(parent, COMSIG_MOVABLE_PRE_MOB_BUCKLED, .proc/signal_hook_pre_buckle)
+	RegisterSignal(parent, COMSIG_MOVABLE_PRE_BUCKLE_MOB, .proc/signal_hook_pre_buckle)
 	RegisterSignal(parent, COMSIG_MOVABLE_MOB_BUCKLED, .proc/signal_hook_post_buckle)
 	RegisterSignal(parent, COMSIG_MOVABLE_USER_BUCKLE_MOB, .proc/signal_hook_user_buckle)
 	RegisterSignal(parent, COMSIG_MOVABLE_MOB_UNBUCKLED, .proc/signal_hook_mob_unbuckle)
@@ -61,7 +61,7 @@
 /datum/component/riding_filter/UnregisterFromParent()
 	. = ..()
 	UnregisterSignal(parent, list(
-		COMSIG_MOVABLE_PRE_MOB_BUCKLED,
+		COMSIG_MOVABLE_PRE_BUCKLE_MOB,
 		COMSIG_MOVABLE_MOB_BUCKLED,
 		COMSIG_MOVABLE_CAN_BUCKLE_MOB,
 		COMSIG_MOVABLE_USER_BUCKLE_MOB,
