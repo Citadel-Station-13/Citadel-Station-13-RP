@@ -37,7 +37,7 @@
 
 	// this code disgusts me but we're stuck with it until we refactor planes :/
 	// i hate baycode
-	// plane_masters[VIS_PARALLAX] = new /atom/movable/screen/plane_master/parallax{plane = PARALLAX_PLANE}
+	plane_masters[VIS_PARALLAX] = new /atom/movable/screen/plane_master{plane = PARALLAX_PLANE}
 	plane_masters[VIS_SPACE] = new /atom/movable/screen/plane_master/parallax_white{plane = SPACE_PLANE}
 	plane_masters[VIS_SONAR] = new /atom/movable/screen/plane_master{plane = SONAR_PLANE}
 
