@@ -27,17 +27,25 @@ avoid code duplication. This includes items that may sometimes act as a standard
 /obj/item/proc/pre_attack(atom/a, mob/user)
 	return
 
-#warn impl
-
 /obj/item/proc/melee_attack_chain(atom/target, mob/user, clickchain_flags, params)
 	. = clickchain_flags
 
 	if((. |= tool_attack_chain(target, user, ., params)) & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
 
-/obj/item/proc/tool_attack_chain(atom/target, mob/user, clickchain_flags, params)
-	return target.tool_interaction(src, user, clickchain_flags | CLICKCHAIN_TOOL_ACT, reachability_check = CALLBACK(src, .proc/attack_can_reach))
+	// todo: refactor
+	if(resolve_attackby(A, user, params))
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
+	afterattack(target, user, clickchain_flags & CLICKCHAIN_HAS_PROXIMITY, params)
+
+/obj/item/proc/ranged_attack_chain(atom/target, mob/user, clickchain_flags, params)
+	. = clickchain_flags
+
+	afterattack(target, user, clickchain_flags & CLICKCHAIN_HAS_PROXIMITY, params)
+
+/obj/item/proc/tool_attack_chain(atom/target, mob/user, clickchain_flags, params)
+	return target.tool_interaction(src, user, clickchain_flags | CLICKCHAIN_TOOL_ACT)
 
 //I would prefer to rename this to attack(), but that would involve touching hundreds of files.
 /obj/item/proc/resolve_attackby(atom/A, mob/user, params, attack_modifier = 1)

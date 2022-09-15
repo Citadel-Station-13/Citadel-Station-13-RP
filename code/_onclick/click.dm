@@ -118,9 +118,7 @@
 	var/sdepth = A.storage_depth(src)
 	if((!isturf(A) && A == loc) || (sdepth <= MAX_STORAGE_REACH))
 		if(W)
-			var/resolved = W.resolve_attackby(A, src, params)
-			if(!resolved && A && W)
-				W.afterattack(A, src, 1, params) // 1 indicates adjacency
+			W.melee_attack_chain(A, src, CLICKCHAIN_HAS_PROXIMITY, params)
 		else
 			if(ismob(A)) // No instant mob attacking
 				setClickCooldown(get_attack_speed())
@@ -132,9 +130,7 @@
 	// Inbelly item interaction
 	if(isbelly(loc) && (loc == A.loc))
 		if(W)
-			var/resolved = W.resolve_attackby(A, src, params)
-			if(!resolved && A && W)
-				W.afterattack(A, src, 1, params) // 1: clicking something Adjacent
+			W.melee_attack_chain(A, src, CLICKCHAIN_HAS_PROXIMITY, params)
 		else
 			if(ismob(A)) // No instant mob attacking
 				setClickCooldown(get_attack_speed())
@@ -151,9 +147,7 @@
 		if(A.Adjacent(src) || (W && W.attack_can_reach(src, A, W.reach)) ) // see adjacent.dm
 			if(W)
 				// Return 1 in attackby() to prevent afterattack() effects (when safely moving items for example)
-				var/resolved = W.resolve_attackby(A, src, params)
-				if(!resolved && A && W)
-					W.afterattack(A, src, 1, params) // 1: clicking something Adjacent
+				W.melee_attack_chain(A, src, CLICKCHAIN_HAS_PROXIMITY, params)
 			else
 				if(ismob(A)) // No instant mob attacking
 					setClickCooldown(get_attack_speed())
@@ -162,7 +156,7 @@
 			return
 		else // non-adjacent click
 			if(W)
-				W.afterattack(A, src, 0, params) // 0: not Adjacent
+				W.ranged_attack_chain(A, src, NONE, params)
 			else
 				RangedAttack(A, params)
 
