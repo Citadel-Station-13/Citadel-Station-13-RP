@@ -9,10 +9,6 @@
 	can_build_into_floor = TRUE
 	baseturfs = /turf/simulated/floor/outdoors/rocks
 
-/turf/simulated/floor/outdoors/Initialize(mapload)
-	QUEUE_SMOOTH(src)
-	return ..()
-
 /turf/simulated/floor/outdoors/mud
 	name = "mud"
 	icon_state = "mud_dark"

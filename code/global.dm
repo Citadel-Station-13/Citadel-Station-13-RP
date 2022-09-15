@@ -1,9 +1,3 @@
-
-//duck you byond
-var/global/image/stringbro = new() // Temporarily super-global because of BYOND init order dumbness.
-var/global/image/iconbro = new() // Temporarily super-global because of BYOND init order dumbness.
-var/global/image/appearance_bro = new() // Temporarily super-global because of BYOND init order dumbness.
-
 // Items that ask to be called every cycle.
 var/global/datum/datacore/data_core = null
 var/global/list/processing_machines      = list()	// TODO - Move into SSmachines
@@ -171,6 +165,7 @@ var/global/list/acceptable_fruit_types = list(
 	"grapes",
 	"greengrapes",
 	"harebells",
+	"jahtak",
 	"lavender",
 	"lemon",
 	"lettuce",
@@ -181,6 +176,7 @@ var/global/list/acceptable_fruit_types = list(
 	"poppies",
 	"potato",
 	"pumpkin",
+	"pyrrhlea",
 	"rice",
 	"rose",
 	"rhubarb",

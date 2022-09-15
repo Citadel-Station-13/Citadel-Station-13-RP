@@ -298,9 +298,6 @@
 
 	var/get_rig_stats = 0
 
-	var/typing
-	var/obj/effect/decal/typing_indicator
-
 	/// Skip processing life() if there's just no players on this Z-level.
 	var/low_priority = TRUE
 
@@ -324,7 +321,7 @@
 	/// A mock client, provided by tests and friends
 	var/datum/client_interface/mock_client
 
-//! ## Virgo Defines
+	//! ## Virgo Defines
 	/// Do I have the HUD enabled?
 	var/vantag_hud = FALSE
 	/// Allows flight.
@@ -336,3 +333,7 @@
 
 	var/atom/movable/screen/shadekin/shadekin_display = null
 	var/atom/movable/screen/xenochimera/danger_level/xenochimera_danger_display = null
+
+	//! Typing Indicator
+	var/typing = FALSE
+	var/mutable_appearance/typing_indicator

@@ -241,11 +241,9 @@
 	//Reset the trap and upgrade it. Won't affect standard rigs.
 	trapSprung = 0
 	springtrapped = 1
+	update_component_sealed()
 	for(var/obj/item/piece in list(helmet,boots,gloves,chest))
-		if(!piece) continue
 		piece.icon_state = "[suit_state]"
-		if(airtight)
-			update_airtight(piece, 0) // Unseal
 	update_icon(1)
 
 /obj/item/rig/proc/trap(var/mob/living/carbon/human/M)
