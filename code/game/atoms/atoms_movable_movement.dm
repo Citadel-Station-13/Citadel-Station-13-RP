@@ -173,6 +173,21 @@
 	move_speed = world.time - l_move_time
 	l_move_time = world.time
 
+//! WARNING WARNING THIS IS SHITCODE
+/atom/movable/proc/handle_buckled_mob_movement(newloc, direct)
+	for(var/mob/M as anything in buckled_mobs)
+		if(!M.forceMove(newloc, direct))
+			loc = M.loc
+			last_move_dir = M.last_move_dir
+			inertia_dir = last_move_dir
+			for(var/mob/M as anything in buckled_mobs)
+				if(M.loc != loc)
+					M.forceMove(loc)
+			return FALSE
+		else
+			M.setDir(dir)
+	return TRUE
+
 /// Called after a successful Move(). By this point, we've already moved
 /atom/movable/proc/Moved(atom/OldLoc, Dir, Forced = FALSE)
 	SHOULD_CALL_PARENT(TRUE)

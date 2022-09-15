@@ -13,59 +13,7 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
-/obj/attack_robot(mob/living/user)
-	if(Adjacent(user) && has_buckled_mobs()) //Checks if what we're touching is adjacent to us and has someone buckled to it. This should prevent interacting with anti-robot manual valves among other things.
-		return attack_hand(user) //Process as if we're a normal person touching the object.
-	return ..() //Otherwise, treat this as an AI click like usual.
-
-/atom/movable/MouseDroppedOnLegacy(mob/living/M, mob/living/user)
-	. = ..()
-	if(can_buckle && istype(M))
-		if(user_buckle_mob(M, user))
-			return TRUE
-
-
-/atom/movable/proc/buckle_mob(mob/living/M, forced = FALSE, check_loc = TRUE)
-	if(check_loc && M.loc != loc)
-		return FALSE
-
-	if(!can_buckle_check(M, forced))
-		return FALSE
-
-	M.buckled = src
-	M.facing_dir = null
-	M.setDir(buckle_dir ? buckle_dir : dir)
-	M.update_canmove()
-	M.update_floating( M.Check_Dense_Object() )
-	buckled_mobs |= M
-
-	M.update_water()
-
-	post_buckle_mob(M)
-	return TRUE
-
-/atom/movable/proc/unbuckle_mob(mob/living/buckled_mob, force = FALSE)
-	if(!buckled_mob) // If we didn't get told which mob needs to get unbuckled, just assume its the first one on the list.
-		if(has_buckled_mobs())
-			buckled_mob = buckled_mobs[1]
-		else
-			return
-
-	if(buckled_mob && buckled_mob.buckled == src)
-		. = buckled_mob
-		buckled_mob.buckled = null
-		buckled_mob.anchored = initial(buckled_mob.anchored)
-		buckled_mob.update_canmove()
-		buckled_mob.update_floating( buckled_mob.Check_Dense_Object() )
-		buckled_mobs -= buckled_mob
-
-		buckled_mob.update_water()
-		post_buckle_mob(.)
-
-//Handle any extras after buckling/unbuckling
-//Called on buckle_mob() and unbuckle_mob()
-/atom/movable/proc/post_buckle_mob(mob/living/M)
-	return
+#warn  parse below
 
 //Wrapper procs that handle sanity and user feedback
 /atom/movable/proc/user_buckle_mob(mob/living/M, mob/user, var/forced = FALSE, var/silent = FALSE)
@@ -128,36 +76,6 @@
 		add_fingerprint(user)
 	return M
 
-/atom/movable/proc/handle_buckled_mob_movement(newloc,direct)
-	if(has_buckled_mobs())
-		for(var/A in buckled_mobs)
-			var/mob/living/L = A
-//			if(!L.Move(newloc, direct))
-			if(!L.forceMove(newloc, direct))
-				loc = L.loc
-				last_move = L.last_move
-				L.inertia_dir = last_move
-				return FALSE
-			else
-				L.setDir(dir)
-	return TRUE
-
-/atom/movable/proc/can_buckle_check(mob/living/M, forced = FALSE)
-	if(!buckled_mobs)
-		buckled_mobs = list()
-
-	if(!istype(M))
-		return FALSE
-
-	if((!can_buckle && !forced) || M.buckled || M.pinned.len || (buckled_mobs.len >= buckle_max_mobs) || (buckle_require_restraints && !M.restrained()))
-		return FALSE
-
-	if(has_buckled_mobs() && buckled_mobs.len >= buckle_max_mobs) //Handles trying to buckle yourself to the chair when someone is on it
-		to_chat(M, "<span class='notice'>\The [src] can't buckle anymore people.</span>")
-
-		return FALSE
-
-	return TRUE
 
 #warn parse above
 #warn impl below
@@ -244,7 +162,7 @@
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_BUCKLE_MOB, M, flags, user, semantic) & COMPONENT_BLOCK_BUCKLE_OPERATION)
 		return FALSE
 
-	if(!can_buckle_mob(M, flags, user, semantic) && !(flags & BUCKLE_OP_FORCE))
+	if(!(flags & BUCKLE_OP_FORCE) && !can_buckle_mob(M, flags, user, semantic))
 		return FALSE
 
 	if(M.buckled)
@@ -275,6 +193,10 @@
  */
 /atom/movable/proc/unbuckle_mob(mob/M, flags, mob/user, semantic)
 	SHOULD_CALL_PARENT(TRUE)
+
+	if(!(flags & BUCKLE_OP_FORCE) && !can_unbuckle_mob(M, flags, user, semantic))
+		return FALSE
+
 	#warn impl and check overrides
 
 /atom/movable/proc/_unbuckle_mob(mob/M, flags, mob/user, semantic)
@@ -298,9 +220,24 @@
  */
 /atom/movable/proc/can_buckle_mob(mob/M, flags, mob/user, semantic)
 	SHOULD_CALL_PARENT(TRUE)
-	if(SEND_SIGNAL(src, COMSIG_MOVABLE_CAN_BUCKLE_MOB, M, flags, user, semantic) & COMPONENT_BLOCK_BUCKLE_OPERATION)
+	. = SEND_SIGNAL(src, COMSIG_MOVABLE_CAN_BUCKLE_MOB, M, flags, user, semantic)
+	if(. & COMPONENT_BLOCK_BUCKLE_OPERATION)
 		return FALSE
+	else if(. & COMPONENT_FORCE_BUCKLE_OPERATION)
+		return TRUE
 	if(!(flags & BUCKLE_OP_IGNORE_LOC) && !M.Adjacent(src))
+		return FALSE
+	if(length(buckled_mobs) >= buckle_max_mobs)
+		to_chat(user, SPAN_NOTICE("[src] can't buckle any more people."))
+		return FALSE
+	if(M.buckled)
+		to_chat(user, SPAN_WARNING("[M == user? "You are" : "[M] is"] already buckled to something!"))
+		return FALSE
+	if((buckle_flags & BUCKLING_REQUIRES_RESTRAINTS) && !M.restrained())
+		to_chat(user, SPAN_WARNING("[M == user? "You need" : "[M] needs"] to be restrained to be buckled to [src]!"))
+		return FALSE
+	if(length(M.pinned))
+		to_chat(user, SPAN_WARNING("[M == user? "You are" : "[M] is"] pinned to something!"))
 		return FALSE
 	return TRUE
 
@@ -312,10 +249,12 @@
  */
 /atom/movable/proc/can_unbuckle_mob(mob/M, flags, mob/user, semantic)
 	SHOULD_CALL_PARENT(TRUE)
-	if(SEND_SIGNAL(src, COMSIG_MOVABLE_CAN_UNBUCKLE_MOB, M, flags, user, semantic) & COMPONENT_BLOCK_BUCKLE_OPERATION)
+	. = SEND_SIGNAL(src, COMSIG_MOVABLE_CAN_UNBUCKLE_MOB, M, flags, user, semantic)
+	if(. & COMPONENT_BLOCK_BUCKLE_OPERATION)
 		return FALSE
+	else if(. & COMPONENT_FORCE_BUCKLE_OPERATION)
+		return TRUE
 	return TRUE
-
 /**
  * called when something is buckled to us
  */
