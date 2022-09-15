@@ -24,7 +24,8 @@ It also serves the purposes of portraying the Lore accurate effect of "Acausal L
 	for(var/mob/living/carbon/human/H in range(radius, parent))
 		if(!iscultist(H) && !istype(H.head, /obj/item/clothing/head/helmet/para))
 			H.hallucination += rand(25,50)
-	empulse(src, 0, 0, 3, 0)
+	var/turf/T = get_turf(parent)
+	empulse(T, 0, 0, emp_radius, 0)
 
 /datum/component/horror_aura/Destroy()
 	STOP_PROCESSING(SSobj, src)
