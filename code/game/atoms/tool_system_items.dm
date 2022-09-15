@@ -94,7 +94,7 @@
  */
 /obj/item/proc/tool_speed(function, mob/user, atom/target, flags, usage)
 	SHOULD_CALL_PARENT(TRUE)
-	return tool_speed
+	return (flags & TOOL_OP_INSTANT)? 0 : tool_speed
 
 /**
  * gets the static functionality of this tool.
@@ -124,8 +124,7 @@
  * return FALSE to cancel
  *
  * @params
- * - function - tool function enum; if null, defaults to static tool behaviour
- * - hint - hint of what we're doing, if any
+ * - function - tool function enum
  * - flags - tool operation flags
  * - user - person using tool, if any
  * - target - atom tool being used on, if any
@@ -133,7 +132,7 @@
  * - cost - cost multiplier
  * - usage - usage flags, if any
  */
-/obj/item/proc/using_as_tool(function, hint, flags, mob/user, atom/target, time, cost, usage)
+/obj/item/proc/using_as_tool(function, flags, mob/user, atom/target, time, cost, usage)
 	SHOULD_CALL_PARENT(TRUE)
 	return TRUE
 
@@ -142,17 +141,16 @@
  * return FALSE to cancel
  *
  * @params
- * - function - tool function enum; if null, defaults to static tool behavior
- * - hint - hint of what we're doing, if any
+ * - function - tool function enum
  * - flags - tool operation flags
  * - user - person using tool, if any
  * - target - atom tool being used on, if any
  * - time - duration of the action in deciseconds
  * - cost - cost multiplier
- * - success - was it successful?
  * - usage - usage flags, if any
+ * - success - was it successful?
  */
-/obj/item/proc/used_as_tool(function, hint, flags, mob/user, atom/target, time, cost, usage, success)
+/obj/item/proc/used_as_tool(function, flags, mob/user, atom/target, time, cost, usage, success)
 	SHOULD_CALL_PARENT(TRUE)
 	return TRUE
 
@@ -160,48 +158,91 @@
  * standard feedback for starting a tool usage
  *
  * @params
- * - function - tool function enum; if null, defaults to static tool behavior
- * - hint - hint of what we're doing
+ * - function - tool function enum
  * - flags - tool operation flags
  * - user - person using tool, if any
  * - target - atom tool being used on, if any
- * - time - estimated duration of the action in deciseconds
- * - msg - what to show to everyone around target
- * - self_msg - what to show to user
+ * - time - duration of the action in deciseconds
+ * - cost - cost multiplier
+ * - usage - usage flags, if any
+ * - phrase - optional; phrase for standard feedback that renders as "[user] [tool.tool_verb(...)] [phrase]"
  */
-/obj/item/proc/standard_tool_feedback_start(function, hint, flags, mob/user, atom/target, time, msg, self_msg)
+/obj/item/proc/standard_tool_feedback_start(function, flags, mob/user, atom/target, time, cost, usage, phrase)
+	SHOULD_CALL_PARENT(TRUE)
+	if(!(flags & TOOL_OP_NO_STANDARD_AUDIO))
+		standard_tool_feedback_sound(function, flags, user, target, time, cost, usage)
+	if(!(flags & TOOL_OP_NO_STANDARD_MESSAGE) && phrase)
+		standard_tool_feedback_message(function, flags, user, target, time, cost, usage, phrase)
 
 /**
  * standard feedback for ending a tool usage
  *
  * @params
- * - function - tool function enum; if null, defaults to static tool behavior
- * - hint - hint of what we're doing
+ * - function - tool function enum
  * - flags - tool operation flags
  * - user - person using tool, if any
  * - target - atom tool being used on, if any
  * - time - duration of the action in deciseconds
- * - success - did we finish successfully?
- * - msg - what to show to everyone around target
- * - self_msg - what to show to user
+ * - cost - cost multiplier
+ * - usage - usage flags, if any
+ * - success - was it successful?
+ * - phrase - optional; phrase for standard feedback that renders as "[user] [tool.tool_verb(...)] [phrase]"
  */
-/obj/item/proc/standard_tool_feedback_end(function, hint, flags, mob/user, atom/target, time, success, msg, self_msg)
+/obj/item/proc/standard_tool_feedback_end(function, flags, mob/user, atom/target, time, cost, usage, phrase, success)
+	SHOULD_CALL_PARENT(TRUE)
+	if(!(flags & TOOL_OP_NO_STANDARD_AUDIO))
+		standard_tool_feedback_sound(function, flags, user, target, time, cost, usage, success)
+	if(!(flags & TOOL_OP_NO_STANDARD_MESSAGE) && phrase)
+		standard_tool_feedback_message(function, flags, user, target, time, cost, usage, phrase, success)
+
+/**
+ * plays tool sound
+ *
+ * @params
+ * - function - tool function enum
+ * - flags - tool operation flags
+ * - user - person using tool, if any
+ * - target - atom tool being used on, if any
+ * - time - duration of the action in deciseconds
+ * - cost - cost multiplier
+ * - usage - usage flags, if any
+ * - success - was it successful? null if we're just starting
+ */
+/obj/item/proc/standard_tool_feedback_sound(function, flags, mob/user, atom/target, time, cost, usage, success)
+	playsound(src, tool_sound(function, flags, user, target, time, cost, usage, success), 50, TRUE)
+
+
+/**
+ * displays a visible message for tool usage
+ *
+ * @params
+ * - function - tool function enum
+ * - flags - tool operation flags
+ * - user - person using tool, if any
+ * - target - atom tool being used on, if any
+ * - time - duration of the action in deciseconds
+ * - cost - cost multiplier
+ * - usage - usage flags, if any
+ * - phrase - optional; phrase for standard feedback that renders as "[user] [tool.tool_verb(...)] [phrase]"
+ * - success - was it successful? null if we're just starting
+ */
+/obj/item/proc/standard_tool_feedback_message(function, flags, mob/user, atom/target, time, cost, usage, phrase, success)
 
 /**
  * gets sound to play on tool usage
  *
  * @params
  * - function - tool function enum
- * - hint - hint of what we're doing
  * - flags - tool operation flags
  * - user - person using tool, if any
  * - target - atom tool being used on, if any
+ * - time - duration of the action in deciseconds
+ * - cost - cost multiplier
  * - usage - usage flags, if any
- * - time - duration of the action in deciseconds, either estimated or actual for start/finish.
- * - success - did we finish successfully? null if we're starting - this is for optimization
+ * - success - was it successful? null if we're just starting
  */
-/obj/item/proc/tool_sound(function, hint, flags, mob/user, atom/target, usage, time, success)
-	if((function == tool_behaviour) && tool_sound)
+/obj/item/proc/tool_sound(function, flags, mob/user, atom/target, time, cost, usage, success)
+	if(tool_sound)
 		return tool_sound
 	// return default
 	switch(function)
@@ -217,26 +258,35 @@
 			return 'sound/items/ratchet.ogg'
 
 /**
+ * returns the tool verb
+ *
+ * @params
+ * - function - tool function enum
+ * - flags - tool operation flags
+ * - user - person using tool, if any
+ * - target - atom tool being used on, if any
+ * - time - duration of the action in deciseconds
+ * - cost - cost multiplier
+ * - usage - usage flags, if any
+ * - phrase - optional; phrase for standard feedback that renders as "[user] [tool.tool_verb(...)] [phrase]"
+ * - success - was it successful? null if we're just starting
+ */
+/obj/item/proc/tool_verb(function, flags, mob/user, atom/target, time, cost, usage, phrase, success)
+
+
+/**
  * constructs message to display on tool usage
  *
  * @params
  * - function - tool function enum
- * - hint - hint of what we're doing
- *
- *
- *
  * - flags - tool operation flags
  * - user - person using tool, if any
- * - target - atom tool is being used on, if any
+ * - target - atom tool being used on, if any
+ * - time - duration of the action in deciseconds
+ * - cost - cost multiplier
  * - usage - usage flags, if any
- * - time - duration of the action in deciseconds, either estimated or actual for start/finish.
- * - success - did we finish successfully? null if we're starting - this is for optimization
+ * - phrase - optional; phrase for standard feedback that renders as "[user] [tool.tool_verb(...)] [phrase]"
+ * - success - was it successful? null if we're just starting
  */
-/obj/item/proc/tool_message(function, hint, flags, mob/user, atom/target, usage, time, success)
+/obj/item/proc/tool_message(function, flags, mob/user, atom/target, time, cost, usage, phrase, successs)
 
-
-#warn ughh
-
-
-
-#warn impl
