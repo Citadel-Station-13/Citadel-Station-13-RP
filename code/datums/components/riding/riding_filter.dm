@@ -49,6 +49,12 @@
 			CRASH("bad handler typepath passed in")
 		src.handler_typepath = handler_typepath
 
+/datum/component/riding_filter/Destroy()
+	for(var/obj/item/offhand/riding/R in our_offhands)
+		R._silently_erase()
+	our_offhands = null
+	return ..()
+
 /datum/component/riding_filter/RegisterWithParent()
 	. = ..()
 	RegisterSignal(parent, COMSIG_MOVABLE_PRE_BUCKLE_MOB, .proc/signal_hook_pre_buckle)
@@ -134,7 +140,7 @@
  * checks if we should allow an entity to buckle another entity to us
  * overrides atom opinion
  */
-/datum/componnet/riding_filter/proc/check_user_mount(mob/M, buckle_flags, mob/user, semantic)
+/datum/component/riding_filter/proc/check_user_mount(mob/M, buckle_flags, mob/user, semantic)
 	return TRUE
 
 /datum/component/riding_filter/proc/create_riding_handler(mob/M, buckle_flags, mob/user, semantic, ...)
@@ -196,33 +202,39 @@
 			. += R
 
 /datum/component/riding_filter/proc/offhand_destroyed(obj/item/offhand/riding/offhand, mob/rider)
-	LAZYREMOVE(our_offhands, offhand)
 	check_offhands(rider)
 
 /datum/component/riding_filter/proc/try_equip_offhand_to_rider(mob/rider)
-	var/obj/item/offhand/riding/R = new(rider)
-	if(rider.put_in_hands(R))
-		R.filter = src
-		LAZYADD(our_offhands, R)
-		return TRUE
-	qdel(R)
-	return FALSE
+	var/obj/item/offhand/riding/R = rider.allocate_offhand(/obj/item/offhand/riding)
+	if(!R)
+		return
+	R.filter = src
+	R.owner = rider
+	LAZYADD(our_offhands, R)
+	return R
 
 /datum/component/riding_filter/proc/cleanup_rider_offhands(mob/rider)
 	for(var/obj/item/offhand/riding/R as anything in rider.get_held_items_of_type(/obj/item/offhand/riding))
-		LAZYREMOVE(our_offhands, R)
 		R._silently_erase()
+		LAZYREMOVE(our_offhands, R)
+
+/**
+ * grab all necessary offhands
+ * qdel the entire list on failure.
+ */
 
 /obj/item/offhand/riding
 	name = "riding offhand"
 	desc = "Your hand is full carrying someone on you!"
 	/// riding handler component
 	var/datum/component/riding_filter/mob/filter
-	/// rider
-	var/mob/rider
+	/// person
+	var/mob/owner
 
 /obj/item/offhand/riding/Destroy()
-	filter?.offhand_destroyed(src, rider)
+	if(filter)
+		filter.offhand_destroyed(src, owner)
+		LAZYREMOVE(filter.our_offhands, src)
 	filter = null
 	rider = null
 	return ..()

@@ -169,7 +169,7 @@
 		M.setDir(rider_dir_offset(dir, i))
 
 /datum/component/riding_handler/proc/apply_rider_offsets(mob/rider, dir, pos, opx, opy)
-	var/list/offsets = rider_layer_offset(dir, pos)
+	var/list/offsets = rider_pixel_offsets(dir, pos)
 	rider.pixel_x = offsets[1] + opx
 	rider.pixel_y = offsets[2] + opy
 

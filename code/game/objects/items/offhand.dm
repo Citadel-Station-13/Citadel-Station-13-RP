@@ -24,9 +24,20 @@
 /**
  * allocates an offhand item if possible
  *
+ * returns offhand or null
+ *
  * @params
- * - index - preferred hand
+ * - type - the type of the offhand
+ * - index - hand index; null for any
  * - flags - inv flags
+ * - ... - the rest of the args are passed into New() of the offhand.
  */
-/mob/proc/allocate_offhand(index, flags)
-	#warn impl
+/mob/proc/allocate_offhand(type, index, flags, ...)
+	RETURN_TYPE(/obj/item/offhand)
+	var/obj/item/offhand/O = new type(arglist(list(src) + args.Copy(4)))
+	if(index)
+		if(put_in_hand_or_del(O, index, flags))
+			return O
+	else
+		if(put_in_hands_or_del(O, flags))
+			return O

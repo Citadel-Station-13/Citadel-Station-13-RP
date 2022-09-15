@@ -6,12 +6,6 @@
 /datum/component/riding_filter/mob
 	expected_typepath = /mob
 	handler_typepath = /datum/component/riding_handler/mob
-	offset_layer = list(	// by default, we're above only when facing south
-		0.01,
-		0.01,
-		-0.01,
-		0.01
-	)
 
 	/// base number of offhands required on us
 	var/offhands_needed_base = 0
@@ -84,7 +78,34 @@
 
 #warn cleanup the above shitcode
 
+/datum/component/riding_filter/mob/proc/try_equip_offhand_to_ridden()
+	RETURN_TYPE(/obj/item/offhand/riding)
+	var/mob/M = parent
+	var/obj/item/offhand/riding/R = M.allocate_offhand(/obj/item/offhand/riding)
+	if(!R)
+		return
+	R.filter = src
+	R.owner = M
+	LAZYADD(our_offhands, R)
+	return R
+
+/datum/component/riding_filter/mob/offhand_destroyed(obj/item/offhand/riding/offhand, mob/rider)
+	if(rider == parent)
+		check_offhands()
+		return
+	return ..()
+
 /datum/component/riding_handler/mob
 	expected_typepath = /mob
 
+	offset_layer = list(	// by default, we're above only when facing south
+		0.01,
+		0.01,
+		-0.01,
+		0.01
+	)
+
+	offset_pixel = list(0, 8)
+
+#warn sigh offsets
 #warn we're going to need to make laying down be able to kick people off if needed
