@@ -184,6 +184,8 @@
 	// todo: refactor the below
 	M.update_floating(M.Check_Dense_Object())
 	M.update_water()
+	M.reset_pixel_offsets()
+	mob_buckled(M, flags, user, semantic)
 	return TRUE
 
 /**
@@ -210,6 +212,7 @@
 	// todo: refactor the below
 	M.update_floating(M.Check_Dense_Object())
 	M.update_water()
+	mob_unbuckled(M, flags, user, semantic)
 	return TRUE
 
 /**

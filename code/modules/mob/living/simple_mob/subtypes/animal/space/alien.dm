@@ -140,10 +140,10 @@
 	health = 400
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/sentinel/praetorian)
 
-	pixel_x = -16
-	old_x = -16
-	icon_expected_width = 64
-	icon_expected_height = 64
+	base_pixel_x = -16
+	icon_dimension_y = 64
+	icon_dimension_x = 64
+
 	meat_amount = 5
 
 	mod_min = 80

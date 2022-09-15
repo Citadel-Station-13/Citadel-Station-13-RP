@@ -106,10 +106,10 @@
 	var/base_pixel_x = 0
 	/// Default pixel y shifting for the atom's icon.
 	var/base_pixel_y = 0
-	/// Centering pixel x shifting for the atom's icon. This is the offset to apply from the bottom left of the atom's hitbox to get the bottom left of the 32x32 on its center. e.g. this is 0 for a 3x1 sprite with -32 x 0 y offset.
-	var/centering_pixel_x = 0
-	/// Centering pixel y shifting for the atom's icon. This is the offset to apply from the bottom left of the atom's hitbox to get the bottom left of the 32x32 on its center. e.g. this is 0 for a 3x1 sprite with -32 x 0 y offset.
-	var/centering_pixel_y = 0
+	/// expected icon width; centering offsets will be calculated from this and our pixel x.
+	var/icon_dimension_x = 32
+	/// expected icon height; centering offsets will be calculated from this and our pixel y.
+	var/icon_dimension_y = 32
 
 //! Misc
 	///Mobs that are currently do_after'ing this atom, to be cleared from on Destroy()
@@ -1133,7 +1133,7 @@
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
 /atom/proc/get_centering_pixel_x_offset()
-	return centering_pixel_x
+	return get_standard_pixel_x_offset() + (icon_expected_width) / 2
 
 /**
  * get the pixel_y needed to adjust an atom on our turf **to the position of our visual center**
@@ -1142,7 +1142,7 @@
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
 /atom/proc/get_centering_pixel_y_offset()
-	return centering_pixel_y
+	return get_standard_pixel_y_offset() + (icon_expected_height) / 2
 
 /// Setter for the `base_pixel_x` variable to append behavior related to its changing.
 /atom/proc/set_base_pixel_x(new_value)

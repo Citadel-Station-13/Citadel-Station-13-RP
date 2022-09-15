@@ -109,3 +109,4 @@
 
 #warn sigh offsets
 #warn we're going to need to make laying down be able to kick people off if needed
+#warn deal with size multiplier somehow - linear transform?

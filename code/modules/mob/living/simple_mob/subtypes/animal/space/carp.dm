@@ -87,10 +87,8 @@
 	movement_cooldown = 5 // Slower than the younger carp.
 	mob_size = MOB_LARGE
 
-	pixel_x = -16
 	base_pixel_x = -16
-	icon_expected_width = 64
-	icon_expected_height = 32
+	icon_dimension_x = 64
 
 	meat_amount = 5
 	bone_amount = 4
