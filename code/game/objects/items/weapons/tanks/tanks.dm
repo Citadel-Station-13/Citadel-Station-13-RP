@@ -204,7 +204,7 @@ var/list/global/tank_gauge_cache = list()
 						to_chat(user, "<span class='danger'>You accidentally rake \the [W] across \the [src]!</span>")
 						max_integrity -= rand(2,6)
 						integrity = min(integrity,max_integrity)
-						src.air_contents.add_thermal_energy(rand(2000,50000))
+						src.air_contents.adjust_thermal_energy(rand(2000,50000))
 				WT.eyecheck(user)
 			else
 				to_chat(user, "<span class='notice'>The emergency pressure relief valve has already been welded.</span>")
@@ -329,7 +329,7 @@ var/list/global/tank_gauge_cache = list()
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
-/obj/item/tank/add_thermal_energy(joules)
+/obj/item/tank/adjust_thermal_energy(joules)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
@@ -657,7 +657,7 @@ var/list/global/tank_gauge_cache = list()
 	src.update_icon()
 	src.update_gauge()
 
-	air_contents.add_thermal_energy(15000)
+	air_contents.adjust_thermal_energy(15000)
 
 
 /obj/item/tankassemblyproxy/update_icon()

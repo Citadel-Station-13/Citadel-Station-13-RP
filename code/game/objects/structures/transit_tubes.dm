@@ -34,8 +34,6 @@
 	var/const/OPEN_DURATION = 6
 	var/const/CLOSE_DURATION = 6
 
-
-
 /obj/structure/transit_tube_pod
 	icon = 'icons/obj/pipes/transit_tube_pod.dmi'
 	icon_state = "pod"
@@ -43,8 +41,7 @@
 	anchored = 1.0
 	density = 1
 	var/moving = 0
-	var/datum/gas_mixture/air_contents = new()
-
+	var/datum/gas_mixture/air_contents = new(CELL_VOLUME)
 
 
 /obj/structure/transit_tube_pod/Destroy()
@@ -355,7 +352,7 @@
 
 	//note that share_ratio assumes both gas mixes have the same volume,
 	//so if the volume is changed this may need to be changed as well.
-	air_contents.share_ratio(environment, 1)
+	air_contents.default_share_ratio(environment, 1)
 
 // When the player moves, check if the pos is currently stopped at a station.
 //  if it is, check the direction. If the direction matches the direction of

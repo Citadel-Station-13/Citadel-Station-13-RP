@@ -71,21 +71,24 @@
 #warn Consider switching to VSCode editor instead, where you can press Ctrl+Shift+B to build.
 #endif
 
-// A reasonable number of maximum overlays an object needs
-// If you think you need more, rethink it
-#define MAX_ATOM_OVERLAYS 100
+//! Atmospherics
 
-//! ZAS
+//? Gasmixtures
+/// enable general assertions
+#define GASMIXTURE_ASSERTIONS
 
-// debugging
-// if you touch anything #if'd behind a block for any of these  you better make sure this works or I will bean you with a shoe	.
+//? ZAS (Environmental)
+/// Uncomment to turn on Multi-Z ZAS Support!
+#define MULTIZAS
 /// uncomment to enable laggy as sin ZAS debugging systems coded in for when doing bugfixes or major systems overhaulling.
-#define ZAS_DEBUG
+#define ZAS_ASSERTIONS
 /// uncomment to enable *actually* laggy as sin ZAS debugging, like "list in contents". don't do this without a major reason.
-// #define ZAS_DEBUG_EXPENSIVE
+// #define ZAS_ASSERTIONS_EXPENSIVE
 /// uncomment to enable debugging graphics. you probably want to keep this off in live!
 // #define ZAS_DEBUG_GRAPHICS
 
-// features
-/// Uncomment to turn on Multi-Z ZAS Support!
-#define MULTIZAS
+//! Overlays
+
+// A reasonable number of maximum overlays an object needs
+// If you think you need more, rethink it
+#define MAX_ATOM_OVERLAYS 100
