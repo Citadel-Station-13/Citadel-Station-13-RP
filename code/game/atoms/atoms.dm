@@ -1095,25 +1095,25 @@
 
 //! Pixel Offsets
 /atom/proc/set_pixel_x(val)
-	pixel_x = val + get_managed_pixel_x_offset()
+	pixel_x = val + get_managed_pixel_x()
 
 /atom/proc/set_pixel_y(val)
-	pixel_y = val + get_managed_pixel_y_offset()
+	pixel_y = val + get_managed_pixel_y()
 
 /atom/proc/reset_pixel_offsets()
-	pixel_x = get_managed_pixel_x_offset()
-	pixel_y = get_managed_pixel_y_offset()
+	pixel_x = get_managed_pixel_x()
+	pixel_y = get_managed_pixel_y()
 
 /**
  * get our pixel_x to reset to
  */
-/atom/proc/get_managed_pixel_x_offset()
+/atom/proc/get_managed_pixel_x()
 	return get_standard_pixel_x_offset()
 
 /**
  * get our pixel_y to reset to
  */
-/atom/proc/get_managed_pixel_y_offset()
+/atom/proc/get_managed_pixel_y()
 	return get_standard_pixel_y_offset()
 
 /**
@@ -1129,7 +1129,7 @@
 	return base_pixel_y
 
 /**
- * get the pixel_x needed to adjust an atom on our turf **to restore their position to our visual center**
+ * get the pixel_x needed to adjust an atom on our turf **to the position of our visual center**
  *
  * e.g. even if we are a 3x3 sprite with -32 x/y offsets, this would be 0
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
@@ -1138,7 +1138,7 @@
 	return centering_pixel_x
 
 /**
- * get the pixel_y needed to adjust an atom on our turf **to restore their position to our visual center**
+ * get the pixel_y needed to adjust an atom on our turf **to the position of our visual center**
  *
  * e.g. even if we are a 3x3 sprite with -32 x/y offsets, this would be 0
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.

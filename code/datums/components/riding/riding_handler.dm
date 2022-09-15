@@ -130,8 +130,8 @@
 	if(!offset_vehicle)
 		return
 	var/atom/movable/AM = parent
-	var/opx = AM.get_managed_pixel_x_offset()
-	var/opy = AM.get_managed_pixel_y_offset()
+	var/opx = AM.get_managed_pixel_x()
+	var/opy = AM.get_managed_pixel_y()
 	if(islist(offset_vehicle[1]))
 		// NESW format
 		switch(dir)
@@ -172,8 +172,8 @@
 		return
 	var/atom/movable/AM = parent
 	_last_dir = dir
-	var/opx = AM.get_managed_pixel_x_offset()
-	var/opy = AM.get_managed_pixel_y_offset()
+	var/opx = AM.get_managed_pixel_x()
+	var/opy = AM.get_managed_pixel_y()
 	for(var/i in 1 to length(AM.buckled_mobs))
 		var/mob/M = AM.buckled_mobs[i]
 		apply_rider_layer(M, dir, i)
