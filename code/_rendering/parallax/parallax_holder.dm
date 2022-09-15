@@ -163,6 +163,7 @@
 		Animation(A.parallax_move_speed, A.parallax_move_angle, auto_z_change? 0 : null, auto_z_change? 0 : null, force)
 
 /datum/parallax_holder/proc/Apply(client/C = owner)
+	return
 	if(QDELETED(C))
 		return
 	. = list()
