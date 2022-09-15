@@ -17,6 +17,7 @@
 
 #warn offsets
 #warn how to push peopl eoff?
+#warn taur is -16 px
 
 ///////Yes, I said humans. No, this won't end well...//////////
 /datum/component/riding_handler/human

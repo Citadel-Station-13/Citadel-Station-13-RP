@@ -462,6 +462,7 @@
 	client?.parallax_holder?.Update()
 	for(var/obj/O in contents)
 		O.on_loc_moved(oldloc)
+	reset_pixel_shifting()
 
 // Received from Moved(), useful for items that need to know that their loc just moved.
 /obj/proc/on_loc_moved(atom/oldloc)
@@ -528,3 +529,36 @@
 	setDir(SOUTH)
 	last_turn = world.time
 	return TRUE
+
+//! Pixel Shifting
+/mob/verb/eastshift()
+	set hidden = TRUE
+	if(!canface())
+		return FALSE
+	if(pixel_x <= 16)
+		pixel_x++
+		is_shifted = TRUE
+
+/mob/verb/westshift()
+	set hidden = TRUE
+	if(!canface())
+		return FALSE
+	if(pixel_x >= -16)
+		pixel_x--
+		is_shifted = TRUE
+
+/mob/verb/northshift()
+	set hidden = TRUE
+	if(!canface())
+		return FALSE
+	if(pixel_y <= 16)
+		pixel_y++
+		is_shifted = TRUE
+
+/mob/verb/southshift()
+	set hidden = TRUE
+	if(!canface())
+		return FALSE
+	if(pixel_y >= -16)
+		pixel_y--
+		is_shifted = TRUE

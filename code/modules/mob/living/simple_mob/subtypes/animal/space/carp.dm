@@ -88,7 +88,7 @@
 	mob_size = MOB_LARGE
 
 	pixel_x = -16
-	default_pixel_x = -16
+	base_pixel_x = -16
 	icon_expected_width = 64
 	icon_expected_height = 32
 
@@ -115,7 +115,7 @@
 	melee_damage_upper = 25
 
 	pixel_y = -16
-	default_pixel_y = -16
+	base_pixel_y = -16
 	icon_expected_width = 64
 	icon_expected_height = 64
 

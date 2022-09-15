@@ -47,10 +47,6 @@
 // Standard procs
 //-------------------------------------------
 
-/obj/vehicle_old/Destroy()
-	QDEL_NULL(riding_datum)
-	return ..()
-
 //BUCKLE HOOKS
 
 /obj/vehicle_old/Move()

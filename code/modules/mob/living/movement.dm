@@ -1,10 +1,3 @@
-/mob/living/Moved()
-	. = ..()
-	//update_turf_movespeed(loc)
-	if(is_shifted)
-		is_shifted = FALSE
-		reset_pixel_offsets()
-
 /mob/living/movement_delay()
 	. = ..()
 	switch(m_intent)
@@ -309,7 +302,7 @@
 	var/mob/M = ismob(AM)? AM : null
 
 	// redirect forces to buckled if it prevents move
-	if(M?.buckled && (M.buckled.buckle_flags & BUCKLING_PREVENTS_PULLING))
+	if(M.buckled)
 		resist = M.buckled.move_resist
 		pushing = M.buckled
 

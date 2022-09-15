@@ -1,4 +1,4 @@
-/atom/movable/vv_edit_var(var_name, var_value)
+/atom/movable/vv_edit_var(var_name, var_value, raw_edit)
 	var/static/list/banned_edits = list("step_x", "step_y", "step_size", "bounds")
 	var/static/list/careful_edits = list("bound_x", "bound_y", "bound_width", "bound_height")
 	if(var_name in banned_edits)

@@ -56,11 +56,20 @@
 	/// The calculated mob action speed slowdown based on the modifiers list
 	var/cached_multiplicative_actions_slowdown
 
+//! Pixel Offsets
+	/// are we shifted by the user?
+	var/shifted_pixels = FALSE
+	/// shifted pixel x
+	var/shift_pixel_x = 0
+	/// shifted pixel y
+	var/shift_pixel_y = 0
+
+//! Size
+	/// our size multiplier
+	var/size_multiplier = 1
+
 //! Misc
 	var/next_move = null // For click delay, despite the misleading name.
-
-	//Not in use yet
-	var/obj/effect/organstructure/organStructure = null
 
 	var/atom/movable/screen/hands = null
 	var/atom/movable/screen/pullin = null
@@ -311,11 +320,6 @@
 
 	/// Skip processing life() if there's just no players on this Z-level.
 	var/low_priority = TRUE
-
-	/// For offsetting mobs.
-	var/default_pixel_x = 0
-	/// For offsetting mobs.
-	var/default_pixel_y = 0
 
 	/// Icon to use when attacking w/o anything in-hand.
 	var/attack_icon

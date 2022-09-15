@@ -997,38 +997,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	set hidden = 1
 	set_face_dir(client.client_dir(WEST))
 
-/mob/verb/eastshift()
-	set hidden = TRUE
-	if(!canface())
-		return FALSE
-	if(pixel_x <= 16)
-		pixel_x++
-		is_shifted = TRUE
-
-/mob/verb/westshift()
-	set hidden = TRUE
-	if(!canface())
-		return FALSE
-	if(pixel_x >= -16)
-		pixel_x--
-		is_shifted = TRUE
-
-/mob/verb/northshift()
-	set hidden = TRUE
-	if(!canface())
-		return FALSE
-	if(pixel_y <= 16)
-		pixel_y++
-		is_shifted = TRUE
-
-/mob/verb/southshift()
-	set hidden = TRUE
-	if(!canface())
-		return FALSE
-	if(pixel_y >= -16)
-		pixel_y--
-		is_shifted = TRUE
-
 /mob/proc/adjustEarDamage()
 	return
 
@@ -1191,27 +1159,48 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/check_obscured_slots()
 	return
 
-/**
-  * Gets our standard pixel x offset.
-  *
-  * @params
-  * * lying : The degrees we're turned to while lying down or resting for any reason.
-  */
-/mob/proc/get_standard_pixel_x_offset(lying = 0)
-	return default_pixel_x
+//! Pixel Offsets
+/mob/proc/get_buckled_pixel_x_offset()
+	return buckled?.get_centering_pixel_x_offset()
 
-/**
-  * Gets our standard pixel y offset.
-  *
-  * @params
-  * * lying : The degrees we're turned to while lying down or resting for any reason.
-  */
-/mob/proc/get_standard_pixel_y_offset(lying = 0)
-	return default_pixel_y
+/mob/proc/get_buckled_pixel_y_offset()
+	return buckled?.get_centering_pixel_y_offset()
 
-/**
- * resets our pixel offsets to default
- */
-/mob/proc/reset_pixel_offsets()
-	pixel_X = get_standard_pixel_x_offset(lying)
-	pixel_y = get_standard_pixel_y_offset(lying)
+/mob/reset_pixel_offsets()
+	reset_pixel_shifting()
+	return ..()
+
+/mob/get_managed_pixel_x_offset()
+	return ..() + shift_pixel_x + get_buckled_pixel_x_offset()
+
+/mob/get_managed_pixel_y_offset()
+	return ..() + shift_pixel_y + get_buckled_pixel_y_offset()
+
+/mob/proc/reset_pixel_shifting()
+	if(!shifted_pixels)
+		return
+	shifted_pixels = FALSE
+	pixel_x -= shift_pixel_x
+	pixel_y -= shift_pixel_y
+	shift_pixel_x = 0
+	shift_pixel_y = 0
+
+/mob/proc/set_pixel_shift_x(val)
+	shifted_pixels = TRUE
+	pixel_x += (val - shift_pixel_x)
+	shift_pixel_x = val
+
+/mob/proc/set_pixel_shift_y(val)
+	shifted_pixels = TRUE
+	pixel_y += (val - shift_pixel_y)
+	shift_pixel_y = val
+
+/mob/proc/adjust_pixel_shift_x(val)
+	shifted_pixels = TRUE
+	shift_pixel_x += val
+	pixel_x += val
+
+/mob/proc/adjust_pixel_shift_y(val)
+	shifted_pixels = TRUE
+	shift_pixel_y += val
+	pixel_y += val

@@ -102,10 +102,6 @@
 	var/icon_scale_y = 1
 	/// Used to rotate icons in update_transform()
 	var/icon_rotation = 0
-	var/icon_expected_height = 32
-	var/icon_expected_width = 32
-	var/old_x = 0
-	var/old_y = 0
 
 	///If we're cloaked or not.
 	var/cloaked = FALSE
@@ -116,7 +112,6 @@
 	var/atom/orbit_target
 
 /atom/movable/Destroy(force)
-	. = ..()
 	if(reagents)
 		QDEL_NULL(reagents)
 	unbuckle_all_mobs(BUCKLE_OP_FORCE)
@@ -129,13 +124,12 @@
 	if(self_perspective)
 		QDEL_NULL(self_perspective)
 	throwing?.terminate()
+	if(pulling)
+		stop_pulling()
+	. = ..()
 	moveToNullspace()
 	if(un_opaque)
 		un_opaque.recalc_atom_opacity()
-	if(pulledby)
-		pulledby.stop_pulling()
-	if(pulling)
-		stop_pulling()
 
 /atom/movable/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
@@ -379,6 +373,7 @@
 /atom/movable/proc/get_bullet_impact_effect_type()
 	return BULLET_IMPACT_NONE
 
+//! Perspectives
 /**
  * get perspective to use when shifting eye to us,
  */

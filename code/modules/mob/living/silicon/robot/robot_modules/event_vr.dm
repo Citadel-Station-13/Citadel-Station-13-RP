@@ -54,7 +54,7 @@
 	R.ui_style_vr = TRUE
 	R.pixel_x 	 = -16
 	R.old_x 	 = -16
-	R.default_pixel_x = -16
+	R.base_pixel_x = -16
 	R.dogborg = TRUE
 	R.wideborg = TRUE
 	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill

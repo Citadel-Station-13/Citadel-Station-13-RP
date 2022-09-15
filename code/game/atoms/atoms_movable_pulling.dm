@@ -9,7 +9,7 @@
 		return
 	if(isliving(pulling))
 		var/mob/living/L = pulling
-		if(L.buckled && L.buckled.buckle_prevents_pull) //if they're buckled to something that disallows pulling, prevent it
+		if((L.buckled?.buckle_flags & BUCKLING_PREVENTS_PULLING)) //if they're buckled to something that disallows pulling, prevent it
 			stop_pulling()
 			return
 	if(A == loc && pulling.density)

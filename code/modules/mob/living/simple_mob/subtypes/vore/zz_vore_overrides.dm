@@ -68,7 +68,7 @@
 	vore_icons = SA_ICON_LIVING | SA_ICON_REST
 	old_x = -16
 	old_y = 0
-	default_pixel_x = -16
+	base_pixel_x = -16
 	pixel_x = -16
 	pixel_y = 0
 

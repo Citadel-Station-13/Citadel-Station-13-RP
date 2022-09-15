@@ -230,7 +230,7 @@
 	R.ui_style_vr = TRUE
 	R.pixel_x 	 = -16
 	R.old_x 	 = -16
-	R.default_pixel_x = -16
+	R.base_pixel_x = -16
 	R.dogborg = TRUE
 	R.wideborg = TRUE
 	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
@@ -305,7 +305,7 @@
 	R.ui_style_vr = TRUE
 	R.pixel_x 	 = -16
 	R.old_x 	 = -16
-	R.default_pixel_x = -16
+	R.base_pixel_x = -16
 	R.dogborg = TRUE
 	R.wideborg = TRUE
 	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
@@ -319,7 +319,7 @@
 	R.dogborg = FALSE
 	R.wideborg = FALSE
 	R.ui_style_vr = FALSE
-	R.default_pixel_x = initial(pixel_x)
+	R.base_pixel_x = initial(pixel_x)
 	R.scrubbing = FALSE
 	R.verbs -= /mob/living/silicon/robot/proc/ex_reserve_refill
 	R.verbs -= /mob/living/silicon/robot/proc/robot_mount

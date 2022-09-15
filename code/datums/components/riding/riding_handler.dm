@@ -29,9 +29,17 @@
 	 * it's recommended to use small, fractional numbers like 0.01 increments.
 	 */
 	var/list/offset_layer = 0
-	/// pixel offsets to set mobs to. list (x, y) OR list((x, y), (x, y), (x, y), (x, y)) for NESW OR list(list(NESW offsets of lists(x, y))) for positionals.
+	/**
+	 * pixel offsets to set mobs to. list (x, y) OR list((x, y), (x, y), (x, y), (x, y)) for NESW OR list(list(NESW offsets of lists(x, y))) for positionals.
+	 *
+	 * this is **relative** to the vehicle's managed pixel x/y.
+	 */
 	var/list/offset_pixel = list(0, 0)
-	/// same as offset pixel, but without the third option. set to null to not modify.
+	/**
+	 * same as offset pixel, but without the third option. set to null to not modify.
+	 *
+	 * this is **relative** to the vehicle's managed pixel x/y.
+	 */
 	var/list/offset_vehicle
 
 	//! component-controlled movemnet
@@ -122,24 +130,26 @@
 	if(!offset_vehicle)
 		return
 	var/atom/movable/AM = parent
+	var/opx = AM.get_managed_pixel_x_offset()
+	var/opy = AM.get_managed_pixel_y_offset()
 	if(islist(offset_vehicle[1]))
 		// NESW format
 		switch(dir)
 			if(NORTH)
-				AM.pixel_x = offset_vehicle[1][1]
-				AM.pixel_y = offset_vehicle[1][2]
+				AM.pixel_x = offset_vehicle[1][1] + opx
+				AM.pixel_y = offset_vehicle[1][2] + opy
 			if(EAST)
-				AM.pixel_x = offset_vehicle[2][1]
-				AM.pixel_y = offset_vehicle[2][2]
+				AM.pixel_x = offset_vehicle[2][1] + opx
+				AM.pixel_y = offset_vehicle[2][2] + opy
 			if(SOUTH)
-				AM.pixel_x = offset_vehicle[3][1]
-				AM.pixel_y = offset_vehicle[3][2]
+				AM.pixel_x = offset_vehicle[3][1] + opx
+				AM.pixel_y = offset_vehicle[3][2] + opy
 			if(WEST)
-				AM.pixel_x = offset_vehicle[4][1]
-				AM.pixel_y = offset_vehicle[4][2]
+				AM.pixel_x = offset_vehicle[4][1] + opx
+				AM.pixel_y = offset_vehicle[4][2] + opy
 	else
-		AM.pixel_x = offset_vehicle[1]
-		AM.pixel_y = offset_vehicle[2]
+		AM.pixel_x = offset_vehicle[1] + opx
+		AM.pixel_y = offset_vehicle[2] + opy
 
 /datum/component/riding_handler/proc/on_rider_buckled(mob/rider, semantic)
 	apply_rider(rider, semantic)
@@ -162,10 +172,12 @@
 		return
 	var/atom/movable/AM = parent
 	_last_dir = dir
+	var/opx = AM.get_managed_pixel_x_offset()
+	var/opy = AM.get_managed_pixel_y_offset()
 	for(var/i in 1 to length(AM.buckled_mobs))
 		var/mob/M = AM.buckled_mobs[i]
 		apply_rider_layer(M, dir, i)
-		apply_rider_offsets(M, dir, i, AM.pixel_x, AM.pixel_y)
+		apply_rider_offsets(M, dir, i, opx, opy)
 		M.setDir(rider_dir_offset(dir, i))
 
 /datum/component/riding_handler/proc/apply_rider_offsets(mob/rider, dir, pos, opx, opy)
@@ -303,7 +315,8 @@
  * called when a mob wants to drive us
  */
 /datum/component/riding_handler/proc/attempt_drive(mob/M, dir)
-	if(!loc)
+	var/atom/movable/AM = parent
+	if(!AM.loc)
 		return FALSE
 	// cheap checks first
 	if(world.time < next_move_time)
@@ -311,9 +324,9 @@
 	// then expensive
 	if(!keycheck(M))
 		if(CHATSPAM_THROTTLE_DEFAULT)
-			to_chat(M, SPAN_WARNING("You must have one of the keys in your hand to drive [parent]!"))
+			to_chat(M, SPAN_WARNING("You must have one of the keys in your hand to drive [AM]!"))
 		return FALSE
-	var/turf/next = get_step(src, dir)
+	var/turf/next = get_step(AM, dir)
 	if(!_check_turf(next))
 		if(CHATSPAM_THROTTLE_DEFAULT)
 			to_chat(M, SPAN_WARNING("[parent] cannot drive onto [next]!"))
@@ -348,15 +361,15 @@
 /**
  * checks if a person can stay on us. if not, they'll be kicked off by ride_check()
  */
-/datum/component/riding_handler/proc/check_rider(mob/M, semantic, notify)
-	return check_entity(M, rider_check_flags, semantic, notify)
+/datum/component/riding_handler/proc/check_rider(mob/M, semantic, notify, mob/user)
+	return check_entity(M, rider_check_flags, semantic, notify, user)
 
 /**
  * checks if the vehicle is usable right now.
  * if not, kicks everyone off.
  */
-/datum/component/riding_handler/proc/check_ridden(atom/movable/AM, notify)
-	return check_entity(AM, ridden_check_flags, BUCKLE_SEMANTIC_WE_ARE_THE_VEHICLE, notify)
+/datum/component/riding_handler/proc/check_ridden(atom/movable/AM, notify, mob/user)
+	return check_entity(AM, ridden_check_flags, BUCKLE_SEMANTIC_WE_ARE_THE_VEHICLE, notify, user)
 
 /**
  * checks an atom of riding flags

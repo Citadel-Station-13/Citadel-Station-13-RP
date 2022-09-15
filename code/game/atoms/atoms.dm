@@ -8,10 +8,6 @@
 	layer = TURF_LAYER
 	var/level = 2
 
-	/// Default pixel x shifting for the atom's icon.
-	var/base_pixel_x = 0
-	/// Default pixel y shifting for the atom's icon.
-	var/base_pixel_y = 0
 	/// Used for changing icon states for different base sprites.
 	var/base_icon_state
 	/// Atom flags.
@@ -111,6 +107,16 @@
 	var/base_layer
 	/// Relative layer - position this atom should be in within things of the same base layer. defaults to 0.
 	var/relative_layer = 0
+
+//! Pixel Offsets
+	/// Default pixel x shifting for the atom's icon.
+	var/base_pixel_x = 0
+	/// Default pixel y shifting for the atom's icon.
+	var/base_pixel_y = 0
+	/// Centering pixel x shifting for the atom's icon. This is the offset to apply from the bottom left of the atom's hitbox to get the bottom left of the 32x32 on its center. e.g. this is 0 for a 3x1 sprite with -32 x 0 y offset.
+	var/centering_pixel_x = 0
+	/// Centering pixel y shifting for the atom's icon. This is the offset to apply from the bottom left of the atom's hitbox to get the bottom left of the 32x32 on its center. e.g. this is 0 for a 3x1 sprite with -32 x 0 y offset.
+	var/centering_pixel_y = 0
 
 //! Misc
 	///Mobs that are currently do_after'ing this atom, to be cleared from on Destroy()
@@ -907,24 +913,6 @@
 			color = C
 			return
 
-/// Setter for the `base_pixel_x` variable to append behavior related to its changing.
-/atom/proc/set_base_pixel_x(new_value)
-	if(base_pixel_x == new_value)
-		return
-	. = base_pixel_x
-	base_pixel_x = new_value
-
-	pixel_x = pixel_x + base_pixel_x - .
-
-/// Setter for the `base_pixel_y` variable to append behavior related to its changing.
-/atom/proc/set_base_pixel_y(new_value)
-	if(base_pixel_y == new_value)
-		return
-	. = base_pixel_y
-	base_pixel_y = new_value
-
-	pixel_y = pixel_y + base_pixel_y - .
-
 /**
  * Returns true if this atom has gravity for the passed in turf
  *
@@ -1008,6 +996,12 @@
 /atom/proc/is_drainable()
 	return reagents && (reagents.reagents_holder_flags & DRAINABLE)
 
+
+/atom/proc/get_cell()
+	return
+
+
+//! Filters
 /atom/proc/add_filter(name, priority, list/params, update = TRUE)
 	LAZYINITLIST(filter_data)
 	var/list/copied_parameters = params.Copy()
@@ -1048,10 +1042,6 @@
 	filter_data[name]["priority"] = new_priority
 	update_filters()
 
-// /obj/item/update_filters()
-// 	. = ..()
-// 	update_action_buttons()
-
 /atom/proc/get_filter(name)
 	if(filter_data && filter_data[name])
 		return filters[filter_data.Find(name)]
@@ -1072,6 +1062,7 @@
 	filter_data = null
 	filters = null
 
+//! Layers
 /// Sets the new base layer we should be on.
 /atom/proc/set_base_layer(new_layer)
 	ASSERT(isnum(new_layer))
@@ -1088,5 +1079,87 @@
 	// base layer being null isn't
 	layer = base_layer + 0.001 * relative_layer
 
-/atom/proc/get_cell()
-	return
+/atom/proc/hud_layerise()
+	plane = PLANE_PLAYER_HUD_ITEMS
+	set_base_layer(LAYER_HUD_ITEM)
+	// appearance_flags |= NO_CLIENT_COLOR
+
+/atom/proc/hud_unlayerise()
+	plane = initial(plane)
+	set_base_layer(initial(layer))
+	// appearance_flags &= ~(NO_CLIENT_COLOR)
+
+/atom/proc/reset_plane_and_layer()
+	plane = initial(plane)
+	set_base_layer(initial(layer))
+
+//! Pixel Offsets
+/atom/proc/set_pixel_x(val)
+	pixel_x = val + get_managed_pixel_x_offset()
+
+/atom/proc/set_pixel_y(val)
+	pixel_y = val + get_managed_pixel_y_offset()
+
+/atom/proc/reset_pixel_offsets()
+	pixel_x = get_managed_pixel_x_offset()
+	pixel_y = get_managed_pixel_y_offset()
+
+/**
+ * get our pixel_x to reset to
+ */
+/atom/proc/get_managed_pixel_x_offset()
+	return get_standard_pixel_x_offset()
+
+/**
+ * get our pixel_y to reset to
+ */
+/atom/proc/get_managed_pixel_y_offset()
+	return get_standard_pixel_y_offset()
+
+/**
+ * get the pixel_x needed to center our sprite visually with our current bounds
+ */
+/atom/proc/get_standard_pixel_x_offset()
+	return base_pixel_x
+
+/**
+ * get the pixel_y needed to center our sprite visually with our current bounds
+ */
+/atom/proc/get_standard_pixel_y_offset()
+	return base_pixel_y
+
+/**
+ * get the pixel_x needed to adjust an atom on our turf **to restore their position to our visual center**
+ *
+ * e.g. even if we are a 3x3 sprite with -32 x/y offsets, this would be 0
+ * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
+ */
+/atom/proc/get_centering_pixel_x_offset()
+	return centering_pixel_x
+
+/**
+ * get the pixel_y needed to adjust an atom on our turf **to restore their position to our visual center**
+ *
+ * e.g. even if we are a 3x3 sprite with -32 x/y offsets, this would be 0
+ * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
+ */
+/atom/proc/get_centering_pixel_y_offset()
+	return centering_pixel_y
+
+/// Setter for the `base_pixel_x` variable to append behavior related to its changing.
+/atom/proc/set_base_pixel_x(new_value)
+	if(base_pixel_x == new_value)
+		return
+	. = base_pixel_x
+	base_pixel_x = new_value
+
+	pixel_x = pixel_x + base_pixel_x - .
+
+/// Setter for the `base_pixel_y` variable to append behavior related to its changing.
+/atom/proc/set_base_pixel_y(new_value)
+	if(base_pixel_y == new_value)
+		return
+	. = base_pixel_y
+	base_pixel_y = new_value
+
+	pixel_y = pixel_y + base_pixel_y - .

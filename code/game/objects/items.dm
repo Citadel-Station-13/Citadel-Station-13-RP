@@ -891,3 +891,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/interact(mob/user)
 	add_fingerprint(user)
 	ui_interact(user)
+
+// /obj/item/update_filters()
+// 	. = ..()
+// 	update_action_buttons()

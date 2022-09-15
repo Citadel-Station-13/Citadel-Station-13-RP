@@ -164,20 +164,20 @@ note dizziness decrements automatically in the mob's Life() proc.
 	if(!direction) // On top of?
 		pixel_z_diff = -8
 
-	var/default_pixel_x = initial(pixel_x)
-	var/default_pixel_y = initial(pixel_y)
-	var/default_pixel_z = initial(pixel_z)
+	var/base_pixel_x = initial(pixel_x)
+	var/base_pixel_y = initial(pixel_y)
+	var/base_pixel_z = initial(pixel_z)
 	var/initial_alpha = alpha
 	var/mob/mob = src
 	if(istype(mob))
-		default_pixel_x = mob.default_pixel_x
-		default_pixel_y = mob.default_pixel_y
+		base_pixel_x = mob.base_pixel_x
+		base_pixel_y = mob.base_pixel_y
 
 	animate(src, alpha = 0, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff, pixel_z = pixel_z + pixel_z_diff, time = time)
 	sleep(time+1) //So you can wait on this proc to finish if you want to time your next steps
-	pixel_x = default_pixel_x
-	pixel_y = default_pixel_y
-	pixel_z = default_pixel_z
+	pixel_x = base_pixel_x
+	pixel_y = base_pixel_y
+	pixel_z = base_pixel_z
 	alpha = initial_alpha
 
 // Similar to attack animations, but in reverse and is longer to act as a telegraph.
@@ -195,15 +195,15 @@ note dizziness decrements automatically in the mob's Life() proc.
 	else if(direction & WEST)
 		pixel_x_diff = 8
 
-	var/default_pixel_x = initial(pixel_x)
-	var/default_pixel_y = initial(pixel_y)
+	var/base_pixel_x = initial(pixel_x)
+	var/base_pixel_y = initial(pixel_y)
 	var/mob/mob = src
 	if(istype(mob))
-		default_pixel_x = mob.default_pixel_x
-		default_pixel_y = mob.default_pixel_y
+		base_pixel_x = mob.base_pixel_x
+		base_pixel_y = mob.base_pixel_y
 
 	animate(src, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff, time = windup_time - 2)
-	animate(pixel_x = default_pixel_x, pixel_y = default_pixel_y, time = 2)
+	animate(pixel_x = base_pixel_x, pixel_y = base_pixel_y, time = 2)
 
 
 /atom/movable/proc/do_attack_animation(atom/A)
@@ -220,15 +220,15 @@ note dizziness decrements automatically in the mob's Life() proc.
 	else if(direction & WEST)
 		pixel_x_diff = -8
 
-	var/default_pixel_x = initial(pixel_x)
-	var/default_pixel_y = initial(pixel_y)
+	var/base_pixel_x = initial(pixel_x)
+	var/base_pixel_y = initial(pixel_y)
 	var/mob/mob = src
 	if(istype(mob))
-		default_pixel_x = mob.default_pixel_x
-		default_pixel_y = mob.default_pixel_y
+		base_pixel_x = mob.base_pixel_x
+		base_pixel_y = mob.base_pixel_y
 
 	animate(src, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff, time = 2)
-	animate(pixel_x = default_pixel_x, pixel_y = default_pixel_y, time = 2)
+	animate(pixel_x = base_pixel_x, pixel_y = base_pixel_y, time = 2)
 
 /mob/living/do_attack_animation(atom/A, no_attack_icons = FALSE)
 	..()

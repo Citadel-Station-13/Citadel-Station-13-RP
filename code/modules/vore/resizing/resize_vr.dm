@@ -17,7 +17,6 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 // Adding needed defines to /mob/living
 // Note: Polaris had this on /mob/living/carbon/human We need it higher up for animals and stuff.
 /mob/living
-	var/size_multiplier = 1 //multiplier for the mob's icon size
 	var/holder_default
 
 // Define holder_type on types we want to be scoop-able
