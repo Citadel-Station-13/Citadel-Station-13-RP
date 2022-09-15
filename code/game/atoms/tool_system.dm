@@ -269,7 +269,5 @@
 		TOOL_CROWBAR = "crowbar"
 	)
 	var/icon/default_icon = 'icons/screen/radial/tools/generic.dmi'
-	. = default_states[function]
-	if(!.)
-		. = ""
+	. = default_states[function] || ""
 	return image(default_icon, icon_state = .)
