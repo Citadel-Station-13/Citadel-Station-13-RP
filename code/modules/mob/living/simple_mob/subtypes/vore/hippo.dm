@@ -43,11 +43,7 @@
 	melee_damage_lower = 7
 	attack_sharp = TRUE
 
-	old_x = -16
-	old_y = 0
 	base_pixel_x = -16
-	pixel_x = -16
-	pixel_y = 0
 
 	meat_amount = 10 //Infinite meat!
 	bone_amount = 6

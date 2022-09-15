@@ -138,9 +138,7 @@
 	R.icon 		 = 'icons/mob/widerobot_vr.dmi'
 	R.hands.icon = 'icons/mob/screen1_robot_vr.dmi'
 	R.ui_style_vr = TRUE
-	R.pixel_x 	 = -16
-	R.old_x 	 = -16
-	R.base_pixel_x = -16
+	R.set_base_pixel_x(-16)
 	R.dogborg = TRUE
 	R.wideborg = TRUE
 	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill

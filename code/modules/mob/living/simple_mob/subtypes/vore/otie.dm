@@ -28,11 +28,7 @@
 	attacktext = list("mauled")
 	friendly = list("nuzzles", "slobberlicks", "noses softly at", "noseboops", "headbumps against", "leans on", "nibbles affectionately on")
 	meat_amount = 6
-	old_x = -16
-	old_y = 0
 	base_pixel_x = -16
-	pixel_x = -16
-	pixel_y = 0
 
 	buckle_max_mobs = 1 //Yeehaw
 	can_buckle = TRUE

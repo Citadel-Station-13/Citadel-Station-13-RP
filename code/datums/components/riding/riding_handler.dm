@@ -159,6 +159,7 @@
 
 /datum/component/riding_handler/proc/reset_rider(mob/rider, semantic)
 	rider.reset_plane_and_layer()
+	rider.reset_pixel_shifting()
 	rider.reset_pixel_offsets()
 
 /datum/component/riding_handler/proc/apply_rider(mob/rider, semantic)

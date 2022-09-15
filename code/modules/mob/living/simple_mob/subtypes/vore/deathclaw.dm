@@ -25,11 +25,7 @@
 	melee_damage_lower = 5
 	melee_damage_upper = 30
 
-	old_x = -16
-	old_y = 0
 	base_pixel_x = -16
-	pixel_x = -16
-	pixel_y = 0
 
 	buckle_max_mobs = 1 //Yeehaw
 	can_buckle = TRUE
