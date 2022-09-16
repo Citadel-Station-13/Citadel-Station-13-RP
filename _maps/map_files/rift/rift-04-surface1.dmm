@@ -7570,6 +7570,7 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
 	},
+/obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/tiled,
 /area/medical/virologypurge)
 "fqb" = (
@@ -25235,13 +25236,13 @@
 	pixel_x = -6;
 	pixel_y = 28
 	},
-/obj/machinery/atmospherics/tvalve/digital/bypass{
-	dir = 4
-	},
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/tvalve/digital{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virologypurge)
@@ -31025,6 +31026,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+/obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/tiled,
 /area/rift/surfacebase/outside/outside1)
 "tVu" = (
