@@ -1294,11 +1294,6 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4;
 	power_rating = 45000
@@ -6751,7 +6746,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/rift/surfacebase/outside/outside1)
+/area/medical/virologypurge)
 "eBp" = (
 /turf/simulated/wall,
 /area/quartermaster/warehouse)
@@ -6910,7 +6905,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
-/area/rift/surfacebase/outside/outside1)
+/area/medical/virologypurge)
 "eKk" = (
 /obj/item/megaphone,
 /turf/simulated/floor/plating,
@@ -7576,7 +7571,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/rift/surfacebase/outside/outside1)
+/area/medical/virologypurge)
 "fqb" = (
 /obj/machinery/door/airlock/glass_external{
 	name = "Cargo Airlock";
@@ -16202,7 +16197,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/rift/surfacebase/outside/outside1)
+/area/medical/virologypurge)
 "kNk" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -23479,7 +23474,7 @@
 	req_access = list(39)
 	},
 /turf/simulated/floor/tiled,
-/area/rift/surfacebase/outside/outside1)
+/area/medical/virologypurge)
 "pba" = (
 /obj/item/paper_bin,
 /obj/structure/table/rack/shelf/steel,
@@ -35249,7 +35244,7 @@
 "wCk" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green,
 /turf/simulated/floor/tiled,
-/area/rift/surfacebase/outside/outside1)
+/area/medical/virologypurge)
 "wCp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 10
@@ -59229,7 +59224,7 @@ hyf
 pYJ
 jHU
 fqa
-vUA
+lCp
 gzd
 gzd
 gzd
@@ -59423,7 +59418,7 @@ eJm
 wCk
 paY
 fqa
-vUA
+lCp
 gzd
 gzd
 hgE
@@ -59611,13 +59606,13 @@ qeD
 sjl
 vgO
 jYF
-vUA
-vUA
-vUA
-vUA
-vUA
-vUA
-vUA
+lCp
+lCp
+lCp
+lCp
+lCp
+lCp
+lCp
 hgE
 hgE
 hgE
