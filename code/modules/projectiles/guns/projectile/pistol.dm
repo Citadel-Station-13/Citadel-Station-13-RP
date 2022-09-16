@@ -397,6 +397,68 @@
 	else
 		icon_state = "[initial(icon_state)]-e"
 
+//Hey did you ever see Kingsman? Well, you know this gun then.
+/obj/item/gun/projectile/konigin
+	name = "Konigin-63 compact"
+	desc = "Originally produced in 2463 by GMC, the Konigin is generally considered to be a direct ancestor to the P3 Whisper. By the time GMC ended production, the Konigin-63 had undergone significant design changes - including the installment of a single capacity shotgun on the underbarrel. This rare design is certainly inspired, and has become something of a collector's item post-war."
+	icon_state = "konigin"
+	item_state = null
+	w_class = ITEMSIZE_SMALL
+	caliber = "9mm"
+	silenced = 0
+	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/m9mm/compact
+	allowed_magazines = list(/obj/item/ammo_magazine/m9mm/compact)
+	projectile_type = /obj/item/projectile/bullet/pistol
+
+/obj/item/gun/projectile/konigin
+	firemodes = list(
+		list(mode_name="pistol",       burst=1,    fire_delay=0,    move_delay=null, use_shotgun=null, burst_accuracy=null, dispersion=null),
+		list(mode_name="shotgun",  burst=null, fire_delay=null, move_delay=null, use_shotgun=1,    burst_accuracy=null, dispersion=null)
+		)
+
+	var/use_shotgun = 0
+	var/obj/item/gun/projectile/shotgun/underslung/shotgun
+
+/obj/item/gun/projectile/konigin/Initialize(mapload)
+	. = ..()
+	shotgun = new(src)
+
+/obj/item/gun/projectile/konigin/attackby(obj/item/I, mob/user)
+	if((istype(I, /obj/item/ammo_casing/a12g)))
+		shotgun.load_ammo(I, user)
+	else
+		..()
+
+/obj/item/gun/projectile/konigin/attack_hand(mob/user)
+	if(user.get_inactive_held_item() == src && use_shotgun)
+		shotgun.unload_ammo(user)
+	else
+		..()
+
+/obj/item/gun/projectile/konigin/Fire(atom/target, mob/living/user, params, pointblank=0, reflex=0)
+	if(use_shotgun)
+		shotgun.Fire(target, user, params, pointblank, reflex)
+		//if(!shotgun.chambered)
+			//switch_firemodes(user) //switch back automatically
+	else
+		..()
+
+/obj/item/gun/projectile/konigin/update_icon_state()
+	. = ..()
+	if(ammo_magazine)
+		icon_state = "[initial(icon_state)]"
+	else
+		icon_state = "[initial(icon_state)]-e"
+
+/obj/item/gun/projectile/konigin/examine(mob/user)
+	. = ..()
+	if(shotgun.chambered)
+		. += "\The [shotgun] has \a [shotgun.chambered] loaded."
+	else
+		. += "\The [shotgun] is empty."
+
 //Exploration/Pathfinder Sidearms
 /obj/item/gun/projectile/fnseven
 	name = "NT-57 'LES'"
