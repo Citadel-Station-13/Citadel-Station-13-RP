@@ -513,6 +513,15 @@
 	time = 5
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
+	
+/datum/crafting_recipe/leadball
+	name = "Lead Ball"
+	result = /obj/item/ammo_casing/musket
+	reqs = list(/obj/item/stack/material/lead = 1)
+	tools = list(TOOL_WELDER, TOOL_WIRECUTTER)
+	time = 30
+	category = CAT_WEAPONRY
+	subcategory = CAT_AMMO
 
 ////////////////////
 // PARTS CRAFTING //

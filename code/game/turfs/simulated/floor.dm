@@ -46,13 +46,6 @@
 		if(prob(dirty_prob))
 			dirt += rand(50,100)
 			update_dirt() //5% chance to start with dirt on a floor tile- give the janitor something to do
-	if(outdoors)
-		SSplanets.addTurf(src)
-
-/turf/simulated/floor/Destroy()
-	if(outdoors)
-		SSplanets.removeTurf(src)
-	return ..()
 
 /turf/simulated/proc/make_outdoors()
 	outdoors = TRUE

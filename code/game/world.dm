@@ -95,13 +95,6 @@ GLOBAL_LIST(topic_status_cache)
 	//Must be done now, otherwise ZAS zones and lighting overlays need to be recreated.
 	createRandomZlevel()
 
-	//! temporarily a monkey patch to a bug
-	//! tl;dr ghost role spawners through some method that can't be understood is causing byond to internally change how appearances are hashed,
-	//! resulting in tracked-overlay systems like overlays_standing on humans breaking
-	//! if you don't understand what that means, don't touch this
-	//! if you need to touch it and do understand what that means, just remove it and refactor overlays.
-	qdel(new /obj/structure/ghost_role_spawner/hermit(null))
-
 	Master.Initialize(10, FALSE)
 
 	#ifdef UNIT_TESTS
