@@ -167,10 +167,9 @@
  * - delay - how long it'll take to use the tool
  * - cost - optional; cost multiplier to the default cost of 1 per second.
  * - usage - optional; usage flags for tool speed/quality checks.
- * - phrase - optional; phrase for standard feedback that renders as "[user] [tool.tool_verb(...)] [phrase]"
  */
-/atom/proc/use_tool_standard(function, obj/item/I, mob/user, flags, delay, cost, usage, phrase)
-	return use_tool(function, I, user, flags, delay, cost, usage, phrase)
+/atom/proc/use_tool_standard(function, obj/item/I, mob/user, flags, delay, cost, usage)
+	return use_tool(function, I, user, flags, delay, cost, usage)
 
 /**
  * primary proc called by wrappers to use a tool on us
@@ -183,9 +182,8 @@
  * - delay - how long it'll take to use the tool
  * - cost - optional; cost multiplier to the default cost of 1 per second.
  * - usage - optional; usage flags for tool speed/quality checks.
- * - phrase - optional; phrase for standard feedback that renders as "[user] [tool.tool_verb(...)] [phrase]"
  */
-/atom/proc/use_tool(function, obj/item/I, mob/user, flags, delay, cost = 1, usage, phrase)
+/atom/proc/use_tool(function, obj/item/I, mob/user, flags, delay, cost = 1, usage)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	var/quality = I.tool_check(function, user, src, flags, usage)
 	if(!quality)
@@ -194,15 +192,15 @@
 	delay = delay * speed
 	if(!I.using_as_tool(function, flags, user, src, delay, cost, usage))
 		return FALSE
-	I.standard_tool_feedback_start(function, flags, user, src, delay, cost, usage, phrase)
+	I.tool_feedback_start(function, flags, user, src, delay, cost, usage)
 	if(!do_after(user, delay, src))
 		I.used_as_tool(function, flags, user, src, delay, cost, usage, FALSE)
-		I.standard_tool_feedback_end(function, flags, user, src, delay, cost, usage, phrase, FALSE)
+		I.tool_feedback_end(function, flags, user, src, delay, cost, usage, FALSE)
 		return FALSE
 	if(!I.used_as_tool(function, flags, user, src, delay, cost, usage, TRUE))
-		I.standard_tool_feedback_end(function, flags, user, src, delay, cost, usage, phrase, FALSE)
+		I.tool_feedback_end(function, flags, user, src, delay, cost, usage, FALSE)
 		return FALSE
-	I.standard_tool_feedback_end(function, flags, user, src, delay, cost, usage, phrase, TRUE)
+	I.tool_feedback_end(function, flags, user, src, delay, cost, usage, TRUE)
 	return TRUE
 
 //! Dynamic Tool API
@@ -257,4 +255,5 @@
 	)
 	var/icon/default_icon = 'icons/screen/radial/tools/generic.dmi'
 	. = default_states[function] || ""
-	return image(default_icon, icon_state = .)
+	var/image/I = image(default_icon, icon_state = .)
+	I.maptext = hint || function

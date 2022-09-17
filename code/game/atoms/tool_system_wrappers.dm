@@ -17,23 +17,18 @@
  *
  * See tool_system.dm's use_tool_standard to know how to use this.
  *
+ * The system handles sound playback for you unless you specify to skip that, but you must manually give visible_message feedback.
+ *
  * @params
  * - I - the item
  * - user - the user, if any
  * - flags - tool operation flags
- * - hint - operation hint
  * - delay - how long this should take
- * - infinitive - infinitive verb, e.g. "pry"
- * - present - present ver, e.g. "pries"
- * - object - object of attention, can be atom or text, e.g. "window"
- * - target - what you're acting on/where the object is going/coming from, e.g. "frame"
- * - prepositional - what you're doing with it, null this out to be `object's target` instead of `object preposition \the target`, e.g. "into the"
- * - append - if TRUE, will include "with the bonecutters" or whatever phrase is describing the tool.
  * - cost - multiplier for cost, standard tool "cost" is 1 per second of usage.
  * - usage - usage flags for skill system checks.
  */
-/atom/proc/use_crowbar(obj/item/I, mob/user, flags, hint, delay, infinitive, present, object, target, preposition, append, cost, usage)
-	return use_tool(I, user, flags, TOOL_CROWBAR, hint, delay, infinitive, present, object, target, preposition, append, cost, usage)
+/atom/proc/use_crowbar(obj/item/I, mob/user, flags, delay, cost, usage)
+	return use_tool_standard(TOOL_CROWBAR, I, user, flags, delay, cost, usage)
 
 /**
  * Called when a wrench is used on us.
@@ -52,23 +47,18 @@
  *
  * See tool_system.dm's use_tool_standard to know how to use this.
  *
+ * The system handles sound playback for you unless you specify to skip that, but you must manually give visible_message feedback.
+ *
  * @params
  * - I - the item
  * - user - the user, if any
  * - flags - tool operation flags
- * - hint - operation hint
  * - delay - how long this should take
- * - infinitive - infinitive verb, e.g. "pry"
- * - present - present ver, e.g. "pries"
- * - object - object of attention, can be atom or text, e.g. "window"
- * - target - what you're acting on/where the object is going/coming from, e.g. "frame"
- * - prepositional - what you're doing with it, null this out to be `object's target` instead of `object preposition \the target`, e.g. "into the"
- * - append - if TRUE, will include "with the bonecutters" or whatever phrase is describing the tool.
  * - cost - multiplier for cost, standard tool "cost" is 1 per second of usage.
  * - usage - usage flags for skill system checks.
  */
-/atom/proc/use_wrecnh(obj/item/I, mob/user, flags, hint, delay, infinitive, present, object, target, preposition, append, cost, usage)
-	return use_tool(I, user, flags, TOOL_WRENCH, hint, delay, infinitive, present, object, target, preposition, append, cost, usage)
+/atom/proc/use_wrecnh(obj/item/I, mob/user, flags, delay, cost, usage)
+	return use_tool_standard(TOOL_WRENCH, I, user, flags, delay, cost, usage)
 
 /**
  * Called when a welder is used on us.
@@ -87,23 +77,18 @@
  *
  * See tool_system.dm's use_tool_standard to know how to use this.
  *
+ * The system handles sound playback for you unless you specify to skip that, but you must manually give visible_message feedback.
+ *
  * @params
  * - I - the item
  * - user - the user, if any
  * - flags - tool operation flags
- * - hint - operation hint
  * - delay - how long this should take
- * - infinitive - infinitive verb, e.g. "pry"
- * - present - present ver, e.g. "pries"
- * - object - object of attention, can be atom or text, e.g. "window"
- * - target - what you're acting on/where the object is going/coming from, e.g. "frame"
- * - prepositional - what you're doing with it, null this out to be `object's target` instead of `object preposition \the target`, e.g. "into the"
- * - append - if TRUE, will include "with the bonecutters" or whatever phrase is describing the tool.
  * - cost - multiplier for cost, standard tool "cost" is 1 per second of usage.
  * - usage - usage flags for skill system checks.
  */
-/atom/proc/use_welder(obj/item/I, mob/user, flags, hint, delay, infinitive, present, object, target, preposition, append, cost, usage)
-	return use_tool(I, user, flags, TOOL_WELDER, hint, delay, infinitive, present, object, target, preposition, append, cost, usage)
+/atom/proc/use_welder(obj/item/I, mob/user, flags, delay, cost, usage)
+	return use_tool_standard(TOOL_WELDER, I, user, flags, delay, cost, usage)
 
 /**
  * Called when a pair of wirecutters is used on us.
@@ -122,23 +107,18 @@
  *
  * See tool_system.dm's use_tool_standard to know how to use this.
  *
+ * The system handles sound playback for you unless you specify to skip that, but you must manually give visible_message feedback.
+ *
  * @params
  * - I - the item
  * - user - the user, if any
  * - flags - tool operation flags
- * - hint - operation hint
  * - delay - how long this should take
- * - infinitive - infinitive verb, e.g. "pry"
- * - present - present ver, e.g. "pries"
- * - object - object of attention, can be atom or text, e.g. "window"
- * - target - what you're acting on/where the object is going/coming from, e.g. "frame"
- * - prepositional - what you're doing with it, null this out to be `object's target` instead of `object preposition \the target`, e.g. "into the"
- * - append - if TRUE, will include "with the bonecutters" or whatever phrase is describing the tool.
  * - cost - multiplier for cost, standard tool "cost" is 1 per second of usage.
  * - usage - usage flags for skill system checks.
  */
-/atom/proc/use_wirecutter(obj/item/I, mob/user, flags, hint, delay, infinitive, present, object, target, preposition, append, cost, usage)
-	return use_tool(I, user, flags, TOOL_WIRECUTTER, hint, delay, infinitive, present, object, target, preposition, append, cost, usage)
+/atom/proc/use_wirecutter(obj/item/I, mob/user, flags, delay, cost, usage)
+	return use_tool_standard(TOOL_WIRECUTTER, I, user, flags, delay, cost, usage)
 
 /**
  * Called when a screwdriver is used on us.
@@ -157,23 +137,18 @@
  *
  * See tool_system.dm's use_tool_standard to know how to use this.
  *
+ * The system handles sound playback for you unless you specify to skip that, but you must manually give visible_message feedback.
+ *
  * @params
  * - I - the item
  * - user - the user, if any
  * - flags - tool operation flags
- * - hint - operation hint
  * - delay - how long this should take
- * - infinitive - infinitive verb, e.g. "pry"
- * - present - present ver, e.g. "pries"
- * - object - object of attention, can be atom or text, e.g. "window"
- * - target - what you're acting on/where the object is going/coming from, e.g. "frame"
- * - prepositional - what you're doing with it, null this out to be `object's target` instead of `object preposition \the target`, e.g. "into the"
- * - append - if TRUE, will include "with the bonecutters" or whatever phrase is describing the tool.
  * - cost - multiplier for cost, standard tool "cost" is 1 per second of usage.
  * - usage - usage flags for skill system checks.
  */
-/atom/proc/use_screwdriver(obj/item/I, mob/user, flags, hint, delay, infinitive, present, object, target, preposition, append, cost, usage)
-	return use_tool(I, user, flags, TOOL_SCREWDRIVER, hint, delay, infinitive, present, object, target, preposition, append, cost, usage)
+/atom/proc/use_screwdriver(obj/item/I, mob/user, flags, delay, cost, usage)
+	return use_tool_standard(TOOL_SCREWDRIVER, I, user, flags, delay, cost, usage)
 
 /**
  * Called when a analyzer is used on us.
@@ -192,23 +167,18 @@
  *
  * See tool_system.dm's use_tool_standard to know how to use this.
  *
+ * The system handles sound playback for you unless you specify to skip that, but you must manually give visible_message feedback.
+ *
  * @params
  * - I - the item
  * - user - the user, if any
  * - flags - tool operation flags
- * - hint - operation hint
  * - delay - how long this should take
- * - infinitive - infinitive verb, e.g. "pry"
- * - present - present ver, e.g. "pries"
- * - object - object of attention, can be atom or text, e.g. "window"
- * - target - what you're acting on/where the object is going/coming from, e.g. "frame"
- * - prepositional - what you're doing with it, null this out to be `object's target` instead of `object preposition \the target`, e.g. "into the"
- * - append - if TRUE, will include "with the bonecutters" or whatever phrase is describing the tool.
  * - cost - multiplier for cost, standard tool "cost" is 1 per second of usage.
  * - usage - usage flags for skill system checks.
  */
-/atom/proc/use_analyzer(obj/item/I, mob/user, flags, hint, delay, infinitive, present, object, target, preposition, append, cost, usage)
-	return use_tool(I, user, flags, TOOL_ANALYZER, hint, delay, infinitive, present, object, target, preposition, append, cost, usage)
+/atom/proc/use_analyzer(obj/item/I, mob/user, flags, delay, cost, usage)
+	return use_tool_standard(TOOL_ANALYZER, I, user, flags, delay, cost, usage)
 
 
 /**
@@ -228,21 +198,16 @@
  *
  * See tool_system.dm's use_tool_standard to know how to use this.
  *
+ * The system handles sound playback for you unless you specify to skip that, but you must manually give visible_message feedback.
+ *
  * @params
  * - I - the item
  * - user - the user, if any
  * - flags - tool operation flags
- * - hint - operation hint
  * - delay - how long this should take
- * - infinitive - infinitive verb, e.g. "pry"
- * - present - present ver, e.g. "pries"
- * - object - object of attention, can be atom or text, e.g. "window"
- * - target - what you're acting on/where the object is going/coming from, e.g. "frame"
- * - prepositional - what you're doing with it, null this out to be `object's target` instead of `object preposition \the target`, e.g. "into the"
- * - append - if TRUE, will include "with the bonecutters" or whatever phrase is describing the tool.
  * - cost - multiplier for cost, standard tool "cost" is 1 per second of usage.
  * - usage - usage flags for skill system checks.
  */
-/atom/proc/use_multitool(obj/item/I, mob/user, flags, hint, delay, infinitive, present, object, target, preposition, append, cost, usage)
-	return use_tool(I, user, flags, TOOL_MULTITOOL, hint, delay, infinitive, present, object, target, preposition, append, cost, usage)
+/atom/proc/use_multitool(obj/item/I, mob/user, flags, delay, cost, usage)
+	return use_tool_standard(TOOL_MULTITOOL, I, user, flags, delay, cost, usage)
 

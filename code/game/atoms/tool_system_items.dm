@@ -70,6 +70,7 @@
  *
  * @params
  * - original - original quality
+ *
  * - user - user, if any
  * - target - target, if any
  * - flags - tool operation flags
@@ -167,7 +168,7 @@
  * - usage - usage flags, if any
  * - phrase - optional; phrase for standard feedback that renders as "[user] [tool.tool_verb(...)] [phrase]"
  */
-/obj/item/proc/standard_tool_feedback_start(function, flags, mob/user, atom/target, time, cost, usage, phrase)
+/obj/item/proc/tool_feedback_start(function, flags, mob/user, atom/target, time, cost, usage, phrase)
 	SHOULD_CALL_PARENT(TRUE)
 	if(!(flags & TOOL_OP_NO_STANDARD_AUDIO))
 		standard_tool_feedback_sound(function, flags, user, target, time, cost, usage)
@@ -188,7 +189,7 @@
  * - success - was it successful?
  * - phrase - optional; phrase for standard feedback that renders as "[user] [tool.tool_verb(...)] [phrase]"
  */
-/obj/item/proc/standard_tool_feedback_end(function, flags, mob/user, atom/target, time, cost, usage, phrase, success)
+/obj/item/proc/tool_feedback_end(function, flags, mob/user, atom/target, time, cost, usage, phrase, success)
 	SHOULD_CALL_PARENT(TRUE)
 	if(!(flags & TOOL_OP_NO_STANDARD_AUDIO))
 		standard_tool_feedback_sound(function, flags, user, target, time, cost, usage, success)
@@ -227,6 +228,8 @@
  * - success - was it successful? null if we're just starting
  */
 /obj/item/proc/standard_tool_feedback_message(function, flags, mob/user, atom/target, time, cost, usage, phrase, success)
+	var/use_verb = tool_verb(function, flags, user, target, time, cost, usage, phrase, success)
+
 
 /**
  * gets sound to play on tool usage
@@ -266,27 +269,23 @@
  * - user - person using tool, if any
  * - target - atom tool being used on, if any
  * - time - duration of the action in deciseconds
- * - cost - cost multiplier
  * - usage - usage flags, if any
- * - phrase - optional; phrase for standard feedback that renders as "[user] [tool.tool_verb(...)] [phrase]"
  * - success - was it successful? null if we're just starting
  */
-/obj/item/proc/tool_verb(function, flags, mob/user, atom/target, time, cost, usage, phrase, success)
+/obj/item/proc/tool_verb(function, flags, mob/user, atom/target, time, usage, success)
+	// return default
+	var/present_tense = !!success
+	switch(function)
+		if(TOOL_SCREWDRIVER)
+			. = present_tense? "screws" : "screw"
+		if(TOOL_CROWBAR)
+			. = present_tense? "pries" : "pry"
+		if(TOOL_WELDER)
 
+		if(TOOL_WIRECUTTER)
 
-/**
- * constructs message to display on tool usage
- *
- * @params
- * - function - tool function enum
- * - flags - tool operation flags
- * - user - person using tool, if any
- * - target - atom tool being used on, if any
- * - time - duration of the action in deciseconds
- * - cost - cost multiplier
- * - usage - usage flags, if any
- * - phrase - optional; phrase for standard feedback that renders as "[user] [tool.tool_verb(...)] [phrase]"
- * - success - was it successful? null if we're just starting
- */
-/obj/item/proc/tool_message(function, flags, mob/user, atom/target, time, cost, usage, phrase, successs)
-
+		if(TOOL_WRENCH)
+			. = present_tense?
+		else
+	// HEALERS ADJUST
+			. = isnull(success)? "adjust" : "adjusts"
