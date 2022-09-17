@@ -502,6 +502,28 @@
 
 /obj/structure/window/crowbar_act(obj/item/I, mob/user, flags, hint)
 
+/obj/structure/window/dynamic_tool_functions(obj/item/I, mob/user)
+	if(reinf)
+		#warn lol we're not using state fuck that refactor this
+	else
+		return list(TOOL_SCREWDRIVER)
+
+/obj/structure/window/dynamic_tool_image(function, hint)
+	switch(hint)
+		if(TOOL_HINT_CROWBAR_WINDOW_IN)
+			return dyntool_image_forward(TOOL_CROWBAR)
+		if(TOOL_HINT_CROWBRA_WINDOW_OUT)
+			return dyntool_image_backward(TOOL_CROWBAR)
+		if(TOOL_HINT_SCREWING_WINDOW_FRAME)
+			return dyntool_image_forward(TOOL_SCREWDRIVER)
+		if(TOOL_HINT_UNSCREWING_WINDOW_FRAME)
+			return dyntool_image_backward(TOOL_SCREWDRIVER)
+		if(TOOL_HINT_SCREWING_WINDOW_PANE)
+			return dyntool_image_forward(TOOL_SCREWDRIVER)
+		if(TOOL_HINT_UNSCREWING_WINDOW_PANE)
+			return dyntool_image_backward(TOOL_SCREWDRIVER)
+	return ..()
+
 
 /obj/structure/window/basic
 	desc = "It looks thin and flimsy. A few knocks with... almost anything, really should shatter it."

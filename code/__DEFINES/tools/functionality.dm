@@ -23,6 +23,17 @@
 #define TOOL_GLASS_CUT		"glasskit"
 #define TOOL_BONESET		"bonesetter"
 
+/// Yes, this is a real global. No, you shouldn't touch this for no reason.
+/// Add tools to this when they get states in the default icon file for:
+/// - neutral (no append)
+/// - forwards (append _up)
+/// - backwards (append _down)
+GLOBAL_REAL_VAR(_dyntool_image_states) = list(
+	null = "unknown",
+	TOOL_CROWBAR = "crowbar",
+	TOOL_SCREWDRIVER = "screwdriver"
+)
+
 //! Tool usage flags
 
 //? None yet! Waiting on skill-system design.

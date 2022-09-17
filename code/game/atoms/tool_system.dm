@@ -90,7 +90,9 @@
 		// everything in possibilities is valid for the tool
 		var/list/transformed = list()
 		for(var/i in possibilities)
-			transformed[i] = dynamic_tool_image(i)
+			var/image/I = dynamic_tool_image(i)
+			I.maptext = i
+			transformed[i] = I
 		var/function = show_radial_menu(user, src, transformed, require_near = provided_item.reach)
 		if(reachability_check && !reachability_check.Invoke())
 			return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -101,7 +103,9 @@
 			return _dynamic_tool_act(provided_item, user, function)
 		transformed.len = 0
 		for(var/i in hints)
-			transformed[i] = dynamic_tool_image(function, i)
+			var/image/I = dynamic_tool_image(function, i)
+			I.maptext = i
+			transformed[i] = I
 		var/hint = show_radial_menu(user, src, transformed, require_near = provided_item.reach)
 		if(reachability_check && !reachability_check.Invoke())
 			return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -249,11 +253,14 @@
  * - hint - the context provided when you want to implement multiple actions for a tool
  */
 /atom/proc/dynamic_tool_image(function, hint)
-	var/static/list/default_states = list(
-		TOOL_SCREWDRIVER = "screwdriver",
-		TOOL_CROWBAR = "crowbar"
-	)
-	var/icon/default_icon = 'icons/screen/radial/tools/generic.dmi'
-	. = default_states[function] || ""
-	var/image/I = image(default_icon, icon_state = .)
-	I.maptext = hint || function
+	return dyntool_image_neutral(function)
+
+//! default images
+/proc/dyntool_image_neutral(function)
+	return new image('icons/screen/radial/tools/generic.dmi', icon_state = _dyntool_image_states[function] || "unknown")
+
+/proc/dyntool_image_forward(function)
+	return new image('icons/screen/radial/tools/generic.dmi', icon_state = "[_dyntool_image_states[function] || "unknown"]_up")
+
+/proc/dyntool_image_backward(function)
+	return new image('icons/screen/radial/tools/generic.dmi', icon_state = "[_dyntool_image_states[function] || "unknown"]_down")
