@@ -303,6 +303,7 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	caliber = "12g"
 	ammo_type = /obj/item/ammo_casing/a12g
 	one_handed_penalty = 0
+	safety_state = GUN_SAFETY_OFF
 
 //Foam Shotguns
 /obj/item/gun/projectile/shotgun/pump/foam
