@@ -452,12 +452,15 @@
 	else
 		icon_state = "[initial(icon_state)]-e"
 
+/* Having issues with getting this to work atm.
 /obj/item/gun/projectile/konigin/examine(mob/user)
 	. = ..()
-	if(shotgun.chambered)
-		. += "\The [shotgun] has \a [shotgun.chambered] loaded."
+
+	if(shotgun.loaded)
+		. += "\The [shotgun] has \a [shotgun.loaded] loaded."
 	else
 		. += "\The [shotgun] is empty."
+*/
 
 //Exploration/Pathfinder Sidearms
 /obj/item/gun/projectile/fnseven
