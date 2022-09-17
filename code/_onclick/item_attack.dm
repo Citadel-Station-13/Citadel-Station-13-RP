@@ -34,7 +34,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 		return
 
 	// todo: refactor
-	if(resolve_attackby(A, user, params))
+	if(resolve_attackby(target, user, params))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	afterattack(target, user, clickchain_flags & CLICKCHAIN_HAS_PROXIMITY, params)

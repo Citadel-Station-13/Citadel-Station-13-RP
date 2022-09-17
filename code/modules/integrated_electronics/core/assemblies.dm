@@ -428,7 +428,7 @@
 			on_anchored()
 		else
 			on_unanchored()
-		playsound(src, I.usesound, 50, 1)
+		playsound(src, I.tool_sound, 50, 1)
 		return TRUE
 
 	else if(istype(I, /obj/item/integrated_circuit))

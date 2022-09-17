@@ -63,7 +63,7 @@
 	if(provided_item)
 		if(function)
 			// automation, just go
-			return _dynamic_tool_act(I, user, function, TOOL_OP_AUTOPILOT, hint)
+			return _dynamic_tool_act(provided_item, user, function, TOOL_OP_AUTOPILOT, hint)
 		// used in clickchain
 		var/list/possibilities = dynamic_tool_functions(provided_item, user)
 		var/function
@@ -98,7 +98,7 @@
 		var/list/hints = possibilities[function]
 		if(!length(hints))
 			// none, just go
-			return _dynamic_tool_act(I, user, function)
+			return _dynamic_tool_act(provided_item, user, function)
 		transformed.len = 0
 		for(var/i in hints)
 			transformed[i] = dynamic_tool_image(function, i)
@@ -106,7 +106,7 @@
 		if(reachability_check && !reachability_check.Invoke())
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		// use hint
-		return _dynamic_tool_act(I, user, function, hint = hint)
+		return _dynamic_tool_act(provided_item, user, function, hint = hint)
 	else
 		// in the future, we might have situations where clicking something with an empty hand
 		// yet having organs that server as built-in tools can do something with

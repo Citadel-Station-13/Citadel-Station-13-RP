@@ -481,7 +481,7 @@
 	else
 		user.visible_message("<span class='warning'>\The [user] begins unsecuring \the [src] from the floor.</span>",
 	                         "You begin unsecuring \the [src] from the floor.")
-	playsound(src, W.usesound, 50, 1)
+	playsound(src, W.tool_sound, 50, 1)
 	if(!do_after(user, 20 * W.tool_speed))
 		manipulating = 0
 		return

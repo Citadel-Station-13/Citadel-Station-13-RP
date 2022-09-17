@@ -33,6 +33,6 @@
 #define TOOL_HINT_UNSCREWING_WINDOW_FRAME "Unfasten Frame"
 #define TOOL_HINT_SCREWING_WINDOW_FRAME "Fasten Frame"
 #define TOOL_HINT_UNSCREWING_WINDOW_PANE "Unfasten Window"
-#define TOOL_HINT_SCREWING_WINDOW_FRAME "Unfasten Frame"
+#define TOOL_HINT_SCREWING_WINDOW_PANE "Unfasten Frame"
 #define TOOL_HINT_CROWBAR_WINDOW_IN "Pry In Window"
 #define TOOL_HINT_CROWBRA_WINDOW_OUT "Pry Out Window"
