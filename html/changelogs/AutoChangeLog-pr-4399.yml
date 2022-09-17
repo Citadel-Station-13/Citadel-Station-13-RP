@@ -1,0 +1,6 @@
+author: "Captain277"
+delete-after: True
+changes: 
+  - rscadd: "Adds cosmetic chlorine gas icon."
+  - rscadd: "Adds horror aura for...horrors."
+  - bugfix: "Fixes incorrect Courser dir."
