@@ -206,7 +206,7 @@
 /obj/item/proc/standard_tool_feedback_sound(function, flags, mob/user, atom/target, time, cost, usage, success)
 	if(isnull(success))
 		// starting
-			playsound(src, tool_sound(function, flags, user, target, time, cost, usage, success), 50, TRUE)
+		playsound(src, tool_sound(function, flags, user, target, time, cost, usage, success), 50, TRUE)
 	else
 		// finishing
 		if(time >= MIN_TOOL_SOUND_DELAY)
