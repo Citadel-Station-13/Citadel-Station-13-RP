@@ -5,22 +5,19 @@
  *	Assorted tool procs, so any item can emulate any tool, if coded
 */
 /obj/item/proc/is_screwdriver()
-	return FALSE
+	return tool_check(TOOL_SCREWDRIVER)
 
 /obj/item/proc/is_wrench()
-	return FALSE
+	return tool_check(TOOL_WRENCH)
 
 /obj/item/proc/is_crowbar()
-	return FALSE
+	return tool_check(TOOL_CROWBAR)
 
 /obj/item/proc/is_wirecutter()
-	return FALSE
-
-/obj/item/proc/is_cable_coil()
-	return FALSE
+	return tool_check(TOOL_WIRECUTTER)
 
 /obj/item/proc/is_multitool()
-	return FALSE
+	return tool_check(TOOL_MULTITOOL)
 
 /obj/item/proc/is_welder()
-	return FALSE
+	return tool_check(TOOL_WELDER)

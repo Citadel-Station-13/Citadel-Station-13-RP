@@ -45,6 +45,9 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	afterattack(target, user, clickchain_flags & CLICKCHAIN_HAS_PROXIMITY, params)
 
 /obj/item/proc/tool_attack_chain(atom/target, mob/user, clickchain_flags, params)
+	// are we on harm intent? if so, lol no
+	if(user && (user.a_intent == INTENT_HARM))
+		return NONE
 	return target.tool_interaction(src, user, clickchain_flags | CLICKCHAIN_TOOL_ACT)
 
 //I would prefer to rename this to attack(), but that would involve touching hundreds of files.

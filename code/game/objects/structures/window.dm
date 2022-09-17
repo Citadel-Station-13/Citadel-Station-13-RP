@@ -498,6 +498,9 @@
 		take_damage(damage_per_fire_tick)
 	..()
 
+/obj/structure/window/screwdriver_act(obj/item/I, mob/user, flags, hint)
+
+/obj/structure/window/crowbar_act(obj/item/I, mob/user, flags, hint)
 
 
 /obj/structure/window/basic
