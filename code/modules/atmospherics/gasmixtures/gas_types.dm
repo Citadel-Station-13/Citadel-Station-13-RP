@@ -353,6 +353,8 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	heating_point = null
 	heating_products = null
 	toxicity = 15*/
+	gas_overlay = "chlorine"
+	moles_visible = 1
 
 /datum/gas/sulfur_dioxide
 	id = "sulfur dioxide"
