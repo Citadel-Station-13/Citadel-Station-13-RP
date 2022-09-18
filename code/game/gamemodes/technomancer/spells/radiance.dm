@@ -39,7 +39,7 @@
 
 		var/thermal_power = 300 * adjusted_power
 
-		removed.add_thermal_energy(thermal_power)
+		removed.adjust_thermal_energy(thermal_power)
 		removed.temperature = clamp( removed.temperature, 0,  10000)
 
 		env.merge(removed)

@@ -518,7 +518,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	if(owned_core && owned_core.loc)
 		var/datum/gas_mixture/environment = owned_core.loc.return_air()
 		if(environment && environment.temperature < (GLOB.max_fusion_air_heat))
-			environment.add_thermal_energy(plasma_temperature*5000)
+			environment.adjust_thermal_energy(plasma_temperature*5000)
 			check_instability()
 
 //Temperature changes depending on color. Now, the visibility of the field increases with temperature, along with the glow.

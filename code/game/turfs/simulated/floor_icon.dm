@@ -17,7 +17,8 @@ var/list/flooring_cache = list()
 
 /turf/simulated/floor/update_icon()
 	cut_overlays()
-
+	// lol
+	add_overlay(zone?.turf_graphics)
 	if(flooring)
 		// Set initial icon and strings.
 		name = flooring.name
