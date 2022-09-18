@@ -28,6 +28,8 @@
  * - if you don't override dynamic_tool_image you are a lemming and it'll probabl be ugly.
  *
  * It's That Simple (tm)!
+ *
+ * todo: find hardcoded usages with `istype\(([a-z_A-Z]+),(\s*)/obj/item/(tool/crowbar|tool/wrench|tool/screwdriver|tool/wirecutters|multitool|weldingtool)\)` and get rid of them.
  */
 
 //! Entrypoint

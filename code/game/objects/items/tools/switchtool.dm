@@ -263,6 +263,7 @@
 
 //? tool redirection
 /obj/item/switchtool/tool_speed(function, mob/user, atom/target, flags, usage)
+	. = ..()
 
 //? tool redirection
 /obj/item/switchtool/tool_check(function, mob/user, atom/target, flags, usage)
