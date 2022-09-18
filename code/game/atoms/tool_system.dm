@@ -221,6 +221,9 @@
  * the hint should be human readable.
  * associating directly to a single hint is allowed.
  *
+ * **warning**: by default, the provided list is mutable
+ * if you're caching your own list, make sure to return cache.Copy()!
+ *
  * @params
  * - I - the tool used, if any
  * - user - the user, if any

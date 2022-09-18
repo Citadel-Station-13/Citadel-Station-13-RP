@@ -19,6 +19,8 @@
 	throw_force = 6.0
 	throw_speed = 3
 	throw_range = 6
+	tool_speed = 1
+	tool_quality = TOOL_QUALITY_DEFAULT
 
 	var/deploy_sound = "sound/weapons/switchblade.ogg"
 	var/undeploy_sound = "sound/weapons/switchblade.ogg"
@@ -55,16 +57,6 @@
 #warn impl
 #warn we're going to need to either query items to find net tool qualities,
 #warn or have a separate list for it.
-
-/obj/item/switchtool/resolve_attackby(atom/A, mob/user, params, attack_modifier = 1)
-	if(deployed && !istype(A, /obj/item/storage))
-		deployed.resolve_attackby(A, user, params, attack_modifier = 1)
-		if(deployed.loc != src)
-			deployed.forceMove(src)
-			undeploy()
-			return ..()
-		return
-	..()
 
 /obj/item/switchtool/Initialize(mapload)
 	. = ..()
@@ -179,127 +171,127 @@
 		return TRUE
 	return FALSE
 
-/obj/item/switchtool/is_crowbar()
-	if(deployed && deployed.deploytype == "crowbar")
-		return TRUE
-	return FALSE
-
-/obj/item/switchtool/is_screwdriver()
-	if(deployed && deployed.deploytype == "screwdriver")
-		return TRUE
-	return FALSE
-
-/obj/item/switchtool/is_wrench()
-	if(deployed && deployed.deploytype == "wrench")
-		return TRUE
-	return FALSE
-
-/obj/item/switchtool/is_wirecutter()
-	if(deployed && deployed.deploytype == "wirecutters")
-		return TRUE
-	return FALSE
-
-/obj/item/switchtool/is_multitool()
-	if(deployed && deployed.deploytype == "multitool")
-		return TRUE
-	return FALSE
-
-/obj/item/switchtool/is_welder()
-	if(deployed && deployed.deploytype == "welder")
-		return TRUE
-	return FALSE
 
 /obj/item/switchtool/update_icon()//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	. = ..()
 	var/mutable_appearance/tool_overlay
 	cut_overlays()		//So that it doesn't keep stacking overlays non-stop on top of each other
-	if(deployed)
-		switch(switchingtype)
-			if("basic")
-				switch(deployed.deploytype)
-					if("screwdriver")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_driver")
-					if("wrench")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_wrench")
-					if("crowbar")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_crowbar")
-					if("wirecutters")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_cutter")
-					if("multitool")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_multitool")
-			if("surgery")
-				switch(src.deployed.deploytype)
-					if("scalpel")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_scalpel")
-					if("cautery")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_cautery")
-					if("hemostat")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_hemostat")
-					if("retractor")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_retractor")
-					if("boneclamp")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_boneclamp")
-			if("ce")
-				switch(src.deployed.deploytype)
-					if("screwdriver")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_driver")
-					if("wrench")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_wrench")
-					if("crowbar")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_crowbar")
-					if("wirecutters")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_cutter")
-					if("multitool")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_multitool")
-					if("welder")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_welder")
-					if("light")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_light")
-					if("soap")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_soap")
-			if("adminholo")
-				switch(src.deployed.deploytype)
-					if("light")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_light")
-					if("soap")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_soap")
-					if("scalpel")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_scalpel")
-					if("saw")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_saw")
-					if("drill")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_drill")
-					if("cautery")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_cautery")
-					if("hemostat")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_hemostat")
-					if("retractor")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_retractor")
-					if("boneclamp")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_boneclamp")
-					if("screwdriver")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_driver")
-					if("wrench")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_wrench")
-					if("crowbar")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_crowbar")
-					if("wirecutters")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_cutter")
-					if("multitool")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_multitool")
-					if("welder")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_welder")
-					if("shield")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_shield")
-					if("sword")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_blade")
-		if(light_color)
-			tool_overlay.color = light_color
-		add_overlay(tool_overlay)
-	if(istype(usr,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = usr
-		H.update_inv_l_hand()
-		H.update_inv_r_hand()
+	if(!deployed)
+		return
+	switch(switchingtype)
+		if("basic")
+			switch(deployed.deploytype)
+				if("screwdriver")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_driver")
+				if("wrench")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_wrench")
+				if("crowbar")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_crowbar")
+				if("wirecutters")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_cutter")
+				if("multitool")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_multitool")
+		if("surgery")
+			switch(src.deployed.deploytype)
+				if("scalpel")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_scalpel")
+				if("cautery")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_cautery")
+				if("hemostat")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_hemostat")
+				if("retractor")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_retractor")
+				if("boneclamp")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_boneclamp")
+		if("ce")
+			switch(src.deployed.deploytype)
+				if("screwdriver")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_driver")
+				if("wrench")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_wrench")
+				if("crowbar")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_crowbar")
+				if("wirecutters")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_cutter")
+				if("multitool")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_multitool")
+				if("welder")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_welder")
+				if("light")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_light")
+				if("soap")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_soap")
+		if("adminholo")
+			switch(src.deployed.deploytype)
+				if("light")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_light")
+				if("soap")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_soap")
+				if("scalpel")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_scalpel")
+				if("saw")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_saw")
+				if("drill")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_drill")
+				if("cautery")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_cautery")
+				if("hemostat")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_hemostat")
+				if("retractor")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_retractor")
+				if("boneclamp")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_boneclamp")
+				if("screwdriver")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_driver")
+				if("wrench")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_wrench")
+				if("crowbar")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_crowbar")
+				if("wirecutters")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_cutter")
+				if("multitool")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_multitool")
+				if("welder")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_welder")
+				if("shield")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_shield")
+				if("sword")
+					tool_overlay = mutable_appearance(icon, "[icon_state]_blade")
+	if(light_color)
+		tool_overlay.color = light_color
+	add_overlay(tool_overlay)
+
+//? tool redirection
+/obj/item/switchtool/tool_speed(function, mob/user, atom/target, flags, usage)
+
+//? tool redirection
+/obj/item/switchtool/tool_check(function, mob/user, atom/target, flags, usage)
+
+//? tool redirection
+/obj/item/switchtool/tool_query(mob/user, atom/target, flags, usage)
+
+//? tool redirection
+/obj/item/switchtool/tool_quality(function, mob/user, atom/target, flags, usage)
+
+#warn impl above
+
+//? click redirection
+/obj/item/switchtool/melee_attack_chain(atom/target, mob/user, clickchain_flags, params)
+	if(!deployed)
+		return ..()
+	. = deployed.melee_attack_chain(target, user, clickchain_flags | CLICKCHAIN_REDIRECTED, params)
+	if(deployed.loc != src)
+		deployed.forceMove(src)
+		undeploy()
+
+//? click redirection
+/obj/item/switchtool/ranged_attack_chain(atom/target, mob/user, clickchain_flags, params)
+	if(!deployed)
+		return ..()
+	. = deployed.ranged_attack_chain(target, user, clickchain_flags | CLICKCHAIN_REDIRECTED, params)
+	if(deployed.loc != src)
+		deployed.forceMove(src)
+		undeploy()
 
 /obj/item/switchtool/surgery
 	name = "surgeon's switchtool"
@@ -360,11 +352,10 @@
 	set_light(0)
 
 /obj/item/switchtool/holo/CE
-	name = "Chief Engineer's holotool"
+	name = "holotool"
 	icon_state = "holoswitchtool"
 	item_state = "holoswitchtool"
 	desc = "A finely crafted device that uses a micro-scale hardlight emitter to form hardlight manipulators in the form of tools. Can also operate in low-power mode as a flashlight and in high-power mode as a UV cleaner."
-	description_fluff = "A holotool used by the Chief Engineer."
 	light_color = "#FED8B1" //lightcolororange sucks lmao
 	start_modules = list(
 						/obj/item/tool/screwdriver/holoswitch = null,
@@ -382,49 +373,37 @@
 /obj/item/soap/holoswitch
 	name = "holographically contained UV light"
 	desc = "This should not exist."
-	deploytype = "soap"
 
 /obj/item/flashlight/holoswitch
 	name = "low-power holoemitter"
 	desc = "This should not exist"
 	power_use = 0
-	deploytype = "light"
 
 /obj/item/tool/screwdriver/holoswitch
 	name = "hardlight screwdriver"
 	desc = "This should not exist."
-	deploytype = "screwdriver"
 	tool_speed = 0.9
 
 /obj/item/tool/wrench/holoswitch
 	name = "hardlight bolt driver"
 	desc = "This should not exist."
-	deploytype = "wrench"
 	tool_speed = 0.9
 
 /obj/item/tool/crowbar/holoswitch
 	name = "hardlight pry bar"
 	desc = "This should not exist."
-	deploytype = "crowbar"
 	tool_speed = 0.9
 
 /obj/item/tool/wirecutters/holoswitch
 	name = "hardlight wire cutting tool"
 	desc = "This should not exist."
-	deploytype = "wirecutters"
 	tool_speed = 0.9
 
 /obj/item/weldingtool/holoswitch
 	name = "laser welding tool"
 	desc = "This should not exist."
-	deploytype = "welder"
 	tool_speed = 0.9
 	var/nextrefueltick = 0
-
-/obj/item/multitool/holoswitch
-	name = "hardlight electromagnetic microinducer"
-	desc = "This should not exist."
-	deploytype = "multitool"
 
 /obj/item/weldingtool/holoswitch/process(delta_time)
 	..()
@@ -432,111 +411,97 @@
 		nextrefueltick = world.time + 10
 		reagents.add_reagent("fuel", 1)
 
+/obj/item/multitool/holoswitch
+	name = "hardlight electromagnetic microinducer"
+	desc = "This should not exist."
+
 /obj/item/surgical/scalpel/laser3/holoswitch
 	name = "hybrid hardlight-laser scalpel"
 	desc = "This should not exist."
-	deploytype = "scalpel"
 	tool_speed = 0.9
 
 /obj/item/surgical/retractor/holoswitch
 	name = "hardlight retractor"
 	desc = "This should not exist."
-	deploytype = "retractor"
 	tool_speed = 0.9
 
 /obj/item/surgical/hemostat/holoswitch
 	name = "hardlight haemostat"
 	desc = "This should not exist."
-	deploytype = "hemostat"
 	tool_speed = 0.9
 
 /obj/item/surgical/cautery/holoswitch
 	name = "laser cautery"
 	desc = "This should not exist."
-	deploytype = "cautery"
 	tool_speed = 0.9
 
 /obj/item/surgical/circular_saw/holoswitch
 	name = "hardlight saw"
 	desc = "This should not exist."
-	deploytype = "saw"
 	tool_speed = 0.9
 
 /obj/item/surgical/surgicaldrill/holoswitch
 	name = "hardlight surgical drill"
 	desc = "This should not exist."
-	deploytype = "drill"
 	tool_speed = 0.9
 
 /obj/item/surgical/bone_clamp/holoswitch
 	name = "hardlight bone rectifier"
 	desc = "This should not exist."
-	deploytype = "boneclamp"
 	tool_speed = 0.9
 
 /obj/item/melee/energy/sword/holoswitch
 	name = "hardlight blade"
 	desc = "This should not exist."
-	deploytype = "sword"
 
 /obj/item/shield/holoswitch
 	name = "hardlight shield"
 	desc = "This should not exist."
-	deploytype = "shield"
 
 /obj/item/soap/holoswitch/pre_attack()
-	. = ..()
 	wet()
+	return ..()
 
 /obj/item/tool/screwdriver/switchy
 	name = "switchtool screwdriver"
 	desc = "This should not exist."
-	deploytype = "screwdriver"
 	tool_speed = 1.2
 
 /obj/item/tool/wrench/switchy
 	name = "switchtool wrench"
 	desc = "This should not exist."
-	deploytype = "wrench"
 	tool_speed = 1.2
 
 /obj/item/tool/crowbar/switchy
 	name = "switchtool crowbar"
 	desc = "This should not exist."
-	deploytype = "crowbar"
 	tool_speed = 1.2
 
 /obj/item/tool/wirecutters/switchy
 	name = "switchtool cutters"
 	desc = "This should not exist."
-	deploytype = "wirecutters"
 	tool_speed = 1.2
 
 /obj/item/multitool/switchy
 	name = "switchtool micro-multitool"
 	desc = "This should not exist."
-	deploytype = "multitool"
 
 /obj/item/surgical/scalpel/switchy
 	name = "switchtool scalpel"
 	desc = "This should not exist."
-	deploytype = "scalpel"
 	tool_speed = 1.2
 
 /obj/item/surgical/hemostat/switchy
 	name = "switchtool hemostat"
 	desc = "This should not exist."
-	deploytype = "hemostat"
 	tool_speed = 1.2
 
 /obj/item/surgical/retractor/switchy
 	name = "switchtool retractor"
 	desc = "This should not exist."
-	deploytype = "retractor"
 	tool_speed = 1.2
 
 /obj/item/surgical/bonesetter/switchy
 	name = "switchtool bone setter"
 	desc = "This should not exist."
-	deploytype = "boneclamp"
 	tool_speed = 1.2
