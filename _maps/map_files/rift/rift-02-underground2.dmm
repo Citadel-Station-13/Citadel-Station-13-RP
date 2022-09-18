@@ -1940,6 +1940,7 @@
 /obj/structure/table/steel,
 /obj/random/maintenance/cargo,
 /obj/random/maintenance,
+/obj/machinery/light/small,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "el" = (
@@ -4507,6 +4508,13 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/undertwo)
+"jw" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/steel,
+/area/quartermaster/miningdock)
 "jx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -9067,12 +9075,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_room)
-"tv" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel,
-/area/quartermaster/miningdock)
 "tx" = (
 /obj/structure/bed/chair/pew/right{
 	dir = 1
@@ -9132,8 +9134,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "tR" = (
-/turf/simulated/floor/tiled,
-/area/quartermaster/miningdock)
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/open,
+/area/maintenance/lower/mining)
 "tT" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -9184,6 +9192,9 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/undertwo)
+"ur" = (
+/turf/simulated/floor/tiled,
+/area/quartermaster/miningdock)
 "uw" = (
 /obj/structure/railing{
 	dir = 8
@@ -9317,10 +9328,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/observation)
-"vp" = (
-/obj/structure/ore_box,
-/turf/simulated/floor/tiled,
-/area/quartermaster/miningdock)
 "vs" = (
 /obj/machinery/atmospherics/component/binary/circulator{
 	dir = 1
@@ -9355,6 +9362,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"vC" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/open,
+/area/maintenance/lower/mining)
 "vD" = (
 /obj/structure/sign/department/morgue{
 	name = "FUNERAL";
@@ -9428,12 +9441,21 @@
 	},
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/refinery)
+"wc" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/miningdock)
 "wj" = (
 /obj/structure/railing{
 	dir = 8
 	},
 /obj/structure/railing,
 /obj/structure/lattice,
+/obj/structure/railing{
+	dir = 1
+	},
 /turf/simulated/open,
 /area/quartermaster/miningdock)
 "wm" = (
@@ -9697,6 +9719,9 @@
 /area/chapel/chapel_morgue)
 "xI" = (
 /obj/structure/lattice,
+/obj/structure/railing{
+	dir = 1
+	},
 /turf/simulated/open,
 /area/quartermaster/miningdock)
 "xK" = (
@@ -9829,11 +9854,6 @@
 	},
 /turf/simulated/floor/sky/depths/lythios43c,
 /area/rift/surfacebase/underground/under2)
-"yF" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/steel,
-/area/quartermaster/miningdock)
 "yG" = (
 /obj/structure/railing{
 	dir = 1
@@ -9854,15 +9874,6 @@
 	},
 /turf/simulated/floor/sky/depths/lythios43c,
 /area/rift/surfacebase/underground/under2)
-"yU" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 2
-	},
-/turf/simulated/floor/tiled/steel,
-/area/quartermaster/miningdock)
 "za" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
@@ -10069,9 +10080,12 @@
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_room)
 "AM" = (
-/obj/structure/catwalk,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
 /turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
 "AO" = (
@@ -10303,6 +10317,20 @@
 /area/quartermaster/belterdock/refinery)
 "CC" = (
 /turf/simulated/floor/tiled/steel,
+/area/quartermaster/miningdock)
+"CF" = (
+/obj/machinery/door/airlock/glass_mining{
+	name = "Mining Operations";
+	req_access = list(31);
+	req_one_access = list()
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
 /area/quartermaster/miningdock)
 "CG" = (
 /obj/structure/railing{
@@ -10555,14 +10583,19 @@
 /turf/simulated/floor/lino,
 /area/chapel/office)
 "ES" = (
-/obj/machinery/atmospherics/pipe/zpipe/down/supply{
-	dir = 8
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/zpipe/down/scrubbers{
-	dir = 8
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 2
 	},
-/obj/structure/lattice,
-/turf/simulated/open,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "EU" = (
 /obj/machinery/mineral/equipment_vendor,
@@ -10702,20 +10735,16 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "FK" = (
-/obj/structure/railing{
-	dir = 8
-	},
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/lattice,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/turf/simulated/open,
+/turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
 "FM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -10906,11 +10935,27 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
+"GV" = (
+/obj/structure/lattice,
+/turf/simulated/open,
+/area/quartermaster/miningdock)
 "GX" = (
 /obj/structure/railing,
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
+"He" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/miningdock)
 "Hg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -10988,6 +11033,11 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_room)
+"HO" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/mining)
 "HV" = (
 /obj/effect/floor_decal/industrial/loading{
 	dir = 1
@@ -11023,12 +11073,8 @@
 /area/maintenance/lower/mining)
 "Ix" = (
 /obj/structure/catwalk,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
 "Iy" = (
@@ -11201,6 +11247,19 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
+"Jw" = (
+/obj/machinery/atmospherics/pipe/zpipe/down/scrubbers,
+/obj/machinery/atmospherics/pipe/zpipe/down/supply,
+/obj/structure/lattice,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing,
+/turf/simulated/open,
+/area/maintenance/lower/mining)
 "Jx" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/railing{
@@ -11479,14 +11538,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "LJ" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/obj/structure/table/steel,
-/obj/random/maintenance/cargo,
-/obj/random/maintenance,
-/turf/simulated/floor/plating,
-/area/maintenance/lower/mining)
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/steel,
+/area/quartermaster/miningdock)
 "LM" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -11553,19 +11608,13 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
 "Mj" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 2
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
+	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
+	dir = 8
 	},
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled,
 /area/quartermaster/miningdock)
 "Mk" = (
 /obj/structure/table/wooden_reinforced,
@@ -11733,12 +11782,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/refinery)
-"Nn" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/quartermaster/miningdock)
 "Nq" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -12546,6 +12589,21 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
+"TU" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 2
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/steel,
+/area/quartermaster/miningdock)
 "TW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -12672,10 +12730,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "Vj" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "Vo" = (
@@ -12862,6 +12919,15 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/chapel/main)
+"Ws" = (
+/obj/machinery/door/airlock/maintenance/cargo{
+	req_access = list(50);
+	req_one_access = list(48)
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/plating,
+/area/quartermaster/miningdock)
 "Wy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -13005,12 +13071,6 @@
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 2
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "XC" = (
@@ -13027,6 +13087,11 @@
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
+"XQ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/mining)
 "XR" = (
 /obj/structure/plasticflaps/mining,
 /obj/machinery/conveyor{
@@ -13210,6 +13275,15 @@
 /obj/structure/stairs/spawner/south,
 /turf/simulated/floor/plating,
 /area/rift/station/stairs_one)
+"Zk" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/quartermaster/miningdock)
 "Zo" = (
 /obj/machinery/door/airlock/maintenance/engi,
 /obj/machinery/door/firedoor/glass,
@@ -32009,8 +32083,8 @@ ad
 GG
 GG
 ad
-xI
-xI
+GV
+GV
 ip
 WZ
 uR
@@ -32198,16 +32272,16 @@ JP
 vO
 Tg
 Ze
-Ze
+cM
 GG
 EC
 EC
 GG
 Ig
 wL
-Xz
-Vj
-yF
+ES
+jw
+LJ
 LG
 HK
 ty
@@ -32397,10 +32471,10 @@ GG
 EC
 EC
 CY
-Ix
 AM
-Mj
-tv
+Ix
+TU
+Vj
 NP
 WD
 CC
@@ -32593,7 +32667,7 @@ EC
 GG
 FK
 wj
-yU
+Xz
 Mc
 CC
 Xe
@@ -32779,13 +32853,13 @@ aa
 JP
 vO
 Tg
-XS
+JP
 JP
 ad
 GG
 GG
 ad
-ES
+Zk
 xI
 ID
 GT
@@ -32973,13 +33047,13 @@ aa
 JP
 vO
 Tg
-XS
 JP
-JP
-JP
-JP
+vC
+tR
+Ze
+Ze
 EQ
-EQ
+CF
 EQ
 EQ
 RU
@@ -33167,15 +33241,15 @@ aa
 JP
 vO
 Tg
-XS
-JP
-aO
-aU
-cj
+wJ
+Ze
+Ze
+Ze
+Ze
 EQ
-vp
-Nn
-tR
+Mj
+wc
+ur
 RU
 EU
 Qc
@@ -33361,13 +33435,13 @@ aa
 JP
 GX
 Tg
-XS
 JP
 Ze
-Ze
-Ze
-EQ
-Pl
+Jw
+XQ
+HO
+Ws
+He
 Pl
 Pl
 Nk
@@ -33555,11 +33629,11 @@ aa
 JP
 vO
 Tg
-XS
 JP
-Ze
-Ze
-Ze
+JP
+JP
+JP
+JP
 EQ
 Uw
 Uw
@@ -33751,9 +33825,9 @@ vO
 Tg
 XS
 JP
-LJ
-Ze
-cM
+aO
+aU
+cj
 EQ
 Uw
 RD

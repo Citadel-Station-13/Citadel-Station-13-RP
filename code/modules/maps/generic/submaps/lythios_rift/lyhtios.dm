@@ -8,6 +8,8 @@
 // The bottom half should be fairly tame, with perhaps a few enviromental hazards.
 // The top half is when things start getting dangerous, but the loot gets better.
 
+
+/* // TODO, commenting out rn as I work on it otherwise it will cause some integration issues -Bloop!
 /datum/map_template/submap/level_specific/rift
 	name = "Rift Content"
 	desc = "Don't dig too deep!"
@@ -32,6 +34,7 @@
 	suffix = "geothermal_vent.dmm"
 	cost = 0
 	allow_duplicates = TRUE
+*/
 
 /*
 	/datum/map_template/submap/level_specific/mountains/normal/deadBeacon
