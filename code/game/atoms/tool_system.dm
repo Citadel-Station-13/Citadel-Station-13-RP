@@ -87,13 +87,19 @@
 				if(functions[i])
 					continue
 				possibilities -= i
-		#warn handle mono-hint with or without list by displaying hint directly
 		// everything in possibilities is valid for the tool
 		var/list/transformed = list()
 		for(var/i in possibilities)
-			var/image/I = dynamic_tool_image(i)
+			// is there only one hint?
+			var/list/associated = possibilities[i]
+			var/hint
+			if(associated && (!islist(associated) || (length(associated) == 1)))
+				// yes there is!
+				hint = islist(associated)? associated[1] : associated
+			var/image/I = dynamic_tool_image(i, hint)
 			I.maptext = i
 			transformed[i] = I
+		// todo: radial menu at some point should be made to automatically close when they click something else.
 		var/function = show_radial_menu(user, src, transformed, require_near = provided_item.reach)
 		if(reachability_check && !reachability_check.Invoke())
 			return CLICKCHAIN_DO_NOT_PROPAGATE
