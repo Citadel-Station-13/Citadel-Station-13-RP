@@ -59,7 +59,7 @@
 				C.forceMove(loc)
 			A.state = 3
 			A.update_icon()
-			M.machine_deconstruct(src)
+			M.after_deconstruct(src)
 			qdel(src)
 			return
 

@@ -18,16 +18,16 @@
 	name = T_BOARD("injector control")
 	build_path = /obj/machinery/computer/general_air_control/fuel_injection
 
-/obj/item/circuitboard/air_management/machine_constructed(obj/O)
+/obj/item/circuitboard/air_management/after_construct(atom/A)
 	. = ..()
-	if(!istype(M, /obj/machinery/computer/general_air_control))
+	if(!istype(A, /obj/machinery/computer/general_air_control))
 		return
-	var/obj/machinery/computer/general_air_control/C = M
+	var/obj/machinery/computer/general_air_control/C = A
 	C.frequency = frequency
 
-/obj/item/circuitboard/air_management/machine_deconstructed(obj/O)
+/obj/item/circuitboard/air_management/after_deconstruct(atom/A)
 	. = ..()
-	if(!istype(M, /obj/machinery/computer/general_air_control))
+	if(!istype(A, /obj/machinery/computer/general_air_control))
 		return
-	var/obj/machinery/computer/general_air_control/C = M
+	var/obj/machinery/computer/general_air_control/C = A
 	frequency = C.frequency

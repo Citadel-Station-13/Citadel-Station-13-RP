@@ -381,7 +381,7 @@
 					else
 						new_machine.component_parts = list()
 
-					circuit.machine_constructed(new_machine)
+					circuit.after_construct(new_machine)
 
 					for(var/obj/O in components)
 						if(circuit.contain_parts)
@@ -407,7 +407,7 @@
 				B.pixel_x = pixel_x
 				B.pixel_y = pixel_y
 				B.setDir(dir)
-				circuit.machine_constructed(B)
+				circuit.after_construct(B)
 				circuit.loc = null
 				B.circuit = circuit
 				qdel(src)
@@ -421,7 +421,7 @@
 				B.pixel_x = pixel_x
 				B.pixel_y = pixel_y
 				B.setDir(dir)
-				circuit.machine_constructed(B)
+				circuit.after_construct(B)
 				circuit.loc = null
 				B.circuit = circuit
 				qdel(src)
@@ -434,7 +434,7 @@
 				B.pixel_x = pixel_x
 				B.pixel_y = pixel_y
 				B.setDir(dir)
-				circuit.machine_constructed(B)
+				circuit.after_construct(B)
 				circuit.loc = null
 				B.circuit = circuit
 				qdel(src)

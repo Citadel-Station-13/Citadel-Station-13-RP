@@ -498,6 +498,6 @@
 	A.update_desc()
 	A.update_appearance()
 	M.loc = null
-	M.deconstruct(src)
+	M.after_deconstruct(src)
 	qdel(src)
 	return 1

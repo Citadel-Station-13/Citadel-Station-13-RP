@@ -108,6 +108,6 @@
 			if(P.is_screwdriver())
 				playsound(src.loc, P.tool_sound, 50, 1)
 				to_chat(user, "<span class='notice'>You connect the monitor.</span>")
-				var/B = new src.circuit.build_path ( src.loc )
-				src.circuit.construct(B)
+				var/B = new circuit.build_path ( src.loc )
+				circuit.after_contruct(B)
 				qdel(src)

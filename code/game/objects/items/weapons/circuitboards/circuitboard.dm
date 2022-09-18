@@ -5,6 +5,12 @@
 #define T_BOARD(name)	"circuit board (" + (name) + ")"
 
 // TODO: split into machine, computer, etc circuits
+/**
+ * circuitboards
+ *
+ * used in frames to construct arbitrary objects with arbitrary components.
+ * this will usually be /obj/machinery, but other things are possible.
+ */
 /obj/item/circuitboard
 	name = "circuit board"
 	icon = 'icons/obj/module.dmi'
@@ -28,22 +34,20 @@
 	var/contain_parts = TRUE
 
 /**
- * called when we are used to construct a new machine.
- * this proc is a misnomer; any /obj can be passed in (thanks to radios requiring snowflaking)
+ * called when we are used to construct something.
  *
  * put your synchronization code in here.
  */
-/obj/item/circuitboard/proc/machine_constructed(obj/O)
+/obj/item/circuitboard/proc/after_construct(atom/A)
 	return
 
 /**
- * called when a machine using us is deconstructed.
- * this proc is a misnomer; any /obj can be passed in (thanks to radios requiring snowflaking)
+ * called when what we were used to construct is deconstructed.
  *
  * put your synchronization code in here.
  *
  */
-/obj/item/circuitboard/proc/machine_deconstructed(obj/O)
+/obj/item/circuitboard/proc/after_deconstruct(atom/A)
 	return
 
 //Should be called from the constructor of any machine to automatically populate the default parts

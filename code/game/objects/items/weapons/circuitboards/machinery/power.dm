@@ -9,11 +9,11 @@
 	origin_tech = list(TECH_POWER = 6, TECH_ENGINEERING = 4)
 	req_components = list(/obj/item/smes_coil = 1, /obj/item/stack/cable_coil = 30)
 
-/obj/item/circuitboard/smes/machine_constructed(obj/O)
+/obj/item/circuitboard/smes/after_construct(atom/A)
 	. = ..()
-	if(!istype(M, /obj/machinery/power/smes/buildable))
+	if(!istype(A, /obj/machinery/power/smes/buildable))
 		return
-	var/obj/machinery/power/smes/buildable/S = M
+	var/obj/machinery/power/smes/buildable/S = A
 	S.output_attempt = FALSE
 
 /obj/item/circuitboard/batteryrack
