@@ -280,6 +280,8 @@ GLOBAL_LIST(topic_status_cache)
 
 	log_world("World rebooted at [time_stamp()]")
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
+	// hmmm let's sleep for one (1) second incase rust_g threads are running for whatever reason
+	sleep(1 SECONDS)
 	..()
 
 /world/Del()
