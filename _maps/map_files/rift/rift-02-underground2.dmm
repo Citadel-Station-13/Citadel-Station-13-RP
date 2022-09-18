@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "ab" = (
 /turf/simulated/wall/r_wall,
@@ -3424,7 +3424,7 @@
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "hm" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
@@ -3897,7 +3897,6 @@
 /area/maintenance/chapel)
 "ip" = (
 /obj/structure/sign/warning/falling,
-/obj/effect/zone_divider,
 /turf/simulated/wall,
 /area/quartermaster/miningdock)
 "iq" = (
@@ -5106,7 +5105,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
 "kB" = (
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/maintenance/atmos)
 "kC" = (
 /obj/effect/overlay/snow/floor/pointy{
@@ -8063,8 +8062,6 @@
 	tag_east = 1;
 	tag_east_con = 0.5;
 	tag_north = 2;
-	tag_north_con = null;
-	tag_south_con = null;
 	tag_west = 1;
 	tag_west_con = 0.5
 	},
@@ -8288,7 +8285,6 @@
 	tag_north = 1;
 	tag_north_con = 0.21;
 	tag_south = 2;
-	tag_south_con = null;
 	tag_west = 1;
 	tag_west_con = 0.79
 	},
@@ -9071,6 +9067,12 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_room)
+"tv" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/quartermaster/miningdock)
 "tx" = (
 /obj/structure/bed/chair/pew/right{
 	dir = 1
@@ -9078,9 +9080,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "ty" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
@@ -9088,6 +9087,9 @@
 	d1 = 2;
 	d2 = 4;
 	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
@@ -9130,8 +9132,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "tR" = (
-/turf/simulated/open,
-/area/maintenance/lower/mining)
+/turf/simulated/floor/tiled,
+/area/quartermaster/miningdock)
 "tT" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -9315,6 +9317,10 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/observation)
+"vp" = (
+/obj/structure/ore_box,
+/turf/simulated/floor/tiled,
+/area/quartermaster/miningdock)
 "vs" = (
 /obj/machinery/atmospherics/component/binary/circulator{
 	dir = 1
@@ -9374,8 +9380,7 @@
 "vN" = (
 /obj/machinery/conveyor{
 	dir = 8;
-	id = "miningops";
-	movedir = null
+	id = "miningops"
 	},
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/refinery)
@@ -9428,6 +9433,7 @@
 	dir = 8
 	},
 /obj/structure/railing,
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/quartermaster/miningdock)
 "wm" = (
@@ -9525,6 +9531,7 @@
 	dir = 4
 	},
 /obj/structure/railing,
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/quartermaster/miningdock)
 "wV" = (
@@ -9689,6 +9696,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/chapel/chapel_morgue)
 "xI" = (
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/quartermaster/miningdock)
 "xK" = (
@@ -9821,6 +9829,11 @@
 	},
 /turf/simulated/floor/sky/depths/lythios43c,
 /area/rift/surfacebase/underground/under2)
+"yF" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/steel,
+/area/quartermaster/miningdock)
 "yG" = (
 /obj/structure/railing{
 	dir = 1
@@ -9841,6 +9854,15 @@
 	},
 /turf/simulated/floor/sky/depths/lythios43c,
 /area/rift/surfacebase/underground/under2)
+"yU" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 2
+	},
+/turf/simulated/floor/tiled/steel,
+/area/quartermaster/miningdock)
 "za" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
@@ -10048,6 +10070,8 @@
 /area/engineering/engine_room)
 "AM" = (
 /obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
 "AO" = (
@@ -10264,7 +10288,7 @@
 "Cv" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "CA" = (
 /obj/machinery/door/airlock/maintenance/engi{
@@ -10531,8 +10555,14 @@
 /turf/simulated/floor/lino,
 /area/chapel/office)
 "ES" = (
-/obj/structure/fence/door,
-/turf/simulated/floor/tiled/steel,
+/obj/machinery/atmospherics/pipe/zpipe/down/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/zpipe/down/scrubbers{
+	dir = 8
+	},
+/obj/structure/lattice,
+/turf/simulated/open,
 /area/quartermaster/miningdock)
 "EU" = (
 /obj/machinery/mineral/equipment_vendor,
@@ -10677,6 +10707,13 @@
 	},
 /obj/machinery/light/small{
 	dir = 1
+	},
+/obj/structure/lattice,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
 	},
 /turf/simulated/open,
 /area/quartermaster/miningdock)
@@ -10933,7 +10970,9 @@
 /area/engineering/engine_room)
 "HK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/fence/door,
+/obj/machinery/door/airlock/multi_tile/glass,
+/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "HN" = (
@@ -10973,6 +11012,7 @@
 /obj/structure/sign/mining{
 	pixel_y = 32
 	},
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/quartermaster/miningdock)
 "Iq" = (
@@ -10982,13 +11022,14 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "Ix" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 4
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
 	},
-/obj/machinery/light/small{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
 "Iy" = (
 /obj/structure/table/woodentable,
@@ -11011,7 +11052,6 @@
 /area/chapel/office)
 "ID" = (
 /obj/structure/sign/mining,
-/obj/effect/zone_divider,
 /turf/simulated/wall,
 /area/quartermaster/miningdock)
 "IF" = (
@@ -11432,8 +11472,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "LG" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
@@ -11512,8 +11553,19 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
 "Mj" = (
-/obj/effect/zone_divider,
-/turf/simulated/wall,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 2
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "Mk" = (
 /obj/structure/table/wooden_reinforced,
@@ -11681,6 +11733,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/refinery)
+"Nn" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/miningdock)
 "Nq" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -11969,8 +12027,7 @@
 /obj/structure/plasticflaps,
 /obj/machinery/conveyor{
 	dir = 8;
-	id = "miningops";
-	movedir = null
+	id = "miningops"
 	},
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/refinery)
@@ -12134,7 +12191,7 @@
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "QX" = (
 /obj/effect/decal/remains/tajaran,
@@ -12452,7 +12509,7 @@
 /area/engineering/engine_gas)
 "TF" = (
 /obj/effect/zone_divider,
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "TH" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
@@ -12615,10 +12672,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "Vj" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor/plating,
-/area/maintenance/lower/mining)
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/steel,
+/area/quartermaster/miningdock)
 "Vo" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/borderfloor/corner2,
@@ -12946,7 +13005,12 @@
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 2
 	},
-/obj/effect/zone_divider,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "XC" = (
@@ -31751,9 +31815,9 @@ EQ
 EQ
 EQ
 EQ
-xI
-xI
-Mj
+EQ
+EQ
+EQ
 EQ
 EQ
 EQ
@@ -32142,8 +32206,8 @@ GG
 Ig
 wL
 Xz
-CC
-CC
+Vj
+yF
 LG
 HK
 ty
@@ -32333,13 +32397,13 @@ GG
 EC
 EC
 CY
+Ix
 AM
-AM
-Xz
-CC
+Mj
+tv
 NP
 WD
-ES
+CC
 uW
 CC
 CC
@@ -32529,7 +32593,7 @@ EC
 GG
 FK
 wj
-Xz
+yU
 Mc
 CC
 Xe
@@ -32721,7 +32785,7 @@ ad
 GG
 GG
 ad
-xI
+ES
 xI
 ID
 GT
@@ -32911,13 +32975,13 @@ vO
 Tg
 XS
 JP
-tR
-tR
-tR
-tR
-xI
-xI
-Mj
+JP
+JP
+JP
+EQ
+EQ
+EQ
+EQ
 RU
 RU
 RU
@@ -33105,13 +33169,13 @@ vO
 Tg
 XS
 JP
-Vj
-Vj
-Vj
+aO
+aU
+cj
 EQ
-EQ
-EQ
-EQ
+vp
+Nn
+tR
 RU
 EU
 Qc
@@ -33299,12 +33363,12 @@ GX
 Tg
 XS
 JP
-aO
-aU
-cj
+Ze
+Ze
+Ze
 EQ
 Pl
-Ix
+Pl
 Pl
 Nk
 Jn
