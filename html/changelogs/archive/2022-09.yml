@@ -37,3 +37,10 @@
 2022-09-16:
   Captain277:
   - bugfix: Fixes a typo.
+2022-09-18:
+  Captain277:
+  - rscadd: Adds cosmetic chlorine gas icon.
+  - rscadd: Adds horror aura for...horrors.
+  - bugfix: Fixes incorrect Courser dir.
+  Nepnya:
+  - tweak: Allows anyone with a synthetic voicebox to use synthetic emotes.
