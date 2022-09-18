@@ -87,6 +87,7 @@
 				if(functions[i])
 					continue
 				possibilities -= i
+		#warn handle mono-hint with or without list by displaying hint directly
 		// everything in possibilities is valid for the tool
 		var/list/transformed = list()
 		for(var/i in possibilities)
@@ -212,6 +213,7 @@
  * returns a list of behaviours that can be used on us in our current state
  * the behaviour may be associated to a list of "hints" for multiple possible actions per behaviour.
  * the hint should be human readable.
+ * associating directly to a single hint is allowed.
  *
  * @params
  * - I - the tool used, if any
@@ -255,7 +257,7 @@
 /atom/proc/dynamic_tool_image(function, hint)
 	return dyntool_image_neutral(function)
 
-//! default images
+//! Dynamic Tools - default images
 /proc/dyntool_image_neutral(function)
 	return new image('icons/screen/radial/tools/generic.dmi', icon_state = _dyntool_image_states[function] || "unknown")
 

@@ -57,7 +57,7 @@
  * - cost - multiplier for cost, standard tool "cost" is 1 per second of usage.
  * - usage - usage flags for skill system checks.
  */
-/atom/proc/use_wrecnh(obj/item/I, mob/user, flags, delay, cost, usage)
+/atom/proc/use_wrench(obj/item/I, mob/user, flags, delay, cost, usage)
 	return use_tool_standard(TOOL_WRENCH, I, user, flags, delay, cost, usage)
 
 /**

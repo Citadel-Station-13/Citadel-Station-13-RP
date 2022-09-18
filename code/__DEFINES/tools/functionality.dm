@@ -1,4 +1,4 @@
-//! Tool Behaviours - these should be human readable!
+//! Tool Behaviours - make these human readable!
 
 //? Engineering
 #define TOOL_CROWBAR 		"crowbar"
@@ -38,12 +38,12 @@ GLOBAL_REAL_VAR(_dyntool_image_states) = list(
 
 //? None yet! Waiting on skill-system design.
 
-//! Tool hints - while not needing to be defined, this lets us easily display messages
-//! if the item in question is doing a specific thing by overriding feedback builder procs!
+//! Tool hints - make these human readable!
 
-#define TOOL_HINT_UNSCREWING_WINDOW_FRAME "Unfasten Frame"
-#define TOOL_HINT_SCREWING_WINDOW_FRAME "Fasten Frame"
-#define TOOL_HINT_UNSCREWING_WINDOW_PANE "Unfasten Window"
-#define TOOL_HINT_SCREWING_WINDOW_PANE "Unfasten Frame"
-#define TOOL_HINT_CROWBAR_WINDOW_IN "Pry In Window"
-#define TOOL_HINT_CROWBRA_WINDOW_OUT "Pry Out Window"
+#define TOOL_HINT_UNSCREWING_WINDOW_FRAME "unfasten the frame from the floor"
+#define TOOL_HINT_SCREWING_WINDOW_FRAME "fasten the frame to the floor"
+#define TOOL_HINT_UNSCREWING_WINDOW_PANE "unscrew the window from the frmae"
+#define TOOL_HINT_SCREWING_WINDOW_PANE "screw the window from the frame"
+#define TOOL_HINT_CROWBAR_WINDOW_IN "crowbar the window into the frame"
+#define TOOL_HINT_CROWBAR_WINDOW_OUT "crowbar the window out of the frame"
+#define TOOL_HINT_WRENCH_WINDOW_DISASSEMBLY "dismantle the unsecured window"
