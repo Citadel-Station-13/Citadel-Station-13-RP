@@ -291,7 +291,7 @@
 	if(W.item_flags & NOBLUDGEON)
 		return
 
-	else if(istype(W, /obj/item/stack/cable_coil) && considered_reinforced && state == 0 && !istype(src, /obj/structure/window/reinforced/polarized))
+	else if(istype(W, /obj/item/stack/cable_coil) && considered_reinforced && construction_state == WINDOW_STATE_UNSECURED && !istype(src, /obj/structure/window/reinforced/polarized))
 		var/obj/item/stack/cable_coil/C = W
 		if (C.use(1))
 			playsound(src.loc, 'sound/effects/sparks1.ogg', 75, 1)
@@ -299,7 +299,7 @@
 				"<span class='notice'>\The [user] begins to wire \the [src] for electrochromic tinting.</span>", \
 				"<span class='notice'>You begin to wire \the [src] for electrochromic tinting.</span>", \
 				"You hear sparks.")
-			if(do_after(user, 20 * C.tool_speed, src) && state == 0)
+			if(do_after(user, 20 * C.tool_speed, src) && construction_state == WINDOW_STATE_UNSECURED)
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 				var/obj/structure/window/reinforced/polarized/P = new(loc, dir)
 				if(is_fulltile())
@@ -307,7 +307,7 @@
 					P.icon_state = "fwindow"
 				P.maxhealth = maxhealth
 				P.health = health
-				P.state = state
+				P.construction_state = construction_state
 				P.anchored = anchored
 				qdel(src)
 	else if(istype(W,/obj/item/frame) && anchored)
@@ -388,7 +388,7 @@
 	//player-constructed windows
 	if (constructed)
 		anchored = 0
-		state = 0
+		construction_state = 0
 		update_verbs()
 
 	health = maxhealth
@@ -484,35 +484,35 @@
 
 /obj/structure/window/screwdriver_act(obj/item/I, mob/user, flags, hint)
 	. = TRUE
-	if(state == WINDOW_STATE_UNSECURED || state == WINDOW_STATE_SCREWED_TO_FLOOR || !considered_reinforced)
+	if(construction_state == WINDOW_STATE_UNSECURED || construction_state == WINDOW_STATE_SCREWED_TO_FLOOR || !considered_reinforced)
 		if(!use_screwdriver(I, user, flags))
 			return
-		var/unsecuring = state != WINDOW_STATE_UNSECURED
+		var/unsecuring = construction_state != WINDOW_STATE_UNSECURED
 		user.action_feedback(SPAN_NOTICE("You [unsecuring? "unfasten" : "fasten"] the frame [unsecuring? "from" : "to"] the floor."), src)
-		state = unsecuring? WINDOW_STATE_UNSECURED : WINDOW_STATE_SCREWED_TO_FLOOR
+		construction_state = unsecuring? WINDOW_STATE_UNSECURED : WINDOW_STATE_SCREWED_TO_FLOOR
 		anchored = !unsecuring
 		update_nearby_tiles(TRUE)
 		update_verbs()
 		return
-	if(state != WINDOW_STATE_CROWBRARED_IN && state != WINDOW_STATE_SECURED_TO_FRAME)
+	if(construction_state != WINDOW_STATE_CROWBRARED_IN && construction_state != WINDOW_STATE_SECURED_TO_FRAME)
 		return
 	if(!use_screwdriver(I, user, flags))
 		return
-	var/unsecuring = state == WINDOW_STATE_SECURED_TO_FRAME
+	var/unsecuring = construction_state == WINDOW_STATE_SECURED_TO_FRAME
 	user.action_feedback(SPAN_NOTICE("You [unsecuring? "unfasten" : "fasten"] the window [unsecuring? "from" : "to"] the frame."), src)
-	state = unsecuring? WINDOW_STATE_CROWBRARED_IN : WINDOW_STATE_SECURED_TO_FRAME
+	construction_state = unsecuring? WINDOW_STATE_CROWBRARED_IN : WINDOW_STATE_SECURED_TO_FRAME
 
 /obj/structure/window/crowbar_act(obj/item/I, mob/user, flags, hint)
 	. = TRUE
 	if(!considered_reinforced)
 		return
-	if(state != WINDOW_STATE_CROWBRARED_IN && state != WINDOW_STATE_SCREWED_TO_FLOOR)
+	if(construction_state != WINDOW_STATE_CROWBRARED_IN && construction_state != WINDOW_STATE_SCREWED_TO_FLOOR)
 		return
 	if(!use_crowbar(I, user, flags))
 		return
-	var/unsecuring = state == WINDOW_STATE_CROWBRARED_IN
+	var/unsecuring = construction_state == WINDOW_STATE_CROWBRARED_IN
 	user.action_feedback(SPAN_NOTICE("You pry [src] [unsecuring? "out of" : "into"] the frame."), src)
-	state = unsecuring? WINDOW_STATE_SCREWED_TO_FLOOR : WINDOW_STATE_CROWBRARED_IN
+	construction_state = unsecuring? WINDOW_STATE_SCREWED_TO_FLOOR : WINDOW_STATE_CROWBRARED_IN
 
 /obj/structure/window/wrench_act(obj/item/I, mob/user, flags, hint)
 	. = TRUE
@@ -525,7 +525,7 @@
 	deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
 
 /obj/structure/window/dynamic_tool_functions(obj/item/I, mob/user)
-	if(state == WINDOW_STATE_UNSECURED)
+	if(construction_state == WINDOW_STATE_UNSECURED)
 		return list(
 			TOOL_SCREWDRIVER = TOOL_HINT_SCREWING_WINDOW_FRAME,
 			TOOL_WRENCH
@@ -534,7 +534,7 @@
 		return list(
 			TOOL_SCREWDRIVER = TOOL_HINT_UNSCREWING_WINDOW_FRAME
 		)
-	switch(state)
+	switch(construction_state)
 		if(WINDOW_STATE_SCREWED_TO_FLOOR)
 			return list(
 				TOOL_CROWBAR = TOOL_HINT_CROWBAR_WINDOW_IN,
@@ -542,7 +542,7 @@
 			)
 		if(WINDOW_STATE_CROWBRARED_IN)
 			return list(
-				TOOL_CROWBAR = TOOL_HINT_CROWBRA_WINDOW_OUT,
+				TOOL_CROWBAR = TOOL_HINT_CROWBAR_WINDOW_OUT,
 				TOOL_SCREWDRIVER = TOOL_HINT_SCREWING_WINDOW_PANE
 			)
 		if(WINDOW_STATE_SECURED_TO_FRAME)

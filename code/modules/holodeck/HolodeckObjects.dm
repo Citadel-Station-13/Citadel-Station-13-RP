@@ -189,9 +189,9 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 
 	if(W.is_screwdriver())
 		to_chat(user, "<span class='notice'>It's a holowindow, you can't unfasten it!</span>")
-	else if(W.is_crowbar() && considered_reinforced && state <= 1)
+	else if(W.is_crowbar() && considered_reinforced && construction_state <= 1)
 		to_chat(user, "<span class='notice'>It's a holowindow, you can't pry it!</span>")
-	else if(W.is_wrench() && !anchored && (!state || !considered_reinforced))
+	else if(W.is_wrench() && !anchored && (!construction_state || !considered_reinforced))
 		to_chat(user, "<span class='notice'>It's a holowindow, you can't dismantle it!</span>")
 	else
 		if(W.damtype == BRUTE || W.damtype == BURN)
