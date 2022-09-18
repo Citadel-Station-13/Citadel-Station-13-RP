@@ -19,18 +19,6 @@
 /atom/movable/proc/user_buckle_mob(mob/living/M, mob/user, var/forced = FALSE, var/silent = FALSE)
 	if(!user.Adjacent(M) || user.restrained() || user.stat || istype(user, /mob/living/silicon/pai))
 		return FALSE
-	if(M in buckled_mobs)
-		to_chat(user, "<span class='warning'>\The [M] is already buckled to \the [src].</span>")
-		return FALSE
-	if(M.buckled) //actually check if the mob is already buckled before forcemoving it jfc
-		to_chat(user, "<span class='warning'>\The [M] is already buckled to \the [M.buckled].</span>")
-		return FALSE
-	//can't buckle unless you share locs so try to move M to the obj.
-	if(M.loc != src.loc)
-		if(M.Adjacent(src) && user.Adjacent(src))
-			M.forceMove(get_turf(src))
-	if(!can_buckle_check(M, forced))
-		return FALSE
 
 	add_fingerprint(user)
 //	unbuckle_mob()
@@ -90,7 +78,7 @@
 /atom/movable/proc/drag_drop_buckle_interaction(atom/A, mob/user)
 	set waitfor = FALSE
 	. = TRUE
-	if(!user.Adjacent(src))
+	if(!user.Adjacent(src) || !A.Adjacent(src))
 		return FALSE
 	var/mob/buckling = A
 	if(!buckle_allowed || (buckle_flags & BUCKLING_NO_USER_BUCKLE))
@@ -103,6 +91,7 @@
 		to_chat(user, SPAN_WARNING("[A] is already buckled to [src]!"))
 		return TRUE
 	user_buckle_mob(A, BUCKLE_OP_DEFAULT_INTERACTION, user)
+	add_fingerprint(user)
 
 /**
  * use this hook for processing attempted click unbuckles
@@ -122,6 +111,7 @@
 	if(buckled_mobs.len > 1)
 		unbuckling = input(user, "Who to unbuckle?", "Unbuckle", unbuckling) as anything|null in buckled_mobs
 	user_unbuckle_mob(unbuckling, BUCKLE_OP_DEFAULT_INTERACTION, user, buckled_mobs[unbuckling])
+	add_fingerprint(user)
 
 /**
  * called when someone tries to unbuckle something from us, whether by click or otherwise
@@ -134,7 +124,10 @@
 	. = SEND_SIGNAL(src, COMSIG_MOVABLE_USER_UNBUCKLE_MOB, M, flags, user, semantic)
 	if(. & COMPONENT_BLOCK_BUCKLE_OPERATION)
 		return FALSE
-	return unbuckle_mob(M, flags, user, semantic)
+	. = unbuckle_mob(M, flags, user, semantic)
+	if(!.)
+		return
+
 
 /**
  * called when someone tries to buckle something to us, whether by drag/drop interaction or otherwise
@@ -149,7 +142,9 @@
 		return FALSE
 	if((buckle_flags & BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF) && (user == M))
 		return FALSE
-	return buckle_mob(M, flags, user, semantic)
+	. = buckle_mob(M, flags, user, semantic)
+	if(!.)
+		return
 
 /**
  * called to buckle something to us
@@ -234,6 +229,9 @@
 		to_chat(user, SPAN_NOTICE("[src] can't buckle any more people."))
 		return FALSE
 	if(M.buckled)
+		if(M.buckled == src)
+			to_chat(user, SPAN_WARNING("[M == user? "You are" : "[M] is"] already buckled to [src]!"))
+			return FALSE
 		to_chat(user, SPAN_WARNING("[M == user? "You are" : "[M] is"] already buckled to something!"))
 		return FALSE
 	if((buckle_flags & BUCKLING_REQUIRES_RESTRAINTS) && !M.restrained())
