@@ -13,62 +13,6 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
-#warn  parse below
-
-//Wrapper procs that handle sanity and user feedback
-/atom/movable/proc/user_buckle_mob(mob/living/M, mob/user, var/forced = FALSE, var/silent = FALSE)
-	if(!user.Adjacent(M) || user.restrained() || user.stat || istype(user, /mob/living/silicon/pai))
-		return FALSE
-
-	add_fingerprint(user)
-//	unbuckle_mob()
-
-
-	. = buckle_mob(M, forced)
-	if(.)
-		var/reveal_message = list("buckled_mob" = null, "buckled_to" = null) // This being a list and messages existing for the buckle target atom.
-		if(!silent)
-			if(M == user)
-				reveal_message["buckled_mob"] = "<span class='notice'>You come out of hiding and buckle yourself to [src].</span>"
-				reveal_message["buckled_to"] = "<span class='notice'>You come out of hiding as [M.name] buckles themselves to you.</span>"
-				M.visible_message(\
-					"<span class='notice'>[M.name] buckles themselves to [src].</span>",\
-					"<span class='notice'>You buckle yourself to [src].</span>",\
-					"<span class='notice'>You hear metal clanking.</span>")
-			else
-				reveal_message["buckled_mob"] = "<span class='notice'>You are revealed as you are buckled to [src].</span>"
-				reveal_message["buckled_to"] = "<span class='notice'>You are revealed as [M.name] is buckled to you.</span>"
-				M.visible_message(\
-					"<span class='danger'>[M.name] is buckled to [src] by [user.name]!</span>",\
-					"<span class='danger'>You are buckled to [src] by [user.name]!</span>",\
-					"<span class='notice'>You hear metal clanking.</span>")
-
-		M.reveal(silent, reveal_message["buckled_mob"]) //Reveal people so they aren't buckled to chairs from behind.
-		var/mob/living/L = src
-		if(istype(L))
-			L.reveal(silent, reveal_message["buckled_to"])
-
-/atom/movable/proc/user_unbuckle_mob(mob/living/buckled_mob, mob/user)
-	var/mob/living/M = unbuckle_mob(buckled_mob)
-	if(M)
-		if(M != user)
-			M.visible_message(\
-				"<span class='notice'>[M.name] was unbuckled by [user.name]!</span>",\
-				"<span class='notice'>You were unbuckled from [src] by [user.name].</span>",\
-				"<span class='notice'>You hear metal clanking.</span>")
-		else
-			M.visible_message(\
-				"<span class='notice'>[M.name] unbuckled themselves!</span>",\
-				"<span class='notice'>You unbuckle yourself from [src].</span>",\
-				"<span class='notice'>You hear metal clanking.</span>")
-		add_fingerprint(user)
-	return M
-
-
-#warn parse above
-#warn impl below
-#warn all of the below requires duplicate re-buckle checks.
-#warn signals
 //! movable stuff
 /**
  * use this hook for processing attempted drag/drop buckles
@@ -127,7 +71,18 @@
 	. = unbuckle_mob(M, flags, user, semantic)
 	if(!.)
 		return
-
+	if(user != M)
+		M.visible_message(
+			SPAN_NOTICE("[M] was unbuckled from [src] by [user]."),
+			SPAN_NOTICE("[user] unbuckles you from [src]."),
+			SPAN_NOTICE("You hear shuffling and metal clanking.")
+		)
+	else
+		M.visible_message(
+			SPAN_NOTICE("[M] unbuckles themselves from [src]."),
+			SPAN_NOTICE("You unbuckle yourself from [src]."),
+			SPAN_NOTICE("You hear shuffling and metal clanking.")
+		)
 
 /**
  * called when someone tries to buckle something to us, whether by drag/drop interaction or otherwise
@@ -145,6 +100,18 @@
 	. = buckle_mob(M, flags, user, semantic)
 	if(!.)
 		return
+	if(user != M)
+		M.visible_message(
+			SPAN_NOTICE("[user] buckles [M] to [src]."),
+			SPAN_NOTICE("[user] buckles you to [src]."),
+			SPAN_NOTICE("You hear shuffling and metal clanking.")
+		)
+	else
+		M.visible_message(
+			SPAN_NOTICE("[user] buckles [M] to [src]."),
+			SPAN_NOTICE("You buckle yourself to [src]."),
+			SPAN_NOTICE("You hear shuffling and metal clanking.")
+		)
 
 /**
  * called to buckle something to us
