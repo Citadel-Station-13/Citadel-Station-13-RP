@@ -27,18 +27,22 @@
 
 	var/contain_parts = TRUE
 
-//Called when the circuitboard is used to contruct a new machine.
-/obj/item/circuitboard/proc/construct(var/obj/machinery/M)
-	if(istype(M, build_path))
-		return 1
-	return 0
+/**
+ * called when we are used to construct a new machine.
+ *
+ * put your synchronization code in here.
+ */
+/obj/item/circuitboard/proc/machine_constructed(obj/machinery/M)
+	return
 
-//Called when a computer is deconstructed to produce a circuitboard.
-//Only used by computers, as other machines store their circuitboard instance.
-/obj/item/circuitboard/proc/deconstruct(var/obj/machinery/M)
-	if(istype(M, build_path))
-		return 1
-	return 0
+/**
+ * called when a machine using us is deconstructed.
+ *
+ * put your synchronization code in here.
+ *
+ */
+/obj/item/circuitboard/proc/machine_deconstructed(obj/machinery/M)
+	return
 
 //Should be called from the constructor of any machine to automatically populate the default parts
 /obj/item/circuitboard/proc/apply_default_parts(var/obj/machinery/M)

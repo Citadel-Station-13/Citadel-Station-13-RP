@@ -9,6 +9,7 @@
  */
 /atom/proc/deconstruct(method = ATOM_DECONSTRUCT_DISASSEMBLED)
 	SHOULD_NOT_OVERRIDE(TRUE)
+
 	// send signal
 	// todo: signal
 	// do da funny logic

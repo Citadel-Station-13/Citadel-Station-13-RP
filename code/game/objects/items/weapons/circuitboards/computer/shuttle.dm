@@ -10,18 +10,26 @@
 	var/shuttle_category = null	// Shuttle datum's category must exactly equal this to auto-detect
 	var/shuttle_tag = null		// If set, link constructed console to this shuttle. If null, auto-detect.
 
-/obj/item/circuitboard/shuttle_console/deconstruct(obj/machinery/computer/shuttle_control/M)
-	shuttle_tag = M.shuttle_tag
+/obj/item/circuitboard/shuttle_console/machine_deconstructed(obj/machinery/M)
+	. = ..()
+	if(!istype(M, /obj/machinery/computer/shuttle_control))
+		return
+	var/obj/machinery/computer/shuttle_control/C = M
+	shuttle_tag = C.shuttle_tag
 	if(shuttle_tag)
 		name = T_BOARD("[shuttle_tag] control console")
 
 // Try to auto-link the shuttle computer if it is constructed on a shuttle (and not pre-programmed)
-/obj/item/circuitboard/shuttle_console/construct(obj/machinery/computer/shuttle_control/M)
+/obj/item/circuitboard/shuttle_console/machine_constructed(obj/machinery/M)
+	. = ..()
+	if(!istype(M, /obj/machinery/computer/shuttle_control))
+		return
+	var/obj/machinery/computer/shuttle_control/C = M
 	if(!shuttle_tag)
-		shuttle_tag = auto_detect_shuttle(M) // We don't have a preset tag, so lets try to auto-link.
-	if(shuttle_tag && M.set_shuttle_tag(shuttle_tag))
-		log_and_message_admins("[key_name_admin(usr)] built a [M] for [shuttle_tag] at [ADMIN_COORDJMP(M)]")
-		M.ping("[M] auto-links with shuttle [shuttle_tag]")
+		shuttle_tag = auto_detect_shuttle(C) // We don't have a preset tag, so lets try to auto-link.
+	if(shuttle_tag && C.set_shuttle_tag(shuttle_tag))
+		log_and_message_admins("[key_name_admin(usr)] built a [C] for [shuttle_tag] at [ADMIN_COORDJMP(C)]")
+		M.ping("[C] auto-links with shuttle [shuttle_tag]")
 
 // Return shuttle_tag of shuttle of current area
 /obj/item/circuitboard/shuttle_console/proc/auto_detect_shuttle(obj/machinery/computer/shuttle_control/M)

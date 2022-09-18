@@ -43,13 +43,19 @@
 	. = ..()
 	network = NETWORK_THUNDER
 
-/obj/item/circuitboard/security/construct(var/obj/machinery/computer/security/C)
-	if (..(C))
-		C.set_network(network.Copy())
+/obj/item/circuitboard/security/machine_constructed(obj/machinery/M)
+	. = ..()
+	if(!istype(M, /obj/machinery/computer/security))
+		return
+	var/obj/machinery/computer/security/S = M
+	S.set_network(network.Copy())
 
-/obj/item/circuitboard/security/deconstruct(var/obj/machinery/computer/security/C)
-	if (..(C))
-		network = C.network.Copy()
+/obj/item/circuitboard/security/machine_deconstructed(obj/machinery/M)
+	. = ..()
+	if(!istype(M, /obj/machinery/computer/security))
+		return
+	var/obj/machinery/computer/security/S = M
+	network = S.network.Copy()
 
 /obj/item/circuitboard/security/emag_act(var/remaining_charges, var/mob/user)
 	if(emagged)
