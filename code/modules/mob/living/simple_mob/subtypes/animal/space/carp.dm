@@ -114,8 +114,8 @@
 
 	pixel_y = -16
 	base_pixel_y = -16
-	icon_expected_width = 64
-	icon_expected_height = 64
+	icon_dimension_x = 64
+	icon_dimension_y = 64
 
 	meat_amount = 10
 	bone_amount = 7

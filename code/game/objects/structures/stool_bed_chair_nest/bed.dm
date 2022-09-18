@@ -170,7 +170,8 @@
 /obj/structure/bed/double/padded/Initialize(mapload)
 	. = ..(mapload, "wood", "cotton")
 
-/obj/structure/bed/double/post_buckle_mob(mob/living/M as mob)
+/obj/structure/bed/double/mob_buckled(mob/M, flags, mob/user, semantic)
+	. = ..()
 	if(M.buckled == src)
 		M.pixel_y = 13
 		M.old_y = 13
@@ -292,7 +293,8 @@
 			if(L.buckled == src)
 				L.forceMove(loc)
 
-/obj/structure/bed/roller/post_buckle_mob(mob/living/M as mob)
+/obj/structure/bed/roller/mob_buckled(mob/M, flags, mob/user, semantic)
+	. = ..()
 	if(M.buckled == src)
 		M.pixel_y = 6
 		M.old_y = 6
@@ -304,7 +306,6 @@
 		density = 0
 		icon_state = "[initial(icon_state)]"
 	update_icon()
-	return ..()
 
 /obj/structure/bed/roller/OnMouseDropLegacy(over_object, src_location, over_location)
 	if((over_object == usr && (in_range(src, usr) || usr.contents.Find(src))))

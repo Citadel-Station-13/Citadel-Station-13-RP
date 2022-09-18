@@ -1635,3 +1635,12 @@
 			LAZYOR(., SLOT_ICLOTHING)
 		if(wear_suit.flags_inv & HIDESHOES)
 			LAZYOR(., SLOT_FEET)
+
+//! Pixel Offsets
+/mob/living/carbon/human/get_centering_pixel_x_offset(dir)
+	. = ..()
+	// uh oh stinky
+	if(!isTaurTail(tail_style) || !(dir & (EAST|WEST)))
+		return
+	// groan
+	. += ((size_multiplier* icon_scale_x)- 1) * ((dir & EAST)? -16 : 16)

@@ -173,8 +173,8 @@
 		return
 	var/atom/movable/AM = parent
 	_last_dir = dir
-	var/opx = AM.pixel_x + AM.get_centering_pixel_x_offset()
-	var/opy = AM.pixel_y + AM.get_centering_pixel_y_offset()
+	var/opx = AM.get_centering_pixel_x_offset(dir)
+	var/opy = AM.get_centering_pixel_y_offset(dir)
 	for(var/i in 1 to length(AM.buckled_mobs))
 		var/mob/M = AM.buckled_mobs[i]
 		apply_rider_layer(M, dir, i)

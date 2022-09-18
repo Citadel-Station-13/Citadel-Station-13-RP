@@ -87,7 +87,7 @@
 	if(loc != L.loc)
 		return
 
-	if(L.buckle_mob(src, forced = TRUE))
+	if(L.buckle_mob(src, BUCKLE_OP_FORCE))
 		victim = L
 		update_icon()
 		set_AI_busy(TRUE) // Don't want the AI to interfere with eatting.

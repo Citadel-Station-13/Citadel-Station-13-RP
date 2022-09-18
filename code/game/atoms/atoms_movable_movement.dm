@@ -262,7 +262,7 @@
 				M.locationTransitForceMove(destination, recurse_levels - 1)
 			else
 				M.doLocationTransitForceMove(destination)
-			buckle_mob(M, forced = TRUE)
+			buckle_mob(M, BUCKLE_OP_FORCE | BUCKLE_OP_IGNORE_LOC)
 
 	// move pulling, pull
 	if(oldpulling)

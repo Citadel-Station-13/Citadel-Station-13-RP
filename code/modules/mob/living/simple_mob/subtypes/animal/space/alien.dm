@@ -207,8 +207,8 @@
 
 	pixel_x = -16
 	old_x = -16
-	icon_expected_width = 64
-	icon_expected_height = 64
+	icon_dimension_x = 64
+	icon_dimension_y = 64
 
 /datum/category_item/catalogue/fauna/feral_alien/queen/empress/mother
 	name = "Feral Xenomorph - Mother"
@@ -238,8 +238,8 @@
 
 	pixel_x = -32
 	old_x = -32
-	icon_expected_width = 96
-	icon_expected_height = 96
+	icon_dimension_x = 96
+	icon_dimension_y = 96
 
 	mod_min = 100
 	mod_max = 150

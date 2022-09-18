@@ -26,8 +26,8 @@
 		return
 
 	// Now put them back on in the right spot.
-	var/our_sprite_x = icon_expected_width * get_icon_scale_x()
-	var/our_sprite_y = icon_expected_height * get_icon_scale_y()
+	var/our_sprite_x = icon_dimension_x * get_icon_scale_x()
+	var/our_sprite_y = icon_dimension_y * get_icon_scale_y()
 
 	var/x_offset = our_sprite_x // Add your own offset here later if you want.
 	var/y_offset = our_sprite_y + STATUS_INDICATOR_Y_OFFSET
@@ -39,7 +39,7 @@
 
 	// In /mob/living's `update_transform()`, the sprite is horizontally shifted when scaled up, so that the center of the sprite doesn't move to the right.
 	// Because of that, this adjustment needs to happen with the future indicator row as well, or it will look bad.
-	current_x_position -= (icon_expected_width / 2) * (get_icon_scale_y() - 1)
+	current_x_position -= (icon_dimension_x / 2) * (get_icon_scale_y() - 1)
 
 	// Now the indicator row can actually be built.
 	for(var/thing in status_indicators)

@@ -1,7 +1,7 @@
 /obj/vehicle/ridden
 	name = "ridden vehicle"
 	can_buckle = TRUE
-	max_buckled_mobs = 1
+	buckle_max_mobs = 1
 	buckle_lying = FALSE
 	default_driver_move = FALSE
 	pass_flags_self = PASSTABLE
@@ -26,11 +26,11 @@
 	if(istype(A))
 		A.vehicle_ridden_target = src
 
-/obj/vehicle/ridden/post_unbuckle_mob(mob/living/M)
+/obj/vehicle/ridden/mob_unbuckled(mob/M, flags, mob/user, semantic)
 	remove_occupant(M)
 	return ..()
 
-/obj/vehicle/ridden/post_buckle_mob(mob/living/M)
+/obj/vehicle/ridden/mob_buckled(mob/M, flags, mob/user, semantic)
 	add_occupant(M)
 	if(M.get_num_legs() < legs_required)
 		to_chat(M, "<span class='warning'>You don't have enough legs to operate the pedals!</span>")
@@ -68,19 +68,3 @@
 	var/datum/component/riding/R = GetComponent(/datum/component/riding)
 	R.handle_ride(user, direction)
 	return ..()
-
-#warn a
-/obj/vehicle/ridden/user_buckle_mob(mob/living/M, mob/user, check_loc = TRUE)
-	if(!in_range(user, src) || !in_range(M, src))
-		return FALSE
-	. = ..(M, user, FALSE)
-
-#warn a
-/obj/vehicle/ridden/buckle_mob(mob/living/M, force = FALSE, check_loc = TRUE)
-	if(!force && occupant_amount() >= max_occupants)
-		return FALSE
-	return ..()
-
-/obj/vehicle/ridden/zap_act(zap_str, zap_flags, shocked_targets)
-	zap_buckle_check(zap_str)
-	. = ..()
