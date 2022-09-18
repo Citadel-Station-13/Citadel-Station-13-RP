@@ -9,9 +9,12 @@
 	origin_tech = list(TECH_POWER = 6, TECH_ENGINEERING = 4)
 	req_components = list(/obj/item/smes_coil = 1, /obj/item/stack/cable_coil = 30)
 
-/obj/item/circuitboard/smes/construct(var/obj/machinery/power/smes/buildable/S)
-	if(..(S))
-		S.output_attempt = 0 //built SMES default to off
+/obj/item/circuitboard/smes/machine_constructed(obj/O)
+	. = ..()
+	if(!istype(M, /obj/machinery/power/smes/buildable))
+		return
+	var/obj/machinery/power/smes/buildable/S = M
+	S.output_attempt = FALSE
 
 /obj/item/circuitboard/batteryrack
 	name = T_BOARD("battery rack PSU")

@@ -13,14 +13,14 @@
 	build_path = /obj/machinery/computer/supplycomp/control
 	origin_tech = list(TECH_DATA = 3)
 
-/obj/item/circuitboard/supplycomp/machine_constructed(obj/machinery/M)
+/obj/item/circuitboard/supplycomp/machine_constructed(obj/O)
 	. = ..()
 	if(!istype(M, /obj/machinery/computer/supplycomp))
 		return
 	var/obj/machinery/computer/supplycomp/S = M
 	S.can_order_contraband = contraband_enabled
 
-/obj/item/circuitboard/supplycomp/machine_deconstructed(obj/machinery/M)
+/obj/item/circuitboard/supplycomp/machine_deconstructed(obj/O)
 	. = ..()
 	if(!istype(M, /obj/machinery/computer/supplycomp))
 		return

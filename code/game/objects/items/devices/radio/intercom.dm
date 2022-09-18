@@ -157,7 +157,7 @@
 		A.anchored = 1
 		A.state = 2
 		A.update_icon()
-		M.deconstruct(src)
+		M.machine_deconstructed(src)
 		qdel(src)
 	else
 		src.attack_hand(user)

@@ -10,7 +10,7 @@
 	var/shuttle_category = null	// Shuttle datum's category must exactly equal this to auto-detect
 	var/shuttle_tag = null		// If set, link constructed console to this shuttle. If null, auto-detect.
 
-/obj/item/circuitboard/shuttle_console/machine_deconstructed(obj/machinery/M)
+/obj/item/circuitboard/shuttle_console/machine_deconstructed(obj/O)
 	. = ..()
 	if(!istype(M, /obj/machinery/computer/shuttle_control))
 		return
@@ -20,7 +20,7 @@
 		name = T_BOARD("[shuttle_tag] control console")
 
 // Try to auto-link the shuttle computer if it is constructed on a shuttle (and not pre-programmed)
-/obj/item/circuitboard/shuttle_console/machine_constructed(obj/machinery/M)
+/obj/item/circuitboard/shuttle_console/machine_constructed(obj/O)
 	. = ..()
 	if(!istype(M, /obj/machinery/computer/shuttle_control))
 		return

@@ -29,19 +29,21 @@
 
 /**
  * called when we are used to construct a new machine.
+ * this proc is a misnomer; any /obj can be passed in (thanks to radios requiring snowflaking)
  *
  * put your synchronization code in here.
  */
-/obj/item/circuitboard/proc/machine_constructed(obj/machinery/M)
+/obj/item/circuitboard/proc/machine_constructed(obj/O)
 	return
 
 /**
  * called when a machine using us is deconstructed.
+ * this proc is a misnomer; any /obj can be passed in (thanks to radios requiring snowflaking)
  *
  * put your synchronization code in here.
  *
  */
-/obj/item/circuitboard/proc/machine_deconstructed(obj/machinery/M)
+/obj/item/circuitboard/proc/machine_deconstructed(obj/O)
 	return
 
 //Should be called from the constructor of any machine to automatically populate the default parts

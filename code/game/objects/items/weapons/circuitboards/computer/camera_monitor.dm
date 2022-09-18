@@ -43,14 +43,14 @@
 	. = ..()
 	network = NETWORK_THUNDER
 
-/obj/item/circuitboard/security/machine_constructed(obj/machinery/M)
+/obj/item/circuitboard/security/machine_constructed(obj/O)
 	. = ..()
 	if(!istype(M, /obj/machinery/computer/security))
 		return
 	var/obj/machinery/computer/security/S = M
 	S.set_network(network.Copy())
 
-/obj/item/circuitboard/security/machine_deconstructed(obj/machinery/M)
+/obj/item/circuitboard/security/machine_deconstructed(obj/O)
 	. = ..()
 	if(!istype(M, /obj/machinery/computer/security))
 		return
