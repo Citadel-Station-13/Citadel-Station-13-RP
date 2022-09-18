@@ -55,9 +55,6 @@
 	else
 		..()
 
-/obj/item/tool/wirecutters/is_wirecutter()
-	return TRUE
-
 /obj/item/tool/wirecutters/bone
 	name = "primitive wirecutters"
 	desc = "Dull wirecutters knapped from bone."

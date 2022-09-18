@@ -23,10 +23,6 @@
 	pickup_sound = 'sound/items/pickup/crowbar.ogg'
 	tool_speed = 1
 
-
-/obj/item/tool/crowbar/is_crowbar()
-	return TRUE
-
 /obj/item/tool/crowbar/red
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "crowbar_red"

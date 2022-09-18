@@ -1,5 +1,9 @@
-//A switchblade with a little switch to switch blades, to switch from a six to a sixteen inch blade
-//Switchtools and holotools, ported from vg and updated a bit. Switchtools are from R&D, surgery switchtool is also from R&D, admin holotool is self-explainitory, CE holotool is CE-only in his locker.
+/**
+ * switchtools!
+ *
+ * supports both the dynamic tool system by providing the necessary tool behaviours, as well as
+ * the normal attackby system by passing melee_attack_chain down if necessary.
+ */
 /obj/item/switchtool
 	name = "switchtool"
 	icon = 'icons/obj/switchtool.dmi'
@@ -12,11 +16,12 @@
 	item_icons = list(
 		slot_l_hand_str = 'icons/mob/items/lefthand_switchtool.dmi',
 		slot_r_hand_str = 'icons/mob/items/righthand_switchtool.dmi')
-	var/deploy_sound = "sound/weapons/switchblade.ogg"
-	var/undeploy_sound = "sound/weapons/switchblade.ogg"
 	throw_force = 6.0
 	throw_speed = 3
 	throw_range = 6
+
+	var/deploy_sound = "sound/weapons/switchblade.ogg"
+	var/undeploy_sound = "sound/weapons/switchblade.ogg"
 
 	//the colon separates the typepath from the name
 	var/list/obj/item/start_modules = list(/obj/item/tool/screwdriver/switchy = null,
@@ -46,6 +51,10 @@
 	var/static/radial_soap = image(icon = 'icons/obj/device.dmi', icon_state = "uv_on")
 	var/static/radial_shield = image(icon = 'icons/obj/weapons.dmi', icon_state = "riot_alt")
 	var/static/radial_sword = image(icon = 'icons/obj/weapons.dmi', icon_state = "blade")
+
+#warn impl
+#warn we're going to need to either query items to find net tool qualities,
+#warn or have a separate list for it.
 
 /obj/item/switchtool/resolve_attackby(atom/A, mob/user, params, attack_modifier = 1)
 	if(deployed && !istype(A, /obj/item/storage))
@@ -90,7 +99,10 @@
 	return module_string
 
 /obj/item/switchtool/proc/undeploy()
-	playsound(get_turf(src), undeploy_sound, 10, 1)
+	playsound(src, undeploy_sound, 10, 1)
+	if(istype(deployed, /obj/item/weldingtool))
+		var/obj/item/weldingtool/W = deployed
+		W.setWelding(FALSE)
 	deployed = null
 	cut_overlays()
 	w_class = initial(w_class)
@@ -101,12 +113,12 @@
 		return FALSE
 	if(deployed)
 		return FALSE
-	playsound(get_turf(src), deploy_sound, 10, 1)
+	playsound(src, deploy_sound, 10, 1)
 	deployed = module
 	update_icon()
 	if(istype(deployed, /obj/item/weldingtool))
 		var/obj/item/weldingtool/W = deployed
-		W.setWelding(1)
+		W.setWelding(TRUE)
 	return TRUE
 
 /obj/item/switchtool/proc/choose_deploy(mob/user)
@@ -161,10 +173,6 @@
 			if(deploy(module))
 				to_chat(user, "You deploy \the [deployed].")
 				return TRUE
-
-
-
-
 
 /obj/item/switchtool/handle_shield(mob/user)
 	if(deployed.deploytype == "shield")

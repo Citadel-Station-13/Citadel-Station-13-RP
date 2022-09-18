@@ -68,10 +68,6 @@
 		M = user
 	return eyestab(M,user)
 
-/obj/item/tool/screwdriver/is_screwdriver()
-	return TRUE
-
-
 /obj/item/tool/screwdriver/bone
 	name = "primitive screwdriver"
 	desc = "A whittled bone with a tapered point, used to remove screws, or stab."

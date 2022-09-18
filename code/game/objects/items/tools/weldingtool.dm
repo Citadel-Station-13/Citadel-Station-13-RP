@@ -159,6 +159,8 @@
 /obj/item/weldingtool/proc/get_max_fuel()
 	return max_fuel
 
+#warn impl
+
 //Removes fuel from the welding tool. If a mob is passed, it will perform an eyecheck on the mob. This should probably be renamed to use()
 /obj/item/weldingtool/proc/remove_fuel(var/amount = 1, var/mob/M = null)
 	if(!welding)

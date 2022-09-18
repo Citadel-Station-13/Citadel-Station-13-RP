@@ -1,9 +1,8 @@
 /**
  * flags passed around click procs including:
  * ClickOn
- * tool_act
- * attempt_dynamic_tool
  * melee_attack_chain
+ * ranged_attack_chain
  * attackby
  * pre_attack
  * afterattack
@@ -18,3 +17,5 @@
 #define CLICKCHAIN_HAS_PROXIMITY			(1<<1)
 /// in tool act - used to check if we should do default proximity checks when none are specified
 #define CLICKCHAIN_TOOL_ACT					(1<<2)
+/// redirected by something - like when a switchtool to another item
+#define CLICKCHAIN_REDIRECTED				(1<<3)

@@ -36,9 +36,6 @@
 			if ("blue")
 				icon_state = "wrench_blue"
 
-/obj/item/tool/wrench/is_wrench()
-	return TRUE
-
 /obj/item/tool/wrench/red
 	icon_state = "wrench_red"
 
