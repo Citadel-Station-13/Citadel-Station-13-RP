@@ -24,7 +24,8 @@
 
 	/// modules; initial modules are as typepath. will associate object to module type at runtime
 	var/list/tools = list(
-		/obj/item/tool/screwdriver/switchy = SWITCHTOOL_SCREWDRIVER
+		/obj/item/tool/screwdriver/switchy = SWITCHTOOL_SCREWDRIVER,
+
 	)
 
 	/// tool functions
@@ -209,94 +210,57 @@
 	return FALSE
 
 
-/obj/item/switchtool/update_icon()//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+/obj/item/switchtool/update_overlays()
 	. = ..()
-	var/mutable_appearance/tool_overlay
-	cut_overlays()		//So that it doesn't keep stacking overlays non-stop on top of each other
 	if(!deployed)
 		return
-	switch(switchingtype)
-		if("basic")
-			switch(deployed.deploytype)
-				if("screwdriver")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_driver")
-				if("wrench")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_wrench")
-				if("crowbar")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_crowbar")
-				if("wirecutters")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_cutter")
-				if("multitool")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_multitool")
-		if("surgery")
-			switch(src.deployed.deploytype)
-				if("scalpel")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_scalpel")
-				if("cautery")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_cautery")
-				if("hemostat")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_hemostat")
-				if("retractor")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_retractor")
-				if("boneclamp")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_boneclamp")
-		if("ce")
-			switch(src.deployed.deploytype)
-				if("screwdriver")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_driver")
-				if("wrench")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_wrench")
-				if("crowbar")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_crowbar")
-				if("wirecutters")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_cutter")
-				if("multitool")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_multitool")
-				if("welder")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_welder")
-				if("light")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_light")
-				if("soap")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_soap")
-		if("adminholo")
-			switch(src.deployed.deploytype)
-				if("light")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_light")
-				if("soap")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_soap")
-				if("scalpel")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_scalpel")
-				if("saw")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_saw")
-				if("drill")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_drill")
-				if("cautery")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_cautery")
-				if("hemostat")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_hemostat")
-				if("retractor")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_retractor")
-				if("boneclamp")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_boneclamp")
-				if("screwdriver")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_driver")
-				if("wrench")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_wrench")
-				if("crowbar")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_crowbar")
-				if("wirecutters")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_cutter")
-				if("multitool")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_multitool")
-				if("welder")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_welder")
-				if("shield")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_shield")
-				if("sword")
-					tool_overlay = mutable_appearance(icon, "[icon_state]_blade")
+	var/enum = get_switchtool_enum(deployed)
+	if(!enum)
+		return
+	var/state_append = switchtool_enum_to_state(enum)
+	if(!state_append)
+		return
+	var/mutable_appearance/MA = mutable_appearance(icon, "[icon_state]_[state_append]")
 	if(light_color)
-		tool_overlay.color = light_color
-	add_overlay(tool_overlay)
+		MA.color = light_color
+	. += MA
+
+/obj/item/switchtool/switchtool_enum_to_state(enum)
+	switch(enum)
+		if(SWITCHTOOL_SCREWDRIVER)
+			return "driver"
+		if(SWITCHTOOL_WRENCH)
+			return "wrench"
+		if(SWITCHTOOL_CROWBAR)
+			return "crowbar"
+		if(SWITCHTOOL_WIRECUTTERS)
+			return "cutter"
+		if(SWITCHTOOL_MULTITOOL)
+			return "multitool"
+		if(SWITCHTOOL_WELDER)
+			return "welder"
+		if(SWITCHTOOL_LIGHT)
+			return "light"
+		if(SWITCHTOOL_SOAP)
+			return "soap"
+		if(SWITCHTOOL_SCALPEL)
+			return "scalpel"
+		if(SWITCHTOOL_BONECLAMP)
+			return "boneclamp"
+		if(SWITCHTOOL_HEMOSTAT)
+			return "hemostat"
+		if(SWITCHTOOL_RETRACTOR)
+			return "retractor"
+		if(SWITCHTOOL_CAUTERY)
+			return "cautery"
+		if(SWITCHTOOL_SAW)
+			return "saw"
+		if(SWITCHTOOL_DRILL)
+			return "drill"
+		if(SWITCHTOOL_SWORD)
+			return "blade"
+		if(SWITCHTOOL_SHIELD)
+			return "shield"
 
 //? tool redirection
 /obj/item/switchtool/tool_speed(function, mob/user, atom/target, flags, usage)
