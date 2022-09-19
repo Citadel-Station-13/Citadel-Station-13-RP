@@ -16,14 +16,33 @@
 	item_icons = list(
 		slot_l_hand_str = 'icons/mob/items/lefthand_switchtool.dmi',
 		slot_r_hand_str = 'icons/mob/items/righthand_switchtool.dmi')
-	throw_force = 6.0
+	throw_force = 6
 	throw_speed = 3
 	throw_range = 6
+	var/deploy_sound = "sound/weapons/switchblade.ogg"
+	var/undeploy_sound = "sound/weapons/switchblade.ogg"
+
+	/// modules; initial modules are as typepath. will associate object to module type at runtime
+	var/list/tools = list(
+		/obj/item/tool/screwdriver/switchy = SWITCHTOOL_SCREWDRIVER
+	)
+
+	/// tool functions
+	var/list/tool_functions = list(
+		TOOL_SCREWDRIVER,
+		TOOL_CROWBAR,
+		TOOL_WIRECUTTER,
+		TOOL_WRENCH,
+		TOOL_MULTITOOL
+	)
+
 	tool_speed = 1
 	tool_quality = TOOL_QUALITY_DEFAULT
 
-	var/deploy_sound = "sound/weapons/switchblade.ogg"
-	var/undeploy_sound = "sound/weapons/switchblade.ogg"
+	/// currently deployed item
+	var/obj/item/deployed
+
+
 
 	//the colon separates the typepath from the name
 	var/list/obj/item/start_modules = list(/obj/item/tool/screwdriver/switchy = null,
@@ -32,8 +51,6 @@
 											/obj/item/tool/crowbar/switchy = null,
 											/obj/item/multitool/switchy = null)
 	var/list/obj/item/stored_modules = list()
-	var/obj/item/deployed //what's currently in use
-	var/switchingtype = "basic"//type for update_icon
 
 	var/static/radial_driver = image(icon = 'icons/obj/tools.dmi', icon_state = "screwdriver") //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	var/static/radial_wrench = image(icon = 'icons/obj/tools.dmi', icon_state = "wrench")
@@ -76,6 +93,8 @@
 		return
 	else
 		choose_deploy(user)
+
+/obj/item/switchtool/proc/add_module(obj/item/module, switchtool_enum)
 
 //makes the string list of modules ie "a screwdriver, a knife, and a clown horn"
 //does not end with a full stop, but does contain commas
@@ -270,9 +289,6 @@
 
 //? tool redirection
 /obj/item/switchtool/tool_query(mob/user, atom/target, flags, usage)
-
-//? tool redirection
-/obj/item/switchtool/tool_quality(function, mob/user, atom/target, flags, usage)
 
 #warn impl above
 

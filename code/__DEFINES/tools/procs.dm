@@ -13,6 +13,8 @@
 #define TOOL_OP_DYNAMIC					(1<<5)
 /// initiated through auto-use-tool system
 #define TOOL_OP_AUTOPILOT				(1<<6)
+/// actually doing it as opposed to a check; feel free to do user feedback
+#define TOOL_OP_REAL					(1<<7)
 /// silent - do not give audible or visual feedbcak
 #define TOOL_OP_SILENT					(TOOL_OP_NO_AUDIO | TOOL_OP_NO_MESSAGE)
 /// do not do standard feedback

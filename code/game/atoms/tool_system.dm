@@ -65,14 +65,16 @@
 	if(provided_item)
 		if(function)
 			// automation, just go
-			return _dynamic_tool_act(provided_item, user, function, TOOL_OP_AUTOPILOT, hint)
+			return _dynamic_tool_act(provided_item, user, function, TOOL_OP_AUTOPILOT | TOOL_OP_REAL, hint)
 		// used in clickchain
 		var/list/possibilities = dynamic_tool_functions(provided_item, user)
 		var/function
 		if(!length(possibilities))
 			// no dynamic tool functionality, route normally.
 			function = provided_item.tool_behaviour()
-			return _tool_act(provided_item, user, function)
+			if(!function)
+				return NONE
+			return _tool_act(provided_item, user, function, TOOL_OP_REAL)
 		// dynamic tool system:
 		if(provided_item.tool_locked)
 			// item is locked to one behaviour
@@ -89,6 +91,12 @@
 				if(functions[i])
 					continue
 				possibilities -= i
+			if(!length(possibilities))
+				// none can be used, just go to static tool act if possible
+				function = provided_item.tool_behaviour()
+				if(!function)
+					return
+				return _tool_act(provided_item, user, function, TOOL_OP_REAL)
 		// everything in possibilities is valid for the tool
 		var/list/transformed = list()
 		for(var/i in possibilities)
@@ -119,7 +127,7 @@
 		if(reachability_check && !reachability_check.Invoke())
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		// use hint
-		return _dynamic_tool_act(provided_item, user, function, hint = hint)
+		return _dynamic_tool_act(provided_item, user, function, TOOL_OP_REAL, hint)
 	else
 		// in the future, we might have situations where clicking something with an empty hand
 		// yet having organs that server as built-in tools can do something with
@@ -202,6 +210,10 @@
 	if(!quality)
 		return FALSE
 	var/speed = I.tool_speed(function, user, src, flags, usage)
+	//! this currently makes tools more efficient if you have more toolspeed.
+	//! this is probably a bad thing.
+	// todo: automatically adjust cost to rectify this.
+	// todo: tool_cost()? potentially invert cost multiplier automagically, or invert it in this proc.
 	delay = delay * speed
 	if(!I.using_as_tool(function, flags, user, src, delay, cost, usage))
 		return FALSE

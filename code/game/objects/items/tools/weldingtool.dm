@@ -159,7 +159,24 @@
 /obj/item/weldingtool/proc/get_max_fuel()
 	return max_fuel
 
-#warn impl
+/obj/item/weldingtool/using_as_tool(function, flags, mob/user, atom/target, time, cost, usage)
+	. = ..()
+	if(!. || function != TOOL_WELDER)
+		return
+	if(!isOn())
+		user.action_feedback(SPAN_WARNING("[src] must be on to be used to weld!"), target)
+		return FALSE
+	// floor
+	var/computed = round(cost * time * TOOL_WELDING_FUEL_PER_DS)
+	if(get_fuel() < computed)
+		user.action_feedback(SPAN_WARNING("[src] doesn't have enough fuel left to do that!"), target)
+		return FALSE
+
+/obj/item/weldingtool/used_as_tool(function, flags, mob/user, atom/target, time, cost, usage, success)
+	. = ..()
+	if(!.)
+		return
+	remove_fuel(round(cost * time * TOOL_WELDING_FUEL_PER_DS))
 
 //Removes fuel from the welding tool. If a mob is passed, it will perform an eyecheck on the mob. This should probably be renamed to use()
 /obj/item/weldingtool/proc/remove_fuel(var/amount = 1, var/mob/M = null)
