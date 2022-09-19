@@ -25,7 +25,7 @@
 	/// modules; initial modules are as typepath. will associate object to module type at runtime
 	var/list/tools = list(
 		/obj/item/tool/screwdriver/switchy = SWITCHTOOL_SCREWDRIVER,
-		/obj/item/tool/wrench/switchy = SWITHCTOOL_WRENCH,
+		/obj/item/tool/wrench/switchy = SWITCHTOOL_WRENCH,
 		/obj/item/tool/wirecutters/switchy = SWITCHTOOL_WIRECUTTERS,
 		/obj/item/tool/crowbar/switchy = SWITCHTOOL_CROWBAR,
 		/obj/item/multitool/switchy = SWITCHTOOL_MULTITOOL
@@ -60,7 +60,7 @@
 		SWITCHTOOL_WELDER = image(icon = 'icons/obj/tools.dmi', icon_state = "tubewelder"),
 		SWITCHTOOL_SCALPEL = image(icon = 'icons/obj/surgery.dmi', icon_state = "scalpel"),
 		SWITCHTOOL_CAUTERY = image(icon = 'icons/obj/surgery.dmi', icon_state = "cautery"),
-		SWITCHTOOL_HEMOSTAT = ,image(icon = 'icons/obj/surgery.dmi', icon_state = "hemostat")
+		SWITCHTOOL_HEMOSTAT = image(icon = 'icons/obj/surgery.dmi', icon_state = "hemostat")
 		SWITCHTOOL_RETRACTOR = image(icon = 'icons/obj/surgery.dmi', icon_state = "retractor"),
 		SWITCHTOOL_BONECLAMP = image(icon = 'icons/obj/surgery.dmi', icon_state = "bone_setter"),
 		SWITCHTOOL_SAW = image(icon = 'icons/obj/surgery.dmi', icon_state = "saw"),
@@ -96,9 +96,9 @@
 /obj/item/switchtool/proc/get_formatted_modules()
 	var/counter = 0
 	var/module_string = ""
-	for(var/obj/item/module in stored_modules)
+	for(var/obj/item/module in modules)
 		counter++
-		if(counter == stored_modules.len)
+		if(counter == modules.len)
 			module_string += "and \a [module.name]"
 		else
 			module_string += "\a [module.name], "
@@ -129,7 +129,7 @@
 	update_icon()
 
 /obj/item/switchtool/proc/deploy(obj/item/I)
-	if(!(I in stored_modules))
+	if(!(I in modulesw))
 		return FALSE
 	if(deployed)
 		return FALSE
@@ -312,7 +312,6 @@
 	deploy_sound = "sound/weapons/switchsound.ogg"
 	undeploy_sound = "sound/weapons/switchsound.ogg"
 	light_color =  LIGHT_COLOR_CYAN
-	switchingtype = "adminholo"
 	tool_speed = 0.8
 	modules = list(
 		/obj/item/surgical/scalpel/laser3/holoswitch = SWITCHTOOL_SCALPEL,
