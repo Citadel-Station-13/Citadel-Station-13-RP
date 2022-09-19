@@ -342,6 +342,10 @@ datum/gear/suit/duster
 	name = "Ronin Coat"
 	path = /obj/item/clothing/suit/storage/hooded/ronincoat
 
+/datum/gear/suit/runnerjacket
+	name = "Runner Jacket"
+	path = /obj/item/clothing/suit/storage/runner
+
 /datum/gear/suit/labcoat_colorable
 	name = "Labcoat - Colorable"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat

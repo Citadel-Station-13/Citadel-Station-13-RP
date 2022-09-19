@@ -1251,3 +1251,12 @@ obj/item/clothing/suit/kamishimo
 	desc = "A set of cybernetic upgrades of an alien origin, this peculiar jacket reads the user's nerver in order to control a set of drones as if they were an additional set of less dexterous hands. Attached terminals buzz with bizarre symbols that appear to form an incomprehensibly complex pattern."
 	item_state = "mindelectric_w"
 	icon_state = "mindelectric"
+
+/obj/item/clothing/suit/storage/runner
+	name = "Runner Jacket"
+	desc = "A sturdy high-vis jacket patterned after a lost society's first responders. It has been marked with unfamiliar graffiti on the back."
+	icon_state = "runner_jacket"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)
