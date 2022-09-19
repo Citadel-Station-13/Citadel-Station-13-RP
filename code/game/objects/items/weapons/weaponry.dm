@@ -78,7 +78,7 @@
 				qdel(src)
 
 #warn a
-/obj/effect/energy_net/user_unbuckle_mob(mob/living/buckled_mob, mob/user)
+/obj/effect/energy_net/_user_unbuckle_mob(mob/living/buckled_mob, mob/user)
 	user.setClickCooldown(user.get_attack_speed())
 	visible_message("<span class='danger'>[user] begins to tear at \the [src]!</span>")
 	if(do_after(user, escape_time, src, incapacitation_flags = INCAPACITATION_DEFAULT & ~(INCAPACITATION_RESTRAINED | INCAPACITATION_BUCKLED_FULLY)))

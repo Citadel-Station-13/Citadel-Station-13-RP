@@ -18,6 +18,7 @@
 	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
 	buckle_dir = SOUTH
 	buckle_lying = 90
+	center_pixel_y = -6
 	var/datum/material/material
 	var/datum/material/padding_material
 	var/base_icon = "bed"
@@ -295,22 +296,23 @@
 
 /obj/structure/bed/roller/mob_buckled(mob/M, flags, mob/user, semantic)
 	. = ..()
-	if(M.buckled == src)
-		M.pixel_y = 6
-		M.old_y = 6
-		density = 1
-		icon_state = "[initial(icon_state)]_up"
-	else
-		M.pixel_y = 0
-		M.old_y = 0
-		density = 0
-		icon_state = "[initial(icon_state)]"
+	density = TRUE
+	icon_state = "[initial(icon_state)]_up"
+
+/obj/structure/bed/roller/mob_unbuckled(mob/M, flags, mob/user, semantic)
+	. = ..()
+	if(has_buckled_mobs())
+		return
+	density = FALSE
+	icon_state = "[initial(icon_state)]"
 	update_icon()
 
 /obj/structure/bed/roller/OnMouseDropLegacy(over_object, src_location, over_location)
 	if((over_object == usr && (in_range(src, usr) || usr.contents.Find(src))))
-		if(!ishuman(usr))	return 0
-		if(has_buckled_mobs())	return 0
+		if(!ishuman(usr))
+			return 0
+		if(has_buckled_mobs())
+			return 0
 		visible_message("[usr] collapses \the [src.name].")
 		new rollertype(get_turf(src))
 		spawn(0)

@@ -35,7 +35,7 @@
 	. = ..(mapload, MAT_SIFWOOD)
 
 /obj/structure/bonfire/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/stack/rods) && !can_buckle && !grill)
+	if(istype(W, /obj/item/stack/rods) && !buckle_allowed && !grill)
 		var/obj/item/stack/rods/R = W
 		var/choice = input(user, "What would you like to construct?", "Bonfire") as null|anything in list("Stake","Grill")
 		switch(choice)

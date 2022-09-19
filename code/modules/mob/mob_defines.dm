@@ -63,10 +63,6 @@
 	var/shift_pixel_x = 0
 	/// shifted pixel y
 	var/shift_pixel_y = 0
-	/// expected icon width
-	var/icon_dimension_x = 32
-	/// expected icon height
-	var/icon_dimension_y = 32
 
 //! Size
 	//! todo kill this with fire it should just be part of icon_scale_x/y.

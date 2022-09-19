@@ -112,7 +112,7 @@ var/global/list/weavable_items = list()
 			L.Stun(1)
 			to_chat(L, "<span class='danger'>The sticky fibers of \the [src] ensnare, trapping you in place!</span>")
 			trap_active = FALSE
-			desc +	= " Actually, it looks like it's been all spent."
+			desc += " Actually, it looks like it's been all spent."
 	..()
 
 /obj/effect/weaversilk/trap/MouseDroppedOnLegacy(atom/movable/AM,mob/user)

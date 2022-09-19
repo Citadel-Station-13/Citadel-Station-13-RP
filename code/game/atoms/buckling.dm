@@ -145,6 +145,7 @@
 	M.update_canmove()
 	// todo: refactor the below
 	M.update_floating(M.Check_Dense_Object())
+	M.reset_pixel_shifting()
 	M.reset_pixel_offsets()
 	mob_buckled(M, flags, user, semantic)
 	if(isliving(M))
@@ -176,6 +177,7 @@
 	// todo: refactor the below
 	M.update_floating(M.Check_Dense_Object())
 	M.update_water()
+	M.reset_pixel_offsets()
 	mob_unbuckled(M, flags, user, semantic)
 	if(isliving(M))
 		var/mob/living/L = M

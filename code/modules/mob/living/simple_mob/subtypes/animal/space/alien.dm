@@ -236,8 +236,8 @@
 	melee_damage_upper = 25
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/queen/empress/mother)
 
-	pixel_x = -32
-	old_x = -32
+	base_pixel_x = -32
+	base_pixel_y = -32
 	icon_dimension_x = 96
 	icon_dimension_y = 96
 
