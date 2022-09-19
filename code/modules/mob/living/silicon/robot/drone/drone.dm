@@ -189,7 +189,7 @@ var/list/mob_hat_cache = list()
 		return
 
 	else if (istype(W, /obj/item/card/id)||istype(W, /obj/item/pda))
-		var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+		var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 		if(stat == 2)
 
 			if(!config_legacy.allow_drone_spawn || emagged || health < -35) //It's dead, Dave.
@@ -247,7 +247,7 @@ var/list/mob_hat_cache = list()
 	clear_supplied_laws()
 	clear_inherent_laws()
 	laws = new /datum/ai_laws/syndicate_override
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	set_zeroth_law("Only [user.real_name] and people [TU.he] designate[TU.s] as being such are operatives.")
 
 	to_chat(src, "<b>Obey these laws:</b>")

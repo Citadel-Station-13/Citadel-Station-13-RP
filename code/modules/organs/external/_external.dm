@@ -369,7 +369,7 @@
 
 	if(damage_desc)
 		if(user == src.owner)
-			var/datum/gender/T = gender_datums[user.get_visible_gender()]
+			var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
 			user.visible_message("<span class='notice'>\The [user] patches [damage_desc] on [T.his] [src.name] with [tool].</span>")
 		else
 			user.visible_message("<span class='notice'>\The [user] patches [damage_desc] on [owner]'s [src.name] with [tool].</span>")

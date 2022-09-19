@@ -60,7 +60,7 @@
 		if(src == M && istype(src, /mob/living/carbon/human))
 
 			var/mob/living/carbon/human/H = src
-			var/datum/gender/T = gender_datums[H.get_visible_gender()]
+			var/datum/gender/T = GLOB.gender_datums[H.get_visible_gender()]
 			var/to_send = "<blockquote class ='notice'>"
 			src.visible_message("[src] examines [T.himself].", \
 				SPAN_NOTICE("You check yourself for injuries."))
@@ -141,7 +141,7 @@
 
 			var/show_ssd
 			var/mob/living/carbon/human/H = src
-			var/datum/gender/T = gender_datums[H.get_visible_gender()] // make sure to cast to human before using get_gender() or get_visible_gender()!
+			var/datum/gender/T = GLOB.gender_datums[H.get_visible_gender()] // make sure to cast to human before using get_gender() or get_visible_gender()!
 			if(istype(H)) show_ssd = H.species.show_ssd
 			if(show_ssd && !client && !teleop)
 				M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [T.him] up!"),
@@ -155,7 +155,7 @@
 					SPAN_NOTICE("You shake [src] trying to wake [T.him] up!"))
 			else
 				var/mob/living/carbon/human/hugger = M
-				var/datum/gender/TM = gender_datums[M.get_visible_gender()]
+				var/datum/gender/TM = GLOB.gender_datums[M.get_visible_gender()]
 				if(M.resting == 1) //Are they resting on the ground?
 					M.visible_message(SPAN_NOTICE("[M] grabs onto [src] and pulls [TM.himself] up."),
 						SPAN_NOTICE("You grip onto [src] and pull yourself up off the ground!"))

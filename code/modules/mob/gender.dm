@@ -87,17 +87,17 @@ GLOBAL_LIST_INIT(gender_datums, gender_datums())
 	hes		= "shi's"
 
 /mob/proc/p_they()
-	var/datum/gender/G = gender_datums[gender]
+	var/datum/gender/G = GLOB.gender_datums[gender]
 	return G.he
 
 /mob/proc/p_them()
-	var/datum/gender/G = gender_datums[gender]
+	var/datum/gender/G = GLOB.gender_datums[gender]
 	return G.him
 
 /mob/proc/p_They()
-	var/datum/gender/G = gender_datums[gender]
+	var/datum/gender/G = GLOB.gender_datums[gender]
 	return G.He
 
 /mob/proc/p_Them()
-	var/datum/gender/G = gender_datums[gender]
+	var/datum/gender/G = GLOB.gender_datums[gender]
 	return G.Him

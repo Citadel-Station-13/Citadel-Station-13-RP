@@ -11,7 +11,7 @@
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined")
 
 /obj/item/melee/chainofcommand/suicide_act(mob/user)
-	var/datum/gender/T = gender_datums[user.get_visible_gender()]
+	var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
 	user.visible_message(SPAN_DANGER("\The [user] [T.is] strangling [T.himself] with \the [src]! It looks like [T.he] [T.is] trying to commit suicide."), SPAN_DANGER("You start to strangle yourself with \the [src]!"), SPAN_DANGER("You hear the sound of someone choking!"))
 	return (OXYLOSS)
 
@@ -28,7 +28,7 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 /obj/item/melee/sabre/suicide_act(mob/user)
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	visible_message(SPAN_DANGER("[user] is slitting [TU.his] stomach open with \the [src.name]! It looks like [TU.hes] trying to commit seppuku."), SPAN_DANGER("You slit your stomach open with \the [src.name]!"), SPAN_DANGER("You hear the sound of flesh tearing open.")) // gory, but it gets the point across
 	return(BRUTELOSS)
 
@@ -218,7 +218,7 @@
 		M.reagents.add_reagent(poison_type, poison_amount)
 
 /obj/item/melee/nanite_knife/suicide_act(mob/user)
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	user.visible_message(pick("<span class='danger'>\The [user] is shoving \the [src] into [TU.is] chest! It looks like [TU.he] [TU.is] trying to commit suicide.</span>",\
 		"<span class='danger'>\The [user] is stabbing themselves with \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>"))
 	var/turf/T = get_turf(src)

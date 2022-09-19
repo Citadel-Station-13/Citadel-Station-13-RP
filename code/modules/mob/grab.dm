@@ -269,7 +269,7 @@
 		qdel(src)
 		return
 
-	var/datum/gender/TU = gender_datums[assailant.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[assailant.get_visible_gender()]
 
 	last_action = world.time
 
@@ -371,7 +371,7 @@
 
 /obj/item/grab/proc/reset_kill_state()
 	if(state == GRAB_KILL)
-		var/datum/gender/T = gender_datums[assailant.get_visible_gender()]
+		var/datum/gender/T = GLOB.gender_datums[assailant.get_visible_gender()]
 		assailant.visible_message("<span class='warning'>[assailant] lost [T.his] tight grip on [affecting]'s neck!</span>")
 		hud.icon_state = "kill"
 		state = GRAB_NECK
@@ -525,7 +525,7 @@
 		return
 	if(target.lying)
 		return
-	var/datum/gender/T = gender_datums[attacker.get_visible_gender()]
+	var/datum/gender/T = GLOB.gender_datums[attacker.get_visible_gender()]
 	attacker.visible_message("<span class='danger'>[attacker] thrusts [T.his] head into [target]'s skull!</span>")
 
 	var/damage = 20
