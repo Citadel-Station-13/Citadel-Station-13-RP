@@ -36,7 +36,7 @@
 /obj/structure/bed/nest/user_unbuckle_feedback(mob/M, flags, mob/user, semantic)
 	if(user != M)
 		user.visible_message(\
-			"<span class='notice'>[user.name] pulls [buckled_mob.name] free from the sticky nest!</span>",\
+			"<span class='notice'>[user.name] pulls [M.name] free from the sticky nest!</span>",\
 			"<span class='notice'>[user.name] pulls you free from the gelatinous resin.</span>",\
 			"<span class='notice'>You hear squelching...</span>")
 	else

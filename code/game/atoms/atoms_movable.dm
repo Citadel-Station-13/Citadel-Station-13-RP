@@ -65,7 +65,7 @@
 	var/move_speed = 10
 	var/l_move_time = 1
 
-	//! throwing
+//! throwing
 	// todo: trace "throwing" usages
 	var/datum/thrownthing/throwing
 	/// default throw speed
@@ -90,6 +90,7 @@
 	 */
 	var/throw_speed_scaling_exponential = THROW_SPEED_SCALING_CONSTANT_DEFAULT
 
+//! Misc
 	// todo: kill this (only used for elcetropacks)
 	var/moved_recently = FALSE
 	var/mob/pulledby = null

@@ -297,7 +297,7 @@
 	mob.last_move_time = world.time
 
 /mob/proc/SelfMove(turf/T, dir)
-	. = Move(n, dir)
+	. = Move(T, dir)
 	if(.)
 		throwing?.terminate()
 	if(pulling && !ismob(pulling) && pulling.density)

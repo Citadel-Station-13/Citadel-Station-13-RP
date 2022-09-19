@@ -18,7 +18,7 @@
 	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
 	buckle_dir = SOUTH
 	buckle_lying = 90
-	center_pixel_y = -6
+	icon_dimension_y = 12
 	var/datum/material/material
 	var/datum/material/padding_material
 	var/base_icon = "bed"
@@ -156,6 +156,7 @@
 	desc = "For prime comfort during psychiatric evaluations."
 	icon_state = "psychbed"
 	base_icon = "psychbed"
+	icon_dimension_y = 32
 
 /obj/structure/bed/psych/Initialize(mapload)
 	. = ..(mapload, "wood", "leather")
@@ -168,6 +169,7 @@
 	icon_state = "doublebed"
 	base_icon = "doublebed"
 	buckle_max_mobs = 2
+	icon_dimension_y = 32
 
 /obj/structure/bed/double/padded/Initialize(mapload)
 	. = ..(mapload, "wood", "cotton")
@@ -214,7 +216,7 @@
 	. = ..()
 	if(old_buckled)
 		for(var/mob/M in old_buckled)
-			buckle_mob(M, forced = TRUE)
+			buckle_mob(M, BUCKLE_OP_FORCE)
 
 /obj/structure/bed/roller/update_icon()
 	return

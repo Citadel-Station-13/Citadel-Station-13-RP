@@ -7,7 +7,7 @@
 	density = TRUE
 
 	// Executing a traitor caught releasing tesla was never this fun!
-	can_buckle = TRUE
+	buckle_allowed = TRUE
 	buckle_lying = FALSE
 
 	circuit = /obj/item/circuitboard/tesla_coil
