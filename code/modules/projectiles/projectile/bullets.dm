@@ -410,6 +410,13 @@
 	embed_chance = -1
 	holy = TRUE
 
+//10 Gauge Shot
+/obj/item/projectile/bullet/pellet/grit //I want this to use similar calcuations to blunderbuss shot for falloff.
+	damage = 15
+	pellets = 10
+	range_step = 0.75
+	spread_step = 30
+
 /* Incendiary */
 
 /obj/item/projectile/bullet/incendiary

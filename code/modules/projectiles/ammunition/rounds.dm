@@ -596,6 +596,15 @@
 	projectile_type = /obj/item/projectile/bullet/pellet/blunderbuss/silver
 	matter = list("lead" = 500, "silver" = 500)
 
+//Ten Gauge Rounds for an Exotic Shotgun
+/obj/item/ammo_casing/a10g
+	name = "tooled shotgun shell"
+	desc = "A custom brass 10 gauge shot shell."
+	icon_state = "grshell"
+	caliber = "10g"
+	projectile_type = /obj/item/projectile/bullet/pellet/grit
+	matter = list(MAT_STEEL = 500)
+	fall_sounds = list('sound/weapons/guns/shotgun_fall.ogg')
 
 //Arrows
 /obj/item/ammo_casing/arrow
