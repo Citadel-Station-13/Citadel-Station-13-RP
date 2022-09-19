@@ -74,15 +74,15 @@
 /obj/item/switchtool/Initialize(mapload)
 	. = ..()
 	var/list/adding = list()
-	for(var/path in modules)
+	for(var/path in tools)
 		if(isdatum(path))
 			// wtf?
 			continue
 		if(!ispath(path))
 			// wtf?
 			continue
-		adding[path] = modules[path]
-		modules -= path
+		adding[path] = tools[path]
+		tools -= path
 	for(var/path in adding)
 		var/enum = adding[path]
 		add_module(new path(src), enum)
@@ -96,9 +96,9 @@
 /obj/item/switchtool/proc/get_formatted_modules()
 	var/counter = 0
 	var/module_string = ""
-	for(var/obj/item/module in modules)
+	for(var/obj/item/module in tools)
 		counter++
-		if(counter == modules.len)
+		if(counter == tools.len)
 			module_string += "and \a [module.name]"
 		else
 			module_string += "\a [module.name], "
@@ -129,7 +129,7 @@
 	update_icon()
 
 /obj/item/switchtool/proc/deploy(obj/item/I)
-	if(!(I in modules))
+	if(!(I in tools))
 		return FALSE
 	if(deployed)
 		return FALSE
@@ -143,8 +143,8 @@
 
 /obj/item/switchtool/proc/choose_deploy(mob/user)
 	var/list/options = list()
-	for(var/obj/item/I as anything in modules)
-		var/enum = modules[I]
+	for(var/obj/item/I as anything in tools)
+		var/enum = tools[I]
 		options += default_switchtool_radials[enum]
 	if(options.len < 1)
 		to_chat(user, "\The [src] doesn't have any available modules!")
@@ -289,7 +289,7 @@
 	icon_state = "surgeryswitchtool"
 	item_state = "surgeryswitchtool"
 	desc = "A switchtool containing most of the necessary items for impromptu surgery. For the surgeon on the go."
-	modules = list(/obj/item/surgical/scalpel/switchy = SWITCHTOOL_SCALPEL,
+	tools = list(/obj/item/surgical/scalpel/switchy = SWITCHTOOL_SCALPEL,
 						/obj/item/surgical/hemostat/switchy = SWITCHTOOL_HEMOSTAT,
 						/obj/item/surgical/retractor/switchy = SWITCHTOOL_RETRACTOR,
 						/obj/item/surgical/bonesetter/switchy = SWITCHTOOL_BONECLAMP)
@@ -313,7 +313,7 @@
 	undeploy_sound = "sound/weapons/switchsound.ogg"
 	light_color =  LIGHT_COLOR_CYAN
 	tool_speed = 0.8
-	modules = list(
+	tools = list(
 		/obj/item/surgical/scalpel/laser3/holoswitch = SWITCHTOOL_SCALPEL,
 		/obj/item/surgical/hemostat/holoswitch = SWITCHTOOL_HEMOSTAT,
 		/obj/item/surgical/retractor/holoswitch = SWITCHTOOL_RETRACTOR,
@@ -368,7 +368,7 @@
 	item_state = "holoswitchtool"
 	desc = "A finely crafted device that uses a micro-scale hardlight emitter to form hardlight manipulators in the form of tools. Can also operate in low-power mode as a flashlight and in high-power mode as a UV cleaner."
 	light_color = "#FED8B1" //lightcolororange sucks lmao
-	modules = list(
+	tools = list(
 		/obj/item/tool/screwdriver/holoswitch = SWITCHTOOL_SCREWDRIVER,
 		/obj/item/tool/wrench/holoswitch = SWITCHTOOL_WRENCH,
 		/obj/item/tool/crowbar/holoswitch = SWITCHTOOL_CROWBAR,

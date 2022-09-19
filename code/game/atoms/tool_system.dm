@@ -102,7 +102,6 @@
 		for(var/i in possibilities)
 			// is there only one hint?
 			var/list/associated = possibilities[i]
-			var/hint
 			if(associated && (!islist(associated) || (length(associated) == 1)))
 				// yes there is!
 				hint = islist(associated)? associated[1] : associated
@@ -110,7 +109,7 @@
 			I.maptext = i
 			transformed[i] = I
 		// todo: radial menu at some point should be made to automatically close when they click something else.
-		var/function = show_radial_menu(user, src, transformed, require_near = provided_item.reach)
+		function = show_radial_menu(user, src, transformed, require_near = provided_item.reach)
 		if(reachability_check && !reachability_check.Invoke())
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		// determine hint
@@ -282,10 +281,10 @@
 
 //! Dynamic Tools - default images
 /proc/dyntool_image_neutral(function)
-	return new image('icons/screen/radial/tools/generic.dmi', icon_state = _dyntool_image_states[function] || "unknown")
+	return image('icons/screen/radial/tools/generic.dmi', icon_state = _dyntool_image_states[function] || "unknown")
 
 /proc/dyntool_image_forward(function)
-	return new image('icons/screen/radial/tools/generic.dmi', icon_state = "[_dyntool_image_states[function] || "unknown"]_up")
+	return image('icons/screen/radial/tools/generic.dmi', icon_state = "[_dyntool_image_states[function] || "unknown"]_up")
 
 /proc/dyntool_image_backward(function)
-	return new image('icons/screen/radial/tools/generic.dmi', icon_state = "[_dyntool_image_states[function] || "unknown"]_down")
+	return image('icons/screen/radial/tools/generic.dmi', icon_state = "[_dyntool_image_states[function] || "unknown"]_down")
