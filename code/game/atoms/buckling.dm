@@ -179,7 +179,7 @@
 	if(!(flags & BUCKLE_OP_FORCE) && !can_unbuckle_mob(M, flags, user, semantic))
 		return FALSE
 
-	#warn impl and check overrides
+	return _unbuckle_mob(M, flags, user, semantic)
 
 /atom/movable/proc/_unbuckle_mob(mob/M, flags, mob/user, semantic)
 	PRIVATE_PROC(TRUE)
@@ -270,10 +270,9 @@
  * ? Put user interaction in here.
  */
 /atom/movable/proc/mob_resist_buckle(mob/M, semantic)
-
-	#warn comsig
-
-#warn impl above
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_MOB_RESIST_BUCKLE, M, semantic)
+	return TRUE
 
 /**
  * called to initiate buckle resist
@@ -325,6 +324,12 @@
 		return
 	unbuckle_mob(user, BUCKLE_OP_FORCE)
 	visible_message(SPAN_WARNING("[user] is freed from [src]!"))
+
+/**
+ * get the buckle_lying field for a given mob.
+ */
+/atom/movable/proc/buckle_lying(mob/M)
+	return buckle_lying
 
 //! mob stuff
 

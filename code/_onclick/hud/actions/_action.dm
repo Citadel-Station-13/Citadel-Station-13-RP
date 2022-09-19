@@ -3,11 +3,12 @@
 #define AB_INNATE 3
 #define AB_GENERIC 4
 
-#define AB_CHECK_RESTRAINED 1
-#define AB_CHECK_STUNNED 2
-#define AB_CHECK_LYING 4
-#define AB_CHECK_ALIVE 8
-#define AB_CHECK_INSIDE 16
+#define AB_CHECK_RESTRAINED (1<<0)
+#define AB_CHECK_STUNNED (1<<1)
+#define AB_CHECK_LYING (1<<2)
+#define AB_CHECK_ALIVE (1<<3)
+#define AB_CHECK_INSIDE (1<<4)
+#define AB_CHECK_CONSCIOUS (1<<5)
 
 // todo: multiple owners
 // todo: ability datums? cooldown needs more checking
@@ -110,6 +111,9 @@
 	if(check_flags & AB_CHECK_INSIDE)
 		if(!(target in owner))
 			return 0
+	if(check_flags & AB_CHECK_CONSCIOUS)
+		if(!STAT_IS_CONSCIOUS(owner.stat))
+			return FALSE
 	return 1
 
 /datum/action/proc/UpdateName()

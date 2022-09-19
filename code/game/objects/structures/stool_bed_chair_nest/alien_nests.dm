@@ -12,11 +12,14 @@
 	return
 
 /obj/structure/bed/nest/mob_resist_buckle(mob/M, semantic)
-	if(world.time <= M.last_special + NEST_RESIST_TIME)
+	. = ..()
+	if(!.)
 		return
+	if(world.time <= M.last_special + NEST_RESIST_TIME)
+		return FALSE
 	var/mob/living/L = M
 	if(!istype(L))
-		return ..()
+		return
 	L.last_special = world.time
 	L.visible_message(\
 		"<span class='warning'>[L.name] struggles to break free of the gelatinous resin...</span>",\
@@ -29,7 +32,6 @@
 			SPAN_WARNING("You fail to break out of [src].")
 		)
 		return FALSE
-	return ..()
 
 /obj/structure/bed/nest/user_unbuckle_feedback(mob/M, flags, mob/user, semantic)
 	if(user != M)

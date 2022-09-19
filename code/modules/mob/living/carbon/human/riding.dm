@@ -29,3 +29,6 @@
 	if(loc_check && !Adjacent(other))
 		return FALSE
 
+/mob/living/carbon/human/buckle_lying(mob/M)
+	var/semantic = buckled_mobs[M]
+	return semantic == BUCKLE_SEMANTIC_HUMAN_PIGGYBACK? 0 : 90

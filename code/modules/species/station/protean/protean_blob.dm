@@ -209,7 +209,7 @@
 					allowed = FALSE
 				if(istype(target) && vore_selected && allowed) //no more ooc-noncon vore, thanks
 					if(target.buckled)
-						target.buckled.unbuckle_mob(target, force = TRUE)
+						target.buckled.unbuckle_mob(target, BUCKLE_OP_FORCE)
 					target.forceMove(vore_selected)
 					to_chat(target,"<span class='warning'>\The [src] quickly engulfs you, [vore_selected.vore_verb]ing you into their [vore_selected.name]!</span>")
 

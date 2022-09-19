@@ -44,7 +44,7 @@
 	/// How many people can be buckled to us at once.
 	var/buckle_max_mobs = 1
 	/// if non-null, forces mob.lying to this. this is NOT a boolean.
-	var/buckle_lying
+	var/buckle_lying = 0
 	/// direction to set buckled mobs to. null to not do that.
 	var/buckle_dir
 	/// buckled mobs, associated to their semantic mode if necessary

@@ -875,38 +875,19 @@ default behaviour is:
 	if(restrained())
 		stop_pulling()
 	// End
+	var/lying_new = 0
 	if(!resting && cannot_stand() && can_stand_overridden())
 		lying = 0
 		canmove = 1
 	else
-		if(istype(buckled, /obj/vehicle_old))
-			var/obj/vehicle_old/V = buckled
-			if(is_physically_disabled())
-				lying = 0
-				canmove = 1
-				if(!V.riding_datum) // If it has a riding datum, the datum handles moving the pixel_ vars.
-					pixel_y = V.mob_offset_y - 5
-			else
-				if(buckled.buckle_lying != -1)
-					lying = buckled.buckle_lying
-				canmove = 1
-				if(!V.riding_datum) // If it has a riding datum, the datum handles moving the pixel_ vars.
-					pixel_y = V.mob_offset_y
-		else if(buckled)
-			anchored = 1
-			canmove = 0
-			if(istype(buckled))
-				if(buckled.buckle_lying != -1)
-					lying = buckled.buckle_lying
-				if(buckled.buckle_movable)
-					anchored = 0
-					canmove = 1
+		if(buckled)
+			lying = buckled.buckle_lying(src)
 		else
 			lying = incapacitated(INCAPACITATION_KNOCKDOWN)
 			canmove = !incapacitated(INCAPACITATION_DISABLED)
 
 	if(lying)
-		density = 0
+		density = FALSE
 		drop_all_held_items()
 		for(var/obj/item/holder/H in get_mob_riding_slots())
 			drop_item_to_ground(H)
@@ -916,7 +897,7 @@ default behaviour is:
 
 	for(var/obj/item/grab/G in grabbed_by)
 		if(G.state >= GRAB_AGGRESSIVE)
-			canmove = 0
+			canmove = FALSE
 			break
 
 	if(lying != lying_prev)
