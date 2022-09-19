@@ -116,6 +116,17 @@ obj/item/gun/projectile/shotgun/pump/combat/warden/verb/rename_gun()
 		update_icon()
 		return 1
 
+//Don't you wish you had bigger arms?
+/obj/item/gun/projectile/shotgun/pump/combat/grit
+	name = "Grit"
+	desc = "This exotic twelve gauge sports a custom paint job and a cylinder choke. At close ranges, it packs quite the punch."
+	icon_state = "grit"
+	item_state = "grit"
+	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 4)
+	one_handed_penalty = 5
+	recoil = 5
+	accuracy = 40
+
 /obj/item/gun/projectile/shotgun/doublebarrel
 	name = "double-barreled shotgun"
 	desc = "A truely classic weapon. No need to change what works. Uses 12g rounds."
