@@ -769,6 +769,7 @@
 					prob(8);/obj/item/gun/projectile/automatic/c20r,\
 					prob(8);/obj/item/melee/energy/sword,\
 					prob(8);/obj/item/gun/projectile/derringer,\
+					prob(8);/obj/item/gun/projectile/konigin,\
 					prob(8);/obj/item/gun/projectile/revolver/lemat,\
 				/*	prob(8);/obj/item/gun/projectile/shotgun/pump/rifle/mosin,\ */
 				/*	prob(8);/obj/item/gun/projectile/automatic/m41a,\ */
