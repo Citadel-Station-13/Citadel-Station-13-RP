@@ -115,8 +115,14 @@
 		choose_deploy(user)
 
 /obj/item/switchtool/proc/add_module(obj/item/module, switchtool_enum)
+	if(module.loc != src)
+		module.forceMove(src)
+	tools[module] = switchtool_enum
 
 /obj/item/switchtool/proc/remove_module(obj/item/module)
+	if(module == deployed)
+		undeploy()
+	tools -= module
 
 /obj/item/switchtool/proc/undeploy()
 	playsound(src, undeploy_sound, 10, 1)

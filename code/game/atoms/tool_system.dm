@@ -58,7 +58,7 @@
 	if(isnull(reachability_check))
 		if(clickchain_flags & CLICKCHAIN_TOOL_ACT)
 			// provided_item should never be null
-			reachability_check = CALLBACK(provided_item, /obj/item/proc/attack_can_reach)
+			reachability_check = CALLBACK(provided_item, /obj/item/proc/attack_can_reach, user, src, provided_item.reach)
 	if(reachability_check && !reachability_check.Invoke())
 		return NONE
 	// from click chain
