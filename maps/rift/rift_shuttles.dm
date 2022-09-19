@@ -245,7 +245,7 @@
 /obj/effect/overmap/visitable/ship/landable/courser
 	name = "Courser Scouting Vessel"
 	desc = "Where there's a cannon, there's a way."
-	fore_dir = WEST
+	fore_dir = EAST
 	vessel_mass = 8000
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Courser Scouting Vessel"

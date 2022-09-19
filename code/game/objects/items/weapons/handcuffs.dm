@@ -208,7 +208,7 @@ var/last_chew = 0
 /obj/item/handcuffs/disruptor
 	name = "disruptor cuffs"
 	icon_state = "disruptorcuff"
-	desc = "These cutting edge handcuffs were originally designed by the PMD. Commonly deployed to restrain anomalous lifeforms, disruptor cuffs employ a form of acuasal logic engine disruption, in tandem with morphogenic resonance, to neutralize the abilities of technological and biological threats."
+	desc = "These cutting edge handcuffs were originally designed by the PMD. Commonly deployed to restrain anomalous lifeforms, disruptor cuffs employ a form of acausal logic engine disruption, in tandem with morphogenic resonance, to neutralize the abilities of technological and biological threats."
 
 /obj/item/handcuffs/disruptor/get_worn_icon_state(var/slot_id)
 	if(slot_id == SLOT_ID_HANDCUFFED)

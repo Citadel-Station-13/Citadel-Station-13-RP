@@ -237,7 +237,7 @@
 					if(heat_transfer > 0)
 						heat_transfer = min(heat_transfer , heating_power)
 
-						removed.add_thermal_energy(heat_transfer)
+						removed.adjust_thermal_energy(heat_transfer)
 
 				env.merge(removed)
 
@@ -403,7 +403,7 @@
 					if(heat_transfer > 0)
 						heat_transfer = min(heat_transfer , heating_power)
 
-						removed.add_thermal_energy(heat_transfer)
+						removed.adjust_thermal_energy(heat_transfer)
 
 				env.merge(removed)
 

@@ -87,7 +87,7 @@
 		announce_warning(meltedrods, meltingrods, temperature >= max_temp ? 1 : 0)
 
 	decay_archived = decay_heat
-	add_thermal_energy(decay_heat * activerods)
+	adjust_thermal_energy(decay_heat * activerods)
 	equalize(loc.return_air(), envefficiency)
 	equalize_all()
 
@@ -321,7 +321,7 @@
 					removed.temperature = clamp( removed.temperature, 0,  REACTOR_TEMPERATURE_CUTOFF)
 				env.merge(removed)
 
-/obj/machinery/power/fission/add_thermal_energy(var/thermal_energy)
+/obj/machinery/power/fission/adjust_thermal_energy(var/thermal_energy)
 	if(mass < 1)
 		return 0
 

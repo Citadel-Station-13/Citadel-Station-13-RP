@@ -159,3 +159,18 @@
 
 	. = ..()
 	icon_state = "n2o"
+
+//Big tanks of hazardous gases can be put here.
+/obj/machinery/atmospherics/pipe/tank/chlorine
+	name = "Pressure Tank (Chlorine)"
+	icon_state = "hazard_map"
+
+/obj/machinery/atmospherics/pipe/tank/chlorine/Initialize(mapload, newdir)
+	air_temporary = new
+	air_temporary.volume = volume
+	air_temporary.temperature = T20C
+
+	air_temporary.adjust_gas(/datum/gas/chlorine, (start_pressure)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature))
+
+	. = ..()
+	icon_state = "hazard"
