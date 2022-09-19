@@ -77,21 +77,15 @@
 				unbuckle_mob(occupant)
 				qdel(src)
 
-#warn a
-/obj/effect/energy_net/_user_unbuckle_mob(mob/living/buckled_mob, mob/user)
+/obj/effect/energy_net/mob_resist_buckle(mob/M, semantic)
 	user.setClickCooldown(user.get_attack_speed())
 	visible_message("<span class='danger'>[user] begins to tear at \the [src]!</span>")
-	if(do_after(user, escape_time, src, incapacitation_flags = INCAPACITATION_DEFAULT & ~(INCAPACITATION_RESTRAINED | INCAPACITATION_BUCKLED_FULLY)))
-		if(!has_buckled_mobs())
-			return
-		visible_message("<span class='danger'>[user] manages to tear \the [src] apart!</span>")
-		unbuckle_mob(buckled_mob)
+	if(!do_after(user, escape_time, src, incapacitation_flags = INCAPACITATION_DEFAULT & ~(INCAPACITATION_RESTRAINED | INCAPACITATION_BUCKLED_FULLY)))
+		return FALSE
+	visible_message("<span class='danger'>[user] manages to tear \the [src] apart!</span>")
+	qdel(src)
+	return FALSE
 
-/obj/effect/energy_net/post_buckle_mob(mob/living/M)
-	if(M.buckled == src) //Just buckled someone
-		..()
-		layer = M.layer+1
-		M.can_pull_size = 0
-	else //Just unbuckled someone
-		M.can_pull_size = initial(M.can_pull_size)
-		qdel(src)
+/obj/effect/energy_net/mob_buckled(mob/M, flags, mob/user, semantic)
+	. = ..()
+	layer = M.layer + 1

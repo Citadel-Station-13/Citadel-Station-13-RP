@@ -54,6 +54,8 @@
 	var/mob/unbuckling = buckled_mobs[1]
 	if(buckled_mobs.len > 1)
 		unbuckling = input(user, "Who to unbuckle?", "Unbuckle", unbuckling) as anything|null in buckled_mobs
+	if((user == unbuckling) && !mob_resist_buckle(user, buckled_mobs[user]))
+		return
 	user_unbuckle_mob(unbuckling, BUCKLE_OP_DEFAULT_INTERACTION, user, buckled_mobs[unbuckling])
 	add_fingerprint(user)
 
@@ -71,6 +73,12 @@
 	. = unbuckle_mob(M, flags, user, semantic)
 	if(!.)
 		return
+	user_unbuckle_feedback(M, flags, user, semantic)
+
+/**
+ * called to provide visible/audible feedback when someone unbuckles someone else (or themselves) from us
+ */
+/atom/movable/proc/user_unbuckle_feedback(mob/M, flags, mob/user, semantic)
 	if(user != M)
 		M.visible_message(
 			SPAN_NOTICE("[M] was unbuckled from [src] by [user]."),
@@ -100,6 +108,12 @@
 	. = buckle_mob(M, flags, user, semantic)
 	if(!.)
 		return
+	user_buckle_feedback(M, flags, user, semantic)
+
+/**
+ * called to provide visible/audible feedback when someone buckles someone else (or themselves) to us
+ */
+/atom/movable/proc/user_buckle_feedback(mob/M, flags, mob/user, semantic)
 	if(user != M)
 		M.visible_message(
 			SPAN_NOTICE("[user] buckles [M] to [src]."),
@@ -248,6 +262,10 @@
 /**
  * called when a mob tries to resist out of being buckled to us
  *
+ * DO NOT CALL user_unbuckle_mob. This is called by interaction procs!
+ *
+ * @return TRUE/FALSe depending on if we're allowed to user_unbuckle_mob ourselves.
+ *
  * ? SLEEPS ARE ALLOWED
  * ? Put user interaction in here.
  */
@@ -264,7 +282,9 @@
 /atom/movable/proc/resist_unbuckle_interaction(mob/M)
 	set waitfor = FALSE
 	ASSERT(M in buckled_mobs)
-	mob_resist_buckle(M, buckled_mobs[M])
+	if(!mob_resist_buckle(M, buckled_mobs[M]))
+		return
+	user_unbuckle_mob(M, BUCKLE_OP_DEFAULT_INTERACTION, M, buckled_mobs[M])
 
 /**
  * if we have buckled mobs

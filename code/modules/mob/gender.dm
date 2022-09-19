@@ -81,3 +81,19 @@
 	himself	= "hirself"
 	s		= "s"
 	hes		= "shi's"
+
+/mob/proc/p_they()
+	var/datum/gender/G = gender_datums[gender]
+	return G.he
+
+/mob/proc/p_them()
+	var/datum/gender/G = gender_datums[gender]
+	return G.him
+
+/mob/proc/p_They()
+	var/datum/gender/G = gender_datums[gender]
+	return G.Him
+
+/mob/proc/p_Them()
+	var/datum/gender/G = gender_datums[gender]
+	return G.He
