@@ -15,11 +15,11 @@
 	. = ..()
 	if(!.)
 		return
-	if(world.time <= M.last_special + NEST_RESIST_TIME)
-		return FALSE
 	var/mob/living/L = M
 	if(!istype(L))
 		return
+	if(world.time <= L.last_special + NEST_RESIST_TIME)
+		return FALSE
 	L.last_special = world.time
 	L.visible_message(\
 		"<span class='warning'>[L.name] struggles to break free of the gelatinous resin...</span>",\

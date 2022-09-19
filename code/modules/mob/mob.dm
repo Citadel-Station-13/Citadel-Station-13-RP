@@ -668,18 +668,11 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 						return 1
 	return 0
 
-/**
- * Controls if a mouse drop succeeds (return null if it doesnt)
- */
-/mob/OnMouseDropLegacy(mob/M as mob)
+/mob/OnMouseDrop(atom/over, mob/user, proximity, params)
 	. = ..()
-	if(M != usr) return
-	if(usr == src) return
-	if(!Adjacent(usr)) return
-	if(usr.incapacitated(INCAPACITATION_STUNNED | INCAPACITATION_FORCELYING | INCAPACITATION_KNOCKOUT | INCAPACITATION_RESTRAINED)) return //Incapacitated.
-	if(istype(M,/mob/living/silicon/ai)) return
-	request_strip_menu(usr)
-	return 0
+	if(over != user)
+		return
+	. |= mouse_drop_strip_interaction(user)
 
 /mob/proc/can_use_hands()
 	return
@@ -1161,16 +1154,21 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 //! Pixel Offsets
 /mob/proc/get_buckled_pixel_x_offset()
-	return buckled?.get_centering_pixel_x_offset() + (lying? 0 : 6)
+	return buckled?.get_centering_pixel_x_offset(NONE, src) - get_centering_pixel_x_offset()
 
 /mob/proc/get_buckled_pixel_y_offset()
-	return buckled?.get_centering_pixel_y_offset() + (lying? 0 : 6)
+	return buckled?.get_centering_pixel_y_offset(NONE, src) - get_centering_pixel_y_offset()
 
 /mob/get_managed_pixel_x()
 	return ..() + shift_pixel_x + get_buckled_pixel_x_offset()
 
 /mob/get_managed_pixel_y()
 	return ..() + shift_pixel_y + get_buckled_pixel_y_offset()
+
+/mob/get_centering_pixel_y_offset(dir, atom/aligning)
+	. = ..()
+	if(lying)
+		. += 6
 
 /mob/proc/reset_pixel_shifting()
 	if(!shifted_pixels)

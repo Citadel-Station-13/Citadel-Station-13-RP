@@ -4,7 +4,7 @@
 /mob/proc/grabbing()
 	RETURN_TYPE(/list)
 	. = list()
-	for(var/obj/item/grab/G as get_held_items())
+	for(var/obj/item/grab/G in get_held_items())
 		.[G.affecting] = G.state
 
 /**
@@ -13,7 +13,7 @@
 /mob/proc/grabbing_recursive(list/L = list())
 	RETURN_TYPE(/list)
 	. = L
-	for(var/obj/item/grab/G as get_held_items())
+	for(var/obj/item/grab/G in get_held_items())
 		.[G.affecting] = max(.[G.affecting], G.state)
 		grabbing_recursive(G.affecting)
 
@@ -23,7 +23,7 @@
 /mob/proc/grab_state(mob/M)
 	if(!(src in M.grabbed_by))
 		return GRAB_NONE
-	for(var/obj/item/grab/G as anything in get_held_items())
+	for(var/obj/item/grab/G in get_held_items())
 		if(G.affecting == M)
 			return G.state
 	CRASH("in grabbed by but no grab item?")

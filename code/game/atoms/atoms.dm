@@ -1132,7 +1132,7 @@
  * e.g. even if we are a 3x3 sprite with -32 x/y offsets, this would be 0
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
-/atom/proc/get_centering_pixel_x_offset(dir)
+/atom/proc/get_centering_pixel_x_offset(dir, atom/aligning)
 	return pixel_x + (icon_dimension_x) / 2
 
 /**
@@ -1141,7 +1141,7 @@
  * e.g. even if we are a 3x3 sprite with -32 x/y offsets, this would be 0
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
-/atom/proc/get_centering_pixel_y_offset(dir)
+/atom/proc/get_centering_pixel_y_offset(dir, atom/aligning)
 	return pixel_y + (icon_dimension_y) / 2
 
 /// Setter for the `base_pixel_x` variable to append behavior related to its changing.

@@ -167,18 +167,28 @@
 	name = "double bed"
 	icon_state = "doublebed"
 	base_icon = "doublebed"
+	buckle_max_mobs = 2
 
 /obj/structure/bed/double/padded/Initialize(mapload)
 	. = ..(mapload, "wood", "cotton")
 
-/obj/structure/bed/double/mob_buckled(mob/M, flags, mob/user, semantic)
-	. = ..()
-	if(M.buckled == src)
-		M.pixel_y = 13
-		M.old_y = 13
-	else
-		M.pixel_y = 0
-		M.old_y = 0
+/obj/structure/bed/double/padded/get_centering_pixel_y_offset(dir, atom/aligning)
+	if(!aligning)
+		return ..()
+	if(!has_buckled_mobs())
+		return ..()
+	var/index = buckled_mobs.Find(aligning)
+	if(!index)
+		return ..()
+	switch(index)
+		if(1)
+			return -6
+		if(2)
+			return 6
+		if(3)
+			return 3
+		else
+			return rand(-6, 6)
 
 /*
  * Roller beds

@@ -1102,7 +1102,7 @@ default behaviour is:
 		throw_alert("weightless", /obj/screen/alert/weightless)
 */
 
-/mob/living/get_centering_pixel_y_offset(dir)
+/mob/living/get_centering_pixel_y_offset(dir, atom/aligning)
 	. = ..()
 	// since we're shifted up by transforms..
 	. += ((size_multiplier * icon_scale_y) - 1) * 16

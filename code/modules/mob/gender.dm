@@ -1,11 +1,10 @@
+GLOBAL_LIST_INIT(gender_datums, gender_datums())
 
-/var/list/gender_datums = list()
-
-/hook/startup/proc/populate_gender_datum_list()
-	for(var/type in typesof(/datum/gender))
-		var/datum/gender/G = new type
-		gender_datums[G.key] = G
-	return 1
+/proc/gender_datums()
+	. = list()
+	for(var/path in subtypesof(/datum/gender))
+		var/datum/gender/G = new path
+		.[G.key] = G
 
 /datum/gender
 	var/key		= "plural"
@@ -14,6 +13,7 @@
 	var/he		= "they"
 	var/His		= "Their"
 	var/his		= "their"
+	var/Him		= "Them"
 	var/him		= "them"
 	var/has		= "have"
 	var/is		= "are"
@@ -29,6 +29,7 @@
 	he		= "he"
 	His		= "His"
 	his		= "his"
+	Him		= "Him"
 	him		= "him"
 	has		= "has"
 	is		= "is"
@@ -44,6 +45,7 @@
 	he		= "she"
 	His		= "Her"
 	his		= "her"
+	Him		= "Her"
 	him		= "her"
 	has		= "has"
 	is		= "is"
@@ -59,6 +61,7 @@
 	he		= "it"
 	His		= "Its"
 	his		= "its"
+	Him		= "It"
 	him		= "it"
 	has		= "has"
 	is		= "is"
@@ -74,6 +77,7 @@
 	he		= "shi"
 	His		= "Hir"
 	his		= "hir"
+	Him		= "Hir"
 	him		= "hir"
 	has		= "has"
 	is		= "is"
@@ -92,8 +96,8 @@
 
 /mob/proc/p_They()
 	var/datum/gender/G = gender_datums[gender]
-	return G.Him
+	return G.He
 
 /mob/proc/p_Them()
 	var/datum/gender/G = gender_datums[gender]
-	return G.He
+	return G.Him

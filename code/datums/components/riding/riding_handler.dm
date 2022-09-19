@@ -124,7 +124,7 @@
 	update_riders_on_turn(new_dir)
 
 /datum/component/riding_handler/proc/signal_hook_pre_buckle_mob(atom/movable/source, mob/M, flags, mob/user, semantic)
-	SIGNAL_HANDLER
+	SIGNAL_HANDLER_DOES_SLEEP
 	if(!check_rider(M, semantic, TRUE, user = user))
 		return COMPONENT_BLOCK_BUCKLE_OPERATION
 
@@ -186,8 +186,8 @@
 /datum/component/riding_handler/proc/apply_rider_offsets(mob/rider, dir, pos, opx, opy)
 	var/list/offsets = rider_pixel_offsets(dir, pos)
 	rider.reset_pixel_shifting()
-	rider.pixel_x = offsets[1] + opx + rider.get_standard_pixel_x_offset() - rider.get_centering_pixel_x_offset()
-	rider.pixel_y = offsets[2] + opy + rider.get_standard_pixel_y_offset() - rider.get_centering_pixel_y_offset()
+	rider.pixel_x = offsets[1] + opx + rider.get_standard_pixel_x_offset() - rider.get_centering_pixel_x_offset(dir)
+	rider.pixel_y = offsets[2] + opy + rider.get_standard_pixel_y_offset() - rider.get_centering_pixel_y_offset(dir)
 
 /datum/component/riding_handler/proc/apply_rider_layer(mob/rider, dir, pos)
 	var/atom/movable/AM = parent

@@ -1,5 +1,9 @@
 // todo: tgui
 // todo: ui state handles prechecks? interesting to deal with.
+/mob/proc/mouse_drop_strip_interaction(mob/user)
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	open_strip_menu(user)
+
 /mob/proc/request_strip_menu(mob/user)
 	if(!strip_interaction_prechecks(user, FALSE))
 		return FALSE

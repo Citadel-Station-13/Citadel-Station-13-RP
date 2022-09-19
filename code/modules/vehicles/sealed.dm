@@ -16,11 +16,11 @@
 		E.vehicle_entered_target = src
 
 /obj/vehicle/sealed/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
-	. = ..()
 	if(!istype(dropping) || !isliving(user))
 		return ..()
-	if(M == dropping)
-		mob_try_enter(M)
+	if(user == dropping)
+		mob_try_enter(user)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
 /obj/vehicle/sealed/proc/mob_try_enter(mob/M)

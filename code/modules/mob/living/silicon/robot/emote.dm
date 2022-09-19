@@ -193,7 +193,7 @@
 				for(var/mob/living/L in buckled_mobs)
 					L.visible_message(SPAN_BOLDWARNING("[L] is hurled off of [src]!"))
 					unbuckle_mob(L, BUCKLE_OP_FORCE)
-					L.throw_at_old(get_edge_target_turf(get_turf(src), dir), 7, 1, TRUE)
+					L.throw_at(get_edge_target_turf(get_turf(src), dir), 7, 1, THROW_AT_IS_GENTLE, src)
 
 		if("yes", "ye")
 			var/M = null

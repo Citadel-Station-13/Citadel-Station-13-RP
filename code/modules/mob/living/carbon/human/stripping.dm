@@ -1,3 +1,9 @@
+/mob/living/carbon/human/drag_drop_strip_interaction(mob/user)
+	// don't collide with riding
+	if(user.grab_state(src) == GRAB_PASSIVE && user.a_intent == INTENT_GRAB && lying)
+		return
+	return ..()
+
 /mob/living/carbon/human/strip_menu_options(mob/user)
 	. = ..()
 	.["splints"] = "Remove Splints"

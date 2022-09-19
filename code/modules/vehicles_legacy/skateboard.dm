@@ -68,16 +68,14 @@
 		rough_terrain = FALSE
 	return ..()
 
-/obj/vehicle_old/skateboard/post_buckle_mob(mob/living/carbon/M) //allows skateboards to be non-dense but still allows 2 skateboarders to collide with each other
+/obj/vehicle_old/skateboard/mob_buckled(mob/M, flags, mob/user, semantic)
+	. = ..()
 	density = TRUE
-	return ..()
 
-#warn a
-/obj/vehicle_old/skateboard/unbuckle_mob(mob/living/carbon/M)
+/obj/vehicle_old/skateboard/mob_unbuckled(mob/M, flags, mob/user, semantic)
 	. = ..()
 	if(!has_buckled_mobs(M))
 		density = FALSE
-	return ..()
 
 /obj/vehicle_old/skateboard/Bump(atom/A)
 	if(A.density && has_buckled_mobs())

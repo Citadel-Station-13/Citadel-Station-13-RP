@@ -94,7 +94,7 @@
 
 /datum/action/vehicle
 	check_flags = AB_CHECK_RESTRAINED | AB_CHECK_STUNNED | AB_CHECK_CONSCIOUS
-	icon_icon = 'icons/screen/actions/vehicles.dmi'
+	button_icon = 'icons/screen/actions/vehicles.dmi'
 	button_icon_state = "vehicle_eject"
 
 /datum/action/vehicle/sealed

@@ -1,4 +1,3 @@
-#warn piggybacking, firemanning, probably block strip menu from appearing on grab-clickdrops to avoid collisions
 /mob/living/carbon/human
 	name = "unknown"
 	real_name = "unknown"
@@ -1637,7 +1636,7 @@
 			LAZYOR(., SLOT_FEET)
 
 //! Pixel Offsets
-/mob/living/carbon/human/get_centering_pixel_x_offset(dir)
+/mob/living/carbon/human/get_centering_pixel_x_offset(dir, atom/aligning)
 	. = ..()
 	// uh oh stinky
 	if(!isTaurTail(tail_style) || !(dir & (EAST|WEST)))
