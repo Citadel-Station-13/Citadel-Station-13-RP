@@ -5,7 +5,7 @@
 	if(istype(mover,/obj/item/projectile))
 		return check_cover(mover,target)
 	if(flipped == 1)
-		if(get_dir(loc, target) == dir)
+		if(get_dir(mover, target) & turn(dir, 180))
 			return FALSE
 		return TRUE
 	for(var/obj/structure/table/T in get_turf(mover))
@@ -18,9 +18,9 @@
 /obj/structure/table/CheckExit(atom/movable/AM, atom/newLoc)
 	if(check_standard_flag_pass(AM))
 		return TRUE
-	if(flipped != 1)
+	if(flipped == -1 || !flipped)
 		return TRUE
-	return !density || (get_dir(loc, newLoc) == dir)
+	return !density || !(get_dir(loc, newLoc) & dir)
 
 //checks if projectile 'P' from turf 'from' can hit whatever is behind the table. Returns 1 if it can, 0 if bullet stops.
 /obj/structure/table/proc/check_cover(obj/item/projectile/P, turf/from)
