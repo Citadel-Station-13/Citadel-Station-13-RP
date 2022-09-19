@@ -19,6 +19,11 @@
 	//  this continues to work.
 	var/global/list/tube_dir_list = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
 
+//People are complaining the basic tube is too slow, but I don't want ALL tubes to be super fast. So here's the trick, I think.
+/obj/structure/transit_tube/high_velocity
+	inertia_move_delay = 0
+	exit_delay = 0.5
+	enter_delay = 0.5
 
 // A place where tube pods stop, and people can get in or out.
 // Mappers: use "Generate Instances from Directions" for this

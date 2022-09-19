@@ -56,6 +56,8 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 				var/image/I = image('icons/effects/atmospherics.dmi', icon_state = initial(gas.gas_overlay), layer = FLY_LAYER)
 				I.plane = MOB_PLANE
 				I.alpha = i * 255 / FACTOR_GAS_VISIBLE_MAX
+				I.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+				I.appearance_flags = RESET_TRANSFORM | RESET_COLOR | RESET_ALPHA | KEEP_APART
 				.[gas_path][i] = I
 
 /proc/meta_gas_danger_list()
