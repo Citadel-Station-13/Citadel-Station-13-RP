@@ -1,5 +1,5 @@
-#warn impl below
-//! buckling. flags are always buckling opflags, see __DEFINES/procs/buckling.dm
+
+////! buckling. flags are always buckling opflags, see __DEFINES/procs/buckling.dm
 /// called on mob buclked: (mob, flags, user, semantic)
 #define COMSIG_MOVABLE_MOB_BUCKLED			"mob_buckled"
 /// called on mob unbuckled: (mob, flags, user, semantic)
@@ -31,3 +31,13 @@
 	#define COMPONENT_BLOCK_BUCKLE_OPERATION		(1<<0)
 	/// force allow buckle/unbuckled **silently**
 	#define COMPONENT_FORCE_BUCKLE_OPERATION		(1<<1)
+
+//! Interactions; only blocking default interactions work.
+/// called from drag_drop_buckle_interaction: (A, user)
+#define COMSIG_MOVABLE_DRAG_DROP_BUCKLE_INTERACTION "drag_drop_buckle"
+/// called from click_unbuckle_interaction: (user)
+#define COMSIG_MOVABLE_CLICK_UNBUCKLE_INTERACTION "click_unbuckle"
+/// called from resist_unbuckle_interaction(M)
+#define COMSIG_MOVABLE_RESIST_UNBUCKLE_INTERACTION "resist_unbuckle"
+	/// cancel rest of procs
+	#define COMPONENT_HANDLED_BUCKLE_INTERACTION	(1<<0)

@@ -9,6 +9,8 @@
 /datum/component/riding_handler
 	//? disabled as we don't have dupe handling
 	can_transfer = FALSE
+	dupe_mode = COMPONENT_DUPE_UNIQUE
+	dupe_type = /datum/component/riding_handler
 	//! main
 	/// expected typepath of what we're handling for
 	var/expected_typepath = /atom/movable

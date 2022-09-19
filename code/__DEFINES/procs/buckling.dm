@@ -22,3 +22,7 @@
 #define BUCKLE_SEMANTIC_HUMAN_PIGGYBACK				"piggyback"
 /// attempt to carry fireman someone
 #define BUCKLE_SEMANTIC_HUMAN_FIREMAN				"fireman"
+
+//! Misc
+#define HUMAN_FIREMAN_DELAY						(5 SECONDS)
+#define HUMAN_PIGGYBACK_DELAY					(3 SECONDS)

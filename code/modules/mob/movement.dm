@@ -115,9 +115,6 @@
   */
 
 /client/Move(n, direct)
-	//if(!mob) // Clients cannot have a null mob, as enforced by byond
-	//	return // Moved here to avoid nullrefs below
-
 	if(!mob.check_move_cooldown()) //do not move anything ahead of this check please
 		return FALSE
 	else
@@ -290,30 +287,21 @@
 		G.adjust_position()
 	for (var/obj/item/grab/G in mob.grabbed_by)
 		G.adjust_position()
+	// end
 
-//////////////////////end
 	add_delay = max(add_delay, move_delay_add_grab)
 
 	if((direct & (direct - 1)) && mob.loc == n) //moved diagonally successfully
 		add_delay *= SQRT_2
 	mob.move_delay += add_delay
 	mob.last_move_time = world.time
-/*
-	if(.) // If mob is null here, we deserve the runtime
-		if(mob.throwing)
-			mob.throwing.finalize(FALSE)
-*/
 
-/*
-	var/atom/movable/P = mob.pulling
-	if(P && !ismob(P) && P.density)
-		mob.setDir(turn(mob.dir, 180))
-*/
-
-
-/mob/proc/SelfMove(turf/n, direct)
-	return Move(n, direct)
-
+/mob/proc/SelfMove(turf/T, dir)
+	. = Move(n, dir)
+	if(.)
+		throwing?.terminate()
+	if(pulling && !ismob(pulling) && pulling.density)
+		setDir(turn(dir, 180))	// face pulling
 
 ///Process_Incorpmove
 ///Called by client/Move()

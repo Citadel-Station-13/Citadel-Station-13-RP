@@ -1,50 +1,28 @@
 /datum/component/riding_filter/mob/human
 	expected_typepath = /mob/living/carbon/human
 	handler_typepath = /datum/component/riding_handler/mob/human
+	offhand_requirements_are_rigid = FALSE
 
+/datum/component/riding_filter/mob/human/rider_offhands_needed(semantic)
+	return semantic == BUCKLE_SEMANTIC_HUMAN_FIREMAN? 0 : 1
 
+/datum/component/riding_filter/mob/human/ridden_offhands_needed(semantic)
+	return semantic == BUCKLE_SEMANTIC_HUMAN_FIREMAN? 1 : 0
 
 /datum/component/riding_handler/mob/human
 	expected_typepath = /mob/living/carbon/human
 	riding_handler_flags = CF_RIDING_HANDLER_EPHEMERAL
 
 /datum/component/riding_handler/mob/human/rider_layer_offset(dir, index, semantic)
-	. = ..()
-
-
-
-// /datum/component/riding_handler/human/handle_vehicle_layer()
-// 	var/atom/movable/AM = parent
-// 	if(AM.buckled_mobs && AM.buckled_mobs.len)
-// 		for(var/mob/M in AM.buckled_mobs) //ensure proper layering of piggyback and carry, sometimes weird offsets get applied
-// 			M.layer = MOB_LAYER
-// 		if(!AM.buckle_lying)
-// 			if(AM.dir == SOUTH)
-// 				AM.layer = ABOVE_MOB_LAYER
-// 			else
-// 				AM.layer = OBJ_LAYER
-// 		else
-// 			if(AM.dir == NORTH)
-// 				AM.layer = OBJ_LAYER
-// 			else
-// 				AM.layer = ABOVE_MOB_LAYER
-// 	else
-// 		AM.layer = MOB_LAYER
-
-#warn finish
-
-#warn we can't perfectly do this yet so add a hook that changes buckle_lying on the mob
-
-
-#warn offsets
-#warn how to push peopl eoff?
-
-/datum/component/riding_handler/human/Initialize()
-	. = ..()
-	RegisterSignal(parent, COMSIG_HUMAN_MELEE_UNARMED_ATTACK, .proc/signal_hook_host_unarmed_melee)
-
-/datum/component/riding_handler/human/proc/signal_hook_host_unarmed_melee(datum/source, ...)
-	#warn args?
+	switch(dir)
+		if(NORTH)
+			return semantic == BUCKLE_SEMANTIC_HUMAN_FIREMAN? -1 : 1
+		if(SOUTH)
+			return semantic == BUCKLE_SEMANTIC_HUMAN_FIREMAN? 1 : -1
+		if(EAST)
+			return 1
+		if(WEST)
+			return 1
 
 /datum/component/riding_handler/human/signal_hook_pre_buckle_mob(atom/movable/source, mob/M, flags, mob/user, semantic)
 	var/mob/living/carbon/human/H = parent
@@ -58,19 +36,19 @@
 		return COMPONENT_BLOCK_BUCKLE_OPERATION
 	if(semantic == BUCKLE_SEMANTIC_HUMAN_FIREMAN || semantic == BUCKLE_SEMANTIC_HUMAN_PIGGYBACK)
 		return NONE
+	// try to climb onto taur
+	if(user != M)
+		return COMPONENT_BLOCK_BUCKLE_OPERATION
 	if(!isTaurTail(H))
 		return COMPONENT_BLOCK_BUCKLE_OPERATION
-	#warn impl - 2-3 second delay?
-
-
-// /datum/component/riding_handler/human/proc/on_host_unarmed_melee(atom/target)
-// 	var/mob/living/carbon/human/H = parent
-// 	if(H.a_intent == INTENT_DISARM && (target in H.buckled_mobs))
-// 		force_dismount(target)
-
-// /datum/component/riding_handler/human/force_dismount(mob/living/user)
-// 	var/atom/movable/AM = parent
-// 	AM.unbuckle_mob(user)
-// 	user.Paralyze(60)
-// 	user.visible_message("<span class='warning'>[AM] pushes [user] off of [AM.p_them()]!</span>", \
-// 						"<span class='warning'>[AM] pushes you off of [AM.p_them()]!</span>")
+	user.visible_message(
+		SPAN_NOTICE("[user] starts climbing up onto [H]..."),
+		SPAN_NOTICE("You start climbing onto [H]...")
+	)
+	if(!do_after(user, 3 SECONDS, src))
+		return
+	user.visible_message(
+		SPAN_NOTICE("[user] climbs up onto [H]."),
+		SPAN_NOTICE("You climb onto [H].")
+	)
+	return COMPONENT_FORCE_BUCKLE_OPERATION
