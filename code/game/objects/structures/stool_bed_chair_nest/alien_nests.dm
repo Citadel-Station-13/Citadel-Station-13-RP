@@ -14,19 +14,22 @@
 /obj/structure/bed/nest/mob_resist_buckle(mob/M, semantic)
 	if(world.time <= M.last_special + NEST_RESIST_TIME)
 		return
-	M.last_special = world.time
-	M.visible_message(\
-		"<span class='warning'>[buckled_mob.name] struggles to break free of the gelatinous resin...</span>",\
+	var/mob/living/L = M
+	if(!istype(L))
+		return ..()
+	L.last_special = world.time
+	L.visible_message(\
+		"<span class='warning'>[L.name] struggles to break free of the gelatinous resin...</span>",\
 		"<span class='warning'>You struggle to break free from the gelatinous resin...</span>",\
 		"<span class='notice'>You hear squelching...</span>")
-	add_fingerprint(M)
-	if(!do_after(M, NEST_RESIST_TIME, src, FALSE))
-		M.visible_message(
-			SPAN_WARNING("[M] fails to break out of [src]!"),
+	add_fingerprint(L)
+	if(!do_after(L, NEST_RESIST_TIME, src, FALSE))
+		L.visible_message(
+			SPAN_WARNING("[L] fails to break out of [src]!"),
 			SPAN_WARNING("You fail to break out of [src].")
 		)
 		return FALSE
-	return TRUE
+	return ..()
 
 /obj/structure/bed/nest/user_unbuckle_feedback(mob/M, flags, mob/user, semantic)
 	if(user != M)
@@ -54,7 +57,7 @@
 	if(istype(xenos) && !((locate(/obj/item/organ/internal/xenos/hivenode) in xenos.internal_organs)))
 		return
 
-	if(M == useR)
+	if(M == user)
 		return
 
 	return ..()

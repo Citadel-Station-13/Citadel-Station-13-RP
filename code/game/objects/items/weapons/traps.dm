@@ -62,7 +62,7 @@
 	anchored = TRUE
 	update_icon()
 
-/obj/item/beartrap/user_unbuckle_mob(mob/M, flags, mob/user, semantic))
+/obj/item/beartrap/user_unbuckle_mob(mob/M, flags, mob/user, semantic)
 	if(user == M)
 		user.visible_message(SPAN_WARNING("[user] begins carefully pulling themselves free of [src]!"))
 	else

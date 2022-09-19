@@ -4,13 +4,13 @@
 	buckle_max_mobs = 1
 	buckle_lying = FALSE
 	default_driver_move = FALSE
-	pass_flags_self = PASSTABLE
-	var/legs_required = 1
-	var/arms_required = 0	//why not?
+	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
+	var/hands_occupied = 0
 
 /obj/vehicle/ridden/Initialize(mapload)
 	. = ..()
-	LoadComponent(/datum/component/riding)
+	var/datum/component/riding_filter/vehicle/V = LoadComponent(/datum/component/riding_filter/vehicle)
+	V.offhands_needed_rider = hands_occupied
 
 /obj/vehicle/ridden/examine(mob/user)
 	. = ..()
@@ -61,10 +61,8 @@
 		inserted_key = null
 		return TRUE
 
-/obj/vehicle/ridden/driver_move(mob/user, direction)
+/obj/vehicle/ridden/drive_check(mob/user)
 	if(key_type && !is_key(inserted_key))
-		to_chat(user, "<span class='warning'>[src] has no key inserted!</span>")
+		to_chat(user, SPAN_WARNING("[src] has no key inserted."))
 		return FALSE
-	var/datum/component/riding/R = GetComponent(/datum/component/riding)
-	R.handle_ride(user, direction)
 	return ..()

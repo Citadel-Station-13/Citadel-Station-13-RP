@@ -14,8 +14,8 @@
 	animate_movement=1
 	light_range = 3
 
-	can_buckle = 1
-	buckle_movable = 1
+	buckle_allowed = TRUE
+	buckle_flags = BUCKLING_PASS_PROJECTILES_UPWARDS
 	buckle_lying = 0
 
 	var/mechanical = TRUE // If false, doesn't care for things like cells, engines, EMP, keys, etc.

@@ -324,6 +324,8 @@
 	if(world.time < next_move_time)
 		return
 	// then expensive
+	if(!driver_check(M))
+		return
 	if(!keycheck(M))
 		if(CHATSPAM_THROTTLE_DEFAULT)
 			to_chat(M, SPAN_WARNING("You must have one of the keys in your hand to drive [AM]!"))
@@ -342,6 +344,12 @@
 	var/atom/movable/AM = parent
 	step(AM, dir)
 	last_move_diagonal = (AM.loc == next) && (ISDIAGONALDIR(dir))
+	return TRUE
+
+/**
+ * arbitrary driver check for a mob
+ */
+/datum/component/riding_handler/proc/driver_check(mob/M)
 	return TRUE
 
 /**
@@ -431,7 +439,7 @@
 /datum/component/riding_handler/proc/ride_check(mob/M)
 	var/atom/movable/AM = parent
 	if(!check_rider(M, AM.buckled_mobs[M]))
-		force_dismount(M, AM.buclked_mobs[M])
+		force_dismount(M, AM.buckled_mobs[M])
 		return FALSE
 	return TRUE
 

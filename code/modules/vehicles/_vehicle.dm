@@ -12,6 +12,7 @@
 	// armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 0, BOMB = 30, BIO = 0, RAD = 0, FIRE = 60, ACID = 60)
 	density = TRUE
 	anchored = FALSE
+	buckle_flags = BUCKLING_PASS_PROJECTILES_UPWARDS
 	COOLDOWN_DECLARE(cooldown_vehicle_move)
 	var/list/mob/occupants				//mob = bitflags of their control level.
 	var/max_occupants = 1
@@ -176,10 +177,3 @@
 	if(trailer && .)
 		var/dir_to_move = get_dir(trailer.loc, newloc)
 		step(trailer, dir_to_move)
-
-#warn ??
-/obj/vehicle/bullet_act(obj/item/projectile/Proj) //wrapper
-	if (!enclosed && length(occupants) && !Proj.force_hit && (Proj.def_zone == BODY_ZONE_HEAD || Proj.def_zone == BODY_ZONE_CHEST)) //allows bullets to hit drivers
-		occupants[1].bullet_act(Proj) // driver dinkage
-		return BULLET_ACT_HIT
-	. = ..()

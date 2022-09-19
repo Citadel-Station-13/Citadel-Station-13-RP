@@ -6,7 +6,8 @@
 	var/datum/action/vehicle/A = new actiontype
 	if(!istype(A))
 		return
-	A.vehicle_target = src
+	// A.vehicle_target = src
+	// don't need the above; targets are set per type.
 	return A
 
 /obj/vehicle/proc/initialize_passenger_action_type(actiontype)
@@ -95,7 +96,6 @@
 	check_flags = AB_CHECK_RESTRAINED | AB_CHECK_STUNNED | AB_CHECK_CONSCIOUS
 	icon_icon = 'icons/screen/actions/vehicles.dmi'
 	button_icon_state = "vehicle_eject"
-	var/obj/vehicle/vehicle_target
 
 /datum/action/vehicle/sealed
 	var/obj/vehicle/sealed/vehicle_entered_target

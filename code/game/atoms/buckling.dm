@@ -270,7 +270,6 @@
  * ? Put user interaction in here.
  */
 /atom/movable/proc/mob_resist_buckle(mob/M, semantic)
-	SHOULD_CALL_PARENT(TRUE)
 
 	#warn comsig
 

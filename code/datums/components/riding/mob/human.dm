@@ -8,6 +8,8 @@
 	expected_typepath = /mob/living/carbon/human
 	riding_handler_flags = CF_RIDING_HANDLER_EPHEMERAL
 
+/datum/component/riding_handler/mob/human/rider_layer_offset(dir, index, semantic)
+	. = ..()
 
 
 #warn finish
