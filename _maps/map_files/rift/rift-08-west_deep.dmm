@@ -623,6 +623,13 @@
 /obj/structure/girder,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/undergound2)
+"uH" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/sign/warning/falling,
+/turf/simulated/wall,
+/area/rift/surfacebase/outside/west_deep)
 "uO" = (
 /obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -851,6 +858,15 @@
 "Fh" = (
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/undergound2)
+"Gc" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 4
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_deep)
 "Gx" = (
 /obj/structure/table/steel,
 /obj/item/paper_bin,
@@ -32557,7 +32573,7 @@ ky
 bf
 Zk
 Zk
-Zk
+Gc
 Zk
 Zk
 Zk
@@ -32751,7 +32767,7 @@ KF
 Dw
 pU
 pU
-pU
+uH
 pU
 pU
 pU

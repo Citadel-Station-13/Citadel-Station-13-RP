@@ -300,15 +300,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/breakroom)
-"bH" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/yellow/border,
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -26
-	},
-/turf/simulated/floor/tiled,
-/area/outpost/mining_main/outpost)
 "bI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -690,8 +681,8 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
 "dn" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/yellow/border,
+/obj/effect/floor_decal/borderfloor/corner,
+/obj/effect/floor_decal/corner/yellow/bordercorner,
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
@@ -6665,11 +6656,9 @@
 	dir = 4
 	},
 /obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
-/obj/structure/cable/heavyduty{
 	icon_state = "2-8"
 	},
+/obj/structure/cable/heavyduty,
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west)
 "Fb" = (
@@ -10377,11 +10366,6 @@
 /obj/structure/railing,
 /turf/simulated/floor/lythios43c,
 /area/tether/outpost/solars_outside)
-"Wg" = (
-/obj/effect/floor_decal/borderfloor/corner,
-/obj/effect/floor_decal/corner/yellow/bordercorner,
-/turf/simulated/floor/tiled,
-/area/outpost/mining_main/outpost)
 "Wh" = (
 /obj/structure/sign/department/anomaly,
 /turf/simulated/wall,
@@ -43123,9 +43107,9 @@ sv
 sv
 sv
 pn
-YG
-JX
-BH
+jM
+jM
+jM
 pn
 sv
 sv
@@ -43317,9 +43301,9 @@ sv
 sv
 sv
 pn
-jp
-WG
-Wg
+YG
+JX
+BH
 pn
 sv
 sv
@@ -43511,7 +43495,7 @@ Yd
 Yd
 Yd
 ga
-Zg
+jp
 WG
 dn
 ga
@@ -43705,7 +43689,7 @@ Yd
 Yd
 Yd
 pn
-yB
+Zg
 WG
 OQ
 mr
@@ -43899,9 +43883,9 @@ Yd
 Yd
 Yd
 pn
-og
+yB
 WG
-bH
+OQ
 ga
 vp
 vp

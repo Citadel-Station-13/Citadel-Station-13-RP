@@ -93,11 +93,11 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "hH" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
@@ -520,12 +520,6 @@
 	icon_state = "icerock-dark"
 	},
 /area/rift/surfacebase/underground/under2)
-"NI" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/atmospherics/pipe/zpipe/up/scrubbers,
-/obj/machinery/atmospherics/pipe/zpipe/up/supply,
-/turf/simulated/floor/plating,
-/area/maintenance/lower/mining)
 "Ok" = (
 /obj/effect/overlay/snow/floor/grav_edges,
 /obj/machinery/light/flamp/noshade,
@@ -540,15 +534,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
-"ON" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/lower/mining)
 "PG" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
@@ -612,11 +597,10 @@
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "Tr" = (
-/obj/structure/stairs/spawner/south,
-/obj/structure/railing{
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/structure/railing{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -637,9 +621,13 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/miningdock)
 "Vu" = (
-/obj/structure/table/rack,
-/obj/random/maintenance/cargo,
-/obj/random/maintenance/cargo,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/atmospherics/pipe/zpipe/up/scrubbers{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/zpipe/up/supply{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "VU" = (
@@ -20182,9 +20170,9 @@ dq
 dq
 lp
 lp
+lp
+lp
 fs
-EE
-EE
 EE
 jJ
 VU
@@ -20377,12 +20365,12 @@ dq
 lp
 lp
 lp
+lp
+lp
 KS
 vr
 vr
-ON
-Tr
-EE
+zF
 Vu
 EE
 jW
@@ -20571,15 +20559,15 @@ lp
 lp
 lp
 lp
+lp
+lp
 Qt
 vr
 vr
-vr
-vr
-zF
-pk
-Mb
-xs
+Tr
+EE
+EE
+jW
 LO
 LO
 XF
@@ -20765,17 +20753,17 @@ lp
 lp
 lp
 lp
+lp
+lp
 EE
 vr
 Zn
-vr
-NI
 hH
-vr
-EE
+pk
+Mb
+xs
 Cq
 Cq
-LO
 XF
 lp
 lp
@@ -20959,8 +20947,8 @@ lp
 lp
 lp
 xK
-EE
-EE
+lp
+lp
 EE
 EE
 EE
@@ -21154,8 +21142,8 @@ lp
 lp
 lp
 lp
-yP
 lp
+yP
 lp
 lp
 lp

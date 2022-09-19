@@ -3897,8 +3897,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "ip" = (
-/obj/structure/sign/warning/falling,
-/turf/simulated/wall,
+/obj/structure/ore_box,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "iq" = (
 /obj/machinery/camera/network/engineering{
@@ -9134,13 +9137,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "tR" = (
-/obj/structure/railing{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
 	},
-/obj/structure/railing{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
 	},
-/turf/simulated/open,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "tT" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -9362,12 +9366,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
-"vC" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/open,
-/area/maintenance/lower/mining)
 "vD" = (
 /obj/structure/sign/department/morgue{
 	name = "FUNERAL";
@@ -9448,16 +9446,9 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/miningdock)
 "wj" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/railing,
-/obj/structure/lattice,
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/open,
-/area/quartermaster/miningdock)
+/obj/structure/sign/mining,
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/turbolift/rmine/under2)
 "wm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -9549,13 +9540,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "wL" = (
-/obj/structure/railing{
-	dir = 4
+/obj/machinery/door/airlock/maintenance/cargo{
+	req_access = list(50);
+	req_one_access = list(48)
 	},
-/obj/structure/railing,
-/obj/structure/lattice,
-/turf/simulated/open,
-/area/quartermaster/miningdock)
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/mining)
 "wV" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
@@ -9720,10 +9712,23 @@
 "xI" = (
 /obj/structure/lattice,
 /obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
 	dir = 1
 	},
+/obj/structure/railing,
+/obj/machinery/atmospherics/pipe/zpipe/down/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/zpipe/down/scrubbers{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
 /turf/simulated/open,
-/area/quartermaster/miningdock)
+/area/maintenance/lower/mining)
 "xK" = (
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 8
@@ -10086,7 +10091,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "AO" = (
 /obj/machinery/power/apc{
@@ -10582,21 +10587,6 @@
 	},
 /turf/simulated/floor/lino,
 /area/chapel/office)
-"ES" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 2
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/steel,
-/area/quartermaster/miningdock)
 "EU" = (
 /obj/machinery/mineral/equipment_vendor,
 /turf/simulated/floor/tiled/steel_ridged,
@@ -10744,7 +10734,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "FM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -10929,15 +10925,17 @@
 /turf/simulated/floor/plating,
 /area/engineering/turbine_room)
 "GT" = (
-/obj/structure/ore_box,
 /obj/effect/floor_decal/borderfloor{
-	dir = 5
+	dir = 4
 	},
+/obj/structure/ore_box,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "GV" = (
-/obj/structure/lattice,
-/turf/simulated/open,
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "GX" = (
 /obj/structure/railing,
@@ -11036,6 +11034,7 @@
 "HO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "HV" = (
@@ -11056,14 +11055,13 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "Ig" = (
-/obj/structure/railing{
-	dir = 4
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
 	},
-/obj/structure/sign/mining{
-	pixel_y = 32
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 1
 	},
-/obj/structure/lattice,
-/turf/simulated/open,
+/turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "Iq" = (
 /obj/structure/railing{
@@ -11071,12 +11069,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
-"Ix" = (
-/obj/structure/catwalk,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/plating,
-/area/quartermaster/miningdock)
 "Iy" = (
 /obj/structure/table/woodentable,
 /obj/item/storage/fancy/candle_box{
@@ -11097,8 +11089,10 @@
 /turf/simulated/floor/lino,
 /area/chapel/office)
 "ID" = (
-/obj/structure/sign/mining,
-/turf/simulated/wall,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "IF" = (
 /obj/effect/overlay/snow/floor,
@@ -11248,17 +11242,17 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "Jw" = (
-/obj/machinery/atmospherics/pipe/zpipe/down/scrubbers,
-/obj/machinery/atmospherics/pipe/zpipe/down/supply,
-/obj/structure/lattice,
-/obj/structure/railing{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
 	},
-/obj/structure/railing{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
 	},
-/obj/structure/railing,
-/turf/simulated/open,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "Jx" = (
 /obj/effect/floor_decal/rust,
@@ -11578,15 +11572,15 @@
 /turf/simulated/wall,
 /area/chapel/main)
 "Mc" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
 	},
-/obj/structure/ore_box,
-/turf/simulated/floor/tiled/steel,
-/area/quartermaster/miningdock)
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/mining)
 "Md" = (
 /obj/structure/railing,
 /obj/effect/floor_decal/industrial/halfstair{
@@ -12590,12 +12584,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "TU" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 2
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
@@ -12987,12 +12975,6 @@
 /obj/machinery/recharger/wallcharger{
 	pixel_x = -25
 	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 9
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 1
-	},
 /obj/structure/table/standard,
 /obj/item/radio{
 	pixel_x = 2;
@@ -13002,6 +12984,9 @@
 /obj/item/radio{
 	pixel_x = -2;
 	pixel_y = -2
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
@@ -13064,15 +13049,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
-"Xz" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 2
-	},
-/turf/simulated/floor/tiled/steel,
-/area/quartermaster/miningdock)
 "XC" = (
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
@@ -13090,6 +13066,7 @@
 "XQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "XR" = (
@@ -13282,7 +13259,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "Zo" = (
 /obj/machinery/door/airlock/maintenance/engi,
@@ -32082,9 +32062,9 @@ Ym
 ad
 GG
 GG
-ad
+wj
 GV
-GV
+ip
 ip
 WZ
 uR
@@ -32278,8 +32258,8 @@ EC
 EC
 GG
 Ig
-wL
-ES
+CC
+AM
 jw
 LJ
 LG
@@ -32472,7 +32452,7 @@ EC
 EC
 CY
 AM
-Ix
+LJ
 TU
 Vj
 NP
@@ -32666,9 +32646,9 @@ EC
 EC
 GG
 FK
-wj
-Xz
-Mc
+CC
+CC
+CC
 CC
 Xe
 EQ
@@ -32858,9 +32838,9 @@ JP
 ad
 GG
 GG
-ad
+wj
 Zk
-xI
+ID
 ID
 GT
 Yb
@@ -33047,11 +33027,11 @@ aa
 JP
 vO
 Tg
-JP
-vC
+XS
+vO
 tR
-Ze
-Ze
+wL
+xI
 EQ
 CF
 EQ
@@ -33241,11 +33221,11 @@ aa
 JP
 vO
 Tg
-wJ
-Ze
-Ze
-Ze
-Ze
+Tg
+Tg
+Mc
+JP
+JP
 EQ
 Mj
 wc
@@ -33435,8 +33415,8 @@ aa
 JP
 GX
 Tg
-JP
-Ze
+XS
+vO
 Jw
 XQ
 HO
