@@ -68,7 +68,6 @@
 			return _dynamic_tool_act(provided_item, user, function, TOOL_OP_AUTOPILOT | TOOL_OP_REAL, hint)
 		// used in clickchain
 		var/list/possibilities = dynamic_tool_functions(provided_item, user)
-		var/function
 		if(!length(possibilities))
 			// no dynamic tool functionality, route normally.
 			function = provided_item.tool_behaviour()
@@ -122,7 +121,7 @@
 			var/image/I = dynamic_tool_image(function, i)
 			I.maptext = i
 			transformed[i] = I
-		var/hint = show_radial_menu(user, src, transformed, require_near = provided_item.reach)
+		hint = show_radial_menu(user, src, transformed, require_near = provided_item.reach)
 		if(reachability_check && !reachability_check.Invoke())
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		// use hint
