@@ -104,15 +104,15 @@
 	. = ..()
 	create_reagents(usable_volume)
 
-/obj/item/organ/internal/honey_stomach/process(delta_time)
-	if(!owner) return
-	var/obj/item/organ/external/parent = owner.get_organ(parent_organ)
-	var/before_gen
-	if(parent && generated_reagents && organ_owner) //Is it in the chest/an organ, has reagents, and is 'activated'
-		before_gen = reagents.total_volume
-		if(reagents.total_volume < reagents.maximum_volume)
-			if(organ_owner.nutrition >= gen_cost)
-				do_generation()
+/obj/item/organ/internal/honey_stomach/tick_life(dt)
+	. = ..()
+	if(.)
+		return
+	
+	var/before_gen = reagents.total_volume
+	if(reagents.total_volume < reagents.maximum_volume)
+		if(organ_owner.nutrition >= gen_cost)
+			do_generation()
 
 	if(reagents)
 		if(reagents.total_volume == reagents.maximum_volume * 0.05)
