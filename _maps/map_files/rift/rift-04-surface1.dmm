@@ -16060,7 +16060,7 @@
 /obj/item/tool/prybar/red{
 	desc = "Haven't I seen this before?";
 	name = "old red crowbar";
-	toolspeed = 3
+	tool_speed = 0.5
 	},
 /obj/machinery/light/small{
 	dir = 1
