@@ -50,7 +50,7 @@
 
 	var/static/list/default_switchtool_radials = _default_switchtool_radials()
 
-/obj/item/switchtool/proc/_default_switchtool_radials()
+/proc/_default_switchtool_radials()
 	return list(
 		SWITCHTOOL_SCREWDRIVER = image(icon = 'icons/obj/tools.dmi', icon_state = "screwdriver"),
 		SWITCHTOOL_WRENCH = image(icon = 'icons/obj/tools.dmi', icon_state = "wrench"),

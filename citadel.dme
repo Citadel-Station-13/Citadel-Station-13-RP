@@ -457,7 +457,6 @@
 #include "code\datums\hierarchy.dm"
 #include "code\datums\mind.dm"
 #include "code\datums\mixed.dm"
-#include "code\datums\modules.dm"
 #include "code\datums\mutable_appearance.dm"
 #include "code\datums\perspective.dm"
 #include "code\datums\position_point_vector.dm"
