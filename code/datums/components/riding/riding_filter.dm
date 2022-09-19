@@ -236,10 +236,10 @@
 		filter.offhand_destroyed(src, owner)
 		LAZYREMOVE(filter.our_offhands, src)
 	filter = null
-	rider = null
+	owner = null
 	return ..()
 
 /obj/item/offhand/riding/proc/_silently_erase()
 	filter = null
-	rider = null
+	owner = null
 	qdel(src)

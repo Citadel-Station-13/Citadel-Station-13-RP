@@ -33,12 +33,8 @@
 	friendly = list("nuzzles", "licks", "noses softly at", "noseboops", "headbumps against", "leans on", "nibbles affectionately on")
 
 	base_pixel_x = -16
-
-	buckle_max_mobs = 1 //Yeehaw
-	can_buckle = TRUE
-	buckle_movable = TRUE
-	buckle_lying = FALSE
-	mount_offset_y = 10
+	icon_dimension_x = 64
+	icon_dimension_y = 32
 
 	vore_active = TRUE
 	vore_capacity = 1

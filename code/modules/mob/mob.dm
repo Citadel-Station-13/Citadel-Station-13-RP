@@ -208,7 +208,7 @@
 #define PARTIALLY_BUCKLED 1
 #define FULLY_BUCKLED 2
 
-/mob/proc/buckled()
+/mob/proc/is_buckled()
 	// Preliminary work for a future buckle rewrite,
 	// where one might be fully restrained (like an elecrical chair), or merely secured (shuttle chair, keeping you safe but not otherwise restrained from acting)
 	if(!buckled)

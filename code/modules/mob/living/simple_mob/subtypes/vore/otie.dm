@@ -30,12 +30,6 @@
 	meat_amount = 6
 	base_pixel_x = -16
 
-	buckle_max_mobs = 1 //Yeehaw
-	can_buckle = TRUE
-	buckle_movable = TRUE
-	buckle_lying = FALSE
-	mount_offset_y = 10
-
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive/otie
 	say_list_type = /datum/say_list/otie
 

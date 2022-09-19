@@ -50,12 +50,6 @@
 	hide_amount = 6
 	hide_type = /obj/item/stack/hairlesshide
 
-	buckle_max_mobs = 1 //Yeehaw
-	can_buckle = TRUE
-	buckle_movable = TRUE
-	buckle_lying = FALSE
-	mount_offset_y = 20
-
 	say_list_type = /datum/say_list/hippo
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
 

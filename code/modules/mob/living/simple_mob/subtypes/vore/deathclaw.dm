@@ -27,13 +27,6 @@
 
 	base_pixel_x = -16
 
-	buckle_max_mobs = 1 //Yeehaw
-	can_buckle = TRUE
-	buckle_movable = TRUE
-	buckle_lying = FALSE
-	mount_offset_x = 5
-	mount_offset_y = 30
-
 	randomized = TRUE
 	mod_min = 90
 	mod_max = 140

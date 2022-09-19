@@ -205,8 +205,7 @@
 	hide_amount = 5
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/queen/empress)
 
-	pixel_x = -16
-	old_x = -16
+	base_pixel_x = -16
 	icon_dimension_x = 64
 	icon_dimension_y = 64
 
