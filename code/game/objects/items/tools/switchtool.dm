@@ -77,8 +77,20 @@
 
 /obj/item/switchtool/Initialize(mapload)
 	. = ..()
-	for(var/module in start_modules)//making the modules
-		stored_modules |= new module(src)
+	var/list/adding = list()
+	for(var/path in modules)
+		if(isdatum(path))
+			// wtf?
+			continue
+		if(!ispath(path))
+			// wtf?
+			continue
+		adding[path] = modules[path]
+		modules -= path
+	for(var/path in adding)
+		var/enum = adding[path]
+		add_module(new path(src), enum)
+
 
 /obj/item/switchtool/examine()
 	. = ..()
@@ -95,6 +107,9 @@
 		choose_deploy(user)
 
 /obj/item/switchtool/proc/add_module(obj/item/module, switchtool_enum)
+
+/obj/item/switchtool/proc/remove_module(obj/item/module)
+
 
 //makes the string list of modules ie "a screwdriver, a knife, and a clown horn"
 //does not end with a full stop, but does contain commas
@@ -185,8 +200,11 @@
 				to_chat(user, "You deploy \the [deployed].")
 				return TRUE
 
+/obj/item/switchtool/proc/get_switchtool_enum(obj/item/I)
+	return tools[I]
+
 /obj/item/switchtool/handle_shield(mob/user)
-	if(deployed.deploytype == "shield")
+	if(get_switchtool_enum(deployed) == SWITCHTOOL_SHIELD)
 		return TRUE
 	return FALSE
 
