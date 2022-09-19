@@ -25,7 +25,10 @@
 	/// modules; initial modules are as typepath. will associate object to module type at runtime
 	var/list/tools = list(
 		/obj/item/tool/screwdriver/switchy = SWITCHTOOL_SCREWDRIVER,
-
+		/obj/item/tool/wrench/switchy = SWITHCTOOL_WRENCH,
+		/obj/item/tool/wirecutters/switchy = SWITCHTOOL_WIRECUTTERS,
+		/obj/item/tool/crowbar/switchy = SWITCHTOOL_CROWBAR,
+		/obj/item/multitool/switchy = SWITCHTOOL_MULTITOOL
 	)
 
 	/// tool functions
@@ -42,39 +45,31 @@
 
 	/// currently deployed item
 	var/obj/item/deployed
+	/// currently used dynamic tool function
+	var/deploying_function
 
+	var/static/list/default_switchtool_radials = _default_switchtool_radials()
 
-
-	//the colon separates the typepath from the name
-	var/list/obj/item/start_modules = list(/obj/item/tool/screwdriver/switchy = null,
-											/obj/item/tool/wrench/switchy = null,
-											/obj/item/tool/wirecutters/switchy = null,
-											/obj/item/tool/crowbar/switchy = null,
-											/obj/item/multitool/switchy = null)
-	var/list/obj/item/stored_modules = list()
-
-	var/static/radial_driver = image(icon = 'icons/obj/tools.dmi', icon_state = "screwdriver") //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	var/static/radial_wrench = image(icon = 'icons/obj/tools.dmi', icon_state = "wrench")
-	var/static/radial_wirecutters = image(icon = 'icons/obj/tools.dmi', icon_state = "cutters")
-	var/static/radial_crowbar = image(icon = 'icons/obj/tools.dmi', icon_state = "crowbar")
-	var/static/radial_welder = image(icon = 'icons/obj/tools.dmi', icon_state = "tubewelder")
-	var/static/radial_multitool = image(icon = 'icons/obj/device.dmi', icon_state = "multitool")
-	var/static/radial_scalpel = image(icon = 'icons/obj/surgery.dmi', icon_state = "scalpel")
-	var/static/radial_laserscalpel = image(icon = 'icons/obj/surgery.dmi', icon_state = "scalpel_laser3_on")
-	var/static/radial_hemostat = image(icon = 'icons/obj/surgery.dmi', icon_state = "hemostat")
-	var/static/radial_retractor = image(icon = 'icons/obj/surgery.dmi', icon_state = "retractor")
-	var/static/radial_saw = image(icon = 'icons/obj/surgery.dmi', icon_state = "saw")
-	var/static/radial_drill = image(icon = 'icons/obj/surgery.dmi', icon_state = "drill")
-	var/static/radial_boneclamp = image(icon = 'icons/obj/surgery.dmi', icon_state = "bone_setter")
-	var/static/radial_cautery = image(icon = 'icons/obj/surgery.dmi', icon_state = "cautery")
-	var/static/radial_light = image(icon = 'icons/obj/lighting.dmi', icon_state = "flashlight_yellow-on")
-	var/static/radial_soap = image(icon = 'icons/obj/device.dmi', icon_state = "uv_on")
-	var/static/radial_shield = image(icon = 'icons/obj/weapons.dmi', icon_state = "riot_alt")
-	var/static/radial_sword = image(icon = 'icons/obj/weapons.dmi', icon_state = "blade")
-
-#warn impl
-#warn we're going to need to either query items to find net tool qualities,
-#warn or have a separate list for it.
+/obj/item/switchtool/proc/_default_switchtool_radials()
+	return list(
+		SWITCHTOOL_SCREWDRIVER = image(icon = 'icons/obj/tools.dmi', icon_state = "screwdriver"),
+		SWITCHTOOL_WRENCH = image(icon = 'icons/obj/tools.dmi', icon_state = "wrench"),
+		SWITCHTOOL_CROWBAR = image(icon = 'icons/obj/tools.dmi', icon_state = "crowbar"),
+		SWITCHTOOL_WIRECUTTERS = image(icon = 'icons/obj/tools.dmi', icon_state = "cutters"),
+		SWITCHTOOL_MULTITOOL = image(icon = 'icons/obj/device.dmi', icon_state = "multitool"),
+		SWITCHTOOL_WELDER = image(icon = 'icons/obj/tools.dmi', icon_state = "tubewelder"),
+		SWITCHTOOL_SCALPEL = image(icon = 'icons/obj/surgery.dmi', icon_state = "scalpel"),
+		SWITCHTOOL_CAUTERY = image(icon = 'icons/obj/surgery.dmi', icon_state = "cautery"),
+		SWITCHTOOL_HEMOSTAT = ,image(icon = 'icons/obj/surgery.dmi', icon_state = "hemostat")
+		SWITCHTOOL_RETRACTOR = image(icon = 'icons/obj/surgery.dmi', icon_state = "retractor"),
+		SWITCHTOOL_BONECLAMP = image(icon = 'icons/obj/surgery.dmi', icon_state = "bone_setter"),
+		SWITCHTOOL_SAW = image(icon = 'icons/obj/surgery.dmi', icon_state = "saw"),
+		SWITCHTOOL_DRILL = image(icon = 'icons/obj/surgery.dmi', icon_state = "drill"),
+		SWITCHTOOL_LIGHT = image(icon = 'icons/obj/lighting.dmi', icon_state = "flashlight_yellow-on"),
+		SWITCHTOOL_SOAP = image(icon = 'icons/obj/device.dmi', icon_state = "uv_on"),
+		SWITCHTOOL_SHIELD = image(icon = 'icons/obj/weapons.dmi', icon_state = "riot_alt"),
+		SWITCHTOOL_SWORD = image(icon = 'icons/obj/weapons.dmi', icon_state = "blade"),
+	)
 
 /obj/item/switchtool/Initialize(mapload)
 	. = ..()
@@ -92,10 +87,22 @@
 		var/enum = adding[path]
 		add_module(new path(src), enum)
 
-
-/obj/item/switchtool/examine()
+/obj/item/switchtool/examine(mob/user)
 	. = ..()
-	. += "This one is capable of holding [get_formatted_modules()]."
+	. += "This holds [get_formatted_modules()]."
+
+//makes the string list of modules ie "a screwdriver, a knife, and a clown horn"
+//does not end with a full stop, but does contain commas
+/obj/item/switchtool/proc/get_formatted_modules()
+	var/counter = 0
+	var/module_string = ""
+	for(var/obj/item/module in stored_modules)
+		counter++
+		if(counter == stored_modules.len)
+			module_string += "and \a [module.name]"
+		else
+			module_string += "\a [module.name], "
+	return module_string
 
 /obj/item/switchtool/attack_self(mob/user)
 	if(!user)
@@ -111,20 +118,6 @@
 
 /obj/item/switchtool/proc/remove_module(obj/item/module)
 
-
-//makes the string list of modules ie "a screwdriver, a knife, and a clown horn"
-//does not end with a full stop, but does contain commas
-/obj/item/switchtool/proc/get_formatted_modules()
-	var/counter = 0
-	var/module_string = ""
-	for(var/obj/item/module in stored_modules)
-		counter++
-		if(counter == stored_modules.len)
-			module_string += "and \a [module.name]"
-		else
-			module_string += "\a [module.name], "
-	return module_string
-
 /obj/item/switchtool/proc/undeploy()
 	playsound(src, undeploy_sound, 10, 1)
 	if(istype(deployed, /obj/item/weldingtool))
@@ -135,71 +128,32 @@
 	w_class = initial(w_class)
 	update_icon()
 
-/obj/item/switchtool/proc/deploy(var/module)
-	if(!(module in stored_modules))
+/obj/item/switchtool/proc/deploy(obj/item/I)
+	if(!(I in stored_modules))
 		return FALSE
 	if(deployed)
 		return FALSE
 	playsound(src, deploy_sound, 10, 1)
-	deployed = module
+	deployed = I
 	update_icon()
-	if(istype(deployed, /obj/item/weldingtool))
-		var/obj/item/weldingtool/W = deployed
+	if(istype(I, /obj/item/weldingtool))
+		var/obj/item/weldingtool/W = I
 		W.setWelding(TRUE)
 	return TRUE
 
 /obj/item/switchtool/proc/choose_deploy(mob/user)
 	var/list/options = list()
-	switch(switchingtype)
-		if("basic")
-			options["screwdriver"] = radial_driver
-			options["wrench"] = radial_wrench
-			options["wirecutters"] = radial_wirecutters
-			options["crowbar"] = radial_crowbar
-			options["multitool"] = radial_multitool
-		if("surgery")
-			options["scalpel"] = radial_scalpel
-			options["hemostat"] = radial_hemostat
-			options["retractor"] = radial_retractor
-			options["boneclamp"] = radial_boneclamp
-		if("ce")
-			options["screwdriver"] = radial_driver
-			options["wrench"] = radial_wrench
-			options["wirecutters"] = radial_wirecutters
-			options["crowbar"] = radial_crowbar
-			options["multitool"] = radial_multitool
-			options["welder"] = radial_welder
-			options["soap"] = radial_soap
-			options["light"] = radial_light
-		if("adminholo")
-			options["screwdriver"] = radial_driver
-			options["wrench"] = radial_wrench
-			options["wirecutters"] = radial_wirecutters
-			options["crowbar"] = radial_crowbar
-			options["multitool"] = radial_multitool
-			options["welder"] = radial_welder
-			options["scalpel"] = radial_laserscalpel
-			options["hemostat"] = radial_hemostat
-			options["retractor"] = radial_retractor
-			options["saw"] = radial_saw
-			options["drill"] = radial_drill
-			options["boneclamp"] = radial_boneclamp
-			options["cautery"] = radial_cautery
-			options["soap"] = radial_soap
-			options["light"] = radial_light
-			options["sword"] = radial_sword
-			options["shield"] = radial_shield
-
+	for(var/obj/item/I as anything in modules)
+		var/enum = modules[I]
+		options += default_switchtool_radials[enum]
 	if(options.len < 1)
-		to_chat(user, "The [src] doesn't have any available modules!")
+		to_chat(user, "\The [src] doesn't have any available modules!")
 		return
-	var/list/choice = list()
+	var/obj/item/choice
 	choice = show_radial_menu(user, src, options)
-	for(var/obj/item/module in stored_modules)
-		if(module.deploytype == choice)
-			if(deploy(module))
-				to_chat(user, "You deploy \the [deployed].")
-				return TRUE
+	if(deploy(choice))
+		to_chat(user, "You deploy \the [deployed].")
+		return TRUE
 
 /obj/item/switchtool/proc/get_switchtool_enum(obj/item/I)
 	return tools[I]
@@ -209,12 +163,11 @@
 		return TRUE
 	return FALSE
 
-
 /obj/item/switchtool/update_overlays()
 	. = ..()
 	if(!deployed)
 		return
-	var/enum = get_switchtool_enum(deployed)
+	var/enum = get_switchtool_enum(deploying_function? tool_function_to_enum(deploying_function) : deployed)
 	if(!enum)
 		return
 	var/state_append = switchtool_enum_to_state(enum)
@@ -225,7 +178,36 @@
 		MA.color = light_color
 	. += MA
 
-/obj/item/switchtool/switchtool_enum_to_state(enum)
+/obj/item/switchtool/proc/tool_function_to_enum(function)
+	switch(function)
+		if(TOOL_SCREWDRIVER)
+			return SWITCHTOOL_SCREWDRIVER
+		if(TOOL_WRENCH)
+			return SWITCHTOOL_WRENCH
+		if(TOOL_CROWBAR)
+			return SWITCHTOOL_CROWBAR
+		if(TOOL_MULTITOOL)
+			return SWITCHTOOL_MULTITOOL
+		if(TOOL_WELDER)
+			return SWITCHTOOL_WELDER
+		if(TOOL_WIRECUTTER)
+			return SWITCHTOOL_WIRECUTTERS
+		if(TOOL_CAUTERY)
+			return SWITCHTOOL_CAUTERY
+		if(TOOL_SAW)
+			return SWITCHTOOL_SAW
+		if(TOOL_DRILL)
+			return SWITCHTOOL_DRILL
+		if(TOOL_BONESET)
+			return SWITCHTOOL_BONECLAMP
+		if(TOOL_SCALPEL)
+			return SWITCHTOOL_SCALPEL
+		if(TOOL_RETRACTOR)
+			return SWITCHTOOL_RETRACTOR
+		if(TOOL_HEMOSTAT)
+			return SWITCHTOOL_HEMOSTAT
+
+/obj/item/switchtool/proc/switchtool_enum_to_state(enum)
 	switch(enum)
 		if(SWITCHTOOL_SCREWDRIVER)
 			return "driver"
@@ -263,16 +245,26 @@
 			return "shield"
 
 //? tool redirection
-/obj/item/switchtool/tool_speed(function, mob/user, atom/target, flags, usage)
-	. = ..()
-
-//? tool redirection
 /obj/item/switchtool/tool_check(function, mob/user, atom/target, flags, usage)
+	return (function in tool_functions)? tool_quality : null
 
 //? tool redirection
 /obj/item/switchtool/tool_query(mob/user, atom/target, flags, usage)
+	. = list()
+	for(var/i in tool_functions)
+		.[i] = tool_quality
 
-#warn impl above
+//? tool redirection
+/obj/item/switchtool/tool_feedback_start(function, flags, mob/user, atom/target, time, cost, usage)
+	. = ..()
+	deploying_function = function
+	update_icon()
+
+//? tool redirection
+/obj/item/switchtool/tool_feedback_end(function, flags, mob/user, atom/target, time, cost, usage, success)
+	. = ..()
+	deploying_function = null
+	update_icon()
 
 //? click redirection
 /obj/item/switchtool/melee_attack_chain(atom/target, mob/user, clickchain_flags, params)
@@ -297,11 +289,16 @@
 	icon_state = "surgeryswitchtool"
 	item_state = "surgeryswitchtool"
 	desc = "A switchtool containing most of the necessary items for impromptu surgery. For the surgeon on the go."
-	start_modules = list(/obj/item/surgical/scalpel/switchy = null,
-						/obj/item/surgical/hemostat/switchy = null,
-						/obj/item/surgical/retractor/switchy = null,
-						/obj/item/surgical/bonesetter/switchy = null)
-	switchingtype = "surgery"
+	modules = list(/obj/item/surgical/scalpel/switchy = SWITCHTOOL_SCALPEL,
+						/obj/item/surgical/hemostat/switchy = SWITCHTOOL_HEMOSTAT,
+						/obj/item/surgical/retractor/switchy = SWITCHTOOL_RETRACTOR,
+						/obj/item/surgical/bonesetter/switchy = SWITCHTOOL_BONECLAMP)
+	tool_functions = list(
+		TOOL_SCALPEL,
+		TOOL_HEMOSTAT,
+		TOOL_RETRACTOR,
+		TOOL_BONESET
+	)
 
 //Unique adminspawn switchtool. Has all the tools.
 /obj/item/switchtool/holo
@@ -316,24 +313,40 @@
 	undeploy_sound = "sound/weapons/switchsound.ogg"
 	light_color =  LIGHT_COLOR_CYAN
 	switchingtype = "adminholo"
-	start_modules = list(
-						/obj/item/surgical/scalpel/laser3/holoswitch = null,
-						/obj/item/surgical/circular_saw/holoswitch = null,
-						/obj/item/surgical/surgicaldrill/holoswitch = null,
-						/obj/item/surgical/cautery/holoswitch = null,
-						/obj/item/surgical/hemostat/holoswitch = null,
-						/obj/item/surgical/retractor/holoswitch = null,
-						/obj/item/surgical/bone_clamp/holoswitch = null,
-						/obj/item/tool/screwdriver/holoswitch = null,
-						/obj/item/tool/wrench/holoswitch = null,
-						/obj/item/tool/crowbar/holoswitch = null,
-						/obj/item/tool/wirecutters/holoswitch = null,
-						/obj/item/weldingtool/holoswitch = null,
-						/obj/item/multitool/holoswitch = null,
-						/obj/item/flashlight/holoswitch = null,
-						/obj/item/soap/holoswitch = null,
-						/obj/item/melee/energy/sword/holoswitch = null,
-						/obj/item/shield/holoswitch = null)
+	tool_speed = 0.8
+	modules = list(
+		/obj/item/surgical/scalpel/laser3/holoswitch = SWITCHTOOL_SCALPEL,
+		/obj/item/surgical/hemostat/holoswitch = SWITCHTOOL_HEMOSTAT,
+		/obj/item/surgical/retractor/holoswitch = SWITCHTOOL_RETRACTOR,
+		/obj/item/surgical/bone_clamp/holoswitch = SWITCHTOOL_BONECLAMP,
+		/obj/item/surgical/circular_saw/holoswitch = SWITCHTOOL_SAW,
+		/obj/item/surgical/surgicaldrill/holoswitch = SWITCHTOOL_DRILL,
+		/obj/item/surgical/cautery/holoswitch = SWITCHTOOL_CAUTERY,
+		/obj/item/tool/screwdriver/holoswitch = SWITCHTOOL_SCREWDRIVER,
+		/obj/item/tool/wrench/holoswitch = SWITCHTOOL_WRENCH,
+		/obj/item/tool/crowbar/holoswitch = SWITCHTOOL_CROWBAR,
+		/obj/item/tool/wirecutters/holoswitch = SWITCHTOOL_WIRECUTTERS,
+		/obj/item/weldingtool/holoswitch = SWITCHTOOL_WELDER,
+		/obj/item/multitool/holoswitch = SWITCHTOOL_MULTITOOL,
+		/obj/item/flashlight/holoswitch = SWITCHTOOL_LIGHT,
+		/obj/item/soap/holoswitch = SWITCHTOOL_SOAP,
+		/obj/item/melee/energy/sword/holoswitch = SWITCHTOOL_SWORD,
+		/obj/item/shield/holoswitch = SWITCHTOOL_SHIELD
+	)
+	tool_functions = list(
+		TOOL_SCALPEL,
+		TOOL_HEMOSTAT,
+		TOOL_RETRACTOR,
+		TOOL_BONESET,
+		TOOL_WELDER,
+		TOOL_WRENCH,
+		TOOL_CROWBAR,
+		TOOL_WIRECUTTER,
+		TOOL_MULTITOOL,
+		TOOL_SCREWDRIVER,
+		TOOL_SAW,
+		TOOL_DRILL
+	)
 
 /obj/item/switchtool/holo/Initialize(mapload)
 	. = ..()
@@ -341,7 +354,7 @@
 
 /obj/item/switchtool/holo/deploy(var/obj/item/module) //We lightin' it up in here
 	..()
-	if(module.deploytype == "flashlight")
+	if(get_switchtool_enum(module) == SWITCHTOOL_LIGHT)
 		set_light(brightness_max, 4, light_color)
 	else
 		set_light(brightness_min, 1, light_color)
@@ -356,16 +369,24 @@
 	item_state = "holoswitchtool"
 	desc = "A finely crafted device that uses a micro-scale hardlight emitter to form hardlight manipulators in the form of tools. Can also operate in low-power mode as a flashlight and in high-power mode as a UV cleaner."
 	light_color = "#FED8B1" //lightcolororange sucks lmao
-	start_modules = list(
-						/obj/item/tool/screwdriver/holoswitch = null,
-						/obj/item/tool/wrench/holoswitch = null,
-						/obj/item/tool/crowbar/holoswitch = null,
-						/obj/item/tool/wirecutters/holoswitch = null,
-						/obj/item/weldingtool/holoswitch = null,
-						/obj/item/multitool/holoswitch = null,
-						/obj/item/flashlight/holoswitch = null,
-						/obj/item/soap/holoswitch = null)
-	switchingtype = "ce"
+	modules = list(
+		/obj/item/tool/screwdriver/holoswitch = SWITCHTOOL_SCREWDRIVER,
+		/obj/item/tool/wrench/holoswitch = SWITCHTOOL_WRENCH,
+		/obj/item/tool/crowbar/holoswitch = SWITCHTOOL_CROWBAR,
+		/obj/item/tool/wirecutters/holoswitch = SWITCHTOOL_WIRECUTTERS,
+		/obj/item/weldingtool/holoswitch = SWITCHTOOL_WELDER,
+		/obj/item/multitool/holoswitch = SWITCHTOOL_MULTITOOL,
+		/obj/item/flashlight/holoswitch = SWITCHTOOL_LIGHT,
+		/obj/item/soap/holoswitch = SWITCHTOOL_SOAP,
+	)
+	tool_functions = list(
+		TOOL_WELDER,
+		TOOL_WRENCH,
+		TOOL_CROWBAR,
+		TOOL_WIRECUTTER,
+		TOOL_MULTITOOL,
+		TOOL_SCREWDRIVER
+	)
 
 //Actual tools go here.
 
