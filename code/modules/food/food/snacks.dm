@@ -108,22 +108,14 @@
 				if(blocked)
 					to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
 					return
-/*
-			if(!istype(M, /mob/living/carbon/slime)) // If you're feeding it to someone else.
-
 				user.visible_message(SPAN_DANGER("[user] attempts to feed [M] [src]."))
-
 				user.setClickCooldown(user.get_attack_speed(src))
-				if(!do_mob(user, M)) return
-
+				if(!do_mob(user, M, 3 SECONDS))
+					return
 				//Do we really care about this
+				// yes we do you idiot
 				add_attack_logs(user,M,"Fed with [src.name] containing [reagentlist(src)]", admin_notify = FALSE)
-
 				user.visible_message("<span class='danger'>[user] feeds [M] [src].</span>")
-
-			else
-*/
-				to_chat(user, "This creature does not seem to have a mouth!")
 				return
 
 		if(reagents)								//Handle ingestion of the reagent.
