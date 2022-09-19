@@ -60,7 +60,7 @@
 		SWITCHTOOL_WELDER = image(icon = 'icons/obj/tools.dmi', icon_state = "tubewelder"),
 		SWITCHTOOL_SCALPEL = image(icon = 'icons/obj/surgery.dmi', icon_state = "scalpel"),
 		SWITCHTOOL_CAUTERY = image(icon = 'icons/obj/surgery.dmi', icon_state = "cautery"),
-		SWITCHTOOL_HEMOSTAT = image(icon = 'icons/obj/surgery.dmi', icon_state = "hemostat")
+		SWITCHTOOL_HEMOSTAT = image(icon = 'icons/obj/surgery.dmi', icon_state = "hemostat"),
 		SWITCHTOOL_RETRACTOR = image(icon = 'icons/obj/surgery.dmi', icon_state = "retractor"),
 		SWITCHTOOL_BONECLAMP = image(icon = 'icons/obj/surgery.dmi', icon_state = "bone_setter"),
 		SWITCHTOOL_SAW = image(icon = 'icons/obj/surgery.dmi', icon_state = "saw"),
@@ -129,7 +129,7 @@
 	update_icon()
 
 /obj/item/switchtool/proc/deploy(obj/item/I)
-	if(!(I in modulesw))
+	if(!(I in modules))
 		return FALSE
 	if(deployed)
 		return FALSE
