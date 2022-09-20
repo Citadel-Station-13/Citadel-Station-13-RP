@@ -126,6 +126,10 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/miningdock)
+"jq" = (
+/obj/structure/ladder/snake_eater/up,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/mining)
 "jJ" = (
 /turf/simulated/wall,
 /area/quartermaster/miningdock)
@@ -20368,7 +20372,7 @@ lp
 lp
 lp
 KS
-vr
+jq
 vr
 zF
 Vu

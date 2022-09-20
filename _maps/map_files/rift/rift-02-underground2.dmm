@@ -9318,6 +9318,9 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
+"vf" = (
+/turf/simulated/wall/r_wall,
+/area/maintenance/lower/mining)
 "vg" = (
 /obj/structure/railing{
 	dir = 4
@@ -9540,13 +9543,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "wL" = (
-/obj/machinery/door/airlock/maintenance/cargo{
-	req_access = list(50);
-	req_one_access = list(48)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/plating,
+/turf/simulated/wall/r_wall,
 /area/maintenance/lower/mining)
 "wV" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
@@ -9710,7 +9709,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/chapel/chapel_morgue)
 "xI" = (
-/obj/structure/lattice,
 /obj/structure/railing{
 	dir = 8
 	},
@@ -9993,6 +9991,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
+"Aj" = (
+/obj/structure/railing,
+/obj/structure/ladder/snake_eater,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/mining)
 "An" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -10889,6 +10892,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
+"GE" = (
+/turf/simulated/wall/r_wall,
+/area/quartermaster/miningdock)
 "GG" = (
 /turf/simulated/shuttle/wall/voidcraft,
 /area/turbolift/rmine/under2)
@@ -33028,11 +33034,11 @@ JP
 vO
 Tg
 XS
-vO
+Aj
 tR
 wL
 xI
-EQ
+GE
 CF
 EQ
 EQ
@@ -33224,9 +33230,9 @@ Tg
 Tg
 Tg
 Mc
-JP
-JP
-EQ
+vf
+vf
+GE
 Mj
 wc
 ur

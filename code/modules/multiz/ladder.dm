@@ -122,3 +122,19 @@
 /obj/structure/ladder/updown
 	allowed_directions = UP|DOWN
 	icon_state = "ladder11"
+
+
+// Meme Variants, Snake Eater. Used on Rift for that 3 meter difference between the base z level and the one above it -Bloop
+
+/obj/structure/ladder/snake_eater
+	name = "long ladder"
+	desc = "A ladder. You can climb it up and down. This one looks really long, what a thrill..."
+	climb_time = 120 SECONDS
+
+/obj/structure/ladder/snake_eater/up
+	allowed_directions = UP
+	icon_state = "ladder10"
+
+/obj/structure/ladder/snake_eater/updown
+	allowed_directions = UP|DOWN
+	icon_state = "ladder11"
