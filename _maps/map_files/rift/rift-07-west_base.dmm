@@ -161,10 +161,8 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west_base)
 "ml" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/machinery/door/airlock/lift,
+/turf/simulated/floor/tiled/techfloor,
 /area/rift/surfacebase/outside/west_base)
 "mA" = (
 /obj/effect/overlay/snow/floor/edges,
@@ -450,8 +448,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "Kh" = (
-/obj/structure/stairs/spawner/south,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/shuttle/wall/voidcraft,
 /area/rift/surfacebase/outside/west_base)
 "KI" = (
 /obj/effect/overlay/snow/floor/grav_edges,
@@ -31400,11 +31397,11 @@ HQ
 HQ
 HQ
 HQ
-HQ
-nm
-HQ
-HQ
-nm
+Kh
+Kh
+Kh
+Kh
+Kh
 nm
 nm
 DE
@@ -31593,12 +31590,12 @@ hQ
 Gb
 Gb
 Gb
-Rx
 Gb
-aw
-VZ
-ml
-aw
+Kh
+Kh
+Kh
+Kh
+Kh
 kE
 nm
 nm
@@ -31788,11 +31785,11 @@ Gb
 VZ
 az
 az
-az
-NS
-NS
+ml
 Kh
-ff
+Kh
+Kh
+Kh
 Gb
 kE
 nm
@@ -31982,11 +31979,11 @@ Gb
 Lm
 NS
 EJ
-EJ
-NS
-NS
+ml
 Kh
-ff
+Kh
+Kh
+Kh
 Gb
 Gb
 kE
@@ -32175,12 +32172,12 @@ Gb
 Gb
 Lm
 ff
-Rx
 Gb
-aw
-EJ
-EJ
-aw
+Kh
+Kh
+Kh
+Kh
+Kh
 Gb
 Gb
 Gb
@@ -32366,15 +32363,15 @@ DE
 Gb
 Gb
 Gb
-Gb
+Rx
 Lm
 ff
-Gb
-Gb
-Gb
-Gb
-py
-py
+Rx
+Kh
+Kh
+Kh
+Kh
+Kh
 py
 py
 py

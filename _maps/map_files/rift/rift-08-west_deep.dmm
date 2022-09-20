@@ -54,14 +54,8 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/undergound2)
 "dP" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 5
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/machinery/light/flamp/noshade,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/machinery/door/airlock/lift,
+/turf/simulated/floor/tiled/techfloor,
 /area/rift/surfacebase/outside/west_deep)
 "dV" = (
 /turf/simulated/floor/outdoors/snow/lythios43c/indoors,
@@ -279,10 +273,11 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/exterior/bunker/bottom)
 "jB" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 10
+/obj/structure/railing{
+	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/structure/sign/warning/falling,
+/turf/simulated/wall,
 /area/rift/surfacebase/outside/west_deep)
 "jZ" = (
 /obj/structure/fireplace{
@@ -313,7 +308,10 @@
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/outpost)
 "ky" = (
-/turf/simulated/open,
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 10
+	},
+/turf/simulated/shuttle/wall/voidcraft,
 /area/rift/surfacebase/outside/west_deep)
 "kE" = (
 /obj/effect/trap/pit/punji,
@@ -623,20 +621,12 @@
 /obj/structure/girder,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/undergound2)
-"uH" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/sign/warning/falling,
-/turf/simulated/wall,
-/area/rift/surfacebase/outside/west_deep)
 "uO" = (
 /obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/prison)
 "uW" = (
-/obj/structure/railing,
-/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/turf/simulated/shuttle/wall/voidcraft,
 /area/rift/surfacebase/outside/west_deep)
 "vm" = (
 /obj/effect/overlay/snow/floor,
@@ -801,13 +791,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
 "Dw" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 6
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/machinery/light/flamp/noshade,
+/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_deep)
 "DO" = (
 /obj/structure/bed/chair/sofa/black/corner{
@@ -858,15 +843,6 @@
 "Fh" = (
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/undergound2)
-"Gc" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 4
-	},
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
 "Gx" = (
 /obj/structure/table/steel,
 /obj/item/paper_bin,
@@ -1073,7 +1049,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
 "SH" = (
-/obj/machinery/light/flamp/noshade,
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 4
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_deep)
 "SN" = (
@@ -31206,28 +31187,28 @@ so
 so
 so
 so
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
+so
+so
+so
+so
+so
+so
+so
+so
+so
+so
+so
+so
+so
+so
+so
+so
+so
+so
+so
+so
+so
+so
 so
 so
 so
@@ -31400,7 +31381,6 @@ so
 so
 so
 so
-sN
 so
 so
 so
@@ -31421,7 +31401,8 @@ so
 so
 so
 so
-sN
+so
+so
 so
 so
 so
@@ -31594,27 +31575,27 @@ so
 so
 so
 so
+so
+so
+so
+so
+so
 sN
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
+sN
+sN
+sN
+sN
+sN
+sN
+sN
+sN
+sN
+sN
+sN
+sN
+sN
+sN
+sN
 sN
 so
 so
@@ -31788,12 +31769,12 @@ so
 so
 so
 so
+so
 sN
-so
-so
-so
-so
-so
+sN
+sN
+sN
+sN
 dV
 dV
 dV
@@ -31982,15 +31963,15 @@ so
 so
 so
 so
+so
 sN
-so
-so
-so
-so
+uW
+uW
+uW
+uW
+ky
 dV
-dV
-dV
-dV
+Dw
 dV
 dV
 dV
@@ -32176,13 +32157,13 @@ so
 so
 so
 so
+so
 sN
-so
-so
-SH
-bf
-Wy
-jB
+uW
+uW
+uW
+uW
+uW
 dV
 dV
 dV
@@ -32368,15 +32349,15 @@ so
 so
 so
 so
-sN
-sN
-sN
 so
 so
-bf
-ky
-ky
-bf
+so
+sN
+uW
+uW
+uW
+uW
+dP
 Wy
 Wy
 Wy
@@ -32562,18 +32543,18 @@ so
 so
 so
 so
+so
+so
+so
 sN
-so
-so
-so
-so
-bf
-ky
-ky
-bf
+uW
+uW
+uW
+uW
+dP
 Zk
 Zk
-Gc
+SH
 Zk
 Zk
 Zk
@@ -32756,18 +32737,18 @@ so
 so
 so
 so
+so
+so
 sN
-so
-so
-so
+sN
 uW
-dP
-KF
-KF
-Dw
+uW
+uW
+uW
+uW
 pU
 pU
-uH
+jB
 pU
 pU
 pU
@@ -32951,14 +32932,14 @@ so
 so
 so
 sN
-so
-so
-dV
-dV
-dV
-dV
-bh
-bh
+sN
+sN
+pU
+uW
+uW
+uW
+uW
+uW
 bh
 bh
 bh
@@ -33145,8 +33126,8 @@ so
 so
 so
 sN
-so
-so
+dV
+dV
 dV
 bh
 bh
