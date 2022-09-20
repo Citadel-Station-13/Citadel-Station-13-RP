@@ -33,7 +33,8 @@
 		//Machine-only emotes
 		if("ping", "beep", "buzz", "yes", "ye", "no", "dwoop", "scary", "rcough", "rsneeze", "honk", "buzz2", "warn", "chime", "startup", "shutdown", "error", "die")
 
-			if(!isSynthetic())
+			var/obj/item/organ/o = internal_organs_by_name[O_VOICE]
+			if(!isSynthetic() && (!o || !(o.robotic >= ORGAN_ASSISTED)))
 				to_chat(src, "<span class='warning'>You are not a synthetic.</span>")
 				return
 
@@ -186,7 +187,7 @@
 				if (param)
 					message = "extends their inner jaw outwards giving [param] a kiss."
 			m_type = 1
-	
+
 		if("kiss")
 			var/next_to_target = FALSE
 			var/M = null
@@ -220,7 +221,7 @@
 				if (param)
 					message = "smooches [param]."
 			m_type = 1
-		
+
 		if ("blink")
 			message = "blinks."
 			m_type = 1

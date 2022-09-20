@@ -291,6 +291,20 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	edge = 1
 	holy = TRUE
 
+/obj/item/gun/projectile/shotgun/underslung
+	name = "underslung shotgun"
+	desc = "A compact shotgun designed to be mounted underneath a proper weapon, this secondary unit usually has a limited capacity."
+	icon_state = null
+	item_state = null
+	load_method = SINGLE_CASING
+	handle_casings = CYCLE_CASINGS
+	max_shells = 1
+	w_class = ITEMSIZE_TINY
+	caliber = "12g"
+	ammo_type = /obj/item/ammo_casing/a12g
+	one_handed_penalty = 0
+	safety_state = GUN_SAFETY_OFF
+
 //Foam Shotguns
 /obj/item/gun/projectile/shotgun/pump/foam
 	name = "toy shotgun"
