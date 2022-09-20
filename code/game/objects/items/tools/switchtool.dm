@@ -261,6 +261,10 @@
 		.[i] = tool_quality
 
 //? tool redirection
+/obj/item/switchtool/tool_behaviour()
+	return deployed?.tool_behaviour()
+
+//? tool redirection
 /obj/item/switchtool/tool_feedback_start(function, flags, mob/user, atom/target, time, cost, usage)
 	. = ..()
 	deploying_function = function

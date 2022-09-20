@@ -99,6 +99,8 @@
 
 /**
  * gets the static functionality of this tool.
+ * used for legacy wrappers as well. make sure this is defined on your dynamic tool,
+ * or only dynamic tools will work.
  *
  * some dynamic tools will return the locked-in behaviour if locking is enabled
  */

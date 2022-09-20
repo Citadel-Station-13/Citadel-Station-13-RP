@@ -1,3 +1,4 @@
+//! Clickchain Flags
 /**
  * flags passed around click procs including:
  * ClickOn
@@ -19,3 +20,7 @@
 #define CLICKCHAIN_TOOL_ACT					(1<<2)
 /// redirected by something - like when a switchtool to another item
 #define CLICKCHAIN_REDIRECTED				(1<<3)
+
+//! Reachability Depths - checked from level of DirectAccess and turf adjacency.
+/// default reachability depth
+#define DEFAULT_REACHABILITY_DEPTH			3		// enough to reach into pill bottles in box in backpack

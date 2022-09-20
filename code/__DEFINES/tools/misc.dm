@@ -1,21 +1,21 @@
 //! switchtool tool types; separate from tool functionality
 
-#define SWITCHTOOL_SCREWDRIVER 1
-#define SWITCHTOOL_WRENCH 2
-#define SWITCHTOOL_CROWBAR 3
-#define SWITCHTOOL_WIRECUTTERS 4
-#define SWITCHTOOL_MULTITOOL 5
-#define SWITCHTOOL_WELDER 6
+#define SWITCHTOOL_SCREWDRIVER "screwdriver"
+#define SWITCHTOOL_WRENCH "wrench"
+#define SWITCHTOOL_CROWBAR "crowbar"
+#define SWITCHTOOL_WIRECUTTERS "wirecutters"
+#define SWITCHTOOL_MULTITOOL "multitool"
+#define SWITCHTOOL_WELDER "welder"
 
-#define SWITCHTOOL_SCALPEL 21
-#define SWITCHTOOL_CAUTERY 22
-#define SWITCHTOOL_HEMOSTAT 23
-#define SWITCHTOOL_RETRACTOR 24
-#define SWITCHTOOL_BONECLAMP 25
-#define SWITCHTOOL_SAW 45
-#define SWITCHTOOL_DRILL 46
+#define SWITCHTOOL_SCALPEL "scalpel"
+#define SWITCHTOOL_CAUTERY "cautery"
+#define SWITCHTOOL_HEMOSTAT "hemostat"
+#define SWITCHTOOL_RETRACTOR "retractor"
+#define SWITCHTOOL_BONECLAMP "boneclamp"
+#define SWITCHTOOL_SAW "saw"
+#define SWITCHTOOL_DRILL "drill"
 
-#define SWITCHTOOL_LIGHT 41
-#define SWITCHTOOL_SOAP 42
-#define SWITCHTOOL_SHIELD 43
-#define SWITCHTOOL_SWORD 44
+#define SWITCHTOOL_LIGHT "light"
+#define SWITCHTOOL_SOAP "soap"
+#define SWITCHTOOL_SHIELD "shield"
+#define SWITCHTOOL_SWORD "sword"

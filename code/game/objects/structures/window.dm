@@ -9,7 +9,7 @@
 
 	layer = WINDOW_LAYER
 	pressure_resistance = 4*ONE_ATMOSPHERE
-	anchored = 1.0
+	anchored = TRUE
 	flags = ON_BORDER
 
 	/// are we reinforced? this is only to modify our construction state/steps.
@@ -32,12 +32,17 @@
 
 /obj/structure/window/Initialize(mapload)
 	/// COMPATIBILITY PATCH - Replace this crap with a better solution (maybe copy /tg/'s ASAP!!)
+	// unfortunately no longer a compatibility patch ish due to clickcode...
 	check_fullwindow()
 	return ..()
 
 /obj/structure/window/proc/check_fullwindow()
 	if(dir & (dir - 1))		//diagonal!
 		fulltile = TRUE
+	else if(fulltile)
+		// clickcode requires this :(
+		flags &= ~ON_BORDER
+
 
 /obj/structure/window/examine(mob/user)
 	. = ..()
