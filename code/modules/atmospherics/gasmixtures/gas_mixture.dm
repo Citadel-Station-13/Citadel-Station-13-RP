@@ -209,6 +209,8 @@
 /datum/gas_mixture/proc/update_values()
 	GAS_GARBAGE_COLLECT(gas)
 	TOTAL_MOLES(gas, total_moles)
+	if(!total_moles)
+		temperature = TCMB
 
 //Returns the pressure of the gas mix.  Only accurate if there have been no gas modifications since update_values() has been called.
 /datum/gas_mixture/proc/return_pressure()
@@ -562,12 +564,6 @@
 	for(var/id in avg_gas)
 		avg_gas[id] /= total_size
 
-	if(!(our_capacity + their_capacity))
-		// we're sharing vacuum-vacuum for some reason
-		return
-
-	var/avg_temperature = (temperature * our_capacity + other.temperature * their_capacity) / (our_capacity + their_capacity)
-
 	// equalize
 	var/intact_ratio = 1 - ratio
 	var/avg_amt
@@ -579,14 +575,19 @@
 		our_gas[id] = (our_gas[id] - avg_amt) * intact_ratio + avg_amt
 		their_gas[id] = (their_gas[id] - avg_amt) * intact_ratio + avg_amt
 
-	// thermodynamics:
-	// i don't know what these do but they work (probably)
-	temperature = (temperature - avg_temperature) * intact_ratio + avg_temperature
-	other.temperature = (other.temperature - avg_temperature) * intact_ratio + avg_temperature
-
 	// update
 	update_values()
 	other.update_values()
+	
+	// if empty
+	if(!total_moles)
+		return compare(other)
+
+	// thermodynamics:
+	// i don't know what these do but they work (probably)
+	var/avg_temperature = (temperature * our_capacity + other.temperature * their_capacity) / (our_capacity + their_capacity)
+	temperature = (temperature - avg_temperature) * intact_ratio + avg_temperature
+	other.temperature = (other.temperature - avg_temperature) * intact_ratio + avg_temperature
 
 	// return if we equalized fully
 	return compare(other)
@@ -618,8 +619,6 @@
 	ASSERT(temperature >= TCMB)
 	ASSERT(group_multiplier >= 1)
 #endif
-	if(!total_moles)
-		return
 	// let's not break the input list
 	//! IF YOU DO NOT KNOW WHY WE ARE COPYING, DO NOT TAKE THIS OUT.
 	gases = gases.Copy()
@@ -642,6 +641,12 @@
 		// now shrink to the average
 		gases[id] /= (src.group_multiplier + group_multiplier)
 
+	// update
+	update_values()
+	
+	if(!total_moles)
+		return compare_virtual(gases, src.volume, temperature)
+
 	// calculate avg temperature
 	var/avg_temperature = (src.temperature * our_capacity + temperature * their_capacity) / (our_capacity + their_capacity)
 
@@ -658,9 +663,6 @@
 	// thermodynamics:
 	// i don't know what these do but they work (probably)
 	src.temperature = (src.temperature - avg_temperature) * intact_ratio + avg_temperature
-
-	// update
-	update_values()
 
 	// return if we equalized fully
 	return compare_virtual(gases, src.volume, temperature)
