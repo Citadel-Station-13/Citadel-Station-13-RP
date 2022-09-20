@@ -321,6 +321,13 @@
 /obj/effect/trap/pit/punji,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/prison)
+"kF" = (
+/obj/machinery/light/small,
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west_deep)
 "kK" = (
 /obj/machinery/alarm{
 	dir = 4;
@@ -462,6 +469,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
+"oZ" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing,
+/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_deep)
 "pf" = (
 /obj/effect/overlay/snow/floor,
 /obj/effect/trap/pop_up/thrower{
@@ -562,6 +576,12 @@
 "rB" = (
 /turf/simulated/floor/tiled/monotile,
 /area/outpost/mining_main/outpost)
+"rZ" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_deep)
 "so" = (
 /turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
@@ -991,6 +1011,12 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/undergound2)
+"NK" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west_deep)
 "NQ" = (
 /obj/machinery/door/airlock{
 	name = "Custodial Closet";
@@ -1049,6 +1075,18 @@
 /area/rift/surfacebase/outside/west_deep)
 "Qk" = (
 /obj/machinery/light/small,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west_deep)
+"QJ" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west_deep)
+"QM" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
 "QW" = (
@@ -31649,9 +31687,9 @@ sN
 sN
 sN
 sN
-so
-so
-so
+sN
+sN
+sN
 so
 so
 so
@@ -31843,10 +31881,10 @@ sN
 sN
 sN
 sN
-so
-so
-so
-so
+sN
+sN
+sN
+sN
 so
 so
 so
@@ -32039,8 +32077,8 @@ ky
 ky
 ky
 ky
-so
-so
+sN
+sN
 so
 so
 so
@@ -32212,8 +32250,8 @@ dV
 dV
 dV
 dV
-dV
 Zb
+Wy
 Wy
 Wy
 Wy
@@ -32233,11 +32271,11 @@ ky
 ky
 ky
 ky
-so
-so
-so
-so
-so
+sN
+sN
+sN
+sN
+sN
 so
 so
 so
@@ -32406,7 +32444,7 @@ Zb
 Wy
 Wy
 Wy
-Wy
+bf
 bf
 bf
 bf
@@ -32427,11 +32465,11 @@ ky
 ky
 ky
 ky
-so
-so
-so
-so
-so
+sN
+sN
+sN
+sN
+sN
 so
 so
 so
@@ -32600,7 +32638,7 @@ Yr
 SH
 Zk
 Zk
-Zk
+bf
 bf
 bf
 bf
@@ -32624,10 +32662,10 @@ ky
 ky
 ky
 ky
-so
-so
-so
-so
+sN
+sN
+sN
+sN
 so
 so
 so
@@ -32789,12 +32827,12 @@ dV
 dV
 dV
 dV
-dV
+pU
 pU
 jB
 pU
 pU
-pU
+rZ
 bf
 bf
 bf
@@ -32820,8 +32858,8 @@ ky
 ky
 ky
 ky
-so
-so
+sN
+sN
 so
 so
 so
@@ -32978,17 +33016,17 @@ sN
 sN
 PW
 pU
-dV
-dV
-dV
-dV
-dV
+pU
+pU
+pU
+pU
+oZ
 bh
 bh
 bh
 bh
 iI
-Ij
+QJ
 Ij
 Ij
 Qk
@@ -33014,10 +33052,10 @@ St
 rn
 ky
 ky
-so
-so
-so
-so
+sN
+sN
+sN
+sN
 so
 so
 so
@@ -33182,7 +33220,7 @@ bh
 bh
 bh
 iI
-Ij
+QJ
 Ij
 Ij
 Ij
@@ -33210,8 +33248,8 @@ ky
 ky
 ky
 ky
-so
-so
+sN
+sN
 so
 so
 so
@@ -33376,7 +33414,7 @@ bh
 bh
 bh
 iI
-Ij
+QJ
 Ij
 Ij
 Ij
@@ -33404,9 +33442,9 @@ ky
 ky
 ky
 ky
-so
-so
-so
+sN
+sN
+sN
 so
 so
 so
@@ -33570,7 +33608,7 @@ bh
 bh
 bh
 iI
-Ij
+QJ
 Ij
 Ij
 Ij
@@ -33599,9 +33637,9 @@ ky
 ky
 ky
 ky
-so
-so
-so
+sN
+sN
+sN
 so
 so
 so
@@ -33764,7 +33802,7 @@ bh
 bh
 bh
 iI
-Ij
+QJ
 Ij
 Ij
 Ij
@@ -33794,8 +33832,8 @@ ky
 ky
 ky
 ky
-so
-so
+sN
+sN
 so
 so
 so
@@ -33958,10 +33996,10 @@ bh
 bh
 bh
 iI
-Ij
-Ij
-Ij
-Qk
+QM
+NK
+NK
+kF
 uW
 uW
 uW
@@ -33988,8 +34026,8 @@ ky
 ky
 ky
 ky
-so
-so
+sN
+sN
 so
 so
 so
@@ -34182,8 +34220,8 @@ ky
 ky
 ky
 ky
-so
-so
+sN
+sN
 so
 so
 so
@@ -34375,9 +34413,9 @@ dV
 dV
 ky
 ky
-so
-so
-so
+sN
+sN
+sN
 so
 so
 so

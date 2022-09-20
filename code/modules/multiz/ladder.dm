@@ -11,7 +11,7 @@
 	var/obj/structure/ladder/target_up
 	var/obj/structure/ladder/target_down
 
-	var/const/climb_time = 2 SECONDS
+	var/climb_time = 2 SECONDS
 
 /obj/structure/ladder/Initialize(mapload)
 	. = ..()
@@ -129,7 +129,7 @@
 /obj/structure/ladder/snake_eater
 	name = "long ladder"
 	desc = "A ladder. You can climb it up and down. This one looks really long, what a thrill..."
-//	climb_time = 120 SECONDS
+	climb_time = 120 SECONDS
 
 /obj/structure/ladder/snake_eater/up
 	allowed_directions = UP
