@@ -5,7 +5,7 @@
 	if(istype(mover,/obj/item/projectile))
 		return check_cover(mover,target)
 	if(flipped == 1)
-		if(get_dir(mover, target) & turn(dir,  180))
+		if(get_dir(mover, target) & turn(dir, 180))
 			return FALSE
 		return TRUE
 	for(var/obj/structure/table/T in get_turf(mover))
