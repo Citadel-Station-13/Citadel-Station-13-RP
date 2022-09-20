@@ -1911,7 +1911,7 @@
 "bnN" = (
 /obj/structure/grille,
 /obj/structure/grille,
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/outside/outside2)
 "bog" = (
 /obj/effect/overlay/snow/floor,
@@ -2060,7 +2060,7 @@
 "buD" = (
 /obj/structure/grille,
 /obj/structure/sign/warning/falling,
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/outside/outside2)
 "buN" = (
 /obj/structure/table/steel,
@@ -5370,7 +5370,6 @@
 "dXI" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 1;
-	id_tag = null;
 	name = "Medbay Storage";
 	req_access = list(5);
 	req_one_access = list(5)
@@ -5582,7 +5581,6 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock{
-	id_tag = null;
 	name = "Dorm 1 Restroom"
 	},
 /turf/simulated/floor/wood,
@@ -8117,7 +8115,6 @@
 "fVx" = (
 /obj/machinery/door/airlock/glass_security{
 	name = "Firing Range";
-	req_access = null;
 	req_one_access = list(1,2,4)
 	},
 /obj/structure/cable/green{
@@ -9571,7 +9568,6 @@
 /obj/item/paper_bin,
 /obj/item/pen,
 /obj/item/paper{
-	desc = null;
 	info = "Please remember to write down the date, time, reason and name of the patient prior to cremation. A noticeboard has been provided to help keep track of cremated bodies.";
 	name = "note from CentCom";
 	pixel_x = -6;
@@ -11348,7 +11344,6 @@
 /area/medical/chemistry)
 "igz" = (
 /obj/machinery/door/airlock{
-	id_tag = null;
 	name = "Bathroom"
 	},
 /obj/machinery/door/firedoor,
@@ -15744,7 +15739,6 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/glass_security{
-	id_tag = null;
 	layer = 2.8;
 	name = "Security";
 	req_one_access = list(1,38)
@@ -19137,7 +19131,6 @@
 /area/maintenance/locker)
 "nYw" = (
 /obj/machinery/door/airlock/glass_security{
-	id_tag = null;
 	layer = 2.8;
 	name = "Security";
 	req_one_access = list(1,38)
@@ -20388,7 +20381,6 @@
 /area/maintenance/medbay)
 "oVH" = (
 /obj/machinery/door/airlock/command{
-	id_tag = null;
 	name = "Research Director's Quarters";
 	req_access = list(30)
 	},
@@ -21402,7 +21394,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rift/turbolift/maint)
 "pBj" = (
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/outside/outside2)
 "pBD" = (
 /obj/machinery/door/window/brigdoor/eastleft{
@@ -21734,8 +21726,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/window/eastright{
 	dir = 2;
-	name = "Chemistry";
-	req_one_access = null
+	name = "Chemistry"
 	},
 /obj/machinery/door/window/eastright{
 	dir = 1;
@@ -26708,7 +26699,6 @@
 	dir = 8
 	},
 /obj/machinery/alarm{
-	alarm_id = null;
 	breach_detection = 0;
 	dir = 1;
 	pixel_y = -22
@@ -28142,8 +28132,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/window/eastleft{
 	dir = 2;
-	name = "Chemistry";
-	req_one_access = null
+	name = "Chemistry"
 	},
 /obj/machinery/door/window/eastleft{
 	dir = 1;
@@ -28637,7 +28626,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "vjI" = (
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/maintenance/asmaint2)
 "vjN" = (
 /obj/structure/railing{
@@ -29272,7 +29261,6 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/glass_security{
-	id_tag = null;
 	layer = 2.8;
 	name = "Security";
 	req_one_access = list(1,38)
@@ -30556,7 +30544,7 @@
 /area/rift/trade_shop/loading)
 "wGI" = (
 /obj/structure/grille,
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/outside/outside2)
 "wGU" = (
 /obj/effect/floor_decal/borderfloor,
@@ -31504,7 +31492,6 @@
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 1;
-	id_tag = null;
 	name = "Medbay Storage";
 	req_access = list(5);
 	req_one_access = list(5)
@@ -31867,7 +31854,6 @@
 /area/rift/station/public_garden/gantry)
 "xME" = (
 /obj/machinery/door/airlock/command{
-	id_tag = null;
 	name = "Head of Security's Quarters";
 	req_access = list(58)
 	},
