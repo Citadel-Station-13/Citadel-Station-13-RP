@@ -123,10 +123,10 @@ obj/item/gun/projectile/shotgun/pump/combat/warden/verb/rename_gun()
 	icon_state = "grit"
 	item_state = "grit"
 	caliber = "10g"
-	ammo_type = /obj/item/ammo_casing/a10g
+	ammo_type = /obj/item/ammo_casing/a10g/pellet
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 4)
 	one_handed_penalty = 5
-	recoil = 10
+	recoil = 8
 	accuracy = 40
 
 /obj/item/gun/projectile/shotgun/doublebarrel
@@ -244,10 +244,11 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	desc = "Rip and tear, until it is done."
 	icon_state = "supershotgun"
 	item_state = "supershotgun"
+	caliber = "10g"
 	recoil = 0
 	accuracy = 80
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
-	ammo_type = /obj/item/ammo_casing/a12g/pellet
+	ammo_type = /obj/item/ammo_casing/a10g/silver
 	w_class = ITEMSIZE_NORMAL
 	force = 15
 

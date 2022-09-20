@@ -411,11 +411,23 @@
 	holy = TRUE
 
 //10 Gauge Shot
-/obj/item/projectile/bullet/pellet/grit //I want this to use similar calcuations to blunderbuss shot for falloff.
+/obj/item/projectile/bullet/heavy_shotgun
+	name = "heavy slug"
+	fire_sound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
+	damage = 60
+	armor_penetration = 25
+
+/obj/item/projectile/bullet/pellet/heavy_shotgun //I want this to use similar calcuations to blunderbuss shot for falloff.
 	damage = 15
 	pellets = 10
 	range_step = 0.75
 	spread_step = 30
+
+/obj/item/projectile/bullet/pellet/heavy_shotgun/silver
+	damage = 15
+	SA_bonus_damage = 15
+	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
+	holy = TRUE
 
 /* Incendiary */
 

@@ -598,13 +598,23 @@
 
 //Ten Gauge Rounds for an Exotic Shotgun
 /obj/item/ammo_casing/a10g
-	name = "tooled shotgun shell"
-	desc = "A custom brass 10 gauge shot shell."
-	icon_state = "grshell"
+	name = "heavy shotgun slug"
+	desc = "A custom brass 10 gauge slug shell."
+	icon_state = "brshell"
 	caliber = "10g"
-	projectile_type = /obj/item/projectile/bullet/pellet/grit
-	matter = list(MAT_STEEL = 500)
+	projectile_type = /obj/item/projectile/bullet/heavy_shotgun
+	matter = list(MAT_STEEL = 300, "brass" = 200)
 	fall_sounds = list('sound/weapons/guns/shotgun_fall.ogg')
+
+/obj/item/ammo_casing/a10g/pellet
+	name = "heavy shotgun shell"
+	desc = "A custom brass 10 gauge shot shell."
+	projectile_type = /obj/item/projectile/bullet/pellet/heavy_shotgun
+
+/obj/item/ammo_casing/a10g/silver
+	name = "heavy silver shotgun shell"
+	desc = "A custom brass 10 gauge filled with blessed silver shot."
+	projectile_type = /obj/item/projectile/bullet/pellet/heavy_shotgun/silver
 
 //Arrows
 /obj/item/ammo_casing/arrow
