@@ -1,4 +1,4 @@
-
+//! random stuff that still needs rethinking
 /*
 Quick adjacency (to turf):
 * If you are in the same turf, always true

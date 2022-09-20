@@ -297,6 +297,7 @@
 #include "code\_js\byjax.dm"
 #include "code\_js\menus.dm"
 #include "code\_onclick\adjacency.dm"
+#include "code\_onclick\adjacency_legacy.dm"
 #include "code\_onclick\ai.dm"
 #include "code\_onclick\click.dm"
 #include "code\_onclick\cyborg.dm"

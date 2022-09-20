@@ -1,11 +1,51 @@
 //! Reachability System
 /**
  * Checks if we can reach something.
- * Only supports things that are right next to us, for now.
+ *
+ * How this works:
+ * - we check our direct access
+ * - we "reach outwards" as much as we can. If we reach the turf, cool! if not, those atoms are added
+ *   to direct access list. this sounds slow, but isn't bad worst case unless someone's somehow nested
+ *   in a thousand atoms or a proc breaks.
+ * - max depth is a thing; it applies to both reaching out, and reaching in.
+ *   it however applies separately, e.g. you can reach out of a backpack inside a locker
+ *   (you can't in game because those objects set their procs but for the sake of argument pretend you can)
+ *   you can still reach a pill bottle inside a box inside a backpack as opposed to just on the turf
+ *   or in the backpack, assuming max_depth is set to 3
+ * - range: when we reach the turf, we'll do our best-estimate byond step_towards path-cast
+ *   to try to get TurfAdjacency to the user
+ *
+ * @params
+ * - target - the target
+ * - depth - max depth
+ * - range - max range
+ * - tool - the item we're using to reach; not important
  */
-/atom/movable/proc/CanReach(atom/target, obj/item/tool, max_depth = )
+/atom/movable/proc/Reachability(atom/target, depth = DEFAULT_REACHABILITY_DEPTH, range = 1, obj/item/tool)
+	// direct cache - check if we can access something using if dc[atom]
+	var/list/dc = DirectAccessCache()
+	// turf adjacency enabled? stores if we can try to path to our turf
+	var/tadj
+	// loc checking
+	var/atom/l = loc
+	// reach out from where we are as far as we can bound by depth
+	for(var/i in 1 to depth)
+		if(!l)
+			break
+		if(isturf(l))
+			tadj = TRUE
+			break
+		if(!l.CanReachOut(src, target, tool, dc))
+			break
+		l = l.loc
+
+	// now that cache is assembled and turf is set, go to main loop
+
+	// current index for we
+
 	// backwards depth-limited breadth-first-search to see if the target is "in" anything "adjacent" to us.
 	var/list/directly_accessible = DirectAccess()
+
 	var/depth = 0
 
 	var/list/closed = list()
@@ -32,6 +72,17 @@
 
 /mob/DirectAccess()
 	return ..() + get_equipped_items()
+
+/**
+ * gets DirectAccess as a hashed list for quick lookups
+ */
+/atom/movable/proc/DirectAccessCache()
+	. = list()
+	// procs like these make me wish ss13 was run on node.js or something equally stupid
+	// return Object.assign({}, ...data.map((atom) => ({[atom]: true})));
+	for(var/i in DirectAccess())
+		.[i] = TRUE
+
 
 
 /atom/movable/proc/CanReach(atom/ultimate_target, obj/item/tool, view_only = FALSE)
@@ -70,8 +121,16 @@
 //! Reaching out of
 /**
  * called to see if we can reach out of this atom
+ *
+ * **When overriding, DO NOT FUCK WITH CACHE unless you KNOW WHAT YOU ARE DOING.**
+ *
+ * @params
+ * - mover - thing reaching
+ * - atom - what we're reaching at
+ * - tool - what mover is using to reach with if applicable
+ * - cache - direct access to the "directly open" cache list. Add things to this with cache[obj] = TRUE
  */
-/atom/proc/CanReachOut(atom/user, atom/target, atom/from, obj/item/tool)
+/atom/proc/CanReachOut(atom/movable/user, atom/target, obj/item/tool, list/cache)
 	return FALSE
 
 //! Reaching into

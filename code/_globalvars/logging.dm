@@ -37,6 +37,7 @@ GLOBAL_VAR(tgui_log)
 GLOBAL_PROTECT(tgui_log)
 
 SIMPLE_LOG_BOILERPLATE(inventory)
+SIMPLE_LOG_BOILERPLATE(click)
 
 /// Picture logging
 GLOBAL_VAR(picture_log_directory)
