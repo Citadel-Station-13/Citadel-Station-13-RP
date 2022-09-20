@@ -562,6 +562,10 @@
 	for(var/id in avg_gas)
 		avg_gas[id] /= total_size
 
+	if(!(our_capacity + their_capacity))
+		// we're sharing vacuum-vacuum for some reason
+		return
+
 	var/avg_temperature = (temperature * our_capacity + other.temperature * their_capacity) / (our_capacity + their_capacity)
 
 	// equalize
@@ -614,6 +618,8 @@
 	ASSERT(temperature >= TCMB)
 	ASSERT(group_multiplier >= 1)
 #endif
+	if(!total_moles)
+		return
 	// let's not break the input list
 	//! IF YOU DO NOT KNOW WHY WE ARE COPYING, DO NOT TAKE THIS OUT.
 	gases = gases.Copy()
