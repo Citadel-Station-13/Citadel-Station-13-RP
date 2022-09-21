@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "ac" = (
 /obj/structure/table/rack/steel,
@@ -218,6 +218,11 @@
 "aG" = (
 /turf/simulated/wall,
 /area/maintenance/engineering/upper)
+"aH" = (
+/obj/structure/fans/tiny,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/security/prison)
 "aI" = (
 /obj/structure/closet/firecloset/full,
 /obj/structure/railing{
@@ -2305,8 +2310,7 @@
 	id = "sm_monitor_blast";
 	name = "Engine monitoring room blast door control";
 	pixel_x = -6;
-	pixel_y = 8;
-	req_one_access = null
+	pixel_y = 8
 	},
 /obj/structure/table/steel_reinforced,
 /obj/item/radio/intercom{
@@ -2318,8 +2322,7 @@
 	id = "stair_engine_blast";
 	name = "Stairwell blast door control";
 	pixel_x = -6;
-	pixel_y = -4;
-	req_one_access = null
+	pixel_y = -4
 	},
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -2338,8 +2341,7 @@
 	id = "sm_core_blast";
 	name = "Supermatter core blast door control";
 	pixel_x = 6;
-	pixel_y = -4;
-	req_one_access = null
+	pixel_y = -4
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engineering_monitoring)
@@ -9739,7 +9741,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/command{
-	id_tag = null;
 	name = "Chief Engineer's Quarters";
 	req_access = list(56)
 	},
@@ -10461,7 +10462,7 @@
 /area/maintenance/engineering)
 "sj" = (
 /obj/item/pickaxe,
-/turf/simulated/floor/outdoors/safeice/indoors,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/security/prison)
 "sk" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
@@ -10656,7 +10657,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "sQ" = (
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/maintenance/engineering)
 "sR" = (
 /turf/simulated/floor/plating,
@@ -10759,7 +10760,7 @@
 /area/rift/surfacebase/underground/under1)
 "te" = (
 /obj/structure/grille,
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "tf" = (
 /obj/structure/cable{
@@ -11246,14 +11247,14 @@
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "un" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 4
 	},
 /obj/structure/railing,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/lythios43c/indoors,
 /area/security/prison)
 "us" = (
 /obj/structure/filingcabinet{
@@ -11524,7 +11525,7 @@
 "vE" = (
 /obj/item/storage/excavation,
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/outdoors/safeice/indoors,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/security/prison)
 "vF" = (
 /obj/effect/overlay/snow/floor/edges_new,
@@ -11651,7 +11652,7 @@
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
 "wn" = (
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/maintenance/elevator)
 "wo" = (
 /obj/item/storage/fancy/crayons,
@@ -12606,7 +12607,7 @@
 "Aq" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "At" = (
 /obj/landmark/spawnpoint/job/atmospheric_technician,
@@ -13496,7 +13497,7 @@
 "ES" = (
 /obj/structure/bonfire/permanent,
 /obj/structure/catwalk,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/lythios43c/indoors,
 /area/security/prison)
 "ET" = (
 /obj/structure/closet/athletic_mixed,
@@ -13724,7 +13725,7 @@
 "FM" = (
 /obj/item/pickaxe/hand,
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/outdoors/safeice/indoors,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/security/prison)
 "FN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -13963,7 +13964,7 @@
 /area/rift/station/fighter_bay)
 "GB" = (
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/outdoors/safeice/indoors,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/security/prison)
 "GC" = (
 /obj/structure/closet/emcloset,
@@ -14502,6 +14503,9 @@
 	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"Iv" = (
+/turf/simulated/floor/tiled/steel/lythios43c,
+/area/security/prison)
 "Ix" = (
 /obj/structure/railing{
 	dir = 4
@@ -14515,11 +14519,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "IA" = (
-/turf/simulated/floor/outdoors/safeice/indoors,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/security/prison)
 "IC" = (
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/lythios43c/indoors,
 /area/security/prison)
 "ID" = (
 /obj/structure/railing{
@@ -14716,7 +14720,7 @@
 /area/rift/surfacebase/underground/under1)
 "Jw" = (
 /obj/effect/zone_divider,
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "Jy" = (
 /turf/simulated/wall/r_wall,
@@ -15010,7 +15014,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/lythios43c/indoors,
 /area/security/prison)
 "KL" = (
 /obj/effect/floor_decal/rust,
@@ -15265,7 +15269,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "LN" = (
-/turf/simulated/floor/plating,
+/turf/simulated/floor/lythios43c/indoors,
 /area/security/prison)
 "LP" = (
 /obj/structure/bed/chair/bay,
@@ -15303,7 +15307,7 @@
 /area/tcommsat/computer)
 "Mn" = (
 /obj/structure/sign/signnew/cryogenics,
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "Mo" = (
 /obj/machinery/camera/network/cargo{
@@ -15341,7 +15345,7 @@
 /area/maintenance/lower/trash_pit)
 "My" = (
 /obj/structure/railing,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/lythios43c/indoors,
 /area/security/prison)
 "MA" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -16586,7 +16590,7 @@
 "Rx" = (
 /obj/structure/railing,
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/lythios43c/indoors,
 /area/security/prison)
 "Ry" = (
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
@@ -17493,7 +17497,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/lythios43c/indoors,
 /area/security/prison)
 "Vh" = (
 /obj/machinery/door/blast/regular{
@@ -18479,7 +18483,7 @@
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "Zu" = (
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/security/prison)
 "Zv" = (
 /obj/effect/floor_decal/borderfloor,
@@ -35562,9 +35566,9 @@ IA
 sj
 IC
 My
-BP
-BP
-BP
+Iv
+Iv
+aH
 BP
 Av
 Jy
@@ -35756,9 +35760,9 @@ IA
 ES
 IA
 Rx
-BP
-BP
-BP
+Iv
+Iv
+aH
 BP
 Av
 Jy

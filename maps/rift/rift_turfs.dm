@@ -9,40 +9,80 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/open)
 		SSplanets.addTurf(src)
 
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/plating)
-
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/plasteel)
-
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/reinforced)
-
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/tiled/steel_dirty)
-
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/tiled/steel_grid)
-
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/tiled/techfloor/grid)
-
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/tiled/techfloor)
-
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
-
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
-
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/gravsnow)
-
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/snow)
-
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/sky/depths)
-
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/sky/depths/west)
+LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/safeice)
+
+//These commands generate turfs that are default indoors
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/floor/tiled)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/floor/trap/wood)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/floor/trap/plating)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/floor/trap/steel)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/floor/tiled/monotile)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/floor/tiled/steel)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/floor/water/deep/indoors)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/floor/water/indoors)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/floor/bluegrid)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/floor/carpet)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/floor/carpet/bcarpet)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/floor/carpet/arcadecarpet)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/wall)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/floor/wood)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/shuttle/floor/voidcraft)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor)
+LYTHIOS43C_TURF_CREATE_UN(/turf/unsimulated/mineral/icerock)
 
 /turf/simulated/floor/outdoors/snow/lythios43c
 	baseturfs = /turf/simulated/floor/outdoors/safeice/lythios43c
 
-LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/safeice)
+/// Indoor Variants (Cause we need em). It bugs me that outdoor varients are the default but what can you do -Bloop
 /turf/simulated/floor/outdoors/safeice/indoors
 	outdoors = FALSE /* So that we don't get weather effects for the ice used indoors. Convuluted, I know, but this
 	means I don't need another, almost identical turf to be created. */
 
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors
+	outdoors = FALSE
+
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors
+	outdoors = FALSE
+
+/turf/simulated/floor/lythios43c/indoors
+	outdoors = FALSE
+
+
+/turf/simulated/floor/outdoors/dirt/lythios43c/indoors
+	outdoors = FALSE
+
+/turf/simulated/floor/outdoors/rocks/lythios43c/indoors
+	outdoors = FALSE
+
+/turf/simulated/floor/outdoors/snow/lythios43c/indoors
+	outdoors = FALSE
+
+/turf/simulated/floor/outdoors/gravsnow/lythios43c/indoors
+	outdoors = FALSE
+
+/turf/simulated/mineral/floor/lythios43c/indoors
+	outdoors = FALSE
+
+/turf/simulated/floor/plating/indoors
+	outdoors = FALSE
+
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors
+	outdoors = FALSE
+
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors
 	outdoors = FALSE
 
 /turf/simulated/mineral/icerock
@@ -57,14 +97,15 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/safeice)
 /turf/simulated/mineral/floor/vacuum
 	initial_gas_mix = GAS_STRING_VACUUM
 
-LYTHIOS43C_TURF_CREATE(/turf/simulated/mineral/icerock)
-LYTHIOS43C_TURF_CREATE(/turf/simulated/mineral/icerock/floor)
-LYTHIOS43C_TURF_CREATE(/turf/unsimulated/mineral/icerock)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor)
+LYTHIOS43C_TURF_CREATE_UN(/turf/unsimulated/mineral/icerock)
 	//This proc is responsible for ore generation on surface turfs
 /turf/simulated/mineral/icerock/lythios43c/make_ore(var/rare_ore)
 	if(mineral || ignore_mapgen)
 		return
 	var/mineral_name
+	outdoors = FALSE
 	if(rare_ore)
 		mineral_name = pickweight(list(
 			"marble" = 3,
@@ -98,6 +139,7 @@ LYTHIOS43C_TURF_CREATE(/turf/unsimulated/mineral/icerock)
 	if(mineral || ignore_mapgen)
 		return
 	var/mineral_name
+	outdoors = FALSE
 	if(rare_ore)
 		mineral_name = pickweight(list(
 			"marble" = 7,
