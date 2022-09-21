@@ -22,8 +22,14 @@
  * - tool - the item we're using to reach; not important
  */
 /atom/movable/proc/Reachability(atom/target, depth = DEFAULT_REACHABILITY_DEPTH, range = 1, obj/item/tool)
+	if(!target)
+		// apologies sir, you may not grasp the void...
+		return FALSE
 	// direct cache - check if we can access something using if dc[atom]
 	var/list/dc = DirectAccessCache()
+	// optimization - a lot of the time we're clicking on ourselves/things on ourselves
+	if(dc[target])
+		return TRUE
 	// turf adjacency enabled? stores if we can try to path to our turf
 	var/tadj
 	// loc checking
@@ -39,9 +45,38 @@
 			break
 		l = l.loc
 
+	// special checks
+	if(isarea(target))
+		return tadj && (l.loc == target)
+
 	// now that cache is assembled and turf is set, go to main loop
 
-	// current index for we
+	// we don't cut or make lists because heehoo byond speed ecks dee
+	// we just advance
+	// this has the advantage of sped up protection against infinite recursion
+	// in the old system we used a closed_cache[thing] = true to prevent
+	// infinite loops, now it's built in, and iteration is just as fast!
+
+	// check cache
+	var/list/cc = list(target = TRUE)
+	// current index in check cache
+	var/i = 1
+	// reassign current loc to target loc
+	l = target.loc
+	// reach *upwards* from the target
+	for(var/i in 1 to depth)
+		if(!l)
+			// null loc - if we haven't detected by now, we shouldn't bother
+			return FALSE
+		if(!l.CanReachIn(src, target, tool, cc))
+			// failed; if we can't reach by now, we shouldn't bother
+			return FALSE
+
+		#warn aough
+
+
+	while(i <= length(cc))
+
 
 	// backwards depth-limited breadth-first-search to see if the target is "in" anything "adjacent" to us.
 	var/list/directly_accessible = DirectAccess()
@@ -114,31 +149,6 @@
 		checking = next
 	return FALSE
 
-#warn overrides for reachability for:
-#warn lockers
-#warn mobs
-
-//! Reaching out of
-/**
- * called to see if we can reach out of this atom
- *
- * **When overriding, DO NOT FUCK WITH CACHE unless you KNOW WHAT YOU ARE DOING.**
- *
- * @params
- * - mover - thing reaching
- * - atom - what we're reaching at
- * - tool - what mover is using to reach with if applicable
- * - cache - direct access to the "directly open" cache list. Add things to this with cache[obj] = TRUE
- */
-/atom/proc/CanReachOut(atom/movable/user, atom/target, obj/item/tool, list/cache)
-	return FALSE
-
-//! Reaching into
-/**
- * called to see if we can reach into this atom
- */
-/atom/proc/CanReachIn(atom/user, atom/target, atom/from, obj/item/tool)
-	return TRUE
 
 /proc/CheckToolReach(atom/movable/here, atom/movable/there, reach)
 	if(!here || !there)
@@ -161,6 +171,42 @@
 					qdel(dummy)
 					return
 			qdel(dummy)
+
+#warn overrides for reachability for:
+#warn lockers
+#warn mobs
+
+//! Reaching out of
+/**
+ * called to see if we can reach out of this atom
+ *
+ * **When overriding, DO NOT FUCK WITH CACHE unless you KNOW WHAT YOU ARE DOING.**
+ *
+ * @params
+ * - mover - thing reaching
+ * - target - what we're reaching at
+ * - tool - what mover is using to reach with if applicable
+ * - cache - direct access to the "directly open" cache list. Add things to this with cache[obj] = TRUE
+ */
+/atom/proc/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)
+	// todo: signal when we care about signals
+	return FALSE
+
+//! Reaching into
+/**
+ * called to see if we can reach into this atom
+ *
+ * **When overriding, DO NOT FUCK WITH CACHE unless you KNOW WHAT YOU ARE DOING.**
+ *
+ * @params
+ * - mover - thing reaching
+ * - target - what we're reaching at
+ * - tool - what mover is using to reach with if applicable
+ * - cache - direct access to the "checking" cache list. Add things to this with cache[obj] = TRUE
+ */
+/atom/proc/CanReachIn(atom/movable/mover, atom/target, obj/item/tool, list/cache)
+	// todo: signal when we care about signals
+	return TRUE
 
 //! Obfuscation
 /**
