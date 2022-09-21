@@ -22,7 +22,7 @@
 		if(recurse)
 			return loc? loc.Adjacent(neighbor, recurse - 1) : FALSE
 		return FALSE
-	for(var/turf/T in locs)
+	for(T in locs)
 		if(T.TurfAdjacency(get_turf(neighbor), neighbor, src))
 			return TRUE
 	return FALSE

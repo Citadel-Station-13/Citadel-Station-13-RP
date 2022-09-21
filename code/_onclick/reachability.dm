@@ -121,7 +121,7 @@
 		D.pass_flags |= pass_flags
 		// next turf
 		var/turf/n = D.loc
-		for(var/i in 1 to range)
+		for(i in 1 to range)
 			ASSERT(isturf(n))
 			if(n.TurfAdjacency(th))
 				// succeeded
