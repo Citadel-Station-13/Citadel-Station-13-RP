@@ -86,7 +86,7 @@
 			if(!function)
 				return NONE
 			return _tool_act(provided_item, user, function, TOOL_OP_REAL)
-		if((provided_item.tool_locked == TOOL_LOCKING_AUTO) && (length(possibilities == 1)))
+		if((provided_item.tool_locked == TOOL_LOCKING_AUTO) && (length(possibilities) == 1))
 			// use first function
 			function = possibilities[1]
 		// everything in possibilities is valid for the tool
