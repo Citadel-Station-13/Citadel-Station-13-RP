@@ -132,7 +132,7 @@
 		// todo: refactor aiming
 		trigger_aiming(TARGET_CAN_CLICK)
 		return
-	else
+	else if(ranged_generics_allowed)
 		//? attempt ranged attack chain
 		if(I)
 			I.ranged_attack_chain(A, src, NONE, params)
