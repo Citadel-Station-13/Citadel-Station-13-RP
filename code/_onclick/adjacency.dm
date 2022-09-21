@@ -52,19 +52,27 @@
 	var/d2 = EWCOMPONENT(reverse_dir)
 	var/turf/checking
 
+	// because byond's parser is awful and doesn't let us skip lines on ifs with comments after '\'s,
+	// we're going to comment above:
+	// criteria in order for both are:
+	// - not dense
+	// - could leave target
+	// - could go from diagonal to self
+	// - could go from diagonal to target
+	// - could leave self
 	checking = get_step(neighbor_turf, d1)
-	if(!checking.density &&	\											// not dense
-		neighbor_turf.ClickCross(d1, TRUE, target, mover) && \			// could leave target
-		checking.ClickCross(d2, FALSE, target, mover) && \				// could go from diagonal to self
-		checking.ClickCross(turn(d1, 180), FALSE, target, mover) && \	// could go from diagonal to target
-		ClickCross(turn(d2, 180), TRUE, target, mover))					// could leave eslf
+	if(!checking.density &&	\
+		neighbor_turf.ClickCross(d1, TRUE, target, mover) && \
+		checking.ClickCross(d2, FALSE, target, mover) && \
+		checking.ClickCross(turn(d1, 180), FALSE, target, mover) && \
+		ClickCross(turn(d2, 180), TRUE, target, mover))
 		return TRUE
 	checking = get_step(neighbor_turf, d2)
-	if(!checking.density && \											// not dense
-		neighbor_turf.ClickCross(d2, TRUE, target, mover) && \			// could leave target
-		checking.ClickCross(d1, FALSE, target, mover) && \				// could go from diagonal to self
-		checking.ClickCross(turn(d2, 180), FALSE, target, mover) && \	// could go from diagonal to target
-		ClickCross(turn(d1, 180), TRUE, target, mover))					// could leave eslf
+	if(!checking.density && \
+		neighbor_turf.ClickCross(d2, TRUE, target, mover) && \
+		checking.ClickCross(d1, FALSE, target, mover) && \
+		checking.ClickCross(turn(d2, 180), FALSE, target, mover) && \
+		ClickCross(turn(d1, 180), TRUE, target, mover))
 		return TRUE
 	return FALSE
 
