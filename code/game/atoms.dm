@@ -106,8 +106,8 @@
 	var/relative_layer = 0
 
 //! Misc
-	///Mobs that are currently do_after'ing this atom, to be cleared from on Destroy()
-	var/list/targeted_by
+	/// What mobs are interacting with us right now, associated directly to concurrent interactions. (use defines)
+	var/list/interacting_mobs
 
 /**
  * Called when an atom is created in byond (built in engine proc)

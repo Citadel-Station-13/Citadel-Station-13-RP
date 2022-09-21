@@ -58,7 +58,6 @@ var/list/ai_verbs_default = list(
 	density = TRUE
 	can_be_antagged = TRUE
 	status_flags = CANSTUN|CANPARALYSE|CANPUSH
-	shouldnt_see = list(/obj/effect/rune)
 	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/ai)
 
 	/// The network we have access to.

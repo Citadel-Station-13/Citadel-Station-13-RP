@@ -92,6 +92,9 @@
 		// everything in possibilities is valid for the tool
 		var/list/transformed = list()
 		if(!function)
+			// we're about to sleep; if we're already breaking from this, maybe like, don't
+			if(INTERACTING_WITH_FOR(user, src, INTERACTING_FOR_DYNAMIC_TOOL))
+				return CLICKCHAIN_DO_NOT_PROPAGATE
 			// if we didn't pick function already
 			for(var/i in possibilities)
 				// is there only one hint?
@@ -108,7 +111,9 @@
 				I.maptext_width = 64
 				transformed[i] = I
 			// todo: radial menu at some point should be made to automatically close when they click something else.
+			START_INTERACTING_WITH(user, src, INTERACTING_FOR_DYNAMIC_TOOL)
 			function = show_radial_menu(user, src, transformed, custom_check = reachability_check)
+			STOP_INTERACTING_WITH(user, src, INTERACTING_FOR_DYNAMIC_TOOL)
 			if(!function || (reachability_check && !reachability_check.Invoke()))
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 		// determine hint
@@ -119,6 +124,9 @@
 		else if(length(hints) <= 1)
 			// no hint, or only one hint
 			return _dynamic_tool_act(provided_item, user, function, TOOL_OP_REAL, length(hints)? hints[1] : null)
+		// we're about to sleep; if we're already breaking from this, maybe like, don't
+		if(INTERACTING_WITH_FOR(user, src, INTERACTING_FOR_DYNAMIC_TOOL))
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		transformed.len = 0
 		for(var/i in hints)
 			var/image/I = dynamic_tool_image(function, i)
@@ -127,7 +135,9 @@
 			I.maptext_y = 32
 			I.maptext_width = 64
 			transformed[i] = I
+		START_INTERACTING_WITH(user, src, INTERACTING_FOR_DYNAMIC_TOOL)
 		hint = show_radial_menu(user, src, transformed, custom_check = reachability_check)
+		STOP_INTERACTING_WITH(user, src, INTERACTING_FOR_DYNAMIC_TOOL)
 		if(!hint || (reachability_check && !reachability_check.Invoke()))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		// use hint
