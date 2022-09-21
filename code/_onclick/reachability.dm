@@ -87,6 +87,8 @@
 		if(i > cl)
 			// hit top, didn't find, break
 			break
+		// don't overlap
+		++i
 		for(i in i to cl)
 			l = cc[i]
 			// process the rest of checking
@@ -103,8 +105,6 @@
 				// don't recurse into areas
 				continue
 			cc[l.loc] = TRUE
-		// don't overlap
-		++i
 	if(!(tadj && th))
 		// didn't hit both, fail
 		return FALSE
