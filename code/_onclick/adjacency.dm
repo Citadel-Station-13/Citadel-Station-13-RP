@@ -88,11 +88,9 @@
 		for(var/obj/O in src)
 			if(!(O.flags & ON_BORDER))
 				continue
-			if(!O.CheckExit(mover, going_to))
-				return FALSE
 			if(O == target || O == mover || (O.pass_flags_self & ATOM_PASS_CLICK))
 				continue
-			if(mover? O.CanPass(mover, src) : !O.density)
+			if(mover? O.CheckExit(mover, going_to) : !O.density)
 				continue
 			return FALSE
 	else

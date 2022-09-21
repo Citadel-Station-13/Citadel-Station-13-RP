@@ -18,13 +18,14 @@
 	var/construction_state = WINDOW_STATE_SECURED_TO_FRAME
 	/// determines if we're a full tile window, NOT THE ICON STATE.
 	var/fulltile = FALSE
+	/// i'm so sorry we have to do this - set to dir for allowthrough purposes
+	var/moving_right_now
 
 	var/maxhealth = 14.0
 	var/maximal_heat = T0C + 100 // Maximal heat before this window begins taking damage from fire
 	var/damage_per_fire_tick = 2.0 // Amount of damage per fire tick. Regular windows are not fireproof so they might as well break quickly.
 	var/health
 	var/force_threshold = 0
-	var/ini_dir = null
 	var/basestate
 	var/shardtype = /obj/item/material/shard
 	var/glasstype = null // Set this in subtypes. Null is assumed strange or otherwise impossible to dismantle, such as for shuttle glass.
@@ -39,10 +40,9 @@
 /obj/structure/window/proc/check_fullwindow()
 	if(dir & (dir - 1))		//diagonal!
 		fulltile = TRUE
-	else if(fulltile)
+	if(fulltile)
 		// clickcode requires this :(
 		flags &= ~ON_BORDER
-
 
 /obj/structure/window/examine(mob/user)
 	. = ..()
@@ -159,7 +159,7 @@
 			// OUT.
 			return FALSE
 		// we're both single-way
-		if(them.dir == dir)
+		if(them.moving_right_now == dir)
 			// OUT
 			return FALSE
 		return TRUE
@@ -398,8 +398,6 @@
 
 	health = maxhealth
 
-	ini_dir = dir
-
 	update_nearby_tiles(need_rebuild = TRUE)
 	update_nearby_icons()
 
@@ -412,9 +410,10 @@
 		W.update_icon()
 
 /obj/structure/window/Move()
-	var/ini_dir = dir
+	moving_right_now = dir
 	. = ..()
-	setDir(ini_dir)
+	setDir(moving_right_now)
+	moving_right_now = null
 
 /obj/structure/window/Moved()
 	. = ..()
