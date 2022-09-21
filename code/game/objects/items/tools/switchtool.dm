@@ -151,7 +151,7 @@
 	var/list/options = list()
 	for(var/obj/item/I as anything in tools)
 		var/enum = tools[I]
-		options += default_switchtool_radials[enum]
+		options[I] = default_switchtool_radials[enum]
 	if(options.len < 1)
 		to_chat(user, "\The [src] doesn't have any available modules!")
 		return

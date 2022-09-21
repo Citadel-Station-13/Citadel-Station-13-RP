@@ -267,7 +267,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 
 /datum/radial_menu/proc/wait(atom/user, atom/anchor, require_near = FALSE)
 	while (current_user && !finished && !selected_choice)
-		if(require_near && (require_near == 1? in_range(anchor, user) : (get_dist(user, anchor) <= require_near)))
+		if(require_near && !in_range(anchor, user))
 			return
 		if(custom_check_callback && next_check < world.time)
 			if(!custom_check_callback.Invoke())
