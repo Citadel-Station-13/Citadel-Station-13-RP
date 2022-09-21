@@ -76,19 +76,23 @@
 			return _tool_act(provided_item, user, function, TOOL_OP_REAL)
 		// enumerate
 		var/list/functions = provided_item.tool_query(user, src)
-		for(var/i in possibilities)
-			if(functions[i])
-				continue
-			possibilities -= i
-		if(!length(possibilities))
-			// none can be used, just go to static tool act if possible
-			function = provided_item.tool_behaviour()
-			if(!function)
-				return NONE
-			return _tool_act(provided_item, user, function, TOOL_OP_REAL)
-		if((provided_item.tool_locked == TOOL_LOCKING_AUTO) && (length(possibilities) == 1))
+		if((provided_item.tool_locked == TOOL_LOCKING_AUTO) && (length(functions) == 1))
 			// use first function
-			function = possibilities[1]
+			function = functions[1]
+			if(!(function in possibilities))
+				// not found, route normally
+				return _tool_act(provided_item, user, function, TOOL_OP_REAL)
+		else
+			for(var/i in possibilities)
+				if(functions[i])
+					continue
+				possibilities -= i
+			if(!length(possibilities))
+				// none can be used, just go to static tool act if possible
+				function = provided_item.tool_behaviour()
+				if(!function)
+					return NONE
+				return _tool_act(provided_item, user, function, TOOL_OP_REAL)
 		// everything in possibilities is valid for the tool
 		var/list/transformed = list()
 		if(!function)

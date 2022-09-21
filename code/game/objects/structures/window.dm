@@ -178,7 +178,7 @@
 		return TRUE
 	if(check_standard_flag_pass(AM))
 		return TRUE
-	if(get_dir(AM, target) == dir)
+	if(get_dir(src, target) & dir)
 		return FALSE
 	return TRUE
 

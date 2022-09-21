@@ -44,7 +44,7 @@
 /obj/structure/railing/CheckExit(atom/movable/mover, atom/newLoc)
 	if(check_standard_flag_pass(mover))
 		return TRUE
-	if(!(get_dir(mover, newLoc) & dir))
+	if(!(get_dir(src, newLoc) & dir))
 		return TRUE
 	return !density
 
