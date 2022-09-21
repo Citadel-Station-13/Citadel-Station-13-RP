@@ -88,7 +88,7 @@
 			// hit top, didn't find, break
 			break
 		for(i in i to cl)
-			l = cc[l]
+			l = cc[i]
 			// process the rest of checking
 			if(!l.CanReachIn(src, target, tool, cc))
 				// couldn't reach in, l is irrelevant
