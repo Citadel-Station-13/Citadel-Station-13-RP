@@ -195,6 +195,19 @@
 	// todo: signal when we care about signals
 	return TRUE
 
+//! Clicking out of - for ranged attack chains
+/**
+ * called to see if we're allowed to proc ranged_attack_chain from in here at a target
+ *
+ * this proc needs refactored at some point to allow for complexity if necessary
+ * but for now it works so don't fuck with it
+ */
+/atom/proc/AllowClick(atom/movable/mover, atom/target, obj/item/tool)
+	return FALSE
+
+/turf/AllowClick(atom/movable/mover, atom/target, obj/item/tool)
+	return TRUE
+
 //! Obfuscation
 /**
  * is the atom obscured by a OBJ_PREVENT_CLICK_UNDER object above it

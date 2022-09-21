@@ -51,30 +51,34 @@
 /mob/proc/ClickOn(var/atom/A, var/params)
 	if(world.time < next_click) // Hard check, before anything else, to avoid crashing
 		return
-
 	next_click = world.time + 1
 
 	if(client.buildmode)
 		build_click(src, client.buildmode, params, A)
 		return
 
-	var/list/modifiers = params2list(params)
-	if(modifiers["shift"] && modifiers["ctrl"])
+	// params are sent as a list directly to item procs
+	// because WHY
+	// would you do the work of list-allocing and unpacking and then send a
+	// packed version things have to unpack a second or even third time
+	// because they can't check the test version???
+	var/list/unpacked_params = params2list(params)
+	if(unpacked_params["shift"] && unpacked_params["ctrl"])
 		CtrlShiftClickOn(A)
 		return 1
-	if(modifiers["shift"] && modifiers["middle"])
+	if(unpacked_params["shift"] && unpacked_params["middle"])
 		ShiftMiddleClickOn(A)
 		return 1
-	if(modifiers["middle"])
+	if(unpacked_params["middle"])
 		MiddleClickOn(A)
 		return 1
-	if(modifiers["shift"])
+	if(unpacked_params["shift"])
 		ShiftClickOn(A)
 		return 0
-	if(modifiers["alt"]) // alt and alt-gr (rightalt)
+	if(unpacked_params["alt"]) // alt and alt-gr (rightalt)
 		AltClickOn(A)
 		return 1
-	if(modifiers["ctrl"])
+	if(unpacked_params["ctrl"])
 		CtrlClickOn(A)
 		return 1
 
@@ -105,63 +109,38 @@
 			return 1
 		throw_mode_off()
 
-	var/obj/item/W = get_active_held_item()
+	//? Grab click semantics
+	var/obj/item/I = get_active_held_item()
 
-	if(W == A) // Handle attack_self
-		W.attack_self(src)
+	//? Handle special cases
+	if(I == A)
+		// attack_self
+		I.attack_self(src)
+		// todo: refactor
 		trigger_aiming(TARGET_CAN_CLICK)
-		update_inv_active_hand(0)
-		return 1
-
-	//Atoms on your person
-	// A is your location but is not a turf; or is on you (backpack); or is on something on you (box in backpack); sdepth is needed here because contents depth does not equate inventory storage depth.
-	var/sdepth = A.storage_depth(src)
-	if((!isturf(A) && A == loc) || (sdepth <= MAX_STORAGE_REACH))
-		if(W)
-			W.melee_attack_chain(A, src, CLICKCHAIN_HAS_PROXIMITY, params)
-		else
-			if(ismob(A)) // No instant mob attacking
-				setClickCooldown(get_attack_speed())
-			UnarmedAttack(A, 1)
-
-		trigger_aiming(TARGET_CAN_CLICK)
-		return 1
-
-	// Inbelly item interaction
-	if(isbelly(loc) && (loc == A.loc))
-		if(W)
-			W.melee_attack_chain(A, src, CLICKCHAIN_HAS_PROXIMITY, params)
-		else
-			if(ismob(A)) // No instant mob attacking
-				setClickCooldown(get_attack_speed())
-			UnarmedAttack(A, 1)
 		return
 
-	if(!isturf(loc)) // This is going to stop you from telekinesing from inside a closet, but I don't shed many tears for that
+	//? check if we can click from our current location
+	var/ranged_generics_allowed = loc?.AllowClick(src, A, I)
+
+	if(Reachability(A, null, I?.reach, I))
+		//? attempt melee attack chain
+		if(I)
+			I.melee_attack_chain(A, src, CLICKCHAIN_HAS_PROXIMITY, unpacked_params)
+		else
+			melee_attack_chain(A, CLICKCHAIN_HAS_PROXIMITY, unpacked_params)
+		// todo: refactor aiming
+		trigger_aiming(TARGET_CAN_CLICK)
 		return
-
-	//Atoms on turfs (not on your person)
-	// A is a turf or is on a turf, or in something on a turf (pen in a box); but not something in something on a turf (pen in a box in a backpack)
-	sdepth = A.storage_depth_turf()
-	if(isturf(A) || isturf(A.loc) || (sdepth <= MAX_STORAGE_REACH))
-		if(A.Adjacent(src) || (W && W.attack_can_reach(src, A, W.reach)) ) // see adjacent.dm
-			if(W)
-				// Return 1 in attackby() to prevent afterattack() effects (when safely moving items for example)
-				W.melee_attack_chain(A, src, CLICKCHAIN_HAS_PROXIMITY, params)
-			else
-				if(ismob(A)) // No instant mob attacking
-					setClickCooldown(get_attack_speed())
-				UnarmedAttack(A, 1)
-			trigger_aiming(TARGET_CAN_CLICK)
-			return
-		else // non-adjacent click
-			if(W)
-				W.ranged_attack_chain(A, src, NONE, params)
-			else
-				RangedAttack(A, params)
-
-			trigger_aiming(TARGET_CAN_CLICK)
-	return 1
+	else
+		//? attempt ranged attack chain
+		if(I)
+			I.ranged_attack_chain(A, src, NONE, params)
+		else
+			ranged_attack_chain(A, NONE, unpacked_params)
+		// todo: refactor aiming
+		trigger_aiming(TARGET_CAN_CLICK)
+		return
 
 /mob/proc/setClickCooldown(var/timeout)
 	next_move = max(world.time + timeout, next_move)

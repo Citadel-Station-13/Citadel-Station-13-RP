@@ -1,3 +1,6 @@
+//! the below call sequence is no longer accurate
+//! converted code goes into items.dm
+//! this is a legacy file because i don't want to rewrite the entire click system in one go
 /*
 === Item Click Call Sequences ===
 These are the default click code call sequences used when clicking on stuff with an item.
@@ -26,29 +29,6 @@ avoid code duplication. This includes items that may sometimes act as a standard
 // Called at the start of resolve_attackby(), before the actual attack.
 /obj/item/proc/pre_attack(atom/a, mob/user)
 	return
-
-/obj/item/proc/melee_attack_chain(atom/target, mob/user, clickchain_flags, params)
-	. = clickchain_flags
-
-	if((. |= tool_attack_chain(target, user, ., params)) & CLICKCHAIN_DO_NOT_PROPAGATE)
-		return
-
-	// todo: refactor
-	if(resolve_attackby(target, user, params))
-		return CLICKCHAIN_DO_NOT_PROPAGATE
-
-	afterattack(target, user, clickchain_flags & CLICKCHAIN_HAS_PROXIMITY, params)
-
-/obj/item/proc/ranged_attack_chain(atom/target, mob/user, clickchain_flags, params)
-	. = clickchain_flags
-
-	afterattack(target, user, clickchain_flags & CLICKCHAIN_HAS_PROXIMITY, params)
-
-/obj/item/proc/tool_attack_chain(atom/target, mob/user, clickchain_flags, params)
-	// are we on harm intent? if so, lol no
-	if(user && (user.a_intent == INTENT_HARM))
-		return NONE
-	return target.tool_interaction(src, user, clickchain_flags | CLICKCHAIN_TOOL_ACT)
 
 //I would prefer to rename this to attack(), but that would involve touching hundreds of files.
 /obj/item/proc/resolve_attackby(atom/A, mob/user, params, attack_modifier = 1)
@@ -139,13 +119,3 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	power *= attack_modifier
 
 	return target.hit_with_weapon(src, user, power, hit_zone)
-
-/// Used for non-adjacent melee attacks with specific weapons capable of reaching more than one tile.
-/// This uses changeling range string A* but for this purpose its also applicable.
-// TODO: REFACTOR
-/obj/item/proc/attack_can_reach(var/atom/us, var/atom/them, var/range)
-	if(us.Adjacent(them))
-		return TRUE // Already adjacent.
-	if(AStar(get_turf(us), get_turf(them), /turf/proc/AdjacentTurfsRangedSting, /turf/proc/Distance, max_nodes=25, max_node_depth=range))
-		return TRUE
-	return FALSE

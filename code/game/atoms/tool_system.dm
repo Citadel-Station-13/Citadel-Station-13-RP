@@ -46,7 +46,7 @@
  * - clickchain_flags - the clickchain flags given
  * - function - forced function - used in automation
  * - hint - forced hint - used in automation
- * - reachability_check - a callback used for reachability checks. if none, defaults to item.attack_can_reach when in clickcode, can always reach otherwise.
+ * - reachability_check - a callback used for reachability checks. if none, defaults to mob.Reachability when in clickcode, can always reach otherwise.
  */
 /atom/proc/tool_interaction(obj/item/I, mob/user, clickchain_flags, function, hint, datum/callback/reachability_check)
 	SHOULD_NOT_OVERRIDE(TRUE)
@@ -58,7 +58,7 @@
 	if(isnull(reachability_check))
 		if(clickchain_flags & CLICKCHAIN_TOOL_ACT)
 			// provided_item should never be null
-			reachability_check = CALLBACK(provided_item, /obj/item/proc/attack_can_reach, user, src, provided_item.reach)
+			reachability_check = CALLBACK(user, /atom/movable/proc/Reachability, src, range = provided_item.reach, tool = provided_item)
 	if(reachability_check && !reachability_check.Invoke())
 		return NONE
 	// from click chain
