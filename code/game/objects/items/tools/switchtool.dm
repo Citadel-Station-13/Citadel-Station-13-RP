@@ -283,7 +283,7 @@
 	if(!deployed)
 		return ..()
 	. = deployed.melee_attack_chain(target, user, clickchain_flags | CLICKCHAIN_REDIRECTED, params)
-	if(deployed.loc != src)
+	if(deployed && deployed.loc != src)
 		deployed.forceMove(src)
 		undeploy()
 

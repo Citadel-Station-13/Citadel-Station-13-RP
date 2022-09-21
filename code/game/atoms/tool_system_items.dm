@@ -14,7 +14,7 @@
 	/// tool speed - multiplies delay (e.g. 0.5 for twixe as fast). also the default for dynamic tools.
 	var/tool_speed = TOOL_SPEED_DEFAULT
 	/// dynamic tool locking - if set, dynamic tool behaviour (including confirmation radials) are entirely disregarded to use this item as a normal tool with whatever tool_behaviour() returns.
-	var/tool_locked = FALSE
+	var/tool_locked = TOOL_LOCKING_DYNAMIC
 	/// the sound to play (compatible with getsfx()) when we are used as a tool, if the function is the same as tool_behaviour.
 	var/tool_sound
 	/// override for dynamic tool support - varedit only, and not always supported.

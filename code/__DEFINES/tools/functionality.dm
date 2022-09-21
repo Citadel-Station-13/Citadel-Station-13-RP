@@ -47,3 +47,11 @@ GLOBAL_REAL_VAR(_dyntool_image_states) = list(
 #define TOOL_HINT_CROWBAR_WINDOW_IN "pane in"
 #define TOOL_HINT_CROWBAR_WINDOW_OUT "pane out"
 #define TOOL_HINT_WRENCH_WINDOW_DISASSEMBLY "dismantle"
+
+//! tool_locked var
+/// unlocked - use dynamic tool system
+#define TOOL_LOCKING_DYNAMIC 1
+/// use static behavior
+#define TOOL_LOCKING_STATIC 2
+/// automatically, if we only have one dynamic behavior, use that
+#define TOOL_LOCKING_AUTO 3
