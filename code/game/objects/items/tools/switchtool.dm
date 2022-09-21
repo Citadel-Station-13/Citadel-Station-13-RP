@@ -133,6 +133,7 @@
 	cut_overlays()
 	w_class = initial(w_class)
 	update_icon()
+	tool_locked = FALSE
 
 /obj/item/switchtool/proc/deploy(obj/item/I)
 	if(!(I in tools))
@@ -145,6 +146,7 @@
 	if(istype(I, /obj/item/weldingtool))
 		var/obj/item/weldingtool/W = I
 		W.setWelding(TRUE)
+	tool_locked = TRUE
 	return TRUE
 
 /obj/item/switchtool/proc/choose_deploy(mob/user)

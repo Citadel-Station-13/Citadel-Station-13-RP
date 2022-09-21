@@ -40,10 +40,10 @@ GLOBAL_REAL_VAR(_dyntool_image_states) = list(
 
 //! Tool hints - make these human readable!
 
-#define TOOL_HINT_UNSCREWING_WINDOW_FRAME "unfasten the frame from the floor"
-#define TOOL_HINT_SCREWING_WINDOW_FRAME "fasten the frame to the floor"
-#define TOOL_HINT_UNSCREWING_WINDOW_PANE "unscrew the window from the frmae"
-#define TOOL_HINT_SCREWING_WINDOW_PANE "screw the window from the frame"
-#define TOOL_HINT_CROWBAR_WINDOW_IN "crowbar the window into the frame"
-#define TOOL_HINT_CROWBAR_WINDOW_OUT "crowbar the window out of the frame"
-#define TOOL_HINT_WRENCH_WINDOW_DISASSEMBLY "dismantle the unsecured window"
+#define TOOL_HINT_UNSCREWING_WINDOW_FRAME "unsecure frame"
+#define TOOL_HINT_SCREWING_WINDOW_FRAME "secure frame"
+#define TOOL_HINT_UNSCREWING_WINDOW_PANE "unfasten pane"
+#define TOOL_HINT_SCREWING_WINDOW_PANE "fasten pane"
+#define TOOL_HINT_CROWBAR_WINDOW_IN "pane in"
+#define TOOL_HINT_CROWBAR_WINDOW_OUT "pane out"
+#define TOOL_HINT_WRENCH_WINDOW_DISASSEMBLY "dismantle"

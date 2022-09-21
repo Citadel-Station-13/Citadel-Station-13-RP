@@ -13,7 +13,7 @@
 	var/tool_quality = TOOL_QUALITY_DEFAULT
 	/// tool speed - multiplies delay (e.g. 0.5 for twixe as fast). also the default for dynamic tools.
 	var/tool_speed = TOOL_SPEED_DEFAULT
-	/// dynamic tool locking - if set, dynamic tool behaviour is entirely disregarded to use tool_behaviour() return as the only possible function.
+	/// dynamic tool locking - if set, dynamic tool behaviour (including confirmation radials) are entirely disregarded to use this item as a normal tool with whatever tool_behaviour() returns.
 	var/tool_locked = FALSE
 	/// the sound to play (compatible with getsfx()) when we are used as a tool, if the function is the same as tool_behaviour.
 	var/tool_sound

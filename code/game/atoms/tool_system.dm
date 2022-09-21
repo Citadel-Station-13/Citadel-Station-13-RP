@@ -66,7 +66,6 @@
 		if(function)
 			// automation, just go
 			return _dynamic_tool_act(provided_item, user, function, TOOL_OP_AUTOPILOT | TOOL_OP_REAL, hint)
-		hint = null
 		// used in clickchain
 		var/list/possibilities = dynamic_tool_functions(provided_item, user)
 		if(!length(possibilities))
@@ -77,13 +76,11 @@
 			return _tool_act(provided_item, user, function, TOOL_OP_REAL)
 		// dynamic tool system:
 		if(provided_item.tool_locked)
-			// item is locked to one behaviour
+			// item is locked to one behaviour, just go to static tool act if possible
 			function = provided_item.tool_behaviour()
-			if(!(function in possibilities))
-				// not in it
+			if(!function)
 				return NONE
-			// ayo
-			possibilities = list(function = possibilities[function])
+			return _tool_act(provided_item, user, function, TOOL_OP_REAL)
 		else
 			// enumerate
 			var/list/functions = provided_item.tool_query(user, src)
@@ -95,7 +92,7 @@
 				// none can be used, just go to static tool act if possible
 				function = provided_item.tool_behaviour()
 				if(!function)
-					return
+					return NONE
 				return _tool_act(provided_item, user, function, TOOL_OP_REAL)
 		// everything in possibilities is valid for the tool
 		var/list/transformed = list()
@@ -105,14 +102,18 @@
 			if(associated && (!islist(associated) || (length(associated) == 1)))
 				// yes there is!
 				hint = islist(associated)? associated[1] : associated
+			else
+				hint = null
 			var/image/I = dynamic_tool_image(i, hint)
-			I.maptext = MAPTEXT(hint || i)
-			I.maptext_x = -8
-			I.maptext_y = -8
-			I.maptext_width = 96
+			I.maptext = MAPTEXT_CENTER(hint || i)
+			I.maptext_x = -16
+			I.maptext_y = 32
+			I.maptext_width = 64
 			transformed[i] = I
 		// todo: radial menu at some point should be made to automatically close when they click something else.
 		function = show_radial_menu(user, src, transformed, custom_check = reachability_check)
+		if(!function)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(reachability_check && !reachability_check.Invoke())
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		// determine hint
@@ -123,16 +124,18 @@
 		transformed.len = 0
 		for(var/i in hints)
 			var/image/I = dynamic_tool_image(function, i)
-			I.maptext = MAPTEXT(i)
-			I.maptext_x = -8
-			I.maptext_y = -8
-			I.maptext_width = 96
+			I.maptext = MAPTEXT_CENTER(i)
+			I.maptext_x = -16
+			I.maptext_y = 32
+			I.maptext_width = 64
 			transformed[i] = I
 		hint = show_radial_menu(user, src, transformed, custom_check = reachability_check)
+		if(!hint)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(reachability_check && !reachability_check.Invoke())
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		// use hint
-		return _dynamic_tool_act(provided_item, user, function, TOOL_OP_REAL, hint)
+		return _dynamic_tool_act(provided_item, user, function, TOOL_OP_REAL, hint) | CLICKCHAIN_DO_NOT_PROPAGATE
 	else
 		// in the future, we might have situations where clicking something with an empty hand
 		// yet having organs that server as built-in tools can do something with
