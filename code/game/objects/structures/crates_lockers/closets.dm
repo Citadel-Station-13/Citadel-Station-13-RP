@@ -492,3 +492,9 @@
 	dump_contents()
 	spawn(1) qdel(src)
 	return 1
+
+/obj/structure/closet/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)
+	return FALSE
+
+/obj/structure/closet/CanReachIn(atom/movable/mover, atom/target, obj/item/tool, list/cache)
+	return FALSE
