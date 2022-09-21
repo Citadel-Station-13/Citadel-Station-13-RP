@@ -1,7 +1,0 @@
-author: "ktoma36"
-delete-after: True
-changes: 
-  - rscadd: "Mining outpost on west plains"
-  - tweak: "Mining's elevator area at the bottom"
-  - bugfix: "Underground Weatherbug"
-  - code_imp: "Commented out addTurf and removeTurf procs in cave generation (with silicons help, they were the root cause of the bug)"
