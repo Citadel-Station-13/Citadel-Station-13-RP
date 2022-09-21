@@ -54,6 +54,8 @@
 		return TRUE
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_CLICK_UNBUCKLE_INTERACTION, user) & COMPONENT_HANDLED_BUCKLE_INTERACTION)
 		return
+	if(!buckle_allowed || (buckle_flags & BUCKLING_NO_USER_UNBUCKLE))
+		return FALSE
 	// end
 	var/mob/unbuckling = buckled_mobs[1]
 	if(buckled_mobs.len > 1)
@@ -286,6 +288,8 @@
 	ASSERT(M in buckled_mobs)
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_RESIST_UNBUCKLE_INTERACTION, M) & COMPONENT_HANDLED_BUCKLE_INTERACTION)
 		return
+	if(!buckle_allowed || (buckle_flags & BUCKLING_NO_USER_RESIST))
+		return FALSE
 	if(!mob_resist_buckle(M, buckled_mobs[M]))
 		return
 	user_unbuckle_mob(M, BUCKLE_OP_DEFAULT_INTERACTION, M, buckled_mobs[M])

@@ -37,7 +37,7 @@
 	var/datum/perspective/self_perspective
 
 //! Buckling
-	/// do we support the buckling system
+	/// do we support the buckling system - if not, none of the default interactions will work, but comsigs will still fire!
 	var/buckle_allowed = FALSE
 	/// buckle flags, see [code/__DEFINES/_flags/atom_flags.dm]
 	var/buckle_flags = NONE

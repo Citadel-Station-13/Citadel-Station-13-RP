@@ -51,7 +51,7 @@
 
 /obj/vehicle/ridden/AltClick(mob/user)
 	. = ..()
-	if(inserted_key && user.canusetop(src, BE_CLOSE, ismonkey(user)))
+	if(inserted_key && user.Adjacent(src) && !user.incapacitated())
 		if(!is_occupant(user))
 			to_chat(user, "<span class='notice'>You must be riding the [src] to remove [src]'s key!</span>")
 			return
