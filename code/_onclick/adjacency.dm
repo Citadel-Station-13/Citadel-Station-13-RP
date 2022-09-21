@@ -53,17 +53,17 @@
 	var/turf/checking
 
 	checking = get_step(neighbor_turf, d1)
-	if(!checking.density &&												// not dense
-		neighbor_turf.ClickCross(d1, TRUE, target, mover) &&			// could leave target
-		checking.ClickCross(d2, FALSE, target, mover) &&				// could go from diagonal to self
-		checking.ClickCross(turn(d1, 180), FALSE, target, mover) && 	// could go from diagonal to target
+	if(!checking.density &&	\											// not dense
+		neighbor_turf.ClickCross(d1, TRUE, target, mover) && \			// could leave target
+		checking.ClickCross(d2, FALSE, target, mover) && \				// could go from diagonal to self
+		checking.ClickCross(turn(d1, 180), FALSE, target, mover) && \	// could go from diagonal to target
 		ClickCross(turn(d2, 180), TRUE, target, mover))					// could leave eslf
 		return TRUE
 	checking = get_step(neighbor_turf, d2)
-	if(!checking.density &&												// not dense
-		neighbor_turf.ClickCross(d2, TRUE, target, mover) &&			// could leave target
-		checking.ClickCross(d1, FALSE, target, mover) &&				// could go from diagonal to self
-		checking.ClickCross(turn(d2, 180), FALSE, target, mover) && 	// could go from diagonal to target
+	if(!checking.density && \											// not dense
+		neighbor_turf.ClickCross(d2, TRUE, target, mover) && \			// could leave target
+		checking.ClickCross(d1, FALSE, target, mover) && \				// could go from diagonal to self
+		checking.ClickCross(turn(d2, 180), FALSE, target, mover) && \	// could go from diagonal to target
 		ClickCross(turn(d1, 180), TRUE, target, mover))					// could leave eslf
 		return TRUE
 	return FALSE
