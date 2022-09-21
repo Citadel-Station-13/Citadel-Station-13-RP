@@ -66,6 +66,7 @@
 		if(function)
 			// automation, just go
 			return _dynamic_tool_act(provided_item, user, function, TOOL_OP_AUTOPILOT | TOOL_OP_REAL, hint)
+		hint = null
 		// used in clickchain
 		var/list/possibilities = dynamic_tool_functions(provided_item, user)
 		if(!length(possibilities))
@@ -105,7 +106,10 @@
 				// yes there is!
 				hint = islist(associated)? associated[1] : associated
 			var/image/I = dynamic_tool_image(i, hint)
-			I.maptext = i
+			I.maptext = MAPTEXT(hint || i)
+			I.maptext_x = -8
+			I.maptext_y = -8
+			I.maptext_width = 96
 			transformed[i] = I
 		// todo: radial menu at some point should be made to automatically close when they click something else.
 		function = show_radial_menu(user, src, transformed, custom_check = reachability_check)
@@ -119,7 +123,10 @@
 		transformed.len = 0
 		for(var/i in hints)
 			var/image/I = dynamic_tool_image(function, i)
-			I.maptext = i
+			I.maptext = MAPTEXT(i)
+			I.maptext_x = -8
+			I.maptext_y = -8
+			I.maptext_width = 96
 			transformed[i] = I
 		hint = show_radial_menu(user, src, transformed, custom_check = reachability_check)
 		if(reachability_check && !reachability_check.Invoke())

@@ -61,7 +61,6 @@
 	// we can only access through DC
 	if(!target.loc)
 		return !!dc[target]
-
 	// special checks
 	if(isarea(target))
 		// area checks don't support range, because
