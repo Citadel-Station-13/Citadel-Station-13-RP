@@ -19,7 +19,7 @@ var/const/enterloopsanity = 100
 			M.make_floating(1)
 		else if(!is_space())
 			M.make_floating(0)
-		if(isliving(M) && CHECK_BITFIELD(M.movement_type, GROUND))
+		if(isliving(M) && (M.movement_type & GROUND))
 			var/mob/living/L = M
 			L.handle_footstep(src)
 
@@ -31,7 +31,7 @@ var/const/enterloopsanity = 100
 	// Here's hoping it doesn't stay like this for years before we finish conversion to step_
 	var/atom/firstbump
 	var/CanPassSelf = CanPass(mover, src)
-	if(CanPassSelf || CHECK_BITFIELD(mover.movement_type, UNSTOPPABLE))
+	if(CanPassSelf || (mover.movement_type & UNSTOPPABLE))
 		for(var/i in contents)
 			if(QDELETED(mover))
 				return FALSE		//We were deleted, do not attempt to proceed with movement.
@@ -41,7 +41,7 @@ var/const/enterloopsanity = 100
 			if(!thing.Cross(mover))
 				if(QDELETED(mover))		//Mover deleted from Cross/CanAllowThrough, do not proceed.
 					return FALSE
-				if(CHECK_BITFIELD(mover.movement_type, UNSTOPPABLE))
+				if(mover.movement_type & UNSTOPPABLE)
 					mover.Bump(thing)
 					continue
 				else
@@ -53,7 +53,7 @@ var/const/enterloopsanity = 100
 		firstbump = src
 	if(firstbump)
 		mover.Bump(firstbump)
-		return !QDELETED(mover) && CHECK_BITFIELD(mover.movement_type, UNSTOPPABLE)
+		return !QDELETED(mover) && (mover.movement_type & UNSTOPPABLE)
 	return TRUE
 
 /turf/Exit(atom/movable/mover, atom/newloc)
@@ -67,7 +67,7 @@ var/const/enterloopsanity = 100
 		if(!thing.Uncross(mover, newloc))
 			if(thing.flags & ON_BORDER)
 				mover.Bump(thing)
-			if(!CHECK_BITFIELD(mover.movement_type, UNSTOPPABLE))
+			if(!(mover.movement_type & UNSTOPPABLE))
 				return FALSE
 		if(QDELETED(mover))
 			return FALSE		//We were deleted.

@@ -306,7 +306,7 @@
 	if(riding_handler_flags & CF_RIDING_HANDLER_ALLOW_BORDER)
 		// allow one off
 		if(riding_handler_flags & CF_RIDING_HANDLER_FORBID_BORDER_CROSS)
-			// allow if next isn't fine but current is fine,
+			// allow if next isn't fine but current is fine, or if next is fine and
 			#warn impl
 		else
 			// allow either if next or current is fine, which lets us cross 1-wide borders
