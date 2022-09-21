@@ -44,7 +44,7 @@
 		return FALSE
 	// non diagonal
 	if(neighbor_turf.x == x || neighbor_turf.y == y)
-		return ClickCross(get_dir(src, neighbor_turf), TRUE, target, mover) &&& neighbor_turf.ClickCross(get_dir(neighbor_turf, src), TRUE, target, mover)
+		return ClickCross(get_dir(src, neighbor_turf), TRUE, target, mover) && neighbor_turf.ClickCross(get_dir(neighbor_turf, src), TRUE, target, mover)
 
 	// diagonal
 	var/reverse_dir = get_dir(neighbor_turf, src)
@@ -80,16 +80,16 @@
 		for(var/obj/O in src)
 			if(!(O.flags & ON_BORDER))
 				continue
-			if(!(O.dir & D))
+			if(!(O.dir & d))
 				continue
-			if(O == target_atom || O == mover || (O.pass_flags_self & ATOM_PASS_CLICK))
+			if(O == target || O == mover || (O.pass_flags_self & ATOM_PASS_CLICK))
 				continue
 			if(mover? O.CanPass(mover, going_to) : !O.density)
 				continue
 			return FALSE
 	else
 		for(var/obj/O in src)
-			if(O == target_atom || O == mover || (O.pass_flags_self & ATOM_PASS_CLICK))
+			if(O == target || O == mover || (O.pass_flags_self & ATOM_PASS_CLICK))
 				continue
 			if(mover? O.CanPass(mover, going_to) : !O.density)
 				continue

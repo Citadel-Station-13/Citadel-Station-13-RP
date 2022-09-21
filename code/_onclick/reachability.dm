@@ -118,10 +118,10 @@
 	else
 		// less common but expensive case - long range tool reach
 		var/atom/movable/reachability_delegate/D = new(tadj)
-		delegate.pass_flags = pass_flags | (ATOM_PASS_CLICK | ATOM_PASS_TABLE)
+		D.pass_flags |= pass_flags
 		// next turf
 		var/turf/n = D.loc
-		for(var/i in 1 to reach)
+		for(var/i in 1 to range)
 			ASSERT(isturf(n))
 			if(n.TurfAdjacency(th))
 				// succeeded
@@ -211,7 +211,7 @@
 	return FALSE
 
 /turf/IsObsecured()
-	for(var/obj/O in T)
+	for(var/obj/O in contents)
 		if(O.obj_flags & OBJ_PREVENT_CLICK_UNDER)
 			return TRUE
 	return FALSE
