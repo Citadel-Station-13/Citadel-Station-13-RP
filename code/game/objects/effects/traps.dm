@@ -305,6 +305,7 @@ Add those other swinging traps you mentioned above!
 	var/burst_shots = 3
 	var/last_shot = 0
 	var/shot_number = 0
+	var/faction = "trap"
 
 	var/burst_delay = 2
 	var/initial_fire_delay = 5
