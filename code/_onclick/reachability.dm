@@ -56,6 +56,11 @@
 		if(!l.CanReachOut(src, target, tool, dc))
 			break
 		l = l.loc
+	// if target isn't anywhere (this should be at the top but maybe someone
+	// snowflakes a clickable object in directaccess but without loc someday)
+	// we can only access through DC
+	if(!target.loc)
+		return !!dc[target]
 
 	// special checks
 	if(isarea(target))
