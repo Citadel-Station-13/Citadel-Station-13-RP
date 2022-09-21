@@ -102,7 +102,7 @@
 			if(isarea(l.loc))
 				// don't recurse into areas
 				continue
-			checking[l.loc] = TRUE
+			cc[l.loc] = TRUE
 		// don't overlap
 		++i
 	if(!(tadj && th))
