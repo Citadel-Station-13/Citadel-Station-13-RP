@@ -150,13 +150,24 @@
  * quick and dirty reachability check
  */
 /atom/movable/proc/CheapReachability(atom/target, depth = DEFAULT_REACHABILITY_DEPTH, range, obj/item/tool)
-	if(target.loc == src)
-		return TRUE
-	if(!loc)
+	var/turf/curr = target.loc
+	var/turf/source
+	if(isturf(curr))
+		source = get_turf(src)
+		if(!source)
+			return FALSE
+		return curr.TurfAdjacency(source)
+	do
+		if(curr == src)
+			return TRUE
+		if(!curr)
+			return FALSE
+		curr = curr.loc
+	while(!isturf(curr))
+	source = get_turf(src)
+	if(!source)
 		return FALSE
-	if(!target.loc)
-		return FALSE
-	return get_turf(target).TurfAdjacency(get_turf(src))
+	return curr.TurfAdjacency(source)
 
 /atom/movable/reachability_delegate
 	pass_flags = ATOM_PASS_CLICK | ATOM_PASS_TABLE
