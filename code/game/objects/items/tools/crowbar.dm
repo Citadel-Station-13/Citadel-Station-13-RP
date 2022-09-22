@@ -18,14 +18,10 @@
 	origin_tech = list(TECH_ENGINEERING = 1)
 	matter = list(MAT_STEEL = 50)
 	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked")
-	usesound = 'sound/items/crowbar.ogg'
+	tool_sound = 'sound/items/crowbar.ogg'
 	drop_sound = 'sound/items/drop/crowbar.ogg'
 	pickup_sound = 'sound/items/pickup/crowbar.ogg'
-	toolspeed = 1
-
-
-/obj/item/tool/crowbar/is_crowbar()
-	return TRUE
+	tool_speed = 1
 
 /obj/item/tool/crowbar/red
 	icon = 'icons/obj/tools.dmi'
@@ -37,14 +33,14 @@
 	desc = "A sturdy, carved bone used to remove floors and to pry open doors."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "crowbar_bone"
-	toolspeed = 1.25
+	tool_speed = 1.25
 
 /obj/item/tool/crowbar/brass
 	name = "brass crowbar"
 	desc = "An etched piece of brass plated metal, used to remove floors and to pry open doors."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "crowbar_brass"
-	toolspeed = 0.75
+	tool_speed = 0.75
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_crowbar
 	name = "Precursor Alpha Object - Hard Light Pry Tool"
@@ -64,9 +60,9 @@
 	desc = "A hard-light crowbar. It appears to pry by itself, without any effort required."
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_crowbar)
 	icon = 'icons/obj/abductor.dmi'
-	usesound = 'sound/weapons/sonic_jackhammer.ogg'
+	tool_sound = 'sound/weapons/sonic_jackhammer.ogg'
 	icon_state = "crowbar"
-	toolspeed = 0.1
+	tool_speed = 0.1
 	origin_tech = list(TECH_COMBAT = 4, TECH_ENGINEERING = 4)
 
 /obj/item/tool/crowbar/hybrid
@@ -74,23 +70,23 @@
 	desc = "A crowbar whose head seems to phase in and out of view."
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_crowbar)
 	icon_state = "hybcrowbar"
-	usesound = 'sound/weapons/sonic_jackhammer.ogg'
-	toolspeed = 0.4
+	tool_sound = 'sound/weapons/sonic_jackhammer.ogg'
+	tool_speed = 0.4
 	origin_tech = list(TECH_COMBAT = 4, TECH_ENGINEERING = 3)
 	reach = 2
 
 /obj/item/tool/crowbar/cyborg
 	name = "hydraulic crowbar"
 	desc = "A hydraulic prying tool, compact but powerful. Designed to replace crowbars in industrial synthetics."
-	usesound = 'sound/items/jaws_pry.ogg'
+	tool_sound = 'sound/items/jaws_pry.ogg'
 	force = 10
-	toolspeed = 0.5
+	tool_speed = 0.5
 
 /obj/item/tool/crowbar/RIGset
 	name = "integrated prybar"
 	desc = "If you're seeing this, someone did a dum-dum."
-	usesound = 'sound/items/jaws_pry.ogg'
-	toolspeed = 0.7
+	tool_sound = 'sound/items/jaws_pry.ogg'
+	tool_speed = 0.7
 
 /obj/item/tool/crowbar/power
 	name = "jaws of life"
@@ -99,9 +95,9 @@
 	item_state = "jawsoflife"
 	matter = list(MAT_METAL=150, MAT_SILVER=50)
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
-	usesound = 'sound/items/jaws_pry.ogg'
+	tool_sound = 'sound/items/jaws_pry.ogg'
 	force = 15
-	toolspeed = 0.25
+	tool_speed = 0.25
 	var/obj/item/tool/wirecutters/power/counterpart = null
 
 /obj/item/tool/crowbar/power/Initialize(mapload, no_counterpart = TRUE)
@@ -142,8 +138,8 @@
 	origin_tech = list(TECH_ENGINEERING = 1)
 	matter = list(MAT_STEEL = 30)
 	attack_verb = list("whapped", "smacked", "swatted", "thwacked", "hit")
-	usesound = 'sound/items/crowbar.ogg'
-	toolspeed = 1
+	tool_sound = 'sound/items/crowbar.ogg'
+	tool_speed = 1
 	var/random_color = TRUE
 
 /obj/item/tool/prybar/red

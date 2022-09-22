@@ -281,7 +281,7 @@
 
 /obj/machinery/shieldgen/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_screwdriver())
-		playsound(src, W.usesound, 100, 1)
+		playsound(src, W.tool_sound, 100, 1)
 		if(is_open)
 			to_chat(user, "<font color=#4F49AF>You close the panel.</font>")
 			is_open = 0
@@ -305,7 +305,7 @@
 			to_chat(user, "The bolts are covered, unlocking this would retract the covers.")
 			return
 		if(anchored)
-			playsound(src, W.usesound, 100, 1)
+			playsound(src, W.tool_sound, 100, 1)
 			to_chat(user, "<font color=#4F49AF>You unsecure the [src] from the floor!</font>")
 			if(active)
 				to_chat(user, "<font color=#4F49AF>The [src] shuts off!</font>")
@@ -313,7 +313,7 @@
 			anchored = 0
 		else
 			if(istype(get_turf(src), /turf/space)) return //No wrenching these in space!
-			playsound(src, W.usesound, 100, 1)
+			playsound(src, W.tool_sound, 100, 1)
 			to_chat(user, "<font color=#4F49AF>You secure the [src] to the floor!</font>")
 			anchored = 1
 

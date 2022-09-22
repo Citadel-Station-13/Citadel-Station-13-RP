@@ -159,8 +159,8 @@ var/list/table_icon_cache = list()
 		var/obj/item/weldingtool/F = W
 		if(F.welding)
 			to_chat(user, "<span class='notice'>You begin reparing damage to \the [src].</span>")
-			playsound(src, F.usesound, 50, 1)
-			if(!do_after(user, 20 * F.toolspeed) || !F.remove_fuel(1, user))
+			playsound(src, F.tool_sound, 50, 1)
+			if(!do_after(user, 20 * F.tool_speed) || !F.remove_fuel(1, user))
 				return
 			user.visible_message("<span class='notice'>\The [user] repairs some damage to \the [src].</span>",
 			                              "<span class='notice'>You repair some damage to \the [src].</span>")
@@ -286,10 +286,10 @@ var/list/table_icon_cache = list()
 	return null
 
 /obj/structure/table/proc/remove_reinforced(obj/item/S, mob/user)
-	reinforced = common_material_remove(user, reinforced, 40 * S.toolspeed, "reinforcements", "screws", S.usesound)
+	reinforced = common_material_remove(user, reinforced, 40 * S.tool_speed, "reinforcements", "screws", S.tool_sound)
 
 /obj/structure/table/proc/remove_material(obj/item/W, mob/user)
-	material = common_material_remove(user, material, 20 * W.toolspeed, "plating", "bolts", W.usesound)
+	material = common_material_remove(user, material, 20 * W.tool_speed, "plating", "bolts", W.tool_sound)
 
 /obj/structure/table/proc/dismantle(obj/item/W, mob/user)
 	if(manipulating)
@@ -297,8 +297,8 @@ var/list/table_icon_cache = list()
 	manipulating = TRUE
 	user.visible_message("<span class='notice'>\The [user] begins dismantling \the [src].</span>",
 	                              "<span class='notice'>You begin dismantling \the [src].</span>")
-	playsound(src, W.usesound, 50, 1)
-	if(!do_after(user, 20 * W.toolspeed))
+	playsound(src, W.tool_sound, 50, 1)
+	if(!do_after(user, 20 * W.tool_speed))
 		manipulating = FALSE
 		return
 	user.visible_message("<span class='notice'>\The [user] dismantles \the [src].</span>",

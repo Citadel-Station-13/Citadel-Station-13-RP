@@ -58,7 +58,6 @@ var/list/ai_verbs_default = list(
 	density = TRUE
 	can_be_antagged = TRUE
 	status_flags = CANSTUN|CANPARALYSE|CANPUSH
-	shouldnt_see = list(/obj/effect/rune)
 	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/ai)
 
 	/// The network we have access to.
@@ -792,18 +791,18 @@ var/list/ai_verbs_default = list(
 			to_chat(user, "<span class='notice'>The shell's subsystems resist your efforts to tamper with your bolts.</span>")
 			return
 		if(anchored)
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			user.visible_message("<font color=#4F49AF>\The [user] starts to unbolt \the [src] from the plating...</font>")
-			if(!do_after(user,40 * W.toolspeed))
+			if(!do_after(user,40 * W.tool_speed))
 				user.visible_message("<font color=#4F49AF>\The [user] decides not to unbolt \the [src].</font>")
 				return
 			user.visible_message("<font color=#4F49AF>\The [user] finishes unfastening \the [src]!</font>")
 			anchored = 0
 			return
 		else
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			user.visible_message("<font color=#4F49AF>\The [user] starts to bolt \the [src] to the plating...</font>")
-			if(!do_after(user,40 * W.toolspeed))
+			if(!do_after(user,40 * W.tool_speed))
 				user.visible_message("<font color=#4F49AF>\The [user] decides not to bolt \the [src].</font>")
 				return
 			user.visible_message("<font color=#4F49AF>\The [user] finishes fastening down \the [src]!</font>")

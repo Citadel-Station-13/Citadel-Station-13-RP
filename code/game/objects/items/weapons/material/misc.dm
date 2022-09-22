@@ -117,7 +117,7 @@
 /obj/item/material/snow/snowball/reinforced
 	name = "snowball"
 	desc = "A well-formed and fun snowball. It looks kind of dangerous."
-	//icon_state = "reinf-snowball"
+	//icon_state = "considered_reinforced-snowball"
 	force_divisor = 0.20
 	thrown_force_divisor = 0.25
 

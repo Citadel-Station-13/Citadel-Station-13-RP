@@ -221,7 +221,7 @@
 		var/new_name = stripped_input(user, "What do you wish to name [src]?", "New Name", "bokken", 30)
 		if(new_name)
 			name = new_name
-	if(I.tool_behaviour == TOOL_WELDER)
+	if(I.is_welder())
 		var/new_burn = stripped_input(user, "What do you wish to burn into [src]?", "Burnt Inscription","", 140)
 		if(new_burn)
 			burned_in = new_burn

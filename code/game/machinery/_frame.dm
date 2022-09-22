@@ -295,8 +295,8 @@
 	if(P.is_wrench())
 		if(state == FRAME_PLACED && !anchored)
 			to_chat(user, SPAN_NOTICE("You start to wrench the frame into place."))
-			playsound(src, P.usesound, 50, TRUE)
-			if(do_after(user, 20 * P.toolspeed))
+			playsound(src, P.tool_sound, 50, TRUE)
+			if(do_after(user, 20 * P.tool_speed))
 				anchored = TRUE
 				if(!need_circuit && circuit)
 					state = FRAME_FASTENED
@@ -307,8 +307,8 @@
 					to_chat(user, SPAN_NOTICE("You wrench the frame into place."))
 
 		else if(state == FRAME_PLACED && anchored)
-			playsound(src, P.usesound, 50, TRUE)
-			if(do_after(user, 20 * P.toolspeed))
+			playsound(src, P.tool_sound, 50, TRUE)
+			if(do_after(user, 20 * P.tool_speed))
 				to_chat(user, SPAN_NOTICE("You unfasten the frame."))
 				anchored = FALSE
 
@@ -316,8 +316,8 @@
 		if(state == FRAME_PLACED)
 			var/obj/item/weldingtool/WT = P
 			if(WT.remove_fuel(0, user))
-				playsound(src, P.usesound, 50, TRUE)
-				if(do_after(user, 20 * P.toolspeed))
+				playsound(src, P.tool_sound, 50, TRUE)
+				if(do_after(user, 20 * P.tool_speed))
 					if(src && WT.isOn())
 						to_chat(user, SPAN_NOTICE("You deconstruct the frame."))
 						new /obj/item/stack/material/steel(loc, frame_type.frame_size)
@@ -348,18 +348,18 @@
 	else if(P.is_screwdriver())
 		if(state == FRAME_UNFASTENED)
 			if(need_circuit && circuit)
-				playsound(src, P.usesound, 50, TRUE)
+				playsound(src, P.tool_sound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You screw the circuit board into place."))
 				state = FRAME_FASTENED
 
 		else if(state == FRAME_FASTENED)
 			if(need_circuit && circuit)
-				playsound(src, P.usesound, 50, TRUE)
+				playsound(src, P.tool_sound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You unfasten the circuit board."))
 				state = FRAME_UNFASTENED
 
 			else if(!need_circuit && circuit)
-				playsound(src, P.usesound, 50, 1)
+				playsound(src, P.tool_sound, 50, 1)
 				to_chat(user, SPAN_NOTICE("You unfasten the outer cover."))
 				state = FRAME_PLACED
 
@@ -371,7 +371,7 @@
 						component_check = 0
 						break
 				if(component_check)
-					playsound(src, P.usesound, 50, TRUE)
+					playsound(src, P.tool_sound, 50, TRUE)
 					var/obj/machinery/new_machine = new circuit.build_path(loc, dir)
 					// Handle machines that have allocated default parts in thier constructor.
 					if(new_machine.component_parts)
@@ -381,7 +381,7 @@
 					else
 						new_machine.component_parts = list()
 
-					circuit.construct(new_machine)
+					circuit.after_construct(new_machine)
 
 					for(var/obj/O in components)
 						if(circuit.contain_parts)
@@ -401,13 +401,13 @@
 					return
 
 			else if(frame_type.frame_class == FRAME_CLASS_ALARM)
-				playsound(src, P.usesound, 50, TRUE)
+				playsound(src, P.tool_sound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You fasten the cover."))
 				var/obj/machinery/B = new circuit.build_path(loc)
 				B.pixel_x = pixel_x
 				B.pixel_y = pixel_y
 				B.setDir(dir)
-				circuit.construct(B)
+				circuit.after_construct(B)
 				circuit.loc = null
 				B.circuit = circuit
 				qdel(src)
@@ -415,26 +415,26 @@
 
 		else if(state == FRAME_PANELED)
 			if(frame_type.frame_class == FRAME_CLASS_COMPUTER)
-				playsound(src, P.usesound, 50, TRUE)
+				playsound(src, P.tool_sound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You connect the monitor."))
 				var/obj/machinery/B = new circuit.build_path(loc)
 				B.pixel_x = pixel_x
 				B.pixel_y = pixel_y
 				B.setDir(dir)
-				circuit.construct(B)
+				circuit.after_construct(B)
 				circuit.loc = null
 				B.circuit = circuit
 				qdel(src)
 				return
 
 			else if(frame_type.frame_class == FRAME_CLASS_DISPLAY)
-				playsound(src, P.usesound, 50, TRUE)
+				playsound(src, P.tool_sound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You connect the monitor."))
 				var/obj/machinery/B = new circuit.build_path(loc)
 				B.pixel_x = pixel_x
 				B.pixel_y = pixel_y
 				B.setDir(dir)
-				circuit.construct(B)
+				circuit.after_construct(B)
 				circuit.loc = null
 				B.circuit = circuit
 				qdel(src)
@@ -443,7 +443,7 @@
 	else if(P.is_crowbar())
 		if(state == FRAME_UNFASTENED)
 			if(need_circuit && circuit)
-				playsound(src, P.usesound, 50, TRUE)
+				playsound(src, P.tool_sound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You remove the circuit board."))
 				state = FRAME_PLACED
 				circuit.forceMove(loc)
@@ -453,7 +453,7 @@
 
 		else if(state == FRAME_WIRED)
 			if(frame_type.frame_class == FRAME_CLASS_MACHINE)
-				playsound(src, P.usesound, 50, TRUE)
+				playsound(src, P.tool_sound, 50, TRUE)
 				if(components.len == 0)
 					to_chat(user, SPAN_NOTICE("There are no components to remove."))
 				else
@@ -466,13 +466,13 @@
 
 		else if(state == FRAME_PANELED)
 			if(frame_type.frame_class == FRAME_CLASS_COMPUTER)
-				playsound(src, P.usesound, 50, TRUE)
+				playsound(src, P.tool_sound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You remove the glass panel."))
 				state = FRAME_WIRED
 				new /obj/item/stack/material/glass(loc, 2)
 
 			else if(frame_type.frame_class == FRAME_CLASS_DISPLAY)
-				playsound(src, P.usesound, 50, TRUE)
+				playsound(src, P.tool_sound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You remove the glass panel."))
 				state = FRAME_WIRED
 				new /obj/item/stack/material/glass(loc, 2)
@@ -520,25 +520,25 @@
 	else if(P.is_wirecutter())
 		if(state == FRAME_WIRED)
 			if(frame_type.frame_class == FRAME_CLASS_COMPUTER)
-				playsound(src, P.usesound, 50, TRUE)
+				playsound(src, P.tool_sound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You remove the cables."))
 				state = FRAME_FASTENED
 				new /obj/item/stack/cable_coil(loc, 5)
 
 			else if(frame_type.frame_class == FRAME_CLASS_DISPLAY)
-				playsound(src, P.usesound, 50, TRUE)
+				playsound(src, P.tool_sound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You remove the cables."))
 				state = FRAME_FASTENED
 				new /obj/item/stack/cable_coil(loc, 5)
 
 			else if(frame_type.frame_class == FRAME_CLASS_ALARM)
-				playsound(src, P.usesound, 50, TRUE)
+				playsound(src, P.tool_sound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You remove the cables."))
 				state = FRAME_FASTENED
 				new /obj/item/stack/cable_coil(loc, 5)
 
 			else if(frame_type.frame_class == FRAME_CLASS_MACHINE)
-				playsound(src, P.usesound, 50, TRUE)
+				playsound(src, P.tool_sound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You remove the cables."))
 				state = FRAME_FASTENED
 				new /obj/item/stack/cable_coil(loc, 5)

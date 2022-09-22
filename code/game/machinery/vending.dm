@@ -214,7 +214,7 @@
 	else if(W.is_screwdriver())
 		panel_open = !panel_open
 		to_chat(user, "You [panel_open ? "open" : "close"] the maintenance panel.")
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		overlays.Cut()
 		if(panel_open)
 			overlays += image(icon, "[initial(icon_state)]-panel")
@@ -234,13 +234,13 @@
 		SSnanoui.update_uis(src)
 		return
 	else if(W.is_wrench())
-		playsound(src, W.usesound, 100, 1)
+		playsound(src, W.tool_sound, 100, 1)
 		if(anchored)
 			user.visible_message("[user] begins unsecuring \the [src] from the floor.", "You start unsecuring \the [src] from the floor.")
 		else
 			user.visible_message("[user] begins securing \the [src] to the floor.", "You start securing \the [src] to the floor.")
 
-		if(do_after(user, 20 * W.toolspeed))
+		if(do_after(user, 20 * W.tool_speed))
 			if(!src) return
 			to_chat(user, "<span class='notice'>You [anchored? "un" : ""]secured \the [src]!</span>")
 			anchored = !anchored

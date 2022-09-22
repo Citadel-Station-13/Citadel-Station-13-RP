@@ -73,8 +73,8 @@
 			to_chat(user, "<span class='warning'>You need more fuel to complete this task.</span>")
 			return
 		user.visible_message("[user] starts to disassemble \the [src].", "You start to disassemble \the [src].")
-		playsound(src, WT.usesound, 50, 1)
-		if(do_after(user,15 * W.toolspeed))
+		playsound(src, WT.tool_sound, 50, 1)
+		if(do_after(user,15 * W.tool_speed))
 			if(!src || !user || !WT.remove_fuel(5, user)) return
 			to_chat(user, "<span class='notice'>You fully disassemble \the [src]. There were no salvageable parts.</span>")
 			qdel(src)

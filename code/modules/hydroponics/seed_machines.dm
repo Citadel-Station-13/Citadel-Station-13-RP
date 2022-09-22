@@ -97,7 +97,7 @@
 	if(default_deconstruction_screwdriver(user, W))
 		return
 	if(W.is_wrench())
-		playsound(src, W.usesound, 100, 1)
+		playsound(src, W.tool_sound, 100, 1)
 		to_chat(user, "<span class='notice'>You [anchored ? "un" : ""]secure \the [src].</span>")
 		anchored = !anchored
 		return

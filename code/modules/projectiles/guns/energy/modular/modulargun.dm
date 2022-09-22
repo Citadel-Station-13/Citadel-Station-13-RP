@@ -189,11 +189,11 @@
 		new_mode.apply_to(src)
 		return FALSE
 
-/obj/item/gun/energy/modular/attackby(obj/item/I, mob/living/user, params, attackchain_flags, damage_multiplier)
+/obj/item/gun/energy/modular/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	if(I.is_screwdriver())
 		to_chat(user, "<span class='notice'>You [assembled ? "disassemble" : "assemble"] the gun.</span>")
 		assembled = !assembled
-		playsound(src, I.usesound, 50, 1)
+		playsound(src, I.tool_sound, 50, 1)
 		generatefiremodes()
 		return
 	if(I.is_crowbar())

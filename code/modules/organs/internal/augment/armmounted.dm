@@ -133,7 +133,7 @@
 
 	integrated_object_type = null
 
-	toolspeed = 0.8
+	tool_speed = 0.8
 
 	var/list/integrated_tools = list(
 		/obj/item/tool/screwdriver = null,
@@ -178,7 +178,7 @@
 				integrated_tools[path] = new path(src)
 			var/obj/item/I = integrated_tools[path]
 			ADD_TRAIT(I, TRAIT_NODROP, AUGMENT_TRAIT)
-			I.toolspeed = toolspeed
+			I.tool_speed = tool_speed
 			I.name = "integrated [I.name]"
 
 		for(var/tool in integrated_tools)

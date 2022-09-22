@@ -39,7 +39,7 @@
 /obj/structure/ledge/CanAllowThrough(atom/movable/mover, turf/target)
 	if(!solidledge)
 		return TRUE
-	if(get_dir(mover, target) != turn(dir, 180))
+	if(!(get_dir(mover, target) & turn(dir, 180)))
 		return TRUE
 	return ..()
 
@@ -48,7 +48,7 @@
 		return TRUE
 	if(!solidledge)
 		return TRUE
-	if(get_dir(AM, AM) != turn(dir, 180))
+	if(!(get_dir(src, newLoc) & dir))
 		return TRUE
 	return FALSE
 

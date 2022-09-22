@@ -106,8 +106,8 @@
 	var/relative_layer = 0
 
 //! Misc
-	///Mobs that are currently do_after'ing this atom, to be cleared from on Destroy()
-	var/list/targeted_by
+	/// What mobs are interacting with us right now, associated directly to concurrent interactions. (use defines)
+	var/list/interacting_mobs
 
 /**
  * Called when an atom is created in byond (built in engine proc)
@@ -725,22 +725,6 @@
 		blood_DNA = null
 		return 1
 
-/atom/proc/get_global_map_pos()
-	if(!islist(global_map) || !length(global_map)) return
-	var/cur_x = null
-	var/cur_y = null
-	var/list/y_arr = null
-	for(cur_x=1,cur_x<=global_map.len,cur_x++)
-		y_arr = global_map[cur_x]
-		cur_y = y_arr.Find(src.z)
-		if(cur_y)
-			break
-//	to_chat(world, "X = [cur_x]; Y = [cur_y]")
-	if(cur_x && cur_y)
-		return list("x"=cur_x,"y"=cur_y)
-	else
-		return 0
-
 /atom/proc/isinspace()
 	if(istype(get_turf(src), /turf/space))
 		return 1
@@ -953,55 +937,6 @@
 
 /atom/proc/is_incorporeal()
 	return FALSE
-
-/// Tool behavior procedure. Redirects to tool-specific procs by default.
-/// You can override it to catch all tool interactions, for use in complex deconstruction procs.
-/// Just don't forget to return ..() in the end.
-/atom/proc/tool_act(mob/living/user, obj/item/I, tool_type)
-	switch(tool_type)
-		if(TOOL_CROWBAR)
-			return crowbar_act(user, I)
-		if(TOOL_MULTITOOL)
-			return multitool_act(user, I)
-		if(TOOL_SCREWDRIVER)
-			return screwdriver_act(user, I)
-		if(TOOL_WRENCH)
-			return wrench_act(user, I)
-		if(TOOL_WIRECUTTER)
-			return wirecutter_act(user, I)
-		if(TOOL_WELDER)
-			return welder_act(user, I)
-		if(TOOL_ANALYZER)
-			return analyzer_act(user, I)
-
-// Tool-specific behavior procs. To be overridden in subtypes.
-/atom/proc/crowbar_act(mob/living/user, obj/item/I)
-	return
-
-/atom/proc/multitool_act(mob/living/user, obj/item/I)
-	return
-
-/atom/proc/multitool_check_buffer(user, obj/item/I, silent = FALSE)
-	if(!I.tool_behaviour == TOOL_MULTITOOL)
-		if(user && !silent)
-			to_chat(user, SPAN_WARNING("[I] has no data buffer!"))
-		return FALSE
-	return TRUE
-
-/atom/proc/screwdriver_act(mob/living/user, obj/item/I)
-	SEND_SIGNAL(src, COMSIG_ATOM_SCREWDRIVER_ACT, user, I)
-
-/atom/proc/wrench_act(mob/living/user, obj/item/I)
-	return
-
-/atom/proc/wirecutter_act(mob/living/user, obj/item/I)
-	return
-
-/atom/proc/welder_act(mob/living/user, obj/item/I)
-	return
-
-/atom/proc/analyzer_act(mob/living/user, obj/item/I)
-	return
 
 /atom/proc/CheckParts(list/parts_list)
 	for(var/A in parts_list)

@@ -5,7 +5,7 @@
 	action_button_name = "Toggle Cataloguer"
 	var/deployed = TRUE
 	scan_range = 1
-	toolspeed = 1.2
+	tool_speed = 1.2
 
 /obj/item/cataloguer/compact/update_icon()
 	if(busy)
@@ -53,4 +53,4 @@
 	name = "pathfinder's cataloguer"
 	icon_state = "tricorder_med"
 	scan_range = 3
-	toolspeed = 1
+	tool_speed = 1

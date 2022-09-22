@@ -256,13 +256,13 @@
 			user.visible_message("<span class='danger'>\The [user] [blocked ? "welds" : "unwelds"] \the [src] with \a [W].</span>",\
 			"You [blocked ? "weld" : "unweld"] \the [src] with \the [W].",\
 			"You hear something being welded.")
-			playsound(src, W.usesound, 100, 1)
+			playsound(src, W.tool_sound, 100, 1)
 			update_icon()
 			return
 
 	if(density && C.is_screwdriver())
 		hatch_open = !hatch_open
-		playsound(src, C.usesound, 50, 1)
+		playsound(src, C.tool_sound, 50, 1)
 		user.visible_message("<span class='danger'>[user] has [hatch_open ? "opened" : "closed"] \the [src] maintenance hatch.</span>",
 									"You have [hatch_open ? "opened" : "closed"] the [src] maintenance hatch.")
 		update_icon()
@@ -276,7 +276,7 @@
 									"You start to remove the electronics from [src].")
 			if(do_after(user,30))
 				if(blocked && density && hatch_open)
-					playsound(src, C.usesound, 50, 1)
+					playsound(src, C.tool_sound, 50, 1)
 					user.visible_message("<span class='danger'>[user] has removed the electronics from \the [src].</span>",
 										"You have removed the electronics from [src].")
 
@@ -321,8 +321,8 @@
 				"You hear metal strain.")
 		prying = 1
 		update_icon()
-		playsound(src, C.usesound, 100, 1)
-		if(do_after(user,30 * C.toolspeed))
+		playsound(src, C.tool_sound, 100, 1)
+		if(do_after(user,30 * C.tool_speed))
 			if(C.is_crowbar())
 				if(machine_stat & (BROKEN|NOPOWER) || !density)
 					user.visible_message("<span class='danger'>\The [user] forces \the [src] [density ? "open" : "closed"] with \a [C]!</span>",\

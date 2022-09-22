@@ -33,6 +33,11 @@
 #define SHOVABLE_ONTO			(1<<13)
 /// Makes the Examine proc not read out this item.
 #define EXAMINE_SKIP			(1<<14) /
+*/
+
+#define OBJ_PREVENT_CLICK_UNDER	(1<<23)
+
+/*
 /// Integrity defines for clothing (not flags but close enough)
 /// We have no damage on the clothing
 #define CLOTHING_PRISTINE	0
@@ -51,4 +56,5 @@ DEFINE_BITFIELD(obj_flags, list(
 	BITFIELD(EMAGGED),
 	BITFIELD(CAN_BE_HIT),
 	BITFIELD(ON_BLUEPRINTS),
+	BITFIELD(OBJ_PREVENT_CLICK_UNDER),
 ))
