@@ -256,13 +256,8 @@
 				playsound(loc, W.tool_sound, 50, 1)
 				to_chat(user, "<span class='notice'>You begin your finishing touches on \the [src].</span>")
 				if(do_after(user, 20) && build_stage == 6)
-<<<<<<< HEAD:code/modules/vehicles_legacy/construction.dm
-					playsound(loc, W.usesound, 30, 1)
-					var/obj/vehicle_old/bike/built/product = new(get_turf(src))
-=======
 					playsound(loc, W.tool_sound, 30, 1)
-					var/obj/vehicle/bike/built/product = new(get_turf(src))
->>>>>>> citrp/master:code/modules/vehicles/construction.dm
+					var/obj/vehicle_old/bike/built/product = new(get_turf(src))
 					to_chat(user, "<span class='notice'>You finish \the [product]</span>")
 					product.cell = cell
 					cell.forceMove(product)

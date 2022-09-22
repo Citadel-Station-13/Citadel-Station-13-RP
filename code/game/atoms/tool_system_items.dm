@@ -20,6 +20,8 @@
 	/// override for dynamic tool support - varedit only, and not always supported.
 	VAR_PRIVATE/list/tool_override
 
+#warn shunt these to item vars and shunt tool system to either game/tools or modules/tools or something jesus
+
 /**
  * queries for tool functions
  * returns a list of functions associated to their qualities, or null.
