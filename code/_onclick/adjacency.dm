@@ -4,6 +4,8 @@
  * checks simple adjacency, aka "are we semantically next to something and can reach them"
  * This will not automatically get turf if you're nested in something else, e.g. in a closet!
  *
+ * **DO NOT** default recursion to on.
+ *
  * @params
  * - neighbor - what we're trying to reach
  * - recurse - levels we're allowed to recurse up if we're not on a turf

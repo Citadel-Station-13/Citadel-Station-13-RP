@@ -26,8 +26,7 @@
 	// end
 
 	. = ..()
-
-	if (s_active && !( s_active in contents ) && !(s_active.Adjacent(src)))	//check !( s_active in contents ) first so we hopefully don't have to call get_turf() so much.
+	if(s_active && !CheapReachability(s_active))
 		s_active.close(src)
 
 ///Checks mobility move as well as parent checks

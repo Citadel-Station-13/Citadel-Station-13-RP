@@ -83,7 +83,7 @@
 	// check cache
 	var/list/cc = list(target.loc = TRUE)
 	// current index in check cache
-	var/i = 0
+	var/i = 1
 	// did we reach turf? turf heuristic - usually the first turf we found
 	var/turf/th
 	// current length
@@ -94,8 +94,6 @@
 		if(i > cl)
 			// hit top, didn't find, break
 			break
-		// don't overlap
-		++i
 		for(i in i to cl)
 			l = cc[i]
 			// process the rest of checking
@@ -112,6 +110,8 @@
 				// don't recurse into areas
 				continue
 			cc[l.loc] = TRUE
+		// don't overlap
+		++i
 	if(!(tadj && th))
 		// didn't hit both, fail
 		return FALSE
@@ -145,6 +145,18 @@
 		// at this point, we failed
 		qdel(D)
 		return FALSE
+
+/**
+ * quick and dirty reachability check
+ */
+/atom/movable/proc/CheapReachability(atom/target, depth = DEFAULT_REACHABILITY_DEPTH, range, obj/item/tool)
+	if(target.loc == src)
+		return TRUE
+	if(!loc)
+		return FALSE
+	if(!target.loc)
+		return FALSE
+	return get_turf(target).TurfAdjacency(get_turf(src))
 
 /atom/movable/reachability_delegate
 	pass_flags = ATOM_PASS_CLICK | ATOM_PASS_TABLE
