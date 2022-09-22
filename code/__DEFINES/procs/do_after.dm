@@ -30,3 +30,18 @@
 #define DO_AFTER_PROGRESSING 2
 /// Stage - Last check of a do_after
 #define DO_AFTER_FINISHING 3
+
+//! Interaction Checks
+#define INTERACTING_WITH(M, A) M.interacting_with?[A]
+#define INTERACTING_WITH_FOR(M, A, T) (M.interacting_with?[A]?[T])
+#define START_INTERACTING_WITH(M, A, T) do {if(!M.interacting_with){M.interacting_with = list();}; var/list/_L = M.interacting_with; if(!_L[A]){_L[A] = list()}; ++_L[A][T]; if(!A.interacting_mobs){A.interacting_mobs = list()}; ++A.interacting_mobs[M];} while(FALSE);
+#define STOP_INTERACTING_WITH(M, A, T) do {if(M.interacting_with?[A]?[T]){--M.interacting_with[A][T]; if(M.interacting_with[A][T] <= 0){M.interacting_with[A] -= T}; if(!length(M.interacting_with[A])){M.interacting_with -= A};}; if(!length(M.interacting_with)){M.interacting_with = null}; if(A.interacting_mobs){--A.interacting_mobs[M]; if(A.interacting_mobs[M] <= 0){A.interacting_mobs -= M};}; if(!length(A.interacting_mobs)){A.interacting_mobs = null};} while(FALSE);
+#define INTERRUPT_INTERACTION(M, A) M.interacting_with?.Remove(A)
+#define INTERRUPT_INTERACTION_FOR(M, A, T) M.interacting_with?[A]?.Remove(T)
+#define IS_INTERACTING_WITH_SOMETHING(M) !!length(M.interacting_with)
+
+//! Interactiong Types
+/// Generic do after
+#define INTERACTING_FOR_DO_AFTER "do_after"
+/// Dynaimc tool usage in progress
+#define INTERACTING_FOR_DYNAMIC_TOOL "dynamic_tools"

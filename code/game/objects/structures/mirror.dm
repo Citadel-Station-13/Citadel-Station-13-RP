@@ -51,8 +51,8 @@
 /obj/structure/mirror/attackby(obj/item/I as obj, mob/user as mob)
 	if(I.is_wrench())
 		if(!glass)
-			playsound(src.loc, I.usesound, 50, 1)
-			if(do_after(user, 20 * I.toolspeed))
+			playsound(src.loc, I.tool_sound, 50, 1)
+			if(do_after(user, 20 * I.tool_speed))
 				to_chat(user, "<span class='notice'>You unfasten the frame.</span>")
 				new /obj/item/frame/mirror( src.loc )
 				qdel(src)
@@ -65,7 +65,7 @@
 			new /obj/item/material/shard( src.loc )
 			return
 		if(!shattered && glass)
-			playsound(src.loc, I.usesound, 50, 1)
+			playsound(src.loc, I.tool_sound, 50, 1)
 			to_chat(user, "<span class='notice'>You remove the glass.</span>")
 			glass = !glass
 			icon_state = "mirror_frame"

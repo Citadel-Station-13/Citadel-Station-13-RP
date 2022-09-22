@@ -136,7 +136,7 @@
 	icon_state = "organ_ripper"
 	item_state = "bone_setter"
 	force = 15.0
-	toolspeed = 0.75
+	tool_speed = 0.75
 	origin_tech = list(TECH_MATERIAL = 5, TECH_BIO = 3, TECH_ILLEGAL = 2)
 
 /*
@@ -169,7 +169,7 @@
 	origin_tech = list(TECH_BIO = 4, TECH_MATERIAL = 6, TECH_MAGNET = 6)
 	matter = list(MAT_STEEL = 12500)
 	attack_verb = list("attacked", "slashed", "seared", "cut")
-	toolspeed = 0.75
+	tool_speed = 0.75
 
 //misc, formerly from code/defines/weapons.dm
 /obj/item/surgical/bonegel
@@ -220,65 +220,65 @@
 // Cyborg Tools
 
 /obj/item/surgical/retractor/cyborg
-	toolspeed = 0.5
+	tool_speed = 0.5
 
 /obj/item/surgical/hemostat/cyborg
-	toolspeed = 0.5
+	tool_speed = 0.5
 
 /obj/item/surgical/cautery/cyborg
-	toolspeed = 0.5
+	tool_speed = 0.5
 
 /obj/item/surgical/surgicaldrill/cyborg
-	toolspeed = 0.5
+	tool_speed = 0.5
 
 /obj/item/surgical/scalpel/cyborg
-	toolspeed = 0.5
+	tool_speed = 0.5
 
 /obj/item/surgical/circular_saw/cyborg
-	toolspeed = 0.5
+	tool_speed = 0.5
 
 /obj/item/surgical/bonegel/cyborg
-	toolspeed = 0.5
+	tool_speed = 0.5
 
 /obj/item/surgical/FixOVein/cyborg
-	toolspeed = 0.5
+	tool_speed = 0.5
 
 /obj/item/surgical/bonesetter/cyborg
-	toolspeed = 0.5
+	tool_speed = 0.5
 
 
 // Alien Tools
 /obj/item/surgical/retractor/alien
 	icon = 'icons/obj/abductor.dmi'
-	toolspeed = 0.25
+	tool_speed = 0.25
 
 /obj/item/surgical/hemostat/alien
 	icon = 'icons/obj/abductor.dmi'
-	toolspeed = 0.25
+	tool_speed = 0.25
 
 /obj/item/surgical/cautery/alien
 	icon = 'icons/obj/abductor.dmi'
-	toolspeed = 0.25
+	tool_speed = 0.25
 
 /obj/item/surgical/surgicaldrill/alien
 	icon = 'icons/obj/abductor.dmi'
-	toolspeed = 0.25
+	tool_speed = 0.25
 
 /obj/item/surgical/scalpel/alien
 	icon = 'icons/obj/abductor.dmi'
-	toolspeed = 0.25
+	tool_speed = 0.25
 
 /obj/item/surgical/circular_saw/alien
 	icon = 'icons/obj/abductor.dmi'
-	toolspeed = 0.25
+	tool_speed = 0.25
 
 /obj/item/surgical/FixOVein/alien
 	icon = 'icons/obj/abductor.dmi'
-	toolspeed = 0.25
+	tool_speed = 0.25
 
 /obj/item/surgical/bone_clamp/alien
 	icon = 'icons/obj/abductor.dmi'
-	toolspeed = 0.75
+	tool_speed = 0.75
 
 // Primitive Items
 

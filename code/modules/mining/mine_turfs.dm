@@ -107,7 +107,7 @@ turf/simulated/mineral/floor/light_corner
 	reconsider_lights()
 	blocks_air = FALSE
 	can_build_into_floor = TRUE
-	SSplanets.addTurf(src)
+	//SSplanets.addTurf(src)	// Thank you Silicons, this was causing underground areas to have weather effects in them	- Bloop
 	queue_zone_update()
 	QUEUE_SMOOTH(src)
 	QUEUE_SMOOTH_NEIGHBORS(src)
@@ -121,7 +121,7 @@ turf/simulated/mineral/floor/light_corner
 	reconsider_lights()
 	blocks_air = TRUE
 	can_build_into_floor = FALSE
-	SSplanets.removeTurf(src)
+	//SSplanets.removeTurf(src)	// Thank you Silicons, this was causing underground areas to have weather effects in them as well -Bloop
 	queue_zone_update()
 	QUEUE_SMOOTH(src)
 	QUEUE_SMOOTH_NEIGHBORS(src)

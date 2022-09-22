@@ -15,8 +15,8 @@
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	matter = list(MAT_STEEL = 150)
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
-	usesound = 'sound/items/ratchet.ogg'
-	toolspeed = 1
+	tool_sound = 'sound/items/ratchet.ogg'
+	tool_speed = 1
 	drop_sound = 'sound/items/drop/wrench.ogg'
 	pickup_sound = 'sound/items/pickup/wrench.ogg'
 	var/random_color = TRUE
@@ -36,9 +36,6 @@
 			if ("blue")
 				icon_state = "wrench_blue"
 
-/obj/item/tool/wrench/is_wrench()
-	return TRUE
-
 /obj/item/tool/wrench/red
 	icon_state = "wrench_red"
 
@@ -52,28 +49,28 @@
 	name = "primitive wrench"
 	desc = "A primitive wrench carved from bone. It does not grip consistently."
 	icon_state = "wrench_bone"
-	toolspeed = 1.25
+	tool_speed = 1.25
 	random_color = FALSE
 
 /obj/item/tool/wrench/brass
 	name = "brass wrench"
 	desc = "A brass plated wrench. Its finely tuned mechanism allows for a strong grip."
 	icon_state = "wrench_brass"
-	toolspeed = 0.75
+	tool_speed = 0.75
 	random_color = FALSE
 
 /obj/item/tool/wrench/cyborg
 	name = "automatic wrench"
 	desc = "An advanced robotic wrench. Can be found in industrial synthetic shells."
-	usesound = 'sound/items/drill_use.ogg'
-	toolspeed = 0.5
+	tool_sound = 'sound/items/drill_use.ogg'
+	tool_speed = 0.5
 	random_color = FALSE
 
 /obj/item/tool/wrench/RIGset
 	name = "integrated wrench"
 	desc = "If you're seeing this, someone did a dum-dum."
-	usesound = 'sound/items/drill_use.ogg'
-	toolspeed = 0.7
+	tool_sound = 'sound/items/drill_use.ogg'
+	tool_speed = 0.7
 
 /obj/item/tool/wrench/hybrid	// Slower and bulkier than normal power tools, but it has the power of reach.
 	name = "strange wrench"
@@ -87,8 +84,8 @@
 	slowdown = 0.1
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ENGINEERING = 3, TECH_PHORON = 2)
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked", "warped", "blasted")
-	usesound = 'sound/effects/stealthoff.ogg'
-	toolspeed = 0.5
+	tool_sound = 'sound/effects/stealthoff.ogg'
+	tool_speed = 0.5
 	reach = 2
 	random_color = FALSE
 
@@ -113,8 +110,8 @@
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_wrench)
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "wrench"
-	usesound = 'sound/effects/empulse.ogg'
-	toolspeed = 0.1
+	tool_sound = 'sound/effects/empulse.ogg'
+	tool_speed = 0.1
 	origin_tech = list(TECH_MATERIAL = 5, TECH_ENGINEERING = 5)
 	random_color = FALSE
 
@@ -123,14 +120,14 @@
 	desc = "A simple powered hand drill. It's fitted with a bolt bit."
 	icon_state = "drill_bolt"
 	item_state = "drill"
-	usesound = 'sound/items/drill_use.ogg'
+	tool_sound = 'sound/items/drill_use.ogg'
 	matter = list(MAT_STEEL = 150, MAT_SILVER = 50)
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	force = 8
 	w_class = ITEMSIZE_SMALL
 	throw_force = 8
 	attack_verb = list("drilled", "screwed", "jabbed")
-	toolspeed = 0.25
+	tool_speed = 0.25
 	var/obj/item/tool/screwdriver/power/counterpart = null
 	random_color = FALSE
 

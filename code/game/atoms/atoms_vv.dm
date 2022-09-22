@@ -56,7 +56,7 @@
 	switch(var_name)
 		if(NAMEOF(src, base_layer))
 			if(isnull(base_layer))
-				return debug_variable(NAMEOF(src, layer), layer, 0, src)
+				return debug_variable(NAMEOF(src, base_layer), layer, 0, src)
 			else
 				return debug_variable(NAMEOF(src, base_layer), base_layer, 0, src)
 	return ..()

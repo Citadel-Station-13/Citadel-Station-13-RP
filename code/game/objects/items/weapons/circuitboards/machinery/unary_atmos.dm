@@ -5,7 +5,11 @@
 /obj/item/circuitboard/unary_atmos
 	board_type = new /datum/frame/frame_types/machine
 
-/obj/item/circuitboard/unary_atmos/construct(var/obj/machinery/atmospherics/component/unary/U)
+/obj/item/circuitboard/unary_atmos/after_construct(atom/A)
+	. = ..()
+	if(!istype(A, /obj/machinery/atmospherics/component/unary))
+		return
+	var/obj/machinery/atmospherics/component/unary/U = A
 	//TODO: Move this stuff into the relevant constructor when pipe/construction.dm is cleaned up.
 	U.atmos_init()
 	U.build_network()

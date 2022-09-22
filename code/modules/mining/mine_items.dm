@@ -282,7 +282,7 @@ obj/item/pickaxe/tyrmalin/proc/turnOn(mob/user as mob)
 	icon_state = "shovel_bone"
 	force = 15
 	throw_force = 12
-	toolspeed = 0.7
+	tool_speed = 0.7
 	attack_verb = list("slashed", "impaled", "stabbed", "sliced")
 	sharp = 1
 

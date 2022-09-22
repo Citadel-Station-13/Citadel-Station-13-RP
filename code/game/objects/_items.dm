@@ -20,8 +20,6 @@
 	var/burning = null
 	/// Sound to play on hit. Set to [HITSOUND_UNSET] to have it automatically set on init.
 	var/hitsound = HITSOUND_UNSET
-	/// Like hitsound, but for when used properly and not to kill someone.
-	var/usesound = null
 	var/storage_cost = null
 	/// This is used to determine on which slots an item can fit.
 	var/slot_flags = 0
@@ -57,8 +55,6 @@
 	/// If 1, bypass the restrained, lying, and stunned checks action buttons normally test for
 	var/action_button_is_hands_free = 0
 
-	var/tool_behaviour = NONE
-
 	/// 0 prevents all transfers, 1 is invisible
 	//var/heat_transfer_coefficient = 1
 	/// For leaking gas from turf to mask and vice-versa (for masks right now, but at some point, i'd like to include space helmets)
@@ -82,8 +78,6 @@
 	/// 0 won't embed, and 100 will always embed
 	var/embed_chance = EMBED_CHANCE_UNSET
 
-	/// This is a multipler on how 'fast' a tool works.  e.g. setting this to 0.5 will make the tool work twice as fast.
-	var/toolspeed = 1.0
 	/// How long click delay will be when using this, in 1/10ths of a second. Checked in the user's get_attack_speed().
 	var/attackspeed = DEFAULT_ATTACK_COOLDOWN
 	/// Length of tiles it can reach, 1 is adjacent.
@@ -103,9 +97,6 @@
 	/// Drop sound - played when dropping something onto the floor.
 	var/drop_sound = 'sound/items/drop/device.ogg'
 
-	/// Deploytype for switchtools. Only really used on switchtool subtype items, but this is on a general item level
-	/// in case admins want to do some wierd fucky shit with custom switchtools.
-	var/deploytype = null
 	/// Whether or not we are heavy. Used for some species to determine if they can two-hand it.
 	var/heavy = FALSE
 
@@ -681,41 +672,8 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/pwr_drain()
 	return 0 // Process Kill
 
-/// Used for non-adjacent melee attacks with specific weapons capable of reaching more than one tile.
-/// This uses changeling range string A* but for this purpose its also applicable.
-/obj/item/proc/attack_can_reach(var/atom/us, var/atom/them, var/range)
-	if(us.Adjacent(them))
-		return TRUE // Already adjacent.
-	if(AStar(get_turf(us), get_turf(them), /turf/proc/AdjacentTurfsRangedSting, /turf/proc/Distance, max_nodes=25, max_node_depth=range))
-		return TRUE
-	return FALSE
-
 /// Check if an object should ignite others, like a lit lighter or candle.
 /obj/item/proc/is_hot()
-	return FALSE
-
-/*
- *	Assorted tool procs, so any item can emulate any tool, if coded
-*/
-/obj/item/proc/is_screwdriver()
-	return FALSE
-
-/obj/item/proc/is_wrench()
-	return FALSE
-
-/obj/item/proc/is_crowbar()
-	return FALSE
-
-/obj/item/proc/is_wirecutter()
-	return FALSE
-
-/obj/item/proc/is_cable_coil()
-	return FALSE
-
-/obj/item/proc/is_multitool()
-	return FALSE
-
-/obj/item/proc/is_welder()
 	return FALSE
 
 // These procs are for RPEDs and part ratings. The concept for this was borrowed from /vg/station.

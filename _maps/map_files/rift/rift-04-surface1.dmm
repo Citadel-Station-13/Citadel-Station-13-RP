@@ -125,7 +125,7 @@
 /obj/item/weldingtool/mini{
 	desc = "It says 'keychain welder' on the side, but there's no bail to hook it on.";
 	name = "keychain welder";
-	toolspeed = 5
+	tool_speed = 5
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/library)
@@ -331,7 +331,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/evahallway)
 "aoC" = (
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/maintenance/research/lower)
 "aoF" = (
 /obj/structure/cable/heavyduty{
@@ -4150,7 +4150,7 @@
 "ddt" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "ddI" = (
 /obj/structure/bed/chair{
@@ -6791,7 +6791,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/pumpstation)
 "eDR" = (
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/maintenance/engineering/upper)
 "eEi" = (
 /obj/structure/disposalpipe/segment{
@@ -10236,7 +10236,7 @@
 /turf/simulated/wall,
 /area/medical/patient_a)
 "hgE" = (
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "hhr" = (
 /obj/structure/table/reinforced,
@@ -14666,7 +14666,7 @@
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "jSA" = (
 /obj/structure/railing{
@@ -15676,7 +15676,7 @@
 /area/crew_quarters/medical_restroom)
 "kxc" = (
 /obj/effect/zone_divider,
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "kxG" = (
 /obj/structure/table/reinforced,
@@ -16060,7 +16060,7 @@
 /obj/item/tool/prybar/red{
 	desc = "Haven't I seen this before?";
 	name = "old red crowbar";
-	toolspeed = 3
+	tool_speed = 0.5
 	},
 /obj/machinery/light/small{
 	dir = 1

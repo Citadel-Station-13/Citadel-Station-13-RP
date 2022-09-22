@@ -15,7 +15,7 @@
 // Here's where we rewrite how byond handles movement except slightly different
 // To be removed on step_ conversion
 // All this work to prevent a second bump
-/atom/movable/Move(atom/newloc, direct=0)
+/atom/movable/Move(atom/newloc, direct = NONE)
 	. = FALSE
 	if(!newloc || newloc == loc)
 		return

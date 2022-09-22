@@ -619,6 +619,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		var/msg = "[key_name_admin(src)]([ADMIN_KICK(src)]) attempted to use the .click macro!"
 		log_admin(msg)
 		message_admins(msg)
+		log_click("DROPPED: .click macro from [ckey] at [argu], [sec], [number1]. [number2]")
 		GLOB.exploit_warn_spam_prevention = world.time + 10
 
 /mob/verb/DisDblClick(argu = null as anything, sec = "" as text, number1 = 0 as num  , number2 = 0 as num)
@@ -629,6 +630,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		var/msg = "[key_name_admin(src)]([ADMIN_KICK(src)]) attempted to use the .dblclick macro!"
 		log_admin(msg)
 		message_admins(msg)
+		log_click("DROPPED: .dblclick macro from [ckey] at [argu], [sec], [number1]. [number2]")
 		GLOB.exploit_warn_spam_prevention = world.time + 10
 
 /**
@@ -1198,3 +1200,10 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	shifted_pixels = TRUE
 	shift_pixel_y += val
 	pixel_y += val
+
+//! Reachability
+/mob/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)
+	return FALSE
+
+/mob/CanReachIn(atom/movable/mover, atom/target, obj/item/tool, list/cache)
+	return FALSE

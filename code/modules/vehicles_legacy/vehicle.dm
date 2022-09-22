@@ -86,7 +86,7 @@
 				open = !open
 				update_icon()
 				to_chat(user, "<span class='notice'>Maintenance panel is now [open ? "opened" : "closed"].</span>")
-				playsound(src, W.usesound, 50, 1)
+				playsound(src, W.tool_sound, 50, 1)
 		else if(W.is_crowbar() && cell && open)
 			remove_cell(user)
 
@@ -99,7 +99,7 @@
 					if(open)
 						health = min(maxhealth, health+10)
 						user.setClickCooldown(user.get_attack_speed(W))
-						playsound(src, T.usesound, 50, 1)
+						playsound(src, T.tool_sound, 50, 1)
 						user.visible_message("<font color='red'>[user] repairs [src]!</font>","<font color=#4F49AF> You repair [src]!</font>")
 					else
 						to_chat(user, "<span class='notice'>Unable to repair with the maintenance panel closed.</span>")

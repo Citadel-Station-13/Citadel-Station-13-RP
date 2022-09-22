@@ -6,8 +6,7 @@
 	var/user_loc = user.loc
 	var/target_loc = target.loc
 
-	LAZYADD(user.do_afters, target)
-	LAZYADD(target.targeted_by, user)
+	START_INTERACTING_WITH(user, target, INTERACTING_FOR_DO_AFTER)
 
 	var/holding = user.get_active_held_item()
 	var/datum/progressbar/progbar
@@ -27,11 +26,7 @@
 		if(uninterruptible)
 			continue
 
-		if(!(target in user.do_afters))
-			. = FALSE
-			break
-
-		if(!(target in user.do_afters))
+		if(!INTERACTING_WITH_FOR(user, target, INTERACTING_FOR_DO_AFTER))
 			. = FALSE
 			break
 
@@ -58,9 +53,7 @@
 	if(!QDELETED(progbar))
 		qdel(progbar)
 
-	if(!QDELETED(target))
-		LAZYREMOVE(user.do_afters, target)
-		LAZYREMOVE(target.targeted_by, user)
+	STOP_INTERACTING_WITH(user, target, INTERACTING_FOR_DO_AFTER)
 
 /proc/do_after(mob/user, delay, atom/target = null, needhand = TRUE, progress = TRUE, incapacitation_flags = INCAPACITATION_DEFAULT, ignore_movement = FALSE, max_distance = null, ignore_resist = FALSE)
 	if(!user)
@@ -70,10 +63,7 @@
 	var/atom/target_loc = null
 	if(target)
 		target_loc = target.loc
-
-	if(target)
-		LAZYADD(user.do_afters, target)
-		LAZYADD(target.targeted_by, user)
+		START_INTERACTING_WITH(user, target, INTERACTING_FOR_DO_AFTER)
 
 	var/atom/original_loc = user.loc
 
@@ -118,7 +108,7 @@
 			. = FALSE
 			break
 
-		if(target && !(target in user.do_afters))
+		if(target && !INTERACTING_WITH_FOR(user, target, INTERACTING_FOR_DO_AFTER))
 			. = FALSE
 			break
 
@@ -134,6 +124,4 @@
 	if(!QDELETED(progbar))
 		qdel(progbar)
 
-	if(!QDELETED(target))
-		LAZYREMOVE(user.do_afters, target)
-		LAZYREMOVE(target.targeted_by, user)
+	STOP_INTERACTING_WITH(user, target, INTERACTING_FOR_DO_AFTER)

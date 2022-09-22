@@ -64,7 +64,7 @@
 			return
 	else if(I.is_screwdriver())
 		panel_open = !panel_open
-		playsound(src, I.usesound, 50, 1)
+		playsound(src, I.tool_sound, 50, 1)
 		user.visible_message("<span class='notice'>[user] [panel_open ? "opens" : "closes"] the hatch on the [src].</span>", "<span class='notice'>You [panel_open ? "open" : "close"] the hatch on the [src].</span>")
 		update_icon()
 		if(!panel_open && user.machine == src)
@@ -218,7 +218,7 @@
 	if(I.is_wrench())
 		anchored = !anchored
 		visible_message("<span class='notice'>\The [src] has been [anchored ? "bolted to the floor" : "unbolted from the floor"] by [user].</span>")
-		playsound(src, I.usesound, 75, 1)
+		playsound(src, I.tool_sound, 75, 1)
 		if(anchored)
 			connect_to_network()
 		else

@@ -1,3 +1,6 @@
+//! the below call sequence is no longer accurate
+//! converted code goes into items.dm
+//! this is a legacy file because i don't want to rewrite the entire click system in one go
 /*
 === Item Click Call Sequences ===
 These are the default click code call sequences used when clicking on stuff with an item.
@@ -35,14 +38,14 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	return A.attackby(src, user, params, NONE, attack_modifier)
 
 // No comment
-/atom/proc/attackby(obj/item/I, mob/living/user, params, attackchain_flags, damage_multiplier)
+/atom/proc/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	return
 
-/atom/movable/attackby(obj/item/I, mob/living/user, params, attackchain_flags, damage_multiplier)
+/atom/movable/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	if(!(I.item_flags & ITEM_NOBLUDGEON))
 		visible_message("<span class='danger'>[src] has been hit by [user] with [I].</span>")
 
-/mob/living/attackby(obj/item/I, mob/living/user, params, attackchain_flags, damage_multiplier)
+/mob/living/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	if(!ismob(user))
 		return 0
 	if(can_operate(src) && I.do_surgery(src,user))

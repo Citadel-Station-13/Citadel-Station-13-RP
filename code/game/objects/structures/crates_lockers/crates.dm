@@ -102,7 +102,7 @@
 	else if(W.is_wirecutter())
 		if(rigged)
 			to_chat(user, "<span class='notice'>You cut away the wiring.</span>")
-			playsound(src.loc, W.usesound, 100, 1)
+			playsound(src.loc, W.tool_sound, 100, 1)
 			rigged = 0
 			return
 	else if(istype(W, /obj/item/extraction_pack))
@@ -403,12 +403,12 @@
 	if(W.is_wrench() && !src.opened)
 		if(anchored)
 			user.show_message(text("<span class='notice'>[src] can now be moved.</span>"))
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			anchored = FALSE
 
 		else if(!anchored)
 			user.show_message(text("<span class='notice'>[src] is now secured.</span>"))
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			anchored = TRUE
 	else
 		..()

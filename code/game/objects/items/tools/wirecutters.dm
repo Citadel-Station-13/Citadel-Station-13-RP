@@ -17,12 +17,12 @@
 	matter = list(MAT_STEEL = 80)
 	attack_verb = list("pinched", "nipped")
 	hitsound = 'sound/items/wirecutter.ogg'
-	usesound = 'sound/items/wirecutter.ogg'
+	tool_sound = 'sound/items/wirecutter.ogg'
 	drop_sound = 'sound/items/drop/wirecutter.ogg'
 	pickup_sound = 'sound/items/pickup/wirecutter.ogg'
 	sharp = 1
 	edge = 1
-	toolspeed = 1
+	tool_speed = 1
 	var/random_color = TRUE
 
 /obj/item/tool/wirecutters/Initialize(mapload)
@@ -52,21 +52,18 @@
 	else
 		..()
 
-/obj/item/tool/wirecutters/is_wirecutter()
-	return TRUE
-
 /obj/item/tool/wirecutters/bone
 	name = "primitive wirecutters"
 	desc = "Dull wirecutters knapped from bone."
 	icon_state = "cutters_bone"
-	toolspeed = 1.25
+	tool_speed = 1.25
 	random_color = FALSE
 
 /obj/item/tool/wirecutters/brass
 	name = "brass wirecutters"
 	desc = "Brass plated wirecutters that never seem to lose their edge."
 	icon_state = "cutters_brass"
-	toolspeed = 0.75
+	tool_speed = 0.75
 	random_color = FALSE
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_wirecutters
@@ -88,21 +85,21 @@
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_wirecutters)
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "cutters"
-	toolspeed = 0.1
+	tool_speed = 0.1
 	origin_tech = list(TECH_MATERIAL = 5, TECH_ENGINEERING = 4)
 	random_color = FALSE
 
 /obj/item/tool/wirecutters/cyborg
 	name = "wirecutters"
 	desc = "This cuts wires.  With science."
-	usesound = 'sound/items/jaws_cut.ogg'
-	toolspeed = 0.5
+	tool_sound = 'sound/items/jaws_cut.ogg'
+	tool_speed = 0.5
 
 /obj/item/tool/wirecutters/RIGset
 	name = "integrated wirecutters"
 	desc = "If you're seeing this, someone did a dum-dum."
-	usesound = 'sound/items/jaws_cut.ogg'
-	toolspeed = 0.7
+	tool_sound = 'sound/items/jaws_cut.ogg'
+	tool_speed = 0.7
 
 /obj/item/tool/wirecutters/hybrid
 	name = "strange wirecutters"
@@ -113,8 +110,8 @@
 	slowdown = 0.1
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ENGINEERING = 3, TECH_PHORON = 2)
 	attack_verb = list("pinched", "nipped", "warped", "blasted")
-	usesound = 'sound/effects/stealthoff.ogg'
-	toolspeed = 0.4
+	tool_sound = 'sound/effects/stealthoff.ogg'
+	tool_speed = 0.4
 	reach = 2
 
 
@@ -125,9 +122,9 @@
 	item_state = "jawsoflife"
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	matter = list(MAT_METAL=150, MAT_SILVER=50)
-	usesound = 'sound/items/jaws_cut.ogg'
+	tool_sound = 'sound/items/jaws_cut.ogg'
 	force = 15
-	toolspeed = 0.25
+	tool_speed = 0.25
 	random_color = FALSE
 	var/obj/item/tool/crowbar/power/counterpart = null
 

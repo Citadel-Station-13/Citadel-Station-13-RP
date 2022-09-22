@@ -20,10 +20,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/lavaland/central/base/common)
-"bJ" = (
-/mob/living/simple_mob/construct/shade/surt,
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/central/explored)
 "bM" = (
 /turf/simulated/wall/lavaland,
 /area/lavaland/central/transit)
@@ -6775,13 +6771,13 @@ MX
 MX
 MX
 gy
-bJ
 gy
 gy
 gy
 gy
 gy
-bJ
+gy
+gy
 gy
 MX
 MX
@@ -8414,7 +8410,7 @@ DG
 DG
 DG
 MX
-bJ
+gy
 MX
 MX
 MX
@@ -9194,7 +9190,7 @@ MX
 MX
 MX
 MX
-bJ
+gy
 MX
 MX
 gy

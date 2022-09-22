@@ -31,7 +31,7 @@
 	var/datum/weakref_wiring //Used to store weak references for integrated circuitry. This is now the Omnitool.
 	var/colorable = 1
 	var/color_overlay = null
-	toolspeed = 1
+	tool_speed = 1
 
 /obj/item/multitool/Initialize(mapload)
 	. = ..()
@@ -86,7 +86,7 @@
 /obj/item/multitool/cyborg
 	name = "multitool"
 	desc = "Optimised and stripped-down version of a regular multitool."
-	toolspeed = 0.5
+	tool_speed = 0.5
 	colorable = 0
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_multitool
@@ -107,7 +107,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_multitool)
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "multitool"
-	toolspeed = 0.1
+	tool_speed = 0.1
 	origin_tech = list(TECH_MAGNET = 5, TECH_ENGINEERING = 5)
 	colorable = 0
 

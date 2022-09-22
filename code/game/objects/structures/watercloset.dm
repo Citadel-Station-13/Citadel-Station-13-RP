@@ -176,8 +176,8 @@
 	if(I.is_wrench())
 		var/newtemp = input(user, "What setting would you like to set the temperature valve to?", "Water Temperature Valve") in temperature_settings
 		to_chat(user, "<span class='notice'>You begin to adjust the temperature valve with \the [I].</span>")
-		playsound(src.loc, I.usesound, 50, 1)
-		if(do_after(user, 50 * I.toolspeed))
+		playsound(src.loc, I.tool_sound, 50, 1)
+		if(do_after(user, 50 * I.tool_speed))
 			watertemp = newtemp
 			user.visible_message("<span class='notice'>[user] adjusts the shower with \the [I].</span>", "<span class='notice'>You adjust the shower with \the [I].</span>")
 			add_fingerprint(user)

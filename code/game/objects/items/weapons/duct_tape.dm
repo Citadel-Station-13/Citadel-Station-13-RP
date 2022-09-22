@@ -8,7 +8,7 @@
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 	var/amount = 20
 
-	toolspeed = 2 //It is now used in surgery as a not awful, but probably dangerous option, due to speed.
+	tool_speed = 2 //It is now used in surgery as a not awful, but probably dangerous option, due to speed.
 
 /obj/item/duct_tape_roll/attack(var/mob/living/carbon/human/H, var/mob/user)
 	if(istype(H))

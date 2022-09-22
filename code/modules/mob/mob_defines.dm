@@ -70,6 +70,9 @@
 	var/size_multiplier = 1
 
 //! Misc
+	/// What we're interacting with right now, associated to list of reasons and the number of concurrent interactions for that reason.
+	var/list/interacting_with
+
 	var/next_move = null // For click delay, despite the misleading name.
 
 	var/atom/movable/screen/hands = null
@@ -300,11 +303,6 @@
 
 	/// The current turf being examined in the stat panel.
 	var/turf/listed_turf = null
-	/// List of objects that this mob shouldn't see in the stat panel. this silliness is needed because of AI alt+click and cult blood runes.
-	var/list/shouldnt_see = list()
-
-	///For storing what do_after's someone has, in case we want to restrict them to only one of a certain do_after at a time
-	var/list/do_afters
 
 	var/list/active_genes=list()
 	var/mob_size = MOB_MEDIUM

@@ -30023,7 +30023,7 @@
 /obj/item/tool/wrench{
 	desc = "The lower jaw seems to keep jiggling...";
 	name = "loose wrench";
-	toolspeed = 3
+	tool_speed = 3
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
@@ -32406,7 +32406,7 @@
 /obj/item/tool/prybar/red{
 	desc = "Haven't I seen this before?";
 	name = "old red crowbar";
-	toolspeed = 3
+	tool_speed = 3
 	},
 /obj/machinery/light/small{
 	dir = 1
@@ -33503,7 +33503,7 @@
 /obj/item/tool/wirecutters{
 	desc = "It gets jammed a lot.";
 	name = "janky wirecutters";
-	toolspeed = 2
+	tool_speed = 2
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
@@ -39049,7 +39049,7 @@
 /obj/item/weldingtool/mini{
 	desc = "It says 'keychain welder' on the side, but there's no bail to hook it on.";
 	name = "keychain welder";
-	toolspeed = 5
+	tool_speed = 5
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)

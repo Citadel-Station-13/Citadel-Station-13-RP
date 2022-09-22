@@ -90,7 +90,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define SHELTER_DEPLOY_BAD_AREA			"bad area"
 #define SHELTER_DEPLOY_ANCHORED_OBJECTS	"anchored objects"
 
-
 // Setting this much higher than 1024 could allow spammers to DOS the server easily.
 /// I'm not sure about "easily". It can be a lot longer.
 #define MAX_MESSAGE_LEN			4096
@@ -561,3 +560,13 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 		"purple"	= "darkslateblue",	\
 		"pink"		= "lightgrey"		\
 	)
+
+//! Window construction stages
+/// window construction isn't started at all
+#define WINDOW_STATE_UNSECURED 0
+/// frame is screwed to floor
+#define WINDOW_STATE_SCREWED_TO_FLOOR 1
+/// window is crowbarred in
+#define WINDOW_STATE_CROWBRARED_IN 2
+/// window is secured to frame
+#define WINDOW_STATE_SECURED_TO_FRAME 3

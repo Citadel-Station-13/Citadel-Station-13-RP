@@ -72,7 +72,7 @@
 		return
 
 	if(W.is_screwdriver())
-		playsound(src, W.usesound, 50, TRUE)
+		playsound(src, W.tool_sound, 50, TRUE)
 		to_chat(user, SPAN_NOTICE("You start to dismantle the IV drip."))
 		if(do_after(user, 15))
 			to_chat(user, SPAN_NOTICE("You dismantle the IV drip."))

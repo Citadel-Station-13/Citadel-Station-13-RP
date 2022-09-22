@@ -130,10 +130,10 @@
 
 		if(7)
 			if(W.is_wrench() || W.is_screwdriver())
-				playsound(loc, W.usesound, 50, 1)
+				playsound(loc, W.tool_sound, 50, 1)
 				to_chat(user, "<span class='notice'>You begin your finishing touches on \the [src].</span>")
 				if(do_after(user, 20) && build_stage == 7)
-					playsound(loc, W.usesound, 30, 1)
+					playsound(loc, W.tool_sound, 30, 1)
 					var/obj/vehicle_old/train/engine/quadbike/built/product = new(get_turf(src))
 					to_chat(user, "<span class='notice'>You finish \the [product]</span>")
 					product.cell = cell
@@ -175,7 +175,7 @@
 
 		if(2)
 			if(W.is_screwdriver())
-				playsound(src, W.usesound, 50, 1)
+				playsound(src, W.tool_sound, 50, 1)
 				to_chat(user, "<span class='notice'>You close up \the [src].</span>")
 				new /obj/vehicle_old/train/trolley/trailer(get_turf(src))
 				qdel(src)
@@ -253,11 +253,16 @@
 
 		if(6)
 			if(W.is_wrench() || W.is_screwdriver())
-				playsound(loc, W.usesound, 50, 1)
+				playsound(loc, W.tool_sound, 50, 1)
 				to_chat(user, "<span class='notice'>You begin your finishing touches on \the [src].</span>")
 				if(do_after(user, 20) && build_stage == 6)
+<<<<<<< HEAD:code/modules/vehicles_legacy/construction.dm
 					playsound(loc, W.usesound, 30, 1)
 					var/obj/vehicle_old/bike/built/product = new(get_turf(src))
+=======
+					playsound(loc, W.tool_sound, 30, 1)
+					var/obj/vehicle/bike/built/product = new(get_turf(src))
+>>>>>>> citrp/master:code/modules/vehicles/construction.dm
 					to_chat(user, "<span class='notice'>You finish \the [product]</span>")
 					product.cell = cell
 					cell.forceMove(product)

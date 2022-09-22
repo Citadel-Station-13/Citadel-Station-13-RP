@@ -656,7 +656,7 @@
 	else if(W.is_screwdriver() && opened && !cell)	// haxing
 		wiresexposed = !wiresexposed
 		to_chat(user, "The wires have been [wiresexposed ? "exposed" : "unexposed"]")
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		updateicon()
 
 	else if(W.is_screwdriver() && opened && cell)	// radio

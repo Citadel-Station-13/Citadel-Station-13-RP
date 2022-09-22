@@ -142,7 +142,7 @@
 		if("fire")
 			damage = (W.force / fire_resist)
 			if(istype(W, /obj/item/weldingtool))
-				playsound(src, W.usesound, 100, 1)
+				playsound(src, W.tool_sound, 100, 1)
 		if("brute")
 			damage = (W.force / brute_resist)
 
