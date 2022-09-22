@@ -298,9 +298,14 @@
 /mob/living/silicon/robot/proc/is_in_gripper(obj/item/I, require_active_module)
 	return (																										\
 		I.loc == src?																								\
-		!is_module_item(I) :																						\
+		gripper_holding(I) :																						\
 		(istype(I.loc, /obj/item/gripper) && (require_active_module? is_holding(I.loc) : is_module_item(I.loc)))	\
 	)
+
+/mob/living/silicon/robot/proc/gripper_holding(obj/item/I)
+	for(var/obj/item/gripper/G in module.modules)
+		if(G.get_item() == I)
+			return G
 
 /mob/living/silicon/robot/proc/unreference_from_gripper(obj/item/I, newloc)
 	if(!istype(I.loc, /obj/item/gripper))
