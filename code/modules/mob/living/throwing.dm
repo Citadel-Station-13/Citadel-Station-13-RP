@@ -11,7 +11,7 @@
 	if(is_in_inventory(I) && !can_unequip(I))
 		to_chat(src, SPAN_WARNING("You fail to throw [I] at [target]."))
 		return FALSE
-	var/atom/movable/throwing = I.throw_resolve_actual()
+	var/atom/movable/throwing = I.throw_resolve_actual(src)
 	// overhand stuff
 	if(overhand)
 		var/delay = throwing.overhand_throw_delay(src)
@@ -23,7 +23,7 @@
 		to_chat(src, SPAN_WARNING("You fail to throw [I] at [target]."))
 		return FALSE
 	// make sure there's no special behavior
-	if(!I.throw_resolve_override(throwing))
+	if(!I.throw_resolve_override(throwing, src))
 		// drop item
 		if(is_in_inventory(I))
 			if(!drop_item_to_ground(I))
@@ -44,7 +44,7 @@
 		visible_message(SPAN_WARNING("[src] throws [throwing] overhand."))
 	else
 		visible_message(SPAN_WARNING("[src] has thrown [throwing]."))
-	I.throw_resolve_finalize(throwing)
+	I.throw_resolve_finalize(throwing, src)
 	// if the thing deleted itself, we didn't fail, it disappeared
 	if(QDELETED(throwing))
 		return TRUE
@@ -65,7 +65,7 @@
 	newtonian_move(get_dir(target, src))
 
 	throwing.throw_at(target, the_range, null, (a_intent == INTENT_HELP? THROW_AT_IS_NEAT : NONE) | (overhand? THROW_AT_OVERHAND : NONE), src, force = impulse)
-	
+
 	trigger_aiming(TARGET_CAN_CLICK)
 	return TRUE
 
