@@ -221,7 +221,7 @@
 		var/new_name = stripped_input(user, "What do you wish to name [src]?", "New Name", "bokken", 30)
 		if(new_name)
 			name = new_name
-	if(I.tool_behaviour == TOOL_WELDER)
+	if(I.is_welder())
 		var/new_burn = stripped_input(user, "What do you wish to burn into [src]?", "Burnt Inscription","", 140)
 		if(new_burn)
 			burned_in = new_burn
@@ -289,3 +289,46 @@
 	name = "hardwood wakibokken blade"
 	desc = "A sturdy wooden wakizashi blade, used for training on old Terrae."
 	icon_state = "wakibokken_blade_h"
+
+/obj/item/bo_staff
+	name = "stave"
+	desc = "A thick rod of hardened wood, useful as a walking stick, as much as a defensive tool."
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "wakibokken_blade_h"
+	force = 15
+	slot_flags = SLOT_BACK
+	sharp = 1
+	hitsound = "swing_hit"
+	attack_verb = list("smashed", "slammed", "whacked", "thwacked")
+	icon_state = "bostaff0"
+	item_state = "bostaff0"
+	var/defend_chance = 40
+	var/projectile_parry_chance = 0
+
+/obj/item/bo_staff/proc/jedi_spin(mob/living/user)
+	for(var/i in list(NORTH,SOUTH,EAST,WEST,EAST,SOUTH,NORTH,SOUTH,EAST,WEST,EAST,SOUTH))
+		user.setDir(i)
+		if(i == WEST)
+			user.emote("flip")
+		sleep(1)
+
+/obj/item/bo_staff/attack(mob/target, mob/living/user)
+	add_fingerprint(user)
+	if(!ishuman(target))
+		return
+	if(user.a_intent != INTENT_DISARM)
+		return
+	else
+		var/mob/living/carbon/human/H = target
+		var/list/fluffmessages = list("[user] clubs [H] with [src]!", \
+									  "[user] smacks [H] with the butt of [src]!", \
+									  "[user] broadsides [H] with [src]!", \
+									  "[user] smashes [H]'s head with [src]!", \
+									  "[user] beats [H] with front of [src]!", \
+									  "[user] twirls and slams [H] with [src]!")
+		H.visible_message("<span class='warning'>[pick(fluffmessages)]</span>", \
+							   "<span class='userdanger'>[pick(fluffmessages)]</span>")
+		playsound(get_turf(user), 'sound/effects/woodhit.ogg', 75, 1, -1)
+		if(prob(25))
+			(INVOKE_ASYNC(src, .proc/jedi_spin, user))
+			return ..()

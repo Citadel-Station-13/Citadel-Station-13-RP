@@ -387,8 +387,8 @@
 		return FALSE
 	if(panel_open)
 		return FALSE // Close panel first!
-	playsound(loc, W.usesound, 50, 1)
-	var/actual_time = W.toolspeed * time
+	playsound(loc, W.tool_sound, 50, 1)
+	var/actual_time = W.tool_speed * time
 	if(actual_time != 0)
 		user.visible_message( \
 			"<span class='warning'>\The [user] begins [anchored ? "un" : ""]securing \the [src].</span>", \
@@ -403,6 +403,8 @@
 	return TRUE
 
 /obj/machinery/proc/default_deconstruction_crowbar(var/mob/user, var/obj/item/C)
+
+
 	if(!C.is_crowbar())
 		return 0
 	if(!panel_open)
@@ -412,7 +414,7 @@
 /obj/machinery/proc/default_deconstruction_screwdriver(var/mob/user, var/obj/item/S)
 	if(!S.is_screwdriver())
 		return 0
-	playsound(src, S.usesound, 50, 1)
+	playsound(src, S.tool_sound, 50, 1)
 	panel_open = !panel_open
 	to_chat(user, "<span class='notice'>You [panel_open ? "open" : "close"] the maintenance hatch of [src].</span>")
 	update_appearance()
@@ -424,8 +426,8 @@
 	if(!circuit)
 		return 0
 	to_chat(user, "<span class='notice'>You start disconnecting the monitor.</span>")
-	playsound(src, S.usesound, 50, 1)
-	if(do_after(user, 20 * S.toolspeed))
+	playsound(src, S.tool_sound, 50, 1)
+	if(do_after(user, 20 * S.tool_speed))
 		if(machine_stat & BROKEN)
 			to_chat(user, "<span class='notice'>The broken glass falls out.</span>")
 			new /obj/item/material/shard(src.loc)
@@ -436,7 +438,7 @@
 /obj/machinery/proc/alarm_deconstruction_screwdriver(var/mob/user, var/obj/item/S)
 	if(!S.is_screwdriver())
 		return 0
-	playsound(src, S.usesound, 50, 1)
+	playsound(src, S.tool_sound, 50, 1)
 	panel_open = !panel_open
 	to_chat(user, "The wires have been [panel_open ? "exposed" : "unexposed"]")
 	update_appearance()
@@ -448,7 +450,7 @@
 	if(!panel_open)
 		return 0
 	user.visible_message("<span class='warning'>[user] has cut the wires inside \the [src]!</span>", "You have cut the wires inside \the [src].")
-	playsound(src.loc, W.usesound, 50, 1)
+	playsound(src.loc, W.tool_sound, 50, 1)
 	new/obj/item/stack/cable_coil(get_turf(src), 5)
 	. = dismantle()
 
@@ -496,6 +498,6 @@
 	A.update_desc()
 	A.update_appearance()
 	M.loc = null
-	M.deconstruct(src)
+	M.after_deconstruct(src)
 	qdel(src)
 	return 1

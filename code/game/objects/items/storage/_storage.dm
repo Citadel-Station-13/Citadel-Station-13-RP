@@ -59,7 +59,7 @@
 		src.close(user)
 	// I would think there should be some incap check here or something
 	// But MouseDrop doesn't use one (as of this writing), so...
-	else if(isliving(user) && Adjacent(user))
+	else if(isliving(user) && user.Reachability(src))
 		src.open(user)
 	else
 		return ..()
@@ -69,7 +69,7 @@
 		return ..()
 	if(user in is_seeing)
 		close(user)
-	else if(isliving(user) && Adjacent(user))
+	else if(isliving(user) && user.Reachability(src))
 		open(user)
 	else
 		return ..()
@@ -455,8 +455,8 @@
 			H.r_store = null
 			return
 
-	if (src.loc == user)
-		src.open(user)
+	if (loc == user)
+		open(user)
 	else
 		..()
 		for(var/mob/M in range(1))

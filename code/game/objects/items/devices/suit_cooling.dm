@@ -152,7 +152,7 @@
 		else
 			cover_open = 1
 			to_chat(user, "You unscrew the panel.")
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		updateicon()
 		return
 

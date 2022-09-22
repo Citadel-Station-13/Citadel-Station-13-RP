@@ -134,7 +134,7 @@
 	if(W.is_screwdriver())  // Opening the intercom up.
 		wiresexposed = !wiresexposed
 		to_chat(user, "The wires have been [wiresexposed ? "exposed" : "unexposed"]")
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		if(wiresexposed)
 			if(!on)
 				icon_state = "intercom-p_open"
@@ -145,7 +145,7 @@
 		return
 	if(wiresexposed && W.is_wirecutter())
 		user.visible_message("<span class='warning'>[user] has cut the wires inside \the [src]!</span>", "You have cut the wires inside \the [src].")
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		new/obj/item/stack/cable_coil(get_turf(src), 5)
 		var/obj/structure/frame/A = new /obj/structure/frame(src.loc)
 		var/obj/item/circuitboard/M = circuit
@@ -157,7 +157,7 @@
 		A.anchored = 1
 		A.state = 2
 		A.update_icon()
-		M.deconstruct(src)
+		M.after_deconstruct(src)
 		qdel(src)
 	else
 		src.attack_hand(user)

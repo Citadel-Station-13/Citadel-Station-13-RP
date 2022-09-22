@@ -50,6 +50,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 
 /atom/movable/screen/radial/center/Click(location, control, params)
 	if(usr.client == parent.current_user)
+		parent.hide()
 		parent.finished = TRUE
 
 /datum/radial_menu
@@ -279,7 +280,6 @@ GLOBAL_LIST_EMPTY(radial_menus)
 /datum/radial_menu/Destroy()
 	Reset()
 	hide()
-	QDEL_NULL(custom_check_callback)
 	. = ..()
 
 /*

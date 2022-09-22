@@ -37,6 +37,9 @@
 	usable_email_tlds = list("lythios.nt")
 
 	zlevel_datum_type = /datum/map_z_level/rift
+	base_turf_by_z = list(Z_LEVEL_WEST_BASE,
+		Z_LEVEL_WEST_DEEP,
+		Z_LEVEL_WEST_CAVERN)
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
 	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6", "title7", "title8", "bnny")
@@ -198,10 +201,10 @@
 		/datum/planet/classm)
 
 /datum/map/rift/perform_map_generation()
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_WEST_CAVERN, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_WEST_DEEP, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_WEST_BASE, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_UNDERGROUND_FLOOR, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 1, 1, Z_LEVEL_WEST_CAVERN, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 1, 1, Z_LEVEL_WEST_DEEP, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 1, 1, Z_LEVEL_WEST_BASE, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 1, 1, Z_LEVEL_UNDERGROUND_FLOOR, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
 
 	return 1
 
@@ -265,25 +268,25 @@
 	z = Z_LEVEL_WEST_BASE
 	name = "Western Canyon"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c/indoors
+	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
 
 /datum/map_z_level/rift/deep
 	z = Z_LEVEL_WEST_DEEP
 	name = "Western Deep Caves"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/open
+	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
 
 /datum/map_z_level/rift/caves
 	z = Z_LEVEL_WEST_CAVERN
 	name = "Western Caves"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c/indoors
+	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
 
 /datum/map_z_level/rift/plains
 	z = Z_LEVEL_WEST_PLAIN
 	name = "Western Plains"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/open
+	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
 
 /datum/map_z_level/rift/colony
 	z = Z_LEVEL_MISC

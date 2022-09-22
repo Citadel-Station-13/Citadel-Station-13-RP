@@ -241,7 +241,7 @@
 			if(gas.temperature <= target_temperature)	//gas heating
 				var/energy_used = min(gas.get_thermal_energy_change(target_temperature) , active_power_usage)
 
-				gas.add_thermal_energy(energy_used)
+				gas.adjust_thermal_energy(energy_used)
 				//use_power(energy_used, ENVIRON) //handle by update_use_power instead
 			else	//gas cooling
 				var/heat_transfer = min(abs(gas.get_thermal_energy_change(target_temperature)), active_power_usage)
@@ -253,7 +253,7 @@
 
 				heat_transfer = min(heat_transfer, cop * active_power_usage)	//this ensures that we don't use more than active_power_usage amount of power
 
-				heat_transfer = -gas.add_thermal_energy(-heat_transfer)	//get the actual heat transfer
+				heat_transfer = -gas.adjust_thermal_energy(-heat_transfer)	//get the actual heat transfer
 
 				//use_power(heat_transfer / cop, ENVIRON)	//handle by update_use_power instead
 

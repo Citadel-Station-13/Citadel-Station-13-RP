@@ -43,8 +43,8 @@
 
 	if(W.is_screwdriver())
 		to_chat(user, "You begin removing the faceplate from the [src]")
-		playsound(src, W.usesound, 50, 1)
-		if(do_after(user, 10 * W.toolspeed))
+		playsound(src, W.tool_sound, 50, 1)
+		if(do_after(user, 10 * W.tool_speed))
 			to_chat(user, "You remove the faceplate from the [src]")
 			var/obj/structure/frame/A = new /obj/structure/frame(loc)
 			var/obj/item/circuitboard/M = new circuit(A)
@@ -59,7 +59,7 @@
 				C.forceMove(loc)
 			A.state = 3
 			A.update_icon()
-			M.deconstruct(src)
+			M.after_deconstruct(src)
 			qdel(src)
 			return
 

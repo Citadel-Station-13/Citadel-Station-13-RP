@@ -44,12 +44,12 @@
 			return
 		user.visible_message("<span class='notice'>\The [user] starts trying to repair \the [src]'s bulb.</span>")
 		repairing = TRUE
-		if(do_after(user, (40 SECONDS + rand(0, 20 SECONDS)) * W.toolspeed) && can_repair)
+		if(do_after(user, (40 SECONDS + rand(0, 20 SECONDS)) * W.tool_speed) && can_repair)
 			if(prob(30))
 				user.visible_message("<span class='notice'>\The [user] successfully repairs \the [src]!</span>")
 				broken = FALSE
 				update_icon()
-			playsound(src.loc, W.usesound, 50, 1)
+			playsound(src.loc, W.tool_sound, 50, 1)
 		else
 			user.visible_message("<span class='notice'>\The [user] fails to repair \the [src].</span>")
 		repairing = FALSE

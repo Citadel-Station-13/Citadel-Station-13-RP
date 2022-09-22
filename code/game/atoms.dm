@@ -106,8 +106,8 @@
 	var/relative_layer = 0
 
 //! Misc
-	///Mobs that are currently do_after'ing this atom, to be cleared from on Destroy()
-	var/list/targeted_by
+	/// What mobs are interacting with us right now, associated directly to concurrent interactions. (use defines)
+	var/list/interacting_mobs
 
 /**
  * Called when an atom is created in byond (built in engine proc)
@@ -725,22 +725,6 @@
 		blood_DNA = null
 		return 1
 
-/atom/proc/get_global_map_pos()
-	if(!islist(global_map) || !length(global_map)) return
-	var/cur_x = null
-	var/cur_y = null
-	var/list/y_arr = null
-	for(cur_x=1,cur_x<=global_map.len,cur_x++)
-		y_arr = global_map[cur_x]
-		cur_y = y_arr.Find(src.z)
-		if(cur_y)
-			break
-//	to_chat(world, "X = [cur_x]; Y = [cur_y]")
-	if(cur_x && cur_y)
-		return list("x"=cur_x,"y"=cur_y)
-	else
-		return 0
-
 /atom/proc/isinspace()
 	if(istype(get_turf(src), /turf/space))
 		return 1
@@ -769,7 +753,7 @@
 	for(var/mob in seeing_mobs)
 		var/mob/M = mob
 		if(self_message && (M == src))
-			M.show_message( self_message, 1, blind_message, 2)
+			M.show_message(self_message, 1, blind_message, 2)
 		else if((M.see_invisible >= invisibility) && MOB_CAN_SEE_PLANE(M, plane))
 			M.show_message(message, 1, blind_message, 2)
 		else if(blind_message)
@@ -787,7 +771,7 @@
 
 	var/list/hearing_mobs = hear["mobs"]
 	var/list/hearing_objs = hear["objs"]
-
+	var/list/heard_to_floating_message
 	for(var/obj in hearing_objs)
 		var/obj/O = obj
 		O.show_message(message, 2, deaf_message, 1)
@@ -796,6 +780,9 @@
 		var/mob/M = mob
 		var/msg = message
 		M.show_message(msg, 2, deaf_message, 1)
+		M += heard_to_floating_message
+	INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, (message ? message : deaf_message), null, FALSE, heard_to_floating_message, 30)
+
 
 /atom/movable/proc/dropInto(var/atom/destination)
 	while(istype(destination))
@@ -836,7 +823,7 @@
 	if(!message)
 		return
 	var/list/speech_bubble_hearers = list()
-	for(var/mob/M in get_hearers_in_view(7, src))
+	for(var/mob/M in get_hearers_in_view(MESSAGE_RANGE_COMBAT_LOUD, src))
 		M.show_message("<span class='game say'><span class='name'>[src]</span> [atom_say_verb], \"[message]\"</span>", 2, null, 1)
 		if(M.client)
 			speech_bubble_hearers += M.client
@@ -845,6 +832,23 @@
 		var/image/I = generate_speech_bubble(src, "[bubble_icon][say_test(message)]", FLY_LAYER)
 		I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
 		INVOKE_ASYNC(GLOBAL_PROC, /.proc/flick_overlay, I, speech_bubble_hearers, 30)
+		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, null, FALSE, speech_bubble_hearers, 30)
+
+/atom/proc/say_overhead(var/message, whispering, message_range = 7, var/datum/language/speaking = null, var/list/passed_hearing_list)
+	var/list/speech_bubble_hearers = list()
+	var/italics
+	if(whispering)
+		italics = TRUE
+	for(var/mob/M in get_mobs_in_view(message_range, src))
+		if(M.client)
+			speech_bubble_hearers += M.client
+	if(length(speech_bubble_hearers))
+		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, speaking, italics, speech_bubble_hearers, 30)
+
+/proc/generate_speech_bubble(var/bubble_loc, var/speech_state, var/set_layer = FLOAT_LAYER)
+	var/image/I = image('icons/mob/talk_vr.dmi', bubble_loc, speech_state, set_layer)
+	I.appearance_flags |= (RESET_COLOR|PIXEL_SCALE)
+	return I
 
 /proc/generate_speech_bubble(var/bubble_loc, var/speech_state, var/set_layer = FLOAT_LAYER)
 	var/image/I = image('icons/mob/talk_vr.dmi', bubble_loc, speech_state, set_layer)
@@ -853,7 +857,6 @@
 
 /atom/proc/speech_bubble(bubble_state = "", bubble_loc = src, list/bubble_recipients = list())
 	return
-
 
 //! ## Atom Colour Priority System
 /**
@@ -939,55 +942,6 @@
 
 /atom/proc/is_incorporeal()
 	return FALSE
-
-/// Tool behavior procedure. Redirects to tool-specific procs by default.
-/// You can override it to catch all tool interactions, for use in complex deconstruction procs.
-/// Just don't forget to return ..() in the end.
-/atom/proc/tool_act(mob/living/user, obj/item/I, tool_type)
-	switch(tool_type)
-		if(TOOL_CROWBAR)
-			return crowbar_act(user, I)
-		if(TOOL_MULTITOOL)
-			return multitool_act(user, I)
-		if(TOOL_SCREWDRIVER)
-			return screwdriver_act(user, I)
-		if(TOOL_WRENCH)
-			return wrench_act(user, I)
-		if(TOOL_WIRECUTTER)
-			return wirecutter_act(user, I)
-		if(TOOL_WELDER)
-			return welder_act(user, I)
-		if(TOOL_ANALYZER)
-			return analyzer_act(user, I)
-
-// Tool-specific behavior procs. To be overridden in subtypes.
-/atom/proc/crowbar_act(mob/living/user, obj/item/I)
-	return
-
-/atom/proc/multitool_act(mob/living/user, obj/item/I)
-	return
-
-/atom/proc/multitool_check_buffer(user, obj/item/I, silent = FALSE)
-	if(!I.tool_behaviour == TOOL_MULTITOOL)
-		if(user && !silent)
-			to_chat(user, SPAN_WARNING("[I] has no data buffer!"))
-		return FALSE
-	return TRUE
-
-/atom/proc/screwdriver_act(mob/living/user, obj/item/I)
-	SEND_SIGNAL(src, COMSIG_ATOM_SCREWDRIVER_ACT, user, I)
-
-/atom/proc/wrench_act(mob/living/user, obj/item/I)
-	return
-
-/atom/proc/wirecutter_act(mob/living/user, obj/item/I)
-	return
-
-/atom/proc/welder_act(mob/living/user, obj/item/I)
-	return
-
-/atom/proc/analyzer_act(mob/living/user, obj/item/I)
-	return
 
 /atom/proc/CheckParts(list/parts_list)
 	for(var/A in parts_list)

@@ -242,7 +242,7 @@
 	if(O.is_screwdriver())
 		panel_open = !panel_open
 		user.visible_message("[user] [panel_open ? "opens" : "closes"] the maintenance panel of \the [src].", "You [panel_open ? "open" : "close"] the maintenance panel of \the [src].")
-		playsound(src, O.usesound, 50, 1)
+		playsound(src, O.tool_sound, 50, 1)
 		overlays.Cut()
 		if(panel_open)
 			overlays += image(icon, icon_panel)

@@ -145,8 +145,8 @@
 	force_divisor = 0
 	force = 0
 	applies_material_colour = 1
-	base_icon = "fireaxe_mask"
 	icon_state = "fireaxe_mask0"
+	base_icon = "fireaxe_mask"
 	unbreakable = 1
 	sharp = 0
 	edge = 0
@@ -163,6 +163,9 @@
 /obj/item/material/twohanded/fireaxe/bone
 	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
 	default_material = "bone"
+	icon_state = "fireaxe_mask0"
+	base_icon = "fireaxe_mask"
+	applies_material_colour = 1
 
 /obj/item/material/twohanded/fireaxe/bone/Initialize(mapload, material_key)
 	return ..(mapload,"bone")
@@ -172,9 +175,6 @@
 
 /obj/item/material/twohanded/fireaxe/durasteel
 	default_material = "durasteel"
-
-/obj/item/material/twohanded/fireaxe/foam
-	default_material = "foam"
 
 /obj/item/material/twohanded/fireaxe/scythe/plasteel
 	default_material = "plasteel"
@@ -269,6 +269,12 @@
 	name = "spear"
 	desc = "A primitive yet deadly weapon of ancient design."
 	default_material = "bone"
+	icon_state = "spear_mask0"
+	base_icon = "spear_mask"
+	applies_material_colour = 1
+
+/obj/item/material/twohanded/spear/bone/Initialize(mapload, material_key)
+	..(mapload,"bone")
 
 /obj/item/material/twohanded/spear/plasteel
 	default_material = "plasteel"
@@ -333,7 +339,7 @@
 
 /obj/item/material/twohanded/sledgehammer/mjollnir
 	icon_state = "mjollnir0"
-	base_icon = "mjollnir"
+	base_icon = "mjollnir0"
 	name = "Mjollnir"
 	desc = "A long, heavy hammer. This weapons crackles with barely contained energy."
 	force_divisor = 2

@@ -68,7 +68,7 @@
 		return
 	else if(W.is_wrench())
 		anchored = !anchored
-		playsound(src, W.usesound, 75, 1)
+		playsound(src, W.tool_sound, 75, 1)
 		if(anchored)
 			user.visible_message("[user.name] secures [src.name] to the floor.", \
 				"You secure the [src.name] to the floor.", \

@@ -319,4 +319,3 @@
 #define EXAMINE_MORE_TIME 1 SECONDS
 
 #define SLEEP_CHECK_DEATH(X) sleep(X); if(QDELETED(src) || stat == DEAD) return;
-#define INTERACTING_WITH(X, Y) (Y in X.do_afters)

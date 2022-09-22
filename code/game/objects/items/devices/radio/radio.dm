@@ -664,7 +664,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		var/datum/robot_component/C = R.components["radio"]
 		R.cell_use_power(C.active_usage)
 
-/obj/item/radio/borg/attackby(obj/item/I, mob/living/user, params, attackchain_flags, damage_multiplier)
+/obj/item/radio/borg/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	user.set_machine(src)
 	if (!(I.is_screwdriver() || istype(I, /obj/item/encryptionkey)))
 		return ..()
@@ -685,7 +685,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 			recalculateChannels()
 			to_chat(user, "You pop out the encryption key in the radio!")
-			playsound(src, I.usesound, 50, 1)
+			playsound(src, I.tool_sound, 50, 1)
 
 		else
 			to_chat(user, "This radio doesn't have any encryption keys!")

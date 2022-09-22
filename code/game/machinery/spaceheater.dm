@@ -64,7 +64,7 @@
 			return
 	else if(I.is_screwdriver())
 		panel_open = !panel_open
-		playsound(src, I.usesound, 50, 1)
+		playsound(src, I.tool_sound, 50, 1)
 		user.visible_message("<span class='notice'>[user] [panel_open ? "opens" : "closes"] the hatch on the [src].</span>", "<span class='notice'>You [panel_open ? "open" : "close"] the hatch on the [src].</span>")
 		update_icon()
 		if(!panel_open && user.machine == src)
@@ -158,7 +158,7 @@
 					if(heat_transfer > 0)	//heating air
 						heat_transfer = min(heat_transfer, heating_power) //limit by the power rating of the heater
 
-						removed.add_thermal_energy(heat_transfer)
+						removed.adjust_thermal_energy(heat_transfer)
 						cell.use(DYNAMIC_W_TO_CELL_UNITS(heat_transfer * SPACE_HEATER_CHEAT_FACTOR, 1))
 					else	//cooling air
 						heat_transfer = abs(heat_transfer)
@@ -167,7 +167,7 @@
 						var/cop = removed.temperature/T20C	//coefficient of performance from thermodynamics -> power used = heat_transfer/cop
 						heat_transfer = min(heat_transfer, cop * heating_power)	//limit heat transfer by available power
 
-						heat_transfer = removed.add_thermal_energy(-heat_transfer)	//get the actual heat transfer
+						heat_transfer = removed.adjust_thermal_energy(-heat_transfer)	//get the actual heat transfer
 
 						var/power_used = abs(heat_transfer)/cop
 						cell.use(DYNAMIC_W_TO_CELL_UNITS(power_used * SPACE_HEATER_CHEAT_FACTOR, 1))
@@ -218,7 +218,7 @@
 	if(I.is_wrench())
 		anchored = !anchored
 		visible_message("<span class='notice'>\The [src] has been [anchored ? "bolted to the floor" : "unbolted from the floor"] by [user].</span>")
-		playsound(src, I.usesound, 75, 1)
+		playsound(src, I.tool_sound, 75, 1)
 		if(anchored)
 			connect_to_network()
 		else
@@ -276,7 +276,7 @@
 	else if(heat_transfer > 0)
 		change_mode(MODE_HEATING)
 		power_avail = draw_power(min(heat_transfer, active_power_usage) * 0.001) * 1000
-		removed.add_thermal_energy(min(power_avail * THERMOREGULATOR_CHEAT_FACTOR, heat_transfer))
+		removed.adjust_thermal_energy(min(power_avail * THERMOREGULATOR_CHEAT_FACTOR, heat_transfer))
 	else
 		change_mode(MODE_COOLING)
 		heat_transfer = abs(heat_transfer)
@@ -284,7 +284,7 @@
 		var/actual_heat_transfer = heat_transfer
 		heat_transfer = min(heat_transfer, active_power_usage * cop)
 		power_avail = draw_power((heat_transfer/cop) * 0.001) * 1000
-		removed.add_thermal_energy(-min(power_avail * THERMOREGULATOR_CHEAT_FACTOR * cop, actual_heat_transfer))
+		removed.adjust_thermal_energy(-min(power_avail * THERMOREGULATOR_CHEAT_FACTOR * cop, actual_heat_transfer))
 	env.merge(removed)
 
 /obj/machinery/power/thermoregulator/update_icon()
@@ -325,7 +325,7 @@
 		var/datum/gas_mixture/removed = env.remove_ratio(0.99)
 		if(removed)
 			// OH BOY!
-			removed.add_thermal_energy(power_avail * 1000 * THERMOREGULATOR_CHEAT_FACTOR)
+			removed.adjust_thermal_energy(power_avail * 1000 * THERMOREGULATOR_CHEAT_FACTOR)
 			env.merge(removed)
 	var/turf/T = get_turf(src)
 	new /obj/effect/debris/cleanable/liquid_fuel(T, 5)

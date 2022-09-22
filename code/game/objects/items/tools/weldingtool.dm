@@ -30,14 +30,14 @@
 
 	var/acti_sound = 'sound/items/welderactivate.ogg'
 	var/deac_sound = 'sound/items/welderdeactivate.ogg'
-	usesound = 'sound/items/Welder2.ogg'
+	tool_sound = 'sound/items/Welder2.ogg'
 	var/change_icons = TRUE
 	var/flame_intensity = 2 //how powerful the emitted light is when used.
 	var/flame_color = "#FF9933" // What color the welder light emits when its on.  Default is an orange-ish color.
 	var/eye_safety_modifier = 0 // Increasing this will make less eye protection needed to stop eye damage.  IE at 1, sunglasses will fully protect.
 	var/burned_fuel_for = 0 // Keeps track of how long the welder's been on, used to gradually empty the welder if left one, without RNG.
 	var/always_process = FALSE // If true, keeps the welder on the process list even if it's off.  Used for when it needs to regenerate fuel.
-	toolspeed = 1
+	tool_speed = 1
 	drop_sound = 'sound/items/drop/weldingtool.ogg'
 	pickup_sound = 'sound/items/pickup/weldingtool.ogg'
 
@@ -148,6 +148,7 @@
 			L.IgniteMob()
 		if (istype(location, /turf))
 			location.hotspot_expose(700, 50, 1)
+
 /obj/item/weldingtool/attack_self(mob/user)
 	setWelding(!welding, user)
 
@@ -157,6 +158,25 @@
 
 /obj/item/weldingtool/proc/get_max_fuel()
 	return max_fuel
+
+/obj/item/weldingtool/using_as_tool(function, flags, mob/user, atom/target, time, cost, usage)
+	. = ..()
+	if(!. || function != TOOL_WELDER)
+		return
+	if(!isOn())
+		user.action_feedback(SPAN_WARNING("[src] must be on to be used to weld!"), target)
+		return FALSE
+	// floor
+	var/computed = round(cost * time * TOOL_WELDING_FUEL_PER_DS)
+	if(get_fuel() < computed)
+		user.action_feedback(SPAN_WARNING("[src] doesn't have enough fuel left to do that!"), target)
+		return FALSE
+
+/obj/item/weldingtool/used_as_tool(function, flags, mob/user, atom/target, time, cost, usage, success)
+	. = ..()
+	if(!.)
+		return
+	remove_fuel(round(cost * time * TOOL_WELDING_FUEL_PER_DS))
 
 //Removes fuel from the welding tool. If a mob is passed, it will perform an eyecheck on the mob. This should probably be renamed to use()
 /obj/item/weldingtool/proc/remove_fuel(var/amount = 1, var/mob/M = null)
@@ -313,7 +333,7 @@
 /obj/item/weldingtool/largetank/cyborg
 	name = "integrated welding tool"
 	desc = "An advanced welder designed to be used in robotic systems."
-	toolspeed = 0.5
+	tool_speed = 0.5
 
 /obj/item/weldingtool/hugetank
 	name = "upgraded welding tool"
@@ -332,7 +352,7 @@
 	w_class = ITEMSIZE_SMALL
 	matter = list(MAT_METAL = 30, MAT_GLASS = 10)
 	change_icons = 0
-	toolspeed = 2
+	tool_speed = 2
 	eye_safety_modifier = 1 // Safer on eyes.
 
 /obj/item/weldingtool/bone
@@ -341,7 +361,7 @@
 	icon_state = "ashwelder"
 	max_fuel = 20
 	matter = list(MAT_METAL = 30, MAT_BONE = 10)
-	toolspeed = 1.5
+	tool_speed = 1.5
 	eye_safety_modifier = 1 // Safer on eyes.
 
 /obj/item/weldingtool/brass
@@ -350,7 +370,7 @@
 	icon_state = "brasswelder"
 	max_fuel = 40
 	matter = list(MAT_STEEL = 70, "brass" = 60)
-	toolspeed = 0.75
+	tool_speed = 0.75
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_welder
 	name = "Precursor Alpha Object - Self Refueling Exothermic Tool"
@@ -382,7 +402,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_welder)
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "welder"
-	toolspeed = 0.1
+	tool_speed = 0.1
 	flame_color = "#6699FF" // Light bluish.
 	eye_safety_modifier = 2
 	change_icons = 0
@@ -402,7 +422,7 @@
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_PHORON = 3)
 	matter = list(MAT_STEEL = 70, MAT_GLASS = 120)
-	toolspeed = 0.5
+	tool_speed = 0.5
 	change_icons = 0
 	flame_intensity = 3
 	always_process = TRUE
@@ -421,7 +441,7 @@
 	max_fuel = 80
 	eye_safety_modifier = -2	// Brighter than the sun. Literally, you can look at the sun with a welding mask of proper grade, this will burn through that.
 	slowdown = 0.1
-	toolspeed = 0.25
+	tool_speed = 0.25
 	w_class = ITEMSIZE_LARGE
 	flame_intensity = 5
 	origin_tech = list(TECH_ENGINEERING = 5, TECH_PHORON = 4, TECH_PRECURSOR = 1)
@@ -438,7 +458,7 @@
 	max_fuel = 10
 	w_class = ITEMSIZE_NO_CONTAINER
 	matter = null
-	toolspeed = 1.25
+	tool_speed = 1.25
 	change_icons = 0
 	flame_intensity = 1
 	eye_safety_modifier = 1
@@ -487,7 +507,7 @@
 	desc = "A bulky, cooler-burning welding tool that draws from a worn welding tank."
 	icon_state = "tubewelder"
 	max_fuel = 5
-	toolspeed = 1.75
+	tool_speed = 1.75
 	eye_safety_modifier = 2
 
 //Welder Spear
@@ -498,7 +518,7 @@
 	max_fuel = 10
 	w_class = ITEMSIZE_NORMAL
 	matter = list(MAT_METAL = 50, MAT_GLASS = 10)
-	toolspeed = 1.5
+	tool_speed = 1.5
 	eye_safety_modifier = 1 // Safer on eyes.
 	reach = 2
 
@@ -632,12 +652,12 @@
 	use_external_power = 1
 
 /obj/item/weldingtool/electric/mounted/cyborg
-	toolspeed = 0.5
+	tool_speed = 0.5
 
 
 /obj/item/weldingtool/electric/mounted/RIGset
 	name = "arc welder"
-	toolspeed = 0.7 // Let's see if this works with RIGs
+	tool_speed = 0.7 // Let's see if this works with RIGs
 	desc = "If you're seeing this, someone did a dum-dum."
 
 /obj/item/weldingtool/electric/mounted/exosuit
