@@ -286,6 +286,12 @@ var/list/_client_preferences_by_type
 /datum/client_preference/parallax/toggled(mob/preference_mob, enabled)
 	. = ..()
 	preference_mob?.client?.parallax_holder?.Reset()
+/datum/client_preference/overhead_chat
+	description = "Overhead Chat"
+	key = "OVERHEAD_CHAT"
+	enabled_description = "Show"
+	disabled_description = "Hide"
+	enabled_by_default = TRUE
 
 /********************
 * Staff Preferences *

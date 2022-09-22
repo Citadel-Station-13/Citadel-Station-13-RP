@@ -48,3 +48,13 @@
   Captain277:
   - rscadd: Adds the Konigin-63 Compact.
   - rscadd: Adds Virology.
+2022-09-21:
+  ktoma36:
+  - rscadd: Mining outpost on west plains
+  - tweak: Mining's elevator area at the bottom
+  - bugfix: Underground Weatherbug
+  - code_imp: Commented out addTurf and removeTurf procs in cave generation (with
+      silicons help, they were the root cause of the bug)
+2022-09-22:
+  nevimer:
+  - rscadd: floating messages and preferences for it.

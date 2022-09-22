@@ -18,6 +18,7 @@
 	icon_state = "disposal"
 	anchored = TRUE
 	density = TRUE
+	pass_flags_self = ATOM_PASS_OVERHEAD_THROW
 	var/datum/gas_mixture/air_contents	// internal reservoir
 	var/mode = 1	// item mode 0=off 1=charging 2=charged
 	var/flush = FALSE	// true if flush handle is pulled

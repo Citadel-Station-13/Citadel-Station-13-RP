@@ -286,6 +286,17 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_MELEE
 
+/datum/crafting_recipe/tyrmalin_heavy
+	name = "Tyrmalin heavy-duty mining charge"
+	result = /obj/item/grenade/explosive/ied/tyrmalin/large
+	reqs = list(/obj/item/grenade/explosive/ied/tyrmalin = 4,
+				/obj/item/duct_tape_piece = 8)
+	parts = list(/obj/item/grenade/explosive/ied/tyrmalin = 4,
+				/obj/item/duct_tape_piece = 8)
+	time = 15
+	category = CAT_WEAPONRY
+	subcategory = CAT_OTHER
+
 //////////////////
 ///GUNS CRAFTING//
 //////////////////
@@ -513,7 +524,7 @@
 	time = 5
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
-	
+
 /datum/crafting_recipe/leadball
 	name = "Lead Ball"
 	result = /obj/item/ammo_casing/musket
