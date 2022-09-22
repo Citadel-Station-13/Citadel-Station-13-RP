@@ -43,8 +43,6 @@ var/list/floating_chat_colors = list()
 			else
 				C.images += gibberish
 
-#define MAPTEXT(text) {"<span class='maptext'>[##text]</span>"}
-
 /proc/generate_floating_text(atom/movable/holder, message, style, size, duration, show_to)
 	var/image/I = image(null, holder)
 	var/mob/living/X
