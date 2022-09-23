@@ -163,5 +163,3 @@
 
 /// called when we update lying: (new_lying)
 #define COMSIG_MOB_UPDATE_LYING		"mob_update_lying"
-
-#warn impl

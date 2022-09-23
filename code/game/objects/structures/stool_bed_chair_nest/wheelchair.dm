@@ -205,14 +205,17 @@
 		B.setDir(newdir)
 	bloodiness--
 
-#warn a
-/obj/structure/bed/chair/wheelchair/buckle_mob(mob/living/M, forced = FALSE, check_loc = TRUE)
-	if(issilicon(M))	// No abusing wheelchairs.
-		return
+/obj/structure/bed/chair/wheelchair/can_buckle_mob(mob/M, flags, mob/user, semantic)
+	if(issilicon(M))
+		return FALSE
+	return ..()
+
+/obj/structure/bed/chair/wheelchair/mob_buckled(mob/M, flags, mob/user, semantic)
+	. = ..()
 	if(M == pulling_along)
 		pulling_along = null
-		usr.pulledby = null
-	return ..()
+		if(M.pulledby == src)
+			M.pulledby = null
 
 /obj/item/wheelchair
 	name = "wheelchair"

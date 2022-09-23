@@ -80,13 +80,11 @@
 	source_hoist.release_hoistee()
 
 // This will handle mobs unbuckling themselves.
-#warn a
-/obj/effect/hoist_hook/unbuckle_mob()
+/obj/effect/hoist_hook/mob_unbuckled(mob/M, flags, mob/user, semantic)
 	. = ..()
-	if (. && !QDELETED(source_hoist))
-		var/mob/M = .
+	if(source_hoist && source_hoist.hoistee == M)
 		source_hoist.hoistee = null
-		M.fall()
+	M.fall()
 
 /obj/structure/hoist
 	icon = 'icons/obj/hoists.dmi'

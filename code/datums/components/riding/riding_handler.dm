@@ -371,6 +371,7 @@
 		if(!ride_check(M, AM.buckled_mobs[M], TRUE))
 			force_dismount(M)
 			continue	// don't do rest of logic
+#warn chcek flag for lying down
 
 /**
  * checks if a person can stay on us. if not, they'll be kicked off by ride_check()
