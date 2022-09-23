@@ -165,7 +165,7 @@
 /obj/item/grab/attack_self()
 	return s_click(hud)
 
-/obj/item/grab/throw_resolve_actual()
+/obj/item/grab/throw_resolve_actual(mob/user)
 	if(affecting.buckled)
 		return
 	if(state < GRAB_AGGRESSIVE)
@@ -173,10 +173,10 @@
 	animate(affecting, pixel_x = initial(affecting.pixel_x), pixel_y = initial(affecting.pixel_y), 4, 1)
 	return affecting
 
-/obj/item/grab/throw_resolve_finalize()
+/obj/item/grab/throw_resolve_finalize(atom/movable/resolver, mob/user)
 	qdel(src)
 
-/obj/item/grab/throw_resolve_override()
+/obj/item/grab/throw_resolve_override(atom/movable/resolved, mob/user)
 	return TRUE
 
 //Updating pixelshift, position and direction
