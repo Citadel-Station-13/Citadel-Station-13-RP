@@ -37,7 +37,7 @@ SUBSYSTEM_DEF(air)
 	air_master = src
 
 /datum/controller/subsystem/air/Initialize(timeofday)
-#if !(FASTBOOT & FASTBOOT_DISABLE_ZONES)
+#ifdef FASTBOOT_DISABLE_ZONES
 	report_progress("Processing Geometry...")
 
 	current_cycle = 0

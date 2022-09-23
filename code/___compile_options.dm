@@ -1,17 +1,11 @@
 //* Core settings
-//! Fastboot fags - useful for debugging
-/// default - fully load
-#define FASTBOOT_NONE (0)
+//! Fastboot flags - useful for debugging
 /// disable automatic roundstart icon smoothing
 #define FASTBOOT_DISABLE_SMOOTHING (1<<0)
 /// disable loading late maps
 #define FASTBOOT_DISABLE_LATELOAD (1<<1)
 /// disable atmospherics zone build
-#define FASTBOOT_DISABLE_ZONES (1<<2)
-
-//! Fastboot settings
-#define FASTBOOT FASTBOOT_DISABLE_SMOOTHING | FASTBOOT_DISABLE_LATELOAD
-
+// #define FASTBOOT_DISABLE_ZONES (1<<2)
 
 ///By using the testing("message") proc you can create debug-feedback for people with this
 //#define TESTING

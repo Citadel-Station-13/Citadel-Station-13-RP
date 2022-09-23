@@ -365,7 +365,7 @@ SUBSYSTEM_DEF(mapping)
 	chosen_type.load(T)
 
 /datum/controller/subsystem/mapping/proc/loadLateMaps()
-#if !(FASTBOOT & FASTBOOT_NO_LATELOAD)
+#ifdef FASTBOOT_DISABLE_LATELOAD
 	var/list/deffo_load = GLOB.using_map.lateload_z_levels
 	var/list/maybe_load = GLOB.using_map.lateload_single_pick
 
