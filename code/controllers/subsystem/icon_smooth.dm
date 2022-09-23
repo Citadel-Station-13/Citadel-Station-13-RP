@@ -36,7 +36,7 @@ SUBSYSTEM_DEF(icon_smooth)
 	smooth_queue = list()
 	deferred = list()
 
-#ifdef FASTBOOT_DISABLE_SMOOTHING
+#ifndef FASTBOOT_DISABLE_SMOOTHING
 	// smooth everything
 	for(var/i in 1 to world.maxz)
 		smooth_zlevel(i, TRUE)
