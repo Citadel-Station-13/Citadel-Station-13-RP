@@ -185,12 +185,12 @@ Buildable meters
 	fixdir()
 
 	var/obj/machinery/atmospherics/fakeA = pipe_type
-	var/flags = initial(fakeA.pipe_flags)
+	var/initial_flags = initial(fakeA.pipe_flags)
 	for(var/obj/machinery/atmospherics/M in loc)
-		if((M.pipe_flags & flags & PIPING_ONE_PER_TURF))	//Only one dense/requires density object per tile, eg connectors/cryo/heater/coolers.
+		if((M.pipe_flags & initial_flags & PIPING_ONE_PER_TURF))	//Only one dense/requires density object per tile, eg connectors/cryo/heater/coolers.
 			to_chat(user, "<span class='warning'>Something is hogging the tile!</span>")
 			return TRUE
-		if((M.piping_layer != piping_layer) && !((M.pipe_flags | flags) & PIPING_ALL_LAYER)) // Pipes on different layers can't block each other unless they are ALL_LAYER
+		if((M.piping_layer != piping_layer) && !((M.pipe_flags | initial_flags) & PIPING_ALL_LAYER)) // Pipes on different layers can't block each other unless they are ALL_LAYER
 			continue
 		if(M.get_init_dirs() & SSmachines.get_init_dirs(pipe_type, dir))	// matches at least one direction on either type of pipe
 			to_chat(user, "<span class='warning'>There is already a pipe at that location!</span>")
