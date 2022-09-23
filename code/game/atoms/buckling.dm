@@ -278,6 +278,19 @@
 /atom/movable/proc/mob_resist_buckle(mob/M, semantic)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_MOB_RESIST_BUCKLE, M, semantic)
+
+	// default restrained handling
+	if(buckle_restrained_resist_time && M.restrained())
+		M.visible_message(
+			SPAN_DANGER("[M] attempts to unbuckle themselves from [src]!"),
+			SPAN_WARNING("You attempt to unbuckle yourself. (This will take a little bit and you need to stand still.)")
+		)
+		if(!do_after(M, buckle_restrained_resist_time, src, incapacitation_flags = INCAPACITATION_DEFAULT & ~(INCAPACITATION_RESTRAINED | INCAPACITATION_BUCKLED_FULLY)))
+			return FALSE
+		M.visible_message(
+			SPAN_DANGER("[M] manages to unbuckle themselves."),
+			SPAN_NOTICE("You successfully unbuckle yourself.")
+		)
 	return TRUE
 
 /**

@@ -44,8 +44,8 @@
 
 	buckle_allowed = TRUE
 	buckle_flags = BUCKLING_NO_USER_BUCKLE // maybe when these aren't bullshit op i'll feel the need to """fix""" the fact that they're perfect projectile blockers half the time
+	buckle_restrained_resist_time = 0
 
-	#warn hook escape time
 	var/escape_time = 8 SECONDS
 
 /obj/effect/energy_net/Initialize(mapload)
@@ -81,8 +81,8 @@
 	. = ..()
 	if(!.)
 		return
-	M.setClickCooldown(user.get_attack_speed())
-	visible_message("<span class='danger'>[user] begins to tear at \the [src]!</span>")
+	M.setClickCooldown(M.get_attack_speed())
+	visible_message("<span class='danger'>[M] begins to tear at \the [src]!</span>")
 	if(!do_after(M, escape_time, src, incapacitation_flags = INCAPACITATION_DEFAULT & ~(INCAPACITATION_RESTRAINED | INCAPACITATION_BUCKLED_FULLY)))
 		return FALSE
 	visible_message("<span class='danger'>[M] manages to tear \the [src] apart!</span>")

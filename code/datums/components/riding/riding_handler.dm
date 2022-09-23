@@ -117,6 +117,7 @@
 /datum/component/riding_handler/proc/signal_hook_handle_move(atom/movable/source, atom/old_loc, dir)
 	SIGNAL_HANDLER
 	update_riders_on_move(old_loc, dir)
+	last_turf = isturf(old_loc)? old_loc : null
 
 /datum/component/riding_handler/proc/signal_hook_handle_turn(atom/movable/source, old_dir, new_dir)
 	SIGNAL_HANDLER
@@ -306,8 +307,10 @@
 	if(riding_handler_flags & CF_RIDING_HANDLER_ALLOW_BORDER)
 		// allow one off
 		if(riding_handler_flags & CF_RIDING_HANDLER_FORBID_BORDER_CROSS)
-			// allow if next isn't fine but current is fine, or if next is fine and
-			#warn impl
+			// allow if last was fine, or if next and current are fine
+			var/current_fine = turfcheck(get_turf(parent))
+			// this WILL let us skip over diagonal boundaries, so you have to design around that!
+			return current_fine ? (turfcheck(next) || turfcheck(last_turf)) : (turfcheck(next) && (get_dist(next, last_turf) <= 1))
 		else
 			// allow either if next or current is fine, which lets us cross 1-wide borders
 			return turfcheck(next) || turfcheck(get_turf(parent))
@@ -336,7 +339,6 @@
 	if(!_check_turf(next))
 		if(CHATSPAM_THROTTLE_DEFAULT)
 			to_chat(M, SPAN_WARNING("[parent] cannot drive onto [next]!"))
-			#warn impl border cross message
 		return FALSE
 	if(!process_spacemove(dir))
 		return FALSE
