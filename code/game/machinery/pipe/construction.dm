@@ -177,7 +177,7 @@ Buildable meters
 		return wrench_act(user, W)
 	return ..()
 
-/obj/item/pipe/wrench_act(var/mob/living/user, var/obj/item/tool/wrench/W)
+/obj/item/pipe/wrench_act(obj/item/I, mob/user, flags, hint)
 	if(!isturf(loc))
 		return TRUE
 
@@ -206,7 +206,7 @@ Buildable meters
 		return TRUE
 	transfer_fingerprints_to(A)
 
-	playsound(src, W.tool_sound, 50, 1)
+	playsound(src, I.tool_sound, 50, 1)
 	user.visible_message( \
 		"[user] fastens \the [src].", \
 		"<span class='notice'>You fasten \the [src].</span>", \
