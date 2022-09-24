@@ -467,7 +467,7 @@
 /datum/gear/restricted/security/back/dufflebag
 	name = "Security - Dufflebag"
 	path = /obj/item/storage/backpack/dufflebag/sec
-	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective", "Talon Guard")
+	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective")
 	cost = 2
 
 //Suit
@@ -569,7 +569,7 @@
 /datum/gear/restricted/medical/back/dufflebag
 	name = "Medical Dufflebag"
 	path = /obj/item/storage/backpack/dufflebag/med
-	allowed_roles = list("Medical Doctor", "Chief Medical Officer", "Chemist", "Paramedic", "Geneticist", "Psychiatrist", "Field Medic", "Talon Doctor")
+	allowed_roles = list("Medical Doctor", "Chief Medical Officer", "Chemist", "Paramedic", "Geneticist", "Psychiatrist", "Field Medic")
 	cost = 2
 
 /datum/gear/restricted/medical/back/dufflebag/emt
@@ -795,7 +795,7 @@
 /datum/gear/restricted/engineering/back/dufflebag
 	name = "Engineering Dufflebag"
 	path = /obj/item/storage/backpack/dufflebag/eng
-	allowed_roles = list("Station Engineer", "Chief Engineer", "Atmospheric Technician", "Talon Engineer")
+	allowed_roles = list("Station Engineer", "Chief Engineer", "Atmospheric Technician")
 	cost = 2
 
 //Uniform
@@ -1511,21 +1511,27 @@
 
 
 //*This clusterfuck of access combinations
-//*Now with Talon roles!
 /datum/gear/restricted/misc/accessory/holster
-	name = "(Command/Security/Exploration/Talon) Holster - Selection"
+	name = "(Command/Security/Exploration) Holster - Selection"
 	path = /obj/item/clothing/accessory/holster
 	cost = 3
 	allowed_roles = list(
 	"Facility Director", "Head of Personnel", "Chief Medical Officer", "Head of Security", "Research Director", "Chief Engineer", "Command Secretary",
 	"Security Officer", "Warden", "Head of Security", "Detective",
-	"Field Medic", "Explorer", "Pathfinder", "Pilot",
-	"Talon Captain", "Talon Doctor", "Talon Medic", "Talon Engineer", "Talon Pilot", "Talon Guard")
+	"Field Medic", "Explorer", "Pathfinder", "Pilot")
 
 /datum/gear/restricted/misc/accessory/holster/New()
 	..()
-	var/list/holsters = list()
-	for(var/holster in typesof(/obj/item/clothing/accessory/holster))
+	var/static/list/default_holsters = list(
+		/obj/item/clothing/accessory/holster/armpit,
+		/obj/item/clothing/accessory/holster/waist,
+		/obj/item/clothing/accessory/holster/hip,
+		/obj/item/clothing/accessory/holster/leg,
+		/obj/item/clothing/accessory/holster/machete,
+		/obj/item/clothing/accessory/holster/waist/kinetic_accelerator
+		)
+	var/list/holsters = default_holsters.Copy()
+	for(var/holster in list(default_holsters))
 		var/obj/item/clothing/accessory/holster_type = holster
-		holsters[initial(holster_type.name)] = holster_type
+		default_holsters[initial(holster_type.name)] = holster_type
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(holsters, /proc/cmp_text_asc))
