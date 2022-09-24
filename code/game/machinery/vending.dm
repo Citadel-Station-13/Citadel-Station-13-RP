@@ -781,7 +781,7 @@
 					/obj/item/reagent_containers/food/snacks/liquidprotein = 10,
 					/obj/item/reagent_containers/pill/diet = 25,
 					/obj/item/towel/random = 40,
-					/obj/item/reagent_containers/food/snacks/brainsnax = 20,
+					/obj/item/reagent_containers/food/snacks/brainsnax = 20
 					)
 
 	contraband = list(/obj/item/reagent_containers/syringe/steroid = 4)
