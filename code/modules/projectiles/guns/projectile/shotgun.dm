@@ -124,6 +124,7 @@ obj/item/gun/projectile/shotgun/pump/combat/warden/verb/rename_gun()
 	item_state = "grit"
 	caliber = "10g"
 	ammo_type = /obj/item/ammo_casing/a10g/pellet
+	fire_sound = 'sound/weapons/gunshot/musket.ogg'
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 4)
 	one_handed_penalty = 5
 	recoil = 10
