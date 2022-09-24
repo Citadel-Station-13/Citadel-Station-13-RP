@@ -197,3 +197,7 @@
 /obj/item/trash/bugsnacks
 	name = "Bugsnacks"
 	icon_state = "bugsnacks"
+	
+/obj/item/trash/brainsnaxtrash
+	name = "\improper BrainSnax can"
+	icon_state = "brainsnaxtrash"
