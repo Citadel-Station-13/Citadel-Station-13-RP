@@ -174,7 +174,7 @@ Buildable meters
 
 /obj/item/pipe/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(W.is_wrench())
-		return wrench_act(user, W)
+		return wrench_act(W, user)
 	return ..()
 
 /obj/item/pipe/wrench_act(obj/item/I, mob/user, flags, hint)
@@ -263,10 +263,10 @@ Buildable meters
 
 /obj/item/pipe_meter/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(W.is_wrench())
-		return wrench_act(user, W)
+		return wrench_act(W, user)
 	return ..()
 
-/obj/item/pipe_meter/wrench_act(var/mob/living/user, var/obj/item/tool/wrench/W)
+/obj/item/pipe_meter/wrench_act(obj/item/I, mob/user, flags, hint)
 	var/obj/machinery/atmospherics/pipe/pipe
 	for(var/obj/machinery/atmospherics/pipe/P in loc)
 		if(P.piping_layer == piping_layer)
