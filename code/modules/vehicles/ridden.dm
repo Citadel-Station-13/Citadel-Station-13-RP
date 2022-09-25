@@ -1,6 +1,6 @@
 /obj/vehicle/ridden
 	name = "ridden vehicle"
-	can_buckle = TRUE
+	buckle_allowed = TRUE
 	buckle_max_mobs = 1
 	buckle_lying = FALSE
 	default_driver_move = FALSE
@@ -32,9 +32,11 @@
 
 /obj/vehicle/ridden/mob_buckled(mob/M, flags, mob/user, semantic)
 	add_occupant(M)
+	/*
 	if(M.get_num_legs() < legs_required)
 		to_chat(M, "<span class='warning'>You don't have enough legs to operate the pedals!</span>")
 		unbuckle_mob(M)
+	*/
 	return ..()
 
 /obj/vehicle/ridden/attackby(obj/item/I, mob/user, params)
@@ -61,8 +63,8 @@
 		inserted_key = null
 		return TRUE
 
-/obj/vehicle/ridden/drive_check(mob/user)
+/obj/vehicle/ridden/proc/drive_check(mob/user)
 	if(key_type && !is_key(inserted_key))
 		to_chat(user, SPAN_WARNING("[src] has no key inserted."))
 		return FALSE
-	return ..()
+	return TRUE

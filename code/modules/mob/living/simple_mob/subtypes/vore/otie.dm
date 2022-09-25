@@ -259,9 +259,11 @@
 
 /mob/living/simple_mob/otie/Login()
 	. = ..()
-	if(!riding_datum)
-		riding_datum = new /datum/riding/simple_mob(src)
-	verbs |= /mob/living/simple_mob/proc/animal_mount
+	AddComponent(/datum/component/riding_filter/mob/animal)
+
+/mob/living/simple_mob/otie/Logout()
+	. = ..()
+	DelComponent(/datum/component/riding_filter/mob/animal)
 
 /mob/living/simple_mob/otie/MouseDroppedOnLegacy(mob/living/M, mob/living/user)
 	return

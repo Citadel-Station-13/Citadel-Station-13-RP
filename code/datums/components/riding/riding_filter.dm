@@ -26,6 +26,8 @@
 	can_transfer = FALSE
 	dupe_mode = COMPONENT_DUPE_UNIQUE
 	dupe_type = /datum/component/riding_filter
+	/// filter flags
+	var/riding_filter_flags = CF_RIDING_FILTER_AUTO_BUCKLE_TOGGLE
 	/// expected typepath of what we're to be filtering for
 	var/expected_typepath = /atom/movable
 	/// the path of the riding handler component we're going to make.

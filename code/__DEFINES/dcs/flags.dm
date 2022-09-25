@@ -59,11 +59,23 @@
 #define CUSTOM_INGREDIENT_ICON_LINE 4
 #define CUSTOM_INGREDIENT_ICON_STACKPLUSTOP 5
 
+//! Simple conflict element
 // Conflict element IDs
 #define CONFLICT_ELEMENT_CRUSHER "crusher"
 #define CONFLICT_ELEMENT_KA "kinetic_accelerator"
 
-//! riding handler flags
+//! Riding filters
+//? Filter flags
+/// automatically enable and reset buckle_allowed on add/remove
+#define CF_RIDING_FILTER_AUTO_BUCKLE_TOGGLE			(1<<0)
+
+DEFINE_BITFIELD(riding_filter_flags, list(
+	BITFIELD(CF_RIDING_FILTER_AUTO_BUCKLE_TOGGLE),
+))
+
+
+//! Riding handlers
+//? Handler flags
 /// ephemeral - delete on last mob unbuckled
 #define CF_RIDING_HANDLER_EPHEMERAL					(1<<0)
 /// allow us to be one away from valid turfs
@@ -83,7 +95,7 @@ DEFINE_BITFIELD(riding_handler_flags, list(
 	BITFIELD(CF_RIDING_HANDLER_FORBID_BORDER_CROSS),
 ))
 
-//! riding check flags
+//? Check flags
 /// if unconscious
 #define CF_RIDING_CHECK_UNCONSCIOUS					(1<<0)
 /// if restrained

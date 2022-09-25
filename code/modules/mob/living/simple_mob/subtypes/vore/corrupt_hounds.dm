@@ -56,8 +56,8 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive/corrupthound
 
 	buckle_max_mobs = 1 //Yeehaw
-	can_buckle = TRUE
-	buckle_movable = TRUE
+	buckle_allowed = TRUE
+	buckle_flags = BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF
 	buckle_lying = FALSE
 
 	vore_active = TRUE
@@ -105,9 +105,11 @@
 
 /mob/living/simple_mob/vore/aggressive/corrupthound/Login()
 	. = ..()
-	if(!riding_datum)
-		riding_datum = new /datum/riding/simple_mob(src)
-	verbs |= /mob/living/simple_mob/proc/animal_mount
+	AddComponent(/datum/component/riding_filter/mob/animal)
+
+/mob/living/simple_mob/vore/aggressive/corrupthound/Logout()
+	. = ..()
+	DelComponent(/datum/component/riding_filter/mob/animal, exact = TRUE)
 
 /mob/living/simple_mob/vore/aggressive/corrupthound/MouseDroppedOnLegacy(mob/living/M, mob/living/user)
 	return
