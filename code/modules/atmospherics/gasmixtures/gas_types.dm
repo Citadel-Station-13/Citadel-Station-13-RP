@@ -53,8 +53,8 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 		if(initial(gas.moles_visible) != null)
 			.[gas_path] = new /list(FACTOR_GAS_VISIBLE_MAX)
 			for(var/i in 1 to FACTOR_GAS_VISIBLE_MAX)
-				var/image/I = image('icons/effects/atmospherics.dmi', icon_state = initial(gas.gas_overlay), layer = FLY_LAYER)
-				I.plane = MOB_PLANE
+				var/image/I = image('icons/effects/atmospherics.dmi', icon_state = initial(gas.gas_overlay), layer = FLOAT_LAYER + i)
+				I.plane = FLOAT_PLANE
 				I.alpha = i * 255 / FACTOR_GAS_VISIBLE_MAX
 				I.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 				I.appearance_flags = RESET_TRANSFORM | RESET_COLOR | RESET_ALPHA | KEEP_APART

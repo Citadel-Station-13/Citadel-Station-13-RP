@@ -49,13 +49,15 @@ Class Procs:
 	var/list/edges = list()
 	var/datum/gas_mixture/air = new
 
-	var/list/turf_graphics
+	/// turf graphics holder
+	var/atom/movable/zas_graphics/renderer_one_for_all
 
 /datum/zas_zone/New()
 	air_master.add_zone(src)
 	air.temperature = TCMB
 	air.group_multiplier = 1
 	air.volume = CELL_VOLUME
+	renderer_one_for_all = new
 
 /datum/zas_zone/proc/add(turf/simulated/T)
 #ifdef ZAS_ASSERTIONS
@@ -75,7 +77,7 @@ Class Procs:
 		if(fuel)
 			fuel_objs += fuel
 	if(T.allow_gas_overlays && !T.outdoors)
-		T.add_overlay(turf_graphics)
+		T.vis_contents += renderer_one_for_all
 
 /datum/zas_zone/proc/remove(turf/simulated/T)
 #ifdef ZAS_ASSERTIONS
@@ -94,7 +96,7 @@ Class Procs:
 		if(fuel)
 			fuel_objs -= fuel
 	T.zone = null
-	T.cut_overlay(turf_graphics)
+	T.vis_contents -= renderer_one_for_all
 	if(contents.len)
 		air.group_multiplier = contents.len
 	else
@@ -110,7 +112,7 @@ Class Procs:
 
 	c_invalidate()
 	for(var/turf/simulated/T in contents)
-		T.vis_contents -= turf_graphics
+		T.vis_contents -= renderer_one_for_all
 		into.add(T)
 		#ifdef ZAS_DEBUG_GRAPHICS
 		T.dbg(merged)
@@ -136,7 +138,7 @@ Class Procs:
 		return //Short circuit for explosions where rebuild is called many times over.
 	c_invalidate()
 	for(var/turf/simulated/T in contents)
-		T.vis_contents -= turf_graphics
+		T.vis_contents -= renderer_one_for_all
 		//T.dbg(invalid_zone)
 		T.queue_zone_update()
 
@@ -155,24 +157,7 @@ Class Procs:
 		if(istype(T))
 			T.create_fire(firelevel_multiplier)
 
-	var/list/returned = air.get_turf_graphics()
-	if(returned)
-		if(turf_graphics)
-			for(var/turf/simulated/T in contents)
-				T.cut_overlay(turf_graphics)
-				if(T.allow_gas_overlays && !T.outdoors)
-					T.add_overlay(returned)
-			turf_graphics = returned
-		else
-			for(var/turf/simulated/T in contents)
-				if(T.allow_gas_overlays && !T.outdoors)
-					T.add_overlay(returned)
-			turf_graphics = returned
-	else
-		if(turf_graphics)
-			for(var/turf/simulated/T in contents)
-				T.cut_overlay(turf_graphics)
-			turf_graphics = null
+	renderer_one_for_all.overlays = air.get_turf_graphics()
 
 	for(var/datum/zas_edge/E in edges)
 		if(E.sleeping)
@@ -207,3 +192,15 @@ Class Procs:
 /**
  * TODO: SUPERCONDUCTION
  */
+
+/**
+ * renderer object for overlays
+ */
+/atom/movable/zas_graphics
+	name = null
+	desc = "WHY can you see this?"
+	icon = null
+	icon_state = null
+	plane = MOB_PLANE
+	layer = ABOVE_MOB_LAYER
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

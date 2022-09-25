@@ -124,4 +124,5 @@
 	if(!QDELETED(progbar))
 		qdel(progbar)
 
-	STOP_INTERACTING_WITH(user, target, INTERACTING_FOR_DO_AFTER)
+	if(target)
+		STOP_INTERACTING_WITH(user, target, INTERACTING_FOR_DO_AFTER)
