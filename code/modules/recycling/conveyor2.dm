@@ -109,7 +109,7 @@
 	var/turf/T = get_step(src, movedir)
 	if(!T)
 		return
-	affecting.len = max(min(affecting.len, 10, 150 - T.contents.len), 0)
+	affecting.len = max(min(affecting.len, 150 - T.contents.len), 0)
 	if(!affecting.len)
 		return
 	var/items_moved = 0
