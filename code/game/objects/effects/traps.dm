@@ -153,6 +153,9 @@ Add those other swinging traps you mentioned above!
 /obj/effect/trap/pit/blood/deep
 	trap_floor_type = /turf/simulated/floor/water/blood/deep
 
+/obj/effect/trap/pit/open_space
+	trap_floor_type = /turf/simulated/open
+
 //Punji Spear Traps
 /obj/effect/trap/pit/punji
 	icon_state = "punji"
@@ -336,7 +339,7 @@ Add those other swinging traps you mentioned above!
 		playsound(src.loc, projectile_sound, 25, 1)
 
 		var/obj/item/projectile/bullet/shotgun/stake/P = get_projectile()
-		P.firer = src
+		//P.firer = src
 		P.fire(dir2angle(dir))
 
 /obj/effect/trap/launcher/proc/get_initial_fire_delay()
