@@ -1,0 +1,5 @@
+author: "Captain277"
+delete-after: True
+changes: 
+  - rscadd: "Adds an open space turf."
+  - rscadd: "Adds a faction to launchers."
