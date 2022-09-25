@@ -1,3 +1,12 @@
+//* Core settings
+//! Fastboot flags - useful for debugging
+/// disable automatic roundstart icon smoothing
+// #define FASTBOOT_DISABLE_SMOOTHING (1<<0)
+/// disable loading late maps
+// #define FASTBOOT_DISABLE_LATELOAD (1<<1)
+/// disable atmospherics zone build
+// #define FASTBOOT_DISABLE_ZONES (1<<2)
+
 ///By using the testing("message") proc you can create debug-feedback for people with this
 //#define TESTING
 								//uncommented, but not visible in the release version)
@@ -6,12 +15,10 @@
 //#define DATUMVAR_DEBUGGING_MODE
 // Comment this out if you are debugging problems that might be obscured by custom error handling in world/Error
 #ifdef DEBUG
-#define USE_CUSTOM_ERROR_HANDLER
+	#define USE_CUSTOM_ERROR_HANDLER
 #endif
 
 #define DEBUG_SHUTTLES
-
-#define TIMER_LOOP_DEBUGGING
 
 #ifdef TESTING
 #define DATUMVAR_DEBUGGING_MODE
@@ -71,6 +78,8 @@
 #warn Consider switching to VSCode editor instead, where you can press Ctrl+Shift+B to build.
 #endif
 
+//* Modules follow
+
 //! Atmospherics
 
 //? Gasmixtures
@@ -92,3 +101,7 @@
 // A reasonable number of maximum overlays an object needs
 // If you think you need more, rethink it
 #define MAX_ATOM_OVERLAYS 100
+
+//! Timers
+
+// #define TIMER_LOOP_DEBUGGING
