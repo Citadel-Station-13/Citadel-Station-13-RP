@@ -301,7 +301,7 @@
 	var/mob/M = ismob(AM)? AM : null
 
 	// redirect forces to buckled if it prevents move
-	if(M.buckled)
+	if(M?.buckled)
 		resist = M.buckled.move_resist
 		pushing = M.buckled
 
