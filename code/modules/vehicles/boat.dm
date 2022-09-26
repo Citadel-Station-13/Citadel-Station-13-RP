@@ -9,7 +9,7 @@
 	icon_dimension_x = 36
 	icon_dimension_y = 32
 	buckle_max_mobs = 2
-	riding_handler_type = /datum/riding_handler/vehicle/boat/small
+	riding_handler_type = /datum/component/riding_handler/vehicle/boat/small
 	var/datum/material/material = null
 
 /obj/vehicle/ridden/boat/Initialize(mapload, material_name)
@@ -40,7 +40,7 @@
 	icon_dimension_y = 32
 	base_pixel_x = -16
 	buckle_max_mobs = 5
-	riding_handler_type = /datum/riding_handler/vehicle/boat/big
+	riding_handler_type = /datum/component/riding_handler/vehicle/boat/big
 
 /obj/vehicle/ridden/boat/dragon/Initialize(mapload, material_name)
 	. = ..(mapload, material_name)
@@ -73,13 +73,13 @@
 		return
 	add_atom_colour(material.icon_colour, FIXED_COLOUR_PRIORITY)
 
-/datum/riding_handler/vehicle/boat
+/datum/component/riding_handler/vehicle/boat
 	vehicle_move_delay = 3.5
 	allowed_turf_types = list(
 		/turf/simulated/floor/water
 	)
 
-/datum/riding_handler/vehicle/boat/small
+/datum/component/riding_handler/vehicle/boat/small
 	offset_layer = list(
 		list(
 			1,
@@ -109,7 +109,7 @@
 		)
 	)
 
-/datum/riding_handler/vehicle/boat/big
+/datum/component/riding_handler/vehicle/boat/big
 	offset_layer = list(
 		list(
 			1,
