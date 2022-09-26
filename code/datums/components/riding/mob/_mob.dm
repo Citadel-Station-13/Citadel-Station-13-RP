@@ -27,7 +27,7 @@
 	. = ..()
 	if(!.)
 		return
-	var/needed = ridden_offhands_needed(rider, esmantic) - current_ridden_offhand_count()
+	var/needed = ridden_offhands_needed(rider, semantic) - current_ridden_offhand_count()
 	if(needed <= 0)
 		return TRUE
 	for(var/i in 1 to needed)

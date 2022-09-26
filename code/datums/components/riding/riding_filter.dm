@@ -125,7 +125,7 @@
  */
 /datum/component/riding_filter/proc/check_mount_attempt(mob/M, buckle_flags, mob/user, semantic)
 	if(!mount_allocate_offhands(M, buckle_flags, user, semantic))
-		return FLASE
+		return FALSE
 	return TRUE
 
 /**
@@ -215,7 +215,7 @@
 		amount_needed = min(amount_needed, rider.get_number_of_hands())
 	if(!amount_needed)
 		return TRUE
-	for(var/i in 1 to needed)
+	for(var/i in 1 to amount_needed)
 		var/obj/item/offhand/riding/R = try_equip_offhand_to_rider(rider)
 		if(!R)
 			return FALSE
