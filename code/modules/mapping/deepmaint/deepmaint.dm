@@ -33,6 +33,10 @@
 	var/max_danger = INFINITY
 	/// max rarity to spawn - additive
 	var/max_rarity = INFINITY
+	/// maxrooms to spawn
+	var/max_rooms = 50
+	#warn should we support per-zlevel limits for budgets and max dist?
+	#warn handle per-zlevel anchors?
 
 	//! Generator
 	/// generator directives
