@@ -180,9 +180,9 @@
 			loc = M.loc
 			last_move_dir = M.last_move_dir
 			inertia_dir = last_move_dir
-			for(var/mob/M as anything in buckled_mobs)
-				if(M.loc != loc)
-					M.forceMove(loc)
+			for(var/mob/resetting as anything in buckled_mobs)
+				if(resetting.loc != loc)
+					resetting.forceMove(loc)
 			return FALSE
 		else
 			M.setDir(dir)

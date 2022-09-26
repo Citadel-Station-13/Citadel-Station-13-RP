@@ -2,10 +2,10 @@
 	if(raw_edit)
 		return ..()
 	switch(var_name)
-		if(shift_pixel_x)
+		if(NAMEOF(src, shift_pixel_x))
 			set_pixel_shift_x(var_value)
 			return TRUE
-		if(shift_pixel_y)
+		if(NAMEOF(src, shift_pixel_y))
 			set_pixel_shift_y(var_value)
 			return TRUE
 	return ..()

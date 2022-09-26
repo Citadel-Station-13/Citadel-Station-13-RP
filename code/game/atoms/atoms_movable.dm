@@ -122,6 +122,12 @@
 	/// Used to rotate icons in update_transform()
 	var/icon_rotation = 0
 
+	//! Pixel Offsets
+	/// Used to manually offset buckle pixel offsets. Ignored if we have a riding component.
+	var/buckle_pixel_x = 0
+	/// Used to manually offset buckle pixel offsets. Ignored if we have a riding component.
+	var/buckle_pixel_y = 0
+
 /atom/movable/Destroy(force)
 	if(reagents)
 		QDEL_NULL(reagents)

@@ -42,7 +42,12 @@
 		rotate_clockwise()
 	return
 
-/obj/structure/bed/chair/post_buckle_mob()
+/obj/structure/bed/chair/mob_buckled(mob/M, flags, mob/user, semantic)
+	. = ..()
+	update_icon()
+
+/obj/structure/bed/chair/mob_unbuckled(mob/M, flags, mob/user, semantic)
+	. = ..()
 	update_icon()
 
 /obj/structure/bed/chair/update_icon()

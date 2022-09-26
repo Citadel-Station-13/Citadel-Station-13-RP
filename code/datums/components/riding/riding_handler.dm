@@ -345,7 +345,6 @@
 	// move
 	last_move_time = world.time
 	next_move_time = world.time + (last_move_diagonal? SQRT_2 : 1) * vehicle_move_delay
-	var/atom/movable/AM = parent
 	step(AM, dir)
 	last_move_diagonal = (AM.loc == next) && (ISDIAGONALDIR(dir))
 	return TRUE
@@ -371,7 +370,6 @@
 		if(!ride_check(M, AM.buckled_mobs[M], TRUE))
 			force_dismount(M)
 			continue	// don't do rest of logic
-#warn chcek flag for lying down
 
 /**
  * checks if a person can stay on us. if not, they'll be kicked off by ride_check()

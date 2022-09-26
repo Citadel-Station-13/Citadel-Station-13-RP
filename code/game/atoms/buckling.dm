@@ -26,7 +26,6 @@
 		return FALSE
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_DRAG_DROP_BUCKLE_INTERACTION, A, user) & COMPONENT_HANDLED_BUCKLE_INTERACTION)
 		return
-	var/mob/buckling = A
 	if(!buckle_allowed || (buckle_flags & BUCKLING_NO_USER_BUCKLE))
 		return FALSE
 	// todo: refactor below
@@ -59,7 +58,7 @@
 	// end
 	var/mob/unbuckling = buckled_mobs[1]
 	if(buckled_mobs.len > 1)
-		unbuckling = input(user, "Who to unbuckle?", "Unbuckle", unbuckling) as anything|null in buckled_mobs
+		unbuckling = input(user, "Who to unbuckle?", "Unbuckle", unbuckling) as null|anything in buckled_mobs
 	if((user == unbuckling) && !mob_resist_buckle(user, buckled_mobs[user]))
 		return
 	user_unbuckle_mob(unbuckling, BUCKLE_OP_DEFAULT_INTERACTION, user, buckled_mobs[unbuckling])
@@ -404,4 +403,10 @@
 /mob/proc/resist_buckle()
 	set waitfor = FALSE
 	. = !!buckled
-	buckled.resist_unbuckle_interaction(src)
+	if(!.)
+		return
+	if(istype(buckled, /obj/vehicle_old))
+		var/obj/vehicle_old/vehicle = buckled
+		vehicle.unload()
+	else
+		buckled.resist_unbuckle_interaction(src)

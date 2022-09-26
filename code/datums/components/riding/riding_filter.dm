@@ -185,14 +185,14 @@
 			AM.unbuckle_mob(rider, BUCKLE_OP_FORCE)
 	else
 		// verify all offhands are there
-		for(var/mob/rider in AM.buckled_mobs)
-			if(length(get_offhands_of_rider(rider)) < rider_offhands_needed(AM.buckled_mobs[rider]))
+		for(var/mob/M in AM.buckled_mobs)
+			if(length(get_offhands_of_rider(M)) < rider_offhands_needed(AM.buckled_mobs[M]))
 				// kick off if not enough
-				rider.visible_message(
-					SPAN_NOTICE("[rider] slides off [AM]."),
+				M.visible_message(
+					SPAN_NOTICE("[M] slides off [AM]."),
 					SPAN_NOTICE("You slide off [AM].")
 				)
-				AM.unbuckle_mob(rider, BUCKLE_OP_FORCE)
+				AM.unbuckle_mob(M, BUCKLE_OP_FORCE)
 
 /datum/component/riding_filter/proc/rider_offhands_needed(semantic)
 	return offhands_needed_rider

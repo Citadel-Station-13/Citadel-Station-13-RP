@@ -1156,10 +1156,14 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 //! Pixel Offsets
 /mob/proc/get_buckled_pixel_x_offset()
-	return buckled?.get_centering_pixel_x_offset(NONE, src) - get_centering_pixel_x_offset()
+	if(!buckled)
+		return 0
+	return buckled.get_centering_pixel_x_offset(NONE, src) - get_centering_pixel_x_offset() + buckled.buckle_pixel_x
 
 /mob/proc/get_buckled_pixel_y_offset()
-	return buckled?.get_centering_pixel_y_offset(NONE, src) - get_centering_pixel_y_offset()
+	if(!buckled)
+		return 0
+	return buckled.get_centering_pixel_y_offset(NONE, src) - get_centering_pixel_y_offset() + buckled.buckle_pixel_y
 
 /mob/get_managed_pixel_x()
 	return ..() + shift_pixel_x + get_buckled_pixel_x_offset()

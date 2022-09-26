@@ -23,7 +23,7 @@
 		return 0
 	return offhands_needed_ridden
 
-/datum/component/riding_filter/mob/proc/allocate_offhands(mob/rider, semantic, list/offhands)
+/datum/component/riding_filter/mob/allocate_offhands(mob/rider, semantic, list/offhands)
 	. = ..()
 	if(!.)
 		return

@@ -220,13 +220,13 @@
 /obj/structure/bed/chair/bay/shuttle/Initialize(mapload, new_material, new_padding_material)
 	return ..(mapload, MAT_STEEL, padding)
 
-/obj/structure/bed/chair/bay/shuttle/post_buckle_mob()
+/obj/structure/bed/chair/bay/shuttle/mob_buckled(mob/M, flags, mob/user, semantic)
+	. = ..()
 	playsound(src,buckling_sound,75,1)
 	if(has_buckled_mobs())
 		base_icon = "shuttle_chair-b"
 	else
 		base_icon = "shuttle_chair"
-	..()
 
 /obj/structure/bed/chair/bay/shuttle/update_icon()
 	..()

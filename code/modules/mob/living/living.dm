@@ -737,14 +737,6 @@ default behaviour is:
 	if(attempt_vr(src,"vore_process_resist",args))
 		return TRUE
 
-/mob/living/proc/resist_buckle()
-	if(buckled)
-		if(istype(buckled, /obj/vehicle_old))
-			var/obj/vehicle_old/vehicle = buckled
-			vehicle.unload()
-		else
-			buckled.resist_unbuckle_interaction(src)
-
 /mob/living/proc/resist_grab()
 	var/resisting = 0
 	for(var/obj/item/grab/G in grabbed_by)
@@ -875,7 +867,6 @@ default behaviour is:
 	if(restrained())
 		stop_pulling()
 	// End
-	var/lying_new = 0
 	if(!resting && cannot_stand() && can_stand_overridden())
 		lying = 0
 		canmove = 1

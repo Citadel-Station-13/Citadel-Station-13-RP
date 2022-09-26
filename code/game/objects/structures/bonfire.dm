@@ -6,6 +6,8 @@
 	density = FALSE
 	anchored = TRUE
 	buckle_lying = 0
+	buckle_pixel_y = 12
+
 	var/burning = FALSE
 	var/next_fuel_consumption = 0 // world.time of when next item in fuel list gets eatten to sustain the fire.
 	var/grill = FALSE
@@ -247,13 +249,6 @@
 /obj/structure/bonfire/water_act(amount)
 	if(prob(amount * 10))
 		extinguish()
-
-/obj/structure/bonfire/post_buckle_mob(mob/living/M)
-	if(M.buckled == src) // Just buckled someone
-		M.pixel_y += 13
-	else // Just unbuckled someone
-		M.pixel_y -= 13
-	update_icon()
 
 /obj/structure/fireplace //more like a space heater than a bonfire. A cozier alternative to both.
 	name = "fireplace"
