@@ -122,7 +122,6 @@
 
 /turf/simulated/floor/sky/depths/west
 	skyfall_levels = "Western Canyon"
-	target_turf = /turf/simulated/floor/outdoors/snow/lythios43c
 
 /turf/simulated/floor/sky/depths/west/Initialize(mapload)
 	skyfall_levels = list(z - 1)
@@ -137,8 +136,8 @@
 		if(candidate.density)
 			attempts--
 			continue
-		if(!target_turf)
-			return
+		if(ispath(T, target_turf))
+			continue
 
 		T = candidate
 		break
