@@ -606,10 +606,17 @@
 	matter = list(MAT_STEEL = 300, "brass" = 200)
 	fall_sounds = list('sound/weapons/guns/shotgun_fall.ogg')
 
-/obj/item/ammo_casing/a10g/pellet
+/*
+/obj/item/ammo_casing/a10g/pellet //Non-Spread Variant
 	name = "heavy shotgun shell"
 	desc = "A custom brass 10 gauge shot shell."
 	projectile_type = /obj/item/projectile/bullet/pellet/heavy_shotgun
+*/
+
+/obj/item/ammo_casing/a10g/pellet //Spread variant.
+	name = "heavy shotgun shell"
+	desc = "A custom brass 10 gauge shot shell."
+	projectile_type = /obj/item/projectile/scatter/heavy_shotgun
 
 /obj/item/ammo_casing/a10g/silver
 	name = "heavy silver shotgun shell"

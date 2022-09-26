@@ -27,6 +27,34 @@
 		/obj/item/projectile/bullet/pellet/shotgun/flak = 3
 		)
 
+//Spread Shot
+/obj/item/projectile/scatter/heavy_shotgun
+	damage = 15
+	spread_submunition_damage = TRUE
+	only_submunitions = TRUE
+	range = 0	// Immediately deletes itself after firing, as its only job is to fire other projectiles.
+
+	submunition_spread_max = 100
+	submunition_spread_min = 30
+
+	submunitions = list(
+		/obj/item/projectile/bullet/pellet/heavy_shotgun = 5
+		)
+
+/obj/item/projectile/scatter/heavy_shotgun/accurized
+	damage = 15
+	spread_submunition_damage = TRUE
+	only_submunitions = TRUE
+	range = 0	// Immediately deletes itself after firing, as its only job is to fire other projectiles.
+
+	submunition_spread_max = 30
+	submunition_spread_min = 10
+
+	submunitions = list(
+		/obj/item/projectile/bullet/pellet/heavy_shotgun = 5
+		)
+
+//Energy Scatter
 /obj/item/projectile/scatter/laser
 	submunition_spread_max = 30
 	spread_submunition_damage = FALSE

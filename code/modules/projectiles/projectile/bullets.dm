@@ -418,10 +418,10 @@
 	armor_penetration = 25
 
 /obj/item/projectile/bullet/pellet/heavy_shotgun //I want this to use similar calcuations to blunderbuss shot for falloff.
-	damage = 15
-	pellets = 10
+	damage = 3 //Fires five pellets at a time.
 	range_step = 0.75
 	spread_step = 30
+	armor_penetration = 10
 
 /obj/item/projectile/bullet/pellet/heavy_shotgun/silver
 	damage = 15

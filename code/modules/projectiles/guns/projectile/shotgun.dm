@@ -251,6 +251,7 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	ammo_type = /obj/item/ammo_casing/a10g/silver
 	w_class = ITEMSIZE_NORMAL
+	safety_state = GUN_SAFETY_OFF
 	force = 15
 
 //Flaregun Code that may work?
