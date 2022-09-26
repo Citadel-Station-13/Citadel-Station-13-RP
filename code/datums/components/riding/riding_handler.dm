@@ -129,35 +129,36 @@
 		return COMPONENT_BLOCK_BUCKLE_OPERATION
 
 /datum/component/riding_handler/proc/update_vehicle_on_turn(dir)
-	if(!offset_vehicle)
+	if(!vehicle_offsets)
 		return
 	var/atom/movable/AM = parent
 	var/opx = AM.get_managed_pixel_x()
 	var/opy = AM.get_managed_pixel_y()
-	if(islist(offset_vehicle[1]))
+	if(islist(vehicle_offsets[1]))
 		// NESW format
 		switch(dir)
 			if(NORTH)
-				AM.pixel_x = offset_vehicle[1][1] + opx
-				AM.pixel_y = offset_vehicle[1][2] + opy
+				AM.pixel_x = vehicle_offsets[1][1] + opx
+				AM.pixel_y = vehicle_offsets[1][2] + opy
 			if(EAST)
-				AM.pixel_x = offset_vehicle[2][1] + opx
-				AM.pixel_y = offset_vehicle[2][2] + opy
+				AM.pixel_x = vehicle_offsets[2][1] + opx
+				AM.pixel_y = vehicle_offsets[2][2] + opy
 			if(SOUTH)
-				AM.pixel_x = offset_vehicle[3][1] + opx
-				AM.pixel_y = offset_vehicle[3][2] + opy
+				AM.pixel_x = vehicle_offsets[3][1] + opx
+				AM.pixel_y = vehicle_offsets[3][2] + opy
 			if(WEST)
-				AM.pixel_x = offset_vehicle[4][1] + opx
-				AM.pixel_y = offset_vehicle[4][2] + opy
+				AM.pixel_x = vehicle_offsets[4][1] + opx
+				AM.pixel_y = vehicle_offsets[4][2] + opy
 	else
-		AM.pixel_x = offset_vehicle[1] + opx
-		AM.pixel_y = offset_vehicle[2] + opy
+		AM.pixel_x = vehicle_offsets[1] + opx
+		AM.pixel_y = vehicle_offsets[2] + opy
 
 /datum/component/riding_handler/proc/on_rider_buckled(mob/rider, semantic)
-	full_update_riders()
+	full_update_riders(TRUE)
 
 /datum/component/riding_handler/proc/on_rider_unbuckled(mob/rider, semantic)
 	reset_rider(rider, semantic)
+	full_update_riders(TRUE)
 
 /datum/component/riding_handler/proc/reset_rider(mob/rider, semantic)
 	rider.reset_plane_and_layer()
@@ -166,13 +167,6 @@
 
 /datum/component/riding_handler/proc/update_riders_on_turn(dir)
 	full_update_riders()
-	var/opx = AM.get_centering_pixel_x_offset(dir)
-	var/opy = AM.get_centering_pixel_y_offset(dir)
-	for(var/i in 1 to length(AM.buckled_mobs))
-		var/mob/M = AM.buckled_mobs[i]
-		apply_rider_layer(M, dir, i)
-		apply_rider_offsets(M, dir, i, opx, opy)
-		M.setDir(rider_dir_offset(dir, i))
 
 /datum/component/riding_handler/proc/full_update_riders(force)
 	var/atom/movable/AM = parent
@@ -193,7 +187,7 @@
 			for(i in 1 to AM.buckled_mobs)
 				M = AM.buckled_mobs[i]
 				semantic = AM.buckled_mobs[M]
-				offsets = rider_offsets(M, i, semantic, rider_offsets)
+				offsets = rider_offsets(M, i, semantic, rider_offsets, dir)
 				if(offsets[4] != M.dir)
 					M.setDir(offsets[4])
 				M.reset_pixel_shifting()
@@ -214,7 +208,7 @@
 			for(i in 1 to AM.buckled_mobs)
 				M = AM.buckled_mobs[i]
 				semantic = AM.buckled_mobs[M]
-				offsets = rider_offsets(M, i, semantic, relevant)
+				offsets = rider_offsets(M, i, semantic, relevant, dir)
 				if(offsets[4] != M.dir)
 					M.setDir(offsets[4])
 				M.reset_pixel_shifting()
@@ -237,7 +231,7 @@
 						relevant = relevant[4]
 				M = AM.buckled_mobs[i]
 				semantic = AM.buckled_mobs[M]
-				offsets = rider_offsets(M, i, semantic, relevant)
+				offsets = rider_offsets(M, i, semantic, relevant, dir)
 				if(offsets[4] != M.dir)
 					M.setDir(offsets[4])
 				M.reset_pixel_shifting()
@@ -250,7 +244,7 @@
  *
  * DO NOT CHANGE DEFAULT FOR THE LOVE OF GOD, COPY IT IF YOU ARE CHANGING IT!!
  */
-/datum/component/riding_handler/proc/rider_offsets(mob/rider, pos, semantic, list/default)
+/datum/component/riding_handler/proc/rider_offsets(mob/rider, pos, semantic, list/default, dir)
 	return default
 
 /datum/component/riding_handler/proc/signal_hook_handle_relaymove(datum/source, mob/M, dir)

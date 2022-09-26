@@ -15,16 +15,15 @@
 	rider_check_flags = CF_RIDING_CHECK_INCAPACITATED
 	ridden_check_flags = CF_RIDING_CHECK_INCAPACITATED | CF_RIDING_CHECK_LYING
 
-/datum/component/riding_handler/mob/human/rider_layer_offset(dir, index, semantic)
+/datum/component/riding_handler/mob/human/rider_offsets(mob/rider, pos, semantic, list/default, dir)
 	switch(dir)
 		if(NORTH)
-			return semantic == BUCKLE_SEMANTIC_HUMAN_FIREMAN? -1 : 1
+			. = default.Copy()
+			.[3] = semantic == BUCKLE_SEMANTIC_HUMAN_FIREMAN? -1 : 1
 		if(SOUTH)
-			return semantic == BUCKLE_SEMANTIC_HUMAN_FIREMAN? 1 : -1
-		if(EAST)
-			return 1
-		if(WEST)
-			return 1
+			. = default.Copy()
+			.[3] = semantic == BUCKLE_SEMANTIC_HUMAN_FIREMAN? 1 : -1
+	return ..()
 
 /datum/component/riding_handler/human/signal_hook_pre_buckle_mob(atom/movable/source, mob/M, flags, mob/user, semantic)
 	var/mob/living/carbon/human/H = parent

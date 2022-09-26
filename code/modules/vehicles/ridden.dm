@@ -10,7 +10,7 @@
 
 /obj/vehicle/ridden/Initialize(mapload)
 	. = ..()
-	AddComponent(riding_filter_typepath, riding_handler_typepath)
+	AddComponent(riding_filter_type, riding_handler_type)
 
 /obj/vehicle/ridden/examine(mob/user)
 	. = ..()

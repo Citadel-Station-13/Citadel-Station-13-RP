@@ -21,7 +21,6 @@
 		qdel(src)
 		return
 	add_atom_colour(material.icon_colour, FIXED_COLOUR_PRIORITY)
-	riding_datum = new riding_datum_type(src)
 
 /obj/vehicle/ridden/boat/drive_check(mob/user)
 	return !!user.get_held_item_of_type(/obj/item/oar)
