@@ -831,7 +831,7 @@
 		//Not targeting an internal organ w/ > 25 damage , and the limb doesn't have < 25 damage.
 		else
 			if(T_int)
-				T_int.damage = 25 //Internal organs can only take damage, not brute damage.
+				T_int.take_damage(25 - T_int.damage)
 			T.apply_damage(25, BRUTE, T_ext)
 			visible_message("<span class='danger'>[src] severely damages [T]'s [T_ext.name]!</span>")
 
@@ -897,8 +897,8 @@
 	set name = "Toggle Agility" //Dunno a better name for this. You have to be pretty agile to hop over stuff!!!
 	set desc = "Allows you to start/stop hopping over things such as hydroponics trays, tables, and railings."
 	set category = "Abilities"
-	pass_flags ^= PASSTABLE //I dunno what this fancy ^= is but Aronai gave it to me.
-	to_chat(src, "You [pass_flags&PASSTABLE ? "will" : "will NOT"] move over tables/railings/trays!")
+	pass_flags ^= ATOM_PASS_TABLE //I dunno what this fancy ^= is but Aronai gave it to me.
+	to_chat(src, "You [pass_flags&ATOM_PASS_TABLE ? "will" : "will NOT"] move over tables/railings/trays!")
 
 /mob/living/carbon/human/proc/check_silk_amount()
 	set name = "Check Silk Amount"

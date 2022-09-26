@@ -4,7 +4,7 @@
 	icon_state = "jaws"
 	desc = "The jaws of the law."
 	force = 10
-	throwforce = 0
+	throw_force = 0
 	hitsound = 'sound/weapons/bite.ogg'
 	attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
 	w_class = ITEMSIZE_NORMAL
@@ -15,7 +15,7 @@
 	icon_state = "smalljaws"
 	desc = "The jaws of a small dog."
 	force = 5
-	throwforce = 0
+	throw_force = 0
 	hitsound = 'sound/weapons/bite.ogg'
 	attack_verb = list("nibbled", "bit", "gnawed", "chomped", "nommed")
 	w_class = ITEMSIZE_NORMAL
@@ -31,7 +31,7 @@
 			icon_state = "jaws"
 			desc = "The jaws of the law."
 			force = 10
-			throwforce = 0
+			throw_force = 0
 			hitsound = 'sound/weapons/bite.ogg'
 			attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
 			w_class = ITEMSIZE_NORMAL
@@ -41,7 +41,7 @@
 			icon_state = "smalljaws"
 			desc = "The jaws of a small dog."
 			force = 5
-			throwforce = 0
+			throw_force = 0
 			hitsound = 'sound/weapons/bite.ogg'
 			attack_verb = list("nibbled", "bit", "gnawed", "chomped", "nommed")
 			w_class = ITEMSIZE_NORMAL
@@ -55,7 +55,7 @@
 	desc = "The BOOP module, a simple reagent and atmosphere sniffer."
 	force = 0
 	item_flags = NOBLUDGEON
-	throwforce = 0
+	throw_force = 0
 	attack_verb = list("nuzzled", "nosed", "booped")
 	w_class = ITEMSIZE_TINY
 
@@ -216,7 +216,7 @@
 	else if(water.energy < 5)
 		to_chat(user, "<span class='notice'>Your mouth feels dry. You should drink some water.</span>") //fixed annoying grammar and needless space
 		return
-	else if(istype(target,/obj/effect/decal/cleanable))
+	else if(istype(target,/obj/effect/debris/cleanable))
 		user.visible_message("[user] begins to lick off \the [target.name].", "<span class='notice'>You begin to lick off \the [target.name]...</span>")
 		if(do_after (user, 50))
 			to_chat(user, "<span class='notice'>You finish licking off \the [target.name].</span>")
@@ -250,7 +250,7 @@
 		if(do_after (user, 50))
 			to_chat(user, "<span class='notice'>You clean \the [target.name].</span>")
 			water.use_charge(5)
-			var/obj/effect/decal/cleanable/C = locate() in target
+			var/obj/effect/debris/cleanable/C = locate() in target
 			qdel(C)
 			target.clean_blood()
 	else if(ishuman(target))
@@ -277,7 +277,7 @@
 		user.visible_message("[user] begins to lick \the [target.name] clean...", "<span class='notice'>You begin to lick \the [target.name] clean...</span>")
 		if(do_after (user, 50))
 			to_chat(user, "<span class='notice'>You clean \the [target.name].</span>")
-			var/obj/effect/decal/cleanable/C = locate() in target
+			var/obj/effect/debris/cleanable/C = locate() in target
 			qdel(C)
 			target.clean_blood()
 			water.use_charge(5)
@@ -324,7 +324,7 @@
 	force = 20 //Takes 5 hits to 100-0
 	sharp = 1
 	edge = 1
-	throwforce = 0 //This shouldn't be thrown in the first place.
+	throw_force = 0 //This shouldn't be thrown in the first place.
 	hitsound = 'sound/weapons/blade1.ogg'
 	attack_verb = list("slashed", "stabbed", "jabbed", "mauled", "sliced")
 	w_class = ITEMSIZE_NORMAL
@@ -364,7 +364,7 @@
 	icon_state = "pounce"
 	desc = "Leap at your target to momentarily stun them."
 	force = 0
-	throwforce = 0
+	throw_force = 0
 	item_flags = NOBLUDGEON
 
 /obj/item/dogborg/pounce/attack_self(mob/user)
@@ -408,7 +408,7 @@
 	pixel_y = pixel_y + 10
 
 	src.visible_message("<span class='danger'>\The [src] leaps at [T]!</span>")
-	src.throw_at(get_step(get_turf(T),get_turf(src)), 4, 1, src)
+	src.throw_at_old(get_step(get_turf(T),get_turf(src)), 4, 1, src)
 	playsound(src.loc, 'sound/mecha/mechstep2.ogg', 50, 1)
 	pixel_y = default_pixel_y
 	cell.charge -= 750

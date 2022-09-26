@@ -150,7 +150,7 @@
 
 /datum/reagent/nutriment/flour/touch_turf(var/turf/simulated/T)
 	if(!istype(T, /turf/space))
-		new /obj/effect/decal/cleanable/flour(T)
+		new /obj/effect/debris/cleanable/flour(T)
 
 /datum/reagent/nutriment/flour/vitapaste
 	name = "NutriFlour"
@@ -359,7 +359,7 @@ End Citadel Change */
 
 /datum/reagent/nutriment/durian/touch_turf(var/turf/T, var/amount)
 	if(istype(T))
-		var/obj/effect/decal/cleanable/chemcoating/C = new /obj/effect/decal/cleanable/chemcoating(T)
+		var/obj/effect/debris/cleanable/chemcoating/C = new /obj/effect/debris/cleanable/chemcoating(T)
 		C.reagents.add_reagent(id, amount)
 	return ..()
 

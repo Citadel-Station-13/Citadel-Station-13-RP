@@ -14,3 +14,13 @@
 		else
 			L[key] = temp[key]
 	return L
+
+/proc/unique_list_atoms_by_name(list/atom/atoms)
+	. = list()
+	var/list/conflicting_so_far = list()
+	for(var/atom/A as anything in atoms)
+		if(.[A.name])
+			conflicting_so_far[A.name]++
+			.["[A.name] ([conflicting_so_far[A.name]])"] = A
+		else
+			.[A.name] = A

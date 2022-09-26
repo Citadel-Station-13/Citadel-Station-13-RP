@@ -89,6 +89,11 @@
 	return TRUE
 
 /mob/living/proc/_common_handle_put_in_hand(obj/item/I, flags)
+	// let's not do that if it's deleted!
+	if(I && QDELETED(I))
+		to_chat(src, SPAN_DANGER("A deleted item [I] ([REF(I)]) was sent into inventory hand procs with flags [flags]. Report this line to coders immediately."))
+		to_chat(src, SPAN_DANGER("The inventory system will attempt to reject the bad equip. Glitches may occur."))
+		return FALSE
 	if(!(I.interaction_flags_atom & INTERACT_ATOM_NO_FINGERPRINT_ON_TOUCH))
 		I.add_fingerprint(src)
 	else
@@ -166,23 +171,11 @@
 	if(wear_mask)
 		. += wear_mask._inv_return_attached()
 
-/mob/living/show_inv(mob/user)
-	user.set_machine(src)
-	var/dat = {"
-	<B><HR><FONT size=3>[name]</FONT></B>
-	<BR><HR>
-	<BR><B>Head(Mask):</B> <A href='?src=\ref[src];strip_slot=[SLOT_ID_MASK]'>[(wear_mask ? wear_mask : "Nothing")]</A>
-	<BR><B>Left Hand:</B> <A href='?src=\ref[src];strip_hand=[1]'>[(l_hand ? l_hand  : "Nothing")]</A>
-	<BR><B>Right Hand:</B> <A href='?src=\ref[src];strip_hand=[2]'>[(r_hand ? r_hand : "Nothing")]</A>
-	<BR><B>Back:</B> <A href='?src=\ref[src];strip_misc=[SLOT_ID_BACK]'>[(back ? back : "Nothing")]</A> [((istype(wear_mask, /obj/item/clothing/mask) && istype(back, /obj/item/tank) && !( internal )) ? text(" <A href='?src=\ref[];item=internal'>Set Internal</A>", src) : "")]
-	<BR>[(internal ? text("<A href='?src=\ref[src];strip_misc=internal'>Remove Internal</A>") : "")]
-	<BR><A href='?src=\ref[src];strip_misc=pockets'>Empty Pockets</A>
-	<BR><A href='?src=\ref[user];refresh=1'>Refresh</A>
-	<BR><A href='?src=\ref[user];mach_close=mob[name]'>Close</A>
-	<BR>"}
-	user << browse(dat, text("window=mob[];size=325x500", name))
-	onclose(user, "mob[name]")
-	return
+/mob/living/_get_inventory_slot_ids()
+	return ..() + list(
+		SLOT_ID_BACK,
+		SLOT_ID_MASK
+	)
 
 /mob/living/ret_grab(obj/effect/list_container/mobl/L as obj, flag)
 	if ((!( istype(l_hand, /obj/item/grab) ) && !( istype(r_hand, /obj/item/grab) )))
@@ -245,3 +238,9 @@
 			return TRUE
 
 	return FALSE
+
+/mob/living/get_number_of_hands()
+	return has_hands? 2 : 0
+
+/mob/living/has_hands()
+	return has_hands

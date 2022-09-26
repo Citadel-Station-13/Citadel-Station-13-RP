@@ -287,9 +287,9 @@
 /datum/reagent/uranium/touch_turf(var/turf/T)
 	if(volume >= 3)
 		if(!istype(T, /turf/space))
-			var/obj/effect/decal/cleanable/greenglow/glow = locate(/obj/effect/decal/cleanable/greenglow, T)
+			var/obj/effect/debris/cleanable/greenglow/glow = locate(/obj/effect/debris/cleanable/greenglow, T)
 			if(!glow)
-				new /obj/effect/decal/cleanable/greenglow(T)
+				new /obj/effect/debris/cleanable/greenglow(T)
 			return
 
 /datum/reagent/adrenaline
@@ -671,3 +671,12 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#665c56"
 	taste_description = "ash"
+
+/datum/reagent/gunpowder
+	name = "Gunpowder"
+	id = "gunpowder"
+	description = "A primitive explosive chemical."
+	reagent_state = REAGENT_SOLID
+	color = "#464650"
+	taste_description = "salt"
+

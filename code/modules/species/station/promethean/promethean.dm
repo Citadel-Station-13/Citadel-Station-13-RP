@@ -26,7 +26,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 	show_ssd = "totally quiescent"
 	death_message = "rapidly loses cohesion, splattering across the ground..."
 	knockout_message = "collapses inwards, forming a disordered puddle of goo."
-	remains_type = /obj/effect/decal/cleanable/ash
+	remains_type = /obj/effect/debris/cleanable/ash
 
 	hunger_factor = 0.07 //As of writing, original was 0.1 - Slows hunger rate (some more)
 	reagent_tag = IS_SLIME

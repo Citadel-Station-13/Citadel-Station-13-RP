@@ -25,7 +25,7 @@
 
 /datum/outfit/nanotrasen/commander
 	name = "Nanotrasen commander"
-	uniform = /obj/item/clothing/under/rank/centcom/commander
+	uniform = /obj/item/clothing/under/rank/centcom
 	l_ear = /obj/item/radio/headset/heads/captain
 	head = /obj/item/clothing/head/beret/centcom/captain
 	belt = /obj/item/gun/energy

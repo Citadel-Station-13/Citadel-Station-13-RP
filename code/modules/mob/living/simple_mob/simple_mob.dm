@@ -247,6 +247,9 @@
 	var/limb_icon
 	/// Used for if the mob can drop limbs. Overrides the icon cache key, so it doesn't keep remaking the icon needlessly.
 	var/limb_icon_key
+	
+	///Does the simple mob drop organs when butchered?
+	butchery_drops_organs = FALSE
 
 //* randomization code. *//
 /mob/living/simple_mob/proc/randomize()
@@ -407,7 +410,7 @@
 			new exotic_type(drop_location())
 	if(issmall(src))
 		user?.visible_message("<span class='danger'>[user] chops up \the [src]!</span>")
-		new /obj/effect/decal/cleanable/blood/splatter(get_turf(src))
+		new /obj/effect/debris/cleanable/blood/splatter(get_turf(src))
 		qdel(src)
 	else
 		user.visible_message("<span class='danger'>[user] butchers \the [src] messily!</span>")

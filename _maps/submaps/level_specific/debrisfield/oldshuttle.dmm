@@ -327,7 +327,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/blood/gibs/xeno/body,
+/obj/effect/debris/cleanable/blood/gibs/xeno/body,
 /turf/simulated/shuttle/floor/black/airless,
 /area/space/debrisfield/oldshuttle)
 "aW" = (
@@ -397,11 +397,11 @@
 /turf/simulated/mineral/floor/vacuum,
 /area/space/debrisfield/oldshuttle)
 "bv" = (
-/obj/effect/decal/cleanable/blood/gibs/xeno/limb,
+/obj/effect/debris/cleanable/blood/gibs/xeno/limb,
 /turf/simulated/shuttle/floor/black/airless,
 /area/space/debrisfield/oldshuttle)
 "oX" = (
-/obj/effect/decal/cleanable/blood/gibs/xeno/core,
+/obj/effect/debris/cleanable/blood/gibs/xeno/core,
 /turf/simulated/shuttle/floor/black/airless,
 /area/space/debrisfield/oldshuttle)
 "pq" = (
@@ -412,7 +412,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/blood/gibs/xeno/body,
+/obj/effect/debris/cleanable/blood/gibs/xeno/body,
 /turf/simulated/shuttle/floor/black/airless,
 /area/space/debrisfield/oldshuttle)
 "Vl" = (
@@ -424,7 +424,7 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/blood/gibs/xeno/limb,
+/obj/effect/debris/cleanable/blood/gibs/xeno/limb,
 /turf/simulated/shuttle/floor/black/airless,
 /area/space/debrisfield/oldshuttle)
 

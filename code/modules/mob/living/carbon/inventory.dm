@@ -37,3 +37,9 @@
 			. += handcuffed._inv_return_attached()
 		if(legcuffed)
 			. += legcuffed._inv_return_attached()
+
+/mob/living/carbon/_get_inventory_slot_ids()
+	return ..() + list(
+		SLOT_ID_HANDCUFFED,
+		SLOT_ID_LEGCUFFED
+	)

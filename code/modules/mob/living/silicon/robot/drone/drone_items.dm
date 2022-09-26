@@ -74,8 +74,7 @@
 	return wrapped
 
 /obj/item/gripper/CtrlClick(mob/user)
-	remove_item()
-	return
+	drop_item()
 
 /obj/item/gripper/omni
 	name = "omni gripper"
@@ -227,17 +226,13 @@
 	..()
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
-		O.preserved = 1
-		for(var/obj/item/organ/organ in O)
-			organ.preserved = 1
+		O.preserve(GRIPPER_TRAIT)
 
 /obj/item/gripper/no_use/organ/Exited(var/atom/movable/AM)
 	..()
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
-		O.preserved = 0
-		for(var/obj/item/organ/organ in O)
-			organ.preserved = 0
+		O.unpreserve(GRIPPER_TRAIT)
 
 /obj/item/gripper/no_use/organ/robotics
 	name = "robotics organ gripper"
@@ -298,7 +293,7 @@
 	if(!wrapped)
 		return
 
-	to_chat(src.loc, "<span class='danger'>You drop \the [wrapped].</span>")
+	to_chat(usr, "<span class='danger'>You drop \the [wrapped].</span>")
 	remove_item(drop_location())
 
 /obj/item/gripper/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
@@ -411,7 +406,7 @@
 	for(var/mob/M in T)
 		if(istype(M,/mob/living/simple_mob/animal/passive/lizard) || istype(M,/mob/living/simple_mob/animal/passive/mouse))
 			src.loc.visible_message("<span class='danger'>[src.loc] sucks [M] into its decompiler. There's a horrible crunching noise.</span>","<span class='danger'>It's a bit of a struggle, but you manage to suck [M] into your decompiler. It makes a series of visceral crunching noises.</span>")
-			new/obj/effect/decal/cleanable/blood/splatter(get_turf(src))
+			new/obj/effect/debris/cleanable/blood/splatter(get_turf(src))
 			qdel(M)
 			if(wood)
 				wood.add_charge(2000)
@@ -436,7 +431,7 @@
 
 			to_chat(D, "<span class='danger'>You carefully and thoroughly decompile [M], storing as much of its resources as you can within yourself.</span>")
 			qdel(M)
-			new/obj/effect/decal/cleanable/blood/oil(get_turf(src))
+			new/obj/effect/debris/cleanable/blood/oil(get_turf(src))
 
 			if(metal)
 				metal.add_charge(15000)
@@ -481,7 +476,7 @@
 				metal.add_charge(1000)
 			if(plastic)
 				plastic.add_charge(3000)
-		else if(istype(W,/obj/effect/decal/cleanable/blood/gibs/robot))
+		else if(istype(W,/obj/effect/debris/cleanable/blood/gibs/robot))
 			if(metal)
 				metal.add_charge(2000)
 			if(glass)

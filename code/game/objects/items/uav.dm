@@ -110,7 +110,7 @@
 	else if(I.is_screwdriver() && cell)
 		if(do_after(user, 3 SECONDS, src))
 			to_chat(user, SPAN_NOTICE("You remove [cell] into [nickname]."))
-			playsound(src, I.usesound, 50, 1)
+			playsound(src, I.tool_sound, 50, 1)
 			power_down()
 			cell.forceMove(get_turf(src))
 			cell = null

@@ -10,7 +10,7 @@
 /area/mine/explored/underdark)
 "d" = (
 /obj/effect/decal/remains/tajaran,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
 /area/mine/explored/underdark)
 "e" = (
@@ -19,7 +19,7 @@
 /area/mine/explored/underdark)
 "f" = (
 /obj/effect/decal/remains/deer,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
 /area/mine/explored/underdark)
 "g" = (
@@ -28,7 +28,7 @@
 /area/mine/explored/underdark)
 "h" = (
 /obj/effect/decal/remains/ribcage,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
 /area/mine/explored/underdark)
 "i" = (

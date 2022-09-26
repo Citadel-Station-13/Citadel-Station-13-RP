@@ -5,6 +5,12 @@
 #define T_BOARD(name)	"circuit board (" + (name) + ")"
 
 // TODO: split into machine, computer, etc circuits
+/**
+ * circuitboards
+ *
+ * used in frames to construct arbitrary objects with arbitrary components.
+ * this will usually be /obj/machinery, but other things are possible.
+ */
 /obj/item/circuitboard
 	name = "circuit board"
 	icon = 'icons/obj/module.dmi'
@@ -14,7 +20,7 @@
 	anchored = 0
 	w_class = ITEMSIZE_SMALL
 	force = 5.0
-	throwforce = 5.0
+	throw_force = 5.0
 	throw_speed = 3
 	throw_range = 15
 	var/build_path = null
@@ -27,18 +33,22 @@
 
 	var/contain_parts = TRUE
 
-//Called when the circuitboard is used to contruct a new machine.
-/obj/item/circuitboard/proc/construct(var/obj/machinery/M)
-	if(istype(M, build_path))
-		return 1
-	return 0
+/**
+ * called when we are used to construct something.
+ *
+ * put your synchronization code in here.
+ */
+/obj/item/circuitboard/proc/after_construct(atom/A)
+	return
 
-//Called when a computer is deconstructed to produce a circuitboard.
-//Only used by computers, as other machines store their circuitboard instance.
-/obj/item/circuitboard/proc/deconstruct(var/obj/machinery/M)
-	if(istype(M, build_path))
-		return 1
-	return 0
+/**
+ * called when what we were used to construct is deconstructed.
+ *
+ * put your synchronization code in here.
+ *
+ */
+/obj/item/circuitboard/proc/after_deconstruct(atom/A)
+	return
 
 //Should be called from the constructor of any machine to automatically populate the default parts
 /obj/item/circuitboard/proc/apply_default_parts(var/obj/machinery/M)

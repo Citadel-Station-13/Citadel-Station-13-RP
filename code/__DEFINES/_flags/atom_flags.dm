@@ -10,7 +10,7 @@
 /// Atom queued to SSoverlay for COMPILE_OVERLAYS
 #define OVERLAY_QUEUED				(1<<4)
 /// atom is absolute-abstract - should not be interactable or movable in any way shape or form
-#define ATOM_ABSTRACT					(1<<5)
+#define ATOM_ABSTRACT				(1<<5)
 /// we are an holographic atom from a holodeck/AR system
 #define HOLOGRAM					(1<<6)
 /// Used for items if they don't want to get a blood overlay.
@@ -28,9 +28,6 @@
 /// Does not get contaminated by phoron.
 // TODO: item flag
 #define PHORONGUARD					(1<<13)
-/// Does this object require proximity checking in Enter()?
-// TODO: kill with fire
-#define PROXMOVE					(1<<14)
 /// Does not leave user's fingerprints/fibers when used on things?
 // TODO: item flag
 #define NOPRINT						(1<<15)
@@ -46,7 +43,6 @@
 #define NODECONSTRUCT				(1<<19)
 /// Prevent clicking things below it on the same turf eg. doors/ fulltile windows.
 #define PREVENT_CLICK_UNDER			(1<<20)
-#define HOLOGRAM					(1<<21)
 /// should not get harmed if this gets caught by an explosion?
 #define PREVENT_CONTENTS_EXPLOSION	(1<<22)
 */
@@ -65,23 +61,55 @@ DEFINE_BITFIELD(flags, list(
 	BITFIELD(NOCONDUCT),
 	BITFIELD(OPENCONTAINER),
 	BITFIELD(PHORONGUARD),
-	BITFIELD(PROXMOVE),
 	BITFIELD(NOPRINT),
 ))
 
-// Flags for pass_flags. - Used in /atom/var/pass_flags
-#define PASSTABLE				(1<<0)
-#define PASSGLASS				(1<<1)
-#define PASSGRILLE				(1<<2)
-#define PASSBLOB				(1<<3)
-#define PASSMOB					(1<<4)
+//! /atom/movable/var/movable_flags
+/// throwing does not scale damage at all regardless of force
+#define MOVABLE_NO_THROW_SPEED_SCALING			(1<<0)
+/// throwing should ignore move force scaling entirely
+#define MOVABLE_NO_THROW_DAMAGE_SCALING			(1<<1)
+/// do not spin when thrown
+#define MOVABLE_NO_THROW_SPIN					(1<<2)
+
+DEFINE_BITFIELD(movable_flags, list(
+	BITFIELD(MOVABLE_NO_THROW_SPEED_SCALING),
+	BITFIELD(MOVABLE_NO_THROW_DAMAGE_SCALING),
+	BITFIELD(MOVABLE_NO_THROW_SPIN),
+))
+
+// Flags for pass_flags. - Used in /atom/movable/var/pass_flags, and /atom/var/pass_flags_self
+#define ATOM_PASS_TABLE				(1<<0)
+#define ATOM_PASS_GLASS				(1<<1)
+#define ATOM_PASS_GRILLE			(1<<2)
+#define ATOM_PASS_BLOB				(1<<3)
+#define ATOM_PASS_MOB				(1<<4)
+/// let thrown objects pass; only makes sense on pass_flags_self
+#define ATOM_PASS_THROWN			(1<<5)
+/// Let clicks pass through even if dense
+#define ATOM_PASS_CLICK				(1<<6)
+/// let overhand thrown objects pass, unless it's directly targeting us
+#define ATOM_PASS_OVERHEAD_THROW	(1<<7)
 
 DEFINE_BITFIELD(pass_flags, list(
-	BITFIELD(PASSTABLE),
-	BITFIELD(PASSGLASS),
-	BITFIELD(PASSGRILLE),
-	BITFIELD(PASSBLOB),
-	BITFIELD(PASSMOB),
+	BITFIELD(ATOM_PASS_TABLE),
+	BITFIELD(ATOM_PASS_GLASS),
+	BITFIELD(ATOM_PASS_GRILLE),
+	BITFIELD(ATOM_PASS_BLOB),
+	BITFIELD(ATOM_PASS_MOB),
+	BITFIELD(ATOM_PASS_THROWN),
+	BITFIELD(ATOM_PASS_CLICK),
+	BITFIELD(ATOM_PASS_OVERHEAD_THROW),
+))
+
+DEFINE_BITFIELD(pass_flags_self, list(
+	BITFIELD(ATOM_PASS_TABLE),
+	BITFIELD(ATOM_PASS_GLASS),
+	BITFIELD(ATOM_PASS_GRILLE),
+	BITFIELD(ATOM_PASS_BLOB),
+	BITFIELD(ATOM_PASS_MOB),
+	BITFIELD(ATOM_PASS_THROWN),
+	BITFIELD(ATOM_PASS_CLICK),
 ))
 
 // /atom/movable movement_type

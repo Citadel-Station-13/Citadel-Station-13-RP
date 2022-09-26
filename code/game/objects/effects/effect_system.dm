@@ -11,7 +11,7 @@ would spawn and follow the beaker, even if it is carried or thrown.
 	icon = 'icons/effects/effects.dmi'
 	mouse_opacity = 0
 	unacidable = 1//So effect are not targeted by alien acid.
-	pass_flags = PASSTABLE | PASSGRILLE
+	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GRILLE
 
 /datum/effect_system
 	var/number = 3
@@ -417,7 +417,7 @@ steam.start() -- spawns the effect
 			oldposition = current
 			I.setDir(src.holder.dir)
 			flick("ion_fade", I)
-			I.icon_state = "blank"
+			I.icon_state = null
 			QDEL_IN(I, 20)
 
 /datum/effect_system/ion_trail_follow/proc/stop()

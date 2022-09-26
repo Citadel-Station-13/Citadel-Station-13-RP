@@ -22,6 +22,7 @@
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 
 /obj/item/clothing/accessory/Destroy()
+	has_suit?.accessories -= src
 	on_removed()
 	return ..()
 

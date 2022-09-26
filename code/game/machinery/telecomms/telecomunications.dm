@@ -239,7 +239,7 @@
 				if (traffic <= 0)
 					heat_produced *= 0.30	//if idle, produce less heat.
 
-				removed.add_thermal_energy(heat_produced)
+				removed.adjust_thermal_energy(heat_produced)
 
 			env.merge(removed)
 /*

@@ -39,11 +39,11 @@
 	//So this is a workaround. This also makes more sense from an IC standpoint. ~Carn
 	if(user.client && (target in user.client.screen))
 		to_chat(user, "<span class='notice'>You need to take that [target.name] off before cleaning it.</span>")
-	else if(istype(target,/obj/effect/decal/cleanable/blood))
+	else if(istype(target,/obj/effect/debris/cleanable/blood))
 		to_chat(user, "<span class='notice'>You scrub \the [target.name] out.</span>")
 		target.clean_blood()
 		return	//Blood is a cleanable decal, therefore needs to be accounted for before all cleanable decals.
-	else if(istype(target,/obj/effect/decal/cleanable))
+	else if(istype(target,/obj/effect/debris/cleanable))
 		to_chat(user, "<span class='notice'>You scrub \the [target.name] out.</span>")
 		qdel(target)
 	else if(istype(target,/turf))

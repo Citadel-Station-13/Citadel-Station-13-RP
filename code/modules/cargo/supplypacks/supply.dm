@@ -145,7 +145,6 @@
 	contains = list(
 			/obj/item/melee/thermalcutter = 1,
 			/obj/item/pickaxe/tyrmalin = 2,
-			/obj/item/grenade/explosive/ied/tyrmalin/large = 1,
 			/obj/item/grenade/explosive/ied/tyrmalin = 2
 			)
 	cost = 120

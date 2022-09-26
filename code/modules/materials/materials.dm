@@ -126,7 +126,7 @@ var/list/name_to_material
 
 	// Damage values.
 	var/hardness = 60            // Prob of wall destruction by hulk, used for edge damage in weapons.  Also used for bullet protection in armor.
-	var/weight = 20              // Determines blunt damage/throwforce for weapons.
+	var/weight = 20              // Determines blunt damage/throw_force for weapons.
 
 	// Noise when someone is faceplanted onto a table made of this material.
 	var/tableslam_noise = 'sound/weapons/tablehit1.ogg'
@@ -1009,7 +1009,7 @@ var/list/name_to_material
 	new /obj/structure/girder/cult(target, "cult")
 
 /datum/material/cult/place_dismantled_product(var/turf/target)
-	new /obj/effect/decal/cleanable/blood(target)
+	new /obj/effect/debris/cleanable/blood(target)
 
 /datum/material/cult/reinf
 	name = "cult2"

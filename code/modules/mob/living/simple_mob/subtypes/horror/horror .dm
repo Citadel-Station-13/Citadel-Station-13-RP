@@ -36,6 +36,8 @@
 	hide_type = /obj/item/stack/hairlesshide
 	exotic_type = /obj/item/stack/sinew
 
+	mob_class = MOB_CLASS_ABERRATION
+
 /datum/ai_holder/simple_mob/horror
 	hostile = TRUE // The majority of simplemobs are hostile, gaslamps are nice.
 	cooperative = FALSE
@@ -57,3 +59,7 @@
 	max_n2 = 0
 	minbodytemp = 0
 	maxbodytemp = 700
+
+/mob/living/simple_mob/horror/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/horror_aura)

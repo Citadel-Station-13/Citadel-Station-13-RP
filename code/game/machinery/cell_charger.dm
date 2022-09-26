@@ -76,7 +76,7 @@
 
 		anchored = !anchored
 		to_chat(user, "You [anchored ? "attach" : "detach"] [src] [anchored ? "to" : "from"] the ground.")
-		playsound(src, W.usesound, 75, TRUE)
+		playsound(src, W.tool_sound, 75, TRUE)
 
 	else if(default_deconstruction_screwdriver(user, W))
 		return

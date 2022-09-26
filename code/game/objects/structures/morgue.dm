@@ -134,11 +134,11 @@
 	if(istype(W, /obj/item/tool/wrench))
 		if(anchored)
 			user.show_message(text("<span class='notice'>[src] can now be moved.</span>"))
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			anchored = FALSE
 		else if(!anchored)
 			user.show_message(text("<span class='notice'>[src] is now secured.</span>"))
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			anchored = TRUE
 	src.add_fingerprint(user)
 	return
@@ -157,11 +157,11 @@
 	desc = "Apply corpse before closing."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "morguet"
-	density = 1
+	density = TRUE
+	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_OVERHEAD_THROW
+	anchored = TRUE
 	plane = TURF_PLANE
 	var/obj/structure/morgue/connected = null
-	anchored = 1
-	throwpass = 1
 
 /obj/structure/m_tray/Destroy()
 	if(connected && connected.connected == src)
@@ -325,7 +325,7 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 		for(var/obj/O in contents) //obj instead of obj/item so that bodybags and ashes get destroyed. We dont want tons and tons of ash piling up
 			qdel(O)
 
-		new /obj/effect/decal/cleanable/ash(src)
+		new /obj/effect/debris/cleanable/ash(src)
 		sleep(30)
 		cremating = 0
 		locked = 0
@@ -416,7 +416,7 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 		for(var/obj/O in contents) //obj instead of obj/item so that bodybags and ashes get destroyed. We dont want tons and tons of ash piling up
 			qdel(O)
 
-		new /obj/effect/decal/cleanable/ash(src)
+		new /obj/effect/debris/cleanable/ash(src)
 		sleep(30)
 		cremating = 0
 		locked = 0

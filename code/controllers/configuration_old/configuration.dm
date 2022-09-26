@@ -2,8 +2,6 @@
 	config_legacy = new /datum/configuration_legacy()
 	config_legacy.load("config/legacy/config.txt")
 	config_legacy.load("config/legacy/game_options.txt","game_options")
-	config_legacy.loadsql("config/legacy/dbconfig.txt")
-	config_legacy.loadforumsql("config/legacy/forumdbconfig.txt")
 
 /datum/configuration_legacy
 	var/server_name = null				// server name (for world name / status)
@@ -142,7 +140,6 @@
 
 	var/organ_health_multiplier = 1
 	var/organ_regeneration_multiplier = 1
-	var/organs_decay
 	var/default_brain_health = 400
 	var/allow_headgibs = FALSE
 
@@ -852,8 +849,6 @@
 					config_legacy.organ_regeneration_multiplier = value / 100
 				if("organ_damage_spillover_multiplier")
 					config_legacy.organ_damage_spillover_multiplier = value / 100
-				if("organs_can_decay")
-					config_legacy.organs_decay = 1
 				if("default_brain_health")
 					config_legacy.default_brain_health = text2num(value)
 					if(!config_legacy.default_brain_health || config_legacy.default_brain_health < 1)
@@ -891,94 +886,6 @@
 
 				else
 					log_misc("Unknown setting in configuration: '[name]'")
-
-/datum/configuration_legacy/proc/loadsql(filename)  // -- TLE
-	var/list/Lines = world.file2list(filename)
-	for(var/t in Lines)
-		if(!t)	continue
-
-		t = trim(t)
-		if (length(t) == 0)
-			continue
-		else if (copytext(t, 1, 2) == "#")
-			continue
-
-		var/pos = findtext(t, " ")
-		var/name = null
-		var/value = null
-
-		if (pos)
-			name = lowertext(copytext(t, 1, pos))
-			value = copytext(t, pos + 1)
-		else
-			name = lowertext(t)
-
-		if (!name)
-			continue
-
-		switch (name)
-			if ("address")
-				sqladdress = value
-			if ("port")
-				sqlport = value
-			if ("database")
-				sqldb = value
-			if ("login")
-				sqllogin = value
-			if ("password")
-				sqlpass = value
-			if ("feedback_database")
-				sqlfdbkdb = value
-			if ("feedback_login")
-				sqlfdbklogin = value
-			if ("feedback_password")
-				sqlfdbkpass = value
-			if ("enable_stat_tracking")
-				sqllogging = 1
-			else
-				log_misc("Unknown setting in configuration: '[name]'")
-
-/datum/configuration_legacy/proc/loadforumsql(filename)  // -- TLE
-	var/list/Lines = world.file2list(filename)
-	for(var/t in Lines)
-		if(!t)	continue
-
-		t = trim(t)
-		if (length(t) == 0)
-			continue
-		else if (copytext(t, 1, 2) == "#")
-			continue
-
-		var/pos = findtext(t, " ")
-		var/name = null
-		var/value = null
-
-		if (pos)
-			name = lowertext(copytext(t, 1, pos))
-			value = copytext(t, pos + 1)
-		else
-			name = lowertext(t)
-
-		if (!name)
-			continue
-
-		switch (name)
-			if ("address")
-				forumsqladdress = value
-			if ("port")
-				forumsqlport = value
-			if ("database")
-				forumsqldb = value
-			if ("login")
-				forumsqllogin = value
-			if ("password")
-				forumsqlpass = value
-			if ("activatedgroup")
-				forum_activated_group = value
-			if ("authenticatedgroup")
-				forum_authenticated_group = value
-			else
-				log_misc("Unknown setting in configuration: '[name]'")
 
 /datum/configuration_legacy/proc/pick_mode(mode_name)
 	// I wish I didn't have to instance the game modes in order to look up

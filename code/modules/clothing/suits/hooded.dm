@@ -424,7 +424,8 @@
 	desc = "An armoured suit for exploring harsh environments."
 	icon_state = "explorer"
 	item_state = "explorer"
-	flags = THICKMATERIAL | PHORONGUARD
+	flags = PHORONGUARD
+	clothing_flags = THICKMATERIAL
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
@@ -463,7 +464,8 @@
 	name = "eldritch garment"
 	desc = "A billowing garment that seeps a thick, waxy substance. Upon closer inspection this outfit is crafted out of tanned skin, the ritual icons and spells drawn onto it having been tattooed before removal."
 	icon_state = "eldritch_armor"
-	flags = HIDEHOLSTER|THICKMATERIAL
+	clothing_flags = THICKMATERIAL
+	flags_inv = HIDEHOLSTER
 	item_state_slots = list(slot_r_hand_str = "brown_jacket", slot_l_hand_str = "brown_jacket")
 	action_button_name = "Toggle Eldritch Hood"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS

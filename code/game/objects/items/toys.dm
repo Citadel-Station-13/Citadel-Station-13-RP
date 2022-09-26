@@ -22,7 +22,7 @@
 
 
 /obj/item/toy
-	throwforce = 0
+	throw_force = 0
 	throw_speed = 4
 	throw_range = 20
 	force = 0
@@ -91,7 +91,7 @@
 /obj/item/toy/syndicateballoon
 	name = "criminal balloon"
 	desc = "There is a tag on the back that reads \"FUK NT!11!\"."
-	throwforce = 0
+	throw_force = 0
 	throw_speed = 4
 	throw_range = 20
 	force = 0
@@ -102,7 +102,7 @@
 /obj/item/toy/nanotrasenballoon
 	name = "criminal balloon"
 	desc = "Across the balloon the following is printed: \"Man, I love NanoTrasen soooo much. I use only NT products. You have NO idea.\""
-	throwforce = 0
+	throw_force = 0
 	throw_speed = 4
 	throw_range = 20
 	force = 0
@@ -299,7 +299,7 @@
 		)
 	slot_flags = SLOT_BELT | SLOT_BACK
 	force = 5
-	throwforce = 5
+	throw_force = 5
 	w_class = ITEMSIZE_NORMAL
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced")
 
@@ -318,7 +318,7 @@
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, src)
 		s.start()
-		new /obj/effect/decal/cleanable/ash(src.loc)
+		new /obj/effect/debris/cleanable/ash(src.loc)
 		src.visible_message("<span class='warning'>The [src.name] explodes!</span>","<span class='warning'>You hear a snap!</span>")
 		playsound(src, 'sound/effects/snap.ogg', 50, 1)
 		qdel(src)
@@ -335,7 +335,7 @@
 			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(2, 0, src)
 			s.start()
-			new /obj/effect/decal/cleanable/ash(src.loc)
+			new /obj/effect/debris/cleanable/ash(src.loc)
 			src.visible_message("<span class='warning'>The [src.name] explodes!</span>","<span class='warning'>You hear a snap!</span>")
 			playsound(src, 'sound/effects/snap.ogg', 50, 1)
 			qdel(src)
@@ -1526,7 +1526,7 @@
 	icon_state = "tinyxmastree"
 	w_class = ITEMSIZE_TINY
 	force = 1
-	throwforce = 1
+	throw_force = 1
 
 //Dakimakuras, ported from Main.
 

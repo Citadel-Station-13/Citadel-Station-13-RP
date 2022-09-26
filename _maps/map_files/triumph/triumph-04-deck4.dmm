@@ -1565,7 +1565,7 @@
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "bjY" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/item/melee/baton/cattleprod,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
@@ -3089,7 +3089,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/hallway/secondary/civilian_hallway_mid)
 "clb" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "clo" = (
@@ -6901,7 +6901,7 @@
 /area/hallway/secondary/docking_hallway)
 "eOC" = (
 /obj/structure/table,
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "eOD" = (
@@ -7028,7 +7028,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /obj/machinery/light/small/emergency{
 	dir = 4
 	},
@@ -25126,7 +25126,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "qZU" = (
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "qZY" = (
@@ -30426,7 +30426,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "uJl" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/structure/bed,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)

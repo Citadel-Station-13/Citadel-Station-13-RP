@@ -50,10 +50,20 @@
 //Helpers for vv_get_dropdown()
 #define VV_DROPDOWN_OPTION(href_key, name) . += "<option value='?_src_=vars;[HrefToken()];[href_key]=TRUE;target=[REF(src)]'>[name]</option>"
 
+//! enums for vv target types
+/// is datum
+#define VVING_A_DATUM			1
+/// is list
+#define VVING_A_LIST			2
+/// is appearance
+#define VVING_A_APPEARANCE		3
+
 // VV HREF KEYS
 #define VV_HK_TARGET "target"
 ///name or index of var for 1 variable targetting hrefs.
 #define VV_HK_VARNAME "targetvar"
+/// to view an appearance virtual object
+#define VV_HK_VIEW_APPEARANCE "vv_appearance"
 // vv_do_list() keys
 #define VV_HK_LIST_ADD "listadd"
 #define VV_HK_LIST_EDIT "listedit"

@@ -13,7 +13,7 @@
 /turf/simulated/mineral/ignore_mapgen/virgo2,
 /area/submap/virgo2/Blackshuttledown)
 "ae" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/template_noop,
 /area/submap/virgo2/Blackshuttledown)
 "af" = (
@@ -24,7 +24,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/Blackshuttledown)
 "ah" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/Blackshuttledown)
 "ai" = (

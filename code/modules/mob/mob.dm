@@ -29,7 +29,10 @@
 	init_rendering()
 	hook_vr("mob_new",list(src))
 	update_transform() // Some mobs may start bigger or smaller than normal.
-	return ..()
+	. = ..()
+	update_config_movespeed()
+	update_movespeed(TRUE)
+	initialize_actionspeed()
 
 /**
  * Delete a mob
@@ -58,9 +61,10 @@
 	dead_mob_list -= src
 	living_mob_list -= src
 	unset_machine()
-	if(hud_used)
-		QDEL_NULL(hud_used)
-	dispose_rendering()
+	movespeed_modification = null
+	actionspeed_modification = null
+	for(var/alert in alerts)
+		clear_alert(alert)
 	if(client)
 		for(var/atom/movable/screen/movable/spell_master/spell_master in spell_masters)
 			qdel(spell_master)
@@ -70,6 +74,9 @@
 		spellremove(src)
 	// this kicks out client
 	ghostize()
+	if(hud_used)
+		QDEL_NULL(hud_used)
+	dispose_rendering()
 	if(plane_holder)
 		QDEL_NULL(plane_holder)
 	// with no client, we can safely remove perspective this way snow-flakily
@@ -247,8 +254,6 @@
 /mob/proc/restrained()
 	return
 
-/mob/proc/show_inv(mob/user)
-	return
 /**
  * Examine a mob
  *
@@ -611,6 +616,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		var/msg = "[key_name_admin(src)]([ADMIN_KICK(src)]) attempted to use the .click macro!"
 		log_admin(msg)
 		message_admins(msg)
+		log_click("DROPPED: .click macro from [ckey] at [argu], [sec], [number1]. [number2]")
 		GLOB.exploit_warn_spam_prevention = world.time + 10
 
 /mob/verb/DisDblClick(argu = null as anything, sec = "" as text, number1 = 0 as num  , number2 = 0 as num)
@@ -621,6 +627,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		var/msg = "[key_name_admin(src)]([ADMIN_KICK(src)]) attempted to use the .dblclick macro!"
 		log_admin(msg)
 		message_admins(msg)
+		log_click("DROPPED: .dblclick macro from [ckey] at [argu], [sec], [number1]. [number2]")
 		GLOB.exploit_warn_spam_prevention = world.time + 10
 
 /**
@@ -631,6 +638,10 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
  * * handles the strip panel equip and unequip as well if "item" sent
  */
 /mob/Topic(href, href_list)
+	if(href_list["strip"])
+		var/op = href_list["strip"]
+		handle_strip_topic(usr, href_list, op)
+		return
 	if(href_list["mach_close"])
 		var/t1 = text("window=[href_list["mach_close"]]")
 		unset_machine()
@@ -666,7 +677,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	if(!Adjacent(usr)) return
 	if(usr.incapacitated(INCAPACITATION_STUNNED | INCAPACITATION_FORCELYING | INCAPACITATION_KNOCKOUT | INCAPACITATION_RESTRAINED)) return //Incapacitated.
 	if(istype(M,/mob/living/silicon/ai)) return
-	show_inv(usr)
+	request_strip_menu(usr)
 	return 0
 
 /mob/proc/can_use_hands()
@@ -1132,24 +1143,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/setEarDamage()
 	return
 
-//! ## Throwing stuff
-
-/mob/proc/toggle_throw_mode()
-	if (src.in_throw_mode)
-		throw_mode_off()
-	else
-		throw_mode_on()
-
-/mob/proc/throw_mode_off()
-	src.in_throw_mode = 0
-	if(src.throw_icon) //in case we don't have the HUD and we use the hotkey
-		src.throw_icon.icon_state = "act_throw_off"
-
-/mob/proc/throw_mode_on()
-	src.in_throw_mode = 1
-	if(src.throw_icon)
-		src.throw_icon.icon_state = "act_throw_on"
-
 /mob/proc/isSynthetic()
 	return 0
 
@@ -1217,10 +1210,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	return
 
 /mob/proc/swap_hand()
-	return
-
-//Throwing stuff
-/mob/proc/throw_item(atom/target)
 	return
 
 /mob/proc/will_show_tooltip()
@@ -1309,3 +1298,9 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /// Checks for slots that are currently obscured by other garments.
 /mob/proc/check_obscured_slots()
 	return
+
+/mob/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)
+	return FALSE
+
+/mob/CanReachIn(atom/movable/mover, atom/target, obj/item/tool, list/cache)
+	return FALSE

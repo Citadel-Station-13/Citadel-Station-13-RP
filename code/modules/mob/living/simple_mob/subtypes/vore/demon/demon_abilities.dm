@@ -12,7 +12,7 @@
 		to_chat(src,"<span class='warning'>You can't do a shift while actively shifting!</span>")
 		return FALSE
 
-	if(!(locate(/obj/effect/decal/cleanable/blood) in src.loc))
+	if(!(locate(/obj/effect/debris/cleanable/blood) in src.loc))
 		to_chat(src,"<span class='warning'>You need blood to shift between realities!</span>")
 		return FALSE
 

@@ -20,7 +20,7 @@
 	var/list/exude_gasses          // The plant will exude these gasses during its life.
 	var/kitchen_tag                // Used by the reagent grinder.
 	var/trash_type                 // Garbage item produced when eaten.
-	var/splat_type = /obj/effect/decal/cleanable/fruit_smudge // Graffiti decal.
+	var/splat_type = /obj/effect/debris/cleanable/fruit_smudge // Graffiti decal.
 	var/has_mob_product            // Mob products. (Dionaea, Walking Mushrooms, Angry Tomatoes)
 	var/apply_color_to_mob = TRUE  // Do we color the mob to match the plant?
 	var/has_item_product           // Item products. (Eggy)
@@ -334,7 +334,7 @@
 			s.set_up(3, 1, get_turf(target))
 			s.start()
 			var/turf/picked = get_turf(pick(turfs))                      // Just in case...
-			new/obj/effect/decal/cleanable/molten_item(get_turf(target)) // Leave a pile of goo behind for dramatic effect...
+			new/obj/effect/debris/cleanable/molten_item(get_turf(target)) // Leave a pile of goo behind for dramatic effect...
 			target.loc = picked                                          // And teleport them to the chosen location.
 
 			impact = 1

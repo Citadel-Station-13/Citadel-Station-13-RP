@@ -152,7 +152,7 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/academy/headmaster)
 "ay" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/wood,
 /area/awaymission/academy/headmaster)
 "az" = (
@@ -505,7 +505,7 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/awaymission/academy/headmaster)
 "bO" = (
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -544,7 +544,7 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/awaymission/academy/classrooms)
 "bV" = (
-/obj/effect/decal/cleanable/ash,
+/obj/effect/debris/cleanable/ash,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/awaymission/academy/classrooms)
 "bW" = (
@@ -609,7 +609,7 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/awaymission/academy/classrooms)
 "ch" = (
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/plating,
 /area/awaymission/academy/classrooms)
 "ci" = (
@@ -1455,7 +1455,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/academy/classrooms)
 "fL" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/wood,
 /area/awaymission/academy/classrooms)
 "fO" = (
@@ -2187,7 +2187,7 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/awaymission/academy/academyaft)
 "hX" = (
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor,
 /area/awaymission/academy/academyaft)
 "hY" = (
@@ -2241,7 +2241,7 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/awaymission/academy/academyaft)
 "ig" = (
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/awaymission/academy/academyaft)
 "ih" = (
@@ -2388,7 +2388,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/vomit,
+/obj/effect/debris/cleanable/vomit,
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/awaymission/academy/academyaft)
 "iG" = (
@@ -2400,7 +2400,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/academy/academyaft)
 "iH" = (
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/awaymission/academy/academyaft)
 "iI" = (

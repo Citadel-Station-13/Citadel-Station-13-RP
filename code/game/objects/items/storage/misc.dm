@@ -79,7 +79,7 @@
 	sharp = 1
 	edge = 1
 	force = 15
-	throwforce = 15
+	throw_force = 15
 	attack_verb = list("stabbed", "chopped", "cut")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	can_hold = list(
@@ -174,3 +174,14 @@
 		to_chat(user, "<span class='warning'>You need a pen to modify [src]!</span>")
 		return FALSE
 	return TRUE
+
+//Ashlander Ammo Box - Exists mostly for ease of equipment @ spawn.
+/obj/item/storage/box/munition_box
+	name = "munition box (musket)"
+	desc = "A tanned leather pouch large enough to hold a few loose musket balls."
+	icon_state = "musket_box"
+	max_storage_space = ITEMSIZE_COST_TINY * 6
+	can_hold = list(
+		/obj/item/ammo_casing/musket
+		)
+	starts_with = list(/obj/item/ammo_casing/musket = 6)

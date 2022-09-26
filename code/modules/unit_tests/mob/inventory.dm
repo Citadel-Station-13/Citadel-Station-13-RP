@@ -4,7 +4,7 @@
 		var/datum/inventory_slot_meta/meta = path
 		if(initial(meta.abstract_type) == path)
 			continue
-		if(initial(meta.allow_random_id))
+		if(initial(meta.inventory_slot_flags) & INV_SLOT_ALLOW_RANDOM_ID)
 			continue		// power to you i guess :/
 		var/id = initial(meta.id)
 		if(found[id])

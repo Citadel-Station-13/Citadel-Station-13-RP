@@ -99,7 +99,7 @@ var/list/gurgled_overlays = list(
 		var/turf/T = get_turf(src)
 		for(var/obj/item/I in contents)
 			remove_from_storage(I, T)
-		new/obj/effect/decal/cleanable/molten_item(T)
+		new/obj/effect/debris/cleanable/molten_item(T)
 		qdel(src)
 		return
 	..()

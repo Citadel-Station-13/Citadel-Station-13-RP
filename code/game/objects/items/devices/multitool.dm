@@ -12,7 +12,7 @@
 	icon_state = "multitool"
 	force = 5.0
 	w_class = ITEMSIZE_SMALL
-	throwforce = 5.0
+	throw_force = 5.0
 	throw_range = 15
 	throw_speed = 3
 	drop_sound = 'sound/items/drop/multitool.ogg'
@@ -31,7 +31,8 @@
 	var/datum/weakref_wiring //Used to store weak references for integrated circuitry. This is now the Omnitool.
 	var/colorable = 1
 	var/color_overlay = null
-	toolspeed = 1
+	tool_speed = 1
+	tool_behaviour = TOOL_MULTITOOL
 
 /obj/item/multitool/Initialize(mapload)
 	. = ..()
@@ -86,7 +87,7 @@
 /obj/item/multitool/cyborg
 	name = "multitool"
 	desc = "Optimised and stripped-down version of a regular multitool."
-	toolspeed = 0.5
+	tool_speed = 0.5
 	colorable = 0
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_multitool
@@ -107,7 +108,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_multitool)
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "multitool"
-	toolspeed = 0.1
+	tool_speed = 0.1
 	origin_tech = list(TECH_MAGNET = 5, TECH_ENGINEERING = 5)
 	colorable = 0
 

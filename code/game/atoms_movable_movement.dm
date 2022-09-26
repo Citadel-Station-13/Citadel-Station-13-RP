@@ -4,15 +4,18 @@
   * Not recommended to use, listen for the [COMSIG_ATOM_DIR_CHANGE] signal instead (sent by this proc)
   */
 /atom/proc/setDir(newdir)
+	if(dir == newdir)
+		return FALSE
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, newdir)
 	dir = newdir
+	return TRUE
 
 ////////////////////////////////////////
 // Here's where we rewrite how byond handles movement except slightly different
 // To be removed on step_ conversion
 // All this work to prevent a second bump
-/atom/movable/Move(atom/newloc, direct=0)
+/atom/movable/Move(atom/newloc, direct = NONE)
 	. = FALSE
 	if(!newloc || newloc == loc)
 		return
@@ -65,7 +68,7 @@
 //
 ////////////////////////////////////////
 
-/atom/movable/Move(atom/newloc, direct)
+/atom/movable/Move(atom/newloc, direct, glide_size_override)
 	var/atom/movable/pullee = pulling
 	var/turf/T = loc
 	if(!moving_from_pull)
@@ -73,6 +76,9 @@
 	if(!loc || !newloc)
 		return FALSE
 	var/atom/oldloc = loc
+	//Early override for some cases like diagonal movement
+	if(glide_size_override)
+		set_glide_size(glide_size_override, FALSE)
 
 	if(loc != newloc)
 		if (!(direct & (direct - 1))) //Cardinal move
@@ -132,7 +138,7 @@
 			return
 
 	if(!loc || (loc == oldloc && oldloc != newloc))
-		last_move = NONE
+		last_move_dir = NONE
 		return
 
 	if(.)
@@ -145,7 +151,7 @@
 			//puller and pullee more than one tile away or in diagonal position
 			if(get_dist(src, pulling) > 1 || (moving_diagonally != SECOND_DIAG_STEP && ((pull_dir - 1) & pull_dir)))
 				pulling.moving_from_pull = src
-				var/success = pulling.Move(T, get_dir(pulling, T)) //the pullee tries to reach our previous position
+				var/success = pulling.Move(T, get_dir(pulling, T), glide_size) //the pullee tries to reach our previous position
 				pulling.moving_from_pull = null
 				if(success)
 					// hook for baystation stuff
@@ -153,14 +159,19 @@
 					// end
 			check_pulling()
 
-	last_move = direct
+	last_move_dir = direct
 	setDir(direct)
-	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc,direct)) //movement failed due to buckled mob(s)
+
+	//glide_size strangely enough can change mid movement animation and update correctly while the animation is playing
+	//This means that if you don't override it late like this, it will just be set back by the movement update that's called when you move turfs.
+	if(glide_size_override)
+		set_glide_size(glide_size_override, FALSE)
+
+	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc, direct, glide_size_override)) //movement failed due to buckled mob(s)
 		return FALSE
 
 	move_speed = world.time - l_move_time
 	l_move_time = world.time
-	m_flag = 1
 
 	if(. && riding_datum)
 		riding_datum.handle_vehicle_layer()
@@ -192,6 +203,7 @@
 	SHOULD_CALL_PARENT(TRUE)
 	. = ..()
 	SEND_SIGNAL(src, COMSIG_MOVABLE_CROSSED, AM)
+	throwing?.crossed_by(AM)
 
 /atom/movable/Uncross(atom/movable/AM, atom/newloc)
 	. = ..()
@@ -207,20 +219,15 @@
 	if(!A)
 		CRASH("Bump was called with no argument.")
 	SEND_SIGNAL(src, COMSIG_MOVABLE_BUMP, A)
+
 	. = ..()
+
 	if(throwing)
-		throw_impact(A)
-		throwing = 0
-		if(QDELETED(A))
-			return
+		throwing.bump_into(A)
+		if(QDELETED(src) || QDELETED(A))
+			return TRUE
+
 	A.last_bumped = world.time
-/*
-	if(!QDELETED(throwing))
-		throwing.hit_atom(A)
-		. = TRUE
-		if(QDELETED(A))
-			return
-*/
 	A.Bumped(src)
 
 /**
@@ -230,8 +237,14 @@
   */
 
 /atom/movable/proc/locationTransitForceMove(atom/destination, recurse_levels = 0)
+	// store pulling, buckled
+	var/atom/movable/oldpulling = pulling
 	var/list/mob/oldbuckled = buckled_mobs?.Copy()
+
+	// move
 	doLocationTransitForceMove(destination)
+
+	// buckled
 	if(length(oldbuckled))
 		for(var/mob/M in oldbuckled)
 			if(recurse_levels)
@@ -240,10 +253,7 @@
 				M.doLocationTransitForceMove(destination)
 			buckle_mob(M, forced = TRUE)
 
-// until movement rework
-/mob/locationTransitForceMove(atom/destination, recurse_levels = 0)
-	var/atom/movable/oldpulling = pulling
-	. = ..()
+	// move pulling, pull
 	if(oldpulling)
 		if(recurse_levels)
 			oldpulling.locationTransitForceMove(destination, recurse_levels - 1)
@@ -276,6 +286,9 @@
   * Wrapper for forceMove when we're called by a recursing locationTransitForceMove().
   */
 /atom/movable/proc/doLocationTransitForceMove(atom/destination)
+	// move buckled mobs first
+	for(var/mob/M in buckled_mobs)
+		M.forceMove(destination)
 	forceMove(destination)
 
 /atom/movable/proc/forceMove(atom/destination)
@@ -399,13 +412,58 @@
 /**
   * Sets our glide size
   */
-/atom/movable/proc/set_glide_size(new_glide_size)
+/atom/movable/proc/set_glide_size(new_glide_size, recursive = TRUE)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE, new_glide_size, glide_size)
 	glide_size = new_glide_size
+
+	for(var/m in buckled_mobs)
+		var/mob/buckled_mob = m
+		buckled_mob.set_glide_size(glide_size)
+
+	if(recursive)
+		recursive_pulled_glidesize_update()
 
 /**
   * Sets our glide size back to our standard glide size.
   */
 
 /atom/movable/proc/reset_glide_size()
-	set_glide_size(default_glide_size)
+	set_glide_size(isnull(default_glide_size)? GLOB.default_glide_size : default_glide_size)
+
+///Sets the anchored var and returns if it was sucessfully changed or not.
+/atom/movable/proc/set_anchored(anchorvalue)
+	SHOULD_CALL_PARENT(TRUE)
+	if(anchored == anchorvalue)
+		return
+	. = anchored
+	anchored = anchorvalue
+	SEND_SIGNAL(src, COMSIG_MOVABLE_SET_ANCHORED, anchorvalue)
+
+//? todo: this system is shit
+/**
+ * return true to let something push through us
+ */
+/atom/movable/proc/force_pushed(atom/movable/pusher, force = MOVE_FORCE_DEFAULT, direction)
+	return FALSE
+
+/**
+ * return true to let something crush through us
+ */
+/atom/movable/proc/move_crushed(atom/movable/pusher, force = MOVE_FORCE_DEFAULT, direction)
+	return FALSE
+
+/atom/movable/proc/force_push(atom/movable/AM, force = move_force, direction, silent)
+	. = AM.force_pushed(src, force, direction)
+	if(!silent && .)
+		visible_message("<span class='warning'>[src] forcefully pushes against [AM]!</span>", "<span class='warning'>You forcefully push against [AM]!</span>")
+
+/atom/movable/proc/move_crush(atom/movable/AM, force = move_force, direction, silent)
+	. = AM.move_crushed(src, force, direction)
+	if(!silent && .)
+		visible_message("<span class='danger'>[src] crushes past [AM]!</span>", "<span class='danger'>You crush [AM]!</span>")
+
+/**
+ * for regexing
+ */
+/atom/movable/proc/check_pass_flags(flags)
+	return pass_flags & flags

@@ -275,25 +275,25 @@
 				to_chat(user, "You pop \the [tank] out of \the [src]'s storage compartment.")
 				tank.forceMove(get_turf(src))
 				tank.clothing_flags &= ~EQUIP_IGNORE_DELIMB
-				playsound(src, W.usesound, 50, 1)
+				playsound(src, W.tool_sound, 50, 1)
 				src.tank = null
 			else if(choice == cooler)
 				to_chat(user, "You pop \the [cooler] out of \the [src]'s storage compartment.")
 				cooler.forceMove(get_turf(src))
 				cooler.clothing_flags &= ~EQUIP_IGNORE_DELIMB
-				playsound(src, W.usesound, 50, 1)
+				playsound(src, W.tool_sound, 50, 1)
 				src.cooler = null
 			else if(choice == helmet)
 				to_chat(user, "You detach \the [helmet] from \the [src]'s helmet mount.")
 				helmet.forceMove(get_turf(src))
 				helmet.clothing_flags &= ~EQUIP_IGNORE_DELIMB
-				playsound(src, W.usesound, 50, 1)
+				playsound(src, W.tool_sound, 50, 1)
 				src.helmet = null
 			else if(choice == boots)
 				to_chat(user, "You detach \the [boots] from \the [src]'s boot mounts.")
 				boots.forceMove(get_turf(src))
 				boots.clothing_flags &= ~EQUIP_IGNORE_DELIMB
-				playsound(src, W.usesound, 50, 1)
+				playsound(src, W.tool_sound, 50, 1)
 				src.boots = null
 		else
 			to_chat(user, "\The [src] does not have anything installed.")

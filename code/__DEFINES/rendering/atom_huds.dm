@@ -56,3 +56,7 @@ GLOBAL_LIST_INIT(hud_icon_layers, list(
 
 ///cooldown for being shown the images for any particular data hud
 #define ADD_HUD_TO_COOLDOWN 20
+
+//alternate appearance flags
+#define AA_TARGET_SEE_APPEARANCE (1<<0)
+#define AA_MATCH_TARGET_OVERLAYS (1<<1)

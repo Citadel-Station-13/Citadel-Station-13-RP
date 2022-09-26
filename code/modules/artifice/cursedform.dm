@@ -27,7 +27,7 @@
 			if(user.get_inactive_held_item() == src)
 				user.drop_item_to_ground(src, INV_OP_FORCE)
 
-			new /obj/effect/decal/cleanable/ash(src.loc)
+			new /obj/effect/debris/cleanable/ash(src.loc)
 			qdel(src)
 
 		else

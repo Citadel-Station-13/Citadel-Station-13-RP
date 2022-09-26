@@ -20,10 +20,8 @@
 	var/interaction_flags_atom = NONE
 	/// Holder for the last time we have been bumped.
 	var/last_bumped = 0
-	/// Pass flags.
-	var/pass_flags = NONE
-	/// If true, you can throw things past this atom.
-	var/throwpass = FALSE
+	/// pass_flags that we are. If any of this matches a pass_flag on a moving thing, by default, we let them through.
+	var/pass_flags_self = NONE
 	/// The higher the germ level, the more germ on the atom.
 	var/germ_level = GERM_LEVEL_AMBIENT
 	/// The 'action' the atom takes to speak.
@@ -91,28 +89,25 @@
 	var/fluorescent
 
 //! ## Overlays
-	/// vis overlays managed by SSvis_overlays to automaticaly turn them like other overlays.
-	var/list/managed_vis_overlays
-	/// Overlays managed by [update_overlays][/atom/proc/update_overlays] to prevent removing overlays that weren't added by the same proc.
-	/// Single items are stored on their own, not in a list.
-	var/list/managed_overlays
-
-	/// Our local copy of (non-priority) overlays without byond magic. Use procs in SSoverlays to manipulate.
-	var/list/our_overlays
-	/// Overlays that should remain on top and not normally removed when using cut_overlay functions, like c4.
-	var/list/priority_overlays
-
-/*		new overlay system
 	/// a very temporary list of overlays to remove
 	var/list/remove_overlays
 	/// a very temporary list of overlays to add
 	var/list/add_overlays
-*/
+
+	///vis overlays managed by SSvis_overlays to automaticaly turn them like other overlays.
+	var/list/managed_vis_overlays
+	///overlays managed by [update_overlays][/atom/proc/update_overlays] to prevent removing overlays that weren't added by the same proc. Single items are stored on their own, not in a list.
+	var/list/managed_overlays
+
 //! ## Layers
 	/// Base layer - defaults to layer.
 	var/base_layer
 	/// Relative layer - position this atom should be in within things of the same base layer. defaults to 0.
 	var/relative_layer = 0
+
+//! Misc
+	/// What mobs are interacting with us right now, associated directly to concurrent interactions. (use defines)
+	var/list/interacting_mobs
 
 /**
  * Called when an atom is created in byond (built in engine proc)
@@ -538,11 +533,6 @@
 /atom/proc/melt()
 	return
 
-/atom/proc/hitby(atom/movable/hitting_atom as mob|obj)
-	if(density)
-		hitting_atom.throwing = 0
-	return
-
 /atom/proc/add_hiddenprint(mob/living/M as mob)
 	if(isnull(M)) return
 	if(isnull(M.key)) return
@@ -719,7 +709,7 @@
 
 /atom/proc/add_vomit_floor(mob/living/carbon/M as mob, var/toxvomit = 0)
 	if( istype(src, /turf/simulated) )
-		var/obj/effect/decal/cleanable/vomit/this = new /obj/effect/decal/cleanable/vomit(src)
+		var/obj/effect/debris/cleanable/vomit/this = new /obj/effect/debris/cleanable/vomit(src)
 		this.virus2 = virus_copylist(M.virus2)
 
 		// Make toxins vomit look different
@@ -734,25 +724,6 @@
 	if(istype(blood_DNA, /list))
 		blood_DNA = null
 		return 1
-
-/atom/proc/get_global_map_pos()
-	if(!islist(global_map) || !length(global_map)) return
-	var/cur_x = null
-	var/cur_y = null
-	var/list/y_arr = null
-	for(cur_x=1,cur_x<=global_map.len,cur_x++)
-		y_arr = global_map[cur_x]
-		cur_y = y_arr.Find(src.z)
-		if(cur_y)
-			break
-//	to_chat(world, "X = [cur_x]; Y = [cur_y]")
-	if(cur_x && cur_y)
-		return list("x"=cur_x,"y"=cur_y)
-	else
-		return 0
-
-/atom/proc/checkpass(passflag)
-	return (pass_flags&passflag)
 
 /atom/proc/isinspace()
 	if(istype(get_turf(src), /turf/space))
@@ -782,7 +753,7 @@
 	for(var/mob in seeing_mobs)
 		var/mob/M = mob
 		if(self_message && (M == src))
-			M.show_message( self_message, 1, blind_message, 2)
+			M.show_message(self_message, 1, blind_message, 2)
 		else if((M.see_invisible >= invisibility) && MOB_CAN_SEE_PLANE(M, plane))
 			M.show_message(message, 1, blind_message, 2)
 		else if(blind_message)
@@ -800,7 +771,7 @@
 
 	var/list/hearing_mobs = hear["mobs"]
 	var/list/hearing_objs = hear["objs"]
-
+	var/list/heard_to_floating_message
 	for(var/obj in hearing_objs)
 		var/obj/O = obj
 		O.show_message(message, 2, deaf_message, 1)
@@ -809,6 +780,9 @@
 		var/mob/M = mob
 		var/msg = message
 		M.show_message(msg, 2, deaf_message, 1)
+		M += heard_to_floating_message
+	INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, (message ? message : deaf_message), null, FALSE, heard_to_floating_message, 30)
+
 
 /atom/movable/proc/dropInto(var/atom/destination)
 	while(istype(destination))
@@ -849,7 +823,7 @@
 	if(!message)
 		return
 	var/list/speech_bubble_hearers = list()
-	for(var/mob/M in get_hearers_in_view(7, src))
+	for(var/mob/M in get_hearers_in_view(MESSAGE_RANGE_COMBAT_LOUD, src))
 		M.show_message("<span class='game say'><span class='name'>[src]</span> [atom_say_verb], \"[message]\"</span>", 2, null, 1)
 		if(M.client)
 			speech_bubble_hearers += M.client
@@ -858,10 +832,26 @@
 		var/image/I = generate_speech_bubble(src, "[bubble_icon][say_test(message)]", FLY_LAYER)
 		I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
 		INVOKE_ASYNC(GLOBAL_PROC, /.proc/flick_overlay, I, speech_bubble_hearers, 30)
+		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, null, FALSE, speech_bubble_hearers, 30)
+
+/atom/proc/say_overhead(var/message, whispering, message_range = 7, var/datum/language/speaking = null, var/list/passed_hearing_list)
+	var/list/speech_bubble_hearers = list()
+	var/italics
+	if(whispering)
+		italics = TRUE
+	for(var/mob/M in get_mobs_in_view(message_range, src))
+		if(M.client)
+			speech_bubble_hearers += M.client
+	if(length(speech_bubble_hearers))
+		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, speaking, italics, speech_bubble_hearers, 30)
+
+/proc/generate_speech_bubble(var/bubble_loc, var/speech_state, var/set_layer = FLOAT_LAYER)
+	var/image/I = image('icons/mob/talk_vr.dmi', bubble_loc, speech_state, set_layer)
+	I.appearance_flags |= (RESET_COLOR|PIXEL_SCALE)
+	return I
 
 /atom/proc/speech_bubble(bubble_state = "", bubble_loc = src, list/bubble_recipients = list())
 	return
-
 
 //! ## Atom Colour Priority System
 /**
@@ -931,9 +921,6 @@
 /**
  * Returns true if this atom has gravity for the passed in turf
  *
- * Sends signals COMSIG_ATOM_HAS_GRAVITY and COMSIG_TURF_HAS_GRAVITY, both can force gravity with
- * the forced gravity var
- *
  * Gravity situations:
  * * No gravity if you're not in a turf
  * * No gravity if this atom is in is a space turf
@@ -942,93 +929,14 @@
  * * Gravity if the Z level has an SSMappingTrait for ZTRAIT_GRAVITY
  * * otherwise no gravity
  */
-/atom/proc/has_gravity(turf/T)
-	if(!T || !isturf(T))
-		T = get_turf(src)
-
+/atom/proc/has_gravity(turf/T = get_turf(src))
 	if(!T)
-		return 0
+		return FALSE
 
-/*
-	var/list/forced_gravity = list()
-	SEND_SIGNAL(src, COMSIG_ATOM_HAS_GRAVITY, T, forced_gravity)
-	if(!forced_gravity.len)
-		SEND_SIGNAL(T, COMSIG_TURF_HAS_GRAVITY, src, forced_gravity)
-	if(forced_gravity.len)
-		var/max_grav
-		for(var/i in forced_gravity)
-			max_grav = max(max_grav, i)
-		return max_grav
-*/
-
-	if(isspaceturf(T)) // Turf never has gravity
-		return 0
-
-	var/area/A = get_area(T)
-	if(A.has_gravity) // Areas which always has gravity
-		return A.has_gravity
-/*
-	else
-		// There's a gravity generator on our z level
-		if(GLOB.gravity_generators["[T.z]"])
-			var/max_grav = 0
-			for(var/obj/machinery/gravity_generator/main/G in GLOB.gravity_generators["[T.z]"])
-				max_grav = max(G.setting,max_grav)
-			return max_grav
-*/
-	return SSmapping.level_trait(T.z, ZTRAIT_GRAVITY)
+	return T.has_gravity()
 
 /atom/proc/is_incorporeal()
 	return FALSE
-
-/// Tool behavior procedure. Redirects to tool-specific procs by default.
-/// You can override it to catch all tool interactions, for use in complex deconstruction procs.
-/// Just don't forget to return ..() in the end.
-/atom/proc/tool_act(mob/living/user, obj/item/I, tool_type)
-	switch(tool_type)
-		if(TOOL_CROWBAR)
-			return crowbar_act(user, I)
-		if(TOOL_MULTITOOL)
-			return multitool_act(user, I)
-		if(TOOL_SCREWDRIVER)
-			return screwdriver_act(user, I)
-		if(TOOL_WRENCH)
-			return wrench_act(user, I)
-		if(TOOL_WIRECUTTER)
-			return wirecutter_act(user, I)
-		if(TOOL_WELDER)
-			return welder_act(user, I)
-		if(TOOL_ANALYZER)
-			return analyzer_act(user, I)
-
-// Tool-specific behavior procs. To be overridden in subtypes.
-/atom/proc/crowbar_act(mob/living/user, obj/item/I)
-	return
-
-/atom/proc/multitool_act(mob/living/user, obj/item/I)
-	return
-
-/atom/proc/multitool_check_buffer(user, obj/item/I, silent = FALSE)
-	if(!I.tool_behaviour == TOOL_MULTITOOL)
-		if(user && !silent)
-			to_chat(user, SPAN_WARNING("[I] has no data buffer!"))
-		return FALSE
-	return TRUE
-
-/atom/proc/screwdriver_act(mob/living/user, obj/item/I)
-	SEND_SIGNAL(src, COMSIG_ATOM_SCREWDRIVER_ACT, user, I)
-
-/atom/proc/wrench_act(mob/living/user, obj/item/I)
-	return
-
-/atom/proc/wirecutter_act(mob/living/user, obj/item/I)
-	return
-
-/atom/proc/welder_act(mob/living/user, obj/item/I)
-	return
-
-/atom/proc/analyzer_act(mob/living/user, obj/item/I)
-	return
 
 /atom/proc/CheckParts(list/parts_list)
 	for(var/A in parts_list)
@@ -1044,12 +952,13 @@
 /atom/proc/is_drainable()
 	return reagents && (reagents.reagents_holder_flags & DRAINABLE)
 
-/atom/proc/add_filter(name,priority,list/params)
+/atom/proc/add_filter(name, priority, list/params, update = TRUE)
 	LAZYINITLIST(filter_data)
 	var/list/copied_parameters = params.Copy()
 	copied_parameters["priority"] = priority
 	filter_data[name] = copied_parameters
-	update_filters()
+	if(update)
+		update_filters()
 
 /atom/proc/update_filters()
 	filters = null
@@ -1091,7 +1000,7 @@
 	if(filter_data && filter_data[name])
 		return filters[filter_data.Find(name)]
 
-/atom/proc/remove_filter(name_or_names)
+/atom/proc/remove_filter(name_or_names, update = TRUE)
 	if(!filter_data)
 		return
 
@@ -1100,7 +1009,8 @@
 	for(var/name in names)
 		if(filter_data[name])
 			filter_data -= name
-	update_filters()
+	if(update)
+		update_filters()
 
 /atom/proc/clear_filters()
 	filter_data = null

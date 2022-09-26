@@ -49,7 +49,7 @@
 	return ..()
 
 /obj/item/clothing/gloves/regen/process(delta_time)
-	var/mob/living/wearer = worn_slot && isliving(loc) && loc
+	var/mob/living/wearer = worn_mob()
 
 	if(!wearer || wearer.isSynthetic() || wearer.stat == DEAD || wearer.nutrition <= 10)
 		return // Robots and dead people don't have a metabolism.

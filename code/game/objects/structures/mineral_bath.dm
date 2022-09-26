@@ -132,7 +132,7 @@
 	for(var/thing in patient.internal_organs)
 		var/obj/item/organ/internal/I = thing
 		if(BP_IS_CRYSTAL(I) && I.damage)
-			I.heal_damage_a(rand(3,5))
+			I.heal_damage_i(rand(3,5))
 			to_chat(patient, "<span class='notice'>The mineral-rich bath mends your [I.name].</span>")
 			return TRUE
 

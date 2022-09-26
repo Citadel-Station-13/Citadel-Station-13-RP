@@ -112,9 +112,9 @@
 	else if(W.is_wrench())
 		add_fingerprint(usr)
 		if (unwrenched==0)
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			to_chat(user, SPAN_NOTICE("You begin to unfasten \the [src] from the floor..."))
-			if (do_after(user, 40 * W.toolspeed))
+			if (do_after(user, 40 * W.tool_speed))
 				user.visible_message( \
 					SPAN_NOTICE("[user] unfastens \the [src]."), \
 					SPAN_NOTICE("You have unfastened \the [src]. Now it can be pulled somewhere else."), \
@@ -125,9 +125,9 @@
 				if (usr.machine==src)
 					usr << browse(null, "window=pipedispenser")
 		else /*if (unwrenched==1)*/
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			to_chat(user, SPAN_NOTICE("You begin to fasten \the [src] to the floor..."))
-			if (do_after(user, 20 * W.toolspeed))
+			if (do_after(user, 20 * W.tool_speed))
 				user.visible_message( \
 					SPAN_NOTICE("[user] fastens \the [src]."), \
 					SPAN_NOTICE("You have fastened \the [src]. Now it can dispense pipes."), \
