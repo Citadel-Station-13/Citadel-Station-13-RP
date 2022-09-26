@@ -103,34 +103,34 @@
 /datum/component/riding_handler/vehicle/boat/big
 	rider_offsets = list(
 		list(
-			list(0, 11, 0.1, null),
-			list(12, 7, 0.1, null),
-			list(0, 3, 0.3, null),
-			list(-12, 7, 0.1, null)
+			list(0, 11, -0.5, null),
+			list(12, 7, -0.5, null),
+			list(0, 3, -0.3, null),
+			list(-12, 7, -0.5, null)
 		),
 		list(
-			list(6, 7, 0.2, null),
-			list(0, 3, 0.2, null),
-			list(-6, 7, 0.2, null),
-			list(0, 11, 0.05, null)
+			list(6, 7, -0.4, null),
+			list(0, 3, -0.4, null),
+			list(-6, 7, -0.4, null),
+			list(0, 11, -1, null)
 		),
 		list(
-			list(-6, 7, 0.2, null),
-			list(0, 11, 0.05, null),
-			list(6, 7, 0.2, null),
-			list(0, 3, 0.2, null)
+			list(-6, 7, -0.3, null),
+			list(0, 11, -1, null),
+			list(6, 7, -0.3, null),
+			list(0, 3, -0.3, null)
 		),
 		list(
-			list(6, 3, 0.3, null),
-			list(-12, 3, 0.2, null),
-			list(-6, 11, 0.1, null),
-			list(12, 11, 0.05, null)
+			list(6, 3, -0.2, null),
+			list(-12, 3, -0.3, null),
+			list(-6, 11, -0.5, null),
+			list(12, 11, -1, null)
 		),
 		list(
-			list(-6, 3, 0.3, null),
-			list(-12, 11, 0.05, null),
-			list(6, 11, 0.1, null),
-			list(12, 3, 0.2, null)
+			list(-6, 3, -0.2, null),
+			list(-12, 11, -1, null),
+			list(6, 11, -0.5, null),
+			list(12, 3, -0.3, null)
 		)
 	)
 
