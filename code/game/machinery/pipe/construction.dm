@@ -174,7 +174,7 @@ Buildable meters
 
 /obj/item/pipe/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(W.is_wrench())
-		return wrench_act(user, W)
+		return wrench_act(W, user)
 	return ..()
 
 /obj/item/pipe/wrench_act(obj/item/I, mob/user, flags, hint)
@@ -263,10 +263,10 @@ Buildable meters
 
 /obj/item/pipe_meter/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(W.is_wrench())
-		return wrench_act(user, W)
+		return wrench_act(W, user)
 	return ..()
 
-/obj/item/pipe_meter/wrench_act(var/mob/living/user, var/obj/item/tool/wrench/W)
+/obj/item/pipe_meter/wrench_act(obj/item/I, mob/user, flags, hint)
 	var/obj/machinery/atmospherics/pipe/pipe
 	for(var/obj/machinery/atmospherics/pipe/P in loc)
 		if(P.piping_layer == piping_layer)
@@ -276,7 +276,7 @@ Buildable meters
 		to_chat(user, "<span class='warning'>You need to fasten it to a pipe!</span>")
 		return TRUE
 	new /obj/machinery/meter(loc, piping_layer)
-	playsound(src, W.tool_sound, 50, 1)
+	playsound(src, I.tool_sound, 50, 1)
 	to_chat(user, "<span class='notice'>You fasten the meter to the pipe.</span>")
 	qdel(src)
 
