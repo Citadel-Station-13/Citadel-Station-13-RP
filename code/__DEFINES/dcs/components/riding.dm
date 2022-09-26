@@ -21,7 +21,7 @@ DEFINE_BITFIELD(riding_filter_flags, list(
 /// for allow borders, do not allow crossing
 #define CF_RIDING_HANDLER_FORBID_BORDER_CROSS		(1<<4)
 /// shift rider to our plane
-#define CF_RIDING_HANDLER_SHIFT_RIDER_PLANE
+#define CF_RIDING_HANDLER_SHIFT_RIDER_PLANE			(1<<5)
 
 DEFINE_BITFIELD(riding_handler_flags, list(
 	BITFIELD(CF_RIDING_HANDLER_EPHEMERAL),
