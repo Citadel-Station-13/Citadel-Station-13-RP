@@ -26,6 +26,9 @@
 /obj/fiftyspawner/wood,
 /obj/fiftyspawner/wood,
 /obj/fiftyspawner/bone,
+/obj/item/shovel/spade/bone{
+	pixel_x = -2
+	},
 /obj/item/pickaxe/bone,
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/ashlander_camp)
@@ -34,14 +37,12 @@
 /obj/item/seeds/ashlander/bentars,
 /obj/item/seeds/ashlander/juhtak,
 /obj/item/seeds/ashlander,
-/obj/item/shovel/spade/bone{
-	pixel_x = -2
-	},
+/obj/item/tool/wirecutters/clippers/bone,
+/obj/item/material/minihoe/bone,
 /obj/item/material/knife/machete/hatchet/bone{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/tool/wirecutters/clippers/bone,
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/ashlander_camp)
 "R" = (

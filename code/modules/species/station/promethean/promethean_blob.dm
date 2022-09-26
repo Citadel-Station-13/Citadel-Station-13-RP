@@ -30,8 +30,6 @@
 	var/is_wide = FALSE
 	var/rad_glow = 0
 
-
-
 /mob/living/simple_mob/slime/promethean/Initialize(mapload, null)
 	verbs += /mob/living/simple_mob/slime/promethean/proc/prommie_blobform
 	verbs += /mob/living/proc/set_size
@@ -51,7 +49,6 @@
 	icon_living = "[icon_state_override ? "[icon_state_override] slime" : "slime"] [is_wide ? "adult" : "baby"][""]"
 	..()
 
-
 /mob/living/simple_mob/slime/promethean/Destroy()
 	humanform = null
 	vore_organs = null
@@ -64,8 +61,6 @@
 		stored_blob = null
 		qdel(stored_blob)
 	return ..()
-
-/mob/living/simple_mob/emote(var/act, var/type, var/desc)
 
 /mob/living/simple_mob/slime/promethean/Stat()
 	..()

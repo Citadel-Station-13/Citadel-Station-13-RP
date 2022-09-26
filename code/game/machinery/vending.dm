@@ -769,7 +769,8 @@
 					/obj/item/reagent_containers/food/snacks/liquidfood = 10,
 					/obj/item/reagent_containers/food/snacks/liquidprotein = 10,
 					/obj/item/reagent_containers/pill/diet = 8,
-					/obj/item/towel/random = 8)
+					/obj/item/towel/random = 8,
+					/obj/item/reagent_containers/food/snacks/brainsnax = 5)
 
 	prices = list(/obj/item/reagent_containers/food/drinks/smallmilk = 3,
 					/obj/item/reagent_containers/food/drinks/smallchocmilk = 3,
@@ -780,6 +781,7 @@
 					/obj/item/reagent_containers/food/snacks/liquidprotein = 10,
 					/obj/item/reagent_containers/pill/diet = 25,
 					/obj/item/towel/random = 40,
+					/obj/item/reagent_containers/food/snacks/brainsnax = 20
 					)
 
 	contraband = list(/obj/item/reagent_containers/syringe/steroid = 4)
@@ -1217,7 +1219,8 @@
 					/obj/item/reagent_containers/food/snacks/appletart = 4,
 					/obj/item/reagent_containers/food/snacks/sliceable/applecake = 2,
 					/obj/item/reagent_containers/food/snacks/sliceable/bananabread = 2,
-					/obj/item/reagent_containers/food/snacks/sliceable/creamcheesebread = 2
+					/obj/item/reagent_containers/food/snacks/sliceable/creamcheesebread = 2,
+					/obj/item/reagent_containers/food/snacks/brainsnax = 5
 					)
 	contraband = list(/obj/item/reagent_containers/food/snacks/mysterysoup = 10)
 	vend_delay = 15

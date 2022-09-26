@@ -114,12 +114,16 @@
 	return ..()
 
 //? throws completely pass to the mob
-/obj/item/holder/throw_resolve_actual()
+/obj/item/holder/throw_resolve_actual(mob/user)
 	return held_mob
 
-/obj/item/holder/throw_resolve_override()
-	forceMove(get_turf(src))
+/obj/item/holder/throw_resolve_override(atom/movable/resolved, mob/user)
+	held_mob.forceMove(user.drop_location())
+	held_mob = null
 	return TRUE
+
+/obj/item/holder/throw_resolve_finalize(atom/movable/resolved, mob/user)
+	qdel(src)
 
 //Mob specific holders.
 /obj/item/holder/diona

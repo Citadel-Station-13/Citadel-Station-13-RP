@@ -58,3 +58,17 @@
 2022-09-22:
   nevimer:
   - rscadd: floating messages and preferences for it.
+2022-09-23:
+  Captain277:
+  - rscdel: Removes cult mobs from Surt.
+  - balance: Tweaks Tyrmalin heavy charge distribution.
+  silicons:
+  - refactor: tool handling has been rewritten
+2022-09-24:
+  Mouseofthecake:
+  - rscadd: Added Brainsnax food cans to food-o-mats.
+2022-09-26:
+  Captain277:
+  - bugfix: Corrects inheritance of color changing var.
+  - rscadd: Adds an open space turf.
+  - rscadd: Adds a faction to launchers.
