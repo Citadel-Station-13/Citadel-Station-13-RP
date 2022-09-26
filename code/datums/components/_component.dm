@@ -487,7 +487,7 @@
  */
 /datum/proc/DelComponent(path, exact)
 	var/list/L = datum_components[path]
- 	var/datum/component/C
+	var/datum/component/C
 	if(!L)
 		return FALSE
 	if(!islist(L))
