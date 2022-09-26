@@ -67,3 +67,8 @@
 2022-09-24:
   Mouseofthecake:
   - rscadd: Added Brainsnax food cans to food-o-mats.
+2022-09-26:
+  Captain277:
+  - bugfix: Corrects inheritance of color changing var.
+  - rscadd: Adds an open space turf.
+  - rscadd: Adds a faction to launchers.
