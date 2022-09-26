@@ -53,19 +53,19 @@
 
 	// Destroy turf contents.
 	for(var/obj/O in origin)
-		if((O.flags & AF_ABSTRACT))
+		if((O.flags & ATOM_ABSTRACT))
 			continue
 		qdel(O) //crunch
 	for(var/obj/O in T)
-		if((O.flags & AF_ABSTRACT))
+		if((O.flags & ATOM_ABSTRACT))
 			continue
 		qdel(O) //crunch
 
 	// Hurl the mobs away.
 	for(var/mob/living/M in T)
-		M.throw_at(get_edge_target_turf(T,src.dir),rand(0,3),50)
+		M.throw_at_old(get_edge_target_turf(T,src.dir),rand(0,3),50)
 	for(var/mob/living/M in origin)
-		M.throw_at(get_edge_target_turf(origin,src.dir),rand(0,3),50)
+		M.throw_at_old(get_edge_target_turf(origin,src.dir),rand(0,3),50)
 
 	// Create a decorative ramp bottom and flatten out our current ramp.
 	density = 0

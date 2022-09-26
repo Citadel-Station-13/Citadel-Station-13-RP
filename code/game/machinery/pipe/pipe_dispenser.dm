@@ -104,17 +104,17 @@
 
 /obj/machinery/pipedispenser/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if (istype(W, /obj/item/pipe) || istype(W, /obj/item/pipe_meter))
+		if(!user.attempt_consume_item_for_construction(W))
+			return
 		to_chat(usr, SPAN_NOTICE("You put [W] back in [src]."))
-		user.drop_item()
 		add_fingerprint(usr)
-		qdel(W)
 		return
 	else if(W.is_wrench())
 		add_fingerprint(usr)
 		if (unwrenched==0)
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			to_chat(user, SPAN_NOTICE("You begin to unfasten \the [src] from the floor..."))
-			if (do_after(user, 40 * W.toolspeed))
+			if (do_after(user, 40 * W.tool_speed))
 				user.visible_message( \
 					SPAN_NOTICE("[user] unfastens \the [src]."), \
 					SPAN_NOTICE("You have unfastened \the [src]. Now it can be pulled somewhere else."), \
@@ -125,9 +125,9 @@
 				if (usr.machine==src)
 					usr << browse(null, "window=pipedispenser")
 		else /*if (unwrenched==1)*/
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			to_chat(user, SPAN_NOTICE("You begin to fasten \the [src] to the floor..."))
-			if (do_after(user, 20 * W.toolspeed))
+			if (do_after(user, 20 * W.tool_speed))
 				user.visible_message( \
 					SPAN_NOTICE("[user] fastens \the [src]."), \
 					SPAN_NOTICE("You have fastened \the [src]. Now it can dispense pipes."), \
@@ -148,7 +148,7 @@
 	disposals = TRUE
 
 //Allow you to drag-drop disposal pipes into it
-/obj/machinery/pipedispenser/disposal/MouseDrop_T(var/obj/structure/disposalconstruct/pipe as obj, mob/usr as mob)
+/obj/machinery/pipedispenser/disposal/MouseDroppedOnLegacy(var/obj/structure/disposalconstruct/pipe as obj, mob/usr as mob)
 	if(!usr.canmove || usr.stat || usr.restrained())
 		return
 

@@ -63,11 +63,11 @@
 
 	//suck up some blood to gain power
 	if(world.time - last_eat > eat_interval)
-		var/obj/effect/decal/cleanable/blood/B = locate() in range(2,src)
+		var/obj/effect/debris/cleanable/blood/B = locate() in range(2,src)
 		if(B)
 			last_eat = world.time
 			B.loc = null
-			if(istype(B, /obj/effect/decal/cleanable/blood/drip))
+			if(istype(B, /obj/effect/debris/cleanable/blood/drip))
 				charges += 0.25
 			else
 				charges += 1
@@ -124,23 +124,23 @@
 		var/target = pick(M.organs_by_name)
 		M.apply_damage(rand(5, 10), BRUTE, target)
 		to_chat(M, "<font color='red'>The skin on your [parse_zone(target)] feels like it's ripping apart, and a stream of blood flies out.</font>")
-		var/obj/effect/decal/cleanable/blood/splatter/animated/B = new(M.loc)
+		var/obj/effect/debris/cleanable/blood/splatter/animated/B = new(M.loc)
 		B.target_turf = pick(range(1, src))
 		B.blood_DNA = list()
 		B.blood_DNA[M.dna.unique_enzymes] = M.dna.b_type
 		M.vessel.remove_reagent("blood",rand(25,50))
 
 //animated blood 2 SPOOKY
-/obj/effect/decal/cleanable/blood/splatter/animated
+/obj/effect/debris/cleanable/blood/splatter/animated
 	var/turf/target_turf
 	var/loc_last_process
 
-/obj/effect/decal/cleanable/blood/splatter/animated/Initialize(mapload)
+/obj/effect/debris/cleanable/blood/splatter/animated/Initialize(mapload)
 	. = ..()
 	loc_last_process = loc
 	START_PROCESSING(SSobj, src)
 
-/obj/effect/decal/cleanable/blood/splatter/animated/process(delta_time)
+/obj/effect/debris/cleanable/blood/splatter/animated/process(delta_time)
 	if(target_turf && loc != target_turf)
 		step_towards(src,target_turf)
 		if(loc == loc_last_process)
@@ -149,7 +149,7 @@
 
 		//leave some drips behind
 		if(prob(50))
-			var/obj/effect/decal/cleanable/blood/drip/D = new(loc)
+			var/obj/effect/debris/cleanable/blood/drip/D = new(loc)
 			D.blood_DNA = blood_DNA.Copy()
 			if(prob(50))
 				D = new(loc)

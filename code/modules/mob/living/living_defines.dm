@@ -1,5 +1,6 @@
 /mob/living
 	see_invisible = SEE_INVISIBLE_LIVING
+	movable_flags = MOVABLE_NO_THROW_SPIN | MOVABLE_NO_THROW_DAMAGE_SCALING | MOVABLE_NO_THROW_SPEED_SCALING
 
 	//* Health and life related vars *//
 	/// Maximum health that should be possible.  Avoid adjusting this if you can, and instead use modifiers datums.
@@ -43,7 +44,6 @@
 	var/t_sl_gas = null
 	var/t_n2 = null
 
-	var/now_pushing = null
 	var/mob_bump_flag = 0
 	var/mob_swap_flags = 0
 	var/mob_push_flags = 0
@@ -98,3 +98,23 @@
 
 	// TODO: execute iamcrystalclear for making this var
 	var/last_blood_warn = -INFINITY
+
+	//! inventory
+	var/hand = null
+	var/obj/item/l_hand = null
+	var/obj/item/r_hand = null
+	var/obj/item/back = null//Human/Monkey
+	var/obj/item/tank/internal = null//Human/Monkey
+	var/obj/item/clothing/mask/wear_mask = null//Carbon
+
+	// TODO: /tg/ arbitrary hand numbers
+	/// Set to TRUE to enable the use of hands and the hands hud
+	var/has_hands = FALSE
+
+	//! movement
+	/// are we currently pushing (or trying to push) (or otherwise inside Bump() handling that deals with this crap) another atom?
+	var/_pushing_bumped_atom = FALSE
+
+	//! throwing
+	/// the force we use when we throw things
+	var/throw_impulse = THROW_FORCE_DEFAULT

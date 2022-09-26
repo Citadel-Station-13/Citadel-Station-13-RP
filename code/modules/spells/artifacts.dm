@@ -7,7 +7,7 @@
 	icon_state = "bluespace"
 	throw_speed = 3
 	throw_range = 7
-	throwforce = 10
+	throw_force = 10
 	damtype = BURN
 	force = 10
 	hitsound = 'sound/items/welder2.ogg'
@@ -35,7 +35,7 @@
 	lefthand_file = 'icons/mob/inhands/equipment/kitchen_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/kitchen_righthand.dmi'
 	force = 15
-	throwforce = 10
+	throw_force = 10
 	w_class = WEIGHT_CLASS_NORMAL
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	var/charges = 1
@@ -224,10 +224,10 @@
 
 	var/hat = pick(/obj/item/clothing/head/helmet/roman, /obj/item/clothing/head/helmet/romancent)
 	H.equip_to_slot_or_del(new hat(H), SLOT_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/roman(H), slot_w_uniform)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/roman(H), SLOT_ID_UNIFORM)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/roman(H), SLOT_FEET)
-	H.put_in_hands(new /obj/item/shield/riot/roman(H), TRUE)
-	H.put_in_hands(new /obj/item/material/sword(H), TRUE)
+	H.put_in_hands(new /obj/item/shield/riot/roman(H), INV_OP_FORCE)
+	H.put_in_hands(new /obj/item/material/sword(H), INV_OP_FORCE)
 	H.equip_to_slot_or_del(new /obj/item/material/twohanded/spear(H), SLOT_BACK)
 
 /*

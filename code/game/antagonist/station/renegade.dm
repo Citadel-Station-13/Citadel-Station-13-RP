@@ -48,6 +48,7 @@ var/datum/antagonist/renegade/renegades
 		/obj/item/gun/projectile/silenced,
 		/obj/item/gun/projectile/pistol,
 		/obj/item/gun/projectile/p92x,
+		/obj/item/gun/projectile/konigin,
 		/obj/item/gun/projectile/revolver,
 		/obj/item/gun/projectile/derringer,
 		/obj/item/gun/projectile/shotgun/pump,
@@ -75,7 +76,7 @@ var/datum/antagonist/renegade/renegades
 	survive.owner = player
 	player.objectives |= survive
 
-/datum/antagonist/renegade/equip(var/mob/living/carbon/human/player)
+/datum/antagonist/renegade/equip(mob/living/carbon/human/player)
 
 	if(!..())
 		return
@@ -83,18 +84,18 @@ var/datum/antagonist/renegade/renegades
 	var/gun_type = pick(spawn_guns)
 	if(islist(gun_type))
 		gun_type = pick(gun_type)
-	var/obj/item/gun = new gun_type(get_turf(player))
+	var/obj/item/gun = new gun_type(player)
 
 	// Attempt to put into a container.
-	if(player.equip_to_storage(gun))
+	if(player.equip_to_slot_if_possible(gun, /datum/inventory_slot_meta/abstract/put_in_storage, INV_OP_FLUFFLESS | INV_OP_SILENT))
 		return
 
 	// If that failed, attempt to put into any valid non-handslot
-	if(player.equip_to_appropriate_slot(gun))
+	if(player.equip_to_appropriate_slot(gun, INV_OP_SILENT | INV_OP_FLUFFLESS))
 		return
 
 	// If that failed, then finally attempt to at least let the player carry the weapon
-	player.put_in_hands(gun)
+	player.put_in_hands_or_drop(gun)
 
 
 /proc/rightandwrong()

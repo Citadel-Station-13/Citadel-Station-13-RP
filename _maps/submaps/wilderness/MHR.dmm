@@ -18,7 +18,7 @@
 /turf/simulated/mineral/ignore_mapgen,
 /area/submap/MHR)
 "f" = (
-/obj/effect/decal/cleanable/spiderling_remains,
+/obj/effect/debris/cleanable/spiderling_remains,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
@@ -44,7 +44,7 @@
 /turf/template_noop,
 /area/submap/MHR)
 "k" = (
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
@@ -62,21 +62,21 @@
 	},
 /area/submap/MHR)
 "n" = (
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
 /area/submap/MHR)
 "o" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
 /area/submap/MHR)
 "p" = (
-/obj/effect/decal/cleanable/spiderling_remains,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/spiderling_remains,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
@@ -96,7 +96,7 @@
 	},
 /area/submap/MHR)
 "s" = (
-/obj/effect/decal/cleanable/spiderling_remains,
+/obj/effect/debris/cleanable/spiderling_remains,
 /mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0

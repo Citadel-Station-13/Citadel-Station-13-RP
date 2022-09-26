@@ -1,7 +1,7 @@
 //Here you find the wonderfull code for suitcyclers
 //I did not write this, I just copied it to this page to take it from suit_storage_unit.dm
 
-
+// TODO: UNIFY WITH SUIT STORAGE UNITS WHY ARE THESE SEPARATE
 /obj/machinery/suit_cycler
 
 	name = "suit cycler"
@@ -26,7 +26,7 @@
 	//Departments that the cycler can paint suits to look like.
 	var/list/departments = list("Engineering","Mining","Medical","Security","Atmos","HAZMAT","Construction","Biohazard","Emergency Medical Response","Crowd Control","Director","Head of Security", "No Change")
 	//Species that the suits can be configured to fit.
-	var/list/species = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_AKULA, SPECIES_ALRAUNE, SPECIES_NEVREAN, SPECIES_RAPALA, SPECIES_SERGAL, SPECIES_VASILISSAN, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VOX, SPECIES_AURIL, SPECIES_DREMACHIR, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_APIDAEN)
+	var/list/species = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_AKULA, SPECIES_ALRAUNE, SPECIES_NEVREAN, SPECIES_RAPALA, SPECIES_SERGAL, SPECIES_VASILISSAN, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VOX, SPECIES_AURIL, SPECIES_DREMACHIR, SPECIES_APIDAEN)
 
 	var/target_department
 	var/target_species
@@ -186,7 +186,7 @@
 	else if(I.is_screwdriver())
 
 		panel_open = !panel_open
-		playsound(src, I.usesound, 50, 1)
+		playsound(src, I.tool_sound, 50, 1)
 		to_chat(user, "You [panel_open ?  "open" : "close"] the maintenance panel.")
 		updateUsrDialog()
 		return
@@ -205,9 +205,9 @@
 			to_chat(user, "You cannot refit a customised voidsuit.")
 			return
 
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		to_chat(user, "You fit \the [I] into the suit cycler.")
-		user.drop_item()
-		I.loc = src
 		helmet = I
 
 		update_icon()
@@ -228,9 +228,9 @@
 			to_chat(user, "You cannot refit a customised voidsuit.")
 			return
 
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		to_chat(user, "You fit \the [I] into the suit cycler.")
-		user.drop_item()
-		I.loc = src
 		suit = I
 
 		update_icon()
@@ -247,7 +247,7 @@
 	//Clear the access reqs, disable the safeties, and open up all paintjobs.
 	to_chat(user, "<span class='danger'>You run the sequencer across the interface, corrupting the operating protocols.</span>")
 	departments = list("Engineering","Mining","Medical","Security","Atmos","HAZMAT","Construction","Biohazard","Crowd Control","Emergency Medical Response","^%###^%$", "Charring", "No Change")
-	species = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_AKULA, SPECIES_ALRAUNE, SPECIES_NEVREAN, SPECIES_RAPALA, SPECIES_SERGAL, SPECIES_VASILISSAN, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VOX, SPECIES_AURIL, SPECIES_DREMACHIR, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_APIDAEN)
+	species = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_AKULA, SPECIES_ALRAUNE, SPECIES_NEVREAN, SPECIES_RAPALA, SPECIES_SERGAL, SPECIES_VASILISSAN, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VOX, SPECIES_AURIL, SPECIES_DREMACHIR, SPECIES_APIDAEN)
 
 	emagged = 1
 	safeties = 0

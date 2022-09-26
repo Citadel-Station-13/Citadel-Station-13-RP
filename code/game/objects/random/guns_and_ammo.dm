@@ -81,6 +81,7 @@
 				prob(2);/obj/item/gun/projectile/revolver/deckard,
 				prob(1);/obj/item/gun/projectile/revolver/detective,
 				prob(1);/obj/item/gun/projectile/revolver/judge,
+				prob(1);/obj/item/gun/projectile/konigin,
 				prob(1);/obj/item/gun/projectile/revolver/lemat,
 				prob(1);/obj/item/gun/projectile/revolver/mateba,
 				prob(1);/obj/item/gun/projectile/revolver/dirty_harry,

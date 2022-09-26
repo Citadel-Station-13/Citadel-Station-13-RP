@@ -29,15 +29,16 @@
 		breather.internal = null
 		if(breather.internals)
 			breather.internals.icon_state = "internal0"
-		breather.remove_from_mob(contained)
 		visible_message(SPAN_NOTICE("\The [contained] rapidly retracts just before \the [src] is destroyed!"))
 		breather = null
 
-	QDEL_NULL(tank)
-	QDEL_NULL(contained)
+	if(tank)
+		QDEL_NULL(tank)
+	if(contained)
+		QDEL_NULL(contained)
 	return ..()
 
-/obj/machinery/oxygen_pump/MouseDrop(mob/living/carbon/human/target, src_location, over_location)
+/obj/machinery/oxygen_pump/OnMouseDropLegacy(mob/living/carbon/human/target, src_location, over_location)
 	..()
 	if(istype(target) && CanMouseDrop(target))
 		if(!can_apply_to_target(target, usr)) // There is no point in attempting to apply a mask if it's impossible.
@@ -66,9 +67,8 @@
 	if(breather)
 		if(tank)
 			tank.forceMove(src)
-		breather.remove_from_mob(contained)
 		contained.forceMove(src)
-		src.visible_message(SPAN_NOTICE("\The [user] makes \the [contained] rapidly retract back into \the [src]!"))
+		visible_message(SPAN_NOTICE("\The [user] makes \the [contained] rapidly retract back into \the [src]!"))
 		if(breather.internals)
 			breather.internals.icon_state = "internal0"
 		breather = null
@@ -79,12 +79,11 @@
 
 /obj/machinery/oxygen_pump/proc/attach_mask(mob/living/carbon/C)
 	if(C && istype(C))
-		contained.forceMove(get_turf(C))
-		C.equip_to_slot(contained, slot_wear_mask)
+		if(!C.equip_to_slot_if_possible(contained, SLOT_ID_MASK, INV_OP_FLUFFLESS | INV_OP_SUPPRESS_WARNING))
+			return
 		if(tank)
 			tank.forceMove(C)
 		breather = C
-		spawn(1)
 		if(!breather.internal && tank)
 			breather.internal = tank
 			if(breather.internals)
@@ -139,8 +138,8 @@
 		if(tank)
 			to_chat(user, SPAN_WARNING("\The [src] already has a tank installed!"))
 		else
-			user.drop_item()
-			W.forceMove(src)
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 			tank = W
 			user.visible_message( \
 				SPAN_NOTICE("\The [user] installs \the [tank] into \the [src]."), \
@@ -162,7 +161,6 @@
 		if(!can_apply_to_target(breather))
 			if(tank)
 				tank.forceMove(src)
-			breather.remove_from_mob(contained)
 			contained.forceMove(src)
 			src.visible_message(SPAN_NOTICE("\The [contained] rapidly retracts back into \the [src]!"))
 			breather = null
@@ -285,7 +283,6 @@
 		if(!can_apply_to_target(breather))
 			if(tank)
 				tank.forceMove(src)
-			breather.remove_from_mob(contained)
 			contained.forceMove(src)
 			src.visible_message(SPAN_NOTICE("\The [contained] rapidly retracts back into \the [src]!"))
 			breather = null

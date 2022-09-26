@@ -57,9 +57,8 @@ var/list/organ_cache = list()
 	var/rejecting
 	/// Can this organ decay at all?
 	var/decays = TRUE
-	/// If true, prevent organ decay.
-	var/preserved = FALSE
-
+	/// decay rate
+	var/decay_rate = ORGAN_DECAY_PER_SECOND_DEFAULT
 
 //! ## LANGUAGE VARS - For organs that assist with certain languages.
 	var/list/will_assist_languages = list()

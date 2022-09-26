@@ -1,5 +1,5 @@
 #ifndef T_BOARD
-#error T_BOARD macro is not defined but we need it! 
+#error T_BOARD macro is not defined but we need it!
 #endif
 
 /obj/item/circuitboard/air_management
@@ -18,10 +18,16 @@
 	name = T_BOARD("injector control")
 	build_path = /obj/machinery/computer/general_air_control/fuel_injection
 
-/obj/item/circuitboard/air_management/construct(var/obj/machinery/computer/general_air_control/C)
-	if (..(C))
-		C.frequency = frequency
+/obj/item/circuitboard/air_management/after_construct(atom/A)
+	. = ..()
+	if(!istype(A, /obj/machinery/computer/general_air_control))
+		return
+	var/obj/machinery/computer/general_air_control/C = A
+	C.frequency = frequency
 
-/obj/item/circuitboard/air_management/deconstruct(var/obj/machinery/computer/general_air_control/C)
-	if (..(C))
-		frequency = C.frequency
+/obj/item/circuitboard/air_management/after_deconstruct(atom/A)
+	. = ..()
+	if(!istype(A, /obj/machinery/computer/general_air_control))
+		return
+	var/obj/machinery/computer/general_air_control/C = A
+	frequency = C.frequency

@@ -100,7 +100,7 @@
 			return FALSE
 		if(ishuman(speaker))
 			var/mob/living/carbon/human/H = speaker
-			if(H.species.get_bodytype(H) in allowed_species)
+			if(H.species.get_bodytype_legacy(H) in allowed_species)
 				return TRUE
 
 	return FALSE

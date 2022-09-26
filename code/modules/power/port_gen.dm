@@ -629,8 +629,8 @@
 /obj/machinery/power/rtg/abductor/attackby(obj/item/I, mob/user, params)
 	state_change = TRUE //Can't tell if parent did something
 	if(istype(I, /obj/item/cell/device/weapon/recharge/alien) && !alien)
-		user.remove_from_mob(I)
-		I.forceMove(src)
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		alien = I
 		RefreshParts()
 		update_icon()

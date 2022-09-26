@@ -565,7 +565,7 @@
 	else
 		src.icon_state = initial(icon_state)
 		to_chat(user, "You turn the glowing nose off.")
-	update_clothing_icon()	//so our mob-overlays update
+	update_worn_icon()	//so our mob-overlays update
 
 /obj/item/clothing/head/crown
 	name = "banded crown"
@@ -670,7 +670,7 @@
 	desc = "The hands float by themselves, so it's extra spooky."
 	icon_state = "ghost_sheet"
 	item_state = "ghost_sheet"
-	throwforce = 0
+	throw_force = 0
 	throw_speed = 1
 	throw_range = 2
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|HANDS|HEAD|FACE

@@ -1,5 +1,3 @@
-#define I_SINGULO "singulo"
-
 /atom/proc/singularity_act(obj/singularity/S, current_size)
 	return
 
@@ -7,7 +5,7 @@
 	return
 
 /mob/living/singularity_act()
-	investigate_log("has been consumed by a singularity", I_SINGULO)
+	investigate_log("has been consumed by a singularity", INVESTIGATE_SINGULO)
 	gib()
 	return 20
 
@@ -22,15 +20,14 @@
 			gain = 100
 		if(mind.assigned_role == USELESS_JOB)
 			gain = rand(0, 300)
-	investigate_log(I_SINGULO,"has been consumed by a singularity", I_SINGULO)
+	investigate_log(INVESTIGATE_SINGULO,"has been consumed by a singularity", INVESTIGATE_SINGULO)
 	gib()
 	return gain
 
 /mob/living/carbon/human/singularity_pull(S, current_size)
 	if(current_size >= STAGE_THREE)
-		var/list/handlist = list(l_hand, r_hand)
-		for(var/obj/item/hand in handlist)
-			if(prob(current_size*5) && hand.w_class >= ((11-current_size)/2) && unEquip(hand))
+		for(var/obj/item/hand in get_held_items())
+			if(prob(current_size*5) && hand.w_class >= ((11-current_size)/2) && drop_item_to_ground(hand))
 				step_towards(hand, S)
 				to_chat(src, "<span class = 'warning'>The [S] pulls \the [hand] from your grip!</span>")
 
@@ -40,7 +37,7 @@
 	..()
 
 /obj/singularity_act()
-	if(flags & AF_ABSTRACT)
+	if(flags & ATOM_ABSTRACT)
 		return
 	ex_act(1)
 	if(!QDELETED(src))
@@ -48,7 +45,7 @@
 	return 2
 
 /obj/singularity_pull(S, current_size)
-	if(flags & AF_ABSTRACT)
+	if(flags & ATOM_ABSTRACT)
 		return
 	if(anchored)
 		if(current_size >= STAGE_FIVE)
@@ -65,7 +62,7 @@
 /obj/item/singularity_pull(S, current_size)
 	spawn(0) //this is needed or multiple items will be thrown sequentially and not simultaneously
 		if(current_size >= STAGE_FOUR)
-			//throw_at(S, 14, 3)
+			//throw_at_old(S, 14, 3)
 			step_towards(src,S)
 			sleep(1)
 			step_towards(src,S)

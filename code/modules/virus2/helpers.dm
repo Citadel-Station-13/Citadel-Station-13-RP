@@ -58,7 +58,7 @@ proc/infection_check(var/mob/living/carbon/M, var/vector = "Airborne")
 //Checks if table-passing table can reach target (5 tile radius)
 proc/airborne_can_reach(turf/source, turf/target)
 	var/obj/dummy = new(source)
-	dummy.pass_flags = PASSTABLE
+	dummy.pass_flags = ATOM_PASS_TABLE
 
 	for(var/i=0, i<5, i++) if(!step_towards(dummy, target)) break
 
@@ -95,9 +95,9 @@ proc/airborne_can_reach(turf/source, turf/target)
 	if(!disease.affected_species.len)
 		return
 
-	if (!(M.species.get_bodytype() in disease.affected_species))
+	if (!(M.species.get_bodytype_legacy() in disease.affected_species))
 		if (forced)
-			disease.affected_species[1] = M.species.get_bodytype()
+			disease.affected_species[1] = M.species.get_bodytype_legacy()
 		else
 			return //not compatible with this species
 

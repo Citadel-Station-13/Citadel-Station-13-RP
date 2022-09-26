@@ -163,8 +163,8 @@
 		if(stored_ammo.len >= max_ammo)
 			to_chat(user, "<span class='warning'>[src] is full!</span>")
 			return
-		user.remove_from_mob(B)
-		B.loc = src
+		if(!user.attempt_insert_item_for_installation(B, src))
+			return
 		stored_ammo.Add(B)
 		update_icon()
 	playsound(user.loc, 'sound/weapons/flipblade.ogg', 50, 1)
@@ -208,7 +208,7 @@
 	icon = 'icons/obj/ammo_vr.dmi'
 	icon_state = "nsfw_batt"
 	slot_flags = SLOT_BELT | SLOT_EARS
-	throwforce = 1
+	throw_force = 1
 	w_class = ITEMSIZE_TINY
 	var/shots_left = 4
 

@@ -14,7 +14,7 @@
 	name = "baby slime"
 	icon = 'icons/mob/slimes.dmi'
 	icon_state = "grey baby slime"
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	var/is_adult = 0
 	speak_emote = list("chirps")
 
@@ -208,10 +208,6 @@
 	adjustFireLoss(f_loss)
 
 	updatehealth()
-
-
-/mob/living/carbon/slime/u_equip(obj/item/W as obj)
-	return
 
 /mob/living/carbon/slime/attack_ui(slot)
 	return

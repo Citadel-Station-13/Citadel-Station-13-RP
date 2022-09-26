@@ -99,16 +99,15 @@
 
 /obj/machinery/portable_atmospherics/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if ((istype(W, /obj/item/tank) && !( src.destroyed )))
-		// TODO: user.put_in_hands_or_drop(holding) after putting new tank in???
-		if (src.holding)
-			holding.forceMove(drop_location())
-			to_chat(user, SPAN_NOTICE("You quickly swap [W] into [src] with the quick release valve."))
-		else
-			to_chat(user, SPAN_NOTICE("You insert [W] into [src]."))
+		if (holding && (user.a_intent != INTENT_GRAB))
+			return
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		var/obj/item/tank/T = W
-		user.drop_item()
-		T.loc = src
-		src.holding = T
+		if(holding)
+			user.grab_item_from_interacted_with(holding, src)
+			to_chat(user, SPAN_NOTICE("You quickly swap the tanks with the quick release valve."))
+		holding = T
 		update_icon()
 		return
 
@@ -117,7 +116,7 @@
 			disconnect()
 			to_chat(user, "<span class='notice'>You disconnect \the [src] from the port.</span>")
 			update_icon()
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			return
 		else
 			var/obj/machinery/atmospherics/portables_connector/possible_port = locate(/obj/machinery/atmospherics/portables_connector/) in loc
@@ -125,7 +124,7 @@
 				if(connect(possible_port))
 					to_chat(user, "<span class='notice'>You connect \the [src] to the port.</span>")
 					update_icon()
-					playsound(src, W.usesound, 50, 1)
+					playsound(src, W.tool_sound, 50, 1)
 					return
 				else
 					to_chat(user, "<span class='notice'>\The [src] failed to connect to the port.</span>")
@@ -137,11 +136,8 @@
 	else if ((istype(W, /obj/item/analyzer)) && Adjacent(user))
 		var/obj/item/analyzer/A = W
 		A.analyze_gases(src, user)
-		return
 
-	return
-
-/obj/machinery/portable_atmospherics/MouseDrop_T(mob/living/carbon/O, mob/user as mob)
+/obj/machinery/portable_atmospherics/MouseDroppedOnLegacy(mob/living/carbon/O, mob/user as mob)
 	if(!istype(O))
 		return 0 //not a mob
 	if(user.incapacitated())
@@ -189,13 +185,13 @@
 		if(cell)
 			to_chat(user, "There is already a power cell installed.")
 			return
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 
 		var/obj/item/cell/C = I
 
-		user.drop_item()
 		C.add_fingerprint(user)
 		cell = C
-		C.loc = src
 		user.visible_message("<span class='notice'>[user] opens the panel on [src] and inserts [C].</span>", "<span class='notice'>You open the panel on [src] and insert [C].</span>")
 		power_change()
 		return
@@ -206,9 +202,9 @@
 			return
 
 		user.visible_message("<span class='notice'>[user] opens the panel on [src] and removes [cell].</span>", "<span class='notice'>You open the panel on [src] and remove [cell].</span>")
-		playsound(src, I.usesound, 50, 1)
+		playsound(src, I.tool_sound, 50, 1)
 		cell.add_fingerprint(user)
-		cell.loc = src.loc
+		cell.forceMove(drop_location())
 		cell = null
 		power_change()
 		return

@@ -28,11 +28,11 @@
 /obj/effect/hoist_hook/attack_hand(mob/living/user)
 	return // This has to be overridden so that it works properly.
 
-/obj/effect/hoist_hook/MouseDrop_T(atom/movable/AM,mob/user)
+/obj/effect/hoist_hook/MouseDroppedOnLegacy(atom/movable/AM,mob/user)
 	if (use_check(user, USE_DISALLOW_SILICONS))
 		return
 
-	if ((AM.flags & AF_ABSTRACT) || AM.anchored)
+	if ((AM.flags & ATOM_ABSTRACT) || AM.anchored)
 		to_chat(user, SPAN_NOTICE("You can't do that."))
 		return
 	if (source_hoist.hoistee)
@@ -50,7 +50,7 @@
 	AM.anchored = 1 // why isn't this being set by buckle_mob for silicons?
 	source_hook.layer = AM.layer + 0.1
 
-/obj/effect/hoist_hook/MouseDrop(atom/dest)
+/obj/effect/hoist_hook/OnMouseDropLegacy(atom/dest)
 	..()
 	if(!Adjacent(usr) || !dest.Adjacent(usr)) return // carried over from the default proc
 

@@ -36,8 +36,8 @@
 		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
 		return
 
-/obj/machinery/processor/attackby(obj/item/W, mob/user, params, attack_modifier)
-	if(default_unfasten_wrench(user, W, 40))
+/obj/machinery/processor/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
+	if(default_unfasten_wrench(user, I, 40))
 		return
 	return ..()
 
@@ -151,7 +151,7 @@
 		return TRUE
 	return FALSE
 
-/obj/machinery/processor/MouseDrop_T(var/atom/movable/AM, var/mob/living/user)
+/obj/machinery/processor/MouseDroppedOnLegacy(var/atom/movable/AM, var/mob/living/user)
 	if(user.stat || user.incapacitated(INCAPACITATION_DISABLED) || !istype(user))
 		return
 	insert(AM, user)

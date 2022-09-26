@@ -205,7 +205,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 		if(GRAV_NEEDS_SCREWDRIVER)
 			if(I.is_screwdriver())
 				to_chat(user, "<span class='notice'>You secure the screws of the framework.</span>")
-				playsound(src, I.usesound, 75, 1)
+				playsound(src, I.tool_sound, 75, 1)
 				broken_state++
 				update_icon()
 				return
@@ -232,7 +232,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 		if(GRAV_NEEDS_WRENCH)
 			if(I.is_wrench())
 				to_chat(user, "<span class='notice'>You secure the plating to the framework.</span>")
-				playsound(src, I.usesound, 75, 1)
+				playsound(src, I.tool_sound, 75, 1)
 				set_fix()
 				return
 	return ..()

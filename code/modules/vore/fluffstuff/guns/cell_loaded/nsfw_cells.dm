@@ -70,16 +70,9 @@
 /obj/item/projectile/bullet/stripper/on_hit(var/atom/stripped)
 	if(ishuman(stripped))
 		var/mob/living/carbon/human/H = stripped
-		if(H.wear_suit)
-			H.unEquip(H.wear_suit)
-		if(H.w_uniform)
-			H.unEquip(H.w_uniform)
-		if(H.back)
-			H.unEquip(H.back)
-		if(H.shoes)
-			H.unEquip(H.shoes)
-		if(H.gloves)
-			H.unEquip(H.gloves)
+		if(!H.permit_stripped)
+			return
+		H.drop_slots_to_ground(list(SLOT_ID_SUIT, SLOT_ID_UNIFORM, SLOT_ID_BACK, SLOT_ID_SHOES, SLOT_ID_GLOVES))
 		//Hats can stay! Most other things fall off with removing these.
 	..()
 

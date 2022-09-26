@@ -69,7 +69,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/shuttle
 	requires_power = 0
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	sound_env = SMALL_ENCLOSED
 
 /area/shuttle/arrival
@@ -307,7 +307,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/trade_ship
 	requires_power = 1
 	icon_state = "shuttle2"
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 
 /area/shuttle/trade_ship/general
 	name = "\improper Beruang Trade Shuttle"
@@ -588,7 +588,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Independent Station"
 	icon_state = "yellow"
 	requires_power = 0
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	ambience = AMBIENCE_HIGHSEC
 
 /area/syndicate_station/start
@@ -774,7 +774,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 //Maintenance
 
 /area/maintenance
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	sound_env = TUNNEL_ENCLOSED
 	turf_initializer = new /datum/turf_initializer/maintenance()
 	ambience = AMBIENCE_MAINTENANCE
@@ -1352,7 +1352,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/crew_quarters
 	name = "Dormitories"
 	icon_state = "crew_quarters"
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	ambience = AMBIENCE_GENERIC
 
 /area/crew_quarters/toilet
@@ -1750,7 +1750,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "holodeck_control"
 
 /area/vacant
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 
 /area/vacant/vacant_shop
 	name = "\improper Vacant Shop"
@@ -2248,6 +2248,22 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Virology Isolation"
 	icon_state = "virology"
 
+/area/medical/virologypurge
+	name = "\improper Virology Purge"
+	icon_state = "virology"
+
+/area/medical/virologytransitwest
+	name = "\improper Virology Transit Hub - West"
+	icon_state = "virology"
+
+/area/medical/virologytransiteast
+	name = "\improper Virology Transit Hub - East"
+	icon_state = "virology"
+
+/area/medical/virologymaint
+	name = "\improper Virology Maintenance Shaft"
+	icon_state = "virology"
+
 /area/medical/recoveryrestroom
 	name = "\improper Recovery Room Restroom"
 	icon_state = "virology"
@@ -2363,7 +2379,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Security - Armory"
 	icon_state = "armory"
 	ambience = AMBIENCE_HIGHSEC
-	area_flags = AF_BLUE_SHIELDED
+	area_flags = AREA_BLUE_SHIELDED
 
 /area/security/briefing_room
 	name = "\improper Security - Briefing Room"
@@ -2423,7 +2439,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Security - Tactical Equipment"
 	icon_state = "Tactical"
 	ambience = AMBIENCE_HIGHSEC
-	area_flags = AF_BLUE_SHIELDED
+	area_flags = AREA_BLUE_SHIELDED
 
 /area/security/hallway
 	name = "\improper Security Hallway"
@@ -2503,7 +2519,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Vault"
 	icon_state = "nuke_storage"
 	ambience = AMBIENCE_HIGHSEC
-	area_flags = AF_BLUE_SHIELDED
+	area_flags = AREA_BLUE_SHIELDED
 
 /area/security/checkpoint
 	name = "\improper Security Checkpoint"
@@ -3223,7 +3239,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/alien
 	name = "\improper Alien base"
 	icon_state = "yellow"
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	requires_power = 0
 
 /area/alien/unknown
@@ -3273,7 +3289,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/bigship
 	name = "Bigship"
 	requires_power = 0
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	sound_env = SMALL_ENCLOSED
 	icon_state = "red2"
 
@@ -3283,7 +3299,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/houseboat
 	name = "Small Cruiser"
 	requires_power = 0
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	icon_state = "red2"
 	lightswitch = TRUE
 

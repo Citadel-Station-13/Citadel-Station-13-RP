@@ -235,13 +235,13 @@ GLOBAL_LIST_EMPTY(solars_list)
 		if(W.is_wrench())
 			anchored = 1
 			user.visible_message("<span class='notice'>[user] wrenches the solar assembly into place.</span>")
-			playsound(src, W.usesound, 75, 1)
+			playsound(src, W.tool_sound, 75, 1)
 			return 1
 	else
 		if(W.is_wrench())
 			anchored = 0
 			user.visible_message("<span class='notice'>[user] unwrenches the solar assembly from it's place.</span>")
-			playsound(src, W.usesound, 75, 1)
+			playsound(src, W.tool_sound, 75, 1)
 			return 1
 
 		if(istype(W, /obj/item/stack/material) && (W.get_material_name() == "glass" || W.get_material_name() == "rglass"))
@@ -262,9 +262,9 @@ GLOBAL_LIST_EMPTY(solars_list)
 
 	if(!tracker)
 		if(istype(W, /obj/item/tracker_electronics))
+			if(!user.attempt_consume_item_for_construction(W))
+				return
 			tracker = 1
-			user.drop_item()
-			qdel(W)
 			user.visible_message("<span class='notice'>[user] inserts the electronics into the solar assembly.</span>")
 			return 1
 	else
@@ -435,7 +435,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 
 /obj/machinery/power/solar_control/attackby(obj/item/I, user as mob)
 	if(I.is_screwdriver())
-		playsound(src, I.usesound, 50, 1)
+		playsound(src, I.tool_sound, 50, 1)
 		if(do_after(user, 20))
 			if (src.machine_stat & BROKEN)
 				to_chat(user, "<font color=#4F49AF>The broken glass falls out.</font>")

@@ -40,9 +40,9 @@
 /obj/item/anodevice/attackby(var/obj/I as obj, var/mob/user as mob)
 	if(istype(I, /obj/item/anobattery))
 		if(!inserted_battery)
+			if(!user.attempt_insert_item_for_installation(I, src))
+				return
 			to_chat(user, "<font color=#4F49AF>You insert the battery.</font>")
-			user.drop_item()
-			I.loc = src
 			inserted_battery = I
 			UpdateSprite()
 	else

@@ -36,7 +36,7 @@
 		return attack_hand(user) //Process as if we're a normal person touching the object.
 	return ..() //Otherwise, treat this as an AI click like usual.
 
-/atom/movable/MouseDrop_T(mob/living/M, mob/living/user)
+/atom/movable/MouseDroppedOnLegacy(mob/living/M, mob/living/user)
 	. = ..()
 	if(can_buckle && istype(M))
 		if(user_buckle_mob(M, user))
@@ -172,11 +172,11 @@
 	if(has_buckled_mobs())
 		for(var/A in buckled_mobs)
 			var/mob/living/L = A
-//			if(!L.Move(newloc, direct))
-			if(!L.forceMove(newloc, direct))
+			if(!L.Move(newloc, direct))
 				loc = L.loc
-				last_move = L.last_move
-				L.inertia_dir = last_move
+				for(var/mob/M as anything in buckled_mobs)
+					M.forceMove(loc)
+				last_move_dir = inertia_dir = L.last_move_dir
 				return FALSE
 			else
 				L.setDir(dir)

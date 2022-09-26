@@ -59,9 +59,8 @@
 	cur_coils = 3
 
 /obj/machinery/power/smes/buildable/Destroy()
-	qdel(wires)
-	wires = null
-	for(var/datum/nano_module/rcon/R in world)
+	QDEL_NULL(wires)
+	for(var/datum/nano_module/rcon/R in GLOB.rcon_nano_modules)
 		R.FindDevices()
 	return ..()
 
@@ -85,7 +84,7 @@
 // Parameters: None
 // Description: AI requires the RCON wire to be intact to operate the SMES.
 /obj/machinery/power/smes/buildable/attack_ai()
-	if(RCon)
+	if(RCon || IsAdminGhost(usr))
 		..()
 	else // RCON wire cut
 		to_chat(usr, "<span class='warning'>Connection error: Destination Unreachable.</span>")
@@ -311,9 +310,9 @@
 				to_chat(user, "<span class='warning'>You have to disassemble the terminal first!</span>")
 				return
 
-			playsound(get_turf(src), W.usesound, 50, 1)
+			playsound(get_turf(src), W.tool_sound, 50, 1)
 			to_chat(user, "<span class='warning'>You begin to disassemble the [src]!</span>")
-			if (do_after(usr, (100 * cur_coils) * W.toolspeed)) // More coils = takes longer to disassemble. It's complex so largest one with 5 coils will take 50s with a normal crowbar
+			if (do_after(usr, (100 * cur_coils) * W.tool_speed)) // More coils = takes longer to disassemble. It's complex so largest one with 5 coils will take 50s with a normal crowbar
 
 				if (failure_probability && prob(failure_probability))
 					total_system_failure(failure_probability, user)
@@ -325,17 +324,15 @@
 
 		// Superconducting Magnetic Coil - Upgrade the SMES
 		else if(istype(W, /obj/item/smes_coil))
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 			if (cur_coils < max_coils)
-
 				if (failure_probability && prob(failure_probability))
 					total_system_failure(failure_probability, user)
 					return
-
 				to_chat(user, "You install the coil into the SMES unit!")
-				user.drop_item()
 				cur_coils ++
 				component_parts += W
-				W.forceMove(src)
 				recalc_coils()
 			else
 				to_chat(user, "<font color='red'>You can't insert more coils into this SMES unit!</font>")

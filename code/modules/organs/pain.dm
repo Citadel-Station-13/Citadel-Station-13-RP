@@ -5,10 +5,13 @@
 /mob/var/last_pain_message = ""
 /mob/var/next_pain_time = 0
 
+
+/mob/living/proc/custom_pain(message, power, force)
+
 // message is the custom message to be displayed
 // power decides how much painkillers will stop the message
 // force means it ignores anti-spam timer
-/mob/living/carbon/proc/custom_pain(message, power, force)
+/mob/living/carbon/custom_pain(message, power, force)
 	if(!message || stat || !can_feel_pain() || chem_effects[CE_PAINKILLER] > power)
 		return 0
 	message = "<span class='danger'>[message]</span>"
@@ -45,7 +48,7 @@
 		if(maxdam > 10 && paralysis)
 			AdjustParalysis(-round(maxdam/10))
 		if(maxdam > 50 && prob(maxdam / 5))
-			drop_item()
+			drop_active_held_item()
 		var/burning = damaged_organ.burn_dam > damaged_organ.brute_dam
 		var/msg
 		if(painmsg)

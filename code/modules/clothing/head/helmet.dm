@@ -4,7 +4,7 @@
 	icon_state = "helmet"
 	valid_accessory_slots = (ACCESSORY_SLOT_HELM_C)
 	restricted_accessory_slots = (ACCESSORY_SLOT_HELM_C)
-	flags = THICKMATERIAL
+	clothing_flags = THICKMATERIAL
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 0, rad = 0)
 	flags_inv = HIDEEARS|BLOCKHEADHAIR
 	cold_protection = HEAD
@@ -75,7 +75,7 @@
 	else
 		src.icon_state = initial(icon_state)
 		to_chat(user, "You lower the visor on the riot helmet.")
-	update_clothing_icon()	//so our mob-overlays update
+	update_worn_icon()	//so our mob-overlays update
 
 /obj/item/clothing/head/helmet/laserproof
 	name = "ablative helmet"
@@ -156,6 +156,11 @@
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|BLOCKHAIR
 	siemens_coefficient = 1
 	valid_accessory_slots = null
+
+/obj/item/clothing/head/helmet/gladiator/ashlander
+	name = "ashlander kranos"
+	desc = "This weathered helmet bears a collection of acidic pits and claw marks."
+	armor = list(melee = 5, bullet = 5, laser = 5,energy = 0, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/head/helmet/tactical
 	name = "tactical helmet"
@@ -268,7 +273,7 @@
 		flash_protection = FLASH_PROTECTION_MAJOR
 		src.icon_state = initial(icon_state)
 		to_chat(user, "<font color=#4F49AF>The helmet's protective sigil glows as you lower the OM visor.</font>")
-	update_clothing_icon()	//so our mob-overlays update
+	update_worn_icon()	//so our mob-overlays update
 
 	if(!user.mind.isholy)
 		flash_protection = FLASH_PROTECTION_NONE

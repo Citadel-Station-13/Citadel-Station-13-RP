@@ -12,27 +12,35 @@
 /turf/CanAtmosPass(turf/T, d)
 	if(blocks_air)
 		return ATMOS_PASS_AIR_BLOCKED
-	var/v = d & (UP|DOWN)
-	switch(v)
-		if(UP)
-			if(!(z_flags & Z_AIR_UP))
-				return ATMOS_PASS_AIR_BLOCKED
-		if(DOWN)
-			if(!(z_flags & Z_AIR_DOWN))
-				return ATMOS_PASS_AIR_BLOCKED
 	if(T == src)
-		// at this point nothing should be blocking us --> us
+		//! warning: this does break some ZAS functionality but honestly blocking self to self is a stupid and expensive concept to maintain.
 		return ATMOS_PASS_NOT_BLOCKED
-	// we only care about objects, compiler fastpath
-	// plus, wtf are you doing using /atom/movable to block atmos??
-	. = ATMOS_PASS_NOT_BLOCKED
-	for(var/obj/O in contents)
-		. = min(., v? CANVERTICALATMOSPASS(O, T, d) : CANATMOSPASS(O, T, d))
-		if(. == ATMOS_PASS_AIR_BLOCKED)
-			// can't go lower than this
-			return
+	var/v = d & (UP|DOWN)
+	if(v)
+		switch(d)
+			if(UP)
+				if(!(z_flags & Z_AIR_UP))
+					return ATMOS_PASS_AIR_BLOCKED
+			if(DOWN)
+				if(!(z_flags & Z_AIR_DOWN))
+					return ATMOS_PASS_AIR_BLOCKED
+		. = ATMOS_PASS_NOT_BLOCKED
+		for(var/atom/movable/AM as anything in contents)
+			. = min(., CANVERTICALATMOSPASS(AM, T, d))
+			if(. == ATMOS_PASS_AIR_BLOCKED)
+				// can't go lower than this
+				return
+	else
+		. = ATMOS_PASS_NOT_BLOCKED
+		for(var/atom/movable/AM as anything in contents)
+			. = min(., CANATMOSPASS(AM, T, d))
+			if(. == ATMOS_PASS_AIR_BLOCKED)
+				// can't go lower than this
+				return
 
 /turf/proc/CheckAirBlock(turf/other)
+	if(other == src)
+		return CanAtmosPass(src, NONE)
 	var/d = other.z == z? get_dir(src, other) : get_dir_multiz(src, other)
 	var/o = REVERSE_DIR(d)
 	return min(CanAtmosPass(other, d), other.CanAtmosPass(src, o))

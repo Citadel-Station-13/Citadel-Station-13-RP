@@ -306,7 +306,7 @@
 	M.Move(targetm)
 	M.visible_message("<span class='warning'>[M] is thrown clear of [AM]!</span>", \
 					"<span class='warning'>You're thrown clear of [AM]!</span>")
-	M.throw_at(target, 14, 5, AM)
+	M.throw_at_old(target, 14, 5, AM)
 	M.Paralyze(60)
 
 /datum/component/riding/proc/equip_buckle_inhands(mob/living/carbon/human/user, amount_required = 1, riding_target_override = null)
@@ -346,17 +346,17 @@
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "offhand"
 	w_class = WEIGHT_CLASS_HUGE
-	item_flags = ABSTRACT | DROPDEL | NOBLUDGEON
+	item_flags = ITEM_ABSTRACT | DROPDEL | NOBLUDGEON
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	var/mob/living/carbon/rider
 	var/mob/living/parent
 	var/selfdeleting = FALSE
 
-/obj/item/riding_offhand/dropped()
+/obj/item/riding_offhand/dropped(mob/user, flags, atom/newLoc)
 	selfdeleting = TRUE
 	. = ..()
 
-/obj/item/riding_offhand/equipped(mob/user, slot)
+/obj/item/riding_offhand/equipped(mob/user, slot, flags)
 	if(loc != rider && loc != parent)
 		selfdeleting = TRUE
 		qdel(src)

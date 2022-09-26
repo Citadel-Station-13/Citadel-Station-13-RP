@@ -44,24 +44,23 @@
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/sonar_ping,
 		/mob/living/carbon/human/proc/psychic_whisper,
-		//mob/living/carbon/human/proc/neurotoxin,//need the acid organ which I dont wanna just give them
 		/mob/living/carbon/human/proc/hybrid_resin,
-		/mob/living/carbon/human/proc/hybrid_plant,//replaced from the normal weed node to place a singular weed
-        /mob/living/carbon/human/proc/active_heal
+		/mob/living/carbon/human/proc/hybrid_plant//replaced from the normal weed node to place a singular weed
 		)
 
 	total_health = 110	//Exoskeleton makes you tougher than baseline
 	brute_mod = 0.95 // Chitin is somewhat hard to crack
 	burn_mod = 1.5	// Natural enemy of xenomorphs is fire. Upgraded to Major Burn Weakness. Reduce to Minor if this is too harsh.
 	blood_volume = 560	//Baseline
-	darksight = 5 //Better hunters in the dark.
+	darksight = 6 //Better hunters in the dark.
 	hunger_factor = 0.1 //In exchange, they get hungry a tad faster.
 
 	slowdown = -0.2//Speedboost Tesh have -0.5
 
-	warning_low_pressure = 30//lower than baseline, still not vacuum prove
-	hazard_low_pressure = -1
+	warning_low_pressure = 30//lower than baseline
+	hazard_low_pressure = -1//Vacuum proof
 
 	warning_high_pressure = 325//Both baseline
 	hazard_high_pressure = 550
@@ -88,7 +87,7 @@
 		O_PLASMA =		/obj/item/organ/internal/xenos/plasmavessel/hunter,//Important for the xenomorph abilities, hunter to have a pretty small plasma capacity
 		O_STOMACH =		/obj/item/organ/internal/stomach,
 		O_INTESTINE =	/obj/item/organ/internal/intestine,
-		O_RESIN =    	/obj/item/organ/internal/xenos/resinspinner,
+		O_RESIN =		/obj/item/organ/internal/xenos/resinspinner,
 		)
 	vision_organ = O_BRAIN//Neomorphs have no (visible) Eyes, seeing without them should be possible.
 
@@ -98,38 +97,36 @@
 	return TRUE	//they dont quite breathe
 
 /datum/species/xenohybrid/handle_environment_special(var/mob/living/carbon/human/H)
-    if(H.healing)
+	var/heal_amount = min(H.nutrition, 200) / 50 //Not to much else we might as well give them a diona like healing
+	H.nutrition = max(H.nutrition-heal_amount,0)
 
-        var/heal_amount = min(H.nutrition, 200) / 50 //Not to much else we might as well give them a diona like healing
-        H.nutrition = max(H.nutrition-heal_amount,0)
+	if(H.resting)
+		heal_amount *= 1.05//resting allows you to heal a little faster
+	var/fire_damage = H.getFireLoss()
+	if(fire_damage >= heal_amount)
+		H.adjustFireLoss(-heal_amount)
+		heal_amount = 0;
+		return
+	if(fire_damage < heal_amount)
+		H.adjustFireLoss(-heal_amount)
+		heal_amount -= fire_damage
 
-        if(H.resting)
-            heal_amount *= 1.05//resting allows you to heal a little faster
-        var/fire_damage = H.getFireLoss()
-        if(fire_damage >= heal_amount)
-            H.adjustFireLoss(-heal_amount)
-            heal_amount = 0;
-            return
-        if(fire_damage < heal_amount)
-            H.adjustFireLoss(-heal_amount)
-            heal_amount -= fire_damage
+	var/trauma_damage = H.getBruteLoss()
+	if(trauma_damage >= heal_amount)
+		H.adjustBruteLoss(-heal_amount)
+		heal_amount = 0;
+		return
+	if(trauma_damage < heal_amount)
+		H.adjustBruteLoss(-heal_amount)
+		heal_amount -= trauma_damage
 
-        var/trauma_damage = H.getBruteLoss()
-        if(trauma_damage >= heal_amount)
-            H.adjustBruteLoss(-heal_amount)
-            heal_amount = 0;
-            return
-        if(trauma_damage < heal_amount)
-            H.adjustBruteLoss(-heal_amount)
-            heal_amount -= trauma_damage
+	var/posion_damage = H.getToxLoss()
+	if(posion_damage >= heal_amount)
+		H.adjustToxLoss(-heal_amount)
+		heal_amount = 0;
+		return
+	if(posion_damage < heal_amount)
+		H.adjustToxLoss(-heal_amount)
+		heal_amount -= posion_damage
 
-        var/posion_damage = H.getToxLoss()
-        if(posion_damage >= heal_amount)
-            H.adjustToxLoss(-heal_amount)
-            heal_amount = 0;
-            return
-        if(posion_damage < heal_amount)
-            H.adjustToxLoss(-heal_amount)
-            heal_amount -= posion_damage
-
-        H.nutrition += heal_amount
+	H.nutrition += heal_amount

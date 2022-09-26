@@ -83,7 +83,7 @@
 
 /obj/item/inducer/attackby(obj/item/W, mob/user)
 	if(W.is_screwdriver())
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		if(!opened)
 			to_chat(user, "<span class='notice'>You open the battery compartment.</span>")
 			opened = TRUE
@@ -97,8 +97,8 @@
 	if(istype(W, /obj/item/cell))
 		if(opened)
 			if(!cell)
-				user.drop_from_inventory(W)
-				W.forceMove(src)
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				to_chat(user, "<span class='notice'>You insert [W] into [src].</span>")
 				cell = W
 				update_icon()

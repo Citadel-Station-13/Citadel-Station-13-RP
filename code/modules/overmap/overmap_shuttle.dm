@@ -176,7 +176,9 @@
 			to_chat(user, "<spawn class='warning'>\The [src] door is still closed!")
 			return
 		if(contents.len == 0)
-			user.unEquip(W, target = src)
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
+			to_chat(user, SPAN_WARNING("You install [W] in [src]."))
 	update_icon()
 
 // Walls hide stuff inside them, but we want to be visible.

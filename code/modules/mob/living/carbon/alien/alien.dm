@@ -33,7 +33,7 @@
 	desc = "What IS that?"
 	icon = 'icons/mob/alien.dmi'
 	icon_state = "alien"
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	health = 100
 	maxHealth = 100
 	mob_size = 4
@@ -68,9 +68,6 @@
 
 	return ..()
 
-/mob/living/carbon/alien/u_equip(obj/item/W as obj)
-	return
-
 /mob/living/carbon/alien/Stat()
 	..()
 	stat(null, "Progress: [amount_grown]/[max_grown]")
@@ -78,8 +75,8 @@
 /mob/living/carbon/alien/restrained()
 	return 0
 
-/mob/living/carbon/alien/show_inv(mob/user as mob)
-	return //Consider adding cuffs and hats to this, for the sake of fun.
+/mob/living/carbon/alien/request_strip_menu(mob/user, ignore_adjacency = FALSE, ignore_incapacitation = FALSE)
+	return FALSE
 
 /mob/living/carbon/alien/cannot_use_vents()
 	return

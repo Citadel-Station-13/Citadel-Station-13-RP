@@ -120,7 +120,7 @@
 				open = !open
 				update_icon()
 				to_chat(user, "<span class='notice'>Maintenance panel is now [open ? "opened" : "closed"].</span>")
-				playsound(src, W.usesound, 50, 1)
+				playsound(src, W.tool_sound, 50, 1)
 		else if(W.is_crowbar() && cell && open)
 			remove_cell(user)
 
@@ -133,7 +133,7 @@
 					if(open)
 						health = min(maxhealth, health+10)
 						user.setClickCooldown(user.get_attack_speed(W))
-						playsound(src, T.usesound, 50, 1)
+						playsound(src, T.tool_sound, 50, 1)
 						user.visible_message("<font color='red'>[user] repairs [src]!</font>","<font color=#4F49AF> You repair [src]!</font>")
 					else
 						to_chat(user, "<span class='notice'>Unable to repair with the maintenance panel closed.</span>")
@@ -257,7 +257,7 @@
 		new /obj/item/stack/rods(Tsec)
 		new /obj/item/stack/cable_coil/cut(Tsec)
 		new /obj/effect/gibspawner/robot(Tsec)
-		new /obj/effect/decal/cleanable/blood/oil(src.loc)
+		new /obj/effect/debris/cleanable/blood/oil(src.loc)
 
 		if(cell)
 			cell.forceMove(Tsec)
@@ -296,9 +296,9 @@
 		return
 	if(!istype(C))
 		return
+	if(!H.attempt_insert_item_for_installation(C, src))
+		return
 
-	H.drop_from_inventory(C)
-	C.forceMove(src)
 	cell = C
 	powercheck()
 	to_chat(usr, "<span class='notice'>You install [C] in [src].</span>")
@@ -310,8 +310,7 @@
 		return
 
 	to_chat(usr, "<span class='notice'>You remove [cell] from [src].</span>")
-	cell.forceMove(get_turf(H))
-	H.put_in_hands(cell)
+	H.grab_item_from_interacted_with(cell, src)
 	cell = null
 	powercheck()
 
@@ -417,7 +416,7 @@
 	user.do_attack_animation(src)
 	src.health -= damage
 	if(mechanical && prob(10))
-		new /obj/effect/decal/cleanable/blood/oil(src.loc)
+		new /obj/effect/debris/cleanable/blood/oil(src.loc)
 	spawn(1) healthcheck()
 	return 1
 
@@ -426,6 +425,6 @@
 		return
 	src.health -= damage
 	if(mechanical && prob(10))
-		new /obj/effect/decal/cleanable/blood/oil(src.loc)
+		new /obj/effect/debris/cleanable/blood/oil(src.loc)
 	spawn(1) healthcheck()
 	return 1

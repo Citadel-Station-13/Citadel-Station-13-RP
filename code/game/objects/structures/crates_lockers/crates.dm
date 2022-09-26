@@ -81,9 +81,7 @@
 			return
 		if(W.loc != user) // This should stop mounted modules ending up outside the module.
 			return
-		user.drop_item()
-		if(W)
-			W.forceMove(src.loc)
+		user.transfer_item_to_loc(W, loc)
 	else if(istype(W, /obj/item/packageWrap))
 		return
 	else if(istype(W, /obj/item/stack/cable_coil))
@@ -97,14 +95,14 @@
 			return
 	else if(istype(W, /obj/item/radio/electropack))
 		if(rigged)
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 			to_chat(user, "<span class='notice'>You attach [W] to [src].</span>")
-			user.drop_item()
-			W.forceMove(src)
 			return
 	else if(W.is_wirecutter())
 		if(rigged)
 			to_chat(user, "<span class='notice'>You cut away the wiring.</span>")
-			playsound(src.loc, W.usesound, 100, 1)
+			playsound(src.loc, W.tool_sound, 100, 1)
 			rigged = 0
 			return
 	else if(istype(W, /obj/item/extraction_pack))
@@ -268,7 +266,7 @@
 			if(2 to 4)
 				visible_message("<font color='red'><b>The anti-tamper mechanism of [src] causes a small fire!</b></font>")
 				for(var/atom/movable/A as mob|obj in src) // For every item in the box, we spawn a pile of ash.
-					new /obj/effect/decal/cleanable/ash(src.loc)
+					new /obj/effect/debris/cleanable/ash(src.loc)
 				new /atom/movable/fire(src.loc)
 				qdel(src)
 			if(5)
@@ -373,17 +371,13 @@
 /obj/structure/closet/crate/freezer/Entered(var/atom/movable/AM)
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
-		O.preserved = 1
-		for(var/obj/item/organ/organ in O)
-			organ.preserved = 1
+		O.preserve(CRATE_FREEZER_TRAIT)
 	..()
 
 /obj/structure/closet/crate/freezer/Exited(var/atom/movable/AM)
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
-		O.preserved = 0
-		for(var/obj/item/organ/organ in O)
-			organ.preserved = 0
+		O.unpreserve(CRATE_FREEZER_TRAIT)
 	..()
 
 /obj/structure/closet/crate/freezer/rations //Fpr use in the escape shuttle
@@ -409,12 +403,12 @@
 	if(W.is_wrench() && !src.opened)
 		if(anchored)
 			user.show_message(text("<span class='notice'>[src] can now be moved.</span>"))
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			anchored = FALSE
 
 		else if(!anchored)
 			user.show_message(text("<span class='notice'>[src] is now secured.</span>"))
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			anchored = TRUE
 	else
 		..()

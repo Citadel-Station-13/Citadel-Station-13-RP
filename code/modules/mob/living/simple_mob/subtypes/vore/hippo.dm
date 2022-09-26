@@ -79,7 +79,7 @@
 	vore_stomach_flavor	= "You are squeezed into the sweltering insides of the herbivore rumen."
 	vore_icons = SA_ICON_LIVING
 
-/mob/living/simple_mob/vore/hippo/MouseDrop_T(mob/living/M, mob/living/user)
+/mob/living/simple_mob/vore/hippo/MouseDroppedOnLegacy(mob/living/M, mob/living/user)
 	return
 
 /datum/say_list/hippo

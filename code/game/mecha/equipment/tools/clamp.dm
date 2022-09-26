@@ -110,7 +110,7 @@
 			occupant_message("<span class='warning'>You slam [target] with [src.name]. Something cracks.</span>")
 			playsound(src, "fracture", 3, 1, -2) //CRACK 2
 			chassis.visible_message("<span class='warning'>[chassis] slams [target].</span>")
-			M.throw_at(get_step(M,get_dir(src, M)), 14, 1.5, chassis)
+			M.throw_at_old(get_step(M,get_dir(src, M)), 14, 1.5, chassis)
 		else
 			step_away(M,chassis)
 			occupant_message("You push [target] out of the way.")

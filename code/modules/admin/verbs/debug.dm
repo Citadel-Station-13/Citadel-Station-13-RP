@@ -25,7 +25,7 @@
 	var/mob/living/user = null
 	if(isliving(usr))
 		user = usr
-		I = user.get_active_hand()
+		I = user.get_active_held_item()
 		if(!I || !istype(I))
 			to_chat(user, "<span class='warning'>You need to have something in your active hand, to use this verb.</span>")
 			return
@@ -97,9 +97,6 @@
 	set category = "Fun"
 	set name = "Make Robot"
 
-	if(!SSticker)
-		alert("Wait until the game starts")
-		return
 	if(istype(M, /mob/living/carbon/human))
 		log_admin("[key_name(src)] has robotized [M.key].")
 		spawn(10)
@@ -111,10 +108,6 @@
 /client/proc/cmd_admin_animalize(var/mob/M in GLOB.mob_list)
 	set category = "Fun"
 	set name = "Make Simple Animal"
-
-	if(!SSticker)
-		alert("Wait until the game starts")
-		return
 
 	if(!M)
 		alert("That mob doesn't seem to exist, close the panel and try again.")
@@ -160,9 +153,6 @@
 	set category = "Fun"
 	set name = "Make Alien"
 
-	if(!SSticker)
-		alert("Wait until the game starts")
-		return
 	if(ishuman(M))
 		log_admin("[key_name(src)] has alienized [M.key].")
 		spawn(10)
@@ -327,7 +317,7 @@
 			id.registered_name = H.real_name
 			id.assignment = "Facility Director"
 			id.name = "[id.registered_name]'s ID Card ([id.assignment])"
-			H.equip_to_slot_or_del(id, slot_wear_id)
+			H.equip_to_slot_or_del(id, SLOT_ID_WORN_ID)
 			H.update_inv_wear_id()
 	else
 		alert("Invalid mob")
@@ -631,9 +621,6 @@
 
 // DNA2 - Admin Hax
 /client/proc/cmd_admin_toggle_block(var/mob/M,var/block)
-	if(!SSticker)
-		alert("Wait until the game starts")
-		return
 	if(istype(M, /mob/living/carbon))
 		M.dna.SetSEState(block,!M.dna.GetSEState(block))
 		domutcheck(M,null,MUTCHK_FORCED)

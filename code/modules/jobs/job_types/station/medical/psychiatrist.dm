@@ -48,8 +48,7 @@
 
 	id_type = /obj/item/card/id/medical/psychiatrist
 	pda_type = /obj/item/pda/medical
-	pda_slot = slot_l_store
-
+	pda_slot = SLOT_ID_LEFT_POCKET
 	backpack = /obj/item/storage/backpack/medic
 	satchel_one = /obj/item/storage/backpack/satchel/med
 	messenger_bag = /obj/item/storage/backpack/messenger/med

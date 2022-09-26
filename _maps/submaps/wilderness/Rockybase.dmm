@@ -52,7 +52,7 @@
 /turf/simulated/floor,
 /area/submap/Rockybase)
 "ao" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/submap/Rockybase)
 "ap" = (
@@ -69,7 +69,7 @@
 /turf/simulated/floor,
 /area/submap/Rockybase)
 "as" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/effect/floor_decal/industrial/danger,
 /turf/simulated/floor,
 /area/submap/Rockybase)
@@ -113,7 +113,7 @@
 /area/submap/Rockybase)
 "aA" = (
 /obj/structure/table/woodentable,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/holofloor/lino,
 /area/submap/Rockybase)
 "aB" = (
@@ -484,15 +484,15 @@
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "bH" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "bI" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/cobweb2,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -507,11 +507,11 @@
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "bL" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "bM" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "bN" = (
@@ -532,7 +532,7 @@
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "bR" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/effect/floor_decal/borderfloor,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
@@ -552,7 +552,7 @@
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "bV" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/effect/floor_decal/borderfloor,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
@@ -694,14 +694,14 @@
 "cu" = (
 /obj/structure/table/standard,
 /obj/structure/table/standard,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector/burn,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "cv" = (
 /obj/structure/table/standard,
 /obj/item/clothing/mask/breath/medical,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "cw" = (
@@ -761,21 +761,21 @@
 /area/submap/Rockybase)
 "cE" = (
 /obj/item/stack/rods,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "cF" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/girder,
 /turf/simulated/floor,
 /area/submap/Rockybase)
 "cG" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor,
 /area/submap/Rockybase)
 "cH" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/table,
 /turf/simulated/floor,
 /area/submap/Rockybase)
@@ -822,7 +822,7 @@
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "cR" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -859,25 +859,25 @@
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "cV" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "cW" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor,
 /area/submap/Rockybase)
 "cX" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/item/material/shard,
 /turf/simulated/floor,
 /area/submap/Rockybase)
 "cY" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor,
 /area/submap/Rockybase)
 "cZ" = (
@@ -921,7 +921,7 @@
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "dg" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -951,10 +951,10 @@
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "di" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/submap/Rockybase)
 "dj" = (
@@ -997,8 +997,8 @@
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "dp" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /mob/living/simple_mob/mechanical/combat_drone/lesser,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
@@ -1010,7 +1010,7 @@
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "dr" = (
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/template_noop,
 /area/template_noop)
 "ds" = (
@@ -1051,7 +1051,7 @@
 /area/submap/Rockybase)
 "dz" = (
 /obj/item/surgical/surgicaldrill,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "dA" = (
@@ -1059,7 +1059,7 @@
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "dB" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /mob/living/bot/medibot{
 	faction = "malf_drone"
 	},

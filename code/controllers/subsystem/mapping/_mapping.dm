@@ -80,10 +80,8 @@ SUBSYSTEM_DEF(mapping)
 	loaded_module?.pre_lateload()
 
 // load on normal
-#if BOOT_MODE == BOOT_MODE_NORMAL
 	if(GLOB.using_map)
 		loadLateMaps()
-#endif
 
 // overmaps will handle switching based on load mode
 	if(!GLOB.using_map.overmap_z)
@@ -97,15 +95,9 @@ SUBSYSTEM_DEF(mapping)
 
 	loaded_module?.pre_mapgen()
 
-// load on normal, fastboot
-#if BOOT_MODE != BOOT_MODE_MINIMAL
 	mapgen_engine()
-#endif
 
-// load on normal
-#if BOOT_MODE == BOOT_MODE_NORMAL
 	mapgen_deepmaint()
-#endif
 
 	loaded_module?.post_mapgen()
 
@@ -113,7 +105,6 @@ SUBSYSTEM_DEF(mapping)
 	// basemap - REEVALUATE when runtime maploading is in
 	transit = z_list[1]
 	initialize_reserved_level(transit.z_value)
-	// initialize_reserved_level(transit.z_value)
 
 	// Set up antagonists.
 	populate_antag_type_list()
@@ -411,6 +402,7 @@ SUBSYSTEM_DEF(mapping)
 	chosen_type.load(T)
 
 /datum/controller/subsystem/mapping/proc/loadLateMaps()
+#ifndef FASTBOOT_DISABLE_LATELOAD
 	var/list/deffo_load = GLOB.using_map.lateload_z_levels
 	var/list/maybe_load = GLOB.using_map.lateload_single_pick
 
@@ -442,6 +434,7 @@ SUBSYSTEM_DEF(mapping)
 				log_world("Randompick Z level \"[map]\" is not a valid map!")
 			else
 				MT.load_new_z(centered = FALSE)
+#endif
 
 /datum/controller/subsystem/mapping/proc/preloadShelterTemplates()
 	for(var/item in subtypesof(/datum/map_template/shelter))

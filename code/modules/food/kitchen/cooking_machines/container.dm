@@ -31,19 +31,18 @@
 	if (reagents.total_volume)
 		. += "<span class = 'notice'>It contains [reagents.total_volume]u of reagents.</span>"
 
-
 /obj/item/reagent_containers/cooking_container/attackby(var/obj/item/I as obj, var/mob/user as mob)
 	for (var/possible_type in insertable)
 		if (istype(I, possible_type))
 			if (!can_fit(I))
 				to_chat(user, SPAN_WARNING("There's no more space in the [src] for that!"))
 				return 0
-
-			if(!user.unEquip(I))
+			if(!user.attempt_insert_item_for_installation(I, src))
 				return
 			I.forceMove(src)
 			to_chat(user, SPAN_NOTICE("You put the [I] into the [src]"))
-			return
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 /obj/item/reagent_containers/cooking_container/verb/empty()
 	set src in view(1)

@@ -4,8 +4,9 @@
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "mw"
 	layer = 2.9
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
+	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 2000
@@ -115,8 +116,8 @@
 				"<span class='notice'>You add one of [O] to \the [src].</span>")
 			return
 		else
-		//	user.remove_from_mob(O)	//This just causes problems so far as I can tell. -Pete
-			user.drop_from_inventory(O,src)
+			if(!user.attempt_insert_item_for_installation(O, src))
+				return
 			user.visible_message( \
 				"<span class='notice'>\The [user] has added \the [O] to \the [src].</span>", \
 				"<span class='notice'>You add \the [O] to \the [src].</span>")
@@ -446,10 +447,3 @@
 	)
 	dispose()
 
-/obj/machinery/microwave/CanAllowThrough(atom/movable/mover, turf/target, height=0, air_group=0)
-	if (!mover)
-		return 1
-	if(mover.checkpass(PASSTABLE))
-	//Animals can run under them, lots of empty space
-		return 1
-	return ..()

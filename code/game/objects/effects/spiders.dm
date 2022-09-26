@@ -35,7 +35,7 @@
 
 		if(WT.remove_fuel(0, user))
 			damage = 15
-			playsound(src, W.usesound, 100, 1)
+			playsound(src, W.tool_sound, 100, 1)
 
 	health -= damage
 	healthcheck()
@@ -163,7 +163,7 @@
 
 /obj/effect/spider/spiderling/proc/die()
 	visible_message("<span class='alert'>[src] dies!</span>")
-	new /obj/effect/decal/cleanable/spiderling_remains(src.loc)
+	new /obj/effect/debris/cleanable/spiderling_remains(src.loc)
 	qdel(src)
 
 /obj/effect/spider/spiderling/healthcheck()
@@ -284,7 +284,7 @@
 
 	grow_as = list(/mob/living/simple_mob/animal/giant_spider, /mob/living/simple_mob/animal/giant_spider/hunter)
 
-/obj/effect/decal/cleanable/spiderling_remains
+/obj/effect/debris/cleanable/spiderling_remains
 	name = "spiderling remains"
 	desc = "Green squishy mess."
 	icon = 'icons/effects/effects.dmi'

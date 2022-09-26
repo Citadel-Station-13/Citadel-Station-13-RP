@@ -109,10 +109,9 @@
 		if(copy_board)
 			to_chat(user, SPAN_WARNING("There is already a board inserted in \the [src]."))
 			return
-		if(!user.unEquip(O))
+		if(!user.attempt_insert_item_for_installation(O, src))
 			return
 		copy_board = O
-		O.forceMove(src)
 		user.visible_message("[user] inserts [O] into \the [src]'s circuit reader.", SPAN_NOTICE("You insert [O] into \the [src]'s circuit reader."))
 		updateUsrDialog()
 		return

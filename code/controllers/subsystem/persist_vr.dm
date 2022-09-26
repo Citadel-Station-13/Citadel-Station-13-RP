@@ -19,8 +19,7 @@ SUBSYSTEM_DEF(persist)
 	if(!config_legacy.time_off)
 		return
 
-	establish_db_connection()
-	if(!dbcon.IsConnected())
+	if(!SSdbcore.Connect())
 		src.currentrun.Cut()
 		return
 	if(!resumed)
@@ -75,8 +74,14 @@ SUBSYSTEM_DEF(persist)
 		var/sql_ckey = sql_sanitize_text(C.ckey)
 		var/sql_dpt = sql_sanitize_text(department_earning)
 		var/sql_bal = text2num("[C.department_hours[department_earning]]")
-		var/DBQuery/query = dbcon.NewQuery("INSERT INTO vr_player_hours (ckey, department, hours) VALUES ('[sql_ckey]', '[sql_dpt]', [sql_bal]) ON DUPLICATE KEY UPDATE hours = VALUES(hours)")
-		query.Execute()
+		SSdbcore.RunQuery(
+			"INSERT INTO [format_table_name("vr_player_hours")] (ckey, department, hours) VALUES (:ckey, :dept, :hours) ON DUPLICATE KEY UPDATE hours = VALUES(hours)",
+			list(
+				"ckey" = sql_ckey,
+				"dept" = sql_dpt,
+				"hours" = sql_bal
+			)
+		)
 
 		if (MC_TICK_CHECK)
 			return

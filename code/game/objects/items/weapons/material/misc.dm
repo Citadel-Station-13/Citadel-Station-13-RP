@@ -53,7 +53,7 @@
 /obj/item/material/knife/machete/hatchet/unathiknife/attack(mob/M as mob, mob/user as mob)
 	if(hits > 0)
 		return
-	var/obj/item/I = user.get_inactive_hand()
+	var/obj/item/I = user.get_inactive_held_item()
 	if(istype(I, /obj/item/material/knife/machete/hatchet/unathiknife))
 		hits ++
 		var/obj/item/W = I
@@ -81,6 +81,12 @@
 
 /obj/item/material/minihoe/durasteel
 	default_material = "durasteel"
+
+/obj/item/material/minihoe/bone
+	name = "primitive mini hoe"
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "cultivator_bone"
+	default_material = "bone"
 
 /obj/item/material/snow/snowball
 	name = "loose packed snowball"
@@ -111,7 +117,7 @@
 /obj/item/material/snow/snowball/reinforced
 	name = "snowball"
 	desc = "A well-formed and fun snowball. It looks kind of dangerous."
-	//icon_state = "reinf-snowball"
+	//icon_state = "considered_reinforced-snowball"
 	force_divisor = 0.20
 	thrown_force_divisor = 0.25
 

@@ -330,11 +330,11 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 				if("Cancel")
 					return
 				if("Read it")
-					if(H.get_active_hand() != src)
+					if(H.get_active_held_item() != src)
 						return
 					H << browse("[tomedat]", "window=Arcane Tome")
 					return
-		if(H.get_active_hand() != src)
+		if(H.get_active_held_item() != src)
 			return
 		var/list/dictionary = list (
 			"convert" = list("join","blood","self"),
@@ -383,7 +383,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 				dictionary[chosen_rune] += input ("Choose a destination word") in english
 			if (chosen_rune == "teleport other")
 				dictionary[chosen_rune] += input ("Choose a destination word") in english
-		if(H.get_active_hand() != src)
+		if(H.get_active_held_item() != src)
 			return
 		for (var/mob/V in viewers(src))
 			V.show_message("<span class='danger'>\The [user] slices open a finger and begins to chant and paint symbols on the floor.</span>", 3, "<span class='danger'>You hear chanting.</span>", 2)
@@ -392,7 +392,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 		if(do_after(H, 50))
 			var/area/A = get_area(user)
 			log_and_message_admins("created \an [chosen_rune] rune at \the [A.name] - [user.loc.x]-[user.loc.y]-[user.loc.z].")
-			if(H.get_active_hand() != src)
+			if(H.get_active_held_item() != src)
 				return
 			var/obj/effect/rune/R = new /obj/effect/rune(user.loc)
 			to_chat(H, "<span class='notice'>You finish drawing the arcane markings of the Geometer.</span>")

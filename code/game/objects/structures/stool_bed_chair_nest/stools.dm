@@ -7,7 +7,7 @@ var/global/list/stool_cache = list() //haha stool
 	icon = 'icons/obj/furniture_vr.dmi'
 	icon_state = "stool_preview" //set for the map
 	force = 10
-	throwforce = 10
+	throw_force = 10
 	w_class = ITEMSIZE_HUGE
 	var/base_icon = "stool_base"
 	var/datum/material/material
@@ -74,10 +74,7 @@ var/global/list/stool_cache = list() //haha stool
 		user.visible_message("<span class='danger'>[user] breaks [src] over [M]'s back!</span>")
 		user.setClickCooldown(user.get_attack_speed())
 		user.do_attack_animation(M)
-
-		user.drop_from_inventory(src)
-
-		user.remove_from_mob(src)
+		user.drop_item_to_ground(src, INV_OP_FORCE)
 		dismantle()
 		qdel(src)
 		var/mob/living/T = M
@@ -109,7 +106,7 @@ var/global/list/stool_cache = list() //haha stool
 
 /obj/item/stool/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		dismantle()
 		qdel(src)
 	else if(istype(W,/obj/item/stack))
@@ -117,10 +114,6 @@ var/global/list/stool_cache = list() //haha stool
 			to_chat(user, "\The [src] is already padded.")
 			return
 		var/obj/item/stack/C = W
-		if(C.get_amount() < 1) // How??
-			user.drop_from_inventory(C)
-			qdel(C)
-			return
 		var/padding_type //This is awful but it needs to be like this until tiles are given a material var.
 		if(istype(W,/obj/item/stack/tile/carpet))
 			padding_type = "carpet"
@@ -132,9 +125,8 @@ var/global/list/stool_cache = list() //haha stool
 			to_chat(user, "You cannot pad \the [src] with that.")
 			return
 		C.use(1)
-		if(!istype(src.loc, /turf))
-			user.drop_from_inventory(src)
-			src.loc = get_turf(src)
+		if(!istype(loc, /turf))
+			user.drop_item_to_ground(src, INV_OP_FORCE)
 		to_chat(user, "You add padding to \the [src].")
 		add_padding(padding_type)
 		return
@@ -143,7 +135,7 @@ var/global/list/stool_cache = list() //haha stool
 			to_chat(user, "\The [src] has no padding to remove.")
 			return
 		to_chat(user, "You remove the padding from \the [src].")
-		playsound(src.loc, W.usesound, 50, 1)
+		playsound(src.loc, W.tool_sound, 50, 1)
 		remove_padding()
 	else
 		..()

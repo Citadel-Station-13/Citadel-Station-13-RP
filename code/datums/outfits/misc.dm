@@ -33,7 +33,7 @@
 	glasses = /obj/item/clothing/glasses/thermal/plain/eyepatch
 	suit = /obj/item/clothing/suit/hgpirate
 
-	id_slot = slot_wear_id
+	id_slot = SLOT_ID_WORN_ID
 	id_type = /obj/item/card/id/centcom	//station
 	id_pda_assignment = "Admiral"
 
@@ -45,9 +45,9 @@
 	l_ear = /obj/item/radio/headset/trader
 	glasses = /obj/item/clothing/glasses/sunglasses
 	uniform = /obj/item/clothing/under/trader_coveralls
-	id_slot = slot_wear_id
+	id_slot = SLOT_ID_WORN_ID
 	id_type = /obj/item/card/id/external/merchant	//created a new ID so merchant can open their doors
-	pda_slot = slot_r_store
+	pda_slot = SLOT_ID_RIGHT_POCKET
 	pda_type = /obj/item/pda/chef //cause I like the look
 	id_pda_assignment = "Merchant"
 

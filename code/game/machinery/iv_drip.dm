@@ -3,11 +3,11 @@
 	icon = 'icons/obj/iv_drip.dmi'
 	anchored = FALSE
 	density = FALSE
+	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
 
-
-/obj/machinery/iv_drip/var/mob/living/carbon/human/attached = null
-/obj/machinery/iv_drip/var/mode = 1 // 1 is injecting, 0 is taking blood.
-/obj/machinery/iv_drip/var/obj/item/reagent_containers/beaker = null
+	var/mob/living/carbon/human/attached = null
+	var/mode = 1 // 1 is injecting, 0 is taking blood.
+	var/obj/item/reagent_containers/beaker = null
 
 /obj/machinery/iv_drip/update_icon()
 	if(attached)
@@ -42,7 +42,7 @@
 			filling.icon += reagents.get_color()
 			overlays += filling
 
-/obj/machinery/iv_drip/MouseDrop(over_object, src_location, over_location)
+/obj/machinery/iv_drip/OnMouseDropLegacy(over_object, src_location, over_location)
 	..()
 	if(!isliving(usr))
 		return
@@ -64,16 +64,15 @@
 		if(!isnull(beaker))
 			to_chat(user, SPAN_WARNING("There is already a reagent container loaded!"))
 			return
-
-		user.drop_item()
-		W.loc = src
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		beaker = W
 		to_chat(user, SPAN_NOTICE("You attach \the [W] to \the [src]."))
 		update_icon()
 		return
 
 	if(W.is_screwdriver())
-		playsound(src, W.usesound, 50, TRUE)
+		playsound(src, W.tool_sound, 50, TRUE)
 		to_chat(user, SPAN_NOTICE("You start to dismantle the IV drip."))
 		if(do_after(user, 15))
 			to_chat(user, SPAN_NOTICE("You dismantle the IV drip."))
@@ -185,8 +184,3 @@
 		. += SPAN_NOTICE("No chemicals are attached.")
 
 	. += SPAN_NOTICE("[attached ? attached : "No one"] is attached.")
-
-/obj/machinery/iv_drip/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSTABLE)) //allow bullets, beams, thrown objects, mice, drones, and the like through.
-		return TRUE
-	return ..()

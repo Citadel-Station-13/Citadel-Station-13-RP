@@ -14,7 +14,7 @@
  *		Box of Chocolates
  */
 
-/obj/item/storage/fancy/
+/obj/item/storage/fancy
 	icon = 'icons/obj/food.dmi'
 	icon_state = "donutbox6"
 	name = "donut box"
@@ -22,10 +22,9 @@
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 
-/obj/item/storage/fancy/update_icon(var/itemremoved = 0)
-	var/total_contents = contents.len - itemremoved
-	icon_state = "[icon_type]box[total_contents]"
-	return
+/obj/item/storage/fancy/update_icon_state()
+	. = ..()
+	icon_state = "[icon_type]box[contents.len]"
 
 /obj/item/storage/fancy/examine(mob/user)
 	. = ..()
@@ -66,7 +65,7 @@
 	icon_state = "candlebox5"
 	icon_type = "candle"
 	item_state = "candlebox5"
-	throwforce = 2
+	throw_force = 2
 	slot_flags = SLOT_BELT
 	max_storage_space = ITEMSIZE_COST_SMALL * 5
 	starts_with = list(/obj/item/flame/candle = 5)
@@ -78,7 +77,7 @@
 	icon_state = "whitecandlebox5"
 	icon_type = "whitecandle"
 	item_state = "whitecandlebox5"
-	throwforce = 2
+	throw_force = 2
 	slot_flags = SLOT_BELT
 	max_storage_space = ITEMSIZE_COST_SMALL * 5
 	starts_with = list(/obj/item/flame/candle/white = 5)
@@ -90,7 +89,7 @@
 	icon_state = "blackcandlebox5"
 	icon_type = "blackcandle"
 	item_state = "blackcandlebox5"
-	throwforce = 2
+	throw_force = 2
 	slot_flags = SLOT_BELT
 	max_storage_space = ITEMSIZE_COST_SMALL * 5
 	starts_with = list(/obj/item/flame/candle/black = 5)
@@ -236,7 +235,7 @@
 	icon_state = "cigpacket"
 	item_state_slots = list(slot_r_hand_str = "cigpacket", slot_l_hand_str = "cigpacket")
 	w_class = ITEMSIZE_TINY
-	throwforce = 2
+	throw_force = 2
 	slot_flags = SLOT_BELT | SLOT_EARS
 	storage_slots = 6
 	can_hold = list(/obj/item/clothing/mask/smokable/cigarette, /obj/item/flame/lighter, /obj/item/cigbutt)
@@ -262,8 +261,8 @@
 	// Don't try to transfer reagents to lighters
 	if(istype(W, /obj/item/clothing/mask/smokable/cigarette))
 		var/obj/item/clothing/mask/smokable/cigarette/C = W
-		reagents.trans_to_obj(C, (reagents.total_volume/contents.len))
-	..()
+		reagents?.trans_to_obj(C, (reagents.total_volume/contents.len))
+	return ..()
 
 /obj/item/storage/fancy/cigarettes/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(!istype(M, /mob))
@@ -279,13 +278,14 @@
 
 		// Instead of running equip_to_slot_if_possible() we check here first,
 		// to avoid dousing cig with reagents if we're not going to equip it
-		if(!cig.mob_can_equip(user, slot_wear_mask))
+		if(!user.can_equip(cig, SLOT_ID_MASK, user = user))
 			return
 
 		// We call remove_from_storage first to manage the reagent transfer and
 		// UI updates.
 		remove_from_storage(cig, null)
-		user.equip_to_slot(cig, slot_wear_mask)
+		if(!user.equip_to_slot_if_possible(cig, SLOT_ID_MASK, INV_OP_SUPPRESS_WARNING))
+			cig.forceMove(user.drop_location())
 
 		reagents.maximum_volume = 15 * contents.len
 		to_chat(user, "<span class='notice'>You take a cigarette out of the pack.</span>")
@@ -350,7 +350,7 @@
 	icon_state = "cigarcase"
 	icon = 'icons/obj/cigarettes.dmi'
 	w_class = ITEMSIZE_TINY
-	throwforce = 2
+	throw_force = 2
 	slot_flags = SLOT_BELT
 	storage_slots = 7
 	can_hold = list(/obj/item/clothing/mask/smokable/cigarette/cigar, /obj/item/cigbutt/cigarbutt)
@@ -368,9 +368,10 @@
 
 /obj/item/storage/fancy/cigar/remove_from_storage(obj/item/W as obj, atom/new_location)
 	var/obj/item/clothing/mask/smokable/cigarette/cigar/C = W
-	if(!istype(C)) return
-	reagents.trans_to_obj(C, (reagents.total_volume/contents.len))
-	..()
+	if(!istype(C))
+		return ..()
+	reagents?.trans_to_obj(C, (reagents.total_volume/contents.len))
+	return ..()
 
 /obj/item/storage/rollingpapers
 	name = "rolling paper pack"
@@ -378,7 +379,7 @@
 	icon_state = "paperbox"
 	icon = 'icons/obj/cigarettes.dmi'
 	w_class = ITEMSIZE_TINY
-	throwforce = 2
+	throw_force = 2
 	slot_flags = SLOT_BELT
 	storage_slots = 14
 	can_hold = list(/obj/item/rollingpaper)
@@ -390,7 +391,7 @@
 	icon_state = "bluntbox"
 	icon = 'icons/obj/cigarettes.dmi'
 	w_class = ITEMSIZE_TINY
-	throwforce = 2
+	throw_force = 2
 	slot_flags = SLOT_BELT
 	storage_slots = 7
 	can_hold = list(/obj/item/rollingblunt)

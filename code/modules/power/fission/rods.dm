@@ -41,7 +41,7 @@
 			if(integrity == 0)
 				insertion_multiplier = 1
 			var/power = (tick_life(0, insertion_multiplier) / REACTOR_RADS_TO_MJ)
-			add_thermal_energy(power)
+			adjust_thermal_energy(power)
 			SSradiation.radiate(src, max(power * ROD_RADIATION_MULTIPLIER, 0))
 
 /obj/item/fuelrod/proc/equalize(var/E, var/efficiency)
@@ -78,7 +78,7 @@
 	if(integrity == 0 && integrity_lost > 0) // Meltdown time.
 		meltdown()
 
-/obj/item/fuelrod/add_thermal_energy(var/thermal_energy)
+/obj/item/fuelrod/adjust_thermal_energy(var/thermal_energy)
 	if(mass < 1)
 		return 0
 

@@ -580,15 +580,15 @@
 			)
 
 		wrenching = TRUE
-		if(do_after(user, 50 * I.toolspeed))
+		if(do_after(user, 50 * I.tool_speed))
 			//This code handles moving the turret around. After all, it's a portable turret!
 			if(!anchored)
-				playsound(loc, I.usesound, 100, 1)
+				playsound(loc, I.tool_sound, 100, 1)
 				anchored = TRUE
 				update_icon()
 				to_chat(user, "<span class='notice'>You secure the exterior bolts on the turret.</span>")
 			else if(anchored)
-				playsound(loc, I.usesound, 100, 1)
+				playsound(loc, I.tool_sound, 100, 1)
 				anchored = FALSE
 				to_chat(user, "<span class='notice'>You unsecure the exterior bolts on the turret.</span>")
 				update_icon()
@@ -993,14 +993,14 @@
 	switch(build_step)
 		if(0)	//first step
 			if(I.is_wrench() && !anchored)
-				playsound(loc, I.usesound, 100, 1)
+				playsound(loc, I.tool_sound, 100, 1)
 				to_chat(user, "<span class='notice'>You secure the external bolts.</span>")
 				anchored = TRUE
 				build_step = 1
 				return
 
 			else if(I.is_crowbar() && !anchored)
-				playsound(loc, I.usesound, 75, 1)
+				playsound(loc, I.tool_sound, 75, 1)
 				to_chat(user, "<span class='notice'>You dismantle the turret construction.</span>")
 				new /obj/item/stack/material/steel(loc, 5)
 				qdel(src)
@@ -1018,7 +1018,7 @@
 				return
 
 			else if(I.is_wrench())
-				playsound(loc, I.usesound, 75, 1)
+				playsound(loc, I.tool_sound, 75, 1)
 				to_chat(user, "<span class='notice'>You unfasten the external bolts.</span>")
 				anchored = FALSE
 				build_step = 0
@@ -1026,7 +1026,7 @@
 
 		if(2)
 			if(I.is_wrench())
-				playsound(loc, I.usesound, 100, 1)
+				playsound(loc, I.tool_sound, 100, 1)
 				to_chat(user, "<span class='notice'>You bolt the metal armor into place.</span>")
 				build_step = 3
 				return
@@ -1039,8 +1039,8 @@
 					to_chat(user, "<span class='notice'>You need more fuel to complete this task.</span>")
 					return
 
-				playsound(loc, I.usesound, 50, 1)
-				if(do_after(user, 20 * I.toolspeed))
+				playsound(loc, I.tool_sound, 50, 1)
+				if(do_after(user, 20 * I.tool_speed))
 					if(!src || !WT.remove_fuel(5, user)) return
 					build_step = 1
 					to_chat(user, "You remove the turret's interior metal armor.")
@@ -1049,13 +1049,9 @@
 
 		if(3)
 			if(istype(I, /obj/item/gun/energy)) //the gun installation part
-
-				if(isrobot(user))
+				if(!user.attempt_insert_item_for_installation(I, src))
 					return
 				var/obj/item/gun/energy/E = I //typecasts the item to an energy gun
-				if(!user.unEquip(I))
-					to_chat(user, "<span class='notice'>\the [I] is stuck to your hand, you cannot put it in \the [src]</span>")
-					return
 				installation = I.type //installation becomes I.type
 				gun_charge = E.power_supply.charge //the gun's charge is stored in gun_charge
 				to_chat(user, "<span class='notice'>You add [I] to the turret.</span>")
@@ -1066,26 +1062,24 @@
 				return
 
 			else if(I.is_wrench())
-				playsound(loc, I.usesound, 100, 1)
+				playsound(loc, I.tool_sound, 100, 1)
 				to_chat(user, "<span class='notice'>You remove the turret's metal armor bolts.</span>")
 				build_step = 2
 				return
 
 		if(4)
 			if(isprox(I))
-				build_step = 5
-				if(!user.unEquip(I))
-					to_chat(user, "<span class='notice'>\the [I] is stuck to your hand, you cannot put it in \the [src]</span>")
+				if(!user.attempt_consume_item_for_construction(I))
 					return
+				build_step = 5
 				to_chat(user, "<span class='notice'>You add the prox sensor to the turret.</span>")
-				qdel(I)
 				return
 
 			//attack_hand() removes the gun
 
 		if(5)
 			if(I.is_screwdriver())
-				playsound(loc, I.usesound, 100, 1)
+				playsound(loc, I.tool_sound, 100, 1)
 				build_step = 6
 				to_chat(user, "<span class='notice'>You close the internal access hatch.</span>")
 				return
@@ -1103,7 +1097,7 @@
 				return
 
 			else if(I.is_screwdriver())
-				playsound(loc, I.usesound, 100, 1)
+				playsound(loc, I.tool_sound, 100, 1)
 				build_step = 5
 				to_chat(user, "<span class='notice'>You open the internal access hatch.</span>")
 				return
@@ -1115,8 +1109,8 @@
 				if(WT.get_fuel() < 5)
 					to_chat(user, "<span class='notice'>You need more fuel to complete this task.</span>")
 
-				playsound(loc, WT.usesound, 50, 1)
-				if(do_after(user, 30 * WT.toolspeed))
+				playsound(loc, WT.tool_sound, 50, 1)
+				if(do_after(user, 30 * WT.tool_speed))
 					if(!src || !WT.remove_fuel(5, user))
 						return
 					build_step = 8
@@ -1133,7 +1127,7 @@
 					qdel(src) // qdel
 
 			else if(I.is_crowbar())
-				playsound(loc, I.usesound, 75, 1)
+				playsound(loc, I.tool_sound, 75, 1)
 				to_chat(user, "<span class='notice'>You pry off the turret's exterior armor.</span>")
 				new /obj/item/stack/material/steel(loc, 2)
 				build_step = 6

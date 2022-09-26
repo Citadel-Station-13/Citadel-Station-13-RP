@@ -87,7 +87,7 @@
 	vision_flags = SEE_SELF|SEE_MOBS
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_UNDERWEAR
 
-	move_trail = /obj/effect/decal/cleanable/blood/tracks/paw
+	move_trail = /obj/effect/debris/cleanable/blood/tracks/paw
 
 	has_organ = list(
 		O_HEART     = /obj/item/organ/internal/heart,
@@ -132,14 +132,13 @@
 		var/datum/power/shadekin/SKP = new power(src)
 		shadekin_ability_datums.Add(SKP)
 
+/datum/species/shadekin/get_bodytype_legacy()
+	return SPECIES_SHADEKIN
+
 /datum/species/shadekin/handle_death(mob/living/carbon/human/H)
 	spawn(1)
-		for(var/obj/item/W in H)
-			H.drop_from_inventory(W)
+		H.drop_inventory(TRUE, TRUE, TRUE)
 		qdel(H)
-
-/datum/species/shadekin/get_bodytype()
-	return SPECIES_SHADEKIN
 
 /datum/species/shadekin/get_random_name()
 	return "shadekin"

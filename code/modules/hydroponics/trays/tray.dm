@@ -2,8 +2,9 @@
 	name = "hydroponics tray"
 	icon = 'icons/obj/hydroponics_machines.dmi'
 	icon_state = "hydrotray3"
-	density = 1
-	anchored = 1
+	density = TRUE
+	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
+	anchored = TRUE
 	flags = OPENCONTAINER
 	volume = 100
 
@@ -219,11 +220,6 @@
 		return
 
 	..()
-
-/obj/machinery/portable_atmospherics/hydroponics/CanAllowThrough(atom/movable/mover, turf/target)
-	. = ..()
-	if(istype(mover) && mover.checkpass(PASSTABLE))
-		return TRUE
 
 /obj/machinery/portable_atmospherics/hydroponics/proc/check_health()
 	if(seed && !dead && health <= 0)
@@ -500,11 +496,10 @@
 			return 1
 
 	else if (istype(O, /obj/item/seeds))
-
 		if(!seed)
-
 			var/obj/item/seeds/S = O
-			user.remove_from_mob(O)
+			if(!user.attempt_insert_item_for_installation(O, src))
+				return
 
 			if(!S.seed)
 				to_chat(user, "The packet seems to be empty. You throw it away.")
@@ -534,12 +529,12 @@
 		for (var/obj/item/reagent_containers/food/snacks/grown/G in locate(user.x,user.y,user.z))
 			if(!S.can_be_inserted(G))
 				return
-			S.handle_item_insertion(G, 1)
+			S.handle_item_insertion(G, user, 1)
 
 	else if ( istype(O, /obj/item/plantspray) )
-
 		var/obj/item/plantspray/spray = O
-		user.remove_from_mob(O)
+		if(!user.temporarily_remove_from_inventory(O))
+			return
 		toxins += spray.toxicity
 		pestlevel -= spray.pest_kill_str
 		weedlevel -= spray.weed_kill_str
@@ -554,7 +549,7 @@
 		if(locate(/obj/machinery/atmospherics/portables_connector/) in loc)
 			return ..()
 
-		playsound(loc, O.usesound, 50, 1)
+		playsound(loc, O.tool_sound, 50, 1)
 		anchored = !anchored
 		to_chat(user, "You [anchored ? "wrench" : "unwrench"] \the [src].")
 

@@ -10,7 +10,7 @@
 /datum/gear/seasonal/halloween/costumes/head
 	name = "Costume Head - Cat Ears"
 	path = /obj/item/clothing/head/kitty
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 
 /datum/gear/seasonal/halloween/costumes/head/chicken
 	name = "Costume Head - Chicken"
@@ -140,7 +140,7 @@
 /datum/gear/seasonal/halloween/costumes/mask
 	name = "Costume Mask - Fake Moustache"
 	path = /obj/item/clothing/mask/fakemoustache
-	slot = slot_wear_mask
+	slot = SLOT_ID_MASK
 
 /datum/gear/seasonal/halloween/costumes/mask/plague
 	name = "Costume Mask - Plague Doctor"
@@ -174,7 +174,7 @@
 /datum/gear/seasonal/halloween/costumes/glasses
 	name = "Costume Eyes - Blindfold"
 	path = /obj/item/clothing/glasses/sunglasses/blindfold
-	slot = slot_glasses
+	slot = SLOT_ID_GLASSES
 
 /datum/gear/seasonal/halloween/costumes/glasses/monocole
 	name = "Costume Eyes - Monocle"
@@ -188,7 +188,7 @@
 /datum/gear/seasonal/halloween/costumes/suit
 	name = "Costume Suit - Chicken"
 	path = /obj/item/clothing/suit/chickensuit
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 
 /datum/gear/seasonal/halloween/costumes/suit/madscientist
 	name = "Costume Suit - Mad Scientist Coat"
@@ -298,7 +298,7 @@
 /datum/gear/seasonal/halloween/costumes/under
 	name = "Costume Uniform - Gladiator"
 	path = /obj/item/clothing/under/gladiator
-	slot = slot_w_uniform
+	slot = SLOT_ID_UNIFORM
 
 /datum/gear/seasonal/halloween/costumes/under/schoolgirl
 	name = "Costume Uniform - Schoolgirl (Blue)"
@@ -424,7 +424,7 @@
 /datum/gear/seasonal/halloween/costumes/shoes
 	name = "Costume Shoes - Cueball Man"
 	path = /obj/item/clothing/shoes/white
-	slot = slot_shoes
+	slot = SLOT_ID_SHOES
 
 /datum/gear/seasonal/halloween/costumes/shoes/bsing
 	name = "Costume Shoes - Blue Singer"
@@ -442,7 +442,7 @@
 /datum/gear/seasonal/halloween/costumes/accessory
 	name = "Costume Accessories - Cueball Man"
 	path = /obj/item/clothing/accessory/wcoat
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 /datum/gear/seasonal/halloween/costumes/accessory/broom
 	name = "Costume Accessories - Witch Broom"

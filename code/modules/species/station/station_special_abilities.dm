@@ -117,8 +117,7 @@
 	setBrainLoss(braindamage)
 
 	//Drop everything
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+	drop_inventory(TRUE, TRUE, TRUE)
 
 	//Unfreeze some things
 	does_not_breathe = FALSE
@@ -423,7 +422,7 @@
 	if(!ishuman(src))
 		return //If you're not a human you don't have permission to do this.
 	var/mob/living/carbon/human/C = src
-	var/obj/item/grab/G = src.get_active_hand()
+	var/obj/item/grab/G = src.get_active_held_item()
 	if(!istype(G))
 		to_chat(C, "<span class='warning'>You must be grabbing a creature in your active hand to absorb them.</span>")
 		return
@@ -500,7 +499,7 @@
 	if(!ishuman(src))
 		return //If you're not a human you don't have permission to do this.
 
-	var/obj/item/grab/G = src.get_active_hand()
+	var/obj/item/grab/G = src.get_active_held_item()
 	if(!istype(G))
 		to_chat(src, "<span class='warning'>You must be grabbing a creature in your active hand to drain them.</span>")
 		return
@@ -618,7 +617,7 @@
 	if(!ishuman(src))
 		return //If you're not a human you don't have permission to do this.
 	var/mob/living/carbon/human/C = src
-	var/obj/item/grab/G = src.get_active_hand()
+	var/obj/item/grab/G = src.get_active_held_item()
 	if(!istype(G))
 		to_chat(C, "<span class='warning'>You must be grabbing a creature in your active hand to feed them.</span>")
 		return
@@ -708,7 +707,7 @@
 /mob/living/carbon/human/vore_shred_time = 10 SECONDS
 /mob/living/carbon/human/can_shred()
 	//Humans need a grab
-	var/obj/item/grab/G = get_active_hand()
+	var/obj/item/grab/G = get_active_held_item()
 	if(!istype(G))
 		to_chat(src,"<span class='warning'>You have to have a very strong grip on someone first!</span>")
 		return FALSE
@@ -832,7 +831,7 @@
 		//Not targeting an internal organ w/ > 25 damage , and the limb doesn't have < 25 damage.
 		else
 			if(T_int)
-				T_int.damage = 25 //Internal organs can only take damage, not brute damage.
+				T_int.take_damage(25 - T_int.damage)
 			T.apply_damage(25, BRUTE, T_ext)
 			visible_message("<span class='danger'>[src] severely damages [T]'s [T_ext.name]!</span>")
 
@@ -898,8 +897,8 @@
 	set name = "Toggle Agility" //Dunno a better name for this. You have to be pretty agile to hop over stuff!!!
 	set desc = "Allows you to start/stop hopping over things such as hydroponics trays, tables, and railings."
 	set category = "Abilities"
-	pass_flags ^= PASSTABLE //I dunno what this fancy ^= is but Aronai gave it to me.
-	to_chat(src, "You [pass_flags&PASSTABLE ? "will" : "will NOT"] move over tables/railings/trays!")
+	pass_flags ^= ATOM_PASS_TABLE //I dunno what this fancy ^= is but Aronai gave it to me.
+	to_chat(src, "You [pass_flags&ATOM_PASS_TABLE ? "will" : "will NOT"] move over tables/railings/trays!")
 
 /mob/living/carbon/human/proc/check_silk_amount()
 	set name = "Check Silk Amount"

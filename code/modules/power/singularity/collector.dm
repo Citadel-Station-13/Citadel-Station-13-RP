@@ -7,7 +7,7 @@ var/global/list/rad_collectors = list()
 	icon = 'icons/obj/singularity.dmi'
 	icon_state = "ca"
 	anchored = FALSE
-	density = FALSE
+	density = TRUE
 	req_access = list(access_engine_equip)
 //	use_power = 0
 	var/obj/item/tank/phoron/P = null
@@ -61,9 +61,9 @@ var/global/list/rad_collectors = list()
 		if(src.P)
 			to_chat(user, "<font color='red'>There's already a phoron tank loaded.</font>")
 			return 1
-		user.drop_item()
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		src.P = W
-		W.loc = src
 		update_icons()
 		return 1
 	else if(W.is_crowbar())
@@ -74,7 +74,7 @@ var/global/list/rad_collectors = list()
 		if(P)
 			to_chat(user, "<font color=#4F49AF>Remove the phoron tank first.</font>")
 			return 1
-		playsound(src, W.usesound, 75, 1)
+		playsound(src, W.tool_sound, 75, 1)
 		src.anchored = !src.anchored
 		user.visible_message("[user.name] [anchored? "secures":"unsecures"] the [src.name].", \
 			"You [anchored? "secure":"undo"] the external bolts.", \
@@ -146,3 +146,32 @@ var/global/list/rad_collectors = list()
 		flick("ca_deactive", src)
 	density = active
 	update_icons()
+
+/obj/machinery/power/rad_collector/MouseDroppedOnLegacy(mob/living/O, mob/living/user)
+	. = ..()
+	if(!istype(O))
+		return 0 //not a mob
+	if(user.incapacitated())
+		return 0 //user shouldn't be doing things
+	if(O.anchored)
+		return 0 //mob is anchored???
+	if(get_dist(user, src) > 1 || get_dist(user, O) > 1)
+		return 0 //doesn't use adjacent() to allow for non-GLOB.cardinal (fuck my life)
+	if(!ishuman(user) && !isrobot(user))
+		return 0 //not a borg or human
+
+	if(O.has_buckled_mobs())
+		to_chat(user, "<span class='warning'>\The [O] has other entities attached to it. Remove them first.</span>")
+		return
+
+	if(O == user)
+		usr.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
+	else
+		visible_message("[user] puts [O] onto \the [src].")
+
+
+	if(do_after(O, 3 SECOND, src))
+		O.forceMove(src.loc)
+
+	if (get_turf(user) == get_turf(src))
+		usr.visible_message("<span class='warning'>[user] climbs onto \the [src]!</span>")

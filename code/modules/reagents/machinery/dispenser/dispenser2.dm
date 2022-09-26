@@ -47,12 +47,11 @@
 		if(user)
 			to_chat(user, "<span class='warning'>\The [src] already contains a cartridge with that label!</span>")
 		return
-
-	if(user)
-		user.drop_from_inventory(C)
+	if(user && user.is_in_inventory(C))
+		if(!user.attempt_insert_item_for_installation(C, src))
+			return
 		to_chat(user, "<span class='notice'>You add \the [C] to \the [src].</span>")
 
-	C.forceMove(src)
 	cartridges[C.label] = C
 	cartridges = sortTim(cartridges, /proc/cmp_text_asc)
 	SStgui.update_uis(src)
@@ -64,9 +63,9 @@
 
 /obj/machinery/chemical_dispenser/attackby(obj/item/W, mob/user)
 	if(W.is_wrench())
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		to_chat(user, "<span class='notice'>You begin to [anchored ? "un" : ""]fasten \the [src].</span>")
-		if (do_after(user, 20 * W.toolspeed))
+		if (do_after(user, 20 * W.tool_speed))
 			user.visible_message(
 				"<span class='notice'>\The [user] [anchored ? "un" : ""]fastens \the [src].</span>",
 				"<span class='notice'>You have [anchored ? "un" : ""]fastened \the [src].</span>",
@@ -85,7 +84,7 @@
 		if(C)
 			to_chat(user, "<span class='notice'>You remove \the [C] from \the [src].</span>")
 			C.loc = loc
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 
 	else if(istype(W, /obj/item/reagent_containers/glass) || istype(W, /obj/item/reagent_containers/food))
 		if(container)
@@ -97,14 +96,12 @@
 		if(!accept_drinking && istype(RC,/obj/item/reagent_containers/food))
 			to_chat(user, "<span class='warning'>This machine only accepts beakers!</span>")
 			return
-
 		if(!RC.is_open_container())
 			to_chat(user, "<span class='warning'>You don't see how \the [src] could dispense reagents into \the [RC].</span>")
 			return
-
+		if(!user.attempt_insert_item_for_installation(RC, src))
+			return
 		container =  RC
-		user.drop_from_inventory(RC)
-		RC.forceMove(src)
 		to_chat(user, "<span class='notice'>You set \the [RC] on \the [src].</span>")
 		SStgui.update_uis(src) // update all UIs attached to src
 

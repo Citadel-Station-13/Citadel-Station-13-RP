@@ -23,18 +23,25 @@
 /turf/proc/multiz_turf_new(turf/T, dir)
 	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_NEW, T, dir)
 
+/turf/smooth_icon()
+	. = ..()
+	if(SSopenspace.initialized)
+		var/turf/simulated/open/above = GetAbove(src)
+		if(istype(above))
+			above.queue()
+
 /**
  * called during AfterChange() to request the turfs above and below us update their graphics.
  */
 /turf/proc/update_vertical_turf_graphics()
 	var/turf/simulated/open/above = GetAbove(src)
 	if(istype(above))
-		above.update_icon()
+		above.queue()
 
-	var/turf/simulated/below = GetBelow(src)
-	if(istype(below))
-		below.update_icon() // To add or remove the 'ceiling-less' overlay.
-
+	var/turf/below = GetBelow(src)
+	if(below)
+		// To add or remove the 'ceiling-less' overlay.
+		below.update_icon()
 
 //
 // Open Space - "empty" turf that lets stuff fall thru it to the layer below
@@ -57,7 +64,8 @@
 /turf/simulated/open/Initialize(mapload)
 	. = ..()
 	ASSERT(HasBelow(z))
-	update()
+	plane = min(OPENSPACE_PLANE_END, OPENSPACE_PLANE + src.z)
+	queue()
 
 /turf/simulated/open/Entered(var/atom/movable/mover)
 	..()
@@ -65,13 +73,22 @@
 		mover.fall()
 
 // Called when thrown object lands on this turf.
-/turf/simulated/open/hitby(var/atom/movable/AM, var/speed)
+/turf/simulated/open/throw_landed(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
 	if(AM.movement_type & GROUND)
 		AM.fall()
 
+/turf/simulated/open/proc/queue()
+	if(smoothing_flags & SMOOTH_QUEUED)
+		return
+	smoothing_flags |= SMOOTH_QUEUED
+	SSopenspace.add_turf(src)
+
+//! we hijack smoothing flags.
+/turf/simulated/open/smooth_icon()
+	return		// nope
+
 /turf/simulated/open/proc/update()
-	plane = OPENSPACE_PLANE + src.z
 	below = GetBelow(src)
 	below.update_icon()	// So the 'ceiling-less' overlay gets added.
 	for(var/atom/movable/A in src)
@@ -91,23 +108,27 @@
 		depth += 1
 	. += "It is about [depth] levels deep."
 
+// todo: we either need vis conetents rendering or zmimic overlays; this is a fucked system and is really just unsalvagable.
+
 /**
 * Update icon and overlays of open space to be that of the turf below, plus any visible objects on that turf.
 */
 /turf/simulated/open/update_icon()
-	cut_overlays() // Edit - Overlays are being crashy when modified.
+	overlays.len = 0
 	var/turf/below = GetBelow(src)
 	if(below)
 		var/below_is_open = isopenturf(below)
 
 		if(below_is_open)
 			underlays = below.underlays
+			overlays = below.overlays
 		else
 			var/image/bottom_turf = image(icon = below.icon, icon_state = below.icon_state, dir=below.dir, layer=below.layer)
 			bottom_turf.plane = src.plane
 			bottom_turf.color = below.color
+			bottom_turf.copy_overlays(below)
+			bottom_turf.appearance_flags = KEEP_TOGETHER
 			underlays = list(bottom_turf)
-		copy_overlays(below)
 
 		// Get objects (not mobs, they are handled by /obj/zshadow)
 		var/list/o_img = list()
@@ -120,19 +141,16 @@
 			temp2.overlays += O.overlays
 			// TODO Is pixelx/y needed?
 			o_img += temp2
-		add_overlay(o_img)
-
-		if(!below_is_open)
-			add_overlay(/obj/effect/abstract/over_openspace_darkness)
-
-		return 0
+		overlays += o_img
+		overlays |= /obj/effect/abstract/over_openspace_darkness
+		return
 	return PROCESS_KILL
 
 /obj/effect/abstract/over_openspace_darkness
 	icon = 'icons/turf/open_space.dmi'
 	icon_state = "black_open"
 	plane = OVER_OPENSPACE_PLANE
-	layer = MOB_LAYER
+	layer = TURF_LAYER
 
 // Straight copy from space.
 /turf/simulated/open/attackby(obj/item/C as obj, mob/user as mob)

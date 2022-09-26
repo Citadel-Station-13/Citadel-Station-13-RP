@@ -523,7 +523,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	max_amount = MAXCOIL
 	color = COLOR_RED
 	desc = "A coil of power cable."
-	throwforce = 10
+	throw_force = 10
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 2
 	throw_range = 5
@@ -954,7 +954,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	amount = MAXCOIL
 	max_amount = MAXCOIL
 	color = COLOR_SILVER
-	throwforce = 10
+	throw_force = 10
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 2
 	throw_range = 5
@@ -962,7 +962,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	slot_flags = SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
 	stacktype = null
-	toolspeed = 0.25
+	tool_speed = 0.25
 
 /obj/item/stack/cable_coil/alien/Initialize(mapload, new_amount, merge, param_color)
 	. = ..()
@@ -992,7 +992,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 
 
 /obj/item/stack/cable_coil/alien/attack_hand(mob/user as mob)
-	if (user.get_inactive_hand() == src)
+	if (user.get_inactive_held_item() == src)
 		var/N = input("How many units of wire do you want to take from [src]?  You can only take up to [amount] at a time.", "Split stacks", 1) as num|null
 		if(N && N <= amount)
 			var/obj/item/stack/cable_coil/CC = new/obj/item/stack/cable_coil(user.loc)

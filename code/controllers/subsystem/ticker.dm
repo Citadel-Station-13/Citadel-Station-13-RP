@@ -166,6 +166,9 @@ SUBSYSTEM_DEF(ticker)
 		timeLeft = newtime
 
 /datum/controller/subsystem/ticker/proc/setup()
+	to_chat(world, "<span class='boldannounce'>Starting game...</span>")
+	var/init_start = world.timeofday
+
 	//Create and announce mode
 	if(master_mode=="secret")
 		src.hide_mode = 1
@@ -238,7 +241,9 @@ SUBSYSTEM_DEF(ticker)
 
 	SSmapping.loaded_module?.on_roundstart()
 
+	log_world("Game start took [(world.timeofday - init_start)/10]s")
 	round_start_time = world.time
+	SSdbcore.SetRoundStart()
 
 	// TODO Dear God Fix This.  Fix all of this. Not just this line, this entire proc. This entire file!
 	spawn(0)//Forking here so we dont have to wait for this to finish
@@ -463,6 +468,7 @@ SUBSYSTEM_DEF(ticker)
 				broadcastmessage += "\n\n<@&[CONFIG_GET(string/chat_reboot_role)]>, the server will reboot shortly!"
 			send2chat(broadcastmessage, CONFIG_GET(string/chat_roundend_notice_tag))
 
+		SSdbcore.SetRoundEnd()
 		SSpersistence.SavePersistence()
 		ready_for_reboot = TRUE
 		standard_reboot()

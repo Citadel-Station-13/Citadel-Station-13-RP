@@ -1,8 +1,8 @@
 // Stacked resources. They use a material datum for a lot of inherited values.
 // If you're adding something here, make sure to add it to fifty_spawner_mats.dm as well
 /obj/item/stack/material
-	force = 5.0
-	throwforce = 5
+	force = 5
+	throw_force = 5
 	w_class = ITEMSIZE_NORMAL
 	throw_speed = 3
 	throw_range = 3
@@ -297,14 +297,14 @@
 	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/clothing/gloves/G = H.gloves
-		if(istype(G) && ((G.flags & THICKMATERIAL && prob(70)) || istype(G, /obj/item/clothing/gloves/gauntlets)))
+		if(istype(G) && ((G.clothing_flags & THICKMATERIAL && prob(70)) || istype(G, /obj/item/clothing/gloves/gauntlets)))
 			burn_user = FALSE
 
 		if(burn_user)
 			H.visible_message("<span class='danger'>\The [src] flashes as it scorches [H]'s hands!</span>")
 			H.apply_damage(amount / 2 + 5, BURN, "r_hand", used_weapon="Supermatter Chunk")
 			H.apply_damage(amount / 2 + 5, BURN, "l_hand", used_weapon="Supermatter Chunk")
-			H.drop_from_inventory(src, get_turf(H))
+			H.drop_item_to_ground(src)
 			return
 
 	if(istype(user, /mob/living/silicon/robot))
@@ -370,7 +370,7 @@
 	if(!istype(W) || W.force <= 0)
 		return ..()
 	if(W.sharp && W.edge)
-		var/time = (3 SECONDS / max(W.force / 10, 1)) * W.toolspeed
+		var/time = (3 SECONDS / max(W.force / 10, 1)) * W.tool_speed
 		user.setClickCooldown(time)
 		if(do_after(user, time, src) && use(1))
 			to_chat(user, "<span class='notice'>You cut up a log into planks.</span>")

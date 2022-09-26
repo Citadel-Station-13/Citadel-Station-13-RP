@@ -13,12 +13,6 @@
 	master_item = null
 	. = ..()
 
-/obj/item/storage/internal/attack_hand()
-	return		//make sure this is never picked up
-
-/obj/item/storage/internal/mob_can_equip()
-	return 0	//make sure this is never picked up
-
 //Helper procs to cleanly implement internal storages - storage items that provide inventory slots for other items.
 //These procs are completely optional, it is up to the master item to decide when it's storage get's opened by calling open()
 //However they are helpful for allowing the master item to pretend it is a storage item itself.
@@ -49,11 +43,9 @@
 		if (!( user.restrained() ) && !( user.stat ))
 			switch(over_object.name)
 				if("r_hand")
-					user.unEquip(master_item)
-					user.put_in_r_hand(master_item)
+					user.put_in_right_hand(master_item)
 				if("l_hand")
-					user.unEquip(master_item)
-					user.put_in_l_hand(master_item)
+					user.put_in_left_hand(master_item)
 			master_item.add_fingerprint(user)
 			return 0
 	return 0
@@ -65,11 +57,11 @@
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(H.l_store == master_item && !H.get_active_hand())	//Prevents opening if it's in a pocket.
+		if(H.l_store == master_item && !H.get_active_held_item())	//Prevents opening if it's in a pocket.
 			H.put_in_hands(master_item)
 			H.l_store = null
 			return 0
-		if(H.r_store == master_item && !H.get_active_hand())
+		if(H.r_store == master_item && !H.get_active_held_item())
 			H.put_in_hands(master_item)
 			H.r_store = null
 			return 0

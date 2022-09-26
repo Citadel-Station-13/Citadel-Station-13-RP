@@ -4,7 +4,6 @@
 	icon_state = "prox"
 	origin_tech = list(TECH_MAGNET = 1)
 	matter = list(MAT_STEEL = 800, MAT_GLASS = 200)
-	flags = PROXMOVE
 	wires = WIRE_PULSE
 
 	secured = 0
@@ -14,6 +13,12 @@
 	var/time = 10
 	var/hearing_range = 3
 	var/range = 2
+
+	var/datum/proxfield/basic/square/monitor
+
+/obj/item/assembly/prox_sensor/Initialize(mapload)
+	. = ..()
+	monitor = new(src, 1)
 
 /obj/item/assembly/prox_sensor/activate()
 	if(!..())
@@ -33,7 +38,7 @@
 	update_icon()
 	return secured
 
-/obj/item/assembly/prox_sensor/HasProximity(atom/movable/AM as mob|obj)
+/obj/item/assembly/prox_sensor/Proximity(datum/proxfield/field, atom/movable/AM)
 	if(!istype(AM))
 		log_debug("DEBUG: HasProximity called with [AM] on [src] ([usr]).")
 		return
@@ -67,7 +72,7 @@
 		toggle_scan()
 		time = initial(time)
 
-/obj/item/assembly/prox_sensor/dropped()
+/obj/item/assembly/prox_sensor/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	INVOKE_ASYNC(src, .proc/sense)
 

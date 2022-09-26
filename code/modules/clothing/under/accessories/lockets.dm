@@ -38,10 +38,8 @@
 	if(istype(O,/obj/item/paper) || istype(O, /obj/item/photo))
 		if(held)
 			to_chat(usr, "\The [src] already has something inside it.")
-		else
+		else if(user.attempt_insert_item_for_installation(O, src))
 			to_chat(usr, "You slip [O] into [src].")
-			user.drop_item()
-			O.loc = src
 			held = O
 		return
 	..()

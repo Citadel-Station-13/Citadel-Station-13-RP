@@ -45,13 +45,14 @@ var/global/list/ashtray_cache = list()
 
 /obj/item/material/ashtray/attackby(obj/item/W as obj, mob/user as mob)
 	if (health <= 0)
-		return
+		return ..()
 	if (istype(W,/obj/item/cigbutt) || istype(W,/obj/item/clothing/mask/smokable/cigarette) || istype(W, /obj/item/flame/match))
+		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if (contents.len >= max_butts)
 			to_chat(user, "\The [src] is full.")
 			return
-		user.remove_from_mob(W)
-		W.loc = src
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 
 		if (istype(W,/obj/item/clothing/mask/smokable/cigarette))
 			var/obj/item/clothing/mask/smokable/cigarette/cig = W
@@ -67,9 +68,7 @@ var/global/list/ashtray_cache = list()
 			else if (cig.lit == 0)
 				to_chat(user, "You place [cig] in [src] without even smoking it. Why would you do that?")
 
-		src.visible_message("[user] places [W] in [src].")
-		user.update_inv_l_hand()
-		user.update_inv_r_hand()
+		visible_message("[user] places [W] in [src].")
 		add_fingerprint(user)
 		update_icon()
 	else
@@ -77,7 +76,8 @@ var/global/list/ashtray_cache = list()
 		to_chat(user, "You hit [src] with [W].")
 		if (health < 1)
 			shatter()
-	return
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 /obj/item/material/ashtray/throw_impact(atom/hit_atom)
 	if (health > 0)

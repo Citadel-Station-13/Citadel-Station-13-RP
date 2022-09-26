@@ -55,6 +55,13 @@
 	} while (0)
 #define HAS_TRAIT(target, trait) (target.status_traits ? (target.status_traits[trait] ? TRUE : FALSE) : FALSE)
 #define HAS_TRAIT_FROM(target, trait, source) (target.status_traits ? (target.status_traits[trait] ? (source in target.status_traits[trait]) : FALSE) : FALSE)
+#define HAS_TRAIT_FROM_ONLY(target, trait, source) (\
+	target.status_traits ?\
+		(target.status_traits[trait] ?\
+			((source in target.status_traits[trait]) && (length(target.status_traits) == 1))\
+			: FALSE)\
+		: FALSE)
+#define HAS_TRAIT_NOT_FROM(target, trait, source) (target.status_traits ? (target.status_traits[trait] ? (length(target.status_traits[trait] - source) > 0) : FALSE) : FALSE)
 
 /*
 Remember to update _globalvars/traits.dm if you're adding/removing/renaming traits.
@@ -95,7 +102,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_STUNIMMUNE		"stun_immunity"
 #define TRAIT_STUNRESISTANCE    "stun_resistance"
 #define TRAIT_SLEEPIMMUNE		"sleep_immunity"
+*/
+/// cannot be pushed out of the way by mob movement
 #define TRAIT_PUSHIMMUNE		"push_immunity"
+/*
 #define TRAIT_SHOCKIMMUNE		"shock_immunity"
 #define TRAIT_STABLEHEART		"stable_heart"
 #define TRAIT_STABLELIVER		"stable_liver"
@@ -199,9 +209,24 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_EMPATH			"empath"
 #define TRAIT_FRIENDLY			"friendly"
 #define TRAIT_GRABWEAKNESS		"grab_weakness"
+*/
+
+/// CPR was done already; CPR is less effective
+#define TRAIT_CPR_COOLDOWN "cpr_cooldown"
+/// someone is already doing CPR on us
+#define TRAIT_CPR_IN_PROGRESS "cpr_in_progress"
+/// Something is currently preventing normal respiratory failure
+#define TRAIT_MECHANICAL_VENTILATION "mechanical_ventilatin"
+/// Something currently preventing normal circulatory failure
+#define TRAIT_MECHANICAL_CIRCULATION "mechanical_circulation"
+/// this organ (and all organs in it if applied on an external organ) is preserved
+#define TRAIT_ORGAN_PRESERVED "organ_preserved"
+/// preserve all organs in us
+#define TRAIT_PRESERVE_ALL_ORGANS "preserve_organs"
 
 // common trait sources
-#define TRAIT_GENERIC "generic"
+#define GENERIC_TRAIT "generic"
+/*
 #define EYE_DAMAGE "eye_damage"
 #define GENETIC_MUTATION "genetic"
 #define OBESITY "obesity"
@@ -215,6 +240,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 */
 ///cannot be removed without admin intervention
 #define ROUNDSTART_TRAIT "roundstart"
+#define HOLOGRAM_TRAIT "hologram"
 #define GHOSTROLE_TRAIT "ghostrole"
 #define JOB_TRAIT "job"
 ///Mime trait.
@@ -233,6 +259,16 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define STATUS_EFFECT_TRAIT "status-effect"
 */
 #define CLOTHING_TRAIT "clothing"
+#define RIG_TRAIT "rig"
+#define MAGBOOT_TRAIT "magboot"
+#define TOGGLE_CLOTHING_TRAIT "toggle_clothing"
+#define AUGMENT_TRAIT "trait"
+#define CYBORG_MODULE_TRAIT "cyborg_module"
+#define PORTABLE_FREEZER_TRAIT "freezer_box"
+#define CRATE_FREEZER_TRAIT "crater_freezer"
+#define MMI_TRAIT "mmi"
+#define STASIS_BAG_TRAIT "stasis_bag"
+#define GRIPPER_TRAIT "gripper"
 /*
 #define GLASSES_TRAIT "glasses"
 /// inherited from riding vehicles
@@ -283,3 +319,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define FROGENITE_TRAIT "frogenite"
 #define FERVEATIUM_TRAIT "ferveatium"
 */
+
+#define CHANGELING_TRAIT "changeling"
+#define TECHNOMANCER_TRAIT "technomancer"
+
+#define CPR_TRAIT "cpr"

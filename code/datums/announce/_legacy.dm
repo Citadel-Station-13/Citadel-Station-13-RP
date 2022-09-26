@@ -49,8 +49,10 @@
 	message_title = sanitizeSafe(message_title)
 
 	var/list/zlevels
-	if(zlevel)
+	if(zlevel && zlevel >= 1)
 		zlevels = GLOB.using_map.get_map_levels(zlevel, TRUE)
+	else if(zlevel && zlevel == -1)//If we get a -1 just announce it to every z, safes us some loops else where
+		zlevels = GLOB.using_map.zlevels
 
 	Message(message, message_title, zlevels)
 	if(do_newscast)

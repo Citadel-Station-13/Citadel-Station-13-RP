@@ -80,7 +80,7 @@
 /obj/structure/toilet{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/vomit,
+/obj/effect/debris/cleanable/vomit,
 /obj/effect/decal/remains/human,
 /turf/simulated/shuttle/floor,
 /area/submap/cave/qShuttle)
@@ -91,7 +91,7 @@
 /turf/simulated/shuttle/wall,
 /area/submap/cave/qShuttle)
 "ao" = (
-/obj/effect/decal/cleanable/vomit,
+/obj/effect/debris/cleanable/vomit,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_white"
 	},
@@ -150,13 +150,13 @@
 /area/submap/cave/qShuttle)
 "aw" = (
 /obj/item/clothing/mask/breath,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_white"
 	},
 /area/submap/cave/qShuttle)
 "ax" = (
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/generic,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_white"
 	},
@@ -249,7 +249,7 @@
 /obj/structure/bed/chair/comfy/brown{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/vomit,
+/obj/effect/debris/cleanable/vomit,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_white"
 	},
@@ -266,7 +266,7 @@
 	},
 /area/submap/cave/qShuttle)
 "aN" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_yellow"
 	},
@@ -275,7 +275,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_yellow"
 	},
@@ -307,7 +307,7 @@
 	},
 /area/submap/cave/qShuttle)
 "aS" = (
-/obj/effect/decal/cleanable/vomit,
+/obj/effect/debris/cleanable/vomit,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_yellow"
 	},
@@ -388,7 +388,7 @@
 /area/submap/cave/qShuttle)
 "bc" = (
 /obj/item/tank/emergency/oxygen/engi,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_white"
 	},
@@ -397,7 +397,7 @@
 /obj/effect/decal/remains/human,
 /obj/item/clothing/suit/space/emergency,
 /obj/item/clothing/head/helmet/space/emergency,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_yellow"
 	},
@@ -443,7 +443,7 @@
 /area/submap/cave/qShuttle)
 "bi" = (
 /obj/item/trash/candy,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_white"
 	},
@@ -506,7 +506,7 @@
 /area/submap/cave/qShuttle)
 "bp" = (
 /obj/item/trash/chips,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_yellow"
 	},
@@ -519,7 +519,7 @@
 /area/submap/cave/qShuttle)
 "br" = (
 /obj/structure/bed/chair,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_white"
 	},
@@ -545,7 +545,7 @@
 /area/submap/cave/qShuttle)
 "bu" = (
 /obj/effect/decal/remains/xeno,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_white"
 	},
@@ -585,7 +585,7 @@
 	},
 /area/submap/cave/qShuttle)
 "bA" = (
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/generic,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_yellow"
 	},
@@ -652,14 +652,14 @@
 "bJ" = (
 /obj/item/trash/tastybread,
 /obj/item/material/butterfly/boxcutter,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_white"
 	},
 /area/submap/cave/qShuttle)
 "bK" = (
-/obj/effect/decal/cleanable/vomit,
-/obj/effect/decal/cleanable/mucus/mapped,
+/obj/effect/debris/cleanable/vomit,
+/obj/effect/debris/cleanable/mucus/mapped,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_white"
 	},

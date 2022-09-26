@@ -140,14 +140,14 @@
 	if(!istype(W) || !user) return
 	if(W.is_wrench())
 		if(!anchored)
-			playsound(src, W.usesound, 75, 1)
+			playsound(src, W.tool_sound, 75, 1)
 			user.visible_message("[user.name] secures the [src.name] to the floor.", \
 				"You secure the anchor bolts to the floor.", \
 				"You hear a ratchet.")
 			src.anchored = 1
 			connect_to_network()
 		else if(!linked_shielding.len > 0)
-			playsound(src, W.usesound, 75, 1)
+			playsound(src, W.tool_sound, 75, 1)
 			user.visible_message("[user.name] unsecures the [src.name].", \
 				"You remove the anchor bolts.", \
 				"You hear a ratchet.")
@@ -161,9 +161,9 @@
 		if(fueljar)
 			to_chat(user, "<font color='red'>There is already a [fueljar] inside!</font>")
 			return
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		fueljar = W
-		user.remove_from_mob(W)
-		W.loc = src
 		user.update_icons()
 		user.visible_message("[user.name] loads an [W.name] into the [src.name].", \
 				"You load an [W.name].", \

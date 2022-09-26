@@ -15698,7 +15698,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/fish_farm)
 "aAe" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/maintenance/lower/north)
 "aAf" = (
@@ -17596,7 +17596,7 @@
 /obj/machinery/light_switch{
 	pixel_y = 25
 	},
-/obj/effect/decal/cleanable/cobweb{
+/obj/effect/debris/cleanable/cobweb{
 	icon_state = "cobweb2"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
@@ -18686,7 +18686,7 @@
 /area/maintenance/lower/south)
 "aGC" = (
 /obj/structure/bed,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/south)
 "aGD" = (
@@ -18909,7 +18909,7 @@
 /turf/simulated/mineral,
 /area/maintenance/asmaint2)
 "aHn" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/item/cassette_tape{
 	desc = "No Talk"
 	},
@@ -19076,7 +19076,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/south)
 "aHI" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/item/clothing/shoes/athletic{
 	desc = "Assault"
 	},
@@ -19489,7 +19489,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "aIM" = (
-/obj/effect/decal/cleanable/cobweb{
+/obj/effect/debris/cleanable/cobweb{
 	icon_state = "cobweb2"
 	},
 /turf/simulated/floor/plating,
@@ -19987,7 +19987,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
 	},
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/floor/tiled/dark,
 /area/tcomsat)
 "aJZ" = (
@@ -28070,7 +28070,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/drone_fabrication)
 "bad" = (
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/drone_fabrication)
@@ -28295,7 +28295,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/closet/firecloset,
 /obj/item/handcuffs,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/maintenance/asmaint2)
 "baT" = (
@@ -28663,7 +28663,7 @@
 /area/maintenance/lower/atmos)
 "bcy" = (
 /obj/structure/catwalk,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/south)
 "bcA" = (
@@ -29208,7 +29208,7 @@
 /obj/structure/table/steel,
 /obj/item/tool/crowbar,
 /obj/item/tool/screwdriver,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/lower/atmos)
 "bdI" = (
@@ -29219,7 +29219,7 @@
 /obj/item/handcuffs/legcuffs,
 /obj/item/handcuffs,
 /obj/effect/floor_decal/rust,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/lower/atmos)
 "bdK" = (
@@ -29588,7 +29588,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "beP" = (
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "beQ" = (
@@ -30021,7 +30021,7 @@
 /area/tcommsat/entrance)
 "bfU" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -31585,7 +31585,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/molten_item,
+/obj/effect/debris/cleanable/molten_item,
 /turf/simulated/floor/tiled/techmaint,
 /area/tcomfoyer)
 "bja" = (
@@ -32519,7 +32519,7 @@
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/double,
 /obj/structure/curtain/open/privacy,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/wood,
 /area/vacant/vacant_bar_upper)
 "bkX" = (

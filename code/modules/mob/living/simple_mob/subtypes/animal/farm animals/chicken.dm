@@ -46,7 +46,7 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 
 	randomized = TRUE
 
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	mob_size = MOB_SMALL
 
 	response_help  = "pets"
@@ -85,9 +85,9 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 		var/obj/item/reagent_containers/food/snacks/grown/G = O
 		if(G.seed && G.seed.kitchen_tag == "wheat")
 			if(!stat && eggsleft < 8)
+				if(!user.attempt_consume_item_for_construction(O))
+					return
 				user.visible_message("<font color=#4F49AF>[user] feeds [O] to [name]! It clucks happily.</font>","<font color=#4F49AF>You feed [O] to [name]! It clucks happily.</font>")
-				user.drop_item()
-				qdel(O)
 				eggsleft += rand(1, 4)
 			else
 				to_chat(user, "<font color=#4F49AF>[name] doesn't seem hungry!</font>")
@@ -141,7 +141,7 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 	health = 1
 	maxHealth = 1
 
-	pass_flags = PASSTABLE | PASSGRILLE
+	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GRILLE
 	mob_size = MOB_MINISCULE
 
 	response_help  = "pets"

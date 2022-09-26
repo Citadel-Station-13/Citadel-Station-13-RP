@@ -27,7 +27,7 @@
 	faction = "slime" // Note that slimes are hostile to other slimes of different color regardless of faction (unless Unified).
 	maxHealth = 150
 	movement_cooldown = 0
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	makes_dirt = FALSE	// Goop
 	mob_class = MOB_CLASS_SLIME
 
@@ -200,9 +200,9 @@
 		to_chat(user, SPAN_WARNING( "\The [src] is already wearing \a [hat]."))
 		return
 	else
-		user.drop_item(new_hat)
+		if(!user.attempt_insert_item_for_installation(new_hat, src))
+			return
 		hat = new_hat
-		new_hat.forceMove(src)
 		to_chat(user, SPAN_NOTICE("You place \a [new_hat] on \the [src].  How adorable!"))
 		update_icon()
 		return

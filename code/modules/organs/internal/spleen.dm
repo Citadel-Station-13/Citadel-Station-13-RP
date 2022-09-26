@@ -8,9 +8,8 @@
 	var/spleen_tick = 20 // The number of ticks between Spleen cycles.
 	var/spleen_efficiency = 1 // A multiplier for how efficient this spleen is.
 
-/obj/item/organ/internal/spleen/process(delta_time)
-	..()
-	if(!owner) return
+/obj/item/organ/internal/spleen/tick_life(dt)
+	. = ..()
 
 	if(owner.life_tick % spleen_tick == 0)
 
@@ -35,7 +34,7 @@
 
 		//Detox can heal small amounts of damage
 		if (src.damage && src.damage < src.min_bruised_damage && owner.reagents.has_reagent("anti_toxin"))
-			src.damage -= 0.2 * spleen_tick * spleen_efficiency
+			heal_damage_i(0.2 * spleen_tick * spleen_efficiency)
 
 		if(src.damage < 0)
 			src.damage = 0

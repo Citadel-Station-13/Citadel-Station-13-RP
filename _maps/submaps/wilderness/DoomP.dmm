@@ -31,7 +31,7 @@
 /turf/simulated/floor/outdoors/grass/sif/forest,
 /area/submap/DoomP)
 "aj" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/random/landmine,
 /turf/simulated/floor/outdoors/grass/sif/forest,
 /area/submap/DoomP)
@@ -39,7 +39,7 @@
 /turf/simulated/floor/water/deep,
 /area/submap/DoomP)
 "al" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/outdoors/grass/sif/forest,
 /area/submap/DoomP)
 "am" = (

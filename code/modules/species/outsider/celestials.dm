@@ -79,7 +79,7 @@
 
 
 	//Demons glow in the dark.
-	has_glowing_eyes = 1
+	has_glowing_eyes = TRUE
 	darksight = 7
 
 	//Physical resistances and Weaknesses.

@@ -40,7 +40,7 @@
 		return 0
 	return ..(M, user)
 
-/obj/vehicle/skateboard/MouseDrop_T(var/atom/movable/C, var/mob/user as mob)
+/obj/vehicle/skateboard/MouseDroppedOnLegacy(var/atom/movable/C, var/mob/user as mob)
 	if(!load(C, user))
 		to_chat(user, "<span class='warning'> You were unable to load \the [C] onto \the [src].</span>")
 		return
@@ -85,7 +85,7 @@
 			var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
 			var/turf/T2 = get_step(A, pick(throw_dirs))
 			unload(H)
-			H.throw_at(T2, 1, 1, src)
+			H.throw_at_old(T2, 1, 1, src)
 			var/head_slot = SLOT_HEAD
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
@@ -96,7 +96,7 @@
 			var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
 			var/turf/T2 = get_step(A, pick(throw_dirs))
 			unload(H)
-			H.throw_at(T2, 1, 1, src)
+			H.throw_at_old(T2, 1, 1, src)
 			var/head_slot = SLOT_HEAD
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
@@ -128,7 +128,7 @@
 			playsound(src, 'sound/effects/bang.ogg', 20, TRUE)
 			unbuckle_mob(L)
 			var/atom/throw_target = get_edge_target_turf(src)
-			L.throw_at(throw_target, 2, 2)
+			L.throw_at_old(throw_target, 2, 2)
 			visible_message("<span class='danger'>[L] loses their footing and slams on the ground!</span>")
 			L.Weaken(40)
 			grinding = FALSE
@@ -144,7 +144,7 @@
 		grinding = FALSE
 		icon_state = board_icon
 
-/obj/vehicle/skateboard/MouseDrop(atom/over_object)
+/obj/vehicle/skateboard/OnMouseDropLegacy(atom/over_object)
 	. = ..()
 	var/mob/living/carbon/M = usr
 	if(!istype(M) || M.incapacitated() || !Adjacent(M))
@@ -177,7 +177,7 @@
 		if (L.getStaminaLoss() >= 100)
 			playsound(src, 'sound/effects/bang.ogg', 20, TRUE)
 			V.unbuckle_mob(L)
-			L.throw_at(landing_turf, 2, 2)
+			L.throw_at_old(landing_turf, 2, 2)
 			L.Knockdown(40)
 			V.visible_message("<span class='danger'>[L] misses the landing and falls on [L.p_their()] face!</span>")
 		else
@@ -185,11 +185,11 @@
 			animate(L, pixel_y = -6, time = 4)
 			animate(V, pixel_y = -6, time = 3)
 			playsound(V, 'sound/vehicles/skateboard_ollie.ogg', 50, TRUE)
-			passtable_on(L, VEHICLE_TRAIT)
-			V.pass_flags |= PASSTABLE
+			pass_table_on(L, VEHICLE_TRAIT)
+			V.pass_flags |= ATOM_PASS_TABLE
 			L.Move(landing_turf, vehicle_target.dir)
-			passtable_off(L, VEHICLE_TRAIT)
-			V.pass_flags &= ~PASSTABLE
+			pass_table_off(L, VEHICLE_TRAIT)
+			V.pass_flags &= ~ATOM_PASS_TABLE
 		if(locate(/obj/structure/table) in V.loc.contents)
 			V.grinding = TRUE
 			V.icon_state = "[V.board_icon]-grind"
@@ -229,7 +229,7 @@
 			var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
 			var/turf/T2 = get_step(A, pick(throw_dirs))
 			unload(H)
-			H.throw_at(T2, 1, 1, src)
+			H.throw_at_old(T2, 1, 1, src)
 			var/head_slot = SLOT_HEAD
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
@@ -240,7 +240,7 @@
 			var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
 			var/turf/T2 = get_step(A, pick(throw_dirs))
 			unload(H)
-			H.throw_at(T2, 1, 1, src)
+			H.throw_at_old(T2, 1, 1, src)
 			var/head_slot = SLOT_HEAD
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
@@ -288,7 +288,7 @@
 			var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
 			var/turf/T2 = get_step(A, pick(throw_dirs))
 			unload(H)
-			H.throw_at(T2, 1, 1, src)
+			H.throw_at_old(T2, 1, 1, src)
 			var/head_slot = SLOT_HEAD
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
@@ -317,7 +317,7 @@
 			var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
 			var/turf/T2 = get_step(A, pick(throw_dirs))
 			unload(H)
-			H.throw_at(T2, 1, 1, src)
+			H.throw_at_old(T2, 1, 1, src)
 			var/head_slot = SLOT_HEAD
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 				H.setBrainLoss(2,5)
@@ -343,7 +343,7 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "skate_assembly0"
 	force = 3.0
-	throwforce = 3.0
+	throw_force = 3.0
 	throw_speed = 2
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
@@ -355,7 +355,7 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "skate_assembly0"
 	force = 6.0
-	throwforce = 6.0
+	throw_force = 6.0
 	throw_speed = 2
 	throw_range = 4
 	w_class = ITEMSIZE_NORMAL
@@ -396,8 +396,8 @@
 
 		if(3)
 			if(istype(W, /obj/item/skate_wheels))
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_consume_item_for_construction(W))
+					return
 				build_step++
 				to_chat(user, "<span class='notice'>You mount \the [W] on \the [src] trucks.</span>")
 				name = "skateboard frame (loose wheels)"
@@ -417,7 +417,6 @@
 				playsound(src, 'sound/items/screwdriver.ogg', 40, TRUE)
 				var/turf/T = get_turf(src)
 				new /obj/vehicle/skateboard/improv(T)
-				user.drop_from_inventory(src)
 				qdel(src)
 
 //Pro Board
@@ -464,8 +463,8 @@
 
 		if(4)
 			if(istype(W, /obj/item/skate_wheels))
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_consume_item_for_construction(W))
+					return
 				build_step++
 				to_chat(user, "<span class='notice'>You mount \the [W] on \the [src] trucks.</span>")
 				name = "skateboard frame (loose wheels)"
@@ -485,7 +484,6 @@
 				playsound(src, 'sound/items/screwdriver.ogg', 40, TRUE)
 				var/turf/T = get_turf(src)
 				new /obj/vehicle/skateboard/pro(T)
-				user.drop_from_inventory(src)
 				qdel(src)
 
 // Scooters
@@ -539,8 +537,8 @@
 
 		if(1)
 			if(istype(W, /obj/item/skate_wheels))
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_consume_item_for_construction(W))
+					return
 				build_step++
 				to_chat(user, "<span class='notice'>You install \the [W] on \the [src].</span>")
 				name = "scooter frame (loose wheels)"
@@ -552,7 +550,6 @@
 				playsound(src, 'sound/items/screwdriver.ogg', 40, TRUE)
 				var/turf/T = get_turf(src)
 				new /obj/vehicle/skateboard/scooter(T)
-				user.drop_from_inventory(src)
 				qdel(src)
 
 //Decontstruction
@@ -573,7 +570,6 @@
 		new /obj/item/stack/material/plastic(drop_location(), 6)
 		var/turf/T = get_turf(src)
 		new /obj/item/scooter_frame(T)
-		user.drop_from_inventory(src)
 		qdel(src)
 	if(has_buckled_mobs())
 		var/mob/living/carbon/H = buckled_mobs[1]
@@ -615,7 +611,7 @@
 		var/mob/living/H = buckled_mobs[1]
 		var/atom/throw_target = get_edge_target_turf(H, pick(GLOB.cardinals))
 		unbuckle_mob(H)
-		H.throw_at(throw_target, 4, 3)
+		H.throw_at_old(throw_target, 4, 3)
 		H.DefaultCombatKnockdown(30)
 		H.adjustStaminaLoss(30)
 		var/head_slot = H.get_item_by_slot(SLOT_HEAD)

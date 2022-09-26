@@ -165,9 +165,18 @@
 		density = FALSE
 		force_max_speed = TRUE
 
+/*
+/mob/living/carbon/human/MouseDroppedOnLegacy(atom/dropping, mob/user)
+	if(ability_flags & AB_PHASE_SHIFTED)
+		return FALSE	//Nope!
+
+	return ..()
+*/
+
 /datum/modifier/shadekin_phase_vision
 	name = "Shadekin Phase Vision"
 	vision_flags = SEE_THRU
+
 
 //////////////////////////
 ///  REGENERATE OTHER  ///

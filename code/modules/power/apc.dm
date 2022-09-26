@@ -499,9 +499,9 @@ GLOBAL_LIST_EMPTY(apcs)
 			if (terminal)
 				to_chat(user,"<span class='warning'>Disconnect the wires first.</span>")
 				return
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			to_chat(user,"You begin to remove the power control board...") //lpeters - fixed grammar issues //Ner - grrrrrr
-			if(do_after(user, 50 * W.toolspeed))
+			if(do_after(user, 50 * W.tool_speed))
 				if (has_electronics==1)
 					has_electronics = 0
 					if ((machine_stat & BROKEN))
@@ -535,9 +535,8 @@ GLOBAL_LIST_EMPTY(apcs)
 		if(W.w_class != ITEMSIZE_NORMAL)
 			to_chat(user,"\The [W] is too [W.w_class < 3? "small" : "large"] to work here.")
 			return
-
-		user.drop_item()
-		W.forceMove(src)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		cell = W
 		user.visible_message(\
 			"<span class='warning'>[user.name] has inserted a power cell into [src.name]!</span>",\
@@ -553,12 +552,12 @@ GLOBAL_LIST_EMPTY(apcs)
 				if (has_electronics==1 && terminal)
 					has_electronics = 2
 					machine_stat &= ~MAINT
-					playsound(src.loc, W.usesound, 50, 1)
+					playsound(src.loc, W.tool_sound, 50, 1)
 					to_chat(user,"You screw the circuit electronics into place.")
 				else if (has_electronics==2)
 					has_electronics = 1
 					machine_stat |= MAINT
-					playsound(src.loc, W.usesound, 50, 1)
+					playsound(src.loc, W.tool_sound, 50, 1)
 					to_chat(user,"You unfasten the electronics.")
 				else /* has_electronics==0 */
 					to_chat(user,"<span class='warning'>There is nothing to secure.</span>")
@@ -567,7 +566,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		else
 			wiresexposed = !wiresexposed
 			to_chat(user,"The wires have been [wiresexposed ? "exposed" : "unexposed"].")
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			update_icon()
 
 	else if (istype(W, /obj/item/card/id)||istype(W, /obj/item/pda))			// trying to unlock the interface with an ID card
@@ -623,7 +622,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		user.visible_message("<span class='warning'>[user.name] starts dismantling the [src]'s power terminal.</span>", \
 							"You begin to cut the cables...")
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
-		if(do_after(user, 50 * W.toolspeed))
+		if(do_after(user, 50 * W.tool_speed))
 			if(terminal && opened && has_electronics!=2)
 				if (prob(50) && electrocute_mob(usr, terminal.powernet, terminal))
 					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
@@ -655,8 +654,8 @@ GLOBAL_LIST_EMPTY(apcs)
 		user.visible_message("<span class='warning'>[user.name] begins cutting apart [src] with the [WT.name].</span>", \
 							"You start welding the APC frame...", \
 							"You hear welding.")
-		playsound(src, WT.usesound, 25, 1)
-		if(do_after(user, 50 * WT.toolspeed))
+		playsound(src, WT.tool_sound, 25, 1)
+		if(do_after(user, 50 * WT.tool_speed))
 			if(!src || !WT.remove_fuel(3, user)) return
 			if (emagged || (machine_stat & BROKEN) || opened==2)
 				new /obj/item/stack/material/steel(loc)

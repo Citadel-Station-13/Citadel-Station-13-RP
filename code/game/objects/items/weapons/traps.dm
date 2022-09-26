@@ -6,7 +6,7 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "beartrap0"
 	desc = "A mechanically activated leg trap. Low-tech, but reliable. Looks like it could really hurt if you set it off."
-	throwforce = 0
+	throw_force = 0
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1)
 	matter = list(MAT_STEEL = 18750)
@@ -16,10 +16,10 @@
 	var/trap_damage = 30
 	slot_flags = SLOT_MASK
 	item_icons = list(
-		/datum/inventory_slot_meta/inventory/mask = 'icons/mob/clothing/mask.dmi'
+		SLOT_ID_MASK = 'icons/mob/clothing/mask.dmi'
 		)
 
-/obj/item/beartrap/equipped(mob/user, slot)
+/obj/item/beartrap/equipped(mob/user, slot, flags)
 	if(ishuman(src.loc))
 		var/mob/living/carbon/human/H = src.loc
 		if(H.wear_mask == src)
@@ -28,7 +28,7 @@
 			H.verbs -= /mob/living/proc/shred_limb_temp
 	..()
 
-/obj/item/beartrap/dropped(var/mob/user)
+/obj/item/beartrap/dropped(mob/user, flags, atom/newLoc)
 	user.verbs -= /mob/living/proc/shred_limb_temp
 	..()
 
@@ -47,19 +47,19 @@
 			)
 
 		if (do_after(user, 60))
+			if(!user.drop_item_to_ground(src))
+				return
 			user.visible_message(
 				"<span class='danger'>[user] has deployed \the [src].</span>",
 				"<span class='danger'>You have deployed \the [src]!</span>",
 				"You hear a latch click loudly."
 				)
 			playsound(src.loc, 'sound/machines/click.ogg',70, 1)
-
-			user.drop_from_inventory(src)
 			activate()
 
 /obj/item/beartrap/proc/activate()
-	deployed = 1
-	anchored = 1
+	deployed = TRUE
+	anchored = TRUE
 	update_icon()
 
 /obj/item/beartrap/user_unbuckle_mob(mob/living/buckled_mob, mob/user)
@@ -74,7 +74,7 @@
 	else
 		user.visible_message(SPAN_WARNING("[user] frees [buckled_mob] from [src]!"))
 	return ..()
-	
+
 /obj/item/beartrap/unbuckle_mob()
 	. = ..()
 	if(!LAZYLEN(buckled_mobs))

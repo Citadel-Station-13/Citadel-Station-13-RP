@@ -10,7 +10,7 @@
 /area/submap/ButcherShack)
 "d" = (
 /obj/structure/closet,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /obj/item/beartrap,
 /obj/item/beartrap,
 /obj/item/packageWrap,
@@ -23,7 +23,7 @@
 /area/submap/ButcherShack)
 "f" = (
 /obj/structure/closet/crate/freezer,
-/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/debris/cleanable/blood/gibs,
 /obj/random/meat,
 /obj/random/meat,
 /obj/random/meat,
@@ -61,16 +61,16 @@
 /area/submap/ButcherShack)
 "m" = (
 /obj/structure/kitchenspike,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/wood/sif,
 /area/submap/ButcherShack)
 "n" = (
 /obj/structure/kitchenspike,
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/wood/sif,
 /area/submap/ButcherShack)
 "o" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/wood/sif,
 /area/submap/ButcherShack)
 "p" = (
@@ -80,7 +80,7 @@
 /area/submap/ButcherShack)
 "q" = (
 /obj/structure/table/standard,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/item/material/knife/butch,
 /turf/simulated/floor/wood/sif/broken,
 /area/submap/ButcherShack)
@@ -102,7 +102,7 @@
 /turf/simulated/floor/wood/sif,
 /area/submap/ButcherShack)
 "u" = (
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/wood/sif/broken,
 /area/submap/ButcherShack)
 "v" = (

@@ -346,7 +346,7 @@
 			visible_message("[src]: Releasing [round(thermal_power)] W.")
 			visible_message("[src]: Releasing additional [round((heat_capacity_new - heat_capacity)*removed.temperature)] W with exhaust gasses.")
 
-		removed.add_thermal_energy(thermal_power)
+		removed.adjust_thermal_energy(thermal_power)
 		removed.temperature = clamp( removed.temperature, 0,  10000)
 
 		env.merge(removed)
@@ -457,9 +457,7 @@
 		"<span class=\"danger\">You touch \the [W] to \the [src] when everything suddenly goes silent.\"</span>\n<span class=\"notice\">\The [W] flashes into dust as you flinch away from \the [src].</span>",\
 		"<span class=\"warning\">Everything suddenly goes silent.</span>")
 
-	user.drop_from_inventory(W)
 	Consume(W)
-
 	user.apply_effect(150, IRRADIATE)
 
 
@@ -477,7 +475,6 @@
 		"<span class=\"warning\">You hear a loud crack as you are washed with a wave of heat.</span>")
 
 	Consume(AM)
-
 
 /obj/machinery/power/supermatter/proc/Consume(var/mob/living/user)
 	if(istype(user))

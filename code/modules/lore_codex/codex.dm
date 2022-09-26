@@ -35,7 +35,7 @@
 
 /obj/item/book/codex/lore/news
 	name = "Daedalus Pocket Newscaster"
-	desc = "A regularly-updating compendium of articles on current events. Essential for new arrivals in the Vir system and anyone interested in politics."
+	desc = "A occasionally-updated compendium of articles on current events. Useful for keeping on the news in the vastness of the the Sigmar Concord."
 	icon_state = "newscodex"
 	w_class = ITEMSIZE_SMALL
 	root_type = /datum/lore/codex/category/main_news

@@ -270,3 +270,6 @@
 /datum/ai_holder/proc/lose_taunt()
 	ai_log("lose_taunt() : Resetting preferred_target.", AI_LOG_INFO)
 	preferred_target = null
+
+/datum/ai_holder/proc/check_attacker(var/atom/movable/A)
+	return (A in attackers)

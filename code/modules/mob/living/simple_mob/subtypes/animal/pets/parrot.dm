@@ -87,9 +87,9 @@
 		to_chat(user, SPAN_WARNING( "\The [src] is already wearing \a [my_headset]."))
 		return
 	else
-		user.drop_item(new_headset)
+		if(!user.attempt_insert_item_for_installation(new_headset, src))
+			return
 		my_headset = new_headset
-		new_headset.forceMove(src)
 		to_chat(user, SPAN_WARNING( "You place \a [new_headset] on \the [src]. You monster."))
 		to_chat(src, SPAN_NOTICE("\The [user] gives you \a [new_headset]. You should put it to good use immediately."))
 		return
@@ -99,8 +99,7 @@
 		to_chat(user, "<span class='warning'>\The [src] doesn't have a headset to remove, thankfully.</span>")
 	else
 		ISay("BAWWWWWK LEAVE THE HEADSET BAWKKKKK!")
-		my_headset.forceMove(get_turf(src))
-		user.put_in_hands(my_headset)
+		user.put_in_hands_or_drop(my_headset)
 		to_chat(user, SPAN_NOTICE("You take away \the [src]'s [my_headset.name]. Finally."))
 		to_chat(src, SPAN_WARNING( "\The [user] takes your [my_headset.name] away! How cruel!"))
 		my_headset = null

@@ -166,8 +166,8 @@
 	if(sight_mode & BORGTHERM)
 		AddSightSelf(SEE_MOBS)
 
-	plane_holder.set_vis(VIS_FULLBRIGHT, fullbright)
-	plane_holder.set_vis(VIS_MESONS, seemeson)
+	plane_holder?.set_vis(VIS_FULLBRIGHT, fullbright)
+	plane_holder?.set_vis(VIS_MESONS, seemeson)
 	..()
 
 	if (src.healths)

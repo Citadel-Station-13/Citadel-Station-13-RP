@@ -34,7 +34,7 @@
 		item_state = "[icon_state]_blade"
 	embed_chance = active_embed_chance
 	force = active_force
-	throwforce = active_throwforce
+	throw_force = active_throwforce
 	sharp = 1
 	edge = 1
 	w_class = active_w_class
@@ -51,7 +51,7 @@
 	active = 0
 	embed_chance = initial(embed_chance)
 	force = initial(force)
-	throwforce = initial(throwforce)
+	throw_force = initial(throw_force)
 	sharp = initial(sharp)
 	edge = initial(edge)
 	w_class = initial(w_class)
@@ -124,8 +124,8 @@
 	if(use_cell)
 		if(istype(W, cell_type))
 			if(!bcell)
-				user.drop_item()
-				W.loc = src
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				bcell = W
 				to_chat(user, "<span class='notice'>You install a cell in [src].</span>")
 				update_icon()
@@ -193,9 +193,9 @@
 	active_throwforce = 35
 	active_w_class = ITEMSIZE_HUGE
 	//force = 40
-	//throwforce = 25
+	//throw_force = 25
 	force = 20
-	throwforce = 10
+	throw_force = 10
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
@@ -246,7 +246,7 @@
 	active_throwforce = 20
 	active_w_class = ITEMSIZE_LARGE
 	force = 3
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
@@ -257,15 +257,12 @@
 	colorable = TRUE
 	drop_sound = 'sound/items/drop/sword.ogg'
 	pickup_sound = 'sound/items/pickup/sword.ogg'
-
-
 	projectile_parry_chance = 65
 
-/obj/item/melee/energy/sword/dropped(var/mob/user)
-	..()
+/obj/item/melee/energy/sword/dropped(mob/user, flags, atom/newLoc)
+	. = ..()
 	if(!istype(loc,/mob))
 		deactivate(user)
-
 
 /obj/item/melee/energy/sword/activate(mob/living/user)
 	if(!active)
@@ -273,7 +270,6 @@
 
 	..()
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-
 
 /obj/item/melee/energy/sword/deactivate(mob/living/user)
 	if(active)
@@ -342,7 +338,7 @@
 	item_state = "dualsaber"
 	force = 3
 	active_force = 60
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 3
 	armor_penetration = 35
 	colorable = TRUE
@@ -456,7 +452,7 @@
 	item_state = "dualsaber"
 	force = 3
 	active_force = 50
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 3
 	armor_penetration = 30
 	colorable = TRUE
@@ -489,7 +485,7 @@
 	sharp = 1
 	edge = 1
 	anchored = 1    // Never spawned outside of inventory, should be fine.
-	throwforce = 1  //Throwing or dropping the item deletes it.
+	throw_force = 1  //Throwing or dropping the item deletes it.
 	throw_speed = 1
 	throw_range = 1
 	w_class = ITEMSIZE_LARGE//So you can't hide it in your pocket or some such.
@@ -514,15 +510,14 @@
 	return ..()
 
 /obj/item/melee/energy/blade/attack_self(mob/user as mob)
-	user.drop_from_inventory(src)
 	qdel(src)
 
-/obj/item/melee/energy/blade/dropped()
+/obj/item/melee/energy/blade/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	qdel(src)
 
 /obj/item/melee/energy/blade/process(delta_time)
-	if(!creator || loc != creator || !creator.item_is_in_hands(src))
+	if(!creator || loc != creator || !creator.is_holding(src))
 		// Tidy up a bit.
 		if(istype(loc,/mob/living))
 			var/mob/living/carbon/human/host = loc
@@ -533,8 +528,8 @@
 							organ.implants -= src
 			host.pinned -= src
 			host.embedded -= src
-			host.drop_from_inventory(src)
-		spawn(1) if(src) qdel(src)
+			host._handle_inventory_hud_remove(src)
+		qdel(src)
 
 /obj/item/melee/energy/blade/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(default_parry_check(user, attacker, damage_source) && prob(60))
@@ -577,7 +572,7 @@
 	sharp = 1
 	edge = 1
 	force = 5
-	throwforce = 10
+	throw_force = 10
 	throw_speed = 7
 	throw_range = 11
 	reach = 2
@@ -620,7 +615,7 @@
 	sharp = TRUE
 	edge = TRUE
 	force = 20 // You can be crueler than that, Jack.
-	throwforce = 40
+	throw_force = 40
 	throw_speed = 8
 	throw_range = 8
 	w_class = WEIGHT_CLASS_NORMAL
@@ -650,7 +645,7 @@
 			active = !active
 	if(active)
 		force = 40
-		throwforce = 20
+		throw_force = 20
 		throw_speed = 3
 		// sharpness = 1.7
 		// sharpness_flags += HOT_EDGE | CUT_WALL | CUT_AIRLOCK - if only there  a good sharpness system
@@ -661,7 +656,7 @@
 		// user.lazy_register_event(/lazy_event/on_moved, src, .proc/mob_moved)
 	else
 		force = initial(force)
-		throwforce = initial(throwforce)
+		throw_force = initial(throw_force)
 		throw_speed = initial(throw_speed)
 		// sharpness = initial(sharpness)
 		// sharpness_flags = initial(sharpness_flags) - if only there was a good sharpness system
@@ -682,10 +677,10 @@
 			P.die_off()
 
 /*
-/obj/item/melee/energy/hfmachete/dropped(mob/user)
+/obj/item/melee/energy/hfmachete/dropped(mob/user, flags, atom/newLoc)
 	user.lazy_unregister_event(/lazy_event/on_moved, src, .proc/mob_moved)
 
-/obj/item/melee/energy/hfmachete/throw_at(atom/target, range, speed, thrower) // todo: get silicons to interpret this because >sleeps
+/obj/item/melee/energy/hfmachete/throw_at_old(atom/target, range, speed, thrower) // todo: get silicons to interpret this because >sleeps
 	if(!usr)
 		return ..()
 	spawn()
@@ -704,7 +699,7 @@
 
 // none of these are working properly in testing which is something you absolutely hate to see
 /*
-/obj/item/melee/energy/hfmachete/throw_at(atom/target, range, speed, thrower)
+/obj/item/melee/energy/hfmachete/throw_at_old(atom/target, range, speed, thrower)
 	playsound(src, get_sfx("machete_throw"), 30, 0)
 	. = ..()
 

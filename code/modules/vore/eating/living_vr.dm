@@ -173,9 +173,9 @@
 			if(!istype(B))
 				return TRUE
 			visible_message("<span class='warning'>[user] is trying to stuff a beacon into [src]'s [lowertext(B.name)]!</span>","<span class='warning'>[user] is trying to stuff a beacon into you!</span>")
-			if(do_after(user,30,src))
-				user.drop_item()
-				I.forceMove(B)
+			if(do_after(user, 30, src))
+				if(!user.attempt_insert_item_for_installation(I, B))
+					return
 				return TRUE
 			else
 				return TRUE //You don't get to hit someone 'later'
@@ -635,7 +635,7 @@
 		to_chat(src,"<span class='warning'>You either don't have a belly selected, or don't have a belly!</span>")
 		return
 
-	var/obj/item/I = get_active_hand()
+	var/obj/item/I = get_active_held_item()
 	if(!I)
 		to_chat(src, "<span class='notice'>You are not holding anything.</span>")
 		return
@@ -669,7 +669,6 @@
 						return
 					visible_message("<span class='warning'>[src] successfully makes [P] disappear!</span>")
 			to_chat(src, "<span class='notice'>You can taste the sweet flavor of delicious technology.</span>")
-			drop_item()
 			I.forceMove(vore_selected)
 			updateVRPanel()
 			return
@@ -679,8 +678,9 @@
 				to_chat(src, "<span class='warning'>There's something inside!</span>")
 				return
 
-		drop_item()
-		I.forceMove(vore_selected)
+		if(!attempt_insert_item_for_installation(I, vore_selected))
+			return
+
 		updateVRPanel()
 
 		log_admin("LOG: [src] used Eat Trash to swallow [I].")

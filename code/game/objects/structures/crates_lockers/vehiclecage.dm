@@ -18,7 +18,7 @@
 	if(my_vehicle_type)
 		my_vehicle = new my_vehicle_type(src)
 		for(var/obj/I in get_turf(src))
-			if(I.density || I.anchored || I == src || (I.flags & AF_ABSTRACT) || !istype(I, my_vehicle_type))
+			if(I.density || I.anchored || I == src || (I.flags & ATOM_ABSTRACT) || !istype(I, my_vehicle_type))
 				continue
 			load_vehicle(I)
 	update_icon()
@@ -31,12 +31,12 @@
 	var/turf/T = get_turf(src)
 	if(!T)
 		to_chat(user, "<span class='notice'>You can't open this here!</span>")
-	if(W.is_wrench() && do_after(user, 60 * W.toolspeed, src))
-		playsound(loc, W.usesound, 50, 1)
+	if(W.is_wrench() && do_after(user, 60 * W.tool_speed, src))
+		playsound(loc, W.tool_sound, 50, 1)
 		disassemble(W, user)
 		user.visible_message("<span class='notice'>[user] begins loosening \the [src]'s bolts.</span>")
-	if(W.is_wirecutter() && do_after(user, 70 * W.toolspeed, src))
-		playsound(loc, W.usesound, 50, 1)
+	if(W.is_wirecutter() && do_after(user, 70 * W.tool_speed, src))
+		playsound(loc, W.tool_sound, 50, 1)
 		disassemble(W, user)
 		user.visible_message("<span class='notice'>[user] begins cutting \the [src]'s bolts.</span>")
 	else
@@ -57,7 +57,7 @@
 		showcase.layer = src.layer - 0.1
 		underlays += showcase
 
-/obj/structure/vehiclecage/MouseDrop_T(var/atom/movable/C, mob/user as mob)
+/obj/structure/vehiclecage/MouseDroppedOnLegacy(var/atom/movable/C, mob/user as mob)
 	if(user && (user.buckled || user.stat || user.restrained() || !Adjacent(user) || !user.Adjacent(C)))
 		return
 
@@ -87,7 +87,7 @@
 	new /obj/item/stack/material/steel(src.loc, 5)
 
 	for(var/atom/movable/AM in contents)
-		if(!(AM.flags & AF_ABSTRACT))
+		if(!(AM.flags & ATOM_ABSTRACT))
 			AM.forceMove(T)
 
 	my_vehicle = null

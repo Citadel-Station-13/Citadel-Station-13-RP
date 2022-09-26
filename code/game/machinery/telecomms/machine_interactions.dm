@@ -93,7 +93,7 @@
 
 /obj/machinery/telecomms/ui_status(mob/user)
 	if(!issilicon(user))
-		if(!istype(user.get_active_hand(), /obj/item/multitool))
+		if(!istype(user.get_active_held_item(), /obj/item/multitool))
 			return UI_CLOSE
 	. = ..()
 
@@ -131,14 +131,14 @@
 
 	var/obj/item/multitool/P = null
 	// Let's double check
-	if(!issilicon(user) && istype(user.get_active_hand(), /obj/item/multitool))
-		P = user.get_active_hand()
+	if(!issilicon(user) && istype(user.get_active_held_item(), /obj/item/multitool))
+		P = user.get_active_held_item()
 	else if(isAI(user))
 		var/mob/living/silicon/ai/U = user
 		P = U.aiMulti
 	else if(isrobot(user) && in_range(user, src))
-		if(istype(user.get_active_hand(), /obj/item/multitool))
-			P = user.get_active_hand()
+		if(istype(user.get_active_held_item(), /obj/item/multitool))
+			P = user.get_active_held_item()
 	return P
 
 // Additional Options for certain machines. Use this when you want to add an option to a specific machine.

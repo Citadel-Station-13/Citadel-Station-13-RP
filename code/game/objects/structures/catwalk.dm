@@ -6,7 +6,8 @@
 	layer = ABOVE_UTILITY
 	icon = 'icons/turf/catwalks.dmi'
 	icon_state = "catwalk"
-	density = 0
+	density = FALSE
+	anchored = TRUE
 	var/health = 100
 	var/maxhealth = 100
 	var/obj/item/stack/tile/plated_tile = null
@@ -14,7 +15,6 @@
 		/obj/item/stack/tile/floor = "#858a8f",
 		/obj/item/stack/tile/floor/dark = "#4f4f4f",
 		/obj/item/stack/tile/floor/white = "#e8e8e8")
-	anchored = 1.0
 
 /obj/structure/catwalk/Initialize(mapload)
 	. = ..()
@@ -97,11 +97,11 @@
 		playsound(src, pick('sound/effects/footstep/catwalk1.ogg', 'sound/effects/footstep/catwalk2.ogg', 'sound/effects/footstep/catwalk3.ogg', 'sound/effects/footstep/catwalk4.ogg', 'sound/effects/footstep/catwalk5.ogg'), 25, 1)
 
 /obj/structure/catwalk/CheckExit(atom/movable/O, turf/target)
-	if(O.checkpass(PASSGRILLE))
-		return 1
+	if(O.check_pass_flags(ATOM_PASS_GRILLE))
+		return TRUE
 	if(target && target.z < src.z)
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /obj/structure/catwalk/take_damage(amount)
 	health -= amount
@@ -178,15 +178,16 @@
 
 /obj/structure/catwalk/plank/Crossed()
 	. = ..()
-	switch(rand(1,100))
-		if(1 to 5)
-			qdel(src)
-			visible_message("<span class='danger'>The planks splinter and disintegrate beneath the weight!</span>")
-		if(6 to 50)
-			take_damage(rand(10,20))
-			visible_message("<span class='danger'>The planks creak and groan as they're crossed.</span>")
-		if(51 to 100)
-			return
+	if(isliving(usr) && !usr.is_incorporeal())
+		switch(rand(1,100))
+			if(1 to 5)
+				qdel(src)
+				visible_message("<span class='danger'>The planks splinter and disintegrate beneath the weight!</span>")
+			if(6 to 50)
+				take_damage(rand(10,20))
+				visible_message("<span class='danger'>The planks creak and groan as they're crossed.</span>")
+			if(51 to 100)
+				return
 
 /obj/structure/catwalk/plank/take_damage(amount)
 	health -= amount

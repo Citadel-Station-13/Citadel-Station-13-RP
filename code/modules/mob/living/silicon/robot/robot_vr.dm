@@ -14,7 +14,6 @@
 	var/ui_style_vr = FALSE //Do we use our hud icons?
 	var/sitting = FALSE
 	var/bellyup = FALSE
-	does_spin = FALSE
 	var/vr_icons = list(
 					   "handy-hydro",
 					   "handy-service",
@@ -124,7 +123,7 @@
 					var/turf/simulated/T = tile
 					T.dirt = 0
 				for(var/A in tile)
-					if(istype(A,/obj/effect/rune) || istype(A,/obj/effect/decal/cleanable) || istype(A,/obj/effect/overlay))
+					if(istype(A,/obj/effect/rune) || istype(A,/obj/effect/debris/cleanable) || istype(A,/obj/effect/overlay))
 						qdel(A)
 					else if(istype(A, /mob/living/carbon/human))
 						var/mob/living/carbon/human/cleaned_human = A
@@ -244,7 +243,7 @@
 	if(.)
 		buckled_mobs[M] = "riding"
 
-/mob/living/silicon/robot/MouseDrop_T(mob/living/M, mob/living/user) //Prevention for forced relocation caused by can_buckle. Base proc has no other use.
+/mob/living/silicon/robot/MouseDroppedOnLegacy(mob/living/M, mob/living/user) //Prevention for forced relocation caused by can_buckle. Base proc has no other use.
 	return
 
 /mob/living/silicon/robot/attack_hand(mob/user as mob)

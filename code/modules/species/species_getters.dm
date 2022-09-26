@@ -40,7 +40,7 @@
 /datum/species/proc/real_race_key(mob/living/carbon/human/H)
 	return name
 
-/datum/species/proc/get_bodytype(mob/living/carbon/human/H)
+/datum/species/proc/get_bodytype_legacy(mob/living/carbon/human/H)
 	return name
 
 /datum/species/proc/get_worn_legacy_bodytype(mob/living/carbon/human/H)
@@ -93,7 +93,7 @@
 
 	var/covered = 0 // Basic coverage can help.
 	for(var/obj/item/clothing/clothes in H)
-		if(H.item_is_in_hands(clothes))
+		if(H.is_holding(clothes))
 			continue
 		if((clothes.body_parts_covered & UPPER_TORSO) && (clothes.body_parts_covered & LOWER_TORSO))
 			covered = 1

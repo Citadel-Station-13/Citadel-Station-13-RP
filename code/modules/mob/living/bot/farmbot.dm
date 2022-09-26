@@ -345,64 +345,53 @@
 
 /obj/structure/reagent_dispensers/watertank/attackby(var/obj/item/robot_parts/S, mob/user as mob)
 	if ((!istype(S, /obj/item/robot_parts/l_arm)) && (!istype(S, /obj/item/robot_parts/r_arm)))
-		..()
+		return ..()
+	if(!user.attempt_consume_item_for_construction(S))
 		return
-
-
 	to_chat(user, "You add the robot arm to [src].")
-
-	user.drop_from_inventory(S)
-	qdel(S)
 
 	new /obj/item/farmbot_arm_assembly(loc, src)
 
 /obj/structure/reagent_dispensers/watertank/attackby(var/obj/item/organ/external/S, mob/user as mob)
 	if ((!istype(S, /obj/item/organ/external/arm)) || S.robotic != ORGAN_ROBOT)
-		..()
+		return ..()
+	if(!user.attempt_consume_item_for_construction(S))
 		return
-
 	to_chat(user, "You add the robot arm to [src].")
-
-	user.drop_from_inventory(S)
-	qdel(S)
 
 	new /obj/item/farmbot_arm_assembly(loc, src)
 
 /obj/item/farmbot_arm_assembly/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	if((istype(W, /obj/item/analyzer/plant_analyzer)) && (build_step == 0))
+		if(!user.attempt_consume_item_for_construction(W))
+			return
 		build_step++
 		to_chat(user, "You add the plant analyzer to [src].")
 		name = "farmbot assembly"
 
-		user.remove_from_mob(W)
-		qdel(W)
-
 	else if((istype(W, /obj/item/reagent_containers/glass/bucket)) && (build_step == 1))
+		if(!user.attempt_consume_item_for_construction(W))
+			return
 		build_step++
 		to_chat(user, "You add a bucket to [src].")
 		name = "farmbot assembly with bucket"
 
-		user.remove_from_mob(W)
-		qdel(W)
-
 	else if((istype(W, /obj/item/material/minihoe)) && (build_step == 2))
+		if(!user.attempt_consume_item_for_construction(W))
+			return
 		build_step++
 		to_chat(user, "You add a minihoe to [src].")
 		name = "farmbot assembly with bucket and minihoe"
 
-		user.remove_from_mob(W)
-		qdel(W)
-
 	else if((isprox(W)) && (build_step == 3))
+		if(!user.attempt_consume_item_for_construction(W))
+			return
 		build_step++
 		to_chat(user, "You complete the Farmbot! Beep boop.")
 
 		var/mob/living/bot/farmbot/S = new /mob/living/bot/farmbot(get_turf(src), tank)
 		S.name = created_name
-
-		user.remove_from_mob(W)
-		qdel(W)
 		qdel(src)
 
 	else if(istype(W, /obj/item/pen))

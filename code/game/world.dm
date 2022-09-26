@@ -39,6 +39,10 @@ GLOBAL_LIST(topic_status_cache)
 
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
 
+	//SetupLogs depends on the RoundID, so lets check
+	//DB schema and set RoundID if we can
+	SSdbcore.CheckSchemaVersion()
+	SSdbcore.SetRoundID()
 	SetupLogs()
 
 // #ifndef USE_CUSTOM_ERROR_HANDLER
@@ -145,6 +149,7 @@ GLOBAL_LIST(topic_status_cache)
 	GLOB.world_attack_log = "[GLOB.log_directory]/attack.log"
 	GLOB.world_href_log = "[GLOB.log_directory]/hrefs.log"
 	GLOB.world_qdel_log = "[GLOB.log_directory]/qdel.log"
+	GLOB.sql_error_log = "[GLOB.log_directory]/sql.log"
 	GLOB.world_map_error_log = "[GLOB.log_directory]/map_errors.log"
 	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
 	GLOB.tgui_log = "[GLOB.log_directory]/tgui.log"
@@ -154,9 +159,11 @@ GLOBAL_LIST(topic_status_cache)
 	GLOB.test_log = file("[GLOB.log_directory]/tests.log")
 	start_log(GLOB.test_log)
 #endif
+	_setup_logs_boilerplate()
 	start_log(GLOB.world_game_log)
 	start_log(GLOB.world_attack_log)
 	start_log(GLOB.world_href_log)
+	start_log(GLOB.sql_error_log)
 	start_log(GLOB.world_qdel_log)
 	start_log(GLOB.world_map_error_log)
 	start_log(GLOB.world_runtime_log)
@@ -176,6 +183,8 @@ GLOBAL_LIST(topic_status_cache)
 	// but those are both private, so let's put the commit info in the runtime
 	// log which is ultimately public.
 	log_runtime(GLOB.revdata.get_log_message())
+
+/world/proc/_setup_logs_boilerplate()
 
 /world/Topic(T, addr, master, key)
 	TGS_TOPIC	//redirect to server tools if necessary
@@ -271,6 +280,8 @@ GLOBAL_LIST(topic_status_cache)
 
 	log_world("World rebooted at [time_stamp()]")
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
+	// hmmm let's sleep for one (1) second incase rust_g threads are running for whatever reason
+	sleep(1 SECONDS)
 	..()
 
 /world/Del()
@@ -382,100 +393,6 @@ GLOBAL_LIST(topic_status_cache)
 
 	status = .
 
-#define FAILED_DB_CONNECTION_CUTOFF 5
-var/failed_db_connections = 0
-var/failed_old_db_connections = 0
-
-/hook/startup/proc/connectDB()
-	if(!CONFIG_GET(flag/sql_enabled))
-		log_world("SQL connection disabled in config_legacy.")
-	else if(!setup_database_connection())
-		log_world("Your server failed to establish a connection with the feedback database.")
-	else
-		log_world("Feedback database connection established.")
-	return 1
-
-proc/setup_database_connection()
-
-	if(failed_db_connections > FAILED_DB_CONNECTION_CUTOFF)	//If it failed to establish a connection more than 5 times in a row, don't bother attempting to conenct anymore.
-		return 0
-
-	if(!dbcon)
-		dbcon = new()
-
-	var/user = sqlfdbklogin
-	var/pass = sqlfdbkpass
-	var/db = sqlfdbkdb
-	var/address = sqladdress
-	var/port = sqlport
-
-	dbcon.Connect("dbi:mysql:[db]:[address]:[port]","[user]","[pass]")
-	. = dbcon.IsConnected()
-	if ( . )
-		failed_db_connections = 0	//If this connection succeeded, reset the failed connections counter.
-	else
-		failed_db_connections++		//If it failed, increase the failed connections counter.
-		world.log << dbcon.ErrorMsg()
-
-	return .
-
-//This proc ensures that the connection to the feedback database (global variable dbcon) is established
-proc/establish_db_connection()
-	if(failed_db_connections > FAILED_DB_CONNECTION_CUTOFF)
-		return 0
-
-	if(!dbcon || !dbcon.IsConnected())
-		return setup_database_connection()
-	else
-		return 1
-
-
-/hook/startup/proc/connectOldDB()
-	if(!CONFIG_GET(flag/sql_enabled))
-		log_world("SQL connection disabled in config_legacy.")
-	else if(!setup_old_database_connection())
-		log_world("Your server failed to establish a connection with the SQL database.")
-	else
-		log_world("SQL database connection established.")
-	return 1
-
-//These two procs are for the old database, while it's being phased out. See the tgstation.sql file in the SQL folder for more information.
-proc/setup_old_database_connection()
-
-	if(failed_old_db_connections > FAILED_DB_CONNECTION_CUTOFF)	//If it failed to establish a connection more than 5 times in a row, don't bother attempting to conenct anymore.
-		return 0
-
-	if(!dbcon_old)
-		dbcon_old = new()
-
-	var/user = sqllogin
-	var/pass = sqlpass
-	var/db = sqldb
-	var/address = sqladdress
-	var/port = sqlport
-
-	dbcon_old.Connect("dbi:mysql:[db]:[address]:[port]","[user]","[pass]")
-	. = dbcon_old.IsConnected()
-	if ( . )
-		failed_old_db_connections = 0	//If this connection succeeded, reset the failed connections counter.
-	else
-		failed_old_db_connections++		//If it failed, increase the failed connections counter.
-		world.log << dbcon.ErrorMsg()
-
-	return .
-
-//This proc ensures that the connection to the feedback database (global variable dbcon) is established
-proc/establish_old_db_connection()
-	if(failed_old_db_connections > FAILED_DB_CONNECTION_CUTOFF)
-		return 0
-
-	if(!dbcon_old || !dbcon_old.IsConnected())
-		return setup_old_database_connection()
-	else
-		return 1
-
-#undef FAILED_DB_CONNECTION_CUTOFF
-
 /world/proc/update_hub_visibility(new_value)					//CITADEL PROC: TG's method of changing visibility
 	if(new_value)				//I'm lazy so this is how I wrap it to a bool number
 		new_value = TRUE
@@ -492,15 +409,17 @@ proc/establish_old_db_connection()
 
 // Things to do when a new z-level was just made.
 /world/proc/max_z_changed()
-	if(!istype(GLOB.players_by_zlevel, /list))
-		GLOB.players_by_zlevel = new /list(world.maxz, 0)
+	assert_players_by_zlevel_list()
+
+/proc/assert_players_by_zlevel_list()
+	if(!islist(GLOB.players_by_zlevel))
+		GLOB.players_by_zlevel = list()
 	while(GLOB.players_by_zlevel.len < world.maxz)
-		GLOB.players_by_zlevel.len++
-		GLOB.players_by_zlevel[GLOB.players_by_zlevel.len] = list()
+		GLOB.players_by_zlevel[++GLOB.players_by_zlevel.len] = list()
 
 // Call this to make a new blank z-level, don't modify maxz directly.
 /world/proc/increment_max_z()
-	maxz++
+	. = ++maxz
 	max_z_changed()
 
 //! LOG SHUNTER STUFF, LEAVE THIS ALONE

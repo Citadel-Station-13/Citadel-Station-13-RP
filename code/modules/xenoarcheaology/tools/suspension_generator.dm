@@ -99,7 +99,7 @@
 				anchored = FALSE
 			else
 				anchored = TRUE
-			playsound(loc, W.usesound, 50, 1)
+			playsound(loc, W.tool_sound, 50, 1)
 			to_chat(user, SPAN_NOTICE("You wrench the stabilising legs [anchored ? "into place" : "up against the body"]."))
 			if(anchored)
 				desc = "It is resting securely on four stubby legs."
@@ -112,11 +112,11 @@
 			if(cell)
 				to_chat(user, SPAN_WARNING("There is a power cell already installed."))
 				return
-			if(user.unEquip(W))
-				W.forceMove(src)
-				cell = W
-				to_chat(user, SPAN_NOTICE("You insert [cell]."))
-				icon_state = "suspension1"
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
+			cell = W
+			to_chat(user, SPAN_NOTICE("You insert [cell]."))
+			icon_state = "suspension1"
 	else if(istype(W, /obj/item/card/emag))
 		return W.resolve_attackby(src, user)
 	else
@@ -195,6 +195,9 @@
 		to_chat(usr, SPAN_DANGER("You cannot rotate [src], it has been firmly fixed to the floor."))
 		return
 	setDir(turn(dir, 270))
+
+/obj/machinery/suspension_gen/powered(channel)
+	return TRUE		// we use snowflake cell power
 
 /obj/effect/suspension_field
 	name = "energy field"
