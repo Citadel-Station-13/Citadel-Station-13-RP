@@ -1,5 +1,5 @@
 /**
- * wrapper datum for values that can't be list keys
+ * wrapper datum for values that can't be associative list keys
  */
 /datum/graph_vertex
 	/// key

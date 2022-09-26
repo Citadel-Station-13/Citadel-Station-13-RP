@@ -71,12 +71,13 @@ GLOBAL_VAR(deepmaint_current_exterior_floor)
 	return GLOB.deepmaint_current_exterior_floor || /turf/simulated/floor
 
 /obj/landmark/deepmaint_marker
-	icon = 'icons/mapping/deepmaint.dmi'
+	icon = 'icons/mapping/deepmaint/marker.dmi'
 
 /**
  * room directives
  */
 /obj/landmark/deepmaint_marker/room
+	icon = 'icons/mapping/deepmaint/room.dmi'
 
 /**
  * triggered when the directive is put into practice
@@ -130,6 +131,7 @@ GLOBAL_VAR(deepmaint_current_exterior_floor)
  * the generator is free to ignore them
  */
 /obj/landmark/deepmaint_marker/generation
+	icon = 'icons/mapping/deepmaint/generation.dmi'
 	/// id to link to
 	var/id
 
@@ -193,3 +195,12 @@ GLOBAL_VAR(deepmaint_current_exterior_floor)
  */
 /obj/landmark/deepmaint_marker/generation/entrance
 	icon_state = "entrance"
+
+/**
+ * forcefully place a room here
+ */
+/obj/landmark/deepmaint_marker/generation/force_room
+	icon_state = "room"
+	
+	/// room submap id to place
+	var/room_id

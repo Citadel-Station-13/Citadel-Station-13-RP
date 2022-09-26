@@ -1,0 +1,2 @@
+/datum/geometry/edge
+	var/
