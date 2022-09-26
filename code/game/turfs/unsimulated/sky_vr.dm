@@ -100,12 +100,12 @@
 	var/attempts = 100
 	var/turf/simulated/T
 	while(attempts && !T)
-		var/turf/simulated/candidate = locate(rand(5,world.maxx-5),rand(5,world.maxy-5),pick(skyfall_levels))
+		var/turf/simulated/candidate = locate(rand(5,20),rand(5,world.maxy-5),pick(skyfall_levels))
 		if(candidate.density)
 			attempts--
 			continue
-		if(!target_turf)
-			return
+		if(ispath(T, target_turf))
+			continue
 
 		T = candidate
 		break
