@@ -135,6 +135,7 @@
 #include "code\__DEFINES\controllers\timer.dm"
 #include "code\__DEFINES\dcs\flags.dm"
 #include "code\__DEFINES\dcs\helpers.dm"
+#include "code\__DEFINES\dcs\components\riding.dm"
 #include "code\__DEFINES\dcs\signals\conflict.dm"
 #include "code\__DEFINES\dcs\signals\signals_area.dm"
 #include "code\__DEFINES\dcs\signals\signals_datum.dm"

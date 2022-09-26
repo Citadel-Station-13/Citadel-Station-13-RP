@@ -46,6 +46,7 @@
 	var/failure_integrity = 0
 	/// do we use the atom damage system?
 	var/use_integrity = FALSE
+	// todo: use integrity & procs on turf and obj level
 	// todo: armor system, how?
 
 	//! ## HUDs

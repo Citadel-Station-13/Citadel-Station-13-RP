@@ -25,24 +25,23 @@
 
 	//! offsets - highly optimized, eat my ass if you can't handle it, we need high performance for /Move()s.
 	/**
-	 * layer offset to set mobs to. list or single number. plane will always be set to vehicle's plane.
-	 * if list, format is (north, east, south, west).
-	 * lists can be nested to provide different offsets based on index.
-	 * it's recommended to use small, fractional numbers like 0.01 increments.
-	 */
-	var/list/offset_layer = 0
-	/**
-	 * pixel offsets to set mobs to. list (x, y) OR list((x, y), (x, y), (x, y), (x, y)) for NESW OR list(list(NESW offsets of lists(x, y))) for positionals.
+	 * holds vehicle offsets
 	 *
-	 * this is **relative** to the vehicle's managed pixel x/y.
+	 * list(x, y) OR list(list(x, y), list(x, y), list(x, y), list(x, y)) for NESW
 	 */
-	var/list/offset_pixel = list(0, 0)
+	var/list/vehicle_offsets = list(0, 0)
 	/**
-	 * same as offset pixel, but without the third option. set to null to not modify.
+	 * holds rider offsets
+	 * first: x
+	 * second: y
+	 * third: layer
+	 * fourth: dir
 	 *
-	 * this is **relative** to the vehicle's managed pixel x/y.
+	 * see [code/__DEFINES/dcs/components/riding.dm]
 	 */
-	var/list/offset_vehicle
+	var/list/rider_offsets = list(0, 0, 0, null)
+	/// see [code/__DEFINES/dcs/components/riding.dm]
+	var/rider_offset_format = CF_RIDING_OFFSETS_SIMPLE
 
 	//! component-controlled movemnet
 	/// default allowed turf handling - set to off if you override the var!!
@@ -122,7 +121,7 @@
 /datum/component/riding_handler/proc/signal_hook_handle_turn(atom/movable/source, old_dir, new_dir)
 	SIGNAL_HANDLER
 	update_vehicle_on_turn(new_dir)
-	update_riders_on_turn(new_dir)
+	full_update_riders()
 
 /datum/component/riding_handler/proc/signal_hook_pre_buckle_mob(atom/movable/source, mob/M, flags, mob/user, semantic)
 	SIGNAL_HANDLER_DOES_SLEEP
@@ -155,7 +154,7 @@
 		AM.pixel_y = offset_vehicle[2] + opy
 
 /datum/component/riding_handler/proc/on_rider_buckled(mob/rider, semantic)
-	apply_rider(rider, semantic)
+	full_update_riders()
 
 /datum/component/riding_handler/proc/on_rider_unbuckled(mob/rider, semantic)
 	reset_rider(rider, semantic)
@@ -165,17 +164,8 @@
 	rider.reset_pixel_shifting()
 	rider.reset_pixel_offsets()
 
-/datum/component/riding_handler/proc/apply_rider(mob/rider, semantic)
-	var/atom/movable/AM = parent
-	var/position = AM.buckled_mobs.Find(rider)
-	apply_rider_layer(rider, AM.dir, position)
-	apply_rider_offsets(rider, AM.dir, position)
-
 /datum/component/riding_handler/proc/update_riders_on_turn(dir)
-	if(_last_dir == dir)
-		return
-	var/atom/movable/AM = parent
-	_last_dir = dir
+	full_update_riders()
 	var/opx = AM.get_centering_pixel_x_offset(dir)
 	var/opy = AM.get_centering_pixel_y_offset(dir)
 	for(var/i in 1 to length(AM.buckled_mobs))
@@ -184,83 +174,84 @@
 		apply_rider_offsets(M, dir, i, opx, opy)
 		M.setDir(rider_dir_offset(dir, i))
 
-/datum/component/riding_handler/proc/apply_rider_offsets(mob/rider, dir, pos, opx, opy)
-	var/list/offsets = rider_pixel_offsets(dir, pos)
-	rider.reset_pixel_shifting()
-	rider.pixel_x = offsets[1] + opx + rider.get_standard_pixel_x_offset() - rider.get_centering_pixel_x_offset(dir)
-	rider.pixel_y = offsets[2] + opy + rider.get_standard_pixel_y_offset() - rider.get_centering_pixel_y_offset(dir)
-
-/datum/component/riding_handler/proc/apply_rider_layer(mob/rider, dir, pos)
+/datum/component/riding_handler/proc/full_update_riders(force)
 	var/atom/movable/AM = parent
-	rider.plane = AM.plane
-	rider.set_base_layer(AM.layer + rider_layer_offset(dir, pos))
+	var/dir = AM.dir
+	if(_last_dir == dir && !force)
+		return
+	_last_dir = dir
+	var/ppx = AM.get_centering_pixel_x_offset(dir)
+	var/ppy = AM.get_centering_pixel_y_offset(dir)
+	var/list/offsets
+	var/i
+	var/mob/M
+	var/semantic
+	var/dir
+	// determine offset format
+	switch(rider_offset_format)
+		if(CF_RIDING_OFFSETS_SIMPLE)
+			for(i in 1 to AM.buckled_mobs)
+				M = AM.buckled_mobs[i]
+				semantic = AM.buckled_mobs[M]
+				offsets = rider_offsets(M, i, semantic, rider_offsets)
+				if(offsets[4] != M.dir)
+					M.setDir(offsets[4])
+				M.reset_pixel_shifting()
+				M.set_base_layer(offsets[3] + AM.layer)
+				M.pixel_x = ppx + M.get_standard_pixel_x_offset() - M.get_centering_pixel_x_offset(dir) + offsets[1]
+				M.pixel_y = ppy + M.get_standard_pixel_y_offset() - M.get_centering_pixel_y_offset(dir) + offsets[2]
+		if(CF_RIDING_OFFSETS_DIRECTIONAL)
+			var/list/relevant
+			switch(AM.dir)
+				if(NORTH)
+					relevant = rider_offsets[1]
+				if(SOUTH)
+					relevant = rider_offsets[3]
+				if(EAST)
+					relevant = rider_offsets[2]
+				if(WEST)
+					relevant = rider_offsets[4]
+			for(i in 1 to AM.buckled_mobs)
+				M = AM.buckled_mobs[i]
+				semantic = AM.buckled_mobs[M]
+				offsets = rider_offsets(M, i, semantic, relevant)
+				if(offsets[4] != M.dir)
+					M.setDir(offsets[4])
+				M.reset_pixel_shifting()
+				M.set_base_layer(offsets[3] + AM.layer)
+				M.pixel_x = ppx + M.get_standard_pixel_x_offset() - M.get_centering_pixel_x_offset(dir) + offsets[1]
+				M.pixel_y = ppy + M.get_standard_pixel_y_offset() - M.get_centering_pixel_y_offset(dir) + offsets[2]
+		if(CF_RIDING_OFFSETS_ENUMERATED)
+			var/list/relevant
+			var/rider_offsets_len = length(rider_offsets)
+			for(i in 1 to AM.buckled_mobs)
+				relevant = rider_offsets[min(rider_offsets_len, i)]
+				switch(AM.dir)
+					if(NORTH)
+						relevant = relevant[1]
+					if(SOUTH)
+						relevant = relevant[3]
+					if(EAST)
+						relevant = relevant[2]
+					if(WEST)
+						relevant = relevant[4]
+				M = AM.buckled_mobs[i]
+				semantic = AM.buckled_mobs[M]
+				offsets = rider_offsets(M, i, semantic, relevant)
+				if(offsets[4] != M.dir)
+					M.setDir(offsets[4])
+				M.reset_pixel_shifting()
+				M.set_base_layer(offsets[3] + AM.layer)
+				M.pixel_x = ppx + M.get_standard_pixel_x_offset() - M.get_centering_pixel_x_offset(dir) + offsets[1]
+				M.pixel_y = ppy + M.get_standard_pixel_y_offset() - M.get_centering_pixel_y_offset(dir) + offsets[2]
 
 /**
- * returns a layer **offset** for a rider to be set to.
- * riders will default to our plane and layer. this is added onto layer.
+ * returns transformed rider offset list
+ *
+ * DO NOT CHANGE DEFAULT FOR THE LOVE OF GOD, COPY IT IF YOU ARE CHANGING IT!!
  */
-/datum/component/riding_handler/proc/rider_layer_offset(dir, index = 1, semantic)
-	if(isnum(offset_layer))
-		return offset_layer
-	var/indexed = islist(offset_layer[1])
-	if(indexed)
-		var/list/relevant = offset_layer[min(offset_layer.len, index)]
-		switch(dir)
-			if(NORTH)
-				return relevant[1]
-			if(EAST)
-				return relevant[2]
-			if(SOUTH)
-				return relevant[3]
-			if(WEST)
-				return relevant[4]
-	else
-		switch(dir)
-			if(NORTH)
-				return offset_layer[1]
-			if(EAST)
-				return offset_layer[2]
-			if(SOUTH)
-				return offset_layer[3]
-			if(WEST)
-				return offset_layer[4]
-
-/**
- * returns list(x, y) of pixel offsets for a rider
- */
-/datum/component/riding_handler/proc/rider_pixel_offsets(dir, index = 1, semantic)
-	RETURN_TYPE(/list)
-	// format: x, y
-	if(!islist(offset_pixel[1]))
-		return offset_pixel
-	// format: list(list(x, y), ...) for NESW
-	if(!islist(offset_pixel[1][1]))
-		switch(dir)
-			if(NORTH)
-				return offset_pixel[1]
-			if(EAST)
-				return offset_pixel[2]
-			if(SOUTH)
-				return offset_pixel[3]
-			if(WEST)
-				return offset_pixel[4]
-	// format: list(list(x, y), ...) for NESW), ...) for indexes
-	var/list/relevant = offset_pixel[min(offset_pixel.len, index)]
-	switch(dir)
-		if(NORTH)
-			return relevant[1]
-		if(EAST)
-			return relevant[2]
-		if(SOUTH)
-			return relevant[3]
-		if(WEST)
-			return relevant[4]
-
-/**
- * returns what dir riders should be set to
- */
-/datum/component/riding_handler/proc/rider_dir_offset(dir, index = 1, semantic)
-	return dir
+/datum/component/riding_handler/proc/rider_offsets(mob/rider, pos, semantic, list/default)
+	return default
 
 /datum/component/riding_handler/proc/signal_hook_handle_relaymove(datum/source, mob/M, dir)
 	attempt_drive(M, dir)

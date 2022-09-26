@@ -89,12 +89,9 @@
 
 /datum/component/riding_handler/mob
 	expected_typepath = /mob
-
-	offset_layer = list(	// by default, we're above only when facing south
-		0.01,
-		0.01,
-		-0.01,
-		0.01
+	rider_offsets = list(
+		list(0, 8, 0.01),
+		list(0, 8, 0.01),
+		list(0, 8, -0.01),
+		list(0, 8, 0.01)
 	)
-
-	offset_pixel = list(0, 8)
