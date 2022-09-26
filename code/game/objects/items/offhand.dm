@@ -7,9 +7,8 @@
 	name = "broken offhand"
 	desc = "fire coderbus"
 	item_flags = ITEM_DROPDEL | ITEM_ABSTRACT | ITEM_NOBLUDGEON
-#warn make icon
-	icon = 'icons/obj/item/abstract/offhand.dmi'
-	icon_state = ""
+	icon = 'icons/obj/item/abstract.dmi'
+	icon_state = "offhand"
 	drop_sound = null
 	equip_sound = null
 	pickup_sound = null
