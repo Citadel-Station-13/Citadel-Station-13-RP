@@ -8,75 +8,67 @@
 	handler_typepath = /datum/component/riding_handler/mob
 
 	/// base number of offhands required on us
-	var/offhands_needed_base = 0
-	/// offhands required on us per mob buckled
-	var/offhands_needed_per = 0
-	/// check ridden offhands the complicated way by tallying max per semantic
-	var/complex_ridden_offhands_calculation = FALSE
+	var/offhands_needed_ridden
 
-/datum/component/riding_filter/mob/proc/ridden_offhands_needed(semantic)
-	return offhands_needed_per
+/**
+ * called to check offhands needed
+ *
+ * @params
+ * - buckling - if we're asking because we're about to buckle a ne wmob
+ * - semantic - for buckling
+ */
+/datum/component/riding_filter/mob/proc/ridden_offhands_needed(mob/buckling, semantic)
+	var/mob/ridden = parent
+	if(!ridden.has_buckled_mobs() && !buckling)
+		return 0
+	return offhands_needed_ridden
+
+/datum/component/riding_filter/mob/proc/allocate_offhands(mob/rider, semantic, list/offhands)
+	. = ..()
+	if(!.)
+		return
+	var/needed = ridden_offhands_needed(rider, esmantic) - current_ridden_offhand_count()
+	if(needed <= 0)
+		return TRUE
+	for(var/i in 1 to needed)
+		var/obj/item/offhand/riding/R = try_equip_offhand_to_ridden()
+		if(!R)
+			return FALSE
+		offhands += R
+	return TRUE
+
+/datum/component/riding_filter/mob/proc/current_ridden_offhand_count()
+	var/mob/ridden = parent
+	. = 0
+	for(var/obj/item/offhand/riding/R in ridden.get_held_items())
+		if(R.filter == src)
+			++.
+
+/datum/component/riding_filter/mob/proc/get_ridden_offhand()
+	var/mob/ridden = parent
+	for(var/obj/item/offhand/riding/R in ridden.get_held_items())
+		if(R.filter == src)
+			return R
 
 /datum/component/riding_filter/mob/check_offhands(mob/rider, unbuckling)
 	// we do our checks first, as they're cheaper in cases of riders > 1
-	if(!offhands_needed_base && !offhands_needed_per)
-		return ..()
-	var/mob/M = parent
-	var/list/obj/item/offhand/riding/offhands = get_offhands_of_rider(M)
-	var/has = length(offhands)
-	var/needed = offhands_needed_base + offhands_needed_per * length(M.buckled_mobs)
-	#warn add complex ridden offhands calculation
-	if(!needed)	// none needed
-		for(var/i in 1 to has)
-			var/obj/item/offhand/riding/offhand = offhands[i]
-			offhand._silently_erase()
-			LAZYREMOVE(our_offhands, offhand)
-		return ..()
-	// if not enough, kick off all
-	if(has < offhands_needed_base)
-		// cleanup all remaining
-		for(var/obj/item/offhand/riding/R as anything in offhands)
-			R._silently_erase()
-		offhands = null
-		// kick
-		for(var/mob/buckled in M.buckled_mobs)
-			buckled.visible_message(
-				SPAN_NOTICE("[M] drops [buckled]."),
-				SPAN_NOTICE("[M] drops you.")
-			)
-		M.unbuckle_all_mobs()
-		return
-	else if(has < needed)
-		var/excess = length(M.buckled_mobs) * offhands_needed_per + offhands_needed_base - has
-
-	else if(has == needed)
-		// just right
-		return ..()
-	else
-		for(var/i in (has - needed))
-			var/obj/item/offhand/riding/R = offhands.len - i + 1
-			R._silently_erase()
-			LAZYREMOVE(our_offhands, R)
-		// too much
-
-	// loop protection
+	var/needed = ridden_offhands_needed()
+	var/current = current_ridden_offhand_count()
 	if(unbuckling)
-		// if unbuckling we only
-		return ..()
-	var/mob/M = parent
-	var/needed = offhands_needed_base + length(M.buckled_mobs)
-	var/has = 0
-	for(var/obj/item/offhand/riding/offhand as anything in M.get_held_items_of_type(/obj/item/offhand/riding))
-		if(offhand.filter != src)
-			continue
-		++has
-	if(has > needed)
-		M.unbuckle_all_mobs()
-	#warn impl
-
+		if(current > needed)
+			for(var/i in 1 to current - needed)
+				var/obj/item/offhand/riding/R = get_ridden_offhand()
+				if(!R)
+					stack_trace("failed to find an offhand even though current > needed? at i = [i]")
+					continue
+				R._silently_erase()
+				our_offhands -= R
+	else
+		if(current < needed)
+			var/mob/ridden = parent
+			ridden.unbuckle_all_mobs(BUCKLE_OP_FORCE)
+			return FALSE
 	return ..()
-
-#warn cleanup the above shitcode
 
 /datum/component/riding_filter/mob/proc/try_equip_offhand_to_ridden()
 	RETURN_TYPE(/obj/item/offhand/riding)

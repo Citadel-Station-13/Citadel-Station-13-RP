@@ -124,20 +124,8 @@
  * overrides atom opinion.
  */
 /datum/component/riding_filter/proc/check_mount_attempt(mob/M, buckle_flags, mob/user, semantic)
-	#warn ridden offhand creation in mob? how to deal with that?
-	if(offhands_needed_rider)
-		var/list/obj/item/offhand/riding/created = list()
-		for(var/i in (offhand_requirements_are_rigid? offhands_needed_rider : (min(M.get_number_of_hands(), offhands_needed_rider))))
-			var/obj/item/offhand/riding/creating = try_equip_offhand_to_rider(M)
-			if(!creating)
-				// destroy all existing
-				QDEL_LIST(created)
-				created = null
-				break
-			created += creating
-		if(!created)
-			// we failed
-			return FALSE
+	if(!mount_allocate_offhands(M, buckle_flags, user, semantic))
+		return FLASE
 	return TRUE
 
 /**
@@ -163,6 +151,17 @@
 /datum/component/riding_filter/proc/cleanup_rider(mob/rider, semantic)
 	cleanup_rider_offhands(rider)
 	check_offhands(rider, TRUE)
+
+/**
+ * handles offhand allocation on mount
+ */
+/datum/component/riding_filter/proc/mount_allocate_offhands(mob/M, buckle_flags, mob/user, semantic)
+	var/list/allocating = list()
+	if(!allocate_offhands(M, semantic, allocating))
+		for(var/obj/item/offhand/riding/R in allocating)
+			R._silently_erase()
+		our_offhands -= allocating
+	return TRUE
 
 /**
  * ensures offhands required are equipped
@@ -204,6 +203,24 @@
 	for(var/obj/item/offhand/riding/R as anything in rider.get_held_items_of_type(/obj/item/offhand/riding))
 		if(R.filter == src)
 			. += R
+
+/**
+ * called to register offhands for a new rider
+ * returns true/false based on success/failure
+ */
+/datum/component/riding_filter/proc/allocate_offhands(mob/rider, semantic, list/offhands)
+	ASSERT(islist(offhands))
+	var/amount_needed = rider_offhands_needed(semantic)
+	if(!offhand_requirements_are_rigid)
+		amount_needed = min(amount_needed, rider.get_number_of_hands())
+	if(!amount_needed)
+		return TRUE
+	for(var/i in 1 to needed)
+		var/obj/item/offhand/riding/R = try_equip_offhand_to_rider(rider)
+		if(!R)
+			return FALSE
+		offhands += R
+	return TRUE
 
 /datum/component/riding_filter/proc/offhand_destroyed(obj/item/offhand/riding/offhand, mob/rider)
 	check_offhands(rider)
