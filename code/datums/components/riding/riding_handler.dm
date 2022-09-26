@@ -180,7 +180,6 @@
 	var/i
 	var/mob/M
 	var/semantic
-	var/dir
 	// determine offset format
 	switch(rider_offset_format)
 		if(CF_RIDING_OFFSETS_SIMPLE)
