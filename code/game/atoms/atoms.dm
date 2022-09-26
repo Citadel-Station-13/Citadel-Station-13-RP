@@ -27,12 +27,26 @@
 	/// The orbiter comopnent if we're being orbited.
 	var/datum/component/orbiter/orbiters
 
+	//! Colors
 	/**
 	 * used to store the different colors on an atom
 	 *
 	 * its inherent color, the colored paint applied on it, special color effect etc...
 	 */
 	var/list/atom_colours
+
+	//! Health
+	// todo: every usage of these vars need to be parsed because shitcode still exists that
+	// todo: was just monkey patched over by making it not compile error for redefining this..
+	/// max health
+	var/max_integrity
+	/// health
+	var/integrity
+	/// what integrity we call break at.
+	var/failure_integrity = 0
+	/// do we use the atom damage system?
+	var/use_integrity = FALSE
+	// todo: armor system, how?
 
 	//! ## HUDs
 	/// This atom's HUD (med/sec, etc) images. Associative list.

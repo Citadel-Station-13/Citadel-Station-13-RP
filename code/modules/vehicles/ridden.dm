@@ -5,8 +5,8 @@
 	buckle_lying = FALSE
 	default_driver_move = FALSE
 	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
-	var/riding_filter_typepath = /datum/component/riding_filter/vehicle
-	var/riding_handler_typepath
+	var/riding_filter_type = /datum/component/riding_filter/vehicle
+	var/riding_handler_type
 
 /obj/vehicle/ridden/Initialize(mapload)
 	. = ..()

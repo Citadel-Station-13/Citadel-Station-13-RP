@@ -178,7 +178,7 @@
 	var/atom/movable/AM = parent
 	if(rider)
 		// verify their offhands are there
-		var/buckled = rider in AM.buckled_mobs
+		var/buckled = (rider in AM.buckled_mobs)
 		// if buckled and not enough
 		if(buckled && (length(get_offhands_of_rider(rider)) < rider_offhands_needed(AM.buckled_mobs[rider])))
 			// kick off

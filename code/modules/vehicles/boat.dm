@@ -3,8 +3,8 @@
 	desc = "It's a wooden boat. Looks like it'll hold two people. Oars not included."
 	icon = 'icons/obj/vehicles_36x32.dmi'
 	icon_state = "boat"
-	// health = 100
-	// maxhealth = 100
+	integrity = 100
+	max_integrity = 100
 	base_pixel_x = -2
 	icon_dimension_x = 36
 	icon_dimension_y = 32
@@ -34,8 +34,8 @@
 	desc = "It's a large wooden boat, carved to have a nordic-looking dragon on the front. Looks like it'll hold five people. Oars not included."
 	icon = 'icons/obj/64x32.dmi'
 	icon_state = "dragon_boat"
-	health = 250
-	maxhealth = 250
+	integrity = 250
+	max_integrity = 250
 	icon_dimension_x = 64
 	icon_dimension_y = 32
 	base_pixel_x = -16
