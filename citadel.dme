@@ -2573,6 +2573,7 @@
 #include "code\modules\mapping\deepmaint\algorithms\_algorithm.dm"
 #include "code\modules\mapping\deepmaint\algorithms\dungeon.dm"
 #include "code\modules\mapping\deepmaint\pathing\_pathing.dm"
+#include "code\modules\mapping\deepmaint\pathing\astar_advanced.dm"
 #include "code\modules\mapping\deepmaint\pathing\common.dm"
 #include "code\modules\mapping\deepmaint\pathing\multiz.dm"
 #include "code\modules\mapping\deepmaint\pathing\room_connection.dm"
