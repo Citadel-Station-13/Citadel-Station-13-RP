@@ -1642,4 +1642,4 @@
 	if(!isTaurTail(tail_style) || !(dir & (EAST|WEST)))
 		return
 	// groan
-	. += ((size_multiplier* icon_scale_x) - 1) * ((dir & EAST)? -16 : 16)
+	. += ((size_multiplier * icon_scale_x) - 1) * ((dir & EAST)? -16 : 16)

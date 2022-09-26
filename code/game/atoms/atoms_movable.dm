@@ -413,3 +413,12 @@
 /atom/movable/proc/ensure_self_perspective()
 	if(!self_perspective)
 		make_perspective()
+
+//! Pixel Offsets
+/atom/movable/get_centering_pixel_x_offset(dir, atom/aligning)
+	. = ..()
+	. *= icon_scale_x
+
+/atom/movable/get_centering_pixel_y_offset(dir, atom/aligning)
+	. = ..()
+	. *= icon_scale_y

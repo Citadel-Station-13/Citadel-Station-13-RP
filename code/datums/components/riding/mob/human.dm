@@ -12,6 +12,8 @@
 /datum/component/riding_handler/mob/human
 	expected_typepath = /mob/living/carbon/human
 	riding_handler_flags = CF_RIDING_HANDLER_EPHEMERAL
+	rider_check_flags = CF_RIDING_CHECK_INCAPACITATED
+	ridden_check_flags = CF_RIDING_CHECK_INCAPACITATED | CF_RIDING_CHECK_LYING
 
 /datum/component/riding_handler/mob/human/rider_layer_offset(dir, index, semantic)
 	switch(dir)

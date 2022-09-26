@@ -5,12 +5,12 @@
 	buckle_lying = FALSE
 	default_driver_move = FALSE
 	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
-	var/hands_occupied = 0
+	var/riding_filter_typepath = /datum/component/riding_filter/vehicle
+	var/riding_handler_typepath
 
 /obj/vehicle/ridden/Initialize(mapload)
 	. = ..()
-	var/datum/component/riding_filter/vehicle/V = LoadComponent(/datum/component/riding_filter/vehicle)
-	V.offhands_needed_rider = hands_occupied
+	AddComponent(riding_filter_typepath, riding_handler_typepath)
 
 /obj/vehicle/ridden/examine(mob/user)
 	. = ..()

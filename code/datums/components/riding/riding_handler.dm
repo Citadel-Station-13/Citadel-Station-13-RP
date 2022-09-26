@@ -436,6 +436,15 @@
 			else
 				to_chat(user, SPAN_WARNING("[AM] cannot ride on [parent] whlie incapacitated!"))
 		return FALSE
+	if(M && (flags & CF_RIDING_CHECK_LYING) && M.lying)
+		if(notify && user)
+			if(we_are_the_vehicle)
+				to_chat(user, SPAN_WARNING("You cannot carry people while laying down!"))
+			else if(user == AM)
+				to_chat(user, SPAN_WARNING("You cannot ride on [parent] while laying down!"))
+			else
+				to_chat(user, SPAN_WARNING("[AM] cannot ride on [parent] whlie laying down!"))
+		return FALSE
 	return TRUE
 
 /**
