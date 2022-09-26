@@ -75,7 +75,149 @@
 
 /datum/riding_handler/vehicle/boat
 	vehicle_move_delay = 3.5
+	allowed_turf_types = list(
+		/turf/simulated/floor/water
+	)
 
 /datum/riding_handler/vehicle/boat/small
+	offset_layer = list(
+		list(
+			1,
+			-1,
+			-1,
+			-1
+		),
+		list(
+			2,
+			-2,
+			-2,
+			-2
+		)
+	)
+	offset_pixel = list(
+		list(
+			list(0, 7),
+			list(7, 2),
+			list(0, 2),
+			list(-7, 2)
+		),
+		list(
+			list(0, 2),
+			list(0, 9),
+			list(-7, 2),
+			list(7, 2)
+		)
+	)
 
 /datum/riding_handler/vehicle/boat/big
+	offset_layer = list(
+		list(
+			1,
+			-1,
+			-1,
+			-1
+		),
+		list(
+			1,
+			-1,
+			-1,
+			-1
+		),		list(
+			1,
+			-1,
+			-1,
+			-1
+		),		list(
+			1,
+			-1,
+			-1,
+			-1
+		),		list(
+			2,
+			-2,
+			-2,
+			-2
+		)
+	)
+	offset_pixel = list(
+		list(
+			list(0, 7),
+			list(7, 2),
+			list(0, 2),
+			list(-7, 2)
+		),
+		list(
+			list(0, 7),
+			list(7, 2),
+			list(0, 2),
+			list(-7, 2)
+		),		list(
+			list(0, 7),
+			list(7, 2),
+			list(0, 2),
+			list(-7, 2)
+		),		list(
+			list(0, 7),
+			list(7, 2),
+			list(0, 2),
+			list(-7, 2)
+		),		list(
+			list(0, 2),
+			list(0, 9),
+			list(-7, 2),
+			list(7, 2)
+		)
+	)
+
+#warn REWRITE THE OFFSET SYSTEM, IT FUCKING SUCKS
+
+/datum/riding/boat/big // 'Big' boats can hold up to five people.
+
+/datum/riding/boat/big/get_offsets(pass_index) // list(dir = x, y, layer)
+	var/H = 12 // Horizontal seperation. Halved when facing up-down.
+	var/V = 4 // Vertical seperation.
+	var/O = 7 // Vertical offset.
+	switch(pass_index)
+		if(1) // Person in center front, first row.
+			return list(
+				"[NORTH]" = list( 0,   O+V,   MOB_LAYER+0.1),
+				"[SOUTH]" = list( 0,   O-V,   MOB_LAYER+0.3),
+				"[EAST]"  = list( H,   O,     MOB_LAYER+0.1),
+				"[WEST]"  = list(-H,   O,     MOB_LAYER+0.1)
+				)
+		if(2) // Person in left, second row.
+			return list(
+				"[NORTH]" = list( H/2, O,     MOB_LAYER+0.2),
+				"[SOUTH]" = list(-H/2, O,     MOB_LAYER+0.2),
+				"[EAST]"  = list( 0,   O-V,   MOB_LAYER+0.2),
+				"[WEST]"  = list( 0,   O+V,   MOB_LAYER)
+				)
+		if(3) // Person in right, second row.
+			return list(
+				"[NORTH]" = list(-H/2, O,     MOB_LAYER+0.2),
+				"[SOUTH]" = list( H/2, O,     MOB_LAYER+0.2),
+				"[EAST]"  = list( 0,   O+V,   MOB_LAYER),
+				"[WEST]"  = list( 0,   O-V,   MOB_LAYER+0.2)
+				)
+		if(4) // Person in left, third row.
+			return list(
+				"[NORTH]" = list( H/2, O-V,   MOB_LAYER+0.3),
+				"[SOUTH]" = list(-H/2, O+V,   MOB_LAYER+0.1),
+				"[EAST]"  = list(-H,   O-V,   MOB_LAYER+0.2),
+				"[WEST]"  = list( H,   O+V,   MOB_LAYER)
+				)
+		if(5) // Person in right, third row.
+			return list(
+				"[NORTH]" = list(-H/2, O-V,   MOB_LAYER+0.3),
+				"[SOUTH]" = list( H/2, O+V,   MOB_LAYER+0.1),
+				"[EAST]"  = list(-H,   O+V,   MOB_LAYER),
+				"[WEST]"  = list( H,   O-V,   MOB_LAYER+0.2)
+				)
+		else
+			return null // This will runtime, but we want that since this is out of bounds.
+
+/datum/riding/boat/big/handle_vehicle_layer()
+	ridden.layer = MOB_LAYER+0.4
+
+/datum/riding/boat/get_offsets(pass_index) // list(dir = x, y, layer)
+	return list("[NORTH]" = list(1, 2), "[SOUTH]" = list(1, 2), "[EAST]" = list(1, 2), "[WEST]" = list(1, 2))

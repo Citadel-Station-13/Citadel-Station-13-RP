@@ -48,9 +48,9 @@
 	/// default allowed turf handling - set to off if you override the var!!
 	var/default_turf_checks = TRUE
 	/// allowed turf types - turned into typecache.
-	VAR_PRIVATE/list/allowed_turf_types
+	var/list/allowed_turf_types
 	/// forbidden turf types - turned into typecache.
-	VAR_PRIVATE/list/forbid_turf_types
+	var/list/forbid_turf_types
 	/// tick delay between movements
 	var/vehicle_move_delay = 2
 	/// key type needed, if it is needed
