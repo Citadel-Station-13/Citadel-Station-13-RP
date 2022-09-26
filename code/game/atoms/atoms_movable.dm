@@ -1,10 +1,37 @@
 /atom/movable
 	layer = OBJ_LAYER
 	appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
+
+	// todo: kill this (only used for elcetropacks)
+	var/moved_recently = FALSE
+
+	/// Used to specify the item state for the on-mob overlays.
+	var/item_state = null
+
+	///If we're cloaked or not.
+	var/cloaked = FALSE
+	/// The image we use for our client to let them see where we are.
+	var/image/cloaked_selfimage
+
+	/// Reference to atom being orbited.
+	var/atom/orbit_target
+
+	/// Movement types, see __DEFINES/flags/movement.dm
+	var/movement_type = GROUND
+	/// The orbiter component of the thing we're orbiting.
+	var/datum/component/orbiter/orbiting
+	///Used for the calculate_adjacencies proc for icon smoothing.
+	var/can_be_unanchored = FALSE
+
+	//! Intrinsics
 	/// movable flags - see [code/__DEFINES/_flags/atoms.dm]
 	var/movable_flags = NONE
+
+	//! Movement
 	/// Whatever we're pulling.
 	var/atom/movable/pulling
+	/// Who's currently pulling us
+	var/atom/movable/pulledby
 	/// If false makes [CanPass][/atom/proc/CanPass] call [CanPassThrough][/atom/movable/proc/CanPassThrough] on this type instead of using default behaviour
 	var/generic_canpass = TRUE
 	/// Pass flags.
@@ -15,6 +42,10 @@
 	var/atom/movable/moving_from_pull
 	/// Direction of our last move.
 	var/last_move_dir = NONE
+	/// Our default glide_size. Null to use global default.
+	var/default_glide_size
+
+	//! Spacedrift
 	/// Which direction we're drifting
 	var/inertia_dir = NONE
 	/// Only set while drifting, last location we were while drifting
@@ -25,18 +56,12 @@
 	var/inertia_next_move = 0
 	/// Delay between each drifting move.
 	var/inertia_move_delay = 5
-	/// Movement types, see __DEFINES/flags/movement.dm
-	var/movement_type = GROUND
-	/// The orbiter component of the thing we're orbiting.
-	var/datum/component/orbiter/orbiting
-	///Used for the calculate_adjacencies proc for icon smoothing.
-	var/can_be_unanchored = FALSE
-	/// Our default glide_size. Null to use global default.
-	var/default_glide_size
+
+	//! Perspectives
 	/// our default perspective - if none, a temporary one will be generated when a mob requires it
 	var/datum/perspective/self_perspective
 
-//! Buckling
+	//! Buckling
 	/// do we support the buckling system - if not, none of the default interactions will work, but comsigs will still fire!
 	var/buckle_allowed = FALSE
 	/// buckle flags, see [code/__DEFINES/_flags/atom_flags.dm]
@@ -52,7 +77,7 @@
 	/// restrained default unbuckle time (NOT TIME TO UN-RESTRAIN, this is time to UNBUCKLE from us)
 	var/buckle_restrained_resist_time = 2 MINUTES
 
-//! move force, resist, anchoring
+	//! move force, resist, anchoring
 	/// anchored to ground? prevent movement absolutely if so
 	var/anchored = FALSE
 	/// movement force to resist
@@ -65,8 +90,7 @@
 	var/move_speed = 10
 	var/l_move_time = 1
 
-//! throwing
-	// todo: trace "throwing" usages
+	//! Throwing
 	var/datum/thrownthing/throwing
 	/// default throw speed
 	var/throw_speed = 2
@@ -90,27 +114,13 @@
 	 */
 	var/throw_speed_scaling_exponential = THROW_SPEED_SCALING_CONSTANT_DEFAULT
 
-//! Misc
-	// todo: kill this (only used for elcetropacks)
-	var/moved_recently = FALSE
-	var/mob/pulledby = null
-
-	/// Used to specify the item state for the on-mob overlays.
-	var/item_state = null
+	//! Icon Scale
 	/// Used to scale icons up or down horizonally in update_transform().
 	var/icon_scale_x = 1
 	/// Used to scale icons up or down vertically in update_transform().
 	var/icon_scale_y = 1
 	/// Used to rotate icons in update_transform()
 	var/icon_rotation = 0
-
-	///If we're cloaked or not.
-	var/cloaked = FALSE
-	/// The image we use for our client to let them see where we are.
-	var/image/cloaked_selfimage
-
-	/// Reference to atom being orbited.
-	var/atom/orbit_target
 
 /atom/movable/Destroy(force)
 	if(reagents)

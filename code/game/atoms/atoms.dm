@@ -24,8 +24,6 @@
 	var/atom_say_verb = "says"
 	/// What icon the atom uses for speechbubbles.
 	var/bubble_icon = "normal"
-	/// For handling persistent filters
-	var/list/filter_data
 	/// The orbiter comopnent if we're being orbited.
 	var/datum/component/orbiter/orbiters
 
@@ -36,13 +34,13 @@
 	 */
 	var/list/atom_colours
 
-//! ## HUDs
+	//! ## HUDs
 	/// This atom's HUD (med/sec, etc) images. Associative list.
 	var/list/image/hud_list = null
 	/// HUD images that this atom can provide.
 	var/list/hud_possible
 
-//! ## TG Smoothing
+	//! ## Icon Smoothing
 	/// Icon-smoothing behavior.
 	var/smoothing_flags = NONE
 	/// What directions this is currently smoothing with. IMPORTANT: This uses the smoothing direction flags as defined in icon_smoothing.dm, instead of the BYOND flags.
@@ -60,13 +58,13 @@
 	/// List of smoothing groups this atom can smooth with. If this is null and atom is smooth, it smooths only with itself.
 	var/list/canSmoothWith = null
 
-//! ## Chemistry
+	//! ## Chemistry
 	var/datum/reagents/reagents = null
 
 	//? replaced by OPENCONTAINER flags and atom/proc/is_open_container()
 	//var/chem_is_open_container = 0
 
-//! ## Detective Work
+	//! ## Detective Work
 	/// Used for the duplicate data points kept in the scanners.
 	var/list/original_atom
 	/// List of all fingerprints on the atom.
@@ -84,7 +82,7 @@
 	/// Shows up under a UV light.
 	var/fluorescent
 
-//! ## Overlays
+	//! ## Overlays
 	/// a very temporary list of overlays to remove
 	var/list/remove_overlays
 	/// a very temporary list of overlays to add
@@ -95,13 +93,13 @@
 	///overlays managed by [update_overlays][/atom/proc/update_overlays] to prevent removing overlays that weren't added by the same proc. Single items are stored on their own, not in a list.
 	var/list/managed_overlays
 
-//! ## Layers
+	//! ## Layers
 	/// Base layer - defaults to layer.
 	var/base_layer
 	/// Relative layer - position this atom should be in within things of the same base layer. defaults to 0.
 	var/relative_layer = 0
 
-//! Pixel Offsets
+	//! Pixel Offsets
 	/// Default pixel x shifting for the atom's icon.
 	var/base_pixel_x = 0
 	/// Default pixel y shifting for the atom's icon.
@@ -111,7 +109,11 @@
 	/// expected icon height; centering offsets will be calculated from this and our base pixel y.
 	var/icon_dimension_y = 32
 
-//! Misc
+	//! Filters
+	/// For handling persistent filters
+	var/list/filter_data
+
+	//! Misc
 	/// What mobs are interacting with us right now, associated directly to concurrent interactions. (use defines)
 	var/list/interacting_mobs
 
