@@ -101,3 +101,11 @@ GLOBAL_LIST_INIT(gender_datums, gender_datums())
 /mob/proc/p_Them()
 	var/datum/gender/G = GLOB.gender_datums[gender]
 	return G.Him
+
+/mob/proc/p_their()
+	var/datum/gender/G = GLOB.gender_datums[gender]
+	return G.his
+
+/mob/proc/p_Their()
+	var/datum/gender/G = GLOB.gender_datums[gender]
+	return G.His

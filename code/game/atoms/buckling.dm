@@ -78,7 +78,8 @@
 	. = unbuckle_mob(M, flags, user, semantic)
 	if(!.)
 		return
-	user_unbuckle_feedback(M, flags, user, semantic)
+	if(!(flags & BUCKLE_OP_SILENT))
+		user_unbuckle_feedback(M, flags, user, semantic)
 
 /**
  * called to provide visible/audible feedback when someone unbuckles someone else (or themselves) from us
@@ -113,7 +114,8 @@
 	. = buckle_mob(M, flags, user, semantic)
 	if(!.)
 		return
-	user_buckle_feedback(M, flags, user, semantic)
+	if(!(flags & BUCKLE_OP_SILENT))
+		user_buckle_feedback(M, flags, user, semantic)
 
 /**
  * called to provide visible/audible feedback when someone buckles someone else (or themselves) to us

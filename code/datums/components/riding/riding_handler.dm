@@ -184,7 +184,7 @@
 	// determine offset format
 	switch(rider_offset_format)
 		if(CF_RIDING_OFFSETS_SIMPLE)
-			for(i in 1 to AM.buckled_mobs)
+			for(i in 1 to length(AM.buckled_mobs))
 				M = AM.buckled_mobs[i]
 				semantic = AM.buckled_mobs[M]
 				offsets = rider_offsets(M, i, semantic, rider_offsets, dir)
@@ -206,7 +206,7 @@
 					relevant = rider_offsets[2]
 				if(WEST)
 					relevant = rider_offsets[4]
-			for(i in 1 to AM.buckled_mobs)
+			for(i in 1 to length(AM.buckled_mobs))
 				M = AM.buckled_mobs[i]
 				semantic = AM.buckled_mobs[M]
 				offsets = rider_offsets(M, i, semantic, relevant, dir)
@@ -220,7 +220,7 @@
 		if(CF_RIDING_OFFSETS_ENUMERATED)
 			var/list/relevant
 			var/rider_offsets_len = length(rider_offsets)
-			for(i in 1 to AM.buckled_mobs)
+			for(i in 1 to length(AM.buckled_mobs))
 				relevant = rider_offsets[min(rider_offsets_len, i)]
 				switch(AM.dir)
 					if(NORTH)
