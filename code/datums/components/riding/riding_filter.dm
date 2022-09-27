@@ -140,7 +140,7 @@
 
 /datum/component/riding_filter/proc/handler_instantiated()
 	RETURN_TYPE(/datum/component/riding_handler)
-	return LoadComponent(/datum/component/riding_handler)
+	return parent.GetComponent(/datum/component/riding_handler)
 
 /datum/component/riding_filter/proc/pre_buckle_handler_tweak(datum/component/riding_handler/handler, mob/M, flags, mob/user, semantic, ...)
 	return
