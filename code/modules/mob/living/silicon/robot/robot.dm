@@ -43,6 +43,9 @@
 	health = 200
 	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/robot/cyborg)
 
+	buckle_allowed = TRUE
+	buckle_flags = BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF
+
 	mob_bump_flag = ROBOT
 	mob_swap_flags = ~HEAVY
 	mob_push_flags = ~HEAVY //trundle trundle
@@ -199,6 +202,8 @@
 		cell_component.installed = 1
 
 	add_robot_verbs()
+
+	AddComponent(/datum/component/riding_filter/robot)
 
 /mob/living/silicon/robot/proc/init()
 	aiCamera = new/obj/item/camera/siliconcam/robot_camera(src)
