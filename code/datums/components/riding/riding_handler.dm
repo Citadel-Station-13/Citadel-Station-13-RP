@@ -198,7 +198,7 @@
 				M.pixel_y = ppy + M.get_standard_pixel_y_offset() - M.get_centering_pixel_y_offset(dir) + offsets[2]
 		if(CF_RIDING_OFFSETS_DIRECTIONAL)
 			var/list/relevant
-			switch(AM.dir)
+			switch(dir)
 				if(NORTH)
 					relevant = rider_offsets[1]
 				if(SOUTH)
