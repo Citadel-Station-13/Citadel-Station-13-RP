@@ -229,3 +229,8 @@
 	name = "laconic field boots"
 	desc = "These flexible boots cover the wearer's calves. An additional protective kneepad is integrated, perhaps to assist in collecting specimens in the field."
 	icon_state = "laconic"
+
+/obj/item/clothing/shoes/boots/half_moon
+	name = "Half Moon boots"
+	desc = "Perfect boots for crossing Mare Serenitatis. Flexible and tight, these boots ensure the wearer will be leaving a solid impression without sacrificing mobility."
+	icon_state = "half_moon"
