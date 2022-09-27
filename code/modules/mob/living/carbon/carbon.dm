@@ -45,7 +45,7 @@
 	..()
 
 /mob/living/carbon/attack_hand(mob/M as mob)
-	if(!istype(M, /mob/living/carbon)) return
+	if(!istype(M, /mob/living/carbon)) return ..()
 	if (ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
@@ -54,6 +54,7 @@
 		if(temp && !temp.is_usable())
 			to_chat(H, "<font color='red'>You can't use your [temp.name]</font>")
 			return
+	return ..()
 
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
 	if(src.health >= config_legacy.health_threshold_crit)
