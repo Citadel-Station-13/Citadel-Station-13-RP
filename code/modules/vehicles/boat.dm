@@ -94,11 +94,12 @@
 		),
 		list(
 			list(0, 2, 0.2, null),
-			list(0, 9, -0.2, null),
 			list(-7, 2, -0.2, null),
+			list(0, 9, -0.2, null),
 			list(7, 2, -0.2, null)
 		)
 	)
+	rider_offset_format = CF_RIDING_OFFSETS_ENUMERATED
 
 /datum/component/riding_handler/vehicle/boat/big
 	rider_offsets = list(
@@ -133,3 +134,4 @@
 			list(12, 3, -0.3, null)
 		)
 	)
+	rider_offset_format = CF_RIDING_OFFSETS_ENUMERATED

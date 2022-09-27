@@ -40,7 +40,7 @@
 		AM.pulledby.stop_pulling() //an object can't be pulled by two mobs at once.
 	pulling = AM
 	AM.pulledby = src
-	recursive_pulled_glidesize_update()
+	recursive_glidesize_update()
 
 	if(ismob(AM))
 		var/mob/M = AM
@@ -143,9 +143,11 @@
 								location.add_blood(M)
 
 /**
- * Recursively set glide size for atom's pulled things
+ * Recursively set glide size for atom's pulled and buckled things
+ *
+ * todo: un-jankify this proc
  */
-/atom/movable/proc/recursive_pulled_glidesize_update()
+/atom/movable/proc/recursive_glidesize_update()
 	var/list/ran = list()
 	var/atom/movable/updating = pulling
 	while(updating)
@@ -153,4 +155,9 @@
 			return
 		updating.set_glide_size(glide_size, FALSE)
 		ran[updating] = TRUE
+		for(var/mob/M as anything in updating.buckled_mobs)
+			if(ran[M])
+				continue
+			M.set_glide_size(glide_size, FALSE)
+			ran[M] = TRUE
 		updating = updating.pulling

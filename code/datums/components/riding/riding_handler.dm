@@ -223,7 +223,7 @@
 			var/rider_offsets_len = length(rider_offsets)
 			for(i in 1 to length(AM.buckled_mobs))
 				relevant = rider_offsets[min(rider_offsets_len, i)]
-				switch(AM.dir)
+				switch(dir)
 					if(NORTH)
 						relevant = relevant[1]
 					if(SOUTH)

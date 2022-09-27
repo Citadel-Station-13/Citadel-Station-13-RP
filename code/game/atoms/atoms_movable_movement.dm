@@ -427,12 +427,13 @@
 	SEND_SIGNAL(src, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE, new_glide_size, glide_size)
 	glide_size = new_glide_size
 
+	if(!recursive)
+		return
+
 	for(var/m in buckled_mobs)
 		var/mob/buckled_mob = m
 		buckled_mob.set_glide_size(glide_size)
-
-	if(recursive)
-		recursive_pulled_glidesize_update()
+		recursive_glidesize_update()
 
 /**
   * Sets our glide size back to our standard glide size.
