@@ -180,6 +180,7 @@
 	var/i
 	var/mob/M
 	var/semantic
+	var/dir_override
 	// determine offset format
 	switch(rider_offset_format)
 		if(CF_RIDING_OFFSETS_SIMPLE)
@@ -187,7 +188,8 @@
 				M = AM.buckled_mobs[i]
 				semantic = AM.buckled_mobs[M]
 				offsets = rider_offsets(M, i, semantic, rider_offsets, dir)
-				if(offsets[4] != M.dir)
+				dir_override = offsets[4]
+				if(dir_override && dir_override != M.dir)
 					M.setDir(offsets[4])
 				M.reset_pixel_shifting()
 				M.set_base_layer(offsets[3] + AM.layer)
@@ -208,7 +210,8 @@
 				M = AM.buckled_mobs[i]
 				semantic = AM.buckled_mobs[M]
 				offsets = rider_offsets(M, i, semantic, relevant, dir)
-				if(offsets[4] != M.dir)
+				dir_override = offsets[4]
+				if(dir_override && dir_override != M.dir)
 					M.setDir(offsets[4])
 				M.reset_pixel_shifting()
 				M.set_base_layer(offsets[3] + AM.layer)
@@ -231,7 +234,8 @@
 				M = AM.buckled_mobs[i]
 				semantic = AM.buckled_mobs[M]
 				offsets = rider_offsets(M, i, semantic, relevant, dir)
-				if(offsets[4] != M.dir)
+				dir_override = offsets[4]
+				if(dir_override && dir_override != M.dir)
 					M.setDir(offsets[4])
 				M.reset_pixel_shifting()
 				M.set_base_layer(offsets[3] + AM.layer)

@@ -21,12 +21,10 @@
  * check the grab state of us to someone
  */
 /mob/proc/grab_state(mob/M)
-	if(!(src in M.grabbed_by))
-		return GRAB_NONE
 	for(var/obj/item/grab/G in get_held_items())
 		if(G.affecting == M)
 			return G.state
-	CRASH("in grabbed by but no grab item?")
+	// CRASH("in grabbed by but no grab item?")
 
 #define UPGRADE_COOLDOWN	40
 #define UPGRADE_KILL_TIMER	100

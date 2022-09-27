@@ -1,6 +1,8 @@
 // todo: tgui
 // todo: ui state handles prechecks? interesting to deal with.
 /mob/proc/mouse_drop_strip_interaction(mob/user)
+	if(user.a_intent == INTENT_GRAB)
+		return	// riding code
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	open_strip_menu(user)
 

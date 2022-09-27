@@ -1171,11 +1171,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/get_managed_pixel_y()
 	return ..() + shift_pixel_y + get_buckled_pixel_y_offset()
 
-/mob/get_centering_pixel_y_offset(dir, atom/aligning)
-	. = ..()
-	if(lying)
-		. += 6
-
 /mob/proc/reset_pixel_shifting()
 	if(!shifted_pixels)
 		return

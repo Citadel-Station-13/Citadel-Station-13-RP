@@ -159,6 +159,7 @@
 		. = FALSE
 		CRASH("M already buckled?")
 	M.buckled = src
+	LAZYINITLIST(buckled_mobs)
 	buckled_mobs[M] = semantic
 	M.setDir(dir)
 	M.update_canmove()
@@ -193,6 +194,7 @@
 	else
 		M.buckled = null
 	buckled_mobs -= M
+	UNSETEMPTY(buckled_mobs)
 	M.update_canmove()
 	// todo: refactor the below
 	M.update_floating(M.Check_Dense_Object())

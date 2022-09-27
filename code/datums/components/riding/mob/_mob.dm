@@ -90,8 +90,9 @@
 /datum/component/riding_handler/mob
 	expected_typepath = /mob
 	rider_offsets = list(
-		list(0, 8, 0.01),
-		list(0, 8, 0.01),
-		list(0, 8, -0.01),
-		list(0, 8, 0.01)
+		list(0, 8, 0.01, null),
+		list(0, 8, 0.01, null),
+		list(0, 8, -0.01, null),
+		list(0, 8, 0.01, null)
 	)
+	rider_offset_format = CF_RIDING_OFFSETS_DIRECTIONAL
