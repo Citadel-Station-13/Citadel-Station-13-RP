@@ -130,14 +130,15 @@ obj/item/gun/projectile/shotgun/pump/combat/warden/verb/rename_gun()
 	recoil = 10
 	accuracy = 40
 
-/* This is being stubborn. Might need more input.
-/obj/item/gun/projectile/shotgun/pump/combat/grit/afterattack(mob/user, var/atom/movable/target)
+/*
+//This is being stubborn. Might need more input. / In fact, I'm gonna save this work for some larger kind of "Recoil Size Check" system later.
+/obj/item/gun/projectile/shotgun/pump/combat/grit/Fire(atom/target, mob/living/user)
 	. = ..()
 	if(user.mob_size < MOB_MEDIUM)
 		var/mob/living/L = target
 		var/throwdir = get_dir(user,L)
-		var/backwards = turn(throwdir, 180)
-		user.throw_at_old(get_edge_target_turf(user, backwards), rand(3,6), 10)
+		var/destination = turn(throwdir, 180)
+		user.forceMove(destination)
 		user.emote("flip")
 */
 
