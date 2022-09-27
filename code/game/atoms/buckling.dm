@@ -26,7 +26,7 @@
 		return FALSE
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_DRAG_DROP_BUCKLE_INTERACTION, A, user) & COMPONENT_HANDLED_BUCKLE_INTERACTION)
 		return
-	if(!buckle_allowed || (buckle_flags & BUCKLING_NO_USER_BUCKLE))
+	if(!buckle_allowed || (buckle_flags & BUCKLING_NO_DEFAULT_BUCKLE))
 		return FALSE
 	// todo: refactor below
 	if(user.incapacitated())
@@ -53,7 +53,7 @@
 		return TRUE
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_CLICK_UNBUCKLE_INTERACTION, user) & COMPONENT_HANDLED_BUCKLE_INTERACTION)
 		return
-	if(!buckle_allowed || (buckle_flags & BUCKLING_NO_USER_UNBUCKLE))
+	if(!buckle_allowed || (buckle_flags & BUCKLING_NO_DEFAULT_UNBUCKLE))
 		return FALSE
 	// end
 	var/mob/unbuckling = buckled_mobs[1]
@@ -304,7 +304,7 @@
 	ASSERT(M in buckled_mobs)
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_RESIST_UNBUCKLE_INTERACTION, M) & COMPONENT_HANDLED_BUCKLE_INTERACTION)
 		return
-	if(!buckle_allowed || (buckle_flags & BUCKLING_NO_USER_RESIST))
+	if(!buckle_allowed || (buckle_flags & BUCKLING_NO_DEFAULT_RESIST))
 		return FALSE
 	if(!mob_resist_buckle(M, buckled_mobs[M]))
 		return

@@ -43,7 +43,7 @@
 	anchored = FALSE
 
 	buckle_allowed = TRUE
-	buckle_flags = BUCKLING_NO_USER_BUCKLE // maybe when these aren't bullshit op i'll feel the need to """fix""" the fact that they're perfect projectile blockers half the time
+	buckle_flags = BUCKLING_NO_DEFAULT_BUCKLE // maybe when these aren't bullshit op i'll feel the need to """fix""" the fact that they're perfect projectile blockers half the time
 	buckle_restrained_resist_time = 0
 
 	var/escape_time = 8 SECONDS

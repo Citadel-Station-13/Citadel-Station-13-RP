@@ -75,6 +75,8 @@
 	affecting = victim
 
 	if(affecting.anchored || !assailant.Adjacent(victim) || affecting.buckled)
+		affecting = null
+		assailant = null
 		return INITIALIZE_HINT_QDEL
 
 	affecting.grabbed_by += src
@@ -209,6 +211,8 @@
 //Updating pixelshift, position and direction
 //Gets called on process, when the grab gets upgraded or the assailant moves
 /obj/item/grab/proc/adjust_position()
+	if(QDELETED(src))
+		return
 	if(!affecting)
 		qdel(src)
 		return
@@ -416,9 +420,9 @@
 	return mob_size_difference(A.mob_size, B.mob_size)
 
 /obj/item/grab/Destroy()
-	animate(affecting, pixel_x = initial(affecting.pixel_x), pixel_y = initial(affecting.pixel_y), 4, 1, LINEAR_EASING)
-	affecting.reset_plane_and_layer()
 	if(affecting)
+		animate(affecting, pixel_x = initial(affecting.pixel_x), pixel_y = initial(affecting.pixel_y), 4, 1, LINEAR_EASING)
+		affecting.reset_plane_and_layer()
 		affecting.grabbed_by -= src
 		affecting = null
 	if(assailant)
