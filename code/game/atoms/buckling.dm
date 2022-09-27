@@ -110,7 +110,7 @@
 	. = SEND_SIGNAL(src, COMSIG_MOVABLE_USER_BUCKLE_MOB, M, flags, user, semantic)
 	if(. & COMPONENT_BLOCK_BUCKLE_OPERATION)
 		return FALSE
-	if((buckle_flags & BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF) && (user == M))
+	if((buckle_flags & BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF) && (user == src))
 		return FALSE
 	. = buckle_mob(M, flags, user, semantic)
 	if(!.)
@@ -143,6 +143,9 @@
  */
 /atom/movable/proc/buckle_mob(mob/M, flags, mob/user, semantic)
 	SHOULD_CALL_PARENT(TRUE)
+	if(M == src)
+		return FALSE
+
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_BUCKLE_MOB, M, flags, user, semantic) & COMPONENT_BLOCK_BUCKLE_OPERATION)
 		return FALSE
 

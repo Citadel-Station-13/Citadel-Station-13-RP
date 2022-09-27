@@ -203,7 +203,7 @@
 
 	add_robot_verbs()
 
-	AddComponent(/datum/component/riding_filter/robot)
+	AddComponent(/datum/component/riding_filter/mob/robot)
 
 /mob/living/silicon/robot/proc/init()
 	aiCamera = new/obj/item/camera/siliconcam/robot_camera(src)

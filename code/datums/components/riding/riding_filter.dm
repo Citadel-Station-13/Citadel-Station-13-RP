@@ -171,8 +171,6 @@
  * ! This proc is shitcode, don't fuck with this without knowing what you're doing.
  */
 /datum/component/riding_filter/proc/check_offhands(mob/rider, unbuckling)
-	if(!offhands_needed_rider)
-		return
 	if(unbuckling)
 		return		// base level don't care as of now
 	var/atom/movable/AM = parent

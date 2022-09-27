@@ -10,20 +10,24 @@
 	// do standard stuff
 	var/mob/buckling = A
 	if(buckling == user)
-		// if taur, skip to component
-		if(isTaurTail(tail_style))
-			return ..()
 		// prechecks
-		if(a_intent != INTENT_HELP || buckling.a_intent != INTENT_HELP)
+		if((buckling.get_effective_size() - get_effective_size()) >= 0.5)
+			to_chat(buckling, SPAN_WARNING("How do you intend on mounting [src] when you are that big?"))
 			return FALSE
+		if(!isTaurTail(tail_style))
+			if(a_intent != INTENT_HELP || buckling.a_intent != INTENT_HELP)
+				return FALSE
+			if(check_grab(buckling) != GRAB_PASSIVE)
+				to_chat(user, SPAN_WARNING("[src] must be grabbing you passively for you to climb on."))
+				return TRUE
 		if(lying || buckling.lying)
 			return FALSE
-		if(check_grab(buckling) != GRAB_PASSIVE)
-			to_chat(user, SPAN_WARNING("[src] must be grabbing you passively for you to climb on."))
-			return TRUE
 		carry_piggyback(buckling)
 	else if(user == src)
 		// prechecks
+		if((buckling.get_effective_size() - get_effective_size()) >= 0.5)
+			to_chat(user, SPAN_WARNING("How do you intend on carrying [src] when you are that small?"))
+			return FALSE
 		if(a_intent != INTENT_GRAB)
 			return FALSE
 		if(!buckling.lying)
