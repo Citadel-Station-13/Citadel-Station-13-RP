@@ -1954,3 +1954,8 @@
 	name = "Sitri striped sweater"
 	desc = "A comfortable, fashionable pair of high waisted shorts paired with a striped grey and white turtleneck. The Goetic seal of Sitri is embroidered on the left breast pocket in soft grey thread. A tag on the inside of the sweater bears the name 'Lindenoak' in both Common and Daemonic."
 	icon_state = "sitri"
+
+/obj/item/clothing/under/half_moon
+	name = "Half Moon outfit"
+	desc = "This eminently fashionable outfit evokes memories of Luna. It consists of a tailored latex leotard and daringly cut white shorts. Paired with plunging off-color stockings, it's to die for."
+	icon_state = "half_moon"

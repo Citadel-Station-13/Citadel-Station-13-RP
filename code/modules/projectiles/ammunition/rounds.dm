@@ -596,6 +596,36 @@
 	projectile_type = /obj/item/projectile/bullet/pellet/blunderbuss/silver
 	matter = list("lead" = 500, "silver" = 500)
 
+//Ten Gauge Rounds for Exotic Shotguns
+/obj/item/ammo_casing/a10g
+	name = "heavy shotgun slug"
+	desc = "A brass jacketed 10 gauge slug shell."
+	icon_state = "brshell"
+	caliber = "10g"
+	projectile_type = /obj/item/projectile/bullet/heavy_shotgun
+	matter = list(MAT_STEEL = 300, "brass" = 200)
+	fall_sounds = list('sound/weapons/guns/shotgun_fall.ogg')
+
+/obj/item/ammo_casing/a10g/pellet //Spread variant.
+	name = "heavy shotgun shell"
+	desc = "A brass jacketed 10 gauge shot shell."
+	projectile_type = /obj/item/projectile/scatter/heavy_shotgun
+
+/obj/item/ammo_casing/a10g/silver
+	name = "heavy silver shotgun shell"
+	desc = "A brass jacketed 10 gauge filled with blessed silver shot."
+	projectile_type = /obj/item/projectile/scatter/heavy_shotgun/silver
+
+//Related to the above, knockback specific variants for Grit.
+/obj/item/ammo_casing/a10g/grit
+	name = "tooled heavy shotgun slug"
+	desc = "A custom brass jacketed 10 gauge slug shell."
+	projectile_type = /obj/item/projectile/bullet/heavy_shotgun/grit
+
+/obj/item/ammo_casing/a10g/pellet/grit
+	name = "tooled heavy shotgun shell"
+	desc = "A custom brass jacketed 10 gauge shot shell."
+	projectile_type = /obj/item/projectile/scatter/heavy_shotgun/grit
 
 //Arrows
 /obj/item/ammo_casing/arrow

@@ -164,6 +164,7 @@
 		/obj/item/handcuffs,
 		/obj/item/flash,
 		/obj/item/clothing/glasses,
+		/obj/item/ammo_casing/a10g,
 		/obj/item/ammo_casing/a12g,
 		/obj/item/ammo_magazine,
 		/obj/item/cell/device,
