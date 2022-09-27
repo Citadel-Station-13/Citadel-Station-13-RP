@@ -39,7 +39,9 @@
 		return
 	M.break_cloak()
 
-	..()
+	. = ..()
+	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
+		return
 
 	// Should this all be in Touch()?
 	if(istype(H))

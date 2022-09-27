@@ -1,6 +1,6 @@
 /mob/living/carbon/human/mouse_drop_strip_interaction(mob/user)
 	// don't collide with riding
-	if(user.grab_state(src) == GRAB_PASSIVE && user.a_intent == INTENT_GRAB && lying)
+	if(user.check_grab(src) == GRAB_PASSIVE && user.a_intent == INTENT_GRAB && lying)
 		return
 	return ..()
 

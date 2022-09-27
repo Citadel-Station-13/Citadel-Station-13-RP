@@ -64,6 +64,7 @@
 	user_unbuckle_mob(unbuckling, BUCKLE_OP_DEFAULT_INTERACTION, user, buckled_mobs[unbuckling])
 	add_fingerprint(user)
 
+
 /**
  * called when someone tries to unbuckle something from us, whether by click or otherwise
  *

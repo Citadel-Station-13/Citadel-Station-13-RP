@@ -121,7 +121,7 @@
 /datum/component/riding_handler/proc/signal_hook_handle_turn(atom/movable/source, old_dir, new_dir)
 	SIGNAL_HANDLER
 	update_vehicle_on_turn(new_dir)
-	full_update_riders()
+	full_update_riders(new_dir)
 
 /datum/component/riding_handler/proc/signal_hook_pre_buckle_mob(atom/movable/source, mob/M, flags, mob/user, semantic)
 	SIGNAL_HANDLER_DOES_SLEEP
@@ -154,11 +154,11 @@
 		AM.pixel_y = vehicle_offsets[2] + opy
 
 /datum/component/riding_handler/proc/on_rider_buckled(mob/rider, semantic)
-	full_update_riders(TRUE)
+	full_update_riders(force = TRUE)
 
 /datum/component/riding_handler/proc/on_rider_unbuckled(mob/rider, semantic)
 	reset_rider(rider, semantic)
-	full_update_riders(TRUE)
+	full_update_riders(force = TRUE)
 
 /datum/component/riding_handler/proc/reset_rider(mob/rider, semantic)
 	rider.reset_plane_and_layer()
@@ -168,9 +168,8 @@
 /datum/component/riding_handler/proc/update_riders_on_turn(dir)
 	full_update_riders()
 
-/datum/component/riding_handler/proc/full_update_riders(force)
+/datum/component/riding_handler/proc/full_update_riders(dir = AM.dir, force)
 	var/atom/movable/AM = parent
-	var/dir = AM.dir
 	if(_last_dir == dir && !force)
 		return
 	_last_dir = dir
@@ -188,8 +187,8 @@
 				M = AM.buckled_mobs[i]
 				semantic = AM.buckled_mobs[M]
 				offsets = rider_offsets(M, i, semantic, rider_offsets, dir)
-				dir_override = offsets[4]
-				if(dir_override && dir_override != M.dir)
+				dir_override = offsets[4] || dir
+				if(dir_override != M.dir)
 					M.setDir(offsets[4])
 				M.reset_pixel_shifting()
 				M.set_base_layer(offsets[3] + AM.layer)
@@ -210,8 +209,8 @@
 				M = AM.buckled_mobs[i]
 				semantic = AM.buckled_mobs[M]
 				offsets = rider_offsets(M, i, semantic, relevant, dir)
-				dir_override = offsets[4]
-				if(dir_override && dir_override != M.dir)
+				dir_override = offsets[4] || dir
+				if(dir_override != M.dir)
 					M.setDir(offsets[4])
 				M.reset_pixel_shifting()
 				M.set_base_layer(offsets[3] + AM.layer)
@@ -234,8 +233,8 @@
 				M = AM.buckled_mobs[i]
 				semantic = AM.buckled_mobs[M]
 				offsets = rider_offsets(M, i, semantic, relevant, dir)
-				dir_override = offsets[4]
-				if(dir_override && dir_override != M.dir)
+				dir_override = offsets[4] || dir
+				if(dir_override != M.dir)
 					M.setDir(offsets[4])
 				M.reset_pixel_shifting()
 				M.set_base_layer(offsets[3] + AM.layer)

@@ -18,7 +18,7 @@
 			return FALSE
 		if(lying || buckling.lying)
 			return FALSE
-		if(grab_state(buckling) != GRAB_PASSIVE)
+		if(check_grab(buckling) != GRAB_PASSIVE)
 			to_chat(user, SPAN_WARNING("[src] must be grabbing you passively for you to climb on."))
 			return TRUE
 		carry_piggyback(buckling)
@@ -29,7 +29,7 @@
 		if(!buckling.lying)
 			to_chat(user, SPAN_WARNING("[buckling] must be laying down if you want to carry them!"))
 			return TRUE
-		if(grab_state(buckling) != GRAB_PASSIVE)
+		if(check_grab(buckling) != GRAB_PASSIVE)
 			to_chat(user, SPAN_WARNING("You must be grabbing [buckling] passively to carry them."))
 			return TRUE
 		carry_fireman(buckling)
@@ -50,6 +50,7 @@
 	)
 	if(!instant && !do_after(other, HUMAN_PIGGYBACK_DELAY * delay_mod, src, FALSE))
 		return FALSE
+	drop_grab(other)
 	user_buckle_mob(other, BUCKLE_OP_DEFAULT_INTERACTION | BUCKLE_OP_SILENT, other, BUCKLE_SEMANTIC_HUMAN_PIGGYBACK)
 	other.visible_message(
 		SPAN_NOTICE("[other] climbs onto [src]!"),
@@ -65,6 +66,7 @@
 	)
 	if(!instant && !do_after(src, HUMAN_FIREMAN_DELAY * delay_mod, other, FALSE))
 		return FALSE
+	drop_grab(other)
 	user_buckle_mob(other, BUCKLE_OP_DEFAULT_INTERACTION | BUCKLE_OP_SILENT, other, BUCKLE_SEMANTIC_HUMAN_FIREMAN)
 	visible_message(
 		SPAN_NOTICE("[src] picks [other] up over [p_their()] shoulders!"),
