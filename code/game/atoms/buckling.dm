@@ -171,9 +171,9 @@
 		var/mob/living/L = M
 		L.update_water()
 	// end
-	mob_buckled(M, flags, user, semantic)
 	M.reset_pixel_shifting()
 	M.reset_pixel_offsets()
+	mob_buckled(M, flags, user, semantic)
 	return TRUE
 
 /**
@@ -204,8 +204,8 @@
 		var/mob/living/L = M
 		L.update_water()
 	// end
-	mob_unbuckled(M, flags, user, semantic)
 	M.reset_pixel_offsets()
+	mob_unbuckled(M, flags, user, semantic)
 	return TRUE
 
 /**

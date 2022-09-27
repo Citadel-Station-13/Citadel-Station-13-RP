@@ -74,9 +74,8 @@
 	assailant = user
 	affecting = victim
 
-	if(affecting.anchored || !assailant.Adjacent(victim))
-		qdel(src)
-		return
+	if(affecting.anchored || !assailant.Adjacent(victim) || affecting.buckled)
+		return INITIALIZE_HINT_QDEL
 
 	affecting.grabbed_by += src
 	affecting.reveal("<span class='warning'>You are revealed as [assailant] grabs you.</span>")

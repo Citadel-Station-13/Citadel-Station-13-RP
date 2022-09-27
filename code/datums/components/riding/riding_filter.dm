@@ -96,7 +96,7 @@
 
 /datum/component/riding_filter/proc/signal_hook_mob_unbuckle(atom/movable/source, mob/M, flags, mob/user, semantic)
 	SIGNAL_HANDLER
-	cleanup_rider(user, semantic)
+	cleanup_rider(M, semantic)
 
 /**
  * if implemented (set `implements_can_buckle_hints` to TRUE), allows us to hint early
@@ -180,13 +180,13 @@
 		// verify their offhands are there
 		var/buckled = (rider in AM.buckled_mobs)
 		// if buckled and not enough
-		if(buckled && (length(get_offhands_of_rider(rider)) < rider_offhands_needed(AM.buckled_mobs[rider])))
+		if(buckled && (length(get_offhands_of_rider(rider)) < rider_offhands_needed(rider, AM.buckled_mobs[rider])))
 			// kick off
 			AM.unbuckle_mob(rider, BUCKLE_OP_FORCE)
 	else
 		// verify all offhands are there
 		for(var/mob/M in AM.buckled_mobs)
-			if(length(get_offhands_of_rider(M)) < rider_offhands_needed(AM.buckled_mobs[M]))
+			if(length(get_offhands_of_rider(M)) < rider_offhands_needed(M, AM.buckled_mobs[M]))
 				// kick off if not enough
 				M.visible_message(
 					SPAN_NOTICE("[M] slides off [AM]."),
@@ -194,7 +194,7 @@
 				)
 				AM.unbuckle_mob(M, BUCKLE_OP_FORCE)
 
-/datum/component/riding_filter/proc/rider_offhands_needed(semantic)
+/datum/component/riding_filter/proc/rider_offhands_needed(mob/rider, semantic)
 	return offhands_needed_rider
 
 /datum/component/riding_filter/proc/get_offhands_of_rider(mob/rider)
@@ -210,7 +210,7 @@
  */
 /datum/component/riding_filter/proc/allocate_offhands(mob/rider, semantic, list/offhands)
 	ASSERT(islist(offhands))
-	var/amount_needed = rider_offhands_needed(semantic)
+	var/amount_needed = rider_offhands_needed(rider, semantic)
 	if(!offhand_requirements_are_rigid)
 		amount_needed = min(amount_needed, rider.get_number_of_hands())
 	if(!amount_needed)

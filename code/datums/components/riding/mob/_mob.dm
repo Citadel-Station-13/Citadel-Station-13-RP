@@ -8,7 +8,7 @@
 	handler_typepath = /datum/component/riding_handler/mob
 
 	/// base number of offhands required on us
-	var/offhands_needed_ridden
+	var/offhands_needed_ridden = 0
 
 /**
  * called to check offhands needed

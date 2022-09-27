@@ -3,11 +3,19 @@
 	handler_typepath = /datum/component/riding_handler/mob/human
 	offhand_requirements_are_rigid = FALSE
 
-/datum/component/riding_filter/mob/human/rider_offhands_needed(semantic)
-	return semantic == BUCKLE_SEMANTIC_HUMAN_FIREMAN? 0 : 1
+	/// offhands required to fireman someone
+	var/ridden_offhands_needed_fireman = 1
+	/// offhands required on the rider for piggybacking
+	var/rider_offhands_needed_piggyback = 1
 
-/datum/component/riding_filter/mob/human/ridden_offhands_needed(semantic)
-	return semantic == BUCKLE_SEMANTIC_HUMAN_FIREMAN? 1 : 0
+/datum/component/riding_filter/mob/human/rider_offhands_needed(mob/rider, semantic)
+	return semantic == BUCKLE_SEMANTIC_HUMAN_FIREMAN? 0 : rider_offhands_needed_piggyback
+
+/datum/component/riding_filter/mob/human/ridden_offhands_needed(mob/rider, semantic)
+	. = ..()
+	if(!rider)
+		return
+	. = max(., semantic == BUCKLE_SEMANTIC_HUMAN_FIREMAN? ridden_offhands_needed_fireman : 0)
 
 /datum/component/riding_handler/mob/human
 	expected_typepath = /mob/living/carbon/human
