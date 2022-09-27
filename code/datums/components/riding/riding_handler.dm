@@ -168,8 +168,10 @@
 /datum/component/riding_handler/proc/update_riders_on_turn(dir)
 	full_update_riders()
 
-/datum/component/riding_handler/proc/full_update_riders(dir = AM.dir, force)
+/datum/component/riding_handler/proc/full_update_riders(dir, force)
 	var/atom/movable/AM = parent
+	if(!dir)
+		dir = AM.dir
 	if(_last_dir == dir && !force)
 		return
 	_last_dir = dir
