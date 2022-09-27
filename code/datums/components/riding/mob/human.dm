@@ -14,6 +14,13 @@
 	riding_handler_flags = CF_RIDING_HANDLER_EPHEMERAL
 	rider_check_flags = CF_RIDING_CHECK_INCAPACITATED
 	ridden_check_flags = CF_RIDING_CHECK_INCAPACITATED | CF_RIDING_CHECK_LYING
+	rider_offsets = list(
+		list(0, 8, 1, null),
+		list(0, 8, -1, null),
+		list(4, 8, 1, null),
+		list(-4, 8, 1, null)
+	)
+	rider_offset_format = CF_RIDING_OFFSETS_DIRECTIONAL
 
 /datum/component/riding_handler/mob/human/rider_offsets(mob/rider, pos, semantic, list/default, dir)
 	switch(dir)
