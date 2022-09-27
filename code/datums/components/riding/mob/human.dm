@@ -29,11 +29,11 @@
 		.[2] = 6
 		switch(dir)
 			if(NORTH)
-				.[3] = semantic == BUCKLE_SEMANTIC_HUMAN_FIREMAN? -1 : 1
-			if(SOUTH)
-				.[3] = semantic == BUCKLE_SEMANTIC_HUMAN_FIREMAN? 1 : -1
-
-	return ..()
+				.[3] = -1
+			else
+				.[3] = 1
+	else
+		return ..()
 
 /datum/component/riding_handler/human/signal_hook_pre_buckle_mob(atom/movable/source, mob/M, flags, mob/user, semantic)
 	var/mob/living/carbon/human/H = parent

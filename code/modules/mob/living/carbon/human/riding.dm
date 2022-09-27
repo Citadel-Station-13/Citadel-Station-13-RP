@@ -44,12 +44,12 @@
 /mob/living/carbon/human/proc/carry_piggyback(mob/living/carbon/other, instant = FALSE, delay_mod = 1, loc_check = TRUE)
 	if(loc_check && !Adjacent(other))
 		return FALSE
-	if(!instant && !do_after(other, HUMAN_PIGGYBACK_DELAY * delay_mod, src, FALSE))
-		return FALSE
 	other.visible_message(
 		SPAN_NOTICE("[other] starts climbing onto [src]!"),
 		SPAN_NOTICE("You start climbing onto [src]!")
 	)
+	if(!instant && !do_after(other, HUMAN_PIGGYBACK_DELAY * delay_mod, src, FALSE))
+		return FALSE
 	user_buckle_mob(other, BUCKLE_OP_DEFAULT_INTERACTION | BUCKLE_OP_SILENT, other, BUCKLE_SEMANTIC_HUMAN_PIGGYBACK)
 	other.visible_message(
 		SPAN_NOTICE("[other] climbs onto [src]!"),
@@ -59,12 +59,12 @@
 /mob/living/carbon/human/proc/carry_fireman(mob/living/carbon/other, instant = FALSE, delay_mod = 1, loc_check = TRUE)
 	if(loc_check && !Adjacent(other))
 		return FALSE
-	if(!instant && !do_after(src, HUMAN_FIREMAN_DELAY * delay_mod, other, FALSE))
-		return FALSE
 	visible_message(
 		SPAN_NOTICE("[src] starts picking up [other] over [p_their()] shoulders!"),
 		SPAN_NOTICE("You start picking up [other] over your shoulders!")
 	)
+	if(!instant && !do_after(src, HUMAN_FIREMAN_DELAY * delay_mod, other, FALSE))
+		return FALSE
 	user_buckle_mob(other, BUCKLE_OP_DEFAULT_INTERACTION | BUCKLE_OP_SILENT, other, BUCKLE_SEMANTIC_HUMAN_FIREMAN)
 	visible_message(
 		SPAN_NOTICE("[src] picks [other] up over [p_their()] shoulders!"),
