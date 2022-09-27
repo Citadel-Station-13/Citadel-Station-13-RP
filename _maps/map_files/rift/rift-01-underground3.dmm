@@ -10,7 +10,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "bk" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
@@ -19,7 +19,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "bC" = (
 /obj/effect/overlay/snow/floor/grav_edges{
 	dir = 9
@@ -36,8 +36,9 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden,
 /turf/simulated/floor/tiled/steel_grid,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "cf" = (
 /obj/effect/overlay/snow/floor/grav_edges,
 /turf/simulated/floor/outdoors/snow/lythios43c/indoors,
@@ -76,18 +77,19 @@
 	name = "Mining Outpost Airlock"
 	},
 /obj/structure/catwalk,
+/atom/movable/map_helper/airlock/door/int_door,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
 /turf/simulated/floor,
-/area/quartermaster/miningdock)
-"gc" = (
-/turf/simulated/wall/r_wall,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "gG" = (
 /obj/machinery/conveyor{
 	dir = 4;
 	id = "miningboxtransfer1"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "gO" = (
 /obj/effect/blocker,
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -99,21 +101,26 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/mining)
+/area/quartermaster/mining_airlock)
 "hN" = (
 /obj/machinery/conveyor{
 	dir = 4;
 	id = "miningboxtransfer1"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "iy" = (
 /obj/machinery/conveyor_switch{
 	id = "miningboxtransfer1"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "jo" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
@@ -124,15 +131,18 @@
 /obj/machinery/alarm{
 	pixel_y = 20
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "jq" = (
 /obj/structure/ladder/snake_eater/up,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/mining)
+/area/quartermaster/mining_airlock)
 "jJ" = (
 /turf/simulated/wall,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "jV" = (
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/turbolift/rmine/under3)
@@ -144,7 +154,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "ky" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
@@ -160,7 +170,7 @@
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "ln" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
@@ -174,7 +184,7 @@
 /area/rift/surfacebase/underground/under2)
 "lz" = (
 /turf/simulated/wall/r_wall,
-/area/maintenance/lower/mining)
+/area/quartermaster/mining_airlock)
 "lH" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
@@ -194,8 +204,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "mG" = (
 /obj/effect/overlay/snow/floor/grav_edges{
 	dir = 1
@@ -210,15 +223,17 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "oE" = (
 /obj/structure/catwalk,
-/obj/machinery/door/airlock/multi_tile/glass,
+/obj/machinery/door/airlock/multi_tile/glass{
+	req_access = list(31)
+	},
 /obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "oQ" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
@@ -241,12 +256,17 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "pk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/mining)
+/area/quartermaster/mining_airlock)
 "pw" = (
 /obj/machinery/door/airlock/lift,
 /turf/simulated/floor/holofloor/tiled/dark,
@@ -261,7 +281,7 @@
 	id = "miningboxtransfer1"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "rl" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
@@ -274,7 +294,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "rS" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
@@ -285,8 +305,11 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "rZ" = (
 /obj/effect/map_effect/portal/master/side_a{
 	dir = 4;
@@ -295,6 +318,18 @@
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
+"sc" = (
+/obj/machinery/door/airlock/glass_external/public{
+	name = "Mining Outpost Airlock"
+	},
+/obj/structure/catwalk,
+/atom/movable/map_helper/airlock/door/int_door,
+/obj/machinery/access_button/airlock_interior{
+	pixel_y = -24;
+	master_tag = "mining_underground_airlock"
+	},
+/turf/simulated/floor,
+/area/quartermaster/mining_airlock)
 "so" = (
 /obj/effect/zone_divider,
 /obj/effect/overlay/snow/floor/grav_edges{
@@ -306,7 +341,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "uC" = (
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
@@ -316,7 +351,7 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "uY" = (
 /obj/effect/map_effect/portal/line/side_a{
 	dir = 4
@@ -328,7 +363,7 @@
 /area/rift/surfacebase/underground/under2)
 "vr" = (
 /turf/simulated/floor/plating,
-/area/maintenance/lower/mining)
+/area/quartermaster/mining_airlock)
 "wH" = (
 /obj/effect/zone_divider,
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -352,13 +387,13 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "xb" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "xj" = (
 /obj/effect/zone_divider,
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
@@ -370,8 +405,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
+/obj/structure/cable/green,
+/obj/machinery/power/apc{
+	dir = 4;
+	name = "east bump";
+	pixel_x = 24
+	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "xK" = (
 /turf/simulated/wall/r_wall,
 /area/rift/surfacebase/underground/under2)
@@ -382,8 +423,11 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 10
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "yo" = (
 /obj/effect/zone_divider,
 /obj/effect/overlay/snow/floor/grav_edges,
@@ -398,7 +442,7 @@
 "yS" = (
 /obj/structure/catwalk,
 /turf/simulated/floor,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "yV" = (
 /obj/effect/zone_divider,
 /turf/simulated/mineral/icerock/lythios43c,
@@ -410,27 +454,45 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/mining)
+/area/quartermaster/mining_airlock)
+"AB" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock/heater{
+	on = 1
+	},
+/turf/simulated/floor/plating,
+/area/quartermaster/mining_airlock)
 "AN" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "Cq" = (
 /obj/structure/closet/crate,
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "Cz" = (
 /obj/structure/catwalk,
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Mining Outpost Airlock"
 	},
-/obj/structure/fans/tiny,
+/atom/movable/map_helper/airlock/door/ext_door,
+/obj/machinery/embedded_controller/radio/airlock/phoron{
+	pixel_y = 24;
+	id_tag = "mining_underground_airlock"
+	},
 /turf/simulated/floor,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "CE" = (
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/underground/under2)
@@ -451,16 +513,25 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "EA" = (
 /obj/effect/overlay/snow/floor/grav_edges{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c/indoors,
 /area/rift/surfacebase/underground/under2)
-"EE" = (
-/turf/simulated/wall,
-/area/maintenance/lower/mining)
+"FV" = (
+/obj/structure/catwalk,
+/obj/machinery/door/airlock/glass_external/public{
+	name = "Mining Outpost Airlock"
+	},
+/atom/movable/map_helper/airlock/door/ext_door,
+/obj/machinery/access_button/airlock_exterior{
+	pixel_y = -24;
+	master_tag = "mining_underground_airlock"
+	},
+/turf/simulated/floor,
+/area/quartermaster/mining_airlock)
 "Ho" = (
 /obj/effect/overlay/snow/floor/grav_surround{
 	dir = 1
@@ -477,12 +548,25 @@
 /obj/structure/closet/crate/miningcar,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
+"JC" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 8
+	},
+/obj/machinery/portable_atmospherics/canister/air/airlock,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/quartermaster/mining_airlock)
 "JZ" = (
 /obj/structure/ore_box,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "Ki" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
@@ -497,14 +581,14 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "KS" = (
 /obj/structure/sign/mining,
 /turf/simulated/wall,
-/area/maintenance/lower/mining)
+/area/quartermaster/mining_airlock)
 "LO" = (
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "LY" = (
 /obj/machinery/space_heater,
 /obj/structure/railing,
@@ -512,7 +596,7 @@
 	pixel_y = 20
 	},
 /turf/simulated/floor/plating,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "Mb" = (
 /obj/machinery/door/airlock/maintenance/cargo{
 	req_access = list(50);
@@ -520,8 +604,13 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/mining)
+/area/quartermaster/mining_airlock)
 "Nd" = (
 /turf/unsimulated/wall/planetary/lythios43c{
 	desc = "Glacial permafrost, compacted harder than stone.";
@@ -541,30 +630,26 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "PG" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
 /obj/structure/ore_box,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/quartermaster/miningdock)
-"Qr" = (
-/obj/structure/sign/mining,
-/turf/simulated/wall,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "Qt" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/mining)
+/area/quartermaster/mining_airlock)
 "QE" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "Ro" = (
 /turf/unsimulated/wall/planetary/lythios43c{
 	desc = "Glacial permafrost, compacted harder than stone.";
@@ -575,7 +660,7 @@
 "RA" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "RU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -584,7 +669,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "Sy" = (
 /obj/effect/overlay/snow/floor/grav_edges,
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -597,7 +682,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "SW" = (
 /obj/effect/map_effect/portal/line/side_a{
 	dir = 4
@@ -611,11 +696,16 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/mining)
+/area/quartermaster/mining_airlock)
 "TC" = (
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "Vf" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
@@ -626,8 +716,13 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
+/obj/machinery/airlock_sensor/phoron{
+	pixel_y = -24;
+	pixel_x = 24
+	},
+/atom/movable/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/steel_grid,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "Vu" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/atmospherics/pipe/zpipe/up/scrubbers{
@@ -636,8 +731,9 @@
 /obj/machinery/atmospherics/pipe/zpipe/up/supply{
 	dir = 1
 	},
+/obj/structure/cable/green,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/mining)
+/area/quartermaster/mining_airlock)
 "VU" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/turbolift/rmine/under3)
@@ -647,14 +743,10 @@
 	dir = 1;
 	pixel_x = -2
 	},
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume,
+/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
-/area/quartermaster/miningdock)
-"XF" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/plating,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "XL" = (
 /turf/simulated/floor/outdoors/snow/lythios43c/indoors,
 /area/rift/surfacebase/underground/under2)
@@ -675,13 +767,13 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/mining)
+/area/quartermaster/mining_airlock)
 "ZA" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 "ZX" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
@@ -693,7 +785,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/quartermaster/miningdock)
+/area/quartermaster/mining_airlock)
 
 (1,1,1) = {"
 gO
@@ -18050,13 +18142,13 @@ lp
 lp
 lp
 lp
-gc
+lz
 TC
 TC
 TC
 TC
 TC
-gc
+lz
 TC
 TC
 TC
@@ -18443,12 +18535,12 @@ TC
 TC
 TC
 TC
-Qr
+KS
 jJ
 Cz
-Cz
-Qr
-lp
+FV
+jJ
+KS
 lp
 lp
 lp
@@ -18641,8 +18733,8 @@ jJ
 Ws
 rS
 ZX
+AB
 jJ
-lp
 lp
 lp
 lp
@@ -18835,8 +18927,8 @@ jJ
 LY
 yh
 SJ
-XF
-lp
+AB
+Qt
 lp
 lp
 lp
@@ -19029,8 +19121,8 @@ jJ
 Ws
 bX
 Vf
+AB
 jJ
-lp
 lp
 lp
 lp
@@ -19212,19 +19304,19 @@ lp
 lp
 lp
 fs
-Qr
+KS
 jJ
 jJ
 jJ
 jJ
 qF
-XF
+Qt
 jJ
 jJ
 fH
-fH
+sc
 jJ
-lp
+jJ
 lp
 lp
 lp
@@ -19611,7 +19703,7 @@ RA
 jJ
 jo
 pj
-XF
+Qt
 lp
 lp
 lp
@@ -19805,7 +19897,7 @@ ux
 oE
 mv
 Ki
-XF
+Qt
 lp
 lp
 lp
@@ -19999,7 +20091,7 @@ LO
 yS
 yh
 Es
-XF
+Qt
 lp
 lp
 lp
@@ -20181,7 +20273,7 @@ lp
 lp
 lp
 fs
-EE
+jJ
 jJ
 VU
 pz
@@ -20191,7 +20283,7 @@ jW
 LO
 uH
 jJ
-yh
+JC
 aW
 jJ
 Dr
@@ -20380,14 +20472,14 @@ jq
 vr
 zF
 Vu
-EE
+jJ
 jW
 LO
 Ji
 jJ
 jJ
 jJ
-Qr
+KS
 lp
 lp
 lp
@@ -20573,12 +20665,12 @@ Qt
 vr
 vr
 Tr
-EE
-EE
+jJ
+jJ
 jW
 LO
 LO
-XF
+Qt
 lp
 lp
 lp
@@ -20763,7 +20855,7 @@ lp
 lp
 lp
 lp
-EE
+jJ
 vr
 Zn
 hH
@@ -20772,7 +20864,7 @@ Mb
 xs
 Cq
 Cq
-XF
+Qt
 lp
 lp
 lp
@@ -20957,16 +21049,16 @@ lp
 xK
 lp
 lp
-EE
-EE
-EE
-lz
-EE
-EE
 jJ
-XF
-XF
-gc
+jJ
+jJ
+lz
+jJ
+jJ
+jJ
+Qt
+Qt
+lz
 Dr
 lp
 lp

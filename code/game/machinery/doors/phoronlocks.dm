@@ -97,6 +97,10 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 	var/target_temp = T20C
 	var/heating_power = 150000
 
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock/heater //Variant for use on rift
+	name = "Stationary Air Heater"
+	active_power_usage = 1000
+
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock/process()
 	..()
 
@@ -112,6 +116,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 		var/transfer_moles = min(1, volume_rate/env.volume)*env.total_moles
 		for(var/i=1 to 3)	//Scrubs 4 times as fast
 			scrub_gas(src, scrubbing_gas, env, air_contents, transfer_moles, active_power_usage)
+
 
 //
 // PHORON LOCK CONTROLLER
