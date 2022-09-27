@@ -10,8 +10,8 @@
 	rider_check_flags = CF_RIDING_CHECK_INCAPACITATED
 	rider_offsets = list(
 		list(0, 6, 1, null),
-		list(-8, 6, -1, null),
+		list(-8, 6, 1, null),
 		list(0, 6, -1, null),
-		list(8, 6, -1, null)
+		list(8, 6, 1, null)
 	)
 	rider_offset_format = CF_RIDING_OFFSETS_DIRECTIONAL

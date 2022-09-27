@@ -767,6 +767,9 @@
 	updatename("Default")
 
 /mob/living/silicon/robot/attack_hand(mob/user)
+	. = ..()
+	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
+		return
 
 	add_fingerprint(user)
 

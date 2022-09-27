@@ -193,6 +193,7 @@
 					L.visible_message(SPAN_BOLDWARNING("[L] is hurled off of [src]!"))
 					unbuckle_mob(L, BUCKLE_OP_FORCE)
 					L.throw_at(get_edge_target_turf(get_turf(src), dir), 7, 1, THROW_AT_IS_GENTLE, src)
+			spin(15, 1)
 
 		if("yes", "ye")
 			var/M = null
