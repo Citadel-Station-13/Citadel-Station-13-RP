@@ -59,7 +59,3 @@
 	max_n2 = 0
 	minbodytemp = 0
 	maxbodytemp = 700
-
-/mob/living/simple_mob/horror/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/horror_aura)
