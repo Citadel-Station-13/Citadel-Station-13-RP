@@ -35,10 +35,14 @@
 		carry_fireman(buckling)
 	return FALSE
 
+// todo: this should become far more deliberate so it isn't easy to accidentally kick someone off
 /mob/living/carbon/human/click_unbuckle_interaction(mob/user)
 	if(user != src)
+		// we can kick people off ourselves, others have to push us down or disarm offhands.
 		return FALSE
-	// we can kick people off ourselves, others have to push us down or disarm offhands.
+	if(user.a_intent != INTENT_GRAB)
+		// only allow kick-off while in grab intent
+		return FALSE
 	return ..()
 
 /mob/living/carbon/human/proc/carry_piggyback(mob/living/carbon/other, instant = FALSE, delay_mod = 1, loc_check = TRUE)

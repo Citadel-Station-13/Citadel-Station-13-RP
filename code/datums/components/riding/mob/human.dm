@@ -14,7 +14,13 @@
 /datum/component/riding_filter/mob/human/ridden_offhands_needed(mob/rider, semantic)
 	. = ..()
 	if(!rider)
-		return
+		var/atom/movable/AM = parent
+		var/tally = 0
+		for(var/i in AM.buckled_mobs)
+			if(AM.buckled_mobs[i] == BUCKLE_SEMANTIC_HUMAN_FIREMAN)
+				tally = 1
+				break
+		return max(., tally)
 	. = max(., semantic == BUCKLE_SEMANTIC_HUMAN_FIREMAN? ridden_offhands_needed_fireman : 0)
 
 /datum/component/riding_handler/mob/human
@@ -24,9 +30,9 @@
 	ridden_check_flags = CF_RIDING_CHECK_INCAPACITATED | CF_RIDING_CHECK_LYING
 	rider_offsets = list(
 		list(0, 6, 1, null),
-		list(8, 6, -1, null),
+		list(-8, 6, -1, null),
 		list(0, 6, -1, null),
-		list(-8, 6, -1, null)
+		list(8, 6, -1, null)
 	)
 	rider_offset_format = CF_RIDING_OFFSETS_DIRECTIONAL
 
