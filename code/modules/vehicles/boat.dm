@@ -133,5 +133,3 @@
 			list(12, 3, -0.3, null)
 		)
 	)
-
-	#warn invert aka 0.1 should be bottomomost on like -0.5
