@@ -123,12 +123,23 @@ obj/item/gun/projectile/shotgun/pump/combat/warden/verb/rename_gun()
 	icon_state = "grit"
 	item_state = "grit"
 	caliber = "10g"
-	ammo_type = /obj/item/ammo_casing/a10g/pellet
+	ammo_type = /obj/item/ammo_casing/a10g/pellet/grit
 	fire_sound = 'sound/weapons/gunshot/musket.ogg'
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 4)
 	one_handed_penalty = 5
 	recoil = 10
 	accuracy = 40
+
+/* This is being stubborn. Might need more input.
+/obj/item/gun/projectile/shotgun/pump/combat/grit/afterattack(mob/user, var/atom/movable/target)
+	. = ..()
+	if(user.mob_size < MOB_MEDIUM)
+		var/mob/living/L = target
+		var/throwdir = get_dir(user,L)
+		var/backwards = turn(throwdir, 180)
+		user.throw_at_old(get_edge_target_turf(user, backwards), rand(3,6), 10)
+		user.emote("flip")
+*/
 
 /obj/item/gun/projectile/shotgun/doublebarrel
 	name = "double-barreled shotgun"
