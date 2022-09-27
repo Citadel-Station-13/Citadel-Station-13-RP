@@ -133,7 +133,6 @@
 	for(var/spell in construct_spells)
 		src.add_spell(new spell, "const_spell_ready")
 	updateicon()
-	AddComponent(/datum/component/horror_aura/strong)
 
 /*
 /mob/living/simple_mob/construct/update_icon()
