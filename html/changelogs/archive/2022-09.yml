@@ -72,3 +72,11 @@
   - bugfix: Corrects inheritance of color changing var.
   - rscadd: Adds an open space turf.
   - rscadd: Adds a faction to launchers.
+2022-09-28:
+  Captain277:
+  - bugfix: Enables turf checking for skyfall.
+  - tweak: Adjusts charge cost.
+  - rscadd: Adds the Runner Jacket
+  - rscadd: Adds Grit, an exotic shotgun.
+  TheLordME:
+  - tweak: tweaked the mining refinery machines to work a little faster
