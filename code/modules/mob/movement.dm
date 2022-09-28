@@ -523,30 +523,26 @@
 	set hidden = TRUE
 	if(!canface())
 		return FALSE
-	if(pixel_x <= 16)
-		pixel_x++
-		is_shifted = TRUE
+	if(shift_pixel_x < 16)
+		adjust_pixel_shift_x(1)
 
 /mob/verb/westshift()
 	set hidden = TRUE
 	if(!canface())
 		return FALSE
-	if(pixel_x >= -16)
-		pixel_x--
-		is_shifted = TRUE
+	if(shift_pixel_x > -16)
+		adjust_pixel_shift_x(-1)
 
 /mob/verb/northshift()
 	set hidden = TRUE
 	if(!canface())
 		return FALSE
-	if(pixel_y <= 16)
-		pixel_y++
-		is_shifted = TRUE
+	if(shift_pixel_y < 16)
+		adjust_pixel_shift_y(1)
 
 /mob/verb/southshift()
 	set hidden = TRUE
 	if(!canface())
 		return FALSE
-	if(pixel_y >= -16)
-		pixel_y--
-		is_shifted = TRUE
+	if(shift_pixel_y > -16)
+		adjust_pixel_shift_y(-1)

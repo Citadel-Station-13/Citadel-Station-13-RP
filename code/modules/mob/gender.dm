@@ -2,7 +2,7 @@ GLOBAL_LIST_INIT(gender_datums, gender_datums())
 
 /proc/gender_datums()
 	. = list()
-	for(var/path in subtypesof(/datum/gender))
+	for(var/path in typesof(/datum/gender))
 		var/datum/gender/G = new path
 		.[G.key] = G
 
