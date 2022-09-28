@@ -26,40 +26,43 @@
 	return ..()
 
 obj/item/chainsaw/proc/turnOn(mob/user as mob)
-	if(on) return
-
-	to_chat(user, "You start pulling the string on \the [src].")
-	//visible_message("[usr] starts pulling the string on the [src].")
-
-	if(max_fuel <= 0)
-		if(do_after(user, 15))
-			to_chat(user, "\The [src] won't start!")
-		else
-			to_chat(user, "You fumble with the string.")
+	if(on)
+		return
 	else
-		if(do_after(user, 15))
-			to_chat(user, "You start \the [src] up with a loud grinding!")
-			//visible_message("[usr] starts \the [src] up with a loud grinding!")
-			attack_verb = list("shredded", "ripped", "torn")
-			playsound(src, 'sound/weapons/chainsaw_startup.ogg',40,1)
-			force = active_force
-			edge = 1
-			sharp = 1
-			on = 1
-			update_icon()
+		to_chat(user, "You start pulling the string on \the [src].")
+		//visible_message("[usr] starts pulling the string on the [src].")
+
+		if(max_fuel <= 0)
+			if(do_after(user, 15))
+				to_chat(user, "\The [src] won't start!")
+			else
+				to_chat(user, "You fumble with the string.")
 		else
-			to_chat(user, "You fumble with the string.")
+			if(do_after(user, 15))
+				to_chat(user, "You start \the [src] up with a loud grinding!")
+				//visible_message("[usr] starts \the [src] up with a loud grinding!")
+				attack_verb = list("shredded", "ripped", "torn")
+				playsound(src, 'sound/weapons/chainsaw_startup.ogg',40,1)
+				force = active_force
+				edge = 1
+				sharp = 1
+				on = 1
+				update_icon()
+			else
+				to_chat(user, "You fumble with the string.")
 
 /obj/item/chainsaw/proc/turnOff(mob/user as mob)
-	if(!on) return
-	to_chat(user, "You switch the gas nozzle on the chainsaw, turning it off.")
-	attack_verb = list("bluntly hit", "beat", "knocked")
-	playsound(user, 'sound/weapons/chainsaw_turnoff.ogg',40,1)
-	force = inactive_force
-	edge = 0
-	sharp = 0
-	on = 0
-	update_icon()
+	if(!on)
+		return
+	else
+		to_chat(user, "You switch the gas nozzle on the chainsaw, turning it off.")
+		attack_verb = list("bluntly hit", "beat", "knocked")
+		playsound(user, 'sound/weapons/chainsaw_turnoff.ogg',40,1)
+		force = inactive_force
+		edge = 0
+		sharp = 0
+		on = 0
+		update_icon()
 
 /obj/item/chainsaw/attack_self(mob/user as mob)
 	if(!on)
@@ -141,40 +144,43 @@ obj/item/chainsaw/proc/turnOn(mob/user as mob)
 	armor_penetration = 30
 
 obj/item/chainsaw/chainsword/turnOn(mob/user as mob)
-	if(on) return
-
-	to_chat(user, "You begin pulling the throttle on \the [src].")
-	//visible_message("[usr] starts pulling the throttle on the [src].")
-
-	if(max_fuel <= 0)
-		if(do_after(user, 15))
-			to_chat(user, "\The [src] won't start!")
-		else
-			to_chat(user, "Your finger slips off of the throttle.")
+	if(on)
+		return
 	else
-		if(do_after(user, 15))
-			to_chat(user, "You start \the [src] up with a loud grinding!")
-			//visible_message("[usr] starts \the [src] up with a loud grinding!")
-			attack_verb = list("shredded", "ripped", "torn")
-			playsound(src, 'sound/weapons/chainsaw_startup.ogg',40,1)
-			force = active_force
-			edge = 1
-			sharp = 1
-			on = 1
-			update_icon()
+		to_chat(user, "You begin pulling the throttle on \the [src].")
+		//visible_message("[usr] starts pulling the throttle on the [src].")
+
+		if(max_fuel <= 0)
+			if(do_after(user, 15))
+				to_chat(user, "\The [src] won't start!")
+			else
+				to_chat(user, "Your finger slips off of the throttle.")
 		else
-			to_chat(user, "Your finger slips off of the throttle.")
+			if(do_after(user, 15))
+				to_chat(user, "You start \the [src] up with a loud grinding!")
+				//visible_message("[usr] starts \the [src] up with a loud grinding!")
+				attack_verb = list("shredded", "ripped", "torn")
+				playsound(src, 'sound/weapons/chainsaw_startup.ogg',40,1)
+				force = active_force
+				edge = 1
+				sharp = 1
+				on = 1
+				update_icon()
+			else
+				to_chat(user, "Your finger slips off of the throttle.")
 
 /obj/item/chainsaw/chainsword/turnOff(mob/user as mob)
-	if(!on) return
-	to_chat(user, "You release the trigger on the chainsword, turning it off.")
-	attack_verb = list("bluntly hit", "beat", "knocked")
-	playsound(user, 'sound/weapons/chainsaw_turnoff.ogg',40,1)
-	force = inactive_force
-	edge = 0
-	sharp = 0
-	on = 0
-	update_icon()
+	if(!on)
+		return
+	else
+		to_chat(user, "You release the trigger on the chainsword, turning it off.")
+		attack_verb = list("bluntly hit", "beat", "knocked")
+		playsound(user, 'sound/weapons/chainsaw_turnoff.ogg',40,1)
+		force = inactive_force
+		edge = 0
+		sharp = 0
+		on = 0
+		update_icon()
 
 /obj/item/chainsaw/chainsword/update_icon()
 	if(on)
