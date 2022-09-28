@@ -19,10 +19,9 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/facility/interior/medical)
 "bc" = (
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 4
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/obj/structure/catwalk,
+/obj/machinery/light/small,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "be" = (
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
@@ -33,13 +32,18 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
 "bP" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 4
-	},
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor,
+/area/turbolift/rwest_mining/caves)
+"bZ" = (
+/obj/structure/railing,
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/structure/lattice,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "ca" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -76,6 +80,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/outpost)
+"cD" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
 "db" = (
 /obj/structure/railing,
 /obj/machinery/light/small{
@@ -132,6 +142,15 @@
 "ey" = (
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/exterior/nuketown/bunker)
+"ez" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
 "eA" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -191,6 +210,16 @@
 /obj/effect/map_effect/radiation_emitter/strong,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
+"fz" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/lattice,
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
 "fL" = (
 /obj/machinery/recharge_station,
 /obj/machinery/light/small{
@@ -231,8 +260,8 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/outpost/mining_main/outpost)
 "gz" = (
-/turf/simulated/shuttle/wall/voidcraft,
-/area/rift/surfacebase/outside/west_caves)
+/turf/simulated/shuttle/floor/voidcraft/lythios43c,
+/area/turbolift/rwest_mining/caves)
 "gA" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -471,11 +500,10 @@
 /turf/simulated/wall,
 /area/rift/facility/interior/workroom)
 "mJ" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/outpost/mining_main/outpost)
+/obj/structure/railing,
+/obj/structure/lattice,
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
 "mS" = (
 /obj/random/trash,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -487,6 +515,12 @@
 /obj/structure/railing,
 /turf/simulated/open,
 /area/outpost/mining_main/outpost)
+"nf" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
 "nk" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -553,6 +587,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
+"oq" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/lattice,
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
 "ox" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -562,6 +606,10 @@
 	},
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost)
+"oI" = (
+/obj/effect/overlay/snow/floor/edges_new,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
 "oL" = (
 /obj/structure/closet/secure_closet/miner,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -597,6 +645,12 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/bathrooms)
+"pV" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
 "qa" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -777,7 +831,7 @@
 /area/outpost/mining_main/outpost)
 "sV" = (
 /obj/structure/sign/mining,
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall,
 /area/outpost/mining_main/outpost)
 "tr" = (
 /obj/structure/table/standard{
@@ -801,10 +855,30 @@
 /obj/random/trash,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/exterior/bunker/lower)
+"tP" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
 "tW" = (
 /obj/structure/railing,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
+"ug" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/yellow/border{
+	dir = 8
+	},
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -24;
+	pixel_y = -5
+	},
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/outpost)
 "uj" = (
 /obj/structure/closet,
 /obj/random/maintenance,
@@ -852,10 +926,7 @@
 	},
 /area/rift/surfacebase/outside/west_caves)
 "vz" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "vI" = (
 /turf/simulated/wall,
@@ -937,10 +1008,8 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "wH" = (
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 8
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/obj/structure/lattice,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "wI" = (
 /obj/structure/bed,
@@ -971,14 +1040,11 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/outpost)
 "xa" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 5
-	},
 /obj/structure/railing{
-	dir = 4
+	dir = 1
 	},
-/obj/machinery/light/flamp/noshade,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/structure/lattice,
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "xd" = (
 /obj/effect/floor_decal/borderfloor{
@@ -1030,6 +1096,12 @@
 "yU" = (
 /turf/simulated/floor/lythios43c,
 /area/outpost/mining_main/outpost)
+"zu" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
 "zC" = (
 /obj/machinery/door/airlock{
 	name = "Unit 1"
@@ -1043,6 +1115,10 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/lattice,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "zN" = (
@@ -1104,6 +1180,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
+"AL" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/lattice,
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
 "AS" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -1166,6 +1249,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost)
+"BR" = (
+/obj/machinery/door/airlock/lift,
+/turf/simulated/shuttle/floor/voidcraft/lythios43c,
+/area/turbolift/rwest_mining/caves)
 "BX" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -1181,8 +1268,13 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/lythios43c/indoors,
-/area/outpost/mining_main/outpost)
+/area/outpost/mining_main/outpost/substation)
 "Cm" = (
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/undergound1)
@@ -1225,7 +1317,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/lythios43c/indoors,
-/area/outpost/mining_main/outpost)
+/area/outpost/mining_main/outpost/substation)
 "CM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -1233,9 +1325,8 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "CN" = (
-/obj/machinery/door/airlock/lift,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_caves)
+/turf/simulated/shuttle/wall/voidcraft,
+/area/turbolift/rwest_mining/caves)
 "CT" = (
 /obj/machinery/button/remote/airlock{
 	id = "outpost_shitter2";
@@ -1488,7 +1579,7 @@
 /area/rift/facility/interior/command)
 "HW" = (
 /turf/simulated/floor/lythios43c/indoors,
-/area/outpost/mining_main/outpost)
+/area/outpost/mining_main/outpost/substation)
 "Ia" = (
 /obj/effect/overlay/snow/floor/grav_edges,
 /obj/effect/overlay/snow/floor/edges_new{
@@ -1501,9 +1592,6 @@
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/exterior/mineshaft)
 "Iq" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 9
-	},
 /obj/machinery/light/flamp/noshade,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
@@ -1551,10 +1639,16 @@
 /obj/structure/catwalk,
 /turf/simulated/open/lythios43c,
 /area/outpost/mining_main/outpost)
+"Kj" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
 "Ku" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/outpost/mining_main/outpost)
+/area/rift/surfacebase/outside/west_caves)
 "KA" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/item/clothing/suit/storage/hooded/wintercoat,
@@ -1658,11 +1752,8 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/exterior/nuketown/bunker)
 "ND" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_caves)
+/turf/simulated/wall,
+/area/outpost/mining_main/outpost/substation)
 "NE" = (
 /obj/machinery/space_heater,
 /obj/structure/railing,
@@ -1751,6 +1842,9 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/lythios43c,
 /area/outpost/mining_main/outpost)
+"PP" = (
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/turbolift/rwest_mining/caves)
 "PS" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
@@ -1787,6 +1881,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost)
 "Ql" = (
@@ -1824,8 +1919,12 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "QK" = (
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/outpost/mining_main/outpost)
+/obj/structure/catwalk,
+/obj/machinery/light/small/emergency{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
 "QQ" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/machinery/light/small{
@@ -1951,11 +2050,17 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "Td" = (
-/obj/machinery/light/small{
-	dir = 4
+/obj/structure/cable{
+	d1 = 32;
+	d2 = 2;
+	icon_state = "32-2"
 	},
-/turf/simulated/floor/lythios43c/indoors,
-/area/outpost/mining_main/outpost)
+/obj/structure/lattice,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/outpost/mining_main/outpost/substation)
 "Te" = (
 /turf/simulated/wall,
 /area/rift/facility/interior/medical)
@@ -2063,6 +2168,14 @@
 /obj/structure/salvageable/personal,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
+"Vp" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing,
+/obj/structure/lattice,
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
 "Vr" = (
 /obj/structure/catwalk,
 /obj/structure/railing/grey,
@@ -2116,9 +2229,9 @@
 /area/rift/surfacebase/outside/west_caves)
 "Wn" = (
 /obj/effect/overlay/snow/floor/edges_new{
-	dir = 6
+	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "WJ" = (
 /obj/structure/table/standard{
@@ -2278,6 +2391,14 @@
 /obj/structure/railing{
 	dir = 8
 	},
+/obj/structure/lattice,
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
+"ZV" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/lattice,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 
@@ -31847,10 +31968,10 @@ JD
 JD
 JD
 JD
-ga
-ga
-ga
-ga
+ND
+ND
+ND
+ND
 be
 be
 be
@@ -32041,10 +32162,10 @@ JD
 JD
 JD
 JD
-ga
+ND
 HW
 HW
-ga
+ND
 be
 be
 be
@@ -32235,10 +32356,10 @@ JD
 JD
 JD
 JD
-ga
+ND
 Td
 Cg
-ga
+ND
 be
 LC
 iW
@@ -32429,10 +32550,10 @@ JD
 JD
 JD
 JD
-ga
-ga
+ND
+ND
 CK
-ga
+ND
 be
 ii
 YS
@@ -32613,12 +32734,12 @@ JD
 JD
 JD
 JD
-JD
-JD
-JD
-JD
-JD
-JD
+YS
+YS
+Iq
+PM
+PM
+jR
 JD
 JD
 JD
@@ -32807,17 +32928,17 @@ JD
 JD
 JD
 JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-ir
-ir
+YS
+YS
+YS
+qM
+qM
+YS
+PM
+PM
+Ia
+ge
+dI
 ir
 vV
 Wm
@@ -33001,23 +33122,23 @@ JD
 JD
 JD
 JD
-ir
-ir
-ir
-ir
-ir
-ir
-ir
-JD
-JD
-ir
-ir
-ir
-ir
-ir
-ir
+YS
+YS
+YS
+qM
+qM
+YS
+Tg
+Tg
+CU
+dI
+dI
+dI
+dI
+dI
+dI
 ii
-gq
+YS
 ga
 BQ
 Et
@@ -33195,23 +33316,23 @@ JD
 JD
 JD
 JD
-ir
-ir
+YS
+YS
 Iq
-PM
-PM
-jR
+YS
+YS
+YS
 ir
 ir
 ir
 ir
-bc
-bc
-bc
-bc
-bc
+ir
+dI
+Lk
+dI
+dI
 ii
-gq
+YS
 ga
 hK
 ga
@@ -33391,24 +33512,24 @@ JD
 JD
 ir
 ir
-ND
-qM
-qM
 YS
-PM
-PM
-Ia
-ge
-dI
-dI
-dI
-dI
-dI
+YS
+YS
+ir
+ir
+ir
+ir
+ir
+ir
+ir
+ir
+ir
+ir
 ii
-gq
+YS
 ga
 Ao
-PT
+ug
 PT
 jX
 PT
@@ -33580,24 +33701,24 @@ JD
 JD
 JD
 JD
-JD
-JD
-JD
 ir
 ir
-ND
-qM
-qM
+ir
+ir
+ir
 YS
-Tg
-Tg
-CU
-dI
-dI
-dI
-Lk
-dI
-dI
+YS
+YS
+ir
+ir
+ir
+ir
+ir
+ir
+ir
+ir
+ir
+ir
 ii
 Ku
 ga
@@ -33766,34 +33887,34 @@ JD
 JD
 JD
 JD
-JD
-JD
-JD
 vv
 vv
 vv
 vv
-vv
-vv
-JD
-JD
-vz
-vz
-xa
-bP
-Tg
-Wn
 ir
 ir
 ir
-wH
-wH
-wH
 ir
-wH
-wH
+ir
+ir
+ir
+ir
+ir
+YS
+YS
+YS
+ir
+ir
+ir
+ir
+ir
+ir
+ir
+ir
+ir
+ir
 ii
-gq
+YS
 vY
 xd
 CM
@@ -33956,10 +34077,10 @@ JD
 JD
 JD
 JD
-JD
-JD
-JD
-JD
+vv
+vv
+vv
+vv
 vv
 vv
 vv
@@ -33970,24 +34091,24 @@ Ra
 Ra
 Ra
 Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-gz
-gz
-gz
-gz
-gz
-gz
+wH
+wH
+mJ
+kx
+bc
+PP
+CN
+CN
+CN
+CN
+PP
 Rs
 ir
 ir
 ir
 ir
 ii
-gq
+YS
 vY
 TL
 lR
@@ -34143,14 +34264,14 @@ JD
 JD
 JD
 JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
 vv
 vv
 vv
@@ -34164,12 +34285,12 @@ Ra
 Ra
 Ra
 Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-gz
+wH
+wH
+mJ
+kx
+kx
+CN
 gz
 gz
 gz
@@ -34181,7 +34302,7 @@ iW
 iW
 iW
 Pl
-gq
+YS
 vY
 QE
 mi
@@ -34328,16 +34449,6 @@ JD
 JD
 JD
 JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
 vv
 vv
 vv
@@ -34346,6 +34457,16 @@ vv
 vv
 vv
 vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
 Ra
 Ra
 Ra
@@ -34358,12 +34479,12 @@ Ra
 Ra
 Ra
 Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-gz
+wH
+wH
+mJ
+kx
+kx
+BR
 gz
 gz
 gz
@@ -34374,8 +34495,8 @@ YS
 Sv
 Sv
 YS
-gq
-gq
+YS
+YS
 ga
 AG
 Lj
@@ -34513,15 +34634,6 @@ JD
 JD
 JD
 JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
 vv
 vv
 vv
@@ -34533,6 +34645,15 @@ vv
 vv
 vv
 vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
 Ra
 Ra
 Ra
@@ -34552,12 +34673,12 @@ Ra
 Ra
 Ra
 Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-gz
+wH
+wH
+mJ
+kx
+kx
+BR
 gz
 gz
 gz
@@ -34568,8 +34689,8 @@ Sv
 Sv
 Sv
 Sv
-QK
-QK
+Sv
+Sv
 sV
 vY
 vY
@@ -34578,7 +34699,7 @@ Ek
 ga
 qy
 vY
-Ek
+ga
 ga
 Rk
 ga
@@ -34704,9 +34825,6 @@ JD
 JD
 JD
 JD
-JD
-JD
-JD
 vv
 vv
 vv
@@ -34717,6 +34835,9 @@ vv
 vv
 vv
 vv
+vv
+vv
+vv
 Ra
 Ra
 Ra
@@ -34746,12 +34867,12 @@ Ra
 Ra
 Ra
 Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-gz
+wH
+wH
+mJ
+kx
+kx
+CN
 gz
 gz
 gz
@@ -34762,8 +34883,8 @@ YV
 YV
 YV
 YV
-mJ
-mJ
+YV
+YV
 vY
 tB
 KA
@@ -34878,27 +34999,27 @@ vv
 JD
 JD
 JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
 vv
 vv
 vv
@@ -34940,24 +35061,24 @@ Ra
 Ra
 Ra
 Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-gz
-gz
-gz
-gz
-gz
-gz
+AL
+AL
+Vp
+kx
+bc
+PP
+CN
+bP
+bP
+CN
+PP
 zD
-OF
-OF
-OF
+oq
+oq
+ZV
 Zy
-Kh
-Kh
+kx
+kx
 vY
 XL
 KR
@@ -35069,9 +35190,6 @@ vv
 "}
 (170,1,1) = {"
 vv
-JD
-JD
-JD
 vv
 vv
 vv
@@ -35094,22 +35212,9 @@ vv
 vv
 vv
 vv
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
+vv
+vv
+vv
 Ra
 Ra
 Ra
@@ -35150,8 +35255,24 @@ Ra
 Ra
 Ra
 tW
-Kh
-Kh
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+xa
+mJ
+kx
+kx
 vY
 XL
 KC
@@ -35164,7 +35285,7 @@ sV
 ga
 Ou
 ga
-Ek
+ga
 Xz
 rC
 nU
@@ -35327,25 +35448,25 @@ Ra
 Ra
 Ra
 Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
 tW
-Kh
-Kh
+Sv
+Sv
+Sv
+Wn
+Wn
+Wn
+Wn
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+xa
+mJ
+kx
+kx
 vY
 ET
 ET
@@ -35358,7 +35479,7 @@ ga
 ir
 ir
 ir
-ir
+ga
 ga
 ga
 ga
@@ -35521,26 +35642,26 @@ Ra
 Ra
 Ra
 Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
 tW
-Kh
-Kh
-Ek
+Sv
+Sv
+oI
+vz
+vz
+vz
+vz
+tP
+Wn
+Sv
+Sv
+Sv
+Sv
+Sv
+xa
+mJ
+kx
+bc
+ga
 vY
 vY
 vY
@@ -35548,12 +35669,15 @@ ga
 vY
 vY
 vY
-Ek
+ga
 ir
 ir
 ir
 ir
 ir
+ir
+ir
+ir
 JD
 JD
 JD
@@ -35599,20 +35723,17 @@ JD
 JD
 JD
 JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
 JD
 JD
 JD
@@ -35715,25 +35836,25 @@ Ra
 Ra
 Ra
 Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
 tW
-Kh
-Kh
+Sv
+Sv
+nf
+vz
+vz
+vz
+vz
+vz
+vz
+tP
+Wn
+Sv
+Sv
+Sv
+fz
+bZ
+kx
+kx
 dK
 PO
 PO
@@ -35748,55 +35869,13 @@ Ra
 Ra
 ir
 ir
+ir
+ir
+ir
+ir
 vv
 vv
 vv
-vv
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
 vv
 vv
 vv
@@ -35810,6 +35889,48 @@ vv
 JD
 JD
 JD
+JD
+JD
+JD
+JD
+JD
+JD
+JD
+JD
+JD
+JD
+JD
+JD
+JD
+JD
+JD
+JD
+JD
+JD
+JD
+JD
+JD
+JD
+JD
+JD
+JD
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
 JD
 JD
 JD
@@ -35835,12 +35956,12 @@ YS
 jR
 ir
 ir
-JD
-JD
-JD
-JD
-JD
-JD
+vv
+vv
+vv
+vv
+vv
+vv
 vv
 "}
 (174,1,1) = {"
@@ -35909,25 +36030,25 @@ Ra
 Ra
 Ra
 Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
 tW
-Kh
-Kh
+Sv
+nf
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+cD
+Sv
+Sv
+kx
+kx
+kx
+kx
 XY
 rI
 rI
@@ -35945,6 +36066,7 @@ Ra
 Ra
 Ra
 Ra
+ir
 vv
 vv
 vv
@@ -35983,11 +36105,10 @@ JD
 JD
 JD
 JD
-JD
-JD
-JD
-JD
-JD
+vv
+vv
+vv
+vv
 vv
 vv
 vv
@@ -36004,9 +36125,9 @@ vv
 vv
 vv
 vv
-JD
-JD
-JD
+vv
+vv
+vv
 JD
 JD
 JD
@@ -36023,7 +36144,7 @@ JD
 JD
 US
 US
-Og
+QK
 Og
 Og
 Og
@@ -36103,25 +36224,25 @@ Ra
 Ra
 Ra
 Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
 tW
-Kh
-Kh
+oI
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+zu
+pV
+Sv
+Sv
+Sv
+kx
+kx
+kx
+kx
 Kh
 Kh
 Kh
@@ -36154,6 +36275,11 @@ Ra
 Ra
 vv
 vv
+vv
+vv
+vv
+vv
+vv
 JD
 JD
 JD
@@ -36170,15 +36296,10 @@ JD
 JD
 JD
 JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
+vv
+vv
+vv
+vv
 vv
 vv
 vv
@@ -36201,20 +36322,20 @@ vv
 vv
 vv
 vv
+vv
+vv
+vv
+vv
 JD
 JD
 JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
+vv
+vv
+vv
+vv
+vv
+vv
+vv
 US
 re
 Og
@@ -36297,23 +36418,22 @@ Ra
 Ra
 Ra
 Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
+tW
+oI
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+zu
+Sv
+Sv
+Sv
+Sv
+Sv
+ez
 OF
 OF
 OF
@@ -36324,6 +36444,7 @@ OF
 OF
 OF
 OF
+OF
 Ra
 Ra
 Ra
@@ -36353,47 +36474,9 @@ vv
 vv
 vv
 vv
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
 vv
 vv
 vv
-vv
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
 vv
 vv
 vv
@@ -36402,7 +36485,45 @@ vv
 JD
 JD
 JD
-JD
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
 vv
 vv
 vv
@@ -36491,22 +36612,22 @@ Ra
 Ra
 Ra
 Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
+tW
+Sv
+Kj
+vz
+vz
+vz
+zu
+pV
+pV
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+XD
 Ra
 Ra
 Ra
@@ -36555,10 +36676,10 @@ vv
 vv
 vv
 vv
-JD
-JD
-JD
-JD
+vv
+vv
+vv
+vv
 vv
 vv
 vv
@@ -36685,22 +36806,22 @@ Ra
 Ra
 Ra
 Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
+tW
+Sv
+Sv
+pV
+pV
+pV
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+XD
 Ra
 Ra
 Ra
@@ -36879,22 +37000,22 @@ Ra
 Ra
 Ra
 Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
+tW
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+XD
 Ra
 Ra
 Ra
@@ -37074,20 +37195,20 @@ Ra
 Ra
 Ra
 Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
-Ra
+OF
+OF
+OF
+OF
+OF
+OF
+OF
+OF
+OF
+OF
+OF
+OF
+OF
+OF
 Ra
 Ra
 Ra

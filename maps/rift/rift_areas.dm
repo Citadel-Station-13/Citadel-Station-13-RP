@@ -72,28 +72,28 @@
 	delay_time = 15 SECONDS
 
 /area/turbolift/rwest_mining/surface
-	name = "mining shaft (surface)"
+	name = "west base (surface)"
 	lift_floor_label = "Surface"
-	lift_floor_name = "Cargo"
-	lift_announce_str = "Arriving at Cargo Level."
+	lift_floor_name = "Surface"
+	lift_announce_str = "Arriving at Surface Level."
 
 /area/turbolift/rwest_mining/caves
-	name = "mining shaft (surface)"
-	lift_floor_label = "Surface"
-	lift_floor_name = "Cargo"
-	lift_announce_str = "Arriving at Cargo Level."
+	name = "west base (caves)"
+	lift_floor_label = "Level 1"
+	lift_floor_name = "Caves"
+	lift_announce_str = "Arriving at Mining Level."
 
 /area/turbolift/rwest_mining/deep
-	name = "mining shaft (surface)"
-	lift_floor_label = "Surface"
-	lift_floor_name = "Cargo"
-	lift_announce_str = "Arriving at Cargo Level."
+	name = "west base (deep)"
+	lift_floor_label = "Level 2"
+	lift_floor_name = "Landing Pads"
+	lift_announce_str = "Arriving at Landing Pads Level."
 
 /area/turbolift/rwest_mining/base
-	name = "mining shaft (surface)"
-	lift_floor_label = "Surface"
-	lift_floor_name = "Cargo"
-	lift_announce_str = "Arriving at Cargo Level."
+	name = "west base (base)"
+	lift_floor_label = "Level 3"
+	lift_floor_name = "Base"
+	lift_announce_str = "Arriving at Base Level."
 
 
 /*

@@ -25,6 +25,9 @@
 #define Z_LEVEL_LAVALAND				21
 #define Z_LEVEL_LAVALAND_EAST			22
 
+#define Z_LEVEL_ROGUEMINE_1				23
+#define Z_LEVEL_ROGUEMINE_2				24
+
 /datum/map/rift
 	name = "Rift"
 	full_name = "NSB Atlas"
@@ -58,6 +61,8 @@
 		Z_LEVEL_SURFACE_MID,
 		Z_LEVEL_SURFACE_HIGH,
 		Z_LEVEL_WEST_BASE,
+		Z_LEVEL_WEST_DEEP,
+		Z_LEVEL_WEST_CAVERN,
 		Z_LEVEL_WEST_PLAIN)
 	player_levels = list(Z_LEVEL_UNDERGROUND_FLOOR,
 		Z_LEVEL_UNDERGROUND_DEEP,
@@ -67,6 +72,7 @@
 		Z_LEVEL_SURFACE_HIGH,
 		Z_LEVEL_WEST_BASE,
 		Z_LEVEL_WEST_PLAIN,
+		Z_LEVEL_WEST_DEEP,
 		Z_LEVEL_WEST_CAVERN)
 
 	holomap_smoosh = list(list(
@@ -173,9 +179,9 @@
 		list("ExoPlanet - Z3 Planet"), // Desert Exoplanet
 		list("ExoPlanet - Z4 Planet"), // Gaia Planet
 		list("ExoPlanet - Z5 Planet"), // Frozen Planet
-//		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4"),
 		list("Away Mission - Trade Port"), // Trading Post
-		list("Away Mission - Lava Land", "Away Mission - Lava Land (East)")
+		list("Away Mission - Lava Land", "Away Mission - Lava Land (East)"),
+		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4")
 	)
 
 	ai_shell_restricted = TRUE
@@ -189,6 +195,11 @@
 
 	mining_station_z =		list(Z_LEVEL_UNDERGROUND_DEEP)
 	mining_outpost_z =		list(Z_LEVEL_WEST_PLAIN)
+
+	belter_docked_z = 		list(Z_LEVEL_WEST_DEEP)
+	belter_transit_z =	 	list(Z_LEVEL_MISC)
+	belter_belt_z = 		list(Z_LEVEL_ROGUEMINE_1,
+						 		 Z_LEVEL_ROGUEMINE_2)
 
 	lateload_single_pick = null //Nothing right now.
 
