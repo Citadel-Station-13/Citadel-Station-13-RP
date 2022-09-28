@@ -112,7 +112,7 @@
 		speciesblurb += "a <font color='[species.get_flesh_colour(src)]'>[dna.custom_species ? dna.custom_species : species.get_examine_name()]</font>"
 
 	// The first line of the examine block.
-	. += SPAN_INFO("[icon2html(src, user)] This is <EM>[src.name]</EM>[skip_epcies? ". [SPAN_WARNING(You can't make out what species they are.)]" : ", [T.he] [T.is] [speciesblurb]!"]")
+	. += SPAN_INFO("[icon2html(src, user)] This is <EM>[src.name]</EM>[skip_species? ". [SPAN_WARNING("You can't make out what species they are.")]" : ", [T.he] [T.is] [speciesblurb]!"]")
 
 	var/extra_species_text = species.get_additional_examine_text(src)
 	if(extra_species_text)
