@@ -1180,9 +1180,6 @@
 "aTl" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/structure/table/marble,
-/obj/item/reagent_containers/food/condiment/small/sugar{
-	pixel_x = -16
-	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
 "aTy" = (

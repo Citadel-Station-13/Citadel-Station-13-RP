@@ -18578,6 +18578,7 @@
 /obj/random/coin,
 /obj/random/maintenance,
 /obj/random/maintenance,
+/obj/random/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "Is" = (
@@ -23150,9 +23151,9 @@
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "AI Power Reserve";
 	charge = 500000;
-	output_level = 100;
+	cur_coils = 3;
 	input_level = 100;
-	cur_coils = 3
+	output_level = 100
 	},
 /obj/machinery/camera/network/command{
 	dir = 8
