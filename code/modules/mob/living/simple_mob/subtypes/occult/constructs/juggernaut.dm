@@ -59,6 +59,10 @@
 	SetWeakened(0)
 	return ..()
 
+/mob/living/simple_mob/construct/juggernaut/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/horror_aura/strong)
+
 /mob/living/simple_mob/construct/juggernaut/bullet_act(var/obj/item/projectile/P)
 	var/reflectchance = 80 - round(P.damage/3)
 	if(prob(reflectchance))

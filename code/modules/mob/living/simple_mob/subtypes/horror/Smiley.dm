@@ -41,6 +41,10 @@
 	bone_amount = 10
 	hide_amount = 5
 
+/mob/living/simple_mob/horror/Smiley/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/horror_aura/weak)
+
 /mob/living/simple_mob/horror/Smiley/death()
 	playsound(src, 'sound/h_sounds/lynx.ogg', 50, 1)
 	..()

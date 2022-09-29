@@ -39,6 +39,10 @@
 	hide_amount = 10
 	exotic_amount = 5
 
+/mob/living/simple_mob/horror/Sally/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/horror_aura)
+
 /mob/living/simple_mob/horror/Sally/death()
 	playsound(src, 'sound/h_sounds/lynx.ogg', 50, 1)
 	..()

@@ -40,6 +40,10 @@
 	hide_amount = 2
 	exotic_amount = 5
 
+/mob/living/simple_mob/horror/bradley/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/horror_aura/weak)
+
 /mob/living/simple_mob/horror/bradley/death()
 	playsound(src, 'sound/h_sounds/mumble.ogg', 50, 1)
 	..()
