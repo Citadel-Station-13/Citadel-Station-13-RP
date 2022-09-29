@@ -1121,7 +1121,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "aRq" = (
-/obj/structure/table/marble,
 /obj/item/reagent_containers/food/drinks/cup,
 /obj/item/reagent_containers/food/drinks/cup{
 	pixel_x = -8;
@@ -1143,7 +1142,8 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
 	},
-/turf/simulated/floor/lino,
+/obj/structure/table/fancyblack,
+/turf/simulated/floor/cult,
 /area/crew_quarters/coffee_shop)
 "aRs" = (
 /obj/structure/toilet{
@@ -1178,12 +1178,12 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "aTl" = (
-/obj/effect/floor_decal/spline/plain,
-/obj/structure/table/marble,
 /obj/item/reagent_containers/food/condiment/small/sugar{
 	pixel_x = -16
 	},
-/turf/simulated/floor/lino,
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/structure/table/fancyblack,
+/turf/simulated/floor/cult,
 /area/crew_quarters/coffee_shop)
 "aTy" = (
 /turf/simulated/floor/plating,
@@ -4297,7 +4297,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/medical/sleeper)
 "dqp" = (
-/turf/simulated/floor/lino,
+/turf/simulated/floor/cult,
 /area/crew_quarters/coffee_shop)
 "dqr" = (
 /obj/structure/cable/green{
@@ -6036,14 +6036,8 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/railing/grey{
-	dir = 1
-	},
-/obj/structure/railing/grey,
-/obj/structure/railing/grey{
-	dir = 4
-	},
-/turf/simulated/open,
+/obj/structure/bonfire/permanent,
+/turf/simulated/floor/wood,
 /area/hallway/primary/surfacetwo)
 "eAV" = (
 /obj/structure/table/reinforced,
@@ -6814,10 +6808,6 @@
 /turf/simulated/floor/carpet/blue,
 /area/security/breakroom)
 "fdP" = (
-/obj/effect/floor_decal/spline/plain{
-	dir = 4
-	},
-/obj/structure/table/marble,
 /obj/item/reagent_containers/food/condiment/small/sugar{
 	pixel_x = -6;
 	pixel_y = 6
@@ -6866,7 +6856,12 @@
 	pixel_x = -10;
 	pixel_y = 6
 	},
-/turf/simulated/floor/lino,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/effect/debris/cleanable/cobweb2,
+/obj/structure/table/fancyblack,
+/turf/simulated/floor/cult,
 /area/crew_quarters/coffee_shop)
 "fdT" = (
 /obj/structure/inflatable/door,
@@ -7699,9 +7694,6 @@
 /obj/structure/bed/chair/wood{
 	dir = 1
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals6{
-	dir = 8
-	},
 /obj/structure/curtain/open/bed{
 	name = "brown curtain";
 	pixel_x = -32
@@ -7726,10 +7718,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/sleep)
 "fIg" = (
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
-/turf/simulated/floor/lino,
+/turf/simulated/floor/cult,
 /area/crew_quarters/coffee_shop)
 "fIH" = (
 /obj/structure/railing,
@@ -10046,10 +10038,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/heads/hor)
 "hoN" = (
-/obj/effect/floor_decal/spline/plain,
-/obj/structure/table/marble,
 /obj/item/reagent_containers/food/drinks/cup,
-/turf/simulated/floor/lino,
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/structure/table/fancyblack,
+/turf/simulated/floor/cult,
 /area/crew_quarters/coffee_shop)
 "hpv" = (
 /obj/machinery/conveyor{
@@ -10944,10 +10936,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/researchdivision)
 "hRG" = (
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/floor_decal/spline/fancy/wood{
 	dir = 6
 	},
-/turf/simulated/floor/lino,
+/turf/simulated/floor/cult,
 /area/crew_quarters/coffee_shop)
 "hRU" = (
 /obj/effect/floor_decal/borderfloor{
@@ -11169,8 +11161,8 @@
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/heads/hor)
 "ibd" = (
-/obj/structure/fireplace{
-	pixel_y = 14
+/obj/effect/debris/cleanable/cobweb{
+	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
@@ -11527,10 +11519,15 @@
 /turf/simulated/floor/tiled/monotile,
 /area/assembly/robotics)
 "ipQ" = (
-/obj/structure/table/wooden_reinforced,
-/obj/machinery/light,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/obj/item/scrying{
+	anchored = 1
+	},
 /turf/simulated/floor/wood,
-/area/crew_quarters/coffee_shop)
+/area/hallway/primary/surfacetwo)
 "ipW" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -12960,6 +12957,9 @@
 	dir = 5
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/debris/cleanable/cobweb2{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/coffee_shop)
 "jrD" = (
@@ -14767,6 +14767,18 @@
 	dir = 4;
 	pixel_x = -30
 	},
+/obj/structure/bonfire/permanent,
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 1e+006
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "kKy" = (
@@ -15289,9 +15301,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/researchdivision)
 "lcv" = (
-/obj/effect/floor_decal/spline/plain{
-	dir = 4
-	},
 /obj/structure/sink/kitchen{
 	dir = 8;
 	pixel_x = 12
@@ -15301,7 +15310,10 @@
 	name = "Station Intercom (General)";
 	pixel_x = 24
 	},
-/turf/simulated/floor/lino,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/turf/simulated/floor/cult,
 /area/crew_quarters/coffee_shop)
 "lcJ" = (
 /obj/structure/bed/chair/comfy/black{
@@ -16658,11 +16670,8 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced,
-/obj/structure/railing/grey{
-	dir = 1
-	},
-/obj/structure/railing/grey,
-/turf/simulated/open,
+/obj/structure/bonfire/permanent,
+/turf/simulated/floor/wood,
 /area/hallway/primary/surfacetwo)
 "mcs" = (
 /turf/simulated/floor/tiled/dark,
@@ -16851,8 +16860,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "mkA" = (
-/obj/structure/table/wooden_reinforced,
-/obj/item/reagent_containers/food/condiment/small/sugar,
+/obj/structure/flora/pumpkin/pumpkin_patch/presents,
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "mlx" = (
@@ -18598,9 +18606,6 @@
 /area/rnd/lockers)
 "nCx" = (
 /obj/structure/bed/chair/wood,
-/obj/effect/floor_decal/steeldecal/steel_decals6{
-	dir = 1
-	},
 /obj/structure/curtain/open/bed{
 	name = "brown curtain";
 	pixel_x = -32
@@ -19617,19 +19622,16 @@
 /turf/simulated/floor/tiled/steel,
 /area/maintenance/medbay)
 "ovs" = (
-/obj/effect/floor_decal/spline/plain{
-	dir = 8
-	},
-/obj/structure/table/marble,
-/obj/item/toy/plushie/coffee_fox{
-	name = "Cream"
-	},
 /obj/machinery/button/holosign{
 	id = "cafe_sign";
 	pixel_x = -24;
 	pixel_y = -6
 	},
-/turf/simulated/floor/lino,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/structure/table/fancyblack,
+/turf/simulated/floor/cult,
 /area/crew_quarters/coffee_shop)
 "ovT" = (
 /obj/structure/grille,
@@ -21107,12 +21109,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/sleep)
-"pqG" = (
-/obj/structure/bed/chair/wood{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/coffee_shop)
 "pqQ" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
@@ -21744,9 +21740,6 @@
 "pRF" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/flame/candle,
-/obj/effect/floor_decal/steeldecal/steel_decals6{
-	dir = 1
-	},
 /obj/structure/curtain/open/bed{
 	name = "brown curtain";
 	pixel_x = -32
@@ -22172,12 +22165,9 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "qjh" = (
-/obj/structure/table/marble,
 /obj/machinery/chemical_dispenser/bar_coffee/full,
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/lino,
+/obj/structure/table/fancyblack,
+/turf/simulated/floor/cult,
 /area/crew_quarters/coffee_shop)
 "qjk" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -23515,14 +23505,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/researchdivision)
 "rnE" = (
-/obj/structure/table/wooden_reinforced,
-/obj/item/flame/candle,
-/obj/effect/floor_decal/steeldecal/steel_decals6{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals6{
-	dir = 8
-	},
 /obj/structure/curtain/open/bed{
 	name = "brown curtain";
 	pixel_x = -32
@@ -25279,9 +25261,17 @@
 /turf/simulated/floor/plating,
 /area/security/breakroom)
 "sMm" = (
-/obj/structure/table/wooden_reinforced,
-/obj/structure/flora/pottedplant/stoutbush{
-	pixel_y = 12
+/obj/structure/bonfire/permanent,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 1e+006
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
@@ -25808,9 +25798,6 @@
 /area/medical/sleeper)
 "tlj" = (
 /obj/structure/bed/chair/wood,
-/obj/effect/floor_decal/steeldecal/steel_decals6{
-	dir = 1
-	},
 /obj/structure/curtain/open/bed{
 	name = "brown curtain";
 	pixel_x = -32
@@ -29318,10 +29305,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "vKQ" = (
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
-/turf/simulated/floor/lino,
+/turf/simulated/floor/cult,
 /area/crew_quarters/coffee_shop)
 "vMk" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -32103,6 +32090,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "xVD" = (
@@ -43361,7 +43349,7 @@ fHU
 dJH
 nCx
 rnE
-fHU
+rnE
 kHx
 jrj
 qGO
@@ -43557,7 +43545,7 @@ neF
 neF
 neF
 neF
-pqG
+neF
 qGO
 eBi
 eBi
@@ -43750,7 +43738,7 @@ cwF
 tGt
 neF
 neF
-wlU
+neF
 mkA
 qGO
 cee
@@ -43944,8 +43932,8 @@ cwF
 tGt
 neF
 neF
-wlU
-ipQ
+neF
+neF
 qGO
 jdR
 iiF
@@ -44910,7 +44898,7 @@ gqz
 dnw
 hPN
 bPt
-mcn
+ipQ
 egW
 bPt
 xPt
