@@ -9555,7 +9555,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/wall/r_wall,
+/obj/machinery/door/airlock/maintenance/engi,
+/turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "wV" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
@@ -9736,8 +9737,7 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
+	d1 = 32;
 	icon_state = "32-1"
 	},
 /turf/simulated/open,
