@@ -42,6 +42,10 @@
 	hide_amount = 10
 	hide_type = /obj/item/stack/material/cloth
 
+/mob/living/simple_mob/horror/Willy/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/horror_aura)
+
 /mob/living/simple_mob/horror/Willy/death()
 	playsound(src, 'sound/h_sounds/sampler.ogg', 50, 1)
 	..()

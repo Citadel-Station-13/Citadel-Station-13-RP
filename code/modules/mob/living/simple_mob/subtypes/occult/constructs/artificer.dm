@@ -41,6 +41,10 @@
 
 	ai_holder_type = /datum/ai_holder/mimic
 
+/mob/living/simple_mob/construct/artificer/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/horror_aura)
+
 ////////////////////////////
 //		Ranged Artificer
 ////////////////////////////

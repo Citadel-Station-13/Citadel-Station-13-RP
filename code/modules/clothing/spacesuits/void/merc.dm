@@ -52,6 +52,20 @@
 	icon_state = "void_soviet"
 	armor = list(melee = 40, bullet = 60, laser = 20, energy = 15, bomb = 45, bio = 100, rad = 100)
 
+//'Werewolf' Void Suit
+/obj/item/clothing/head/helmet/space/void/merc/wulf
+	name = "antique werwulf helmet"
+	desc = "An antique helmet designed by a long-forgotten corporation. Their dreams of conquest were no match against their competitors. Few of these helmets remain."
+	icon_state = "void_wulf"
+	armor = list(melee = 40, bullet = 60, laser = 20,energy = 15, bomb = 45, bio = 100, rad = 100)
+	light_overlay = "sr_overlay"
+
+/obj/item/clothing/suit/space/void/merc/wulf
+	name = "antique werwulf voidsuit"
+	desc = "A well maintained antique, this armored voidsuit cuts an imposing silhouette. Many such suits used to be found in scrap heaps across the Frontier, although few now remain."
+	icon_state = "void_wulf"
+	armor = list(melee = 40, bullet = 60, laser = 20, energy = 15, bomb = 45, bio = 100, rad = 100)
+
 // Honk Op Rig
 /obj/item/clothing/head/helmet/space/void/clownop
 	name = "clown commando voidsuit helmet"

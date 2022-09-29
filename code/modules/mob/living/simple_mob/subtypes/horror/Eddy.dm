@@ -40,6 +40,10 @@
 	hide_amount = 1
 	exotic_amount = 5
 
+/mob/living/simple_mob/horror/Eddy/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/horror_aura/weak)
+
 /mob/living/simple_mob/horror/Eddy/death()
 	playsound(src, 'sound/h_sounds/headcrab.ogg', 50, 1)
 	..()
