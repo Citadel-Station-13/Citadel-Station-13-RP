@@ -14,6 +14,9 @@
 	icon_state = "mud_dark"
 	edge_blending_priority = 3
 
+/turf/simulated/floor/outdoors/mud/indoors
+	outdoors = FALSE
+
 /turf/simulated/floor/outdoors/rocks
 	name = "rocks"
 	desc = "Hard as a rock."
