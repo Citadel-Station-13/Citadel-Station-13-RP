@@ -147,7 +147,7 @@
 			/obj/item/pickaxe/tyrmalin = 2,
 			/obj/item/grenade/explosive/ied/tyrmalin = 2
 			)
-	cost = 120
+	cost = 300
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "Tyrmalin Mining crate"
 	access = access_mining
