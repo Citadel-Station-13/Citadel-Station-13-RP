@@ -143,6 +143,8 @@
  */
 /atom/movable/proc/buckle_mob(mob/M, flags, mob/user, semantic)
 	SHOULD_CALL_PARENT(TRUE)
+	ASSERT(M)
+
 	if(M == src)
 		return FALSE
 
@@ -187,6 +189,7 @@
  */
 /atom/movable/proc/unbuckle_mob(mob/M, flags, mob/user, semantic)
 	SHOULD_CALL_PARENT(TRUE)
+	ASSERT(M)
 
 	if(!(flags & BUCKLE_OP_FORCE) && !can_unbuckle_mob(M, flags, user, semantic))
 		return FALSE
@@ -362,6 +365,17 @@
 	return buckle_lying
 
 //! mob stuff
+/**
+ * called to try to buckle us to something
+ */
+/mob/proc/buckle(atom/movable/AM, flags, mob/user, semantic)
+	return AM.buckle_mob(src, flags, user, semantic)
+
+/**
+ * called to try to unbuckle us from whatever we're buckled to
+ */
+/mob/proc/unbuckle(flags, mob/user, semantic)
+	return buckled?.unbuckle_mob(src, flags, user, semantic)
 
 /**
  * called when we're buckled to something.

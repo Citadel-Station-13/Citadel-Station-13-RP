@@ -99,7 +99,7 @@
 /mob/living/simple_mob/slime/xenobio/proc/stop_consumption(mob/living/L)
 	if(!victim)
 		return
-	victim.unbuckle_mob()
+	victim.unbuckle_mob(src, BUCKLE_OP_FORCE)
 	victim.visible_message(
 		SPAN_NOTICE("\The [src] slides off of [victim]!"),
 		SPAN_NOTICE("\The [src] slides off of you!")
