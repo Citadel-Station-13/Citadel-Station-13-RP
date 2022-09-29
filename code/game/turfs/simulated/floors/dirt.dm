@@ -6,6 +6,9 @@
 	initial_flooring = /decl/flooring/outdoors/dirt
 	baseturfs = /turf/baseturf_bottom
 
+/turf/simulated/floor/outdoors/dirt
+	outdoors = FALSE
+
 /turf/simulated/floor/outdoors/dirtlight
 	name = "dirt"
 	desc = "Quite dirty!"
@@ -13,3 +16,6 @@
 	edge_blending_priority = 0
 	initial_flooring = /decl/flooring/outdoors/dirt
 	baseturfs = /turf/baseturf_bottom
+
+/turf/simulated/floor/outdoors/dirtlight
+	outdoors = FALSE
