@@ -595,6 +595,15 @@
 /obj/structure/railing,
 /turf/simulated/floor/outdoors/snow/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_deep)
+"pe" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/voidcraft/lythios43c,
+/area/shuttle/belter)
 "pf" = (
 /obj/effect/overlay/snow/floor,
 /obj/effect/trap/pop_up/thrower{
@@ -694,7 +703,7 @@
 	},
 /turf/simulated/shuttle/floor/voidcraft/lythios43c,
 /area/shuttle/belter)
-"qx" = (
+"qy" = (
 /obj/machinery/atmospheric_field_generator/perma,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
@@ -1406,15 +1415,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/quartermaster/belterdock)
-"Oj" = (
-/obj/structure/bed/chair/shuttle{
-	dir = 4
-	},
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/shuttle/floor/voidcraft/lythios43c,
-/area/shuttle/belter)
 "Ow" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -1767,6 +1767,7 @@
 /obj/machinery/computer/roguezones{
 	dir = 8
 	},
+/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled/techfloor,
 /area/quartermaster/belterdock)
 "ZM" = (
@@ -35426,7 +35427,7 @@ mB
 wN
 Fm
 Fm
-Oj
+pe
 MO
 lt
 SI
@@ -36007,7 +36008,7 @@ uN
 SI
 SI
 yS
-qx
+qy
 SI
 an
 an
