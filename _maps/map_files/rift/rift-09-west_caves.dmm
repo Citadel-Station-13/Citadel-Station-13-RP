@@ -133,6 +133,14 @@
 "dS" = (
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/medical)
+"en" = (
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/obj/machinery/power/port_gen/pacman,
+/turf/simulated/floor/lythios43c/indoors,
+/area/outpost/mining_main/outpost/substation)
 "eo" = (
 /obj/machinery/door/window/southright{
 	dir = 8
@@ -278,6 +286,14 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/bathrooms)
+"gL" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/outpost/mining_main/outpost/substation)
 "gP" = (
 /obj/random/trash,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -294,6 +310,20 @@
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
+"hu" = (
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/obj/machinery/power/apc{
+	name = "south bump";
+	pixel_y = -28
+	},
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/outpost/mining_main/outpost/substation)
 "hv" = (
 /obj/structure/lattice,
 /turf/simulated/open/lythios43c,
@@ -394,6 +424,17 @@
 "jj" = (
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
+"jI" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/outpost/mining_main/outpost/substation)
 "jR" = (
 /obj/effect/overlay/snow/floor/edges_new{
 	dir = 10
@@ -931,11 +972,15 @@
 "vI" = (
 /turf/simulated/wall,
 /area/rift/facility/interior/command)
+"vM" = (
+/obj/structure/cable,
+/turf/simulated/floor/lythios43c/indoors,
+/area/outpost/mining_main/outpost/substation)
 "vV" = (
 /obj/effect/overlay/snow/floor/edges_new{
 	dir = 5
 	},
-/obj/structure/cable{
+/obj/structure/cable/green{
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
@@ -983,13 +1028,13 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/medical)
 "wn" = (
-/obj/structure/cable,
 /obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
 	pixel_x = -28
 	},
+/obj/structure/cable/green,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost)
 "wt" = (
@@ -1016,6 +1061,14 @@
 /obj/item/bedsheet/medical,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/medical)
+"wQ" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/outpost/mining_main/outpost/substation)
 "wS" = (
 /obj/machinery/shower{
 	pixel_y = 18
@@ -1220,6 +1273,15 @@
 "Bb" = (
 /turf/simulated/open,
 /area/rift/facility/interior/undergound1)
+"Br" = (
+/obj/machinery/power/breakerbox/activated{
+	RCon_tag = "Mining Outpost Substation Bypass"
+	},
+/obj/machinery/camera/network/research_outpost{
+	dir = 4
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/outpost/mining_main/outpost/substation)
 "BI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -1239,11 +1301,6 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
 "BQ" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -1264,14 +1321,11 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "Cg" = (
-/obj/structure/cable{
-	d2 = 4;
-	icon_state = "0-4"
+/obj/structure/cable/green{
+	icon_state = "2-4"
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/lythios43c/indoors,
 /area/outpost/mining_main/outpost/substation)
@@ -1310,11 +1364,13 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/undergound1)
 "CK" = (
-/obj/machinery/door/airlock/maintenance/engi,
-/obj/structure/cable{
+/obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/maintenance/engi{
+	req_one_access = list(10,48)
 	},
 /turf/simulated/floor/lythios43c/indoors,
 /area/outpost/mining_main/outpost/substation)
@@ -1345,13 +1401,11 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "Dc" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
@@ -1452,8 +1506,6 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "Et" = (
-/obj/structure/cable,
-/obj/machinery/power/port_gen/pacman,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost)
 "ET" = (
@@ -1526,17 +1578,10 @@
 /turf/simulated/open,
 /area/rift/exterior/mineshaft)
 "Hg" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
+/obj/item/storage/toolbox/electrical,
+/obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/obj/item/storage/toolbox/electrical,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost)
 "Hh" = (
@@ -1788,6 +1833,19 @@
 	},
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost)
+"OD" = (
+/obj/machinery/power/smes/buildable{
+	RCon_tag = "Substation - Mining Outpost";
+	output_attempt = 0;
+	outputting = 0;
+	charge = 1000
+	},
+/obj/structure/cable/green,
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/outpost/mining_main/outpost/substation)
 "OF" = (
 /obj/structure/railing{
 	dir = 8
@@ -1825,6 +1883,17 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/undergound1)
+"Pz" = (
+/obj/structure/cable/green,
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/sensor{
+	name = "Powernet Sensor - Mining Outpost Subgrid";
+	name_tag = "Mining Outpost Subgrid"
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/outpost/mining_main/outpost/substation)
 "PB" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
@@ -1934,9 +2003,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/outpost/mining_main/outpost)
 "QV" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
+/obj/structure/cable/green{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -1992,6 +2059,19 @@
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
+"RC" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/outpost/mining_main/outpost/substation)
 "RG" = (
 /obj/machinery/power/apc/alarms_hidden{
 	cell_type = null;
@@ -2050,14 +2130,10 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "Td" = (
-/obj/structure/cable{
-	d1 = 32;
+/obj/structure/lattice,
+/obj/structure/cable/green{
 	d2 = 2;
 	icon_state = "32-2"
-	},
-/obj/structure/lattice,
-/obj/machinery/light/small{
-	dir = 1
 	},
 /turf/simulated/open,
 /area/outpost/mining_main/outpost/substation)
@@ -2217,13 +2293,11 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "Wm" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/effect/overlay/snow/floor/edges_new{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
@@ -2253,7 +2327,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/bathrooms)
 "WQ" = (
-/obj/structure/cable{
+/obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
@@ -2280,6 +2354,13 @@
 /obj/structure/salvageable/implant_container_os,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
+"Xc" = (
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/simulated/floor/lythios43c/indoors,
+/area/outpost/mining_main/outpost/substation)
 "Xl" = (
 /obj/machinery/mech_recharger,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -2323,9 +2404,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor/glass,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
+/obj/structure/cable/green{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor,
@@ -2355,6 +2434,14 @@
 	},
 /turf/simulated/floor/lythios43c,
 /area/outpost/mining_main/outpost)
+"Yj" = (
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/outpost/mining_main/outpost/substation)
 "Yl" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -2373,6 +2460,19 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
+"Yr" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/outpost/mining_main/outpost/substation)
 "Yu" = (
 /obj/random/trash_pile,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -31579,14 +31679,14 @@ JD
 JD
 JD
 JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
+ND
+ND
+ND
+ND
+ND
+ND
+be
+be
 JD
 JD
 JD
@@ -31773,16 +31873,16 @@ JD
 JD
 JD
 JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
+ND
+Br
+OD
+Pz
+en
+ND
+be
+be
+be
+be
 be
 be
 be
@@ -31967,12 +32067,12 @@ JD
 JD
 JD
 JD
-JD
 ND
+RC
+Xc
+Yj
+Yr
 ND
-ND
-ND
-be
 be
 be
 be
@@ -32161,12 +32261,12 @@ JD
 JD
 JD
 JD
-JD
 ND
-HW
-HW
+jI
+gL
+vM
+wQ
 ND
-be
 be
 be
 be
@@ -32355,12 +32455,12 @@ JD
 JD
 JD
 JD
-JD
 ND
+HW
 Td
 Cg
+hu
 ND
-be
 LC
 iW
 iW
@@ -32549,12 +32649,12 @@ JD
 JD
 JD
 JD
-JD
+ND
 ND
 ND
 CK
 ND
-be
+ND
 ii
 YS
 YS

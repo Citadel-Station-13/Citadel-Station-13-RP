@@ -5,6 +5,14 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
+"ag" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/outpost/mining_main/outpost/substation)
 "ah" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/cable/heavyduty{
@@ -883,6 +891,15 @@
 /obj/machinery/meter,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
+"em" = (
+/obj/structure/cable{
+	d1 = 32;
+	d2 = 2;
+	icon_state = "32-2"
+	},
+/obj/structure/lattice,
+/turf/simulated/open,
+/area/outpost/mining_main/outpost/substation)
 "en" = (
 /obj/machinery/air_sensor{
 	frequency = 1445;
@@ -1474,16 +1491,10 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "ha" = (
-/obj/structure/cable{
-	d1 = 32;
-	d2 = 2;
-	icon_state = "32-2"
-	},
-/obj/structure/lattice,
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/open,
+/turf/simulated/floor/lythios43c/indoors,
 /area/outpost/mining_main/outpost/substation)
 "hb" = (
 /obj/effect/overlay/snow/floor,
@@ -2439,10 +2450,12 @@
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
 "lz" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "0-2"
+	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+	d2 = 8;
+	icon_state = "0-8"
 	},
 /turf/simulated/floor/lythios43c/indoors,
 /area/outpost/mining_main/outpost/substation)
@@ -5830,9 +5843,9 @@
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/heavyduty{
-	icon_state = "0-2"
+	icon_state = "1-2"
 	},
-/turf/simulated/floor/lythios43c,
+/turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
 "AD" = (
 /turf/simulated/wall/r_wall,
@@ -7235,7 +7248,9 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/outpost/testing_lab)
 "HK" = (
-/obj/machinery/door/airlock/maintenance/engi,
+/obj/machinery/door/airlock/maintenance/engi{
+	req_one_access = list(10,48)
+	},
 /turf/simulated/floor/lythios43c/indoors,
 /area/outpost/mining_main/outpost/substation)
 "HM" = (
@@ -41024,8 +41039,8 @@ Do
 sv
 sv
 Pq
-VW
-VW
+em
+ag
 Pq
 sv
 sv
