@@ -332,3 +332,31 @@
 		if(prob(25))
 			(INVOKE_ASYNC(src, .proc/jedi_spin, user))
 			return ..()
+
+//Kanabo
+/obj/item/melee/kanabo // parrying stick
+	name = "kanabo"
+	desc = "A heavy wooden club reinforced with metal studs. Ancient Terran oni were often depicted carrying this weapon."
+	icon_state = "kanabo"
+	slot_flags = SLOT_BACK
+	damtype = BRUTE
+	force = 15
+	throw_force = 5
+	attack_verb = list("battered", "hammered", "struck")
+	hitsound = 'sound/weapons/genhit3.ogg'
+
+/obj/item/melee/kanabo/attackby(obj/item/I, mob/living/user, params)
+	if(istype(I, /obj/item/pen))
+		var/new_name = stripped_input(user, "What do you wish to name [src]?", "New Name", "bokken", 30)
+		if(new_name)
+			name = new_name
+
+/obj/item/kanabo_shaft
+	name = "kanabo shaft"
+	desc = "A hefty wooden club, not dissimilar to an oversized baseball bat."
+	icon_state = "kanabo_shaft"
+
+/obj/item/kanabo_studs
+	name = "kanabo studs"
+	desc = "A handful of octahedral studs. Fashioned out of steel, these studs are designed to be driven into solid wood."
+	icon_state = "kanabo_studs"
