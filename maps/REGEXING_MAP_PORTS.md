@@ -40,5 +40,5 @@ Apply regexes in this order:
 
 ## Pruning
 // getting rid of extraneous d1/d2 varedits
-`\td1 = ([1248]);\n\td2 = ([1248]);\n\ticon_state = "\1-\2"`-`\ticon_state = "$1-$2"`
-
+`\{\n\td1 = ([1248]);\n\td2 = ([1248]);\n\ticon_state = "1-\2"\n\t\}`-`{\n\ticon_state = "$1-$2"\n\t}`
+`\{\n\td2 = ([1248]);\n\ticon_state = "0-\1"\n\t\}`-`{\n\ticon_state = "0-$1"\n\t}`
