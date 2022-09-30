@@ -3,10 +3,10 @@
 #define KNOT_FORCED 2
 
 /// Automatically links on init to power cables and other cable builder helpers. Only supports cardinals.
-/atom/movable/map_helper/network_builder/power_cable
+/obj/map_helper/network_builder/power_cable
 	name = "power line autobuilder"
 	icon_state = "powerlinebuilder"
-	base_type = /atom/movable/map_helper/network_builder/power_cable
+	base_type = /obj/map_helper/network_builder/power_cable
 	color = "#ff0000"
 
 	/// Whether or not we forcefully make a knot
@@ -15,16 +15,16 @@
 	var/cable_color = "red"
 
 
-/atom/movable/map_helper/network_builder/power_cable/duplicates()
+/obj/map_helper/network_builder/power_cable/duplicates()
 	. = list()
-	for(var/atom/movable/map_helper/network_builder/power_cable/B in loc)
+	for(var/obj/map_helper/network_builder/power_cable/B in loc)
 		if(B == src)
 			continue
 		. += B
 	for(var/obj/structure/cable/C in loc)
 		. += C
 
-/atom/movable/map_helper/network_builder/power_cable/scan()
+/obj/map_helper/network_builder/power_cable/scan()
 	. = NONE
 	for(var/i in GLOB.cardinal)
 		var/turf/T = get_step(src, i)
@@ -37,7 +37,7 @@
 				. |= i
 				continue
 
-/atom/movable/map_helper/network_builder/power_cable/build()
+/obj/map_helper/network_builder/power_cable/build()
 	if(!network_directions)
 		return
 	var/knot = KNOT_FORCED || (KNOT_AUTO && detect_knot())
@@ -57,14 +57,14 @@
 			new /obj/structure/cable(loc, capitalize(cable_color), last, i, TRUE)
 			last = i
 
-/atom/movable/map_helper/network_builder/power_cable/proc/detect_knot()
+/obj/map_helper/network_builder/power_cable/proc/detect_knot()
 	return (locate(/obj/machinery/power)) in src
 
-/atom/movable/map_helper/network_builder/power_cable/knot
+/obj/map_helper/network_builder/power_cable/knot
 	icon_state = "powerlinebuilderknot"
 	knot = KNOT_FORCED
 
-/atom/movable/map_helper/network_builder/power_cable/auto
+/obj/map_helper/network_builder/power_cable/auto
 	icon_state = "powerlinebuilderauto"
 	knot = KNOT_AUTO
 
@@ -90,15 +90,15 @@
 	WORK_SMARTER_NOT_HARDER("Brown", COLOR_BROWN)
 
 #define WORK_SMARTER_NOT_HARDER(c, v)								\
-/atom/movable/map_helper/network_builder/power_cable{				\
+/obj/map_helper/network_builder/power_cable{				\
 	color = v;														\
 	cable_color = c;												\
 }																	\
-/atom/movable/map_helper/network_builder/power_cable/auto{			\
+/obj/map_helper/network_builder/power_cable/auto{			\
 	color = v;														\
 	cable_color = c;												\
 }																	\
-/atom/movable/map_helper/network_builder/power_cable/knot{			\
+/obj/map_helper/network_builder/power_cable/knot{			\
 	color = v;														\
 	cable_color = c;												\
 }

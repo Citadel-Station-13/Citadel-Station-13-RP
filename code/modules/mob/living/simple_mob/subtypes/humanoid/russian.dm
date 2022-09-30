@@ -34,7 +34,7 @@
 
 	loot_list = list(/obj/item/material/knife = 100)
 
-	corpse = /atom/movable/spawner/corpse/russian
+	corpse = /obj/spawner/corpse/russian
 
 /mob/living/simple_mob/humanoid/russian/ranged
 	icon_state = "russianranged"
@@ -46,4 +46,4 @@
 
 	loot_list = list(/obj/item/gun/projectile/revolver/mateba = 100)
 
-	corpse = /atom/movable/spawner/corpse/russian/ranged
+	corpse = /obj/spawner/corpse/russian/ranged
