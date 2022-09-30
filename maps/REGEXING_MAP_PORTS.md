@@ -37,3 +37,8 @@ Apply regexes in this order:
 // ATMOSPHERICS
 `/obj/machinery/atmospherics/omni`-`/obj/machinery/atmospherics/component/quaternary`
 `/obj/machinery/atmospherics/(unary|binary|trinary)`-`/obj/machinery/atmospherics/component/$1`
+
+## Pruning
+// getting rid of extraneous d1/d2 varedits
+`\td1 = ([1248]);\n\td2 = ([1248]);\n\ticon_state = "\1-\2"`-`\ticon_state = "$1-$2"`
+
