@@ -2276,7 +2276,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 
 /datum/sprite_accessory/horns
 	name = "You should not see this..."
-	icon = 'icons/mob/sprite_accessories/horns.dmi'
+	icon = 'icons/mob/sprite_accessories/ears.dmi'
 	do_colouration = 0 // Set to 1 to blend (ICON_ADD) hair color
 
 	color_blend_mode = ICON_MULTIPLY // Only appliciable if do_coloration = 1

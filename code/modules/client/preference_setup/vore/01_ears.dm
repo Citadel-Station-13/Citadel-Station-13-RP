@@ -282,15 +282,15 @@
 
 	else if(pref.horn_style)
 		horn_display = "REQUIRES UPDATE"
-	. += "<b>Horns</b><br>"
+	. += "<b>Secondary Ears</b><br>"
 	. += " Style: <a href='?src=\ref[src];horn_style=1'>[horn_display]</a><br>"
 	if(horn_styles_list[pref.horn_style])
-		var/datum/sprite_accessory/horns/horn = horn_styles_list[pref.horn_style]
-		if(horn.do_colouration)
+		var/datum/sprite_accessory/ears/ear2 = horn_styles_list[pref.horn_style]
+		if(ear2.do_colouration)
 			. += "<a href='?src=\ref[src];horn_color=1'>Change Color</a> <font face='fixedsys' size='3' color='#[num2hex(pref.r_horn, 2)][num2hex(pref.g_horn, 2)][num2hex(pref.b_horn, 2)]'><table style='display:inline;' bgcolor='#[num2hex(pref.r_horn, 2)][num2hex(pref.g_horn, 2)][num2hex(pref.b_horn, 2)]'><tr><td>__</td></tr></table> </font><br>"
-		if(horn.extra_overlay)
+		if(ear2.extra_overlay)
 			. += "<a href='?src=\ref[src];horn_color2=1'>Change Secondary Color</a> <font face='fixedsys' size='3' color='#[num2hex(pref.r_horn2, 2)][num2hex(pref.g_horn2, 2)][num2hex(pref.b_horn2, 2)]'><table style='display:inline;' bgcolor='#[num2hex(pref.r_horn2, 2)][num2hex(pref.g_horn2, 2)][num2hex(pref.b_horn, 2)]'><tr><td>__</td></tr></table> </font><br>"
-		if(horn.extra_overlay2)
+		if(ear2.extra_overlay2)
 			. += "<a href='?src=\ref[src];horn_color3=1'>Change Tertiary Color</a> [color_square(pref.r_horn3, pref.g_horn3, pref.b_horn3)]<br>"
 
 	var/tail_display = "Normal"
