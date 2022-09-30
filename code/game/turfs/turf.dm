@@ -330,7 +330,7 @@
 	if(src.density)
 		spawn(2)
 			step(AM, turn(AM.last_move_dir, 180))
-		if(isliving(AM))
+		if(isliving(AM) && !(TT.throw_flags & THROW_AT_IS_GENTLE))
 			var/mob/living/M = AM
 			M.turf_collision(src, TT.speed)
 

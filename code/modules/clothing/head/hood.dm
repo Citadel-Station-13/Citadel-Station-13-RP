@@ -215,5 +215,5 @@
 /obj/item/clothing/head/hood/pariah
 	name = "Springtime Pariah Moto Jacket hood"
 	desc = "The internal cooling system of the jacket can be swapped to fire hot air in cold environments."
-	icon_state = "winterhood"
+	icon_state = "empty_hood"
 	flags_inv = NONE

@@ -214,7 +214,7 @@
 
 	if(buckled)
 		var/obj/Ob = buckled
-		if(Ob.buckle_lying)
+		if(Ob.buckle_lying(src))
 			to_chat(M, SPAN_NOTICE("You cannot use your augments when restrained."))
 			return FALSE
 

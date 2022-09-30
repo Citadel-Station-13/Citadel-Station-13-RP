@@ -27,10 +27,6 @@
 ////#define COMSIG_LIVING_PUSHING_MOVABLE "living_pushing_movable"
 /// From base of [/atom/proc/interact]: (mob/user)
 ////#define COMSIG_ATOM_UI_INTERACT "atom_ui_interact"
-/// From base of atom/relaymove(): (mob/living/user, direction)
-////#define COMSIG_ATOM_RELAYMOVE "atom_relaymove"
-	//? Prevents the "you cannot move while buckled! message"
-	////#define COMSIG_BLOCK_RELAYMOVE (1<<0)
 /// From base of atom/setDir(): (old_dir, new_dir). Called before the direction changes.
 #define COMSIG_ATOM_DIR_CHANGE "atom_dir_change"
 /// From /datum/component/singularity/proc/can_move(), as well as /obj/energy_ball/proc/can_move()
@@ -48,3 +44,9 @@
 #define COMSIG_ATOM_ENTER_AREA "enter_area"
 /// From base of area/Exited(): (/area)
 #define COMSIG_ATOM_EXIT_AREA "exit_area"
+
+//! Relaymoves
+/// Called from relaymove from buckled: (mob/M, dir)
+#define COMSIG_ATOM_RELAYMOVE_FROM_BUCKLED		"relaymove_buckled"
+	/// handled - skip other logic
+	#define COMPONENT_RELAYMOVE_HANDLED			(1<<0)

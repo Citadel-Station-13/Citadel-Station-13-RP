@@ -1,0 +1,9 @@
+author: "silicons"
+delete-after: True
+changes: 
+  - rscadd: "piggybacking (drag yourself to someone while passively grabbed)"
+  - rscadd: "firemanning (drag someone to you in grab intent while they're passively or above grabbed and on the ground)"
+  - refactor: "old vehicles kicked to obj/vehicle_old pending evaluation and port"
+  - refactor: "new, multiseat vehicle backend added"
+  - refactor: "riding components (handlers and filters)"
+  - refactor: "buckling"

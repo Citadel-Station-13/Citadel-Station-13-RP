@@ -12,12 +12,6 @@
 #define FAKEDEATH   0x2000
 /// Set but never checked. Remove this sometime and replace occurences with the appropriate organ code
 #define DISFIGURED  0x4000
-// Grab levels.
-#define GRAB_PASSIVE    1
-#define GRAB_AGGRESSIVE 2
-#define GRAB_NECK       3
-#define GRAB_UPGRADING  4
-#define GRAB_KILL       5
 
 #define BORGMESON 0x1
 #define BORGTHERM 0x2

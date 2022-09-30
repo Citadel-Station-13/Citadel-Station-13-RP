@@ -11,7 +11,7 @@
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined")
 
 /obj/item/melee/chainofcommand/suicide_act(mob/user)
-	var/datum/gender/T = gender_datums[user.get_visible_gender()]
+	var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
 	user.visible_message(SPAN_DANGER("\The [user] [T.is] strangling [T.himself] with \the [src]! It looks like [T.he] [T.is] trying to commit suicide."), SPAN_DANGER("You start to strangle yourself with \the [src]!"), SPAN_DANGER("You hear the sound of someone choking!"))
 	return (OXYLOSS)
 
@@ -28,7 +28,7 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 /obj/item/melee/sabre/suicide_act(mob/user)
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	visible_message(SPAN_DANGER("[user] is slitting [TU.his] stomach open with \the [src.name]! It looks like [TU.hes] trying to commit seppuku."), SPAN_DANGER("You slit your stomach open with \the [src.name]!"), SPAN_DANGER("You hear the sound of flesh tearing open.")) // gory, but it gets the point across
 	return(BRUTELOSS)
 
@@ -129,39 +129,39 @@
 	icon = 'icons/obj/weapons.dmi'
 	slot_flags = SLOT_BELT
 	force = 10
+	board_item_type = /obj/vehicle_old/skateboard/improv
 	throw_force = 7
-	board_item_type = /obj/vehicle/skateboard/improv
 
 /obj/item/melee/skateboard/beginner
 	name = "skateboard"
 	desc = "A XTREME SPORTZ brand skateboard for beginners. Ages 8 and up."
 	icon_state = "skateboard"
-	board_item_type = /obj/vehicle/skateboard/beginner
+	board_item_type = /obj/vehicle_old/skateboard/beginner
 
 /obj/item/melee/skateboard/pro
 	name = "skateboard"
 	desc = "A RaDSTORMz brand professional skateboard. Looks a lot more stable than the average board."
 	icon_state = "skateboard2"
-	board_item_type = /obj/vehicle/skateboard/pro
+	board_item_type = /obj/vehicle_old/skateboard/pro
 
 /obj/item/melee/skateboard/hoverboard
 	name = "hoverboard"
 	desc = "A blast from the past, so retro!"
 	icon_state = "hoverboard_red"
-	board_item_type = /obj/vehicle/skateboard/hoverboard
+	board_item_type = /obj/vehicle_old/skateboard/hoverboard
 
 /obj/item/melee/skateboard/hoverboard/admin
 	name = "Board of Directors"
 	desc = "The engineering complexity of a spaceship concentrated inside of a board. Just as expensive, too."
 	icon_state = "hoverboard_nt"
-	board_item_type = /obj/vehicle/skateboard/hoverboard/admin
+	board_item_type = /obj/vehicle_old/skateboard/hoverboard/admin
 
 /obj/item/melee/skateboard/scooter
 	name = "scooter"
 	desc = "A fun way to get around."
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "scooter_frame"
-	board_item_type = /obj/vehicle/skateboard/scooter
+	board_item_type = /obj/vehicle_old/skateboard/scooter
 
 //Clown Halberd
 /obj/item/melee/clownstaff
@@ -218,7 +218,7 @@
 		M.reagents.add_reagent(poison_type, poison_amount)
 
 /obj/item/melee/nanite_knife/suicide_act(mob/user)
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	user.visible_message(pick("<span class='danger'>\The [user] is shoving \the [src] into [TU.is] chest! It looks like [TU.he] [TU.is] trying to commit suicide.</span>",\
 		"<span class='danger'>\The [user] is stabbing themselves with \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>"))
 	var/turf/T = get_turf(src)

@@ -35,7 +35,7 @@
 	var/toggled = TRUE
 	var/on = TRUE
 	///Basically HP, loses integrity by heat.
-	var/integrity = 100
+	integrity = 100
 	///Whether the machine will produce heat when on.
 	var/produces_heat = TRUE
 	///How many process() ticks to delay per heat.

@@ -222,7 +222,6 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	else
 		to_chat(user, "<span class='notice'>You'll need the keys in one of your hands to drive this [callme].</span>")
 
-
 /obj/structure/bed/chair/janicart/Move()
 	..()
 	if(has_buckled_mobs())
@@ -231,26 +230,20 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 			if(L.buckled == src)
 				L.loc = loc
 
-
-/obj/structure/bed/chair/janicart/post_buckle_mob(mob/living/M)
+/obj/structure/bed/chair/janicart/mob_buckled(mob/M, flags, mob/user, semantic)
+	. = ..()
 	update_mob()
-	return ..()
 
+/obj/structure/bed/chair/janicart/mob_unbuckled(mob/M, flags, mob/user, semantic)
+	. = ..()
+	M.pixel_x = 0
+	M.pixel_y = 0
 
 /obj/structure/bed/chair/janicart/update_layer()
 	if(dir == SOUTH)
 		layer = FLY_LAYER
 	else
 		layer = OBJ_LAYER
-
-
-/obj/structure/bed/chair/janicart/unbuckle_mob()
-	var/mob/living/M = ..()
-	if(M)
-		M.pixel_x = 0
-		M.pixel_y = 0
-	return M
-
 
 /obj/structure/bed/chair/janicart/setDir()
 	..()
@@ -261,9 +254,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 			if(L.loc != loc)
 				L.buckled = null //Temporary, so Move() succeeds.
 				L.buckled = src //Restoring
-
 	update_mob()
-
 
 /obj/structure/bed/chair/janicart/proc/update_mob()
 	if(has_buckled_mobs())
@@ -283,7 +274,6 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 				if(EAST)
 					L.pixel_x = -13
 					L.pixel_y = 7
-
 
 /obj/structure/bed/chair/janicart/bullet_act(var/obj/item/projectile/Proj)
 	if(has_buckled_mobs())

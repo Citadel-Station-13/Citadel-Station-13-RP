@@ -28,7 +28,10 @@
 		AA.onNewMob(src)
 	init_rendering()
 	hook_vr("mob_new",list(src))
-	update_transform() // Some mobs may start bigger or smaller than normal.
+	// resize
+	update_transform()
+	// offset
+	reset_pixel_offsets()
 	. = ..()
 	update_config_movespeed()
 	update_movespeed(TRUE)
@@ -205,7 +208,7 @@
 #define PARTIALLY_BUCKLED 1
 #define FULLY_BUCKLED 2
 
-/mob/proc/buckled()
+/mob/proc/is_buckled()
 	// Preliminary work for a future buckle rewrite,
 	// where one might be fully restrained (like an elecrical chair), or merely secured (shuttle chair, keeping you safe but not otherwise restrained from acting)
 	if(!buckled)
@@ -667,18 +670,11 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 						return 1
 	return 0
 
-/**
- * Controls if a mouse drop succeeds (return null if it doesnt)
- */
-/mob/OnMouseDropLegacy(mob/M as mob)
+/mob/OnMouseDrop(atom/over, mob/user, proximity, params)
 	. = ..()
-	if(M != usr) return
-	if(usr == src) return
-	if(!Adjacent(usr)) return
-	if(usr.incapacitated(INCAPACITATION_STUNNED | INCAPACITATION_FORCELYING | INCAPACITATION_KNOCKOUT | INCAPACITATION_RESTRAINED)) return //Incapacitated.
-	if(istype(M,/mob/living/silicon/ai)) return
-	request_strip_menu(usr)
-	return 0
+	if(over != user)
+		return
+	. |= mouse_drop_strip_interaction(user)
 
 /mob/proc/can_use_hands()
 	return
@@ -798,120 +794,11 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/can_stand_overridden()
 	return 0
 
-/// Updates canmove, lying and icons. Could perhaps do with a rename but I can't think of anything to describe it.
-/mob/proc/update_canmove()
-	return canmove
-
 /// This might need a rename but it should replace the can this mob use things check
 /mob/proc/IsAdvancedToolUser()
 	return 0
 
-/mob/proc/Stun(amount)
-	if(status_flags & CANSTUN)
-		facing_dir = null
-		stunned = max(max(stunned,amount),0) //can't go below 0, getting a low amount of stun doesn't lower your current stun
-		update_canmove()	//updates lying, canmove and icons
-	return
 
-/mob/proc/SetStunned(amount) //if you REALLY need to set stun to a set amount without the whole "can't go below current stunned"
-	if(status_flags & CANSTUN)
-		stunned = max(amount,0)
-		update_canmove()	//updates lying, canmove and icons
-	return
-
-/mob/proc/AdjustStunned(amount)
-	if(status_flags & CANSTUN)
-		stunned = max(stunned + amount,0)
-		update_canmove()	//updates lying, canmove and icons
-	return
-
-/mob/proc/Weaken(amount)
-	if(status_flags & CANWEAKEN)
-		facing_dir = null
-		weakened = max(max(weakened,amount),0)
-		update_canmove()	//updates lying, canmove and icons
-	return
-
-/mob/proc/SetWeakened(amount)
-	if(status_flags & CANWEAKEN)
-		weakened = max(amount,0)
-		update_canmove()	//can you guess what this does yet?
-	return
-
-/mob/proc/AdjustWeakened(amount)
-	if(status_flags & CANWEAKEN)
-		weakened = max(weakened + amount,0)
-		update_canmove()	//updates lying, canmove and icons
-	return
-
-/mob/proc/Paralyse(amount)
-	if(status_flags & CANPARALYSE)
-		facing_dir = null
-		paralysis = max(max(paralysis,amount),0)
-	return
-
-/mob/proc/SetParalysis(amount)
-	if(status_flags & CANPARALYSE)
-		paralysis = max(amount,0)
-	return
-
-/mob/proc/AdjustParalysis(amount)
-	if(status_flags & CANPARALYSE)
-		paralysis = max(paralysis + amount,0)
-	return
-
-/mob/proc/Sleeping(amount)
-	facing_dir = null
-	sleeping = max(max(sleeping,amount),0)
-	return
-
-/mob/proc/SetSleeping(amount)
-	sleeping = max(amount,0)
-	return
-
-/mob/proc/AdjustSleeping(amount)
-	sleeping = max(sleeping + amount,0)
-	return
-
-/mob/proc/Confuse(amount)
-	confused = max(max(confused,amount),0)
-	return
-
-/mob/proc/SetConfused(amount)
-	confused = max(amount,0)
-	return
-
-/mob/proc/AdjustConfused(amount)
-	confused = max(confused + amount,0)
-	return
-
-/mob/proc/Blind(amount)
-	eye_blind = max(max(eye_blind,amount),0)
-	return
-
-/mob/proc/SetBlinded(amount)
-	eye_blind = max(amount,0)
-	return
-
-/mob/proc/AdjustBlinded(amount)
-	eye_blind = max(eye_blind + amount,0)
-	return
-
-/mob/proc/Resting(amount)
-	facing_dir = null
-	resting = max(max(resting,amount),0)
-	update_canmove()
-	return
-
-/mob/proc/SetResting(amount)
-	resting = max(amount,0)
-	update_canmove()
-	return
-
-/mob/proc/AdjustResting(amount)
-	resting = max(resting + amount,0)
-	update_canmove()
-	return
 
 /mob/proc/AdjustLosebreath(amount)
 	losebreath = clamp(0, losebreath + amount, 25)
@@ -1105,38 +992,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	set hidden = 1
 	set_face_dir(client.client_dir(WEST))
 
-/mob/verb/eastshift()
-	set hidden = TRUE
-	if(!canface())
-		return FALSE
-	if(pixel_x <= 16)
-		pixel_x++
-		is_shifted = TRUE
-
-/mob/verb/westshift()
-	set hidden = TRUE
-	if(!canface())
-		return FALSE
-	if(pixel_x >= -16)
-		pixel_x--
-		is_shifted = TRUE
-
-/mob/verb/northshift()
-	set hidden = TRUE
-	if(!canface())
-		return FALSE
-	if(pixel_y <= 16)
-		pixel_y++
-		is_shifted = TRUE
-
-/mob/verb/southshift()
-	set hidden = TRUE
-	if(!canface())
-		return FALSE
-	if(pixel_y >= -16)
-		pixel_y--
-		is_shifted = TRUE
-
 /mob/proc/adjustEarDamage()
 	return
 
@@ -1299,6 +1154,53 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/check_obscured_slots()
 	return
 
+//! Pixel Offsets
+/mob/proc/get_buckled_pixel_x_offset()
+	if(!buckled)
+		return 0
+	return buckled.get_centering_pixel_x_offset(NONE, src) - get_centering_pixel_x_offset() + buckled.buckle_pixel_x
+
+/mob/proc/get_buckled_pixel_y_offset()
+	if(!buckled)
+		return 0
+	return buckled.get_centering_pixel_y_offset(NONE, src) - get_centering_pixel_y_offset() + buckled.buckle_pixel_y
+
+/mob/get_managed_pixel_x()
+	return ..() + shift_pixel_x + get_buckled_pixel_x_offset()
+
+/mob/get_managed_pixel_y()
+	return ..() + shift_pixel_y + get_buckled_pixel_y_offset()
+
+/mob/proc/reset_pixel_shifting()
+	if(!shifted_pixels)
+		return
+	shifted_pixels = FALSE
+	pixel_x -= shift_pixel_x
+	pixel_y -= shift_pixel_y
+	shift_pixel_x = 0
+	shift_pixel_y = 0
+
+/mob/proc/set_pixel_shift_x(val)
+	shifted_pixels = TRUE
+	pixel_x += (val - shift_pixel_x)
+	shift_pixel_x = val
+
+/mob/proc/set_pixel_shift_y(val)
+	shifted_pixels = TRUE
+	pixel_y += (val - shift_pixel_y)
+	shift_pixel_y = val
+
+/mob/proc/adjust_pixel_shift_x(val)
+	shifted_pixels = TRUE
+	shift_pixel_x += val
+	pixel_x += val
+
+/mob/proc/adjust_pixel_shift_y(val)
+	shifted_pixels = TRUE
+	shift_pixel_y += val
+	pixel_y += val
+
+//! Reachability
 /mob/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)
 	return FALSE
 

@@ -33,7 +33,7 @@
 	..()
 
 /obj/item/beartrap/suicide_act(mob/user)
-	var/datum/gender/T = gender_datums[user.get_visible_gender()]
+	var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
 	user.visible_message("<span class='danger'>[user] is putting the [src.name] on [T.his] head! It looks like [T.hes] trying to commit suicide.</span>")
 	return (BRUTELOSS)
 
@@ -62,22 +62,22 @@
 	anchored = TRUE
 	update_icon()
 
-/obj/item/beartrap/user_unbuckle_mob(mob/living/buckled_mob, mob/user)
-	if(user == buckled_mob)
+/obj/item/beartrap/user_unbuckle_mob(mob/M, flags, mob/user, semantic)
+	if(user == M)
 		user.visible_message(SPAN_WARNING("[user] begins carefully pulling themselves free of [src]!"))
 	else
-		user.visible_message(SPAN_WARNING("[user] begins freeing [buckled_mob] from [src]!"))
+		user.visible_message(SPAN_WARNING("[user] begins freeing [M] from [src]!"))
 	if(!do_after(user, 5 SECONDS, src))
 		return
-	if(user == buckled_mob)
+	if(user == M)
 		user.visible_message(SPAN_WARNING("[user] pulls themselves free of [src]!"))
 	else
-		user.visible_message(SPAN_WARNING("[user] frees [buckled_mob] from [src]!"))
+		user.visible_message(SPAN_WARNING("[user] frees [M] from [src]!"))
 	return ..()
 
-/obj/item/beartrap/unbuckle_mob()
+/obj/item/beartrap/mob_unbuckled(mob/M, flags, mob/user, semantic)
 	. = ..()
-	if(!LAZYLEN(buckled_mobs))
+	if(!has_buckled_mobs())
 		anchored = FALSE
 
 /obj/item/beartrap/attack_hand(mob/user as mob)
@@ -123,12 +123,10 @@
 
 	//trap the victim in place
 	setDir(L.dir)
-	can_buckle = 1
-	buckle_mob(L)
+	buckle_mob(L, BUCKLE_OP_FORCE)
 	L.Stun(stun_length)
 	to_chat(L, "<span class='danger'>The steel jaws of \the [src] bite into you, trapping you in place!</span>")
 	deployed = 0
-	can_buckle = initial(can_buckle)
 
 /obj/item/beartrap/Crossed(atom/movable/AM as mob|obj)
 	if(AM.is_incorporeal())

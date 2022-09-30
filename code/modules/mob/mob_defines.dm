@@ -7,19 +7,28 @@
 	flags = HEAR
 	pass_flags_self = ATOM_PASS_MOB | ATOM_PASS_OVERHEAD_THROW
 
-//! ## Rendering
+//! Core
+	/// mobs use ids as ref tags instead of actual refs.
+	var/static/next_mob_id = 0
+
+//! Rendering
 	/// Fullscreen objects
 	var/list/fullscreens = list()
 
-//! ## Intents
+//! Intents
 	/// How are we intending to move? Walk/run/etc.
 	var/m_intent = MOVE_INTENT_RUN
 
-//! ## Perspectives
+//! Perspectives
 	/// using perspective - if none, it'll be self - when client logs out, if using_perspective has reset_on_logout, this'll be unset.
 	var/datum/perspective/using_perspective
 
-	var/static/next_mob_id = 0
+//! Buckling
+	/// Atom we're buckled to
+	var/atom/movable/buckled
+	/// Atom we're buckl**ing** to. Used to stop stuff like lava from incinerating those who are mid buckle.
+	var/atom/movable/buckling
+
 
 	var/datum/mind/mind
 	/// Whether a mob is alive or dead. TODO: Move this to living - Nodrak
@@ -47,14 +56,24 @@
 	/// The calculated mob action speed slowdown based on the modifiers list
 	var/cached_multiplicative_actions_slowdown
 
+//! Pixel Offsets
+	/// are we shifted by the user?
+	var/shifted_pixels = FALSE
+	/// shifted pixel x
+	var/shift_pixel_x = 0
+	/// shifted pixel y
+	var/shift_pixel_y = 0
+
+//! Size
+	//! todo kill this with fire it should just be part of icon_scale_x/y.
+	/// our size multiplier
+	var/size_multiplier = 1
+
 //! Misc
 	/// What we're interacting with right now, associated to list of reasons and the number of concurrent interactions for that reason.
 	var/list/interacting_with
 
 	var/next_move = null // For click delay, despite the misleading name.
-
-	//Not in use yet
-	var/obj/effect/organstructure/organStructure = null
 
 	var/atom/movable/screen/hands = null
 	var/atom/movable/screen/pullin = null
@@ -190,7 +209,6 @@
 	var/a_intent = INTENT_HELP //?Living
 	var/m_int = null //?Living
 	var/lastKnownIP = null
-	var/obj/buckled = null //?Living
 
 	var/seer = 0 //for cult//Carbon, probably Human
 
@@ -298,11 +316,6 @@
 
 	/// Skip processing life() if there's just no players on this Z-level.
 	var/low_priority = TRUE
-
-	/// For offsetting mobs.
-	var/default_pixel_x = 0
-	/// For offsetting mobs.
-	var/default_pixel_y = 0
 
 	/// Icon to use when attacking w/o anything in-hand.
 	var/attack_icon

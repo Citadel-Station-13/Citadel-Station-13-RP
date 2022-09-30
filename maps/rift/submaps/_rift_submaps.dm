@@ -230,6 +230,34 @@
 	z = Z_LEVEL_TRADEPORT
 	base_turf = /turf/space
 
+
+//////////////////////////////////////////////////////////////////////////////
+//Rogue Mines Stuff
+
+/datum/map_template/rift_lateload/tether_roguemines1
+	name = "Asteroid Belt 1"
+	desc = "Mining, but rogue. Zone 1"
+	mappath = "_maps/map_levels/140x140/roguemining/rogue_mine1.dmm"
+	associated_map_datum = /datum/map_z_level/rift_lateload/roguemines1
+
+/datum/map_z_level/rift_lateload/roguemines1
+	name = "Belt 1"
+	z = Z_LEVEL_ROGUEMINE_1
+	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
+
+/datum/map_template/rift_lateload/tether_roguemines2
+	name = "Asteroid Belt 2"
+	desc = "Mining, but rogue. Zone 2"
+	mappath = "_maps/map_levels/140x140/roguemining/rogue_mine2.dmm"
+
+	associated_map_datum = /datum/map_z_level/rift_lateload/roguemines2
+
+/datum/map_z_level/rift_lateload/roguemines2
+	name = "Belt 2"
+	z = Z_LEVEL_ROGUEMINE_2
+	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
+
+//////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////
 // Code Shenanigans for rift lateload maps
 /datum/map_template/rift_lateload

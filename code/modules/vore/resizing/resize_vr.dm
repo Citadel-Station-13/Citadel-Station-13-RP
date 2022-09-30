@@ -17,7 +17,6 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 // Adding needed defines to /mob/living
 // Note: Polaris had this on /mob/living/carbon/human We need it higher up for animals and stuff.
 /mob/living
-	var/size_multiplier = 1 //multiplier for the mob's icon size
 	var/holder_default
 
 // Define holder_type on types we want to be scoop-able
@@ -44,7 +43,6 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 	ASSERT(!ishuman(src))
 	var/matrix/M = matrix()
 	M.Scale(size_multiplier * icon_scale_x, size_multiplier * icon_scale_y)
-	M.Translate(0, 16*(size_multiplier-1))
 	src.transform = M
 
 /**
@@ -460,3 +458,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 #undef STEP_TEXT_OWNER
 #undef STEP_TEXT_PREY
+
+/mob/living/get_standard_pixel_y_offset(lying)
+	. = ..()
+	. += (size_multiplier - 1) * 16

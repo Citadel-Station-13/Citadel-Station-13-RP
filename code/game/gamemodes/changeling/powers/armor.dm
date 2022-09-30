@@ -36,7 +36,7 @@
 	icon_state = "lingspacesuit"
 	desc = "A huge, bulky mass of pressure and temperature-resistant organic tissue, evolved to facilitate space travel."
 	clothing_flags = NONE
-	item_flags = DROPDEL
+	item_flags = ITEM_DROPDEL
 	allowed = list(/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/tank/oxygen)
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0) //No armor at all.
 
@@ -53,7 +53,7 @@
 	desc = "A covering of pressure and temperature-resistant organic tissue with a glass-like chitin front."
 	clothing_flags = NONE
 	flags_inv = BLOCKHAIR
-	item_flags = DROPDEL
+	item_flags = ITEM_DROPDEL
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	body_parts_covered = HEAD|FACE|EYES
 
@@ -63,7 +63,7 @@
 	icon_state = "lingspacesuit"
 	action_button_name = "Toggle Grippers"
 	clothing_flags = NONE
-	item_flags = DROPDEL
+	item_flags = ITEM_DROPDEL
 
 /obj/item/clothing/shoes/magboots/changeling/set_slowdown()
 	slowdown = worn_over? max(SHOES_SLOWDOWN, worn_over.slowdown): SHOES_SLOWDOWN	//So you can't put on magboots to make you walk faster.

@@ -175,7 +175,7 @@
 					notify_into("Network visibility enabled.")
 				save_settings()
 				return
-				
+
 			if("Exceptions")
 				var/assembled = islist(visibility_exceptions)? visibility_exceptions.Join("<br>") : "None!"
 				to_chat(nif.human, SPAN_NOTICE("[assembled]"))
@@ -192,7 +192,7 @@
 					to_chat(nif.human, SPAN_BOLDNOTICE("[toggle] added to exceptions."))
 				save_settings()
 				return
-				
+
 			if("Blacklist")
 				var/assembled = islist(visibility_blacklist)? visibility_blacklist.Join("<br>") : "None!"
 				to_chat(nif.human, SPAN_NOTICE("[assembled]"))
@@ -209,7 +209,7 @@
 					to_chat(nif.human, SPAN_BOLDNOTICE("[toggle] added to blacklist."))
 				save_settings()
 				return
-				
+
 		switch(choice)
 			if("Design Inside")
 				var/new_flavor = input(nif.human, "Type what the prey sees after being 'caught'. This will be \
@@ -459,32 +459,16 @@
 	soulcatcher.say_into(message,src,eyeobj)
 
 /mob/living/carbon/brain/caught_soul/eastshift()
-	if(!eyeobj)
-		return
-	if(eyeobj.pixel_x <= 16)
-		eyeobj.pixel_x++
-		eyeobj.is_shifted = TRUE
+	eyeobj?.eastshift()
 
 /mob/living/carbon/brain/caught_soul/westshift()
-	if(!eyeobj)
-		return
-	if(eyeobj.pixel_x >= -16)
-		eyeobj.pixel_x--
-		eyeobj.is_shifted = TRUE
+	eyeobj?.westshift()
 
 /mob/living/carbon/brain/caught_soul/northshift()
-	if(!eyeobj)
-		return
-	if(eyeobj.pixel_y <= 16)
-		eyeobj.pixel_y++
-		eyeobj.is_shifted = TRUE
+	eyeobj?.northshift()
 
 /mob/living/carbon/brain/caught_soul/southshift()
-	if(!eyeobj)
-		return
-	if(eyeobj.pixel_y >= -16)
-		eyeobj.pixel_y--
-		eyeobj.is_shifted = TRUE
+	eyeobj?.southshift()
 
 /mob/living/carbon/brain/caught_soul/allow_examine(atom/A)
 	return TRUE
@@ -593,12 +577,6 @@
 /mob/observer/eye/ar_soul/proc/human_moved()
 	if(get_dist(parent_human,src) > SOULCATCHER_RANGE)
 		forceMove(get_turf(parent_human))
-
-/mob/observer/eye/ar_soul/Moved()
-	. = ..()
-	if(is_shifted)
-		pixel_x = 0
-		pixel_y = 0
 
 ///////////////////
 //The catching hook

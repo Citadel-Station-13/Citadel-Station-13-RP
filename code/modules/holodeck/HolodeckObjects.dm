@@ -184,7 +184,7 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 					hit(50)
 			return
 
-	if(W.item_flags & NOBLUDGEON)
+	if(W.item_flags & ITEM_NOBLUDGEON)
 		return
 
 	if(W.is_screwdriver())
