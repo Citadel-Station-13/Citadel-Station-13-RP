@@ -109,7 +109,7 @@
 /datum/supply_pack/recreation/rover
 	name = "NT Humvee"
 	contains = list(
-			/obj/vehicle/train/rover/engine
+			/obj/vehicle_old/train/rover/engine
 			)
 	container_type = /obj/structure/largecrate
 	container_name = "NT Humvee Crate"

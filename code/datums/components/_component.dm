@@ -483,6 +483,27 @@
 		return _AddComponent(arguments)
 
 /**
+ * qdels a component of given type, or exact
+ */
+/datum/proc/DelComponent(path, exact)
+	var/list/L = datum_components[path]
+	var/datum/component/C
+	if(!L)
+		return FALSE
+	if(!islist(L))
+		C = L
+		if(exact && C.type != path)
+			return FALSE
+	else
+		for(var/datum/component/C2 as anything in L)
+			if(exact? (C2.type == path) : istype(C2, path))
+				C = C2
+	if(!C)
+		return FALSE
+	qdel(C)
+	return TRUE
+
+/**
  * Removes the component from parent, ends up with a null parent
  * Used as a helper proc by the component transfer proc, does not clean up the component like Destroy does
  */

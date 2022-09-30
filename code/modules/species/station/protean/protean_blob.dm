@@ -53,7 +53,6 @@
 
 	player_msg = "In this form, you can move a little faster and your health will regenerate as long as you have metal in you!"
 	holder_type = /obj/item/holder/protoblob
-	can_buckle = TRUE //Blobsurfing
 
 /datum/say_list/protean_blob
 	speak = list("Blrb?","Sqrsh.","Glrsh!")
@@ -210,7 +209,7 @@
 					allowed = FALSE
 				if(istype(target) && vore_selected && allowed) //no more ooc-noncon vore, thanks
 					if(target.buckled)
-						target.buckled.unbuckle_mob(target, force = TRUE)
+						target.buckled.unbuckle_mob(target, BUCKLE_OP_FORCE)
 					target.forceMove(vore_selected)
 					to_chat(target,"<span class='warning'>\The [src] quickly engulfs you, [vore_selected.vore_verb]ing you into their [vore_selected.name]!</span>")
 
@@ -292,13 +291,10 @@
 		return
 	handle_grasp() //It's possible to blob out before some key parts of the life loop. This results in things getting dropped at null. TODO: Fix the code so this can be done better.
 	remove_micros(src, src) //Living things don't fare well in roblobs.
-	if(buckled)
-		buckled.unbuckle_mob()
-	if(LAZYLEN(buckled_mobs))
-		for(var/buckledmob in buckled_mobs)
-			riding_datum.force_dismount(buckledmob)
-	if(pulledby)
-		pulledby.stop_pulling()
+
+	buckled?.unbuckle_mob(src, BUCKLE_OP_FORCE)
+	unbuckle_all_mobs(BUCKLE_OP_FORCE)
+	pulledby?.stop_pulling()
 	stop_pulling()
 
 	var/panel_selected = client?.statpanel == SPECIES_PROTEAN
@@ -458,13 +454,10 @@
 		return
 	if(blob.loc == /obj/item/rig/protean)
 		return
-	if(buckled)
-		buckled.unbuckle_mob()
-	if(LAZYLEN(buckled_mobs))
-		for(var/buckledmob in buckled_mobs)
-			riding_datum.force_dismount(buckledmob)
-	if(pulledby)
-		pulledby.stop_pulling()
+
+	buckled?.unbuckle_mob(src, BUCKLE_OP_FORCE)
+	unbuckle_all_mobs(BUCKLE_OP_FORCE)
+	pulledby?.stop_pulling()
 	stop_pulling()
 
 	var/panel_selected = blob.client?.statpanel == SPECIES_PROTEAN

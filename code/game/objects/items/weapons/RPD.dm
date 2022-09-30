@@ -17,7 +17,7 @@
 		slot_l_hand_str = 'icons/mob/items/lefthand_vr.dmi',
 		slot_r_hand_str = 'icons/mob/items/righthand_vr.dmi',
 	)
-	item_flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 	force = 10
 	throw_force = 10
 	throw_speed = 1
@@ -81,7 +81,7 @@
 	return ..()
 /*
 /obj/item/pipe_dispenser/suicide_act(mob/user)
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	user.visible_message(SPAN_SUICIDE("[user] points the end of the RPD down [TU.his] throat and presses a button! It looks like [TU.hes] trying to commit suicide..."))
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)

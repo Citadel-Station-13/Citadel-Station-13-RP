@@ -9,7 +9,7 @@
 	icon_state = "rod"
 	var/gasefficiency = 0.05
 	var/insertion = 0
-	var/integrity = 100
+	integrity = 100
 	var/life = 100
 	var/lifespan = 3600
 	var/reflective = 1

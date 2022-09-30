@@ -117,7 +117,7 @@
 /turf/simulated/floor/wood/sif,
 /area/submap/Chapel1)
 "aB" = (
-/obj/vehicle/boat/dragon/sifwood,
+/obj/vehicle/ridden/boat/dragon/sifwood,
 /obj/item/oar/sifwood,
 /turf/simulated/floor/wood/sif,
 /area/submap/Chapel1)

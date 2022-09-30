@@ -185,6 +185,16 @@
 			playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 0)
 			m_type = 1
 
+		if("spin")
+			message = "spins!"
+			m_type = 1
+			if(has_buckled_mobs())
+				for(var/mob/living/L in buckled_mobs)
+					L.visible_message(SPAN_BOLDWARNING("[L] is hurled off of [src]!"))
+					unbuckle_mob(L, BUCKLE_OP_FORCE)
+					L.throw_at(get_edge_target_turf(get_turf(src), dir), 7, 1, THROW_AT_IS_GENTLE, src)
+			spin(15, 1)
+
 		if("yes", "ye")
 			var/M = null
 			if(param)
@@ -199,7 +209,7 @@
 				message = "emits an affirmative blip at [param]."
 			else
 				message = "emits an affirmative blip."
-			playsound(src.loc, 'sound/machines/synth_yes.ogg', 50, 0)
+			playsound(src, 'sound/machines/synth_yes.ogg', 50, 0)
 			m_type = 1
 
 		if("no")

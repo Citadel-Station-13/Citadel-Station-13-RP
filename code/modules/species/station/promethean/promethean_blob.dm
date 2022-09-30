@@ -317,13 +317,10 @@
 
 	handle_grasp() //It's possible to blob out before some key parts of the life loop. This results in things getting dropped at null. TODO: Fix the code so this can be done better.
 	remove_micros(src, src) //Living things don't fare well in roblobs.
-	if(buckled)
-		buckled.unbuckle_mob()
-	if(LAZYLEN(buckled_mobs))
-		for(var/buckledmob in buckled_mobs)
-			riding_datum.force_dismount(buckledmob)
-	if(pulledby)
-		pulledby.stop_pulling()
+
+	buckled?.unbuckle_mob(src, BUCKLE_OP_FORCE)
+	unbuckle_all_mobs(BUCKLE_OP_FORCE)
+	pulledby?.stop_pulling()
 	stop_pulling()
 
 	//Record where they should go
@@ -423,13 +420,9 @@
 		to_chat(blob,"<span class='warning'>You can't change forms while inside something.</span>")
 		return
 
-	if(buckled)
-		buckled.unbuckle_mob()
-	if(LAZYLEN(buckled_mobs))
-		for(var/buckledmob in buckled_mobs)
-			riding_datum.force_dismount(buckledmob)
-	if(pulledby)
-		pulledby.stop_pulling()
+	buckled?.unbuckle_mob(src, BUCKLE_OP_FORCE)
+	unbuckle_all_mobs(BUCKLE_OP_FORCE)
+	pulledby?.stop_pulling()
 	stop_pulling()
 
 	//Message

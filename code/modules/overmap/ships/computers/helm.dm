@@ -86,13 +86,6 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 		linked.operator_skill = null	// If this is on you can't dodge meteors
 		return
 
-/obj/machinery/computer/ship/helm/relaymove(var/mob/user, direction)
-	if(viewing_overmap(user) && linked)
-		if(prob(user.skill_fail_chance(/datum/skill/pilot, 50, linked.skill_needed, factor = 1)))
-			direction = turn(direction,pick(90,-90))
-		linked.relaymove(user, direction, accellimit)
-		return 1
-
 /obj/machinery/computer/ship/helm/ui_interact(mob/user, datum/tgui/ui)
 	if(!linked)
 		display_reconnect_dialog(user, "helm")

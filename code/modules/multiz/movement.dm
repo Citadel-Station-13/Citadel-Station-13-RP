@@ -279,6 +279,11 @@
 	if((locate(/obj/structure/disposalpipe/up) in below) || (locate(/obj/machinery/atmospherics/pipe/zpipe/up) in below))
 		return FALSE
 
+/mob/can_fall()
+	if(buckled)
+		return FALSE	// buckled falls instead
+	return ..()
+
 /mob/living/can_fall()
 	if(is_incorporeal())
 		return FALSE

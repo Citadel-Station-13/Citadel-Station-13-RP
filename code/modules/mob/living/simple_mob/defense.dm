@@ -55,7 +55,7 @@
 						qdel(MED)
 					visible_message("<span class='notice'>\The [user] applies the [MED] on [src].</span>")
 		else
-			var/datum/gender/T = gender_datums[src.get_visible_gender()]
+			var/datum/gender/T = GLOB.gender_datums[src.get_visible_gender()]
 			// the gender lookup is somewhat overkill, but it functions identically to the obsolete gender macros and future-proofs this code
 			to_chat(user, "<span class='notice'>\The [src] is dead, medical items won't bring [T.him] back to life.</span>")
 	if(can_butcher(user, O))	//if the animal can be butchered, do so and return. It's likely to be gibbed.

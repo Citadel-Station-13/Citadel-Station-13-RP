@@ -190,19 +190,19 @@
 		var/amplitude = 2 //maximum displacement from original position
 		var/period = 36 //time taken for the mob to go up >> down >> original position, in deciseconds. Should be multiple of 4
 
-		var/top = old_y + amplitude
-		var/bottom = old_y - amplitude
+		var/top = get_standard_pixel_y_offset() + amplitude
+		var/bottom = get_standard_pixel_y_offset() - amplitude
 		var/half_period = period / 2
 		var/quarter_period = period / 4
 
 		animate(src, pixel_y = top, time = quarter_period, easing = SINE_EASING | EASE_OUT, loop = -1)		//up
 		animate(pixel_y = bottom, time = half_period, easing = SINE_EASING, loop = -1)						//down
-		animate(pixel_y = old_y, time = quarter_period, easing = SINE_EASING | EASE_IN, loop = -1)			//back
+		animate(pixel_y = get_standard_pixel_y_offset(), time = quarter_period, easing = SINE_EASING | EASE_IN, loop = -1)			//back
 
 /obj/mecha/combat/fighter/proc/stop_hover()
 	if(ion_trail.on)
 		ion_trail.stop()
-		animate(src, pixel_y = old_y, time = 5, easing = SINE_EASING | EASE_IN) //halt animation
+		animate(src, pixel_y = get_standard_pixel_y_offset(), time = 5, easing = SINE_EASING | EASE_IN) //halt animation
 
 /obj/mecha/combat/fighter/check_for_support()
 	if (has_charge(step_energy_drain) && stabilization_enabled)
