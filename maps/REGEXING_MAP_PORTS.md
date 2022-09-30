@@ -1,5 +1,7 @@
 # Regexing Map Ports
 
+## Primary
+
 // TODO: ADD PYTHON SCRIPT TO AUTOMATE THIS
 
 Yeah so we're (me) all a bunch of idiots (insane).
@@ -7,8 +9,6 @@ As such we have a *ton* of path replacements.
 All of these regexes are for VSC. They are not necessarily optimized, so, if you're good at regexes, do help!
 
 Apply regexes in this order:
-
-`/obj/effect/map_helper`-`/atom/movable/map_helper`
 
 // TODO: tape roll
 // todo: devices/weapons
@@ -32,7 +32,6 @@ Apply regexes in this order:
 
 // TODO: MAKE SURE NO / AFTER COSTUME
 `/obj/landmark/costume`-`/obj/landmark/costume/random`
-`/obj/landmark/mobcorpse`-`/atom/movable/spawner/corpse`
 
 // ATMOSPHERICS
 `/obj/machinery/atmospherics/omni`-`/obj/machinery/atmospherics/component/quaternary`
