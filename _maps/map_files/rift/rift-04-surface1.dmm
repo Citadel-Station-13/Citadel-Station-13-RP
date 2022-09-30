@@ -2505,7 +2505,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Nebula Trade Shop"
 	},
@@ -3424,7 +3424,7 @@
 	id = "main_ext_shutter";
 	name = "Surface External Shutter"
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
@@ -4735,7 +4735,7 @@
 	id_tag = "shop_airlock_pump";
 	power_rating = 10000
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/embedded_controller/radio/airlock/phoron{
 	id_tag = "shop_airlock";
 	name = "Frost Lock Controller";
@@ -5292,7 +5292,7 @@
 	id = "main_ext_blast";
 	name = "Surface External Blast Door"
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
 	},
@@ -5815,7 +5815,7 @@
 	id = "main_ext_blast";
 	name = "Surface External Blast Door"
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
 	},
@@ -6495,7 +6495,7 @@
 	pixel_y = -6
 	},
 /obj/structure/grille,
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main/secondary)
 "esT" = (
@@ -7591,7 +7591,7 @@
 	opacity = 0
 	},
 /obj/structure/fans/tiny,
-/atom/movable/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door/simple,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/cargodock)
 "frd" = (
@@ -7704,7 +7704,7 @@
 	id_tag = "central_airlock_pump"
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main)
 "fvk" = (
@@ -10452,7 +10452,7 @@
 	id = "main_ext_blast";
 	name = "Surface External Blast Door"
 	},
-/atom/movable/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door/simple,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/cargodock)
 "hkO" = (
@@ -11962,7 +11962,7 @@
 	id = "main_ext_shutter";
 	name = "Surface External Shutter"
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
@@ -12142,7 +12142,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/trade_shop)
 "ipC" = (
@@ -12389,7 +12389,7 @@
 	id = "main_ext_shutter";
 	name = "Surface External Shutter"
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
 	},
@@ -13005,7 +13005,7 @@
 	id = "main_ext_shutter";
 	name = "Surface External Shutter"
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
 	},
@@ -18263,7 +18263,7 @@
 	id_tag = "central_airlock_pump"
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main)
 "mhi" = (
@@ -20607,7 +20607,7 @@
 	pixel_y = 6
 	},
 /obj/structure/grille,
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main)
 "nAu" = (
@@ -25332,7 +25332,7 @@
 	id_tag = "central_airlock_two_pump"
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main/secondary)
 "qnr" = (
@@ -28528,7 +28528,7 @@
 	id = "main_ext_blast";
 	name = "Surface External Blast Door"
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
 	},
@@ -30384,7 +30384,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Nebula Trade Shop"
 	},
@@ -30571,7 +30571,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Nebula Trade Shop"
 	},
@@ -31828,7 +31828,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1379;
@@ -32515,7 +32515,7 @@
 	pixel_x = 38;
 	pixel_y = 24
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
@@ -36085,7 +36085,7 @@
 	id = "main_ext_blast";
 	name = "Surface External Blast Door"
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 10
 	},
@@ -36350,7 +36350,7 @@
 	id_tag = "central_airlock_two_pump"
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main/secondary)
 "xld" = (

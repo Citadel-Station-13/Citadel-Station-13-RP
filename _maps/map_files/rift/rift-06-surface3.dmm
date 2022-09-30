@@ -1987,7 +1987,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
@@ -3358,8 +3358,8 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(19,43,67)
 	},
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/sensor/ext_sensor,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle{
 	dir = 6;
 	frequency = 1380;
@@ -3749,7 +3749,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
@@ -6541,7 +6541,7 @@
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Public External Airlock"
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
 	},
@@ -6806,8 +6806,8 @@
 /area/shuttle/civvie/cockpit)
 "lR" = (
 /obj/machinery/door/airlock/glass_external,
-/atom/movable/map_helper/airlock/door/ext_door,
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
+/obj/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle{
 	frequency = 1380;
 	id_tag = "emt_shuttle_exterior_sensor";
@@ -6828,7 +6828,7 @@
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Public External Airlock"
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
@@ -8344,7 +8344,7 @@
 /area/crew_quarters/bar)
 "oI" = (
 /obj/machinery/door/airlock/glass_external,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button{
 	command = "cycle_interior";
 	frequency = 1380;
@@ -8478,7 +8478,7 @@
 	frequency = 1380;
 	id_tag = "expshuttle_docker_pump_in_external"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 4
 	},
@@ -8580,7 +8580,7 @@
 	pixel_x = 38;
 	pixel_y = 24
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
@@ -8593,7 +8593,7 @@
 	frequency = 1379;
 	id_tag = "sec_fore_pump"
 	},
-/atom/movable/map_helper/airlock/atmos/pump_out_external,
+/obj/map_helper/airlock/atmos/pump_out_external,
 /obj/effect/floor_decal/spline/fancy{
 	dir = 1
 	},
@@ -8800,7 +8800,7 @@
 	frequency = 1380;
 	id_tag = "expshuttle_docker_pump_out_external"
 	},
-/atom/movable/map_helper/airlock/atmos/pump_out_internal,
+/obj/map_helper/airlock/atmos/pump_out_internal,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
 "pB" = (
@@ -8835,7 +8835,7 @@
 /area/bridge/bunker)
 "pE" = (
 /obj/machinery/door/airlock/glass_external,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
@@ -9042,7 +9042,7 @@
 	frequency = 1379;
 	id_tag = "trade_airlock_pump"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/embedded_controller/radio/airlock/phoron{
 	id_tag = "trade_airlock";
 	name = "Frost Lock Controller";
@@ -9309,7 +9309,7 @@
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Public External Airlock"
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
 	},
@@ -9478,7 +9478,7 @@
 	frequency = 1379;
 	id_tag = "trade_airlock_pump"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/space_heater,
 /turf/simulated/floor/plating,
 /area/rift/trade_shop/landing_pad)
@@ -9733,7 +9733,7 @@
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Public External Airlock"
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
 	},
@@ -9788,7 +9788,7 @@
 /area/rift/surfacebase/shuttle)
 "rA" = (
 /obj/machinery/door/airlock/voidcraft/vertical,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "rB" = (
@@ -10196,7 +10196,7 @@
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Public External Airlock"
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
 	},
@@ -10262,7 +10262,7 @@
 	frequency = 1380;
 	id_tag = "expshuttle_docker_pump_out_external"
 	},
-/atom/movable/map_helper/airlock/atmos/pump_out_internal,
+/obj/map_helper/airlock/atmos/pump_out_internal,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
 "sx" = (
@@ -10351,14 +10351,14 @@
 	pixel_x = 38;
 	pixel_y = -24
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/trade_shop/landing_pad)
 "sG" = (
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Public External Airlock"
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
 	},
@@ -10745,7 +10745,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
@@ -11115,7 +11115,7 @@
 	pixel_x = 26;
 	pixel_y = -8
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/trade_shop/landing_pad)
 "ua" = (
@@ -12197,7 +12197,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 10
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor/phoron{
 	dir = 9;
 	id_tag = "civ_airlock_two_sensor";
@@ -12961,7 +12961,7 @@
 /area/hydroponics)
 "xq" = (
 /obj/machinery/door/airlock/glass_external,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/general)
 "xr" = (
@@ -13126,7 +13126,7 @@
 /area/bridge/bunker)
 "xG" = (
 /obj/machinery/door/airlock/glass_external,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button{
 	dir = 1;
 	frequency = 1380;
@@ -13361,8 +13361,8 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/voidcraft/vertical,
-/atom/movable/map_helper/airlock/door/ext_door,
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
+/obj/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle{
 	frequency = 1380;
 	id_tag = "courser_exterior_sensor";
@@ -13838,7 +13838,7 @@
 	frequency = 1380;
 	id_tag = "civvie_docker_pump"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/structure/handrail{
 	dir = 8
 	},
@@ -13927,7 +13927,7 @@
 	frequency = 1379;
 	id_tag = "civ_airlock_pump"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/arrivals)
 "zo" = (
@@ -14467,7 +14467,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "Ao" = (
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1380;
@@ -14542,7 +14542,7 @@
 /turf/simulated/floor/tiled/eris/cafe,
 /area/crew_quarters/cafeteria)
 "Aw" = (
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
 	id_tag = "emt_shuttle_docker";
@@ -15376,7 +15376,7 @@
 	frequency = 1379;
 	id_tag = "civ_airlock_two_pump"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/embedded_controller/radio/airlock/phoron{
 	id_tag = "civ_airlock_two";
 	name = "Frost Lock Controller";
@@ -15549,7 +15549,7 @@
 	frequency = 1380;
 	id_tag = "expshuttle_docker_pump_in_external"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/oxygen_pump{
 	pixel_y = 30
 	},
@@ -16107,7 +16107,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/trade_shop/landing_pad)
 "Dx" = (
@@ -16116,7 +16116,7 @@
 	pixel_x = 24;
 	pixel_y = 26
 	},
-/atom/movable/map_helper/airlock/sensor/int_sensor,
+/obj/map_helper/airlock/sensor/int_sensor,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
 "Dy" = (
@@ -16143,7 +16143,7 @@
 	frequency = 1380;
 	id_tag = "expshuttle_docker_pump_in_external"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -16234,7 +16234,7 @@
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Public External Airlock"
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
@@ -16304,7 +16304,7 @@
 	frequency = 1380;
 	id_tag = "civvie_docker_pump"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/structure/handrail{
 	dir = 8
 	},
@@ -16679,7 +16679,7 @@
 	frequency = 1380;
 	id_tag = "emt_shuttle_docker_pump"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/structure/handrail{
 	dir = 4
 	},
@@ -16744,7 +16744,7 @@
 	id_tag = "civvie_docker";
 	pixel_x = 24
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "EL" = (
@@ -18897,13 +18897,13 @@
 	dir = 4;
 	pixel_x = -28
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1380;
 	id_tag = "expshuttle_docker_pump_out_external"
 	},
-/atom/movable/map_helper/airlock/atmos/pump_out_internal,
+/obj/map_helper/airlock/atmos/pump_out_internal,
 /obj/machinery/oxygen_pump{
 	pixel_y = 30
 	},
@@ -19632,7 +19632,7 @@
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Nebula Trade Shop"
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/trade_shop/landing_pad)
 "Ko" = (
@@ -19925,7 +19925,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
@@ -20318,7 +20318,7 @@
 	pixel_x = 38;
 	pixel_y = 24
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals)
 "LH" = (
@@ -22278,7 +22278,7 @@
 /area/security/nuke_storage)
 "Pq" = (
 /obj/machinery/door/airlock/glass_external,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "Pr" = (
@@ -22762,7 +22762,7 @@
 	frequency = 1380;
 	id_tag = "civvie_docker_pump"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/structure/closet/walllocker/emerglocker{
 	pixel_x = -30
 	},
@@ -23060,7 +23060,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/station/exploration)
 "QN" = (
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 4
 	},
@@ -23415,7 +23415,7 @@
 	frequency = 1379;
 	id_tag = "civ_airlock_two_pump"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/arrivals/secondary)
 "Rs" = (
@@ -23730,7 +23730,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
 "RR" = (
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
@@ -23817,7 +23817,7 @@
 	pixel_x = 26;
 	pixel_y = 8
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/trade_shop/landing_pad)
 "Sa" = (
@@ -23847,7 +23847,7 @@
 	frequency = 1379;
 	id_tag = "civ_airlock_pump"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/embedded_controller/radio/airlock/phoron{
 	id_tag = "civ_airlock";
 	name = "Frost Lock Controller";
@@ -24206,7 +24206,7 @@
 	frequency = 1380;
 	id_tag = "civvie_docker_pump"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/structure/closet/walllocker/emerglocker{
 	pixel_x = -30
 	},
@@ -24283,7 +24283,7 @@
 	pixel_x = -6;
 	pixel_y = -26
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1379;
@@ -25159,8 +25159,8 @@
 /area/shuttle/excursion/cockpit)
 "UD" = (
 /obj/machinery/door/airlock/glass_external,
-/atom/movable/map_helper/airlock/door/ext_door,
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
+/obj/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle{
 	frequency = 1380;
 	id_tag = "civvie_docker_exterior_sensor";
@@ -26220,7 +26220,7 @@
 	pixel_y = -22
 	},
 /obj/structure/catwalk,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "WE" = (
@@ -26339,7 +26339,7 @@
 	id_tag = "courser_docker_pump";
 	power_rating = 20000
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
@@ -26725,7 +26725,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
 	dir = 4;
 	frequency = 1380;
@@ -26742,7 +26742,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1379;
@@ -27684,7 +27684,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
@@ -27809,13 +27809,13 @@
 	id_tag = "courser_docker_pump";
 	power_rating = 20000
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
 	id_tag = "courser_docker";
 	pixel_x = -24
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/structure/handrail{
 	dir = 4
 	},
@@ -27868,7 +27868,7 @@
 /area/hallway/primary/surfacethree)
 "ZN" = (
 /obj/machinery/door/airlock/glass_external,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/structure/cable/green{
 	d1 = 2;
 	d2 = 4;
