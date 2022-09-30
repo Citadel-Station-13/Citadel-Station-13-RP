@@ -7,9 +7,7 @@
 /area/rnd/outpost/heating)
 "ag" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
+	icon_state = "1-5"
 	},
 /turf/simulated/floor/lythios43c/indoors,
 /area/outpost/mining_main/outpost/substation)
@@ -892,12 +890,10 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "em" = (
+/obj/structure/lattice,
 /obj/structure/cable{
-	d1 = 32;
-	d2 = 2;
 	icon_state = "32-2"
 	},
-/obj/structure/lattice,
 /turf/simulated/open,
 /area/outpost/mining_main/outpost/substation)
 "en" = (
@@ -1493,6 +1489,12 @@
 "ha" = (
 /obj/machinery/light/small{
 	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "2-6"
+	},
+/obj/structure/cable{
+	icon_state = "4-10"
 	},
 /turf/simulated/floor/lythios43c/indoors,
 /area/outpost/mining_main/outpost/substation)
@@ -2454,8 +2456,10 @@
 	icon_state = "0-2"
 	},
 /obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
+	icon_state = "0-5"
+	},
+/obj/structure/cable{
+	icon_state = "1-5"
 	},
 /turf/simulated/floor/lythios43c/indoors,
 /area/outpost/mining_main/outpost/substation)
@@ -6881,6 +6885,15 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/outpost/chamber)
+"FO" = (
+/obj/structure/cable{
+	icon_state = "2-10"
+	},
+/obj/structure/cable{
+	icon_state = "8-10"
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/outpost/mining_main/outpost/substation)
 "FP" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 4
@@ -10420,6 +10433,9 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/surface)
 "VW" = (
+/obj/structure/cable{
+	icon_state = "1-9"
+	},
 /turf/simulated/floor/lythios43c/indoors,
 /area/outpost/mining_main/outpost/substation)
 "VX" = (
@@ -41427,7 +41443,7 @@ eZ
 sv
 sv
 Pq
-VW
+FO
 VW
 Pq
 sv

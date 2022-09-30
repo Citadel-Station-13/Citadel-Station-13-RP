@@ -1295,6 +1295,9 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
+/obj/structure/cable/green{
+	icon_state = "16-0"
+	},
 /turf/simulated/floor/lythios43c/indoors,
 /area/outpost/mining_main/outpost/substation)
 "Ky" = (
