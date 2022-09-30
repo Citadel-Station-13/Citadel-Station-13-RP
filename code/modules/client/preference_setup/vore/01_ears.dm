@@ -277,7 +277,7 @@
 
 	var/horn_display = "Normal"
 	if(pref.horn_style && (pref.horn_style in horn_styles_list))
-		var/datum/sprite_accessory/horns/instance = horn_styles_list[pref.horn_style]
+		var/datum/sprite_accessory/ears/instance = horn_styles_list[pref.horn_style]
 		horn_display = instance.name
 
 	else if(pref.horn_style)
@@ -383,12 +383,12 @@
 		// Construct the list of names allowed for this user.
 		var/list/pretty_horn_styles = list("Normal" = null)
 		for(var/path in horn_styles_list)
-			var/datum/sprite_accessory/horns/instance = horn_styles_list[path]
+			var/datum/sprite_accessory/ears/instance = horn_styles_list[path]
 			if(((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (pref.species in instance.species_allowed)))
 				pretty_horn_styles[instance.name] = path
 
 		// Present choice to user
-		var/new_horn_style = input(user, "Pick horns", "Character Preference", pref.horn_style) as null|anything in pretty_horn_styles
+		var/new_horn_style = input(user, "Pick Secondary Ears", "Character Preference", pref.horn_style) as null|anything in pretty_horn_styles
 		if(new_horn_style)
 			pref.horn_style = pretty_horn_styles[new_horn_style]
 

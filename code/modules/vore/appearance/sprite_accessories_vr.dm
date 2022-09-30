@@ -151,10 +151,24 @@
 	desc = ""
 	icon_state = "bunny"
 
+/datum/sprite_accessory/ears/caprahorns
+	name = "caprine horns"
+	desc = ""
+	icon_state = "caprahorns"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
 /datum/sprite_accessory/ears/cow
 	name = "cow, horns"
 	desc = ""
 	icon_state = "cow"
+
+/datum/sprite_accessory/ears/cowc
+	name = "cow, horns, colorable"
+	desc = ""
+	icon_state = "cow-c"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/cow_nohorns
 	name = "cow, no horns"
@@ -182,6 +196,42 @@
 	desc = ""
 	icon_state = "demon-horns1"
 
+/datum/sprite_accessory/ears/demon_horns1_c
+	name = "demon horns, colorable"
+	desc = ""
+	icon_state = "demon-horns1_c"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/ears/demon_horns2
+	name = "demon horns, colorable(outward)"
+	desc = ""
+	icon_state = "demon-horns2"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/ears/demon_horns3
+	name = "demon horns, colorable(upward)"
+	desc = ""
+	icon_state = "demon-horns3"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/ears/demon_horns4
+	name = "demon horns, colorable ring(upward)"
+	desc = ""
+	icon_state = "demon-horns4"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+	extra_overlay = "demon-horns4-ring"
+
+/datum/sprite_accessory/ears/demon_horns5
+	name = "demon horns, colorable (stubby)"
+	desc = ""
+	icon_state = "demon-horns5"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
 /datum/sprite_accessory/ears/donkey
 	name = "donkey, colorable"
 	desc = ""
@@ -189,6 +239,20 @@
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "otie-inner"
+
+/datum/sprite_accessory/ears/dragon_horns
+	name = "dragon horns, colorable"
+	desc = ""
+	icon_state = "dragon-horns"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/ears/drake
+	name = "drake frills"
+	desc = ""
+	icon_state = "drake"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/dual_robot
 	name = "synth antennae, colorable"
@@ -315,6 +379,18 @@
 	desc = ""
 	icon_state = "mouse-grey"
 
+/datum/sprite_accessory/ears/oni_h1
+	name = "oni horns"
+	desc = ""
+	icon_state = "oni-h1"
+
+/datum/sprite_accessory/ears/oni_h1_c
+	name = "oni horns, colorable"
+	desc = ""
+	icon_state = "oni-h1_c"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
 /datum/sprite_accessory/ears/otie
 	name = "otie, colorable"
 	desc = ""
@@ -335,6 +411,13 @@
 	desc = ""
 	icon = 'icons/mob/sprite_accessories/ears_32x64.dmi'
 	icon_state = "rabbit-swept"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/ears/ram
+	name = "ram horns"
+	desc = ""
+	icon_state = "ram"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
@@ -371,6 +454,21 @@
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
+/datum/sprite_accessory/ears/smallantlers
+	name = "small antlers"
+	desc = ""
+	icon_state = "smallantlers"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/ears/smallantlers_e
+	name = "small antlers with ears"
+	desc = ""
+	icon_state = "smallantlers"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+	extra_overlay = "deer"
+
 /datum/sprite_accessory/ears/smallbear
 	name = "small bear"
 	desc = ""
@@ -401,6 +499,29 @@
 	icon_state = "swooped_bunny"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/ears/synthhorns_curly
+	name = "Synth horns, curly"
+	desc = ""
+	icon_state = "synthhorns_curled"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/ears/synthhorns_plain
+	name = "Synth horns, plain"
+	desc = ""
+	icon_state = "synthhorns_plain"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+	extra_overlay = "synthhorns_plain_light"
+
+/datum/sprite_accessory/ears/synthhorns_thick
+	name = "Synth horns, thick"
+	desc = ""
+	icon_state = "synthhorns_thick"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+	extra_overlay = "synthhorns_thick_light"
 
 /datum/sprite_accessory/ears/teppiears
 	name = "Teppi Ears"
@@ -2273,120 +2394,3 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "scree"
 	ckeys_allowed = list("scree")
-
-/datum/sprite_accessory/horns
-	name = "You should not see this..."
-	icon = 'icons/mob/sprite_accessories/ears.dmi'
-	do_colouration = 0 // Set to 1 to blend (ICON_ADD) hair color
-
-	color_blend_mode = ICON_MULTIPLY // Only appliciable if do_coloration = 1
-	var/extra_overlay // Icon state of an additional overlay to blend in.
-	var/extra_overlay2
-	var/desc = "You should not see this..."
-
-/datum/sprite_accessory/horns/caprahorns
-	name = "caprine horns"
-	desc = ""
-	icon_state = "caprahorns"
-	do_colouration = 1
-
-/datum/sprite_accessory/horns/cowc
-	name = "cow, horns, colorable"
-	desc = ""
-	icon_state = "cow-c"
-	do_colouration = 1
-
-/datum/sprite_accessory/horns/demon_horns1_c
-	name = "demon horns, colorable"
-	desc = ""
-	icon_state = "demon-horns1_c"
-	do_colouration = 1
-
-/datum/sprite_accessory/horns/demon_horns2
-	name = "demon horns, colorable(outward)"
-	desc = ""
-	icon_state = "demon-horns2"
-	do_colouration = 1
-
-/datum/sprite_accessory/horns/demon_horns3
-	name = "demon horns, colorable(upward)"
-	desc = ""
-	icon_state = "demon-horns3"
-	do_colouration = 1
-
-/datum/sprite_accessory/horns/demon_horns4
-	name = "demon horns, colorable ring(upward)"
-	desc = ""
-	icon_state = "demon-horns4"
-	do_colouration = 1
-	extra_overlay = "demon-horns4-ring"
-
-/datum/sprite_accessory/horns/demon_horns5
-	name = "demon horns, colorable (stubby)"
-	desc = ""
-	icon_state = "demon-horns5"
-	do_colouration = 1
-
-/datum/sprite_accessory/horns/dragon_horns
-	name = "dragon horns, colorable"
-	desc = ""
-	icon_state = "dragon-horns"
-	do_colouration = 1
-
-/datum/sprite_accessory/horns/drake
-	name = "drake frills"
-	desc = ""
-	icon_state = "drake"
-	do_colouration = 1
-
-/datum/sprite_accessory/horns/oni_h1
-	name = "oni horns"
-	desc = ""
-	icon_state = "oni-h1"
-	color_blend_mode = ICON_ADD
-
-/datum/sprite_accessory/horns/oni_h1_c
-	name = "oni horns, colorable"
-	desc = ""
-	icon_state = "oni-h1_c"
-	do_colouration = 1
-
-/datum/sprite_accessory/horns/ram
-	name = "ram horns"
-	desc = ""
-	icon_state = "ram"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
-
-/datum/sprite_accessory/horns/smallantlers
-	name = "small antlers"
-	desc = ""
-	icon_state = "smallantlers"
-	do_colouration = 1
-
-/datum/sprite_accessory/horns/smallantlers_e
-	name = "small antlers with ears"
-	desc = ""
-	icon_state = "smallantlers"
-	do_colouration = 1
-	extra_overlay = "deer"
-
-/datum/sprite_accessory/horns/synthhorns_curly
-	name = "Synth horns, curly"
-	desc = ""
-	icon_state = "synthhorns_curled"
-	do_colouration = 1
-
-/datum/sprite_accessory/horns/synthhorns_plain
-	name = "Synth horns, plain"
-	desc = ""
-	icon_state = "synthhorns_plain"
-	do_colouration = 1
-	extra_overlay = "synthhorns_plain_light"
-
-/datum/sprite_accessory/horns/synthhorns_thick
-	name = "Synth horns, thick"
-	desc = ""
-	icon_state = "synthhorns_thick"
-	do_colouration = 1
-	extra_overlay = "synthhorns_thick_light"

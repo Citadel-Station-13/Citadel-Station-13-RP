@@ -54,7 +54,7 @@
 	var/g_ears3 = 30
 	var/b_ears3 = 30
 
-	var/datum/sprite_accessory/horns/horn_style = null
+	var/datum/sprite_accessory/ears/horn_style = null
 	var/r_horn = 30
 	var/g_horn = 30
 	var/b_horn = 30
