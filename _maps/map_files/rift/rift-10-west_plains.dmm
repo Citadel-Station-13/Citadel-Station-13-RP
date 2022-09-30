@@ -5,6 +5,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
+"ag" = (
+/obj/structure/cable{
+	icon_state = "1-5"
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/outpost/mining_main/outpost/substation)
 "ah" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/cable/heavyduty{
@@ -883,6 +889,13 @@
 /obj/machinery/meter,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
+"em" = (
+/obj/structure/lattice,
+/obj/structure/cable{
+	icon_state = "32-2"
+	},
+/turf/simulated/open,
+/area/outpost/mining_main/outpost/substation)
 "en" = (
 /obj/machinery/air_sensor{
 	frequency = 1445;
@@ -1052,6 +1065,10 @@
 "fe" = (
 /obj/random/multiple/underdark/treasure,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/rift/surfacebase/outside/west)
+"fh" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
 "fj" = (
 /obj/machinery/power/apc/alarms_hidden{
@@ -1470,17 +1487,17 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "ha" = (
-/obj/structure/cable{
-	d1 = 32;
-	d2 = 2;
-	icon_state = "32-2"
-	},
-/obj/structure/lattice,
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/open,
-/area/outpost/mining_main/outpost)
+/obj/structure/cable{
+	icon_state = "2-6"
+	},
+/obj/structure/cable{
+	icon_state = "4-10"
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/outpost/mining_main/outpost/substation)
 "hb" = (
 /obj/effect/overlay/snow/floor,
 /obj/effect/overlay/snow/floor,
@@ -1703,6 +1720,9 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
+"ib" = (
+/turf/simulated/shuttle/wall/voidcraft,
+/area/turbolift/rwest_mining/surface)
 "ie" = (
 /obj/structure/table/rack,
 /obj/item/clothing/suit/bio_suit/anomaly,
@@ -2432,13 +2452,17 @@
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
 "lz" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "0-2"
+	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+	icon_state = "0-5"
+	},
+/obj/structure/cable{
+	icon_state = "1-5"
 	},
 /turf/simulated/floor/lythios43c/indoors,
-/area/outpost/mining_main/outpost)
+/area/outpost/mining_main/outpost/substation)
 "lC" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1
@@ -3028,6 +3052,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
+"of" = (
+/obj/machinery/door/airlock/lift,
+/turf/simulated/shuttle/floor/voidcraft/lythios43c,
+/area/turbolift/rwest_mining/surface)
 "og" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -3466,6 +3494,9 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
+"pS" = (
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/turbolift/rwest_mining/surface)
 "pV" = (
 /obj/structure/table/steel,
 /obj/item/measuring_tape,
@@ -3906,6 +3937,10 @@
 /obj/structure/fence/door/opened,
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/exterior/bunker)
+"rY" = (
+/obj/effect/floor_decal/industrial/warning/dust,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "sc" = (
 /obj/machinery/camera/network/research_outpost{
 	dir = 8
@@ -5812,10 +5847,10 @@
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/heavyduty{
-	icon_state = "0-2"
+	icon_state = "1-2"
 	},
-/turf/simulated/floor/lythios43c,
-/area/outpost/mining_main/outpost)
+/turf/simulated/floor,
+/area/outpost/mining_main/outpost/substation)
 "AD" = (
 /turf/simulated/wall/r_wall,
 /area/rnd/outpost/chamber)
@@ -6494,6 +6529,18 @@
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/exterior/nuketown)
+"Ec" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 5
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "Ee" = (
 /obj/effect/overlay/snow/floor/grav_edges{
 	dir = 8
@@ -6656,9 +6703,11 @@
 	dir = 4
 	},
 /obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/heavyduty{
 	icon_state = "2-8"
 	},
-/obj/structure/cable/heavyduty,
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west)
 "Fb" = (
@@ -6836,6 +6885,21 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/outpost/chamber)
+"FO" = (
+/obj/structure/cable{
+	icon_state = "2-10"
+	},
+/obj/structure/cable{
+	icon_state = "8-10"
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/outpost/mining_main/outpost/substation)
+"FP" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "FR" = (
 /obj/structure/salvageable/machine_os,
 /obj/effect/overlay/snow/floor,
@@ -7197,9 +7261,11 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/outpost/testing_lab)
 "HK" = (
-/obj/machinery/door/airlock/maintenance/engi,
+/obj/machinery/door/airlock/maintenance/engi{
+	req_one_access = list(10,48)
+	},
 /turf/simulated/floor/lythios43c/indoors,
-/area/outpost/mining_main/outpost)
+/area/outpost/mining_main/outpost/substation)
 "HM" = (
 /obj/machinery/alarm{
 	dir = 8;
@@ -7471,6 +7537,9 @@
 /obj/machinery/camera/network/research_outpost,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
+"IV" = (
+/turf/simulated/shuttle/floor/voidcraft/lythios43c,
+/area/turbolift/rwest_mining/surface)
 "IY" = (
 /turf/unsimulated/wall/planetary/lythios43c{
 	desc = "Glacial permafrost, compacted harder than stone.";
@@ -8916,7 +8985,7 @@
 /area/maintenance/substation/outpost)
 "Pq" = (
 /turf/simulated/wall,
-/area/outpost/mining_main/outpost)
+/area/outpost/mining_main/outpost/substation)
 "Ps" = (
 /obj/effect/floor_decal/spline/fancy{
 	dir = 5
@@ -10153,6 +10222,16 @@
 /obj/machinery/cell_charger,
 /turf/simulated/floor,
 /area/tether/outpost/solars_shed)
+"UM" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "UT" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -10323,6 +10402,12 @@
 "VF" = (
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/exterior/bunker)
+"VH" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "VI" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow,
 /turf/simulated/floor/tiled,
@@ -10348,8 +10433,11 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/surface)
 "VW" = (
+/obj/structure/cable{
+	icon_state = "1-9"
+	},
 /turf/simulated/floor/lythios43c/indoors,
-/area/outpost/mining_main/outpost)
+/area/outpost/mining_main/outpost/substation)
 "VX" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -40967,8 +41055,8 @@ Do
 sv
 sv
 Pq
-VW
-VW
+em
+ag
 Pq
 sv
 sv
@@ -41355,7 +41443,7 @@ eZ
 sv
 sv
 Pq
-VW
+FO
 VW
 Pq
 sv
@@ -42315,8 +42403,8 @@ Oc
 Oc
 Oc
 Oc
-RE
-RE
+lb
+lb
 RE
 mX
 Do
@@ -42509,8 +42597,8 @@ sv
 sv
 sv
 sv
-sv
-sv
+FP
+FP
 sv
 sv
 sv
@@ -42703,8 +42791,8 @@ sv
 sv
 sv
 sv
-sv
-sv
+VH
+rY
 sv
 sv
 sv
@@ -42897,14 +42985,14 @@ Yd
 Yd
 Yd
 Yd
-Yd
-Yd
-lb
-lb
-lb
-lb
-lb
-lb
+cU
+fh
+pS
+ib
+ib
+ib
+ib
+pS
 sv
 sv
 sv
@@ -43091,14 +43179,14 @@ Yd
 Yd
 Yd
 Yd
-Yd
-Yd
+cU
 lb
-lb
-lb
-lb
-lb
-lb
+ib
+IV
+IV
+IV
+IV
+ib
 Yd
 Yd
 sv
@@ -43285,14 +43373,14 @@ Yd
 Yd
 Yd
 Yd
-Yd
-Yd
+cU
 lb
-lb
-lb
-lb
-lb
-lb
+of
+IV
+IV
+IV
+IV
+ib
 Yd
 Yd
 Yd
@@ -43479,14 +43567,14 @@ Yd
 Yd
 Yd
 Yd
-Yd
-Yd
+cU
 lb
-lb
-lb
-lb
-lb
-lb
+of
+IV
+IV
+IV
+IV
+ib
 Yd
 Yd
 Yd
@@ -43673,14 +43761,14 @@ Yd
 Yd
 Yd
 Yd
-Yd
-Yd
+cU
 lb
-lb
-lb
-lb
-lb
-lb
+ib
+IV
+IV
+IV
+IV
+ib
 Yd
 Yd
 Yd
@@ -43867,14 +43955,14 @@ Yd
 Yd
 Yd
 Yd
-Yd
-Yd
-lb
-lb
-lb
-lb
-lb
-lb
+Ec
+UM
+pS
+ib
+ib
+ib
+ib
+pS
 Yd
 Yd
 Yd

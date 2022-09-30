@@ -176,11 +176,12 @@
 	announcer = "Automated Traffic Control"
 	arrival_message = "Attention. An NT support vessel is approaching NSV Triumph."
 	departure_message = "Attention. A NT support vessel is now leaving NSV Triumph."
+
 */
 //////////////////////////////////////////////////////////////
 // RogueMiner "Belter: Shuttle
 // TODO - Not implemented yet on new map
-/*
+
 /datum/shuttle/autodock/ferry/belter
 	name = "Belter"
 	location = FERRY_LOCATION_STATION
@@ -196,7 +197,7 @@
 	move_time = move_time + rand(-5, 10) //30s max, 15s min, probably leaning towards higher values.
 	..()
 
-*/
+
 //////////////////////////////////////////////////////////////
 // CC Lewdship shuttle
 // DISABLED - cruiser has been removed entirely

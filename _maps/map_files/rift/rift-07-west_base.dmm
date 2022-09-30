@@ -41,6 +41,9 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/vault)
+"bX" = (
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/turbolift/rwest_mining/base)
 "cE" = (
 /obj/machinery/power/apc/alarms_hidden{
 	cell_type = null;
@@ -81,12 +84,11 @@
 /area/rift/facility/interior/vault)
 "dU" = (
 /obj/machinery/light/small,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/rift/surfacebase/outside/west_base)
-"dY" = (
-/obj/machinery/door/airlock/lift,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_base)
+"dY" = (
+/turf/simulated/shuttle/wall/voidcraft,
+/area/turbolift/rwest_mining/base)
 "em" = (
 /obj/structure/closet/crate/freezer/rations,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -325,6 +327,10 @@
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west_base)
+"wP" = (
+/obj/turbolift_map_holder/rift_west_base,
+/turf/simulated/shuttle/floor/voidcraft/lythios43c,
+/area/turbolift/rwest_mining/base)
 "yJ" = (
 /turf/simulated/shuttle/wall/voidcraft,
 /area/rift/facility/interior/elevator)
@@ -369,11 +375,9 @@
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/exterior/mineshaft)
 "Az" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_base)
+/obj/machinery/door/airlock/lift,
+/turf/simulated/shuttle/floor/voidcraft/lythios43c,
+/area/turbolift/rwest_mining/base)
 "AH" = (
 /turf/simulated/wall,
 /area/rift/facility/interior/undergound3)
@@ -420,6 +424,9 @@
 "ET" = (
 /turf/simulated/wall/dungeon,
 /area/rift/facility/interior/undergound3)
+"Fo" = (
+/turf/simulated/wall,
+/area/rift/surfacebase/outside/west_base)
 "Fy" = (
 /obj/effect/overlay/snow/floor/edges_new,
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
@@ -480,8 +487,8 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "Kh" = (
-/turf/simulated/shuttle/wall/voidcraft,
-/area/rift/surfacebase/outside/west_base)
+/turf/simulated/shuttle/floor/voidcraft/lythios43c,
+/area/turbolift/rwest_mining/base)
 "KI" = (
 /obj/effect/overlay/snow/floor/grav_edges,
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -626,7 +633,10 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "Sx" = (
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_base)
 "SW" = (
 /turf/simulated/wall,
@@ -662,10 +672,8 @@
 /obj/effect/overlay/snow/floor/edges_new{
 	dir = 4
 	},
-/obj/machinery/light/small{
-	dir = 8
-	},
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/obj/structure/sign/warning/falling,
+/turf/simulated/wall,
 /area/rift/surfacebase/outside/west_base)
 "VN" = (
 /obj/structure/table/rack/shelf,
@@ -31060,10 +31068,10 @@ DE
 DE
 DE
 DE
-DE
-DE
-DE
-DE
+Fo
+Fo
+Fo
+Fo
 DE
 DE
 DE
@@ -31254,10 +31262,10 @@ DE
 nm
 nm
 nm
-lL
-NS
+Fo
+Sx
 Um
-HQ
+Fo
 HQ
 HQ
 HQ
@@ -31450,8 +31458,8 @@ HQ
 HQ
 VI
 EJ
-Az
-Gb
+EJ
+lL
 Gb
 Gb
 Gb
@@ -32432,14 +32440,14 @@ py
 py
 py
 py
-Sx
+NS
 dU
-Kh
-Kh
-Kh
-Kh
-Kh
-Kh
+bX
+dY
+dY
+dY
+dY
+bX
 DE
 DE
 DE
@@ -32626,14 +32634,14 @@ dd
 dd
 dd
 dd
-Sx
-Sx
+NS
+NS
 dY
 Kh
 Kh
 Kh
-Kh
-Kh
+wP
+dY
 py
 py
 DE
@@ -32820,14 +32828,14 @@ DD
 DD
 DD
 DD
-Sx
-Sx
+NS
+NS
+Az
+Kh
+Kh
+Kh
+Kh
 dY
-Kh
-Kh
-Kh
-Kh
-Kh
 py
 py
 py
@@ -33014,14 +33022,14 @@ DD
 DD
 DD
 DD
-Sx
-Sx
+NS
+NS
+Az
+Kh
+Kh
+Kh
+Kh
 dY
-Kh
-Kh
-Kh
-Kh
-Kh
 py
 py
 py
@@ -33208,14 +33216,14 @@ Lm
 Lm
 Lm
 Lm
-Sx
-Sx
+NS
+NS
 dY
 Kh
 Kh
 Kh
 Kh
-Kh
+dY
 py
 py
 py
@@ -33402,14 +33410,14 @@ py
 py
 py
 py
-Sx
+NS
 dU
-Kh
-Kh
-Kh
-Kh
-Kh
-Kh
+bX
+dY
+dY
+dY
+dY
+bX
 py
 py
 py
