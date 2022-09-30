@@ -68,8 +68,6 @@
 /area/submap/debrisfield_vr/old_tele)
 "n" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/airless,

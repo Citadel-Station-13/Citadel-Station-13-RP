@@ -480,8 +480,6 @@
 /area/rift/facility/interior/temple)
 "lF" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance/engi{
@@ -894,8 +892,6 @@
 /area/rift/exterior/mineshaft)
 "wK" = (
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
@@ -1034,8 +1030,6 @@
 /area/rift/facility/interior/temple)
 "Ap" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/lythios43c/indoors,
@@ -1061,13 +1055,9 @@
 /area/rift/facility/interior/undergound2)
 "BO" = (
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/lythios43c/indoors,
@@ -1193,8 +1183,6 @@
 /area/rift/surfacebase/outside/west_deep)
 "Gl" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
@@ -1375,8 +1363,6 @@
 /area/shuttle/belter)
 "Nt" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,

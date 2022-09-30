@@ -1981,10 +1981,7 @@
 /area/awaymission/snow_outpost/dark)
 "gF" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/simulated/shuttle/floor/alienplating,
 /area/awaymission/snow_outpost/dark)
@@ -2003,18 +2000,13 @@
 /area/awaymission/snow_outpost/dark)
 "gH" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/shuttle/floor/alienplating,
 /area/awaymission/snow_outpost/dark)
 "gI" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/shuttle/floor/alienplating,
 /area/awaymission/snow_outpost/dark)

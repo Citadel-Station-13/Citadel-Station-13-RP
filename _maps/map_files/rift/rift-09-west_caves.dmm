@@ -25,13 +25,9 @@
 /area/rift/surfacebase/outside/west_caves)
 "bd" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/lythios43c/indoors,
@@ -526,8 +522,6 @@
 /area/rift/surfacebase/outside/west_caves)
 "mN" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/lythios43c/indoors,
@@ -972,8 +966,6 @@
 	dir = 5
 	},
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
@@ -1353,8 +1345,6 @@
 /area/rift/facility/interior/undergound1)
 "CK" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance/engi{
@@ -1545,13 +1535,9 @@
 /area/outpost/mining_main/outpost)
 "Gs" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/lythios43c/indoors,
@@ -1766,8 +1752,6 @@
 /area/rift/surfacebase/outside/west_caves)
 "LQ" = (
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/lythios43c/indoors,
@@ -1779,8 +1763,6 @@
 /area/outpost/mining_main/outpost/substation)
 "Md" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/machinery/light/small{
@@ -2349,8 +2331,6 @@
 /area/rift/facility/interior/bathrooms)
 "WQ" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
@@ -2472,8 +2452,6 @@
 /area/rift/exterior/bunker/lower)
 "YB" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/lythios43c/indoors,
