@@ -69,7 +69,6 @@
 	lift_floor_label = "Undergound Level 3"
 	lift_floor_name = "Mining Bottom"
 	lift_announce_str = "Arriving at Lower Level."
-	delay_time = 15 SECONDS
 
 /area/turbolift/rwest_mining/surface
 	name = "mining shaft (surface)"
