@@ -42,3 +42,4 @@ Apply regexes in this order:
 // getting rid of extraneous d1/d2 varedits
 `\td1 = (1|2|4|8);\n\td2 = (1|2|4|8);\n\ticon_state = "\1-\2"(;\n\tpixel_[xy] = [0-9]+){0,2}`-`\ticon_state = "$1-$2"`
 `\td2 = (1|2|4|8);\n\ticon_state = "0-\1"(;\n\tpixel_[xy] = [0-9]+){0,2}`-`\ticon_state = "0-$1"`
+`\ticon_state = "0-(1|2|4|8)";\n\td2 = \1`-`\ticon_state = "0-$1"`

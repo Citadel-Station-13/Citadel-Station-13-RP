@@ -1315,7 +1315,6 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/power/tracker,
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/airless,
@@ -1493,7 +1492,6 @@
 "ry" = (
 /obj/machinery/power/solar,
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/airless,
@@ -1525,7 +1523,6 @@
 	icon_state = "1-8"
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/hull/airless,
@@ -1714,7 +1711,6 @@
 /area/talon/decktwo/central_hallway)
 "uq" = (
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/structure/closet/crate/plastic,
@@ -1999,7 +1995,6 @@
 	dir = 1
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -2524,7 +2519,6 @@
 	pixel_y = -24
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/wood,
@@ -2557,7 +2551,6 @@
 	icon_state = "1-4"
 	},
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/hull/airless,
@@ -2849,7 +2842,6 @@
 	pixel_x = 24
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/reinforced,
@@ -3025,7 +3017,6 @@
 	icon_state = "0-8"
 	},
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/wall/rshull,
@@ -3909,7 +3900,6 @@
 	pixel_x = 24
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/catwalk,
@@ -4493,7 +4483,6 @@
 	pixel_x = 24
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/light_switch{
@@ -4508,7 +4497,6 @@
 	icon_state = "0-4"
 	},
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/wall/rshull,

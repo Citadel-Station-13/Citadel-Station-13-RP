@@ -27,7 +27,6 @@
 	pixel_y = 28
 	},
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/shuttle/floor/yellow/airless,
@@ -262,7 +261,6 @@
 	pixel_x = -28
 	},
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/shuttle/floor/red/airless,
@@ -386,7 +384,6 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/shuttle/floor/yellow/airless,
@@ -434,7 +431,6 @@
 	pixel_y = 28
 	},
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/shuttle/floor/yellow/airless,
@@ -843,7 +839,6 @@
 	pixel_y = 28
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/shuttle/floor/yellow/airless,
@@ -916,7 +911,6 @@
 /area/submap/debrisfiled_vr/clownshuttle)
 "SE" = (
 /obj/structure/cable/cyan{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc/alarms_hidden{

@@ -187,7 +187,6 @@
 	start_charge = 0
 	},
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -947,7 +946,6 @@
 	start_charge = 0
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/meter,
@@ -1106,7 +1104,6 @@
 "wF" = (
 /obj/machinery/power/smes/buildable,
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/techfloor{
@@ -1916,7 +1913,6 @@
 "LW" = (
 /obj/structure/handrail,
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/item/frame/apc,
@@ -2033,7 +2029,6 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/techfloor{

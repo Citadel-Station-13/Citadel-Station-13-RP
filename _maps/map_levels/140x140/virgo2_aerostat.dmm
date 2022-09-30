@@ -29,7 +29,6 @@
 /area/tether_away/aerostat/solars)
 "af" = (
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -115,7 +114,6 @@
 /area/tether_away/aerostat/inside)
 "aq" = (
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/solar,
@@ -166,7 +164,6 @@
 	dir = 1
 	},
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/rust,
@@ -242,7 +239,6 @@
 /area/tether_away/aerostat/inside)
 "aG" = (
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/solar,
@@ -342,7 +338,6 @@
 "aU" = (
 /obj/machinery/power/solar,
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/rust,
@@ -1088,7 +1083,6 @@
 	},
 /obj/structure/cable/yellow,
 /obj/structure/cable/yellow{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/rust,
@@ -1127,7 +1121,6 @@
 	},
 /obj/structure/cable/yellow,
 /obj/structure/cable/yellow{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/rust,
@@ -1304,7 +1297,6 @@
 /area/tether_away/aerostat/solars)
 "dG" = (
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/effect/floor_decal/industrial/warning/dust,
@@ -1322,7 +1314,6 @@
 /area/tether_away/aerostat/solars)
 "dI" = (
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/solar,
@@ -1357,7 +1348,6 @@
 "dM" = (
 /obj/machinery/power/smes/buildable,
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/bluegrid/virgo2,
@@ -1395,7 +1385,6 @@
 /obj/machinery/power/solar,
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/rust,

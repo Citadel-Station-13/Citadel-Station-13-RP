@@ -43,7 +43,6 @@
 /area/space)
 "ae" = (
 /obj/structure/cable/pink{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/airless,
@@ -311,7 +310,6 @@
 /area/itglight/captain)
 "bq" = (
 /obj/structure/cable/pink{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/airless,
@@ -468,7 +466,6 @@
 	pixel_x = 25
 	},
 /obj/structure/cable/pink{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/bed/double/padded,
@@ -1266,7 +1263,6 @@
 /area/itglight/medbay)
 "ih" = (
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/cable{
@@ -1689,7 +1685,6 @@
 	pixel_x = 25
 	},
 /obj/structure/cable/pink{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/white,
@@ -1719,7 +1714,6 @@
 	pixel_x = 25
 	},
 /obj/structure/cable/pink{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
@@ -1894,7 +1888,6 @@
 /area/itglight/starboardhighsec)
 "mo" = (
 /obj/structure/cable/pink{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/airless,
@@ -1958,7 +1951,6 @@
 	pixel_x = -25
 	},
 /obj/structure/cable/pink{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
@@ -1976,7 +1968,6 @@
 /area/shuttle/itglightshuttle)
 "ne" = (
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/solar,
@@ -2278,7 +2269,6 @@
 	pixel_x = -25
 	},
 /obj/structure/cable/pink{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/fiftyspawner/phoron,
@@ -2355,7 +2345,6 @@
 	pixel_x = 25
 	},
 /obj/structure/cable/pink{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/eris/white/cargo,
@@ -2683,7 +2672,6 @@
 	pixel_x = 25
 	},
 /obj/structure/cable/pink{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/shuttle/floor/black,
@@ -3319,7 +3307,6 @@
 	pixel_y = 25
 	},
 /obj/structure/cable/pink{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
@@ -3524,7 +3511,6 @@
 	pixel_y = 25
 	},
 /obj/structure/cable/pink{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
@@ -3585,7 +3571,6 @@
 /obj/machinery/power/terminal,
 /obj/structure/cable/heavyduty,
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor,
@@ -3623,7 +3608,6 @@
 	pixel_x = 25
 	},
 /obj/structure/cable/pink{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
@@ -3761,7 +3745,6 @@
 	pixel_y = 25
 	},
 /obj/structure/cable/pink{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -3824,7 +3807,6 @@
 	pixel_x = 25
 	},
 /obj/structure/cable/pink{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -3930,7 +3912,6 @@
 	pixel_x = 25
 	},
 /obj/structure/cable/pink{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/bed/double/padded,
@@ -4039,7 +4020,6 @@
 /obj/machinery/power/terminal,
 /obj/structure/cable/heavyduty,
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor,
@@ -4527,7 +4507,6 @@
 "Fh" = (
 /obj/machinery/power/smes/buildable/offmap_spawn,
 /obj/structure/cable/pink{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor,
@@ -4588,7 +4567,6 @@
 /area/itglight/kitchen)
 "FH" = (
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/structure/cable{
@@ -5066,11 +5044,9 @@
 /area/itglight/portengi)
 "IF" = (
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/solar,
@@ -5086,7 +5062,6 @@
 	pixel_x = 25
 	},
 /obj/structure/cable/pink{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
@@ -5123,7 +5098,6 @@
 	pixel_y = 25
 	},
 /obj/structure/cable/pink{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
@@ -5259,7 +5233,6 @@
 	pixel_x = 25
 	},
 /obj/structure/cable/pink{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/bed/double/padded,
@@ -5313,7 +5286,6 @@
 	pixel_y = 25
 	},
 /obj/structure/cable/pink{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
@@ -5348,7 +5320,6 @@
 /area/itglight/shuttlebay)
 "Kv" = (
 /obj/structure/cable/pink{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/airless,
@@ -5377,7 +5348,6 @@
 	pixel_x = 25
 	},
 /obj/structure/cable/pink{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor,
@@ -5423,7 +5393,6 @@
 /area/itglight/shuttlebay)
 "Lg" = (
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/solar,
@@ -5555,7 +5524,6 @@
 	pixel_x = 25
 	},
 /obj/structure/cable/pink{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/bed/double/padded,
@@ -5811,7 +5779,6 @@
 "NJ" = (
 /obj/machinery/power/smes/buildable/offmap_spawn,
 /obj/structure/cable/pink{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor,
@@ -5879,7 +5846,6 @@
 	dir = 6
 	},
 /obj/structure/cable/pink{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc/hyper{
@@ -5913,7 +5879,6 @@
 "Oj" = (
 /obj/machinery/power/tracker,
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/airless,
@@ -6154,7 +6119,6 @@
 "PN" = (
 /obj/machinery/power/tracker,
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/airless,
@@ -6196,7 +6160,6 @@
 	pixel_y = 25
 	},
 /obj/structure/cable/pink{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
@@ -6463,7 +6426,6 @@
 	anchored = 1
 	},
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -6997,7 +6959,6 @@
 /area/itglight/starboardengi)
 "We" = (
 /obj/structure/cable/pink{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/airless,
@@ -7155,7 +7116,6 @@
 	pixel_x = -25
 	},
 /obj/structure/cable/pink{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/white,
@@ -7217,11 +7177,9 @@
 /area/itglight/restrooms)
 "XE" = (
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/solar,
@@ -7241,7 +7199,6 @@
 	anchored = 1
 	},
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -7269,7 +7226,6 @@
 /area/itglight/crew1)
 "XO" = (
 /obj/structure/cable/pink{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/airless,
@@ -7360,7 +7316,6 @@
 /area/itglight/portsolars)
 "Yw" = (
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/solar,
@@ -7555,7 +7510,6 @@
 /area/itglight/kitchen)
 "Zq" = (
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/solar,

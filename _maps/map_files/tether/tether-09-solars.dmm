@@ -80,7 +80,6 @@
 "aj" = (
 /obj/machinery/power/solar,
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
@@ -190,7 +189,6 @@
 	pixel_x = 28
 	},
 /obj/structure/cable/yellow{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/virgo3b,
@@ -209,7 +207,6 @@
 "az" = (
 /obj/machinery/power/tracker,
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/virgo3b,
@@ -353,7 +350,6 @@
 /area/rnd/outpost)
 "aR" = (
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/structure/cable/yellow,
@@ -368,7 +364,6 @@
 	pixel_y = -28
 	},
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/virgo3b,
@@ -392,7 +387,6 @@
 	dir = 1
 	},
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/virgo3b,
@@ -410,7 +404,6 @@
 	dir = 4
 	},
 /obj/structure/cable/yellow{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/sensor{
@@ -1212,7 +1205,6 @@
 	pixel_x = 24
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -2401,7 +2393,6 @@
 	icon_state = "0-4"
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor,
@@ -2835,7 +2826,6 @@
 	pixel_x = 24
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor,
@@ -3536,7 +3526,6 @@
 	dir = 6
 	},
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
@@ -3879,7 +3868,6 @@
 	pixel_x = -28
 	},
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/atmospherics/component/binary/pump/on{
@@ -4275,7 +4263,6 @@
 /area/rnd/outpost/storage)
 "iy" = (
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
@@ -5136,7 +5123,6 @@
 	dir = 8
 	},
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
@@ -5710,7 +5696,6 @@
 /obj/item/stack/flag/yellow,
 /obj/item/pickaxe,
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{
@@ -5841,7 +5826,6 @@
 /area/rnd/outpost)
 "lt" = (
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{
@@ -6630,7 +6614,6 @@
 	pixel_y = 28
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -7078,7 +7061,6 @@
 	pixel_x = 28
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/dark,

@@ -206,7 +206,6 @@
 /area/engineering/engine_room)
 "aK" = (
 /obj/structure/cable/cyan{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
@@ -385,7 +384,6 @@
 	state = 2
 	},
 /obj/structure/cable/cyan{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals6{
@@ -429,11 +427,9 @@
 /area/engineering/engine_room)
 "bf" = (
 /obj/structure/cable/cyan{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/cable/cyan{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/sensor{
@@ -904,7 +900,6 @@
 /area/engineering/engine_room)
 "cc" = (
 /obj/structure/cable/yellow{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/structure/cable/yellow,
@@ -986,7 +981,6 @@
 	dir = 4
 	},
 /obj/structure/cable/yellow{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor,
@@ -1451,7 +1445,6 @@
 	dir = 1
 	},
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{

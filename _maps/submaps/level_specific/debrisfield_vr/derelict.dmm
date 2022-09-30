@@ -213,9 +213,7 @@
 /area/space)
 "aL" = (
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /obj/machinery/power/fractal_reactor{
 	alpha = 0;
@@ -885,7 +883,6 @@
 /area/submap/debrisfield_vr/derelict/ai_access_starboard)
 "dg" = (
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{

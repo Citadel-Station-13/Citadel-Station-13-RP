@@ -296,11 +296,9 @@
 	icon_state = "4-8"
 	},
 /obj/structure/cable/cyan{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/structure/cable/cyan{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/reinforced,
@@ -514,7 +512,6 @@
 	icon_state = "2-8"
 	},
 /obj/structure/cable/cyan{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/emitter/gyrotron/anchored{
@@ -535,7 +532,6 @@
 	pixel_y = -28
 	},
 /obj/structure/cable/cyan{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
@@ -1143,7 +1139,6 @@
 	id_tag = "engine-g"
 	},
 /obj/structure/cable/cyan{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,

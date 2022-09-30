@@ -222,7 +222,6 @@
 /area/engineering/engine_room)
 "ay" = (
 /obj/structure/cable/cyan{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
@@ -241,7 +240,6 @@
 	name_tag = "Engine Power"
 	},
 /obj/structure/cable/cyan{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -310,7 +308,6 @@
 "aH" = (
 /obj/machinery/power/rad_collector,
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/light/small{
@@ -409,7 +406,6 @@
 	pixel_x = 28
 	},
 /obj/structure/cable/cyan{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -435,7 +431,6 @@
 "aP" = (
 /obj/machinery/power/rad_collector,
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor,
@@ -756,7 +751,6 @@
 /area/submap/pa_room)
 "bt" = (
 /obj/structure/cable/cyan{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{
@@ -834,7 +828,6 @@
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor,
@@ -914,7 +907,6 @@
 	dir = 4
 	},
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor,
@@ -1217,7 +1209,6 @@
 "cm" = (
 /obj/machinery/power/rad_collector,
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/light/small,
@@ -1284,7 +1275,6 @@
 	state = 1
 	},
 /obj/structure/cable/cyan{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/airless,

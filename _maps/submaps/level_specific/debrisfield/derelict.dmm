@@ -215,7 +215,6 @@
 "bd" = (
 /obj/structure/prop/alien/power,
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/fractal_reactor{
@@ -668,7 +667,6 @@
 /area/debrisfield/derelict)
 "cN" = (
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{

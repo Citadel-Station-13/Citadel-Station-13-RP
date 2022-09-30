@@ -119,7 +119,6 @@
 "aE" = (
 /obj/machinery/power/smes/buildable/point_of_interest,
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
@@ -127,7 +126,6 @@
 "aF" = (
 /obj/machinery/power/smes/buildable/point_of_interest,
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/structure/cable/green{
@@ -143,15 +141,13 @@
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/virgo2/DoomP)
 "aH" = (
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/machinery/power/port_gen/pacman,
 /turf/simulated/floor/plating,
@@ -210,8 +206,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/virgo2/DoomP)
@@ -221,8 +216,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /obj/structure/cable{
 	icon_state = "4-8"

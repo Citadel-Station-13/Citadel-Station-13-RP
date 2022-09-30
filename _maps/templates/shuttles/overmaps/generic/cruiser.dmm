@@ -358,7 +358,6 @@
 	req_access = list(67)
 	},
 /obj/structure/cable/cyan{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/wood,
@@ -496,7 +495,6 @@
 	pixel_y = 28
 	},
 /obj/structure/cable/cyan{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -1376,7 +1374,6 @@
 	req_access = list(67)
 	},
 /obj/structure/cable/cyan{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -1810,7 +1807,6 @@
 /area/mothership/teleporter)
 "ed" = (
 /obj/structure/cable/cyan{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
@@ -1982,7 +1978,6 @@
 /area/mothership/dorm1)
 "et" = (
 /obj/structure/cable/cyan{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
@@ -2062,7 +2057,6 @@
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/cyan{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/shield_generator/charged,
@@ -2108,7 +2102,6 @@
 	req_access = list(67)
 	},
 /obj/structure/cable/cyan{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -2489,7 +2482,6 @@
 	sheets = 100
 	},
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -2500,7 +2492,6 @@
 	dir = 4
 	},
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/port_gen/pacman/super{
@@ -2517,7 +2508,6 @@
 	pixel_y = 28
 	},
 /obj/structure/cable/cyan{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/light/small{
@@ -2671,7 +2661,6 @@
 	icon_state = "2-8"
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/terminal,
@@ -2709,7 +2698,6 @@
 	icon_state = "1-4"
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/terminal,
@@ -2792,7 +2780,6 @@
 	pixel_x = 24
 	},
 /obj/structure/cable/cyan{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -2833,7 +2820,6 @@
 	pixel_x = 24
 	},
 /obj/structure/cable/cyan{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -3036,11 +3022,9 @@
 	pixel_y = 28
 	},
 /obj/structure/cable/cyan{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/cable/cyan{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/white,
@@ -3279,7 +3263,6 @@
 /area/mothership/security)
 "hi" = (
 /obj/structure/cable/cyan{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{
@@ -3477,7 +3460,6 @@
 /area/mothership/dorm3)
 "hJ" = (
 /obj/structure/cable/cyan{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
@@ -3543,7 +3525,6 @@
 /area/mothership/dorm4)
 "hN" = (
 /obj/structure/cable/cyan{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{
@@ -3990,7 +3971,6 @@
 	opacity = 0
 	},
 /obj/structure/cable/cyan{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
@@ -4118,7 +4098,6 @@
 	pixel_x = -28
 	},
 /obj/structure/cable/cyan{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
@@ -4338,7 +4317,6 @@
 	pixel_x = 24
 	},
 /obj/structure/cable/cyan{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/structure/cable/cyan,
@@ -4404,7 +4382,6 @@
 	pixel_x = 24
 	},
 /obj/structure/cable/cyan{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/white,
@@ -4485,7 +4462,6 @@
 	opacity = 0
 	},
 /obj/structure/cable/cyan{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
@@ -5026,7 +5002,6 @@
 /area/mothership/dorm5)
 "kW" = (
 /obj/structure/cable/cyan{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
@@ -5092,7 +5067,6 @@
 /area/mothership/dorm6)
 "la" = (
 /obj/structure/cable/cyan{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{
@@ -5201,7 +5175,6 @@
 	pixel_x = 24
 	},
 /obj/structure/cable/cyan{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/structure/cable/cyan,
@@ -6001,7 +5974,6 @@
 	},
 /obj/structure/cable/cyan,
 /obj/structure/cable/cyan{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -6029,7 +6001,6 @@
 /area/mothership/bridge)
 "mY" = (
 /obj/structure/cable/cyan{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
@@ -6627,7 +6598,6 @@
 	req_access = list(67)
 	},
 /obj/structure/cable/cyan{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -7003,7 +6973,6 @@
 	pixel_y = -28
 	},
 /obj/structure/cable/cyan{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -7115,7 +7084,6 @@
 	req_access = list(67)
 	},
 /obj/structure/cable/cyan{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -7247,7 +7215,6 @@
 	pixel_y = 24
 	},
 /obj/structure/cable/cyan{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -7412,7 +7379,6 @@
 	pixel_y = 24
 	},
 /obj/structure/cable/cyan{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -7869,7 +7835,6 @@
 /obj/structure/table/steel_reinforced,
 /obj/machinery/recharger,
 /obj/structure/cable/cyan{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{

@@ -50,9 +50,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/aux{
 	icon_state = "map-aux";
@@ -219,8 +217,7 @@
 /area/mercbase/hall)
 "aH" = (
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /turf/space,
 /area/space)
@@ -235,9 +232,7 @@
 /area/space)
 "aL" = (
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /turf/space,
 /area/space)
@@ -273,17 +268,14 @@
 	id = "syndsol"
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
 /area/mercbase/panels)
 "cQ" = (
 /obj/machinery/power/solar,
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
 /area/mercbase/panels)
@@ -320,8 +312,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/power)
@@ -600,8 +591,7 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/command)
@@ -656,8 +646,7 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/medicalOR)
@@ -965,9 +954,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /obj/structure/closet/hydrant,
 /turf/simulated/floor/tiled/dark,
@@ -1088,9 +1075,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/eqroom)
@@ -1602,9 +1587,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/medicalstorage)
@@ -1620,9 +1603,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/hall)
@@ -1667,9 +1648,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/engineering)
@@ -1748,8 +1727,7 @@
 "jx" = (
 /obj/machinery/power/solar,
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -1887,9 +1865,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /turf/simulated/floor,
 /area/mercbase/atmos)
@@ -2062,9 +2038,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
 /area/mercbase/airlock)
@@ -2080,9 +2054,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /turf/simulated/floor,
 /area/mercbase/fuel)
@@ -2101,9 +2073,7 @@
 "kk" = (
 /obj/machinery/power/smes,
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/engineering)
@@ -2112,8 +2082,7 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/engineering)
@@ -2815,8 +2784,7 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/dock)
@@ -2891,9 +2859,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/roid)

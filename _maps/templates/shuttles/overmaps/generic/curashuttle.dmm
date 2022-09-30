@@ -110,7 +110,6 @@
 /area/shuttle/curabitur/curashuttle/cockpit)
 "ap" = (
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{

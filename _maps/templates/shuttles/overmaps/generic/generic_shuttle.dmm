@@ -505,7 +505,6 @@
 "bd" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central7,
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{
@@ -726,8 +725,7 @@
 	icon_state = "0-8"
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
 	dir = 1;

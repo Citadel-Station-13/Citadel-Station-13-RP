@@ -197,7 +197,6 @@
 	pixel_x = 24
 	},
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -946,7 +945,6 @@
 	pixel_y = 24
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/meter,
@@ -1117,7 +1115,6 @@
 "wF" = (
 /obj/machinery/power/smes/buildable,
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2039,7 +2036,6 @@
 	pixel_y = 24
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2133,7 +2129,6 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/light{

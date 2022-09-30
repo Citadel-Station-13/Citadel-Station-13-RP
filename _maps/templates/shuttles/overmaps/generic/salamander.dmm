@@ -75,7 +75,6 @@
 	pixel_y = 24
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -155,7 +154,6 @@
 	pixel_y = -24
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -397,7 +395,6 @@
 	pixel_x = -28
 	},
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/structure/handrail,
@@ -1078,7 +1075,6 @@
 	pixel_y = 24
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -1288,7 +1284,6 @@
 	pixel_y = -24
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -1730,7 +1725,6 @@
 /area/shuttle/salamander)
 "Vh" = (
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
@@ -1859,7 +1853,6 @@
 	anchored = 1
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/alarm/alarms_hidden{

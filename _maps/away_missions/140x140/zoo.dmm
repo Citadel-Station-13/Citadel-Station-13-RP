@@ -8887,9 +8887,7 @@
 /area/awaymission/zoo/solars)
 "xl" = (
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /obj/machinery/power/solar/fake,
 /turf/simulated/floor/airless{

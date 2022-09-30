@@ -254,7 +254,6 @@
 /area/class_d/unexplored/underground)
 "kb" = (
 /obj/structure/cable/orange{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
@@ -345,7 +344,6 @@
 /area/class_d/wildcat_mining_base/exterior_power)
 "mk" = (
 /obj/structure/cable/orange{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{
@@ -438,7 +436,6 @@
 /area/class_d/wildcat_mining_base/interior/main_room)
 "ov" = (
 /obj/structure/cable/orange{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{
@@ -528,7 +525,6 @@
 	pixel_y = 28
 	},
 /obj/structure/cable/orange{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/classd,
@@ -643,7 +639,6 @@
 /area/class_d/wildcat_mining_base/exterior_power)
 "te" = (
 /obj/structure/cable/orange{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
@@ -899,7 +894,6 @@
 /area/class_d/wildcat_mining_base/refueling_outbuilding)
 "yQ" = (
 /obj/structure/cable/orange{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/smes/buildable/offmap_spawn/empty,
@@ -1439,7 +1433,6 @@
 /area/class_d/wildcat_mining_base/exterior_power)
 "OH" = (
 /obj/structure/cable/orange{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{

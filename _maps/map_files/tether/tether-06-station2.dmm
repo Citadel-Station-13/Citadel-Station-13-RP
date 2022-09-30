@@ -256,7 +256,6 @@
 	pixel_x = 28
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
@@ -916,7 +915,6 @@
 	dir = 1
 	},
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
@@ -1593,7 +1591,6 @@
 	pixel_y = 24
 	},
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor,
@@ -1853,7 +1850,6 @@
 	pixel_x = -28
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/structure/table/rack{
@@ -2287,11 +2283,9 @@
 	dir = 1
 	},
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/structure/window/reinforced/full,
@@ -2304,11 +2298,9 @@
 	dir = 1
 	},
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/window/reinforced/full,
@@ -2321,7 +2313,6 @@
 	dir = 1
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/window/reinforced/full,
@@ -2558,7 +2549,6 @@
 	},
 /obj/structure/cable/green,
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/structure/window/reinforced/full,
@@ -2588,7 +2578,6 @@
 /area/gateway/prep_room)
 "amg" = (
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
@@ -2797,11 +2786,9 @@
 	},
 /obj/structure/cable,
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
@@ -2842,12 +2829,10 @@
 	dir = 8
 	},
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/structure/cable/green,
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/structure/window/reinforced/full,
@@ -3049,7 +3034,6 @@
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled,
@@ -3523,7 +3507,6 @@
 /obj/structure/window/reinforced,
 /obj/structure/cable/green,
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/structure/window/reinforced/full,
@@ -3534,11 +3517,9 @@
 /obj/machinery/door/firedoor/glass,
 /obj/structure/window/reinforced,
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/window/reinforced/full,
@@ -3549,7 +3530,6 @@
 /obj/machinery/door/firedoor/glass,
 /obj/structure/window/reinforced,
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/window/reinforced/full,
@@ -4098,7 +4078,6 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/grille,
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/structure/window/reinforced/full,
@@ -4130,7 +4109,6 @@
 /obj/structure/grille,
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/window/reinforced/full,
@@ -4520,7 +4498,6 @@
 	pixel_y = 28
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -4759,7 +4736,6 @@
 /area/vacant/vacant_restaurant_upper)
 "aqX" = (
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
@@ -5062,7 +5038,6 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/grille,
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/structure/window/reinforced/full,
@@ -5302,7 +5277,6 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/grille,
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/structure/cable/green,
@@ -5469,11 +5443,9 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/grille,
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/structure/cable/green,
@@ -6036,11 +6008,9 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/grille,
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/structure/window/reinforced/full,
@@ -6064,11 +6034,9 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/grille,
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/structure/window/reinforced/full,
@@ -6730,7 +6698,6 @@
 	pixel_x = 24
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -7543,7 +7510,6 @@
 	},
 /obj/machinery/light,
 /obj/structure/cable/cyan{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -8268,7 +8234,6 @@
 /area/ai)
 "aFT" = (
 /obj/structure/cable/cyan{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
@@ -8483,7 +8448,6 @@
 	pixel_y = -32
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -8501,7 +8465,6 @@
 	name_tag = "Cargo Subgrid"
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/cable/green,
@@ -8729,7 +8692,6 @@
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/light{
@@ -8798,7 +8760,6 @@
 	dir = 4
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/bluegrid,
@@ -8909,7 +8870,6 @@
 	output_level = 200
 	},
 /obj/structure/cable/cyan{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/camera/network/command,
@@ -9438,11 +9398,9 @@
 	output_attempt = 0
 	},
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/camera/network/engineering{
@@ -9787,7 +9745,6 @@
 /area/shuttle/excursion/cockpit)
 "aLD" = (
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/structure/cable/green{
@@ -9983,7 +9940,6 @@
 	pixel_y = 28
 	},
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -10188,7 +10144,6 @@
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled,
@@ -10274,7 +10229,6 @@
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled,
@@ -11372,7 +11326,6 @@
 	dir = 1
 	},
 /obj/structure/cable/cyan{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
@@ -12429,7 +12382,6 @@
 	pixel_y = 28
 	},
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -13245,7 +13197,6 @@
 	pixel_x = 24
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -13712,7 +13663,6 @@
 /area/shuttle/excursion/cargo)
 "aZS" = (
 /obj/structure/cable/cyan{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/sensor{
@@ -13720,7 +13670,6 @@
 	name_tag = "AI Subgrid"
 	},
 /obj/structure/cable/cyan{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/bluegrid,
@@ -14033,7 +13982,6 @@
 /obj/structure/sign/securearea,
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/structure/window/reinforced/full,
@@ -14172,7 +14120,6 @@
 /area/tether/station/dock_one)
 "cqy" = (
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
@@ -15260,7 +15207,6 @@
 	pixel_x = 28
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -16037,7 +15983,6 @@
 	pixel_x = 28
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -16898,7 +16843,6 @@
 /obj/structure/grille,
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -18860,7 +18804,6 @@
 /area/quartermaster/foyer)
 "kBy" = (
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
@@ -20879,7 +20822,6 @@
 	pixel_x = 28
 	},
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled,
@@ -21812,7 +21754,6 @@
 	pixel_y = 28
 	},
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/wood,
@@ -25278,7 +25219,6 @@
 /area/chapel/main)
 "wQo" = (
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -25508,7 +25448,6 @@
 	pixel_x = 28
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/wood,
@@ -25520,7 +25459,6 @@
 	pixel_y = 24
 	},
 /obj/structure/cable/cyan{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/industrial/outline/red,
@@ -26037,7 +25975,6 @@
 	pixel_x = -28
 	},
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor,

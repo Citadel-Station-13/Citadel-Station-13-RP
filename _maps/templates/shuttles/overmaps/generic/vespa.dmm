@@ -262,8 +262,7 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /turf/simulated/floor,
 /area/ship/expe/atmospherics)
@@ -415,9 +414,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /turf/simulated/floor,
 /area/ship/expe/maintenancerim)
@@ -690,8 +687,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/northairlock)
@@ -861,8 +857,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	icon_state = "intact-aux";
@@ -983,8 +978,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/structure/closet/secure_closet/personal/cabinet,
 /turf/simulated/floor/tiled/techfloor,
@@ -1014,8 +1008,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/structure/closet/secure_closet/personal/cabinet,
 /turf/simulated/floor/tiled/techfloor,
@@ -1044,8 +1037,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/structure/closet/secure_closet/personal/cabinet,
 /turf/simulated/floor/tiled/techfloor,
@@ -1074,8 +1066,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/structure/closet/secure_closet/personal/cabinet,
 /turf/simulated/floor/tiled/techfloor,
@@ -1105,8 +1096,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/structure/closet/secure_closet/personal/cabinet,
 /turf/simulated/floor/tiled/techfloor,
@@ -1136,8 +1126,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/structure/closet/secure_closet/personal/cabinet,
 /turf/simulated/floor/tiled/techfloor,
@@ -1166,8 +1155,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/structure/closet/secure_closet/personal/cabinet,
 /turf/simulated/floor/tiled/techfloor,
@@ -1196,8 +1184,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/structure/closet/secure_closet/personal/cabinet,
 /turf/simulated/floor/tiled/techfloor,
@@ -1227,8 +1214,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/structure/closet/secure_closet/personal/cabinet,
 /turf/simulated/floor/tiled/techfloor,
@@ -1306,8 +1292,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /turf/simulated/floor,
 /area/ship/expe/maintenance1)
@@ -2017,7 +2002,6 @@
 	dir = 4
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2268,8 +2252,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/techfloor{
 	icon_state = "techfloor_edges";
@@ -2364,8 +2347,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	icon_state = "bordercolor";
@@ -3310,8 +3292,7 @@
 	dir = 4
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/techfloor{
 	icon_state = "techfloor_edges";
@@ -3503,8 +3484,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	icon_state = "borderfloor_black";
@@ -3673,8 +3653,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -3893,7 +3872,6 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/cable{
@@ -4249,9 +4227,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	icon_state = "borderfloor_black";
@@ -4320,9 +4296,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	icon_state = "borderfloor_black";
@@ -4448,9 +4422,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/borderfloorwhite{
 	icon_state = "borderfloor_white";
@@ -4845,9 +4817,7 @@
 	dir = 4
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /turf/simulated/floor,
 /area/ship/expe/sm)
@@ -5431,8 +5401,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	icon_state = "borderfloor_black";
@@ -6006,8 +5975,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	icon_state = "borderfloor_black";
@@ -6818,7 +6786,6 @@
 /area/ship/expe/sm)
 "nc" = (
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor,
@@ -7310,8 +7277,7 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/borderfloorwhite{
 	icon_state = "borderfloor_white";
@@ -7643,9 +7609,7 @@
 "oy" = (
 /obj/machinery/power/rad_collector,
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /turf/simulated/floor,
 /area/ship/expe/sm)
@@ -7656,9 +7620,7 @@
 	},
 /obj/machinery/power/rad_collector,
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /turf/simulated/floor,
 /area/ship/expe/sm)
@@ -7676,8 +7638,7 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor6)
@@ -7888,8 +7849,7 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	icon_state = "borderfloor_black";
@@ -7984,8 +7944,7 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/borderfloorwhite{
 	icon_state = "borderfloor_white";
@@ -8130,7 +8089,6 @@
 
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -8369,8 +8327,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	icon_state = "borderfloor_black";
@@ -8473,9 +8430,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	icon_state = "borderfloor_black";
@@ -8537,8 +8492,7 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	icon_state = "borderfloor_black";
@@ -8795,8 +8749,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringpower)
@@ -8861,9 +8814,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /turf/simulated/floor,
 /area/ship/expe/smstorage)
@@ -8911,8 +8862,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	icon_state = "bordercolor";
@@ -9315,8 +9265,7 @@
 /area/ship/expe/engineeringpower)
 "rF" = (
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloorblack,
@@ -9326,8 +9275,7 @@
 /area/ship/expe/engineeringpower)
 "rG" = (
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/yellow/border,
@@ -9352,8 +9300,7 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /turf/simulated/floor,
 /area/ship/expe/corridor4)
@@ -9726,8 +9673,7 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	icon_state = "borderfloor_black";
@@ -9885,8 +9831,7 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/borderfloorwhite{
 	icon_state = "borderfloor_white";
@@ -10377,8 +10322,7 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/borderfloorwhite{
 	icon_state = "borderfloor_white";
@@ -10521,8 +10465,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/techfloor{
 	icon_state = "techfloor_edges";
@@ -11156,7 +11099,6 @@
 /area/ship/expe/corridor5)
 "vn" = (
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/effect/floor_decal/techfloor,
@@ -11473,8 +11415,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/techfloor{
 	icon_state = "techfloor_edges";
@@ -12076,8 +12017,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /turf/simulated/floor,
 /area/ship/expe/engines)

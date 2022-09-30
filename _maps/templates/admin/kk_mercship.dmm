@@ -54,7 +54,6 @@
 /area/ship/manta/armoury_st)
 "ak" = (
 /obj/structure/cable/orange{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc/hyper{
@@ -587,7 +586,6 @@
 /area/ship/manta/radiator_star)
 "cG" = (
 /obj/structure/cable/orange{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc/hyper{
@@ -645,7 +643,6 @@
 	pixel_y = 24
 	},
 /obj/structure/cable/orange{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1304,7 +1301,6 @@
 	dir = 1
 	},
 /obj/structure/cable/orange{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -1646,7 +1642,6 @@
 "il" = (
 /obj/machinery/power/smes/buildable/point_of_interest,
 /obj/structure/cable/orange{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/techfloor{
@@ -1834,7 +1829,6 @@
 	dir = 8
 	},
 /obj/structure/cable/orange{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/wood,
@@ -1916,7 +1910,6 @@
 	pixel_y = 24
 	},
 /obj/structure/cable/orange{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/techfloor{
@@ -2455,7 +2448,6 @@
 	pixel_x = 24
 	},
 /obj/structure/cable/orange{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
@@ -2712,7 +2704,6 @@
 	pixel_x = 24
 	},
 /obj/structure/cable/orange{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
@@ -2977,7 +2968,6 @@
 	pixel_x = 24
 	},
 /obj/structure/cable/orange{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
@@ -3236,7 +3226,6 @@
 	},
 /obj/effect/catwalk_plated/dark,
 /obj/structure/cable/orange{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
@@ -3301,11 +3290,9 @@
 "qw" = (
 /obj/machinery/power/terminal,
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/techfloor{
@@ -3465,7 +3452,6 @@
 	},
 /obj/effect/floor_decal/techfloor,
 /obj/structure/cable/orange{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/white,
@@ -4176,7 +4162,6 @@
 "uZ" = (
 /obj/machinery/power/port_gen/pacman/super,
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/light{
@@ -4331,7 +4316,6 @@
 	dir = 1
 	},
 /obj/structure/cable/orange{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -4925,7 +4909,6 @@
 "yj" = (
 /obj/machinery/power/port_gen/pacman/super,
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/light{
@@ -5587,7 +5570,6 @@
 	pixel_x = -24
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/techfloor{
@@ -6415,7 +6397,6 @@
 	pixel_y = -24
 	},
 /obj/structure/cable/orange{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/light{
@@ -6478,7 +6459,6 @@
 	},
 /obj/machinery/power/shield_generator/charged,
 /obj/structure/cable/orange{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -7459,7 +7439,6 @@
 	pixel_y = -24
 	},
 /obj/structure/cable/orange{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -8328,7 +8307,6 @@
 	pixel_y = 24
 	},
 /obj/structure/cable/orange{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/light{
@@ -8349,7 +8327,6 @@
 	pixel_x = -24
 	},
 /obj/structure/cable/orange{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
@@ -8846,7 +8823,6 @@
 	pixel_x = 24
 	},
 /obj/structure/cable/orange{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
@@ -9363,7 +9339,6 @@
 "Vz" = (
 /obj/machinery/power/smes/buildable/point_of_interest,
 /obj/structure/cable/orange{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9967,7 +9942,6 @@
 	pixel_y = 24
 	},
 /obj/structure/cable/orange{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/effect/catwalk_plated/dark,
@@ -10034,7 +10008,6 @@
 "YS" = (
 /obj/machinery/power/terminal,
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/effect/floor_decal/techfloor{
@@ -10159,7 +10132,6 @@
 	pixel_x = 24
 	},
 /obj/structure/cable/orange{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/dark,

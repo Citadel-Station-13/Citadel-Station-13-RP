@@ -143,7 +143,6 @@
 	pixel_y = 30
 	},
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/carpet/oracarpet,
@@ -160,7 +159,6 @@
 	cur_coils = 3
 	},
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/airless,

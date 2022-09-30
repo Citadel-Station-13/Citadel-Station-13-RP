@@ -85,7 +85,6 @@
 	},
 /obj/machinery/power/tracker,
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -294,7 +293,6 @@
 "fP" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/solar{
@@ -435,7 +433,6 @@
 /area/lavaland/east/colony)
 "jE" = (
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/solar{
@@ -491,7 +488,6 @@
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/machinery/power/solar,
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -631,7 +627,6 @@
 "mK" = (
 /obj/machinery/power/solar,
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -658,7 +653,6 @@
 "ne" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/solar{
@@ -1055,7 +1049,6 @@
 /area/lavaland/east/colony)
 "uS" = (
 /obj/structure/cable/yellow{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/smes/buildable{
@@ -1114,7 +1107,6 @@
 	dir = 1
 	},
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/solar{
@@ -1225,7 +1217,6 @@
 /area/lavaland/east/colony)
 "xz" = (
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/solar{
@@ -1658,7 +1649,6 @@
 "GX" = (
 /obj/machinery/power/solar,
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -2256,7 +2246,6 @@
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/machinery/power/solar,
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -2383,7 +2372,6 @@
 	dir = 1
 	},
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/solar{
@@ -2505,7 +2493,6 @@
 	machine_stat = 1
 	},
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,

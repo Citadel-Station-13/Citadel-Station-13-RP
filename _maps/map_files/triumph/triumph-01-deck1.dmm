@@ -71,7 +71,6 @@
 /area/engineering/hallway/lower)
 "ar" = (
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
@@ -135,7 +134,6 @@
 	RCon_tag = "Incomplete Farm - SMES"
 	},
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/airless/ceiling,
@@ -1229,7 +1227,6 @@
 /area/maintenance/engi_engine)
 "eK" = (
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/window/reinforced/full,
@@ -1458,7 +1455,6 @@
 /area/engineering/engine_smes)
 "fB" = (
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/cable{
@@ -1615,7 +1611,6 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/structure/disposalpipe/segment{
@@ -2070,7 +2065,6 @@
 	pixel_y = -32
 	},
 /obj/structure/cable/cyan{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
@@ -2171,7 +2165,6 @@
 /area/engineering/engine_airlock)
 "hZ" = (
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
@@ -2745,7 +2738,6 @@
 	icon_state = "16-0"
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/door/firedoor,
@@ -2832,7 +2824,6 @@
 /area/space)
 "kt" = (
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/structure/reagent_dispensers/watertank,
@@ -3278,7 +3269,6 @@
 /area/engineering/atmos/storage)
 "mm" = (
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
@@ -3294,7 +3284,6 @@
 /area/engineering/hallway/lower)
 "mo" = (
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
@@ -3738,7 +3727,6 @@
 	name_tag = "Telecomms Subgrid"
 	},
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
@@ -3968,7 +3956,6 @@
 	icon_state = "4-8"
 	},
 /obj/structure/cable/cyan{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
@@ -4453,7 +4440,6 @@
 	icon_state = "pipe-c"
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -4601,7 +4587,6 @@
 	opacity = 0
 	},
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
@@ -4901,7 +4886,6 @@
 	opacity = 0
 	},
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
@@ -5279,7 +5263,6 @@
 	pixel_x = 28
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled,
@@ -5979,7 +5962,6 @@
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -6190,7 +6172,6 @@
 /area/storage/tech)
 "wp" = (
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -6358,7 +6339,6 @@
 	pixel_y = -28
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/cable/green{
@@ -6925,7 +6905,6 @@
 	pixel_x = -30
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/white,
@@ -8123,7 +8102,6 @@
 	icon_state = "2-8"
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{
@@ -8144,11 +8122,9 @@
 	cur_coils = 2
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
@@ -8289,7 +8265,6 @@
 	pixel_y = -32
 	},
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/techfloor/orange,
@@ -8467,7 +8442,6 @@
 	dir = 1
 	},
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/structure/disposalpipe/segment,
@@ -8626,7 +8600,6 @@
 /area/engineering/storage)
 "Fn" = (
 /obj/structure/cable/cyan{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/smes/buildable/engine/rust,
@@ -9106,7 +9079,6 @@
 	name_tag = "Engine Output"
 	},
 /obj/structure/cable/cyan{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -9142,7 +9114,6 @@
 "GS" = (
 /obj/machinery/power/smes/buildable/main,
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -9359,7 +9330,6 @@
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced,
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor,
@@ -9927,7 +9897,6 @@
 /area/engineering/hallway/lower)
 "JV" = (
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/solar_control,
@@ -10047,11 +10016,9 @@
 "Kx" = (
 /obj/machinery/power/grid_checker,
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -10196,7 +10163,6 @@
 	name_tag = "Master"
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -10389,11 +10355,9 @@
 	cur_coils = 4
 	},
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/light/small,
@@ -10408,7 +10372,6 @@
 	icon_state = "1-8"
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
@@ -10806,7 +10769,6 @@
 /area/engineering/atmos/storage)
 "Na" = (
 /obj/structure/cable/yellow{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/terminal{
@@ -10937,7 +10899,6 @@
 	pixel_x = -28
 	},
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/corner_techfloor_grid{
@@ -10972,7 +10933,6 @@
 /area/engineering/atmos/storage)
 "NE" = (
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -11082,7 +11042,6 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor,
@@ -11455,7 +11414,6 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/structure/cable{
@@ -12055,7 +12013,6 @@
 /area/engineering/engine_airlock)
 "Rr" = (
 /obj/structure/cable/yellow{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/terminal{
@@ -12085,7 +12042,6 @@
 	opacity = 0
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/cable{
@@ -12503,7 +12459,6 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -12784,7 +12739,6 @@
 	pixel_x = -28
 	},
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
@@ -13033,7 +12987,6 @@
 	opacity = 0
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
@@ -13814,7 +13767,6 @@
 "Xo" = (
 /obj/machinery/power/terminal,
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/industrial/warning{

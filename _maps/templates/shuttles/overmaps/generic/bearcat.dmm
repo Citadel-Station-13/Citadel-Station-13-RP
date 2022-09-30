@@ -110,7 +110,6 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/light_switch{
@@ -131,7 +130,6 @@
 	icon_state = "tube1"
 	},
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
@@ -347,7 +345,6 @@
 "aO" = (
 /obj/structure/table/woodentable,
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc/alarms_hidden{
@@ -779,7 +776,6 @@
 	icon_state = "apc0"
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/light_switch{
@@ -929,7 +925,6 @@
 /area/shuttle/bearcat/crew_saloon)
 "cq" = (
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc/alarms_hidden{
@@ -1396,9 +1391,7 @@
 "dx" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 1
+	icon_state = "0-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/structure/handrail{
@@ -1426,9 +1419,7 @@
 /area/shuttle/bearcat/crew_kitchen)
 "dB" = (
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 1
+	icon_state = "0-2"
 	},
 /obj/machinery/power/apc/alarms_hidden{
 	dir = 4;
@@ -1979,7 +1970,6 @@
 /area/shuttle/bearcat/unused1)
 "eT" = (
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
@@ -2345,9 +2335,7 @@
 	icon_state = "apc0"
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 1
+	icon_state = "0-2"
 	},
 /obj/machinery/light/small{
 	dir = 1
@@ -2543,7 +2531,6 @@
 /area/shuttle/bearcat/maintenance_enginecontrol)
 "ge" = (
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/structure/disposalpipe/segment,
@@ -2696,9 +2683,7 @@
 	anchored = 1
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 1
+	icon_state = "0-2"
 	},
 /obj/structure/sign/signnew/radiation{
 	pixel_y = 32
@@ -2969,7 +2954,6 @@
 	icon_state = "apc0"
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -2997,7 +2981,6 @@
 	dir = 4
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
@@ -3200,7 +3183,6 @@
 	icon_state = "apc0"
 	},
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
@@ -3357,9 +3339,7 @@
 	icon_state = "apc0"
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 1
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/bearcat/maintenance_engine_pod_port)

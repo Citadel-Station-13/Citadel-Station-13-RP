@@ -697,7 +697,6 @@
 	cur_coils = 3
 	},
 /obj/structure/cable/cyan{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/reinforced,
@@ -713,7 +712,6 @@
 /area/piratebase/facility)
 "Jl" = (
 /obj/structure/cable/cyan{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/port_gen/pacman,
@@ -809,7 +807,6 @@
 /area/piratebase/facility)
 "LT" = (
 /obj/structure/cable/cyan{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/terminal{
@@ -902,7 +899,6 @@
 /area/shuttle/pirate/general)
 "Pd" = (
 /obj/structure/cable/cyan{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{

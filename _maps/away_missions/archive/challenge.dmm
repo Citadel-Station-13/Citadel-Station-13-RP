@@ -899,9 +899,7 @@
 "da" = (
 /obj/machinery/gateway,
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 1
+	icon_state = "0-2"
 	},
 /turf/simulated/floor{
 	dir = 8

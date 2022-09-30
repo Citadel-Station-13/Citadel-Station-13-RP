@@ -592,9 +592,7 @@
 	icon_state = "term"
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/powershed)
@@ -670,14 +668,12 @@
 	pixel_x = -27
 	},
 /obj/structure/cable/cyan{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/kafel_full/white,
 /area/tether_away/beach/resort/lockermed)
 "ku" = (
 /obj/structure/cable/cyan{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/smes/buildable,
@@ -731,7 +727,6 @@
 	wall_mounted = 1
 	},
 /obj/structure/cable/cyan{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc/alarms_hidden{
@@ -767,7 +762,6 @@
 	pixel_x = -27
 	},
 /obj/structure/cable/cyan{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/wood,
@@ -785,7 +779,6 @@
 	pixel_y = 26
 	},
 /obj/structure/cable/cyan{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/wood,
@@ -823,9 +816,7 @@
 "mM" = (
 /obj/machinery/power/solar_control,
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /obj/machinery/light/small{
 	dir = 4;
@@ -855,9 +846,7 @@
 /area/tether_away/beach/resort/dorm4)
 "nm" = (
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /obj/machinery/power/tracker,
 /turf/simulated/floor{
@@ -1436,9 +1425,7 @@
 /area/tether_away/beach/jungle)
 "DA" = (
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /obj/machinery/power/solar,
 /turf/simulated/floor{
@@ -1492,7 +1479,6 @@
 	pixel_x = 22
 	},
 /obj/structure/cable/cyan{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/wood,
@@ -1844,7 +1830,6 @@
 /area/tether_away/beach/resort)
 "Rm" = (
 /obj/structure/cable/cyan{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc/alarms_hidden{
@@ -1896,7 +1881,6 @@
 	pixel_x = 22
 	},
 /obj/structure/cable/cyan{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/wood,

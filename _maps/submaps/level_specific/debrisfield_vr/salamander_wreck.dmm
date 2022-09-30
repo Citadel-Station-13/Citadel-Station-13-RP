@@ -59,7 +59,6 @@
 "bI" = (
 /obj/structure/handrail,
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -150,7 +149,6 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -397,7 +395,6 @@
 /area/shuttle/salamander_wreck_q2)
 "gv" = (
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/structure/handrail,
@@ -1076,7 +1073,6 @@
 "qn" = (
 /obj/structure/handrail,
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -1282,7 +1278,6 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -1748,7 +1743,6 @@
 /area/shuttle/salamander_wreck)
 "Vh" = (
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/structure/handrail{
@@ -1869,7 +1863,6 @@
 	anchored = 1
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/alarm/alarms_hidden{

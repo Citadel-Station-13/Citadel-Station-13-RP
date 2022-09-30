@@ -71,7 +71,6 @@
 /area/class_p/unexplored)
 "cB" = (
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/smes/buildable/point_of_interest,
@@ -83,7 +82,6 @@
 /area/class_p/unexplored)
 "cR" = (
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/terminal,
@@ -892,7 +890,6 @@
 "Re" = (
 /obj/machinery/power/port_gen/pacman,
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/classp,
@@ -915,7 +912,6 @@
 "RM" = (
 /obj/machinery/power/port_gen/pacman,
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/old_tile/blue/classp{

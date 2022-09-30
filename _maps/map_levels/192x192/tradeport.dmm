@@ -21,7 +21,6 @@
 /area/tradeport/atmospherics)
 "ag" = (
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/solar,
@@ -2468,7 +2467,6 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -3183,7 +3181,6 @@
 	req_access = list(160)
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -4043,7 +4040,6 @@
 "pJ" = (
 /obj/machinery/power/tracker,
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/airless,
@@ -7245,7 +7241,6 @@
 	req_access = list(160)
 	},
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -7892,7 +7887,6 @@
 /area/tradeport/exterior)
 "Ei" = (
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/solar,
@@ -10129,7 +10123,6 @@
 /area/tradeport)
 "MO" = (
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/solar_control/autostart,
@@ -10628,7 +10621,6 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -11240,7 +11232,6 @@
 	icon_state = "1-8"
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -11759,7 +11750,6 @@
 /area/tradeport/safarizoo)
 "SR" = (
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/smes/buildable{

@@ -570,9 +570,7 @@
 "cl" = (
 /obj/machinery/power/tracker,
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 1
+	icon_state = "0-2"
 	},
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
@@ -748,9 +746,7 @@
 	name = "Port Solar Array"
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 1
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating{
 	icon_state = "solarpanel";
@@ -840,7 +836,6 @@
 /area/awaymission/desert)
 "cX" = (
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/effect/debris/cleanable/dirt,
@@ -853,7 +848,6 @@
 /area/awaymission/desert)
 "cZ" = (
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/effect/debris/cleanable/dirt,
@@ -1061,7 +1055,6 @@
 /area/awaymission/labs/researchdivision)
 "dC" = (
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/effect/debris/cleanable/dirt,
@@ -1087,9 +1080,7 @@
 	pixel_x = 24
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 1
+	icon_state = "0-2"
 	},
 /turf/simulated/floor{
 	icon_state = "white"
@@ -1407,12 +1398,9 @@
 "eD" = (
 /obj/machinery/power/smes,
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 1
+	icon_state = "0-2"
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor{
@@ -1698,7 +1686,6 @@
 	pixel_x = 24
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor,
@@ -1736,9 +1723,7 @@
 /obj/effect/debris/cleanable/dirt,
 /obj/effect/debris/cleanable/dirt,
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 1
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/desert)
@@ -1777,7 +1762,6 @@
 	},
 /obj/structure/closet/crate/secure/weapon,
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/item/ammo_magazine/clip/c45,
@@ -1933,7 +1917,6 @@
 	pixel_x = -24
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor,
@@ -2044,9 +2027,7 @@
 	pixel_x = -24
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 1
+	icon_state = "0-2"
 	},
 /turf/simulated/floor{
 	icon_state = "white"
@@ -2524,7 +2505,6 @@
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/power/solar_control,
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
@@ -2708,7 +2688,6 @@
 	dir = 4
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
@@ -2815,7 +2794,6 @@
 	pixel_y = -24
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/terminal,
@@ -2836,7 +2814,6 @@
 	},
 /obj/structure/cable,
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
@@ -3192,7 +3169,6 @@
 	pixel_x = -24
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor{
@@ -3612,7 +3588,6 @@
 /area/awaymission/labs/command)
 "kD" = (
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/solar{
@@ -3640,7 +3615,6 @@
 /area/awaymission/desert)
 "kF" = (
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/solar{
@@ -3702,9 +3676,7 @@
 	pixel_x = -24
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 1
+	icon_state = "0-2"
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/command)
@@ -3808,7 +3780,6 @@
 /area/awaymission/desert)
 "kY" = (
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/solar{
@@ -3903,7 +3874,6 @@
 	dir = 4
 	},
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/light/small{
@@ -3916,13 +3886,10 @@
 	charge = 0
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 1
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/labs/solars)
@@ -3943,7 +3910,6 @@
 "lm" = (
 /obj/machinery/power/tracker,
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/effect/debris/cleanable/dirt,
@@ -3954,7 +3920,6 @@
 /area/awaymission/desert)
 "lo" = (
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/effect/debris/cleanable/dirt,
@@ -3973,7 +3938,6 @@
 /obj/effect/debris/cleanable/dirt,
 /obj/effect/debris/cleanable/dirt,
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating{
@@ -4104,7 +4068,6 @@
 /area/awaymission/labs/command)
 "lH" = (
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/effect/debris/cleanable/dirt,
@@ -4115,7 +4078,6 @@
 /area/awaymission/desert)
 "lI" = (
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/effect/debris/cleanable/dirt,
@@ -4162,7 +4124,6 @@
 /area/awaymission/labs/solars)
 "lN" = (
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/solar{
@@ -4211,7 +4172,6 @@
 /area/awaymission/desert)
 "lR" = (
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/solar{
@@ -4246,7 +4206,6 @@
 /area/awaymission/desert)
 "lT" = (
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/solar{
@@ -4524,7 +4483,6 @@
 	pixel_y = 24
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor,
@@ -5017,7 +4975,6 @@
 	pixel_x = 24
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor,
@@ -5313,7 +5270,6 @@
 	pixel_y = -24
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor{
@@ -5332,7 +5288,6 @@
 	pixel_x = -24
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor,
@@ -5480,7 +5435,6 @@
 	pixel_x = 24
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor,
@@ -5785,7 +5739,6 @@
 	pixel_x = 24
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor{
@@ -5923,7 +5876,6 @@
 	pixel_x = 24
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor{
@@ -6107,7 +6059,6 @@
 	pixel_y = -24
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor{
@@ -6458,7 +6409,6 @@
 	pixel_x = 24
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor,
