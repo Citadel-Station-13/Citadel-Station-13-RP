@@ -2395,8 +2395,6 @@
 /obj/structure/lattice,
 /obj/structure/disposalpipe/down,
 /obj/structure/cable{
-	d1 = 32;
-	d2 = 2;
 	icon_state = "32-2"
 	},
 /turf/simulated/open,
@@ -10272,8 +10270,6 @@
 	},
 /obj/structure/cable,
 /obj/structure/cable{
-	d1 = 16;
-	d2 = 0;
 	icon_state = "16-0"
 	},
 /turf/simulated/floor/plating,
@@ -29773,13 +29769,10 @@
 /obj/machinery/door/firedoor/glass,
 /obj/structure/lattice,
 /obj/structure/cable{
-	d1 = 32;
 	icon_state = "32-1"
 	},
 /obj/structure/cable,
 /obj/structure/cable{
-	d1 = 16;
-	d2 = 0;
 	icon_state = "16-0"
 	},
 /obj/structure/disposalpipe/down{

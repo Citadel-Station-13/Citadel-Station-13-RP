@@ -882,8 +882,6 @@
 	icon_state = "0-4"
 	},
 /obj/structure/cable/green{
-	d1 = 16;
-	d2 = 0;
 	icon_state = "16-0"
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -6034,8 +6032,6 @@
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/cable/green{
-	d1 = 16;
-	d2 = 0;
 	icon_state = "16-0"
 	},
 /obj/machinery/atmospherics/pipe/zpipe/up/scrubbers{
@@ -10028,8 +10024,6 @@
 /area/vacant/vacant_site)
 "arL" = (
 /obj/structure/cable/green{
-	d1 = 16;
-	d2 = 0;
 	icon_state = "16-0"
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -15638,8 +15632,6 @@
 	dir = 1
 	},
 /obj/structure/cable/green{
-	d1 = 16;
-	d2 = 0;
 	icon_state = "16-0"
 	},
 /obj/structure/cable/green{
@@ -21192,8 +21184,6 @@
 /area/engineering/atmos)
 "aKX" = (
 /obj/structure/cable/cyan{
-	d1 = 16;
-	d2 = 0;
 	icon_state = "16-0"
 	},
 /obj/machinery/atmospherics/pipe/zpipe/up,
@@ -28155,8 +28145,6 @@
 /obj/machinery/light,
 /obj/structure/ladder/up,
 /obj/structure/cable/orange{
-	d1 = 16;
-	d2 = 0;
 	icon_state = "16-0"
 	},
 /obj/structure/cable/orange,
@@ -35988,8 +35976,6 @@
 /area/tether/surfacebase/tram)
 "sJP" = (
 /obj/structure/cable/orange{
-	d1 = 16;
-	d2 = 0;
 	icon_state = "16-0"
 	},
 /obj/structure/cable/orange,

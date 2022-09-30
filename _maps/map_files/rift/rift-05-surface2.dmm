@@ -3098,8 +3098,6 @@
 /obj/structure/window/phoronreinforced/full,
 /obj/structure/grille,
 /obj/structure/cable/green{
-	d1 = 32;
-	d2 = 2;
 	icon_state = "32-2"
 	},
 /obj/structure/lattice,
@@ -18507,12 +18505,9 @@
 /obj/machinery/door/firedoor/glass,
 /obj/structure/lattice,
 /obj/structure/cable{
-	d1 = 32;
 	icon_state = "32-1"
 	},
 /obj/structure/cable{
-	d1 = 16;
-	d2 = 0;
 	icon_state = "16-0"
 	},
 /obj/structure/cable,
@@ -19102,7 +19097,6 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d1 = 32;
 	icon_state = "32-1"
 	},
 /turf/simulated/open,
@@ -19918,8 +19912,6 @@
 	icon_state = "0-2"
 	},
 /obj/structure/cable{
-	d1 = 16;
-	d2 = 0;
 	icon_state = "16-0"
 	},
 /turf/simulated/floor/plating,
@@ -23718,8 +23710,6 @@
 	icon_state = "0-2"
 	},
 /obj/structure/cable{
-	d1 = 16;
-	d2 = 0;
 	icon_state = "16-0"
 	},
 /obj/structure/cable{
@@ -30764,8 +30754,6 @@
 /area/medical/sleeper)
 "xYV" = (
 /obj/structure/cable{
-	d1 = 16;
-	d2 = 0;
 	icon_state = "16-0"
 	},
 /obj/structure/cable,
@@ -30856,8 +30844,6 @@
 /area/maintenance/security/upper)
 "ybH" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "32-8"
 	},
 /obj/machinery/atmospherics/pipe/zpipe/down/supply{

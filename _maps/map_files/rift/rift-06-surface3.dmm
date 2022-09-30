@@ -3444,7 +3444,6 @@
 /obj/structure/lattice,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable{
-	d1 = 32;
 	icon_state = "32-1"
 	},
 /turf/simulated/open,
@@ -11877,8 +11876,6 @@
 "wG" = (
 /obj/structure/railing,
 /obj/structure/cable{
-	d1 = 32;
-	d2 = 4;
 	icon_state = "32-4"
 	},
 /obj/structure/lattice,
@@ -23900,8 +23897,6 @@
 /area/shuttle/excursion/cockpit)
 "Uw" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "32-4"
 	},
 /obj/machinery/atmospherics/pipe/zpipe/down/supply{

@@ -22690,8 +22690,6 @@
 /area/shuttle/securiship/engines)
 "rjB" = (
 /obj/structure/cable/cyan{
-	d1 = 16;
-	d2 = 0;
 	icon_state = "16-0"
 	},
 /obj/structure/cable/cyan{

@@ -951,8 +951,6 @@
 /obj/machinery/atmospherics/pipe/zpipe/down/supply,
 /obj/machinery/atmospherics/pipe/zpipe/down/scrubbers,
 /obj/structure/cable/green{
-	d1 = 32;
-	d2 = 2;
 	icon_state = "32-2"
 	},
 /turf/simulated/open,
@@ -4379,8 +4377,6 @@
 /obj/machinery/door/firedoor/glass,
 /obj/structure/lattice,
 /obj/structure/cable/green{
-	d1 = 32;
-	d2 = 4;
 	icon_state = "32-4"
 	},
 /turf/simulated/open,
@@ -15790,8 +15786,6 @@
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
-	d1 = 32;
-	d2 = 4;
 	icon_state = "32-4"
 	},
 /obj/structure/disposalpipe/segment{
@@ -16769,7 +16763,6 @@
 	dir = 1
 	},
 /obj/structure/cable/green{
-	d1 = 32;
 	icon_state = "32-1"
 	},
 /turf/simulated/open,
@@ -24049,7 +24042,6 @@
 	dir = 1
 	},
 /obj/structure/cable/green{
-	d1 = 32;
 	icon_state = "32-1"
 	},
 /obj/structure/window/basic/full,
@@ -25609,8 +25601,6 @@
 "aVs" = (
 /obj/structure/lattice,
 /obj/structure/cable/green{
-	d1 = 32;
-	d2 = 4;
 	icon_state = "32-4"
 	},
 /obj/machinery/atmospherics/pipe/zpipe/down/supply{
@@ -27272,8 +27262,6 @@
 /obj/structure/lattice,
 /obj/structure/disposalpipe/down,
 /obj/structure/cable/green{
-	d1 = 32;
-	d2 = 8;
 	icon_state = "32-8"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -27709,8 +27697,6 @@
 	dir = 8
 	},
 /obj/structure/cable/green{
-	d1 = 32;
-	d2 = 4;
 	icon_state = "32-4"
 	},
 /turf/simulated/open,
@@ -35746,7 +35732,6 @@
 "faL" = (
 /obj/structure/lattice,
 /obj/structure/cable/orange{
-	d1 = 32;
 	icon_state = "32-1"
 	},
 /turf/simulated/open,

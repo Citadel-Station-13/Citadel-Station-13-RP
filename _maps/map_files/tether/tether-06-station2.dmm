@@ -12264,8 +12264,6 @@
 /area/quartermaster/warehouse)
 "aUX" = (
 /obj/structure/cable/yellow{
-	d2 = 2;
-	dir = 8;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/port_gen/pacman/mrs{
@@ -12652,8 +12650,6 @@
 	dir = 8
 	},
 /obj/structure/cable/yellow{
-	d2 = 2;
-	dir = 4;
 	icon_state = "0-2"
 	},
 /obj/structure/cable/green,

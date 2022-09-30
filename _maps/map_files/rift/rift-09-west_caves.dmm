@@ -2133,7 +2133,6 @@
 "Td" = (
 /obj/structure/lattice,
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "32-2"
 	},
 /turf/simulated/open,

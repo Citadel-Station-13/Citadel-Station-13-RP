@@ -3857,8 +3857,6 @@
 	dir = 1
 	},
 /obj/structure/cable/green{
-	d1 = 16;
-	d2 = 0;
 	icon_state = "16-0"
 	},
 /obj/structure/cable/green,
@@ -6889,8 +6887,6 @@
 /area/tether/surfacebase/public_garden_two)
 "akZ" = (
 /obj/structure/cable/green{
-	d1 = 32;
-	d2 = 2;
 	icon_state = "32-2"
 	},
 /obj/structure/lattice,
@@ -8792,8 +8788,6 @@
 /obj/structure/lattice,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
-	d1 = 32;
-	d2 = 2;
 	icon_state = "32-2"
 	},
 /obj/machinery/atmospherics/pipe/zpipe/down/scrubbers,
@@ -13318,8 +13312,6 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/effect/floor_decal/rust,
 /obj/structure/cable/green{
-	d1 = 16;
-	d2 = 0;
 	icon_state = "16-0"
 	},
 /obj/machinery/atmospherics/pipe/zpipe/up/supply{
@@ -14349,7 +14341,6 @@
 "aya" = (
 /obj/structure/lattice,
 /obj/structure/cable/green{
-	d1 = 32;
 	icon_state = "32-1"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -14991,8 +14982,6 @@
 "azG" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/cable/green{
-	d1 = 16;
-	d2 = 0;
 	icon_state = "16-0"
 	},
 /obj/machinery/atmospherics/pipe/zpipe/up/supply{
@@ -17086,8 +17075,6 @@
 /area/chapel/main)
 "aEn" = (
 /obj/structure/cable/green{
-	d1 = 32;
-	d2 = 4;
 	icon_state = "32-4"
 	},
 /obj/structure/lattice,
@@ -17123,8 +17110,6 @@
 /area/chapel/main)
 "aEp" = (
 /obj/structure/cable/green{
-	d1 = 16;
-	d2 = 0;
 	icon_state = "16-0"
 	},
 /obj/effect/floor_decal/techfloor,
@@ -26368,7 +26353,6 @@
 /area/engineering/atmos)
 "aYk" = (
 /obj/structure/cable/cyan{
-	d1 = 32;
 	icon_state = "32-1"
 	},
 /obj/structure/lattice,
@@ -31425,7 +31409,6 @@
 /obj/structure/ladder,
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/structure/cable/green{
-	d1 = 32;
 	icon_state = "32-1"
 	},
 /turf/simulated/floor/wood,
@@ -31574,8 +31557,6 @@
 /obj/machinery/atmospherics/pipe/zpipe/up/supply,
 /obj/structure/cable/green,
 /obj/structure/cable/green{
-	d1 = 16;
-	d2 = 0;
 	icon_state = "16-0"
 	},
 /obj/structure/disposalpipe/up,
@@ -32334,8 +32315,6 @@
 	dir = 1
 	},
 /obj/structure/cable/green{
-	d1 = 32;
-	d2 = 8;
 	icon_state = "32-8"
 	},
 /obj/machinery/atmospherics/pipe/zpipe/down/supply{
@@ -32741,8 +32720,6 @@
 /area/tether/surfacebase/old_tram)
 "glx" = (
 /obj/structure/cable/orange{
-	d1 = 16;
-	d2 = 0;
 	icon_state = "16-0"
 	},
 /obj/structure/cable/orange,
@@ -33104,8 +33081,6 @@
 "mDn" = (
 /obj/structure/lattice,
 /obj/structure/cable/orange{
-	d1 = 32;
-	d2 = 2;
 	icon_state = "32-2"
 	},
 /turf/simulated/open,

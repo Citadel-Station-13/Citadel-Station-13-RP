@@ -5248,8 +5248,6 @@
 /area/tradeport/atmospherics)
 "uL" = (
 /obj/structure/cable/yellow{
-	d2 = 2;
-	dir = 4;
 	icon_state = "0-2"
 	},
 /obj/machinery/floodlight{
@@ -9338,8 +9336,6 @@
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow{
-	d2 = 2;
-	dir = 4;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,

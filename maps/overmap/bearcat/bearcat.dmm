@@ -1932,9 +1932,7 @@
 	name = "Crew Deck APC"
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	pixel_y = 1;
-	d2 = 2
+	icon_state = "0-2"
 	},
 /turf/simulated/floor,
 /area/ship/scrap/crew)
@@ -2051,9 +2049,7 @@
 /area/ship/scrap/crew/kitchen)
 "dB" = (
 /obj/structure/cable{
-	icon_state = "0-2";
-	pixel_y = 1;
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
 	dir = 4;
@@ -3774,9 +3770,7 @@
 "gK" = (
 /obj/machinery/power/port_gen/pacman/super,
 /obj/structure/cable{
-	icon_state = "0-2";
-	pixel_y = 1;
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
 	dir = 1;

@@ -2339,8 +2339,6 @@
 "fa" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable{
-	d1 = 16;
-	d2 = 0;
 	icon_state = "16-0"
 	},
 /obj/structure/cable,
@@ -9335,7 +9333,6 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	d1 = 32;
 	icon_state = "32-1"
 	},
 /turf/simulated/open,
@@ -11785,8 +11782,6 @@
 /area/maintenance/atmos)
 "RA" = (
 /obj/structure/cable/yellow{
-	d1 = 16;
-	d2 = 0;
 	icon_state = "16-0"
 	},
 /obj/structure/cable/yellow{

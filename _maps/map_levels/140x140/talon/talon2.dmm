@@ -407,8 +407,6 @@
 /area/talon/maintenance/decktwo_solars)
 "gk" = (
 /obj/structure/cable/green{
-	d1 = 32;
-	d2 = 4;
 	icon_state = "32-4"
 	},
 /obj/structure/lattice,
@@ -626,8 +624,6 @@
 /area/talon/decktwo/central_hallway)
 "ig" = (
 /obj/structure/cable/green{
-	d1 = 32;
-	d2 = 8;
 	icon_state = "32-8"
 	},
 /obj/structure/lattice,
