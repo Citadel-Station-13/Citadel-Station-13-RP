@@ -160,6 +160,8 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	/// Gas flags. See [code/__DEFINES/atmospherics/flags.dm]
 	var/gas_flags
 
+	var/gas_metabolically_inert = TRUE
+
 /datum/reagent/gas/oxygen
 	id = "o2"
 	name = "Oxygen"
