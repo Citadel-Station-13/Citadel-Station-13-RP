@@ -117,7 +117,7 @@
 
 // Converts specific characters, like +, |, and _ to formatted output.
 /mob/proc/say_emphasis(input)
-	var/static/regex/italics = regex("[\\|\\/](?=\\S)(.+?)(?=\\S)\[\\|\\/]", "g")
+	var/static/regex/italics = regex("\[\\|\\/](?=\\S)(.+?)(?=\\S)\[\\|\\/]", "g")
 	input = replacetext_char(input, italics, "<i>$1</i>")
 	var/static/regex/bold = regex("\[\\+\\*](?=\\S)(.+?)(?=\\S)\[\\+\\*]", "g")
 	input = replacetext_char(input, bold, "<b>$1</b>")
