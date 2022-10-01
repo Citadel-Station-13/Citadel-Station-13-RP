@@ -227,7 +227,7 @@
 /turf/simulated/floor,
 /area/awaymission/example)
 "aG" = (
-/obj/effect/decal/cleanable/vomit,
+/obj/effect/debris/cleanable/vomit,
 /turf/simulated/floor,
 /area/awaymission/example)
 "aH" = (

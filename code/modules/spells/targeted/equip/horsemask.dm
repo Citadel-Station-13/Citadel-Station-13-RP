@@ -19,7 +19,7 @@
 
 /spell/targeted/equip_item/horsemask/New()
 	..()
-	equipped_summons = list("[slot_wear_mask]" = /obj/item/clothing/mask/horsehead)
+	equipped_summons = list("[SLOT_ID_MASK]" = /obj/item/clothing/mask/horsehead)
 
 /spell/targeted/equip_item/horsemask/cast(list/targets, mob/user = usr)
 	..()
@@ -30,7 +30,7 @@
 
 /spell/targeted/equip_item/horsemask/summon_item(var/new_type)
 	var/obj/item/new_item = new new_type
-	new_item.canremove = 0		//curses!
+	ADD_TRAIT(new_item, TRAIT_NODROP, MAGIC_TRAIT)
 	new_item.unacidable = 1
 	if(istype(new_item, /obj/item/clothing/mask/horsehead))
 		var/obj/item/clothing/mask/horsehead/magichead = new_item

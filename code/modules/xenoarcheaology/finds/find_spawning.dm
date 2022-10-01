@@ -494,8 +494,8 @@
 				MAT_SUPERMATTER = 1
 				))
 			var/list/alien_stuff = list(
-				/obj/vehicle/boat,
-				/obj/vehicle/boat/dragon
+				/obj/vehicle/ridden/boat,
+				/obj/vehicle/ridden/boat/dragon
 				)
 			if(prob(30))
 				new /obj/item/oar(src.loc, new_boat_mat)
@@ -627,5 +627,6 @@
 
 	else if(talkative)
 		src.talking_atom = new(src)
-		LAZYSET(new_item.origin_tech, TECH_ARCANE, 1)
-		LAZYSET(new_item.origin_tech, TECH_PRECURSOR, 1)
+		if(new_item)
+			LAZYSET(new_item.origin_tech, TECH_ARCANE, 1)
+			LAZYSET(new_item.origin_tech, TECH_PRECURSOR, 1)

@@ -12,7 +12,7 @@
 	icon_state = ""
 	w_class = ITEMSIZE_SMALL
 	matter = list(MAT_STEEL = 100)
-	throwforce = 2
+	throw_force = 2
 	throw_speed = 3
 	throw_range = 10
 	drop_sound = 'sound/items/drop/component.ogg'

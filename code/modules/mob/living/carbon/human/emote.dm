@@ -1,6 +1,6 @@
 /mob/living/carbon/human/emote(var/act,var/m_type=1,var/message = null)
 	var/param = null
-	var/datum/gender/T = gender_datums[get_visible_gender()]
+	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
 	if(istype(src, /mob/living/carbon/human/dummy))
 		return
 	if (findtext(act, "-", 1, null))
@@ -8,8 +8,8 @@
 		param = copytext(act, t1 + 1, length(act) + 1)
 		act = copytext(act, 1, t1)
 
-	if(findtext(act,"s",-1) && !findtext(act,"_",-2))//Removes ending s's unless they are prefixed with a '_'
-		act = copytext(act,1,length(act))
+	//if(findtext(act,"s",-1) && !findtext(act,"_",-2))//Removes ending s's unless they are prefixed with a '_'
+	//	act = copytext(act,1,length(act))
 
 	var/muzzled = is_muzzled()
 	//var/m_type = 1
@@ -33,7 +33,8 @@
 		//Machine-only emotes
 		if("ping", "beep", "buzz", "yes", "ye", "no", "dwoop", "scary", "rcough", "rsneeze", "honk", "buzz2", "warn", "chime", "startup", "shutdown", "error", "die")
 
-			if(!isSynthetic())
+			var/obj/item/organ/o = internal_organs_by_name[O_VOICE]
+			if(!isSynthetic() && (!o || !(o.robotic >= ORGAN_ASSISTED)))
 				to_chat(src, "<span class='warning'>You are not a synthetic.</span>")
 				return
 
@@ -136,6 +137,90 @@
 			message = "gives a short, quieter shriek!"
 			m_type = 1
 
+		// SQUID GAMES
+		if ("achime")
+			if(src.species.name != SPECIES_ADHERENT)
+				to_chat(src, "<span class='warning'>You aren't floaty enough!</span>")
+				return
+			playsound(src.loc, 'sound/machines/achime.ogg', 50, 0)
+			message = "chimes!"
+			m_type = 1
+
+		//Xenomorph Hybrid
+		if("xhiss")
+			if(src.species.name != SPECIES_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/alien_hiss3.ogg', 50, 0)
+			message = "hisses!"
+			m_type = 2
+
+		if("xroar")
+			if(src.species.name != SPECIES_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/alien_roar1.ogg', 50, 0)
+			message = "roars!"
+			m_type = 2
+
+		if("xgrowl")
+			if(src.species.name != SPECIES_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/xenos/alien_growl1.ogg', 50, 0)
+			message = "growls!"
+			m_type = 2
+
+		if("xkiss")
+			if(src.species.name != SPECIES_XENOHYBRID)
+				to_chat(src, "<span class='warning'>You aren't alien enough!</span>")
+				return
+			var/M = null
+			if (param)
+				for (var/mob/A in view(1,src.loc))
+					if (param == A.name)
+						M = A
+						break
+				if (!M)
+					param = null
+
+				if (param)
+					message = "extends their inner jaw outwards giving [param] a kiss."
+			m_type = 1
+
+		if("kiss")
+			var/next_to_target = FALSE
+			var/M = null
+			if (param)
+				for (var/mob/A in view(null, null))
+					if (param == A.name)
+						M = A
+						if(src.Adjacent(A))
+							next_to_target = TRUE
+						break
+				if (!M)
+					param = null
+
+				if (param)
+					var/distance_verb = next_to_target ? "kisses" : "blows a kiss at"
+					message = "[distance_verb] [param]."
+			else
+				message = "makes a kissing mouth."
+			m_type = 1
+
+		if("smooch")
+			if (param)
+				var/M = null
+				for (var/mob/A in view(1,src.loc))
+					if (param == A.name)
+						M = A
+						break
+				if (!M)
+					param = null
+
+				if (param)
+					message = "smooches [param]."
+			m_type = 1
 
 		if ("blink")
 			message = "blinks."
@@ -745,11 +830,11 @@
 							break
 				if(M)
 					message = "<span class='danger'>slaps [M] across the face. Ouch!</span>"
-					playsound(loc, 'sound/effects/snap.ogg', 50, 1)
+					playsound(src, 'sound/effects/snap.ogg', 50, 1)
 					if(ishuman(M)) //Snowflakey!
 						var/mob/living/carbon/human/H = M
 						if(istype(H.wear_mask,/obj/item/clothing/mask/smokable))
-							H.drop_from_inventory(H.wear_mask)
+							H.drop_item_to_ground(H.wear_mask)
 				else
 					message = "<span class='danger'>slaps [T.himself]!</span>"
 					playsound(loc, 'sound/effects/snap.ogg', 50, 1)
@@ -907,7 +992,7 @@
 	set desc = "Sets a description which will be shown when someone examines you."
 	set category = "IC"
 
-	var/datum/gender/T = gender_datums[get_visible_gender()]
+	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
 
 	pose =  sanitize(input(usr, "This is [src]. [T.he]...", "Pose", null)  as text)
 
@@ -965,6 +1050,12 @@
 			if(toggle_wing_vr(message = 1))
 				m_type = 1
 				message = "[flapping ? "starts" : "stops"] flapping their wings."
+			else
+				return 1
+		if ("vspread")
+			if(toggle_wing_spread(message = 1))
+				m_type = 1
+				message = "[spread ? "extends" : "retracts"] their wings."
 			else
 				return 1
 		if ("mlem")
@@ -1087,12 +1178,24 @@
 /mob/living/carbon/human/proc/toggle_wing_vr(var/setting,var/message = 0)
 	if(!wing_style || !wing_style.ani_state)
 		if(message)
-			to_chat(src, "<span class='warning'>You don't have a tail that supports this.</span>")
+			to_chat(src, "<span class='warning'>You don't have wings that support this.</span>")
 		return 0
 
 	var/new_flapping = isnull(setting) ? !flapping : setting
 	if(new_flapping != flapping)
 		flapping = setting
+		update_wing_showing()
+	return 1
+
+/mob/living/carbon/human/proc/toggle_wing_spread(var/folded,var/message = 0)
+	if(!wing_style || !wing_style.spr_state)
+		if(message)
+			to_chat(src, "<span class='warning'>You don't have wings that support this.</span>")
+		return 0
+
+	var/new_spread = isnull(folded) ? !spread : folded
+	if(new_spread != spread)
+		spread = new_spread
 		update_wing_showing()
 	return 1
 

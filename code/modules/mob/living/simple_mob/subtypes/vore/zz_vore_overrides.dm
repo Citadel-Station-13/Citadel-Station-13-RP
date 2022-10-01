@@ -66,11 +66,7 @@
 	icon_living = "queen_s"
 	icon_dead = "queen_dead"
 	vore_icons = SA_ICON_LIVING | SA_ICON_REST
-	old_x = -16
-	old_y = 0
-	default_pixel_x = -16
-	pixel_x = -16
-	pixel_y = 0
+	base_pixel_x = -16
 
 	vore_capacity = 3
 	vore_pounce_chance = 75

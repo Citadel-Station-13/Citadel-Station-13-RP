@@ -80,7 +80,7 @@
 			user.visible_message("<span class='notice'>[user] piles dirt into \the [src.name].</span>", \
 								 "<span class='notice'>You start to pile dirt into \the [src.name].</span>", \
 								 "<span class='notice'>You hear dirt being moved.</span>")
-			if(do_after(user, 40 * W.toolspeed))
+			if(do_after(user, 40 * W.tool_speed))
 				user.visible_message("<span class='notice'>[user] pats down the dirt on top of \the [src.name].</span>", \
 								 "<span class='notice'>You finish filling in \the [src.name].</span>")
 				close()
@@ -91,7 +91,7 @@
 				return
 		if(istype(W, /obj/item/grab))
 			var/obj/item/grab/G = W
-			src.MouseDrop_T(G.affecting, user)      //act like they were dragged onto the closet
+			src.MouseDroppedOn(G.affecting, user)      //act like they were dragged onto the closet
 			return 0
 		if(istype(W,/obj/item/tk_grab))
 			return 0
@@ -108,16 +108,15 @@
 			return
 		if(W.loc != user) // This should stop mounted modules ending up outside the module.
 			return
-		usr.drop_item()
-		if(W)
-			W.forceMove(src.loc)
+		user.transfer_item_to_loc(W, src, 			user.transfer_item_to_loc(W, src, INV_OP_FORCE)
+)
 	else
 		if(istype(W, /obj/item/shovel))
 			if(user.a_intent == INTENT_HARM)	// Hurt intent means you're trying to kill someone, or just get rid of the grave
 				user.visible_message("<span class='notice'>[user] begins to smoothe out the dirt of \the [src.name].</span>", \
 									 "<span class='notice'>You start to smoothe out the dirt of \the [src.name].</span>", \
 									 "<span class='notice'>You hear dirt being moved.</span>")
-				if(do_after(user, 40 * W.toolspeed))
+				if(do_after(user, 40 * W.tool_speed))
 					user.visible_message("<span class='notice'>[user] finishes smoothing out \the [src.name].</span>", \
 										 "<span class='notice'>You finish smoothing out \the [src.name].</span>")
 					if(LAZYLEN(contents))
@@ -133,7 +132,7 @@
 				user.visible_message("<span class='notice'>[user] begins to unearth \the [src.name].</span>", \
 									 "<span class='notice'>You start to unearth \the [src.name].</span>", \
 									 "<span class='notice'>You hear dirt being moved.</span>")
-				if(do_after(user, 40 * W.toolspeed))
+				if(do_after(user, 40 * W.tool_speed))
 					user.visible_message("<span class='notice'>[user] reaches the bottom of \the [src.name].</span>", \
 										 "<span class='notice'>You finish digging out \the [src.name].</span>")
 					break_open()

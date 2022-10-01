@@ -58,7 +58,7 @@
 			"<span class='danger'>\The [src] manages to remove \the [wear_suit]!</span>",
 			"<span class='notice'>You successfully remove \the [wear_suit].</span>"
 			)
-		drop_from_inventory(wear_suit)
+		drop_item_to_ground(wear_suit, INV_OP_FORCE)
 
 #undef RESIST_ATTACK_DEFAULT
 #undef RESIST_ATTACK_CLAWS
@@ -88,8 +88,7 @@
 
 		qdel(wear_suit)
 		wear_suit = null
-		if(buckled && buckled.buckle_require_restraints)
-			buckled.unbuckle_mob()
+		buckled?.buckled_reconsider_restraints(src)
 
 /mob/living/carbon/human/can_break_cuffs()
 	if(species.can_shred(src,1))

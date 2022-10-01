@@ -199,16 +199,8 @@ var/list/all_supply_groups = list("Atmospherics",
 	// pick and take
 	. = list()
 	for(var/i in 1 to num_contained)
-		var/path = SAFEPICK(L)
-		if(!path)
-			break
-		L[path]--
-		if(!L[path])
-			L -= path
-		if(.[path])
-			.[path]++
-		else
-			.[path] = 1
+		var/path = pickweight(L)
+		.[path]++
 
 /datum/supply_pack/randomised/is_random()
 	return num_contained

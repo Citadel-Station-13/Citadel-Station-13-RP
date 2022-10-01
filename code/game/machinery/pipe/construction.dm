@@ -9,7 +9,7 @@ Buildable meters
 	var/pipe_type
 	var/pipename
 	force = 7
-	throwforce = 7
+	throw_force = 7
 	icon = 'icons/obj/pipe-item.dmi'
 	icon_state = "simple"
 	item_state = "buildpipe"
@@ -65,7 +65,7 @@ Buildable meters
 	if(make_from.mirrored)
 		do_a_flip()
 
-/obj/item/pipe/dropped()
+/obj/item/pipe/dropped(mob/user, flags, atom/newLoc)
 	if(loc)
 		setPipingLayer(piping_layer)
 	return ..()
@@ -165,18 +165,19 @@ Buildable meters
 
 //called when a turf is attacked with a pipe item
 /obj/item/pipe/afterattack(turf/simulated/floor/target, mob/user, proximity)
-	if(!proximity) return
-	if(istype(target) && user.canUnEquip(src))
-		user.drop_from_inventory(src, target)
+	if(!proximity)
+		return
+	if(istype(target))
+		user.transfer_item_to_loc(src, target)
 	else
 		return ..()
 
 /obj/item/pipe/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(W.is_wrench())
-		return wrench_act(user, W)
+		return wrench_act(W, user)
 	return ..()
 
-/obj/item/pipe/wrench_act(var/mob/living/user, var/obj/item/tool/wrench/W)
+/obj/item/pipe/wrench_act(obj/item/I, mob/user, flags, hint)
 	if(!isturf(loc))
 		return TRUE
 
@@ -184,12 +185,12 @@ Buildable meters
 	fixdir()
 
 	var/obj/machinery/atmospherics/fakeA = pipe_type
-	var/flags = initial(fakeA.pipe_flags)
+	var/initial_flags = initial(fakeA.pipe_flags)
 	for(var/obj/machinery/atmospherics/M in loc)
-		if((M.pipe_flags & flags & PIPING_ONE_PER_TURF))	//Only one dense/requires density object per tile, eg connectors/cryo/heater/coolers.
+		if((M.pipe_flags & initial_flags & PIPING_ONE_PER_TURF))	//Only one dense/requires density object per tile, eg connectors/cryo/heater/coolers.
 			to_chat(user, "<span class='warning'>Something is hogging the tile!</span>")
 			return TRUE
-		if((M.piping_layer != piping_layer) && !((M.pipe_flags | flags) & PIPING_ALL_LAYER)) // Pipes on different layers can't block each other unless they are ALL_LAYER
+		if((M.piping_layer != piping_layer) && !((M.pipe_flags | initial_flags) & PIPING_ALL_LAYER)) // Pipes on different layers can't block each other unless they are ALL_LAYER
 			continue
 		if(M.get_init_dirs() & SSmachines.get_init_dirs(pipe_type, dir))	// matches at least one direction on either type of pipe
 			to_chat(user, "<span class='warning'>There is already a pipe at that location!</span>")
@@ -205,7 +206,7 @@ Buildable meters
 		return TRUE
 	transfer_fingerprints_to(A)
 
-	playsound(src, W.usesound, 50, 1)
+	playsound(src, I.tool_sound, 50, 1)
 	user.visible_message( \
 		"[user] fastens \the [src].", \
 		"<span class='notice'>You fasten \the [src].</span>", \
@@ -262,10 +263,10 @@ Buildable meters
 
 /obj/item/pipe_meter/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(W.is_wrench())
-		return wrench_act(user, W)
+		return wrench_act(W, user)
 	return ..()
 
-/obj/item/pipe_meter/wrench_act(var/mob/living/user, var/obj/item/tool/wrench/W)
+/obj/item/pipe_meter/wrench_act(obj/item/I, mob/user, flags, hint)
 	var/obj/machinery/atmospherics/pipe/pipe
 	for(var/obj/machinery/atmospherics/pipe/P in loc)
 		if(P.piping_layer == piping_layer)
@@ -275,11 +276,11 @@ Buildable meters
 		to_chat(user, "<span class='warning'>You need to fasten it to a pipe!</span>")
 		return TRUE
 	new /obj/machinery/meter(loc, piping_layer)
-	playsound(src, W.usesound, 50, 1)
+	playsound(src, I.tool_sound, 50, 1)
 	to_chat(user, "<span class='notice'>You fasten the meter to the pipe.</span>")
 	qdel(src)
 
-/obj/item/pipe_meter/dropped()
+/obj/item/pipe_meter/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	if(loc)
 		setAttachLayer(piping_layer)

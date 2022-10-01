@@ -92,26 +92,23 @@ var/global/list/light_type_cache = list()
 		if(!cell_connectors)
 			to_chat(user, "<span class='warning'>This [name] can't support a power cell!</span>")
 			return
-		if(!user.unEquip(W))
-			to_chat(user, "<span class='warning'>[W] is stuck to your hand!</span>")
-			return
 		if(cell)
 			to_chat(user, "<span class='warning'>There is a power cell already installed!</span>")
-		else if(user.drop_from_inventory(W))
-			user.visible_message("<span class='notice'>[user] hooks up [W] to [src].</span>", \
-			"<span class='notice'>You add [W] to [src].</span>")
-			playsound(src, 'sound/machines/click.ogg', 50, TRUE)
-			W.forceMove(src)
-			cell = W
-			add_fingerprint(user)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
+		user.visible_message("<span class='notice'>[user] hooks up [W] to [src].</span>", \
+		"<span class='notice'>You add [W] to [src].</span>")
+		playsound(src, 'sound/machines/click.ogg', 50, TRUE)
+		cell = W
+		add_fingerprint(user)
 		return
 
 
 	if (W.is_wrench())
 		if (src.stage == 1)
-			playsound(src, W.usesound, 75, 1)
+			playsound(src, W.tool_sound, 75, 1)
 			to_chat(usr, "You begin deconstructing [src].")
-			if (!do_after(usr, 30 * W.toolspeed))
+			if (!do_after(usr, 30 * W.tool_speed))
 				return
 			new /obj/item/stack/material/steel( get_turf(src.loc), sheets_refunded )
 			user.visible_message("[user.name] deconstructs [src].", \
@@ -133,7 +130,7 @@ var/global/list/light_type_cache = list()
 		new /obj/item/stack/cable_coil(get_turf(src.loc), 1, null, "red")
 		user.visible_message("[user.name] removes the wiring from [src].", \
 			"You remove the wiring from [src].", "You hear a noise.")
-		playsound(src.loc, W.usesound, 50, 1)
+		playsound(src.loc, W.tool_sound, 50, 1)
 		return
 
 	if(istype(W, /obj/item/stack/cable_coil))
@@ -152,7 +149,7 @@ var/global/list/light_type_cache = list()
 			src.update_icon()
 			user.visible_message("[user.name] closes [src]'s casing.", \
 				"You close [src]'s casing.", "You hear a noise.")
-			playsound(src, W.usesound, 75, 1)
+			playsound(src, W.tool_sound, 75, 1)
 
 			var/obj/machinery/light/newlight = new fixture_type(src.loc, src)
 			newlight.setDir(src.dir)
@@ -632,7 +629,7 @@ var/global/list/light_type_cache = list()
 	// attempt to stick weapon into light socket
 	else if(status == LIGHT_EMPTY)
 		if(W.is_screwdriver()) //If it's a screwdriver open it.
-			playsound(src, W.usesound, 75, 1)
+			playsound(src, W.tool_sound, 75, 1)
 			user.visible_message("[user.name] opens [src]'s casing.", \
 				"You open [src]'s casing.", "You hear a noise.")
 			new construct_type(src.loc, null, null, null, src)
@@ -651,7 +648,7 @@ var/global/list/light_type_cache = list()
 /obj/machinery/light/flamp/attackby(obj/item/W, mob/user)
 	if(W.is_wrench())
 		anchored = !anchored
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		to_chat(user, "<span class='notice'>You [anchored ? "wrench" : "unwrench"] \the [src].</span>")
 
 	if(!lamp_shade)
@@ -663,7 +660,7 @@ var/global/list/light_type_cache = list()
 
 	else
 		if(W.is_screwdriver())
-			playsound(src, W.usesound, 75, 1)
+			playsound(src, W.tool_sound, 75, 1)
 			user.visible_message("[user.name] removes [src]'s lamp shade.", \
 				"You remove [src]'s lamp shade.", "You hear a noise.")
 			lamp_shade = 0
@@ -908,7 +905,7 @@ var/global/list/light_type_cache = list()
 /obj/item/light
 	icon = 'icons/obj/lighting.dmi'
 	force = 2
-	throwforce = 5
+	throw_force = 5
 	w_class = ITEMSIZE_TINY
 	var/status = 0		// LIGHT_OK, LIGHT_BURNED or LIGHT_BROKEN
 	var/base_state

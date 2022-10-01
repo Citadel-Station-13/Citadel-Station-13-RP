@@ -5,7 +5,7 @@
 	icon_state = "jar"
 	w_class = ITEMSIZE_SMALL
 	matter = list(MAT_GLASS = 200)
-	flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 	var/list/accept_mobs = list(/mob/living/simple_mob/animal/passive/lizard, /mob/living/simple_mob/animal/passive/mouse, /mob/living/simple_mob/animal/sif/leech, /mob/living/simple_mob/animal/sif/frostfly, /mob/living/simple_mob/animal/sif/glitterfly)
 	var/contains = 0 // 0 = nothing, 1 = money, 2 = animal, 3 = spiderling
 	drop_sound = 'sound/items/drop/glass.ogg'
@@ -72,10 +72,10 @@
 			contains = 1
 		if(contains != 1)
 			return
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		var/obj/item/spacecash/S = W
 		user.visible_message("<span class='notice'>[user] puts [S.worth] [S.worth > 1 ? "thalers" : "thaler"] into \the [src].</span>")
-		user.drop_from_inventory(S)
-		S.loc = src
 		update_icon()
 
 /obj/item/glass_jar/update_icon() // Also updates name and desc

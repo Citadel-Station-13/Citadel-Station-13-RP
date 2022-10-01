@@ -25,6 +25,9 @@
 #define Z_LEVEL_LAVALAND				21
 #define Z_LEVEL_LAVALAND_EAST			22
 
+#define Z_LEVEL_ROGUEMINE_1				23
+#define Z_LEVEL_ROGUEMINE_2				24
+
 /datum/map/rift
 	name = "Rift"
 	full_name = "NSB Atlas"
@@ -37,9 +40,12 @@
 	usable_email_tlds = list("lythios.nt")
 
 	zlevel_datum_type = /datum/map_z_level/rift
+	base_turf_by_z = list(Z_LEVEL_WEST_BASE,
+		Z_LEVEL_WEST_DEEP,
+		Z_LEVEL_WEST_CAVERN)
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
-	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6")
+	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6", "title7", "title8", "bnny")
 
 	admin_levels = list()
 	sealed_levels = list()
@@ -55,6 +61,8 @@
 		Z_LEVEL_SURFACE_MID,
 		Z_LEVEL_SURFACE_HIGH,
 		Z_LEVEL_WEST_BASE,
+		Z_LEVEL_WEST_DEEP,
+		Z_LEVEL_WEST_CAVERN,
 		Z_LEVEL_WEST_PLAIN)
 	player_levels = list(Z_LEVEL_UNDERGROUND_FLOOR,
 		Z_LEVEL_UNDERGROUND_DEEP,
@@ -64,6 +72,7 @@
 		Z_LEVEL_SURFACE_HIGH,
 		Z_LEVEL_WEST_BASE,
 		Z_LEVEL_WEST_PLAIN,
+		Z_LEVEL_WEST_DEEP,
 		Z_LEVEL_WEST_CAVERN)
 
 	holomap_smoosh = list(list(
@@ -170,9 +179,9 @@
 		list("ExoPlanet - Z3 Planet"), // Desert Exoplanet
 		list("ExoPlanet - Z4 Planet"), // Gaia Planet
 		list("ExoPlanet - Z5 Planet"), // Frozen Planet
-//		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4"),
 		list("Away Mission - Trade Port"), // Trading Post
-		list("Away Mission - Lava Land", "Away Mission - Lava Land (East)")
+		list("Away Mission - Lava Land", "Away Mission - Lava Land (East)"),
+		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4")
 	)
 
 	ai_shell_restricted = TRUE
@@ -187,6 +196,11 @@
 	mining_station_z =		list(Z_LEVEL_UNDERGROUND_DEEP)
 	mining_outpost_z =		list(Z_LEVEL_WEST_PLAIN)
 
+	belter_docked_z = 		list(Z_LEVEL_WEST_DEEP)
+	belter_transit_z =	 	list(Z_LEVEL_MISC)
+	belter_belt_z = 		list(Z_LEVEL_ROGUEMINE_1,
+						 		 Z_LEVEL_ROGUEMINE_2)
+
 	lateload_single_pick = null //Nothing right now.
 
 	planet_datums_to_make = list(/datum/planet/lythios43c,
@@ -198,10 +212,10 @@
 		/datum/planet/classm)
 
 /datum/map/rift/perform_map_generation()
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_WEST_CAVERN, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_WEST_DEEP, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_WEST_BASE, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_UNDERGROUND_FLOOR, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 1, 1, Z_LEVEL_WEST_CAVERN, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 1, 1, Z_LEVEL_WEST_DEEP, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 1, 1, Z_LEVEL_WEST_BASE, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 1, 1, Z_LEVEL_UNDERGROUND_FLOOR, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
 
 	return 1
 
@@ -265,25 +279,25 @@
 	z = Z_LEVEL_WEST_BASE
 	name = "Western Canyon"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c/indoors
+	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
 
 /datum/map_z_level/rift/deep
 	z = Z_LEVEL_WEST_DEEP
 	name = "Western Deep Caves"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/open
+	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
 
 /datum/map_z_level/rift/caves
 	z = Z_LEVEL_WEST_CAVERN
 	name = "Western Caves"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c/indoors
+	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
 
 /datum/map_z_level/rift/plains
 	z = Z_LEVEL_WEST_PLAIN
 	name = "Western Plains"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/open
+	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
 
 /datum/map_z_level/rift/colony
 	z = Z_LEVEL_MISC

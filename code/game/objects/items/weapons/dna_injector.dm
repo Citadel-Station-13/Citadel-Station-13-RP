@@ -95,8 +95,7 @@
 
 	spawn(0)//this prevents the collapse of space-time continuum
 		if (user)
-			user.drop_from_inventory(src)
-		qdel(src)
+			qdel(src)
 	return uses
 
 /obj/item/dnainjector/attack(mob/M as mob, mob/user as mob)

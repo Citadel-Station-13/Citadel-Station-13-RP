@@ -1,115 +1,3 @@
-/datum/riding/taur
-	keytype = /obj/item/material/twohanded/fluff/riding_crop // Crack!
-	nonhuman_key_exemption = FALSE	// If true, nonhumans who can't hold keys don't need them, like borgs and simplemobs.
-	key_name = "a riding crop"		// What the 'keys' for the thing being rided on would be called.
-	only_one_driver = TRUE			// If true, only the person in 'front' (first on list of riding mobs) can drive.
-
-/datum/riding/taur/handle_vehicle_layer()
-	if(ridden.has_buckled_mobs())
-		if(ridden.dir != NORTH)
-			ridden.layer = ABOVE_MOB_LAYER
-		else
-			ridden.layer = initial(ridden.layer)
-	else
-		var/mob/living/L = ridden
-		if(!(istype(L) && (L.status_flags & HIDING)))
-			ridden.layer = initial(ridden.layer)
-
-/datum/riding/taur/ride_check(mob/living/M)
-	var/mob/living/L = ridden
-	if(L.stat)
-		force_dismount(M)
-		return FALSE
-	return TRUE
-
-/datum/riding/taur/force_dismount(mob/M)
-	. =..()
-	ridden.visible_message("<span class='notice'>[M] stops riding [ridden]!</span>")
-
-//Hoooo boy.
-/datum/riding/taur/get_offsets(pass_index) // list(dir = x, y, layer)
-	var/mob/living/L = ridden
-	var/scale = L.size_multiplier
-
-	var/list/values = list(
-		"[NORTH]" = list(0, 8*scale, ABOVE_MOB_LAYER),
-		"[SOUTH]" = list(0, 8*scale, BELOW_MOB_LAYER),
-		"[EAST]" = list(-10*scale, 8*scale, ABOVE_MOB_LAYER),
-		"[WEST]" = list(10*scale, 8*scale, ABOVE_MOB_LAYER))
-
-	return values
-
-//Human overrides for taur riding
-/mob/living/carbon/human
-	max_buckled_mobs = 1 //Yeehaw
-	can_buckle = TRUE
-	buckle_movable = TRUE
-	buckle_lying = FALSE
-
-/mob/living/carbon/human/buckle_mob(mob/living/M, forced = FALSE, check_loc = TRUE)
-	if(forced)
-		return ..() // Skip our checks
-	if(!isTaurTail(tail_style))
-		return FALSE
-	else
-		var/datum/sprite_accessory/tail/taur/taurtype = tail_style
-		if(!taurtype.can_ride)
-			return FALSE
-	if(lying)
-		return FALSE
-	if(!ishuman(M))
-		return FALSE
-	if(M in buckled_mobs)
-		return FALSE
-	if(M.size_multiplier > size_multiplier * 1.2)
-		to_chat(M,"<span class='warning'>This isn't a pony show! You need to be bigger for them to ride.</span>")
-		return FALSE
-	if(M.loc != src.loc)
-		if(M.Adjacent(src))
-			M.forceMove(get_turf(src))
-
-	var/mob/living/carbon/human/H = M
-
-	if(isTaurTail(H.tail_style))
-		to_chat(src,"<span class='warning'>Too many legs. TOO MANY LEGS!!</span>")
-		return FALSE
-
-	. = ..()
-	if(.)
-		buckled_mobs[M] = "riding"
-
-/mob/living/carbon/human/MouseDrop_T(mob/living/M, mob/living/user) //Prevention for forced relocation caused by can_buckle. Base proc has no other use.
-	return
-
-/mob/living/carbon/human/proc/taur_mount(var/mob/living/M in living_mobs(1))
-	set name = "Taur Mount/Dismount"
-	set category = "Abilities"
-	set desc = "Let people ride on you."
-
-	if(LAZYLEN(buckled_mobs))
-		var/datum/riding/R = riding_datum
-		for(var/rider in buckled_mobs)
-			R.force_dismount(rider)
-		return
-	if (stat != CONSCIOUS)
-		return
-	if(!can_buckle || !istype(M) || !M.Adjacent(src) || M.buckled)
-		return
-	if(buckle_mob(M))
-		visible_message("<span class='notice'>[M] starts riding [name]!</span>")
-
-/mob/living/carbon/human/attack_hand(mob/user as mob)
-	if(LAZYLEN(buckled_mobs))
-		//We're getting off!
-		if(user in buckled_mobs)
-			riding_datum.force_dismount(user)
-		//We're kicking everyone off!
-		if(user == src)
-			for(var/rider in buckled_mobs)
-				riding_datum.force_dismount(rider)
-	else
-		. = ..()
-
 /*
 ////////////////////////////
 /  =--------------------=  /
@@ -122,7 +10,7 @@
 
 /datum/sprite_accessory/tail/taur
 	name = "You should not see this..."
-	icon = 'icons/mob/vore/taurs_vr.dmi'
+	icon = 'icons/mob/sprite_accessories/taurs.dmi'
 	do_colouration = 1 // Yes color, using tail color
 	color_blend_mode = ICON_MULTIPLY  // The sprites for taurs are designed for ICON_MULTIPLY
 
@@ -157,7 +45,7 @@
 	var/msg_owner_stepunder		= "%owner runs between your legs." //Weird becuase in the case this is used, %owner is the 'bumper' (src)
 	var/msg_prey_stepunder		= "You run between %prey's legs." //Same, inverse
 	hide_body_parts	= list(BP_L_LEG, BP_L_FOOT, BP_R_LEG, BP_R_FOOT) //Exclude pelvis just in case.
-	clip_mask_icon = 'icons/mob/vore/taurs_vr.dmi'
+	clip_mask_icon = 'icons/mob/sprite_accessories/taurs.dmi'
 	clip_mask_state = "taur_clip_mask_def" //Used to clip off the lower part of suits & uniforms
 
 /datum/sprite_accessory/tail/taur/roiz_long_lizard // Not ACTUALLY a taur, but it uses 32x64 so it wouldn't fit in tails.dmi, and having it as a tail bugs up the sprite.

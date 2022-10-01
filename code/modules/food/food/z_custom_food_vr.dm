@@ -44,8 +44,8 @@ var/global/ingredientLimit = 20
 		/*if(!user.drop_item())
 			to_chat(user, "<span class='warning'>\The [I] is stuck to your hands!</span>")
 			return*/
-		user.drop_item()
-		I.forceMove(src)
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 
 		if(S.reagents)
 			S.reagents.trans_to(src,S.reagents.total_volume)

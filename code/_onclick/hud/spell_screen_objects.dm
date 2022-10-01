@@ -23,7 +23,7 @@
 			spell_holder.client.screen -= src
 		spell_holder = null
 
-/atom/movable/screen/movable/spell_master/MouseDrop()
+/atom/movable/screen/movable/spell_master/OnMouseDropLegacy()
 	if(showing)
 		return
 

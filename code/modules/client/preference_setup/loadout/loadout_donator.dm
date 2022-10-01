@@ -14,67 +14,67 @@
 
 /datum/gear/donator/gladiator
 	name = "Gladiator Armor"
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 	path = /obj/item/clothing/under/gladiator
 	ckeywhitelist = list("aroche")
 
 /datum/gear/donator/stool
 	name = "Faiza's Stool"
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 	path = /obj/item/melee/stool/faiza
 	ckeywhitelist = list("crystal9156")
 
 /datum/gear/donator/chayse
 	name = "NTSC Naval Uniform"
-	slot = slot_w_uniform
+	slot = SLOT_ID_UNIFORM
 	path = /obj/item/clothing/under/donator/chayse
 	ckeywhitelist = list("realdonaldtrump", "aaronskywalker")
 
 /datum/gear/donator/labredblack
 	name = "Black and Red Coat"
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/donator/labredblack
 	ckeywhitelist = list("blakeryan", "durandalphor")
 
 /datum/gear/donator/carrotsatchel
 	name = "Carrot Satchel"
-	slot = slot_back
+	slot = SLOT_ID_BACK
 	path = /obj/item/storage/backpack/satchel/donator/carrot
 	ckeywhitelist = list("improvedname")
 
 /datum/gear/donator/stripedcollar
 	name = "Striped collar"
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 	path = /obj/item/clothing/accessory/collar/donator/striped
 	ckeywhitelist = list("jademanique")
 
 /datum/gear/donator/cameronbackpack
 	name = "Brig Physician's Backpack"
-	slot = slot_back
+	slot = SLOT_ID_BACK
 	path = /obj/item/storage/backpack/satchel/donator/cameron
 	ckeywhitelist = list("cameronlancaster")
 
 /datum/gear/donator/cameronarmor
 	name = "Brig Physician's Armor Vest"
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 	path = /obj/item/clothing/suit/armor/vest/donator/cameron
 	ckeywhitelist = list("cameronlancaster")
 
 /datum/gear/donator/crown
 	name = "Crown"
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 	path = /obj/item/clothing/accessory/collar/donator/crown
 	ckeywhitelist = list("grayrachnid")
 
 /datum/gear/donator/beesuit
 	name = "Bee Suit"
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 	path = /obj/item/clothing/suit/storage/hooded/donator/bee_costume
 	ckeywhitelist = list("beeskee")
 
 /datum/gear/donator/rarehat
 	name = "Ultra Rare Hat"
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 	path = /obj/item/clothing/head/collectable/petehat
 	ckeywhitelist = list("risingstarslash")
 
@@ -86,7 +86,7 @@
 
 /datum/gear/donator/silverhelmet
 	name = "Silver's Helmet"
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 	path = /obj/item/reskin_kit/jenna
 	ckeywhitelist = list("jennasilver")
 
@@ -188,7 +188,7 @@
 
 /datum/gear/donator/hueyskirt
 	name = "High-Waisted Business Skirt"
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 	path = /obj/item/clothing/under/skirt/donator/doopytoots
 	ckeywhitelist = list("doopytoots")
 
@@ -264,5 +264,10 @@
 
 /datum/gear/suit/pariah
 	name = "springtime pariah moto jacket"
-	path = /obj/item/clothing/suit/storage/toggle/pariah
+	path = /obj/item/clothing/suit/storage/hooded/pariah
 	ckeywhitelist = list("rezbit")
+
+/datum/gear/suit/mindelectric
+	name = "「 The Mind Electric 」"
+	path = /obj/item/clothing/suit/storage/mindelectric
+	ckeywhitelist = list("lectronyx")

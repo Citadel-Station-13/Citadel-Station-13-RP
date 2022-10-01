@@ -57,8 +57,11 @@
 			if(MT.imp)
 				to_chat(usr, "The mirror tool already contains a mirror.")
 				return // It's full.
-			user.drop_from_inventory(src)
-			forceMove(MT)
+			if(loc == user)			// we assume they can't click someone else's hand items lmao
+				if(!user.attempt_insert_item_for_installation(src, MT))
+					return
+			else
+				forceMove(MT)
 			MT.imp = src
 			MT.update_icon()
 		else
@@ -67,10 +70,9 @@
 				if(MT.imp)
 					to_chat(usr, "The mirror tool already contains a mirror.")
 					return // It's full.
-				user.drop_from_inventory(src)
+				// dogborgs can't hold mirrors
 				forceMove(MT)
 				MT.imp = src
-
 
 /obj/item/implant/mirror/positronic
 	name = "Synthetic Mirror"
@@ -85,7 +87,6 @@
 	else
 		to_chat(usr, "<span class='warning'>WARNING: WRONG MIRROR TYPE DETECTED, PLEASE RECTIFY IMMEDIATELY TO AVOID REAL DEATH.</span>")
 		H.mirror = src
-		return
 
 /obj/item/mirrorscanner
 	name = "Mirror Scanner"
@@ -94,7 +95,7 @@
 	icon_state = "sleevemate"
 	item_state = "healthanalyzer"
 	slot_flags = SLOT_BELT
-	throwforce = 3
+	throw_force = 3
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 5
 	throw_range = 10
@@ -108,7 +109,7 @@
 	icon_state = "mirrortool"
 	item_state = "healthanalyzer"
 	slot_flags = SLOT_BELT
-	throwforce = 3
+	throw_force = 3
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 5
 	throw_range = 10

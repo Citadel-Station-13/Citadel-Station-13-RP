@@ -108,7 +108,7 @@
 	var/suit = /obj/item/clothing/suit/space/plasman
 	var/helm = /obj/item/clothing/head/helmet/space/plasman
 
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath(H), slot_wear_mask)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath(H), SLOT_ID_MASK)
 
 	switch(H.mind?.assigned_role)
 		if("Security Officer")
@@ -214,16 +214,15 @@
 		if("Mime")
 			suit=/obj/item/clothing/suit/space/plasman/mime
 			helm=/obj/item/clothing/head/helmet/space/plasman/mime
-
-	H.equip_to_slot_or_del(new suit(H), slot_wear_suit)
-	H.equip_to_slot_or_del(new helm(H), slot_head)
-	H.equip_to_slot_or_del(new /obj/item/extinguisher/mini/plasman(H), slot_r_hand)
+	H.equip_to_slot_or_del(new suit(H), SLOT_ID_SUIT)
+	H.equip_to_slot_or_del(new helm(H), SLOT_ID_HEAD)
+	H.put_in_hands_or_del(new /obj/item/extinguisher/mini/plasman(H))
 
 	if(H.backbag == 1)
-		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), slot_back)
+		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), SLOT_ID_BACK)
 		H.internal = H.back
 	else
-		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), slot_s_store)
+		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), SLOT_ID_SUIT_STORAGE)
 		H.internal = H.s_store
 
 	H.internal = locate(/obj/item/tank) in H.contents
@@ -233,15 +232,14 @@
 	spawn(2)
 		if(H.head && !istype(H.head,/obj/item/clothing/head/helmet/space/plasman))
 			qdel(H.head)
-			H.equip_to_slot_or_del(new helm(H), slot_head)
+			H.equip_to_slot_or_del(new helm(H), SLOT_ID_HEAD)
 			if(H.on_fire)
 				H.ExtinguishMob()
 
 		if(H.wear_suit && !istype(H.wear_suit,/obj/item/clothing/suit/space/plasman))
 			qdel(H.wear_suit)
-			H.equip_to_slot_or_del(new suit(H), slot_wear_suit)
+			H.equip_to_slot_or_del(new suit(H), SLOT_ID_SUIT)
 			if(H.on_fire)
 				H.ExtinguishMob()
-
-			H.equip_to_slot_or_del(new /obj/item/tank/vox(H), slot_s_store)
+			H.equip_to_slot_or_del(new /obj/item/tank/vox(H), SLOT_ID_SUIT_STORAGE)
 			H.internal = H.s_store

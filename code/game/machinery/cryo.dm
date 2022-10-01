@@ -186,10 +186,9 @@
 		if(beaker)
 			to_chat(user, SPAN_WARNING("A beaker is already loaded into the machine."))
 			return
-
+		if(!user.attempt_insert_item_for_installation(G, src))
+			return
 		beaker =  G
-		user.drop_item()
-		G.loc = src
 		user.visible_message("[user] adds \a [G] to \the [src]!", "You add \a [G] to \the [src]!")
 		update_icon()
 
@@ -208,7 +207,7 @@
 
 	return
 
-/obj/machinery/atmospherics/component/unary/cryo_cell/MouseDrop_T(mob/target, mob/user) //Allows borgs to put people into cryo without external assistance
+/obj/machinery/atmospherics/component/unary/cryo_cell/MouseDroppedOnLegacy(mob/target, mob/user) //Allows borgs to put people into cryo without external assistance
 	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user)|| !ishuman(target))
 		return
 	put_mob(target)
@@ -275,12 +274,13 @@
 	if(!(occupant))
 		return
 	vis_contents -= occupant
-	occupant.pixel_x = occupant.default_pixel_x
-	occupant.pixel_y = occupant.default_pixel_y
+	occupant.pixel_x = occupant.base_pixel_x
+	occupant.pixel_y = occupant.base_pixel_y
 	occupant.forceMove(get_step(loc, SOUTH))	//this doesn't account for walls or anything, but i don't forsee that being a problem.
 	if(occupant.bodytemperature < 261 && occupant.bodytemperature >= 70) //Patch by Aranclanos to stop people from taking burn damage after being ejected
 		occupant.bodytemperature = 261									  // Changed to 70 from 140 by Zuhayr due to reoccurance of bug.
 	occupant.forceMove(loc)
+	occupant.update_perspective()
 	occupant = null
 	current_heat_capacity = initial(current_heat_capacity)
 	update_use_power(USE_POWER_IDLE)

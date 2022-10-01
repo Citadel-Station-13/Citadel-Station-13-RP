@@ -7,7 +7,7 @@
 	w_class = ITEMSIZE_SMALL
 	icon = 'icons/obj/integrated_electronics/electronic_setups.dmi'
 	icon_state = "setup_small"
-	item_flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 	show_messages = TRUE
 	datum_flags = DF_USE_TAG
 	var/list/assembly_components = list()
@@ -208,7 +208,8 @@
 	if(..())
 		return TRUE
 
-	var/obj/held_item = usr.get_active_hand()
+	var/obj/held_item = usr.get_active_held_item()
+
 	switch(action)
 		//Actual assembly actions
 		if("rename")
@@ -287,7 +288,7 @@
 
 // End TGUI
 /* TBI	diag hud
-/obj/item/electronic_assembly/pickup(mob/living/user)
+/obj/item/electronic_assembly/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()
 	//update diagnostic hud when picked up, true is used to force the hud to be hidden
 	diag_hud_set_circuithealth(TRUE)
@@ -295,7 +296,7 @@
 	diag_hud_set_circuitstat(TRUE)
 	diag_hud_set_circuittracking(TRUE)
 
-/obj/item/electronic_assembly/dropped(mob/user)
+/obj/item/electronic_assembly/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	//update diagnostic hud when dropped
 	diag_hud_set_circuithealth()
@@ -427,15 +428,17 @@
 			on_anchored()
 		else
 			on_unanchored()
-		playsound(src, I.usesound, 50, 1)
+		playsound(src, I.tool_sound, 50, 1)
 		return TRUE
 
 	else if(istype(I, /obj/item/integrated_circuit))
-		if(!user.unEquip(I) && !istype(user, /mob/living/silicon/robot)) //Robots cannot de-equip items in grippers.
-			return FALSE
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		if(try_add_component(I, user))
 			ui_interact(user)
 			return TRUE
+		else
+			I.forceMove(drop_location())
 
 	else if(I.is_crowbar())
 		if(!opened)
@@ -484,13 +487,25 @@
 				S.attackby_react(I,user,user.a_intent)
 			return FALSE
 		var/obj/item/cell/device/cell = I
-		user.drop_item(cell)
-		cell.forceMove(src)
+		if(!user.attempt_insert_item_for_installation(cell, src))
+			return
 		battery = cell
 		// TBI diag_hud_set_circuitstat() //update diagnostic hud
 		playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
 		to_chat(user, SPAN_NOTICE("You slot \the [cell] inside \the [src]'s power supplier."))
 		ui_interact(user)
+		return TRUE
+	else if(istype(I, /obj/item/integrated_electronics/analyzer))
+		if(!opened)
+			to_chat(usr, SPAN_WARNING("You need to open the [src] to analyze the contents!"))
+			return
+		var/save = SScircuit.save_electronic_assembly(src)
+		var/saved = "[src.name] analyzed! On circuit printers with cloning enabled, you may use the code below to clone the circuit:<br><br><code>[save]</code>"
+		if(save)
+			to_chat(usr, SPAN_WARNING("You scan [src]."))
+			user << browse(saved, "window=circuit_scan;size=500x600;border=1;can_resize=1;can_close=1;can_minimize=1")
+		else
+			to_chat(usr, SPAN_WARNING("[src] is not complete enough to be encoded!"))
 		return TRUE
 	else for(var/obj/item/integrated_circuit/S in assembly_components)
 		if(S.attackby_react(I,user,user.a_intent))

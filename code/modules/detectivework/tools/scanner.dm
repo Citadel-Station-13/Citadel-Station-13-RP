@@ -6,7 +6,7 @@
 	var/list/stored = list()
 	w_class = ITEMSIZE_SMALL
 	item_state = "electronic"
-	flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 	slot_flags = SLOT_BELT
 
 	var/reveal_fingerprints = TRUE

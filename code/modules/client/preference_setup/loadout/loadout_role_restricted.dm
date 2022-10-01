@@ -13,151 +13,151 @@
 	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective")
 
 /datum/gear/restricted/security/eyes
-	slot = slot_glasses
+	slot = SLOT_ID_GLASSES
 
 /datum/gear/restricted/security/head
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 
 /datum/gear/restricted/security/back
-	slot = slot_back
+	slot = SLOT_ID_BACK
 
 /datum/gear/restricted/security/uniform
-	slot = slot_w_uniform
+	slot = SLOT_ID_UNIFORM
 
 /datum/gear/restricted/security/suit
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 
 /datum/gear/restricted/security/shoes
-	slot = slot_shoes
+	slot = SLOT_ID_SHOES
 
 /datum/gear/restricted/security/accessory
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 //Medical
 /datum/gear/restricted/medical
 	allowed_roles = list("Medical Doctor", "Chief Medical Officer", "Chemist", "Paramedic", "Geneticist", "Psychiatrist", "Field Medic")
 
 /datum/gear/restricted/medical/eyes
-	slot = slot_glasses
+	slot = SLOT_ID_GLASSES
 
 /datum/gear/restricted/medical/head
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 
 /datum/gear/restricted/medical/back
-	slot = slot_back
+	slot = SLOT_ID_BACK
 
 /datum/gear/restricted/medical/uniform
-	slot = slot_w_uniform
+	slot = SLOT_ID_UNIFORM
 
 /datum/gear/restricted/medical/suit
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 
 /datum/gear/restricted/medical/shoes
-	slot = slot_shoes
+	slot = SLOT_ID_SHOES
 
 /datum/gear/restricted/medical/accessory
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 //Engineering
 /datum/gear/restricted/engineering
 	allowed_roles = list("Station Engineer", "Chief Engineer", "Atmospheric Technician")
 
 /datum/gear/restricted/engineering/eyes
-	slot = slot_glasses
+	slot = SLOT_ID_GLASSES
 
 /datum/gear/restricted/engineering/head
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 
 /datum/gear/restricted/engineering/back
-	slot = slot_back
+	slot = SLOT_ID_BACK
 
 /datum/gear/restricted/engineering/uniform
-	slot = slot_w_uniform
+	slot = SLOT_ID_UNIFORM
 
 /datum/gear/restricted/engineering/suit
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 
 /datum/gear/restricted/engineering/shoes
-	slot = slot_shoes
+	slot = SLOT_ID_SHOES
 
 /datum/gear/restricted/engineering/accessory
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 //Command
 /datum/gear/restricted/command
 	allowed_roles = list("Facility Director", "Head of Personnel", "Chief Medical Officer", "Head of Security", "Research Director", "Chief Engineer", "Command Secretary")
 
 /datum/gear/restricted/command/eyes
-	slot = slot_glasses
+	slot = SLOT_ID_GLASSES
 
 /datum/gear/restricted/command/head
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 
 /datum/gear/restricted/command/uniform
-	slot = slot_w_uniform
+	slot = SLOT_ID_UNIFORM
 
 /datum/gear/restricted/command/suit
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 
 /datum/gear/restricted/command/shoes
-	slot = slot_shoes
+	slot = SLOT_ID_SHOES
 
 /datum/gear/restricted/command/accessory
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 //Science
 /datum/gear/restricted/science
 	allowed_roles = list("Research Director", "Scientist", "Xenobiologist", "Roboticist", "Explorer", "Pathfinder")
 
 /datum/gear/restricted/science/eyes
-	slot = slot_glasses
+	slot = SLOT_ID_GLASSES
 
 /datum/gear/restricted/science/head
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 
 /datum/gear/restricted/science/back
-	slot = slot_back
+	slot = SLOT_ID_BACK
 
 /datum/gear/restricted/science/uniform
-	slot = slot_w_uniform
+	slot = SLOT_ID_UNIFORM
 
 /datum/gear/restricted/science/suit
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 
 /datum/gear/restricted/science/shoes
-	slot = slot_shoes
+	slot = SLOT_ID_SHOES
 
 /datum/gear/restricted/science/accessory
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 //Supply
 /datum/gear/restricted/supply
 	allowed_roles = list("Shaft Miner", "Cargo Technician", "Quartermaster")
 
 /datum/gear/restricted/supply/eyes
-	slot = slot_glasses
+	slot = SLOT_ID_GLASSES
 
 /datum/gear/restricted/supply/uniform
-	slot = slot_w_uniform
+	slot = SLOT_ID_UNIFORM
 
 /datum/gear/restricted/supply/suit
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 
 /datum/gear/restricted/supply/shoes
-	slot = slot_shoes
+	slot = SLOT_ID_SHOES
 
 /datum/gear/restricted/supply/accessory
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 //Service
 /datum/gear/restricted/service
 	allowed_roles = list("Head of Personnel", "Bartender", "Botanist", "Janitor", "Chef", "Librarian", "Chaplain")
 
 /datum/gear/restricted/service/accessory
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 /datum/gear/restricted/service/suit
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 
 
 
@@ -166,19 +166,19 @@
 	allowed_roles = null
 
 /datum/gear/restricted/misc/head
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 
 /datum/gear/restricted/misc/uniform
-	slot = slot_w_uniform
+	slot = SLOT_ID_UNIFORM
 
 /datum/gear/restricted/misc/suit
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 
 /datum/gear/restricted/misc/shoes
-	slot = slot_shoes
+	slot = SLOT_ID_SHOES
 
 /datum/gear/restricted/misc/accessory
-	slot = slot_tie
+	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
 
 //*Multi-Department Combinations (Aka Multi-Department Drifting)
 //Security + Command
@@ -186,7 +186,7 @@
 	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective", "Facility Director", "Head of Personnel", "Internal Affairs Agent")
 
 /datum/gear/restricted/sec_com/eyes
-	slot = slot_glasses
+	slot = SLOT_ID_GLASSES
 
 
 //Engineering + Science + Supply
@@ -194,7 +194,7 @@
 	allowed_roles = list("Station Engineer", "Chief Engineer", "Atmospheric Technician", "Scientist", "Xenobiologist",  "Roboticist", "Explorer", "Pathfinder", "Research Director", "Shaft Miner", "Cargo Technician", "Quartermaster")
 
 /datum/gear/restricted/eng_sci_supply/eyes
-	slot = slot_glasses
+	slot = SLOT_ID_GLASSES
 
 
 //Medical + Science
@@ -202,10 +202,10 @@
 	allowed_roles = list("Research Director", "Scientist", "Xenobiologist", "Roboticist", "Explorer", "Pathfinder", "Medical Doctor", "Chief Medical Officer", "Chemist", "Paramedic", "Geneticist", "Psychiatrist", "Field Medic")
 
 /datum/gear/restricted/med_sci/head
-	slot = slot_head
+	slot = SLOT_ID_HEAD
 
 /datum/gear/restricted/med_sci/suit
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 /***********************************************************************************/
 //**Single-Department Items
 //*Security

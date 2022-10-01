@@ -14,15 +14,15 @@
 	if(default_unfasten_wrench(user, O, 20))
 		return
 
-	else if(!istype(O,/obj/item/virusdish)) return
+	else if(!istype(O,/obj/item/virusdish))
+		return ..()
 
 	if(dish)
 		to_chat(user, "\The [src] is already loaded.")
 		return
-
+	if(!user.attempt_insert_item_for_installation(O, src))
+		return
 	dish = O
-	user.drop_item()
-	O.loc = src
 
 	user.visible_message("[user] adds \a [O] to \the [src]!", "You add \a [O] to \the [src]!")
 

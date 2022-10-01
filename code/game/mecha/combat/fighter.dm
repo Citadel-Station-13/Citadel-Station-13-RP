@@ -190,19 +190,19 @@
 		var/amplitude = 2 //maximum displacement from original position
 		var/period = 36 //time taken for the mob to go up >> down >> original position, in deciseconds. Should be multiple of 4
 
-		var/top = old_y + amplitude
-		var/bottom = old_y - amplitude
+		var/top = get_standard_pixel_y_offset() + amplitude
+		var/bottom = get_standard_pixel_y_offset() - amplitude
 		var/half_period = period / 2
 		var/quarter_period = period / 4
 
 		animate(src, pixel_y = top, time = quarter_period, easing = SINE_EASING | EASE_OUT, loop = -1)		//up
 		animate(pixel_y = bottom, time = half_period, easing = SINE_EASING, loop = -1)						//down
-		animate(pixel_y = old_y, time = quarter_period, easing = SINE_EASING | EASE_IN, loop = -1)			//back
+		animate(pixel_y = get_standard_pixel_y_offset(), time = quarter_period, easing = SINE_EASING | EASE_IN, loop = -1)			//back
 
 /obj/mecha/combat/fighter/proc/stop_hover()
 	if(ion_trail.on)
 		ion_trail.stop()
-		animate(src, pixel_y = old_y, time = 5, easing = SINE_EASING | EASE_IN) //halt animation
+		animate(src, pixel_y = get_standard_pixel_y_offset(), time = 5, easing = SINE_EASING | EASE_IN) //halt animation
 
 /obj/mecha/combat/fighter/check_for_support()
 	if (has_charge(step_energy_drain) && stabilization_enabled)
@@ -459,6 +459,45 @@
 	drive means that it can't get too far from it's parent ship. Though the pinnace is typically unarmed, \
 	it is capable of atmospheric flight and escaping most pursuing fighters by diving into the atmosphere of \
 	nearby planets to seek cover."
+	value = CATALOGUER_REWARD_MEDIUM
+
+
+////////////// Cludge //////////////
+
+/obj/mecha/combat/fighter/cludge
+	name = "Cludge"
+	desc = "A heater, nozzle, and fuel tank strapped together. There are exposed wires strewn about it."
+	icon = 'icons/mecha/fighters64x64.dmi'
+	icon_state = "cludge"
+	initial_icon = "cludge"
+
+	health = 100
+	maxhealth = 100
+
+	max_hull_equip = 0
+	max_weapon_equip = 0
+	max_utility_equip = 0
+	max_universal_equip = 0
+	max_special_equip = 0
+
+	catalogue_data = list(/datum/category_item/catalogue/technology/cludge)
+	wreckage = /obj/effect/decal/mecha_wreckage/cludge
+
+	ground_capable = TRUE
+
+/obj/effect/decal/mecha_wreckage/cludge
+	name = "Cludge wreckage"
+	desc = "It doesn't look much different than it normally does. Completely unrepairable."
+	icon = 'icons/mecha/fighters64x64.dmi'
+	icon_state = "cludge-broken"
+	bound_width = 64
+	bound_height = 64
+
+/datum/category_item/catalogue/technology/cludge
+	name = "Voidcraft - Cludge"
+	desc = "A collection of parts strapped together in an attempt to make a flying vessel. Such vessels are fragile, unstable \
+	and very easily break apart, due to their roughshod engineering. These vessels commonly are built without critical components \
+	such as life support, or armor plating."
 	value = CATALOGUER_REWARD_MEDIUM
 
 #undef NOGRAV_FIGHTER_DAMAGE

@@ -137,9 +137,9 @@
 				do_animate("deny")
 
 /obj/machinery/door/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSGLASS))
-		return !opacity
-	return !density
+	if(!opacity && mover.check_pass_flags(ATOM_PASS_GLASS))
+		return TRUE
+	return ..()
 
 /obj/machinery/door/CanAtmosPass(turf/T, d)
 	if(density)
@@ -178,7 +178,7 @@
 					new /obj/item/stack/material/steel(src.loc, 2)
 					new /obj/item/stack/rods(src.loc, 3)
 				if(BURN)
-					new /obj/effect/decal/cleanable/ash(src.loc) // Turn it to ashes!
+					new /obj/effect/debris/cleanable/ash(src.loc) // Turn it to ashes!
 			qdel(src)
 
 	if(damage)
@@ -187,18 +187,12 @@
 
 
 
-/obj/machinery/door/hitby(AM as mob|obj, var/speed=5)
-
-	..()
+/obj/machinery/door/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	visible_message("<span class='danger'>[src.name] was hit by [AM].</span>")
-	var/tforce = 0
-	if(ismob(AM))
-		tforce = 15 * (speed/5)
-	else
-		tforce = AM:throwforce * (speed/5)
-	playsound(src.loc, hitsound, 100, 1)
+	var/tforce = AM.throw_force * TT.get_damage_multiplier()
+	playsound(src, hitsound, 100, 1)
 	take_damage(tforce)
-	return
 
 /obj/machinery/door/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
@@ -258,8 +252,8 @@
 			var/obj/item/weldingtool/welder = I
 			if(welder.remove_fuel(0,user))
 				to_chat(user, "<span class='notice'>You start to fix dents and weld \the [get_material_name()] into place.</span>")
-				playsound(src, welder.usesound, 50, 1)
-				if(do_after(user, (5 * repairing) * welder.toolspeed) && welder && welder.isOn())
+				playsound(src, welder.tool_sound, 50, 1)
+				if(do_after(user, (5 * repairing) * welder.tool_speed) && welder && welder.isOn())
 					to_chat(user, "<span class='notice'>You finish repairing the damage to \the [src].</span>")
 					health = between(health, health + repairing*DOOR_REPAIR_AMOUNT, maxhealth)
 					update_icon()
@@ -272,7 +266,7 @@
 			repairing_sheet.amount += repairing-1
 			repairing = 0
 			to_chat(user, "<span class='notice'>You remove \the [repairing_sheet].</span>")
-			playsound(src, I.usesound, 100, 1)
+			playsound(src, I.tool_sound, 100, 1)
 			return
 
 		//psa to whoever coded this, there are plenty of objects that need to call attack() on doors without bludgeoning them.

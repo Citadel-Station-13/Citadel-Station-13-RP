@@ -67,7 +67,7 @@
 	var/broadcast_font = "verdana"
 	var/broadcast_size = 3
 	var/broadcast_color = "#000000" //Black by default.
-	var/list/volume_options = list(2, 3, 4)
+	var/list/volume_options = list(2, 3, 4, 8)
 	var/list/font_options = list("times new roman", "times", "verdana", "sans-serif", "serif", "georgia")
 	var/list/color_options= list("#000000", "#ff0000", "#00ff00", "#0000ff")
 

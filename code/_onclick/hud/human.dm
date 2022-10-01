@@ -14,17 +14,18 @@
 	src.adding = list()
 	src.other = list()
 	src.hotkeybuttons = list() //These can be disabled for hotkey users
-	src.slot_info = list()
+	slot_info = list()
+	hand_info = list()
 
 	var/list/hud_elements = list()
 	var/atom/movable/screen/using
-	var/atom/movable/screen/inventory/inv_box
+	var/atom/movable/screen/inventory/slot/inv_box
 
 	// Draw the various inventory equipment slots.
 	var/has_hidden_gear
 	for(var/gear_slot in hud_data.gear)
 
-		inv_box = new /atom/movable/screen/inventory()
+		inv_box = new /atom/movable/screen/inventory/slot()
 		inv_box.icon = ui_style
 		inv_box.color = ui_color
 		inv_box.alpha = ui_alpha
@@ -155,38 +156,39 @@
 		using.alpha = ui_alpha
 		src.adding += using
 
-		inv_box = new /atom/movable/screen/inventory/hand()
-		inv_box.hud = src
-		inv_box.name = "r_hand"
-		inv_box.icon = ui_style
-		inv_box.icon_state = "r_hand_inactive"
+		var/atom/movable/screen/inventory/hand/right/right_hand = new
+		right_hand.index = 2
+		using = right_hand
+		using.hud = src
+		using.name = "r_hand"
+		using.icon = ui_style
+		using.icon_state = "r_hand_inactive"
 		if(!target.hand)	//This being 0 or null means the right hand is in use
-			inv_box.icon_state = "r_hand_active"
-		inv_box.screen_loc = ui_rhand
-		inv_box.slot_id = slot_r_hand
-		inv_box.color = ui_color
-		inv_box.alpha = ui_alpha
-		src.r_hand_hud_object = inv_box
-		src.adding += inv_box
-		slot_info["[slot_r_hand]"] = inv_box.screen_loc
+			using.icon_state = "r_hand_active"
+		using.screen_loc = ui_rhand
+		using.color = ui_color
+		using.alpha = ui_alpha
+		src.r_hand_hud_object = using
+		src.adding += using
+		hand_info["2"] = using.screen_loc
 
-		inv_box = new /atom/movable/screen/inventory/hand()
-		inv_box.hud = src
-		inv_box.name = "l_hand"
-		inv_box.icon = ui_style
-		inv_box.icon_state = "l_hand_inactive"
+		var/atom/movable/screen/inventory/hand/left/left_hand = new
+		left_hand.index = 1
+		using = left_hand
+		using.hud = src
+		using.name = "l_hand"
+		using.icon = ui_style
+		using.icon_state = "l_hand_inactive"
 		if(target.hand)	//This being 1 means the left hand is in use
-			inv_box.icon_state = "l_hand_active"
-		inv_box.screen_loc = ui_lhand
-		inv_box.slot_id = slot_l_hand
-		inv_box.color = ui_color
-		inv_box.alpha = ui_alpha
-		src.l_hand_hud_object = inv_box
-		src.adding += inv_box
-		slot_info["[slot_l_hand]"] = inv_box.screen_loc
+			using.icon_state = "l_hand_active"
+		using.screen_loc = ui_lhand
+		using.color = ui_color
+		using.alpha = ui_alpha
+		src.l_hand_hud_object = using
+		src.adding += using
+		hand_info["1"] = using.screen_loc
 
-		using = new /atom/movable/screen/inventory()
-		using.name = "hand"
+		using = new /atom/movable/screen/inventory/swap_hands
 		using.icon = ui_style
 		using.icon_state = "hand1"
 		using.screen_loc = ui_swaphand1
@@ -194,8 +196,7 @@
 		using.alpha = ui_alpha
 		src.adding += using
 
-		using = new /atom/movable/screen/inventory()
-		using.name = "hand"
+		using = new /atom/movable/screen/inventory/swap_hands
 		using.icon = ui_style
 		using.icon_state = "hand2"
 		using.screen_loc = ui_swaphand2
@@ -214,13 +215,7 @@
 		src.hotkeybuttons += using
 
 	if(hud_data.has_throw)
-		mymob.throw_icon = new /atom/movable/screen()
-		mymob.throw_icon.icon = ui_style
-		mymob.throw_icon.icon_state = "act_throw_off"
-		mymob.throw_icon.name = "throw"
-		mymob.throw_icon.screen_loc = ui_drop_throw
-		mymob.throw_icon.color = ui_color
-		mymob.throw_icon.alpha = ui_alpha
+		mymob.throw_icon = new /atom/movable/screen/hud/throwmode(null, src)
 		src.hotkeybuttons += mymob.throw_icon
 		hud_elements |= mymob.throw_icon
 

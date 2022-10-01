@@ -6,10 +6,10 @@
 	item_state = "electronic"
 	force = 0
 	w_class = WEIGHT_CLASS_SMALL
-	throwforce = 0
+	throw_force = 0
 	throw_speed = 3
 	throw_range = 7
-	clothing_flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 	var/list/signs = list()
 	var/max_signs = 10
 	var/creation_time = 0 //time to create a holosign in deciseconds.

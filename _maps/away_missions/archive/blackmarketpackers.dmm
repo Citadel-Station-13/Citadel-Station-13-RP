@@ -734,7 +734,7 @@
 /area/awaymission/BMPship2)
 "cS" = (
 /obj/structure/table/standard,
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/BMPship2)
 "cV" = (
@@ -871,7 +871,7 @@
 /obj/landmark{
 	name = "awaystart"
 	},
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/BMPship1)
 "dF" = (
@@ -1343,11 +1343,11 @@
 	},
 /area/awaymission/BMPship3)
 "fb" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship2)
 "fc" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/effect/gibspawner/generic,
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship2)
@@ -1554,7 +1554,7 @@
 	},
 /area/awaymission/BMPship2)
 "fK" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/light/small{
 	dir = 8
 	},
@@ -1626,7 +1626,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/BMPship1)
 "fW" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/awaymission/BMPship1)
 "fY" = (
@@ -1826,7 +1826,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/BMPship1)
 "gL" = (
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/BMPship1)
 "gM" = (

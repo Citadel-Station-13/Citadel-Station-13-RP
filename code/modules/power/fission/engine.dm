@@ -87,7 +87,7 @@
 		announce_warning(meltedrods, meltingrods, temperature >= max_temp ? 1 : 0)
 
 	decay_archived = decay_heat
-	add_thermal_energy(decay_heat * activerods)
+	adjust_thermal_energy(decay_heat * activerods)
 	equalize(loc.return_air(), envefficiency)
 	equalize_all()
 
@@ -224,11 +224,10 @@
 			user.visible_message("[user.name] carefully starts to load \the [W] into to \the [src].", \
 				"You carefully start loading \the [W] into to \the [src].", \
 				"You hear a metallic rattling.")
-			if(do_after(user, 40))
-				user.drop_from_inventory(rod)
-				rod.loc = src
+			if(do_after(user, 20))
+				if(!user.attempt_insert_item_for_installation(rod, src))
+					return
 				rods += rod
-
 				rod.insertion = 0
 		return
 
@@ -254,10 +253,10 @@
 			to_chat(user, "<span class='warning'>\The [WT] must be on to complete this task.</span>")
 			return
 		repairing = 1
-		playsound(src.loc, WT.usesound, 50, 1)
+		playsound(src.loc, WT.tool_sound, 50, 1)
 		user.visible_message("<span class='warning'>\The [user.name] begins repairing \the [src].</span>", \
 			"<span class='notice'>You start repairing \the [src].</span>")
-		if(do_after(user, 20 * WT.toolspeed, target = src) && WT.isOn())
+		if(do_after(user, 20 * WT.tool_speed, target = src) && WT.isOn())
 			health = clamp( health + 10, 1,  max_health)
 		repairing = 0
 		return
@@ -269,8 +268,8 @@
 		to_chat(user, "<span class='warning'>You cannot unwrench \the [src], while it contains fuel rods.</span>")
 		return 1
 
-	playsound(src, W.usesound, 75, 1)
-	if(!anchored || do_after(user, 40 * W.toolspeed))
+	playsound(src, W.tool_sound, 75, 1)
+	if(!anchored || do_after(user, 40 * W.tool_speed))
 		anchor()
 		user.visible_message("\The [user.name] [anchored ? "secures" : "unsecures"] the bolts holding \the [src.name] to the floor.", \
 				"You [anchored ? "secure" : "unsecure"] the bolts holding [src] to the floor.", \
@@ -322,7 +321,7 @@
 					removed.temperature = clamp( removed.temperature, 0,  REACTOR_TEMPERATURE_CUTOFF)
 				env.merge(removed)
 
-/obj/machinery/power/fission/add_thermal_energy(var/thermal_energy)
+/obj/machinery/power/fission/adjust_thermal_energy(var/thermal_energy)
 	if(mass < 1)
 		return 0
 

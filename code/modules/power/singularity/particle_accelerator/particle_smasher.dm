@@ -51,8 +51,8 @@
 		if(M.uses_charge)
 			to_chat(user, "<span class='notice'>You cannot fill \the [src] with a synthesizer!</span>")
 			return
-		user.drop_from_inventory(M, src)
-		M.forceMove(src)
+		if(!user.attempt_insert_item_for_installation(M, src))
+			return
 		target = M
 		user.visible_message("[user] slots \the [target] into [src].")
 		update_icon()
@@ -60,19 +60,15 @@
 		if(reagent_container)
 			to_chat(user, "<span class='notice'>\The [src] already has a container attached.</span>")
 			return
-		if(isrobot(user) && istype(W.loc, /obj/item/gripper))
-			var/obj/item/gripper/G = W.loc
-			G.drop_item()
-		else
-			user.drop_from_inventory(W)
+		if(!user.transfer_item_to_loc(W, src))
+			return
 		reagent_container = W
-		reagent_container.forceMove(src)
 		to_chat(user, "<span class='notice'>You add \the [reagent_container] to \the [src].</span>")
 		update_icon()
 		return
 	else if(W.is_wrench())
 		anchored = !anchored
-		playsound(src, W.usesound, 75, 1)
+		playsound(src, W.tool_sound, 75, 1)
 		if(anchored)
 			user.visible_message("[user.name] secures [src.name] to the floor.", \
 				"You secure the [src.name] to the floor.", \
@@ -86,13 +82,9 @@
 	else if(istype(W, /obj/item/card/id))
 		to_chat(user, "<span class='notice'>Swiping \the [W] on \the [src] doesn't seem to do anything...</span>")
 		return ..()
-	else if(((isrobot(user) && istype(W.loc, /obj/item/gripper)) || (!isrobot(user) && W.canremove)) && storage.len < max_storage)
-		if(isrobot(user) && istype(W.loc, /obj/item/gripper))
-			var/obj/item/gripper/G = W.loc
-			G.drop_item()
-		else
-			user.drop_from_inventory(W)
-		W.forceMove(src)
+	else if(storage.len < max_storage)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		storage += W
 	else
 		return ..()

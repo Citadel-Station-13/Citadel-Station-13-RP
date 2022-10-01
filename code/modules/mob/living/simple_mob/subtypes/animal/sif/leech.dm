@@ -32,7 +32,7 @@
 	density = FALSE	// Non-dense, so things can pass over them.
 
 	status_flags = CANPUSH
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 
 	maxHealth = 100
 	health = 100
@@ -100,12 +100,12 @@
 	if(!istype(H))
 		return .
 
-	if(istype(L.buckled, /obj/vehicle) || L.hovering) // Ignore people hovering or on boats.
+	if(istype(L.buckled, /obj/vehicle_old) || L.hovering) // Ignore people hovering or on boats.
 		return TRUE
 
 	if(!.)
 		var/has_organ = FALSE
-		var/obj/item/organ/internal/O = H.get_active_hand()
+		var/obj/item/organ/internal/O = H.get_active_held_item()
 		if(istype(O) && O.robotic < ORGAN_ROBOT && !(O.status & ORGAN_DEAD))
 			has_organ = TRUE
 		return has_organ

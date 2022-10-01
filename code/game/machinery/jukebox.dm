@@ -169,7 +169,7 @@
 			SPAN_NOTICE("You [anchored ? "un" : ""]secure \the [src]."))
 
 		anchored = !anchored
-		playsound(src, W.usesound, 50, TRUE)
+		playsound(src, W.tool_sound, 50, TRUE)
 		power_change()
 		update_icon()
 		if(!anchored)
@@ -316,7 +316,7 @@
 	s.set_up(3, 1, src)
 	s.start()
 
-	new /obj/effect/decal/cleanable/blood/oil(src.loc)
+	new /obj/effect/debris/cleanable/blood/oil(src.loc)
 	qdel(src)
 
 /obj/machinery/media/jukebox/attackby(obj/item/W, mob/user)
@@ -333,7 +333,7 @@
 			SPAN_NOTICE("You [anchored ? "un" : ""]secure \the [src]."))
 
 		anchored = !anchored
-		playsound(src, W.usesound, 50, TRUE)
+		playsound(src, W.tool_sound, 50, TRUE)
 		power_change()
 		update_icon()
 		return

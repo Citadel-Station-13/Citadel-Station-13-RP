@@ -23,6 +23,8 @@
 
 	if (message)
 		message = say_emphasis(message)
+		var/overhead_message = ("** [message] **")
+		say_overhead(overhead_message, FALSE, range)
 		SEND_SIGNAL(src, COMSIG_MOB_CUSTOM_EMOTE, src, message)
 
  // Hearing gasp and such every five seconds is not good emotes were not global for a reason.

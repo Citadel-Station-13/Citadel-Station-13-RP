@@ -31,7 +31,7 @@
 			to_chat(user, "<span class='warning'>You need two hands to pick this up!</span>")
 			return
 
-	if(user.get_inactive_hand())
+	if(user.get_inactive_held_item())
 		to_chat(user, "<span class='warning'>You need your other hand to be empty</span>")
 		return
 	return ..()
@@ -41,7 +41,7 @@
 	to_chat(user, "<span class='notice'>You dump the [src]'s contents onto \the [T].</span>")
 	return ..()
 
-/obj/item/storage/laundry_basket/pickup(mob/user)
+/obj/item/storage/laundry_basket/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()
 	var/obj/item/storage/laundry_basket/offhand/O = new(user)
 	O.name = "[name] - second hand"
@@ -57,13 +57,13 @@
 	else
 		icon_state = "laundry-empty"
 
-/obj/item/storage/laundry_basket/MouseDrop(obj/over_object as obj)
+/obj/item/storage/laundry_basket/OnMouseDropLegacy(obj/over_object as obj)
 	if(over_object == usr)
 		return
 	else
 		return ..()
 
-/obj/item/storage/laundry_basket/dropped(mob/user as mob)
+/obj/item/storage/laundry_basket/dropped(mob/user, flags, atom/newLoc)
 	QDEL_NULL(linked)
 	return ..()
 
@@ -80,7 +80,7 @@
 	name = "second hand"
 	use_to_pickup = 0
 
-/obj/item/storage/laundry_basket/offhand/dropped(mob/user)
+/obj/item/storage/laundry_basket/offhand/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
-	user.drop_from_inventory(linked)
+	user.drop_item_to_ground(linked)
 

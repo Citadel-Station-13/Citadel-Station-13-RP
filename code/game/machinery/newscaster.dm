@@ -780,17 +780,16 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 				user.put_in_inactive_hand(photo_data.photo)
 		qdel(photo_data)
 
-	if(istype(user.get_active_hand(), /obj/item/photo))
-		var/obj/item/photo = user.get_active_hand()
-		user.drop_item()
-		photo.loc = src
+	if(istype(user.get_active_held_item(), /obj/item/photo))
+		var/obj/item/photo = user.get_active_held_item()
+		if(!user.attempt_insert_item_for_installation(photo, src))
+			return
 		photo_data = new(photo, 0)
 	else if(istype(user,/mob/living/silicon))
 		var/mob/living/silicon/tempAI = user
 		var/obj/item/photo/selection = tempAI.GetPicture()
 		if(!selection)
 			return
-
 		photo_data = new(selection, 1)
 
 //########################################################################################################################

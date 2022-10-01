@@ -8,7 +8,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "mop"
 	force = 5.0
-	throwforce = 10.0
+	throw_force = 10.0
 	throw_speed = 5
 	throw_range = 10
 	w_class = ITEMSIZE_NORMAL
@@ -37,7 +37,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 
 /obj/item/mop/afterattack(atom/A, mob/user, proximity)
 	if(!proximity) return
-	if(istype(A, /turf) || istype(A, /obj/effect/decal/cleanable) || istype(A, /obj/effect/overlay))
+	if(istype(A, /turf) || istype(A, /obj/effect/debris/cleanable) || istype(A, /obj/effect/overlay))
 		if(reagents.total_volume < 1)
 			to_chat(user, "<span class='warning'>Your mop is dry!</span>")
 			return
@@ -143,7 +143,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	icon_state = "advmop"
 	item_state = "mop"
 	force = 6
-	throwforce = 11
+	throw_force = 11
 	mopspeed = 15
 	var/refill_enabled = TRUE //Self-refill toggle for when a janitor decides to mop with something other than water.
 	var/refill_rate = 1 //Rate per process() tick mop refills itself

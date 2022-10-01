@@ -24,7 +24,7 @@ GLOBAL_DATUM_INIT(see_anywhere_appearance, /mutable_appearance, init_see_anywher
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	appearance_flags = KEEP_TOGETHER
 	anchored = TRUE
-	flags = AF_ABSTRACT
+	flags = ATOM_ABSTRACT
 
 /proc/init_see_anywhere_overlay()
 	var/mutable_appearance/I = new

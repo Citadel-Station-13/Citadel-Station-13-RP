@@ -50,10 +50,10 @@
 		found = TRUE
 		tesla_link = H
 	if(found)
+		if(!user.attempt_insert_item_for_installation(H, src))
+			return
 		to_chat(user, "You install \the [H] into \the [src]")
 		H.holder2 = src
-		user.drop_from_inventory(H)
-		H.forceMove(src)
 		update_verbs()
 
 /// Uninstalls component. Found and Critical vars may be passed by parent types, if they have additional hardware.

@@ -121,11 +121,11 @@
 	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
 	return ..()
 
-/obj/item/shield_projector/pickup(mob/user)
+/obj/item/shield_projector/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/moved_event)
 
-/obj/item/shield_projector/dropped(mob/user)
+/obj/item/shield_projector/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 

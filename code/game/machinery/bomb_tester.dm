@@ -96,8 +96,8 @@
 		return
 	if(istype(I, /obj/item/tank))
 		if(!tank1 || !tank2)
-			user.drop_item(I)
-			I.forceMove(src)
+			if(!user.attempt_insert_item_for_installation(I, src))
+				return
 			if(!tank1)
 				tank1 = I
 			else
@@ -155,8 +155,8 @@
 			return TRUE
 
 		if("add_tank")
-			if(istype(usr.get_active_hand(), /obj/item/tank))
-				var/obj/item/tank/T = usr.get_active_hand()
+			if(istype(usr.get_active_held_item(), /obj/item/tank))
+				var/obj/item/tank/T = usr.get_active_held_item()
 				var/slot = params["slot"]
 				if(slot == 1 && !tank1)
 					tank1 = T
@@ -165,9 +165,8 @@
 				else
 					to_chat(usr, SPAN_WARNING("Slot [slot] is full."))
 					return
-
-				usr.drop_item(T)
-				T.forceMove(src)
+				if(!usr.attempt_insert_item_for_installation(T, src))
+					return
 				return TRUE
 			else
 				to_chat(usr, SPAN_WARNING("You must be wielding a tank to insert it!"))
@@ -273,7 +272,7 @@
 
 	simulation_results += "<br>Initial gas tank status:<br>[format_gas_for_results(faketank)]"
 
-	faketank.add_thermal_energy(15000)
+	faketank.adjust_thermal_energy(15000)
 
 	var/intervals = 0
 	while(intervals < 10)

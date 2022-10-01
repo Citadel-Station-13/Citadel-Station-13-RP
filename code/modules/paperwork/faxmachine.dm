@@ -92,16 +92,17 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 		if (scan)
 			if(ishuman(usr))
 				scan.loc = usr.loc
-				if(!usr.get_active_hand())
-					usr.put_in_hands(scan)
+				if(!usr.get_active_held_item())
+					usr.put_in_hands_or_drop(scan)
 				scan = null
 			else
 				scan.loc = src.loc
 				scan = null
 		else
-			var/obj/item/I = usr.get_active_hand()
-			if (istype(I, /obj/item/card/id) && usr.unEquip(I))
-				I.loc = src
+			var/obj/item/I = usr.get_active_held_item()
+			if (istype(I, /obj/item/card/id))
+				if(!usr.attempt_insert_item_for_installation(I, src))
+					return
 				scan = I
 		authenticated = 0
 

@@ -4,7 +4,7 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "paper"
 	item_state = "paper"
-	throwforce = 0
+	throw_force = 0
 	w_class = ITEMSIZE_SMALL
 	throw_range = 2
 	throw_speed = 1
@@ -37,14 +37,13 @@
 
 	// merging bundles
 	else if(istype(W, /obj/item/paper_bundle))
-		user.drop_from_inventory(W)
+		if(!user.attempt_consume_item_for_construction(W))
+			return
 		for(var/obj/O in W)
-			O.loc = src
+			O.forceMove(src)
 			O.add_fingerprint(usr)
 			pages.Add(O)
-
 		to_chat(user, "<span class='notice'>You add \the [W.name] to [(src.name == "paper bundle") ? "the paper bundle" : src.name].</span>")
-		qdel(W)
 	else
 		if(istype(W, /obj/item/duct_tape_roll))
 			return 0
@@ -56,16 +55,14 @@
 	update_icon()
 	attack_self(usr) //Update the browsed page.
 	add_fingerprint(usr)
-	return
 
 /obj/item/paper_bundle/proc/insert_sheet_at(mob/user, var/index, obj/item/sheet)
+	if(!user.attempt_insert_item_for_installation(sheet, src))
+		return
 	if(istype(sheet, /obj/item/paper))
 		to_chat(user, "<span class='notice'>You add [(sheet.name == "paper") ? "the paper" : sheet.name] to [(src.name == "paper bundle") ? "the paper bundle" : src.name].</span>")
 	else if(istype(sheet, /obj/item/photo))
 		to_chat(user, "<span class='notice'>You add [(sheet.name == "photo") ? "the photo" : sheet.name] to [(src.name == "paper bundle") ? "the paper bundle" : src.name].</span>")
-
-	user.drop_from_inventory(sheet)
-	sheet.loc = src
 
 	pages.Insert(index, sheet)
 
@@ -78,19 +75,19 @@
 	if(P.lit && !user.restrained())
 		if(istype(P, /obj/item/flame/lighter/zippo))
 			class = "rose>"
-		var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+		var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 		user.visible_message("<span class='[class]'>[user] holds \the [P] up to \the [src], it looks like [TU.he] [TU.is] trying to burn it!</span>", \
 		"<span class='[class]'>You hold \the [P] up to \the [src], burning it slowly.</span>")
 
 		spawn(20)
-			if(get_dist(src, user) < 2 && user.get_active_hand() == P && P.lit)
+			if(get_dist(src, user) < 2 && user.get_active_held_item() == P && P.lit)
 				user.visible_message("<span class='[class]'>[user] burns right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>", \
 				"<span class='[class]'>You burn right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>")
 
-				if(user.get_inactive_hand() == src)
-					user.drop_from_inventory(src)
+				if(user.get_inactive_held_item() == src)
+					user.drop_inactive_held_item()
 
-				new /obj/effect/decal/cleanable/ash(src.loc)
+				new /obj/effect/debris/cleanable/ash(src.loc)
 				qdel(src)
 
 			else
@@ -150,7 +147,7 @@
 	..()
 	if((src in usr.contents) || (istype(src.loc, /obj/item/folder) && (src.loc in usr.contents)))
 		usr.set_machine(src)
-		var/obj/item/in_hand = usr.get_active_hand()
+		var/obj/item/in_hand = usr.get_active_held_item()
 		if(href_list["next_page"])
 			if(in_hand && (istype(in_hand, /obj/item/paper) || istype(in_hand, /obj/item/photo)))
 				insert_sheet_at(usr, page+1, in_hand)
@@ -172,10 +169,9 @@
 
 			if(pages.len <= 1)
 				var/obj/item/paper/P = src[1]
-				usr.drop_from_inventory(src)
+				usr.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 				usr.put_in_hands(P)
 				qdel(src)
-
 				return
 
 			if(page > pages.len)
@@ -207,13 +203,10 @@
 
 	to_chat(usr, "<span class='notice'>You loosen the bundle.</span>")
 	for(var/obj/O in src)
-		O.loc = usr.loc
-		O.layer = initial(O.layer)
+		O.forceMove(usr.loc)
+		O.reset_plane_and_layer()
 		O.add_fingerprint(usr)
-	usr.drop_from_inventory(src)
 	qdel(src)
-	return
-
 
 /obj/item/paper_bundle/update_icon()
 	var/obj/item/paper/P = pages[1]

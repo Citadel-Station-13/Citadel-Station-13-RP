@@ -13,13 +13,19 @@
 	build_path = /obj/machinery/computer/supplycomp/control
 	origin_tech = list(TECH_DATA = 3)
 
-/obj/item/circuitboard/supplycomp/construct(var/obj/machinery/computer/supplycomp/SC)
-	if (..(SC))
-		SC.can_order_contraband = contraband_enabled
+/obj/item/circuitboard/supplycomp/after_construct(atom/A)
+	. = ..()
+	if(!istype(A, /obj/machinery/computer/supplycomp))
+		return
+	var/obj/machinery/computer/supplycomp/S = A
+	S.can_order_contraband = contraband_enabled
 
-/obj/item/circuitboard/supplycomp/deconstruct(var/obj/machinery/computer/supplycomp/SC)
-	if (..(SC))
-		contraband_enabled = SC.can_order_contraband
+/obj/item/circuitboard/supplycomp/after_deconstruct(atom/A)
+	. = ..()
+	if(!istype(A, /obj/machinery/computer/supplycomp))
+		return
+	var/obj/machinery/computer/supplycomp/S = A
+	contraband_enabled = S.can_order_contraband
 
 /obj/item/circuitboard/supplycomp/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I,/obj/item/multitool))

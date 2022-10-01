@@ -58,7 +58,7 @@
 			gas_transfer_coefficient = 1
 			gas_filter_strength = 0
 			body_parts_covered = body_parts_covered & ~FACE
-			clothing_flags = clothing_flags & ~BLOCK_GAS_SMOKE_EFFECT & ~ALLOWINTERNALS
+			clothing_flags &= ~(BLOCK_GAS_SMOKE_EFFECT | ALLOWINTERNALS)
 			flags_inv = 0
 			armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
 			icon_state = "halfgas_up"
@@ -72,7 +72,7 @@
 			armor = initial(armor)
 			icon_state = initial(icon_state)
 			to_chat(usr, "You pull the mask up to cover your face.")
-		update_clothing_icon()
+		update_worn_icon()
 
 /obj/item/clothing/mask/gas/half/verb/toggle()
 	set category = "Object"
@@ -348,7 +348,7 @@
 		if(2)
 			icon_state = "iacc_b"
 			design = 0
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/mask/gas/orchid/verb/toggle_design()
 

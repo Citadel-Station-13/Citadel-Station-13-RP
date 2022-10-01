@@ -126,7 +126,7 @@ var/list/name_to_material
 
 	// Damage values.
 	var/hardness = 60            // Prob of wall destruction by hulk, used for edge damage in weapons.  Also used for bullet protection in armor.
-	var/weight = 20              // Determines blunt damage/throwforce for weapons.
+	var/weight = 20              // Determines blunt damage/throw_force for weapons.
 
 	// Noise when someone is faceplanted onto a table made of this material.
 	var/tableslam_noise = 'sound/weapons/tablehit1.ogg'
@@ -306,7 +306,6 @@ var/list/name_to_material
 	stack_type = /obj/item/stack/material/supermatter
 	shard_type = SHARD_SHARD
 	radioactivity = 20
-	stack_type = null
 	luminescence = 3
 	ignition_point = PHORON_MINIMUM_BURN_TEMPERATURE
 	icon_base = "stone"
@@ -518,15 +517,28 @@ var/list/name_to_material
 		to_chat(user, "<span class='warning'>This task is too complex for your clumsy hands.</span>")
 		return 1
 
+	var/title = "Sheet-[used_stack.name] ([used_stack.get_amount()] sheet\s left)"
+	var/choice = input(title, "What would you like to construct?") as null|anything in window_options
+	var/build_path = /obj/structure/windoor_assembly
+	var/sheets_needed = window_options[choice]
+	if(choice == "Windoor")
+		if(is_reinforced())
+			build_path = /obj/structure/windoor_assembly/secure
+	else if(choice == "Full Window")
+		build_path = created_fulltile_window
+	else
+		build_path = created_window
+
+	if(used_stack.get_amount() < sheets_needed)
+		to_chat(user, "<span class='warning'>You need at least [sheets_needed] sheets to build this.</span>")
+		return 1
+
+	if(!choice || !used_stack || !user || used_stack.loc != user || user.stat)
+		return 1
+
 	var/turf/T = user.loc
 	if(!istype(T))
 		to_chat(user, "<span class='warning'>You must be standing on open flooring to build a window.</span>")
-		return 1
-
-	var/title = "Sheet-[used_stack.name] ([used_stack.get_amount()] sheet\s left)"
-	var/choice = input(title, "What would you like to construct?") as null|anything in window_options
-
-	if(!choice || !used_stack || !user || used_stack.loc != user || user.stat)
 		return 1
 
 	// Get data for building windows here.
@@ -534,7 +546,10 @@ var/list/name_to_material
 	var/window_count = 0
 	for (var/obj/structure/window/check_window in user.loc)
 		window_count++
-		possible_directions  -= check_window.dir
+		if(check_window.is_fulltile())
+			possible_directions -= GLOB.cardinal
+		else
+			possible_directions -= check_window.dir
 	for (var/obj/structure/windoor_assembly/check_assembly in user.loc)
 		window_count++
 		possible_directions -= check_assembly.dir
@@ -559,20 +574,6 @@ var/list/name_to_material
 				failed_to_build = 1
 	if(failed_to_build)
 		to_chat(user, "<span class='warning'>There is no room in this location.</span>")
-		return 1
-
-	var/build_path = /obj/structure/windoor_assembly
-	var/sheets_needed = window_options[choice]
-	if(choice == "Windoor")
-		if(is_reinforced())
-			build_path = /obj/structure/windoor_assembly/secure
-	else if(choice == "Full Window")
-		build_path = created_fulltile_window
-	else
-		build_path = created_window
-
-	if(used_stack.get_amount() < sheets_needed)
-		to_chat(user, "<span class='warning'>You need at least [sheets_needed] sheets to build this.</span>")
 		return 1
 
 	// Build the structure and update sheet count etc.
@@ -1008,7 +1009,7 @@ var/list/name_to_material
 	new /obj/structure/girder/cult(target, "cult")
 
 /datum/material/cult/place_dismantled_product(var/turf/target)
-	new /obj/effect/decal/cleanable/blood(target)
+	new /obj/effect/debris/cleanable/blood(target)
 
 /datum/material/cult/reinf
 	name = "cult2"

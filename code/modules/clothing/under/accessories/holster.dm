@@ -26,9 +26,11 @@
 
 	if(istype(user))
 		user.stop_aiming(no_message=1)
+
+	if(!user.attempt_insert_item_for_installation(I, src))
+		return
+
 	holstered = I
-	user.drop_from_inventory(holstered)
-	holstered.forceMove(src)
 	holstered.add_fingerprint(user)
 	w_class = max(w_class, holstered.w_class)
 	user.visible_message("<span class='notice'>[user] [holster_verb]s \the [holstered].</span>", "<span class='notice'>You [holster_verb] \the [holstered].</span>")
@@ -43,7 +45,7 @@
 	if(!holstered)
 		return
 
-	if(istype(user.get_active_hand(),/obj) && istype(user.get_inactive_hand(),/obj))
+	if(istype(user.get_active_held_item(),/obj) && istype(user.get_inactive_held_item(),/obj))
 		to_chat(user, "<span class='warning'>You need an empty hand to draw \the [holstered]!</span>")
 	else
 		if(user.a_intent == INTENT_HARM)
@@ -116,7 +118,7 @@
 		to_chat(usr, "<span class='warning'>Something is very wrong.</span>")
 
 	if(!H.holstered)
-		var/obj/item/W = usr.get_active_hand()
+		var/obj/item/W = usr.get_active_held_item()
 		if(!istype(W, /obj/item))
 			to_chat(usr, "<span class='warning'>You need your weapon equipped to holster it.</span>")
 			return

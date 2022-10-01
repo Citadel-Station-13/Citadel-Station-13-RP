@@ -42,7 +42,6 @@ var/global/list/weavable_items = list()
 
 /obj/effect/weaversilk/floor
 	var/possible_icon_states = list("floorweb1", "floorweb2", "floorweb3", "floorweb4", "floorweb5", "floorweb6", "floorweb7", "floorweb8")
-	plane = DIRTY_PLANE
 
 /obj/effect/weaversilk/floor/Initialize(mapload)
 	..()
@@ -91,8 +90,8 @@ var/global/list/weavable_items = list()
 	name = "weaversilk trap"
 	desc = "A silky, yet firm trap. Be careful not to step into it! Or don't..."
 	icon_state = "trap"
+	buckle_allowed = TRUE
 	var/trap_active = TRUE
-	can_buckle = TRUE
 
 /obj/effect/weaversilk/trap/Crossed(atom/movable/AM as mob|obj)
 	if(AM.is_incorporeal())
@@ -103,22 +102,20 @@ var/global/list/weavable_items = list()
 			return
 	if(isliving(AM) && trap_active)
 		var/mob/living/L = AM
-		if(L.m_intent == "run")
+		if(L.m_intent == MOVE_INTENT_RUN)
 			L.visible_message(
 				"<span class='danger'>[L] steps on \the [src].</span>",
 				"<span class='danger'>You step on \the [src]!</span>",
 				"<b>You hear a squishy noise!</b>"
 				)
-			buckle_mob(L)
+			buckle_mob(L, BUCKLE_OP_FORCE)
 			L.Stun(1)
 			to_chat(L, "<span class='danger'>The sticky fibers of \the [src] ensnare, trapping you in place!</span>")
 			trap_active = FALSE
 			desc += " Actually, it looks like it's been all spent."
 	..()
 
-
-
-/obj/effect/weaversilk/trap/MouseDrop_T(atom/movable/AM,mob/user)
+/obj/effect/weaversilk/trap/MouseDroppedOnLegacy(atom/movable/AM,mob/user)
 	return
 
 // Items

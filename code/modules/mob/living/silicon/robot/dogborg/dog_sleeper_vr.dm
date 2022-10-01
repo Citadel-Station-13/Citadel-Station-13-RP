@@ -5,6 +5,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "sleeper"
 	w_class = ITEMSIZE_TINY
+	item_flags = ITEM_NOBLUDGEON
 	var/mob/living/carbon/patient = null
 	var/mob/living/silicon/robot/hound = null
 	var/inject_amount = 10
@@ -40,7 +41,6 @@
 
 /obj/item/dogborg/sleeper/Initialize(mapload)
 	. = ..()
-	flags |= NOBLUDGEON //No more attack messages
 	files = new /datum/research/techonly(src)
 
 /obj/item/dogborg/sleeper/Destroy()
@@ -559,11 +559,10 @@
 							var/obj/item/organ/internal/mmi_holder/MMI = I
 							var/atom/movable/brain = MMI.removed()
 							if(brain)
-								hound.remove_from_mob(brain,src)
 								brain.forceMove(src)
 								items_preserved |= brain
 						else
-							T.drop_from_inventory(I, src)
+							T.transfer_item_to_loc(I, src, INV_OP_FORCE)
 					if(ishuman(T))
 						var/mob/living/carbon/human/Prey = T
 						volume = (Prey.bloodstr.total_volume + Prey.ingested.total_volume + Prey.touching.total_volume + Prey.weight) * Prey.size_multiplier

@@ -11,7 +11,8 @@
 	active_power_usage = 200
 	power_channel = EQUIP
 	circuit = /obj/item/circuitboard/photocopier
-	can_buckle = TRUE
+	buckle_allowed = TRUE
+	buckle_max_mobs = 1
 	var/obj/item/copyitem = null	//what's in the copier!
 	var/copies = 1	//how many copies to print!
 	var/toner = 30 //how much toner is left! woooooo~
@@ -154,9 +155,9 @@
 /obj/machinery/photocopier/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/paper) || istype(O, /obj/item/photo) || istype(O, /obj/item/paper_bundle))
 		if(!copyitem)
-			user.drop_item()
+			if(!user.attempt_insert_item_for_installation(O, src))
+				return
 			copyitem = O
-			O.loc = src
 			to_chat(user, "<span class='notice'>You insert \the [O] into \the [src].</span>")
 			playsound(loc, "sound/machines/click.ogg", 100, 1)
 			flick(insert_anim, src)
@@ -164,15 +165,16 @@
 			to_chat(user, "<span class='notice'>There is already something in \the [src].</span>")
 	else if(istype(O, /obj/item/toner))
 		if(toner <= 10) //allow replacing when low toner is affecting the print darkness
-			user.drop_item()
+			if(!user.attempt_consume_item_for_construction(O))
+				return
 			to_chat(user, "<span class='notice'>You insert the toner cartridge into \the [src].</span>")
 			var/obj/item/toner/T = O
 			toner += T.toner_amount
-			qdel(O)
+			qdel(T)
 		else
 			to_chat(user, "<span class='notice'>This cartridge is not yet ready for replacement! Use up the rest of the toner.</span>")
 	else if(O.is_wrench())
-		playsound(loc, O.usesound, 50, 1)
+		playsound(loc, O.tool_sound, 50, 1)
 		anchored = !anchored
 		to_chat(user, "<span class='notice'>You [anchored ? "wrench" : "unwrench"] \the [src].</span>")
 	else if(default_deconstruction_screwdriver(user, O))
@@ -191,12 +193,12 @@
 				qdel(src)
 			else
 				if(toner > 0)
-					new /obj/effect/decal/cleanable/blood/oil(get_turf(src))
+					new /obj/effect/debris/cleanable/blood/oil(get_turf(src))
 					toner = 0
 		else
 			if(prob(50))
 				if(toner > 0)
-					new /obj/effect/decal/cleanable/blood/oil(get_turf(src))
+					new /obj/effect/debris/cleanable/blood/oil(get_turf(src))
 					toner = 0
 	return
 
@@ -369,16 +371,14 @@
 	p.pixel_x = rand(-9, 9)
 	return p
 
-/obj/machinery/photocopier/can_buckle_check(mob/living/M, forced = FALSE)
-	if(!..())
-		return FALSE
+/obj/machinery/photocopier/can_buckle_mob(mob/M, flags, mob/user, semantic)
 	for(var/obj/item/clothing/C in M)
-		if(M.item_is_in_hands(C))
+		if(M.is_holding(C))
 			continue
 		if((C.body_parts_covered & LOWER_TORSO) && !istype(C,/obj/item/clothing/under/permit))
-			to_chat(usr, "<span class='warning'>One needs to not be wearing pants to photocopy one's ass...</span>")
+			to_chat(user, "<span class='warning'>One needs to not be wearing pants to photocopy one's ass...</span>")
 			return FALSE
-	return TRUE
+	return ..()
 
 /obj/item/toner
 	name = "toner cartridge"

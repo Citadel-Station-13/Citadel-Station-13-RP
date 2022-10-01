@@ -5660,7 +5660,7 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/effect/catwalk_plated/dark,
 /obj/machinery/light{
 	dir = 4

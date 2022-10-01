@@ -97,7 +97,6 @@ GLOBAL_LIST_EMPTY(smeses)
 	GLOB.smeses -= src
 	return ..()
 
-
 /obj/machinery/power/smes/disconnect_terminal()
 	if(terminal)
 		terminal.master = null
@@ -245,12 +244,12 @@ GLOBAL_LIST_EMPTY(smeses)
 		if(!open_hatch)
 			open_hatch = 1
 			to_chat(user, "<span class='notice'>You open the maintenance hatch of [src].</span>")
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			return 0
 		else
 			open_hatch = 0
 			to_chat(user, "<span class='notice'>You close the maintenance hatch of [src].</span>")
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			return 0
 
 	if (!open_hatch)
@@ -284,7 +283,7 @@ GLOBAL_LIST_EMPTY(smeses)
 			else
 				to_chat(user, "<span class='notice'>You begin to cut the cables...</span>")
 				playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
-				if(do_after(user, 50 * W.toolspeed))
+				if(do_after(user, 50 * W.tool_speed))
 					if (prob(50) && electrocute_mob(usr, terminal.powernet, terminal))
 						var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 						s.set_up(5, 1, src)

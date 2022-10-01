@@ -87,6 +87,7 @@
 
 /obj/machinery/computer/ship/proc/unlook(mob/user)
 	user.reset_perspective()
+	user.set_viewsize(world.view)
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED, /obj/machinery/computer/ship/proc/unlook)
 	if(isliving(user))
 		var/mob/living/L = user

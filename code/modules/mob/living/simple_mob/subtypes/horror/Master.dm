@@ -41,22 +41,26 @@
 	hide_amount = 2
 	exotic_amount = 2
 
+/mob/living/simple_mob/horror/Master/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/horror_aura/strong)
+
 /mob/living/simple_mob/horror/Master/death()
 	playsound(src, 'sound/h_sounds/imbeciles.ogg', 50, 1)
 	..()
 
 /mob/living/simple_mob/horror/Master/bullet_act()
-    playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-    ..()
+	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
+	..()
 
 /mob/living/simple_mob/horror/Master/attack_hand()
-    playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-    ..()
+	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
+	..()
 
-/mob/living/simple_mob/horror/Master/hitby()
-    playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-    ..()
+/mob/living/simple_mob/horror/Master/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
+	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 
 /mob/living/simple_mob/horror/Master/attackby()
-    playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-    ..()
+	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
+	..()

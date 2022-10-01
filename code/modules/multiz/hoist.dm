@@ -20,19 +20,19 @@
 	desc = "A clamp used to lift people or things."
 	icon = 'icons/obj/hoists.dmi'
 	icon_state = "hoist_hook"
+	buckle_allowed = TRUE
+	anchored = TRUE
 	var/obj/structure/hoist/source_hoist
-	can_buckle = 1
-	anchored = 1
 	description_info = "Click and drag someone (or any object) to this to attach them to the clamp. If you are within reach, when you click and drag this to a turf adjacent to you, it will move the attached object there and release it."
 
 /obj/effect/hoist_hook/attack_hand(mob/living/user)
 	return // This has to be overridden so that it works properly.
 
-/obj/effect/hoist_hook/MouseDrop_T(atom/movable/AM,mob/user)
+/obj/effect/hoist_hook/MouseDroppedOnLegacy(atom/movable/AM,mob/user)
 	if (use_check(user, USE_DISALLOW_SILICONS))
 		return
 
-	if ((AM.flags & AF_ABSTRACT) || AM.anchored)
+	if ((AM.flags & ATOM_ABSTRACT) || AM.anchored)
 		to_chat(user, SPAN_NOTICE("You can't do that."))
 		return
 	if (source_hoist.hoistee)
@@ -50,7 +50,7 @@
 	AM.anchored = 1 // why isn't this being set by buckle_mob for silicons?
 	source_hook.layer = AM.layer + 0.1
 
-/obj/effect/hoist_hook/MouseDrop(atom/dest)
+/obj/effect/hoist_hook/OnMouseDropLegacy(atom/dest)
 	..()
 	if(!Adjacent(usr) || !dest.Adjacent(usr)) return // carried over from the default proc
 
@@ -80,12 +80,11 @@
 	source_hoist.release_hoistee()
 
 // This will handle mobs unbuckling themselves.
-/obj/effect/hoist_hook/unbuckle_mob()
+/obj/effect/hoist_hook/mob_unbuckled(mob/M, flags, mob/user, semantic)
 	. = ..()
-	if (. && !QDELETED(source_hoist))
-		var/mob/M = .
+	if(source_hoist && source_hoist.hoistee == M)
 		source_hoist.hoistee = null
-		M.fall()
+	M.fall()
 
 /obj/structure/hoist
 	icon = 'icons/obj/hoists.dmi'

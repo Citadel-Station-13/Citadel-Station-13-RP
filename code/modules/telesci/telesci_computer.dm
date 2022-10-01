@@ -51,17 +51,16 @@
 		if(crystals.len >= max_crystals)
 			to_chat(user, SPAN_WARNING("There are not enough crystal slots."))
 			return
-		if(!user.unEquip(W))
+		if(!user.attempt_insert_item_for_installation(W, src))
 			return
 		crystals += W
-		W.forceMove(src)
 		user.visible_message("[user] inserts [W] into \the [src]'s crystal slot.", SPAN_NOTICE("You insert [W] into \the [src]'s crystal slot."))
 		updateDialog()
 	else if(istype(W, /obj/item/gps))
 		if(!inserted_gps)
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 			inserted_gps = W
-			user.unEquip(W)
-			W.forceMove(src)
 			user.visible_message("[user] inserts [W] into \the [src]'s GPS device slot.", SPAN_NOTICE("You insert [W] into \the [src]'s GPS device slot."))
 	else if(istype(W, /obj/item/multitool))
 		var/obj/item/multitool/M = W
@@ -214,7 +213,7 @@
 			S.set_up(5, 1, get_turf(telepad))
 			S.start()
 
-			if(!A || (A.area_flags & AF_BLUE_SHIELDED))
+			if(!A || (A.area_flags & AREA_BLUE_SHIELDED))
 				telefail()
 				temp_msg = "ERROR!<BR>Target is shielded from bluespace intersection!"
 				return

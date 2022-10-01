@@ -14,7 +14,7 @@
 	if(!(QDELETED(src)) && src.loc != owner)
 		visible_message("<span class='notice'>\The [src] splatters!</span>")
 		var/turf/T = get_turf(src)
-		var/obj/effect/decal/cleanable/blood/B = new (T)
+		var/obj/effect/debris/cleanable/blood/B = new (T)
 
 		B.basecolor = src.color
 		B.update_icon()
@@ -63,7 +63,7 @@
 	if(!(QDELETED(src)) && src.loc != owner)
 		visible_message("<span class='notice'>\The [src] splatters!</span>")
 		var/turf/T = get_turf(src)
-		var/obj/effect/decal/cleanable/blood/B = new (T)
+		var/obj/effect/debris/cleanable/blood/B = new (T)
 
 		B.basecolor = src.color
 		B.update_icon()

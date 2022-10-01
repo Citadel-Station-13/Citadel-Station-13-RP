@@ -116,29 +116,22 @@
 		return
 	..()
 
-/obj/item/implanter/compressed/afterattack(atom/A, mob/user as mob, proximity)
+/obj/item/implanter/compressed/afterattack(obj/item/I, mob/user as mob, proximity)
 	if(!proximity)
 		return
 	if(!active)
 		to_chat(user, "<span class='warning'>Activate \the [src.name] first.</span>")
 		return
-	if(istype(A,/obj/item) && imp)
+	if(istype(I, /obj/item) && istype(imp, /obj/item/implant/compressed))
 		var/obj/item/implant/compressed/c = imp
 		if (c.scanned)
 			to_chat(user, "<span class='warning'>Something is already scanned inside the implant!</span>")
 			return
-		c.scanned = A
-		if(istype(A, /obj/item/storage))
-			to_chat(user, "<span class='warning'>You can't store \the [A.name] in this!</span>")
-			c.scanned = null
+		if(istype(I, /obj/item/storage))
+			to_chat(user, "<span class='warning'>You can't store [I] in this!</span>")
 			return
-		if(istype(A.loc,/mob/living/carbon/human))
-			var/mob/living/carbon/human/H = A.loc
-			H.remove_from_mob(A)
-		else if(istype(A.loc,/obj/item/storage))
-			var/obj/item/storage/S = A.loc
-			S.remove_from_storage(A)
-		A.loc.contents.Remove(A)
+		c.scanned = I
+		I.forceMove(src)
 		update()
 
 /// Universal translator implant.

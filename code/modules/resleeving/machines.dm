@@ -478,10 +478,12 @@
 		var/obj/item/grab/G = W
 		if(!ismob(G.affecting))
 			return
+/*
 		for(var/mob/living/carbon/slime/M in range(1, G.affecting))
 			if(M.Victim == G.affecting)
 				to_chat(usr, "[G.affecting:name] will not fit into the [src.name] because they have a slime latched onto their head.")
 				return
+*/
 		var/mob/M = G.affecting
 		if(put_mob(M))
 			qdel(G)
@@ -489,14 +491,13 @@
 			return //Don't call up else we'll get attack messsages
 	if(istype(W, /obj/item/sleevecard))
 		var/obj/item/sleevecard/C = W
-		user.unEquip(C)
+		if(!user.attempt_consume_item_for_construction(C))
+			return
 		C.removePersonality()
-		qdel(C)
 		sleevecards++
 		to_chat(user,"<span class='notice'>You store \the [C] in \the [src].</span>")
-		return
 
-/obj/machinery/transhuman/resleever/MouseDrop_T(mob/living/carbon/O, mob/user as mob)
+/obj/machinery/transhuman/resleever/MouseDroppedOnLegacy(mob/living/carbon/O, mob/user as mob)
 	if(!istype(O))
 		return FALSE //not a mob
 	if(user.incapacitated())
@@ -527,7 +528,7 @@
 
 	add_fingerprint(user)
 
-/obj/machinery/transhuman/resleever/MouseDrop_T(var/mob/target, var/mob/user) //Allows borgs to put people into resleeving without external assistance
+/obj/machinery/transhuman/resleever/MouseDroppedOnLegacy(var/mob/target, var/mob/user) //Allows borgs to put people into resleeving without external assistance
 	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user)|| !ishuman(target))
 		return
 	put_mob(target)

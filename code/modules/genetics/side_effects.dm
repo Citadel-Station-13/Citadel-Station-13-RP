@@ -68,7 +68,7 @@
 	duration = 10*30
 
 	start(mob/living/carbon/human/H)
-		var/datum/gender/T = gender_datums[H.get_visible_gender()]
+		var/datum/gender/T = GLOB.gender_datums[H.get_visible_gender()]
 		H.emote("me", 1, "has drool running down from [T.his] mouth.")
 
 	finish(mob/living/carbon/human/H)

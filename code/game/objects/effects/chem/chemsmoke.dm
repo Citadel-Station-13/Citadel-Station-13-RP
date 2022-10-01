@@ -5,7 +5,7 @@
 	icon = 'icons/effects/chemsmoke.dmi'
 	opacity = 0
 	time_to_live = 300
-	pass_flags = PASSTABLE | PASSGRILLE | PASSGLASS //PASSGLASS is fine here, it's just so the visual effect can "flow" around glass
+	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GRILLE | ATOM_PASS_GLASS //ATOM_PASS_GLASS is fine here, it's just so the visual effect can "flow" around glass
 
 /obj/effect/particle_effect/smoke/chem/Initialize(mapload)
 	. = ..()
@@ -107,7 +107,7 @@
 			for(var/atom/A in T.contents)
 				if(istype(A, /obj/effect/particle_effect/smoke/chem) || istype(A, /mob))
 					continue
-				else if(isobj(A) && (A.flags & AF_ABSTRACT))
+				else if(isobj(A) && (A.flags & ATOM_ABSTRACT))
 					chemholder.reagents.touch_obj(A)
 
 	var/color = chemholder.reagents.get_color() //build smoke icon

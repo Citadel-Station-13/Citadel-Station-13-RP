@@ -58,6 +58,9 @@
 	/// override for bodytype
 	var/override_worn_legacy_bodytype
 
+	/// default bodytype to use for clothing rendering
+	var/default_bodytype = BODYTYPE_DEFAULT
+
 //! ## Damage overlay and masks.
 	var/damage_overlays = 'icons/mob/species/human/damage_overlay.dmi'
 	var/damage_mask     = 'icons/mob/species/human/damage_mask.dmi'
@@ -307,21 +310,22 @@
 
 //! ## Flags
 	/// Various specific features.
-	var/flags = 0
+	var/flags = NONE
 	/// Appearance/display related features.
-	var/species_appearance_flags = 0
+	var/species_appearance_flags = NONE
 	/// Flags that specify who can spawn as this species
-	var/spawn_flags = 0
+	var/spawn_flags = NONE
+
+	/// What marks are left when walking
+	var/obj/effect/debris/cleanable/blood/tracks/move_trail = /obj/effect/debris/cleanable/blood/tracks/footprints
+	var/list/skin_overlays = list()
+	/// Whether the eyes can be shown above other icons
+	var/has_floating_eyes = FALSE
+	/// Whether the eyes are shown above all lighting
+	var/has_glowing_eyes = FALSE
 
 	/// Passive movement speed malus (or boost, if negative)
 	var/slowdown = 0
-	/// What marks are left when walking
-	var/obj/effect/decal/cleanable/blood/tracks/move_trail = /obj/effect/decal/cleanable/blood/tracks/footprints
-	var/list/skin_overlays = list()
-	/// Whether the eyes can be shown above other icons
-	var/has_floating_eyes = 0
-	/// Whether the eyes are shown above all lighting
-	var/has_glowing_eyes = 0
 	/// How much faster or slower the species is in water
 	var/water_movement = 0
 	/// How much faster or slower the species is on snow
@@ -356,8 +360,9 @@
 		O_APPENDIX  = /obj/item/organ/internal/appendix,
 		O_EYES      = /obj/item/organ/internal/eyes,
 		O_STOMACH   = /obj/item/organ/internal/stomach,
-		O_INTESTINE = /obj/item/organ/internal/intestine
+		O_INTESTINE = /obj/item/organ/internal/intestine,
 	)
+
 	/// If set, this organ is required for vision. Defaults to "eyes" if the species has them.
 	var/vision_organ
 	/// If set, the species will be affected by flashbangs regardless if they have eyes or not, as they see in large areas.
@@ -430,6 +435,8 @@
 	//Moved these from custom_species.dm
 	//var/vore_numbing = 0
 	var/is_vampire = FALSE // If this is set to true, the person can't get nutrition from food.
+	var/is_cyberpsycho = FALSE // If you turn this to true, the person's capacity stat decreases. (aka - Their symptoms worsen)
+	var/capacity = 100 //Tied into the above. This is the 'health' for cyberpsychosis.
 	var/metabolism = 0.0015
 	var/lightweight = FALSE //Oof! Nonhelpful bump stumbles.
 	var/trashcan = FALSE //It's always sunny in the wrestling ring.
@@ -566,9 +573,9 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	box.calibrate_size()
 
 	if(H.backbag == 1)
-		H.equip_to_slot_or_del(box, slot_r_hand)
+		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/right_hand, INV_OP_SILENT | INV_OP_FLUFFLESS)
 	else
-		H.equip_to_slot_or_del(box, slot_in_backpack)
+		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/put_in_backpack, INV_OP_FORCE | INV_OP_SILENT)
 
 /**
  * called to ensure organs are consistent with our species's
@@ -757,7 +764,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 // Impliments different trails for species depending on if they're wearing shoes.
 /datum/species/proc/get_move_trail(var/mob/living/carbon/human/H)
 	if( H.shoes || ( H.wear_suit && (H.wear_suit.body_parts_covered & FEET) ) )
-		return /obj/effect/decal/cleanable/blood/tracks/footprints
+		return /obj/effect/debris/cleanable/blood/tracks/footprints
 	else
 		return move_trail
 
@@ -887,7 +894,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			T.remove(src, H)
 		src.traits = traits
 
-		H.icon_state = lowertext(get_worn_legacy_bodytype())
+		H.icon_state = lowertext(get_bodytype_legacy())
 
 		if(holder_type)
 			H.holder_type = holder_type

@@ -1,0 +1,6 @@
+author: "Captain277"
+delete-after: True
+changes: 
+  - rscadd: "Adds empty hood variant for hoodless jackets."
+  - rscadd: "Adds mob sprite for duffel of holding."
+  - rscadd: "Adds back sprite for Grit."

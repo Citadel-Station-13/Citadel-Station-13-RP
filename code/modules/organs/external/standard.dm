@@ -89,7 +89,7 @@
 	amputation_point = "left shoulder"
 	can_grasp = TRUE
 	force = 7
-	throwforce = 10
+	throw_force = 10
 
 /obj/item/organ/external/arm/handle_germ_effects()
 	. = ..() //Should return an infection level
@@ -104,9 +104,9 @@
 		if(prob(.))
 			owner.custom_pain("A jolt of pain surges through your [name]!",1)
 			if(organ_tag == BP_L_ARM) //Specific level 2 'feature
-				owner.drop_l_hand()
+				owner.drop_held_item_of_index(1)
 			else if(organ_tag == BP_R_ARM)
-				owner.drop_r_hand()
+				owner.drop_held_item_of_index(2)
 
 /obj/item/organ/external/arm/right
 	organ_tag = BP_R_ARM
@@ -130,7 +130,7 @@
 	amputation_point = "left hip"
 	can_stand = TRUE
 	force = 10
-	throwforce = 12
+	throw_force = 12
 
 /obj/item/organ/external/leg/handle_germ_effects()
 	. = ..() //Should return an infection level
@@ -169,12 +169,7 @@
 	amputation_point = "left ankle"
 	can_stand = TRUE
 	force = 3
-	throwforce = 6
-
-/obj/item/organ/external/foot/removed()
-	if(owner)
-		owner.drop_from_inventory(owner.shoes)
-	..()
+	throw_force = 6
 
 /obj/item/organ/external/foot/handle_germ_effects()
 	. = ..() //Should return an infection level
@@ -215,12 +210,7 @@
 	organ_rel_size = 10
 	base_miss_chance = 50
 	force = 3
-	throwforce = 5
-
-/obj/item/organ/external/hand/removed()
-	if(owner)
-		owner.drop_from_inventory(owner.gloves)
-	..()
+	throw_force = 5
 
 /obj/item/organ/external/hand/handle_germ_effects()
 	. = ..() //Should return an infection level
@@ -235,9 +225,9 @@
 		if(prob(.))
 			owner.custom_pain("A jolt of pain surges through your [name]!",1)
 			if(organ_tag == BP_L_HAND) //Specific level 2 'feature
-				owner.drop_l_hand()
+				owner.drop_left_held_item()
 			else if(organ_tag == BP_R_HAND)
-				owner.drop_r_hand()
+				owner.drop_right_held_item()
 
 /obj/item/organ/external/hand/right
 	organ_tag = BP_R_HAND
@@ -266,7 +256,7 @@
 	encased = "skull"
 	base_miss_chance = 40
 	force = 3
-	throwforce = 7
+	throw_force = 7
 
 	var/can_intake_reagents = TRUE
 	var/eyes_over_markings = FALSE
@@ -285,11 +275,6 @@
 	if(owner)
 		if(iscarbon(owner))
 			name = "[owner.real_name]'s head"
-			owner.drop_from_inventory(owner.glasses)
-			owner.drop_from_inventory(owner.head)
-			owner.drop_from_inventory(owner.l_ear)
-			owner.drop_from_inventory(owner.r_ear)
-			owner.drop_from_inventory(owner.wear_mask)
 			spawn(1)
 				owner.update_hair()
 	get_icon()

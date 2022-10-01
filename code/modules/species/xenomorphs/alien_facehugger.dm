@@ -22,7 +22,6 @@ var/const/MAX_ACTIVE_TIME = 400
 	icon_state = "facehugger"
 	item_state = "facehugger"
 	w_class = 3 //note: can be picked up by aliens unlike most other items of w_class below 4
-	flags = PROXMOVE
 	body_parts_covered = FACE|EYES
 	throw_range = 5
 
@@ -32,16 +31,14 @@ var/const/MAX_ACTIVE_TIME = 400
 	var/attached = 0
 
 /obj/item/clothing/mask/facehugger/attack_hand(user as mob)
-
 	if((stat == CONSCIOUS && !sterile))
 		if(Attach(user))
 			return
-
 	..()
 
 /obj/item/clothing/mask/facehugger/attack(mob/living/M as mob, mob/user as mob)
 	..()
-	user.drop_from_inventory(src)
+	user.drop_item_to_ground(src, INV_OP_FORCE)
 	Attach(M)
 
 //Bypasses the config check because it's completely blocking spawn.
@@ -85,20 +82,20 @@ var/const/MAX_ACTIVE_TIME = 400
 
 /obj/item/clothing/mask/facehugger/Crossed(atom/target)
 	..()
-	HasProximity(target)
+	Proximity(null, target)
 	return
 
 /obj/item/clothing/mask/facehugger/on_found(mob/finder as mob)
 	if(stat == CONSCIOUS)
-		HasProximity(finder)
+		Proximity(null, finder)
 		return 1
 	return
 
-/obj/item/clothing/mask/facehugger/HasProximity(atom/movable/AM as mob|obj)
+/obj/item/clothing/mask/facehugger/Proximity(datum/proxfield/field, atom/movable/AM)
 	if(CanHug(AM))
 		Attach(AM)
 
-/obj/item/clothing/mask/facehugger/throw_at(atom/target, range, speed)
+/obj/item/clothing/mask/facehugger/throw_at_old(atom/target, range, speed)
 	..()
 	if(stat == CONSCIOUS)
 		icon_state = "[initial(icon_state)]_thrown"
@@ -110,7 +107,7 @@ var/const/MAX_ACTIVE_TIME = 400
 	..()
 	if(stat == CONSCIOUS)
 		icon_state = "[initial(icon_state)]"
-		throwing = 0
+		throwing = null
 	GoIdle(30,100) //stunned for a few seconds - allows throwing them to be useful for positioning but not as an offensive action (unless you're setting up a trap)
 
 /obj/item/clothing/mask/facehugger/proc/Attach(M as mob)
@@ -132,34 +129,55 @@ var/const/MAX_ACTIVE_TIME = 400
 
 	var/mob/living/L = M //just so I don't need to use :
 
-	if(loc == L) return
-	if(stat != CONSCIOUS)	return
-	if(!sterile) L.take_organ_damage(strength,0) //done here so that even borgs and humans in helmets take damage
+	if(loc == L)
+		return
+	if(stat != CONSCIOUS)
+		return
+	if(!sterile)
+		L.take_organ_damage(strength,0) //done here so that even borgs and humans in helmets take damage
 
 	L.visible_message("<span class='danger'><b> [src] leaps at [L]'s face!</b></span>")
 
 	if(iscarbon(M))
 		var/mob/living/carbon/target = L
 
+		// i'm sorry for i have sinned ~silicons
+		var/obj/item/snowflake_but_also_what_about_head = target.item_by_slot(SLOT_ID_HEAD)
+		if(istype(snowflake_but_also_what_about_head, /obj/item/clothing/head/helmet/space))
+			visible_message(SPAN_DANGER("[src] smashes against [target]'s [snowflake_but_also_what_about_head], but bounces off!"))
+			Die()
+			return
+		else if(istype(snowflake_but_also_what_about_head, /obj/item/clothing/head/welding))
+			var/obj/item/clothing/head/welding/WH = snowflake_but_also_what_about_head
+			if(!WH.up)
+				visible_message(SPAN_DANGER("[src] smashes against [target]'s [snowflake_but_also_what_about_head], but bounces off!"))
+				Die()
+				return
+
 		if(target.wear_mask)
-			if(prob(20))	return
 			var/obj/item/clothing/W = target.wear_mask
-			if(!W.canremove)	return
-			target.drop_from_inventory(W)
+			if(!target.drop_item_to_ground(W))
+				visible_message("<span class='danger'><b> [src] crashes into [target]'s face, but bounces off!</b></span>")
+				Die()
+				return
 
 			target.visible_message("<span class='danger'><b> [src] tears [W] off of [target]'s face!</b></span>")
 
-		target.equip_to_slot(src, slot_wear_mask)
-		target.contents += src // Monkey sanity check - Snapshot
+		if(target.isSynthetic())
+			visible_message(SPAN_DANGER("[src] tears across [target]'s body, but recoils!"))
+			target.apply_damage(10, BRUTE, BP_HEAD)
+			target.apply_damage(10, BRUTE, BP_TORSO)
+			return		// atleast you don't get gibbed
 
-		if(!sterile) L.Paralyse(MAX_IMPREGNATION_TIME/6) //something like 25 ticks = 20 seconds with the default settings
+		target.equip_to_slot_if_possible(src, SLOT_ID_MASK, INV_OP_FLUFFLESS)
+
+	if(!sterile)
+		L.Paralyse(MAX_IMPREGNATION_TIME/6) //something like 25 ticks = 20 seconds with the default settings
 
 	GoIdle() //so it doesn't jump the people that tear it off
 
 	spawn(rand(MIN_IMPREGNATION_TIME,MAX_IMPREGNATION_TIME))
 		Impregnate(L)
-
-	return
 
 /obj/item/clothing/mask/facehugger/proc/Impregnate(mob/living/target as mob)
 	if(!target || target.wear_mask != src || target.stat == DEAD) //was taken off or something
@@ -359,7 +377,7 @@ var/const/MAX_ACTIVE_TIME = 400
 	if(CanHug(AM))
 		Attach(AM)
 
-/obj/item/clothing/mask/facehugger/throw_at(atom/target, range, speed)
+/obj/item/clothing/mask/facehugger/throw_at_old(atom/target, range, speed)
 	..()
 	if(stat == CONSCIOUS)
 		icon_state = "[initial(icon_state)]_thrown"
@@ -410,7 +428,7 @@ var/const/MAX_ACTIVE_TIME = 400
 
 			target.visible_message("<span class='danger'><b> [src] tears [W] off of [target]'s face!</b></span>")
 
-		target.equip_to_slot(src, slot_wear_mask)
+		target.equip_to_slot(src, SLOT_ID_MASK)
 		target.contents += src // Monkey sanity check - Snapshot
 
 		if(!sterile) L.Paralyse(MAX_IMPREGNATION_TIME/6) //something like 25 ticks = 20 seconds with the default settings

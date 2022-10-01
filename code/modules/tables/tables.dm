@@ -5,11 +5,11 @@ var/list/table_icon_cache = list()
 	icon = 'icons/obj/tables.dmi'
 	icon_state = "frame"
 	desc = "It's a table, for putting things on. Or standing on, if you really want to."
-	density = 1
-	anchored = 1
-	climbable = 1
+	density = TRUE
+	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
+	anchored = TRUE
+	climbable = TRUE
 	layer = TABLE_LAYER
-	throwpass = 1
 	surgery_odds = 66
 	var/flipped = 0
 	var/maxhealth = 10
@@ -159,8 +159,8 @@ var/list/table_icon_cache = list()
 		var/obj/item/weldingtool/F = W
 		if(F.welding)
 			to_chat(user, "<span class='notice'>You begin reparing damage to \the [src].</span>")
-			playsound(src, F.usesound, 50, 1)
-			if(!do_after(user, 20 * F.toolspeed) || !F.remove_fuel(1, user))
+			playsound(src, F.tool_sound, 50, 1)
+			if(!do_after(user, 20 * F.tool_speed) || !F.remove_fuel(1, user))
 				return
 			user.visible_message("<span class='notice'>\The [user] repairs some damage to \the [src].</span>",
 			                              "<span class='notice'>You repair some damage to \the [src].</span>")
@@ -205,16 +205,11 @@ var/list/table_icon_cache = list()
 	visible_message("<span class='notice'>\The [user] scratches at \the [src]!</span>")
 	return ..()
 
-/obj/structure/table/MouseDrop_T(obj/item/stack/material/what)
-	if(can_reinforce && isliving(usr) && (!usr.stat) && istype(what) && usr.get_active_hand() == what && Adjacent(usr))
+/obj/structure/table/MouseDroppedOnLegacy(obj/item/stack/material/what)
+	if(can_reinforce && isliving(usr) && (!usr.stat) && istype(what) && usr.get_active_held_item() == what && Adjacent(usr))
 		reinforce_table(what, usr)
 	else
 		return ..()
-
-/obj/structure/table/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
-	. = !density
-	if(istype(caller))
-		. = . || (caller.pass_flags & PASSTABLE)
 
 /obj/structure/table/proc/reinforce_table(obj/item/stack/material/S, mob/user)
 	if(reinforced)
@@ -291,10 +286,10 @@ var/list/table_icon_cache = list()
 	return null
 
 /obj/structure/table/proc/remove_reinforced(obj/item/S, mob/user)
-	reinforced = common_material_remove(user, reinforced, 40 * S.toolspeed, "reinforcements", "screws", S.usesound)
+	reinforced = common_material_remove(user, reinforced, 40 * S.tool_speed, "reinforcements", "screws", S.tool_sound)
 
 /obj/structure/table/proc/remove_material(obj/item/W, mob/user)
-	material = common_material_remove(user, material, 20 * W.toolspeed, "plating", "bolts", W.usesound)
+	material = common_material_remove(user, material, 20 * W.tool_speed, "plating", "bolts", W.tool_sound)
 
 /obj/structure/table/proc/dismantle(obj/item/W, mob/user)
 	if(manipulating)
@@ -302,8 +297,8 @@ var/list/table_icon_cache = list()
 	manipulating = TRUE
 	user.visible_message("<span class='notice'>\The [user] begins dismantling \the [src].</span>",
 	                              "<span class='notice'>You begin dismantling \the [src].</span>")
-	playsound(src, W.usesound, 50, 1)
-	if(!do_after(user, 20 * W.toolspeed))
+	playsound(src, W.tool_sound, 50, 1)
+	if(!do_after(user, 20 * W.tool_speed))
 		manipulating = FALSE
 		return
 	user.visible_message("<span class='notice'>\The [user] dismantles \the [src].</span>",
@@ -529,6 +524,8 @@ var/list/table_icon_cache = list()
 			return ((smoothing_junction & NORTHEAST_JUNCTION)? CORNER_DIAGONAL : NONE) | ((smoothing_junction & EAST_JUNCTION)? CORNER_CLOCKWISE : NONE) | ((smoothing_junction & NORTH_JUNCTION)? CORNER_COUNTERCLOCKWISE : NONE)
 		if(3)
 			return ((smoothing_junction & SOUTHWEST_JUNCTION)? CORNER_DIAGONAL : NONE) | ((smoothing_junction & WEST_JUNCTION)? CORNER_CLOCKWISE : NONE) | ((smoothing_junction & SOUTH_JUNCTION)? CORNER_COUNTERCLOCKWISE : NONE)
+
+/datum/silly_datum_to_block_byond_bug_2072419
 
 #undef CORNER_NONE
 #undef CORNER_COUNTERCLOCKWISE

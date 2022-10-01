@@ -87,7 +87,7 @@
 	if(istype(I, /obj/item/tool/crowbar))
 		if(modkits.len)
 			to_chat(user, "<span class='notice'>You pry the modifications out.</span>")
-			playsound(loc, I.usesound, 100, 1)
+			playsound(loc, I.tool_sound, 100, 1)
 			for(var/obj/item/borg/upgrade/modkit/M in modkits)
 				M.uninstall(src)
 		else
@@ -146,12 +146,12 @@
 		empty()
 	AddElement(/datum/element/conflict_checking, CONFLICT_ELEMENT_KA)
 
-/obj/item/gun/energy/kinetic_accelerator/equipped(mob/user, slot)
+/obj/item/gun/energy/kinetic_accelerator/equipped(mob/user, slot, flags)
 	. = ..()
 	if(power_supply.charge < charge_cost)
 		attempt_reload()
 
-/obj/item/gun/energy/kinetic_accelerator/dropped(mob/user)
+/obj/item/gun/energy/kinetic_accelerator/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	if(!QDELING(src) && !holds_charge)
 		// Put it on a delay because moving item from slot to hand
@@ -326,9 +326,11 @@
 				break
 	if(KA.get_remaining_mod_capacity() >= cost)
 		if(.)
-			user.drop_from_inventory(src, KA)
-			// if(!user.transferItemToLoc(src, KA))
-				// return FALSE
+			if(user.is_in_inventory(src))
+				if(!user.attempt_insert_item_for_installation(src, KA))
+					return FALSE
+			else
+				forceMove(KA)
 			to_chat(user, "<span class='notice'>You install the modkit.</span>")
 			playsound(loc, 'sound/items/screwdriver.ogg', 100, 1)
 			KA.modkits += src

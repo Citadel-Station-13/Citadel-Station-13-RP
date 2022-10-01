@@ -60,7 +60,7 @@
 			flash_protection = FLASH_PROTECTION_NONE
 			tint = TINT_NONE
 			to_chat(usr, "You push the [src] up out of your face.")
-		update_clothing_icon()	//so our mob-overlays
+		update_worn_icon()	//so our mob-overlays
 		if (ismob(src.loc)) //should allow masks to update when it is opened/closed
 			var/mob/M = src.loc
 			M.update_inv_wear_mask()
@@ -121,7 +121,7 @@
 	var/turf/location = src.loc
 	if(istype(location, /mob/))
 		var/mob/living/carbon/human/M = location
-		if(M.item_is_in_hands(src) || M.head == src)
+		if(M.is_holding(src) || M.head == src)
 			location = M.loc
 
 	if (istype(location, /turf))
@@ -245,9 +245,12 @@
 		START_PROCESSING(SSobj, src)
 		to_chat(H, flavor_equip)
 
-/obj/item/clothing/head/psy_crown/dropped(var/mob/living/carbon/human/H)
+/obj/item/clothing/head/psy_crown/dropped(mob/user, flags, atom/newLoc)
 	..()
 	STOP_PROCESSING(SSobj, src)
+	var/mob/living/carbon/human/H = user
+	if(!ishuman(H))
+		return
 	if(H.is_sentient())
 		if(loc == H) // Still inhand.
 			to_chat(H, flavor_unequip)

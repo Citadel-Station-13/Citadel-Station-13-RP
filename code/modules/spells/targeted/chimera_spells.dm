@@ -262,8 +262,7 @@
 	H.setBrainLoss(braindamage)
 
 	//Drop everything
-	for(var/obj/item/W in H)
-		H.drop_from_inventory(W)
+	H.drop_inventory(TRUE, TRUE)
 	H.visible_message("<span class = 'warning'>[H] emerges from a cloud of viscera!</b>")
 	H.SetParalysis(0)
 	//Unfreeze some things

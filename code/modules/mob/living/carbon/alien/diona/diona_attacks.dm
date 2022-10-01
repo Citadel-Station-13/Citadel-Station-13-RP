@@ -1,10 +1,9 @@
-/mob/living/carbon/alien/diona/MouseDrop(var/atom/over_object)
+/mob/living/carbon/alien/diona/OnMouseDropLegacy(var/atom/over_object)
 	var/mob/living/carbon/human/H = over_object
 	if(!istype(H) || !Adjacent(H))
 		return ..()
-	if(H.a_intent == "grab" && hat && !H.hands_are_full())
-		hat.loc = get_turf(src)
-		H.put_in_hands(hat)
+	if(H.a_intent == "grab" && hat && !H.hands_full())
+		H.put_in_hands_or_drop(hat)
 		H.visible_message("<span class='danger'>\The [H] removes \the [src]'s [hat].</span>")
 		hat = null
 		updateicon()
@@ -16,8 +15,9 @@
 		if(hat)
 			to_chat(user, "<span class='warning'>\The [src] is already wearing \the [hat].</span>")
 			return
-		user.unEquip(W)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		wear_hat(W)
 		user.visible_message("<span class='notice'>\The [user] puts \the [W] on \the [src].</span>")
-		return
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()

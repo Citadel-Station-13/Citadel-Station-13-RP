@@ -39,8 +39,8 @@
 	return 1
 
 /datum/job/station/cyborg/equip_preview(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/cardborg(H), slot_wear_suit)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/cardborg(H), slot_head)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/cardborg(H), SLOT_ID_SUIT)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/cardborg(H), SLOT_ID_HEAD)
 	return 1
 
 /datum/outfit/job/station/cyborg

@@ -4,33 +4,76 @@
 	layer = MOB_LAYER
 	plane = MOB_PLANE
 	animate_movement = 2
-	flags = PROXMOVE | HEAR
+	flags = HEAR
+	pass_flags_self = ATOM_PASS_MOB | ATOM_PASS_OVERHEAD_THROW
 
-//! ## Rendering
+//! Core
+	/// mobs use ids as ref tags instead of actual refs.
+	var/static/next_mob_id = 0
+
+//! Rendering
 	/// Fullscreen objects
 	var/list/fullscreens = list()
 
-//! ## Intents
+//! Intents
 	/// How are we intending to move? Walk/run/etc.
 	var/m_intent = MOVE_INTENT_RUN
 
-//! ## Perspectives
+//! Perspectives
 	/// using perspective - if none, it'll be self - when client logs out, if using_perspective has reset_on_logout, this'll be unset.
 	var/datum/perspective/using_perspective
 
-	var/static/next_mob_id = 0
+//! Buckling
+	/// Atom we're buckled to
+	var/atom/movable/buckled
+	/// Atom we're buckl**ing** to. Used to stop stuff like lava from incinerating those who are mid buckle.
+	var/atom/movable/buckling
+
 
 	var/datum/mind/mind
 	/// Whether a mob is alive or dead. TODO: Move this to living - Nodrak
 	var/stat = CONSCIOUS
+
+//! Movespeed
+	/// List of movement speed modifiers applying to this mob
+	var/list/movespeed_modification				//Lazy list, see mob_movespeed.dm
+	/// List of movement speed modifiers ignored by this mob. List -> List (id) -> List (sources)
+	var/list/movespeed_mod_immunities			//Lazy list, see mob_movespeed.dm
+	/// The calculated mob speed slowdown based on the modifiers list
+	var/cached_multiplicative_slowdown
 	/// Next world.time we will be able to move.
 	var/move_delay = 0
+	/// Last world.time we finished a move
+	var/last_move_time = 0
 	/// Last world.time we turned in our spot without moving (see: facing directions)
 	var/last_turn = 0
-	var/next_move = null // For click delay, despite the misleading name.
 
-	//Not in use yet
-	var/obj/effect/organstructure/organStructure = null
+//! Actionspeed
+	/// List of action speed modifiers applying to this mob
+	var/list/actionspeed_modification				//Lazy list, see mob_movespeed.dm
+	/// List of action speed modifiers ignored by this mob. List -> List (id) -> List (sources)
+	var/list/actionspeed_mod_immunities			//Lazy list, see mob_movespeed.dm
+	/// The calculated mob action speed slowdown based on the modifiers list
+	var/cached_multiplicative_actions_slowdown
+
+//! Pixel Offsets
+	/// are we shifted by the user?
+	var/shifted_pixels = FALSE
+	/// shifted pixel x
+	var/shift_pixel_x = 0
+	/// shifted pixel y
+	var/shift_pixel_y = 0
+
+//! Size
+	//! todo kill this with fire it should just be part of icon_scale_x/y.
+	/// our size multiplier
+	var/size_multiplier = 1
+
+//! Misc
+	/// What we're interacting with right now, associated to list of reasons and the number of concurrent interactions for that reason.
+	var/list/interacting_with
+
+	var/next_move = null // For click delay, despite the misleading name.
 
 	var/atom/movable/screen/hands = null
 	var/atom/movable/screen/pullin = null
@@ -147,7 +190,6 @@
 	var/name_archive
 
 	var/timeofdeath = 0 //?Living
-	var/cpr_time = 1 //?Carbon
 
 	var/bodytemperature = 310.055 //98.7 F
 	var/drowsyness = 0 //?Carbon
@@ -167,7 +209,6 @@
 	var/a_intent = INTENT_HELP //?Living
 	var/m_int = null //?Living
 	var/lastKnownIP = null
-	var/obj/buckled = null //?Living
 
 	var/seer = 0 //for cult//Carbon, probably Human
 
@@ -177,7 +218,8 @@
 
 	var/list/mapobjs = list()
 
-	var/in_throw_mode = 0
+	/// whether or not we're prepared to throw stuff.
+	var/in_throw_mode = THROW_MODE_OFF
 
 	var/music_lastplayed = "null"
 
@@ -261,8 +303,6 @@
 
 	/// The current turf being examined in the stat panel.
 	var/turf/listed_turf = null
-	/// List of objects that this mob shouldn't see in the stat panel. this silliness is needed because of AI alt+click and cult blood runes.
-	var/list/shouldnt_see = list()
 
 	var/list/active_genes=list()
 	var/mob_size = MOB_MEDIUM
@@ -274,16 +314,8 @@
 
 	var/get_rig_stats = 0
 
-	var/typing
-	var/obj/effect/decal/typing_indicator
-
 	/// Skip processing life() if there's just no players on this Z-level.
 	var/low_priority = TRUE
-
-	/// For offsetting mobs.
-	var/default_pixel_x = 0
-	/// For offsetting mobs.
-	var/default_pixel_y = 0
 
 	/// Icon to use when attacking w/o anything in-hand.
 	var/attack_icon
@@ -300,7 +332,7 @@
 	/// A mock client, provided by tests and friends
 	var/datum/client_interface/mock_client
 
-//! ## Virgo Defines
+	//! ## Virgo Defines
 	/// Do I have the HUD enabled?
 	var/vantag_hud = FALSE
 	/// Allows flight.
@@ -312,3 +344,7 @@
 
 	var/atom/movable/screen/shadekin/shadekin_display = null
 	var/atom/movable/screen/xenochimera/danger_level/xenochimera_danger_display = null
+
+	//! Typing Indicator
+	var/typing = FALSE
+	var/mutable_appearance/typing_indicator

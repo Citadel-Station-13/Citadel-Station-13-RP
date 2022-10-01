@@ -4,7 +4,7 @@
 	icon_state = "shield0"
 	slot_flags = SLOT_BELT
 	item_state = "electronic"
-	throwforce = 5.0
+	throw_force = 5.0
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
@@ -16,14 +16,13 @@
 	var/saved_icon_state = "cigbutt"
 	var/saved_overlays
 
-/obj/item/chameleon/dropped()
+/obj/item/chameleon/dropped(mob/user, flags, atom/newLoc)
+	. = ..()
 	disrupt()
-	..()
 
-/obj/item/chameleon/equipped(mob/user, slot)
-	..()
+/obj/item/chameleon/equipped(mob/user, slot, flags)
+	. = ..()
 	disrupt()
-	..()
 
 /obj/item/chameleon/attack_self()
 	toggle()

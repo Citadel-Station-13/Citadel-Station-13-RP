@@ -85,7 +85,7 @@
 
 // Proc helper for attachment verb.
 /mob/living/carbon/human/proc/check_can_attach_modular_limb(var/obj/item/organ/external/E)
-	if(world.time < last_special + (2 SECONDS) || get_active_hand() != E)
+	if(world.time < last_special + (2 SECONDS) || get_active_held_item() != E)
 		return FALSE
 	if(incapacitated() || restrained())
 		to_chat(src, SPAN_WARNING("You can't do that in your current state!"))
@@ -142,7 +142,7 @@
 	set category = "Object"
 	set desc = "Attach a replacement limb."
 
-	var/obj/item/organ/external/E = get_active_hand()
+	var/obj/item/organ/external/E = get_active_held_item()
 	if(!check_can_attach_modular_limb(E))
 		return FALSE
 	if(!do_after(src, 2 SECONDS, src))
@@ -151,7 +151,7 @@
 		return FALSE
 
 	last_special = world.time
-	drop_from_inventory(E)
+	temporarily_remove_from_inventory(E, INV_OP_FORCE)
 	E.replaced(src)
 
 	// Reconnect the organ and children as normally this is done with surgery.
@@ -159,7 +159,7 @@
 	for(var/obj/item/organ/external/child in E.children)
 		child.status &= ~ORGAN_CUT_AWAY
 
-	var/datum/gender/G = gender_datums[gender]
+	var/datum/gender/G = GLOB.gender_datums[gender]
 	visible_message(
 		SPAN_NOTICE("\The [src] attaches \the [E] to [G.his] body!"),
 		SPAN_NOTICE("You attach \the [E] to your body!"))
@@ -187,7 +187,7 @@
 	E.removed(src)
 	E.dropInto(loc)
 	put_in_hands(E)
-	var/datum/gender/G = gender_datums[gender]
+	var/datum/gender/G = GLOB.gender_datums[gender]
 	visible_message(
 		SPAN_NOTICE("\The [src] detaches [G.his] [E.name]!"),
 		SPAN_NOTICE("You detach your [E.name]!"))

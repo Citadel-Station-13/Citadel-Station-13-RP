@@ -50,7 +50,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		location.hotspot_expose(700, 5)
 		return
 
-/obj/item/flame/match/dropped(mob/user as mob)
+/obj/item/flame/match/dropped(mob/user, flags, atom/newLoc)
 	//If dropped, put ourselves out
 	//not before lighting up the turf we land on, though.
 	if(lit)
@@ -194,13 +194,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			var/mob/living/M = loc
 			if (!nomessage)
 				to_chat(M, "<span class='notice'>Your [name] goes out.</span>")
-			M.remove_from_mob(src) //un-equip it so the overlays can update
-			M.update_inv_wear_mask(0)
-			M.update_inv_l_hand(0)
-			M.update_inv_r_hand(1)
 		qdel(src)
 	else
-		new /obj/effect/decal/cleanable/ash(T)
+		new /obj/effect/debris/cleanable/ash(T)
 		if(ismob(loc))
 			var/mob/living/M = loc
 			if (!nomessage)
@@ -399,7 +395,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "cigbutt"
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
-	throwforce = 1
+	throw_force = 1
 
 /obj/item/cigbutt/Initialize(mapload)
 	. = ..()
@@ -577,7 +573,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "lighter-g"
 	item_state = "lighter-g"
 	w_class = ITEMSIZE_TINY
-	throwforce = 4
+	throw_force = 4
 	slot_flags = SLOT_BELT
 	attack_verb = list("burnt", "singed")
 	var/base_state
@@ -610,7 +606,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				user.visible_message("<span class='notice'>After a few attempts, [user] manages to light the [src].</span>")
 			else
 				to_chat(user, "<span class='warning'>You burn yourself while lighting the lighter.</span>")
-				if (user.get_left_hand() == src)
+				if (user.get_held_item_of_index(1) == src)
 					user.apply_damage(2,BURN,"l_hand")
 				else
 					user.apply_damage(2,BURN,"r_hand")

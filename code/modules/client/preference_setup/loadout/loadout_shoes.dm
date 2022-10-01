@@ -2,7 +2,7 @@
 /datum/gear/shoes
 	name = "Sandals"
 	path = /obj/item/clothing/shoes/sandal
-	slot = slot_shoes
+	slot = SLOT_ID_SHOES
 	sort_category = "Shoes and Footwear"
 
 /datum/gear/shoes/jackboots
@@ -222,3 +222,7 @@
 /datum/gear/shoes/antediluvian
 	name = "Antediluvian Legwraps"
 	path = /obj/item/clothing/shoes/antediluvian
+
+/datum/gear/shoes/halfmoon
+	name = "Half Moon boots"
+	path = /obj/item/clothing/shoes/boots/half_moon

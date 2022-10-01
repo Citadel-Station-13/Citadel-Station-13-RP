@@ -5,13 +5,13 @@
 	icon = 'icons/obj/weapons.dmi'
 	slot_flags = SLOT_BELT
 	force = 10
-	throwforce = 7
+	throw_force = 7
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 4)
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined")
 
 /obj/item/melee/chainofcommand/suicide_act(mob/user)
-	var/datum/gender/T = gender_datums[user.get_visible_gender()]
+	var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
 	user.visible_message(SPAN_DANGER("\The [user] [T.is] strangling [T.himself] with \the [src]! It looks like [T.he] [T.is] trying to commit suicide."), SPAN_DANGER("You start to strangle yourself with \the [src]!"), SPAN_DANGER("You hear the sound of someone choking!"))
 	return (OXYLOSS)
 
@@ -22,13 +22,13 @@
 	icon_state = "sabre"
 	hitsound = 'sound/weapons/rapierhit.ogg'
 	force = 35
-	throwforce = 15
+	throw_force = 15
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 4)
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 /obj/item/melee/sabre/suicide_act(mob/user)
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	visible_message(SPAN_DANGER("[user] is slitting [TU.his] stomach open with \the [src.name]! It looks like [TU.hes] trying to commit seppuku."), SPAN_DANGER("You slit your stomach open with \the [src.name]!"), SPAN_DANGER("You hear the sound of flesh tearing open.")) // gory, but it gets the point across
 	return(BRUTELOSS)
 
@@ -40,7 +40,7 @@
 	addblends = "umbrella_closed_a"
 	slot_flags = SLOT_BELT
 	force = 5
-	throwforce = 5
+	throw_force = 5
 	w_class = ITEMSIZE_NORMAL
 	var/open = FALSE
 
@@ -73,7 +73,7 @@
 	icon_state = "soulblade"
 	slot_flags = SLOT_BELT | SLOT_BACK
 	force = 30
-	throwforce = 10
+	throw_force = 10
 	w_class = ITEMSIZE_NORMAL
 	sharp = 1
 	edge = 1
@@ -112,15 +112,14 @@
 	w_class = ITEMSIZE_HUGE
 	slot_flags = SLOT_BELT
 	force = 10
-	throwforce = 7
+	throw_force = 7
 	var/board_item_type = null
 
-/obj/item/melee/skateboard/dropped(mob/user as mob)
-	..()
-	..()
-	var/turf/T = get_turf(src)
-	new board_item_type(T)
-	user.drop_item(src)
+/obj/item/melee/skateboard/dropped(mob/user, flags, atom/newLoc)
+	. = ..()
+	if(!isturf(newLoc))
+		return
+	new board_item_type(newLoc)
 	qdel(src)
 
 /obj/item/melee/skateboard/improv
@@ -130,39 +129,39 @@
 	icon = 'icons/obj/weapons.dmi'
 	slot_flags = SLOT_BELT
 	force = 10
-	throwforce = 7
-	board_item_type = /obj/vehicle/skateboard/improv
+	board_item_type = /obj/vehicle_old/skateboard/improv
+	throw_force = 7
 
 /obj/item/melee/skateboard/beginner
 	name = "skateboard"
 	desc = "A XTREME SPORTZ brand skateboard for beginners. Ages 8 and up."
 	icon_state = "skateboard"
-	board_item_type = /obj/vehicle/skateboard/beginner
+	board_item_type = /obj/vehicle_old/skateboard/beginner
 
 /obj/item/melee/skateboard/pro
 	name = "skateboard"
 	desc = "A RaDSTORMz brand professional skateboard. Looks a lot more stable than the average board."
 	icon_state = "skateboard2"
-	board_item_type = /obj/vehicle/skateboard/pro
+	board_item_type = /obj/vehicle_old/skateboard/pro
 
 /obj/item/melee/skateboard/hoverboard
 	name = "hoverboard"
 	desc = "A blast from the past, so retro!"
 	icon_state = "hoverboard_red"
-	board_item_type = /obj/vehicle/skateboard/hoverboard
+	board_item_type = /obj/vehicle_old/skateboard/hoverboard
 
 /obj/item/melee/skateboard/hoverboard/admin
 	name = "Board of Directors"
 	desc = "The engineering complexity of a spaceship concentrated inside of a board. Just as expensive, too."
 	icon_state = "hoverboard_nt"
-	board_item_type = /obj/vehicle/skateboard/hoverboard/admin
+	board_item_type = /obj/vehicle_old/skateboard/hoverboard/admin
 
 /obj/item/melee/skateboard/scooter
 	name = "scooter"
 	desc = "A fun way to get around."
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "scooter_frame"
-	board_item_type = /obj/vehicle/skateboard/scooter
+	board_item_type = /obj/vehicle_old/skateboard/scooter
 
 //Clown Halberd
 /obj/item/melee/clownstaff
@@ -171,7 +170,7 @@
 	icon_state = "clownstaff"
 	slot_flags = SLOT_BELT | SLOT_BACK
 	force = 30
-	throwforce = 10
+	throw_force = 10
 	w_class = ITEMSIZE_NORMAL
 	sharp = 1
 	edge = 1
@@ -193,7 +192,7 @@
 	item_state = "knife"
 	slot_flags = SLOT_BELT
 	force = 30
-	throwforce = 10
+	throw_force = 10
 	w_class = ITEMSIZE_NORMAL
 	sharp = 1
 	edge = 1
@@ -219,7 +218,7 @@
 		M.reagents.add_reagent(poison_type, poison_amount)
 
 /obj/item/melee/nanite_knife/suicide_act(mob/user)
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	user.visible_message(pick("<span class='danger'>\The [user] is shoving \the [src] into [TU.is] chest! It looks like [TU.he] [TU.is] trying to commit suicide.</span>",\
 		"<span class='danger'>\The [user] is stabbing themselves with \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>"))
 	var/turf/T = get_turf(src)
@@ -275,7 +274,7 @@
 			var/turf/location = src.loc
 			if(istype(location, /mob/living))
 				var/mob/living/M = location
-				if(M.item_is_in_hands(src))
+				if(M.is_holding(src))
 					location = get_turf(M)
 			if (istype(location, /turf))
 				location.hotspot_expose(700, 5)

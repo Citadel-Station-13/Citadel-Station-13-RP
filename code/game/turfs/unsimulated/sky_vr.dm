@@ -41,12 +41,10 @@
 
 	do_fall(AM)
 
-/turf/simulated/floor/sky/hitby(var/atom/movable/AM, var/speed)
+/turf/simulated/floor/sky/throw_landed(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
-
 	if(!does_skyfall)
 		return //We don't do that
-
 	do_fall(AM)
 
 /turf/simulated/floor/sky/proc/do_fall(atom/movable/AM)
@@ -86,6 +84,7 @@
 	desc = "A straight drop down into the depths below."
 	skyfall_levels = "Eastern Canyon"
 	color ="#303030"
+	var/target_turf = /turf/simulated/floor/outdoors/snow/lythios43c
 
 /turf/simulated/floor/sky/depths/Initialize(mapload)
 	. = ..()
@@ -99,11 +98,13 @@
 /turf/simulated/floor/sky/depths/do_fall(atom/movable/AM)
 	//Bye
 	var/attempts = 100
-	var/turf/simulated/floor/outdoors/snow/lythios43c/T
+	var/turf/simulated/T
 	while(attempts && !T)
-		var/turf/simulated/candidate = locate(rand(5,world.maxx-5),rand(5,world.maxy-5),pick(skyfall_levels))
+		var/turf/simulated/candidate = locate(rand(5,20),rand(5,world.maxy-5),pick(skyfall_levels))
 		if(candidate.density)
 			attempts--
+			continue
+		if(ispath(T, target_turf))
 			continue
 
 		T = candidate
@@ -125,3 +126,27 @@
 /turf/simulated/floor/sky/depths/west/Initialize(mapload)
 	skyfall_levels = list(z - 1)
 	. = ..()
+
+/turf/simulated/floor/sky/depths/west/do_fall(atom/movable/AM)
+	//Bye
+	var/attempts = 100
+	var/turf/simulated/T
+	while(attempts && !T)
+		var/turf/simulated/candidate = locate(rand(175,world.maxx-5),rand(5,world.maxy-5),pick(skyfall_levels))
+		if(candidate.density)
+			attempts--
+			continue
+		if(ispath(T, target_turf))
+			continue
+
+		T = candidate
+		break
+
+	if(!T)
+		return
+
+	AM.forceMove(T)
+	if(isliving(AM))
+		var/mob/living/L = AM
+		message_admins("\The [AM] fell out of the sky.")
+		L.fall_impact(T, 42, 90, FALSE, TRUE)	//You will not be defibbed from this.

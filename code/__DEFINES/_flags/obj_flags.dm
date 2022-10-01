@@ -1,12 +1,11 @@
 // Flags for the obj_flags var on /obj
-
+/// we're emagged
 #define EMAGGED					(1<<0)
-
 /*
 ///If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
 #define IN_USE					(1<<1)
 */
-///can this be bludgeoned by items?
+/// can this be bludgeoned by items?
 #define CAN_BE_HIT				(1<<2)
 /*
 ///Whether this thing is currently (already) being shocked by a tesla
@@ -14,7 +13,7 @@
 ///Admin possession yes/no
 #define DANGEROUS_POSSESSION	(1<<4)
 */
-///Are we visible on the station blueprints at roundstart?
+/// Are we visible on the station blueprints at roundstart?
 #define ON_BLUEPRINTS			(1<<5)
 /*
 ///can you customize the description/name of the thing?
@@ -34,6 +33,11 @@
 #define SHOVABLE_ONTO			(1<<13)
 /// Makes the Examine proc not read out this item.
 #define EXAMINE_SKIP			(1<<14) /
+*/
+
+#define OBJ_PREVENT_CLICK_UNDER	(1<<23)
+
+/*
 /// Integrity defines for clothing (not flags but close enough)
 /// We have no damage on the clothing
 #define CLOTHING_PRISTINE	0
@@ -47,3 +51,10 @@
 /// If it shouldn't play sounds the first time it lands, used for reverse mode
 #define FIRST_SOUNDS (1<<0)
 */
+
+DEFINE_BITFIELD(obj_flags, list(
+	BITFIELD(EMAGGED),
+	BITFIELD(CAN_BE_HIT),
+	BITFIELD(ON_BLUEPRINTS),
+	BITFIELD(OBJ_PREVENT_CLICK_UNDER),
+))

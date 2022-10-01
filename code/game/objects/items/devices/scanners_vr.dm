@@ -8,7 +8,7 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 	icon_state = "sleevemate"
 	item_state = "healthanalyzer"
 	slot_flags = SLOT_BELT
-	throwforce = 3
+	throw_force = 3
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 5
 	throw_range = 10
@@ -29,7 +29,7 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 		return
 
 	var/choice = alert(user,"What would you like to do?","Stored: [stored_mind.name]","Delete","Backup","Cancel")
-	if(!stored_mind || user.get_active_hand() != src)
+	if(!stored_mind || user.get_active_held_item() != src)
 		return
 	switch(choice)
 		if("Delete")
@@ -116,7 +116,7 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 	usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 
 	//Sanity checking/href-hacking checking
-	if(usr.get_active_hand() != src)
+	if(usr.get_active_held_item() != src)
 		to_chat(usr,"<span class='warning'>You're not holding \the [src].</span>")
 		return
 
@@ -178,7 +178,7 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 			return
 
 		var/choice = alert(usr,"This will remove the target's mind from their body. The only way to put it back is via a resleeving pod. Continue?","Confirmation","Continue","Cancel")
-		if(choice == "Continue" && usr.get_active_hand() == src && usr.Adjacent(target))
+		if(choice == "Continue" && usr.get_active_held_item() == src && usr.Adjacent(target))
 
 			usr.visible_message("<span class='warning'>[usr] begins downloading [target]'s mind!</span>","<span class='notice'>You begin downloading [target]'s mind!</span>")
 			if(do_after(usr,35 SECONDS,target)) //This is powerful, yo.

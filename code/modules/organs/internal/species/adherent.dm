@@ -53,7 +53,7 @@
 	desc = "Gas jets from a Adherent chassis."
 	action_button_name = "Toggle Maneuvering Pack"
 	use_descriptor = "adjust your vector"
-	organ_tag = BP_JETS
+	organ_tag = O_JETS
 	parent_organ = BP_TORSO
 	robotic = ORGAN_CRYSTAL
 	gender = PLURAL
@@ -80,7 +80,7 @@
 	if(C.nutrition < 25 && !C.flying) //Don't have any food in you?" You can't fly.
 		to_chat(C, SPAN_NOTICE("You lack the energy to fly."))
 		return
-	owner.pass_flags ^= PASSTABLE
+	owner.pass_flags ^= ATOM_PASS_TABLE
 	C.flying = !C.flying
 	C.update_floating()
 	to_chat(C, SPAN_NOTICE("You have [C.flying?"started":"stopped"] flying."))
@@ -188,7 +188,7 @@
 	if(C.nutrition < 25 && !C.flying) //Don't have any food in you?" You can't fly.
 		to_chat(C, "<span class='notice'>You lack the energy to fly.</span>")
 		return
-	owner.pass_flags ^= PASSTABLE
+	owner.pass_flags ^= ATOM_PASS_TABLE
 	C.flying = !C.flying
 	C.update_floating()
 	to_chat(C, "<span class='notice'>You have [C.flying?"started":"stopped"] flying.</span>")*/

@@ -423,7 +423,7 @@
 	// HUD update time
 	update_xenochimera_hud(H, danger, feral_state)
 
-/datum/species/shapeshifter/xenochimera/get_bodytype()
+/datum/species/shapeshifter/xenochimera/get_bodytype_legacy()
 	return base_species
 
 /datum/species/shapeshifter/xenochimera/get_race_key(mob/living/carbon/human/H)

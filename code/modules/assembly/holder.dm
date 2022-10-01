@@ -3,8 +3,7 @@
 	icon = 'icons/obj/assemblies/new_assemblies.dmi'
 	icon_state = "holder"
 	item_state = "assembly"
-	flags = PROXMOVE
-	throwforce = 5
+	throw_force = 5
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 3
 	throw_range = 10
@@ -26,8 +25,8 @@
 
 
 	if(user)
-		user.remove_from_mob(D)
-		user.remove_from_mob(D2)
+		user.temporarily_remove_from_inventory(D, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
+		user.temporarily_remove_from_inventory(D2, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 
 	D.holder = src
 	D2.holder = src
@@ -37,7 +36,7 @@
 	a_right = D2
 	name = "[D.name]-[D2.name] assembly"
 	update_icon()
-	user.put_in_hands(src)
+	user.put_in_hands_or_drop(src)
 
 	return TRUE
 
@@ -64,12 +63,6 @@
 			. += "\The [src] is ready!"
 		else
 			. += "\The [src] can be attached!"
-
-/obj/item/assembly_holder/HasProximity(atom/movable/AM as mob|obj)
-	if(a_left)
-		a_left.HasProximity(AM)
-	if(a_right)
-		a_right.HasProximity(AM)
 
 /obj/item/assembly_holder/Crossed(atom/movable/AM)
 	. = ..()

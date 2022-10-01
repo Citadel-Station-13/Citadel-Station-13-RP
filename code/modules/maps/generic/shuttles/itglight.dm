@@ -19,7 +19,7 @@
 	name = "Dauntless - Meeting Room"
 /area/itglight/forehall
 	name = "Dauntless - Fore Hall"
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 /area/itglight/starboardcargo
 	name = "Dauntless - Starboard Cargo Bay"
 /area/itglight/starboardhighsec
@@ -44,33 +44,33 @@
 	name = "Dauntless - Restrooms"
 /area/itglight/afthall
 	name = "Dauntless - Aft Hall"
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 /area/itglight/medbay
 	name = "Dauntless - Medbay"
 /area/itglight/kitchen
 	name = "Dauntless - Kitchen"
 /area/itglight/crew1
 	name = "Dauntless - Crew Quarters - 1"
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 /area/itglight/crew2
 	name = "Dauntless - Crew Quarters - 2"
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 /area/itglight/crew3
 	name = "Dauntless - Crew Quarters - 3"
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 /area/itglight/crew4
 	name = "Dauntless - Crew Quarters - 4"
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 /area/itglight/shuttlebay
 	name = "Dauntless - Shuttle Bay"
 /area/itglight/starboardengi
 	name = "Dauntless - Starboard Engineering"
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 /area/itglight/starboardsolars
 	name = "Dauntless - Starboard Solars"
 /area/itglight/portengi
 	name = "Dauntless - Port Engineering"
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 /area/itglight/portsolars
 	name = "Dauntless - Port Solars"
 

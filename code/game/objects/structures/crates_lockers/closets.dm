@@ -259,7 +259,7 @@
 	if(src.opened)
 		if(istype(W, /obj/item/grab))
 			var/obj/item/grab/G = W
-			src.MouseDrop_T(G.affecting, user)      //act like they were dragged onto the closet
+			src.MouseDroppedOn(G.affecting, user)      //act like they were dragged onto the closet
 			return 0
 		if(istype(W,/obj/item/tk_grab))
 			return 0
@@ -271,7 +271,7 @@
 				else
 					to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 					return
-			playsound(src, WT.usesound, 50)
+			playsound(src, WT.tool_sound, 50)
 			new /obj/item/stack/material/steel(src.loc)
 			for(var/mob/M in viewers(src))
 				M.show_message("<span class='notice'>\The [src] has been cut apart by [user] with \the [WT].</span>", 3, "You hear welding.", 2)
@@ -290,9 +290,8 @@
 			return
 		if(W.loc != user) // This should stop mounted modules ending up outside the module.
 			return
-		usr.drop_item()
-		if(W)
-			W.forceMove(src.loc)
+		if(!user.attempt_insert_item_for_installation(W, opened? loc : src))
+			return
 	else if(istype(W, /obj/item/packageWrap))
 		return
 	else if(istype(W, /obj/item/extraction_pack)) //so fulton extracts dont open closets
@@ -309,10 +308,10 @@
 					else
 						to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 						return
-			if(do_after(user, 20 * S.toolspeed))
+			if(do_after(user, 20 * S.tool_speed))
 				if(opened)
 					return
-				playsound(src, S.usesound, 50)
+				playsound(src, S.tool_sound, 50)
 				src.sealed = !src.sealed
 				src.update_icon()
 				for(var/mob/M in viewers(src))
@@ -323,8 +322,8 @@
 				user.visible_message("\The [user] begins unsecuring \the [src] from the floor.", "You start unsecuring \the [src] from the floor.")
 			else
 				user.visible_message("\The [user] begins securing \the [src] to the floor.", "You start securing \the [src] to the floor.")
-			playsound(src, W.usesound, 50)
-			if(do_after(user, 20 * W.toolspeed))
+			playsound(src, W.tool_sound, 50)
+			if(do_after(user, 20 * W.tool_speed))
 				if(!src) return
 				to_chat(user, "<span class='notice'>You [anchored? "un" : ""]secured \the [src]!</span>")
 				anchored = !anchored
@@ -332,7 +331,7 @@
 		src.attack_hand(user)
 	return
 
-/obj/structure/closet/MouseDrop_T(atom/movable/O as mob|obj, mob/user as mob)
+/obj/structure/closet/MouseDroppedOnLegacy(atom/movable/O as mob|obj, mob/user as mob)
 	if(istype(O, /atom/movable/screen))	//fix for HUD elements making their way into the world	-Pete
 		return
 	if(O.loc == user)
@@ -458,6 +457,7 @@
 		visible_message(SPAN_DANGER("\The [escapee] successfully broke out of \the [src]!"))
 		playsound(src.loc, breakout_sound, 100, 1)
 		animate_shake()
+		break_open()
 
 /obj/structure/closet/proc/break_open()
 	sealed = 0
@@ -478,7 +478,7 @@
 	return
 
 /obj/structure/closet/AllowDrop()
-	return TRUE
+	return !opened
 
 /obj/structure/closet/return_air_for_internal_lifeform(var/mob/living/L)
 	if(src.loc)
@@ -492,3 +492,9 @@
 	dump_contents()
 	spawn(1) qdel(src)
 	return 1
+
+/obj/structure/closet/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)
+	return FALSE
+
+/obj/structure/closet/CanReachIn(atom/movable/mover, atom/target, obj/item/tool, list/cache)
+	return FALSE

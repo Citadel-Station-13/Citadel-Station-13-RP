@@ -303,6 +303,12 @@
 	item_state_slots = list(slot_r_hand_str = "yellow", slot_l_hand_str = "yellow")
 	body_parts_covered = LOWER_TORSO
 
+/obj/item/clothing/under/gladiator/ashlander
+	name = "ashlander panoply"
+	desc = "Hardy metal plates and firm red sinew comprise this scuffed and marred armor."
+	has_sensor = 0
+	armor = list(melee = 5, bullet = 0, laser = 5,energy = 5, bomb = 0, bio = 0, rad = 0)
+
 /obj/item/clothing/under/moderncoat
 	name = "modern wrapped coat"
 	desc = "The cutting edge of fashion."
@@ -1749,10 +1755,22 @@
 	desc = "A simple linen tunic. Smells faintly of earth and flowers"
 	icon_state = "tribal_tunic"
 
+/obj/item/clothing/under/tribal_tunic/ashlander
+	name = "coarse tunic"
+	desc = "A simple, coarse tunic. Smells faintly of ash and charred wood."
+	icon_state = "tribal_tunic"
+	has_sensor = 0
+
 /obj/item/clothing/under/tribal_tunic_fem
 	name = "simple tunic"
 	desc = "A simple linen tunic. Smells faintly of earth and flowers."
 	icon_state = "tribal_tunic_fem"
+
+/obj/item/clothing/under/tribal_tunic_fem/ashlander
+	name = "coarse tunic"
+	desc = "A simple, coarse tunic. Smells faintly of ash and charred wood."
+	icon_state = "tribal_tunic"
+	has_sensor = 0
 
 /obj/item/clothing/under/skirt/pleated
 	name = "pleated skirt"
@@ -1852,10 +1870,10 @@
 		else //They chose their current size.
 			return
 
-/obj/item/clothing/under/bluespace/mob_can_unequip(mob/M, slot, disable_warning = 0)
+/obj/item/clothing/under/bluespace/unequipped(mob/user, slot, flags)
 	. = ..()
-	if(. && ishuman(M) && original_size)
-		var/mob/living/carbon/human/H = M
+	if(. && ishuman(user) && original_size)
+		var/mob/living/carbon/human/H = user
 		H.resize(original_size)
 		original_size = null
 		H.visible_message("<span class='warning'>The space around [H] distorts as they return to their original size!</span>","<span class='notice'>The space around you distorts as you return to your original size!</span>")
@@ -1936,3 +1954,8 @@
 	name = "Sitri striped sweater"
 	desc = "A comfortable, fashionable pair of high waisted shorts paired with a striped grey and white turtleneck. The Goetic seal of Sitri is embroidered on the left breast pocket in soft grey thread. A tag on the inside of the sweater bears the name 'Lindenoak' in both Common and Daemonic."
 	icon_state = "sitri"
+
+/obj/item/clothing/under/half_moon
+	name = "Half Moon outfit"
+	desc = "This eminently fashionable outfit evokes memories of Luna. It consists of a tailored latex leotard and daringly cut white shorts. Paired with plunging off-color stockings, it's to die for."
+	icon_state = "half_moon"

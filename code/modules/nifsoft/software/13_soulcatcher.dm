@@ -22,6 +22,9 @@
 	var/setting_flags = (NIF_SC_CATCHING_OTHERS|NIF_SC_ALLOW_EARS|NIF_SC_ALLOW_EYES|NIF_SC_BACKUPS|NIF_SC_PROJECTING)
 	var/list/brainmobs = list()
 	var/inside_flavor = "A small completely white room with a couch, and a window to what seems to be the outside world. A small sign in the corner says 'Configure Me'."
+	var/visibility = TRUE
+	var/list/visibility_exceptions = list()
+	var/list/visibility_blacklist = list()
 
 /datum/nifsoft/soulcatcher/New()
 	..()
@@ -57,15 +60,44 @@
 	if(!nif)
 		return
 	nif.save_data["[list_pos]"] = inside_flavor
+	var/list/save_data = list()
+	save_data["vis"] = visibility
+	save_data["vis_exceptions"] = visibility_exceptions
+	save_data["vis_blacklist"] = visibility_blacklist
+	nif.save_data["[list_pos]_actual"] = save_data
 	return TRUE
 
 /datum/nifsoft/soulcatcher/proc/load_settings()
 	if(!nif)
 		return
 	var/load = nif.save_data["[list_pos]"]
+	// todo: refactor nifs i'm going to get Fucking Violent if i see this kind of shit again
+	// why the fuck was it not a list in the first place?
+	// jfc get out.
+	var/list/save_data = nif.save_data["[list_pos]_actual"]
+	if(!islist(save_data))
+		save_data = list()
 	if(load)
 		inside_flavor = load
+	if(!isnull(save_data["vis"]))
+		visibility = save_data["vis"]
+	if(islist(save_data["vis_exceptions"]))
+		visibility_exceptions = save_data["vis_exceptions"]
+	if(islist(save_data["vis_blacklist"]))
+		visibility_blacklist = save_data["vis_blacklist"]
 	return TRUE
+
+/datum/nifsoft/soulcatcher/proc/visibility_check(ckey)
+	ckey = ckey(ckey)
+	if(islist(visibility_blacklist))
+		if(ckey in visibility_blacklist)
+			return FALSE
+	if(visibility)
+		return TRUE
+	if(islist(visibility_exceptions))
+		if(ckey in visibility_exceptions)
+			return TRUE
+	return FALSE
 
 /datum/nifsoft/soulcatcher/proc/notify_into(var/message)
 	var/sound = nif.good_sound
@@ -126,11 +158,59 @@
 //	"Mind Backups \[[setting_flags & NIF_SC_BACKUPS ? "Enabled" : "Disabled"]\]" = NIF_SC_BACKUPS,
 	"AR Projecting \[[setting_flags & NIF_SC_PROJECTING ? "Enabled" : "Disabled"]\]" = NIF_SC_PROJECTING,
 	"Design Inside",
+	"Visibility \[[visibility? "Visible to Observers" : "Invisible to Observers"]\]" = "Visibility",
+	"Visibility Exceptions ([length(visibility_exceptions)])" = "Exceptions",
+	"Visibility Blacklist ([length(visibility_blacklist)])" = "Blacklist",
 	"Erase Contents")
 	var/choice = tgui_input_list(nif.human,"Select a setting to modify:","Soulcatcher NIFSoft", settings_list)
 	if(choice in settings_list)
-		switch(choice)
+		var/associative = settings_list[choice]
+		switch(associative)
+			if("Visibility")
+				if(visibility)
+					visibility = FALSE
+					notify_into("Network visibility disabled.")
+				else
+					visibility = TRUE
+					notify_into("Network visibility enabled.")
+				save_settings()
+				return
 
+			if("Exceptions")
+				var/assembled = islist(visibility_exceptions)? visibility_exceptions.Join("<br>") : "None!"
+				to_chat(nif.human, SPAN_NOTICE("[assembled]"))
+				to_chat(nif.human, SPAN_BOLDNOTICE("These ckeys above will always be allowed to see and request a soulcatcher join, even if visibility is off."))
+				var/toggle = input(nif.human, "What ckey do you want to add/remove to the whitelist?", "Whitelist") as text|null
+				if(!toggle)
+					return
+				toggle = ckey(toggle)
+				if(toggle in visibility_exceptions)
+					visibility_exceptions -= toggle
+					to_chat(nif.human, SPAN_BOLDNOTICE("[toggle] removed from exceptions."))
+				else
+					visibility_exceptions += toggle
+					to_chat(nif.human, SPAN_BOLDNOTICE("[toggle] added to exceptions."))
+				save_settings()
+				return
+
+			if("Blacklist")
+				var/assembled = islist(visibility_blacklist)? visibility_blacklist.Join("<br>") : "None!"
+				to_chat(nif.human, SPAN_NOTICE("[assembled]"))
+				to_chat(nif.human, SPAN_BOLDNOTICE("These ckeys above will never be allowed to see your soulcatcher and request to join, even while visibility is on."))
+				var/toggle = input(nif.human, "What ckey do you want to add/remove to the blacklist?", "Blacklist") as text|null
+				if(!toggle)
+					return
+				toggle = ckey(toggle)
+				if(toggle in visibility_blacklist)
+					visibility_blacklist -= toggle
+					to_chat(nif.human, SPAN_BOLDNOTICE("[toggle] removed from blacklist."))
+				else
+					visibility_blacklist += toggle
+					to_chat(nif.human, SPAN_BOLDNOTICE("[toggle] added to blacklist."))
+				save_settings()
+				return
+
+		switch(choice)
 			if("Design Inside")
 				var/new_flavor = input(nif.human, "Type what the prey sees after being 'caught'. This will be \
 				printed after an intro ending with: \"Around you, you see...\" to the prey. If you already \
@@ -299,7 +379,8 @@
 /mob/living/carbon/brain/caught_soul/ghostize(can_reenter_corpse)
 	. = ..()
 	if(!can_reenter_corpse)
-		qdel(src)
+		if(nif)
+			qdel(src)
 
 /mob/living/carbon/brain/caught_soul/Life(seconds, times_fired)
 	if(!mind || !key)
@@ -378,32 +459,16 @@
 	soulcatcher.say_into(message,src,eyeobj)
 
 /mob/living/carbon/brain/caught_soul/eastshift()
-	if(!eyeobj)
-		return
-	if(eyeobj.pixel_x <= 16)
-		eyeobj.pixel_x++
-		eyeobj.is_shifted = TRUE
+	eyeobj?.eastshift()
 
 /mob/living/carbon/brain/caught_soul/westshift()
-	if(!eyeobj)
-		return
-	if(eyeobj.pixel_x >= -16)
-		eyeobj.pixel_x--
-		eyeobj.is_shifted = TRUE
+	eyeobj?.westshift()
 
 /mob/living/carbon/brain/caught_soul/northshift()
-	if(!eyeobj)
-		return
-	if(eyeobj.pixel_y <= 16)
-		eyeobj.pixel_y++
-		eyeobj.is_shifted = TRUE
+	eyeobj?.northshift()
 
 /mob/living/carbon/brain/caught_soul/southshift()
-	if(!eyeobj)
-		return
-	if(eyeobj.pixel_y >= -16)
-		eyeobj.pixel_y--
-		eyeobj.is_shifted = TRUE
+	eyeobj?.southshift()
 
 /mob/living/carbon/brain/caught_soul/allow_examine(atom/A)
 	return TRUE
@@ -512,12 +577,6 @@
 /mob/observer/eye/ar_soul/proc/human_moved()
 	if(get_dist(parent_human,src) > SOULCATCHER_RANGE)
 		forceMove(get_turf(parent_human))
-
-/mob/observer/eye/ar_soul/Moved()
-	. = ..()
-	if(is_shifted)
-		pixel_x = 0
-		pixel_y = 0
 
 ///////////////////
 //The catching hook

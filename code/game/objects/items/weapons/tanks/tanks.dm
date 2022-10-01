@@ -24,14 +24,14 @@ var/list/global/tank_gauge_cache = list()
 	w_class = ITEMSIZE_NORMAL
 
 	force = 5.0
-	throwforce = 10.0
+	throw_force = 10.0
 	throw_speed = 1
 	throw_range = 4
 
 	var/datum/gas_mixture/air_contents = null
 	var/distribute_pressure = ONE_ATMOSPHERE
-	var/integrity = 20
-	var/max_integrity = 20
+	integrity = 20
+	max_integrity = 20
 	var/valve_welded = 0
 	var/obj/item/tankassemblyproxy/proxyassembly
 
@@ -204,7 +204,7 @@ var/list/global/tank_gauge_cache = list()
 						to_chat(user, "<span class='danger'>You accidentally rake \the [W] across \the [src]!</span>")
 						max_integrity -= rand(2,6)
 						integrity = min(integrity,max_integrity)
-						src.air_contents.add_thermal_energy(rand(2000,50000))
+						src.air_contents.adjust_thermal_energy(rand(2000,50000))
 				WT.eyecheck(user)
 			else
 				to_chat(user, "<span class='notice'>The emergency pressure relief valve has already been welded.</span>")
@@ -329,7 +329,7 @@ var/list/global/tank_gauge_cache = list()
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
-/obj/item/tank/add_thermal_energy(joules)
+/obj/item/tank/adjust_thermal_energy(joules)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
@@ -624,10 +624,9 @@ var/list/global/tank_gauge_cache = list()
 	if(isigniter(S.a_left) == isigniter(S.a_right))		//Check if either part of the assembly has an igniter, but if both parts are igniters, then fuck it
 		return
 
-
-	M.drop_item()			//Remove the assembly from your hands
-	M.remove_from_mob(src)	//Remove the tank from your character,in case you were holding it
-	M.put_in_hands(src)		//Equips the bomb if possible, or puts it on the floor.
+	M.temporarily_remove_from_inventory(S, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
+	if(!M.put_in_active_hand(src))		//Equips the bomb if possible, or puts it on the floor.
+		forceMove(M.drop_location())
 
 	src.proxyassembly.assembly = S	//Tell the bomb about its assembly part
 	S.master = src.proxyassembly		//Tell the assembly about its new owner
@@ -658,7 +657,7 @@ var/list/global/tank_gauge_cache = list()
 	src.update_icon()
 	src.update_gauge()
 
-	air_contents.add_thermal_energy(15000)
+	air_contents.adjust_thermal_energy(15000)
 
 
 /obj/item/tankassemblyproxy/update_icon()

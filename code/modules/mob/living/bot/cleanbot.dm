@@ -40,7 +40,7 @@
 
 	if(spray_blood && prob(5)) // Make a big mess
 		visible_message("Something flies out of [src]. It seems to be acting oddly.")
-		var/obj/effect/decal/cleanable/blood/gibs/gib = new /obj/effect/decal/cleanable/blood/gibs(loc)
+		var/obj/effect/debris/cleanable/blood/gibs/gib = new /obj/effect/debris/cleanable/blood/gibs(loc)
 		// TODO - I have a feeling weakrefs will not work in ignore_list, verify this ~Leshana
 		var/datum/weakref/g = WEAKREF(gib)
 		ignore_list += g
@@ -74,12 +74,12 @@
 	return .
 
 /mob/living/bot/cleanbot/lookForTargets()
-	for(var/obj/effect/decal/cleanable/D in view(world.view, src)) // There was some odd code to make it start with nearest decals, it's unnecessary, this works
+	for(var/obj/effect/debris/cleanable/D in view(world.view, src)) // There was some odd code to make it start with nearest decals, it's unnecessary, this works
 		if(confirmTarget(D))
 			target = D
 			return
 
-/mob/living/bot/cleanbot/confirmTarget(var/obj/effect/decal/cleanable/D)
+/mob/living/bot/cleanbot/confirmTarget(var/obj/effect/debris/cleanable/D)
 	if(!..())
 		return FALSE
 	for(var/T in target_types)
@@ -91,7 +91,7 @@
 	if(get_turf(target) == src.loc)
 		UnarmedAttack(target)
 
-/mob/living/bot/cleanbot/UnarmedAttack(var/obj/effect/decal/cleanable/D, var/proximity)
+/mob/living/bot/cleanbot/UnarmedAttack(var/obj/effect/debris/cleanable/D, var/proximity)
 	if(!..())
 		return
 
@@ -105,7 +105,7 @@
 	if(prob(20))
 		custom_emote(2, "begins to clean up \the [D]")
 	update_icons()
-	var/cleantime = istype(D, /obj/effect/decal/cleanable/dirt) ? 10 : 50
+	var/cleantime = istype(D, /obj/effect/debris/cleanable/dirt) ? 10 : 50
 	if(do_after(src, cleantime))
 		if(istype(loc, /turf/simulated))
 			var/turf/simulated/f = loc
@@ -210,15 +210,15 @@
 /mob/living/bot/cleanbot/proc/get_targets()
 	target_types = list()
 
-	target_types += /obj/effect/decal/cleanable/blood/oil
-	target_types += /obj/effect/decal/cleanable/vomit
-	target_types += /obj/effect/decal/cleanable/crayon
-	target_types += /obj/effect/decal/cleanable/liquid_fuel
-	target_types += /obj/effect/decal/cleanable/mucus
-	target_types += /obj/effect/decal/cleanable/dirt
+	target_types += /obj/effect/debris/cleanable/blood/oil
+	target_types += /obj/effect/debris/cleanable/vomit
+	target_types += /obj/effect/debris/cleanable/crayon
+	target_types += /obj/effect/debris/cleanable/liquid_fuel
+	target_types += /obj/effect/debris/cleanable/mucus
+	target_types += /obj/effect/debris/cleanable/dirt
 
 	if(blood)
-		target_types += /obj/effect/decal/cleanable/blood
+		target_types += /obj/effect/debris/cleanable/blood
 
 /* Assembly */
 
@@ -228,7 +228,7 @@
 	icon = 'icons/obj/aibots.dmi'
 	icon_state = "bucket_proxy"
 	force = 3.0
-	throwforce = 10.0
+	throw_force = 10.0
 	throw_speed = 2
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
@@ -237,13 +237,12 @@
 /obj/item/bucket_sensor/attackby(var/obj/item/W, var/mob/user)
 	..()
 	if(istype(W, /obj/item/robot_parts/l_arm) || istype(W, /obj/item/robot_parts/r_arm) || (istype(W, /obj/item/organ/external/arm) && ((W.name == "robotic left arm") || (W.name == "robotic right arm"))))
-		user.drop_item()
-		qdel(W)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		var/turf/T = get_turf(loc)
 		var/mob/living/bot/cleanbot/A = new /mob/living/bot/cleanbot(T)
 		A.name = created_name
 		to_chat(user, "<span class='notice'>You add the robot arm to the bucket and sensor assembly. Beep boop!</span>")
-		user.drop_from_inventory(src)
 		qdel(src)
 
 	else if(istype(W, /obj/item/stack/material/steel))
@@ -254,7 +253,6 @@
 			var/mob/living/bot/cleanbot/roomba/A = new /mob/living/bot/cleanbot/roomba(T)
 			A.name = created_name
 			to_chat(user, "<span class='notice'>You add the metal sheets onto and around the bucket and sensor assembly. Beep boop!</span>")
-			user.drop_from_inventory(src)
 			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need five sheets of metal to encase the sensor.</span>")

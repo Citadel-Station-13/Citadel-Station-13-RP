@@ -10,7 +10,7 @@
 	item_state = "cell"
 	origin_tech = list(TECH_POWER = 1)
 	force = 5.0
-	throwforce = 5.0
+	throw_force = 5.0
 	throw_speed = 3
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
@@ -96,6 +96,8 @@
 #undef OVERLAY_EMPTY
 
 /obj/item/cell/proc/percent()		// return % charge of cell
+	if(!maxcharge)
+		return 0
 	return 100.0*charge/maxcharge
 
 /obj/item/cell/proc/fully_charged()
@@ -278,6 +280,6 @@
 			return 0
 
 /obj/item/cell/suicide_act(mob/user)
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	user.visible_message("<span class='danger'>\The [user] is licking the electrodes of \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
 	return (FIRELOSS)

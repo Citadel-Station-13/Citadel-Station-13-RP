@@ -45,13 +45,13 @@
 
 /obj/effect/plant
 	name = "plant"
-	anchored = 1
-	can_buckle = 1
+	anchored = TRUE
+	buckle_allowed = TRUE
 	opacity = 0
 	density = 0
 	icon = 'icons/obj/hydroponics_growing.dmi'
 	icon_state = "bush4-1"
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	mouse_opacity = 2
 
 	var/health = 15
@@ -179,7 +179,8 @@
 		if(!isnull(seed.chems["woodpulp"]))
 			density = 1
 	else
-		reset_plane_and_layer()
+		plane = initial(plane)
+		set_base_layer(initial(layer))
 		density = 0
 
 /obj/effect/plant/proc/calc_dir()

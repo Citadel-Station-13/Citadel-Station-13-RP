@@ -240,16 +240,16 @@
 	if(pref.client)
 		return pref.client.mob
 
-// Checks in a really hacky way if a character's preferences say they are an FBP or not.
+/// Checks in a really hacky way if a character's preferences say they are an FBP or not.
 /datum/category_item/player_setup_item/proc/is_FBP()
 	if(pref.organ_data && pref.organ_data[BP_TORSO] != "cyborg")
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
-// Returns what kind of FBP the player's prefs are.  Returns 0 if they're not an FBP.
+/// Returns what kind of FBP the player's prefs are.  Returns FALSE if they're not an FBP.
 /datum/category_item/player_setup_item/proc/get_FBP_type()
 	if(!is_FBP())
-		return 0 // Not a robot.
+		return FALSE // Not a robot.
 	if(O_BRAIN in pref.organ_data)
 		switch(pref.organ_data[O_BRAIN])
 			if("assisted")
@@ -258,9 +258,9 @@
 				return PREF_FBP_POSI
 			if("digital")
 				return PREF_FBP_SOFTWARE
-	return 0 //Something went wrong!
+	return FALSE //Something went wrong!
 
-/datum/category_item/player_setup_item/proc/get_min_age() //Minimum limit is 18
+/datum/category_item/player_setup_item/proc/get_min_age() // Minimum limit is 18
 	var/datum/species/S = pref.character_static_species_meta()
 	if(S.min_age > 18)
 		return S.min_age
@@ -276,10 +276,10 @@
 	switch(FBP_type)
 		if(PREF_FBP_CYBORG)
 			return S.max_age + 20
-		if(PREF_FBP_POSI)
-			return 220
 		if(PREF_FBP_SOFTWARE)
-			return 150
+			return S.max_age + 80
+		if(PREF_FBP_POSI)
+			return S.max_age + 150
 	return S.max_age // welp
 
 /datum/category_item/player_setup_item/proc/color_square(red, green, blue, hex)

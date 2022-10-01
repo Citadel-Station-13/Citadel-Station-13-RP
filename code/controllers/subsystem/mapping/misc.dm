@@ -25,11 +25,11 @@
 		for(var/atom/movable/AM as anything in T)
 			if(AM.anchored)
 				continue
-			if((AM.flags & AF_ABSTRACT))
+			if((AM.flags & ATOM_ABSTRACT))
 				continue
 			if(istype(AM, /obj/effect/decal))
 				qdel(AM)
 				continue
 			throwing += AM
 	for(var/atom/movable/AM as anything in throwing)
-		AM.throw_at(get_step(AM, dir), 5, 1)
+		AM.throw_at_old(get_step(AM, dir), 5, 1)

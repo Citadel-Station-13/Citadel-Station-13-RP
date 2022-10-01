@@ -126,7 +126,6 @@ Add those other swinging traps you mentioned above!
 			var/turf/T = get_turf(src)
 			new /obj/structure/catwalk/plank(T)
 			to_chat(user, "<span class='notice'>You carefully lay the planks over the trap, creating a bridge.</span>")
-			user.drop_from_inventory(src)
 			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need three planks of wood to construct a bridge.</span>")
@@ -141,7 +140,6 @@ Add those other swinging traps you mentioned above!
 			tripped = 0
 			update_icon()
 			to_chat(user, "<span class='notice'>You patch over the hole, rearming the trap.</span>")
-			user.drop_from_inventory(src)
 			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need two tiles to rearm the trap.</span>")
@@ -154,6 +152,9 @@ Add those other swinging traps you mentioned above!
 
 /obj/effect/trap/pit/blood/deep
 	trap_floor_type = /turf/simulated/floor/water/blood/deep
+
+/obj/effect/trap/pit/open_space
+	trap_floor_type = /turf/simulated/open
 
 //Punji Spear Traps
 /obj/effect/trap/pit/punji
@@ -189,7 +190,6 @@ Add those other swinging traps you mentioned above!
 			tripped = 0
 			update_icon()
 			to_chat(user, "<span class='notice'>You conceal the pit, rearming the trap.</span>")
-			user.drop_from_inventory(src)
 			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need two tiles to rearm the trap.</span>")
@@ -236,8 +236,6 @@ Add those other swinging traps you mentioned above!
 			tripped = 0
 			update_icon()
 			to_chat(user, "<span class='notice'>You conceal the pit, rearming the trap.</span>")
-			user.drop_from_inventory(src)
-			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need two tiles to rearm the trap.</span>")
 
@@ -283,8 +281,6 @@ Add those other swinging traps you mentioned above!
 			tripped = 0
 			update_icon()
 			to_chat(user, "<span class='notice'>You conceal the pit, rearming the trap.</span>")
-			user.drop_from_inventory(src)
-			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need two tiles to rearm the trap.</span>")
 
@@ -343,7 +339,7 @@ Add those other swinging traps you mentioned above!
 		playsound(src.loc, projectile_sound, 25, 1)
 
 		var/obj/item/projectile/bullet/shotgun/stake/P = get_projectile()
-		P.firer = src
+		//P.firer = src
 		P.fire(dir2angle(dir))
 
 /obj/effect/trap/launcher/proc/get_initial_fire_delay()
@@ -365,7 +361,6 @@ Add those other swinging traps you mentioned above!
 			M.use(5)
 			Break()
 			to_chat(user, "<span class='notice'>You slip the rods into the firing mechanism, jamming it.</span>")
-			user.drop_from_inventory(src)
 			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need five rods to jam the mechanism.</span>")
@@ -649,7 +644,7 @@ if (istype(AM, /mob/living))
 		var/mob/living/M = AM
 		var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
 		var/turf/T2 = get_step(AM, pick(throw_dirs))
-		M.throw_at(T2, 1, 1, src)
+		M.throw_at_old(T2, 1, 1, src)
 		var/head_slot = SLOT_HEAD
 		if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 			M.setBrainLoss(2,5)
@@ -666,7 +661,6 @@ if (istype(AM, /mob/living))
 			M.use(3)
 			Break()
 			to_chat(user, "<span class='notice'>You slip the rods between the plate and its base, jamming it.</span>")
-			user.drop_from_inventory(src)
 			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need three rods to jam the mechanism.</span>")
@@ -713,7 +707,6 @@ if (istype(AM, /mob/living))
 			M.use(5)
 			Reset()
 			to_chat(user, "<span class='notice'>You use the coils to raise the [src] back up, resetting it.</span>")
-			user.drop_from_inventory(src)
 			qdel(src)
 
 	if(istype(W,/obj/item/tool/wirecutters))
@@ -761,7 +754,7 @@ if (istype(AM, /mob/living))
 		var/turf/T2 = get_step(AM, pick(throw_dirs))
 		var/damage = rand(min_damage, max_damage)
 		M.apply_damage(damage, BRUTE)
-		M.throw_at(T2, 1, 1, src)
+		M.throw_at_old(T2, 1, 1, src)
 		var/head_slot = SLOT_HEAD
 		if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 			M.setBrainLoss(2,5)

@@ -53,7 +53,6 @@
 
 	player_msg = "In this form, you can move a little faster and your health will regenerate as long as you have metal in you!"
 	holder_type = /obj/item/holder/protoblob
-	can_buckle = TRUE //Blobsurfing
 
 /datum/say_list/protean_blob
 	speak = list("Blrb?","Sqrsh.","Glrsh!")
@@ -67,13 +66,13 @@
 	access_card = new(src)
 	if(H)
 		humanform = H
-		updatehealth()
 		refactory = locate() in humanform.internal_organs
 		verbs |= /mob/living/proc/hide
 		verbs |= /mob/living/simple_mob/protean_blob/proc/useradio
 		verbs |= /mob/living/simple_mob/protean_blob/proc/appearanceswitch
 		verbs |= /mob/living/simple_mob/protean_blob/proc/rig_transform
 		verbs |= /mob/living/proc/usehardsuit
+		INVOKE_ASYNC(src, /mob/living/proc/updatehealth)
 	else
 		update_icon()
 
@@ -210,7 +209,7 @@
 					allowed = FALSE
 				if(istype(target) && vore_selected && allowed) //no more ooc-noncon vore, thanks
 					if(target.buckled)
-						target.buckled.unbuckle_mob(target, force = TRUE)
+						target.buckled.unbuckle_mob(target, BUCKLE_OP_FORCE)
 					target.forceMove(vore_selected)
 					to_chat(target,"<span class='warning'>\The [src] quickly engulfs you, [vore_selected.vore_verb]ing you into their [vore_selected.name]!</span>")
 
@@ -268,7 +267,7 @@
 	else
 		..()
 
-/mob/living/simple_mob/protean_blob/MouseDrop(var/atom/over_object)
+/mob/living/simple_mob/protean_blob/OnMouseDropLegacy(var/atom/over_object)
 	if(ishuman(over_object) && usr == src && src.Adjacent(over_object))
 		var/mob/living/carbon/human/H = over_object
 		get_scooped(H, TRUE)
@@ -292,13 +291,10 @@
 		return
 	handle_grasp() //It's possible to blob out before some key parts of the life loop. This results in things getting dropped at null. TODO: Fix the code so this can be done better.
 	remove_micros(src, src) //Living things don't fare well in roblobs.
-	if(buckled)
-		buckled.unbuckle_mob()
-	if(LAZYLEN(buckled_mobs))
-		for(var/buckledmob in buckled_mobs)
-			riding_datum.force_dismount(buckledmob)
-	if(pulledby)
-		pulledby.stop_pulling()
+
+	buckled?.unbuckle_mob(src, BUCKLE_OP_FORCE)
+	unbuckle_all_mobs(BUCKLE_OP_FORCE)
+	pulledby?.stop_pulling()
 	stop_pulling()
 
 	var/panel_selected = client?.statpanel == SPECIES_PROTEAN
@@ -320,18 +316,16 @@
 	things_to_drop -= things_to_not_drop //Crunch the lists
 	things_to_drop -= organs //Mah armbs
 	things_to_drop -= internal_organs //Mah sqeedily spooch
+
 	for(var/obj/item/rig/protean/O in things_to_drop)
 		things_to_drop -= O
 
 	for(var/obj/item/I in things_to_drop) //rip hoarders
-		drop_from_inventory(I)
+		drop_item_to_ground(I)
 
-
-	if(istype(slot_gloves, /obj/item/clothing/gloves/gauntlets/rig)) //drop RIGsuit gauntlets to avoid fucky wucky-ness.
-		drop_from_inventory(slot_gloves)
-
-	if(istype(slot_shoes, /obj/item/clothing/shoes/magboots)) //drop magboots because they're super heavy. also drops RIGsuit boots because they're magboot subtypes.
-		drop_from_inventory(slot_shoes)
+	if(wearing_rig)
+		for(var/obj/item/I in list(wearing_rig.helmet, wearing_rig.chest, wearing_rig.gloves, wearing_rig.boots))
+			transfer_item_to_loc(I, wearing_rig, INV_OP_FORCE)
 
 	for(var/obj/item/radio/headset/HS in things_to_not_drop)
 		if(HS.keyslot1)
@@ -412,7 +406,7 @@
 	for(var/obj/item/I in src)
 		remove_micros(I, root) //Recursion. I'm honestly depending on there being no containment loop, but at the cost of performance that can be fixed too.
 		if(istype(I, /obj/item/holder))
-			root.remove_from_mob(I)
+			I.forceMove(root.drop_location())
 
 /mob/living/simple_mob/protean_blob/proc/useradio()
 	set name = "Utilize Radio"
@@ -460,13 +454,10 @@
 		return
 	if(blob.loc == /obj/item/rig/protean)
 		return
-	if(buckled)
-		buckled.unbuckle_mob()
-	if(LAZYLEN(buckled_mobs))
-		for(var/buckledmob in buckled_mobs)
-			riding_datum.force_dismount(buckledmob)
-	if(pulledby)
-		pulledby.stop_pulling()
+
+	buckled?.unbuckle_mob(src, BUCKLE_OP_FORCE)
+	unbuckle_all_mobs(BUCKLE_OP_FORCE)
+	pulledby?.stop_pulling()
 	stop_pulling()
 
 	var/panel_selected = blob.client?.statpanel == SPECIES_PROTEAN
@@ -507,8 +498,8 @@
 		B.forceMove(src)
 		B.owner = src
 
-	if(blob.prev_left_hand) put_in_l_hand(blob.prev_left_hand) //The restore for when reforming.
-	if(blob.prev_right_hand) put_in_r_hand(blob.prev_right_hand)
+	if(blob.prev_left_hand) put_in_left_hand(blob.prev_left_hand) //The restore for when reforming.
+	if(blob.prev_right_hand) put_in_right_hand(blob.prev_right_hand)
 
 	Life(1, SSmobs.times_fired)
 
@@ -573,7 +564,4 @@
 		var/obj/item/organ/O = organ
 		// Fix internal damage
 		if(O.damage > 0)
-			O.damage = max(0,O.damage-3) // The major part of blob regen. The quick organ repair, compared to non-blob regen
-		// If not damaged, but dead, fix it
-		else if(O.status & ORGAN_DEAD)
-			O.status &= ~ORGAN_DEAD //Unset dead if we repaired it entirely
+			O.heal_damage_i(3, can_revive = TRUE)

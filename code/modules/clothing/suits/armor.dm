@@ -13,16 +13,24 @@
 	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.6
 
-/obj/item/clothing/suit/mob_can_equip(var/mob/living/carbon/human/H, slot, disable_warning = 0)
-	if(..()) //This will only run if no other problems occured when equiping.
-		for(var/obj/item/clothing/I in list(H.gloves, H.shoes))
-			if(I && (src.body_parts_covered & ARMS && I.body_parts_covered & ARMS) )
-				to_chat(H, "<span class='warning'>You can't wear \the [src] with \the [I], it's in the way.</span>")
-				return 0
-			if(I && (src.body_parts_covered & LEGS && I.body_parts_covered & LEGS) )
-				to_chat(H, "<span class='warning'>You can't wear \the [src] with \the [I], it's in the way.</span>")
-				return 0
-		return 1
+/obj/item/clothing/suit/armor/can_equip(mob/M, slot, mob/user, flags)
+	. = ..()
+	if(!.)
+		return
+
+	if(!ishuman(M))
+		return
+
+	var/mob/living/carbon/human/H = M
+
+	for(var/obj/item/clothing/I in list(H.gloves, H.shoes))
+		if(I && (src.body_parts_covered & ARMS && I.body_parts_covered & ARMS) )
+			to_chat(H, "<span class='warning'>You can't wear \the [src] with \the [I], it's in the way.</span>")
+			return FALSE
+		if(I && (src.body_parts_covered & LEGS && I.body_parts_covered & LEGS) )
+			to_chat(H, "<span class='warning'>You can't wear \the [src] with \the [I], it's in the way.</span>")
+			return FALSE
+	return TRUE
 
 /obj/item/clothing/suit/armor/vest
 	name = "armor"
@@ -554,7 +562,7 @@
 	name = "plate carrier"
 	desc = "A lightweight black plate carrier vest. It can be equipped with armor plates, but provides no protection of its own."
 	icon = 'icons/obj/clothing/modular_armor.dmi'
-	item_icons = list(/datum/inventory_slot_meta/inventory/suit = 'icons/mob/clothing/modular_armor.dmi')
+	item_icons = list(SLOT_ID_SUIT = 'icons/mob/clothing/modular_armor.dmi')
 	icon_state = "pcarrier"
 	valid_accessory_slots = (\
 		ACCESSORY_SLOT_INSIGNIA\
@@ -572,22 +580,29 @@
 		|ACCESSORY_SLOT_ARMOR_M)
 	blood_overlay_type = "armor"
 
-/obj/item/clothing/suit/armor/pcarrier/mob_can_equip(var/mob/living/carbon/human/H, slot)
-	if(..()) //This will only run if no other problems occured when equiping.
-		if(H.gloves)
-			if(H.gloves.body_parts_covered & ARMS)
-				for(var/obj/item/clothing/accessory/A in src)
-					if(A.body_parts_covered & ARMS)
-						to_chat(H, "<span class='warning'>You can't wear \the [A] with \the [H.gloves], they're in the way.</span>")
-						return 0
-		if(H.shoes)
-			if(H.shoes.body_parts_covered & LEGS)
-				for(var/obj/item/clothing/accessory/A in src)
-					if(A.body_parts_covered & LEGS)
-						to_chat(H, "<span class='warning'>You can't wear \the [A] with \the [H.shoes], they're in the way.</span>")
-						return 0
-		return 1
+/obj/item/clothing/suit/armor/pcarrier/can_equip(mob/M, slot, mob/user, flags)
+	. = ..()
+	if(!.)
+		return
 
+	if(!ishuman(M))
+		return
+
+	var/mob/living/carbon/human/H = M
+
+	if(H.gloves)
+		if(H.gloves.body_parts_covered & ARMS)
+			for(var/obj/item/clothing/accessory/A in src)
+				if(A.body_parts_covered & ARMS)
+					to_chat(H, "<span class='warning'>You can't wear \the [A] with \the [H.gloves], they're in the way.</span>")
+					return FALSE
+	if(H.shoes)
+		if(H.shoes.body_parts_covered & LEGS)
+			for(var/obj/item/clothing/accessory/A in src)
+				if(A.body_parts_covered & LEGS)
+					to_chat(H, "<span class='warning'>You can't wear \the [A] with \the [H.shoes], they're in the way.</span>")
+					return FALSE
+	return TRUE
 /obj/item/clothing/suit/armor/pcarrier/light
 	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate)
 
@@ -735,13 +750,17 @@
 	icon_state = "heavy_wolf_armor"
 	item_state = "heavy_wolf_armor"
 	valid_accessory_slots = null
-	mob_can_equip(var/mob/living/carbon/human/H, slot, disable_warning = 0)
-		if(..())
-			if(istype(H) && istype(H.tail_style, /datum/sprite_accessory/tail/taur/wolf))
-				return ..()
-			else
-				to_chat(H,"<span class='warning'>You need to have a wolf-taur half to wear this.</span>")
-				return 0
+
+/obj/item/clothing/suit/armor/vest/wolftaur/can_equip(mob/M, slot, mob/user, flags)
+	. = ..()
+	if(!.)
+		return FALSE
+	var/mob/living/carbon/human/H
+	if(istype(H) && istype(H.tail_style, /datum/sprite_accessory/tail/taur/wolf))
+		return
+	else
+		to_chat(H,"<span class='warning'>You need to have a wolf-taur half to wear this.</span>")
+		return FALSE
 
 // HoS armor improved to be slightly better than normal security stuff.
 /obj/item/clothing/suit/storage/vest/hoscoat
@@ -814,7 +833,7 @@
 	name = "lightweight harness"
 	desc = "A lightweight harness designed to attach to the torso. It serves as an anchor point for lightweight armor plating, but provides no protection of its own."
 	icon = 'icons/obj/clothing/ties.dmi'
-	item_icons = list(/datum/inventory_slot_meta/inventory/suit = 'icons/mob/clothing/ties.dmi')
+	item_icons = list(SLOT_ID_SUIT = 'icons/mob/clothing/ties.dmi')
 	icon_state = "pilot_webbing1"
 	valid_accessory_slots = (\
 		ACCESSORY_SLOT_ARMOR_C\

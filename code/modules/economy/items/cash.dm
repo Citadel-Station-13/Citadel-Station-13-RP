@@ -8,7 +8,7 @@
 	density = 0
 	anchored = 0.0
 	force = 1.0
-	throwforce = 1.0
+	throw_force = 1.0
 	throw_speed = 1
 	throw_range = 2
 	w_class = ITEMSIZE_SMALL
@@ -28,8 +28,8 @@
 		if(istype(user, /mob/living/carbon/human))
 			var/mob/living/carbon/human/h_user = user
 
-			h_user.drop_from_inventory(src)
-			h_user.drop_from_inventory(SC)
+			h_user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
+			h_user.temporarily_remove_from_inventory(SC, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 			h_user.put_in_hands(SC)
 		to_chat(user, "<span class='notice'>You combine the Thalers to a bundle of [SC.worth] Thalers.</span>")
 		qdel(src)
@@ -164,7 +164,7 @@
 	var/obj/item/spacecash/SC = new (spawnloc)
 
 	SC.set_worth(sum)
-	if (ishuman(human_user) && !human_user.get_active_hand())
+	if (ishuman(human_user) && !human_user.get_active_held_item())
 		human_user.put_in_hands(SC)
 
 /obj/item/spacecash/ewallet

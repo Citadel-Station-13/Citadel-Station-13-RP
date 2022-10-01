@@ -41,9 +41,9 @@
 
 	var/obj/item/forensics/swab/swab = W
 	if(istype(swab) && swab.is_used())
-		user.unEquip(W)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		bloodsamp = swab
-		swab.forceMove(src)
 		to_chat(user, SPAN_NOTICE("You insert [W] into [src]."))
 		update_icon()
 	else

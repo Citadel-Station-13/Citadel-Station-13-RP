@@ -2,6 +2,7 @@
 // suit_stored STORAGE UNIT /////////////////
 //////////////////////////////////////
 
+// TODO: UNIFY WITH CYCLERS
 /obj/machinery/suit_storage_unit
 	name = "Suit Storage Unit"
 	desc = "An industrial U-Stor-It Storage unit designed to accomodate all kinds of space suits. Its on-board equipment also allows the user to decontaminate the contents through a UV-ray purging cycle. There's a warning label dangling from the control pad, reading \"STRICTLY NO BIOLOGICALS IN THE CONFINES OF THE UNIT\"."
@@ -462,7 +463,7 @@
 		return
 	if(I.is_screwdriver())
 		panelopen = !panelopen
-		playsound(src, I.usesound, 100, 1)
+		playsound(src, I.tool_sound, 100, 1)
 		to_chat(user, "<font color=#4F49AF>You [panelopen ? "open up" : "close"] the unit's maintenance panel.</font>")
 		updateUsrDialog()
 		return
@@ -503,9 +504,9 @@
 		if(suit_stored)
 			to_chat(user, "<font color=#4F49AF>The unit already contains a suit.</font>")
 			return
+		if(!user.attempt_insert_item_for_installation(S, src))
+			return
 		to_chat(user, "You load the [S.name] into the storage compartment.")
-		user.drop_item()
-		S.loc = src
 		suit_stored = S
 		update_icon()
 		updateUsrDialog()
@@ -517,9 +518,9 @@
 		if(helmet_stored)
 			to_chat(user, "<font color=#4F49AF>The unit already contains a helmet.</font>")
 			return
+		if(!user.attempt_insert_item_for_installation(H, src))
+			return
 		to_chat(user, "You load the [H.name] into the storage compartment.")
-		user.drop_item()
-		H.loc = src
 		helmet_stored = H
 		update_icon()
 		updateUsrDialog()
@@ -531,9 +532,9 @@
 		if(mask_stored)
 			to_chat(user, "<font color=#4F49AF>[src] already contains [mask_stored].</font>")
 			return
+		if(!user.attempt_insert_item_for_installation(M, src))
+			return
 		to_chat(user, "You load the [M.name] into the storage compartment.")
-		user.drop_item()
-		M.loc = src
 		mask_stored = M
 		update_icon()
 		updateUsrDialog()
@@ -545,16 +546,14 @@
 		if(boots_stored)
 			to_chat(user, "<font color=#4F49AF>The unit already contains [boots_stored].</font>")
 			return
-		user.drop_item()
-		B.loc = src
+		if(!user.attempt_insert_item_for_installation(B, src))
+			return
 		boots_stored = B
 		update_icon()
 		updateUsrDialog()
 		return
 	update_icon()
 	updateUsrDialog()
-	return
-
 
 /obj/machinery/suit_storage_unit/attack_ai(mob/user as mob)
 	return attack_hand(user)

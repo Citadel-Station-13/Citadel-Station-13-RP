@@ -10,6 +10,10 @@
 		ANTAG_HUD
 	)
 
+	//! Buckling - For riding.dm
+	buckle_allowed = TRUE
+	buckle_flags = BUCKLING_NO_DEFAULT_BUCKLE // custom procs handle that
+
 //! ## Hair colour and style
 	var/r_hair = 0
 	var/g_hair = 0
@@ -83,6 +87,7 @@
 
 	var/wagging = 0 //UGH.
 	var/flapping = 0
+	var/spread = 0
 	///What's my status?
 	var/vantag_pref = VANTAG_NONE
 	///For impersonating a bodytype

@@ -9,7 +9,7 @@
 /obj/item/material/butterflyconstruction/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_screwdriver())
 		to_chat(user, "You finish the concealed blade weapon.")
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		new /obj/item/material/butterfly(user.loc, material.name)
 		qdel(src)
 		return
@@ -46,7 +46,7 @@
 	icon_state = "wiredrod"
 	item_state = "rods"
 	force = 8
-	throwforce = 10
+	throw_force = 10
 	w_class = ITEMSIZE_NORMAL
 	attack_verb = list("hit", "bludgeoned", "whacked", "bonked")
 	force_divisor = 0.1
@@ -66,13 +66,9 @@
 		finished = new /obj/item/weldingtool/welder_spear(get_turf(user))
 		to_chat(user, "<span class='notice'>You fasten the mini welder to the top of the rod with the cable, nozzle outward.</span>")
 	if(finished)
-		user.drop_from_inventory(src)
-		user.drop_from_inventory(I)
 		qdel(I)
 		qdel(src)
 		user.put_in_hands(finished)
-	update_icon(user)
-
 
 //Sledgehammer construction
 
@@ -161,7 +157,7 @@
 			to_chat(user, "<span class='warning'>You need more fuel!</span>")
 			return
 		user.visible_message("<span class='notice'>\The [user] heats up the metal sheets until it glows red.</span>")
-		playsound(src.loc, 'sound/items/Welder2.ogg', 100, 1)
+		playsound(src, 'sound/items/Welder2.ogg', 100, 1)
 		increment_construction_stage()
 		return
 
@@ -169,13 +165,13 @@
 	if(istype(thing, /obj/item/tool/wrench) && construction_stage == 7)
 		user.visible_message("<span class='notice'>\The [user] whacks at \the [src] like a caveman, shaping the metal with \the [thing] into a rough handle, finishing it off.</span>")
 		increment_construction_stage()
-		playsound(src.loc, 'sound/weapons/smash5.ogg', 100, 1)
+		playsound(src, 'sound/weapons/smash5.ogg', 100, 1)
 		var/obj/item/material/twohanded/sledgehammer/sledge = new(loc, material.name)
 		var/put_in_hands
-		var/mob/M = src.loc
+		var/mob/M = src
 		if(istype(M))
 			put_in_hands = M == user
-			M.drop_from_inventory(src)
+			M.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 		if(put_in_hands)
 			user.put_in_hands(sledge)
 		qdel(src)
