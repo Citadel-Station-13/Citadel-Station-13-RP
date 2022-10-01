@@ -1170,7 +1170,6 @@
 "cE" = (
 /obj/structure/lattice,
 /obj/structure/cable{
-	icon_state = "32-$1";
 	icon_state = "32-1"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -9416,9 +9415,6 @@
 /obj/structure/closet{
 	name = "Contraband: Patient 49"
 	},
-/obj/item/reagent_containers/food/snacks/meat/chicken/teshari,
-/obj/item/reagent_containers/food/snacks/meat/chicken/teshari,
-/obj/item/reagent_containers/food/snacks/meat/chicken/teshari,
 /obj/item/reagent_containers/food/snacks/meat/human,
 /obj/item/reagent_containers/food/snacks/meat/human,
 /obj/item/reagent_containers/food/snacks/meat/human,
