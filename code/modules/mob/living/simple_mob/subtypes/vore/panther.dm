@@ -27,17 +27,9 @@
 	melee_damage_upper = 15
 	attack_sharp = TRUE
 
-	old_x = -16
-	old_y = 0
-	default_pixel_x = -16
-	pixel_x = -16
-	pixel_y = 0
-
-	max_buckled_mobs = 1 //Yeehaw
-	can_buckle = TRUE
-	buckle_movable = TRUE
-	buckle_lying = FALSE
-	mount_offset_y = 12
+	base_pixel_x = -16
+	icon_dimension_x = 64
+	icon_dimension_y = 64
 
 	say_list_type = /datum/say_list/panther
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive

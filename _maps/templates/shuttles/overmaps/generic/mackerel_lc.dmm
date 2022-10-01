@@ -38,8 +38,6 @@
 	dir = 4
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -47,8 +45,6 @@
 "cg" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/hatch{
@@ -183,8 +179,8 @@
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/light,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -224,8 +220,8 @@
 /area/shuttle/mackerel_lc)
 "pZ" = (
 /obj/machinery/door/airlock/hatch,
-/atom/movable/map_helper/airlock/door/ext_door,
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
+/obj/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle{
 	dir = 10;
 	pixel_x = -8;
@@ -285,7 +281,6 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -295,7 +290,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_x = 26
 	},
-/atom/movable/map_helper/airlock/sensor/int_sensor,
+/obj/map_helper/airlock/sensor/int_sensor,
 /obj/effect/floor_decal/industrial/warning/corner,
 /obj/structure/railing/grey,
 /obj/random/multiple/corp_crate,
@@ -355,8 +350,6 @@
 "wF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -389,8 +382,6 @@
 /area/shuttle/mackerel_lc)
 "zq" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/wall/rshull,
@@ -404,8 +395,6 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -449,8 +438,6 @@
 	dir = 4
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -500,8 +487,8 @@
 /area/shuttle/mackerel_lc)
 "FL" = (
 /obj/machinery/door/airlock/hatch,
-/atom/movable/map_helper/airlock/door/ext_door,
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
+/obj/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle{
 	dir = 6;
 	pixel_x = 7;
@@ -534,7 +521,6 @@
 "GF" = (
 /obj/machinery/power/smes/buildable,
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
@@ -572,8 +558,6 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -641,7 +625,7 @@
 "PL" = (
 /obj/machinery/door/airlock/hatch,
 /obj/machinery/door/firedoor/glass,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/mackerel_lc)
 "Qu" = (
@@ -699,7 +683,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_x = -25
 	},
-/atom/movable/map_helper/airlock/sensor/int_sensor,
+/obj/map_helper/airlock/sensor/int_sensor,
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
@@ -718,8 +702,8 @@
 	dir = 1
 	},
 /obj/structure/handrail,
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/light,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -744,8 +728,6 @@
 "Wj" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -775,8 +757,6 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -793,8 +773,6 @@
 "Xs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techmaint,

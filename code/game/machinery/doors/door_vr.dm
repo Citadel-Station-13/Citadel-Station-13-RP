@@ -30,7 +30,7 @@
 			destroy_hits -= (burndamage / destroytime)
 			if (destroy_hits <= 0)
 				visible_message("<span class='danger'>\The [src.name] disintegrates!</span>")
-				new /obj/effect/decal/cleanable/ash(src.loc) // Turn it to ashes!
+				new /obj/effect/debris/cleanable/ash(src.loc) // Turn it to ashes!
 				qdel(src)
 		take_damage(burndamage)
 
@@ -81,8 +81,8 @@
 		var/obj/item/weldingtool/welder = I
 		if(welder.remove_fuel(0,user))
 			to_chat(user, "<span class='notice'>You start weld \the plasteel into place.</span>")
-			playsound(src, welder.usesound, 50, 1)
-			if(do_after(user, 10 * welder.toolspeed) && welder && welder.isOn())
+			playsound(src, welder.tool_sound, 50, 1)
+			if(do_after(user, 10 * welder.tool_speed) && welder && welder.isOn())
 				to_chat(user, "<span class='notice'>You finish reinforcing \the [src].</span>")
 				heat_proof = 1
 				update_icon()
@@ -94,7 +94,7 @@
 		reinforcing_sheet.amount = reinforcing
 		reinforcing = 0
 		to_chat(user, "<span class='notice'>You remove \the [reinforcing_sheet].</span>")
-		playsound(src, I.usesound, 100, 1)
+		playsound(src, I.tool_sound, 100, 1)
 		return TRUE
 
 	return FALSE

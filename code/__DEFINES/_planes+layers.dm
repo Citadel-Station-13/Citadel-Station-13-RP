@@ -42,6 +42,8 @@ What is the naming convention for planes or layers?
 
 // TODO: UNFUCK PLANES. HALF OF THESE HAVE NO REASON TO EXIST. WHOEVER ADDED THEM IS AN IDIOT!
 
+//! todo: layers still need to be linear regardless of plane. stuff like projectiles DO CARE.
+
 #define CLICKCATCHER_PLANE		-99
 /// Reserved for use in space/parallax
 #define SPACE_PLANE				-95
@@ -64,6 +66,7 @@ What is the naming convention for planes or layers?
 #define OVER_OPENSPACE_PLANE	-57
 
 //Turf Planes
+// todo: kill these too because frankly, fuck off.
 ///Plating
 #define PLATING_PLANE			-44
 	///Under objects, even when planeswapped
@@ -210,19 +213,5 @@ What is the naming convention for planes or layers?
 #define PLANE_ADMIN3			99
 //////////////////////////
 
-/atom/proc/hud_layerise()
-	plane = PLANE_PLAYER_HUD_ITEMS
-	set_base_layer(LAYER_HUD_ITEM)
-	// appearance_flags |= NO_CLIENT_COLOR
-
-/atom/proc/hud_unlayerise()
-	plane = initial(plane)
-	set_base_layer(initial(layer))
-	// appearance_flags &= ~(NO_CLIENT_COLOR)
-
-/atom/proc/reset_plane_and_layer()
-	plane = initial(plane)
-	set_base_layer(initial(layer))
-
 //Check if a mob can "logically" see an atom plane
-#define MOB_CAN_SEE_PLANE(M, P) (P <= PLANE_WORLD || (P in M.planes_visible))
+#define 	MOB_CAN_SEE_PLANE(M, P) (P <= PLANE_WORLD || (P in M.planes_visible) || P >= PLANE_PLAYER_HUD)

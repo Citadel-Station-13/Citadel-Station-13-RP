@@ -298,9 +298,14 @@
 /mob/living/silicon/robot/proc/is_in_gripper(obj/item/I, require_active_module)
 	return (																										\
 		I.loc == src?																								\
-		!is_module_item(I) :																						\
+		!!gripper_holding(I) :																						\
 		(istype(I.loc, /obj/item/gripper) && (require_active_module? is_holding(I.loc) : is_module_item(I.loc)))	\
 	)
+
+/mob/living/silicon/robot/proc/gripper_holding(obj/item/I)
+	for(var/obj/item/gripper/G in module.modules)
+		if(G.get_item() == I)
+			return G
 
 /mob/living/silicon/robot/proc/unreference_from_gripper(obj/item/I, newloc)
 	if(!istype(I.loc, /obj/item/gripper))
@@ -313,7 +318,7 @@
 	G.remove_item(newloc)
 	return TRUE
 
-/mob/living/silicon/robot/temporarily_remove_from_inventory(obj/item/I, flags)
+/mob/living/silicon/robot/temporarily_remove_from_inventory(obj/item/I, flags, mob/user)
 	if(!is_in_inventory(I))
 		return TRUE
 	. = considered_removable(I)
@@ -322,7 +327,7 @@
 	if(is_in_gripper(I))
 		return unreference_from_gripper(I, null)
 
-/mob/living/silicon/robot/transfer_item_to_loc(obj/item/I, newloc, flags)
+/mob/living/silicon/robot/transfer_item_to_loc(obj/item/I, newloc, flags, mob/user)
 	if(is_in_inventory(I) && considered_removable(I))
 		if(is_in_gripper(I))
 			return unreference_from_gripper(I, newloc)
@@ -330,7 +335,7 @@
 		return TRUE
 	return FALSE
 
-/mob/living/silicon/robot/transfer_item_to_nullspace(obj/item/I, flags)
+/mob/living/silicon/robot/transfer_item_to_nullspace(obj/item/I, flags, mob/user)
 	if(is_in_inventory(I) && considered_removable(I))
 		if(is_in_gripper(I))
 			return unreference_from_gripper(I, null)
@@ -338,7 +343,7 @@
 		return TRUE
 	return FALSE
 
-/mob/living/silicon/robot/drop_item_to_ground(obj/item/I, flags)
+/mob/living/silicon/robot/drop_item_to_ground(obj/item/I, flags, mob/user)
 	if(is_in_inventory(I) && considered_removable(I))
 		if(is_in_gripper(I))
 			return unreference_from_gripper(I, drop_location())

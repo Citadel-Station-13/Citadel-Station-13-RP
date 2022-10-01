@@ -273,7 +273,7 @@
 	s.set_up(3, 1, src)
 	s.start()
 
-	new /obj/effect/decal/cleanable/blood/oil(Tsec)
+	new /obj/effect/debris/cleanable/blood/oil(Tsec)
 	..()
 
 /mob/living/bot/mulebot/proc/GetBeaconList()

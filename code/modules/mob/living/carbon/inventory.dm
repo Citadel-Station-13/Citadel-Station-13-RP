@@ -19,8 +19,7 @@
 		if(SLOT_ID_HANDCUFFED)
 			handcuffed = I
 			if(!(flags & INV_OP_NO_LOGIC))
-				if(!handcuffed && buckled && buckled.buckle_require_restraints)
-					buckled.unbuckle_mob()
+				buckled?.buckled_reconsider_restraints()
 			if(!(flags & INV_OP_NO_UPDATE_ICONS))
 				update_inv_handcuffed()
 		if(SLOT_ID_LEGCUFFED)
@@ -37,3 +36,9 @@
 			. += handcuffed._inv_return_attached()
 		if(legcuffed)
 			. += legcuffed._inv_return_attached()
+
+/mob/living/carbon/_get_inventory_slot_ids()
+	return ..() + list(
+		SLOT_ID_HANDCUFFED,
+		SLOT_ID_LEGCUFFED
+	)

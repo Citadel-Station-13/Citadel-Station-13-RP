@@ -254,5 +254,6 @@ h1.alert, h2.alert		{color: #000000;}
 .debug_info						{}
 .debug_debug					{color:#0000FF;}
 .debug_trace					{color:#888888;}
+.maptext { font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.1; text-align: center; }
 
 </style>"}

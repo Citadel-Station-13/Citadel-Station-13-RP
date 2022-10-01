@@ -35,7 +35,7 @@
 /turf/simulated/floor/plating,
 /area/class_h/POIs/temple)
 "m" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/class_h/POIs/temple)
 "n" = (
@@ -64,7 +64,7 @@
 /area/class_h/POIs/temple)
 "u" = (
 /obj/random/humanoidremains,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/class_h/POIs/temple)
 "x" = (
@@ -91,7 +91,7 @@
 /turf/simulated/floor/wmarble,
 /area/class_h/POIs/temple)
 "E" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /mob/living/simple_mob/construct/proteon,
 /turf/simulated/floor/plating,
 /area/class_h/POIs/temple)
@@ -123,7 +123,7 @@
 /turf/simulated/floor/wmarble,
 /area/class_h/POIs/temple)
 "R" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /mob/living/simple_mob/construct/shade,
 /turf/simulated/floor/plating,
 /area/class_h/POIs/temple)
@@ -138,7 +138,7 @@
 /turf/simulated/floor/plating,
 /area/class_h/POIs/temple)
 "V" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/wmarble,
 /area/class_h/POIs/temple)
 "W" = (

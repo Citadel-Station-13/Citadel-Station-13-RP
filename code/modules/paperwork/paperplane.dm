@@ -6,7 +6,7 @@
 	icon_state = "paperplane"
 	throw_range = 7
 	throw_speed = 1
-	throwforce = 0
+	throw_force = 0
 	w_class = ITEMSIZE_TINY
 
 	var/obj/item/paper/internalPaper
@@ -91,7 +91,7 @@
 		H.eye_blurry += 10
 		var/obj/item/organ/internal/eyes/E = H.internal_organs_by_name[O_EYES]
 		if(E)
-			E.damage += 2.5
+			E.take_damage(2.5)
 		H.emote("scream")
 
 /obj/item/paper/AltClick(mob/living/carbon/user, obj/item/I)

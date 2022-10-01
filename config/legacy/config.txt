@@ -394,9 +394,6 @@ EVENT_CUSTOM_START_MAJOR 80;100
 ## worth it to keep it disabled if you are not hosting an actual server, to speed up start-up time for testing code.
 GENERATE_MAP
 
-## Uncomment to enable organ decay outside of a body or storage item.
-#ORGANS_CAN_DECAY
-
 ## Uncomment to have the changelog file automatically open when a user connects and hasn't seen the latest changelog
 #AGGRESSIVE_CHANGELOG
 

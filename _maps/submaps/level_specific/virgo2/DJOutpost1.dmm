@@ -40,7 +40,7 @@
 /area/submap/virgo2/DJOutpost1)
 "j" = (
 /obj/effect/decal/remains,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/item/clothing/under/frontier,
 /obj/item/material/knife/tacknife/combatknife,
 /obj/random_multi/single_item/sfr_headset,
@@ -62,8 +62,6 @@
 /obj/machinery/computer/message_monitor,
 /obj/item/paper/monitorkey,
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/wood,
@@ -72,18 +70,13 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor,
 /area/submap/virgo2/DJOutpost1)
 "o" = (
 /obj/effect/overlay/snow/floor,
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor{
@@ -97,7 +90,7 @@
 "q" = (
 /obj/effect/decal/remains,
 /obj/item/clothing/under/dress/blacktango,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/item/universal_translator/ear,
 /turf/simulated/floor/wood,
 /area/submap/virgo2/DJOutpost1)
@@ -118,8 +111,6 @@
 	dir = 1
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/wood,
@@ -127,8 +118,6 @@
 "u" = (
 /obj/effect/overlay/snow/floor,
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/closet/crate,

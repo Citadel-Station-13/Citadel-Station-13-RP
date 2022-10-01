@@ -26,6 +26,8 @@
 	if(message)
 		var/obj/item/text_to_speech/O = src
 		audible_message("[icon2html(thing = O, target = world)] \The [O.name] states, \"[message]\"")
+		user.say_overhead(message, FALSE, MESSAGE_RANGE_COMBAT_LOUD) // I don't like this, I wish I could just invoke what this calls directly!
+
 
 /obj/item/text_to_speech/AltClick(mob/user) // QOL Change
 	attack_self(user)

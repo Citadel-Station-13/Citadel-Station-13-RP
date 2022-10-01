@@ -49,7 +49,7 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/merc
 	say_list_type = /datum/say_list/possessed //Set to Null on silenced.
 
-//	corpse = /atom/movable/spawner/corpse/possessed
+//	corpse = /obj/spawner/corpse/possessed
 // Will eventually leave a full corpse with an activated RIG on it. But not yet.
 
 //Miasma Cloud "Item"

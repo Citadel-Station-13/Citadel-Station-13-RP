@@ -140,10 +140,10 @@
 	health = 400
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/sentinel/praetorian)
 
-	pixel_x = -16
-	old_x = -16
-	icon_expected_width = 64
-	icon_expected_height = 64
+	base_pixel_x = -16
+	icon_dimension_y = 64
+	icon_dimension_x = 64
+
 	meat_amount = 5
 
 	mod_min = 80
@@ -205,10 +205,9 @@
 	hide_amount = 5
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/queen/empress)
 
-	pixel_x = -16
-	old_x = -16
-	icon_expected_width = 64
-	icon_expected_height = 64
+	base_pixel_x = -16
+	icon_dimension_x = 64
+	icon_dimension_y = 64
 
 /datum/category_item/catalogue/fauna/feral_alien/queen/empress/mother
 	name = "Feral Xenomorph - Mother"
@@ -236,10 +235,10 @@
 	melee_damage_upper = 25
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/queen/empress/mother)
 
-	pixel_x = -32
-	old_x = -32
-	icon_expected_width = 96
-	icon_expected_height = 96
+	base_pixel_x = -32
+	base_pixel_y = -32
+	icon_dimension_x = 96
+	icon_dimension_y = 96
 
 	mod_min = 100
 	mod_max = 150

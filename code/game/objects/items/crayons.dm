@@ -83,7 +83,7 @@
 		if(instant || do_after(user, 50))
 			if(!user.Adjacent(target))
 				return
-			new /obj/effect/decal/cleanable/crayon(target,colour,shadeColour,drawtype)
+			new /obj/effect/debris/cleanable/crayon(target,colour,shadeColour,drawtype)
 			to_chat(user, "You finish drawing.")
 			target.add_fingerprint(user)		// Adds their fingerprints to the floor the crayon is drawn on.
 			log_game("[key_name(user)] drew [target], [colour], [shadeColour], [drawtype] with a crayon.")
@@ -230,7 +230,7 @@
 		if(instant || do_after(user, 50))
 			if(!user.Adjacent(target))
 				return
-			new /obj/effect/decal/cleanable/crayon/chalk(target,colour,shadeColour,drawtype)
+			new /obj/effect/debris/cleanable/crayon/chalk(target,colour,shadeColour,drawtype)
 			to_chat(user, "You finish drawing.")
 			target.add_fingerprint(user)		// Adds their fingerprints to the floor the chalk is drawn on.
 			log_game("[key_name(user)] drew [target], [colour], [shadeColour], [drawtype] with chalk.")

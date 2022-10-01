@@ -38,7 +38,7 @@
 	flags |= OPENCONTAINER
 
 /obj/item/reagent_containers/food/drinks/attack(mob/M as mob, mob/user as mob, def_zone)
-	if(force && !(item_flags & NOBLUDGEON) && user.a_intent == INTENT_HARM)
+	if(force && !(item_flags & ITEM_NOBLUDGEON) && user.a_intent == INTENT_HARM)
 		return ..()
 
 	if(standard_feed_mob(user, M))
@@ -106,7 +106,7 @@
 	item_state = "" //nope :(
 	w_class = ITEMSIZE_LARGE
 	force = 14
-	throwforce = 10
+	throw_force = 10
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = null
 	volume = 150

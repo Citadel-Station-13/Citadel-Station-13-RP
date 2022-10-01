@@ -261,7 +261,7 @@
 				connected = null
 			else
 				anchored = TRUE
-			playsound(src, W.usesound, 100, TRUE)
+			playsound(src, W.tool_sound, 100, TRUE)
 			if(anchored)
 				user.visible_message("[user] secures [src] to the floor.", "You secure [src] to the floor.")
 			else

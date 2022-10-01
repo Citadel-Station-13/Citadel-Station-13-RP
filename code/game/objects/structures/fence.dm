@@ -86,9 +86,9 @@
 
 		user.visible_message(SPAN_DANGER("\The [user] starts cutting through \the [src] with \the [W]."),\
 		SPAN_DANGER("You start cutting through \the [src] with \the [W]."))
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 
-		if(do_after(user, CUT_TIME * W.toolspeed, target = src))
+		if(do_after(user, CUT_TIME * W.tool_speed, target = src))
 			if(current_stage == hole_size)
 				switch(++hole_size)
 					if(MEDIUM_HOLE)

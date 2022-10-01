@@ -8,7 +8,7 @@
 
 	//copied from tank.dm
 	force = 5.0
-	throwforce = 10.0
+	throw_force = 10.0
 	throw_speed = 1
 	throw_range = 4
 	action_button_name = "Toggle Heatsink"
@@ -152,7 +152,7 @@
 		else
 			cover_open = 1
 			to_chat(user, "You unscrew the panel.")
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		updateicon()
 		return
 

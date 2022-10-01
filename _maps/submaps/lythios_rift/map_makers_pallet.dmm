@@ -1,0 +1,577 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/space/basic,
+/area/space)
+"b" = (
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/space)
+"c" = (
+/turf/simulated/mineral/lythios43c,
+/area/space)
+"d" = (
+/obj/machinery/crystal/ice,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/space)
+"f" = (
+/turf/simulated/floor/outdoors/dirt/lythios43c,
+/area/space)
+"h" = (
+/turf/simulated/wall/lythios43c,
+/area/space)
+"i" = (
+/obj/random/multiple/minevault,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/space)
+"m" = (
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/space)
+"n" = (
+/turf/simulated/floor/water/indoors/lythios43c,
+/area/space)
+"o" = (
+/obj/structure/lattice,
+/turf/space/basic,
+/area/space)
+"p" = (
+/turf/simulated/mineral/icerock/lythios43c/indoors,
+/area/space)
+"q" = (
+/obj/random/roguemineloot,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/space)
+"r" = (
+/turf/simulated/floor/bluegrid/lythios43c,
+/area/space)
+"s" = (
+/turf/simulated/floor/lythios43c,
+/area/space)
+"v" = (
+/obj/structure/window/wooden{
+	dir = 1
+	},
+/turf/space/basic,
+/area/space)
+"x" = (
+/turf/simulated/mineral/floor/lythios43c/indoors,
+/area/space)
+"y" = (
+/obj/random/turf/lava,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/space)
+"z" = (
+/turf/simulated/mineral/floor/lythios43c,
+/area/space)
+"B" = (
+/turf/simulated/floor/carpet/bcarpet/lythios43c,
+/area/space)
+"C" = (
+/turf/simulated/wall,
+/area/space)
+"D" = (
+/turf/template_noop,
+/area/template_noop)
+"E" = (
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/space)
+"F" = (
+/obj/random/underdark,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/space)
+"G" = (
+/obj/structure/window/wooden{
+	dir = 5
+	},
+/turf/space/basic,
+/area/space)
+"H" = (
+/obj/random/mre,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/space)
+"L" = (
+/turf/simulated/floor/outdoors/rocks/lythios43c/indoors,
+/area/space)
+"M" = (
+/obj/random/triumph,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/space)
+"N" = (
+/obj/structure/sandbag,
+/turf/space/basic,
+/area/space)
+"O" = (
+/turf/simulated/floor/outdoors/rocks/lythios43c,
+/area/space)
+"Q" = (
+/obj/random/outcrop,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/space)
+"R" = (
+/turf/simulated/floor/lythios43c/indoors,
+/area/space)
+"S" = (
+/turf/simulated/floor/outdoors/gravsnow/lythios43c/indoors,
+/area/space)
+"T" = (
+/turf/simulated/floor/outdoors/dirt/lythios43c/indoors,
+/area/space)
+"U" = (
+/turf/simulated/floor/water/deep/indoors/lythios43c,
+/area/space)
+"V" = (
+/turf/simulated/floor/tiled/lythios43c,
+/area/space)
+"W" = (
+/turf/simulated/floor/carpet/lythios43c,
+/area/space)
+"X" = (
+/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/area/space)
+"Y" = (
+/turf/simulated/floor/carpet/arcadecarpet/lythios43c,
+/area/space)
+"Z" = (
+/obj/random/empty_or_lootable_crate,
+/obj/random,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/space)
+
+(1,1,1) = {"
+D
+D
+p
+p
+m
+m
+c
+c
+c
+c
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+D
+D
+p
+p
+Z
+M
+c
+x
+x
+c
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(3,1,1) = {"
+D
+D
+p
+p
+H
+F
+c
+x
+x
+c
+a
+a
+a
+a
+a
+a
+x
+a
+a
+z
+"}
+(4,1,1) = {"
+D
+D
+p
+p
+i
+q
+c
+c
+c
+c
+a
+a
+a
+a
+a
+a
+x
+a
+a
+z
+"}
+(5,1,1) = {"
+D
+D
+p
+p
+Q
+m
+o
+o
+o
+o
+a
+a
+a
+a
+a
+h
+x
+a
+C
+z
+"}
+(6,1,1) = {"
+D
+D
+p
+p
+m
+m
+o
+o
+o
+o
+a
+a
+a
+a
+a
+h
+R
+a
+C
+s
+"}
+(7,1,1) = {"
+D
+D
+p
+p
+d
+m
+o
+o
+o
+o
+a
+a
+a
+a
+a
+h
+R
+a
+C
+s
+"}
+(8,1,1) = {"
+D
+D
+p
+p
+m
+m
+G
+a
+a
+a
+a
+a
+a
+a
+a
+h
+R
+a
+C
+s
+"}
+(9,1,1) = {"
+D
+D
+p
+p
+y
+m
+v
+a
+a
+a
+a
+a
+a
+a
+a
+h
+T
+a
+C
+f
+"}
+(10,1,1) = {"
+D
+D
+p
+p
+m
+m
+N
+a
+a
+a
+a
+a
+a
+a
+a
+h
+T
+a
+C
+f
+"}
+(11,1,1) = {"
+D
+D
+p
+p
+m
+m
+N
+a
+a
+a
+a
+a
+a
+a
+a
+h
+T
+a
+C
+f
+"}
+(12,1,1) = {"
+D
+D
+p
+p
+m
+m
+a
+a
+a
+a
+a
+a
+a
+a
+a
+h
+L
+a
+C
+O
+"}
+(13,1,1) = {"
+D
+D
+p
+p
+m
+m
+a
+a
+a
+a
+a
+a
+a
+a
+a
+h
+L
+a
+C
+O
+"}
+(14,1,1) = {"
+D
+D
+p
+p
+m
+m
+a
+a
+a
+a
+a
+a
+a
+a
+a
+h
+L
+a
+C
+O
+"}
+(15,1,1) = {"
+D
+D
+p
+p
+m
+m
+U
+U
+n
+n
+a
+a
+a
+a
+a
+h
+X
+a
+C
+E
+"}
+(16,1,1) = {"
+D
+D
+p
+p
+m
+m
+U
+U
+n
+n
+a
+a
+a
+a
+a
+h
+X
+a
+C
+E
+"}
+(17,1,1) = {"
+D
+D
+p
+p
+m
+m
+r
+r
+Y
+Y
+V
+V
+a
+a
+a
+h
+X
+a
+C
+E
+"}
+(18,1,1) = {"
+D
+D
+p
+p
+m
+m
+r
+r
+Y
+Y
+V
+V
+a
+a
+a
+h
+S
+a
+C
+b
+"}
+(19,1,1) = {"
+D
+D
+p
+p
+m
+m
+R
+R
+W
+W
+B
+B
+a
+a
+a
+h
+S
+a
+C
+b
+"}
+(20,1,1) = {"
+D
+D
+p
+p
+m
+m
+R
+R
+W
+W
+B
+B
+a
+a
+a
+h
+S
+a
+C
+b
+"}

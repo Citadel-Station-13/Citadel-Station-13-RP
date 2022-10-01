@@ -598,7 +598,7 @@ var/list/global/organ_rel_size = list(
 		return
 
 	//They may have hidden the icons in the bottom left with the hide button
-	if(!hud_used.inventory_shown && !held && resolve_inventory_slot_meta(slot)?.display_requires_expand)
+	if(!hud_used.inventory_shown && !held && (resolve_inventory_slot_meta(slot)?.inventory_slot_flags & INV_SLOT_HUD_REQUIRES_EXPAND))
 		item.screen_loc = null
 		return
 
@@ -611,3 +611,17 @@ var/list/global/organ_rel_size = list(
 
 /mob/proc/can_see_reagents()
 	return stat == DEAD || issilicon(src) //Dead guys and silicons can always see reagents
+
+//Ingnores the possibility of breaking tags.
+/proc/stars_no_html(text, pr, re_encode)
+	text = html_decode(text) //We don't want to screw up escaped characters
+	. = list()
+	for(var/i = 1, i <= length_char(text), i++)
+		var/char = copytext_char(text, i, i+1)
+		if(char == " " || prob(pr))
+			. += char
+		else
+			. += "*"
+	. = JOINTEXT(.)
+	if(re_encode)
+		. = html_encode(.)

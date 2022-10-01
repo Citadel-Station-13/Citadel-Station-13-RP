@@ -88,7 +88,7 @@
 		I.deflate(1)
 		return
 
-	var/obj/vehicle/V = locate() in T
+	var/obj/vehicle_old/V = locate() in T
 	if(V)
 		V.ex_act(2)
 		return
@@ -142,7 +142,7 @@
 		if("fire")
 			damage = (W.force / fire_resist)
 			if(istype(W, /obj/item/weldingtool))
-				playsound(src, W.usesound, 100, 1)
+				playsound(src, W.tool_sound, 100, 1)
 		if("brute")
 			damage = (W.force / brute_resist)
 

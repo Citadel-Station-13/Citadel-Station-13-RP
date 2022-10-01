@@ -42,8 +42,6 @@
 /area/debrisfield/derelict)
 "ar" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/wall,
@@ -98,16 +96,12 @@
 /area/debrisfield/derelict)
 "aE" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel/airless,
@@ -121,16 +115,12 @@
 /area/debrisfield/derelict)
 "aH" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/debrisfield/derelict)
 "aI" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -141,13 +131,9 @@
 /area/debrisfield/derelict)
 "aL" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel/airless,
@@ -182,8 +168,6 @@
 /area/debrisfield/derelict)
 "aT" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -209,8 +193,6 @@
 "aZ" = (
 /obj/machinery/door/airlock/alien,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/asteroid_steel/airless,
@@ -233,7 +215,6 @@
 "bd" = (
 /obj/structure/prop/alien/power,
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/fractal_reactor{
@@ -256,8 +237,6 @@
 /area/debrisfield/derelict)
 "bh" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -265,8 +244,6 @@
 "bj" = (
 /obj/random/humanoidremains,
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel/airless,
@@ -274,8 +251,6 @@
 "bk" = (
 /obj/machinery/door/airlock/alien,
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel/airless,
@@ -283,8 +258,6 @@
 "bm" = (
 /obj/item/xenos_claw,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel/airless,
@@ -292,8 +265,6 @@
 "bn" = (
 /obj/machinery/door/airlock/alien,
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -311,13 +282,9 @@
 /area/debrisfield/derelict)
 "bq" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/steel/airless,
@@ -335,8 +302,6 @@
 /area/debrisfield/derelict)
 "bt" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/mob_spawner/derelict,
@@ -350,16 +315,12 @@
 /area/debrisfield/derelict)
 "bv" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/debrisfield/derelict)
 "bw" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/white/airless,
@@ -371,8 +332,6 @@
 "bA" = (
 /obj/machinery/door/airlock/alien,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel/airless,
@@ -383,8 +342,6 @@
 "bC" = (
 /obj/mob_spawner/derelict/corrupt_maint_swarm,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -415,8 +372,6 @@
 "bH" = (
 /obj/structure/door_assembly/door_assembly_alien,
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel/airless,
@@ -436,8 +391,6 @@
 /area/debrisfield/derelict)
 "bK" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel/airless,
@@ -450,8 +403,6 @@
 /area/debrisfield/derelict)
 "bM" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -477,21 +428,15 @@
 /area/debrisfield/derelict)
 "bU" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/white/airless,
 /area/debrisfield/derelict)
 "bV" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel/airless,
@@ -512,8 +457,6 @@
 /area/debrisfield/derelict)
 "bZ" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/asteroid_steel/airless,
@@ -552,16 +495,12 @@
 /area/debrisfield/derelict)
 "ch" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/debrisfield/derelict)
 "ci" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable{
@@ -609,32 +548,24 @@
 "ct" = (
 /obj/random/humanoidremains,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/debrisfield/derelict)
 "cu" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/white/airless,
 /area/debrisfield/derelict)
 "cv" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/white/airless,
 /area/debrisfield/derelict)
 "cy" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating/external,
@@ -656,13 +587,9 @@
 /area/debrisfield/derelict)
 "cB" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/plating/external,
@@ -700,8 +627,6 @@
 	req_access = list(16)
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating/external,
@@ -724,8 +649,6 @@
 /area/debrisfield/derelict)
 "cK" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/power/fractal_reactor{
@@ -744,7 +667,6 @@
 /area/debrisfield/derelict)
 "cN" = (
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{
@@ -772,8 +694,6 @@
 /area/debrisfield/derelict)
 "cW" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating/external,
@@ -786,8 +706,6 @@
 /area/debrisfield/derelict)
 "cZ" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel/airless,
@@ -820,8 +738,6 @@
 /area/debrisfield/derelict)
 "vL" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/asteroid_steel/airless,
@@ -829,8 +745,6 @@
 "yZ" = (
 /obj/machinery/door/airlock/alien,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/white/airless,

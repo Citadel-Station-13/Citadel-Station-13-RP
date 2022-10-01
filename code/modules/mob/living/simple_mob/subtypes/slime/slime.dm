@@ -27,7 +27,7 @@
 	faction = "slime" // Note that slimes are hostile to other slimes of different color regardless of faction (unless Unified).
 	maxHealth = 150
 	movement_cooldown = 0
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	makes_dirt = FALSE	// Goop
 	mob_class = MOB_CLASS_SLIME
 

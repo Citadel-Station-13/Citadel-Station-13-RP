@@ -41,12 +41,10 @@
 
 	do_fall(AM)
 
-/turf/simulated/floor/sky/hitby(var/atom/movable/AM, var/speed)
+/turf/simulated/floor/sky/throw_landed(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
-
 	if(!does_skyfall)
 		return //We don't do that
-
 	do_fall(AM)
 
 /turf/simulated/floor/sky/proc/do_fall(atom/movable/AM)
@@ -102,12 +100,12 @@
 	var/attempts = 100
 	var/turf/simulated/T
 	while(attempts && !T)
-		var/turf/simulated/candidate = locate(rand(5,world.maxx-5),rand(5,world.maxy-5),pick(skyfall_levels))
+		var/turf/simulated/candidate = locate(rand(5,20),rand(5,world.maxy-5),pick(skyfall_levels))
 		if(candidate.density)
 			attempts--
 			continue
-		if(!target_turf)
-			return
+		if(ispath(T, target_turf))
+			continue
 
 		T = candidate
 		break
@@ -124,7 +122,6 @@
 
 /turf/simulated/floor/sky/depths/west
 	skyfall_levels = "Western Canyon"
-	target_turf = /turf/simulated/floor/outdoors/snow/lythios43c
 
 /turf/simulated/floor/sky/depths/west/Initialize(mapload)
 	skyfall_levels = list(z - 1)
@@ -135,12 +132,12 @@
 	var/attempts = 100
 	var/turf/simulated/T
 	while(attempts && !T)
-		var/turf/simulated/candidate = locate(rand(5,world.maxx-5),rand(5,world.maxy-5),pick(skyfall_levels))
+		var/turf/simulated/candidate = locate(rand(175,world.maxx-5),rand(5,world.maxy-5),pick(skyfall_levels))
 		if(candidate.density)
 			attempts--
 			continue
-		if(!target_turf)
-			return
+		if(ispath(T, target_turf))
+			continue
 
 		T = candidate
 		break

@@ -17,6 +17,9 @@
 		slot_r_hand_str = 'icons/mob/items/righthand_holder.dmi',
 		)
 	pixel_y = 8
+	throw_range = 14
+	throw_force = 10
+	throw_speed = 3
 	var/static/list/holder_mob_icon_cache = list()
 	var/mob/living/held_mob
 
@@ -34,7 +37,8 @@
 
 /obj/item/holder/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
-	update_state()
+	if(!(flags & INV_OP_DELETING))
+		update_state()
 
 /obj/item/holder/examine(mob/user)
 	return held_mob?.examine(user) || list("WARNING WARNING: No held_mob on examine. REPORT THIS TO A CODER.")
@@ -104,6 +108,22 @@
 		to_chat(held, SPAN_WARNING("You struggle free of [loc]."))
 		held.forceMove(get_turf(held))
 
+/obj/item/holder/can_equip(mob/M, slot, mob/user, flags)
+	if(M == held_mob)
+		return FALSE
+	return ..()
+
+//? throws completely pass to the mob
+/obj/item/holder/throw_resolve_actual(mob/user)
+	return held_mob
+
+/obj/item/holder/throw_resolve_override(atom/movable/resolved, mob/user)
+	held_mob.forceMove(user.drop_location())
+	held_mob = null
+	return TRUE
+
+/obj/item/holder/throw_resolve_finalize(atom/movable/resolved, mob/user)
+	qdel(src)
 
 //Mob specific holders.
 /obj/item/holder/diona

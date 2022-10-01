@@ -55,7 +55,7 @@
 	w_class = ITEMSIZE_HUGE
 	force = 5
 	anchored = 1
-	throwforce = 0 //Just to be on the safe side
+	throw_force = 0 //Just to be on the safe side
 	throw_range = 0
 	throw_speed = 0
 	var/mob/living/creator //This is just like ninja swords, needed to make sure dumb shit that removes the sword doesn't make it stay around.
@@ -88,7 +88,7 @@
 	return ..()
 
 /obj/item/melee/changeling/suicide_act(mob/user)
-	var/datum/gender/T = gender_datums[user.get_visible_gender()]
+	var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
 	user.visible_message("<span class='danger'>[user] is impaling [T.himself] with the [src.name]! It looks like [T.he] [T.is] trying to commit suicide.</span>")
 	return(BRUTELOSS)
 

@@ -15,8 +15,8 @@
 	switch(state)
 		if(0)
 			if(P.is_wrench())
-				playsound(loc, P.usesound, 50, 1)
-				if(do_after(user, 20 * P.toolspeed))
+				playsound(loc, P.tool_sound, 50, 1)
+				if(do_after(user, 20 * P.tool_speed))
 					to_chat(user, "<span class='notice'>You wrench the frame into place.</span>")
 					anchored = 1
 					state = 1
@@ -25,16 +25,16 @@
 				if(!WT.isOn())
 					to_chat(user, "The welder must be on for this task.")
 					return
-				playsound(loc, WT.usesound, 50, 1)
-				if(do_after(user, 20 * WT.toolspeed))
+				playsound(loc, WT.tool_sound, 50, 1)
+				if(do_after(user, 20 * WT.tool_speed))
 					if(!src || !WT.remove_fuel(0, user)) return
 					to_chat(user, "<span class='notice'>You deconstruct the frame.</span>")
 					new /obj/item/stack/material/plasteel( loc, 4)
 					qdel(src)
 		if(1)
 			if(P.is_wrench())
-				playsound(loc, P.usesound, 50, 1)
-				if(do_after(user, 20 * P.toolspeed))
+				playsound(loc, P.tool_sound, 50, 1)
+				if(do_after(user, 20 * P.tool_speed))
 					to_chat(user, "<span class='notice'>You unfasten the frame.</span>")
 					anchored = 0
 					state = 0
@@ -46,12 +46,12 @@
 				icon_state = "1"
 				circuit = P
 			if(P.is_screwdriver() && circuit)
-				playsound(loc, P.usesound, 50, 1)
+				playsound(loc, P.tool_sound, 50, 1)
 				to_chat(user, "<span class='notice'>You screw the circuit board into place.</span>")
 				state = 2
 				icon_state = "2"
 			if(P.is_crowbar() && circuit)
-				playsound(loc, P.usesound, 50, 1)
+				playsound(loc, P.tool_sound, 50, 1)
 				to_chat(user, "<span class='notice'>You remove the circuit board.</span>")
 				state = 1
 				icon_state = "0"
@@ -59,7 +59,7 @@
 				circuit = null
 		if(2)
 			if(P.is_screwdriver() && circuit)
-				playsound(loc, P.usesound, 50, 1)
+				playsound(loc, P.tool_sound, 50, 1)
 				to_chat(user, "<span class='notice'>You unfasten the circuit board.</span>")
 				state = 1
 				icon_state = "1"
@@ -81,7 +81,7 @@
 				if (brain)
 					to_chat(user, "Get that brain out of there first")
 				else
-					playsound(loc, P.usesound, 50, 1)
+					playsound(loc, P.tool_sound, 50, 1)
 					to_chat(user, "<span class='notice'>You remove the cables.</span>")
 					state = 2
 					icon_state = "2"
@@ -144,7 +144,7 @@
 				icon_state = "3b"
 
 			if(P.is_crowbar() && brain)
-				playsound(loc, P.usesound, 50, 1)
+				playsound(loc, P.tool_sound, 50, 1)
 				to_chat(user, "<span class='notice'>You remove the brain.</span>")
 				brain.loc = loc
 				brain = null
@@ -152,7 +152,7 @@
 
 		if(4)
 			if(P.is_crowbar())
-				playsound(loc, P.usesound, 50, 1)
+				playsound(loc, P.tool_sound, 50, 1)
 				to_chat(user, "<span class='notice'>You remove the glass panel.</span>")
 				state = 3
 				if (brain)
@@ -163,7 +163,7 @@
 				return
 
 			if(P.is_screwdriver())
-				playsound(loc, P.usesound, 50, 1)
+				playsound(loc, P.tool_sound, 50, 1)
 				to_chat(user, "<span class='notice'>You connect the monitor.</span>")
 				if(!brain)
 					var/open_for_latejoin = alert(user, "Would you like this core to be open for latejoining AIs?", "Latejoin", "Yes", "Yes", "No") == "Yes"
@@ -233,8 +233,8 @@ GLOBAL_LIST_BOILERPLATE(all_deactivated_AI_cores, /obj/structure/AIcore/deactiva
 	else if(W.is_wrench())
 		if(anchored)
 			user.visible_message("<span class='notice'>\The [user] starts to unbolt \the [src] from the plating...</span>")
-			playsound(src, W.usesound, 50, 1)
-			if(!do_after(user,40 * W.toolspeed))
+			playsound(src, W.tool_sound, 50, 1)
+			if(!do_after(user,40 * W.tool_speed))
 				user.visible_message("<span class='notice'>\The [user] decides not to unbolt \the [src].</span>")
 				return
 			user.visible_message("<span class='notice'>\The [user] finishes unfastening \the [src]!</span>")
@@ -242,8 +242,8 @@ GLOBAL_LIST_BOILERPLATE(all_deactivated_AI_cores, /obj/structure/AIcore/deactiva
 			return
 		else
 			user.visible_message("<span class='notice'>\The [user] starts to bolt \the [src] to the plating...</span>")
-			playsound(src, W.usesound, 50, 1)
-			if(!do_after(user,40 * W.toolspeed))
+			playsound(src, W.tool_sound, 50, 1)
+			if(!do_after(user,40 * W.tool_speed))
 				user.visible_message("<span class='notice'>\The [user] decides not to bolt \the [src].</span>")
 				return
 			user.visible_message("<span class='notice'>\The [user] finishes fastening down \the [src]!</span>")

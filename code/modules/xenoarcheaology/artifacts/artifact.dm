@@ -248,7 +248,7 @@
 /obj/machinery/artifact/Bumped(M as mob|obj)
 	..()
 	if(istype(M,/obj))
-		if(M:throwforce >= 10)
+		if(M:throw_force >= 10)
 			if(my_effect.trigger == TRIGGER_FORCE)
 				my_effect.ToggleActivate()
 			if(secondary_effect && secondary_effect.trigger == TRIGGER_FORCE && prob(25))

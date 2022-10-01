@@ -94,7 +94,7 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
         if(temperature_damage < 100)
             temperature_damage++
         return
-    env.add_thermal_energy(power_used)
+    env.adjust_thermal_energy(power_used)
 
 /obj/machinery/power/crypto_miner/proc/process_thermal_properties()
     var/datum/gas_mixture/env = loc.return_air()

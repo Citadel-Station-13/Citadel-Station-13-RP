@@ -272,7 +272,7 @@
 
 	simulation_results += "<br>Initial gas tank status:<br>[format_gas_for_results(faketank)]"
 
-	faketank.add_thermal_energy(15000)
+	faketank.adjust_thermal_energy(15000)
 
 	var/intervals = 0
 	while(intervals < 10)

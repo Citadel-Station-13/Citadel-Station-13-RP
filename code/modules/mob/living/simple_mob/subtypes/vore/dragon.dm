@@ -28,11 +28,7 @@
 	minbodytemp = 0
 	maxbodytemp = 700
 
-	old_x = -16
-	old_y = 0
-	default_pixel_x = -16
-	pixel_x = -16
-	pixel_y = 0
+	base_pixel_x = -16
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 	say_list_type = /datum/say_list/dragonboss

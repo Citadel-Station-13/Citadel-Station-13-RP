@@ -400,15 +400,15 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "cs" = (
-/atom/movable/spawner/corpse/engineer{
+/obj/spawner/corpse/engineer{
 	mobname = "Rosen Miller";
 	name = "Rosen Miller"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "ct" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "cu" = (
@@ -517,11 +517,11 @@
 	},
 /area/awaymission/spacebattle/cruiser)
 "cU" = (
-/atom/movable/spawner/corpse/engineer{
+/obj/spawner/corpse/engineer{
 	mobname = "Bill Sanchez";
 	name = "Bill Sanchez"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "cW" = (
@@ -581,11 +581,11 @@
 	},
 /area/awaymission/spacebattle/cruiser)
 "di" = (
-/atom/movable/spawner/corpse/engineer{
+/obj/spawner/corpse/engineer{
 	mobname = "John Locke";
 	name = "John Locke"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "dk" = (
@@ -605,25 +605,25 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "do" = (
-/atom/movable/spawner/corpse/doctor{
+/obj/spawner/corpse/doctor{
 	mobname = "Daniel Kalla";
 	name = "Daniel Kalla"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "dw" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/shuttle/wall{
 	dir = 4
 	},
 /area/awaymission/spacebattle/cruiser)
 "dz" = (
-/atom/movable/spawner/corpse/chef{
+/obj/spawner/corpse/chef{
 	mobname = "Nathaniel Waters";
 	name = "Nathaniel Waters"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "dE" = (
@@ -631,7 +631,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "dG" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /area/awaymission/spacebattle/cruiser)
 "dH" = (
 /obj/structure/grille,
@@ -704,12 +704,12 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "ea" = (
-/atom/movable/spawner/corpse/engineer/rig{
+/obj/spawner/corpse/engineer/rig{
 	corpseidjob = "Gunner";
 	mobname = "Andrew Thorn";
 	name = "Andrew Thorn"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /area/awaymission/spacebattle/cruiser)
 "eb" = (
 /obj/structure/grille,
@@ -728,7 +728,7 @@
 	},
 /area/awaymission/spacebattle/cruiser)
 "ed" = (
-/atom/movable/spawner/corpse/engineer{
+/obj/spawner/corpse/engineer{
 	mobname = "Clay Dawson";
 	name = "Clay Dawson"
 	},
@@ -836,7 +836,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "eB" = (
-/atom/movable/spawner/corpse/bridgeofficer{
+/obj/spawner/corpse/bridgeofficer{
 	mobname = "Davis Hume";
 	name = "Davis Hume"
 	},
@@ -864,12 +864,12 @@
 /mob/living/simple_mob/humanoid/merc/melee/sword/space,
 /area/awaymission/spacebattle/cruiser)
 "eK" = (
-/atom/movable/spawner/corpse/engineer/rig{
+/obj/spawner/corpse/engineer/rig{
 	corpseidjob = "Gunner";
 	mobname = "Peter West";
 	name = "Peter West"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /area/awaymission/spacebattle/cruiser)
 "eM" = (
 /turf/simulated/shuttle/wall{
@@ -929,13 +929,13 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "fa" = (
-/atom/movable/spawner/corpse/syndicatesoldier,
+/obj/spawner/corpse/syndicatesoldier,
 /obj/item/melee/energy/sword,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "fb" = (
-/atom/movable/spawner/corpse/bridgeofficer{
+/obj/spawner/corpse/bridgeofficer{
 	mobname = "Kurt Kliest";
 	name = "Kurt Kliest"
 	},
@@ -945,7 +945,7 @@
 /area/awaymission/spacebattle/cruiser)
 "fc" = (
 /obj/item/ammo_casing/a12g/pellet,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "fd" = (
@@ -953,12 +953,12 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "fe" = (
-/atom/movable/spawner/corpse/engineer/rig{
+/obj/spawner/corpse/engineer/rig{
 	corpseidjob = "Gunner";
 	mobname = "Eric Abnett";
 	name = "Eric Abnett"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /area/awaymission/spacebattle/cruiser)
 "ff" = (
 /obj/structure/closet/crate,
@@ -995,33 +995,33 @@
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "ft" = (
-/atom/movable/spawner/corpse/syndicatesoldier,
+/obj/spawner/corpse/syndicatesoldier,
 /obj/item/gun/projectile/automatic/c20r,
 /obj/item/ammo_casing/a10mm,
 /obj/item/ammo_casing/a10mm,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "fv" = (
-/atom/movable/spawner/corpse/bridgeofficer{
+/obj/spawner/corpse/bridgeofficer{
 	mobname = "Walter Strider";
 	name = "Walter Strider"
 	},
 /obj/item/gun/projectile/shotgun/pump/combat,
 /obj/item/ammo_casing/a10mm,
 /obj/item/ammo_casing/a10mm,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "fx" = (
 /obj/item/ammo_casing/a357,
 /obj/item/ammo_casing/a357,
 /obj/item/gun/projectile/revolver/mateba,
-/atom/movable/spawner/corpse/commander{
+/obj/spawner/corpse/commander{
 	mobname = "Aaron Bowden";
 	name = "Aaron Bowden"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "fz" = (
@@ -1053,12 +1053,12 @@
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "gh" = (
-/atom/movable/spawner/corpse/bridgeofficer{
+/obj/spawner/corpse/bridgeofficer{
 	mobname = "Robert Faver";
 	name = "Robert Faver"
 	},
 /obj/item/ammo_casing/a12g/pellet,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "gi" = (
@@ -1140,17 +1140,17 @@
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "gJ" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/shuttle/wall{
 	dir = 1
 	},
 /area/awaymission/spacebattle/cruiser)
 "gK" = (
-/atom/movable/spawner/corpse/doctor{
+/obj/spawner/corpse/doctor{
 	mobname = "Adam Smith";
 	name = "Adam Smith"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "gL" = (
@@ -1183,11 +1183,11 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "gT" = (
-/atom/movable/spawner/corpse/engineer/rig{
+/obj/spawner/corpse/engineer/rig{
 	corpseidjob = "Gunner";
 	name = "Jeremy Tailor"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /area/awaymission/spacebattle/cruiser)
 "gU" = (
 /obj/machinery/porta_turret{
@@ -1211,11 +1211,11 @@
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "ha" = (
-/atom/movable/spawner/corpse/doctor{
+/obj/spawner/corpse/doctor{
 	mobname = "Allan Yoshimaru";
 	name = "Allan Yoshimaru"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "hf" = (
@@ -1252,13 +1252,13 @@
 /turf/simulated/floor/wood,
 /area/awaymission/spacebattle/cruiser)
 "hm" = (
-/atom/movable/spawner/corpse/engineer/rig{
+/obj/spawner/corpse/engineer/rig{
 	corpseidjob = "Gunner";
 	mobname = "Dan Hedricks";
 	name = "Dan Hedricks"
 	},
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /area/awaymission/spacebattle/cruiser)
 "hn" = (
 /obj/structure/grille,
@@ -1402,7 +1402,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/spacebattle/cruiser)
 "hP" = (
-/atom/movable/spawner/corpse/engineer{
+/obj/spawner/corpse/engineer{
 	corpseidjob = "Gunner";
 	mobname = "William Gannon";
 	name = "William Gannon"
@@ -1435,7 +1435,7 @@
 	},
 /area/awaymission/spacebattle/cruiser)
 "hV" = (
-/atom/movable/spawner/corpse/engineer{
+/obj/spawner/corpse/engineer{
 	mobname = "Javier Wismer";
 	name = "Javier Wismer"
 	},
@@ -1498,19 +1498,19 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "im" = (
-/atom/movable/spawner/corpse/doctor{
+/obj/spawner/corpse/doctor{
 	mobname = "Herbert West";
 	name = "Herbert West"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "in" = (
-/atom/movable/spawner/corpse/engineer{
+/obj/spawner/corpse/engineer{
 	mobname = "Carth Robinson";
 	name = "Carth Robinson"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "ip" = (
@@ -1529,25 +1529,25 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "iw" = (
-/atom/movable/spawner/corpse/engineer{
+/obj/spawner/corpse/engineer{
 	mobname = "Cyrion";
 	name = "Cyrion"
 	},
 /obj/item/flamethrower/full,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "iy" = (
-/atom/movable/spawner/corpse/syndicatesoldier,
+/obj/spawner/corpse/syndicatesoldier,
 /obj/item/gun/projectile/automatic/c20r,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "iA" = (
-/atom/movable/spawner/corpse/engineer{
+/obj/spawner/corpse/engineer{
 	mobname = "Mercutio";
 	name = "Mercutio"
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "iB" = (
@@ -1555,7 +1555,7 @@
 /turf/space,
 /area)
 "iC" = (
-/atom/movable/spawner/corpse/syndicatesoldier,
+/obj/spawner/corpse/syndicatesoldier,
 /turf/space,
 /area)
 "iD" = (
@@ -1577,7 +1577,7 @@
 	},
 /area)
 "iH" = (
-/atom/movable/spawner/corpse/syndicatesoldier,
+/obj/spawner/corpse/syndicatesoldier,
 /turf/simulated/floor/airless{
 	dir = 10
 	},

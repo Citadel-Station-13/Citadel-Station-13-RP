@@ -24,8 +24,8 @@
 /obj/structure/bed/chair/wood{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/blood,
-/atom/movable/spawner/corpse/syndicatesoldier,
+/obj/effect/debris/cleanable/blood,
+/obj/spawner/corpse/syndicatesoldier,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -226,8 +226,8 @@
 /obj/effect/floor_decal/spline/fancy/wood/corner{
 	dir = 8
 	},
-/atom/movable/spawner/corpse/clown,
-/obj/effect/decal/cleanable/blood,
+/obj/spawner/corpse/clown,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/carpet/blucarpet,
 /area/class_h/POIs/saloon)
 "EJ" = (

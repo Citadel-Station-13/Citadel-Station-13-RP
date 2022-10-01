@@ -37,6 +37,7 @@ SUBSYSTEM_DEF(air)
 	air_master = src
 
 /datum/controller/subsystem/air/Initialize(timeofday)
+#ifndef FASTBOOT_DISABLE_ZONES
 	report_progress("Processing Geometry...")
 
 	current_cycle = 0
@@ -67,8 +68,8 @@ SUBSYSTEM_DEF(air)
 				edge_log += "+--- Connecting Turf [T] ([T.type]) @ [T.x], [T.y], [T.z] ([T.loc])"
 		subsystem_log("Active Edges on ZAS Startup\n" + edge_log.Join("\n"))
 		startup_active_edge_log = edge_log.Copy()
-
-	..()
+#endif
+	return ..()
 
 /datum/controller/subsystem/air/fire(resumed = 0)
 	var/timer

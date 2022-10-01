@@ -11,9 +11,9 @@
 		slot_l_hand_str = 'icons/mob/items/lefthand.dmi',
 		slot_r_hand_str = 'icons/mob/items/righthand.dmi',
 	)
-	item_flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 	force = 10
-	throwforce = 10
+	throw_force = 10
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
@@ -202,7 +202,7 @@
 
 	playsound(get_turf(src), 'sound/machines/click.ogg', 50, 1)
 
-	var/true_delay = rcd_results[RCD_VALUE_DELAY] * toolspeed
+	var/true_delay = rcd_results[RCD_VALUE_DELAY] * tool_speed
 
 	var/datum/beam/rcd_beam = null
 	if(ranged)
@@ -258,7 +258,7 @@
 	Reload with compressed matter cartridges."
 	icon_state = "adv_rcd"
 	ranged = TRUE
-	toolspeed = 0.5 // Twice as fast.
+	tool_speed = 0.5 // Twice as fast.
 	max_stored_matter = RCD_MAX_CAPACITY * 3 // Three times capacity.
 
 /obj/item/rcd/advanced/loaded/Initialize(mapload)
@@ -343,13 +343,13 @@
 	can_remove_rwalls = TRUE
 	desc = "A device used to rapidly build and deconstruct. It runs directly off of electricity, drawing directly from your cell."
 	electric_cost_coefficent = 41.66 // Twice as efficent, out of pity.
-	toolspeed = 0.5 // Twice as fast, since borg versions typically have this.
+	tool_speed = 0.5 // Twice as fast, since borg versions typically have this.
 
 /obj/item/rcd/electric/mounted/borg/swarm
 	can_remove_rwalls = FALSE
 	name = "Rapid Assimilation Device"
 	ranged = TRUE
-	toolspeed = 0.7
+	tool_speed = 0.7
 	material_to_use = MAT_STEELHULL
 
 /obj/item/rcd/electric/mounted/borg/lesser
@@ -375,7 +375,7 @@
 // RCDs for Mechs.
 /obj/item/rcd/electric/mounted/mecha
 	ranged = TRUE
-	toolspeed = 0.5
+	tool_speed = 0.5
 
 // Infinite use RCD for debugging/adminbuse.
 /obj/item/rcd/debug
@@ -386,7 +386,7 @@
 	ranged = TRUE
 	can_remove_rwalls = TRUE
 	allow_concurrent_building = TRUE
-	toolspeed = 0.25 // Four times as fast.
+	tool_speed = 0.25 // Four times as fast.
 
 /obj/item/rcd/debug/can_afford(amount)
 	return TRUE

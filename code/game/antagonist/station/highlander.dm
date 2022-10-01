@@ -54,11 +54,6 @@ var/datum/antagonist/highlander/highlanders
 	player.equip_to_slot_or_del(W, SLOT_ID_WORN_ID)
 
 /proc/only_one()
-
-	if(!SSticker)
-		alert("The game hasn't started yet!")
-		return
-
 	for(var/mob/living/carbon/human/H in player_list)
 		if(H.stat == 2 || !(H.client)) continue
 		if(is_special_character(H)) continue

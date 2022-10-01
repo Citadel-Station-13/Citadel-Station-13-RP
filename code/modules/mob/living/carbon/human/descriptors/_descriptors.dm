@@ -85,8 +85,8 @@
 /datum/mob_descriptor/proc/get_comparative_value_descriptor(my_value, mob/observer, mob/me)
 
 	// Store our gender info for later.
-	var/datum/gender/my_gender = gender_datums[me.get_gender()]
-	var/datum/gender/other_gender = gender_datums[observer.get_gender()]
+	var/datum/gender/my_gender = GLOB.gender_datums[me.get_gender()]
+	var/datum/gender/other_gender = GLOB.gender_datums[observer.get_gender()]
 
 	. = get_initial_comparison_component(me, my_gender, other_gender, my_value)
 

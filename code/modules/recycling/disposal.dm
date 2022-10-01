@@ -18,6 +18,7 @@
 	icon_state = "disposal"
 	anchored = TRUE
 	density = TRUE
+	pass_flags_self = ATOM_PASS_OVERHEAD_THROW
 	var/datum/gas_mixture/air_contents	// internal reservoir
 	var/mode = 1	// item mode 0=off 1=charging 2=charged
 	var/flush = FALSE	// true if flush handle is pulled
@@ -71,12 +72,12 @@
 				return
 			if(mode==0) // It's off but still not unscrewed
 				mode=-1 // Set it to doubleoff l0l
-				playsound(src, I.usesound, 50, 1)
+				playsound(src, I.tool_sound, 50, 1)
 				to_chat(user, "You remove the screws around the power connection.")
 				return
 			else if(mode==-1)
 				mode=0
-				playsound(src, I.usesound, 50, 1)
+				playsound(src, I.tool_sound, 50, 1)
 				to_chat(user, "You attach the screws around the power connection.")
 				return
 		else if(istype(I, /obj/item/weldingtool) && mode==-1)
@@ -85,10 +86,10 @@
 				return
 			var/obj/item/weldingtool/W = I
 			if(W.remove_fuel(0,user))
-				playsound(src, W.usesound, 100, 1)
+				playsound(src, W.tool_sound, 100, 1)
 				to_chat(user, "You start slicing the floorweld off the disposal unit.")
 
-				if(do_after(user,20 * W.toolspeed))
+				if(do_after(user,20 * W.tool_speed))
 					if(!src || !W.isOn()) return
 					to_chat(user, "You sliced the floorweld off the disposal unit.")
 					var/obj/structure/disposalconstruct/C = new (src.loc)
@@ -454,19 +455,19 @@
 			if(!istype(AM,/mob/living/silicon/robot/drone)) //Poor drones kept smashing windows and taking system damage being fired out of disposals. ~Z
 				spawn(1)
 					if(AM)
-						AM.throw_at(target, 5, 1)
+						AM.throw_at_old(target, 5, 1)
 
 		H.vent_gas(loc)
 		qdel(H)
 
-/obj/machinery/disposal/hitby(atom/movable/yeeted_atom)
+/obj/machinery/disposal/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
-	if(istype(yeeted_atom, /obj/item) && !istype(yeeted_atom, /obj/item/projectile))
+	if(istype(AM, /obj/item) && !istype(AM, /obj/item/projectile))
 		if(prob(75))
-			yeeted_atom.forceMove(src)
-			visible_message("\The [yeeted_atom] lands in \the [src].")
+			AM.forceMove(src)
+			visible_message("\The [AM] lands in \the [src].")
 		else
-			visible_message("\The [yeeted_atom] bounces off of \the [src]'s rim!")
+			visible_message("\The [AM] bounces off of \the [src]'s rim!")
 
 /obj/machinery/disposal/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover, /obj/item/projectile))
@@ -786,7 +787,7 @@
 					AM.pipe_eject(direction)
 					spawn(1)
 						if(AM)
-							AM.throw_at(target, 100, 1)
+							AM.throw_at_old(target, 100, 1)
 				H.vent_gas(T)
 				qdel(H)
 
@@ -801,7 +802,7 @@
 					AM.pipe_eject(0)
 					spawn(1)
 						if(AM)
-							AM.throw_at(target, 5, 1)
+							AM.throw_at_old(target, 5, 1)
 
 				H.vent_gas(T)	// all gas vent to turf
 				qdel(H)
@@ -881,7 +882,7 @@
 			var/obj/item/weldingtool/W = I
 
 			if(W.remove_fuel(0,user))
-				playsound(src, W.usesound, 50, 1)
+				playsound(src, W.tool_sound, 50, 1)
 				// check if anything changed over 2 seconds
 				var/turf/uloc = user.loc
 				var/atom/wloc = W.loc
@@ -1364,7 +1365,7 @@
 		var/obj/item/weldingtool/W = I
 
 		if(W.remove_fuel(0,user))
-			playsound(src, W.usesound, 100, 1)
+			playsound(src, W.tool_sound, 100, 1)
 			// check if anything changed over 2 seconds
 			var/turf/uloc = user.loc
 			var/atom/wloc = W.loc
@@ -1468,7 +1469,7 @@
 				AM.pipe_eject(dir)
 				if(!istype(AM,/mob/living/silicon/robot/drone)) //Drones keep smashing windows from being fired out of chutes. Bad for the station. ~Z
 					spawn(5)
-						AM.throw_at(target, 3, 1)
+						AM.throw_at_old(target, 3, 1)
 			H.vent_gas(src.loc)
 			qdel(H)
 
@@ -1482,19 +1483,19 @@
 			if(mode==0)
 				mode=1
 				to_chat(user, "You remove the screws around the power connection.")
-				playsound(src, I.usesound, 50, 1)
+				playsound(src, I.tool_sound, 50, 1)
 				return
 			else if(mode==1)
 				mode=0
 				to_chat(user, "You attach the screws around the power connection.")
-				playsound(src, I.usesound, 50, 1)
+				playsound(src, I.tool_sound, 50, 1)
 				return
 		else if(istype(I, /obj/item/weldingtool) && mode==1)
 			var/obj/item/weldingtool/W = I
 			if(W.remove_fuel(0,user))
-				playsound(src, W.usesound, 100, 1)
+				playsound(src, W.tool_sound, 100, 1)
 				to_chat(user, "You start slicing the floorweld off the disposal outlet.")
-				if(do_after(user,20 * W.toolspeed))
+				if(do_after(user,20 * W.tool_speed))
 					if(!src || !W.isOn()) return
 					to_chat(user, "You sliced the floorweld off the disposal outlet.")
 					var/obj/structure/disposalconstruct/C = new (src.loc)
@@ -1519,7 +1520,7 @@
 /mob/pipe_eject(var/direction)
 	update_perspective()
 
-/obj/effect/decal/cleanable/blood/gibs/pipe_eject(var/direction)
+/obj/effect/debris/cleanable/blood/gibs/pipe_eject(var/direction)
 	var/list/dirs
 	if(direction)
 		dirs = list( direction, turn(direction, -45), turn(direction, 45))
@@ -1528,7 +1529,7 @@
 
 	src.streak(dirs)
 
-/obj/effect/decal/cleanable/blood/gibs/robot/pipe_eject(var/direction)
+/obj/effect/debris/cleanable/blood/gibs/robot/pipe_eject(var/direction)
 	var/list/dirs
 	if(direction)
 		dirs = list( direction, turn(direction, -45), turn(direction, 45))

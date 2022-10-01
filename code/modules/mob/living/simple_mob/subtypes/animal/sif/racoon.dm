@@ -31,7 +31,7 @@
 	has_hands = TRUE
 	humanoid_hands = TRUE
 
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 
 	universal_understand = 1
 

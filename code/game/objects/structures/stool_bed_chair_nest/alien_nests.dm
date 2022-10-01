@@ -11,39 +11,44 @@
 /obj/structure/bed/nest/update_icon()
 	return
 
-/obj/structure/bed/nest/user_unbuckle_mob(mob/living/buckled_mob, mob/user)
-	if(buckled_mob)
-		if(buckled_mob.buckled == src)
-			if(buckled_mob != user)
-				buckled_mob.visible_message(\
-					"<span class='notice'>[user.name] pulls [buckled_mob.name] free from the sticky nest!</span>",\
-					"<span class='notice'>[user.name] pulls you free from the gelatinous resin.</span>",\
-					"<span class='notice'>You hear squelching...</span>")
-				buckled_mob.pixel_y = 0
-				buckled_mob.old_y = 0
-				unbuckle_mob(buckled_mob)
-			else
-				if(world.time <= buckled_mob.last_special+NEST_RESIST_TIME)
-					return
-				buckled_mob.last_special = world.time
-				buckled_mob.visible_message(\
-					"<span class='warning'>[buckled_mob.name] struggles to break free of the gelatinous resin...</span>",\
-					"<span class='warning'>You struggle to break free from the gelatinous resin...</span>",\
-					"<span class='notice'>You hear squelching...</span>")
-				spawn(NEST_RESIST_TIME)
-					if(user && buckled_mob && user.buckled == src)
-						buckled_mob.last_special = world.time
-						buckled_mob.pixel_y = 0
-						buckled_mob.old_y = 0
-						unbuckle_mob(buckled_mob)
-			src.add_fingerprint(user)
-	return
-
-/obj/structure/bed/nest/user_buckle_mob(mob/M as mob, mob/user as mob)
-	if ( !ismob(M) || (get_dist(src, user) > 1) || (M.loc != src.loc) || user.restrained() || usr.stat || M.buckled || istype(user, /mob/living/silicon/pai) )
+/obj/structure/bed/nest/mob_resist_buckle(mob/M, semantic)
+	. = ..()
+	if(!.)
 		return
+	var/mob/living/L = M
+	if(!istype(L))
+		return
+	if(world.time <= L.last_special + NEST_RESIST_TIME)
+		return FALSE
+	L.last_special = world.time
+	L.visible_message(\
+		"<span class='warning'>[L.name] struggles to break free of the gelatinous resin...</span>",\
+		"<span class='warning'>You struggle to break free from the gelatinous resin...</span>",\
+		"<span class='notice'>You hear squelching...</span>")
+	add_fingerprint(L)
+	if(!do_after(L, NEST_RESIST_TIME, src, FALSE))
+		L.visible_message(
+			SPAN_WARNING("[L] fails to break out of [src]!"),
+			SPAN_WARNING("You fail to break out of [src].")
+		)
+		return FALSE
 
-	unbuckle_mob()
+/obj/structure/bed/nest/user_unbuckle_feedback(mob/M, flags, mob/user, semantic)
+	if(user != M)
+		user.visible_message(\
+			"<span class='notice'>[user.name] pulls [M.name] free from the sticky nest!</span>",\
+			"<span class='notice'>[user.name] pulls you free from the gelatinous resin.</span>",\
+			"<span class='notice'>You hear squelching...</span>")
+	else
+		user.visible_message(
+			SPAN_WARNING("[user] tears free of [src]."),
+			SPAN_WARNING("You tear free of [src]."),
+			SPAN_WARNING("You hear squelching...")
+		)
+
+/obj/structure/bed/nest/user_buckle_mob(mob/M, flags, mob/user, semantic)
+	if ( !ismob(M) || (get_dist(src, user) > 1) || (M.loc != src.loc) || user.restrained() || user.stat || M.buckled || istype(user, /mob/living/silicon/pai) )
+		return
 
 	var/mob/living/carbon/xenos = user
 	var/mob/living/carbon/victim = M
@@ -54,22 +59,16 @@
 	if(istype(xenos) && !((locate(/obj/item/organ/internal/xenos/hivenode) in xenos.internal_organs)))
 		return
 
-	if(M == usr)
+	if(M == user)
 		return
-	else
-		M.visible_message(\
-			"<span class='notice'>[user.name] secretes a thick vile goo, securing [M.name] into [src]!</span>",\
-			"<span class='warning'>[user.name] drenches you in a foul-smelling resin, trapping you in the [src]!</span>",\
-			"<span class='notice'>You hear squelching...</span>")
-	M.buckled = src
-	M.loc = src.loc
-	M.setDir(src.dir)
-	M.update_canmove()
-	M.pixel_y = 6
-	M.old_y = 6
-	src.buckled_mobs |= M
-	src.add_fingerprint(user)
-	return
+
+	return ..()
+
+/obj/structure/bed/nest/user_buckle_feedback(mob/M, flags, mob/user, semantic)
+	user.visible_message(\
+		"<span class='notice'>[user.name] secretes a thick vile goo, securing [M.name] into [src]!</span>",\
+		"<span class='warning'>[user.name] drenches you in a foul-smelling resin, trapping you in the [src]!</span>",\
+		"<span class='notice'>You hear squelching...</span>")
 
 /obj/structure/bed/nest/attackby(obj/item/W as obj, mob/user as mob)
 	var/aforce = W.force

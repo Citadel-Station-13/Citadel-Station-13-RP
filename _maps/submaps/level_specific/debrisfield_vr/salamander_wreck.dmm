@@ -1,14 +1,14 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ab" = (
 /obj/machinery/door/airlock/glass_external/public,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander_wreck)
 "aK" = (
 /obj/machinery/door/airlock/glass_external/public,
-/atom/movable/map_helper/airlock/door/ext_door,
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
+/obj/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle{
 	dir = 1;
 	pixel_x = 24;
@@ -47,7 +47,7 @@
 	},
 /area/shuttle/salamander_wreck_head)
 "bu" = (
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/machinery/airlock_sensor{
 	dir = 4;
@@ -59,7 +59,6 @@
 "bI" = (
 /obj/structure/handrail,
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -125,8 +124,6 @@
 /area/shuttle/salamander_wreck_head)
 "bY" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -152,7 +149,6 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -185,7 +181,7 @@
 /area/shuttle/salamander_wreck_head)
 "cX" = (
 /obj/machinery/door/airlock/glass_external/public,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander_wreck)
@@ -221,8 +217,6 @@
 /area/shuttle/salamander_wreck_engineering)
 "dO" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -276,7 +270,7 @@
 	},
 /area/shuttle/salamander_wreck_q2)
 "eJ" = (
-/atom/movable/map_helper/airlock/sensor/int_sensor,
+/obj/map_helper/airlock/sensor/int_sensor,
 /obj/machinery/airlock_sensor{
 	dir = 8;
 	pixel_x = 21
@@ -289,8 +283,6 @@
 "eP" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -331,8 +323,6 @@
 /area/shuttle/salamander_wreck_engineering)
 "fE" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/railing/grey{
@@ -391,8 +381,6 @@
 /area/shuttle/salamander_wreck)
 "gl" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -407,7 +395,6 @@
 /area/shuttle/salamander_wreck_q2)
 "gv" = (
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/structure/handrail,
@@ -495,8 +482,6 @@
 /area/shuttle/salamander_wreck)
 "hp" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
@@ -524,8 +509,6 @@
 /area/shuttle/salamander_wreck_cockpit)
 "hO" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -558,8 +541,6 @@
 /area/shuttle/salamander_wreck_engineering)
 "im" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -571,13 +552,9 @@
 /area/shuttle/salamander_wreck_engineering)
 "is" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -587,8 +564,6 @@
 /area/shuttle/salamander_wreck_engineering)
 "iC" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -598,8 +573,6 @@
 /area/shuttle/salamander_wreck)
 "iJ" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -630,8 +603,6 @@
 /area/shuttle/salamander_wreck)
 "iS" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -642,8 +613,6 @@
 /area/shuttle/salamander_wreck)
 "iW" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -677,18 +646,12 @@
 /area/shuttle/salamander_wreck)
 "jT" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
@@ -708,8 +671,6 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -732,8 +693,6 @@
 /area/shuttle/salamander_wreck_engineering)
 "kL" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/handrail{
@@ -789,8 +748,6 @@
 "ld" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -890,8 +847,8 @@
 	},
 /area/shuttle/salamander_wreck_engineering)
 "mg" = (
-/atom/movable/map_helper/airlock/door/ext_door,
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
+/obj/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle{
 	pixel_x = 24;
 	pixel_y = -11
@@ -957,8 +914,6 @@
 /area/shuttle/salamander_wreck_cockpit)
 "nB" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1002,7 +957,7 @@
 /area/shuttle/salamander_wreck)
 "oe" = (
 /obj/machinery/door/airlock/glass_external/public,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander_wreck)
 "oi" = (
@@ -1091,19 +1046,15 @@
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/structure/closet/walllocker/emerglocker/east,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander_wreck)
 "qg" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1122,7 +1073,6 @@
 "qn" = (
 /obj/structure/handrail,
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -1200,8 +1150,6 @@
 /area/shuttle/salamander_wreck)
 "rw" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
@@ -1217,8 +1165,6 @@
 	dir = 4
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techmaint/airless,
@@ -1260,8 +1206,6 @@
 /area/shuttle/salamander_wreck_galley)
 "vI" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1278,8 +1222,6 @@
 /area/shuttle/salamander_wreck)
 "xL" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1293,8 +1235,6 @@
 /area/shuttle/salamander_wreck)
 "yv" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1308,8 +1248,6 @@
 /area/shuttle/salamander_wreck)
 "zO" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1340,7 +1278,6 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -1372,7 +1309,7 @@
 	},
 /area/shuttle/salamander_wreck)
 "BE" = (
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external/public{
 	density = 0;
 	icon_state = "door_open"
@@ -1453,8 +1390,6 @@
 /area/shuttle/salamander_wreck_cockpit)
 "HG" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/structure/handrail{
@@ -1500,8 +1435,6 @@
 /area/shuttle/salamander_wreck)
 "IQ" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1544,7 +1477,7 @@
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/salamander_wreck)
 "Kw" = (
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
 	},
@@ -1577,8 +1510,6 @@
 /area/shuttle/salamander_wreck_engineering)
 "No" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1665,8 +1596,6 @@
 "Qq" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1683,7 +1612,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/structure/closet/walllocker/emerglocker/east,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/salamander_wreck)
@@ -1753,8 +1682,6 @@
 /area/shuttle/salamander_wreck_q2)
 "Td" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/structure/railing/grey{
@@ -1811,12 +1738,11 @@
 	density = 0;
 	icon_state = "door_open"
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/salamander_wreck)
 "Vh" = (
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/structure/handrail{
@@ -1871,8 +1797,6 @@
 /area/shuttle/salamander_wreck_engineering)
 "WN" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/multi_tile/metal{
@@ -1939,7 +1863,6 @@
 	anchored = 1
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/alarm/alarms_hidden{

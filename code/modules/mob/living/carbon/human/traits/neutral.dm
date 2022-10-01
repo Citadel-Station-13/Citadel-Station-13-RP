@@ -255,3 +255,18 @@
 /datum/trait/neutral/size_change/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
 	H.verbs |= /mob/living/proc/set_size
+
+/* WIP
+/datum/trait/neutral/cyberpsycho
+	name = "Cyberpsychosis"
+	desc = "In a transhuman society there are always those few who lack the ability to interface safely with cyberware. Whether it exhibits itself as an allergy during their first implant, or as gradual mental degradation, those who are poorly adapted to cyberware have only two futures to look forward to."
+	cost = 0
+	custom_only = FALSE
+	var_changes = list(
+		"is_cyberpsycho" = TRUE
+	)
+
+/datum/trait/neutral/cyberpsycho/apply(datum/species/S, mob/living/carbon/human/H)
+	..(S,H)
+	H.AddComponent(/datum/component/cyberpsychosis)
+*/

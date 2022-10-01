@@ -108,21 +108,14 @@
 				if(blocked)
 					to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
 					return
-
-			if(!istype(M, /mob/living/carbon/slime)) // If you're feeding it to someone else.
-
 				user.visible_message(SPAN_DANGER("[user] attempts to feed [M] [src]."))
-
 				user.setClickCooldown(user.get_attack_speed(src))
-				if(!do_mob(user, M)) return
-
+				if(!do_mob(user, M, 3 SECONDS))
+					return
 				//Do we really care about this
+				// yes we do you idiot
 				add_attack_logs(user,M,"Fed with [src.name] containing [reagentlist(src)]", admin_notify = FALSE)
-
 				user.visible_message("<span class='danger'>[user] feeds [M] [src].</span>")
-
-			else
-				to_chat(user, "This creature does not seem to have a mouth!")
 				return
 
 		if(reagents)								//Handle ingestion of the reagent.
@@ -614,7 +607,7 @@
 
 /obj/item/reagent_containers/food/snacks/egg/throw_impact(atom/hit_atom)
 	. = ..()
-	new/obj/effect/decal/cleanable/egg_smudge(src.loc)
+	new/obj/effect/debris/cleanable/egg_smudge(src.loc)
 	src.reagents.splash(hit_atom, reagents.total_volume)
 	src.visible_message("<font color='red'>[src.name] has been squashed.</font>","<font color='red'>You hear a smack.</font>")
 	qdel(src)
@@ -1113,7 +1106,7 @@
 
 /obj/item/reagent_containers/food/snacks/pie/throw_impact(atom/hit_atom)
 	. = ..()
-	new/obj/effect/decal/cleanable/pie_smudge(src.loc)
+	new/obj/effect/debris/cleanable/pie_smudge(src.loc)
 	src.visible_message("<span class='danger'>\The [src.name] splats.</span>","<span class='danger'>You hear a splat.</span>")
 	qdel(src)
 
@@ -6650,3 +6643,16 @@ END CITADEL CHANGE */
 	. = ..()
 	reagents.add_reagent("protein", 7)
 	bitesize = 2
+	
+/obj/item/reagent_containers/food/snacks/brainsnax
+	name = "Brainsnax"
+	desc = "A green can, filled to the brim with vatgrown brain matter, in all its juicy glory. Rich in lymbic system!"
+	icon_state = "brainsnaxopen"
+	trash = /obj/item/trash/brainsnaxtrash
+	nutriment_amt = 5
+	nutriment_desc = list("protein" = 3, "iron" = 2)
+
+/obj/item/reagent_containers/food/snacks/bugsnacks/Initialize(mapload)
+	. = ..()
+	bitesize = 2
+	

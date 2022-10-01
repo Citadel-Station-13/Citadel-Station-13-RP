@@ -966,3 +966,13 @@
 	result = "microcillin"
 	required_reagents = list("sizeoxadone" = 20, "sodiumchloride" = 20)
 	result_amount = 1
+
+/datum/chemical_reaction/gunpowder
+	name = "Gunpowder"
+	id = "gunpowder"
+	result = "gunpowder"
+	result_amount = 1
+	required_reagents = list("sulfur" = 1, "carbon" = 1, "potassium" = 1)
+
+
+

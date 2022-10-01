@@ -874,7 +874,7 @@
 /turf/simulated/floor/outdoors/grass/heavy
 	name = "heavy grass"
 	icon_state = "grass-heavy0"
-	edge_blending_priority = 4
+	edge_blending_priority = 0
 	initial_flooring = /decl/flooring/grass/heavy
 	baseturfs = /turf/simulated/floor/outdoors/dirt
 	grass_chance = 40
@@ -887,6 +887,7 @@
     name = "heavy grass"
     desc = "A dense sheet of harvested turf used in interior decoration."
     outdoors = FALSE
+
 //=========Eris Plating==========\\
 // This is the light grey tiles with random geometric shapes extruded
 /decl/flooring/eris_plating

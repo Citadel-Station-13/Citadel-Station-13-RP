@@ -3,8 +3,9 @@
 	desc = "A flimsy lattice of metal rods, with screws to secure it to the floor."
 	icon = 'icons/obj/structures_vr.dmi'
 	icon_state = "grille"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
+	pass_flags_self = ATOM_PASS_GRILLE
 	pressure_resistance = 5*ONE_ATMOSPHERE
 	layer = TABLE_LAYER
 	explosion_resistance = 1
@@ -49,12 +50,9 @@
 	attack_generic(user,damage_dealt,attack_message)
 
 /obj/structure/grille/CanAllowThrough(atom/movable/mover, turf/target)
-	. = ..()
-	if(istype(mover) && mover.checkpass(PASSGRILLE))
+	if(istype(mover, /obj/item/projectile) && prob(30))
 		return TRUE
-	if(istype(mover, /obj/item/projectile))
-		return prob(30)
-	return !density
+	return ..()
 
 /obj/structure/grille/bullet_act(var/obj/item/projectile/Proj)
 	if(!Proj)	return
@@ -97,12 +95,12 @@
 		return FALSE
 	else if(W.is_wirecutter())
 		if(!shock(user, 100))
-			playsound(src, W.usesound, 100, 1)
+			playsound(src, W.tool_sound, 100, 1)
 			new /obj/item/stack/rods(get_turf(src), destroyed ? 1 : 2)
 			qdel(src)
 	else if((W.is_screwdriver()) && (istype(loc, /turf/simulated) || anchored))
 		if(!shock(user, 90))
-			playsound(src, W.usesound, 100, 1)
+			playsound(src, W.tool_sound, 100, 1)
 			anchored = !anchored
 			user.visible_message("<span class='notice'>[user] [anchored ? "fastens" : "unfastens"] the grille.</span>", \
 								 "<span class='notice'>You have [anchored ? "fastened the grille to" : "unfastened the grille from"] the floor.</span>")

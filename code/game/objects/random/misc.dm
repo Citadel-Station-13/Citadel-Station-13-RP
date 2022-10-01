@@ -526,8 +526,8 @@
 /obj/random/mouseremains/item_to_spawn()
 	return pick(/obj/item/assembly/mousetrap,
 				/obj/item/assembly/mousetrap/armed,
-				/obj/effect/decal/cleanable/spiderling_remains,
-				/obj/effect/decal/cleanable/ash,
+				/obj/effect/debris/cleanable/spiderling_remains,
+				/obj/effect/debris/cleanable/ash,
 				/obj/item/cigbutt,
 				/obj/item/cigbutt/cigarbutt,
 				/obj/effect/decal/remains/mouse)
@@ -769,6 +769,7 @@
 					prob(8);/obj/item/gun/projectile/automatic/c20r,\
 					prob(8);/obj/item/melee/energy/sword,\
 					prob(8);/obj/item/gun/projectile/derringer,\
+					prob(8);/obj/item/gun/projectile/konigin,\
 					prob(8);/obj/item/gun/projectile/revolver/lemat,\
 				/*	prob(8);/obj/item/gun/projectile/shotgun/pump/rifle/mosin,\ */
 				/*	prob(8);/obj/item/gun/projectile/automatic/m41a,\ */

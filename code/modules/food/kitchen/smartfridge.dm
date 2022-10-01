@@ -242,7 +242,7 @@
 	if(O.is_screwdriver())
 		panel_open = !panel_open
 		user.visible_message("[user] [panel_open ? "opens" : "closes"] the maintenance panel of \the [src].", "You [panel_open ? "open" : "close"] the maintenance panel of \the [src].")
-		playsound(src, O.usesound, 50, 1)
+		playsound(src, O.tool_sound, 50, 1)
 		overlays.Cut()
 		if(panel_open)
 			overlays += image(icon, icon_panel)
@@ -403,7 +403,7 @@
 	if(!throw_item)
 		return 0
 	spawn(0)
-		throw_item.throw_at(target,16,3,src)
+		throw_item.throw_at_old(target,16,3,src)
 	src.visible_message("<span class='warning'>[src] launches [throw_item.name] at [target.name]!</span>")
 	return 1
 

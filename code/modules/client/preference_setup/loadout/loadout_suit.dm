@@ -342,6 +342,18 @@ datum/gear/suit/duster
 	name = "Ronin Coat"
 	path = /obj/item/clothing/suit/storage/hooded/ronincoat
 
+/datum/gear/suit/runnerjacket
+	name = "Runner Jacket"
+	path = /obj/item/clothing/suit/storage/runner
+
+/datum/gear/suit/halfmoon
+	name = "Half Moon Jacket"
+	path = /obj/item/clothing/suit/storage/runner/half_moon
+
+/datum/gear/suit/halfpintjacket
+	name = "Half-Pint Jacket"
+	path = /obj/item/clothing/suit/storage/toggle/half_pint
+
 /datum/gear/suit/labcoat_colorable
 	name = "Labcoat - Colorable"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat

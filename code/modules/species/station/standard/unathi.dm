@@ -77,7 +77,7 @@
 
 	reagent_tag = IS_UNATHI
 
-	move_trail = /obj/effect/decal/cleanable/blood/tracks/claw
+	move_trail = /obj/effect/debris/cleanable/blood/tracks/claw
 
 	has_limbs = list(
 		BP_TORSO  = list("path" = /obj/item/organ/external/chest/unathi),

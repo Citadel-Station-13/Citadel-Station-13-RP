@@ -2,8 +2,7 @@
 	name = "wheelchair"
 	desc = "You sit in this. Either by will or force."
 	icon_state = "wheelchair"
-	anchored = 0
-	buckle_movable = 1
+	anchored = FALSE
 
 	var/last_active_move = 0
 	var/driving = 0
@@ -163,14 +162,14 @@
 		var/mob/living/occupant = unbuckle_mob()
 
 		if (pulling_along && (pulling_along.a_intent == INTENT_HARM))
-			occupant.throw_at(A, 3, 3, pulling_along)
+			occupant.throw_at_old(A, 3, 3, pulling_along)
 		else if (propelled)
-			occupant.throw_at(A, 3, propelled)
+			occupant.throw_at_old(A, 3, propelled)
 
 		var/def_zone = ran_zone()
 		var/blocked = occupant.run_armor_check(def_zone, "melee")
 		var/soaked = occupant.get_armor_soak(def_zone, "melee")
-		occupant.throw_at(A, 3, propelled)
+		occupant.throw_at_old(A, 3, propelled)
 		occupant.apply_effect(6, STUN, blocked)
 		occupant.apply_effect(6, WEAKEN, blocked)
 		occupant.apply_effect(6, STUTTER, blocked)
@@ -193,7 +192,7 @@
 			occupant.visible_message("<span class='danger'>[occupant] crashed into \the [A]!</span>")
 
 /obj/structure/bed/chair/wheelchair/proc/create_track()
-	var/obj/effect/decal/cleanable/blood/tracks/B = new(loc)
+	var/obj/effect/debris/cleanable/blood/tracks/B = new(loc)
 	var/newdir = get_dir(get_step(loc, dir), loc)
 	if(newdir == dir)
 		B.setDir(newdir)
@@ -206,13 +205,17 @@
 		B.setDir(newdir)
 	bloodiness--
 
-/obj/structure/bed/chair/wheelchair/buckle_mob(mob/living/M, forced = FALSE, check_loc = TRUE)
-	if(issilicon(M))	// No abusing wheelchairs.
-		return
+/obj/structure/bed/chair/wheelchair/can_buckle_mob(mob/M, flags, mob/user, semantic)
+	if(issilicon(M))
+		return FALSE
+	return ..()
+
+/obj/structure/bed/chair/wheelchair/mob_buckled(mob/M, flags, mob/user, semantic)
+	. = ..()
 	if(M == pulling_along)
 		pulling_along = null
-		usr.pulledby = null
-	return ..()
+		if(M.pulledby == src)
+			M.pulledby = null
 
 /obj/item/wheelchair
 	name = "wheelchair"

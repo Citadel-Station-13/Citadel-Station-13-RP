@@ -23,7 +23,7 @@
 
 /obj/structure/sign/attackby(obj/item/tool as obj, mob/user as mob)	//deconstruction
 	if(tool.is_screwdriver() && !istype(src, /obj/structure/sign/double))
-		playsound(src, tool.usesound, 50, 1)
+		playsound(src, tool.tool_sound, 50, 1)
 		to_chat(user, "You unfasten the sign with your [tool].")
 		var/obj/item/sign/S = new(src.loc)
 		S.name = name

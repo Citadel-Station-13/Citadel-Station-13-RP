@@ -9,7 +9,8 @@
 /datum/map_template/shelter/New()
 	. = ..()
 	blacklisted_turfs = typecacheof(list(/turf/unsimulated, /turf/simulated/floor))
-	banned_areas = typecacheof(/area/shuttle)
+	// todo: if you have to modify this list again ping silicons and yell at them to code AREA_IMMUTABLE, AREA_FORBID_MAPLOADING_ITEMS, wnd maybe, just maybe, subareas.
+	banned_areas = typecacheof(/area/shuttle, /area/rift/surfacebase/shuttle)
 	banned_objects = list()
 
 /datum/map_template/shelter/proc/check_deploy(turf/deploy_location)

@@ -424,7 +424,8 @@
 	desc = "An armoured suit for exploring harsh environments."
 	icon_state = "explorer"
 	item_state = "explorer"
-	flags = THICKMATERIAL | PHORONGUARD
+	flags = PHORONGUARD
+	clothing_flags = THICKMATERIAL
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
@@ -463,7 +464,8 @@
 	name = "eldritch garment"
 	desc = "A billowing garment that seeps a thick, waxy substance. Upon closer inspection this outfit is crafted out of tanned skin, the ritual icons and spells drawn onto it having been tattooed before removal."
 	icon_state = "eldritch_armor"
-	flags = HIDEHOLSTER|THICKMATERIAL
+	clothing_flags = THICKMATERIAL
+	flags_inv = HIDEHOLSTER
 	item_state_slots = list(slot_r_hand_str = "brown_jacket", slot_l_hand_str = "brown_jacket")
 	action_button_name = "Toggle Eldritch Hood"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
@@ -528,3 +530,15 @@
 	hoodtype = /obj/item/clothing/head/hood/rainponcho
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/melee/umbrella)
+
+//Donator jacket.
+/obj/item/clothing/suit/storage/hooded/pariah
+	name = "Springtime Pariah Moto Jacket"
+	desc = "A leather jacket commonly associated with hoverbike riders. Stitched over pockets in the shoulder and chest panels suggest it could take armor inserts at some point in its past. The custom embroidery and cut implies this was made for someone special. There are no manufacturers marks, beyond a small tag bearing a stylized letter 'K'."
+	icon_state = "pariah"
+	flags_inv = HIDEHOLSTER
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	hoodtype = /obj/item/clothing/head/hood/pariah
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)

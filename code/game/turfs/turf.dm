@@ -315,7 +315,7 @@
 			var/turf/simulated/T = src
 			T.dirt = 0
 		for(var/obj/effect/O in src)
-			if(istype(O,/obj/effect/rune) || istype(O,/obj/effect/decal/cleanable) || istype(O,/obj/effect/overlay))
+			if(istype(O,/obj/effect/rune) || istype(O,/obj/effect/debris/cleanable) || istype(O,/obj/effect/overlay))
 				qdel(O)
 	else
 		to_chat(user, "<span class='warning'>\The [source] is too dry to wash that.</span>")
@@ -325,13 +325,14 @@
 	return
 
 // Called when turf is hit by a thrown object
-/turf/hitby(atom/movable/AM as mob|obj, var/speed)
+/turf/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	if(src.density)
 		spawn(2)
-			step(AM, turn(AM.last_move, 180))
-		if(isliving(AM))
+			step(AM, turn(AM.last_move_dir, 180))
+		if(isliving(AM) && !(TT.throw_flags & THROW_AT_IS_GENTLE))
 			var/mob/living/M = AM
-			M.turf_collision(src, speed)
+			M.turf_collision(src, TT.speed)
 
 /turf/AllowDrop()
 	return TRUE
@@ -397,3 +398,15 @@
 // We were the the B-side in a turf translation
 /turf/proc/post_translate_B(var/turf/A)
 	return
+
+/turf/has_gravity()
+	if(loc.has_gravity(src))
+		return TRUE
+/*
+	else
+		// There's a gravity generator on our z level
+		if(GLOB.gravity_generators["[z]"])
+			//? length check
+			return TRUE
+*/
+	return SSmapping.level_trait(z, ZTRAIT_GRAVITY)

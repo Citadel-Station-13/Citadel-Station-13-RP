@@ -6,8 +6,7 @@ GLOBAL_DATUM_INIT(no_ceiling_image, /image, generate_no_ceiling_image())
 	return I
 
 /turf/simulated/floor/custom_smooth()
-	update_icon()
-	update_border_spillover()
+	return		// we'll update_icon().
 
 /turf/simulated/floor/calculate_adjacencies()
 	return NONE
@@ -18,7 +17,6 @@ var/list/flooring_cache = list()
 
 /turf/simulated/floor/update_icon()
 	cut_overlays()
-
 	if(flooring)
 		// Set initial icon and strings.
 		name = flooring.name
@@ -90,6 +88,8 @@ var/list/flooring_cache = list()
 	if(isopenturf(above) && !istype(src, /turf/simulated/floor/outdoors)) // This won't apply to outdoor turfs since its assumed they don't have a ceiling anyways.
 		add_overlay(GLOB.no_ceiling_image)
 
+	update_border_spillover()	// sigh
+
 	// ..() has to be last to prevent trampling managed overlays
 	. = ..()
 
@@ -106,17 +106,25 @@ var/list/flooring_cache = list()
 		return		// not us
 	for(var/d in GLOB.cardinal)
 		var/turf/simulated/F = get_step(src, d)
-		if(!istype(F))
+		// todo: BETTER ICON SYSTEM BUT HEY I GUESS WE'LL CHECK DENSITY
+		if(!istype(F) || F.density)
 			continue
 		// check that their priority is lower than ours, and we don't have the same icon state
 		if(F.edge_blending_priority < edge_blending_priority && icon_state != F.icon_state)
-			var/key = "[F.icon_state || F.edge_icon_state]-[d]"
-			add_overlay(GLOB.turf_edge_cache[key] || generate_border_cache_for(F.icon_state || F.edge_icon_state, d))
+			var/key = "[icon_state || edge_icon_state]-[d]"
+			add_overlay(GLOB.turf_edge_cache[key] || generate_border_cache_for(icon_state || edge_icon_state, d))
 
+// todo: better system
 /proc/generate_border_cache_for(state, dir)
 	// make it
-	var/image/I = image(icon = 'icons/turf/outdoors_edge.dmi', icon_state = state, dir = turn(dir, 180), layer = ABOVE_TURF_LAYER)
-	I.plane = TURF_PLANE
+	var/static/list/states = icon_states('icons/turf/outdoors_edge.dmi')
+	var/actual
+	if(state in states)
+		actual = state
+	else if("[state]-edge" in states)
+		actual = "[state]-edge"
+	var/image/I = image('icons/turf/outdoors_edge.dmi', icon_state = actual, layer = ABOVE_TURF_LAYER, dir = turn(dir, 180))
+	I.plane = FLOAT_PLANE
 	switch(dir)
 		if(NORTH)
 			I.pixel_y = 32

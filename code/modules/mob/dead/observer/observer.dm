@@ -573,7 +573,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	var/list/choices = list()
-	for(var/obj/effect/decal/cleanable/blood/B in view(1,src))
+	for(var/obj/effect/debris/cleanable/blood/B in view(1,src))
 		if(B.amount > 0)
 			choices += B
 
@@ -581,7 +581,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, "<span class = 'warning'>There is no blood to use nearby.</span>")
 		return
 
-	var/obj/effect/decal/cleanable/blood/choice = input(src,"What blood would you like to use?") in null|choices
+	var/obj/effect/debris/cleanable/blood/choice = input(src,"What blood would you like to use?") in null|choices
 
 	var/direction = input(src,"Which way?","Tile selection") as anything in list("Here","North","South","East","West")
 	var/turf/simulated/T = src.loc
@@ -598,7 +598,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/doodle_color = (choice.basecolor) ? choice.basecolor : "#A10808"
 
 	var/num_doodles = 0
-	for (var/obj/effect/decal/cleanable/blood/writing/W in T)
+	for (var/obj/effect/debris/cleanable/blood/writing/W in T)
 		num_doodles++
 	if (num_doodles > 4)
 		to_chat(src, "<span class='warning'>There is no space to write on!</span>")
@@ -614,7 +614,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			message += "-"
 			to_chat(src, "<span class='warning'>You ran out of blood to write with!</span>")
 
-		var/obj/effect/decal/cleanable/blood/writing/W = new(T)
+		var/obj/effect/debris/cleanable/blood/writing/W = new(T)
 		W.basecolor = doodle_color
 		W.update_icon()
 		W.message = message
@@ -639,7 +639,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		)
 		toggle_visibility(TRUE)
 	else
-		var/datum/gender/T = gender_datums[user.get_visible_gender()]
+		var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
 		user.visible_message ( \
 			"<span class='warning'>\The [user] just tried to smash [T.his] book into that ghost!  It's not very effective.</span>", \
 			"<span class='warning'>You get the feeling that the ghost can't become any more visible.</span>" \

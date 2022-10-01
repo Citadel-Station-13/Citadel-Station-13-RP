@@ -7,11 +7,11 @@
 /area/class_d/explored)
 "c" = (
 /obj/machinery/door/airlock/glass_engineering,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/explored)
 "d" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/explored)
 "e" = (
@@ -25,28 +25,28 @@
 /area/class_d/explored)
 "g" = (
 /obj/item/geiger,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/explored)
 "h" = (
 /obj/effect/map_effect/radiation_emitter/strong,
 /obj/item/poi/brokenoldreactor,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/explored)
 "i" = (
 /obj/effect/map_effect/interval/sound_emitter/geiger/ext,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/explored)
 "n" = (
 /obj/random/tool/power,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/explored)
 "r" = (
 /obj/mob_spawner/drone_spawner,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/explored)
 

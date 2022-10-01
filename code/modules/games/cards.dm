@@ -105,7 +105,8 @@
 		H = new(get_turf(src))
 		user.put_in_hands(H)
 
-	if(!H || !user) return
+	if(!H || !user)
+		return
 
 	var/datum/playingcard/P = cards[1]
 	H.cards += P
@@ -176,11 +177,11 @@
 		H.concealed = 1
 		H.update_icon()
 	if(user==target)
-		var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+		var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 		user.visible_message("<span class = 'notice'>\The [user] deals [dcard] card(s) to [TU.himself].</span>")
 	else
 		user.visible_message("<span class = 'notice'>\The [user] deals [dcard] card(s) to \the [target].</span>")
-	H.throw_at(get_step(target,target.dir),10,1,H)
+	H.throw_at_old(get_step(target,target.dir),10,1,H)
 
 
 /obj/item/hand/attackby(obj/O as obj, mob/user as mob)
@@ -392,11 +393,9 @@
 	return
 
 /obj/item/hand/update_icon(var/direction = 0)
-
 	if(!cards.len)
-		qdel(src)
-		return
-	else if(cards.len > 1)
+		return		// about to be deleted
+	if(cards.len > 1)
 		name = "hand of cards"
 		desc = "Some playing cards."
 	else

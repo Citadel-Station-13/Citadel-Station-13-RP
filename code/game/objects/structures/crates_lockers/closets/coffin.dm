@@ -80,7 +80,7 @@
 			user.visible_message("<span class='notice'>[user] piles dirt into \the [src.name].</span>", \
 								 "<span class='notice'>You start to pile dirt into \the [src.name].</span>", \
 								 "<span class='notice'>You hear dirt being moved.</span>")
-			if(do_after(user, 40 * W.toolspeed))
+			if(do_after(user, 40 * W.tool_speed))
 				user.visible_message("<span class='notice'>[user] pats down the dirt on top of \the [src.name].</span>", \
 								 "<span class='notice'>You finish filling in \the [src.name].</span>")
 				close()
@@ -116,7 +116,7 @@
 				user.visible_message("<span class='notice'>[user] begins to smoothe out the dirt of \the [src.name].</span>", \
 									 "<span class='notice'>You start to smoothe out the dirt of \the [src.name].</span>", \
 									 "<span class='notice'>You hear dirt being moved.</span>")
-				if(do_after(user, 40 * W.toolspeed))
+				if(do_after(user, 40 * W.tool_speed))
 					user.visible_message("<span class='notice'>[user] finishes smoothing out \the [src.name].</span>", \
 										 "<span class='notice'>You finish smoothing out \the [src.name].</span>")
 					if(LAZYLEN(contents))
@@ -132,7 +132,7 @@
 				user.visible_message("<span class='notice'>[user] begins to unearth \the [src.name].</span>", \
 									 "<span class='notice'>You start to unearth \the [src.name].</span>", \
 									 "<span class='notice'>You hear dirt being moved.</span>")
-				if(do_after(user, 40 * W.toolspeed))
+				if(do_after(user, 40 * W.tool_speed))
 					user.visible_message("<span class='notice'>[user] reaches the bottom of \the [src.name].</span>", \
 										 "<span class='notice'>You finish digging out \the [src.name].</span>")
 					break_open()

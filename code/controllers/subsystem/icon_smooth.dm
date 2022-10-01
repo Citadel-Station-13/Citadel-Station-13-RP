@@ -36,6 +36,7 @@ SUBSYSTEM_DEF(icon_smooth)
 	smooth_queue = list()
 	deferred = list()
 
+#ifndef FASTBOOT_DISABLE_SMOOTHING
 	// smooth everything
 	for(var/i in 1 to world.maxz)
 		smooth_zlevel(i, TRUE)
@@ -63,6 +64,7 @@ SUBSYSTEM_DEF(icon_smooth)
 	// 		continue
 	// 	var/turf/item_loc = movable_item.loc
 	// 	item_loc.add_blueprints(movable_item)
+#endif
 
 	return ..()
 

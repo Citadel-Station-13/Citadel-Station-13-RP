@@ -10,6 +10,10 @@
 		ANTAG_HUD
 	)
 
+	//! Buckling - For riding.dm
+	buckle_allowed = TRUE
+	buckle_flags = BUCKLING_NO_DEFAULT_BUCKLE // custom procs handle that
+
 //! ## Hair colour and style
 	var/r_hair = 0
 	var/g_hair = 0

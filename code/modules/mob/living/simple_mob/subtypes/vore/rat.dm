@@ -32,17 +32,9 @@
 	attacktext = list("ravaged")
 	friendly = list("nuzzles", "licks", "noses softly at", "noseboops", "headbumps against", "leans on", "nibbles affectionately on")
 
-	old_x = -16
-	old_y = 0
-	default_pixel_x = -16
-	pixel_x = -16
-	pixel_y = 0
-
-	max_buckled_mobs = 1 //Yeehaw
-	can_buckle = TRUE
-	buckle_movable = TRUE
-	buckle_lying = FALSE
-	mount_offset_y = 10
+	base_pixel_x = -16
+	icon_dimension_x = 64
+	icon_dimension_y = 32
 
 	vore_active = TRUE
 	vore_capacity = 1

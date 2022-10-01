@@ -6,7 +6,7 @@
 	icon_state = "grey slime extract"
 	force = 1
 	w_class = ITEMSIZE_TINY
-	throwforce = 0
+	throw_force = 0
 	throw_speed = 3
 	throw_range = 6
 	origin_tech = list(TECH_BIO = 4)
@@ -526,7 +526,7 @@
 	var/datum/gas_mixture/env = T.return_air()
 	if(env)
 		// This is most likely physically impossible but when has that stopped slimes before?
-		env.add_thermal_energy(-10 * 1000 * 1000) // For a moderately sized room this doesn't actually lower it that much.
+		env.adjust_thermal_energy(-10 * 1000 * 1000) // For a moderately sized room this doesn't actually lower it that much.
 
 	playsound(T, 'sound/effects/phasein.ogg', 75, 1)
 

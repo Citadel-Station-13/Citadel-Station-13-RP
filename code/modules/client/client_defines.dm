@@ -35,14 +35,15 @@
 	 */
 	parent_type = /datum
 
-		///////////////
-		// Rendering //
-		///////////////
-
+	//! Rendering
 	/// Click catcher
 	var/atom/movable/screen/click_catcher/click_catcher
 	/// Parallax holder
 	var/datum/parallax_holder/parallax_holder
+
+	//! Perspectives
+	/// the perspective we're currently using
+	var/datum/perspective/using_perspective
 
 		////////////////
 		//ADMIN THINGS//
@@ -60,12 +61,6 @@
 	var/last_message_count = 0
 	///Internal counter for clients sending irc relay messages via ahelp to prevent spamming. Set to a number every time an admin reply is sent, decremented for every client send.
 	var/ircreplyamount = 0
-
-		////////////////
-		//PERSPECTIVES//
-		////////////////
-	/// the perspective we're currently using
-	var/datum/perspective/using_perspective
 
 		/////////
 		//OTHER//

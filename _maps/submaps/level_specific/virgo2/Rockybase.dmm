@@ -37,7 +37,7 @@
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "ai" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "aj" = (
@@ -347,7 +347,7 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "bm" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "bn" = (
@@ -493,18 +493,18 @@
 "bM" = (
 /obj/structure/table/standard,
 /obj/structure/table/standard,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector/burn,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "bN" = (
 /obj/structure/table/standard,
 /obj/item/clothing/mask/breath/medical,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "bO" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "bP" = (
@@ -527,21 +527,21 @@
 /area/submap/virgo2/Rockybase)
 "bS" = (
 /obj/item/stack/rods,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "bT" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/girder,
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "bU" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "bV" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/table,
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
@@ -580,23 +580,18 @@
 /area/submap/virgo2/Rockybase)
 "cd" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "ce" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "cf" = (
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/smes/buildable/point_of_interest,
@@ -607,25 +602,25 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "ch" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "ci" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "cj" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/item/material/shard,
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "ck" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "cl" = (
@@ -651,7 +646,6 @@
 /area/submap/virgo2/Rockybase)
 "cq" = (
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/light{
@@ -667,18 +661,12 @@
 /area/submap/virgo2/Rockybase)
 "cr" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating/virgo2,
@@ -688,17 +676,16 @@
 	dir = 4
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/smes/buildable/point_of_interest,
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "ct" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "cu" = (
@@ -719,8 +706,6 @@
 /area/submap/virgo2/Rockybase)
 "cx" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/plating/virgo2,
@@ -771,7 +756,7 @@
 /area/submap/virgo2/Rockybase)
 "cI" = (
 /obj/item/surgical/surgicaldrill,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "cJ" = (
@@ -780,11 +765,11 @@
 /area/submap/virgo2/Rockybase)
 "cK" = (
 /obj/item/clothing/suit/space/void/medical,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "cL" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /mob/living/bot/medibot,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)

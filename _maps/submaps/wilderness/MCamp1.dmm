@@ -17,7 +17,7 @@
 /turf/template_noop,
 /area/submap/MilitaryCamp1)
 "f" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/template_noop,
 /area/submap/MilitaryCamp1)
 "g" = (
@@ -86,7 +86,7 @@
 /turf/simulated/floor,
 /area/submap/MilitaryCamp1)
 "v" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor,
 /area/submap/MilitaryCamp1)
 "w" = (
@@ -110,7 +110,7 @@
 /turf/simulated/floor,
 /area/submap/MilitaryCamp1)
 "A" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor,
 /area/submap/MilitaryCamp1)
@@ -128,7 +128,7 @@
 /turf/simulated/floor,
 /area/submap/MilitaryCamp1)
 "E" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/random/landmine,
 /turf/simulated/floor,
 /area/submap/MilitaryCamp1)
@@ -157,7 +157,7 @@
 /turf/simulated/floor,
 /area/submap/MilitaryCamp1)
 "K" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/random/landmine,
 /turf/template_noop,
 /area/submap/MilitaryCamp1)

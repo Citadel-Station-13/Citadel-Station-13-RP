@@ -46,7 +46,7 @@
 
 	reagent_tag = IS_TESHARI
 	meat_type   = /obj/item/reagent_containers/food/snacks/meat/chicken/teshari
-	move_trail = /obj/effect/decal/cleanable/blood/tracks/paw
+	move_trail = /obj/effect/debris/cleanable/blood/tracks/paw
 
 	slowdown          = -0.5
 	snow_movement     = -1 // Ignores light snow
@@ -57,7 +57,7 @@
 	burn_mod     = 1.1
 
 	mob_size     = MOB_SMALL
-	pass_flags   = PASSTABLE
+	pass_flags   = ATOM_PASS_TABLE
 	holder_type  = /obj/item/holder/human
 //	short_sighted = 1
 	gluttonous    = 1

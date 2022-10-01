@@ -17,7 +17,7 @@
 		edge = 1
 		sharp = 1
 		..() //Updates force.
-		throwforce = max(3,force-3)
+		throw_force = max(3,force-3)
 		hitsound = 'sound/weapons/bladeslice.ogg'
 		icon_state += "_open"
 		w_class = ITEMSIZE_NORMAL
@@ -81,7 +81,7 @@
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 /obj/item/material/knife/suicide_act(mob/user)
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	user.visible_message(pick("<span class='danger'>\The [user] is slitting [TU.his] wrists with \the [src]! It looks like [TU.hes] trying to commit suicide.</span>", \
 	                      "<span class='danger'>\The [user] is slitting [TU.his] throat with \the [src]! It looks like [TU.hes] trying to commit suicide.</span>", \
 	                      "<span class='danger'>\The [user] is slitting [TU.his] stomach open with \the [src]! It looks like [TU.hes] trying to commit seppuku.</span>"))
@@ -206,7 +206,7 @@
 	item_state = "knife"
 	applies_material_colour = FALSE
 	default_material = "plasteel"
-	toolspeed = 2 // Use a real axe if you want to chop logs.
+	tool_speed = 2 // Use a real axe if you want to chop logs.
 
 /obj/item/material/knife/tacknife/survival/bone
 	name = "primitive survival knife"
@@ -229,7 +229,7 @@
 	item_state = "knife"
 	applies_material_colour = FALSE
 	default_material = "plasteel"
-	toolspeed = 2 // Use a real axe if you want to chop logs.
+	tool_speed = 2 // Use a real axe if you want to chop logs.
 	var/gps_tag = "DAT&#%F0"
 	var/emped = FALSE
 	var/tracking = TRUE		// Will not show other signals or emit its own signal if false.

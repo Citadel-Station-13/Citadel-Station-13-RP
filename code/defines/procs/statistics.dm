@@ -1,6 +1,4 @@
 proc/sql_poll_population()
-	if(!sqllogging)
-		return
 	var/admincount = admins.len
 	var/playercount = 0
 	for(var/mob/M in player_list)
@@ -22,18 +20,7 @@ proc/sql_poll_population()
 			log_game("SQL ERROR during population polling. Error : \[[err]\]\n")
 		qdel(query)
 
-proc/sql_report_round_start()
-	// TODO
-	if(!sqllogging)
-		return
-proc/sql_report_round_end()
-	// TODO
-	if(!sqllogging)
-		return
-
 proc/sql_report_death(var/mob/living/carbon/human/H)
-	if(!sqllogging)
-		return
 	if(!H)
 		return
 	if(!H.key || !H.mind)
@@ -86,8 +73,6 @@ proc/sql_report_death(var/mob/living/carbon/human/H)
 		qdel(query)
 
 proc/sql_report_cyborg_death(var/mob/living/silicon/robot/H)
-	if(!sqllogging)
-		return
 	if(!H)
 		return
 	if(!H.key || !H.mind)
@@ -139,8 +124,6 @@ proc/sql_report_cyborg_death(var/mob/living/silicon/robot/H)
 
 
 proc/statistic_cycle()
-	if(!sqllogging)
-		return
 	while(1)
 		sql_poll_population()
 		sleep(6000)

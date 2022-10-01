@@ -253,7 +253,7 @@ datum/admins/proc/DB_ban_edit(var/banid = null, var/param = null)
 	var/pckey
 
 	var/datum/db_query/query = SSdbcore.RunQuery(
-		"SEELECT ckey FROM [format_table_name("ban")] WHERE id = :id",
+		"SELECT ckey FROM [format_table_name("ban")] WHERE id = :id",
 		list(
 			"id" = id
 		)

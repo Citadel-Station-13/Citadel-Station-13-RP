@@ -112,11 +112,11 @@
 		/obj/item/clothing/under/customs/khaki = 4,
 		/obj/item/clothing/suit/colonial_redcoat = 4,
 		/obj/item/clothing/head/redcoat = 4,
-		/obj/item/gun/projectile/contender = 1,
-		/obj/item/ammo_magazine/s357 = 2,
+		/obj/item/gun/projectile/musket/pistol = 1,
+		/obj/item/ammo_casing/musket  = 12,
 		/obj/item/storage/belt/sheath = 1,
-		/obj/item/gun/projectile/shotgun/pump/rifle = 3,
-		/obj/item/ammo_magazine/clip/c762 = 6,
+		/obj/item/gun/projectile/musket = 3,
+		/obj/item/reagent_containers/glass/powder_horn = 4,
 		/obj/item/reagent_containers/food/drinks/tea = 8
 	)
 

@@ -2,6 +2,8 @@
 // Base type of pipes
 //
 /obj/machinery/atmospherics/pipe
+	buckle_allowed = TRUE
+	buckle_flags = BUCKLING_REQUIRES_RESTRAINTS
 
 	var/datum/gas_mixture/air_temporary // used when reconstructing a pipeline that broke
 	var/datum/pipeline/parent
@@ -14,10 +16,6 @@
 
 	var/alert_pressure = 80*ONE_ATMOSPHERE
 		//minimum pressure before check_pressure(...) should be called
-
-	can_buckle = 1
-	buckle_require_restraints = 1
-	buckle_lying = -1
 
 /obj/machinery/atmospherics/pipe/Initialize(mapload, newdir)
 	if(istype(get_turf(src), /turf/simulated/wall) || istype(get_turf(src), /turf/simulated/shuttle/wall) || istype(get_turf(src), /turf/unsimulated/wall))
@@ -95,9 +93,9 @@
 	if(unsafe_pressure())
 		to_chat(user, "<span class='warning'>You feel a gust of air blowing in your face as you try to unwrench [src]. Maybe you should reconsider..</span>")
 	add_fingerprint(user)
-	playsound(src, W.usesound, 50, 1)
+	playsound(src, W.tool_sound, 50, 1)
 	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
-	if (do_after(user, 40 * W.toolspeed))
+	if (do_after(user, 40 * W.tool_speed))
 		user.visible_message( \
 			"<span class='notice'>\The [user] unfastens \the [src].</span>", \
 			"<span class='notice'>You have unfastened \the [src].</span>", \

@@ -55,7 +55,7 @@
 			update_icon()
 
 /obj/item/storage/wallet/handle_item_insertion(obj/item/W as obj, mob/user, prevent_warning = 0)
-	. = ..(W, prevent_warning)
+	. = ..()
 	if(.)
 		if(!front_id && istype(W, /obj/item/card/id))
 			front_id = W
