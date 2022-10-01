@@ -116,8 +116,7 @@
 			if(!(I.robotic >= ORGAN_ROBOT))
 				user.visible_message("<span class='notice'>[user] treats damage to [target]'s [I.name] with [tool_name].</span>", \
 				"<span class='notice'>You treat damage to [target]'s [I.name] with [tool_name].</span>" )
-				I.damage = 0
-				I.status = 0
+				I.revive(TRUE)
 				if(I.organ_tag == O_EYES)
 					target.sdisabilities &= ~BLIND
 				if(I.organ_tag == O_LUNGS)

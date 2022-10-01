@@ -28,7 +28,7 @@
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "cI" = (
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /obj/effect/floor_decal/rust,
 /obj/item/stack/material/steel,
 /obj/item/stack/material/steel,
@@ -58,8 +58,6 @@
 /area/submap/virgo2/CrashedSmuggler)
 "fa" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/door/blast/regular{
@@ -186,7 +184,7 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
@@ -195,8 +193,6 @@
 	dir = 1
 	},
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/hatch{
@@ -215,7 +211,7 @@
 /area/submap/virgo2/CrashedSmuggler/ship)
 "uX" = (
 /obj/structure/bed,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/item/bedsheet/brown,
 /obj/item/digestion_remains/ribcage,
 /obj/effect/floor_decal/rust,
@@ -248,8 +244,6 @@
 /area/submap/virgo2/CrashedSmuggler)
 "wQ" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/rust,
@@ -457,8 +451,6 @@
 	dir = 1
 	},
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
@@ -541,7 +533,7 @@
 /turf/simulated/shuttle/wall/voidcraft/red,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "Px" = (
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -573,7 +565,6 @@
 	},
 /obj/machinery/power/terminal,
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/light/small{
@@ -636,14 +627,12 @@
 	dir = 9
 	},
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "Yj" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
@@ -654,7 +643,7 @@
 	name = "Jammed Blast Door";
 	opacity = 0
 	},
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /obj/machinery/door/airlock/hatch{
 	name = "Bridge Hatch"
 	},

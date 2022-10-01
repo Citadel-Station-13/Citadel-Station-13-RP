@@ -27,7 +27,7 @@ obj/structure/firedoor_assembly/attackby(obj/item/C, mob/user as mob)
 				to_chat(user, "<span class='notice'>You wire \the [src].</span>")
 
 	else if(C.is_wirecutter() && wired )
-		playsound(src.loc, C.usesound, 100, 1)
+		playsound(src.loc, C.tool_sound, 100, 1)
 		user.visible_message("[user] cuts the wires from \the [src].", "You start to cut the wires from \the [src].")
 
 		if(do_after(user, 40))
@@ -48,7 +48,7 @@ obj/structure/firedoor_assembly/attackby(obj/item/C, mob/user as mob)
 			to_chat(user, "<span class='warning'>You must secure \the [src] first!</span>")
 	else if(C.is_wrench())
 		anchored = !anchored
-		playsound(src.loc, C.usesound, 50, 1)
+		playsound(src.loc, C.tool_sound, 50, 1)
 		user.visible_message("<span class='warning'>[user] has [anchored ? "" : "un" ]secured \the [src]!</span>",
 							  "You have [anchored ? "" : "un" ]secured \the [src]!")
 		update_icon()

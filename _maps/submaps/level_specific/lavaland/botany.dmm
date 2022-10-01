@@ -15,7 +15,7 @@
 /obj/item/clothing/under/rank/hydroponics,
 /obj/item/clothing/suit/storage/toggle/labcoat/green,
 /obj/item/clothing/head/greenbandana,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
 "k" = (
@@ -72,7 +72,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
 "Q" = (
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
 "R" = (
@@ -81,7 +81,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
 "S" = (
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /obj/item/material/knife/machete/hatchet,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)

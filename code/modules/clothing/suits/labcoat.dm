@@ -12,7 +12,7 @@
 /obj/item/clothing/suit/storage/toggle/labcoat/green
 	name = "green labcoat"
 	desc = "A suit that protects against minor chemical spills. This one is green."
-	icon_state = "green_labcoat"
+	icon_state = "labgreen"
 	item_state_slots = list(slot_r_hand_str = "green_labcoat", slot_l_hand_str = "green_labcoat")
 
 /obj/item/clothing/suit/storage/toggle/labcoat/cmo

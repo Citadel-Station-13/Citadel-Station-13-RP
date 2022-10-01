@@ -2,36 +2,47 @@
 	name = "window"
 	desc = "A window."
 	icon = 'icons/obj/structures_vr.dmi'
-	density = 1
+	density = TRUE
+	pass_flags_self = ATOM_PASS_GLASS
 	CanAtmosPass = ATMOS_PASS_PROC
 	w_class = ITEMSIZE_NORMAL
 
 	layer = WINDOW_LAYER
 	pressure_resistance = 4*ONE_ATMOSPHERE
-	anchored = 1.0
+	anchored = TRUE
 	flags = ON_BORDER
+
+	/// are we reinforced? this is only to modify our construction state/steps.
+	var/considered_reinforced = FALSE
+	/// construction state
+	var/construction_state = WINDOW_STATE_SECURED_TO_FRAME
+	/// determines if we're a full tile window, NOT THE ICON STATE.
+	var/fulltile = FALSE
+	/// i'm so sorry we have to do this - set to dir for allowthrough purposes
+	var/moving_right_now
+
 	var/maxhealth = 14.0
 	var/maximal_heat = T0C + 100 // Maximal heat before this window begins taking damage from fire
 	var/damage_per_fire_tick = 2.0 // Amount of damage per fire tick. Regular windows are not fireproof so they might as well break quickly.
 	var/health
 	var/force_threshold = 0
-	var/ini_dir = null
-	var/state = 2
-	var/reinf = 0
 	var/basestate
 	var/shardtype = /obj/item/material/shard
 	var/glasstype = null // Set this in subtypes. Null is assumed strange or otherwise impossible to dismantle, such as for shuttle glass.
 	var/silicate = 0 // number of units of silicate
-	var/fulltile = FALSE // Set to true on full-tile variants.
 
 /obj/structure/window/Initialize(mapload)
 	/// COMPATIBILITY PATCH - Replace this crap with a better solution (maybe copy /tg/'s ASAP!!)
+	// unfortunately no longer a compatibility patch ish due to clickcode...
 	check_fullwindow()
 	return ..()
 
 /obj/structure/window/proc/check_fullwindow()
 	if(dir & (dir - 1))		//diagonal!
 		fulltile = TRUE
+	if(fulltile)
+		// clickcode requires this :(
+		flags &= ~ON_BORDER
 
 /obj/structure/window/examine(mob/user)
 	. = ..()
@@ -104,11 +115,11 @@
 	if(display_message)
 		visible_message("[src] shatters!")
 	new shardtype(loc)
-	if(reinf)
+	if(considered_reinforced)
 		new /obj/item/stack/rods(loc)
 	if(is_fulltile())
 		new shardtype(loc) //todo pooling?
-		if(reinf)
+		if(considered_reinforced)
 			new /obj/item/stack/rods(loc)
 	qdel(src)
 	return
@@ -141,14 +152,21 @@
 	take_damage(50)
 
 /obj/structure/window/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSGLASS))
+	if(istype(mover, /obj/structure/window))
+		// if they're a window we have special handling
+		var/obj/structure/window/them = mover
+		if(is_fulltile() || them.is_fulltile())
+			// OUT.
+			return FALSE
+		// we're both single-way
+		if(them.moving_right_now == dir)
+			// OUT
+			return FALSE
 		return TRUE
-	if(is_fulltile())
-		return FALSE	//full tile window, you can't move into it!
-	if((get_dir(loc, target) & dir) || (get_dir(mover, target) == turn(dir, 180)))
-		return !density
-	else
+	if(!is_fulltile() && !(get_dir(mover, target) & turn(dir, 180)))
+		// we don't care about them if we're not fulltile and they're not moving into us
 		return TRUE
+	return ..()
 
 /obj/structure/window/CanAtmosPass(turf/T, d)
 	if(is_fulltile() || (d == dir))
@@ -158,9 +176,9 @@
 /obj/structure/window/CheckExit(atom/movable/AM, turf/target)
 	if(is_fulltile())
 		return TRUE
-	if(AM.checkpass(PASSGLASS))
+	if(check_standard_flag_pass(AM))
 		return TRUE
-	if(get_dir(AM.loc, target) == dir)
+	if(get_dir(src, target) & dir)
 		return FALSE
 	return TRUE
 
@@ -168,17 +186,17 @@
 	. = ..()
 	update_nearby_tiles(need_rebuild = TRUE)
 
-/obj/structure/window/hitby(AM as mob|obj)
-	..()
+/obj/structure/window/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	visible_message("<span class='danger'>[src] was hit by [AM].</span>")
 	var/tforce = 0
 	if(ismob(AM))
 		tforce = 40
 	else if(isobj(AM))
 		var/obj/item/I = AM
-		tforce = I.throwforce
-	if(reinf) tforce *= 0.25
-	if(health - tforce <= 7 && !reinf)
+		tforce = I.throw_force * TT.get_damage_multiplier()
+	if(considered_reinforced) tforce *= 0.25
+	if(health - tforce <= 7 && !considered_reinforced)
 		anchored = 0
 		update_verbs()
 		update_nearby_icons()
@@ -223,7 +241,7 @@
 		return
 	if(damage >= STRUCTURE_MIN_DAMAGE_THRESHOLD)
 		visible_message("<span class='danger'>[user] smashes into [src]!</span>")
-		if(reinf)
+		if(considered_reinforced)
 			damage = damage / 2
 		take_damage(damage)
 	else
@@ -240,8 +258,8 @@
 		if(health < maxhealth)
 			if(WT.remove_fuel(1 ,user))
 				to_chat(user, "<span class='notice'>You begin repairing [src]...</span>")
-				playsound(src, WT.usesound, 50, 1)
-				if(do_after(user, 40 * WT.toolspeed, target = src))
+				playsound(src, WT.tool_sound, 50, 1)
+				if(do_after(user, 40 * WT.tool_speed, target = src))
 					health = maxhealth
 			//		playsound(src, 'sound/items/Welder.ogg', 50, 1)
 					update_icon()
@@ -275,42 +293,10 @@
 					hit(50)
 			return
 
-	if(W.item_flags & NOBLUDGEON)
+	if(W.item_flags & ITEM_NOBLUDGEON)
 		return
 
-	if(W.is_screwdriver())
-		if(reinf && state >= 1)
-			state = 3 - state
-			update_nearby_icons()
-			playsound(src, W.usesound, 75, 1)
-			to_chat(user, "<span class='notice'>You have [state == 1 ? "un" : ""]fastened the window [state ? "from" : "to"] the frame.</span>")
-		else if(reinf && state == 0)
-			anchored = !anchored
-			update_nearby_icons()
-			update_verbs()
-			playsound(src, W.usesound, 75, 1)
-			update_nearby_tiles(need_rebuild = TRUE)
-			to_chat(user, "<span class='notice'>You have [anchored ? "" : "un"]fastened the frame [anchored ? "to" : "from"] the floor.</span>")
-		else if(!reinf)
-			anchored = !anchored
-			update_nearby_icons()
-			update_verbs()
-			playsound(src, W.usesound, 75, 1)
-			update_nearby_tiles(need_rebuild = TRUE)
-			to_chat(user, "<span class='notice'>You have [anchored ? "" : "un"]fastened the window [anchored ? "to" : "from"] the floor.</span>")
-	else if(W.is_crowbar() && reinf && state <= 1)
-		state = 1 - state
-		playsound(src, W.usesound, 75, 1)
-		to_chat(user, "<span class='notice'>You have pried the window [state ? "into" : "out of"] the frame.</span>")
-	else if(W.is_wrench() && !anchored && (!state || !reinf))
-		if(!glasstype)
-			to_chat(user, "<span class='notice'>You're not sure how to dismantle \the [src] properly.</span>")
-		else
-			playsound(src, W.usesound, 75, 1)
-			visible_message("<span class='notice'>[user] dismantles \the [src].</span>")
-			new glasstype(loc, is_fulltile()? 2 : 1)
-			qdel(src)
-	else if(istype(W, /obj/item/stack/cable_coil) && reinf && state == 0 && !istype(src, /obj/structure/window/reinforced/polarized))
+	else if(istype(W, /obj/item/stack/cable_coil) && considered_reinforced && construction_state == WINDOW_STATE_UNSECURED && !istype(src, /obj/structure/window/reinforced/polarized))
 		var/obj/item/stack/cable_coil/C = W
 		if (C.use(1))
 			playsound(src.loc, 'sound/effects/sparks1.ogg', 75, 1)
@@ -318,7 +304,7 @@
 				"<span class='notice'>\The [user] begins to wire \the [src] for electrochromic tinting.</span>", \
 				"<span class='notice'>You begin to wire \the [src] for electrochromic tinting.</span>", \
 				"You hear sparks.")
-			if(do_after(user, 20 * C.toolspeed, src) && state == 0)
+			if(do_after(user, 20 * C.tool_speed, src) && construction_state == WINDOW_STATE_UNSECURED)
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 				var/obj/structure/window/reinforced/polarized/P = new(loc, dir)
 				if(is_fulltile())
@@ -326,7 +312,7 @@
 					P.icon_state = "fwindow"
 				P.maxhealth = maxhealth
 				P.health = health
-				P.state = state
+				P.construction_state = construction_state
 				P.anchored = anchored
 				qdel(src)
 	else if(istype(W,/obj/item/frame) && anchored)
@@ -349,7 +335,7 @@
 /obj/structure/window/proc/hit(var/damage, var/sound_effect = 1)
 	if(damage < force_threshold || force_threshold < 0)
 		return
-	if(reinf) damage *= 0.5
+	if(considered_reinforced) damage *= 0.5
 	take_damage(damage)
 	return
 
@@ -407,12 +393,10 @@
 	//player-constructed windows
 	if (constructed)
 		anchored = 0
-		state = 0
+		construction_state = 0
 		update_verbs()
 
 	health = maxhealth
-
-	ini_dir = dir
 
 	update_nearby_tiles(need_rebuild = TRUE)
 	update_nearby_icons()
@@ -426,9 +410,10 @@
 		W.update_icon()
 
 /obj/structure/window/Move()
-	var/ini_dir = dir
+	moving_right_now = dir
 	. = ..()
-	setDir(ini_dir)
+	setDir(moving_right_now)
+	moving_right_now = null
 
 /obj/structure/window/Moved()
 	. = ..()
@@ -490,7 +475,100 @@
 		take_damage(damage_per_fire_tick)
 	..()
 
+/obj/structure/window/drop_products(method)
+	if(method == ATOM_DECONSTRUCT_DISASSEMBLED)
+		if(glasstype)
+			new glasstype(drop_location(), is_fulltile()? 2 : 1)
+		return
+	if(shardtype)
+		new shardtype(drop_location())
+		if(is_fulltile())
+			// nah no for loop
+			new shardtype(drop_location())
 
+/obj/structure/window/screwdriver_act(obj/item/I, mob/user, flags, hint)
+	. = TRUE
+	if(construction_state == WINDOW_STATE_UNSECURED || construction_state == WINDOW_STATE_SCREWED_TO_FLOOR || !considered_reinforced)
+		if(!use_screwdriver(I, user, flags))
+			return
+		var/unsecuring = construction_state != WINDOW_STATE_UNSECURED
+		user.action_feedback(SPAN_NOTICE("You [unsecuring? "unfasten" : "fasten"] the frame [unsecuring? "from" : "to"] the floor."), src)
+		construction_state = unsecuring? WINDOW_STATE_UNSECURED : WINDOW_STATE_SCREWED_TO_FLOOR
+		anchored = !unsecuring
+		air_update_turf()
+		update_verbs()
+		return
+	if(construction_state != WINDOW_STATE_CROWBRARED_IN && construction_state != WINDOW_STATE_SECURED_TO_FRAME)
+		return
+	if(!use_screwdriver(I, user, flags))
+		return
+	var/unsecuring = construction_state == WINDOW_STATE_SECURED_TO_FRAME
+	user.action_feedback(SPAN_NOTICE("You [unsecuring? "unfasten" : "fasten"] the window [unsecuring? "from" : "to"] the frame."), src)
+	construction_state = unsecuring? WINDOW_STATE_CROWBRARED_IN : WINDOW_STATE_SECURED_TO_FRAME
+
+/obj/structure/window/crowbar_act(obj/item/I, mob/user, flags, hint)
+	. = TRUE
+	if(!considered_reinforced)
+		return
+	if(construction_state != WINDOW_STATE_CROWBRARED_IN && construction_state != WINDOW_STATE_SCREWED_TO_FLOOR)
+		return
+	if(!use_crowbar(I, user, flags))
+		return
+	var/unsecuring = construction_state == WINDOW_STATE_CROWBRARED_IN
+	user.action_feedback(SPAN_NOTICE("You pry [src] [unsecuring? "out of" : "into"] the frame."), src)
+	construction_state = unsecuring? WINDOW_STATE_SCREWED_TO_FLOOR : WINDOW_STATE_CROWBRARED_IN
+
+/obj/structure/window/wrench_act(obj/item/I, mob/user, flags, hint)
+	. = TRUE
+	if(construction_state != WINDOW_STATE_UNSECURED)
+		user.action_feedback(SPAN_WARNING("[src] has to be entirely unfastened from the floor before you can disasemble it!"))
+		return
+	if(!use_wrench(I, user, flags))
+		return
+	user.action_feedback(SPAN_NOTICE("You disassemble [src]."), src)
+	deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
+
+/obj/structure/window/dynamic_tool_functions(obj/item/I, mob/user)
+	if(construction_state == WINDOW_STATE_UNSECURED)
+		return list(
+			TOOL_SCREWDRIVER = TOOL_HINT_SCREWING_WINDOW_FRAME,
+			TOOL_WRENCH
+		)
+	if(!considered_reinforced)
+		return list(
+			TOOL_SCREWDRIVER = TOOL_HINT_UNSCREWING_WINDOW_FRAME
+		)
+	switch(construction_state)
+		if(WINDOW_STATE_SCREWED_TO_FLOOR)
+			return list(
+				TOOL_SCREWDRIVER = TOOL_HINT_UNSCREWING_WINDOW_FRAME,
+				TOOL_CROWBAR = TOOL_HINT_CROWBAR_WINDOW_IN
+			)
+		if(WINDOW_STATE_CROWBRARED_IN)
+			return list(
+				TOOL_SCREWDRIVER = TOOL_HINT_SCREWING_WINDOW_PANE,
+				TOOL_CROWBAR = TOOL_HINT_CROWBAR_WINDOW_OUT
+			)
+		if(WINDOW_STATE_SECURED_TO_FRAME)
+			return list(
+				TOOL_SCREWDRIVER = TOOL_HINT_UNSCREWING_WINDOW_PANE
+			)
+
+/obj/structure/window/dynamic_tool_image(function, hint)
+	switch(hint)
+		if(TOOL_HINT_CROWBAR_WINDOW_IN)
+			return dyntool_image_forward(TOOL_CROWBAR)
+		if(TOOL_HINT_CROWBAR_WINDOW_OUT)
+			return dyntool_image_backward(TOOL_CROWBAR)
+		if(TOOL_HINT_SCREWING_WINDOW_FRAME)
+			return dyntool_image_forward(TOOL_SCREWDRIVER)
+		if(TOOL_HINT_UNSCREWING_WINDOW_FRAME)
+			return dyntool_image_backward(TOOL_SCREWDRIVER)
+		if(TOOL_HINT_SCREWING_WINDOW_PANE)
+			return dyntool_image_forward(TOOL_SCREWDRIVER)
+		if(TOOL_HINT_UNSCREWING_WINDOW_PANE)
+			return dyntool_image_backward(TOOL_SCREWDRIVER)
+	return ..()
 
 /obj/structure/window/basic
 	desc = "It looks thin and flimsy. A few knocks with... almost anything, really should shatter it."
@@ -531,7 +609,7 @@
 	icon_state = "phoronrwindow"
 	shardtype = /obj/item/material/shard/phoron
 	glasstype = /obj/item/stack/material/glass/phoronrglass
-	reinf = 1
+	considered_reinforced = 1
 	maximal_heat = INFINITY // Same here. The reinforcement is just structural anyways
 	damage_per_fire_tick = 1.0 // This should last for 80 fire ticks if the window is not damaged at all. The idea is that borosilicate windows have something like ablative layer that protects them for a while.
 	maxhealth = 80.0
@@ -548,7 +626,7 @@
 	icon_state = "rwindow"
 	basestate = "rwindow"
 	maxhealth = 40.0
-	reinf = 1
+	considered_reinforced = 1
 	maximal_heat = T0C + 1000 // Bumping this as well, as most fires quickly get over 800 C
 	damage_per_fire_tick = 2.0
 	glasstype = /obj/item/stack/material/glass/reinforced
@@ -581,7 +659,7 @@
 	icon_state = "window"
 	basestate = "window"
 	maxhealth = 40
-	reinf = 1
+	considered_reinforced = 1
 	basestate = "w"
 	dir = 5
 	force_threshold = 7

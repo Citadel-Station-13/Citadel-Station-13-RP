@@ -284,7 +284,7 @@
 	flags = NOBLOODY
 	slot_flags = SLOT_BELT
 	force = 10
-	throwforce = 3
+	throw_force = 3
 	w_class = ITEMSIZE_NORMAL
 	damtype = HALLOSS
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined", "chastised", "flayed")
@@ -526,7 +526,7 @@
 	item_icons = list (slot_r_hand_str = 'icons/vore/custom_items_vr.dmi', slot_l_hand_str = 'icons/vore/custom_items_vr.dmi')
 	item_state_slots = list(slot_r_hand_str = "browncanemob_r", slot_l_hand_str = "browncanemob_l")
 	force = 5.0
-	throwforce = 7.0
+	throw_force = 7.0
 	w_class = ITEMSIZE_SMALL
 	matter = list(MAT_STEEL = 50)
 	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
@@ -545,7 +545,7 @@
     item_icons = list (slot_r_hand_str = 'icons/vore/custom_items_vr.dmi', slot_l_hand_str = 'icons/vore/custom_items_vr.dmi')
     item_state_slots = list(slot_r_hand_str = "alexiswandmob_r", slot_l_hand_str = "alexiswandmob_l")
     force = 1.0
-    throwforce = 2.0
+    throw_force = 2.0
     w_class = ITEMSIZE_SMALL
     matter = list(MAT_STEEL = 50)
     attack_verb = list("sparkled", "whacked", "twinkled", "radiated", "dazzled", "zapped")
@@ -554,15 +554,14 @@
     var/cooldown = 30
 
 /obj/item/cane/wand/attack_self(mob/user)
-    if(last_use + cooldown >= world.time)
-        return
-    playsound(loc, 'sound/weapons/sparkle.ogg', 50, 1)
-    user.visible_message("<span class='warning'> [user] swings their wand.</span>")
-    var/datum/effect_system/spark_spread/s = new
-    s.set_up(3, 1, src)
-    s.start()
-    last_use = world.time
-    qdel ()
+	if(last_use + cooldown >= world.time)
+		return
+	playsound(src, 'sound/weapons/sparkle.ogg', 50, 1)
+	user.visible_message("<span class='warning'> [user] swings their wand.</span>")
+	var/datum/effect_system/spark_spread/s = new
+	s.set_up(3, 1, src)
+	s.start()
+	last_use = world.time
 
 /obj/item/fluff/id_kit_ivy
 	name = "Holo-ID reprinter"
@@ -1248,7 +1247,7 @@
 	desc = "Seems absurd, doesn't it? Yet, here we are. Generally considered dangerous contraband unless the user has permission from Central Command."
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "hand_tele"
-	item_flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_ILLEGAL = 7)
 
@@ -1538,7 +1537,7 @@
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "motion2"
 	w_class = ITEMSIZE_TINY
-	item_flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 
 	var/tele_name
 	var/obj/item/perfect_tele/tele_hand
@@ -1823,7 +1822,7 @@
 	force = 5
 	sharp = 0
 	edge = 0
-	throwforce = 7
+	throw_force = 7
 	w_class = ITEMSIZE_HUGE
 	origin_tech = list(TECH_COMBAT = 2)
 	attack_verb = list("beaten")
@@ -1926,7 +1925,7 @@
 	active = 1
 	embed_chance = active_embed_chance
 	force = active_force
-	throwforce = active_throwforce
+	throw_force = active_throwforce
 	sharp = 1
 	edge = 1
 	w_class = active_w_class
@@ -1939,7 +1938,7 @@
 	active = 0
 	embed_chance = initial(embed_chance)
 	force = initial(force)
-	throwforce = initial(throwforce)
+	throw_force = initial(throw_force)
 	sharp = initial(sharp)
 	edge = initial(edge)
 	w_class = initial(w_class)
@@ -1979,7 +1978,7 @@
 	active_throwforce = 7
 	active_w_class = ITEMSIZE_LARGE
 	force = 1
-	throwforce = 1
+	throw_force = 1
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL

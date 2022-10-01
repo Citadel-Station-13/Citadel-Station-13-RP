@@ -52,6 +52,10 @@
 			/spell/rune_write
 		)
 
+/mob/living/simple_mob/construct/harvester/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/horror_aura/strong)
+
 ////////////////////////////
 //		Greater Harvester
 ////////////////////////////

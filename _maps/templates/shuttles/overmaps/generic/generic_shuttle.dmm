@@ -505,7 +505,6 @@
 "bd" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central7,
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{
@@ -593,8 +592,6 @@
 /area/shuttle/generic_shuttle/gen)
 "bm" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -605,8 +602,6 @@
 /area/shuttle/generic_shuttle/gen)
 "bn" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/machinery/access_button{
@@ -624,7 +619,7 @@
 /area/shuttle/generic_shuttle/gen)
 "bo" = (
 /obj/machinery/door/airlock/glass_external,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/plating,
 /area/shuttle/generic_shuttle/gen)
 "bp" = (
@@ -633,7 +628,7 @@
 	frequency = 1380;
 	id_tag = "expshuttle_vent"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
 	id_tag = "generic_shuttle_docker";
@@ -643,8 +638,6 @@
 /area/shuttle/generic_shuttle/gen)
 "bq" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
@@ -652,8 +645,8 @@
 	frequency = 1380;
 	id_tag = "expshuttle_vent"
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/airlock_sensor{
 	pixel_y = 28
 	},
@@ -664,12 +657,9 @@
 "br" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
 	command = "cycle_exterior";
 	frequency = 1380;
@@ -722,8 +712,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/visible/supply,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/plating,
@@ -737,8 +725,7 @@
 	icon_state = "0-8"
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
 	dir = 1;

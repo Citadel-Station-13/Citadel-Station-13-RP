@@ -207,7 +207,7 @@
 		dbg(created)
 	#endif
 
-	#ifdef ZAS_DEBUG
+	#ifdef ZAS_ASSERTIONS
 	ASSERT(zone)
 	#endif
 

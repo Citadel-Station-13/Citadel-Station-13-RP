@@ -98,6 +98,6 @@
 
 
 /datum/surgery_step/slime/saw_core/fail_step(mob/living/user, mob/living/simple_mob/slime/target, target_zone, obj/item/tool)
-	var/datum/gender/T = gender_datums[user.get_visible_gender()]
+	var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
 	user.visible_message("<font color='red'>[user]'s hand slips, causing [T.him] to miss the core!</font>", \
 	"<font color='red'>Your hand slips, causing you to miss the core!</font>")

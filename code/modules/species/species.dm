@@ -317,7 +317,7 @@
 	var/spawn_flags = NONE
 
 	/// What marks are left when walking
-	var/obj/effect/decal/cleanable/blood/tracks/move_trail = /obj/effect/decal/cleanable/blood/tracks/footprints
+	var/obj/effect/debris/cleanable/blood/tracks/move_trail = /obj/effect/debris/cleanable/blood/tracks/footprints
 	var/list/skin_overlays = list()
 	/// Whether the eyes can be shown above other icons
 	var/has_floating_eyes = FALSE
@@ -435,6 +435,8 @@
 	//Moved these from custom_species.dm
 	//var/vore_numbing = 0
 	var/is_vampire = FALSE // If this is set to true, the person can't get nutrition from food.
+	var/is_cyberpsycho = FALSE // If you turn this to true, the person's capacity stat decreases. (aka - Their symptoms worsen)
+	var/capacity = 100 //Tied into the above. This is the 'health' for cyberpsychosis.
 	var/metabolism = 0.0015
 	var/lightweight = FALSE //Oof! Nonhelpful bump stumbles.
 	var/trashcan = FALSE //It's always sunny in the wrestling ring.
@@ -762,7 +764,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 // Impliments different trails for species depending on if they're wearing shoes.
 /datum/species/proc/get_move_trail(var/mob/living/carbon/human/H)
 	if( H.shoes || ( H.wear_suit && (H.wear_suit.body_parts_covered & FEET) ) )
-		return /obj/effect/decal/cleanable/blood/tracks/footprints
+		return /obj/effect/debris/cleanable/blood/tracks/footprints
 	else
 		return move_trail
 

@@ -40,25 +40,29 @@
 	hide_amount = 1
 	exotic_amount = 5
 
+/mob/living/simple_mob/horror/Eddy/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/horror_aura/weak)
+
 /mob/living/simple_mob/horror/Eddy/death()
 	playsound(src, 'sound/h_sounds/headcrab.ogg', 50, 1)
 	..()
 
 /mob/living/simple_mob/horror/Eddy/bullet_act()
-    playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-    ..()
+	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
+	..()
 
 /mob/living/simple_mob/horror/Eddy/attack_hand()
-    playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-    ..()
+	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
+	..()
 
-/mob/living/simple_mob/horror/Eddy/hitby()
-    playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-    ..()
+/mob/living/simple_mob/horror/Eddy/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
+	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 
 /mob/living/simple_mob/horror/Eddy/attackby()
-    playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-    ..()
+	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
+	..()
 
 /datum/say_list/Eddy
 	speak = list("Uuurrgh?","Aauuugghh...", "AAARRRGH!")

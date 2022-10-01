@@ -157,6 +157,9 @@
 	////#define WAIVE_AUTOMUTE_CHECK (1<<0)
 
 /// From base of mob/Life(): (seconds, times_fired)
-#define COMSIG_MOB_ON_LIFE			"biological_life"
+#define COMSIG_MOB_ON_LIFE			"mob_life"
 	#define COMPONENT_INTERRUPT_PHYSICAL_LIFE			(1<<0)
 	#define COMPONENT_INTERRUPT_BIOLOGICAL_LIFE			(1<<1)
+
+/// called when we update lying: (new_lying)
+#define COMSIG_MOB_UPDATE_LYING		"mob_update_lying"

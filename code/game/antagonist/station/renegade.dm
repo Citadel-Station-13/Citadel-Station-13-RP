@@ -48,6 +48,7 @@ var/datum/antagonist/renegade/renegades
 		/obj/item/gun/projectile/silenced,
 		/obj/item/gun/projectile/pistol,
 		/obj/item/gun/projectile/p92x,
+		/obj/item/gun/projectile/konigin,
 		/obj/item/gun/projectile/revolver,
 		/obj/item/gun/projectile/derringer,
 		/obj/item/gun/projectile/shotgun/pump,

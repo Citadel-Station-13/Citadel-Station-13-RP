@@ -207,7 +207,7 @@
 
 		if(7)
 			if(W.is_screwdriver())
-				playsound(src, W.usesound, 100, 1)
+				playsound(src, W.tool_sound, 100, 1)
 				var/turf/T = get_turf(user)
 				to_chat(user, "<span class='notice'>Attatching the mop to the frame...</span>")
 				if(do_after(user, 40) && get_turf(user) == T)

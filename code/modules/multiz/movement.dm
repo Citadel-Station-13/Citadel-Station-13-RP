@@ -258,7 +258,7 @@
 /obj/effect/can_fall()
 	return FALSE
 
-/obj/effect/decal/cleanable/can_fall()
+/obj/effect/debris/cleanable/can_fall()
 	return TRUE
 
 // These didn't fall anyways but better to nip this now just incase.
@@ -278,6 +278,11 @@
 	var/turf/below = GetBelow(src)
 	if((locate(/obj/structure/disposalpipe/up) in below) || (locate(/obj/machinery/atmospherics/pipe/zpipe/up) in below))
 		return FALSE
+
+/mob/can_fall()
+	if(buckled)
+		return FALSE	// buckled falls instead
+	return ..()
 
 /mob/living/can_fall()
 	if(is_incorporeal())
@@ -303,11 +308,11 @@
 	return falling_atom.fall_impact(src)
 
 /obj/structure/lattice/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
-	return mover.checkpass(PASSGRILLE)
+	return check_standard_flag_pass(mover)
 
 // So you'll slam when falling onto a grille
 /obj/structure/lattice/CheckFall(var/atom/movable/falling_atom)
-	if(istype(falling_atom) && falling_atom.checkpass(PASSGRILLE))
+	if(check_standard_flag_pass(falling_atom))
 		return FALSE
 	return falling_atom.fall_impact(src)
 

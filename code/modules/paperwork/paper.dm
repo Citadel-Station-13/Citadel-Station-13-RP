@@ -9,7 +9,7 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "paper"
 	item_state = "paper"
-	throwforce = 0
+	throw_force = 0
 	w_class = ITEMSIZE_TINY
 	throw_range = 1
 	throw_speed = 1
@@ -313,7 +313,7 @@
 
 /obj/item/paper/proc/burnpaper(obj/item/flame/P, mob/user)
 	var/class = "warning"
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 
 	if(P.lit && !user.restrained())
 		if(istype(P, /obj/item/flame/lighter/zippo))
@@ -326,7 +326,8 @@
 			if(get_dist(src, user) < 2 && user.get_active_held_item() == P && P.lit)
 				user.visible_message("<span class='[class]'>[user] burns right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>", \
 				"<span class='[class]'>You burn right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>")
-				new /obj/effect/decal/cleanable/ash(src.loc)
+				forceMove(drop_location())
+				new /obj/effect/debris/cleanable/ash(src.loc)
 				qdel(src)
 
 			else

@@ -241,11 +241,9 @@
 	//Reset the trap and upgrade it. Won't affect standard rigs.
 	trapSprung = 0
 	springtrapped = 1
+	update_component_sealed()
 	for(var/obj/item/piece in list(helmet,boots,gloves,chest))
-		if(!piece) continue
 		piece.icon_state = "[suit_state]"
-		if(airtight)
-			update_airtight(piece, 0) // Unseal
 	update_icon(1)
 
 /obj/item/rig/proc/trap(var/mob/living/carbon/human/M)
@@ -357,19 +355,16 @@
 						failed_to_seal = 1
 
 					piece.icon_state = "[suit_state][is_sealing ? "_sealed" : ""]"
+					piece.update_worn_icon()
 					switch(msg_type)
 						if("boots")
 							to_chat(M, "<font color=#4F49AF>\The [piece] [is_sealing ? "seal around your feet" : "relax their grip on your legs"].</font>")
-							M.update_inv_shoes()
 						if("gloves")
 							to_chat(M, "<font color=#4F49AF>\The [piece] [is_sealing ? "tighten around your fingers and wrists" : "become loose around your fingers"].</font>")
-							M.update_inv_gloves()
 						if("chest")
 							to_chat(M, "<font color=#4F49AF>\The [piece] [is_sealing ? "cinches tight again your chest" : "releases your chest"].</font>")
-							M.update_inv_wear_suit()
 						if("helmet")
 							to_chat(M, "<font color=#4F49AF>\The [piece] hisses [is_sealing ? "closed" : "open"].</font>")
-							M.update_inv_head()
 							if(helmet)
 								helmet.update_light(wearer)
 
@@ -394,7 +389,9 @@
 		for(var/obj/item/piece in list(helmet,boots,gloves,chest))
 			if(!piece)
 				continue
-			piece.icon_state = "[suit_state][is_activated() ? "" : "_sealed"]"
+			piece.icon_state = "[suit_state][is_activated() ? "_sealed" : ""]"
+			piece.update_worn_icon()
+
 		if(is_activated())
 			ADD_TRAIT(src, TRAIT_NODROP, RIG_TRAIT)
 		else
@@ -643,8 +640,8 @@
 	if(src.loc != user)
 		data["ai"] = 1
 
-	data["seals"] =     "[src.is_activated()]"
-	data["sealing"] =   "[src.is_cycling()]"
+	data["seals"] =     is_activated()
+	data["sealing"] =   is_cycling()
 	data["helmet"] =    (helmet ? "[helmet.name]" : "None.")
 	data["gauntlets"] = (gloves ? "[gloves.name]" : "None.")
 	data["boots"] =     (boots ?  "[boots.name]" :  "None.")
@@ -908,8 +905,8 @@
 	for(var/piece in list("helmet","gauntlets","chest","boots"))
 		toggle_piece(piece, H, ONLY_DEPLOY)
 
-/obj/item/rig/dropped(mob/user, flags, atom/newLoc)
-	..()
+/obj/item/rig/unequipped(mob/user, slot, flags)
+	. = ..()
 	for(var/piece in list("helmet","gauntlets","chest","boots"))
 		toggle_piece(piece, user, ONLY_RETRACT)
 	if(wearer && wearer.wearing_rig == src)
@@ -1089,7 +1086,7 @@
 	// AIs are a bit slower than regular and ignore move intent.
 	wearer_move_delay = world.time + ai_controlled_move_delay
 
-	if(istype(wearer.buckled, /obj/vehicle))
+	if(istype(wearer.buckled, /obj/vehicle_old))
 		//manually set move_delay for vehicles so we don't inherit any mob movement penalties
 		//specific vehicle move delays are set in code\modules\vehicles\vehicle.dm
 		wearer_move_delay = world.time

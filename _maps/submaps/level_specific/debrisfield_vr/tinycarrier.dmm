@@ -34,12 +34,10 @@
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "af" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/external,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/monofloor,
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "ag" = (
@@ -59,7 +57,7 @@
 	pixel_x = -4;
 	pixel_y = 8
 	},
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
+/obj/map_helper/airlock/sensor/ext_sensor,
 /turf/simulated/wall/thull,
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "aj" = (
@@ -83,7 +81,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/glass_external/public,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/monofloor{
 	dir = 4
 	},
@@ -108,8 +106,8 @@
 	pixel_x = 26;
 	pixel_y = 6
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/effect/overmap/visitable/ship/landable/tinycarrier,
 /turf/simulated/floor/tiled/monotile,
 /area/submap/debrisfield_vr/tinyshuttle/crew)
@@ -161,15 +159,13 @@
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "at" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/airlock_sensor/airlock_interior{
 	dir = 8;
 	pixel_x = 24
 	},
-/atom/movable/map_helper/airlock/sensor/int_sensor,
+/obj/map_helper/airlock/sensor/int_sensor,
 /obj/effect/floor_decal/corner/brown{
 	dir = 6
 	},
@@ -221,7 +217,7 @@
 	pixel_x = 24;
 	req_one_access = list()
 	},
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/generic,
 /obj/machinery/atmospherics/component/unary/vent_scrubber,
 /obj/effect/floor_decal/corner/blue/full{
 	dir = 1
@@ -272,8 +268,6 @@
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "aD" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/corner/brown{
@@ -282,7 +276,7 @@
 /turf/simulated/floor/tiled,
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "aE" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/effect/floor_decal/corner/brown{
 	dir = 5
 	},
@@ -453,7 +447,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled,
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "aU" = (
@@ -519,7 +513,7 @@
 	pixel_x = 28
 	},
 /obj/structure/cable/green,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/light_switch{
 	dir = 1;
 	pixel_x = 22;
@@ -674,8 +668,6 @@
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "bm" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -701,8 +693,6 @@
 /area/submap/debrisfield_vr/tinyshuttle/bridge)
 "bo" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable/green{
@@ -874,7 +864,6 @@
 	anchored = 1
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -939,7 +928,7 @@
 	dir = 1;
 	icon_state = "4-8"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
@@ -958,7 +947,7 @@
 /obj/effect/floor_decal/corner/orange{
 	dir = 9
 	},
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/debrisfield_vr/tinyshuttle/engine)
 "bL" = (
@@ -992,7 +981,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /obj/item/multitool,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/submap/debrisfield_vr/tinyshuttle/engine)
@@ -1029,7 +1018,7 @@
 	health = 0;
 	icon_state = "orangeps-1"
 	},
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /obj/effect/floor_decal/corner/orange/full,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/debrisfield_vr/tinyshuttle/engine)
@@ -1039,7 +1028,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /obj/effect/floor_decal/corner/orange{
 	dir = 10
 	},
@@ -1086,7 +1075,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 "ca" = (
-/obj/effect/decal/cleanable/blood/gibs/robot,
+/obj/effect/debris/cleanable/blood/gibs/robot,
 /turf/simulated/floor/reinforced/airless,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 "cb" = (

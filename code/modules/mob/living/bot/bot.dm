@@ -146,7 +146,7 @@
 		if(!locked)
 			open = !open
 			to_chat(user, "<span class='notice'>Maintenance panel is now [open ? "opened" : "closed"].</span>")
-			playsound(src, O.usesound, 50, 1)
+			playsound(src, O.tool_sound, 50, 1)
 		else
 			to_chat(user, "<span class='notice'>You need to unlock the controls first.</span>")
 		return
@@ -163,7 +163,7 @@
 					fireloss = fireloss - 10
 				updatehealth()
 				user.visible_message("<span class='notice'>[user] repairs [src].</span>","<span class='notice'>You repair [src].</span>")
-				playsound(src, O.usesound, 50, 1)
+				playsound(src, O.tool_sound, 50, 1)
 			else
 				to_chat(user, "<span class='notice'>Unable to repair with the maintenance panel closed.</span>")
 		else

@@ -189,7 +189,7 @@ proc/cardinalrange(var/center)
 	icon_state = "box"
 	item_state = "electronic"
 	w_class = ITEMSIZE_LARGE
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 1
 	throw_range = 2
 	matter = list(MAT_STEEL = 100)

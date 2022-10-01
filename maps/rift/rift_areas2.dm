@@ -247,6 +247,12 @@
 /area/outpost/mining_main/passage
 	name = "\improper Mining Outpost Passage"
 
+/area/outpost/mining_main/outpost
+	name = "\improper Mining Outpost"
+
+/area/outpost/mining_main/outpost/substation
+	name = "\improper Outpost Substation"
+
 // Solars map areas
 /area/tether/outpost/solars_outside
 	name = "\improper Solar Farm"
@@ -713,7 +719,15 @@ Do this eventually. */
 	name = "Western Plains Surface"
 	icon_state = "green"
 
+/area/rift/surfacebase/outside/west/submap_seedzone
+	name = "Western Plains Surface"
+	icon_state = "green"
+
 /area/rift/surfacebase/outside/west_caves
+	name = "Western Plains Caverns"
+	icon_state = "red"
+
+/area/rift/surfacebase/outside/west_caves/submap_seedzone
 	name = "Western Plains Caverns"
 	icon_state = "red"
 
@@ -721,9 +735,18 @@ Do this eventually. */
 	name = "Western Plains Deep Ice"
 	icon_state = "yellow"
 
+/area/rift/surfacebase/outside/west_deep/submap_seedzone
+	name = "Western Plains Deep Ice"
+	icon_state = "yellow"
+
 /area/rift/surfacebase/outside/west_base
 	name = "Western Plains Canyon"
 	icon_state = "blue"
+
+/area/rift/surfacebase/outside/west_base/submap_seedzone
+	name = "Western Plains Canyon"
+	icon_state = "blue"
+
 
 //Trade Pad/Shop
 /area/rift/trade_shop

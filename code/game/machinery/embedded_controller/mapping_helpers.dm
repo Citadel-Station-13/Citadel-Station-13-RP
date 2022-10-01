@@ -6,7 +6,7 @@ Any frequency works, it's self-setting, but it seems like people have decided 13
 
 */
 
-/atom/movable/map_helper/airlock
+/obj/map_helper/airlock
 	name = "use a subtype!"
 	icon = 'icons/misc/map_helpers.dmi'
 	plane = 20 //I dunno just high.
@@ -21,7 +21,7 @@ Any frequency works, it's self-setting, but it seems like people have decided 13
 	//Most things have a radio tag of some sort that needs adjusting
 	var/tag_addon
 
-/atom/movable/map_helper/airlock/Initialize(mapload)
+/obj/map_helper/airlock/Initialize(mapload)
 	..()
 	my_controller = get_controller(get_area(src))
 	my_device = locate(my_device_type) in get_turf(src)
@@ -35,12 +35,12 @@ Any frequency works, it's self-setting, but it seems like people have decided 13
 		setup()
 	return INITIALIZE_HINT_QDEL
 
-/atom/movable/map_helper/airlock/Destroy()
+/obj/map_helper/airlock/Destroy()
 	my_controller = null
 	my_device = null
 	return ..()
 
-/atom/movable/map_helper/airlock/proc/get_controller(var/area/A)
+/obj/map_helper/airlock/proc/get_controller(var/area/A)
 	if(!A)
 		return null
 
@@ -71,35 +71,35 @@ Any frequency works, it's self-setting, but it seems like people have decided 13
 
 	return closest
 
-/atom/movable/map_helper/airlock/proc/setup()
+/obj/map_helper/airlock/proc/setup()
 	return //Stub for subtypes
 
 
 /*
 	Doors
 */
-/atom/movable/map_helper/airlock/door
+/obj/map_helper/airlock/door
 	name = "use a subtype! - airlock door"
 	my_device_type = /obj/machinery/door/airlock
 
-/atom/movable/map_helper/airlock/door/setup()
+/obj/map_helper/airlock/door/setup()
 	var/obj/machinery/door/airlock/my_airlock = my_device
 	my_airlock.lock()
 	my_airlock.id_tag = my_controller.id_tag + tag_addon
 	my_airlock.frequency = my_controller.frequency
 	my_airlock.set_frequency(my_controller.frequency)
 
-/atom/movable/map_helper/airlock/door/ext_door
+/obj/map_helper/airlock/door/ext_door
 	name = "exterior airlock door"
 	icon_state = "doorout"
 	tag_addon = "_outer"
 
-/atom/movable/map_helper/airlock/door/int_door
+/obj/map_helper/airlock/door/int_door
 	name = "interior airlock door"
 	icon_state = "doorin"
 	tag_addon = "_inner"
 
-/atom/movable/map_helper/airlock/door/simple
+/obj/map_helper/airlock/door/simple
 	name = "simple docking controller hatch"
 	icon_state = "doorsimple"
 	tag_addon = "_hatch"
@@ -109,26 +109,26 @@ Any frequency works, it's self-setting, but it seems like people have decided 13
 /*
 	Atmos
 */
-/atom/movable/map_helper/airlock/atmos
+/obj/map_helper/airlock/atmos
 	name = "use a subtype! - airlock pump"
 	my_device_type = /obj/machinery/atmospherics/component/unary/vent_pump
 
-/atom/movable/map_helper/airlock/atmos/setup()
+/obj/map_helper/airlock/atmos/setup()
 	var/obj/machinery/atmospherics/component/unary/vent_pump/my_pump = my_device
 	my_pump.frequency = my_controller.frequency //Unlike doors, these set up their radios in atmos init, so they won't have gone before us.
 	my_pump.id_tag = my_controller.id_tag + tag_addon
 
-/atom/movable/map_helper/airlock/atmos/chamber_pump
+/obj/map_helper/airlock/atmos/chamber_pump
 	name = "chamber pump"
 	icon_state = "pump"
 	tag_addon = "_pump"
 
-/atom/movable/map_helper/airlock/atmos/pump_out_internal
+/obj/map_helper/airlock/atmos/pump_out_internal
 	name = "air dump intake"
 	icon_state = "pumpdin"
 	tag_addon = "_pump_out_internal"
 
-/atom/movable/map_helper/airlock/atmos/pump_out_external
+/obj/map_helper/airlock/atmos/pump_out_external
 	name = "air dump output"
 	icon_state = "pumpdout"
 	tag_addon = "_pump_out_external"
@@ -137,12 +137,12 @@ Any frequency works, it's self-setting, but it seems like people have decided 13
 /*
 	Sensors - did you know they function as buttons? You don't also need a button.
 */
-/atom/movable/map_helper/airlock/sensor
+/obj/map_helper/airlock/sensor
 	name = "use a subtype! - airlock sensor"
 	my_device_type = /obj/machinery/airlock_sensor
 	var/command
 
-/atom/movable/map_helper/airlock/sensor/setup()
+/obj/map_helper/airlock/sensor/setup()
 	var/obj/machinery/airlock_sensor/my_sensor = my_device
 	my_sensor.id_tag = my_controller.id_tag + tag_addon
 	my_sensor.master_tag = my_controller.id_tag
@@ -151,19 +151,19 @@ Any frequency works, it's self-setting, but it seems like people have decided 13
 	if(command)
 		my_sensor.command = command
 
-/atom/movable/map_helper/airlock/sensor/ext_sensor
+/obj/map_helper/airlock/sensor/ext_sensor
 	name = "exterior sensor"
 	icon_state = "sensout"
 	tag_addon = "_exterior_sensor"
 	command = "cycle_exterior"
 
-/atom/movable/map_helper/airlock/sensor/chamber_sensor
+/obj/map_helper/airlock/sensor/chamber_sensor
 	name = "chamber sensor"
 	icon_state = "sens"
 	tag_addon = "_sensor"
 	command = "cycle"
 
-/atom/movable/map_helper/airlock/sensor/int_sensor
+/obj/map_helper/airlock/sensor/int_sensor
 	name = "interior sensor"
 	icon_state = "sensin"
 	tag_addon = "_interior_sensor"
@@ -173,5 +173,5 @@ Any frequency works, it's self-setting, but it seems like people have decided 13
 	Buttons
 */
 
-/atom/movable/map_helper/airlock/buttons
+/obj/map_helper/airlock/buttons
 	name = "Just use a sensor instead. They are actually buttons."

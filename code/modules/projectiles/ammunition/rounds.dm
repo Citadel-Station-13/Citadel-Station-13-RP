@@ -565,6 +565,68 @@
 	projectile_type = /obj/item/projectile/bullet/organic/wax
 	matter = list("wax" = 100)
 
+/obj/item/ammo_casing/musket
+	name = "musket ball"
+	desc = "A solid ball made of lead."
+	icon_state = "musketball"
+	caliber = "musket"
+	projectile_type = /obj/item/projectile/bullet/musket
+	matter = list("lead" = 100)
+	caseless = 1
+
+/obj/item/ammo_casing/musket/silver
+	name = "silver musket ball"
+	desc = "A solid ball made of a lead-silver alloy."
+	icon_state = "silverball"
+	projectile_type = /obj/item/projectile/bullet/musket/silver
+	matter = list("lead" = 100, "silver" = 100)
+
+/obj/item/ammo_casing/musket/blunderbuss
+	name = "shot"
+	desc = "A bundle of lead balls and other assorted shrapnel."
+	icon_state = "blunderbuss"
+	caliber = "blunderbuss"
+	projectile_type = /obj/item/projectile/bullet/pellet/blunderbuss
+	matter = list("lead" = 500)
+
+/obj/item/ammo_casing/musket/blunderbuss/silver
+	name = "sliver shot"
+	desc = "A bundle of silver lead allow balls and other assorted bits of silver."
+	icon_state = "silverbuss"
+	projectile_type = /obj/item/projectile/bullet/pellet/blunderbuss/silver
+	matter = list("lead" = 500, "silver" = 500)
+
+//Ten Gauge Rounds for Exotic Shotguns
+/obj/item/ammo_casing/a10g
+	name = "heavy shotgun slug"
+	desc = "A brass jacketed 10 gauge slug shell."
+	icon_state = "brshell"
+	caliber = "10g"
+	projectile_type = /obj/item/projectile/bullet/heavy_shotgun
+	matter = list(MAT_STEEL = 300, "brass" = 200)
+	fall_sounds = list('sound/weapons/guns/shotgun_fall.ogg')
+
+/obj/item/ammo_casing/a10g/pellet //Spread variant.
+	name = "heavy shotgun shell"
+	desc = "A brass jacketed 10 gauge shot shell."
+	projectile_type = /obj/item/projectile/scatter/heavy_shotgun
+
+/obj/item/ammo_casing/a10g/silver
+	name = "heavy silver shotgun shell"
+	desc = "A brass jacketed 10 gauge filled with blessed silver shot."
+	projectile_type = /obj/item/projectile/scatter/heavy_shotgun/silver
+
+//Related to the above, knockback specific variants for Grit.
+/obj/item/ammo_casing/a10g/grit
+	name = "tooled heavy shotgun slug"
+	desc = "A custom brass jacketed 10 gauge slug shell."
+	projectile_type = /obj/item/projectile/bullet/heavy_shotgun/grit
+
+/obj/item/ammo_casing/a10g/pellet/grit
+	name = "tooled heavy shotgun shell"
+	desc = "A custom brass jacketed 10 gauge shot shell."
+	projectile_type = /obj/item/projectile/scatter/heavy_shotgun/grit
+
 //Arrows
 /obj/item/ammo_casing/arrow
 	name = "arrow of questionable material"
@@ -572,7 +634,7 @@
 	projectile_type = /obj/item/projectile/bullet/reusable/arrow
 	caliber = "arrow"
 	icon_state = "arrow"
-	throwforce = 3 //good luck hitting someone with the pointy end of the arrow
+	throw_force = 3 //good luck hitting someone with the pointy end of the arrow
 	throw_speed = 3
 	caseless = 1
 
@@ -612,7 +674,7 @@
 	projectile_type = /obj/item/projectile/bullet/reusable/foam
 	caliber = "foamdart"
 	icon_state = "foamdart"
-	throwforce = 0 //good luck hitting someone with the pointy end of the arrow
+	throw_force = 0 //good luck hitting someone with the pointy end of the arrow
 	throw_speed = 3
 	caseless = 1
 	drop_sound = 'sound/items/drop/accessory.ogg'

@@ -130,6 +130,18 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_MELEE
 
+/datum/crafting_recipe/kanabo
+	name = "Kanabo"
+	result = /obj/item/melee/kanabo
+	tools = list(TOOL_SCREWDRIVER, TOOL_WRENCH)
+	reqs = list(/obj/item/kanabo_shaft = 1,
+				/obj/item/kanabo_studs = 1,
+				/obj/item/stack/material/cloth = 3,
+				/obj/item/stack/material/leather = 2)
+	time = 100
+	category = CAT_WEAPONRY
+	subcategory = CAT_MELEE
+
 /datum/crafting_recipe/knuckle_dusters
 	name = "Brass Knuckles"
 	result = /obj/item/clothing/gloves/knuckledusters
@@ -285,6 +297,17 @@
 	time = 15
 	category = CAT_WEAPONRY
 	subcategory = CAT_MELEE
+
+/datum/crafting_recipe/tyrmalin_heavy
+	name = "Tyrmalin heavy-duty mining charge"
+	result = /obj/item/grenade/explosive/ied/tyrmalin/large
+	reqs = list(/obj/item/grenade/explosive/ied/tyrmalin = 3,
+				/obj/item/duct_tape_piece = 4)
+	parts = list(/obj/item/grenade/explosive/ied/tyrmalin = 3,
+				/obj/item/duct_tape_piece = 4)
+	time = 15
+	category = CAT_WEAPONRY
+	subcategory = CAT_OTHER
 
 //////////////////
 ///GUNS CRAFTING//
@@ -514,6 +537,15 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
 
+/datum/crafting_recipe/leadball
+	name = "Lead Ball"
+	result = /obj/item/ammo_casing/musket
+	reqs = list(/obj/item/stack/material/lead = 1)
+	tools = list(TOOL_WELDER, TOOL_WIRECUTTER)
+	time = 30
+	category = CAT_WEAPONRY
+	subcategory = CAT_AMMO
+
 ////////////////////
 // PARTS CRAFTING //
 ////////////////////
@@ -563,5 +595,24 @@
 	reqs = list(/obj/item/stack/material/wood = 5,
 				/obj/item/stack/material/cloth = 2)
 	time = 20
+	category = CAT_WEAPONRY
+	subcategory = CAT_PARTS
+
+// KANABO CRAFTING
+/datum/crafting_recipe/kanabo_shaft
+	name = "Kanabo Shaft"
+	result = /obj/item/kanabo_shaft
+	tools = list(/obj/item/material/knife/machete/hatchet)
+	reqs = list(/obj/item/stack/material/wood = 20,
+				/obj/item/stack/material/cloth = 2)
+	time = 30
+	category = CAT_WEAPONRY
+	subcategory = CAT_PARTS
+
+/datum/crafting_recipe/kanabo_studs
+	name = "Kanabo Studs"
+	result = /obj/item/kanabo_studs
+	reqs = list(/obj/item/stack/material/steel = 5)
+	time = 10
 	category = CAT_WEAPONRY
 	subcategory = CAT_PARTS

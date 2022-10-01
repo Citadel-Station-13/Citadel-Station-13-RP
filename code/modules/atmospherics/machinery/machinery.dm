@@ -170,14 +170,11 @@ Pipelines + Other Objects -> Pipe network
 	return FALSE
 
 // Deconstruct into a pipe item.
-/obj/machinery/atmospherics/proc/deconstruct()
-	if(QDELETED(src))
-		return
+/obj/machinery/atmospherics/drop_products(method)
 	if(construction_type)
 		var/obj/item/pipe/I = new construction_type(loc, null, null, src)
 		I.setPipingLayer(piping_layer)
 		transfer_fingerprints_to(I)
-	qdel(src)
 
 // Return a list of nodes which we should call atmos_init() and build_network() during on_construction()
 /obj/machinery/atmospherics/proc/get_neighbor_nodes_for_init()

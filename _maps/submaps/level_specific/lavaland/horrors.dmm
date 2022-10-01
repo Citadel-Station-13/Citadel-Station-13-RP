@@ -20,7 +20,7 @@
 /turf/simulated/floor/lavaland,
 /area/lavaland/horrors)
 "j" = (
-/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/debris/cleanable/blood/gibs,
 /obj/structure/bed/chair/pew/left{
 	dir = 1
 	},
@@ -30,11 +30,11 @@
 /turf/simulated/wall/r_wall,
 /area/lavaland/horrors)
 "n" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/horrors)
 "o" = (
-/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/debris/cleanable/blood/gibs,
 /obj/structure/bed/chair/pew/right{
 	dir = 1
 	},
@@ -60,7 +60,7 @@
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/horrors)
 "A" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/lavaland,
 /area/lavaland/horrors)
 "E" = (
@@ -82,12 +82,12 @@
 /turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/horrors)
 "P" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/horrors)
 "Q" = (
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/generic,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/horrors)
 "U" = (
@@ -99,8 +99,8 @@
 /turf/simulated/floor/lavaland,
 /area/lavaland/horrors)
 "Y" = (
-/obj/effect/decal/cleanable/blood/gibs,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood/gibs,
+/obj/effect/debris/cleanable/blood,
 /obj/structure/bed/chair/pew/left{
 	dir = 1
 	},

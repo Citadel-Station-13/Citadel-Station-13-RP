@@ -32,7 +32,7 @@
 	density = FALSE	// Non-dense, so things can pass over them.
 
 	status_flags = CANPUSH
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 
 	maxHealth = 100
 	health = 100
@@ -100,7 +100,7 @@
 	if(!istype(H))
 		return .
 
-	if(istype(L.buckled, /obj/vehicle) || L.hovering) // Ignore people hovering or on boats.
+	if(istype(L.buckled, /obj/vehicle_old) || L.hovering) // Ignore people hovering or on boats.
 		return TRUE
 
 	if(!.)

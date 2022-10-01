@@ -40,7 +40,7 @@
 	swap_flags = MONKEY|SLIME|SIMPLE_ANIMAL
 	push_flags = MONKEY|SLIME|SIMPLE_ANIMAL|ALIEN
 
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 
 	has_limbs = list(
 		BP_TORSO  = list("path" = /obj/item/organ/external/chest),

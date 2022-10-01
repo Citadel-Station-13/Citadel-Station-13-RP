@@ -196,7 +196,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				to_chat(M, "<span class='notice'>Your [name] goes out.</span>")
 		qdel(src)
 	else
-		new /obj/effect/decal/cleanable/ash(T)
+		new /obj/effect/debris/cleanable/ash(T)
 		if(ismob(loc))
 			var/mob/living/M = loc
 			if (!nomessage)
@@ -395,7 +395,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "cigbutt"
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
-	throwforce = 1
+	throw_force = 1
 
 /obj/item/cigbutt/Initialize(mapload)
 	. = ..()
@@ -573,7 +573,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "lighter-g"
 	item_state = "lighter-g"
 	w_class = ITEMSIZE_TINY
-	throwforce = 4
+	throw_force = 4
 	slot_flags = SLOT_BELT
 	attack_verb = list("burnt", "singed")
 	var/base_state

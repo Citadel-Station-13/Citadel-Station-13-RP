@@ -2,10 +2,10 @@
 	name = "rock ledge"
 	desc = "An easily scaleable rocky ledge."
 	icon = 'icons/obj/ledges.dmi'
-	density = 1
-	throwpass = 1
-	climbable = 1
-	anchored = 1
+	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_OVERHEAD_THROW
+	density = TRUE
+	climbable = TRUE
+	anchored = TRUE
 	var/solidledge = 1
 	flags = ON_BORDER
 	layer = STAIRS_LAYER
@@ -13,43 +13,44 @@
 
 /obj/structure/ledge_corner
 	icon_state = "ledge-corner"
-	flags = 0
+	flags = NONE
 	name = "rock ledge"
 	desc = "An easily scaleable rocky ledge."
 	icon = 'icons/obj/ledges.dmi'
-	density = 1
-	throwpass = 1
-	climbable = 1
-	anchored = 1
+	density = TRUE
+	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_OVERHEAD_THROW
+	climbable = TRUE
+	anchored = TRUE
 	layer = STAIRS_LAYER
 
 /obj/structure/ledge/ledge_nub
 	desc = "Part of a rocky ledge."
 	icon_state = "ledge-nub"
-	density = 0
-	solidledge = 0
+	density = FALSE
+	solidledge = FALSE
 
 /obj/structure/ledge/ledge_stairs
 	name = "rock stairs"
 	desc = "A colorful set of rocky stairs"
 	icon_state = "ledge-stairs"
-	density = 0
-	solidledge = 0
+	density = FALSE
+	solidledge = FALSE
 
 /obj/structure/ledge/CanAllowThrough(atom/movable/mover, turf/target)
-	. = ..()
-	if(istype(mover) && mover.checkpass(PASSTABLE))
+	if(!solidledge)
 		return TRUE
-	if(solidledge && get_dir(mover, target) == turn(dir, 180))
-		return !density
-	return TRUE
+	if(!(get_dir(mover, target) & turn(dir, 180)))
+		return TRUE
+	return ..()
 
-/obj/structure/ledge/CheckExit(atom/movable/O as mob|obj, target as turf)
-	if(istype(O) && O.checkpass(PASSTABLE))
-		return 1
-	if(solidledge && get_dir(O.loc, target) == dir)
-		return 0
-	return 1
+/obj/structure/ledge/CheckExit(atom/movable/AM, atom/newLoc)
+	if(check_standard_flag_pass(AM))
+		return TRUE
+	if(!solidledge)
+		return TRUE
+	if(!(get_dir(src, newLoc) & dir))
+		return TRUE
+	return FALSE
 
 /obj/structure/ledge/do_climb(var/mob/living/user)
 	if(!can_climb(user))

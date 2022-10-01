@@ -5,7 +5,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "sleeper"
 	w_class = ITEMSIZE_TINY
-	item_flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 	var/mob/living/carbon/patient = null
 	var/mob/living/silicon/robot/hound = null
 	var/inject_amount = 10

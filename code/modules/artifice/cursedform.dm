@@ -11,7 +11,7 @@
 
 /obj/item/paper/carbon/cursedform/burnpaper(obj/item/flame/P, mob/user)
 	var/class = "warning"
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 
 	if(P.lit && !user.restrained())
 		if(istype(P, /obj/item/flame/lighter/zippo))
@@ -27,7 +27,7 @@
 			if(user.get_inactive_held_item() == src)
 				user.drop_item_to_ground(src, INV_OP_FORCE)
 
-			new /obj/effect/decal/cleanable/ash(src.loc)
+			new /obj/effect/debris/cleanable/ash(src.loc)
 			qdel(src)
 
 		else

@@ -2247,6 +2247,22 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Virology Isolation"
 	icon_state = "virology"
 
+/area/medical/virologypurge
+	name = "\improper Virology Purge"
+	icon_state = "virology"
+
+/area/medical/virologytransitwest
+	name = "\improper Virology Transit Hub - West"
+	icon_state = "virology"
+
+/area/medical/virologytransiteast
+	name = "\improper Virology Transit Hub - East"
+	icon_state = "virology"
+
+/area/medical/virologymaint
+	name = "\improper Virology Maintenance Shaft"
+	icon_state = "virology"
+
 /area/medical/recoveryrestroom
 	name = "\improper Recovery Room Restroom"
 	icon_state = "virology"
@@ -2588,6 +2604,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Cargo Mining Dock"
 	icon_state = "mining"
 
+/area/quartermaster/mining_airlock
+	name = "\improper Mining Airlock"
+	icon_state = "mining"
 /area/quartermaster/belterdock
 	name = "\improper Cargo Belter Access"
 	icon_state = "mining"

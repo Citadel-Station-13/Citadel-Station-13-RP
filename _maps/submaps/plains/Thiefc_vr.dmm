@@ -70,7 +70,7 @@
 	},
 /area/submap/Thiefc)
 "k" = (
-/obj/vehicle/train/trolley,
+/obj/vehicle_old/train/trolley,
 /obj/random/firstaid,
 /obj/random/firstaid,
 /obj/random/firstaid,
@@ -100,7 +100,7 @@
 	},
 /area/submap/Thiefc)
 "n" = (
-/obj/vehicle/train/trolley,
+/obj/vehicle_old/train/trolley,
 /obj/random/multiple/voidsuit,
 /obj/random/multiple/voidsuit,
 /obj/random/multiple/voidsuit,

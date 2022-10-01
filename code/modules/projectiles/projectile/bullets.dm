@@ -382,6 +382,83 @@
 		explosion(target, 0, 1, 2)
 	..()
 
+/* Black Powder */
+
+/obj/item/projectile/bullet/musket // Big Slow and bad against armor.
+	fire_sound = 'sound/weapons/weaponsounds_heavypistolshot.ogg'
+	damage = 60
+	speed = 1.2
+	armor_penetration = -50
+
+/obj/item/projectile/bullet/musket/silver // What its a classic
+	damage = 25
+	SA_bonus_damage = 75
+	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
+	embed_chance = -1
+	holy = TRUE
+
+/obj/item/projectile/bullet/pellet/blunderbuss //More Damage at close range greater falloff
+	damage = 10
+	pellets = 8
+	range_step = 0.5 //Very quick falloff
+	spread_step = 30
+
+/obj/item/projectile/bullet/pellet/blunderbuss/silver
+	damage = 5
+	SA_bonus_damage = 15
+	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
+	embed_chance = -1
+	holy = TRUE
+
+//10 Gauge Shot
+/obj/item/projectile/bullet/heavy_shotgun
+	name = "heavy slug"
+	fire_sound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
+	damage = 60
+	armor_penetration = 25
+
+/obj/item/projectile/bullet/pellet/heavy_shotgun //I want this to use similar calcuations to blunderbuss shot for falloff.
+	damage = 3 //Fires five pellets at a time.
+	range_step = 0.75
+	spread_step = 30
+	armor_penetration = 10
+
+/obj/item/projectile/bullet/pellet/heavy_shotgun/silver
+	damage = 3
+	SA_bonus_damage = 3
+	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
+	holy = TRUE
+
+//Special 10g rounds for Grit, since I don't want ALL 10g to do this:
+/obj/item/projectile/bullet/heavy_shotgun/grit
+	name = "custom heavy slug"
+
+/obj/item/projectile/bullet/heavy_shotgun/grit/on_hit(var/atom/movable/target, var/blocked = 0)
+	if(isliving(target))
+		var/mob/living/L = target
+		var/throwdir = get_dir(firer,L)
+		if(prob(10) && !blocked)
+			L.Stun(1)
+			L.Confuse(1)
+		L.throw_at_old(get_edge_target_turf(L, throwdir), rand(3,6), 10)
+
+		return 1
+
+/obj/item/projectile/bullet/pellet/heavy_shotgun/grit
+	name = "heavy buckshot"
+	range_step = 1
+
+/obj/item/projectile/bullet/pellet/heavy_shotgun/grit/on_hit(var/atom/movable/target, var/blocked = 0)
+	if(isliving(target))
+		var/mob/living/L = target
+		var/throwdir = get_dir(firer,L)
+		if(prob(10) && !blocked)
+			L.Stun(1)
+			L.Confuse(1)
+		L.throw_at_old(get_edge_target_turf(L, throwdir), rand(3,6), 10)
+
+		return 1
+
 /* Incendiary */
 
 /obj/item/projectile/bullet/incendiary

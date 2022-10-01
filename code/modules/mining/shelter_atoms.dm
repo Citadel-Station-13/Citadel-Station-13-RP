@@ -260,9 +260,9 @@
 	var/buildstacktype = /obj/item/stack/material/steel
 	var/buildstackamount = 5
 
-/obj/structure/fans/proc/deconstruct()
-	new buildstacktype(loc,buildstackamount)
-	qdel(src)
+/obj/structure/fans/drop_products(method)
+	. = ..()
+	new buildstacktype(drop_location(), buildstackamount)
 
 /obj/structure/fans/attackby(obj/item/I, mob/living/user)
 	if(I.is_wrench())

@@ -221,6 +221,10 @@
 		set_light(glow_range, glow_intensity, glow_color)
 
 	else
+		if(istype(src, /mob/living/carbon))
+			var/mob/living/carbon/C = src
+			if(C.species?.species_appearance_flags & RADIATION_GLOWS)
+				return FALSE//When we glow with rads this is handled in handle_mutations_and_radiation()
 		set_light(0)
 		return FALSE
 

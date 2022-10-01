@@ -72,7 +72,7 @@
 
 	pulling = AM
 	AM.pulledby = src
-	AM.set_glide_size(glide_size)
+	recursive_glidesize_update()
 
 	//SEND_SIGNAL(src, COMSIG_LIVING_START_PULL, AM)
 
@@ -135,4 +135,4 @@
 	update_pull_hud_icon()
 
 /mob/proc/update_pull_hud_icon()
-	pullin.icon_state = pulling? "pull1" : "pull0"
+	pullin?.icon_state = pulling? "pull1" : "pull0"

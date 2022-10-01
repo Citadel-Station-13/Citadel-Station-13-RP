@@ -18,7 +18,7 @@
 /area/class_d/explored)
 "ea" = (
 /obj/item/ammo_casing/spent,
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "ep" = (
@@ -35,7 +35,7 @@
 /turf/simulated/floor/classd/indoors,
 /area/class_d/explored/underground)
 "eY" = (
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored/underground)
 "gV" = (
@@ -105,7 +105,7 @@
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "vI" = (
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "xj" = (
@@ -132,12 +132,12 @@
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored/underground)
 "AP" = (
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/floor/classd/indoors,
 /area/class_d/explored/underground)
 "AR" = (
 /obj/item/beartrap,
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored/underground)
 "CE" = (
@@ -147,7 +147,7 @@
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored/underground)
 "Ew" = (
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /obj/item/beartrap,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored/underground)
@@ -174,7 +174,7 @@
 "GP" = (
 /obj/item/ammo_casing/spent,
 /obj/item/ammo_casing/spent,
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored/underground)
 "Ia" = (
@@ -189,7 +189,7 @@
 /turf/simulated/floor/classd/indoors,
 /area/class_d/explored/underground)
 "Jc" = (
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /obj/structure/lattice,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored/underground)
@@ -232,12 +232,12 @@
 "Ru" = (
 /obj/item/ammo_casing/spent,
 /obj/item/ammo_casing/spent,
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/floor/classd/indoors,
 /area/class_d/explored/underground)
 "Sg" = (
 /obj/item/ammo_casing/spent,
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /obj/structure/lattice,
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored/underground)
@@ -266,7 +266,7 @@
 /area/class_d/explored/underground)
 "WZ" = (
 /obj/item/beartrap,
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/floor/classd/indoors,
 /area/class_d/explored/underground)
 "XC" = (

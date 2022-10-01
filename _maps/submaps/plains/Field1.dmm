@@ -21,11 +21,11 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Field1)
 "g" = (
-/obj/vehicle/train/trolley,
+/obj/vehicle_old/train/trolley,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Field1)
 "h" = (
-/obj/vehicle/train/engine,
+/obj/vehicle_old/train/engine,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Field1)
 "i" = (

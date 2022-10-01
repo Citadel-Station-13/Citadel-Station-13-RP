@@ -582,7 +582,7 @@
 /turf/simulated/shuttle/plating,
 /area/shuttle/trade)
 "bz" = (
-/obj/vehicle/train/engine,
+/obj/vehicle_old/train/engine,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -674,7 +674,7 @@
 /turf/simulated/shuttle/plating,
 /area/shuttle/trade)
 "bM" = (
-/obj/vehicle/train/trolley,
+/obj/vehicle_old/train/trolley,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "bN" = (

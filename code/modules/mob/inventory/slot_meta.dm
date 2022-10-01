@@ -16,11 +16,18 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 			stack_trace("no ID on [path], skipping")
 			continue
 		.[M.id || M.type] = M
+		if(!(M.inventory_slot_flags & INV_SLOT_ALLOW_RANDOM_ID))
+			GLOB.inventory_slot_type_cache[M.type] = M
+	sortTim(., /proc/cmp_inventory_slot_meta_dsc, TRUE)
+	sortTim(GLOB.inventory_slot_type_cache, /proc/cmp_inventory_slot_meta_dsc, TRUE)
 
 /proc/all_inventory_slot_ids()
 	. = list()
 	for(var/id in GLOB.inventory_slot_meta)
 		. += id
+
+/proc/cmp_inventory_slot_meta_dsc(datum/inventory_slot_meta/a, datum/inventory_slot_meta/b)
+	return b.sort_order - a.sort_order
 
 /**
  * returns inventory slot meta for an id
@@ -78,22 +85,14 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	var/static/id_next = 0
 	/// abstract type
 	var/abstract_type = /datum/inventory_slot_meta
-	/// is inventory? if not, this won't be rendered as part of the hud's inventory
-	var/is_inventory = FALSE
-	/// hide unless inventory is expanded
-	var/display_requires_expand = TRUE
+	/// flags
+	var/inventory_slot_flags = INV_SLOT_IS_RENDERED
+	/// display order - higher is upper. a <hr> is applied on 0.
+	var/sort_order = 0
 	/// always show on strip/force equip menu, or only show when full
 	var/always_show_on_strip_menu = TRUE
-	/// fully abstract - represents "put into something"
-	var/is_abstract = FALSE
 	/// rendering slot key
 	var/render_key
-	/// do we render on mob?
-	var/is_rendered = TRUE
-	/// are we considered worn?
-	var/is_considered_worn = FALSE
-	/// allow random id?
-	var/allow_random_id = FALSE
 	/// our screen loc
 	var/hud_position
 	/// equip checks to use
@@ -102,9 +101,11 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	var/slot_flags_required = NONE
 	/// slot flags forbidden to have if checking
 	var/slot_flags_forbidden = NONE
+	/// default INV_VIEW flags for stripping
+	var/default_strip_inv_view_flags = NONE
 
 /datum/inventory_slot_meta/New()
-	if(allow_random_id && !id)
+	if(!id && (inventory_slot_flags & INV_SLOT_ALLOW_RANDOM_ID))
 		id = "[++id_next]"
 
 /datum/inventory_slot_meta/proc/_equip_check(obj/item/I, mob/wearer, mob/user, flags)
@@ -114,11 +115,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 				return FALSE
 			if(I.slot_flags & slot_flags_forbidden)
 				return FALSE
-
 	if(slot_equip_checks & SLOT_EQUIP_CHECK_USE_PROC)
 		if(!allow_equip(I, wearer, user, flags))
 			return FALSE
-
 	return TRUE
 
 /**
@@ -127,38 +126,45 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 /datum/inventory_slot_meta/proc/allow_equip(obj/item/I, mob/wearer, mob/user, force)
 	return TRUE
 
+/**
+ * checks for obfuscation when making the strip menu
+ */
+/datum/inventory_slot_meta/proc/strip_obfuscation_check(obj/item/equipped, mob/wearer, mob/user)
+	return default_strip_inv_view_flags
+
 /datum/inventory_slot_meta/inventory
 	abstract_type = /datum/inventory_slot_meta/inventory
-	is_inventory = TRUE
-	always_show_on_strip_menu = TRUE
+	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_HUD_REQUIRES_EXPAND | INV_SLOT_CONSIDERED_WORN
 
 /datum/inventory_slot_meta/inventory/back
 	name = "back"
 	render_key = "back"
 	id = SLOT_ID_BACK
-	display_requires_expand = FALSE
+	sort_order = 2000
 	display_name = "back"
 	display_preposition = "on"
 	hud_position = ui_back
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
+	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN
 	slot_flags_required = SLOT_BACK
-	is_considered_worn = TRUE
 
 /datum/inventory_slot_meta/inventory/uniform
 	name = "uniform"
 	render_key = "under"
 	id = SLOT_ID_UNIFORM
+	sort_order = 5000
 	display_name = "body"
 	display_preposition = "on"
 	hud_position = ui_iclothing
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_ICLOTHING
-	is_considered_worn = TRUE
+	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_HUD_REQUIRES_EXPAND | INV_SLOT_CONSIDERED_WORN
 
 /datum/inventory_slot_meta/inventory/head
 	name = "head"
 	render_key = "head"
 	id = SLOT_ID_HEAD
+	sort_order = 10000
 	display_name = "back"
 	display_preposition = "on"
 	display_name = "head"
@@ -166,36 +172,39 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	hud_position = ui_head
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_HEAD
-	is_considered_worn = TRUE
+	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_HUD_REQUIRES_EXPAND | INV_SLOT_CONSIDERED_WORN
 
 /datum/inventory_slot_meta/inventory/suit
 	name = "outerwear"
 	render_key = "suit"
 	id = SLOT_ID_SUIT
-	display_name = "clohtes"
+	sort_order = 7000
+	display_name = "suit"
 	display_preposition = "over"
+
 	hud_position = ui_oclothing
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_OCLOTHING
-	is_considered_worn = TRUE
+	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_HUD_REQUIRES_EXPAND | INV_SLOT_CONSIDERED_WORN
 
 /datum/inventory_slot_meta/inventory/belt
 	name = "belt"
 	render_key = "belt"
 	id = SLOT_ID_BELT
-	display_requires_expand = FALSE
+	sort_order = 6000
 	display_name = "waist"
 	display_preposition = "on"
 	hud_position = ui_belt
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_BELT
-	is_considered_worn = TRUE
+	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN
 
 /datum/inventory_slot_meta/inventory/pocket
 	abstract_type = /datum/inventory_slot_meta/inventory/pocket
-	is_rendered = FALSE
-	display_requires_expand = FALSE
+	sort_order = 2000
+	inventory_slot_flags = INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_PROC
+	default_strip_inv_view_flags = INV_VIEW_OBFUSCATE_HIDE_ITEM_NAME | INV_VIEW_STRIP_FUMBLE_ON_FAILURE | INV_VIEW_STRIP_IS_SILENT
 
 /datum/inventory_slot_meta/inventory/pocket/allow_equip(obj/item/I, mob/wearer, mob/user, force)
 	. = ..()
@@ -223,56 +232,60 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "id"
 	render_key = "id"
 	id = SLOT_ID_WORN_ID
-	display_requires_expand = FALSE
+	sort_order = 3000
 	display_name = "badge"
 	display_preposition = "as"
 	hud_position = ui_id
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_ID
-	is_considered_worn = TRUE
+	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN
 
 /datum/inventory_slot_meta/inventory/shoes
 	name = "shoes"
 	render_key = "shoes"
 	id = SLOT_ID_SHOES
+	sort_order = 4000
 	display_name = "feet"
 	display_preposition = "on"
 	hud_position = ui_shoes
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_FEET
-	is_considered_worn = TRUE
+	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN | INV_SLOT_HUD_REQUIRES_EXPAND
 
 /datum/inventory_slot_meta/inventory/gloves
 	name = "gloves"
 	render_key = "gloves"
 	id = SLOT_ID_GLOVES
+	sort_order = 6500
 	display_name = "hands"
 	display_preposition = "on"
 	hud_position = ui_gloves
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_GLOVES
-	is_considered_worn = TRUE
+	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN | INV_SLOT_HUD_REQUIRES_EXPAND
 
 /datum/inventory_slot_meta/inventory/glasses
 	name = "glasses"
 	render_key = "glasses"
 	id = SLOT_ID_GLASSES
+	sort_order = 7500
 	display_name = "eyes"
 	display_preposition = "over"
 	hud_position = ui_glasses
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_EYES
-	is_considered_worn = TRUE
+	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN | INV_SLOT_HUD_REQUIRES_EXPAND
 
 /datum/inventory_slot_meta/inventory/suit_storage
 	name = "suit storage"
 	render_key = "suit-store"
 	id = SLOT_ID_SUIT_STORAGE
-	display_requires_expand = FALSE
+	sort_order = 500
 	display_name = "suit"
 	display_preposition = "on"
 	hud_position = ui_sstore1
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_PROC
+	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE
 
 /datum/inventory_slot_meta/inventory/suit_storage/allow_equip(obj/item/I, mob/wearer, mob/user, force)
 	. = ..()
@@ -285,8 +298,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	return FALSE
 
 /datum/inventory_slot_meta/inventory/ears
+	sort_order = 9500
 	abstract_type = /datum/inventory_slot_meta/inventory/ears
-	is_considered_worn = TRUE
+	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN | INV_SLOT_HUD_REQUIRES_EXPAND
 
 /datum/inventory_slot_meta/inventory/ears/left
 	name = "left ear"
@@ -302,7 +316,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "right ear"
 	render_key = "ear-r"
 	id = SLOT_ID_RIGHT_EAR
-	display_name = "left ear"
+	display_name = "right ear"
 	display_preposition = "on"
 	hud_position = ui_r_ear
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
@@ -312,6 +326,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "mask"
 	render_key = "mask"
 	id = SLOT_ID_MASK
+	sort_order = 9250
 	display_name = "face"
 	display_preposition = "on"
 	hud_position = ui_mask
@@ -319,9 +334,10 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	slot_flags_required = SLOT_MASK
 
 /datum/inventory_slot_meta/restraints
-	is_inventory = FALSE
+	sort_order = -250
 	always_show_on_strip_menu = FALSE
 	abstract_type = /datum/inventory_slot_meta/restraints
+	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_STRIPPABLE | INV_SLOT_STRIP_ONLY_REMOVES | INV_SLOT_STRIP_SIMPLE_LINK
 
 /datum/inventory_slot_meta/restraints/handcuffs
 	name = "handcuffed"
@@ -340,7 +356,6 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	id = SLOT_ID_LEGCUFFED
 	display_name = "legs"
 	display_preposition = "around"
-
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_PROC
 
 /datum/inventory_slot_meta/restraints/legcuffs/allow_equip(obj/item/I, mob/wearer, mob/user, force)
@@ -351,17 +366,12 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
  * they will have randomized ids
  */
 /datum/inventory_slot_meta/abstract
-	is_inventory = FALSE
-	always_show_on_strip_menu = FALSE
-	is_abstract = TRUE
-	is_rendered = FALSE
+	inventory_slot_flags = INV_SLOT_IS_ABSTRACT | INV_SLOT_ALLOW_RANDOM_ID
 	abstract_type = /datum/inventory_slot_meta/abstract
-	allow_random_id = TRUE
 
 /datum/inventory_slot_meta/abstract/put_in_hands
 	name = "put in hands"
 	id = SLOT_ID_HANDS
-	display_requires_expand = FALSE
 	display_name = "hands"
 	display_preposition = "in"
 	display_plural = TRUE

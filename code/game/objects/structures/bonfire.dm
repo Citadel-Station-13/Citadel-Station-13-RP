@@ -5,7 +5,9 @@
 	icon_state = "bonfire"
 	density = FALSE
 	anchored = TRUE
-	buckle_lying = FALSE
+	buckle_lying = 0
+	buckle_pixel_y = 12
+
 	var/burning = FALSE
 	var/next_fuel_consumption = 0 // world.time of when next item in fuel list gets eatten to sustain the fire.
 	var/grill = FALSE
@@ -35,14 +37,14 @@
 	. = ..(mapload, MAT_SIFWOOD)
 
 /obj/structure/bonfire/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/stack/rods) && !can_buckle && !grill)
+	if(istype(W, /obj/item/stack/rods) && !buckle_allowed && !grill)
 		var/obj/item/stack/rods/R = W
 		var/choice = input(user, "What would you like to construct?", "Bonfire") as null|anything in list("Stake","Grill")
 		switch(choice)
 			if("Stake")
 				R.use(1)
-				can_buckle = TRUE
-				buckle_require_restraints = TRUE
+				buckle_allowed = TRUE
+				buckle_flags |= BUCKLING_REQUIRES_RESTRAINTS
 				to_chat(user, "<span class='notice'>You add a rod to \the [src].</span>")
 				var/mutable_appearance/rod_underlay = mutable_appearance('icons/obj/structures.dmi', "bonfire_rod")
 				rod_underlay.pixel_y = 16
@@ -237,7 +239,7 @@
 					if(heat_transfer > 0)
 						heat_transfer = min(heat_transfer , heating_power)
 
-						removed.add_thermal_energy(heat_transfer)
+						removed.adjust_thermal_energy(heat_transfer)
 
 				env.merge(removed)
 
@@ -247,13 +249,6 @@
 /obj/structure/bonfire/water_act(amount)
 	if(prob(amount * 10))
 		extinguish()
-
-/obj/structure/bonfire/post_buckle_mob(mob/living/M)
-	if(M.buckled == src) // Just buckled someone
-		M.pixel_y += 13
-	else // Just unbuckled someone
-		M.pixel_y -= 13
-	update_icon()
 
 /obj/structure/fireplace //more like a space heater than a bonfire. A cozier alternative to both.
 	name = "fireplace"
@@ -403,7 +398,7 @@
 					if(heat_transfer > 0)
 						heat_transfer = min(heat_transfer , heating_power)
 
-						removed.add_thermal_energy(heat_transfer)
+						removed.adjust_thermal_energy(heat_transfer)
 
 				env.merge(removed)
 

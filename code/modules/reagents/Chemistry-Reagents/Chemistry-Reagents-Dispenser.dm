@@ -38,9 +38,9 @@
 
 /datum/reagent/carbon/touch_turf(var/turf/T)
 	if(!istype(T, /turf/space))
-		var/obj/effect/decal/cleanable/dirt/dirtoverlay = locate(/obj/effect/decal/cleanable/dirt, T)
+		var/obj/effect/debris/cleanable/dirt/dirtoverlay = locate(/obj/effect/debris/cleanable/dirt, T)
 		if (!dirtoverlay)
-			dirtoverlay = new/obj/effect/decal/cleanable/dirt(T)
+			dirtoverlay = new/obj/effect/debris/cleanable/dirt(T)
 			dirtoverlay.alpha = volume * 30
 		else
 			dirtoverlay.alpha = min(dirtoverlay.alpha + volume * 30, 255)
@@ -341,9 +341,9 @@
 /datum/reagent/radium/touch_turf(var/turf/T)
 	if(volume >= 3)
 		if(!istype(T, /turf/space))
-			var/obj/effect/decal/cleanable/greenglow/glow = locate(/obj/effect/decal/cleanable/greenglow, T)
+			var/obj/effect/debris/cleanable/greenglow/glow = locate(/obj/effect/debris/cleanable/greenglow, T)
 			if(!glow)
-				new /obj/effect/decal/cleanable/greenglow(T)
+				new /obj/effect/debris/cleanable/greenglow(T)
 			return
 
 /datum/reagent/acid
@@ -426,7 +426,7 @@
 	if(O.unacidable)
 		return
 	if((istype(O, /obj/item) || istype(O, /obj/effect/plant)) && (volume > meltdose))
-		var/obj/effect/decal/cleanable/molten_item/I = new/obj/effect/decal/cleanable/molten_item(O.loc)
+		var/obj/effect/debris/cleanable/molten_item/I = new/obj/effect/debris/cleanable/molten_item(O.loc)
 		I.desc = "Looks like this was \an [O] some time ago."
 		for(var/mob/M in viewers(5, O))
 			to_chat(M, "<span class='warning'>\The [O] melts.</span>")

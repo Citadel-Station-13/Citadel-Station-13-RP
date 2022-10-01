@@ -88,11 +88,11 @@
 			if(!WT.remove_fuel(0, user))
 				to_chat(user, "<span class='warning'>\The [src] must be on to complete this task.</span>")
 				return
-			playsound(src.loc, WT.usesound, 50, 1)
+			playsound(src.loc, WT.tool_sound, 50, 1)
 			user.visible_message( \
 				"<span class='warning'>\The [user] begins deconstructing \the [src].</span>", \
 				"<span class='notice'>You start deconstructing \the [src].</span>")
-			if(do_after(user, 20 * WT.toolspeed, target = src) && WT.isOn())
+			if(do_after(user, 20 * WT.tool_speed, target = src) && WT.isOn())
 				new /obj/item/stack/material/steel(get_turf(src), 2)
 				user.visible_message( \
 					"<span class='warning'>\The [user] has deconstructed \the [src].</span>", \
@@ -112,7 +112,7 @@
 			new /obj/item/stack/cable_coil(get_turf(src), 1, null, "red")
 			user.visible_message("\The [user] removes the wiring from \the [src].", \
 				"You remove the wiring from \the [src].", "You hear a snip.")
-			playsound(src.loc, W.usesound, 50, 1)
+			playsound(src.loc, W.tool_sound, 50, 1)
 			update_icon()
 		return
 
@@ -134,19 +134,19 @@
 			user.update_examine_panel(src)
 			user.visible_message("\The [user] screws \the [src] i nplace.", \
 				"You screw \the [src] in place.", "You hear a noise.")
-			playsound(src, W.usesound, 75, 1)
+			playsound(src, W.tool_sound, 75, 1)
 			update_icon()
 		else if (stage == FRAME_FASTENED)
 			stage = FRAME_UNFASTENED
 			user.update_examine_panel(src)
 			user.visible_message("\The [user] unscrews \the [src].", \
 				"You unscrew \the [src].", "You hear a noise.")
-			playsound(src, W.usesound, 75, 1)
+			playsound(src, W.tool_sound, 75, 1)
 			update_icon()
 		else if (stage == FRAME_WIRED)
 			user.visible_message("\The [user] closes \the [src]'s casing.", \
 				"You close \the [src]'s casing.", "You hear a click.")
-			playsound(src, W.usesound, 75, 1)
+			playsound(src, W.tool_sound, 75, 1)
 			var/obj/newmachine = new build_machine_type(get_turf(src), src.dir)
 			newmachine.pixel_x = pixel_x
 			newmachine.pixel_y = pixel_y

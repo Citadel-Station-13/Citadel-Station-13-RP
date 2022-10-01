@@ -8,7 +8,7 @@
 /obj/effect/overlay/aiholo
 	var/mob/living/bellied //Only belly one person at a time. No huge vore-organs setup for AIs.
 	var/mob/living/silicon/ai/master //This will receive the AI controlling the Hologram. For referencing purposes.
-	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
+	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
 	alpha = HOLO_ORIGINAL_ALPHA //Half alpha here rather than in the icon so we can toggle it easily.
 	color = HOLO_ORIGINAL_COLOR //This is the blue from icons.dm that it was before.
 	desc = "A hologram representing an AI persona."
@@ -86,7 +86,7 @@
 /mob/living/AIShiftClick(mob/user) //Shift-click as AI overridden on mobs to examine.
 	if(user.client)
 		var/list/result = examine(user)
-		to_chat(src, "<blockquote class='info'>[result.Join("\n")]</blockquote>")
+		to_chat(user, "<blockquote class='info'>[result.Join("\n")]</blockquote>")
 
 //This can go here with all the references.
 /obj/effect/overlay/aiholo/examine(mob/user)

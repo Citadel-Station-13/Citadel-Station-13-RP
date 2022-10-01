@@ -164,6 +164,7 @@
 		/obj/item/handcuffs,
 		/obj/item/flash,
 		/obj/item/clothing/glasses,
+		/obj/item/ammo_casing/a10g,
 		/obj/item/ammo_casing/a12g,
 		/obj/item/ammo_magazine,
 		/obj/item/cell/device,
@@ -590,4 +591,30 @@
 	max_w_class = ITEMSIZE_NORMAL
 	can_hold = list(
 		/obj/item/ammo_casing/arrow
+		)
+
+/obj/item/storage/belt/quiver/full
+	name = "leather quiver"
+	desc = "A quiver made from the hide of some animal. Used to hold arrows."
+	icon_state = "quiver"
+	storage_slots = 15
+	max_w_class = ITEMSIZE_NORMAL
+	can_hold = list(
+		/obj/item/ammo_casing/arrow
+		)
+	starts_with = list(
+		/obj/item/ammo_casing/arrow = 15
+		)
+
+/obj/item/storage/belt/quiver/full/ash
+	name = "leather quiver"
+	desc = "A quiver made from the hide of some animal. Used to hold arrows."
+	icon_state = "quiver"
+	storage_slots = 15
+	max_w_class = ITEMSIZE_NORMAL
+	can_hold = list(
+		/obj/item/ammo_casing/arrow
+		)
+	starts_with = list(
+		/obj/item/ammo_casing/arrow/ash = 15
 		)

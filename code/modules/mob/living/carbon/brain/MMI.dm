@@ -75,7 +75,7 @@
 			return
 
 		user.visible_message(SPAN_NOTICE("\The [user] sticks \a [O] into \the [src]."))
-		B.preserved = TRUE
+		B.preserve(MMI_TRAIT)
 
 		brainmob = B.brainmob
 		B.brainmob = null
@@ -123,7 +123,7 @@
 			brainobj = null
 		else	//Or make a new one if empty.
 			brain = new(user.loc)
-		brain.preserved = FALSE
+		brain.unpreserve(MMI_TRAIT)
 		brainmob.container = null//Reset brainmob mmi var.
 		brainmob.loc = brain//Throw mob into brain.
 		living_mob_list -= brainmob//Get outta here

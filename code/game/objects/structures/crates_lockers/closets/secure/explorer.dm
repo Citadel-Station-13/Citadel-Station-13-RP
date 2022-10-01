@@ -155,7 +155,6 @@
 		/obj/item/reagent_containers/food/snacks/liquidfood,
 		/obj/item/reagent_containers/food/snacks/liquidprotein,
 		/obj/item/card/mining_point_card/survey/gimmick,
-		/obj/item/clothing/glasses/omnihud/exp,
 		/obj/item/cataloguer/compact/pathfinder)
 
 /obj/structure/closet/secure_closet/pathfinder/Initialize(mapload)

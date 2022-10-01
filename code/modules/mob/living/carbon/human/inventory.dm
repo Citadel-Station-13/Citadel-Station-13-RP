@@ -155,6 +155,23 @@
 	if(s_store)
 		. += s_store._inv_return_attached()
 
+/mob/living/carbon/human/_get_inventory_slot_ids()
+	return ..() + list(
+		SLOT_ID_SUIT,
+		SLOT_ID_UNIFORM,
+		SLOT_ID_SHOES,
+		SLOT_ID_BELT,
+		SLOT_ID_GLOVES,
+		SLOT_ID_GLASSES,
+		SLOT_ID_HEAD,
+		SLOT_ID_LEFT_EAR,
+		SLOT_ID_RIGHT_EAR,
+		SLOT_ID_LEFT_POCKET,
+		SLOT_ID_RIGHT_POCKET,
+		SLOT_ID_WORN_ID,
+		SLOT_ID_SUIT_STORAGE
+	)
+
 /mob/living/carbon/human/put_in_left_hand(obj/item/I, force)
 	if(!has_organ(BP_L_HAND))
 		return FALSE
@@ -233,14 +250,14 @@
 		return FALSE
 	return TRUE
 
-/mob/living/carbon/human/semantically_has_slot(id)
+/mob/living/carbon/human/_semantic_slot_id_check(id)
 	. = ..()
 	if(!.)
 		return
 	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(id)
 	if(!slot_meta)
 		return FALSE
-	return !slot_meta.is_inventory || !species || (id in species.hud.gear)
+	return !(slot_meta.inventory_slot_flags & INV_SLOT_IS_INVENTORY) || !species || (id in species.hud.gear)
 
 //! old stuff below
 

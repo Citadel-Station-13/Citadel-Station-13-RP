@@ -79,7 +79,7 @@
 	id_tag = "escapepod_shuttle_docker";
 	pixel_y = 28
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/structure/handrail{
 	dir = 8
 	},
@@ -87,7 +87,7 @@
 	frequency = 1380;
 	pixel_y = 22
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/light/small{
 	dir = 8;
 	pixel_x = 0
@@ -135,7 +135,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/shuttle/deployable/escapepod)
 "o" = (
@@ -150,7 +150,7 @@
 	icon_state = "warning";
 	dir = 8
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
 	command = "cycle_exterior";
 	frequency = 1380;
@@ -182,8 +182,6 @@
 	dir = 1
 	},
 /obj/structure/cable/cyan{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -220,8 +218,6 @@
 	dir = 1
 	},
 /obj/structure/cable/cyan{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/light/small,

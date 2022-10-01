@@ -83,7 +83,7 @@
 	var/obj/item/I = source
 	I.visible_message(SPAN_NOTICE("[I] snaps back into [src]!"))
 	I.forceMove(src)
-	. = COMPONENT_ITEM_RELOCATED_BY_DROP
+	. = COMPONENT_ITEM_DROPPED_RELOCATE | COMPONENT_ITEM_DROPPED_SUPPRESS_SOUND
 
 /obj/item/organ/internal/augment/proc/check_item_yank(obj/item/I)
 	if(I.loc != src && I.loc != owner)
@@ -172,7 +172,7 @@
 
 	enable_augments(usr)
 
-/mob/living/carbon/human/proc/enable_augments(var/mob/living/user)
+/mob/living/carbon/human/proc/enable_augments(mob/living/L)
 	var/list/options = list()
 
 	var/list/present_augs = list()
@@ -190,11 +190,11 @@
 		for(var/key in options)
 			choice = key
 	else
-		choice = show_radial_menu(user, src, options)
+		choice = show_radial_menu(L, src, options)
 
 	if(!isnull(choice) && options[choice])
 		var/obj/item/organ/internal/augment/A = present_augs[choice]
-		A.augment_action(user)
+		A.augment_action(L)
 
 /* equip_augment_item
  * Used to equip an organ's augment items when possible.
@@ -214,7 +214,7 @@
 
 	if(buckled)
 		var/obj/Ob = buckled
-		if(Ob.buckle_lying)
+		if(Ob.buckle_lying(src))
 			to_chat(M, SPAN_NOTICE("You cannot use your augments when restrained."))
 			return FALSE
 

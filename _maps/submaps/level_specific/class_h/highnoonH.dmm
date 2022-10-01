@@ -21,7 +21,7 @@
 /area/class_h/POIs/WW_Town)
 "dI" = (
 /obj/structure/bed/padded,
-/atom/movable/spawner/corpse/syndicatesoldier,
+/obj/spawner/corpse/syndicatesoldier,
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/WW_Town)
 "dR" = (

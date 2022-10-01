@@ -222,3 +222,7 @@
 /datum/gear/shoes/antediluvian
 	name = "Antediluvian Legwraps"
 	path = /obj/item/clothing/shoes/antediluvian
+
+/datum/gear/shoes/halfmoon
+	name = "Half Moon boots"
+	path = /obj/item/clothing/shoes/boots/half_moon

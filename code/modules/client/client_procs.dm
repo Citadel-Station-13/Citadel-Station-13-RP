@@ -666,6 +666,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 					log_game("[key_name(src)] is using the middle click aimbot exploit")
 					message_admins("[ADMIN_LOOKUPFLW(src)] [ADMIN_KICK(usr)] is using the middle click aimbot exploit")
 					add_system_note("aimbot", "Is using the middle click aimbot exploit")
+					log_click("DROPPED: [ckey] middle click aimbot on [middragatom]:[object]")
 
 				log_game("[key_name(src)] Has hit the per-minute click limit of [mcl] clicks in a given game minute")
 				message_admins("[ADMIN_LOOKUPFLW(src)] [ADMIN_KICK(usr)] Has hit the per-minute click limit of [mcl] clicks in a given game minute")
@@ -694,7 +695,12 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		// so that the visual focus indicator matches reality.
 		winset(src, null, "input.background-color=[COLOR_INPUT_DISABLED]")
 
+	if(GLOB.log_clicks)
+		log_click("CLICK: [ckey] [object]~[location]~[control]~[params]")
+
 	return ..()
+
+GLOBAL_VAR_INIT(log_clicks, FALSE)
 
 /client/proc/last_activity_seconds()
 	return inactivity / 10

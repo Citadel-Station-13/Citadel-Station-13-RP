@@ -243,7 +243,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/crashedcontainmentshuttle)
 "bb" = (
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/shuttle/floor/black,
 /area/submap/crashedcontainmentshuttle)
 "bc" = (
@@ -284,7 +284,7 @@
 /turf/simulated/shuttle/floor/red,
 /area/submap/crashedcontainmentshuttle)
 "bk" = (
-/obj/effect/decal/cleanable/vomit,
+/obj/effect/debris/cleanable/vomit,
 /turf/simulated/shuttle/floor/black,
 /area/submap/crashedcontainmentshuttle)
 "bl" = (
@@ -292,15 +292,15 @@
 /turf/simulated/shuttle/floor/red,
 /area/submap/crashedcontainmentshuttle)
 "bm" = (
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /turf/template_noop,
 /area/submap/crashedcontainmentshuttle)
 "bn" = (
-/obj/effect/decal/cleanable/vomit,
+/obj/effect/debris/cleanable/vomit,
 /turf/simulated/shuttle/floor/white,
 /area/submap/crashedcontainmentshuttle)
 "bo" = (
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/template_noop,
 /area/submap/crashedcontainmentshuttle)
 "bp" = (
@@ -317,9 +317,9 @@
 /turf/simulated/shuttle/floor/yellow,
 /area/submap/crashedcontainmentshuttle)
 "br" = (
-/obj/effect/decal/cleanable/blood/drip,
-/obj/effect/decal/cleanable/blood/drip,
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/shuttle/floor/yellow,
 /area/submap/crashedcontainmentshuttle)
 "bs" = (
@@ -343,12 +343,12 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/crashedcontainmentshuttle)
 "bv" = (
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/shuttle/floor/red,
 /area/submap/crashedcontainmentshuttle)
 "bw" = (
 /obj/item/material/knife/ritual,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/shuttle/floor/red,
 /area/submap/crashedcontainmentshuttle)
 "bx" = (
@@ -362,12 +362,12 @@
 "bz" = (
 /obj/effect/decal/remains/human,
 /obj/item/clothing/head/helmet/space/cult,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/shuttle/floor/red,
 /area/submap/crashedcontainmentshuttle)
 "bA" = (
-/obj/effect/decal/cleanable/blood/drip,
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/shuttle/floor/white,
 /area/submap/crashedcontainmentshuttle)
 "bB" = (
@@ -377,12 +377,12 @@
 	pixel_x = -12;
 	pixel_y = 2
 	},
-/obj/effect/decal/cleanable/blood/drip,
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/shuttle/floor/white,
 /area/submap/crashedcontainmentshuttle)
 "bC" = (
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/shuttle/floor/black,
 /area/submap/crashedcontainmentshuttle)
 "bD" = (
@@ -392,16 +392,16 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/crashedcontainmentshuttle)
 "bE" = (
-/obj/effect/decal/cleanable/blood/drip,
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/shuttle/floor/black,
 /area/submap/crashedcontainmentshuttle)
 "bF" = (
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/shuttle/floor/white,
 /area/submap/crashedcontainmentshuttle)
 "bG" = (
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /obj/random/landmine,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/crashedcontainmentshuttle)
@@ -425,7 +425,7 @@
 /turf/simulated/shuttle/floor/yellow,
 /area/submap/crashedcontainmentshuttle)
 "bL" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/random/landmine,
 /turf/simulated/shuttle/floor/red,
 /area/submap/crashedcontainmentshuttle)
@@ -452,7 +452,7 @@
 /turf/simulated/shuttle/floor/white,
 /area/submap/crashedcontainmentshuttle)
 "bO" = (
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /obj/effect/decal/remains/human,
 /obj/item/flame/lighter/random,
 /turf/simulated/mineral/floor/ignore_mapgen,

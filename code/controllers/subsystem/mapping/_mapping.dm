@@ -365,6 +365,7 @@ SUBSYSTEM_DEF(mapping)
 	chosen_type.load(T)
 
 /datum/controller/subsystem/mapping/proc/loadLateMaps()
+#ifndef FASTBOOT_DISABLE_LATELOAD
 	var/list/deffo_load = GLOB.using_map.lateload_z_levels
 	var/list/maybe_load = GLOB.using_map.lateload_single_pick
 
@@ -396,6 +397,7 @@ SUBSYSTEM_DEF(mapping)
 				log_world("Randompick Z level \"[map]\" is not a valid map!")
 			else
 				MT.load_new_z(centered = FALSE)
+#endif
 
 /datum/controller/subsystem/mapping/proc/preloadShelterTemplates()
 	for(var/item in subtypesof(/datum/map_template/shelter))

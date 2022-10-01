@@ -43,6 +43,9 @@
 	health = 200
 	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/robot/cyborg)
 
+	buckle_allowed = TRUE
+	buckle_flags = BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF
+
 	mob_bump_flag = ROBOT
 	mob_swap_flags = ~HEAVY
 	mob_push_flags = ~HEAVY //trundle trundle
@@ -199,6 +202,8 @@
 		cell_component.installed = 1
 
 	add_robot_verbs()
+
+	AddComponent(/datum/component/riding_filter/mob/robot)
 
 /mob/living/silicon/robot/proc/init()
 	aiCamera = new/obj/item/camera/siliconcam/robot_camera(src)
@@ -656,7 +661,7 @@
 	else if(W.is_screwdriver() && opened && !cell)	// haxing
 		wiresexposed = !wiresexposed
 		to_chat(user, "The wires have been [wiresexposed ? "exposed" : "unexposed"]")
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		updateicon()
 
 	else if(W.is_screwdriver() && opened && cell)	// radio
@@ -762,6 +767,9 @@
 	updatename("Default")
 
 /mob/living/silicon/robot/attack_hand(mob/user)
+	. = ..()
+	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
+		return
 
 	add_fingerprint(user)
 
@@ -996,7 +1004,7 @@
 					S.dirt = 0
 				for(var/A in tile)
 					if(istype(A, /obj/effect))
-						if(istype(A, /obj/effect/rune) || istype(A, /obj/effect/decal/cleanable) || istype(A, /obj/effect/overlay))
+						if(istype(A, /obj/effect/rune) || istype(A, /obj/effect/debris/cleanable) || istype(A, /obj/effect/overlay))
 							qdel(A)
 					else if(istype(A, /obj/item))
 						var/obj/item/cleaned_item = A
@@ -1238,7 +1246,7 @@
 			laws = new /datum/ai_laws/syndicate_override
 			var/time = time2text(world.realtime,"hh:mm:ss")
 			lawchanges.Add("[time] <B>:</B> [user.name]([user.key]) emagged [name]([key])")
-			var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+			var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 			set_zeroth_law("Only [user.real_name] and people [TU.he] designate[TU.s] as being such are operatives.")
 			. = 1
 			spawn()

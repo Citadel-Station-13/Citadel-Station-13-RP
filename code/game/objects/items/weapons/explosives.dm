@@ -5,7 +5,7 @@
 	icon = 'icons/obj/assemblies.dmi'
 	icon_state = "plastic-explosive0"
 	item_state = "plasticx"
-	item_flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_ILLEGAL = 2)
 	var/datum/wires/explosive/c4/wires = null
@@ -32,7 +32,7 @@
 	if(I.is_screwdriver())
 		open_panel = !open_panel
 		to_chat(user, "<span class='notice'>You [open_panel ? "open" : "close"] the wire panel.</span>")
-		playsound(src, I.usesound, 50, 1)
+		playsound(src, I.tool_sound, 50, 1)
 	else if(I.is_wirecutter() || istype(I, /obj/item/multitool) || istype(I, /obj/item/assembly/signaler ))
 		wires.Interact(user)
 	else

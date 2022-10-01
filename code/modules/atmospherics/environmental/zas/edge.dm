@@ -159,7 +159,7 @@ Class Procs:
 		erase()
 		return
 
-	var/equiv = A.air.share_ratio(B.air, coefficient)
+	var/equiv = A.air.default_share_ratio(B.air, coefficient)
 
 	var/differential = A.air.return_pressure() - B.air.return_pressure()
 	if(abs(differential) >= lightest_pressure)
@@ -233,7 +233,7 @@ Class Procs:
 
 	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/lightest_pressure, lightest_pressure)
 
-	var/equiv = A.air.share_space(air)
+	var/equiv = A.air.default_share_unsimulated(air)
 
 	var/differential = A.air.return_pressure() - air.return_pressure()
 	if(abs(differential) >= lightest_pressure)
