@@ -152,7 +152,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_x = -25
 	},
-/atom/movable/map_helper/airlock/sensor/int_sensor,
+/obj/map_helper/airlock/sensor/int_sensor,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
@@ -441,8 +441,8 @@
 /turf/simulated/floor/reinforced/airless,
 /area/shuttle/gecko_cr_wreck)
 "kd" = (
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/sensor/ext_sensor,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle{
 	dir = 6;
 	pixel_x = 7;
@@ -668,7 +668,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1
 	},
@@ -843,8 +843,8 @@
 /obj/machinery/airlock_sensor{
 	pixel_y = 21
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump,
 /obj/structure/handrail,
 /obj/machinery/light{
@@ -1190,8 +1190,8 @@
 /area/shuttle/gecko_cr_engineering_wreck)
 "yE" = (
 /obj/machinery/door/airlock/hatch,
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/sensor/ext_sensor,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle{
 	dir = 10;
 	pixel_x = -8;
@@ -1216,7 +1216,7 @@
 /area/shuttle/gecko_cr_engineering_wreck)
 "zx" = (
 /obj/machinery/door/airlock/hatch,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/gecko_cr_cockpit_wreck)
@@ -1332,7 +1332,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1
 	},
@@ -1402,7 +1402,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_x = 26
 	},
-/atom/movable/map_helper/airlock/sensor/int_sensor,
+/obj/map_helper/airlock/sensor/int_sensor,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
@@ -1822,7 +1822,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1
 	},
@@ -2137,7 +2137,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump,
 /obj/structure/handrail,
 /obj/machinery/embedded_controller/radio/airlock/docking_port_multi{
@@ -2217,7 +2217,7 @@
 "PD" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /obj/machinery/door/airlock/hatch,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/gecko_cr_cockpit_wreck)
 "PI" = (
@@ -2459,8 +2459,8 @@
 /obj/machinery/airlock_sensor{
 	pixel_y = 21
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump,
 /obj/structure/handrail,
 /obj/machinery/light{
@@ -2761,7 +2761,7 @@
 /area/shuttle/gecko_cr_engineering_wreck)
 "Yj" = (
 /obj/effect/floor_decal/industrial/warning/corner,
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump,
 /obj/structure/handrail,
 /obj/machinery/embedded_controller/radio/airlock/docking_port_multi{
@@ -2777,7 +2777,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1
 	},

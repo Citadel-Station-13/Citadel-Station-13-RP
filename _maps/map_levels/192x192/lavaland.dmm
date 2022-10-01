@@ -528,7 +528,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button{
 	dir = 4;
 	frequency = 1384;
@@ -547,7 +547,7 @@
 	id_tag = "mining_engine";
 	pixel_y = -25
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "mh" = (
@@ -557,7 +557,7 @@
 	id_tag = "mining_engine";
 	power_rating = 20000
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "mm" = (
@@ -841,7 +841,7 @@
 	id_tag = "mining_engine";
 	power_rating = 20000
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "pQ" = (
@@ -1464,7 +1464,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
 	dir = 8;
 	frequency = 1384;
@@ -1621,7 +1621,7 @@
 /turf/simulated/floor/tiled/old_tile,
 /area/lavaland/central/base/common)
 "Fe" = (
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
+/obj/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor/airlock_exterior{
 	dir = 4;
 	frequency = 1384;
@@ -1903,7 +1903,7 @@
 	pixel_y = 25;
 	req_one_access = list(48)
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
 	},
@@ -1940,7 +1940,7 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(48)
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
 	},
@@ -2076,7 +2076,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
@@ -2128,14 +2128,14 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(48)
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "RJ" = (
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1384;
@@ -2174,7 +2174,7 @@
 	id_tag = "mining_outpost";
 	pixel_y = -25
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/light/small,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
@@ -2182,7 +2182,7 @@
 	id_tag = "mining_outpost";
 	power_rating = 20000
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Sm" = (
@@ -2192,7 +2192,7 @@
 	id_tag = "mining_outpost";
 	power_rating = 20000
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Ss" = (
@@ -2207,7 +2207,7 @@
 	pixel_y = -25;
 	req_one_access = list(48)
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
 	},
@@ -2300,7 +2300,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "TW" = (
@@ -2416,7 +2416,7 @@
 	pixel_x = -22;
 	pixel_y = -4
 	},
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
+/obj/map_helper/airlock/sensor/ext_sensor,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/central/base/common)
 "Wb" = (

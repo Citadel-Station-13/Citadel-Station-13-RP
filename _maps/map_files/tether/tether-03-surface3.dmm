@@ -31913,7 +31913,7 @@
 	frequency = 1379;
 	id_tag = "southciv_airlock_pump"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/topairlock)
 "bhZ" = (
@@ -31922,7 +31922,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/grille,
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1379;
 	id_tag = "southciv_airlock_pump"
@@ -31974,7 +31974,7 @@
 	id_tag = "southciv_airlock_outer";
 	locked = 1
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/surfacebase/topairlock)
 "bif" = (
@@ -32018,7 +32018,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/surfacebase/topairlock)
 "bii" = (
@@ -32143,7 +32143,7 @@
 	pixel_x = -8;
 	pixel_y = -25
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1379;
 	icon_state = "door_locked";
@@ -32172,12 +32172,12 @@
 	pixel_x = 25;
 	pixel_y = -40
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/topairlock)
 "bir" = (
 /obj/machinery/door/firedoor/glass,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1379;
 	icon_state = "door_locked";
@@ -37257,7 +37257,7 @@
 	frequency = 1380;
 	id_tag = "tourbus_right"
 	},
-/atom/movable/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door/simple,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/tourbus/general)
 "jYD" = (

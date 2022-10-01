@@ -221,7 +221,7 @@
 	id_tag = "itglightshuttle_docker_hatch";
 	name = "Shuttle Hatch"
 	},
-/atom/movable/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door/simple,
 /obj/structure/cable/pink{
 	icon_state = "4-8"
 	},
@@ -1849,8 +1849,8 @@
 /turf/simulated/floor,
 /area/itglight/portengi)
 "lV" = (
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
 	id_tag = "itglight_port_sensor";
@@ -2063,7 +2063,7 @@
 /turf/simulated/floor,
 /area/itglight/starboardengi)
 "nR" = (
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	dir = 1;
 	frequency = 1380;
@@ -3034,7 +3034,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/itglight/passengersleeping)
 "wt" = (
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	dir = 1;
 	frequency = 1380;
@@ -3223,7 +3223,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/itglight/lockers)
 "xj" = (
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1380;
@@ -3396,7 +3396,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
@@ -3493,7 +3493,7 @@
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/starboardcargo)
 "yT" = (
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1380;
@@ -3593,7 +3593,7 @@
 /turf/space,
 /area/itglight/portengi)
 "zG" = (
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1380;
@@ -3781,8 +3781,8 @@
 	frequency = 1380;
 	id_tag = "itglight_starboard_pump"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
 	id_tag = "itglight_starboard_sensor";
@@ -3812,7 +3812,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/itglight/lockers)
 "Bj" = (
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1380;
@@ -3931,7 +3931,7 @@
 /area/itglight/porthighsec)
 "Ca" = (
 /obj/machinery/door/firedoor/glass,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/external{
 	frequency = 1380;
 	icon_state = "door_locked";
@@ -4097,7 +4097,7 @@
 /obj/structure/cable/pink{
 	icon_state = "4-8"
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button{
 	command = "cycle_interior";
 	frequency = 1380;
@@ -4324,7 +4324,7 @@
 /area/itglight/forehall)
 "EC" = (
 /obj/machinery/door/firedoor/glass,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/structure/cable/pink{
 	icon_state = "4-8"
 	},
@@ -4486,7 +4486,7 @@
 /area/itglight/portengi)
 "Fe" = (
 /obj/machinery/door/firedoor/glass,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/external{
 	frequency = 1380;
 	icon_state = "door_locked";
@@ -4638,7 +4638,7 @@
 	frequency = 1380;
 	id_tag = "itglight_starboard_inner"
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button{
 	command = "cycle_interior";
 	frequency = 1380;
@@ -4768,7 +4768,7 @@
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/portcargo)
 "GI" = (
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1380;
@@ -4881,7 +4881,7 @@
 /turf/simulated/floor,
 /area/itglight/readyroom)
 "HD" = (
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1380;
@@ -4921,7 +4921,7 @@
 /turf/simulated/floor,
 /area/itglight/portengi)
 "HN" = (
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1380;
@@ -4952,7 +4952,7 @@
 /turf/simulated/floor,
 /area/itglight/portengi)
 "HR" = (
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1380;
@@ -4967,7 +4967,7 @@
 /turf/simulated/floor,
 /area/itglight/starboardengi)
 "HW" = (
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1380;
@@ -5022,7 +5022,7 @@
 	id_tag = "itglight_dock_1_sensor";
 	pixel_y = -25
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/itglight/portdocking)
@@ -5077,7 +5077,7 @@
 	id_tag = "itglight_dock_2_sensor";
 	pixel_y = -25
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/itglight/starboarddocking)
@@ -5112,7 +5112,7 @@
 	id_tag = "itglight_starboard_outer";
 	name = "Starboard Solars External Airlock"
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
 	command = "cycle_exterior";
 	frequency = 1380;
@@ -5127,7 +5127,7 @@
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/common)
 "Jk" = (
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1380;
@@ -7051,7 +7051,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
 	command = "cycle_exterior";
 	frequency = 1380;

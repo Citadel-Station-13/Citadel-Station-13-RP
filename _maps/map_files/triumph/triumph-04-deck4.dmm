@@ -1100,7 +1100,7 @@
 /area/bridge)
 "aUx" = (
 /obj/machinery/shield_diffuser,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
@@ -2075,7 +2075,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external,
 /obj/machinery/access_button/airlock_interior{
 	dir = 4;
@@ -2519,7 +2519,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/voidcraft/vertical,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
@@ -2783,7 +2783,7 @@
 /area/security/brig)
 "cgx" = (
 /obj/machinery/shield_diffuser,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external,
 /obj/machinery/access_button/airlock_exterior{
 	dir = 1;
@@ -3089,7 +3089,7 @@
 	name = "Docking Port Airlock"
 	},
 /obj/machinery/shield_diffuser,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
 	dir = 1;
 	frequency = 1380;
@@ -3268,8 +3268,8 @@
 	id_tag = "expshuttle_dock";
 	pixel_y = -24
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1380;
@@ -3391,7 +3391,7 @@
 	},
 /obj/machinery/light,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/cyan,
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor{
 	id_tag = "civvie_docker";
 	pixel_y = -24
@@ -4338,8 +4338,8 @@
 	id_tag = "deck4_airlock";
 	pixel_y = -22
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "duu" = (
@@ -4686,7 +4686,7 @@
 /area/security/riot_control)
 "dFN" = (
 /obj/machinery/door/firedoor,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(19,43,67)
 	},
@@ -5071,7 +5071,7 @@
 	pixel_x = 5;
 	pixel_y = 25
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/voidcraft/vertical,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
@@ -6021,7 +6021,7 @@
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/cockpit)
 "eCD" = (
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
 	id_tag = "civvie_dock";
@@ -6067,7 +6067,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(19,43,67)
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "eEq" = (
@@ -8061,7 +8061,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/captain)
 "fUd" = (
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -9240,7 +9240,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/voidcraft/vertical,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
 	frequency = 1380;
 	master_tag = "courser_docker";
@@ -10347,7 +10347,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(19,43,67)
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "hCx" = (
@@ -11752,7 +11752,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1380;
@@ -11927,7 +11927,7 @@
 	frequency = 1380;
 	id_tag = "expshuttle_dock_pump"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "iEd" = (
@@ -12254,7 +12254,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor{
 	id_tag = "expshuttle_docker";
 	pixel_x = 24
@@ -12264,7 +12264,7 @@
 	id_tag = "expshuttle_docker_pump";
 	power_rating = 20000
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
@@ -12704,7 +12704,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/shield_diffuser,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
@@ -13075,7 +13075,7 @@
 	pixel_y = -8
 	},
 /obj/machinery/door/firedoor,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled,
 /area/exploration/pilot_prep)
 "jxD" = (
@@ -13183,7 +13183,7 @@
 /area/maintenance/chapel)
 "jCa" = (
 /obj/machinery/door/firedoor,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/voidcraft/vertical,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
@@ -14016,7 +14016,7 @@
 	id_tag = "courser_dock";
 	pixel_x = 25
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
 	id_tag = "courser_dock";
@@ -14243,7 +14243,7 @@
 	id_tag = "civvie_docker_pump"
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "kvv" = (
@@ -15253,7 +15253,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
 	dir = 4;
 	frequency = 1380;
@@ -17350,7 +17350,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
 	frequency = 1380;
 	master_tag = "courser_dock";
@@ -17739,7 +17739,7 @@
 	req_one_access = list(19,43,67)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "mTK" = (
@@ -18007,7 +18007,7 @@
 /area/maintenance/security/starboard)
 "nfc" = (
 /obj/machinery/shield_diffuser,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external,
 /obj/machinery/access_button/airlock_exterior{
 	dir = 1;
@@ -18420,7 +18420,7 @@
 /area/security/eva)
 "nuT" = (
 /obj/machinery/shield_diffuser,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external,
 /obj/machinery/access_button/airlock_exterior{
 	dir = 8;
@@ -18517,7 +18517,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "nyt" = (
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external,
 /obj/machinery/access_button/airlock_interior{
 	dir = 1;
@@ -18717,7 +18717,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1380;
@@ -19971,7 +19971,7 @@
 	name = "Docking Port Airlock"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
 	dir = 1;
 	frequency = 1380;
@@ -20316,7 +20316,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/door/firedoor,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled,
 /area/exploration/pilot_prep)
 "oPJ" = (
@@ -20438,7 +20438,7 @@
 /area/security/brig)
 "oUI" = (
 /obj/machinery/door/airlock/voidcraft/vertical,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "oUQ" = (
@@ -21474,7 +21474,7 @@
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/tram)
 "pFz" = (
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/voidcraft/vertical,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
@@ -21871,7 +21871,7 @@
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "pSB" = (
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
 	frequency = 1380;
 	master_tag = "expshuttle_docker";
@@ -22595,7 +22595,7 @@
 	frequency = 1380;
 	id_tag = "courser_dock_pump"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled,
 /area/exploration/pilot_prep)
 "qnU" = (
@@ -24369,7 +24369,7 @@
 	frequency = 1380;
 	id_tag = "civvie_docker_pump"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "rsP" = (
@@ -24512,8 +24512,8 @@
 	frequency = 1380;
 	id_tag = "deck4_dockarm1_pump"
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "rBF" = (
@@ -25315,7 +25315,7 @@
 	id_tag = "courser_docker_pump";
 	power_rating = 20000
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
@@ -25377,7 +25377,7 @@
 /obj/machinery/door/airlock/voidcraft/vertical{
 	name = "cockpit hatch"
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
 	dir = 4;
 	frequency = 1380;
@@ -25436,7 +25436,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(19,43,67)
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "skS" = (
@@ -25461,8 +25461,8 @@
 	id_tag = "deck4_dockarm2";
 	pixel_x = 23
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "slE" = (
@@ -25805,7 +25805,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1380;
@@ -26444,7 +26444,7 @@
 /area/shuttle/courser/cockpit)
 "sPW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
@@ -26599,7 +26599,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
@@ -27068,13 +27068,13 @@
 	id_tag = "courser_docker_pump";
 	power_rating = 20000
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
 	id_tag = "courser_docker";
 	pixel_x = -24
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/structure/handrail{
 	dir = 4
 	},
@@ -28078,7 +28078,7 @@
 /turf/simulated/floor/wood,
 /area/library)
 "ufP" = (
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
@@ -28596,7 +28596,7 @@
 /obj/machinery/door/airlock/glass_external{
 	name = "Docking Port Airlock"
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "uxl" = (
@@ -32970,7 +32970,7 @@
 	name = "Docking Port Airlock"
 	},
 /obj/machinery/shield_diffuser,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "xte" = (
@@ -33489,7 +33489,7 @@
 /turf/simulated/floor/tiled,
 /area/security/hanger)
 "xOo" = (
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external,
 /obj/machinery/access_button/airlock_interior{
 	dir = 1;

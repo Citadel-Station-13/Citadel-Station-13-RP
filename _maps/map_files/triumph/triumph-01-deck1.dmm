@@ -145,7 +145,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "aH" = (
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/access_button/airlock_interior{
 	frequency = 1380;
@@ -3296,7 +3296,7 @@
 /area/maintenance/engineering)
 "mp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/door/airlock/glass_external,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -3471,8 +3471,8 @@
 	dir = 8;
 	id_tag = "deck1_airlock"
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_eva)
 "mS" = (
@@ -6509,8 +6509,8 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/airlock_sensor{
 	dir = 8;
 	id_tag = "deck1_airlock2";
@@ -12000,7 +12000,7 @@
 /area/engineering/atmos)
 "Rp" = (
 /obj/machinery/shield_diffuser,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_eva)
@@ -12342,7 +12342,7 @@
 /area/engineering/storage)
 "Sm" = (
 /obj/machinery/shield_diffuser,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
 	frequency = 1380;
 	master_tag = "deck1_airlock";
@@ -12391,7 +12391,7 @@
 /turf/simulated/floor/carpet,
 /area/maintenance/dormitory)
 "Sw" = (
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
@@ -12428,7 +12428,7 @@
 /area/engineering/hallway)
 "SA" = (
 /obj/machinery/shield_diffuser,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
 	master_tag = "deck1_airlock2";
 	pixel_x = 24
@@ -12827,7 +12827,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/atmos/storage)
 "Ud" = (
@@ -13305,7 +13305,7 @@
 /turf/simulated/floor/tiled,
 /area/station/stairs_one)
 "VG" = (
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
@@ -13524,7 +13524,7 @@
 	dir = 8;
 	id_tag = "deck1_airlock"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_eva)
 "Wv" = (
@@ -14131,7 +14131,7 @@
 /area/engineering/atmos/monitoring)
 "YE" = (
 /obj/machinery/shield_diffuser,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/atmos/storage)

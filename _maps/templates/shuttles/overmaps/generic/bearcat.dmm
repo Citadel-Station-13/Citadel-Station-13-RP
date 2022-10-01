@@ -508,18 +508,18 @@
 /turf/simulated/floor/plating,
 /area/shuttle/bearcat/unused2)
 "bo" = (
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle{
 	dir = 10;
 	pixel_x = -6;
 	pixel_y = 24
 	},
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
+/obj/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/door/airlock/glass_external/public,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/dock_port)
 "bp" = (
-/atom/movable/map_helper/airlock/atmos/pump_out_internal,
+/obj/map_helper/airlock/atmos/pump_out_internal,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/dock_port)
@@ -530,12 +530,12 @@
 /turf/simulated/wall/rshull,
 /area/shuttle/bearcat/dock_starboard)
 "br" = (
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	icon_state = "map_vent"
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor/airlock_interior{
 	pixel_x = -8;
 	pixel_y = 26
@@ -550,7 +550,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/dock_port)
 "bs" = (
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
@@ -624,7 +624,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/dock_starboard)
 "bC" = (
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
@@ -632,13 +632,13 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/dock_starboard)
 "bD" = (
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1380;
 	id_tag = "expshuttle_docker_pump_out_external"
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor/airlock_interior{
 	pixel_x = 8;
 	pixel_y = 26
@@ -653,7 +653,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/dock_starboard)
 "bF" = (
-/atom/movable/map_helper/airlock/atmos/pump_out_internal,
+/obj/map_helper/airlock/atmos/pump_out_internal,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume,
 /obj/effect/shuttle_landmark/shuttle_initializer/bearcat,
 /obj/effect/overmap/visitable/ship/landable/bearcat,
@@ -667,8 +667,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bearcat/dock_starboard)
 "bH" = (
-/atom/movable/map_helper/airlock/door/ext_door,
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
+/obj/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle{
 	dir = 6;
 	pixel_x = 6;
@@ -682,7 +682,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_x = -26
 	},
-/atom/movable/map_helper/airlock/sensor/int_sensor,
+/obj/map_helper/airlock/sensor/int_sensor,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -792,7 +792,7 @@
 /turf/simulated/floor/airless,
 /area/shuttle/bearcat/crew_toilets)
 "ca" = (
-/atom/movable/map_helper/airlock/sensor/int_sensor,
+/obj/map_helper/airlock/sensor/int_sensor,
 /obj/machinery/airlock_sensor{
 	pixel_x = 26
 	},
@@ -2970,7 +2970,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/bearcat/maintenance_power)
 "gX" = (
-/atom/movable/map_helper/airlock/atmos/pump_out_external,
+/obj/map_helper/airlock/atmos/pump_out_external,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1
 	},
@@ -2998,7 +2998,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/bearcat/maintenance_engine)
 "hc" = (
-/atom/movable/map_helper/airlock/atmos/pump_out_external,
+/obj/map_helper/airlock/atmos/pump_out_external,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1
 	},

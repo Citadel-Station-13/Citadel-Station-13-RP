@@ -887,8 +887,8 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "di" = (
@@ -990,7 +990,7 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "dA" = (
@@ -1016,7 +1016,7 @@
 	frequency = null;
 	name = "Ship Hatch"
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "dD" = (
@@ -1673,7 +1673,7 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external{
 	name = "Nebula Gas - Employees Only"
 	},
@@ -1842,7 +1842,7 @@
 	frequency = null;
 	name = "Ship Hatch"
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "gV" = (
@@ -2007,7 +2007,7 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
 	command = "cycle_exterior";
 	frequency = 1380;
@@ -2695,7 +2695,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external{
 	frequency = null;
 	name = "Ship Hatch"
@@ -3356,7 +3356,7 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button{
 	command = "cycle_exterior";
 	frequency = 1380;
@@ -3676,7 +3676,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "nP" = (
@@ -4690,7 +4690,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
 	command = "cycle_interior";
 	frequency = 1380;
@@ -5436,7 +5436,7 @@
 /obj/machinery/airlock_sensor{
 	pixel_y = -25
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/plating,
 /area/tradeport/pads)
 "up" = (
@@ -5804,7 +5804,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/tradeport/medical)
 "vD" = (
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
 	frequency = null;
 	name = "Ship Hatch"
@@ -5978,7 +5978,7 @@
 /area/tradeport/facility)
 "wc" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
 	command = "cycle_exterior";
 	frequency = 1380;
@@ -6150,7 +6150,7 @@
 /turf/space,
 /area/space)
 "wQ" = (
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor{
 	pixel_y = -25
 	},
@@ -6165,7 +6165,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -6308,7 +6308,7 @@
 /obj/machinery/door/airlock/external/glass{
 	req_access = list(160)
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
 	command = "cycle_exterior";
 	pixel_x = -10;
@@ -6614,8 +6614,8 @@
 	master_tag = null;
 	pixel_x = 25
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "yi" = (
@@ -6673,7 +6673,7 @@
 	frequency = null;
 	name = "Ship Hatch"
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "yr" = (
@@ -6836,12 +6836,12 @@
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tradeport)
 "yZ" = (
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/airlock_sensor{
 	pixel_x = -25;
 	pixel_y = 25
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1380;
 	id_tag = "trade_pumps"
@@ -7084,7 +7084,7 @@
 	frequency = 1380;
 	id_tag = "trade_docks"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor,
 /area/tradeport/pads)
 "zV" = (
@@ -7288,7 +7288,7 @@
 /area/tradeport/medical)
 "Bi" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/tradeport/pads)
 "Bj" = (
@@ -7298,7 +7298,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
 	name = "Nebula Gas - Employees Only"
 	},
@@ -7853,7 +7853,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button{
 	command = "cycle_interior";
 	frequency = 1380;
@@ -8060,7 +8060,7 @@
 	id_tag = "tradeport_hangar_dock";
 	pixel_x = 25
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "Em" = (
@@ -8104,7 +8104,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/cyndi)
 "Eu" = (
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1380;
 	id_tag = "trade_pumps"
@@ -9523,7 +9523,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
 	frequency = null;
 	name = "Ship Hatch"
@@ -10535,7 +10535,7 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
 	name = "Nebula Gas - Employees Only"
 	},
@@ -10572,7 +10572,7 @@
 	frequency = null;
 	name = "Ship Hatch"
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "Op" = (
@@ -11299,7 +11299,7 @@
 	frequency = 1380;
 	id_tag = "tradeport_hangar_dock_pump"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "Rd" = (
@@ -11337,7 +11337,7 @@
 /obj/machinery/door/airlock/glass_external{
 	name = "Nebula Gas - External Access"
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
 	frequency = 1380;
 	master_tag = "trade_docks";
@@ -11609,7 +11609,7 @@
 /obj/machinery/door/airlock/glass_external{
 	name = "Nebula Gas - External Access"
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
@@ -12978,7 +12978,7 @@
 	frequency = 1380;
 	id_tag = "trade_docks"
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	frequency = 1380;
 	id_tag = "trade_docks";
@@ -13021,7 +13021,7 @@
 	pixel_x = -25;
 	pixel_y = 25
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
 /area/tradeport/pads)
@@ -13523,7 +13523,7 @@
 /obj/machinery/door/airlock/external/glass{
 	req_access = list(160)
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button{
 	command = "cycle_interior";
 	pixel_x = 10;
