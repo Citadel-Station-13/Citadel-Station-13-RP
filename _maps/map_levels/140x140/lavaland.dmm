@@ -191,8 +191,6 @@
 	dir = 9
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -304,7 +302,6 @@
 	anchored = 1
 	},
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
@@ -366,8 +363,6 @@
 	dir = 4
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
@@ -434,8 +429,6 @@
 "ki" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -485,8 +478,6 @@
 /area/lavaland/central/base/common)
 "ls" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -527,8 +518,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -658,8 +647,6 @@
 /area/lavaland/central/base/common)
 "nZ" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -708,8 +695,6 @@
 	target_pressure = 15000
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
@@ -846,8 +831,6 @@
 /area/lavaland/central/base/common)
 "qd" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/component/binary/pump/high_power/on{
@@ -936,8 +919,6 @@
 /area/lavaland/central/base/common)
 "re" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance{
@@ -1156,7 +1137,6 @@
 	pixel_y = -28
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
@@ -1197,8 +1177,6 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1318,8 +1296,6 @@
 /area/lavaland/central/base/common)
 "zv" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/universal,
@@ -1469,8 +1445,6 @@
 /area/lavaland/central/base/common)
 "Ce" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
@@ -1513,7 +1487,6 @@
 	inputting = 2
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
@@ -1737,8 +1710,6 @@
 	dir = 9
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1804,8 +1775,6 @@
 	req_access = list(48)
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
@@ -1994,8 +1963,6 @@
 /area/lavaland/central/transit)
 "Lg" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -2392,8 +2359,6 @@
 /area/lavaland/central/base/common)
 "TJ" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/machinery/light/small{
@@ -2499,8 +2464,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -2615,8 +2578,6 @@
 /area/lavaland/central/explored)
 "WZ" = (
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
@@ -2686,7 +2647,6 @@
 	dir = 1
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,

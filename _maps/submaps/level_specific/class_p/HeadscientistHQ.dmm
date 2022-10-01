@@ -28,7 +28,6 @@
 "aE" = (
 /obj/machinery/power/solar_control,
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/outdoors/dirt/classp,
@@ -46,7 +45,6 @@
 "aY" = (
 /obj/machinery/power/solar,
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/classp/outdoors,
@@ -81,8 +79,6 @@
 /obj/effect/debris/cleanable/blood,
 /obj/structure/fans/tiny,
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/shuttle/floor/classp,
@@ -140,13 +136,9 @@
 /area/submap/HeadscientistHQ)
 "fV" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/outdoors/dirt/classp,
@@ -212,8 +204,6 @@
 /area/submap/HeadscientistHQ)
 "iz" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/outdoors/dirt/classp,
@@ -232,8 +222,6 @@
 /area/submap/HeadscientistHQ)
 "jF" = (
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/shuttle/floor/classp,
@@ -290,7 +278,6 @@
 "ly" = (
 /obj/machinery/power/solar,
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/classp/outdoors,
@@ -343,13 +330,9 @@
 /area/submap/HeadscientistHQ)
 "oy" = (
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/classp/outdoors,
@@ -378,26 +361,18 @@
 /area/submap/HeadscientistHQ)
 "rm" = (
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/classp/outdoors,
 /area/template_noop)
 "rY" = (
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/classp/outdoors,
@@ -444,13 +419,9 @@
 /area/template_noop)
 "tU" = (
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/classp/outdoors,
@@ -566,8 +537,6 @@
 /area/submap/HeadscientistHQ)
 "zK" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/classp/outdoors,
@@ -610,8 +579,6 @@
 "Bw" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/shuttle/floor/classp,
@@ -642,8 +609,6 @@
 /area/submap/HeadscientistHQ)
 "Di" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/classp/outdoors,
@@ -663,8 +628,6 @@
 	},
 /obj/machinery/light,
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/shuttle/floor/classp,
@@ -672,8 +635,6 @@
 "Ds" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/shuttle/floor/classp,
@@ -756,8 +717,6 @@
 /area/submap/HeadscientistHQ)
 "FW" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/outdoors/dirt/classp,
@@ -829,15 +788,12 @@
 "JO" = (
 /obj/machinery/power/smes/buildable/point_of_interest,
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/shuttle/floor/black/classp,
 /area/submap/HeadscientistHQ)
 "JX" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/outdoors/dirt/classp,
@@ -1082,7 +1038,6 @@
 	start_charge = 0
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/shuttle/floor/classp,
@@ -1106,8 +1061,6 @@
 "Wb" = (
 /obj/structure/fence/door/opened,
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/outdoors/dirt/classp,
