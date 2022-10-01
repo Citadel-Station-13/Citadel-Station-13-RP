@@ -160,7 +160,9 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	/// Gas flags. See [code/__DEFINES/atmospherics/flags.dm]
 	var/gas_flags
 
-	var/gas_metabolically_inert = TRUE
+	var/gas_metabolically_inert = TRUE //Set this to false on the gas you want to have an effect in the player mob, what ever the mob has as a breathtype(O2 for most, phoron for vox)
+	//wont get processed in any way
+	//If this is set as false you need to give the gas an affect_blood() proc
 
 /datum/reagent/gas/oxygen
 	id = "o2"
