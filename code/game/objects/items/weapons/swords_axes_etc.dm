@@ -336,7 +336,7 @@
 //Kanabo
 /obj/item/melee/kanabo // parrying stick
 	name = "kanabo"
-	desc = "A heavy wooden club reinforced with metal studs. Ancient Terran oni were often depicted carrying this weapon."
+	desc = "A heavy wooden club reinforced with metal studs. Ancient Terran Oni were often depicted carrying this weapon."
 	icon_state = "kanabo"
 	slot_flags = SLOT_BACK
 	damtype = BRUTE
