@@ -128,12 +128,14 @@
 	return input
 
 /mob/proc/say_emphasis_strip(input)
-	var/static/regex/italics = regex("\\|(?=\\S)(.*?)(?=\\S)\\|", "g")
+	var/static/regex/italics = regex("\[\\|\\/](?=\\S)(.*?)(?=\\S)\[\\|\\/]", "g")
 	input = replacetext_char(input, italics, "$1")
-	var/static/regex/bold = regex("\\+(?=\\S)(.*?)(?=\\S)\\+", "g")
+	var/static/regex/bold = regex("\[\\+\\*](?=\\S)(.*?)(?=\\S)\[\\+\\*]", "g")
 	input = replacetext_char(input, bold, "$1")
 	var/static/regex/underline = regex("_(?=\\S)(.*?)(?=\\S)_", "g")
 	input = replacetext_char(input, underline, "$1")
+	var/static/regex/strikethrough = regex("~~(?=\\S)(.+?)(?=\\S)~~", "g")
+	input = replacetext_char(input, strikethrough, "$1")
 	return input
 
 /mob/proc/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/part_c, var/mob/speaker = null, var/hard_to_hear = 0, var/vname ="")
