@@ -422,12 +422,12 @@
 
 	var/safe_pressure_min = species.minimum_breath_pressure // Minimum safe partial pressure of breathable gas in kPa
 
-	var/ratio =  1 //Used for gas processing as reagents
+	var/gas_to_process_ratio =  1 //Used for gas processing as reagents
 	// Lung damage increases the minimum safe pressure.
 	if(should_have_organ(O_LUNGS))
 		var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]
 		if(L && L.robotic >= ORGAN_ROBOT)
-			ratio = 0.66//If the lungs are artificial they filter a bit of unwanted gases
+			gas_to_process_ratio = 0.66//If the lungs are artificial they filter a bit of unwanted gases
 		if(isnull(L))
 			safe_pressure_min = INFINITY //No lungs, how are you breathing?
 		else if(L.is_broken())
@@ -564,16 +564,18 @@
 			if(prob(20))
 				spawn(0) emote(pick("giggle", "laugh"))
 		breath.adjust_gas(/datum/reagent/gas/nitrous_oxide, -breath.gas[/datum/reagent/gas/nitrous_oxide]/6, update = 0) //update after
-
-	for(var/gasname in breath.gas - breath_type)
-		var/datum/reagent/gas/gas = GLOB.meta_gas_names[gasname]
-		if(gas.gas_metabolically_inert)
+	
+	for(var/gasname in breath.gas) //datum/reagent/gas/
+		var/datum/reagent/gas/gas = gasname
+		if(initial(gas.gas_metabolically_inert))
+			continue
+		if(gas == breath_type)
 			continue
 		// Little bit of sanity so we aren't trying to add 0.0000000001 units of CO2, and so we don't end up with 99999 units of CO2.
-		var/reagent_amount = breath.gas[gasname] * 10 * ratio //10 is for the u per gas mol, ratio is defined further up where we have the lungs for checks
+		var/reagent_amount = breath.gas[gasname] * 10 * gas_to_process_ratio //10 is for the u per gas mol, ratio is defined further up where we have the lungs for checks
 		if(reagent_amount < 0.05)
 			continue
-		reagents.add_reagent(gasname, reagent_amount)
+		reagents.add_reagent(initial(gas.id), reagent_amount)
 		breath.adjust_gas(gasname, -breath.gas[gasname], update = 0) //update after
 
 	// Were we able to breathe?
