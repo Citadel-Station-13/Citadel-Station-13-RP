@@ -30957,7 +30957,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/structure/lattice,
 /obj/structure/cable{
-	d1 = 32;
+	icon_state = "32-$1";
 	icon_state = "32-1"
 	},
 /obj/structure/cable,
