@@ -16801,7 +16801,6 @@
 /obj/item/implantcase/sword,
 /obj/item/implantcase/surge,
 /obj/item/implantcase/sprinter,
-/obj/item/implanter,
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/command)
 "OG" = (
