@@ -1598,3 +1598,20 @@
 
 	M.adjust_fire_stacks(-reac_volume)
 	M.ExtinguishMob()
+
+//Cyberpsychosis Medication
+/datum/reagent/neuratrextate
+	name = "Neuratrextate"
+	id = "neuratrextate"
+	description = "This military grade chemical compound functions as both a powerful antibiotic and a potent antipsychotic. Its trademark lime green coloration makes it easy to identify."
+	taste_description = "sour"
+	reagent_state = REAGENT_LIQUID
+	color = "#52ca22"
+	scannable = 1
+	var/potency = 10
+
+/datum/reagent/neuratrextate/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.capacity < 100)
+			H.capacity = min(H.capacity + potency, 100)
