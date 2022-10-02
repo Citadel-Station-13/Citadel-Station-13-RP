@@ -172,6 +172,7 @@
 
 	lateload_z_levels = list(
 //		list("Rift - Misc"), // Stock Rift lateload maps || Currently not in use, takes too long to load, breaks shuttles.
+		list("Western Canyon","Western Caves","Western Deep Caves","Western Plains"),
 		list("Debris Field - Z1 Space"), // Debris Field
 		list("Away Mission - Pirate Base"), // Vox Pirate Base & Mining Planet
 		list("ExoPlanet - Z1 Planet"),//Mining planet
@@ -211,6 +212,7 @@
 		/datum/planet/classp,
 		/datum/planet/classm)
 
+/*
 /datum/map/rift/perform_map_generation()
 	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 1, 1, Z_LEVEL_WEST_CAVERN, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
 	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 1, 1, Z_LEVEL_WEST_DEEP, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
@@ -218,6 +220,7 @@
 	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 1, 1, Z_LEVEL_UNDERGROUND_FLOOR, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
 
 	return 1
+*/
 
 /*
 // For making the 6-in-1 holomap, we calculate some offsets
@@ -275,6 +278,7 @@
 //	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
 //	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*2
 
+/*
 /datum/map_z_level/rift/base
 	z = Z_LEVEL_WEST_BASE
 	name = "Western Canyon"
@@ -287,11 +291,23 @@
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
 	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
 
+
+/datum/map_template/rift_lateload/caves
+	name = "Western Caves"
+	desc = "Icey And Shallow"
+	mappath = "_maps/map_files/rift/_rift-09-west_caves.dmm"
+	associated_map_datum = /datum/map_z_level/rift/caves
+
 /datum/map_z_level/rift/caves
 	z = Z_LEVEL_WEST_CAVERN
 	name = "Western Caves"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
 	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
+
+
+/datum/map_template/rift_lateload/caves/on_map_loaded(z)
+	. = ..()
+	seed_submaps(list(z), 50, /area/rift/surfacebase/outside/west_caves/submap_seedzone, /datum/map_template/submap/level_specific/rift/west_caves)
 
 /datum/map_z_level/rift/plains
 	z = Z_LEVEL_WEST_PLAIN
@@ -299,7 +315,10 @@
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
 
+*/
+
 /datum/map_z_level/rift/colony
 	z = Z_LEVEL_MISC
 	name = "Orbital Relay"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
+

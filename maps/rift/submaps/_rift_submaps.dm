@@ -20,6 +20,101 @@
 	new /datum/random_map/noise/ore/lavaland(null, 1, 1, Z_LEVEL_LAVALAND, 64, 64)         // Create the mining ore distribution map.
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_LAVALAND, world.maxx - 4, world.maxy - 4) // Create the lavaland Z-level.
 */
+
+
+/datum/map_template/rift_lateload
+	allow_duplicates = FALSE
+	var/associated_map_datum
+
+/datum/map_template/rift_lateload/on_map_loaded(z)
+	if(!associated_map_datum || !ispath(associated_map_datum))
+		log_game("Extra z-level [src] has no associated map datum")
+		return
+
+	new associated_map_datum(GLOB.using_map, z)
+
+/datum/map_z_level/rift_lateload
+	z = 0
+	flags = MAP_LEVEL_SEALED
+
+/datum/map_z_level/rift_lateload/New(var/datum/map/map, mapZ)
+	if(mapZ && !z)
+		z = mapZ
+	return ..(map)
+
+
+
+////
+
+/datum/map_z_level/rift/base
+	z = Z_LEVEL_WEST_BASE
+	name = "Western Canyon"
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
+	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
+
+/datum/map_z_level/rift/deep
+	z = Z_LEVEL_WEST_DEEP
+	name = "Western Deep Caves"
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
+	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
+
+
+/datum/map_template/rift_lateload/caves
+	name = "Western Caves"
+	desc = "Icey And Shallow"
+	mappath = "_maps/map_files/rift/_rift-09-west_caves.dmm"
+	associated_map_datum = /datum/map_z_level/rift/caves
+
+/datum/map_z_level/rift/caves
+	z = Z_LEVEL_WEST_CAVERN
+	name = "Western Caves"
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
+	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
+
+
+/datum/map_template/rift_lateload/caves/on_map_loaded(z)
+	. = ..()
+	seed_submaps(list(Z_LEVEL_WEST_CAVERN), 50, /area/rift/surfacebase/outside/west_caves/submap_seedzone, /datum/map_template/submap/level_specific/rift/west_caves)
+
+/datum/map_z_level/rift/plains
+	z = Z_LEVEL_WEST_PLAIN
+	name = "Western Plains"
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
+	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
+
+
+
+/// Cave Generation
+/datum/map/rift/perform_map_generation()
+	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 1, 1, Z_LEVEL_WEST_CAVERN, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 1, 1, Z_LEVEL_WEST_DEEP, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 1, 1, Z_LEVEL_WEST_BASE, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 1, 1, Z_LEVEL_UNDERGROUND_FLOOR, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
+
+	return 1
+
+////
+/*
+/datum/map_template/tether_lateload/tether_underdark
+	name = "Tether - Underdark"
+	desc = "Mining, but harder."
+	mappath = "_maps/map_files/tether/tether_underdark.dmm"
+
+	associated_map_datum = /datum/map_z_level/tether_lateload/underdark
+
+/datum/map_z_level/tether_lateload/underdark
+	name = "Underdark"
+	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_SEALED
+	base_turf = /turf/simulated/mineral/floor/virgo3b
+
+/datum/map_template/tether_lateload/tether_underdark/on_map_loaded(z)
+	. = ..()
+	seed_submaps(list(z), 150, /area/mine/unexplored/underdark, /datum/map_template/submap/level_specific/underdark)
+	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z, world.maxx - 4, world.maxy - 4) // Create the mining Z-level.
+	new /datum/random_map/noise/ore(null, 1, 1, z, 64, 64)         // Create the mining ore distribution map.
+
+*/
+
 //////////////////////////////////////////////////////////////////////////////
 /// Away Missions
 
@@ -260,6 +355,8 @@
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////
 // Code Shenanigans for rift lateload maps
+
+/*
 /datum/map_template/rift_lateload
 	allow_duplicates = FALSE
 	var/associated_map_datum
@@ -279,6 +376,7 @@
 	if(mapZ && !z)
 		z = mapZ
 	return ..(map)
+*/
 
 /turf/unsimulated/wall/seperator //to block vision between transit zones
 	name = ""
