@@ -147,11 +147,11 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 \*||||||||||||||||||||||||||||||||||||||||*/
 /datum/gas
 	/// Text ID for things like gas strings. THIS SHOULD NEVER, EVER, BE CHANGED! Pick one and stick with it. Change this and EVERYTHING breaks. The typepath, infact, is more mutable than this!
-	//var/id = ""
+	var/id = ""
 	/// Specific heat in J/(mol*K)
 	var/specific_heat = 0
 	/// Textual name
-	//var/name = "Unnamed Gas"
+	var/name = "Unnamed Gas"
 	/// icon_state in icons/effects/atmospherics.dmi
 	var/gas_overlay = ""
 	/// How many moles is required to make this gas visible
@@ -167,9 +167,8 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	/// Gas flags. See [code/__DEFINES/atmospherics/flags.dm]
 	var/gas_flags
 
-	var/gas_metabolically_inert = TRUE //Set this to false on the gas you want to have an effect in the player mob, what ever the mob has as a breathtype(O2 for most, phoron for vox)
-	//wont get processed in any way
-	//If this is set as false you need to give the gas an affect_blood() proc
+	var/gas_reagent_id //What is the ID of the reagent we want to apply
+	var/gas_reagent_amount = 0//How much of the reagent is applied 
 
 /datum/gas/oxygen
 	id = "o2"
@@ -191,7 +190,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	molar_mass = 0.044
 
 /datum/gas/phoron
-	id = "phoron_gas"
+	id = "phoron"
 	name = "Phoron"
 	//Note that this has a significant impact on TTV yield.
 	//Because it is so high, any leftover phoron soaks up a lot of heat and drops the yield pressure.
@@ -345,7 +344,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	//value = 0.25
 
 /datum/gas/chlorine
-	id = "chlorine_gas"
+	id = "chlorine"
 	name = "Chlorine"
 	//color = "#c5f72d"
 	//gas_overlay_limit = 0.5
@@ -361,11 +360,9 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	toxicity = 15*/
 	gas_overlay = "chlorine"
 	moles_visible = 1
-	gas_metabolically_inert = FALSE
-
-/datum/gas/chlorine/affect_blood(mob/living/carbon/M, alien, removed)
-	if(issmall(M)) removed *= 2
-	M.take_organ_damage(0, removed * 2)
+	
+	gas_reagent_id = "sacid"
+	gas_reagent_amount = 1
 
 
 /datum/gas/sulfur_dioxide
@@ -381,7 +378,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	)*/
 
 /datum/gas/hydrogen
-	id = "hydrogen_gas"
+	id = "hydrogen"
 	name = "Hydrogen"
 	//lore_text = "A colorless, flammable gas."
 	//flags = MAT_FLAG_FUSION_FUEL

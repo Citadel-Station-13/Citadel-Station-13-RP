@@ -794,7 +794,7 @@
 		else
 			H.losebreath = max(H.losebreath - 4, 0)
 
-/datum/gastirodaxon
+/datum/reagent/gastirodaxon
 	name = "Gastirodaxon"
 	id = "gastirodaxon"
 	description = "Used to repair the tissues of the digestive system."
@@ -805,7 +805,7 @@
 	overdose = 10
 	scannable = 1
 
-/datum/gastirodaxon/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/gastirodaxon/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	var/repair_strength = 1
 	if(alien == IS_SLIME)
 		repair_strength = 0.6

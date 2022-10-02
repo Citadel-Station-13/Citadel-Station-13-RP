@@ -572,7 +572,7 @@
 	
 	for(var/gasname in breath.gas) //datum/gas/
 		var/datum/gas/gas = gasname
-		if(initial(gas.gas_metabolically_inert))
+		if(!initial(gas.gas_reagent_amount))
 			continue
 		if(gas == breath_type)
 			continue
@@ -580,7 +580,7 @@
 		var/reagent_amount = breath.gas[gasname] * 10 * gas_to_process_ratio //10 is for the u per gas mol, ratio is defined further up where we have the lungs for checks
 		if(reagent_amount < 0.05)
 			continue
-		reagents.add_reagent(initial(gas.id), reagent_amount)
+		reagents.add_reagent(initial(gas.gas_reagent_id), reagent_amount)
 		breath.adjust_gas(gasname, -breath.gas[gasname], update = 0) //update after
 
 	// Were we able to breathe?
