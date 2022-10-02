@@ -42,8 +42,8 @@
 	toxins_mod = 0.5
 
 	//Adapted to Surt's hot, thin atmosphere.
-	breath_type = /datum/reagent/gas/carbon_dioxide
-	exhale_type = /datum/reagent/gas/oxygen
+	breath_type = /datum/gas/carbon_dioxide
+	exhale_type = /datum/gas/oxygen
 	minimum_breath_pressure = 11
 	oxy_mod = 0.25
 	heat_discomfort_level = T0C+10

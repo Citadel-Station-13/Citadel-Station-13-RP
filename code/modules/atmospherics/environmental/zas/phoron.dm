@@ -63,7 +63,7 @@ var/image/contamination_overlay = image('icons/effects/contamination.dmi')
 		return
 
 	//Burn skin if exposed.
-	if(skin_burns && (species.breath_type != /datum/reagent/gas/phoron))
+	if(skin_burns && (species.breath_type != /datum/gas/phoron))
 		if(!pl_head_protected() || !pl_suit_protected())
 			burn_skin(0.75)
 			if(prob(20))
@@ -71,7 +71,7 @@ var/image/contamination_overlay = image('icons/effects/contamination.dmi')
 			updatehealth()
 
 	//Burn eyes if exposed.
-	if(eye_burns && species.breath_type && (species.breath_type != /datum/reagent/gas/phoron))
+	if(eye_burns && species.breath_type && (species.breath_type != /datum/gas/phoron))
 		var/burn_eyes = 1
 
 		//Check for protective glasses
@@ -95,7 +95,7 @@ var/image/contamination_overlay = image('icons/effects/contamination.dmi')
 			burn_eyes()
 
 	//Genetic Corruption
-	if(genetic_corruption && (species.breath_type != /datum/reagent/gas/phoron))
+	if(genetic_corruption && (species.breath_type != /datum/gas/phoron))
 		if(rand(1,10000) < genetic_corruption)
 			randmutb(src)
 			to_chat(src, "<span class='danger'>High levels of toxins cause you to spontaneously mutate!</span>")

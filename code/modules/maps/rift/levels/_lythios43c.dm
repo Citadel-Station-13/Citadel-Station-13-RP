@@ -1,7 +1,7 @@
 /datum/atmosphere/planet/lythios43c
 	base_gases = list(
-	/datum/reagent/gas/nitrogen = 0.66,
-	/datum/reagent/gas/oxygen = 0.34
+	/datum/gas/nitrogen = 0.66,
+	/datum/gas/oxygen = 0.34
 	)
 	base_target_pressure = 76.9
 	minimum_pressure = 76.9

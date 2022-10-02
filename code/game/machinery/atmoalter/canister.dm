@@ -435,109 +435,109 @@ update_flag
 
 /obj/machinery/portable_atmospherics/canister/phoron/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/reagent/gas/phoron, MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/phoron, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/oxygen/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/reagent/gas/oxygen, MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/oxygen, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/oxygen/prechilled/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/reagent/gas/oxygen, MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/oxygen, MolesForPressure())
 	src.air_contents.temperature = 80
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide/Initialize(mapload)
 	. = ..()
-	air_contents.adjust_gas(/datum/reagent/gas/nitrous_oxide, MolesForPressure())
+	air_contents.adjust_gas(/datum/gas/nitrous_oxide, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/helium/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/reagent/gas/helium, MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/helium, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/carbon_monoxide/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/reagent/gas/carbon_monoxide, MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/carbon_monoxide, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/methyl_bromide/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/reagent/gas/methyl_bromide, MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/methyl_bromide, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/nitrodioxide/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/reagent/gas/nitrodioxide, MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/nitrodioxide, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/nitricoxide/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/reagent/gas/nitricoxide, MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/nitricoxide, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/methane/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/reagent/gas/methane, MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/methane, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/argon/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/reagent/gas/argon, MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/argon, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/krypton/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/reagent/gas/krypton, MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/krypton, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/neon/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/reagent/gas/neon, MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/neon, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/ammonia/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/reagent/gas/ammonia, MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/ammonia, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/xenon/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/reagent/gas/xenon, MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/xenon, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/chlorine/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/reagent/gas/chlorine, MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/chlorine, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/sulfur_dioxide/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/reagent/gas/sulfur_dioxide, MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/sulfur_dioxide, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/hydrogen/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/reagent/gas/hydrogen, MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/hydrogen, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/tritium/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/reagent/gas/hydrogen/tritium, MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/hydrogen/tritium, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/deuterium/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/reagent/gas/hydrogen/deuterium, MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/hydrogen/deuterium, MolesForPressure())
 	src.update_icon()
 
 //Dirty way to fill room with gas. However it is a bit easier to do than creating some floor/engine/n2o -rastaf0
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide/roomfiller/Initialize(mapload)
 	. = ..()
-	air_contents.gas[/datum/reagent/gas/nitrous_oxide] = 9*4000
+	air_contents.gas[/datum/gas/nitrous_oxide] = 9*4000
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide/roomfiller/LateInitialize()
@@ -551,35 +551,35 @@ update_flag
 
 /obj/machinery/portable_atmospherics/canister/nitrogen/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/reagent/gas/nitrogen, MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/nitrogen, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/reagent/gas/carbon_dioxide, MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/carbon_dioxide, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/air/Initialize(mapload)
 	. = ..()
 	var/list/air_mix = StandardAirMix()
-	src.air_contents.adjust_multi(/datum/reagent/gas/oxygen, air_mix[/datum/reagent/gas/oxygen], /datum/reagent/gas/nitrogen, air_mix[/datum/reagent/gas/nitrogen])
+	src.air_contents.adjust_multi(/datum/gas/oxygen, air_mix[/datum/gas/oxygen], /datum/gas/nitrogen, air_mix[/datum/gas/nitrogen])
 	src.update_icon()
 
 //R-UST port
 // Special types used for engine setup admin verb, they contain double amount of that of normal canister.
 /obj/machinery/portable_atmospherics/canister/nitrogen/engine_setup/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/reagent/gas/nitrogen, MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/nitrogen, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide/engine_setup/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/reagent/gas/carbon_dioxide, MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/carbon_dioxide, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/phoron/engine_setup/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/reagent/gas/phoron, MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/phoron, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/take_damage(var/damage)

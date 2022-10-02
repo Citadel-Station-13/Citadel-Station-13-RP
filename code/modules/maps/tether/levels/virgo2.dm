@@ -1,8 +1,8 @@
 /datum/atmosphere/planet/virgo2
 	base_gases = list(
-	/datum/reagent/gas/nitrogen = 0.10,
-	/datum/reagent/gas/oxygen = 0.03,
-	/datum/reagent/gas/carbon_dioxide = 0.87
+	/datum/gas/nitrogen = 0.10,
+	/datum/gas/oxygen = 0.03,
+	/datum/gas/carbon_dioxide = 0.87
 	)
 	base_target_pressure = 312.1
 	minimum_pressure = 312.1

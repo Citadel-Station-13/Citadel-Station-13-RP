@@ -53,11 +53,11 @@
 			var/datum/gas_mixture/water_breath = new()
 			var/datum/gas_mixture/above_air = return_air()
 			var/amount = 300
-			water_breath.adjust_gas(/datum/reagent/gas/oxygen, amount) // Assuming water breathes just extract the oxygen directly from the water.
+			water_breath.adjust_gas(/datum/gas/oxygen, amount) // Assuming water breathes just extract the oxygen directly from the water.
 			water_breath.temperature = above_air.temperature
 			return return_air()
 		else
-			var/gasid = /datum/reagent/gas/carbon_dioxide
+			var/gasid = /datum/gas/carbon_dioxide
 			if(ishuman(L))
 				var/mob/living/carbon/human/H = L
 				if(H.species && H.species.exhale_type)
@@ -227,11 +227,11 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 			var/datum/gas_mixture/water_breath = new()
 			var/datum/gas_mixture/above_air = return_air()
 			var/amount = 300
-			water_breath.adjust_gas(/datum/reagent/gas/oxygen, amount) // Assuming water breathes just extract the oxygen directly from the water.
+			water_breath.adjust_gas(/datum/gas/oxygen, amount) // Assuming water breathes just extract the oxygen directly from the water.
 			water_breath.temperature = above_air.temperature
 			return water_breath
 		else
-			var/gasid = /datum/reagent/gas/carbon_dioxide
+			var/gasid = /datum/gas/carbon_dioxide
 			if(ishuman(L))
 				var/mob/living/carbon/human/H = L
 				if(H.species && H.species.exhale_type)
@@ -337,11 +337,11 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 			var/datum/gas_mixture/water_breath = new()
 			var/datum/gas_mixture/above_air = return_air()
 			var/amount = 300
-			water_breath.adjust_gas(/datum/reagent/gas/oxygen, amount) // Assuming water breathes just extract the oxygen directly from the water.
+			water_breath.adjust_gas(/datum/gas/oxygen, amount) // Assuming water breathes just extract the oxygen directly from the water.
 			water_breath.temperature = above_air.temperature
 			return water_breath
 		else
-			var/gasid = /datum/reagent/gas/carbon_dioxide
+			var/gasid = /datum/gas/carbon_dioxide
 			if(ishuman(L))
 				var/mob/living/carbon/human/H = L
 				if(H.species && H.species.exhale_type)

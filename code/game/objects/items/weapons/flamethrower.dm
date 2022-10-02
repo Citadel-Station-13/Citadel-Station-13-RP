@@ -139,7 +139,7 @@
 	usr.set_machine(src)
 	if(href_list["light"])
 		if(!ptank)	return
-		if(ptank.air_contents.gas[/datum/reagent/gas/phoron] < 1)	return
+		if(ptank.air_contents.gas[/datum/gas/phoron] < 1)	return
 		if(!status)	return
 		lit = !lit
 		if(lit)
@@ -189,8 +189,8 @@
 	var/datum/gas_mixture/air_transfer = ptank.air_contents.remove_ratio(0.02*(throw_amount/100))
 	//air_transfer.toxins = air_transfer.toxins * 5 // This is me not comprehending the air system. I realize this is stupid and I could probably make it work without fucking it up like this, but there you have it. -- TLE
 
-	new/obj/effect/debris/cleanable/liquid_fuel/flamethrower_fuel(target,air_transfer.gas[/datum/reagent/gas/phoron],get_dir(loc,target))
-	air_transfer.gas[/datum/reagent/gas/phoron] = 0
+	new/obj/effect/debris/cleanable/liquid_fuel/flamethrower_fuel(target,air_transfer.gas[/datum/gas/phoron],get_dir(loc,target))
+	air_transfer.gas[/datum/gas/phoron] = 0
 
 	target.assume_air(air_transfer)
 	//Burn it based on transfered gas

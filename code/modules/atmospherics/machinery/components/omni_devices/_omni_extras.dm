@@ -96,14 +96,14 @@
 /proc/mode_to_gasid(var/mode)
 	switch(mode)
 		if(ATM_O2)
-			return /datum/reagent/gas/oxygen
+			return /datum/gas/oxygen
 		if(ATM_N2)
-			return /datum/reagent/gas/nitrogen
+			return /datum/gas/nitrogen
 		if(ATM_CO2)
-			return /datum/reagent/gas/carbon_dioxide
+			return /datum/gas/carbon_dioxide
 		if(ATM_P)
-			return /datum/reagent/gas/phoron
+			return /datum/gas/phoron
 		if(ATM_N2O)
-			return /datum/reagent/gas/nitrous_oxide
+			return /datum/gas/nitrous_oxide
 		else
 			return null

@@ -61,7 +61,7 @@
 
 	// Now let the random choices begin
 	if(length(normal_gases) && length(restricted_gases))
-		var/datum/reagent/gas/gastype
+		var/datum/gas/gastype
 		var/amount
 		var/safety = 254
 		while(gasmix.return_pressure() < target_pressure)

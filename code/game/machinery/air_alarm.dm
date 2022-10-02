@@ -113,9 +113,9 @@
 /obj/machinery/alarm/server/Initialize(mapload)
 	. = ..()
 	req_access = list(access_rd, access_atmospherics, access_engine_equip)
-	TLV[/datum/reagent/gas/oxygen] =			list(16,   19,   135, 140) // Partial pressure, kpa
-	TLV[/datum/reagent/gas/carbon_dioxide] =	list(-1.0, -1.0,   5,  10) // Partial pressure, kpa
-	TLV[/datum/reagent/gas/phoron] =			list(-1.0, -1.0,   0, 0.5) // Partial pressure, kpa
+	TLV[/datum/gas/oxygen] =			list(16,   19,   135, 140) // Partial pressure, kpa
+	TLV[/datum/gas/carbon_dioxide] =	list(-1.0, -1.0,   5,  10) // Partial pressure, kpa
+	TLV[/datum/gas/phoron] =			list(-1.0, -1.0,   0, 0.5) // Partial pressure, kpa
 	TLV["other"] =			list(-1.0, -1.0, 0.5, 1.0) // Partial pressure, kpa
 	TLV["pressure"] =		list(ONE_ATMOSPHERE * 0.80, ONE_ATMOSPHERE * 0.90, ONE_ATMOSPHERE * 1.10, ONE_ATMOSPHERE * 1.20) /* kpa */
 	TLV["temperature"] =	list(T0C - 26, T0C, T0C + 40, T0C + 66) // K
@@ -270,11 +270,11 @@
 	DECLARE_TLV_VALUES
 	LOAD_TLV_VALUES(TLV["pressure"], environment_pressure)
 	pressure_dangerlevel = TEST_TLV_VALUES // not local because it's used in process()
-	LOAD_TLV_VALUES(TLV["oxygen"], environment.gas[/datum/reagent/gas/oxygen]*partial_pressure)
+	LOAD_TLV_VALUES(TLV["oxygen"], environment.gas[/datum/gas/oxygen]*partial_pressure)
 	var/oxygen_dangerlevel = TEST_TLV_VALUES
-	LOAD_TLV_VALUES(TLV["carbon dioxide"], environment.gas[/datum/reagent/gas/carbon_dioxide]*partial_pressure)
+	LOAD_TLV_VALUES(TLV["carbon dioxide"], environment.gas[/datum/gas/carbon_dioxide]*partial_pressure)
 	var/co2_dangerlevel = TEST_TLV_VALUES
-	LOAD_TLV_VALUES(TLV["phoron"], environment.gas[/datum/reagent/gas/phoron]*partial_pressure)
+	LOAD_TLV_VALUES(TLV["phoron"], environment.gas[/datum/gas/phoron]*partial_pressure)
 	var/phoron_dangerlevel = TEST_TLV_VALUES
 	LOAD_TLV_VALUES(TLV["temperature"], environment.temperature)
 	var/temperature_dangerlevel = TEST_TLV_VALUES
