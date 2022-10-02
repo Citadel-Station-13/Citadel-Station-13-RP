@@ -42,11 +42,9 @@
 	//var/pre_attack_icon = "Goliath_preattack"
 
 /datum/say_list/goliath
-	speak = list("Wails!", "H!@%%@ @!E")
-	emote_hear = list("sparks!", "groans.", "wails.", "sobs.")
-	emote_see = list ("stares unblinkingly.", "jitters and twitches.", "emits a synthetic scream.", "rapidly twitches.", "convulses.", "twitches uncontrollably.", "goes stock still.")
-	say_threaten = list ("FR@#DOM","EN@ T#I$-$","N0$ M^> B@!#")
-	say_got_target = list("I *#@ Y@%","!E@#$P","F#RR @I","D0@#$ ##OK %","IT $##TS")
+	speak = list("Wails!", "Rumbles!", "Glows!")
+	emote_hear = list("flashes briefly.", "shudders.", "trills.")
+	emote_see = list ("glows faintly.", "tenses up.")
 
 /*
 /mob/living/simple_animal/hostile/asteroid/goliath/BiologicalLife(seconds, times_fired)
