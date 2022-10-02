@@ -571,16 +571,16 @@
 		breath.adjust_gas(/datum/gas/nitrous_oxide, -breath.gas[/datum/gas/nitrous_oxide]/6, update = 0) //update after
 	
 	for(var/gasname in breath.gas) //datum/gas/
-		var/datum/gas/gas = gasname
-		if(!initial(gas.gas_reagent_amount))
-			continue
+		//var/datum/gas/gas = gasname
 		if(gas == breath_type)
 			continue
+		if(GLOB.meta_gas_reagent_id[gasname])
+			continue
 		// Little bit of sanity so we aren't trying to add 0.0000000001 units of CO2, and so we don't end up with 99999 units of CO2.
-		var/reagent_amount = breath.gas[gasname] * 10 * gas_to_process_ratio //10 is for the u per gas mol, ratio is defined further up where we have the lungs for checks
+		var/reagent_amount = breath.gas[gasname] * 10 * gas_to_process_ratio * GLOB.meta_gas_reagent_amount[gasname] //10 is for the u per gas mol, ratio is defined further up where we have the lungs for checks
 		if(reagent_amount < 0.05)
 			continue
-		reagents.add_reagent(initial(gas.gas_reagent_id), reagent_amount)
+		reagents.add_reagent(GLOB.meta_gas_reagent_id[gasname], reagent_amount)
 		breath.adjust_gas(gasname, -breath.gas[gasname], update = 0) //update after
 
 	// Were we able to breathe?
