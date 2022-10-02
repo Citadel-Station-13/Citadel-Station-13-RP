@@ -13,3 +13,7 @@
   - refactor: new, multiseat vehicle backend added
   - refactor: riding components (handlers and filters)
   - refactor: buckling
+2022-10-02:
+  Captain277:
+  - rscadd: Adds the Kanabo.
+  - bugfix: Fixes turf edge blending.
