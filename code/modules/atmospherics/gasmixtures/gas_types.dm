@@ -361,6 +361,13 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	toxicity = 15*/
 	gas_overlay = "chlorine"
 	moles_visible = 1
+	gas_metabolically_inert = FALSE
+
+/datum/reagent/gas/chlorine/affect_blood(mob/living/carbon/M, alien, removed)
+	if(issmall(M)) removed *= 2
+	M.take_organ_damage(0, removed * power * 2)
+
+
 
 /datum/reagent/gas/sulfur_dioxide
 	id = "sulfur dioxide"
