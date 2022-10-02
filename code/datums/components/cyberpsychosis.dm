@@ -12,6 +12,10 @@ This feature is WIP. Here are my current wants/to-dos:
 The primary interest at the moment is getting this system functional so it can be added as a Neutral trait selection.
 */
 
+
+//Author's Note: This trait should only be referred to as cyberpsychosis in code as easy reference shorthand.
+//In-game it's known as Cybernetic Rejection Syndrome.
+
 /datum/component/cyberpsychosis
 
 

@@ -18,7 +18,7 @@
 	var/active_regen = FALSE //Used for the regenerate proc in human_powers.dm
 	var/active_regen_delay = 300
 	var/spam_flag = FALSE	//throws byond:tm: errors if placed in human/emote, but not here
-	var/capacity = 100		//Tied into the Cyberpsychosis Neutral trait. This is the 'health' for cyberpsychosis.
+	var/capacity = 100		//Tied into the CRS Neutral trait. This is the 'health' for cyberpsychosis.
 
 /mob/living/carbon/human/Initialize(mapload, datum/species/new_species_or_path)
 	if(!dna)

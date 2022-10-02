@@ -1599,7 +1599,7 @@
 	M.adjust_fire_stacks(-reac_volume)
 	M.ExtinguishMob()
 
-//Cyberpsychosis Medication
+//CRS (Cyberpsychosis) Medication
 /datum/reagent/neuratrextate
 	name = "Neuratrextate"
 	id = "neuratrextate"

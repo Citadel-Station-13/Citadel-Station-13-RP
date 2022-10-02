@@ -422,7 +422,7 @@
 	result_amount = 2
 
 /datum/chemical_reaction/immunosuprizine
-	//Very toxic substance that prevents Organ rejection after transplanation, not sure why we still need this //Adopted for Cyberpsychosis meds.
+	//Very toxic substance that prevents Organ rejection after transplanation, not sure why we still need this //Adopted for CRS(Cyberpsychosis) meds.
 	name = "Immunosuprizine"
 	id = "immunosuprizine"
 	result = "immunosuprizine"
