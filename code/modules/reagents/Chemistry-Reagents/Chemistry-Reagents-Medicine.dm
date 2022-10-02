@@ -1603,7 +1603,7 @@
 /datum/reagent/neuratrextate
 	name = "Neuratrextate"
 	id = "neuratrextate"
-	description = "This military grade chemical compound functions as both a powerful antibiotic and a potent antipsychotic. Its trademark lime green coloration makes it easy to identify."
+	description = "This military grade chemical compound functions as both a powerful immunosuppressant and a potent antipsychotic. Its trademark lime green coloration makes it easy to identify."
 	taste_description = "sour"
 	reagent_state = REAGENT_LIQUID
 	color = "#52ca22"
