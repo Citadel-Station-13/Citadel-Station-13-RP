@@ -191,7 +191,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	molar_mass = 0.044
 
 /datum/reagent/gas/phoron
-	id = "phoron"
+	id = "phoron_gas"
 	name = "Phoron"
 	//Note that this has a significant impact on TTV yield.
 	//Because it is so high, any leftover phoron soaks up a lot of heat and drops the yield pressure.
@@ -345,7 +345,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	//value = 0.25
 
 /datum/reagent/gas/chlorine
-	id = "chlorine"
+	id = "chlorine_gas"
 	name = "Chlorine"
 	//color = "#c5f72d"
 	//gas_overlay_limit = 0.5
@@ -381,7 +381,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	)*/
 
 /datum/reagent/gas/hydrogen
-	id = "hydrogen"
+	id = "hydrogen_gas"
 	name = "Hydrogen"
 	//lore_text = "A colorless, flammable gas."
 	//flags = MAT_FLAG_FUSION_FUEL
