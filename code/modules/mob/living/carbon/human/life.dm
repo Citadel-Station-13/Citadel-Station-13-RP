@@ -572,7 +572,7 @@
 	
 	for(var/gasname in breath.gas) //datum/gas/
 		//var/datum/gas/gas = gasname
-		if(gas == breath_type)
+		if(gasname == breath_type)
 			continue
 		if(GLOB.meta_gas_reagent_id[gasname])
 			continue
