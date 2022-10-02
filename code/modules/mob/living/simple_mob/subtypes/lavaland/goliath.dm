@@ -1,42 +1,54 @@
-/mob/living/simple_animal/hostile/asteroid/goliath
+/mob/living/simple_mob/animal/goliath
 	name = "goliath"
 	desc = "A massive beast that uses long tentacles to ensnare its prey, threatening them is not advised under any conditions."
-	icon = 'icons/mob/lavaland/lavaland_monsters.dmi'
-	icon_state = "Goliath"
-	icon_living = "Goliath"
-	icon_aggro = "Goliath_alert"
-	icon_dead = "Goliath_dead"
+	icon = 'icons/mob/lavaland/lavaland_mobs.dmi'
+	icon_state = "goliath"
+	icon_living = "goliath"
+	icon_dead = "goliath_dead"
 	icon_gib = "syndicate_gib"
-	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	mouse_opacity = MOUSE_OPACITY_OPAQUE
-	move_to_delay = 10
-	ranged = 1
-	ranged_cooldown_time = 60
-	friendly_verb_continuous = "wails at"
-	friendly_verb_simple = "wail at"
-	speak_emote = list("bellows")
-	speed = 3
+
 	maxHealth = 300
 	health = 300
-	harm_intent_damage = 0
-	obj_damage = 100
+
+	mob_class = MOB_CLASS_ANIMAL
+	movement_cooldown = 10
+	movement_sound = 'sound/weapons/heavysmash.ogg'
+	//ranged = 1
+	//ranged_cooldown_time = 60
+
+	response_harm = "harmlessly punches"
 	melee_damage_lower = 18
 	melee_damage_upper = 18
-	attack_verb_continuous = "pulverizes"
-	attack_verb_simple = "pulverize"
+
+	attacktext = list ("pulverizes", "batters", "hammers")
 	attack_sound = 'sound/weapons/punch1.ogg'
-	throw_message = "does nothing to the rocky hide of the"
-	vision_range = 4
-	aggro_vision_range = 7
+
 	move_force = MOVE_FORCE_VERY_STRONG
 	move_resist = MOVE_FORCE_VERY_STRONG
 	pull_force = MOVE_FORCE_VERY_STRONG
+
+	hide_type = /obj/item/stack/animalhide/goliath_hide
+	exotic_type = /obj/item/stack/sinew
+	meat_amount = 5
+	bone_amount = 5
+	hide_amount = 5
+	exotic_amount = 5
+
+	speak_emote = list("bellows")
+	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
+	say_list_type = /datum/say_list/goliath
+
 	var/pre_attack = 0
-	var/pre_attack_icon = "Goliath_preattack"
-	loot = list(/obj/item/stack/sheet/animalhide/goliath_hide)
+	//var/pre_attack_icon = "Goliath_preattack"
 
-	footstep_type = FOOTSTEP_MOB_HEAVY
+/datum/say_list/goliath
+	speak = list("Wails!", "H!@%%@ @!E")
+	emote_hear = list("sparks!", "groans.", "wails.", "sobs.")
+	emote_see = list ("stares unblinkingly.", "jitters and twitches.", "emits a synthetic scream.", "rapidly twitches.", "convulses.", "twitches uncontrollably.", "goes stock still.")
+	say_threaten = list ("FR@#DOM","EN@ T#I$-$","N0$ M^> B@!#")
+	say_got_target = list("I *#@ Y@%","!E@#$P","F#RR @I","D0@#$ ##OK %","IT $##TS")
 
+/*
 /mob/living/simple_animal/hostile/asteroid/goliath/BiologicalLife(seconds, times_fired)
 	if(!(. = ..()))
 		return
@@ -211,3 +223,4 @@
 	icon_state = "Goliath_tentacle_retract"
 	deltimer(timerid)
 	timerid = QDEL_IN(src, 7)
+*/
