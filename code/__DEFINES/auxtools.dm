@@ -22,3 +22,5 @@ GLOBAL_LIST_EMPTY(auxtools_initialized)
 		call(LIB,"auxtools_shutdown")();\
 		GLOB.auxtools_initialized[LIB] = FALSE;\
 	}\
+
+#define AUXYAML "auxyaml.dll"
