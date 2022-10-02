@@ -187,7 +187,7 @@
 /obj/item/melee/baton/cattleprod
 	name = "stunprod"
 	desc = "An improvised stun baton."
-	icon_state = "stunprod_nocell"
+	icon_state = "stunprod"
 	item_state = "prod"
 	force = 3
 	throw_force = 5
@@ -198,6 +198,8 @@
 	slot_flags = null
 
 /obj/item/melee/baton/cattleprod/attackby(obj/item/W, mob/user)
+	if(use_external_power)
+		return
 	if(istype(W, /obj/item/cell))
 		if(!istype(W, /obj/item/cell/device))
 			if(!bcell)
@@ -210,6 +212,7 @@
 				to_chat(user, "<span class='notice'>[src] already has a cell.</span>")
 		else
 			to_chat(user, "<span class='notice'>This cell is not fitted for [src].</span>")
+
 	if(istype(W, /obj/item/ore/bluespace_crystal))
 		if(!bcell)
 			var/obj/item/ore/bluespace_crystal/BSC = W
@@ -220,8 +223,6 @@
 			to_chat(user, "<span class='notice'>You place the bluespace crystal firmly into the igniter.</span>")
 		else
 			user.visible_message("<span class='warning'>You can't put the crystal onto the stunprod while it has a power cell installed!</span>")
-	else
-		return ..()
 
 /obj/item/melee/baton/get_description_interaction()
 	var/list/results = list()
@@ -236,9 +237,9 @@
 	return results
 
 /obj/item/melee/baton/cattleprod/teleprod
-	name = "telebaton"
-	desc = "An ."
-	icon_state = "stunprod_nocell"
+	name = "teleprod"
+	desc = "An improvised stun baton with a bluespace crystal attached to the tip."
+	icon_state = "teleprod"
 	item_state = "prod"
 	force = 3
 	throw_force = 5
@@ -253,8 +254,6 @@
 	if(!. || L.anchored)
 		return
 	do_teleport(L, get_turf(L), 15)
-
-/obj/item/melee/baton/cattleprod/attackby(obj/item/I, mob/user, params)//handles sticking a crystal onto a stunprod to make a teleprod
 
 
 // Rare version of a baton that causes lesser lifeforms to really hate the user and attack them.
