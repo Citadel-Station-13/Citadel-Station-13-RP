@@ -1,0 +1,4 @@
+author: "jakeramsay007"
+delete-after: True
+changes: 
+  - bugfix: "Stunprods and teleprods can once more be constructed"

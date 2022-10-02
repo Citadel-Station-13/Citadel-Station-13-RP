@@ -229,7 +229,7 @@
 /obj/machinery/door/airlock{
 	icon = 'icons/obj/doors/Dooruranium.dmi'
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -250,13 +250,13 @@
 	name = "Outer Airlock";
 	opacity = 0
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/airlock_sensor{
 	dir = 8;
 	pixel_y = -27;
 	req_access = list(150)
 	},
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
+/obj/map_helper/airlock/sensor/ext_sensor,
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/shuttle/ninja)
 "aL" = (
@@ -271,7 +271,7 @@
 	pixel_y = 28;
 	req_access = list(150)
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/effect/overmap/visitable/ship/landable/ninja,
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/shuttle/ninja)
@@ -329,7 +329,7 @@
 	name = "ship lockdown control";
 	pixel_x = -25
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/shuttle/ninja)
 "aT" = (
@@ -342,7 +342,7 @@
 	name = "Ship Internal Hatch";
 	req_access = list(150)
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/shuttle/ninja)
 "aU" = (
@@ -395,7 +395,7 @@
 	pixel_x = -27;
 	req_access = list(150)
 	},
-/atom/movable/map_helper/airlock/sensor/int_sensor,
+/obj/map_helper/airlock/sensor/int_sensor,
 /obj/machinery/computer/station_alert{
 	dir = 4
 	},
@@ -889,7 +889,7 @@
 /obj/machinery/door/airlock{
 	icon = 'icons/obj/doors/Dooruranium.dmi'
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"

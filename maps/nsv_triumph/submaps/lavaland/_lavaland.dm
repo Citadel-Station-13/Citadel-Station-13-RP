@@ -97,6 +97,7 @@
 	icon_state = "asteroid"
 	outdoors = 1
 	base_icon_state = "asteroid"
+	edge_blending_priority = 0
 	baseturfs = /turf/simulated/mineral/floor/lavaland
 	initial_flooring = /decl/flooring/outdoors/lavaland
 

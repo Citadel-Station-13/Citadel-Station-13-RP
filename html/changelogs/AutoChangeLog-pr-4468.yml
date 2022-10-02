@@ -1,0 +1,4 @@
+author: "jakeramsay007"
+delete-after: True
+changes: 
+  - bugfix: "Fixes alt-clicking for borgs to not double-call AltClick() thereby breaking some interactions"
