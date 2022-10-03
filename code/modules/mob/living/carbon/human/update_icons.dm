@@ -573,7 +573,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		var/obj/item/clothing/suit/S = wear_suit
 		if((wear_suit?.flags_inv & HIDETAIL) || (istype(S) && S.taurized)) // Reasons to not mask: 1. If you're wearing a suit that hides the tail or if you're wearing a taurized suit.
 			c_mask = null
-	var/list/mutable_appearance/MA = w_uniform.render_mob_appearance(src, SLOT_ID_UNIFORM, species.get_effective_bodytype())
+	var/mutable_appearance/MA = w_uniform.render_mob_appearance(src, SLOT_ID_UNIFORM, species.get_effective_bodytype())
 
 	if(c_mask)
 		if(islist(MA))
@@ -751,12 +751,6 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		return //No point, no suit.
 
 	// Part of splitting the suit sprites up
-	var/iconFile = INV_SUIT_DEF_ICON
-	var/obj/item/clothing/suit/S
-	if(istype(wear_suit, /obj/item/clothing/suit))
-		S = wear_suit
-		if(S.update_icon_define)
-			iconFile = S.update_icon_define
 
 	var/icon/c_mask = null
 	var/tail_is_rendered = (overlays_standing[TAIL_LAYER] || overlays_standing[TAIL_LAYER_ALT])
@@ -764,7 +758,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	if(tail_is_rendered && valid_clip_mask && !(istype(S) && S.taurized)) //Clip the lower half of the suit off using the tail's clip mask for taurs since taur bodies aren't hidden.
 		c_mask = valid_clip_mask
-	var/list/mutable_appearance/MA = wear_suit.render_mob_appearance(src, SLOT_ID_SUIT, species.get_effective_bodytype())
+	var/mutable_appearance/MA = wear_suit.render_mob_appearance(src, SLOT_ID_SUIT, species.get_effective_bodytype())
 	if(c_mask)
 		if(islist(MA))
 			for(var/mutable_appearance/MA2 as anything in MA)
@@ -1146,7 +1140,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 				qdel(overlay)
 
 		if(wing_style.center)
-			center_image(wing_style, wing_style.dimension_x, wing_style.dimension_y)
+			center_appearance(wing_s, wing_style.dimension_x, wing_style.dimension_y)
 		return image(wing_s, "pixel_x" = -16)
 
 // TODO - Move this to where it should go ~Leshana

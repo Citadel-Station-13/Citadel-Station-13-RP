@@ -3,6 +3,9 @@
 	desc = "A card used to provide ID and determine access across the station."
 	icon_state = "generic-nt"
 	item_state = "card-id"
+	item_state_slots = list(
+		SLOT_ID_WORN_ID = "id"
+	)
 
 	sprite_sheets = list(
 		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/id.dmi'
@@ -122,13 +125,6 @@
 	to_chat(usr, "The blood type on the card is [blood_type].")
 	to_chat(usr, "The DNA hash on the card is [dna_hash].")
 	to_chat(usr, "The fingerprint hash on the card is [fingerprint_hash].")
-	return
-
-/obj/item/card/id/get_worn_icon_state(var/slot_id)
-	if(slot_id == SLOT_ID_WORN_ID)
-		return "id" //Legacy, just how it is. There's only one sprite.
-
-	return ..()
 
 /obj/item/card/id/Initialize(mapload)
 	. = ..()

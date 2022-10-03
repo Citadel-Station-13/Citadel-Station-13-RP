@@ -311,8 +311,6 @@ var/list/economy_station_departments = list(
 ///The number of deciseconds in a day
 #define MIDNIGHT_ROLLOVER		864000
 
-/// Needed for the R-UST port
-#define WORLD_ICON_SIZE 32
 ///Needed for the R-UST port
 #define PIXEL_MULTIPLIER WORLD_ICON_SIZE/32
 /// Maximum effective value of client.view (According to DM references)

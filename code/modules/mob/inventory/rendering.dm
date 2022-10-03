@@ -81,7 +81,7 @@
 	var/datum/inventory_slot_meta/slot_meta
 	// resolve slot
 	if(inhands)
-		slot_meta = (inhands % 2)? resolve_inventory_slot_meta(/datum/inventory_slot_meta/abstract/right_hand : /datum/inventory_slot_meta/abstract/left_hand)
+		slot_meta = (inhands % 2)? resolve_inventory_slot_meta(/datum/inventory_slot_meta/abstract/right_hand : /datum/inventory_slot_meta/abstract/left_hand
 	else
 		slot_meta = resolve_inventory_slot_meta(slot_id_or_hand_index)
 

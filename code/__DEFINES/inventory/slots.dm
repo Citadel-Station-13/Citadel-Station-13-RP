@@ -79,12 +79,6 @@
 /// Takes 2s to use a UI element in somebody else's hands.
 #define HUMAN_INTERACT_DELAY	2 SECONDS
 
-// Inventory slot strings.
-// since numbers cannot be used as associative list keys.
-//icon_back, icon_l_hand, etc would be much better names for these...
-#define SLOT_ID_LEFT_HAND		"slot_l_hand"
-#define SLOT_ID_RIGHT_HAND		"slot_r_hand"
-
 // rest got converted to typepath ids
 // one day i'll come for you, inhand icons.
 // one day.... mark my words...
