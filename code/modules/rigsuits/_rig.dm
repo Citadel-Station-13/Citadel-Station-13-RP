@@ -389,7 +389,7 @@
 		for(var/obj/item/piece in list(helmet,boots,gloves,chest))
 			if(!piece)
 				continue
-			piece.icon_state = "[suit_state][is_activated() ? "" : "_sealed"]"
+			piece.icon_state = "[suit_state][is_activated() ? "_sealed" : ""]"
 			piece.update_worn_icon()
 
 		if(is_activated())
@@ -640,8 +640,8 @@
 	if(src.loc != user)
 		data["ai"] = 1
 
-	data["seals"] =     "[src.is_activated()]"
-	data["sealing"] =   "[src.is_cycling()]"
+	data["seals"] =     is_activated()
+	data["sealing"] =   is_cycling()
 	data["helmet"] =    (helmet ? "[helmet.name]" : "None.")
 	data["gauntlets"] = (gloves ? "[gloves.name]" : "None.")
 	data["boots"] =     (boots ?  "[boots.name]" :  "None.")
@@ -1086,7 +1086,7 @@
 	// AIs are a bit slower than regular and ignore move intent.
 	wearer_move_delay = world.time + ai_controlled_move_delay
 
-	if(istype(wearer.buckled, /obj/vehicle))
+	if(istype(wearer.buckled, /obj/vehicle_old))
 		//manually set move_delay for vehicles so we don't inherit any mob movement penalties
 		//specific vehicle move delays are set in code\modules\vehicles\vehicle.dm
 		wearer_move_delay = world.time

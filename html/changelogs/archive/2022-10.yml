@@ -1,0 +1,27 @@
+2022-10-01:
+  Captain277:
+  - rscadd: Adds empty hood variant for hoodless jackets.
+  - rscadd: Adds mob sprite for duffel of holding.
+  - rscadd: Adds back sprite for Grit.
+  ktoma36:
+  - bugfix: Access to mining underground area and airlock
+  silicons:
+  - rscadd: piggybacking (drag yourself to someone while passively grabbed)
+  - rscadd: firemanning (drag someone to you in grab intent while they're passively
+      or above grabbed and on the ground)
+  - refactor: old vehicles kicked to obj/vehicle_old pending evaluation and port
+  - refactor: new, multiseat vehicle backend added
+  - refactor: riding components (handlers and filters)
+  - refactor: buckling
+2022-10-02:
+  Captain277:
+  - rscadd: Adds the Kanabo.
+  - bugfix: Fixes turf edge blending.
+2022-10-03:
+  jakeramsay007:
+  - bugfix: Borgs can now remove beakers from the grinder correctly
+  - bugfix: Stunprods and teleprods can once more be constructed
+  - rscdel: Removed redundant shielding and cell UI elements from the atmospheric
+      canister UI
+  - bugfix: Fixes alt-clicking for borgs to not double-call AltClick() thereby breaking
+      some interactions

@@ -314,7 +314,7 @@
 
 	..()
 	var/mob/living/M = holder.wearer
-	var/datum/gender/TU = gender_datums[M.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[M.get_visible_gender()]
 
 	if(!M.put_in_hands(held_blade))
 		to_chat(M, "<span class='danger'>Your hands are full.</span>")

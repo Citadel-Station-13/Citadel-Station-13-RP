@@ -5,7 +5,6 @@
 	},
 /obj/structure/cable/cyan,
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/light/small,
@@ -119,8 +118,6 @@
 /area/lavaland/dungeon/facility)
 "eT" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/lavaland,
@@ -241,8 +238,6 @@
 /area/lavaland/dungeon/facility)
 "kN" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/lavaland,
@@ -777,13 +772,9 @@
 /area/lavaland/dungeon/facility)
 "HH" = (
 /obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -982,12 +973,9 @@
 	pixel_y = -28
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,

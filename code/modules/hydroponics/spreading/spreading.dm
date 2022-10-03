@@ -45,8 +45,8 @@
 
 /obj/effect/plant
 	name = "plant"
-	anchored = 1
-	can_buckle = 1
+	anchored = TRUE
+	buckle_allowed = TRUE
 	opacity = 0
 	density = 0
 	icon = 'icons/obj/hydroponics_growing.dmi'

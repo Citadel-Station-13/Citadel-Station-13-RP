@@ -852,6 +852,7 @@ proc/DuplicateObject(obj/original, var/perfectcopy = 0 , var/sameloc = 0)
 					var/old_dir1 = T.dir
 					var/old_icon_state1 = T.icon_state
 					var/old_icon1 = T.icon
+					var/old_decals = T.decals?.Copy()
 					var/old_overlays = T.overlays.Copy()
 					var/old_underlays = T.underlays.Copy()
 
@@ -864,6 +865,7 @@ proc/DuplicateObject(obj/original, var/perfectcopy = 0 , var/sameloc = 0)
 					X.setDir(old_dir1)
 					X.icon_state = old_icon_state1
 					X.icon = old_icon1 //Shuttle floors are in shuttle.dmi while the defaults are floors.dmi
+					X.decals = old_decals
 					X.overlays = old_overlays
 					X.underlays = old_underlays
 

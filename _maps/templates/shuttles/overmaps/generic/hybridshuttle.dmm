@@ -66,15 +66,13 @@
 	pixel_y = 24
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/blue_fo)
 "ak" = (
 /obj/machinery/power/smes/buildable,
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -238,7 +236,7 @@
 /obj/item/perfect_tele_beacon{
 	icon_state = "beacon";
 	tele_name = "Hybrid Shuttle";
-	
+
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor/grid,

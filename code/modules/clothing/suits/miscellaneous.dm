@@ -1225,12 +1225,6 @@ obj/item/clothing/suit/kamishimo
 	desc = "This thick duster, constructed out of black leather and red suede, presents an utterly demonic profile. Adorned with chased silver chains, anchored into the very fabric itself in the device of an esoteric skull, this jacket will fit in anywhere. As long as it's a leather club or metal concert."
 	icon_state = "umbral"
 
-//Pending shift to Donator.
-/obj/item/clothing/suit/storage/toggle/pariah
-	name = "Springtime Pariah Moto Jacket"
-	desc = "A leather jacket commonly associated with hoverbike riders. Stitched over pockets in the shoulder and chest panels suggest it could take armor inserts at some point in its past. The custom embroidery and cut implies this was made for someone special. There are no manufacturers marks, beyond a small tag bearing a stylized letter 'K'."
-	icon_state = "pariah"
-
 /obj/item/clothing/suit/storage/mekkyaku
 	name = "Mekkyaku hoodie"
 	desc = "This crisp white hoodie bears a strange manufacturer's mark. The colorful red accents stand out against the snowy white cloth with evocative flair."
@@ -1251,3 +1245,29 @@ obj/item/clothing/suit/kamishimo
 	desc = "A set of cybernetic upgrades of an alien origin, this peculiar jacket reads the user's nerver in order to control a set of drones as if they were an additional set of less dexterous hands. Attached terminals buzz with bizarre symbols that appear to form an incomprehensibly complex pattern."
 	item_state = "mindelectric_w"
 	icon_state = "mindelectric"
+
+//The Chippin' In Set -Cap
+/obj/item/clothing/suit/storage/runner
+	name = "Runner Jacket"
+	desc = "A sturdy high-vis jacket patterned after a lost society's first responders. It has been marked with unfamiliar graffiti on the back."
+	icon_state = "runner_jacket"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
+	/obj/item/gun/projectile, /obj/item/ammo_magazine, /obj/item/melee/baton)
+
+/obj/item/clothing/suit/storage/runner/half_moon
+	name = "Half Moon Jacket"
+	desc = "Lightweight and fashionable, this low-profile jacket blends in while still making a statement. Its stark coloration is reminiscent of Luna."
+	icon_state = "half_moon"
+
+/obj/item/clothing/suit/storage/toggle/half_pint
+	name = "Half-Pint Jacket"
+	desc = "This reinforced jacket bears many curious modifications. Marketed towards mercenaries who'd like a touch of flair, the commercial variant comes with built-in decorative lighting and multiple internal pockets meant to accept armor panels."
+	icon_state = "half_pint"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
+	/obj/item/gun/projectile, /obj/item/ammo_magazine, /obj/item/melee/baton)

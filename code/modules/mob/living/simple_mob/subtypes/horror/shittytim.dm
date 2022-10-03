@@ -40,6 +40,10 @@
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/human
 	bone_amount = 3
 
+/mob/living/simple_mob/horror/BigTim/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/horror_aura)
+
 /mob/living/simple_mob/horror/BigTim/death()
 	playsound(src, 'sound/h_sounds/shitty_tim.ogg', 50, 1)
 	..()

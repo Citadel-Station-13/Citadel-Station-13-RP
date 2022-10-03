@@ -36,3 +36,8 @@
 #define OCTOBER		10
 #define NOVEMBER	11
 #define DECEMBER	12
+
+/// use for rapid actions that make messages to throttle messages
+#define CHATSPAM_THROTTLE_DEFAULT		(!(world.time % 5))
+/// ditto
+#define CHATSPAM_THROTTLE(every)			(!(world.time % every))

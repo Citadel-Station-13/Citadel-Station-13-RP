@@ -127,14 +127,14 @@
 
 /datum/supply_pack/supply/cargotrain
 	name = "Cargo Train Tug"
-	contains = list(/obj/vehicle/train/engine)
+	contains = list(/obj/vehicle_old/train/engine)
 	cost = 35
 	container_type = /obj/structure/largecrate
 	container_name = "Cargo Train Tug Crate"
 
 /datum/supply_pack/supply/cargotrailer
 	name = "Cargo Train Trolley"
-	contains = list(/obj/vehicle/train/trolley)
+	contains = list(/obj/vehicle_old/train/trolley)
 	cost = 15
 	container_type = /obj/structure/largecrate
 	container_name = "Cargo Train Trolley Crate"
@@ -147,7 +147,7 @@
 			/obj/item/pickaxe/tyrmalin = 2,
 			/obj/item/grenade/explosive/ied/tyrmalin = 2
 			)
-	cost = 120
+	cost = 300
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "Tyrmalin Mining crate"
 	access = access_mining

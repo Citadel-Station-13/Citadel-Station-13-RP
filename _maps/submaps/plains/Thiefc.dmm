@@ -69,7 +69,7 @@
 	},
 /area/submap/Thiefc)
 "k" = (
-/obj/vehicle/train/trolley,
+/obj/vehicle_old/train/trolley,
 /obj/random/firstaid,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
@@ -96,7 +96,7 @@
 	},
 /area/submap/Thiefc)
 "n" = (
-/obj/vehicle/train/trolley,
+/obj/vehicle_old/train/trolley,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},

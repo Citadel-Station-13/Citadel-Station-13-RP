@@ -2604,6 +2604,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Cargo Mining Dock"
 	icon_state = "mining"
 
+/area/quartermaster/mining_airlock
+	name = "\improper Mining Airlock"
+	icon_state = "mining"
 /area/quartermaster/belterdock
 	name = "\improper Cargo Belter Access"
 	icon_state = "mining"

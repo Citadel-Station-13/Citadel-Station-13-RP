@@ -2,8 +2,7 @@
 	name = "wheelchair"
 	desc = "You sit in this. Either by will or force."
 	icon_state = "wheelchair"
-	anchored = 0
-	buckle_movable = 1
+	anchored = FALSE
 
 	var/last_active_move = 0
 	var/driving = 0
@@ -206,13 +205,17 @@
 		B.setDir(newdir)
 	bloodiness--
 
-/obj/structure/bed/chair/wheelchair/buckle_mob(mob/living/M, forced = FALSE, check_loc = TRUE)
-	if(issilicon(M))	// No abusing wheelchairs.
-		return
+/obj/structure/bed/chair/wheelchair/can_buckle_mob(mob/M, flags, mob/user, semantic)
+	if(issilicon(M))
+		return FALSE
+	return ..()
+
+/obj/structure/bed/chair/wheelchair/mob_buckled(mob/M, flags, mob/user, semantic)
+	. = ..()
 	if(M == pulling_along)
 		pulling_along = null
-		usr.pulledby = null
-	return ..()
+		if(M.pulledby == src)
+			M.pulledby = null
 
 /obj/item/wheelchair
 	name = "wheelchair"

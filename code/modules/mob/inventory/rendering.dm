@@ -87,7 +87,7 @@
 
 	var/list/resolved = = resolve_worn_assets(mob/M, slot_meta, inhands, bodytype)
 
-	return _rendeR_mob_appearance(M, slot_meta, inhands, bodytype, resolved[1], resolved[2], resolved[3])
+	return _render_mob_appearance(M, slot_meta, inhands, bodytype, resolved[1], resolved[2], resolved[3])
 
 /obj/item/proc/_render_mob_appearance(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype, icon_used, state_used, layer_used)
 	SHOULD_NOT_OVERRIDE(TRUE)

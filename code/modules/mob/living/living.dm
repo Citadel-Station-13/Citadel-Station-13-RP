@@ -737,14 +737,6 @@ default behaviour is:
 	if(attempt_vr(src,"vore_process_resist",args))
 		return TRUE
 
-/mob/living/proc/resist_buckle()
-	if(buckled)
-		if(istype(buckled, /obj/vehicle))
-			var/obj/vehicle/vehicle = buckled
-			vehicle.unload()
-		else
-			buckled.user_unbuckle_mob(src, src)
-
 /mob/living/proc/resist_grab()
 	var/resisting = 0
 	for(var/obj/item/grab/G in grabbed_by)
@@ -879,34 +871,14 @@ default behaviour is:
 		lying = 0
 		canmove = 1
 	else
-		if(istype(buckled, /obj/vehicle))
-			var/obj/vehicle/V = buckled
-			if(is_physically_disabled())
-				lying = 0
-				canmove = 1
-				if(!V.riding_datum) // If it has a riding datum, the datum handles moving the pixel_ vars.
-					pixel_y = V.mob_offset_y - 5
-			else
-				if(buckled.buckle_lying != -1)
-					lying = buckled.buckle_lying
-				canmove = 1
-				if(!V.riding_datum) // If it has a riding datum, the datum handles moving the pixel_ vars.
-					pixel_y = V.mob_offset_y
-		else if(buckled)
-			anchored = 1
-			canmove = 0
-			if(istype(buckled))
-				if(buckled.buckle_lying != -1)
-					lying = buckled.buckle_lying
-				if(buckled.buckle_movable)
-					anchored = 0
-					canmove = 1
+		if(buckled)
+			lying = buckled.buckle_lying(src)
 		else
 			lying = incapacitated(INCAPACITATION_KNOCKDOWN)
 			canmove = !incapacitated(INCAPACITATION_DISABLED)
 
 	if(lying)
-		density = 0
+		density = FALSE
 		drop_all_held_items()
 		for(var/obj/item/holder/H in get_mob_riding_slots())
 			drop_item_to_ground(H)
@@ -916,22 +888,13 @@ default behaviour is:
 
 	for(var/obj/item/grab/G in grabbed_by)
 		if(G.state >= GRAB_AGGRESSIVE)
-			canmove = 0
+			canmove = FALSE
 			break
 
 	if(lying != lying_prev)
 		lying_prev = lying
 		update_transform()
-		if(lying && LAZYLEN(buckled_mobs))
-			for(var/rider in buckled_mobs)
-				var/mob/living/L = rider
-				if(buckled_mobs[rider] != "riding")
-					continue // Only boot off riders
-				if(riding_datum)
-					riding_datum.force_dismount(L)
-				else
-					unbuckle_mob(L)
-				L.Stun(5)
+		SEND_SIGNAL(src, COMSIG_MOB_UPDATE_LYING, lying)
 
 	return canmove
 
@@ -1115,27 +1078,6 @@ default behaviour is:
 		"}
 
 /**
-  * Gets our standard pixel x offset.
-  *
-  * @params
-  * * lying : The degrees we're turned to while lying down or resting for any reason.
-  */
-/mob/living/proc/get_standard_pixel_x_offset(lying = 0)
-	return default_pixel_x
-
-/**
-  * Gets our standard pixel y offset.
-  *
-  * @params
-  * * lying : The degrees we're turned to while lying down or resting for any reason.
-  */
-/mob/living/proc/get_standard_pixel_y_offset(lying = 0)
-	return default_pixel_y
-
-/mob/living/proc/OpenCraftingMenu()
-	return
-
-/**
  *! Enable this one if you're enabling the butchering component. Otherwise it's useless.
 /mob/living/proc/harvest(mob/living/user) //used for extra objects etc. in butchering
 	return
@@ -1150,3 +1092,8 @@ default behaviour is:
 	else
 		throw_alert("weightless", /obj/screen/alert/weightless)
 */
+
+/mob/living/get_centering_pixel_y_offset(dir, atom/aligning)
+	. = ..()
+	// since we're shifted up by transforms..
+	. += ((size_multiplier * icon_scale_y) - 1) * 16

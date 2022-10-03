@@ -140,7 +140,7 @@
 	badness = 3
 
 /datum/disease2/effect/suicide/activate(var/mob/living/carbon/mob,var/multiplier)
-	var/datum/gender/TM = gender_datums[mob.get_visible_gender()]
+	var/datum/gender/TM = GLOB.gender_datums[mob.get_visible_gender()]
 	if(prob(25))
 		mob.visible_message("<font color='red'><b>[mob.name] is holding [TM.his] breath. It looks like [TM.his] ability to breath [TM.is] constricted!</b></font>")
 		mob.apply_damage(15, OXY)

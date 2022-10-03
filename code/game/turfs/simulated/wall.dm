@@ -110,6 +110,8 @@
 
 /turf/simulated/wall/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
+	if(TT.throw_flags & THROW_AT_IS_GENTLE)
+		return
 
 	var/tforce = AM.throw_force * TT.get_damage_multiplier()
 	if (tforce < 15)

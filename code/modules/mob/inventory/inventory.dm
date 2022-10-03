@@ -176,7 +176,7 @@
 			// this is meant to catch any potential deletions dropped can cause.
 			. = FALSE
 		else
-			if(!(I.item_flags & DROPDEL))
+			if(!(I.item_flags & ITEM_DROPDEL))
 				if(newloc == null)
 					I.moveToNullspace()
 				else if(newloc != FALSE)
@@ -239,7 +239,7 @@
 		to_chat(user, SPAN_DANGER("A deleted [I] was checked in can_unequip(). Report this entire line to coders immediately. Debug data: [I] ([REF(I)]) slot [slot] flags [flags] user [user]"))
 		to_chat(user, SPAN_DANGER("can_unequip will return TRUE to allow you to drop the item, but expect potential glitches!"))
 		return TRUE
-		
+
 	if(!slot)
 		slot = slot_by_item(I)
 
@@ -386,7 +386,7 @@
 		to_chat(user, SPAN_DANGER("A deleted [I] was checked in can_equip(). Report this entire line to coders immediately. Debug data: [I] ([REF(I)]) slot [slot] flags [flags] user [user]"))
 		to_chat(user, SPAN_DANGER("can_equip will now attempt to prevent the deleted item from being equipped. There should be no glitches."))
 		return FALSE
-		
+
 	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
 	var/self_equip = user == src
 	if(!slot_meta)

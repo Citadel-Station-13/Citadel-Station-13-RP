@@ -7,6 +7,7 @@
 	base_icon = "chair"
 	buckle_dir = 0
 	buckle_lying = 0 //force people to sit up in chairs when buckled
+	icon_dimension_y = 32
 	var/propelled = 0 // Check for fire-extinguisher-driven chairs
 
 /obj/structure/bed/chair/Initialize(mapload)
@@ -41,7 +42,12 @@
 		rotate_clockwise()
 	return
 
-/obj/structure/bed/chair/post_buckle_mob()
+/obj/structure/bed/chair/mob_buckled(mob/M, flags, mob/user, semantic)
+	. = ..()
+	update_icon()
+
+/obj/structure/bed/chair/mob_unbuckled(mob/M, flags, mob/user, semantic)
+	. = ..()
 	update_icon()
 
 /obj/structure/bed/chair/update_icon()
@@ -129,8 +135,7 @@
 	return ..(mapload, "steel", "orange")
 
 /obj/structure/bed/chair/office
-	anchored = 0
-	buckle_movable = 1
+	anchored = FALSE
 
 /obj/structure/bed/chair/office/update_icon()
 	return

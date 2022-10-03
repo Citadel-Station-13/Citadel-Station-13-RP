@@ -756,3 +756,7 @@ Swimsuits
 /datum/gear/uniform/sitri
 	name = "Sitri Striped Sweater"
 	path = /obj/item/clothing/under/sitri
+
+/datum/gear/uniform/halfmoon
+	name = "Half Moon Outfit"
+	path = /obj/item/clothing/under/half_moon

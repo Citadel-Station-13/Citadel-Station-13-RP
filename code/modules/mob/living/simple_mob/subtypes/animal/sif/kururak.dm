@@ -31,7 +31,7 @@
 	icon_rest = "bigcat_rest"
 	icon = 'icons/mob/64x64.dmi'
 
-	default_pixel_x = -16
+	base_pixel_x = -16
 	pixel_x = -16
 
 	maxHealth = 200

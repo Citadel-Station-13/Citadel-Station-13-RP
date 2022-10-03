@@ -1,7 +1,7 @@
 /turf/simulated/floor/outdoors/snow
 	name = "snow"
 	icon_state = "snow"
-	edge_blending_priority = 6
+	edge_blending_priority = 1
 	movement_cost = 2
 	initial_flooring = /decl/flooring/snow
 	baseturfs = /turf/simulated/floor/outdoors/dirt

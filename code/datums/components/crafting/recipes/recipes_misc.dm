@@ -425,7 +425,7 @@
 /*
 /datum/crafting_recipe/motorized_wheelchair
 	name = "Hoverchair"
-	result = /obj/vehicle/ridden/wheelchair/motorized
+	result = /obj/vehicle_old/ridden/wheelchair/motorized
 	reqs = list(/obj/item/stack/material/plasteel = 10,
 		/obj/item/stack/rods = 8,
 		/obj/item/stock_parts/manipulator = 2,
@@ -439,7 +439,7 @@
 */
 /datum/crafting_recipe/skateboard
 	name = "Skateboard"
-	result = /obj/vehicle/skateboard
+	result = /obj/vehicle_old/skateboard
 	time = 60
 	reqs = list(/obj/item/stack/material/steel = 5,
 				/obj/item/stack/rods = 10)
@@ -448,7 +448,7 @@
 
 /datum/crafting_recipe/scooter
 	name = "Scooter"
-	result = /obj/vehicle/skateboard/scooter
+	result = /obj/vehicle_old/skateboard/scooter
 	time = 65
 	reqs = list(/obj/item/stack/material/steel = 5,
 				/obj/item/stack/rods = 12)

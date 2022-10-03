@@ -293,7 +293,7 @@
 					hit(50)
 			return
 
-	if(W.item_flags & NOBLUDGEON)
+	if(W.item_flags & ITEM_NOBLUDGEON)
 		return
 
 	else if(istype(W, /obj/item/stack/cable_coil) && considered_reinforced && construction_state == WINDOW_STATE_UNSECURED && !istype(src, /obj/structure/window/reinforced/polarized))

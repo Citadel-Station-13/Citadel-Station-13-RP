@@ -397,9 +397,7 @@ emp_act
 
 		if(!zone)
 			visible_message("<span class='notice'>\The [O] misses [src] narrowly!</span>")
-			return
-
-		O.throwing = 0		//it hit, so stop moving
+			return COMPONENT_THROW_HIT_NEVERMIND | COMPONENT_THROW_HIT_PIERCE
 
 		var/obj/item/organ/external/affecting = get_organ(zone)
 		var/hit_area = affecting.name

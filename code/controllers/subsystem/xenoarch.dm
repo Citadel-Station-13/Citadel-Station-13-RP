@@ -109,6 +109,8 @@ SUBSYSTEM_DEF(xenoarch)
 		to_make += pick_n_take(artifact_spawning_turfs)
 
 	var/list/artifacts_spawnturf_temp = to_make.Copy()
+	LAZYCLEARLIST(artifact_spawning_turfs)
+	artifact_spawning_turfs = LAZYCOPY(to_make)
 	while(artifacts_spawnturf_temp.len)
 		var/turf/simulated/mineral/artifact_turf = artifacts_spawnturf_temp[artifacts_spawnturf_temp.len]
 		--artifacts_spawnturf_temp.len

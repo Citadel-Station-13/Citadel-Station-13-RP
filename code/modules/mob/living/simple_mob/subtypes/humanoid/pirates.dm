@@ -44,7 +44,7 @@
 
 	loot_list = list(/obj/item/material/knife/tacknife = 100)
 
-	corpse = /atom/movable/spawner/corpse/pirate/melee
+	corpse = /obj/spawner/corpse/pirate/melee
 
 	ai_holder_type = /datum/ai_holder/simple_mob/merc
 	say_list_type = /datum/say_list/pirate
@@ -60,7 +60,7 @@
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/tacknife = 100, /obj/item/clothing/accessory/armor/armorplate/stab = 100)
 
-	corpse = /atom/movable/spawner/corpse/pirate/melee_armor
+	corpse = /obj/spawner/corpse/pirate/melee_armor
 
 ///////////////////////////////
 //		Machete Priate
@@ -88,7 +88,7 @@
 
 	loot_list = list(/obj/item/material/knife/machete = 100)
 
-	corpse = /atom/movable/spawner/corpse/pirate/melee_machete
+	corpse = /obj/spawner/corpse/pirate/melee_machete
 
 //Armored Variant
 
@@ -101,7 +101,7 @@
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/machete = 100, /obj/item/clothing/accessory/armor/armorplate/stab = 100)
 
-	corpse = /atom/movable/spawner/corpse/pirate/melee_machete_armor
+	corpse = /obj/spawner/corpse/pirate/melee_machete_armor
 
 ///////////////////////////////
 //		E-Sword Priate
@@ -124,7 +124,7 @@
 
 	loot_list = list(/obj/item/melee/energy/sword/pirate = 100)
 
-	corpse = /atom/movable/spawner/corpse/pirate/melee_energy
+	corpse = /obj/spawner/corpse/pirate/melee_energy
 
 //Armored Variant
 /mob/living/simple_mob/humanoid/pirate/las/armored
@@ -136,7 +136,7 @@
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/melee/energy/sword/pirate = 100, /obj/item/clothing/accessory/armor/armorplate/stab = 100)
 
-	corpse = /atom/movable/spawner/corpse/pirate/melee_energy_armor
+	corpse = /obj/spawner/corpse/pirate/melee_energy_armor
 
 
 ///////////////////////////////
@@ -148,7 +148,7 @@
 	icon_state = "piratemelee-shield"
 	icon_living = "piratemelee-shield"
 
-	corpse = /atom/movable/spawner/corpse/pirate/melee_shield
+	corpse = /obj/spawner/corpse/pirate/melee_shield
 
 //This Should Allow all childs of the shield priate to block
 /mob/living/simple_mob/humanoid/pirate/shield/attackby(var/obj/item/O as obj, var/mob/user as mob)
@@ -184,7 +184,7 @@
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/tacknife = 100, /obj/item/shield/riot/tower = 100)
 
-	corpse = /atom/movable/spawner/corpse/pirate/melee_shield_armor
+	corpse = /obj/spawner/corpse/pirate/melee_shield_armor
 
 ///////////////////////////////
 //	Shield Machete Pirate
@@ -210,7 +210,7 @@
 
 	loot_list = list(/obj/item/material/knife/machete = 100)
 
-	corpse = /atom/movable/spawner/corpse/pirate/melee_shield_machete
+	corpse = /obj/spawner/corpse/pirate/melee_shield_machete
 
 // Armored Variant
 /mob/living/simple_mob/humanoid/pirate/shield/machete/armored
@@ -222,7 +222,7 @@
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/machete = 100, /obj/item/shield/riot/tower = 100)
 
-	corpse = /atom/movable/spawner/corpse/pirate/melee_shield_machete_armor
+	corpse = /obj/spawner/corpse/pirate/melee_shield_machete_armor
 
 ///////////////////////////////
 //		Pirate Pistolier
@@ -246,7 +246,7 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged
 
-	corpse = /atom/movable/spawner/corpse/pirate/ranged
+	corpse = /obj/spawner/corpse/pirate/ranged
 
 
 //Armored Variant
@@ -259,7 +259,7 @@
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/tacknife = 100, /obj/item/gun/projectile/pirate = 100, /obj/item/clothing/accessory/armor/armorplate/bulletproof = 100)
 
-	corpse = /atom/movable/spawner/corpse/pirate/ranged_armor
+	corpse = /obj/spawner/corpse/pirate/ranged_armor
 
 ///////////////////////////////
 //		Pirate Blunderbuster
@@ -283,7 +283,7 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive
 
-	corpse = /atom/movable/spawner/corpse/pirate/ranged_blunderbuss
+	corpse = /obj/spawner/corpse/pirate/ranged_blunderbuss
 
 //Armored Variant
 /mob/living/simple_mob/humanoid/pirate/ranged/shotgun/armored
@@ -295,7 +295,7 @@
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/tacknife = 100, /obj/item/gun/projectile/shotgun/doublebarrel/sawn = 100, /obj/item/clothing/accessory/armor/armorplate/bulletproof = 100)
 
-	corpse = /atom/movable/spawner/corpse/pirate/ranged_blunderbuss_armor
+	corpse = /obj/spawner/corpse/pirate/ranged_blunderbuss_armor
 
 ///////////////////////////////
 //		Pirate Ziplas
@@ -319,7 +319,7 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive
 
-	corpse = /atom/movable/spawner/corpse/pirate/ranged_laser
+	corpse = /obj/spawner/corpse/pirate/ranged_laser
 
 //Armored Variant
 /mob/living/simple_mob/humanoid/pirate/ranged/handcannon/armored
@@ -331,7 +331,7 @@
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/tacknife = 100, /obj/item/gun/energy/zip = 100, /obj/item/clothing/accessory/armor/armorplate/bulletproof = 100)
 
-	corpse = /atom/movable/spawner/corpse/pirate/ranged_laser_armor
+	corpse = /obj/spawner/corpse/pirate/ranged_laser_armor
 
 ///////////////////////////////
 //		First Mate
@@ -354,7 +354,7 @@
 
 	loot_list = list(/obj/item/melee/energy/sword/pirate = 100, /obj/item/clothing/suit/armor/riot/alt = 100)
 
-	corpse = /atom/movable/spawner/corpse/pirate/mate
+	corpse = /obj/spawner/corpse/pirate/mate
 
 ///////////////////////////////
 //		Mate Pistolier
@@ -384,7 +384,7 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged
 
-	corpse = /atom/movable/spawner/corpse/pirate/mate/pistol
+	corpse = /obj/spawner/corpse/pirate/mate/pistol
 
 /mob/living/simple_mob/humanoid/pirate/mate/ranged/bosun /// Special Mech Pilot Pirate
 	name = "Bosun"
@@ -395,7 +395,7 @@
 
 	loot_list = list(/obj/item/gun/energy/retro = 100, /obj/item/clothing/suit/armor/riot/alt = 100)
 
-	corpse = /atom/movable/spawner/corpse/pirate/bosun
+	corpse = /obj/spawner/corpse/pirate/bosun
 
 ///////////////////////////////
 //		Mate Sweeper
@@ -423,7 +423,7 @@
 
 	loot_list = list(/obj/item/gun/projectile/shotgun/doublebarrel/quad = 100, /obj/item/clothing/suit/armor/riot/alt = 100)
 
-	corpse = /atom/movable/spawner/corpse/pirate/mate/shotgun
+	corpse = /obj/spawner/corpse/pirate/mate/shotgun
 
 ///////////////////////////////
 //		Mate Marksman
@@ -451,7 +451,7 @@
 
 	loot_list = list(/obj/item/gun/projectile/shotgun/pump/rifle = 100, /obj/item/clothing/suit/armor/riot/alt = 100)
 
-	corpse = /atom/movable/spawner/corpse/pirate/mate/rifle
+	corpse = /obj/spawner/corpse/pirate/mate/rifle
 
 ///////////////////////////////
 //		Pirate Captain
@@ -471,7 +471,7 @@
 	projectilesound = 'sound/weapons/weaponsounds_laserstrong.ogg'
 	base_attack_cooldown = 5
 
-	corpse = /atom/movable/spawner/corpse/pirate/captain
+	corpse = /obj/spawner/corpse/pirate/captain
 
 	loot_list = list(/obj/item/gun/energy/zip = 100, /obj/item/gun/energy/zip = 100, /obj/item/gun/energy/zip = 100, /obj/item/gun/energy/zip = 100) //Belt of pistols
 
@@ -761,7 +761,7 @@
 	projectilesound = 'sound/weapons/weaponsounds_laserstrong.ogg'
 	base_attack_cooldown = 5
 
-	//corpse = /atom/movable/spawner/corpse/pirate/ranged
+	//corpse = /obj/spawner/corpse/pirate/ranged
 
 	loot_list = list(/obj/item/gun/energy/zip = 100, /obj/item/gun/energy/zip = 100, /obj/item/gun/energy/zip = 100, /obj/item/gun/energy/zip = 100) //Belt of pistols
 

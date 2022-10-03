@@ -5,6 +5,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
+"ag" = (
+/obj/structure/cable{
+	icon_state = "1-5"
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/outpost/mining_main/outpost/substation)
 "ah" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/cable/heavyduty{
@@ -32,8 +38,6 @@
 /area/rift/exterior/checkpoint/south)
 "ar" = (
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -104,8 +108,6 @@
 /area/rift/facility/interior/surface)
 "aL" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
@@ -122,8 +124,6 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -198,8 +198,6 @@
 /area/rnd/outpost/storage)
 "bj" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
@@ -413,8 +411,6 @@
 /area/rift/facility/interior/surface)
 "ck" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -467,8 +463,6 @@
 /area/rnd/outpost/atmospherics)
 "cy" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -512,8 +506,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -647,8 +639,6 @@
 /area/rnd/outpost/storage)
 "dd" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -670,8 +660,6 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/corner/purple{
@@ -688,8 +676,6 @@
 /area/outpost/mining_main/outpost)
 "dr" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -832,8 +818,6 @@
 	dir = 1
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -867,13 +851,9 @@
 /area/rift/surfacebase/outside/west)
 "ek" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -883,6 +863,13 @@
 /obj/machinery/meter,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
+"em" = (
+/obj/structure/lattice,
+/obj/structure/cable{
+	icon_state = "32-2"
+	},
+/turf/simulated/open,
+/area/outpost/mining_main/outpost/substation)
 "en" = (
 /obj/machinery/air_sensor{
 	frequency = 1445;
@@ -901,8 +888,6 @@
 /area/rift/exterior/nuketown)
 "ep" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -927,8 +912,6 @@
 /area/rift/exterior/nuketown/interior)
 "eA" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -983,8 +966,6 @@
 /area/rnd/outpost)
 "eL" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -1052,6 +1033,10 @@
 "fe" = (
 /obj/random/multiple/underdark/treasure,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/rift/surfacebase/outside/west)
+"fh" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
 "fj" = (
 /obj/machinery/power/apc/alarms_hidden{
@@ -1143,8 +1128,6 @@
 	dir = 1
 	},
 /obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -1268,8 +1251,6 @@
 /area/rnd/outpost/heating)
 "gl" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -1339,13 +1320,9 @@
 	dir = 6
 	},
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
@@ -1412,8 +1389,6 @@
 /area/rnd/outpost/anomaly_lab)
 "gO" = (
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -1439,8 +1414,6 @@
 /area/rnd/outpost/heating)
 "gW" = (
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1470,17 +1443,17 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "ha" = (
-/obj/structure/cable{
-	d1 = 32;
-	d2 = 2;
-	icon_state = "32-2"
-	},
-/obj/structure/lattice,
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/open,
-/area/outpost/mining_main/outpost)
+/obj/structure/cable{
+	icon_state = "2-6"
+	},
+/obj/structure/cable{
+	icon_state = "4-10"
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/outpost/mining_main/outpost/substation)
 "hb" = (
 /obj/effect/overlay/snow/floor,
 /obj/effect/overlay/snow/floor,
@@ -1562,8 +1535,6 @@
 	dir = 9
 	},
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/structure/anomaly_container,
@@ -1678,8 +1649,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor/border_only{
@@ -1703,6 +1672,9 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
+"ib" = (
+/turf/simulated/shuttle/wall/voidcraft,
+/area/turbolift/rwest_mining/surface)
 "ie" = (
 /obj/structure/table/rack,
 /obj/item/clothing/suit/bio_suit/anomaly,
@@ -1750,8 +1722,6 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/border_only{
@@ -1764,8 +1734,6 @@
 /area/rnd/outpost/anomaly_lab/storage)
 "iu" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -1852,18 +1820,12 @@
 /area/rift/surfacebase/outside/west)
 "iR" = (
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/lythios43c,
@@ -1952,8 +1914,6 @@
 /area/rift/surfacebase/outside/west)
 "jl" = (
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -2006,8 +1966,6 @@
 /area/rnd/outpost/airlock)
 "jv" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled,
@@ -2042,13 +2000,9 @@
 /area/rift/exterior/mineshaft)
 "jC" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/effect/floor_decal/borderfloor/corner{
@@ -2104,7 +2058,6 @@
 /area/rnd/outpost/testing_lab)
 "jT" = (
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
@@ -2201,8 +2154,6 @@
 /area/rnd/outpost)
 "kt" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -2226,7 +2177,6 @@
 	pixel_x = 28
 	},
 /obj/structure/cable/yellow{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/lythios43c,
@@ -2355,8 +2305,6 @@
 /area/rift/surfacebase/outside/west)
 "lc" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -2432,13 +2380,17 @@
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
 "lz" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "0-2"
+	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+	icon_state = "0-5"
+	},
+/obj/structure/cable{
+	icon_state = "1-5"
 	},
 /turf/simulated/floor/lythios43c/indoors,
-/area/outpost/mining_main/outpost)
+/area/outpost/mining_main/outpost/substation)
 "lC" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1
@@ -2508,8 +2460,6 @@
 	sensors = list("burn_sensor"="Burn Chamber Sensor")
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/white,
@@ -2606,8 +2556,6 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
@@ -2771,8 +2719,6 @@
 /area/rift/facility/exterior)
 "na" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -2789,8 +2735,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/effect/floor_decal/corner/purple{
@@ -2818,8 +2762,6 @@
 	dir = 1
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/white,
@@ -2855,8 +2797,6 @@
 /area/rift/facility/interior/surface)
 "nt" = (
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled,
@@ -2904,8 +2844,6 @@
 /area/rnd/outpost/anomaly_lab/airlock)
 "nI" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -2923,13 +2861,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled,
@@ -2972,8 +2906,6 @@
 /area/rnd/outpost/anomaly_lab)
 "nX" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals6{
@@ -3005,8 +2937,6 @@
 /area/rift/surfacebase/outside/west)
 "oe" = (
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -3016,8 +2946,6 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/corner/purple/full{
@@ -3028,6 +2956,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
+"of" = (
+/obj/machinery/door/airlock/lift,
+/turf/simulated/shuttle/floor/voidcraft/lythios43c,
+/area/turbolift/rwest_mining/surface)
 "og" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -3077,13 +3009,9 @@
 	dir = 4
 	},
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -3122,13 +3050,9 @@
 /area/rift/surfacebase/outside/west)
 "oC" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -3201,13 +3125,9 @@
 	dir = 4
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -3235,7 +3155,6 @@
 /obj/item/stack/flag/yellow,
 /obj/item/pickaxe,
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{
@@ -3286,13 +3205,9 @@
 /area/rift/exterior/checkpoint/south)
 "pu" = (
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/borderfloor/corner{
@@ -3374,8 +3289,6 @@
 	dir = 9
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -3466,6 +3379,9 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
+"pS" = (
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/turbolift/rwest_mining/surface)
 "pV" = (
 /obj/structure/table/steel,
 /obj/item/measuring_tape,
@@ -3495,7 +3411,6 @@
 	dir = 8
 	},
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
@@ -3532,8 +3447,6 @@
 	dir = 6
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -3616,8 +3529,6 @@
 /area/rift/facility/exterior/shuttle)
 "qO" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/industrial/danger{
@@ -3700,7 +3611,6 @@
 "rd" = (
 /obj/machinery/power/solar,
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -3746,8 +3656,6 @@
 /area/rnd/outpost/atmospherics)
 "rq" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -3906,6 +3814,10 @@
 /obj/structure/fence/door/opened,
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/exterior/bunker)
+"rY" = (
+/obj/effect/floor_decal/industrial/warning/dust,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "sc" = (
 /obj/machinery/camera/network/research_outpost{
 	dir = 8
@@ -4000,8 +3912,6 @@
 	dir = 8
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -4028,8 +3938,6 @@
 /area/rift/facility/exterior)
 "sK" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -4154,8 +4062,6 @@
 	dir = 6
 	},
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled,
@@ -4190,13 +4096,9 @@
 /area/rift/surfacebase/outside/west)
 "tl" = (
 /obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/structure/closet/crate/solar,
@@ -4297,8 +4199,6 @@
 "tJ" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner,
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -4462,7 +4362,6 @@
 /area/tether/outpost/solars_outside)
 "us" = (
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/structure/cable/yellow,
@@ -4490,13 +4389,9 @@
 /area/rift/exterior/nuketown)
 "uw" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -4520,8 +4415,6 @@
 "uB" = (
 /obj/item/stool,
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor,
@@ -4752,8 +4645,6 @@
 /area/rnd/outpost/anomaly_lab/analysis)
 "vo" = (
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/machinery/alarm{
@@ -4823,7 +4714,6 @@
 	pixel_x = -28
 	},
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/atmospherics/component/binary/pump/on{
@@ -4863,8 +4753,6 @@
 	name = "Science Outpost EVA"
 	},
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
@@ -4887,8 +4775,6 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -4989,8 +4875,6 @@
 	dir = 5
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/visible{
@@ -5027,8 +4911,6 @@
 /area/rnd/outpost/mixing)
 "wF" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/glass_external{
@@ -5104,7 +4986,6 @@
 	pixel_x = 24
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor,
@@ -5147,8 +5028,6 @@
 /area/rift/exterior/nuketown)
 "xg" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -5206,8 +5085,6 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
@@ -5222,8 +5099,6 @@
 	dir = 9
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -5246,8 +5121,6 @@
 /area/rnd/outpost)
 "xw" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -5340,8 +5213,6 @@
 /area/rnd/outpost/airlock)
 "yb" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -5416,8 +5287,6 @@
 	req_one_access = list(18,47)
 	},
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -5439,8 +5308,6 @@
 "yt" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -5812,10 +5679,10 @@
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/heavyduty{
-	icon_state = "0-2"
+	icon_state = "1-2"
 	},
-/turf/simulated/floor/lythios43c,
-/area/outpost/mining_main/outpost)
+/turf/simulated/floor,
+/area/outpost/mining_main/outpost/substation)
 "AD" = (
 /turf/simulated/wall/r_wall,
 /area/rnd/outpost/chamber)
@@ -5848,8 +5715,6 @@
 	dir = 1
 	},
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor,
@@ -5984,8 +5849,6 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -6007,8 +5870,6 @@
 /area/rnd/outpost)
 "BG" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -6034,8 +5895,6 @@
 /area/rift/surfacebase/outside/west)
 "BN" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -6096,13 +5955,9 @@
 /area/rift/surfacebase/outside/west)
 "Cb" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -6140,8 +5995,6 @@
 	id_tag = "sci_outpost_pump"
 	},
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -6273,8 +6126,6 @@
 /area/rift/facility/exterior/shuttle)
 "Dc" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/industrial/danger{
@@ -6355,8 +6206,6 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
@@ -6452,8 +6301,6 @@
 	dir = 9
 	},
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled,
@@ -6464,7 +6311,6 @@
 /area/rift/surfacebase/outside/west)
 "DT" = (
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{
@@ -6494,6 +6340,18 @@
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/exterior/nuketown)
+"Ec" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 5
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "Ee" = (
 /obj/effect/overlay/snow/floor/grav_edges{
 	dir = 8
@@ -6502,8 +6360,6 @@
 /area/rift/exterior/bunker)
 "Ei" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -6513,8 +6369,6 @@
 /area/tether/outpost/solars_outside)
 "Em" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor/glass{
@@ -6538,13 +6392,9 @@
 	dir = 1
 	},
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -6559,8 +6409,6 @@
 /area/rift/exterior/nuketown/interior)
 "Ew" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/borderfloor,
@@ -6646,7 +6494,6 @@
 	pixel_x = 28
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -6656,9 +6503,11 @@
 	dir = 4
 	},
 /obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/heavyduty{
 	icon_state = "2-8"
 	},
-/obj/structure/cable/heavyduty,
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west)
 "Fb" = (
@@ -6742,7 +6591,6 @@
 	dir = 6
 	},
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
@@ -6782,8 +6630,6 @@
 /area/rift/facility/exterior)
 "FF" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/supply{
@@ -6810,8 +6656,6 @@
 	dir = 10
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -6836,6 +6680,21 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/outpost/chamber)
+"FO" = (
+/obj/structure/cable{
+	icon_state = "2-10"
+	},
+/obj/structure/cable{
+	icon_state = "8-10"
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/outpost/mining_main/outpost/substation)
+"FP" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "FR" = (
 /obj/structure/salvageable/machine_os,
 /obj/effect/overlay/snow/floor,
@@ -6847,8 +6706,6 @@
 /area/rift/exterior/bunker)
 "Gb" = (
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -6897,8 +6754,6 @@
 /area/rift/surfacebase/outside/west)
 "Gl" = (
 /obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -6963,8 +6818,6 @@
 /area/rift/exterior/checkpoint/south)
 "Gz" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -6989,8 +6842,6 @@
 /area/rift/exterior/nuketown/interior)
 "GE" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -7029,8 +6880,6 @@
 /area/rnd/outpost/heating)
 "GM" = (
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -7095,8 +6944,6 @@
 "GT" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/grille,
@@ -7117,8 +6964,6 @@
 	dir = 8
 	},
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/visible{
@@ -7191,15 +7036,16 @@
 	pixel_x = 24
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/outpost/testing_lab)
 "HK" = (
-/obj/machinery/door/airlock/maintenance/engi,
+/obj/machinery/door/airlock/maintenance/engi{
+	req_one_access = list(10,48)
+	},
 /turf/simulated/floor/lythios43c/indoors,
-/area/outpost/mining_main/outpost)
+/area/outpost/mining_main/outpost/substation)
 "HM" = (
 /obj/machinery/alarm{
 	dir = 8;
@@ -7215,15 +7061,12 @@
 "HO" = (
 /obj/machinery/power/tracker,
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/lythios43c,
 /area/tether/outpost/solars_outside)
 "HR" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
@@ -7269,7 +7112,6 @@
 	icon_state = "0-4"
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor,
@@ -7312,8 +7154,6 @@
 	dir = 8
 	},
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/white,
@@ -7353,13 +7193,9 @@
 /area/rift/exterior/mineshaft)
 "It" = (
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -7388,8 +7224,6 @@
 /area/rift/exterior/nuketown/interior)
 "IA" = (
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -7411,8 +7245,6 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -7459,8 +7291,6 @@
 /area/rnd/outpost/chamber)
 "IT" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/lythios43c,
@@ -7471,6 +7301,9 @@
 /obj/machinery/camera/network/research_outpost,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
+"IV" = (
+/turf/simulated/shuttle/floor/voidcraft/lythios43c,
+/area/turbolift/rwest_mining/surface)
 "IY" = (
 /turf/unsimulated/wall/planetary/lythios43c{
 	desc = "Glacial permafrost, compacted harder than stone.";
@@ -7533,8 +7366,6 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/glass_science{
@@ -7570,8 +7401,6 @@
 /area/rift/exterior/nuketown)
 "JD" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/borderfloor/corner{
@@ -7621,8 +7450,6 @@
 	dir = 8
 	},
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -7633,15 +7460,12 @@
 	pixel_y = -28
 	},
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor,
 /area/tether/outpost/solars_shed)
 "JV" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/machinery/hologram/holopad,
@@ -7671,13 +7495,9 @@
 /area/rnd/outpost/storage)
 "Ka" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor,
@@ -7707,8 +7527,6 @@
 /area/rift/facility/exterior)
 "Kg" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -7819,16 +7637,12 @@
 /area/rift/facility/exterior/shuttle)
 "Kr" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 1
 	},
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled,
@@ -7971,13 +7785,9 @@
 	dir = 4
 	},
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -8027,8 +7837,6 @@
 	dir = 5
 	},
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -8223,7 +8031,6 @@
 	dir = 1
 	},
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor,
@@ -8277,8 +8084,6 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
@@ -8323,8 +8128,6 @@
 /area/rnd/outpost/mixing)
 "MN" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -8354,8 +8157,6 @@
 /area/rift/facility/exterior)
 "MP" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/railing,
@@ -8363,7 +8164,6 @@
 	dir = 4
 	},
 /obj/structure/cable/yellow{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/sensor{
@@ -8382,8 +8182,6 @@
 /area/rnd/outpost/testing_lab)
 "MX" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -8427,8 +8225,6 @@
 /area/rnd/outpost/atmos)
 "Ne" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -8463,13 +8259,9 @@
 /area/rnd/outpost/breakroom)
 "Nl" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -8554,8 +8346,6 @@
 /obj/structure/table/standard,
 /obj/item/clothing/gloves/yellow,
 /obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor,
@@ -8683,8 +8473,6 @@
 /area/rnd/outpost/breakroom)
 "Ot" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/alarm{
@@ -8744,8 +8532,6 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
@@ -8768,8 +8554,6 @@
 /area/tether/outpost/solars_outside)
 "ON" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -8779,14 +8563,10 @@
 /area/rnd/outpost)
 "OP" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled,
@@ -8814,8 +8594,6 @@
 /area/rnd/outpost/mixing)
 "Pc" = (
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -8916,7 +8694,7 @@
 /area/maintenance/substation/outpost)
 "Pq" = (
 /turf/simulated/wall,
-/area/outpost/mining_main/outpost)
+/area/outpost/mining_main/outpost/substation)
 "Ps" = (
 /obj/effect/floor_decal/spline/fancy{
 	dir = 5
@@ -8949,8 +8727,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -8979,13 +8755,9 @@
 /area/rift/surfacebase/outside/west)
 "PG" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -9095,13 +8867,9 @@
 /area/rift/exterior/mineshaft)
 "Qj" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -9230,8 +8998,6 @@
 	icon_state = "1-2"
 	},
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled,
@@ -9264,8 +9030,6 @@
 	dir = 6
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
@@ -9314,13 +9078,9 @@
 /area/rift/surfacebase/outside/west)
 "Rf" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals6{
@@ -9339,8 +9099,6 @@
 	dir = 4
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -9362,8 +9120,6 @@
 /area/rnd/outpost/storage)
 "Rn" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -9479,8 +9235,6 @@
 /area/rnd/outpost/anomaly_lab/airlock)
 "RX" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -9516,8 +9270,6 @@
 /area/rnd/outpost)
 "RY" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals6{
@@ -9573,8 +9325,6 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
@@ -9619,7 +9369,6 @@
 	pixel_y = 28
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -9631,8 +9380,6 @@
 /area/rift/exterior/nuketown/interior)
 "Sx" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -9667,8 +9414,6 @@
 	dir = 5
 	},
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -9762,8 +9507,6 @@
 /area/rift/exterior/nuketown/interior)
 "Tk" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -9799,8 +9542,6 @@
 /area/outpost/mining_main/outpost)
 "Tq" = (
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -9937,8 +9678,6 @@
 /area/rift/facility/exterior)
 "TW" = (
 /obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/structure/closet/crate/solar,
@@ -9982,13 +9721,9 @@
 /area/rift/exterior/mineshaft)
 "Ud" = (
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -10080,8 +9815,6 @@
 /area/rift/facility/exterior/shuttle)
 "Ut" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -10145,18 +9878,24 @@
 "UE" = (
 /obj/structure/table/standard,
 /obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/item/stack/cable_coil/yellow,
 /obj/machinery/cell_charger,
 /turf/simulated/floor,
 /area/tether/outpost/solars_shed)
+"UM" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "UT" = (
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled,
@@ -10172,13 +9911,9 @@
 	dir = 1
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/effect/floor_decal/industrial/danger{
@@ -10200,13 +9935,9 @@
 /area/rift/surfacebase/outside/west)
 "UX" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -10249,8 +9980,6 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
@@ -10290,8 +10019,6 @@
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/purple/bordercorner,
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -10323,6 +10050,12 @@
 "VF" = (
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/exterior/bunker)
+"VH" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "VI" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow,
 /turf/simulated/floor/tiled,
@@ -10348,8 +10081,11 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/surface)
 "VW" = (
+/obj/structure/cable{
+	icon_state = "1-9"
+	},
 /turf/simulated/floor/lythios43c/indoors,
-/area/outpost/mining_main/outpost)
+/area/outpost/mining_main/outpost/substation)
 "VX" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -10428,8 +10164,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled,
@@ -10505,8 +10239,6 @@
 /area/maintenance/substation/outpost)
 "WU" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/borderfloor/corner{
@@ -10548,8 +10280,6 @@
 	dir = 10
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -10597,8 +10327,6 @@
 /area/rnd/outpost/storage)
 "Xs" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/hologram/holopad,
@@ -10612,8 +10340,6 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/white,
@@ -10679,16 +10405,12 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "XK" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -10763,13 +10485,9 @@
 /area/rift/exterior/nuketown)
 "XX" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -10837,8 +10555,6 @@
 /area/rnd/outpost/mixing)
 "Yv" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -10914,8 +10630,6 @@
 /area/rnd/outpost/breakroom)
 "YM" = (
 /obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/light/small{
@@ -10946,8 +10660,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor/glass/hidden{
@@ -11017,13 +10729,9 @@
 "Zp" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -11031,8 +10739,6 @@
 "Zq" = (
 /obj/structure/grille,
 /obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/structure/window/reinforced/full,
@@ -11062,13 +10768,9 @@
 /area/rnd/outpost/anomaly_lab/storage)
 "ZC" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -40967,8 +40669,8 @@ Do
 sv
 sv
 Pq
-VW
-VW
+em
+ag
 Pq
 sv
 sv
@@ -41355,7 +41057,7 @@ eZ
 sv
 sv
 Pq
-VW
+FO
 VW
 Pq
 sv
@@ -42315,8 +42017,8 @@ Oc
 Oc
 Oc
 Oc
-RE
-RE
+lb
+lb
 RE
 mX
 Do
@@ -42509,8 +42211,8 @@ sv
 sv
 sv
 sv
-sv
-sv
+FP
+FP
 sv
 sv
 sv
@@ -42703,8 +42405,8 @@ sv
 sv
 sv
 sv
-sv
-sv
+VH
+rY
 sv
 sv
 sv
@@ -42897,14 +42599,14 @@ Yd
 Yd
 Yd
 Yd
-Yd
-Yd
-lb
-lb
-lb
-lb
-lb
-lb
+cU
+fh
+pS
+ib
+ib
+ib
+ib
+pS
 sv
 sv
 sv
@@ -43091,14 +42793,14 @@ Yd
 Yd
 Yd
 Yd
-Yd
-Yd
+cU
 lb
-lb
-lb
-lb
-lb
-lb
+ib
+IV
+IV
+IV
+IV
+ib
 Yd
 Yd
 sv
@@ -43285,14 +42987,14 @@ Yd
 Yd
 Yd
 Yd
-Yd
-Yd
+cU
 lb
-lb
-lb
-lb
-lb
-lb
+of
+IV
+IV
+IV
+IV
+ib
 Yd
 Yd
 Yd
@@ -43479,14 +43181,14 @@ Yd
 Yd
 Yd
 Yd
-Yd
-Yd
+cU
 lb
-lb
-lb
-lb
-lb
-lb
+of
+IV
+IV
+IV
+IV
+ib
 Yd
 Yd
 Yd
@@ -43673,14 +43375,14 @@ Yd
 Yd
 Yd
 Yd
-Yd
-Yd
+cU
 lb
-lb
-lb
-lb
-lb
-lb
+ib
+IV
+IV
+IV
+IV
+ib
 Yd
 Yd
 Yd
@@ -43867,14 +43569,14 @@ Yd
 Yd
 Yd
 Yd
-Yd
-Yd
-lb
-lb
-lb
-lb
-lb
-lb
+Ec
+UM
+pS
+ib
+ib
+ib
+ib
+pS
 Yd
 Yd
 Yd

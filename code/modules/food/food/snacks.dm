@@ -6643,3 +6643,16 @@ END CITADEL CHANGE */
 	. = ..()
 	reagents.add_reagent("protein", 7)
 	bitesize = 2
+	
+/obj/item/reagent_containers/food/snacks/brainsnax
+	name = "Brainsnax"
+	desc = "A green can, filled to the brim with vatgrown brain matter, in all its juicy glory. Rich in lymbic system!"
+	icon_state = "brainsnaxopen"
+	trash = /obj/item/trash/brainsnaxtrash
+	nutriment_amt = 5
+	nutriment_desc = list("protein" = 3, "iron" = 2)
+
+/obj/item/reagent_containers/food/snacks/bugsnacks/Initialize(mapload)
+	. = ..()
+	bitesize = 2
+	

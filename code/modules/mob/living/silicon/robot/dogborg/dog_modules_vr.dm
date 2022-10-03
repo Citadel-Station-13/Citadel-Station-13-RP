@@ -54,7 +54,7 @@
 	icon_state = "nose"
 	desc = "The BOOP module, a simple reagent and atmosphere sniffer."
 	force = 0
-	item_flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 	throw_force = 0
 	attack_verb = list("nuzzled", "nosed", "booped")
 	w_class = ITEMSIZE_TINY
@@ -175,7 +175,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "synthtongue"
 	hitsound = 'sound/effects/attackblob.ogg'
-	item_flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 	var/emagged = 0
 	var/datum/matter_synth/water = null
 
@@ -291,7 +291,7 @@
 	desc = "Toggles floor scrubbing."
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "scrub0"
-	item_flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 	var/enabled = FALSE
 
 /obj/item/pupscrubber/attack_self(mob/user)
@@ -364,8 +364,8 @@
 	icon_state = "pounce"
 	desc = "Leap at your target to momentarily stun them."
 	force = 0
+	item_flags = ITEM_NOBLUDGEON
 	throw_force = 0
-	item_flags = NOBLUDGEON
 
 /obj/item/dogborg/pounce/attack_self(mob/user)
 	var/mob/living/silicon/robot/R = user
@@ -410,7 +410,7 @@
 	src.visible_message("<span class='danger'>\The [src] leaps at [T]!</span>")
 	src.throw_at_old(get_step(get_turf(T),get_turf(src)), 4, 1, src)
 	playsound(src.loc, 'sound/mecha/mechstep2.ogg', 50, 1)
-	pixel_y = default_pixel_y
+	pixel_y = base_pixel_y
 	cell.charge -= 750
 
 	sleep(5)

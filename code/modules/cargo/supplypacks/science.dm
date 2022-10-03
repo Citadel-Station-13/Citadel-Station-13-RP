@@ -97,7 +97,7 @@
 /datum/supply_pack/sci/dune_buggy
 	name = "Exploration Dune Buggy"
 	contains = list(
-			/obj/vehicle/train/rover/engine/dunebuggy
+			/obj/vehicle_old/train/rover/engine/dunebuggy
 			)
 	cost = 100
 	container_type = /obj/structure/largecrate
