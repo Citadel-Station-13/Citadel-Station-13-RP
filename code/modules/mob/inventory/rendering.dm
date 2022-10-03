@@ -61,6 +61,7 @@
 	/// Works similarly to worn sprite_sheets, except the alternate sprites are used when the clothing/refit_for_species() proc is called.
 	var/list/sprite_sheets_obj = list()
 
+	#warn deal with these two; they need to fit with neb's
 	//! vv/map only
 	/// when set, use this state always when in a specific slot id or just in general; list or state
 	VAR_PRIVATE/list/mob_state_override
@@ -79,6 +80,9 @@
 	var/inhand_x_dimension
 	/// dimensions of inhand sprites
 	var/inhand_y_dimension
+
+	//! NEW RENDERING SYSTEM (to be used by all new content tm)
+	#warn finish; inhands, worn icon diffentiation, etc
 
 /obj/item/proc/render_mob_appearance(mob/M, slot_id_or_hand_index, bodytype = BODYTYPE_STRING_DEFAULT)
 	SHOULD_NOT_OVERRIDE(TRUE) // if you think you need to, rethink.

@@ -573,15 +573,16 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		var/obj/item/clothing/suit/S = wear_suit
 		if((wear_suit?.flags_inv & HIDETAIL) || (istype(S) && S.taurized)) // Reasons to not mask: 1. If you're wearing a suit that hides the tail or if you're wearing a taurized suit.
 			c_mask = null
-	var/mutable_appearance/MA = w_uniform.render_mob_appearance(src, SLOT_ID_UNIFORM, species.get_effective_bodytype())
+	var/list/MA_or_list = w_uniform.render_mob_appearance(src, SLOT_ID_UNIFORM, species.get_effective_bodytype())
 
 	if(c_mask)
-		if(islist(MA))
-			for(var/mutable_appearance/MA2 as anything in MA)
+		if(islist(MA_or_list))
+			for(var/mutable_appearance/MA2 as anything in MA_or_list)
 				MA2.filters += filter(type = "alpha", icon = c_mask)
 		else
+			var/mutable_appearance/MA = MA_or_list
 			MA.filters += filter(type = "alpha", icon = c_mask)
-	overlays_standing[UNIFORM_LAYER] = MA
+	overlays_standing[UNIFORM_LAYER] = MA_or_list
 
 	apply_layer(UNIFORM_LAYER)
 
@@ -759,14 +760,15 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	var/obj/item/suit/S = wear_suit
 	if(tail_is_rendered && valid_clip_mask && !(istype(S) && S.taurized)) //Clip the lower half of the suit off using the tail's clip mask for taurs since taur bodies aren't hidden.
 		c_mask = valid_clip_mask
-	var/mutable_appearance/MA = wear_suit.render_mob_appearance(src, SLOT_ID_SUIT, species.get_effective_bodytype())
+	var/list/MA_or_list = wear_suit.render_mob_appearance(src, SLOT_ID_SUIT, species.get_effective_bodytype())
 	if(c_mask)
-		if(islist(MA))
-			for(var/mutable_appearance/MA2 as anything in MA)
+		if(islist(MA_or_list))
+			for(var/mutable_appearance/MA2 as anything in MA_or_list)
 				MA2.filters += filter(type = "alpha", icon = c_mask)
 		else
+			var/mutable_appearance/MA = MA_or_list
 			MA.filters += filter(type = "alpha", icon = c_mask)
-	overlays_standing[SUIT_LAYER] = MA
+	overlays_standing[SUIT_LAYER] = MA_or_list
 
 	apply_layer(SUIT_LAYER)
 
