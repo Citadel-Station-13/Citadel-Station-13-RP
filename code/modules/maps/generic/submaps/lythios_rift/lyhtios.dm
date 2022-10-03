@@ -14,8 +14,12 @@
 	name = "Rift Content"
 	desc = "Bring a coat!"
 	allow_duplicates = FALSE
+	prefix = "_maps/submaps/lythios_rift/admin_spawn/"
 
-/datum/map_template/submap/level_specific/rift/admin_spawn
+/datum/map_template/submap/level_specific/rift/admin_spawn_1
+	name = "Blank 5x5 building"
+	desc = "A blank 5x5 building with lythios atmos"
+	suffix = "blank_5by5.dmm"
 
 // 'Normal' templates get used on the bottom half, and should be safer.
 /datum/map_template/submap/level_specific/rift/west_caves
@@ -87,12 +91,27 @@
 	cost = 1
 	allow_duplicates = TRUE
 
-// 'Deep' templates get used on the top half, and should be more dangerous and rewarding.
+// 'Deep' templates get used on the mid part, and should be mildly more dangerous and rewarding.
 /datum/map_template/submap/level_specific/rift/west_deep
+	prefix = "_maps/submaps/lythios_rift/deep_caves/"
 
-// 'Deep' templates get used on the top half, and should be more dangerous and rewarding.
+/datum/map_template/submap/level_specific/rift/west_deep/deep_small_crystals_1
+	name = "Crystal 1"
+	desc = "Small sized crystal cave"
+	suffix = "deep_small_crystals_1.dmm"
+	cost = 10
+	allow_duplicates = TRUE
+
+
+// 'Base' templates get used on the lowest most level, and should be more dangerous and rewarding.
 /datum/map_template/submap/level_specific/rift/west_base
+	prefix = "_maps/submaps/lythios_rift/base/"
 
+/datum/map_template/submap/level_specific/rift/west_base/base_rock_1
+	name = "Rock 1"
+	desc = "Small sized rock"
+	suffix = "base_small_rock_1.dmm"
+	cost = 1
 
 /*
 	/datum/map_template/submap/level_specific/mountains/normal/deadBeacon
