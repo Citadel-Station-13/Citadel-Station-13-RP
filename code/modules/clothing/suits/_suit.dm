@@ -52,11 +52,13 @@
 		standing.layer = BODY_LAYER + 15 // 15 is above tail layer, so will not be covered by taurbody.
 	return standing
 
-/obj/item/clothing/suit/apply_accessories(var/image/standing) //Line up applied accessories properly with the body.
-	if(LAZYLEN(accessories) && taurized)
+// todo: accesosries shouldn't be directly done on this proc, use a helper proc to override
+/obj/item/clothing/suit/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+	if(!inhands && LAZYLEN(accessories) && taurized)
 		for(var/obj/item/clothing/accessory/A in accessories)
 			var/image/I = new(A.get_mob_overlay())
 			I.pixel_x = 16 //Opposite of the pixel_x on the suit (-16) from taurization to cancel it out and puts the accessory in the correct place on the body.
-			standing.add_overlay(I)
+			MA.overlays += I
+		return MA
 	else
 		return ..()

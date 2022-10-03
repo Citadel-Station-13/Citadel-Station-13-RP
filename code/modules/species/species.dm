@@ -20,6 +20,8 @@
 	/// abstract type
 	var/abstract_type = /datum/species
 	/// uid
+	var/uid
+	/// if we're a subspecies, real id
 	var/id
 	// TODO: ref species by id in code, so we can rename as needed
 
@@ -442,8 +444,8 @@
 	var/selects_bodytype = FALSE // Allows the species to choose from body types intead of being forced to be just one.
 
 /datum/species/New()
-	if(isnull(id))
-		id = ckey(name)
+	if(isnull(uid))
+		uid = ckey(name)
 
 	if(hud_type)
 		hud = new hud_type()

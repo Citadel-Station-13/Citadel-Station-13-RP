@@ -10,64 +10,6 @@
  * * Limitations
  * - inhand state only supports left and right; no weird index-based for now. this can easily change.
  *
- * * Legacy
- * todo: legacy isn't actually legacy; fix this documentation
- *
- * If you are not using `worn_icon` or `inhand_icon` or falling back to `icon`,
- * you are considered to be using the legacy system.
- * Since these generally have "one file many items" rather than "one item one file",
- * effective icon state changes in these cases.
- *
- * This will unfortunately be the state we're in until we fully rework the system to be consistent.
- *
- * * Equipped
- * Icon file priority:
- * -1. icon_override // todo: remove other than for vv
- * 0. mob_icon_override
- * 1. worn_icon
- * 2. item_icons // todo: remove (we'll never successfully do this)
- * 3. default icon for slot // todo: overhaul (we'll never successfully do this)
- * 4. icon
- *
- * Icon state priority:
- * 0. mob_state_override
- * 1. worn_state
- * 2. item_state_slots // todo: remove (we'll never successfully do this)
- * 3. item_state // todo: remove (we'll never successfully do this)
- * 4. icon_state
- *
- * Icon state generation:
- * If not using legacy,
- * [state]_[slot_id]
- * If non default bodytype,
- * [state]_[slot_id]_[bodytype]
- * If legacy,
- * [state]
- *
- * * Inhands
- * Icon file priority:
- * -1. icon_override // todo: remove other than for vv
- * 0. mob_icon_override
- * 1. inhand_icon
- * 2. worn_icon
- * 3. item_icons // todo: remove (we'll never successfully do this)
- * 4. default icon for hand // todo: overhaul (we'll never successfully do this)
- * 5. icon
- *
- * Icon state priority:
- * 0. mob_state_override
- * 1. inhand_state
- * 2. worn_state
- * 3. item_state_slots // todo: remove (we'll never successfully do this)
- * 4. item_state // todo: remove (we'll never successfully do this)
- * 5. icon_state
- *
- * Icon state generation:
- * If not using legacy,
- * [state]_left or [state]_right
- * If legacy,
- * [state]
- *
  * * Coloration
  *
  * ! Coloration WIP. For now, color var only.
@@ -120,182 +62,79 @@
 	/// when set, use this icon always when in a specific slot id or just in general; list or state
 	VAR_PRIVATE/list/mob_icon_override
 
-	//! equipped
 	/// worn icon file
 	var/icon/worn_icon
-	/// worn icon state
-	var/worn_state
+
 	/// dimensions of our worn icon file
 	var/worn_x_dimension
 	/// dimensions of our worn icon file
 	var/worn_y_dimension
-	/// worn layer override
-	var/worn_layer
 
-
-	//! inhands
-	/// inhand icon file
-	var/icon/inhand_icon
-	/// inhand icon state
-	var/inhand_state
 	/// dimensions of inhand sprites
 	var/inhand_x_dimension
 	/// dimensions of inhand sprites
 	var/inhand_y_dimension
-	/// inhand layer override
-	var/inhand_layer
 
-//! Inhand
-/**
- * Builds worn icon
- */
-/obj/item/proc/render_worn_appeaerance(mob/M, index)
-	SHOULD_NOT_OVERRIDE(TRUE)
+/obj/item/proc/render_mob_appearance(mob/M, slot_id_or_hand_index, bodytype)
+	// determine if in hands
+	var/inhands = isnum(slot_id_or_hand_index)
+	var/datum/inventory_slot_meta/slot_meta
+	// resolve slot
+	if(inhands)
+		slot_meta = (inhands % 2)? resolve_inventory_slot_meta(/datum/inventory_slot_meta/abstract/right_hand : /datum/inventory_slot_meta/abstract/left_hand)
+	else
+		slot_meta = resolve_inventory_slot_meta(slot_id_or_hand_index)
 
-	/// get assets
-	var/list/data = worn_inhand_data(M, index)
+	var/list/resolved = = resolve_worn_assets(mob/M, slot_meta, inhands, bodytype)
 
-	return _render_inhand_appearance(M, index, assets[1], assets[2], assets[3])
+	return _rendeR_mob_appearance(M, slot_meta, inhands, bodytype, resolved[1], resolved[2], resolved[3])
 
-/obj/item/proc/_render_inhand_appearance(mob/M, index, icon_used, state_used, layer_used)
+/obj/item/proc/_render_mob_appearance(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype, icon_used, state_used, layer_used)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	PRIVATE_PROC(TRUE)
-
-	var/list/additional = worn_inhand_additional(M, index, icon_used, state_used, layer_used)
-
-	// todo: comsig with (args, list/mutable_add) for overrides
-
 	var/mutable_appearance/MA = mutable_appearance(icon_used, state_used, layer_used, FLOAT_PLANE)
-
-	worn_inhand_apply(MA, M, index, icon_used, state_used, layer_used)
-
+	var/list/additional = render_additional(MA, bodytype, inhands, slot_meta)
+	// todo: signal with (args, add)
+	MA = render_apply_overlays(MA, bodytype, inhands, slot_meta)
+	MA = render_apply_blood(MA, bodytype, inhands, slot_meta)
+	MA = render_apply_custom(MA, bodytype, inhands, slot_meta)
 	return length(additional)? (additional + MA) : MA
 
 /**
- * Gets tuple of (icon, state) to use in inhand rendering
- */
-/obj/item/proc/worn_inhand_data(mob/M, index)
-	RETURN_TYPE(/list)
-
-	//* -1: icon_override; considered legacy, no append
-	if(icon_override)
-		return list(icon_override, worn_inhand_state(M, index), worn_inhand_layer(M, index))
-
-	//* 0: mob_icon_override; considered non-legacy, has append
-	if(mob_icon_override)
-		if(islist(mob_icon_override))
-			. = mob_icon_override[(index % 2)? SLOT_ID_RIGHT_HAND : SLOT_ID_LEFT_HAND]
-			if(.)
-				return list(., worn_inhand_state(M, index) + worn_inhand_state_append(index), worn_inhand_layer(M, index))
-		else
-			return list(mob_icon_override, worn_inhand_state(M, index) + worn_inhand_state_append(index), worn_inhand_layer(M, index))
-
-	//* 1: inhand_icon; considered non-legacy, has append
-	if(inhand_icon)
-		return list(inhand_icon, worn_inhand_state(M, index) + worn_inhand_state_append(index), worn_inhand_layer(M, index))
-
-	//* 2: worn_icon; considered non-legacy, has append
-	if(worn_icon)
-		return list(worn_icon, worn_inhand_state(M, index) + worn_inhand_state_append(index), worn_inhand_layer(M, index))
-
-	//* 3. item_icons; considered legacy, no append
-	if(item_icons)
-		. = item_icons[(index % 2)? slot_r_hand_str : slot_l_hand_str]
-		if(.)
-			return list(., worn_inhand_state(M, index), worn_inhand_layer(M, index))
-
-	//* 4. default icons
-	var/static/list/cached_default_r_hand_file_states
-	var/static/list/cached_default_l_hand_file_states
- * Icon file priority:
- * -1. icon_override // todo: remove other than for vv
- * 0. mob_icon_override
- * 1. inhand_icon
- * 2. worn_icon
- * 3. item_icons // todo: remove (we'll never successfully do this)
- * 4. default icon for hand // todo: overhaul (we'll never successfully do this)
- * 5. icon
+ * override to apply custom stuff to rendering; called last
  *
- * Icon state priority:
- * 0. mob_state_override
- * 1. inhand_state
- * 2. worn_state
- * 3. item_state_slots // todo: remove (we'll never successfully do this)
- * 4. item_state // todo: remove (we'll never successfully do this)
- * 5. icon_state
- *
- * Icon state generation:
- * If not using legacy,
- * [state]_left or [state]_right
- * If legacy,
- * [state]
- *
-
-
-/**
- * worn inhand state
+ * icon/icon state/layer information is included in the mutable appearance
  */
-/obj/item/proc/worn_inhand_state(mob/M, index)
-	//* 0: mob_state_override
-	if(mob_state_override)
-		if(islist(mob_state_override))
-			. = mob_state_override[(index % 2)? SLOT_ID_RIGHT_HAND : SLOT_ID_LEFT_HAND]
-			if(.)
-				return
-		else
-			return mob_state_override
-
-	//* 1: inhand_state
-	if(inhand_state)
-		return inhand_state
-
-	//* 2: worn_state
-	if(worn_state)
-		return worn_state
-
-	//* 3: item_state_slots
-	if(length(item_state_slots))
-		. = item_state_slots[(index % 2)? slot_r_hand_str : slot_l_hand_str]
-		if(.)
-			return
-
-	//* 4: item_state
-	if(item_state)
-		return item_state
-
-	//* 5: icon_state
-	return icon_state
-
-/**
- * worn inhand state append
- */
-/obj/item/proc/worn_inhand_state_append(index)
-	var/datum/inventory_slot_meta/meta = (index % 2)? resolve_inventory_slot_meta(/datum/inventory_slot_meta/abstract/right_hand) : resolve_inventory_slot_meta(/datum/inventory_slot_meta/abstract/left_hand)
-	return meta.render_key
-
-/**
- * worn inhand layer
- */
-/obj/item/proc/worn_inhand_layer(mob/M, index)
-	if(inhand_layer)
-		return inhand_layer
-	var/datum/inventory_slot_meta/meta = (index % 2)? resolve_inventory_slot_meta(/datum/inventory_slot_meta/abstract/right_hand) : resolve_inventory_slot_meta(/datum/inventory_slot_meta/abstract/left_hand)
-	return meta.render_layer
-
-/**
- * tweaks inhand appearance as needed, including adding overlays/whatever
- */
-/obj/item/proc/worn_inhand_apply(mutable_appearance/MA, mob/M, index, icon_used, state_used, layer_used)
+/obj/item/proc/render_apply_custom(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
 	return MA
 
 /**
- * advanced: able to return more than one mutable appearnace to render on the mob
+ * override to determine how we apply blood overlays to rendering
+ *
+ * icon/icon state/layer information is included in the mutable appearance
  */
-/obj/item/proc/worn_inhand_additional(mob/M, index, icon_used, state_used, layer_used)
+/obj/item/proc/render_apply_blood(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+	return MA
+
+/**
+ * override to include additional appearances while rendering
+ *
+ * icon/icon state/layer information is included in the mutable appearance
+ */
+/obj/item/proc/render_additional(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
 	RETURN_TYPE(/list)
 	return list()
 
-//! Common
+/**
+ * override to apply overlays to our current mutable appearance; called first
+ */
+/obj/item/proc/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+	return MA
+
+/**
+ * returns a tuple of (icon, state, layer)
+ */
+/obj/item/proc/resolve_worn_assets(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype)
 
 /// Worn icon generation for on-mob sprites
 /obj/item/proc/make_worn_icon(var/body_type,var/slot_id,var/inhands,var/default_icon,var/default_layer,var/icon/clip_mask = null)
@@ -324,11 +163,6 @@
 	standing.alpha = alpha
 	standing.color = color
 	standing.layer = layer2use
-	if(istype(clip_mask)) //For taur bodies/tails clipping off parts of uniforms and suits.
-		standing.filters += filter(type = "alpha", icon = clip_mask)
-
-	if(istype(clip_mask)) //For taur bodies/tails clipping off parts of uniforms and suits.
-		standing.filters += filter(type = "alpha", icon = clip_mask)
 
 	//Apply any special features
 	if(!inhands)
@@ -395,22 +229,11 @@
 	//2: your default
 	return BODY_LAYER+default_layer
 
+//! legacy
 //Apply the addblend blends onto the icon
 /obj/item/proc/apply_addblends(var/source_icon, var/icon/standing_icon)
-
+#warn impl
 	//If we have addblends, blend them onto the provided icon
 	if(addblends && standing_icon && source_icon)
 		var/addblend_icon = icon("icon" = source_icon, "icon_state" = addblends)
 		standing_icon.Blend(addblend_icon, ICON_ADD)
-
-//STUB
-/obj/item/proc/apply_custom(var/icon/standing_icon)
-	return standing_icon
-
-//STUB
-/obj/item/proc/apply_blood(var/image/standing)
-	return standing
-
-//STUB
-/obj/item/proc/apply_accessories(var/image/standing)
-	return standing

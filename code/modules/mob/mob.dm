@@ -930,8 +930,9 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/get_true_species_name()
 	return ""
 
-/mob/proc/get_species_id()
-	return
+// todo: species vs subspecies
+// /mob/proc/get_species_id()
+// 	return
 
 /mob/proc/flash_weak_pain()
 	flick("weak_pain",pain)

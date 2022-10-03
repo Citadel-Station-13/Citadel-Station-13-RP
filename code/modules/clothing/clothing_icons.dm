@@ -1,14 +1,20 @@
-/obj/item/clothing/apply_accessories(var/image/standing)
+/obj/item/clothing/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+	. = ..()
+	if(inhands)
+		return
 	if(LAZYLEN(accessories))
 		for(var/obj/item/clothing/accessory/A in accessories)
-			standing.add_overlay(A.get_mob_overlay())
+			MA.overlays += A.get_mob_overlay()
 
-/obj/item/clothing/apply_blood(var/image/standing)
+/obj/item/clothing/render_apply_blood(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+	. = ..()
+	if(inhands)
+		return
 	if(blood_DNA && blood_sprite_state && ishuman(loc))
 		var/mob/living/carbon/human/H = loc
 		var/image/bloodsies	= image(icon = H.species.get_blood_mask(H), icon_state = blood_sprite_state)
 		bloodsies.color		= blood_color
-		standing.add_overlay(bloodsies)
+		MA.overlays += bloodsies
 
 //UNIFORM: Always appends "_s" to iconstate, stupidly.
 /obj/item/clothing/under/get_worn_icon_state(var/slot_id)
@@ -26,9 +32,12 @@
 	return standing
 
 //SUIT: Blood state is slightly different
-/obj/item/clothing/suit/apply_blood(var/image/standing)
+/obj/item/clothing/suit/render_apply_blood(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+	. = ..()
+	if(inhands)
+		return
 	if(blood_DNA && blood_sprite_state && ishuman(loc))
 		var/mob/living/carbon/human/H = loc
 		var/image/bloodsies	= image(icon = H.species.get_blood_mask(H), icon_state = "[blood_overlay_type]blood")
 		bloodsies.color		= blood_color
-		standing.add_overlay(bloodsies)
+		MA.overlays += bloodsies

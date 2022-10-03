@@ -114,8 +114,8 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	//! Rendering
 	/// rendering slot key
 	var/render_key
-	/// rendering default layer
-	var/render_layer
+	/// rendering default layer; first is default, rest are alt layers.
+	VAR_PROTECTED/list/render_layer
 	/// rendering icon state cache for default icons
 	VAR_PRIVATE/list/render_state_cache
 	/// rendering default icons by bodytype
@@ -165,11 +165,26 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 /**
  * returns icon if found in defaults, null if not
  */
-/datum/inventory_slot_meta/proc/resolve_default_icon(bodytype, state)
+/datum/inventory_slot_meta/proc/resolve_default_icon(bodytype, state, mob/wearer, obj/item/equipped)
 	var/bodytype_str = bodytype_to_string(bodytype)
 	if(!render_state_cache[bodytype_str]?[state])
 		return
 	return render_default_icons[bodytype_str]
+
+/**
+ * returns layer
+ */
+/datum/inventory_slot_meta/proc/resolve_default_layer(bodytype, state, mob/wearer, obj/item/equipped)
+	if(!islist(render_layer))
+		return render_layer
+	var/index = 1
+	if(istype(equipped, /obj/item/clothing/shoes))
+		var/obj/item/clothing/shoes/S = equipped
+		index = S.shoes_under_pants? 2 : 1
+	else if(istype(equipped, /obj/item/storage/belt))
+		var/obj/item/storage/belt/B = equipped
+		index = B.show_above_suit? 2 : 1
+	return render_layer[clamp(index, 1, length(render_layer))]
 
 /datum/inventory_slot_meta/inventory
 	abstract_type = /datum/inventory_slot_meta/inventory
@@ -189,6 +204,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/back.dmi'
 	)
+	render_layer = BACK_LAYER
 
 /datum/inventory_slot_meta/inventory/uniform
 	name = "uniform"
@@ -204,6 +220,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/uniform.dmi'
 	)
+	render_layer = UNIFORM_LAYER
 
 /datum/inventory_slot_meta/inventory/head
 	name = "head"
@@ -221,6 +238,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/head.dmi'
 	)
+	render_layer = HEAD_LAYER
 
 /datum/inventory_slot_meta/inventory/suit
 	name = "outerwear"
@@ -237,6 +255,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/suits.dmi'
 	)
+	render_layer = SUIT_LAYER
 
 /datum/inventory_slot_meta/inventory/belt
 	name = "belt"
@@ -252,6 +271,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/belt.dmi'
 	)
+	render_layer = list(BELT_LAYER, BELT_LAYER_ALT)
 
 /datum/inventory_slot_meta/inventory/pocket
 	abstract_type = /datum/inventory_slot_meta/inventory/pocket
@@ -296,6 +316,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/mob.dmi'
 	)
+	render_layer = ID_LAYER
 
 /datum/inventory_slot_meta/inventory/shoes
 	name = "shoes"
@@ -311,6 +332,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/feet.dmi'
 	)
+	render_layer = list(SHOES_LAYER, SHOES_LAYER_ALT)
 
 /datum/inventory_slot_meta/inventory/gloves
 	name = "gloves"
@@ -326,6 +348,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/hands.dmi'
 	)
+	render_layer = GLOVES_LAYER
 
 /datum/inventory_slot_meta/inventory/glasses
 	name = "glasses"
@@ -341,6 +364,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/eyes.dmi'
 	)
+	render_layer = GLASSES_LAYER
 
 /datum/inventory_slot_meta/inventory/suit_storage
 	name = "suit storage"
@@ -352,6 +376,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	hud_position = ui_sstore1
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_PROC
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE
+	render_layer = SUIT_STORE_LAYER
 
 /datum/inventory_slot_meta/inventory/suit_storage/allow_equip(obj/item/I, mob/wearer, mob/user, force)
 	. = ..()
@@ -370,6 +395,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/ears.dmi'
 	)
+	render_layer = EARS_LAYER
 
 /datum/inventory_slot_meta/inventory/ears/left
 	name = "left ear"
@@ -390,6 +416,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	hud_position = ui_r_ear
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_EARS
+	render_layer = EARS_LAYERw
 
 /datum/inventory_slot_meta/inventory/mask
 	name = "mask"
@@ -404,6 +431,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/mask.dmi'
 	)
+	render_layer = FACEMASK_LAYER
 
 /datum/inventory_slot_meta/restraints
 	sort_order = -250
@@ -421,6 +449,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/mob.dmi'
 	)
+	render_layer = HANDCUFF_LAYER
 
 /datum/inventory_slot_meta/restraints/handcuffs/allow_equip(obj/item/I, mob/wearer, mob/user, force)
 	return istype(I, /obj/item/handcuffs) && !istype(I, /obj/item/handcuffs/legcuffs)
@@ -435,6 +464,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/mob.dmi'
 	)
+	render_layer = LEGCUFF_LAYER
 
 /datum/inventory_slot_meta/restraints/legcuffs/allow_equip(obj/item/I, mob/wearer, mob/user, force)
 	return istype(I, /obj/item/handcuffs/legcuffs)

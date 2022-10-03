@@ -848,11 +848,6 @@
 	I.appearance_flags |= (RESET_COLOR|PIXEL_SCALE)
 	return I
 
-/proc/generate_speech_bubble(var/bubble_loc, var/speech_state, var/set_layer = FLOAT_LAYER)
-	var/image/I = image('icons/mob/talk_vr.dmi', bubble_loc, speech_state, set_layer)
-	I.appearance_flags |= (RESET_COLOR|PIXEL_SCALE)
-	return I
-
 /atom/proc/speech_bubble(bubble_state = "", bubble_loc = src, list/bubble_recipients = list())
 	return
 
