@@ -71,10 +71,12 @@
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
 	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
 
-
+/*
 /datum/map_template/rift_lateload/caves/on_map_loaded(z)
 	. = ..()
 	seed_submaps(list(Z_LEVEL_WEST_CAVERN), 50, /area/rift/surfacebase/outside/west_caves/submap_seedzone, /datum/map_template/submap/level_specific/rift/west_caves)
+	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 1, 1, Z_LEVEL_WEST_CAVERN, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
+*/
 
 /datum/map_z_level/rift/plains
 	z = Z_LEVEL_WEST_PLAIN
@@ -86,10 +88,13 @@
 
 /// Cave Generation
 /datum/map/rift/perform_map_generation()
-	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 1, 1, Z_LEVEL_WEST_CAVERN, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
-	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 1, 1, Z_LEVEL_WEST_DEEP, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
-	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 1, 1, Z_LEVEL_WEST_BASE, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
-	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 1, 1, Z_LEVEL_UNDERGROUND_FLOOR, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
+	. = ..()
+	seed_submaps(list(Z_LEVEL_WEST_CAVERN), 50, /area/rift/surfacebase/outside/west_caves/submap_seedzone, /datum/map_template/submap/level_specific/rift/west_caves)
+	seed_submaps(list(Z_LEVEL_WEST_DEEP), 50, /area/rift/surfacebase/outside/west_deep/submap_seedzone, /datum/map_template/submap/level_specific/rift/west_caves)
+	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 3, 3, Z_LEVEL_WEST_CAVERN, world.maxx - 3, world.maxy - 3)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 3, 3, Z_LEVEL_WEST_DEEP, world.maxx - 3, world.maxy - 3)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 3, 3, Z_LEVEL_WEST_BASE, world.maxx - 3, world.maxy - 3)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 3, 3, Z_LEVEL_UNDERGROUND_FLOOR, world.maxx - 3, world.maxy - 3)         // Create the mining ore distribution map.
 
 	return 1
 

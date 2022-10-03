@@ -7,8 +7,8 @@
 #define Z_LEVEL_SURFACE_HIGH			7
 
 #define Z_LEVEL_WEST_BASE				8
-#define Z_LEVEL_WEST_CAVERN				9
-#define Z_LEVEL_WEST_DEEP				10
+#define Z_LEVEL_WEST_DEEP				9
+#define Z_LEVEL_WEST_CAVERN				10
 #define Z_LEVEL_WEST_PLAIN				11
 
 #define Z_LEVEL_MISC					12
@@ -172,7 +172,7 @@
 
 	lateload_z_levels = list(
 //		list("Rift - Misc"), // Stock Rift lateload maps || Currently not in use, takes too long to load, breaks shuttles.
-		list("Western Canyon","Western Caves","Western Deep Caves","Western Plains"),
+		list("Western Canyon","Western Deep Caves","Western Caves","Western Plains"),
 		list("Debris Field - Z1 Space"), // Debris Field
 		list("Away Mission - Pirate Base"), // Vox Pirate Base & Mining Planet
 		list("ExoPlanet - Z1 Planet"),//Mining planet

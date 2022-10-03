@@ -42,6 +42,7 @@
 	desc = "Large Sized Rocky cavern"
 	suffix = "west_caves_cavern4.dmm"
 	cost = 4
+	allow_duplicates = TRUE
 
 /datum/map_template/submap/level_specific/rift/west_caves/west_caves_rock1
 	name = "Rock 1"
