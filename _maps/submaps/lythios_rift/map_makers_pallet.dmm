@@ -23,8 +23,8 @@
 /obj/random/triumph,
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/space)
-"lX" = (
-/obj/structure/girder/displaced,
+"jK" = (
+/obj/structure/girder,
 /turf/space/basic,
 /area/space)
 "mC" = (
@@ -91,15 +91,8 @@
 /obj/machinery/door/airlock/external,
 /turf/space/basic,
 /area/space)
-"yj" = (
-/obj/structure/girder,
-/turf/space/basic,
-/area/space)
 "yR" = (
 /turf/simulated/floor/outdoors/rocks/lythios43c/indoors,
-/area/space)
-"zU" = (
-/turf/simulated/floor/wood/lythios43c,
 /area/space)
 "Au" = (
 /turf/simulated/floor/tiled/lythios43c,
@@ -133,6 +126,9 @@
 "JQ" = (
 /turf/simulated/mineral/floor/lythios43c/indoors,
 /area/space)
+"Kb" = (
+/turf/simulated/floor/wood/lythios43c,
+/area/space)
 "Md" = (
 /obj/structure/window/wooden{
 	dir = 5
@@ -158,6 +154,10 @@
 /area/space)
 "PK" = (
 /obj/machinery/crystal/ice,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/space)
+"QA" = (
+/obj/structure/largecrate,
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/space)
 "Rr" = (
@@ -198,6 +198,10 @@
 "XQ" = (
 /turf/space/basic,
 /area/rift/surfacebase/outside/west)
+"YH" = (
+/obj/structure/girder/displaced,
+/turf/space/basic,
+/area/space)
 "YR" = (
 /obj/effect/overlay/snow/floor,
 /turf/space/basic,
@@ -344,7 +348,7 @@ Mh
 Mh
 um
 um
-AG
+QA
 wG
 tV
 tV
@@ -436,7 +440,7 @@ xi
 AG
 gc
 xu
-yj
+jK
 RW
 xu
 xu
@@ -458,7 +462,7 @@ mZ
 AG
 xu
 xu
-lX
+YH
 RW
 xu
 xu
@@ -526,8 +530,8 @@ bx
 bx
 pm
 pm
-zU
-zU
+Kb
+Kb
 xu
 xu
 xu
@@ -548,8 +552,8 @@ bx
 bx
 pm
 pm
-zU
-zU
+Kb
+Kb
 xu
 xu
 xu
