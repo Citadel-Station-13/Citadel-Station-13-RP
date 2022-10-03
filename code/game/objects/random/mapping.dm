@@ -941,3 +941,34 @@
 /obj/random/empty_or_lootable_crate/item_to_spawn()
 	return pick(/obj/random/crate,
 			/obj/random/multiple/corp_crate)
+
+/obj/random/crystal
+	name = "random crystal"
+	desc = "Sometimes spawns a crystal, sometimes spawns nothing 40% of the time"
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "crystal"
+	spawn_nothing_percentage = 40
+
+/obj/random/crystal/item_to_spawn()
+	return	/obj/machinery/crystal
+
+/obj/random/crystal/ice
+	name = "random ice crystal"
+	desc = "Sometimes spawns a crystal, sometimes spawns nothing 40% of the time. This time its an ice crystal"
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "icecrystal2"
+	spawn_nothing_percentage = 40
+
+/obj/random/crystal/ice/item_to_spawn()
+	return	/obj/machinery/crystal/ice
+
+/obj/random/crystal/normal_ice
+	name = "random crystal, ice/normal"
+	desc = "Sometimes spawns a crystal, sometimes spawns nothing 40% of the time. 50/50 between ice and normal crystal spawning"
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "crystal"
+	spawn_nothing_percentage = 40
+
+/obj/random/crystal/normal_ice/item_to_spawn()
+	return pick(/obj/machinery/crystal/ice,
+				/obj/machinery/crystal)

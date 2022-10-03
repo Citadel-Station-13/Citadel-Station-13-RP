@@ -3,30 +3,30 @@
 /turf/template_noop,
 /area/template_noop)
 "c" = (
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/submap/lythios/west_caves/caverns3)
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
 "l" = (
 /obj/structure/largecrate,
 /obj/random/triumph,
 /turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
-/area/submap/lythios/west_caves/caverns3)
+/area/rift/surfacebase/outside/west_caves)
 "o" = (
 /turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
-/area/submap/lythios/west_caves/caverns3)
+/area/rift/surfacebase/outside/west_caves)
 "p" = (
 /obj/random/outcrop,
 /turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
-/area/submap/lythios/west_caves/caverns3)
+/area/rift/surfacebase/outside/west_caves)
 "w" = (
 /obj/machinery/crystal/ice,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/submap/lythios/west_caves/caverns3)
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
 "P" = (
 /turf/simulated/mineral/icerock/ignore_cavegen/lythios43c,
-/area/submap/lythios/west_caves/caverns3)
+/area/rift/surfacebase/outside/west_caves)
 "Z" = (
 /turf/simulated/mineral/ignore_cavegen/lythios43c,
-/area/submap/lythios/west_caves/caverns3)
+/area/rift/surfacebase/outside/west_caves)
 
 (1,1,1) = {"
 c

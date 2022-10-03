@@ -6,64 +6,64 @@
 	},
 /obj/random/triumph,
 /turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
-/area/submap/lythios/west_caves/survival_cave1)
+/area/rift/surfacebase/outside/west_caves)
 "b" = (
 /obj/structure/largecrate,
 /obj/random/mre,
 /obj/random/mre,
 /turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
-/area/submap/lythios/west_caves/survival_cave1)
+/area/rift/surfacebase/outside/west_caves)
 "e" = (
 /obj/structure/inflatable/door,
 /turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
-/area/submap/lythios/west_caves/survival_cave1)
+/area/rift/surfacebase/outside/west_caves)
 "g" = (
 /turf/template_noop,
 /area/template_noop)
 "n" = (
 /turf/simulated/mineral/ignore_cavegen/lythios43c,
-/area/submap/lythios/west_caves/survival_cave1)
+/area/rift/surfacebase/outside/west_caves)
 "x" = (
 /turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
-/area/submap/lythios/west_caves/survival_cave1)
+/area/rift/surfacebase/outside/west_caves)
 "y" = (
 /obj/structure/barricade,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/submap/lythios/west_caves/survival_cave1)
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
 "z" = (
 /obj/structure/table/rack,
 /obj/item/storage/toolbox/emergency,
 /obj/item/pickaxe,
 /obj/item/shovel,
 /turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
-/area/submap/lythios/west_caves/survival_cave1)
+/area/rift/surfacebase/outside/west_caves)
 "C" = (
 /obj/structure/table/bench/steel,
 /turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
-/area/submap/lythios/west_caves/survival_cave1)
+/area/rift/surfacebase/outside/west_caves)
 "F" = (
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/submap/lythios/west_caves/survival_cave1)
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
 "I" = (
 /obj/item/flame/lighter/zippo/taj,
 /obj/structure/table/woodentable,
 /turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
-/area/submap/lythios/west_caves/survival_cave1)
+/area/rift/surfacebase/outside/west_caves)
 "L" = (
 /obj/structure/bonfire{
 	grill = 1
 	},
 /turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
-/area/submap/lythios/west_caves/survival_cave1)
+/area/rift/surfacebase/outside/west_caves)
 "N" = (
 /obj/structure/inflatable,
 /turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
-/area/submap/lythios/west_caves/survival_cave1)
+/area/rift/surfacebase/outside/west_caves)
 "O" = (
 /obj/structure/largecrate,
 /obj/fiftyspawner/log,
 /turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
-/area/submap/lythios/west_caves/survival_cave1)
+/area/rift/surfacebase/outside/west_caves)
 
 (1,1,1) = {"
 g

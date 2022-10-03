@@ -1,24 +1,24 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/submap/lythios/west_caves/cavern4)
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
 "d" = (
 /obj/machinery/crystal/ice,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/submap/lythios/west_caves/cavern4)
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
 "u" = (
 /turf/simulated/mineral/icerock/ignore_cavegen/lythios43c,
-/area/submap/lythios/west_caves/cavern4)
+/area/rift/surfacebase/outside/west_caves)
 "H" = (
 /obj/random/outcrop,
 /turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
-/area/submap/lythios/west_caves/cavern4)
+/area/rift/surfacebase/outside/west_caves)
 "L" = (
 /turf/simulated/mineral/ignore_cavegen/lythios43c,
-/area/submap/lythios/west_caves/cavern4)
+/area/rift/surfacebase/outside/west_caves)
 "U" = (
 /turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
-/area/submap/lythios/west_caves/cavern4)
+/area/rift/surfacebase/outside/west_caves)
 "V" = (
 /turf/template_noop,
 /area/template_noop)

@@ -1,577 +1,638 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
+"br" = (
+/turf/simulated/wall,
+/area/space)
+"bx" = (
+/turf/simulated/floor/water/deep/indoors/lythios43c,
+/area/space)
+"dv" = (
+/turf/simulated/floor/bluegrid/lythios43c,
+/area/space)
+"eO" = (
+/turf/simulated/mineral/floor/lythios43c,
+/area/space)
+"eQ" = (
+/obj/random/underdark,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/space)
+"gc" = (
+/obj/structure/sandbag,
 /turf/space/basic,
 /area/space)
-"b" = (
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+"gw" = (
+/obj/random/triumph,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/space)
-"c" = (
-/turf/simulated/mineral/lythios43c,
+"mC" = (
+/obj/machinery/crystal/lava,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/space)
-"d" = (
-/obj/machinery/crystal/ice,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+"mX" = (
+/turf/space/basic,
+/area/rift/surfacebase/outside/west_base)
+"mZ" = (
+/obj/random/crystal/normal_ice,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/space)
-"f" = (
-/turf/simulated/floor/outdoors/dirt/lythios43c,
+"nc" = (
+/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
 /area/space)
-"h" = (
-/turf/simulated/wall/lythios43c,
-/area/space)
-"i" = (
-/obj/random/multiple/minevault,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/space)
-"m" = (
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/space)
-"n" = (
+"nv" = (
+/turf/space/basic,
+/area/rift/surfacebase/outside/west_deep)
+"pm" = (
 /turf/simulated/floor/water/indoors/lythios43c,
 /area/space)
-"o" = (
+"pZ" = (
+/turf/simulated/mineral/icerock/lythios43c,
+/area/space)
+"qU" = (
+/turf/simulated/floor/outdoors/dirt/lythios43c/indoors,
+/area/space)
+"su" = (
+/turf/simulated/floor/outdoors/dirt/lythios43c,
+/area/space)
+"tO" = (
+/obj/random/mre,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/space)
+"tV" = (
 /obj/structure/lattice,
 /turf/space/basic,
 /area/space)
-"p" = (
-/turf/simulated/mineral/icerock/lythios43c/indoors,
+"um" = (
+/turf/simulated/mineral/icerock/ignore_cavegen/lythios43c,
 /area/space)
-"q" = (
-/obj/random/roguemineloot,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+"vj" = (
+/obj/random/empty_or_lootable_crate,
+/obj/random,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/space)
-"r" = (
-/turf/simulated/floor/bluegrid/lythios43c,
-/area/space)
-"s" = (
-/turf/simulated/floor/lythios43c,
-/area/space)
-"v" = (
-/obj/structure/window/wooden{
-	dir = 1
+"wG" = (
+/obj/item/storage/briefcase/inflatable{
+	pixel_x = -2;
+	pixel_y = -2
 	},
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/space)
+"xi" = (
+/obj/random/crystal/ice,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/space)
+"xu" = (
 /turf/space/basic,
 /area/space)
-"x" = (
+"xA" = (
+/obj/effect/overlay/snow/airlock,
+/obj/machinery/door/airlock/external,
+/turf/space/basic,
+/area/space)
+"yR" = (
+/turf/simulated/floor/outdoors/rocks/lythios43c/indoors,
+/area/space)
+"Au" = (
+/turf/simulated/floor/tiled/lythios43c,
+/area/space)
+"AA" = (
+/turf/simulated/floor/lythios43c,
+/area/space)
+"AF" = (
+/turf/simulated/floor/outdoors/gravsnow/lythios43c/indoors,
+/area/space)
+"AG" = (
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/space)
+"AP" = (
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/space)
+"Dv" = (
+/obj/machinery/crystal,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/space)
+"EU" = (
+/obj/random/crystal,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/space)
+"HG" = (
+/turf/space/basic,
+/area/rift/surfacebase/outside/west_caves)
+"HI" = (
+/turf/simulated/mineral/lythios43c,
+/area/space)
+"JQ" = (
 /turf/simulated/mineral/floor/lythios43c/indoors,
 /area/space)
-"y" = (
-/obj/random/turf/lava,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/space)
-"z" = (
-/turf/simulated/mineral/floor/lythios43c,
-/area/space)
-"B" = (
-/turf/simulated/floor/carpet/bcarpet/lythios43c,
-/area/space)
-"C" = (
-/turf/simulated/wall,
-/area/space)
-"D" = (
-/turf/template_noop,
-/area/template_noop)
-"E" = (
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/space)
-"F" = (
-/obj/random/underdark,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/space)
-"G" = (
+"Md" = (
 /obj/structure/window/wooden{
 	dir = 5
 	},
 /turf/space/basic,
 /area/space)
-"H" = (
-/obj/random/mre,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/space)
-"L" = (
-/turf/simulated/floor/outdoors/rocks/lythios43c/indoors,
-/area/space)
-"M" = (
-/obj/random/triumph,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/space)
-"N" = (
-/obj/structure/sandbag,
+"Mh" = (
+/turf/template_noop,
+/area/template_noop)
+"NF" = (
+/obj/effect/overlay/snow/airlock,
 /turf/space/basic,
 /area/space)
-"O" = (
-/turf/simulated/floor/outdoors/rocks/lythios43c,
+"NN" = (
+/obj/random/multiple/minevault,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/space)
-"Q" = (
-/obj/random/outcrop,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+"PH" = (
+/obj/structure/window/wooden{
+	dir = 1
+	},
+/turf/space/basic,
 /area/space)
-"R" = (
-/turf/simulated/floor/lythios43c/indoors,
+"PK" = (
+/obj/machinery/crystal/ice,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/space)
-"S" = (
-/turf/simulated/floor/outdoors/gravsnow/lythios43c/indoors,
-/area/space)
-"T" = (
-/turf/simulated/floor/outdoors/dirt/lythios43c/indoors,
-/area/space)
-"U" = (
-/turf/simulated/floor/water/deep/indoors/lythios43c,
-/area/space)
-"V" = (
-/turf/simulated/floor/tiled/lythios43c,
-/area/space)
-"W" = (
-/turf/simulated/floor/carpet/lythios43c,
-/area/space)
-"X" = (
-/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
-/area/space)
-"Y" = (
+"Rr" = (
 /turf/simulated/floor/carpet/arcadecarpet/lythios43c,
 /area/space)
-"Z" = (
-/obj/random/empty_or_lootable_crate,
-/obj/random,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+"RW" = (
+/obj/structure/window/wooden{
+	dir = 1
+	},
+/turf/simulated/wall/wood,
+/area/space)
+"Td" = (
+/turf/simulated/wall/lythios43c,
+/area/space)
+"Tx" = (
+/turf/simulated/floor/lythios43c/indoors,
+/area/space)
+"Uq" = (
+/obj/random/turf/lava,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/space)
+"UM" = (
+/turf/simulated/floor/carpet/lythios43c,
+/area/space)
+"Vl" = (
+/turf/simulated/floor/outdoors/rocks/lythios43c,
+/area/space)
+"VC" = (
+/obj/random/roguemineloot,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/space)
+"VU" = (
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/space)
+"XP" = (
+/turf/simulated/floor/carpet/bcarpet/lythios43c,
+/area/space)
+"XQ" = (
+/turf/space/basic,
+/area/rift/surfacebase/outside/west)
+"YR" = (
+/obj/effect/overlay/snow/floor,
+/turf/space/basic,
+/area/space)
+"ZZ" = (
+/obj/random/outcrop,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/space)
 
 (1,1,1) = {"
-D
-D
-p
-p
-m
-m
-c
-c
-c
-c
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Mh
+Mh
+um
+um
+AG
+AG
+HI
+HI
+HI
+HI
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+xu
 "}
 (2,1,1) = {"
-D
-D
-p
-p
-Z
-M
-c
-x
-x
-c
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Mh
+Mh
+um
+um
+vj
+gw
+HI
+JQ
+JQ
+HI
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+xu
 "}
 (3,1,1) = {"
-D
-D
-p
-p
-H
-F
-c
-x
-x
-c
-a
-a
-a
-a
-a
-a
-x
-a
-a
-z
+Mh
+Mh
+um
+um
+tO
+eQ
+HI
+JQ
+JQ
+HI
+xu
+xu
+xu
+xu
+xu
+xu
+JQ
+xu
+xu
+eO
 "}
 (4,1,1) = {"
-D
-D
-p
-p
-i
-q
-c
-c
-c
-c
-a
-a
-a
-a
-a
-a
-x
-a
-a
-z
+Mh
+Mh
+um
+um
+NN
+VC
+HI
+HI
+HI
+HI
+xu
+YR
+xu
+xu
+xu
+xu
+JQ
+xu
+xu
+eO
 "}
 (5,1,1) = {"
-D
-D
-p
-p
-Q
-m
-o
-o
-o
-o
-a
-a
-a
-a
-a
-h
-x
-a
-C
-z
+Mh
+Mh
+um
+um
+ZZ
+AG
+tV
+tV
+tV
+tV
+xu
+YR
+xu
+xu
+xu
+Td
+JQ
+xu
+br
+eO
 "}
 (6,1,1) = {"
-D
-D
-p
-p
-m
-m
-o
-o
-o
-o
-a
-a
-a
-a
-a
-h
-R
-a
-C
-s
+Mh
+Mh
+um
+um
+AG
+AG
+tV
+tV
+tV
+tV
+xu
+NF
+XQ
+XQ
+xu
+Td
+Tx
+xu
+br
+AA
 "}
 (7,1,1) = {"
-D
-D
-p
-p
-d
-m
-o
-o
-o
-o
-a
-a
-a
-a
-a
-h
-R
-a
-C
-s
+Mh
+Mh
+um
+um
+AG
+wG
+tV
+tV
+tV
+tV
+xu
+xA
+XQ
+XQ
+xu
+Td
+Tx
+xu
+br
+AA
 "}
 (8,1,1) = {"
-D
-D
-p
-p
-m
-m
-G
-a
-a
-a
-a
-a
-a
-a
-a
-h
-R
-a
-C
-s
+Mh
+Mh
+um
+um
+AG
+AG
+Md
+xu
+xu
+RW
+xu
+xu
+HG
+HG
+xu
+Td
+Tx
+xu
+br
+AA
 "}
 (9,1,1) = {"
-D
-D
-p
-p
-y
-m
-v
-a
-a
-a
-a
-a
-a
-a
-a
-h
-T
-a
-C
-f
+Mh
+Mh
+um
+um
+Uq
+AG
+PH
+xu
+xu
+RW
+xu
+xu
+HG
+HG
+xu
+Td
+qU
+xu
+br
+su
 "}
 (10,1,1) = {"
-D
-D
-p
-p
-m
-m
-N
-a
-a
-a
-a
-a
-a
-a
-a
-h
-T
-a
-C
-f
+Mh
+Mh
+xu
+xu
+EU
+AG
+gc
+xu
+xu
+RW
+xu
+xu
+nv
+nv
+xu
+Td
+qU
+xu
+br
+su
 "}
 (11,1,1) = {"
-D
-D
-p
-p
-m
-m
-N
-a
-a
-a
-a
-a
-a
-a
-a
-h
-T
-a
-C
-f
+Mh
+Mh
+xu
+xu
+xi
+AG
+gc
+xu
+xu
+RW
+xu
+xu
+nv
+nv
+xu
+Td
+qU
+xu
+br
+su
 "}
 (12,1,1) = {"
-D
-D
-p
-p
-m
-m
-a
-a
-a
-a
-a
-a
-a
-a
-a
-h
-L
-a
-C
-O
+Mh
+Mh
+pZ
+pZ
+mZ
+AG
+xu
+xu
+xu
+RW
+xu
+xu
+mX
+mX
+xu
+Td
+yR
+xu
+br
+Vl
 "}
 (13,1,1) = {"
-D
-D
-p
-p
-m
-m
-a
-a
-a
-a
-a
-a
-a
-a
-a
-h
-L
-a
-C
-O
+Mh
+Mh
+pZ
+pZ
+AG
+AG
+xu
+xu
+xu
+RW
+xu
+xu
+mX
+mX
+xu
+Td
+yR
+xu
+br
+Vl
 "}
 (14,1,1) = {"
-D
-D
-p
-p
-m
-m
-a
-a
-a
-a
-a
-a
-a
-a
-a
-h
-L
-a
-C
-O
+Mh
+Mh
+pZ
+pZ
+AG
+AG
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+Td
+yR
+xu
+br
+Vl
 "}
 (15,1,1) = {"
-D
-D
-p
-p
-m
-m
-U
-U
-n
-n
-a
-a
-a
-a
-a
-h
-X
-a
-C
-E
+Mh
+Mh
+pZ
+pZ
+AG
+AG
+bx
+bx
+pm
+pm
+xu
+xu
+xu
+xu
+xu
+Td
+nc
+xu
+br
+VU
 "}
 (16,1,1) = {"
-D
-D
-p
-p
-m
-m
-U
-U
-n
-n
-a
-a
-a
-a
-a
-h
-X
-a
-C
-E
+Mh
+Mh
+pZ
+pZ
+AG
+AG
+bx
+bx
+pm
+pm
+xu
+xu
+xu
+xu
+xu
+Td
+nc
+xu
+br
+VU
 "}
 (17,1,1) = {"
-D
-D
-p
-p
-m
-m
-r
-r
-Y
-Y
-V
-V
-a
-a
-a
-h
-X
-a
-C
-E
+Mh
+Mh
+pZ
+pZ
+AG
+AG
+dv
+dv
+Rr
+Rr
+Au
+Au
+xu
+xu
+xu
+Td
+nc
+xu
+br
+VU
 "}
 (18,1,1) = {"
-D
-D
-p
-p
-m
-m
-r
-r
-Y
-Y
-V
-V
-a
-a
-a
-h
-S
-a
-C
-b
+Mh
+Mh
+pZ
+pZ
+PK
+AG
+dv
+dv
+Rr
+Rr
+Au
+Au
+xu
+xu
+xu
+Td
+AF
+xu
+br
+AP
 "}
 (19,1,1) = {"
-D
-D
-p
-p
-m
-m
-R
-R
-W
-W
-B
-B
-a
-a
-a
-h
-S
-a
-C
-b
+Mh
+Mh
+pZ
+pZ
+mC
+AG
+Tx
+Tx
+UM
+UM
+XP
+XP
+xu
+xu
+xu
+Td
+AF
+xu
+br
+AP
 "}
 (20,1,1) = {"
-D
-D
-p
-p
-m
-m
-R
-R
-W
-W
-B
-B
-a
-a
-a
-h
-S
-a
-C
-b
+Mh
+Mh
+pZ
+pZ
+Dv
+AG
+Tx
+Tx
+UM
+UM
+XP
+XP
+xu
+xu
+xu
+Td
+AF
+xu
+br
+AP
 "}

@@ -2,131 +2,63 @@
 "a" = (
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west_caves)
-"z" = (
+"m" = (
+/obj/random/crystal,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
+"w" = (
 /turf/template_noop,
 /area/template_noop)
-"O" = (
-/obj/machinery/crystal/ice,
+"Q" = (
+/obj/random/crystal/normal_ice,
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west_caves)
 
 (1,1,1) = {"
+w
+w
+m
 a
-z
-z
-a
-a
-a
-z
-z
-z
-z
+w
+w
 "}
 (2,1,1) = {"
+w
 a
 a
 a
-a
-a
-a
-a
-a
-z
-z
+Q
+w
 "}
 (3,1,1) = {"
+Q
 a
 a
+Q
 a
 a
-a
-O
-a
-a
-a
-z
 "}
 (4,1,1) = {"
-z
 a
 a
 a
 a
 a
-a
-a
-a
-z
+w
 "}
 (5,1,1) = {"
-z
-z
+w
+Q
 a
 a
-a
-a
-a
-a
-a
-a
+m
+w
 "}
 (6,1,1) = {"
-z
-z
-a
-a
-a
-a
-a
-a
-a
-a
-"}
-(7,1,1) = {"
-z
-a
-a
-a
-a
-a
-a
-a
-a
-a
-"}
-(8,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-O
-z
-a
-"}
-(9,1,1) = {"
-O
-a
-a
-a
-a
-a
-a
-z
-z
-z
-"}
-(10,1,1) = {"
-a
-a
-a
-a
-z
-z
-z
-z
-z
-z
+w
+w
+w
+Q
+w
+w
 "}

@@ -15,6 +15,8 @@
 	desc = "Bring a coat!"
 	allow_duplicates = FALSE
 
+/datum/map_template/submap/level_specific/rift/admin_spawn
+
 // 'Normal' templates get used on the bottom half, and should be safer.
 /datum/map_template/submap/level_specific/rift/west_caves
 	prefix = "_maps/submaps/lythios_rift/caves/"
@@ -42,7 +44,6 @@
 	desc = "Large Sized Rocky cavern"
 	suffix = "west_caves_cavern4.dmm"
 	cost = 4
-	allow_duplicates = TRUE
 
 /datum/map_template/submap/level_specific/rift/west_caves/west_caves_rock1
 	name = "Rock 1"
@@ -50,17 +51,34 @@
 	suffix = "west_caves_rock1.dmm"
 	cost = 1
 
-/datum/map_template/submap/level_specific/rift/west_caves/west_caves_small_crystal
-	name = "Crystal1"
-	desc = "Small sized crystal cave"
-	suffix = "west_caves_small_crystal.dmm"
-	cost = 1
-
 /datum/map_template/submap/level_specific/rift/west_caves/west_caves_survival_cave
 	name = "Survival cave 1"
 	desc = "Medium sized survival cave"
 	suffix = "west_caves_survival_cave.dmm"
 	cost = 2
+
+/datum/map_template/submap/level_specific/rift/west_caves/buried_structure_1
+	name = "Buried Structure 1"
+	desc = "A buried Structure"
+	suffix = "west_caves_buriedstructure_1.dmm"
+	template_group = "Buried Structure"
+	fixed_orientation = TRUE
+	cost = 10
+
+
+/datum/map_template/submap/level_specific/rift/west_caves/west_caves_small_crystal
+	name = "Crystal 1"
+	desc = "Small sized crystal cave"
+	suffix = "west_caves_small_crystal1.dmm"
+	cost = 1
+	allow_duplicates = TRUE
+
+/datum/map_template/submap/level_specific/rift/west_caves/west_caves_small_crystal
+	name = "Crystal 2"
+	desc = "Small sized crystal cave"
+	suffix = "west_caves_small_crystal2.dmm"
+	cost = 1
+	allow_duplicates = TRUE
 
 // 'Deep' templates get used on the top half, and should be more dangerous and rewarding.
 /datum/map_template/submap/level_specific/rift/west_deep
