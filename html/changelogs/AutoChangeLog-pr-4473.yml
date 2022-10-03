@@ -1,4 +1,0 @@
-author: "jakeramsay007"
-delete-after: True
-changes: 
-  - rscdel: "Removed redundant shielding and cell UI elements from the atmospheric canister UI"

@@ -1,4 +1,0 @@
-author: "jakeramsay007"
-delete-after: True
-changes: 
-  - bugfix: "Borgs can now remove beakers from the grinder correctly"
