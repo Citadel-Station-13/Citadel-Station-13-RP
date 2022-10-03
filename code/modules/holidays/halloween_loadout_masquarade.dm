@@ -49,7 +49,7 @@
 	STD_DEF("cloth uniform")
 	icon_state = "infiltrator_uniform"
 	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 
@@ -61,7 +61,7 @@
 	STD_DEF("plastic armor")
 	icon_state = "infiltrator_armor"
 	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	cold_protection = UPPER_TORSO|LOWER_TORSO
 
@@ -73,7 +73,7 @@
 	STD_DEF("plastic gloves")
 	icon_state = "infiltrator_gloves"
 	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
 	body_parts_covered = HANDS
 	cold_protection = HANDS
 
@@ -85,7 +85,7 @@
 	STD_DEF("plastic helmet")
 	icon_state = "infiltrator_helmet"
 	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
 	body_parts_covered = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
@@ -98,7 +98,7 @@
 	STD_DEF("plastic shoes")
 	icon_state = "infiltrator_boots"
 	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
 	body_parts_covered = FEET
 	cold_protection = FEET
 
@@ -110,7 +110,7 @@
 	STD_DEF_NON_HIDING("plastic mask")
 	icon_state = "infiltrator_mask"
 	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
 	body_parts_covered = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
@@ -127,7 +127,7 @@
 	STD_DEF("plastic helmet")
 	icon_state = "syndicate-contract-helm"
 	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
 	body_parts_covered = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
@@ -140,7 +140,7 @@
 	STD_DEF("plastic suit")
 	icon_state = "syndicate-contract"
 	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 
@@ -173,7 +173,7 @@
 	STD_DEF("plastic suit")
 	icon_state = "lingarmorhelmet"
 	icon = 'icons/antagonists/changeling/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/changeling/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/changeling/on_mob/clothing.dmi'
 	body_parts_covered = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
@@ -186,7 +186,7 @@
 	STD_DEF("plastic suit")
 	icon_state = "lingarmor"
 	icon = 'icons/antagonists/changeling/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/changeling/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/changeling/on_mob/clothing.dmi'
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 
@@ -198,7 +198,7 @@
 	STD_DEF("plastic helmet")
 	icon_state = "lingspacehelmet"
 	icon = 'icons/antagonists/changeling/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/changeling/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/changeling/on_mob/clothing.dmi'
 	body_parts_covered = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
@@ -211,7 +211,7 @@
 	STD_DEF("plastic suit")
 	icon_state = "lingspacesuit"
 	icon = 'icons/antagonists/changeling/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/changeling/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/changeling/on_mob/clothing.dmi'
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 
@@ -268,7 +268,7 @@
 /obj/item/clothing/head/fake_brass
 	STD_DEF("brass helmet")
 	icon = 'icons/antagonists/clockcult/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/clockcult/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/clockcult/on_mob/clothing.dmi'
 	icon_state = "clockwork_helmet"
 	body_parts_covered = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
@@ -281,7 +281,7 @@
 /obj/item/clothing/suit/storage/fake_brass
 	STD_DEF("brass cuirass")
 	icon = 'icons/antagonists/clockcult/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/clockcult/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/clockcult/on_mob/clothing.dmi'
 	icon_state = "clockwork_cuirass"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
@@ -293,7 +293,7 @@
 /obj/item/clothing/shoes/fake_brass
 	STD_DEF("brass boots")
 	icon = 'icons/antagonists/clockcult/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/clockcult/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/clockcult/on_mob/clothing.dmi'
 	icon_state = "clockwork_treads"
 	body_parts_covered = FEET
 	cold_protection = FEET
@@ -305,7 +305,7 @@
 /obj/item/clothing/gloves/fake_brass
 	STD_DEF("brass gloves")
 	icon = 'icons/antagonists/clockcult/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/clockcult/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/clockcult/on_mob/clothing.dmi'
 	icon_state = "clockwork_gauntlets"
 	body_parts_covered = HANDS
 	cold_protection = HANDS
@@ -369,7 +369,7 @@
 /obj/item/clothing/glasses/fake_judicial
 	STD_DEF("brass visor")
 	icon = 'icons/antagonists/clockcult/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/clockcult/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/clockcult/on_mob/clothing.dmi'
 	icon_state = "judicial_visor_1"
 
 /datum/gear/seasonal/masquarade/clockcult/spectacles
@@ -379,7 +379,7 @@
 /obj/item/clothing/glasses/fake_spectacles
 	STD_DEF("brass boots")
 	icon = 'icons/antagonists/clockcult/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/clockcult/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/clockcult/on_mob/clothing.dmi'
 	icon_state = "wraith_specs"
 
 /**
@@ -422,7 +422,7 @@
 /obj/item/clothing/suit/storage/hooded/fake_cult_hardsuit
 	STD_DEF("plastic suit")
 	icon = 'icons/antagonists/cult/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/cult/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/cult/on_mob/clothing.dmi'
 	icon_state = "cult_armor"
 	hoodtype = /obj/item/clothing/head/hood/fake_cult_hardsuit
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|FEET|HANDS
@@ -431,7 +431,7 @@
 /obj/item/clothing/head/hood/fake_cult_hardsuit
 	STD_DEF("hood")
 	icon = 'icons/antagonists/cult/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/cult/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/cult/on_mob/clothing.dmi'
 	icon_state = "cult_helmet"
 	body_parts_covered = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
@@ -444,7 +444,7 @@
 /obj/item/clothing/suit/storage/hooded/fake_cult_robes_new
 	STD_DEF("plastic suit")
 	icon = 'icons/antagonists/cult/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/cult/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/cult/on_mob/clothing.dmi'
 	icon_state = "cultrobesalt"
 	hoodtype = /obj/item/clothing/head/hood/fake_cult_robes_new
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
@@ -453,7 +453,7 @@
 /obj/item/clothing/head/hood/fake_cult_robes_new
 	STD_DEF("hood")
 	icon = 'icons/antagonists/cult/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/cult/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/cult/on_mob/clothing.dmi'
 	icon_state = "culthoodalt"
 	body_parts_covered = HEAD
 	cold_protection = HEAD
@@ -465,7 +465,7 @@
 /obj/item/clothing/suit/storage/hooded/fake_cult_robes_old
 	STD_DEF("plastic suit")
 	icon = 'icons/antagonists/cult/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/cult/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/cult/on_mob/clothing.dmi'
 	icon_state = "cultrobes"
 	hoodtype = /obj/item/clothing/head/hood/fake_cult_robes_old
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
@@ -474,7 +474,7 @@
 /obj/item/clothing/head/hood/fake_cult_robes_old
 	STD_DEF("hood")
 	icon = 'icons/antagonists/cult/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/cult/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/cult/on_mob/clothing.dmi'
 	icon_state = "culthood"
 	body_parts_covered = HEAD
 	cold_protection = HEAD
@@ -497,7 +497,7 @@
 /obj/item/clothing/suit/storage/hooded/fake_heretic
 	STD_DEF("cloth robes")
 	icon = 'icons/antagonists/heretic/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/heretic/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/heretic/on_mob/clothing.dmi'
 	icon_state = "eldritch_armor"
 	hoodtype = /obj/item/clothing/head/hood/fake_heretic
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
@@ -506,7 +506,7 @@
 /obj/item/clothing/head/hood/fake_heretic
 	STD_DEF("hood")
 	icon = 'icons/antagonists/heretic/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/heretic/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/heretic/on_mob/clothing.dmi'
 	icon_state = "eldritch_armor_hood"
 	body_parts_covered = HEAD
 	cold_protection = HEAD
@@ -518,7 +518,7 @@
 /obj/item/clothing/suit/storage/hooded/fake_void
 	STD_DEF("cloth cloak")
 	icon = 'icons/antagonists/heretic/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/heretic/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/heretic/on_mob/clothing.dmi'
 	icon_state = "void_cloak"
 	hoodtype = /obj/item/clothing/head/hood/fake_void
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
@@ -527,7 +527,7 @@
 /obj/item/clothing/head/hood/fake_void
 	STD_DEF_NON_HIDING("hood")
 	icon = 'icons/antagonists/heretic/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/heretic/on_mob/clothing.dmi'
+	worn_icon = 'icons/antagonists/heretic/on_mob/clothing.dmi'
 	icon_state = "void_cloak_hood"
 	body_parts_covered = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS

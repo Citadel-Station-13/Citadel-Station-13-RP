@@ -16,8 +16,12 @@
 #define SLOT_ID_RIGHT_EAR		"rear"
 #define SLOT_ID_HANDCUFFED		"handcuffed"
 #define SLOT_ID_LEGCUFFED		"legcuffed"
-// this is an id because SLOT_ID_HANDS is used for worn_slot when something is being held :/
+/// this is an id because SLOT_ID_HANDS is used for worn_slot when something is being held :/
 #define SLOT_ID_HANDS			"hands"
+/// *ONLY USE THIS FOR RENDERING* - this is nonsensical anywhere else
+#define SLOT_ID_LEFT_HAND		"left_hand"
+/// *ONLY USE THIS FOR RENDERING* - this is nonsensical anywhere else
+#define SLOT_ID_RIGHT_HAND		"right_hand"
 
 //! slot meta slot_equip_checks flags
 /// check slot flags - must match
