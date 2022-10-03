@@ -5,12 +5,12 @@
 	icon_state = "densecrate"
 	density = 1
 	var/list/starts_with
-	var/storage_capacity = 2 * MOB_MEDIUM //This is so that someone can't pack hundreds of items in a locker/crate
+	var/storage_capacity = 2 * MOB_LARGE //This is so that someone can't pack hundreds of items in a locker/crate
 							  //then open it in a populated area to crash clients.
 
 
 
-/obj/structure/largecrate/Initialize(mapload)	//Shamelessly copied from closets.dm since the old Initializer didnt seem to function properly
+/obj/structure/largecrate/Initialize(mapload)	//Shamelessly copied from closets.dm since the old Initializer didnt seem to function properly - Bloop
 	. = ..()
 	if(mapload)
 		addtimer(CALLBACK(src, .proc/take_contents), 0)
