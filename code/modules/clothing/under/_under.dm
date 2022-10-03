@@ -94,9 +94,9 @@
 			log_debug("Invalid switch for suit sensors, defaulting to random. [sensorpref] chosen")
 
 /obj/item/clothing/under/proc/update_rolldown_status()
-	var/mob/living/carbon/human/H
-	if(istype(src.loc, /mob/living/carbon/human))
-		H = src.loc
+	var/mob/living/carbon/human/H = ishuman(loc)? loc : null
+	#warn AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	var/icon/under_icon = resolve_worn_assets(H, SLOT_ID_UNIFORM, FALSE, H?.species?.get_effective_bodytype(src, SLOT_ID_UNIFORM))[1]
 
 	var/icon/under_icon
 	if(icon_override)
@@ -123,7 +123,7 @@
 	if(istype(src.loc, /mob/living/carbon/human))
 		H = src.loc
 
-	var/icon/under_icon
+	var/icon/under_icon = resolve_worn_assets()
 	if(icon_override)
 		under_icon = icon_override
 	else if(H && sprite_sheets && sprite_sheets[H.species.get_worn_legacy_bodytype(H)])

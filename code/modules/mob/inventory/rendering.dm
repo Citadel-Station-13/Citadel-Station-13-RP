@@ -134,6 +134,12 @@
 
 /**
  * returns a tuple of (icon, state, layer, size_x, size_y)
+ *
+ * @params
+ * - M - mob putting us on; optional
+ * - slot_meta - inventory slot datum
+ * - inhands - if we're going to inhands
+ * - bodytype - bodytype in question
  */
 /obj/item/proc/resolve_worn_assets(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype)
 	. = new /list(5)	// 5 tuple
@@ -152,6 +158,10 @@
 					.[2] += "_l"
 				if(SLOT_ID_RIGHT_HAND)
 					.[2] += "_r"
+				if(SLOT_ID_LEFT_EAR)
+					.[2] += "_l"
+				if(SLOT_ID_RIGHT_EAR)
+					.[2] += "_l"
 		.[4] = worn_x_dimension
 		.[5] = worn_y_dimension
 
@@ -198,6 +208,8 @@
 				state2use += "_r"
 			if(SLOT_ID_LEFT_HAND)
 				state2use += "_l"
+			if(SLOT_ID_LEFT_EAR)
+				state2use
 
 
 //Returns the icon object that should be used for the worn icon

@@ -573,7 +573,15 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		var/obj/item/clothing/suit/S = wear_suit
 		if((wear_suit?.flags_inv & HIDETAIL) || (istype(S) && S.taurized)) // Reasons to not mask: 1. If you're wearing a suit that hides the tail or if you're wearing a taurized suit.
 			c_mask = null
-	overlays_standing[UNIFORM_LAYER] = w_uniform.render_mob_appearance(src, SLOT_ID_UNIFORM, species.get_effective_bodytype())
+	var/list/mutable_appearance/MA = w_uniform.render_mob_appearance(src, SLOT_ID_UNIFORM, species.get_effective_bodytype())
+
+	if(c_mask)
+		if(islist(MA))
+			for(var/mutable_appearance/MA2 as anything in MA)
+				MA2.filters += filter(type = "alpha", icon = c_mask)
+		else
+			MA.filters += filter(type = "alpha", icon = c_mask)
+	overlays_standing[UNIFORM_LAYER] = MA
 
 	apply_layer(UNIFORM_LAYER)
 

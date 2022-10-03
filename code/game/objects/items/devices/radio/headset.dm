@@ -72,17 +72,6 @@
 			return ..(freq, level)
 	return -1
 
-/obj/item/radio/headset/get_worn_icon_state(var/slot_id)
-	var/append = ""
-	if(icon_override)
-		switch(slot_id)
-			if(SLOT_ID_LEFT_EAR)
-				append = "_l"
-			if(SLOT_ID_RIGHT_EAR)
-				append = "_r"
-
-	return "[..()][append]"
-
 /obj/item/radio/headset/ui_state(mob/user)
 	return GLOB.inventory_state
 
